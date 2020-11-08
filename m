@@ -1,156 +1,168 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3075021lfb;
-        Sun, 8 Nov 2020 12:48:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxVAzvase8oHQmh0fZjkenfDZ1G5Ybgr05gRSTvboa0XHfNGJE/vRX9XmmmJojy6YngYVrJ
-X-Received: by 2002:a17:906:3a8c:: with SMTP id y12mr11512271ejd.531.1604868504099;
-        Sun, 08 Nov 2020 12:48:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604868504; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3107618lfb;
+        Sun, 8 Nov 2020 14:00:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwq4DznBBUbF3IFuUbupBn7upNrGay11VEUfVgWyzmd7uEW/IvGlM6vQxkMJKnudWt5Jnud
+X-Received: by 2002:a25:558b:: with SMTP id j133mr15729079ybb.224.1604872837295;
+        Sun, 08 Nov 2020 14:00:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604872837; cv=none;
         d=google.com; s=arc-20160816;
-        b=FGc4t7dDVLe5N43zISjK6RH1IMa4Bbk2FND//Rg+h/9Xht7EeSK7tdsO46Qlm5zlwW
-         3xN/mP/VjAqFCObEKZ7T9CZRIfIBA+709h0DGokPtHoR2ZhpOvaGkkh869cJkq1BOg0r
-         7rtNWK8fuFshdrS91bpybnpBZgQFwfyA3MVeiw2Wxg/rzENq5sNX5xm/GXpHq4ruSZWX
-         il71qujog4PBp7lXCT7G9S5Uc4iglJUjUMdV6Zswy/6ZN9LB0OLSndTjd4M0KFJ7L3Dd
-         wtxIKGLN4R2K/Q0WoHWuuskcFAaKEZEHnJKFm9XolwysasYwJCaMjHIc91sj9J2ftvOs
-         +IIw==
+        b=rf4slGUGVdBiiEbRxgsg4TZw42ZfL7OTD1VE6lYvGSsRwHB1pj05afswrRPNjiB1st
+         A8dj87Lp8lrnLn+wUln6O/51av/Ki056EIufeoGFzc4/YXolB03KbUDO38cQ4prFbZjg
+         W72XhKzumUCnqBGqn0IIH5xYf7UWlFreRI+ihqnt1A6Iy1Skajt6P8qWGd9ueZM0BV10
+         bsQqzyisZJlFSYeeGikG3+QfKjotj018f5Axl3Bnu5kTkTCV4cgN37dbcAKrKtMXzvxM
+         Yt7c+2Qw+QmKLr8BPXvZsktPpE1igCme+NZfoR7u1CHasC0STgfI4edVTqqFvfoPniUt
+         auRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fzWt1qDKwVED4KYkWX6MIPCKsj2TKTK/b4JiHS7BZWA=;
-        b=R5KNXFrmsA7xFOTc16W9+YIx+tHROm7CItgWZ1e/3SzTiZ3YQsUJ2xkpxVzdB3byE4
-         LLi3+gV+fmwVrMOOmirfdIG0MA3FjSqSwNYY3PLgYP10IGdbxRgyKvviAkkppd63faEX
-         T0zdtIU7YNFaZ1yAwRrepK+FL1eRC9pwZVTW95iTtJ8sLXFVHJbgai0oDeD5SBwmcEPr
-         5S00Dj0TpzXAwvR1p4CopSTepriMLU6UlmUcZMmdH7a+irxNJOsNekAkGKzM9p3xaMni
-         TIni4JHzPp5jK2dabb3i4OYstWuHmQvQfFrT7RTM7jyqJhke7068wGD8yhgRJMQ2t79H
-         m1DA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=UFPY0cQ/Jorg5vSPE+0tEmA6/5gFXK6WA5ifFlgle7c=;
+        b=By7WUBsDt3JQdoixK4gaTGVCJh7z3RRdgBrcAojd1a3QOb3kLErOygIRW7KyEJO8a6
+         pIp+2YhLbPaMq43ZvPoJoEOw9MV/IAjDUoe3h3dgM9rRuqn8/QiW87+do9BBTMIuc2Zt
+         FuwP6Qdpz+QnW97UMvIWT7QzDCcQmvaooAihVO+u0BE8sxBaXPTlLQhHkAMtTgGO7vm5
+         Gf1alovNAzKaDAqtEChHRBBdVFfEG5B0nqojewkwlWY6H5S61D774fgnWlPqjNa5z7Td
+         2XpbEat1IJEkgBeOOSMA5OGFserrlclOWJ3PRFmASXyTeyiYdv7n2vTQlnHpl5TpThCQ
+         pJXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h6LtN4pl;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WSV1tUsR;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id p25si6573165ejc.412.2020.11.08.12.48.23
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id a13si7356557ybp.357.2020.11.08.14.00.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 08 Nov 2020 12:48:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Sun, 08 Nov 2020 14:00:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h6LtN4pl;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WSV1tUsR;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1604868503;
+	s=mimecast20190719; t=1604872836;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=fzWt1qDKwVED4KYkWX6MIPCKsj2TKTK/b4JiHS7BZWA=;
-	b=h6LtN4plwCs5djLtC7bRwksW1xla147Sf6A25IHd8UH0PIGLvjjyhdmvayxM07nkrGDPkn
-	RIn6bGvc1eyt0CLaWTppsbUs8dyo1ohbCFgRtCgeHrLQFmvUfJhpIMhF6tiQdxjqmk8qOs
-	Obmrr6ukLn84FAW+Ro7rU0SkEHVlrTY=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-545-6s2YIpCSMGWXYk1km9mvxQ-1; Sun, 08 Nov 2020 15:48:21 -0500
-X-MC-Unique: 6s2YIpCSMGWXYk1km9mvxQ-1
-Received: by mail-wr1-f70.google.com with SMTP id w6so3388538wrk.1
-        for <alex.bennee@linaro.org>; Sun, 08 Nov 2020 12:48:21 -0800 (PST)
+	bh=UFPY0cQ/Jorg5vSPE+0tEmA6/5gFXK6WA5ifFlgle7c=;
+	b=WSV1tUsRd9xmE9stLEOYdBkkN2r47z8bUFOt7n+WfDo2dOtlOqH2dbyuS4EI1inTqLNSSG
+	k5DxMKNDYpJJj1SMHp/nfA6HbZPgvh43kBlXzmn3svmyUCvJvbPHOKmeEyY4vmO+chgAqq
+	280ulPNZPjpI5dxV2dhmGMq6W9VkeTU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-352--F0IfPWqPJ2UJJ2QxZVeZg-1; Sun, 08 Nov 2020 17:00:35 -0500
+X-MC-Unique: -F0IfPWqPJ2UJJ2QxZVeZg-1
+Received: by mail-wr1-f71.google.com with SMTP id r16so3424761wrw.22
+        for <alex.bennee@linaro.org>; Sun, 08 Nov 2020 14:00:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=fzWt1qDKwVED4KYkWX6MIPCKsj2TKTK/b4JiHS7BZWA=;
-        b=o6lOZO0WvlT/IwGg2RJgZ+PHrH64eNlv+lE6953NmM4GvpuO/IGXw7ropx8ZLUxNTw
-         mHGEYf6Oq2GfkdzrUy02fSqqkuBg9WeLiCK7zfKqQKa9gTBlXX2i9dmg8Zn8I9W8HGql
-         Hxz1xJya8yygilnCxP3IbcWivpd/Sp+9vVdq96XWeUZ43bDTUiW+cOLaiomeu+QNfky3
-         m+AlKgnHVCd13wnkGboEy+yT+ngjEPUaoqIgUR/F1unQT+zi8gODKnkGHdIe1h2lwMJT
-         pShLGL+iPzI/7V604dDLE8NQ83+yKPWHDVpVcXI4qK4uTfkGnbw19nBMOd7ksI6Duz2J
-         vhLQ==
-X-Gm-Message-State: AOAM531ubEYluwekJwt0HCBkykmae+A60fe8NImYBOsyxOOJscBFh+vS
-	abJMOKY30CWMcyCpO9ne9rNh+9TNUPiRTlkV+nKlrRq3YGg2uJ9xFEq571mGVMMiiNA6YYc6mWl
-	hmEGMwZfeegdUYAJH
-X-Received: by 2002:adf:e992:: with SMTP id h18mr4849144wrm.356.1604868500416;
-        Sun, 08 Nov 2020 12:48:20 -0800 (PST)
-X-Received: by 2002:adf:e992:: with SMTP id h18mr4849129wrm.356.1604868500284;
-        Sun, 08 Nov 2020 12:48:20 -0800 (PST)
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=UFPY0cQ/Jorg5vSPE+0tEmA6/5gFXK6WA5ifFlgle7c=;
+        b=KydvnKu1q0A2oDZnrzmdsd//rdJEUnh+1qZZfMeVi8lZ9GJrVgbioeN5FdwLsbQtwP
+         iRqhhZcOfLC7dyS7VCxgYFusXug7lkpqKJL7EhMj/p29kYnLHsOA5gNBxV7o/JRaNg0A
+         /VXXvEltEtcFus43qF/HMVyUxh9en60RtyiVQOV7VyPKp4TZ3rnSBGR92eLBpx2wa6XZ
+         vDYEZKdBeidYbyFMtHpY/UCBv9XowfmwJfc0YLCOzOkFGD7yXZLR0r1n4TmQKBRhhTm1
+         S9+5YAzOlSVz7XuuCSof3ImsMOwdCYHhn7jpQOepIYwqWtwzXXRyA/tT/0frlVz38uFg
+         jmLA==
+X-Gm-Message-State: AOAM531qzAWtQnsMFngJcyw1yFq7Zdbk6S74QkRjimylqQUnJC33SRiM
+	U0jU3kf/JLA6vv0qtRnz9DT42OiPHjhYqiQ2nL3Lfs3ouuTK8QIq1O6UgmijnfWVnnARWdneeK5
+	c2QABq4fuM8a4vi+d
+X-Received: by 2002:adf:e28c:: with SMTP id v12mr14354251wri.230.1604872833926;
+        Sun, 08 Nov 2020 14:00:33 -0800 (PST)
+X-Received: by 2002:adf:e28c:: with SMTP id v12mr14354238wri.230.1604872833743;
+        Sun, 08 Nov 2020 14:00:33 -0800 (PST)
 Return-Path: <philmd@redhat.com>
-Received: from localhost.localdomain (234.red-83-42-66.dynamicip.rima-tde.net. [83.42.66.234])
-        by smtp.gmail.com with ESMTPSA id s9sm12227336wrf.90.2020.11.08.12.48.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 08 Nov 2020 12:48:19 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net. [83.42.66.234])
+        by smtp.gmail.com with ESMTPSA id h4sm10865916wrp.52.2020.11.08.14.00.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 08 Nov 2020 14:00:33 -0800 (PST)
+Subject: Re: [PATCH-for-6.0 v4 16/17] gitlab-ci: Make some ARM 32-bit jobs
+ optional
 To: qemu-devel@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Fam Zheng <fam@euphon.net>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	qemu-arm@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH-for-6.0 v4 16/17] gitlab-ci: Make some ARM 32-bit jobs optional
-Date: Sun,  8 Nov 2020 21:45:34 +0100
-Message-Id: <20201108204535.2319870-17-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201108204535.2319870-1-philmd@redhat.com>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, Igor Mammedov
+ <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Richard Henderson <rth@twiddle.net>, Fam Zheng <fam@euphon.net>,
+ "Daniel P . Berrange" <berrange@redhat.com>, qemu-arm@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
 References: <20201108204535.2319870-1-philmd@redhat.com>
+ <20201108204535.2319870-17-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <901a30ce-1a72-90a5-dea7-f9eab9fac7fb@redhat.com>
+Date: Sun, 8 Nov 2020 23:00:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
+In-Reply-To: <20201108204535.2319870-17-philmd@redhat.com>
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 5ZDJoeFvHnu9
+X-TUID: CgVldmWQ61+v
 
-The armel/armhf targets have a lot in common. Instead of
-testing both user/system emulation on each target, test
-each one once. Mark the other combination optional, so
-user can still run the tests manually.
+On 11/8/20 9:45 PM, Philippe Mathieu-Daudé wrote:
+> The armel/armhf targets have a lot in common. Instead of
+> testing both user/system emulation on each target, test
+> each one once. Mark the other combination optional, so
+> user can still run the tests manually.
+> 
+> We now test system-mode emulation on armel target, and
+> user-mode emulation to armhf target:
+> 
+> - armel-system          Yes
+> - armel-user            Optional
+> - armhf-system          Optional
+> - armhf-user            Yes
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> Cc: qemu-arm@nongnu.org
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> ---
+>  .gitlab-ci.d/crossbuilds.yml | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
+> index 03ebfabb3fa..e4526e98232 100644
+> --- a/.gitlab-ci.d/crossbuilds.yml
+> +++ b/.gitlab-ci.d/crossbuilds.yml
+> @@ -32,11 +32,17 @@ cross-armel-user:
+>    <<: *cross_user_build_job_definition
+>    variables:
+>      IMAGE: debian-armel-cross
+> +  rules:
 
-We now test system-mode emulation on armel target, and
-user-mode emulation to armhf target:
+As I only want to restrict this to push events, I'll add:
 
-- armel-system          Yes
-- armel-user            Optional
-- armhf-system          Optional
-- armhf-user            Yes
+       - if: '$CI_PIPELINE_SOURCE != "push"'
+         when: always
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
-Cc: qemu-arm@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>
----
- .gitlab-ci.d/crossbuilds.yml | 6 ++++++
- 1 file changed, 6 insertions(+)
+So all other events (merge request, pipeline triggered via WebUI)
+the job is automatically executed.
 
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index 03ebfabb3fa..e4526e98232 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -32,11 +32,17 @@ cross-armel-user:
-   <<: *cross_user_build_job_definition
-   variables:
-     IMAGE: debian-armel-cross
-+  rules:
-+    - when: manual
-+      allow_failure: true
- 
- cross-armhf-system:
-   <<: *cross_system_build_job_definition
-   variables:
-     IMAGE: debian-armhf-cross
-+  rules:
-+    - when: manual
-+      allow_failure: true
- 
- cross-armhf-user:
-   <<: *cross_user_build_job_definition
--- 
-2.26.2
+> +    - when: manual
+> +      allow_failure: true
+>  
+>  cross-armhf-system:
+>    <<: *cross_system_build_job_definition
+>    variables:
+>      IMAGE: debian-armhf-cross
+> +  rules:
+> +    - when: manual
+> +      allow_failure: true
+
+Ditto (and in the MIPS job in next patch).
+
+>  
+>  cross-armhf-user:
+>    <<: *cross_user_build_job_definition
+> 

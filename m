@@ -1,111 +1,141 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3611011lfb;
-        Mon, 9 Nov 2020 05:10:46 -0800 (PST)
-X-Received: by 2002:a17:906:3852:: with SMTP id w18mr14435540ejc.551.1604927446556;
-        Mon, 09 Nov 2020 05:10:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604927446; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3652587lfb;
+        Mon, 9 Nov 2020 06:01:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzz+eRaojJVVs9hS54+f4hRKbfYPGGoVUpn/e4kWr2vxOtilbYxLRgJhGYGdocX/0HlsaEr
+X-Received: by 2002:a25:9d08:: with SMTP id i8mr16793977ybp.2.1604930506722;
+        Mon, 09 Nov 2020 06:01:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604930506; cv=none;
         d=google.com; s=arc-20160816;
-        b=YoMPYJEKNmXavFRqMiqFsoKxlHPcLaMTwdPwyf+GiM2BplV4QmQ8p2i8508DgdRWLM
-         FrOXfOm7Fn8RX5YU7LdjLsQLa6e8DUOCyqHeRcf3W2AWKjBSH5WKq0CfWjTISE3HJe9t
-         4eYAiCflHpyVb3JNOCmr1Oi0nuVMbYy7ZUGLciL9qwYpOnoAN8sqzsVIgdSr02SMIIPo
-         aTR+uf9uFWu164ZKR3miBvj9xB5aLd6AWx1F7K6iMtLkIbAiBGFrANmdSYKHjXm/KhNE
-         KKy9itJsiGSWItvMB0q2InsIt0dE6rrQGRK309B4aZ8eLMzbHhN/PC7IiktfdSMwH+k6
-         S5OA==
+        b=ltxfuR8yQDrCa97DHY3kLG0DW7G5XX5pkZk4gKsa16bBa3GeNS2i2Imamjb7oWHzra
+         +jIB2zgBA+EtTHpKrTkRFH1xCkb2XKdeu9/ocOyse/+J7AA5UTOBzi+xRk287HsSCNPK
+         ZSWqsE0lC98Id6UTw5oaVY26JVautsSYRG86/XXJi690nMNz+B34QBQL+vJjFvQaA+fb
+         AltxMKPts5gc150Vnsw7oknu1qPACpUBDneIAA0D9Qxw5a2OmFC6XHDcJ1Ino9IIEtBK
+         k6uimxUCjyheLC2NAqa34sK4cctESUV6g/b2WRJ67IESQFKzdkjLMA6BcF5UyUSsxlCA
+         8DQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ftFoZ+uZmH3wDSM3hDnWljMNS89Iorvh0uGunD681GM=;
-        b=hqwEzlkYfISZ0wGRNbzJw4YwRjsNZSIk3p1ckCS4pi0JNZ6myG1jPpjrrAHoFZjZrm
-         YEzNSuyxY/J07MNT4qQxnJy9DIQa363maRXCeKsBQ6Cc5O5h5Iur2bvotOOqPiWHf0yi
-         NXX800abrLxhA7qfsQzIvGgKxeb8l+x1vl68qFKUqULwAufj+HPWyBpfHxsJBhDEajKu
-         lXlhliN2rvHYD92aPVMRM7GKLf7QWGOtF/Q/FOMOiD/6JctEDSiUzg4XJMQxF6GquU9S
-         20nxwjJqht6pLC9IK4s0p/2RdLo6ql9RnZ0y9RwLotx2eCkpEJ+18VXU+6hU6G8fwGqw
-         3p5w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:message-id:date:subject:to:from;
+        bh=3kpay0si4OyHoOm1bZHJI3HQUxb/wY7JMyXbNaLTnTs=;
+        b=umGjOPU9FfOt5xgrlYr1TC2ijkvJ4mHb8vanyZo7s/G6ukpY+fbSp3rodC7tSzjdt7
+         jWoJ4AW3zR8slJ8CMq8YnqPxY5XUzIgFIaY6gBX9baned8BmmnZ4vto26BZGbb3zGCPf
+         dBnp5ImWAuERdenlPqDRSnIUIWjCvxlrxiSABTJinaMf6NBCxq5e0hFmqCge6n2PPCt4
+         l/nu2bu219Rs5l1tmuVmjufCe1EKA57xSc36fjbgYkqr0TqyCGNUbkDc8yspYp5Y0tGe
+         Og/jvMvad90cda8toVwm/iPw1mFCca4uGR1wFDtS9kPlycvegllKru76AC+DfQ+PrtCl
+         5CUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H8bkzlaT;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id zm18sor4720814ejb.44.2020.11.09.05.10.46
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b12si5576530ybk.281.2020.11.09.06.01.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 09 Nov 2020 05:10:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Nov 2020 06:01:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H8bkzlaT;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=ftFoZ+uZmH3wDSM3hDnWljMNS89Iorvh0uGunD681GM=;
-        b=H8bkzlaTQcQD5pQxoqyqJPXgTDZTWRPzn2atdCKdyQg/3R9CkrSy7xTEuh2dWR2b6D
-         qjbQNyTkcydSSNwJElzGpLejJTo6VkUnrcqfItKK29fXzpmIY0WugiNQqVTDkXfSgp12
-         qQHEd9ru0lQBmIirbM6e1v712B5IrMKBa8oqjXz4eYSYShr9viRkUNOdR/zikuDdcZvK
-         yD0jQ+Rnd4zSraQk+2R4GyCHIJSbUg9ci8vkvpEjGwpmT29XDKJ5xWeKrgA7DPvTlb8l
-         Wi3ts68iwcG9vGtALFc44Fc+C0ZaVt4Y0Gc3fqFB2CW9z5ozzcW/RahIiYzuLkWCYV+c
-         AO1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=ftFoZ+uZmH3wDSM3hDnWljMNS89Iorvh0uGunD681GM=;
-        b=PPrhwLE/6mOqO2/Ll4VdI224hGNVNjKT3ZvzSDbhOLJuP2qF/uNDdddBGL3FkJBygm
-         7h46dopwFeTFi/3q1RpMMMWoc18Lf+BVmGWyQpuq4snvKEH0Hm1HSTeOzStudN5wYc8k
-         29Ao/sccD0VYENQEc8N+h2tv0NwlZB7ycTxc9SY0Bd1026HjNSJuBaojFfiu/Nl8VdcV
-         /U/lkjw2bzkaGZ0oIF7skWdRIBQziO2fWVKoO5pfGR5EU2OaNuKt+RpPKAUSPmYHP/Gd
-         XQdE2HQ/voz+iTXEw2eYq+wrODJuqEIT8OxvvBJUlrfnPpt+RRs3XBrie3bUuSEtubFa
-         SAyQ==
-X-Gm-Message-State: AOAM530DBHIu8vqym4AiG/sgKicaZxu3mIsHV95k07hCQmCHKdjkE/up
-	kVO3/wt9vTEcaJqF1eVE/2btuhHNtU6KXv/Lw9X7VsEDn3a9Uw==
-X-Google-Smtp-Source: ABdhPJxMMwP28LUWtSWVVRKnGjIGgCfgMby6BeyRIil9rPc3d67rUow16uEwC4ypGIVHHyToldNqKpGGrkHhrTLImjw=
-X-Received: by 2002:a17:906:7254:: with SMTP id n20mr14192338ejk.382.1604927445937;
- Mon, 09 Nov 2020 05:10:45 -0800 (PST)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51004 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kc7jt-0003UM-32
+	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:01:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35440)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kc7eY-0007RG-D9; Mon, 09 Nov 2020 08:56:14 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:60098
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kc7eW-0006K8-18; Mon, 09 Nov 2020 08:56:13 -0500
+Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
+ [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
+ (Authenticated sender: remi)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id 3B4525FAAA;
+ Mon,  9 Nov 2020 14:56:07 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
+To: qemu-arm@nongnu.org
+Subject: [PATCHv2 00/17] ARM Secure EL2 extension
+Date: Mon, 09 Nov 2020 15:56:03 +0200
+Message-ID: <5554493.MhkbZ0Pkbq@basile.remlab.net>
+Organization: Huawei Technologies, Finland
 MIME-Version: 1.0
-References: <20201104165254.24822-1-alex.bennee@linaro.org>
-In-Reply-To: <20201104165254.24822-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 9 Nov 2020 13:10:34 +0000
-Message-ID: <CAFEAcA8vjXHFEripcd69F++j7V_ZHkK8Y+RJ7WN942JbJ3JCpQ@mail.gmail.com>
-Subject: Re: [PATCH v2] docs: add some notes on the sbsa-ref machine
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Graeme Gregory <graeme@nuviainc.com>, 
-	Leif Lindholm <leif@nuviainc.com>, Shashi Mallela <shashi.mallela@linaro.org>, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: PZleFPGNucHA
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 08:56:07
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1EJe3kQHgDXc
 
-On Wed, 4 Nov 2020 at 16:53, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> We should at least document what this machine is about.
->
-> Reviewed-by: Graeme Gregory <graeme@nuviainc.com>
-> Cc: Leif Lindholm <leif@nuviainc.com>
-> Cc: Shashi Mallela <shashi.mallela@linaro.org>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> ---
-> v2
->   - reworded command line bit as per Leif
->   - s/cortex-a57 cpus/AArch64 CPUs/
->   - dropped the trailing .'s
-> ---
->  docs/system/arm/sbsa.rst   | 32 ++++++++++++++++++++++++++++++++
+The following changes since commit 193f51ddcf1d87d725f1dfd51b8a95351c910e8f:
 
-This filename...
+  Merge remote-tracking branch 'remotes/philmd-gitlab/tags/mips-fixes-20201=
+109' into staging (2020-11-09 10:10:49 +0000)
 
-> --- a/docs/system/target-arm.rst
-> +++ b/docs/system/target-arm.rst
-> @@ -79,6 +79,7 @@ undocumented; you can get a complete list by running
->     arm/mps2
->     arm/musca
->     arm/realview
-> +   arm/sbsa-ref
+are available for review.
 
-...doesn't match the name you used here, so the docs don't
-build. I've fixed this nit in target-arm.next.
+Changes since version 1:
+=2D Add the first patch which was accidentally dropped.
+=2D Try to address comments from Peter and Richard.
 
--- PMM
+=2D---------------------------------------------------------------
+R=C3=A9mi Denis-Courmont (17):
+      target/arm: remove redundant tests
+      target/arm: add arm_is_el2_enabled() helper
+      target/arm: use arm_is_el2_enabled() where applicable
+      target/arm: use arm_hcr_el2_eff() where applicable
+      target/arm: factor MDCR_EL2 common handling
+      target/arm: declare new AA64PFR0 bit-fields
+      target/arm: add 64-bit S-EL2 to EL exception table
+      target/arm: return the stage 2 index for stage 1
+      target/arm: add MMU stage 1 for Secure EL2
+      target/arm: add ARMv8.4-SEL2 system registers
+      target/arm: do S1_ptw_translate() before address space lookup
+      target/arm: secure stage 2 translation regime
+      target/arm: handle VMID change in secure state
+      target/arm: set HPFAR_EL2.NS on secure stage 2 faults
+      target/arm: add ARMv8.4-SEL2 extension
+      target/arm: enable Secure EL2 in max CPU
+      target/arm: refactor vae1_tlbmask()
+
+ target/arm/cpu-param.h     |   2 +-
+ target/arm/cpu.c           |  10 +-
+ target/arm/cpu.h           |  92 ++++++++--
+ target/arm/cpu64.c         |   1 +
+ target/arm/helper-a64.c    |   8 +-
+ target/arm/helper.c        | 421 ++++++++++++++++++++++++++++++-----------=
+=2D---
+ target/arm/internals.h     |  54 +++++-
+ target/arm/op_helper.c     |   4 +-
+ target/arm/tlb_helper.c    |   3 +
+ target/arm/translate-a64.c |   4 +
+ target/arm/translate.c     |   6 +-
+ target/arm/translate.h     |   1 +
+ 12 files changed, 426 insertions(+), 180 deletions(-)
+=2D-=20
+R=C3=A9mi Denis-Courmont
+http://www.remlab.net/
+
+
+

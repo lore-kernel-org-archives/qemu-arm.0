@@ -1,112 +1,81 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2354101lfb;
-        Sat, 7 Nov 2020 11:38:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx3SG87egWYdwg1+ybguTZi+2rN/P0c9EKf34rao9wSC7Ghn+KUjgo0mKBXD2+lq7hfwYjI
-X-Received: by 2002:a25:a86:: with SMTP id 128mr10741299ybk.370.1604777918562;
-        Sat, 07 Nov 2020 11:38:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604777918; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3261451lfb;
+        Sun, 8 Nov 2020 19:05:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJykjIW9hofDU8QH+SsdPmkC+nEMxioWbmPyaTR5DEedN5KjtWwm+l3/D7R18fcxT+HboLs+
+X-Received: by 2002:a25:b705:: with SMTP id t5mr16695304ybj.381.1604891154416;
+        Sun, 08 Nov 2020 19:05:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604891154; cv=none;
         d=google.com; s=arc-20160816;
-        b=o0XoGbs5SU9lWRAE0FBhBG5rrlENx/9tgqPX+TWWi+ApiZHz7ycJm9zMvkcRVIZ8Zr
-         U0/vhLGFXsekarzonLTbMgDki0475uQN/0dM1RmP9Iq5jeUpt4iBmxyZx1wY1jdkzwVX
-         jxrRvB43iQGIu5gpPnNNiB7NPAzIBNNSfE0G/PhTEtg3u74WGE3tYwGoVqgnvYi6vFRo
-         UR7PkGZmaQpfc58x0PfVMNrE97r9x/KTMbLco1Rss5jUTXJiHFZ3TXM2igRNcmrMVXKm
-         l5Tmbyf6HlOJzOViMKovj3JVG9rKcqcbM8I3bxkubpsCacdcanpyZeiD8r8/emn6PhTL
-         UAmg==
+        b=VnW/q40CyTjzsxYRP05bvGMnEF2T5dYAG3kgPuMM/boAl8pzP1C0QC0l/ToERS9ahb
+         ifVdLZ5lqfx26y44ELqL6sQMlgKUm6b5HiDWHGUZmFUw4NjQTFbbFNvVPJW4j0ysF+8D
+         930+QnsMrydechhudbxbVlbJBiTea+lXfyuW8VzaouEScKb9noTyUIup14KtNsdoZw6b
+         lqW7F2C1IIxNi5duJuXDQ/K8nWApO/5ARINbcOoundmAScaMoI3jwvEmq6po47stgPRO
+         CUraq4CLZdosv1HxdgG5LRidzfYbJKijL1an4/w9bQpfIigXeg0KUcttjXDlzok7txWm
+         1xhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=fgdYdhDY03zoPgadIiKhWW6DCP4typfikMNrmEkn0p8=;
-        b=vO7dNkIoUBmq9BgzNXdHpRne40ogTuBE5/7w4BbUgxVAd18iPwlEtPdAvb+9ZcG+gW
-         Q6gb0XxTofjAoK/rFGkMFf8cYmRGj099dZFI1BIi7vdajWHgyYh7NE2Fk/OpoaN8WbRK
-         +2434Jhll9PY5Mwk6xb2b0VfT+V7mzkQrlZhqoUKuTiEZojyKgokKO5pKvbdTsGa6fFc
-         vUt1UsnF4pZL3BIv2yT07vxYSIh/o54Ln7olq1RVDsCbY1JPfCSsNlTMc6+OVxrbCY8c
-         erlFcuW9UzPB//9IJ7Nm9FOwA6oue7JOf6LfsBo2MuFFLyxT8FAMRMk/Q+8+Ld7Z/6CM
-         12+g==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=U9wBwhS+6kFZP8XgrwLAltJiCKw2UfFF8yxvdzBYmEU=;
+        b=Lg1/aYhoioMKy5t8lQ6iJKBMV3pItbr8fPhMNJmXvPqypyldvUsHfZWEKRral3jUU6
+         D+VeieDVB0MrbBMEFi4p2gDTBC9C7Wy8afpDlQz+wb0ap1RzY7CXqZpoxWUxDrrYFs8u
+         t3ObIjce6xX1+GgUoR5Fxv4KApSvHsXL4KnSOGnLE5YPadKvBm6T5QeAEPomNFKP6tOR
+         NotJB6EStv/RVQxkes8QJP9YEJmeNHXsk1Gq9UYKaF1Ga1nqQhiAMfhoiKM/0Mfm8tgi
+         NlcoacQt7K4ahw4MTO2wHYacW9w8bXnyjrP7LXWQoW3Txz8mKvxN7ENIx4GJa7bBxns/
+         dSOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jrqPGW9t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s75si4484849ybi.307.2020.11.07.11.38.38
+        by mx.google.com with ESMTPS id e131si10064621ybf.129.2020.11.08.19.05.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Nov 2020 11:38:38 -0800 (PST)
+        Sun, 08 Nov 2020 19:05:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jrqPGW9t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55674 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kbU2n-0003Qn-UX
-	for alex.bennee@linaro.org; Sat, 07 Nov 2020 14:38:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57766)
+	id 1kbxVB-0001bU-QT
+	for alex.bennee@linaro.org; Sun, 08 Nov 2020 22:05:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kbTz1-00081L-1m; Sat, 07 Nov 2020 14:34:43 -0500
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:52145)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kbTyy-0008NA-Jw; Sat, 07 Nov 2020 14:34:42 -0500
-Received: by mail-wm1-x343.google.com with SMTP id v5so4559640wmh.1;
- Sat, 07 Nov 2020 11:34:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=fgdYdhDY03zoPgadIiKhWW6DCP4typfikMNrmEkn0p8=;
- b=jrqPGW9tsCt+SXiyZQcQkihiqvMadba2ZzCBGwKS+j/drhGHyHFTrNp1nc5+s/sHsR
- mGrSsGjkGTYnaQ5N9SzxpO7Eqql1sCxTEri14zP9f5IFYHeP+oIscRmLhcIyH4fKJWJz
- 2PWgZbrHz9+FC8ePucHjrKHmBaCTNGsxulqNO7qpEhKqK4U9jbFyFoXxiRTuNIQMPr5a
- 29d2eaaOWW0kE38BhNAnBlU5I7t/x4T5X3cibScm0CSpPSG7edLZ+hRlO18H1z+3fx4Q
- rdiW+R8WuAG35tcM7qGjsXN5QXUWrI0ApTPR7r/TrKo87n3CfVlRsBxjKG3CO/p5PFeN
- U9lA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=fgdYdhDY03zoPgadIiKhWW6DCP4typfikMNrmEkn0p8=;
- b=R6QAWObpmaHgBQnr/VEJ95Oj3uNpTrRHdiZX3Gr6q0rHKmEHi1d4uDKUAVstLZrRzp
- 8VKWcwtYOpJ9neB1uuCzyl2Q6hBpfFMVwMjzBtd7lpqjBJ8+shtl/F5fDgqW/khZ8KdO
- d3/y95FAzVrFA/b6gifgk4uGuHiigpq/Dned4N3Ca7Wa41nPJJ2dZBg5CsH3UQlCjyer
- u8nFwK108ZO3ltiCosfQRGxSpLosIMoPeHxBly0+kz+gPUSAhB7dUJOlJFSeOGv945+J
- qsx7++CLA4LekJp6ZDIxBszjNjerUWOgcFxQ4nh2Sfu2Esf82akZhXX/cmFMZLguIj8o
- jmdw==
-X-Gm-Message-State: AOAM53322x5+pb/w/SU+0kB3rc3tDFpQvg6/7poqs6YUlD/lk9HvgTP5
- as4ixlysm6rR+8GSJ3o3fVNj5824Vuc=
-X-Received: by 2002:a7b:c157:: with SMTP id z23mr6095102wmi.70.1604777671085; 
- Sat, 07 Nov 2020 11:34:31 -0800 (PST)
-Received: from localhost.localdomain (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id q2sm7363998wrw.40.2020.11.07.11.34.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Nov 2020 11:34:30 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-6.0 5/5] hw/arm/musicpal: Only use qdev_get_gpio_in() when
- necessary
-Date: Sat,  7 Nov 2020 20:34:03 +0100
-Message-Id: <20201107193403.436146-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201107193403.436146-1-f4bug@amsat.org>
-References: <20201107193403.436146-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kbxUr-0001aQ-BY; Sun, 08 Nov 2020 22:05:33 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2399)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kbxUn-0006jI-Fq; Sun, 08 Nov 2020 22:05:33 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CTwpm0CzHz15SjP;
+ Mon,  9 Nov 2020 11:05:20 +0800 (CST)
+Received: from localhost (10.174.186.67) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Mon, 9 Nov 2020
+ 11:05:17 +0800
+From: Ying Fang <fangying1@huawei.com>
+To: <peter.maydell@linaro.org>
+Subject: [RFC PATCH v3 12/13] hw/acpi/aml-build: Build ACPI cpu cache
+ hierarchy information
+Date: Mon, 9 Nov 2020 11:04:51 +0800
+Message-ID: <20201109030452.2197-13-fangying1@huawei.com>
+X-Mailer: git-send-email 2.28.0.windows.1
+In-Reply-To: <20201109030452.2197-1-fangying1@huawei.com>
+References: <20201109030452.2197-1-fangying1@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.186.67]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/08 22:05:17
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,94 +88,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- Andrzej Zaborowski <balrogg@gmail.com>
+Cc: drjones@redhat.com, zhang.zhanghailiang@huawei.com, qemu-devel@nongnu.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
+ Ying Fang <fangying1@huawei.com>, imammedo@redhat.com, salil.mehta@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H0TiCz20bCZU
+X-TUID: OliUYZ7uyPvq
 
-We don't need to fill the full pic[] array if we only use
-few of the interrupt lines. Directly call qdev_get_gpio_in()
-when necessary.
+To build cache information, An AcpiCacheInfo structure is defined to
+hold the type 1 cache structure according to ACPI spec v6.3 5.2.29.2.
+A helper function build_cache_hierarchy is also introduced to encode
+the cache information.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Ying Fang <fangying1@huawei.com>
 ---
- hw/arm/musicpal.c | 25 +++++++++++++------------
- 1 file changed, 13 insertions(+), 12 deletions(-)
+ hw/acpi/aml-build.c         | 26 ++++++++++++++++++++++++++
+ include/hw/acpi/acpi-defs.h |  8 ++++++++
+ include/hw/acpi/aml-build.h |  3 +++
+ 3 files changed, 37 insertions(+)
 
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index ebc3ec24ef7..458b1cbeb76 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1587,8 +1587,8 @@ static struct arm_boot_info musicpal_binfo = {
- static void musicpal_init(MachineState *machine)
- {
-     ARMCPU *cpu;
--    qemu_irq pic[32];
-     DeviceState *dev;
-+    DeviceState *pic;
-     DeviceState *uart_orgate;
-     DeviceState *i2c_dev;
-     DeviceState *lcd_dev;
-@@ -1619,20 +1619,20 @@ static void musicpal_init(MachineState *machine)
-                            &error_fatal);
-     memory_region_add_subregion(address_space_mem, MP_SRAM_BASE, sram);
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index d1aa9fd716..1a38110149 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1770,6 +1770,32 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms)
+                  table_data->len - slit_start, 1, NULL, NULL);
+ }
  
--    dev = sysbus_create_simple(TYPE_MV88W8618_PIC, MP_PIC_BASE,
-+    pic = sysbus_create_simple(TYPE_MV88W8618_PIC, MP_PIC_BASE,
-                                qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ));
--    for (i = 0; i < 32; i++) {
--        pic[i] = qdev_get_gpio_in(dev, i);
--    }
--    sysbus_create_varargs(TYPE_MV88W8618_PIT, MP_PIT_BASE, pic[MP_TIMER1_IRQ],
--                          pic[MP_TIMER2_IRQ], pic[MP_TIMER3_IRQ],
--                          pic[MP_TIMER4_IRQ], NULL);
-+    sysbus_create_varargs(TYPE_MV88W8618_PIT, MP_PIT_BASE,
-+                          qdev_get_gpio_in(pic, MP_TIMER1_IRQ),
-+                          qdev_get_gpio_in(pic, MP_TIMER2_IRQ),
-+                          qdev_get_gpio_in(pic, MP_TIMER3_IRQ),
-+                          qdev_get_gpio_in(pic, MP_TIMER4_IRQ), NULL);
++/* ACPI 6.3: 5.29.2 Cache type structure (Type 1) */
++static void build_cache_head(GArray *tbl, uint32_t next_level)
++{
++    build_append_byte(tbl, 1);
++    build_append_byte(tbl, 24);
++    build_append_int_noprefix(tbl, 0, 2);
++    build_append_int_noprefix(tbl, 0x7f, 4);
++    build_append_int_noprefix(tbl, next_level, 4);
++}
++
++static void build_cache_tail(GArray *tbl, AcpiCacheInfo *cache_info)
++{
++    build_append_int_noprefix(tbl, cache_info->size, 4);
++    build_append_int_noprefix(tbl, cache_info->sets, 4);
++    build_append_byte(tbl, cache_info->associativity);
++    build_append_byte(tbl, cache_info->attributes);
++    build_append_int_noprefix(tbl, cache_info->line_size, 2);
++}
++
++void build_cache_hierarchy(GArray *tbl,
++              uint32_t next_level, AcpiCacheInfo *cache_info)
++{
++    build_cache_head(tbl, next_level);
++    build_cache_tail(tbl, cache_info);
++}
++
+ /*
+  * ACPI 6.3: 5.2.29.1 Processor hierarchy node structure (Type 0)
+  */
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 38a42f409a..3df38ab449 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -618,4 +618,12 @@ struct AcpiIortRC {
+ } QEMU_PACKED;
+ typedef struct AcpiIortRC AcpiIortRC;
  
-     /* Logically OR both UART IRQs together */
-     uart_orgate = DEVICE(object_new(TYPE_OR_IRQ));
-     object_property_set_int(OBJECT(uart_orgate), "num-lines", 2, &error_fatal);
-     qdev_realize_and_unref(uart_orgate, NULL, &error_fatal);
--    qdev_connect_gpio_out(DEVICE(uart_orgate), 0, pic[MP_UART_SHARED_IRQ]);
-+    qdev_connect_gpio_out(DEVICE(uart_orgate), 0,
-+                          qdev_get_gpio_in(pic, MP_UART_SHARED_IRQ));
++typedef struct AcpiCacheInfo {
++    uint32_t size;
++    uint32_t sets;
++    uint8_t  associativity;
++    uint8_t  attributes;
++    uint16_t line_size;
++} AcpiCacheInfo;
++
+ #endif
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index 56474835a7..01078753a8 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -437,6 +437,9 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
  
-     serial_mm_init(address_space_mem, MP_UART1_BASE, 2,
-                    qdev_get_gpio_in(uart_orgate, 0),
-@@ -1674,14 +1674,15 @@ static void musicpal_init(MachineState *machine)
-                              OBJECT(get_system_memory()), &error_fatal);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, MP_ETH_BASE);
--    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[MP_ETH_IRQ]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
-+                       qdev_get_gpio_in(pic, MP_ETH_IRQ));
+ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
  
-     sysbus_create_simple("mv88w8618_wlan", MP_WLAN_BASE, NULL);
++void build_cache_hierarchy(GArray *tbl,
++              uint32_t next_level, AcpiCacheInfo *cache_info);
++
+ void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
  
-     sysbus_create_simple(TYPE_MUSICPAL_MISC, MP_MISC_BASE, NULL);
- 
-     dev = sysbus_create_simple(TYPE_MUSICPAL_GPIO, MP_GPIO_BASE,
--                               pic[MP_GPIO_IRQ]);
-+                               qdev_get_gpio_in(pic, MP_GPIO_IRQ));
-     i2c_dev = sysbus_create_simple("gpio_i2c", -1, NULL);
-     i2c = (I2CBus *)qdev_get_child_bus(i2c_dev, "i2c");
- 
-@@ -1713,7 +1714,7 @@ static void musicpal_init(MachineState *machine)
-                              NULL);
-     sysbus_realize_and_unref(s, &error_fatal);
-     sysbus_mmio_map(s, 0, MP_AUDIO_BASE);
--    sysbus_connect_irq(s, 0, pic[MP_AUDIO_IRQ]);
-+    sysbus_connect_irq(s, 0, qdev_get_gpio_in(pic, MP_AUDIO_IRQ));
- 
-     musicpal_binfo.ram_size = MP_RAM_DEFAULT_SIZE;
-     arm_load_kernel(cpu, machine, &musicpal_binfo);
+ void build_processor_hierarchy(GArray *tbl, uint32_t flags,
 -- 
-2.26.2
+2.23.0
 

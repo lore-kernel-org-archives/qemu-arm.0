@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3667353lfb;
-        Mon, 9 Nov 2020 06:17:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwcky2O0StA/xcPasVM9TFpUZRzq5cex7c4dIgQB4urHv4d105oviPZ81B8o+0N4Jf1nys0
-X-Received: by 2002:ab0:7846:: with SMTP id y6mr6517718uaq.16.1604931437686;
-        Mon, 09 Nov 2020 06:17:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604931437; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3667796lfb;
+        Mon, 9 Nov 2020 06:17:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwlWz2qM0OccdSX0EqeRZ2moxouo0uYegfqrOdCuY/xRuKVbqENZr+EQVEh6SDc3H1uBLiQ
+X-Received: by 2002:a37:99c2:: with SMTP id b185mr13752311qke.81.1604931468960;
+        Mon, 09 Nov 2020 06:17:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604931468; cv=none;
         d=google.com; s=arc-20160816;
-        b=P66/8jRWn+ljNSJZR3b7PlBSQrwbGR6lmcNe+r1afReiVW/T0x/7dQcx385cXBUUC6
-         o8X7Wt9Yh10y6hddwpoy2nnQmgHL4oKL3eLv0j+w0QK6MZAItW+xtg7vsZd3wWY0+IwB
-         Is3kJ1Y0KVDPdooet9gArzghI9uDm8bafC2FXKiL4jyu/VlA+Y08VXfhqsgBvlEefKgW
-         wNnLd6ibobVKz36cMSjA1ZQZpRqNjL7Uvnipz4IAeiaA5AeD0UpylMeG/IjIXcjpxxSG
-         6AcZJVq9DQIYV7Gnsm+tIQn4SSIuMV2vAwCfzwYzWMnQb2JQhuFKSmDrwlM5a2DaZ5MH
-         Ib8w==
+        b=BHsQvOKo66lEdKoDRobTZ7wUdrLqEPI6eoCBCn042fjaFd6laUWmuhe7Q5x8dSmIXI
+         l8xrHdrnDu9FgBDcFcmv/ccoCT/CeVL6EQ5Eq+/bJFqlNHVryLaFhSLXLjERFWs5AGxu
+         T9sfYCQBYJTW16+wo4W8jDLwTz5bfo59gNdI93bpRjDZohChHCEdfz2y41ejVtTLB99V
+         kvR0ggb+pwi+FPKiTgs5OK7YF9byRW4Yif6kqaK7p5GP2yMnFUOFJ9ogtKkxiWweF7wL
+         9rn5LJuV5HlM9U+6Ndw8KE/+dBVUoKEAbQYV1CMJCPEkMypAJFfReB0ZxTTSSiP/Gqah
+         n84g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=cC4YoHm9a5sPxq3tqfQC2FuYVgUgE2OmKPL6qEnLqyo=;
-        b=ri6oFe/z8efY11c553d0vRbQuxeyyEZEKd3XcVU4t2mAyaByOcw7mlxplk+ve1P6YH
-         uPNfucDdxBjZQw4ImGjFeuhPaxkaqMUkHjW8TwrdlWBV7fEN5hpynoFRNjL0iGIuF/Ff
-         dmsSsOIrTKH3NuA22gFJhkgFTP83eGFn1enPoEdZjSh95K4K8NznZ6uu72R/kMKEKHtz
-         xAyc7Fr5+FMvbkj+TsFX2VNpkKF8VfL3eiXPalIhMkHnNpqCvKgqh3bhG7uDOON87zKK
-         KzZpMStUIObOwGTsl3baMmr42GJyqb0iJ++ChQcY3tYOdPGrFOggjNSxSq/NhbsQuLxT
-         n+3A==
+        bh=zqv0V1jIw3IH28C+EZkz686UjHKK1RVuZJujV7PA8/w=;
+        b=yoQvSjxY94rCo9hJd18IJ+garmFBBMufoCJ4Sp3hhFGi0gMtp/OvRdlic2/J7uw9lN
+         7IMsy5otAi4dZOhlvL+NOxnxaAnqe83azUVepN0bG6yXfg7YEsGe3vNPb1IuUyqEv2wR
+         tIn7tG1CACXocbNE/ReRrjEtJcJRGEdVwdmocsI0iguctJdmWNOxk0R5OObNT9vZ/Mh+
+         YtnX3eQaDEeyRiuAn3rBGNxIR+S8oRBTSrrqE5F1qLLc/VBsIBLllD7AilptuZUmpzNc
+         i8jmjfxOrGsly0fkIzt9e+4H6ugFovXSrDP/KSeAqq9bsMW36aHqzFeKpiViOIuIa665
+         0hCw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r20si102248uae.89.2020.11.09.06.17.17
+        by mx.google.com with ESMTPS id m11si4836843qvt.126.2020.11.09.06.17.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Nov 2020 06:17:17 -0800 (PST)
+        Mon, 09 Nov 2020 06:17:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54840 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56790 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kc7yu-0001NN-V5
-	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:17:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40466)
+	id 1kc7zQ-0002IE-57
+	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:17:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kc7sj-0003Nj-3N; Mon, 09 Nov 2020 09:10:53 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:60188
+ id 1kc7sN-00036X-Te; Mon, 09 Nov 2020 09:10:32 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:60186
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kc7sf-0002q5-Gb; Mon, 09 Nov 2020 09:10:52 -0500
+ id 1kc7sL-0002oy-57; Mon, 09 Nov 2020 09:10:31 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 5730D6038D;
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 1255060362;
  Mon,  9 Nov 2020 15:10:23 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 10/17] target/arm: add ARMv8.4-SEL2 system registers
-Date: Mon,  9 Nov 2020 16:10:13 +0200
-Message-Id: <20201109141020.27234-10-remi.denis.courmont@huawei.com>
+Subject: [PATCH 09/17] target/arm: add MMU stage 1 for Secure EL2
+Date: Mon,  9 Nov 2020 16:10:12 +0200
+Message-Id: <20201109141020.27234-9-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <5554493.MhkbZ0Pkbq@basile.remlab.net>
 References: <5554493.MhkbZ0Pkbq@basile.remlab.net>
@@ -86,74 +86,429 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gm3GOVorL6or
+X-TUID: 1qtrOt29GzeL
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
+This adds the MMU indices for EL2 stage 1 in secure mode.
+
+To keep code contained, which is largelly identical between secure and
+non-secure modes, the MMU indices are reassigned. The new assignments
+provide a systematic pattern with a non-secure bit.
+
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 ---
- target/arm/cpu.h    |  2 ++
- target/arm/helper.c | 24 ++++++++++++++++++++++++
- 2 files changed, 26 insertions(+)
+ target/arm/cpu-param.h     |   2 +-
+ target/arm/cpu.h           |  37 +++++++----
+ target/arm/helper.c        | 127 ++++++++++++++++++++++++-------------
+ target/arm/internals.h     |  12 ++++
+ target/arm/translate-a64.c |   4 ++
+ 5 files changed, 124 insertions(+), 58 deletions(-)
 
+diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
+index 6321385b46..00e7d9e937 100644
+--- a/target/arm/cpu-param.h
++++ b/target/arm/cpu-param.h
+@@ -29,6 +29,6 @@
+ # define TARGET_PAGE_BITS_MIN  10
+ #endif
+ 
+-#define NB_MMU_MODES 11
++#define NB_MMU_MODES 15
+ 
+ #endif
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c7f17fc099..7a03869d26 100644
+index a74055df22..c7f17fc099 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -323,9 +323,11 @@ typedef struct CPUARMState {
-             uint64_t ttbr1_el[4];
-         };
-         uint64_t vttbr_el2; /* Virtualization Translation Table Base.  */
-+        uint64_t vsttbr_el2; /* Secure Virtualization Translation Table. */
-         /* MMU translation table base control. */
-         TCR tcr_el[4];
-         TCR vtcr_el2; /* Virtualization Translation Control.  */
-+        TCR vstcr_el2; /* Secure Virtualization Translation Control. */
-         uint32_t c2_data; /* MPU data cacheable bits.  */
-         uint32_t c2_insn; /* MPU instruction cacheable bits.  */
-         union { /* MMU domain access control register
+@@ -2946,6 +2946,9 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
+ #define ARM_MMU_IDX_NOTLB 0x20  /* does not have a TLB */
+ #define ARM_MMU_IDX_M     0x40  /* M profile */
+ 
++/* Meanings of the bits for A profile mmu idx values */
++#define ARM_MMU_IDX_A_NS     0x8
++
+ /* Meanings of the bits for M profile mmu idx values */
+ #define ARM_MMU_IDX_M_PRIV   0x1
+ #define ARM_MMU_IDX_M_NEGPRI 0x2
+@@ -2959,20 +2962,22 @@ typedef enum ARMMMUIdx {
+     /*
+      * A-profile.
+      */
+-    ARMMMUIdx_E10_0      =  0 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E20_0      =  1 | ARM_MMU_IDX_A,
+-
+-    ARMMMUIdx_E10_1      =  2 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E10_1_PAN  =  3 | ARM_MMU_IDX_A,
+-
+-    ARMMMUIdx_E2         =  4 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E20_2      =  5 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_E20_2_PAN  =  6 | ARM_MMU_IDX_A,
+-
+-    ARMMMUIdx_SE10_0     = 7 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_SE10_1     = 8 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_SE10_1_PAN = 9 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_SE3        = 10 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE10_0     =  0 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE20_0     =  1 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE10_1     =  2 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE20_2     =  3 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE10_1_PAN =  4 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE20_2_PAN =  5 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE2        =  6 | ARM_MMU_IDX_A,
++    ARMMMUIdx_SE3        =  7 | ARM_MMU_IDX_A,
++
++    ARMMMUIdx_E10_0     = ARMMMUIdx_SE10_0 | ARM_MMU_IDX_A_NS,
++    ARMMMUIdx_E20_0     = ARMMMUIdx_SE20_0 | ARM_MMU_IDX_A_NS,
++    ARMMMUIdx_E10_1     = ARMMMUIdx_SE10_1 | ARM_MMU_IDX_A_NS,
++    ARMMMUIdx_E20_2     = ARMMMUIdx_SE20_2 | ARM_MMU_IDX_A_NS,
++    ARMMMUIdx_E10_1_PAN = ARMMMUIdx_SE10_1_PAN | ARM_MMU_IDX_A_NS,
++    ARMMMUIdx_E20_2_PAN = ARMMMUIdx_SE20_2_PAN | ARM_MMU_IDX_A_NS,
++    ARMMMUIdx_E2        = ARMMMUIdx_SE2 | ARM_MMU_IDX_A_NS,
+ 
+     /*
+      * These are not allocated TLBs and are used only for AT system
+@@ -3019,8 +3024,12 @@ typedef enum ARMMMUIdxBit {
+     TO_CORE_BIT(E20_2),
+     TO_CORE_BIT(E20_2_PAN),
+     TO_CORE_BIT(SE10_0),
++    TO_CORE_BIT(SE20_0),
+     TO_CORE_BIT(SE10_1),
++    TO_CORE_BIT(SE20_2),
+     TO_CORE_BIT(SE10_1_PAN),
++    TO_CORE_BIT(SE20_2_PAN),
++    TO_CORE_BIT(SE2),
+     TO_CORE_BIT(SE3),
+ 
+     TO_CORE_BIT(MUser),
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 3df007a5dc..2263715ba4 100644
+index 14eb0b4719..3df007a5dc 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -5721,6 +5721,27 @@ static const ARMCPRegInfo el2_v8_cp_reginfo[] = {
-     REGINFO_SENTINEL
- };
- 
-+static CPAccessResult sel2_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  bool isread)
-+{
-+    if (arm_current_el(env) == 3 || arm_is_secure_below_el3(env)) {
-+        return CP_ACCESS_OK;
-+    }
-+    return CP_ACCESS_TRAP_UNCATEGORIZED;
-+}
+@@ -2861,6 +2861,9 @@ static int gt_phys_redir_timeridx(CPUARMState *env)
+     case ARMMMUIdx_E20_0:
+     case ARMMMUIdx_E20_2:
+     case ARMMMUIdx_E20_2_PAN:
++    case ARMMMUIdx_SE20_0:
++    case ARMMMUIdx_SE20_2:
++    case ARMMMUIdx_SE20_2_PAN:
+         return GTIMER_HYP;
+     default:
+         return GTIMER_PHYS;
+@@ -2873,6 +2876,9 @@ static int gt_virt_redir_timeridx(CPUARMState *env)
+     case ARMMMUIdx_E20_0:
+     case ARMMMUIdx_E20_2:
+     case ARMMMUIdx_E20_2_PAN:
++    case ARMMMUIdx_SE20_0:
++    case ARMMMUIdx_SE20_2:
++    case ARMMMUIdx_SE20_2_PAN:
+         return GTIMER_HYPVIRT;
+     default:
+         return GTIMER_VIRT;
+@@ -3576,7 +3582,7 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+             mmu_idx = ARMMMUIdx_SE3;
+             break;
+         case 2:
+-            g_assert(!secure);  /* TODO: ARMv8.4-SecEL2 */
++            g_assert(!secure);  /* ARMv8.4-SecEL2 is 64-bit only */
+             /* fall through */
+         case 1:
+             if (ri->crm == 9 && (env->uncached_cpsr & CPSR_PAN)) {
+@@ -3672,7 +3678,7 @@ static void ats_write64(CPUARMState *env, const ARMCPRegInfo *ri,
+             }
+             break;
+         case 4: /* AT S1E2R, AT S1E2W */
+-            mmu_idx = ARMMMUIdx_E2;
++            mmu_idx = secure ? ARMMMUIdx_SE2 : ARMMMUIdx_E2;
+             break;
+         case 6: /* AT S1E3R, AT S1E3W */
+             mmu_idx = ARMMMUIdx_SE3;
+@@ -3987,10 +3993,15 @@ static void vmsa_tcr_ttbr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      */
+     if (extract64(raw_read(env, ri) ^ value, 48, 16) &&
+         (arm_hcr_el2_eff(env) & HCR_E2H)) {
+-        tlb_flush_by_mmuidx(env_cpu(env),
+-                            ARMMMUIdxBit_E20_2 |
+-                            ARMMMUIdxBit_E20_2_PAN |
+-                            ARMMMUIdxBit_E20_0);
++        uint16_t mask = ARMMMUIdxBit_E20_2 |
++                        ARMMMUIdxBit_E20_2_PAN |
++                        ARMMMUIdxBit_E20_0;
 +
-+static const ARMCPRegInfo el2_sec_cp_reginfo[] = {
-+    { .name = "VSTTBR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 6, .opc2 = 0,
-+      .access = PL2_RW, .accessfn = sel2_access,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vsttbr_el2) },
-+    { .name = "VSTCR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 6, .opc2 = 2,
-+      .access = PL2_RW, .accessfn = sel2_access,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vstcr_el2) },
-+    REGINFO_SENTINEL
-+};
-+
- static CPAccessResult nsacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
- {
-@@ -7733,6 +7754,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         if (arm_feature(env, ARM_FEATURE_V8)) {
-             define_arm_cp_regs(cpu, el2_v8_cp_reginfo);
-         }
-+        if (cpu_isar_feature(aa64_sel2, cpu)) {
-+            define_arm_cp_regs(cpu, el2_sec_cp_reginfo);
++        if (arm_is_secure_below_el3(env)) {
++            mask >>= ARM_MMU_IDX_A_NS;
 +        }
-         /* RVBAR_EL2 is only implemented if EL2 is the highest EL */
-         if (!arm_feature(env, ARM_FEATURE_EL3)) {
-             ARMCPRegInfo rvbar = {
++
++        tlb_flush_by_mmuidx(env_cpu(env), mask);
+     }
+     raw_write(env, ri, value);
+ }
+@@ -4441,9 +4452,15 @@ static int vae1_tlbmask(CPUARMState *env)
+     uint64_t hcr = arm_hcr_el2_eff(env);
+ 
+     if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
+-        return ARMMMUIdxBit_E20_2 |
+-               ARMMMUIdxBit_E20_2_PAN |
+-               ARMMMUIdxBit_E20_0;
++        uint16_t mask = ARMMMUIdxBit_E20_2 |
++                        ARMMMUIdxBit_E20_2_PAN |
++                        ARMMMUIdxBit_E20_0;
++
++        if (arm_is_secure_below_el3(env)) {
++            mask >>= ARM_MMU_IDX_A_NS;
++        }
++
++        return mask;
+     } else if (arm_is_secure_below_el3(env)) {
+         return ARMMMUIdxBit_SE10_1 |
+                ARMMMUIdxBit_SE10_1_PAN |
+@@ -4468,17 +4485,20 @@ static int tlbbits_for_regime(CPUARMState *env, ARMMMUIdx mmu_idx,
+ 
+ static int vae1_tlbbits(CPUARMState *env, uint64_t addr)
+ {
++    uint64_t hcr = arm_hcr_el2_eff(env);
+     ARMMMUIdx mmu_idx;
+ 
+     /* Only the regime of the mmu_idx below is significant. */
+-    if (arm_is_secure_below_el3(env)) {
+-        mmu_idx = ARMMMUIdx_SE10_0;
+-    } else if ((env->cp15.hcr_el2 & (HCR_E2H | HCR_TGE))
+-               == (HCR_E2H | HCR_TGE)) {
++    if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
+         mmu_idx = ARMMMUIdx_E20_0;
+     } else {
+         mmu_idx = ARMMMUIdx_E10_0;
+     }
++
++    if (arm_is_secure_below_el3(env)) {
++        mmu_idx &= ~ARM_MMU_IDX_A_NS;
++    }
++
+     return tlbbits_for_regime(env, mmu_idx, addr);
+ }
+ 
+@@ -4524,11 +4544,17 @@ static int alle1_tlbmask(CPUARMState *env)
+ 
+ static int e2_tlbmask(CPUARMState *env)
+ {
+-    /* TODO: ARMv8.4-SecEL2 */
+-    return ARMMMUIdxBit_E20_0 |
+-           ARMMMUIdxBit_E20_2 |
+-           ARMMMUIdxBit_E20_2_PAN |
+-           ARMMMUIdxBit_E2;
++    if (arm_is_secure_below_el3(env)) {
++        return ARMMMUIdxBit_SE20_0 |
++               ARMMMUIdxBit_SE20_2 |
++               ARMMMUIdxBit_SE20_2_PAN |
++               ARMMMUIdxBit_SE2;
++    } else {
++        return ARMMMUIdxBit_E20_0 |
++               ARMMMUIdxBit_E20_2 |
++               ARMMMUIdxBit_E20_2_PAN |
++               ARMMMUIdxBit_E2;
++    }
+ }
+ 
+ static void tlbi_aa64_alle1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -4648,10 +4674,12 @@ static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ {
+     CPUState *cs = env_cpu(env);
+     uint64_t pageaddr = sextract64(value << 12, 0, 56);
+-    int bits = tlbbits_for_regime(env, ARMMMUIdx_E2, pageaddr);
++    bool secure = arm_is_secure_below_el3(env);
++    int mask = secure ? ARMMMUIdxBit_SE2 : ARMMMUIdxBit_E2;
++    int bits = tlbbits_for_regime(env, secure ? ARMMMUIdx_E2 : ARMMMUIdx_SE2,
++                                  pageaddr);
+ 
+-    tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
+-                                                  ARMMMUIdxBit_E2, bits);
++    tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr, mask, bits);
+ }
+ 
+ static void tlbi_aa64_vae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -9957,7 +9985,8 @@ uint64_t arm_sctlr(CPUARMState *env, int el)
+     /* Only EL0 needs to be adjusted for EL1&0 or EL2&0. */
+     if (el == 0) {
+         ARMMMUIdx mmu_idx = arm_mmu_idx_el(env, 0);
+-        el = (mmu_idx == ARMMMUIdx_E20_0 ? 2 : 1);
++        el = (mmu_idx == ARMMMUIdx_E20_0 || mmu_idx == ARMMMUIdx_SE20_0)
++             ? 2 : 1;
+     }
+     return env->cp15.sctlr_el[el];
+ }
+@@ -10086,6 +10115,7 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+     switch (mmu_idx) {
+     case ARMMMUIdx_SE10_0:
+     case ARMMMUIdx_E20_0:
++    case ARMMMUIdx_SE20_0:
+     case ARMMMUIdx_Stage1_E0:
+     case ARMMMUIdx_MUser:
+     case ARMMMUIdx_MSUser:
+@@ -12663,6 +12693,7 @@ int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_E10_0:
+     case ARMMMUIdx_E20_0:
+     case ARMMMUIdx_SE10_0:
++    case ARMMMUIdx_SE20_0:
+         return 0;
+     case ARMMMUIdx_E10_1:
+     case ARMMMUIdx_E10_1_PAN:
+@@ -12672,6 +12703,9 @@ int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_E2:
+     case ARMMMUIdx_E20_2:
+     case ARMMMUIdx_E20_2_PAN:
++    case ARMMMUIdx_SE2:
++    case ARMMMUIdx_SE20_2:
++    case ARMMMUIdx_SE20_2_PAN:
+         return 2;
+     case ARMMMUIdx_SE3:
+         return 3;
+@@ -12689,6 +12723,9 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+ 
+ ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el)
+ {
++    ARMMMUIdx idx;
++    uint64_t hcr;
++
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         return arm_v7m_mmu_idx_for_secstate(env, env->v7m.secure);
+     }
+@@ -12696,40 +12733,43 @@ ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el)
+     /* See ARM pseudo-function ELIsInHost.  */
+     switch (el) {
+     case 0:
+-        if (arm_is_secure_below_el3(env)) {
+-            return ARMMMUIdx_SE10_0;
+-        }
+-        if ((env->cp15.hcr_el2 & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)
+-            && arm_el_is_aa64(env, 2)) {
+-            return ARMMMUIdx_E20_0;
++        hcr = arm_hcr_el2_eff(env);
++        if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
++            idx = ARMMMUIdx_E20_0;
++        } else {
++            idx = ARMMMUIdx_E10_0;
+         }
+-        return ARMMMUIdx_E10_0;
++        break;
+     case 1:
+-        if (arm_is_secure_below_el3(env)) {
+-            if (env->pstate & PSTATE_PAN) {
+-                return ARMMMUIdx_SE10_1_PAN;
+-            }
+-            return ARMMMUIdx_SE10_1;
+-        }
+         if (env->pstate & PSTATE_PAN) {
+-            return ARMMMUIdx_E10_1_PAN;
++            idx = ARMMMUIdx_E10_1_PAN;
++        } else {
++            idx = ARMMMUIdx_E10_1;
+         }
+-        return ARMMMUIdx_E10_1;
++        break;
+     case 2:
+-        /* TODO: ARMv8.4-SecEL2 */
+         /* Note that TGE does not apply at EL2.  */
+-        if ((env->cp15.hcr_el2 & HCR_E2H) && arm_el_is_aa64(env, 2)) {
++        if (arm_hcr_el2_eff(env) & HCR_E2H) {
+             if (env->pstate & PSTATE_PAN) {
+-                return ARMMMUIdx_E20_2_PAN;
++                idx = ARMMMUIdx_E20_2_PAN;
++            } else {
++                idx = ARMMMUIdx_E20_2;
+             }
+-            return ARMMMUIdx_E20_2;
++        } else {
++            idx = ARMMMUIdx_E2;
+         }
+-        return ARMMMUIdx_E2;
++        break;
+     case 3:
+         return ARMMMUIdx_SE3;
+     default:
+         g_assert_not_reached();
+     }
++
++    if (arm_is_secure_below_el3(env)) {
++        idx &= ~ARM_MMU_IDX_A_NS;
++    }
++
++    return idx;
+ }
+ 
+ ARMMMUIdx arm_mmu_idx(CPUARMState *env)
+@@ -12894,7 +12934,8 @@ static uint32_t rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+             break;
+         case ARMMMUIdx_E20_2:
+         case ARMMMUIdx_E20_2_PAN:
+-            /* TODO: ARMv8.4-SecEL2 */
++        case ARMMMUIdx_SE20_2:
++        case ARMMMUIdx_SE20_2_PAN:
+             /*
+              * Note that EL20_2 is gated by HCR_EL2.E2H == 1, but EL20_0 is
+              * gated by HCR_EL2.<E2H,TGE> == '11', and so is LDTR.
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 4e4798574b..ec6d6dd733 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -860,6 +860,9 @@ static inline bool regime_has_2_ranges(ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_SE10_0:
+     case ARMMMUIdx_SE10_1:
+     case ARMMMUIdx_SE10_1_PAN:
++    case ARMMMUIdx_SE20_0:
++    case ARMMMUIdx_SE20_2:
++    case ARMMMUIdx_SE20_2_PAN:
+         return true;
+     default:
+         return false;
+@@ -890,6 +893,10 @@ static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_SE10_0:
+     case ARMMMUIdx_SE10_1:
+     case ARMMMUIdx_SE10_1_PAN:
++    case ARMMMUIdx_SE20_0:
++    case ARMMMUIdx_SE20_2:
++    case ARMMMUIdx_SE20_2_PAN:
++    case ARMMMUIdx_SE2:
+     case ARMMMUIdx_MSPrivNegPri:
+     case ARMMMUIdx_MSUserNegPri:
+     case ARMMMUIdx_MSPriv:
+@@ -907,6 +914,7 @@ static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_E10_1_PAN:
+     case ARMMMUIdx_E20_2_PAN:
+     case ARMMMUIdx_SE10_1_PAN:
++    case ARMMMUIdx_SE20_2_PAN:
+         return true;
+     default:
+         return false;
+@@ -917,10 +925,14 @@ static inline bool regime_is_pan(CPUARMState *env, ARMMMUIdx mmu_idx)
+ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+     switch (mmu_idx) {
++    case ARMMMUIdx_SE20_0:
++    case ARMMMUIdx_SE20_2:
++    case ARMMMUIdx_SE20_2_PAN:
+     case ARMMMUIdx_E20_0:
+     case ARMMMUIdx_E20_2:
+     case ARMMMUIdx_E20_2_PAN:
+     case ARMMMUIdx_Stage2:
++    case ARMMMUIdx_SE2:
+     case ARMMMUIdx_E2:
+         return 2;
+     case ARMMMUIdx_SE3:
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 072754fa24..ca820e8ecd 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -118,6 +118,10 @@ static int get_a64_user_mem_index(DisasContext *s)
+         case ARMMMUIdx_SE10_1_PAN:
+             useridx = ARMMMUIdx_SE10_0;
+             break;
++        case ARMMMUIdx_SE20_2:
++        case ARMMMUIdx_SE20_2_PAN:
++            useridx = ARMMMUIdx_SE20_0;
++            break;
+         default:
+             g_assert_not_reached();
+         }
 -- 
 2.29.2
 

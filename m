@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3670056lfb;
-        Mon, 9 Nov 2020 06:20:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxLC5HyXEdgexIsVTeLGUJO1mTY4hlzjvT1zspig2N3tpw2ZNJ29Iwbide4ZrvoWjNIIzxL
-X-Received: by 2002:a25:58c5:: with SMTP id m188mr19669033ybb.91.1604931623068;
-        Mon, 09 Nov 2020 06:20:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604931623; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3670220lfb;
+        Mon, 9 Nov 2020 06:20:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzEL33Rxkvc3i7mxcARkLlwOfzo5huBb6dbjo8Gzb5qno1SKEMoMFjms6dS3IGv0nU4gXr5
+X-Received: by 2002:a25:bf82:: with SMTP id l2mr17971322ybk.1.1604931635356;
+        Mon, 09 Nov 2020 06:20:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604931635; cv=none;
         d=google.com; s=arc-20160816;
-        b=02RId9FUNxtzZM4APG64GeItjX4V1qzl/WVEB7jJM5N4FAV6oX8M4+BHnIoSwv+QxE
-         qLAJkTUUgHr3SEfFDjRU2dHdrPw4Y2fRhlwIU6W00layr8b+pubF4MQd/XiceCz04JEk
-         kdCwooT5hpinLyYwfKrbpCp5/P3dbhiQttQGRCjWDlIb8EmX9p4PmwKg9PcYRLDsg40R
-         FbXkB0vdzOjkAi5n7n0urb77XEElqZvYj5u+RRSWvs+vBv/cn69v8qkLfJ0m0UHYdEPk
-         yKZJLEy05pBs3yYEFJZTvJhL6bWoNGpeGltF2oXeHfVreDzwWiIPtSC9MNuxkHE7Zk6L
-         o9bw==
+        b=Q95Zs3S/h6bb7+NwgdKURJ5jnTwYeJYOJM2+cE0wufxM/6foM5DMk0HU6Axk/lmjmW
+         mZ7NXFdZjk/CvpnTCKuruUPqgV1ABi3Wl2Moq8YL6JirKLCJ5HgYrJCtXKht1D8HltDx
+         luw+4VPeKKWSvHNLIak9i9E0kT2qqx2iAJ90Y96M9Niozgq6QyC0y6wtJ00U2wNxcjQE
+         h/HqZSSky/cHnSdOEP24/ZwnJzetY5HxjanKx7ih0T0NuF2HF5aoDHIBeJeCiAXuV2Tq
+         JrfcA3zpPWRhzSqhHMapR6btgz7N8N/dRFnYxhu+eDAgvJkxKc0PhTC1VbyxVFkykkyB
+         4/7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=wei1pFOYUse7Tl6YgTvckveLm78hX/DTxJhMZhT1FOo=;
-        b=x1d5uZa/n2IKW22UrUb1qvBLUuG88Evo7IkrJ8y1pyn5g/dZBe4OJt3/f9m8DpadCD
-         zZaQ6wfwRMCKS/Bw8BmfPGXqIFro+bKXP4w7Ug09sCGISdgLC85QNcMmQQxKdK9RDq5d
-         44JE+B11W44e0dA8ZTjz1QnH8Oy7EtnNW8xirr/tcuj0xDNGuk62A1H0xaNFUAIdBgX5
-         5cOoBrmM8MfkBQkOmAXImlWVdoHpcBqm+WKbdGItOV0uPj49r9NjrW938lJNesUcv5ju
-         xF1Au4UYk0KyffE1x2N/02MTDbJcSssZSOPlj9CYL+B3sf3Tt7usLNCLnJnppytDaDWo
-         y2BQ==
+        bh=u6yTHDOK5qJzKEdygnpMTZuxtAmC04kNzHqborQv8aU=;
+        b=RftsNsxX0xzAYQ7i/wt5d5eIsbFhLWBrFkgMAmeiU+GYFNvL0K/nKpyyM352b7WfNl
+         7FNlHzKaqLO4Q1wdL8gf75eqIy70ha+TNI3CXOD8DoYgiamM0dF/kPDX8xGu54sIydbx
+         i7vOSmyVbRl7AwXQEtIifMadCrSDn6NB4bFPe6ncU6Eq8HwHodZHrS/D+hUF2/nkmBtO
+         2FlvCE4Nd/NnFj9ukRWoWCo+iYLEewlmHzgbAh/i4WAqD/MMS0Uz4blP0WBDmeDPHggT
+         em0+dGtKhDALD4dRUL5iZk2Wb6/f4DooxmouDdqpPle+BON5H7Kxm5FM4A0OV1HVdAV5
+         yTfg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h137si10710382ybg.295.2020.11.09.06.20.22
+        by mx.google.com with ESMTPS id c17si8154405ybf.277.2020.11.09.06.20.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Nov 2020 06:20:23 -0800 (PST)
+        Mon, 09 Nov 2020 06:20:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37484 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kc81u-0006DK-Bc
-	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:20:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40468)
+	id 1kc826-0006eX-Kz
+	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:20:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kc7sj-0003Nl-3X; Mon, 09 Nov 2020 09:10:53 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:60194
+ id 1kc7sj-0003Q1-Ua; Mon, 09 Nov 2020 09:10:53 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:60180
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kc7sf-0002qP-HY; Mon, 09 Nov 2020 09:10:52 -0500
+ id 1kc7sh-0002nS-11; Mon, 09 Nov 2020 09:10:53 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 2193A605A6;
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id D32A560640;
  Mon,  9 Nov 2020 15:10:24 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 13/17] target/arm: handle VMID change in secure state
-Date: Mon,  9 Nov 2020 16:10:16 +0200
-Message-Id: <20201109141020.27234-13-remi.denis.courmont@huawei.com>
+Subject: [PATCH 16/17] target/arm: enable Secure EL2 in max CPU
+Date: Mon,  9 Nov 2020 16:10:19 +0200
+Message-Id: <20201109141020.27234-16-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <5554493.MhkbZ0Pkbq@basile.remlab.net>
 References: <5554493.MhkbZ0Pkbq@basile.remlab.net>
@@ -86,42 +86,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /BnMlYEJyUZP
+X-TUID: L1kPMC/jj/EG
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-The VTTBR write callback so far assumes that the underlying VM lies in
-non-secure state. This handles the secure state scenario.
-
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ target/arm/cpu64.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index aae22847bb..314366a71f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4018,10 +4018,15 @@ static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      * the combined stage 1&2 tlbs (EL10_1 and EL10_0).
-      */
-     if (raw_read(env, ri) != value) {
--        tlb_flush_by_mmuidx(cs,
--                            ARMMMUIdxBit_E10_1 |
--                            ARMMMUIdxBit_E10_1_PAN |
--                            ARMMMUIdxBit_E10_0);
-+        uint16_t mask = ARMMMUIdxBit_E10_1 |
-+                        ARMMMUIdxBit_E10_1_PAN |
-+                        ARMMMUIdxBit_E10_0;
-+
-+        if (arm_is_secure_below_el3(env)) {
-+            mask >>= ARM_MMU_IDX_A_NS;
-+        }
-+
-+        tlb_flush_by_mmuidx(cs, mask);
-         raw_write(env, ri, value);
-     }
- }
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 649213082f..8c3749268e 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -641,6 +641,7 @@ static void aarch64_max_initfn(Object *obj)
+         t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+         t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);
+         t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);
++        t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);
+         cpu->isar.id_aa64pfr0 = t;
+ 
+         t = cpu->isar.id_aa64pfr1;
 -- 
 2.29.2
 

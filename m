@@ -1,157 +1,164 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3663277lfb;
-        Mon, 9 Nov 2020 06:12:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz6g/JY8lZLyIXyACE2cLsKCJMAxd5iyS8KACk1Lm6eGCZKIQJcuolqazEacRVdAYDRhp2f
-X-Received: by 2002:a25:5c85:: with SMTP id q127mr19177616ybb.413.1604931152961;
-        Mon, 09 Nov 2020 06:12:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604931152; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3697212lfb;
+        Mon, 9 Nov 2020 06:53:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwm2e55Yx9d2eSHjfvcImSuWCwXKhLNmTBWTAolTzA0XwGIFx+tBTujCN5LEsUH4uCdbS8Q
+X-Received: by 2002:a25:320a:: with SMTP id y10mr7460280yby.482.1604933624136;
+        Mon, 09 Nov 2020 06:53:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604933624; cv=none;
         d=google.com; s=arc-20160816;
-        b=J5yvg7+D5tXiPSSYEUUFNBaP5XYDJwiJjPl+xkU45f7FrH0MACoKbJnoy/T2zAGzpV
-         WlAq5cdrBv5aCLsj6799m1iWac0BdDnIL0F19r7IIbUooZHfofBAUNnBYAonDocXH4Pu
-         oK5zW0meINlLqxsNhDaUpnW/gqi+D0fJvyjdT5Cs6JhcSXgDQFS+2EhuTOjr2n7bJyGn
-         Rg5qkn7teGiHjzgyXSgbvUdKKOxo+dIeM4iim5OxXMZC79l0RTzXkcqsDSxB5aFcPccb
-         L5emi51Rzi74hSXz2o4WvpZJzi5LMHYgxjyP2IyH23AleizGNVSwsBWGOwxHLqqK2np5
-         z0mQ==
+        b=nDCKjGll0B11lIGHDwbksS0lPiDxRLR09LtFhGhNKqxcl4dmaAfe17BZ3WuSapxPoX
+         56oArDxFZlAEQYjTNdfFwCSqhGWyj0SpTJMTS26FqOmVLZZupvNuitydewB+uuBh77RI
+         IjiH93I2FPfAQOyuutJog8Ti+7y3ZuD/YI5Itdp6BP9oWh2k/JLn35cNDMXgX8f6cl2r
+         cJw2lCGvpq5XSXFOabuhwApMRnpUVzrnL5VyXYU3IQVoYtOP1GW4QZ/eHeIeAh6xovUj
+         O14hotUT1Rt5rmwSevTQq6oVKc4ufH1v5XWs0Yw2oLHNizY6RwDCRen711iCIDiMSAg3
+         IUzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=ZYpuOkoCvpDtVvarjcu8t5f2QXAwB4ptrDyuKEvcaoo=;
-        b=OhjEU6eRfWncXdu3KFdYrHRhOPkc2uMqIrCFjZ8vgi2bECR1RreJfQzfx2g/s0tnd+
-         7x/EPu95p2iAW5DAaTm3BO5KhWCRQDSN5IT5zwUdDtXshPiuDMlf/dn4nIWriRK452SB
-         AQprgborqlqkojh8Dt/NtwJ1laeIBQ+zAR2wmcZSIGr6FLJXJVV1syZC+TyIPq3kTOaG
-         eduHbs+UehbpeaB+tZDnnrVGfZ1wTWE+hVCbPvNZMxrY5Wee+ParKNV8x467LGTExq5N
-         clVvwlOuNuPdu+KF1ANEsABnROVXPZ9s/8NEdeOwWSNJGSDKBN2daGc6MxCfdYCYx/0d
-         hSvQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=NJhGAXP2h9Fo3Qoy3VCI1hDmptB3uQvjfcrEm2GQu4o=;
+        b=T5TCgiL+iIaw3jUvb+ke+5DeMbkSX4Wq9J11609uJtXR2M9onaik76ULYwiNDkZH6g
+         bcC2g/woyE8XxBCRyBas+tVEzPgkqGT0J/jFJvfs1dnadVlvExHVTqZmBbETT6PayST1
+         E/3neY0lAOKjSkrH1L/F4f+R5NGP+uyzw5TKTzwdVcch2zWAHbnwbZaKYOh7wp6J3Orx
+         7O9S8RQ/efVXjnVB29YPPq5/5C0jksTxcYkIqFFzuzC0aik+rsNJBNuU39EflD3j2S7C
+         hjnWCn3BFCBZHiXfgVDJUXlpzmJBgFAQ64HnpUj507FTyi4gr6canto4iprQ5CCZ+Vwy
+         F0EQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="XDlih/Yv";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t14si8804508ybl.458.2020.11.09.06.12.32
+        by mx.google.com with ESMTPS id c127si10764970yba.167.2020.11.09.06.53.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Nov 2020 06:12:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Nov 2020 06:53:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43300 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="XDlih/Yv";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kc7uK-0004dd-AC
-	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:12:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40272)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kc8YB-0005KN-Hd
+	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:53:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kc7sJ-00031Q-UD; Mon, 09 Nov 2020 09:10:27 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:60170
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1kc7sG-0002kf-7I; Mon, 09 Nov 2020 09:10:27 -0500
-Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id D69B35FAAA;
- Mon,  9 Nov 2020 15:10:20 +0100 (CET)
-From: remi.denis.courmont@huawei.com
-To: qemu-arm@nongnu.org
-Subject: [PATCH 01/17] target/arm: remove redundant tests
-Date: Mon,  9 Nov 2020 16:10:04 +0200
-Message-Id: <20201109141020.27234-1-remi.denis.courmont@huawei.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <5554493.MhkbZ0Pkbq@basile.remlab.net>
-References: <5554493.MhkbZ0Pkbq@basile.remlab.net>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kc8Y2-0005I6-3D
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2020 09:53:34 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51151)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kc8Y0-0000Pu-2c
+ for qemu-arm@nongnu.org; Mon, 09 Nov 2020 09:53:33 -0500
+Received: by mail-wm1-x343.google.com with SMTP id h2so8239131wmm.0
+ for <qemu-arm@nongnu.org>; Mon, 09 Nov 2020 06:53:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NJhGAXP2h9Fo3Qoy3VCI1hDmptB3uQvjfcrEm2GQu4o=;
+ b=XDlih/YvQ9EueJITn32CczHFH4OAP45WdvFAB4JnWAjPpMnt8gRhRPwuSIIxmqE8Nw
+ R8yktxVg8dRs7Vc12DtWr9kIJjmRM6esQzlqzlPxw/S2v64QgVkk7UEF4hDmXRWqbkaf
+ LQj4PAt/EHpu92SzoPYO60TR1h2ZI0n90Np8sU/BfSadCq0ucGcxqNXb8hfNYo4tvUNU
+ Azp4heglPGJy1wBKfrruUAIqUzFec5DYdMF4nK/BokvvTZQ5nZPuDZISWdi5CFaJO22H
+ GzvyWaw6dCY/v6BeVhHpiK+TpkJmxB6witCRTjyS/QbChsdPH9Gy+W/4sTE0gxTMoNUm
+ dRPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NJhGAXP2h9Fo3Qoy3VCI1hDmptB3uQvjfcrEm2GQu4o=;
+ b=XXvsb1r4eUoMcI3NnT5GBe1aWWDfwtvsl342+TUb9XL9js5qYmpBWNWY3vhZDD7GCC
+ BC/kcBmqe79Rdfr4BmLcaXG4fuGEGW3qCd1xhj3abRID9xUls32ojIilY34Qyycj2dBR
+ E6Do+jUHPK2PQKI5AZbnrLS2LL8NdnuETrk8prCePTvDqeEO+NjkSD6M+brLaXthu+HB
+ Oyrbeu5v8tseWDcHnm2OWLcob4KXQ/TprFUIDngEbPMI4ANL5jpqVG8Tg/ptmsRMSNx2
+ Dq5+CGtG+a85VSOmk4ACXUOcIRjGlCxESWAPXvNEWXD41Ggo5n5RUQIhzSxaug0cl9nG
+ myXQ==
+X-Gm-Message-State: AOAM5315jIOn0yhbaC6wOTl3HfTTTC6LmQ6xMVUr+Ff+sksjAk3psVMd
+ 11k+rVVxwCwfs4v2Sdc3So9JRun2kw3m8Q==
+X-Received: by 2002:a1c:6a11:: with SMTP id f17mr14501218wmc.24.1604933606840; 
+ Mon, 09 Nov 2020 06:53:26 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id i5sm6827444wrw.45.2020.11.09.06.53.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Nov 2020 06:53:26 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm/translate-neon.c: Handle VTBL UNDEF case before
+ VFP access check
+Date: Mon,  9 Nov 2020 14:53:24 +0000
+Message-Id: <20201109145324.2859-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 08:56:07
-X-ACL-Warn: Detected OS   = ???
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b5ZkWbh4Ogfm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0daRBAoetany
 
-From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+Checks for UNDEF cases should go before the "is VFP enabled?" access
+check, except in special cases. Move a stray UNDEF check in the VTBL
+trans function up above the access check.
 
-In this context, the HCR value is the effective value, and thus is
-zero in secure mode. The tests for HCR.{F,I}MO are sufficient.
-
-Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.c    |  8 ++++----
- target/arm/helper.c | 10 ++++------
- 2 files changed, 8 insertions(+), 10 deletions(-)
+Based-on: 20201105171126.88014-1-richard.henderson@linaro.org
+("target/arm: Fix neon VTBL/VTBX for len > 1")
+---
+ target/arm/translate-neon.c.inc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 07492e9f9a..48b34080ce 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -447,14 +447,14 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
-         break;
- 
-     case EXCP_VFIQ:
--        if (secure || !(hcr_el2 & HCR_FMO) || (hcr_el2 & HCR_TGE)) {
--            /* VFIQs are only taken when hypervized and non-secure.  */
-+        if (!(hcr_el2 & HCR_FMO) || (hcr_el2 & HCR_TGE)) {
-+            /* VFIQs are only taken when hypervized.  */
-             return false;
-         }
-         return !(env->daif & PSTATE_F);
-     case EXCP_VIRQ:
--        if (secure || !(hcr_el2 & HCR_IMO) || (hcr_el2 & HCR_TGE)) {
--            /* VIRQs are only taken when hypervized and non-secure.  */
-+        if (!(hcr_el2 & HCR_IMO) || (hcr_el2 & HCR_TGE)) {
-+            /* VIRQs are only taken when hypervized.  */
-             return false;
-         }
-         return !(env->daif & PSTATE_I);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6854591986..b8b57d3b6b 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2083,13 +2083,11 @@ static void csselr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     CPUState *cs = env_cpu(env);
--    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
-+    bool el1 = arm_current_el(env) == 1;
-+    uint64_t hcr_el2 = el1 ? arm_hcr_el2_eff(env) : 0;
-     uint64_t ret = 0;
--    bool allow_virt = (arm_current_el(env) == 1 &&
--                       (!arm_is_secure_below_el3(env) ||
--                        (env->cp15.scr_el3 & SCR_EEL2)));
- 
--    if (allow_virt && (hcr_el2 & HCR_IMO)) {
-+    if (hcr_el2 & HCR_IMO) {
-         if (cs->interrupt_request & CPU_INTERRUPT_VIRQ) {
-             ret |= CPSR_I;
-         }
-@@ -2099,7 +2097,7 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-         }
+diff --git a/target/arm/translate-neon.c.inc b/target/arm/translate-neon.c.inc
+index 0ae95cb8df8..2403825d15f 100644
+--- a/target/arm/translate-neon.c.inc
++++ b/target/arm/translate-neon.c.inc
+@@ -2874,10 +2874,6 @@ static bool trans_VTBL(DisasContext *s, arg_VTBL *a)
+         return false;
      }
  
--    if (allow_virt && (hcr_el2 & HCR_FMO)) {
-+    if (hcr_el2 & HCR_FMO) {
-         if (cs->interrupt_request & CPU_INTERRUPT_VFIQ) {
-             ret |= CPSR_F;
-         }
+-    if (!vfp_access_check(s)) {
+-        return true;
+-    }
+-
+     if ((a->vn + a->len + 1) > 32) {
+         /*
+          * This is UNPREDICTABLE; we choose to UNDEF to avoid the
+@@ -2886,6 +2882,10 @@ static bool trans_VTBL(DisasContext *s, arg_VTBL *a)
+         return false;
+     }
+ 
++    if (!vfp_access_check(s)) {
++        return true;
++    }
++
+     desc = tcg_const_i32((a->vn << 2) | a->len);
+     def = tcg_temp_new_i64();
+     if (a->op) {
 -- 
-2.29.2
+2.20.1
 

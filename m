@@ -1,63 +1,62 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3261451lfb;
-        Sun, 8 Nov 2020 19:05:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJykjIW9hofDU8QH+SsdPmkC+nEMxioWbmPyaTR5DEedN5KjtWwm+l3/D7R18fcxT+HboLs+
-X-Received: by 2002:a25:b705:: with SMTP id t5mr16695304ybj.381.1604891154416;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3261457lfb;
+        Sun, 8 Nov 2020 19:05:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyv9Fc428XPfEGkI0GChjaoto5doR1LaD70vV/1mVV267clbDEyK2qXF3z1D1N8bt+rKi99
+X-Received: by 2002:a25:60d7:: with SMTP id u206mr15921773ybb.315.1604891154391;
         Sun, 08 Nov 2020 19:05:54 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1604891154; cv=none;
         d=google.com; s=arc-20160816;
-        b=VnW/q40CyTjzsxYRP05bvGMnEF2T5dYAG3kgPuMM/boAl8pzP1C0QC0l/ToERS9ahb
-         ifVdLZ5lqfx26y44ELqL6sQMlgKUm6b5HiDWHGUZmFUw4NjQTFbbFNvVPJW4j0ysF+8D
-         930+QnsMrydechhudbxbVlbJBiTea+lXfyuW8VzaouEScKb9noTyUIup14KtNsdoZw6b
-         lqW7F2C1IIxNi5duJuXDQ/K8nWApO/5ARINbcOoundmAScaMoI3jwvEmq6po47stgPRO
-         CUraq4CLZdosv1HxdgG5LRidzfYbJKijL1an4/w9bQpfIigXeg0KUcttjXDlzok7txWm
-         1xhg==
+        b=cL3xhk9P3rETSxTTL+QP3AjEYn88AqzMuiN88I1bhyA+m/6ZY1Udsm2nnhgp+5Dd1W
+         abFdlyOnNuWIbaofue5fUYPdg9nsAeUxXdgYmDGJ7MEMcjHXBH6TCEJwT+1RcNiipjJx
+         FVrVKgR/NOfC9zCcS4NCG95CG77BDBxlGSVlKDKrO8GRLkRCuudWj6HmPBqRBrpROHWE
+         yV8w+zDaGGJgE1QGpvTOGlzjriBKder2EWj7yAPtsKrOof/xAgEozCro3Xq6YvcNPupa
+         H+Cx0Q0pWaTKPROD7zlyRmEjnORE/yS5LRpKpDrdjtgaIgssITEWJUKP1rp6D1UtTmlU
+         E37Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=U9wBwhS+6kFZP8XgrwLAltJiCKw2UfFF8yxvdzBYmEU=;
-        b=Lg1/aYhoioMKy5t8lQ6iJKBMV3pItbr8fPhMNJmXvPqypyldvUsHfZWEKRral3jUU6
-         D+VeieDVB0MrbBMEFi4p2gDTBC9C7Wy8afpDlQz+wb0ap1RzY7CXqZpoxWUxDrrYFs8u
-         t3ObIjce6xX1+GgUoR5Fxv4KApSvHsXL4KnSOGnLE5YPadKvBm6T5QeAEPomNFKP6tOR
-         NotJB6EStv/RVQxkes8QJP9YEJmeNHXsk1Gq9UYKaF1Ga1nqQhiAMfhoiKM/0Mfm8tgi
-         NlcoacQt7K4ahw4MTO2wHYacW9w8bXnyjrP7LXWQoW3Txz8mKvxN7ENIx4GJa7bBxns/
-         dSOA==
+        bh=tZ9AkKj3MEdRkKm+xN2xAVaUbFPpSbU4/S54aPIZqZY=;
+        b=twqZRyo+xY3rwXIPaxqoB7CH0S8bv4GzfjqeZb4QMgpliHOw0V2/suEd4z6N7NTkBS
+         NbTaVboqi9sjsgEdx1IQGmrrmch/o7Ictd66vwwOoyXeaMi4p1hbZaEET+EAaSIhx1wL
+         b469a5N4qARzH1QonOhHvcxxwoXIV2Z+y4Yt2Nubs/2pxtOYcV/SNOiREEyyVWVf62fK
+         /JxvNn8pWozoidRKQV73/5wwsmT7e0aZeRnKDwnP8NCKCD1CstV1UtHY2wn4q0Ykq9ZF
+         mPpD3OcHlrxByHdJvX9l22TCnN7draf7Dj7E8YCreyzbAlACNrjXyjcwqUr54xTaE0Z0
+         i47Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e131si10064621ybf.129.2020.11.08.19.05.54
+        by mx.google.com with ESMTPS id y1si7782143ybe.249.2020.11.08.19.05.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 08 Nov 2020 19:05:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40686 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kbxVB-0001bU-QT
+	id 1kbxVB-0001b0-Nk
 	for alex.bennee@linaro.org; Sun, 08 Nov 2020 22:05:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44752)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kbxUr-0001aQ-BY; Sun, 08 Nov 2020 22:05:33 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2399)
+ id 1kbxUq-0001aA-Mu; Sun, 08 Nov 2020 22:05:32 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2335)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kbxUn-0006jI-Fq; Sun, 08 Nov 2020 22:05:33 -0500
+ id 1kbxUn-0006eZ-CS; Sun, 08 Nov 2020 22:05:32 -0500
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CTwpm0CzHz15SjP;
- Mon,  9 Nov 2020 11:05:20 +0800 (CST)
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CTwpc2L7Lzkgtd;
+ Mon,  9 Nov 2020 11:05:12 +0800 (CST)
 Received: from localhost (10.174.186.67) by DGGEMS403-HUB.china.huawei.com
  (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Mon, 9 Nov 2020
- 11:05:17 +0800
+ 11:05:13 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <peter.maydell@linaro.org>
-Subject: [RFC PATCH v3 12/13] hw/acpi/aml-build: Build ACPI cpu cache
- hierarchy information
-Date: Mon, 9 Nov 2020 11:04:51 +0800
-Message-ID: <20201109030452.2197-13-fangying1@huawei.com>
+Subject: [RFC PATCH v3 06/13] hw/arm/virt: DT: add cpu-map
+Date: Mon, 9 Nov 2020 11:04:45 +0800
+Message-ID: <20201109030452.2197-7-fangying1@huawei.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 In-Reply-To: <20201109030452.2197-1-fangying1@huawei.com>
 References: <20201109030452.2197-1-fangying1@huawei.com>
@@ -93,88 +92,102 @@ Cc: drjones@redhat.com, zhang.zhanghailiang@huawei.com, qemu-devel@nongnu.org,
  Ying Fang <fangying1@huawei.com>, imammedo@redhat.com, salil.mehta@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OliUYZ7uyPvq
+X-TUID: 1XNmeDJZVlLd
 
-To build cache information, An AcpiCacheInfo structure is defined to
-hold the type 1 cache structure according to ACPI spec v6.3 5.2.29.2.
-A helper function build_cache_hierarchy is also introduced to encode
-the cache information.
+From: Andrew Jones <drjones@redhat.com>
 
+Support devicetree CPU topology descriptions.
+
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Ying Fang <fangying1@huawei.com>
 ---
- hw/acpi/aml-build.c         | 26 ++++++++++++++++++++++++++
- include/hw/acpi/acpi-defs.h |  8 ++++++++
- include/hw/acpi/aml-build.h |  3 +++
- 3 files changed, 37 insertions(+)
+ hw/arm/virt.c         | 40 +++++++++++++++++++++++++++++++++++++++-
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 40 insertions(+), 1 deletion(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index d1aa9fd716..1a38110149 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -1770,6 +1770,32 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms)
-                  table_data->len - slit_start, 1, NULL, NULL);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ff8a14439e..d23b941020 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -351,9 +351,10 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+     int cpu;
+     int addr_cells = 1;
+     const MachineState *ms = MACHINE(vms);
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+ 
+     /*
+-     * From Documentation/devicetree/bindings/arm/cpus.txt
++     * See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+      *  On ARM v8 64-bit systems value should be set to 2,
+      *  that corresponds to the MPIDR_EL1 register size.
+      *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+@@ -407,8 +408,42 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+                 ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+         }
+ 
++        if (ms->smp.cpus > 1 && !vmc->ignore_cpu_topology) {
++            qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
++                                  qemu_fdt_alloc_phandle(vms->fdt));
++        }
++
+         g_free(nodename);
+     }
++
++    if (ms->smp.cpus > 1 && !vmc->ignore_cpu_topology) {
++        /*
++         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
++         */
++        qemu_fdt_add_subnode(vms->fdt, "/cpus/cpu-map");
++
++        for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
++            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
++            char *map_path;
++
++            if (ms->smp.threads > 1) {
++                map_path = g_strdup_printf(
++                            "/cpus/cpu-map/%s%d/%s%d/%s%d",
++                            "cluster", cpu / (ms->smp.cores * ms->smp.threads),
++                            "core", (cpu / ms->smp.threads) % ms->smp.cores,
++                            "thread", cpu % ms->smp.threads);
++            } else {
++                map_path = g_strdup_printf(
++                            "/cpus/cpu-map/%s%d/%s%d",
++                            "cluster", cpu / ms->smp.cores,
++                            "core", cpu % ms->smp.cores);
++            }
++            qemu_fdt_add_path(vms->fdt, map_path);
++            qemu_fdt_setprop_phandle(vms->fdt, map_path, "cpu", cpu_path);
++            g_free(map_path);
++            g_free(cpu_path);
++        }
++    }
  }
  
-+/* ACPI 6.3: 5.29.2 Cache type structure (Type 1) */
-+static void build_cache_head(GArray *tbl, uint32_t next_level)
-+{
-+    build_append_byte(tbl, 1);
-+    build_append_byte(tbl, 24);
-+    build_append_int_noprefix(tbl, 0, 2);
-+    build_append_int_noprefix(tbl, 0x7f, 4);
-+    build_append_int_noprefix(tbl, next_level, 4);
-+}
-+
-+static void build_cache_tail(GArray *tbl, AcpiCacheInfo *cache_info)
-+{
-+    build_append_int_noprefix(tbl, cache_info->size, 4);
-+    build_append_int_noprefix(tbl, cache_info->sets, 4);
-+    build_append_byte(tbl, cache_info->associativity);
-+    build_append_byte(tbl, cache_info->attributes);
-+    build_append_int_noprefix(tbl, cache_info->line_size, 2);
-+}
-+
-+void build_cache_hierarchy(GArray *tbl,
-+              uint32_t next_level, AcpiCacheInfo *cache_info)
-+{
-+    build_cache_head(tbl, next_level);
-+    build_cache_tail(tbl, cache_info);
-+}
-+
- /*
-  * ACPI 6.3: 5.2.29.1 Processor hierarchy node structure (Type 0)
-  */
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index 38a42f409a..3df38ab449 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -618,4 +618,12 @@ struct AcpiIortRC {
- } QEMU_PACKED;
- typedef struct AcpiIortRC AcpiIortRC;
+ static void fdt_add_its_gic_node(VirtMachineState *vms)
+@@ -2672,8 +2707,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 3)
  
-+typedef struct AcpiCacheInfo {
-+    uint32_t size;
-+    uint32_t sets;
-+    uint8_t  associativity;
-+    uint8_t  attributes;
-+    uint16_t line_size;
-+} AcpiCacheInfo;
+ static void virt_machine_5_2_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
 +
- #endif
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index 56474835a7..01078753a8 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -437,6 +437,9 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+     virt_machine_5_3_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
++    vmc->ignore_cpu_topology = true;
+ }
+ DEFINE_VIRT_MACHINE(5, 2)
  
- void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
- 
-+void build_cache_hierarchy(GArray *tbl,
-+              uint32_t next_level, AcpiCacheInfo *cache_info);
-+
- void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
- 
- void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 010f24f580..917bd8b645 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -118,6 +118,7 @@ typedef enum VirtGICType {
+ struct VirtMachineClass {
+     MachineClass parent;
+     bool disallow_affinity_adjustment;
++    bool ignore_cpu_topology;
+     bool no_its;
+     bool no_pmu;
+     bool claim_edge_triggered_timers;
 -- 
 2.23.0
 

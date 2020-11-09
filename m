@@ -1,109 +1,76 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3556552lfb;
-        Mon, 9 Nov 2020 03:58:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzbbVM2N1okolntJhisoIRVUX1XsEN32L48C/BWEovsUOOOOIS0Tu4Ttsu4TGHrww4cilzz
-X-Received: by 2002:a25:ccc7:: with SMTP id l190mr16867982ybf.56.1604923128775;
-        Mon, 09 Nov 2020 03:58:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604923128; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3661787lfb;
+        Mon, 9 Nov 2020 06:10:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzB/zKHtsyf9O8BcgD0D1/y89GVj8AUu5X4zivPGl8ix8Cplf9OFbCFdTLNgUWAWGBWCS8Y
+X-Received: by 2002:a05:6102:2439:: with SMTP id l25mr8209702vsi.44.1604931056598;
+        Mon, 09 Nov 2020 06:10:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604931056; cv=none;
         d=google.com; s=arc-20160816;
-        b=T0ZmHLCRAIpg0rGB+hmCMIGA8nKoORtJvJ7UTDE1caDM73SJEMTikzG2TfIq1J6+ob
-         N5UCsVgKfEUSM5V4UfbaysKOPn7xtYKTWKEjJKLHgv04wb3VHNC4ZjQEzMfPqL18itoU
-         VUuJJQnoGKNUwefr4XmD/yhM0cD9rqb5b8ZG1ZzWf3LEbKlVkKbkXcHK6Txcfv15h5E1
-         a/vmOxdDTGKLIofdazKc9oi63rZlUHcrtOBuHkdeg/BiwvFBortzWbE5PJttTPXGRzQz
-         mP4UlBrumKfpufGqjYmd0j/pxB50WHsSqPO1Zpb7tksjXNeRjAJj9qwLT88Bjzt/eUrD
-         vUsw==
+        b=tYbI/3kLotVlhS5ptSxEWQ2Q5uR3djPrd2zEShvZKJWSEekEIvrl8pxyRce83+rcK2
+         O7hjk/FGpFXhu9UtY1Xk2G9oAb5uTPz/WCe/+YGWCsqjHMwN3UhiQvSO2HBmX9ZVaWCV
+         wfB7pVo5KxzBGEdgY6pSkPE0nI+I9ARIrNUXueTIC4qONapRBB01cjUuJwhCYftwiVBh
+         +CatoJX3lAoeCfH6h0jwWcR6VmIQ3fIcM3Zcvz8DFItPmksTMSfTyZ5OBqTePXSmmDMu
+         43V5R/JUvp9T5bdyzrX3o+MNgnPBhxNsSuSgcv5U/xyJ1lRzaddbUz7kKXSZV8wHmLeR
+         rkDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=jOQRqBr01VKWNhQUIqSvEAhMD9eAbdN4XBBsDSxB6go=;
-        b=xuzE/Ess5k7jJVbH3rvvziHdzmXNx6/ia59l63IPajJsbXKASAXvrsUuGRg9TRvIv0
-         QB4ALiJ4Qy51RDttXZGChNAkIN6HfcSVqB0Y5w0t4Pk6ejnblw68y1Lm4S28yNSowAwp
-         MDn08FFMXZmF8jucH65/UaIZJoLX0xnDeofSrRla+QawPU7/Ft/WZ8yVq+Wa7OiNvmGN
-         9PYWWgBy8tE5tqfCk9BpP7hiPN3OrQFZq7mWYkOe7kcu89VQKtTE5csBv/A/xxIccedd
-         Ic6VYXgNDnhAsx+LZeUzh5eZuGznDycFAY8CGhaXQ+N+aPducjL5vfRQxoJmEhRKBDy1
-         Ou0Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=ycShxSEHakAqYhjNyN4v7KBy97aPC7VfFWQiorhjcxc=;
+        b=WFwfizHO+D8JagbY78GPvjpJZzkf8ztZEfNsLVidgUkb6fIS4PqjnrMSY84j4FbHas
+         WFS5wxFbH7RuF8DrxInEAcuF4gflj3kqS26KJDUHE3CGBSdDJwqilMffEz9oB2etmUdt
+         kuQ40T8dyByIAChkPzELFrDvHMkQ45uk+C/o+vRQSfsC3dE6lA2AFoNkMfnWaOV2xgkr
+         ML5OAoT+yY6AF+d5qffs0EQegk+VRNsjeaAgcCg554RtiKKX1LQ2Ga78vYVCBerXTosn
+         Os6gbLSONZCTHjODXz1k59N8SG7Z+m7Yb8PoQIQNfDaj6aedgCG3fi8WtlZJxMJviGmA
+         MZGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d5PYePnL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r13si8534358ybb.128.2020.11.09.03.58.48
+        by mx.google.com with ESMTPS id r81si804877vkd.55.2020.11.09.06.10.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Nov 2020 03:58:48 -0800 (PST)
+        Mon, 09 Nov 2020 06:10:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d5PYePnL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33330 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kc5ou-0000TG-4W
-	for alex.bennee@linaro.org; Mon, 09 Nov 2020 06:58:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33782)
+	id 1kc7sl-00032l-S3
+	for alex.bennee@linaro.org; Mon, 09 Nov 2020 09:10:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kc5om-0000Sx-Vn
- for qemu-arm@nongnu.org; Mon, 09 Nov 2020 06:58:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:53238)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kc5oj-0007sa-BW
- for qemu-arm@nongnu.org; Mon, 09 Nov 2020 06:58:40 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604923115;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=jOQRqBr01VKWNhQUIqSvEAhMD9eAbdN4XBBsDSxB6go=;
- b=d5PYePnLqY7myjpWLzti5bjeseDJOlKtP+/SeH4fxB1McPFZkXCCQaBpTX+aZiP5tBXqF7
- YLPsM6louq6cgTaCVPN/id7Yl3Yf1JEEeBenv0zumuUaHsxHCwA9B/PM9tUjp0zgpBvd6x
- 2PlRnZWObh+2E+TXvCwRzSxMW5fFGZ0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-140-3_BqG14dPo-PlfAupupHmg-1; Mon, 09 Nov 2020 06:58:31 -0500
-X-MC-Unique: 3_BqG14dPo-PlfAupupHmg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0024F809DCD;
- Mon,  9 Nov 2020 11:58:29 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.176])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D64606EF67;
- Mon,  9 Nov 2020 11:58:25 +0000 (UTC)
-Date: Mon, 9 Nov 2020 12:58:22 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Subject: Re: [RFC PATCH v3 03/13] hw/arm/virt: Replace smp_parse with one
- that prefers cores
-Message-ID: <20201109115822.aqdmrljdlqcj2mhg@kamzik.brq.redhat.com>
-References: <20201109030452.2197-1-fangying1@huawei.com>
- <20201109030452.2197-4-fangying1@huawei.com>
- <f2b0f9ab3e7c4e4a82a1f003ca1d67e4@huawei.com>
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kc7sJ-000313-Db; Mon, 09 Nov 2020 09:10:27 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:60178
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kc7sG-0002kn-6U; Mon, 09 Nov 2020 09:10:27 -0500
+Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 194005FFC9;
+ Mon,  9 Nov 2020 15:10:22 +0100 (CET)
+From: remi.denis.courmont@huawei.com
+To: qemu-arm@nongnu.org
+Subject: [PATCH 05/17] target/arm: factor MDCR_EL2 common handling
+Date: Mon,  9 Nov 2020 16:10:08 +0200
+Message-Id: <20201109141020.27234-5-remi.denis.courmont@huawei.com>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <5554493.MhkbZ0Pkbq@basile.remlab.net>
+References: <5554493.MhkbZ0Pkbq@basile.remlab.net>
 MIME-Version: 1.0
-In-Reply-To: <f2b0f9ab3e7c4e4a82a1f003ca1d67e4@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 01:25:23
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/09 08:56:07
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,166 +83,137 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- fangying <fangying1@huawei.com>, "imammedo@redhat.com" <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XIQpmfzlgJuZ
+X-TUID: hdoomxfbXUwR
 
-On Mon, Nov 09, 2020 at 11:01:48AM +0000, Salil Mehta wrote:
-> > From: fangying
-> > Sent: Monday, November 9, 2020 3:05 AM
-> > To: peter.maydell@linaro.org
-> > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; drjones@redhat.com;
-> > imammedo@redhat.com; shannon.zhaosl@gmail.com; alistair.francis@wdc.com;
-> > Zhanghailiang <zhang.zhanghailiang@huawei.com>; Salil Mehta
-> > <salil.mehta@huawei.com>
-> > Subject: [RFC PATCH v3 03/13] hw/arm/virt: Replace smp_parse with one that
-> > prefers cores
-> > 
-> > From: Andrew Jones <drjones@redhat.com>
-> > 
-> > The virt machine type has never used the CPU topology parameters, other
-> > than number of online CPUs and max CPUs. When choosing how to allocate
-> > those CPUs the default has been to assume cores. In preparation for
-> > using the other CPU topology parameters let's use an smp_parse that
-> > prefers cores over sockets. We can also enforce the topology matches
-> > max_cpus check because we have no legacy to preserve.
-> 
-> 
-> Hi Andrew,
-> I am wondering if we need to take care of other levels of processor
-> hierarchy as well in ARM64 like 'clusters'/'Dies'?
+From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-I don't know, but so far in Linux only x86 considers dies. Also, Linux
-doesn't define the concept of a cluster in its arch-neutral cpu topology
-API. With that in mind, I think we should just focus on sockets, cores,
-and threads until we have a guest OS that can be used to test other
-levels.
+This adds a common helper to compute the effective value of MDCR_EL2.
+That is the actual value if EL2 is enabled in the current security
+context, or 0 elsewise.
 
-Thanks,
-drew
+Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper.c | 38 ++++++++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 16 deletions(-)
 
-> 
-> Thanks
-> 
-> 
-> > 
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  hw/arm/virt.c | 76 +++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 76 insertions(+)
-> > 
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index ea24b576c6..ba902b53ba 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -78,6 +78,8 @@
-> >  #include "hw/virtio/virtio-iommu.h"
-> >  #include "hw/char/pl011.h"
-> >  #include "qemu/guest-random.h"
-> > +#include "qapi/qmp/qerror.h"
-> > +#include "sysemu/replay.h"
-> > 
-> >  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-> >      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-> > @@ -2444,6 +2446,79 @@ static int virt_kvm_type(MachineState *ms, const char
-> > *type_str)
-> >      return requested_pa_size > 40 ? requested_pa_size : 0;
-> >  }
-> > 
-> > +/*
-> > + * Unlike smp_parse() in hw/core/machine.c, we prefer cores over sockets,
-> > + * e.g. '-smp 8' creates 1 socket with 8 cores.  Whereas '-smp 8' with
-> > + * hw/core/machine.c's smp_parse() creates 8 sockets, each with 1 core.
-> > + * Additionally, we can enforce the topology matches max_cpus check,
-> > + * because we have no legacy to preserve.
-> > + */
-> > +static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
-> > +{
-> > +    if (opts) {
-> > +        unsigned cpus    = qemu_opt_get_number(opts, "cpus", 0);
-> > +        unsigned sockets = qemu_opt_get_number(opts, "sockets", 0);
-> > +        unsigned cores   = qemu_opt_get_number(opts, "cores", 0);
-> > +        unsigned threads = qemu_opt_get_number(opts, "threads", 0);
-> > +
-> > +        /*
-> > +         * Compute missing values; prefer cores over sockets and
-> > +         * sockets over threads.
-> > +         */
-> > +        if (cpus == 0 || cores == 0) {
-> > +            sockets = sockets > 0 ? sockets : 1;
-> > +            threads = threads > 0 ? threads : 1;
-> > +            if (cpus == 0) {
-> > +                cores = cores > 0 ? cores : 1;
-> > +                cpus = cores * threads * sockets;
-> > +            } else {
-> > +                ms->smp.max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
-> > +                cores = ms->smp.max_cpus / (sockets * threads);
-> > +            }
-> > +        } else if (sockets == 0) {
-> > +            threads = threads > 0 ? threads : 1;
-> > +            sockets = cpus / (cores * threads);
-> > +            sockets = sockets > 0 ? sockets : 1;
-> > +        } else if (threads == 0) {
-> > +            threads = cpus / (cores * sockets);
-> > +            threads = threads > 0 ? threads : 1;
-> > +        } else if (sockets * cores * threads < cpus) {
-> > +            error_report("cpu topology: "
-> > +                         "sockets (%u) * cores (%u) * threads (%u) < "
-> > +                         "smp_cpus (%u)",
-> > +                         sockets, cores, threads, cpus);
-> > +            exit(1);
-> > +        }
-> > +
-> > +        ms->smp.max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
-> > +
-> > +        if (ms->smp.max_cpus < cpus) {
-> > +            error_report("maxcpus must be equal to or greater than smp");
-> > +            exit(1);
-> > +        }
-> > +
-> > +        if (sockets * cores * threads != ms->smp.max_cpus) {
-> > +            error_report("cpu topology: "
-> > +                         "sockets (%u) * cores (%u) * threads (%u)"
-> > +                         "!= maxcpus (%u)",
-> > +                         sockets, cores, threads,
-> > +                         ms->smp.max_cpus);
-> > +            exit(1);
-> > +        }
-> > +
-> > +        ms->smp.cpus = cpus;
-> > +        ms->smp.cores = cores;
-> > +        ms->smp.threads = threads;
-> > +        ms->smp.sockets = sockets;
-> > +    }
-> > +
-> > +    if (ms->smp.cpus > 1) {
-> > +        Error *blocker = NULL;
-> > +        error_setg(&blocker, QERR_REPLAY_NOT_SUPPORTED, "smp");
-> > +        replay_add_blocker(blocker);
-> > +    }
-> > +}
-> > +
-> >  static void virt_machine_class_init(ObjectClass *oc, void *data)
-> >  {
-> >      MachineClass *mc = MACHINE_CLASS(oc);
-> > @@ -2469,6 +2544,7 @@ static void virt_machine_class_init(ObjectClass *oc, void
-> > *data)
-> >      mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-> >      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-> >      mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-> > +    mc->smp_parse = virt_smp_parse;
-> >      mc->kvm_type = virt_kvm_type;
-> >      assert(!mc->get_hotplug_handler);
-> >      mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
-> > --
-> > 2.23.0
-> 
-> 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index b5d6dc7daa..7c6795a04c 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -538,6 +538,11 @@ static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
+     return CP_ACCESS_TRAP_UNCATEGORIZED;
+ }
+ 
++static uint64_t arm_mdcr_el2_eff(CPUARMState *env)
++{
++    return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
++}
++
+ /* Check for traps to "powerdown debug" registers, which are controlled
+  * by MDCR.TDOSA
+  */
+@@ -545,11 +550,11 @@ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    bool isread)
+ {
+     int el = arm_current_el(env);
+-    bool mdcr_el2_tdosa = (env->cp15.mdcr_el2 & MDCR_TDOSA) ||
+-        (env->cp15.mdcr_el2 & MDCR_TDE) ||
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tdosa = (mdcr_el2 & MDCR_TDOSA) || (mdcr_el2 & MDCR_TDE) ||
+         (arm_hcr_el2_eff(env) & HCR_TGE);
+ 
+-    if (el < 2 && mdcr_el2_tdosa && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && mdcr_el2_tdosa) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDOSA)) {
+@@ -565,11 +570,11 @@ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
+                                   bool isread)
+ {
+     int el = arm_current_el(env);
+-    bool mdcr_el2_tdra = (env->cp15.mdcr_el2 & MDCR_TDRA) ||
+-        (env->cp15.mdcr_el2 & MDCR_TDE) ||
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tdra = (mdcr_el2 & MDCR_TDRA) || (mdcr_el2 & MDCR_TDE) ||
+         (arm_hcr_el2_eff(env) & HCR_TGE);
+ 
+-    if (el < 2 && mdcr_el2_tdra && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && mdcr_el2_tdra) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
+@@ -585,11 +590,11 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
+                                   bool isread)
+ {
+     int el = arm_current_el(env);
+-    bool mdcr_el2_tda = (env->cp15.mdcr_el2 & MDCR_TDA) ||
+-        (env->cp15.mdcr_el2 & MDCR_TDE) ||
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tda = (mdcr_el2 & MDCR_TDA) || (mdcr_el2 & MDCR_TDE) ||
+         (arm_hcr_el2_eff(env) & HCR_TGE);
+ 
+-    if (el < 2 && mdcr_el2_tda && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && mdcr_el2_tda) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
+@@ -605,9 +610,9 @@ static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  bool isread)
+ {
+     int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+ 
+-    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
+-        && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
+@@ -1347,12 +1352,12 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
+      * trapping to EL2 or EL3 for other accesses.
+      */
+     int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+ 
+     if (el == 0 && !(env->cp15.c9_pmuserenr & 1)) {
+         return CP_ACCESS_TRAP;
+     }
+-    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
+-        && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
+@@ -1431,7 +1436,8 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
+     bool enabled, prohibited, filtered;
+     bool secure = arm_is_secure(env);
+     int el = arm_current_el(env);
+-    uint8_t hpmn = env->cp15.mdcr_el2 & MDCR_HPMN;
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    uint8_t hpmn = mdcr_el2 & MDCR_HPMN;
+ 
+     if (!arm_feature(env, ARM_FEATURE_PMU)) {
+         return false;
+@@ -1441,13 +1447,13 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
+             (counter < hpmn || counter == 31)) {
+         e = env->cp15.c9_pmcr & PMCRE;
+     } else {
+-        e = env->cp15.mdcr_el2 & MDCR_HPME;
++        e = mdcr_el2 & MDCR_HPME;
+     }
+     enabled = e && (env->cp15.c9_pmcnten & (1 << counter));
+ 
+     if (!secure) {
+         if (el == 2 && (counter < hpmn || counter == 31)) {
+-            prohibited = env->cp15.mdcr_el2 & MDCR_HPMD;
++            prohibited = mdcr_el2 & MDCR_HPMD;
+         } else {
+             prohibited = false;
+         }
+-- 
+2.29.2
 

@@ -1,110 +1,68 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4657227lfb;
-        Tue, 10 Nov 2020 07:03:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxvLKT8HxBLURZ+Vju6TMKTzNpqOj5KYTYYTyS7jUzi23p/tKbvSzXysDqwFdRxIrkH+99A
-X-Received: by 2002:a17:902:7283:b029:d7:e4f5:adc7 with SMTP id d3-20020a1709027283b02900d7e4f5adc7mr8336663pll.20.1605020581641;
-        Tue, 10 Nov 2020 07:03:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605020581; cv=none;
-        d=google.com; s=arc-20160816;
-        b=pdn89WVkn14u1OnDLoVqWqwP5hryi6yAwUbJl1icKBqq79OdWbudo0uD1K2EGEbuP5
-         6VCxZZW86chejVd5ai/G54fD/Bs/cGN+r69TXxdSTd8YUk3VcejcEEQs1cbA82XQk2Lq
-         km4URWsRlpXqhyhz5CKZ+K6582lbragTqansiOcTTwTYyawduKmyiHSit1dMFCXbwxF3
-         3hw+vZ0EU6Xx9sdACIbzSlBcth1oZoLpjJM2sg3AIr2/c0U5PWLsZPUaRU8U0v3wfq62
-         Dk/nvAt+SCJIUZEY9X6jOnxbK8JRixu5STI5XfOYHFyTc9Qkfgi7+1KLbQZrYZPEJoLl
-         AM6g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=+8VBpOq5IPiyukv1r/cJV6FOcSBdmxIoPOlZnr/6lsM=;
-        b=A67hSQ4xvNa2FAS/2jLsrAHsC6fhumjYVuKh76EFwblcXAyqAJIjxMdM700RSV51nN
-         Ei5IReAHldEJjTqZUdS9qfdYsjUq5Y9vL83kqEOuAgz9BO5C+lXte+BgN39R0NKcopRe
-         fzykYV/8x/T/303VtwCYnYGry/pFr1iFNvNQevm3rYgmid+b+suZ6zJKXUbPIiEV3V+E
-         fd/Ka8BkCCY8UQMXL3lYc/9SH2euOv/FX/aYIti+a4FDagSidSRQNLlpPKWuFtIOHkoW
-         EFg5gnBhSRuye3rF64Xqjy7EEPjA1MBD2iGyA/+RGdJMk/GORp5O65UMFm2XhK8M6JYe
-         /IAw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zQNVnTP0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4664767lfb;
+        Tue, 10 Nov 2020 07:10:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyjX0azb1fEAG/lld7Ay9QTxcW5BTK7W6lEb8ozGyxJOHjGqZco+5kTWrnp6RCfPfTVj2h2
+X-Received: by 2002:a25:42c6:: with SMTP id p189mr13819050yba.255.1605021035291;
+        Tue, 10 Nov 2020 07:10:35 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j1si565815ual.126.2020.11.10.07.03.01
+        by mx.google.com with ESMTPS id q200si12534474ybq.174.2020.11.10.07.10.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Nov 2020 07:03:01 -0800 (PST)
+        Tue, 10 Nov 2020 07:10:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zQNVnTP0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51030 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kcVAi-0002Tw-QV
-	for alex.bennee@linaro.org; Tue, 10 Nov 2020 10:03:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43690)
+	id 1kcVI2-0003EZ-If
+	for alex.bennee@linaro.org; Tue, 10 Nov 2020 10:10:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kcV8W-0002Qb-SD
- for qemu-devel@nongnu.org; Tue, 10 Nov 2020 10:00:44 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:44667)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kcV8I-0007Mw-UA
- for qemu-devel@nongnu.org; Tue, 10 Nov 2020 10:00:44 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id c17so12974483wrc.11
- for <qemu-devel@nongnu.org>; Tue, 10 Nov 2020 07:00:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=+8VBpOq5IPiyukv1r/cJV6FOcSBdmxIoPOlZnr/6lsM=;
- b=zQNVnTP0FVAdicV+y0OfuGzREC3bqKzlccYfz5aCC/5r64auh+sU0C9ocKktYPNqBD
- TuTGtV0Q00jNPV+EnIZybj5BnRkyVoXwOjMsIfKrFehybGDER5qVr2G76kkS3rqS9wF9
- c1HvaSxNLk5g6C/XPuGuil+QqsZcK6srH0HBEYldmLDD4u3HpzlRdUOLOFMRZiTE80Ac
- 1w8ciGN57ZE+xPRgQ2AVMU5K0/WxYLmgdWCZUlYRVNFW37tdXJY/IruUCd0wYZBsT5ql
- +UMQbIma8nn4nQhXOS43ZOZPkntKuUmwZxNQCcugnT6nXFyVGn3mD27Kaj2LiJj0/wvV
- zuKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+8VBpOq5IPiyukv1r/cJV6FOcSBdmxIoPOlZnr/6lsM=;
- b=eDo8zRtNprV4zXHAMyRXO//vmPKhp758c5mPD+VW2qPI1xWPFwqIvWyNbKF2Yyn8wV
- 4vMNyTg3NHXZAjmqMZHPPKIh85qvKrZWK/VrnW3Z8LJ+LTl5OajVr4rQ10tnjx+WaWrI
- v38zuUmFVZdsp90Yv9IYZlSns5c0NpA8xBrwXFK7xa+S6LhZG+R4UN1kMHhSXw1gF0wg
- /ScjG8dYmIFsQdB3766tQAgJKxf+z1WAsIvx/8egDzkAMMkWKFZJgtD21NywX+3ibZlO
- Legrf/QgNH+ZlmoJn0LhGHz2RR6Rxt3zWhEBgVgYplOd7HofuE7JVSQ9kerg3/KZRbSh
- DURg==
-X-Gm-Message-State: AOAM531gT8bjtlW1W1yuL6bdO3hQjCK7N2EDVoCEtl7OkHHhWNWg6YaA
- /Bjyx5Ff3L6ebEPbTmczppoa2Q==
-X-Received: by 2002:a5d:4349:: with SMTP id u9mr24003093wrr.319.1605020428734; 
- Tue, 10 Nov 2020 07:00:28 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id o205sm3392493wma.25.2020.11.10.07.00.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Nov 2020 07:00:28 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] tmp105: Correct handling of temperature limit checks
-Date: Tue, 10 Nov 2020 15:00:23 +0000
-Message-Id: <20201110150023.25533-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kcVHX-000385-B1; Tue, 10 Nov 2020 10:10:04 -0500
+Resent-Date: Tue, 10 Nov 2020 10:10:03 -0500
+Resent-Message-Id: <E1kcVHX-000385-B1@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21347)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kcVHS-0001o1-SH; Tue, 10 Nov 2020 10:10:02 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1605020987; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=lbZs748E6xpNmBXXyC2BfYWcACmA90XbjdDCRtLMWrjAnsgcrrkAk1kXBYn6tyk4uX+j7dE4UW225HWuAvvMEfoA6nQi2TpzSQe9+Z4KWInBF4m2hvqHSQi1HFgWKhEZp36x4AVv074LGOrkVLbaZhghG7Nh0r27gNNYhCkSHfw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1605020987;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=ahw9lx4XdayeyF4oq/xhs/x8yitXlipi7tAuWeyN9xg=; 
+ b=S90RIwH9I6aRjIhkzd+k82cgd+8MtnhX3D/7mZxREawvGLa1ic9Yp45w6mA5P+x9xkqieUb0Hr6JVzzMhkHfeMveEhewSSBCcZDcxbzf2DeWbzgs6zwtRbRzC0YoK8uq/A3daO1domg1d2WXmFyehKXC4FXjjhgFzbMSMQfhzyY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1605020984456302.14865471784856;
+ Tue, 10 Nov 2020 07:09:44 -0800 (PST)
+Message-ID: <160502098305.21680.18015917231395096308@b92d57cec08d>
+Subject: Re: [PATCH 0/2] hw/misc/tmp105: Correct temperature limit check logic
 In-Reply-To: <20201110150023.25533-1-peter.maydell@linaro.org>
-References: <20201110150023.25533-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Tue, 10 Nov 2020 07:09:44 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/10 10:09:50
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -118,158 +76,50 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: abi0kCua6meT
+X-TUID: w65nakKParim
 
-The TMP105 datasheet says that in Interrupt Mode (when TM==1) the device
-signals an alert when the temperature equals or exceeds the T_high value and
-then remains high until a device register is read or the device responds to
-the SMBUS Alert Response address, or the device is put into Shutdown Mode.
-Thereafter the Alert pin will only be re-signalled when temperature falls
-below T_low; alert can then be cleared in the same set of ways, and the
-device returns to its initial "alert when temperature goes above T_high"
-mode. (If this textual description is confusing, see figure 3 in the
-TI datasheet at https://www.ti.com/lit/gpn/tmp105 .)
-
-We were misimplementing this as a simple "always alert if temperature is
-above T_high or below T_low" condition, which gives a spurious alert on
-startup if using the "T_high = 80 degrees C, T_low = 75 degrees C" reset
-limit values.
-
-Implement the correct (hysteresis) behaviour by tracking whether we
-are currently looking for the temperature to rise over T_high or
-for it to fall below T_low. Our implementation of the comparator
-mode (TM==0) wasn't wrong, but rephrase it to match the way that
-interrupt mode is now handled for clarity.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/misc/tmp105.c | 70 +++++++++++++++++++++++++++++++++++++++++-------
- hw/misc/tmp105.h |  7 +++++
- 2 files changed, 68 insertions(+), 9 deletions(-)
-
-diff --git a/hw/misc/tmp105.c b/hw/misc/tmp105.c
-index 0a4aad4854..d299d9b21b 100644
---- a/hw/misc/tmp105.c
-+++ b/hw/misc/tmp105.c
-@@ -41,16 +41,40 @@ static void tmp105_alarm_update(TMP105State *s)
-             return;
-     }
- 
--    if ((s->config >> 1) & 1) {					/* TM */
--        if (s->temperature >= s->limit[1])
--            s->alarm = 1;
--        else if (s->temperature < s->limit[0])
--            s->alarm = 1;
-+    if (s->config >> 1 & 1) {
-+        /*
-+         * TM == 1 : Interrupt mode. We signal Alert when the
-+         * temperature rises above T_high, and expect the guest to clear
-+         * it (eg by reading a device register).
-+         */
-+        if (s->detect_falling) {
-+            if (s->temperature < s->limit[0]) {
-+                s->alarm = 1;
-+                s->detect_falling = false;
-+            }
-+        } else {
-+            if (s->temperature >= s->limit[1]) {
-+                s->alarm = 1;
-+                s->detect_falling = true;
-+            }
-+        }
-     } else {
--        if (s->temperature >= s->limit[1])
--            s->alarm = 1;
--        else if (s->temperature < s->limit[0])
--            s->alarm = 0;
-+        /*
-+         * TM == 0 : Comparator mode. We signal Alert when the temperature
-+         * rises above T_high, and stop signalling it when the temperature
-+         * falls below T_low.
-+         */
-+        if (s->detect_falling) {
-+            if (s->temperature < s->limit[0]) {
-+                s->alarm = 0;
-+                s->detect_falling = false;
-+            }
-+        } else {
-+            if (s->temperature >= s->limit[1]) {
-+                s->alarm = 1;
-+                s->detect_falling = true;
-+            }
-+        }
-     }
- 
-     tmp105_interrupt_update(s);
-@@ -197,6 +221,29 @@ static int tmp105_post_load(void *opaque, int version_id)
-     return 0;
- }
- 
-+static bool detect_falling_needed(void *opaque)
-+{
-+    TMP105State *s = opaque;
-+
-+    /*
-+     * We only need to migrate the detect_falling bool if it's set;
-+     * for migration from older machines we assume that it is false
-+     * (ie temperature is not out of range).
-+     */
-+    return s->detect_falling;
-+}
-+
-+static const VMStateDescription vmstate_tmp105_detect_falling = {
-+    .name = "TMP105/detect-falling",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = detect_falling_needed,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_BOOL(detect_falling, TMP105State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_tmp105 = {
-     .name = "TMP105",
-     .version_id = 0,
-@@ -212,6 +259,10 @@ static const VMStateDescription vmstate_tmp105 = {
-         VMSTATE_UINT8(alarm, TMP105State),
-         VMSTATE_I2C_SLAVE(i2c, TMP105State),
-         VMSTATE_END_OF_LIST()
-+    },
-+    .subsections = (const VMStateDescription*[]) {
-+        &vmstate_tmp105_detect_falling,
-+        NULL
-     }
- };
- 
-@@ -224,6 +275,7 @@ static void tmp105_reset(I2CSlave *i2c)
-     s->config = 0;
-     s->faults = tmp105_faultq[(s->config >> 3) & 3];
-     s->alarm = 0;
-+    s->detect_falling = false;
- 
-     s->limit[0] = 0x4b00; /* T_LOW, 75 degrees C */
-     s->limit[1] = 0x5000; /* T_HIGH, 80 degrees C */
-diff --git a/hw/misc/tmp105.h b/hw/misc/tmp105.h
-index e5198fce80..7c97071ad7 100644
---- a/hw/misc/tmp105.h
-+++ b/hw/misc/tmp105.h
-@@ -43,6 +43,13 @@ struct TMP105State {
-     int16_t limit[2];
-     int faults;
-     uint8_t alarm;
-+    /*
-+     * The TMP105 initially looks for a temperature rising above T_high;
-+     * once this is detected, the condition it looks for next is the
-+     * temperature falling below T_low. This flag is false when initially
-+     * looking for T_high, true when looking for T_low.
-+     */
-+    bool detect_falling;
- };
- 
- #endif
--- 
-2.20.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTExMDE1MDAyMy4yNTUz
+My0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0
+byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgpt
+b3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMjAyMDExMTAxNTAwMjMuMjU1MzMtMS1wZXRl
+ci5tYXlkZWxsQGxpbmFyby5vcmcKU3ViamVjdDogW1BBVENIIDAvMl0gIGh3L21pc2MvdG1wMTA1
+OiBDb3JyZWN0IHRlbXBlcmF0dXJlIGxpbWl0IGNoZWNrIGxvZ2ljClR5cGU6IHNlcmllcwoKPT09
+IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAv
+ZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAK
+Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBk
+aWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFj
+ayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4
+NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hl
+dy1wcm9qZWN0L3FlbXUKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8xNjA0NjQzODkzLTgy
+MjMtMS1naXQtc2VuZC1lbWFpbC16aGVuZ2NodWFuQGh1YXdlaS5jb20gLT4gcGF0Y2hldy8xNjA0
+NjQzODkzLTgyMjMtMS1naXQtc2VuZC1lbWFpbC16aGVuZ2NodWFuQGh1YXdlaS5jb20KIC0gW3Rh
+ZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIwMTEwNDE3MjUxMi4yMzgxNjU2LTEtZWhhYmtvc3RA
+cmVkaGF0LmNvbSAtPiBwYXRjaGV3LzIwMjAxMTA0MTcyNTEyLjIzODE2NTYtMS1laGFia29zdEBy
+ZWRoYXQuY29tCiAtIFt0YWcgdXBkYXRlXSAgICAgIHBhdGNoZXcvMjAyMDExMDkwOTE3MTkuMjQ0
+OTE0MS0xLWY0YnVnQGFtc2F0Lm9yZyAtPiBwYXRjaGV3LzIwMjAxMTA5MDkxNzE5LjI0NDkxNDEt
+MS1mNGJ1Z0BhbXNhdC5vcmcKICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIwMTExMDE1
+MDAyMy4yNTUzMy0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZyAtPiBwYXRjaGV3LzIwMjAxMTEw
+MTUwMDIzLjI1NTMzLTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnClN3aXRjaGVkIHRvIGEgbmV3
+IGJyYW5jaCAndGVzdCcKYWVlYjA0MSB0bXAxMDU6IENvcnJlY3QgaGFuZGxpbmcgb2YgdGVtcGVy
+YXR1cmUgbGltaXQgY2hlY2tzCmQ1YzZiY2EgaHcvbWlzYy90bXAxMDU6IHJlc2V0IHRoZSBUX2xv
+dyBhbmQgVF9IaWdoIHJlZ2lzdGVycwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KMS8yIENoZWNraW5n
+IGNvbW1pdCBkNWM2YmNhMTkwNGMgKGh3L21pc2MvdG1wMTA1OiByZXNldCB0aGUgVF9sb3cgYW5k
+IFRfSGlnaCByZWdpc3RlcnMpCjIvMiBDaGVja2luZyBjb21taXQgYWVlYjA0MTlmNjczICh0bXAx
+MDU6IENvcnJlY3QgaGFuZGxpbmcgb2YgdGVtcGVyYXR1cmUgbGltaXQgY2hlY2tzKQpFUlJPUjog
+c3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0aGF0ICcqJyAoY3R4OlZ4VikKIzEyMDogRklMRTogaHcv
+bWlzYy90bXAxMDUuYzoyNjM6CisgICAgLnN1YnNlY3Rpb25zID0gKGNvbnN0IFZNU3RhdGVEZXNj
+cmlwdGlvbipbXSkgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBeCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDEwOCBsaW5lcyBjaGVja2VkCgpQYXRj
+aCAyLzIgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNl
+IGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVy
+LCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCj09PSBPVVRQVVQgRU5EID09PQoKVGVz
+dCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxl
+IGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAxMTEwMTUwMDIzLjI1NTMzLTEtcGV0ZXIu
+bWF5ZGVsbEBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0K
+RW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3
+Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0
+LmNvbQ==

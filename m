@@ -1,91 +1,90 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp674829lfb;
-        Wed, 11 Nov 2020 10:49:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJykUPyOXUalI+XwlFHIqyxyr6uSgeY7zDhI28zHF2i3+qFw0Kx98TsM7FGPHiWUSzwBuxX5
-X-Received: by 2002:a25:1802:: with SMTP id 2mr35213095yby.148.1605120576454;
-        Wed, 11 Nov 2020 10:49:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605120576; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp675325lfb;
+        Wed, 11 Nov 2020 10:50:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy68PVtpeAWmRlq421b1W48bdByVLizguVEPPX9lW6FNJl2ZGQpXhYktOD2zsRIAAuxr+Kv
+X-Received: by 2002:a25:8006:: with SMTP id m6mr27639655ybk.57.1605120628668;
+        Wed, 11 Nov 2020 10:50:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605120628; cv=none;
         d=google.com; s=arc-20160816;
-        b=fwQzIi76H0tlUlUA/2Mwcy0SKZrFkctovoMD6w7UV8NcojttxxbTQV4HLoKXEJYx6C
-         eAqk9Rdu1/VrWweDpsBnAMGSreolVhgXTyEFUwKEfi9UMb/LypGjZjCriDN06GiItkqg
-         EzvzHJJD/lO9HgHlt2sHXlVzH61uvBQXS7qLlF1d/10WNi9louQxJ3Eqyy+xzFcJi8O4
-         FEBA/ZAEbHikWlav0a7jY7ZVoCpqhlfQBRB42bgyuJ3OQ+6sPzIiFqF+vCBl4e3dJgAW
-         oMAGZtbDlFMkzEPzntghpRPXSFLJPEgBDy/PpPl0Ul+BOgoOK4ePggkknbxDshzBDvNa
-         umdA==
+        b=IOSn2+cN37JVWDYMuLOvIjDcMZdHIbcT/tEwHynxDfMeDB1G0kaBdtjWliS5Ryi3N6
+         O3ZYM9toCALj0YjIqIm7bwdxSkvBopDFAyLX02oA6eF32bYsbxFe0TWiiay0RxV8RxOe
+         mjIm4FaHEsUgRNfkGGpumDSRj1mjL0/7sczEOFfdvzvQi9fv38zlzqB4++R7JTcHv4YI
+         pRE0SqBKY7qdmY6RlBw594z8KY5cpd27G7O7tk6BiSCtWAADE6BuzDT1pUHdxl0RDX3P
+         UxGed7Htj2uvcmt9LTHoaOeYeko6oWsc3I6Mc7tBkrp6ag0mOSg8ScoGuS1vMKZOv7zQ
+         vAsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=g1BuxTUhsmcY0SFuQ3DYGN96ziKI4fIsmsSBKpMTc1E=;
-        b=qmwvOlWEIE6NelqRapOlkSIrnLyrE86QH1f5P9tyCwkfMui/jVh8gL5W77GnFBwaQD
-         mYH1ux44/x6uc0J5NB1TEdOxn6JrhUUj1XFeWisPf+k+INFCYbEPSUC7eR6s+6pVhNpO
-         40IsKnOcY2BA8prUMHdj4alyTPDLcApEpLfE8Rh3Z13jaq+o5FhZjq/oTt2AbZBedO2n
-         m7LtJDZnPQS4QbJUGiHcMoD2z/oWhBGMPK/khyC7z4ikyXGDijWe2hxwqWBibPAFdzpS
-         REIg6CDZ1+y0cEZALmO/VBMQy9gmIPKkUQLc0js+Dt34EnMthccUo+sdftgjwdZv0u5h
-         eyKg==
+        bh=si64ReTKrg/sjpMGmS8m+eTbdwuwB+8fMpCEA5/ywY0=;
+        b=ciWwTJtoKaGn1ATCqxM24Y2D82gL04jBJf+9H8v2MPG4DAvYtttPuUmFji8Z2owcqR
+         t05gJas06sRlJhZa0Xk3u+YhrdVKk0cZ0Y/KmTCkKaEOkWg5G9lA0VPzCOvX8pK/KxPY
+         GUZezAxaTIgKcFZSnE99ZYnL6WmS8XYUp/yNcesJ5HhCPKm0WA2M7xtIiwi6JAYumQ92
+         kpKaxvagBa4mR2Z5QZ6BCYfwDEg9uY6csgYGJi5dGCWKqd6Kx3ScQymUBW2w/RawGIbO
+         6rlsgCnbg8B1wWLWQAgsWj0Ce0aFc9ZCnsP7t23wR/1SpJr28NvGsa0wfaEUAhIpY9py
+         AHwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NRHmsq2X;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VJdBNuaF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 66si2563339ybz.39.2020.11.11.10.49.36
+        by mx.google.com with ESMTPS id n131si2947424ybc.0.2020.11.11.10.50.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Nov 2020 10:49:36 -0800 (PST)
+        Wed, 11 Nov 2020 10:50:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NRHmsq2X;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VJdBNuaF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56734 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kcvBX-00038C-Pk
-	for alex.bennee@linaro.org; Wed, 11 Nov 2020 13:49:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44866)
+	id 1kcvCO-0004RT-1a
+	for alex.bennee@linaro.org; Wed, 11 Nov 2020 13:50:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kcv1o-0000ZB-QI
- for qemu-devel@nongnu.org; Wed, 11 Nov 2020 13:39:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49304)
+ id 1kcv2O-0000xj-GO
+ for qemu-devel@nongnu.org; Wed, 11 Nov 2020 13:40:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32807)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kcv1m-0008GS-Bw
- for qemu-devel@nongnu.org; Wed, 11 Nov 2020 13:39:32 -0500
+ id 1kcv2L-0008QJ-0f
+ for qemu-devel@nongnu.org; Wed, 11 Nov 2020 13:40:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605119969;
+ s=mimecast20190719; t=1605120004;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g1BuxTUhsmcY0SFuQ3DYGN96ziKI4fIsmsSBKpMTc1E=;
- b=NRHmsq2XS8wjsm6bWPaoYEy+jYTWNjyWwMq7dJQeFc1wc4+7lGGp4AeHu3lMy9YpN9IIpC
- o/ijFHJQ8+cXIFVsEorZfKYCgAJTdrisHGHAy2aHJpzKPu1LFbCetLh7mp56t0kVFFYWBM
- HG86moDMPqtApqzcM3fT/nbgUwYbDdo=
+ bh=si64ReTKrg/sjpMGmS8m+eTbdwuwB+8fMpCEA5/ywY0=;
+ b=VJdBNuaFksla9oaJeB4z0xakjf5VU0NAgQLI8XzmdhvRwEgXhkRUUHwJ3XbIHyakPiLxJr
+ 8E4t3wz8NreUkdPDFP4Gu7lAld7FhixJ2R82GeJk0LMW5dHkZFdhZgOwY2MW83wcN9EjTj
+ PFdk7cIq8miHHVDsmBWktam/zF9xSf8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-56-jC_RUB9zM0uj-G7-tsmJjQ-1; Wed, 11 Nov 2020 13:38:55 -0500
-X-MC-Unique: jC_RUB9zM0uj-G7-tsmJjQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-567-vP25d-rpNrKVzLNT8Xy7Rg-1; Wed, 11 Nov 2020 13:38:28 -0500
+X-MC-Unique: vP25d-rpNrKVzLNT8Xy7Rg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 837815F9C2;
- Wed, 11 Nov 2020 18:38:33 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 174D51006C84;
+ Wed, 11 Nov 2020 18:38:27 +0000 (UTC)
 Received: from localhost (ovpn-114-68.rdu2.redhat.com [10.10.114.68])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4F9325DA6A;
- Wed, 11 Nov 2020 18:38:33 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BB91F27BD1;
+ Wed, 11 Nov 2020 18:38:26 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 05/12] arm/virt: Register most properties as class
- properties
-Date: Wed, 11 Nov 2020 13:38:16 -0500
-Message-Id: <20201111183823.283752-6-ehabkost@redhat.com>
+Subject: [PATCH v2 01/12] vexpress: Register "secure" as class property
+Date: Wed, 11 Nov 2020 13:38:12 -0500
+Message-Id: <20201111183823.283752-2-ehabkost@redhat.com>
 In-Reply-To: <20201111183823.283752-1-ehabkost@redhat.com>
 References: <20201111183823.283752-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -120,7 +119,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: exqpjsmkbn9H
+X-TUID: 8e9DoATHY4r2
 
 Class properties make QOM introspection simpler and easier, as
 they don't require an object to be instantiated.
@@ -131,123 +130,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org
 ---
- hw/arm/virt.c | 76 +++++++++++++++++++++++++++------------------------
- 1 file changed, 41 insertions(+), 35 deletions(-)
+ hw/arm/vexpress.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 27dbeb549e..53fcaf5e4f 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2484,6 +2484,47 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-         NULL, NULL);
-     object_class_property_set_description(oc, "acpi",
-         "Enable ACPI");
-+    object_class_property_add_bool(oc, "secure", virt_get_secure,
-+                                   virt_set_secure);
-+    object_class_property_set_description(oc, "secure",
-+                                                "Set on/off to enable/disable the ARM "
-+                                                "Security Extensions (TrustZone)");
-+
-+    object_class_property_add_bool(oc, "virtualization", virt_get_virt,
-+                                   virt_set_virt);
-+    object_class_property_set_description(oc, "virtualization",
-+                                          "Set on/off to enable/disable emulating a "
-+                                          "guest CPU which implements the ARM "
-+                                          "Virtualization Extensions");
-+
-+    object_class_property_add_bool(oc, "highmem", virt_get_highmem,
-+                                   virt_set_highmem);
-+    object_class_property_set_description(oc, "highmem",
-+                                          "Set on/off to enable/disable using "
-+                                          "physical address space above 32 bits");
-+
-+    object_class_property_add_str(oc, "gic-version", virt_get_gic_version,
-+                                  virt_set_gic_version);
-+    object_class_property_set_description(oc, "gic-version",
-+                                          "Set GIC version. "
-+                                          "Valid values are 2, 3, host and max");
-+
-+    object_class_property_add_str(oc, "iommu", virt_get_iommu, virt_set_iommu);
-+    object_class_property_set_description(oc, "iommu",
-+                                          "Set the IOMMU type. "
-+                                          "Valid values are none and smmuv3");
-+
-+    object_class_property_add_bool(oc, "ras", virt_get_ras,
-+                                   virt_set_ras);
-+    object_class_property_set_description(oc, "ras",
-+                                          "Set on/off to enable/disable reporting host memory errors "
-+                                          "to a KVM guest using ACPI and guest external abort exceptions");
-+
-+    object_class_property_add_bool(oc, "mte", virt_get_mte, virt_set_mte);
-+    object_class_property_set_description(oc, "mte",
-+                                          "Set on/off to enable/disable emulating a "
-+                                          "guest CPU which implements the ARM "
-+                                          "Memory Tagging Extension");
- }
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 531f3a122a..da25ce3b2c 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -755,11 +755,6 @@ static void vexpress_instance_init(Object *obj)
  
- static void virt_instance_init(Object *obj)
-@@ -2496,34 +2537,13 @@ static void virt_instance_init(Object *obj)
-      * boot UEFI blobs which assume no TrustZone support.
-      */
-     vms->secure = false;
--    object_property_add_bool(obj, "secure", virt_get_secure,
--                             virt_set_secure);
+     /* EL3 is enabled by default on vexpress */
+     vms->secure = true;
+-    object_property_add_bool(obj, "secure", vexpress_get_secure,
+-                             vexpress_set_secure);
 -    object_property_set_description(obj, "secure",
 -                                    "Set on/off to enable/disable the ARM "
 -                                    "Security Extensions (TrustZone)");
+ }
  
-     /* EL2 is also disabled by default, for similar reasons */
-     vms->virt = false;
--    object_property_add_bool(obj, "virtualization", virt_get_virt,
--                             virt_set_virt);
--    object_property_set_description(obj, "virtualization",
--                                    "Set on/off to enable/disable emulating a "
--                                    "guest CPU which implements the ARM "
--                                    "Virtualization Extensions");
+ static void vexpress_a15_instance_init(Object *obj)
+@@ -796,6 +791,12 @@ static void vexpress_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = 4;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_ram_id = "vexpress.highmem";
++
++    object_class_property_add_bool(oc, "secure", vexpress_get_secure,
++                                   vexpress_set_secure);
++    object_class_property_set_description(oc, "secure",
++                                          "Set on/off to enable/disable the ARM "
++                                          "Security Extensions (TrustZone)");
+ }
  
-     /* High memory is enabled by default */
-     vms->highmem = true;
--    object_property_add_bool(obj, "highmem", virt_get_highmem,
--                             virt_set_highmem);
--    object_property_set_description(obj, "highmem",
--                                    "Set on/off to enable/disable using "
--                                    "physical address space above 32 bits");
-     vms->gic_version = VIRT_GIC_VERSION_NOSEL;
--    object_property_add_str(obj, "gic-version", virt_get_gic_version,
--                        virt_set_gic_version);
--    object_property_set_description(obj, "gic-version",
--                                    "Set GIC version. "
--                                    "Valid values are 2, 3, host and max");
- 
-     vms->highmem_ecam = !vmc->no_highmem_ecam;
- 
-@@ -2541,26 +2561,12 @@ static void virt_instance_init(Object *obj)
- 
-     /* Default disallows iommu instantiation */
-     vms->iommu = VIRT_IOMMU_NONE;
--    object_property_add_str(obj, "iommu", virt_get_iommu, virt_set_iommu);
--    object_property_set_description(obj, "iommu",
--                                    "Set the IOMMU type. "
--                                    "Valid values are none and smmuv3");
- 
-     /* Default disallows RAS instantiation */
-     vms->ras = false;
--    object_property_add_bool(obj, "ras", virt_get_ras,
--                             virt_set_ras);
--    object_property_set_description(obj, "ras",
--                                    "Set on/off to enable/disable reporting host memory errors "
--                                    "to a KVM guest using ACPI and guest external abort exceptions");
- 
-     /* MTE is disabled by default.  */
-     vms->mte = false;
--    object_property_add_bool(obj, "mte", virt_get_mte, virt_set_mte);
--    object_property_set_description(obj, "mte",
--                                    "Set on/off to enable/disable emulating a "
--                                    "guest CPU which implements the ARM "
--                                    "Memory Tagging Extension");
- 
-     vms->irqmap = a15irqmap;
- 
+ static void vexpress_a9_class_init(ObjectClass *oc, void *data)
 -- 
 2.28.0
 

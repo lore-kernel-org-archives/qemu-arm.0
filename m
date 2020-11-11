@@ -1,121 +1,144 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp279078lfb;
-        Thu, 19 Nov 2020 03:31:00 -0800 (PST)
-X-Received: by 2002:a17:906:4c41:: with SMTP id d1mr29240597ejw.485.1605785459969;
-        Thu, 19 Nov 2020 03:30:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605785459; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp465574lfb;
+        Wed, 11 Nov 2020 06:35:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwrdBEpmz8B+hrrGu2CDpkXLTjusp9uZ3QgYpxwvkXTo8dN7ztsVykPMLZaLbLVpWgGka2p
+X-Received: by 2002:a25:3c81:: with SMTP id j123mr34604865yba.359.1605105356118;
+        Wed, 11 Nov 2020 06:35:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605105356; cv=none;
         d=google.com; s=arc-20160816;
-        b=c2w3dsKNnDgPp7gKpifqaqGELZfxVgspp+doQklIn+pATNTjkT5hy4na21WDfbfYCs
-         mIakONFOBN0no8iYDS8pNprhcFVgoAusZtxLuo2dKdR0cdZd+jOtmcRFnWAoi3dnoJnM
-         WZTQlWKKe3zdgr0kaHyWYonXdjcTTFA6Zjty0YHrmj0NFjXn9y8Bm0TVLix+1O3oJxwq
-         wW/dg4TP/NunYnb7iYdRQ02UtUqRMIa4QxXTVik+uqoVFtdU6Bn7iAhjE/Ws0/b6IsZ5
-         ASD0SiZjDRgrulGNzIGIOXCz8usMTWFMoiR8SUhx3NCOTuA7qKEfsTOc0qfFQ7tul3cp
-         FOag==
+        b=atJAGOutP4GWn5S+qQZRs3Sp4jEjnhtErCo/lczKio5oWYP4Ec1RuiAw7v2ARvLe0y
+         43oOka+wN+F1psyoWNK6x1gsnAroZfjg5ciktLPX0fbeHcQQNiom+PXofCExeCKxkrA0
+         hBOptvwVtiPbC6FqNIwXHkOmK4sJT8qZHc8+lqtsykOKHusDm7PRZJDbjYq5jvJtMHKc
+         6345VcXIokQj5ITJc98JIpD6nDfR8fQSCoZSqQEpAZ9Kzfv3UaiONRCNzf1hRJ53IlrS
+         lqH6nyms2i2j+VemdBPL1hF92w4iyKihlwE1i5uW7BJprBJIAIDv7qS2IUXj1uB4p9/N
+         LHng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7HGC4DUpvTfkOOBmLvB80Rvp82QobPgkqhW3vgKExlo=;
-        b=Mr708Nkdjv3md7X5yPF7xWFZuoik2a/8Y/VILqdZuU0niYaXL2UVH1ET+H/tBp1Bc0
-         7nzhDcEYyB560JJrv/SfzuWEg6AUuyWyPLEHEFbketNUQ7hCrHRn9OJPViuMrBD8WypV
-         lg/n/FBco0kwmO1/NG5LvMRh58w2yER5ibMqVnWd7WmCSaAg4i1aqP4SYo3p2g3zyIX6
-         5Bh2MY5GwarrX8xqaYAHOm5JijMiZYyVPCUUG1o2KAv83IVaMWn4BgcnSGl7biYtujvP
-         rrQcFQX7mKgYxVRphlKzObByWb5xDDKCwjIFfeZCcra7RdYI1uTYy8UFqqftQmp9BkDF
-         Ls7w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=evmH/zd1WgDle1PKcNM4t5SArloxCeaBBVoNfNLvu5A=;
+        b=MHpEh7aBHpFr1Yipr90NZ+l/Bqt5pL+fJty8BdbmdlNVBgQMOv6uU91+Xqfy2FahLR
+         VMOS3CXqyo/CGwRcSMF6mChfH1TzPv+hduTO+fvwUDQCLMLG/CkNKNmXLJYkP/yI65ot
+         Ubb32ACQqTQjJG3S2GazFm+nX20Sc3zG/VftaccOz3io490aXoZHOjqHpNJzwlLcTW/M
+         ZQ/sNoP9qFIiKnri5QpJYnk7pfauHBmNlqslnTbriASRD2yscwXJzZGeLwYL2l4YTXcp
+         s4tAzEd57qU28bjRyUON2ylGatXrOh79qWpX9P3tnfmULoxRZtvPoAoYmuhAhJ4wbMiv
+         I4Uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JpjmkKaQ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id l12sor15670191ejr.26.2020.11.19.03.30.59
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RBvXJqw0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w12si1950922ybp.90.2020.11.11.06.35.55
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 19 Nov 2020 03:30:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 11 Nov 2020 06:35:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JpjmkKaQ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=7HGC4DUpvTfkOOBmLvB80Rvp82QobPgkqhW3vgKExlo=;
-        b=JpjmkKaQkAgVim3PkfeDClB68LqjUGUqq247rtpEKYBuu9sXxTEvwQVr+MGI9NM1Vl
-         sSzKZVyvrTaB5+wh5fZ43jUGrlDocvWNSRwclt6zbADfWGhbmprDL6bR6DbTafX89imO
-         PUAgRUa1xNBAp/JjzZuveaz6yCjm9XPm9DGnYndtr5TS4Y+UcOHTiJ0ovxBs76zehfAf
-         /yTvVjtllTWEiUuXK2aWZDWxQqYZV5SvKaP0jdZ9H2AD4M6dDpT6AAX9Hi9+VtpUbBXI
-         turvjFu90n4NS6R6V4ajllL7stdmYBHqwn+yYYT5Nw/Q1dBXidczbWsd5cyfaIrVHrSR
-         euXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=7HGC4DUpvTfkOOBmLvB80Rvp82QobPgkqhW3vgKExlo=;
-        b=VOENTIXuxRZ0VQ9EVZgrUIhhdPfmQyChxpiyQ2ohjl2RNEs86lA5GMXnY5ZRrUw6It
-         9ZDZCyAVIK9jgmqwUOfWEzhN22h9ZBpH7DNzejieZhtrxXST+SaWV5GbgB6LWRtgyDQb
-         bHJx3Xxtpkga7L037QBDI3k/mhZb9ep3OTSPOQq266YBqksIku+HifgtfBclgYvsGtvl
-         13HhwQRB3vftr9LLSbrWZLGvhlbgWEYMg84fC9IxeAEsmX9Ao0CYGP2O7Qg1UIAWLlcT
-         Sgle+ACPyxFhGnQL5ZpuzGboSvwzds0U7nEOEq2r7IN7fH9tLEsEsRLdqGoxQ1VH5HAD
-         YJwQ==
-X-Gm-Message-State: AOAM533AlfMS34i8mAx/ltlteO9hIhlFfC0Ew3GDMmkA3foyFpW67k7S
-	fyvOPrPWG9Odl15HuHR917YSEZjLIcqu3h3JsGxOEYazFsGooE9J
-X-Google-Smtp-Source: ABdhPJyHVHNagYUasOvuL46YF6KTgXLnpIptCloydon3gkvRCbCi2AaTE8JEZKWBsEzrJumgsj3Szo2V9QRe75Sx7jo=
-X-Received: by 2002:a17:906:1542:: with SMTP id c2mr17673526ejd.382.1605785459382;
- Thu, 19 Nov 2020 03:30:59 -0800 (PST)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RBvXJqw0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45348 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kcrE3-0004f6-DM
+	for alex.bennee@linaro.org; Wed, 11 Nov 2020 09:35:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38230)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kcrCz-0003Ho-B7
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2020 09:34:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50524)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kcrCx-0004k0-93
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2020 09:34:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605105286;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=evmH/zd1WgDle1PKcNM4t5SArloxCeaBBVoNfNLvu5A=;
+ b=RBvXJqw0WeGrP9tw0uDmz26oYqEQRVNJyHuJ3NTZzh8xjgVtdmoxoTfAFqjVpi3QcBqTHO
+ qFKgK/Q/N8dKPfQiKUsT+9DK5ZOcXUPodpp1I7APHz60WqHCiW/SNODL+IVGnJPKewWeQn
+ wKRL2J9tDW2+uCNjqzK3slD3flCxYVg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-242-WR7tkhIPP2yTiRMbaLbj5w-1; Wed, 11 Nov 2020 09:34:44 -0500
+X-MC-Unique: WR7tkhIPP2yTiRMbaLbj5w-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B32586D584;
+ Wed, 11 Nov 2020 14:34:43 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.193.216])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0F8281002C34;
+ Wed, 11 Nov 2020 14:34:41 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH] hw/arm/virt: ARM_VIRT must select ARM_GIC
+Date: Wed, 11 Nov 2020 15:34:40 +0100
+Message-Id: <20201111143440.112763-1-drjones@redhat.com>
 MIME-Version: 1.0
-References: <20201119092346.32356-1-peter.maydell@linaro.org> <87lfexvb8e.fsf@linaro.org>
-In-Reply-To: <87lfexvb8e.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Nov 2020 11:30:48 +0000
-Message-ID: <CAFEAcA_1y4iUgBYkW=4i3AXEKowh44-pRqFZ2AimbsS+BPR8Lg@mail.gmail.com>
-Subject: Re: [PATCH for-5.2] target/arm: Make SYS_HEAPINFO work with RAM that
- doesn't start at 0
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: iIWkv2wYnnZO
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 01:42:46
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Miroslav Rezanina <mrezanin@redhat.com>,
+ philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lLfsVYNEmwrY
 
-On Thu, 19 Nov 2020 at 11:26, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> > QEMU's implementation when in system emulation mode is very
-> > simplistic: we say that the heap starts halfway into RAM and
-> > continues to the end of RAM, and the stack starts at the top of RAM
-> > and works down to the bottom.
->
-> So there is nothing to stop this value being in the middle of say a
-> loaded kernel or something that happens to overrun into the second half
-> of memory? AFAICT if an initrd is ever used it will likely smash that.
+The removal of the selection of A15MPCORE from ARM_VIRT also
+removed what A15MPCORE selects, ARM_GIC. We still need ARM_GIC.
 
-Correct, but the only code that uses SYS_HEAPINFO will be
-the libc runtime startup code in simple 'bare metal' test
-applications, which are likely to be pretty small.
+Fixes: bec3c97e0cf9 ("hw/arm/virt: Remove dependency on Cortex-A15 MPCore peripherals")
+Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-> > Unfortunately the code assumes that
-> > the base address of RAM is at address 0, so on boards like 'virt'
-> > where this is not true the addresses returned will all be wrong and
-> > the guest application will usually crash.
-> >
-> > Conveniently since all Arm boards call arm_load_kernel() we have the
-> > base address of the main RAM block in the arm_boot_info struct which
-> > is accessible via the CPU object.  Use this to return sensible values
-> > from SYS_HEAPINFO.
->
-> It's certainly an improvement but it feels like it could be a bit
-> smarter. Maybe it's not an issue for sort of things that use
-> semihosting?
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7d022eeefdbc..e69a9009cf0a 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -6,6 +6,7 @@ config ARM_VIRT
+     imply VFIO_PLATFORM
+     imply VFIO_XGMAC
+     imply TPM_TIS_SYSBUS
++    select ARM_GIC
+     select ACPI
+     select ARM_SMMUV3
+     select GPIO_KEY
+-- 
+2.26.2
 
-This is what the comment about "TODO: Make this use the limit
-of the loaded application" is about -- in theory if we know
-what the ELF file we've just loaded is we could put the
-heap start there rather than just assuming "the loaded
-application is probably not using half of RAM for its image".
-But the benefit in trying to do that is not great and the
-complexity is quite large, given how many ways we have of
-loading guest code. (I guess the theoretical ideal would
-involve asking the rom-blob code for the largest available
-empty space?)
-
-thanks
--- PMM

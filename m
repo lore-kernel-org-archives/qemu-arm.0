@@ -1,113 +1,133 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4889206lfq;
-        Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
-X-Received: by 2002:a17:906:6ce:: with SMTP id v14mr5419335ejb.451.1601410020415;
-        Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601410020; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp582033lfb;
+        Wed, 11 Nov 2020 08:57:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzzAUmOdaqrwADVUzWAqil4LJfquOa2LsdGiHlgAZh9kk+yrsAmD8ngCiGo5+dLKeFt0Ks2
+X-Received: by 2002:a25:4943:: with SMTP id w64mr34663989yba.178.1605113821582;
+        Wed, 11 Nov 2020 08:57:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605113821; cv=none;
         d=google.com; s=arc-20160816;
-        b=gmzPqEeOaI/bTS+1oDt6obHJ6VGceR+Bn/Mb2lxZ/R+Z8NpC81g15O09TBD4ZIV++R
-         EkSZW7YBZylekinDW56b6Aklk/A/cgwOk34s7rAzGpawh4nw9aDSK4h0Sb3E/X72yi/D
-         Ytn6Jf5jO1UVtZasW3avj5TBOzK1FGkRYFQEjTGZ9YhYjJo9HlOfkRXasy0A+PKfo7u5
-         4ZwOK7orGmNbSIQ+UVg7a/J3wrnJYqMzL5H+czGKXP93FUwS3O4DTYBmumGQjtYX0eyM
-         qN5is5zJ6OomAyVIozw6UDdp612PBPAbtKnIghd+W2p4iW0ot2LVFNyGfxDGTde0mO2m
-         2wOw==
+        b=pngnQtMKQjzIskYktViDJ2wtKEStLveW25+LdOIKPCatZyv7K3GFYfjt3ArdzKxtt5
+         5m924jrJrjBdsTADu2q8by+G/bIMGi0jlv7Ji81bz2xvqrxR1OVai4o7Vq/UGWstXNgs
+         2F5vjLxCORgERZcvokmQbaJQPbXyBKuK0drMMTRCInFQkBtaXuF7WPOLWJPFNLrtzuHj
+         bEixOgdMkKppzVrqYCGELk7BwiIu0zN5n9Onz/jab7Pxh0Op6PyOHPt4Jb8ao41wKgWQ
+         MqjfkG8Ca80cX/6QW8nDS3p8OVPLliJKPMojuxOW+hhsWByUUFa+4rgO4yDlf/9iVksi
+         4gbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=u1h2fvvT4OPp+mDt9BSuEIwI1NU5rX5oD8xSPHyS3oE=;
-        b=stL0J9jQD4UtxEmdIejSI6+rV7iTYEw0SmJpRDb14H4K6/U9/ReiubXN6csJooNpBe
-         ep8TKI1pE81tbV+h7JhbYhn7hqyNoCHW9kVqQW+MOAt/xuub/ci5P1LHBTCNMnxqOTBa
-         MdmppiLyI2+923QpeB4JqHVHB7r1rduzoz3ZoDDbtwRweRnU5GKRKwDE8nhkKw929PF+
-         xhftmnBstV7GBLlk/At5TznXQPv24jBMJ5+hRKVrbD0NxAnKs9SPnvBa4VX74eSUbRN8
-         BLH436rLrhtkX5w1JVJ8fwSuiU4dwP5kuiCYaZlK/TrAaCbRFgpcCngJQz0sKxHcRk6q
-         ziPg==
+        bh=lVjodM7AR3am98ya72xxuuQfZRvObgabsayn5FTtiJ0=;
+        b=MrJTWgrov4KxEE5amYwSi2PyVi3RXgj5tffCQPiu+9CeZT1WvwE/M99bA0JCloThMY
+         bxKsaEOniZpS7SKel8D2Cy+iCd9vxF53JDDAqHUK1XE8cgGuX6JDaKh0qKKzgXPuD9QD
+         2hxH/OA5aPrkDeOsKi6kDMlqLdnAhuklJSUuv1mHvO/4vcuMmQjkMdKnKU0SNYeUgVc1
+         +RifIMAhJuYLj/TuQNW1FI9FsQKM/3O6Yl+a8zHRGMsk0wqoEIs+GYn239BgaXBfypLv
+         WbzATV2AXTJLeyQmbSiQi7sPIibI9+EWMVZkK8/iaTOyUMJinNqF4c4wTGYsbOLSrJP8
+         +Ftg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t0WcvVom;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ySjhuej1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id z23sor3774554ejp.33.2020.09.29.13.07.00
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k10si2216032ybh.231.2020.11.11.08.57.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 11 Nov 2020 08:57:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t0WcvVom;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ySjhuej1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=u1h2fvvT4OPp+mDt9BSuEIwI1NU5rX5oD8xSPHyS3oE=;
-        b=t0WcvVombLhwdXdTCcUWhl2itrZyb/IumcAxL3uVxGyb+WGHU7Uoz2ogoqkVeZAGQG
-         gW2aYszOTJ2aNsbB+Z7NeadAmAPSpjGCuOEUp39eBda8VphQlH9gIWkuTtSj77LJ420/
-         vF54QA5aweY79WlMUb7c3cN0o9CvJGUE+WTyQte3ECfZObuWUpdj9EPiWNEYkwgpj7GH
-         ascElJ35lrz2DMJ0n/C6k96ywcVccRucu9kHhvLPb3qgPv1z0IcZoajuknEAnKVtrnzt
-         ViwIn7o/SNtjAmnE92xgSNB+qc6WQwHs3Wp8lIFhQqnKMy71Vse1JvjQELUunP9Uqndf
-         0miw==
+Received: from localhost ([::1]:55290 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kctQb-000649-0K
+	for alex.bennee@linaro.org; Wed, 11 Nov 2020 11:57:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46908)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kctQR-00061v-UL
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2020 11:56:51 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:36501)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kctQQ-00052Z-0c
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2020 11:56:51 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id o21so3720867ejb.3
+ for <qemu-arm@nongnu.org>; Wed, 11 Nov 2020 08:56:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lVjodM7AR3am98ya72xxuuQfZRvObgabsayn5FTtiJ0=;
+ b=ySjhuej1oWd0m9O6TGHTZ2PS5I6eJYqTifEjLQHT6qpjhT6tQNFgqtVwC2Qj1MUhmL
+ vIZD6nWgCbKPJW3E/o0219CjJ5mbzxmr06W3eCkN41B9kavLH+thfp3xzTcisOqjK1pn
+ ceXuy38hbTOjGwLC5+JmRQV5H5hw9uQFdlpIdztHHGBIGkdNi1U9mbrV8sDhpfjcwyuf
+ j0tGtpXf4JR6XwpbZsuSoX8409f5rsNEwJJT+kwc0x3QK67g9gE0Hb7NCqAA6MJzemwm
+ gViq/YTZle+GK6ZFXaho5rkT8pBAbQBv64rF5OUedwdFnMIg6dgYdQBbfV3kpR0Q5seQ
+ ZN8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=u1h2fvvT4OPp+mDt9BSuEIwI1NU5rX5oD8xSPHyS3oE=;
-        b=eHhz7Rv5x9qcNGc9QlCAsld2jv5510mSQ9E1pPUcdGbi3hqUmFdPpUrXhXCiTNuuiY
-         kyJRPZEf3QK8edcwTejxRa9F6PWIf/VWpLq23tT+9exkYgnvDwqCR1v+lWgamdq7snkA
-         bk5ZTjDVi6H9ov7xev137hDCwR61U+Dwv6IoUBswWBuYyfg8zzpQ84UGl0afDnSXRnOb
-         PMymIBLX8qVHOvTdowoklJS18g9zp6vyuqU2cawaN51CVLqYWqK9RDISE0sELto7dVQE
-         +Uf+1wy8373M2SvlaB7qmdnHTr4vsv2PR+nUVaidqtnE0G4YrFOG+kDbqSdbb/CXiduu
-         MUnQ==
-X-Gm-Message-State: AOAM530OL5mhqLT7MT4auZRqh+xV2A3qADgrH7M55N3gAAFF7d4istRp
-	XShAz6NWT+KAD2B32/uihgtqJJS45e1YLdDo1MSHNlK8
-X-Google-Smtp-Source: ABdhPJzNvPmfpqeFF5weiJ06WOCbfrwLMo30g1vXELPjVSGmAHTe0OlZZUhZENuMjibdqJ8Ah+loAU7hXvzaKksnKQA=
-X-Received: by 2002:a17:906:d936:: with SMTP id rn22mr5774019ejb.4.1601410020098;
- Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lVjodM7AR3am98ya72xxuuQfZRvObgabsayn5FTtiJ0=;
+ b=ZEuzlmduMBj+4/JKp5QoAVqawHcUCBZ5Nb3ZihDGvJB183GNdfjHl1QO/TEs6heHLX
+ LgknXUIPHqKVs9lM2JsWPIPbQA7ojXXtYgszhuZcUp4yLDREf45Pt7S4F3LR3WFvkXNq
+ PSSe4qg3rzkDYqDpCwHq9RKyhlIz+M8wt3N0+wG2TTtAMej5pgwFKBf7G2OQmn/a3pOq
+ zdlZp7IuSjzbnCpkWbUZaKeBxzHWHypDG1B7k+KTIDQXILH+CPOObKlzjA6v0/g9IiZU
+ RyTGjMTUG6E/79FNkmAdFhstDvZemGxkx1mKfWqNeICdTSv45pcNTC239G1hTiWGeebP
+ zjfw==
+X-Gm-Message-State: AOAM533jJJbc+hkuYyc9x8G5izZzJkLAemAmgygCyUZ29uVy3Tr6Ed5B
+ C5oDVmcjFWQGsyYMtUg+BbvFMxXPvn4s3No2UG+5Xw==
+X-Received: by 2002:a17:906:6896:: with SMTP id
+ n22mr27475695ejr.56.1605113807744; 
+ Wed, 11 Nov 2020 08:56:47 -0800 (PST)
 MIME-Version: 1.0
-References: <20200316160634.3386-1-philmd@redhat.com> <20200316160634.3386-18-philmd@redhat.com>
-In-Reply-To: <20200316160634.3386-18-philmd@redhat.com>
+References: <CAB+VpJkthrifUseJdx667T_UL=579ySZ=v6+aW8bWYBcsg08Wg@mail.gmail.com>
+ <CAFEAcA_RCZfCjk2_KQ=_9fhz1O6A6Ev+GNAOTmGThnAHBaxs5w@mail.gmail.com>
+ <CAB+VpJkQR0kd1MY8jnv+oCVKzGq1MJR15ed1tG-MO2-d3R41Vg@mail.gmail.com>
+ <CAFEAcA_p8_WfVYtxAiDJS2P2Y622Xcb-k01AJzkqtBy776Co0g@mail.gmail.com>
+ <CAB+VpJkXhLTbf-REe5PXO=m_wahEr1pJMaCNYyVA0MUYLhXq8Q@mail.gmail.com>
+In-Reply-To: <CAB+VpJkXhLTbf-REe5PXO=m_wahEr1pJMaCNYyVA0MUYLhXq8Q@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Sep 2020 21:06:48 +0100
-Message-ID: <CAFEAcA-Rt__Du0TqqVFov4mNoBvC9hTt7t7e-3G45Eck4z94tQ@mail.gmail.com>
-Subject: Re: [PATCH v3 17/19] hw/arm: Automatically select the 'virt' machine
- on KVM
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	kvm-devel <kvm@vger.kernel.org>, Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>
+Date: Wed, 11 Nov 2020 16:56:36 +0000
+Message-ID: <CAFEAcA86DhK_Y46yHsn3TqVQ6rqkPWRvzZP0Q7zvUC0-mMaNQw@mail.gmail.com>
+Subject: Re: Error while configuring Qemu
+To: Rajan Singh <rbsingh1983@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: dnNqgPzCf+GY
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CnaJlysecEvv
 
-On Mon, 16 Mar 2020 at 16:08, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
+On Wed, 11 Nov 2020 at 16:52, Rajan Singh <rbsingh1983@gmail.com> wrote:
+> I am noe using ubuntu20.4 and doing all these configuration.I am getting below error-
 >
-> When building a KVM-only QEMU, the 'virt' machine is a good
-> default :)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index d0903d8544..8e801cd15f 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -1,5 +1,6 @@
->  config ARM_VIRT
->      bool
-> +    default y if KVM
->      imply PCI_DEVICES
->      imply TEST_DEVICES
->      imply VFIO_AMD_XGBE
+> ./meson.build:568:2: ERROR: Dependency "sdl2" not found, tried pkgconfig and config-tool
 
-What does this actually do ? Why should the choice of
-accelerator affect what boards we pull in by default?
-I can see why you'd want to disable boards that only
-work with accelerators we don't enable, ie don't build
-TCG-only boards unless CONFIG_TCG, but this is the other
-way around...
+It says it can't find a dependency. Install it if you care
+about SDL support, or don't pass --enable-sdl to configure
+if you don't.
 
 thanks
 -- PMM

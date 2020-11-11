@@ -1,158 +1,168 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp560211lfb;
-        Wed, 11 Nov 2020 08:28:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzMR2INdJFvVaRGngr70vkbBu+yhS8SEVUggwozhm87IOlZO10rIKdLxKI70gIhetfh+II3
-X-Received: by 2002:a25:7453:: with SMTP id p80mr17600598ybc.31.1605112098176;
-        Wed, 11 Nov 2020 08:28:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605112098; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp566630lfb;
+        Wed, 11 Nov 2020 08:36:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJySzDBSj22bQZ1u07/lOAcjCrdQXMyJL0PILYAOKWOmjbN253iOgilnZWGq74iovxHR3RUu
+X-Received: by 2002:a25:80c7:: with SMTP id c7mr29334148ybm.337.1605112579863;
+        Wed, 11 Nov 2020 08:36:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605112579; cv=none;
         d=google.com; s=arc-20160816;
-        b=qxGfAfcmU5wd7z5VE8A7tsZW14Nqp/gLyE2wkJIX90e9FClRcWpWc8rkMoBo1OsQxr
-         cM/DubbPAOfd5yg3hH0MGORWWOckONrNYpqG5h59xC1jN27SOoPBlqd07MQJxEDZbuRN
-         NsD/KYv61K+a4oZqB2u2NGu68v4rsgXUu+hwo+HPBMDIajMDLM90dXv20OYorUroTAfP
-         SI8cRCmNQ0yIhYLu7GJQX2Rm4RHVOXND0IFEolJ5aZlM9O+9JnikfTUwQeDB2iJ+5dpI
-         aF8BnlpPeSoFiXUx6IEGysYjmkv7b8oHFprP+dNlJ39DsgVG+bPnM589VMs1XYqHCLnf
-         cxaQ==
+        b=hDbueYbSZ/c0m0uNfYby60VBrgpZIEMhPF2+tgaIK+8oWE9JFSmFasDdi9qAU6eDhc
+         /rFRhCIGcbbm9rVBovod+p7y/A+hdn07ym/a51OXbM8gdCjp+Qwvdl6tJ82ZYIxix+hK
+         NE4Yv/wZEt7cuCS/BgDfI85P10Fj4fgscsJhFD6EGGYy4R/+amm3+lSNDg2nxOjWUwfn
+         11icz+DzkQZRfWPBReHmtcrXTY/fWvuEXzfkVKE0KsGoYaZfeWQyMpcjJYbs6kRCXKC/
+         cA5bhqxGDIcTXvnaZ3oAjI8PKK7tuegDb4M0HWOfwedm8dJggiIde4NfCoBZKVlbNSgW
+         eniA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=XXdJYMfM44xRP9NFNPlUK6ahc2qQUbcJg1UILLNLaWE=;
-        b=XtIgxAtriNNYBwAy/AtngVX3kAjjoaC13dBQqnSVpvGlM4YrwmOB39ajObldaa7g3m
-         NhJydGPSuYiyE+4vP3oiMJmE4QTI/ZOOSMa55+/NMPBrY6/T9tQtZqqNNOmTlTRUwfmu
-         n7b5pM0L6hw92R9Zo1lxVgpevmaMqrr02S2mpUmIj+ObWBT7hXT7tDGtOVl+8pCyYQYe
-         kjUyXdGSh3U0O2jkisRkWaMW//xAwXbqR3XIcSCWaQhlOt+JvfXeU9Gi9J+DPMpWfuxR
-         3j0QAzWrRgU5Zl4n9+AB0jGblv3HSqmVK50IMopD55iSA9dCSGibcxamSLgNtsVLpWIX
-         wlkw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=B/vRJ2RllFvFMmBYqjG/z5rV9dX53YhvjUB8h0SqF+0=;
+        b=b6UJc7bxvliHGTKeio/hDRhiqLJLXZwnlJR7BqgG0f7KR7vL6hknTHFugOsqCR4v9k
+         mBL/gec0H9MJ6ERSTA9NaE0WCXIB460yoLZ93zgKTNnAqIlVY9PGp+c/YOGs5Ym2PDOF
+         PT4V/2Xu+XBco4e7b8VKbl2sRuMMp1MQh3n8jjMYhU3E47tdinBvPNky1Ab0akgwqjdt
+         +qXZP0iRhPeSFv559/PL1x+bMSoUHgIleSEEBIS6Kmdm4z69a19iKBvHWY/pT1D8NMtL
+         J3CKTwu1W1bWpyiDeYBi4BAqjvnNFgffMGbni4bZ6iYa08HJu+TjA9iiKjB8OaSdiZFt
+         PFew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="j/thcT37";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U4RM1opS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t39si2538253ybi.74.2020.11.11.08.28.18
+        by mx.google.com with ESMTPS id e134si2402902ybb.317.2020.11.11.08.36.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Nov 2020 08:28:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Nov 2020 08:36:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="j/thcT37";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38148 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U4RM1opS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kcsyn-0002No-G9
-	for alex.bennee@linaro.org; Wed, 11 Nov 2020 11:28:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39408)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kct6Z-00005Y-5k
+	for alex.bennee@linaro.org; Wed, 11 Nov 2020 11:36:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kcsyJ-0002N3-6m
- for qemu-arm@nongnu.org; Wed, 11 Nov 2020 11:27:50 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:47075)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kcsyF-0002nH-Gc
- for qemu-arm@nongnu.org; Wed, 11 Nov 2020 11:27:46 -0500
-Received: by mail-ej1-x633.google.com with SMTP id w13so3520915eju.13
- for <qemu-arm@nongnu.org>; Wed, 11 Nov 2020 08:27:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XXdJYMfM44xRP9NFNPlUK6ahc2qQUbcJg1UILLNLaWE=;
- b=j/thcT37pwtqV+ucEQTpc1HngbBwLCGrn22Y/t38RzH5p0i/jLbCSpC3H4KpnB6dIM
- bxRWbyp2Cq0lUXqOsfrGbh5n5Li7a8niG4G37Fxa1BK0Z2vUpaXRuMfrY7bKENB3Va8j
- HPShzyrAcNKkXLZbKNuAQnjUTPBvYiWN/3/tdiE/J38Whpq5rHy5PqKlVslI/d+K9k12
- u4G8Iie+0KsUTviqxlLnrLXMnvbb0umOb4TudEtMW4T+jNUOYawuBMMY3nFWfJi2iMrs
- pELFNvNypyACdALuQBOTMmHKPZgExiy5bprC7Nva90jR6TerddqOLv0j5sYvGfrjq9uU
- 0ZSA==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kcsrJ-0003VJ-Gw
+ for qemu-devel@nongnu.org; Wed, 11 Nov 2020 11:20:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:44687)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kcsrH-0000B6-74
+ for qemu-devel@nongnu.org; Wed, 11 Nov 2020 11:20:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605111630;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=B/vRJ2RllFvFMmBYqjG/z5rV9dX53YhvjUB8h0SqF+0=;
+ b=U4RM1opStdd+0q/EteAdxixZOCAre6aNU5b8c1dyKWy0VdgspticLLoa87hlW/t3jW0ngQ
+ V+t+lldfwk0fh1burF/9SS92Q6fhORzM/lstm6oDvu9s2eiG2vPJrYMj4ISNcnVY5fuW82
+ KDYNaM4mnsjzSL+zP7DyxsPope8OCDU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-276-s09JENJ9PByE2Mc4naav0g-1; Wed, 11 Nov 2020 11:20:28 -0500
+X-MC-Unique: s09JENJ9PByE2Mc4naav0g-1
+Received: by mail-wr1-f71.google.com with SMTP id r15so764465wrn.15
+ for <qemu-devel@nongnu.org>; Wed, 11 Nov 2020 08:20:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=XXdJYMfM44xRP9NFNPlUK6ahc2qQUbcJg1UILLNLaWE=;
- b=VoM1KvNNJfZ4iAuFhbjmWy1xwd8IQrpXqTTULEJ7GDFuojevgb+AbLHMjEhQp9eC9H
- cMQpSZ7OtRsWHuBSeOm0UxrlqW58Zi7+uP82JzrYefxlgDtIufEAC/r5Q1HZ1ePpDsrk
- VMgnnNYp1APWlnHFEQ+9n3Ncs/YMfiJ/w8e4SE6rn6WAmfgeNWPKI0d/W4tIQ8u/KyNr
- NhGNxur0LxXyiO+kNJy989OlKEs8ro3z0TQ+UQbJMTjph3mLzl4XEy10n4BCWDwBgf/t
- HwGR0A+7mDsRgAV8f6Vk/GTDc8/ifhfMmsh/yM6ln/nmgkn2Sh+oHY8p+1kNthx1iN2w
- kJyA==
-X-Gm-Message-State: AOAM530IRv/Ha9tX4RegSURrOXieWKIv8xi53AC+pCXPETgPY6NLwSYE
- s7vA2IJDj0l5ddGzSWeRB54JFeBRNtucdxgdKcWIZQ==
-X-Received: by 2002:a17:906:6949:: with SMTP id
- c9mr25921592ejs.482.1605112061387; 
- Wed, 11 Nov 2020 08:27:41 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=B/vRJ2RllFvFMmBYqjG/z5rV9dX53YhvjUB8h0SqF+0=;
+ b=jMoi2pFh1K4dftLa4Ef+2EKjOaks2anagxi2+TwKoFTG9rJ7QDHRo4LixTeer3Xbmd
+ HtjKgf1F1tIULxrQydkxuBzBwiX6gK290mHXD5PzmvIWt23vepPpNa5Nn/vMEtjRWXry
+ 095w6bmSRiUOofZkK7Bs/3Cs7lS6LqEyN4DikYYFGoXMAq4iiBNaRI8u0hbH8QLpt9Eq
+ IGYoePu3iD93q8Q80KxlOEpfigFPBBMf6J7IW0iHz2uNU9ZV9c+tRK0pO0teXx1fZDHQ
+ +s2K9s2ew/XvlExbCxUC4aiikwcX3swtjU3HSKhy+GG6/boUfxq8Xot3FlWasDAJFmbR
+ Fbng==
+X-Gm-Message-State: AOAM5300DXZpOZJuHMJXsM/ggE9hAKQD9GONBxix5AZTGt6c96OfXbLk
+ jWH37hVc6WXQecnbc1uQSlC9othwLyn4BMrGRpApNN4HdwH6kbi6KhBPR12Vk9DI0xdQ62eZnx8
+ rIi0JJh58q5zcJgs=
+X-Received: by 2002:a1c:7e87:: with SMTP id z129mr4979220wmc.176.1605111627243; 
+ Wed, 11 Nov 2020 08:20:27 -0800 (PST)
+X-Received: by 2002:a1c:7e87:: with SMTP id z129mr4979208wmc.176.1605111627100; 
+ Wed, 11 Nov 2020 08:20:27 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id p12sm2983692wrw.28.2020.11.11.08.20.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Nov 2020 08:20:26 -0800 (PST)
+Subject: Re: [PATCH] hw/arm/virt: ARM_VIRT must select ARM_GIC
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20201111143440.112763-1-drjones@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <2601029e-146f-5b94-6aaa-c0d6ec90227d@redhat.com>
+Date: Wed, 11 Nov 2020 17:20:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-References: <CAB+VpJkthrifUseJdx667T_UL=579ySZ=v6+aW8bWYBcsg08Wg@mail.gmail.com>
- <CAFEAcA_RCZfCjk2_KQ=_9fhz1O6A6Ev+GNAOTmGThnAHBaxs5w@mail.gmail.com>
- <CAB+VpJkQR0kd1MY8jnv+oCVKzGq1MJR15ed1tG-MO2-d3R41Vg@mail.gmail.com>
-In-Reply-To: <CAB+VpJkQR0kd1MY8jnv+oCVKzGq1MJR15ed1tG-MO2-d3R41Vg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 11 Nov 2020 16:27:30 +0000
-Message-ID: <CAFEAcA_p8_WfVYtxAiDJS2P2Y622Xcb-k01AJzkqtBy776Co0g@mail.gmail.com>
-Subject: Re: Error while configuring Qemu
-To: Rajan Singh <rbsingh1983@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <20201111143440.112763-1-drjones@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 01:42:46
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LDfvmWlMi5YY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Miroslav Rezanina <mrezanin@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rD6UNqCn4g1Q
 
-On Wed, 11 Nov 2020 at 16:06, Rajan Singh <rbsingh1983@gmail.com> wrote:
->
-> Hi Peter,
-> Thanks for the information.It helped me.
-> Now I am getting an error regarding meson.Could help to fix this .
-> Here is the screenshot of the error-
+On 11/11/20 3:34 PM, Andrew Jones wrote:
+> The removal of the selection of A15MPCORE from ARM_VIRT also
+> removed what A15MPCORE selects, ARM_GIC. We still need ARM_GIC.
+> 
+> Fixes: bec3c97e0cf9 ("hw/arm/virt: Remove dependency on Cortex-A15 MPCore peripherals")
+> Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
 
-Please quote error messages by cutting and pasting their text,
-not by taking screen shots.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The error message from the build seems clear enough to me:
-it could not find the pixman-1 dependency, so you need to
-install it. The wiki provides some information on installing
-dependencies on Linux hosts:
-https://wiki.qemu.org/Hosts/Linux#Building_QEMU_for_Linux
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 7d022eeefdbc..e69a9009cf0a 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -6,6 +6,7 @@ config ARM_VIRT
+>      imply VFIO_PLATFORM
+>      imply VFIO_XGMAC
+>      imply TPM_TIS_SYSBUS
+> +    select ARM_GIC
+>      select ACPI
+>      select ARM_SMMUV3
+>      select GPIO_KEY
+> 
 
-I see also that you appear to be using Ubuntu 16.04.
-This is a version that is older than any Ubuntu which
-QEMU currently supports. QEMU may still build OK, or on
-the other hand you may find that configure complains that
-it requires a newer version of some dependency than is
-available in the Ubuntu 16.04 packages. (You can in theory
-build such missing dependencies locally yourself but it's
-probably easier to just upgrade to a newer Ubuntu.)
-
-(QEMU's distro support policy is documented here:
-https://www.qemu.org/docs/master/system/build-platforms.html
-For distros like Ubuntu with a 'long-lifetime' type release
-(like LTS), we support the most recent major version, and
-the previous major version up until 2 years after the next
-major version was released. So we support 20.04 LTS (the
-most recent) and also will support 18.04 LTS until at least
-April 2022 (since 20.04 was released in April 2020), but
-anything older than that is not officially supported and
-may or may not work.)
-
-thanks
--- PMM

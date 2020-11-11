@@ -1,78 +1,115 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp181944lfb;
-        Tue, 10 Nov 2020 23:50:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyoobMqtHgIw+mqo9/+zCVY245quGH7V9gaRgbxAeDeU7Tt5LZDjddaUl9ZSwdSa1QCUBL0
-X-Received: by 2002:a25:9746:: with SMTP id h6mr30442106ybo.222.1605081046205;
-        Tue, 10 Nov 2020 23:50:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605081046; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp491181lfb;
+        Wed, 11 Nov 2020 07:06:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzCQQv/4wCQjQT+9lqezs85ssZwHEdgKLjS27ZPW0/C2exRcQCmtRsU3ME71DvTnxr2n8q3
+X-Received: by 2002:a5b:4c2:: with SMTP id u2mr26037617ybp.39.1605107207596;
+        Wed, 11 Nov 2020 07:06:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605107207; cv=none;
         d=google.com; s=arc-20160816;
-        b=E9UOGEIwBiZPta09hPYJbbqIKwMhfsNT9i2vnNIRFvwJ9jroe59+vXqjAQhW+ftk4p
-         TZTSEuKEL8+PeLe4ZaT4siVK4lxBCRqq4lGjj01d0C9n01FEIsqFE9M+bkakkJ0iCb7c
-         rkBgc1dWvZ/fYID0lh1lFKDHEAiuQeYmgqMJ7aVENsoJDKbFhsB0/2HCjiuwj38cjFvl
-         sAGe1Ked/ZrNASSnClgKcVKjMnZwdiKwdccT47kUC58vWE3QYHUonMIhabZ8DPahr7ae
-         0jJuntVuYrlY6fjXOGQoxWmGOza53Yrfjb0Nmz+AZ6jOROEw5+zUtfYiUKa2hPXiQL2e
-         zfqQ==
+        b=Z02kLSzijsU45L+ynKAhfols5dT0oMiJrNCMdA3WYCfO1RDHhuYW3q/jy67MoqGEuz
+         ti66VgicFHJaFETdI6cn7GfX6rwW3gOEyXl0+HT7yDdQ4QfXc89fHBfB+EBO6pX/Euj2
+         1aI+Q4sh7YW+pXyOkyW/teHCnEcxNNVtiGqI8SJ2M76AiTAeub4l0BGvT8cLHm1O/VaZ
+         6yy1cMKSyP8lCTnKn2OXgidmy/hb3ZzOot1Qicdj6i+bUf/I+55ZE+tR3Z10GF37CzMU
+         FkwRrxJw4Rk1Hk3jvQNEkss+PGqjtdgB+xWOcCXrvovnB+3CGQgz6GR3q/EvbMig8aP2
+         DcRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=hBARSTGiHtWNtcGnOWMV2NbKPAxN6CAeTsn3tuzjoTY=;
-        b=tDsC3UGCsCS+WXsLHh9XQQaQnp7aDRept/+hSVeiiFghlmhYl8x5ETqWca74I/cMKR
-         KAxVx1wvr/FmJc5VNURi7GjFP07E48UUcJYLMOi4BtTDt+fg/JDK1k+hxpgdyEe6kZEx
-         UNE9RVenmrQwhhzh6+S1JlvVj0XWgT1/MtacCPjudAFfOphPKmv4qsWeUvvhE6t1/FFc
-         8wLl4tEX9wLM1g744k1ktR8FMIPlZk3o+ozwWniBhVYOTWM2vo//YgPyGnWhKgAMOXHJ
-         mvQVwWi1QguxkLwGpRwZjNojFHbaxrUhgNiDcQuKBWiJ6FekkCSidtgkQx4+iBMsc4jt
-         k0lQ==
+         :thread-index:thread-topic:mime-version:subject:references
+         :in-reply-to:message-id:to:from:date:dkim-signature;
+        bh=YFGgGHziEt4AmBZM7aYh7Cp620vy9zCDQSjSYRXHluo=;
+        b=y/spTKh8ok7M5zRm1NrG7i4mGfkNrUV1L9+gqza6Zi67nt+6pA0SdPViIbTzZ9VYff
+         ZUFDabXjFSnPDZo7QsaNcjwV6cq8o31WdqwrgM0RliyFmUH4EzhVDXt/+/l6M7CL0uzk
+         ho/vRDQf3hMScwIhDlm9WW0WMMAhly1WMAasImIrVJr+/bIwcwfECU5sf5RJk2g/iRm0
+         0We+nyRfntAhQWA9EDiGy2JkXeBHQXcYlxGcBvZE+MK+EYZ5BOcBKSLdO9suLcivWprl
+         VqCFYECqzbITBhAQJLUNm6yogm1srV/gt2ZqGi1IrlyKsC0NgouxJOyM0qXHRHqpCoeM
+         lvwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YEtwXAtG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x22si1581816ybi.83.2020.11.10.23.50.46
+        by mx.google.com with ESMTPS id 197si2126464ybc.33.2020.11.11.07.06.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Nov 2020 23:50:46 -0800 (PST)
+        Wed, 11 Nov 2020 07:06:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37900 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YEtwXAtG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kcktx-00059z-L3
-	for alex.bennee@linaro.org; Wed, 11 Nov 2020 02:50:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52568)
+	id 1kcrhv-0007TD-0N
+	for alex.bennee@linaro.org; Wed, 11 Nov 2020 10:06:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kckrn-0004L1-DY; Wed, 11 Nov 2020 02:48:31 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2518)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kckrg-0006tK-TN; Wed, 11 Nov 2020 02:48:31 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CWH073s0SzhkQM;
- Wed, 11 Nov 2020 15:48:07 +0800 (CST)
-Received: from huawei.com (10.175.124.27) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Wed, 11 Nov 2020
- 15:48:08 +0800
-From: Alex Chen <alex.chen@huawei.com>
-To: <i.mitsyanko@gmail.com>, <peter.maydell@linaro.org>
-Subject: [PATCH] exynos: Fix bad printf format specifiers
-Date: Wed, 11 Nov 2020 07:36:51 +0000
-Message-ID: <20201111073651.72804-1-alex.chen@huawei.com>
-X-Mailer: git-send-email 2.19.1
+ (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
+ id 1kcrho-0007Ra-2A
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2020 10:06:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48186)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
+ id 1kcrhm-0007mW-Cw
+ for qemu-arm@nongnu.org; Wed, 11 Nov 2020 10:06:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605107197;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YFGgGHziEt4AmBZM7aYh7Cp620vy9zCDQSjSYRXHluo=;
+ b=YEtwXAtGPmGm77kmhQWqIJqrzX1GT4pprU4nr8EDp3eJPClTFas8M324CvLRI1lFPkGmKq
+ DLpPDYfKz+A+tzNNkySb8ea94kS6CNJG743uw1yjW1+fRa+oUC3MP2TMjA8zzMLwUwQ+Fp
+ tZJR//+TV7JqSV9weA/lVwoHf80DFDM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-28-ELv4Wna7PMq-HjZPi8yAnQ-1; Wed, 11 Nov 2020 10:05:26 -0500
+X-MC-Unique: ELv4Wna7PMq-HjZPi8yAnQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E00951E5C82;
+ Wed, 11 Nov 2020 15:05:25 +0000 (UTC)
+Received: from colo-mx.corp.redhat.com
+ (colo-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D6C9227BAE;
+ Wed, 11 Nov 2020 15:05:25 +0000 (UTC)
+Received: from zmail17.collab.prod.int.phx2.redhat.com
+ (zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+ by colo-mx.corp.redhat.com (Postfix) with ESMTP id B6A9958100;
+ Wed, 11 Nov 2020 15:05:25 +0000 (UTC)
+Date: Wed, 11 Nov 2020 10:05:25 -0500 (EST)
+From: Miroslav Rezanina <mrezanin@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <1888391810.22919498.1605107125694.JavaMail.zimbra@redhat.com>
+In-Reply-To: <20201111143440.112763-1-drjones@redhat.com>
+References: <20201111143440.112763-1-drjones@redhat.com>
+Subject: Re: [PATCH] hw/arm/virt: ARM_VIRT must select ARM_GIC
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.124.27]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=alex.chen@huawei.com;
- helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 02:48:17
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.40.192.178, 10.4.195.27]
+Thread-Topic: hw/arm/virt: ARM_VIRT must select ARM_GIC
+Thread-Index: JuozD2lwYiGtkrz8S11rhaXPScxz3A==
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mrezanin@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mrezanin@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/11 01:49:01
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -85,83 +122,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: alex.chen@huawei.com, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
+Cc: peter maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm@nongnu.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yopDstuECXgT
+X-TUID: fmOgl7cODdfM
 
-We should use printf format specifier "%u" instead of "%d" for
-argument of type "unsigned int".
+----- Original Message -----
+> From: "Andrew Jones" <drjones@redhat.com>
+> To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+> Cc: "peter maydell" <peter.maydell@linaro.org>, philmd@redhat.com, "Miroslav Rezanina" <mrezanin@redhat.com>
+> Sent: Wednesday, November 11, 2020 3:34:40 PM
+> Subject: [PATCH] hw/arm/virt: ARM_VIRT must select ARM_GIC
+> 
+> The removal of the selection of A15MPCORE from ARM_VIRT also
+> removed what A15MPCORE selects, ARM_GIC. We still need ARM_GIC.
+> 
+> Fixes: bec3c97e0cf9 ("hw/arm/virt: Remove dependency on Cortex-A15 MPCore
+> peripherals")
+> Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 7d022eeefdbc..e69a9009cf0a 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -6,6 +6,7 @@ config ARM_VIRT
+>      imply VFIO_PLATFORM
+>      imply VFIO_XGMAC
+>      imply TPM_TIS_SYSBUS
+> +    select ARM_GIC
+>      select ACPI
+>      select ARM_SMMUV3
+>      select GPIO_KEY
+> --
+> 2.26.2
+> 
+> 
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- hw/timer/exynos4210_mct.c | 4 ++--
- hw/timer/exynos4210_pwm.c | 8 ++++----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+Problems with missing dependencies solved by this patch.
 
-diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-index 08ee3ca76c..439053acd2 100644
---- a/hw/timer/exynos4210_mct.c
-+++ b/hw/timer/exynos4210_mct.c
-@@ -537,7 +537,7 @@ static void exynos4210_gcomp_raise_irq(void *opaque, uint32_t id)
-     /* If CSTAT is pending and IRQ is enabled */
-     if ((s->reg.int_cstat & G_INT_CSTAT_COMP(id)) &&
-             (s->reg.int_enb & G_INT_ENABLE(id))) {
--        DPRINTF("gcmp timer[%d] IRQ\n", id);
-+        DPRINTF("gcmp timer[%u] IRQ\n", id);
-         qemu_irq_raise(s->irq[id]);
-     }
- }
-@@ -1003,7 +1003,7 @@ static void exynos4210_mct_update_freq(Exynos4210MCTState *s)
-                     MCT_CFG_GET_DIVIDER(s->reg_mct_cfg));
- 
-     if (freq != s->freq) {
--        DPRINTF("freq=%dHz\n", s->freq);
-+        DPRINTF("freq=%uHz\n", s->freq);
- 
-         /* global timer */
-         tx_ptimer_set_freq(s->g_timer.ptimer_frc, s->freq);
-diff --git a/hw/timer/exynos4210_pwm.c b/hw/timer/exynos4210_pwm.c
-index 4fa3d87396..de181428b4 100644
---- a/hw/timer/exynos4210_pwm.c
-+++ b/hw/timer/exynos4210_pwm.c
-@@ -169,7 +169,7 @@ static void exynos4210_pwm_update_freq(Exynos4210PWMState *s, uint32_t id)
- 
-     if (freq != s->timer[id].freq) {
-         ptimer_set_freq(s->timer[id].ptimer, s->timer[id].freq);
--        DPRINTF("freq=%dHz\n", s->timer[id].freq);
-+        DPRINTF("freq=%uHz\n", s->timer[id].freq);
-     }
- }
- 
-@@ -183,14 +183,14 @@ static void exynos4210_pwm_tick(void *opaque)
-     uint32_t id = s->id;
-     bool cmp;
- 
--    DPRINTF("timer %d tick\n", id);
-+    DPRINTF("timer %u tick\n", id);
- 
-     /* set irq status */
-     p->reg_tint_cstat |= TINT_CSTAT_STATUS(id);
- 
-     /* raise IRQ */
-     if (p->reg_tint_cstat & TINT_CSTAT_ENABLE(id)) {
--        DPRINTF("timer %d IRQ\n", id);
-+        DPRINTF("timer %u IRQ\n", id);
-         qemu_irq_raise(p->timer[id].irq);
-     }
- 
-@@ -202,7 +202,7 @@ static void exynos4210_pwm_tick(void *opaque)
-     }
- 
-     if (cmp) {
--        DPRINTF("auto reload timer %d count to %x\n", id,
-+        DPRINTF("auto reload timer %u count to %x\n", id,
-                 p->timer[id].reg_tcntb);
-         ptimer_set_count(p->timer[id].ptimer, p->timer[id].reg_tcntb);
-         ptimer_run(p->timer[id].ptimer, 1);
+Reviewed-by: Miroslav Rezanina <mrezanin@redhat.com>
+
 -- 
-2.19.1
+Miroslav Rezanina
+Software Engineer - Virtualization Team Maintainer
 

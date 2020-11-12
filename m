@@ -1,124 +1,105 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp431968lfb;
-        Wed, 18 Nov 2020 03:20:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyww6QWZBSSS85PSvA7OZpdBVbetokMBwh31FWT0DwKv8rV8/Jv6SZ5oc2JZZmaH0ezVkKB
-X-Received: by 2002:a25:a525:: with SMTP id h34mr6631819ybi.152.1605698452243;
-        Wed, 18 Nov 2020 03:20:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605698452; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp931814lfb;
+        Wed, 11 Nov 2020 17:21:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxqwfaIerDlhu3KqnHy0hRhy+YjmVqsEbJ567nYbsHXXtIOx1RptLNVlW0NfD0BYQUdLZ5z
+X-Received: by 2002:a25:4f0b:: with SMTP id d11mr33948153ybb.147.1605144119681;
+        Wed, 11 Nov 2020 17:21:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605144119; cv=none;
         d=google.com; s=arc-20160816;
-        b=d+OnnANMPzA0c+ZeAAGZYZ/Eje9tkDA4Ni4Qv4u9wQMfj7rJEVOfFPxQh5KOBQ54ri
-         msMjfBU3Toz5zcZFR3l6orfKCIMNqingwzVM/QiD3jmRuMCUsYyWpk5b4FmqVcxXJnej
-         TZTRFYkJqWtS03UfWxHk+qaFL5TsYsQqJbFcSRnAkOMmQiAElvubIL+0iAPAEC/777yr
-         ZuTiGiff8xpwkDDeSB7wIF0foKARj6BUJwXI+OIPxH0XL3ltoYdxbU50UE/pssfDbjo6
-         X5SS2HXEUfAO8+BHC4yJPGPof9d9cbqesxpIXmTsw6FHrWg7pmc7X2M2xIhmsn42Y/2P
-         ag8Q==
+        b=m39ngsrYWugJam2k2UX0jGzWRwPxVhLudISv6ycJYcx2i5gkf7VT7Itw4xDEUrIWpe
+         Eg2ppXR0RTThW2V7HVxDbzOr+Ny0973Zew0TmvSO+1+SkxMlKQIhjxdUgKfvgty+q9qq
+         FyTU2mnu/HxT/KRP2atc/lh7C/MbFG8dFYKTQZI6GKIVOcgt/gw1aC1Epo7JTqBloysu
+         WlTZ6gcIO2mroBKOTur6oesyvljNY+19CZdeuduEVdyK20/ZXGQKUTDeMn8XhiLThpso
+         kqj/tHwvajY5RY2RJzaZWVgVp10dhH3itjLayjyt/GiNKLvqfuOVmFukgofRMdLwJs5h
+         HHEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=EZl8/CxSWmF7AzTju2hM+v9540M8PFWVuZY8YkUtu3M=;
-        b=e9modObpgeTBrmgOzgQ3ghQluRp2aB7T2x6+H+YSko/hb8GnhgqQMPiIwjqbRBmNQn
-         OzgAnyXyMP4EV/9iJJ8feNFY3MVOTIPpKuu/kR5fvJ/KZv3a38j4jz2TOj++Y37i1s8B
-         mARK2h4L3J4voBECKkC8Zz7ssEj31eHmPO8hRPb9TtCWTwLGycHw6RfIcPM9nyplU9hQ
-         /xpWbBSxv/NS8xjNHZ3YLHQZUqLk77ftzar90qcHhqOyCsdDnWaxxl3WVi5pZsyDxiI3
-         qHa5YwFi+jLiaUmeYeeGT+z3dJcsD345d8DSpegvDuJrq0BdNGdE6Sd9ob7hUV+FNDRT
-         WVNQ==
+        bh=JpwcIrysbLjsACxFbnyuE/9/eng1Yy7chNIvz+3xUgo=;
+        b=YM6Z3Laan66b4Zc7wQL8zW9y6wLrU5+Ial9P1pyL3974SeWGxyw6nQ2GQLbSmLY56o
+         BAO7FgIkXlvXj82X1r/2IT/zQq8l8xrUF9unFMayhVvjLG7Kuil7SRfRqHR1G8a0hEpP
+         MhCdc1QjCu08XB9nW9aBRNVUcvV83jFruDcE2s3lWNHUvgBrlAndKEhdOxRZAdvJg6d1
+         hoOrVHopyFQ6TzZ1PN4DfWr/b5ghx6gtwNvwQAxPcMvZcgU0T5o2X7nuzk/s3dsM6ki2
+         5tmJHsreV31aO1n3tftd0eBANX8ozVftJvojxDE+iGmUxMkz4HNXC02yMi+Z+H3w/xJW
+         dZWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=gV1YgKmz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=blqnVv8P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12si16688499ybl.434.2020.11.18.03.20.52
+        by mx.google.com with ESMTPS id h31si3273042ybj.421.2020.11.11.17.21.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Nov 2020 03:20:52 -0800 (PST)
+        Wed, 11 Nov 2020 17:21:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=gV1YgKmz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:41598 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=blqnVv8P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfLW7-00036r-L9
-	for alex.bennee@linaro.org; Wed, 18 Nov 2020 06:20:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35914)
+	id 1kd1JG-0001f6-Tp
+	for alex.bennee@linaro.org; Wed, 11 Nov 2020 20:21:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kfLU1-00008t-DA; Wed, 18 Nov 2020 06:18:41 -0500
-Received: from aserp2120.oracle.com ([141.146.126.78]:52714)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kfLTv-0002xN-4L; Wed, 18 Nov 2020 06:18:41 -0500
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AIBEDS2022037;
- Wed, 18 Nov 2020 11:18:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : mime-version : content-type :
- content-transfer-encoding; s=corp-2020-01-29;
- bh=EZl8/CxSWmF7AzTju2hM+v9540M8PFWVuZY8YkUtu3M=;
- b=gV1YgKmzjsH11pArLpZPd84tjlCuVHKtADW2SrUow5Xm134s7xT4EcpAMsGaLpvQfhJj
- 2Vtj4uOfuaq/zzHqekzuw7d5hP5BQYIFfuvSiWjGjIhEWftsqKQRhriD2WYdojP1xSbB
- 98VSGkyDvKQIlev5tA615ShxHpiNaRolmqn9snClOY1I523IH9i9wehqNxh4pSe4DpB+
- WoPSOLE1k4+vUhjr2Ma9Tb83GqaEh+l823a3mVYNO+p28Ss4aZ/+HBT1rCgOJHzG9rYX
- kG1GfQMEQY9H+4Tj+Dr9K4cuyjDNhfMen+7ccePPNj3JkMzlcc+dmP6Yfum3pz10+Nls Mw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 34t76kyhtr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 18 Nov 2020 11:18:25 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AIBFNV3135904;
- Wed, 18 Nov 2020 11:18:24 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 34umd0f4gt-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 18 Nov 2020 11:18:24 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AIBIM47022689;
- Wed, 18 Nov 2020 11:18:22 GMT
-Received: from disaster-area.hh.sledj.net (/81.187.26.238)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 18 Nov 2020 03:18:21 -0800
-Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id dbb2825a;
- Wed, 18 Nov 2020 11:18:19 +0000 (UTC)
-From: David Edmondson <david.edmondson@oracle.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 0/5] ARM: reduce the memory consumed when mapping UEFI
- flash images
-Date: Wed, 18 Nov 2020 11:18:14 +0000
-Message-Id: <20201118111819.4588-1-david.edmondson@oracle.com>
-X-Mailer: git-send-email 2.29.2
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1kd1Io-0001ed-Ad; Wed, 11 Nov 2020 20:21:30 -0500
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:34768)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1kd1Im-0007Wk-5Y; Wed, 11 Nov 2020 20:21:29 -0500
+Received: by mail-pg1-x544.google.com with SMTP id f27so2762453pgl.1;
+ Wed, 11 Nov 2020 17:21:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JpwcIrysbLjsACxFbnyuE/9/eng1Yy7chNIvz+3xUgo=;
+ b=blqnVv8PeGz0slSiWYy/4hvXUo8np7ZPD8+aRdLqulsp8RjHlt2EDJSpdxy8euThrH
+ Cik4oamlgtw2xTd/6q0Ja3oe3ZNkCYC9ZqLNX7AbPsXA+/+POPHXGiYPQLLOP8qt2DzZ
+ Ve+1bsOG0mgyZHjDuag3/1qgxVn2wyM+HtqWYiot5DtZDsSnCZQBKHjc27dQrbEkGbV3
+ zV24H6ant6GwtjtkMyo6+GfoJI5z8AWALXu+EOYBA7xvwgSDw4xtkuYjF4a61nsvvUrU
+ w5LclabAtqCzqejmIlDNbHen77P3OqlvuekU8bW8+YUGpfRm/fRNIUvcuMUh6jh65aaB
+ ie4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=JpwcIrysbLjsACxFbnyuE/9/eng1Yy7chNIvz+3xUgo=;
+ b=uP3Zo3XZicCXecpN4eT1G3SDNtVlOowhWzvRJJvMODPsVNtrkYZ2zXXSP4Nck2pi48
+ VbzYeY0EwYD3F2s7URuFYNJz3J1b6e8CCzPySHqRzojtNYk88UHu0gpebS+VWiYfDyon
+ K0pPogCkct8MFUKM64h1Cj7Gzrk/zUiK+H6P1m/2g5Yey7V9LF5wtAoecfvaf0tn3xwy
+ FQZNP4gwSnyLc7PqaPS5dwIfhMCBx0Zhuyqyz22hmmhNd5ey1cHopK16K2NoGMeUskQh
+ TnX4IOqB5gparAKAJOHEvMCuoRXMMCUUUNpzmOZUAd0oSGQ1IkoLmXlIDTRmXUAY4Nc6
+ IMRw==
+X-Gm-Message-State: AOAM532r84+iIsUlULFfgCacARAZcvEBg6CqDHqJ91HTdX5aQpHEHF4C
+ JOHlVNeuOGRdxgPMXhTLvtk=
+X-Received: by 2002:a63:1c21:: with SMTP id c33mr25583005pgc.161.1605144084076; 
+ Wed, 11 Nov 2020 17:21:24 -0800 (PST)
+Received: from localhost.localdomain ([45.124.203.14])
+ by smtp.gmail.com with ESMTPSA id r15sm3712551pjp.51.2020.11.11.17.21.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Nov 2020 17:21:22 -0800 (PST)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] ast2600: SRAM is 89KB
+Date: Thu, 12 Nov 2020 11:51:13 +1030
+Message-Id: <20201112012113.835858-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9808
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- mlxscore=0 phishscore=0
- spamscore=0 bulkscore=0 mlxlogscore=653 malwarescore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2011180079
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9808
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- phishscore=0
- adultscore=0 priorityscore=1501 bulkscore=0 clxscore=1015 mlxlogscore=667
- malwarescore=0 mlxscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2011180079
-Received-SPF: pass client-ip=141.146.126.78;
- envelope-from=david.edmondson@oracle.com; helo=aserp2120.oracle.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 06:18:27
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
+ envelope-from=joel.stan@gmail.com; helo=mail-pg1-x544.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -131,55 +112,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Max Reitz <mreitz@redhat.com>, David Edmondson <david.edmondson@oracle.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qXgeY4HU2V4f
+X-TUID: iUEHs7fwMCmL
 
-Currently ARM UEFI images are built as 2MB/768kB flash images for code
-and variables respectively. These images are both then padded out to
-64MB before being loaded by QEMU.
+On the AST2600A1, the SRAM size was increased to 89KB.
 
-Because the images are 64MB each, QEMU allocates 128MB of memory to
-read them, and then proceeds to read all 128MB from disk (dirtying the
-memory). Of this 128MB less than 3MB is useful - the rest is zero
-padding.
+Fixes: 7582591ae745 ("aspeed: Support AST2600A1 silicon revision")
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ hw/arm/aspeed_ast2600.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On a machine with 100 VMs this wastes over 12GB of memory.
-
-This set of patches aims to reclaim the wasted memory by allowing QEMU
-to respect the size of the flash images and allocate only the
-necessary memory. This will, of course, require that the flash build
-process be modified to avoid padding the images to 64MB.
-
-Because older machine types expected the full 128MB reserved for flash
-to be occupied, do so for machine types older than virt-5.2. The
-changes are beneficial even in this case, because while the full 128MB
-of memory is allocated, only that required to actually load the flash
-images from disk is dirtied.
-
-v2:
-- quote the block device name in error messages (Philippe
-  Mathieu-Daudé).
-
-David Edmondson (5):
-  hw/block: blk_check_size_and_read_all should report backend name
-  hw/block: Flash images can be smaller than the device
-  hw/arm: Convert assertions about flash image size to error_report
-  hw/arm: Flash image mapping follows image size
-  hw/arm: Only minimise flash size on older machines
-
- hw/arm/trace-events      |  2 +
- hw/arm/virt-acpi-build.c | 30 ++++++++------
- hw/arm/virt.c            | 86 +++++++++++++++++++++++++++++-----------
- hw/block/block.c         | 26 ++++++------
- include/hw/arm/virt.h    |  2 +
- 5 files changed, 97 insertions(+), 49 deletions(-)
-
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 1450bde7cf26..12e4a16d3765 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -481,7 +481,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+     sc->name         = "ast2600-a1";
+     sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
+     sc->silicon_rev  = AST2600_A1_SILICON_REV;
+-    sc->sram_size    = 0x10000;
++    sc->sram_size    = 0x16400;
+     sc->spis_num     = 2;
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 4;
 -- 
-2.29.2
+2.28.0
 

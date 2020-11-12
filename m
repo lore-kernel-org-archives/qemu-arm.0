@@ -1,90 +1,90 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp824621lfb;
-        Thu, 12 Nov 2020 14:06:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJycHR1iNkY04NzdTNy0sHhO0rRukjqH2ID2iE4vFQLCOocIiT6HS1mp/clyY4F/yvEEOBuJ
-X-Received: by 2002:a25:ccc7:: with SMTP id l190mr1532760ybf.56.1605218811105;
-        Thu, 12 Nov 2020 14:06:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605218811; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp835518lfb;
+        Thu, 12 Nov 2020 14:24:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz6gZS4WaFmtde+hZ/Td9XaNLPcichBibU+3y+d7Gunoey6bVeZqx48jg2WjCELhh0D6RlJ
+X-Received: by 2002:a25:d92:: with SMTP id 140mr1863664ybn.402.1605219846659;
+        Thu, 12 Nov 2020 14:24:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605219846; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q1gfS0Lj6JQm1qt/nhKgu0uV4SMXp9v21MJAgBVwoJL2mjLiWRx7zhxfEWB081wws6
-         UlrEx1iCSW1r2na2q1EE8VNIWsUfm1M8GBzfUiHCBpXV+6nZJbuHRY5+XBV6pFbM3SAA
-         9eLo5/BTfVfIXj5FLwL/rjQVajREkfK9jSSwPVuEYkM5XkxNgNpo3EmwAO+4qYDIZ/M9
-         oDh/nopgo2zaMiNOUToxLZQ1N4O4PukBabCpck46xGimsWti57WkHqIH8vwgRtKqNYZl
-         K6kKO+jBTQdXT/HL2yRtD2Y38zv1IvQSYMTQs1LysH3AT/i/JzXgYT1b/CLC/jrbHxgW
-         hm6A==
+        b=Sn5HjaVmhN2qV0Yci1SqUCzIYji2ON4F3WYmULRcRmtDPV/HKPl12FLoU5LT6fqTGC
+         g3gHKempAyCmrx6Pbr+7vR+n1N6SBo1OAFn9NbuYD/gwmqk1TOOpBbYuOd8YMxjkXY1O
+         GibPOn0Wmfr5FH58YGAVl/lhFgyBqMmgw6nedmmmfN65796eueKrHGJiApN0CxmfS5QJ
+         4Ay7rN69KaPve3OGEk8LG36sV84vkVgvRDQCtrs+YxZCLTgT+AqiN+KNGH3MDTo5KoiH
+         FRaWb74Vt1CFXR1/IUxABRL05SZK1Zw6QUdP9Sk+RI+ewQyVkE55fCcFl7U5PI8ancRj
+         /ssA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=59J7H5ykytVLR9f3V0k1PAbPW+Ahu8Da8Sp/Vo8HO/8=;
-        b=dKIpXql5UZOiKknpbN5c4zYnd5wdw4nTBKCx+N80XVdkylTTx6FhgT7jc8NMXVao8G
-         5777kss8Vx7kbl9KJB3UHrtqX/VgHzqCaTM7Y0iWdPJ700tsMOoirkyo/sWKj/ISoAJ6
-         a5CS34bAhUvCuLoNgivs5Z6WYE5eY/RYGx520skanxsJqpQ3flB0W0iJEH05itcdPJSe
-         BXMsHC3pnlk9W+qtUHiqDi4gP+gnTTD1xU33BseCcCGvmzcipoV2oEx5u7kgdWgkxaM7
-         n9ONdQbgr20IrNcewZn5kmeRauVx7O/uqRtUf1Galtgsvphw6lQ0iwuzMRd3qxcofubl
-         6/qA==
+        bh=ZjrEp/03Ea7DJhLoDY4D+Ygo5iZLhvkFFezlkMhPFMs=;
+        b=a5HkMOlEikSg/PTVB2WDf4Fl39Cj+Rd5umRAfSxjbzcBJDR14BfVsbFWKXPR/NDAts
+         uFx60tGN7BRSsRzAva9Z2GryxF/Pmm5gDTb3MF2G8oZk9GgzlXzvzbwleTjD2a5N8KAo
+         sO4UX15ooszdMkyI4YUFpF+Od6CkDss8PKGlUS/GpfdsVmRDDQYz56fCvgpvp1Fh9oWo
+         mcIdLRydW8DflLGGauvPecN33jPl5TFu9guMFXRrWPAUfLqIC6B+HhUfdUAhvJKWoxIl
+         HqjObotYqk+VhuYa4F1MHTiuofqTVffEtBSg2mAygJqqc5xWL6ecJ0mGVxX5dBcalnpW
+         IgWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UG7cxVIw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OXMqNoFY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6si6281833ybk.406.2020.11.12.14.06.50
+        by mx.google.com with ESMTPS id t39si6735271ybi.74.2020.11.12.14.24.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Nov 2020 14:06:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Nov 2020 14:24:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UG7cxVIw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OXMqNoFY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58024 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45680 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kdKjy-0006wd-Ek
-	for alex.bennee@linaro.org; Thu, 12 Nov 2020 17:06:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33530)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kdL0f-0000e6-Uo
+	for alex.bennee@linaro.org; Thu, 12 Nov 2020 17:24:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kdKQ3-00075o-7C
- for qemu-devel@nongnu.org; Thu, 12 Nov 2020 16:46:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:32510)
+ id 1kdKRG-0000AG-OM
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2020 16:47:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39192)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kdKPz-0003c9-Ha
- for qemu-devel@nongnu.org; Thu, 12 Nov 2020 16:46:14 -0500
+ id 1kdKRE-0003nV-Bd
+ for qemu-arm@nongnu.org; Thu, 12 Nov 2020 16:47:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605217570;
+ s=mimecast20190719; t=1605217647;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=59J7H5ykytVLR9f3V0k1PAbPW+Ahu8Da8Sp/Vo8HO/8=;
- b=UG7cxVIwaUwKF1F9ZYNdEqFOTprlXapIqFi6yNAfYdQfBC1AsCAn2Qjft/8KejuMu+yijz
- g4FCeeD0EP2goigSJqIJNQDRnatJ1YT4p3IOdxOLbgBS0QBa2LyrqNfe1mubs9ZevhJ3C4
- dk7g1KXS5k/ShVqL84C3NeClS6bpryw=
+ bh=ZjrEp/03Ea7DJhLoDY4D+Ygo5iZLhvkFFezlkMhPFMs=;
+ b=OXMqNoFYNAj0uNWCQA+oUGPTq9+Sev2238xQo/trJlKyfkBKDXv6V0CgMSmFFsPVXciR7e
+ Tito212AqSy4YteZOhRKDnLiDrLA95QOg/WE2atwqkFM2cmdKmVXbFTxhb+bA7qdAbnjJa
+ t2zG0V/eovI71tmB+qdBNXh3+X2+NQQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-459-rZxuRycYMT-Dppjrkjezvw-1; Thu, 12 Nov 2020 16:46:08 -0500
-X-MC-Unique: rZxuRycYMT-Dppjrkjezvw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-153--KODvs5fPoCOwqkmsgaXKw-1; Thu, 12 Nov 2020 16:47:23 -0500
+X-MC-Unique: -KODvs5fPoCOwqkmsgaXKw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0FF4F190A3E3;
- Thu, 12 Nov 2020 21:46:06 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 960FC1074643;
+ Thu, 12 Nov 2020 21:47:22 +0000 (UTC)
 Received: from localhost (ovpn-114-68.rdu2.redhat.com [10.10.114.68])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9D23E19C59;
- Thu, 12 Nov 2020 21:46:05 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 10F1E60C13;
+ Thu, 12 Nov 2020 21:47:18 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 29/53] qdev: Rename qdev_prop_* to prop_info_*
-Date: Thu, 12 Nov 2020 16:43:26 -0500
-Message-Id: <20201112214350.872250-30-ehabkost@redhat.com>
+Subject: [PATCH v3 50/53] qom: Delete DEFINE_PROP_*SIGNED_NODEFAULT macro
+Date: Thu, 12 Nov 2020 16:43:47 -0500
+Message-Id: <20201112214350.872250-51-ehabkost@redhat.com>
 In-Reply-To: <20201112214350.872250-1-ehabkost@redhat.com>
 References: <20201112214350.872250-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -103,440 +103,107 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, John Snow <jsnow@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hr3X7b/gNtnd
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KKha/GQm66qE
 
-The basic property types in qdev-properties.c are not going to be
-qdev-specific anymore.  Rename the variables to prop_info_*.
+Those macros are exactly the same as DEFINE_PROP, we can use
+DEFINE_PROP directly.
 
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
-Changes v1 -> v2:
-* Redone patch after moving UUID property to qdev-properties-system.c
+This is a new patch added in v3 of this series.
 ---
+Cc: Alex Williamson <alex.williamson@redhat.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>
 Cc: "Daniel P. Berrangé" <berrange@redhat.com>
 Cc: Eduardo Habkost <ehabkost@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Cc: Jason Wang <jasowang@redhat.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
 Cc: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
 ---
- include/hw/qdev-properties.h | 62 ++++++++++++++++++------------------
- hw/core/qdev-properties.c    | 36 ++++++++++-----------
- hw/intc/arm_gicv3_common.c   |  2 +-
- hw/intc/rx_icu.c             |  4 +--
- hw/misc/arm_sysctl.c         |  4 +--
- hw/net/e1000e.c              |  6 ++--
- target/arm/cpu.c             |  2 +-
- target/sparc/cpu.c           |  2 +-
- 8 files changed, 59 insertions(+), 59 deletions(-)
+ include/qom/property-types.h | 6 ------
+ hw/vfio/pci.c                | 6 +++---
+ target/arm/cpu.c             | 6 +++---
+ 3 files changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-index 68e544708b..90222822f1 100644
---- a/include/hw/qdev-properties.h
-+++ b/include/hw/qdev-properties.h
-@@ -44,22 +44,22 @@ struct PropertyInfo {
+diff --git a/include/qom/property-types.h b/include/qom/property-types.h
+index 62551c77e0..91b166badf 100644
+--- a/include/qom/property-types.h
++++ b/include/qom/property-types.h
+@@ -48,9 +48,6 @@ extern const PropertyInfo prop_info_link;
+                 .set_default = true,                                     \
+                 .defval.i    = (_type)_defval)
  
- /*** qdev-properties.c ***/
- 
--extern const PropertyInfo qdev_prop_bit;
--extern const PropertyInfo qdev_prop_bit64;
--extern const PropertyInfo qdev_prop_bool;
--extern const PropertyInfo qdev_prop_enum;
--extern const PropertyInfo qdev_prop_uint8;
--extern const PropertyInfo qdev_prop_uint16;
--extern const PropertyInfo qdev_prop_uint32;
--extern const PropertyInfo qdev_prop_int32;
--extern const PropertyInfo qdev_prop_uint64;
--extern const PropertyInfo qdev_prop_int64;
--extern const PropertyInfo qdev_prop_size;
--extern const PropertyInfo qdev_prop_string;
--extern const PropertyInfo qdev_prop_on_off_auto;
--extern const PropertyInfo qdev_prop_size32;
--extern const PropertyInfo qdev_prop_arraylen;
--extern const PropertyInfo qdev_prop_link;
-+extern const PropertyInfo prop_info_bit;
-+extern const PropertyInfo prop_info_bit64;
-+extern const PropertyInfo prop_info_bool;
-+extern const PropertyInfo prop_info_enum;
-+extern const PropertyInfo prop_info_uint8;
-+extern const PropertyInfo prop_info_uint16;
-+extern const PropertyInfo prop_info_uint32;
-+extern const PropertyInfo prop_info_int32;
-+extern const PropertyInfo prop_info_uint64;
-+extern const PropertyInfo prop_info_int64;
-+extern const PropertyInfo prop_info_size;
-+extern const PropertyInfo prop_info_string;
-+extern const PropertyInfo prop_info_on_off_auto;
-+extern const PropertyInfo prop_info_size32;
-+extern const PropertyInfo prop_info_arraylen;
-+extern const PropertyInfo prop_info_link;
- 
- #define DEFINE_PROP(_name, _state, _field, _prop, _type, ...) {  \
-         .name      = (_name),                                    \
-@@ -78,7 +78,7 @@ extern const PropertyInfo qdev_prop_link;
-     DEFINE_PROP(_name, _state, _field, _prop, _type)
- 
+-#define DEFINE_PROP_SIGNED_NODEFAULT(_name, _state, _field, _prop, _type) \
+-    DEFINE_PROP(_name, _state, _field, _prop, _type)
+-
  #define DEFINE_PROP_BIT(_name, _state, _field, _bit, _defval)   \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_bit, uint32_t, \
-+    DEFINE_PROP(_name, _state, _field, prop_info_bit, uint32_t, \
+     DEFINE_PROP(_name, _state, _field, prop_info_bit, uint32_t, \
                  .bitnr       = (_bit),                          \
-                 .set_default = true,                            \
-                 .defval.u    = (bool)_defval)
-@@ -92,13 +92,13 @@ extern const PropertyInfo qdev_prop_link;
-     DEFINE_PROP(_name, _state, _field, _prop, _type)
+@@ -62,9 +59,6 @@ extern const PropertyInfo prop_info_link;
+                 .set_default = true,                                       \
+                 .defval.u  = (_type)_defval)
  
+-#define DEFINE_PROP_UNSIGNED_NODEFAULT(_name, _state, _field, _prop, _type) \
+-    DEFINE_PROP(_name, _state, _field, _prop, _type)
+-
  #define DEFINE_PROP_BIT64(_name, _state, _field, _bit, _defval)   \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_bit64, uint64_t, \
-+    DEFINE_PROP(_name, _state, _field, prop_info_bit64, uint64_t, \
+     DEFINE_PROP(_name, _state, _field, prop_info_bit64, uint64_t, \
                  .bitnr    = (_bit),                               \
-                 .set_default = true,                              \
-                 .defval.u  = (bool)_defval)
- 
- #define DEFINE_PROP_BOOL(_name, _state, _field, _defval)     \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_bool, bool, \
-+    DEFINE_PROP(_name, _state, _field, prop_info_bool, bool, \
-                 .set_default = true,                         \
-                 .defval.u    = (bool)_defval)
- 
-@@ -131,7 +131,7 @@ extern const PropertyInfo qdev_prop_link;
- #define DEFINE_PROP_ARRAY(_name, _state, _field,               \
-                           _arrayfield, _arrayprop, _arraytype) \
-     DEFINE_PROP((PROP_ARRAY_LEN_PREFIX _name),                 \
--                _state, _field, qdev_prop_arraylen, uint32_t,  \
-+                _state, _field, prop_info_arraylen, uint32_t,  \
-                 .set_default = true,                           \
-                 .defval.u = 0,                                 \
-                 .arrayinfo = &(_arrayprop),                    \
-@@ -139,29 +139,29 @@ extern const PropertyInfo qdev_prop_link;
-                 .arrayoffset = offsetof(_state, _arrayfield))
- 
- #define DEFINE_PROP_LINK(_name, _state, _field, _type, _ptr_type)     \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
-+    DEFINE_PROP(_name, _state, _field, prop_info_link, _ptr_type,     \
-                 .link_type  = _type)
- 
- #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint8, uint8_t)
- #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint16, uint16_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint16, uint16_t)
- #define DEFINE_PROP_UINT32(_n, _s, _f, _d)                      \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint32, uint32_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint32, uint32_t)
- #define DEFINE_PROP_INT32(_n, _s, _f, _d)                      \
--    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_int32, int32_t)
-+    DEFINE_PROP_SIGNED(_n, _s, _f, _d, prop_info_int32, int32_t)
- #define DEFINE_PROP_UINT64(_n, _s, _f, _d)                      \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint64, uint64_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint64, uint64_t)
- #define DEFINE_PROP_INT64(_n, _s, _f, _d)                      \
--    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_int64, int64_t)
-+    DEFINE_PROP_SIGNED(_n, _s, _f, _d, prop_info_int64, int64_t)
- #define DEFINE_PROP_SIZE(_n, _s, _f, _d)                       \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_size, uint64_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_size, uint64_t)
- #define DEFINE_PROP_STRING(_n, _s, _f)             \
--    DEFINE_PROP(_n, _s, _f, qdev_prop_string, char*)
-+    DEFINE_PROP(_n, _s, _f, prop_info_string, char*)
- #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
--    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
-+    DEFINE_PROP_SIGNED(_n, _s, _f, _d, prop_info_on_off_auto, OnOffAuto)
- #define DEFINE_PROP_SIZE32(_n, _s, _f, _d)                       \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_size32, uint32_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_size32, uint32_t)
- 
- #define DEFINE_PROP_END_OF_LIST()               \
-     {}
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index d2f565f552..c1dd4ae71b 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -121,7 +121,7 @@ void field_prop_set_default_value_enum(ObjectProperty *op,
-         qapi_enum_lookup(prop->info->enum_table, prop->defval.i));
- }
- 
--const PropertyInfo qdev_prop_enum = {
-+const PropertyInfo prop_info_enum = {
-     .name  = "enum",
-     .get   = field_prop_get_enum,
-     .set   = field_prop_set_enum,
-@@ -132,7 +132,7 @@ const PropertyInfo qdev_prop_enum = {
- 
- static uint32_t qdev_get_prop_mask(Property *prop)
- {
--    assert(prop->info == &qdev_prop_bit);
-+    assert(prop->info == &prop_info_bit);
-     return 0x1 << prop->bitnr;
- }
- 
-@@ -174,7 +174,7 @@ static void set_default_value_bool(ObjectProperty *op, const Property *prop)
-     object_property_set_default_bool(op, prop->defval.u);
- }
- 
--const PropertyInfo qdev_prop_bit = {
-+const PropertyInfo prop_info_bit = {
-     .name  = "bool",
-     .description = "on/off",
-     .get   = prop_get_bit,
-@@ -186,7 +186,7 @@ const PropertyInfo qdev_prop_bit = {
- 
- static uint64_t qdev_get_prop_mask64(Property *prop)
- {
--    assert(prop->info == &qdev_prop_bit64);
-+    assert(prop->info == &prop_info_bit64);
-     return 0x1ull << prop->bitnr;
- }
- 
-@@ -223,7 +223,7 @@ static void prop_set_bit64(Object *obj, Visitor *v, const char *name,
-     bit64_prop_set(obj, prop, value);
- }
- 
--const PropertyInfo qdev_prop_bit64 = {
-+const PropertyInfo prop_info_bit64 = {
-     .name  = "bool",
-     .description = "on/off",
-     .get   = prop_get_bit64,
-@@ -251,7 +251,7 @@ static void set_bool(Object *obj, Visitor *v, const char *name, void *opaque,
-     visit_type_bool(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_bool = {
-+const PropertyInfo prop_info_bool = {
-     .name  = "bool",
-     .get   = get_bool,
-     .set   = set_bool,
-@@ -290,7 +290,7 @@ void field_prop_set_default_value_uint(ObjectProperty *op,
-     object_property_set_default_uint(op, prop->defval.u);
- }
- 
--const PropertyInfo qdev_prop_uint8 = {
-+const PropertyInfo prop_info_uint8 = {
-     .name  = "uint8",
-     .get   = get_uint8,
-     .set   = set_uint8,
-@@ -317,7 +317,7 @@ static void set_uint16(Object *obj, Visitor *v, const char *name,
-     visit_type_uint16(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_uint16 = {
-+const PropertyInfo prop_info_uint16 = {
-     .name  = "uint16",
-     .get   = get_uint16,
-     .set   = set_uint16,
-@@ -362,14 +362,14 @@ static void set_int32(Object *obj, Visitor *v, const char *name, void *opaque,
-     visit_type_int32(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_uint32 = {
-+const PropertyInfo prop_info_uint32 = {
-     .name  = "uint32",
-     .get   = get_uint32,
-     .set   = set_uint32,
-     .set_default_value = field_prop_set_default_value_uint,
- };
- 
--const PropertyInfo qdev_prop_int32 = {
-+const PropertyInfo prop_info_int32 = {
-     .name  = "int32",
-     .get   = field_prop_get_int32,
-     .set   = set_int32,
-@@ -414,14 +414,14 @@ static void set_int64(Object *obj, Visitor *v, const char *name,
-     visit_type_int64(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_uint64 = {
-+const PropertyInfo prop_info_uint64 = {
-     .name  = "uint64",
-     .get   = get_uint64,
-     .set   = set_uint64,
-     .set_default_value = field_prop_set_default_value_uint,
- };
- 
--const PropertyInfo qdev_prop_int64 = {
-+const PropertyInfo prop_info_int64 = {
-     .name  = "int64",
-     .get   = get_int64,
-     .set   = set_int64,
-@@ -464,7 +464,7 @@ static void set_string(Object *obj, Visitor *v, const char *name,
-     *ptr = str;
- }
- 
--const PropertyInfo qdev_prop_string = {
-+const PropertyInfo prop_info_string = {
-     .name  = "str",
-     .release = release_string,
-     .get   = get_string,
-@@ -473,7 +473,7 @@ const PropertyInfo qdev_prop_string = {
- 
- /* --- on/off/auto --- */
- 
--const PropertyInfo qdev_prop_on_off_auto = {
-+const PropertyInfo prop_info_on_off_auto = {
-     .name = "OnOffAuto",
-     .description = "on/off/auto",
-     .enum_table = &OnOffAuto_lookup,
-@@ -516,7 +516,7 @@ static void set_size32(Object *obj, Visitor *v, const char *name, void *opaque,
-     *ptr = value;
- }
- 
--const PropertyInfo qdev_prop_size32 = {
-+const PropertyInfo prop_info_size32 = {
-     .name  = "size",
-     .get = field_prop_get_size32,
-     .set = set_size32,
-@@ -613,7 +613,7 @@ static void set_prop_arraylen(Object *obj, Visitor *v, const char *name,
-     }
- }
- 
--const PropertyInfo qdev_prop_arraylen = {
-+const PropertyInfo prop_info_arraylen = {
-     .name = "uint32",
-     .get = get_uint32,
-     .set = set_prop_arraylen,
-@@ -812,7 +812,7 @@ static void set_size(Object *obj, Visitor *v, const char *name, void *opaque,
-     visit_type_size(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_size = {
-+const PropertyInfo prop_info_size = {
-     .name  = "size",
-     .get = get_size,
-     .set = set_size,
-@@ -830,7 +830,7 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
-                                           OBJ_PROP_LINK_STRONG);
- }
- 
--const PropertyInfo qdev_prop_link = {
-+const PropertyInfo prop_info_link = {
-     .name = "link",
-     .create = create_link_property,
- };
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 58ef65f589..6d06b4d4c5 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -496,7 +496,7 @@ static Property arm_gicv3_common_properties[] = {
-     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
-     DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
--                      redist_region_count, qdev_prop_uint32, uint32_t),
-+                      redist_region_count, prop_info_uint32, uint32_t),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/intc/rx_icu.c b/hw/intc/rx_icu.c
-index 94e17a9dea..823160d9a8 100644
---- a/hw/intc/rx_icu.c
-+++ b/hw/intc/rx_icu.c
-@@ -365,9 +365,9 @@ static const VMStateDescription vmstate_rxicu = {
- 
- static Property rxicu_properties[] = {
-     DEFINE_PROP_ARRAY("ipr-map", RXICUState, nr_irqs, map,
--                      qdev_prop_uint8, uint8_t),
-+                      prop_info_uint8, uint8_t),
-     DEFINE_PROP_ARRAY("trigger-level", RXICUState, nr_sense, init_sense,
--                      qdev_prop_uint8, uint8_t),
-+                      prop_info_uint8, uint8_t),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
-index 42d4693854..634f3d916f 100644
---- a/hw/misc/arm_sysctl.c
-+++ b/hw/misc/arm_sysctl.c
-@@ -628,10 +628,10 @@ static Property arm_sysctl_properties[] = {
-     DEFINE_PROP_UINT32("proc_id", arm_sysctl_state, proc_id, 0),
-     /* Daughterboard power supply voltages (as reported via SYS_CFG) */
-     DEFINE_PROP_ARRAY("db-voltage", arm_sysctl_state, db_num_vsensors,
--                      db_voltage, qdev_prop_uint32, uint32_t),
-+                      db_voltage, prop_info_uint32, uint32_t),
-     /* Daughterboard clock reset values (as reported via SYS_CFG) */
-     DEFINE_PROP_ARRAY("db-clock", arm_sysctl_state, db_num_clocks,
--                      db_clock_reset, qdev_prop_uint32, uint32_t),
-+                      db_clock_reset, prop_info_uint32, uint32_t),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
-index b6f1ae3c8f..7928939ae2 100644
---- a/hw/net/e1000e.c
-+++ b/hw/net/e1000e.c
-@@ -686,15 +686,15 @@ static void e1000e_class_init(ObjectClass *class, void *data)
-     dc->reset = e1000e_qdev_reset;
-     dc->vmsd = &e1000e_vmstate;
- 
--    e1000e_prop_disable_vnet = qdev_prop_uint8;
-+    e1000e_prop_disable_vnet = prop_info_uint8;
-     e1000e_prop_disable_vnet.description = "Do not use virtio headers, "
-                                            "perform SW offloads emulation "
-                                            "instead";
- 
--    e1000e_prop_subsys_ven = qdev_prop_uint16;
-+    e1000e_prop_subsys_ven = prop_info_uint16;
-     e1000e_prop_subsys_ven.description = "PCI device Subsystem Vendor ID";
- 
--    e1000e_prop_subsys = qdev_prop_uint16;
-+    e1000e_prop_subsys = prop_info_uint16;
-     e1000e_prop_subsys.description = "PCI device Subsystem ID";
- 
-     device_class_set_props(dc, e1000e_properties);
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index edfaed8c9a..f15abacbdf 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -3214,9 +3214,9 @@ static Property vfio_pci_dev_properties[] = {
+     DEFINE_PROP_UINT32("x-pci-sub-device-id", VFIOPCIDevice,
+                        sub_device_id, PCI_ANY_ID),
+     DEFINE_PROP_UINT32("x-igd-gms", VFIOPCIDevice, igd_gms, 0),
+-    DEFINE_PROP_UNSIGNED_NODEFAULT("x-nv-gpudirect-clique", VFIOPCIDevice,
+-                                   nv_gpudirect_clique,
+-                                   qdev_prop_nv_gpudirect_clique, uint8_t),
++    DEFINE_PROP("x-nv-gpudirect-clique", VFIOPCIDevice,
++                nv_gpudirect_clique,
++                qdev_prop_nv_gpudirect_clique, uint8_t),
+     DEFINE_PROP_OFF_AUTO_PCIBAR("x-msix-relocation", VFIOPCIDevice, msix_relo,
+                                 OFF_AUTOPCIBAR_OFF),
+     /*
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 07492e9f9a..cef92879b0 100644
+index cef92879b0..7cf2078622 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -1108,7 +1108,7 @@ static Property arm_cpu_has_mpu_property =
+@@ -1106,9 +1106,9 @@ static Property arm_cpu_has_mpu_property =
+  * to override that with an incorrect constant value.
+  */
  static Property arm_cpu_pmsav7_dregion_property =
-             DEFINE_PROP_UNSIGNED_NODEFAULT("pmsav7-dregion", ARMCPU,
-                                            pmsav7_dregion,
--                                           qdev_prop_uint32, uint32_t);
-+                                           prop_info_uint32, uint32_t);
+-            DEFINE_PROP_UNSIGNED_NODEFAULT("pmsav7-dregion", ARMCPU,
+-                                           pmsav7_dregion,
+-                                           prop_info_uint32, uint32_t);
++            DEFINE_PROP("pmsav7-dregion", ARMCPU,
++                        pmsav7_dregion,
++                        prop_info_uint32, uint32_t);
  
  static bool arm_get_pmu(Object *obj, Error **errp)
  {
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index 3375fffb38..ec59a13eb8 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -839,7 +839,7 @@ static Property sparc_cpu_properties[] = {
-     DEFINE_PROP_BIT("cmt",      SPARCCPU, env.def.features, 12, false),
-     DEFINE_PROP_BIT("gl",       SPARCCPU, env.def.features, 13, false),
-     DEFINE_PROP_UNSIGNED("iu-version", SPARCCPU, env.def.iu_version, 0,
--                         qdev_prop_uint64, target_ulong),
-+                         prop_info_uint64, target_ulong),
-     DEFINE_PROP_UINT32("fpu-version", SPARCCPU, env.def.fpu_version, 0),
-     DEFINE_PROP_UINT32("mmu-version", SPARCCPU, env.def.mmu_version, 0),
-     DEFINE_PROP("nwindows",     SPARCCPU, env.def.nwindows,
 -- 
 2.28.0
 

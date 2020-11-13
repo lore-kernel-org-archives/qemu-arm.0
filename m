@@ -1,87 +1,87 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1226762lfb;
-        Fri, 13 Nov 2020 02:18:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxKWfHAnug4c25yOUc4kIi8Qke1H+dOM5ivP4P0r7RH+AGRwpj5T17elkiygjo95MVqGfMx
-X-Received: by 2002:a25:b942:: with SMTP id s2mr1941591ybm.391.1605262681631;
-        Fri, 13 Nov 2020 02:18:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605262681; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1226921lfb;
+        Fri, 13 Nov 2020 02:18:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyCuTRmayGWw7kEXRKB0KYY02Q+PWubPyGDRBjPz3xymvVN+23j0aGg1woRqxIlnb031xFM
+X-Received: by 2002:a25:d215:: with SMTP id j21mr1758054ybg.279.1605262695844;
+        Fri, 13 Nov 2020 02:18:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605262695; cv=none;
         d=google.com; s=arc-20160816;
-        b=TD6RdL5SpAKExUVMQk1sCi14xNd716f1zcpMwMftkLyrdbqhgdZK3FDbQbcaQ6Ofiw
-         bPCWa51KpqRdwMA3LgZ09hlgW82USO8nIuLGqHi3USeAE1KNjX73EpK8WqT9KGbyZ8DX
-         Mz/VdZfcftFczcctGbXeIsyraD+IKN5tWse17nrnk0eNKDNao2hVGgBfsJh7A+fr8pU3
-         mrXuUq4SYWgZdQZ+IKDkCy+bDID26Lln7nSz2G5UiKT70uXfwj/JfLbVyj7MfTdYEgAu
-         RJq0DCXG+M8uA2+3RUqziwM/TZMoXwnpgH5HJ873PNy5DtvSM2av02iQYAFQ4oRi4RiH
-         xNWQ==
+        b=S5q71o2CZjnO9KeS/VovaZ/hPT3rs4zQIu6DQFua1TjiGkN/krG1UiW2COEKfp4LqV
+         oDJYrQ6d8HaUJ56WeO5PrwEuLuW/5WamvPcB8GoKA2iHwvNE/8Z5oleYyAajvD7pyARz
+         e7lhr5FDx28X3lTAZqESxGbVwZMIWRLTjws0wVKagk84PKvzvswn3q6UVO/G4i3x6eqP
+         VczFrgfN+c9wV5VyPsaFdBZ8mIDFHx/PKhBul6BjB0UyzHIQDEsJcfElcky3EUthMdWS
+         2YQ2v0LOY8KkOBHjLXDYjYxydduwDhU+fPgb3IFZC7TqJWSFpJc5/gDow3WZ37Psjthi
+         PIZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=moYTqjI8JygssS7c4zDeQta2IpodUgwisJxKXnGvI1Q=;
-        b=ccbpfIAq1byJ1zKe075Zrg3xKLlXPAg41GXrKPx7T+X4dC6J0aaOLoT7yiPAUdsAHj
-         pqb4EA739LIfnuUJx05+9mGvbcAKwcDiPID7FbD/sKxgSOc8HB3JQ2wfoKURU1o/2cKx
-         Bykyr3vjInk0N6hYUMazK9MNbgw9ALcA0Yl6iPzgqce8N8bwMR4gZ0WsuZaZvG8pEWNp
-         6RGq9xL240pZk75kB9pqnG7X8w3twcAs0b8pUaUjbPPSlD+yWVAs7ohUh2vmIOW6DYQI
-         18at7SRh8qZqQ84ivSAmRaHZPlDi5mLgRE0r6jy53Z83WfLhqmc9EDFm3cQurKlu3dms
-         117w==
+        bh=6sRkjmVhOwL6CdZ5aAVqczXmeSGgoS0sSd1QAioNC4c=;
+        b=II8aPH0AjZAj6C5VSXtx8p6kkrN3yC+YktSXdvPCbELRJMxAQkkCdW9WQZ63MqkCnU
+         H5r+OE7Y7Cv1DPSLbmVkZMLIqLf745euF4LYeNiSl6+9CBEo78hu+rqj/fAg/cR7kIIo
+         ledgTkPyqeyrbN3+9nG2aJ4AKMTQt3CvddqXotbGOxNepRvqpQN+rJEjUghR04y/AR6R
+         ngAvHIqaCgK7QZ5hBwjqmLg79tITW8a7YOKmTZqD8I030nte5rBm/AChHwna63sCP4EB
+         zzjMad+4GGJelhBX8JG4A4dew9efngZcw1NAf3i26GP4zJeRXvo3IsNsM3N8lrWJY7kz
+         GMUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EmWBQWpv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fUN5VBDd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r17si8012968ybj.143.2020.11.13.02.18.01
+        by mx.google.com with ESMTPS id u12si2276381ybk.352.2020.11.13.02.18.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Nov 2020 02:18:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Nov 2020 02:18:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EmWBQWpv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fUN5VBDd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49888 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kdW9Y-0007pt-VU
-	for alex.bennee@linaro.org; Fri, 13 Nov 2020 05:18:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60890)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kdW9n-0000Ut-7C
+	for alex.bennee@linaro.org; Fri, 13 Nov 2020 05:18:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60822)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kdW8o-0007mS-D8
- for qemu-devel@nongnu.org; Fri, 13 Nov 2020 05:17:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35700)
+ id 1kdW8m-0007kR-V8
+ for qemu-arm@nongnu.org; Fri, 13 Nov 2020 05:17:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45961)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kdW8l-0003p5-Cz
- for qemu-devel@nongnu.org; Fri, 13 Nov 2020 05:17:14 -0500
+ id 1kdW8k-0003ol-Ie
+ for qemu-arm@nongnu.org; Fri, 13 Nov 2020 05:17:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605262630;
+ s=mimecast20190719; t=1605262629;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=moYTqjI8JygssS7c4zDeQta2IpodUgwisJxKXnGvI1Q=;
- b=EmWBQWpvQt98pyBrLiyYKEnARg+iq6fM0HSw7COJpDqnfT7lM7EvWgdaHQEkWOtg4lOrQK
- a1H7OEuKQVUZr9CZManBxb91w8C90oEuZdRKt0LxmMkpJDGx1lT1mNvKjenPp0g6OQA8ro
- Wth/ApjJoHJS8YpLrC4Sd//a5hJjiTs=
+ bh=6sRkjmVhOwL6CdZ5aAVqczXmeSGgoS0sSd1QAioNC4c=;
+ b=fUN5VBDdEIaRow1qwuAqHQaoTQ33qDb56o6NWum75equbvB+fFQmTGWAB7JdKRXXo2a4V2
+ x5/t/XY4s57c34p4CYU5COYZJLNOtIZ7rQUhT2wAdSk5mONX4LXsybno49cyQqAvcuWnAb
+ 0uviEwynA3FKtxo2W9obT060oVMma/M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-141-I7zvhK4MMkufDCdCCtvqlw-1; Fri, 13 Nov 2020 05:17:08 -0500
-X-MC-Unique: I7zvhK4MMkufDCdCCtvqlw-1
+ us-mta-401-a0KpuTCzPcmg1Isflp5Ypw-1; Fri, 13 Nov 2020 05:17:07 -0500
+X-MC-Unique: a0KpuTCzPcmg1Isflp5Ypw-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C92A1108E1B2;
- Fri, 13 Nov 2020 10:17:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A71BF64157;
+ Fri, 13 Nov 2020 10:17:06 +0000 (UTC)
 Received: from virtlab701.virt.lab.eng.bos.redhat.com
  (virtlab701.virt.lab.eng.bos.redhat.com [10.19.152.228])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 677DF55794;
- Fri, 13 Nov 2020 10:17:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 463305578C;
+ Fri, 13 Nov 2020 10:17:06 +0000 (UTC)
 From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 005/122] i386: do not use ram_size global
-Date: Fri, 13 Nov 2020 05:15:07 -0500
-Message-Id: <20201113101704.1438368-5-pbonzini@redhat.com>
+Subject: [PATCH v2 003/122] cris: do not use ram_size global
+Date: Fri, 13 Nov 2020 05:15:05 -0500
+Message-Id: <20201113101704.1438368-3-pbonzini@redhat.com>
 In-Reply-To: <20201113101704.1438368-1-pbonzini@redhat.com>
 References: <20201113101704.1438368-1-pbonzini@redhat.com>
 MIME-Version: 1.0
@@ -104,133 +104,68 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r9MNbdChlAZe
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nQsHO1+q6EW5
 
-Use the loader parameters instead.
+Use the machine properties instead.
 
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- hw/i386/fw_cfg.c      | 2 +-
- hw/i386/vmport.c      | 3 ++-
- hw/i386/xen/xen-hvm.c | 2 +-
- hw/intc/apic_common.c | 3 ++-
- hw/smbios/smbios.c    | 8 ++++----
- 5 files changed, 10 insertions(+), 8 deletions(-)
+ hw/cris/axis_dev88.c | 1 +
+ hw/cris/boot.c       | 2 +-
+ hw/cris/boot.h       | 1 +
+ 3 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-index e06579490c..b87f0e5070 100644
---- a/hw/i386/fw_cfg.c
-+++ b/hw/i386/fw_cfg.c
-@@ -118,7 +118,7 @@ FWCfgState *fw_cfg_arch_create(MachineState *ms,
-      * "etc/max-cpus" actually being apic_id_limit
-      */
-     fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, apic_id_limit);
--    fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, (uint64_t)ram_size);
-+    fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, ms->ram_size);
- #ifdef CONFIG_ACPI
-     fw_cfg_add_bytes(fw_cfg, FW_CFG_ACPI_TABLES,
-                      acpi_tables, acpi_tables_len);
-diff --git a/hw/i386/vmport.c b/hw/i386/vmport.c
-index 20d605506b..490a57f52c 100644
---- a/hw/i386/vmport.c
-+++ b/hw/i386/vmport.c
-@@ -32,6 +32,7 @@
- #include "hw/isa/isa.h"
- #include "hw/i386/vmport.h"
- #include "hw/qdev-properties.h"
-+#include "hw/boards.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/hw_accel.h"
- #include "sysemu/qtest.h"
-@@ -188,7 +189,7 @@ static uint32_t vmport_cmd_ram_size(void *opaque, uint32_t addr)
-         return -1;
+diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
+index dab7423c73..b0cb6d84af 100644
+--- a/hw/cris/axis_dev88.c
++++ b/hw/cris/axis_dev88.c
+@@ -333,6 +333,7 @@ void axisdev88_init(MachineState *machine)
+     if (kernel_filename) {
+         li.image_filename = kernel_filename;
+         li.cmdline = kernel_cmdline;
++        li.ram_size = machine->ram_size;
+         cris_load_image(cpu, &li);
+     } else if (!qtest_enabled()) {
+         fprintf(stderr, "Kernel image must be specified\n");
+diff --git a/hw/cris/boot.c b/hw/cris/boot.c
+index aa8d2756d6..9fa09cfd83 100644
+--- a/hw/cris/boot.c
++++ b/hw/cris/boot.c
+@@ -81,7 +81,7 @@ void cris_load_image(CRISCPU *cpu, struct cris_load_info *li)
+     if (image_size < 0) {
+         /* Takes a kimage from the axis devboard SDK.  */
+         image_size = load_image_targphys(li->image_filename, 0x40004000,
+-                                         ram_size);
++                                         li->ram_size);
+         li->entry = 0x40004000;
      }
-     cpu->env.regs[R_EBX] = 0x1177;
--    return ram_size;
-+    return current_machine->ram_size;
- }
  
- static uint32_t vmport_cmd_get_hz(void *opaque, uint32_t addr)
-diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index 9519c33c09..096c46fef1 100644
---- a/hw/i386/xen/xen-hvm.c
-+++ b/hw/i386/xen/xen-hvm.c
-@@ -1493,7 +1493,7 @@ void xen_hvm_init_pc(PCMachineState *pcms, MemoryRegion **ram_memory)
- #else
-     xen_map_cache_init(NULL, state);
- #endif
--    xen_ram_init(pcms, ram_size, ram_memory);
-+    xen_ram_init(pcms, ms->ram_size, ram_memory);
+diff --git a/hw/cris/boot.h b/hw/cris/boot.h
+index 218854e5d1..9f1e0e340c 100644
+--- a/hw/cris/boot.h
++++ b/hw/cris/boot.h
+@@ -6,6 +6,7 @@ struct cris_load_info
+     const char *image_filename;
+     const char *cmdline;
+     int image_size;
++    ram_addr_t ram_size;
  
-     qemu_add_vm_change_state_handler(xen_hvm_change_state_handler, state);
- 
-diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
-index 81addd6390..67c24238b0 100644
---- a/hw/intc/apic_common.c
-+++ b/hw/intc/apic_common.c
-@@ -27,6 +27,7 @@
- #include "hw/i386/apic.h"
- #include "hw/i386/apic_internal.h"
- #include "trace.h"
-+#include "hw/boards.h"
- #include "sysemu/hax.h"
- #include "sysemu/kvm.h"
- #include "hw/qdev-properties.h"
-@@ -297,7 +298,7 @@ static void apic_common_realize(DeviceState *dev, Error **errp)
- 
-     /* Note: We need at least 1M to map the VAPIC option ROM */
-     if (!vapic && s->vapic_control & VAPIC_ENABLE_MASK &&
--        !hax_enabled() && ram_size >= 1024 * 1024) {
-+        !hax_enabled() && current_machine->ram_size >= 1024 * 1024) {
-         vapic = sysbus_create_simple("kvmvapic", -1, NULL);
-     }
-     s->vapic = vapic;
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 6a3d39793b..f22c4f5b73 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -678,13 +678,13 @@ static void smbios_build_type_16_table(unsigned dimm_cnt)
-     t->location = 0x01; /* Other */
-     t->use = 0x03; /* System memory */
-     t->error_correction = 0x06; /* Multi-bit ECC (for Microsoft, per SeaBIOS) */
--    size_kb = QEMU_ALIGN_UP(ram_size, KiB) / KiB;
-+    size_kb = QEMU_ALIGN_UP(current_machine->ram_size, KiB) / KiB;
-     if (size_kb < MAX_T16_STD_SZ) {
-         t->maximum_capacity = cpu_to_le32(size_kb);
-         t->extended_maximum_capacity = cpu_to_le64(0);
-     } else {
-         t->maximum_capacity = cpu_to_le32(MAX_T16_STD_SZ);
--        t->extended_maximum_capacity = cpu_to_le64(ram_size);
-+        t->extended_maximum_capacity = cpu_to_le64(current_machine->ram_size);
-     }
-     t->memory_error_information_handle = cpu_to_le16(0xFFFE); /* Not provided */
-     t->number_of_memory_devices = cpu_to_le16(dimm_cnt);
-@@ -911,9 +911,9 @@ void smbios_get_tables(MachineState *ms,
- 
- #define MAX_DIMM_SZ (16 * GiB)
- #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
--                                        : ((ram_size - 1) % MAX_DIMM_SZ) + 1)
-+                                        : ((current_machine->ram_size - 1) % MAX_DIMM_SZ) + 1)
- 
--        dimm_cnt = QEMU_ALIGN_UP(ram_size, MAX_DIMM_SZ) / MAX_DIMM_SZ;
-+        dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) / MAX_DIMM_SZ;
- 
-         smbios_build_type_16_table(dimm_cnt);
- 
+     hwaddr entry;
+ };
 -- 
 2.26.2
 

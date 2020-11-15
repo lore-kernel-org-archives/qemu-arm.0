@@ -1,182 +1,484 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2090843lfb;
-        Sat, 14 Nov 2020 01:18:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxHUNmCrWxKogqFu7lcI2SJZFpi4J6exEKFHkihImke+y8vBDEGKsrn0OpGu6Z9TxRG+FPB
-X-Received: by 2002:a25:7315:: with SMTP id o21mr7962816ybc.333.1605345528128;
-        Sat, 14 Nov 2020 01:18:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605345528; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2775123lfb;
+        Sat, 14 Nov 2020 23:54:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzkPR0AAx3J/NCbnnJY/WiffdRCtvF/BgkBmKoQsKxIxGbho6uQX1bwBHE0Yi7gXwiQgJf5
+X-Received: by 2002:a25:bc02:: with SMTP id i2mr12417867ybh.478.1605426868350;
+        Sat, 14 Nov 2020 23:54:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605426868; cv=none;
         d=google.com; s=arc-20160816;
-        b=qnbpHoOnpK3QzteHkqWgQGsbcsPDCmSbcjbly4A8r0mj/Tox6l7EqT5V3IIppACbEw
-         Fu/O013NdO9MZ4+gVkU33LA44nw6qMEq4JkWgV5cprOKUHGAvRhXygbLzkUSLP/1Pv8D
-         tE6yrKF/gpfBe5cuRvKQ5XbEeXO3UtcTtJDNouFhreqOUBSyEaijXPdeVXj4jw8aB1RE
-         fkxM1Vq7XgwAVSo4Wg7fc8+3Qx8aWQhSOIZQimUqHqWPsXQxe/HZ/5eAg3neUAyEK7oe
-         0ZwvAM/KIB3w4ec0Y+PlTRp0wE9LlAs7vcPwcE+WIERv7RRcoNkLHCI1iBENTTqq76Ii
-         dSJg==
+        b=FWqkcPxoZtxWa7C/k22M+8wA9WZAYxf8ezPvWvOspXpx7kjRF78UnmCnoyIesxDTL+
+         sYLqEnb4P1PDE5HSxedvVZ2ffcgivj+pUTHMn5vWGM8voJp5pmcyKSIqYFb16XI+VtFE
+         bNp+mx2MRDu6YeuqctYyxP3uJpPiHr/F8n6gEV2dHzbC+rPPPAX2ECtvPfD9aXDfRh8B
+         oaPZUbeLi90Q/fBL5kzZ+zPS9jaCCMrnswypOBRLP4Sc2cRkOxyZHlohhGbVTdNeCIDG
+         JCnkkl2RHlTaTDXAWidjFTKyjo+lNio7TW1QyXJxTa49zZvmQpEWksPmuRQz0Gdgma1k
+         fQjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=ScSFrctuRYUwFcCpJcJdesvzTnkgq0v4s7sFIFitFZQ=;
-        b=rFlApHJM6jkIB94kUH8G4FzXh/6uztAKdS9G4fJ2MjKa8fn7TdIXFn1+I8KjTsgjSi
-         DyxMDap553igmZkioiUdfUzZRCORTwWqODgCWwvdc8kRwQZ0v2D9G/owUOE6Vaw4KWXQ
-         C1DIOFxApIdJ2FyrW9OATRhB0DxQuNcxb2K2kZT9YWm5SdPyvlO85M4IqDzIahlmWXuu
-         kBrOm522gtrqkaL8czp4SHYkezre9PkG1nhdN/kzjx27OuFdQWu20e0vNzAmIpbEBLP6
-         GeFAmrGOMnQhbTdaUjGxGcWi2Eyp3TQ1pv9YZPm2mDfwB1sm5FaB3u+2c2GPtm0nv70o
-         fRYw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=9ybLAm8v1RsSKAp3L7gXvHr4V9JDk/hOqsmC8qK64TA=;
+        b=ajSuf9L0oo6Amvgu0wKikHPcnddbtP70Q6Vw5mPJv/9iubtEYLkrhkvCPNwXyHCpqO
+         m2duJZyUrjGB5+dP8bMfZgWQlFq/hupJAP9mwkUjlidr03olZokAAZdacFInRB2f2wvn
+         Rtd1XZcICg/sExyrpq3TKM9M+pYKw49TUhrdHZYG/CHV/7u2nMecsEUj/IZ5ZYgOv7LP
+         91XiNnrkb1DrBwvMvMg1GLeACVadOS8/1Ft470ca7ZVbCMOTA19MElnLXtQgMyKWDNo7
+         +ZKC4vmG0KWP5/Y08SQYE+eGDrlxlbvElx501bms4GBixhuTLWkU37qh86mHiL/gC1Od
+         +sDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GB8MBZiT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7si11904057ybr.364.2020.11.14.01.18.47
+        by mx.google.com with ESMTPS id f7si13834555ybm.311.2020.11.14.23.54.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Nov 2020 01:18:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 14 Nov 2020 23:54:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51990 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GB8MBZiT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kdrhn-0008BA-Hq
-	for alex.bennee@linaro.org; Sat, 14 Nov 2020 04:18:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1keCrj-0006nq-Nj
+	for alex.bennee@linaro.org; Sun, 15 Nov 2020 02:54:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kdrhV-0008B0-Jw; Sat, 14 Nov 2020 04:18:29 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2455)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kdrhS-0006Dk-Lf; Sat, 14 Nov 2020 04:18:29 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CY8rL0WjjzLxxg;
- Sat, 14 Nov 2020 17:17:54 +0800 (CST)
-Received: from DESKTOP-7FEPK9S.china.huawei.com (10.174.184.195) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Sat, 14 Nov 2020 17:17:59 +0800
-From: Shenming Lu <lushenming@huawei.com>
-To: Alex Williamson <alex.williamson@redhat.com>, Kirti Wankhede
- <kwankhede@nvidia.com>, Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RFC] vfio: Move the saving of the config space to the right
- place in VFIO migration
-Date: Sat, 14 Nov 2020 17:17:31 +0800
-Message-ID: <20201114091731.157-1-lushenming@huawei.com>
-X-Mailer: git-send-email 2.27.0.windows.1
+ (Exim 4.90_1) (envelope-from <changbin.du@gmail.com>)
+ id 1keCrJ-0006mv-Oq; Sun, 15 Nov 2020 02:54:01 -0500
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:55499)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <changbin.du@gmail.com>)
+ id 1keCrF-0006G0-Eo; Sun, 15 Nov 2020 02:54:01 -0500
+Received: by mail-pj1-x1043.google.com with SMTP id r9so2371476pjl.5;
+ Sat, 14 Nov 2020 23:53:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9ybLAm8v1RsSKAp3L7gXvHr4V9JDk/hOqsmC8qK64TA=;
+ b=GB8MBZiTm93mqJTtRh5vKtZSYZ+YSMCB6k9N17VNUhEwgdMSLL7fObgyYrux5fC12e
+ eGDeErI3TvS8mYeEtn13NoyIDpsGhGiKnFEmQ/+p7M971WcbLzprTaDpCFwqfnbXyqWg
+ Xo89gkFoj1lnXTkYqtQ2+VasqPzGzAF6QQWI3OVWEnSj0G4ATceWbQS6tQU1j22W+X7H
+ pUdsTRrxvQlXaPm375vRl7vtqfW0w51H7D45YQ8eG7/xL854k7bTqDINM7NagxzYWckg
+ ka3gSsUPiU7EthrQpgfJAHrnI7CyoiZGzErfLJYQ5U5nqiwSnGUt57IiakPdk2d7AP3N
+ e2cQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9ybLAm8v1RsSKAp3L7gXvHr4V9JDk/hOqsmC8qK64TA=;
+ b=nE2MM2jR9+pZQAOnFfuroPl0QFPxP0aX/hfOt+RnH1OIH3ukinwkI/mBvHECvOa4pi
+ PMO+xdJAaXB7iuqw9PA8tCayjoVXCsg73ex472ds+OH4Oz+fKuqJ80n7K7iGVqJuZ6HS
+ CXqHRSZEKBSJVqIMWU+YU66ipnfOG/YV1lyu4mCzLU+35W7rRgXTtJsNFmyDg1TcshUL
+ DkfxRT2IO54QKa6y0TmrHRrv3GS7qPIIjRJojNFZ9tpA8Bz+RQxiFjHGwLO4T/anZkwU
+ afdUlQupFxlDPzM2DTBYiskovJUg6lSFBIE7bStOflQutD3vQZ9owUFJUkBSngUgFIwh
+ wSAQ==
+X-Gm-Message-State: AOAM530pCrL1z9kfXk8rn1r5AN0QLItTirwWhKeLc6afyFUYY/9XwpBA
+ +PLoF6+Oi/CNfAA6YhYuMK0=
+X-Received: by 2002:a17:902:fe0f:b029:d6:9fa1:eee0 with SMTP id
+ g15-20020a170902fe0fb02900d69fa1eee0mr8389315plj.24.1605426835517; 
+ Sat, 14 Nov 2020 23:53:55 -0800 (PST)
+Received: from vultr.guest ([141.164.41.4])
+ by smtp.gmail.com with ESMTPSA id x192sm14516879pgx.9.2020.11.14.23.53.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 14 Nov 2020 23:53:54 -0800 (PST)
+From: Changbin Du <changbin.du@gmail.com>
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3] arm/monitor: Add support for 'info tlb' command
+Date: Sun, 15 Nov 2020 15:53:47 +0800
+Message-Id: <20201115075347.74622-1-changbin.du@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.184.195]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=lushenming@huawei.com; helo=szxga05-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/14 04:18:10
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
+ envelope-from=changbin.du@gmail.com; helo=mail-pj1-x1043.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Neo Jia <cjia@nvidia.com>, Marc Zyngier <maz@kernel.org>,
- qemu-devel@nongnu.org, lushenming@huawei.com, qemu-arm@nongnu.org,
- yuzenghui@huawei.com, wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xf7/QY6s0yya
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Changbin Du <changbin.du@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PAehzYG6A47h
 
-When running VFIO migration, I found that the restoring of VFIO PCI device’s
-config space is before VGIC on ARM64 target. But generally, interrupt controllers
-need to be restored before PCI devices. Besides, if a VFIO PCI device is
-configured to have directly-injected MSIs (VLPIs), the restoring of its config
-space will trigger the configuring of these VLPIs (in kernel), where it would
-return an error as I saw due to the dependency on kvm’s vgic.
+This adds hmp 'info tlb' command support for the arm platform.
+The limitation is that this only implements a page walker for
+ARMv8-A AArch64 Long Descriptor format, 32bit addressing is
+not supported yet.
 
-To avoid this, we can move the saving of the config space from the iterable
-process to the non-iterable process, so that it will be called after VGIC
-according to their priorities.
+To reuse existing code, this patch also extracts some APIs from
+helper.c, including regime_translation_disabled(),
+pt_start_level_stage1(), regime_ttbr().
 
-Signed-off-by: Shenming Lu <lushenming@huawei.com>
+(qemu) info tlb
+vaddr            paddr            size             attr
+---------------- ---------------- ---------------- ------------------------------
+ffff800000000000 0000000040000000 0000000000001000 RW        AF           PXN UXN
+ffff800000001000 0000000040001000 0000000000001000 RW        AF           PXN UXN
+ffff800000002000 0000000040002000 0000000000001000 RW        AF           PXN UXN
+ffff800000003000 0000000040003000 0000000000001000 RW        AF           PXN UXN
+ffff800000004000 0000000040004000 0000000000001000 RW        AF           PXN UXN
+ffff800000005000 0000000040005000 0000000000001000 RW        AF           PXN UXN
+ffff800000006000 0000000040006000 0000000000001000 RW        AF           PXN UXN
+
+Signed-off-by: Changbin Du <changbin.du@gmail.com>
+
 ---
- hw/vfio/migration.c | 22 ++++++----------------
- 1 file changed, 6 insertions(+), 16 deletions(-)
+v3: rebase to latest mainline.
+v2:
+  o fix coding style
+  o extract common code pt_start_level_stage1()
+---
+ hmp-commands-info.hx   |   3 +-
+ target/arm/helper.c    |  30 +------
+ target/arm/internals.h |  33 ++++++++
+ target/arm/monitor.c   | 183 +++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 220 insertions(+), 29 deletions(-)
 
-diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
-index 3ce285ea39..028da35a25 100644
---- a/hw/vfio/migration.c
-+++ b/hw/vfio/migration.c
-@@ -351,7 +351,7 @@ static int vfio_update_pending(VFIODevice *vbasedev)
-     return 0;
+diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
+index 117ba25f91..1b5b3f2616 100644
+--- a/hmp-commands-info.hx
++++ b/hmp-commands-info.hx
+@@ -222,7 +222,8 @@ SRST
+ ERST
+ 
+ #if defined(TARGET_I386) || defined(TARGET_SH4) || defined(TARGET_SPARC) || \
+-    defined(TARGET_PPC) || defined(TARGET_XTENSA) || defined(TARGET_M68K)
++    defined(TARGET_PPC) || defined(TARGET_XTENSA) || defined(TARGET_M68K) || \
++    defined(TARGET_ARM)
+     {
+         .name       = "tlb",
+         .args_type  = "",
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 11b0803df7..e7f0f27c8e 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9974,8 +9974,7 @@ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ #ifndef CONFIG_USER_ONLY
+ 
+ /* Return true if the specified stage of address translation is disabled */
+-static inline bool regime_translation_disabled(CPUARMState *env,
+-                                               ARMMMUIdx mmu_idx)
++bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         switch (env->v7m.mpu_ctrl[regime_is_secure(env, mmu_idx)] &
+@@ -10021,20 +10020,6 @@ static inline bool regime_translation_big_endian(CPUARMState *env,
+     return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
  }
  
--static int vfio_save_device_config_state(QEMUFile *f, void *opaque)
-+static void vfio_save_device_config_state(QEMUFile *f, void *opaque)
- {
-     VFIODevice *vbasedev = opaque;
+-/* Return the TTBR associated with this translation regime */
+-static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
+-                                   int ttbrn)
+-{
+-    if (mmu_idx == ARMMMUIdx_Stage2) {
+-        return env->cp15.vttbr_el2;
+-    }
+-    if (ttbrn == 0) {
+-        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
+-    } else {
+-        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
+-    }
+-}
+-
+ #endif /* !CONFIG_USER_ONLY */
  
-@@ -365,13 +365,14 @@ static int vfio_save_device_config_state(QEMUFile *f, void *opaque)
- 
-     trace_vfio_save_device_config_state(vbasedev->name);
- 
--    return qemu_file_get_error(f);
-+    if (qemu_file_get_error(f))
-+        error_report("%s: Failed to save device config space",
-+                     vbasedev->name);
- }
- 
- static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
- {
-     VFIODevice *vbasedev = opaque;
--    uint64_t data;
- 
-     if (vbasedev->ops && vbasedev->ops->vfio_load_config) {
-         int ret;
-@@ -384,15 +385,8 @@ static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
-         }
+ /* Convert a possible stage1+2 MMU index into the appropriate
+@@ -11077,18 +11062,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
      }
  
--    data = qemu_get_be64(f);
--    if (data != VFIO_MIG_FLAG_END_OF_STATE) {
--        error_report("%s: Failed loading device config space, "
--                     "end flag incorrect 0x%"PRIx64, vbasedev->name, data);
--        return -EINVAL;
--    }
--
-     trace_vfio_load_device_config_state(vbasedev->name);
--    return qemu_file_get_error(f);
-+    return 0;
+     if (mmu_idx != ARMMMUIdx_Stage2) {
+-        /* The starting level depends on the virtual address size (which can
+-         * be up to 48 bits) and the translation granule size. It indicates
+-         * the number of strides (stride bits at a time) needed to
+-         * consume the bits of the input address. In the pseudocode this is:
+-         *  level = 4 - RoundUp((inputsize - grainsize) / stride)
+-         * where their 'inputsize' is our 'inputsize', 'grainsize' is
+-         * our 'stride + 3' and 'stride' is our 'stride'.
+-         * Applying the usual "rounded up m/n is (m+n-1)/n" and simplifying:
+-         * = 4 - (inputsize - stride - 3 + stride - 1) / stride
+-         * = 4 - (inputsize - 4) / stride;
+-         */
+-        level = 4 - (inputsize - 4) / stride;
++        level = pt_start_level_stage1(inputsize, stride);
+     } else {
+         /* For stage 2 translations the starting level is specified by the
+          * VTCR_EL2.SL0 field (whose interpretation depends on the page size)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 5460678756..69c21be774 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -949,6 +949,8 @@ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+     }
  }
  
- static int vfio_set_dirty_page_tracking(VFIODevice *vbasedev, bool start)
-@@ -575,11 +569,6 @@ static int vfio_save_complete_precopy(QEMUFile *f, void *opaque)
-         return ret;
-     }
++bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx);
++
+ /* Return the TCR controlling this translation regime */
+ static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+@@ -958,6 +960,20 @@ static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+     return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
+ }
  
--    ret = vfio_save_device_config_state(f, opaque);
--    if (ret) {
--        return ret;
--    }
--
-     ret = vfio_update_pending(vbasedev);
-     if (ret) {
-         return ret;
-@@ -720,6 +709,7 @@ static SaveVMHandlers savevm_vfio_handlers = {
-     .save_live_pending = vfio_save_pending,
-     .save_live_iterate = vfio_save_iterate,
-     .save_live_complete_precopy = vfio_save_complete_precopy,
-+    .save_state = vfio_save_device_config_state,
-     .load_setup = vfio_load_setup,
-     .load_cleanup = vfio_load_cleanup,
-     .load_state = vfio_load_state,
++/* Return the TTBR associated with this translation regime */
++static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
++                                   int ttbrn)
++{
++    if (mmu_idx == ARMMMUIdx_Stage2) {
++        return env->cp15.vttbr_el2;
++    }
++    if (ttbrn == 0) {
++        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
++    } else {
++        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
++    }
++}
++
+ /* Return the FSR value for a debug exception (watchpoint, hardware
+  * breakpoint or BKPT insn) targeting the specified exception level.
+  */
+@@ -1291,6 +1307,23 @@ typedef struct ARMCacheAttrs {
+     unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 PTEs */
+ } ARMCacheAttrs;
+ 
++static inline int pt_start_level_stage1(int inputsize, int stride)
++{
++    /*
++     * The starting level depends on the virtual address size (which can
++     * be up to 48 bits) and the translation granule size. It indicates
++     * the number of strides (stride bits at a time) needed to
++     * consume the bits of the input address. In the pseudocode this is:
++     *  level = 4 - RoundUp((inputsize - grainsize) / stride)
++     * where their 'inputsize' is our 'inputsize', 'grainsize' is
++     * our 'stride + 3' and 'stride' is our 'stride'.
++     * Applying the usual "rounded up m/n is (m+n-1)/n" and simplifying:
++     * = 4 - (inputsize - stride - 3 + stride - 1) / stride
++     * = 4 - (inputsize - 4) / stride;
++     */
++    return 4 - (inputsize - 4) / stride;
++}
++
+ bool get_phys_addr(CPUARMState *env, target_ulong address,
+                    MMUAccessType access_type, ARMMMUIdx mmu_idx,
+                    hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index 169d8a64b6..6991533a07 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -31,6 +31,9 @@
+ #include "qapi/qmp/qerror.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qom/qom-qobject.h"
++#include "monitor/monitor.h"
++#include "monitor/hmp-target.h"
++#include "internals.h"
+ 
+ static GICCapability *gic_cap_new(int version)
+ {
+@@ -236,3 +239,183 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+ 
+     return expansion_info;
+ }
++
++/* Perform linear address sign extension */
++static target_ulong addr_canonical(int va_bits, target_ulong addr)
++{
++#ifdef TARGET_AARCH64
++    if (addr & (1UL << (va_bits - 1))) {
++        addr |= (hwaddr)-(1L << va_bits);
++    }
++#endif
++
++    return addr;
++}
++
++#define PTE_HEADER_FIELDS       "vaddr            paddr            "\
++                                "size             attr\n"
++#define PTE_HEADER_DELIMITER    "---------------- ---------------- "\
++                                "---------------- ------------------------------\n"
++
++static void print_pte_header(Monitor *mon)
++{
++    monitor_printf(mon, PTE_HEADER_FIELDS);
++    monitor_printf(mon, PTE_HEADER_DELIMITER);
++}
++
++static void
++print_pte_lpae(Monitor *mon, uint32_t tableattrs, int va_bits,
++               target_ulong vaddr, hwaddr paddr, target_ulong size,
++               target_ulong pte)
++{
++    uint32_t ns = extract64(pte, 5, 1) | extract32(tableattrs, 4, 1);
++    uint32_t ap = extract64(pte, 6, 2) & ~extract32(tableattrs, 2, 2);
++    uint32_t af = extract64(pte, 10, 1);
++    uint32_t ng = extract64(pte, 11, 1);
++    uint32_t gp = extract64(pte, 50, 1);
++    uint32_t con = extract64(pte, 52, 1);
++    uint32_t pxn = extract64(pte, 53, 1) | extract32(tableattrs, 0, 1);
++    uint32_t uxn = extract64(pte, 54, 1) | extract32(tableattrs, 1, 1);
++
++    monitor_printf(mon, TARGET_FMT_lx " " TARGET_FMT_plx " " TARGET_FMT_lx
++                   " %s %s %s %s %s %s %s %s %s\n",
++                   addr_canonical(va_bits, vaddr), paddr, size,
++                   ap & 0x2 ? "ro" : "RW",
++                   ap & 0x1 ? "USR" : "   ",
++                   ns ? "NS" : "  ",
++                   af ? "AF" : "  ",
++                   ng ? "nG" : "  ",
++                   gp ? "GP" : "  ",
++                   con ? "Con" : "   ",
++                   pxn ? "PXN" : "   ",
++                   uxn ? "UXN" : "   ");
++}
++
++static void
++walk_pte_lpae(Monitor *mon, bool aarch64, uint32_t tableattrs, hwaddr pt_base,
++              target_ulong vstart, int cur_level, int stride, int va_bits)
++{
++    int pg_shift = stride + 3;
++    int descaddr_high = aarch64 ? 47 : 39;
++    int max_level = 3;
++    int ptshift = pg_shift + (max_level - cur_level) * stride;
++    target_ulong pgsize = 1UL << ptshift;
++    int idx;
++
++    for (idx = 0; idx < (1UL << stride) && vstart < (1UL << va_bits);
++         idx++, vstart += pgsize) {
++        hwaddr pte_addr = pt_base + idx * 8;
++        target_ulong pte = 0;
++        hwaddr paddr;
++
++        cpu_physical_memory_read(pte_addr, &pte, 8);
++
++        if (!extract64(pte, 0, 1)) {
++            /* invalid entry */
++            continue;
++        }
++
++        if (cur_level == max_level) {
++            /* leaf entry */
++            paddr = (hwaddr)extract64(pte, pg_shift,
++                                descaddr_high - pg_shift + 1) << pg_shift;
++            print_pte_lpae(mon, tableattrs, va_bits, vstart, paddr,
++                           pgsize, pte);
++        } else {
++            if (extract64(pte, 1, 1)) {
++                /* table entry */
++                paddr = (hwaddr)extract64(pte, pg_shift,
++                                    descaddr_high - pg_shift + 1) << pg_shift;
++                tableattrs |= extract64(pte, 59, 5);
++
++                walk_pte_lpae(mon, aarch64, tableattrs, paddr, vstart,
++                              cur_level + 1, stride, va_bits);
++            } else {
++                /* block entry */
++                if ((pg_shift == 12 && (cur_level != 1 && cur_level != 2)) ||
++                    (pg_shift == 14 && (cur_level != 2)) ||
++                    (pg_shift == 16 && (cur_level != 0 && cur_level != 1))) {
++                    monitor_printf(mon, "illegal block entry at level%d\n",
++                                   cur_level);
++                    continue;
++                }
++                paddr = (hwaddr)extract64(pte, ptshift,
++                                    descaddr_high - ptshift + 1) << ptshift;
++                print_pte_lpae(mon, tableattrs, va_bits, vstart, paddr,
++                               pgsize, pte);
++            }
++        }
++    }
++}
++
++/* ARMv8-A AArch64 Long Descriptor format */
++static void tlb_info_vmsav8_64(Monitor *mon, CPUArchState *env)
++{
++    ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
++    uint64_t ttbr[2];
++    uint64_t tcr;
++    int tsz[2];
++    bool using16k, using64k;
++    int stride;
++
++    ttbr[0] = regime_ttbr(env, mmu_idx, 0);
++    ttbr[1] = regime_ttbr(env, mmu_idx, 1);
++
++    tcr = regime_tcr(env, mmu_idx)->raw_tcr;
++    using64k = extract32(tcr, 14, 1);
++    using16k = extract32(tcr, 15, 1);
++    tsz[0] = extract32(tcr, 0, 6);
++    tsz[1] = extract32(tcr, 16, 6);
++
++    if (using64k) {
++        stride = 13;
++    } else if (using16k) {
++        stride = 11;
++    } else {
++        stride = 9;
++    }
++
++    /* print header */
++    print_pte_header(mon);
++
++    for (unsigned int i = 0; i < 2; i++) {
++        if (ttbr[i]) {
++            hwaddr base = extract64(ttbr[i], 1, 47) << 1;
++            int va_bits = 64 - tsz[i];
++            target_ulong vstart = (target_ulong)i << (va_bits - 1);
++            int startlevel = pt_start_level_stage1(va_bits, stride);
++
++            /* walk ttbrx page tables, starting from address @vstart */
++            walk_pte_lpae(mon, true, 0, base, vstart, startlevel,
++                          stride, va_bits);
++        }
++    }
++}
++
++void hmp_info_tlb(Monitor *mon, const QDict *qdict)
++{
++    CPUArchState *env;
++
++    env = mon_get_cpu_env(mon);
++    if (!env) {
++        monitor_printf(mon, "No CPU available\n");
++        return;
++    }
++
++    if (arm_feature(env, ARM_FEATURE_PMSA)) {
++        monitor_printf(mon, "No MMU\n");
++        return;
++    }
++
++    if (regime_translation_disabled(env, arm_stage1_mmu_idx(env))) {
++        monitor_printf(mon, "MMU disabled\n");
++        return;
++    }
++
++    if (!arm_el_is_aa64(env, 1)) {
++        monitor_printf(mon, "Only AArch64 Long Descriptor is supported\n");
++        return;
++    }
++
++    tlb_info_vmsav8_64(mon, env);
++}
 -- 
-2.19.1
+2.25.1
 

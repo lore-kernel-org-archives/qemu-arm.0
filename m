@@ -1,105 +1,118 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3478931lfb;
-        Mon, 23 Nov 2020 02:52:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxrT4oN28qcPoTqZCYCGCGw4zrESlI3tHEolQqzQG7vjYQtFcy53C8gH5aox+AOl0O/9bx9
-X-Received: by 2002:a25:504c:: with SMTP id e73mr40326375ybb.376.1606128726194;
-        Mon, 23 Nov 2020 02:52:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606128726; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2751325lfb;
+        Sat, 14 Nov 2020 23:03:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyZMJ3JHoI5Ka10iImo/AdGMUR6XdTS4VLGl/n1nkq4Aart5bpUxPQKIETx44H2+SuCetal
+X-Received: by 2002:a25:d4c9:: with SMTP id m192mr18653838ybf.350.1605423787875;
+        Sat, 14 Nov 2020 23:03:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605423787; cv=none;
         d=google.com; s=arc-20160816;
-        b=AdDFrdzpLY+kASPLxXOxn+mctcb/bVgQvDO/SxqbOVQFNf8ilSX7mH3Wb3lJXFiL+f
-         nDfaUmGSRdP1bDnAsk1D99QXoYbyegF8BZKP9uZGaHKIFufANxU3OO3qmct62kn2zlYf
-         B+SO2tGQTaJ2PVfJQRCDwwJu1NDR5zqmPjdEtu/uFTpCodKSUVf15XFwHeqUxPK2tG79
-         bqqLci3reUPV9xlevLWfeOFpvrgBtj6M7H3IrpPnt3gJzD8ZpSlPMcF78b+LZ7OcS87H
-         CM+6VlK4cS+lsJKtcbc+PrhwkRCzH+bk8+8RhjrtQ3e85RxIOGBn5mjzC1Jt/DTdcMs4
-         jhNA==
+        b=j9pr0Z+dqd7lTw3NTBdyI2Nvz81zOdA201kqC00FYnRYtlYusSouGa33Bl3V4+Ma0p
+         s5ZsBMBtDGJ5pI86xf2tA0EX8GmAe2slymOaI+Ik8Hz5qtPvRN7ZPhyQGyOhQC0ZKrsB
+         cvImtbBvvGqyrVIQeK2dZtGVHbT+IDF8Na0hD+xDQ4dJmoRIeqAbJqWpLJEtQUUScU9z
+         SD2j07YG3AS0+A5MwcXGJp2pM8HIK8Ns/rCNhgp0EycSw5nnzeQc6WjQlVPgO4NsXbck
+         TmGhwRcdMyQVkJsLtm1UyII8AEjydcrjUkWtXtsSOWwAiIEXMnkfTsXHw48pIe0HmPYH
+         y46Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=7c5smF5ygigAWtci09fXgHOmo5sEKFj9RYcH9d7XejA=;
-        b=I3UL2GfPDoJkO6Hsw7TEXWuzwl72RvyeIV+fnRBJZod6NUOUDpeAJKwK1MxKwlJDrF
-         IuHvQpPd3sDBxVezgoAIsahaGfrLiz+lLW/d6n/B1z00oHRisojGbkazKbOjIexta4/s
-         IIHVKwIguRa4SbOnP70S3O3YggIXgVQ0zfebi1Xtjqwatnw2fJEVdII6PUNEWOAUH8iA
-         Z5nzccbrzzcFUJd10fYJ9SAyXsTE4RYFZDHRIoUMuqT9PFYuVh4+SEyE3oEmq8auoHd/
-         35O0403Fi+niNIHVbWncRav5U2a8rq38X1oVb0se8gmDVzJdW6WZJqL6RkpV0WVqMxrc
-         5IgA==
+        bh=lsUCpeuRHZF8acA8BDnsIuSnKs7aLULMhD6CNVrKv20=;
+        b=r7QQZXjzniPM6uNEV0LKjlLsWffmBIWr0tF0ovzaeoL8Zy/BpRnucriUqTJoY5faRF
+         FZrPtE22GRQgFjBItpfX7RmBFZjLP7hJPZ45+fwjQmlGBj4qW19QHfIsG66u0K0Xz1nv
+         Wv/SnQDdbLObNYGDYhP3eWDjbZHitUZrX/tG9HAHJ0QtmayQdhDLWgaeR5tuj2ly5QaF
+         cQkGkdV4iApMQU+fmB1soHZiRGafmsskAUKZFhonJg4kJSIY4pixN+br3z6a2XpY4F81
+         pZbChW5UuBnrfioq9F70fwLuiWR/1C+lYiHLeBXosMWu4xZ/fR+Gmdi0+eca/2bpZ3L8
+         GXzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jLSPgstt;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UWaScm+I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q77si11587545ybq.221.2020.11.23.02.52.06
+        by mx.google.com with ESMTPS id b16si13381827ybk.77.2020.11.14.23.03.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Nov 2020 02:52:06 -0800 (PST)
+        Sat, 14 Nov 2020 23:03:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jLSPgstt;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UWaScm+I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41770 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kh9S1-0002J3-Km
-	for alex.bennee@linaro.org; Mon, 23 Nov 2020 05:52:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43774)
+	id 1keC43-0007wK-8L
+	for alex.bennee@linaro.org; Sun, 15 Nov 2020 02:03:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kh9Rt-0002In-Bp
- for qemu-arm@nongnu.org; Mon, 23 Nov 2020 05:51:57 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:45758)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kh9Rr-0000dI-Uz
- for qemu-arm@nongnu.org; Mon, 23 Nov 2020 05:51:57 -0500
-Received: by mail-ej1-x636.google.com with SMTP id lv15so16770660ejb.12
- for <qemu-arm@nongnu.org>; Mon, 23 Nov 2020 02:51:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=7c5smF5ygigAWtci09fXgHOmo5sEKFj9RYcH9d7XejA=;
- b=jLSPgsttSG4Vqfi6nebDDNNkdmdQdivphlmgLKOG3P7/m482v7t+NlRNhcdA11oKH0
- 1qYwHuAMFiDS//22ri7VLMt5dYpQXsKjkVIw2244e4BDnMaZgbWkGCN3k4ReQcJkel2L
- WQl/kVanxRyPoNTnaInvp4V0KcD+702dhv6gatQ8kJADiWA4gb/Yb6Voaht3wSKC4rhE
- +K8j+mfj8NB7ALfSUFcX4MHcF5eulWkprN66hWNHiYFF/exi3AY92fVNmU3cb9ehi7e+
- vZoYsCGmFyEMcCRA++nT51hbK0QIfCpGR2Xdkb/9AoTavNuSifSItwT+BBWwUZsG8p3V
- M7lQ==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1keC3t-0007tk-HP
+ for qemu-arm@nongnu.org; Sun, 15 Nov 2020 02:02:57 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25365)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1keC3o-0006Dt-MD
+ for qemu-arm@nongnu.org; Sun, 15 Nov 2020 02:02:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1605423770;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=lsUCpeuRHZF8acA8BDnsIuSnKs7aLULMhD6CNVrKv20=;
+ b=UWaScm+IA4oTFwfO73OEx185Asn1QnKREdbDVdvQf8r0/mFSwUnA4tSPG8NMEuWL7tjp6V
+ 61Vn6KvYYDDX2pPLBiRAPwBWQlbZIAMv9FxLxn/an5sV7fKPLNB2rw4TbNtOWG/OBzvITX
+ /6IPs+42PoAzCFo1oJcL9NJmwUfDLss=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-571-ZA3pvSZrPOu39jULt-Z9JQ-1; Sun, 15 Nov 2020 02:02:49 -0500
+X-MC-Unique: ZA3pvSZrPOu39jULt-Z9JQ-1
+Received: by mail-wr1-f72.google.com with SMTP id l5so8715758wrn.18
+ for <qemu-arm@nongnu.org>; Sat, 14 Nov 2020 23:02:48 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=7c5smF5ygigAWtci09fXgHOmo5sEKFj9RYcH9d7XejA=;
- b=STi9Gu2ClYrBW95f4LZRkPeBZ4ZMXbxOg9xmNEqupkKtO9JTr5YtlElbr0Gg5pxKgJ
- NvviGW1+XhSFkqreLedYJ7bWI7qz7G3BYqBEyCG/Wz46jy9WGGepcULuvf6hQfiqzPjI
- km0LFuXnM8cec85BvI0sf5Vfp5cS2h0hsQTWLjbAIJxTi3bjWK5YD2/WhQjkV6NEBeoR
- khIvhvnW3H+aJQ9hZvRp0L9ULbM0TSM1raY7B92kucIbmOtHL3FTKlU+VKVtzgK3OWi+
- qLWg7iqEgXwTV5oLPk9nkgRLswb9VMvDGCm0wLYRKf9KrfE/CNVXwWl03TRmgCq7Bj1H
- TVFg==
-X-Gm-Message-State: AOAM533MGstmEdc3Hzsk+CMYFPkQnfn8qWLSByFymps9CKmst3Hwrxhb
- hTF8jI8Sl4pM1kUzN6FHnPjA/ZcjxUGkiHIB9/IPug==
-X-Received: by 2002:a17:906:1542:: with SMTP id
- c2mr32334614ejd.382.1606128714314; 
- Mon, 23 Nov 2020 02:51:54 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=lsUCpeuRHZF8acA8BDnsIuSnKs7aLULMhD6CNVrKv20=;
+ b=n7Jk+MNfLtYMRwHbIJxeh50YhtU98LBXO4korDjImKK45FvfvXGJHaTZZRW5UWrZVn
+ sgwDUA/DJzZzyxgozSXtP/30ucEt1j8XtXRJYB3kGTpxBcS2kyvThgRiaGnF5enBk3Qg
+ skz9lL6InoMkLXtREHKlqJZ59Gnz76D2Qx9z+c/3dUOI97bvDNEoo38wS1S+e/G/Tjra
+ g/chIRfEYmKxNPGEAE3R/dsLJpKbLi9sbsDhi83t+7vNj0oawIQzBn3EvO9K3OHg/dVV
+ U6wQxv/8V0pErozmE1MRoZERYAJK+UH5/fUXO8UH/LW2hz1nNfsFCXpBdJf+yJT8UUtM
+ CYPg==
+X-Gm-Message-State: AOAM532YYpD8tolpfVf2gwTITB5w+E4nsCZyeixaNhhlwoRS7FMMwkjp
+ Nr20e0jrG1RkHQtnKtX7J5AVMQnDL6wbLjPD9F+N/ABO7bpkHjjqDJzcCod3kFMB8xG5HiDZTWL
+ xge1/YiA1a5rH
+X-Received: by 2002:adf:f3d2:: with SMTP id g18mr13404011wrp.77.1605423767668; 
+ Sat, 14 Nov 2020 23:02:47 -0800 (PST)
+X-Received: by 2002:adf:f3d2:: with SMTP id g18mr13403987wrp.77.1605423767410; 
+ Sat, 14 Nov 2020 23:02:47 -0800 (PST)
+Received: from redhat.com (bzq-79-176-118-93.red.bezeqint.net. [79.176.118.93])
+ by smtp.gmail.com with ESMTPSA id g131sm15996459wma.35.2020.11.14.23.02.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 14 Nov 2020 23:02:46 -0800 (PST)
+Date: Sun, 15 Nov 2020 02:02:43 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Cornelia Huck <cohuck@redhat.com>
+Subject: Re: [PATCH] hw: add compat machines for 6.0
+Message-ID: <20201115020234-mutt-send-email-mst@kernel.org>
+References: <20201109173928.1001764-1-cohuck@redhat.com>
 MIME-Version: 1.0
-References: <20201120154545.2504625-1-f4bug@amsat.org>
-In-Reply-To: <20201120154545.2504625-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Nov 2020 10:51:42 +0000
-Message-ID: <CAFEAcA8bjTvVY7R3hKhJvRiPVrUVh90Z8suROKVdZiR-GVEU+A@mail.gmail.com>
-Subject: Re: [PATCH-for-5.2 0/6] MAINTAINERS: Fix docs/system/arm/ entries
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
+In-Reply-To: <20201109173928.1001764-1-cohuck@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 02:02:50
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,26 +125,245 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E6JHrzbWkzeI
+X-TUID: ugzxdT8q0tDm
 
-On Fri, 20 Nov 2020 at 15:46, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Correctly docs/system/arm/ rst files in MAINTAINERS.
->
-> Philippe Mathieu-Daud=C3=A9 (6):
->   MAINTAINERS: Cover system/arm/cpu-features.rst with ARM TCG CPUs
->   MAINTAINERS: Cover system/arm/aspeed.rst with ASPEED BMC machines
->   MAINTAINERS: Cover system/arm/nuvoton.rst with Nuvoton NPCM7xx
->   MAINTAINERS: Fix system/arm/orangepi.rst path
->   MAINTAINERS: Cover system/arm/sbsa.rst with SBSA-REF machine
->   MAINTAINERS: Cover system/arm/sx1.rst with OMAP machines
+On Mon, Nov 09, 2020 at 06:39:28PM +0100, Cornelia Huck wrote:
+> Add 6.0 machine types for arm/i440fx/q35/s390x/spapr.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
+pc part
 
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-Applied to target-arm.next, thanks.
+> ---
+>  hw/arm/virt.c              |  9 ++++++++-
+>  hw/core/machine.c          |  3 +++
+>  hw/i386/pc.c               |  3 +++
+>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+>  hw/ppc/spapr.c             | 15 +++++++++++++--
+>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>  include/hw/boards.h        |  3 +++
+>  include/hw/i386/pc.h       |  3 +++
+>  9 files changed, 71 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 27dbeb549ef1..d21dad4491c4 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2587,10 +2587,17 @@ static void machvirt_machine_init(void)
+>  }
+>  type_init(machvirt_machine_init);
+>  
+> +static void virt_machine_6_0_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(6, 0)
+> +
+>  static void virt_machine_5_2_options(MachineClass *mc)
+>  {
+> +    virt_machine_6_0_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+>  }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
+> +DEFINE_VIRT_MACHINE(5, 2)
+>  
+>  static void virt_machine_5_1_options(MachineClass *mc)
+>  {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 98b87f76cbbe..c5a6c517bb9d 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -28,6 +28,9 @@
+>  #include "hw/mem/nvdimm.h"
+>  #include "migration/vmstate.h"
+>  
+> +GlobalProperty hw_compat_5_2[] = {};
+> +const size_t hw_compat_5_2_len = G_N_ELEMENTS(hw_compat_5_2);
+> +
+>  GlobalProperty hw_compat_5_1[] = {
+>      { "vhost-scsi", "num_queues", "1"},
+>      { "vhost-user-blk", "num-queues", "1"},
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 5e6c0023e0c7..d386c5662698 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -97,6 +97,9 @@
+>  #include "trace.h"
+>  #include CONFIG_DEVICES
+>  
+> +GlobalProperty pc_compat_5_2[] = {};
+> +const size_t pc_compat_5_2_len = G_N_ELEMENTS(pc_compat_5_2);
+> +
+>  GlobalProperty pc_compat_5_1[] = {
+>      { "ICH9-LPC", "x-smi-cpu-hotplug", "off" },
+>  };
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 13d1628f13bf..6188c3e97eaf 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -426,7 +426,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>      machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>  }
+>  
+> -static void pc_i440fx_5_2_machine_options(MachineClass *m)
+> +static void pc_i440fx_6_0_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_i440fx_machine_options(m);
+> @@ -435,6 +435,18 @@ static void pc_i440fx_5_2_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_I440FX_MACHINE(v6_0, "pc-i440fx-6.0", NULL,
+> +                      pc_i440fx_6_0_machine_options);
+> +
+> +static void pc_i440fx_5_2_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_6_0_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = false;
+> +    compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
+> +}
+> +
+>  DEFINE_I440FX_MACHINE(v5_2, "pc-i440fx-5.2", NULL,
+>                        pc_i440fx_5_2_machine_options);
+>  
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index a3f4959c4357..0a212443aa84 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -344,7 +344,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->max_cpus = 288;
+>  }
+>  
+> -static void pc_q35_5_2_machine_options(MachineClass *m)
+> +static void pc_q35_6_0_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_q35_machine_options(m);
+> @@ -352,6 +352,17 @@ static void pc_q35_5_2_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_Q35_MACHINE(v6_0, "pc-q35-6.0", NULL,
+> +                   pc_q35_6_0_machine_options);
+> +
+> +static void pc_q35_5_2_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_6_0_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+> +    compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
+> +}
+> +
+>  DEFINE_Q35_MACHINE(v5_2, "pc-q35-5.2", NULL,
+>                     pc_q35_5_2_machine_options);
+>  
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 227075103e9a..45e0afbeba49 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4515,15 +4515,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+>      }                                                                \
+>      type_init(spapr_machine_register_##suffix)
+>  
+> +/*
+> + * pseries-6.0
+> + */
+> +static void spapr_machine_6_0_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(6_0, "6.0", true);
+> +
+>  /*
+>   * pseries-5.2
+>   */
+>  static void spapr_machine_5_2_class_options(MachineClass *mc)
+>  {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_6_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+>  }
+>  
+> -DEFINE_SPAPR_MACHINE(5_2, "5.2", true);
+> +DEFINE_SPAPR_MACHINE(5_2, "5.2", false);
+>  
+>  /*
+>   * pseries-5.1
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 22222c4fd5ad..b1229abc3134 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -785,14 +785,26 @@ bool css_migration_enabled(void)
+>      }                                                                         \
+>      type_init(ccw_machine_register_##suffix)
+>  
+> +static void ccw_machine_6_0_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_6_0_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(6_0, "6.0", true);
+> +
+>  static void ccw_machine_5_2_instance_options(MachineState *machine)
+>  {
+> +    ccw_machine_6_0_instance_options(machine);
+>  }
+>  
+>  static void ccw_machine_5_2_class_options(MachineClass *mc)
+>  {
+> +    ccw_machine_6_0_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+>  }
+> -DEFINE_CCW_MACHINE(5_2, "5.2", true);
+> +DEFINE_CCW_MACHINE(5_2, "5.2", false);
+>  
+>  static void ccw_machine_5_1_instance_options(MachineState *machine)
+>  {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index a49e3a6b4481..f94f4ad5d83c 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -310,6 +310,9 @@ struct MachineState {
+>      } \
+>      type_init(machine_initfn##_register_types)
+>  
+> +extern GlobalProperty hw_compat_5_2[];
+> +extern const size_t hw_compat_5_2_len;
+> +
+>  extern GlobalProperty hw_compat_5_1[];
+>  extern const size_t hw_compat_5_1_len;
+>  
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 911e4600970c..49dfa667de09 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -191,6 +191,9 @@ void pc_system_firmware_init(PCMachineState *pcms, MemoryRegion *rom_memory);
+>  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+>                         const CPUArchIdList *apic_ids, GArray *entry);
+>  
+> +extern GlobalProperty pc_compat_5_2[];
+> +extern const size_t pc_compat_5_2_len;
+> +
+>  extern GlobalProperty pc_compat_5_1[];
+>  extern const size_t pc_compat_5_1_len;
+>  
+> -- 
+> 2.26.2
 
--- PMM

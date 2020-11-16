@@ -1,102 +1,102 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3839579lfb;
-        Mon, 16 Nov 2020 08:19:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxtSoaL5vnWTH/uuFKTKxUalNbFlrZc3q3dU+1KoNYNPV9rdIm7nFqvzoXLPSIhIIANh7H5
-X-Received: by 2002:a25:588b:: with SMTP id m133mr16679515ybb.522.1605543592394;
-        Mon, 16 Nov 2020 08:19:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605543592; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3843154lfb;
+        Mon, 16 Nov 2020 08:24:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwzzSeO6vEX1hxK3iebSOJgosJfU2/5IjpqB+6ssIvbYC7TP1mVpzFd4rrpmE9Vc95nRAc+
+X-Received: by 2002:a25:786:: with SMTP id 128mr20257269ybh.19.1605543863902;
+        Mon, 16 Nov 2020 08:24:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605543863; cv=none;
         d=google.com; s=arc-20160816;
-        b=AQkTeBuiiZzEK8M9kWFVqI1OMSPfxPPj3EMOuiCf7YoIN2lvr/xdsecXssPUsd+y4k
-         nEven+69wjqyP1cO3o3s6blNiBPdwJWcM9ErHehPdxEXXDXRg4eaRPYVvbiWpD/HE3KJ
-         SK2ItMwb5dP7OAlBiV/PC0c00XRY6T345IwJenfCT98CsFSrt65mp5oOCGRkrruh9qW7
-         UpZbMNdADpI0YdvkVmmKampOKLo76JpPXFQk03a/XTeyfxh8r4x0w47Idg/TObNFd3L3
-         Ch5mu3Esf+sI4DCYBLUpyc+qHuh39pI5tuEsq7ydGeH/kYxPbIA7mfVYElVnevxTvud3
-         Sb+w==
+        b=LRN17BV5Aqze2AQiYIEfOEOq32ywMhdoDZ3BMOu6rCbZrmg0T/CQPfifSa+e6umyqS
+         qEiN9ZlWFVQ6e6f9R/kt03O93OyfL9EnzbuPFITssXnAiUfq8thkRpfDOZqCb4q1lzpB
+         OBCXckNctB8BUyJ5TJ0P+lB6ftbMopibM7x7HVvChtq4S0bixFqksotdS9W2yjxlMSZx
+         uH2dknk149lfTB1fAM1kq4k3qtO3j6luuxDjNhbi0Ah9+k1IW9DVdt9w43md0OdYfnPL
+         OObMJlGrntBt9nB4RdfBJO2jRa+7+kxzS74VYzKlkpm8VjfZeAFOVMSBHLrpalVgb9b9
+         ZhxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ojq6mFjue/Cb7cv+9VNy9lJWWzr++JeLPodwO0KuPSM=;
-        b=J5aDLY1XM9pXfzAtBQoteAqePJ4oMbOYLOvU6YOU+27Rg2LP/wJzWTMjsmlyrJ2aYo
-         gucDmERno9j4ETkU5EsUXqOOnIaR9UQS3DrjakrmEXBikGF1PmkT44+83zSdV6W1OaSG
-         GCY0U189SoaqIs8FkXrQauPofRrofq1rol/Ld6EX4RNUWtl7kvrP7NyISV6YkR58plDu
-         AaZfpAv9F9qNMcRMuOT1/JFa/B6NHv1zicB3EkQls/2sDT3adp2C5sLcH1vL2+sKQQP2
-         6kngS1OPLuCz+Mxb8ccS7p/jiyaKe5VXfU8xOu6UoArCCamWzrpR3ZoTgzzKqMmW6n/b
-         0NXA==
+        bh=nnPwlADakN+vC7KEmeazFxm2/dI86B7xYLVrWaaPTLY=;
+        b=TOQTAwWS4pSVz/XLLZtwL1YUG8BCzP6Oc31PUHmLfvSRk8SnAEBc4BQApfunVo5+eu
+         aKfuaeZ3gdj0sqGQ2BJXgT70E3E2X0zJj1j1ykQasUuGj685pZLOu2cR0IypJt4/B3vg
+         O+AUCveK7brpXVgVklI/vfJbxsP9zBBjVIXlVczBpEQislS3Fn219ESkX80hf+Xunwyy
+         K9HG05RqcNLv++8+SRnV/LwHT5enAg3fIYq2QjAy/icavwPsOXy3EBLJYa2oS7j/rHYs
+         EfU8ei/bgdGhgXZVhps4R1ZChD7e5jBahyBT3E7Fh3F7Iw+vNms++ZPX7zb+HAv1DN+C
+         314g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gzvYgcnk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DWXIAOo6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t17si17707454ybl.338.2020.11.16.08.19.52
+        by mx.google.com with ESMTPS id z16si18505442ybm.250.2020.11.16.08.24.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 08:19:52 -0800 (PST)
+        Mon, 16 Nov 2020 08:24:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gzvYgcnk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DWXIAOo6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kehEN-0001KP-Px
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:19:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58152)
+	id 1kehIl-0005tJ-2S
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:24:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3c-0008Pm-F8
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:44 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46211)
+ id 1keh3e-0008VU-RS
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:46 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:51364)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3Z-0007pk-9U
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:44 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id d12so19230101wrr.13
- for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 08:08:40 -0800 (PST)
+ id 1keh3b-0007qU-OW
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:46 -0500
+Received: by mail-wm1-x336.google.com with SMTP id 19so24228634wmf.1
+ for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 08:08:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=ojq6mFjue/Cb7cv+9VNy9lJWWzr++JeLPodwO0KuPSM=;
- b=gzvYgcnkPF5RIQxhNjtVd3CwkJEuMoO7e2kEvyBAWvOoNA0O4Vza0DGAmcpQNIs3qS
- iKwcuFMeQ1iQIsVIZiidJSmFTFwRVAoj+Kl/SghcwE/epC3ADd+6QHPfAOduvUNv7wGH
- M3RezU5SsoOknlryQ+FPALBoInSgty1YBiHteyoFqV2aVyv7xheljWUewEsUMHuf0DZH
- LLnSkcO+aOI1lK40OkeRkb4l3ooyMjj2BDgggAB83BPUns5Rh3XRlUxcSRxSKmRcTuML
- HXzJZkkS8t448ppjADlB5h9snP/w6izVdyYE4UvT4vZHdIXjzU0YS0MqjHDMGQjhP8LT
- odNQ==
+ bh=nnPwlADakN+vC7KEmeazFxm2/dI86B7xYLVrWaaPTLY=;
+ b=DWXIAOo6ygWWa4TVTErfiMF1QJB1Na0Xk0tq9Xk+59/KY3FQ2HOJJyLKf1NbqRtqAa
+ VC6PcA23NppDqJRgq6LEaJo/XI78BumArxC3pwaoNVJyb7WOt1XP4nVzOtEvi2IDEF9h
+ 19MDQ04qCNoam28Rqs9Fl4xHwqaaXioJUsmQAZ1G2N6TFQgrv8/ub5wfMrTAwhcmuung
+ 1OPtPv1srCe9XAhQiB4y7sF7rZYIfiNDl2U+VFd3F79gdWBv2+S2TyKxvj2vq3GIVImr
+ KHdO6+9o7Y5BoKaKfKlqF1blMvaOsI2IJAJEe6mvfb+w2BRhPkwgaboX2EcuA313LeOC
+ yiQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ojq6mFjue/Cb7cv+9VNy9lJWWzr++JeLPodwO0KuPSM=;
- b=PfBJIwxVZm8k6dK9jxNCGFiYzlbSfpt6SNqGtlxs8TiFUvS2+aHFmKZ+tj3L/VwqFc
- 0N9tUCXjUG2jCdoibdzOBG/wXTTEiuY223pooe/ZCdzdYw1S+S9+bjc6WzD5lZlXh1Px
- lt4n73TDbBwfptq+6UavAMqTtn/qbXSH72jP0lypYc5OjJc5nUAI/R5Qcb5ooerrARj5
- RPjoHUma9EAfjwE6P/za9BQ3c+p50ID/3/BXLpveksi5UibicF7gdx88KkIHE2hJvjHI
- Wn7aBKi9j9yIAv5MV9ODZJlLCe+J9DRtzVzyhXeCQMUId8LfDPSGWdm0qzS+/TLA2I6x
- K82Q==
-X-Gm-Message-State: AOAM532pNaA0OwMJdBG7yFYyrpwm0eraOFItvz/yK92qYQU94SZHQRxD
- 49bqp+RN8btG0vyiZFByrVmZ5fbYvEb1gQ==
-X-Received: by 2002:a5d:438f:: with SMTP id i15mr20325739wrq.121.1605542919794; 
- Mon, 16 Nov 2020 08:08:39 -0800 (PST)
+ bh=nnPwlADakN+vC7KEmeazFxm2/dI86B7xYLVrWaaPTLY=;
+ b=X8PStCcj7NgfLgBnB9xSzVoBUm2h4exCeJTXYK8HXPjga6nkwhCT99Bt2iOK1TLQSi
+ a3oavqZYn7GqLSun1VH0LtGVychjItMqyuLItXY4BgUFQEo4AQE0zJc6hGzdSb1vih+S
+ L9uThOMnAZafnYcPDznAr95Ic+25SjTUDb+dXa0K4f9sZpAu7/hSNA65rWDgeEGDY1D7
+ 8ETi6UDQLNs0MsvYauAXK1k/JyGJAWoOTH2TyxdO57qmMRpUxrEIAj01SIyfqkzdrUL6
+ z43jnKX6ILAOJlnjxhZ0SBi93/355lUyyxo3U7qyJiTZj+q3NM8fSklm7JNsuyUY00AU
+ e6Lw==
+X-Gm-Message-State: AOAM532d2bRjsyiyf1L6jUPajlOoLQz4KewPi3QUngwbA5yla/H2kuG+
+ ZWzdKXagNpokhNrSo4wDamQuaw==
+X-Received: by 2002:a1c:b18a:: with SMTP id a132mr16399651wmf.95.1605542922217; 
+ Mon, 16 Nov 2020 08:08:42 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g20sm20116975wmh.20.2020.11.16.08.08.38
+ by smtp.gmail.com with ESMTPSA id g20sm20116975wmh.20.2020.11.16.08.08.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 08:08:38 -0800 (PST)
+ Mon, 16 Nov 2020 08:08:41 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 05/15] target/arm: Implement CLRM instruction
-Date: Mon, 16 Nov 2020 16:08:21 +0000
-Message-Id: <20201116160831.31000-6-peter.maydell@linaro.org>
+Subject: [PATCH 07/15] target/arm: Refactor M-profile VMSR/VMRS handling
+Date: Mon, 16 Nov 2020 16:08:23 +0000
+Message-Id: <20201116160831.31000-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201116160831.31000-1-peter.maydell@linaro.org>
 References: <20201116160831.31000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -120,86 +120,248 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZSILudW9DE3o
+X-TUID: fegmaRzcuDNY
 
-In v8.1M the new CLRM instruction allows zeroing an arbitrary set of
-the general-purpose registers and APSR.  Implement this.
+Currently M-profile borrows the A-profile code for VMSR and VMRS
+(access to the FP system registers), because all it needs to support
+is the FPSCR.  In v8.1M things become significantly more complicated
+in two ways:
 
-The encoding is a subset of the LDMIA T2 encoding, using what would
-be Rn=0b1111 (which UNDEFs for LDMIA).
+ * there are several new FP system registers; some have side effects
+   on read, and one (FPCXT_NS) needs to avoid the usual
+   vfp_access_check() and the "only if FPU implemented" check
+
+ * all sysregs are now accessible both by VMRS/VMSR (which
+   reads/writes a general purpose register) and also by VLDR/VSTR
+   (which reads/writes them directly to memory)
+
+Refactor the structure of how we handle VMSR/VMRS to cope with this:
+
+ * keep the M-profile code entirely separate from the A-profile code
+
+ * abstract out the "read or write the general purpose register" part
+   of the code into a loadfn or storefn function pointer, so we can
+   reuse it for VLDR/VSTR.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/t32.decode  |  6 +++++-
- target/arm/translate.c | 38 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 43 insertions(+), 1 deletion(-)
+ target/arm/cpu.h               |   3 +
+ target/arm/translate-vfp.c.inc | 181 ++++++++++++++++++++++++++++++---
+ 2 files changed, 170 insertions(+), 14 deletions(-)
 
-diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-index 8152739b52b..59ab974c661 100644
---- a/target/arm/t32.decode
-+++ b/target/arm/t32.decode
-@@ -609,7 +609,11 @@ UXTAB            1111 1010 0101 .... 1111 .... 10.. ....      @rrr_rot
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 806c18a499f..3b20f935174 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1569,6 +1569,9 @@ enum arm_cpu_mode {
+ #define ARM_VFP_FPINST  9
+ #define ARM_VFP_FPINST2 10
  
- STM_t32          1110 1000 10.0 .... ................         @ldstm i=1 b=0
- STM_t32          1110 1001 00.0 .... ................         @ldstm i=0 b=1
--LDM_t32          1110 1000 10.1 .... ................         @ldstm i=1 b=0
-+{
-+  # Rn=15 UNDEFs for LDM; M-profile CLRM uses that encoding
-+  CLRM           1110 1000 1001 1111 list:16
-+  LDM_t32        1110 1000 10.1 .... ................         @ldstm i=1 b=0
-+}
- LDM_t32          1110 1001 00.1 .... ................         @ldstm i=0 b=1
- 
- &rfe             !extern rn w pu
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 4b17b2e0d46..ac8c118427f 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -7965,6 +7965,44 @@ static bool trans_LDM_t16(DisasContext *s, arg_ldst_block *a)
-     return do_ldm(s, a, 1);
++/* QEMU-internal value meaning "FPSCR, but we care only about NZCV" */
++#define QEMU_VFP_FPSCR_NZCV 0xffff
++
+ /* iwMMXt coprocessor control registers.  */
+ #define ARM_IWMMXT_wCID  0
+ #define ARM_IWMMXT_wCon  1
+diff --git a/target/arm/translate-vfp.c.inc b/target/arm/translate-vfp.c.inc
+index aee60ff98b3..5d880d12116 100644
+--- a/target/arm/translate-vfp.c.inc
++++ b/target/arm/translate-vfp.c.inc
+@@ -607,27 +607,180 @@ static bool trans_VDUP(DisasContext *s, arg_VDUP *a)
+     return true;
  }
  
-+static bool trans_CLRM(DisasContext *s, arg_CLRM *a)
++/*
++ * M-profile provides two different sets of instructions that can
++ * access floating point system registers: VMSR/VMRS (which move
++ * to/from a general purpose register) and VLDR/VSTR sysreg (which
++ * move directly to/from memory). In some cases there are also side
++ * effects which must happen after any write to memory (which could
++ * cause an exception). So we implement the common logic for the
++ * sysreg access in gen_M_fp_sysreg_write() and gen_M_fp_sysreg_read(),
++ * which take pointers to callback functions which will perform the
++ * actual "read/write general purpose register" and "read/write
++ * memory" operations.
++ */
++
++/*
++ * Emit code to store the sysreg to its final destination; frees the
++ * TCG temp 'value' it is passed.
++ */
++typedef void fp_sysreg_storefn(DisasContext *s, void *opaque, TCGv_i32 value);
++/*
++ * Emit code to load the value to be copied to the sysreg; returns
++ * a new TCG temporary
++ */
++typedef TCGv_i32 fp_sysreg_loadfn(DisasContext *s, void *opaque);
++
++/* Common decode/access checks for fp sysreg read/write */
++typedef enum fp_sysreg_check_result {
++    fp_sysreg_check_failed, /* caller should return false */
++    fp_sysreg_check_done, /* caller should return true */
++    fp_sysreg_check_continue, /* caller should continue generating code */
++} fp_sysreg_check_result;
++
++static fp_sysreg_check_result fp_sysreg_checks(DisasContext *s, int regno)
 +{
-+    int i;
-+    TCGv_i32 zero;
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return fp_sysreg_check_failed;
++    }
 +
-+    if (!dc_isar_feature(aa32_m_sec_state, s)) {
++    switch (regno) {
++    case ARM_VFP_FPSCR:
++    case QEMU_VFP_FPSCR_NZCV:
++        break;
++    default:
++        return fp_sysreg_check_failed;
++    }
++
++    if (!vfp_access_check(s)) {
++        return fp_sysreg_check_done;
++    }
++
++    return fp_sysreg_check_continue;
++}
++
++static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
++                                 fp_sysreg_loadfn *loadfn,
++                                 void *opaque)
++{
++    /* Do a write to an M-profile floating point system register */
++    TCGv_i32 tmp;
++
++    switch (fp_sysreg_checks(s, regno)) {
++    case fp_sysreg_check_failed:
 +        return false;
++    case fp_sysreg_check_done:
++        return true;
++    case fp_sysreg_check_continue:
++        break;
 +    }
 +
-+    if (extract32(a->list, 13, 1)) {
-+        return false;
++    switch (regno) {
++    case ARM_VFP_FPSCR:
++        tmp = loadfn(s, opaque);
++        gen_helper_vfp_set_fpscr(cpu_env, tmp);
++        tcg_temp_free_i32(tmp);
++        gen_lookup_tb(s);
++        break;
++    default:
++        g_assert_not_reached();
 +    }
-+
-+    if (!a->list) {
-+        /* UNPREDICTABLE; we choose to UNDEF */
-+        return false;
-+    }
-+
-+    zero = tcg_const_i32(0);
-+    for (i = 0; i < 15; i++) {
-+        if (extract32(a->list, i, 1)) {
-+            /* Clear R[i] */
-+            tcg_gen_mov_i32(cpu_R[i], zero);
-+        }
-+    }
-+    if (extract32(a->list, 15, 1)) {
-+        /*
-+         * Clear APSR (by calling the MSR helper with the same argument
-+         * as for "MSR APSR_nzcvqg, Rn": mask = 0b1100, SYSM=0)
-+         */
-+        TCGv_i32 maskreg = tcg_const_i32(0xc << 8);
-+        gen_helper_v7m_msr(cpu_env, maskreg, zero);
-+        tcg_temp_free_i32(maskreg);
-+    }
-+    tcg_temp_free_i32(zero);
 +    return true;
 +}
 +
- /*
-  * Branch, branch with link
-  */
++static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
++                                fp_sysreg_storefn *storefn,
++                                void *opaque)
++{
++    /* Do a read from an M-profile floating point system register */
++    TCGv_i32 tmp;
++
++    switch (fp_sysreg_checks(s, regno)) {
++    case fp_sysreg_check_failed:
++        return false;
++    case fp_sysreg_check_done:
++        return true;
++    case fp_sysreg_check_continue:
++        break;
++    }
++
++    switch (regno) {
++    case ARM_VFP_FPSCR:
++        tmp = tcg_temp_new_i32();
++        gen_helper_vfp_get_fpscr(tmp, cpu_env);
++        storefn(s, opaque, tmp);
++        break;
++    case QEMU_VFP_FPSCR_NZCV:
++        /*
++         * Read just NZCV; this is a special case to avoid the
++         * helper call for the "VMRS to CPSR.NZCV" insn.
++         */
++        tmp = load_cpu_field(vfp.xregs[ARM_VFP_FPSCR]);
++        tcg_gen_andi_i32(tmp, tmp, 0xf0000000);
++        storefn(s, opaque, tmp);
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    return true;
++}
++
++static void fp_sysreg_to_gpr(DisasContext *s, void *opaque, TCGv_i32 value)
++{
++    arg_VMSR_VMRS *a = opaque;
++
++    if (a->rt == 15) {
++        /* Set the 4 flag bits in the CPSR */
++        gen_set_nzcv(value);
++        tcg_temp_free_i32(value);
++    } else {
++        store_reg(s, a->rt, value);
++    }
++}
++
++static TCGv_i32 gpr_to_fp_sysreg(DisasContext *s, void *opaque)
++{
++    arg_VMSR_VMRS *a = opaque;
++
++    return load_reg(s, a->rt);
++}
++
++static bool gen_M_VMSR_VMRS(DisasContext *s, arg_VMSR_VMRS *a)
++{
++    /*
++     * Accesses to R15 are UNPREDICTABLE; we choose to undef.
++     * FPSCR -> r15 is a special case which writes to the PSR flags;
++     * set a->reg to a special value to tell gen_M_fp_sysreg_read()
++     * we only care about the top 4 bits of FPSCR there.
++     */
++    if (a->rt == 15) {
++        if (a->l && a->reg == ARM_VFP_FPSCR) {
++            a->reg = QEMU_VFP_FPSCR_NZCV;
++        } else {
++            return false;
++        }
++    }
++
++    if (a->l) {
++        /* VMRS, move FP system register to gp register */
++        return gen_M_fp_sysreg_read(s, a->reg, fp_sysreg_to_gpr, a);
++    } else {
++        /* VMSR, move gp register to FP system register */
++        return gen_M_fp_sysreg_write(s, a->reg, gpr_to_fp_sysreg, a);
++    }
++}
++
+ static bool trans_VMSR_VMRS(DisasContext *s, arg_VMSR_VMRS *a)
+ {
+     TCGv_i32 tmp;
+     bool ignore_vfp_enabled = false;
+ 
+-    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
+-        return false;
++    if (arm_dc_feature(s, ARM_FEATURE_M)) {
++        return gen_M_VMSR_VMRS(s, a);
+     }
+ 
+-    if (arm_dc_feature(s, ARM_FEATURE_M)) {
+-        /*
+-         * The only M-profile VFP vmrs/vmsr sysreg is FPSCR.
+-         * Accesses to R15 are UNPREDICTABLE; we choose to undef.
+-         * (FPSCR -> r15 is a special case which writes to the PSR flags.)
+-         */
+-        if (a->reg != ARM_VFP_FPSCR) {
+-            return false;
+-        }
+-        if (a->rt == 15 && !a->l) {
+-            return false;
+-        }
++    if (!dc_isar_feature(aa32_fpsp_v2, s)) {
++        return false;
+     }
+ 
+     switch (a->reg) {
 -- 
 2.20.1
 

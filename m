@@ -1,94 +1,94 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3594550lfb;
-        Mon, 16 Nov 2020 02:49:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxQmBzv5W7u7gW+AK/9vzXHwAWb0U9BE+zXEI6MZd3mafEPwj+Fv+satnIALqiG/3Uc2HcF
-X-Received: by 2002:a25:b11:: with SMTP id 17mr17761626ybl.203.1605523768456;
-        Mon, 16 Nov 2020 02:49:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605523768; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3595101lfb;
+        Mon, 16 Nov 2020 02:50:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzOc5ziY5tg5h2atoVILflGt9lHZ+fQJ8Ib9mocW5mEjEVQJS9RP6OXr8vqC2Ogxyo0paoP
+X-Received: by 2002:a25:2f4e:: with SMTP id v75mr21317806ybv.18.1605523835713;
+        Mon, 16 Nov 2020 02:50:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605523835; cv=none;
         d=google.com; s=arc-20160816;
-        b=C1YtWbM26psvz0alBAfUu300TbnGhCI/W1poeFLaINp5mu29j77AD3a306YF6HjTN7
-         17xuoUBy+Lz8+HRFf9sf2svy3EMPZUB7sJO7peKIIv9R0LZJzDw8fZc341ua5+y6zObm
-         RrQWu/aEKmgYzDf0O+3sD12JrQ7RgbPkkRiM549zpUyGIVibZnkcp4Jh2JCwWFeoxo3x
-         GMpRec2n0Y2odgANuL2z2sFAlJXLHoBiKD2QCMG1B/RV2BMIK/ykTFs+bp9Uo9jgRPsW
-         jwNawI8mWwsQbZZc9Q7hFoQmzrPX7ht8x1yyJllhmhUHBkmS14YhoMvYbYTREp1bRC0Z
-         I3qQ==
+        b=QeqEAvvOLZ8qeNI9qoX2FhcT/GMTjP6ZFg5y0TDTGCe/+R9GVpoX1aDkm8E5yupXLj
+         gWaKTgmsydNzLiN1kyBkTC4bssDhMVNrOXftNoId9YZ9LKjzbLMgtkZjxf2YE13y8OhF
+         CYB7q05OwOi2iJ8jk/J5+xFvqS9xumxsBz7FdfJHtprxSzxexHg4EzA7+V0kTyKGFQnm
+         qk/RPDzBK1avj0R4FCoS2J2NwDabPkEP+CSqhRsHkKRxuhce1p1xVL/NdBf0DdddIg07
+         t5x4E3q8HbrqNzWrUSveqNotXs4ttH211hye9wjeix+JeG6KNC8DcA7DqkdmBX9Ahh0N
+         uzLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Ig7ZX54D3gJ7u/x4bH9mITVitb1U3FNzzy73EbHWHoU=;
-        b=iJSb+gatj/7pq/MB9/7Qs9oMBAkoqb60N73frG8PvD0z0/2ilrTktKpsXrVxRgsSWc
-         O0vAdvJw0O6LFIzTeuqM1dTYNLq8KPo8MhIVO0y39FMQ/DMgKMrbCWUjax7yhyEMjyxf
-         JGHMG2uACdCK7JK958oiG19LKWaFUXMuRklIJR18KQ9FWPFBWTXcgj7TyOZZGxHe8Sl6
-         hSNxPP2scnIwgCWBioSCV5rD2fY9hy5IsgQ79Oz/yT15rmQWZmERhzkcOv9BRZuUUqZC
-         cJrY1GvMmHUj89Jc9DVG4vRs8E7CzNlfA3Htr7W9XWZpIp46Ht656zQ/QObmhzCMgtEi
-         PTLg==
+        bh=94eggaWe2+5P63Kl81RNXNeaaY0v2+lbVxf9v4CAftc=;
+        b=JbYSwdvji/l8q2s4Py9KZYlihftGI6TUZHeu0XIU99dCv6Kesuyb2i+VPr7Y9NHzPV
+         YcGg020+MvPeOz/3o4QsoyxgZ3PuQ0SNoA18czXZqtm+GYJPER0gATruZR2FAb64NDXT
+         qaG1OOsTGIuaKaE4heJZ1fLqCdDRUX+4bqc/aV+nZhvpgHyo8zsrldDYvvjqGmcSW7rC
+         vQ1mebGvazzsBpXjk4MRVxWaNsrXRQ94a91SSo783yZodVMWCRLLKqfdP0wDICDSQcOw
+         07RiKVBS330HZ7OOjLvbw+LkbpegH0Bnpeirm0wRqyEAjhnKLvSfguzv2OLLO/fMU2pW
+         AMIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=NfnEDe58;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=uAQqnBRV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h97si21433682ybi.405.2020.11.16.02.49.28
+        by mx.google.com with ESMTPS id m17si17879891ybm.232.2020.11.16.02.50.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 02:49:28 -0800 (PST)
+        Mon, 16 Nov 2020 02:50:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=NfnEDe58;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=uAQqnBRV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:54994 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kec4d-0006Bp-R1
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 05:49:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34988)
+	id 1kec5j-0007Ug-3c
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 05:50:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34990)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kebxx-0007xF-Ei; Mon, 16 Nov 2020 05:42:35 -0500
-Received: from aserp2130.oracle.com ([141.146.126.79]:41330)
+ id 1kebxy-0007xO-K2; Mon, 16 Nov 2020 05:42:35 -0500
+Received: from aserp2130.oracle.com ([141.146.126.79]:41338)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kebxu-0000YD-LP; Mon, 16 Nov 2020 05:42:33 -0500
+ id 1kebxu-0000YJ-VF; Mon, 16 Nov 2020 05:42:34 -0500
 Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAeAO7126607;
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAeAgW126741;
  Mon, 16 Nov 2020 10:42:26 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=corp-2020-01-29;
- bh=Ig7ZX54D3gJ7u/x4bH9mITVitb1U3FNzzy73EbHWHoU=;
- b=NfnEDe58+ydU7TjAXAYgeCBV4B6Sc2L6sYtxv69ADqpkG/d+Tn6JJOrblYmz1jPiKcpb
- iFC60Uj5zoMtZJGOKoVAT+4RUD16SJRUAbwTYmJHDCQgeFn0hu4RgGBtIMNpBExeN6SU
- vwbBuydhJKohTmOrMXJK7XIfB2Ad6vn4amqjeabO3EQM0+apzxP7y26Lo2etlzr8CnRf
- lUwBQ+wiZlsXv4+BBaz0hn35sMrl7pVMeMfhVn6Q2G7wstQamLrRopjh9lccKbeDWqjo
- M1HMssBZCAnnnDmOBkEfd+QDdpA6fx6kLSKyvEvYv3tLpUQ2SGeALkgNOC12XZ0dHIS1 7A== 
+ bh=94eggaWe2+5P63Kl81RNXNeaaY0v2+lbVxf9v4CAftc=;
+ b=uAQqnBRVcOe4ltCRBA8KLOT1RuudLAzKjUxd60tBODeG746awoZB36q6ldkYcCJ8Xgjr
+ RiMXVyDofOLO0pjc9wpdaOIGk5q6VLM+kobuJE+8RUqDUyEppWVzVAKAHAUCeckDSc4n
+ uG7lHTakIByQ45GtcXSweJ4cl/u+ocZ9PfYtJBUZH0zyC2eRPYj5LFRhfHj9COXdMFZo
+ OmSQRgTN8oyXIGzImcVagSnrsyIA/sTfRwCS4h5SwyHlOeSpR3+68k7nufT2f35Jm8di
+ ETGZEe8xkiJx/zKQfETK5YIjJgPZ6/JJQpyM9hu/BihX02lxcWkWfjFNIw/1hrd4FXVK 8Q== 
 Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2130.oracle.com with ESMTP id 34t4ramj0c-1
+ by aserp2130.oracle.com with ESMTP id 34t4ramj0d-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
  Mon, 16 Nov 2020 10:42:26 +0000
 Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAfAqi068479;
- Mon, 16 Nov 2020 10:42:25 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3020.oracle.com with ESMTP id 34umcwp46s-1
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAf9Fh068371;
+ Mon, 16 Nov 2020 10:42:26 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 34umcwp474-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 16 Nov 2020 10:42:25 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0AGAgOeP025557;
- Mon, 16 Nov 2020 10:42:24 GMT
+ Mon, 16 Nov 2020 10:42:26 +0000
+Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AGAgP5j004850;
+ Mon, 16 Nov 2020 10:42:25 GMT
 Received: from disaster-area.hh.sledj.net (/81.187.26.238)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 16 Nov 2020 02:42:23 -0800
+ with ESMTP ; Mon, 16 Nov 2020 02:42:25 -0800
 Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id b3324a9f;
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 761c95c1;
  Mon, 16 Nov 2020 10:42:16 +0000 (UTC)
 From: David Edmondson <david.edmondson@oracle.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 4/5] hw/arm: Flash image mapping follows image size
-Date: Mon, 16 Nov 2020 10:42:15 +0000
-Message-Id: <20201116104216.439650-5-david.edmondson@oracle.com>
+Subject: [RFC PATCH 5/5] hw/arm: Only minimise flash size on older machines
+Date: Mon, 16 Nov 2020 10:42:16 +0000
+Message-Id: <20201116104216.439650-6-david.edmondson@oracle.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201116104216.439650-1-david.edmondson@oracle.com>
 References: <20201116104216.439650-1-david.edmondson@oracle.com>
@@ -139,232 +139,192 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lZWUAfVn7G6i
+X-TUID: Ne6+qHWtqg9J
 
-When mapping flash images into the bottom 128MB, create mappings that
-match the size of the underlying block device rather than 64MB.
+Prior to 5.2 the flash images loaded into the bottom 128MB always
+filled the region. Ensure that this continues to be the case.
 
 Signed-off-by: David Edmondson <david.edmondson@oracle.com>
 ---
- hw/arm/trace-events      |  2 +
- hw/arm/virt-acpi-build.c | 29 ++++++++-------
- hw/arm/virt.c            | 79 +++++++++++++++++++++-------------------
- include/hw/arm/virt.h    |  1 +
- 4 files changed, 60 insertions(+), 51 deletions(-)
+ hw/arm/virt-acpi-build.c | 11 +++---
+ hw/arm/virt.c            | 79 ++++++++++++++++++++++++++--------------
+ include/hw/arm/virt.h    |  3 +-
+ 3 files changed, 60 insertions(+), 33 deletions(-)
 
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index a335ee891d..a9174f8fba 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -53,3 +53,5 @@ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
- smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=%s asid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64
- 
-+# virt.c
-+virt_flash_map1(const char *name, uint64_t base, uint64_t size) "map %s at 0x%"PRIx64" + 0x%"PRIx64
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 9747a6458f..2c08d36624 100644
+index 2c08d36624..6e3d72a9e9 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -102,28 +102,31 @@ static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+@@ -117,16 +117,17 @@ static void acpi_dsdt_add_flash1(Aml *scope, int index,
      aml_append(scope, dev);
  }
  
--static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
-+static void acpi_dsdt_add_flash1(Aml *scope, int index,
-+                                 hwaddr base, hwaddr size)
+-static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap,
+-    PFlashCFI01 *flash[2])
++static void acpi_dsdt_add_flash(Aml *scope, VirtMachineState *vms)
  {
-     Aml *dev, *crs;
--    hwaddr base = flash_memmap->base;
--    hwaddr size = flash_memmap->size / 2;
- 
--    dev = aml_device("FLS0");
-+    dev = aml_device("FLS%u", index);
-     aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0015")));
--    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(index)));
- 
-     crs = aml_resource_template();
-     aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
-     aml_append(dev, aml_name_decl("_CRS", crs));
-     aml_append(scope, dev);
-+}
- 
--    dev = aml_device("FLS1");
--    aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0015")));
--    aml_append(dev, aml_name_decl("_UID", aml_int(1)));
--    crs = aml_resource_template();
--    aml_append(crs, aml_memory32_fixed(base + size, size, AML_READ_WRITE));
--    aml_append(dev, aml_name_decl("_CRS", crs));
--    aml_append(scope, dev);
-+static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap,
-+    PFlashCFI01 *flash[2])
-+{
-+    acpi_dsdt_add_flash1(scope, 0,
-+                         flash_memmap->base,
-+                         virt_flash_size(flash[0]));
++    MemMapEntry *flash_memmap = &vms->memmap[VIRT_FLASH];
 +
-+    acpi_dsdt_add_flash1(scope, 1,
-+                         flash_memmap->base + flash_memmap->size / 2,
-+                         virt_flash_size(flash[1]));
+     acpi_dsdt_add_flash1(scope, 0,
+                          flash_memmap->base,
+-                         virt_flash_size(flash[0]));
++                         virt_flash_size(vms, vms->flash[0]));
+ 
+     acpi_dsdt_add_flash1(scope, 1,
+                          flash_memmap->base + flash_memmap->size / 2,
+-                         virt_flash_size(flash[1]));
++                         virt_flash_size(vms, vms->flash[1]));
  }
  
  static void acpi_dsdt_add_virtio(Aml *scope,
-@@ -603,7 +606,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+@@ -606,7 +607,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
      if (vmc->acpi_expose_flash) {
--        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-+        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH], vms->flash);
+-        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH], vms->flash);
++        acpi_dsdt_add_flash(scope, vms);
      }
      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f9f10987dc..03ec844bf3 100644
+index 03ec844bf3..e851622cb5 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -50,6 +50,7 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/tpm.h"
- #include "sysemu/kvm.h"
-+#include "sysemu/block-backend.h"
- #include "hw/loader.h"
- #include "exec/address-spaces.h"
- #include "qemu/bitops.h"
-@@ -78,6 +79,7 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-+#include "trace.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -931,6 +933,11 @@ static void create_virtio_devices(const VirtMachineState *vms)
+@@ -933,9 +933,15 @@ static void create_virtio_devices(const VirtMachineState *vms)
  
  #define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
  
-+int64_t virt_flash_size(PFlashCFI01 *flash)
-+{
-+    return blk_getlength(pflash_cfi01_get_blk(flash));
-+}
-+
- static PFlashCFI01 *virt_flash_create1(VirtMachineState *vms,
-                                         const char *name,
-                                         const char *alias_prop_name)
-@@ -969,6 +976,8 @@ static void virt_flash_map1(PFlashCFI01 *flash,
-     DeviceState *dev = DEVICE(flash);
-     const char *name = blk_name(pflash_cfi01_get_blk(flash));
- 
-+    trace_virt_flash_map1(name, base, size);
-+
-     if (size == 0 || !QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE)) {
-         error_report("system firmware block device %s has invalid size "
-                      "%" PRId64, name, size);
-@@ -995,63 +1004,57 @@ static void virt_flash_map(VirtMachineState *vms,
-                            MemoryRegion *secure_sysmem)
+-int64_t virt_flash_size(PFlashCFI01 *flash)
++int64_t virt_flash_size(VirtMachineState *vms, PFlashCFI01 *flash)
  {
-     /*
--     * Map two flash devices to fill the VIRT_FLASH space in the memmap.
-+     * Map two flash devices in the VIRT_FLASH space in the memmap.
-      * sysmem is the system memory space. secure_sysmem is the secure view
-      * of the system, and the first flash device should be made visible only
-      * there. The second flash device is visible to both secure and nonsecure.
-      * If sysmem == secure_sysmem this means there is no separate Secure
-      * address space and both flash devices are generally visible.
-      */
--    hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
--    hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
-+    MemMapEntry *m = &vms->memmap[VIRT_FLASH];
- 
--    virt_flash_map1(vms->flash[0], flashbase, flashsize,
--                    secure_sysmem);
--    virt_flash_map1(vms->flash[1], flashbase + flashsize, flashsize,
--                    sysmem);
-+    virt_flash_map1(vms->flash[0], m->base,
-+                    virt_flash_size(vms->flash[0]), secure_sysmem);
+-    return blk_getlength(pflash_cfi01_get_blk(flash));
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
 +
-+    virt_flash_map1(vms->flash[1], m->base + m->size / 2,
-+                    virt_flash_size(vms->flash[1]), sysmem);
++    if (vmc->maximize_flash_size) {
++        return vms->memmap[VIRT_FLASH].size / 2;
++    } else {
++        return blk_getlength(pflash_cfi01_get_blk(flash));
++    }
+ }
+ 
+ static PFlashCFI01 *virt_flash_create1(VirtMachineState *vms,
+@@ -1014,47 +1020,65 @@ static void virt_flash_map(VirtMachineState *vms,
+     MemMapEntry *m = &vms->memmap[VIRT_FLASH];
+ 
+     virt_flash_map1(vms->flash[0], m->base,
+-                    virt_flash_size(vms->flash[0]), secure_sysmem);
++                    virt_flash_size(vms, vms->flash[0]), secure_sysmem);
+ 
+     virt_flash_map1(vms->flash[1], m->base + m->size / 2,
+-                    virt_flash_size(vms->flash[1]), sysmem);
++                    virt_flash_size(vms, vms->flash[1]), sysmem);
  }
  
  static void virt_flash_fdt(VirtMachineState *vms,
                             MemoryRegion *sysmem,
                             MemoryRegion *secure_sysmem)
  {
--    hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
--    hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
-+    bool secure = sysmem != secure_sysmem;
-+    MemMapEntry *m = &vms->memmap[VIRT_FLASH];
-+    hwaddr flashbase0 = m->base;
-+    hwaddr flashbase1 = m->base + m->size / 2;
-+    hwaddr flashsize0 = virt_flash_size(vms->flash[0]);
-+    hwaddr flashsize1 = virt_flash_size(vms->flash[1]);
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     bool secure = sysmem != secure_sysmem;
+     MemMapEntry *m = &vms->memmap[VIRT_FLASH];
+     hwaddr flashbase0 = m->base;
+     hwaddr flashbase1 = m->base + m->size / 2;
+-    hwaddr flashsize0 = virt_flash_size(vms->flash[0]);
+-    hwaddr flashsize1 = virt_flash_size(vms->flash[1]);
++    hwaddr flashsize0 = virt_flash_size(vms, vms->flash[0]);
++    hwaddr flashsize1 = virt_flash_size(vms, vms->flash[1]);
      char *nodename;
  
--    if (sysmem == secure_sysmem) {
--        /* Report both flash devices as a single node in the DT */
--        nodename = g_strdup_printf("/flash@%" PRIx64, flashbase);
--        qemu_fdt_add_subnode(vms->fdt, nodename);
--        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
--        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
--                                     2, flashbase, 2, flashsize,
--                                     2, flashbase + flashsize, 2, flashsize);
--        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
--        g_free(nodename);
-+    if (secure) {
-+        nodename = g_strdup_printf("/secflash@%" PRIx64, flashbase0);
-     } else {
--        /*
--         * Report the devices as separate nodes so we can mark one as
--         * only visible to the secure world.
--         */
--        nodename = g_strdup_printf("/secflash@%" PRIx64, flashbase);
--        qemu_fdt_add_subnode(vms->fdt, nodename);
--        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
--        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
--                                     2, flashbase, 2, flashsize);
--        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
-+        nodename = g_strdup_printf("/flash@%" PRIx64, flashbase0);
+-    if (secure) {
+-        nodename = g_strdup_printf("/secflash@%" PRIx64, flashbase0);
+-    } else {
++    if (vmc->maximize_flash_size && !secure) {
++        /* Report both flash devices as a single node in the DT */
+         nodename = g_strdup_printf("/flash@%" PRIx64, flashbase0);
+-    }
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+-                                 2, flashbase0, 2, flashsize0);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
+-    if (secure) {
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
+-    }
+-    g_free(nodename);
++        qemu_fdt_add_subnode(vms->fdt, nodename);
++        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
++        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++                                     2, flashbase0, 2, flashsize0,
++                                     2, flashbase1, 2, flashsize1);
++        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
++        g_free(nodename);
++    } else {
++        /*
++         * If we are not intending to fill the flash region or one is
++         * device is secure, report two distinct nodes.
++         */
++        if (secure) {
++            nodename = g_strdup_printf("/secflash@%" PRIx64, flashbase0);
++        } else {
++            nodename = g_strdup_printf("/flash@%" PRIx64, flashbase0);
++        }
++        qemu_fdt_add_subnode(vms->fdt, nodename);
++        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
++        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++                                     2, flashbase0, 2, flashsize0);
++        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
++        if (secure) {
++            qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
++            qemu_fdt_setprop_string(vms->fdt, nodename,
++                                    "secure-status", "okay");
++        }
++        g_free(nodename);
+ 
+-    nodename = g_strdup_printf("/flash@%" PRIx64, flashbase1);
+-    qemu_fdt_add_subnode(vms->fdt, nodename);
+-    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
+-    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+-                                 2, flashbase1, 2, flashsize1);
+-    qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
+-    g_free(nodename);
++        nodename = g_strdup_printf("/flash@%" PRIx64, flashbase1);
++        qemu_fdt_add_subnode(vms->fdt, nodename);
++        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
++        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++                                     2, flashbase1, 2, flashsize1);
++        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
++        g_free(nodename);
 +    }
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
-+    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-+                                 2, flashbase0, 2, flashsize0);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
-+    if (secure) {
-         qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
-         qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
--        g_free(nodename);
--
--        nodename = g_strdup_printf("/flash@%" PRIx64, flashbase);
--        qemu_fdt_add_subnode(vms->fdt, nodename);
--        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
--        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
--                                     2, flashbase + flashsize, 2, flashsize);
--        qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
--        g_free(nodename);
-     }
-+    g_free(nodename);
-+
-+    nodename = g_strdup_printf("/flash@%" PRIx64, flashbase1);
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cfi-flash");
-+    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-+                                 2, flashbase1, 2, flashsize1);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
-+    g_free(nodename);
  }
  
  static bool virt_firmware_init(VirtMachineState *vms,
+@@ -2614,6 +2638,7 @@ static void virt_machine_5_1_options(MachineClass *mc)
+     virt_machine_5_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+     vmc->no_kvm_steal_time = true;
++    vmc->maximize_flash_size = true;
+ }
+ DEFINE_VIRT_MACHINE(5, 1)
+ 
 diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index aad6d69841..ee21d691ea 100644
+index ee21d691ea..1135e7e165 100644
 --- a/include/hw/arm/virt.h
 +++ b/include/hw/arm/virt.h
-@@ -172,6 +172,7 @@ OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
+@@ -127,6 +127,7 @@ struct VirtMachineClass {
+     bool kvm_no_adjvtime;
+     bool no_kvm_steal_time;
+     bool acpi_expose_flash;
++    bool maximize_flash_size;
+ };
+ 
+ struct VirtMachineState {
+@@ -172,7 +173,7 @@ OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
  
  void virt_acpi_setup(VirtMachineState *vms);
  bool virt_is_acpi_enabled(VirtMachineState *vms);
-+int64_t virt_flash_size(PFlashCFI01 *flash);
+-int64_t virt_flash_size(PFlashCFI01 *flash);
++int64_t virt_flash_size(VirtMachineState *vms, PFlashCFI01 *flash);
  
  /* Return the number of used redistributor regions  */
  static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)

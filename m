@@ -1,104 +1,100 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3830651lfb;
-        Mon, 16 Nov 2020 08:08:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw/XHeD0OI6c2sqomSKOfUciGKwlVo1ESdPmAPYqDMCnfmYGkkz9TJF+UuWLbOKacLxtSh5
-X-Received: by 2002:a9f:2701:: with SMTP id a1mr6842148uaa.70.1605542934223;
-        Mon, 16 Nov 2020 08:08:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605542934; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3831129lfb;
+        Mon, 16 Nov 2020 08:09:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxXcq/Z1NpKGEYBhyYIxT0jVGVwpuKpwL3uv/QZpdlR/2UXJU1lFEmNeg7HQ0NHuI3et9Mt
+X-Received: by 2002:a25:a567:: with SMTP id h94mr17452771ybi.211.1605542970789;
+        Mon, 16 Nov 2020 08:09:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605542970; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZTLIKWEEBmMTmAzPPcN36SO3tqor+cyrOYt6vgh+H8zOpTRX0tNFl2IaaClMyrTEJc
-         TvmTbrNkWtXTzPZSiNSyDMlX8fbzz8vloyKWzhLFFeMbJMF2hukFjdfY0fytT0P8KlSD
-         aGzdUbanvz3HYtaV1ap+0BIGvi+BCAj/krfB96zBvRw2AojZ35Fbz8ZvANC/rqgfdgAZ
-         Wbfe7mY9yOLB3DkeIRIUtjHqCSK/dCDYcZC4aFuC8wTiXZNeypixH/0Wr8Effoep2ECM
-         rUtJwbL4jiktKCZQN/bErrFuwzefZoA//BceXzMBEYzYzgcfDHHI/Sa8xaIQB4CpsoSz
-         m1mg==
+        b=KiUkaja+VXZ/K7usp1A7yibh/P5JCqTA8yplc0KGWVhALUHtLg68JX9eoGOR89EeGC
+         uY9pnFnC0Xs432AES1w/dbD+yFNZkQt2yNB3k52Mhyd8bm5dXNCePA+6IyEDhO/Iamtc
+         FF/pApiVczDEUAM2L0MrkyzuEWIiwadvPzO34DmvluNisn7RsNH/kBvuSCfG8n4Z1fe0
+         sn3df4LlRha2qFXXeRG6k1vbE/rEBEmI8LAm/WCTM0CJJYBPcwee13G1nNuwPgN2JuLi
+         Ld6OJ/kX0s9wBkAowFyQcEA36Sklv6arrHbFyWn8biMSqW5Tr7uasaHx64XMPJsZloIF
+         Umtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=iaNS+i1jzPJUyMNsOBEYPhhEyyWtna42P4YBOvu2NNM=;
-        b=aqSUKNRdw8/L5dyPJHig6hBJWIBU1CXLQeiUNfSMePj5tRUS4SYIP1DZo7IpW9OgKm
-         dsoWVlQhGH39Mz7+76MGEE0QccblRF1aEPa4w/dJhqhvoBlneLDtA/I5fH8fi+kkGf5b
-         DuVIqPAmfIihfn4i7AcgWuzGWzC2XX9YhH939SqX9p6fxDYiCDSBwh6V/75aoF5tYr3T
-         Up+naBMjgV8yJQTaFoGc+MwLhJO+NQeokmoOQTVrQ87QEjHxAaJs+sReZuZFMVTyV4R3
-         jYdvCB+t2m04FqUurSB4lcyqjU2Dln1/NMcrfXcbvNDulXTh1fvEpP4fZ0DKYcXjahcl
-         7K8Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=48eZQ2C/nYOS2OAqVNbzBjE7TFGlmkjwCx4T6ymfUuI=;
+        b=ejEeMi2LG00qTh+dTVDatncoK7tKpHEZpsa7IqMIv7z2X8fWEUoLeVK06YQ0MscnzW
+         HfZJTNZeL/LYMJuiQuPsTi08LZSnm8H3YvBOU1O4d7IU9pg2i2yqxpFM2ajohWz6bZms
+         ibykhsjqX3h54b4V5zw/DCikvnC+3rftIlDQD9pJtnvfG5H2KWN4pA1fwpX4QllUPTLG
+         ZwGBL7KfClyf/+IYJhXvpP7MyZNphm3s/IUOPijhF9kHarNLVc3qzia65C+O/gyoEoqg
+         XAHtp8ltFYcIdX1ULt8FTNPNuPihgXnbFTc96wO02ZoRqKkYri4cYRYFjFIx7b0X9mFe
+         XgQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZRsuKUde;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GSjjoidC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o17si1671116uat.188.2020.11.16.08.08.53
+        by mx.google.com with ESMTPS id i13si19287324ybp.288.2020.11.16.08.09.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 08:08:54 -0800 (PST)
+        Mon, 16 Nov 2020 08:09:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZRsuKUde;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GSjjoidC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59252 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60434 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1keh3l-0008Jq-CI
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:08:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58020)
+	id 1keh4M-0000TF-2D
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:09:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3Y-0008Fz-8D
- for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:08:40 -0500
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:56071)
+ id 1keh3a-0008Ld-Pl
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:08:42 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:54396)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3V-0007ny-Uh
- for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:08:39 -0500
-Received: by mail-wm1-x343.google.com with SMTP id c9so24218128wml.5
- for <qemu-arm@nongnu.org>; Mon, 16 Nov 2020 08:08:36 -0800 (PST)
+ id 1keh3W-0007oF-Gn
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:08:42 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id d142so24238880wmd.4
+ for <qemu-arm@nongnu.org>; Mon, 16 Nov 2020 08:08:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ h=from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=iaNS+i1jzPJUyMNsOBEYPhhEyyWtna42P4YBOvu2NNM=;
- b=ZRsuKUdexBwgpmJd99twtW1VHzC/ma26QJIocEkDH2dNqGPbtXvO+nFSrtaAgQk/5H
- 8e4nGGDVMa5fpLQcGQ6TaPmS89r3w6szuekDX8BqPN898wtmBpZCiBxoCpX3upxTAFaZ
- zWnddhxXoahKwjgI/bq8cS6yOoo1ZAWIbjIrGH4KmIA1DQ6xZ8TMGz07rd9gkUUWobvL
- V5aXOZ2PtqvoySwgxl65+/w367yO0LOzGSfxZMm4y76LLAWQ/C2AKV/x+Qd0AynwPeYW
- EFWVAKKCaDwQcnzRd+4JHjcl8DCJooI5Wnr9eUi7qsZYjMq8BdUmv1pRglOh/aJ1DWrN
- w3uQ==
+ bh=48eZQ2C/nYOS2OAqVNbzBjE7TFGlmkjwCx4T6ymfUuI=;
+ b=GSjjoidCB6ukhgqIRqApgozrZ/KueBqfCf5qdLV2MD37WNygYcPEMwvPWbSIF0561q
+ HOenOcFCfCDO05Ovv/9y/HhbEWXAeOODBM23kW/jDztL2Mk6rTNm+pPv+zFGHSHxNY00
+ MtR7gRuaAEBqdkYWpmE6tNwKf4SwqzRBRS/PjUuc8c9CuA9B0Vaw1j0fqw2ypJ3nUdSX
+ pClVS8EfBDEJApCy+FunX4yS/IaAJL9TC75vpQwMtrcNF25UNw+st4htvZ4ZLIoh6mb5
+ 2XaNnYmfKCRCXof8tXA+xFKakRvaHF95wtAV6UVwxTZL/ftqekrJuuRj/IfNkXBjm4ry
+ rIxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=iaNS+i1jzPJUyMNsOBEYPhhEyyWtna42P4YBOvu2NNM=;
- b=PIOIHP/NhBcw/r/jsEPTE3TWRmKuOpeezB63a23t45dtamZddGASLiJAfk7f+qUpoc
- hJL4IEYyO50IwlwaGz1ciqV9FDS0vOXi36froiy/34DbSsljYY0Bywzue7CJtyXeeNMh
- xVbNCesdO7gYRj64FB1WfrRjkYNgM2kZ1oOzkFgONCVyLtflZmF3LszRMcSxhTHXPbiE
- F95JnqSxWLj6j0NcJwHkXkydPFvn3xKHWZ3Mg77Hz58iCCL853Th5r+c0PBu+2d5bfP6
- JxTMnzI2eQPkykk22esWSJyGROxvaiHKZvmI3+Y080GW75/nUrw0DH23DNq7CnpkfZxQ
- xQpg==
-X-Gm-Message-State: AOAM533z2hwTtr9zZ7xIbg2ir0TbWsRx/IbHH12rg/DnCtcutEn6w8DE
- XFpfKn1vmhShjvHF+jIz9jwaOV+cck687Q==
-X-Received: by 2002:a05:600c:2048:: with SMTP id
- p8mr16597701wmg.165.1605542914798; 
- Mon, 16 Nov 2020 08:08:34 -0800 (PST)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=48eZQ2C/nYOS2OAqVNbzBjE7TFGlmkjwCx4T6ymfUuI=;
+ b=WJPHyYhc3uUlFjzXWHeZSN3fOzKAWAOCuafWkMoSevY5MoQMN1M19rs1660sQE/9/c
+ gUbwDk0yKQ5wV5edUiR+LwpdvAzzv1jNOwt+04ldOrw1+QlBk9ihZZTx87EUmn0voZ2S
+ SVy6eugHHExtRhruA/I81YZxc3QYsyhxvb2x/liFEXapqH3tKKaOdtxktVpelJcx4+6D
+ 6BUXjKh0n1hSzFq4ikXv1jHktsaVrQVjkV0BeFc1+KyAZzEIGS4DDvf0v7eIeknLSDmM
+ sJQfZ/fhm3e+WdZmO1jC2Wz+5QDvncCHK34t4IT50rxN+DCbJETa1hyK1VPfXgeA+6Oz
+ lSwg==
+X-Gm-Message-State: AOAM532p0Xeq87J1r7auUBAcr51DCvi3QrMM4vGIx0zkm+AUylw6uCDL
+ y1AHO2S3zyfoCACv496wvJoF63GfcuC8SQ==
+X-Received: by 2002:a1c:4485:: with SMTP id
+ r127mr16232430wma.177.1605542913760; 
+ Mon, 16 Nov 2020 08:08:33 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g20sm20116975wmh.20.2020.11.16.08.08.33
+ by smtp.gmail.com with ESMTPSA id g20sm20116975wmh.20.2020.11.16.08.08.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 08:08:34 -0800 (PST)
+ Mon, 16 Nov 2020 08:08:33 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/15] hw/intc/armv7m_nvic: Make all of system PPB range be
- RAZWI/BusFault
-Date: Mon, 16 Nov 2020 16:08:17 +0000
-Message-Id: <20201116160831.31000-2-peter.maydell@linaro.org>
+Subject: [PATCH 00/15] target/arm: More v8.1M features
+Date: Mon, 16 Nov 2020 16:08:16 +0000
+Message-Id: <20201116160831.31000-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201116160831.31000-1-peter.maydell@linaro.org>
-References: <20201116160831.31000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -107,7 +103,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,200 +118,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uH+UFVbWxsjX
+X-TUID: x0xYJAUoggD4
 
-For M-profile CPUs, the range from 0xe0000000 to 0xe00fffff is the
-Private Peripheral Bus range, which includes all of the memory mapped
-devices and registers that are part of the CPU itself, including the
-NVIC, systick timer, and debug and trace components like the Data
-Watchpoint and Trace unit (DWT).  Within this large region, the range
-0xe000e000 to 0xe000efff is the System Control Space (NVIC, system
-registers, systick) and 0xe002e000 to 0exe002efff is its Non-secure
-alias.
+This patchset implements a somewhat miscellaneous collection of
+new-in-v8.1M features, as well as some bugfixes. It's for-6.0
+material.
 
-The architecture is clear that within the SCS unimplemented registers
-should be RES0 for privileged accesses and generate BusFault for
-unprivileged accesses, and we currently implement this.
+In the bugfix category:
+ * RAZWI (or BusFault for unprivileged accesses) the whole of the
+   system PPB address range, not just the SCS
+ * Don't clobber ID_PFR1.Security on M-profile
+ * Don't allow VMRS/VMSR to fp sysregs that don't exist on M-profile
 
-It is less clear about how to handle accesses to unimplemented
-regions of the wider PPB.  Unprivileged accesses should definitely
-cause BusFaults (R_DQQS), but the behaviour of privileged accesses is
-not given as a general rule.  However, the register definitions of
-individual registers for components like the DWT all state that they
-are RES0 if the relevant component is not implemented, so the
-simplest way to provide that is to provide RAZ/WI for the whole range
-for privileged accesses.  (The v7M Arm ARM does say that reserved
-registers should be UNK/SBZP.)
+In the features category:
+ * v8.1M PXN extension
+ * VSCCLRM and CLRM insns
+ * VLDR/VSTR (sysreg) insns
+ * new M-profile fp sysregs: FPSCR_nzcvqc, FPCXT_S, FPCXT_NS
+ * update FPDSCR masking to allow new-in-v8.1M bits in that register
 
-Expand the container MemoryRegion that the NVIC exposes so that
-it covers the whole PPB space. This means:
- * moving the address that the ARMV7M device maps it to down by
-   0xe000 bytes
- * moving the off and the offsets within the container of all the
-   subregions forward by 0xe000 bytes
- * adding a new default MemoryRegion that covers the whole container
-   at a lower priority than anything else and which provides the
-   RAZWI/BusFault behaviour
+As usual, none of this will be enabled until we eventually get
+to the point of a complete v8.1M implementation and can define
+a Cortex-M55 CPU model.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/intc/armv7m_nvic.h |  1 +
- hw/arm/armv7m.c               |  2 +-
- hw/intc/armv7m_nvic.c         | 78 ++++++++++++++++++++++++++++++-----
- 3 files changed, 69 insertions(+), 12 deletions(-)
+thanks
+-- PMM
 
-diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
-index bb087b23c35..33b6d8810c7 100644
---- a/include/hw/intc/armv7m_nvic.h
-+++ b/include/hw/intc/armv7m_nvic.h
-@@ -84,6 +84,7 @@ struct NVICState {
-     MemoryRegion systickmem;
-     MemoryRegion systick_ns_mem;
-     MemoryRegion container;
-+    MemoryRegion defaultmem;
- 
-     uint32_t num_irq;
-     qemu_irq excpout;
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 8113b29f1fd..944f261dd05 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -225,7 +225,7 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(sbd, 0,
-                        qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
- 
--    memory_region_add_subregion(&s->container, 0xe000e000,
-+    memory_region_add_subregion(&s->container, 0xe0000000,
-                                 sysbus_mmio_get_region(sbd, 0));
- 
-     for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 42b1ad59e65..9628ce876e0 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -2479,6 +2479,43 @@ static const MemoryRegionOps nvic_systick_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
-+/*
-+ * Unassigned portions of the PPB space are RAZ/WI for privileged
-+ * accesses, and fault for non-privileged accesses.
-+ */
-+static MemTxResult ppb_default_read(void *opaque, hwaddr addr,
-+                                    uint64_t *data, unsigned size,
-+                                    MemTxAttrs attrs)
-+{
-+    qemu_log_mask(LOG_UNIMP, "Read of unassigned area of PPB: offset 0x%x\n",
-+                  (uint32_t)addr);
-+    if (attrs.user) {
-+        return MEMTX_ERROR;
-+    }
-+    *data = 0;
-+    return MEMTX_OK;
-+}
-+
-+static MemTxResult ppb_default_write(void *opaque, hwaddr addr,
-+                                     uint64_t value, unsigned size,
-+                                     MemTxAttrs attrs)
-+{
-+    qemu_log_mask(LOG_UNIMP, "Write of unassigned area of PPB: offset 0x%x\n",
-+                  (uint32_t)addr);
-+    if (attrs.user) {
-+        return MEMTX_ERROR;
-+    }
-+    return MEMTX_OK;
-+}
-+
-+static const MemoryRegionOps ppb_default_ops = {
-+    .read_with_attrs = ppb_default_read,
-+    .write_with_attrs = ppb_default_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 8,
-+};
-+
- static int nvic_post_load(void *opaque, int version_id)
- {
-     NVICState *s = opaque;
-@@ -2675,7 +2712,6 @@ static void nvic_systick_trigger(void *opaque, int n, int level)
- static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
- {
-     NVICState *s = NVIC(dev);
--    int regionlen;
- 
-     /* The armv7m container object will have set our CPU pointer */
-     if (!s->cpu || !arm_feature(&s->cpu->env, ARM_FEATURE_M)) {
-@@ -2718,7 +2754,20 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-                                                   M_REG_S));
-     }
- 
--    /* The NVIC and System Control Space (SCS) starts at 0xe000e000
-+    /*
-+     * This device provides a single sysbus memory region which
-+     * represents the whole of the "System PPB" space. This is the
-+     * range from 0xe0000000 to 0xe00fffff and includes the NVIC,
-+     * the System Control Space (system registers), the systick timer,
-+     * and for CPUs with the Security extension an NS banked version
-+     * of all of these.
-+     *
-+     * The default behaviour for unimplemented registers/ranges
-+     * (for instance the Data Watchpoint and Trace unit at 0xe0001000)
-+     * is to RAZ/WI for privileged access and BusFault for non-privileged
-+     * access.
-+     *
-+     * The NVIC and System Control Space (SCS) starts at 0xe000e000
-      * and looks like this:
-      *  0x004 - ICTR
-      *  0x010 - 0xff - systick
-@@ -2741,32 +2790,39 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-      * generally code determining which banked register to use should
-      * use attrs.secure; code determining actual behaviour of the system
-      * should use env->v7m.secure.
-+     *
-+     * The container covers the whole PPB space. Within it the priority
-+     * of overlapping regions is:
-+     *  - default region (for RAZ/WI and BusFault) : -1
-+     *  - system register regions : 0
-+     *  - systick : 1
-+     * This is because the systick device is a small block of registers
-+     * in the middle of the other system control registers.
-      */
--    regionlen = arm_feature(&s->cpu->env, ARM_FEATURE_V8) ? 0x21000 : 0x1000;
--    memory_region_init(&s->container, OBJECT(s), "nvic", regionlen);
--    /* The system register region goes at the bottom of the priority
--     * stack as it covers the whole page.
--     */
-+    memory_region_init(&s->container, OBJECT(s), "nvic", 0x100000);
-+    memory_region_init_io(&s->defaultmem, OBJECT(s), &ppb_default_ops, s,
-+                          "nvic-default", 0x100000);
-+    memory_region_add_subregion_overlap(&s->container, 0, &s->defaultmem, -1);
-     memory_region_init_io(&s->sysregmem, OBJECT(s), &nvic_sysreg_ops, s,
-                           "nvic_sysregs", 0x1000);
--    memory_region_add_subregion(&s->container, 0, &s->sysregmem);
-+    memory_region_add_subregion(&s->container, 0xe000, &s->sysregmem);
- 
-     memory_region_init_io(&s->systickmem, OBJECT(s),
-                           &nvic_systick_ops, s,
-                           "nvic_systick", 0xe0);
- 
--    memory_region_add_subregion_overlap(&s->container, 0x10,
-+    memory_region_add_subregion_overlap(&s->container, 0xe010,
-                                         &s->systickmem, 1);
- 
-     if (arm_feature(&s->cpu->env, ARM_FEATURE_V8)) {
-         memory_region_init_io(&s->sysreg_ns_mem, OBJECT(s),
-                               &nvic_sysreg_ns_ops, &s->sysregmem,
-                               "nvic_sysregs_ns", 0x1000);
--        memory_region_add_subregion(&s->container, 0x20000, &s->sysreg_ns_mem);
-+        memory_region_add_subregion(&s->container, 0x2e000, &s->sysreg_ns_mem);
-         memory_region_init_io(&s->systick_ns_mem, OBJECT(s),
-                               &nvic_sysreg_ns_ops, &s->systickmem,
-                               "nvic_systick_ns", 0xe0);
--        memory_region_add_subregion_overlap(&s->container, 0x20010,
-+        memory_region_add_subregion_overlap(&s->container, 0x2e010,
-                                             &s->systick_ns_mem, 1);
-     }
- 
+Peter Maydell (15):
+  hw/intc/armv7m_nvic: Make all of system PPB range be RAZWI/BusFault
+  target/arm: Implement v8.1M PXN extension
+  target/arm: Don't clobber ID_PFR1.Security on M-profile cores
+  target/arm: Implement VSCCLRM insn
+  target/arm: Implement CLRM instruction
+  target/arm: Enforce M-profile VMRS/VMSR register restrictions
+  target/arm: Refactor M-profile VMSR/VMRS handling
+  target/arm: Move general-use constant expanders up in translate.c
+  target/arm: Implement VLDR/VSTR system register
+  target/arm: Implement M-profile FPSCR_nzcvqc
+  target/arm: Use new FPCR_NZCV_MASK constant
+  target/arm: Factor out preserve-fp-state from full_vfp_access_check()
+  target/arm: Implement FPCXT_S fp system register
+  target/arm: Implement FPCXT_NS fp system register
+  hw/intc/armv7m_nvic: Update FPDSCR masking for v8.1M
+
+ include/hw/intc/armv7m_nvic.h  |   1 +
+ target/arm/cpu.h               |  30 ++
+ target/arm/m-nocp.decode       |   8 +-
+ target/arm/t32.decode          |   6 +-
+ target/arm/vfp.decode          |  14 +
+ hw/arm/armv7m.c                |   2 +-
+ hw/intc/armv7m_nvic.c          |  87 ++++-
+ target/arm/cpu.c               |   5 +-
+ target/arm/helper.c            |   7 +-
+ target/arm/translate.c         | 102 ++++--
+ target/arm/translate-vfp.c.inc | 581 +++++++++++++++++++++++++++++++--
+ 11 files changed, 765 insertions(+), 78 deletions(-)
+
 -- 
 2.20.1
 

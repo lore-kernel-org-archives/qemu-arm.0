@@ -1,108 +1,106 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3707671lfb;
-        Mon, 16 Nov 2020 05:33:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxK02eHAipBtJSjlx52v8v3WMw0Pg1zrhawmKX77C0OTVSEE/k8mNBB3GTlirflUlWxewiY
-X-Received: by 2002:a05:6102:3222:: with SMTP id x2mr7187330vsf.20.1605533622194;
-        Mon, 16 Nov 2020 05:33:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605533622; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3716409lfb;
+        Mon, 16 Nov 2020 05:45:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyMfWodnIDxnpNbsa+l0Gz5KSWmblTfwXJb6Jk1ql8HWDy1uJqiFQus78FqM1FuSDSErqkB
+X-Received: by 2002:a67:f2c3:: with SMTP id a3mr2325252vsn.57.1605534309801;
+        Mon, 16 Nov 2020 05:45:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605534309; cv=none;
         d=google.com; s=arc-20160816;
-        b=NL6CUM0f7xVE6vx40FyQqPWTfhACUaAF+UFODxcfShXFHzM+aV2y2LzeCx8Sduvlu0
-         ftbBmO8EAHWbwEOH29XRHGFbnDcq/CWAUpaS5TJMmUHdfj8zAE/96uBrQ/eYtcz8Mzhg
-         DdcSJo6nij+3qe9hUbmUpMFWPrcjUA04iXK5430IzXEuJNix8GBJWBRp5VGqzZjHVFkD
-         MuZTA6VyTFJMvxEV6MIVRvPacBa2UHURyuvTZ39Ip2vIHeX6WoYdudUBg+oxGB6WKnYj
-         dM+aclwZZWFOjhRQw6R4GRQ+zayOdTDNZ7bUGL2zSY5O3pG7DiFN5BllTshGH4E7Ey6X
-         AdwQ==
+        b=uuR7PFwUVKRgL7nYqFkInsM1JsSTH9Jwc5I5ZY6SG7m5KEkDM2D+rXwnTLwhljdbMk
+         oBvZeMHSniKmzxGz8O11IpKEX0DWdFRuQ8aQRY1RB2+Svi27XNkMPs1NVFRGw5DnuViV
+         U9JH6OuUP4SP/gB+8c4lhBJGjRwwYf8O965wPYM52x5gZsjBVqzF8lN6traQAcwRt36e
+         Zitsx9X2zYRClHC1Qiaiza/9jPH9ePzHuVOXrye0eKG3BIfAm6vKfZ0cqhO1Vcn5xRj+
+         mnqP3sA/G+fY9KX1vj+UBhSH/4a1thjQ0FoJpdeBqNjURCtfbIWNXhUSZ+OmyBvHSYV+
+         NEzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:from:references:in-reply-to:subject:to
          :dkim-signature;
-        bh=01OHeiGwAA19CYkGsvQcr9lQyVQ7kmJrkjS3w/O4NJo=;
-        b=Imnk2ElxZeYy6zujicMuzeuTRdSA+67BN9557k/P1E9nNyr4/9lyhbK48mvEVb9Lkc
-         8+gSxc4G2HGVo53jy0tjNf5QUvAJXtcGR7/q9jBSqbWTUMnEEEokmKCoDkI4k5piUPdF
-         BslMb1x+01lLSU6YuirDm33kiIh3FLsvVatLwmV8JlR37NT6C8doyxTIdqjxwEsL20MN
-         BnzZeie+iK+rmAGc0s4nDAqj4kqVcbPTcneJyY4a6gg/Op6C0X8A0Cvy0j5Oxns01SN0
-         0yuCcPcTqe8PjJ5BnTwGr6S9xnjMaibPzqyvAIGzZu9wEDGYIb9Qr0gOV/pW4BlwwBJa
-         cQbQ==
+        bh=Lverj1xUIond2tO7njcqRpVOFBxkhCoEJ+h8zwPEMEI=;
+        b=VyT7uhDoLU14tag8cfwMWg1bURsi4zpBF4mohF776zAAx7OxZhqG2lIC9FrXFjmXSy
+         69goJFnEbMjarqTawGe28Osq3zNX+YZF451r+Vj1KEdzTjMtkUP2sJ7u223UnMKQoKmO
+         ybXMQC7yedsVSO+eM6q/KoKAU328Nk2PtulErkk6CRv57gzqMOMHG4rSiuAd+MA4fI9O
+         wxFRn7tlRzHsAk96/Xi3yK9V9EYSsXuLJtbJonlzu0Gs9LytTw1SCeW4EL1RtMeX4UPG
+         1vduer1p9Atg2blfDGO2jJKV4ThwJ4oAsyFb4LqX+ayOsSDrPdX7wuQV1Gc+bnesp9Vu
+         9zCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@dme-org.20150623.gappssmtp.com header.s=20150623 header.b=lwFYv5Ws;
+       dkim=pass header.i=@dme-org.20150623.gappssmtp.com header.s=20150623 header.b=JE4igB3i;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s188si1995999vss.270.2020.11.16.05.33.42
+        by mx.google.com with ESMTPS id q20si1887645vsn.139.2020.11.16.05.45.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 05:33:42 -0800 (PST)
+        Mon, 16 Nov 2020 05:45:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@dme-org.20150623.gappssmtp.com header.s=20150623 header.b=lwFYv5Ws;
+       dkim=pass header.i=@dme-org.20150623.gappssmtp.com header.s=20150623 header.b=JE4igB3i;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42782 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1keedZ-0000S0-Hb
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 08:33:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44924)
+	id 1keeof-0005qI-3T
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 08:45:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dme@dme.org>) id 1keeZl-0006Dr-0E
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 08:29:45 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:37018)
+ (Exim 4.90_1) (envelope-from <dme@dme.org>) id 1keemz-0004fQ-SQ
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 08:43:25 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:41114)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dme@dme.org>) id 1keeZh-0000qH-E4
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 08:29:44 -0500
-Received: by mail-wr1-x444.google.com with SMTP id b6so18701032wrt.4
- for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 05:29:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dme@dme.org>) id 1keemy-0005kJ-0V
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 08:43:25 -0500
+Received: by mail-wr1-x441.google.com with SMTP id 23so18710146wrc.8
+ for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 05:43:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dme-org.20150623.gappssmtp.com; s=20150623;
  h=to:cc:subject:in-reply-to:references:from:date:message-id
  :mime-version:content-transfer-encoding;
- bh=01OHeiGwAA19CYkGsvQcr9lQyVQ7kmJrkjS3w/O4NJo=;
- b=lwFYv5WstgsuIKu76pwciW4jUK5Omy4Q4IY3GY2wgk7mGBKvS2q7Bdz2W6H8+M1II1
- aug1w413DJoIQi201xI0/xSU/I7dX0yULHqxTxPJ8AhLuWWok3camJwYy2jta3vFkC5m
- oIb1zQmyRYlB59BDUD6Y5ko0Es5E5t4a34lPPve+2drdGUE3mmHyvd36Vs6AL1jqBY8l
- jWZ9MjhTep5HMJ6FpwwRUpcTcPRJSq6n4U+yGe/dHdytXQ+sapblYXHsYUBOOPMjImXK
- DcXe+gr8JZpxSQXQJGCpCCbXnRKqdfTvlYUaxC+CN1GvmAGqz2updJLhFGxOcPv6ii+0
- R0+g==
+ bh=Lverj1xUIond2tO7njcqRpVOFBxkhCoEJ+h8zwPEMEI=;
+ b=JE4igB3ijKyXSMAE2p/RZMBZ0kT1ym5BOUliQpKEhDr8NWyAjZMwEI824UfvZyD7fs
+ dMiC9C6ssdRZ93VX4MA55ImH/21LiLIAWEo9I5LMc+dyvsneD9Zl9+UTIIxdCa41UYnZ
+ jrihQSnWm/op0xs7tYC0xZSLIOdBsAPGQXv79lx3pqr2ONw0GrP96vetvuzwMdq0aB8n
+ 24JtEvHL++gstOXNoAzZ72K5uvvarOEdRdxRpWp386kD0qPefvyXnjhiz8WSYx8sM+s3
+ bXj75kDWQc7gvV7BE322qX6CWHlTcAI4zhOTgBgeinn00e+G7IGQpCsZP5u2rZPmRowo
+ Omcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:to:cc:subject:in-reply-to:references:from:date
  :message-id:mime-version:content-transfer-encoding;
- bh=01OHeiGwAA19CYkGsvQcr9lQyVQ7kmJrkjS3w/O4NJo=;
- b=keW4sPQl8m0p5mC7ArZBi3ejAlPqJG6r6yJjaloE8bUp93AqRzdPx+A8P97cWo9pBN
- W7S4fBhSeAlFCKYeS/5QtsDjfQT3bT+WOoW8nfx+e7ceMLnRnrn3ssM4XsbalME94dwo
- JZuIfOMWf8YW8FQPPFeo064hkS5hv+0OFeM695ES9HYIATh9/DkhijAB4n3SPd9S5yGi
- hF6WorDFjHa04q9FnYRixCBi5SPIlLweyizBWQRUSOuLKuPga3EY/L1mbmOKDzlUNDUX
- i1UgxRNlchZ0XqkbAVweecPNj+i30JyUdCTu//MGT27XUT+qAlmBog5EwZdaK/plyLxA
- yV9Q==
-X-Gm-Message-State: AOAM531MskVRh02SPw3+0Z7x5p3nNYb0vJK8vX8HW1sfdVfRoHVUTdPO
- HjJoLM7L64ugmD1I0NsRyF4w0A==
-X-Received: by 2002:a05:6000:372:: with SMTP id
- f18mr20881238wrf.149.1605533379162; 
- Mon, 16 Nov 2020 05:29:39 -0800 (PST)
+ bh=Lverj1xUIond2tO7njcqRpVOFBxkhCoEJ+h8zwPEMEI=;
+ b=l+pFkNVLVNPxhK70FU44zKyApE+fvkankyVj0iIlFBx8x55hBenhNP/hYD4Bu8k+rA
+ J/z6MVku1I0BKrJo9Y2a5gNSV3U73C7ssQOnZDS/oVVWXWxbRdapVyOcR790rC3mHcFP
+ xgT/3fFYwgGY+I1kkhPgiZ0HFjiata7WLLXsQtWd/A8iPnF8XYQCj46U8rakjeANHSmj
+ saW3CikeRJ1Q0X76xnPXi2TKqRtCFbQuwVSE+dzLYIq3Vi7JnRiyhShHlQ/xX3upbkX6
+ uOTvInGmYlEnw8qNnMTP2khQXvR/Yw8b3Ak4yxLVurcr+viy8++8uQcCMYjQhFPdTFP8
+ Ygog==
+X-Gm-Message-State: AOAM530vvXfg0z+2FVY2hT4fp9IqPhrelshYSskspx7VDNDUFaaCWAeY
+ JAuzcTC1lrX/5ej7BdMhamKq9A==
+X-Received: by 2002:a5d:514a:: with SMTP id u10mr19259795wrt.312.1605534200590; 
+ Mon, 16 Nov 2020 05:43:20 -0800 (PST)
 Received: from disaster-area.hh.sledj.net (disaster-area.hh.sledj.net.
  [2001:8b0:bb71:7140:64::1])
- by smtp.gmail.com with ESMTPSA id y11sm18941870wmj.36.2020.11.16.05.29.38
+ by smtp.gmail.com with ESMTPSA id v67sm20695550wma.17.2020.11.16.05.43.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 05:29:38 -0800 (PST)
+ Mon, 16 Nov 2020 05:43:19 -0800 (PST)
 Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 47e299cc;
- Mon, 16 Nov 2020 13:29:37 +0000 (UTC)
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 4a67b6e6;
+ Mon, 16 Nov 2020 13:43:18 +0000 (UTC)
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Subject: Re: [RFC PATCH 1/5] hw/block: blk_check_size_and_read_all should
- report backend name
-In-Reply-To: <0a06d4fd-215b-4bfb-cef7-5d1a03e1a41d@redhat.com>
+Subject: Re: [RFC PATCH 0/5] ARM: reduce the memory consumed when mapping
+ UEFI flash images
+In-Reply-To: <3da830b6-8200-6df9-9ba3-1f51bf887c4e@redhat.com>
 References: <20201116104216.439650-1-david.edmondson@oracle.com>
- <20201116104216.439650-2-david.edmondson@oracle.com>
- <0a06d4fd-215b-4bfb-cef7-5d1a03e1a41d@redhat.com>
+ <3da830b6-8200-6df9-9ba3-1f51bf887c4e@redhat.com>
 X-HGTTG: zarquon
 From: David Edmondson <dme@dme.org>
-Date: Mon, 16 Nov 2020 13:29:37 +0000
-Message-ID: <cund00djupq.fsf@zarquon.hh.sledj.net>
+Date: Mon, 16 Nov 2020 13:43:18 +0000
+Message-ID: <cuna6vhju2x.fsf@zarquon.hh.sledj.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: neutral client-ip=2a00:1450:4864:20::444;
- envelope-from=dme@dme.org; helo=mail-wr1-x444.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::441;
+ envelope-from=dme@dme.org; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -10
@@ -125,81 +123,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- John Snow <jsnow@redhat.com>
+ Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xhbWB3uPZioN
+X-TUID: md20cY1Jx+Jf
 
-On Monday, 2020-11-16 at 12:23:24 +01, Philippe Mathieu-Daud=C3=A9 wrote:
+On Monday, 2020-11-16 at 12:39:46 +01, Philippe Mathieu-Daud=C3=A9 wrote:
 
-> On 11/16/20 11:42 AM, David Edmondson wrote:
->> If there are problems examining or reading data from the block
->> backend, the error messages should include an appropriate identifier
->> to assist in diagnoses.
->>=20
->> Signed-off-by: David Edmondson <david.edmondson@oracle.com>
->> ---
->>  hw/block/block.c | 14 +++++++-------
->>  1 file changed, 7 insertions(+), 7 deletions(-)
->>=20
->> diff --git a/hw/block/block.c b/hw/block/block.c
->> index 1e34573da7..8b284e1f14 100644
->> --- a/hw/block/block.c
->> +++ b/hw/block/block.c
->> @@ -20,9 +20,6 @@
->>   * BDRV_REQUEST_MAX_BYTES.
->>   * On success, return true.
->>   * On failure, store an error through @errp and return false.
->> - * Note that the error messages do not identify the block backend.
->> - * TODO Since callers don't either, this can result in confusing
->> - * errors.
->>   * This function not intended for actual block devices, which read on
->>   * demand.  It's for things like memory devices that (ab)use a block
->>   * backend to provide persistence.
->> @@ -32,17 +29,19 @@ bool blk_check_size_and_read_all(BlockBackend *blk, =
-void *buf, hwaddr size,
->>  {
->>      int64_t blk_len;
->>      int ret;
->> +    const char *name =3D blk_name(blk);
->>=20=20
->>      blk_len =3D blk_getlength(blk);
->>      if (blk_len < 0) {
->>          error_setg_errno(errp, -blk_len,
->> -                         "can't get size of block backend");
->> +                         "can't get size of block backend %s",
+> Hi David,
 >
-> Maybe '%s' to notice empty name?
+> On 11/16/20 11:42 AM, David Edmondson wrote:
+>> Currently ARM UEFI images are typically built as 2MB/768kB flash
+>> images for code and variables respectively. These images are both then
+>> padded out to 64MB before being loaded by QEMU.
+>>=20
+>> Because the images are 64MB each, QEMU allocates 128MB of memory to
+>> read them, and then proceeds to read all 128MB from disk (dirtying the
+>> memory). Of this 128MB less than 3MB is useful - the rest is zero
+>> padding.
+>
+> 2 years ago I commented the same problem, and suggested to access the
+> underlying storage by "block", as this is a "block storage".
+>
+> Back then the response was "do not try to fix something that works".
+> This is why we choose the big hammer "do not accept image size not
+> matching device size" way.
+>
+> While your series seems to help, it only postpone the same
+> implementation problem. If what you want is use the least memory
+> required, I still believe accessing the device by block is the
+> best approach.
 
-Okay.
+I agree that would reduce the size further, but it feels like it may be
+a case of diminishing returns.
 
->> +                         name);
->>          return false;
->>      }
->>      if (blk_len !=3D size) {
->>          error_setg(errp, "device requires %" HWADDR_PRIu " bytes, "
->> -                   "block backend provides %" PRIu64 " bytes",
->> -                   size, blk_len);
->> +                   "block backend %s provides %" PRIu64 " bytes",
->> +                   size, name, blk_len);
->>          return false;
->>      }
->>=20=20
->> @@ -55,7 +54,8 @@ bool blk_check_size_and_read_all(BlockBackend *blk, vo=
-id *buf, hwaddr size,
->>      assert(size <=3D BDRV_REQUEST_MAX_BYTES);
->>      ret =3D blk_pread(blk, 0, buf, size);
->>      if (ret < 0) {
->> -        error_setg_errno(errp, -ret, "can't read block backend");
->> +        error_setg_errno(errp, -ret, "can't read block backend %s",
->> +                         name);
->>          return false;
->>      }
->>      return true;
+Currently the consumption for a single guest is 128MB. This change will
+bring it down under 3MB, with the block approach perhaps reducing that
+to zero (there will be some buffer block usage presumably, and perhaps a
+small cache would make sense, so it won't really be zero).
+
+Scaling that up for 100 guests, we're going from 12.5GB now down to
+under 300MB with the changes, and again something around zero with the
+block based approach.
+
+I guess that it would mean that the machine model wouldn't have to
+change, as we could return zeros for reads outside the underlying device
+extent. This seems like the most interesting part - are there likely to
+be any consequential *benefits* from reducing the amount of guest
+address space consumed by the flash regions?
+
+> Regards,
+>
+> Phil.
+>
+>>=20
+>> On a machine with 100 VMs this wastes over 12GB of memory.
+>>=20
+>> This set of patches aims to reclaim the wasted memory by allowing QEMU
+>> to respect the size of the flash images and allocate only the
+>> necessary memory. This will, of course, require that the flash build
+>> process be modified to avoid padding the images to 64MB.
+>>=20
+>> Because existing machine types expect the full 128MB reserved for
+>> flash to be occupied, do so for machine types older than virt-5.2. The
+>> changes are beneficial even in this case, because while the full 128MB
+>> of memory is allocated, only that required to actually load the flash
+>> images from disk is touched.
+>>=20
+>> David Edmondson (5):
+>>   hw/block: blk_check_size_and_read_all should report backend name
+>>   hw/block: Flash images can be smaller than the device
+>>   hw/arm: Convert assertions about flash image size to error_report
+>>   hw/arm: Flash image mapping follows image size
+>>   hw/arm: Only minimise flash size on older machines
+>>=20
+>>  hw/arm/trace-events      |  2 +
+>>  hw/arm/virt-acpi-build.c | 30 ++++++++------
+>>  hw/arm/virt.c            | 86 +++++++++++++++++++++++++++++-----------
+>>  hw/block/block.c         | 26 ++++++------
+>>  include/hw/arm/virt.h    |  2 +
+>>  5 files changed, 97 insertions(+), 49 deletions(-)
 >>=20
 
 dme.
 --=20
-She looks like Eve Marie Saint in "On the Waterfront".
+Please forgive me if I act a little strange, for I know not what I do.

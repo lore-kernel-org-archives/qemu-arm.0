@@ -1,103 +1,94 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3836721lfb;
-        Mon, 16 Nov 2020 08:16:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzo4oJrT8fDc4H93OAcqFI6/OGEatv8Lva97E//q3Odb8dgR/XHuz6PQuJFdDlHwb2ncPZR
-X-Received: by 2002:a25:100a:: with SMTP id 10mr20150823ybq.410.1605543372663;
-        Mon, 16 Nov 2020 08:16:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605543372; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3837588lfb;
+        Mon, 16 Nov 2020 08:17:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxg/MBiLXEODqShTRUtPKwpZXvjtjJMejMJL6D21qSONHbA6VuCsooOew0nNZMgqllqYYQa
+X-Received: by 2002:a25:b851:: with SMTP id b17mr19153659ybm.15.1605543440795;
+        Mon, 16 Nov 2020 08:17:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605543440; cv=none;
         d=google.com; s=arc-20160816;
-        b=eS5pI97WXu3rDLD+HwSQjEW9Yg5mOlWtZlSoezO77xuPfKL7u2oZppFTE/aZ/v/Dkj
-         DLFJOgLXcA3+5WK2t3WrHFyCP9O8MNqHSCk5/e4vQak3RIffue/l19elzUzyKK86Lrdl
-         TYtuFVFtsJfkq65RBA41pHilskqD3iAUqrGB+OwV+XiGEyNyudDXusLTl2LS4ivj3oQM
-         SoyMt/GoWCGQ/kZQqywl/piz+lbl6+F7W5/rqQE5B1RU/Rm+McyVakOAIgomvO2XkwPB
-         B2amH+g77nDekKki7M9ph4xkilcErSkMc7TPOHUPTxkqQtWeEz6a2CNMZ5JMCB51eOEO
-         HN+g==
+        b=y8BczdQuAXfOQtzPETYGcGaWrmuaL2Gz6K4/mT35bwUw0qYDCgr3XzulRCx9/kNf56
+         ZxXmyBe3stKA5Rmk3Yxzf42hpafl1rrrgSsgtzRmOhFA+cDBbeZ+W4n852+NcoOrPVYr
+         I4+tl7fOSHFuRP3VBtBmDQFTJlhkoEd/XwWm5TA5jsFojhEFGqrDmmbHtg/AtU4cDeGj
+         cY4cKh1XwM4J7p+6tC5AW0YGPlwCAYVorV2ykvnEIg5CrfI9E+b6TTgJVXOlAdIGsjZS
+         lRNlWvEJhe6CfaqbPwdr+9fuqFyCFKyUZECv8UqX+MPMfbxHDWYBE6n5yOYqcDiMjoxw
+         bxZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=5URRqI2Uq5Oefocw0RaK3NP6xNImZJ6yO5PhF2xMruc=;
-        b=pPWcAtyvgGRHZK18AXYeWaARp0wEjWTAcdSJFaPt1RlzVbT121fqvg67oJJ9jhyicG
-         ioNo6FSwh8oMhk7C0DvNVQV/4Tnd+jAuoN9lmi8bMFdSAiWAW/S8mCpeSp+L8ZRVHiY6
-         n/NlFgadPv9weRNdcWsatSs1KAMNq5aPC7L3FQUE9WRXn8Axow08Em7L49zMOLa/uAb1
-         Gbj+Tqyd2mRlCozb0Ra2BLEDLoj3ZKuuU67O69L5eCEBp/uKBxYYfxuAadk8DNlQ+beS
-         TJm7a0szyRw3rG9UijNFGtOPWrfneQbZpeAxrWcmntVJiE4k14oQbNN+VDF+UlWq98FN
-         zNdw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MOa31hR2AsXknLEdBZ4reS7l+VrvWMky23fe5C0/rFc=;
+        b=dRgI0+q2RVJeoO1kBXo4ALWQU3bw1Remnvo45m58eZfffevHzJlda1ez6YztbIb+Dg
+         fUwPDVt5uX3pDHk13T/5FHgPR/MHHHSmy1z1M2Qn7yCLQg+T8utlQ7Uj+opxr8iqiyc5
+         QT9XKrlUx06mWN0EkG6hQdH9lE44c6zCKsVrB9BY+jhPJtWytmzjW2UtzsvpX3YEJaY3
+         3kvi9yjC7M9U89a4rBkbS115qcCEerKCWfBmw+N1fb/KgxWj+i4q7/nP8XYHabk/HpFo
+         2CcuR5RpaL1JUY2d9ZkpVyhMpD5SP+v3tqTgCLEZRYwJUOis/OojThd2mNApKUI0J2Un
+         EpJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JxEeSDAY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=FE7SvMWR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 142si15524865ybl.272.2020.11.16.08.16.12
+        by mx.google.com with ESMTPS id s13si17274679ybg.170.2020.11.16.08.17.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 08:16:12 -0800 (PST)
+        Mon, 16 Nov 2020 08:17:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JxEeSDAY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=FE7SvMWR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43208 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46102 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kehAq-0005b1-05
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:16:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58374)
+	id 1kehBw-00071S-4N
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:17:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3j-0000HW-Sn
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:51 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:40717)
+ id 1keh90-00053i-LE
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:14:18 -0500
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:44184)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3h-0007uP-Up
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:51 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id m6so2089666wrg.7
- for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 08:08:49 -0800 (PST)
+ id 1keh8w-0001E8-VD
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:14:17 -0500
+Received: by mail-ed1-x543.google.com with SMTP id l5so19267302edq.11
+ for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 08:14:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=5URRqI2Uq5Oefocw0RaK3NP6xNImZJ6yO5PhF2xMruc=;
- b=JxEeSDAYk4z9qhN8UxPH2ARPR/BxXTLpHOI/tjuBAndRPZ+m54neCaOeyTwNZbGspT
- Xe5i9MjF2vstH3UYzJsJ6c9wS48QDuhJKn+JVhxuLiMgD3G+C6pONEEhWlfsETLLfznB
- 9J/MX36Qw2FxSwppyr8pWEdoSLgeEfIys1xps10wnd1T8nMDZR7O8VtfW2HgRp/K0/7b
- 5xpee2wtZ0odVsK8NEdQgs7Oy61iw3Yi6JHv1ZC3m5VyOVpKy+zLBgAND7M501PwNhb6
- pZaU/tQyi253j5u4g8C1X9ecM7HFVfR9WJPwcDwuWosOEwYtFNnLFYPmj/y6UhSVgtrg
- jG6w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MOa31hR2AsXknLEdBZ4reS7l+VrvWMky23fe5C0/rFc=;
+ b=FE7SvMWRnurJGPrEr6ToDeyb6ni0UcfRQSOE4ppQ3+gCBnTGblRKOM9F/iPPKmWW9U
+ yuewqc245yY0cai0p4kvqIGPKaO5Hy6oc5jjZWxvuxXidAwWsMeJZhHCl6aXV4dUKM/T
+ f3brTkE9vCYhvMrMeoTuN2n7avxg7kCbxAbjkg5LJY8iOjrIaVdKhbvHWul0Q5S4lAMU
+ esXZkodnJdd+jSptdOb86e49a5o9QSLPXh8I8MBgOQbfh1KICsQyqz6U3hMnw2sYCpPp
+ MD8oFTiyQGgUjorYvI8MFNdi7r4ClrSJl76XGKb1K2Z/WwNyyMDkpDWzFRFBOIJOYiyx
+ gZMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5URRqI2Uq5Oefocw0RaK3NP6xNImZJ6yO5PhF2xMruc=;
- b=dBE05NNQn/jgIGfeEDADTKvGAdoqVFPzP+OnkNd1R97a4GfRS3f621sCCckNm1ohbw
- LxCC0cl1RBLpEQZ1lgPEKZBxWzkkSYn9bkdGOerCtA7c+r1uJrJyyyxQz2WvqI5y+jIn
- x0DfOzypJ65lJE6P6r3NDUwnjsFjFhFhxk5nS7LSBz4VKFjIewePnfGj27+bXhCHtLss
- H7lO5zJYq51S+702rMJwkA5wy+D4M+iGkGAnELFzIT2GO8l7Bmxcu38+AJQ104yWpAD4
- fJhBw2q69qTJ/xGJqS5D1Cmb0hPCzn9aWa9E87+OBun+TtSLLNyB1VG7SsGBwiCQWIfp
- D4/g==
-X-Gm-Message-State: AOAM5333Up5AfZOIgiYtnE3xAQdh1bPGLnEpr/IpKy5ZjM8wrXwPN6ab
- XQhf90+/lkSGUMI2Bv2RrITxfzV0BCQ2EA==
-X-Received: by 2002:adf:f546:: with SMTP id j6mr21353805wrp.219.1605542928517; 
- Mon, 16 Nov 2020 08:08:48 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g20sm20116975wmh.20.2020.11.16.08.08.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 08:08:47 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 12/15] target/arm: Factor out preserve-fp-state from
- full_vfp_access_check()
-Date: Mon, 16 Nov 2020 16:08:28 +0000
-Message-Id: <20201116160831.31000-13-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201116160831.31000-1-peter.maydell@linaro.org>
-References: <20201116160831.31000-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MOa31hR2AsXknLEdBZ4reS7l+VrvWMky23fe5C0/rFc=;
+ b=cEuOCME6p4ZPmwSdjK0/h3oJKwBeV/FVD249t5hsuT6vh5/2Bs1lF0kPTVbX/9gePP
+ VcVb2JwcxChgq5SLORzNQ3WPp0GC0kK85Yo8OtWctHMZWB+IOgw9hEEyMgQs9q7BMqY4
+ 1Opl53c2Q9bvuqgEFM9WD53jXTIpO8mqC15zYES+eRnfysHtkrXIRgH3eTaDrft7cvEN
+ QPgqpa4vdY3h3HoN22e6LcoFw7CC4vMcLD9O3bV/uc5wcYghRQI/8PYtPF03vCvmaa6P
+ 84CzBM8NLt6N0H2vgxCqvvh/Qjgd88cTCmTw4NykMuQa7znCJ3ItkmChj/GEAzCkM4VR
+ v4Hg==
+X-Gm-Message-State: AOAM530IVaahgIRSdE9nzBtcqhIIj/lPho9xPDdpv3s53DEQRch+kse8
+ qxgbKdY7F5CF4Y7ANJWZtBAog4gvWWhKfAvSqJ6OIQ==
+X-Received: by 2002:aa7:db8a:: with SMTP id u10mr16634518edt.204.1605543253165; 
+ Mon, 16 Nov 2020 08:14:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+References: <20201110150023.25533-1-peter.maydell@linaro.org>
+In-Reply-To: <20201110150023.25533-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Nov 2020 16:14:01 +0000
+Message-ID: <CAFEAcA9jaV6JbNzQHuV=EANrAeBzZ3E5ay5-r-FT=74cuq8K5w@mail.gmail.com>
+Subject: Re: [PATCH 0/2] hw/misc/tmp105: Correct temperature limit check logic
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -119,85 +110,51 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5c+XhJgRWq99
+X-TUID: ZFNxdMVSLqYh
 
-Factor out the code which handles M-profile lazy FP state preservation
-from full_vfp_access_check(); accesses to the FPCXT_NS register are
-a special case which need to do just this part (corresponding in the
-pseudocode to the PreserveFPState() function), and not the full
-set of actions matching the pseudocode ExecuteFPCheck() which
-normal FP instructions need to do.
+Ping for code review? Might be nice to have in 5.2, though given
+how old the bug is it's scarcely critical...
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate-vfp.c.inc | 45 ++++++++++++++++++++--------------
- 1 file changed, 27 insertions(+), 18 deletions(-)
+Ccing the ASPEED maintainers since that's the only other
+machine that uses the tmp105.
 
-diff --git a/target/arm/translate-vfp.c.inc b/target/arm/translate-vfp.c.inc
-index 1ccaccbc834..6bc07992eb4 100644
---- a/target/arm/translate-vfp.c.inc
-+++ b/target/arm/translate-vfp.c.inc
-@@ -83,6 +83,32 @@ static inline long vfp_f16_offset(unsigned reg, bool top)
-     return offs;
- }
- 
-+/*
-+ * Generate code for M-profile lazy FP state preservation if needed;
-+ * this corresponds to the pseudocode PreserveFPState() function.
-+ */
-+static void gen_preserve_fp_state(DisasContext *s)
-+{
-+    if (s->v7m_lspact) {
-+        /*
-+         * Lazy state saving affects external memory and also the NVIC,
-+         * so we must mark it as an IO operation for icount (and cause
-+         * this to be the last insn in the TB).
-+         */
-+        if (tb_cflags(s->base.tb) & CF_USE_ICOUNT) {
-+            s->base.is_jmp = DISAS_UPDATE_EXIT;
-+            gen_io_start();
-+        }
-+        gen_helper_v7m_preserve_fp_state(cpu_env);
-+        /*
-+         * If the preserve_fp_state helper doesn't throw an exception
-+         * then it will clear LSPACT; we don't need to repeat this for
-+         * any further FP insns in this TB.
-+         */
-+        s->v7m_lspact = false;
-+    }
-+}
-+
- /*
-  * Check that VFP access is enabled. If it is, do the necessary
-  * M-profile lazy-FP handling and then return true.
-@@ -113,24 +139,7 @@ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
-         /* Handle M-profile lazy FP state mechanics */
- 
-         /* Trigger lazy-state preservation if necessary */
--        if (s->v7m_lspact) {
--            /*
--             * Lazy state saving affects external memory and also the NVIC,
--             * so we must mark it as an IO operation for icount (and cause
--             * this to be the last insn in the TB).
--             */
--            if (tb_cflags(s->base.tb) & CF_USE_ICOUNT) {
--                s->base.is_jmp = DISAS_UPDATE_EXIT;
--                gen_io_start();
--            }
--            gen_helper_v7m_preserve_fp_state(cpu_env);
--            /*
--             * If the preserve_fp_state helper doesn't throw an exception
--             * then it will clear LSPACT; we don't need to repeat this for
--             * any further FP insns in this TB.
--             */
--            s->v7m_lspact = false;
--        }
-+        gen_preserve_fp_state(s);
- 
-         /* Update ownership of FP context: set FPCCR.S to match current state */
-         if (s->v8m_fpccr_s_wrong) {
--- 
-2.20.1
+thanks
+-- PMM
 
+On Tue, 10 Nov 2020 at 15:00, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchseries fixes bug https://bugs.launchpad.net/qemu/+bug/1734474
+> which is a regression between QEMU 1.3.0 and 1.4.0 of ability to boot a
+> guest image on the n800 machine.  The regression was introduced by
+> commit cb5ef3fa1871522a08, which fixed a logic error in the tmp105
+> device's handling of i2c writes.  That commit is correct, but it exposed
+> an underlying bug in the tmp105 implementation.  Previously, we
+> accidentallywrote 0 to the config register when this guest tried to
+> write 0x36, which meant (among other things) that we left the device
+> in "comparator mode" rather than putting it into "interrupt mode" as
+> the guest wanted, and it turns out that our interrupt-mode logic was
+> buggy, so we would signal an over-temperature interrupt immediately
+> and continuously, and the guest would hang.
+>
+> Patch 1 fixes a silly omission where we weren't setting the
+> reset values for the T_high and T_low limit registers.
+> Patch 2 fixes the interrupt mode limit checks.
+>
+> With these two the n9800 image linked to in the bug report can
+> boot properly again.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (2):
+>   hw/misc/tmp105: reset the T_low and T_High registers
+>   tmp105: Correct handling of temperature limit checks
+>
+>  hw/misc/tmp105.c | 73 ++++++++++++++++++++++++++++++++++++++++++------
+>  hw/misc/tmp105.h |  7 +++++
+>  2 files changed, 71 insertions(+), 9 deletions(-)

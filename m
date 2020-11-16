@@ -1,209 +1,184 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3933874lfb;
-        Mon, 16 Nov 2020 10:22:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzuuGCHQSX5LtADE1lWOaSCDOAX1aWbjq3L35UcSYLXj9s9t+sCNYmQ4j0ooB5iZtWVJ6wV
-X-Received: by 2002:a25:7717:: with SMTP id s23mr24428513ybc.459.1605550930106;
-        Mon, 16 Nov 2020 10:22:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605550930; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3933985lfb;
+        Mon, 16 Nov 2020 10:22:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw5eN9bAZWNesH2eyI5h3qgTf488SAzA1BWqrBZi/T72Vl9NTiLA3Nhtf7Jif0j+9sqjYNc
+X-Received: by 2002:ac8:5196:: with SMTP id c22mr15404826qtn.387.1605550937724;
+        Mon, 16 Nov 2020 10:22:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605550937; cv=none;
         d=google.com; s=arc-20160816;
-        b=upZXNRicOuYI/hnOfKNMq3vNARPrNLw8KAqqrAz1H7DCyh71WMH/HafT+k1UXzhB3U
-         txVyoqqp+503yPP9eeM5XzI+oIB40Pwr8XtLvTgMwjkZJlucOntQ4hkMD8oZQ2Es5Kp6
-         xTmlTpmkzohy8yv9R+uVizOEqnNQL6y9nZlR5ntapG8kQIsKfV4cOdD5hao3YyoQLM9o
-         ov6Buza6UG6l2mPKRet9Bc6/Qb0ZSinPhy9HpqmEYJ9f2b/h4cqslpTrJhJuvbYmcGhR
-         nfsihENAqUwht3+wwdCVJHTfXTnyrYlroGg2IIcYpzPHdQmr70XOvUVIOI0lMN2LsFXC
-         BzqQ==
+        b=MHRxi06/y8yk9OfiSX9cxVgMD5GZDhfCQDCja7q8RYsNvePYmaVAZI7oQNg4vA2PBB
+         TEp1w6rDaT9O92cuZas59fUk2MLoQfavKUhPR10ggvhzGtNPfEcNAhYoEacOnPC1u4rF
+         mPA+J9a9kdGfYsPtSASZov13hwvgeJ+P9RVpJqwrQfJUBiPahZsElQPnMdGTRygTpB3H
+         VDeX1VqxqJ8DvJnX+1/2uT470VvrgkVYzWeWoQ1RlwVgtcKIRtV2YmvSwc74Xwv1HB/6
+         B93uqPOmsaTpeU6O/kXiMUm4e6BknJE+50kr4azY7qG6KAX+zO6nrkbWAWn4Mw4kYPvb
+         R/Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=N6FUJOFeFVmjyvgOrkQ0SdP5+HAU8FjRFCriN0nDhJo=;
-        b=bYb/Bp8+u6YAN42BsnL6o4RMji8eVleksHV+rGjxXyfhnQFx3HpVROrl7KlnkrBLqu
-         d2M6GXcocNDknM7Q+puDdnGHN2mU9svuCOIv53RRnHCQl2lLG5b1yourDQ4edflvlL2M
-         aJ0ivLqVM8/Kc7lMRbzNH0Ami+oGPGNgGOztn3kHJ175tSC1zBkdgG0mehW1nHcOVyfP
-         S+ad0tAxnW/ygqrdsCFMddyadXqqTF96LgI49dHuhS0ey4RuTVcBeR9Y/q3YBywXNCPj
-         CLigLptQO4UcsjaihrKgg0L0ilXGlxqzrfx6y9QT+LZfAN0ApSMYBu8zbnsLidXXi6md
-         aPjg==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=p5ZKa/CZ9CNqWvXEto6SO/bzGcPLp+DbNldQXdc4i3c=;
+        b=pqHGfukXTpBrB0i1rCmT3+6x8fbon1zR/O90BTpBABozqbCvp4LypYSBIDIdzZ6wFf
+         o+kXu8fq06HXP+hn/KCBcKvywWvpqPTBcdsb6de+iTnPW1vtHVeoqmMsOId44edSh1/w
+         QwzX3t0Wbc1rh5RXdfAZ/bRGB2NgTJgUs2Ot2znBHHGE/gALHzURv4wfNu4X3QsdDuKF
+         Sw2RbkqQqKv8VYbt3qG7qdYRfzePVkvrj5MDdjQ8YAazOTvet4rfNOfns7XozBSnOY1z
+         ll5y9WwC4V8VF//a68DFEm5V31plXXy0pQ8B+T2aEKJsIg3RtxrQX99t4IfdM7JQCf7g
+         7dRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OIgr3Dxe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=fig8gqSZ;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o16si8829426ybc.168.2020.11.16.10.22.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 10:22:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id x5si9972886qkf.40.2020.11.16.10.22.17;
+        Mon, 16 Nov 2020 10:22:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OIgr3Dxe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=fig8gqSZ;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49552 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kej8j-0008TA-BZ
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 13:22:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34152)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kej2k-0000gk-JL
- for qemu-arm@nongnu.org; Mon, 16 Nov 2020 13:15:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59263)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kej2h-0001D0-HE
- for qemu-arm@nongnu.org; Mon, 16 Nov 2020 13:15:57 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5C4E44BDFB;
+	Mon, 16 Nov 2020 13:22:17 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VetgA2POk1OK; Mon, 16 Nov 2020 13:22:16 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 29F024C139;
+	Mon, 16 Nov 2020 13:22:16 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id EDE284C074
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 13:22:14 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DGC+Sl7ozUL1 for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 16 Nov 2020 13:22:13 -0500 (EST)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E9C084C139
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 13:22:13 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605550554;
+ s=mimecast20190719; t=1605550933;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=N6FUJOFeFVmjyvgOrkQ0SdP5+HAU8FjRFCriN0nDhJo=;
- b=OIgr3DxeT284ON2XvwXKd30RmgdNvHbhSyrnCJxCakbhW+/nufTmQi0mn5mBPemUW6QtnR
- Jy4od8K3XUcD4GViSXod/RKzjMdwWPuC0m2YruGUHnrCASgLMVeGSR+ZB9h/D/FfJ+IZ2O
- tymRp3P3BgFeDTf14tB+ZwijkznGRAc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-350-r21mW5YgO3K06icuj_7_PA-1; Mon, 16 Nov 2020 13:15:50 -0500
-X-MC-Unique: r21mW5YgO3K06icuj_7_PA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E2EFC1017DD3;
- Mon, 16 Nov 2020 18:15:48 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-113-230.ams2.redhat.com [10.36.113.230])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AD1195C1CF;
- Mon, 16 Nov 2020 18:15:26 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, alex.williamson@redhat.com
-Subject: [RFC v7 10/26] vfio: Introduce hostwin_from_range helper
-Date: Mon, 16 Nov 2020 19:13:33 +0100
-Message-Id: <20201116181349.11908-11-eric.auger@redhat.com>
-In-Reply-To: <20201116181349.11908-1-eric.auger@redhat.com>
-References: <20201116181349.11908-1-eric.auger@redhat.com>
+ bh=WTH8Zd5sAmskzAYo30mvhMBg66bSsnSUzhU1/p/F/PA=;
+ b=fig8gqSZMioPRjk1gTW8MI1tXJmRNW0bBeyYa8X4p/DgXGH5q9e+4Z8Z/jXB2SInziLNIl
+ 7j0tivGrER4dBlrxjdG4PI9+mV2Sclh/0wxFwJNbN08aOX86jjHqhPN86v/91/vdBh+7/l
+ +1SOzQHbveAhgPEuRXyy+Os8G1T66pM=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-42-DsoziD3lPLmPja9cVbSurg-1; Mon, 16 Nov 2020 13:22:11 -0500
+X-MC-Unique: DsoziD3lPLmPja9cVbSurg-1
+Received: by mail-wm1-f72.google.com with SMTP id h2so91962wmm.0
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 10:22:10 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WTH8Zd5sAmskzAYo30mvhMBg66bSsnSUzhU1/p/F/PA=;
+ b=dIOo3Cll1wARbNRQu68h0EnGx4y3CmIq6O1wdF99L6Tj9dEx+K/Ah6mOoqorxBHsR0
+ /Kbmh2TtWdBpagvVJPKzx28y5ehEYxXx3/nmkYTrG7Q0Gl2vDhZdIGEs0QDlpj5QZILk
+ 3IFA6sM+aZvgwwOSM/Kz1HWz4NJz/u1XDny+miS0IKFyHwZXI/cNYLSjPOnjftY2mFHk
+ fve4P+LKqVes8LZYMSj8BiKTv69WVbRTdfxv7F/G7FU+J4fyoIQMyPwguWVVncEAkfnR
+ xZPSYUEegmNHcWrLQdxSzRDV5ZuRT8uGm1fmfGPLNG06TAgzLnNqNmbhQgpm3AprMcqe
+ gsCw==
+X-Gm-Message-State: AOAM5324z/M+UINXqWXsNyTt5KNBfk8mc8ms/TnJfM2kmAw5vMYP/NBu
+ WPGscU/JFewhAycHukwcKCnf7M3G77gf6aNLhDIwXETFHc/Azpq2yGLdTrljSIUDx/oHtDcfb1n
+ vo9u/ZS+sqbZubagHsp6V9l/q
+X-Received: by 2002:a5d:5222:: with SMTP id i2mr21960370wra.247.1605550929825; 
+ Mon, 16 Nov 2020 10:22:09 -0800 (PST)
+X-Received: by 2002:a5d:5222:: with SMTP id i2mr21960352wra.247.1605550929645; 
+ Mon, 16 Nov 2020 10:22:09 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id p10sm24465695wre.2.2020.11.16.10.22.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Nov 2020 10:22:08 -0800 (PST)
+Subject: Re: [PATCH] memory: Skip dirty tracking for un-migratable memory
+ regions
+To: Zenghui Yu <yuzenghui@huawei.com>, qemu-devel@nongnu.org
+References: <20201116132210.1730-1-yuzenghui@huawei.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <5f5cc5a8-c5e4-4a69-5fdd-7020459d9d17@redhat.com>
+Date: Mon, 16 Nov 2020 19:22:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20201116132210.1730-1-yuzenghui@huawei.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:46:27
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+Content-Language: en-US
+Cc: cohuck@redhat.com, kwankhede@nvidia.com, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
- jean-philippe@linaro.org, tn@semihalf.com,
- shameerali.kolothum.thodi@huawei.com, nicoleotsuka@gmail.com,
- vivek.gautam@arm.com, yi.l.liu@intel.com, peterx@redhat.com,
- zhangfei.gao@gmail.com, yuzenghui@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /FHzlBbrLUBl
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 1YGfFaoJWj8s
 
-Let's introduce a hostwin_from_range() helper that returns the
-hostwin encapsulating an IOVA range or NULL if none is found.
+On 16/11/20 14:22, Zenghui Yu wrote:
+> It makes no sense to track dirty pages for those un-migratable memory
+> regions (e.g., Memory BAR region of the VFIO PCI device) and doing so
+> will potentially lead to some unpleasant issues during migration [1].
+> 
+> Skip dirty tracking for those regions by evaluating if the region is
+> migratable before setting dirty_log_mask (DIRTY_MEMORY_MIGRATION).
+> 
+> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg03757.html
+> 
+> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+> ---
+>   softmmu/memory.c | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/softmmu/memory.c b/softmmu/memory.c
+> index 71951fe4dc..aa393f1bb0 100644
+> --- a/softmmu/memory.c
+> +++ b/softmmu/memory.c
+> @@ -1806,7 +1806,10 @@ bool memory_region_is_ram_device(MemoryRegion *mr)
+>   uint8_t memory_region_get_dirty_log_mask(MemoryRegion *mr)
+>   {
+>       uint8_t mask = mr->dirty_log_mask;
+> -    if (global_dirty_log && (mr->ram_block || memory_region_is_iommu(mr))) {
+> +    RAMBlock *rb = mr->ram_block;
+> +
+> +    if (global_dirty_log && ((rb && qemu_ram_is_migratable(rb)) ||
+> +                             memory_region_is_iommu(mr))) {
+>           mask |= (1 << DIRTY_MEMORY_MIGRATION);
+>       }
+>       return mask;
+> 
 
-This improves the readibility of callers and removes the usage
-of hostwin_found.
+Queued, thanks.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/vfio/common.c | 36 +++++++++++++++++-------------------
- 1 file changed, 17 insertions(+), 19 deletions(-)
+Paolo
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 80c68c0446..18e8aa0d56 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -651,6 +651,19 @@ out:
-     rcu_read_unlock();
- }
- 
-+static VFIOHostDMAWindow *
-+hostwin_from_range(VFIOContainer *container, hwaddr iova, hwaddr end)
-+{
-+    VFIOHostDMAWindow *hostwin;
-+
-+    QLIST_FOREACH(hostwin, &container->hostwin_list, hostwin_next) {
-+        if (hostwin->min_iova <= iova && end <= hostwin->max_iova) {
-+            return hostwin;
-+        }
-+    }
-+    return NULL;
-+}
-+
- static void vfio_listener_region_add(MemoryListener *listener,
-                                      MemoryRegionSection *section)
- {
-@@ -660,7 +673,6 @@ static void vfio_listener_region_add(MemoryListener *listener,
-     void *vaddr;
-     int ret;
-     VFIOHostDMAWindow *hostwin;
--    bool hostwin_found;
-     Error *err = NULL;
- 
-     if (vfio_listener_skipped_section(section)) {
-@@ -745,15 +757,8 @@ static void vfio_listener_region_add(MemoryListener *listener,
- #endif
-     }
- 
--    hostwin_found = false;
--    QLIST_FOREACH(hostwin, &container->hostwin_list, hostwin_next) {
--        if (hostwin->min_iova <= iova && end <= hostwin->max_iova) {
--            hostwin_found = true;
--            break;
--        }
--    }
--
--    if (!hostwin_found) {
-+    hostwin = hostwin_from_range(container, iova, end);
-+    if (!hostwin) {
-         error_setg(&err, "Container %p can't map guest IOVA region"
-                    " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
-         goto fail;
-@@ -934,16 +939,9 @@ static void vfio_listener_region_del(MemoryListener *listener,
- 
-     if (memory_region_is_ram_device(section->mr)) {
-         hwaddr pgmask;
--        VFIOHostDMAWindow *hostwin;
--        bool hostwin_found = false;
-+        VFIOHostDMAWindow *hostwin = hostwin_from_range(container, iova, end);
- 
--        QLIST_FOREACH(hostwin, &container->hostwin_list, hostwin_next) {
--            if (hostwin->min_iova <= iova && end <= hostwin->max_iova) {
--                hostwin_found = true;
--                break;
--            }
--        }
--        assert(hostwin_found); /* or region_add() would have failed */
-+        assert(hostwin); /* or region_add() would have failed */
- 
-         pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
-         try_unmap = !((iova & pgmask) || (int128_get64(llsize) & pgmask));
--- 
-2.21.3
-
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

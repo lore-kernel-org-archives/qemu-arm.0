@@ -1,102 +1,102 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3839528lfb;
-        Mon, 16 Nov 2020 08:19:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwBVxYEmC23V7tiqb5+PURhBVDelYSARNtOm03HlWcrSLNGMmv2jrwSQ21wDlLoes9XcOQK
-X-Received: by 2002:a25:1886:: with SMTP id 128mr22410595yby.163.1605543588183;
-        Mon, 16 Nov 2020 08:19:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605543588; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3839579lfb;
+        Mon, 16 Nov 2020 08:19:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxtSoaL5vnWTH/uuFKTKxUalNbFlrZc3q3dU+1KoNYNPV9rdIm7nFqvzoXLPSIhIIANh7H5
+X-Received: by 2002:a25:588b:: with SMTP id m133mr16679515ybb.522.1605543592394;
+        Mon, 16 Nov 2020 08:19:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605543592; cv=none;
         d=google.com; s=arc-20160816;
-        b=KGIWM4uaEvj6HoQRH7O0zlkJXzJoFQll51HMMSrFVH3QHl8C0X9nbty+f3CQXykGM1
-         sHtYeiyYcUqXhfhL0Q/YEQ2HrV4dJzY6qrPLUmdROq2vAJUfHGhpQdSCryR3mXrY9wxd
-         qz5ZalvsJy3fWfZZlaN8e7GUyLjPHKJ/GbqY/rBIbk6Nf55UxwMZsQNnu0KKd1Ac2o5b
-         XX059HwHKuY+BCcQeUt1DoJi0V1CLNcr5kHq8vFYLLs/hFSZ4/xCSWC7HNVBpERy7au+
-         tknAzKe1pWaJQ6X7X6KPdWf2oL7sJ6hPiXcDlsBaBAyq2MkRUR9XUlhu4BxO/zhCGs0e
-         ziTg==
+        b=AQkTeBuiiZzEK8M9kWFVqI1OMSPfxPPj3EMOuiCf7YoIN2lvr/xdsecXssPUsd+y4k
+         nEven+69wjqyP1cO3o3s6blNiBPdwJWcM9ErHehPdxEXXDXRg4eaRPYVvbiWpD/HE3KJ
+         SK2ItMwb5dP7OAlBiV/PC0c00XRY6T345IwJenfCT98CsFSrt65mp5oOCGRkrruh9qW7
+         UpZbMNdADpI0YdvkVmmKampOKLo76JpPXFQk03a/XTeyfxh8r4x0w47Idg/TObNFd3L3
+         Ch5mu3Esf+sI4DCYBLUpyc+qHuh39pI5tuEsq7ydGeH/kYxPbIA7mfVYElVnevxTvud3
+         Sb+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=HpGcUz/nkakqTXZdKeGHB+GL0ZV/75Y796jJ21zpvSI=;
-        b=ZLjQfzbcGfyGXnDEizSUJeqkOBITwqBrsJzw12tHu2NnyhoBbS/sP3KLDQPUxDqA6U
-         wnRY4GT+AePNROTnJUzymV/EdiHcrwpAttEFdcoFHRlhbswHbNVJfb9/zQIXDSP/+JNM
-         CQmRMgD9+rhBjSEKCa7TZVwYtswkRk8ttJGrfqmyT2NH3QRmEAkozvEulT6H3DC0kOwR
-         iGSJPqy5NWgkFUusXZfHtR5Nr4Yq0lV/h5Y0f2q7MvgtBI3zPXhLbfmoHXnHjUjoTM1L
-         sSbLYoNkCJVgQI0x21NYQqYAEqIrXPO525eHzvdP+83ejS/HzurWklUyR3bmWwhKYjKu
-         eR2A==
+        bh=ojq6mFjue/Cb7cv+9VNy9lJWWzr++JeLPodwO0KuPSM=;
+        b=J5aDLY1XM9pXfzAtBQoteAqePJ4oMbOYLOvU6YOU+27Rg2LP/wJzWTMjsmlyrJ2aYo
+         gucDmERno9j4ETkU5EsUXqOOnIaR9UQS3DrjakrmEXBikGF1PmkT44+83zSdV6W1OaSG
+         GCY0U189SoaqIs8FkXrQauPofRrofq1rol/Ld6EX4RNUWtl7kvrP7NyISV6YkR58plDu
+         AaZfpAv9F9qNMcRMuOT1/JFa/B6NHv1zicB3EkQls/2sDT3adp2C5sLcH1vL2+sKQQP2
+         6kngS1OPLuCz+Mxb8ccS7p/jiyaKe5VXfU8xOu6UoArCCamWzrpR3ZoTgzzKqMmW6n/b
+         0NXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dWKWu7Vz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gzvYgcnk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a34si20102376ybi.18.2020.11.16.08.19.47
+        by mx.google.com with ESMTPS id t17si17707454ybl.338.2020.11.16.08.19.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 08:19:48 -0800 (PST)
+        Mon, 16 Nov 2020 08:19:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dWKWu7Vz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gzvYgcnk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51720 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kehEJ-000171-D5
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:19:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58442)
+	id 1kehEN-0001KP-Px
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:19:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58152)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3q-0000P5-CX
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:58 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:41108)
+ id 1keh3c-0008Pm-F8
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:44 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46211)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1keh3k-0007vI-Em
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:58 -0500
-Received: by mail-wr1-x430.google.com with SMTP id 23so19239450wrc.8
- for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 08:08:52 -0800 (PST)
+ id 1keh3Z-0007pk-9U
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 11:08:44 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id d12so19230101wrr.13
+ for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 08:08:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=HpGcUz/nkakqTXZdKeGHB+GL0ZV/75Y796jJ21zpvSI=;
- b=dWKWu7VzlYa9Az1KwaTRwsstlssgJKAvQcZsQziGhpUhmrMwudADQ1Vm7QtbSXBPkf
- DjSP9wj+nqmkauIykqi2ZFLEvZfCduT/Wg8BpHBHwo1d6IIbgjd3xNmnQ+HYMiIXbS40
- E+h7xy9NT9DA6s3zPbgI3QYiPqiq5HwrCSSoJ9/TxDy5S7Zc+7uWR/xh8Tu2lAc6i6hg
- ZkiUDqu95Ij8tH6ceYADkZ5riSw2n8P190aA0pRBwNuovmTVvzvc0CRTaacSDtQfoKOv
- IHMqXgcH5H+5l6WN+BNvEjgyadob/evlr0E1HKXInWGnF1W20CYGghbQAoWAF62tXelw
- GapQ==
+ bh=ojq6mFjue/Cb7cv+9VNy9lJWWzr++JeLPodwO0KuPSM=;
+ b=gzvYgcnkPF5RIQxhNjtVd3CwkJEuMoO7e2kEvyBAWvOoNA0O4Vza0DGAmcpQNIs3qS
+ iKwcuFMeQ1iQIsVIZiidJSmFTFwRVAoj+Kl/SghcwE/epC3ADd+6QHPfAOduvUNv7wGH
+ M3RezU5SsoOknlryQ+FPALBoInSgty1YBiHteyoFqV2aVyv7xheljWUewEsUMHuf0DZH
+ LLnSkcO+aOI1lK40OkeRkb4l3ooyMjj2BDgggAB83BPUns5Rh3XRlUxcSRxSKmRcTuML
+ HXzJZkkS8t448ppjADlB5h9snP/w6izVdyYE4UvT4vZHdIXjzU0YS0MqjHDMGQjhP8LT
+ odNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=HpGcUz/nkakqTXZdKeGHB+GL0ZV/75Y796jJ21zpvSI=;
- b=oZhIsQovUOOvgbtExfSROWbzPrU0brwVyXnkvNlvtCEl7ar+jxeaRk7LRBtd7Nlm4h
- 4jkC/kb0Kf+J9TThb/u1fC0SICOyFbnnRl72F2V5Lg1fYtcVkEKmPIRt8XtPTxjX1pNs
- 9ckElis7Ur3WLeDYZoRmLfruJ6MFxPT7SpPahqmhaiQtt9rOhXMGcy+8kZ/ZltmyaAyq
- WAUwZ57PharhSVnr39V5v8W1826kg8kQbMzHPZBGdKlJzSzFuu8goEzYJtd85jd8aepY
- trynyrOdvWat8+kc+Ipj4TFgixByJW56G8egpgB2AY3ZzdQihQFOLOEev+upHr6+3M3a
- Q9NA==
-X-Gm-Message-State: AOAM530jTuCV3X7hr8FNivrT7EKnL/YrmcZSnPq6Lb7d/je/2GOaEv/I
- R3RTgF45iMnRYyv+yvbr5U7JYA==
-X-Received: by 2002:a5d:438f:: with SMTP id i15mr20326901wrq.121.1605542931092; 
- Mon, 16 Nov 2020 08:08:51 -0800 (PST)
+ bh=ojq6mFjue/Cb7cv+9VNy9lJWWzr++JeLPodwO0KuPSM=;
+ b=PfBJIwxVZm8k6dK9jxNCGFiYzlbSfpt6SNqGtlxs8TiFUvS2+aHFmKZ+tj3L/VwqFc
+ 0N9tUCXjUG2jCdoibdzOBG/wXTTEiuY223pooe/ZCdzdYw1S+S9+bjc6WzD5lZlXh1Px
+ lt4n73TDbBwfptq+6UavAMqTtn/qbXSH72jP0lypYc5OjJc5nUAI/R5Qcb5ooerrARj5
+ RPjoHUma9EAfjwE6P/za9BQ3c+p50ID/3/BXLpveksi5UibicF7gdx88KkIHE2hJvjHI
+ Wn7aBKi9j9yIAv5MV9ODZJlLCe+J9DRtzVzyhXeCQMUId8LfDPSGWdm0qzS+/TLA2I6x
+ K82Q==
+X-Gm-Message-State: AOAM532pNaA0OwMJdBG7yFYyrpwm0eraOFItvz/yK92qYQU94SZHQRxD
+ 49bqp+RN8btG0vyiZFByrVmZ5fbYvEb1gQ==
+X-Received: by 2002:a5d:438f:: with SMTP id i15mr20325739wrq.121.1605542919794; 
+ Mon, 16 Nov 2020 08:08:39 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g20sm20116975wmh.20.2020.11.16.08.08.49
+ by smtp.gmail.com with ESMTPSA id g20sm20116975wmh.20.2020.11.16.08.08.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 08:08:50 -0800 (PST)
+ Mon, 16 Nov 2020 08:08:38 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 14/15] target/arm: Implement FPCXT_NS fp system register
-Date: Mon, 16 Nov 2020 16:08:30 +0000
-Message-Id: <20201116160831.31000-15-peter.maydell@linaro.org>
+Subject: [PATCH 05/15] target/arm: Implement CLRM instruction
+Date: Mon, 16 Nov 2020 16:08:21 +0000
+Message-Id: <20201116160831.31000-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201116160831.31000-1-peter.maydell@linaro.org>
 References: <20201116160831.31000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -120,204 +120,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bo3MjgMpSMe4
+X-TUID: ZSILudW9DE3o
 
-Implement the v8.1M FPCXT_NS floating-point system register.  This is
-a little more complicated than FPCXT_S, because it has specific
-handling for "current FP state is inactive", and it only wants to do
-PreserveFPState(), not the full set of actions done by
-ExecuteFPCheck() which vfp_access_check() implements.
+In v8.1M the new CLRM instruction allows zeroing an arbitrary set of
+the general-purpose registers and APSR.  Implement this.
+
+The encoding is a subset of the LDMIA T2 encoding, using what would
+be Rn=0b1111 (which UNDEFs for LDMIA).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/translate-vfp.c.inc | 110 ++++++++++++++++++++++++++++++---
- 1 file changed, 103 insertions(+), 7 deletions(-)
+ target/arm/t32.decode  |  6 +++++-
+ target/arm/translate.c | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/translate-vfp.c.inc b/target/arm/translate-vfp.c.inc
-index c7ae306f12f..d0c3a464a21 100644
---- a/target/arm/translate-vfp.c.inc
-+++ b/target/arm/translate-vfp.c.inc
-@@ -647,8 +647,20 @@ typedef enum fp_sysreg_check_result {
-     fp_sysreg_check_continue, /* caller should continue generating code */
- } fp_sysreg_check_result;
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index 8152739b52b..59ab974c661 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -609,7 +609,11 @@ UXTAB            1111 1010 0101 .... 1111 .... 10.. ....      @rrr_rot
  
--static fp_sysreg_check_result fp_sysreg_checks(DisasContext *s, int regno)
-+/*
-+ * Emit code to check common UNDEF cases and handle lazy state preservation
-+ * including the special casing for FPCXT_NS. For reads of sysregs, caller
-+ * should provide storefn and opaque; for writes to sysregs these can be NULL.
-+ * On return, if *insn_end_label is not NULL the caller needs to gen_set_label()
-+ * it at the end of the other code generated for the insn.
-+ */
-+static fp_sysreg_check_result fp_sysreg_checks(DisasContext *s, int regno,
-+                                               fp_sysreg_storefn *storefn,
-+                                               void *opaque,
-+                                               TCGLabel **insn_end_label)
- {
-+    *insn_end_label = NULL;
-+
-     if (!dc_isar_feature(aa32_fpsp_v2, s)) {
-         return fp_sysreg_check_failed;
-     }
-@@ -663,6 +675,7 @@ static fp_sysreg_check_result fp_sysreg_checks(DisasContext *s, int regno)
-         }
-         break;
-     case ARM_VFP_FPCXT_S:
-+    case ARM_VFP_FPCXT_NS:
-         if (!arm_dc_feature(s, ARM_FEATURE_V8_1M)) {
-             return false;
-         }
-@@ -674,8 +687,46 @@ static fp_sysreg_check_result fp_sysreg_checks(DisasContext *s, int regno)
-         return fp_sysreg_check_failed;
-     }
+ STM_t32          1110 1000 10.0 .... ................         @ldstm i=1 b=0
+ STM_t32          1110 1001 00.0 .... ................         @ldstm i=0 b=1
+-LDM_t32          1110 1000 10.1 .... ................         @ldstm i=1 b=0
++{
++  # Rn=15 UNDEFs for LDM; M-profile CLRM uses that encoding
++  CLRM           1110 1000 1001 1111 list:16
++  LDM_t32        1110 1000 10.1 .... ................         @ldstm i=1 b=0
++}
+ LDM_t32          1110 1001 00.1 .... ................         @ldstm i=0 b=1
  
--    if (!vfp_access_check(s)) {
--        return fp_sysreg_check_done;
-+    /*
-+     * FPCXT_NS is a special case: it has specific handling for
-+     * "current FP state is inactive", and must do the PreserveFPState()
-+     * but not the usual full set of actions done by ExecuteFPCheck().
-+     * We don't have a TB flag that matches the fpInactive check, so we
-+     * do it at runtime as we don't expect FPCXT_NS accesses to be frequent.
-+     * The code emitted here handles the fpInactive special case;
-+     * the caller just has to do the codegen for the normal (!fpInactive)
-+     * special case, and then set the label at the end.
-+     */
-+    if (regno == ARM_VFP_FPCXT_NS) {
-+        /* fpInactive = FPCCR_NS.ASPEN == 1 && CONTROL.FPCA == 0 */
-+        TCGLabel *fp_active_label = gen_new_label();
-+        TCGv_i32 aspen, fpca;
-+        aspen = load_cpu_field(v7m.fpccr[M_REG_NS]);
-+        fpca = load_cpu_field(v7m.control[M_REG_S]);
-+        tcg_gen_andi_i32(aspen, aspen, R_V7M_FPCCR_ASPEN_MASK);
-+        tcg_gen_subi_i32(aspen, aspen, R_V7M_FPCCR_ASPEN_MASK);
-+        tcg_gen_andi_i32(fpca, fpca, R_V7M_CONTROL_FPCA_MASK);
-+        tcg_gen_or_i32(fpca, fpca, aspen);
-+        tcg_gen_brcondi_i32(TCG_COND_NE, fpca, 0, fp_active_label);
-+        tcg_temp_free_i32(aspen);
-+        tcg_temp_free_i32(fpca);
-+
-+        /* fpInactive case: FPCXT_NS reads as FPDSCR_NS, write is NOP */
-+        if (storefn) {
-+            TCGv_i32 tmp = load_cpu_field(v7m.fpdscr[M_REG_NS]);
-+            storefn(s, opaque, tmp);
-+        }
-+        /* jump to end of insn */
-+        *insn_end_label = gen_new_label();
-+        tcg_gen_br(*insn_end_label);
-+
-+        gen_set_label(fp_active_label);
-+        /* !fpInactive: PreserveFPState() and handle register as normal */
-+        gen_preserve_fp_state(s);
-+    } else {
-+        if (!vfp_access_check(s)) {
-+            return fp_sysreg_check_done;
-+        }
-     }
- 
-     return fp_sysreg_check_continue;
-@@ -687,8 +738,10 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
- {
-     /* Do a write to an M-profile floating point system register */
-     TCGv_i32 tmp;
-+    TCGLabel *insn_end_label;
-+    bool lookup_tb = false;
- 
--    switch (fp_sysreg_checks(s, regno)) {
-+    switch (fp_sysreg_checks(s, regno, NULL, NULL, &insn_end_label)) {
-     case fp_sysreg_check_failed:
-         return false;
-     case fp_sysreg_check_done:
-@@ -702,7 +755,7 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
-         tmp = loadfn(s, opaque);
-         gen_helper_vfp_set_fpscr(cpu_env, tmp);
-         tcg_temp_free_i32(tmp);
--        gen_lookup_tb(s);
-+        lookup_tb = true;
-         break;
-     case ARM_VFP_FPSCR_NZCVQC:
-     {
-@@ -721,6 +774,7 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
-         break;
-     }
-     case ARM_VFP_FPCXT_S:
-+    case ARM_VFP_FPCXT_NS:
-     {
-         TCGv_i32 sfpa, control, fpscr;
-         /* Set FPSCR[27:0] and CONTROL.SFPA from value */
-@@ -743,6 +797,12 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
-     default:
-         g_assert_not_reached();
-     }
-+    if (insn_end_label) {
-+        gen_set_label(insn_end_label);
-+    }
-+    if (lookup_tb) {
-+        gen_lookup_tb(s);
-+    }
-     return true;
+ &rfe             !extern rn w pu
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 4b17b2e0d46..ac8c118427f 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -7965,6 +7965,44 @@ static bool trans_LDM_t16(DisasContext *s, arg_ldst_block *a)
+     return do_ldm(s, a, 1);
  }
  
-@@ -752,8 +812,10 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
- {
-     /* Do a read from an M-profile floating point system register */
-     TCGv_i32 tmp;
-+    TCGLabel *insn_end_label;
-+    bool lookup_tb = false;
- 
--    switch (fp_sysreg_checks(s, regno)) {
-+    switch (fp_sysreg_checks(s, regno, storefn, opaque, &insn_end_label)) {
-     case fp_sysreg_check_failed:
-         return false;
-     case fp_sysreg_check_done:
-@@ -810,12 +872,46 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
-         fpscr = load_cpu_field(v7m.fpdscr[M_REG_NS]);
-         gen_helper_vfp_set_fpscr(cpu_env, fpscr);
-         tcg_temp_free_i32(fpscr);
--        gen_lookup_tb(s);
-+        lookup_tb = true;
-+        break;
++static bool trans_CLRM(DisasContext *s, arg_CLRM *a)
++{
++    int i;
++    TCGv_i32 zero;
++
++    if (!dc_isar_feature(aa32_m_sec_state, s)) {
++        return false;
 +    }
-+    case ARM_VFP_FPCXT_NS:
-+    {
-+        TCGv_i32 control, sfpa, fpscr, fpdscr, zero;
-+        /* Reads the same as FPCXT_S, but side effects differ */
-+        tmp = tcg_temp_new_i32();
-+        sfpa = tcg_temp_new_i32();
-+        fpscr = tcg_temp_new_i32();
-+        gen_helper_vfp_get_fpscr(fpscr, cpu_env);
-+        tcg_gen_andi_i32(tmp, fpscr, ~FPCR_NZCV_MASK);
-+        control = load_cpu_field(v7m.control[M_REG_S]);
-+        tcg_gen_andi_i32(sfpa, control, R_V7M_CONTROL_SFPA_MASK);
-+        tcg_gen_shli_i32(sfpa, sfpa, 31 - R_V7M_CONTROL_SFPA_SHIFT);
-+        tcg_gen_or_i32(tmp, tmp, sfpa);
-+        tcg_temp_free_i32(control);
-+        /* Store result before updating FPSCR, in case it faults */
-+        storefn(s, opaque, tmp);
-+        /* If SFPA is zero then set FPSCR from FPDSCR_NS */
-+        fpdscr = load_cpu_field(v7m.fpdscr[M_REG_NS]);
-+        zero = tcg_const_i32(0);
-+        tcg_gen_movcond_i32(TCG_COND_EQ, fpscr, sfpa, zero, fpdscr, fpscr);
-+        gen_helper_vfp_set_fpscr(cpu_env, fpscr);
-+        tcg_temp_free_i32(zero);
-+        tcg_temp_free_i32(sfpa);
-+        tcg_temp_free_i32(fpdscr);
-+        tcg_temp_free_i32(fpscr);
-+        lookup_tb = true;
-         break;
-     }
-     default:
-         g_assert_not_reached();
-     }
-+    if (insn_end_label) {
-+        gen_set_label(insn_end_label);
++
++    if (extract32(a->list, 13, 1)) {
++        return false;
 +    }
-+    if (lookup_tb) {
-+        gen_lookup_tb(s);
++
++    if (!a->list) {
++        /* UNPREDICTABLE; we choose to UNDEF */
++        return false;
 +    }
-     return true;
- }
- 
++
++    zero = tcg_const_i32(0);
++    for (i = 0; i < 15; i++) {
++        if (extract32(a->list, i, 1)) {
++            /* Clear R[i] */
++            tcg_gen_mov_i32(cpu_R[i], zero);
++        }
++    }
++    if (extract32(a->list, 15, 1)) {
++        /*
++         * Clear APSR (by calling the MSR helper with the same argument
++         * as for "MSR APSR_nzcvqg, Rn": mask = 0b1100, SYSM=0)
++         */
++        TCGv_i32 maskreg = tcg_const_i32(0xc << 8);
++        gen_helper_v7m_msr(cpu_env, maskreg, zero);
++        tcg_temp_free_i32(maskreg);
++    }
++    tcg_temp_free_i32(zero);
++    return true;
++}
++
+ /*
+  * Branch, branch with link
+  */
 -- 
 2.20.1
 

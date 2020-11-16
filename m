@@ -1,184 +1,398 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3933985lfb;
-        Mon, 16 Nov 2020 10:22:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw5eN9bAZWNesH2eyI5h3qgTf488SAzA1BWqrBZi/T72Vl9NTiLA3Nhtf7Jif0j+9sqjYNc
-X-Received: by 2002:ac8:5196:: with SMTP id c22mr15404826qtn.387.1605550937724;
-        Mon, 16 Nov 2020 10:22:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605550937; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3934799lfb;
+        Mon, 16 Nov 2020 10:23:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwRgVCz7zMJ/kYIisXl2FhQM5oorv83kvlVekQBKVRX0E74LU76feor2JHF/3ywbyzNo5p9
+X-Received: by 2002:a25:71c2:: with SMTP id m185mr27884415ybc.198.1605551004485;
+        Mon, 16 Nov 2020 10:23:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605551004; cv=none;
         d=google.com; s=arc-20160816;
-        b=MHRxi06/y8yk9OfiSX9cxVgMD5GZDhfCQDCja7q8RYsNvePYmaVAZI7oQNg4vA2PBB
-         TEp1w6rDaT9O92cuZas59fUk2MLoQfavKUhPR10ggvhzGtNPfEcNAhYoEacOnPC1u4rF
-         mPA+J9a9kdGfYsPtSASZov13hwvgeJ+P9RVpJqwrQfJUBiPahZsElQPnMdGTRygTpB3H
-         VDeX1VqxqJ8DvJnX+1/2uT470VvrgkVYzWeWoQ1RlwVgtcKIRtV2YmvSwc74Xwv1HB/6
-         B93uqPOmsaTpeU6O/kXiMUm4e6BknJE+50kr4azY7qG6KAX+zO6nrkbWAWn4Mw4kYPvb
-         R/Ng==
+        b=waq+BTu+BwhMLz0xDmMMYLA5tErTYdA3BfVb/fPnBcie8dY4097xFo2eyq3jocZP93
+         +h0+Zu3ZsH7YlBSseo1qtVI3UxCpAH8AnbpUZBMkQB8ikYFStqNMfbZ8Do4fBB4fkm6j
+         Ml+g1kzmocFAVcfD2YdRbdQhLCvAvynfMky0Kx7fsD3iHgGtDRQc6bpI1Y6vqbytzvo3
+         vKRApNSS45iiNByfCQX9JjnZFnUDPQ770BeQ6EnfQO0RoJDhfBlR+JdLapOBAhnurOfL
+         0N2lZcgPYaIkmMfVmKGFDoB/C+prTLATVbBfXESzVeXA23etq+lou8DV5qn5UBo+SKSK
+         JPSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=p5ZKa/CZ9CNqWvXEto6SO/bzGcPLp+DbNldQXdc4i3c=;
-        b=pqHGfukXTpBrB0i1rCmT3+6x8fbon1zR/O90BTpBABozqbCvp4LypYSBIDIdzZ6wFf
-         o+kXu8fq06HXP+hn/KCBcKvywWvpqPTBcdsb6de+iTnPW1vtHVeoqmMsOId44edSh1/w
-         QwzX3t0Wbc1rh5RXdfAZ/bRGB2NgTJgUs2Ot2znBHHGE/gALHzURv4wfNu4X3QsdDuKF
-         Sw2RbkqQqKv8VYbt3qG7qdYRfzePVkvrj5MDdjQ8YAazOTvet4rfNOfns7XozBSnOY1z
-         ll5y9WwC4V8VF//a68DFEm5V31plXXy0pQ8B+T2aEKJsIg3RtxrQX99t4IfdM7JQCf7g
-         7dRQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=ZTDjrvRtD1VnqM9B+mmeDZvd0qJzAXWpZeRWrOAq88s=;
+        b=XrfVisH2XdlnJEinmQ8bWoJxxpW+WlZySAxUkLV38SjYUUAsiniJdvC7VLuleIMlRr
+         zKSaicJEKnvsvNK49N7fYvPGg1I3NGEfpVLk6Xvtlur8LKZbNFIvIWT1L+ZxqBs0LLC9
+         x1FI8XqoPOTbgiz2qTjDWX9If5fUhl8jz4o2rsxXMT5KRXqzhyHCAJuo55VubN1z8jdG
+         lrxXTYjPD1w8WALkXnMIaYfsVfIWFHVNkUFHaJdQC/zjpVJeUGfu0/JVbfK8zLr2LOSz
+         ZLueuN88Xhne8sb2gjeQW467ArlOXl6e0FQtUaPAtiMm2HvecBhzd4eSB0lRs2IUYG9E
+         O5Jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=fig8gqSZ;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T1PH09SA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id x5si9972886qkf.40.2020.11.16.10.22.17;
-        Mon, 16 Nov 2020 10:22:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 81si9018080ybo.218.2020.11.16.10.23.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Nov 2020 10:23:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=fig8gqSZ;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T1PH09SA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5C4E44BDFB;
-	Mon, 16 Nov 2020 13:22:17 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VetgA2POk1OK; Mon, 16 Nov 2020 13:22:16 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 29F024C139;
-	Mon, 16 Nov 2020 13:22:16 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id EDE284C074
- for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 13:22:14 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DGC+Sl7ozUL1 for <kvmarm@lists.cs.columbia.edu>;
- Mon, 16 Nov 2020 13:22:13 -0500 (EST)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id E9C084C139
- for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 13:22:13 -0500 (EST)
+Received: from localhost ([::1]:52394 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kej9v-0001HH-Lb
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 13:23:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34214)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kej32-00011D-Rg
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 13:16:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38271)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kej30-0001K1-LV
+ for qemu-devel@nongnu.org; Mon, 16 Nov 2020 13:16:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605550933;
+ s=mimecast20190719; t=1605550573;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WTH8Zd5sAmskzAYo30mvhMBg66bSsnSUzhU1/p/F/PA=;
- b=fig8gqSZMioPRjk1gTW8MI1tXJmRNW0bBeyYa8X4p/DgXGH5q9e+4Z8Z/jXB2SInziLNIl
- 7j0tivGrER4dBlrxjdG4PI9+mV2Sclh/0wxFwJNbN08aOX86jjHqhPN86v/91/vdBh+7/l
- +1SOzQHbveAhgPEuRXyy+Os8G1T66pM=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-42-DsoziD3lPLmPja9cVbSurg-1; Mon, 16 Nov 2020 13:22:11 -0500
-X-MC-Unique: DsoziD3lPLmPja9cVbSurg-1
-Received: by mail-wm1-f72.google.com with SMTP id h2so91962wmm.0
- for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 10:22:10 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WTH8Zd5sAmskzAYo30mvhMBg66bSsnSUzhU1/p/F/PA=;
- b=dIOo3Cll1wARbNRQu68h0EnGx4y3CmIq6O1wdF99L6Tj9dEx+K/Ah6mOoqorxBHsR0
- /Kbmh2TtWdBpagvVJPKzx28y5ehEYxXx3/nmkYTrG7Q0Gl2vDhZdIGEs0QDlpj5QZILk
- 3IFA6sM+aZvgwwOSM/Kz1HWz4NJz/u1XDny+miS0IKFyHwZXI/cNYLSjPOnjftY2mFHk
- fve4P+LKqVes8LZYMSj8BiKTv69WVbRTdfxv7F/G7FU+J4fyoIQMyPwguWVVncEAkfnR
- xZPSYUEegmNHcWrLQdxSzRDV5ZuRT8uGm1fmfGPLNG06TAgzLnNqNmbhQgpm3AprMcqe
- gsCw==
-X-Gm-Message-State: AOAM5324z/M+UINXqWXsNyTt5KNBfk8mc8ms/TnJfM2kmAw5vMYP/NBu
- WPGscU/JFewhAycHukwcKCnf7M3G77gf6aNLhDIwXETFHc/Azpq2yGLdTrljSIUDx/oHtDcfb1n
- vo9u/ZS+sqbZubagHsp6V9l/q
-X-Received: by 2002:a5d:5222:: with SMTP id i2mr21960370wra.247.1605550929825; 
- Mon, 16 Nov 2020 10:22:09 -0800 (PST)
-X-Received: by 2002:a5d:5222:: with SMTP id i2mr21960352wra.247.1605550929645; 
- Mon, 16 Nov 2020 10:22:09 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id p10sm24465695wre.2.2020.11.16.10.22.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Nov 2020 10:22:08 -0800 (PST)
-Subject: Re: [PATCH] memory: Skip dirty tracking for un-migratable memory
- regions
-To: Zenghui Yu <yuzenghui@huawei.com>, qemu-devel@nongnu.org
-References: <20201116132210.1730-1-yuzenghui@huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5f5cc5a8-c5e4-4a69-5fdd-7020459d9d17@redhat.com>
-Date: Mon, 16 Nov 2020 19:22:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ bh=ZTDjrvRtD1VnqM9B+mmeDZvd0qJzAXWpZeRWrOAq88s=;
+ b=T1PH09SA/YWUCo5VHEG0fXODtix9aAiUGZD2OugX7O1Je0aSD6vGMRTUqWumnR8ZszNc8M
+ nlndVgM+fXUN3ICKklX/M152gVu+UkZU+mqohm9EW+mJkDrFQjnDW3/j0vyL6FaSECGm2c
+ F0fLqCZl/Ld6x1/1Fl59e0GDx4UnKdk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-172-G4ej49cONqO3Eatj6jfN5A-1; Mon, 16 Nov 2020 13:16:12 -0500
+X-MC-Unique: G4ej49cONqO3Eatj6jfN5A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4D23E6D241;
+ Mon, 16 Nov 2020 18:16:10 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-113-230.ams2.redhat.com [10.36.113.230])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 71F1E5C1CF;
+ Mon, 16 Nov 2020 18:15:49 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, alex.williamson@redhat.com
+Subject: [RFC v7 11/26] vfio: Introduce helpers to DMA map/unmap a RAM section
+Date: Mon, 16 Nov 2020 19:13:34 +0100
+Message-Id: <20201116181349.11908-12-eric.auger@redhat.com>
+In-Reply-To: <20201116181349.11908-1-eric.auger@redhat.com>
+References: <20201116181349.11908-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20201116132210.1730-1-yuzenghui@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Cc: cohuck@redhat.com, kwankhede@nvidia.com, alex.williamson@redhat.com,
- qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:46:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 1YGfFaoJWj8s
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
+ jean-philippe@linaro.org, tn@semihalf.com,
+ shameerali.kolothum.thodi@huawei.com, nicoleotsuka@gmail.com,
+ vivek.gautam@arm.com, yi.l.liu@intel.com, peterx@redhat.com,
+ zhangfei.gao@gmail.com, yuzenghui@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /W9vEFkCPlzQ
 
-On 16/11/20 14:22, Zenghui Yu wrote:
-> It makes no sense to track dirty pages for those un-migratable memory
-> regions (e.g., Memory BAR region of the VFIO PCI device) and doing so
-> will potentially lead to some unpleasant issues during migration [1].
-> 
-> Skip dirty tracking for those regions by evaluating if the region is
-> migratable before setting dirty_log_mask (DIRTY_MEMORY_MIGRATION).
-> 
-> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg03757.html
-> 
-> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
-> ---
->   softmmu/memory.c | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/softmmu/memory.c b/softmmu/memory.c
-> index 71951fe4dc..aa393f1bb0 100644
-> --- a/softmmu/memory.c
-> +++ b/softmmu/memory.c
-> @@ -1806,7 +1806,10 @@ bool memory_region_is_ram_device(MemoryRegion *mr)
->   uint8_t memory_region_get_dirty_log_mask(MemoryRegion *mr)
->   {
->       uint8_t mask = mr->dirty_log_mask;
-> -    if (global_dirty_log && (mr->ram_block || memory_region_is_iommu(mr))) {
-> +    RAMBlock *rb = mr->ram_block;
-> +
-> +    if (global_dirty_log && ((rb && qemu_ram_is_migratable(rb)) ||
-> +                             memory_region_is_iommu(mr))) {
->           mask |= (1 << DIRTY_MEMORY_MIGRATION);
->       }
->       return mask;
-> 
+Let's introduce two helpers that allow to DMA map/unmap a RAM
+section. Those helpers will be called for nested stage setup in
+another call site. Also the vfio_listener_region_add/del()
+structure may be clearer.
 
-Queued, thanks.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Paolo
+---
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+v5 -> v6:
+- add Error **
+---
+ hw/vfio/common.c     | 199 +++++++++++++++++++++++++------------------
+ hw/vfio/trace-events |   4 +-
+ 2 files changed, 119 insertions(+), 84 deletions(-)
+
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 18e8aa0d56..a9e3c77863 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -664,13 +664,126 @@ hostwin_from_range(VFIOContainer *container, hwaddr iova, hwaddr end)
+     return NULL;
+ }
+ 
++static int vfio_dma_map_ram_section(VFIOContainer *container,
++                                    MemoryRegionSection *section, Error **err)
++{
++    VFIOHostDMAWindow *hostwin;
++    Int128 llend, llsize;
++    hwaddr iova, end;
++    void *vaddr;
++    int ret;
++
++    assert(memory_region_is_ram(section->mr));
++
++    iova = TARGET_PAGE_ALIGN(section->offset_within_address_space);
++    llend = int128_make64(section->offset_within_address_space);
++    llend = int128_add(llend, section->size);
++    llend = int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
++    end = int128_get64(int128_sub(llend, int128_one()));
++
++    vaddr = memory_region_get_ram_ptr(section->mr) +
++            section->offset_within_region +
++            (iova - section->offset_within_address_space);
++
++    hostwin = hostwin_from_range(container, iova, end);
++    if (!hostwin) {
++        error_setg(err, "Container %p can't map guest IOVA region"
++                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
++        return -EFAULT;
++    }
++
++    trace_vfio_dma_map_ram(iova, end, vaddr);
++
++    llsize = int128_sub(llend, int128_make64(iova));
++
++    if (memory_region_is_ram_device(section->mr)) {
++        hwaddr pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
++
++        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
++            trace_vfio_listener_region_add_no_dma_map(
++                memory_region_name(section->mr),
++                section->offset_within_address_space,
++                int128_getlo(section->size),
++                pgmask + 1);
++            return 0;
++        }
++    }
++
++    ret = vfio_dma_map(container, iova, int128_get64(llsize),
++                       vaddr, section->readonly);
++    if (ret) {
++        error_setg(err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
++                   "0x%"HWADDR_PRIx", %p) = %d (%m)",
++                   container, iova, int128_get64(llsize), vaddr, ret);
++        if (memory_region_is_ram_device(section->mr)) {
++            /* Allow unexpected mappings not to be fatal for RAM devices */
++            error_report_err(*err);
++            return 0;
++        }
++        return ret;
++    }
++    return 0;
++}
++
++static void vfio_dma_unmap_ram_section(VFIOContainer *container,
++                                       MemoryRegionSection *section)
++{
++    Int128 llend, llsize;
++    hwaddr iova, end;
++    bool try_unmap = true;
++    int ret;
++
++    iova = TARGET_PAGE_ALIGN(section->offset_within_address_space);
++    llend = int128_make64(section->offset_within_address_space);
++    llend = int128_add(llend, section->size);
++    llend = int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
++
++    if (int128_ge(int128_make64(iova), llend)) {
++        return;
++    }
++    end = int128_get64(int128_sub(llend, int128_one()));
++
++    llsize = int128_sub(llend, int128_make64(iova));
++
++    trace_vfio_dma_unmap_ram(iova, end);
++
++    if (memory_region_is_ram_device(section->mr)) {
++        hwaddr pgmask;
++        VFIOHostDMAWindow *hostwin = hostwin_from_range(container, iova, end);
++
++        assert(hostwin); /* or region_add() would have failed */
++
++        pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
++        try_unmap = !((iova & pgmask) || (int128_get64(llsize) & pgmask));
++    }
++
++    if (try_unmap) {
++        if (int128_eq(llsize, int128_2_64())) {
++            /* The unmap ioctl doesn't accept a full 64-bit span. */
++            llsize = int128_rshift(llsize, 1);
++            ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
++            if (ret) {
++                error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
++                             "0x%"HWADDR_PRIx") = %d (%m)",
++                             container, iova, int128_get64(llsize), ret);
++            }
++            iova += int128_get64(llsize);
++        }
++        ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
++        if (ret) {
++            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
++                         "0x%"HWADDR_PRIx") = %d (%m)",
++                         container, iova, int128_get64(llsize), ret);
++        }
++    }
++}
++
+ static void vfio_listener_region_add(MemoryListener *listener,
+                                      MemoryRegionSection *section)
+ {
+     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+     hwaddr iova, end;
+-    Int128 llend, llsize;
+-    void *vaddr;
++    Int128 llend;
+     int ret;
+     VFIOHostDMAWindow *hostwin;
+     Error *err = NULL;
+@@ -815,39 +928,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+     }
+ 
+     /* Here we assume that memory_region_is_ram(section->mr)==true */
+-
+-    vaddr = memory_region_get_ram_ptr(section->mr) +
+-            section->offset_within_region +
+-            (iova - section->offset_within_address_space);
+-
+-    trace_vfio_listener_region_add_ram(iova, end, vaddr);
+-
+-    llsize = int128_sub(llend, int128_make64(iova));
+-
+-    if (memory_region_is_ram_device(section->mr)) {
+-        hwaddr pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+-
+-        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
+-            trace_vfio_listener_region_add_no_dma_map(
+-                memory_region_name(section->mr),
+-                section->offset_within_address_space,
+-                int128_getlo(section->size),
+-                pgmask + 1);
+-            return;
+-        }
+-    }
+-
+-    ret = vfio_dma_map(container, iova, int128_get64(llsize),
+-                       vaddr, section->readonly);
+-    if (ret) {
+-        error_setg(&err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+-                   "0x%"HWADDR_PRIx", %p) = %d (%m)",
+-                   container, iova, int128_get64(llsize), vaddr, ret);
+-        if (memory_region_is_ram_device(section->mr)) {
+-            /* Allow unexpected mappings not to be fatal for RAM devices */
+-            error_report_err(err);
+-            return;
+-        }
++    if (vfio_dma_map_ram_section(container, section, &err)) {
+         goto fail;
+     }
+ 
+@@ -881,10 +962,6 @@ static void vfio_listener_region_del(MemoryListener *listener,
+                                      MemoryRegionSection *section)
+ {
+     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+-    hwaddr iova, end;
+-    Int128 llend, llsize;
+-    int ret;
+-    bool try_unmap = true;
+ 
+     if (vfio_listener_skipped_section(section)) {
+         trace_vfio_listener_region_del_skip(
+@@ -923,49 +1000,7 @@ static void vfio_listener_region_del(MemoryListener *listener,
+          */
+     }
+ 
+-    iova = TARGET_PAGE_ALIGN(section->offset_within_address_space);
+-    llend = int128_make64(section->offset_within_address_space);
+-    llend = int128_add(llend, section->size);
+-    llend = int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
+-
+-    if (int128_ge(int128_make64(iova), llend)) {
+-        return;
+-    }
+-    end = int128_get64(int128_sub(llend, int128_one()));
+-
+-    llsize = int128_sub(llend, int128_make64(iova));
+-
+-    trace_vfio_listener_region_del(iova, end);
+-
+-    if (memory_region_is_ram_device(section->mr)) {
+-        hwaddr pgmask;
+-        VFIOHostDMAWindow *hostwin = hostwin_from_range(container, iova, end);
+-
+-        assert(hostwin); /* or region_add() would have failed */
+-
+-        pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+-        try_unmap = !((iova & pgmask) || (int128_get64(llsize) & pgmask));
+-    }
+-
+-    if (try_unmap) {
+-        if (int128_eq(llsize, int128_2_64())) {
+-            /* The unmap ioctl doesn't accept a full 64-bit span. */
+-            llsize = int128_rshift(llsize, 1);
+-            ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+-            if (ret) {
+-                error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+-                             "0x%"HWADDR_PRIx") = %d (%m)",
+-                             container, iova, int128_get64(llsize), ret);
+-            }
+-            iova += int128_get64(llsize);
+-        }
+-        ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+-        if (ret) {
+-            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+-                         "0x%"HWADDR_PRIx") = %d (%m)",
+-                         container, iova, int128_get64(llsize), ret);
+-        }
+-    }
++    vfio_dma_unmap_ram_section(container, section);
+ 
+     memory_region_unref(section->mr);
+ 
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index c0e75f24b7..fae7026cd7 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -99,10 +99,10 @@ vfio_iommu_map_notify(const char *op, uint64_t iova_start, uint64_t iova_end) "i
+ vfio_listener_region_add_skip(uint64_t start, uint64_t end) "SKIPPING region_add 0x%"PRIx64" - 0x%"PRIx64
+ vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d to liobn fd %d"
+ vfio_listener_region_add_iommu(uint64_t start, uint64_t end) "region_add [iommu] 0x%"PRIx64" - 0x%"PRIx64
+-vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
++vfio_dma_map_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+ vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
+ vfio_listener_region_del_skip(uint64_t start, uint64_t end) "SKIPPING region_del 0x%"PRIx64" - 0x%"PRIx64
+-vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
++vfio_dma_unmap_ram(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
+ vfio_disconnect_container(int fd) "close container->fd=%d"
+ vfio_put_group(int fd) "close group->fd=%d"
+ vfio_get_device(const char * name, unsigned int flags, unsigned int num_regions, unsigned int num_irqs) "Device %s flags: %u, regions: %u, irqs: %u"
+-- 
+2.21.3
+

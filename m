@@ -1,89 +1,89 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3866654lfb;
-        Mon, 16 Nov 2020 08:56:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxatqbVR0Sq+760On3Cob14R9WSuG0Az1VZxaKPWE4bk4EB4alBcBV25uNQxmdaGaLSOMZK
-X-Received: by 2002:a25:c010:: with SMTP id c16mr18594341ybf.142.1605545789179;
-        Mon, 16 Nov 2020 08:56:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605545789; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3867874lfb;
+        Mon, 16 Nov 2020 08:58:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxHoxWTNJWz2Q7PJJeBT5LTw+TKcdspNVulYPo7JqsVestUQ7ALPzC2Br6+a/M1bG5JJPLd
+X-Received: by 2002:a25:42c6:: with SMTP id p189mr19983572yba.255.1605545906326;
+        Mon, 16 Nov 2020 08:58:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605545906; cv=none;
         d=google.com; s=arc-20160816;
-        b=OnZUF8tAwjZu+myF2LaV8rt0aaKqyI7AvQEy1f/Dv2UpaP2UBCkx3DOUgfs0NvM0hH
-         gF5HkaBMFmgH9f3pZZ7lzdmVsvglTxbQiAjGQi3yNh4nDp/A6/GSwDoGKkEK5bHAv3e/
-         iY7uQL8fI4tFVd/5H2Lj1cnVkSeVGXHJ0Aw1yotADPPfphe1M2rQ1LtYwpsFcW0GLhSo
-         Yw7w3K4xF06rUg8JdPSAnofgS1rmV4gzZqIsTxmyfSdUK+Z0lgMEF0oujQHYDTDUUMaa
-         hcqgO+qSO1BDwc9KoR9+BaHknJBjF71sddBf+j++q/JJVwwR2x/tdSNI+Y+n/+IMpRxZ
-         X0uw==
+        b=aeLSd/pvfw9wuopALIP2LkLUEXkzw9XTbhctF7dOfHR6+HO/CpyX6fMfZXzfvkHeKM
+         kBE5MAnVL4/E8NvX8mnENXujj1F6I5X/oZp4tvub7pjaLUTZWfOfl+c+tjULaovvNuKx
+         8MoMcqAiaxMuwNPIs/1FNTm+AeNbqcpvX67IxDlEOQ47YnMAwitKEhtrPiZhjMu5yYv5
+         ja4yxzndaXf/H2Vi5nUIFbLgNkke+MOaNbydmXe1wMvLbVg+HbwKvTYpYRyziMoffRP0
+         8OEZEWBSdiS0a8wXp2dj1aAjVKm7GRpBEK3sEXkxvVrGcjk303BPWtTtb8nbW6xzSE0V
+         pbuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qQc7qtu4V7su3htrcJkOp7O2zkCp/NELxgnAizVP8KY=;
-        b=UrnaEfg4sgDn0qqujuZatYaCUJVkmppBkmQ1/k6eQcZKx2a9617rQsIiBTLxkJ7jVg
-         giiWcsrEgrsKojvDrfCdEF6/gGPT+FRNrWo20vZfWMTmCatLxu7Q+BMxXdGh5DvhNEDB
-         0Kb+SJWa2H86i23Akj/NmUjVYqHt/BJqbwP6oEElUWHRsFNtbBQpLwPyS1293PDg6YTw
-         G9348zPj5OmaJVdZX+ZhmJmqzzY24OPAuc5X432AiXC6inzR5f+mYbLXSBC5yZiImRp+
-         yNUWyWYR3mFMzXo9EZ63v8hWiFE9EA6wuDvMhKnHknGyXMfUsmAeoDAjJ/wHWAtD3PIw
-         5F8Q==
+        bh=te/LGP4MEKOHFzI2ew2SXawtf+K8KzijGMWYw/0CPKs=;
+        b=j0jXKvJE03tBiwCPq7eVNVC/ChpX/uNCnweHCuki4txgGY3cc2G+65wfMYx8b1SWAk
+         qkKtl7DXU1Kld/oHoUhG+X+JKHQJmtoUGZh/gbcSsrcnHcIeUwBGPE8rfANMbNTVCcpY
+         DCL/uandlJSxI0tABoQNOC5QG3L6PGTtcONMFNj1ZqF9T+Sy5NV2ipOs4e1a4SYaxJEv
+         81zFEVGyXmEo3yIKZTI7p+o9KDqeuBfErrShRNhuKzfg3DLnqzPDqpjYk0S2AMOiorys
+         oN63GzOguqEr7S9+e6XwS9iwNZ5Wz/DBxmMb1Ma++7pbiHssOyzG6UO+IeFFCSt24x8F
+         JO4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=N4VbOWUr;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F9fTRa9L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6si17035577ybp.201.2020.11.16.08.56.28
+        by mx.google.com with ESMTPS id b205si19181484ybg.296.2020.11.16.08.58.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 08:56:29 -0800 (PST)
+        Mon, 16 Nov 2020 08:58:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=N4VbOWUr;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F9fTRa9L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51044 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kehno-0004VE-H4
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:56:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42442)
+	id 1kehph-00064G-LU
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 11:58:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kehnX-0004Cb-5Y
- for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:56:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59432)
+ id 1kehpN-00060o-MF
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:58:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21599)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kehnT-0007Uz-Nw
- for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:56:10 -0500
+ id 1kehpI-000856-RM
+ for qemu-arm@nongnu.org; Mon, 16 Nov 2020 11:58:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605545767;
+ s=mimecast20190719; t=1605545878;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qQc7qtu4V7su3htrcJkOp7O2zkCp/NELxgnAizVP8KY=;
- b=N4VbOWUrc4ASNQX3MGY9EO+NkHtBJhGzSMDyVwVf8d1FPVvB9t+0kI/IfD9rXckdgtYFp7
- oyUoS7qaK0dwwuNWuQB/HZj+5jKNrGHKdlsSvoT5J6pvZ8k5vLvBOZQipdZHBgNcLk1PLS
- GtCGIlDa2Z49p+xyJxB0bWzF5obVpBQ=
+ bh=te/LGP4MEKOHFzI2ew2SXawtf+K8KzijGMWYw/0CPKs=;
+ b=F9fTRa9LYOVAixMZqBuEXyvSQst3FVCBI7uVeFBGFlwtdq6LJsKgbJN4igZPIs1pFSJDKT
+ xWKILWbQSwjpYUWuNPjlMFlp6zQAb/feu1h/bOZvW50fDAww4LbDqtBAgRIEiQNGS67bkL
+ tc6pEYMsFgvcxqJFac2wWX+S7CHbbvs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-589-KJay_qE6NDyT_QyRoCTiYg-1; Mon, 16 Nov 2020 11:56:01 -0500
-X-MC-Unique: KJay_qE6NDyT_QyRoCTiYg-1
+ us-mta-6-V6T__JIQPEyr3SvD7M6xag-1; Mon, 16 Nov 2020 11:57:57 -0500
+X-MC-Unique: V6T__JIQPEyr3SvD7M6xag-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6CE7A80362D;
- Mon, 16 Nov 2020 16:55:56 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0D6CC1008550;
+ Mon, 16 Nov 2020 16:57:55 +0000 (UTC)
 Received: from eperezma.remote.csb (ovpn-115-134.ams2.redhat.com
  [10.36.115.134])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9C9835D9CC;
- Mon, 16 Nov 2020 16:55:32 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 10FD55D9CC;
+ Mon, 16 Nov 2020 16:57:33 +0000 (UTC)
 From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
 To: "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
  qemu-devel@nongnu.org
-Subject: [PATCH v3 1/5] memory: Rename memory_region_notify_one to
- memory_region_notify_iommu_one
-Date: Mon, 16 Nov 2020 17:55:02 +0100
-Message-Id: <20201116165506.31315-2-eperezma@redhat.com>
+Subject: [PATCH v3 5/5] memory: Skip bad range assertion if notifier is
+ DEVIOTLB_UNMAP type
+Date: Mon, 16 Nov 2020 17:55:06 +0100
+Message-Id: <20201116165506.31315-6-eperezma@redhat.com>
 In-Reply-To: <20201116165506.31315-1-eperezma@redhat.com>
 References: <20201116165506.31315-1-eperezma@redhat.com>
 MIME-Version: 1.0
@@ -94,16 +94,16 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eperezma@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 22:35:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 04:46:27
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -133,127 +133,51 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z0P9LgN0iZma
+X-TUID: 4lX0PNdPclm4
 
-Previous name didn't reflect the iommu operation.
+Device IOTLB invalidations can unmap arbitrary ranges, eiter outside of
+the memory region or even [0, ~0ULL] for all the space. The assertion
+could be hit by a guest, and rhel7 guest effectively hit it.
 
 Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
 Reviewed-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Acked-by: Jason Wang <jasowang@redhat.com>
 ---
- include/exec/memory.h | 6 +++---
- hw/arm/smmu-common.c  | 2 +-
- hw/arm/smmuv3.c       | 2 +-
- hw/i386/intel_iommu.c | 4 ++--
- softmmu/memory.c      | 6 +++---
- 5 files changed, 10 insertions(+), 10 deletions(-)
+ softmmu/memory.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 0f3e6bcd5e..d8456ccf52 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -236,7 +236,7 @@ enum IOMMUMemoryRegionAttr {
-  * The IOMMU implementation must use the IOMMU notifier infrastructure
-  * to report whenever mappings are changed, by calling
-  * memory_region_notify_iommu() (or, if necessary, by calling
-- * memory_region_notify_one() for each registered notifier).
-+ * memory_region_notify_iommu_one() for each registered notifier).
-  *
-  * Conceptually an IOMMU provides a mapping from input address
-  * to an output TLB entry. If the IOMMU is aware of memory transaction
-@@ -1346,7 +1346,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
-                                 IOMMUTLBEntry entry);
- 
- /**
-- * memory_region_notify_one: notify a change in an IOMMU translation
-+ * memory_region_notify_iommu_one: notify a change in an IOMMU translation
-  *                           entry to a single notifier
-  *
-  * This works just like memory_region_notify_iommu(), but it only
-@@ -1357,7 +1357,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
-  *         replaces all old entries for the same virtual I/O address range.
-  *         Deleted entries have .@perm == 0.
-  */
--void memory_region_notify_one(IOMMUNotifier *notifier,
-+void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
-                               IOMMUTLBEntry *entry);
- 
- /**
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 3838db1395..88d2c454f0 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -472,7 +472,7 @@ static void smmu_unmap_notifier_range(IOMMUNotifier *n)
-     entry.perm = IOMMU_NONE;
-     entry.addr_mask = n->end - n->start;
- 
--    memory_region_notify_one(n, &entry);
-+    memory_region_notify_iommu_one(n, &entry);
- }
- 
- /* Unmap all notifiers attached to @mr */
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 22607c3784..273f5f7dce 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -828,7 +828,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
-     entry.addr_mask = num_pages * (1 << granule) - 1;
-     entry.perm = IOMMU_NONE;
- 
--    memory_region_notify_one(n, &entry);
-+    memory_region_notify_iommu_one(n, &entry);
- }
- 
- /* invalidate an asid/iova range tuple in all mr's */
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 70ac837733..067593b9e4 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -3497,7 +3497,7 @@ static void vtd_address_space_unmap(VTDAddressSpace *as, IOMMUNotifier *n)
-         /* This field is meaningless for unmap */
-         entry.translated_addr = 0;
- 
--        memory_region_notify_one(n, &entry);
-+        memory_region_notify_iommu_one(n, &entry);
- 
-         start += mask;
-         remain -= mask;
-@@ -3535,7 +3535,7 @@ static void vtd_address_space_refresh_all(IntelIOMMUState *s)
- 
- static int vtd_replay_hook(IOMMUTLBEntry *entry, void *private)
- {
--    memory_region_notify_one((IOMMUNotifier *)private, entry);
-+    memory_region_notify_iommu_one((IOMMUNotifier *)private, entry);
-     return 0;
- }
- 
 diff --git a/softmmu/memory.c b/softmmu/memory.c
-index 71951fe4dc..2b11ac5238 100644
+index ca281edaea..f1b6ba35f2 100644
 --- a/softmmu/memory.c
 +++ b/softmmu/memory.c
-@@ -1932,8 +1932,8 @@ void memory_region_unregister_iommu_notifier(MemoryRegion *mr,
-     memory_region_update_iommu_notify_flags(iommu_mr, NULL);
- }
- 
--void memory_region_notify_one(IOMMUNotifier *notifier,
--                              IOMMUTLBEntry *entry)
-+void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
-+                                    IOMMUTLBEntry *entry)
+@@ -1937,6 +1937,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
  {
-     IOMMUNotifierFlag request_flags;
+     IOMMUTLBEntry *entry = &event->entry;
      hwaddr entry_end = entry->iova + entry->addr_mask;
-@@ -1969,7 +1969,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
++    IOMMUTLBEntry tmp = *entry;
  
-     IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
-         if (iommu_notifier->iommu_idx == iommu_idx) {
--            memory_region_notify_one(iommu_notifier, &entry);
-+            memory_region_notify_iommu_one(iommu_notifier, &entry);
-         }
+     if (event->type == IOMMU_NOTIFIER_UNMAP) {
+         assert(entry->perm == IOMMU_NONE);
+@@ -1950,10 +1951,16 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+         return;
+     }
+ 
+-    assert(entry->iova >= notifier->start && entry_end <= notifier->end);
++    if (notifier->notifier_flags & IOMMU_NOTIFIER_DEVIOTLB_UNMAP) {
++        /* Crop (iova, addr_mask) to range */
++        tmp.iova = MAX(tmp.iova, notifier->start);
++        tmp.addr_mask = MIN(entry_end, notifier->end) - tmp.iova;
++    } else {
++        assert(entry->iova >= notifier->start && entry_end <= notifier->end);
++    }
+ 
+     if (event->type & notifier->notifier_flags) {
+-        notifier->notify(notifier, entry);
++        notifier->notify(notifier, &tmp);
      }
  }
+ 
 -- 
 2.18.4
 

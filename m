@@ -1,343 +1,331 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3580026lfb;
-        Mon, 16 Nov 2020 02:23:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxVQHCJuHcxTz1DyvDJ7auXApYwkAGYfl/1yK09rJeuu28GR6i+ax6lJJGEkFkG2qkbWn3W
-X-Received: by 2002:a25:cb55:: with SMTP id b82mr24277550ybg.334.1605522222492;
-        Mon, 16 Nov 2020 02:23:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605522222; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3801696lfb;
+        Mon, 16 Nov 2020 07:30:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxHVu/yxn8l0BAT/tyVhqs7s/p/RxqyP23VetZyW+5eX1jGxfJ26S6yh4WUD9tiaW55HJK3
+X-Received: by 2002:a25:5016:: with SMTP id e22mr20163796ybb.156.1605540620005;
+        Mon, 16 Nov 2020 07:30:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605540619; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qro7LbkPS95yZCNWht/wBs7aYsLuSx0ff1jSY5/miP7oHlloW0wZZUJ0zycSBoIWRF
-         EZJhk7KPCn6aRunMk/6Q7D0JY2gk6kjUlewxbus60X88MX/LpcnoCk8juUUZm7UrFmeB
-         VjlKB/wZ/Qc6wPijVZy2WEaWjGCXPNy4wXGAUFpy9U/Tsj585UcfluhLME+IH9GI9EaO
-         j/9ZOWGL6RgNuq1Qkyyq0IENooq/AOIAZ71dCB1HE7sC0tebvJWUYB+cFmeBP2k9eZCD
-         hQM/ETAnKaqILa7XMF+roDhjz1ak+/C0I7KLwlFHZYWoF9MHITadvaQTMvn00WCWk6BV
-         8I6g==
+        b=AeVxMDtJDAnh0kQByA/z1CwBu8jGOXNJ103KHGsHlTWjaDztmEnEJulzm1dFMcAxY4
+         bpZQ58Eg0W4eYfFe7iorlPoLoVNKtS4yJFbtsoOgIJnHdDu/h8nO/I8SqBOAQW/krTrE
+         Vdnd2Qdry0cJ0enD35oQ0xn0a2cbKctqTcHpDkH7E93WrhwayYFlOszghERyF3PDL4Y3
+         Vl2rHSIKeLQfG9n9RavI8BLSDvi3m2LVdW0c7phAIVkR+mcGfam4lRP0k3qRXEwY+SDv
+         fvDC06SqrAKNdDyOldilWu+7MW2tsEW5LgmwNTDVdjjUWAJv4eZMwjmGxNXNd3WJJ0iA
+         JouA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
-        bh=57TYqpA0rdF6I0mwXljcmF1DfVcBmhlyXZJT2fRMpDY=;
-        b=uKJhkfrP/ljNva0AI2pEpMFqxrdxFOx6pz/X+/EqDgH0AXk/OoehaJjTW+ZssS2BqV
-         LUoXrqWQCurhMcF9eJpYUbreAf2SNXjl8qd7V5DiV5o2UuYmuR13xOdB/V1CXUVSKH32
-         VTwIqjc7akFNTt1ON8A96ML+K2RC6asEYrtXELWiuZG16I7iF/AbQZdnzxvVVlMl0Dzs
-         iv5HScrEaOomz3ds8CuuJhJWX1m+H9Q8XQGEk0PyDnvr5PxHJOgo6A/8Fty9OJrU6e/L
-         22/kOlrBgfPc4hmQVSZ8DyjommnWHc+/dVylX4derdCBFO4Ikar5fiyW984iVbChgCM0
-         xqRw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=2OeIXsCueKgeot6j8X63ZcWV9rbNFM0cnVvrMjCk3IM=;
+        b=t6cheOX/N3aQqLtd89IL+6ZA7hYkJvL6reNeNs3egC4s+CjVfslqmc4qmQp37Dfzub
+         HPF0a1vJ3YP/pdIOuZap+U+4BQmVw/W6GOlR+RpU2J9X5Wi/o61uRwK/19f8y9SPRqLC
+         l8KY8dVx4YkaT7sCMXmTiMJTJdqi0pUslfioVVd7zaMyrDCKELAUxc016pm0MeYs2mfz
+         +2xNi5WHfwi3xh5ib+KifHP0KZJUr2JIuIc4l0u2b3ypSMsgtAUmeV1FarWARpuvk9/v
+         2FKpFrIesPMlDyfyg79E7SQ1zBMMD6nAGC4ZxmEXGQO7zMBPtvTILdScoLzT8Lcr5tH+
+         YIVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="S+XrU/b8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f124si17158650ybf.100.2020.11.16.02.23.42
+        by mx.google.com with ESMTPS id x77si6903558ybe.306.2020.11.16.07.30.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 02:23:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Nov 2020 07:30:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50114 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="S+XrU/b8";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kebfh-00083f-SS
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 05:23:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53652)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kegSR-0005V7-CK
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 10:30:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kebfZ-00081m-FS; Mon, 16 Nov 2020 05:23:33 -0500
-Received: from 4.mo51.mail-out.ovh.net ([188.165.42.229]:40178)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>)
- id 1kebfV-0001FG-SI; Mon, 16 Nov 2020 05:23:33 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.216])
- by mo51.mail-out.ovh.net (Postfix) with ESMTPS id 3F216235CB0;
- Mon, 16 Nov 2020 11:23:17 +0100 (CET)
-Received: from kaod.org (37.59.142.97) by DAG8EX1.mxp5.local (172.16.2.71)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Mon, 16 Nov
- 2020 11:23:16 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G0023fd64580-6df5-4ad7-a5eb-b8c93df7a629,
- 5DC1A71B4DA47E6A258F2FD66590EA27958A2DF2) smtp.auth=groug@kaod.org
-Date: Mon, 16 Nov 2020 11:23:14 +0100
-From: Greg Kurz <groug@kaod.org>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH] hw: add compat machines for 6.0
-Message-ID: <20201116112314.3e999cae@bahia.lan>
-In-Reply-To: <20201109173928.1001764-1-cohuck@redhat.com>
-References: <20201109173928.1001764-1-cohuck@redhat.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <tpecar95@gmail.com>)
+ id 1kegAl-0008Nz-Cm; Mon, 16 Nov 2020 10:12:04 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:37631)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tpecar95@gmail.com>)
+ id 1kegAi-0004g7-Va; Mon, 16 Nov 2020 10:12:03 -0500
+Received: by mail-wr1-x444.google.com with SMTP id b6so19069561wrt.4;
+ Mon, 16 Nov 2020 07:11:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=2OeIXsCueKgeot6j8X63ZcWV9rbNFM0cnVvrMjCk3IM=;
+ b=S+XrU/b8s498aNSbtZfj397Jgbv2PahWOgjrrTx9LjGRHYk+P8gqSNHMmpYN2/z6Gv
+ MvdVFa1DfAbiTxFqPo0vlN3QCM9QlsNCLaZ+6WrsmeErkX9uMP6LOKVUt66TpovZJxfA
+ 9Al/sRpSOpECnojtPrgXKzaT8Yc9ZS5dVbdx9GCxntzHuVeoeUhnyWsRwjFkD7bhxbPr
+ kBf+nt/JAYp1IKWAUMWox/slU8daJeMCHB5b6h/ZncbF4Km5QPX0tYlyS2o/3pnZMDxj
+ tvXHTUYl1Js/7BQ9aXhFcB4ItqcEACudTbuLRdm3Zkt02ZFMkittPHkemr94//LdbrA/
+ FX+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=2OeIXsCueKgeot6j8X63ZcWV9rbNFM0cnVvrMjCk3IM=;
+ b=HS2Zn2WZyyChZCynMHGTAmqwRI6E7IBnCzg7m41DQqGrydsmpQEZFFD7EA82a/HK0Z
+ 9X1k5FmeyGTx7hio/Lkxz8jfJJ41WQ4eCYnt+glzmhNueeydyrl7VGDrbVHKbqkeMcXR
+ q82IvPeGHsHCyM4T11mmiDC8lzzqrDlnTZjjNFRGSDo0VhwlEAOJSv/RHLdHRS+k4j2s
+ aYOnKc+yZR+Z3B+gLSwfzPddfsF3xhPvPUHjTiAYbFrEh9n/32THwnDqvSkcUrENMbbL
+ qkNd+1L5vyXuJC7AvgaSM3xTjVRxC1/m2kyRCCpbwttzpChDQm5nU0DGgBAqwi9M9FXt
+ 7BXA==
+X-Gm-Message-State: AOAM533d4RO2DS1dA/VJlLIphmMChhBH/uUug3ADPMLB9KGo3mMOn/5R
+ PisdJz2N1vIybK/uDswqX74xNp/QKNRRU9NuiSwx29MAaX4=
+X-Received: by 2002:adf:e512:: with SMTP id j18mr21025959wrm.390.1605539518279; 
+ Mon, 16 Nov 2020 07:11:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG8EX1.mxp5.local
- (172.16.2.71)
-X-Ovh-Tracer-GUID: dd5b4ae4-a34c-4ee1-81e3-fe2bd1610160
-X-Ovh-Tracer-Id: 5986409805647813051
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrudefuddgudejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=188.165.42.229; envelope-from=groug@kaod.org;
- helo=4.mo51.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 05:23:19
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+From: Tadej Pecar <tpecar95@gmail.com>
+Date: Mon, 16 Nov 2020 16:11:47 +0100
+Message-ID: <CAD-fBOBqRWQLW8xpJ+j8DSWeuDbCNEOr67uHqQJ+v=CwAFow7g@mail.gmail.com>
+Subject: [PATCH] hw/char/cmsdk-apb-uart: Fix rx interrupt handling
+To: qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000a8f1a405b43acc3f"
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=tpecar95@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Mon, 16 Nov 2020 10:28:49 -0500
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bFv8P+kdKEi0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FLCAK1HKMyGf
 
-On Mon,  9 Nov 2020 18:39:28 +0100
-Cornelia Huck <cohuck@redhat.com> wrote:
+--000000000000a8f1a405b43acc3f
+Content-Type: text/plain; charset="UTF-8"
 
-> Add 6.0 machine types for arm/i440fx/q35/s390x/spapr.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  hw/arm/virt.c              |  9 ++++++++-
->  hw/core/machine.c          |  3 +++
->  hw/i386/pc.c               |  3 +++
->  hw/i386/pc_piix.c          | 14 +++++++++++++-
->  hw/i386/pc_q35.c           | 13 ++++++++++++-
->  hw/ppc/spapr.c             | 15 +++++++++++++--
->  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
->  include/hw/boards.h        |  3 +++
->  include/hw/i386/pc.h       |  3 +++
->  9 files changed, 71 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 27dbeb549ef1..d21dad4491c4 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2587,10 +2587,17 @@ static void machvirt_machine_init(void)
->  }
->  type_init(machvirt_machine_init);
->  
-> +static void virt_machine_6_0_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE_AS_LATEST(6, 0)
-> +
->  static void virt_machine_5_2_options(MachineClass *mc)
->  {
-> +    virt_machine_6_0_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
->  }
-> -DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
-> +DEFINE_VIRT_MACHINE(5, 2)
->  
->  static void virt_machine_5_1_options(MachineClass *mc)
->  {
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 98b87f76cbbe..c5a6c517bb9d 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -28,6 +28,9 @@
->  #include "hw/mem/nvdimm.h"
->  #include "migration/vmstate.h"
->  
-> +GlobalProperty hw_compat_5_2[] = {};
+Previously, the RX interrupt got missed if:
+- the character backend provided the next character before the RX IRQ
+Handler
+  managed to clear the currently served interrupt.
+- the character backend provided the next character while the RX interrupt
+  was disabled. Enabling the interrupt did not trigger the interrupt
+  even if the RXFULL status bit was set.
 
-Maybe worth putting the }; on the next line so that the next
-change has a prettier diff ?
+Signed-off-by: Tadej P <tpecar95@gmail.com>
+---
+ hw/char/cmsdk-apb-uart.c | 54 ++++++++++++++++++++++++++++------------
+ hw/char/trace-events     |  1 +
+ 2 files changed, 39 insertions(+), 16 deletions(-)
 
-Apart from that,
+diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
+index 626b68f2ec..1b361bc4d6 100644
+--- a/hw/char/cmsdk-apb-uart.c
++++ b/hw/char/cmsdk-apb-uart.c
+@@ -96,19 +96,34 @@ static void uart_update_parameters(CMSDKAPBUART *s)
 
-Reviewed-by: Greg Kurz <groug@kaod.org>
+ static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
+ {
+-    /* update outbound irqs, including handling the way the rxo and txo
+-     * interrupt status bits are just logical AND of the overrun bit in
+-     * STATE and the overrun interrupt enable bit in CTRL.
++    /*
++     * update outbound irqs
++     * (
++     *     state     [rxo,  txo,  rxbf, txbf ] at bit [3, 2, 1, 0]
++     *   | intstatus [rxo,  txo,  rx,   tx   ] at bit [3, 2, 1, 0]
++     * )
++     * & ctrl        [rxoe, txoe, rxe,  txe  ] at bit [5, 4, 3, 2]
++     * = masked_intstatus
++     *
++     * state: status register
++     * intstatus: pending interrupts and is sticky (has to be cleared by
+sw)
++     * masked_intstatus: masked (by ctrl) pending interrupts
++     *
++     * intstatus [rxo, txo, rx] bits are set here
++     * intstatus [tx] is managed in uart_transmit
+      */
+-    uint32_t omask = (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK);
+-    s->intstatus &= ~omask;
+-    s->intstatus |= (s->state & (s->ctrl >> 2) & omask);
+-
+-    qemu_set_irq(s->txint, !!(s->intstatus & R_INTSTATUS_TX_MASK));
+-    qemu_set_irq(s->rxint, !!(s->intstatus & R_INTSTATUS_RX_MASK));
+-    qemu_set_irq(s->txovrint, !!(s->intstatus & R_INTSTATUS_TXO_MASK));
+-    qemu_set_irq(s->rxovrint, !!(s->intstatus & R_INTSTATUS_RXO_MASK));
+-    qemu_set_irq(s->uartint, !!(s->intstatus));
++    s->intstatus |= s->state &
++        (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK |
+R_INTSTATUS_RX_MASK);
++
++    uint32_t masked_intstatus = s->intstatus & (s->ctrl >> 2);
++
++    trace_cmsdk_apb_uart_update(s->state, s->intstatus, masked_intstatus);
++
++    qemu_set_irq(s->txint,    !!(masked_intstatus & R_INTSTATUS_TX_MASK));
++    qemu_set_irq(s->rxint,    !!(masked_intstatus & R_INTSTATUS_RX_MASK));
++    qemu_set_irq(s->txovrint, !!(masked_intstatus & R_INTSTATUS_TXO_MASK));
++    qemu_set_irq(s->rxovrint, !!(masked_intstatus & R_INTSTATUS_RXO_MASK));
++    qemu_set_irq(s->uartint,  !!(masked_intstatus));
+ }
 
-> +const size_t hw_compat_5_2_len = G_N_ELEMENTS(hw_compat_5_2);
-> +
->  GlobalProperty hw_compat_5_1[] = {
->      { "vhost-scsi", "num_queues", "1"},
->      { "vhost-user-blk", "num-queues", "1"},
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 5e6c0023e0c7..d386c5662698 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -97,6 +97,9 @@
->  #include "trace.h"
->  #include CONFIG_DEVICES
->  
-> +GlobalProperty pc_compat_5_2[] = {};
-> +const size_t pc_compat_5_2_len = G_N_ELEMENTS(pc_compat_5_2);
-> +
->  GlobalProperty pc_compat_5_1[] = {
->      { "ICH9-LPC", "x-smi-cpu-hotplug", "off" },
->  };
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 13d1628f13bf..6188c3e97eaf 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -426,7 +426,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
->      machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
->  }
->  
-> -static void pc_i440fx_5_2_machine_options(MachineClass *m)
-> +static void pc_i440fx_6_0_machine_options(MachineClass *m)
->  {
->      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
->      pc_i440fx_machine_options(m);
-> @@ -435,6 +435,18 @@ static void pc_i440fx_5_2_machine_options(MachineClass *m)
->      pcmc->default_cpu_version = 1;
->  }
->  
-> +DEFINE_I440FX_MACHINE(v6_0, "pc-i440fx-6.0", NULL,
-> +                      pc_i440fx_6_0_machine_options);
-> +
-> +static void pc_i440fx_5_2_machine_options(MachineClass *m)
-> +{
-> +    pc_i440fx_6_0_machine_options(m);
-> +    m->alias = NULL;
-> +    m->is_default = false;
-> +    compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
-> +    compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
-> +}
-> +
->  DEFINE_I440FX_MACHINE(v5_2, "pc-i440fx-5.2", NULL,
->                        pc_i440fx_5_2_machine_options);
->  
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index a3f4959c4357..0a212443aa84 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -344,7 +344,7 @@ static void pc_q35_machine_options(MachineClass *m)
->      m->max_cpus = 288;
->  }
->  
-> -static void pc_q35_5_2_machine_options(MachineClass *m)
-> +static void pc_q35_6_0_machine_options(MachineClass *m)
->  {
->      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
->      pc_q35_machine_options(m);
-> @@ -352,6 +352,17 @@ static void pc_q35_5_2_machine_options(MachineClass *m)
->      pcmc->default_cpu_version = 1;
->  }
->  
-> +DEFINE_Q35_MACHINE(v6_0, "pc-q35-6.0", NULL,
-> +                   pc_q35_6_0_machine_options);
-> +
-> +static void pc_q35_5_2_machine_options(MachineClass *m)
-> +{
-> +    pc_q35_6_0_machine_options(m);
-> +    m->alias = NULL;
-> +    compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
-> +    compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
-> +}
-> +
->  DEFINE_Q35_MACHINE(v5_2, "pc-q35-5.2", NULL,
->                     pc_q35_5_2_machine_options);
->  
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index 227075103e9a..45e0afbeba49 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -4515,15 +4515,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
->      }                                                                \
->      type_init(spapr_machine_register_##suffix)
->  
-> +/*
-> + * pseries-6.0
-> + */
-> +static void spapr_machine_6_0_class_options(MachineClass *mc)
-> +{
-> +    /* Defaults for the latest behaviour inherited from the base class */
-> +}
-> +
-> +DEFINE_SPAPR_MACHINE(6_0, "6.0", true);
-> +
->  /*
->   * pseries-5.2
->   */
->  static void spapr_machine_5_2_class_options(MachineClass *mc)
->  {
-> -    /* Defaults for the latest behaviour inherited from the base class */
-> +    spapr_machine_6_0_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
->  }
->  
-> -DEFINE_SPAPR_MACHINE(5_2, "5.2", true);
-> +DEFINE_SPAPR_MACHINE(5_2, "5.2", false);
->  
->  /*
->   * pseries-5.1
-> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-> index 22222c4fd5ad..b1229abc3134 100644
-> --- a/hw/s390x/s390-virtio-ccw.c
-> +++ b/hw/s390x/s390-virtio-ccw.c
-> @@ -785,14 +785,26 @@ bool css_migration_enabled(void)
->      }                                                                         \
->      type_init(ccw_machine_register_##suffix)
->  
-> +static void ccw_machine_6_0_instance_options(MachineState *machine)
-> +{
-> +}
-> +
-> +static void ccw_machine_6_0_class_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_CCW_MACHINE(6_0, "6.0", true);
-> +
->  static void ccw_machine_5_2_instance_options(MachineState *machine)
->  {
-> +    ccw_machine_6_0_instance_options(machine);
->  }
->  
->  static void ccw_machine_5_2_class_options(MachineClass *mc)
->  {
-> +    ccw_machine_6_0_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
->  }
-> -DEFINE_CCW_MACHINE(5_2, "5.2", true);
-> +DEFINE_CCW_MACHINE(5_2, "5.2", false);
->  
->  static void ccw_machine_5_1_instance_options(MachineState *machine)
->  {
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index a49e3a6b4481..f94f4ad5d83c 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -310,6 +310,9 @@ struct MachineState {
->      } \
->      type_init(machine_initfn##_register_types)
->  
-> +extern GlobalProperty hw_compat_5_2[];
-> +extern const size_t hw_compat_5_2_len;
-> +
->  extern GlobalProperty hw_compat_5_1[];
->  extern const size_t hw_compat_5_1_len;
->  
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 911e4600970c..49dfa667de09 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -191,6 +191,9 @@ void pc_system_firmware_init(PCMachineState *pcms, MemoryRegion *rom_memory);
->  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
->                         const CPUArchIdList *apic_ids, GArray *entry);
->  
-> +extern GlobalProperty pc_compat_5_2[];
-> +extern const size_t pc_compat_5_2_len;
-> +
->  extern GlobalProperty pc_compat_5_1[];
->  extern const size_t pc_compat_5_1_len;
->  
+ static int uart_can_receive(void *opaque)
+@@ -144,9 +159,11 @@ static void uart_receive(void *opaque, const uint8_t
+*buf, int size)
 
+     s->rxbuf = *buf;
+     s->state |= R_STATE_RXFULL_MASK;
+-    if (s->ctrl & R_CTRL_RX_INTEN_MASK) {
+-        s->intstatus |= R_INTSTATUS_RX_MASK;
+-    }
++
++    /*
++     * Handled in cmsdk_apb_uart_update, in order to properly handle
++     * pending rx interrupt when rxen gets enabled
++     */
+     cmsdk_apb_uart_update(s);
+ }
+
+@@ -278,7 +295,12 @@ static void uart_write(void *opaque, hwaddr offset,
+uint64_t value,
+          * is then reflected into the intstatus value by the update
+function).
+          */
+         s->state &= ~(value & (R_INTSTATUS_TXO_MASK |
+R_INTSTATUS_RXO_MASK));
+-        s->intstatus &= ~value;
++
++        /*
++         * Clear rx interrupt status only if no pending character
++         * (no buffer full asserted).
++         */
++        s->intstatus &= ~value | (s->state & R_STATE_RXFULL_MASK);
+         cmsdk_apb_uart_update(s);
+         break;
+     case A_BAUDDIV:
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 81026f6612..0821c8eb3a 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -68,6 +68,7 @@ pl011_put_fifo_full(void) "FIFO now full, RXFF set"
+ pl011_baudrate_change(unsigned int baudrate, uint64_t clock, uint32_t
+ibrd, uint32_t fbrd) "new baudrate %u (clk: %" PRIu64 "hz, ibrd: %" PRIu32
+", fbrd: %" PRIu32 ")"
+
+ # cmsdk-apb-uart.c
++cmsdk_apb_uart_update(uint32_t state, uint32_t intstatus, uint32_t
+masked_intstatus) "CMSDK APB UART update: state 0x%x intstatus 0x%x
+masked_intstatus 0x%x"
+ cmsdk_apb_uart_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK
+APB UART read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ cmsdk_apb_uart_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK
+APB UART write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ cmsdk_apb_uart_reset(void) "CMSDK APB UART: reset"
+--
+2.29.2
+
+--000000000000a8f1a405b43acc3f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Previously, the RX interrupt got missed if:<br>- the chara=
+cter backend provided the next character before the RX IRQ Handler<br>=C2=
+=A0 managed to clear the currently served interrupt.<br>- the character bac=
+kend provided the next character while the RX interrupt<br>=C2=A0 was disab=
+led. Enabling the interrupt did not trigger the interrupt<br>=C2=A0 even if=
+ the RXFULL status bit was set.<br><br>Signed-off-by: Tadej P &lt;<a href=
+=3D"mailto:tpecar95@gmail.com">tpecar95@gmail.com</a>&gt;<br>---<br>=C2=A0h=
+w/char/cmsdk-apb-uart.c | 54 ++++++++++++++++++++++++++++------------<br>=
+=C2=A0hw/char/trace-events =C2=A0 =C2=A0 | =C2=A01 +<br>=C2=A02 files chang=
+ed, 39 insertions(+), 16 deletions(-)<br><br>diff --git a/hw/char/cmsdk-apb=
+-uart.c b/hw/char/cmsdk-apb-uart.c<br>index 626b68f2ec..1b361bc4d6 100644<b=
+r>--- a/hw/char/cmsdk-apb-uart.c<br>+++ b/hw/char/cmsdk-apb-uart.c<br>@@ -9=
+6,19 +96,34 @@ static void uart_update_parameters(CMSDKAPBUART *s)<br>=C2=
+=A0<br>=C2=A0static void cmsdk_apb_uart_update(CMSDKAPBUART *s)<br>=C2=A0{<=
+br>- =C2=A0 =C2=A0/* update outbound irqs, including handling the way the r=
+xo and txo<br>- =C2=A0 =C2=A0 * interrupt status bits are just logical AND =
+of the overrun bit in<br>- =C2=A0 =C2=A0 * STATE and the overrun interrupt =
+enable bit in CTRL.<br>+ =C2=A0 =C2=A0/*<br>+ =C2=A0 =C2=A0 * update outbou=
+nd irqs<br>+ =C2=A0 =C2=A0 * (<br>+ =C2=A0 =C2=A0 * =C2=A0 =C2=A0 state =C2=
+=A0 =C2=A0 [rxo, =C2=A0txo, =C2=A0rxbf, txbf ] at bit [3, 2, 1, 0]<br>+ =C2=
+=A0 =C2=A0 * =C2=A0 | intstatus [rxo, =C2=A0txo, =C2=A0rx, =C2=A0 tx =C2=A0=
+ ] at bit [3, 2, 1, 0]<br>+ =C2=A0 =C2=A0 * )<br>+ =C2=A0 =C2=A0 * &amp; ct=
+rl =C2=A0 =C2=A0 =C2=A0 =C2=A0[rxoe, txoe, rxe, =C2=A0txe =C2=A0] at bit [5=
+, 4, 3, 2]<br>+ =C2=A0 =C2=A0 * =3D masked_intstatus<br>+ =C2=A0 =C2=A0 *<b=
+r>+ =C2=A0 =C2=A0 * state: status register<br>+ =C2=A0 =C2=A0 * intstatus: =
+pending interrupts and is sticky (has to be cleared by sw)<br>+ =C2=A0 =C2=
+=A0 * masked_intstatus: masked (by ctrl) pending interrupts<br>+ =C2=A0 =C2=
+=A0 *<br>+ =C2=A0 =C2=A0 * intstatus [rxo, txo, rx] bits are set here<br>+ =
+=C2=A0 =C2=A0 * intstatus [tx] is managed in uart_transmit<br>=C2=A0 =C2=A0=
+ =C2=A0 */<br>- =C2=A0 =C2=A0uint32_t omask =3D (R_INTSTATUS_RXO_MASK | R_I=
+NTSTATUS_TXO_MASK);<br>- =C2=A0 =C2=A0s-&gt;intstatus &amp;=3D ~omask;<br>-=
+ =C2=A0 =C2=A0s-&gt;intstatus |=3D (s-&gt;state &amp; (s-&gt;ctrl &gt;&gt; =
+2) &amp; omask);<br>-<br>- =C2=A0 =C2=A0qemu_set_irq(s-&gt;txint, !!(s-&gt;=
+intstatus &amp; R_INTSTATUS_TX_MASK));<br>- =C2=A0 =C2=A0qemu_set_irq(s-&gt=
+;rxint, !!(s-&gt;intstatus &amp; R_INTSTATUS_RX_MASK));<br>- =C2=A0 =C2=A0q=
+emu_set_irq(s-&gt;txovrint, !!(s-&gt;intstatus &amp; R_INTSTATUS_TXO_MASK))=
+;<br>- =C2=A0 =C2=A0qemu_set_irq(s-&gt;rxovrint, !!(s-&gt;intstatus &amp; R=
+_INTSTATUS_RXO_MASK));<br>- =C2=A0 =C2=A0qemu_set_irq(s-&gt;uartint, !!(s-&=
+gt;intstatus));<br>+ =C2=A0 =C2=A0s-&gt;intstatus |=3D s-&gt;state &amp;<br=
+>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0(R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK =
+| R_INTSTATUS_RX_MASK);<br>+<br>+ =C2=A0 =C2=A0uint32_t masked_intstatus =
+=3D s-&gt;intstatus &amp; (s-&gt;ctrl &gt;&gt; 2);<br>+<br>+ =C2=A0 =C2=A0t=
+race_cmsdk_apb_uart_update(s-&gt;state, s-&gt;intstatus, masked_intstatus);=
+<br>+<br>+ =C2=A0 =C2=A0qemu_set_irq(s-&gt;txint, =C2=A0 =C2=A0!!(masked_in=
+tstatus &amp; R_INTSTATUS_TX_MASK));<br>+ =C2=A0 =C2=A0qemu_set_irq(s-&gt;r=
+xint, =C2=A0 =C2=A0!!(masked_intstatus &amp; R_INTSTATUS_RX_MASK));<br>+ =
+=C2=A0 =C2=A0qemu_set_irq(s-&gt;txovrint, !!(masked_intstatus &amp; R_INTST=
+ATUS_TXO_MASK));<br>+ =C2=A0 =C2=A0qemu_set_irq(s-&gt;rxovrint, !!(masked_i=
+ntstatus &amp; R_INTSTATUS_RXO_MASK));<br>+ =C2=A0 =C2=A0qemu_set_irq(s-&gt=
+;uartint, =C2=A0!!(masked_intstatus));<br>=C2=A0}<br>=C2=A0<br>=C2=A0static=
+ int uart_can_receive(void *opaque)<br>@@ -144,9 +159,11 @@ static void uar=
+t_receive(void *opaque, const uint8_t *buf, int size)<br>=C2=A0<br>=C2=A0 =
+=C2=A0 =C2=A0s-&gt;rxbuf =3D *buf;<br>=C2=A0 =C2=A0 =C2=A0s-&gt;state |=3D =
+R_STATE_RXFULL_MASK;<br>- =C2=A0 =C2=A0if (s-&gt;ctrl &amp; R_CTRL_RX_INTEN=
+_MASK) {<br>- =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;intstatus |=3D R_INTSTATUS_R=
+X_MASK;<br>- =C2=A0 =C2=A0}<br>+<br>+ =C2=A0 =C2=A0/*<br>+ =C2=A0 =C2=A0 * =
+Handled in cmsdk_apb_uart_update, in order to properly handle<br>+ =C2=A0 =
+=C2=A0 * pending rx interrupt when rxen gets enabled<br>+ =C2=A0 =C2=A0 */<=
+br>=C2=A0 =C2=A0 =C2=A0cmsdk_apb_uart_update(s);<br>=C2=A0}<br>=C2=A0<br>@@=
+ -278,7 +295,12 @@ static void uart_write(void *opaque, hwaddr offset, uint=
+64_t value,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * is then reflected into =
+the intstatus value by the update function).<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 */<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;state &amp;=3D ~(valu=
+e &amp; (R_INTSTATUS_TXO_MASK | R_INTSTATUS_RXO_MASK));<br>- =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0s-&gt;intstatus &amp;=3D ~value;<br>+<br>+ =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0/*<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 * Clear rx interrupt status o=
+nly if no pending character<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 * (no buffer f=
+ull asserted).<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>+ =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0s-&gt;intstatus &amp;=3D ~value | (s-&gt;state &amp; R_STATE_RXFU=
+LL_MASK);<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cmsdk_apb_uart_update(s);<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>=C2=A0 =C2=A0 =C2=A0case A_BAU=
+DDIV:<br>diff --git a/hw/char/trace-events b/hw/char/trace-events<br>index =
+81026f6612..0821c8eb3a 100644<br>--- a/hw/char/trace-events<br>+++ b/hw/cha=
+r/trace-events<br>@@ -68,6 +68,7 @@ pl011_put_fifo_full(void) &quot;FIFO no=
+w full, RXFF set&quot;<br>=C2=A0pl011_baudrate_change(unsigned int baudrate=
+, uint64_t clock, uint32_t ibrd, uint32_t fbrd) &quot;new baudrate %u (clk:=
+ %&quot; PRIu64 &quot;hz, ibrd: %&quot; PRIu32 &quot;, fbrd: %&quot; PRIu32=
+ &quot;)&quot;<br>=C2=A0<br>=C2=A0# cmsdk-apb-uart.c<br>+cmsdk_apb_uart_upd=
+ate(uint32_t state, uint32_t intstatus, uint32_t masked_intstatus) &quot;CM=
+SDK APB UART update: state 0x%x intstatus 0x%x masked_intstatus 0x%x&quot;<=
+br>=C2=A0cmsdk_apb_uart_read(uint64_t offset, uint64_t data, unsigned size)=
+ &quot;CMSDK APB UART read: offset 0x%&quot; PRIx64 &quot; data 0x%&quot; P=
+RIx64 &quot; size %u&quot;<br>=C2=A0cmsdk_apb_uart_write(uint64_t offset, u=
+int64_t data, unsigned size) &quot;CMSDK APB UART write: offset 0x%&quot; P=
+RIx64 &quot; data 0x%&quot; PRIx64 &quot; size %u&quot;<br>=C2=A0cmsdk_apb_=
+uart_reset(void) &quot;CMSDK APB UART: reset&quot;<br>--<br>2.29.2<br><br><=
+/div>
+
+--000000000000a8f1a405b43acc3f--

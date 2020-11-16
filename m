@@ -1,95 +1,94 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3591415lfb;
-        Mon, 16 Nov 2020 02:43:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw2jxouNrcR96UpegTwIVuWmaqiK5XamUNJuKB0pLkO05KqNPvRe7ypAZA+gOi7zRUzZkuq
-X-Received: by 2002:a25:41cb:: with SMTP id o194mr25056189yba.420.1605523432414;
-        Mon, 16 Nov 2020 02:43:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605523432; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3592161lfb;
+        Mon, 16 Nov 2020 02:45:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJywIOtz1wbVgaC62RaY5i/ZgmzOPTlcMal5Bg3O9bnggR5AOR5wjhKqSbxNEVpKDjXwyTNM
+X-Received: by 2002:a25:e7cd:: with SMTP id e196mr17700127ybh.375.1605523514259;
+        Mon, 16 Nov 2020 02:45:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605523514; cv=none;
         d=google.com; s=arc-20160816;
-        b=GoAf0mKdPLNtDC6ANv1xLkLKk6xHFaauBHM3CyiY1lXum+Ovhd0PHqMxtTQyPgBBNT
-         tWJJ/b/MdL+KmAQaFmKrTKL3R3GKNCA3ed0ZBYU0CLRL0zQt0EVkuRl9PuIWXjk1x1ao
-         2G+qjsyThobXGm73yv8vsZkmaRn6GELOH2dPskmSdhteJfJZdltt6NCFmcEb5vT9P4Jn
-         n3f89Y0KZ/rHAwdmxaZNPqTQHMkAS2yd+rAHdCblb1q0yvlViuGU7z1ZvB4mLhPzvTFO
-         bd8ilBp3VJ4c/Gyg8pe5/1cz0p2UgilAODVYDpvFgBX3en4M1j/c6EHQLLZ9upUo9dcf
-         ojbA==
+        b=Z5mVJ/uW6J9JeZcpuYstOj2K9sSdv+8/cp0ablgw19gFL4bHidOfS5++aWjtz6XAxU
+         Ga/0Qak3fU+2Pyr9JIr2vAm+2eXOLIwEsEYP337jn3BKjWHd54/d4XuMyO5jEc0EOAjq
+         H+dcfEi0XyGYnc5dGOwylgNUqxvgPRe0yowBz3IpNvwiHops8XgwdEGss5jeO0e1DDPE
+         9YkRa2P6TQz7ARtrGFmy/IbAHZ+5xsElLj/+hfDeesRlvJZzUN+AfKqkogIye9JD4fs8
+         yoKhb4EvDD7wJ6V733PMzlh2nqJBwQrTin2bHCzrPC/ASE8NpHJlTyg8bygBAB5LLx/L
+         wIIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1e4vV3wlhhx5BC8mV3U4uDQtSCmNzl4GULkfYr69znw=;
-        b=a3k5KD+bj9OFOWG3mh4J3ucXjP3ttLCxPdt3Sc3Ord9HBSYPDsNVmZRqwSgoutNc7P
-         XnIX0GT0Hpjq76bO5hDVYkuBep99dD+MQwBRsLTZYdp+6SP5O0QpVLVxxyaIRn+Fitef
-         YIibnquuaqYMyVCjTfaICIOzVaHvosfVKPRoibNYssu5gr9E3PvXdSNfn60L2hvp3U7j
-         Ds5Zhjq938SXbjP6qRnu9BcT34FA3t/X+Q6UoeNYJ/CDUkyg997G86O9DvSN6EvQ+uoc
-         /qxH+kQlnvm1zhnndH/vgU2HrOEqK521enJhS6B99HYkgkizGmnmP9cwdIaT4zqmqiv5
-         JraA==
+        bh=eJwmRU5kFwrdMzXJxYRDPPGvwmbEIbAUidbEwMQXjsg=;
+        b=Q476EjDtSjdQbqr4SI3pGvI5CoYTC+Tn3x467bhcLIbdLqJChaLjX5TxzbphmJJInx
+         vHWc5alObqd5ik/5kFSJzxSU/HEBonk6svkahMd8jkOrA9d4yiynP5Q+qLhQQth6fOql
+         hcVYC+bHDTYsImeejeHOqRt/xIziLi0CsAcoGjMx3ZGj+PSrcltBh43b7l6Cy+YKw7Nk
+         whxiVUYP7pSe+1eIvhxsD5uHtZ6DYXdp5brlMorJn5Y78OKScYh5i2Qr5kF/Brnk71RZ
+         kPHnOb/C4Lmm6McCu0dwPb+Mp6DOvdXzjPM9xmT6h+oLa2Of7GiFB9Mo/msGhzQPQt4q
+         GyQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b="bD/pjXJd";
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=g0GLCoHM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9si17316493ybi.469.2020.11.16.02.43.52
+        by mx.google.com with ESMTPS id f20si17185116ybj.71.2020.11.16.02.45.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 02:43:52 -0800 (PST)
+        Mon, 16 Nov 2020 02:45:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b="bD/pjXJd";
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=g0GLCoHM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:41766 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kebzD-0000UR-PM
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 05:43:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34992)
+	id 1kec0X-0002hc-LV
+	for alex.bennee@linaro.org; Mon, 16 Nov 2020 05:45:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1keby0-0007zd-1a; Mon, 16 Nov 2020 05:42:36 -0500
-Received: from aserp2120.oracle.com ([141.146.126.78]:35562)
+ id 1kebzs-0002Qc-MT; Mon, 16 Nov 2020 05:44:34 -0500
+Received: from aserp2130.oracle.com ([141.146.126.79]:42704)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
- id 1kebxu-0000Y4-Kn; Mon, 16 Nov 2020 05:42:35 -0500
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAe6h2177707;
- Mon, 16 Nov 2020 10:42:26 GMT
+ id 1kebzp-0001F5-5a; Mon, 16 Nov 2020 05:44:32 -0500
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAeAwK126605;
+ Mon, 16 Nov 2020 10:44:24 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=corp-2020-01-29;
- bh=1e4vV3wlhhx5BC8mV3U4uDQtSCmNzl4GULkfYr69znw=;
- b=bD/pjXJdHuaLgjhhAGpBJQrortX2z0F5N+Q7R0/EZOyzskH5q63kLXv9zHKTJaqJQdWR
- QrVBxdBO+4AYMSxs74oNYYqJ0VWYkoHZqJ/x7ZH6g3oRPv27ftIpkjbU1Al+wVeaYYHj
- A1yMHxpuj2vRc+kBhSNBm1kb7/4EjEHAH47IZ/yzstKcPBTvhpM9sZeYxu9psUKy+ufu
- hheMOEFHtnPf6SAnM2DLbhXkmSMAJGAM7W5nYxNWvTw/ZKs4gWhBjUMGlaqan6v95e9Z
- W/kn42UiuxeNZqagJs9ozSe8B+lIZbBsSVohn88WtBSzQiuI0trUOS1ba1P9jivLM6r0 kw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 34t76kmcw8-1
+ bh=eJwmRU5kFwrdMzXJxYRDPPGvwmbEIbAUidbEwMQXjsg=;
+ b=g0GLCoHMUUT463eDlWNVnvN1H5m5WLBv3ASIpZ230XwhZohTrCYQnJ7ZPWaHTfaHb+b7
+ z8mLXxrabdb+sNaod0a91YJPTFhEso47MWooRGqcRyMd+MiamMxzNkhuTEpMDZOKFYac
+ yQ8vVzn+9Q7ClDf7nFAYAJPiaRhGvZNw6HR+rKKiA+q/dP0mdAytSQnJmvHetSzvpnak
+ k5P9ppbZZs1x7k/+y+TBHi5v03Le/TCPLeDUl+rG1LF49ItvsQBEcWf+GMFD7zx3UWoY
+ XSiQ5twN4ZvPzJzh/iVCoKMoXC71+uWuW3i5lBH7w8mB4u1RsPDuHpGd01jbikYUCSRK /g== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2130.oracle.com with ESMTP id 34t4ramj7m-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 16 Nov 2020 10:42:26 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAf9JE068409;
- Mon, 16 Nov 2020 10:42:25 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 34umcwp46p-1
+ Mon, 16 Nov 2020 10:44:24 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AGAeSgo129269;
+ Mon, 16 Nov 2020 10:42:23 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3030.oracle.com with ESMTP id 34ts5uhngj-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 16 Nov 2020 10:42:25 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AGAgOH1016868;
- Mon, 16 Nov 2020 10:42:24 GMT
+ Mon, 16 Nov 2020 10:42:23 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0AGAgMwo025554;
+ Mon, 16 Nov 2020 10:42:22 GMT
 Received: from disaster-area.hh.sledj.net (/81.187.26.238)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 16 Nov 2020 02:42:23 -0800
+ with ESMTP ; Mon, 16 Nov 2020 02:42:22 -0800
 Received: from localhost (disaster-area.hh.sledj.net [local])
- by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 9e778f86;
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 1d9dce61;
  Mon, 16 Nov 2020 10:42:16 +0000 (UTC)
 From: David Edmondson <david.edmondson@oracle.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 3/5] hw/arm: Convert assertions about flash image size to
- error_report
-Date: Mon, 16 Nov 2020 10:42:14 +0000
-Message-Id: <20201116104216.439650-4-david.edmondson@oracle.com>
+Subject: [RFC PATCH 2/5] hw/block: Flash images can be smaller than the device
+Date: Mon, 16 Nov 2020 10:42:13 +0000
+Message-Id: <20201116104216.439650-3-david.edmondson@oracle.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201116104216.439650-1-david.edmondson@oracle.com>
 References: <20201116104216.439650-1-david.edmondson@oracle.com>
@@ -97,21 +96,21 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9806
  signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- mlxscore=0 phishscore=0
- spamscore=0 bulkscore=0 mlxlogscore=999 malwarescore=0 adultscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ spamscore=0 phishscore=0
+ suspectscore=1 mlxscore=0 malwarescore=0 bulkscore=0 mlxlogscore=999
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
  definitions=main-2011160062
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9806
  signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- phishscore=0
- adultscore=0 priorityscore=1501 bulkscore=0 clxscore=1015 mlxlogscore=999
- malwarescore=0 mlxscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2011160062
-Received-SPF: pass client-ip=141.146.126.78;
- envelope-from=david.edmondson@oracle.com; helo=aserp2120.oracle.com
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ clxscore=1015
+ malwarescore=0 impostorscore=0 lowpriorityscore=0 priorityscore=1501
+ mlxlogscore=999 adultscore=0 phishscore=0 suspectscore=1 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011160062
+Received-SPF: pass client-ip=141.146.126.79;
+ envelope-from=david.edmondson@oracle.com; helo=aserp2130.oracle.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/16 05:42:28
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -43
@@ -140,44 +139,57 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vfaKGI49MxLZ
+X-TUID: AINCe7UC5nwQ
 
-Rather than throwing an assertion, provide a more detailed report if a
-flash image is inappropriately sized or aligned.
+When loading a flash image into a device, allow the image to be
+smaller than the extent of the device.
 
 Signed-off-by: David Edmondson <david.edmondson@oracle.com>
 ---
- hw/arm/virt.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ hw/block/block.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 27dbeb549e..f9f10987dc 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -967,9 +967,21 @@ static void virt_flash_map1(PFlashCFI01 *flash,
-                             MemoryRegion *sysmem)
- {
-     DeviceState *dev = DEVICE(flash);
-+    const char *name = blk_name(pflash_cfi01_get_blk(flash));
-+
-+    if (size == 0 || !QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE)) {
-+        error_report("system firmware block device %s has invalid size "
-+                     "%" PRId64, name, size);
-+        info_report("its size must be a non-zero multiple of 0x%" PRIx64,
-+                    VIRT_FLASH_SECTOR_SIZE);
-+        exit(1);
-+    }
-+    if (!(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX)) {
-+        error_report("system firmware block device %s is too large "
-+                     "(%" PRId64 ")", name, size);
-+        exit(1);
-+    }
+diff --git a/hw/block/block.c b/hw/block/block.c
+index 8b284e1f14..40262546bd 100644
+--- a/hw/block/block.c
++++ b/hw/block/block.c
+@@ -16,8 +16,8 @@
  
--    assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
--    assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
-     qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+ /*
+  * Read the entire contents of @blk into @buf.
+- * @blk's contents must be @size bytes, and @size must be at most
+- * BDRV_REQUEST_MAX_BYTES.
++ * @blk's contents must not be more than @size bytes, and must be at
++ * most BDRV_REQUEST_MAX_BYTES in length.
+  * On success, return true.
+  * On failure, store an error through @errp and return false.
+  * This function not intended for actual block devices, which read on
+@@ -38,10 +38,10 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
+                          name);
+         return false;
+     }
+-    if (blk_len != size) {
+-        error_setg(errp, "device requires %" HWADDR_PRIu " bytes, "
+-                   "block backend %s provides %" PRIu64 " bytes",
+-                   size, name, blk_len);
++    if (blk_len > size) {
++        error_setg(errp, "block backend %s is too large for device "
++                   "(%" PRIu64 " > %" HWADDR_PRIu ")",
++                   name, blk_len, size);
+         return false;
+     }
  
+@@ -51,8 +51,8 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
+      * should probably rework the device to be more like an actual
+      * block device and read only on demand.
+      */
+-    assert(size <= BDRV_REQUEST_MAX_BYTES);
+-    ret = blk_pread(blk, 0, buf, size);
++    assert(blk_len <= BDRV_REQUEST_MAX_BYTES);
++    ret = blk_pread(blk, 0, buf, blk_len);
+     if (ret < 0) {
+         error_setg_errno(errp, -ret, "can't read block backend %s",
+                          name);
 -- 
 2.28.0
 

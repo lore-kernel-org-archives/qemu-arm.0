@@ -1,220 +1,167 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3875364lfb;
-        Mon, 16 Nov 2020 09:07:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz7sxCwL+WKej062vlKbG9Jan1lnpd6Bw8E25iBghyUlsj7/HFl5duN31mZNnRDpK+0YNq0
-X-Received: by 2002:a25:9381:: with SMTP id a1mr18768449ybm.120.1605546425338;
-        Mon, 16 Nov 2020 09:07:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605546425; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3906136lfb;
+        Mon, 16 Nov 2020 09:46:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwtILTzWSKy/orovPsP9kc6Fdj1LPDGUckuWiwoTPdJGtXJgFJKrLH03h4V+0dZmoJorgST
+X-Received: by 2002:ad4:56ee:: with SMTP id cr14mr16991318qvb.15.1605548804925;
+        Mon, 16 Nov 2020 09:46:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605548804; cv=none;
         d=google.com; s=arc-20160816;
-        b=mSiQRnDzAAhb9Q9PhwlWJ/o36SyX2z7+IKCI3sKZzTH93Um0AZA4zZ8LYXf3LJtQHv
-         a39r0Rv2nm1I/V7OS7r1msAjJJDDHPPrvvNR//DmEAUfpvZXcb5S2GXfccJjx9pFK9BX
-         MpsqjLpIeAdP0OHdBw+h7tck+AVdV1bpGQ8KjTXKqfBvWGpSx/1NOBXVvNZ/ThvmISaf
-         PpEj4mlDUuMW6qhuY5ZeroTmFcP5B+kdzXpkdUinerCKi/adg5sA7lwIblv1EzbVBQk1
-         M2PCAyxvGvKcmD765ElX42pzUnOpGWJ6Mvc1JrFOszO2XDGK86GoB6oXIajxY82uTGx7
-         DnWQ==
+        b=0d4s5T0VuYiT29Nva7jT1wmDJWgohekYDUBzBGLa9dbJNZ0Yctyrxveq490nnvpXpZ
+         8LBQbn7evcJGJSMple7tp/tMPF5XtjYeMk/WUR3MNFEZRrJdW9G56jYp7k6eVKYLq9jw
+         EZHTF7OZi3ZnGL5qjj8mxVMZB93h8rWicrbKVP2xmVkGvQiwQUJqgh8IP+6AiQ33Qnkz
+         u6saK6EICk2Mkp8TiM/gGrXdSEaYUIC/RT6uRI3YWitQkD6gEHhQY3Pc0uYTRgRpG4Xu
+         Ng2NVb16DbtbJ5GRejcl/+eyBw3380c5mVKZpVMmCfc6v8BgJt8XFl83cql8uEe/YVwO
+         LY+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=nUt/gTa2dac9B0xkfQROf+jZpnpIxiACGMB8Yw4uC8E=;
-        b=vwrEDXIsqDUD+7/MghRLw1JgHmS00hUtMd707l3OT5OiSY2PYCgoLxK+V3ld4yUfbx
-         QTJfVBEwsayZOERFQ/dg2Vfb5yNCy8H/vimGkcHcP09W0YvyI3CK+YV0FkF2qudRzg7g
-         1UG6rKYjDmMwmDBfbgc1NjzsV1Czke4xywx9WEhm28G5ZyqLuu9Crlyqbtdtgy34uelK
-         IZpKpQk/Mdm18kW+yGn+/I2X88hXxqtMIzuX+gzGHSXmkCtpYB1TTFUO7pTBcFElyhwX
-         044KxmuJTZa1CfzA+Lu5JjfsuHiXkP6myjJux2TzZq8fpl+JjCxtEsdFVJvku03BVMcu
-         IypQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=AU1Bo2BXNnhkcTIJReQjPwXotveOCyv+Jtv5EgpethY=;
+        b=gzUS2HO2Kxu9naqU5tqahxQki1CdCf7uazCETy9LXeeV7NJz16WUwSfCgi//x2m7b2
+         uDHAFOhskEa2R4wN/iQD+SJ7d1GeAEe4LDjhIcnDUL1iCZ0OsDI2SiJ59a04MPpL9QUc
+         ODuluAmnNGncWa2qifZcxYVs3e5tJul61PNSXupzH+/ZPXuJz4TmdDgKdUMSQrhGr7TR
+         aifAWRwJGnaDgmcF43SZtOg6qto7nJO0YNvqrPaKbOYv2+J7Nz4L5IJBd2S6JN8lUN8C
+         xRtDlZtM2cLO348BN5oH22I+NR7iNtblbrgg+KUvQBQMURvonds+25dnZ1kE83QefTE3
+         NHcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fNsX6gib;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ggVwgSeW;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si4345498ybl.85.2020.11.16.09.07.05
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 09:07:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id k19si1680281qki.306.2020.11.16.09.46.44;
+        Mon, 16 Nov 2020 09:46:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fNsX6gib;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ggVwgSeW;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45450 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kehy4-0005ye-Mb
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 12:07:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44820)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kehvK-0003xT-Ev
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 12:04:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30469)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kehvG-0001eM-Tf
- for qemu-devel@nongnu.org; Mon, 16 Nov 2020 12:04:13 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6FFE24B88B;
+	Mon, 16 Nov 2020 12:46:44 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fsIWEyCHXhGB; Mon, 16 Nov 2020 12:46:43 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 7D93C4BD21;
+	Mon, 16 Nov 2020 12:46:43 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id C33114B88B
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 12:46:41 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fpLl+cEzrM+8 for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 16 Nov 2020 12:46:40 -0500 (EST)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id C96C44BD19
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 16 Nov 2020 12:46:40 -0500 (EST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605546250;
+ s=mimecast20190719; t=1605548800;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nUt/gTa2dac9B0xkfQROf+jZpnpIxiACGMB8Yw4uC8E=;
- b=fNsX6gibQyajMI5lbJFTnwax+ZMORAwA05ScHewgJCdOhAMnK7lGe/EC78CFrYb5uqAce6
- EhzcO6fvr1FR852qwnYThaUROzfo3bSm64AvMR0f6S6wOQWyKPf36A2WMCOb4hUlj6OdPa
- hOjRdajE+g+1InddLSahtH8im8iXLb4=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-EH2VEcCCOrS7qlpXX8tbdw-1; Mon, 16 Nov 2020 12:04:08 -0500
-X-MC-Unique: EH2VEcCCOrS7qlpXX8tbdw-1
-Received: by mail-qk1-f198.google.com with SMTP id z68so12108876qkc.4
- for <qemu-devel@nongnu.org>; Mon, 16 Nov 2020 09:04:08 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=nUt/gTa2dac9B0xkfQROf+jZpnpIxiACGMB8Yw4uC8E=;
- b=iA0mKcrPh725GH55ZU/gSxyg2hsIogvBZLNDgJ1WE1aH3tFvn/i+YKmanKv07wqSB7
- 9fI3HuxKG1mnL07fczoGdPhgrI7glF5zRO114zs28m0t2it1hC31dwrrWD01qUAVe7F9
- 0netHns4PG5xn5M58mZAm3TrelGsT6P4AoOhrQQ1cZ8cXDzuE4VM5uRIvcuXXKukN805
- 6uImB8BHagiM7tVcP7tsDxE4u0nl68zA2pO3fyVjp5+PQbZnIrrex+7DPhGbemTcjiDV
- ijuPq6e5JBENSPN3vkiNJwxcK8JZrqigHnJ+ZjmilWDf11aELdo5Or7nDXXMbgzHe/i2
- djzQ==
-X-Gm-Message-State: AOAM530lSFJu1fV45wgUt+erLl2t6u0dBl/n8cmqycnex5+EBq69TCCz
- XE/v8BBeE2yUFryefyZv6spB2hiwNJ87+E3Uazg507fG4fpnRMhrirHJa8XJCFSdW8XR47OTjrj
- 6U4WoHURZ2YM8x6p9fk8oUhwZZIivzKo=
-X-Received: by 2002:a37:41d2:: with SMTP id
- o201mr14870962qka.425.1605546247816; 
- Mon, 16 Nov 2020 09:04:07 -0800 (PST)
-X-Received: by 2002:a37:41d2:: with SMTP id
- o201mr14870930qka.425.1605546247486; 
- Mon, 16 Nov 2020 09:04:07 -0800 (PST)
+ bh=K3SZrwFy94uqqUNynXuBp4m3e29h27rqR4XdQ73aJwA=;
+ b=ggVwgSeWK4NPYBVTvO86FMyXhkSMMbje9DdFd56kdm/GNzDLugXItlwvZGOIkNJbedbLzX
+ Gc02nVFfTNyryVAl33S4xBu7rL2rUNP8u8+PTQC5oVpHm96t7msFGCX/ORDktXxMPK7XKx
+ zwVK/UaNkypG3BgdMGMjySY3b8weAyY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-245-Fs1SYoHcM8y6DcdAEDrZqg-1; Mon, 16 Nov 2020 12:46:36 -0500
+X-MC-Unique: Fs1SYoHcM8y6DcdAEDrZqg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 99F5B803F44;
+ Mon, 16 Nov 2020 17:46:34 +0000 (UTC)
+Received: from gondolin (ovpn-113-142.ams2.redhat.com [10.36.113.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 866176BF6B;
+ Mon, 16 Nov 2020 17:46:32 +0000 (UTC)
+Date: Mon, 16 Nov 2020 18:46:29 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Zenghui Yu <yuzenghui@huawei.com>
+Subject: Re: [PATCH] memory: Skip dirty tracking for un-migratable memory
+ regions
+Message-ID: <20201116184629.7455b82a.cohuck@redhat.com>
+In-Reply-To: <20201116132210.1730-1-yuzenghui@huawei.com>
+References: <20201116132210.1730-1-yuzenghui@huawei.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-References: <20201019104332.22033-1-eperezma@redhat.com>
- <20201019104332.22033-3-eperezma@redhat.com>
- <20201030064912-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20201030064912-mutt-send-email-mst@kernel.org>
-From: Eugenio Perez Martin <eperezma@redhat.com>
-Date: Mon, 16 Nov 2020 18:03:30 +0100
-Message-ID: <CAJaqyWfFB-0BPE1q-mHqA_mpkkrQ0meEg66_btq1QDN3igkZ8A@mail.gmail.com>
-Subject: Re: [PATCH v2 2/5] memory: Add IOMMUTLBEvent
-To: "Michael S. Tsirkin" <mst@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/15 22:35:17
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+Cc: qemu-devel@nongnu.org, kwankhede@nvidia.com, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-ppc@nongnu.org,
- Jason Wang <jasowang@redhat.com>, qemu-level <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3EB5TXSixl2+
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: tcl84RhCGO9p
 
-On Fri, Oct 30, 2020 at 11:50 AM Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Mon, Oct 19, 2020 at 12:43:29PM +0200, Eugenio P=C3=A9rez wrote:
-> > This way we can tell between regular IOMMUTLBEntry (entry of IOMMU
-> > hardware) and notifications.
-> >
-> > In the notifications, we set explicitly if it is a MAPs or an UNMAP,
-> > instead of trusting in entry permissions to differentiate them.
-> >
-> > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> > Reviewed-by: Peter Xu <peterx@redhat.com>
-> > Reviewed-by: Juan Quintela <quintela@redhat.com>
->
-> Breaks s390:
->
-> FAILED: libqemu-s390x-softmmu.fa.p/hw_s390x_s390-pci-inst.c.o
-> cc -Ilibqemu-s390x-softmmu.fa.p -I. -I../qemu -Itarget/s390x -I../qemu/ta=
-rget/s390x -Iqapi -Itrace -Iui -Iui/shader -I/usr/include/spice-1 -I/usr/in=
-clude/spice-server -I/usr/include/cacard -I/usr/include/glib-2.0 -I/usr/lib=
-64/glib-2.0/include -I/usr/include/nss3 -I/usr/include/nspr4 -I/usr/include=
-/libmount -I/usr/include/blkid -I/usr/include/pixman-1 -I/usr/include/capst=
-one -fdiagnostics-color=3Dauto -pipe -Wall -Winvalid-pch -Werror -std=3Dgnu=
-99 -O2 -g -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3D2 -m64 -mcx16 -D_GNU_SOURCE=
- -D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredunda=
-nt-decls -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing =
--fno-common -fwrapv -Wold-style-declaration -Wold-style-definition -Wtype-l=
-imits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wemp=
-ty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined -Wno-missing=
--include-dirs -Wno-shift-negative-value -Wno-psabi -fstack-protector-strong=
- -isystem /scm/qemu/linux-headers -isystem linux-headers -iquote /scm/qemu/=
-tcg/i386 -iquote . -iquote /scm/qemu -iquote /scm/qemu/accel/tcg -iquote /s=
-cm/qemu/include -iquote /scm/qemu/disas/libvixl -pthread -fPIC -isystem../q=
-emu/linux-headers -isystemlinux-headers -DNEED_CPU_H '-DCONFIG_TARGET=3D"s3=
-90x-softmmu-config-target.h"' '-DCONFIG_DEVICES=3D"s390x-softmmu-config-dev=
-ices.h"' -MD -MQ libqemu-s390x-softmmu.fa.p/hw_s390x_s390-pci-inst.c.o -MF =
-libqemu-s390x-softmmu.fa.p/hw_s390x_s390-pci-inst.c.o.d -o libqemu-s390x-so=
-ftmmu.fa.p/hw_s390x_s390-pci-inst.c.o -c ../qemu/hw/s390x/s390-pci-inst.c
-> ../qemu/hw/s390x/s390-pci-inst.c: In function =E2=80=98s390_pci_update_io=
-tlb=E2=80=99:
-> ../qemu/hw/s390x/s390-pci-inst.c:599:61: error: incompatible type for arg=
-ument 3 of =E2=80=98memory_region_notify_iommu=E2=80=99
->   599 |             memory_region_notify_iommu(&iommu->iommu_mr, 0, notif=
-y);
->       |                                                             ^~~~~=
-~
->       |                                                             |
->       |                                                             IOMMU=
-TLBEntry
-> In file included from /scm/qemu/include/exec/cpu-all.h:23,
->                  from ../qemu/target/s390x/cpu.h:846,
->                  from ../qemu/hw/s390x/s390-pci-inst.c:15:
-> /scm/qemu/include/exec/memory.h:1324:47: note: expected =E2=80=98IOMMUTLB=
-Event=E2=80=99 but argument is of type =E2=80=98IOMMUTLBEntry=E2=80=99
->  1324 |                                 IOMMUTLBEvent event);
->       |                                 ~~~~~~~~~~~~~~^~~~~
-> ../qemu/hw/s390x/s390-pci-inst.c:611:53: error: incompatible type for arg=
-ument 3 of =E2=80=98memory_region_notify_iommu=E2=80=99
->   611 |     memory_region_notify_iommu(&iommu->iommu_mr, 0, notify);
->       |                                                     ^~~~~~
->       |                                                     |
->       |                                                     IOMMUTLBEntry
-> In file included from /scm/qemu/include/exec/cpu-all.h:23,
->                  from ../qemu/target/s390x/cpu.h:846,
->                  from ../qemu/hw/s390x/s390-pci-inst.c:15:
-> /scm/qemu/include/exec/memory.h:1324:47: note: expected =E2=80=98IOMMUTLB=
-Event=E2=80=99 but argument is of type =E2=80=98IOMMUTLBEntry=E2=80=99
->  1324 |                                 IOMMUTLBEvent event);
->       |                                 ~~~~~~~~~~~~~~^~~~~
->
+On Mon, 16 Nov 2020 21:22:10 +0800
+Zenghui Yu <yuzenghui@huawei.com> wrote:
 
-Sorry, will compile every target next time.
+> It makes no sense to track dirty pages for those un-migratable memory
+> regions (e.g., Memory BAR region of the VFIO PCI device) and doing so
+> will potentially lead to some unpleasant issues during migration [1].
+> 
+> Skip dirty tracking for those regions by evaluating if the region is
+> migratable before setting dirty_log_mask (DIRTY_MEMORY_MIGRATION).
+> 
+> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg03757.html
+> 
+> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+> ---
+>  softmmu/memory.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/softmmu/memory.c b/softmmu/memory.c
+> index 71951fe4dc..aa393f1bb0 100644
+> --- a/softmmu/memory.c
+> +++ b/softmmu/memory.c
+> @@ -1806,7 +1806,10 @@ bool memory_region_is_ram_device(MemoryRegion *mr)
+>  uint8_t memory_region_get_dirty_log_mask(MemoryRegion *mr)
+>  {
+>      uint8_t mask = mr->dirty_log_mask;
+> -    if (global_dirty_log && (mr->ram_block || memory_region_is_iommu(mr))) {
+> +    RAMBlock *rb = mr->ram_block;
+> +
+> +    if (global_dirty_log && ((rb && qemu_ram_is_migratable(rb)) ||
+> +                             memory_region_is_iommu(mr))) {
+>          mask |= (1 << DIRTY_MEMORY_MIGRATION);
+>      }
+>      return mask;
 
-Sending v3 with s390x changes.
+Looks reasonable.
 
-Thanks!
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

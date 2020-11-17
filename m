@@ -1,129 +1,108 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4580396lfb;
-        Tue, 17 Nov 2020 04:49:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzjY/8VMjRgI+yHCTlIydDy5XvlJiZCUC6JS/aWd0qSzxKAjMH4SSxJks2U2hplbt4J/QLH
-X-Received: by 2002:a25:c6d7:: with SMTP id k206mr31486980ybf.244.1605617349639;
-        Tue, 17 Nov 2020 04:49:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605617349; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4729620lfb;
+        Tue, 17 Nov 2020 07:56:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwsGsNArU8AULzjUILDOlU3HDbV+ipCdWXbl4h3zgOBbicRLE4IFya5jJW3TjNjCwms/TnJ
+X-Received: by 2002:a25:cf95:: with SMTP id f143mr261539ybg.216.1605628611530;
+        Tue, 17 Nov 2020 07:56:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605628611; cv=none;
         d=google.com; s=arc-20160816;
-        b=HLWA5tiS6Jo+oclRh5QvA0IJAApvrcatxJbnxMs0zxYYl5KeAsVUMpBGIKo7jcnW8P
-         EhUX2jEEfkicwWrwa+bRxZp1SHv2twAbk5ykJ5uuNo+XHhNpyTlEIbQd6opcmRPbSJBJ
-         7qg+Nf3+NWGpwFPoZUy3Z+Pt7t6AvHoc+qRXpq05iz6D1yBy1DM9AgVIi6DwXPZfnBEk
-         KWZsDdgSi4GlkA3r/+BwsE/sJlq5Lwe9RyUn0zhl9TwEH8J6+Z+couj/FSYwOMeKSNuR
-         ITu+N208nPht9JVkLTV20Yyx0ZShm+yZf0R7HSwQNo5BzZr2TWUO09l8vgnVWFvHbTJR
-         tDWw==
+        b=qlG8VNLEBO1WWKw050X6buzy2cyxXsRPuNiVXVXjuAwk7h7XbvWypHygk3vj66WJLw
+         ifgAmar2ohJ+sSOOqXq97sMDIg7zOeatqwOAEgYvzVJPm6HhEK/SYVONuIJFiGB/KByo
+         Db1v1U0C/VLUBGhry9mK+w6cWEUryaHyX1yKYb7B9/6uBd/SehthbnzOCzW0pMJ0m5Ol
+         j/CDXUOj2VRx4OWTFTpUa6Rc+TptQ6Ov7kDUbQALvQpuQUCiBmyhwqvlh0buqLFW5VKz
+         hx85G0a5XZqYvR7kcHw/caZ36C3MgJOetE5zQaHDsJebd06T5Aw84AQ/3SQKvbDjR0ao
+         OmnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ExyNjIbyYgPz8m5K9nXO++ZsLvNj801CX8TiAjP5uTY=;
-        b=dn9oTVQHDg+HrbXkmYFBJODL5zx8V5ldjRC1vb3aV3LEjHCx8F6vROFDPV2d+PxQ2c
-         0IrRpV/LgxIEYEe4fNWIp3et97+1H/TUW4xya4FZI1h7iZZlD6K/avOk+Rf9ZYNWqtpv
-         p+awThhEkNB0NRadLtcD8iK5WyvKIHoYm9OJqnJyn+W+oYAGL3PlSIcZZPDRkm7jsJdD
-         3G0BO0h914tNxl+HuP5otbG41JiNr7APkc6Pe4FV03YzBXJUrhBRoMpqSNrsH9/t2j61
-         h//wi3AfGTzR8SkaM5bj3s2y7JFX0QuXk9oZf7BRpPbmRWvVLJFVlV/WqEhzQBGfrcND
-         pBVw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=PbtN+t3/nZ+/wjXy+MgLGmSuQ3MGPFUppcgHnPJ0HW0=;
+        b=umX7OdNinqQ6R1XE23chKaTa43GERV8Z6U1Ot+lsBzEeR9w76gbfNCqTmMWp0q7zyQ
+         WQVRFglM2xLum+w6rca7nDETNfQX0T8U2QkX6Cb6RdndZEAj2VHFGdmgn2tBmL61KC/p
+         ZacntiEoNlmiLHmLCzVvsMcu8wg/+ABU/NdCKE8Fv72q6g6UWgZSQGS+S6mdOUWoQna5
+         +46yntcxn8dnITjo0cHa08At30tu/wBTtu9ApdgavzQA9AXET7g6pUW/wnepmoC31zkM
+         BEbxsN5YypKynomBqaF1nNyE+irDTnDM/ZdX4HO94hjzx8pO2iVXqpFpPwyvg2ZJ30LT
+         B/mQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MXxcfzMd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HpsTD+LM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s8si19646598ybp.210.2020.11.17.04.49.09
+        by mx.google.com with ESMTPS id w9si20904901ybi.161.2020.11.17.07.56.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Nov 2020 04:49:09 -0800 (PST)
+        Tue, 17 Nov 2020 07:56:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MXxcfzMd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HpsTD+LM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36506 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42508 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kf0Q1-0001Wv-0F
-	for alex.bennee@linaro.org; Tue, 17 Nov 2020 07:49:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38834)
+	id 1kf3Le-0005op-TK
+	for alex.bennee@linaro.org; Tue, 17 Nov 2020 10:56:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kf0Pn-0001VS-JF
- for qemu-arm@nongnu.org; Tue, 17 Nov 2020 07:48:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46233)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kf0Pk-00058v-HW
- for qemu-arm@nongnu.org; Tue, 17 Nov 2020 07:48:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605617328;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ExyNjIbyYgPz8m5K9nXO++ZsLvNj801CX8TiAjP5uTY=;
- b=MXxcfzMd6uTBDkcw3FXAU+mHbbw9n5bD2XwKdYmxxKFz69mtvmbzA8Sb/+jNMu/9ahlZf7
- X++OiE+2qa0b62boLIHXee7xe62SKE/89WZPiCvjhWA7dEpofyMd7CUmTby2FMcYxkAniR
- WtAbo8a2+qYVJHLeX7wrAzEmQHR9qnU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-136-Sasf5FsXN-uBF3sSkGLJhA-1; Tue, 17 Nov 2020 07:48:46 -0500
-X-MC-Unique: Sasf5FsXN-uBF3sSkGLJhA-1
-Received: by mail-wr1-f70.google.com with SMTP id l5so12929904wrn.18
- for <qemu-arm@nongnu.org>; Tue, 17 Nov 2020 04:48:46 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kf3LW-0005n0-BA
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2020 10:56:42 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46254)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kf3LT-0004aK-5b
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2020 10:56:42 -0500
+Received: by mail-wr1-x443.google.com with SMTP id d12so23642826wrr.13
+ for <qemu-arm@nongnu.org>; Tue, 17 Nov 2020 07:56:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PbtN+t3/nZ+/wjXy+MgLGmSuQ3MGPFUppcgHnPJ0HW0=;
+ b=HpsTD+LMjQIGeYyqmzA9sjeQ8x5ixsQLJ16B/EYe6UuQqjfqRhGrp5TdOiuqAgkS3R
+ h8N9bChXslK4nQSOI0e5ujfxe5SjJaXWZD3o/O/RQdg+spSK6ExPyJ1iGetJwL8qRJ9E
+ u/MlgmRq1X4dkEvNQI8RxxQ/BNiVELYl6NYpvjzmhRmi5u8mrXE0d3B36RcXX8OkK+nc
+ sQ5wXuCUAfucTuUbL7lrTI0JZwp85G3NMWGvAuqRgJoDeP8UAWCAntkRpCZNqUrD+z+2
+ /xNseuqeRa/hPKJ6Fej8cLecJQU6FsBLICn5Ozd3THUrpitHUUnno6CTUMW2UckCjc2F
+ 71Sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ExyNjIbyYgPz8m5K9nXO++ZsLvNj801CX8TiAjP5uTY=;
- b=swRz2d++LPus4MIJCXFfO66CfYskGiKPed74aV+V1RxUxJr+A3h1rYwfcVMIJJN2Jq
- gmRio379Y/Nx9ddX7Ox6nuxvppvKGISM0PN4ohc4pyrjE9aJKEBxrY5MNlHh/rq/Q3Nz
- IR9y94MoocUFM5jTiRUrOWW9recW2uXbHHNSaKvSxdnicrnuQk3Sxfrne0WxH6pMyOem
- OCX5MlUuPip0WHD+Fr6i9FZxm1pR6OU0ZrCSVPGIxHEptNQf+7t9G7E78WDUc6VTmFfq
- hbjZ6CJpcAOIIk6qbvXYQsYDIoz9QfFhTH41qg6IfOOvfeBQMaDY5aV9EkmtETVuVpCd
- qFpQ==
-X-Gm-Message-State: AOAM530GAMDQwT94XW5+B907PHZd9KvBOS71laOanIwcWCSRfh7Kory4
- 2d8SJA3WPXqLCGJN1cYZ0vc/xqIF/FO/7d48d/0LUNp3sDre3ZiH+vwDQJrp2TdlfOY5vTCjDgL
- bJ1xAx/6HwcM1
-X-Received: by 2002:adf:db8e:: with SMTP id u14mr23598304wri.233.1605617325299; 
- Tue, 17 Nov 2020 04:48:45 -0800 (PST)
-X-Received: by 2002:adf:db8e:: with SMTP id u14mr23598267wri.233.1605617325082; 
- Tue, 17 Nov 2020 04:48:45 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id k3sm7544564wrn.81.2020.11.17.04.48.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Nov 2020 04:48:44 -0800 (PST)
-Subject: Re: [PATCH-for-5.2? 1/5] tests/acceptance: Restrict
- virtio_check_params tests to X86 target
-To: "Daniel P . Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20201102144245.2134077-1-philmd@redhat.com>
- <20201102144245.2134077-2-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <0c591e28-659b-b30b-105c-e8ee3061b7bd@redhat.com>
-Date: Tue, 17 Nov 2020 13:48:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ bh=PbtN+t3/nZ+/wjXy+MgLGmSuQ3MGPFUppcgHnPJ0HW0=;
+ b=Sx0aEXmeFzpR1k9SdW3SnL2onTWgtCckqixO/++mRtByRFGEnBrCBv646w0FOPe+eL
+ HsmpInf24uxfd1FqZcMWSLMq71kiUZFseKdvhJICattFR3oL/9lqhxnNcL1cmA7EJIO4
+ T/goyjn7EJxNbuqYPFA9ZSMhlrPkpn/5vuCKYiKhHWpC6aUmYK7vQ87GsCUYx57srfZ8
+ I/DxQN7W4qhRdzPxDY9DrFV5u+G/jBlkkhQMQFyG8JbyYoElG7ym5Q8HENbUCaLSy11L
+ DESHo+fvy8gFkt5mun2Pbk6EXIMQbT8l/NJk6FsljIt/fGJKXG8+ZGqVCeI98xPnGRDz
+ GaJg==
+X-Gm-Message-State: AOAM530zoIoxmgxlCw/vk/E8L+snH8cjXAkxEG3cFyi77oAFbT26s+Z7
+ MiWVujh4Yf3+Qetp2O4DeuVHU5nELjzFjw==
+X-Received: by 2002:a5d:4a50:: with SMTP id v16mr207592wrs.106.1605628596644; 
+ Tue, 17 Nov 2020 07:56:36 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id x63sm4464052wmb.48.2020.11.17.07.56.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 Nov 2020 07:56:35 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] linux-user/arm: Deliver SIGTRAP for UDF patterns used as
+ breakpoints
+Date: Tue, 17 Nov 2020 15:56:34 +0000
+Message-Id: <20201117155634.6924-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20201102144245.2134077-2-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/17 00:41:22
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -137,62 +116,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Michael Rolnik <mrolnik@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Fabien Chouteau <chouteau@adacore.com>, Aurelien Jarno <aurelien@aurel32.net>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>, qemu-ppc@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>
+Cc: Laurent Vivier <laurent@vivier.eu>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tFUBQ31ZGuJM
+X-TUID: YH0Rr7Cr8vhS
 
-ping?
+The Linux kernel doesn't use the official bkpt insn for breakpoints;
+instead it uses three instructions in the guaranteed-to-UNDEF space,
+and generates SIGTRAP for these rather than the SIGILL that most
+UNDEF insns generate:
 
-On 11/2/20 3:42 PM, Philippe Mathieu-Daudé wrote:
-> We disabled the virtio_check_params tests in commit 2d6a6e238a2
-> ("tests/acceptance/virtio_check_params: Disable the test"),
-> because these tests were making multiarch CI fail (virtio is
-> multiarch).
-> 
-> We took the big hammer, as we can restrict the tests to the X86
-> arch. Restore them on this single arch.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  tests/acceptance/virtio_check_params.py | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/tests/acceptance/virtio_check_params.py b/tests/acceptance/virtio_check_params.py
-> index 87e6c839d14..fecf1c094b1 100644
-> --- a/tests/acceptance/virtio_check_params.py
-> +++ b/tests/acceptance/virtio_check_params.py
-> @@ -42,6 +42,12 @@
->  
->  
->  class VirtioMaxSegSettingsCheck(Test):
-> +    """
-> +    This test should be multi-arch, however only X86 is implemented.
-> +
-> +    :avocado: tags=arch:x86_64
-> +    """
-> +
->      @staticmethod
->      def make_pattern(props):
->          pattern_items = ['{0} = \w+'.format(prop) for prop in props]
-> @@ -117,7 +123,6 @@ def seg_max_adjust_enabled(mt):
->              return True
->          return False
->  
-> -    @skip("break multi-arch CI")
->      def test_machine_types(self):
->          # collect all machine types except 'none', 'isapc', 'microvm'
->          with QEMUMachine(self.qemu_bin) as vm:
-> 
+https://elixir.bootlin.com/linux/v5.9.8/source/arch/arm/kernel/ptrace.c#L197
+
+Make QEMU treat these insns specially too.  The main benefit of this
+is that if you're running a debugger on a guest program that runs
+into a GCC __builtin_trap() or LLVM "trap because execution should
+never reach here" then you'll get the expected signal rather than a
+SIGILL.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This is not a "fix" for LP:1904210, but it does bring QEMU's
+behaviour into line with that of the real kernel on that binary.
+
+---
+ linux-user/arm/cpu_loop.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+index 13629ee1f6a..3d272b56ef0 100644
+--- a/linux-user/arm/cpu_loop.c
++++ b/linux-user/arm/cpu_loop.c
+@@ -205,6 +205,24 @@ do_kernel_trap(CPUARMState *env)
+     return 0;
+ }
+ 
++static bool insn_is_linux_bkpt(uint32_t opcode, bool is_thumb)
++{
++    /*
++     * Return true if this insn is one of the three magic UDF insns
++     * which the kernel treats as breakpoint insns.
++     */
++    if (!is_thumb) {
++        return (opcode & 0x0fffffff) == 0x07f001f0;
++    } else {
++        /*
++         * Note that we get the two halves of the 32-bit T32 insn
++         * in the opposite order to the value the kernel uses in
++         * its undef_hook struct.
++         */
++        return ((opcode & 0xffff) == 0xde01) || (opcode == 0xa000f7f0);
++    }
++}
++
+ void cpu_loop(CPUARMState *env)
+ {
+     CPUState *cs = env_cpu(env);
+@@ -234,6 +252,16 @@ void cpu_loop(CPUARMState *env)
+                 /* FIXME - what to do if get_user() fails? */
+                 get_user_code_u32(opcode, env->regs[15], env);
+ 
++                /*
++                 * The Linux kernel treats some UDF patterns specially
++                 * to use as breakpoints (instead of the architectural
++                 * bkpt insn). These should trigger a SIGTRAP rather
++                 * than SIGILL.
++                 */
++                if (insn_is_linux_bkpt(opcode, env->thumb)) {
++                    goto excp_debug;
++                }
++
+                 rc = EmulateAll(opcode, &ts->fpa, env);
+                 if (rc == 0) { /* illegal instruction */
+                     info.si_signo = TARGET_SIGILL;
+-- 
+2.20.1
 

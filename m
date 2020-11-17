@@ -1,108 +1,108 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4877151lfb;
-        Tue, 17 Nov 2020 11:07:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyoVl3NWOhaEcSHtDLKyRER5yHb8FlqOiYiEseGZa0K2oYHthx5eqyLvENa797Y2XffJ2vr
-X-Received: by 2002:a25:38ce:: with SMTP id f197mr1331427yba.12.1605640055083;
-        Tue, 17 Nov 2020 11:07:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605640055; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4879455lfb;
+        Tue, 17 Nov 2020 11:10:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzXM7/SpcJNRvwod2TOl+FK2oZW4jtUXhXusU4qp3yM6HRupA9ojneYDaOGiRUZ1DQ1LlG2
+X-Received: by 2002:a25:5007:: with SMTP id e7mr1817289ybb.124.1605640237268;
+        Tue, 17 Nov 2020 11:10:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605640237; cv=none;
         d=google.com; s=arc-20160816;
-        b=1I0xxT6v8lTEG6Y6LtgFmAKP/k9J/7akllU9+5KDU8K9b2SsMQ8xJs3VQe/cEz4NLd
-         Dy9aFho54RX33ksavrj4Jy+jwEFqPsXkRRYp2m3ltsh+AcGuafH/agooczUqhLDrGRxr
-         S7CQdBJN0nXD6JH1bicE+RB9E9K5Sl/sBY7ttqRTAGSSey6oyFqpJtbVN8PgIn1tdokR
-         hqvAyvmABiM/FZfLxNRbETcflcey4oOV+twGq/z7emS+cLucRmMhDLyqceATlZGpRuHR
-         tI02K0wQADG5fcj788rAnLgwI9nc25+VOHqqRXEPP8yIniR7HCMPxys8LHQRywAnqCZn
-         uKlA==
+        b=ZY+XCVDd4oS45X+L8uk6wMPRO4uVRovPmaISB/HCLmxpDR1mEBxfwuDOJouHxG24yy
+         kyx0PZbv2dWv/H5kQQOR0d46JBGzbhMQSS6nt+L6flvwk4POhhtaPaj4CYlJ79qAYCLJ
+         1/LNB6XXenbzmXsLC6+uZbY45ddtxzfo+suL3Rsrb5SwVvGpmxaLn4qAAhStFveIW+Cc
+         6FbENDVzEC+lXimrPiQQGRt6ESbYUQNWdRTHvWYMGWNYjkuLl6vBMidJQ6FJhfYjc/sF
+         zdVhm/aJ404FrUaNefExWr6BP8EiXWjGVqd9FuX+8pd8bt7ZwNntxOxJQo/Kv7w6Jyfn
+         d2gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=cI5vzjMjkZwOCABGdt4PTtHtT649Rp34MdRuM72kzf0=;
-        b=dXCYzQaxKuQYLtP5+fzjld8v8yo/YByFGF6AEVNrxgLxmjZdlQMwl7TNUPJXrW+Oqd
-         QtHAuL4i81mksDY4hRaifdSl+d7vmsUq/zPEWk124ohpsU9UNX1pZF09/livRgiVepw9
-         cTgr1IfkBw/uAae82DK/zuoBc4Yj1ha4dzRnN0NxKo+1JN8QJ7TjJtfAcP3ppbWzc1nH
-         /G1bxcIPUhqFjmmKRGLWM1G557hBv72oLW0sDAukjFTYS7xZzQkbD5/P9xNK+bCrNONG
-         Xy4k04HYfM2WaqhNrAahMJVWqNwFCxUxeEKhQgcI3dFVKvC0iM0GfQb+AAs4wYbGHmJm
-         y1Tg==
+        bh=JSW+R87KG3d6MD5/aj2X6jQckA3PI5mUzsKWCkllkOw=;
+        b=qz8Nb04oy7Xe18lX4WW8ZO9rDS35ZpgWC7qfvJN8AWB19N/chHUsDXRk9rhOxbpMWu
+         e3pipojJI8RAKh1NIANiT4vfLVyihRIbNf0UV/Wi62zKahdUQWogTGHK9cVKSl9PHF19
+         eg13Vg1GlHez4chPL3/g3gFbbi6qY1DhrWNh/trrSApcmhg7W6Ie9kFnYrhZruBEkO7a
+         RxhT5zauJ8Vnh9xm46TnZmfAEP8f48PCB8jgv/i4qi9hBVk2BYYFe7x36mCWTYg5XggD
+         yFLNKI2qC11ZJHIol3Ix42lQFoLxYtz79JXRI0iVPto86+fSh2F1AI9c++HZ24QP7aim
+         X7sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tak9mN5p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SpIAqrtV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n123si19607212ybg.334.2020.11.17.11.07.34
+        by mx.google.com with ESMTPS id o4si22535302ybm.144.2020.11.17.11.10.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Nov 2020 11:07:35 -0800 (PST)
+        Tue, 17 Nov 2020 11:10:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tak9mN5p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SpIAqrtV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58254 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34598 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kf6KE-0005E5-C1
-	for alex.bennee@linaro.org; Tue, 17 Nov 2020 14:07:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60206)
+	id 1kf6NA-0007AP-IY
+	for alex.bennee@linaro.org; Tue, 17 Nov 2020 14:10:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kf6K6-0005DF-J8
- for qemu-arm@nongnu.org; Tue, 17 Nov 2020 14:07:26 -0500
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:37636)
+ id 1kf6Mp-00079K-VR
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2020 14:10:16 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:42991)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kf6K4-0005SF-53
- for qemu-arm@nongnu.org; Tue, 17 Nov 2020 14:07:26 -0500
-Received: by mail-pj1-x1041.google.com with SMTP id ei22so1045879pjb.2
- for <qemu-arm@nongnu.org>; Tue, 17 Nov 2020 11:07:23 -0800 (PST)
+ id 1kf6Mj-0006Pt-Gx
+ for qemu-arm@nongnu.org; Tue, 17 Nov 2020 14:10:15 -0500
+Received: by mail-pf1-x444.google.com with SMTP id 131so7397319pfb.9
+ for <qemu-arm@nongnu.org>; Tue, 17 Nov 2020 11:10:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=cI5vzjMjkZwOCABGdt4PTtHtT649Rp34MdRuM72kzf0=;
- b=tak9mN5pLXHGFZd1r4Lc3WYSIWZPANmdTkWOL7cpfPpffbax+YU6Ni+4NuxhTL/Y8a
- RBd6+HvGmuUhd1ffxy3xqAaXaG7K7W6aiCr5/GF8m1ybK2RsTplVPKbciwKDWUW/sigE
- dB7k39z2XWWw2vrZltCLFdkDKVQM5hJbBeLUOglFU/IXO8CTBM2JyJzdIPg4scBZNyZy
- 3yI0TdFec92/zMdGEQ1rk02JQ9Kw7fKlPCzUOh0s5F3EynLiVW1JeXIUaaPBYnf8tXyp
- Y56GeXAz7mW/sz8GaHc8BUC+GDHspv4WxoRzAYYWxANHWn8LEjiiE5LGJYigiVWanjQP
- 0sEg==
+ bh=JSW+R87KG3d6MD5/aj2X6jQckA3PI5mUzsKWCkllkOw=;
+ b=SpIAqrtVc3fMpGNlbDwtLkOf0KSfveV9vyeIFyJCCr+Cphnaat+6u3u5rG3F7vo5+v
+ V3uIcuCdvT0WYMPA7xxOm+PopY97/V+78Aq0DS1PcEi+kwl6ffdrFE06sEt695XMLa38
+ pUPKVj1zBBuag1q5/wVz5VNLCGZuNDsUc2lkjWmGJ/07cqO/G5b7pbVUpblGVMbte8by
+ DOPrw0KVHoTTCf/tXR5lPmUnS7WUB5uKE2YhISokJY4ZiSaYWcS6bb/UG/QyPRXTgswC
+ avpwV4TbC7YlhwXZgczM/QL2A0lW/YO3fhzWZU9Mvl90iuTLs4Re97ece9/JHhoEi4nU
+ TOig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=cI5vzjMjkZwOCABGdt4PTtHtT649Rp34MdRuM72kzf0=;
- b=Jp6l9xth+yje8q5bJj/P7wUFsTWJWnUqHHGA7CpKOrueor0tFcBA+NiK08uQx3Mhdz
- Z3nl2tcFC05VSCojrkKuy3wAkF0GB+oT9vt0k1KIjKYyXOtJAaVsfcC0wwhR3QIKiDa4
- A82+q+1BiL19yRKHIzB7qrT6tGdXUWWAu0ofjUfkzEhuSoBobPAuXR3FSlyw8o16jAAW
- SyT6dq02C8fJv+b1mwwbe/tcu1+IceC8+nRn0smsIj6RJKOoACLM8v60wXnW496Eozoa
- FB4958ovL5tNv0lVJdhxHrSINcSgIZfBhiobzj4FHnRrD8fwpPxXZSHR0cp2xFh8mNfs
- XIgA==
-X-Gm-Message-State: AOAM532Vr+3h86gJAYgboiruoEpNcoMFbuR5JcnA9EwcWYWyMQihaHTB
- AO8xS+ssLlMbAEFx6T+Ny/mnfg==
-X-Received: by 2002:a17:90a:5309:: with SMTP id x9mr503800pjh.98.1605640042294; 
- Tue, 17 Nov 2020 11:07:22 -0800 (PST)
+ bh=JSW+R87KG3d6MD5/aj2X6jQckA3PI5mUzsKWCkllkOw=;
+ b=ABn8rRVjTboVraB0RMfO6a/FQsA86d7qxIX58L9MnjJBksl9rmIa9+XIp+QQbzdWP4
+ wFlz3Agkhv9uTr3xdyerJHYCgL5GGnNmRMhabUWlRprvgM5x/EI8Ba2K5nqCBPujCL2V
+ npkOLSdr8QNsMw1UP5GHN9iQQwk/6TutPSd6U8VCV9o3qU6AlXOTN2D9kI0nM2JHD36M
+ 6GsDyVCcuP4IoHfkMTR47+6qiZj+kxbQE1cWHsBhKZPg6OIRlB/K1bxNtuJolK46i9tf
+ EmHILreki3uKu557GWTU2KvWTebnABqk+ir1epEHXnpXsxMmFkAKWFzBHwO5nRBk/g4F
+ 9mtw==
+X-Gm-Message-State: AOAM530m+KiQoXPAP3oXRtpICO1bzoQCsNgK/J2C1VVvl2bCspxxxhGF
+ Ztv7u8uSmy46bLQDMkWWfEIIkQ==
+X-Received: by 2002:aa7:953c:0:b029:18b:bfb:9fa1 with SMTP id
+ c28-20020aa7953c0000b029018b0bfb9fa1mr788641pfp.14.1605640207962; 
+ Tue, 17 Nov 2020 11:10:07 -0800 (PST)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id g18sm21603192pfu.131.2020.11.17.11.07.21
+ by smtp.gmail.com with ESMTPSA id e8sm3932688pjr.30.2020.11.17.11.10.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Nov 2020 11:07:21 -0800 (PST)
-Subject: Re: [PATCH 01/15] hw/intc/armv7m_nvic: Make all of system PPB range
- be RAZWI/BusFault
+ Tue, 17 Nov 2020 11:10:06 -0800 (PST)
+Subject: Re: [PATCH 02/15] target/arm: Implement v8.1M PXN extension
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20201116160831.31000-1-peter.maydell@linaro.org>
- <20201116160831.31000-2-peter.maydell@linaro.org>
+ <20201116160831.31000-3-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <c3b2e0dd-0a7f-3c9c-1e14-d358ea15f1f7@linaro.org>
-Date: Tue, 17 Nov 2020 11:07:19 -0800
+Message-ID: <a4d9213b-057a-8401-9d42-e47cf9db9f8a@linaro.org>
+Date: Tue, 17 Nov 2020 11:10:04 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201116160831.31000-2-peter.maydell@linaro.org>
+In-Reply-To: <20201116160831.31000-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -126,45 +126,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lXS53e8Z5ywn
+X-TUID: KCEsyAVg2DGM
 
 On 11/16/20 8:08 AM, Peter Maydell wrote:
-> For M-profile CPUs, the range from 0xe0000000 to 0xe00fffff is the
-> Private Peripheral Bus range, which includes all of the memory mapped
-> devices and registers that are part of the CPU itself, including the
-> NVIC, systick timer, and debug and trace components like the Data
-> Watchpoint and Trace unit (DWT).  Within this large region, the range
-> 0xe000e000 to 0xe000efff is the System Control Space (NVIC, system
-> registers, systick) and 0xe002e000 to 0exe002efff is its Non-secure
-> alias.
+> In v8.1M the PXN architecture extension adds a new PXN bit to the
+> MPU_RLAR registers, which forbids execution of code in the region
+> from a privileged mode.
 > 
-> The architecture is clear that within the SCS unimplemented registers
-> should be RES0 for privileged accesses and generate BusFault for
-> unprivileged accesses, and we currently implement this.
-> 
-> It is less clear about how to handle accesses to unimplemented
-> regions of the wider PPB.  Unprivileged accesses should definitely
-> cause BusFaults (R_DQQS), but the behaviour of privileged accesses is
-> not given as a general rule.  However, the register definitions of
-> individual registers for components like the DWT all state that they
-> are RES0 if the relevant component is not implemented, so the
-> simplest way to provide that is to provide RAZ/WI for the whole range
-> for privileged accesses.  (The v7M Arm ARM does say that reserved
-> registers should be UNK/SBZP.)
-> 
-> Expand the container MemoryRegion that the NVIC exposes so that
-> it covers the whole PPB space. This means:
->  * moving the address that the ARMV7M device maps it to down by
->    0xe000 bytes
->  * moving the off and the offsets within the container of all the
->    subregions forward by 0xe000 bytes
->  * adding a new default MemoryRegion that covers the whole container
->    at a lower priority than anything else and which provides the
->    RAZWI/BusFault behaviour
+> This is another feature which is just in the generic "in v8.1M" set
+> and has no ID register field indicating its presence.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
+>  target/arm/helper.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
+

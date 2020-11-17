@@ -1,148 +1,245 @@
-Received: by 2002:a0c:dd89:0:0:0:0:0 with SMTP id v9csp26925qvk;
-        Tue, 17 Nov 2020 11:52:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwJ+j4ulgr3CGH4K/xngAmky6uF0DUikimNQ8RlIm58wzQjJ33KPTTZCEU6Eln9QSOGXvry
-X-Received: by 2002:a25:8190:: with SMTP id p16mr1183301ybk.134.1605642746093;
-        Tue, 17 Nov 2020 11:52:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605642746; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4935171lfb;
+        Tue, 17 Nov 2020 12:33:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyYcyddLMym7+NwhfRYFd5vEeJEa9WX6lwJIrI3zMZakIVwof74JPJ3q2RoDTjKFe/xJqZe
+X-Received: by 2002:a25:4058:: with SMTP id n85mr1771904yba.69.1605645204320;
+        Tue, 17 Nov 2020 12:33:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605645204; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pv6o2dcwQkBFjCAhkamur9nq8rf3ivhA5I8l8QOwBZFB2lkRRTR1KhLmgfmBmAvEA8
-         MnISIJEXBS5srQ7PpAXmY+staDBUKH4jph5mvjOH/2TkOE2ghFOtCnd0oTUUTtqHyK/U
-         hkpMGbkJGTZmn+UKkiSGcx+RrOZzFKOxhGiN69+VVenQRqlXI25U+Sw3XIfhkqr7XPtD
-         IGOUGVsOcwtPtiBZd+y5ItzrtlirdGr44hBBmXyNuo64BcNfNGV6RqRcMJ2zPExdMRI+
-         AtQs5lih1llevQZ8hveEKhcmCRWNyzV5Gyird+ZpI5rgr0eoRIY29d0fEeM6o1q+GyGl
-         CruQ==
+        b=Jds4V5312uv194yO8MohyTKmuW61XICWmqREp4B0m+U6nu1E0xAd4En0454eS/fzjh
+         zAcIBBQqcKWAeyviMCewnyjSOLhraNQ7JMfVjI+jotZNbpKzQAF02koZCN/DqtGbPCUK
+         GBUb9kF58Je5PmhnJmoXL/KJmCOMsiag8cwFpvzrbwOo8KuxwUfkbhHmb3c/uAkF7FMs
+         LQLj5gAYqbic5KYNSC8wH0vuNPbN+a5Xccdgwqnj/MRlz7DnCShABhYJIImRfSNZS8aQ
+         oN2Evbw/WGaKEcaKlaWLEbqGC4arHa6kK7f0S83ahajB+BbGi1/OM7agmAoj5VssaOJE
+         nC9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=WxyqhQGraWVfI0vUQ1PNg0uYmVV4Me6jSaJ61Lqe8wU=;
-        b=R4CFFIJ5kjOXs8oRXvk4jv70mRjXQmHieWO18J0DKlQJsTg3v/5JOkH3MNDOIXIUn/
-         pRVl1VV1xdSRLgwK+hnHDD7gXslka8yin07WgQPMZAgTyXM0e9X3Yd5TpiYGfYvDZH/T
-         dePHoA1p9TDCSNykgvmBgix290HmIP9tuLG9pthUm6IQmV1iKfqyMjvzgAxwyeFUGwFl
-         FnhHDoANutHA1Bir+5TqHR7SvjM416JH003b6lB5mAjlnr90xYxVuiTvLPPWE4H2XFLs
-         LVtl6cUNlSSDzFzmz4FB6zoEwC3mw0F9aAv8HvL/PuVIwDitHfZ4/YbmVIqOjVsB2z74
-         50Lg==
+        bh=PxbCj4nTQmWxUOEkCck0qamA0ICFchwd2Q2ii85/JVA=;
+        b=aCAwFixHzJa/5KuoPWzB/M5bUoDTK7fDAvfTVSOpkcQ7F+fyCC0UE6wJnDDm8HEf0b
+         RTajMbu936FQza82NNH2T9DgPbd+Zskr4MRKDNZVuhRbGaDx8R6tuedMolXoKDF3XYT8
+         wiG6fEFyfQVw5SmzkFlo1AkD61l6iqwbIdAP9yLpnHdy3FgNFI4oLjri4T9Otgxa7jhY
+         mdZRM2+BCwZbschQ7uPxGCaAjizwYb//e/OIpKlVdFWeGLb5kP0ydA22HLZ3B/iRZ0vB
+         gyTJ8setAX5BwtEKzYLx5438IceNiKcSeqWyaZN41lLOyHWb9T0o8ClamrHw2fU7OaEh
+         5sFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SEaCwh+a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s21Nnd3K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l81si20260471ybc.136.2020.11.17.11.52.26
+        by mx.google.com with ESMTPS id f7si21563350ybo.173.2020.11.17.12.33.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Nov 2020 11:52:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Nov 2020 12:33:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SEaCwh+a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60050 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s21Nnd3K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kf71d-0006Za-JD
-	for alex.bennee@linaro.org; Tue, 17 Nov 2020 14:52:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41822)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kf7fH-0006pM-N9
+	for alex.bennee@linaro.org; Tue, 17 Nov 2020 15:33:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kf6zg-0005Cz-6w
- for qemu-devel@nongnu.org; Tue, 17 Nov 2020 14:50:24 -0500
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:45935)
+ (Exim 4.90_1) (envelope-from <tpecar95@gmail.com>)
+ id 1kf7fA-0006p5-Mt; Tue, 17 Nov 2020 15:33:16 -0500
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:35307)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kf6za-0003cX-OS
- for qemu-devel@nongnu.org; Tue, 17 Nov 2020 14:50:20 -0500
-Received: by mail-pf1-x444.google.com with SMTP id b63so14394520pfg.12
- for <qemu-devel@nongnu.org>; Tue, 17 Nov 2020 11:50:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=WxyqhQGraWVfI0vUQ1PNg0uYmVV4Me6jSaJ61Lqe8wU=;
- b=SEaCwh+atew5OQ+Di6J6ZMuzFXrrxuth6xlNAwWti+zc2KTc7yFooIy/eNQwsR/zqu
- 7H+bcqefw6Fy3U3zwBARtc5EOGAeAsWbOtULhgOKs+nYX3aENutzhKstRZ80oyYDt+UK
- x8YZDWZ7fjrMeESvpwE86ybFNHoXKN9OwM9BK31U6H9u5QDTFPApHoGZo51KXHi7Avl8
- xgYIv03T+FNQY3X4REXOB7cw4gLBvRAZtoMCpgV8zn6qQbzdMt5oPw3gjgx8jR+isR31
- tVSmMDZixlCvtVpeLxUfyxHa8jNjHOtkAZ1Pxthg3y8/sMJoRbVZP4B0+RvlPJZbxUCL
- 9Rdw==
+ (Exim 4.90_1) (envelope-from <tpecar95@gmail.com>)
+ id 1kf7f8-0002gG-Og; Tue, 17 Nov 2020 15:33:16 -0500
+Received: by mail-ej1-x643.google.com with SMTP id f23so31363042ejk.2;
+ Tue, 17 Nov 2020 12:33:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=PxbCj4nTQmWxUOEkCck0qamA0ICFchwd2Q2ii85/JVA=;
+ b=s21Nnd3K3nb/JrfgEZ81uBuWBCa/+QoxgRj/A06SI7ewUa2TTkw036l6JmrAX8BDpS
+ YsBSTxhinAIfZnERxd8DzClJkv5/VvewRTIGfN5zANDq30K8VfpjaGg8JXoRTjSKbabp
+ uvEyQgVz3czSOy0cPrlGk8IKeQe9fF4ZO+MYoxZcakRaZm8z1dcaglo21d7871fxItGF
+ BemkaUU/Za7S/evGVPC4ABqi9tOdHTMt6+K7AXoDAff58Rty2jM0jqgywim1PxefX7uj
+ 25GAsJEupKwhyL4lM23f/th6m+PAKZGMtfIN3/28hWCuJNX0d/+VQf9Utgxua5OziDvw
+ 2CKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=WxyqhQGraWVfI0vUQ1PNg0uYmVV4Me6jSaJ61Lqe8wU=;
- b=QmBiyRxmFz0o6O16FEJ+TjeRTTP7x6XfR7AFCJzmfhFMH5hQpiD769IaIgpRkWROpD
- L9lFW2igcSkjWZrjW/Dc9OBL5pkGwLFZ7gdhD2jQp8oousFvS1u6AAW8rvkoYbOc8Q3t
- +QyObeOnBD/H+g/Rc3In5B3lhQCd3e0zdWmIAL3RsBADBtWkQESLKfwMxQQe/gd7ZGEv
- A5+6vwidZo65nJKXtWRFCEhDH3OHzvZOgitUhS+IIlU25TD1basUWZD0jSlJNPb2hobn
- s2UEKdTKDwTR9WU/KtLVAH6PpR/k2dqvY4shYxmh8JDEtdkInJrpU20+N/QT5CIdTb3B
- YG4w==
-X-Gm-Message-State: AOAM532Hj8fN4eo1tbVdL4sy0TAqte5prdNxI0U+cn8Rn+9XC0dYwxHt
- XaJmTayfludgJJq0PgIrE6kIzGwnam7RHg==
-X-Received: by 2002:a62:870c:0:b029:18b:d345:70f3 with SMTP id
- i12-20020a62870c0000b029018bd34570f3mr975223pfe.30.1605642616283; 
- Tue, 17 Nov 2020 11:50:16 -0800 (PST)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id d11sm23521526pfo.198.2020.11.17.11.50.14
+ bh=PxbCj4nTQmWxUOEkCck0qamA0ICFchwd2Q2ii85/JVA=;
+ b=noK1gD7z49YPikie0iWauA9uk37EDoSubsisF+K3/+RyOnpwNITSrnqnaAdw9Zfp1i
+ zPLSvJ+n47Ip0hBERhjLd+ep9/LiejK0dr+X0io/sIzNxk6X3fjsDVvGMSLPYj2OHjai
+ URqejSNhfSYqIofBTvMCUZ+t8IGhyI/tLMW9To6WPqllhlqgF30wBNXkhOKmV9VYl1um
+ Xn0SCS2J8AYNmrC84Cs8N6d4N4wDOM9OwrbhecC0zUWOa2ScvNplqj/3hN8LAb82lwCz
+ THHQa1LW2YxHIFZuG5ir5uOmF9vMIuhCkIU+Ki9ld6jIKcI402B+e6eLgx5ffhRwpKqM
+ +D3w==
+X-Gm-Message-State: AOAM530DzHp4fRlaip3DNdrgke3W38jqNvKQH83SIK7E7N8hkoT5Z+Bd
+ hZ1hC601NgdKyGgHVUVRN4g=
+X-Received: by 2002:a17:906:4e56:: with SMTP id
+ g22mr21521313ejw.49.1605645192201; 
+ Tue, 17 Nov 2020 12:33:12 -0800 (PST)
+Received: from [192.168.0.16] ([77.73.106.198])
+ by smtp.gmail.com with ESMTPSA id b1sm12079228ejg.60.2020.11.17.12.33.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Nov 2020 11:50:15 -0800 (PST)
-Subject: Re: [PATCH 12/15] target/arm: Factor out preserve-fp-state from
- full_vfp_access_check()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20201116160831.31000-1-peter.maydell@linaro.org>
- <20201116160831.31000-13-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <840b9f0f-5d5f-d649-e5ec-86f136b58d94@linaro.org>
-Date: Tue, 17 Nov 2020 11:50:13 -0800
+ Tue, 17 Nov 2020 12:33:11 -0800 (PST)
+Subject: Re: [PATCH v2] hw/char/cmsdk-apb-uart: Fix rx interrupt handling
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <107912fb-4570-2e61-c6ff-7b8df1ec5cac@gmail.com>
+ <CAFEAcA_-+pFri8yQd0S0Uk3BCEDCtAMbR5k=ei-jUmQUS-dPEg@mail.gmail.com>
+From: Tadej Pecar <tpecar95@gmail.com>
+Message-ID: <28118ccb-9482-2b27-41f5-d66a5f22da21@gmail.com>
+Date: Tue, 17 Nov 2020 21:33:10 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201116160831.31000-13-peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA_-+pFri8yQd0S0Uk3BCEDCtAMbR5k=ei-jUmQUS-dPEg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=tpecar95@gmail.com; helo=mail-ej1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8ICBlvL344DL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SCpOptqanqMF
 
-On 11/16/20 8:08 AM, Peter Maydell wrote:
-> Factor out the code which handles M-profile lazy FP state preservation
-> from full_vfp_access_check(); accesses to the FPCXT_NS register are
-> a special case which need to do just this part (corresponding in the
-> pseudocode to the PreserveFPState() function), and not the full
-> set of actions matching the pseudocode ExecuteFPCheck() which
-> normal FP instructions need to do.
+On 17. 11. 20 17:38, Peter Maydell wrote:
+> On Mon, 16 Nov 2020 at 19:58, Tadej Pečar <tpecar95@gmail.com> wrote:
+>>
+>> Previously, the RX interrupt got missed if:
+>> - the character backend provided next character before
+>>    the RX IRQ Handler managed to clear the currently served interrupt.
+>> - the character backend provided next character while the RX interrupt
+>>    was disabled. Enabling the interrupt did not trigger the interrupt
+>>    even if the RXFULL status bit was set.
+>>
+>> These bugs become apparent when the terminal emulator buffers the line
+>> before sending it to qemu stdin (Eclipse IDE console does this).
+>>
+>>
+>> diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
+>> index 626b68f2ec..d76ca76e01 100644
+>> --- a/hw/char/cmsdk-apb-uart.c
+>> +++ b/hw/char/cmsdk-apb-uart.c
+>> @@ -96,19 +96,34 @@ static void uart_update_parameters(CMSDKAPBUART *s)
+>>
+>>   static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
+>>   {
+>> -    /* update outbound irqs, including handling the way the rxo and txo
+>> -     * interrupt status bits are just logical AND of the overrun bit in
+>> -     * STATE and the overrun interrupt enable bit in CTRL.
+>> +    /*
+>> +     * update outbound irqs
+>> +     * (
+>> +     *     state     [rxo,  txo,  rxbf, txbf ] at bit [3, 2, 1, 0]
+>> +     *   | intstatus [rxo,  txo,  rx,   tx   ] at bit [3, 2, 1, 0]
+>> +     * )
+>> +     * & ctrl        [rxoe, txoe, rxe,  txe  ] at bit [5, 4, 3, 2]
+>> +     * = masked_intstatus
+>> +     *
+>> +     * state: status register
+>> +     * intstatus: pending interrupts and is sticky (has to be cleared by sw)
+>> +     * masked_intstatus: masked (by ctrl) pending interrupts
+>> +     *
+>> +     * intstatus [rxo, txo, rx] bits are set here
+>> +     * intstatus [tx] is managed in uart_transmit
+>>        */
+>> -    uint32_t omask = (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK);
+>> -    s->intstatus &= ~omask;
+>> -    s->intstatus |= (s->state & (s->ctrl >> 2) & omask);
+>> -
+>> -    qemu_set_irq(s->txint, !!(s->intstatus & R_INTSTATUS_TX_MASK));
+>> -    qemu_set_irq(s->rxint, !!(s->intstatus & R_INTSTATUS_RX_MASK));
+>> -    qemu_set_irq(s->txovrint, !!(s->intstatus & R_INTSTATUS_TXO_MASK));
+>> -    qemu_set_irq(s->rxovrint, !!(s->intstatus & R_INTSTATUS_RXO_MASK));
+>> -    qemu_set_irq(s->uartint, !!(s->intstatus));
+>> +    s->intstatus |= s->state &
+>> +        (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK | R_INTSTATUS_RX_MASK);
+>> +
+>> +    uint32_t masked_intstatus = s->intstatus & (s->ctrl >> 2);
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/translate-vfp.c.inc | 45 ++++++++++++++++++++--------------
->  1 file changed, 27 insertions(+), 18 deletions(-)
+> I don't think this logic is correct. It makes the values we
+> send out on the output interrupt lines different from the
+> values visible in the INTSTATUS register bits, and I don't
+> think that's how the hardware behaves.
+> 
+> thanks
+> -- PMM
+> 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Yep, it seems that I stand corrected. More so, it seems that I was completely wrong.
 
-r~
+I've had a closer look at the cmsdk_apb_uart.v HDL file, available in the 
+Cortex-M0/M3 DesignStart, and the interrupt lines are directly assigned to 
+INTSTATUS.
 
+Additionally, it seems that the actual hardware suffers from the same issues 
+described as "fixed" by this patch:
+
+ - If you happen to be in the interrupt handler for long enough to receive
+   the next character, STATE will report RX buffer full / overrun, depending
+   on whether you've already read the current character from DATA.
+   
+   Which is fine and dandy - but if you happen to clear INTSTATUS _after_ you
+   have received the next character, you've essentially cleared the next interrupt,
+   so the next character won't get handled.
+
+   This is because INTSTATUS register logic is independent from the STATE register.
+
+ - RX / TX interrupt lines are masked by interrupt enable _before_ they are 
+   registered, and the rx'd / tx'd status from the state machine
+   is present only for one clock cycle.
+   
+   So the interrupts are ignored when they are disabled by CTRL, and they don't
+   get fired at interrupt enable, regardless of the current STATE.
+   
+   Interestingly enough, RX / TX overrun interrupts are masked _after_ they
+   are registered, so enabling the interrupt for those should trigger the 
+   interrupt (as correctly modeled by the current cmsdk-apb-uart).
+   
+Guess I wanted my hardware emulation to be better than the actual hardware ;)
+
+Jokes aside, I guess these issues weren't apparent in hardware because serial 
+communication is usually so much slower that
+ - the mcu could always clear the interrupt before the next character was 
+   received.
+ - the time when the rx interrupt was disabled
+   was always shorter than the time required to receive the next character.
+
+The uart emulation could be made a little more forgiving by postponing the
+next character until the current interrupt is finished, but that's probably for
+some other discussion.
+
+
+In the end, the patch is unnecessary, as the current cmsdk-apb-uart
+provides a more faithful emulation of the actual hardware, along with its warts.
+
+It was educational, at least.
+
+Regards, TP

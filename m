@@ -1,107 +1,126 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2282687lfb;
-        Sat, 14 Nov 2020 07:01:14 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzrTJ36w90COIt1vDeVqS3F0qgYX8bmKuBRUPuCMze0FySCMrEK0g49pwHGjycH3EZypNbf
-X-Received: by 2002:a25:b814:: with SMTP id v20mr9400351ybj.323.1605366074563;
-        Sat, 14 Nov 2020 07:01:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605366074; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp430640lfb;
+        Wed, 18 Nov 2020 03:18:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw4ilgGwShNumgfeISA/gGeRYaBR1vHMJyTvbHihQX0R6Xuq960x74nv7vtpYIzzqsltFfR
+X-Received: by 2002:a25:4c4:: with SMTP id 187mr8502821ybe.14.1605698331178;
+        Wed, 18 Nov 2020 03:18:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605698331; cv=none;
         d=google.com; s=arc-20160816;
-        b=GtUBRLTq3ww5iC9zu3sxHDr2/GZpeI/4t7QRTM772D4XBPlIMfKap7h4s+33yJrKJP
-         OYY3HczFKsKtuwFP7uece1DzOU1AWYdXtsq4E9j/C1nqtzYLR771XOFE4fM2NI+wfjQH
-         +GYz8nyXjZ5v8R8jkSH+8xjeseZ8kgOS8m9vRwp+TfQW98ePyQYHnCGkBLtwBLQmdHoH
-         EBhPG5XgaZyAzJdEdaXj2Cd7A0H65x6iYoLeKwNfNshs2dHX3lo4olXbl6iEPrauo+vb
-         wNde6tX6T3sJlduSjYs0Q8ScGpHfFXvHzfgrBqo7C2PAIPh3QGN42Rg5CdmliPOggC4C
-         XuQw==
+        b=nZe6QOl5Lw0DJl+qXsn5/iGej0J1n4UWSfTQHlIpwczoVyzOCHuIsToxKau7fHB5is
+         a2kUqbIJl043VSMuza7mo/mqsgV2cZsfKeSVg78gPmvh7vUGH36SgLIcZvzptjwz8+dP
+         7GUApKr7Ne/QYRrTEDQntHZyFICISbBFJjz0UI5jyt8Bt6fogrlgxEDq7nfGtD+Edt4h
+         WEAawevVFU9LVBf6KrbA8/hNg28c4EViJ51DgSzORZlQQrut48+5/ny3blFWZoA7kTJ3
+         TN6VJ9qv6pMPfgGyMIubpcbFj7PhDw7x3Obzs4lWmolfJEpGgxfnuoFc+CvyGLGIdglc
+         1pkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=evhsgIvEXbE1bIcTQhnKwahDHG26zojSQOehShg2iAk=;
-        b=bdk97TYL63IVLQ2GxhTkSW5DpBHzIenTEpdSAbWV4fXUw0x5THaPJ2OY0M9hfn/N07
-         wexvA1PvwM9/oAvbzo0daOyFoiY2hAKDLUEFZZBiel6ZgPaKOEn8kM0fWlMtbbjWkbOl
-         rKvuP7TQa0qnb95Xuy7NB2l/TRuz9MZ+NU6pMSkGvYyC25gScBHyfgFvbzkCvZMGWgMl
-         EqeGTeCDNaZUS9iJZtiU561omCrXa93rXpe8+CaA1sCIzuiWPk8NcvUHp88Y100d62hg
-         WW+TZoH5aStBF7/eEe3hZvvZBzt5KadfjUEkaw4JBuyRdysBhtWyvHadg9d/YfMLsDUX
-         Y6bQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=E7vxjF6WrMAp3BHX6RDS7wb6ILV+54/MikaOkQrWRvQ=;
+        b=agvbW9prhYxWZEm5nqBm/pAeKxYBpRnS6e1QWD8S0C4algzybVSTtRDjNd+MHULlcD
+         VAS8gHG8xAhIDFBpjc6isnaEI3VBtjCwuN6JZdqDWJjxJoUKlrWNwFyMujw4Tww4YlMN
+         GvqYvvHe3uqLYlMw8CwiJ5QTpibYoCp5bj7mxrIS2aCRwIuqYwThEBbK+ExS5E/H0FQr
+         V5NSrcaM8gRS8MdIMNSpoF1jDMZOiKgcuBdtAeFB7OclXn9Kmts6xk3d6GKyr9lQNgxI
+         1cvxvF11GWGvwdE6qNTiO8ngdNwlgzPitkHRxtMknAVN0OahuAxFRaWbBt8S6arSk++/
+         D5ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rjQzlLjZ;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=fs551iGZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n73si11630885ybf.151.2020.11.14.07.01.14
+        by mx.google.com with ESMTPS id n18si23304934ybg.49.2020.11.18.03.18.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 14 Nov 2020 07:01:14 -0800 (PST)
+        Wed, 18 Nov 2020 03:18:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rjQzlLjZ;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=fs551iGZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40302 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1]:34600 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kdx3B-0004Th-R4
-	for alex.bennee@linaro.org; Sat, 14 Nov 2020 10:01:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46116)
+	id 1kfLUA-00009Y-Gr
+	for alex.bennee@linaro.org; Wed, 18 Nov 2020 06:18:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <changbin.du@gmail.com>)
- id 1kdx12-00036C-7f; Sat, 14 Nov 2020 09:59:00 -0500
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:51389)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <changbin.du@gmail.com>)
- id 1kdx10-0000bE-0Z; Sat, 14 Nov 2020 09:58:59 -0500
-Received: by mail-pj1-x1041.google.com with SMTP id w7so1682280pjy.1;
- Sat, 14 Nov 2020 06:58:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=evhsgIvEXbE1bIcTQhnKwahDHG26zojSQOehShg2iAk=;
- b=rjQzlLjZgmux6HhEbE7kOsMK9dZCGi49QwGXa2wwG6VYuq4uVyYVHB3U29yucVzZB8
- QukFEdmq+zbr0gn/FTyyEnOilxkSqVlvTE7UFmyGBrtnH8o0/EtlyasB7f8icMcfxyuc
- 0NOsQFobBKOmCnJDeg129LyQ40yhByCc1TLMpB2VzPBQxR7ZRRikJULAF/jM1i/A8JNk
- msDzxYELLLzbhNclif3znOoB5/8UaPwf1oAFx4FRBrXwBffC4iXPeBCQFMVdm9t3kQCe
- YPkf+cFzerbxz92HtAOLppxuJqrU7uXR/ZB6qeQSXHyYHo6owSeJVWxud4QWUm9LNdhp
- va3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=evhsgIvEXbE1bIcTQhnKwahDHG26zojSQOehShg2iAk=;
- b=Fq7Iaxx2aES0RFCu/Q9/VkPr738+jCuzgodf3XcVLnfMl6sQF4kIRrdHBgG3600F+y
- Tau31p6uxrSKj7KaIJc7bN57tuzuSk1co2OZawLDCHt8kCVwNP23ukzq9owBUGKyQKzF
- YxTAvnk4W5mj6bQEXNSJkFjfzyCpKhPVimfEvqfa95aG0CmcJsrvUfNAOSpAUhAV8UqU
- /LBRixr1sEd1+oh4JH6DvfLAxGlyW4BOkwlTBkrGGz+xEubso/QP6D5Wq6b9unEzzddh
- gP+YL+30i/hO8tbepUm1SBFANb80uMI5GwNBweCRcG/fJSN+F7lzJgyiWlYE8Mqn3+oT
- YaRg==
-X-Gm-Message-State: AOAM530I/NW7EnYFnEP3+1ivB9U41uKsQBR3Le46jSrG3LR+YbS6EUPF
- /Jud+yo63/YHYpiLp3jJPFo=
-X-Received: by 2002:a17:90a:8992:: with SMTP id
- v18mr8586375pjn.192.1605365936127; 
- Sat, 14 Nov 2020 06:58:56 -0800 (PST)
-Received: from vultr.guest ([141.164.41.4])
- by smtp.gmail.com with ESMTPSA id n72sm13493902pfd.202.2020.11.14.06.58.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Nov 2020 06:58:55 -0800 (PST)
-From: Changbin Du <changbin.du@gmail.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2] arm/monitor: Add support for 'info tlb' command
-Date: Sat, 14 Nov 2020 22:58:47 +0800
-Message-Id: <20201114145847.57707-1-changbin.du@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
+ id 1kfLU0-000076-3Y; Wed, 18 Nov 2020 06:18:40 -0500
+Received: from aserp2130.oracle.com ([141.146.126.79]:35644)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david.edmondson@oracle.com>)
+ id 1kfLTv-0002xV-4K; Wed, 18 Nov 2020 06:18:39 -0500
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AIBELG8114374;
+ Wed, 18 Nov 2020 11:18:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=corp-2020-01-29;
+ bh=E7vxjF6WrMAp3BHX6RDS7wb6ILV+54/MikaOkQrWRvQ=;
+ b=fs551iGZ1FKamv52J4Q9kZqPHDcblYbZKrFQz/LB8bM7pG8Tpp4LvDViIAzQUDcYnBhH
+ PzE7CqIgvwRxga9CB0WLssZxlj5qiiHjaCpUwwpDkklBaElbkW0XIZyCRgF2IwkjJ4D7
+ sM0lhGjbotlFRKL8c/tkAb2Y8boA31NMxa2zdVTJWFspCFlbCmP9QCl26rlP0iJYvSy3
+ /pUG1JHXQGvZaU8X51FQsGDQKJ7Wq7L7hbkeqry2Fzf1LFQ4DptVzKQYLsod+XePeZ8T
+ Vz6r4mIlGMASfv/dQX+8VfzrLpDYqJN4GtHT4+9n0aOBfSg4dn3mlVw8HgDXevAvkVFI 4g== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2130.oracle.com with ESMTP id 34t4raynvt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 18 Nov 2020 11:18:25 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0AIBFdWb110882;
+ Wed, 18 Nov 2020 11:18:25 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 34uspun9k2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 18 Nov 2020 11:18:25 +0000
+Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0AIBINsj003388;
+ Wed, 18 Nov 2020 11:18:24 GMT
+Received: from disaster-area.hh.sledj.net (/81.187.26.238)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 18 Nov 2020 03:18:23 -0800
+Received: from localhost (disaster-area.hh.sledj.net [local])
+ by disaster-area.hh.sledj.net (OpenSMTPD) with ESMTPA id 2b2a99bd;
+ Wed, 18 Nov 2020 11:18:19 +0000 (UTC)
+From: David Edmondson <david.edmondson@oracle.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 1/5] hw/block: blk_check_size_and_read_all should report
+ backend name
+Date: Wed, 18 Nov 2020 11:18:15 +0000
+Message-Id: <20201118111819.4588-2-david.edmondson@oracle.com>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201118111819.4588-1-david.edmondson@oracle.com>
+References: <20201118111819.4588-1-david.edmondson@oracle.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
- envelope-from=changbin.du@gmail.com; helo=mail-pj1-x1041.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9808
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ malwarescore=0
+ mlxscore=0 bulkscore=0 suspectscore=1 adultscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011180079
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9808
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ clxscore=1015
+ malwarescore=0 impostorscore=0 lowpriorityscore=0 priorityscore=1501
+ mlxlogscore=999 adultscore=0 phishscore=0 suspectscore=1 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011180079
+Received-SPF: pass client-ip=141.146.126.79;
+ envelope-from=david.edmondson@oracle.com; helo=aserp2130.oracle.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 06:18:29
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,360 +133,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Changbin Du <changbin.du@gmail.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, David Edmondson <david.edmondson@oracle.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X6Otg1OnSHFf
+X-TUID: qcU110GFT9CP
 
-This adds hmp 'info tlb' command support for the arm platform.
-The limitation is that this only implements a page walker for
-ARMv8-A AArch64 Long Descriptor format, 32bit addressing is
-not supported yet.
+If there are problems examining or reading data from the block
+backend, the error messages should include an appropriate identifier
+to assist in diagnoses.
 
-To reuse existing code, this patch also extracts some APIs from
-helper.c, including regime_translation_disabled(),
-pt_start_level_stage1(), regime_ttbr().
-
-Signed-off-by: Changbin Du <changbin.du@gmail.com>
-
+Signed-off-by: David Edmondson <david.edmondson@oracle.com>
 ---
-v2:
-  o fix coding style
-  o extract common code pt_start_level_stage1()
+ hw/block/block.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-Signed-off-by: Changbin Du <changbin.du@gmail.com>
----
- hmp-commands-info.hx   |   3 +-
- target/arm/helper.c    |  30 +------
- target/arm/internals.h |  32 +++++++
- target/arm/monitor.c   | 183 +++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 219 insertions(+), 29 deletions(-)
-
-diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
-index 117ba25f91..1b5b3f2616 100644
---- a/hmp-commands-info.hx
-+++ b/hmp-commands-info.hx
-@@ -222,7 +222,8 @@ SRST
- ERST
- 
- #if defined(TARGET_I386) || defined(TARGET_SH4) || defined(TARGET_SPARC) || \
--    defined(TARGET_PPC) || defined(TARGET_XTENSA) || defined(TARGET_M68K)
-+    defined(TARGET_PPC) || defined(TARGET_XTENSA) || defined(TARGET_M68K) || \
-+    defined(TARGET_ARM)
-     {
-         .name       = "tlb",
-         .args_type  = "",
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 11b0803df7..e7f0f27c8e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9974,8 +9974,7 @@ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
- #ifndef CONFIG_USER_ONLY
- 
- /* Return true if the specified stage of address translation is disabled */
--static inline bool regime_translation_disabled(CPUARMState *env,
--                                               ARMMMUIdx mmu_idx)
-+bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx)
+diff --git a/hw/block/block.c b/hw/block/block.c
+index 1e34573da7..5fa0f352e3 100644
+--- a/hw/block/block.c
++++ b/hw/block/block.c
+@@ -20,9 +20,6 @@
+  * BDRV_REQUEST_MAX_BYTES.
+  * On success, return true.
+  * On failure, store an error through @errp and return false.
+- * Note that the error messages do not identify the block backend.
+- * TODO Since callers don't either, this can result in confusing
+- * errors.
+  * This function not intended for actual block devices, which read on
+  * demand.  It's for things like memory devices that (ab)use a block
+  * backend to provide persistence.
+@@ -32,17 +29,19 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
  {
-     if (arm_feature(env, ARM_FEATURE_M)) {
-         switch (env->v7m.mpu_ctrl[regime_is_secure(env, mmu_idx)] &
-@@ -10021,20 +10020,6 @@ static inline bool regime_translation_big_endian(CPUARMState *env,
-     return (regime_sctlr(env, mmu_idx) & SCTLR_EE) != 0;
- }
+     int64_t blk_len;
+     int ret;
++    const char *name = blk_name(blk);
  
--/* Return the TTBR associated with this translation regime */
--static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
--                                   int ttbrn)
--{
--    if (mmu_idx == ARMMMUIdx_Stage2) {
--        return env->cp15.vttbr_el2;
--    }
--    if (ttbrn == 0) {
--        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
--    } else {
--        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
--    }
--}
--
- #endif /* !CONFIG_USER_ONLY */
- 
- /* Convert a possible stage1+2 MMU index into the appropriate
-@@ -11077,18 +11062,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+     blk_len = blk_getlength(blk);
+     if (blk_len < 0) {
+         error_setg_errno(errp, -blk_len,
+-                         "can't get size of block backend");
++                         "can't get size of block backend '%s'",
++                         name);
+         return false;
+     }
+     if (blk_len != size) {
+         error_setg(errp, "device requires %" HWADDR_PRIu " bytes, "
+-                   "block backend provides %" PRIu64 " bytes",
+-                   size, blk_len);
++                   "block backend '%s' provides %" PRIu64 " bytes",
++                   size, name, blk_len);
+         return false;
      }
  
-     if (mmu_idx != ARMMMUIdx_Stage2) {
--        /* The starting level depends on the virtual address size (which can
--         * be up to 48 bits) and the translation granule size. It indicates
--         * the number of strides (stride bits at a time) needed to
--         * consume the bits of the input address. In the pseudocode this is:
--         *  level = 4 - RoundUp((inputsize - grainsize) / stride)
--         * where their 'inputsize' is our 'inputsize', 'grainsize' is
--         * our 'stride + 3' and 'stride' is our 'stride'.
--         * Applying the usual "rounded up m/n is (m+n-1)/n" and simplifying:
--         * = 4 - (inputsize - stride - 3 + stride - 1) / stride
--         * = 4 - (inputsize - 4) / stride;
--         */
--        level = 4 - (inputsize - 4) / stride;
-+        level = pt_start_level_stage1(inputsize, stride);
-     } else {
-         /* For stage 2 translations the starting level is specified by the
-          * VTCR_EL2.SL0 field (whose interpretation depends on the page size)
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 5460678756..0f3a1d0188 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -949,6 +949,8 @@ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+@@ -55,7 +54,8 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
+     assert(size <= BDRV_REQUEST_MAX_BYTES);
+     ret = blk_pread(blk, 0, buf, size);
+     if (ret < 0) {
+-        error_setg_errno(errp, -ret, "can't read block backend");
++        error_setg_errno(errp, -ret, "can't read block backend '%s'",
++                         name);
+         return false;
      }
- }
- 
-+bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx);
-+
- /* Return the TCR controlling this translation regime */
- static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
-@@ -958,6 +960,20 @@ static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
-     return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
- }
- 
-+/* Return the TTBR associated with this translation regime */
-+static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
-+                                   int ttbrn)
-+{
-+    if (mmu_idx == ARMMMUIdx_Stage2) {
-+        return env->cp15.vttbr_el2;
-+    }
-+    if (ttbrn == 0) {
-+        return env->cp15.ttbr0_el[regime_el(env, mmu_idx)];
-+    } else {
-+        return env->cp15.ttbr1_el[regime_el(env, mmu_idx)];
-+    }
-+}
-+
- /* Return the FSR value for a debug exception (watchpoint, hardware
-  * breakpoint or BKPT insn) targeting the specified exception level.
-  */
-@@ -1291,6 +1307,22 @@ typedef struct ARMCacheAttrs {
-     unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 PTEs */
- } ARMCacheAttrs;
- 
-+static inline int pt_start_level_stage1(int inputsize, int stride)
-+{
-+    /* The starting level depends on the virtual address size (which can
-+     * be up to 48 bits) and the translation granule size. It indicates
-+     * the number of strides (stride bits at a time) needed to
-+     * consume the bits of the input address. In the pseudocode this is:
-+     *  level = 4 - RoundUp((inputsize - grainsize) / stride)
-+     * where their 'inputsize' is our 'inputsize', 'grainsize' is
-+     * our 'stride + 3' and 'stride' is our 'stride'.
-+     * Applying the usual "rounded up m/n is (m+n-1)/n" and simplifying:
-+     * = 4 - (inputsize - stride - 3 + stride - 1) / stride
-+     * = 4 - (inputsize - 4) / stride;
-+     */
-+    return 4 - (inputsize - 4) / stride;
-+}
-+
- bool get_phys_addr(CPUARMState *env, target_ulong address,
-                    MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                    hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index 169d8a64b6..2ee3fdd00b 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -31,6 +31,9 @@
- #include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qdict.h"
- #include "qom/qom-qobject.h"
-+#include "monitor/monitor.h"
-+#include "monitor/hmp-target.h"
-+#include "internals.h"
- 
- static GICCapability *gic_cap_new(int version)
- {
-@@ -236,3 +239,183 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
- 
-     return expansion_info;
- }
-+
-+/* Perform linear address sign extension */
-+static target_ulong addr_canonical(int va_bits, target_ulong addr)
-+{
-+#ifdef TARGET_AARCH64
-+    if (addr & (1UL << (va_bits - 1))) {
-+        addr |= (hwaddr)-(1L << va_bits);
-+    }
-+#endif
-+
-+    return addr;
-+}
-+
-+#define PTE_HEADER_FIELDS       "vaddr            paddr            "\
-+                                "size             attr\n"
-+#define PTE_HEADER_DELIMITER    "---------------- ---------------- "\
-+                                "---------------- ------------------------------\n"
-+
-+static void print_pte_header(Monitor *mon)
-+{
-+    monitor_printf(mon, PTE_HEADER_FIELDS);
-+    monitor_printf(mon, PTE_HEADER_DELIMITER);
-+}
-+
-+static void
-+print_pte_lpae(Monitor *mon, uint32_t tableattrs, int va_bits,
-+               target_ulong vaddr, hwaddr paddr, target_ulong size,
-+               target_ulong pte)
-+{
-+    uint32_t ns = extract64(pte, 5, 1) | extract32(tableattrs, 4, 1);
-+    uint32_t ap = extract64(pte, 6, 2) & ~extract32(tableattrs, 2, 2);
-+    uint32_t af = extract64(pte, 10, 1);
-+    uint32_t ng = extract64(pte, 11, 1);
-+    uint32_t gp = extract64(pte, 50, 1);
-+    uint32_t con = extract64(pte, 52, 1);
-+    uint32_t pxn = extract64(pte, 53, 1) | extract32(tableattrs, 0, 1);
-+    uint32_t uxn = extract64(pte, 54, 1) | extract32(tableattrs, 1, 1);
-+
-+    monitor_printf(mon, TARGET_FMT_lx " " TARGET_FMT_plx " " TARGET_FMT_lx
-+                   " %s %s %s %s %s %s %s %s %s\n",
-+                   addr_canonical(va_bits, vaddr), paddr, size,
-+                   ap & 0x2 ? "ro" : "RW",
-+                   ap & 0x1 ? "USR" : "   ",
-+                   ns ? "NS" : "  ",
-+                   af ? "AF" : "  ",
-+                   ng ? "nG" : "  ",
-+                   gp ? "GP" : "  ",
-+                   con ? "Con" : "   ",
-+                   pxn ? "PXN" : "   ",
-+                   uxn ? "UXN" : "   ");
-+}
-+
-+static void
-+walk_pte_lpae(Monitor *mon, bool aarch64, uint32_t tableattrs, hwaddr pt_base,
-+              target_ulong vstart, int cur_level, int stride, int va_bits)
-+{
-+    int pg_shift = stride + 3;
-+    int descaddr_high = aarch64 ? 47 : 39;
-+    int max_level = 3;
-+    int ptshift = pg_shift + (max_level - cur_level) * stride;
-+    target_ulong pgsize = 1UL << ptshift;
-+    int idx;
-+
-+    for (idx = 0; idx < (1UL << stride) && vstart < (1UL << va_bits);
-+         idx++, vstart += pgsize) {
-+        hwaddr pte_addr = pt_base + idx * 8;
-+        target_ulong pte = 0;
-+        hwaddr paddr;
-+
-+        cpu_physical_memory_read(pte_addr, &pte, 8);
-+
-+        if (!extract64(pte, 0, 1)) {
-+            /* invalid entry */
-+            continue;
-+        }
-+
-+        if (cur_level == max_level) {
-+            /* leaf entry */
-+            paddr = (hwaddr)extract64(pte, pg_shift,
-+                                descaddr_high - pg_shift + 1) << pg_shift;
-+            print_pte_lpae(mon, tableattrs, va_bits, vstart, paddr,
-+                           pgsize, pte);
-+        } else {
-+            if (extract64(pte, 1, 1)) {
-+                /* table entry */
-+                paddr = (hwaddr)extract64(pte, pg_shift,
-+                                    descaddr_high - pg_shift + 1) << pg_shift;
-+                tableattrs |= extract64(pte, 59, 5);
-+
-+                walk_pte_lpae(mon, aarch64, tableattrs, paddr, vstart,
-+                              cur_level + 1, stride, va_bits);
-+            } else {
-+                /* block entry */
-+                if ((pg_shift == 12 && (cur_level != 1 && cur_level != 2)) ||
-+                    (pg_shift == 14 && (cur_level != 2)) ||
-+                    (pg_shift == 16 && (cur_level != 0 && cur_level != 1))) {
-+                    monitor_printf(mon, "illegal block entry at level%d\n",
-+                                   cur_level);
-+                    continue;
-+                }
-+                paddr = (hwaddr)extract64(pte, ptshift,
-+                                    descaddr_high - ptshift + 1) << ptshift;
-+                print_pte_lpae(mon, tableattrs, va_bits, vstart, paddr,
-+                               pgsize, pte);
-+            }
-+        }
-+    }
-+}
-+
-+/* ARMv8-A AArch64 Long Descriptor format */
-+static void tlb_info_vmsav8_64(Monitor *mon, CPUArchState *env)
-+{
-+    ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
-+    uint64_t ttbr[2];
-+    uint64_t tcr;
-+    int tsz[2];
-+    bool using16k, using64k;
-+    int stride;
-+
-+    ttbr[0] = regime_ttbr(env, mmu_idx, 0);
-+    ttbr[1] = regime_ttbr(env, mmu_idx, 1);
-+
-+    tcr = regime_tcr(env, mmu_idx)->raw_tcr;
-+    using64k = extract32(tcr, 14, 1);
-+    using16k = extract32(tcr, 15, 1);
-+    tsz[0] = extract32(tcr, 0, 6);
-+    tsz[1] = extract32(tcr, 16, 6);
-+
-+    if (using64k) {
-+        stride = 13;
-+    } else if (using16k) {
-+        stride = 11;
-+    } else {
-+        stride = 9;
-+    }
-+
-+    /* print header */
-+    print_pte_header(mon);
-+
-+    for (unsigned int i = 0; i < 2; i++) {
-+        if (ttbr[i]) {
-+            hwaddr base = extract64(ttbr[i], 1, 47) << 1;
-+            int va_bits = 64 - tsz[i];
-+            target_ulong vstart = (target_ulong)i << (va_bits - 1);
-+            int startlevel = pt_start_level_stage1(va_bits, stride);
-+
-+            /* walk ttbrx page tables, starting from address @vstart */
-+            walk_pte_lpae(mon, true, 0, base, vstart, startlevel,
-+                          stride, va_bits);
-+        }
-+    }
-+}
-+
-+void hmp_info_tlb(Monitor *mon, const QDict *qdict)
-+{
-+    CPUArchState *env;
-+
-+    env = mon_get_cpu_env();
-+    if (!env) {
-+        monitor_printf(mon, "No CPU available\n");
-+        return;
-+    }
-+
-+    if (arm_feature(env, ARM_FEATURE_PMSA)) {
-+        monitor_printf(mon, "No MMU\n");
-+        return;
-+    }
-+
-+    if (regime_translation_disabled(env, arm_stage1_mmu_idx(env))) {
-+        monitor_printf(mon, "MMU disabled\n");
-+        return;
-+    }
-+
-+    if (!arm_el_is_aa64(env, 1)) {
-+        monitor_printf(mon, "Only AArch64 Long Descriptor is supported\n");
-+        return;
-+    }
-+
-+    tlb_info_vmsav8_64(mon, env);
-+}
+     return true;
 -- 
-2.25.1
+2.29.2
 

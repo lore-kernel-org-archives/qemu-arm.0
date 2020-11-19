@@ -1,253 +1,150 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp571822lfb;
-        Thu, 19 Nov 2020 09:42:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxkcXIg8u+gKAsFJJ5yOcocmF4bmnpwS3h2ozqqMj9N/o497HozTSqvOwUeOTDtm8Q1R/K1
-X-Received: by 2002:a25:c07:: with SMTP id 7mr6619765ybm.68.1605807732042;
-        Thu, 19 Nov 2020 09:42:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605807732; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp608280lfb;
+        Thu, 19 Nov 2020 10:29:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzQUBgPsiehYFrNrUxByqlbCK2wJEnQWFuqmL+f+e6L4/KOx1WxEDYJL7ve3+U4aBucdAo1
+X-Received: by 2002:a25:e092:: with SMTP id x140mr10197393ybg.476.1605810569989;
+        Thu, 19 Nov 2020 10:29:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605810569; cv=none;
         d=google.com; s=arc-20160816;
-        b=AqTQ3uA/vh43rWi2Fk4/SHFYPRW2UCg1/jXctpl1SdmC2dHjeARdYjabsXPPLKft4s
-         YMZVLXKv8+ytJsMqwzQDanyS2CGHzwNiBkyRJhHLIPUP2FnyJ3b2qRB4o9pixwO7DZh+
-         wBrvCxIARaKwf/pPQyH81XdQxPINvykIXgPxPt5M3LvIqj/F6kKEz9K2SWPj3Wm9ScJm
-         pspLAU8ZySJk5Jgexh2qR7YbooU0UjNLeovRN6AWgUdSsNkpfs0k1IaqQTx5zBjRGrJD
-         +m1Eap3xVMVnVQfmldRj0qbpd2+qmgrmzZLvsyYsl3ww8irhzpk0uFEghBh1JiaUHyr+
-         Dpww==
+        b=LoT6s+T5/LwH8sbQT3tsickwonqT55kTDdBlR9KlHEQ3EHsZtfkcxcfEctWG73n9SF
+         7hY6QDDYyPYWkowtWf506rt8SESvJRCOrsAyyJRb/OG5GNhRRaSecWoLs3BG89DTMN7u
+         X7WumdIRQPP5ahvUDJKKfSCg9FKoS1FmaCRuvgvtDbnT+bJvETIojs7H15aDvL5uTqN3
+         Sd6kM3S/mX2a2XK8pdtiMmCglJEt6LJP23HPY1VeafNX0m+xinH/JFdPnXtt/qd737fi
+         ibpHzIo350qM4VyY8nshY9tV+rteplhi/dg6McULTmz6Zism10rOg8Y8zQ2Er30sy/AA
+         pSCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=T7Bjm34hEll8fa3YsD6yCHLabQOWQPX60ow+irsuV44=;
-        b=DDjUPMrUTV9zJJdLJa6if1dTHDSFUknKJWc1frHnySI1yqJiaL2qqdYdM5+0uILYs9
-         0A8IQofp/MaZh8+eQmUc+c8X9L0KYC+s8kPvi5JcSySGwTLsZivyprFtH2RX/GwnuVBt
-         XYXg3t/sgJZKnBJxw8txdNyC3RFquPDnAiVtsJF3bCjPN04DHaEhJWGksn/b8Ip1iuTU
-         Pw7AushrQ8BuDMGAIuV4xeLLCNrCCrzDs5QtzzN7bCHZHr6Flek+dkBbZcs+F+mLV9CT
-         ieSY+FJmUM94BCG3T5h1h1o4LaQtHJmahT25lX6Qceaq4n9ehyhYpcPQpvYptAoqnrKT
-         +xGw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=7XkyJxD+vCPYAqI/HIyIHvi+MyCG8Ym29xbg4hkgHGY=;
+        b=0zzPp3NDryUHuXUxsUc3/QnMwt6ijeEYeN29viIguM8MrY6Fej6bz2oRMdu7p2zKNC
+         Txy8AI/MkwCXY68srj1OKoS8Al5Vw6inj4vEnwtRIv7ef2UKGzMFN27E17vn0edie/FX
+         Ru3V0Jd5U/x2OwxSpP5FSOGCNWreIoXOfk6OIwv8cbkA5H0LR6orfq2xEvW10WetSeVO
+         03I3vW+Y6fyNEPPYdzXhxKlJNTMaGPYdA8sw7DV/d1X9JdduuBRWMoqAUoKk8pMj9y+g
+         90eaWWee9mHz835SX9SQKHNNgnHBtQL2nLKPQUL/M4+owEJ+Lr9ZCJjggn3eaV4sx3S0
+         M7Zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fuxzCAWK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=UMgPtGB0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9si205923ybi.425.2020.11.19.09.42.11
+        by mx.google.com with ESMTPS id d139si302022ybh.204.2020.11.19.10.29.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Nov 2020 09:42:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Nov 2020 10:29:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fuxzCAWK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59208 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=UMgPtGB0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfnwh-0007Os-EJ
-	for alex.bennee@linaro.org; Thu, 19 Nov 2020 12:42:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46610)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kfogT-00023X-CX
+	for alex.bennee@linaro.org; Thu, 19 Nov 2020 13:29:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59150)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1kfnw7-0007OF-V2
- for qemu-devel@nongnu.org; Thu, 19 Nov 2020 12:41:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21287)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1kfnw5-0004nU-3r
- for qemu-devel@nongnu.org; Thu, 19 Nov 2020 12:41:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605807692;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=T7Bjm34hEll8fa3YsD6yCHLabQOWQPX60ow+irsuV44=;
- b=fuxzCAWKMtIDbzXjtIRYlvwuc/o5LvP2x/H0b6MTmr9Ft2LDv3uQ95k+7DA5XU3SxwTTP5
- 7rwbw5Y2g8rL057DM0ZEghT7xajRIQ454jC3rBAupQdYpiBcQEbaLAV+QK6Wqg0bnvBF2w
- GsKhjeMx9PZ6xXYz88gkmEsb030mfvA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-225-s5B1lekfNumiZF8C3B-6zA-1; Thu, 19 Nov 2020 12:41:30 -0500
-X-MC-Unique: s5B1lekfNumiZF8C3B-6zA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 400CE1858EC6;
- Thu, 19 Nov 2020 17:41:28 +0000 (UTC)
-Received: from w520.home (ovpn-112-213.phx2.redhat.com [10.3.112.213])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7E1E910021B3;
- Thu, 19 Nov 2020 17:41:27 +0000 (UTC)
-Date: Thu, 19 Nov 2020 10:41:27 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Kirti Wankhede <kwankhede@nvidia.com>
-Subject: Re: [PATCH RFC] vfio: Move the saving of the config space to the
- right place in VFIO migration
-Message-ID: <20201119104127.5e243efa@w520.home>
-In-Reply-To: <860bd707-8862-2584-6e12-67c86f092dba@nvidia.com>
-References: <20201114091731.157-1-lushenming@huawei.com>
- <860bd707-8862-2584-6e12-67c86f092dba@nvidia.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kfoeL-0000HG-7t
+ for qemu-arm@nongnu.org; Thu, 19 Nov 2020 13:27:17 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:43113)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kfoeG-00048f-Kv
+ for qemu-arm@nongnu.org; Thu, 19 Nov 2020 13:27:16 -0500
+Received: by mail-pf1-x444.google.com with SMTP id v5so1244511pff.10
+ for <qemu-arm@nongnu.org>; Thu, 19 Nov 2020 10:27:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=7XkyJxD+vCPYAqI/HIyIHvi+MyCG8Ym29xbg4hkgHGY=;
+ b=UMgPtGB0TjbN8Wyfin0zvx8VAQY1SHb3bnW3eVU15SM19ZV3cqEcxozLPnWAxOcqpM
+ aMe3xqGInZvQsGlfZ0NenH4Uf/2RAC69bVhL4CfPlxAesUkUO9RUHH9+7wWCiC+Js4EO
+ sS9h/QIOPPDR1MQ30ZSBMK92K7h7A4Bm4TaGJHWXgslfC5Wt4g2EZ96VvgRXpb60YknR
+ qRpmVuzpdAcxrW8TJKRTfgyWA6fp/fzdrkr6OyYbTBbfmm8PCJG1Zz1XmgStK58TIdpO
+ NkXTOjzXCOIeoA1QYd6vPRwUkG8KuNEXTYc+DY/m5YQ2kKs6X3q4D3SXJzrUA16NONwi
+ yb/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7XkyJxD+vCPYAqI/HIyIHvi+MyCG8Ym29xbg4hkgHGY=;
+ b=enAdkmbwCMbW4nwQnUSIbXw88JuQeTDlb7BUBOfhHDy/ii4Gn/JZc+e7yEk29r06W+
+ 8DOQtjdbBfClG2ouh5dP6nqfiyD+7NQmAHkjUdTeZJkwo0bp5XfHPDnoUQUaGVnHw4N5
+ 1z1VpEVZ5cP7/ln2TFWlrZcHp33f8Yo81xZ4POyW6OEHGGaho646bPAxqjgmOccMQeZg
+ 2xij/KN0otcCnzLZ0E2kKPPgffJDAtqQhnLa4LWf4djgC6ysYyYZvYBDPco3xLYDgUYc
+ Rz94JYeg35blCv0Xan6VFUpT5vu7yRrK0pFoUW/UKQOf/EZYgR9t5LlctKgxt17pdqaY
+ umZA==
+X-Gm-Message-State: AOAM531/HRaljZ4K8Cz6yTj4LgL+myB0n93fK9IAWKykxoC1B/uPISrn
+ OE9ADfHCDVpcMzbMaNGyZofLdA==
+X-Received: by 2002:a63:3111:: with SMTP id x17mr13647373pgx.329.1605810430241; 
+ Thu, 19 Nov 2020 10:27:10 -0800 (PST)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id l190sm489741pfl.205.2020.11.19.10.27.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Nov 2020 10:27:09 -0800 (PST)
+Subject: Re: [PATCH] linux-user/arm: Deliver SIGTRAP for UDF patterns used as
+ breakpoints
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20201117155634.6924-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <6fae2e37-525d-5dc9-c9eb-ed482813891b@linaro.org>
+Date: Thu, 19 Nov 2020 10:27:07 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=alex.williamson@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+In-Reply-To: <20201117155634.6924-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Neo Jia <cjia@nvidia.com>, Marc Zyngier <maz@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org, dgilbert@redhat.com,
- Shenming Lu <lushenming@huawei.com>, qemu-arm@nongnu.org, yuzenghui@huawei.com,
- wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3N9ELXF/ZILM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <laurent@vivier.eu>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qlq5xEwIELiC
 
-On Thu, 19 Nov 2020 14:13:24 +0530
-Kirti Wankhede <kwankhede@nvidia.com> wrote:
+On 11/17/20 7:56 AM, Peter Maydell wrote:
+> The Linux kernel doesn't use the official bkpt insn for breakpoints;
+> instead it uses three instructions in the guaranteed-to-UNDEF space,
+> and generates SIGTRAP for these rather than the SIGILL that most
+> UNDEF insns generate:
+> 
+> https://elixir.bootlin.com/linux/v5.9.8/source/arch/arm/kernel/ptrace.c#L197
+> 
+> Make QEMU treat these insns specially too.  The main benefit of this
+> is that if you're running a debugger on a guest program that runs
+> into a GCC __builtin_trap() or LLVM "trap because execution should
+> never reach here" then you'll get the expected signal rather than a
+> SIGILL.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This is not a "fix" for LP:1904210, but it does bring QEMU's
+> behaviour into line with that of the real kernel on that binary.
 
-> On 11/14/2020 2:47 PM, Shenming Lu wrote:
-> > When running VFIO migration, I found that the restoring of VFIO PCI dev=
-ice=E2=80=99s
-> > config space is before VGIC on ARM64 target. But generally, interrupt c=
-ontrollers
-> > need to be restored before PCI devices.  =20
->=20
-> Is there any other way by which VGIC can be restored before PCI device?
->=20
-> > Besides, if a VFIO PCI device is
-> > configured to have directly-injected MSIs (VLPIs), the restoring of its=
- config
-> > space will trigger the configuring of these VLPIs (in kernel), where it=
- would
-> > return an error as I saw due to the dependency on kvm=E2=80=99s vgic.
-> >  =20
->=20
-> Can this be fixed in kernel to re-initialize the kernel state?
->=20
-> > To avoid this, we can move the saving of the config space from the iter=
-able
-> > process to the non-iterable process, so that it will be called after VG=
-IC
-> > according to their priorities.
-> >  =20
->=20
-> With this change, at resume side, pre-copy phase data would reach=20
-> destination without restored config space. VFIO device on destination=20
-> might need it's config space setup and validated before it can accept=20
-> further VFIO device specific migration state.
->=20
-> This also changes bit-stream, so it would break migration with original=
-=20
-> migration patch-set.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Config space can continue to change while in pre-copy, if we're only
-sending config space at the initiation of pre-copy, how are any changes
-that might occur before the VM is stopped conveyed to the target?  For
-example the guest might reboot and a device returned to INTx mode from
-MSI during pre-copy.  Thanks,
-
-Alex
-
-
-> > Signed-off-by: Shenming Lu <lushenming@huawei.com>
-> > ---
-> >   hw/vfio/migration.c | 22 ++++++----------------
-> >   1 file changed, 6 insertions(+), 16 deletions(-)
-> >=20
-> > diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
-> > index 3ce285ea39..028da35a25 100644
-> > --- a/hw/vfio/migration.c
-> > +++ b/hw/vfio/migration.c
-> > @@ -351,7 +351,7 @@ static int vfio_update_pending(VFIODevice *vbasedev=
-)
-> >       return 0;
-> >   }
-> >  =20
-> > -static int vfio_save_device_config_state(QEMUFile *f, void *opaque)
-> > +static void vfio_save_device_config_state(QEMUFile *f, void *opaque)
-> >   {
-> >       VFIODevice *vbasedev =3D opaque;
-> >  =20
-> > @@ -365,13 +365,14 @@ static int vfio_save_device_config_state(QEMUFile=
- *f, void *opaque)
-> >  =20
-> >       trace_vfio_save_device_config_state(vbasedev->name);
-> >  =20
-> > -    return qemu_file_get_error(f);
-> > +    if (qemu_file_get_error(f))
-> > +        error_report("%s: Failed to save device config space",
-> > +                     vbasedev->name);
-> >   }
-> >  =20
-> >   static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
-> >   {
-> >       VFIODevice *vbasedev =3D opaque;
-> > -    uint64_t data;
-> >  =20
-> >       if (vbasedev->ops && vbasedev->ops->vfio_load_config) {
-> >           int ret;
-> > @@ -384,15 +385,8 @@ static int vfio_load_device_config_state(QEMUFile =
-*f, void *opaque)
-> >           }
-> >       }
-> >  =20
-> > -    data =3D qemu_get_be64(f);
-> > -    if (data !=3D VFIO_MIG_FLAG_END_OF_STATE) {
-> > -        error_report("%s: Failed loading device config space, "
-> > -                     "end flag incorrect 0x%"PRIx64, vbasedev->name, d=
-ata);
-> > -        return -EINVAL;
-> > -    }
-> > -
-> >       trace_vfio_load_device_config_state(vbasedev->name);
-> > -    return qemu_file_get_error(f);
-> > +    return 0;
-> >   }
-> >  =20
-> >   static int vfio_set_dirty_page_tracking(VFIODevice *vbasedev, bool st=
-art)
-> > @@ -575,11 +569,6 @@ static int vfio_save_complete_precopy(QEMUFile *f,=
- void *opaque)
-> >           return ret;
-> >       }
-> >  =20
-> > -    ret =3D vfio_save_device_config_state(f, opaque);
-> > -    if (ret) {
-> > -        return ret;
-> > -    }
-> > -
-> >       ret =3D vfio_update_pending(vbasedev);
-> >       if (ret) {
-> >           return ret;
-> > @@ -720,6 +709,7 @@ static SaveVMHandlers savevm_vfio_handlers =3D {
-> >       .save_live_pending =3D vfio_save_pending,
-> >       .save_live_iterate =3D vfio_save_iterate,
-> >       .save_live_complete_precopy =3D vfio_save_complete_precopy,
-> > +    .save_state =3D vfio_save_device_config_state,
-> >       .load_setup =3D vfio_load_setup,
-> >       .load_cleanup =3D vfio_load_cleanup,
-> >       .load_state =3D vfio_load_state,
-> >  =20
->=20
-
+r~

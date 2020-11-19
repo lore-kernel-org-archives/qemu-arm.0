@@ -1,181 +1,199 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp826762lfa;
-        Fri, 23 Oct 2020 13:23:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcfr8QL5wfNFMNQpOCTmM1MyECQGrpGJEKwFcs0YpjtxgtwXGjG3K3NJABU+0v0XXhubjC
-X-Received: by 2002:aed:26a6:: with SMTP id q35mr3859069qtd.10.1603484627574;
-        Fri, 23 Oct 2020 13:23:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603484627; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp76521lfb;
+        Wed, 18 Nov 2020 22:09:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxVjqWwp2qsSFUYlehPXqof4K3uBB4Q+vqMDukefnDybhzf2IbzT9jWTLpf2XsYl9onccHh
+X-Received: by 2002:a25:bb90:: with SMTP id y16mr9195334ybg.9.1605766192164;
+        Wed, 18 Nov 2020 22:09:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605766192; cv=none;
         d=google.com; s=arc-20160816;
-        b=WVt6CLuZFR9CoohMC5bWzMZdxYsTfAXDV2+mGWJKTYPpB3fAwH+4CSVSCezDYPUPvu
-         VLTRQLl7mGyqhsp64U1PX1vhCO4g+AmsJL87wXdHK0bP73tWYoS000ZsppHg/LMNBHA6
-         FY/KwbyQmUUfO8aPbEZLOrUT6KSpLTk+apVB5M03tf5n3wOmnQOjZN+keFh+zli6Hhv9
-         6XqYaHRu4VCO9+ipnH2hdA5LUHTLfJRMAXOKRVx3lFn/2L6E+3tBDncXakPS+BtNIbOp
-         dfwJm5z5g6dhklJ4JzFo4rC9TgYS9imHJXNnrQVVVD0cTJnvTWpzoteNnrCSELDyNd3K
-         jKcQ==
+        b=yGhH3hoyN4QmFFx7LmvOni/9K3K+Q7HiVIVRgNNpa87AVGvEAYZmqNh7kKZgS8k/sq
+         5FBq+yEfzAhgk2tvqW9znORk/lW0DAsz+IHO+E3VzdexBSGL92MFn3sfPrxKsIKb8ASB
+         KD3kXxSYBRuV3+O1bGloz+1B1SldBYiJ8aupsuy/+35DVxtUFo3x/mop4P4a2Bl0M+yk
+         XVKfRkEbpwDJLFhfh2lKyDXJtebfhCfGj0O3fVcQlachqGqzQ7a6A/6GBqj1xNW7lXtC
+         O9dFibUTopDiKZTYpQFVlpMSTsQmlVor+gDGajVhyUXze9f6H/btbRj+PGq8RdiKIri2
+         9aFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:organization:references:to:from:dkim-signature;
-        bh=Ihvi2mo5hD+NEe/DKlWqo3YO8djqorywMVnMJdYPyC8=;
-        b=L/A6AGKPkTRaiyp+6rJlqkwMGyZDbD/r5rv3WVP6Yk7WR2x0IMdtUltedkgHhC3TD8
-         hsSnKZbUkrl/yx/Ec2QiW7U8+fJe3mCZFwCOePrWSr78ZYg41MtAl9dN0nsF+VhdhqNv
-         hSFXpe6fVFpqBH+XZPCJazcKxEOcz8XzliJ9arzR1j5T2YHUhNxW+V1MgVME5Q2jclwY
-         2EOUtoqU5P/E2cg55OFfSLSIzUsLrj9ow7q4ye7EfyGLDoLclmlnwjK/whTLik6zMUC0
-         8xUfhJ1k6/vuIfUpvgHI0/0mRdpy5h2lSRiXBLN0HUkB8DtedPLgmy/LqEllSfD4VGcw
-         blow==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=xauFzA0LStgYC/5r6IhxYU52HnlDeKQw3PBe1otIzB8=;
+        b=YecOZsR1Gd2gSwtMAFV+dnFyGc3gtqF3DWdgq3YxTGwbpL6SIps4GX/RbUr3N8eJF1
+         uiWwtq5vwJYRroxzPwg+rsb645Vms4Wj0ptHEDFpt9oUHuvvkF2w7oeJuZwkDSAlfDMz
+         RI1AOzwqvbQApUEp75BNfpPEkl3Fg4og5Fl/9dSLWn9kP9jGpLhZIrPdoLWlxI+Gebrf
+         +W1JP3U8wKGNEikSbkuVppfDj4eyCUVnJhRe8kaoB8b8gRxhlo/8tcB/+Dyq0f2CSt4O
+         XfKge2SLXlpZ3vrSNTl92mPdBsRXXYjtp2BFd3AFjZoPcqBG9EWWATE8Ejkk8FyZBJ6i
+         +lFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TFm7aJda;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="PgBRGiQ/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1si1182684qvx.223.2020.10.23.13.23.47
+        by mx.google.com with ESMTPS id f4si16518485ybk.496.2020.11.18.22.09.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Oct 2020 13:23:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Nov 2020 22:09:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TFm7aJda;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="PgBRGiQ/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40482 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44606 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kW3bG-0004iB-Va
-	for alex.bennee@linaro.org; Fri, 23 Oct 2020 16:23:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41208)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kfd8h-0002NW-HU
+	for alex.bennee@linaro.org; Thu, 19 Nov 2020 01:09:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kW3b5-0004h5-SB
- for qemu-arm@nongnu.org; Fri, 23 Oct 2020 16:23:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59066)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kfd8I-0002Ls-35
+ for qemu-devel@nongnu.org; Thu, 19 Nov 2020 01:09:26 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45018)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kW3b3-0005Vd-Dh
- for qemu-arm@nongnu.org; Fri, 23 Oct 2020 16:23:35 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kfd8E-0006CK-Je
+ for qemu-devel@nongnu.org; Thu, 19 Nov 2020 01:09:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603484612;
+ s=mimecast20190719; t=1605766161;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ihvi2mo5hD+NEe/DKlWqo3YO8djqorywMVnMJdYPyC8=;
- b=TFm7aJdaEq1W4R6aipO0l7mZ58LhvxyUkTJGj6AE+KVYvqpSl03GlWLI9MPXJqGWH+m0QE
- mQew6XCD9yRTQUm4AFFtcv5cXP7dGK8/xnmBPTKiIRd6mlT7mWcq0dr74mWO1gMa5u1QAl
- EoNs94YCl9YlaKiR342w9MPuQnNKh0M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-148-fcKcyCEmOqyTovmsibG5EQ-1; Fri, 23 Oct 2020 16:23:28 -0400
-X-MC-Unique: fcKcyCEmOqyTovmsibG5EQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C84E805F19;
- Fri, 23 Oct 2020 20:23:26 +0000 (UTC)
-Received: from [10.3.113.7] (ovpn-113-7.phx2.redhat.com [10.3.113.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7B3BC5B4C1;
- Fri, 23 Oct 2020 20:23:05 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-References: <20201023183652.478921-1-eblake@redhat.com>
- <20201023183652.478921-13-eblake@redhat.com>
-Organization: Red Hat, Inc.
-Subject: Re: [PATCH v5 12/12] qapi: Use QAPI_LIST_ADD() where possible
-Message-ID: <a8e32a7b-c895-5f3b-14ec-50e5af9426b1@redhat.com>
-Date: Fri, 23 Oct 2020 15:23:04 -0500
+ bh=xauFzA0LStgYC/5r6IhxYU52HnlDeKQw3PBe1otIzB8=;
+ b=PgBRGiQ/9n+4eHa+UIYfUhr0iaZd6Eaqgw1ZqO9V2UeUidrrPm4O0WGQPGt4B5/bK7kEY7
+ ZWqTnODmAJ57ra6mK5JcyqEq5QXtzb8cIgBGKOgBwG3daASoFU9KhwfL0yWARniRGfNDxf
+ S7GgPYaBdoAaMGQb6hbi2vwyFrVfl3A=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-521-c3KmEpYPNniIv3WFUyqq7A-1; Thu, 19 Nov 2020 01:09:18 -0500
+X-MC-Unique: c3KmEpYPNniIv3WFUyqq7A-1
+Received: by mail-wm1-f70.google.com with SMTP id o203so2022144wmo.3
+ for <qemu-devel@nongnu.org>; Wed, 18 Nov 2020 22:09:18 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=xauFzA0LStgYC/5r6IhxYU52HnlDeKQw3PBe1otIzB8=;
+ b=FhzwiBqbxd8B9vJEXL7YO5t3njvaofaoM0UTciCRWf6O7Wm003SaqNxnOXIE0MgMwv
+ uVYrtQBudS31EjF+ieiUpcjOzGVqFlVSbtBM+GNe3MmSlmq1+XH0pNVjq1/HAXRpWnPc
+ dGwrl4V8NPtrwySxkolyfK3yeLHhInRXg4Y6ol3O+yoX51OzCeDgl4MmZOx/XLd8Gvsg
+ 4iiZcBsgFjMtJKmBtfh1/kkttAlZ9yhijStYDRpWUHkWmqXPeT4uEcKshoIEvjNVmRpH
+ jnGxx2NX9/9NK+LvXX3gnncWCHyxci78DN/61ywYy8Vf7kdo4nk7I7atIX93DRpyz0re
+ vCyA==
+X-Gm-Message-State: AOAM533faZDczuNHgPNUSecK/Solq9G1gPtq3LCoIqvnapVsx9tEHVlS
+ Q1WftS0yXoJ7kC6PmBwID29iHTeGmQptZOKVinhYH22Kz73y4iXawBVbDV1nGx84byoIsMir2Ra
+ FUlV7dEhFvBzNEQ4=
+X-Received: by 2002:adf:f00f:: with SMTP id j15mr8279106wro.102.1605766157339; 
+ Wed, 18 Nov 2020 22:09:17 -0800 (PST)
+X-Received: by 2002:adf:f00f:: with SMTP id j15mr8279075wro.102.1605766157085; 
+ Wed, 18 Nov 2020 22:09:17 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id h2sm8046103wme.45.2020.11.18.22.09.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Nov 2020 22:09:16 -0800 (PST)
+Subject: Re: [RFC PATCH 0/5] ARM: reduce the memory consumed when mapping UEFI
+ flash images
+To: Markus Armbruster <armbru@redhat.com>,
+ David Edmondson <david.edmondson@oracle.com>
+References: <20201116104216.439650-1-david.edmondson@oracle.com>
+ <3da830b6-8200-6df9-9ba3-1f51bf887c4e@redhat.com>
+ <87a6vhxvit.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <e54fc218-1eae-be1c-b064-049bc1d46793@redhat.com>
+Date: Thu, 19 Nov 2020 07:09:14 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201023183652.478921-13-eblake@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <87a6vhxvit.fsf@dusky.pond.sub.org>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eblake@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 02:46:25
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/19 01:09:21
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.108, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
- David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
- Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- "open list:S390 KVM CPUs" <qemu-s390x@nongnu.org>, vsementsov@virtuozzo.com,
- stefanha@redhat.com, David Gibson <david@gibson.dropbear.id.au>,
- kwolf@redhat.com, "open list:GLUSTER" <integration@gluster.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Max Reitz <mreitz@redhat.com>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VgAkCp2y+Z8y
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Xu Yandong <xuyandong2@huawei.com>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Zheng Xiang <zhengxiang9@huawei.com>, qemu-arm@nongnu.org,
+ =?UTF-8?B?aGFpYmluemhhbmco5byg5rW35paMKQ==?= <haibinzhang@tencent.com>,
+ Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LxBoe4wlwQRJ
 
-On 10/23/20 1:36 PM, Eric Blake wrote:
-> Anywhere we create a list of just one item or by prepending items
-> (typically because order doesn't matter), we can use the now-public
-> macro.  But places where we must keep the list in order by appending
-> remain open-coded.
+On 11/16/20 2:48 PM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
 > 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->  docs/devel/writing-qmp-commands.txt | 13 +++------
-
-> +++ b/docs/devel/writing-qmp-commands.txt
-> @@ -531,15 +531,10 @@ TimerAlarmMethodList *qmp_query_alarm_methods(Error **errp)
->      bool current = true;
+>> Hi David,
+>>
+>> On 11/16/20 11:42 AM, David Edmondson wrote:
+>>> Currently ARM UEFI images are typically built as 2MB/768kB flash
+>>> images for code and variables respectively. These images are both then
+>>> padded out to 64MB before being loaded by QEMU.
+>>>
+>>> Because the images are 64MB each, QEMU allocates 128MB of memory to
+>>> read them, and then proceeds to read all 128MB from disk (dirtying the
+>>> memory). Of this 128MB less than 3MB is useful - the rest is zero
+>>> padding.
+>>
+>> 2 years ago I commented the same problem, and suggested to access the
+>> underlying storage by "block", as this is a "block storage".
+>>
+>> Back then the response was "do not try to fix something that works".
+>> This is why we choose the big hammer "do not accept image size not
+>> matching device size" way.
+>>
+>> While your series seems to help, it only postpone the same
+>> implementation problem. If what you want is use the least memory
+>> required, I still believe accessing the device by block is the
+>> best approach.
 > 
->      for (p = alarm_timers; p->name; p++) {
-> -        TimerAlarmMethodList *info = g_malloc0(sizeof(*info));
-> -        info->value = g_malloc0(sizeof(*info->value));
-> -        info->value->method_name = g_strdup(p->name);
-> -        info->value->current = current;
-> -
-> -        current = false;
-> -
-> -        info->next = method_list;
-> -        method_list = info;
-> +	TimerAlarmMethod *value = g_new0(TimerAlarmMethod, 1);
-> +        value->method_name = g_strdup(p->name);
+> "Do not try to fix something that works" is hard to disagree with.
+> However, at least some users seem to disagree with "this works".  Enough
+> to overcome the resistance to change?
 
-Oops, tab damage.
+Yeah, at least 3 big users so far:
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+- Huawei
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg607292.html
+- Tencent
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg742066.html
+- Oracle
+(this series).
+
+Then Huawei tried the MicroVM approach:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg680103.html
+
+I simply wanted to save David time by remembering this other approach,
+since Peter already commented on David's one (see Huawei link).
+
+Regards,
+
+Phil.
 

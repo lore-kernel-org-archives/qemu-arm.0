@@ -1,157 +1,151 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp892976lfb;
-        Wed, 18 Nov 2020 13:33:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwUliF9BxtXSTw5MpYQFtodlTHgORYTNG2ypCg2yeSRRHrJKGyU9T7+1tEhCrQlnSzUDl3b
-X-Received: by 2002:a25:cfcf:: with SMTP id f198mr12403350ybg.362.1605735221588;
-        Wed, 18 Nov 2020 13:33:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605735221; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1075941lfb;
+        Wed, 18 Nov 2020 18:27:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy/neLtS+sVZECoGyb+AW8dWpXDv4ah353NaZyUC7r5a6UPmrQlgjd/oiUXmBZAWw1DpIZI
+X-Received: by 2002:a25:df55:: with SMTP id w82mr9824408ybg.135.1605752871838;
+        Wed, 18 Nov 2020 18:27:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605752871; cv=none;
         d=google.com; s=arc-20160816;
-        b=zXtv8ogfakuLULauYSdIRj/eNzY5LzdB86Qlg3eU/XuVV2rOh/iFc7NP2GeyfQGdiW
-         DdG2+H/+hpkydYx47zjEe9vbVpww1iGijxLPzfFYkBAb95VaNP2Q8TFrrEczb9Mff4Y+
-         o9X3GNTA58r6EL/QD5PWKSfOolIwGz4ynghrOACtXL6R1UGJJRMNBcIsvJIZWdrgfCUu
-         hZe0gbvuOxTmhjRbdXE6+whwKCSQwlQUU2IzBTS2CP/x1NwzADWDgX5lUE4rNVQipAL+
-         jsa3zB65QzMs7hIm6gJ74ODT4Wg1HDJ3Hzg6oLBhUerQckilsO0jkerGmYu06d9zkfqZ
-         QSHQ==
+        b=v4aOvI214eM0cqdetH5OqiFFONlsVKMGx4+xujhk0n7Ovdz4/9EmQ7HAc9SUnr2qG/
+         QvUPzBq0d/OVkAaxNK+47N/w3erza8/PHpjT7Yt9f8rcDXB6tYyF9agpTyyDklVZ8BwP
+         TORd6cLgKE/QBW5n65+6J5NkEph2pR91eQmjdTW6R9+x1o8q9M3hw27U41udzY+gXm/Z
+         Ydmok8iU1d0JhNqYix10JqF1XCaFnY+CQ6K4v0AqMHXvotgFPDAH4wz+pD/tAqJu+Bpc
+         EMjmTT0bPb45BpMDkY/95sXzrxMKRKs86zjejzBMYVq0Vwm61AmpcDRgkJzspwKP2HsI
+         IkGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:dkim-signature
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject;
-        bh=iZy2jnKCo6uVy6XoVK4BTiUnT47dLE0/jlWtYW+n1o4=;
-        b=yJwAZdnUtLjsRpFAS+y56t1nBO/phnwArwvF18LAQShjwpohUOyfFW1m3MewEmcEb/
-         wicEsu0N8cBl8uD2lyTDn8rvlXGYbDilassUK4CJeF9tLzzKldxAWgoUSLulRtOkVLrK
-         m/k1CF+EcfQQl4AWALgFLN62/ONhXS/MyvD3R6wu0klME/TAmyWClO6ncHPqsc2Qp7Zz
-         LvRJ5rOjBfQ83UBEF7Z04pvLzdZtOucwFPOZfbRrWAJT9UFrxj1jwDyTDZZdcz0cjFaO
-         EwaQOLyMqRG7wOfVV+EKB08UgWaLKqK5Um/wTmxhgvg7k1+II4B8ZH6vL2bR4r931ei8
-         uhhQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:references:subject:to:mime-version:user-agent:from:date
+         :message-id;
+        bh=0TUkRJB50n712pgO5HmR6xj5xwLmMgILB7uyh83Px68=;
+        b=mYykO5VMkMjsQ2nEqdssG7zcr46/lulJHmZcYkZYdYcDio41m9r8wbaYhQSA+HgO+G
+         O5Ogxdfe25JN6V9dCpJuWEPP7XgZTyz5bDmIrONwdIYkRzzCAN8LRy88yP3xRTcBTCoW
+         xrnWn9jRPpNNAisW9fatwZGhzx1d3hsKi5Niq6lWwUZWU3AsdLYyyXgdzU/qou8cMICQ
+         UNlQ+8RqRVnhw3NEW0hmTR37ZJPNnZv0emWrOwH0EjO6vZG6skQauQldgrLGU7HibqGF
+         Sn9CkcrEna+Z3qJ7OgVSfrQmSOWT/vpkRObjTInpJGtr9GOM74x8Lfm1zgcAzR9Y7k03
+         U0Bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nvidia.com header.s=n1 header.b=c8z4vMsi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j65si23639804ybj.137.2020.11.18.13.33.40
+        by mx.google.com with ESMTPS id n16si14665272ybf.138.2020.11.18.18.27.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Nov 2020 13:33:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Nov 2020 18:27:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nvidia.com header.s=n1 header.b=c8z4vMsi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1]:59508 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfV5A-0005BN-E0
-	for alex.bennee@linaro.org; Wed, 18 Nov 2020 16:33:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41476)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kfZfr-0004CV-7E
+	for alex.bennee@linaro.org; Wed, 18 Nov 2020 21:27:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwankhede@nvidia.com>)
- id 1kfV1s-0003s6-Tg
- for qemu-devel@nongnu.org; Wed, 18 Nov 2020 16:30:16 -0500
-Received: from hqnvemgate25.nvidia.com ([216.228.121.64]:12575)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kfZfi-0004CD-Cl; Wed, 18 Nov 2020 21:27:42 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2098)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwankhede@nvidia.com>)
- id 1kfV1q-0001hJ-L1
- for qemu-devel@nongnu.org; Wed, 18 Nov 2020 16:30:16 -0500
-Received: from hqmail.nvidia.com (Not Verified[216.228.121.13]) by
- hqnvemgate25.nvidia.com (using TLS: TLSv1.2, AES256-SHA)
- id <B5fb5925a0001>; Wed, 18 Nov 2020 13:30:02 -0800
-Received: from [10.40.103.11] (10.124.1.5) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 18 Nov
- 2020 21:30:05 +0000
-Subject: Re: [PATCH RFC] vfio: Set the priority of VFIO VM state change
- handler explicitly
-To: Shenming Lu <lushenming@huawei.com>, Alex Williamson
- <alex.williamson@redhat.com>, Cornelia Huck <cohuck@redhat.com>
-References: <20201117014050.1385-1-lushenming@huawei.com>
-X-Nvconfidentiality: public
-From: Kirti Wankhede <kwankhede@nvidia.com>
-Message-ID: <7a9289ac-a28e-d9ff-a267-f1e2895dd078@nvidia.com>
-Date: Thu, 19 Nov 2020 03:00:01 +0530
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.1
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kfZfd-0007eN-J1; Wed, 18 Nov 2020 21:27:42 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Cc3Tz6tbmzhY3r;
+ Thu, 19 Nov 2020 10:27:03 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 19 Nov 2020 10:27:04 +0800
+Message-ID: <5FB5D7F8.50003@huawei.com>
+Date: Thu, 19 Nov 2020 10:27:04 +0800
+From: Alex Chen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-In-Reply-To: <20201117014050.1385-1-lushenming@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
+To: <balrogg@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/arm: Fix bad print format specifiers
+References: <5F9FD78B.8000300@huawei.com>
+In-Reply-To: <5F9FD78B.8000300@huawei.com>
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.124.1.5]
-X-ClientProxiedBy: HQMAIL111.nvidia.com (172.20.187.18) To
- HQMAIL107.nvidia.com (172.20.187.13)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
- t=1605735002; bh=iZy2jnKCo6uVy6XoVK4BTiUnT47dLE0/jlWtYW+n1o4=;
- h=Subject:To:CC:References:X-Nvconfidentiality:From:Message-ID:Date:
- User-Agent:MIME-Version:In-Reply-To:Content-Type:Content-Language:
- Content-Transfer-Encoding:X-Originating-IP:X-ClientProxiedBy;
- b=c8z4vMsi70tcv6i02VXRLSxhGWA7gPuRyrwilVfUw2Z5N3aFuJUBlfPKBVr1VEowW
- h/73V9aY7qPrCy/t3YvxPymfL30zfbYqyEMQRatT0CRZypFJWkOySXRTPcU9MOd4Fx
- jmM5zHH4iP944mS/Et+EOW4pz32zHz9LUvhUlqFKiu7K0hgkYR8sz+674uDuNNM1GM
- UPMjfXlS3xFn2KDd2UUFFvWiq7EpgHXN9c1EQ8rhHBB/pVE8u6PK3adJ9iND093vSs
- jE2e5VW0phvTXPOuN4F8Fi8SyMXelCKgGw1STjHJAHGajQm6yijEy035gUiUqjN+tb
- OPGju8a3gH34w==
-Received-SPF: pass client-ip=216.228.121.64; envelope-from=kwankhede@nvidia.com;
- helo=hqnvemgate25.nvidia.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 16:01:23
-X-ACL-Warn: Detected OS   = Windows 7 or 8 [fuzzy]
-X-Spam_score_int: -70
-X-Spam_score: -7.1
-X-Spam_bar: -------
-X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=alex.chen@huawei.com;
+ helo=szxga06-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 20:50:45
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Neo Jia <cjia@nvidia.com>, Marc Zyngier <maz@kernel.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, yuzenghui@huawei.com,
- wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DnVyhhQb7f6w
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm@nongnu.org,
+ QEMU <qemu-devel@nongnu.org>, zhang.zhanghailiang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3btPS8kf1rJj
 
+Kindly ping.
 
-
-On 11/17/2020 7:10 AM, Shenming Lu wrote:
-> In VFIO VM state change handler, VFIO devices are transitioned in
-> _SAVING state, which should keep them from sending interrupts. Then
-> we can save the pending states of all interrupts in GIC VM state
-> change handler (on ARM).
+On 2020/11/2 17:55, AlexChen wrote:
+> We should use printf format specifier "%u" instead of "%i" for
+> argument of type "unsigned int".
 > 
-> So we have to set the priority of VFIO VM state change handler
-> explicitly (like virtio devices) to ensure it is called before GIC's
-> in saving.
-> 
-> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Alex Chen <alex.chen@huawei.com>
 > ---
->   hw/vfio/migration.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+>  hw/arm/pxa2xx.c | 2 +-
+>  hw/arm/spitz.c  | 2 +-
+>  hw/arm/tosa.c   | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
-> index 55261562d4..d0d30864ba 100644
-> --- a/hw/vfio/migration.c
-> +++ b/hw/vfio/migration.c
-> @@ -857,7 +857,8 @@ static int vfio_migration_init(VFIODevice *vbasedev,
->       register_savevm_live(id, VMSTATE_INSTANCE_ID_ANY, 1, &savevm_vfio_handlers,
->                            vbasedev);
->   
-> -    migration->vm_state = qemu_add_vm_change_state_handler(vfio_vmstate_change,
-> +    migration->vm_state = qdev_add_vm_change_state_handler(vbasedev->dev,
-> +                                                           vfio_vmstate_change,
->                                                              vbasedev);
->       migration->migration_state.notify = vfio_migration_state_notifier;
->       add_migration_state_change_notifier(&migration->migration_state);
+> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+> index 591776ba88..1a98f3bd5c 100644
+> --- a/hw/arm/pxa2xx.c
+> +++ b/hw/arm/pxa2xx.c
+> @@ -675,7 +675,7 @@ static void pxa2xx_ssp_write(void *opaque, hwaddr addr,
+>          if (value & SSCR0_MOD)
+>              printf("%s: Attempt to use network mode\n", __func__);
+>          if (s->enable && SSCR0_DSS(value) < 4)
+> -            printf("%s: Wrong data size: %i bits\n", __func__,
+> +            printf("%s: Wrong data size: %u bits\n", __func__,
+>                              SSCR0_DSS(value));
+>          if (!(value & SSCR0_SSE)) {
+>              s->sssr = 0;
+> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+> index 32bdeacfd3..772662f149 100644
+> --- a/hw/arm/spitz.c
+> +++ b/hw/arm/spitz.c
+> @@ -586,7 +586,7 @@ struct SpitzLCDTG {
+>  static void spitz_bl_update(SpitzLCDTG *s)
+>  {
+>      if (s->bl_power && s->bl_intensity)
+> -        zaurus_printf("LCD Backlight now at %i/63\n", s->bl_intensity);
+> +        zaurus_printf("LCD Backlight now at %u/63\n", s->bl_intensity);
+>      else
+>          zaurus_printf("LCD Backlight now off\n");
+>  }
+> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+> index fe88ed89fe..66b244aeff 100644
+> --- a/hw/arm/tosa.c
+> +++ b/hw/arm/tosa.c
+> @@ -150,7 +150,7 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
 > 
-
-Looks good to me.
-Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
+>  static uint32_t tosa_ssp_tansfer(SSISlave *dev, uint32_t value)
+>  {
+> -    fprintf(stderr, "TG: %d %02x\n", value >> 5, value & 0x1f);
+> +    fprintf(stderr, "TG: %u %02x\n", value >> 5, value & 0x1f);
+>      return 0;
+>  }
+> 
 

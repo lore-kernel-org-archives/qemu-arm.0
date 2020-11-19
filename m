@@ -1,103 +1,103 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp764088lfb;
-        Thu, 19 Nov 2020 14:17:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwi6bkj7pfgdcVHn6gs03+ORndsiYnlPWa9uXI0Ju30OaghAQMdICf4zFbMiu/XLGQR+G37
-X-Received: by 2002:a5b:cd1:: with SMTP id e17mr17193534ybr.177.1605824270869;
-        Thu, 19 Nov 2020 14:17:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605824270; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp764214lfb;
+        Thu, 19 Nov 2020 14:18:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwsLKDenyAfBOEboXlpZwz3+oEP6TiNFat7PBp6++qQbco6vA6jLOIAHdd3YnAnePKA4DEN
+X-Received: by 2002:a25:d494:: with SMTP id m142mr24039364ybf.16.1605824283189;
+        Thu, 19 Nov 2020 14:18:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605824283; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bf3xKzAuqCuPFj2Drkv2WHV4TtnuIBlsP0Fe0V3yCQHaJLAZCI1SJqj41n99NeGG3M
-         86nzKu1GCqbPYsLqIhbWVsM3Sf+kiFb2695miiXVqlgu9ffJAxHg1aAThDS9vbysdFuB
-         TEWVuQY3h+8VGIPrFPxdVljkNAxme3v4+RA8RsvcHOEfgCbmxM3+VVpT6aUmgERM4orD
-         uRSj8HmV4QX5w54IxbYXPyP8KotIqlgi1bOeGqQwQ8E0onp+lLuOQ6A8AzSEmYi4msIy
-         2faPTOvIMVweKhY+lIuq45fz4nb4fcOJkL1x1+5OsoUaFGnsXXdm3lZ2FBwpiYYB1prU
-         vZ9A==
+        b=CN6pLAv5yeHM8/6hHko2oAflcAn+8OTAYoaccV+KHsLlSXx988IrUVbmwX7pCh57yq
+         WZG/0CBY9vFEEhQkTFcSORIJCxidNd7YGa7HkquQEko9DhypyV6r2c/GJdCqPXzsMr5/
+         yO3PsxBz/g8doD0WZ8gS2+i9Xa7FdS3ctEGHwAA2rS7nsEvER2d8WRMrZCe/W6aNlyqX
+         40V4oQe/rqBe94AUZkv6eOm2bG3tXo2SHDIPIjI9owSOqJTfT+1t7V+P1z97KQkmkcCa
+         cFWmwGpabKOzvnNimf/H17rTLyyzym3G27tjRktVDodE6MgINhH2Z+RYyb8Uihn7qB9h
+         1c2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IYl49JEXLJ4NfyGT6TJwXfRcF2SPUTrLyQsnI7fa5Vo=;
-        b=AHjwQ+3Jbq/+JbC/xry/uV9Ic50jljUQsPwynR6TPwARor63MNNw1oGz9dAvhGnFs/
-         ZPbiol/n01LhisP6WCWXSlbBQDmiABGRoqhf20ALgWGm+jC3RZnAGNxR3dwAujc3We79
-         W6Hn0sYYiaUEe5n/RqKGu6bhPrluskl5t3ArzMPcM1a6Fwoqk69r7rpMIeX6y3SlCRzx
-         ZX+T3RKpP2qZzvsv5JIrvruKEbWX6bZNuioACA9VjjLGkVocIszhux5GB+8TbVlkhOL5
-         eK43/uHqurV6FZvsXU9UZIau5T1+6d96f2p3QumnPKxe0mDufZIHtdDY6iAfw/t9nX9V
-         OhAw==
+        bh=FpA8YdBjlu14/nCrS6Lp83etaqEBGx7TEBIGVpu3Jpk=;
+        b=yVMU7yTgDoZJQWkTaAXhS0QSSBjFXkl1iiroX2YtLvntTtPSkChN1ePoH6RBeWlaZY
+         f284cRjkaJRg7mB1ki60fL39inZxbFa/xSUbDdjiLSCwWw7sL0i+FbSUaNfwJ+pE5Mk8
+         p4GEPHYWqhwd/7S5ww/tjYLi5PYJxuOLI8O066bV+9redVvUQRf2UulhbTHbk57PPiaK
+         glvv+ew70pi/UCd8dNXLC7AwVF/yixbbQvc3V4VNiEkqcWWG5X6Eo4Wjw0XfjBt8Jw37
+         ASUQIcT8D1qWEHIoNvxfk+ISJlj2tjaHz2C8eq/yJtRUP6bvcPHxBDWOWdSNYc0ubNbN
+         6L4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RW65dYVU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qXqI9wb6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k9si766598ybh.411.2020.11.19.14.17.50
+        by mx.google.com with ESMTPS id g38si786940ybi.291.2020.11.19.14.18.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Nov 2020 14:17:50 -0800 (PST)
+        Thu, 19 Nov 2020 14:18:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RW65dYVU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qXqI9wb6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49506 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50254 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfsFS-0002A6-8z
-	for alex.bennee@linaro.org; Thu, 19 Nov 2020 17:17:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51642)
+	id 1kfsFe-0002Uz-Hi
+	for alex.bennee@linaro.org; Thu, 19 Nov 2020 17:18:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51644)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kfrvH-00011D-AQ
+ id 1kfrvH-00012Q-N4
  for qemu-arm@nongnu.org; Thu, 19 Nov 2020 16:56:59 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40499)
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:42544)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kfrv4-0004FC-TI
+ id 1kfrv4-0004FM-T5
  for qemu-arm@nongnu.org; Thu, 19 Nov 2020 16:56:59 -0500
-Received: by mail-wm1-x342.google.com with SMTP id a3so8060072wmb.5
- for <qemu-arm@nongnu.org>; Thu, 19 Nov 2020 13:56:45 -0800 (PST)
+Received: by mail-wr1-x444.google.com with SMTP id l1so7973894wrb.9
+ for <qemu-arm@nongnu.org>; Thu, 19 Nov 2020 13:56:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=IYl49JEXLJ4NfyGT6TJwXfRcF2SPUTrLyQsnI7fa5Vo=;
- b=RW65dYVUokAroAYmmJpkqUnENT9sMP0nallQRhd0kU0t/hoFmbuIswAHFv2fMl+/GA
- Ik8qLEPuDJ7lv+b22tytoetx7VCDoDaKy1v6gbaGd2qnhCs4g1V5ays4E0z5fi/27ki3
- NCAFhWgC5OttC5+cPeXCCn1JR1bIsPi2TxpH68MnTT9666ftSfMpiB49p1TQofN2/Kxs
- k9Y3NMeMLjo/ihCrWIPALS4dk76ZxK4UN28iRsInnpcyIFWe4/NkOLtOTemac7C/YquQ
- Fc0nkr3gp/kKGEXheQadq+1GXz9jUqrOWI95vZOGOmdc3D9a11SBAc4X0ge2nyhmctzK
- RqlA==
+ bh=FpA8YdBjlu14/nCrS6Lp83etaqEBGx7TEBIGVpu3Jpk=;
+ b=qXqI9wb6HJ6sXwzyb+WpiQCPa7hLU3IDz9099pavJn/uvGGybNrgLTFQrP0QoDkLDW
+ /h+6Ofkh5P/Z06RliBmuw5Ef4cMZNULDRfeoDjza8nSuOBUA5XKURpAZB3mGBOWcdYVz
+ rPuEmJNCKQm9Bo6w6t8Tzwa+7e4fspOJ7Kk1q01kHXPr+R5nAD4KM5MYto44xZsVk7zT
+ E75lGDqV06qSWezP80tCU++BaQZ9KhrJadBI6xI0fF8xV/xGokc07IMz97bIKmrKPr0P
+ hoo3mrQdtPSWq2OuDzvt71ISfBzw25fNr+JMaP7Pggfy5bFHAfbpRjPzz5ZlyYfQ5ra1
+ WdNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=IYl49JEXLJ4NfyGT6TJwXfRcF2SPUTrLyQsnI7fa5Vo=;
- b=a9I6w1D3w/o4QcKqMCeQO2cOw3FAhEHXZvKqDgfhRYf6K32+WjDi/8g40/k0TH/TpG
- xc6oQyRNFJaD3cPMvlJn9kx9UKZ1lRkcauOwmytYfbw9ErkXp0Ee/bkTzVDJ9NvC7QgW
- s4E88BZLB+/M1Bm1SaZxIanobjQCCLxlgd7f0kxUL183rlJ++rTPm2LJVBbMqOvb1b5n
- ycVEfxnjdRpt/VBdMMn+1fIutvzJXUXrGxfNH3JLskQjokF1/qliTICJNKEAiRkSRrFT
- n9GRVNvEEz7E+oJHqJ86YPFsywB6u/k/MuG32HO2+p7EnlHt7koAVIBgtYbuaJwK6n2h
- 8P3w==
-X-Gm-Message-State: AOAM532+PuVr9n2FeZY/IJd6xnI3pgCD6jI0O6c+J34nM6x0r1ucfuvX
- u65UY8i6Mm6/+JgYe1GE0nkXZT4Lp2MnqQ==
-X-Received: by 2002:a1c:a5d8:: with SMTP id o207mr6629056wme.0.1605823004064; 
- Thu, 19 Nov 2020 13:56:44 -0800 (PST)
+ bh=FpA8YdBjlu14/nCrS6Lp83etaqEBGx7TEBIGVpu3Jpk=;
+ b=ZD7gZMebIRZ/f7acQDA8+aJF4PPbaMJGAM/ne6dxQp9AXfrmA2m/7UpBqRfBN1Km2e
+ Jo/I5FGhQbYO8DB/M5ZAriYdMVaq/GNwUoltKiGiKCi1PqE1AHDpDmv+ZPHCQu79xDEX
+ 3svjPkyYYHLMKufc5QykwfPGH4a9bPTiTgNsMbCNopUS8Z3mN+C5ZZfGu13yDm9dwfyZ
+ NhDNh6SWRW0zhbrPT/6trVeqqtuqS0LrJtimpaa7BtI2x0AP7KfH2kX1SorFOj7NyUzu
+ CsqtCQC4jxfv+yx/8dRNTpQyoMG/F2eIHg/8/g7K8ea9AxJhaUJll2h7tcSP+2stvNxc
+ W7sw==
+X-Gm-Message-State: AOAM530EljhMGdhmleiNY2NjKOxHcNSLRrHjuXu4TsNZ0mn6BonyFGRZ
+ jSoOHOjYYl3yU434ogzJju995XcqG64Zaw==
+X-Received: by 2002:a05:6000:c7:: with SMTP id
+ q7mr12007763wrx.137.1605823005223; 
+ Thu, 19 Nov 2020 13:56:45 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j15sm1934851wrm.62.2020.11.19.13.56.43
+ by smtp.gmail.com with ESMTPSA id j15sm1934851wrm.62.2020.11.19.13.56.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Nov 2020 13:56:43 -0800 (PST)
+ Thu, 19 Nov 2020 13:56:44 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 21/28] hw/intc/armv7m_nvic: Correct handling of
- CCR.BFHFNMIGN
-Date: Thu, 19 Nov 2020 21:56:10 +0000
-Message-Id: <20201119215617.29887-22-peter.maydell@linaro.org>
+Subject: [PATCH v2 22/28] hw/intc/armv7m_nvic: Support v8.1M CCR.TRD bit
+Date: Thu, 19 Nov 2020 21:56:11 +0000
+Message-Id: <20201119215617.29887-23-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201119215617.29887-1-peter.maydell@linaro.org>
 References: <20201119215617.29887-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x444.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,48 +119,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fbPsDn91Ixah
+X-TUID: 0lgTMKm3cXJ2
 
-The CCR is a register most of whose bits are banked between security
-states but where BFHFNMIGN is not, and we keep it in the non-secure
-entry of the v7m.ccr[] array.  The logic which tries to handle this
-bit fails to implement the "RAZ/WI from Nonsecure if AIRCR.BFHFNMINS
-is zero" requirement; correct the omission.
+v8.1M introduces a new TRD flag in the CCR register, which enables
+checking for stack frame integrity signatures on SG instructions.
+This bit is not banked, and is always RAZ/WI to Non-secure code.
+Adjust the code for handling CCR reads and writes to handle this.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ target/arm/cpu.h      |  2 ++
+ hw/intc/armv7m_nvic.c | 26 ++++++++++++++++++--------
+ 2 files changed, 20 insertions(+), 8 deletions(-)
 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 47cb5032ce9..22c55c81933 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1611,6 +1611,8 @@ FIELD(V7M_CCR, STKOFHFNMIGN, 10, 1)
+ FIELD(V7M_CCR, DC, 16, 1)
+ FIELD(V7M_CCR, IC, 17, 1)
+ FIELD(V7M_CCR, BP, 18, 1)
++FIELD(V7M_CCR, LOB, 19, 1)
++FIELD(V7M_CCR, TRD, 20, 1)
+ 
+ /* V7M SCR bits */
+ FIELD(V7M_SCR, SLEEPONEXIT, 1, 1)
 diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index effc4a784ca..deb4bd56c95 100644
+index deb4bd56c95..c901d20ae00 100644
 --- a/hw/intc/armv7m_nvic.c
 +++ b/hw/intc/armv7m_nvic.c
-@@ -1100,6 +1100,12 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+@@ -1095,8 +1095,9 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+         }
+         return cpu->env.v7m.scr[attrs.secure];
+     case 0xd14: /* Configuration Control.  */
+-        /* The BFHFNMIGN bit is the only non-banked bit; we
+-         * keep it in the non-secure copy of the register.
++        /*
++         * Non-banked bits: BFHFNMIGN (stored in the NS copy of the register)
++         * and TRD (stored in the S copy of the register)
           */
          val = cpu->env.v7m.ccr[attrs.secure];
          val |= cpu->env.v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK;
-+        /* BFHFNMIGN is RAZ/WI from NS if AIRCR.BFHFNMINS is 0 */
-+        if (!attrs.secure) {
-+            if (!(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
-+                val &= ~R_V7M_CCR_BFHFNMIGN_MASK;
-+            }
-+        }
-         return val;
-     case 0xd24: /* System Handler Control and State (SHCSR) */
-         if (!arm_feature(&cpu->env, ARM_FEATURE_V7)) {
-@@ -1662,6 +1668,11 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-                 (cpu->env.v7m.ccr[M_REG_NS] & ~R_V7M_CCR_BFHFNMIGN_MASK)
-                 | (value & R_V7M_CCR_BFHFNMIGN_MASK);
-             value &= ~R_V7M_CCR_BFHFNMIGN_MASK;
-+        } else {
-+            /* BFHFNMIGN is RAZ/WI from NS if AIRCR.BFHFNMINS is 0 */
-+            if (!(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
-+                value &= ~R_V7M_CCR_BFHFNMIGN_MASK;
-+            }
+@@ -1645,17 +1646,25 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+         cpu->env.v7m.scr[attrs.secure] = value;
+         break;
+     case 0xd14: /* Configuration Control.  */
++    {
++        uint32_t mask;
++
+         if (!arm_feature(&cpu->env, ARM_FEATURE_M_MAIN)) {
+             goto bad_offset;
          }
  
+         /* Enforce RAZ/WI on reserved and must-RAZ/WI bits */
+-        value &= (R_V7M_CCR_STKALIGN_MASK |
+-                  R_V7M_CCR_BFHFNMIGN_MASK |
+-                  R_V7M_CCR_DIV_0_TRP_MASK |
+-                  R_V7M_CCR_UNALIGN_TRP_MASK |
+-                  R_V7M_CCR_USERSETMPEND_MASK |
+-                  R_V7M_CCR_NONBASETHRDENA_MASK);
++        mask = R_V7M_CCR_STKALIGN_MASK |
++            R_V7M_CCR_BFHFNMIGN_MASK |
++            R_V7M_CCR_DIV_0_TRP_MASK |
++            R_V7M_CCR_UNALIGN_TRP_MASK |
++            R_V7M_CCR_USERSETMPEND_MASK |
++            R_V7M_CCR_NONBASETHRDENA_MASK;
++        if (arm_feature(&cpu->env, ARM_FEATURE_V8_1M) && attrs.secure) {
++            /* TRD is always RAZ/WI from NS */
++            mask |= R_V7M_CCR_TRD_MASK;
++        }
++        value &= mask;
+ 
+         if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
+             /* v8M makes NONBASETHRDENA and STKALIGN be RES1 */
+@@ -1677,6 +1686,7 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+ 
          cpu->env.v7m.ccr[attrs.secure] = value;
+         break;
++    }
+     case 0xd24: /* System Handler Control and State (SHCSR) */
+         if (!arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+             goto bad_offset;
 -- 
 2.20.1
 

@@ -1,232 +1,136 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp764241lfb;
-        Thu, 19 Nov 2020 14:18:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw6vG/K/OlK4w6wQ9cG7WNlavDYIzfqNchV5HNd2LuC+RQE5rzAVcgGgrHOYTSgbVhLKJcf
-X-Received: by 2002:a25:db50:: with SMTP id g77mr19525286ybf.293.1605824285928;
-        Thu, 19 Nov 2020 14:18:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605824285; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp765481lfb;
+        Thu, 19 Nov 2020 14:19:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyocPZbm2qMDof5VrI9IMbie7Wt2bKTZmmoHe4mnG9aRTFy8IC3CbzPawfRS7aevxYuWBmD
+X-Received: by 2002:a25:491:: with SMTP id 139mr14979800ybe.206.1605824387827;
+        Thu, 19 Nov 2020 14:19:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605824387; cv=none;
         d=google.com; s=arc-20160816;
-        b=zz2aZ2vP6hY453CvF1UqNr7FT+pfhdahuyCbvzaHJxgYr8ElopAJHODAy1FcuttYL+
-         +CJ4n/a0uXXtICHsCtVjZ0C+ku3ULdJi39RNZ53uFaZ6cS/72Oj4MlRvT3awGE1n0UqO
-         GJpfprWvIMf9OOyUYlCt0ANJ8ajRFu/AwPAyuv04cGTRbMJsbIHHDi8XajVaVyv2PnbW
-         Z1UsmquB9yYH5sKMAl/uncjT6Phfghu5sXbkLt7MQEUIuJgZ6LD2OFp/G5na8REWtQtj
-         QUivwkwBKheESTaT2yPsDuUb4HnbeIBu8cVDkDHgw0UXzIVWeZCX4ReHpSks8r0nxPFh
-         abHw==
+        b=jnAARe52af6XBWTG5vwPUL2tdEE9TmdGCe9oIkvBDcZ97XbT6CXUnHEa0dCnetKovy
+         ngYhVS65wYsWt3lccHgRWeJAVNqRD2VvimbVk8w8suYpsVDDNwmD+6WNe23VDauoCLOW
+         0UFhT6i/xczHhEe1pnbbMBrU72IgkcpNt/pZuYQHwDJmoNQIUPM+pgnJmSP2M+NvFqP9
+         J0EqvkOl+DiR5l6KGy/mCYSDyvbl2+tcIe905Y36xLiMWhkUz3ErLWSCkR6gAdzHNepW
+         vflZxaeROfei0ofObb4i35V9k8EKKVN9UdgSH6+t1jPvNfmDYL4o2XT7OMdP+dC0dwk8
+         ig4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=qhzFhrjKvRUsyJDSYv8WmAYUo+hfPFVK5biMG9ZuE5U=;
-        b=dXxufUrmdT63Nel3GHYEmH1HWChgVmNBWdDDm57kclNrq5NqcNT5nAp+flSWuuy+dc
-         PuoxL5idzsvh6oOcR6xkUmsXql3ulBO/7Cu24VYd7SgrDsIMHsOTa3cet9JVNvMEo+rV
-         IF4Y8o3jb8RxdKr0JEB0IgWtxcMwxmLgSObcqGcEKUkGVb+2S6ZW708njghZzFZlAW2s
-         cCDdPzaxtQy7UQX1n0BMuMIKByi0jpUVk+s/NLbU55NlYWz6Kwi4Mc+gxDCfvXmZRnaK
-         cOXriWArGM4qo81le5rl/XN+p0YMCnf0/3kTGHWr8wGKMQHHMmZ6KJqALzj9FwO3PppT
-         AyPg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=AfCqwQ38PQlncdp2Fer4nTPH8qpS+HclWqc6+Hvb1+w=;
+        b=osY0fcLjky+PcIJWFq8HveGkkE4unw03u8f4D1Kcm4tThABrs4dCOr18zKzyQ8EX0c
+         ZilLLdiDBk8j3NTGFwiwR36bzcw9U3/GhcFf0ZERNgk7Hz95gP8v6RDDwTYEd09Q/7+g
+         d6cV/UiIDxtavNo+I8Mg2HTO8IXDsCSqQkrq+jn5PhfDBdK016nzKovcRLMUjrG4L2WW
+         mobk2JaHpLNdzaP8uKmuC42vWRtUazncvbSKLQVxXvFzSwwj+AwLeqF0vzDgIUez9CM7
+         K+Y+24AI0q1vyGOj9yCKW+X8FCtwwWHwGVtOwu6BXlVv2J1fLFMUD7y2soqCOCfhF9dc
+         NrkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nRCltpfi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tBXCHZx6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n67si816392yba.35.2020.11.19.14.18.05
+        by mx.google.com with ESMTPS id t6si865294ybl.50.2020.11.19.14.19.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Nov 2020 14:18:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Nov 2020 14:19:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nRCltpfi;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49338 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tBXCHZx6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:53226 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfsFh-00025W-9V
-	for alex.bennee@linaro.org; Thu, 19 Nov 2020 17:18:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51688)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kfsHL-0003nR-3c
+	for alex.bennee@linaro.org; Thu, 19 Nov 2020 17:19:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kfrvJ-00016A-Jg
- for qemu-devel@nongnu.org; Thu, 19 Nov 2020 16:57:01 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:39028)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kfsGq-0003m2-E2; Thu, 19 Nov 2020 17:19:16 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:38730)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kfrv6-0004Fm-SM
- for qemu-devel@nongnu.org; Thu, 19 Nov 2020 16:57:01 -0500
-Received: by mail-wr1-x444.google.com with SMTP id o15so8013788wru.6
- for <qemu-devel@nongnu.org>; Thu, 19 Nov 2020 13:56:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=qhzFhrjKvRUsyJDSYv8WmAYUo+hfPFVK5biMG9ZuE5U=;
- b=nRCltpfiNj8puXdNtUbVovJr2ZSkVIJKxwz1gIuU3ZLTadSYkjYvYVwfzryu8ltrOm
- d3aKVhhbGKrjP9WevHXOLpuyD1e9zGicapjq1Pf4Akz16QL4FBk7NZRSgUWpsphyU9ax
- iDqDRkjf/Hro1ZYHK78svN/WFr6u6u0NxolQvLKPFn8tkyHPLRwiU7Ejcv7zJUWqnpGo
- 9ubtkDh7aEuItxACr2SqBisEoN8f5KVpdpN0GjCLKKMi+TYjI/wZJnYn88vRLh9+i12D
- V0XMwRedslP4NI1XR5OfzAqKgCnd7fhdsCm3aY04IDBLN2MFHDbzC+D9rA/YpyR+ahKw
- 9dng==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kfsGm-0003Hc-S6; Thu, 19 Nov 2020 17:19:15 -0500
+Received: by mail-wm1-x342.google.com with SMTP id 1so8116671wme.3;
+ Thu, 19 Nov 2020 14:19:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=AfCqwQ38PQlncdp2Fer4nTPH8qpS+HclWqc6+Hvb1+w=;
+ b=tBXCHZx6DoIeyYYPIDEJcrF8itYaYPK9Y/HYN192N39N+C2IKuqdNzoWIdkbb3bQ8e
+ mt0mJkuaTxS/IehIIdNTM7qNPJ2XK9ZO5HDAkX75a1Vbw7pTxvOM5YKAaf4ZjsgIO9Ko
+ pHFNpjNw+lBhJ8t7fKO5GqkT8JKfg2MAdo7p/M+Ha64r4s6WXxtKuP+xSnZlpWlqs07a
+ 4EJ4W9ES3uhgYTWEv4qBBoZ6UJULo4AqWY/IaFKYRQJygpizaT5vKP3G2Kf5qIv4Ba6s
+ iiMLBaiZJOEL9iu0M2nBW6IJnABOKheKO0L/9szDiF9h/cqQ0/yCw/0TgBiCq6uBP/8c
+ 06DA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=qhzFhrjKvRUsyJDSYv8WmAYUo+hfPFVK5biMG9ZuE5U=;
- b=UUpI0UUV5naoXdoHFcJkcq2Kc6vtKifDkxNdyeSkJkmBfvj4zVAqR58gImUN7df4Ac
- MOgY2qZ+rPRknTPwE/3OjOITgcMKDagj5/mquOQ0RTZxZ7uLeZWSbcMKmjI90nnwiy3x
- yvIogRuyDWNt2ddymAc6P+qH/hwN13CRvzo7xy+4zTFd3OJ9805I5VXAjVKOyCJN8rDS
- csrMFfW/wnV6WPeE1PNKWi+jHKUFN0af+eHV6M0eZuelo8EVXdcGegcnEHbhFJsRYKkT
- GxzwD7UHCQTqd0bq5vviM9Zs3LE0gYdep6Lpr6834TgQgQipPwBIiHqJllTnilttWQly
- ET8g==
-X-Gm-Message-State: AOAM53060/MUy6rqHdsuk6LmMOZYyEPKqV8T7S49VBkiLLV2KkDFXOg5
- eO6R5I2B0ZtWAsedkFEWofjDczywQ9JsZg==
-X-Received: by 2002:adf:e950:: with SMTP id m16mr13516157wrn.0.1605823007281; 
- Thu, 19 Nov 2020 13:56:47 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j15sm1934851wrm.62.2020.11.19.13.56.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Nov 2020 13:56:46 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 24/28] hw/intc/armv7m_nvic: Fix "return from inactive
- handler" check
-Date: Thu, 19 Nov 2020 21:56:13 +0000
-Message-Id: <20201119215617.29887-25-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201119215617.29887-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=AfCqwQ38PQlncdp2Fer4nTPH8qpS+HclWqc6+Hvb1+w=;
+ b=N2AlItTRnQcFz0654C4x8/SROzahdq/sCHDqcWZryO87L8VpTDjhTnrdKzVpuvPsPg
+ yjVQ2wScd3V4i9+kYz1eGvGa8Zbk61u4V+WNFCh8j6jQzCcuNBIAYWtHXEckkHhN7T0Y
+ BUpzEdZQkqMSI/BLxJsk80VmlD/Ns8HTxVRQsNcxJljTS50I5TsjNN3JFVc9DAlgoZyC
+ NgaTjwLEElt7irtS8KuffyN7zazea07Lg4pUobNrNE3P3G+wgD913WESRf6xQP/INrn6
+ oQMela1bIS18zcQ5GbVKQFHSMlpfgvb53Gd7+Gj2m6QJm5TWmArNNZeG4aKaNto7zL63
+ VjrQ==
+X-Gm-Message-State: AOAM53054J+IkRJiocnDhizLyfmVND41UX8WsXY9GmwZPNJU5rlAn0Pt
+ jw63G0gPN2Yr+ZY1XK/nD2Q2WiGCePw=
+X-Received: by 2002:a1c:66c4:: with SMTP id a187mr6681356wmc.186.1605824349853; 
+ Thu, 19 Nov 2020 14:19:09 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id 8sm1840826wmg.28.2020.11.19.14.19.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Nov 2020 14:19:09 -0800 (PST)
+Subject: Re: [PATCH v2 27/28] hw/arm/armv7m: Correct typo in QOM object name
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20201119215617.29887-1-peter.maydell@linaro.org>
+ <20201119215617.29887-28-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6ad2462a-71f0-b850-5fe7-1c52f862b89b@amsat.org>
+Date: Thu, 19 Nov 2020 23:19:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
+In-Reply-To: <20201119215617.29887-28-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x444.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IjOycCHeq5hu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: naq5Jdz4bHIk
 
-In commit 077d7449100d824a4 we added code to handle the v8M
-requirement that returns from NMI or HardFault forcibly deactivate
-those exceptions regardless of what interrupt the guest is trying to
-deactivate.  Unfortunately this broke the handling of the "illegal
-exception return because the returning exception number is not
-active" check for those cases.  In the pseudocode this test is done
-on the exception the guest asks to return from, but because our
-implementation was doing this in armv7m_nvic_complete_irq() after the
-new "deactivate NMI/HardFault regardless" code we ended up doing the
-test on the VecInfo for that exception instead, which usually meant
-failing to raise the illegal exception return fault.
+On 11/19/20 10:56 PM, Peter Maydell wrote:
+> Correct a typo in the name we give the NVIC object.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/armv7m.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-In the case for "configurable exception targeting the opposite
-security state" we detected the illegal-return case but went ahead
-and deactivated the VecInfo anyway, which is wrong because that is
-the VecInfo for the other security state.
-
-Rearrange the code so that we first identify the illegal return
-cases, then see if we really need to deactivate NMI or HardFault
-instead, and finally do the deactivation.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/armv7m_nvic.c | 59 +++++++++++++++++++++++--------------------
- 1 file changed, 32 insertions(+), 27 deletions(-)
-
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index c901d20ae00..fa8aeca82ec 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -832,10 +832,40 @@ int armv7m_nvic_complete_irq(void *opaque, int irq, bool secure)
- {
-     NVICState *s = (NVICState *)opaque;
-     VecInfo *vec = NULL;
--    int ret;
-+    int ret = 0;
- 
-     assert(irq > ARMV7M_EXCP_RESET && irq < s->num_irq);
- 
-+    trace_nvic_complete_irq(irq, secure);
-+
-+    if (secure && exc_is_banked(irq)) {
-+        vec = &s->sec_vectors[irq];
-+    } else {
-+        vec = &s->vectors[irq];
-+    }
-+
-+    /*
-+     * Identify illegal exception return cases. We can't immediately
-+     * return at this point because we still need to deactivate
-+     * (either this exception or NMI/HardFault) first.
-+     */
-+    if (!exc_is_banked(irq) && exc_targets_secure(s, irq) != secure) {
-+        /*
-+         * Return from a configurable exception targeting the opposite
-+         * security state from the one we're trying to complete it for.
-+         * Clear vec because it's not really the VecInfo for this
-+         * (irq, secstate) so we mustn't deactivate it.
-+         */
-+        ret = -1;
-+        vec = NULL;
-+    } else if (!vec->active) {
-+        /* Return from an inactive interrupt */
-+        ret = -1;
-+    } else {
-+        /* Legal return, we will return the RETTOBASE bit value to the caller */
-+        ret = nvic_rettobase(s);
-+    }
-+
-     /*
-      * For negative priorities, v8M will forcibly deactivate the appropriate
-      * NMI or HardFault regardless of what interrupt we're being asked to
-@@ -865,32 +895,7 @@ int armv7m_nvic_complete_irq(void *opaque, int irq, bool secure)
-     }
- 
-     if (!vec) {
--        if (secure && exc_is_banked(irq)) {
--            vec = &s->sec_vectors[irq];
--        } else {
--            vec = &s->vectors[irq];
--        }
--    }
--
--    trace_nvic_complete_irq(irq, secure);
--
--    if (!vec->active) {
--        /* Tell the caller this was an illegal exception return */
--        return -1;
--    }
--
--    /*
--     * If this is a configurable exception and it is currently
--     * targeting the opposite security state from the one we're trying
--     * to complete it for, this counts as an illegal exception return.
--     * We still need to deactivate whatever vector the logic above has
--     * selected, though, as it might not be the same as the one for the
--     * requested exception number.
--     */
--    if (!exc_is_banked(irq) && exc_targets_secure(s, irq) != secure) {
--        ret = -1;
--    } else {
--        ret = nvic_rettobase(s);
-+        return ret;
-     }
- 
-     vec->active = 0;
--- 
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

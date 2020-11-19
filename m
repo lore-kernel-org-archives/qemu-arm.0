@@ -1,103 +1,103 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp762653lfb;
-        Thu, 19 Nov 2020 14:15:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzNr7g5A+kfW6InuFy0JsRNgeivb8lFMEDLvbMAVbKFj40gqjt6mDio+8PXguK61qmAKH0F
-X-Received: by 2002:a25:5007:: with SMTP id e7mr20166707ybb.124.1605824137373;
-        Thu, 19 Nov 2020 14:15:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605824137; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp764088lfb;
+        Thu, 19 Nov 2020 14:17:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwi6bkj7pfgdcVHn6gs03+ORndsiYnlPWa9uXI0Ju30OaghAQMdICf4zFbMiu/XLGQR+G37
+X-Received: by 2002:a5b:cd1:: with SMTP id e17mr17193534ybr.177.1605824270869;
+        Thu, 19 Nov 2020 14:17:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605824270; cv=none;
         d=google.com; s=arc-20160816;
-        b=zMaOsKr+VXdIoGbYP5IkDZTbuT2uT9VV7lppjX8If/tvMIxXXjYTqhRBP5c9DFrDtb
-         ztGjrw892nP26ly7UtBZ80bMt6PcShocTZ1IgQU3QMVP9WeK0i+OJZ5kgfvChE2NPo/f
-         AJx3Aq5ooF5PgNQ7p5XgfKTUnRfNqCUmaQn5cfj5+8NPfgsmZp6pRJ+QHCEGbIPbbr5Y
-         UPUOvHFjBqELgJO7aYuNFNXYQ/IY6vNVWx7b3SiH/WqH1/WLnFuI0uWkdlS/ca7f4DU+
-         Qqq7KvGQ2kSo0TpiU0jJNT8KtK+Isnahh++D/8y0agXR1T4q+hHMHpyVwS770LMFBl2C
-         xfhw==
+        b=Bf3xKzAuqCuPFj2Drkv2WHV4TtnuIBlsP0Fe0V3yCQHaJLAZCI1SJqj41n99NeGG3M
+         86nzKu1GCqbPYsLqIhbWVsM3Sf+kiFb2695miiXVqlgu9ffJAxHg1aAThDS9vbysdFuB
+         TEWVuQY3h+8VGIPrFPxdVljkNAxme3v4+RA8RsvcHOEfgCbmxM3+VVpT6aUmgERM4orD
+         uRSj8HmV4QX5w54IxbYXPyP8KotIqlgi1bOeGqQwQ8E0onp+lLuOQ6A8AzSEmYi4msIy
+         2faPTOvIMVweKhY+lIuq45fz4nb4fcOJkL1x1+5OsoUaFGnsXXdm3lZ2FBwpiYYB1prU
+         vZ9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=muF03FIBUNjZmHA9ePjBGJ37JzD55SGiha97SZN8IOk=;
-        b=zXAXstrrVHh9/ZkDJZlIcDkImDpqq9F3GH3XlnydX3vBdZC2WSApVIG/cnA5+jYPGr
-         jbYL6sM3ONUEJ6vooLUsHPeqg7/MSgz8IDwdkEbBBEHjfbU3TaIgefNtcbr/eOKbpjWY
-         3KHZ/FQrESVtihkWCypSdsbk91qCWoT/ydq6PB6Ia/vpSiDJlA78Db/YrY8Yr3oRY74I
-         dmgIAaGw4vT8rHqEejkY2dq+RORd58LPMJiW708+gnu2newAgZOf5LMWya2aljhdIo7X
-         njfagQjEq36u6OKLp3JQD4ho00dhv487HG8Gd1rDAixau42cgt6cuaXjwTtgKtypPXF8
-         osQw==
+        bh=IYl49JEXLJ4NfyGT6TJwXfRcF2SPUTrLyQsnI7fa5Vo=;
+        b=AHjwQ+3Jbq/+JbC/xry/uV9Ic50jljUQsPwynR6TPwARor63MNNw1oGz9dAvhGnFs/
+         ZPbiol/n01LhisP6WCWXSlbBQDmiABGRoqhf20ALgWGm+jC3RZnAGNxR3dwAujc3We79
+         W6Hn0sYYiaUEe5n/RqKGu6bhPrluskl5t3ArzMPcM1a6Fwoqk69r7rpMIeX6y3SlCRzx
+         ZX+T3RKpP2qZzvsv5JIrvruKEbWX6bZNuioACA9VjjLGkVocIszhux5GB+8TbVlkhOL5
+         eK43/uHqurV6FZvsXU9UZIau5T1+6d96f2p3QumnPKxe0mDufZIHtdDY6iAfw/t9nX9V
+         OhAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LNSGrqMC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RW65dYVU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b63si888360ybh.407.2020.11.19.14.15.37
+        by mx.google.com with ESMTPS id k9si766598ybh.411.2020.11.19.14.17.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Nov 2020 14:15:37 -0800 (PST)
+        Thu, 19 Nov 2020 14:17:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LNSGrqMC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RW65dYVU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44414 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49506 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfsDG-0008Gx-Pb
-	for alex.bennee@linaro.org; Thu, 19 Nov 2020 17:15:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51650)
+	id 1kfsFS-0002A6-8z
+	for alex.bennee@linaro.org; Thu, 19 Nov 2020 17:17:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kfrvH-000130-VF
+ id 1kfrvH-00011D-AQ
  for qemu-arm@nongnu.org; Thu, 19 Nov 2020 16:56:59 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:33229)
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40499)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kfrv4-0004Eu-SQ
+ id 1kfrv4-0004FC-TI
  for qemu-arm@nongnu.org; Thu, 19 Nov 2020 16:56:59 -0500
-Received: by mail-wm1-x336.google.com with SMTP id p19so7132430wmg.0
- for <qemu-arm@nongnu.org>; Thu, 19 Nov 2020 13:56:44 -0800 (PST)
+Received: by mail-wm1-x342.google.com with SMTP id a3so8060072wmb.5
+ for <qemu-arm@nongnu.org>; Thu, 19 Nov 2020 13:56:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=muF03FIBUNjZmHA9ePjBGJ37JzD55SGiha97SZN8IOk=;
- b=LNSGrqMCuRgAepOKkGnCY8Il1Hai1AenwzHczZ+hlPqbBXT3VM70xBqA403YN2Q5Se
- LhyNOfqT9mtUarm8U9bmlKosznj1FTbIW0Sx0ZgPDKd03ke/9rOcNUMXYJCWpLKWT620
- qpGCFq5vlPjd5OUDsbkqjRJcTWyZvMFgdzUozumFNm1/0mpMf1ZzWmJjYYAuQYVOzaTk
- wFU933felh2fG8xtsjT/yd8Xaa02PV/mY3eoGMam0XfS8nBrs32hg0EHHd0p4eY+2HKJ
- P3ZDQbDQy8yz39xNUBTJYCvOX6gjXbTBjX/Sp73ccPtFxWMmlgk9sOdISDPl2Ds0xYL0
- skHw==
+ bh=IYl49JEXLJ4NfyGT6TJwXfRcF2SPUTrLyQsnI7fa5Vo=;
+ b=RW65dYVUokAroAYmmJpkqUnENT9sMP0nallQRhd0kU0t/hoFmbuIswAHFv2fMl+/GA
+ Ik8qLEPuDJ7lv+b22tytoetx7VCDoDaKy1v6gbaGd2qnhCs4g1V5ays4E0z5fi/27ki3
+ NCAFhWgC5OttC5+cPeXCCn1JR1bIsPi2TxpH68MnTT9666ftSfMpiB49p1TQofN2/Kxs
+ k9Y3NMeMLjo/ihCrWIPALS4dk76ZxK4UN28iRsInnpcyIFWe4/NkOLtOTemac7C/YquQ
+ Fc0nkr3gp/kKGEXheQadq+1GXz9jUqrOWI95vZOGOmdc3D9a11SBAc4X0ge2nyhmctzK
+ RqlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=muF03FIBUNjZmHA9ePjBGJ37JzD55SGiha97SZN8IOk=;
- b=fB71SJv7aYGP2jYO7tewN3kstNZ477jo+urefmS+/vyQR7Mljm5ukM7cTvYVzImCRK
- S3UX6hZ20Kv3P0fy+q7NVkzJVx92f3fKB8uJKeV3ThG0Otm1DxgU0znnx9KXzWSjUvqK
- EMlkGrWFVvXPDtKxoDtJsDqbO49mXo+tiH4h6fv9ap6229CAJ+23ElDL6zaKgvOWddzA
- VuAmut0MoMjZR+Iy0RBwF215bCTfXn1nfTo23mUFFDTDQZtUSfU+iO6a3A2FBLP8r9hf
- KeeMoY9hFQcBdWS3k0xAF2ftFLJbBKOvoHGgQChw1WPdNwH04/f9C+FPg2RSScnglD/o
- /4zA==
-X-Gm-Message-State: AOAM532KoDjNJ1nFje8Hge96jEtiX4nAjiAgHTLnhWpPkzqADdt6v7zB
- lFMoBakAwC18oSWkfrZS7uGmMBSYPbssag==
-X-Received: by 2002:a1c:4e06:: with SMTP id g6mr3363475wmh.119.1605823003029; 
- Thu, 19 Nov 2020 13:56:43 -0800 (PST)
+ bh=IYl49JEXLJ4NfyGT6TJwXfRcF2SPUTrLyQsnI7fa5Vo=;
+ b=a9I6w1D3w/o4QcKqMCeQO2cOw3FAhEHXZvKqDgfhRYf6K32+WjDi/8g40/k0TH/TpG
+ xc6oQyRNFJaD3cPMvlJn9kx9UKZ1lRkcauOwmytYfbw9ErkXp0Ee/bkTzVDJ9NvC7QgW
+ s4E88BZLB+/M1Bm1SaZxIanobjQCCLxlgd7f0kxUL183rlJ++rTPm2LJVBbMqOvb1b5n
+ ycVEfxnjdRpt/VBdMMn+1fIutvzJXUXrGxfNH3JLskQjokF1/qliTICJNKEAiRkSRrFT
+ n9GRVNvEEz7E+oJHqJ86YPFsywB6u/k/MuG32HO2+p7EnlHt7koAVIBgtYbuaJwK6n2h
+ 8P3w==
+X-Gm-Message-State: AOAM532+PuVr9n2FeZY/IJd6xnI3pgCD6jI0O6c+J34nM6x0r1ucfuvX
+ u65UY8i6Mm6/+JgYe1GE0nkXZT4Lp2MnqQ==
+X-Received: by 2002:a1c:a5d8:: with SMTP id o207mr6629056wme.0.1605823004064; 
+ Thu, 19 Nov 2020 13:56:44 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j15sm1934851wrm.62.2020.11.19.13.56.42
+ by smtp.gmail.com with ESMTPSA id j15sm1934851wrm.62.2020.11.19.13.56.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Nov 2020 13:56:42 -0800 (PST)
+ Thu, 19 Nov 2020 13:56:43 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 20/28] target/arm: Implement new v8.1M VLLDM and VLSTM
- encodings
-Date: Thu, 19 Nov 2020 21:56:09 +0000
-Message-Id: <20201119215617.29887-21-peter.maydell@linaro.org>
+Subject: [PATCH v2 21/28] hw/intc/armv7m_nvic: Correct handling of
+ CCR.BFHFNMIGN
+Date: Thu, 19 Nov 2020 21:56:10 +0000
+Message-Id: <20201119215617.29887-22-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201119215617.29887-1-peter.maydell@linaro.org>
 References: <20201119215617.29887-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,74 +119,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G5Ea5i61tsaJ
+X-TUID: fbPsDn91Ixah
 
-v8.1M adds new encodings of VLLDM and VLSTM (where bit 7 is set).
-The only difference is that:
- * the old T1 encodings UNDEF if the implementation implements 32
-   Dregs (this is currently architecturally impossible for M-profile)
- * the new T2 encodings have the implementation-defined option to
-   read from memory (discarding the data) or write UNKNOWN values to
-   memory for the stack slots that would be D16-D31
-
-We choose not to make those accesses, so for us the two
-instructions behave identically assuming they don't UNDEF.
+The CCR is a register most of whose bits are banked between security
+states but where BFHFNMIGN is not, and we keep it in the non-secure
+entry of the v7m.ccr[] array.  The logic which tries to handle this
+bit fails to implement the "RAZ/WI from Nonsecure if AIRCR.BFHFNMINS
+is zero" requirement; correct the omission.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/m-nocp.decode       |  2 +-
- target/arm/translate-vfp.c.inc | 25 +++++++++++++++++++++++++
- 2 files changed, 26 insertions(+), 1 deletion(-)
+ hw/intc/armv7m_nvic.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/target/arm/m-nocp.decode b/target/arm/m-nocp.decode
-index ccd62e8739a..6699626d7cb 100644
---- a/target/arm/m-nocp.decode
-+++ b/target/arm/m-nocp.decode
-@@ -36,7 +36,7 @@
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index effc4a784ca..deb4bd56c95 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -1100,6 +1100,12 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+          */
+         val = cpu->env.v7m.ccr[attrs.secure];
+         val |= cpu->env.v7m.ccr[M_REG_NS] & R_V7M_CCR_BFHFNMIGN_MASK;
++        /* BFHFNMIGN is RAZ/WI from NS if AIRCR.BFHFNMINS is 0 */
++        if (!attrs.secure) {
++            if (!(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
++                val &= ~R_V7M_CCR_BFHFNMIGN_MASK;
++            }
++        }
+         return val;
+     case 0xd24: /* System Handler Control and State (SHCSR) */
+         if (!arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+@@ -1662,6 +1668,11 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+                 (cpu->env.v7m.ccr[M_REG_NS] & ~R_V7M_CCR_BFHFNMIGN_MASK)
+                 | (value & R_V7M_CCR_BFHFNMIGN_MASK);
+             value &= ~R_V7M_CCR_BFHFNMIGN_MASK;
++        } else {
++            /* BFHFNMIGN is RAZ/WI from NS if AIRCR.BFHFNMINS is 0 */
++            if (!(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
++                value &= ~R_V7M_CCR_BFHFNMIGN_MASK;
++            }
+         }
  
- {
-   # Special cases which do not take an early NOCP: VLLDM and VLSTM
--  VLLDM_VLSTM  1110 1100 001 l:1 rn:4 0000 1010 0000 0000
-+  VLLDM_VLSTM  1110 1100 001 l:1 rn:4 0000 1010 op:1 000 0000
-   # VSCCLRM (new in v8.1M) is similar:
-   VSCCLRM      1110 1100 1.01 1111 .... 1011 imm:7 0   vd=%vd_dp size=3
-   VSCCLRM      1110 1100 1.01 1111 .... 1010 imm:8     vd=%vd_sp size=2
-diff --git a/target/arm/translate-vfp.c.inc b/target/arm/translate-vfp.c.inc
-index 1c2d31f6f30..c974d5b0e16 100644
---- a/target/arm/translate-vfp.c.inc
-+++ b/target/arm/translate-vfp.c.inc
-@@ -3814,6 +3814,31 @@ static bool trans_VLLDM_VLSTM(DisasContext *s, arg_VLLDM_VLSTM *a)
-         !arm_dc_feature(s, ARM_FEATURE_V8)) {
-         return false;
-     }
-+
-+    if (a->op) {
-+        /*
-+         * T2 encoding ({D0-D31} reglist): v8.1M and up. We choose not
-+         * to take the IMPDEF option to make memory accesses to the stack
-+         * slots that correspond to the D16-D31 registers (discarding
-+         * read data and writing UNKNOWN values), so for us the T2
-+         * encoding behaves identically to the T1 encoding.
-+         */
-+        if (!arm_dc_feature(s, ARM_FEATURE_V8_1M)) {
-+            return false;
-+        }
-+    } else {
-+        /*
-+         * T1 encoding ({D0-D15} reglist); undef if we have 32 Dregs.
-+         * This is currently architecturally impossible, but we add the
-+         * check to stay in line with the pseudocode. Note that we must
-+         * emit code for the UNDEF so it takes precedence over the NOCP.
-+         */
-+        if (dc_isar_feature(aa32_simd_r32, s)) {
-+            unallocated_encoding(s);
-+            return true;
-+        }
-+    }
-+
-     /*
-      * If not secure, UNDEF. We must emit code for this
-      * rather than returning false so that this takes
+         cpu->env.v7m.ccr[attrs.secure] = value;
 -- 
 2.20.1
 

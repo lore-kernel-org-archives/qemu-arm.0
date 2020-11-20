@@ -1,72 +1,77 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp599963lfb;
-        Wed, 18 Nov 2020 07:06:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxGw34MbtMBcIIDuCju1zb9gvxjSteGbVkLYK8njobB+fK1+PFLycKfv1ZbfnLlYR5IQzlH
-X-Received: by 2002:a25:40c5:: with SMTP id n188mr7654771yba.116.1605712008277;
-        Wed, 18 Nov 2020 07:06:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605712008; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1116165lfb;
+        Fri, 20 Nov 2020 00:53:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxuzhVFk/7aZkiJvMSxzL6YZ13H8wtYyOQqBVdHLuvKHxPuO8BX5SF861Hef7oWOKQRX6NE
+X-Received: by 2002:a25:3614:: with SMTP id d20mr15421531yba.415.1605862408266;
+        Fri, 20 Nov 2020 00:53:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605862408; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lge5eZmHZShX/umWNEGSQ7+gYwlITOK44Ez6qtOOyCzHF72nfRDxtrxjiOR8O55kqd
-         pZvsBroU6MW93wb8h2vIHJVpZCDn2JX24JiR6g5uD+7wb1OVoeFQvfWsp2sTbXi+WK93
-         UJulGScb0Qav1vE+cav/p2+Q8whoKK9wU/V06l4AiMHYMQTmk7nK8rGnnWpLELgWidIm
-         3r6c5EuOryiTx2GdBr3a4EiIO2D6ZGwQXEqc2mhU/kbXUP7bl5vura9zgEDJIyb19Hri
-         AU4R63suCmGrFUf+TkSOZlqOBN7TaRwz5Fgks+FMGLNCDmnuP58EL2jgU7CtTQNSa9Tu
-         mnDQ==
+        b=TRKITECC1cDxeQoQcduvEDP/kAa3BnODjBreKTFNW9uUVk3r1k/ZewFoaNAm1PI4XS
+         bd1Hqw6xp7Xx/9uw+CWCfu8YjHTDMmF1RDWCS0YAiYUa0MjwLdT01LjpLEc8BU4hb/Zs
+         OVf0CusKULA7gXUEz/HdInpJcOhsEjuKSFxJjjq0HB/PHx7m/c4ieCQBFxgDLSiUG11E
+         Q0O+trUC0fNW0yNKWW1KLrqFbFDJGYl3H6dtg5RfBsYl2vJHsymJXcrQr8Q5EPuWQsq6
+         01APGd0/NjhL6KNtkHYt3/8XOkeOSdE31IOw3OYBm7ITwHLT0xSuzgX5V5PXO2rYx4B/
+         WL/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=6s82WB+8tvuOYlghTqFLNpnIelzLv1lqaVsobXhv59E=;
-        b=Nbiq4/HXJexR/BPFuY21lpHNGn4p/eB9RLLzT7LW81ShOTFyvOWsf+gG+04ERVD1cO
-         UvFnjwTekrRCy9wngnXdHdGEIUEhnk6QGJjQA/1fn1H+uQUYQQfTgqA1gIBLy2ly3MbB
-         Go51CXjKrAZQW6bSKPI3prvJtwFcCpOg/zCMTuXlaJkUZzbYcPf0a5j0k7ttnQwhE9VW
-         5pXXfQJeolw4NxxNGMK2cabzWc5IB0j9d/dzZN0fUCwLfwNc97f3IgZNYcul7eb40Ia+
-         Lka9j6sYod1vZIUADpweyoM8a86ybC8e4ikyRtj9qvYB04Il8E2Tt+evl1QpgzY7q8eY
-         LPxg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=1eoxu7pIhcCW4LXVrp8hjlyhD4H+17Ydw+cXkM8TpN4=;
+        b=UyP70qWXdbVj9o6Ch2qC4mgrV+9SN3thGNjrMoIGxA5u3BS+rkxvSFNcFD4M6V26tq
+         sjYlzvBZwu8a3IZ/Fm+AHEaMDvs79RfHO3awrocgH4O7BfKQcGWeiHirWu/7bO8pMWKe
+         4DkT4r3H0vcVyd9/GfRCKu2XpQlfdczliCVM3IrpOnd+44gLjj8wrl9lb0gd1SfR14Pl
+         NjwUH6ki5YXos1wGTkA9ptuqTF6huzAUxz3JndV/dpBMlVNme4VlYmL/+G+QIfmEt7Eg
+         fWaq1D9n+HCGWfOTKUOZtMFsK5YWa8Su6ppP3T5yZd+E4apGP8ij1j1x8kaFM+qOHZtn
+         BLEw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x9si23649341ybb.472.2020.11.18.07.06.48
+        by mx.google.com with ESMTPS id w75si2831382ybg.315.2020.11.20.00.53.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Nov 2020 07:06:48 -0800 (PST)
+        Fri, 20 Nov 2020 00:53:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49616 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56480 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfP2l-0001Y8-Mu
-	for alex.bennee@linaro.org; Wed, 18 Nov 2020 10:06:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58584)
+	id 1kg2AZ-0005pa-Kw
+	for alex.bennee@linaro.org; Fri, 20 Nov 2020 03:53:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56504)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kfP0g-0008AB-PA; Wed, 18 Nov 2020 10:04:38 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:49734
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1kfP0Q-00077n-AC; Wed, 18 Nov 2020 10:04:38 -0500
-Received: from philogene.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 494025FA5F;
- Wed, 18 Nov 2020 16:04:15 +0100 (CET)
-From: =?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi@remlab.net>
-To: qemu-arm@nongnu.org
-Subject: [PATCH] target/arm: fix stage 2 page-walks in 32-bit emulation
-Date: Wed, 18 Nov 2020 17:04:14 +0200
-Message-Id: <20201118150414.18360-1-remi@remlab.net>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kg2AQ-0005p4-H0; Fri, 20 Nov 2020 03:53:18 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2535)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kg2AN-0001V2-OC; Fri, 20 Nov 2020 03:53:18 -0500
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Ccr0W0lqXzhdXH;
+ Fri, 20 Nov 2020 16:52:43 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 20 Nov 2020 16:52:52 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, "Dr . David
+ Alan Gilbert" <dgilbert@redhat.com>
+Subject: [RFC PATCH 1/2] ramlist: Make dirty bitmap blocks of ramlist resizable
+Date: Fri, 20 Nov 2020 16:51:56 +0800
+Message-ID: <20201120085157.7136-2-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20201120085157.7136-1-zhukeqian1@huawei.com>
+References: <20201120085157.7136-1-zhukeqian1@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 10:04:16
-X-ACL-Warn: Detected OS   = ???
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.37]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -80,45 +85,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
+ Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WC1kBeCbHSjI
+X-TUID: LfA4nU6qWVH0
 
-From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+When we remove a ramblock, we should decrease the dirty bitmap blocks
+of ramlist to avoid memory leakage. This patch rebuilds dirty_memory_
+extend to support both "extend" and "decrease".
 
-Using a target unsigned long would limit the Input Address to a LPAE
-page-walk to 32 bits on AArch32 and 64 bits on AArch64. This is okay
-for stage 1 or on AArch64, but it is insufficient for stage 2 on
-AArch32. In that later case, the Input Address can have up to 40 bits.
-
-Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 ---
- target/arm/helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ softmmu/physmem.c | 28 ++++++++++++++++++++--------
+ 1 file changed, 20 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 11b0803df7..38cd35c049 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -40,7 +40,7 @@
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index 3027747c03..f6ff78378e 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -1816,17 +1816,19 @@ void qemu_ram_msync(RAMBlock *block, ram_addr_t start, ram_addr_t length)
+ }
  
- #ifndef CONFIG_USER_ONLY
+ /* Called with ram_list.mutex held */
+-static void dirty_memory_extend(ram_addr_t old_ram_size,
++static void dirty_bitmap_resize(ram_addr_t old_ram_size,
+                                 ram_addr_t new_ram_size)
+ {
+     ram_addr_t old_num_blocks = DIV_ROUND_UP(old_ram_size,
+                                              DIRTY_MEMORY_BLOCK_SIZE);
+     ram_addr_t new_num_blocks = DIV_ROUND_UP(new_ram_size,
+                                              DIRTY_MEMORY_BLOCK_SIZE);
++    ram_addr_t cpy_num_blocks = MIN(old_num_blocks, new_num_blocks);
++    bool extend = new_num_blocks > old_num_blocks;
+     int i;
  
--static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-+static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                bool s1_is_el0,
-                                hwaddr *phys_ptr, MemTxAttrs *txattrs, int *prot,
-@@ -10988,7 +10988,7 @@ static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
-  * @fi: set to fault info if the translation fails
-  * @cacheattrs: (if non-NULL) set to the cacheability/shareability attributes
-  */
--static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-+static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                bool s1_is_el0,
-                                hwaddr *phys_ptr, MemTxAttrs *txattrs, int *prot,
+-    /* Only need to extend if block count increased */
+-    if (new_num_blocks <= old_num_blocks) {
++    /* Only need to resize if block count changed */
++    if (new_num_blocks == old_num_blocks) {
+         return;
+     }
+ 
+@@ -1839,13 +1841,23 @@ static void dirty_memory_extend(ram_addr_t old_ram_size,
+         new_blocks = g_malloc(sizeof(*new_blocks) +
+                               sizeof(new_blocks->blocks[0]) * new_num_blocks);
+ 
+-        if (old_num_blocks) {
++        if (cpy_num_blocks) {
+             memcpy(new_blocks->blocks, old_blocks->blocks,
+-                   old_num_blocks * sizeof(old_blocks->blocks[0]));
++                   cpy_num_blocks * sizeof(old_blocks->blocks[0]));
+         }
+ 
+-        for (j = old_num_blocks; j < new_num_blocks; j++) {
+-            new_blocks->blocks[j] = bitmap_new(DIRTY_MEMORY_BLOCK_SIZE);
++        if (extend) {
++            for (j = old_num_blocks; j < new_num_blocks; j++) {
++                new_blocks->blocks[j] = bitmap_new(DIRTY_MEMORY_BLOCK_SIZE);
++            }
++        } else {
++            for (j = cpy_num_blocks; j < old_num_blocks; j++) {
++                /*
++                 * We are safe to free it here, for that its RAMblock
++                 * is out-of-use.
++                 */
++                g_free(old_blocks->blocks[j]);
++            }
+         }
+ 
+         qatomic_rcu_set(&ram_list.dirty_memory[i], new_blocks);
+@@ -1894,7 +1906,7 @@ static void ram_block_add(RAMBlock *new_block, Error **errp, bool shared)
+     new_ram_size = MAX(old_ram_size,
+               (new_block->offset + new_block->max_length) >> TARGET_PAGE_BITS);
+     if (new_ram_size > old_ram_size) {
+-        dirty_memory_extend(old_ram_size, new_ram_size);
++        dirty_bitmap_resize(old_ram_size, new_ram_size);
+     }
+     /* Keep the list sorted from biggest to smallest block.  Unlike QTAILQ,
+      * QLIST (which has an RCU-friendly variant) does not have insertion at
 -- 
-2.20.1
+2.23.0
 

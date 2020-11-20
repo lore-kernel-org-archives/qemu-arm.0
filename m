@@ -1,110 +1,112 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1396278lfb;
-        Fri, 20 Nov 2020 07:22:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzTpI2mBBnsOBmfBrR49igT8j0FqKB/IDROb9i/xpji+DgMlgd8hFPc412M9aJIpEDahSe1
-X-Received: by 2002:a1f:1e46:: with SMTP id e67mr12387540vke.8.1605885743347;
-        Fri, 20 Nov 2020 07:22:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605885743; cv=none;
+Received: by 2002:a0c:dd89:0:0:0:0:0 with SMTP id v9csp355190qvk;
+        Fri, 20 Nov 2020 08:16:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwEFtixfY4mhwQTnuTlT84b+JxcUQSWGTb3sd2M7jJ4VKE6pvxiXTUwmPrV1fFfkDvTbfHf
+X-Received: by 2002:a25:3812:: with SMTP id f18mr16606225yba.126.1605888995709;
+        Fri, 20 Nov 2020 08:16:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605888995; cv=none;
         d=google.com; s=arc-20160816;
-        b=rrMp9iZhHjs2If0kGvjy+ukVorPIlyHEqnKwYjC+NHQQPC4BaBHJkxNhC3aBZ/cG/s
-         yp7L7ZLbXE7O/vXVlnHXBy96NUSLStJxmQFwXiCn4MWBsqvpl7DoFx/vCb0I5QhhniT8
-         wCi4lo/EJqpgK+kWTz7srVtTxwo0VmZeSSzkekA9bNIWbWhsOrXHeTgJszPJ6ltvM38R
-         bjEMRPo4QIfxrqoNfMPudo6mDpXJ3VjEV91hG9oCteN7ZQCygrjNrpduc0rg83dzgr7X
-         igCJ0PgZlzjdRdwxj5AuUZ4nj3enDvSwaKRJLJZ2x7rxrFIJHvCL3N2IYD5zYhHszEVb
-         PDoA==
+        b=r+yHEVdVbMZ6MnnOwHCUj6bTteatwmNK0Uj9qMvO/AsrB7CXNQbRLUQ0wysltTR60V
+         Yi1/BxDunqA83dVERF8SyCVU1NVoKiokkebzdmJhN3/qo8Qd4Updg5kyDkoqs6/ZAn4u
+         a5kB0rJnetavabNl/PiHUVpabLq1P/paJY7RtMyF77eij/87z2nk8lDcMAMUccklmQIT
+         Vac19fOGXRBoI2CX6HcKeYR63zrQWziysrmDj/FIhxln2QoDYx5053vBCWWPKgLay5Qq
+         n6NfmVKrplIr8+1l20reTIyJ6ImuLVm0EuqTj8IamA6JMg3UL0i1G4mn6gH97MG0/pbg
+         ekzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jcf04043Pi+V90LbOoBTsrGE/AFMzu7sIT3aD0E2cO4=;
-        b=NLRCVxSiS5WhRX6K/dsPl/u7IHqCZUSevbaYMdqFON3yDMH59ItZNlF1V2IG9zW4Dn
-         a4azb1s6g/pcvusILkV6dKzTHKsRU+nGYgmdM122TwJzY6C17HlVNNGOivM5gXxFIM9H
-         v5eMUNcpp77VSnE1e/uC7VjRvFGIRaUNXimzEYzjZgCoaKs9TM5WHCyQaUoj6h/4U93R
-         LR6e+MC1CpIPwDU1FLJi7eE8XCyTgAdM5hOVWnPpr6A0qAsuZuYXJzztjIoA3o5I17u8
-         kjX+J0sK74lUvZKwZVqkDNbiV+nUqPeEGzwqII30kDgXjaMB796PoMghrc4R0cN66E5l
-         r9nw==
+         :mime-version:message-id:date:subject:to:from;
+        bh=u3S89E21q+oiyePCy+q0GJOFYkJ2MdpWiZAgSJbPMVw=;
+        b=ZVHU304+Yt3wvttKrCyC8x5ZrvjYpBmrbzl/Ro4GhtbH6332HzRsJr+6PjF9S2V/3q
+         N9wt4TY2/RMGQYG3Mf/s3g9nXXSTPW9++fUlSj3t/2iBeYUbL9gCYNsme44ORdOtYEZL
+         ia6cDbA9N1IsNEBNXpAjWXgwvMXU7/fAkN2kFckotAf++42t5dreL7mIZaicBHvuP4Uw
+         /16gtVmZkXmn2LLTuMU9z3SWd2sndSKVOlDtP19PCZQJPTcL1E6m1sS7nmumkaxqC1jd
+         654Ak7HQLBOgbHL6/i+2EVYcHCRqLvWh0eLvCpa7p6GznC7wRQWD6rfO2CVmnBEDFCD1
+         tTkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r8vW9KRr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d12si552169vsf.133.2020.11.20.07.22.23
+        by mx.google.com with ESMTPS id h126si2888696ybb.169.2020.11.20.08.16.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Nov 2020 07:22:23 -0800 (PST)
+        Fri, 20 Nov 2020 08:16:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r8vW9KRr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34032 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kg8Ew-0005Jk-Hn
-	for alex.bennee@linaro.org; Fri, 20 Nov 2020 10:22:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45634)
+	id 1kg95P-00031W-7N
+	for alex.bennee@linaro.org; Fri, 20 Nov 2020 11:16:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kg8ER-0004y9-Vy; Fri, 20 Nov 2020 10:21:52 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:54041)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kg8EQ-0001tQ-G5; Fri, 20 Nov 2020 10:21:51 -0500
-Received: by mail-wm1-x333.google.com with SMTP id p22so10689518wmg.3;
- Fri, 20 Nov 2020 07:21:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jcf04043Pi+V90LbOoBTsrGE/AFMzu7sIT3aD0E2cO4=;
- b=r8vW9KRrHnfDHdd9xhlIwYxo3dA7LCrc//rGNdiBvLjcWhy36oTEKj86ra4w/ZCBGa
- Eig5w2n50E3/JDs89Q79SdcS7Jy1Dblnd2B92ssCatBk35P4HI2BAnQccNbrhZ5Tx/ZZ
- pmXmwM3vs2g+kycmUNx0G5Re9DXW8nOQD7rCWeE/b7obVNEOJ9yfS8MBktQdBq9rItJV
- Ur4f6+uFUdpWGyQPvsCqpglUxfgm1jcSrq16hVQ5Qsz8BNftLRG/INmol7CVW+yOQTLk
- 880O8bLB8uu/yPyT0Spg5hoexuJtBTDuRZs2Wv5dOXxIxfeBAyfGZprBlxHtj6FsqqoJ
- bn+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jcf04043Pi+V90LbOoBTsrGE/AFMzu7sIT3aD0E2cO4=;
- b=DVOv5netiJslCsp6nv1aFSb+sU13VtoXHsOs0Nx1XVKv+PYA0gUGY7Ml/wPOXOZO08
- +Dhdb25xMLKP+8y2OZfHRt0JJM/M8mjVv3ndvz+jI6F8fw6JsgtfnEKm6358wArN7dgW
- wuw4DlHc7xPkm0S9H0QAZBAHl2Stl5I7ncIJJPfEKVOcAbmyN7vOxWrzHZISkgSNQshb
- R1G0/y9y2JApquvwNmTHHRuBDAjMgxGQwN1lBKLSNVnnPO/0wVc3yiIvbVrfW9UmLL0S
- /sqwMffC/NCHnY2RliG+JP2KSf7SwALmN+HLRbUiblSNe2LZDnIiOeT6xZ4tm9cGcUxH
- ExOw==
-X-Gm-Message-State: AOAM530Q8lOG8ppINhcZEBSwh0WjKVall5g3m62LEFEWkOyDe9t1tt9p
- phw4noLTf+CZJXAY0JSVLQdkETAC23k=
-X-Received: by 2002:a1c:3142:: with SMTP id x63mr10300239wmx.168.1605885708146; 
- Fri, 20 Nov 2020 07:21:48 -0800 (PST)
-Received: from x1w.redhat.com (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id g11sm5684123wrq.7.2020.11.20.07.21.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2020 07:21:47 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kg954-0002z7-Dv; Fri, 20 Nov 2020 11:16:14 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:35482)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kg951-0004jc-V2; Fri, 20 Nov 2020 11:16:14 -0500
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 0AKG2FJe158369; Fri, 20 Nov 2020 11:15:55 -0500
+Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.107])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 34xdrvyvtj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 20 Nov 2020 11:15:55 -0500
+Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
+ by ppma03fra.de.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 0AKGCJuC018652;
+ Fri, 20 Nov 2020 16:15:53 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma03fra.de.ibm.com with ESMTP id 34t6v83b9c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 20 Nov 2020 16:15:52 +0000
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+ [9.149.105.59])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 0AKGFox610027704
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 20 Nov 2020 16:15:50 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9DB12A4051;
+ Fri, 20 Nov 2020 16:15:50 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5BFF0A404D;
+ Fri, 20 Nov 2020 16:15:50 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by d06av23.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ Fri, 20 Nov 2020 16:15:50 +0000 (GMT)
+Received: from yukon.ibmuc.com (sig-9-145-178-186.de.ibm.com [9.145.178.186])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 2CAF2220144;
+ Fri, 20 Nov 2020 17:15:49 +0100 (CET)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.2 1/4] docs/system: Deprecate raspi2/raspi3 machine
- aliases
-Date: Fri, 20 Nov 2020 16:21:37 +0100
-Message-Id: <20201120152140.2493197-2-f4bug@amsat.org>
+Subject: [PATCH for-6.0 0/2] aspeed/smc: Extend support
+Date: Fri, 20 Nov 2020 17:15:45 +0100
+Message-Id: <20201120161547.740806-1-clg@kaod.org>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201120152140.2493197-1-f4bug@amsat.org>
-References: <20201120152140.2493197-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.312, 18.0.737
+ definitions=2020-11-20_08:2020-11-20,
+ 2020-11-20 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=1
+ mlxscore=1 adultscore=0
+ malwarescore=0 bulkscore=0 lowpriorityscore=0 spamscore=1 impostorscore=0
+ phishscore=0 mlxlogscore=225 clxscore=1034 priorityscore=1501
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2011200106
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,54 +119,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Peter Krempa <pkrempa@redhat.com>,
- libvir-list@redhat.com,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fq2QagQn3EKQ
+X-TUID: YAtdWQ75m/St
 
-Since commit aa35ec2213b ("hw/arm/raspi: Use more specific
-machine names") the raspi2/raspi3 machines have been renamed
-as raspi2b/raspi3b.
+Hello,
 
-Note, rather than the raspi3b, the raspi3ap introduced in
-commit 5be94252d34 ("hw/arm/raspi: Add the Raspberry Pi 3
-model A+") is a closer match to what QEMU models, but only
-provides 512 MB of RAM.
+These extensions are required to support the new SPI driver proposed
+by Chin-Ting Kuo from Aspeed :
 
-As more Raspberry Pi 2/3 models are emulated, in order
-to avoid confusion, deprecate the raspi2/raspi3 machine
-aliases.
+https://lore.kernel.org/linux-spi/20201105120331.9853-1-chin-ting_kuo@asp=
+eedtech.com/T/#mf495e230e7dde8f91cf3a485b0a7293e9db54d32
 
-ACKed-by: Peter Krempa <pkrempa@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- docs/system/deprecated.rst | 7 +++++++
- 1 file changed, 7 insertions(+)
+Thanks,
 
-diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
-index d98464098f5..d1bc03d7e61 100644
---- a/docs/system/deprecated.rst
-+++ b/docs/system/deprecated.rst
-@@ -346,6 +346,13 @@ This machine has been renamed ``fuloong2e``.
- These machine types are very old and likely can not be used for live migration
- from old QEMU versions anymore. A newer machine type should be used instead.
- 
-+Raspberry Pi ``raspi2`` and ``raspi3`` machines (since 5.2)
-+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-+
-+The Raspberry Pi machines come in various models (A, A+, B, B+). To be able
-+to distinct which model is used, the ``raspi2`` and ``raspi3`` machines  have
-+been respectively renamed ``raspi2b`` and ``raspi3b``.
-+
- Device options
- --------------
- 
--- 
+C.
+
+C=C3=A9dric Le Goater (2):
+  aspeed/smc: Add support for address lane disablement
+  aspeed/smc: Add extra controls to request DMA
+
+ hw/ssi/aspeed_smc.c | 32 +++++++++++++++++++++++++-------
+ 1 file changed, 25 insertions(+), 7 deletions(-)
+
+--=20
 2.26.2
 

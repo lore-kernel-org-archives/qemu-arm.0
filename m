@@ -1,149 +1,141 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1415986lfb;
-        Fri, 20 Nov 2020 07:48:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxmLQxbwIfbynXfG5wjP7tXfJLHDspm2quLP9R+k7tiA6mWRoXsewXb5p6owxXJTo8ZqUa6
-X-Received: by 2002:a25:2e43:: with SMTP id b3mr19785162ybn.329.1605887281606;
-        Fri, 20 Nov 2020 07:48:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605887281; cv=none;
+Received: by 2002:a0c:dd89:0:0:0:0:0 with SMTP id v9csp358306qvk;
+        Fri, 20 Nov 2020 08:20:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwkMmzbcFmJeam1EXPaUETNcDkqS+bL1Cmda3+/SsbqfY4Nd+grF8DN4Nyzh7KU8pokWpDi
+X-Received: by 2002:a1f:f284:: with SMTP id q126mr13510080vkh.15.1605889224650;
+        Fri, 20 Nov 2020 08:20:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605889224; cv=none;
         d=google.com; s=arc-20160816;
-        b=eAhvFGDNf3wbxHzBjfrhClC1k/ui+MfCjMsYLyBb57lYhGiiL3igPccCyt7+wnniXw
-         sowyFiEh28mwdw2JRN3sWM0VUuwsHhZh2INMCtKsRUt17OJm+1FZdIgZhCt2irHlsdph
-         BEedFEtdaHyp581u0/e94bPedKeCvQduuZ4bfeWi3HzOH5uxg3fhLMP9MqRJ7hjoYu1K
-         kxAbtj/m4WDlSixdA9ChZDKoasJ3CUBOacOhFh5QoE5M8OOmgJJ+tSO4AKdY+DihW3ii
-         EA/V8o6+PV1wjjK9l2cRp/ZJ+FSCC5FpGA7OH9FLT7UHSTmPkN0YoCdebw0h1YZFgDMa
-         2Xyg==
+        b=GIkcB/v6Y6AJrhjhrEIKrAslslHFU3Ye6c8ZE9ap6XljTBaYzGe7zFFRV8ap+lViko
+         jyFuCecdcapdCNAmsOOWUm2CojHKW4i7rjC3qwuCBv5Mf9HYT6PRewePXDFlhAPASwdb
+         o+DSDraEiySx/JGk5RlsfFKG71WdsR2cTJdBe0r52LH+3HHhgYHlraEC+7ZM0P8XqgKc
+         ISAb7za8kQ7XVbT9Ys+ow1+jlzWKC4B6aqxpz1Zc6aCFS4T2SQLR7ctzixhQ5jf5XAvj
+         Mw4gWlEd/aYCqMcp09xOhuZRJpX/v85o6r/A3NAYXeovE5G88N6SgCZTz99zKM5THvOC
+         dL/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=cm3lia8anTWDVgfbt0f/jL3jqU8QAJ6KmLpjDhi9roM=;
-        b=Oy3xdrb+14kfXI5LY+qJn83oNk18Lg9tP/IwIT6biPEbbJshm3TLNReeQkNAWF9hNw
-         b4YNzw3hoBup9AySOELBSMNGaTRE5b8MXqATVm67wZWntx2ARO5jgyHtgkHI85iU6vQg
-         eb5KYoWyeUPxH/p7wUOfL1qbttKjVd70X32gmLqQHyzN2rYiRgkkgWKDW5MLWbhV1WTo
-         JVG/E/9lGYTbfITNJdzKxev23Dl8UIPqzmuJ0DgHoz2FrVYZOfgZ8DZQ727+Ddck6Hxs
-         IsuBe61dAOXQN3UfzFnLMojKp+ZaH43vJfU+SpvogTQTSR3SQgFYaxj2H9dq5pecPS5p
-         WhXQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=EVxgsPY9HkDAArKqSVmioxJ5t6zZHCyccS385R5pHuI=;
+        b=UP4TG1aUT+p9Jz/2hmKHOGJmSc/3/wR8P9KOmL5sFtdxYR3Jtn03HRSoOtxr6KaBgs
+         bp5qcWga7GbP8NNl8/FCqQTJDiGqXczIBJVUZNKU8ur2IUUeUbWlf2G2wcIR1WZkcr9n
+         Po6NRSXMFPkhwF87z6590KYQZE7CHxM4xMLpvQHbGjJkWyOQ3EQDll0zwaTex7UjrZVN
+         TmFPJ0C6Sctjem9OE5hDTYhnqIT5RFXH7UEPF4SFQWZQUmu+zIO/I682bPayZTeeTPxy
+         7SKQEaF1hoivuMayZ+yhWyo8dnIEjjWyYTNOk+0p4klerkvEvsFUQgKtYuz7pHipkn3n
+         pGdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nte5I8S4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si3106650ybi.471.2020.11.20.07.48.01
+        by mx.google.com with ESMTPS id k143si753835vka.16.2020.11.20.08.20.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Nov 2020 07:48:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Nov 2020 08:20:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nte5I8S4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50726 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kg8dk-00009D-VV
-	for alex.bennee@linaro.org; Fri, 20 Nov 2020 10:48:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51846)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kg996-0000Fe-3a
+	for alex.bennee@linaro.org; Fri, 20 Nov 2020 11:20:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kg8bu-0006Oh-QF; Fri, 20 Nov 2020 10:46:06 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:54234)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kg8bt-0002px-E4; Fri, 20 Nov 2020 10:46:06 -0500
-Received: by mail-wm1-x329.google.com with SMTP id p22so10762977wmg.3;
- Fri, 20 Nov 2020 07:46:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=cm3lia8anTWDVgfbt0f/jL3jqU8QAJ6KmLpjDhi9roM=;
- b=nte5I8S4T8nlZ3o7lxxcdliRkyc7KgDfZV3qK5JAI5T78EVMMGOzKMMj8HelAXa5jR
- S3O6ga4SvPv3R6jxiL2/jYIk7fROFmPAPnS2SOAGHcYcROsu6zH9OGcJUTaL8aYhjGIr
- wzMY+1MERZh2oCQKYLjQkEBlTioLr/1iAkkw2Zxt3LxPjBWFlTJLe9guAIOx13T4fzvp
- HvozW104IBvk/ke0uE+VA/wwHs1DkkPuDx4gSL9u1ykJpkeEmO6yV2LNNjbjUd0ehXYC
- L0g3amT/EAxk27zMSqJIAatmdO4955+GH3BMTcSu2TLk9BK2g4HVlBbHECorMbZ+Wmq0
- wRkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cm3lia8anTWDVgfbt0f/jL3jqU8QAJ6KmLpjDhi9roM=;
- b=dmhHpfmmkA+HCWZ1J1cAdmu8bw6lfrafd/mE6o+mogQXxcKXsKQjapBnp905Y2z54V
- GvkaCmffdpWyv5x05yTqHqVrZ6Vb1FbMrsOc/zjKcQTaES2yi6JGSZCZSV8vDck7nLrz
- 2UT2dI8Ah/NoyvYmNP6Uv+TKbGBzt162B38aghb2HX3kot36pXsBPTg2o8BTtV/X7xqn
- CpKMPJH93bEk6mSgRLyCA6/9LYMbOM6pikAZJJKekkesRbd2oc8S/p4j8CevKFDQwqQ6
- kmXzH1FFEHSyWwuJlbj2jNIi873q+ZxjBxAh3F+V0vRquhzTEn3qmxH+t0ulJj6s6bXW
- NeVw==
-X-Gm-Message-State: AOAM531pAuRF+3zMQrfPfJuJRL06YI/VLsROKKx1D5ytoJKdog40CW9x
- tX+wiLKKIU/rpHiUYl59NrW+V0fW7Hg=
-X-Received: by 2002:a1c:c6:: with SMTP id 189mr1780501wma.36.1605887162751;
- Fri, 20 Nov 2020 07:46:02 -0800 (PST)
-Received: from x1w.redhat.com (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id l14sm869410wmi.33.2020.11.20.07.46.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2020 07:46:02 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.2 3/6] MAINTAINERS: Cover system/arm/nuvoton.rst with
- Nuvoton NPCM7xx
-Date: Fri, 20 Nov 2020 16:45:42 +0100
-Message-Id: <20201120154545.2504625-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201120154545.2504625-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kg95n-00047P-51; Fri, 20 Nov 2020 11:16:59 -0500
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:45263)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kg95l-0004st-69; Fri, 20 Nov 2020 11:16:58 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.235])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 5DA0E7401BFF;
+ Fri, 20 Nov 2020 17:16:52 +0100 (CET)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Fri, 20 Nov
+ 2020 17:16:52 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005fb39b859-bef0-40c1-a480-b47cab6d8c19,
+ A23325C36D42651F374A503D8DAC6E521FBBB235) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH-for-5.2 2/6] MAINTAINERS: Cover system/arm/aspeed.rst with
+ ASPEED BMC machines
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
 References: <20201120154545.2504625-1-f4bug@amsat.org>
+ <20201120154545.2504625-3-f4bug@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <72872af7-8f99-bcbd-4cf4-905aed3d7e9b@kaod.org>
+Date: Fri, 20 Nov 2020 17:16:51 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20201120154545.2504625-3-f4bug@amsat.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: d7e3818b-a795-49c9-8128-6a3bcbb3f755
+X-Ovh-Tracer-Id: 17002214495973510051
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrudegtddgkeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Havard Skinnemoen <hskinnemoen@google.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0+tpaotCzWzr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kRbN5bqfT0SH
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Cc: Havard Skinnemoen <hskinnemoen@google.com>
-Cc: Tyrone Ting <kfting@nuvoton.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+On 11/20/20 4:45 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cc883260d03..2623cf85f66 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -763,6 +763,7 @@ F: include/hw/*/npcm7xx*
- F: tests/qtest/npcm7xx*
- F: pc-bios/npcm7xx_bootrom.bin
- F: roms/vbootrom
-+F: docs/system/arm/nuvoton.rst
- 
- nSeries
- M: Andrzej Zaborowski <balrogg@gmail.com>
--- 
-2.26.2
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks ! 
+
+C. 
+
+
+> ---
+> Cc: "Cédric Le Goater" <clg@kaod.org>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Joel Stanley <joel@jms.id.au>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 8d7a6026b91..cc883260d03 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1001,6 +1001,7 @@ F: include/hw/*/*aspeed*
+>  F: include/hw/misc/pca9552*.h
+>  F: hw/net/ftgmac100.c
+>  F: include/hw/net/ftgmac100.h
+> +F: docs/system/arm/aspeed.rst
+>  
+>  NRF51
+>  M: Joel Stanley <joel@jms.id.au>
+> 
 

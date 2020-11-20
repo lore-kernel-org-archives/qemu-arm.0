@@ -1,88 +1,78 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp64700lfq;
-        Mon, 5 Oct 2020 13:33:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqyp7aFB/WRqSfuwyDXqwdPJ7Q6SgzZcHdzeIo0dyUZaC9f+6FMwLkyuHrWbyIqr9hask6
-X-Received: by 2002:a25:d8b:: with SMTP id 133mr2252986ybn.294.1601929992388;
-        Mon, 05 Oct 2020 13:33:12 -0700 (PDT)
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1116173lfb;
+        Fri, 20 Nov 2020 00:53:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwqxilcs3bY/kyOWeJFpOwxP0ukj62Kgn2GfsXFxnY8/jqWjiN8l3vjMjrFGFeZL4PtVUHy
+X-Received: by 2002:a05:6902:102a:: with SMTP id x10mr16893501ybt.130.1605862409447;
+        Fri, 20 Nov 2020 00:53:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605862409; cv=none;
+        d=google.com; s=arc-20160816;
+        b=RWIZM9361g9YDp78w3RxGhVz5pjKnn68zOETQBbjan3a5+xeqfH8zVFqSSy9Z67Fm9
+         MWxYLgYJ6Dwk9ThJxuYaJkxiHAhl7MeVT+Y/VaXGDGanPG8cawh15Q/T0Gcx5aQde0Gy
+         Gzi/NOeV3vS12uYa6I7h4pizIADQMK6TZ54DmcnBTNMpC/sdkYmunXKqzJ9jBynLt/eZ
+         8A2wtrzi0E6E9bU998NMBcE0yOE+7WyOO9DrzqK8PWhtXKlUFC7vFKBXnMVvRLltfNG0
+         cfBX4k94Nt3RFUcRI8DQDi1w+2q3ZNSck0+OTzp8XUKZIsZBpEapq7Tzulbnx2BOZRUS
+         4O8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=QJVEt1Sb/Y2mqI5Z8hNBHjHUki/iQBkRi0p0tC3pPIs=;
+        b=oGlvQtJdedIejZP0R/tjSxbBh6xfG38aQm7Y0YTcrtc+HQB4mHAAEH3xGSj/Eg/nub
+         vtmooO8zqAgVHZcc5PIa5OrN+xdETUCmPA2DNO90Nq5BU3ccq4NouG1bCj/BHEK7FuAT
+         2lf/j9d05MS4kq5LMbU4y+hgfY+prAEK93otJOgBltAH4dRQaer/tFxKLL1p1aNE3+mC
+         jLy6QtjKYq998O2aEHj2YpOrsUn9kA8wLUWNSrPeAgRvUNHPL3i390yFCOz1QsG6K2Jw
+         vQ/NFCx9cbrwWihgp5CJC7OjWF0n7zJnjD6T2D8O8CgrxAgH7U7oz0juJicUxr6P7YZ6
+         ftag==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x33si924091ybh.26.2020.10.05.13.33.12
+        by mx.google.com with ESMTPS id 128si1971561ybi.57.2020.11.20.00.53.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 13:33:12 -0700 (PDT)
+        Fri, 20 Nov 2020 00:53:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="E74i/uY9";
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:45104 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPXAV-0002Wi-PK
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:33:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57884)
+	id 1kg2Aa-0005qQ-Pk
+	for alex.bennee@linaro.org; Fri, 20 Nov 2020 03:53:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWaJ-00051W-DG; Mon, 05 Oct 2020 15:55:47 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:35978)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kg2AQ-0005p2-Ex; Fri, 20 Nov 2020 03:53:18 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2534)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWaG-0007ZQ-2d; Mon, 05 Oct 2020 15:55:46 -0400
-Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
- [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id C2F91C60F21;
- Mon,  5 Oct 2020 19:55:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601927715;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xOp5kHB5MhJ1e27uGPyXvC1k4exjc5ZLMa8tE4n45oo=;
- b=E74i/uY9kqr/zcBvSkb6HVbp9IfDez2cpkwv1gvv2Bhq+Kdge5obAzRruMirmZ2PBFEPwf
- ewTq31M6RMMdXapKE5Mp4/CLeDpwui5Gmv268JBStHcoz3CzBtVO3adsb3U5ieCmTTYS6W
- +8nr09oM9zEr8kKSmPLynXEGuWdW/L6l4Z2JpmLc8OQnKmIiRzwQunBMMhWig80ky1A9Ud
- ajwjYP4trqcMKPh1syjtdHIFkzdRZqFX73QrlKzDn0eKtjlgvwS4vDG1qoByTHko+hgWe1
- 3GEEnoCKD4jH9E5dJc3GeE7oYNYd+WcVSlNyf2QyQlVITCblwLOF0aoTkSRA/Q==
-From: Luc Michel <luc@lmichel.fr>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 09/15] hw/misc/bcm2835_cprman: implement PLL channels
- behaviour
-Date: Mon,  5 Oct 2020 21:56:06 +0200
-Message-Id: <20201005195612.1999165-10-luc@lmichel.fr>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201005195612.1999165-1-luc@lmichel.fr>
-References: <20201005195612.1999165-1-luc@lmichel.fr>
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kg2AN-0001Uj-Oh; Fri, 20 Nov 2020 03:53:17 -0500
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Ccr0W0Yh1zhdXB;
+ Fri, 20 Nov 2020 16:52:43 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 20 Nov 2020 16:52:52 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, "Dr . David
+ Alan Gilbert" <dgilbert@redhat.com>
+Subject: [RFC PATCH 2/2] ramlist: Resize dirty bitmap blocks after remove
+ ramblock
+Date: Fri, 20 Nov 2020 16:51:57 +0800
+Message-ID: <20201120085157.7136-3-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20201120085157.7136-1-zhukeqian1@huawei.com>
+References: <20201120085157.7136-1-zhukeqian1@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601927715;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xOp5kHB5MhJ1e27uGPyXvC1k4exjc5ZLMa8tE4n45oo=;
- b=LAhhZ5FjWuskuvjmMkK3DgQqOwDgr6qPpbkkKAbkRt2BTFSaibrtE9h6x6rV0SWVlP4lAs
- +xxQvhhdg2qXFQff92Tj0Vxlmfe1vD1Im7xd77K2OKDJr38fwpmTxPju+HVN8AF/lqyV/7
- zJvcQ5t0MJ/WQm49Gik3lCIPbTFIJ6l2EHC2f4dEuxbsSAlVvPGEHbAyx3Zb0EhobWfwvd
- XF03lDGHT2jMQiLAt6ffnlQbw7OaNfJBh0Dowgd94mMkk+WVff4D+Q7Tqh3PtHoCQJ5Nmz
- aY/O4srPEHwFYN+sNGY68J69hrelwrRa9qQ7jD6dJSJvGRkDSwpdbEonapcMUg==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927715; a=rsa-sha256; cv=none;
- b=C1Z6lNxf73YYKBGOwiHG+58yoiPPUKq+wcGL29NLFobblYEE7UXLlpqESqMO5Iw8HWa48IOqduvowy83+ahkCwg5tMGk8EB/H6w7jU+DDRQ1zxWX5/t/eowwyVD0H44Ofnq4eQDk4OQPI8JbCEO6h19vFSxvI9NZM+2kIY/tIk+ChCmO2didFdf6YKwKlYvT1HsLe9/iQCJiDdfsDYQtpkLIGUAp3GkZTgooDAvqQ2B4L68WHf4lRrymjdr7fSiwI3WMzRMzCpjMnoKUucxHmRxvlme6PDEQ285LCoGRmwmR2tMr6IWs1JGiRH0vQV9fgnJ+7QD37dsMyQHHdSPhLw==
-ARC-Authentication-Results: i=1;
-	pharaoh.lmichel.fr
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 15:49:50
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.37]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,76 +86,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Havard Skinnemoen <hskinnemoen@google.com>
+Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
+ Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +1Vdv+HLUiTd
+X-TUID: QkJBtz3mheHw
 
-A PLL channel is able to further divide the generated PLL frequency.
-The divider is given in the CTRL_A2W register. Some channels have an
-additional fixed divider which is always applied to the signal.
+Use the new "dirty_bitmap_resize" interface to reduce dirty bitmap
+blocks after we remove a ramblock from ramlist.
 
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Luc Michel <luc@lmichel.fr>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 ---
- hw/misc/bcm2835_cprman.c | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+ softmmu/physmem.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index 12fa78181b..71c1d7b9e7 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -132,13 +132,44 @@ static const TypeInfo cprman_pll_info = {
- };
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index f6ff78378e..2a17e0a89a 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -2131,6 +2131,8 @@ static void reclaim_ramblock(RAMBlock *block)
  
- 
- /* PLL channel */
- 
-+static bool pll_channel_is_enabled(CprmanPllChannelState *channel)
-+{
-+    /*
-+     * XXX I'm not sure of the purpose of the LOAD field. The Linux driver does
-+     * not set it when enabling the channel, but does clear it when disabling
-+     * it.
-+     */
-+    return !FIELD_EX32(*channel->reg_a2w_ctrl, A2W_PLLx_CHANNELy, DISABLE)
-+        && !(*channel->reg_cm & channel->hold_mask);
-+}
-+
- static void pll_channel_update(CprmanPllChannelState *channel)
+ void qemu_ram_free(RAMBlock *block)
  {
--    clock_update(channel->out, 0);
-+    uint64_t freq, div;
++    ram_addr_t old_ram_size, new_ram_size;
 +
-+    if (!pll_channel_is_enabled(channel)) {
-+        clock_update(channel->out, 0);
-+        return;
-+    }
+     if (!block) {
+         return;
+     }
+@@ -2140,12 +2142,18 @@ void qemu_ram_free(RAMBlock *block)
+     }
+ 
+     qemu_mutex_lock_ramlist();
 +
-+    div = FIELD_EX32(*channel->reg_a2w_ctrl, A2W_PLLx_CHANNELy, DIV);
++    old_ram_size = last_ram_page();
+     QLIST_REMOVE_RCU(block, next);
++    new_ram_size = last_ram_page();
++    dirty_bitmap_resize(old_ram_size, new_ram_size);
 +
-+    if (!div) {
-+        /*
-+         * It seems that when the divider value is 0, it is considered as
-+         * being maximum by the hardware (see the Linux driver).
-+         */
-+        div = R_A2W_PLLx_CHANNELy_DIV_MASK;
-+    }
+     ram_list.mru_block = NULL;
+     /* Write list before version */
+     smp_wmb();
+     ram_list.version++;
+     call_rcu(block, reclaim_ramblock, rcu);
 +
-+    /* Some channels have an additional fixed divider */
-+    freq = clock_get_hz(channel->pll_in) / (div * channel->fixed_divider);
-+
-+    clock_update_hz(channel->out, freq);
+     qemu_mutex_unlock_ramlist();
  }
  
- /* Update a PLL and all its channels */
- static void pll_update_all_channels(BCM2835CprmanState *s,
-                                     CprmanPllState *pll)
 -- 
-2.28.0
+2.23.0
 

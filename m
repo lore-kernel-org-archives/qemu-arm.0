@@ -1,101 +1,102 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1415401lfb;
-        Fri, 20 Nov 2020 07:47:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwF4ZBt1o8R0k94cT5Bqu5v1fI03GYCN8SO4KykZazwGePHqorbG9GL6gchNBWz2LbnQexJ
-X-Received: by 2002:a25:558b:: with SMTP id j133mr24028553ybb.224.1605887230751;
-        Fri, 20 Nov 2020 07:47:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605887230; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1415816lfb;
+        Fri, 20 Nov 2020 07:47:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxgOlkYyWbTfkOdidsiSMxzm/GvOnIaDCnRguWeqy3+DJ1LX6uEED8CnXyNpW+t5vwvJf8a
+X-Received: by 2002:a25:34d6:: with SMTP id b205mr20689510yba.220.1605887264590;
+        Fri, 20 Nov 2020 07:47:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605887264; cv=none;
         d=google.com; s=arc-20160816;
-        b=InwuDf6oYdSnb/ZV4OcsjzHR26QI4/AUPDY+IlV7g4dH+ENQNg0Kaqq6HifOdqn6QF
-         PIyYrDd1xgjdhod1hrk071JcXDh1clIDX6gZwerMLOrWu44YoJSwvoG34xxuijghLB22
-         c8UQotAcxqQOlTlfUMJesLrHEtRbab1V18GQbVvusqz2MjnB/raBPHg0a8KepQkVPlyk
-         Y/ck7WOsozjKGxI8mlIdEhzPSAvHtXJa3wChLkXvC40yfZJZW+fF/zClfgFF9tpaPOZv
-         Gfe3IFxVKazzrp5GidMZKUXfJhhJwz6sF4/LmR45eTmbUai4R5mn2bMDD7LHTBZdW5AB
-         j1WA==
+        b=lse0P3lz9UQn5yxJYUJS++3H8arWKnZ80X9LmjLZ4kHdDBKMMk4MXLoLGOBkYPsZoh
+         qHceXztztIVwM8yOIuM+mVFEA9MJs34aP9h71fYRJUmpmjkXCRK47fuetOq0Y2r3VkYK
+         raWGxtZfILKm121l4Y+lyOA/Hu4ahoPQhtHfAMZbeIsuKah9fCkC5QhejFLYCH+pLYjl
+         NT/dTN9lNvqckW5pLvkg7VbiStQXOz0N+5zbiBXxwosCYfnDsBLBxDCAVIrF9YvRhbQ4
+         9i9aAQNEoE5khPSFGy4lKa0qjWIrp/fmOn4JC3p+APGK/VeP6H/GYXcb85lJbMu3wPWp
+         JKYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=gSRkkpOtYYp4MRO7peWoeBoT3gfSt4WCyUlggZt4xqI=;
-        b=cyRsjo6pKnzkby6DcnTVeSu0z1RBd+kuae4yYNznGn2VDcBKPNjnau5e2DcB6cPWeU
-         T4CFuc1hg3mKLDR8ndC4ARs/HlEJXPQrp7kVHil6GzU6nOuOq/XQBj9uMrSy+/g7INhW
-         A4+4RJRnE3eY92iR9ySWcRSoGmSa39jVqvEMVVo2/3vLvBNV2Vc6EL7KNmRq1YswB4yo
-         NYc2zUAWuq5L4sw/aBw9fe9E+0kimgC5wTGBNmcnRUvqi9qOzbIKOiq8WSAn8gWtoOwB
-         F1gc0dboJKraOyALnvL2nNkVoB+/mOdr8kCZgQsvqSgGdmDUfSQu/kuPV8y6eR/OzdZA
-         j1BA==
+        bh=UpkRsLdC0nFsnY4IvJo9npjA5EZyqd941IdOyqgSONM=;
+        b=1BH67gyByr87ErRIcwi7UtneaBuRFx+OKHYRAWRNF6JuFFaMt7rSSp85ARifnO7rMJ
+         vbcZZeWqgvlWj2ykIuycA2amWepyES4GTvO+rlowlzLFth8JCK3KSPSY/MXT9AaaA+/p
+         Wq8vjpr5kGfVS0zfRJUOo7NpPURVyjaHe89MNllf+5ZHuvIyyWfqnpFO95tTzT9c/TF5
+         GpC1QeyLsn/1+TBQp3p/B3N2y3kb1vCtHsCU6wYM07PL/+s688ucqcYxnxASODdVN3GK
+         DKpjKU61/SnxEl65cQx7F9+gtsH33uqCeYOA3EyKb0bvsoW1WNwUJhkHX/TzoPlpnTtI
+         ZlrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=INWZ+k2N;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eHr+aPIA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o143si2755695yba.445.2020.11.20.07.47.10
+        by mx.google.com with ESMTPS id p11si2965647ybl.404.2020.11.20.07.47.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Nov 2020 07:47:10 -0800 (PST)
+        Fri, 20 Nov 2020 07:47:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=INWZ+k2N;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eHr+aPIA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49686 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50780 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kg8cw-00089k-3I
-	for alex.bennee@linaro.org; Fri, 20 Nov 2020 10:47:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51892)
+	id 1kg8dT-0000Ap-TM
+	for alex.bennee@linaro.org; Fri, 20 Nov 2020 10:47:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51988)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kg8bz-0006Vy-9U; Fri, 20 Nov 2020 10:46:11 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:51670)
+ id 1kg8c9-0006vI-7W; Fri, 20 Nov 2020 10:46:21 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:55518)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kg8bx-0002sR-NE; Fri, 20 Nov 2020 10:46:10 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id a186so7968422wme.1;
- Fri, 20 Nov 2020 07:46:08 -0800 (PST)
+ id 1kg8c7-0002w2-Em; Fri, 20 Nov 2020 10:46:20 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id c9so10766992wml.5;
+ Fri, 20 Nov 2020 07:46:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=gSRkkpOtYYp4MRO7peWoeBoT3gfSt4WCyUlggZt4xqI=;
- b=INWZ+k2NBrzR8+p60tRSc6EsmfJGTrtMgQVktFeTagPMefeGI05UHDOFYGxKaCO7q0
- Ws7XKlFYq0Vs2/3s/K77PHVn90JHc9Jhd2MPIlMUiXg7G3APqKQSmGZJ39Iy1c2kIrTb
- maKv0t7FvnfmSQlx157YqcBJnluJtlg7kYLVodfuxvIBXWSLL1bNYGb4NE8s/eTbJZhq
- MgiHifsisssuFUO0HrmLDO2I72oyPYf6boDbVBnhHE9aHwUcoSIrOOg+C+YpKKZvqesK
- B1BFE0cYxwvi0qTK7XJcr3LrH/htyF5X2WcjWgc5xMkpgr0SQ1wbf2eLNNgWaPQyzoyP
- zLFA==
+ bh=UpkRsLdC0nFsnY4IvJo9npjA5EZyqd941IdOyqgSONM=;
+ b=eHr+aPIAVFvCT9mm6UPRXTwgFIMqwDUlzQVgLiV6RJhuLL+ETRNgHs2UOUHN/ScDUY
+ PlIC/4HLJMBvZiePKFze/jw1bE9Rla+esyA8uY4S8AXlNvR+W/kBuz9uXDF+lkL9Qh6R
+ Zl0fWtERaqlWDKlB2of0ahLRX3o2rdPoYG2hxa5g9GHiKrq8cPqTDZBh37cbIYT99U30
+ 2EOlIA24C8kG0t4Mt87wVILT0gRT/cfv1Uut3jbVB6ZkzKap7USGs+fAaC1veWwh5KQK
+ cybgac5ndujePWNYmvq77h5WyGRbTJ7oBpWNiTlJCOWeaNhgRE+wxrKxEAZ62FZ1I1Ut
+ DbCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=gSRkkpOtYYp4MRO7peWoeBoT3gfSt4WCyUlggZt4xqI=;
- b=CwVq75LA0CeLWaaohDS55sZ0C+vx1NvA80j0VSAkrsxGKdNVi57SdmiydDnpC7ovXb
- 6DcJOE6ILxww/te+Y2vi8pbHcrbicV0YDuynOF6buk5wkktkkneS3UT6Zmmhd5F0zp/C
- R00xyrpmjRjNqBv9sBSs/vJY9ANTeetVQqFWj/UAxa6cy2q9WqxMs3QLH4W8Qxj7M55E
- eeTUxgC7N8+eW8VkN12+8uJcVfBJj0Qjekgqb7eBFUDsRhx4GBHY1/1DYz4lTm2ZOJHe
- WPC7WNcI9votHY4hWHsNbrUpve2NqGYuAgWwlxiwIl0jYzON7vCzWJYAwjtIg3p2BGj3
- bWyA==
-X-Gm-Message-State: AOAM531WvEtRkFqGooy/Tw0V0ULQ3Wsp77jHL9Rbxplor+C6+ajJH7ZP
- Yvou15KJBDOQjL1/oQ+I+5DVmXnf7pA=
-X-Received: by 2002:a7b:cc94:: with SMTP id p20mr11042286wma.100.1605887167826; 
- Fri, 20 Nov 2020 07:46:07 -0800 (PST)
+ bh=UpkRsLdC0nFsnY4IvJo9npjA5EZyqd941IdOyqgSONM=;
+ b=G3aRDCb+oMQ9KiP0JaPcd0HaurQMwIit/8SscEb62ltGKuP7+Fdda/7dsso03Q7kEX
+ 2vBAkwV+h7vb/N0Q0zLsJHVQXiyE4jowm6JXeDDiTqejsQobzirRgeXD0sZLdgGWacIX
+ 0HVhMJYz+524MIK/q57SN+h6h/ZIk2Cq40ZQxT2aylKOuHdmnsHkqrYZFEu4hNa0Uh4L
+ Xr2P7Bja3mM9x5zP6UomBV7ZUgy9C2cZBjTtte/BmN2uY+SvCMBp19D5S9a7BLjaothN
+ wDrW2WbbNtl+NzkkZEBypaWlZGyvz7vCj6Z4rvvESy1C0QxYgFi83CYETM8zefBlCzbD
+ dFZQ==
+X-Gm-Message-State: AOAM533ElMZdSbKeh+9a5PLaIxVuYx2PaWMwjXrv4rqjUYJ1kr96hkGY
+ 58qYiFUtNO4xwthxTdvJF9VW1w9FY64=
+X-Received: by 2002:a1c:66d5:: with SMTP id a204mr9981462wmc.184.1605887177463; 
+ Fri, 20 Nov 2020 07:46:17 -0800 (PST)
 Received: from x1w.redhat.com (234.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id g186sm38402553wma.1.2020.11.20.07.46.06
+ by smtp.gmail.com with ESMTPSA id a17sm5721779wra.61.2020.11.20.07.46.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Nov 2020 07:46:07 -0800 (PST)
+ Fri, 20 Nov 2020 07:46:16 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.2 4/6] MAINTAINERS: Fix system/arm/orangepi.rst path
-Date: Fri, 20 Nov 2020 16:45:43 +0100
-Message-Id: <20201120154545.2504625-5-f4bug@amsat.org>
+Subject: [PATCH-for-5.2 6/6] MAINTAINERS: Cover system/arm/sx1.rst with OMAP
+ machines
+Date: Fri, 20 Nov 2020 16:45:45 +0100
+Message-Id: <20201120154545.2504625-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201120154545.2504625-1-f4bug@amsat.org>
 References: <20201120154545.2504625-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -116,33 +117,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+Cc: qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BIRgstjzqRbT
+X-TUID: v7nTxbC6ZTL7
 
-Fixes: 0553ef42571 ("docs: add Orange Pi PC document")
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Cc: Niek Linnenbank <nieklinnenbank@gmail.com>
----
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 2623cf85f66..311a55317ce 100644
+index 73020648a64..fbb068196a7 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -559,7 +559,7 @@ S: Maintained
- F: hw/*/allwinner-h3*
- F: include/hw/*/allwinner-h3*
- F: hw/arm/orangepi.c
--F: docs/system/orangepi.rst
-+F: docs/system/arm/orangepi.rst
+@@ -1608,6 +1608,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/omap*
+ F: include/hw/arm/omap.h
++F: docs/system/arm/sx1.rst
  
- ARM PrimeCell and CMSDK devices
- M: Peter Maydell <peter.maydell@linaro.org>
+ IPack
+ M: Alberto Garcia <berto@igalia.com>
 -- 
 2.26.2
 

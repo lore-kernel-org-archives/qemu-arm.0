@@ -1,86 +1,80 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1330477lfb;
-        Fri, 20 Nov 2020 06:06:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzRS8mBYr+Pyl/Z7mfl1o5HvVshOfg+jrlpQT04TFSXH60cBqYKd4EK0aGjxQKKTWSmHM39
-X-Received: by 2002:a1f:2f48:: with SMTP id v69mr12049337vkv.23.1605881208386;
-        Fri, 20 Nov 2020 06:06:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605881208; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1385584lfb;
+        Fri, 20 Nov 2020 07:10:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyV/Cvws5zhOKl5a6X+lYtwO0z7gt/iIsTDlw6QgLj/PD4UDdUBMpa/iZPOoTxOjabet5wr
+X-Received: by 2002:a4a:9cc7:: with SMTP id d7mr14470840ook.8.1605885053195;
+        Fri, 20 Nov 2020 07:10:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605885053; cv=none;
         d=google.com; s=arc-20160816;
-        b=AOmfoBbF4C48OXWTHMbEggLA+QbAhnEx6/O4Mva6d4QOCmm9BPP9LEape9YVG302zy
-         LXSyTWIxoVtUARPnDQc8MOhQrcSTjojh756avhmnzxHbn8x0qqrogLuem2+cGg26Mimr
-         w1GAlxgDjCeOT3rpk58QszlVUK3ZoW34ualVpsglzeQ+gVuLP2CWaTiXf3KAkcEQG53/
-         A+rXulRTP9US3g0qERNkmecKC2tiNI4sI6SU6vZzHegI7jnX9yTtdJJMgHZfvZoOhWTC
-         QsajTZ1OzdTI6tOMUyHx2RL1F//UbfuMSyYGFTx7PjpNcwu/c7b6HMpLjCeIyzGzqlkk
-         vMcQ==
+        b=hZdavrCfUbBaAM5TsWOWLa1O7D1kPGkLULsaJ0p25Gj8sawq/OXr7m1ixYs2aYFvHN
+         6+VBueFSsknnqAwRqR4pj9SJhtFFKKZaqIDio2LuDBvpoowKBhmyCzm+yOxpRTHV0iGs
+         RwP9qPnM9vMEmMecTwNqkPVLdPpnD3Dk6SJk+tTzqWr2K9pxWEEqC+fS5rTDiuF9yuvY
+         V/O7dqTeaeTX75cYiaJntB5/UtXHI+SsTVc39PP+Mn2rx8dFH075m8n+VfF9zzs6IiP0
+         I4g2J7bBOZbJ2uOm1m0axMQS1LkKPlyixbeXYrE4CziJcDDmhHBnEySezbjGEInLZvxf
+         GpYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=HQH8opyCNGZKWw74yHsdwuKya3g4k8QuLS2SgEls0Gg=;
-        b=ld+GC/0kYeE3xn87PdYaSug2PtFgol04FMcJf9jE3zJbid8vXej8nkwDeNC0JnE0hW
-         52O2veZBUmqsezJ56eY16fP7hrcPGEYSMASTbgqRtFhkMyNC+TAAjm66IrnTEhcjxuHT
-         1af32VcXU5/VlPaARE3Trz6E5ntpr85g7wX+Ob6uuLK4xJMP5O5KpgKGnPGZ8GcmkaXk
-         vKqqw5Y5Zx07+M9TPFXWkB0b5f2KchGCF2hkFlPoNboiBea+PVO+BTP3aoVHFVPQeIwz
-         8f0LbtLySOQgQ1DW6NskzTf0ks/jYC2RuuFkGBKWJjzAe9pyAAitDuH7koX2E8YoPOis
-         srMQ==
+         :mime-version:message-id:date:subject:to:from;
+        bh=OtoAX/fDCEUBE7DL6XMej4vk4ZkRaIZuFHNwbvb4sB8=;
+        b=ON0rFF1CqheJd50hY6lx5Ww2xNew/jf4ZOdiP9b8rrT0yrl/3bt5TGbgvulSJpAIO6
+         v52OimmCrKe6MjaDfdGc9L1bI2/VHNZxKQAUR4L/FJcoIiaeD0tIjQ6JEiy3gVl4CWAZ
+         /CdmWScdVyJ1B8Yr7tuGqgcImosbhd9sKAhCm2XsogAOrpCqEPqsTTWpUHOwzXltCcnZ
+         OpIYLdlA9ugnHdG9ytL+eCridfNQfvhX30zHLlhdeNWDNJt+VRxgCAteRen5emhR0jyz
+         /EkpGiz4TFQnVwoAqSbcq/84JU5t+ugZOTQXvsRl7hD76nc4FfkSxgS3vclxd7KEIgeV
+         yN4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j17si104862vsq.276.2020.11.20.06.06.48
+        by mx.google.com with ESMTPS id h1si654670uac.21.2020.11.20.07.10.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Nov 2020 06:06:48 -0800 (PST)
+        Fri, 20 Nov 2020 07:10:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44818 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kg73n-0006ii-LB
-	for alex.bennee@linaro.org; Fri, 20 Nov 2020 09:06:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47528)
+	id 1kg83o-0005dI-HJ
+	for alex.bennee@linaro.org; Fri, 20 Nov 2020 10:10:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kg73U-0006gR-6I; Fri, 20 Nov 2020 09:06:28 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2461)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1kg7E9-0002tW-5h; Fri, 20 Nov 2020 09:17:29 -0500
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221]:35314)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kg73R-00070q-2U; Fri, 20 Nov 2020 09:06:27 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CcyxX75LKzLqMg;
- Fri, 20 Nov 2020 22:05:36 +0800 (CST)
-Received: from [10.174.187.179] (10.174.187.179) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.487.0; Fri, 20 Nov 2020 22:05:50 +0800
-Subject: Re: [PATCH RFC] vfio: Move the saving of the config space to the
- right place in VFIO migration
-To: Alex Williamson <alex.williamson@redhat.com>, Kirti Wankhede
- <kwankhede@nvidia.com>
-References: <20201114091731.157-1-lushenming@huawei.com>
- <860bd707-8862-2584-6e12-67c86f092dba@nvidia.com>
- <20201119104127.5e243efa@w520.home>
-From: Shenming Lu <lushenming@huawei.com>
-Message-ID: <a7be9306-f800-0323-293e-217e2e9f6015@huawei.com>
-Date: Fri, 20 Nov 2020 22:05:49 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.2.2
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1kg7E7-0002iK-1D; Fri, 20 Nov 2020 09:17:28 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id A652226036D;
+ Fri, 20 Nov 2020 15:17:22 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ol5HqVUr2XQl; Fri, 20 Nov 2020 15:17:20 +0100 (CET)
+Received: from puchatek.local (89-67-26-161.dynamic.chello.pl [89.67.26.161])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 09EC026026E; 
+ Fri, 20 Nov 2020 15:17:19 +0100 (CET)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-arm@nongnu.org
+Subject: [PATCH] sbsa-ref: allow to use Cortex-A53/57/72 cpus
+Date: Fri, 20 Nov 2020 15:17:05 +0100
+Message-Id: <20201120141705.246690-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-In-Reply-To: <20201119104127.5e243efa@w520.home>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.187.179]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=lushenming@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 20 Nov 2020 10:10:43 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,189 +86,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Neo Jia <cjia@nvidia.com>, Marc Zyngier <maz@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org, dgilbert@redhat.com,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org, yuzenghui@huawei.com,
- wanghaibin.wang@huawei.com
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?q?Rados=C5=82aw=20Biernacki?= <rad@semihalf.com>,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fQhXZqd0qsBR
+X-TUID: ZrrkKGiluj8A
 
-On 2020/11/20 1:41, Alex Williamson wrote:
-> On Thu, 19 Nov 2020 14:13:24 +0530
-> Kirti Wankhede <kwankhede@nvidia.com> wrote:
-> 
->> On 11/14/2020 2:47 PM, Shenming Lu wrote:
->>> When running VFIO migration, I found that the restoring of VFIO PCI device’s
->>> config space is before VGIC on ARM64 target. But generally, interrupt controllers
->>> need to be restored before PCI devices.   
->>
->> Is there any other way by which VGIC can be restored before PCI device?
+Trusted Firmware now supports A72 on sbsa-ref by default [1] so enable
+it for QEMU as well. A53 was already enabled there.
 
-As far as I know, it seems to have to depend on priorities in the non-iterable process.
+1. https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/7117
 
->>
->>> Besides, if a VFIO PCI device is
->>> configured to have directly-injected MSIs (VLPIs), the restoring of its config
->>> space will trigger the configuring of these VLPIs (in kernel), where it would
->>> return an error as I saw due to the dependency on kvm’s vgic.
->>>   
->>
->> Can this be fixed in kernel to re-initialize the kernel state?
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
-Did you mean to reconfigure these VLPIs when restoring kvm's vgic?
-But the fact is that this error is not caused by kernel, it is due to the incorrect
-calling order of qemu...
-
->>
->>> To avoid this, we can move the saving of the config space from the iterable
->>> process to the non-iterable process, so that it will be called after VGIC
->>> according to their priorities.
->>>   
->>
->> With this change, at resume side, pre-copy phase data would reach 
->> destination without restored config space. VFIO device on destination 
->> might need it's config space setup and validated before it can accept 
->> further VFIO device specific migration state.
->>
->> This also changes bit-stream, so it would break migration with original 
->> migration patch-set.
-> 
-> Config space can continue to change while in pre-copy, if we're only
-> sending config space at the initiation of pre-copy, how are any changes
-> that might occur before the VM is stopped conveyed to the target?  For
-> example the guest might reboot and a device returned to INTx mode from
-> MSI during pre-copy.  Thanks,
-
-What I see is that the config space is only saved once in save_live_complete_precopy
-currently...
-As you said, a VFIO device might need it's config space setup first, and
-the config space can continue to change while in pre-copy, Did you mean we
-have to migrate the config space in save_live_iterate?
-However, I still have a little doubt about the restoring dependence between
-the qemu emulated config space and the device data...
-
-Besides, if we surely can't move the saving of the config space back, can we
-just move some actions which are triggered by the restoring of the config space
-back (such as vfio_msix_enable())?
-
-The demo patch is as follows (but it seems that .save_state is not a appropriate
-place to do it. -_-):
-
-diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
-index 55261562d4..9cf0310148 100644
---- a/hw/vfio/migration.c
-+++ b/hw/vfio/migration.c
-@@ -44,6 +44,7 @@
- #define VFIO_MIG_FLAG_DEV_CONFIG_STATE  (0xffffffffef100002ULL)
- #define VFIO_MIG_FLAG_DEV_SETUP_STATE   (0xffffffffef100003ULL)
- #define VFIO_MIG_FLAG_DEV_DATA_STATE    (0xffffffffef100004ULL)
-+#define VFIO_MIG_FLAG_DEV_STATE_TRIGGER (0xffffffffef100005ULL)
-
- static int64_t bytes_transferred;
-
-@@ -368,6 +369,15 @@ static int vfio_save_device_config_state(QEMUFile *f, void *opaque)
-     return qemu_file_get_error(f);
- }
-
-+static void vfio_device_state_trigger(void *opaque)
+diff --git hw/arm/sbsa-ref.c hw/arm/sbsa-ref.c
+index 7d9e180c0d..b9909279f1 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -143,6 +143,24 @@ static const int sbsa_ref_irqmap[] = {
+     [SBSA_GWDT] = 16,
+ };
+ 
++static const char *valid_cpus[] = {
++    ARM_CPU_TYPE_NAME("cortex-a53"),
++    ARM_CPU_TYPE_NAME("cortex-a57"),
++    ARM_CPU_TYPE_NAME("cortex-a72"),
++};
++
++static bool cpu_type_valid(const char *cpu)
 +{
-+    VFIODevice *vbasedev = opaque;
++    int i;
 +
-+    if (vbasedev->ops && vbasedev->ops->vfio_trigger_config) {
-+        vbasedev->ops->vfio_trigger_config(vbasedev);
-+    }
-+}
-+
- static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
- {
-     VFIODevice *vbasedev = opaque;
-@@ -620,6 +630,13 @@ static int vfio_save_complete_precopy(QEMUFile *f, void *opaque)
-     return ret;
- }
-
-+static void vfio_save_state_trigger(QEMUFile *f, void *opaque)
-+{
-+    qemu_put_be64(f, VFIO_MIG_FLAG_DEV_STATE_TRIGGER);
-+
-+    qemu_put_be64(f, VFIO_MIG_FLAG_END_OF_STATE);
-+}
-+
- static int vfio_load_setup(QEMUFile *f, void *opaque)
- {
-     VFIODevice *vbasedev = opaque;
-@@ -700,6 +717,18 @@ static int vfio_load_state(QEMUFile *f, void *opaque, int version_id)
-             }
-             break;
-         }
-+        case VFIO_MIG_FLAG_DEV_STATE_TRIGGER:
-+        {
-+            vfio_device_state_trigger(opaque);
-+            data = qemu_get_be64(f);
-+            if (data == VFIO_MIG_FLAG_END_OF_STATE) {
-+                return ret;
-+            } else {
-+                error_report("%s: STATE TRIGGER: EOS not found 0x%"PRIx64,
-+                             vbasedev->name, data);
-+                return -EINVAL;
-+            }
++    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
++        if (strcmp(cpu, valid_cpus[i]) == 0) {
++            return true;
 +        }
-         default:
-             error_report("%s: Unknown tag 0x%"PRIx64, vbasedev->name, data);
-             return -EINVAL;
-@@ -720,6 +749,7 @@ static SaveVMHandlers savevm_vfio_handlers = {
-     .save_live_pending = vfio_save_pending,
-     .save_live_iterate = vfio_save_iterate,
-     .save_live_complete_precopy = vfio_save_complete_precopy,
-+    .save_state = vfio_save_state_trigger,
-     .load_setup = vfio_load_setup,
-     .load_cleanup = vfio_load_cleanup,
-     .load_state = vfio_load_state,
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 58c0ce8971..4cd2feee92 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -2441,13 +2441,19 @@ static int vfio_pci_load_config(VFIODevice *vbasedev, QEMUFile *f)
-     vfio_pci_write_config(pdev, PCI_COMMAND,
-                           pci_get_word(pdev->config + PCI_COMMAND), 2);
-
-+    return ret;
++    }
++    return false;
 +}
 +
-+static void vfio_pci_trigger_config(VFIODevice *vbasedev)
-+{
-+    VFIOPCIDevice *vdev = container_of(vbasedev, VFIOPCIDevice, vbasedev);
-+    PCIDevice *pdev = &vdev->pdev;
-+
-     if (msi_enabled(pdev)) {
-         vfio_msi_enable(vdev);
-     } else if (msix_enabled(pdev)) {
-         vfio_msix_enable(vdev);
+ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+ {
+     uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
+@@ -649,9 +667,8 @@ static void sbsa_ref_init(MachineState *machine)
+     const CPUArchIdList *possible_cpus;
+     int n, sbsa_max_cpus;
+ 
+-    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a57"))) {
+-        error_report("sbsa-ref: CPU type other than the built-in "
+-                     "cortex-a57 not supported");
++    if (!cpu_type_valid(machine->cpu_type)) {
++        error_report("mach-virt: CPU type %s not supported", machine->cpu_type);
+         exit(1);
      }
--
--    return ret;
- }
-
- static VFIODeviceOps vfio_pci_ops = {
-@@ -2457,6 +2463,7 @@ static VFIODeviceOps vfio_pci_ops = {
-     .vfio_get_object = vfio_pci_get_object,
-     .vfio_save_config = vfio_pci_save_config,
-     .vfio_load_config = vfio_pci_load_config,
-+    .vfio_trigger_config = vfio_pci_trigger_config,
- };
-
- int vfio_populate_vga(VFIOPCIDevice *vdev, Error **errp)
-diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
-index baeb4dcff1..4680a3e8d0 100644
---- a/include/hw/vfio/vfio-common.h
-+++ b/include/hw/vfio/vfio-common.h
-@@ -138,6 +138,7 @@ struct VFIODeviceOps {
-     Object *(*vfio_get_object)(VFIODevice *vdev);
-     void (*vfio_save_config)(VFIODevice *vdev, QEMUFile *f);
-     int (*vfio_load_config)(VFIODevice *vdev, QEMUFile *f);
-+    void (*vfio_trigger_config)(VFIODevice *vdev);
- };
-
- typedef struct VFIOGroup {
+ 
 -- 
-2.19.1
+2.28.0
+

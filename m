@@ -1,223 +1,138 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp749453lfa;
-        Thu, 29 Oct 2020 10:22:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxAZtCEDAZoVXh4z4Z3CPPwFuM7/ifHoEJ1vojFX/X2GiY2EyyZtc0bffOnixgwhFKmYk/A
-X-Received: by 2002:a25:2182:: with SMTP id h124mr7238487ybh.474.1603992145071;
-        Thu, 29 Oct 2020 10:22:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603992145; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2289151lfb;
+        Sat, 21 Nov 2020 09:09:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy+ikSEhVFkRd1+OllRq30o9nlOVN+/0g1o3bRAphSo+7+B2mX34CX3z7kOGY9U9pOiSj/2
+X-Received: by 2002:a25:a381:: with SMTP id e1mr12092951ybi.119.1605978591180;
+        Sat, 21 Nov 2020 09:09:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605978591; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmuCO4ab8+whjmIbSfN1r5RmIX+KKPuvsL33W5dkbBGOWqLSWW4MvVhxzsSTUSI74j
-         0y4CJ8C9B6rMVku/WZjODYT+VEDfBDSAOoXFhqEvZpPbSJU/lt4obhJrP7q4WlkH1uSG
-         TFu90ctVckZlS2upKyHTNVNgmDM2bquIfQwtPnCAY68S7/wZJBbRu1thmkVpTk5j0gan
-         GUVtObspfvNtV6ysPbUio/t/T2CWCEMrFlNWJUWvcGF0zO+QenWo7CXY6cY/TZVu7a6x
-         +zfnIgqHLB9aQDYqSM7FjiZBk1oHuCdQfS0T2XpEftYL3XP06vTBojGtBla9JVcY/0Cl
-         Yw+A==
+        b=mxrJfK9s13E66tso7shT/qOYz2bKQQJsQA1JKC1JJZ6M7SVZHT9zB6NA3cg0zEMbPN
+         hL6GRzD6+dctE+hNW78Bgp6kx/VCcs8+ZheJ6JB7ggkDB8R9HvFxh4Ln8wy1b7w2J3Ye
+         WHEYPKEpEmo8/Hbc9cq5h1dMaqlTzdk2c9VXkIIu+gUMpSqX0JWtvkAH+n6yh2im17TS
+         GxoDZLzXQ9cPhhIUH4yT6AMemj3Smnji497mHfWHMBlChL6X8dU7lyPNIC5Vm3uY6AoU
+         hufAd4NZASGOaETq6dU4TOBgBsR5zknJ0d+IMsTvZ7cX8Fr6AyKQqzdN6Vo8I9+JroLV
+         oGUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Zeo97QfdECk+E3YsVdNPjXrxDGBb/+RQIlaP+dxq5+U=;
-        b=GA3eOeWbacJWIIQwMwp82DX5VwSVJEZtFdU1tm5ZQY0Yf5+oG5YXTKXxNC5d15HqkI
-         pWPbNs8NxjQAgKWTeQmHhWBWVsZzKMPOrcCRUw0R0bn2RLIAt+uEpD/V37Wpul8eu1O+
-         xhxnWE2MeAhpY6IKH5gcALtf+NxeCXujP28BtZqwsyXOqs4zee9qj9daVIdQFJMWUudt
-         w1JqHIw6ZXFBaxQhLLQ9XYCHeFsV2QyHTa8NSxuBU5w1YoWFJSmpQ3TtnD4y3puA4O1k
-         OdyTqHUtCagVjrcbj6NRM+pgB+nvc0AQHFS2K1HWM/oVuWKOQKrmRGb/HoApvMclVAC2
-         lA8w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=wbOlb+cY9Zc0n9Qtzvz1MvimAqm2rJv7ijzeCcV3nMo=;
+        b=rx2OkrmOb0R/x4g12mD+8IwxYVP9SA17DtMQJb6LGeu3aWHLkRKwgIU9jN5KnKJ+M8
+         eZqawuYrROP/KrwgEBx/y65Cn92MlxTKEkFsFGVA7UsY5yQBtW0+wI3lVHteeqcoXvab
+         1yFzcLOrCzBUk3m3TyvqcqDKVgLlcYoUyn+ITp6+yFtCp2YpKYQRDlVtj3xcFQfYFghV
+         cmIAdBJLylJOV249CFdc8EsAMBbxKmKOs54LHyd++QRobe9/GNay5a6/pa5wbXAhJ3Yo
+         GmrcfzJ3ffYlb/wc7p8lWt2AK1Te+utFDntf3pek8h006m80dS5+2CXHntwS0Za0H8lI
+         Gl6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KSUUHL9M;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=MHrK9Ja7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v188si3736799ybe.134.2020.10.29.10.22.24
+        by mx.google.com with ESMTPS id v67si6354434ybc.47.2020.11.21.09.09.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Oct 2020 10:22:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 21 Nov 2020 09:09:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KSUUHL9M;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33938 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=MHrK9Ja7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57974 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kYBd2-0006K2-1J
-	for alex.bennee@linaro.org; Thu, 29 Oct 2020 13:22:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37776)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kgWOU-0004i1-Iy
+	for alex.bennee@linaro.org; Sat, 21 Nov 2020 12:09:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kYBbD-00041K-Oa
- for qemu-devel@nongnu.org; Thu, 29 Oct 2020 13:20:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:31820)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kYBbA-0003mj-8W
- for qemu-devel@nongnu.org; Thu, 29 Oct 2020 13:20:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603992027;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Zeo97QfdECk+E3YsVdNPjXrxDGBb/+RQIlaP+dxq5+U=;
- b=KSUUHL9MyhjWJOO5nxMolMKbQw0xfjGkJTWKUb9dVhf1CuVPT6Q05q3KXdvFk3pKrGcUd8
- 1ByJBafy8TYUCMq88guN96SrjF8O6x20KzdfKuuhDfv7c6/XOm+eCYEs2gn7TYSqU/VHsd
- lM/jB43kRmUHgyvdNdGRzYMnwgk+OeU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-148-8Jx87NflPKO5_9H-ZKqR2A-1; Thu, 29 Oct 2020 13:20:23 -0400
-X-MC-Unique: 8Jx87NflPKO5_9H-ZKqR2A-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 78952805EF4;
- Thu, 29 Oct 2020 17:20:21 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.219])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3267D5B4C1;
- Thu, 29 Oct 2020 17:20:19 +0000 (UTC)
-Date: Thu, 29 Oct 2020 18:20:16 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [RFC PATCH v2 07/13] hw/arm/virt-acpi-build: distinguish
- possible and present cpus Message
-Message-ID: <20201029172016.rsgo4stjrkdr7j2r@kamzik.brq.redhat.com>
-References: <20201020131440.1090-1-fangying1@huawei.com>
- <20201020131440.1090-8-fangying1@huawei.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kgWOM-0004hl-HA
+ for qemu-arm@nongnu.org; Sat, 21 Nov 2020 12:09:42 -0500
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:39670)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kgWOL-00007b-36
+ for qemu-arm@nongnu.org; Sat, 21 Nov 2020 12:09:42 -0500
+Received: by mail-pg1-x542.google.com with SMTP id f17so1700221pge.6
+ for <qemu-arm@nongnu.org>; Sat, 21 Nov 2020 09:09:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wbOlb+cY9Zc0n9Qtzvz1MvimAqm2rJv7ijzeCcV3nMo=;
+ b=MHrK9Ja7bzNzOFrvgS8TLtROkxZrzXCpANinlKYE0O66mxo4ofQ7T+Hpc7KRG5LGgF
+ WTq3x06P9pf3SkUn1hNekGeEKSXpoQZxm/RT0mM7ML9DF7HdMWoOoMEdnvKzSkFdTqcx
+ 8rySNogz4zmh0+bpo2I5tIbn6Rd0acdaNrMA6t1m6dKoiRKPc0vkEKhCNk64q+3TFgFB
+ q5frHPy0sMSf1pXDDdDKh46UanGTs6RnlkTVfx2Za5D7vRkY7OlMpaW0amXYE1FPI0th
+ yb+ZEXKbHM8iVkICTH8MMxHQ47vb3SvbLdygTShxBK2VHln+sF+S+IMAk91tV7Bi4Zti
+ 8hEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wbOlb+cY9Zc0n9Qtzvz1MvimAqm2rJv7ijzeCcV3nMo=;
+ b=uEhpn2rNZp1O0dhD3xWf1FEWa4CKDBWj4dOcZ1nvlrT2PjZ0ThC3jtfT1K56PgX+CB
+ g6YYANS+0JwhuW8ZBzQLWbIfxV5TuuRzpxWKMnpn37urafxzFPHSmUmts1KviXMm3nvr
+ 4QuD4LKwf9WK2kM8km9KeaORq8QVpfa3tBqp/sd/BYe1LTIJOrdgLcJRY57VwbUow4G+
+ ysefTgfixTCzJeobRKMcDm8XdP/LcJKxAf5/iyq9OOcXv9fzyHrxAC9SS+DLwUa9S1uW
+ z2z2bijA41CBgDsuKG2vIInH6M+2SNe6KRegDb9sukZ+2W/tkNbLcWbKLcNodF1MjEK3
+ ftvw==
+X-Gm-Message-State: AOAM533yhKahnBpbU/BQRnqn7933YvUuIRXYYNyHWVxoZY8T55UfaJex
+ VH6Pb91LrrqqAXx/Anv5PxR3Mw==
+X-Received: by 2002:a17:90b:190c:: with SMTP id
+ mp12mr16118797pjb.14.1605978578824; 
+ Sat, 21 Nov 2020 09:09:38 -0800 (PST)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id w66sm8427837pff.171.2020.11.21.09.09.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 21 Nov 2020 09:09:37 -0800 (PST)
+Subject: Re: [PATCH] sbsa-ref: allow to use Cortex-A53/57/72 cpus
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-arm@nongnu.org
+References: <20201120141705.246690-1-marcin.juszkiewicz@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <e79639f0-041e-d190-c895-0e1f24d64102@linaro.org>
+Date: Sat, 21 Nov 2020 09:09:35 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201020131440.1090-8-fangying1@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 01:47:28
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+In-Reply-To: <20201120141705.246690-1-marcin.juszkiewicz@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sgFjMkYYJ+Yk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Leif Lindholm <leif@nuviainc.com>,
+ qemu-devel@nongnu.org, =?UTF-8?Q?Rados=c5=82aw_Biernacki?= <rad@semihalf.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oaoX0A7ZGr3v
+
+On 11/20/20 6:17 AM, Marcin Juszkiewicz wrote:
+> +static const char *valid_cpus[] = {
+
+const char * const
+
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
-You need to remove 'Message' from the summary.
-
-On Tue, Oct 20, 2020 at 09:14:34PM +0800, Ying Fang wrote:
-> When building ACPI tables regarding CPUs we should always build
-> them for the number of possible CPUs, not the number of present
-> CPUs. We then ensure only the present CPUs are enabled.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-
-I guess my s-o-b is here because this is a rework of
-
-https://github.com/rhdrjones/qemu/commit/b18d7a889f424b8a8679c43d7f4804fdeeeaf3fd
-
-I think it changed enough you could just drop my authorship. A
-based-on comment in the commit message would be more than enough.
-
-Comment on the patch below.
-
-> Signed-off-by: Ying Fang <fangying1@huawei.com>
-> ---
->  hw/arm/virt-acpi-build.c | 17 ++++++++++++-----
->  1 file changed, 12 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index a222981737..fae5a26741 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -57,14 +57,18 @@
->  
->  #define ARM_SPI_BASE 32
->  
-> -static void acpi_dsdt_add_cpus(Aml *scope, int cpus)
-> +static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
->  {
->      uint16_t i;
-> +    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
->  
-> -    for (i = 0; i < cpus; i++) {
-> +    for (i = 0; i < possible_cpus->len; i++) {
->          Aml *dev = aml_device("C%.03X", i);
->          aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
->          aml_append(dev, aml_name_decl("_UID", aml_int(i)));
-> +        if (possible_cpus->cpus[i].cpu == NULL) {
-> +            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
-> +        }
->          aml_append(scope, dev);
->      }
->  }
-> @@ -470,6 +474,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      const int *irqmap = vms->irqmap;
->      AcpiMadtGenericDistributor *gicd;
->      AcpiMadtGenericMsiFrame *gic_msi;
-> +    int possible_cpus = MACHINE(vms)->possible_cpus->len;
->      int i;
->  
->      acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
-> @@ -480,7 +485,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
->      gicd->version = vms->gic_version;
->  
-> -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
-> +    for (i = 0; i < possible_cpus; i++) {
->          AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
->                                                             sizeof(*gicc));
->          ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-> @@ -495,7 +500,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          gicc->cpu_interface_number = cpu_to_le32(i);
->          gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
->          gicc->uid = cpu_to_le32(i);
-> -        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
-> +        if (i < MACHINE(vms)->smp.cpus) {
-
-Shouldn't this be
-
-        if (possible_cpus->cpus[i].cpu != NULL) {
-
-> +            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
-> +        }
->  
->          if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
->              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
-> @@ -599,7 +606,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->       * the RTC ACPI device at all when using UEFI.
->       */
->      scope = aml_scope("\\_SB");
-> -    acpi_dsdt_add_cpus(scope, ms->smp.cpus);
-> +    acpi_dsdt_add_cpus(scope, vms);
->      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
->      if (vmc->acpi_expose_flash) {
-> -- 
-> 2.23.0
-> 
->
-
-Thanks,
-drew 
-
+r~

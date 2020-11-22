@@ -1,346 +1,373 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp816911lfb;
-        Wed, 18 Nov 2020 11:50:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxZ+IsOH2Um2prD8MEnihfp5hTZGe2G668BXNpV5MYKVbWutxR4DZZQ9yoHvHyFID53lJAN
-X-Received: by 2002:a25:bacd:: with SMTP id a13mr11573080ybk.387.1605729016761;
-        Wed, 18 Nov 2020 11:50:16 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1605729016; cv=pass;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2755075lfb;
+        Sun, 22 Nov 2020 02:34:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxNHq1bhFDuKZDlsr7Ie1rY/Y+ZSFzOvC01WGkIj7qbe58m1pbjp4fpycuba7DTcP+zj2G/
+X-Received: by 2002:a25:2482:: with SMTP id k124mr26936941ybk.343.1606041247705;
+        Sun, 22 Nov 2020 02:34:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606041247; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wnp9AbdiA6/HlJFfTnDJDcAQ98b6K/bFDgxnImrHQnE3H4rNkB8Lqql2/6B4dkon0z
-         1Wgn2eaFL+XfueieeAQsgYJbcced62l5BjCQ7iZcx26a/4xVjVHuFd/m/YBqLQw/BK7t
-         Aab9lysVjSsUuON7rcRj3CDZ5CfIRnStE8BbbXg/WSXNm6UvOxGh+pRMJJn1ZXf6qwk7
-         Kelp8MG/XRpHMRNruzf85t/zlTXK1BDSa6CYH45hHpFM5ZuSnYecbrsL/1M8zvCpLkmH
-         Z7JLpOzro+8G+GfRtT4d3wJZWT6ytQ8Hph3SuY5HqLbXE5AmaakM11cIzHGWDtiXz1H8
-         OpWw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=0jUIIzVCIRI2mzosA10maZ5dvEmwbkgrhGiu05jVk3xBg8noovUdSfRW6HyFDqJbsy
+         /qnhNptAMF1w9cd09/jFGZILCrQgFcZJhC7UaWbI2jsNL0hUtQ79V2zgiyhzbpP2zdr2
+         c9mRGB7iqeOEciBiNwNB11NZqfudoY969ue9R1KYGfFg7MWEdFYsThQiD5zjjLpq8Pru
+         5vDwuN42dKAdTx1DmoOmLgY9/vPKL+1BMLu/7OcEXMrlZTRVM99UamWtS8AIABD0S3+u
+         EmYZ+1JrHKTLmBc8Up/YQ4cS1GtuJfrhSblhcxQB9J4USOj/VeYkEudqBQ6qfrGPKzTR
+         bbWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
-        bh=JlEP77TEb8SF9MAjy5QJ6aGzR5r/P/0aoihL9r+yD6E=;
-        b=HzGxz0kXQa4+TjrfWt3/qkrlmDF3OtVcoGOc4JEnq74KJhAamwj8/LqIvVVaj1OklB
-         tOj0d/33SpzAYPc1rPQr/GB3UVkur/Sbhg33rx1TlVxhTaHDK4Wa/FWKLcPihZzrwPx0
-         YWMV9oSP7nGSpv2/hZt+yE1Yr2Hr60J/RqaR2nvj4Uv6YtxvH5cgUXAB/e6wgy9dj5PX
-         9q+ehLAT/jM26l60uVHMZSLj044r3JKKdIYuT77FKGcS6w9ZnzDqMe9D3o/R6nK/UVU3
-         U3pvSmYSBUi2Bm7QYLeVtXdRc8eOsxcmO0VUSbJD4CEq/rpFup0wlK7XRW56ObGStNYw
-         NaJg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=TaZTO3Wr;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=miRJaA2YxPXNGxlQwslFYA//x0JSWgBfx8qp4NgIgzA=;
+        b=PgVYprO22ozegPHQ9gM0qjbpXwOl5OXuhoxHhNfmdW0IoA+3WDR8S28d6BlGeGuZpJ
+         CHQxiJ0F5Rou5m1yypSNp9lG47H9D1oNYmg8U1Ux6Iaakmi4Spk8PG9/b7OgiVH1ELua
+         8WzsXGyaQibVy/oVuAPlA29Nppc36I0xa4K34iBgUY/W1a/dgBJGBoFk0BmXAe3a/w6L
+         YJ5zOinkiy1VMa7ICb20DBPO/o4RiKb+pyX/2MlzsJcpmQiWnMhEScHWuzKAwhoyXfaF
+         Pd9sJG273c1QMSPBcnZonFViYLCHjUHf4DnBFclVd2E+X7lflMWoriYKyatFTmWWSL0I
+         7fMw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=ojUpfyeW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b13si23342222yba.228.2020.11.18.11.50.16
+        by mx.google.com with ESMTPS id v138si7970778ybv.293.2020.11.22.02.34.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Nov 2020 11:50:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 22 Nov 2020 02:34:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=TaZTO3Wr;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48092 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=ojUpfyeW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:43310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfTT6-0004QA-4R
-	for alex.bennee@linaro.org; Wed, 18 Nov 2020 14:50:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48896)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kgmh5-0004iP-2X
+	for alex.bennee@linaro.org; Sun, 22 Nov 2020 05:34:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
- id 1kfTS2-0004Nv-2V; Wed, 18 Nov 2020 14:49:10 -0500
-Received: from mail-mw2nam10on2080.outbound.protection.outlook.com
- ([40.107.94.80]:5761 helo=NAM10-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
- id 1kfTRz-0005YX-1W; Wed, 18 Nov 2020 14:49:09 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HGZjauiJkAziQ3FrmMdQCSqVQ8lRxlkFvJouiHsHg6gM63QRWIrb6fF84rxNodK7npf/K0Gc/4fIjx+hJJjxOCR+t4bBI6rmQxWR2DF3WEFqbcmc05zBm3pGc2n6Y77Y9ZfhuGFHNIFrMuoFpnIPg/NQKqfoNlp/C7V0fnKDqOs7TyDP6sMZER0ZImougS2YB/VoPYJKSdNYNkBzqrfFyFZcqyAtCf1VwoHClvCWJdJa/fdS0dqDuX8RMPm4GR+5EpHgh8JagVK8CeKa2x6z7+8WmNn0N7gnUFPI21DT0cZGXDzcHkl5RqbiqQk0u6Zoax0ntwPM7bzo7gSBuPDzrw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JlEP77TEb8SF9MAjy5QJ6aGzR5r/P/0aoihL9r+yD6E=;
- b=kkuba6jsxVu+Ln0dCTLNkj2esaGKhjg2TNxTWLspuOGWbiHjDjSa+TF8+kW8d9cXO8Bzm3dYlcAn0GJWjUYr5XHjolCQSUrpzq0QjtMuHK/C1CL40p3/3uUVZv1n+aAOAIsWN2Me/i7w+gimvZ+n8FFIUxlyatKURxhmAhr7CFgLkrr1MIzA5Ay9v6Z0pnOiZsRw2yvjopXobejq+JrJTE210frxet9/aMXhZlogrxrhmE8fFSTRbiF+z0P419CYKwn9Wnl9J9sOxkYtmZQE9XMzsBTyeTg5gweVbc58yIxPNemgeMNxSPunUkDUUhv2ferfDWMl6iZlWrDhwPWJSg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.62.198) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kgmgu-0004h9-M9
+ for qemu-arm@nongnu.org; Sun, 22 Nov 2020 05:33:56 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:43613)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kgmgp-0005Fu-7g
+ for qemu-arm@nongnu.org; Sun, 22 Nov 2020 05:33:55 -0500
+Received: by mail-oi1-x242.google.com with SMTP id t143so16261860oif.10
+ for <qemu-arm@nongnu.org>; Sun, 22 Nov 2020 02:33:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JlEP77TEb8SF9MAjy5QJ6aGzR5r/P/0aoihL9r+yD6E=;
- b=TaZTO3WrsLX2AjM9nd0qGYBKvuHPcGIDQJXSiq3N/9xweXV1/b4JFrkjOjJ6sE48Xuwb4DaeAxDlymHe3WZzhHmG3AyRYE+SNi+JbF/j4YjYykzUt8xzm9HGN+8DvPK1j+gl7QBaqXmDTZCUoReF7BHGVEwzo7WGayWSWp/YZts=
-Received: from DM3PR12CA0121.namprd12.prod.outlook.com (2603:10b6:0:51::17) by
- BY5PR02MB7041.namprd02.prod.outlook.com (2603:10b6:a03:237::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3589.20; Wed, 18 Nov
- 2020 19:49:02 +0000
-Received: from CY1NAM02FT064.eop-nam02.prod.protection.outlook.com
- (2603:10b6:0:51:cafe::7b) by DM3PR12CA0121.outlook.office365.com
- (2603:10b6:0:51::17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3589.20 via Frontend
- Transport; Wed, 18 Nov 2020 19:49:02 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
- smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.62.198; helo=xsj-pvapexch02.xlnx.xilinx.com;
-Received: from xsj-pvapexch02.xlnx.xilinx.com (149.199.62.198) by
- CY1NAM02FT064.mail.protection.outlook.com (10.152.74.64) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.3589.20 via Frontend Transport; Wed, 18 Nov 2020 19:49:02 +0000
-Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1913.5; Wed, 18 Nov 2020 11:49:00 -0800
-Received: from smtp.xilinx.com (172.19.127.96) by
- xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
- 15.1.1913.5 via Frontend Transport; Wed, 18 Nov 2020 11:49:00 -0800
-Received: from [172.19.2.115] (port=52002 helo=xsjfnuv50.xilinx.com)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <fnu.vikram@xilinx.com>)
- id 1kfTRs-0003iK-Nl; Wed, 18 Nov 2020 11:49:00 -0800
-From: Vikram Garhwal <fnu.vikram@xilinx.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH v12 2/4] xlnx-zynqmp: Connect Xilinx ZynqMP CAN controllers
-Date: Wed, 18 Nov 2020 11:48:44 -0800
-Message-ID: <1605728926-352690-3-git-send-email-fnu.vikram@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1605728926-352690-1-git-send-email-fnu.vikram@xilinx.com>
-References: <1605728926-352690-1-git-send-email-fnu.vikram@xilinx.com>
+ d=bytedance-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=miRJaA2YxPXNGxlQwslFYA//x0JSWgBfx8qp4NgIgzA=;
+ b=ojUpfyeW1d59eZpLypPSNEi/txC3vnnD9KdqkwtpiRct3pwHETnq+UGw4LYilCzABY
+ GL+XGjhdKnTsuSNnWyEtlLdBB7N0EbbZp1cnPLsvobCdZBKPxJc/MMTxVG4j4iR+NAKV
+ T1I8dOw9TlIUGAfbkMkzHpinJJPbKbZxd+yNrXMYhehQOAzCiVXkdKvNu9qTZf+GuKZN
+ hYlkq1wy5+zeqBaO9cPuWqCHqQbv7wH/oF1CvLa3vGiUtTSQQRt5NnMNxb6zhG7tQ5NB
+ rugrNokBgsdXn06/ZkHxgwuDCjKGw6zid/WaZK2PQH8YDpDkM9ioaEOYUHiadxJFQeFM
+ MIHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=miRJaA2YxPXNGxlQwslFYA//x0JSWgBfx8qp4NgIgzA=;
+ b=d8NNzAYrq82b43G/Pjht80bwz4Kn3zDvSC8aN5V7nKvEjNtqH9vWG/p0PsCrmYNaUR
+ Wy1Xm7v8rwwJBVuditHEtm/pSPyIbp7oHT1eZqeVTwrL1ITUIqiFQlD4eUiyIjTHLfSP
+ b+WuQnGoE+UyjHcv2Y3X85Y89Q1NESq3zLXvV7mfDazecdAIBc5y6CXmr60LKX+4kOZA
+ ELv6t5RUG3JV9uFbc2Jfc568WfwWi5LdAVNPYJsFzkfIJCYF/cnjEPKtfkF7RUUP09zW
+ k5yGH+7WouC9ljzPwnsbdIRIq6UQ7umlV5xaZuzLnxI2czZC2UI1I/99Oi/mNAJKI/Hi
+ vmlA==
+X-Gm-Message-State: AOAM531aN3je9m9lvjpqJ2/b3fErXDPRqeA/2DcxhM9j1HP9RRZXzjlx
+ tw3zU7wBlZjILeTCzVQp/ulHzSNp1QtqovrbJi1DiQ==
+X-Received: by 2002:aca:5d05:: with SMTP id r5mr9981411oib.93.1606041227601;
+ Sun, 22 Nov 2020 02:33:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 13e7f7f5-7bb2-44eb-7570-08d88bfaffc6
-X-MS-TrafficTypeDiagnostic: BY5PR02MB7041:
-X-Microsoft-Antispam-PRVS: <BY5PR02MB7041F1BD0061B76EAC060E17BCE10@BY5PR02MB7041.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:114;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: hJsGCaT80nrjrQkH0xZv/G91l26Fb95JkCetXJFhP4sliCIELd5NVLhC3y8SiJ87C9KScKfQaxtQBZFTnYWO7CgJyv4+ZH5oM+Z+2HmgblwFE3CiqBL6XOzwJpb23M7lYJE733wdYJX/iesWtUSl4JJpb31rFdnZ6FK8vyxvZuFDD+uRafhZKJI5E8EUPBSG8/O/W6xZmeK6tl2tWMeNFb25Yk1zgnXQ4jiLWFsQiQeOpfP26FxXYVFaj9wZ6G3cIdCloMHIuVrDg1hhPugcj+QwYqoI2up6hIsXbZUTGYZCINM86XUBhkPfxJAnPPjXjHOcUfEH7FlzSFq71S2T65SFqvoVq/2PelMaZb7Ls9CdZfmIqoEEi9IFIDMxBaWr+oYUDAPSoMkoSFUeEhbad/pdNdzRVV7iY+XVJ/wawqw=
-X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapexch02.xlnx.xilinx.com;
- PTR:unknown-62-198.xilinx.com; CAT:NONE;
- SFS:(4636009)(396003)(136003)(39860400002)(346002)(376002)(46966005)(9786002)(47076004)(7636003)(6916009)(7696005)(356005)(82740400003)(8936002)(4326008)(83380400001)(70206006)(70586007)(6666004)(5660300002)(8676002)(36756003)(54906003)(316002)(478600001)(426003)(336012)(186003)(82310400003)(36906005)(26005)(2616005)(2906002)(102446001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Nov 2020 19:49:02.1576 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 13e7f7f5-7bb2-44eb-7570-08d88bfaffc6
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
- Helo=[xsj-pvapexch02.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY1NAM02FT064.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB7041
-Received-SPF: pass client-ip=40.107.94.80; envelope-from=fnuv@xilinx.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/18 14:49:04
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+References: <20201025131435.144-1-wangzhiqiang.bj@bytedance.com>
+ <6793bb35-985c-be0f-bfb1-76017dafdd02@amsat.org>
+In-Reply-To: <6793bb35-985c-be0f-bfb1-76017dafdd02@amsat.org>
+From: John Wang <wangzhiqiang.bj@bytedance.com>
+Date: Sun, 22 Nov 2020 18:33:36 +0800
+Message-ID: <CAH0XSJvGLaY71D7PEfQpkXO-H3wsLsXWbHN8v4wH4g_AK8JgJw@mail.gmail.com>
+Subject: Re: [Phishing Risk] [External] Re: [PATCH v3 1/2] hw/misc: add an
+ EMC141{3,4} device model
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-oi1-x242.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Vikram
- Garhwal <fnu.vikram@xilinx.com>, Alistair Francis <alistair@alistair23.me>,
- francisco.iglesias@xilinx.com, "open list:Xilinx ZynqMP
- and..." <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XTqs2o+w5QOg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?B?6YOB6Zu3?= <yulei.sh@bytedance.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Lotus Xu <xuxiaohan@bytedance.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: F5FaiQsIfTmd
 
-Connect CAN0 and CAN1 on the ZynqMP.
+On Mon, Oct 26, 2020 at 5:08 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 10/25/20 2:14 PM, John Wang wrote:
+> > Largely inspired by the TMP421 temperature sensor, here is a model for
+> > the EMC1413/EMC1414 temperature sensors.
+> >
+> > Specs can be found here :
+> >    http://ww1.microchip.com/downloads/en/DeviceDoc/20005274A.pdf
+> >
+> > Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
+> > ---
+> > v3:
+> >    - update the link to the spec
+> >    - Rename emc1413.c to emc141x.c
+> >    - Add sensors_count in EMC141XClass
+> >    - Make emc1413_read/write easier to review :)
+>
+> Thanks for the update.
+>
+> > v2:
+> >    - Remove DeviceInfo
+> >    - commit message: TMP423 -> TMP421
+> > ---
+> >   hw/arm/Kconfig      |   1 +
+> >   hw/misc/Kconfig     |   4 +
+> >   hw/misc/emc141x.c   | 347 +++++++++++++++++++++++++++++++++++++++++++=
++
+> >   hw/misc/meson.build |   1 +
+> >   4 files changed, 353 insertions(+)
+> >   create mode 100644 hw/misc/emc141x.c
+> >
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index 7d040827af..3dd651a236 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -403,6 +403,7 @@ config ASPEED_SOC
+> >       select SSI_M25P80
+> >       select TMP105
+> >       select TMP421
+> > +    select EMC141X
+> >       select UNIMP
+> >
+> >   config MPS2
+> > diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> > index 3185456110..169d087d3d 100644
+> > --- a/hw/misc/Kconfig
+> > +++ b/hw/misc/Kconfig
+> > @@ -13,6 +13,10 @@ config TMP421
+> >       bool
+> >       depends on I2C
+> >
+> > +config EMC141X
+> > +    bool
+> > +    depends on I2C
+> > +
+> >   config ISA_DEBUG
+> >       bool
+> >       depends on ISA_BUS
+> > diff --git a/hw/misc/emc141x.c b/hw/misc/emc141x.c
+> > new file mode 100644
+> > index 0000000000..a2bce74719
+> > --- /dev/null
+> > +++ b/hw/misc/emc141x.c
+> > @@ -0,0 +1,347 @@
+> > +/*
+> > + * SMSC EMC141X temperature sensor.
+> > + *
+> > + * Copyright (c) 2020 Bytedance Corporation
+> > + * Written by John Wang <wangzhiqiang.bj@bytedance.com>
+> > + *
+> > + * This program is free software; you can redistribute it and/or
+> > + * modify it under the terms of the GNU General Public License as
+> > + * published by the Free Software Foundation; either version 2 or
+> > + * (at your option) version 3 of the License.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + *
+> > + * You should have received a copy of the GNU General Public License a=
+long
+> > + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "hw/i2c/i2c.h"
+> > +#include "migration/vmstate.h"
+> > +#include "qapi/error.h"
+> > +#include "qapi/visitor.h"
+> > +#include "qemu/module.h"
+> > +#include "qom/object.h"
+> > +
+> > +#define EMC1413_DEVICE_ID                0x21
+> > +#define EMC1414_DEVICE_ID                0x25
+> > +#define MANUFACTURER_ID                  0x5d
+> > +#define REVISION                         0x04
+> > +
+> > +#define SENSORS_COUNT_MAX    4
+> > +
+> > +struct EMC141XState {
+> > +    I2CSlave i2c;
+>
+> The QOM style name is 'parent_obj':
+>
+>         I2CSlave parent_obj;
 
-Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Signed-off-by: Vikram Garhwal <fnu.vikram@xilinx.com>
----
- include/hw/arm/xlnx-zynqmp.h |  8 ++++++++
- hw/arm/xlnx-zcu102.c         | 20 ++++++++++++++++++++
- hw/arm/xlnx-zynqmp.c         | 34 ++++++++++++++++++++++++++++++++++
- 3 files changed, 62 insertions(+)
+will fix
 
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index 567d0db..6f45387 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -22,6 +22,7 @@
- #include "hw/intc/arm_gic.h"
- #include "hw/net/cadence_gem.h"
- #include "hw/char/cadence_uart.h"
-+#include "hw/net/xlnx-zynqmp-can.h"
- #include "hw/ide/ahci.h"
- #include "hw/sd/sdhci.h"
- #include "hw/ssi/xilinx_spips.h"
-@@ -33,6 +34,7 @@
- #include "hw/cpu/cluster.h"
- #include "target/arm/cpu.h"
- #include "qom/object.h"
-+#include "net/can_emu.h"
- 
- #define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
- OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
-@@ -41,6 +43,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
- #define XLNX_ZYNQMP_NUM_RPU_CPUS 2
- #define XLNX_ZYNQMP_NUM_GEMS 4
- #define XLNX_ZYNQMP_NUM_UARTS 2
-+#define XLNX_ZYNQMP_NUM_CAN 2
-+#define XLNX_ZYNQMP_CAN_REF_CLK (24 * 1000 * 1000)
- #define XLNX_ZYNQMP_NUM_SDHCI 2
- #define XLNX_ZYNQMP_NUM_SPIS 2
- #define XLNX_ZYNQMP_NUM_GDMA_CH 8
-@@ -92,6 +96,7 @@ struct XlnxZynqMPState {
- 
-     CadenceGEMState gem[XLNX_ZYNQMP_NUM_GEMS];
-     CadenceUARTState uart[XLNX_ZYNQMP_NUM_UARTS];
-+    XlnxZynqMPCANState can[XLNX_ZYNQMP_NUM_CAN];
-     SysbusAHCIState sata;
-     SDHCIState sdhci[XLNX_ZYNQMP_NUM_SDHCI];
-     XilinxSPIPS spi[XLNX_ZYNQMP_NUM_SPIS];
-@@ -112,6 +117,9 @@ struct XlnxZynqMPState {
-     bool virt;
-     /* Has the RPU subsystem?  */
-     bool has_rpu;
-+
-+    /* CAN bus. */
-+    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
- };
- 
- #endif
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index ad7fff9..4ef0c51 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -25,6 +25,7 @@
- #include "sysemu/qtest.h"
- #include "sysemu/device_tree.h"
- #include "qom/object.h"
-+#include "net/can_emu.h"
- 
- struct XlnxZCU102 {
-     MachineState parent_obj;
-@@ -34,6 +35,8 @@ struct XlnxZCU102 {
-     bool secure;
-     bool virt;
- 
-+    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
-+
-     struct arm_boot_info binfo;
- };
- 
-@@ -125,6 +128,14 @@ static void xlnx_zcu102_init(MachineState *machine)
-     object_property_set_bool(OBJECT(&s->soc), "virtualization", s->virt,
-                              &error_fatal);
- 
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-+        gchar *bus_name = g_strdup_printf("canbus%d", i);
-+
-+        object_property_set_link(OBJECT(&s->soc), bus_name,
-+                                 OBJECT(s->canbus[i]), &error_fatal);
-+        g_free(bus_name);
-+    }
-+
-     qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
- 
-     /* Create and plug in the SD cards */
-@@ -208,6 +219,15 @@ static void xlnx_zcu102_machine_instance_init(Object *obj)
-     s->secure = false;
-     /* Default to virt (EL2) being disabled */
-     s->virt = false;
-+    object_property_add_link(obj, "xlnx-zcu102.canbus0", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[0],
-+                             object_property_allow_set_link,
-+                             0);
-+
-+    object_property_add_link(obj, "xlnx-zcu102.canbus1", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[1],
-+                             object_property_allow_set_link,
-+                             0);
- }
- 
- static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 7885bb1..8818472 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -81,6 +81,14 @@ static const int uart_intr[XLNX_ZYNQMP_NUM_UARTS] = {
-     21, 22,
- };
- 
-+static const uint64_t can_addr[XLNX_ZYNQMP_NUM_CAN] = {
-+    0xFF060000, 0xFF070000,
-+};
-+
-+static const int can_intr[XLNX_ZYNQMP_NUM_CAN] = {
-+    23, 24,
-+};
-+
- static const uint64_t sdhci_addr[XLNX_ZYNQMP_NUM_SDHCI] = {
-     0xFF160000, 0xFF170000,
- };
-@@ -243,6 +251,11 @@ static void xlnx_zynqmp_init(Object *obj)
-                                 TYPE_CADENCE_UART);
-     }
- 
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-+        object_initialize_child(obj, "can[*]", &s->can[i],
-+                                TYPE_XLNX_ZYNQMP_CAN);
-+    }
-+
-     object_initialize_child(obj, "sata", &s->sata, TYPE_SYSBUS_AHCI);
- 
-     for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
-@@ -482,6 +495,23 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-                            gic_spi[uart_intr[i]]);
-     }
- 
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-+        object_property_set_int(OBJECT(&s->can[i]), "ext_clk_freq",
-+                                XLNX_ZYNQMP_CAN_REF_CLK, &error_abort);
-+
-+        object_property_set_link(OBJECT(&s->can[i]), "canbus",
-+                                 OBJECT(s->canbus[i]), &error_fatal);
-+
-+        sysbus_realize(SYS_BUS_DEVICE(&s->can[i]), &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->can[i]), 0, can_addr[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->can[i]), 0,
-+                           gic_spi[can_intr[i]]);
-+    }
-+
-     object_property_set_int(OBJECT(&s->sata), "num-ports", SATA_NUM_PORTS,
-                             &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sata), errp)) {
-@@ -619,6 +649,10 @@ static Property xlnx_zynqmp_props[] = {
-     DEFINE_PROP_BOOL("has_rpu", XlnxZynqMPState, has_rpu, false),
-     DEFINE_PROP_LINK("ddr-ram", XlnxZynqMPState, ddr_ram, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-+    DEFINE_PROP_LINK("canbus0", XlnxZynqMPState, canbus[0], TYPE_CAN_BUS,
-+                     CanBusState *),
-+    DEFINE_PROP_LINK("canbus1", XlnxZynqMPState, canbus[1], TYPE_CAN_BUS,
-+                     CanBusState *),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
--- 
-2.7.4
+>
+> > +    uint8_t temperature[SENSORS_COUNT_MAX];
+>
+> What is the unit?
+>
+> > +    uint8_t min[SENSORS_COUNT_MAX];
+> > +    uint8_t max[SENSORS_COUNT_MAX];
+>
+> min/max what? Temperature?
+>
+> What about (if the unit is milli Celsius):
+>
+>         struct {
+>             uint8_t temp_min_mC;
+>             uint8_t temp_current_mC;
+>             uint8_t temp_max_mC;
+>         } sensor[SENSORS_COUNT_MAX];
+>
+> Looking at the datasheet chapter 6.8 "Temperature Measurement
+> Results  and  Data", it isn't in milli Celsius. See below in
+> emc141x_get_temperature().
+>
+> So maybe:
+>
+>         struct {
+>             uint8_t raw_temp_min;
+>             uint8_t raw_temp_current;
+>             uint8_t raw_temp_max;
+>         } sensor[SENSORS_COUNT_MAX];
 
+will fix
+
+>
+> > +    uint8_t len;
+> > +    uint8_t data;
+> > +    uint8_t pointer;
+> > +};
+> > +
+> > +struct EMC141XClass {
+> > +    I2CSlaveClass parent_class;
+> > +    uint8_t model;
+> > +    unsigned sensors_count;
+> > +};
+> > +
+> > +#define TYPE_EMC141X "emc141x"
+> > +OBJECT_DECLARE_TYPE(EMC141XState, EMC141XClass, EMC141X)
+> > +
+> > +
+> > +/* the EMC141X registers */
+> > +#define EMC141X_TEMP_HIGH0               0x00
+> > +#define EMC141X_TEMP_HIGH1               0x01
+> > +#define EMC141X_TEMP_HIGH2               0x23
+> > +#define EMC141X_TEMP_HIGH3               0x2a
+> > +#define EMC141X_TEMP_MAX_HIGH0           0x05
+> > +#define EMC141X_TEMP_MIN_HIGH0           0x06
+> > +#define EMC141X_TEMP_MAX_HIGH1           0x07
+> > +#define EMC141X_TEMP_MIN_HIGH1           0x08
+> > +#define EMC141X_TEMP_MAX_HIGH2           0x15
+> > +#define EMC141X_TEMP_MIN_HIGH2           0x16
+> > +#define EMC141X_TEMP_MAX_HIGH3           0x2c
+> > +#define EMC141X_TEMP_MIN_HIGH3           0x2d
+> > +#define EMC141X_DEVICE_ID                0xfd
+> > +#define EMC141X_MANUFACTURER_ID          0xfe
+> > +#define EMC141X_REVISION                 0xff
+> > +
+> > +static void emc141x_get_temperature(Object *obj, Visitor *v, const cha=
+r *name,
+> > +                                   void *opaque, Error **errp)
+>
+> Nitpicking, align is off ;)
+
+will fix ;)
+
+>
+> > +{
+> > +    EMC141XState *s =3D EMC141X(obj);
+> > +    EMC141XClass *sc =3D EMC141X_GET_CLASS(s);
+> > +    int64_t value;
+> > +    int tempid;
+>
+> Shouldn't it be unsigned?
+
+yep=EF=BC=8C changed it to unsigned
+
+>
+> > +
+> > +    if (sscanf(name, "temperature%d", &tempid) !=3D 1) {
+>
+> Format doesn't match. Using 'unsigned' is probably easier (%u).
+>
+> > +        error_setg(errp, "error reading %s: %s", name, g_strerror(errn=
+o));
+> > +        return;
+> > +    }
+> > +
+> > +    if (tempid >=3D sc->sensors_count || tempid < 0) {
+> > +        error_setg(errp, "error reading %s", name);
+> > +        return;
+> > +    }
+> > +
+> > +    value =3D s->temperature[tempid] * 1000;
+>
+> This is not what is described in "Table 6.2: Temperature Data Format",
+> there is an offset and a step multiplier.
+
+The EMC1413/1414 has two selectable temperature ranges. we use the
+default one 0 - 127.
+as described in Table 7.2
+
+Reg 00(TEMP_HIGH0)  represents 0-127
+Reg 29(TEMP_LOW0) represents 0 - 7/8(0.875)
+
+I think we could care less about low-bit registers, and linux drivers
+don't care either.
+https://github.com/openbmc/linux/blob/dev-5.8/drivers/hwmon/emc1403.c#L43-L=
+46
+
+> Which makes me wonder how are you testing this?
+
+I tested it under openbmc/linux.
+
+1. with "aspeed: Add support for the g220a-bmc board" =EF=BC=8Cbuild the qe=
+mu
+2.  cd /sys/class/hwmon/hwmon2
+3  cat temp1_input cat temp1_max  cat temp2_input .... saw that all
+values are expected.
+
+> We have very simple tests for the TMP105, see tests/qtest/tmp105-test.c,
+> please add a similar test.
+
+will add the UT.
+
+>
+> > +
+> > +    visit_type_int(v, name, &value, errp);
+> > +}
+> > +
+> ...

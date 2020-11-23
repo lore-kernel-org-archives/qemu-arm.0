@@ -1,113 +1,75 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp608280lfb;
-        Thu, 19 Nov 2020 10:29:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzQUBgPsiehYFrNrUxByqlbCK2wJEnQWFuqmL+f+e6L4/KOx1WxEDYJL7ve3+U4aBucdAo1
-X-Received: by 2002:a25:e092:: with SMTP id x140mr10197393ybg.476.1605810569989;
-        Thu, 19 Nov 2020 10:29:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605810569; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3340699lfb;
+        Sun, 22 Nov 2020 22:30:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy0RMtl88i9TWJSmxySyaxISMinnd3/ePwRT6C6FAt4LxJ+keXwb/tNmSSET025rI8IkOhx
+X-Received: by 2002:a25:7608:: with SMTP id r8mr43574560ybc.131.1606113040737;
+        Sun, 22 Nov 2020 22:30:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606113040; cv=none;
         d=google.com; s=arc-20160816;
-        b=LoT6s+T5/LwH8sbQT3tsickwonqT55kTDdBlR9KlHEQ3EHsZtfkcxcfEctWG73n9SF
-         7hY6QDDYyPYWkowtWf506rt8SESvJRCOrsAyyJRb/OG5GNhRRaSecWoLs3BG89DTMN7u
-         X7WumdIRQPP5ahvUDJKKfSCg9FKoS1FmaCRuvgvtDbnT+bJvETIojs7H15aDvL5uTqN3
-         Sd6kM3S/mX2a2XK8pdtiMmCglJEt6LJP23HPY1VeafNX0m+xinH/JFdPnXtt/qd737fi
-         ibpHzIo350qM4VyY8nshY9tV+rteplhi/dg6McULTmz6Zism10rOg8Y8zQ2Er30sy/AA
-         pSCA==
+        b=fBvreRBydDTl2iAN79BgNS2BHWyISToee3GhYPpqeAjE8SIgJ70DV/wObImhtfr943
+         JZSVj7E4XaXIHorDavgacMz8eTgf6/jEzXywmZ/Kq2Zcji8N/1OC+1r5lg6SGmkejfTJ
+         TpezvXbomC0s7DwVvILlZVa7nNswntiQ8n4ko0/W2hGiBcB/K/JINgOfnIXOPrghq1E/
+         33oQjaLrc1MbZKpR11qi9ZK54mpWEIvkTamq/UtSuq1JvwVJ2W57QmTiUXXksuuZI68L
+         zpM1K9oqlIh+qRg5TCSwC3Ekc8hLiEKivfke97oegNUJ8AZawNaZNtK+2vI8xAzCYfEx
+         HnaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7XkyJxD+vCPYAqI/HIyIHvi+MyCG8Ym29xbg4hkgHGY=;
-        b=0zzPp3NDryUHuXUxsUc3/QnMwt6ijeEYeN29viIguM8MrY6Fej6bz2oRMdu7p2zKNC
-         Txy8AI/MkwCXY68srj1OKoS8Al5Vw6inj4vEnwtRIv7ef2UKGzMFN27E17vn0edie/FX
-         Ru3V0Jd5U/x2OwxSpP5FSOGCNWreIoXOfk6OIwv8cbkA5H0LR6orfq2xEvW10WetSeVO
-         03I3vW+Y6fyNEPPYdzXhxKlJNTMaGPYdA8sw7DV/d1X9JdduuBRWMoqAUoKk8pMj9y+g
-         90eaWWee9mHz835SX9SQKHNNgnHBtQL2nLKPQUL/M4+owEJ+Lr9ZCJjggn3eaV4sx3S0
-         M7Zw==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=MP6pD1QX/GCDRO1Bk4Fr58yYL7Ako2jzP3X2Ph2gy6M=;
+        b=I9EGRUizIolKLBW+/7T6JShebIZh/1fovOVrG7flvynwnIdFjunmJMIytLpoyqKMil
+         K/H39yBk34L7TLScNrsV1QVVWZzrUf+PlkS+U94od6L5PuXOuW6ViVJYXPCvt0blpPAF
+         O7aGKFKcCf95bGy1lz5MItvOxq9Rn0CanmeVVmQf32x7aC6Z2b23a0NXEANHHx8gfcw+
+         t3cPPPqTdsY4sxJbOSZcKf47Dovd7Vn7iPmfS3mSUMaAIEis9HUpt23zBWqykMxSj2Dm
+         zQNcfEU7NTsdmmM5VDMK8nQjjAdm3BYuZE0n5OPza/gSil6NuwMxDEfacu6v/+ezaf4W
+         Wulw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UMgPtGB0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d139si302022ybh.204.2020.11.19.10.29.29
+        by mx.google.com with ESMTPS id t1si14010620ybt.432.2020.11.22.22.30.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Nov 2020 10:29:29 -0800 (PST)
+        Sun, 22 Nov 2020 22:30:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UMgPtGB0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45786 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfogT-00023X-CX
-	for alex.bennee@linaro.org; Thu, 19 Nov 2020 13:29:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59150)
+	id 1kh5N2-0007u7-4I
+	for alex.bennee@linaro.org; Mon, 23 Nov 2020 01:30:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49076)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kfoeL-0000HG-7t
- for qemu-arm@nongnu.org; Thu, 19 Nov 2020 13:27:17 -0500
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:43113)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kfoeG-00048f-Kv
- for qemu-arm@nongnu.org; Thu, 19 Nov 2020 13:27:16 -0500
-Received: by mail-pf1-x444.google.com with SMTP id v5so1244511pff.10
- for <qemu-arm@nongnu.org>; Thu, 19 Nov 2020 10:27:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=7XkyJxD+vCPYAqI/HIyIHvi+MyCG8Ym29xbg4hkgHGY=;
- b=UMgPtGB0TjbN8Wyfin0zvx8VAQY1SHb3bnW3eVU15SM19ZV3cqEcxozLPnWAxOcqpM
- aMe3xqGInZvQsGlfZ0NenH4Uf/2RAC69bVhL4CfPlxAesUkUO9RUHH9+7wWCiC+Js4EO
- sS9h/QIOPPDR1MQ30ZSBMK92K7h7A4Bm4TaGJHWXgslfC5Wt4g2EZ96VvgRXpb60YknR
- qRpmVuzpdAcxrW8TJKRTfgyWA6fp/fzdrkr6OyYbTBbfmm8PCJG1Zz1XmgStK58TIdpO
- NkXTOjzXCOIeoA1QYd6vPRwUkG8KuNEXTYc+DY/m5YQ2kKs6X3q4D3SXJzrUA16NONwi
- yb/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7XkyJxD+vCPYAqI/HIyIHvi+MyCG8Ym29xbg4hkgHGY=;
- b=enAdkmbwCMbW4nwQnUSIbXw88JuQeTDlb7BUBOfhHDy/ii4Gn/JZc+e7yEk29r06W+
- 8DOQtjdbBfClG2ouh5dP6nqfiyD+7NQmAHkjUdTeZJkwo0bp5XfHPDnoUQUaGVnHw4N5
- 1z1VpEVZ5cP7/ln2TFWlrZcHp33f8Yo81xZ4POyW6OEHGGaho646bPAxqjgmOccMQeZg
- 2xij/KN0otcCnzLZ0E2kKPPgffJDAtqQhnLa4LWf4djgC6ysYyYZvYBDPco3xLYDgUYc
- Rz94JYeg35blCv0Xan6VFUpT5vu7yRrK0pFoUW/UKQOf/EZYgR9t5LlctKgxt17pdqaY
- umZA==
-X-Gm-Message-State: AOAM531/HRaljZ4K8Cz6yTj4LgL+myB0n93fK9IAWKykxoC1B/uPISrn
- OE9ADfHCDVpcMzbMaNGyZofLdA==
-X-Received: by 2002:a63:3111:: with SMTP id x17mr13647373pgx.329.1605810430241; 
- Thu, 19 Nov 2020 10:27:10 -0800 (PST)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id l190sm489741pfl.205.2020.11.19.10.27.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Nov 2020 10:27:09 -0800 (PST)
-Subject: Re: [PATCH] linux-user/arm: Deliver SIGTRAP for UDF patterns used as
- breakpoints
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20201117155634.6924-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <6fae2e37-525d-5dc9-c9eb-ed482813891b@linaro.org>
-Date: Thu, 19 Nov 2020 10:27:07 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kh5Ms-0007rm-8N; Mon, 23 Nov 2020 01:30:30 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2799)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kh5Mp-0005ZS-Ng; Mon, 23 Nov 2020 01:30:30 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cfch83r1czkdbr;
+ Mon, 23 Nov 2020 14:29:44 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 23 Nov 2020 14:30:02 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>, Jason Wang <jasowang@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: [PATCH] net: Use correct default-path macro for downscript
+Date: Mon, 23 Nov 2020 14:29:54 +0800
+Message-ID: <20201123062954.9680-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20201117155634.6924-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.37]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,30 +83,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
+ Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qlq5xEwIELiC
+X-TUID: it7zF94wNIE3
 
-On 11/17/20 7:56 AM, Peter Maydell wrote:
-> The Linux kernel doesn't use the official bkpt insn for breakpoints;
-> instead it uses three instructions in the guaranteed-to-UNDEF space,
-> and generates SIGTRAP for these rather than the SIGILL that most
-> UNDEF insns generate:
-> 
-> https://elixir.bootlin.com/linux/v5.9.8/source/arch/arm/kernel/ptrace.c#L197
-> 
-> Make QEMU treat these insns specially too.  The main benefit of this
-> is that if you're running a debugger on a guest program that runs
-> into a GCC __builtin_trap() or LLVM "trap because execution should
-> never reach here" then you'll get the expected signal rather than a
-> SIGILL.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> This is not a "fix" for LP:1904210, but it does bring QEMU's
-> behaviour into line with that of the real kernel on that binary.
+Fixes: 63c4db4c2e6d (net: relocate paths to helpers and scripts)
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+ net/tap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+diff --git a/net/tap.c b/net/tap.c
+index c46ff66184..b8e5cca51c 100644
+--- a/net/tap.c
++++ b/net/tap.c
+@@ -951,7 +951,8 @@ free_fail:
+             script = default_script = get_relocated_path(DEFAULT_NETWORK_SCRIPT);
+         }
+         if (!downscript) {
+-            downscript = default_downscript = get_relocated_path(DEFAULT_NETWORK_SCRIPT);
++            downscript = default_downscript =
++                                 get_relocated_path(DEFAULT_NETWORK_DOWN_SCRIPT);
+         }
+ 
+         if (tap->has_ifname) {
+-- 
+2.23.0
 
-r~

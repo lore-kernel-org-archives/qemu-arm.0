@@ -1,107 +1,74 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4073421lfa;
-        Mon, 2 Nov 2020 08:35:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxiBJCIIYGx7nO11CUShq/eIWQFOEC3/No2PWq8FJueTxYIOmiFe29OddVKcgrtxCXkiS8o
-X-Received: by 2002:ae9:e509:: with SMTP id w9mr15203202qkf.311.1604334943860;
-        Mon, 02 Nov 2020 08:35:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604334943; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3386282lfb;
+        Mon, 23 Nov 2020 00:02:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwaZiF6q513N0tM8ad6Xz8PJtbixe9GSD5oEebx0JlZtk31FAReImWoQNt+1b4FkmfY2cvJ
+X-Received: by 2002:a25:748a:: with SMTP id p132mr35202046ybc.430.1606118535116;
+        Mon, 23 Nov 2020 00:02:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606118535; cv=none;
         d=google.com; s=arc-20160816;
-        b=hayh75U5OcD8MqofPsAMUZ1WwNmy/pwOFSdiQ0GJQXXeieG4dRtHPGRaTH7l8U1t/J
-         ShsPqV7oBz2gxkz0eox0uX9jZ3t89k3imBSh1R6rqhfcA02D4HIkYtxTuxHHHwxC2KEy
-         Weds+jNdJTUcjSanWmRqrhuxOS/lj3OD+XKWAaAyqdblMz5FWvFl5XOJEFDV2JvZwRHE
-         wR2PErEkrbTk4EL+u3V7nP/1oxqG9yx99JXIGQVNZbVPYoLDbPEAplcwGv0VdLLzvddh
-         ErkC0A+uo/DOVZx668adQI6DVcKJ8zyLITgQkk4pQjYA0iOuwBl6HaOMZdpQaA9ZO3xL
-         KFoA==
+        b=jxFEpdudEagYVNPy9xXzBytoecjTIz7KAhTvqeQ0b6vn4pcpd2Dqemrc3UJcOZQxIO
+         nPRriF3LbnjVK6jIqE69jnBAKcKHYID8WnGB7D785QeeqJlcXpz405A1uPZHK2OnKKEF
+         MH2HVdVUDcNlH7QrEodchuVU3IH/h417YR+ovIB1a91JvkXvWPO27taOVOhyMeBmiOCd
+         3pMbOBiX8zf4zdFb7dE+CM2Li881QRI/hZkBLh1TUyQPgeiWl0aqYUokeyRHGZTez//q
+         SXx9FdVucovzzVp0WjQDKqH/Szym5ijJ9G4Q/XvUh05D//GLI2jOnlGVfVKhc/wSpQRX
+         24bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=YkCmdokUG70n/lP0Yg3aq5llbLTxN2eE6dBP9DGCPTI=;
-        b=ryv2A8YuvpjO2f+Zkd9huNApGoN8lCLpVRPUUtUeIC8vkyVHLtYYl4/+g6t75kQvii
-         dKVHar50W5j23ejJO6CDF1OLFhg2ulGKEXxQmiZUcu3+SPBFbz+WCbFsWsZSF6v+wUwk
-         f91WKUC7KxowF0wp8ndvCrF6UWTtw/JPzv/b0jTsht3u/idQKSBDUZiPUdh2+gULUX2e
-         JYocU1+tnRCCTptFc8ujA/Wi+QjBmLN8ZzQ1jderGcl0XPlf3m3G9E7GXmN9cDJ7p037
-         XW4Npl34JJNzsYkO8QXnF1AZ2/ipP091Eo08dutde08wzCMiuKVSh/Nv4UQHwTcJ9Icu
-         BAyw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:message-id:date:subject:to:from;
+        bh=w7XSyjLyze+TFCGqittgCZh2ZfWvdQj6jkxGLIkVWRg=;
+        b=YvvbpUN+Xu8gmPwXribcomQV5UyrWZLtjmYgW1/brZNZ2JMiTh5F6eIG5O9LfuV2t6
+         rQLAgzyu8XzhHuOkgrQ7vh4lLm5k/EwREgH4OYljh3clEH5QC1ai9dk0AxWcRX2GAt1P
+         JZT9CmKy1XNPKa8AQ/7vm4dHJxngLPk3E9igU7EdXyhMt8bEN8kvgwb545iVvYx2NTn9
+         IhIDIktM7xmj3aLZXgwouR/MN4SgIkEOOrAK7d5nQabGuo1m8jTQPkI++1wy0i0cOVuc
+         NHRg5NtDgf6pSUewtsz7fJ2U950ALmN8fyfTR3cSneELjzlinPF/wk1cdqu5MxtLhPR+
+         uxog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=aCAkNSZl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 16si8984782qkv.51.2020.11.02.08.35.43
+        by mx.google.com with ESMTPS id c4si9726392yba.97.2020.11.23.00.02.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 08:35:43 -0800 (PST)
+        Mon, 23 Nov 2020 00:02:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=aCAkNSZl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:50448 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41618 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZco3-0004mS-4d
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 11:35:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44750)
+	id 1kh6ne-0005F8-Fv
+	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:02:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kZcmm-0003DA-16
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 11:34:24 -0500
-Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44]:36102)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kZcmi-00013e-C8
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 11:34:23 -0500
-Received: by mail-vs1-xe44.google.com with SMTP id h5so7798447vsp.3
- for <qemu-arm@nongnu.org>; Mon, 02 Nov 2020 08:34:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YkCmdokUG70n/lP0Yg3aq5llbLTxN2eE6dBP9DGCPTI=;
- b=aCAkNSZlqaJlmomKa5MZoFM68wdB1hak7x5oXCTQOp67+tQlWuxKA2xvaCYue87T05
- vAehkUH89x8LWH9unqlSPyOOpLx9SVHMnjTycyL1zdClimGWw3fMnry3RL+PMMa1qr5R
- UZa9CirfaTcNO85foGXu1oK1T+ykA0bpjlBUDHRi5U2Kf0yGyi5JdQAil+r1VEv9+jD7
- v6ewmOx3sd6JiUn2tg+mort4075B3bN4etph+S7C5axa80rK3kFY0dMsbysXU/V/ovoM
- RKw8pMqkBtZY/8J1v0WJGlRXa6/FMFD66MJcyg7w44HP6WcmjYrs0v8Bqisb/wNW84fN
- NzqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YkCmdokUG70n/lP0Yg3aq5llbLTxN2eE6dBP9DGCPTI=;
- b=ewbKZzkGAsZePuvPalEXTfeK7dA/BS6XqSvFQG0NHv2v1b3KWbfhhUB7ofnaUlgC38
- wPa0x6RPRgDQ+abG0LLv+EskaZZAP9BrlAQC902s+NOhukeg5PbPpXLJDB+G5Vd2/Ki8
- 1GQaDYVRTieIDMCQvyAVnvBE9bvI7H5YWtfyg9NmwzCutSaN78t8DOdun4VY7jAGNRu7
- PumtXNxv6CCYlL4qviBtWp6KuUIhoz5Pcd0mIVhP0q2xnRVnsmTNMA6VmT9/Qh8zvGtS
- OPoHBxkpy6ZXqPDaIKhu1Co46twQ3l82ncqHTqasdQfJmEWeBokpVYc4SUJvPmW6u2Hb
- t5EA==
-X-Gm-Message-State: AOAM531HOWF86jkhn0KN3XEx3rSlQF3NkK8Lsf+OJ80K2F06WxijikhQ
- 6/HN70h3z916nR0CHIeQ6rCN56IbDSFXmbWADGtKWA==
-X-Received: by 2002:a67:2545:: with SMTP id l66mr14572906vsl.1.1604334856444; 
- Mon, 02 Nov 2020 08:34:16 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kh6nS-0005Eq-5L; Mon, 23 Nov 2020 03:02:02 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54604
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kh6nP-0004PD-KG; Mon, 23 Nov 2020 03:02:01 -0500
+Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
+ [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
+ (Authenticated sender: remi)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id E7D065FC79;
+ Mon, 23 Nov 2020 09:01:50 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
+To: qemu-arm@nongnu.org
+Subject: [PATCHv3 00/17] ARMv8.4 Secure EL2
+Date: Mon, 23 Nov 2020 10:01:50 +0200
+Message-ID: <3333301.iIbC2pHGDl@basile.remlab.net>
+Organization: Huawei Technologies, Finland
 MIME-Version: 1.0
-References: <20201102152454.8287-1-peter.maydell@linaro.org>
-In-Reply-To: <20201102152454.8287-1-peter.maydell@linaro.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Mon, 2 Nov 2020 08:34:05 -0800
-Message-ID: <CAFQmdRbEJCD3t2=6omuq3PC5N6Rzvii5Tw+K3bme76jXGOkCdA@mail.gmail.com>
-Subject: Re: [PATCH] tests/qtest/npcm7xx_rng-test: Disable randomness tests
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- Tyrone Ting <kfting@nuvoton.com>,
- "Daniel P. Berrange" <berrange@redhat.com>
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e44;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe44.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,62 +81,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YL61fbV5J02B
+X-TUID: KTXvuCeN6puy
 
-On Mon, Nov 2, 2020 at 7:24 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The randomness tests in the NPCM7xx RNG test fail intermittently
-> but fairly frequently. On my machine running the test in a loop:
->  while QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/npcm7xx_rng-test; do true; done
->
-> will fail in less than a minute with an error like:
-> ERROR:../../tests/qtest/npcm7xx_rng-test.c:256:test_first_byte_runs:
-> assertion failed (calc_runs_p(buf.l, sizeof(buf) * BITS_PER_BYTE) > 0.01): (0.00286205989 > 0.01)
->
-> (Failures have been observed on all 4 of the randomness tests,
-> not just first_byte_runs.)
->
-> It's not clear why these tests are failing like this, but intermittent
-> failures make CI and merge testing awkward, so disable running them
-> unless a developer specifically sets QEMU_TEST_FLAKY_RNG_TESTS when
-> running the test suite, until we work out the cause.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  tests/qtest/npcm7xx_rng-test.c | 14 ++++++++++----
->  1 file changed, 10 insertions(+), 4 deletions(-)
->
-> diff --git a/tests/qtest/npcm7xx_rng-test.c b/tests/qtest/npcm7xx_rng-test.c
-> index da6e639bf6f..e7cde85fbbc 100644
-> --- a/tests/qtest/npcm7xx_rng-test.c
-> +++ b/tests/qtest/npcm7xx_rng-test.c
-> @@ -265,10 +265,16 @@ int main(int argc, char **argv)
->
->      qtest_add_func("npcm7xx_rng/enable_disable", test_enable_disable);
->      qtest_add_func("npcm7xx_rng/rosel", test_rosel);
-> -    qtest_add_func("npcm7xx_rng/continuous/monobit", test_continuous_monobit);
-> -    qtest_add_func("npcm7xx_rng/continuous/runs", test_continuous_runs);
-> -    qtest_add_func("npcm7xx_rng/first_byte/monobit", test_first_byte_monobit);
-> -    qtest_add_func("npcm7xx_rng/first_byte/runs", test_first_byte_runs);
-> +    /*
-> +     * These tests fail intermittently; only run them on explicit
-> +     * request until we figure out why.
-> +     */
-> +    if (getenv("QEMU_TEST_FLAKY_RNG_TESTS")) {
-> +        qtest_add_func("npcm7xx_rng/continuous/monobit", test_continuous_monobit);
-> +        qtest_add_func("npcm7xx_rng/continuous/runs", test_continuous_runs);
-> +        qtest_add_func("npcm7xx_rng/first_byte/monobit", test_first_byte_monobit);
-> +        qtest_add_func("npcm7xx_rng/first_byte/runs", test_first_byte_runs);
-> +    }
+The following changes since commit 8cc30eb1400fc01f2b139cdd3dc524f8b84dbe07:
 
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+  Merge remote-tracking branch 'remotes/mcayland/tags/qemu-sparc-20201122' =
+into staging (2020-11-22 15:02:52 +0000)
 
-Thanks!
+follow.
 
->      qtest_start("-machine npcm750-evb");
->      ret = g_test_run();
-> --
-> 2.20.1
->
+Changes since version 2:
+=2D Don't set HPFAR.NS in AT instruction in NS state.
+
+=2D---------------------------------------------------------------
+R=C3=A9mi Denis-Courmont (17):
+      target/arm: remove redundant tests
+      target/arm: add arm_is_el2_enabled() helper
+      target/arm: use arm_is_el2_enabled() where applicable
+      target/arm: use arm_hcr_el2_eff() where applicable
+      target/arm: factor MDCR_EL2 common handling
+      target/arm: declare new AA64PFR0 bit-fields
+      target/arm: add 64-bit S-EL2 to EL exception table
+      target/arm: return the stage 2 index for stage 1
+      target/arm: add MMU stage 1 for Secure EL2
+      target/arm: add ARMv8.4-SEL2 system registers
+      target/arm: do S1_ptw_translate() before address space lookup
+      target/arm: secure stage 2 translation regime
+      target/arm: handle VMID change in secure state
+      target/arm: set HPFAR_EL2.NS on secure stage 2 faults
+      target/arm: add ARMv8.4-SEL2 extension
+      target/arm: enable Secure EL2 in max CPU
+      target/arm: refactor vae1_tlbmask()
+
+ target/arm/cpu-param.h     |   2 +-
+ target/arm/cpu.c           |  10 +-
+ target/arm/cpu.h           |  93 ++++++++--
+ target/arm/cpu64.c         |   1 +
+ target/arm/helper-a64.c    |   8 +-
+ target/arm/helper.c        | 423 ++++++++++++++++++++++++++++++-----------=
+=2D---
+ target/arm/internals.h     |  56 +++++-
+ target/arm/op_helper.c     |   4 +-
+ target/arm/tlb_helper.c    |   3 +
+ target/arm/translate-a64.c |   4 +
+ target/arm/translate.c     |   6 +-
+ target/arm/translate.h     |   1 +
+ 12 files changed, 431 insertions(+), 180 deletions(-)
+
+=2D-=20
+=E9=9B=B7=E7=B1=B3=E2=80=A7=E5=BE=B7=E5=B0=BC-=E5=BA=93=E5=B0=94=E8=92=99
+
+
+

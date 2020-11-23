@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3393809lfb;
-        Mon, 23 Nov 2020 00:14:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwSzVSYCrlCbIIXWr3NIgLT+auXJpl6xLr86HUkKx8rcwcwcK/wvVpKtWwMQYEBdFV7prRQ
-X-Received: by 2002:a25:680d:: with SMTP id d13mr40038033ybc.92.1606119295308;
-        Mon, 23 Nov 2020 00:14:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606119295; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3393873lfb;
+        Mon, 23 Nov 2020 00:15:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw5VoB84XEXqKyxUzkd8OZ0vg6A0ukURN1u7MZgQaTxVrZHAbfKJ3JTpm/Y6FALAAoiRyaY
+X-Received: by 2002:a25:cbd6:: with SMTP id b205mr43663207ybg.141.1606119304498;
+        Mon, 23 Nov 2020 00:15:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606119304; cv=none;
         d=google.com; s=arc-20160816;
-        b=QgKw2Oo7nmqJHL5wf9o4OdtSou7KbYhUPEWkH8WGOR1YuqCvVTm3D9Wo9nQboUs6Bq
-         YR0EsfaC9Ht7nfUa50/doPLyjpucT0hsiBAPwNNx5BHyiC00OROYCzx2P/fA8304OEnM
-         nLFJBBP+yW2FXtNk8KrBvXvP7G3o3doodp8WkCngQ4u6If5uY/dcR0qW58mjmLOgvIya
-         /2SncLRvADYCLRjloXayGUeG+RmfIldttkcHt398RJ52MYQbF7F6sRQDb2gjgx4kjCNU
-         uRZqBVG8/6MyV9TI+qhqg++ZWA9pcpKEdhzAQltmS1mpqa5kBanQeVBtrtk7X4Rearaj
-         JW/g==
+        b=rxQ/WULPFYSqO0P+8Fez1wISeaRzeK94Kf0ZH5syJRwOptnvkzfjjdYvSyoisSikRH
+         yzhwwt4WbQ2SdvjUqGQAM8ZjpNJxkIHfXWuKCN59QIM5QLi5A9QMnfygSFxDUP0C7k6o
+         ulbK/aTHPVng5ywe3urRUx9wFZ72cRnZIDUSfCdcBi/0CfcFGYbH8zUdZq7ohaDdbPi0
+         ZO7+t0gNYyk8zz7QifM+MhZPftjm/xefVR+UhBFIVnXhdNAUORkGFR383i2kml+PHEYM
+         cVlVG1RVMaeEWU3UF/H5FZwFd8uxFCaNKu21MJFuPrtWiR4z7AkdbOvl9Tys22YaTlRF
+         1meg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=3Bmnnok5x9mTVJmnbI4fp25pnVa9hPR5gd82pSMsetE=;
-        b=ZnF70Z0a+qHApE2b+7gP5Af8E9rjLa1pCHfhSKNCIT04/Y2DnGs9+IZp8K0+1zCV1e
-         nMkUMYTDdpOSzCVupkafXIbkvDKNGDAaxIvwJ5T9XbZ/M3cscYXiyeHJwUperQi5KUYd
-         iLexRSPXfOjOSI/EkbjE88Mo+2wQ4NC3CmZzMsGV92YrWHKKeAsHcrW+Lml2UPWkHfA7
-         EwF+fe1Lxwr/TNGKvFim2ocqjMa/wA2SvCbnQOtaQAz3k7FXVf345BHc+QxIBaTXPbuJ
-         G6qkyZqqEo9fivpYfIjXKshwYLhbtExVTDX9bo+P+DY0eMwa1bgCXFpHkprJGBdEXYxK
-         0Weg==
+        bh=lZnJgUKi1XqTZXJhUBKSGomH5q1LXEUuiOh5YL9YeQM=;
+        b=BfEtkaXECuxztTxmq3xoH20yZuu3PQwyMbEaWS9LPPrqfYPJ8Dz1NWHtFHDMDi+Exn
+         nr25SPZpy+U4SCZrLXzisYl246t1R3FZmsoMIM1gjDfwLaGYFybQRY14lyQU8zyUsG3G
+         bmzRQukddJsh4ziAKZ+zMADPsPp7Zs4e8WlRHZBhA2KQftD/x1sco1oMsohruOhFvx0z
+         vQ9MKwJkjI5DG80oB10+zvUgX/AvFge1x7LjRm/2le7B0Wt33TnTCDQgT5kdsvMq6E9x
+         5K02PCYIIkMvOUJP8UjgvEc0NEIxQ/VtMh7ndF+eJSpHfQjwmBEd7BNsxbzhmA+cLuaB
+         42aA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r187si12550365ybr.321.2020.11.23.00.14.55
+        by mx.google.com with ESMTPS id n83si11156243ybg.125.2020.11.23.00.15.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Nov 2020 00:14:55 -0800 (PST)
+        Mon, 23 Nov 2020 00:15:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51220 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kh6zu-00041Z-NV
-	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:14:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35744)
+	id 1kh703-0004IO-US
+	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:15:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kh6o7-0005oK-Tr; Mon, 23 Nov 2020 03:02:43 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54636
+ id 1kh6o7-0005oN-Vx; Mon, 23 Nov 2020 03:02:44 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54632
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kh6o6-0004fc-8q; Mon, 23 Nov 2020 03:02:43 -0500
+ id 1kh6o6-0004fU-4y; Mon, 23 Nov 2020 03:02:43 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 9A157604F4;
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 1901260413;
  Mon, 23 Nov 2020 09:02:39 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 10/17] target/arm: add ARMv8.4-SEL2 system registers
-Date: Mon, 23 Nov 2020 10:02:30 +0200
-Message-Id: <20201123080237.18465-10-remi.denis.courmont@huawei.com>
+Subject: [PATCH 08/17] target/arm: return the stage 2 index for stage 1
+Date: Mon, 23 Nov 2020 10:02:28 +0200
+Message-Id: <20201123080237.18465-8-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <3333301.iIbC2pHGDl@basile.remlab.net>
 References: <3333301.iIbC2pHGDl@basile.remlab.net>
@@ -84,75 +84,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lmqyiEuZ5TPe
+X-TUID: Nw+QMNJ11GbK
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+
+This makes arm_mmu_idx_is_stage1_of_2() optionally return the stage 2
+MMU index. With Secure EL2, there are more than one stage 2 regimes, so
+we can no longer hard-code a constant index for it.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h    |  2 ++
- target/arm/helper.c | 24 ++++++++++++++++++++++++
- 2 files changed, 26 insertions(+)
+ target/arm/helper.c    | 13 +++++++------
+ target/arm/internals.h | 16 +++++++++++-----
+ 2 files changed, 18 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c436dd5161..c8288afb54 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -323,9 +323,11 @@ typedef struct CPUARMState {
-             uint64_t ttbr1_el[4];
-         };
-         uint64_t vttbr_el2; /* Virtualization Translation Table Base.  */
-+        uint64_t vsttbr_el2; /* Secure Virtualization Translation Table. */
-         /* MMU translation table base control. */
-         TCR tcr_el[4];
-         TCR vtcr_el2; /* Virtualization Translation Control.  */
-+        TCR vstcr_el2; /* Secure Virtualization Translation Control. */
-         uint32_t c2_data; /* MPU data cacheable bits.  */
-         uint32_t c2_insn; /* MPU instruction cacheable bits.  */
-         union { /* MMU domain access control register
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 318c7e5441..9683f5aadc 100644
+index a69fde826b..f52d77f5a5 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -5721,6 +5721,27 @@ static const ARMCPRegInfo el2_v8_cp_reginfo[] = {
-     REGINFO_SENTINEL
- };
+@@ -3424,7 +3424,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+         bool take_exc = false;
  
-+static CPAccessResult sel2_access(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  bool isread)
-+{
-+    if (arm_current_el(env) == 3 || arm_is_secure_below_el3(env)) {
-+        return CP_ACCESS_OK;
-+    }
-+    return CP_ACCESS_TRAP_UNCATEGORIZED;
-+}
-+
-+static const ARMCPRegInfo el2_sec_cp_reginfo[] = {
-+    { .name = "VSTTBR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 6, .opc2 = 0,
-+      .access = PL2_RW, .accessfn = sel2_access,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vsttbr_el2) },
-+    { .name = "VSTCR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 6, .opc2 = 2,
-+      .access = PL2_RW, .accessfn = sel2_access,
-+      .fieldoffset = offsetof(CPUARMState, cp15.vstcr_el2) },
-+    REGINFO_SENTINEL
-+};
-+
- static CPAccessResult nsacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
- {
-@@ -7733,6 +7754,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         if (arm_feature(env, ARM_FEATURE_V8)) {
-             define_arm_cp_regs(cpu, el2_v8_cp_reginfo);
+         if (fi.s1ptw && current_el == 1 && !arm_is_secure(env)
+-            && arm_mmu_idx_is_stage1_of_2(mmu_idx)) {
++            && arm_mmu_idx_is_stage1_of_2(mmu_idx, NULL)) {
+             /*
+              * Synchronous stage 2 fault on an access made as part of the
+              * translation table walk for AT S1E0* or AT S1E1* insn
+@@ -10008,7 +10008,7 @@ static inline bool regime_translation_disabled(CPUARMState *env,
          }
-+        if (cpu_isar_feature(aa64_sel2, cpu)) {
-+            define_arm_cp_regs(cpu, el2_sec_cp_reginfo);
+     }
+ 
+-    if ((hcr_el2 & HCR_DC) && arm_mmu_idx_is_stage1_of_2(mmu_idx)) {
++    if ((hcr_el2 & HCR_DC) && arm_mmu_idx_is_stage1_of_2(mmu_idx, NULL)) {
+         /* HCR.DC means SCTLR_EL1.M behaves as 0 */
+         return true;
+     }
+@@ -10340,16 +10340,17 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+                                hwaddr addr, MemTxAttrs txattrs,
+                                ARMMMUFaultInfo *fi)
+ {
+-    if (arm_mmu_idx_is_stage1_of_2(mmu_idx) &&
+-        !regime_translation_disabled(env, ARMMMUIdx_Stage2)) {
++    ARMMMUIdx s2_mmu_idx;
++
++    if (arm_mmu_idx_is_stage1_of_2(mmu_idx, &s2_mmu_idx) &&
++        !regime_translation_disabled(env, s2_mmu_idx)) {
+         target_ulong s2size;
+         hwaddr s2pa;
+         int s2prot;
+         int ret;
+         ARMCacheAttrs cacheattrs = {};
+ 
+-        ret = get_phys_addr_lpae(env, addr, MMU_DATA_LOAD, ARMMMUIdx_Stage2,
+-                                 false,
++        ret = get_phys_addr_lpae(env, addr, MMU_DATA_LOAD, s2_mmu_idx, false,
+                                  &s2pa, &txattrs, &s2prot, &s2size, fi,
+                                  &cacheattrs);
+         if (ret) {
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 5460678756..4e4798574b 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1146,17 +1146,23 @@ ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env);
+ 
+ /**
+  * arm_mmu_idx_is_stage1_of_2:
+- * @mmu_idx: The ARMMMUIdx to test
++ * @s1_mmu_idx: The ARMMMUIdx to test
++ * @s2_mmu_idx: Storage space for the stage 2 ARMMMUIdx
+  *
+- * Return true if @mmu_idx is a NOTLB mmu_idx that is the
+- * first stage of a two stage regime.
++ * Return true if @mmu_idx is a NOTLB mmu_idx that is the first stage
++ * of a two stage regime. The corresponding second stage will be
++ * stored in @s2_mmu_idx.
+  */
+-static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx mmu_idx)
++static inline bool arm_mmu_idx_is_stage1_of_2(ARMMMUIdx s1_mmu_idx,
++                                              ARMMMUIdx *s2_mmu_idx)
+ {
+-    switch (mmu_idx) {
++    switch (s1_mmu_idx) {
+     case ARMMMUIdx_Stage1_E0:
+     case ARMMMUIdx_Stage1_E1:
+     case ARMMMUIdx_Stage1_E1_PAN:
++        if (s2_mmu_idx != NULL) {
++            *s2_mmu_idx = ARMMMUIdx_Stage2;
 +        }
-         /* RVBAR_EL2 is only implemented if EL2 is the highest EL */
-         if (!arm_feature(env, ARM_FEATURE_EL3)) {
-             ARMCPRegInfo rvbar = {
+         return true;
+     default:
+         return false;
 -- 
 2.29.2
 

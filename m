@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3389698lfb;
-        Mon, 23 Nov 2020 00:07:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwjIQSWXi17FP2cxBeJoYh3qIKw/JjqLN4u+gF1YWGZfbmJe6VTOnWdQ025rOqnbmuxc/+U
-X-Received: by 2002:a25:22d5:: with SMTP id i204mr51599704ybi.0.1606118875062;
-        Mon, 23 Nov 2020 00:07:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606118875; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3391601lfb;
+        Mon, 23 Nov 2020 00:11:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJysLbqxSw1gw2ywJWJ94TWAOmAmPWPNaWUwijXp+lZjS39o3eL9/NCmF3Ou2x7pfwGAw4Y2
+X-Received: by 2002:a25:b9c4:: with SMTP id y4mr45094947ybj.357.1606119061046;
+        Mon, 23 Nov 2020 00:11:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606119061; cv=none;
         d=google.com; s=arc-20160816;
-        b=1FPMUTHZhEti6iPOTq1+N4hCd2g1okaMeM3+62mJU+BpfuROOLII8Yd7SWF7r3xMB1
-         on0OrMUxnx4OfeYqNuxEvHQDFL4CDEV7h8SjMpGCleX3UzqymMKiWlbU1rfpH3j4jrma
-         zrE/yp572ZZDe1MTSt+bb9YnCkoRYFg2Lf/6vt68LVSunS0VEbMFK4OlqmoxL48jak8E
-         9vcmC+APNZxWdROy1LYOcL9pGEvm3J3F+v6Bte5Ej+hWOjBEQIHOiJJE6D2dy/6jR+JH
-         2PzbKr6hQKdwTy26AGYZK28kcfLhLFg2p45WBGLoMDGvvvFD8/4FUQCN3+zIMPfgIcww
-         j8PA==
+        b=Slu0JOmEjtGM073cmT2nuHr0BZeUMoLhUIduDzz2pLep8pgfFARgsH88Mx0jSm7zPH
+         L1qdpEqhR6gSQKiJOQ9+OMC9Xcpte6dZmNacv3w5KV79oRhVrLDewIHcjmDloKM/OUAa
+         33urbwose647y7JiUiiJ5fV6mJjiGWoNQP0zVr3a8T3Vc3r05vqYmQVaIsqXMgq2Ncir
+         zEtk/XfrUnpWVcFyQNlZK8VIzunW8iIj+reba9V4u+IwNbygpN/saAAZSjGmIQMEoRfl
+         HPfkdFJBVBzM+xj9If1jrcorrYhTtrcOWDNQXbLaWN9+YznX2pW5g72tMTxmciE9z/xI
+         vmUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=+SGhqfcLqjx/l2sLRD+rUhLUd2YgOXuwFjIlwW1SR5w=;
-        b=LVyrYICskyZWFw5WSqVKLip8n7wSeOYXhMnP7A1HSSSds0YFfNldjsDNg641mTQfk/
-         UGZ5S73J/CafPKYZeNMvG/XiyNrFYqCUaUy7mCGUlQfMKRnmMLzxccnatQwBFFKHE4OK
-         gxoZceNxRqueWWWlmmoCD1XLhTQyiBaFGgoQOB9pb4RCJrZawFfTvAi/lP+NAc7yxiht
-         diESogNZIrJcPVxBXgN3u2uu7eFiSU0UmKH29XWd1IBzO4YIZ93U07qIP3XtlysyzTu2
-         HExR4o/qun5YoC/tZmrYfFIZ62t7wLuc8/kw1nrOmnQxV5V/Xj43JatSjaE0q6qj5LAy
-         IRWA==
+        bh=Lac17Jk/M9jmrKDFgZLlrVC1wfCpNsxqTCeMimd4IBY=;
+        b=gxsQvU2bbykim3TPv33/ByEnI47pOq0XNmUq4f+4o8XIW3FofKn5GZQ8QBwGCegq2F
+         3fd5oj2aWfgYq3xeOKdD+0C3aDlUwQNK2HJ/eH3CMnmpZuzNvXi+3CixcnR6qKCh12Zt
+         88omr8yXDJS24NbgqD+uc2RsiiEAkxD9QKef9YRC7NRxGMgNExyRLgD+1YgrIkUiT9T5
+         ArccAgmwdiQyELT3Y/uZ8SCZ/HdoW99k2NGVop9p+0MlGonEE75ZCGI++97q/lYE/cUr
+         bQziofJBtFNrA2BzRosHjea5vCAquTm9r5ZxpkDwqKl23NJF01E6s1+ubwC/sOX9G2I5
+         KhFg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x36si10739159ybh.491.2020.11.23.00.07.54
+        by mx.google.com with ESMTPS id m128si11762654ybm.200.2020.11.23.00.11.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Nov 2020 00:07:55 -0800 (PST)
+        Mon, 23 Nov 2020 00:11:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56762 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kh6t8-0003B7-Fy
-	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:07:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35684)
+	id 1kh6w8-0007Ad-Be
+	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:11:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kh6o5-0005kg-BJ; Mon, 23 Nov 2020 03:02:41 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54620
+ id 1kh6o6-0005me-Oc; Mon, 23 Nov 2020 03:02:42 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54630
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kh6o2-0004dk-OG; Mon, 23 Nov 2020 03:02:41 -0500
+ id 1kh6o4-0004f6-Sr; Mon, 23 Nov 2020 03:02:42 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 873225FD4A;
- Mon, 23 Nov 2020 09:02:37 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id D1FA860412;
+ Mon, 23 Nov 2020 09:02:38 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 02/17] target/arm: add arm_is_el2_enabled() helper
-Date: Mon, 23 Nov 2020 10:02:22 +0200
-Message-Id: <20201123080237.18465-2-remi.denis.courmont@huawei.com>
+Subject: [PATCH 07/17] target/arm: add 64-bit S-EL2 to EL exception table
+Date: Mon, 23 Nov 2020 10:02:27 +0200
+Message-Id: <20201123080237.18465-7-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <3333301.iIbC2pHGDl@basile.remlab.net>
 References: <3333301.iIbC2pHGDl@basile.remlab.net>
@@ -84,54 +84,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CRKL9I6WtBhT
+X-TUID: +Ab34qW2S8XO
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-This checks if EL2 is enabled (meaning EL2 registers take effects) in
-the current security context.
+With the ARMv8.4-SEL2 extension, EL2 is a legal exception level in
+secure mode, though it can only be AArch64.
+
+This patch adds the target EL for exceptions from 64-bit S-EL2.
+
+It also fixes the target EL to EL2 when HCR.{A,F,I}MO are set in secure
+mode. Those values were never used in practice as the effective value of
+HCR was always 0 in secure mode.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ target/arm/helper.c    | 10 +++++-----
+ target/arm/op_helper.c |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e5514c8286..30b5af5cde 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2040,6 +2040,18 @@ static inline bool arm_is_secure(CPUARMState *env)
-     return arm_is_secure_below_el3(env);
- }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index e55059585b..a69fde826b 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9005,13 +9005,13 @@ static const int8_t target_el_table[2][2][2][2][2][4] = {
+       {{/* 0   1   1   0 */{ 3,  3,  3, -1 },{ 3, -1, -1,  3 },},
+        {/* 0   1   1   1 */{ 3,  3,  3, -1 },{ 3, -1, -1,  3 },},},},},
+     {{{{/* 1   0   0   0 */{ 1,  1,  2, -1 },{ 1,  1, -1,  1 },},
+-       {/* 1   0   0   1 */{ 2,  2,  2, -1 },{ 1,  1, -1,  1 },},},
+-      {{/* 1   0   1   0 */{ 1,  1,  1, -1 },{ 1,  1, -1,  1 },},
+-       {/* 1   0   1   1 */{ 2,  2,  2, -1 },{ 1,  1, -1,  1 },},},},
++       {/* 1   0   0   1 */{ 2,  2,  2, -1 },{ 2,  2, -1,  1 },},},
++      {{/* 1   0   1   0 */{ 1,  1,  1, -1 },{ 1,  1,  1,  1 },},
++       {/* 1   0   1   1 */{ 2,  2,  2, -1 },{ 2,  2,  2,  1 },},},},
+      {{{/* 1   1   0   0 */{ 3,  3,  3, -1 },{ 3,  3, -1,  3 },},
+        {/* 1   1   0   1 */{ 3,  3,  3, -1 },{ 3,  3, -1,  3 },},},
+-      {{/* 1   1   1   0 */{ 3,  3,  3, -1 },{ 3,  3, -1,  3 },},
+-       {/* 1   1   1   1 */{ 3,  3,  3, -1 },{ 3,  3, -1,  3 },},},},},
++      {{/* 1   1   1   0 */{ 3,  3,  3, -1 },{ 3,  3,  3,  3 },},
++       {/* 1   1   1   1 */{ 3,  3,  3, -1 },{ 3,  3,  3,  3 },},},},},
+ };
  
-+/*
-+ * Return true if the current security state has AArch64 EL2 or AArch32 Hyp.
-+ * This corresponds to the pseudocode EL2Enabled()
-+ */
-+static inline bool arm_is_el2_enabled(CPUARMState *env)
-+{
-+    if (arm_feature(env, ARM_FEATURE_EL2)) {
-+        return !arm_is_secure_below_el3(env);
-+    }
-+    return false;
-+}
-+
- #else
- static inline bool arm_is_secure_below_el3(CPUARMState *env)
- {
-@@ -2050,6 +2062,11 @@ static inline bool arm_is_secure(CPUARMState *env)
- {
-     return false;
- }
-+
-+static inline bool arm_is_el2_enabled(CPUARMState *env)
-+{
-+    return false;
-+}
- #endif
- 
- /**
+ /*
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index ff91fe6121..5e0f123043 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -652,10 +652,10 @@ void HELPER(access_check_cp_reg)(CPUARMState *env, void *rip, uint32_t syndrome,
+         target_el = exception_target_el(env);
+         break;
+     case CP_ACCESS_TRAP_EL2:
+-        /* Requesting a trap to EL2 when we're in EL3 or S-EL0/1 is
++        /* Requesting a trap to EL2 when we're in EL3 is
+          * a bug in the access function.
+          */
+-        assert(!arm_is_secure(env) && arm_current_el(env) != 3);
++        assert(arm_current_el(env) != 3);
+         target_el = 2;
+         break;
+     case CP_ACCESS_TRAP_EL3:
 -- 
 2.29.2
 

@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3386729lfb;
-        Mon, 23 Nov 2020 00:02:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzDGX3XODZDIn01EJ7mexSoCPrV+OvxUXTAHL5+9W0YXOf3ROWAp0Gzv+Z4lsZujqIU/Dad
-X-Received: by 2002:a5b:852:: with SMTP id v18mr29786476ybq.294.1606118577488;
-        Mon, 23 Nov 2020 00:02:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606118577; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3386740lfb;
+        Mon, 23 Nov 2020 00:02:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxLR5SV09HTB+HydHr8jv2ZqMQmgxLXAlHFnY3qyffVm2IF2OAsK/g1+rohN9wsnLedJk+j
+X-Received: by 2002:a25:d305:: with SMTP id e5mr43335382ybf.358.1606118578743;
+        Mon, 23 Nov 2020 00:02:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606118578; cv=none;
         d=google.com; s=arc-20160816;
-        b=OBkl5QhCK2YuFzmOoMYpu52sn+gg8wOY0WwumCAW9ezfo4OoakFxjhPOqXheafm6o+
-         hU1UU1Es1ZdWDT+oykoRgI/YcFT8BoQ+S3RxmpD2M0QCmkLAhynbO3gO4AQ2wV+qkd1c
-         nKjPd4qzes547REZ3maEJYmfhgxjYibLNTekd9sfqq5sg/pl4GA8Uqi18vbKh2jVThIB
-         rzSR86njqMflTzdOIASdAqAwZPPPcbujulY/cu99FHafeSvfR+EgLHwM6vIl2tPtJfV6
-         QiQem3KV9VB7szzo2TK7tcNNj0GEtCYUU9htjZKkwSRlyMR9RYQKIidWZ+AQ9feu6Ifo
-         1urg==
+        b=hduAkqkQJYTmc+wKSueSu6sqcMmeSlWNeSz/zjzFwJzGLSvXgQUjyyHRZq3BVgsThg
+         edfW2O+WQqtHlcgZ9KuXzm9k6gL/urN/LEAU/VFAPtcn+2F4Oipf5C53hdVw1mb6+gBL
+         J3u0LXdO33nTI4Xfy232fnxjjHdftvs9xQLdgnbM/RvKMF7MLoZY/XK7lWPVHsjHI8tp
+         ESwS7v2rhn29y1SKtTnCWSDnWSABCHpaczVrMxykR4XgU5v4mFPlgFOvS2HC9xBD4ezo
+         S9acPhDci4UYyN6pQnrCAq2NQ4aDAfwf3TQQy0ZMn8tSozHZkPuaS9pJ+oWvIpdvw4vG
+         GKLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=xYwVvTh1/J5559GEO0LC3qiFOacnJwnoS9DQ8JiNW3E=;
-        b=FPA4Y6rTA4lLUEeA9oQnBGz3In1XDI0wqCscBVfIBghX5RCqbSON4UXyzh+pYA9Ef7
-         xwskoOcHnP8+Xzs6XGorlx9GbCK5IzcJKTkRR1wLT1u6+SFjQy0ki5Ue/Sb5sIHy3aph
-         /4CNk/zQA397/0MkkAzrjdO2B2s3yWd34wisDB0QpueQxmkccFPwPqskrDJg1JKsVMfo
-         LY4epHUKB0h56W6aTTjW/QiEYW2IdtiShq8AykUlV0Sy0JtWGooyfrtPqFOYRUrw++an
-         u9RbxWdpF0lQxHcR8mMkFxNVRR5wpmX+TVp3vm4HaWwFFpMZG3Jax5H2aQVf8exodITK
-         jwPg==
+        bh=qiFcY95S5xNfDiQU1eB7PWSU0qM/WpLKJk5Qqroy2IY=;
+        b=DZ0hPr8KYBmga8Wskm0W6FVHZwWbdNv5cJL45oF1DtNgdTvmT9Ffow4Jfd2OQKFZPk
+         5I7B78UqOlzntVaLTLWlpxMHBitbJDceqqKVAOs64h+Uj6mu8K0DfFIMfSvqUH531Vky
+         kE7OyjTnhQaYt5GWO5pfdr+j3uvuWvQ+5OrDiYzOyXnHVtAXHHBf4l9DCYzqXtqH8zT/
+         bFtK+olOBXtr0/O74jZHkmlwcGwlVS5uNk4lhRHq+XVabvlLkFeE2nr6jTbGEu/cxVtu
+         9wKc5kPpy7Ccpa4xB0YvB0Vtz6SrI0mWI510GQvWB/9SuMOdCCwWACo1zv/YxIerYRME
+         Xl7g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c4si9728586yba.97.2020.11.23.00.02.57
+        by mx.google.com with ESMTPS id c184si9915450ybf.226.2020.11.23.00.02.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Nov 2020 00:02:57 -0800 (PST)
+        Mon, 23 Nov 2020 00:02:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42846 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42974 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kh6oK-0005nn-TR
-	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:02:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35700)
+	id 1kh6oM-0005sS-5a
+	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:02:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35716)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kh6o5-0005ku-P3; Mon, 23 Nov 2020 03:02:41 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54622
+ id 1kh6o6-0005mT-K9; Mon, 23 Nov 2020 03:02:42 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54628
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kh6o3-0004dr-0M; Mon, 23 Nov 2020 03:02:41 -0500
+ id 1kh6o4-0004f5-Rw; Mon, 23 Nov 2020 03:02:42 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id CBCB06022F;
- Mon, 23 Nov 2020 09:02:37 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 95A7B603F7;
+ Mon, 23 Nov 2020 09:02:38 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 03/17] target/arm: use arm_is_el2_enabled() where applicable
-Date: Mon, 23 Nov 2020 10:02:23 +0200
-Message-Id: <20201123080237.18465-3-remi.denis.courmont@huawei.com>
+Subject: [PATCH 06/17] target/arm: declare new AA64PFR0 bit-fields
+Date: Mon, 23 Nov 2020 10:02:26 +0200
+Message-Id: <20201123080237.18465-6-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <3333301.iIbC2pHGDl@basile.remlab.net>
 References: <3333301.iIbC2pHGDl@basile.remlab.net>
@@ -84,193 +84,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8bMAQSPMYZB9
+X-TUID: QfR+qaJFuNzl
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-
-Do not assume that EL2 is available in non-secure context.
-That equivalence is broken by ARMv8.4-SEL2.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h        |  4 ++--
- target/arm/helper-a64.c |  8 +-------
- target/arm/helper.c     | 33 +++++++++++++--------------------
- 3 files changed, 16 insertions(+), 29 deletions(-)
+ target/arm/cpu.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 30b5af5cde..9617e39004 100644
+index 9617e39004..1166bd8731 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -2102,7 +2102,7 @@ static inline bool arm_el_is_aa64(CPUARMState *env, int el)
-         return aa64;
-     }
+@@ -1849,6 +1849,12 @@ FIELD(ID_AA64PFR0, ADVSIMD, 20, 4)
+ FIELD(ID_AA64PFR0, GIC, 24, 4)
+ FIELD(ID_AA64PFR0, RAS, 28, 4)
+ FIELD(ID_AA64PFR0, SVE, 32, 4)
++FIELD(ID_AA64PFR0, SEL2, 36, 4)
++FIELD(ID_AA64PFR0, MPAM, 40, 4)
++FIELD(ID_AA64PFR0, AMU, 44, 4)
++FIELD(ID_AA64PFR0, DIT, 48, 4)
++FIELD(ID_AA64PFR0, CSV2, 56, 4)
++FIELD(ID_AA64PFR0, CSV3, 60, 4)
  
--    if (arm_feature(env, ARM_FEATURE_EL2) && !arm_is_secure_below_el3(env)) {
-+    if (arm_is_el2_enabled(env)) {
-         aa64 = aa64 && (env->cp15.hcr_el2 & HCR_RW);
-     }
+ FIELD(ID_AA64PFR1, BT, 0, 4)
+ FIELD(ID_AA64PFR1, SBSS, 4, 4)
+@@ -3882,6 +3888,11 @@ static inline bool isar_feature_aa64_sve(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SVE) != 0;
+ }
  
-@@ -3046,7 +3046,7 @@ static inline int arm_debug_target_el(CPUARMState *env)
-     bool secure = arm_is_secure(env);
-     bool route_to_el2 = false;
- 
--    if (arm_feature(env, ARM_FEATURE_EL2) && !secure) {
-+    if (arm_is_el2_enabled(env)) {
-         route_to_el2 = env->cp15.hcr_el2 & HCR_TGE ||
-                        env->cp15.mdcr_el2 & MDCR_TDE;
-     }
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 30b2ad119f..c426c23d2c 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -972,8 +972,7 @@ void HELPER(exception_return)(CPUARMState *env, uint64_t new_pc)
-     if (new_el == -1) {
-         goto illegal_return;
-     }
--    if (new_el > cur_el
--        || (new_el == 2 && !arm_feature(env, ARM_FEATURE_EL2))) {
-+    if (new_el > cur_el || (new_el == 2 && !arm_is_el2_enabled(env))) {
-         /* Disallow return to an EL which is unimplemented or higher
-          * than the current one.
-          */
-@@ -985,11 +984,6 @@ void HELPER(exception_return)(CPUARMState *env, uint64_t new_pc)
-         goto illegal_return;
-     }
- 
--    if (new_el == 2 && arm_is_secure_below_el3(env)) {
--        /* Return to the non-existent secure-EL2 */
--        goto illegal_return;
--    }
--
-     if (new_el == 1 && (arm_hcr_el2_eff(env) & HCR_TGE)) {
-         goto illegal_return;
-     }
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 346dc91a91..5a2c7103b1 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1048,8 +1048,8 @@ static CPAccessResult cpacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
++static inline bool isar_feature_aa64_sel2(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SEL2) != 0;
++}
++
+ static inline bool isar_feature_aa64_vh(const ARMISARegisters *id)
  {
-     if (arm_feature(env, ARM_FEATURE_V8)) {
-         /* Check if CPACR accesses are to be trapped to EL2 */
--        if (arm_current_el(env) == 1 &&
--            (env->cp15.cptr_el[2] & CPTR_TCPAC) && !arm_is_secure(env)) {
-+        if (arm_current_el(env) == 1 && arm_is_el2_enabled(env) &&
-+            (env->cp15.cptr_el[2] & CPTR_TCPAC)) {
-             return CP_ACCESS_TRAP_EL2;
-         /* Check if CPACR accesses are to be trapped to EL3 */
-         } else if (arm_current_el(env) < 3 &&
-@@ -2519,7 +2519,7 @@ static CPAccessResult gt_counter_access(CPUARMState *env, int timeridx,
-                                         bool isread)
- {
-     unsigned int cur_el = arm_current_el(env);
--    bool secure = arm_is_secure(env);
-+    bool has_el2 = arm_is_el2_enabled(env);
-     uint64_t hcr = arm_hcr_el2_eff(env);
- 
-     switch (cur_el) {
-@@ -2543,8 +2543,7 @@ static CPAccessResult gt_counter_access(CPUARMState *env, int timeridx,
-             }
-         } else {
-             /* If HCR_EL2.<E2H> == 0: check CNTHCTL_EL2.EL1PCEN. */
--            if (arm_feature(env, ARM_FEATURE_EL2) &&
--                timeridx == GTIMER_PHYS && !secure &&
-+            if (has_el2 && timeridx == GTIMER_PHYS &&
-                 !extract32(env->cp15.cnthctl_el2, 1, 1)) {
-                 return CP_ACCESS_TRAP_EL2;
-             }
-@@ -2553,8 +2552,7 @@ static CPAccessResult gt_counter_access(CPUARMState *env, int timeridx,
- 
-     case 1:
-         /* Check CNTHCTL_EL2.EL1PCTEN, which changes location based on E2H. */
--        if (arm_feature(env, ARM_FEATURE_EL2) &&
--            timeridx == GTIMER_PHYS && !secure &&
-+        if (has_el2 && timeridx == GTIMER_PHYS &&
-             (hcr & HCR_E2H
-              ? !extract32(env->cp15.cnthctl_el2, 10, 1)
-              : !extract32(env->cp15.cnthctl_el2, 0, 1))) {
-@@ -2569,7 +2567,7 @@ static CPAccessResult gt_timer_access(CPUARMState *env, int timeridx,
-                                       bool isread)
- {
-     unsigned int cur_el = arm_current_el(env);
--    bool secure = arm_is_secure(env);
-+    bool has_el2 = arm_is_el2_enabled(env);
-     uint64_t hcr = arm_hcr_el2_eff(env);
- 
-     switch (cur_el) {
-@@ -2590,8 +2588,7 @@ static CPAccessResult gt_timer_access(CPUARMState *env, int timeridx,
-         /* fall through */
- 
-     case 1:
--        if (arm_feature(env, ARM_FEATURE_EL2) &&
--            timeridx == GTIMER_PHYS && !secure) {
-+        if (has_el2 && timeridx == GTIMER_PHYS) {
-             if (hcr & HCR_E2H) {
-                 /* If HCR_EL2.<E2H,TGE> == '10': check CNTHCTL_EL2.EL1PTEN. */
-                 if (!extract32(env->cp15.cnthctl_el2, 11, 1)) {
-@@ -4247,11 +4244,9 @@ static const ARMCPRegInfo strongarm_cp_reginfo[] = {
- 
- static uint64_t midr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
--    ARMCPU *cpu = env_archcpu(env);
-     unsigned int cur_el = arm_current_el(env);
--    bool secure = arm_is_secure(env);
- 
--    if (arm_feature(&cpu->env, ARM_FEATURE_EL2) && !secure && cur_el == 1) {
-+    if (arm_is_el2_enabled(env) && cur_el == 1) {
-         return env->cp15.vpidr_el2;
-     }
-     return raw_read(env, ri);
-@@ -4278,9 +4273,8 @@ static uint64_t mpidr_read_val(CPUARMState *env)
- static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     unsigned int cur_el = arm_current_el(env);
--    bool secure = arm_is_secure(env);
- 
--    if (arm_feature(env, ARM_FEATURE_EL2) && !secure && cur_el == 1) {
-+    if (arm_is_el2_enabled(env) && cur_el == 1) {
-         return env->cp15.vmpidr_el2;
-     }
-     return mpidr_read_val(env);
-@@ -5347,7 +5341,7 @@ uint64_t arm_hcr_el2_eff(CPUARMState *env)
- {
-     uint64_t ret = env->cp15.hcr_el2;
- 
--    if (arm_is_secure_below_el3(env)) {
-+    if (!arm_is_el2_enabled(env)) {
-         /*
-          * "This register has no effect if EL2 is not enabled in the
-          * current Security state".  This is ARMv8.4-SecEL2 speak for
-@@ -6144,7 +6138,7 @@ int sve_exception_el(CPUARMState *env, int el)
-     /* CPTR_EL2.  Since TZ and TFP are positive,
-      * they will be zero when EL2 is not present.
-      */
--    if (el <= 2 && !arm_is_secure_below_el3(env)) {
-+    if (el <= 2 && arm_is_el2_enabled(env)) {
-         if (env->cp15.cptr_el[2] & CPTR_TZ) {
-             return 2;
-         }
-@@ -8723,8 +8717,7 @@ static int bad_mode_switch(CPUARMState *env, int mode, CPSRWriteType write_type)
-         }
-         return 0;
-     case ARM_CPU_MODE_HYP:
--        return !arm_feature(env, ARM_FEATURE_EL2)
--            || arm_current_el(env) < 2 || arm_is_secure_below_el3(env);
-+        return !arm_is_el2_enabled(env) || arm_current_el(env) < 2;
-     case ARM_CPU_MODE_MON:
-         return arm_current_el(env) < 3;
-     default:
-@@ -12634,7 +12627,7 @@ int fp_exception_el(CPUARMState *env, int cur_el)
- 
-     /* CPTR_EL2 : present in v7VE or v8 */
-     if (cur_el <= 2 && extract32(env->cp15.cptr_el[2], 10, 1)
--        && !arm_is_secure_below_el3(env)) {
-+        && arm_is_el2_enabled(env)) {
-         /* Trap FP ops at EL2, NS-EL1 or NS-EL0 to EL2 */
-         return 2;
-     }
+     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, VH) != 0;
 -- 
 2.29.2
 

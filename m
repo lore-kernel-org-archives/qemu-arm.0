@@ -1,153 +1,111 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3396211lfb;
-        Mon, 23 Nov 2020 00:19:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwflvgtQ0RSXBkrkMTa5yZ35/GUME1gpTBj5v0hTBnWlYNo73dn7i8Lmdl8S7fDdkylOBsS
-X-Received: by 2002:a25:3b4f:: with SMTP id i76mr39515838yba.268.1606119555991;
-        Mon, 23 Nov 2020 00:19:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606119555; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3397040lfb;
+        Mon, 23 Nov 2020 00:20:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyE1sUncnqO35YK5IChd3+Ndy4Q4uC6q/6b74BaYhqjRTd+jBEbfzJ8B+jaL4i0TjmqaS+e
+X-Received: by 2002:a5b:74f:: with SMTP id s15mr36558846ybq.11.1606119655751;
+        Mon, 23 Nov 2020 00:20:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606119655; cv=none;
         d=google.com; s=arc-20160816;
-        b=vKA+wHksEFP7iNLPPcY9CXCzl92GVbLeji0X+HmBnCmWhx+XxLf/j1p6cHCFhKDW1X
-         UC8aXGEuikiFthePok6fAHIqCXV5SWEctRRwiSIZ20PHUDTN9IOYbTY7wnyY8GGyrXlH
-         s0fDQ0qn/oUger2te5PCITaS0YJkGrkxuxKcV573t69weUVjiQRlUsLwUDyuZBB4HVSF
-         1kyTfuw9d7HcAv8RWNC3NyLLrWNpxOXNyEwH7NeYFPC3ls4kP2k3MnGBMmkDHfzLJd/X
-         Avje3ygsTLenIEvAyMm2WNY1gJQAYfemFeUUoosoqIMys1IN+HyIkDNtjdfeZxI0/aFx
-         osAg==
+        b=uzzw6FZW4ubHKH8GM/K5Dun4UQkxZ+5w7sl/jgl1QYIZ4tId2SdTq8959eicG61Pz2
+         sgbDaL8ProIi003LK6ssQA1dHOTeh7LQRWvJ1RBALh6MDDrdHPHPitglhPPKAMPRoTsI
+         SqAmM0+LxibIoAL5l+gtB9E6jx/fQxX/sUugXd91Vw8uKYmpWZqbG73B5Hzrs2LYcgYk
+         5dgBGdO0chDSMXZHkHIL+8HGo5BF11maguA2wejmd9JAPVuNyXFluktOuStpL7fpuKrK
+         5BW6ggVKtBDCeDwfG82gRBKu8t4l2zG2hOu9VSS8RfPhI36yzMDweM/hs2WIV/YAEL9a
+         HzIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=QL+2g9xVT+FChSI9ZGbhgHBFFDDfR3KyHpGqh/in5q8=;
-        b=u8W8Jr/SYnh72CZqmKvp/UwDvnVHdvdabXFh3pLo4VXGIoA9v4p0GhYdNgVLCnwCFC
-         o2FG2CH6sgA7/a6ZiH4FdKF4IB1mHziCtq/N7r+IyqCZ7pk7JCxykiYF2sln7c4gp4zw
-         CgC/MG/r9G0NJuRIGMgK14ouJkNRnL50OZWhJiarjFSiS5DdXkPUbyXI/Mj7jwnrw4Fa
-         a88mKwW6IBNa0AhHJdqR1rRJWQS0DrlY7iyfh1UKIJLdpvKnkViujqAZFGqXIk3OHT/p
-         ZvIsCpc+jTIo2KuSgoRyEULUSgv6UBkTYNsgSNPBau5y5HHcbfZJCDT8DbUBD5MgrI7C
-         Zbtw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=u6yTHDOK5qJzKEdygnpMTZuxtAmC04kNzHqborQv8aU=;
+        b=tploiSKgQQhDw72G1kw0TRKX1DDgZOjQsPdGYpwRtF8IbqImHsfZe0FPmTIpUFutH2
+         iIb8admOF/EScfm8KZWPFtmzgBqw5qO047oHQZ/VaNAJjaOav9CXRBqYmX20FOzhDsmi
+         M+NvmtP5wVHrwCTtqXMviB4hy57zjU16Y09kFjjkVZXU19yUzpYVm9FKa8+VqbOIRSH+
+         4/SBRd2jwf/wVt/fLM/swWFgTdz17MMJxTQqsN8X10R2twbCxHj89lb8ELip9ie3uevK
+         2wr2IMRgn2xLd7mqbX7PeWDOJuL+YcswrIIgb8pwE/+mlLoGLKPFpsyeE3E6CqztMTiH
+         oXGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MYhM1C/o";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12si14447581ybi.495.2020.11.23.00.19.15
+        by mx.google.com with ESMTPS id a9si11061608ybq.304.2020.11.23.00.20.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Nov 2020 00:19:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Nov 2020 00:20:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MYhM1C/o";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33384 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kh747-0008Q3-Af
-	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:19:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38130)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kh75j-0002Xu-1a
+	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:20:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35860)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1kh71n-0006Yy-Uy
- for qemu-devel@nongnu.org; Mon, 23 Nov 2020 03:16:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38149)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1kh71m-00014y-CV
- for qemu-devel@nongnu.org; Mon, 23 Nov 2020 03:16:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606119409;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QL+2g9xVT+FChSI9ZGbhgHBFFDDfR3KyHpGqh/in5q8=;
- b=MYhM1C/oLNZr9WrwHDoaH5aaAQ6nHRJYAXtaUTYMmhxNxGRWaInlfHvGNuqHe2IATkWUoM
- x9IludyATS1GD5hVhph2xRwPBuf1mmM30lLBu5l2N6aRFxhuZNvub5dxK0kOrpGLFP0zg8
- P9gKUP8S6eJXBu58Pyj4AUEYY//Fspo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-35-Nzwl-mmJPlu29i1J1U7Y3g-1; Mon, 23 Nov 2020 03:16:47 -0500
-X-MC-Unique: Nzwl-mmJPlu29i1J1U7Y3g-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 949B78144E3;
- Mon, 23 Nov 2020 08:16:46 +0000 (UTC)
-Received: from [10.72.13.199] (ovpn-13-199.pek2.redhat.com [10.72.13.199])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9FE7D60871;
- Mon, 23 Nov 2020 08:16:44 +0000 (UTC)
-Subject: Re: [PATCH] net: Use correct default-path macro for downscript
-To: Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20201123062954.9680-1-zhukeqian1@huawei.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <3da7c6f9-dd67-b535-4661-977a67336170@redhat.com>
-Date: Mon, 23 Nov 2020 16:16:43 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kh6oT-0006LL-VY; Mon, 23 Nov 2020 03:03:06 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54628
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kh6oR-0004f5-AI; Mon, 23 Nov 2020 03:03:05 -0500
+Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 2678F5FD4A;
+ Mon, 23 Nov 2020 09:02:41 +0100 (CET)
+From: remi.denis.courmont@huawei.com
+To: qemu-arm@nongnu.org
+Subject: [PATCH 16/17] target/arm: enable Secure EL2 in max CPU
+Date: Mon, 23 Nov 2020 10:02:36 +0200
+Message-Id: <20201123080237.18465-16-remi.denis.courmont@huawei.com>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <3333301.iIbC2pHGDl@basile.remlab.net>
+References: <3333301.iIbC2pHGDl@basile.remlab.net>
 MIME-Version: 1.0
-In-Reply-To: <20201123062954.9680-1-zhukeqian1@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=jasowang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K7BliKJ739WF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sSuKDdvqno0S
 
+From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-On 2020/11/23 下午2:29, Keqian Zhu wrote:
-> Fixes: 63c4db4c2e6d (net: relocate paths to helpers and scripts)
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> ---
->   net/tap.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/net/tap.c b/net/tap.c
-> index c46ff66184..b8e5cca51c 100644
-> --- a/net/tap.c
-> +++ b/net/tap.c
-> @@ -951,7 +951,8 @@ free_fail:
->               script = default_script = get_relocated_path(DEFAULT_NETWORK_SCRIPT);
->           }
->           if (!downscript) {
-> -            downscript = default_downscript = get_relocated_path(DEFAULT_NETWORK_SCRIPT);
-> +            downscript = default_downscript =
-> +                                 get_relocated_path(DEFAULT_NETWORK_DOWN_SCRIPT);
->           }
->   
->           if (tap->has_ifname) {
+Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu64.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-
-Applied.
-
-Thanks
-
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 649213082f..8c3749268e 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -641,6 +641,7 @@ static void aarch64_max_initfn(Object *obj)
+         t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+         t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);
+         t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);
++        t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);
+         cpu->isar.id_aa64pfr0 = t;
+ 
+         t = cpu->isar.id_aa64pfr1;
+-- 
+2.29.2
 

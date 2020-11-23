@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3386740lfb;
-        Mon, 23 Nov 2020 00:02:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxLR5SV09HTB+HydHr8jv2ZqMQmgxLXAlHFnY3qyffVm2IF2OAsK/g1+rohN9wsnLedJk+j
-X-Received: by 2002:a25:d305:: with SMTP id e5mr43335382ybf.358.1606118578743;
-        Mon, 23 Nov 2020 00:02:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606118578; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3387084lfb;
+        Mon, 23 Nov 2020 00:03:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw34sIGG7bGRNJ2qDXkixTYA71pXzohTGSbddqNcrDuwp02T9OaL/pyUEZlDD2lB2sAY3HS
+X-Received: by 2002:a25:fc11:: with SMTP id v17mr45473399ybd.233.1606118610470;
+        Mon, 23 Nov 2020 00:03:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606118610; cv=none;
         d=google.com; s=arc-20160816;
-        b=hduAkqkQJYTmc+wKSueSu6sqcMmeSlWNeSz/zjzFwJzGLSvXgQUjyyHRZq3BVgsThg
-         edfW2O+WQqtHlcgZ9KuXzm9k6gL/urN/LEAU/VFAPtcn+2F4Oipf5C53hdVw1mb6+gBL
-         J3u0LXdO33nTI4Xfy232fnxjjHdftvs9xQLdgnbM/RvKMF7MLoZY/XK7lWPVHsjHI8tp
-         ESwS7v2rhn29y1SKtTnCWSDnWSABCHpaczVrMxykR4XgU5v4mFPlgFOvS2HC9xBD4ezo
-         S9acPhDci4UYyN6pQnrCAq2NQ4aDAfwf3TQQy0ZMn8tSozHZkPuaS9pJ+oWvIpdvw4vG
-         GKLA==
+        b=UeG9lTGYpTUbjGVOvpc48Of4oY5VhBDHUQNug0fSNMXt3rzok+2/aUPnPvSlonnxBF
+         n8vKCspzOiFCkiW10aygwC7p2mxjJrqdP6icdtdUIX4cYUPBAXNaYm0zkbZ0afoIEzSD
+         eA7RIyds6WZyy8WQUEbYMLjZfPOW30teSH89j2ga5DllPIkmoazmgQutSLjdP+jIjgrp
+         TiWNU0Yp+OeL2oX1oUot/gWpHUqWPO0CQq7zXL5Fvrpl0Kb/ABxEwPWiqnfXU0LK9FFm
+         beIOKrkiXDuemH17ys58K9DNHLo8WcmI7iHy1WCvzm5BH3nTeA9ynliBIlAyuCABb5vk
+         jtrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=qiFcY95S5xNfDiQU1eB7PWSU0qM/WpLKJk5Qqroy2IY=;
-        b=DZ0hPr8KYBmga8Wskm0W6FVHZwWbdNv5cJL45oF1DtNgdTvmT9Ffow4Jfd2OQKFZPk
-         5I7B78UqOlzntVaLTLWlpxMHBitbJDceqqKVAOs64h+Uj6mu8K0DfFIMfSvqUH531Vky
-         kE7OyjTnhQaYt5GWO5pfdr+j3uvuWvQ+5OrDiYzOyXnHVtAXHHBf4l9DCYzqXtqH8zT/
-         bFtK+olOBXtr0/O74jZHkmlwcGwlVS5uNk4lhRHq+XVabvlLkFeE2nr6jTbGEu/cxVtu
-         9wKc5kPpy7Ccpa4xB0YvB0Vtz6SrI0mWI510GQvWB/9SuMOdCCwWACo1zv/YxIerYRME
-         Xl7g==
+        bh=+mlNIp1qu8dNOijJo+ZPPryXfW/CeCPIrhlQufRSCvg=;
+        b=FrdfrbBVVfGTQAjtqiNxvhVJhR1pU7LuJsKeiQ5zZi1lRA0/UIhHw/TDoyrut5Tpiu
+         fyxhrwU7gEqwuZIT88ptn2fuHbVZaJ2tc94SHLxjNroo3BtVuc2YqgQNZ6FEmFy5z55G
+         VDUeodrT02H3YLMqqiVN4FgGL0VHZVbt4rRx3Pj3rGHFv4svXd1kO+WgAjfDS7VjSY71
+         drmwfKaNjdBQ3NxmtfBBnKKYwNJc+m6KdKx4e/lRfh2Nga3wnXVP+G/oFMovtvnEzYbg
+         2pAiM/nCROtgvDlz8YgvRbU9HhJkRJAr+2LUlGOeGG+yrajaR0afjtj8uGUkkagW0X1w
+         9VcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c184si9915450ybf.226.2020.11.23.00.02.58
+        by mx.google.com with ESMTPS id 81si13402464ybe.117.2020.11.23.00.03.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Nov 2020 00:02:58 -0800 (PST)
+        Mon, 23 Nov 2020 00:03:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42974 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kh6oM-0005sS-5a
-	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:02:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35716)
+	id 1kh6or-0006Ia-QX
+	for alex.bennee@linaro.org; Mon, 23 Nov 2020 03:03:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kh6o6-0005mT-K9; Mon, 23 Nov 2020 03:02:42 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54628
+ id 1kh6o5-0005ko-Eg; Mon, 23 Nov 2020 03:02:41 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:54624
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kh6o4-0004f5-Rw; Mon, 23 Nov 2020 03:02:42 -0500
+ id 1kh6o3-0004eO-7a; Mon, 23 Nov 2020 03:02:41 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 95A7B603F7;
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 1CC1560351;
  Mon, 23 Nov 2020 09:02:38 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 06/17] target/arm: declare new AA64PFR0 bit-fields
-Date: Mon, 23 Nov 2020 10:02:26 +0200
-Message-Id: <20201123080237.18465-6-remi.denis.courmont@huawei.com>
+Subject: [PATCH 04/17] target/arm: use arm_hcr_el2_eff() where applicable
+Date: Mon, 23 Nov 2020 10:02:24 +0200
+Message-Id: <20201123080237.18465-4-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <3333301.iIbC2pHGDl@basile.remlab.net>
 References: <3333301.iIbC2pHGDl@basile.remlab.net>
@@ -84,45 +84,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QfR+qaJFuNzl
+X-TUID: QNWJ3GE3A988
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+
+This will simplify accessing HCR conditionally in secure state.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ target/arm/helper.c | 31 ++++++++++++++++++-------------
+ 1 file changed, 18 insertions(+), 13 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9617e39004..1166bd8731 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1849,6 +1849,12 @@ FIELD(ID_AA64PFR0, ADVSIMD, 20, 4)
- FIELD(ID_AA64PFR0, GIC, 24, 4)
- FIELD(ID_AA64PFR0, RAS, 28, 4)
- FIELD(ID_AA64PFR0, SVE, 32, 4)
-+FIELD(ID_AA64PFR0, SEL2, 36, 4)
-+FIELD(ID_AA64PFR0, MPAM, 40, 4)
-+FIELD(ID_AA64PFR0, AMU, 44, 4)
-+FIELD(ID_AA64PFR0, DIT, 48, 4)
-+FIELD(ID_AA64PFR0, CSV2, 56, 4)
-+FIELD(ID_AA64PFR0, CSV3, 60, 4)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5a2c7103b1..b972c9064d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4432,16 +4432,16 @@ static CPAccessResult aa64_cacheop_pou_access(CPUARMState *env,
  
- FIELD(ID_AA64PFR1, BT, 0, 4)
- FIELD(ID_AA64PFR1, SBSS, 4, 4)
-@@ -3882,6 +3888,11 @@ static inline bool isar_feature_aa64_sve(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SVE) != 0;
- }
- 
-+static inline bool isar_feature_aa64_sel2(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SEL2) != 0;
-+}
-+
- static inline bool isar_feature_aa64_vh(const ARMISARegisters *id)
+ static int vae1_tlbmask(CPUARMState *env)
  {
-     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, VH) != 0;
+-    /* Since we exclude secure first, we may read HCR_EL2 directly. */
+-    if (arm_is_secure_below_el3(env)) {
+-        return ARMMMUIdxBit_SE10_1 |
+-               ARMMMUIdxBit_SE10_1_PAN |
+-               ARMMMUIdxBit_SE10_0;
+-    } else if ((env->cp15.hcr_el2 & (HCR_E2H | HCR_TGE))
+-               == (HCR_E2H | HCR_TGE)) {
++    uint64_t hcr = arm_hcr_el2_eff(env);
++
++    if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
+         return ARMMMUIdxBit_E20_2 |
+                ARMMMUIdxBit_E20_2_PAN |
+                ARMMMUIdxBit_E20_0;
++    } else if (arm_is_secure_below_el3(env)) {
++        return ARMMMUIdxBit_SE10_1 |
++               ARMMMUIdxBit_SE10_1_PAN |
++               ARMMMUIdxBit_SE10_0;
+     } else {
+         return ARMMMUIdxBit_E10_1 |
+                ARMMMUIdxBit_E10_1_PAN |
+@@ -9968,6 +9968,8 @@ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ static inline bool regime_translation_disabled(CPUARMState *env,
+                                                ARMMMUIdx mmu_idx)
+ {
++    uint64_t hcr_el2;
++
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         switch (env->v7m.mpu_ctrl[regime_is_secure(env, mmu_idx)] &
+                 (R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK)) {
+@@ -9986,19 +9988,21 @@ static inline bool regime_translation_disabled(CPUARMState *env,
+         }
+     }
+ 
++    hcr_el2 = arm_hcr_el2_eff(env);
++
+     if (mmu_idx == ARMMMUIdx_Stage2) {
+         /* HCR.DC means HCR.VM behaves as 1 */
+-        return (env->cp15.hcr_el2 & (HCR_DC | HCR_VM)) == 0;
++        return (hcr_el2 & (HCR_DC | HCR_VM)) == 0;
+     }
+ 
+-    if (env->cp15.hcr_el2 & HCR_TGE) {
++    if (hcr_el2 & HCR_TGE) {
+         /* TGE means that NS EL0/1 act as if SCTLR_EL1.M is zero */
+         if (!regime_is_secure(env, mmu_idx) && regime_el(env, mmu_idx) == 1) {
+             return true;
+         }
+     }
+ 
+-    if ((env->cp15.hcr_el2 & HCR_DC) && arm_mmu_idx_is_stage1_of_2(mmu_idx)) {
++    if ((hcr_el2 & HCR_DC) && arm_mmu_idx_is_stage1_of_2(mmu_idx)) {
+         /* HCR.DC means SCTLR_EL1.M behaves as 0 */
+         return true;
+     }
+@@ -10349,7 +10353,8 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+             fi->s1ptw = true;
+             return ~0;
+         }
+-        if ((env->cp15.hcr_el2 & HCR_PTW) && (cacheattrs.attrs & 0xf0) == 0) {
++        if ((arm_hcr_el2_eff(env) & HCR_PTW) &&
++            (cacheattrs.attrs & 0xf0) == 0) {
+             /*
+              * PTW set and S1 walk touched S2 Device memory:
+              * generate Permission fault.
+@@ -10782,7 +10787,7 @@ static uint8_t convert_stage2_attrs(CPUARMState *env, uint8_t s2attrs)
+     uint8_t hihint = 0, lohint = 0;
+ 
+     if (hiattr != 0) { /* normal memory */
+-        if ((env->cp15.hcr_el2 & HCR_CD) != 0) { /* cache disabled */
++        if (arm_hcr_el2_eff(env) & HCR_CD) { /* cache disabled */
+             hiattr = loattr = 1; /* non-cacheable */
+         } else {
+             if (hiattr != 1) { /* Write-through or write-back */
+@@ -12099,7 +12104,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+             }
+ 
+             /* Combine the S1 and S2 cache attributes. */
+-            if (env->cp15.hcr_el2 & HCR_DC) {
++            if (arm_hcr_el2_eff(env) & HCR_DC) {
+                 /*
+                  * HCR.DC forces the first stage attributes to
+                  *  Normal Non-Shareable,
 -- 
 2.29.2
 

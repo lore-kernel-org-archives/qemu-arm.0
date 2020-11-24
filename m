@@ -1,110 +1,114 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4359183lfb;
-        Tue, 24 Nov 2020 01:51:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyyqYGWs/5blUH2Immgkw7wHRhIqu+wy9zz4XPLNRRqAgqpZGG2tGwfu6vB9MQRgau4d5SG
-X-Received: by 2002:a25:2189:: with SMTP id h131mr7167075ybh.238.1606211498688;
-        Tue, 24 Nov 2020 01:51:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606211498; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4402608lfb;
+        Tue, 24 Nov 2020 03:03:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyD/neXC7r+WexD0VGCMK4Oxf++ahF/aYCL/9zXvhCMASJr8WBXOxSYASGFvyfqCSGBXL0g
+X-Received: by 2002:a25:1184:: with SMTP id 126mr6162186ybr.232.1606215794801;
+        Tue, 24 Nov 2020 03:03:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606215794; cv=none;
         d=google.com; s=arc-20160816;
-        b=lFrBvUEQm3SpfG+uKaZ7WnBgaUBBCpfHeWm4xydXoZ6aSGWJaRclO521TakjEv9dhw
-         /nqStJ3YPYV5I+kFnq/HY1OmLpdNyGmp1q/LCf2plTe2iyiktLSOh0Hxg6zPD0pJ5IzX
-         LH2XJ5fahTv/notZNZM1V3WHxsE7TTM0vQg8Yh7T7QHRge28p8tNBjCTFVW6AM2HD3Iq
-         jdYXPFgDJrZF/SwIIdbElVcKD/slfA/TCoEIIqLxQoFcB+vibKPYvwe7FKD+1r9hbdh5
-         RETIriJVv1889V7U67srCqhqcRL1LPhWMlVQSZLjpQ1x2s5fr21+emgzfU4qD/FhDfaQ
-         psnw==
+        b=hJkB1D6dLrhlhf7mw4aW77Y/MU6jz31V9tdDgW4nON3cYedmphDKdTBqPKRhP385tk
+         hhGWkCxsFI9QrdgP8c/dTuMlBS27muV64j2Gmqa4jtVpIK8N+a+F6bnT7SkA61r0Nm3f
+         7SYIGxqv1d8eS2tT54beXbXwlsvvIsN2b5tNlmb8mEqx0M4BoRCCvxtx+LD8BFI8FiwT
+         432wbKrlrNhlSGfP7tPoho+BlWxRGiGAJ9aMJTU8mxY8KDY3SoOSuqLu3Y4S2bkhJUFk
+         SnLxuGnY7JOZ5EyOCYA+V2OSbk/xb0UwO+w3Vhbs1l02mWwCcUvqE+MxZ+qMW/L7lDhB
+         BQhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HZTdjbmWHnGTuptVuo3d7Aeku+k4NYLvw5VlNk50nF8=;
-        b=z/s/J2HJNFRY5Wuw5wGhrve3s5Ugq3RDbpN1MrtciYNtGvI2TRBGfc2bdw5V7WhiRa
-         8UgincZxiiJQkXxmJx7mHzU8b7TKNH0+daHaCV4lMYcQvYcuPNtqbCyqqOy86y/r9Fke
-         eLmNpAIJrP+V63cl0VcOIu9chjy8epl2oBHmujrPkkpet7h70jyE6vw2oXwtpry4il84
-         dEceRsZN3+aoVXXvke5s1V7SNZ65m+5rk4SE2Op8Aqaw331UYwuwtRCUkizOFCnrI73Y
-         dHxjzxQI3T7g2HjMFI2YFZ7qL2m5cA/VKEKW3mFIKj4ay57Q5XbuFxgXWY1UhwJfUMoe
-         C+rQ==
+         :content-disposition:user-agent:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=zS5/WOOYG2TxuGsEWaq0NC3L+6lpaaEkscrzG+3o76c=;
+        b=U7N57DN6psH+fuWBkptgrY/OG2S7m31qMcoDzxkL6fUcf4EEfUq/mYTT4uYcFAikMf
+         FGvPBhdTc+r40Ak8ql/K4hbRzKOL1yZkHNBgYJLXq9ePJn7JGkdiRWmKFjViURzqxr79
+         gsM5KPVDbLPIvj1BA/SmtBPQaR1zryyn42zXjb5SYinaiOerehRmeCAYkRz2rAMWyzMV
+         z8rjLQkdj7x2sykpIIZaXU6JZKgBgpqgehEMQZsVi2P+d7S+cMTQsb8iPiUYQtraDnVa
+         5byz+KTsOybaekLgI9047rmZpyqGEfe/5lrJAO6U0WrLR4pLmNzBWOzw5TN4uCxzEAXh
+         xvPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8RQG6t7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SlfKT8pw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a91si15802239ybi.165.2020.11.24.01.51.38
+        by mx.google.com with ESMTPS id 9si14571836ybb.399.2020.11.24.03.03.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Nov 2020 01:51:38 -0800 (PST)
+        Tue, 24 Nov 2020 03:03:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8RQG6t7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SlfKT8pw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50178 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1khUz4-0000Bk-2B
-	for alex.bennee@linaro.org; Tue, 24 Nov 2020 04:51:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50258)
+	id 1khW6M-0003eS-1p
+	for alex.bennee@linaro.org; Tue, 24 Nov 2020 06:03:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1khUxb-0007x9-Gt; Tue, 24 Nov 2020 04:50:07 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34596)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1khUxZ-0006Uo-Q8; Tue, 24 Nov 2020 04:50:07 -0500
-Received: by mail-wm1-x341.google.com with SMTP id x13so1636891wmj.1;
- Tue, 24 Nov 2020 01:50:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=HZTdjbmWHnGTuptVuo3d7Aeku+k4NYLvw5VlNk50nF8=;
- b=u8RQG6t7FQixuV7R41zhnmuROphjzW2Bkg0W2uHS7osEgDxmDvzMl3Tds8st9rTnbV
- pCAlhqjz/MLZsvy1klIcvuNnQq1emJRziehxlssAXDk4chOi2o1JLEN+SeBuw7rBElUh
- 2FBQWDqfhir26vM2mFhCvHSFh3wLQZJaDfCFe6zZ8Etw5vUzewz4Rz/xBreqmqz4b39k
- QzFHpyog/69bOAxDUuw7yWqHOfiV2jDrDvrIGHU80sBaX37hyjAx1/6E7l2pqJaphp85
- 9F9Hy+/rJFtryuGzTavN8KadVGsJkWsZO/3o9X0L+xoyoHGjfqqn999tEplJ1gI2z/P4
- XtIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=HZTdjbmWHnGTuptVuo3d7Aeku+k4NYLvw5VlNk50nF8=;
- b=foxSXCkdjUGCrNGn/SsV1toHQU9/QPrKvNkvHwyKqX5FKR0VLWdxYu+uSBC2J4gTXt
- pNpJyS32yYf5jiVGYfT1qJMY9CqIHvZIg1MlJfVmNoCWAdrKkh8bCCCzkfXp74FWrzpb
- YpVXymVxGYybRWUlF6SKgEFmFymI9RcEy4tO9m0TnCmIT+hjxlnQn/pF9ItRa/VB6VJZ
- B0YYZQDsJpR6ZaQnF/l4MUaYnSh2SdW44Gz4iF5k+CMzqNrMM2NnVUSEA6uNvjv0z0Xq
- ipDjw0wudT1mnyd8GAO0rdHlvvje/hklDLZyqmCohmmHkG+UoPlFwThZJaYz5r6guP6V
- 4FuA==
-X-Gm-Message-State: AOAM530A8K2VoV7UKanq/qU6E91TIlJWoi2Wf7kVcsPJ3ztyDJlrzgP3
- 7+tkie5t/LA60fPBwKlyh+goYlU0aDo=
-X-Received: by 2002:a1c:6184:: with SMTP id v126mr3395095wmb.64.1606211403759; 
- Tue, 24 Nov 2020 01:50:03 -0800 (PST)
-Received: from x1w.redhat.com (111.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.111])
- by smtp.gmail.com with ESMTPSA id k84sm4454454wmf.42.2020.11.24.01.50.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Nov 2020 01:50:03 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.2? 4/4] hw/arm/xilinx_zynq: Add SD bus QOM alias on the
- machine
-Date: Tue, 24 Nov 2020 10:49:41 +0100
-Message-Id: <20201124094941.485767-5-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201124094941.485767-1-f4bug@amsat.org>
-References: <20201124094941.485767-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1khW5b-0003dO-El
+ for qemu-devel@nongnu.org; Tue, 24 Nov 2020 06:02:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32554)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1khW5Y-0007Bh-GO
+ for qemu-devel@nongnu.org; Tue, 24 Nov 2020 06:02:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1606215743;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zS5/WOOYG2TxuGsEWaq0NC3L+6lpaaEkscrzG+3o76c=;
+ b=SlfKT8pw2zZAIjnblVqDtiombHhpYGhtvqDym7P2Pa1myNhnKQxxBlIfuRtavavGVHIvp8
+ KGHQmsNuhSvfCEE6vW/Nyy7ekobDAWmjiAcK1LMhNPkTpN100JVj7HNRQt/Ki1PMBxcgb1
+ B/MgA5DRtBzX6YJjanrnfNXEH4amdqg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-194-i2h0mfk9M3uFF2v7GAt3vA-1; Tue, 24 Nov 2020 06:02:21 -0500
+X-MC-Unique: i2h0mfk9M3uFF2v7GAt3vA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E1F9818B9F0A;
+ Tue, 24 Nov 2020 11:02:19 +0000 (UTC)
+Received: from work-vm (ovpn-115-42.ams2.redhat.com [10.36.115.42])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 375565C1BB;
+ Tue, 24 Nov 2020 11:02:09 +0000 (UTC)
+Date: Tue, 24 Nov 2020 11:02:06 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Neo Jia <cjia@nvidia.com>
+Subject: Re: [PATCH RFC] vfio: Move the saving of the config space to the
+ right place in VFIO migration
+Message-ID: <20201124110206.GC3366@work-vm>
+References: <20201114091731.157-1-lushenming@huawei.com>
+ <860bd707-8862-2584-6e12-67c86f092dba@nvidia.com>
+ <20201119104127.5e243efa@w520.home>
+ <a7be9306-f800-0323-293e-217e2e9f6015@huawei.com>
+ <20201120150146.5e5693e9@w520.home>
+ <09549a98-85a0-fe4e-59fc-fdb636a4a5cd@huawei.com>
+ <20201123193336.GA32690@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20201123193336.GA32690@nvidia.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,49 +121,132 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Eric Auger <eric.auger@redhat.com>, Marc Zyngier <maz@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
+ qemu-devel@nongnu.org, Shenming Lu <lushenming@huawei.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ yuzenghui@huawei.com, wanghaibin.wang@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oKqMJ3C94iX7
+X-TUID: /GaQSGPT90X7
 
-To be able to select a particular SD bus from the command
-line, add a QOM alias on the machine (using an unique name).
+* Neo Jia (cjia@nvidia.com) wrote:
+> On Mon, Nov 23, 2020 at 11:14:38AM +0800, Shenming Lu wrote:
+> > External email: Use caution opening links or attachments
+> > 
+> > 
+> > On 2020/11/21 6:01, Alex Williamson wrote:
+> > > On Fri, 20 Nov 2020 22:05:49 +0800
+> > > Shenming Lu <lushenming@huawei.com> wrote:
+> > >
+> > >> On 2020/11/20 1:41, Alex Williamson wrote:
+> > >>> On Thu, 19 Nov 2020 14:13:24 +0530
+> > >>> Kirti Wankhede <kwankhede@nvidia.com> wrote:
+> > >>>
+> > >>>> On 11/14/2020 2:47 PM, Shenming Lu wrote:
+> > >>>>> When running VFIO migration, I found that the restoring of VFIO PCI device’s
+> > >>>>> config space is before VGIC on ARM64 target. But generally, interrupt controllers
+> > >>>>> need to be restored before PCI devices.
+> > >>>>
+> > >>>> Is there any other way by which VGIC can be restored before PCI device?
+> > >>
+> > >> As far as I know, it seems to have to depend on priorities in the non-iterable process.
+> > >>
+> > >>>>
+> > >>>>> Besides, if a VFIO PCI device is
+> > >>>>> configured to have directly-injected MSIs (VLPIs), the restoring of its config
+> > >>>>> space will trigger the configuring of these VLPIs (in kernel), where it would
+> > >>>>> return an error as I saw due to the dependency on kvm’s vgic.
+> > >>>>>
+> > >>>>
+> > >>>> Can this be fixed in kernel to re-initialize the kernel state?
+> > >>
+> > >> Did you mean to reconfigure these VLPIs when restoring kvm's vgic?
+> > >> But the fact is that this error is not caused by kernel, it is due to the incorrect
+> > >> calling order of qemu...
+> > >>
+> > >>>>
+> > >>>>> To avoid this, we can move the saving of the config space from the iterable
+> > >>>>> process to the non-iterable process, so that it will be called after VGIC
+> > >>>>> according to their priorities.
+> > >>>>>
+> > >>>>
+> > >>>> With this change, at resume side, pre-copy phase data would reach
+> > >>>> destination without restored config space. VFIO device on destination
+> > >>>> might need it's config space setup and validated before it can accept
+> > >>>> further VFIO device specific migration state.
+> > >>>>
+> > >>>> This also changes bit-stream, so it would break migration with original
+> > >>>> migration patch-set.
+> > >>>
+> > >>> Config space can continue to change while in pre-copy, if we're only
+> > >>> sending config space at the initiation of pre-copy, how are any changes
+> > >>> that might occur before the VM is stopped conveyed to the target?  For
+> > >>> example the guest might reboot and a device returned to INTx mode from
+> > >>> MSI during pre-copy.  Thanks,
+> > >>
+> > >> What I see is that the config space is only saved once in save_live_complete_precopy
+> > >> currently...
+> > >> As you said, a VFIO device might need it's config space setup first, and
+> > >> the config space can continue to change while in pre-copy, Did you mean we
+> > >> have to migrate the config space in save_live_iterate?
+> > >> However, I still have a little doubt about the restoring dependence between
+> > >> the qemu emulated config space and the device data...
+> > >>
+> > >> Besides, if we surely can't move the saving of the config space back, can we
+> > >> just move some actions which are triggered by the restoring of the config space
+> > >> back (such as vfio_msix_enable())?
+> > >
+> > > It seems that the significant benefit to enabling interrupts during
+> > > pre-copy would be to reduce the latency and failure potential during
+> > > the final phase of migration.  Do we have any data for how much it adds
+> > > to the device contributed downtime to configure interrupts only at the
+> > > final stage?  My guess is that it's a measurable delay on its own.  At
+> > > the same time, we can't ignore the differences in machine specific
+> > > dependencies and if we don't even sync the config space once the VM is
+> > > stopped... this all seems not ready to call supported, especially if we
+> > > have concerns already about migration bit-stream compatibility.
+> > >
+> > 
+> > I have another question for this, if we restore the config space while in pre-copy
+> > (include enabling interrupts), does it affect the _RESUMING state (paused) of the
+> > device on the dst host (cause it to send interrupts? which should not be allowed
+> > in this stage). Does the restore sequence need to be further discussed and reach
+> > a consensus(spec) (taking into account other devices and the corresponding actions
+> > of the vendor driver)?
+> > 
+> > > Given our timing relative to QEMU 5.2, the only path I feel comfortable
+> > > with is to move forward with downgrading vfio migration support to be
+> > > enabled via an experimental option.  Objections?  Thanks,
+> > 
+> > Alright, but this issue is related to our ARM GICv4.1 migration scheme, could you
+> > give a rough idea about this (where to enable interrupts, we hope it to be after
+> > the restoring of VGIC)?
+> 
+> I disagree. If this is only specific to Huawei ARM GIC implementation, why do we want to
+> make the entire VFIO based migration an experimental feature?
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/xilinx_zynq.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+It sounds though like the problem is really a general ordering problem;
+in normal migration we get the non-iterable device states at the end of
+the migration, at the point when the CPUs have already been stopped;
+then there's ordering of some of those device states to ensure
+that interrupt controllers happen first.   That's not an ARM GIC
+specific issue - any interrupt chain can cause it.
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index b72772bc824..6a4a1de88cf 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -286,6 +286,7 @@ static void zynq_init(MachineState *machine)
-         DriveInfo *di;
-         BlockBackend *blk;
-         DeviceState *carddev;
-+        g_autofree char *bus_name = NULL;
- 
-         /* Compatible with:
-          * - SD Host Controller Specification Version 2.0 Part A2
-@@ -299,6 +300,11 @@ static void zynq_init(MachineState *machine)
-         sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, hci_addr);
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[hci_irq - IRQ_OFFSET]);
- 
-+        /* Alias controller SD bus to the machine itself */
-+        bus_name = g_strdup_printf("sd-bus%d", n);
-+        object_property_add_alias(OBJECT(machine), bus_name,
-+                                  OBJECT(dev), "sd-bus");
-+
-         di = drive_get_next(IF_SD);
-         blk = di ? blk_by_legacy_dinfo(di) : NULL;
-         carddev = qdev_new(TYPE_SD_CARD);
+As others have said, the other problem here is that other parts of the
+state in there can change during hte lifetime of the migration and you
+need to make sure you end up with the right config space state on the
+destination.
+
+Dave
+
+> Thanks,
+> Neo
+> 
+> > 
+> > Thanks,
+> > Shenming
+> 
 -- 
-2.26.2
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

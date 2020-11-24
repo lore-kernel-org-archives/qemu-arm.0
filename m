@@ -1,134 +1,157 @@
-Received: by 2002:a0c:aa14:0:0:0:0:0 with SMTP id d20csp524408qvb;
-        Tue, 24 Nov 2020 05:03:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJziRKg5gc6TSQLSbec9eSJGNxkomEGuv6Jv8SGLDDSaxPOenYnMdVKIZjpJB2xU9nDUZWLM
-X-Received: by 2002:a25:2fcf:: with SMTP id v198mr6483246ybv.492.1606223016646;
-        Tue, 24 Nov 2020 05:03:36 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4511973lfb;
+        Tue, 24 Nov 2020 05:35:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwWeRAKX6dYpuT9X8+KO5mTDUgM4a8glrZgT/K5p91AH6sc0JgKCvBeYrgR9QqtAXy7rcy9
+X-Received: by 2002:a25:4143:: with SMTP id o64mr5259557yba.249.1606224908786;
+        Tue, 24 Nov 2020 05:35:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606224908; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xSs2DqJRX9qVSeAknSiBUbrluH1c9ECjpZvoSCh4WNCAwHi7IUO67quyMauYw7lYct
+         TgX40G17EoGLDVeb36KoBntp4mvcH2bvPQL2m/2wCEdCFNYxXATqv/2yqHxbZz5rNDT/
+         BPXAxNgRBwET9nAGTEY7mFez7qPG17e4s6zaZ0RCS2x5omtw9OiFgqs2HGYpurJ2kHPu
+         UNT7eVN9/Dj7BFe77flhNjseaHkE8PlffF5lDQvhNlCeQ7OqIqM6V+6ZNIVh6dRmi/Y/
+         z/uwuRqoszWSukX7Pb2yClnJrFpvuYA40AD2Jiffkr4iFPChZsZLGheAf79P3MNp4hM7
+         g6kg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ea9Bx84tPZpqvF8jSvAhuGS8At7ayjJGLh3NxOADTh8=;
+        b=C+vgL9yNERS8s7JdnJup3wF6MlZkdmCtSDv54NITFOVYvuL1llyNDK6euio+5fkUEP
+         TCkUmqY6e0gLUdd6Vety9lRBsnH3bH7moIq7HkO1ESwkPzlUvq8mZWPVqPHvz8aXEpbx
+         ksNrQJyrwrjag+HQiCAa3YouUSClDswZ6CKQLeZuhxYHxYANBFHZAYD0lMVQSm1jh9zE
+         Su5xaLMQnEHJS594X1i0C0vHl6a8xVhW/8BSfieEo56qrcPhzwk6VZMT7y9tfSA2xrpI
+         pzCa9hYEaMkYeFSvUrOda+HqxuKfHhTOA64lbkojoApVqCjZIM6guA7beJVqmeGy93dg
+         rmtQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AjjaD0X2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a62si14271793ybi.38.2020.11.24.05.03.36
+        by mx.google.com with ESMTPS id q200si16404009ybq.174.2020.11.24.05.35.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Nov 2020 05:03:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Nov 2020 05:35:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40712 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=AjjaD0X2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1khXyp-0002U3-TG
-	for alex.bennee@linaro.org; Tue, 24 Nov 2020 08:03:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44016)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1khYTM-00014k-6V
+	for alex.bennee@linaro.org; Tue, 24 Nov 2020 08:35:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54026)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1khXwY-0008OB-IK; Tue, 24 Nov 2020 08:01:16 -0500
-Resent-Date: Tue, 24 Nov 2020 08:01:14 -0500
-Resent-Message-Id: <E1khXwY-0008OB-IK@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21764)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1khXwR-0007e5-C4; Tue, 24 Nov 2020 08:01:13 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1606222853; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=IyZ/n33TRK3qCUof4MAKmo+J9Hl0NoxwDpOxFl3mIjz48h5wDe3Pcj5ISHJF27HFwzJbC6hP1mWGOBDRw1HP3pl+t82P0OdriNLh2vIjD6R0KBQB/B6OOL0I62zCK4G9tqKMqEOcrL/Up699nDhn5236pufSnJzvUXTLl2Uu/Ko=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1606222853;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=B4+LYgnrM5RRei6GIq0W5J+UY1yz5dvlK78NkOFNfN0=; 
- b=BXXuhdO3jqsU/uvjLNmDZa/NJViPXQNb0f/nE9LgcZxZCl6y3NzT5aVAct5TLJh4tip/YfF905JOliCaY2H/yt+zA2m512OzA0EyheQPAfRMmVR3PUVXVbdRcM8dR5nYIo9zYuB6fWobG4ux47R4+WxJzNNXhWEJVQuLzpUFCEU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1606222844759223.07243068827995;
- Tue, 24 Nov 2020 05:00:44 -0800 (PST)
-In-Reply-To: <20201124125235.266884-1-marcandre.lureau@redhat.com>
-Subject: Re: [PATCH 0/2] Remove GCC < 4.8 checks
-Message-ID: <160622284274.25614.2564084651371171994@9aeb27d8af94>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1khYRO-0008Vj-GB
+ for qemu-devel@nongnu.org; Tue, 24 Nov 2020 08:33:06 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:39876)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1khYRM-00024r-C6
+ for qemu-devel@nongnu.org; Tue, 24 Nov 2020 08:33:06 -0500
+Received: by mail-ed1-x535.google.com with SMTP id r22so12227183edw.6
+ for <qemu-devel@nongnu.org>; Tue, 24 Nov 2020 05:33:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ea9Bx84tPZpqvF8jSvAhuGS8At7ayjJGLh3NxOADTh8=;
+ b=AjjaD0X2O8wmEQ+Wx5FeLlUAE4c5PSi4Jugwr80goXaBtBDLRiOeWhCMd2fL4D9Vi8
+ ZcvCtKezjQWYY+BLfyVZTjc+k+fo3Obl8orMhgEJZy9GJiEMzXmJzF7Dn5UfYIImRib/
+ Pp74D9JdHYXt0U+CTdOccPVGEwfnfr5XB9iPZKcS05TyyMSQmxPYzxVzM3sx3q2PS2t9
+ J29UzDbcyGg/8DwSPGVxXsWknYjm+yXNE2npNWvPNo+7I9Oyo+tHS84oxFG6tfb7fRva
+ TwfowewFGQZ8qchyu0YxnmiqYjzBBH5OKus+OgbcWgTbrKmlTqWcdjFoi9RqP48/xbO+
+ B89Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ea9Bx84tPZpqvF8jSvAhuGS8At7ayjJGLh3NxOADTh8=;
+ b=MfstuDIBIkpV9T+HtNTI1bQ01/6ZpoIMCMCrfZL8y0PZoHAFgx7ZsmO6xT3ooaqOXM
+ HkkpXn2CtyQ5VI+9SHCAoLAy4IwuVs9osKoMjRQdt8rpp/s/FNgOF83QuKyQhe9CKFnH
+ uAVjklinmREh+8HUWrAQbZ5r1du4pIJ9C02SSXgJ3BRrI/hDxgtZBTUj29tzAlvgiHMC
+ yw/q4bq5dNlO6Cr9MNU0aVY5JsGF7D/u3ec7qTWlkVQClrDzpYI7hs3GXk1olhxPHNp2
+ ngwLOrsbL5JMfTZJUUxDWxk95r+nDXOQmyrODA6dZmhia97pM5oXkCeCE+dvs3Fy02BY
+ 5SvQ==
+X-Gm-Message-State: AOAM5330XhZrU01VjGlX2x3ORBJKDfClAm5ZvVA3cswoQj7EbdQCZJ6H
+ 0pL8L9p+mczSh4R9JcXTIRWvJIV5LkMFF8Km3R5hDQ==
+X-Received: by 2002:a05:6402:3089:: with SMTP id
+ de9mr4118569edb.100.1606224781647; 
+ Tue, 24 Nov 2020 05:33:01 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: marcandre.lureau@redhat.com
-Date: Tue, 24 Nov 2020 05:00:44 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20201124125235.266884-1-marcandre.lureau@redhat.com>
+In-Reply-To: <20201124125235.266884-1-marcandre.lureau@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Nov 2020 13:32:50 +0000
+Message-ID: <CAFEAcA8cUpnA9bdp_MBe65YZe+6=avrczSO1=_Gc-gT6d+YVfw@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Remove GCC < 4.8 checks
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, thuth@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, dgilbert@redhat.com, qemu-arm@nongnu.org,
- stefanha@redhat.com, pbonzini@redhat.com, marcandre.lureau@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rT9UPSXBx54M
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LqDAOGm/iez6
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTEyNDEyNTIzNS4yNjY4
-ODQtMS1tYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2Vl
-bXMgdG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBm
-b3IKbW9yZSBpbmZvcm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMTEyNDEy
-NTIzNS4yNjY4ODQtMS1tYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20KU3ViamVjdDogW1BBVENI
-IDAvMl0gUmVtb3ZlIEdDQyA8IDQuOCBjaGVja3MKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0K
-IyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQg
-Y29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
-LnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFt
-Ci4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQ
-VCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEz
-Mzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAtIFt0YWcg
-dXBkYXRlXSAgICAgIHBhdGNoZXcvMjAyMDExMjQxMjI5MzYuMzA1ODgtMS1rcmF4ZWxAcmVkaGF0
-LmNvbSAtPiBwYXRjaGV3LzIwMjAxMTI0MTIyOTM2LjMwNTg4LTEta3JheGVsQHJlZGhhdC5jb20K
-ICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIwMTEyNDEyNTIzNS4yNjY4ODQtMS1tYXJj
-YW5kcmUubHVyZWF1QHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDIwMTEyNDEyNTIzNS4yNjY4ODQt
-MS1tYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0
-ZXN0JwpjOWZkNzZmIGNvbXBpbGVyLmg6IHJlbW92ZSBRRU1VX0dOVUNfUFJFUkVRIG1hY3JvCjQ0
-MjhmNTUgUmVtb3ZlIEdDQyB2ZXJzaW9uIGNoZWNrcyAoYWxsIDwgNC44KQoKPT09IE9VVFBVVCBC
-RUdJTiA9PT0KMS8yIENoZWNraW5nIGNvbW1pdCA0NDI4ZjU1Mjg3MWMgKFJlbW92ZSBHQ0MgdmVy
-c2lvbiBjaGVja3MgKGFsbCA8IDQuOCkpCldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBk
-ZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiMyMjogRklMRTogYWNjZWwvdGNnL2NwdS1leGVjLmM6
-NzI3OgorI2lmIGRlZmluZWQoX19jbGFuZ19fKQoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNl
-IGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzg2OiBGSUxFOiBpbmNsdWRlL3FlbXUv
-Y29tcGlsZXIuaDoxMDU6CisgICAvKiBNYXAgX19wcmludGZfXyB0byBfX2dudV9wcmludGZfXyBi
-ZWNhdXNlIHdlIHdhbnQgc3RhbmRhcmQgZm9ybWF0IHN0cmluZ3MKCldBUk5JTkc6IEJsb2NrIGNv
-bW1lbnRzIHVzZSBhIHRyYWlsaW5nICovIG9uIGEgc2VwYXJhdGUgbGluZQojODc6IEZJTEU6IGlu
-Y2x1ZGUvcWVtdS9jb21waWxlci5oOjEwNjoKKyAgICAqIGV2ZW4gd2hlbiBNaW5HVyBvciBHTGli
-IGluY2x1ZGUgZmlsZXMgdXNlIF9fcHJpbnRmX18uICovCgpFUlJPUjogc3BhY2UgcHJvaGliaXRl
-ZCBiZXR3ZWVuIGZ1bmN0aW9uIG5hbWUgYW5kIG9wZW4gcGFyZW50aGVzaXMgJygnCiMxMjk6IEZJ
-TEU6IHRlc3RzL3RjZy9hcm0vZmN2dC5jOjc2OgorIyBkZWZpbmUgU05BTkYgKF9fYnVpbHRpbl9u
-YW5zZiAoIiIpKQoKRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYmV0d2VlbiBmdW5jdGlvbiBuYW1l
-IGFuZCBvcGVuIHBhcmVudGhlc2lzICcoJwojMTMwOiBGSUxFOiB0ZXN0cy90Y2cvYXJtL2ZjdnQu
-Yzo3NzoKKyMgZGVmaW5lIFNOQU4gKF9fYnVpbHRpbl9uYW5zICgiIikpCgpFUlJPUjogc3BhY2Ug
-cHJvaGliaXRlZCBiZXR3ZWVuIGZ1bmN0aW9uIG5hbWUgYW5kIG9wZW4gcGFyZW50aGVzaXMgJygn
-CiMxMzE6IEZJTEU6IHRlc3RzL3RjZy9hcm0vZmN2dC5jOjc4OgorIyBkZWZpbmUgU05BTkwgKF9f
-YnVpbHRpbl9uYW5zbCAoIiIpKQoKV0FSTklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmlu
-ZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzE0NjogRklMRTogdG9vbHMvdmlydGlvZnNkL2Z1c2VfY29t
-bW9uLmg6ODEzOgorI2lmIGRlZmluZWQoX19HTlVDX18pICYmICFkZWZpbmVkIF9fY3BsdXNwbHVz
-Cgp0b3RhbDogMyBlcnJvcnMsIDQgd2FybmluZ3MsIDEwNiBsaW5lcyBjaGVja2VkCgpQYXRjaCAx
-LzIgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVy
-cm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBz
-ZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjIvMiBDaGVja2luZyBjb21taXQgYzlmZDc2
-ZjgyODY2IChjb21waWxlci5oOiByZW1vdmUgUUVNVV9HTlVDX1BSRVJFUSBtYWNybykKPT09IE9V
-VFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxs
-IGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDExMjQxMjUy
-MzUuMjY2ODg0LTEtbWFyY2FuZHJlLmx1cmVhdUByZWRoYXQuY29tL3Rlc3RpbmcuY2hlY2twYXRj
-aC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0
-Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
-IHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On Tue, 24 Nov 2020 at 12:52, <marcandre.lureau@redhat.com> wrote:
+>
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> Hi,
+>
+> Since commit efc6c07 ("configure: Add a test for the minimum compiler ver=
+sion=3D
+> "),
+> QEMU explicitely depends on GCC >=3D 4.8.
+
+You need to be a bit cautious about removing QEMU_GNUC_PREREQ()
+checks, because clang advertises itself as GCC 4.2 via the
+__GNUC__ and __GNUC_MINOR__ macros that QEMU_GNUC_PREREQ()
+tests, and so unless the code has explicitly handled clang
+via a different ifdef or feature test clang will be using
+the fallback codepath in cases like this. So you also need
+to find out whether all our supported versions of clang
+are OK with the gcc-4.4-and-up version of the code before
+removing any particular ifdef.
+
+Compare this previous (not-applied) patchset from Philippe:
+ https://patchew.org/QEMU/20200928125859.734287-1-philmd@redhat.com/
+which dealt with two of these ifdefs, one of which is
+"clearly OK" and the other of which is "needs more analysis".
+The path forward I think is along those lines -- we need
+one patch per ifdef we're trying to remove, and the commit
+message can then include the information about why in
+this case it is OK for clang too (or switch the ifdef
+to check for something else, eg one of clang's feature-specific
+test macros).
+
+thanks
+-- PMM

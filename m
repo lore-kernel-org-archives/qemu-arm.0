@@ -1,101 +1,113 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4518653lfb;
-        Tue, 24 Nov 2020 05:43:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyu2H5y4GtyO73Wgbx1uASoNO4ao1g7Yeu1xCJVTxEP1vvx8NgFErGV7a+oO48l5j80oq2g
-X-Received: by 2002:a25:7b86:: with SMTP id w128mr5842590ybc.192.1606225420976;
-        Tue, 24 Nov 2020 05:43:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606225420; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4824934lfb;
+        Tue, 24 Nov 2020 12:09:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxx1VxueR/RpVHH1hDdvI6FcFNfqJv/7Vu2LUen83fRm2iw5kcg9HUazaHgAnD73520djo8
+X-Received: by 2002:a25:9345:: with SMTP id g5mr7299884ybo.208.1606248563509;
+        Tue, 24 Nov 2020 12:09:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606248563; cv=none;
         d=google.com; s=arc-20160816;
-        b=J6EIBbCZJu32U4v9+7ovhydEOrddVwgDDEauTGX0pINqh8FA7S2N31lx0v58FLfeNy
-         0tQgRJIhXBSOa/3Mc2Iz61BVa+GU/AZmtNi30GihlrSOk1lmgfh9/WGRxKPGywR8d3d/
-         mz4shL6ehJjUesWFzBW6Re61alwdu5U5qJ8tY+3S6Fe5d4bYmadzN1p21JYXEJ/6KGmx
-         kKoBE3zVfH3maKhinCwkgbZlfjrc4ASixfTbexzmJtOwFwcdAyLfsCUJ0XOc6Q0rYsGG
-         YtDy/WvuKhEUSx4235ARq1dCcAtKR6NDajL+jyMCHPImmkbcoXValyZ76kUBCZSH8+JG
-         KxSQ==
+        b=k89iGUi3UlJLqw4CnF7pYqtX2dlFRV9iIr8bfJz/3JY9BhCywuZFzJdSFh+t0bb+mZ
+         1iM3IymMtxaDJTWhn/SfDkiZJ7KGcBiPpj2mQuTasQyWKrhA5JdQZm//B04nPcE7CEjZ
+         K6lEWIgU68E5SjNLtRHV6I/JrSuezdioWP1dG6YDI/nJU9CSR1QES1+L9FAGrgDzRaGg
+         4+O2Qx3E4u+v85hEIe72CRM2XdAzC6nC+bDxvPQOpats7vvtX3S7mWEMsCVgzyD/vDcC
+         rO1SNRL2hhSC3lRInXn7PfwFyrcG5ITI3pls1ZLWXNuJMn3WPDOtE8ZjlzI32sGUxWEo
+         zcgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=NLt9hYWt++DaPXegFmbT1bFITii7wZIzdrhm/7F/+9s=;
-        b=C++1ZhjD9UvdZisNyr7zfQWUwx2p11AyWgvzAtGa3m9aSfih0OdvYUc9DJROzVjaNR
-         vSFCRenZXolvpnlYmbgGFclig1SyKGpSIaaBUHLXBx8hU+Y/Kl8KPBAO0wCTFZ+y0ldQ
-         D7i0QWrwJEfYvmucSn0yO1AXCSAycPcX/TsIEu3HWdM9AjBjf1jee53LR6LpvHTZx45B
-         dW2wm1P/7lRZqyZA7NCIc/QjkTx+DdxM1mFKnOJh+FkG9r0hdMcrURl8avgu4I+qB+n7
-         DeT1mwgNydz5BXQb4TSrIEt/rjqzqKGMWtwhr4KTX2SpgWx2N58HRefLrR5zE4LCFTBF
-         7r5Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=f3wDPtnsIa+S3jm8yr5kPDpsX6jhI9n3YSeepxAsueI=;
+        b=ADVf3y+k1bEKuaVaS9meNpkfduqBY+vKAE94IMiGfULJ+8T2SgMMPS7xYtEd8zoqdA
+         o9ZyMUxS443iLanvJf50JzgD1BB1/4mydNGsxxfATK6PQBDbyRr2UAiiw/zjX/x7tDMq
+         45ZEdV4STBqNGz9FdILUmGS3pJRIj8C8CrBCfyOO5ncEXz73tQ0160y0EgTqru1RvCA8
+         sscaVdagJR/sCaXkK8Srbvmx0k2Ox2xx+v1nH5BPgQPc46Fky0JHzt1nPf9boLvGX/NL
+         YkkSFA8Coea41TwruLlnjxZRkK93b44ieXctyYVGk/wdmcW7FNV9wcK0dNICGEorVXjJ
+         EBkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZnXYmZf1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kp7vWj7c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18si17296730ybl.48.2020.11.24.05.43.40
+        by mx.google.com with ESMTPS id z7si53681ybz.208.2020.11.24.12.09.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Nov 2020 05:43:40 -0800 (PST)
+        Tue, 24 Nov 2020 12:09:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZnXYmZf1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kp7vWj7c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34218 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:35998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1khYbc-00086k-Ba
-	for alex.bennee@linaro.org; Tue, 24 Nov 2020 08:43:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57286)
+	id 1khecs-0001Qb-V0
+	for alex.bennee@linaro.org; Tue, 24 Nov 2020 15:09:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1khYbU-00086J-Kz; Tue, 24 Nov 2020 08:43:32 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:35548)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1khech-0001QQ-01; Tue, 24 Nov 2020 15:09:11 -0500
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:34886)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1khYbS-0005uc-Iv; Tue, 24 Nov 2020 08:43:32 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id f23so28579757ejk.2;
- Tue, 24 Nov 2020 05:43:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1khecf-0001kE-Fp; Tue, 24 Nov 2020 15:09:10 -0500
+Received: by mail-ed1-x543.google.com with SMTP id cf17so132107edb.2;
+ Tue, 24 Nov 2020 12:09:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NLt9hYWt++DaPXegFmbT1bFITii7wZIzdrhm/7F/+9s=;
- b=ZnXYmZf1deXbA4c/L05TjPJied7VVDoIFMDKio3TaNCsSF2pzWYxH5SsqfqC4RR4Le
- kX9SEok3Dv2PpGFED2fxbkQUH7qBciD3SWgDzggr7rZJElwFnfR7lYzPG+yrXEIX6fsF
- V8miOLv4G1khrE+h52V4gdzglv+J3CeQEic4i6BlxEzuPCroA6vKSGxBByF5Hp0l4Kyw
- iwLscsrF56tyXFXXerAVIwER3y0I5oxj4Z9FBhTVmnHpv8opAGVkxu3qvLnl1jNf5Nhk
- 7G2VhQxfJVdHHrGqwOAm1YhGeJLfg+5tpYAVoa65y2/RFy8fQuYSBa1sfARybpwXZdo0
- j2Sw==
+ h=sender:subject:to:references:cc:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=f3wDPtnsIa+S3jm8yr5kPDpsX6jhI9n3YSeepxAsueI=;
+ b=Kp7vWj7cwozUdh7NiNbrmxhPx3zMDRQHvdozjtXryYscduNgoGd9AWQHMxN+n0Goi6
+ 26BBpsgZ30/9ZT82dUnz5lqnlcOQCwG5xNh8fosx5ucbFQ16jDwVQfTq+kzkWcPMnqga
+ dPDU2Dzq9jQWwSLC9H9hv6ZMKzrqchB7XboLOSH1NVJLnr8DEzYsPbZWX2RwO7v5Kdz1
+ UE9+qTWg1gzj+g7HfEuL46l0C4YMsyh/CLmn1Mq3pf5pFsE6voK9tlSEQu6/wySm3aKr
+ 4qXgWVvp56Qc4ZtwuHokV5d4a1STfsmzXJWvzWNF/+A/aL1OB5pFI7KyjQ0+Wwm57OZ7
+ E1Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NLt9hYWt++DaPXegFmbT1bFITii7wZIzdrhm/7F/+9s=;
- b=k/HGQpjLE3wZp6A2fPQdjGlV1+muJbiNsaGssOl983oJKKQIpgp4e/TOjreBDiHyxH
- cGnoMiKjVkm+/VGF7lRuQCDuHBPywR2NhDl4YCX6RK7M1z6fICu2zloMbUf9iEUa1hN6
- ocCaNdXHHrI7qsuU4uJX3LJ2oVJmRUOBANcfhN3SIMVKIcUp8DdN0rmQul+Ob3I9Rxoy
- 86qcMgTkNS7dOKIvof7Spzd6Wuv13eZgfK2hFlFxpN6a3VWOcmBVg0iyiGKNe4JlE+LH
- 7oQcLmTGaqb7sAWVejZkEsXYlhlws8Z9ZCZKamq1lWGW5Bt/r0AOQmdmvCpJysMgDVB4
- RR8Q==
-X-Gm-Message-State: AOAM5319LfUhrmdyvpsLCZSBU5qThfuM+pTXogQQs72soZ7uUw8Ru5Tu
- MtgLjQe79gyw4ZV4vrFhqKM1lLqspd2KQwPbcSw=
-X-Received: by 2002:a17:906:af47:: with SMTP id
- ly7mr4499786ejb.532.1606225399307; 
- Tue, 24 Nov 2020 05:43:19 -0800 (PST)
+ h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=f3wDPtnsIa+S3jm8yr5kPDpsX6jhI9n3YSeepxAsueI=;
+ b=OF+Y18b0Bs3Dd3WtABg7sUMsskbi9LSS/V7fzYxU7/Tm+Sn9Ivpe01xERavV6rzL/L
+ ZRkh9aOaZBBwOOG6GuG6ObWr/fzx11NW+lK2L8iMnWry0u7Exl+kxMtKz0HTkvMZ6GDv
+ Mq4hyrpa8mhf5mY+BJlgT2Lu0z57lgAhU+pOKkdBJ/pOe7Jpw+EWT+qoE14CvA2dBOjK
+ DsXKwPiDbHUcHSQEe9V7Hj1Md75uciwUsizRZhCrqiMFMe5pXFnfLWXX0i9feGrHfA/j
+ Tbm+UPB7Q293FTdoV97HwZlVdoDjYSHSm2tJ9fxJg912RvXbPj3ME0xOrY9jRabfwPBu
+ o2cQ==
+X-Gm-Message-State: AOAM531VRTPO2ROPg0A97kn1IksHkm/lpwarLWQkyFUKjlFIc4vGqJoh
+ u5Je0dVidWdqA2LwEENengpv9DoDvEs=
+X-Received: by 2002:a50:8f64:: with SMTP id 91mr191708edy.310.1606248546931;
+ Tue, 24 Nov 2020 12:09:06 -0800 (PST)
+Received: from [192.168.1.36] (111.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.111])
+ by smtp.gmail.com with ESMTPSA id e9sm7416958edn.30.2020.11.24.12.09.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Nov 2020 12:09:05 -0800 (PST)
+Subject: Re: [PATCH] Initialize Zynq7000 UART clocks on reset
+To: Michael Peter <michael.peter@hensoldt-cyber.de>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+References: <FRYP281MB0158389968A2A1C231F3A585ABFB0@FRYP281MB0158.DEUP281.PROD.OUTLOOK.COM>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e03b9af9-d208-ed62-8e03-15004dee7783@amsat.org>
+Date: Tue, 24 Nov 2020 21:09:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-References: <20201124125235.266884-1-marcandre.lureau@redhat.com>
- <CAFEAcA8cUpnA9bdp_MBe65YZe+6=avrczSO1=_Gc-gT6d+YVfw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8cUpnA9bdp_MBe65YZe+6=avrczSO1=_Gc-gT6d+YVfw@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 24 Nov 2020 17:43:06 +0400
-Message-ID: <CAJ+F1C+o+xZGyjGMyVGZmTGcvtdFswB2DYNCOmBr7uZwTbzCbQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Remove GCC < 4.8 checks
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000006576c005b4da7ec2"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <FRYP281MB0158389968A2A1C231F3A585ABFB0@FRYP281MB0158.DEUP281.PROD.OUTLOOK.COM>
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x543.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,110 +120,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TXv/agUg6+YG
+X-TUID: CEVMxdAaS+VY
 
---0000000000006576c005b4da7ec2
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Cc'ing qemu-arm list too.
 
-On Tue, Nov 24, 2020 at 5:33 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+On 11/24/20 5:52 PM, Michael Peter wrote:
+> Pass an additional argument to zynq_slcr_compute_clocks that indicates
+> whether an reset-exit condition
+> applies. If called from zynq_slcr_reset_exit, external clocks are
+> assumed to be active, even if the
+> device state indicates a reset state.
+> 
+> Signed-off-by: Michael Peter <michael.peter@hensoldt-cyber.de>
+> ---
+>  hw/misc/zynq_slcr.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index a2b28019e3..073122b934 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -269,12 +269,12 @@ static uint64_t zynq_slcr_compute_clock(const
+> uint64_t periods[],
+>   * But do not propagate them further. Connected clocks
+>   * will not receive any updates (See zynq_slcr_compute_clocks())
+>   */
+> -static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
+> +static void zynq_slcr_compute_clocks(ZynqSLCRState *s, bool ignore_reset)
+>  {
+>      uint64_t ps_clk = clock_get(s->ps_clk);
+>  
+>      /* consider outputs clocks are disabled while in reset */
+> -    if (device_is_in_reset(DEVICE(s))) {
+> +    if (!ignore_reset && device_is_in_reset(DEVICE(s))) {
+>          ps_clk = 0;
+>      }
+>  
+> @@ -305,7 +305,7 @@ static void zynq_slcr_propagate_clocks(ZynqSLCRState *s)
+>  static void zynq_slcr_ps_clk_callback(void *opaque)
+>  {
+>      ZynqSLCRState *s = (ZynqSLCRState *) opaque;
+> -    zynq_slcr_compute_clocks(s);
+> +    zynq_slcr_compute_clocks(s, false);
+>      zynq_slcr_propagate_clocks(s);
+>  }
+>  
+> @@ -410,7 +410,7 @@ static void zynq_slcr_reset_hold(Object *obj)
+>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
+>  
+>      /* will disable all output clocks */
+> -    zynq_slcr_compute_clocks(s);
+> +    zynq_slcr_compute_clocks(s, false);
+>      zynq_slcr_propagate_clocks(s);
+>  }
+>  
+> @@ -419,7 +419,7 @@ static void zynq_slcr_reset_exit(Object *obj)
+>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
+>  
+>      /* will compute output clocks according to ps_clk and registers */
+> -    zynq_slcr_compute_clocks(s);
+> +    zynq_slcr_compute_clocks(s, true);
+>      zynq_slcr_propagate_clocks(s);
+>  }
+>  
+> @@ -558,7 +558,7 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+>      case R_ARM_PLL_CTRL:
+>      case R_DDR_PLL_CTRL:
+>      case R_UART_CLK_CTRL:
+> -        zynq_slcr_compute_clocks(s);
+> +        zynq_slcr_compute_clocks(s, false);
+>          zynq_slcr_propagate_clocks(s);
+>          break;
+>      }
+> -- 
+> 2.17.1
+> 
+> 
+> 
 
-> On Tue, 24 Nov 2020 at 12:52, <marcandre.lureau@redhat.com> wrote:
-> >
-> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >
-> > Hi,
-> >
-> > Since commit efc6c07 ("configure: Add a test for the minimum compiler
-> version=3D
-> > "),
-> > QEMU explicitely depends on GCC >=3D 4.8.
->
-> You need to be a bit cautious about removing QEMU_GNUC_PREREQ()
-> checks, because clang advertises itself as GCC 4.2 via the
-> __GNUC__ and __GNUC_MINOR__ macros that QEMU_GNUC_PREREQ()
-> tests, and so unless the code has explicitly handled clang
-> via a different ifdef or feature test clang will be using
-> the fallback codepath in cases like this. So you also need
-> to find out whether all our supported versions of clang
-> are OK with the gcc-4.4-and-up version of the code before
-> removing any particular ifdef.
->
-> Compare this previous (not-applied) patchset from Philippe:
->  https://patchew.org/QEMU/20200928125859.734287-1-philmd@redhat.com/
-> which dealt with two of these ifdefs, one of which is
-> "clearly OK" and the other of which is "needs more analysis".
-> The path forward I think is along those lines -- we need
-> one patch per ifdef we're trying to remove, and the commit
-> message can then include the information about why in
-> this case it is OK for clang too (or switch the ifdef
-> to check for something else, eg one of clang's feature-specific
-> test macros).
->
-
-
-Thanks for pointing out the series, I missed it. Ok, I'll try to do some
-more research.
-
---=20
-Marc-Andr=C3=A9 Lureau
-
---0000000000006576c005b4da7ec2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 24, 2020 at 5:33 PM Peter=
- Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
-ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On Tue, 24 Nov 2020 at 12:52, &lt;<a href=3D"mailto:marcandre.lureau@=
-redhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a>&gt; wrote:<br=
->
-&gt;<br>
-&gt; From: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@re=
-dhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a>&gt;<br>
-&gt;<br>
-&gt; Hi,<br>
-&gt;<br>
-&gt; Since commit efc6c07 (&quot;configure: Add a test for the minimum comp=
-iler version=3D<br>
-&gt; &quot;),<br>
-&gt; QEMU explicitely depends on GCC &gt;=3D 4.8.<br>
-<br>
-You need to be a bit cautious about removing QEMU_GNUC_PREREQ()<br>
-checks, because clang advertises itself as GCC 4.2 via the<br>
-__GNUC__ and __GNUC_MINOR__ macros that QEMU_GNUC_PREREQ()<br>
-tests, and so unless the code has explicitly handled clang<br>
-via a different ifdef or feature test clang will be using<br>
-the fallback codepath in cases like this. So you also need<br>
-to find out whether all our supported versions of clang<br>
-are OK with the gcc-4.4-and-up version of the code before<br>
-removing any particular ifdef.<br>
-<br>
-Compare this previous (not-applied) patchset from Philippe:<br>
-=C2=A0<a href=3D"https://patchew.org/QEMU/20200928125859.734287-1-philmd@re=
-dhat.com/" rel=3D"noreferrer" target=3D"_blank">https://patchew.org/QEMU/20=
-200928125859.734287-1-philmd@redhat.com/</a><br>
-which dealt with two of these ifdefs, one of which is<br>
-&quot;clearly OK&quot; and the other of which is &quot;needs more analysis&=
-quot;.<br>
-The path forward I think is along those lines -- we need<br>
-one patch per ifdef we&#39;re trying to remove, and the commit<br>
-message can then include the information about why in<br>
-this case it is OK for clang too (or switch the ifdef<br>
-to check for something else, eg one of clang&#39;s feature-specific<br>
-test macros).<br></blockquote><div><br></div><div><br></div><div>Thanks for=
- pointing out the series, I missed it. Ok, I&#39;ll try to do some more res=
-earch.<br></div><br clear=3D"all"></div><div>-- <br><div dir=3D"ltr" class=
-=3D"gmail_signature">Marc-Andr=C3=A9 Lureau<br></div></div></div>
-
---0000000000006576c005b4da7ec2--

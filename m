@@ -1,72 +1,72 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp864806lfb;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp864816lfb;
         Wed, 25 Nov 2020 13:36:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxshpOrwOQipe8g1z0j3U7NbSmzl5Mr6OA+xGAG88RrI9Xsc16UeW3YYm/vYZYzTROtBotF
-X-Received: by 2002:a63:1c26:: with SMTP id c38mr4399405pgc.398.1606340194124;
+X-Google-Smtp-Source: ABdhPJwhGXl9Af2FTKya2JHAZjpw8LrySPtpWtdohIYU8tR60cq2fAdBA9/ogtXasbZQu5Eb4lum
+X-Received: by 2002:a63:5f86:: with SMTP id t128mr4522137pgb.385.1606340194589;
         Wed, 25 Nov 2020 13:36:34 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1606340194; cv=none;
         d=google.com; s=arc-20160816;
-        b=XWQxAY7T0HP8Q+/fVW+GBj+ngaX5RwfrKTyONLkOe67XCdjXVJJ5x9K9wGa9ELoPEQ
-         cjcqcwWBhxgRk4E7p2v3CLdz4Oc0UhlBXEizV06BPoXuMoj4FomBO9QzbTCJiWCbO1zf
-         ZJjHn+UiRdYjlRiDP9BSVwd7q25itDJMb3C+U96JdPWtxkOv2X88B34WOrf2PZlT+/jN
-         L8n9+oKB6mpUmFTGv8qoHS9GzqMGyI2N4oCcBLQm/QM0Qj2KrnlRFxT0pyFY7ABY0UjM
-         ktIXxT52i9ZUPcd6JN8GtEAjDpzu4GScLbBF+LQmOmuolheYw519cVcybkGqu0cBLBD7
-         foLQ==
+        b=ts4H38BlZYOPAip756w9tzt3v3oXgDV5DApRFUsrg1fGQqQ/pIQDHO0X8/DYCx75Bm
+         4wYAzqcknRmsLTdQmvh2uC+hurUUsjvP4eu6bB1WQ6OKU9idOCUMgSqxOEcuNTXUNgpB
+         nXLY/UxJ9srDhT7z2hYBNkD/UKMLbOuq8o9EamfUgOJZs93Zf5prdK0qjlmSe3Z+U3BF
+         NUurIxRt6hQMkNCUjlXesxM2/8ybZjSCcTJPL4GdhFdSvfPQGt7U3JEkOMnMGCMVt9iH
+         w9cFAf3gS3zr8avtjsp3ylgdwCzxOsu3X92L0+PDmiPUfK5Zdy4Dyvsok8E/ikvLqWZ1
+         2N7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=L5TjQ18IOIoCzBDTqow86Rim9dAIXr5ah/+P9BNm2RA=;
-        b=MMgxqDc+eVDDFooW+p4wsio6hSYNJCu/0rnQrGZZc29NQoN468yJ3bc66oig83dYVU
-         VNLjdQoyabXJnsgfVuaYeNOR1LWWXN4t8R/nQeyfxcKaWCX8N1Hh4uTJX5vCg8TtmB7i
-         sJryZ7kAyfhP+TQRr3lC6IN+3CqhgLELheCGoD3SKRZAX3Ujo5Y3jLkZcO2RhUAVjh75
-         eB041heP3KTYG2Q3Cm9dIvG3P351hDwyYpg3d70O8HrOjeKWlHUYffVszZWSQPuAPwPg
-         Evbi11lhleg82ZA+jhe/GHhzeED/FTptgWiIo8+SqkDljbT/my62Kcx7Z9BFPxNHs3hv
-         A25w==
+        bh=vcIJCnbyQs8Zv74P1WMeiJkH03zhuMF7RO38jpcDiOs=;
+        b=hoAHksS20AFn3Pnsid4WaiujgeLu7gM+X/HR3Cobe1KaIDbKXhPnanTzELZ8L9rb0b
+         ajpDz0rDR2i/DHpHQik4yDH5utdS5SOjTmAbWwIuh9bZ5Hbu5SCgHuhYzyKzKkB7ODxu
+         wsFq6IOt5arCbqrIspDdtvHfdBgXfcaWfMZ6dSbAse9hkKfN8txtAoqfE8qNlrGiql8c
+         QVpZ++sXS8euYL3hmhqj1UK353AJV2NmbRt0j6OkKp+H6sni12ENGGFXs5FQsFLaRTvE
+         LsqclZrottvz4Hr3V45bNqpBjijdR1irhq0cjiHfJ6OXlM3HAEPTIuyW5OPJrGH4jbQC
+         JK4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=KkBPZhIU;
-       dkim=pass header.i=@keithp.com header.s=mail header.b="mCu/ba8I";
+       dkim=pass header.i=@keithp.com header.s=mail header.b=rhFnNMVk;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=SsPwryIN;
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Return-Path: <keithp@keithp.com>
 Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id b188si3032877pfa.280.2020.11.25.13.36.33
+        by mx.google.com with ESMTPS id 4si3218475pfg.318.2020.11.25.13.36.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 25 Nov 2020 13:36:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=KkBPZhIU;
-       dkim=pass header.i=@keithp.com header.s=mail header.b="mCu/ba8I";
+       dkim=pass header.i=@keithp.com header.s=mail header.b=rhFnNMVk;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=SsPwryIN;
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id AABDE3F2E289;
-	Wed, 25 Nov 2020 13:36:32 -0800 (PST)
+	by elaine.keithp.com (Postfix) with ESMTP id 89F463F2E287;
+	Wed, 25 Nov 2020 13:36:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1606340192; bh=ZcXlwa7XIz0/oZo3qNYopXkAok8zNwIqAvRbvnXi2fU=;
+	t=1606340193; bh=ucNKh77OzVLNS+gUqg/sKa8VObA3ffyFcmQtQOpJAL0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KkBPZhIUlmvxjuJ3HMbOkZdwLroF4rORHxZFpVOFWpMJmDbgJPV2qrBoItR2YooFD
-	 M9nKUP8U50Fvb27oQYU2H3AEiwDiCpv7ci8o8Fw+ot93jDhy/H9Y3tQxSS+UoDpeAQ
-	 jgnt29RE846M6E1db4/rJC170/8t2ZCLZxVzgKRimLlBdGB6d1meqwJ/zwuFQEDKx3
-	 hN0hB4/7nqtUGytEUlH3kEarlYqb7wN3h7qsvEcmxcYlIqa7Y6EeTX4dUzfHbCDU9u
-	 5mWkZ2eyZ4JEI0XtEHKEmYf5O6Aix80Gir/Oq8Mhl/WOmcHmT139MURasaAwEf/Aom
-	 +ncbP2nAHnZHQ==
+	b=rhFnNMVkhEJOQ/G1NT7POTePOprhKNysFFopmn+K1uIu70lqsZmimvMpXQ/RzXcYX
+	 hJUUsWGNSPRQr2iCAs7D6ZC9EdCqjE5mdjAS69FOX289AFupI4h06HUczU8dXmLSJi
+	 fxtAZI3vMEdnC7Z1nMrQRkQ5n3ZwDD4e5M2KMuEEvP31Ww8/ZXQWACrDizzIHTSZhv
+	 Gbuvk9InfLVjSFkiGDcGQwTXvWEWbWK1DIkOdfKka8CPweoJr4J7wPwzoiaFEmmnl1
+	 Hr2P71Oc+NteyCzDv5Z8yJngHdTPPQxew1b4yPdtdNHyZRKfIxx8rPjKN2pRtdHnrl
+	 QQCpe1al1eMHQ==
 X-Virus-Scanned: Debian amavisd-new at keithp.com
 Received: from elaine.keithp.com ([127.0.0.1])
 	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id 79cJlgFUYwvL; Wed, 25 Nov 2020 13:36:31 -0800 (PST)
+	with LMTP id qw-sEiOuqp2k; Wed, 25 Nov 2020 13:36:32 -0800 (PST)
 Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id AF2B93F2E28A;
+	by elaine.keithp.com (Postfix) with ESMTPSA id BD7F33F2E28C;
 	Wed, 25 Nov 2020 13:36:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1606340191; bh=ZcXlwa7XIz0/oZo3qNYopXkAok8zNwIqAvRbvnXi2fU=;
+	t=1606340191; bh=ucNKh77OzVLNS+gUqg/sKa8VObA3ffyFcmQtQOpJAL0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mCu/ba8ITinglcLxPc2IWF/sv/+35OBbmhNofZ0zAbFAFUWEZkp/cafbRi9GSND2t
-	 MnqDvtuibbX4TCOH++LL8ZlfkHqfdmW/7/QYjev7SzayH5Q4pEeZVWfuh0R8smMCQu
-	 +LeX37N4Ra0FNWshodRKNzXCRIN3vk1e3nNf5+dTRlbR6QFPpC7O/Y/FNHDdTMIcd6
-	 r6oy3uS8PCfsCdWsKT/5wROBG3b2XtEmCbr8naKpRlzoPskTzwFRbJqc0AO6gtzYwu
-	 dDAn2RONeKRdjlA/804mwSwmembIuH8KUUyViVt5WgkMfPbRoiHZH/hucd3HPObmok
-	 86oHc8vQSIWMQ==
+	b=SsPwryINOiFi5KhyzLlUW7ZS+i3LsWCB3FW6Sb7Wp5j8FgjUoQRqSC0k2ntQpJyCN
+	 ze38eGyHEmsOB2kVDUrXpvnm6JKw2rdiwZGCfn5iNrmSADL1PeKHFlsvr1WoEhORHa
+	 RIN0f6CAQsJkkplX7dkJhEbUEZMBPAymljLAchRtHlTSClgt4guAPqMc7PpeR5jkxx
+	 2/dCEAbRWBoHWahf6bxtSj1SiAXqicy9YwZOqm54bJfQKt3J0kfHJrMl93V5aYk3ua
+	 NZs9PgNG5duwCp0c810jO1ykOyc7uosA6tZEU1kPuEin5NlVRRlCYm78H1sAc/xZXz
+	 DxLxX5hXZ3oDQ==
 Received: by keithp.com (Postfix, from userid 1000)
-	id 9747615821C3; Wed, 25 Nov 2020 13:36:31 -0800 (PST)
+	id A4CB615821C5; Wed, 25 Nov 2020 13:36:31 -0800 (PST)
 From: Keith Packard <keithp@keithp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -78,921 +78,491 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org,
 	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Keith Packard <keithp@keithp.com>,
-	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 3/8] semihosting: Change internal common-semi interfaces to use CPUState * [v2]
-Date: Wed, 25 Nov 2020 13:36:12 -0800
-Message-Id: <20201125213617.2496935-4-keithp@keithp.com>
+	Keith Packard <keithp@keithp.com>
+Subject: [PATCH 5/8] riscv: Add semihosting support [v13]
+Date: Wed, 25 Nov 2020 13:36:14 -0800
+Message-Id: <20201125213617.2496935-6-keithp@keithp.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201125213617.2496935-1-keithp@keithp.com>
 References: <20201125213617.2496935-1-keithp@keithp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: Gnx9cy0zQpwz
+X-TUID: iGeqfYHPtjj4
 
-This makes all of the internal interfaces architecture-independent and
-renames the internal functions to use the 'common_semi' prefix instead
-of 'arm' or 'arm_semi'.
+Adapt the arm semihosting support code for RISCV. This implementation
+is based on the standard for RISC-V semihosting version 0.2 as
+documented in
 
-To do this, some new architecture-specific internal helper functions
-were created:
-
-    static inline target_ulong
-    common_semi_arg(CPUState *cs, int argno)
-
-	Returns the argno'th semihosting argument, where argno can be
-	either 0 or 1.
-
-    static inline void
-    common_semi_set_ret(CPUState *cs, target_ulong ret)
-
-	Sets the semihosting return value.
-
-    static inline bool
-    common_semi_sys_exit_extended(CPUState *cs, int nr)
-
-	This detects whether the specified semihosting call, which
-	is either TARGET_SYS_EXIT or TARGET_SYS_EXIT_EXTENDED should
-	be executed using the TARGET_SYS_EXIT_EXTENDED semantics.
-
-    static inline target_ulong
-    common_semi_rambase(CPUState *cs)
-
-	Returns the base of RAM region used for heap and stack. This
-	is used to construct plausible values for the SYS_HEAPINFO
-	call.
-
-In addition, several existing functions have been changed to flag
-areas of code which are architecture specific:
-
-    static target_ulong
-    common_semi_flen_buf(CPUState *cs)
-
-	Returns the current stack pointer minus 64, which is
-	where a stat structure will be placed on the stack
-
-    #define GET_ARG(n)
-
-	This fetches arguments from the semihosting command's argument
-	block. The address of this is available implicitly through the
-	local 'args' variable. This is *mostly* architecture
-	independent, but does depend on the current ABI's notion of
-	the size of a 'long' parameter, which may need run-time checks
-	(as it does on AARCH64)
-
-    #define SET_ARG(n, val)
-
-	This mirrors GET_ARG and stores data back into the argument
-	block.
+   https://github.com/riscv/riscv-semihosting-spec/releases/tag/0.2
 
 Signed-off-by: Keith Packard <keithp@keithp.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-----
+---
 
 v2:
-	Add common_semi_rambase hook to get memory address for
-	SYS_HEAPINFO call.
----
- hw/semihosting/common-semi.c | 350 ++++++++++++++++++-----------------
- 1 file changed, 185 insertions(+), 165 deletions(-)
+	Update PC after exception is handled to follow
+	change in the ARM version for SYS_READC
 
+v3:
+	Disallow semihosting in user mode; report a regular
+	breakpoint in that case.
+
+v4:
+	Fix errors reported by checkpatch
+
+v5:
+	Reference current RISC-V semihosting specification
+
+v6:
+	Add support for semihosting in riscv64-linux-user and
+	riscv32-linux-user
+
+v7:
+	Add meson build support
+
+v8:
+	Fix errors reported by checkpatch that crept in.
+
+v9:
+	Changes suggested by Alistair Francis <alistair23@gmail.com>:
+	Don't add me to the MAINTAINERS file.
+	Remove duplicate #include in target/riscv/cpu.h
+	Reference RISC-V semihosting spec in target/riscv/riscv-semi.c
+
+v10:
+	Use common semihosting implementation instead of a separate copy.
+
+	Make sure addresses of the three breakpoint-signaling
+	instructions all lie within the same page. Change suggested by
+	Richard Henderson <richard.henderson@linaro.org>
+
+v11:
+	Use CONFIG_ARM_COMPATIBLE_SEMIHOSTING
+
+v12:
+	Fix bug in SYS_EXIT support on rv64
+
+v13:
+	Add common_semi_rambase implementation. This locates the
+	memory region containing the stack and uses the base of that.
+
+	Fix SET_ARG and GET_ARG on rv64 targets to operate on 64-bit
+	values rather than 32-bit. Put_user_ual/get_user_ual are
+	confusingly defined by softmmu-semi.h as being equivalent to
+	put_user_u32/get_user_u32.
+---
+ default-configs/devices/riscv32-softmmu.mak   |  2 +
+ default-configs/devices/riscv64-softmmu.mak   |  2 +
+ .../targets/riscv32-linux-user.mak            |  1 +
+ .../targets/riscv64-linux-user.mak            |  1 +
+ hw/semihosting/common-semi.c                  | 82 ++++++++++++++++++-
+ hw/semihosting/common-semi.h                  |  5 +-
+ linux-user/qemu.h                             |  4 +-
+ linux-user/semihost.c                         |  8 +-
+ qemu-options.hx                               | 10 ++-
+ target/riscv/cpu_bits.h                       |  1 +
+ target/riscv/cpu_helper.c                     | 10 +++
+ .../riscv/insn_trans/trans_privileged.c.inc   | 37 ++++++++-
+ target/riscv/translate.c                      | 11 +++
+ 13 files changed, 162 insertions(+), 12 deletions(-)
+
+diff --git a/default-configs/devices/riscv32-softmmu.mak b/default-configs/devices/riscv32-softmmu.mak
+index 94a236c9c2..d847bd5692 100644
+--- a/default-configs/devices/riscv32-softmmu.mak
++++ b/default-configs/devices/riscv32-softmmu.mak
+@@ -3,6 +3,8 @@
+ # Uncomment the following lines to disable these optional devices:
+ #
+ #CONFIG_PCI_DEVICES=n
++CONFIG_SEMIHOSTING=y
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+ 
+ # Boards:
+ #
+diff --git a/default-configs/devices/riscv64-softmmu.mak b/default-configs/devices/riscv64-softmmu.mak
+index 76b6195648..d5eec75f05 100644
+--- a/default-configs/devices/riscv64-softmmu.mak
++++ b/default-configs/devices/riscv64-softmmu.mak
+@@ -3,6 +3,8 @@
+ # Uncomment the following lines to disable these optional devices:
+ #
+ #CONFIG_PCI_DEVICES=n
++CONFIG_SEMIHOSTING=y
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+ 
+ # Boards:
+ #
+diff --git a/default-configs/targets/riscv32-linux-user.mak b/default-configs/targets/riscv32-linux-user.mak
+index dfb259e8aa..6a9d1b1bc1 100644
+--- a/default-configs/targets/riscv32-linux-user.mak
++++ b/default-configs/targets/riscv32-linux-user.mak
+@@ -2,3 +2,4 @@ TARGET_ARCH=riscv32
+ TARGET_BASE_ARCH=riscv
+ TARGET_ABI_DIR=riscv
+ TARGET_XML_FILES= gdb-xml/riscv-32bit-cpu.xml gdb-xml/riscv-32bit-fpu.xml gdb-xml/riscv-64bit-fpu.xml gdb-xml/riscv-32bit-csr.xml gdb-xml/riscv-32bit-virtual.xml
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/default-configs/targets/riscv64-linux-user.mak b/default-configs/targets/riscv64-linux-user.mak
+index b13895f3b0..0a92849a1b 100644
+--- a/default-configs/targets/riscv64-linux-user.mak
++++ b/default-configs/targets/riscv64-linux-user.mak
+@@ -2,3 +2,4 @@ TARGET_ARCH=riscv64
+ TARGET_BASE_ARCH=riscv
+ TARGET_ABI_DIR=riscv
+ TARGET_XML_FILES= gdb-xml/riscv-64bit-cpu.xml gdb-xml/riscv-32bit-fpu.xml gdb-xml/riscv-64bit-fpu.xml gdb-xml/riscv-64bit-csr.xml gdb-xml/riscv-64bit-virtual.xml
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
 diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index cafbe579c7..27bdfd0e83 100644
+index ddfa448cc2..2b6a3fd9fd 100644
 --- a/hw/semihosting/common-semi.c
 +++ b/hw/semihosting/common-semi.c
-@@ -32,15 +32,15 @@
- #include "cpu.h"
- #include "hw/semihosting/semihost.h"
- #include "hw/semihosting/console.h"
-+#include "hw/semihosting/common-semi.h"
- #include "qemu/log.h"
- #ifdef CONFIG_USER_ONLY
- #include "qemu.h"
+@@ -1,6 +1,6 @@
+ /*
+  *  Semihosting support for systems modeled on the Arm "Angel"
+- *  semihosting syscalls design.
++ *  semihosting syscalls design. This includes Arm and RISC-V processors
+  *
+  *  Copyright (c) 2005, 2007 CodeSourcery.
+  *  Copyright (c) 2019 Linaro
+@@ -25,6 +25,10 @@
+  *  ARM Semihosting is documented in:
+  *     Semihosting for AArch32 and AArch64 Release 2.0
+  *     https://static.docs.arm.com/100863/0200/semihosting.pdf
++ *
++ *  RISC-V Semihosting is documented in:
++ *     RISC-V Semihosting
++ *     https://github.com/riscv/riscv-semihosting-spec/blob/main/riscv-semihosting-spec.adoc
+  */
  
--#define ARM_ANGEL_HEAP_SIZE (128 * 1024 * 1024)
-+#define COMMON_SEMI_HEAP_SIZE (128 * 1024 * 1024)
- #else
- #include "exec/gdbstub.h"
- #include "qemu/cutils.h"
--#include "hw/arm/boot.h"
- #endif
+ #include "qemu/osdep.h"
+@@ -217,6 +221,42 @@ common_semi_rambase(CPUState *cs)
  
- #define TARGET_SYS_OPEN        0x01
-@@ -133,6 +133,50 @@ typedef struct GuestFD {
+ #endif /* TARGET_ARM */
  
- static GArray *guestfd_array;
- 
-+#ifdef TARGET_ARM
++#ifdef TARGET_RISCV
 +static inline target_ulong
 +common_semi_arg(CPUState *cs, int argno)
 +{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    if (is_a64(env)) {
-+        return env->xregs[argno];
-+    } else {
-+        return env->regs[argno];
-+    }
++    RISCVCPU *cpu = RISCV_CPU(cs);
++    CPURISCVState *env = &cpu->env;
++    return env->gpr[xA0 + argno];
 +}
 +
 +static inline void
 +common_semi_set_ret(CPUState *cs, target_ulong ret)
 +{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    if (is_a64(env)) {
-+        env->xregs[0] = ret;
-+    } else {
-+        env->regs[0] = ret;
-+    }
++    RISCVCPU *cpu = RISCV_CPU(cs);
++    CPURISCVState *env = &cpu->env;
++    env->gpr[xA0] = ret;
 +}
 +
 +static inline bool
 +common_semi_sys_exit_extended(CPUState *cs, int nr)
 +{
-+    return (nr == TARGET_SYS_EXIT_EXTENDED || is_a64(cs->env_ptr));
++    return (nr == TARGET_SYS_EXIT_EXTENDED || sizeof(target_ulong) == 8);
 +}
 +
 +#ifndef CONFIG_USER_ONLY
-+#include "hw/arm/boot.h"
++
 +static inline target_ulong
 +common_semi_rambase(CPUState *cs)
 +{
-+    CPUArchState *env = cs->env_ptr;
-+    const struct arm_boot_info *info = env->boot_info;
-+    return info->loader_start;
++    RISCVCPU *cpu = RISCV_CPU(cs);
++    CPURISCVState *env = &cpu->env;
++    return common_semi_find_region_base(env->gpr[xSP]);
 +}
 +#endif
 +
-+#endif /* TARGET_ARM */
++#endif
 +
  /*
   * Allocate a new guest file descriptor and return it; if we
   * couldn't allocate a new fd then return -1.
-@@ -238,11 +282,10 @@ static target_ulong syscall_err;
- #include "exec/softmmu-semi.h"
- #endif
- 
--static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
-+static inline uint32_t set_swi_errno(CPUState *cs, uint32_t code)
- {
-     if (code == (uint32_t)-1) {
- #ifdef CONFIG_USER_ONLY
--        CPUState *cs = env_cpu(env);
-         TaskState *ts = cs->opaque;
- 
-         ts->swi_errno = errno;
-@@ -253,10 +296,9 @@ static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
-     return code;
- }
- 
--static inline uint32_t get_swi_errno(CPUARMState *env)
-+static inline uint32_t get_swi_errno(CPUState *cs)
- {
- #ifdef CONFIG_USER_ONLY
--    CPUState *cs = env_cpu(env);
-     TaskState *ts = cs->opaque;
- 
-     return ts->swi_errno;
-@@ -265,24 +307,22 @@ static inline uint32_t get_swi_errno(CPUARMState *env)
- #endif
- }
- 
--static target_ulong arm_semi_syscall_len;
-+static target_ulong common_semi_syscall_len;
- 
--static void arm_semi_cb(CPUState *cs, target_ulong ret, target_ulong err)
-+static void common_semi_cb(CPUState *cs, target_ulong ret, target_ulong err)
- {
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    target_ulong reg0 = is_a64(env) ? env->xregs[0] : env->regs[0];
-+    target_ulong reg0 = common_semi_arg(cs, 0);
- 
-     if (ret == (target_ulong)-1) {
-         errno = err;
--        set_swi_errno(env, -1);
-+        set_swi_errno(cs, -1);
-         reg0 = ret;
-     } else {
-         /* Fixup syscalls that use nonstardard return conventions.  */
-         switch (reg0) {
-         case TARGET_SYS_WRITE:
-         case TARGET_SYS_READ:
--            reg0 = arm_semi_syscall_len - ret;
-+            reg0 = common_semi_syscall_len - ret;
-             break;
-         case TARGET_SYS_SEEK:
-             reg0 = 0;
-@@ -292,77 +332,66 @@ static void arm_semi_cb(CPUState *cs, target_ulong ret, target_ulong err)
-             break;
-         }
-     }
--    if (is_a64(env)) {
--        env->xregs[0] = reg0;
--    } else {
--        env->regs[0] = reg0;
--    }
-+    common_semi_set_ret(cs, reg0);
- }
- 
--static target_ulong arm_flen_buf(ARMCPU *cpu)
-+static target_ulong common_semi_flen_buf(CPUState *cs)
- {
-+    target_ulong sp;
-+#ifdef TARGET_ARM
-     /* Return an address in target memory of 64 bytes where the remote
-      * gdb should write its stat struct. (The format of this structure
-      * is defined by GDB's remote protocol and is not target-specific.)
-      * We put this on the guest's stack just below SP.
-      */
-+    ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    target_ulong sp;
- 
-     if (is_a64(env)) {
-         sp = env->xregs[31];
-     } else {
+@@ -393,6 +433,12 @@ static target_ulong common_semi_flen_buf(CPUState *cs)
          sp = env->regs[13];
      }
+ #endif
++#ifdef TARGET_RISCV
++    RISCVCPU *cpu = RISCV_CPU(cs);
++    CPURISCVState *env = &cpu->env;
++
++    sp = env->gpr[xSP];
 +#endif
  
      return sp - 64;
  }
- 
--static void arm_semi_flen_cb(CPUState *cs, target_ulong ret, target_ulong err)
-+static void
-+common_semi_flen_cb(CPUState *cs, target_ulong ret, target_ulong err)
- {
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
-     /* The size is always stored in big-endian order, extract
-        the value. We assume the size always fit in 32 bits.  */
-     uint32_t size;
--    cpu_memory_rw_debug(cs, arm_flen_buf(cpu) + 32, (uint8_t *)&size, 4, 0);
-+    cpu_memory_rw_debug(cs, common_semi_flen_buf(cs) + 32,
-+                        (uint8_t *)&size, 4, 0);
-     size = be32_to_cpu(size);
--    if (is_a64(env)) {
--        env->xregs[0] = size;
--    } else {
--        env->regs[0] = size;
--    }
-+    common_semi_set_ret(cs, size);
-     errno = err;
--    set_swi_errno(env, -1);
-+    set_swi_errno(cs, -1);
- }
- 
--static int arm_semi_open_guestfd;
-+static int common_semi_open_guestfd;
- 
--static void arm_semi_open_cb(CPUState *cs, target_ulong ret, target_ulong err)
-+static void
-+common_semi_open_cb(CPUState *cs, target_ulong ret, target_ulong err)
- {
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
-     if (ret == (target_ulong)-1) {
-         errno = err;
--        set_swi_errno(env, -1);
--        dealloc_guestfd(arm_semi_open_guestfd);
-+        set_swi_errno(cs, -1);
-+        dealloc_guestfd(common_semi_open_guestfd);
-     } else {
--        associate_guestfd(arm_semi_open_guestfd, ret);
--        ret = arm_semi_open_guestfd;
--    }
--
--    if (is_a64(env)) {
--        env->xregs[0] = ret;
--    } else {
--        env->regs[0] = ret;
-+        associate_guestfd(common_semi_open_guestfd, ret);
-+        ret = common_semi_open_guestfd;
-     }
-+    common_semi_set_ret(cs, ret);
- }
- 
--static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
--                                    const char *fmt, ...)
-+static target_ulong
-+common_semi_gdb_syscall(CPUState *cs, gdb_syscall_complete_cb cb,
-+                        const char *fmt, ...)
- {
-     va_list va;
--    CPUARMState *env = &cpu->env;
- 
-     va_start(va, fmt);
-     gdb_do_syscallv(cb, fmt, va);
-@@ -385,7 +414,7 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
-      * doing something with the return value is not possible to make.
-      */
- 
--    return is_a64(env) ? env->xregs[0] : env->regs[0];
-+    return common_semi_arg(cs, 0);
- }
- 
- /*
-@@ -394,20 +423,18 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
-  * do the work and return the required return value for the guest,
-  * setting the guest errno if appropriate.
-  */
--typedef uint32_t sys_closefn(ARMCPU *cpu, GuestFD *gf);
--typedef uint32_t sys_writefn(ARMCPU *cpu, GuestFD *gf,
-+typedef uint32_t sys_closefn(CPUState *cs, GuestFD *gf);
-+typedef uint32_t sys_writefn(CPUState *cs, GuestFD *gf,
-                              target_ulong buf, uint32_t len);
--typedef uint32_t sys_readfn(ARMCPU *cpu, GuestFD *gf,
-+typedef uint32_t sys_readfn(CPUState *cs, GuestFD *gf,
-                             target_ulong buf, uint32_t len);
--typedef uint32_t sys_isattyfn(ARMCPU *cpu, GuestFD *gf);
--typedef uint32_t sys_seekfn(ARMCPU *cpu, GuestFD *gf,
-+typedef uint32_t sys_isattyfn(CPUState *cs, GuestFD *gf);
-+typedef uint32_t sys_seekfn(CPUState *cs, GuestFD *gf,
-                             target_ulong offset);
--typedef uint32_t sys_flenfn(ARMCPU *cpu, GuestFD *gf);
-+typedef uint32_t sys_flenfn(CPUState *cs, GuestFD *gf);
- 
--static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t host_closefn(CPUState *cs, GuestFD *gf)
- {
--    CPUARMState *env = &cpu->env;
--
-     /*
-      * Only close the underlying host fd if it's one we opened on behalf
-      * of the guest in SYS_OPEN.
-@@ -417,20 +444,21 @@ static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
-         gf->hostfd == STDERR_FILENO) {
-         return 0;
-     }
--    return set_swi_errno(env, close(gf->hostfd));
-+    return set_swi_errno(cs, close(gf->hostfd));
- }
- 
--static uint32_t host_writefn(ARMCPU *cpu, GuestFD *gf,
-+static uint32_t host_writefn(CPUState *cs, GuestFD *gf,
-                              target_ulong buf, uint32_t len)
- {
-+    CPUArchState *env = cs->env_ptr;
-     uint32_t ret;
--    CPUARMState *env = &cpu->env;
-     char *s = lock_user(VERIFY_READ, buf, len, 1);
-+    (void) env; /* Used in arm softmmu lock_user implicitly */
-     if (!s) {
-         /* Return bytes not written on error */
-         return len;
-     }
--    ret = set_swi_errno(env, write(gf->hostfd, s, len));
-+    ret = set_swi_errno(cs, write(gf->hostfd, s, len));
-     unlock_user(s, buf, 0);
-     if (ret == (uint32_t)-1) {
-         ret = 0;
-@@ -439,18 +467,19 @@ static uint32_t host_writefn(ARMCPU *cpu, GuestFD *gf,
-     return len - ret;
- }
- 
--static uint32_t host_readfn(ARMCPU *cpu, GuestFD *gf,
-+static uint32_t host_readfn(CPUState *cs, GuestFD *gf,
-                             target_ulong buf, uint32_t len)
- {
-+    CPUArchState *env = cs->env_ptr;
-     uint32_t ret;
--    CPUARMState *env = &cpu->env;
-     char *s = lock_user(VERIFY_WRITE, buf, len, 0);
-+    (void) env; /* Used in arm softmmu lock_user implicitly */
-     if (!s) {
-         /* return bytes not read */
-         return len;
-     }
-     do {
--        ret = set_swi_errno(env, read(gf->hostfd, s, len));
-+        ret = set_swi_errno(cs, read(gf->hostfd, s, len));
-     } while (ret == -1 && errno == EINTR);
-     unlock_user(s, buf, len);
-     if (ret == (uint32_t)-1) {
-@@ -460,68 +489,66 @@ static uint32_t host_readfn(ARMCPU *cpu, GuestFD *gf,
-     return len - ret;
- }
- 
--static uint32_t host_isattyfn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t host_isattyfn(CPUState *cs, GuestFD *gf)
- {
-     return isatty(gf->hostfd);
- }
- 
--static uint32_t host_seekfn(ARMCPU *cpu, GuestFD *gf, target_ulong offset)
-+static uint32_t host_seekfn(CPUState *cs, GuestFD *gf, target_ulong offset)
- {
--    CPUARMState *env = &cpu->env;
--    uint32_t ret = set_swi_errno(env, lseek(gf->hostfd, offset, SEEK_SET));
-+    uint32_t ret = set_swi_errno(cs, lseek(gf->hostfd, offset, SEEK_SET));
-     if (ret == (uint32_t)-1) {
-         return -1;
-     }
-     return 0;
- }
- 
--static uint32_t host_flenfn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t host_flenfn(CPUState *cs, GuestFD *gf)
- {
--    CPUARMState *env = &cpu->env;
-     struct stat buf;
--    uint32_t ret = set_swi_errno(env, fstat(gf->hostfd, &buf));
-+    uint32_t ret = set_swi_errno(cs, fstat(gf->hostfd, &buf));
-     if (ret == (uint32_t)-1) {
-         return -1;
-     }
-     return buf.st_size;
- }
- 
--static uint32_t gdb_closefn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t gdb_closefn(CPUState *cs, GuestFD *gf)
- {
--    return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
-+    return common_semi_gdb_syscall(cs, common_semi_cb, "close,%x", gf->hostfd);
- }
- 
--static uint32_t gdb_writefn(ARMCPU *cpu, GuestFD *gf,
-+static uint32_t gdb_writefn(CPUState *cs, GuestFD *gf,
-                             target_ulong buf, uint32_t len)
- {
--    arm_semi_syscall_len = len;
--    return arm_gdb_syscall(cpu, arm_semi_cb, "write,%x,%x,%x",
--                           gf->hostfd, buf, len);
-+    common_semi_syscall_len = len;
-+    return common_semi_gdb_syscall(cs, common_semi_cb, "write,%x,%x,%x",
-+                                   gf->hostfd, buf, len);
- }
- 
--static uint32_t gdb_readfn(ARMCPU *cpu, GuestFD *gf,
-+static uint32_t gdb_readfn(CPUState *cs, GuestFD *gf,
-                            target_ulong buf, uint32_t len)
- {
--    arm_semi_syscall_len = len;
--    return arm_gdb_syscall(cpu, arm_semi_cb, "read,%x,%x,%x",
--                           gf->hostfd, buf, len);
-+    common_semi_syscall_len = len;
-+    return common_semi_gdb_syscall(cs, common_semi_cb, "read,%x,%x,%x",
-+                                   gf->hostfd, buf, len);
- }
- 
--static uint32_t gdb_isattyfn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t gdb_isattyfn(CPUState *cs, GuestFD *gf)
- {
--    return arm_gdb_syscall(cpu, arm_semi_cb, "isatty,%x", gf->hostfd);
-+    return common_semi_gdb_syscall(cs, common_semi_cb, "isatty,%x", gf->hostfd);
- }
- 
--static uint32_t gdb_seekfn(ARMCPU *cpu, GuestFD *gf, target_ulong offset)
-+static uint32_t gdb_seekfn(CPUState *cs, GuestFD *gf, target_ulong offset)
- {
--    return arm_gdb_syscall(cpu, arm_semi_cb, "lseek,%x,%x,0",
--                           gf->hostfd, offset);
-+    return common_semi_gdb_syscall(cs, common_semi_cb, "lseek,%x,%x,0",
-+                                   gf->hostfd, offset);
- }
- 
--static uint32_t gdb_flenfn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t gdb_flenfn(CPUState *cs, GuestFD *gf)
- {
--    return arm_gdb_syscall(cpu, arm_semi_flen_cb, "fstat,%x,%x",
--                           gf->hostfd, arm_flen_buf(cpu));
-+    return common_semi_gdb_syscall(cs, common_semi_flen_cb, "fstat,%x,%x",
-+                                   gf->hostfd, common_semi_flen_buf(cs));
- }
- 
- #define SHFB_MAGIC_0 0x53
-@@ -550,31 +577,29 @@ static void init_featurefile_guestfd(int guestfd)
-     gf->featurefile_offset = 0;
- }
- 
--static uint32_t featurefile_closefn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t featurefile_closefn(CPUState *cs, GuestFD *gf)
- {
-     /* Nothing to do */
-     return 0;
- }
- 
--static uint32_t featurefile_writefn(ARMCPU *cpu, GuestFD *gf,
-+static uint32_t featurefile_writefn(CPUState *cs, GuestFD *gf,
-                                     target_ulong buf, uint32_t len)
- {
-     /* This fd can never be open for writing */
--    CPUARMState *env = &cpu->env;
- 
-     errno = EBADF;
--    return set_swi_errno(env, -1);
-+    return set_swi_errno(cs, -1);
- }
- 
--static uint32_t featurefile_readfn(ARMCPU *cpu, GuestFD *gf,
-+static uint32_t featurefile_readfn(CPUState *cs, GuestFD *gf,
-                                    target_ulong buf, uint32_t len)
- {
-+    CPUArchState *env = cs->env_ptr;
-     uint32_t i;
--#ifndef CONFIG_USER_ONLY
--    CPUARMState *env = &cpu->env;
--#endif
-     char *s;
- 
-+    (void) env; /* Used in arm softmmu lock_user implicitly */
-     s = lock_user(VERIFY_WRITE, buf, len, 0);
-     if (!s) {
-         return len;
-@@ -594,19 +619,19 @@ static uint32_t featurefile_readfn(ARMCPU *cpu, GuestFD *gf,
-     return len - i;
- }
- 
--static uint32_t featurefile_isattyfn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t featurefile_isattyfn(CPUState *cs, GuestFD *gf)
- {
-     return 0;
- }
- 
--static uint32_t featurefile_seekfn(ARMCPU *cpu, GuestFD *gf,
-+static uint32_t featurefile_seekfn(CPUState *cs, GuestFD *gf,
-                                    target_ulong offset)
- {
-     gf->featurefile_offset = offset;
-     return 0;
- }
- 
--static uint32_t featurefile_flenfn(ARMCPU *cpu, GuestFD *gf)
-+static uint32_t featurefile_flenfn(CPUState *cs, GuestFD *gf)
- {
-     return sizeof(featurefile_data);
- }
-@@ -650,16 +675,17 @@ static const GuestFDFunctions guestfd_fns[] = {
- /* Read the input value from the argument block; fail the semihosting
-  * call if the memory read fails.
-  */
-+#ifdef TARGET_ARM
- #define GET_ARG(n) do {                                 \
-     if (is_a64(env)) {                                  \
-         if (get_user_u64(arg ## n, args + (n) * 8)) {   \
-             errno = EFAULT;                             \
--            return set_swi_errno(env, -1);              \
-+            return set_swi_errno(cs, -1);              \
-         }                                               \
-     } else {                                            \
-         if (get_user_u32(arg ## n, args + (n) * 4)) {   \
-             errno = EFAULT;                             \
--            return set_swi_errno(env, -1);              \
-+            return set_swi_errno(cs, -1);              \
-         }                                               \
-     }                                                   \
- } while (0)
-@@ -668,6 +694,7 @@ static const GuestFDFunctions guestfd_fns[] = {
-     (is_a64(env) ?                                      \
-      put_user_u64(val, args + (n) * 8) :                \
+@@ -736,6 +782,37 @@ static const GuestFDFunctions guestfd_fns[] = {
       put_user_u32(val, args + (n) * 4))
-+#endif
- 
- /*
-  * Do a semihosting call.
-@@ -680,8 +707,7 @@ static const GuestFDFunctions guestfd_fns[] = {
-  */
- target_ulong do_common_semihosting(CPUState *cs)
- {
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
-+    CPUArchState *env = cs->env_ptr;
-     target_ulong args;
-     target_ulong arg0, arg1, arg2, arg3;
-     char * s;
-@@ -690,14 +716,9 @@ target_ulong do_common_semihosting(CPUState *cs)
-     uint32_t len;
-     GuestFD *gf;
- 
--    if (is_a64(env)) {
--        /* Note that the syscall number is in W0, not X0 */
--        nr = env->xregs[0] & 0xffffffffU;
--        args = env->xregs[1];
--    } else {
--        nr = env->regs[0];
--        args = env->regs[1];
--    }
-+    (void) env; /* Used implicitly by arm lock_user macro */
-+    nr = common_semi_arg(cs, 0) & 0xffffffffU;
-+    args = common_semi_arg(cs, 1);
- 
-     switch (nr) {
-     case TARGET_SYS_OPEN:
-@@ -710,19 +731,19 @@ target_ulong do_common_semihosting(CPUState *cs)
-         s = lock_user_string(arg0);
-         if (!s) {
-             errno = EFAULT;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
-         if (arg1 >= 12) {
-             unlock_user(s, arg0, 0);
-             errno = EINVAL;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
-         guestfd = alloc_guestfd();
-         if (guestfd < 0) {
-             unlock_user(s, arg0, 0);
-             errno = EMFILE;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
-         if (strcmp(s, ":tt") == 0) {
-@@ -751,18 +772,19 @@ target_ulong do_common_semihosting(CPUState *cs)
-             if (arg1 != 0 && arg1 != 1) {
-                 dealloc_guestfd(guestfd);
-                 errno = EACCES;
--                return set_swi_errno(env, -1);
-+                return set_swi_errno(cs, -1);
-             }
-             init_featurefile_guestfd(guestfd);
-             return guestfd;
-         }
- 
-         if (use_gdb_syscalls()) {
--            arm_semi_open_guestfd = guestfd;
--            ret = arm_gdb_syscall(cpu, arm_semi_open_cb, "open,%s,%x,1a4", arg0,
--                                  (int)arg2 + 1, gdb_open_modeflags[arg1]);
-+            common_semi_open_guestfd = guestfd;
-+            ret = common_semi_gdb_syscall(cs, common_semi_open_cb,
-+                                          "open,%s,%x,1a4", arg0, (int)arg2 + 1,
-+                                          gdb_open_modeflags[arg1]);
-         } else {
--            ret = set_swi_errno(env, open(s, open_modeflags[arg1], 0644));
-+            ret = set_swi_errno(cs, open(s, open_modeflags[arg1], 0644));
-             if (ret == (uint32_t)-1) {
-                 dealloc_guestfd(guestfd);
-             } else {
-@@ -779,17 +801,17 @@ target_ulong do_common_semihosting(CPUState *cs)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
--        ret = guestfd_fns[gf->type].closefn(cpu, gf);
-+        ret = guestfd_fns[gf->type].closefn(cs, gf);
-         dealloc_guestfd(arg0);
-         return ret;
-     case TARGET_SYS_WRITEC:
--        qemu_semihosting_console_outc(env, args);
-+        qemu_semihosting_console_outc(cs->env_ptr, args);
-         return 0xdeadbeef;
-     case TARGET_SYS_WRITE0:
--        return qemu_semihosting_console_outs(env, args);
-+        return qemu_semihosting_console_outs(cs->env_ptr, args);
-     case TARGET_SYS_WRITE:
-         GET_ARG(0);
-         GET_ARG(1);
-@@ -799,10 +821,10 @@ target_ulong do_common_semihosting(CPUState *cs)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
--        return guestfd_fns[gf->type].writefn(cpu, gf, arg1, len);
-+        return guestfd_fns[gf->type].writefn(cs, gf, arg1, len);
-     case TARGET_SYS_READ:
-         GET_ARG(0);
-         GET_ARG(1);
-@@ -812,22 +834,22 @@ target_ulong do_common_semihosting(CPUState *cs)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
--        return guestfd_fns[gf->type].readfn(cpu, gf, arg1, len);
-+        return guestfd_fns[gf->type].readfn(cs, gf, arg1, len);
-     case TARGET_SYS_READC:
--        return qemu_semihosting_console_inc(env);
-+        return qemu_semihosting_console_inc(cs->env_ptr);
-     case TARGET_SYS_ISTTY:
-         GET_ARG(0);
- 
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
--        return guestfd_fns[gf->type].isattyfn(cpu, gf);
-+        return guestfd_fns[gf->type].isattyfn(cs, gf);
-     case TARGET_SYS_SEEK:
-         GET_ARG(0);
-         GET_ARG(1);
-@@ -835,20 +857,20 @@ target_ulong do_common_semihosting(CPUState *cs)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
--        return guestfd_fns[gf->type].seekfn(cpu, gf, arg1);
-+        return guestfd_fns[gf->type].seekfn(cs, gf, arg1);
-     case TARGET_SYS_FLEN:
-         GET_ARG(0);
- 
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(env, -1);
-+            return set_swi_errno(cs, -1);
-         }
- 
--        return guestfd_fns[gf->type].flenfn(cpu, gf);
-+        return guestfd_fns[gf->type].flenfn(cs, gf);
-     case TARGET_SYS_TMPNAM:
-         qemu_log_mask(LOG_UNIMP, "%s: SYS_TMPNAM not implemented", __func__);
-         return -1;
-@@ -856,15 +878,15 @@ target_ulong do_common_semihosting(CPUState *cs)
-         GET_ARG(0);
-         GET_ARG(1);
-         if (use_gdb_syscalls()) {
--            ret = arm_gdb_syscall(cpu, arm_semi_cb, "unlink,%s",
--                                  arg0, (int)arg1 + 1);
-+            ret = common_semi_gdb_syscall(cs, common_semi_cb, "unlink,%s",
-+                                          arg0, (int)arg1 + 1);
-         } else {
-             s = lock_user_string(arg0);
-             if (!s) {
-                 errno = EFAULT;
--                return set_swi_errno(env, -1);
-+                return set_swi_errno(cs, -1);
-             }
--            ret =  set_swi_errno(env, remove(s));
-+            ret =  set_swi_errno(cs, remove(s));
-             unlock_user(s, arg0, 0);
-         }
-         return ret;
-@@ -874,17 +896,18 @@ target_ulong do_common_semihosting(CPUState *cs)
-         GET_ARG(2);
-         GET_ARG(3);
-         if (use_gdb_syscalls()) {
--            return arm_gdb_syscall(cpu, arm_semi_cb, "rename,%s,%s",
--                                   arg0, (int)arg1 + 1, arg2, (int)arg3 + 1);
-+            return common_semi_gdb_syscall(cs, common_semi_cb, "rename,%s,%s",
-+                                           arg0, (int)arg1 + 1, arg2,
-+                                           (int)arg3 + 1);
-         } else {
-             char *s2;
-             s = lock_user_string(arg0);
-             s2 = lock_user_string(arg2);
-             if (!s || !s2) {
-                 errno = EFAULT;
--                ret = set_swi_errno(env, -1);
-+                ret = set_swi_errno(cs, -1);
-             } else {
--                ret = set_swi_errno(env, rename(s, s2));
-+                ret = set_swi_errno(cs, rename(s, s2));
-             }
-             if (s2)
-                 unlock_user(s2, arg2, 0);
-@@ -895,25 +918,25 @@ target_ulong do_common_semihosting(CPUState *cs)
-     case TARGET_SYS_CLOCK:
-         return clock() / (CLOCKS_PER_SEC / 100);
-     case TARGET_SYS_TIME:
--        return set_swi_errno(env, time(NULL));
-+        return set_swi_errno(cs, time(NULL));
-     case TARGET_SYS_SYSTEM:
-         GET_ARG(0);
-         GET_ARG(1);
-         if (use_gdb_syscalls()) {
--            return arm_gdb_syscall(cpu, arm_semi_cb, "system,%s",
--                                   arg0, (int)arg1 + 1);
-+            return common_semi_gdb_syscall(cs, common_semi_cb, "system,%s",
-+                                           arg0, (int)arg1 + 1);
-         } else {
-             s = lock_user_string(arg0);
-             if (!s) {
-                 errno = EFAULT;
--                return set_swi_errno(env, -1);
-+                return set_swi_errno(cs, -1);
-             }
--            ret = set_swi_errno(env, system(s));
-+            ret = set_swi_errno(cs, system(s));
-             unlock_user(s, arg0, 0);
-             return ret;
-         }
-     case TARGET_SYS_ERRNO:
--        return get_swi_errno(env);
-+        return get_swi_errno(cs);
-     case TARGET_SYS_GET_CMDLINE:
-         {
-             /* Build a command-line from the original argv.
-@@ -965,21 +988,21 @@ target_ulong do_common_semihosting(CPUState *cs)
-             if (output_size > input_size) {
-                 /* Not enough space to store command-line arguments.  */
-                 errno = E2BIG;
--                return set_swi_errno(env, -1);
-+                return set_swi_errno(cs, -1);
-             }
- 
-             /* Adjust the command-line length.  */
-             if (SET_ARG(1, output_size - 1)) {
-                 /* Couldn't write back to argument block */
-                 errno = EFAULT;
--                return set_swi_errno(env, -1);
-+                return set_swi_errno(cs, -1);
-             }
- 
-             /* Lock the buffer on the ARM side.  */
-             output_buffer = lock_user(VERIFY_WRITE, arg0, output_size, 0);
-             if (!output_buffer) {
-                 errno = EFAULT;
--                return set_swi_errno(env, -1);
-+                return set_swi_errno(cs, -1);
-             }
- 
-             /* Copy the command-line arguments.  */
-@@ -995,7 +1018,7 @@ target_ulong do_common_semihosting(CPUState *cs)
-             if (copy_from_user(output_buffer, ts->info->arg_start,
-                                output_size)) {
-                 errno = EFAULT;
--                status = set_swi_errno(env, -1);
-+                status = set_swi_errno(cs, -1);
-                 goto out;
-             }
- 
-@@ -1020,8 +1043,7 @@ target_ulong do_common_semihosting(CPUState *cs)
- #ifdef CONFIG_USER_ONLY
-             TaskState *ts = cs->opaque;
- #else
--            const struct arm_boot_info *info = env->boot_info;
--            target_ulong rambase = info->loader_start;
-+            target_ulong rambase = common_semi_rambase(cs);
  #endif
  
-             GET_ARG(0);
-@@ -1035,7 +1057,7 @@ target_ulong do_common_semihosting(CPUState *cs)
-                 abi_ulong ret;
- 
-                 ts->heap_base = do_brk(0);
--                limit = ts->heap_base + ARM_ANGEL_HEAP_SIZE;
-+                limit = ts->heap_base + COMMON_SEMI_HEAP_SIZE;
-                 /* Try a big heap, and reduce the size if that fails.  */
-                 for (;;) {
-                     ret = do_brk(limit);
-@@ -1063,23 +1085,19 @@ target_ulong do_common_semihosting(CPUState *cs)
-             for (i = 0; i < ARRAY_SIZE(retvals); i++) {
-                 bool fail;
- 
--                if (is_a64(env)) {
--                    fail = put_user_u64(retvals[i], arg0 + i * 8);
--                } else {
--                    fail = put_user_u32(retvals[i], arg0 + i * 4);
--                }
-+                fail = SET_ARG(i, retvals[i]);
- 
-                 if (fail) {
-                     /* Couldn't write back to argument block */
-                     errno = EFAULT;
--                    return set_swi_errno(env, -1);
-+                    return set_swi_errno(cs, -1);
-                 }
-             }
-             return 0;
-         }
-     case TARGET_SYS_EXIT:
-     case TARGET_SYS_EXIT_EXTENDED:
--        if (nr == TARGET_SYS_EXIT_EXTENDED || is_a64(env)) {
-+        if (common_semi_sys_exit_extended(cs, nr)) {
-             /*
-              * The A64 version of SYS_EXIT takes a parameter block,
-              * so the application-exit type can return a subcode which
-@@ -1104,7 +1122,7 @@ target_ulong do_common_semihosting(CPUState *cs)
-              */
-             ret = (args == ADP_Stopped_ApplicationExit) ? 0 : 1;
-         }
--        gdb_exit(env, ret);
-+        gdb_exit(cs->env_ptr, ret);
-         exit(ret);
-     case TARGET_SYS_SYNCCACHE:
-         /*
-@@ -1112,9 +1130,11 @@ target_ulong do_common_semihosting(CPUState *cs)
-          * virtual address range. This is a nop for us since we don't
-          * implement caches. This is only present on A64.
-          */
--        if (is_a64(env)) {
-+#ifdef TARGET_ARM
-+        if (is_a64(cs->env_ptr)) {
++#ifdef TARGET_RISCV
++
++/*
++ * get_user_ual is defined as get_user_u32 in softmmu-semi.h,
++ * we need a macro that fetches a target_ulong
++ */
++#define get_user_utl(arg, p)                    \
++    ((sizeof(target_ulong) == 8) ?              \
++     get_user_u64(arg, p) :                     \
++     get_user_u32(arg, p))
++
++/*
++ * put_user_ual is defined as put_user_u32 in softmmu-semi.h,
++ * we need a macro that stores a target_ulong
++ */
++#define put_user_utl(arg, p)                    \
++    ((sizeof(target_ulong) == 8) ?              \
++     put_user_u64(arg, p) :                     \
++     put_user_u32(arg, p))
++
++#define GET_ARG(n) do {                                                 \
++        if (get_user_utl(arg ## n, args + (n) * sizeof(target_ulong))) { \
++            errno = EFAULT;                                             \
++            return set_swi_errno(cs, -1);                              \
++        }                                                               \
++    } while (0)
++
++#define SET_ARG(n, val)                                 \
++    put_user_utl(val, args + (n) * sizeof(target_ulong))
++#endif
++
+ /*
+  * Do a semihosting call.
+  *
+@@ -1174,6 +1251,9 @@ target_ulong do_common_semihosting(CPUState *cs)
+         if (is_a64(cs->env_ptr)) {
              return 0;
          }
 +#endif
++#ifdef TARGET_RISCV
++        return 0;
+ #endif
          /* fall through -- invalid for A32/T32 */
      default:
-         fprintf(stderr, "qemu: Unsupported SemiHosting SWI 0x%02x\n", nr);
+diff --git a/hw/semihosting/common-semi.h b/hw/semihosting/common-semi.h
+index bc53e92c79..0bfab1c669 100644
+--- a/hw/semihosting/common-semi.h
++++ b/hw/semihosting/common-semi.h
+@@ -1,6 +1,6 @@
+ /*
+  *  Semihosting support for systems modeled on the Arm "Angel"
+- *  semihosting syscalls design.
++ *  semihosting syscalls design. This includes Arm and RISC-V processors
+  *
+  *  Copyright (c) 2005, 2007 CodeSourcery.
+  *  Copyright (c) 2019 Linaro
+@@ -26,6 +26,9 @@
+  *     Semihosting for AArch32 and AArch64 Release 2.0
+  *     https://static.docs.arm.com/100863/0200/semihosting.pdf
+  *
++ *  RISC-V Semihosting is documented in:
++ *     RISC-V Semihosting
++ *     https://github.com/riscv/riscv-semihosting-spec/blob/main/riscv-semihosting-spec.adoc
+  */
+ 
+ #ifndef COMMON_SEMI_H
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index 534753ca12..17aa992165 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -109,6 +109,8 @@ typedef struct TaskState {
+     /* FPA state */
+     FPA11 fpa;
+ # endif
++#endif
++#if defined(TARGET_ARM) || defined(TARGET_RISCV)
+     int swi_errno;
+ #endif
+ #if defined(TARGET_I386) && !defined(TARGET_X86_64)
+@@ -122,7 +124,7 @@ typedef struct TaskState {
+ #ifdef TARGET_M68K
+     abi_ulong tp_value;
+ #endif
+-#if defined(TARGET_ARM) || defined(TARGET_M68K)
++#if defined(TARGET_ARM) || defined(TARGET_M68K) || defined(TARGET_RISCV)
+     /* Extra fields for semihosted binaries.  */
+     abi_ulong heap_base;
+     abi_ulong heap_limit;
+diff --git a/linux-user/semihost.c b/linux-user/semihost.c
+index a1f0f6050e..c0015ee7f6 100644
+--- a/linux-user/semihost.c
++++ b/linux-user/semihost.c
+@@ -1,11 +1,11 @@
+ /*
+- * ARM Semihosting Console Support
++ * ARM Compatible Semihosting Console Support.
+  *
+  * Copyright (c) 2019 Linaro Ltd
+  *
+- * Currently ARM is unique in having support for semihosting support
+- * in linux-user. So for now we implement the common console API but
+- * just for arm linux-user.
++ * Currently ARM and RISC-V are unique in having support for
++ * semihosting support in linux-user. So for now we implement the
++ * common console API but just for arm and risc-v linux-user.
+  *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 104632ea34..22b4d704b6 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -4186,10 +4186,10 @@ ERST
+ DEF("semihosting", 0, QEMU_OPTION_semihosting,
+     "-semihosting    semihosting mode\n",
+     QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA | QEMU_ARCH_LM32 |
+-    QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2)
++    QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
+ SRST
+ ``-semihosting``
+-    Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II only).
++    Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V only).
+ 
+     Note that this allows guest direct access to the host filesystem, so
+     should only be used with a trusted guest OS.
+@@ -4201,10 +4201,10 @@ DEF("semihosting-config", HAS_ARG, QEMU_OPTION_semihosting_config,
+     "-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]\n" \
+     "                semihosting configuration\n",
+ QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA | QEMU_ARCH_LM32 |
+-QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2)
++QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
+ SRST
+ ``-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]``
+-    Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II
++    Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V
+     only).
+ 
+     Note that this allows guest direct access to the host filesystem, so
+@@ -4219,6 +4219,8 @@ SRST
+     open/read/write/seek/select. Tensilica baremetal libc for ISS and
+     linux platform "sim" use this interface.
+ 
++    On RISC-V this implements the standard semihosting API, version 0.2.
++
+     ``target=native|gdb|auto``
+         Defines where the semihosting calls will be addressed, to QEMU
+         (``native``) or to GDB (``gdb``). The default is ``auto``, which
+diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
+index 24b24c69c5..f0d3d1c07e 100644
+--- a/target/riscv/cpu_bits.h
++++ b/target/riscv/cpu_bits.h
+@@ -544,6 +544,7 @@
+ #define RISCV_EXCP_INST_PAGE_FAULT               0xc /* since: priv-1.10.0 */
+ #define RISCV_EXCP_LOAD_PAGE_FAULT               0xd /* since: priv-1.10.0 */
+ #define RISCV_EXCP_STORE_PAGE_FAULT              0xf /* since: priv-1.10.0 */
++#define RISCV_EXCP_SEMIHOST                      0x10
+ #define RISCV_EXCP_INST_GUEST_PAGE_FAULT         0x14
+ #define RISCV_EXCP_LOAD_GUEST_ACCESS_FAULT       0x15
+ #define RISCV_EXCP_VIRT_INSTRUCTION_FAULT        0x16
+diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+index a2787b1d48..e730fd1fe9 100644
+--- a/target/riscv/cpu_helper.c
++++ b/target/riscv/cpu_helper.c
+@@ -24,6 +24,7 @@
+ #include "exec/exec-all.h"
+ #include "tcg/tcg-op.h"
+ #include "trace.h"
++#include "hw/semihosting/common-semi.h"
+ 
+ int riscv_cpu_mmu_index(CPURISCVState *env, bool ifetch)
+ {
+@@ -844,6 +845,15 @@ void riscv_cpu_do_interrupt(CPUState *cs)
+     target_ulong htval = 0;
+     target_ulong mtval2 = 0;
+ 
++    if  (cause == RISCV_EXCP_SEMIHOST) {
++        if (env->priv >= PRV_S) {
++            env->gpr[xA0] = do_common_semihosting(cs);
++            env->pc += 4;
++            return;
++        }
++        cause = RISCV_EXCP_BREAKPOINT;
++    }
++
+     if (!async) {
+         /* set tval to badaddr for traps with address information */
+         switch (cause) {
+diff --git a/target/riscv/insn_trans/trans_privileged.c.inc b/target/riscv/insn_trans/trans_privileged.c.inc
+index 2a61a853bf..32312be202 100644
+--- a/target/riscv/insn_trans/trans_privileged.c.inc
++++ b/target/riscv/insn_trans/trans_privileged.c.inc
+@@ -29,7 +29,42 @@ static bool trans_ecall(DisasContext *ctx, arg_ecall *a)
+ 
+ static bool trans_ebreak(DisasContext *ctx, arg_ebreak *a)
+ {
+-    generate_exception(ctx, RISCV_EXCP_BREAKPOINT);
++    target_ulong    ebreak_addr = ctx->base.pc_next;
++    target_ulong    pre_addr = ebreak_addr - 4;
++    target_ulong    post_addr = ebreak_addr + 4;
++    uint32_t pre    = 0;
++    uint32_t ebreak = 0;
++    uint32_t post   = 0;
++
++    /*
++     * The RISC-V semihosting spec specifies the following
++     * three-instruction sequence to flag a semihosting call:
++     *
++     *      slli zero, zero, 0x1f       0x01f01013
++     *      ebreak                      0x00100073
++     *      srai zero, zero, 0x7        0x40705013
++     *
++     * The two shift operations on the zero register are no-ops, used
++     * here to signify a semihosting exception, rather than a breakpoint.
++     *
++     * Uncompressed instructions are required so that the sequence is easy
++     * to validate.
++     *
++     * The three instructions are required to lie in the same page so
++     * that no exception will be raised when fetching them.
++     */
++
++    if ((pre_addr & TARGET_PAGE_MASK) == (post_addr & TARGET_PAGE_MASK)) {
++        pre    = opcode_at(&ctx->base, pre_addr);
++        ebreak = opcode_at(&ctx->base, ebreak_addr);
++        post   = opcode_at(&ctx->base, post_addr);
++    }
++
++    if  (pre == 0x01f01013 && ebreak == 0x00100073 && post == 0x40705013) {
++        generate_exception(ctx, RISCV_EXCP_SEMIHOST);
++    } else {
++        generate_exception(ctx, RISCV_EXCP_BREAKPOINT);
++    }
+     exit_tb(ctx); /* no chaining */
+     ctx->base.is_jmp = DISAS_NORETURN;
+     return true;
+diff --git a/target/riscv/translate.c b/target/riscv/translate.c
+index 554d52a4be..0f28b5f41e 100644
+--- a/target/riscv/translate.c
++++ b/target/riscv/translate.c
+@@ -64,6 +64,7 @@ typedef struct DisasContext {
+     uint16_t vlen;
+     uint16_t mlen;
+     bool vl_eq_vlmax;
++    CPUState *cs;
+ } DisasContext;
+ 
+ #ifdef TARGET_RISCV64
+@@ -747,6 +748,15 @@ static bool gen_shift(DisasContext *ctx, arg_r *a,
+     return true;
+ }
+ 
++static uint32_t opcode_at(DisasContextBase *dcbase, target_ulong pc)
++{
++    DisasContext *ctx = container_of(dcbase, DisasContext, base);
++    CPUState *cpu = ctx->cs;
++    CPURISCVState *env = cpu->env_ptr;
++
++    return cpu_ldl_code(env, pc);
++}
++
+ /* Include insn module translation function */
+ #include "insn_trans/trans_rvi.c.inc"
+ #include "insn_trans/trans_rvm.c.inc"
+@@ -814,6 +824,7 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+     ctx->lmul = FIELD_EX32(tb_flags, TB_FLAGS, LMUL);
+     ctx->mlen = 1 << (ctx->sew  + 3 - ctx->lmul);
+     ctx->vl_eq_vlmax = FIELD_EX32(tb_flags, TB_FLAGS, VL_EQ_VLMAX);
++    ctx->cs = cs;
+ }
+ 
+ static void riscv_tr_tb_start(DisasContextBase *db, CPUState *cpu)
 -- 
 2.29.2

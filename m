@@ -1,102 +1,102 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp156156lfb;
-        Tue, 24 Nov 2020 20:12:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxrZ/ka2uwEv1zHoNGxilBetATlxOxrkLOk8mwVpN6hiypxe8zTUJmXIT7DMVyomsZzxvDD
-X-Received: by 2002:a25:7355:: with SMTP id o82mr1978803ybc.338.1606277538521;
-        Tue, 24 Nov 2020 20:12:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606277538; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp158376lfb;
+        Tue, 24 Nov 2020 20:16:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJywPAOGo67zqrdostxE5rl3YUBnzcm2bqbqwOgDAT90ZaaaiU7d0zSsZWf6oRxuE3g1vlhp
+X-Received: by 2002:a25:d94:: with SMTP id 142mr1408727ybn.258.1606277804086;
+        Tue, 24 Nov 2020 20:16:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606277804; cv=none;
         d=google.com; s=arc-20160816;
-        b=hioiGdw2RJvmKZJXXVRtQE76SiFrD+pKvrm6SYgL7fcT4WS8Qx++E83Jiq6evFFETb
-         KLMiyNQSIjFdmyqNgiVrHitar8/hm6zdBxTCV2RpWtfwJVyC18mfzoFdfjl6hL08a+A/
-         pAU1ie2fKC7DU5770NVbitvwMdBa3x+BlBSvPpp894SULhpmkdk5i27Yf0RZKk46WwGI
-         aylB1PVFy4XQnjUcfriMK0PmRMTYeYvsa16h5x/PO+YUQIo0Ng05jmhVLh6lRJeKbtuE
-         /MdkFDAs69yKqtTlqNDGz4FzHXJgF1dqba4R2Z1NwUggndgs6591MxSVK8kfdDHDAdDH
-         tbpA==
+        b=iUGFA25th/PPsI2mmf+qDK05zgTG6XV9cC4hBnlEHyDxLPTcSVA/hA63ewBAD1E36w
+         jf7itFpYAPYC1oRPvnEVth/i38D2lhcHATi6mf22WwPIB+J12SvyJ5u157+3IDcm57AN
+         P0MFsUPw9sF0OHEGpETk8hU7skztogg0JFZvjUGmG0JNkD8wGvYGc0kNbEKMQZ46XGxb
+         GBWugPsK7q6oSbmL6tBnoSii4PfcFYAWf3k/D6f6Uu7vnQ/UZrnWA3pxDF9xgIx9fCBP
+         rmU8Q/7jifM2hGrnZGYrO0LCVklr95Wdq4zrkq/wWIwps4ZCjvFLEne+euzoBrHVuZPN
+         SZaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=A0GArN05QL42PJKkh5e5g8eJMWLUKLJQ2bxbC2/N0XQ=;
-        b=vwhelcVChqI57hSPMnkKehidfSmMQdeUYTCCyRsMJfAZ8ULv9ZbWf3bXAwuRnff1Yg
-         dJkMO/IJeEQ6484P9zQRco3mP5AILOm81vFpVkqyH3SrDjS/c4tCvwsGvGWfh9DDC3Vw
-         XF/DtMQzxm+hNSYmHshjDrOCuITorna2ZoDR21uw0RAkAQrXi8lUidpETEhIBtz0ztCB
-         NvmmzSPDbHxdwr8MJNOV6o65H2mO+MP0H3fz2AEd4bS8akgC6wXrngTzZScY+ICntpOh
-         YPtxXsHSQhQ4wvoqSOI11Tb/fTRePSqfqyjkvOig0D7lNCjFIE5V4tugABe4/Qhio8S5
-         Q2sQ==
+        bh=bswwFH6M3LzgrGioTuBuBml8sz+8WXNnbRNFMSINy5c=;
+        b=YGxV4ZE3xpLO1u85mRfDN8jDod//6FRbwigLJt2Vjd5LEdu9tg/ZzAAoLIoaqB2il8
+         b1eVDuUm9wBQuKx8juVjYtZ+Gbzz3d3Oi7n07kJ1XzmE3wZP//Uj+d0QLI9+/UnHnaZV
+         VA6XJqN3JRoVC1DBKoESSPUXjaUID+DvHv1MbAhGSHDAZobYcsV0OEG66ZMBLFgiRmL9
+         xmrSkI1+aLNf1AO8iN5z1F9As1apuJu7Wo31dHB3hJt+L8gnmSeYe2FO0XBbZ2jXyLYz
+         MtWzhJPG1UmPYgjG31NAufyfPz8rTMec98L8ekUm5TfbAR7Pj9tVX2N+qh/kRNb7bdDK
+         4UKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WaKb39oe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cPfStF8Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n72si1020791ybf.122.2020.11.24.20.12.18
+        by mx.google.com with ESMTPS id g27si955355ybe.211.2020.11.24.20.16.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Nov 2020 20:12:18 -0800 (PST)
+        Tue, 24 Nov 2020 20:16:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WaKb39oe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cPfStF8Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34868 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45560 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1khmAD-0004Av-Rw
-	for alex.bennee@linaro.org; Tue, 24 Nov 2020 23:12:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36300)
+	id 1khmEV-0000JG-Cs
+	for alex.bennee@linaro.org; Tue, 24 Nov 2020 23:16:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1khm56-00055P-EW
- for qemu-arm@nongnu.org; Tue, 24 Nov 2020 23:07:00 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:40709)
+ id 1khm57-00058p-M0
+ for qemu-arm@nongnu.org; Tue, 24 Nov 2020 23:07:01 -0500
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42533)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1khm54-00065f-Mb
- for qemu-arm@nongnu.org; Tue, 24 Nov 2020 23:07:00 -0500
-Received: by mail-pl1-x642.google.com with SMTP id p6so454201plr.7
- for <qemu-arm@nongnu.org>; Tue, 24 Nov 2020 20:06:58 -0800 (PST)
+ id 1khm55-000669-TU
+ for qemu-arm@nongnu.org; Tue, 24 Nov 2020 23:07:01 -0500
+Received: by mail-pl1-x643.google.com with SMTP id s2so447185plr.9
+ for <qemu-arm@nongnu.org>; Tue, 24 Nov 2020 20:06:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=A0GArN05QL42PJKkh5e5g8eJMWLUKLJQ2bxbC2/N0XQ=;
- b=WaKb39oevq8pC/DZQaDhKHTXB2Lkb16p2n10ECBRxvi2+o1kh2KvB2F53K7JbHYSqb
- A3VBAzXqLIp11BaYWzP24ORfgTB7cTSKTAiXgJ5mWaknBnZm7tON7dSf4x/M4Bud6g4y
- URl+gyuMteTjxczZEyKVNnJ9RwYuO6f2PNrKrgKVd9sQOsFBOWbxearUOu17nS112Bfg
- 0uo1cQ59LccSCa22QW5CtcvvXEEYxN2oXpSDbmog4Wz17HJd24IqyuWK4glILR6bboof
- FmJsdPLzkgaDevhU0z5McDc0BEFuyu0tEqimU4yp6SZbVxoR8HJ5n2uftqgwvH/d6dGL
- fdgA==
+ bh=bswwFH6M3LzgrGioTuBuBml8sz+8WXNnbRNFMSINy5c=;
+ b=cPfStF8QWfXHzmeHyUAwYMr95YL+SgbOyg+t/I7RgWFMOjg6Mnj/Uj/PkrlTspdXrr
+ vaweJ4fHkxzT7rTzGDD+8QXxlri67W1A9ePAECiLTQRSHdIGEY9rBnjU+ei7Ox8vkgnH
+ 5qhBHXcknXBh7ZJAeWPJWNdEbX7xwPFR+GrDAbROduL4G2QIhSXa+iovkxal2xkkCYss
+ W1qoV1fle1pV88fz9UM08pzFmw6ezytjI5jR5dgGqB/JSoAOOBvcBJ7Dz6jbhXPR8ZNh
+ iOnOmVG8dCeYATKrSPhHqCCf6TKwEEVuHmTrGZWNJBpFX4PbYHplCduEjR9u41vydADU
+ RFvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=A0GArN05QL42PJKkh5e5g8eJMWLUKLJQ2bxbC2/N0XQ=;
- b=o4w3JLa7r3kJ9bh/G9j/3P45yoDRDBy1IBJ+VDOHyKEN4AEBWHHBdHGWrymYpkjywV
- GsRdv+iwwW87OIow3rI8cne2qkWopB7Z5UKZKh19Ut5tPJiK0bRspaQlXebiJarm1V3s
- SM5R8aYwCXPDW4ielp6z5qd59rukw27gjyoT+tbXdZuPi2SJJDtKvWSXo7Hm6Q6zC82d
- iJr9/nu1LcKDcZGEuVvbagIGY0EI3furxtvXh0vua6ow1scZvR60EMjMW2wzaqDUxCdn
- TBsg1ExR14L2vU9ZeJ1JzxuHBcqg51gVNYSJi9QSGKM5FQU8YvCHOpOy0iQbsmOmKJeA
- lRLA==
-X-Gm-Message-State: AOAM531TphVvK/6VJQru4snHEHz/RGYfk/QUwRZVau9d3VR2VHN0JgbE
- gvM/fQEL5eCL0zt+0hjae5UqhYNN//34rg==
-X-Received: by 2002:a17:902:930a:b029:d8:ca83:3108 with SMTP id
- bc10-20020a170902930ab02900d8ca833108mr1637830plb.60.1606277217482; 
- Tue, 24 Nov 2020 20:06:57 -0800 (PST)
+ bh=bswwFH6M3LzgrGioTuBuBml8sz+8WXNnbRNFMSINy5c=;
+ b=Q780bpXW8CrUeW7i+aPD1BsyE4lJbEJewof4LVUtNeBiuy/NvDCKoDhW+pVrzZBu+O
+ Dq9/VMVB2kMAvBPjsKEj66XAmhQt3FmSSeXSkupFDbDruju8wP0cs/wLRPfgGqM22Q/M
+ MG+nk673+Y2XuaxAS3GiJ0dNUuvlStqyoMK4aR/21T1VxhZVb6W5uGG2NzBjlIKSIXoq
+ imHYoPSMJdQD5G8lc5FAxdXsrasaeTp+pKlgAzmTMKRKRVbNuQJXF8qpqKUTjmah/PEJ
+ LYjJjijI//qGc4kZK2E5lIlNoyhbUkDzKMHfACZw/myKPyYmFJIdoZ7DSTox4JxW3l53
+ 0wwg==
+X-Gm-Message-State: AOAM533isqk9OlyrUtDnRojh/UiFezxki8WD6hvQiXKUmx3bTW99zS0a
+ zHWY1S3c680bdIPkN0o0P8JEGQ==
+X-Received: by 2002:a17:902:ff07:b029:d8:eea2:afae with SMTP id
+ f7-20020a170902ff07b02900d8eea2afaemr1604511plj.18.1606277218752; 
+ Tue, 24 Nov 2020 20:06:58 -0800 (PST)
 Received: from localhost.localdomain ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id f7sm447806pfe.30.2020.11.24.20.06.56
+ by smtp.gmail.com with ESMTPSA id f7sm447806pfe.30.2020.11.24.20.06.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Nov 2020 20:06:56 -0800 (PST)
+ Tue, 24 Nov 2020 20:06:58 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 10/11] target/arm: Fix decode of align in VLDST_single
-Date: Tue, 24 Nov 2020 20:06:41 -0800
-Message-Id: <20201125040642.2339476-11-richard.henderson@linaro.org>
+Subject: [PATCH 11/11] target/arm: Enforce alignment for VLDn/VSTn (single)
+Date: Tue, 24 Nov 2020 20:06:42 -0800
+Message-Id: <20201125040642.2339476-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201125040642.2339476-1-richard.henderson@linaro.org>
 References: <20201125040642.2339476-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,54 +119,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zlqg/beHMYGH
-
-The encoding of size = 2 and size = 3 had the incorrect decode
-for align, overlapping the stride field.  This error was hidden
-by what should have been unnecessary masking in translate.
+X-TUID: GVXwhnyps1wl
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/neon-ls.decode       | 4 ++--
- target/arm/translate-neon.c.inc | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ target/arm/translate-neon.c.inc | 39 ++++++++++++++++++++++++++-------
+ 1 file changed, 31 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/neon-ls.decode b/target/arm/neon-ls.decode
-index c17f5019e3..0a2a0e15db 100644
---- a/target/arm/neon-ls.decode
-+++ b/target/arm/neon-ls.decode
-@@ -46,7 +46,7 @@ VLD_all_lanes  1111 0100 1 . 1 0 rn:4 .... 11 n:2 size:2 t:1 a:1 rm:4 \
- 
- VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 00 n:2 reg_idx:3 align:1 rm:4 \
-                vd=%vd_dp size=0 stride=1
--VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 01 n:2 reg_idx:2 align:2 rm:4 \
-+VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 01 n:2 reg_idx:2 . align:1 rm:4 \
-                vd=%vd_dp size=1 stride=%imm1_5_p1
--VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 10 n:2 reg_idx:1 align:3 rm:4 \
-+VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 10 n:2 reg_idx:1 . align:2 rm:4 \
-                vd=%vd_dp size=2 stride=%imm1_6_p1
 diff --git a/target/arm/translate-neon.c.inc b/target/arm/translate-neon.c.inc
-index c4be019d9c..330b5fc7b0 100644
+index 330b5fc7b0..160dc3d755 100644
 --- a/target/arm/translate-neon.c.inc
 +++ b/target/arm/translate-neon.c.inc
-@@ -616,7 +616,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-     switch (nregs) {
-     case 1:
-         if (((a->align & (1 << a->size)) != 0) ||
--            (a->size == 2 && ((a->align & 3) == 1 || (a->align & 3) == 2))) {
-+            (a->size == 2 && (a->align == 1 || a->align == 2))) {
-             return false;
+@@ -602,6 +602,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
+     int nregs = a->n + 1;
+     int vd = a->vd;
+     TCGv_i32 addr, tmp;
++    MemOp mop;
+ 
+     if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
+         return false;
+@@ -651,25 +652,47 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
+         return true;
+     }
+ 
++    mop = s->be_data | a->size;
++    if (a->align) {
++        static const MemOp mop_align[] = {
++            MO_ALIGN_2, MO_ALIGN_4, MO_ALIGN_8, MO_ALIGN_16
++        };
++
++        switch (nregs) {
++        case 1:
++            mop |= MO_ALIGN;
++            break;
++        case 2:
++            mop |= mop_align[a->size];
++            break;
++        case 3:
++            /* the align field is repurposed for VLD3 */
++            break;
++        case 4:
++            mop |= mop_align[a->size + a->align];
++            break;
++        default:
++            g_assert_not_reached();
++        }
++    }
++
+     tmp = tcg_temp_new_i32();
+     addr = tcg_temp_new_i32();
+     load_reg_var(s, addr, a->rn);
+-    /*
+-     * TODO: if we implemented alignment exceptions, we should check
+-     * addr against the alignment encoded in a->align here.
+-     */
++
+     for (reg = 0; reg < nregs; reg++) {
+         if (a->l) {
+-            gen_aa32_ld_i32(s, tmp, addr, get_mem_index(s),
+-                            s->be_data | a->size);
++            gen_aa32_ld_i32(s, tmp, addr, get_mem_index(s), mop);
+             neon_store_element(vd, a->reg_idx, a->size, tmp);
+         } else { /* Store */
+             neon_load_element(tmp, vd, a->reg_idx, a->size);
+-            gen_aa32_st_i32(s, tmp, addr, get_mem_index(s),
+-                            s->be_data | a->size);
++            gen_aa32_st_i32(s, tmp, addr, get_mem_index(s), mop);
          }
-         break;
-@@ -631,7 +631,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-         }
-         break;
-     case 4:
--        if ((a->size == 2) && ((a->align & 3) == 3)) {
-+        if (a->size == 2 && a->align == 3) {
-             return false;
-         }
-         break;
+         vd += a->stride;
+         tcg_gen_addi_i32(addr, addr, 1 << a->size);
++
++        /* Subsequent memory operations inherit alignment */
++        mop &= ~MO_AMASK;
+     }
+     tcg_temp_free_i32(addr);
+     tcg_temp_free_i32(tmp);
 -- 
 2.25.1
 

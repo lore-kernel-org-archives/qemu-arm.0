@@ -1,112 +1,99 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6068619lfa;
-        Wed, 21 Oct 2020 14:50:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwQXwsMuT1VvIvfGohW4qnJULbKLsDadEIJcG6M0IRYzNQ916Qvpuv8iGGaMkUM965xtIzP
-X-Received: by 2002:a25:8752:: with SMTP id e18mr8144223ybn.133.1603317017234;
-        Wed, 21 Oct 2020 14:50:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603317017; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp115304lfb;
+        Tue, 24 Nov 2020 18:49:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwgqCo49B6vctmOOO/nKdzpipoJAxFMWGeGu9ALG4IRd5j4icGKL3BQfw8/3130mqnOIJQ6
+X-Received: by 2002:a25:aa45:: with SMTP id s63mr1339066ybi.471.1606272588961;
+        Tue, 24 Nov 2020 18:49:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606272588; cv=none;
         d=google.com; s=arc-20160816;
-        b=XC1KipCac8hErOiu+SPpihb/XOYvDL5ngfTzXE7UMXSwewWTDufSXSPAlWZJwqov/X
-         IcAbfIgH/INFUmPyDJX+eKvghgCqnvMrrReHYNOYUXM/gMB0c9s9sal4fVO5mXoImuBy
-         4N9alWU7SD3QZhT9P8weDEGjWzLlf9PLOqWf7W9WLOKxNG0aINTYJzalWuY6oW61t6Ud
-         UTon42mayVyxuNqfMvRtsQA+fvK5G4ySbBWzKzxAXv20LjCfPZr1xO3wl9mY464E6DSm
-         Js6THPnVFkw61S7cjgNjytzZ4GF92+ByfhCRkO7MDEyHi6F82VzfWuONwDDs3kFNlVp3
-         VDhQ==
+        b=a7nvjhim2dpQ9dODUoEAhhTg/li4xtvGtawlLCoYemCbBn8vfTZUxxILVcBpi61tIf
+         fJpqWmcmYer6wVdjtLUx3hbobMfCFKR563/aEE6Cd6LyIAa/wGHqlNWvLZnrVVQaU2YR
+         KU8w28A+bdxprGq9DV6fMinA/dfLsN8ykAzqrUIjfOmr8MxaPOxVyCEiiE7ejGQNEfyl
+         Mje3yCrOzB9PPOH4hBWuCWZz/APadsIzRG6Y3KnI5tHxqJWhgDH+Nst/JCxxmPXwKl0F
+         L0BfGi9r+laGRgqLSTT7vXa9vk0UOVEH/OBAxdgrnjaU8ieLnnBTAG1NuS6Dwq71HWft
+         g5Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
-         :references:mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=BwRf8aOhgBOVr7hvsp8KXLsUMQ6nV34eGgW9TnD30xk=;
-        b=fSpyBPYt3VB6xUno9dSk4pIhW5dgXn2sk1ASGv9Sg1giyJ0O2BUT5yBowXofyEI6mw
-         0LzRpQr80EdfrCS46smyx1E06YsJMvhEN5zI62CDsvLJxf+Wts9l5csXGBKtuPuD63wo
-         Bw6X0b4SbUC7Lwiv8UoThAXleg1e9cIXCXJA5vSZvSvzJJaYmLmbmNtfRqKUYylpEUp6
-         IbiEKB84TBX3TdZScylZG4jk+slnacbM4dvq5K+3Hdj5va6wAeAKRfQm1KA5EHbufJSe
-         wXYeJv8lUCQbt6NkT/b1BQi8TKLKvMRmN639m6WNzaEiGGHdoj+zcc6y77wcKdxZIStl
-         i/3Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=kXVueYUa/uAk7l7Au0UFCAqyQlpGibXkR/Ajck+DQXw=;
+        b=zOSDwvcbukySBr99kUi8Wre+cD3qlB97kF0u5RCI3MvNkJqvhUYDIcxrqJ0GUWFdET
+         Hwl6oFEgnnM9Bz7Rd8c14JFFQqXCuJf1ssJIX80mhxQJqesvSPhlhJVv1XZ6I28mRF++
+         qfx5lBWAOopnm7VxoVNspE0xYuJtGzTZGBsbgwDYYdwi6WguDwMNzqbOFV7p2/tPBuyN
+         u0ce00rV1OUXCG23lqwE5yUp4SyL9wMvNCinjEliwyFUChiMLlTnCv7zal7/di+jmolC
+         7OUvCh8d7mABRsz8OAl5sAds4874ZfFrd+yv2CaqQJ/pL1PctYw5YoiMRD6skjjCPe94
+         yd1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=cH3wahpW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=fail header.i=@jms.id.au header.s=google header.b=T0sbynXv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 131si3409529ybb.323.2020.10.21.14.50.17
+        by mx.google.com with ESMTPS id p3si864833ybg.329.2020.11.24.18.49.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Oct 2020 14:50:17 -0700 (PDT)
+        Tue, 24 Nov 2020 18:49:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=cH3wahpW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:41672 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=T0sbynXv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51124 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVLzs-00083t-L1
-	for alex.bennee@linaro.org; Wed, 21 Oct 2020 17:50:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48790)
+	id 1khksO-00072v-9d
+	for alex.bennee@linaro.org; Tue, 24 Nov 2020 21:49:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3u6mQXwsKCFQ3E649908A092AA270.yA8C08G-wD89A929G.AD2@flex--hskinnemoen.bounces.google.com>)
- id 1kVLm6-0003Ry-01
- for qemu-arm@nongnu.org; Wed, 21 Oct 2020 17:36:02 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:42218)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1khks0-00072e-Jw; Tue, 24 Nov 2020 21:49:24 -0500
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:35414)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3u6mQXwsKCFQ3E649908A092AA270.yA8C08G-wD89A929G.AD2@flex--hskinnemoen.bounces.google.com>)
- id 1kVLm3-00037l-4N
- for qemu-arm@nongnu.org; Wed, 21 Oct 2020 17:36:01 -0400
-Received: by mail-pl1-x649.google.com with SMTP id h20so1936915plr.9
- for <qemu-arm@nongnu.org>; Wed, 21 Oct 2020 14:35:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=BwRf8aOhgBOVr7hvsp8KXLsUMQ6nV34eGgW9TnD30xk=;
- b=cH3wahpWcAMcqqf48xhznZ0Kdai5dLdm0WMST1umZE53SF6sM8uv1hPAW2os+WB327
- do+okkmLS9mzYN1bhqw5WteZzbFW/rHHxvqT5aFXd3LSIP2fLgR/4kpy/iRD3nz6d0qc
- d7puxfWhNZVcSMyj+QvebrtvzMjZY/aWiviNhsuGgryBjWt9vZB4viN536iWEvddNATK
- b6dh8pDterYOj4wljE/+rvi35fbFxEX1GzluwF4yaz3dSJbf6xVnrU+dbZlReX+M7ops
- 4ilfL5qRRO+uzj/rbmx68CL9wiAxE5ZD51HVVk/AKqdR84WlmB0Voklt1G8Th/XcynCE
- RkuA==
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1khkry-0005jr-NM; Tue, 24 Nov 2020 21:49:24 -0500
+Received: by mail-qk1-x742.google.com with SMTP id v143so1913208qkb.2;
+ Tue, 24 Nov 2020 18:49:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=kXVueYUa/uAk7l7Au0UFCAqyQlpGibXkR/Ajck+DQXw=;
+ b=T0sbynXvxjJlW2mjh707bCTWU8V0Dsga87ovVjeF8E7cAGvB9v8460dSyXMIzpwTy/
+ I7YGrwCjMAdgOWdMubbR0KxaM4GSlM/ulR3SDqWx2OQvzpRMBpv+FCk1iw1Z5IOli5K5
+ 7wgA91/RYLaKC+59/0/5nlrUaOCkXHG0Oz3/U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=BwRf8aOhgBOVr7hvsp8KXLsUMQ6nV34eGgW9TnD30xk=;
- b=ZbBgx2ozC03qqQiQCgSjRVl9ezZXVzRJaVDInK8y3+XiPPQz/TRMA71akUHPTxuzaC
- I97j8C+bWfGuMBXnvaSZ/zyBl2plilNjcTMZ+7Rlt1Bk5RnrHlvod6Y8bRh+0q6y8Aqc
- 15uCJOU6XpVgcwIfcPI+9U7swnL8uDXS2hZZp9LGPfQ1jtP8kBYPEljYaYFq2AfR6/ou
- dVWWp5uyS9ny3t21rdIJRRE82RLaqq67yHOyDfEAYSrfZxKDb4pC6XdDk0Mf/o+sarUP
- ifZX8y5+MRqaLYld7c6ctrh2B/SdZVVafmSgsbRdcks8/IrE/G27JX9hdQDlwNRuafRG
- kugQ==
-X-Gm-Message-State: AOAM530TDWFv5q4BIQimVI/kZmdG4qGdmr+t9g+qUGx7Dmml+ouHFmyF
- tmbLUqJN1Id0gW3uBdqgfoDetvr4x9MoAyEiRg==
-X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
- (user=hskinnemoen job=sendgmr) by
- 2002:a17:902:fe0a:b029:d6:aa7:5220 with
- SMTP id g10-20020a170902fe0ab02900d60aa75220mr1700111plj.16.1603316155224;
- Wed, 21 Oct 2020 14:35:55 -0700 (PDT)
-Date: Wed, 21 Oct 2020 14:35:43 -0700
-In-Reply-To: <20201021213544.3399271-1-hskinnemoen@google.com>
-Message-Id: <20201021213544.3399271-5-hskinnemoen@google.com>
-Mime-Version: 1.0
-References: <20201021213544.3399271-1-hskinnemoen@google.com>
-X-Mailer: git-send-email 2.29.0.rc1.297.gfa9743e501-goog
-Subject: [PATCH v2 4/5] hw/arm/npcm7xx: Add EHCI and OHCI controllers
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, venture@google.com, wuhaotsh@google.com, 
- Havard Skinnemoen <hskinnemoen@google.com>, Gerd Hoffmann <kraxel@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=kXVueYUa/uAk7l7Au0UFCAqyQlpGibXkR/Ajck+DQXw=;
+ b=Aie8Z9t4E/Kx+APUK4+gdQ9oUjdZKLlh4w4Kw5JsCNzWNhoFNLElyz4YUhyqbKKtGX
+ jfCaM+yaFinA2ivondYMfK9syCeQ7nzYvQdyR7BQa2apwhi3d+yPI8aGBdYeoJjsZF89
+ pYptc3wbZc03rU3CJVSj7ul7drKE/b1DKPsLUAvKteFbpB++6Y83315C8FFngjOmTfyJ
+ MjTprMPr46q4HX8wn+RYuE3FBuNEu6HfNTG+ohrpBLu3QFJIwQwTdzi1+cYk+JIVNGsf
+ IpGkB7beMSisIff7RxHdXpJs86ewfzSq2ZtPai7hAFIVSEP/FsarlaOIWVtFTW0hbHNf
+ N3sw==
+X-Gm-Message-State: AOAM5301T335zTGERyqove/wB97R1PWmX6GcVc4WQUmJ9OSDWD2BtQUa
+ NGGch4YlAELvpXSGC1niEE7gL1xHVenirMmQTGI=
+X-Received: by 2002:a37:664d:: with SMTP id a74mr1330409qkc.487.1606272560639; 
+ Tue, 24 Nov 2020 18:49:20 -0800 (PST)
+MIME-Version: 1.0
+References: <20201120161547.740806-1-clg@kaod.org>
+ <20201120161547.740806-3-clg@kaod.org>
+In-Reply-To: <20201120161547.740806-3-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Wed, 25 Nov 2020 02:49:08 +0000
+Message-ID: <CACPK8Xf_Q2_r=B54hvxmq4ezwmAndDPqGqOh9+YGFDCb4jfqig@mail.gmail.com>
+Subject: Re: [PATCH for-6.0 2/2] aspeed/smc: Add extra controls to request DMA
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3u6mQXwsKCFQ3E649908A092AA270.yA8C08G-wD89A929G.AD2@flex--hskinnemoen.bounces.google.com;
- helo=mail-pl1-x649.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::742;
+ envelope-from=joel.stan@gmail.com; helo=mail-qk1-x742.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,197 +106,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
-From: Havard Skinnemoen via <qemu-arm@nongnu.org>
-X-TUID: GRyyIAzlGnyf
+X-TUID: NTuuCCyNxbpO
 
-The NPCM730 and NPCM750 chips have a single USB host port shared between
-a USB 2.0 EHCI host controller and a USB 1.1 OHCI host controller. This
-adds support for both of them.
+On Fri, 20 Nov 2020 at 16:16, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> The controller has a set of hidden bits to request/grant DMA access.
 
-Testing notes:
-  * With -device usb-kbd, qemu will automatically insert a full-speed
-    hub, and the keyboard becomes controlled by the OHCI controller.
-  * With -device usb-kbd,bus=usb-bus.0,port=1, the keyboard is directly
-    attached to the port without any hubs, and the device becomes
-    controlled by the EHCI controller since it's high speed capable.
-  * With -device usb-kbd,bus=usb-bus.0,port=1,usb_version=1, the
-    keyboard is directly attached to the port, but it only advertises
-    itself as full-speed capable, so it becomes controlled by the OHCI
-    controller.
+Do you have the ast2600 datasheet? It describes these bits:
 
-In all cases, the keyboard device enumerates correctly.
+31 RW DMA Request
 
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
----
- docs/system/arm/nuvoton.rst |  2 +-
- hw/usb/hcd-ehci.h           |  1 +
- include/hw/arm/npcm7xx.h    |  4 ++++
- hw/arm/npcm7xx.c            | 27 +++++++++++++++++++++++++--
- hw/usb/hcd-ehci-sysbus.c    | 19 +++++++++++++++++++
- 5 files changed, 50 insertions(+), 3 deletions(-)
+Write SPIR80 =3D 0xAEED0000 to set this bit ot '1'.
+And hardware will clear the request to '0' after DMA done, or FW can
+clear to '0' by writing SPIR80 =3D 0xDEEA0000.
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index 4342434df4..99fc61c740 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -39,6 +39,7 @@ Supported devices
-  * OTP controllers (no protection features)
-  * Flash Interface Unit (FIU; no protection features)
-  * Random Number Generator (RNG)
-+ * USB host (USBH)
- 
- Missing devices
- ---------------
-@@ -54,7 +55,6 @@ Missing devices
-    * eSPI slave interface
- 
-  * Ethernet controllers (GMAC and EMC)
-- * USB host (USBH)
-  * USB device (USBD)
-  * SMBus controller (SMBF)
-  * Peripheral SPI controller (PSPI)
-diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-index fd122dd4cd..a173707d9b 100644
---- a/hw/usb/hcd-ehci.h
-+++ b/hw/usb/hcd-ehci.h
-@@ -344,6 +344,7 @@ struct EHCIPCIState {
- #define TYPE_PLATFORM_EHCI "platform-ehci-usb"
- #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
- #define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
-+#define TYPE_NPCM7XX_EHCI "npcm7xx-ehci-usb"
- #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
- #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
- #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 761f9b987e..aeee1beaaa 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -25,6 +25,8 @@
- #include "hw/nvram/npcm7xx_otp.h"
- #include "hw/timer/npcm7xx_timer.h"
- #include "hw/ssi/npcm7xx_fiu.h"
-+#include "hw/usb/hcd-ehci.h"
-+#include "hw/usb/hcd-ohci.h"
- #include "target/arm/cpu.h"
- 
- #define NPCM7XX_MAX_NUM_CPUS    (2)
-@@ -77,6 +79,8 @@ typedef struct NPCM7xxState {
-     NPCM7xxOTPState     fuse_array;
-     NPCM7xxMCState      mc;
-     NPCM7xxRNGState     rng;
-+    EHCISysBusState     ehci;
-+    OHCISysBusState     ohci;
-     NPCM7xxFIUState     fiu[2];
- } NPCM7xxState;
- 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index cb4db41c54..c1d122576b 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -46,6 +46,10 @@
- #define NPCM7XX_MC_BA           (0xf0824000)
- #define NPCM7XX_RNG_BA          (0xf000b000)
- 
-+/* USB Host modules */
-+#define NPCM7XX_EHCI_BA         (0xf0806000)
-+#define NPCM7XX_OHCI_BA         (0xf0807000)
-+
- /* Internal AHB SRAM */
- #define NPCM7XX_RAM3_BA         (0xc0008000)
- #define NPCM7XX_RAM3_SZ         (4 * KiB)
-@@ -90,6 +94,8 @@ enum NPCM7xxInterrupt {
-     NPCM7XX_WDG0_IRQ            = 47,   /* Timer Module 0 Watchdog */
-     NPCM7XX_WDG1_IRQ,                   /* Timer Module 1 Watchdog */
-     NPCM7XX_WDG2_IRQ,                   /* Timer Module 2 Watchdog */
-+    NPCM7XX_EHCI_IRQ            = 61,
-+    NPCM7XX_OHCI_IRQ            = 62,
- };
- 
- /* Total number of GIC interrupts, including internal Cortex-A9 interrupts. */
-@@ -263,6 +269,9 @@ static void npcm7xx_init(Object *obj)
-         object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7XX_TIMER);
-     }
- 
-+    object_initialize_child(obj, "ehci", &s->ehci, TYPE_NPCM7XX_EHCI);
-+    object_initialize_child(obj, "ohci", &s->ohci, TYPE_SYSBUS_OHCI);
-+
-     QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_fiu) != ARRAY_SIZE(s->fiu));
-     for (i = 0; i < ARRAY_SIZE(s->fiu); i++) {
-         object_initialize_child(obj, npcm7xx_fiu[i].name, &s->fiu[i],
-@@ -380,6 +389,22 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->rng), &error_abort);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->rng), 0, NPCM7XX_RNG_BA);
- 
-+    /* USB Host */
-+    object_property_set_bool(OBJECT(&s->ehci), "companion-enable", true,
-+                             &error_abort);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->ehci), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ehci), 0, NPCM7XX_EHCI_BA);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ehci), 0,
-+                       npcm7xx_irq(s, NPCM7XX_EHCI_IRQ));
-+
-+    object_property_set_str(OBJECT(&s->ohci), "masterbus", "usb-bus.0",
-+                            &error_abort);
-+    object_property_set_uint(OBJECT(&s->ohci), "num-ports", 1, &error_abort);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->ohci), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ohci), 0, NPCM7XX_OHCI_BA);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci), 0,
-+                       npcm7xx_irq(s, NPCM7XX_OHCI_IRQ));
-+
-     /*
-      * Flash Interface Unit (FIU). Can fail if incorrect number of chip selects
-      * specified, but this is a programming error.
-@@ -464,8 +489,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.mcphy",        0xf05f0000,  64 * KiB);
-     create_unimplemented_device("npcm7xx.gmac1",        0xf0802000,   8 * KiB);
-     create_unimplemented_device("npcm7xx.gmac2",        0xf0804000,   8 * KiB);
--    create_unimplemented_device("npcm7xx.ehci",         0xf0806000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.ohci",         0xf0807000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.vcd",          0xf0810000,  64 * KiB);
-     create_unimplemented_device("npcm7xx.ece",          0xf0820000,   8 * KiB);
-     create_unimplemented_device("npcm7xx.vdma",         0xf0822000,   8 * KiB);
-diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
-index 3730736540..e3758db1b1 100644
---- a/hw/usb/hcd-ehci-sysbus.c
-+++ b/hw/usb/hcd-ehci-sysbus.c
-@@ -147,6 +147,24 @@ static const TypeInfo ehci_aw_h3_type_info = {
-     .class_init    = ehci_aw_h3_class_init,
- };
- 
-+static void ehci_npcm7xx_class_init(ObjectClass *oc, void *data)
-+{
-+    SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    sec->capsbase = 0x0;
-+    sec->opregbase = 0x10;
-+    sec->portscbase = 0x44;
-+    sec->portnr = 1;
-+    set_bit(DEVICE_CATEGORY_USB, dc->categories);
-+}
-+
-+static const TypeInfo ehci_npcm7xx_type_info = {
-+    .name          = TYPE_NPCM7XX_EHCI,
-+    .parent        = TYPE_SYS_BUS_EHCI,
-+    .class_init    = ehci_npcm7xx_class_init,
-+};
-+
- static void ehci_tegra2_class_init(ObjectClass *oc, void *data)
- {
-     SysBusEHCIClass *sec = SYS_BUS_EHCI_CLASS(oc);
-@@ -269,6 +287,7 @@ static void ehci_sysbus_register_types(void)
-     type_register_static(&ehci_platform_type_info);
-     type_register_static(&ehci_exynos4210_type_info);
-     type_register_static(&ehci_aw_h3_type_info);
-+    type_register_static(&ehci_npcm7xx_type_info);
-     type_register_static(&ehci_tegra2_type_info);
-     type_register_static(&ehci_ppc4xx_type_info);
-     type_register_static(&ehci_fusbh200_type_info);
--- 
-2.29.0.rc1.297.gfa9743e501-goog
+30 RO DMA Grant
 
+0: DMA is not allowed to be used. All DMA related control registers
+are not allowed to be written.
+1: DMA is granted to be used.
+
+Do you want to add the magic behavior to your model?
+
+>
+> Cc: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+>  hw/ssi/aspeed_smc.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index e3d5e26058c0..c1557ef5d848 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -127,6 +127,8 @@
+>
+>  /* DMA Control/Status Register */
+>  #define R_DMA_CTRL        (0x80 / 4)
+> +#define   DMA_CTRL_REQUEST      (1 << 31)
+> +#define   DMA_CTRL_GRANT        (1 << 30)
+>  #define   DMA_CTRL_DELAY_MASK   0xf
+>  #define   DMA_CTRL_DELAY_SHIFT  8
+>  #define   DMA_CTRL_FREQ_MASK    0xf
+> @@ -1237,6 +1239,11 @@ static void aspeed_smc_dma_done(AspeedSMCState *s)
+>
+>  static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
+>  {
+> +    if (dma_ctrl & DMA_CTRL_REQUEST) {
+> +            s->regs[R_DMA_CTRL] =3D dma_ctrl | DMA_CTRL_GRANT;
+> +            return;
+> +    }
+> +
+>      if (!(dma_ctrl & DMA_CTRL_ENABLE)) {
+>          s->regs[R_DMA_CTRL] =3D dma_ctrl;
+>
+> --
+> 2.26.2
+>

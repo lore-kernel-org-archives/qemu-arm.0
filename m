@@ -1,72 +1,72 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp864821lfb;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp864836lfb;
+        Wed, 25 Nov 2020 13:36:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxBgNRfe9aWIziihV7WHj6URZnN2trHUAfYLVUFWY1TEzcE1/2N3kof65uvUdHLiQT6M1yu
+X-Received: by 2002:a17:90b:e0a:: with SMTP id ge10mr6559923pjb.211.1606340195771;
         Wed, 25 Nov 2020 13:36:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzqLP8qzvBxRoIboinAhwpzlLxruRXXYM9FIFo1Lxwb7Z1niYD/G5ipy9/QHMmj+Snc5DQS
-X-Received: by 2002:a17:90a:bd16:: with SMTP id y22mr6318211pjr.203.1606340194998;
-        Wed, 25 Nov 2020 13:36:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606340194; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1606340195; cv=none;
         d=google.com; s=arc-20160816;
-        b=fpBB2EeHJciX/v0rOe1LzH8JlHRXqvFpKyqgm1skzCylMKC67fNdsW38qxTbtoBSqZ
-         TRNjUeUpNw9WgE3mwZgM5rodZN2tAgOJB5TewMhK4DuXAb7o5LUIoRHU1U0hwheaa+EB
-         rA7JHrNEgRGqPI7uO62zemaG1CGym6104auclzqe71jEu9K0DcoQ73ld1/XTVPAzFZ4H
-         hTHR9zFhZoIaELbkP/+5hsoxTyFHPoIROWMKgyqU1O5G2S+lRxVLq2KYffRNXGMQaoL2
-         QSgA5oMLMt09oHurlmHZZUYkg1KVRvSSke6T7hIh2x8t4+so5KmbQr3INTA0tX9jL2GU
-         bG7g==
+        b=cMOq7yv40Vdm8hBo8sf1QPqgCUK7KcgvZuXwbFDdCZefz/HprxLLA4XRnA6BpH5xI5
+         nCv3K8UC2pC0jA8cmdk2Ir0hWRX1YGpkgXJV2q0da3Moo665hBIlH8M/DBhAVOzogeOX
+         6NKntfA/CNLVYegYRI++LyGDkTjl0zcU2Sdg+zVGRyCZ+RDzDRbQwvo0vS/GsV5ETKw3
+         R6sMUbGE8j9zzmPK6p+Ado/+NuqsZpI5Qmy33BsxK08dBOphmJmdzZzAdSCIsSRZgsDH
+         e4Z9tMQTLlHjhZrntiRfmkeq+V3C8/eMaMc6Xf/992N7edok9ol6MjExfN3/0bPLLcER
+         +zbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=vGYL+yzMLYVHJC3s8eX4nzNsiu+mJjDkko6IjwYkb1A=;
-        b=JFK6HysToHtiy6HYXYSAigpKofu0CTYvCwdrjYTBmGIn2aEPfmsrn3KDLGpqubbrBF
-         mvb86sZCHakMx1KS/RylyBsZLXo7sn4ufyQIBEqwjff+S/5agnQhWEovLivaUhikXhmU
-         UgnB8etQfkc6wtp26rTeid1D4qe7wPLhEZrd2SeCr44PUt9zqagZYaE3vWqgVL46lmNK
-         37UVqzN13+MYJ0c08MoAAFcU6ZjC5T5sm+a6IiW0yBxSDRfOvbaHwah3AciPVH7P9cLw
-         4cSRHZIf+IPheINIVSBp1e8yMBcDXEbwn+/zQW8RUWcD7MfxinN1aJqjpSOPH04MqxYk
-         QWeg==
+        bh=Cayx0LMpRbGoW11vUGACsJCxYxfI6jR9yWeom47DT7w=;
+        b=dw4yn0b9of5TGNtkdVK/94Ib/IYTXvQUkk8OwwTuHHYcvIAvvz1cLZXiiny/UZQoo0
+         /LVbmZkpUW3z4cuAjITjItElRzLOCeMPKWPsZjW5wEwNPBOplkijmnWxsOoWfGuiHMBY
+         cMf+7KF4zKS1F0fwNzrVrUs72qgJT+5xAZa+PvuX4pD+enelb5T3dyaQfI0YenmIZjXZ
+         sofO5FydIs29dpeTjdCQtA3mJy6ujJ+W2G52TyHhYMyK8IQ5gcDttvm/hQaQ2mi9h/mu
+         4ygWPS2k5QTy/ZRvFxI0A3t13yvjzu4EEk2Fbdwcue86vTlvCkwVDEaOZDmMuR224apS
+         HJVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=YL6SMk4T;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=AybZBxEd;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=ooRBkaYO;
+       dkim=pass header.i=@keithp.com header.s=mail header.b="Pb/e9FqA";
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Return-Path: <keithp@keithp.com>
 Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id a14si3265322pga.370.2020.11.25.13.36.34
+        by mx.google.com with ESMTPS id k14si3059726pgt.384.2020.11.25.13.36.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2020 13:36:34 -0800 (PST)
+        Wed, 25 Nov 2020 13:36:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=YL6SMk4T;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=AybZBxEd;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=ooRBkaYO;
+       dkim=pass header.i=@keithp.com header.s=mail header.b="Pb/e9FqA";
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 959963F2E291;
-	Wed, 25 Nov 2020 13:36:33 -0800 (PST)
+	by elaine.keithp.com (Postfix) with ESMTP id 165343F2E28B;
+	Wed, 25 Nov 2020 13:36:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1606340193; bh=J0co6Q1vvgc8Jd0e8SYQj/3vWhrlTCZVfePzl9fHZPs=;
+	t=1606340194; bh=Cw84Eb20GftlPfR2b4GGp2hGK6fNq0OdbxjdyxpyqIY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YL6SMk4Tx+GNfe1/7NISeGih86kPAnHHKLyNGDkffUDURhh6jKVzFmTccYW8t6Xok
-	 tVnDcT2XwFSJ2940afIaZoZa69VPhaJoTl5coVJkoJBNSSEImP9TG7gTrxXTGUPpPr
-	 cTwxNLk/Ya7+KbVMIQ7SpHLqrN47GRHLiXM2BVMUt5TZTebGGqAX+6UK/0dokKpjPn
-	 g410F2SsGqPgQHqa6I2SpQR3KXS6FlzZAC+02OZsx1TROms3c0oCT+QO/9KVHUjqp1
-	 Hv4TI83IFhKnI4MIZpUSLMyOr+yo3bxN1xdjyN7kG3qsAVPMdZko1uI67OA2o22w8U
-	 J1GuqSOp92zGw==
+	b=ooRBkaYO9o8cYqWlVPe7zarLUNe/qPPBr9F9qol7Z9CZEJf/Jd/5IDmi40qZsxPQT
+	 8Xc/eWdzqxQTF30byqcQ1Rj0VnQXex3xImTYQmMStdfIhJntiE2UT9EJjAFRhCdHda
+	 vBzt/MBRqlPpkTX7OCFm71wDXEl0XHHx+8qkxv6dok/xuzrwLOOHeYLFOznvbnQOa/
+	 2b8ElsS774lbT4pvmXSTa0/EDxKBytYwtZZqG0dtIufFzX8onnqblqYVpiXRJbAaMf
+	 Qb+736Q3Pbs8rpvmbb/RK7GsbLPEUtqJHR3qRFKchg30dhs3RWg5jGagsnUCkIN6+o
+	 y46nw3LuLtJIA==
 X-Virus-Scanned: Debian amavisd-new at keithp.com
 Received: from elaine.keithp.com ([127.0.0.1])
 	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id vPNEEQmJ2HBk; Wed, 25 Nov 2020 13:36:33 -0800 (PST)
+	with LMTP id 9-WVyI-M0toE; Wed, 25 Nov 2020 13:36:33 -0800 (PST)
 Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id BAC323F2E28B;
+	by elaine.keithp.com (Postfix) with ESMTPSA id D16493F2E28D;
 	Wed, 25 Nov 2020 13:36:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1606340191; bh=J0co6Q1vvgc8Jd0e8SYQj/3vWhrlTCZVfePzl9fHZPs=;
+	t=1606340191; bh=Cw84Eb20GftlPfR2b4GGp2hGK6fNq0OdbxjdyxpyqIY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AybZBxEdusU8xZeG2JNQSQPKtFwQCEt12ZT8pVigybZVDBIx6AGD5wqgPO8TuASEK
-	 wUy/i9mXJx9UIsDt1Y3ldIvKkO+ZH2DygPHIU/z/h2XbAxD/u7SpkDcl3rb9F1n8BZ
-	 NiDtlKMrssVg7bgZtOF7nySvVa68eEhFoBjb0adFJkdNpayqH2bK4+wyxuPLI2GTc3
-	 /dXhnzI34ApKoezKVwY+d9/oU/B4fdZHt+K7I5p0fo2YVy9LnXQyVTLGlCmWN7axv2
-	 szYqCqqgWILwrezbJopw889KvhEqKan4BQ6YIeRy79eukofAJRD8ywmVDJLsf2fB09
-	 7Jsi37+B3uPoA==
+	b=Pb/e9FqAYFnbrb+spiZKTq66SzJZiP3ORQEPM1Le4kR4VD+JqkgVuoONdJUeG4c5O
+	 t2eFVVjMFC5EAoz3PEaSmwgkIfUrrbWLmBKn6uZjTrnWBCHM/814KmTiNOAFmmiDYc
+	 HFnPncBgfus8dAF61TOKmEiVOYJ+0LTEt3cvouMTaw+oSuPcY3uy8xD9EZG9U8jIYS
+	 2nR9zl7pDX3ECSKEafWCdtAx3/TpByY4LRGqwA/mGKo82CSCrNmMRWbWsQWST60zmu
+	 KF7OjtIcMwsqL85BAYxzjyvupwUaySVoexjbsTV15Njb3MG2xbVWgTanaGK77tBzVy
+	 PV9Nhi7f3dYxw==
 Received: by keithp.com (Postfix, from userid 1000)
-	id 9CC4115821C4; Wed, 25 Nov 2020 13:36:31 -0800 (PST)
+	id A9DE215821C6; Wed, 25 Nov 2020 13:36:31 -0800 (PST)
 From: Keith Packard <keithp@keithp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -79,85 +79,113 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-riscv@nongnu.org,
 	Sagar Karandikar <sagark@eecs.berkeley.edu>,
 	Keith Packard <keithp@keithp.com>
-Subject: [PATCH 4/8] semihosting: Support SYS_HEAPINFO when env->boot_info is not set
-Date: Wed, 25 Nov 2020 13:36:13 -0800
-Message-Id: <20201125213617.2496935-5-keithp@keithp.com>
+Subject: [PATCH 6/8] semihosting: Implement SYS_ELAPSED and SYS_TICKFREQ
+Date: Wed, 25 Nov 2020 13:36:15 -0800
+Message-Id: <20201125213617.2496935-7-keithp@keithp.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201125213617.2496935-1-keithp@keithp.com>
 References: <20201125213617.2496935-1-keithp@keithp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 5GQaCWNcsDS0
+X-TUID: QEcR3Tv9SeRV
 
-env->boot_info is only set in some ARM startup paths, so we cannot
-rely on it to support the SYS_HEAPINFO semihosting function. When not
-available, fallback to finding a RAM memory region containing the
-current stack and use the base of that.
+These are part of Semihosting for AArch32 and AArch64 Release 2.0
 
 Signed-off-by: Keith Packard <keithp@keithp.com>
 ---
- hw/semihosting/common-semi.c | 42 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 41 insertions(+), 1 deletion(-)
+ hw/semihosting/common-semi.c | 16 ++++++++++++++++
+ include/qemu/timer.h         |  2 ++
+ util/qemu-timer-common.c     |  4 ++++
+ 3 files changed, 22 insertions(+)
 
 diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index 27bdfd0e83..ddfa448cc2 100644
+index 2b6a3fd9fd..c84b0d906b 100644
 --- a/hw/semihosting/common-semi.c
 +++ b/hw/semihosting/common-semi.c
-@@ -133,6 +133,35 @@ typedef struct GuestFD {
+@@ -38,6 +38,7 @@
+ #include "hw/semihosting/console.h"
+ #include "hw/semihosting/common-semi.h"
+ #include "qemu/log.h"
++#include "qemu/timer.h"
+ #ifdef CONFIG_USER_ONLY
+ #include "qemu.h"
  
- static GArray *guestfd_array;
+@@ -69,6 +70,8 @@
+ #define TARGET_SYS_EXIT        0x18
+ #define TARGET_SYS_SYNCCACHE   0x19
+ #define TARGET_SYS_EXIT_EXTENDED 0x20
++#define TARGET_SYS_ELAPSED     0x30
++#define TARGET_SYS_TICKFREQ    0x31
  
-+#ifndef CONFIG_USER_ONLY
-+#include "exec/address-spaces.h"
-+/*
-+ * Find the base of a RAM region containing the specified address
-+ */
-+static inline hwaddr
-+common_semi_find_region_base(hwaddr addr)
-+{
-+    MemoryRegion *subregion;
-+
-+    /*
-+     * Find the chunk of R/W memory containing the address.  This is
-+     * used for the SYS_HEAPINFO semihosting call, which should
-+     * probably be using information from the loaded application.
-+     */
-+    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
-+                   subregions_link) {
-+        if (subregion->ram && !subregion->readonly) {
-+            Int128 top128 = int128_add(int128_make64(subregion->addr),
-+                                       subregion->size);
-+            if (subregion->addr <= addr && int128_lt(addr, top128)) {
-+                return subregion->addr;
-+            }
+ /* ADP_Stopped_ApplicationExit is used for exit(0),
+  * anything else is implemented as exit(1) */
+@@ -832,6 +835,7 @@ target_ulong do_common_semihosting(CPUState *cs)
+     uint32_t ret;
+     uint32_t len;
+     GuestFD *gf;
++    int64_t elapsed;
+ 
+     (void) env; /* Used implicitly by arm lock_user macro */
+     nr = common_semi_arg(cs, 0) & 0xffffffffU;
+@@ -1241,6 +1245,18 @@ target_ulong do_common_semihosting(CPUState *cs)
+         }
+         gdb_exit(cs->env_ptr, ret);
+         exit(ret);
++    case TARGET_SYS_ELAPSED:
++        elapsed = get_clock() - clock_start;
++        if (sizeof(target_ulong) == 8) {
++            SET_ARG(0, elapsed);
++        } else {
++            SET_ARG(0, (uint32_t) elapsed);
++            SET_ARG(1, (uint32_t) (elapsed >> 32));
 +        }
-+    }
-+    return 0;
-+}
-+#endif
++        return 0;
++    case TARGET_SYS_TICKFREQ:
++        /* qemu always uses nsec */
++        return 1000000000;
+     case TARGET_SYS_SYNCCACHE:
+         /*
+          * Clean the D-cache and invalidate the I-cache for the specified
+diff --git a/include/qemu/timer.h b/include/qemu/timer.h
+index bdecc5b41f..ca6fae51f1 100644
+--- a/include/qemu/timer.h
++++ b/include/qemu/timer.h
+@@ -806,6 +806,8 @@ static inline int64_t get_clock_realtime(void)
+     return tv.tv_sec * 1000000000LL + (tv.tv_usec * 1000);
+ }
+ 
++extern int64_t clock_start;
 +
- #ifdef TARGET_ARM
- static inline target_ulong
- common_semi_arg(CPUState *cs, int argno)
-@@ -171,7 +200,18 @@ common_semi_rambase(CPUState *cs)
- {
-     CPUArchState *env = cs->env_ptr;
-     const struct arm_boot_info *info = env->boot_info;
--    return info->loader_start;
-+    target_ulong sp;
+ /* Warning: don't insert tracepoints into these functions, they are
+    also used by simpletrace backend and tracepoints would cause
+    an infinite recursion! */
+diff --git a/util/qemu-timer-common.c b/util/qemu-timer-common.c
+index baf3317f74..cc1326f726 100644
+--- a/util/qemu-timer-common.c
++++ b/util/qemu-timer-common.c
+@@ -27,6 +27,8 @@
+ /***********************************************************/
+ /* real time host monotonic timer */
+ 
++int64_t clock_start;
 +
-+    if (info) {
-+        return info->loader_start;
-+    }
-+
-+    if (is_a64(env)) {
-+        sp = env->xregs[31];
-+    } else {
-+        sp = env->regs[13];
-+    }
-+    return common_semi_find_region_base(sp);
+ #ifdef _WIN32
+ 
+ int64_t clock_freq;
+@@ -41,6 +43,7 @@ static void __attribute__((constructor)) init_get_clock(void)
+         exit(1);
+     }
+     clock_freq = freq.QuadPart;
++    clock_start = get_clock();
+ }
+ 
+ #else
+@@ -55,5 +58,6 @@ static void __attribute__((constructor)) init_get_clock(void)
+     if (clock_gettime(CLOCK_MONOTONIC, &ts) == 0) {
+         use_rt_clock = 1;
+     }
++    clock_start = get_clock();
  }
  #endif
- 
 -- 
 2.29.2

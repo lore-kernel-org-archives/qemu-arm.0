@@ -1,108 +1,77 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1391625lfb;
-        Thu, 26 Nov 2020 04:33:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyp1D77wPBm/BNZ8lTs6VoQSKnBOVKuCFrPswU0pVHeET9SHLp+RJeuIHDBUBFFbl/y9Cdu
-X-Received: by 2002:a25:c6d7:: with SMTP id k206mr4444686ybf.244.1606394031463;
-        Thu, 26 Nov 2020 04:33:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606394031; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1341139lfb;
+        Thu, 26 Nov 2020 03:23:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwniBGQNiH8sxfhEtdPD0v4cJ3+pbhtS7Yk/mluZ7Y23d4sraXgnu3rRgQ1NWYFxZnt+EDv
+X-Received: by 2002:a25:7416:: with SMTP id p22mr2814575ybc.287.1606389839242;
+        Thu, 26 Nov 2020 03:23:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606389839; cv=none;
         d=google.com; s=arc-20160816;
-        b=L51BKDqvbN6FIpmQjBB+vTvihx4hsbzDEhKJDOAyJF9xCLj0z1lSU2D+8pb1rSRtxF
-         DvDdYltNUXtJP0j9jfy/AWEhWQp7a/m5E101Dw9S98vzsj09A5i8m862EkjoqMz3XSd/
-         dnrvFHDkm6IE/3+Ie3lpFVlJBsDyC6q3C6NzMtoHQekPqA9NMWz7nM09nQ2fBxFutXU9
-         p8zIqmGu2QQnDJt0DuTRQxiBtcuU86aXWDNNuPjnLdWIUNMAKTrxEdwxhoDP0jnWoVoQ
-         1QFv+5HjLiuDI8ML3JpW2x/pMg234I1/yh2o55r8djXI+r8/7taDBHpxKt+lOVW2s9PT
-         VunA==
+        b=k0RQfbXnsi37YZVRny63dvLhk7KSpfgct8SF2KoRNQi2Q6gL7ZkmnGarITyBfouAXF
+         J2+L+wzyXt+L9UO1LA0U69YjcrxECbtJOXRbLC9Qr05anIoAO4NKR6j2UlrMXzAQcWu7
+         7WWdb9tT/N7pniOzltNG7Cr0J8mWw0PcTpWNBpMs83BPxNULHQQQMqj0dsVen8IYHOAY
+         YJWt03t7CeA7/sh8STh05F3c8eILzUrI763gvs8Bj/JcGGP5HXoKA/kaIC78gLeTEGEv
+         RUo5OC/VVVRkKFx8/WIikkqwRRieNDBOX08gsxr1ySIW/6T8DlYjEP1bldjg9m/DTc7c
+         GTRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Wp20gGN64Tow1auANnn2ZbI6aHh2rKF4jqsw+EjR4qM=;
-        b=ZKhIlP7jEg6BF+fmd5POQHFDHCplalBG2af5OKxikUMrkkoqoYcjJKdZBCaEo+Na3O
-         fxoLbl+trWtX/szKZ+J8/7hQbapnrGRuKM/icl+Q7PSSO4bTtMqkHC6jE4s3sK4Toh/Y
-         kUNvZPjNqGp7qGthuel6Uq1fa52lRFmI7MSEmgDxGU+RO6Uk4I3IC9RW53+fmsKhlq9F
-         +6SNtmyc/ytdfcj2sCE9i30aX1+0lAa5c2TTYgL2+g4MY3YfQpfS/KWmNo/+jj/x+6xk
-         qCJBmEuFzJQ6uJuB8QCmTEgB7tJ01MkAqSyG21G5pui+s7CUCRYSOUi78aWaZ7pYY7TT
-         sSOA==
+         :mime-version:message-id:date:subject:to:from;
+        bh=MP+4Iu+qUeKNt1r7UZNbMzl5GmVwv/J+JHGnhkw1oZw=;
+        b=nzgLUcmitnZ3hIM+ILhmhtl0YK24v2uyQycQteqBkm/y+Hz848kL2qdSgHcQQ8y//t
+         TvJ+2Zt4Wkhrtj2vFEuiONGDLtRmt9ZQq/5lsRUncUbeWBybj7F36k0gu71qsg7Y9uxL
+         r7wB9r/faiohXPzGdwfXNbmf6TnwOB+GJc/KPnJwXHct08iEZD9qMJSCQTzzk/adgPCS
+         hAqtqUIkBT8K4sq461Knx4esELoEe4BRb/l5iskqCnUweqiDSFw9U9mCYDSrlJHOf03b
+         c/CepijuptxizQ643Ejv2EXXDGViISD+ISB0pe/BXs4n8JaIF5XXWbY4OR/6hiWoBfq7
+         yt0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TuQhfkkm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k16si5707803ybj.82.2020.11.26.04.33.51
+        by mx.google.com with ESMTPS id p3si5602454ybl.188.2020.11.26.03.23.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Nov 2020 04:33:51 -0800 (PST)
+        Thu, 26 Nov 2020 03:23:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TuQhfkkm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55074 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kiGT8-0002pW-SV
-	for alex.bennee@linaro.org; Thu, 26 Nov 2020 07:33:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56904)
+	id 1kiFNW-0004V7-J8
+	for alex.bennee@linaro.org; Thu, 26 Nov 2020 06:23:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kiGRo-0002Ll-5o
- for qemu-arm@nongnu.org; Thu, 26 Nov 2020 07:32:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:20076)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kiGRk-0001xY-Ot
- for qemu-arm@nongnu.org; Thu, 26 Nov 2020 07:32:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606393943;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Wp20gGN64Tow1auANnn2ZbI6aHh2rKF4jqsw+EjR4qM=;
- b=TuQhfkkm66nlvRdbw3kxgdRU14fwBVSuJtwHqfdSjcIc5N++kpa2yituwEAerMGl+/ZlhW
- MGWD3JG+NsGHk6lwYI1nOYh3Sw9uxQKsl/Y725ycSOBDZ4Gq0z9gB0PVaaA/r9v+GcgTfq
- 5Kl9ORQJBt3kQEBhzUh2LHx1DzXpydw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-416-fZT2qjuFN-CxB0wh3PHDdA-1; Thu, 26 Nov 2020 07:32:20 -0500
-X-MC-Unique: fZT2qjuFN-CxB0wh3PHDdA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 470891005E44;
- Thu, 26 Nov 2020 12:32:16 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-133.ams2.redhat.com [10.36.113.133])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 401B95D6AC;
- Thu, 26 Nov 2020 12:31:56 +0000 (UTC)
-Subject: Re: [PATCH v2 1/6] arch_init: Move QEMU_ARCH definitions to cpu.h
-To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
-References: <20201125205636.3305257-1-ehabkost@redhat.com>
- <20201125205636.3305257-2-ehabkost@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <997c0d21-6111-2920-7b87-499afa7d36bb@redhat.com>
-Date: Thu, 26 Nov 2020 13:31:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kiFNH-0004Uk-43; Thu, 26 Nov 2020 06:23:43 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2158)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kiFND-0003rB-AF; Thu, 26 Nov 2020 06:23:42 -0500
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Chb3L6DgMz749R;
+ Thu, 26 Nov 2020 19:23:10 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.487.0; Thu, 26 Nov 2020
+ 19:23:23 +0800
+From: Alex Chen <alex.chen@huawei.com>
+To: <peter.maydell@linaro.org>, <jcd@tribudubois.net>,
+ <peter.chubb@nicta.com.au>
+Subject: [PATCH 0/5] hw/misc: Fix some bad printf format specifiers
+Date: Thu, 26 Nov 2020 11:11:04 +0000
+Message-ID: <20201126111109.112238-1-alex.chen@huawei.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-In-Reply-To: <20201125205636.3305257-2-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=alex.chen@huawei.com;
+ helo=szxga07-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,37 +84,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Cornelia Huck <cohuck@redhat.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: alex.chen@huawei.com, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cc86zS14E0+M
+X-TUID: 4dqnDITOQ5xh
 
-On 25/11/2020 21.56, Eduardo Habkost wrote:
-> Instead of a collection of #ifdefs on arch_init.c, define
-> QEMU_ARCH inside each cpu.h file.
-> 
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
+Find a lot of bad printf format specifiers in hw/misc, fix them.
 
-Sounds like a good idea to get rid of the #ifdeffery!
+Alex Chen (5):
+  i.MX25: Fix bad printf format specifiers
+  i.MX31: Fix bad printf format specifiers
+  i.MX6: Fix bad printf format specifiers
+  i.MX6ul: Fix bad printf format specifiers
+  misc/omap_sdrc: Fix bad printf format specifiers
 
-Acked-by: Thomas Huth <thuth@redhat.com>
+ hw/misc/imx25_ccm.c  | 12 ++++++------
+ hw/misc/imx31_ccm.c  | 14 +++++++-------
+ hw/misc/imx6_ccm.c   | 20 ++++++++++----------
+ hw/misc/imx6_src.c   |  2 +-
+ hw/misc/imx6ul_ccm.c |  4 ++--
+ hw/misc/imx_ccm.c    |  4 ++--
+ hw/misc/omap_sdrc.c  |  2 +-
+ 7 files changed, 29 insertions(+), 29 deletions(-)
+
+-- 
+2.19.1
 

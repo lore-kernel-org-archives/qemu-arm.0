@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1784938lfb;
-        Thu, 26 Nov 2020 13:50:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxTqFpV7TXL32Y4hLuTqcgwui6++NAPFTUlapSVsWEtZnY99ZyslKOFkIPPRjhjhklfQ9zi
-X-Received: by 2002:a25:df05:: with SMTP id w5mr9745099ybg.20.1606427454133;
-        Thu, 26 Nov 2020 13:50:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606427454; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1785025lfb;
+        Thu, 26 Nov 2020 13:51:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyN+v+LN5holVSgL7KrC899lT+XVfMoNWVWlXIlP8/Axb0YbaqGuPPYIM1bx+yEhQ0+daZJ
+X-Received: by 2002:a25:b83:: with SMTP id 125mr8185286ybl.102.1606427467555;
+        Thu, 26 Nov 2020 13:51:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606427467; cv=none;
         d=google.com; s=arc-20160816;
-        b=cgluVCH1oNwMRwJCOh6+3VZkzs2xXdDJR9O+d9pVv7LO1M23XbK7ESLvU0Lh5O0oPq
-         Sc+WH2n5Y09vb8d04GLeNfZfso5WwmHQgxYxoQ5eUaq0huTYBsvUn8V8FmzyUB9iNdQP
-         M8CwLacBOQShmKEOBz8iHVv9PfyImEQ9Aay9ipkB7OfF7MpFZUWPK/fHykA3748KID/V
-         EJqtjOqTA4/PHQb4db/qNb7sRftrZMFg9b6TdlPz7ry8M08iHP001BoVretvaKpQphlD
-         1RXAv0RdVblTd4jj43zJXzRmQ4dH/44CpBEHGRf7r63kesRMB07N72jGIPzIsgUuHPPp
-         gU+Q==
+        b=eCr8yeyIXhyDlBE6MZLjbCbDFoucEhdx9lRpIOXGzPjksdGBYC0LV8MMQk0LuClsRi
+         G1YwFEQBLMlj/WZYQbdXIZhKdcfIPvuO0WitPn3Q3NwsZ+ai49R/6Nl1wt/MB2xqCtPX
+         Y9bvy6k+9k+u/rdew8wrnR3VCsm025GymHNa2h6y2VD2LPAGCmMCnzmYP9bxQc6Rvuxw
+         n2m1o9PVRpnzmIHYwoOmKMrsqk5KJfZ2ma4u3TCkiKXi2qJT0Zy/nOZMeBf1IZhQozAg
+         HHqxN2A2sbOrqyy8EpWbMtof3SQwUAQcmaGqI9x9Q246asPByp/FdoZeMiADPIxT6aWm
+         P0XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=dmxHnJbhGBQZpiidUCYRdIyLNVPFN0gCA8qJqG0CTs8=;
-        b=pUHEV2KPZOVOm/UrI3+Cv0YHemsm/tRulV3RpqGm8cfkCGpjxnh6ivc4a45NpljO30
-         Sw9KuyU0QiiBM5UZow6NeUMYsm/Vg+J0cMq7uuex5HB14a2BdCkk2GI6s+IJujmMkrC7
-         V9Jpx1lsC082sjQuJEZ+VAQeFF+ugezdyhKw7kat1EMUKa+d3xZnBCA/DB9Opju/ws1r
-         PbNxD7d/s7NLn6uz5F25uiBh97PHkYedO9Uui+oGFGX4y7Ixgqbl8TN1AluvLKqJDa49
-         Li0lFu2LRO07I+e8S58U+ha0hiQUO1iU5rplFeDAICWLiaMUjO3OHfbnV90MUbY0dQVI
-         Kh4Q==
+        bh=RYW4eH/ZsrKQzuthW1O+bv7Xe1lYlj3a8avPcP1Wggk=;
+        b=XI5bt64neE0FvZZdnwlTCIWhzmFP0yXccTQiOs1HN/WYRWQTli7tJOtalOoW5wZnJ4
+         4iHk6WFSOGYWn8EmtQqPxr12CVQmzEOeM7rerB8MxViIa91t/xAq8eXJOlAnSvIpwFwH
+         U5pgBW19vN0am7fJIKkTKuhWSh4PvxA+k+cVv+xTnesc4SWdS3sj+I3n8Bx03lyWSiff
+         18OVGQEPpTEutszQ/HyaOJjwiKnRZyEdhXeui3c4HnC07ZFPscmEC3f0HK1a6/DQsrnN
+         gIatcLj0xk1owRsbYbvgx5jh5fh2QEDEmaHIdnvBhcE4NkfewkoEQ5eZzatb8DG6CIav
+         8hyA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a67si6553498ybg.316.2020.11.26.13.50.53
+        by mx.google.com with ESMTPS id e11si6290991ybk.30.2020.11.26.13.51.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Nov 2020 13:50:54 -0800 (PST)
+        Thu, 26 Nov 2020 13:51:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57784 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58640 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kiPAD-0002Iw-HA
-	for alex.bennee@linaro.org; Thu, 26 Nov 2020 16:50:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36332)
+	id 1kiPAQ-0002gF-Tt
+	for alex.bennee@linaro.org; Thu, 26 Nov 2020 16:51:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kiP9r-0001rP-Ph; Thu, 26 Nov 2020 16:50:31 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:60546
+ id 1kiP9s-0001sn-74; Thu, 26 Nov 2020 16:50:32 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:60638
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1kiP9i-0005kM-Mh; Thu, 26 Nov 2020 16:50:31 -0500
+ id 1kiP9m-0005nf-8y; Thu, 26 Nov 2020 16:50:31 -0500
 Received: from localhost.localdomain
  (dynamic-077-009-187-158.77.9.pool.telefonica.de [77.9.187.158])
- by csgraf.de (Postfix) with ESMTPSA id 88DE53900581;
- Thu, 26 Nov 2020 22:50:19 +0100 (CET)
+ by csgraf.de (Postfix) with ESMTPSA id 60BF439005B9;
+ Thu, 26 Nov 2020 22:50:21 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 3/8] arm: Set PSCI to 0.2 for HVF
-Date: Thu, 26 Nov 2020 22:50:12 +0100
-Message-Id: <20201126215017.41156-4-agraf@csgraf.de>
+Subject: [PATCH 7/8] arm: Add Hypervisor.framework build target
+Date: Thu, 26 Nov 2020 22:50:16 +0100
+Message-Id: <20201126215017.41156-8-agraf@csgraf.de>
 X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 In-Reply-To: <20201126215017.41156-1-agraf@csgraf.de>
 References: <20201126215017.41156-1-agraf@csgraf.de>
@@ -87,32 +87,70 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NFJypHLSohOI
+X-TUID: +S1Lg32KNuCn
 
-In Hypervisor.framework, we just pass PSCI calls straight on to the QEMU emulation
-of it. That means, if TCG is compatible with PSCI 0.2, so are we. Let's transpose
-that fact in code too.
+Now that we have all logic in place that we need to handle Hypervisor.framework
+on Apple Silicon systems, let's add CONFIG_HVF for aarch64 as well so that we
+can build it.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 ---
- target/arm/cpu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ meson.build                | 9 ++++++++-
+ target/arm/hvf/meson.build | 3 +++
+ target/arm/meson.build     | 2 ++
+ 3 files changed, 13 insertions(+), 1 deletion(-)
+ create mode 100644 target/arm/hvf/meson.build
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 07492e9f9a..db6f7c34ed 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1062,6 +1062,10 @@ static void arm_cpu_initfn(Object *obj)
-     if (tcg_enabled()) {
-         cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
-     }
-+
-+    if (hvf_enabled()) {
-+        cpu->psci_version = 2; /* HVF uses TCG's PSCI */
-+    }
- }
+diff --git a/meson.build b/meson.build
+index 2a7ff5560c..21565f5787 100644
+--- a/meson.build
++++ b/meson.build
+@@ -74,16 +74,23 @@ else
+ endif
  
- static Property arm_cpu_gt_cntfrq_property =
+ accelerator_targets = { 'CONFIG_KVM': kvm_targets }
++
++if cpu in ['x86', 'x86_64']
++  hvf_targets = ['i386-softmmu', 'x86_64-softmmu']
++elif cpu in ['aarch64']
++  hvf_targets = ['aarch64-softmmu']
++endif
++
+ if cpu in ['x86', 'x86_64', 'arm', 'aarch64']
+   # i368 emulator provides xenpv machine type for multiple architectures
+   accelerator_targets += {
+     'CONFIG_XEN': ['i386-softmmu', 'x86_64-softmmu'],
++    'CONFIG_HVF': hvf_targets,
+   }
+ endif
+ if cpu in ['x86', 'x86_64']
+   accelerator_targets += {
+     'CONFIG_HAX': ['i386-softmmu', 'x86_64-softmmu'],
+-    'CONFIG_HVF': ['x86_64-softmmu'],
+     'CONFIG_WHPX': ['i386-softmmu', 'x86_64-softmmu'],
+   }
+ endif
+diff --git a/target/arm/hvf/meson.build b/target/arm/hvf/meson.build
+new file mode 100644
+index 0000000000..855e6cce5a
+--- /dev/null
++++ b/target/arm/hvf/meson.build
+@@ -0,0 +1,3 @@
++arm_softmmu_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: files(
++  'hvf.c',
++))
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index f5de2a77b8..95bebae216 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -56,5 +56,7 @@ arm_softmmu_ss.add(files(
+   'psci.c',
+ ))
+ 
++subdir('hvf')
++
+ target_arch += {'arm': arm_ss}
+ target_softmmu_arch += {'arm': arm_softmmu_ss}
 -- 
 2.24.3 (Apple Git-128)
 

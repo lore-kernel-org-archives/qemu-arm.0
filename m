@@ -1,61 +1,63 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1784799lfb;
-        Thu, 26 Nov 2020 13:50:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyh+q32BoES/DrkL4a105T66mOZ2bCay7X1cbjlwOqZa6HcXU235gah1I8F1b7JZDFHTdEG
-X-Received: by 2002:a25:cbd2:: with SMTP id b201mr5578219ybg.437.1606427439205;
-        Thu, 26 Nov 2020 13:50:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606427439; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1787591lfb;
+        Thu, 26 Nov 2020 13:56:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy9Q3RtX9s2lSGScp47yEYSbEFVpOXxdg+oR++9LoMpKrIzO5mNFfDGsUbLanT6WFHa3oFq
+X-Received: by 2002:a25:2485:: with SMTP id k127mr5204734ybk.522.1606427793318;
+        Thu, 26 Nov 2020 13:56:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606427793; cv=none;
         d=google.com; s=arc-20160816;
-        b=PzJjipJ/vp71ieSS+/RGXjH6lMtTkCDps9KkYhtEljMeoX7IrMpQI4OWDiM7lNTTcj
-         RTYZBNY4AM06sKq93Yj1/jxCzyIJmvhbtlUuTO4sEe/Y/G4GYvmK291qm8CtkN9H5D+U
-         BaYt46hAS2tPt0EDKe22w9kJs+KGsdI07fgX6VoHqY2SJiodcJh6iEAtr7muPYnRJvo+
-         353bniNAIQG8Y30d7IN0EVP5VWr+Aw622M7jdiy1oSBlL81uEj3f28OMrp2ttOP4dbZd
-         ohhgX6HvqKuhadBMpGNP/6v0j/vJrcVyTDbipfcQkdoBHp/2F8H8TPme9Kwl4bubW2jY
-         7udw==
+        b=sgjCTfP4LatvcxAfiZiarzMzKb5hLn6c1BzUKR8+X3CqPFtshIhW8SFMl3qg1by2aR
+         di1HLqDJCKS4GRnBhfO8zKJdcye8YwTLY2RYX4t1HAO3UIq02j/yOvj3QhuPS1Gm/GHJ
+         Ld7Zv8GGbPM/7EktphCqsGj/54ClhE7xUwzQvfu21S8dsFCg5o2US5yS6e35PLlBZSng
+         4xkIaWNvS1RLGheH5Ro+MGet5AksfABHKXLmoYBDlfar7/7lZJL2G9E+l2kzsPDqpYnW
+         WcCHLKMcoubGNejSUR8bL2hyj+ivkTpHiBu4Y4VwyTJpEslkBTnoH/yrkFWVRYIpQRei
+         4blg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=HQ+ij4fuKEw/WneDpIzcMpTLtHA7Y0aKmQKH7FuuIUs=;
-        b=BdH7tyIMDWMF7Kc3mHLyOPqiB+zUEEPbQonTLWiFRDpFUt8bq5IfMYW0f9k+GCgA51
-         ypp6PvEmB1NibC98exXlzc3V2DivMCgGtDIu5BSvsTtuuzya4vcG5Uo7bERMwdxH5jeP
-         cseD003hvfCbxAWrTbknvHaIzKUONfQ88247y7l4z6jC6oWzfE7n2Q0RBQhc6UznSMhH
-         wRlAjsb3QZRjwpWQCUMMpBcJH/X0EqOLXdUwhwDd+8CioM10CjznGdJQESEjKHpWy7cr
-         Twfc4D/4OtrG/mr3uDXk6uIe6NdCA3z6cGwiBXstLFNRoNxLKNlZ3bqjOmuiSrGim5ts
-         FWmg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=apYShrcG+MlxobSP2g/bKYRJK2gok/VAaFJ68uBLj0g=;
+        b=N4YawLYkmZoskLX0Sd2vezCBiBMx28OdN5ENMry6rZL4LkS6fTwy30G1pxaCWwXyc+
+         z5/1TEcTISbjpoSRxBecldcEDNgR+wL11k2K+uFjxgxOs4T9nl+MJ+OO5CKG0APOQWtg
+         DqB6URMdO/mPWaWloVNjUVjwkKqXx8WhvxVZf3OD8WWn+a2OiFQnD5nCE+bgfZ4vW7K+
+         /AW/zTm6SJJeb3eWcVX9b6cg8EXzOKBcCjqzSgmt7F7ZT5JndUt6U8rOMegLHUVHhmJP
+         ns6oLENJ1tSX4QUZhwWeZR9KKSmYF6+i923FIDb51pAdEGt58XhzOS20P0w7mrh0J+ZZ
+         ntxw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e193si2001099ybh.478.2020.11.26.13.50.39
+        by mx.google.com with ESMTPS id j129si5704132ybb.309.2020.11.26.13.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Nov 2020 13:50:39 -0800 (PST)
+        Thu, 26 Nov 2020 13:56:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56608 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kiP9y-0001k1-Io
-	for alex.bennee@linaro.org; Thu, 26 Nov 2020 16:50:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36230)
+	id 1kiPFg-000192-Ms
+	for alex.bennee@linaro.org; Thu, 26 Nov 2020 16:56:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36334)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kiP9j-0001jL-Vj; Thu, 26 Nov 2020 16:50:24 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:60506
+ id 1kiP9r-0001s0-TB; Thu, 26 Nov 2020 16:50:31 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:60636
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1kiP9h-0005jj-W3; Thu, 26 Nov 2020 16:50:23 -0500
+ id 1kiP9m-0005ng-B6; Thu, 26 Nov 2020 16:50:31 -0500
 Received: from localhost.localdomain
  (dynamic-077-009-187-158.77.9.pool.telefonica.de [77.9.187.158])
- by csgraf.de (Postfix) with ESMTPSA id 224CE390015A;
- Thu, 26 Nov 2020 22:50:18 +0100 (CET)
+ by csgraf.de (Postfix) with ESMTPSA id CE7FE39005E9;
+ Thu, 26 Nov 2020 22:50:21 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/8] hvf: Implement Apple Silicon Support
-Date: Thu, 26 Nov 2020 22:50:09 +0100
-Message-Id: <20201126215017.41156-1-agraf@csgraf.de>
+Subject: [PATCH 8/8] hw/arm/virt: Disable highmem when on hypervisor.framework
+Date: Thu, 26 Nov 2020 22:50:17 +0100
+Message-Id: <20201126215017.41156-9-agraf@csgraf.de>
 X-Mailer: git-send-email 2.24.3 (Apple Git-128)
+In-Reply-To: <20201126215017.41156-1-agraf@csgraf.de>
+References: <20201126215017.41156-1-agraf@csgraf.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
@@ -85,72 +87,50 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E4AT8zUGT+nJ
+X-TUID: sQp0mZWMkpv4
 
-Now that Apple Silicon is widely available, people are obviously excited
-to try and run virtualized workloads on them, such as Linux and Windows.
+The Apple M1 only supports up to 36 bits of physical address space. That
+means we can not fit the 64bit MMIO BAR region into our address space.
 
-This patch set implements a rudimentary, first version to get the ball
-going on that. With this applied, I can successfully run both Linux and
-Windows as guests, albeit with a few caveats:
+To fix this, let's not expose a 64bit MMIO BAR region when running on
+Apple Silicon.
 
-  * no WFI emulation, a vCPU always uses 100%
-  * vtimer handling is a bit hacky
-  * we handle most sysregs flying blindly, just returning 0
-  * XHCI breaks in OVMF, works in Linux+Windows
+I have not been able to find a way to enumerate that easily, so let's
+just assume we always have that little PA space on hypervisor.framework
+systems.
 
-Despite those drawbacks, it's still an exciting place to start playing
-with the power of Apple Silicon.
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ hw/arm/virt.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-Enjoy!
-
-Alex
-
-Alexander Graf (8):
-  hvf: Add hypervisor entitlement to output binaries
-  hvf: Move common code out
-  arm: Set PSCI to 0.2 for HVF
-  arm: Synchronize CPU on PSCI on
-  hvf: Add Apple Silicon support
-  hvf: Use OS provided vcpu kick function
-  arm: Add Hypervisor.framework build target
-  hw/arm/virt: Disable highmem when on hypervisor.framework
-
- MAINTAINERS                  |  14 +-
- accel/hvf/entitlements.plist |   8 +
- accel/hvf/hvf-all.c          |  56 ++++
- accel/hvf/hvf-cpus.c         | 484 +++++++++++++++++++++++++++++++++++
- accel/hvf/meson.build        |   7 +
- accel/meson.build            |   1 +
- hw/arm/virt.c                |   9 +
- include/hw/core/cpu.h        |   3 +-
- include/sysemu/hvf_int.h     |  69 +++++
- meson.build                  |  39 ++-
- scripts/entitlement.sh       |  11 +
- target/arm/arm-powerctl.c    |   3 +
- target/arm/cpu.c             |   4 +
- target/arm/hvf/hvf.c         | 345 +++++++++++++++++++++++++
- target/arm/hvf/meson.build   |   3 +
- target/arm/meson.build       |   2 +
- target/i386/hvf/hvf-cpus.c   | 131 ----------
- target/i386/hvf/hvf-cpus.h   |  25 --
- target/i386/hvf/hvf-i386.h   |  48 +---
- target/i386/hvf/hvf.c        | 360 +-------------------------
- target/i386/hvf/meson.build  |   1 -
- target/i386/hvf/x86hvf.c     |  11 +-
- target/i386/hvf/x86hvf.h     |   2 -
- 23 files changed, 1061 insertions(+), 575 deletions(-)
- create mode 100644 accel/hvf/entitlements.plist
- create mode 100644 accel/hvf/hvf-all.c
- create mode 100644 accel/hvf/hvf-cpus.c
- create mode 100644 accel/hvf/meson.build
- create mode 100644 include/sysemu/hvf_int.h
- create mode 100755 scripts/entitlement.sh
- create mode 100644 target/arm/hvf/hvf.c
- create mode 100644 target/arm/hvf/meson.build
- delete mode 100644 target/i386/hvf/hvf-cpus.c
- delete mode 100644 target/i386/hvf/hvf-cpus.h
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 27dbeb549e..d74053ecd4 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -45,6 +45,7 @@
+ #include "hw/display/ramfb.h"
+ #include "net/net.h"
+ #include "sysemu/device_tree.h"
++#include "sysemu/hvf.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/runstate.h"
+ #include "sysemu/sysemu.h"
+@@ -1746,6 +1747,14 @@ static void machvirt_init(MachineState *machine)
+     unsigned int smp_cpus = machine->smp.cpus;
+     unsigned int max_cpus = machine->smp.max_cpus;
+ 
++    /*
++     * On Hypervisor.framework capable systems, we only have 36 bits of PA
++     * space, which is not enough to fit a 64bit BAR space
++     */
++    if (hvf_enabled()) {
++        vms->highmem = false;
++    }
++
+     /*
+      * In accelerated mode, the memory map is computed earlier in kvm_type()
+      * to create a VM with the right number of IPA bits.
 -- 
 2.24.3 (Apple Git-128)
 

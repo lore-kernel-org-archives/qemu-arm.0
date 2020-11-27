@@ -1,115 +1,78 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2809860lfb;
-        Fri, 27 Nov 2020 13:18:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyjU4ObgoJgjysYkx8J3RoLPZpsxcKMlZ81gnAxRzUxfLWxdOfXX9leVrkGjUhhOtGKHtfR
-X-Received: by 2002:a25:420b:: with SMTP id p11mr5179446yba.341.1606511908923;
-        Fri, 27 Nov 2020 13:18:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606511908; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2831574lfb;
+        Fri, 27 Nov 2020 13:51:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyvLRBf1pn3i9eElfZRy/SAkrFpLRj8k1xfy6hsI2kOguTumfW0pjGK/inI2eLCfxpB/YQI
+X-Received: by 2002:a25:d215:: with SMTP id j21mr12091724ybg.279.1606513893206;
+        Fri, 27 Nov 2020 13:51:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606513893; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q8KFePnT1Tm40BoaIzwjhG7y7iajQwl3IAwgJQvnCy7p+7XGeCxru9uj1sfccb7PcL
-         A/V9nXic3Kn914T5aPesj9XtgQeyo7Z+y++IddRvWbTMNUuwLLal6BeFsVdg67GS8fs1
-         OqCydzBFbez1YSGlzRQX1o32SQfMgtUt3q2399ZST6fFOP9c6xLXh3n57sACrRLdtM4u
-         1ytLlux1JBAugs7lH0bXmDfQ2/aCYnDvu0m63i+C3ewpHqdUgRU4+0IAhBdtLKL0ACAt
-         +5rKAwrikTsYom0kVK1TJG6B/fAl+1el+gvb/WKr4XAc1KMuz40wnl07lzLK2fp3EKFP
-         Iw1w==
+        b=gKsQtmjl5bZlvg2RxfqNXHhbPVCQlO20FHmrcsnG87anPG5mKROMjfyixBjAIEfoF/
+         7WlnkiG9xEknL2ObykjcXe+obyGEZZgTcm0cH0LoSws8Ie8Z8Ul3amCGmQ9An7BZ4I2o
+         2wx7szfw+aWBLbb3719Emlx7IHqH3wR7NvJwPbaJXOoyTLWzIadeTUst666jRXu0Of/x
+         g4nR13HE3LQ+hLrArhz/H/oDhZ12kGVrtRQ7vSS9kSn1ouEb0h+V7sMOiJ7UWQehWX2L
+         6dmg2B5aYICw98IgMDruLzqhxLzKqZq8fSlqdVZYQ99NNXJQ8VOOeuL+bUkuacT8Uljd
+         bWOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ettb4PEiP373OrCOXPZLXN8fMtqqK45DMZkEjAgFf1k=;
-        b=JlSkT/RHWbfG2u383dBtQ0eIkbj/ngIkDSXZopBZv4Y+f+K3Kn8Ii83y084qINCkpU
-         qAkq4gx/Dk50z0MmZXe0gyo/uXkY8QfyzA+NKGArPaaq68esaE0LxawQvPN4A7oaQcX1
-         CnJUgIPBQ9n3WWchkctGlN6dMPnFLWA6k9zjzV1nP4E7hu/N1emSr1OVr9+kCUrVQOFm
-         G4eIsqnLLvHA+Vm1bu9aRJUR7j6Z0+9EcVYVkODMG7xNrzmunf1QPdcaILk4hAYkC7fJ
-         hZ9xCp/B8rC9pgRhKveR46AxGAg9q51n0fUHcj/KECmtedIejip4U8B2rJYWrVfLQLrW
-         UG0A==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=04bDca8+j7/afacAY5wPCottanwIqVfXN0nE15N6jNU=;
+        b=mW+BP6bgP1ARoKhms+LoqzDtXLAL7tsuF3NrshhNeaNfQzrC/uY6m59027ZqykRRPz
+         FzlZgui3h7zZ8nKMSDm9xwntFVajR4yS5mG4/OPN1jQySzPQODHctw9qD7k5UV/iBmfm
+         NA3svtAbDwpU7llKIuXe6rlrDLJH4VdEL1xthUl38oGs1xt8hKCwVff9aO90cIqItw/k
+         AnTnJshSRq3PeW4ZcksdXRreazDa1mvjo2dyUwvpwDHfdcmIKTmTv8yfgYpe+OB5Uani
+         BA86oatkuevw0V5wznz10skmGfsU8sL+erzF7P2SR7pchYN91R2XGtOrduoZGSKNIIgb
+         PX1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ATtlH6ri;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r188si9678726ybr.410.2020.11.27.13.18.28
+        by mx.google.com with ESMTPS id e76si9235306ybh.268.2020.11.27.13.51.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Nov 2020 13:18:28 -0800 (PST)
+        Fri, 27 Nov 2020 13:51:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ATtlH6ri;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36902 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34866 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kil8O-0004pC-8w
-	for alex.bennee@linaro.org; Fri, 27 Nov 2020 16:18:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54110)
+	id 1kileO-0000hw-HL
+	for alex.bennee@linaro.org; Fri, 27 Nov 2020 16:51:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kil88-0004oC-5a
- for qemu-arm@nongnu.org; Fri, 27 Nov 2020 16:18:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38011)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kil83-0003Iw-B9
- for qemu-arm@nongnu.org; Fri, 27 Nov 2020 16:18:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606511885;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ettb4PEiP373OrCOXPZLXN8fMtqqK45DMZkEjAgFf1k=;
- b=ATtlH6riv1qTouEg6xoG7RUiql1ZVjQ9twm5NFgIoxemL3S8kHQ29heL+9efhtUfCuThbY
- g8mK+oJRhHWiSIydQPe6KEy/tTRL6cCGRaLxngwRn+iDUc5ykG4Vcvfs8LJyH/+j4DnkJG
- d7Ivijui0XjowWKq3ccg6IOOSOLLSDI=
-Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
- [209.85.215.200]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-352-7bAmD8gXNCyf9TMx3raiNA-1; Fri, 27 Nov 2020 16:18:01 -0500
-X-MC-Unique: 7bAmD8gXNCyf9TMx3raiNA-1
-Received: by mail-pg1-f200.google.com with SMTP id z4so38045pgr.22
- for <qemu-arm@nongnu.org>; Fri, 27 Nov 2020 13:18:01 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ettb4PEiP373OrCOXPZLXN8fMtqqK45DMZkEjAgFf1k=;
- b=KPdqKYjJ3VIY9rXyJg8PRaVVl2BQmFNRgvKP9UXbpggGhEq593F57FY1mt4GPVVEGc
- gx+92Ka6lat6JAhD/UMqoMt6B+udM3Jet1FURCigGfonT9pYPUm8WYudoXD8ZHjjtyDG
- kFFWjO24BYLhgQ51c4hY8jXX8SUT2R9pEVxJJnDhE34s00pOQe9kIl/5Y4Ah34GSN2JL
- HEgVx4TxRULCyxjX513riQxWd5GXHCfsHhjvZ7Gl/CmiQ0/ca7iMGp9aU+rBAnrwV/4F
- Ax+7Wr+n3FfZ8Xda6M/ehVPuPDLaAPFEhHBk1sDPmyVfJgq62hA/82EfsjFu5Q4F13Qf
- LxNw==
-X-Gm-Message-State: AOAM5306DLcIkE3QOE22t8lUy81sceRsHwb6zCot670gvtmRGmhq2AdQ
- fp1TnaqHAKhfkA3hF/NqSxVsCl8mLo+bqYzn7mmVwphZScsgAgwPyYR7t61pdh79JfrWdUcgGuS
- mxtg6XsrpiZjTnQU799Jns0W0bGM2
-X-Received: by 2002:a63:344a:: with SMTP id b71mr8110686pga.146.1606511880753; 
- Fri, 27 Nov 2020 13:18:00 -0800 (PST)
-X-Received: by 2002:a63:344a:: with SMTP id b71mr8110676pga.146.1606511880499; 
- Fri, 27 Nov 2020 13:18:00 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1kileF-0000g2-9n; Fri, 27 Nov 2020 16:51:23 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:47414
+ helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1kileD-0006mi-0g; Fri, 27 Nov 2020 16:51:22 -0500
+Received: from Alexanders-Mac-mini.local
+ (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
+ by csgraf.de (Postfix) with UTF8SMTPSA id 3F5313900397;
+ Fri, 27 Nov 2020 22:51:17 +0100 (CET)
+Subject: Re: [PATCH 1/8] hvf: Add hypervisor entitlement to output binaries
+To: Roman Bolshakov <r.bolshakov@yadro.com>
 References: <20201126215017.41156-1-agraf@csgraf.de>
  <20201126215017.41156-2-agraf@csgraf.de>
  <20201127194406.GB56950@SPB-NB-133.local>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <57d4879e-2c87-8a5d-eb06-3db5d55d726f@csgraf.de>
+Date: Fri, 27 Nov 2020 22:51:16 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
+ Gecko/20100101 Thunderbird/84.0
+MIME-Version: 1.0
 In-Reply-To: <20201127194406.GB56950@SPB-NB-133.local>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Fri, 27 Nov 2020 22:17:48 +0100
-Message-ID: <CABgObfaH1VnnyD0c60APVRNLw5y+605GtDPrKhLuXTRTZB+k1w@mail.gmail.com>
-Subject: Re: [PATCH 1/8] hvf: Add hypervisor entitlement to output binaries
-To: Roman Bolshakov <r.bolshakov@yadro.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000f70a7b05b51d31fb"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,47 +87,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n6re2hK3tkcc
+X-TUID: Bb2ecI7B+BAE
 
---000000000000f70a7b05b51d31fb
-Content-Type: text/plain; charset="UTF-8"
 
-Il ven 27 nov 2020, 20:44 Roman Bolshakov <r.bolshakov@yadro.com> ha
-scritto:
-
+On 27.11.20 20:44, Roman Bolshakov wrote:
 > On Thu, Nov 26, 2020 at 10:50:10PM +0100, Alexander Graf wrote:
-> > In macOS 11, QEMU only gets access to Hypervisor.framework if it has the
-> > respective entitlement. Add an entitlement template and automatically
-> self
-> > sign and apply the entitlement in the build.
-> >
-> > Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> > ---
-> >  accel/hvf/entitlements.plist |  8 ++++++++
-> >  meson.build                  | 30 ++++++++++++++++++++++++++----
-> >  scripts/entitlement.sh       | 11 +++++++++++
-> >  3 files changed, 45 insertions(+), 4 deletions(-)
-> >  create mode 100644 accel/hvf/entitlements.plist
-> >  create mode 100755 scripts/entitlement.sh
->
+>> In macOS 11, QEMU only gets access to Hypervisor.framework if it has the
+>> respective entitlement. Add an entitlement template and automatically self
+>> sign and apply the entitlement in the build.
+>>
+>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>> ---
+>>   accel/hvf/entitlements.plist |  8 ++++++++
+>>   meson.build                  | 30 ++++++++++++++++++++++++++----
+>>   scripts/entitlement.sh       | 11 +++++++++++
+>>   3 files changed, 45 insertions(+), 4 deletions(-)
+>>   create mode 100644 accel/hvf/entitlements.plist
+>>   create mode 100755 scripts/entitlement.sh
 > Hi,
 >
 > I think the patch should go ahead of other changes (with Paolo's fix for
 > ^C) and land into 5.2 because entitlements are needed for x86_64 hvf too
 > since Big Sur Beta 3. Ad-hoc signing is very convenient for development.
 >
-
-It's certainly too late for 5.2, but we could include the patch in the
-release notes and in 5.2.1.
-
-Paolo
-
-Also, It might be good to have configure/meson option to disable signing
+> Also, It might be good to have configure/meson option to disable signing
 > at all. Primarily for homebrew:
 >
 > https://discourse.brew.sh/t/code-signing-installed-executables/2131/10
@@ -172,11 +123,11 @@ Also, It might be good to have configure/meson option to disable signing
 > There's no established process how to deal with it, e.g. GDB in homebrew
 > has caveats section for now:
 >
->   ==> Caveats
->   gdb requires special privileges to access Mach ports.
->   You will need to codesign the binary. For instructions, see:
+>    ==> Caveats
+>    gdb requires special privileges to access Mach ports.
+>    You will need to codesign the binary. For instructions, see:
 >
->     https://sourceware.org/gdb/wiki/BuildingOnDarwin
+>      https://sourceware.org/gdb/wiki/BuildingOnDarwin
 >
 > The discussion on discourse mentions some plans to do signing in
 > homebrew CI (with real Developer ID) but none of them are implemented
@@ -188,316 +139,57 @@ Also, It might be good to have configure/meson option to disable signing
 >
 > https://github.com/fish-shell/fish-shell/issues/6952
 > https://github.com/fish-shell/fish-shell/issues/7467
+
+
+All binaries are signed in Big Sur by the linker as far as I understand, 
+so I don't quite see the point in not signing :). If the build system 
+doesn't have access to codesign, it sounds to me like one should fix the 
+build system instead? Worst case by injecting a fake codesign binary 
+that just calls /bin/true.
+
+
 >
-> >
-> > diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.plist
-> > new file mode 100644
-> > index 0000000000..154f3308ef
-> > --- /dev/null
-> > +++ b/accel/hvf/entitlements.plist
-> > @@ -0,0 +1,8 @@
-> > +<?xml version="1.0" encoding="UTF-8"?>
-> > +<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "
-> http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-> > +<plist version="1.0">
-> > +<dict>
-> > +    <key>com.apple.security.hypervisor</key>
-> > +    <true/>
-> > +</dict>
-> > +</plist>
-> > diff --git a/meson.build b/meson.build
-> > index 5062407c70..2a7ff5560c 100644
-> > --- a/meson.build
-> > +++ b/meson.build
-> > @@ -1844,9 +1844,14 @@ foreach target : target_dirs
-> >      }]
-> >    endif
-> >    foreach exe: execs
-> > -    emulators += {exe['name']:
-> > -         executable(exe['name'], exe['sources'],
-> > -               install: true,
-> > +    exe_name = exe['name']
-> > +    exe_sign = 'CONFIG_HVF' in config_target
->
+>> diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.plist
+>> new file mode 100644
+>> index 0000000000..154f3308ef
+>> --- /dev/null
+>> +++ b/accel/hvf/entitlements.plist
+>> @@ -0,0 +1,8 @@
+>> +<?xml version="1.0" encoding="UTF-8"?>
+>> +<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+>> +<plist version="1.0">
+>> +<dict>
+>> +    <key>com.apple.security.hypervisor</key>
+>> +    <true/>
+>> +</dict>
+>> +</plist>
+>> diff --git a/meson.build b/meson.build
+>> index 5062407c70..2a7ff5560c 100644
+>> --- a/meson.build
+>> +++ b/meson.build
+>> @@ -1844,9 +1844,14 @@ foreach target : target_dirs
+>>       }]
+>>     endif
+>>     foreach exe: execs
+>> -    emulators += {exe['name']:
+>> -         executable(exe['name'], exe['sources'],
+>> -               install: true,
+>> +    exe_name = exe['name']
+>> +    exe_sign = 'CONFIG_HVF' in config_target
 > I don't have Apple Silicon HW but it may require different kind of
 > entitlements for CONFIG_TCG:
 >
->
 > https://developer.apple.com/documentation/apple_silicon/porting_just-in-time_compilers_to_apple_silicon
->
-> Thanks,
-> Roman
->
-> > +    if exe_sign
-> > +      exe_name += '-unsigned'
-> > +    endif
-> > +
-> > +    emulator = executable(exe_name, exe['sources'],
-> > +               install: not exe_sign,
-> >                 c_args: c_args,
-> >                 dependencies: arch_deps + deps + exe['dependencies'],
-> >                 objects: lib.extract_all_objects(recursive: true),
-> > @@ -1854,7 +1859,24 @@ foreach target : target_dirs
-> >                 link_depends: [block_syms, qemu_syms] +
-> exe.get('link_depends', []),
-> >                 link_args: link_args,
-> >                 gui_app: exe['gui'])
-> > -    }
-> > +
-> > +    if exe_sign
-> > +      exe_full = meson.current_build_dir() / exe['name']
-> > +      emulators += {exe['name'] : custom_target(exe['name'],
-> > +                   install: true,
-> > +                   install_dir: get_option('bindir'),
-> > +                   depends: emulator,
-> > +                   output: exe['name'],
-> > +                   command: [
-> > +                     meson.current_source_dir() /
-> 'scripts/entitlement.sh',
-> > +                     meson.current_build_dir() / exe['name'] +
-> '-unsigned',
-> > +                     meson.current_build_dir() / exe['name'],
-> > +                     meson.current_source_dir() /
-> 'accel/hvf/entitlements.plist'
-> > +                   ])
-> > +      }
-> > +    else
-> > +      emulators += {exe['name']: emulator}
-> > +    endif
-> >
-> >      if 'CONFIG_TRACE_SYSTEMTAP' in config_host
-> >        foreach stp: [
-> > diff --git a/scripts/entitlement.sh b/scripts/entitlement.sh
-> > new file mode 100755
-> > index 0000000000..7ed9590bf9
-> > --- /dev/null
-> > +++ b/scripts/entitlement.sh
-> > @@ -0,0 +1,11 @@
-> > +#!/bin/sh -e
-> > +#
-> > +# Helper script for the build process to apply entitlements
-> > +
-> > +SRC="$1"
-> > +DST="$2"
-> > +ENTITLEMENT="$3"
-> > +
-> > +rm -f "$2"
-> > +cp -a "$SRC" "$DST"
-> > +codesign --entitlements "$ENTITLEMENT" --force -s - "$DST"
-> > --
-> > 2.24.3 (Apple Git-128)
-> >
-> >
->
->
 
---000000000000f70a7b05b51d31fb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">Il ven 27 nov 2020, 20:44 Roman Bolshakov &lt;<a href=
-=3D"mailto:r.bolshakov@yadro.com">r.bolshakov@yadro.com</a>&gt; ha scritto:=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
-er-left:1px #ccc solid;padding-left:1ex">On Thu, Nov 26, 2020 at 10:50:10PM=
- +0100, Alexander Graf wrote:<br>
-&gt; In macOS 11, QEMU only gets access to Hypervisor.framework if it has t=
-he<br>
-&gt; respective entitlement. Add an entitlement template and automatically =
-self<br>
-&gt; sign and apply the entitlement in the build.<br>
-&gt; <br>
-&gt; Signed-off-by: Alexander Graf &lt;<a href=3D"mailto:agraf@csgraf.de" t=
-arget=3D"_blank" rel=3D"noreferrer">agraf@csgraf.de</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 accel/hvf/entitlements.plist |=C2=A0 8 ++++++++<br>
-&gt;=C2=A0 meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 | 30 ++++++++++++++++++++++++++----<br>
-&gt;=C2=A0 scripts/entitlement.sh=C2=A0 =C2=A0 =C2=A0 =C2=A0| 11 ++++++++++=
-+<br>
-&gt;=C2=A0 3 files changed, 45 insertions(+), 4 deletions(-)<br>
-&gt;=C2=A0 create mode 100644 accel/hvf/entitlements.plist<br>
-&gt;=C2=A0 create mode 100755 scripts/entitlement.sh<br>
-<br>
-Hi,<br>
-<br>
-I think the patch should go ahead of other changes (with Paolo&#39;s fix fo=
-r<br>
-^C) and land into 5.2 because entitlements are needed for x86_64 hvf too<br=
->
-since Big Sur Beta 3. Ad-hoc signing is very convenient for development.<br=
-></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">It&=
-#39;s certainly too late for 5.2, but we could include the patch in the rel=
-ease notes and in 5.2.1.</div><div dir=3D"auto"><br></div><div dir=3D"auto"=
->Paolo</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gma=
-il_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
-er-left:1px #ccc solid;padding-left:1ex">Also, It might be good to have con=
-figure/meson option to disable signing<br>
-at all. Primarily for homebrew:<br>
-<br>
-<a href=3D"https://discourse.brew.sh/t/code-signing-installed-executables/2=
-131/10" rel=3D"noreferrer noreferrer" target=3D"_blank">https://discourse.b=
-rew.sh/t/code-signing-installed-executables/2131/10</a><br>
-<br>
-There&#39;s no established process how to deal with it, e.g. GDB in homebre=
-w<br>
-has caveats section for now:<br>
-<br>
-=C2=A0 =3D=3D&gt; Caveats<br>
-=C2=A0 gdb requires special privileges to access Mach ports.<br>
-=C2=A0 You will need to codesign the binary. For instructions, see:<br>
-<br>
-=C2=A0 =C2=A0 <a href=3D"https://sourceware.org/gdb/wiki/BuildingOnDarwin" =
-rel=3D"noreferrer noreferrer" target=3D"_blank">https://sourceware.org/gdb/=
-wiki/BuildingOnDarwin</a><br>
-<br>
-The discussion on discourse mentions some plans to do signing in<br>
-homebrew CI (with real Developer ID) but none of them are implemented<br>
-now.<br>
-<br>
-For now it&#39;d be helpful to provide a way to disable signing and install=
-<br>
-the entitlements (if one wants to sign after installation). Similar<br>
-issue was raised to fish-shell a while ago:<br>
-<br>
-<a href=3D"https://github.com/fish-shell/fish-shell/issues/6952" rel=3D"nor=
-eferrer noreferrer" target=3D"_blank">https://github.com/fish-shell/fish-sh=
-ell/issues/6952</a><br>
-<a href=3D"https://github.com/fish-shell/fish-shell/issues/7467" rel=3D"nor=
-eferrer noreferrer" target=3D"_blank">https://github.com/fish-shell/fish-sh=
-ell/issues/7467</a><br>
-<br>
-&gt; <br>
-&gt; diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.pli=
-st<br>
-&gt; new file mode 100644<br>
-&gt; index 0000000000..154f3308ef<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/accel/hvf/entitlements.plist<br>
-&gt; @@ -0,0 +1,8 @@<br>
-&gt; +&lt;?xml version=3D&quot;1.0&quot; encoding=3D&quot;UTF-8&quot;?&gt;<=
-br>
-&gt; +&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &qu=
-ot;<a href=3D"http://www.apple.com/DTDs/PropertyList-1.0.dtd" rel=3D"norefe=
-rrer noreferrer" target=3D"_blank">http://www.apple.com/DTDs/PropertyList-1=
-.0.dtd</a>&quot;&gt;<br>
-&gt; +&lt;plist version=3D&quot;1.0&quot;&gt;<br>
-&gt; +&lt;dict&gt;<br>
-&gt; +=C2=A0 =C2=A0 &lt;key&gt;com.apple.security.hypervisor&lt;/key&gt;<br=
->
-&gt; +=C2=A0 =C2=A0 &lt;true/&gt;<br>
-&gt; +&lt;/dict&gt;<br>
-&gt; +&lt;/plist&gt;<br>
-&gt; diff --git a/meson.build b/meson.build<br>
-&gt; index 5062407c70..2a7ff5560c 100644<br>
-&gt; --- a/meson.build<br>
-&gt; +++ b/meson.build<br>
-&gt; @@ -1844,9 +1844,14 @@ foreach target : target_dirs<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 }]<br>
-&gt;=C2=A0 =C2=A0 endif<br>
-&gt;=C2=A0 =C2=A0 foreach exe: execs<br>
-&gt; -=C2=A0 =C2=A0 emulators +=3D {exe[&#39;name&#39;]:<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0executable(exe[&#39;name&#39;], exe=
-[&#39;sources&#39;],<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0install: true,=
-<br>
-&gt; +=C2=A0 =C2=A0 exe_name =3D exe[&#39;name&#39;]<br>
-&gt; +=C2=A0 =C2=A0 exe_sign =3D &#39;CONFIG_HVF&#39; in config_target<br>
-<br>
-I don&#39;t have Apple Silicon HW but it may require different kind of<br>
-entitlements for CONFIG_TCG:<br>
-<br>
-<a href=3D"https://developer.apple.com/documentation/apple_silicon/porting_=
-just-in-time_compilers_to_apple_silicon" rel=3D"noreferrer noreferrer" targ=
-et=3D"_blank">https://developer.apple.com/documentation/apple_silicon/porti=
-ng_just-in-time_compilers_to_apple_silicon</a><br>
-<br>
-Thanks,<br>
-Roman<br>
-<br>
-&gt; +=C2=A0 =C2=A0 if exe_sign<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 exe_name +=3D &#39;-unsigned&#39;<br>
-&gt; +=C2=A0 =C2=A0 endif<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 emulator =3D executable(exe_name, exe[&#39;sources&#39;=
-],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0install: not e=
-xe_sign,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0c_args: c=
-_args,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dependenc=
-ies: arch_deps + deps + exe[&#39;dependencies&#39;],<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0objects: =
-lib.extract_all_objects(recursive: true),<br>
-&gt; @@ -1854,7 +1859,24 @@ foreach target : target_dirs<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0link_depe=
-nds: [block_syms, qemu_syms] + exe.get(&#39;link_depends&#39;, []),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0link_args=
-: link_args,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0gui_app: =
-exe[&#39;gui&#39;])<br>
-&gt; -=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 if exe_sign<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 exe_full =3D meson.current_build_dir() / exe[&#3=
-9;name&#39;]<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 emulators +=3D {exe[&#39;name&#39;] : custom_tar=
-get(exe[&#39;name&#39;],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-install: true,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-install_dir: get_option(&#39;bindir&#39;),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-depends: emulator,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-output: exe[&#39;name&#39;],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-command: [<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0meson.current_source_dir() / &#39;scripts/entitlement.sh&#39;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0meson.current_build_dir() / exe[&#39;name&#39;] + &#39;-unsigned&#39=
-;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0meson.current_build_dir() / exe[&#39;name&#39;],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0meson.current_source_dir() / &#39;accel/hvf/entitlements.plist&#39;<=
-br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-])<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 else<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 emulators +=3D {exe[&#39;name&#39;]: emulator}<b=
-r>
-&gt; +=C2=A0 =C2=A0 endif<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 if &#39;CONFIG_TRACE_SYSTEMTAP&#39; in config_host=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 foreach stp: [<br>
-&gt; diff --git a/scripts/entitlement.sh b/scripts/entitlement.sh<br>
-&gt; new file mode 100755<br>
-&gt; index 0000000000..7ed9590bf9<br>
-&gt; --- /dev/null<br>
-&gt; +++ b/scripts/entitlement.sh<br>
-&gt; @@ -0,0 +1,11 @@<br>
-&gt; +#!/bin/sh -e<br>
-&gt; +#<br>
-&gt; +# Helper script for the build process to apply entitlements<br>
-&gt; +<br>
-&gt; +SRC=3D&quot;$1&quot;<br>
-&gt; +DST=3D&quot;$2&quot;<br>
-&gt; +ENTITLEMENT=3D&quot;$3&quot;<br>
-&gt; +<br>
-&gt; +rm -f &quot;$2&quot;<br>
-&gt; +cp -a &quot;$SRC&quot; &quot;$DST&quot;<br>
-&gt; +codesign --entitlements &quot;$ENTITLEMENT&quot; --force -s - &quot;$=
-DST&quot;<br>
-&gt; -- <br>
-&gt; 2.24.3 (Apple Git-128)<br>
-&gt; <br>
-&gt; <br>
-<br>
-</blockquote></div></div></div>
+You only need the JIT entitlement for the App Store. Locally signed 
+applications work just fine without. I don't know about binaries you 
+download from the internet that were signed with a developer key though.
 
---000000000000f70a7b05b51d31fb--
+Keep in mind that for this to work you also need the MAP_JIT and RWX 
+toggle changes from another patch set on the ML.
+
+
+Alex
+
 

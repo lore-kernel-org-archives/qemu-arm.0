@@ -1,528 +1,231 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp839532lfb;
-        Wed, 25 Nov 2020 12:59:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwL5MMVcJwwuFEBEl/y+FzBuIP0LUr/oUeVkEw5Uk3K57LAfikHYqrfoHwP1YmfGhX3U/Un
-X-Received: by 2002:a25:20d5:: with SMTP id g204mr6409309ybg.136.1606337994589;
-        Wed, 25 Nov 2020 12:59:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606337994; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2019723lfb;
+        Thu, 26 Nov 2020 20:41:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxKWx6+lQqHlTF1Fhu1U1kWuuhi3S8qgRkqN2Mvgj1UgAwHQV8PljiaythRwi74lIYh/ovj
+X-Received: by 2002:a25:c74b:: with SMTP id w72mr10139200ybe.117.1606452108788;
+        Thu, 26 Nov 2020 20:41:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606452108; cv=none;
         d=google.com; s=arc-20160816;
-        b=hX3mptwu0rNQovLuIdHXNmH9piOSc9DPwRWaSbVfaHIisMssfnukO/b4fpPbJtvF5E
-         V3s0EBhyoAVat+BhKPNnzwzqqwmJHmOfgR5kLjjUgS8aLIA3qn4FaIrQD6wJdBBc7vtT
-         XehR+WmBg+dxhL5s/HdX7hxZTWG8BeHSCAyP4AR4SfSnLlic7j0CA7eqSSF/UPDRHmPV
-         0aOnnJtirw9X4I4dKhsm9FYAGwO4NXJepMNczUkP+pPmkPlWgdEA5bmkgoBAtTFstmfq
-         XjLs9fgbiz41q87B+7yyCQjFKzdoNYckR1xCro8xALTHdgaICwX7oZjRM5fIXBxzt6kV
-         TEyg==
+        b=eg5O7Nr48TMB8DqmygDgrA8IDtIrBqwChcGoypQhfm8j6oaOE9/aUi4+Pg37+lWgHZ
+         ea8Stb+1l2lA9G2QjWKxAtOHk0B+uuu43Xu4YQbbj5N1kRRDBoKtS+tzKMQTIYN7C3tM
+         0sM0VrU1bnjC8jqje2fQKr4AFzUm45i48UNiSsxEJcdVgis5KIhXt7Oj4JAyQAidFDpE
+         ND6uNbwnPQRh9IhmtM9qilHN5FNYlLfngBsbB529LZDJkBhCQK6srNrSfvCbTCeF9ELm
+         2whS8UQfB1Dqke98Fm9NiThval9Hf8YV2nkpmmC7MnM+QZAklbLWXGfdGQrqlRHr175A
+         9vgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=v2/00TLrnhb1EAZoELCRZkrRxl7+zesQjlzM1dccqtI=;
-        b=P+O67Ptn+2EVQHAQ5L82X6PJHFJ11j/rCEJx8gaZazaq2XfzVoSWSHNQjL6pYlmg82
-         WPI/u/0/TNRcT95fMXWyEMGQsvs9MgjXNJjRTaWrBzIRiIKB92wlwhEQLeu4lnHYNpe3
-         rKN/TUHiRZ/IOulXuf+DZcyBneeMGICGeMA5F80GAR/YAsjifhE3eqz2oANbyptJqyoC
-         B2dKjUEvo1O9+eIWbqQqNcC5izMKHGqc5bRYIfanagbIfvYBgagKRTxzcgkqZOU6EBEp
-         3H2pEJuxNTjZ6ihcXqJ7Lthj/UFIoKILyllExrSLMMXAYHJd3iJXiOQsxXPlAUqh7N3Z
-         9dbQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ZWCVFj85jqTfSDrscs3XCmi2JSwu/JGyt5L41/MZHOU=;
+        b=E+KuB5Ie/j3cPgVXNEAXUgBFCNfqXup9Wk0/LMtuHeCnAlSN/QrgyBYog5qPrPWGe2
+         awrcy8OSdtn+VN8HAfa8mJzdAsaTCCHkRYnOEZly4mnG7ItF7TCODn9BxEWtlUJkfcny
+         Hrx7efi7HH0Zg2kLAwX+QQaZ/MfCB8kJ7TcYZFs5dKrJaCooolS4b3ujVffN/ZH2LOjV
+         NPdOby3jN+2sAYOepJrGTcD47tP8y5CqSvPOkw1z4N/LU/mvDysyB72aDUfYesJFC/1Q
+         UY6aQUY2iNjOlwg1OYtvb0u1CHOMsd8kXbe+j44ASUfbwKkxQ2jH7Ac0ZEL2UNVF4LhQ
+         x5cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A1jOzawt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GYwf91wW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o124si3146368ybo.127.2020.11.25.12.59.54
+        by mx.google.com with ESMTPS id i205si7140464ybi.17.2020.11.26.20.41.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 25 Nov 2020 12:59:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Nov 2020 20:41:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A1jOzawt;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GYwf91wW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59664 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47236 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ki1tJ-00028r-Vj
-	for alex.bennee@linaro.org; Wed, 25 Nov 2020 15:59:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51988)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kiVZs-0003rx-56
+	for alex.bennee@linaro.org; Thu, 26 Nov 2020 23:41:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46120)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1ki1qX-0000Oz-T2
- for qemu-devel@nongnu.org; Wed, 25 Nov 2020 15:57:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42017)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kiVZk-0003rY-AH
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2020 23:41:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27393)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1ki1qT-0003LS-Iq
- for qemu-devel@nongnu.org; Wed, 25 Nov 2020 15:57:01 -0500
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kiVZi-0001C5-NL
+ for qemu-arm@nongnu.org; Thu, 26 Nov 2020 23:41:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606337816;
+ s=mimecast20190719; t=1606452097;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=v2/00TLrnhb1EAZoELCRZkrRxl7+zesQjlzM1dccqtI=;
- b=A1jOzawt3HE83Q48bcKhsSm2YTTQDhXoSqVfU2ALI0f9nWo43WgtFr/npGo8PL0AkNYfTz
- Od3sfdAW3JS/gp3H/XQecbfok2K2Y2oEKVidkQMl58VjIdn5TTCQjQZqXBnub2PhgyqHpm
- I0ZU9jmEyZvNARD7j6Jf7uFSdsuciuw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-387-sK7tNT8SM3apCRfJKGpRKw-1; Wed, 25 Nov 2020 15:56:54 -0500
-X-MC-Unique: sK7tNT8SM3apCRfJKGpRKw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2B529100C616;
- Wed, 25 Nov 2020 20:56:49 +0000 (UTC)
-Received: from localhost (unknown [10.10.67.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B5D7F60854;
- Wed, 25 Nov 2020 20:56:42 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/6] arch_init: Move QEMU_ARCH definitions to cpu.h
-Date: Wed, 25 Nov 2020 15:56:31 -0500
-Message-Id: <20201125205636.3305257-2-ehabkost@redhat.com>
-In-Reply-To: <20201125205636.3305257-1-ehabkost@redhat.com>
-References: <20201125205636.3305257-1-ehabkost@redhat.com>
+ bh=ZWCVFj85jqTfSDrscs3XCmi2JSwu/JGyt5L41/MZHOU=;
+ b=GYwf91wWUNzaMbaaqq73D45xcnUkyjljDYcjX+DZ5Qvxb7inRPMspcUdkZY/8CCAvivLyh
+ ZgRTOB3mNNHlNK+15V5p0xf9o+lTX6wQFhewj/BUQnVRsCICllIYv4dMnzdaburxm7BMDD
+ rBn/nWiTjP8+NUzWngeOKIdFMmZnTyU=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-231-mfUTkemVM7OotXbKRtTEwA-1; Thu, 26 Nov 2020 23:41:36 -0500
+X-MC-Unique: mfUTkemVM7OotXbKRtTEwA-1
+Received: by mail-ed1-f70.google.com with SMTP id i89so1964087edd.15
+ for <qemu-arm@nongnu.org>; Thu, 26 Nov 2020 20:41:35 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZWCVFj85jqTfSDrscs3XCmi2JSwu/JGyt5L41/MZHOU=;
+ b=lKqbr95JYutMoEhLyu6u+fvtt+vY0J8Gb/jtyqChUt1rVJ+H9IQmu76YqY0RswtsGF
+ Qk2enxrxg0WwIyZw4MdvDIIogKoHMEWpkY4X0OqRBxRYBdaKbs95mu1J2naKZjXWD8Ni
+ ubdiBtK7DUZUBrjG+Say6Jjr4iA3T/1X6SaW6v5mUmPDlI0fRb4kZgvzhdO6jL7A3yRY
+ vXDkMg9rpK7pWNY7y2cIJMXPCA5FY7wz9dRLwABst/UQtqg52ay9HKkIIlR3ITu0zgQ+
+ Du7fRfoIeHbsuMFBpE2NuJ/gO9AfSr2QvICFg86uHRd6CoE6ghAYMFJwEjjVDUAq2Utm
+ 8crA==
+X-Gm-Message-State: AOAM533+uD44m/zh/qZ8mdyNzFpKux701o/oqR+DgFRDfSMkHG7TJGI+
+ EWtSWEV5vreJbQS28fUlx63NVudNv0Xp0OFsJi33RMYqARn980oOvSdTXg6h+l3wMq7A9eoyYGv
+ DlJDr/62lC6aq
+X-Received: by 2002:aa7:c058:: with SMTP id k24mr5694976edo.263.1606452094799; 
+ Thu, 26 Nov 2020 20:41:34 -0800 (PST)
+X-Received: by 2002:aa7:c058:: with SMTP id k24mr5694961edo.263.1606452094517; 
+ Thu, 26 Nov 2020 20:41:34 -0800 (PST)
+Received: from [192.168.10.118] ([93.56.170.5])
+ by smtp.gmail.com with ESMTPSA id h22sm4213231ejt.21.2020.11.26.20.41.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 26 Nov 2020 20:41:33 -0800 (PST)
+Subject: Re: [PATCH 4/8] arm: Synchronize CPU on PSCI on
+To: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>
+References: <20201126213600.40654-1-agraf@csgraf.de>
+ <20201126213600.40654-5-agraf@csgraf.de>
+ <CAFEAcA_XZu07Fg3G05VWYDYTJfMSAzOH5yyd=rFLJVa73juDtw@mail.gmail.com>
+ <785c216b-d4b5-b65f-1ddf-4c6374b72ece@csgraf.de>
+ <CAFEAcA9QUfBQpmH=8_A+xDm53GkkOgFEDnkTDXOX_1A-bFg0Ng@mail.gmail.com>
+ <284d0cd2-268b-b937-3a6e-d074ce28baee@csgraf.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <3594db71-c72f-2946-ffa5-47da737900c6@redhat.com>
+Date: Fri, 27 Nov 2020 05:41:32 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <284d0cd2-268b-b937-3a6e-d074ce28baee@csgraf.de>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Cornelia Huck <cohuck@redhat.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +Qy24DXd9Wi6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tHqy9msYQDIo
 
-Instead of a collection of #ifdefs on arch_init.c, define
-QEMU_ARCH inside each cpu.h file.
+On 27/11/20 00:32, Alexander Graf wrote:
+> 
+> On 26.11.20 23:26, Peter Maydell wrote:
+>> On Thu, 26 Nov 2020 at 22:16, Alexander Graf <agraf@csgraf.de> wrote:
+>>> cpu_synchronize_state() sets the CPU registers into "dirty" state which
+>>> means that env now holds the current copy. On the next entry, we then
+>>> sync them back into HVF.
+>>>
+>>> Without the cpu_synchronize_state() call, HVF never knows that the CPU
+>>> state is actually dirty. I guess it could as well live in cpu_reset()
+>>> somewhere, but we have to get the state switched over to dirty one way
+>>> or another.
+>>>
+>>> One interesting thing to note here is that the CPU actually comes up in
+>>> "dirty" after init. But init is done on realization already. I'm not
+>>> sure why we lose the dirty state in between that and the reset.
+>> Yeah, it sounds like you need to figure out where the dirty
+>> to not-dirty transitions ought to be happening rather than
+>> just fudging things here...
+> 
+> 
+> When init is complete (system is ready to launch), the CPU state is 
+> pushed to HVF and dirty is set to false. So by design, a normal 
+> cpu_reset doesn't have vcpu_dirty set.
+> 
+> How about this patch instead?
+> 
+> Alex
+> 
+> 
+> 
+> commit 8c61bc4d613b01e251b6b2f892d1a55a333c6e37
+> Author: Alexander Graf <agraf@csgraf.de>
+> Date:   Thu Nov 26 02:47:09 2020 +0100
+> 
+>      hvf: arm: Mark CPU as dirty on reset
+> 
+>      When clearing internal state of a CPU, we should also make sure 
+> that HVF
+>      knows about it and can push the new values down to vcpu state.
+> 
+>      Make sure that with HVF enabled, we tell it that it should synchronize
+>      CPU state on next entry after a reset.
+> 
+>      This fixes PSCI handling, because now newly pushed state such as X0 
+> and
+>      PC on remote CPU enablement also get pushed into HVF.
+> 
+>      Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> 
+> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+> index b75f813b40..a49a5b32e6 100644
+> --- a/target/arm/arm-powerctl.c
+> +++ b/target/arm/arm-powerctl.c
+> @@ -15,6 +15,7 @@
+>   #include "arm-powerctl.h"
+>   #include "qemu/log.h"
+>   #include "qemu/main-loop.h"
+> +#include "sysemu/hw_accel.h"
+> 
+>   #ifndef DEBUG_ARM_POWERCTL
+>   #define DEBUG_ARM_POWERCTL 0
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index db6f7c34ed..9a501ea4bd 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -411,6 +411,8 @@ static void arm_cpu_reset(DeviceState *dev)
+>   #ifndef CONFIG_USER_ONLY
+>       if (kvm_enabled()) {
+>           kvm_arm_reset_vcpu(cpu);
+> +    } else if (hvf_enabled()) {
+> +        s->vcpu_dirty = true;
+>       }
+>   #endif
+> 
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Michael Rolnik <mrolnik@gmail.com>
-Cc: Sarah Harris <S.E.Harris@kent.ac.uk>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Michael Walle <michael@walle.cc>
-Cc: Laurent Vivier <laurent@vivier.eu>
-Cc: "Philippe Mathieu-Daudé" <f4bug@amsat.org>
-Cc: Aurelien Jarno <aurelien@aurel32.net>
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Cc: Anthony Green <green@moxielogic.com>
-Cc: Chris Wulff <crwulff@gmail.com>
-Cc: Marek Vasut <marex@denx.de>
-Cc: Stafford Horne <shorne@gmail.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>
-Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>
-Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Cc: David Hildenbrand <david@redhat.com>
-Cc: Cornelia Huck <cohuck@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
-Cc: Max Filippov <jcmvbkbc@gmail.com>
-Cc: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Cc: qemu-ppc@nongnu.org
-Cc: qemu-riscv@nongnu.org
-Cc: qemu-s390x@nongnu.org
----
- target/alpha/cpu.h      |  1 +
- target/arm/cpu.h        |  1 +
- target/avr/cpu.h        |  1 +
- target/cris/cpu.h       |  1 +
- target/hppa/cpu.h       |  1 +
- target/i386/cpu.h       |  1 +
- target/lm32/cpu.h       |  1 +
- target/m68k/cpu.h       |  1 +
- target/microblaze/cpu.h |  1 +
- target/mips/cpu.h       |  1 +
- target/moxie/cpu.h      |  1 +
- target/nios2/cpu.h      |  1 +
- target/openrisc/cpu.h   |  1 +
- target/ppc/cpu.h        |  1 +
- target/riscv/cpu.h      |  1 +
- target/rx/cpu.h         |  1 +
- target/s390x/cpu.h      |  1 +
- target/sh4/cpu.h        |  1 +
- target/sparc/cpu.h      |  1 +
- target/tricore/cpu.h    |  1 +
- target/unicore32/cpu.h  |  1 +
- target/xtensa/cpu.h     |  1 +
- softmmu/arch_init.c     | 46 -----------------------------------------
- 23 files changed, 22 insertions(+), 46 deletions(-)
+Why only for HVF and only for ARM?  For example hax_init_vcpu and 
+whpx_init_vcpu both set s->vcpu_dirty; should you just set it 
+unconditionally in cpu_common_reset?
 
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index 82df108967..313a4e456e 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -438,6 +438,7 @@ void alpha_translate_init(void);
- #define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
- #define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_ALPHA_CPU
-+#define QEMU_ARCH QEMU_ARCH_ALPHA
- 
- void alpha_cpu_list(void);
- /* you can call this signal handler from your SIGBUS and SIGSEGV
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e5514c8286..3f469a6485 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2822,6 +2822,7 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define ARM_CPU_TYPE_SUFFIX "-" TYPE_ARM_CPU
- #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_ARM_CPU
-+#define QEMU_ARCH QEMU_ARCH_ARM
- 
- #define cpu_signal_handler cpu_arm_signal_handler
- #define cpu_list arm_cpu_list
-diff --git a/target/avr/cpu.h b/target/avr/cpu.h
-index d148e8c75a..98f5df0ad7 100644
---- a/target/avr/cpu.h
-+++ b/target/avr/cpu.h
-@@ -31,6 +31,7 @@
- #define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
- #define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_AVR_CPU
-+#define QEMU_ARCH QEMU_ARCH_AVR
- 
- #define TCG_GUEST_DEFAULT_MO 0
- 
-diff --git a/target/cris/cpu.h b/target/cris/cpu.h
-index d3b6492909..2482915699 100644
---- a/target/cris/cpu.h
-+++ b/target/cris/cpu.h
-@@ -249,6 +249,7 @@ enum {
- #define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
- #define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_CRIS_CPU
-+#define QEMU_ARCH QEMU_ARCH_CRIS
- 
- #define cpu_signal_handler cpu_cris_signal_handler
- 
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 61178fa6a2..74d813289b 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -242,6 +242,7 @@ static inline int cpu_mmu_index(CPUHPPAState *env, bool ifetch)
- void hppa_translate_init(void);
- 
- #define CPU_RESOLVING_TYPE TYPE_HPPA_CPU
-+#define QEMU_ARCH QEMU_ARCH_HPPA
- 
- static inline target_ulong hppa_form_gva_psw(target_ureg psw, uint64_t spc,
-                                              target_ureg off)
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 88e8586f8f..03202f610c 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -1971,6 +1971,7 @@ uint64_t cpu_get_tsc(CPUX86State *env);
- #define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
- #define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_X86_CPU
-+#define QEMU_ARCH QEMU_ARCH_I386
- 
- #ifdef TARGET_X86_64
- #define TARGET_DEFAULT_CPU_TYPE X86_CPU_TYPE_NAME("qemu64")
-diff --git a/target/lm32/cpu.h b/target/lm32/cpu.h
-index ea7c01ca8b..169c0ff19d 100644
---- a/target/lm32/cpu.h
-+++ b/target/lm32/cpu.h
-@@ -238,6 +238,7 @@ bool lm32_cpu_do_semihosting(CPUState *cs);
- #define LM32_CPU_TYPE_SUFFIX "-" TYPE_LM32_CPU
- #define LM32_CPU_TYPE_NAME(model) model LM32_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_LM32_CPU
-+#define QEMU_ARCH QEMU_ARCH_LM32
- 
- #define cpu_list lm32_cpu_list
- #define cpu_signal_handler cpu_lm32_signal_handler
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 521ac67cdd..87b5324b2c 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -514,6 +514,7 @@ enum {
- #define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
- #define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_M68K_CPU
-+#define QEMU_ARCH QEMU_ARCH_M68K
- 
- #define cpu_signal_handler cpu_m68k_signal_handler
- #define cpu_list m68k_cpu_list
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index c1c264199f..cbe60fbf58 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -378,6 +378,7 @@ int cpu_mb_signal_handler(int host_signum, void *pinfo,
-                           void *puc);
- 
- #define CPU_RESOLVING_TYPE TYPE_MICROBLAZE_CPU
-+#define QEMU_ARCH QEMU_ARCH_MICROBLAZE
- 
- #define cpu_signal_handler cpu_mb_signal_handler
- 
-diff --git a/target/mips/cpu.h b/target/mips/cpu.h
-index 23f8c6f96c..8a6707aa81 100644
---- a/target/mips/cpu.h
-+++ b/target/mips/cpu.h
-@@ -1285,6 +1285,7 @@ int cpu_mips_signal_handler(int host_signum, void *pinfo, void *puc);
- #define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
- #define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_MIPS_CPU
-+#define QEMU_ARCH QEMU_ARCH_MIPS
- 
- bool cpu_supports_cps_smp(const char *cpu_type);
- bool cpu_supports_isa(const char *cpu_type, uint64_t isa);
-diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
-index bd6ab66084..f638509381 100644
---- a/target/moxie/cpu.h
-+++ b/target/moxie/cpu.h
-@@ -95,6 +95,7 @@ int cpu_moxie_signal_handler(int host_signum, void *pinfo,
- #define MOXIE_CPU_TYPE_SUFFIX "-" TYPE_MOXIE_CPU
- #define MOXIE_CPU_TYPE_NAME(model) model MOXIE_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_MOXIE_CPU
-+#define QEMU_ARCH QEMU_ARCH_MOXIE
- 
- #define cpu_signal_handler cpu_moxie_signal_handler
- 
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index 86bbe1d867..b8fabdfb60 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -207,6 +207,7 @@ void nios2_check_interrupts(CPUNios2State *env);
- void do_nios2_semihosting(CPUNios2State *env);
- 
- #define CPU_RESOLVING_TYPE TYPE_NIOS2_CPU
-+#define QEMU_ARCH QEMU_ARCH_NIOS2
- 
- #define cpu_gen_code cpu_nios2_gen_code
- #define cpu_signal_handler cpu_nios2_signal_handler
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index bd42faf144..68ff1d06c9 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -348,6 +348,7 @@ void cpu_openrisc_count_stop(OpenRISCCPU *cpu);
- #define OPENRISC_CPU_TYPE_SUFFIX "-" TYPE_OPENRISC_CPU
- #define OPENRISC_CPU_TYPE_NAME(model) model OPENRISC_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_OPENRISC_CPU
-+#define QEMU_ARCH QEMU_ARCH_OPENRISC
- 
- typedef CPUOpenRISCState CPUArchState;
- typedef OpenRISCCPU ArchCPU;
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 2609e4082e..fd870c4cf4 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1334,6 +1334,7 @@ int ppc_dcr_write(ppc_dcr_t *dcr_env, int dcrn, uint32_t val);
- #define POWERPC_CPU_TYPE_SUFFIX "-" TYPE_POWERPC_CPU
- #define POWERPC_CPU_TYPE_NAME(model) model POWERPC_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_POWERPC_CPU
-+#define QEMU_ARCH QEMU_ARCH_PPC
- 
- #define cpu_signal_handler cpu_ppc_signal_handler
- #define cpu_list ppc_cpu_list
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index c0a326c843..3f566b1c7f 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -33,6 +33,7 @@
- #define RISCV_CPU_TYPE_SUFFIX "-" TYPE_RISCV_CPU
- #define RISCV_CPU_TYPE_NAME(name) (name RISCV_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_RISCV_CPU
-+#define QEMU_ARCH QEMU_ARCH_RISCV
- 
- #define TYPE_RISCV_CPU_ANY              RISCV_CPU_TYPE_NAME("any")
- #define TYPE_RISCV_CPU_BASE32           RISCV_CPU_TYPE_NAME("rv32")
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index 0b4b998c7b..05c195962a 100644
---- a/target/rx/cpu.h
-+++ b/target/rx/cpu.h
-@@ -122,6 +122,7 @@ typedef RXCPU ArchCPU;
- #define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
- #define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_RX_CPU
-+#define QEMU_ARCH QEMU_ARCH_RX
- 
- const char *rx_crname(uint8_t cr);
- void rx_cpu_do_interrupt(CPUState *cpu);
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index 60d434d5ed..d528d18b6d 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -797,6 +797,7 @@ void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
- #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
- #define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_S390_CPU
-+#define QEMU_ARCH QEMU_ARCH_S390X
- 
- /* you can call this signal handler from your SIGBUS and SIGSEGV
-    signal handlers to inform the virtual CPU of exceptions. non zero
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index 714e3b5641..f0314774f8 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -249,6 +249,7 @@ void cpu_load_tlb(CPUSH4State * env);
- #define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
- #define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_SUPERH_CPU
-+#define QEMU_ARCH QEMU_ARCH_SH4
- 
- #define cpu_signal_handler cpu_sh4_signal_handler
- #define cpu_list sh4_cpu_list
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index b9369398f2..9d80f8b500 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -662,6 +662,7 @@ int cpu_sparc_signal_handler(int host_signum, void *pinfo, void *puc);
- #define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
- #define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_SPARC_CPU
-+#define QEMU_ARCH QEMU_ARCH_SPARC
- 
- #define cpu_signal_handler cpu_sparc_signal_handler
- #define cpu_list sparc_cpu_list
-diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index b82349d1b1..28c86f77b0 100644
---- a/target/tricore/cpu.h
-+++ b/target/tricore/cpu.h
-@@ -402,6 +402,7 @@ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, target_ulong *pc,
- #define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
- #define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_TRICORE_CPU
-+#define QEMU_ARCH QEMU_ARCH_TRICORE
- 
- /* helpers.c */
- bool tricore_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-diff --git a/target/unicore32/cpu.h b/target/unicore32/cpu.h
-index 7a32e086ed..6c0d88aa9b 100644
---- a/target/unicore32/cpu.h
-+++ b/target/unicore32/cpu.h
-@@ -147,6 +147,7 @@ typedef UniCore32CPU ArchCPU;
- #define UNICORE32_CPU_TYPE_SUFFIX "-" TYPE_UNICORE32_CPU
- #define UNICORE32_CPU_TYPE_NAME(model) model UNICORE32_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_UNICORE32_CPU
-+#define QEMU_ARCH QEMU_ARCH_UNICORE32
- 
- static inline void cpu_get_tb_cpu_state(CPUUniCore32State *env, target_ulong *pc,
-                                         target_ulong *cs_base, uint32_t *flags)
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 3bd4f691c1..c7a503b01d 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -589,6 +589,7 @@ void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
- #define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
- #define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
-+#define QEMU_ARCH QEMU_ARCH_XTENSA
- 
- #ifdef TARGET_WORDS_BIGENDIAN
- #define XTENSA_DEFAULT_CPU_MODEL "fsf"
-diff --git a/softmmu/arch_init.c b/softmmu/arch_init.c
-index 7fd5c09b2b..7ef32a98b9 100644
---- a/softmmu/arch_init.c
-+++ b/softmmu/arch_init.c
-@@ -48,52 +48,6 @@ int graphic_depth = 32;
- #endif
- 
- 
--#if defined(TARGET_ALPHA)
--#define QEMU_ARCH QEMU_ARCH_ALPHA
--#elif defined(TARGET_ARM)
--#define QEMU_ARCH QEMU_ARCH_ARM
--#elif defined(TARGET_CRIS)
--#define QEMU_ARCH QEMU_ARCH_CRIS
--#elif defined(TARGET_HPPA)
--#define QEMU_ARCH QEMU_ARCH_HPPA
--#elif defined(TARGET_I386)
--#define QEMU_ARCH QEMU_ARCH_I386
--#elif defined(TARGET_LM32)
--#define QEMU_ARCH QEMU_ARCH_LM32
--#elif defined(TARGET_M68K)
--#define QEMU_ARCH QEMU_ARCH_M68K
--#elif defined(TARGET_MICROBLAZE)
--#define QEMU_ARCH QEMU_ARCH_MICROBLAZE
--#elif defined(TARGET_MIPS)
--#define QEMU_ARCH QEMU_ARCH_MIPS
--#elif defined(TARGET_MOXIE)
--#define QEMU_ARCH QEMU_ARCH_MOXIE
--#elif defined(TARGET_NIOS2)
--#define QEMU_ARCH QEMU_ARCH_NIOS2
--#elif defined(TARGET_OPENRISC)
--#define QEMU_ARCH QEMU_ARCH_OPENRISC
--#elif defined(TARGET_PPC)
--#define QEMU_ARCH QEMU_ARCH_PPC
--#elif defined(TARGET_RISCV)
--#define QEMU_ARCH QEMU_ARCH_RISCV
--#elif defined(TARGET_RX)
--#define QEMU_ARCH QEMU_ARCH_RX
--#elif defined(TARGET_S390X)
--#define QEMU_ARCH QEMU_ARCH_S390X
--#elif defined(TARGET_SH4)
--#define QEMU_ARCH QEMU_ARCH_SH4
--#elif defined(TARGET_SPARC)
--#define QEMU_ARCH QEMU_ARCH_SPARC
--#elif defined(TARGET_TRICORE)
--#define QEMU_ARCH QEMU_ARCH_TRICORE
--#elif defined(TARGET_UNICORE32)
--#define QEMU_ARCH QEMU_ARCH_UNICORE32
--#elif defined(TARGET_XTENSA)
--#define QEMU_ARCH QEMU_ARCH_XTENSA
--#elif defined(TARGET_AVR)
--#define QEMU_ARCH QEMU_ARCH_AVR
--#endif
--
- const uint32_t arch_type = QEMU_ARCH;
- 
- int kvm_available(void)
--- 
-2.28.0
+Thanks,
+
+Paolo
 

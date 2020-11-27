@@ -1,63 +1,63 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2118035lfb;
-        Thu, 26 Nov 2020 23:26:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwgJnQtyW04UmB72ydI33YSupyhPXYbEQhN9NVufSkhvJTOaQBExU+TVkvuH86W1yT1erU/
-X-Received: by 2002:a5b:743:: with SMTP id s3mr9635172ybq.73.1606461985522;
-        Thu, 26 Nov 2020 23:26:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606461985; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2119602lfb;
+        Thu, 26 Nov 2020 23:29:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwZUgEGJ7ua1aKBzjPrgdl3XvFmSo+v3lxxBIodjvOnKE1dxtBJ3SCUj/Ndxpk3tmF20nzW
+X-Received: by 2002:a25:390:: with SMTP id 138mr8461348ybd.28.1606462147847;
+        Thu, 26 Nov 2020 23:29:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606462147; cv=none;
         d=google.com; s=arc-20160816;
-        b=zZ0yzgLCyu4UHnawwXfuq1yiqczDAgPhJQWvnzWGtzsSfyhXg9WIYdHgGDv85a01WR
-         5vQhthBZKEWDNFR6bKsOSyhvkY1Xi7tnJeU5LjVVq3Vr89Dyz72ymxFwScd+/S4YejHU
-         4Gd4fYv8jA0meqTPsC8MtMwvZeTqkfcALKU6dNWdoyZL1/341CUPoCYqrXieC74XiN/a
-         rQDkqEoHXWsUSJymuCtuKej+H62oqu8DkcUE9UUveywI4ftjKRz82DsGzJDZFrJC6FwY
-         hxto1wP8NoMaSRbXFsViURW3RHSGjGqSpHab9BzTUAtjJgj+QrJUAUkl8eHTqgvIjzrP
-         pU3A==
+        b=l6UCb2C0h6Tnck2xJiazqqYO75h2rjZljEjW3c9zj3FK3IuWWzX2n0KV3Vk5xxEx39
+         c9KooQb5FDaesivWB6kBuRuN22f6Nyu24UQeiBQbtYWE5A/hHPP3xLFPlpW4b6ga4h6y
+         pBEJdSk3kWjoqK/FEK63l3OeX/ALgZCwyjuPeOEbPrl8YUe+fkpulABhlslMxT88ufeN
+         zmjOllxsLSkJ5+CRKkZ5rhuO51IDKu2i7jbuFmNL+YCOi8VcfIGfjuvCbUKw4ZxNjg2l
+         eynojUDmn3YLXDeTesqAQY/WG//AF8E2dts3D2swIOVRmRaSbYTAYcteose6bdGRDTRT
+         rYgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=CaSuv5I/61M8cgPDwhjJqKeRvl65P8lS5Taff7h45/Q=;
-        b=OFS+DVqa3dsEoz9fVq6rR7WganELFhuWBSSm2BFkF8h2klnfK144em1HrE+nQV4FYP
-         +g7f3176gQBbUdzNEGZFAKohSSpAWmrmNbjaUccX2ll08wwrAHvE8+Klhcd+kzdRqDbI
-         QVRAwZ/xkEV3sCzefIZCj0cauSij/Sa6FApmIhy3u+efVzZTIx/RrFsQxXsQbZlTJ4Br
-         Kqfyy5ObwShFLdQopqfrSTrwVyySVHvKygU9zx9qjX4KL8IbtKRZSwWYjlujnJuRqkei
-         /3YrjQhAKcLDjxBTtgW1jfv3lw2rMU9/L+gfQPR/RJ2qpTcW78/kuWMruptB5qDL5947
-         mG6Q==
+        bh=1m72dkgmlwwSprrXoM1rcEMXSOc1nGiS3WUa1ywsO3A=;
+        b=rYyPC6YXOAmGciaAZQ0l4OdWv1dQqtoab4r/VC+Cq9ErwdpC4mX7gKIGhJu3pXM7Fe
+         /1Q0/R530Zx4/CJPDUpJzik70oqD2iFF8OSIU0zeNBNS3EGOGeq/+J+DmYQH53R7jKBX
+         QFggGqW9Q3u9BGQKfBJ/yBjvV1oouLDZ527mgrfhUZ9SRaXW2/y5GE/fEv5dbI9YR0FF
+         wEsIvBpMRH2IH3WIrjmoFMCaCL5zfr08U+LEVRcbue64t/rdJdwQ3RwdEFahcwLoxjaT
+         sss/JtcV/H2M/wlRWldhjXZwjHmqbAc3Va11he2+6tlLF25y6CWMCE6g4sG/gPBoIClT
+         feCw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d203si8342523ybh.164.2020.11.26.23.26.25
+        by mx.google.com with ESMTPS id r18si7412635ybl.102.2020.11.26.23.29.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Nov 2020 23:26:25 -0800 (PST)
+        Thu, 26 Nov 2020 23:29:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42288 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kiY9A-0000k5-Tz
-	for alex.bennee@linaro.org; Fri, 27 Nov 2020 02:26:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55776)
+	id 1kiYBn-0002n9-6s
+	for alex.bennee@linaro.org; Fri, 27 Nov 2020 02:29:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kiY1y-0002U3-6Z; Fri, 27 Nov 2020 02:18:58 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2979)
+ id 1kiY1x-0002Ta-TY; Fri, 27 Nov 2020 02:18:57 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2543)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ganqixin@huawei.com>)
- id 1kiY1u-0007jv-C5; Fri, 27 Nov 2020 02:18:57 -0500
+ id 1kiY1v-0007ju-Tj; Fri, 27 Nov 2020 02:18:57 -0500
 Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Cj5ZW2SFNzhjDc;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Cj5ZW2dByzhjDw;
  Fri, 27 Nov 2020 15:18:27 +0800 (CST)
 Received: from huawei.com (10.175.104.175) by DGGEMS407-HUB.china.huawei.com
  (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Fri, 27 Nov 2020
- 15:18:39 +0800
+ 15:18:40 +0800
 From: Gan Qixin <ganqixin@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH 4/7] exynos4210_pwm: Use ptimer_free() in the finalize
+Subject: [PATCH 5/7] exynos4210_rtc: Use ptimer_free() in the finalize
  function to avoid memleaks
-Date: Fri, 27 Nov 2020 15:18:00 +0800
-Message-ID: <20201127071803.2479462-5-ganqixin@huawei.com>
+Date: Fri, 27 Nov 2020 15:18:01 +0800
+Message-ID: <20201127071803.2479462-6-ganqixin@huawei.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20201127071803.2479462-1-ganqixin@huawei.com>
 References: <20201127071803.2479462-1-ganqixin@huawei.com>
@@ -91,75 +91,73 @@ Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
  Robot <euler.robot@huawei.com>, kuhn.chenqun@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T3XpvSqDub0v
+X-TUID: tVT7nI3lNQ5v
 
-When running device-introspect-test, a memory leak occurred in the exynos4210_pwm_init
+When running device-introspect-test, a memory leak occurred in the exynos4210_rtc_init
 function, so use ptimer_free() in the finalize function to avoid it.
 
 ASAN shows memory leak stack:
 
-Indirect leak of 240 byte(s) in 5 object(s) allocated from:
+Indirect leak of 96 byte(s) in 1 object(s) allocated from:
     #0 0xffffab97e1f0 in __interceptor_calloc (/lib64/libasan.so.5+0xee1f0)
     #1 0xffffab256800 in g_malloc0 (/lib64/libglib-2.0.so.0+0x56800)
-    #2 0xaaabf555db84 in timer_new_full /qemu/include/qemu/timer.h:523
-    #3 0xaaabf555db84 in timer_new /qemu/include/qemu/timer.h:544
-    #4 0xaaabf555db84 in timer_new_ns /qemu/include/qemu/timer.h:562
-    #5 0xaaabf555db84 in ptimer_init /qemu/hw/core/ptimer.c:433
-    #6 0xaaabf56a36cc in exynos4210_pwm_init /qemu/hw/timer/exynos4210_pwm.c:401
-    #7 0xaaabf6339f6c in object_initialize_with_type /qemu/qom/object.c:515
-    #8 0xaaabf633a1e0 in object_new_with_type /qemu/qom/object.c:729
-    #9 0xaaabf6375e40 in qmp_device_list_properties /qemu/qom/qom-qmp-cmds.c:153
-    #10 0xaaabf653d8ec in qmp_marshal_device_list_properties /qemu/qapi/qapi-commands-qdev.c:59
-    #11 0xaaabf6587d08 in do_qmp_dispatch_bh /qemu/qapi/qmp-dispatch.c:110
-    #12 0xaaabf6552708 in aio_bh_call /qemu/util/async.c:136
+    #2 0xaaabf555db78 in ptimer_init /qemu/hw/core/ptimer.c:432
+    #3 0xaaabf57b3934 in exynos4210_rtc_init /qemu/hw/rtc/exynos4210_rtc.c:567
+    #4 0xaaabf6339f6c in object_initialize_with_type /qemu/qom/object.c:515
+    #5 0xaaabf633a1e0 in object_new_with_type /qemu/qom/object.c:729
+    #6 0xaaabf6375e40 in qmp_device_list_properties /qemu/qom/qom-qmp-cmds.c:153
+    #7 0xaaabf653d8ec in qmp_marshal_device_list_properties /qemu/qapi/qapi-commands-qdev.c:59
+    #8 0xaaabf6587d08 in do_qmp_dispatch_bh /qemu/qapi/qmp-dispatch.c:110
+    #9 0xaaabf6552708 in aio_bh_call /qemu/util/async.c:136
+    #10 0xaaabf6552708 in aio_bh_poll /qemu/util/async.c:164
+    #11 0xaaabf655f19c in aio_dispatch /qemu/util/aio-posix.c:381
+    #12 0xaaabf65523f4 in aio_ctx_dispatch /qemu/util/async.c:306
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Gan Qixin <ganqixin@huawei.com>
 ---
 Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
 ---
- hw/timer/exynos4210_pwm.c | 21 ++++++++++++++++-----
- 1 file changed, 16 insertions(+), 5 deletions(-)
+ hw/rtc/exynos4210_rtc.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
-diff --git a/hw/timer/exynos4210_pwm.c b/hw/timer/exynos4210_pwm.c
-index de181428b4..4764164d5e 100644
---- a/hw/timer/exynos4210_pwm.c
-+++ b/hw/timer/exynos4210_pwm.c
-@@ -410,6 +410,16 @@ static void exynos4210_pwm_init(Object *obj)
+diff --git a/hw/rtc/exynos4210_rtc.c b/hw/rtc/exynos4210_rtc.c
+index 4c97624478..2f667fb010 100644
+--- a/hw/rtc/exynos4210_rtc.c
++++ b/hw/rtc/exynos4210_rtc.c
+@@ -584,6 +584,14 @@ static void exynos4210_rtc_init(Object *obj)
      sysbus_init_mmio(dev, &s->iomem);
  }
  
-+static void exynos4210_pwm_finalize(Object *obj)
++static void exynos4210_rtc_finalize(Object *obj)
 +{
-+    Exynos4210PWMState *s = EXYNOS4210_PWM(obj);
-+    int i;
++    Exynos4210RTCState *s = EXYNOS4210_RTC(obj);
 +
-+    for (i = 0; i < EXYNOS4210_PWM_TIMERS_NUM; i++) {
-+        ptimer_free(s->timer[i].ptimer);
-+    }
++    ptimer_free(s->ptimer);
++    ptimer_free(s->ptimer_1Hz);
 +}
 +
- static void exynos4210_pwm_class_init(ObjectClass *klass, void *data)
+ static void exynos4210_rtc_class_init(ObjectClass *klass, void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -419,11 +429,12 @@ static void exynos4210_pwm_class_init(ObjectClass *klass, void *data)
+@@ -593,11 +601,12 @@ static void exynos4210_rtc_class_init(ObjectClass *klass, void *data)
  }
  
- static const TypeInfo exynos4210_pwm_info = {
--    .name          = TYPE_EXYNOS4210_PWM,
+ static const TypeInfo exynos4210_rtc_info = {
+-    .name          = TYPE_EXYNOS4210_RTC,
 -    .parent        = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(Exynos4210PWMState),
--    .instance_init = exynos4210_pwm_init,
--    .class_init    = exynos4210_pwm_class_init,
-+    .name              = TYPE_EXYNOS4210_PWM,
+-    .instance_size = sizeof(Exynos4210RTCState),
+-    .instance_init = exynos4210_rtc_init,
+-    .class_init    = exynos4210_rtc_class_init,
++    .name              = TYPE_EXYNOS4210_RTC,
 +    .parent            = TYPE_SYS_BUS_DEVICE,
-+    .instance_size     = sizeof(Exynos4210PWMState),
-+    .instance_init     = exynos4210_pwm_init,
-+    .instance_finalize = exynos4210_pwm_finalize,
-+    .class_init        = exynos4210_pwm_class_init,
++    .instance_size     = sizeof(Exynos4210RTCState),
++    .instance_init     = exynos4210_rtc_init,
++    .instance_finalize = exynos4210_rtc_finalize,
++    .class_init        = exynos4210_rtc_class_init,
  };
  
- static void exynos4210_pwm_register_types(void)
+ static void exynos4210_rtc_register_types(void)
 -- 
 2.23.0
 

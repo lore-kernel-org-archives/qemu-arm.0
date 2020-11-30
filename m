@@ -1,111 +1,80 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5115139lfb;
-        Mon, 30 Nov 2020 05:13:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyG2vz/4P27XXxEkr1Ir3oHWD6J+51qC24HVmUhxfhKhMwv3rXU27HJg+xWhsVzXGQihrxI
-X-Received: by 2002:a25:38ce:: with SMTP id f197mr24576864yba.12.1606741986349;
-        Mon, 30 Nov 2020 05:13:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606741986; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5121081lfb;
+        Mon, 30 Nov 2020 05:18:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2ULsoE4kbvD37VbspjByWmXkDUu+rzHiK/r4H1vj3SQEjLHiQGAEJft7QUSxwE4RX6nIZ
+X-Received: by 2002:a25:2605:: with SMTP id m5mr27828192ybm.98.1606742323303;
+        Mon, 30 Nov 2020 05:18:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606742323; cv=none;
         d=google.com; s=arc-20160816;
-        b=RnjkbUdpKpIEasF/7rw/vCAB3X/+z6xRp8HTiqCPfk3eHsA3v71JTMHdioJzTSL5ev
-         RGdW2Dy4i/PeYx/thUJVsVwoV8ZXWxZFsfdnI2yz4ZVnAPl0N7zdwxapsuP7BvUJ2Dbj
-         MCQwNZ6gmATd4EMO7Qh740QTy+WvrfQ3zVH9NWYWAXUoTdSq/kHVgsAuFRl+39XloGo1
-         oMDJBQf0OH8UTRv3OGCXsLqFfG40GNwqoKdIGM5TxE5AQd2YFikhF4oIBZSSjIPPDTzt
-         YtvM9EL8pAnjHxeN1sSzqLMAJHQ6rr+CMZ1NwEQbI3lBrMzq5nSB+qSxhKwHUC5njwvL
-         wHbA==
+        b=tt/7l5uj/gScweFu0nsSRLFRuNpBkfLubh9OrcgxAH6AJiIi+QlTys9HtXZX8vietg
+         md4MllemmVX4YTC2pD/tinElOUq3qRrEcf6KgNGqmY3y7RryD2ZkVuMIi7wYBm11trI/
+         BE+1RwzuRQCc3L07IYc6YuU8//CLkSk7zIJgMoQzebPvxUeFGKttLNZdwJ2/eE2yTJqH
+         l17Iut6wdIbgGUNmfKWI2D9hZwUx8fdq4xsn7ggdlVZzV5armbArarptbytCqsNQ1yXr
+         wH11k2L21vr7OYlXxx/OpuAe5aOlCUeVuaNGpEoOAQ3Z4dkUibZdIJwjdiPNLqsmOT8d
+         hSxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=+cQUQe+R5J9nJO78a40Wfj9NEMSXgjbnuBH4fDcF9eQ=;
-        b=P//O3CiDije4xTn6634x0lNwMck9ry8Y2YXdM4/s/jLEcPfzU33UB7/UbC2JqeW9xi
-         E6IS1skHrJFzJqu48QyINVjNP70sOkoTC2Lux2DzoiD0IgL2gw17WpTe47G7wc2DIUe7
-         ZC0oX95oIy15vNX1uok90N3KLND9GTTUWADdBGGqn2VnR0oVHVHHX663pIpsK5/X+mkN
-         DE1a4I0FbyrGfRYUB7GoWGXiWW/2eDkKeLe64mMOlGA4hNkf5ZdKQnNxf4uYnn6BcKlK
-         uknHHHq5CISJwRv6wc+1S9llZhY31pCU0Bp1ZvJ457Pm2ZCBB0kPrVG7C3FSZ2+nbvdj
-         JZUg==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=fcql/kR07RK2Q0lTuEyDNnrKF3+91IH/99tA26IhrYQ=;
+        b=qJArj5PSfceX3VJeuYyCZcApycMt7lSMONULUW5ucWVRjmn7Oek0olQ4R0VhCrVPKc
+         UVLh0WfnVIvOcqFgSUo8QVoCRXeU1TWUvyHAreLvaOy//JW3qCl/5KMX8eSIJfjsET0R
+         I2g8muNQJ8PIqeQwm9JnkOndchDREy0SI2sCcWx5SuHV4WqN4rxiGcyJraEzrK/wuVCC
+         LNoOVQ6sDwlLlNI2PckJF87IfKhBj7PbT6wQ6PykT9CT0n1EcxLZ5VEelYBiW2/TGrra
+         qdX6SLT+0p0A9t8X2SxuiHgtIrhtM+Xt26RWOrmj54MqNnP6hmBLfTs39hbAQxGQWkOl
+         K//Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B6r5dZ2q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si19680211ybb.239.2020.11.30.05.13.06
+        by mx.google.com with ESMTPS id p25si18438015ybj.343.2020.11.30.05.18.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Nov 2020 05:13:06 -0800 (PST)
+        Mon, 30 Nov 2020 05:18:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B6r5dZ2q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38186 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47888 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjizJ-00050k-HB
-	for alex.bennee@linaro.org; Mon, 30 Nov 2020 08:13:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58218)
+	id 1kjj4k-0000gz-KY
+	for alex.bennee@linaro.org; Mon, 30 Nov 2020 08:18:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59318)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kjish-0001Ga-Il
- for qemu-devel@nongnu.org; Mon, 30 Nov 2020 08:06:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33712)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kjisd-00064N-Pm
- for qemu-devel@nongnu.org; Mon, 30 Nov 2020 08:06:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606741570;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+cQUQe+R5J9nJO78a40Wfj9NEMSXgjbnuBH4fDcF9eQ=;
- b=B6r5dZ2qOcHgVOgttXq85PqqBfoAMyudt+aIxC3wgm0wzoI27i1bOIhlruYmZz9SNKXYaq
- vkYG3FtEvg8QQsuzcO3zzmclbnUj611CW0zLl3ePKnP9Y0u6bqQuUaRJ7YU7o9YyVzr2Lf
- 7GcrVOOCh8Wi/vguQ2vvsqYZFIN9mCg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-421-CutMxep_Nwu7IgFwroGMGA-1; Mon, 30 Nov 2020 08:06:06 -0500
-X-MC-Unique: CutMxep_Nwu7IgFwroGMGA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C622E809DDA;
- Mon, 30 Nov 2020 13:06:04 +0000 (UTC)
-Received: from [10.36.112.89] (ovpn-112-89.ams2.redhat.com [10.36.112.89])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5DEF260C4D;
- Mon, 30 Nov 2020 13:06:03 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/smmuv3: Fix up L1STD_SPAN decoding
-To: Peter Maydell <peter.maydell@linaro.org>,
- Kunkun Jiang <jiangkunkun@huawei.com>
-References: <20201124023711.1184-1-jiangkunkun@huawei.com>
- <CAFEAcA_tfEO0FaTq_Ud4FE_j93O0ohx3mGKtm2GoGZDfw-ZPAQ@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <54899eb7-e16d-502c-4757-f24596fea446@redhat.com>
-Date: Mon, 30 Nov 2020 14:06:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kjiyA-0004ZA-3b; Mon, 30 Nov 2020 08:11:55 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2873)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kjixz-0007hp-GO; Mon, 30 Nov 2020 08:11:52 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cl5G20mDPz15VHM;
+ Mon, 30 Nov 2020 21:11:06 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 30 Nov 2020 21:11:22 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, "Dr . David Alan Gilbert" <dgilbert@redhat.com>, "Fam
+ Zheng" <famz@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [PATCH v2 2/2] ramlist: Resize dirty bitmap blocks after remove
+ ramblock
+Date: Mon, 30 Nov 2020 21:11:04 +0800
+Message-ID: <20201130131104.10600-3-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
+In-Reply-To: <20201130131104.10600-1-zhukeqian1@huawei.com>
+References: <20201130131104.10600-1-zhukeqian1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_tfEO0FaTq_Ud4FE_j93O0ohx3mGKtm2GoGZDfw-ZPAQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.496,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.37]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,32 +87,96 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, "open list:ARM SMMU" <qemu-arm@nongnu.org>,
- Keqian Zhu <zhukeqian1@huawei.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
+ Keqian Zhu <zhukeqian1@huawei.com>, qemu-devel@nongnu.org,
+ kuhn.chenqun@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zm1tQM5w/5V7
+X-TUID: iSeeL5S8aXNg
 
-Hi Kunkun, Peter,
+Use the new "dirty_memory_resize" interface to reduce dirty bitmap
+blocks after we remove a ramblock from ramlist.
 
-On 11/30/20 12:29 PM, Peter Maydell wrote:
-> On Tue, 24 Nov 2020 at 02:37, Kunkun Jiang <jiangkunkun@huawei.com> wrote:
->>
->> Accroding to the SMMUv3 spec, the SPAN field of Level1 Stream Table
->> Descriptor is 5 bits([4:0]).
->>
->> Fixes: 9bde7f0674f(hw/arm/smmuv3: Implement translate callback)
->> Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
->> ---
-Acked-by: Eric Auger <eric.auger@redhat.com>
-> 
-> 
-> Applied to target-arm.next for 6.0, thanks.
-thanks and sorry for the delay
+This bug is found by ASAN after executing several qmp commands about
+object-add/object-del of memory-backend-ram. After applying this patch,
+the memory leak is not reported anymore.
 
-Eric
-> 
-> -- PMM
-> 
+=================================================================
+==qemu-system-aarch64==1720167==ERROR: LeakSanitizer: detected memory leaks
+Direct leak of 2359296 byte(s) in 9 object(s) allocated from:
+    #0 0xfffeedf3e938 in __interceptor_calloc (/lib64/libasan.so.5+0xee938)
+    #1 0xaaaaf6f1e740 in bitmap_new /qemu/include/qemu/bitmap.h:101
+    #2 0xaaaaf6f1e81c in dirty_memory_extend ../exec.c:2212
+    #3 0xaaaaf6f22524 in ram_block_add ../exec.c:2261
+    #4 0xaaaaf6f22988 in qemu_ram_alloc_internal ../exec.c:2434
+    #5 0xaaaaf6f8ae70 in memory_region_init_ram_shared_nomigrate ../softmmu/memory.c:1513
+    #6 0xaaaaf66edee0 in ram_backend_memory_alloc ../backends/hostmem-ram.c:30
+    #7 0xaaaaf660d03c in host_memory_backend_memory_complete ../backends/hostmem.c:333
+    #8 0xaaaaf70f6968 in user_creatable_complete ../qom/object_interfaces.c:23
+    #9 0xaaaaf70f6dac in user_creatable_add_type ../qom/object_interfaces.c:93
+    #10 0xaaaaf70f7030 in user_creatable_add_dict ../qom/object_interfaces.c:134
+    #11 0xaaaaf7340174 in do_qmp_dispatch_bh ../qapi/qmp-dispatch.c:110
+    #12 0xaaaaf732da30 in aio_bh_poll ../util/async.c:164
+    #13 0xaaaaf735c9a8 in aio_dispatch ../util/aio-posix.c:381
+    #14 0xaaaaf732d2ec in aio_ctx_dispatch ../util/async.c:306
+    #15 0xfffeecb029d8 in g_main_context_dispatch (/lib64/libglib-2.0.so.0+0x529d8)
+    #16 0xaaaaf733bb78 in os_host_main_loop_wait ../util/main-loop.c:244
+    #17 0xaaaaf733beac in main_loop_wait ../util/main-loop.c:520
+    #18 0xaaaaf70802a4 in qemu_main_loop ../softmmu/vl.c:1677
+    #19 0xaaaaf655786c in main ../softmmu/main.c:50
+    #20 0xfffeec043f5c in __libc_start_main (/lib64/libc.so.6+0x23f5c)
+    #21 0xaaaaf656a198  (/qemu/build/qemu-system-aarch64+0x9ba198)
+SUMMARY: AddressSanitizer: 2359296 byte(s) leaked in 9 allocation(s).
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+
+----
+little concern:
+According to code, my bugfix can solve two problems:
+
+1. Lose reference to dirty bitmap of deleted ramblock, because the reference is
+   covered by dirty bitmap of newly added ramblock.
+2. All dirty bitmap is not freed before qemu exit.
+
+However, ASAN do not report memory leak for point 2.
+Any thoughts or explanations?
+---
+ softmmu/physmem.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index 3e4f29f126..8c5f910677 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -2132,6 +2132,8 @@ static void reclaim_ramblock(RAMBlock *block)
+ 
+ void qemu_ram_free(RAMBlock *block)
+ {
++    ram_addr_t old_ram_size, new_ram_size;
++
+     if (!block) {
+         return;
+     }
+@@ -2141,12 +2143,18 @@ void qemu_ram_free(RAMBlock *block)
+     }
+ 
+     qemu_mutex_lock_ramlist();
++
++    old_ram_size = last_ram_page();
+     QLIST_REMOVE_RCU(block, next);
++    new_ram_size = last_ram_page();
++    dirty_memory_resize(old_ram_size, new_ram_size);
++
+     ram_list.mru_block = NULL;
+     /* Write list before version */
+     smp_wmb();
+     ram_list.version++;
+     call_rcu(block, reclaim_ramblock, rcu);
++
+     qemu_mutex_unlock_ramlist();
+ }
+ 
+-- 
+2.23.0
 

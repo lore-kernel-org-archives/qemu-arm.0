@@ -1,165 +1,158 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4739562lfb;
-        Sun, 29 Nov 2020 20:06:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxq7ncVxSESEcdkYphl/qMJ0ElGVjOWC4ZNHMZZOHnPOeUURxyFAN3HtyqR2+tuKdLGBoPe
-X-Received: by 2002:a25:ad0e:: with SMTP id y14mr31111194ybi.499.1606709204049;
-        Sun, 29 Nov 2020 20:06:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606709204; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4868138lfb;
+        Sun, 29 Nov 2020 23:46:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzQCuPKdN/CEhIA+Z16cwiNVM90HyLgr0DCmV65QSvxhJU/A9dPJ8lRVPXurfuZ4h6bft3F
+X-Received: by 2002:a25:b11:: with SMTP id 17mr25653803ybl.203.1606722360046;
+        Sun, 29 Nov 2020 23:46:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606722360; cv=none;
         d=google.com; s=arc-20160816;
-        b=ORRggv/JhfPXgXjfqrxYVJrJHT8iVaDbYlDCuUbtM8qcrB7DeFb62PpvyjLRs+O5Km
-         Jtu7TjSHxb8qL51xG6pXo/rONOhuic9UhRudkZK3EqPX2mAUmp9A5UUk3zupAbq223nX
-         VhOBWlaEwFy5ZiXg7CswQHjpnVTl6NXN+u21qZ5ZuZbpub0ISMJU/3dJ8YwWPRKvBzkN
-         XzK79bHenfhDKfw+Qa5Htt2u23Qtpxq09OVfUFx/i904aEPsPS/3KQ51mjUGmalt/fiy
-         t9cz3J8UP4fy6mq0gjAuqyp8iYMFI4K7SfhgB7mGFQ0i0hz8A30LjX8N6giSIl2Tnrui
-         8doQ==
+        b=m1MrvVECgPNN9444LPm4vA/H7l82FEYh/IeALgj9m/uQuqUSnlwRB6fnV2zgs442NW
+         8LWBMmCBxaUfdC+S2EhuahCdf5u6SCaoEOpJejNQ9rdCd5ZjEFpNb7wCUBGZxIWmnmXg
+         8SJN7n83lrKhM6ZvZxX8iC6bm4QAmbgwmLnwyWhOItPqFp2n7ohIJjVCOmGhmO9bfm8z
+         aqtJmQXdBpTRf/YiMbuT5FpM82g1756YDq4W5IiKuYlsV814IfX0zLNv4oHgrcgfhlw8
+         OxJVzqwEJXpnTT5FKoHmIh+2vcnLopA6cFtz2iqptk3zpnyLN9XkISc/bGhxPQUeVMvI
+         UT/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=k1CUnjUfljP81x5s+TL3hAeI4K2slELeAubuU78Kg0k=;
-        b=KI7q8wKxNiKhLPLz4rj44SpqA6ePVY86MgXaoLedLsV4HOf7Pj9ZQpPLAAEG8ejvcR
-         pZTcxUU9+YsR1YyoDPz0Cl4kBZ3E4fTQzNi9vDRN6n+roud3HOcj9+sCrZVxcMN8lZ2h
-         G7PEgm2GsWmya+2kod4ATabDiCPAy5795cULvUq/OnDJen4MRhJJ1OJ7SOgXKRB5vQx6
-         Xb1aCEkh8ZtOBF4vinxTY7SmlxU7hzmdRHNaZ7Xjp4T0Rujdz+jwFscaGDcqqvA+kHQi
-         GmS+Zyy1WO8tcA2VIdP+vqoSTmGdmrlLeo+eWvJTSxfILgzMFGKzoTu3VpZcNQxBfp+p
-         jrFQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=NkciG5g3FpE3WgwCAxm6CESG3BDsqI62JGqjh5s/+vI=;
+        b=pWB9xSXExdbg/CkUmEHyCd1WFhkrPz65YGwmZ7appxRrML28S4mxAXxsI5rM0GI7KK
+         NDW+e0NBi+sxeWgZYmfRXpKYN/IqTJQ30bdhezQr14mxEHs8KoGCQ3lruxRJxWN91UAy
+         JJnFy14k+FyXZIB0KqKBEn/7Au2zHzOmeWfeEIp2lbGV9gGqeXhPRrGhkZLtlX5B/Rul
+         s0Jmx4fh3Mi4VYyOjNM2WV7YgVzdFjr/leb61oX41wDsKGnJj/BzjHQmOP4AgOEnM8zB
+         Ao5R1cPETE9Illu9bazpos7NFCXDUYCvFfoGDsHJPA8OAW0oiN5P1kj/o8DBw+bFUukP
+         eIzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H6W8Yu65;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d33si4639614ybe.300.2020.11.29.20.06.43
+        by mx.google.com with ESMTPS id b68si17633868ybi.240.2020.11.29.23.45.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Nov 2020 20:06:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 29 Nov 2020 23:46:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H6W8Yu65;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52396 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46758 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjaSZ-00076H-FN
-	for alex.bennee@linaro.org; Sun, 29 Nov 2020 23:06:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48008)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kjdsl-00027e-Bz
+	for alex.bennee@linaro.org; Mon, 30 Nov 2020 02:45:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49604)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kjaRZ-0006rw-KD; Sun, 29 Nov 2020 23:05:41 -0500
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:34312)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kjaRX-0001Wh-Uw; Sun, 29 Nov 2020 23:05:41 -0500
-Received: by mail-io1-xd43.google.com with SMTP id d7so1569716iok.1;
- Sun, 29 Nov 2020 20:05:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=k1CUnjUfljP81x5s+TL3hAeI4K2slELeAubuU78Kg0k=;
- b=H6W8Yu65nOQA7J4510CRy4qYdgrp8+YfRhHW3N0yCflF9Ubl7aHy+Mmaq4zKU3BLjT
- yVZIffDAFo6AaxkE2/AVn0CsF0sJCkgPJsTes5e3rSs0wfzzpPi98AFl/zZoe8mgFiU4
- 8vBhBPP0ngnpsZFNRTAQjSenkiP1MgboMTWNReFS71W5sUQgilL4rkhBlRT+w8zHk9pb
- McZ+o+hqTdJjKWI8FKvwTMrCBE+iawqMUUFy1EyBERRJnferrBFD90QmS/27wztjM706
- cJCEorimS+fDasOa/G1yKT2sr0f3pdMFh70j5orJ4Lwls3q4kfjtAB8yEXyA/09NOVwZ
- kYSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=k1CUnjUfljP81x5s+TL3hAeI4K2slELeAubuU78Kg0k=;
- b=cfzKq4uK98qr9b2UcUCIgL8F2bPDKsytBS2Xivu4dHu8Qn25vHqkTQ75YUMHX3LYwS
- yuPKLioo+aFH+F6/Lm9skkf/fD78bkE3IRGyocOTcUC28eqI2ezsW1zAKpmLKfh0D3f5
- 4883H7F8HxY5UxdShMLnzeQdpoj6kiqXIhdksv6z+5swuZ4s3qAmYTyy2pN8qeP5UUsS
- zUP9U55K8UbvuFYhbNOicBBDugo17hSQOHpgLoypOlj8jlyLwYVuWnEfr/OJD2zeFEsl
- rHWrJrMFA/WHG1jCQ82A9kzaTm91YT9LRysu32XYhvOtIbQKduL72qXVWZoCGMafIbnF
- 8WVw==
-X-Gm-Message-State: AOAM5314LCfjluWfS06bzqTO92B5gf7Y7vca9kzIeiCcMaCbiqfH2JZR
- JbLUD4HWVj9SXGshA001drM=
-X-Received: by 2002:a5d:8344:: with SMTP id q4mr14250390ior.38.1606709138545; 
- Sun, 29 Nov 2020 20:05:38 -0800 (PST)
-Received: from pek-vx-bsp2.wrs.com (unknown-124-94.windriver.com.
- [147.11.124.94])
- by smtp.gmail.com with ESMTPSA id p18sm2119828ile.27.2020.11.29.20.05.35
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 29 Nov 2020 20:05:38 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <alistair@alistair23.me>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH 2/2] hw/ssi: imx_spi: Disable chip selects in imx_spi_reset()
-Date: Mon, 30 Nov 2020 12:05:24 +0800
-Message-Id: <1606709124-80741-2-git-send-email-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1606709124-80741-1-git-send-email-bmeng.cn@gmail.com>
-References: <1606709124-80741-1-git-send-email-bmeng.cn@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
- envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd43.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1kjdsZ-00025c-UB; Mon, 30 Nov 2020 02:45:47 -0500
+Received: from mx2.suse.de ([195.135.220.15]:37716)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1kjdsY-0008Tn-A6; Mon, 30 Nov 2020 02:45:47 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 3AB04AC6A;
+ Mon, 30 Nov 2020 07:45:44 +0000 (UTC)
+Subject: Re: [PATCH 6/8] hvf: Use OS provided vcpu kick function
+To: Alexander Graf <agraf@csgraf.de>, Eduardo Habkost <ehabkost@redhat.com>
+References: <20201126215017.41156-1-agraf@csgraf.de>
+ <20201126215017.41156-7-agraf@csgraf.de>
+ <20201126221808.GU2271382@habkost.net>
+ <2281f481-d64a-1750-0bd2-e7f52b26da51@csgraf.de>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <b7e7172c-f540-cc2a-80ea-c6a338cafe01@suse.de>
+Date: Mon, 30 Nov 2020 08:45:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
+MIME-Version: 1.0
+In-Reply-To: <2281f481-d64a-1750-0bd2-e7f52b26da51@csgraf.de>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
- Bin Meng <bin.meng@windriver.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MGzjsvn0cKqK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V+DwSyNos2bC
 
-From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+On 11/30/20 3:42 AM, Alexander Graf wrote:
+> 
+> On 26.11.20 23:18, Eduardo Habkost wrote:
+>> On Thu, Nov 26, 2020 at 10:50:15PM +0100, Alexander Graf wrote:
+>>> When kicking another vCPU, we get an OS function that explicitly does that for us
+>>> on Apple Silicon. That works better than the current signaling logic, let's make
+>>> use of it there.
+>>>
+>>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+>>> ---
+>>>   accel/hvf/hvf-cpus.c | 12 ++++++++++++
+>>>   1 file changed, 12 insertions(+)
+>>>
+>>> diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
+>>> index b9f674478d..74a272d2e8 100644
+>>> --- a/accel/hvf/hvf-cpus.c
+>>> +++ b/accel/hvf/hvf-cpus.c
+>>> @@ -418,8 +418,20 @@ static void hvf_start_vcpu_thread(CPUState *cpu)
+>>>                          cpu, QEMU_THREAD_JOINABLE);
+>>>   }
+>>>   
+>>> +#ifdef __aarch64__
+>>> +static void hvf_kick_vcpu_thread(CPUState *cpu)
+>>> +{
+>>> +    if (!qemu_cpu_is_self(cpu)) {
+>>> +        hv_vcpus_exit(&cpu->hvf_fd, 1);
+>>> +    }
+>>> +}
+>>> +#endif
+>>> +
+>>>   static const CpusAccel hvf_cpus = {
+>>>       .create_vcpu_thread = hvf_start_vcpu_thread,
+>>> +#ifdef __aarch64__
+>>> +    .kick_vcpu_thread = hvf_kick_vcpu_thread,
+>>> +#endif
+>> Interesting.  We have considered the possibility of adding
+>> arch-specific TYPE_ACCEL subclasses when discussing Claudio's,
+>> series.  Here we have another arch-specific hack that could be
+>> avoided if we had a TYPE_ARM_HVF_ACCEL QOM class.
+> 
+> 
+> I don't think that's necessary in this case. I don't see how you could 
+> ever have aarch64 and x86 HVF backends compiled into the same binary. 
+> The header files even have a lot of #ifdef's.
+> 
+> Either way, I've changed it to a weak function in v2. That way it's a 
+> bit easier to read.
+> 
+> 
+> Alex
+> 
+> 
 
-When a write to ECSPI_CONREG register to disable the SPI controller,
-imx_spi_reset() is called to reset the controller, during which CS
-lines should have been disabled, otherwise the state machine of any
-devices (e.g.: SPI flashes) connected to the SPI master is stuck to
-its last state and responds incorrectly to any follow-up commands.
+Ciao Alex!
 
-Fixes c906a3a01582: ("i.MX: Add the Freescale SPI Controller")
-Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
+you're in the news, congrats for your hack!
 
----
+Ciao,
 
- hw/ssi/imx_spi.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index e605049..85c172e 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -231,6 +231,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
- static void imx_spi_reset(DeviceState *dev)
- {
-     IMXSPIState *s = IMX_SPI(dev);
-+    int i;
- 
-     DPRINTF("\n");
- 
-@@ -243,6 +244,10 @@ static void imx_spi_reset(DeviceState *dev)
- 
-     imx_spi_update_irq(s);
- 
-+    for (i = 0; i < ECSPI_NUM_CS; i++) {
-+        qemu_set_irq(s->cs_lines[i], 1);
-+    }
-+
-     s->burst_length = 0;
- }
- 
--- 
-2.7.4
-
+Claudio

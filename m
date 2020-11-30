@@ -1,84 +1,72 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4700779lfb;
-        Sun, 29 Nov 2020 18:52:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxSMylQYAKtCDDVSaXNvjsO/ehky8hzrPpjhW7/t892ogRP83TpRipeDebouitvd8JNBIgN
-X-Received: by 2002:a25:344a:: with SMTP id b71mr21343324yba.301.1606704739411;
-        Sun, 29 Nov 2020 18:52:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606704739; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4709539lfb;
+        Sun, 29 Nov 2020 19:07:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzqSIhhOIlROyafoLIG3kupBJ/8qrwTOiufn4QweuFDl6c/SGCVo/tC58jd71Gk8qVYCYAW
+X-Received: by 2002:a25:1085:: with SMTP id 127mr24493010ybq.204.1606705660652;
+        Sun, 29 Nov 2020 19:07:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606705660; cv=none;
         d=google.com; s=arc-20160816;
-        b=NH0gbou/tfqmVmzBWryPbz/b+lfRvx87wWK3zKgyIxMizURapVu2ssXw9Fv18BFBtb
-         sjYfwtgmkEkPD5YHVAF1gYd9hZoTwQPvtitQ+8T8tyI0PeGZi9tMI5bV53arCasQOXXq
-         WHBzqMiodsiqBQJBSbT8SNbhm8Fdcoun89nCmXdiXiB5nOEXOj3u0On2eToXITS8se9I
-         GCAfJRjbWLj1EHjWxleXbvmN/qIH75e6unhOEtHfaiqlygY58+OyddkKCA86d9hEX6gC
-         H1TnWJBTdL/EOZkNBqerlDXLmwLzB6cLWqt+nk3yEFzsImM3raTSKhNZjQIU9mbw8Ssi
-         vfyg==
+        b=IHIsGdq1OB+X9hdrL60rttIhGKNBL5rGvsc7EfsQvJzsrUjJsFH4BtmGUWW/kbLEks
+         CRbBRjfxmHZNZ+g/s+cq2gTOs51rhtrMifp53kKWDLJFQwleI3JO5EbQkXq96RZpz6Pb
+         fFnEMzBBxvsvJ2d2mnPWdhSjbQ1at2P5VLfmadd63sW+OktBQx33m9x8ljnB3MjVPmSk
+         H+TeasjV6cD9Aw6Fl1CfpyS5b9m3zmo6JRsYPKl4ya0fJDlmhnOu9zbd5koJYQQyz8eh
+         ahkxSLXkr+9XA5ooXoRzrDRw8stTjtHjqWggyRPk4zUjpgdS/UQYz44s30PW4vQLkAaH
+         YuBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=OnUmN/LGUD71a1Nan2TxjsdoOvLTlsk61OZsWI1lOIk=;
-        b=g99lK82yvhjePw8o1lU2uUGobqwsUaBrApbb9YbvCBtTkycYhmQqGQvjWR1byW5RAX
-         2/23RqPfelqau8LonU/WaRVQp5OekLVmGdaX/JWwIblWWI0VWRjoX337hKne5zQIcHOz
-         jumzMxAdumPC2yruvZBKhEjlcziIMQRUsuSIOtTkeW3ZVLXR8RZEx/iO0c9jM08IhlYu
-         +EJrP+3+zSSEPOToWz/Vp+YGNTRVTkKSmI7Z5u4r/I7D7z7b0laOPXyNQh8+Yx3i6+ho
-         5VnWI0Vz+cJAj10hdnNfHvSi9hPATeaKsvXEDN+nx7Nl4DtdhvmNqKM5JgGgKK14PdsN
-         e9VA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=bxeHiRzjIQ1ZwqLNQdMtFxK7OyfDTO/z7sIP8NPs3ic=;
+        b=L1Irt4zQkYiqHX3N5c3qyV0TI/HALyuXrlPYDj3akcAx56MooTSSbkNqL4spOLwenl
+         3Avi0OFzGl46cncqn7WfDK88hws3rAhpUpAGJvTxLUsypBe+u9mjjvlafTCWY/D0U7dW
+         I/gciVcwd4ktt4KSqNT7Ydl3RntCUbAle8xFvp3xhdg2FNe71VuF4Ab1W38h35JfRAZD
+         cvxsApfbRRP1ZvJy73aJsRg2tGocyX8sc0vlz3FQt1GIGvcXuJyFr2ViONdytP54wCuX
+         27LRFh+gJOh+U5RF0IW63uFdY8Mo34G9tnqP6qpaKRsuMPTZTzOAaBezQyvNXvP5saBS
+         Y2Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12si16673023ybl.434.2020.11.29.18.52.19
+        by mx.google.com with ESMTPS id x201si17301747ybg.345.2020.11.29.19.07.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Nov 2020 18:52:19 -0800 (PST)
+        Sun, 29 Nov 2020 19:07:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39280 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60568 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjZIY-0006fD-Np
-	for alex.bennee@linaro.org; Sun, 29 Nov 2020 21:52:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36972)
+	id 1kjZXQ-00084v-1i
+	for alex.bennee@linaro.org; Sun, 29 Nov 2020 22:07:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kjZ7J-00082o-Gr; Sun, 29 Nov 2020 21:40:41 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:33918
+ id 1kjZXF-00084Y-L4; Sun, 29 Nov 2020 22:07:29 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:35322
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1kjZ7H-0006JJ-Cp; Sun, 29 Nov 2020 21:40:41 -0500
-Received: from Alexanders-Mac-mini.local
- (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
- by csgraf.de (Postfix) with UTF8SMTPSA id 2E83839001C1;
- Mon, 30 Nov 2020 03:40:33 +0100 (CET)
-Subject: Re: [PATCH 8/8] hw/arm/virt: Disable highmem when on
- hypervisor.framework
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20201126215017.41156-1-agraf@csgraf.de>
- <20201126215017.41156-9-agraf@csgraf.de>
- <20201126221405.GT2271382@habkost.net>
- <CAFEAcA_Nc0Jp-3PPigt1YdqHfNhGToovCOO16DOPPC9Bt663qg@mail.gmail.com>
- <20201127162633.GY2271382@habkost.net>
- <CAFEAcA-NvSUUJ1GpYP2tCgjD-RNL5rO7P2H63xHmGS7x6ggDBQ@mail.gmail.com>
- <CAFEAcA_Xo4ptyVhJGXvO3B4FJh86W-Oj81f_nxMbaZt-DPfLrg@mail.gmail.com>
+ id 1kjZXD-00076j-Jq; Sun, 29 Nov 2020 22:07:29 -0500
+Received: from localhost.localdomain
+ (dynamic-077-009-091-089.77.9.pool.telefonica.de [77.9.91.89])
+ by csgraf.de (Postfix) with ESMTPSA id 0BB3D3900400;
+ Mon, 30 Nov 2020 04:07:26 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <c3b7d74a-3a4c-d102-ba0f-0da436eec4d3@csgraf.de>
-Date: Mon, 30 Nov 2020 03:40:32 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
- Gecko/20100101 Thunderbird/84.0
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 3/8] hvf: Actually set SIG_IPI mask
+Date: Mon, 30 Nov 2020 04:07:18 +0100
+Message-Id: <20201130030723.78326-4-agraf@csgraf.de>
+X-Mailer: git-send-email 2.24.3 (Apple Git-128)
+In-Reply-To: <20201130030723.78326-1-agraf@csgraf.de>
+References: <20201130030723.78326-1-agraf@csgraf.de>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_Xo4ptyVhJGXvO3B4FJh86W-Oj81f_nxMbaZt-DPfLrg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
  helo=zulu616.server4you.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,48 +79,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Claudio Fontana <cfontana@suse.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7Zkmh33PEuQJ
+X-TUID: +MkOxjH0NcQM
 
+In the hvf init function, we prepare a signal mask for SIG_IPI, but
+then fail to set it. This seems to work by chance on some systems,
+where SIGUSR2 is already unmasked by default. It fails however on
+ARM Big Sur.
 
-On 27.11.20 17:47, Peter Maydell wrote:
-> On Fri, 27 Nov 2020 at 16:38, Peter Maydell <peter.maydell@linaro.org> wrote:
->> Having looked a bit more closely at some of the relevant target/arm
->> code, I think the best approach is going to be that in virt.c
->> we just check the PARange ID register field (probably via
->> a convenience function that does the conversion of that to
->> a nice number-of-bits return value; we might even have one
->> already).
-> Ha, in fact we're already doing something quite close to this,
-> though instead of saying "decide whether to use highmem based
-> on the CPU's PA range" we go for "report error to user if PA
-> range is insufficient" and let the user pick some command line
-> options that disable highmem if they want:
->
->          if (aarch64 && vms->highmem) {
->              int requested_pa_size = 64 - clz64(vms->highest_gpa);
->              int pamax = arm_pamax(ARM_CPU(first_cpu));
->
->              if (pamax < requested_pa_size) {
->                  error_report("VCPU supports less PA bits (%d) than "
->                               "requested by the memory map (%d)",
->                               pamax, requested_pa_size);
->                  exit(1);
->              }
->          }
+So let's set the signal mask as intended.
 
+Signed-off-by: Alexander Graf <agraf@csgraf.de>
+---
+ accel/hvf/hvf-cpus.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Turns out I can sync aa64mfr0 just fine as well. So I'll just do that 
-and remove this patch.
-
-
-Alex
-
+diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
+index 4d1cca9d6e..38559ab649 100644
+--- a/accel/hvf/hvf-cpus.c
++++ b/accel/hvf/hvf-cpus.c
+@@ -338,6 +338,7 @@ static int hvf_init_vcpu(CPUState *cpu)
+ 
+     pthread_sigmask(SIG_BLOCK, NULL, &set);
+     sigdelset(&set, SIG_IPI);
++    pthread_sigmask(SIG_SETMASK, &set, NULL);
+ 
+     r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf_fd, HV_VCPU_DEFAULT);
+     cpu->vcpu_dirty = 1;
+-- 
+2.24.3 (Apple Git-128)
 

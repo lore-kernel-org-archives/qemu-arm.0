@@ -1,184 +1,84 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1940655lfo;
-        Fri, 5 Feb 2021 03:49:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwB50knE7fkLVm50J3bBUY7G1D+6JpY4Q1foG/+GtkTDpZ6HQPtzIpxY4BS0HeatOIq6o0g
-X-Received: by 2002:a25:3387:: with SMTP id z129mr6002361ybz.239.1612525756268;
-        Fri, 05 Feb 2021 03:49:16 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1612525756; cv=pass;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4700779lfb;
+        Sun, 29 Nov 2020 18:52:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxSMylQYAKtCDDVSaXNvjsO/ehky8hzrPpjhW7/t892ogRP83TpRipeDebouitvd8JNBIgN
+X-Received: by 2002:a25:344a:: with SMTP id b71mr21343324yba.301.1606704739411;
+        Sun, 29 Nov 2020 18:52:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606704739; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zk4uiB25U5EwB1w534rRfARtXrYtCt5BBXcgIUSREidtLDXkjyK1J58kuhT5eQdgIg
-         +lhkigpES9hV03k+JUAYfoH0xDhW1yO1GKDb4f1YQiQPu+CEIsg/hJB2C+zRxRYHIyms
-         Ut+LKq2tLwHidvg4zrgSVvnOpFE9GhIrX8Ys8zc4481wre29YHHJ+wtZrWYIdKho3cJC
-         FgIPNuCdD4txnHiXKA3rTsszesjQ+W9k2Fa/UGLcH8UYdFl0nLM0c8YI2wGtI2SFKJPe
-         2jq/j2Z92em4/7snusMz9jmeLmx8UhvqPm0fl9i+Eha0DskT7sDRluSmE+rel7z+uEAq
-         kEWw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=W+xTXYi88OjbMUkdMMOVkscD9abakop+eMZsjxbnbhQ=;
-        b=CCawH+8ZWRFD4VS48/+Y6ZeIHDkKq8j9KLiNLpyxKQRhtTDEAIUlmxSzjDiuaIamGM
-         f/9h6B+Q5DXoWknyjinQ80ki2s55jKWo/ScbyTJJEUGK97NBXgEqfrZgBFAjJTLNBUcZ
-         FEC3pUgBWnZwj2T9eEXkmaD5QtqGvYBCF1nZshPQ2I51BuZDtt7LGKHmCmiPtvTow7Tb
-         Nqud8EyAAwi7EGjvDORSJhZSnnw19MW4j81CLZXW1fCW9AqHPupO6gr8OyYubWfVNef2
-         8aMew8u0IZcHBhh6gMVBfk62FQIyA/XERwlksPiWw2xQEXQY6eZxm12LtP7GsPzBI1Nb
-         3r5w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@marvell.com header.s=pfpt0220 header.b="Q/wP67yP";
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=p1dDhRzT;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=marvell.com
+        b=NH0gbou/tfqmVmzBWryPbz/b+lfRvx87wWK3zKgyIxMizURapVu2ssXw9Fv18BFBtb
+         sjYfwtgmkEkPD5YHVAF1gYd9hZoTwQPvtitQ+8T8tyI0PeGZi9tMI5bV53arCasQOXXq
+         WHBzqMiodsiqBQJBSbT8SNbhm8Fdcoun89nCmXdiXiB5nOEXOj3u0On2eToXITS8se9I
+         GCAfJRjbWLj1EHjWxleXbvmN/qIH75e6unhOEtHfaiqlygY58+OyddkKCA86d9hEX6gC
+         H1TnWJBTdL/EOZkNBqerlDXLmwLzB6cLWqt+nk3yEFzsImM3raTSKhNZjQIU9mbw8Ssi
+         vfyg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=OnUmN/LGUD71a1Nan2TxjsdoOvLTlsk61OZsWI1lOIk=;
+        b=g99lK82yvhjePw8o1lU2uUGobqwsUaBrApbb9YbvCBtTkycYhmQqGQvjWR1byW5RAX
+         2/23RqPfelqau8LonU/WaRVQp5OekLVmGdaX/JWwIblWWI0VWRjoX337hKne5zQIcHOz
+         jumzMxAdumPC2yruvZBKhEjlcziIMQRUsuSIOtTkeW3ZVLXR8RZEx/iO0c9jM08IhlYu
+         +EJrP+3+zSSEPOToWz/Vp+YGNTRVTkKSmI7Z5u4r/I7D7z7b0laOPXyNQh8+Yx3i6+ho
+         5VnWI0Vz+cJAj10hdnNfHvSi9hPATeaKsvXEDN+nx7Nl4DtdhvmNqKM5JgGgKK14PdsN
+         e9VA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g35si8654863ybi.33.2021.02.05.03.49.16
+        by mx.google.com with ESMTPS id x12si16673023ybl.434.2020.11.29.18.52.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 03:49:16 -0800 (PST)
+        Sun, 29 Nov 2020 18:52:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@marvell.com header.s=pfpt0220 header.b="Q/wP67yP";
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=p1dDhRzT;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=marvell.com
-Received: from localhost ([::1]:45008 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39280 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7zbv-0003Aj-KE
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 06:49:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35710)
+	id 1kjZIY-0006fD-Np
+	for alex.bennee@linaro.org; Sun, 29 Nov 2020 21:52:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=36704b62c3=bbhushan2@marvell.com>)
- id 1l7zbR-0003AS-Vo; Fri, 05 Feb 2021 06:48:46 -0500
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173]:4908)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=36704b62c3=bbhushan2@marvell.com>)
- id 1l7zbO-0007wN-M3; Fri, 05 Feb 2021 06:48:45 -0500
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 115Bkv2H009225; Fri, 5 Feb 2021 03:48:35 -0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
- h=from : to : subject
- : date : message-id : content-type : content-transfer-encoding :
- mime-version; s=pfpt0220; bh=W+xTXYi88OjbMUkdMMOVkscD9abakop+eMZsjxbnbhQ=;
- b=Q/wP67yPL6IX7w6wUn3+NyQKfX8feb/0GcpuTgSAFMTQXWAPcsceAZAGk4yRIYYMl7HD
- ezamNcmINoqE5cLfTG2HxMmu4ytbLydtS6lT5rwVAm9G9f/i5AjMB5N1fwv5QMXQkvyt
- 9l58WbXAZZsJsOEQXFB4eB+eJcurRzD90mZ6/PTXt8PYNvE31FMMT2uygAjmUSsog2tT
- HevKKFPqD35lAt++rR6m6s8lp8zCUrcM5ML9vrcieb/IQ3cFDWIlOS5lWfLcW2ecG/Yb
- Zr4aWT2iWjv1RK5yOON5J3pQJT9DBIRgR2omeAraypeud8SkXJmbfFosusejUnG4+IR2 ag== 
-Received: from dc5-exch02.marvell.com ([199.233.59.182])
- by mx0b-0016f401.pphosted.com with ESMTP id 36fnr68v27-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Fri, 05 Feb 2021 03:48:35 -0800
-Received: from DC5-EXCH01.marvell.com (10.69.176.38) by DC5-EXCH02.marvell.com
- (10.69.176.39) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 5 Feb 2021 03:48:33 -0800
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.172)
- by DC5-EXCH01.marvell.com (10.69.176.38) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2 via Frontend Transport; Fri, 5 Feb 2021 03:48:33 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bVNbKWLQyMgvUVqD3dQ7gkm0UNtUKSuBiew7ue0geK7xpHxnxxPT3GH54/mRD5cb0vCW2zYOjq8ZANnUwJRkyCfiOIS19NW8Agrva8rLlJLt3YzKKGfl/nuLs30P5+jjTVdl/h2LxYXDYSag7QI5XaslyUNGxiJvjcm/HUZZjn8tYpe/8xMSAeSTCezNXIR69NPMCaW84Adb3kNyf+Bl3EG8ePB+Yt89rH8ynCacnffIuJourHrNooyO9Ry2D5577igvC/3vXg8YUkZ5cZAZzN526u7e0DreTmVaFyE7NnbCW6p4KAIk2uWExwADJDkgII9rTgbSUtx4GLZy/eGa+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=W+xTXYi88OjbMUkdMMOVkscD9abakop+eMZsjxbnbhQ=;
- b=SkyPDcbuKcgvet+VwfEkcyHF4frh4JOie1r0/CQFLNMlzK4C5VrkJ4FxRMAADi5BQb7aFeqHJmc01LwXAiPEjUg3W0y148NLF6qBRA5OlDsSEHuBhRfa6HX2nkWkBSrWS1E7ZmFNhRQDmyhzoQZgDIAr6ll1fJfjGq+qcSM5H6Wgq/cHDwCq9nPx7shGAVjuNtUevyNXHHsuhUbpUINST/KeAn6lr8FA2bstLzzO+iUnr/D+IwHhPper8eajhjmjpCbQmVFIWEcOdixMgcSpREYjsv6R/JPBogyRVX0dEU6+g239V0WkxmlXgdB8Jab7Na9KhewnmLby8F9ytvbL6Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
- dkim=pass header.d=marvell.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=marvell.onmicrosoft.com; s=selector1-marvell-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=W+xTXYi88OjbMUkdMMOVkscD9abakop+eMZsjxbnbhQ=;
- b=p1dDhRzTvc0TFZj/wxzZIv7Xf95MKmahGX2N8y3IIw/uB01y1vnMck0C8/ENGLTOpOZsphhu9IbnHepTjCu5n6RFfWO/9l8kvYckWecwWxvimE/pF9WekdMs5D5Q4jlnsxVZUUHPmgHfQr57sKHl799SeuEjGhp+T8wZPgfF7+o=
-Received: from DM6PR18MB2698.namprd18.prod.outlook.com (2603:10b6:5:16d::28)
- by DM5PR18MB2135.namprd18.prod.outlook.com (2603:10b6:4:b8::32) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3825.17; Fri, 5 Feb
- 2021 11:48:31 +0000
-Received: from DM6PR18MB2698.namprd18.prod.outlook.com
- ([fe80::9dab:c785:dcf9:24b9]) by DM6PR18MB2698.namprd18.prod.outlook.com
- ([fe80::9dab:c785:dcf9:24b9%4]) with mapi id 15.20.3805.027; Fri, 5 Feb 2021
- 11:48:31 +0000
-From: Bharat Bhushan <bbhushan2@marvell.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>
-Subject: QEMU v5.2.0: object_new_with_type: assertion failed: (type != NULL)
-Thread-Topic: QEMU v5.2.0: object_new_with_type: assertion failed: (type !=
- NULL)
-Thread-Index: Adb7s9HYw0ymsqeiRbO4m0AX9oseTQ==
-Date: Fri, 5 Feb 2021 11:48:31 +0000
-Message-ID: <DM6PR18MB2698B10216D8BD1ED5DE8809E3B29@DM6PR18MB2698.namprd18.prod.outlook.com>
-Accept-Language: en-IN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=none action=none header.from=marvell.com;
-x-originating-ip: [122.179.77.123]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 30332400-9c55-4ae5-8a0d-08d8c9cbf62e
-x-ms-traffictypediagnostic: DM5PR18MB2135:
-x-microsoft-antispam-prvs: <DM5PR18MB2135D773578FE878D2D568D8E3B29@DM5PR18MB2135.namprd18.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MmFxVnwCG4biXnStL4/M6TcAUpp0c6CBvu/Krg5mSS75nawa70COZFQMu9GmHUilZJR8lqpNb0nO7L8F1K1z1LIa1fxC62dNUjHsxuAQ1onGAVM5aweG36too3GpSVcRWreTelUd/D4YtRg0thaZRsvcdrpEVL2mdynxt2s9FHk0HOvloBuu5sRW6IZmVNBT5MK5iAbFTUVWBNnI1Gw05iCKLzXYCMbQoaGBsvY3iWpwtecv3FrA/pxzaysEqlXzyxepshqVgfe9gXbNimRuT08T+gs9jEvrmlwjwbm6TI+qHW68kpaetIfQNbAPkBDGiZAkedAgSW7HgrPCkNgBT2bVNnASHgkap53ekDF2m6Xyr+uEZ5Ba/mHQo2RAYVLb8gYhLA/uevmNf9ne03Mi3ruw2u/XWGL+/pyvfFYzLHrgNE1DuX69Jsy5r4J1CScCmVJl5z5rZB0eGbifS8CiJbGO1OqhXl7a+SvM80A5lzHeN9Zz8LEfFcyW9nb3o7SXgheUusWkaG/Um2CDVKOBqw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR18MB2698.namprd18.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(136003)(366004)(39860400002)(346002)(376002)(450100002)(83380400001)(66476007)(478600001)(66446008)(64756008)(66556008)(110136005)(76116006)(316002)(2906002)(6506007)(186003)(26005)(8936002)(7696005)(33656002)(66946007)(9686003)(55016002)(8676002)(5660300002)(52536014)(86362001)(71200400001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: =?us-ascii?Q?POahxlCpkMXnHx+H/zFpT7WsrvBiTNSMukrmhtP/k34pRmlLu+K29AMsDB/W?=
- =?us-ascii?Q?J6q21nuYmh1Zu23TPNa7FNTj3ASR0X71XhRuRRFMAhisNVHu4Lf5TIUvErIR?=
- =?us-ascii?Q?BdcdNVl0v278JL7e3UUOlmhR9Srx8nuh7zvwv+sgL2AvbT4dfbM4KVU6QkBH?=
- =?us-ascii?Q?WlQWuESRlA+pj7RzUIzph0W9lPFLOct+EUrIr+jGnUtvGX2+7qkcN+BuE1he?=
- =?us-ascii?Q?8MTodQyahiYq0BZuIflS/+1SzRpJbRMrnwuc/ukkxAuH5u5LaKRZMGkAAkrU?=
- =?us-ascii?Q?8SDh1UET53NWcJEVdk0IRaS2NX3MCvayuPqWFk1/2gF+IzqpwLr6W0QGFIck?=
- =?us-ascii?Q?SuyqnQ4S2Ys+K5mlqQhHa2ZpuO0/siheJJADoTKAyadq5AcU8D7naayDYSgt?=
- =?us-ascii?Q?4WmjdLJ3Wyy2Ltl8J8/4HkAQ0of3LPpahiZP4U9rS/jnGC4bfOrFH1l8bcM2?=
- =?us-ascii?Q?k/iPnXAqWS0c4pOWt4VNdRFXRiBkXpnlgss74EvA+BUrid9nTaD7jLozKWqe?=
- =?us-ascii?Q?S+nrC5TpKl0glit8Oh2HGnJcbi5SHcDglQQlp0ary+MPQMSfixnNaU/mcQye?=
- =?us-ascii?Q?qa+yKTPJiwWwXeeokPodWViUQZDaICuwug15bGwpoB5C6OdyjY4YSxHraoHk?=
- =?us-ascii?Q?5Okc1uoUpp/w8T1eGKl8iHjHbypYo8s6f3GJgd0qMV+0jF30gqBw4P+zCV1U?=
- =?us-ascii?Q?z/+YKRpxs5eC1+aJxym9UfpV17fyConhDRuoivWEAKtDToLPpF7wl/Aay2Vx?=
- =?us-ascii?Q?1RoPpJKldYS3BWx6v55Y0F1qAEZPn8KcZmqoc5vf6Otgcurz/ZjC5IxpUBht?=
- =?us-ascii?Q?AhF9Ed6IjPLk1N3KTT2w0ftz7VMpcSnva9dHtbrqo+pDcDL6cIUzwtZmBzWu?=
- =?us-ascii?Q?eUZeOgKmLX2oKSeA0YhPHyp88M6QNCZG2nRxaXUZ2oUWX93jXH2281CPXqfe?=
- =?us-ascii?Q?K0zoIk9LI6huQMMgmF//mIuG4glcuRXsIkitV/Gs2RruJqLAQ1VPDJZxSSWH?=
- =?us-ascii?Q?2tT4x11/Nx8BBMqmYLxhFOoQ0CnIE8QtelfWALSW2uPwxlNQiuXRTMCq5znA?=
- =?us-ascii?Q?jWx66FvMGvaoq+/STb6swIgEwaL+jOqWiSALJjYzBZSOBQHZM59QypRJoTI4?=
- =?us-ascii?Q?8Sw9RNIT6aA12pK3tQacpOwbtWEEmi0kocjF3aNc76T4AUlE5V5s7BvHpMHi?=
- =?us-ascii?Q?e54d3nyCAiD3Iv5FObPyoXA11tCZU9guUY7nsj119lVEs3PtdM0PXR6rtYl7?=
- =?us-ascii?Q?r+gkT63bxNoVw/jRJ/GWBMDGTBaR1/N8MQVVFiRdLU+jHLUsQLsZlI4iYSyv?=
- =?us-ascii?Q?j7y7drCje9DrfU6+Jb4JwCqL?=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1kjZ7J-00082o-Gr; Sun, 29 Nov 2020 21:40:41 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:33918
+ helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1kjZ7H-0006JJ-Cp; Sun, 29 Nov 2020 21:40:41 -0500
+Received: from Alexanders-Mac-mini.local
+ (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
+ by csgraf.de (Postfix) with UTF8SMTPSA id 2E83839001C1;
+ Mon, 30 Nov 2020 03:40:33 +0100 (CET)
+Subject: Re: [PATCH 8/8] hw/arm/virt: Disable highmem when on
+ hypervisor.framework
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>
+References: <20201126215017.41156-1-agraf@csgraf.de>
+ <20201126215017.41156-9-agraf@csgraf.de>
+ <20201126221405.GT2271382@habkost.net>
+ <CAFEAcA_Nc0Jp-3PPigt1YdqHfNhGToovCOO16DOPPC9Bt663qg@mail.gmail.com>
+ <20201127162633.GY2271382@habkost.net>
+ <CAFEAcA-NvSUUJ1GpYP2tCgjD-RNL5rO7P2H63xHmGS7x6ggDBQ@mail.gmail.com>
+ <CAFEAcA_Xo4ptyVhJGXvO3B4FJh86W-Oj81f_nxMbaZt-DPfLrg@mail.gmail.com>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <c3b7d74a-3a4c-d102-ba0f-0da436eec4d3@csgraf.de>
+Date: Mon, 30 Nov 2020 03:40:32 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
+ Gecko/20100101 Thunderbird/84.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR18MB2698.namprd18.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 30332400-9c55-4ae5-8a0d-08d8c9cbf62e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Feb 2021 11:48:31.8044 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZZi67MhIiOfkfDkoGVOWf0JafGskMTRn6prgRZTsQHaFTZKR2DoT/pfppseY00XSYj0ja75H95aChoCq/FLISg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR18MB2135
-X-OriginatorOrg: marvell.com
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.369, 18.0.737
- definitions=2021-02-05_07:2021-02-05,
- 2021-02-05 signatures=0
-Received-SPF: pass client-ip=67.231.156.173;
- envelope-from=prvs=36704b62c3=bbhushan2@marvell.com;
- helo=mx0b-0016f401.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <CAFEAcA_Xo4ptyVhJGXvO3B4FJh86W-Oj81f_nxMbaZt-DPfLrg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -191,62 +91,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Claudio Fontana <cfontana@suse.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: taxBQvLnMagC
+X-TUID: 7Zkmh33PEuQJ
 
 
-Hi All,
+On 27.11.20 17:47, Peter Maydell wrote:
+> On Fri, 27 Nov 2020 at 16:38, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> Having looked a bit more closely at some of the relevant target/arm
+>> code, I think the best approach is going to be that in virt.c
+>> we just check the PARange ID register field (probably via
+>> a convenience function that does the conversion of that to
+>> a nice number-of-bits return value; we might even have one
+>> already).
+> Ha, in fact we're already doing something quite close to this,
+> though instead of saying "decide whether to use highmem based
+> on the CPU's PA range" we go for "report error to user if PA
+> range is insufficient" and let the user pick some command line
+> options that disable highmem if they want:
+>
+>          if (aarch64 && vms->highmem) {
+>              int requested_pa_size = 64 - clz64(vms->highest_gpa);
+>              int pamax = arm_pamax(ARM_CPU(first_cpu));
+>
+>              if (pamax < requested_pa_size) {
+>                  error_report("VCPU supports less PA bits (%d) than "
+>                               "requested by the memory map (%d)",
+>                               pamax, requested_pa_size);
+>                  exit(1);
+>              }
+>          }
 
-I am using QEMU version "v5.2.0" and getting below error when running on ar=
-m64
 
-$ qemu-system-aarch64 --version
+Turns out I can sync aa64mfr0 just fine as well. So I'll just do that 
+and remove this patch.
 
-ERROR:../qom/object.c:711:object_new_with_type: assertion failed: (type !=
-=3D NULL)
-Bail out! ERROR:../qom/object.c:711:object_new_with_type: assertion failed:=
- (type !=3D NULL)
 
-Running GDB give below information.
-Is this something known.
+Alex
 
-(gdb) run
-Starting program: /root/qemu-system-aarch64=20
-[Thread debugging using libthread_db enabled]
-Using host libthread_db library "/lib64/libthread_db.so.1".
-[New Thread 0xfffff703ed90 (LWP 5212)]
-**
-ERROR:../qom/object.c:711:object_new_with_type: assertion failed: (type !=
-=3D NULL)
-Bail out! ERROR:../qom/object.c:711:object_new_with_type: assertion failed:=
- (type !=3D NULL)
 
-Thread 1 "qemu-system-aar" received signal SIGABRT, Aborted.
-0x0000fffff73e380c in raise () from /lib64/libc.so.6
-(gdb) bt
-#0  0x0000fffff73e380c in raise () from /lib64/libc.so.6
-#1  0x0000fffff73d0bcc in abort () from /lib64/libc.so.6
-#2  0x0000fffff7b7c058 in g_assertion_message () from /lib64/libglib-2.0.so=
-.0
-#3  0x0000fffff7b7c0b8 in g_assertion_message_expr () from /lib64/libglib-2=
-.0.so.0
-#4  0x0000aaaaab2b880c in object_new_with_type (type=3D<optimized out>) at =
-../qom/object.c:711
-#5  0x0000aaaaab2b8870 in object_new (typename=3Dtypename@entry=3D0xaaaaab5=
-0a668 "container") at ../qom/object.c:744
-#6  0x0000aaaaab2b9ec4 in object_get_root () at ../qom/object.c:1674
-#7  0x0000aaaaab2a4c0c in get_chardevs_root () at ../chardev/char.c:50
-#8  0x0000aaaaaaf9f2b4 in chardev_machine_done_hook (notifier=3D<optimized =
-out>, unused=3D<optimized out>)
-    at ../chardev/chardev-sysemu.c:45
-#9  0x0000aaaaab3d4ae8 in module_call_init (type=3Dtype@entry=3DMODULE_INIT=
-_QOM) at ../util/module.c:106
-#10 0x0000aaaaab235000 in qemu_init (argc=3D1, argv=3D0xfffffffffcb8, envp=
-=3D<optimized out>) at ../softmmu/vl.c:2916
-#11 0x0000aaaaaad9e084 in main (argc=3D<optimized out>, argv=3D<optimized o=
-ut>, envp=3D<optimized out>) at ../softmmu/main.c:49
-(gdb)
-
-Thanks
--Bharat

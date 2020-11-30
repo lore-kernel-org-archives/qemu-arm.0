@@ -1,168 +1,132 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4951192lfb;
-        Mon, 30 Nov 2020 01:53:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwg41uG8RhqnZKrUhFLwUdylcGlBiKEg0oPnfwHaFUrjWKNLwQA5Y8NwaDMnf9m+LRGIVEv
-X-Received: by 2002:a25:d94:: with SMTP id 142mr24402390ybn.258.1606730037696;
-        Mon, 30 Nov 2020 01:53:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606730037; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4953709lfb;
+        Mon, 30 Nov 2020 01:58:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy597csmsCoq7Ue8ByLappIKGvefEXbvdIBTo8qFWfeCNH6kJY/FTjVNLQjTK+tiEZ/zPRW
+X-Received: by 2002:a05:6902:4a5:: with SMTP id r5mr23862826ybs.443.1606730281509;
+        Mon, 30 Nov 2020 01:58:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606730281; cv=none;
         d=google.com; s=arc-20160816;
-        b=bw6cQRywSQH/u174eTyTvc61+4IOVVKoIJu449N4J6BkWz3WuHgD6fLFEvhsXZuEcf
-         5mmcVb2l0tprMlx5eMn6sQ0hnmpBzFJvGfBJX/UFQHtkoN1Q3WBSSbLrknWXF34f/3Iw
-         uVJBgyhYNZ3iq9oiR3/3tr3b1NpYjfkXkIRj//UDlTDsbT2tiG2Ddm+P4LQ1S0KnDE3n
-         y4m+ZRjefBID4zF3GJGBOpXVLKpiO/E7RcsLJKygLBneSYzbmbngXOaicd6tTL8sSPu5
-         POl0t68qlV7+9GEYdxjbQdz2yFI/VJw9D+/U7WnNDBQM1lmeO9SSoUk7KP1ypm2jl7+y
-         o1lg==
+        b=UQN/RNIdFZFuNggjxQaXULOyXNFl8pzhus7cseo/iFcb+pZCD4yIdQ+/4NTUB4mFIa
+         1pkaZ3E7UPgU4ZwzLmJ+IEUJZnHALSWOAnoogqfwGyxXtYwQr6/UAbRqx5cLElbVE5s3
+         F4ooF0TM6Kfz4YqRv/1QXelsbbWkNobjr/kEfAyqsUkXimXlt+2HNC3oWNn15a9Ei45T
+         czn0PQSosCtUcCh53qUvdNY59F+Eo1VOjr42Z69T7+s4OTzqcGigzsSxUPYwoTmJcgPb
+         +xHlJ4Jb9KPTdwFhNsoJ9vV8gM6YSlrvibSYwKh716mywz6cRWHUHCP1jnoURmFjVdD8
+         YD/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zzQ4cnB1O7rUreryUKOOa+chKIwPtH+wE/zUOq3hVjc=;
-        b=sTuQrXyjeKPJIDw/ubRtzQp+J7z5PR/OKkpt1+SJJdHXlgNOacMO8l9Y3HNdEcSpw5
-         giqukK7XVlKDCHltsp8cg3PYa4fTarZmeAUnDyc12aHQgCAQRLuzFFLU93meEp3fqd/X
-         5R15luHJwboycUBBIrBZMy9t/cbKOlqjyNwUpiGeX9K+VMK1mxZ8HjxQEZGUzMv4TsXd
-         gtjVxCUJ/S+m39RrA+rclZy819O3jGoE8U4NOGHXFasb0xfVBnHWM1KG2jr32ibpgFPd
-         VHqLdNnX6CqBCA4a4RdyK2btPcuhjlyL3fHDMO1m/9dviGS2RJkboOeJxRnLkXUvP4td
-         6LBg==
+        bh=rUv/HaA16FLtvIL6DCU0qDRrtug1XRYMD6wNakuMHtc=;
+        b=aX2AkxwPiB+v4sWh5l1yvJWVSk2suaEhSPVkbcIE0SehxXQwyXPoOn8x0IS+9t02c8
+         nQLfpw1zjt5AqTh+iyxlz1CQMqLtBebTc/qnQbjDq+Crzd+LJIARmEJeGEBW6q2JRZ9g
+         3ylNpNtwXTK6Wt6GPsq6Dy1WkzxdbBnHSXJsVPwRFirAhiXCtr8365FdHtcw6sTasma3
+         C2U75wZOxVYcy9J45UPXR9ZvfY+TnhhwPIYT+FZ7brpyeIjoxnnrrL9WRWTUaW8unYWB
+         /UDYZMoNVy4jjNEYJp/4Re0+U81Mu3t33YKA2qMQXJck1aRD7w0/h81Oc6f0iv3aheP3
+         EljQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="yT/DsMWk";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=ueTnZ64W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11si16668982ybp.313.2020.11.30.01.53.57
+        by mx.google.com with ESMTPS id f17si16766057ybq.253.2020.11.30.01.58.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Nov 2020 01:53:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Nov 2020 01:58:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="yT/DsMWk";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59700 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ueTnZ64W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjfsb-0002t7-3d
-	for alex.bennee@linaro.org; Mon, 30 Nov 2020 04:53:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44680)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kjfwW-0007WY-Va
+	for alex.bennee@linaro.org; Mon, 30 Nov 2020 04:58:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kjfrg-0002rs-TP
- for qemu-devel@nongnu.org; Mon, 30 Nov 2020 04:53:01 -0500
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:38089)
+ id 1kjfwP-0007WC-Bs
+ for qemu-arm@nongnu.org; Mon, 30 Nov 2020 04:57:53 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:36470)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kjfra-0000i6-Fh
- for qemu-devel@nongnu.org; Mon, 30 Nov 2020 04:53:00 -0500
-Received: by mail-ej1-x641.google.com with SMTP id a16so20534729ejj.5
- for <qemu-devel@nongnu.org>; Mon, 30 Nov 2020 01:52:53 -0800 (PST)
+ id 1kjfwN-0002Qr-ST
+ for qemu-arm@nongnu.org; Mon, 30 Nov 2020 04:57:53 -0500
+Received: by mail-ed1-x533.google.com with SMTP id m16so15198135edr.3
+ for <qemu-arm@nongnu.org>; Mon, 30 Nov 2020 01:57:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zzQ4cnB1O7rUreryUKOOa+chKIwPtH+wE/zUOq3hVjc=;
- b=yT/DsMWkNTTWadpHsUMMd0wD5aPC0cGywP32RERCiiDqo/wja+9frQWrRwDC+FZgD5
- riP03ZNL/EqEcfgL3R1Sv4rg5kxIzry5X1bQwfWWDfK5SDLyp5rTi9WOECHm0zAHXahr
- pS6ys0IrBZ0Q/vfgaFgpXSCI6Y40khKQZBBfrJFG1XrPrzJWIH+E6EGwl+kmIt8WzUqa
- W2N7xXnYAY+vAZiiElijuYQxCL28RzcTrM9r8o629msSG/5qmKoAGh0Jg5V9yHlJLXSm
- JvmnwAZLCX2+YpsS3/WD9U0eTScj4p9Q+0+hGshQ0H0MlwuzYIcHUq80DNjZcJf0vOFi
- ALXw==
+ :cc; bh=rUv/HaA16FLtvIL6DCU0qDRrtug1XRYMD6wNakuMHtc=;
+ b=ueTnZ64W1pB7LbC6TAZ5fR7El3EDWTMsl4lbcz1bY1F11Unvs4HZ8llFIyAn4EBiCd
+ FNzuiK351JoTySMNHjKjMLV/qYgvcQrl3/KpdLWqpzxTNGG9eXAtK6VL+f/9sy0JfnoH
+ /dbQ/6ia11nOYppEAcrysgt+8L0nWm1qsY1Ri03Fz1wUp83fi7+uMekdNEt7wuDwvtY5
+ KoSDWE0rbO2ioRfrwddAFz6xk5WXWXWEaDkFEJT/MPQDjw6UDyVrqG0YLApjEQXPh7IB
+ NIEG4VcXA6DUn+NVxlICQRmCCOognAx20tkKsFiYXI6DAvE1P0rlb3G1Y+f5MjX8tHi+
+ PewQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zzQ4cnB1O7rUreryUKOOa+chKIwPtH+wE/zUOq3hVjc=;
- b=QW2U0Cv/6o7DYCT4LjG4KoBNABH3Q0DV6PKE39opY06IirVeYBRe+tJnHObUY4gh1I
- 7eND3wS+uPhJQDOo/AwwPJv89nLP+xNwWIkZVI3N6PDpNdnB3wzJlG0tWVe1NQpeSCUG
- QtYGHNtaKgeot6Y/2noOSvEYixyun0MMHm1P4qPIzveN5AGAPgNwL8ldysWrIxvoiEeL
- Hrh7kjf3M35mxBOk09uH4Bae9WWtVra3OI2LRQZSp3tjOvLkKi5a5X+el74OshM1p5Vf
- lCww5JX5C4HBggTgPjvSYdQT5T1wuLab7EmX8unXf7zf0S8s6VVcPrj65L1CUwrJCoWn
- mPEg==
-X-Gm-Message-State: AOAM531VGoWBrssbRpr4l3/y8Hz5JNBvH4nQ/8USXzZjcjWrejqz2bQi
- QFOo4gXBJZ5EcF/e4IyBtuhgtRSuPwhL8kB9KvXZcw==
-X-Received: by 2002:a17:906:1542:: with SMTP id
- c2mr18779243ejd.382.1606729972150; 
- Mon, 30 Nov 2020 01:52:52 -0800 (PST)
+ bh=rUv/HaA16FLtvIL6DCU0qDRrtug1XRYMD6wNakuMHtc=;
+ b=myvUh7xep1I73paayjIVeHO6p2WBW2FTnIE9yQCmireonsVt+OyWslgbc2qWfNlE5C
+ gLnhQriqvfdKME2Jw99M7R5DihyPgOfuMc+uTa2x/3/OLJwv6m+8bMYkmLFcOtlabfbC
+ ROUQCMU7WorgagCy1HMaBoTO2JW/OuCXJ0n3XdR+WOJU/penwMx3+5kpa994g1J+4beH
+ hHDXBJZXac5DaAUJ43lcUSCdzXCkqoxvtcHJoF23bzhh1lTxVwG3uzxc+LLUBR4X9W9l
+ +NykFM04cGDxW1ISGzHctsjLmpFj5Yy26spxyyMQrZDaTIOyE0W451XXNTg6FQJfXdHz
+ fGIA==
+X-Gm-Message-State: AOAM531EXDF70BSFlwgqBLR7Q+N6xS5ROPMIscaf65kznBePTTZP0JtW
+ vKR2Exj1F6+KtY+qlArnFtFwMkgSetHsfXNopC+Pew==
+X-Received: by 2002:a50:fe88:: with SMTP id d8mr20281645edt.36.1606730267631; 
+ Mon, 30 Nov 2020 01:57:47 -0800 (PST)
 MIME-Version: 1.0
-References: <20201130030723.78326-1-agraf@csgraf.de>
- <20201130030723.78326-8-agraf@csgraf.de>
-In-Reply-To: <20201130030723.78326-8-agraf@csgraf.de>
+References: <DB6PR0402MB2760BC8DDC21C1FE1E0C568888F50@DB6PR0402MB2760.eurprd04.prod.outlook.com>
+In-Reply-To: <DB6PR0402MB2760BC8DDC21C1FE1E0C568888F50@DB6PR0402MB2760.eurprd04.prod.outlook.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Nov 2020 09:52:40 +0000
-Message-ID: <CAFEAcA8utMuT55R5TzV_3N1Emdu-AjSE7CJ1Oqhs0Vsc4OzEYQ@mail.gmail.com>
-Subject: Re: [PATCH v2 7/8] hvf: Add Apple Silicon support
-To: Alexander Graf <agraf@csgraf.de>
+Date: Mon, 30 Nov 2020 09:57:36 +0000
+Message-ID: <CAFEAcA-4D_QV=WMZuwTMn6b6xbcNyRttt=puD=+-Q45GDjzX1Q@mail.gmail.com>
+Subject: Re: cortex-a55 support
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P2+skh1ShypD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CoiLHioI6oVO
 
-On Mon, 30 Nov 2020 at 03:07, Alexander Graf <agraf@csgraf.de> wrote:
+On Mon, 30 Nov 2020 at 08:37, Peng Fan (OSS) <peng.fan@oss.nxp.com> wrote:
 >
-> With Apple Silicon available to the masses, it's a good time to add support
-> for driving its virtualization extensions from QEMU.
+> Hi,
 >
-> This patch adds all necessary architecture specific code to get basic VMs
-> working. It's still pretty raw, but definitely functional.
->
-> Known limitations:
->
->   - Vtimer acknowledgement is hacky
->   - Should implement more sysregs and fault on invalid ones then
->   - WFI handling is missing, need to marry it with vtimer
->
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> I am thinking to add cortex-a55 support to qemu target/arm/cpu64.c,
+> Is this the right way, or I should use cpu max?
 
-> +static const struct hvf_reg_match hvf_sreg_match[] = {
-> +    { HV_SYS_REG_DBGBVR0_EL1, offsetof(CPUARMState, cp15.dbgbvr[0]) },
-> +    { HV_SYS_REG_DBGBCR0_EL1, offsetof(CPUARMState, cp15.dbgbcr[0]) },
-> +    { HV_SYS_REG_DBGWVR0_EL1, offsetof(CPUARMState, cp15.dbgwvr[0]) },
-
-> +};
-> +
-> +int hvf_get_registers(CPUState *cpu)
-> +{
-> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
-> +    CPUARMState *env = &arm_cpu->env;
-> +    hv_return_t ret;
-> +    uint64_t val;
-> +    int i;
-> +
-> +    for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
-> +        ret = hv_vcpu_get_reg(cpu->hvf->fd, hvf_reg_match[i].reg, &val);
-> +        *(uint64_t *)((void *)env + hvf_reg_match[i].offset) = val;
-> +        assert_hvf_ok(ret);
-> +    }
-
-Please don't just blat straight into the CPU struct like this.
-Compare KVM's handling of the cpreg list (data structure set up
-in kvm_arm_init_cpreg_list() and the various write_*_to_* functions
-that use it), where we look up the cpreg by its encoding and then
-that gives us the field offset if necessary and also various flags
-including ones that say "don't sync this". You'll need to set up
-the cpreg list for migration anyway.
+If you need to add an SoC model that uses the Cortex-A55, then
+yes, adding a Cortex-A55 CPU model is the right way to go.
+You'll need to check whether QEMU supports all the architectural
+features the A55 has. If it does then adding the CPU model is
+fairly straightforward -- just a function setting the initial
+ID register values plus probably something for implementation-specific
+system registers.
 
 thanks
 -- PMM

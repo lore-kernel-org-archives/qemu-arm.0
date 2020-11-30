@@ -1,66 +1,104 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4717289lfb;
-        Sun, 29 Nov 2020 19:23:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzjkLS5B/H2dQdJ4367gJlCkuJ6lLtGfWrVrAAmdX6ro5W5B65u06IcpdVj9UXVYy/Jnv7p
-X-Received: by 2002:a25:468a:: with SMTP id t132mr23766876yba.312.1606706588202;
-        Sun, 29 Nov 2020 19:23:08 -0800 (PST)
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4739001lfb;
+        Sun, 29 Nov 2020 20:05:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyG9uufVEanCF+fyF8gj8ROiFewRMi40e3n2r1wG6DjSLV8H0ZeWR0oQ9zmE+t3uA0kUcnM
+X-Received: by 2002:a25:38c1:: with SMTP id f184mr21581779yba.41.1606709147161;
+        Sun, 29 Nov 2020 20:05:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606709147; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MZywdwghO3o5qXPPz+TsnsBugCzbRfYZ1urTlW+X7xVrgDKsnN8gM8qjzvjwHLhuIF
+         E5ERjk7eH3xqVA34kr9+tih9+fLKrueMEi08HGSlgsCSWskEupTj8ptJAqFrzTB8RQ96
+         lg3p9WLQlXRHuMWLlqTL44FrrT5i8dPxU8Cb8XgAi8P49SFoAw7R97wyCdpYUoiJ4gBI
+         uiaZkkNxt8pej+9uep29i2ZB7Qwx9KxfuW2TdEuhcr5LeO2Z4tKAol1M2ytwImMLVjbx
+         GXm5qCxK/gTw9rdBAyJBR2ROn8XGS+odn0KR7a7ritq8mGMTKaettr0TT+mQtHTyx6Cz
+         +2tQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=an0/kxvJGr8CHzaGma67N3U3miPtoKBKBFeQIvPK02E=;
+        b=Gu+VXeg2/1SfkmV4c+TvngH2w551/O8u3dizd7narcuLGIgPkkFZLwtbrWKJETtsU4
+         vOKdkLrCnhhRCkETSWgl4jx61+EtExgg6oxxQpJ3asG+RC7RTa8MxOYuxFLx8vJMPtu0
+         nEIEwjC47W3+hd4Y4UzGsxN8XKOeU2xSeVt1r0zMrfwOAlUhqPHPPqG+ALCM4SCRCTcg
+         QW0v2+T+G//BkFzKdtrRfNut1k4R8S/3rwInFc2jBPdOh4Lti3mnczHMLkjmTNwGuHt2
+         NERow3sOW/SWfFzA7GFyPnlF9uwvygmcEyS03DW4z2ldLOX+2j1XczoaL2n7F0OLF8qt
+         kfqg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q1UIqqBW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9si15164457ybq.304.2020.11.29.19.23.08
+        by mx.google.com with ESMTPS id q200si18123358ybq.174.2020.11.29.20.05.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Nov 2020 19:23:08 -0800 (PST)
+        Sun, 29 Nov 2020 20:05:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60542 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q1UIqqBW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjZmN-0003MG-Ij
-	for alex.bennee@linaro.org; Sun, 29 Nov 2020 22:23:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42584)
+	id 1kjaRe-0006oX-HW
+	for alex.bennee@linaro.org; Sun, 29 Nov 2020 23:05:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kjZle-0003Kr-2x; Sun, 29 Nov 2020 22:22:22 -0500
-Resent-Date: Sun, 29 Nov 2020 22:22:22 -0500
-Resent-Message-Id: <E1kjZle-0003Kr-2x@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21726)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kjZlY-0003VH-UO; Sun, 29 Nov 2020 22:22:21 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1606706511; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=TGEXzZ4kY5zupFSR2JYn5hM6g56pCWpDyIcQ1+sDmViPEnQsL77JjOL8BDTvXDxF52/KxczGUdFzHVSrFnOQ8IAur1DfLSohx+8RgE/O9mpxzd9Z5wwffQoHHayvq8ikLgNf6cp/BU13etLrxpWkviSjKdUGdq3wT/TJxQNbNLg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1606706511;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=Urw+SwL3yYEotg9nNp8seMOKdCSaRltOBMJVyWgHt10=; 
- b=fQsXq5CgiEFWsU2SYXbo5sZ1mfFyvKsIZq50Zz3AwSU7V4fFUEbiANonbpvjDWr2lyOgxgoYCNRGGXnKsUo79GkWzf+eYCfcgk/nrWknGTR2JjW4jE5oY0in30a1PHdCbslL4pI7Wq6n/r4mdbWWkirT5wYGV5kgKfzmuIPqiiM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1606706508931109.80363905123181;
- Sun, 29 Nov 2020 19:21:48 -0800 (PST)
-In-Reply-To: <20201130030723.78326-1-agraf@csgraf.de>
-Subject: Re: [PATCH v2 0/8] hvf: Implement Apple Silicon Support
-Message-ID: <160670650584.26099.10324306102727177844@9aeb27d8af94>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: agraf@csgraf.de
-Date: Sun, 29 Nov 2020 19:21:48 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kjaRW-0006oF-9t; Sun, 29 Nov 2020 23:05:38 -0500
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:37341)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kjaRU-0001Vi-Ji; Sun, 29 Nov 2020 23:05:37 -0500
+Received: by mail-io1-xd41.google.com with SMTP id k3so2512532ioq.4;
+ Sun, 29 Nov 2020 20:05:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=an0/kxvJGr8CHzaGma67N3U3miPtoKBKBFeQIvPK02E=;
+ b=q1UIqqBWr8+8+tNcpvrA6WaJchoRC2GKV26ThMztTKdyMEl4h9hbhO/vRU+THFVD4i
+ x1eNHFLdB9rXwCcpfsrBJjzPIVcY/3z4sWS64BWhAlaQrQLuIQPVU5c41pbohHPJ9LE8
+ LTVaOqbagW7WgEslhtlO6Ql1xpxdk13sg4pS5RYF/I2cC7ou5ytbgkMZHH03qHDg/+j+
+ AHcr1IXZ15fEsXDW9O7dF5j4kzBEgCWaHTgtkBsS16Re1wSv9PBbEIfCX8ynVgAB4KsM
+ D6leiixHfsqEw6GENALt44OATF8yMan6I8fK5FsHmPOsbQhJua0WhKhSMqfI3TmFFjC8
+ txaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=an0/kxvJGr8CHzaGma67N3U3miPtoKBKBFeQIvPK02E=;
+ b=BwepGGVR4xuQ+Sd25w1EeX6dp++IXHO+sOsoG5lB9lJ9lqIxfgxoAaRBKOndmiVD/S
+ H7wqLj4Gcw42c2X0YQfsiWBUqCw2A8g33mzSSRJmVQ4zrQG6vQjNhqHjAJWQd3ABpdpT
+ atDihF1wT1l2+5xmFSZOY4WRXpt1Aq/Imq2elJMvMm0nhIlwm/pBsud7LW3AxgUh3cBC
+ UfmHdKFugUXC+KMZFgr0e5YbA088QZwB1fLh4YqkgqWMJbwDmV0pFRwiC5yFO/V56lZZ
+ mqCLhD3mhSBnyzT04LmIlDTXBfgvMmKZFarpdu3iJZktsw/lFUtl9kfeWRI728/XxH6Q
+ koVQ==
+X-Gm-Message-State: AOAM531Ur4EBpOtTVmf7gHvocXkg4GaF7IYU/rOoXNwNcli3SpOqdoAQ
+ yxhdgSWk2VkjseakVngytwM=
+X-Received: by 2002:a5d:8446:: with SMTP id w6mr14460191ior.138.1606709135200; 
+ Sun, 29 Nov 2020 20:05:35 -0800 (PST)
+Received: from pek-vx-bsp2.wrs.com (unknown-124-94.windriver.com.
+ [147.11.124.94])
+ by smtp.gmail.com with ESMTPSA id p18sm2119828ile.27.2020.11.29.20.05.32
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 29 Nov 2020 20:05:34 -0800 (PST)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Alistair Francis <alistair@alistair23.me>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH 1/2] hw/ssi: imx_spi: Use a macro for number of chip selects
+ supported
+Date: Mon, 30 Nov 2020 12:05:23 +0800
+Message-Id: <1606709124-80741-1-git-send-email-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 2.7.4
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd41.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,106 +112,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
- qemu-arm@nongnu.org, lfy@google.com, pbonzini@redhat.com
+Cc: Bin Meng <bin.meng@windriver.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NTfQT78f6Q5C
+X-TUID: Lk/y46Gf4AT1
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTEzMDAzMDcyMy43ODMy
-Ni0xLWFncmFmQGNzZ3JhZi5kZS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
-bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
-bWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAxMTMwMDMwNzIzLjc4MzI2LTEt
-YWdyYWZAY3NncmFmLmRlClN1YmplY3Q6IFtQQVRDSCB2MiAwLzhdIGh2ZjogSW1wbGVtZW50IEFw
-cGxlIFNpbGljb24gU3VwcG9ydAoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFz
-aApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1s
-b2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBU
-cnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRz
-L2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0K
-ClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBo
-dHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAg
-ICAgcGF0Y2hldy8yMDIwMTEzMDAzMDcyMy43ODMyNi0xLWFncmFmQGNzZ3JhZi5kZSAtPiBwYXRj
-aGV3LzIwMjAxMTMwMDMwNzIzLjc4MzI2LTEtYWdyYWZAY3NncmFmLmRlClN3aXRjaGVkIHRvIGEg
-bmV3IGJyYW5jaCAndGVzdCcKYWUxMzE2MyBhcm06IEFkZCBIeXBlcnZpc29yLmZyYW1ld29yayBi
-dWlsZCB0YXJnZXQKNzZhMzY4YSBodmY6IEFkZCBBcHBsZSBTaWxpY29uIHN1cHBvcnQKZWQ1N2E5
-YSBodmY6IGFybTogTWFyayBDUFUgYXMgZGlydHkgb24gcmVzZXQKNmQzNTdjMSBhcm06IFNldCBQ
-U0NJIHRvIDAuMiBmb3IgSFZGCjQ3ZTFmYTcgaHZmOiBJbnRyb2R1Y2UgaHZmIHZjcHUgc3RydWN0
-CmQxMGQ2ZTEgaHZmOiBBY3R1YWxseSBzZXQgU0lHX0lQSSBtYXNrCjViZjM3Y2EgaHZmOiBNb3Zl
-IGNvbW1vbiBjb2RlIG91dAo3YjhmOTVhIGh2ZjogQWRkIGh5cGVydmlzb3IgZW50aXRsZW1lbnQg
-dG8gb3V0cHV0IGJpbmFyaWVzCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzggQ2hlY2tpbmcgY29t
-bWl0IDdiOGY5NWFhZDExNyAoaHZmOiBBZGQgaHlwZXJ2aXNvciBlbnRpdGxlbWVudCB0byBvdXRw
-dXQgYmluYXJpZXMpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRv
-ZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzE2OiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQK
-CnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgNjMgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMS84
-IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJv
-cnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2Vl
-CkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjIvOCBDaGVja2luZyBjb21taXQgNWJmMzdjYTdi
-MGEwIChodmY6IE1vdmUgY29tbW9uIGNvZGUgb3V0KQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3Ig
-ZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMzODogCm5l
-dyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDEwODggbGlu
-ZXMgY2hlY2tlZAoKUGF0Y2ggMi84IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4g
-IElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0
-byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjMvOCBDaGVj
-a2luZyBjb21taXQgZDEwZDZlMWQ4ZWM2IChodmY6IEFjdHVhbGx5IHNldCBTSUdfSVBJIG1hc2sp
-CjQvOCBDaGVja2luZyBjb21taXQgNDdlMWZhNzU0ZTg1IChodmY6IEludHJvZHVjZSBodmYgdmNw
-dSBzdHJ1Y3QpCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMxMzg6IEZJTEU6IHRh
-cmdldC9pMzg2L2h2Zi9odmYuYzoyMTM6CisgICAgd3ZtY3MoY3B1LT5odmYtPmZkLCBWTUNTX0VO
-VFJZX0NUTFMsIGNhcDJjdHJsKGh2Zl9zdGF0ZS0+aHZmX2NhcHMtPnZteF9jYXBfZW50cnksCgpF
-UlJPUjogIihmb28qKSIgc2hvdWxkIGJlICIoZm9vICopIgojNzQ2OiBGSUxFOiB0YXJnZXQvaTM4
-Ni9odmYveDg2aHZmLmM6ODU6CisgICAgaWYgKGh2X3ZjcHVfd3JpdGVfZnBzdGF0ZShjcHVfc3Rh
-dGUtPmh2Zi0+ZmQsICh2b2lkKil4c2F2ZSwgNDA5NikpIHsKCkVSUk9SOiAiKGZvbyopIiBzaG91
-bGQgYmUgIihmb28gKikiCiM4Mjc6IEZJTEU6IHRhcmdldC9pMzg2L2h2Zi94ODZodmYuYzoxNjc6
-CisgICAgaWYgKGh2X3ZjcHVfcmVhZF9mcHN0YXRlKGNwdV9zdGF0ZS0+aHZmLT5mZCwgKHZvaWQq
-KXhzYXZlLCA0MDk2KSkgewoKdG90YWw6IDIgZXJyb3JzLCAxIHdhcm5pbmdzLCA5OTYgbGluZXMg
-Y2hlY2tlZAoKUGF0Y2ggNC84IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElm
-IGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0
-aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo1LzggQ2hlY2tp
-bmcgY29tbWl0IDZkMzU3YzEzMDM3OSAoYXJtOiBTZXQgUFNDSSB0byAwLjIgZm9yIEhWRikKNi84
-IENoZWNraW5nIGNvbW1pdCBlZDU3YTlhMTQyZGYgKGh2ZjogYXJtOiBNYXJrIENQVSBhcyBkaXJ0
-eSBvbiByZXNldCkKNy84IENoZWNraW5nIGNvbW1pdCA3NmEzNjhhNDI0MjcgKGh2ZjogQWRkIEFw
-cGxlIFNpbGljb24gc3VwcG9ydCkKV0FSTklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmlu
-ZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzQ3OiBGSUxFOiBhY2NlbC9odmYvaHZmLWNwdXMuYzo2MzoK
-KyNpZmRlZiBfX2FhcmNoNjRfXwoKV0FSTklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmlu
-ZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzU4OiBGSUxFOiBhY2NlbC9odmYvaHZmLWNwdXMuYzozNTE6
-CisjaWZkZWYgX19hYXJjaDY0X18KCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZp
-bGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzExMzogCm5ldyBmaWxlIG1v
-ZGUgMTAwNjQ0CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojMjk5OiBGSUxFOiB0
-YXJnZXQvYXJtL2h2Zi9odmYuYzoxODI6CisgICAgeyBIVl9TWVNfUkVHX0NOVFZfQ1RMX0VMMCwg
-b2Zmc2V0b2YoQ1BVQVJNU3RhdGUsIGNwMTUuYzE0X3RpbWVyW0dUSU1FUl9WSVJUXS5jdGwpIH0s
-CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojMzAwOiBGSUxFOiB0YXJnZXQvYXJt
-L2h2Zi9odmYuYzoxODM6CisgICAgeyBIVl9TWVNfUkVHX0NOVFZfQ1ZBTF9FTDAsIG9mZnNldG9m
-KENQVUFSTVN0YXRlLCBjcDE1LmMxNF90aW1lcltHVElNRVJfVklSVF0uY3ZhbCkgfSwKCldBUk5J
-Tkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM0NTg6IEZJTEU6IHRhcmdldC9hcm0vaHZmL2h2
-Zi5jOjM0MToKKyAgICAgICAgaHZfdmNwdV9zZXRfcGVuZGluZ19pbnRlcnJ1cHQoY3B1LT5odmYt
-PmZkLCBIVl9JTlRFUlJVUFRfVFlQRV9GSVEsIHRydWUpOwoKV0FSTklORzogbGluZSBvdmVyIDgw
-IGNoYXJhY3RlcnMKIzQ2MzogRklMRTogdGFyZ2V0L2FybS9odmYvaHZmLmM6MzQ2OgorICAgICAg
-ICBodl92Y3B1X3NldF9wZW5kaW5nX2ludGVycnVwdChjcHUtPmh2Zi0+ZmQsIEhWX0lOVEVSUlVQ
-VF9UWVBFX0lSUSwgdHJ1ZSk7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNjE2
-OiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo0OTk6CisgICAgICAgICAgICAgICAgciA9IGh2
-X3ZjcHVfZ2V0X3N5c19yZWcoY3B1LT5odmYtPmZkLCBIVl9TWVNfUkVHX0NOVFZfQ1RMX0VMMCwg
-JmN0bCk7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNjE4OiBGSUxFOiB0YXJn
-ZXQvYXJtL2h2Zi9odmYuYzo1MDE6CisgICAgICAgICAgICAgICAgciA9IGh2X3ZjcHVfZ2V0X3N5
-c19yZWcoY3B1LT5odmYtPmZkLCBIVl9TWVNfUkVHX0NOVFZfQ1ZBTF9FTDAsICZjdmFsKTsKCldB
-Uk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM2NTE6IEZJTEU6IHRhcmdldC9hcm0vaHZm
-L2h2Zi5jOjUzNDoKKyAgICAgICAgICAgICAgICAgICAgLyogU2V0IGNwdS0+aHZmLT5zbGVlcGlu
-ZyBzbyB0aGF0IHdlIGdldCBhIFNJR19JUEkgc2lnbmFsLiAqLwoKRVJST1I6IG1lbW9yeSBiYXJy
-aWVyIHdpdGhvdXQgY29tbWVudAojNjUzOiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo1MzY6
-CisgICAgICAgICAgICAgICAgICAgIHNtcF9tYigpOwoKdG90YWw6IDEgZXJyb3JzLCAxMCB3YXJu
-aW5ncywgNjczIGxpbmVzIGNoZWNrZWQKClBhdGNoIDcvOCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBs
-ZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMg
-cmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlO
-RVJTLgoKOC84IENoZWNraW5nIGNvbW1pdCBhZTEzMTYzYWVmMzkgKGFybTogQWRkIEh5cGVydmlz
-b3IuZnJhbWV3b3JrIGJ1aWxkIHRhcmdldCkKV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0
-ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojNDc6IApuZXcgZmls
-ZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCAzNiBsaW5lcyBjaGVj
-a2VkCgpQYXRjaCA4LzggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55
-IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBt
-YWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQg
-PT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBh
-dmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDExMzAwMzA3MjMuNzgzMjYt
-MS1hZ3JhZkBjc2dyYWYuZGUvdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpF
-bWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcu
-b3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQu
-Y29t
+From: Bin Meng <bin.meng@windriver.com>
+
+Avoid using a magic number (4) everywhere for the number of chip
+selects supported.
+
+Signed-off-by: Bin Meng <bin.meng@windriver.com>
+---
+
+ hw/ssi/imx_spi.c         | 4 ++--
+ include/hw/ssi/imx_spi.h | 5 ++++-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+index d8885ae..e605049 100644
+--- a/hw/ssi/imx_spi.c
++++ b/hw/ssi/imx_spi.c
+@@ -361,7 +361,7 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
+ 
+             /* We are in master mode */
+ 
+-            for (i = 0; i < 4; i++) {
++            for (i = 0; i < ECSPI_NUM_CS; i++) {
+                 qemu_set_irq(s->cs_lines[i],
+                              i == imx_spi_selected_channel(s) ? 0 : 1);
+             }
+@@ -424,7 +424,7 @@ static void imx_spi_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+ 
+-    for (i = 0; i < 4; ++i) {
++    for (i = 0; i < ECSPI_NUM_CS; ++i) {
+         sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->cs_lines[i]);
+     }
+ 
+diff --git a/include/hw/ssi/imx_spi.h b/include/hw/ssi/imx_spi.h
+index b82b17f..eeaf49b 100644
+--- a/include/hw/ssi/imx_spi.h
++++ b/include/hw/ssi/imx_spi.h
+@@ -77,6 +77,9 @@
+ 
+ #define EXTRACT(value, name) extract32(value, name##_SHIFT, name##_LENGTH)
+ 
++/* number of chip selects supported */
++#define ECSPI_NUM_CS 4
++
+ #define TYPE_IMX_SPI "imx.spi"
+ OBJECT_DECLARE_SIMPLE_TYPE(IMXSPIState, IMX_SPI)
+ 
+@@ -89,7 +92,7 @@ struct IMXSPIState {
+ 
+     qemu_irq irq;
+ 
+-    qemu_irq cs_lines[4];
++    qemu_irq cs_lines[ECSPI_NUM_CS];
+ 
+     SSIBus *bus;
+ 
+-- 
+2.7.4
+

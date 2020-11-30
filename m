@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4709560lfb;
-        Sun, 29 Nov 2020 19:07:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwNu2iiUzoBpOHa0623DJRKV5+2R5N9RqjtW1fCRuslVizmSOfnqdLsOCzoZPFWfy7Awuyg
-X-Received: by 2002:a25:2845:: with SMTP id o66mr30150071ybo.260.1606705663216;
-        Sun, 29 Nov 2020 19:07:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606705663; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4709627lfb;
+        Sun, 29 Nov 2020 19:07:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJybflWo7iVk5BJVcsplalmiyN2JSW72B4G+gZdKRqcU1hGW2FD6ujIWjFBsmzxrPPxzXOa/
+X-Received: by 2002:a25:5d4:: with SMTP id 203mr22074986ybf.182.1606705672539;
+        Sun, 29 Nov 2020 19:07:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606705672; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q75kaVDZiH55eWC9+YeC07DgpZ90jG0D7F1z9c7hWjJ9bWZSg6QP+Q2xbLGhp6cWto
-         enCAlo317/dm6pa09h8EKUy981GjznAUFouijSRsQ9Ikk4mp2j4edG78L/bqIkJ8udJN
-         1q4JmevLTjw8vQu4i+iiWyavGEMOrqyCUTjwtm6R6EVMxpZYjsS3KcmcNOdJjym+Ri/A
-         Rjn9zmu2uB0/TuxUiQKV89f1XuV/cl75mjyJGL28RIR4cuLApFd84IKbL5E9z0Lfn2SJ
-         j2Vu9hGzPlMC90QMz3egsmbr/oI7PQOBP3TBPOWgjW83RYSvTHMKLSMC6+zGvXY1OOqo
-         mAGw==
+        b=NE6RQubJFdbENVUNpsb8V17S+OnaaYDa3Vd4D17yuLyz0a5tBrUaO7czZBoKucPsBz
+         ThmTda4Kl9x7EZHEl4WhgNzl77LC7GPq/6/Pbky4/zM0M4lpnNLWHfIX0oC04ie3UBsv
+         cUP79tEnVX4SFNKEmxZQBt9Mz77yWN2yK+T6rFP0QGpB3P17i5Ej0543w2HB+WrwFD39
+         KGaF4oL5ZYCT04SP9NwfVMD6PVoTUKms26SM5LoGzfAgNPcQDDjB8Jvq82WI6riTw+fV
+         V+V+cNf5AP+VINKOdtbgVukHWUNI7ZYQRVWpkB7wAo4PAChlqaWJx/ExM9ESy335dJmA
+         gJaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=YDqE0MBcc8PZfYHaDGLV7yLXNek5+eOAkxBoEvRMKBw=;
-        b=BzKNBOVOuUmJForp8tkyS9ScmHy/YoUO+q73Cdi6s268S10UgDJglttJxCaWmeueuM
-         HeK8jHWGFRS/+4e/e9ShEKXBWwf8XJ7nb4sN7YFTvoRdOnf1czKvb2Y2ofvXKxYk9sBf
-         hmF2KEh/zUaDVITGjMoO+3Iqd6cxzjkVJtF9WrG21Rms7iGDwTgY0BSw4iaPtKs5EcdU
-         nXAOW2wqUljGJMAMnwBks8niaNzZY7MDR3wFBxudcAIYPII/Z1RnDZ+S7GnkcfP5Q12U
-         V6prSr5pXkQ79RLEbpofL/nzWtk9A+Sxtj5zQ3Y7oU6rBc6T4ehH/i+i4prlS9R0onk4
-         eMZA==
+        bh=8KveTSC3CZA37zi2x3Zxa1XHJSKP7NH4EDpB+nz5DwE=;
+        b=MHdM4FL+Srnjzj+KSeh/TG74+xhGSXSnk03+O/qCwS9QN2NiboLuUyNNLurFg3DMWv
+         6F3IUSyuTlgNm4ElHVTrozOvxsofQZhOLoK7H1nc3db8z44CsLqqxR2z9pAIOl43uBzb
+         IHtfnP0j5l4Sb5x5IW9g0716tdwh3qc7+CwqLgLnh5Bq9kWRaq/kABRevg2X+Lr82utT
+         I3r7u3cNRR6lPMYdjCSWw5nW05Xm0fQ2OeLLLRGDIbUVUJ6nKbIjnI07Te6LWmZnhON/
+         l1jLfAE6KJtszFnJLxzrVnzNWEuk03V5MjLxiEFnYj/QFbXfZ47/uJ5XcAHa3NlUHbrc
+         IVSg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l188si16181914ybb.88.2020.11.29.19.07.43
+        by mx.google.com with ESMTPS id 198si16124659ybd.370.2020.11.29.19.07.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 29 Nov 2020 19:07:43 -0800 (PST)
+        Sun, 29 Nov 2020 19:07:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjZXS-00089t-I1
-	for alex.bennee@linaro.org; Sun, 29 Nov 2020 22:07:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40910)
+	id 1kjZXb-00005z-V3
+	for alex.bennee@linaro.org; Sun, 29 Nov 2020 22:07:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40902)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kjZXI-00086S-29; Sun, 29 Nov 2020 22:07:32 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:35290
+ id 1kjZXH-000866-U3; Sun, 29 Nov 2020 22:07:31 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:35390
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1kjZXD-00076d-Ko; Sun, 29 Nov 2020 22:07:31 -0500
+ id 1kjZXG-00078C-8h; Sun, 29 Nov 2020 22:07:31 -0500
 Received: from localhost.localdomain
  (dynamic-077-009-091-089.77.9.pool.telefonica.de [77.9.91.89])
- by csgraf.de (Postfix) with ESMTPSA id 0E1B73900384;
- Mon, 30 Nov 2020 04:07:25 +0100 (CET)
+ by csgraf.de (Postfix) with ESMTPSA id 7F21139004D6;
+ Mon, 30 Nov 2020 04:07:27 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/8] hvf: Add hypervisor entitlement to output binaries
-Date: Mon, 30 Nov 2020 04:07:16 +0100
-Message-Id: <20201130030723.78326-2-agraf@csgraf.de>
+Subject: [PATCH v2 6/8] hvf: arm: Mark CPU as dirty on reset
+Date: Mon, 30 Nov 2020 04:07:21 +0100
+Message-Id: <20201130030723.78326-7-agraf@csgraf.de>
 X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 In-Reply-To: <20201130030723.78326-1-agraf@csgraf.de>
 References: <20201130030723.78326-1-agraf@csgraf.de>
@@ -87,108 +87,48 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s7OGg81zpU1p
+X-TUID: lC9kaqaGubtS
 
-In macOS 11, QEMU only gets access to Hypervisor.framework if it has the
-respective entitlement. Add an entitlement template and automatically self
-sign and apply the entitlement in the build.
+When clearing internal state of a CPU, we should also make sure that HVF
+knows about it and can push the new values down to vcpu state.
+
+Make sure that with HVF enabled, we tell it that it should synchronize
+CPU state on next entry after a reset.
+
+This fixes PSCI handling, because now newly pushed state such as X0 and
+PC on remote CPU enablement also get pushed into HVF.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
-
 ---
+ target/arm/arm-powerctl.c | 1 +
+ target/arm/cpu.c          | 2 ++
+ 2 files changed, 3 insertions(+)
 
-v1 -> v2:
-
-  - Make safe to ctrl-C
----
- accel/hvf/entitlements.plist |  8 ++++++++
- meson.build                  | 30 ++++++++++++++++++++++++++----
- scripts/entitlement.sh       | 13 +++++++++++++
- 3 files changed, 47 insertions(+), 4 deletions(-)
- create mode 100644 accel/hvf/entitlements.plist
- create mode 100755 scripts/entitlement.sh
-
-diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.plist
-new file mode 100644
-index 0000000000..154f3308ef
---- /dev/null
-+++ b/accel/hvf/entitlements.plist
-@@ -0,0 +1,8 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-+<plist version="1.0">
-+<dict>
-+    <key>com.apple.security.hypervisor</key>
-+    <true/>
-+</dict>
-+</plist>
-diff --git a/meson.build b/meson.build
-index 5062407c70..2a7ff5560c 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1844,9 +1844,14 @@ foreach target : target_dirs
-     }]
-   endif
-   foreach exe: execs
--    emulators += {exe['name']:
--         executable(exe['name'], exe['sources'],
--               install: true,
-+    exe_name = exe['name']
-+    exe_sign = 'CONFIG_HVF' in config_target
-+    if exe_sign
-+      exe_name += '-unsigned'
-+    endif
-+
-+    emulator = executable(exe_name, exe['sources'],
-+               install: not exe_sign,
-                c_args: c_args,
-                dependencies: arch_deps + deps + exe['dependencies'],
-                objects: lib.extract_all_objects(recursive: true),
-@@ -1854,7 +1859,24 @@ foreach target : target_dirs
-                link_depends: [block_syms, qemu_syms] + exe.get('link_depends', []),
-                link_args: link_args,
-                gui_app: exe['gui'])
--    }
-+
-+    if exe_sign
-+      exe_full = meson.current_build_dir() / exe['name']
-+      emulators += {exe['name'] : custom_target(exe['name'],
-+                   install: true,
-+                   install_dir: get_option('bindir'),
-+                   depends: emulator,
-+                   output: exe['name'],
-+                   command: [
-+                     meson.current_source_dir() / 'scripts/entitlement.sh',
-+                     meson.current_build_dir() / exe['name'] + '-unsigned',
-+                     meson.current_build_dir() / exe['name'],
-+                     meson.current_source_dir() / 'accel/hvf/entitlements.plist'
-+                   ])
-+      }
-+    else
-+      emulators += {exe['name']: emulator}
-+    endif
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index b75f813b40..a49a5b32e6 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -15,6 +15,7 @@
+ #include "arm-powerctl.h"
+ #include "qemu/log.h"
+ #include "qemu/main-loop.h"
++#include "sysemu/hw_accel.h"
  
-     if 'CONFIG_TRACE_SYSTEMTAP' in config_host
-       foreach stp: [
-diff --git a/scripts/entitlement.sh b/scripts/entitlement.sh
-new file mode 100755
-index 0000000000..c540fa6435
---- /dev/null
-+++ b/scripts/entitlement.sh
-@@ -0,0 +1,13 @@
-+#!/bin/sh -e
-+#
-+# Helper script for the build process to apply entitlements
-+
-+SRC="$1"
-+DST="$2"
-+ENTITLEMENT="$3"
-+
-+trap 'rm "$DST.tmp"' exit
-+cp -af "$SRC" "$DST.tmp"
-+codesign --entitlements "$ENTITLEMENT" --force -s - "$DST.tmp"
-+mv "$DST.tmp" "$DST"
-+trap '' exit
+ #ifndef DEBUG_ARM_POWERCTL
+ #define DEBUG_ARM_POWERCTL 0
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index db6f7c34ed..9a501ea4bd 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -411,6 +411,8 @@ static void arm_cpu_reset(DeviceState *dev)
+ #ifndef CONFIG_USER_ONLY
+     if (kvm_enabled()) {
+         kvm_arm_reset_vcpu(cpu);
++    } else if (hvf_enabled()) {
++        s->vcpu_dirty = true;
+     }
+ #endif
+ 
 -- 
 2.24.3 (Apple Git-128)
 

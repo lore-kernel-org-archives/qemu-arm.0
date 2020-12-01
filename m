@@ -1,77 +1,117 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp581344lfb;
-        Tue, 1 Dec 2020 14:12:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhF9io/b340AHb8cysifqUdnBuHRdYU+kJ4AtLzwpfbM313SYdtOLwxmpTUJUtcglpFeqN
-X-Received: by 2002:a25:d606:: with SMTP id n6mr6914580ybg.360.1606860752666;
-        Tue, 01 Dec 2020 14:12:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606860752; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp587267lfb;
+        Tue, 1 Dec 2020 14:22:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyFFRD7HxLndIk9o1oKnVxTXcEXr/PVLt9DjP7smeWELc8TbDWiVgNeHCp+y20eXVrV4RMW
+X-Received: by 2002:a25:5f4c:: with SMTP id h12mr6919591ybm.166.1606861334714;
+        Tue, 01 Dec 2020 14:22:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606861334; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eg4ao4VI82YO+Tih5sYZKHOgzZDCltUaKSD/LBzZKy7nMsftyA4qxnWseFp5WIXMuv
-         a9HcHTtuiQnWkzA6t8KIQl0S/3iulqCo/HeCq8evYp1UVwlPI5uO5eoOwZdoqGB9AL/3
-         KSQXVpM9Sugf14qS2zUhKtlVIpX9Yrop7OYrTbAvBTrHBmqJPlrqof+ozWS6/37kJ2+/
-         OlfVmrs2rCMhELwufyOXCJ1VR+H3fGkoWvJrCmcygKDSfl6ACKHo8pgXkSiMe+wgxZFN
-         o0b+9dY16nKvTW5NlCzESXSLhQnsGL4SRxRqa0p4ZcQsjMfXX3bnXv+DyCo3P+GKO76l
-         kXIg==
+        b=rTzOKUKUNny3cHNRv/Jfe/PJTa8cJQbQ3GffaSEkwHay3Y2duRdt4AkAibxeg0CFtS
+         7FRhJsWtTwfDKa1IvmXjFCdPpA4MLFJ7NOhP9LI7UlNvt+86lidM7oMzD2YiMVSorM4C
+         dgdMV6dQZ4g3FoY+wltPV3N3mf/Vp2UuVnde2KooUFsi7qAHMrllqLcMBCxh1oEMYcyF
+         zJ3GfMyr+UgysKU8WkL1xbOCjCk9bGwGEEGqWiczeRAlh/Fm7PzrET2VuTEslvkIblUV
+         Fx+HC5+2/+MaAz9fFMFu9CZopQWVCb+6XLC9Ey5z3/rhm1c1I7sSezo9i3Fh/kY4uqRz
+         8hKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=hSVWXzPjeuQP0MmLRBQZOm1F+prIMvQvPBjKjioS+OU=;
-        b=fPOx705QppI6J9E22AWKJPBszMLWyAYtuX0Wtn0HPYKnHQE3SdUt8u6Wk04CEgklA4
-         GcCPRdWCle3ZGUh11GVBrVTBq3OwIYqyBAwzrOOqcTPfoNoTXA4djv4wKVSFmgdVx32p
-         Q5s1GO0RdEh7/YaYiWKsoQK221SvhCvRhOhrxE+0MDma+g6oQRKmFoKsucEMDe5/4rTW
-         qHcfGW/rJW3n+urT9xH/kdLRgd8NcGjV7mhdJamgkrbm1tOG/iYmC0vqf+me+OVdz/2G
-         Ab1lic1gfnYkewAUqydW/BGj6YTS+QTUbicHJ3p8dV9eBYcSzB5E5AlsViZa8xQCJVcN
-         zHxA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=AVHbILCQsLypCAGfHmK5wLqaUC5ajBuCpCOwuNfb+gQ=;
+        b=ollFdGGaZG8MGIBluGrnrwtqfvv9JQYkSc2xgOsrFtCswaIXnOBaHxX3rXSIjIWv7r
+         aBfv2/5c7O0CWKg6q6sNAsG1/mvqBlk3Te7LR5h/c2Ofoa99ibiHFWUTrWnjuRC9KKta
+         k5ijqX/ucr3HZ0UUvr6L1kBvNROwgPJmq/VI+WfT/V2/i7LJ3/TOgQeP+L00EZswy5LH
+         3XnzB2dytwUua/rYKGXFnQVYT7xvy7dihJZyNu2XGdlW2xQ24qkE6UDIgXIHM7gdOrju
+         CMpzvaNHWRTuVAundjmm0I/xTOAIYIw2Pap3fCsBD2MLjVf+3VL+AISGPp8sLhagSotD
+         ogEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NGO1CU+Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z187si913998ybc.42.2020.12.01.14.12.32
+        by mx.google.com with ESMTPS id s4si890720ybe.230.2020.12.01.14.22.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Dec 2020 14:12:32 -0800 (PST)
+        Tue, 01 Dec 2020 14:22:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49490 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NGO1CU+Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34018 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkDsu-0007ev-3I
-	for alex.bennee@linaro.org; Tue, 01 Dec 2020 17:12:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60766)
+	id 1kkE2I-0005Lz-2i
+	for alex.bennee@linaro.org; Tue, 01 Dec 2020 17:22:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35504)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kkDsO-0007cY-Br; Tue, 01 Dec 2020 17:12:01 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:50468
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kkDsA-0004jy-DH; Tue, 01 Dec 2020 17:12:00 -0500
-Received: from freeip.amazon.com
- (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
- by csgraf.de (Postfix) with UTF8SMTPSA id 2409F3900313;
- Tue,  1 Dec 2020 23:11:44 +0100 (CET)
-Subject: Re: [PATCH v2 2/2] arm/hvf: Stop setting current_cpu
-To: Peter Collingbourne <pcc@google.com>
-References: <4a2d15d01087207e2fba1f55ad312727dbfc782e.1606856104.git.pcc@google.com>
- <d91deec6e2c68a9cf0e911251992b4d845be14ab.1606856104.git.pcc@google.com>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <bd199d49-91a6-e14a-41c3-4a4325c8eff2@csgraf.de>
-Date: Tue, 1 Dec 2020 23:11:43 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
- Gecko/20100101 Thunderbird/84.0
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1kkE1x-0005KA-6J
+ for qemu-arm@nongnu.org; Tue, 01 Dec 2020 17:21:53 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34651)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1kkE1v-0007zJ-3J
+ for qemu-arm@nongnu.org; Tue, 01 Dec 2020 17:21:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1606861310;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AVHbILCQsLypCAGfHmK5wLqaUC5ajBuCpCOwuNfb+gQ=;
+ b=NGO1CU+QlRnANtS4SUoJRWM1s1njOUPMLD2f3c4msYUGG2YXrltY5AzS+2HBSxCuG+aJjT
+ D81rsvvMj1RWBIyzDCiVq436qWiFyCiVqnmy0qfB8+G68alW5VO/kczJn19ESXXZxS4t1O
+ tQJUCYlIXmDa4RFIgrGZArdhY3QsqSA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-521-TiF-PWhuPfaOc3ikwwF_vA-1; Tue, 01 Dec 2020 17:21:46 -0500
+X-MC-Unique: TiF-PWhuPfaOc3ikwwF_vA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6E53F3E747;
+ Tue,  1 Dec 2020 22:21:44 +0000 (UTC)
+Received: from w520.home (ovpn-112-10.phx2.redhat.com [10.3.112.10])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1D25F5C1B4;
+ Tue,  1 Dec 2020 22:21:39 +0000 (UTC)
+Date: Tue, 1 Dec 2020 15:21:39 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Shenming Lu <lushenming@huawei.com>
+Subject: Re: [PATCH RFC] vfio: Move the saving of the config space to the
+ right place in VFIO migration
+Message-ID: <20201201152139.0a7de6aa@w520.home>
+In-Reply-To: <44d9da84-a5ae-9637-d497-e92c446d04e3@huawei.com>
+References: <20201114091731.157-1-lushenming@huawei.com>
+ <860bd707-8862-2584-6e12-67c86f092dba@nvidia.com>
+ <20201119104127.5e243efa@w520.home>
+ <a7be9306-f800-0323-293e-217e2e9f6015@huawei.com>
+ <20201120150146.5e5693e9@w520.home>
+ <09549a98-85a0-fe4e-59fc-fdb636a4a5cd@huawei.com>
+ <20201123193336.GA32690@nvidia.com>
+ <20201123144622.75a18812@w520.home>
+ <ed6c0920-8a26-fafe-01a6-3021c5a92adb@huawei.com>
+ <20201130100337.4afe8eb4@w520.home>
+ <44d9da84-a5ae-9637-d497-e92c446d04e3@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <d91deec6e2c68a9cf0e911251992b4d845be14ab.1606856104.git.pcc@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.497,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,89 +124,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Neo Jia <cjia@nvidia.com>, Marc Zyngier <maz@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, Kirti
+ Wankhede <kwankhede@nvidia.com>, qemu-arm@nongnu.org, yuzenghui@huawei.com,
+ wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: riWVGyTUYJb6
+X-TUID: K5hxVP2KdY60
 
+On Tue, 1 Dec 2020 14:37:52 +0800
+Shenming Lu <lushenming@huawei.com> wrote:
 
-On 01.12.20 22:00, Peter Collingbourne wrote:
-> This variable is already being set by the generic HVF code and it's a
-> thread-local variable so I don't see how it can be overwritten.
->
-> Signed-off-by: Peter Collingbourne <pcc@google.com>
+> On 2020/12/1 1:03, Alex Williamson wrote:
+> > On Thu, 26 Nov 2020 14:56:17 +0800
+> > Shenming Lu <lushenming@huawei.com> wrote:
+> >   
+> >> Hi,
+> >>
+> >> After reading everyone's opinions, we have a rough idea for this issue.
+> >>
+> >> One key point is whether it is necessary to setup the config space before
+> >> the device can accept further migration data. I think it is decided by
+> >> the vendor driver, so we can simply ask the vendor driver about it in
+> >> .save_setup, which could avoid a lot of unnecessary copies and settings.
+> >> Once we have known the need, we can iterate the config space (before)
+> >> along with the device migration data in .save_live_iterate and
+> >> .save_live_complete_precopy, and if not needed, we can only migrate the
+> >> config space in .save_state.
+> >>
+> >> Another key point is that the interrupt enabling should be after the
+> >> restoring of the interrupt controller (might not only interrupts).
+> >> My solution is to add a subflag at the beginning of the config data
+> >> (right after VFIO_MIG_FLAG_DEV_CONFIG_STATE) to indicate the triggered
+> >> actions on the dst (such as whether to enable interrupts).
+> >>
+> >> Below is it's workflow.
+> >>
+> >> On the save path:
+> >> 	In vfio_save_setup():
+> >> 	Ask the vendor driver if it needs the config space setup before it
+> >> 	can accept further migration data.  
+> > 
+> > How does "ask the vendor driver" actually work?  
+> 
+> Maybe via a ioctl?
+> Oh, it seems that we have to ask the dst vendor driver (in vfio_load_setup)
+> and send the config data (before) along with the device migration data
+> every time?...
 
+Migration data streams are unidirectional, otherwise we break offline
+migration.  There are various ways other than an ioctl for a vendor
+driver to advertise requirements, ex. a capability on the migration
+region info, but it's not clear to me that we really need this info yet.
 
-Yikes :). Yes, absolutely!
+> >> 		|
+> >> 	In vfio_save_iterate() (pre-copy):
+> >> 	If *needed*, save the config space which would be setup on the dst
+> >> 	before the migration data, but send with a subflag to instruct not
+> >> 	to (such as) enable interrupts.  
+> > 
+> > If not for triggering things like MSI/X configuration, isn't config
+> > space almost entirely virtual?  What visibility does the vendor driver
+> > have to the VM machine dependencies regarding device interrupt versus
+> > interrupt controller migration?  
+> 
+> My thought is that the vendor driver only decides the order of the config
+> space setup and the receiving of the migration data, but leaves the VM
+> machine dependencies to QEMU.
 
-Would you mind if I squash this straight into my patch?
+But again, config space is largely virtual, the vendor driver doesn't
+have access to it, it's only the effects of config space, like
+representing the interrupt mode and configuring it on the device or
+specific registers that QEMU writes through that the vendor driver
+sees.  So how is it that the vendor driver decides the order?  The
+vendor driver doesn't have visibility to the VM machine dependencies,
+like when the interrupt controller is sufficiently configured to enable
+device interrupts.  It seems that a vendor driver that depends on QEMU
+enabling interrupts at a specific point is inherently dependent on
+assumptions in the machine configuration.
 
+> >> 		|
+> >> 	In vfio_save_complete_precopy() (stop-and-copy, iterable process):
+> >> 	The same as that in vfio_save_iterate().
+> >> 		|
+> >> 	In .save_state (stop-and-copy, non-iterable process):
+> >> 	If *needed*, only send a subflag to instruct to enable interrupts.
+> >> 	If *not needed*, save the config space and setup everything on the dst.  
+> > 
+> > Again, how does the vendor driver have visibility to know when the VM
+> > machine can enable interrupts?  
+> 
+> It seems troubling if the vendor driver needs the interrupts to be enabled
+> first...
 
-Thanks,
+Yes.
+
+> >> Besides the above idea, we might be able to choose to let the vendor driver do
+> >> more: qemu just sends and writes the config data (before) along with the device
+> >> migration data every time, and it's up to the vendor driver to filter out/buffer
+> >> the received data or reorder the settings...  
+> > 
+> > There is no vendor driver in QEMU though, so are you suggesting that
+> > QEMU follows a standard protocol and the vendor driver chooses when to
+> > enable specific features?  For instance, QEMU would call SET_IRQS and
+> > the driver would return success, but defer that setup if necessary?
+> > That seems quite troubling as we then have ioctls that behave
+> > differently depending on the device state and we have no error path to
+> > userspace should that setup fail later.  The vendor driver does have
+> > its own data stream for migration, so the vendor driver could tell the
+> > destination version of itself what type of interrupt to use, which
+> > might be sufficient if we were to ignore the latency if QEMU were to
+> > defer interrupt setup until stop-and-copy.  
+> 
+> Did you mean that we could only enable MSI-X during the iterable phase, but
+> leave the setup of these unmasked vectors to the non-iterable phase?
+> It looks good to me.
+
+On x86 the vfio SET_IRQS ioctl is independent of the VM interrupt
+setup, so we could decouple configuring the device interrupts from
+plumbing them through the VM.  However, doesn't ARM64 require mapping
+an MSI doorbell page via vfio?  Where does is that configured during the
+machine load versus the device iterative phase?
+
+> > Is the question of when to setup device interrupts versus the interrupt
+> > controller state largely a machine issue within QEMU?  If so, shouldn't
+> > it be at QEMU's determination when to act on the config space
+> > information on the target?  
+> 
+> I think it would be simpler if ensuring the proper calling order in QEMU...
+> 
+> > IOW, if a vendor driver has a dependency on
+> > interrupt configuration, they need to include it in their own pre-copy
+> > data stream and decouple that dependency from userspace interrupt
+> > configuration via the SET_IRQS ioctl.  Is that possible?  Thanks,
+> >   
+> 
+> I don't understand what the decoupling that dependency from userspace
+> interrupt configuration means...
+
+I mean that the vendor driver cannot depend on when QEMU calls
+SET_IRQS, the vendor specific migration stream contains any information
+the vendor driver needs about interrupt configuration such that QEMU
+can call SET_IRQS whenever it chooses.  Thanks,
 
 Alex
 
-
-> ---
->   target/arm/hvf/hvf.c | 8 --------
->   1 file changed, 8 deletions(-)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 3321d48aa2..40984fcf4d 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -364,7 +364,6 @@ int hvf_vcpu_exec(CPUState *cpu)
->       do {
->           bool advance_pc = false;
->   
-> -        current_cpu = cpu;
->           qemu_wait_io_event_common(cpu);
->   
->           flush_cpu_state(cpu);
-> @@ -391,7 +390,6 @@ int hvf_vcpu_exec(CPUState *cpu)
->               /* This is the main one, handle below. */
->               break;
->           case HV_EXIT_REASON_VTIMER_ACTIVATED:
-> -            current_cpu = cpu;
->               qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
->               continue;
->           case HV_EXIT_REASON_CANCELED:
-> @@ -412,8 +410,6 @@ int hvf_vcpu_exec(CPUState *cpu)
->               uint32_t srt = (syndrome >> 16) & 0x1f;
->               uint64_t val = 0;
->   
-> -            current_cpu = cpu;
-> -
->               DPRINTF("data abort: [pc=0x%llx va=0x%016llx pa=0x%016llx isv=%x "
->                       "iswrite=%x s1ptw=%x len=%d srt=%d]\n",
->                       env->pc, hvf_exit->exception.virtual_address,
-> @@ -523,7 +519,6 @@ int hvf_vcpu_exec(CPUState *cpu)
->               break;
->           case EC_AA64_HVC:
->               cpu_synchronize_state(cpu);
-> -            current_cpu = cpu;
->               if (arm_is_psci_call(arm_cpu, EXCP_HVC)) {
->                   arm_handle_psci_call(arm_cpu);
->               } else {
-> @@ -533,7 +528,6 @@ int hvf_vcpu_exec(CPUState *cpu)
->               break;
->           case EC_AA64_SMC:
->               cpu_synchronize_state(cpu);
-> -            current_cpu = cpu;
->               if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
->                   arm_handle_psci_call(arm_cpu);
->               } else {
-> @@ -561,7 +555,5 @@ int hvf_vcpu_exec(CPUState *cpu)
->           }
->       } while (ret == 0);
->   
-> -    current_cpu = cpu;
-> -
->       return ret;
->   }

@@ -1,88 +1,105 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5704217lfb;
-        Mon, 30 Nov 2020 16:14:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxZSK534OJKsZQOt8T/IsiKbtkQ6hsZwtML/Jvk6Vpskz73Tt4Ay7qEy+IV9LMVzADIv919
-X-Received: by 2002:a25:481:: with SMTP id 123mr32792666ybe.123.1606781642205;
-        Mon, 30 Nov 2020 16:14:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606781642; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5782502lfb;
+        Mon, 30 Nov 2020 18:04:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyaoPRUb2tns4MxLo7+PWLSA48VrAXoyFxwBwaDZ6erforypgzBL4LprGSghnxzaY112BFt
+X-Received: by 2002:a25:2d05:: with SMTP id t5mr563574ybt.297.1606788268367;
+        Mon, 30 Nov 2020 18:04:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606788268; cv=none;
         d=google.com; s=arc-20160816;
-        b=SopZECIJ0Pdh0rcpJgZLnu893H0T51FDBZp+7YNylymsa1K42KXD4yrr7PJkZzU1ly
-         TIaLVTZI/lfSZZnyj3k4a09+oqUSjunlhMPLH1J3aQWcn61LLiDeEw9yqSYOnYhf/d4x
-         fofVmjhh5283Gwu/WOfoRzBXnzR+kw4cvw+7Qi0LT02GrsKgzcodsQ1m3nREYd5EiNar
-         5Az7Xlhcmz1xVG0ZNVx2FCBQI6lw+vphcP1UyWpkvRaOakuI7U/OIk81MFSLEpJhboqr
-         S9RS6hU4t949m/EQ8m8JFeq+sK4ZfOH6cg1V5bV9MlZ1rU1jcKfUSGqV4bPypIyWz+jT
-         3UDA==
+        b=g9odc4LKYYQgM48fjyvjmaEqaiPdc00MIrhyxc4klM4aVEo7IvjzZsP+cTg91OIgiF
+         8LAz7CUQpW8nhYgmEMhbLNCPt9Jmtleq18/dq0lCPpm+IcdbJ6VbmIoqc3kw//SY+FA2
+         I5sbB0lYFjEfU2/Z9qxSKnLkPtgLjMLLkKG8JX1S7Zg3x4uoSMwAvwSup+XcthV02JzK
+         ByQBXEgdIm5lwZobBMyGnV8VhcfMB4OBakg2Dy7+TnmdLFr/U8Nq2A6+gUCVqVCjA1M8
+         dUt/QWJAIMmsukaPJRPTwg3GXJiIYOItD6jAokJROjUTV6KjZ5oU1j+eyLmNnahSkiA9
+         WfMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=QongIW4CQFEtfUVFDruHHQV0utgeCpm5KybdFOxe4sY=;
-        b=PKN1THUB8DFZxJfRX19y+MRwMEAtc6oKpxGeXuxrcdrzCKUYwhOUUdrLaVb6vFddUE
-         3tLGLEh+ARy38KMFSPxiLI6kDHJKz4DykpK7D0swEgUfMxPe+ITI2Urhci/Z5Bu7zo/d
-         psRdH954NUB8whCNZJASCLGrG727W2Dt11wFH4tNy44a9C1+EwVQ2O1N4eCZvKhmuGuA
-         /p6DbqktDzgoZ/aZU+l5aTY4wxaHC9usk4tbgQPSqpfoy2EjAxVRQe2wVTgXjluIA2/d
-         1oE+EqFKK+W2pVDjxJwShgJvokAf/Sgl1RehnMqYYLK1r8JygZYQazLzduKUMBQTddhf
-         wc6w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=AyocmZBaWefAPt+dNjMqu4XTXi7KxfPksz5qVukrjQo=;
+        b=IUN/O61j/rURSXPSzo1cW2DzaVv3S1Q9sim1Wt3ZI5NVnUFiVlb+vFtrguokejj5mL
+         3n26LNQRKaMBEiT7FZx0xpMSH7tH3UgAG+nXaOzMALIsZ+2XdGAunaZ6LjX27d1nrIXZ
+         rTik93Fov2z9PrB+sc6FIKDhq1JjwWMZOUIMFymIZPqRKRpDIrCqCGhkwsNbBPqZdA/q
+         /q2DMuQKAp00XkM9gXrA9Mtrdc9lFopMhYk71OdppnhiXp8UoAwkj51ER/CqEG35C/4T
+         qkkLwWtKYvu5iuJcDLfCLlZE5ts0Bp1Yh1ei0lGAUIwQb46DMU37YonuI23oKxSLxY+N
+         1/pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QfdRoERr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n15si35793yba.494.2020.11.30.16.14.02
+        by mx.google.com with ESMTPS id y15si257185ybb.251.2020.11.30.18.04.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Nov 2020 16:14:02 -0800 (PST)
+        Mon, 30 Nov 2020 18:04:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56136 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QfdRoERr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjtIv-0002Ys-Iu
-	for alex.bennee@linaro.org; Mon, 30 Nov 2020 19:14:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60268)
+	id 1kjv1n-00060o-PC
+	for alex.bennee@linaro.org; Mon, 30 Nov 2020 21:04:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58390)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kjtIL-0002Xz-ST; Mon, 30 Nov 2020 19:13:25 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:41640
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kjtII-0003Ct-VI; Mon, 30 Nov 2020 19:13:25 -0500
-Received: from edge-cache-175.e-lhr50.amazon.com
- (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
- by csgraf.de (Postfix) with UTF8SMTPSA id 81CC63900111;
- Tue,  1 Dec 2020 01:13:19 +0100 (CET)
-Subject: Re: [PATCH 2/8] hvf: Move common code out
-To: Peter Collingbourne <pcc@google.com>
-References: <20201126215017.41156-1-agraf@csgraf.de>
- <20201126215017.41156-3-agraf@csgraf.de>
- <20201127200054.GC56950@SPB-NB-133.local>
- <392c2465-157e-e15a-0a2c-2e3faa166d22@csgraf.de>
- <CAEkmjvUArgL+Mcvy6nUhfJrdX3OaF=U8UdWia7ZDo9GWk0VF=g@mail.gmail.com>
- <CAEkmjvVJ5zup4NR2+DStt_NvV2cV7+7dj2=fJ3DQBkth8pAfcw@mail.gmail.com>
- <cecd20d0-278b-0a4b-ba9c-0207504c99d7@csgraf.de>
- <CAEkmjvVOAYP6wJyVpAtZE3d=iNOOWGZeHptQ9xJDGcTi4qQ0hQ@mail.gmail.com>
- <CAMn1gO7jqjsqJHtSaV7F+2qmtfF-YFDJwo=O8ot2iem+Uz4Zrw@mail.gmail.com>
- <6975b4a3-1568-df40-8594-bfcf488ac425@csgraf.de>
- <CAMn1gO5xs8RniRYm+Gnbh8S3GVah2+2Ew2V6tFL6PNuSJ7o5Hw@mail.gmail.com>
- <4e1d93a4-9dcc-c6b6-e060-6eea39ae2f16@csgraf.de>
- <CAMn1gO44Y4rahufveQ1dOq96nhqvGEmZ0pYci2f6BKv9kd638Q@mail.gmail.com>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <ed83843e-2bd1-771a-cb89-ac0f1a4aaae4@csgraf.de>
-Date: Tue, 1 Dec 2020 01:13:19 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
- Gecko/20100101 Thunderbird/84.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kjv1O-00060T-OL; Mon, 30 Nov 2020 21:04:02 -0500
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:45295)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kjv1N-0000FV-8F; Mon, 30 Nov 2020 21:04:02 -0500
+Received: by mail-il1-x141.google.com with SMTP id w8so133046ilg.12;
+ Mon, 30 Nov 2020 18:04:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=AyocmZBaWefAPt+dNjMqu4XTXi7KxfPksz5qVukrjQo=;
+ b=QfdRoERrFsXBpux9BcQTY+qPP7gUXEO8iXsl/WIwfOLIXPrPu07mN18tJTXMc+h58g
+ en8k0UACAy7+e8yaxHN1DaCwvP0Ry0lq5dc/JIfFWfyZeeGse0TmAqBN1gNxktqdyse5
+ qnIc8iAXPBrlV0A8XfRH4QDHYJz+Tn1DmdX+cM9LtG0x2hulZmYyw5qmXdctrLI7/0pr
+ HqY7m6oOrJGfcj61q0Cgxeby0WbM2tkyT/9iE56uISoH1Eey+IZ1MCm7mKaLk6mwo1U5
+ DxrH9iRGUF6+Lzq/kVGgxxrSR0xJw/XGzYmJPirHR9pN6UJGNPeIFNxHWdjgV6vVy+ZE
+ hgPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=AyocmZBaWefAPt+dNjMqu4XTXi7KxfPksz5qVukrjQo=;
+ b=Y0cmbo9EvnOMrYFT7GT6c0WMg/GE5xN002wsTmwqOW5DurumceoXpLg64lf2LxR8SO
+ t32L9J/AnCPEvkckvP+ydXUH+39lhX+ESl4EvEqBa24OgoBrPVajgnfcIHkDBnpWjQQr
+ UZOipt/KpWKf1QMlbeYFkmOjVrzLaGaplBmS6LZ5zp5akeAvHfXjEFNG6mj9rfFWhU0M
+ QbKD2bL0vDBQHXZyCdYzHcYlDz/0QPR7SO+Ao44tZ/JL+jOVmKRQjFR/K1CNEL2HseXv
+ jZQxU86Kr5TRGjj6FKLMqTHhFwof+xsExKcQ/sbyQ3c2P5iIovYUcnIpHK4jE9gYOvHt
+ /nwA==
+X-Gm-Message-State: AOAM532uatiuo4vB0Owyhc8J5HQjfS+boOV4CGyFJF4HKqxM1V7towEx
+ 5rgEhzDvsp+RT02xGuNO1B6NKwoHilLOZYl6kzo=
+X-Received: by 2002:a05:6e02:ca5:: with SMTP id 5mr659170ilg.40.1606788239431; 
+ Mon, 30 Nov 2020 18:03:59 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAMn1gO44Y4rahufveQ1dOq96nhqvGEmZ0pYci2f6BKv9kd638Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <20201124094941.485767-1-f4bug@amsat.org>
+ <20201124094941.485767-3-f4bug@amsat.org>
+In-Reply-To: <20201124094941.485767-3-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 30 Nov 2020 17:51:42 -0800
+Message-ID: <CAKmqyKNs1u3ZOZWj0i07qVGtG5L20Tm_0WOeRtdBCWH5yZ32+g@mail.gmail.com>
+Subject: Re: [PATCH-for-5.2? 2/4] hw/arm/exynos4210: Add SD bus QOM alias on
+ the SoC
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,147 +113,59 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aSesGLmItoYO
+X-TUID: p5+9WVtxuq7H
 
-
-On 01.12.20 01:00, Peter Collingbourne wrote:
-> On Mon, Nov 30, 2020 at 3:18 PM Alexander Graf <agraf@csgraf.de> wrote:
->>
->> On 01.12.20 00:01, Peter Collingbourne wrote:
->>> On Mon, Nov 30, 2020 at 1:40 PM Alexander Graf <agraf@csgraf.de> wrote:
->>>> Hi Peter,
->>>>
->>>> On 30.11.20 22:08, Peter Collingbourne wrote:
->>>>> On Mon, Nov 30, 2020 at 12:56 PM Frank Yang <lfy@google.com> wrote:
->>>>>> On Mon, Nov 30, 2020 at 12:34 PM Alexander Graf <agraf@csgraf.de> wrote:
->>>>>>> Hi Frank,
->>>>>>>
->>>>>>> Thanks for the update :). Your previous email nudged me into the right direction. I previously had implemented WFI through the internal timer framework which performed way worse.
->>>>>> Cool, glad it's helping. Also, Peter found out that the main thing keeping us from just using cntpct_el0 on the host directly and compare with cval is that if we sleep, cval is going to be much < cntpct_el0 by the sleep time. If we can get either the architecture or macos to read out the sleep time then we might be able to not have to use a poll interval either!
->>>>>>> Along the way, I stumbled over a few issues though. For starters, the signal mask for SIG_IPI was not set correctly, so while pselect() would exit, the signal would never get delivered to the thread! For a fix, check out
->>>>>>>
->>>>>>>      https://patchew.org/QEMU/20201130030723.78326-1-agraf@csgraf.de/20201130030723.78326-4-agraf@csgraf.de/
->>>>>>>
->>>>>> Thanks, we'll take a look :)
->>>>>>
->>>>>>> Please also have a look at my latest stab at WFI emulation. It doesn't handle WFE (that's only relevant in overcommitted scenarios). But it does handle WFI and even does something similar to hlt polling, albeit not with an adaptive threshold.
->>>>> Sorry I'm not subscribed to qemu-devel (I'll subscribe in a bit) so
->>>>> I'll reply to your patch here. You have:
->>>>>
->>>>> +                    /* Set cpu->hvf->sleeping so that we get a
->>>>> SIG_IPI signal. */
->>>>> +                    cpu->hvf->sleeping = true;
->>>>> +                    smp_mb();
->>>>> +
->>>>> +                    /* Bail out if we received an IRQ meanwhile */
->>>>> +                    if (cpu->thread_kicked || (cpu->interrupt_request &
->>>>> +                        (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
->>>>> +                        cpu->hvf->sleeping = false;
->>>>> +                        break;
->>>>> +                    }
->>>>> +
->>>>> +                    /* nanosleep returns on signal, so we wake up on kick. */
->>>>> +                    nanosleep(ts, NULL);
->>>>>
->>>>> and then send the signal conditional on whether sleeping is true, but
->>>>> I think this is racy. If the signal is sent after sleeping is set to
->>>>> true but before entering nanosleep then I think it will be ignored and
->>>>> we will miss the wakeup. That's why in my implementation I block IPI
->>>>> on the CPU thread at startup and then use pselect to atomically
->>>>> unblock and begin sleeping. The signal is sent unconditionally so
->>>>> there's no need to worry about races between actually sleeping and the
->>>>> "we think we're sleeping" state. It may lead to an extra wakeup but
->>>>> that's better than missing it entirely.
->>>> Thanks a bunch for the comment! So the trick I was using here is to
->>>> modify the timespec from the kick function before sending the IPI
->>>> signal. That way, we know that either we are inside the sleep (where the
->>>> signal wakes it up) or we are outside the sleep (where timespec={} will
->>>> make it return immediately).
->>>>
->>>> The only race I can think of is if nanosleep does calculations based on
->>>> the timespec and we happen to send the signal right there and then.
->>> Yes that's the race I was thinking of. Admittedly it's a small window
->>> but it's theoretically possible and part of the reason why pselect was
->>> created.
->>>
->>>> The problem with blocking IPIs is basically what Frank was describing
->>>> earlier: How do you unset the IPI signal pending status? If the signal
->>>> is never delivered, how can pselect differentiate "signal from last time
->>>> is still pending" from "new signal because I got an IPI"?
->>> In this case we would take the additional wakeup which should be
->>> harmless since we will take the WFx exit again and put us in the
->>> correct state. But that's a lot better than busy looping.
->>
->> I'm not sure I follow. I'm thinking of the following scenario:
->>
->>     - trap into WFI handler
->>     - go to sleep with blocked SIG_IPI
->>     - SIG_IPI arrives, pselect() exits
->>     - signal is still pending because it's blocked
->>     - enter guest
->>     - trap into WFI handler
->>     - run pselect(), but it immediate exits because SIG_IPI is still pending
->>
->> This was the loop I was seeing when running with SIG_IPI blocked. That's
->> part of the reason why I switched to a different model.
-> What I observe is that when returning from a pending signal pselect
-> consumes the signal (which is also consistent with my understanding of
-> what pselect does). That means that it doesn't matter if we take a
-> second WFx exit because once we reach the pselect in the second WFx
-> exit the signal will have been consumed by the pselect in the first
-> exit and we will just wait for the next one.
+On Tue, Nov 24, 2020 at 1:55 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
 >
-> I don't know why things may have been going wrong in your
-> implementation but it may be related to the issue with
-> mach_absolute_time() which I posted about separately and was also
-> causing busy loops for us in some cases. Once that issue was fixed in
-> our implementation we started seeing sleep until VTIMER due work
-> properly.
+> To be able to select a particular SD bus from the command
+> line, add a QOM alias on the SoC (using an unique name).
 >
->>
->>> I reckon that you could improve things a little by unblocking the
->>> signal and then reblocking it before unlocking iothread (e.g. with a
->>> pselect with zero time interval), which would flush any pending
->>> signals. Since any such signal would correspond to a signal from last
->>> time (because we still have the iothread lock) we know that any future
->>> signals should correspond to new IPIs.
->>
->> Yeah, I think you actually *have* to do exactly that, because otherwise
->> pselect() will always return after 0ns because the signal is still pending.
->>
->> And yes, I agree that that starts to sound a bit less racy now. But it
->> means we can probably also just do
->>
->>     - WFI handler
->>     - block SIG_IPI
->>     - set hvf->sleeping = true
->>     - check for pending interrupts
->>     - pselect()
->>     - unblock SIG_IPI
->>
->> which means we run with SIG_IPI unmasked by default. I don't think the
->> number of signal mask changes is any different with that compared to
->> running with SIG_IPI always masked, right?
-> And unlock/lock iothread around the pselect? I suppose that could work
-> but as I mentioned it would just be an optimization.
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+> ---
+>  hw/arm/exynos4210.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 >
-> Maybe I can try to make my approach work on top of your series, or if
-> you already have a patch I can try to debug it. Let me know.
-
-
-I would love to take a patch from you here :). I'll still be stuck for a 
-while with the sysreg sync rework that Peter asked for before I can look 
-at WFI again.
-
-
-Alex
-
-
+> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+> index ced2769b102..a60f08d372a 100644
+> --- a/hw/arm/exynos4210.c
+> +++ b/hw/arm/exynos4210.c
+> @@ -408,6 +408,7 @@ static void exynos4210_realize(DeviceState *socdev, E=
+rror **errp)
+>
+>      /*** SD/MMC host controllers ***/
+>      for (n =3D 0; n < EXYNOS4210_SDHCI_NUMBER; n++) {
+> +        g_autofree char *bus_name =3D NULL;
+>          DeviceState *carddev;
+>          BlockBackend *blk;
+>          DriveInfo *di;
+> @@ -432,6 +433,10 @@ static void exynos4210_realize(DeviceState *socdev, =
+Error **errp)
+>          sysbus_mmio_map(busdev, 0, EXYNOS4210_SDHCI_ADDR(n));
+>          sysbus_connect_irq(busdev, 0, s->irq_table[exynos4210_get_irq(29=
+, n)]);
+>
+> +        /* Alias controller SD bus to the SoC itself */
+> +        bus_name =3D g_strdup_printf("sd-bus%d", n);
+> +        object_property_add_alias(OBJECT(s), bus_name, OBJECT(dev), "sd-=
+bus");
+> +
+>          di =3D drive_get(IF_SD, 0, n);
+>          blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+>          carddev =3D qdev_new(TYPE_SD_CARD);
+> --
+> 2.26.2
+>
+>

@@ -1,68 +1,67 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp579780lfb;
-        Tue, 1 Dec 2020 14:10:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwY3gkgBr+rwy7QohDQt4HBMATSTGtC8I8s8lP65g26Sx/ymduA1eu2KC8Mh8CcRY8Sa518
-X-Received: by 2002:a25:d7d4:: with SMTP id o203mr5569155ybg.286.1606860605291;
-        Tue, 01 Dec 2020 14:10:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606860605; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp581344lfb;
+        Tue, 1 Dec 2020 14:12:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwhF9io/b340AHb8cysifqUdnBuHRdYU+kJ4AtLzwpfbM313SYdtOLwxmpTUJUtcglpFeqN
+X-Received: by 2002:a25:d606:: with SMTP id n6mr6914580ybg.360.1606860752666;
+        Tue, 01 Dec 2020 14:12:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606860752; cv=none;
         d=google.com; s=arc-20160816;
-        b=j5S0uI6AeRUKLeHK37qCl935LDPN1HrPiIRNspag/nlNCmlq7pAeyO9WufKwigNn+I
-         mOPL8/apaFth4uSvV/+jBgqlCk4Si43La5t5b1mtHrR0MElF5z2r40cOHRi9NtEF/Cwu
-         +ildoT2UiO+PuLvOth0uqEhllJNjOAnSqknMh7rTlEpQCf4vqNFEIseATx2XnCPv0oeu
-         AZUVhTLkCgNZjfRlcHOK6Qta3krMcG1kU/dcpvdZWgLl+xIDybcTooUMi4b4v5OnAl1n
-         3yb/yhqbo8OcsMdHHHOJZHKWCKJJMND3OHCkvFTszEoskSCcrrIAFPPHAlG7BDMP/SCd
-         575w==
+        b=Eg4ao4VI82YO+Tih5sYZKHOgzZDCltUaKSD/LBzZKy7nMsftyA4qxnWseFp5WIXMuv
+         a9HcHTtuiQnWkzA6t8KIQl0S/3iulqCo/HeCq8evYp1UVwlPI5uO5eoOwZdoqGB9AL/3
+         KSQXVpM9Sugf14qS2zUhKtlVIpX9Yrop7OYrTbAvBTrHBmqJPlrqof+ozWS6/37kJ2+/
+         OlfVmrs2rCMhELwufyOXCJ1VR+H3fGkoWvJrCmcygKDSfl6ACKHo8pgXkSiMe+wgxZFN
+         o0b+9dY16nKvTW5NlCzESXSLhQnsGL4SRxRqa0p4ZcQsjMfXX3bnXv+DyCo3P+GKO76l
+         kXIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=pUJjy2BIVLIUXGI2v8aU2YM21wlXsvI1KHDIpqCyLZk=;
-        b=RO50ppMMDhxRNaYXRYhNIzSeY3vBzFR3Dn+ehgfnJ1T2SIcIDcpuD5CeNCsSqBv988
-         LftgKUne7Qor0CEGnMiN6LGhNU+XlGX7Qn63kL/Uc1UbyAG3aRtYrnxcrt0E8p3oLSe7
-         mJSO8yxhmxP6mLX0rHVlc03LRvnK7bGEk5ncA6gJpv25R2qTIExegPHFA3azVApI0hkE
-         ZRNQecRT/ZMxf5ol0BsZ/jZ7+X0scK5qA3fVdD6uZkd3m1SX9ZpJx0yKiwunf2hhwyPh
-         9sS1jem+PS8JZcPxHl92Bcyn6i1APi4WM8TUPVLz/57x6wtbtKFJAzO2ZvgIVU/j7+Ml
-         aQkw==
+        bh=hSVWXzPjeuQP0MmLRBQZOm1F+prIMvQvPBjKjioS+OU=;
+        b=fPOx705QppI6J9E22AWKJPBszMLWyAYtuX0Wtn0HPYKnHQE3SdUt8u6Wk04CEgklA4
+         GcCPRdWCle3ZGUh11GVBrVTBq3OwIYqyBAwzrOOqcTPfoNoTXA4djv4wKVSFmgdVx32p
+         Q5s1GO0RdEh7/YaYiWKsoQK221SvhCvRhOhrxE+0MDma+g6oQRKmFoKsucEMDe5/4rTW
+         qHcfGW/rJW3n+urT9xH/kdLRgd8NcGjV7mhdJamgkrbm1tOG/iYmC0vqf+me+OVdz/2G
+         Ab1lic1gfnYkewAUqydW/BGj6YTS+QTUbicHJ3p8dV9eBYcSzB5E5AlsViZa8xQCJVcN
+         zHxA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m145si938282ybf.447.2020.12.01.14.10.05
+        by mx.google.com with ESMTPS id z187si913998ybc.42.2020.12.01.14.12.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Dec 2020 14:10:05 -0800 (PST)
+        Tue, 01 Dec 2020 14:12:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45666 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49490 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkDqW-0005ts-Ko
-	for alex.bennee@linaro.org; Tue, 01 Dec 2020 17:10:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60030)
+	id 1kkDsu-0007ev-3I
+	for alex.bennee@linaro.org; Tue, 01 Dec 2020 17:12:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60766)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kkDqN-0005sD-70; Tue, 01 Dec 2020 17:09:55 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:50348
+ id 1kkDsO-0007cY-Br; Tue, 01 Dec 2020 17:12:01 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:50468
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1kkDqG-00041U-Op; Tue, 01 Dec 2020 17:09:54 -0500
+ id 1kkDsA-0004jy-DH; Tue, 01 Dec 2020 17:12:00 -0500
 Received: from freeip.amazon.com
  (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
- by csgraf.de (Postfix) with UTF8SMTPSA id 5CA4F3900313;
- Tue,  1 Dec 2020 23:09:45 +0100 (CET)
-Subject: Re: [PATCH] arm/hvf: Optimize and simplify WFI handling
+ by csgraf.de (Postfix) with UTF8SMTPSA id 2409F3900313;
+ Tue,  1 Dec 2020 23:11:44 +0100 (CET)
+Subject: Re: [PATCH v2 2/2] arm/hvf: Stop setting current_cpu
 To: Peter Collingbourne <pcc@google.com>
-References: <20201201082142.649007-1-pcc@google.com>
- <5b691ccb-43bb-5955-d47a-cae39c59522c@csgraf.de>
- <CAMn1gO5i7CGet6rDVMwYf40vCMU61n7b=TTTTZzWSDbn+FGL1w@mail.gmail.com>
+References: <4a2d15d01087207e2fba1f55ad312727dbfc782e.1606856104.git.pcc@google.com>
+ <d91deec6e2c68a9cf0e911251992b4d845be14ab.1606856104.git.pcc@google.com>
 From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <8cc9052b-da85-de93-9d54-d4d0730054ec@csgraf.de>
-Date: Tue, 1 Dec 2020 23:09:44 +0100
+Message-ID: <bd199d49-91a6-e14a-41c3-4a4325c8eff2@csgraf.de>
+Date: Tue, 1 Dec 2020 23:11:43 +0100
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
  Gecko/20100101 Thunderbird/84.0
 MIME-Version: 1.0
-In-Reply-To: <CAMn1gO5i7CGet6rDVMwYf40vCMU61n7b=TTTTZzWSDbn+FGL1w@mail.gmail.com>
+In-Reply-To: <d91deec6e2c68a9cf0e911251992b4d845be14ab.1606856104.git.pcc@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
@@ -94,245 +93,80 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qf/ZZAIK59sa
+X-TUID: riWVGyTUYJb6
 
 
-On 01.12.20 21:03, Peter Collingbourne wrote:
-> On Tue, Dec 1, 2020 at 8:26 AM Alexander Graf <agraf@csgraf.de> wrote:
->>
->> On 01.12.20 09:21, Peter Collingbourne wrote:
->>> Sleep on WFx until the VTIMER is due but allow ourselves to be woken
->>> up on IPI.
->>>
->>> Signed-off-by: Peter Collingbourne <pcc@google.com>
->>> ---
->>> Alexander Graf wrote:
->>>> I would love to take a patch from you here :). I'll still be stuck for a
->>>> while with the sysreg sync rework that Peter asked for before I can look
->>>> at WFI again.
->>> Okay, here's a patch :) It's a relatively straightforward adaptation
->>> of what we have in our fork, which can now boot Android to GUI while
->>> remaining at around 4% CPU when idle.
->>>
->>> I'm not set up to boot a full Linux distribution at the moment so I
->>> tested it on upstream QEMU by running a recent mainline Linux kernel
->>> with a rootfs containing an init program that just does sleep(5)
->>> and verified that the qemu process remains at low CPU usage during
->>> the sleep. This was on top of your v2 plus the last patch of your v1
->>> since it doesn't look like you have a replacement for that logic yet.
->>
->> How about something like this instead?
->>
->>
->> Alex
->>
->>
->> diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
->> index 4360f64671..50384013ea 100644
->> --- a/accel/hvf/hvf-cpus.c
->> +++ b/accel/hvf/hvf-cpus.c
->> @@ -337,16 +337,18 @@ static int hvf_init_vcpu(CPUState *cpu)
->>        cpu->hvf = g_malloc0(sizeof(*cpu->hvf));
->>
->>        /* init cpu signals */
->> -    sigset_t set;
->>        struct sigaction sigact;
->>
->>        memset(&sigact, 0, sizeof(sigact));
->>        sigact.sa_handler = dummy_signal;
->>        sigaction(SIG_IPI, &sigact, NULL);
->>
->> -    pthread_sigmask(SIG_BLOCK, NULL, &set);
->> -    sigdelset(&set, SIG_IPI);
->> -    pthread_sigmask(SIG_SETMASK, &set, NULL);
->> +    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->sigmask);
->> +    sigdelset(&cpu->hvf->sigmask, SIG_IPI);
->> +    pthread_sigmask(SIG_SETMASK, &cpu->hvf->sigmask, NULL);
->> +
->> +    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->sigmask_ipi);
->> +    sigaddset(&cpu->hvf->sigmask_ipi, SIG_IPI);
-> There's no reason to unblock SIG_IPI while not in pselect and it can
-> easily lead to missed wakeups. The whole point of pselect is so that
-> you can guarantee that only one part of your program sees signals
-> without a possibility of them being missed.
-
-
-Hm, I think I start to agree with you here :). We can probably just 
-leave SIG_IPI masked at all times and only unmask on pselect. The worst 
-thing that will happen is a premature wakeup if we did get an IPI 
-incoming while hvf->sleeping is set, but were either not running 
-pselect() yet and bailed out or already finished pselect() execution.
-
-
+On 01.12.20 22:00, Peter Collingbourne wrote:
+> This variable is already being set by the generic HVF code and it's a
+> thread-local variable so I don't see how it can be overwritten.
 >
->>    #ifdef __aarch64__
->>        r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t
->> **)&cpu->hvf->exit, NULL);
->> diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
->> index c56baa3ae8..6e237f2db0 100644
->> --- a/include/sysemu/hvf_int.h
->> +++ b/include/sysemu/hvf_int.h
->> @@ -62,8 +62,9 @@ extern HVFState *hvf_state;
->>    struct hvf_vcpu_state {
->>        uint64_t fd;
->>        void *exit;
->> -    struct timespec ts;
->>        bool sleeping;
->> +    sigset_t sigmask;
->> +    sigset_t sigmask_ipi;
->>    };
->>
->>    void assert_hvf_ok(hv_return_t ret);
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index 0c01a03725..350b845e6e 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -320,20 +320,24 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->>
->>    void hvf_kick_vcpu_thread(CPUState *cpu)
->>    {
->> -    if (cpu->hvf->sleeping) {
->> -        /*
->> -         * When sleeping, make sure we always send signals. Also, clear the
->> -         * timespec, so that an IPI that arrives between setting
->> hvf->sleeping
->> -         * and the nanosleep syscall still aborts the sleep.
->> -         */
->> -        cpu->thread_kicked = false;
->> -        cpu->hvf->ts = (struct timespec){ };
->> +    if (qatomic_read(&cpu->hvf->sleeping)) {
->> +        /* When sleeping, send a signal to get out of pselect */
->>            cpus_kick_thread(cpu);
->>        } else {
->>            hv_vcpus_exit(&cpu->hvf->fd, 1);
->>        }
->>    }
->>
->> +static void hvf_block_sig_ipi(CPUState *cpu)
->> +{
->> +    pthread_sigmask(SIG_SETMASK, &cpu->hvf->sigmask_ipi, NULL);
->> +}
->> +
->> +static void hvf_unblock_sig_ipi(CPUState *cpu)
->> +{
->> +    pthread_sigmask(SIG_SETMASK, &cpu->hvf->sigmask, NULL);
->> +}
->> +
->>    static int hvf_inject_interrupts(CPUState *cpu)
->>    {
->>        if (cpu->interrupt_request & CPU_INTERRUPT_FIQ) {
->> @@ -354,6 +358,7 @@ int hvf_vcpu_exec(CPUState *cpu)
->>        ARMCPU *arm_cpu = ARM_CPU(cpu);
->>        CPUARMState *env = &arm_cpu->env;
->>        hv_vcpu_exit_t *hvf_exit = cpu->hvf->exit;
->> +    const uint32_t irq_mask = CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ;
->>        hv_return_t r;
->>        int ret = 0;
->>
->> @@ -491,8 +496,8 @@ int hvf_vcpu_exec(CPUState *cpu)
->>                break;
->>            }
->>            case EC_WFX_TRAP:
->> -            if (!(syndrome & WFX_IS_WFE) && !(cpu->interrupt_request &
->> -                (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
->> +            if (!(syndrome & WFX_IS_WFE) &&
->> +                !(cpu->interrupt_request & irq_mask)) {
->>                    uint64_t cval, ctl, val, diff, now;
-> I don't think the access to cpu->interrupt_request is safe because it
-> is done while not under the iothread lock. That's why to avoid these
-> types of issues I would prefer to hold the lock almost all of the
-> time.
+> Signed-off-by: Peter Collingbourne <pcc@google.com>
 
 
-In this branch, that's not a problem yet. On stale values, we either 
-don't sleep (which is ok), or we go into the sleep path, and reevaluate 
-cpu->interrupt_request atomically again after setting hvf->sleeping.
+Yikes :). Yes, absolutely!
+
+Would you mind if I squash this straight into my patch?
 
 
->
->>                    /* Set up a local timer for vtimer if necessary ... */
->> @@ -515,9 +520,7 @@ int hvf_vcpu_exec(CPUState *cpu)
->>
->>                    if (diff < INT64_MAX) {
->>                        uint64_t ns = diff * gt_cntfrq_period_ns(arm_cpu);
->> -                    struct timespec *ts = &cpu->hvf->ts;
->> -
->> -                    *ts = (struct timespec){
->> +                    struct timespec ts = {
->>                            .tv_sec = ns / NANOSECONDS_PER_SECOND,
->>                            .tv_nsec = ns % NANOSECONDS_PER_SECOND,
->>                        };
->> @@ -526,27 +529,31 @@ int hvf_vcpu_exec(CPUState *cpu)
->>                         * Waking up easily takes 1ms, don't go to sleep
->> for smaller
->>                         * time periods than 2ms.
->>                         */
->> -                    if (!ts->tv_sec && (ts->tv_nsec < (SCALE_MS * 2))) {
->> +                    if (!ts.tv_sec && (ts.tv_nsec < (SCALE_MS * 2))) {
->>                            advance_pc = true;
->>                            break;
->>                        }
->>
->> +                    /* block SIG_IPI for the sleep */
->> +                    hvf_block_sig_ipi(cpu);
->> +                    cpu->thread_kicked = false;
->> +
->>                        /* Set cpu->hvf->sleeping so that we get a SIG_IPI
->> signal. */
->> -                    cpu->hvf->sleeping = true;
->> -                    smp_mb();
->> +                    qatomic_set(&cpu->hvf->sleeping, true);
-> This doesn't protect against races because another thread could call
-> kvf_vcpu_kick_thread() at any time between when we return from
-> hv_vcpu_run() and when we set sleeping = true and we would miss the
-> wakeup (due to kvf_vcpu_kick_thread() seeing sleeping = false and
-> calling hv_vcpus_exit() instead of pthread_kill()). I don't think it
-> can be fixed by setting sleeping to true earlier either because no
-> matter how early you move it, there will always be a window where we
-> are going to pselect() but sleeping is false, resulting in a missed
-> wakeup.
-
-
-I don't follow. If anyone was sending us an IPI, it's because they want 
-to notify us about an update to cpu->interrupt_request, right? In that 
-case, the atomic read of that field below will catch it and bail out of 
-the sleep sequence.
-
-
->
-> Peter
->
->> -                    /* Bail out if we received an IRQ meanwhile */
->> -                    if (cpu->thread_kicked || (cpu->interrupt_request &
->> -                        (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
->> -                        cpu->hvf->sleeping = false;
->> +                    /* Bail out if we received a kick meanwhile */
->> +                    if (qatomic_read(&cpu->interrupt_request) & irq_mask) {
->> + qatomic_set(&cpu->hvf->sleeping, false);
-
-
-^^^
-
+Thanks,
 
 Alex
 
 
->> +                        hvf_unblock_sig_ipi(cpu);
->>                            break;
->>                        }
->>
->> -                    /* nanosleep returns on signal, so we wake up on
->> kick. */
->> -                    nanosleep(ts, NULL);
->> +                    /* pselect returns on kick signal and consumes it */
->> +                    pselect(0, 0, 0, 0, &ts, &cpu->hvf->sigmask);
->>
->>                        /* Out of sleep - either naturally or because of a
->> kick */
->> -                    cpu->hvf->sleeping = false;
->> +                    qatomic_set(&cpu->hvf->sleeping, false);
->> +                    hvf_unblock_sig_ipi(cpu);
->>                    }
->>
->>                    advance_pc = true;
->>
+> ---
+>   target/arm/hvf/hvf.c | 8 --------
+>   1 file changed, 8 deletions(-)
+>
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 3321d48aa2..40984fcf4d 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -364,7 +364,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+>       do {
+>           bool advance_pc = false;
+>   
+> -        current_cpu = cpu;
+>           qemu_wait_io_event_common(cpu);
+>   
+>           flush_cpu_state(cpu);
+> @@ -391,7 +390,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+>               /* This is the main one, handle below. */
+>               break;
+>           case HV_EXIT_REASON_VTIMER_ACTIVATED:
+> -            current_cpu = cpu;
+>               qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
+>               continue;
+>           case HV_EXIT_REASON_CANCELED:
+> @@ -412,8 +410,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+>               uint32_t srt = (syndrome >> 16) & 0x1f;
+>               uint64_t val = 0;
+>   
+> -            current_cpu = cpu;
+> -
+>               DPRINTF("data abort: [pc=0x%llx va=0x%016llx pa=0x%016llx isv=%x "
+>                       "iswrite=%x s1ptw=%x len=%d srt=%d]\n",
+>                       env->pc, hvf_exit->exception.virtual_address,
+> @@ -523,7 +519,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+>               break;
+>           case EC_AA64_HVC:
+>               cpu_synchronize_state(cpu);
+> -            current_cpu = cpu;
+>               if (arm_is_psci_call(arm_cpu, EXCP_HVC)) {
+>                   arm_handle_psci_call(arm_cpu);
+>               } else {
+> @@ -533,7 +528,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+>               break;
+>           case EC_AA64_SMC:
+>               cpu_synchronize_state(cpu);
+> -            current_cpu = cpu;
+>               if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
+>                   arm_handle_psci_call(arm_cpu);
+>               } else {
+> @@ -561,7 +555,5 @@ int hvf_vcpu_exec(CPUState *cpu)
+>           }
+>       } while (ret == 0);
+>   
+> -    current_cpu = cpu;
+> -
+>       return ret;
+>   }

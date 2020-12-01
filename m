@@ -1,76 +1,109 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp312985lfb;
-        Tue, 1 Dec 2020 08:26:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyfZKQQomdcWEIVDuzs8XJlH7lCN5DWtT6NK5Zo5OCn0aSZBib0m+PNIZZ3t8SwPCLIRvQC
-X-Received: by 2002:a25:3252:: with SMTP id y79mr3996545yby.404.1606840012658;
-        Tue, 01 Dec 2020 08:26:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606840012; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp390600lfb;
+        Tue, 1 Dec 2020 09:57:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzrz6itVRImh46NR/3J09A9awv5YCzrBXtAcyVlv73rGWpJ9+B+A4tzHjBKRPjDcR7mSzMd
+X-Received: by 2002:a25:6945:: with SMTP id e66mr5935364ybc.319.1606845424602;
+        Tue, 01 Dec 2020 09:57:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606845424; cv=none;
         d=google.com; s=arc-20160816;
-        b=YxtQiPDqVgVU5gN7GLCsELn4SVmtFEt35f60gLPZ7GmZufy+8GddL2cAGExfRhDtUi
-         70Bf5MEe4bHcpIXmuARgQdVp2Bw022vykwxjA6nuBWK8oUeTlLi/hmf5SdKxL7Kcbq5u
-         dFcPDtCZN+OhagOVjgHBMVDYD9zPEV2SFZ50aRyNCQugTjyyiOsXZNGHoQqD8i2nCU2M
-         TXWnjwuQwq0HVajMGjs97O5MPTOWSf54Gnc1RxTPvuuLiFroPkJorpga9cAoLJcmfDgG
-         0maHoMmutmiv5BfApqWIu9vaXtJPpB9xknhewVOvDYk+ahA1ql0YYxCKp6uCdNdnzmMy
-         bsNQ==
+        b=b8AXD9UEuMHwJ3JRQfMljcvPR5HCYuwa+AA4U6sNPELbt3SrYOJoeTiYVjmHVZwdMK
+         XOuHz6MXR7lu7xveQagTSuCnBFZF3GY0A4PguPeIHnbK8ZZSXNCWgiwxCjlfnPMB8sBt
+         jtC75OWRgKg8dohCcjf/qIi+ewcLm5tWwPSA7K4LpNcl8OmOZu2PT8fAGsYuSYCBIDxD
+         54d/a5/kWIqKskhYrSNOTwbVgPa1KWGKIrq1Kj9NlW6fp2kndP6nXSGxXPd46O7InZtN
+         3V67knvHVKFasDZs3/eN/3X52VnBqvyavUIShAd7x2jnZ4lSFlxR59FUqnOz25bRF6H2
+         BlvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=XxsjJDPnezXBr7gtLOXO9FMzEVfclhqgyQUneRGkavA=;
-        b=cokwVq4ZKVbrZTWKgns+uLM/ccAcjb+QVka7F22U4VaZlFrhYVTrsR4IHgBLyw2ZGo
-         mAAwoLa4M5Z/+gEgQZurssJmojRq2B5RKRW2acPTvtEP4dbX+58t4MGBdujSmznEeIaz
-         wLLwMYAq//AVS9I9qlHQ69gpXH6xpoS9ZdMfFpHGNycv+qGuW8FPO4+UZDT4XqjANUBo
-         9u65L/xxS1aVBLlIisrSU/ie7piYOt4NMHxZer2+jJD3tRINuMoAyH7LpMZLj2197WgD
-         9/QtAAAGeNUjIZW4W0NFWxTnEfKp/CnxW0gVaDRp7LLrdcW8lG0xLSwbNrllCbKA2qmG
-         d4WQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=tmaW7BusmBwUBnqjl8/wvjBn3YrtTbN7RCbDd5MRSws=;
+        b=eap1c/GXbP//+XJR59YMqmHCYv+qpIf1D4O8Rll0Guz0KQB3ndq2HmxtY5Ms2+U7sl
+         02YUKfJKUTXC389ydHLaGcvXDftweOZR3+JTbC2xVA2bKKaJ1ms5FJB/EBLbGutp5jDZ
+         KAxc97WwQqN5VqUbLjxJpmyWZyb7pOkvWOvTmxOY6Xg/TRrEsT4LVg1nVve/gSROmkRY
+         uxm9i0pudVblWogK36Ww6tSIRorYfO8aVJsWnv3ld3ZynOuX7BS7CdVXBRdaZnO1nA5d
+         jubaIsBoHPghd/TPsmh1Pr5HYm0RHeABpvNHgHQcAyMlI/iV9aCXyqR/DKCX2U0B9INR
+         yqUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CVGOhT/Y";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u6si196974ybc.379.2020.12.01.08.26.52
+        by mx.google.com with ESMTPS id d68si346602ybh.418.2020.12.01.09.57.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Dec 2020 08:26:52 -0800 (PST)
+        Tue, 01 Dec 2020 09:57:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41456 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CVGOhT/Y";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kk8UN-0000Uq-W3
-	for alex.bennee@linaro.org; Tue, 01 Dec 2020 11:26:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50850)
+	id 1kk9tg-0003aG-03
+	for alex.bennee@linaro.org; Tue, 01 Dec 2020 12:57:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kk8U6-0000Ab-O5; Tue, 01 Dec 2020 11:26:34 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:33364
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kk8U4-0002JO-9D; Tue, 01 Dec 2020 11:26:34 -0500
-Received: from freeip.amazon.com
- (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
- by csgraf.de (Postfix) with UTF8SMTPSA id 2B92B3900279;
- Tue,  1 Dec 2020 17:26:29 +0100 (CET)
-Subject: Re: [PATCH] arm/hvf: Optimize and simplify WFI handling
-To: Peter Collingbourne <pcc@google.com>
-References: <20201201082142.649007-1-pcc@google.com>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <5b691ccb-43bb-5955-d47a-cae39c59522c@csgraf.de>
-Date: Tue, 1 Dec 2020 17:26:28 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
- Gecko/20100101 Thunderbird/84.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kk9dR-0001vB-Pv
+ for qemu-arm@nongnu.org; Tue, 01 Dec 2020 12:40:18 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26102)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kk9dM-0005Iw-MX
+ for qemu-arm@nongnu.org; Tue, 01 Dec 2020 12:40:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1606844411;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tmaW7BusmBwUBnqjl8/wvjBn3YrtTbN7RCbDd5MRSws=;
+ b=CVGOhT/Y3FFN9gTCfUCYpnYqmf5sl80xLy3hRPHU2tYNF8laSR7jHXPxDaACUk8nJsrqVq
+ 2P/5n/TJeWzwTh87xls+XPqhwBJvoiiIdBXfV15ILOaDJE1pU4VSTmEhhX+d2r0qtyxwrS
+ L9nPnISQPxaZypCqH5G0BZHosegCbDQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-76-M8xO522BNz2r66UN7WS7LA-1; Tue, 01 Dec 2020 12:40:07 -0500
+X-MC-Unique: M8xO522BNz2r66UN7WS7LA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A669818C89E5;
+ Tue,  1 Dec 2020 17:40:05 +0000 (UTC)
+Received: from [10.36.112.89] (ovpn-112-89.ams2.redhat.com [10.36.112.89])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5725D6086F;
+ Tue,  1 Dec 2020 17:40:04 +0000 (UTC)
+Subject: Re: [RFC v7 09/26] vfio: Force nested if iommu requires it
+To: Kunkun Jiang <jiangkunkun@huawei.com>
+References: <c3d0f094-cffe-16c8-69fc-de7bdefc3680@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <c7681a9d-3e14-a095-e03c-3857cfef02b5@redhat.com>
+Date: Tue, 1 Dec 2020 18:40:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20201201082142.649007-1-pcc@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <c3d0f094-cffe-16c8-69fc-de7bdefc3680@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.497,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,201 +116,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org, zhukeqian1@huawei.com,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8piHUFfaIoUI
+X-TUID: yKO7hSIKqSBy
 
+Hi Kunkun,
 
-On 01.12.20 09:21, Peter Collingbourne wrote:
-> Sleep on WFx until the VTIMER is due but allow ourselves to be woken
-> up on IPI.
->
-> Signed-off-by: Peter Collingbourne <pcc@google.com>
-> ---
-> Alexander Graf wrote:
->> I would love to take a patch from you here :). I'll still be stuck for a
->> while with the sysreg sync rework that Peter asked for before I can look
->> at WFI again.
-> Okay, here's a patch :) It's a relatively straightforward adaptation
-> of what we have in our fork, which can now boot Android to GUI while
-> remaining at around 4% CPU when idle.
->
-> I'm not set up to boot a full Linux distribution at the moment so I
-> tested it on upstream QEMU by running a recent mainline Linux kernel
-> with a rootfs containing an init program that just does sleep(5)
-> and verified that the qemu process remains at low CPU usage during
-> the sleep. This was on top of your v2 plus the last patch of your v1
-> since it doesn't look like you have a replacement for that logic yet.
+On 11/28/20 10:01 AM, Kunkun Jiang wrote:
+> Hi Eric,
+>> @@ -1668,6 +1679,14 @@ static int vfio_connect_container(VFIOGroup *group, 
+>> AddressSpace *as,
+>>      VFIOContainer *container;
+>>      int ret, fd;
+>>      VFIOAddressSpace *space;
+>> +    IOMMUMemoryRegion *iommu_mr;
+>> +    bool nested = false;
+>> +
+>> +    if (as != &address_space_memory && memory_region_is_iommu(as->root)) {
+>> +        iommu_mr = IOMMU_MEMORY_REGION(as->root);
+>> +        memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
+>> +                                     (void *)&nested);
+>> +    }
+>>  
+>>      space = vfio_get_address_space(as);
+> Is the condition "as != &address_space_memory" needed to determine whether
+> a vIOMMU is in place? I think "memory_region_is_iommu(as->root)" is enough.
+> 
+> Looking forward to your reply.:)
 
+Yes I think so.
 
-How about something like this instead?
+Thank you for your report!
 
-
-Alex
-
-
-diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
-index 4360f64671..50384013ea 100644
---- a/accel/hvf/hvf-cpus.c
-+++ b/accel/hvf/hvf-cpus.c
-@@ -337,16 +337,18 @@ static int hvf_init_vcpu(CPUState *cpu)
-      cpu->hvf = g_malloc0(sizeof(*cpu->hvf));
-
-      /* init cpu signals */
--    sigset_t set;
-      struct sigaction sigact;
-
-      memset(&sigact, 0, sizeof(sigact));
-      sigact.sa_handler = dummy_signal;
-      sigaction(SIG_IPI, &sigact, NULL);
-
--    pthread_sigmask(SIG_BLOCK, NULL, &set);
--    sigdelset(&set, SIG_IPI);
--    pthread_sigmask(SIG_SETMASK, &set, NULL);
-+    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->sigmask);
-+    sigdelset(&cpu->hvf->sigmask, SIG_IPI);
-+    pthread_sigmask(SIG_SETMASK, &cpu->hvf->sigmask, NULL);
-+
-+    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->sigmask_ipi);
-+    sigaddset(&cpu->hvf->sigmask_ipi, SIG_IPI);
-
-  #ifdef __aarch64__
-      r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t 
-**)&cpu->hvf->exit, NULL);
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index c56baa3ae8..6e237f2db0 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -62,8 +62,9 @@ extern HVFState *hvf_state;
-  struct hvf_vcpu_state {
-      uint64_t fd;
-      void *exit;
--    struct timespec ts;
-      bool sleeping;
-+    sigset_t sigmask;
-+    sigset_t sigmask_ipi;
-  };
-
-  void assert_hvf_ok(hv_return_t ret);
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 0c01a03725..350b845e6e 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -320,20 +320,24 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-
-  void hvf_kick_vcpu_thread(CPUState *cpu)
-  {
--    if (cpu->hvf->sleeping) {
--        /*
--         * When sleeping, make sure we always send signals. Also, clear the
--         * timespec, so that an IPI that arrives between setting 
-hvf->sleeping
--         * and the nanosleep syscall still aborts the sleep.
--         */
--        cpu->thread_kicked = false;
--        cpu->hvf->ts = (struct timespec){ };
-+    if (qatomic_read(&cpu->hvf->sleeping)) {
-+        /* When sleeping, send a signal to get out of pselect */
-          cpus_kick_thread(cpu);
-      } else {
-          hv_vcpus_exit(&cpu->hvf->fd, 1);
-      }
-  }
-
-+static void hvf_block_sig_ipi(CPUState *cpu)
-+{
-+    pthread_sigmask(SIG_SETMASK, &cpu->hvf->sigmask_ipi, NULL);
-+}
-+
-+static void hvf_unblock_sig_ipi(CPUState *cpu)
-+{
-+    pthread_sigmask(SIG_SETMASK, &cpu->hvf->sigmask, NULL);
-+}
-+
-  static int hvf_inject_interrupts(CPUState *cpu)
-  {
-      if (cpu->interrupt_request & CPU_INTERRUPT_FIQ) {
-@@ -354,6 +358,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-      ARMCPU *arm_cpu = ARM_CPU(cpu);
-      CPUARMState *env = &arm_cpu->env;
-      hv_vcpu_exit_t *hvf_exit = cpu->hvf->exit;
-+    const uint32_t irq_mask = CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ;
-      hv_return_t r;
-      int ret = 0;
-
-@@ -491,8 +496,8 @@ int hvf_vcpu_exec(CPUState *cpu)
-              break;
-          }
-          case EC_WFX_TRAP:
--            if (!(syndrome & WFX_IS_WFE) && !(cpu->interrupt_request &
--                (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
-+            if (!(syndrome & WFX_IS_WFE) &&
-+                !(cpu->interrupt_request & irq_mask)) {
-                  uint64_t cval, ctl, val, diff, now;
-
-                  /* Set up a local timer for vtimer if necessary ... */
-@@ -515,9 +520,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-
-                  if (diff < INT64_MAX) {
-                      uint64_t ns = diff * gt_cntfrq_period_ns(arm_cpu);
--                    struct timespec *ts = &cpu->hvf->ts;
--
--                    *ts = (struct timespec){
-+                    struct timespec ts = {
-                          .tv_sec = ns / NANOSECONDS_PER_SECOND,
-                          .tv_nsec = ns % NANOSECONDS_PER_SECOND,
-                      };
-@@ -526,27 +529,31 @@ int hvf_vcpu_exec(CPUState *cpu)
-                       * Waking up easily takes 1ms, don't go to sleep 
-for smaller
-                       * time periods than 2ms.
-                       */
--                    if (!ts->tv_sec && (ts->tv_nsec < (SCALE_MS * 2))) {
-+                    if (!ts.tv_sec && (ts.tv_nsec < (SCALE_MS * 2))) {
-                          advance_pc = true;
-                          break;
-                      }
-
-+                    /* block SIG_IPI for the sleep */
-+                    hvf_block_sig_ipi(cpu);
-+                    cpu->thread_kicked = false;
-+
-                      /* Set cpu->hvf->sleeping so that we get a SIG_IPI 
-signal. */
--                    cpu->hvf->sleeping = true;
--                    smp_mb();
-+                    qatomic_set(&cpu->hvf->sleeping, true);
-
--                    /* Bail out if we received an IRQ meanwhile */
--                    if (cpu->thread_kicked || (cpu->interrupt_request &
--                        (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
--                        cpu->hvf->sleeping = false;
-+                    /* Bail out if we received a kick meanwhile */
-+                    if (qatomic_read(&cpu->interrupt_request) & irq_mask) {
-+ qatomic_set(&cpu->hvf->sleeping, false);
-+                        hvf_unblock_sig_ipi(cpu);
-                          break;
-                      }
-
--                    /* nanosleep returns on signal, so we wake up on 
-kick. */
--                    nanosleep(ts, NULL);
-+                    /* pselect returns on kick signal and consumes it */
-+                    pselect(0, 0, 0, 0, &ts, &cpu->hvf->sigmask);
-
-                      /* Out of sleep - either naturally or because of a 
-kick */
--                    cpu->hvf->sleeping = false;
-+                    qatomic_set(&cpu->hvf->sleeping, false);
-+                    hvf_unblock_sig_ipi(cpu);
-                  }
-
-                  advance_pc = true;
+Eric
+> 
+> Thanks,
+> 
+> Kunkun Jiang
+> 
 

@@ -1,84 +1,86 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5692448lfb;
-        Mon, 30 Nov 2020 16:00:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyWis5boVhNuaYoQnokqCJrjG1y5OGdBr1uGM9/o1ygVhMfEYNZZfqtBM95ZNjO6yI7PYfJ
-X-Received: by 2002:a25:492:: with SMTP id 140mr42972831ybe.198.1606780836611;
-        Mon, 30 Nov 2020 16:00:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606780836; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5721113lfb;
+        Mon, 30 Nov 2020 16:37:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx68558tqb+tRwaszWaOleCQcWhjE891cuffBua7/7XBkVv840D4zGM9/SBlhfhX2kirPgU
+X-Received: by 2002:a25:1c1:: with SMTP id 184mr101434ybb.161.1606783052063;
+        Mon, 30 Nov 2020 16:37:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606783052; cv=none;
         d=google.com; s=arc-20160816;
-        b=x88TUIICs2q60T/TzyeozDLzZlDJW5LG9Li3Lq2liggqjKJXoNTBQDKn7ISomdrng3
-         3+0BOGYijcbA33oPQQf3K8ro1YheaA+VcgYNslxZ4cM+qVpZOTGmI9u1bWreIu8AQdpi
-         xgT/pFHC3vi+Dya5K8Cc2rtggjZztjFaIX2DGkychaUiB4kKMZlb6YxUJD8o3RQdKC1I
-         WI4xTUY5U4PD2dCCQFwB522Uy9oVFAVtogw+hiUv89ha2FWbqlzZ8CFgzMaN4WTBCi4u
-         Dbin36BSoUMJtVu+KxMqanIZpHgQBatdECYhkf8bwrqvAr5Ep2ZKFzqHGytdfRYKsMlF
-         AOUA==
+        b=mUxgH9hhSS+ra7H5smMdDYClbzlQOTH6rpDE+plFsIJglGACpx/+/3XAEkt3/Ma264
+         3hj+dGfBv4kmUn31yVjWJCTanVLJ1+1i3gUlVM0HDE3cvYr9vHUaPyUJe6GqHyQchAxC
+         oesnGajK6nhcdoy1Zqxlw0GeBNLU9NGgRgh6/X8b9I5C6W45RCvlm3oDA++RCIu7KHcs
+         L078Xe4H6GkCgQNOdZ7oAfL4AJcKvYSrqirQcx4VQJoSR4IRRoI2D6f9WNTJniStwkLe
+         cK/18rCydg2lja1yv0yfI0CQRuYDDDmyb4sIq1gGxfNO0lxB8GdIJaBAlo2INq4kiutn
+         1YuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=gFCRm/4h3HXLjKG7xJ3jnJ5g6/OXy3X4V05S2rNPgs0=;
-        b=pgSjvMl1UplNkBIxtjhfZu395PwfasugkNlBm8zB8LRaGxSrma/ol9LvXSenNiQ7JF
-         ss3D0CqCIrhvSt+CbA8Ke+NFirF/AZI8AGIwryvsCkE2+eY5wEgI5dQjLzJnjlMrz54h
-         UVgSUT1mjx1/1orG4fm4xO0ojxGL+mLWkHolpvaWAoWQ2TUPzFItj5rkL2vBcSPlsZ32
-         ge/h6FMClilyQjaD41R+bpIawqQsUnjrjpjNvLcqDBtAu5o9k/qTl77yQMmPBRN4NDrI
-         ShnIZrZNF8pK6x6DL8I3sKNXQQ/AgKPcRYG8VBQPOYUJENHr/W1zbt4T/X94qyRer/q1
-         RCUg==
+        bh=8DFRf8nEN0LI/eqLCtAumwvqhPZuiRB58wxEVJJeEnU=;
+        b=u9ZYq6fCTdnvGABubXBuIQRiruiCzaJD1asSAzU1lkzFOByHdErBgXoApRkadfSW1s
+         uGkCjU1Cw6xfRl/zCB6uVaXAKwaGHdI8VReKexPwdbmSAwvJ8slKx3hixyPufg2UmD/F
+         Yt6sOf1lE3Ce50W4sOogprkpiS+r0KKbs0eSUSqGrWyujl5znC/TD8gdkUMeWk3REopw
+         HkvFyntGFoSfQQu12o1aG3R5WC5LcreV8EMq2nJ7ju9SkRObZ1CKrll5js2IMovUtx6i
+         gE53wVvhxWIAZdYad3eDKiol6ImdWeLxEXaKH5V6fDZ8afuP/S6UBJABE4Ap2OR+3Gpw
+         Zt/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=q0o8t1gx;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=CiTT7KDk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17si25203ybm.232.2020.11.30.16.00.36
+        by mx.google.com with ESMTPS id n72si109175ybf.122.2020.11.30.16.37.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Nov 2020 16:00:36 -0800 (PST)
+        Mon, 30 Nov 2020 16:37:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=q0o8t1gx;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=CiTT7KDk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:52804 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:35796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kjt5v-0000ZI-Vg
-	for alex.bennee@linaro.org; Mon, 30 Nov 2020 19:00:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58164)
+	id 1kjtff-0000k4-CC
+	for alex.bennee@linaro.org; Mon, 30 Nov 2020 19:37:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kjt5m-0000Z7-Ir
- for qemu-arm@nongnu.org; Mon, 30 Nov 2020 19:00:26 -0500
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f]:36798)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kjt5k-0001kd-9d
- for qemu-arm@nongnu.org; Mon, 30 Nov 2020 19:00:26 -0500
-Received: by mail-il1-x12f.google.com with SMTP id z10so4689604ilu.3
- for <qemu-arm@nongnu.org>; Mon, 30 Nov 2020 16:00:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=gFCRm/4h3HXLjKG7xJ3jnJ5g6/OXy3X4V05S2rNPgs0=;
- b=q0o8t1gxOitYZVWYxd+xolWwsh0T9PjOAOjTXUcFFwjT256HXASunbfCMZDP2r7BfZ
- tIu2b9sffxDPhYUHCR04jy9DBR8ebIjIYFDJAflb0A61vm3xQ+FBvXWJldnLXqv3pc/S
- +OgY7OP3kdvEKvBEneKei5CNlBLfe8SSCO1Hd0YuVrC2xKVfPefiFTYD1/wwNGi/tnMQ
- Tpp5qSnW7XBX445pT9G+yhWRVYZ4xf7+fD7y6DUOV70KpQNIfP7Zb/QPPS06ylpjT/fW
- /1tf3EtRrwwMP1erMfjyu8diHmCJOIltQ+0h0lU1fzUcSEWcatbwAqH0jUb06R73xshM
- UH5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=gFCRm/4h3HXLjKG7xJ3jnJ5g6/OXy3X4V05S2rNPgs0=;
- b=U7AiPFsaiffORTN1YOgjzHNTAmV3crPXnB4TGmP+PvWGt8rEBdQFYpE4iSmtONPYo4
- fQyZyR1Yu6QjU4y3hDSVcjGnmVdNUvkAD9w/KOi6Wz9S1ubMsvu1Al+7wPx6zUNXjkHr
- hsZKKFLKokFzI8QIYQmcUBuile4+rvehsWoZTdw9bViht8VLM5TErkmUB9hp5ilb7tlW
- aH6L225Zyrw3yMb3dt5JhS05gL17Swb01KycPwq3sAR87IqE2b4Old3vs5RsmtdWNvEW
- j0w87UOfIDqpPc8YPmQ2jlc4ev95jF1I3Fh2kOl/WH2A5122o8xVcFNctYgCVGm0oJML
- m6oA==
-X-Gm-Message-State: AOAM532/JUy8r3fQ1fxt37+nGsF8Z6aVqUy7WWsScsZMJHpFxiqi7Cgd
- Mbch696/OIWKLjSKNgUugwIaoC5FRz4G9ZA3vbE7XQ==
-X-Received: by 2002:a92:351c:: with SMTP id c28mr170195ila.61.1606780822795;
- Mon, 30 Nov 2020 16:00:22 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kjtfW-0000jR-EM; Mon, 30 Nov 2020 19:37:22 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:57714 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kjtfU-0006ey-0a; Mon, 30 Nov 2020 19:37:22 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id 1F31341316;
+ Tue,  1 Dec 2020 00:37:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1606783034;
+ x=1608597435; bh=VFGYtVe1lf96y0U6bwdQzUtg9QK6pCpJDKyRYLekr4c=; b=
+ CiTT7KDkT1E2mG57UN9CaH7p9747yjkCPxPdnbm9aiYUE/Ka3Sr2hVxAPPoCZVsu
+ BVOAeLxBhtQMrmrlNBD2igGwPy8U2Oe6i1BNACd5xjDAwsEWx9L3HIujt0O+NA9b
+ 3VCslx2k8NKSVYtSUpftMpFr6rRnLHKG3ocX1sbjwqk=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id D58egHqAmbaq; Tue,  1 Dec 2020 03:37:14 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id B73464130C;
+ Tue,  1 Dec 2020 03:37:13 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Tue, 1 Dec
+ 2020 03:37:13 +0300
+Date: Tue, 1 Dec 2020 03:37:27 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Alexander Graf <agraf@csgraf.de>
+Subject: Re: [PATCH 2/8] hvf: Move common code out
+Message-ID: <20201201003727.GA29488@SPB-NB-133.local>
 References: <20201126215017.41156-1-agraf@csgraf.de>
  <20201126215017.41156-3-agraf@csgraf.de>
  <20201127200054.GC56950@SPB-NB-133.local>
@@ -89,32 +91,21 @@ References: <20201126215017.41156-1-agraf@csgraf.de>
  <CAEkmjvVOAYP6wJyVpAtZE3d=iNOOWGZeHptQ9xJDGcTi4qQ0hQ@mail.gmail.com>
  <CAMn1gO7jqjsqJHtSaV7F+2qmtfF-YFDJwo=O8ot2iem+Uz4Zrw@mail.gmail.com>
  <6975b4a3-1568-df40-8594-bfcf488ac425@csgraf.de>
- <CAMn1gO5xs8RniRYm+Gnbh8S3GVah2+2Ew2V6tFL6PNuSJ7o5Hw@mail.gmail.com>
- <4e1d93a4-9dcc-c6b6-e060-6eea39ae2f16@csgraf.de>
-In-Reply-To: <4e1d93a4-9dcc-c6b6-e060-6eea39ae2f16@csgraf.de>
-From: Peter Collingbourne <pcc@google.com>
-Date: Mon, 30 Nov 2020 16:00:11 -0800
-Message-ID: <CAMn1gO44Y4rahufveQ1dOq96nhqvGEmZ0pYci2f6BKv9kd638Q@mail.gmail.com>
-Subject: Re: [PATCH 2/8] hvf: Move common code out
-To: Alexander Graf <agraf@csgraf.de>
-Cc: Frank Yang <lfy@google.com>, Roman Bolshakov <r.bolshakov@yadro.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, 
- Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12f;
- envelope-from=pcc@google.com; helo=mail-il1-x12f.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <6975b4a3-1568-df40-8594-bfcf488ac425@csgraf.de>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -127,163 +118,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FnGpt62P/RLi
+X-TUID: q03aRGGE8ndl
 
-On Mon, Nov 30, 2020 at 3:18 PM Alexander Graf <agraf@csgraf.de> wrote:
->
->
-> On 01.12.20 00:01, Peter Collingbourne wrote:
-> > On Mon, Nov 30, 2020 at 1:40 PM Alexander Graf <agraf@csgraf.de> wrote:
-> >> Hi Peter,
-> >>
-> >> On 30.11.20 22:08, Peter Collingbourne wrote:
-> >>> On Mon, Nov 30, 2020 at 12:56 PM Frank Yang <lfy@google.com> wrote:
-> >>>>
-> >>>> On Mon, Nov 30, 2020 at 12:34 PM Alexander Graf <agraf@csgraf.de> wr=
-ote:
-> >>>>> Hi Frank,
-> >>>>>
-> >>>>> Thanks for the update :). Your previous email nudged me into the ri=
-ght direction. I previously had implemented WFI through the internal timer =
-framework which performed way worse.
-> >>>> Cool, glad it's helping. Also, Peter found out that the main thing k=
-eeping us from just using cntpct_el0 on the host directly and compare with =
-cval is that if we sleep, cval is going to be much < cntpct_el0 by the slee=
-p time. If we can get either the architecture or macos to read out the slee=
-p time then we might be able to not have to use a poll interval either!
-> >>>>> Along the way, I stumbled over a few issues though. For starters, t=
-he signal mask for SIG_IPI was not set correctly, so while pselect() would =
-exit, the signal would never get delivered to the thread! For a fix, check =
-out
-> >>>>>
-> >>>>>     https://patchew.org/QEMU/20201130030723.78326-1-agraf@csgraf.de=
-/20201130030723.78326-4-agraf@csgraf.de/
-> >>>>>
-> >>>> Thanks, we'll take a look :)
-> >>>>
-> >>>>> Please also have a look at my latest stab at WFI emulation. It does=
-n't handle WFE (that's only relevant in overcommitted scenarios). But it do=
-es handle WFI and even does something similar to hlt polling, albeit not wi=
-th an adaptive threshold.
-> >>> Sorry I'm not subscribed to qemu-devel (I'll subscribe in a bit) so
-> >>> I'll reply to your patch here. You have:
-> >>>
-> >>> +                    /* Set cpu->hvf->sleeping so that we get a
-> >>> SIG_IPI signal. */
-> >>> +                    cpu->hvf->sleeping =3D true;
-> >>> +                    smp_mb();
-> >>> +
-> >>> +                    /* Bail out if we received an IRQ meanwhile */
-> >>> +                    if (cpu->thread_kicked || (cpu->interrupt_reques=
-t &
-> >>> +                        (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
-> >>> +                        cpu->hvf->sleeping =3D false;
-> >>> +                        break;
-> >>> +                    }
-> >>> +
-> >>> +                    /* nanosleep returns on signal, so we wake up on=
- kick. */
-> >>> +                    nanosleep(ts, NULL);
-> >>>
-> >>> and then send the signal conditional on whether sleeping is true, but
-> >>> I think this is racy. If the signal is sent after sleeping is set to
-> >>> true but before entering nanosleep then I think it will be ignored an=
-d
-> >>> we will miss the wakeup. That's why in my implementation I block IPI
-> >>> on the CPU thread at startup and then use pselect to atomically
-> >>> unblock and begin sleeping. The signal is sent unconditionally so
-> >>> there's no need to worry about races between actually sleeping and th=
-e
-> >>> "we think we're sleeping" state. It may lead to an extra wakeup but
-> >>> that's better than missing it entirely.
-> >>
-> >> Thanks a bunch for the comment! So the trick I was using here is to
-> >> modify the timespec from the kick function before sending the IPI
-> >> signal. That way, we know that either we are inside the sleep (where t=
-he
-> >> signal wakes it up) or we are outside the sleep (where timespec=3D{} w=
-ill
-> >> make it return immediately).
-> >>
-> >> The only race I can think of is if nanosleep does calculations based o=
-n
-> >> the timespec and we happen to send the signal right there and then.
-> > Yes that's the race I was thinking of. Admittedly it's a small window
-> > but it's theoretically possible and part of the reason why pselect was
-> > created.
-> >
-> >> The problem with blocking IPIs is basically what Frank was describing
-> >> earlier: How do you unset the IPI signal pending status? If the signal
-> >> is never delivered, how can pselect differentiate "signal from last ti=
-me
-> >> is still pending" from "new signal because I got an IPI"?
-> > In this case we would take the additional wakeup which should be
-> > harmless since we will take the WFx exit again and put us in the
-> > correct state. But that's a lot better than busy looping.
->
->
-> I'm not sure I follow. I'm thinking of the following scenario:
->
->    - trap into WFI handler
->    - go to sleep with blocked SIG_IPI
->    - SIG_IPI arrives, pselect() exits
->    - signal is still pending because it's blocked
->    - enter guest
->    - trap into WFI handler
->    - run pselect(), but it immediate exits because SIG_IPI is still pendi=
-ng
->
-> This was the loop I was seeing when running with SIG_IPI blocked. That's
-> part of the reason why I switched to a different model.
+On Mon, Nov 30, 2020 at 10:40:49PM +0100, Alexander Graf wrote:
+> Hi Peter,
+> 
+> On 30.11.20 22:08, Peter Collingbourne wrote:
+> > On Mon, Nov 30, 2020 at 12:56 PM Frank Yang <lfy@google.com> wrote:
+> > > 
+> > > 
+> > > On Mon, Nov 30, 2020 at 12:34 PM Alexander Graf <agraf@csgraf.de> wrote:
+> > > > Hi Frank,
+> > > > 
+> > > > Thanks for the update :). Your previous email nudged me into the right direction. I previously had implemented WFI through the internal timer framework which performed way worse.
+> > > Cool, glad it's helping. Also, Peter found out that the main thing keeping us from just using cntpct_el0 on the host directly and compare with cval is that if we sleep, cval is going to be much < cntpct_el0 by the sleep time. If we can get either the architecture or macos to read out the sleep time then we might be able to not have to use a poll interval either!
+> > > > Along the way, I stumbled over a few issues though. For starters, the signal mask for SIG_IPI was not set correctly, so while pselect() would exit, the signal would never get delivered to the thread! For a fix, check out
+> > > > 
+> > > >    https://patchew.org/QEMU/20201130030723.78326-1-agraf@csgraf.de/20201130030723.78326-4-agraf@csgraf.de/
+> > > > 
+> > > Thanks, we'll take a look :)
+> > > 
+> > > > Please also have a look at my latest stab at WFI emulation. It doesn't handle WFE (that's only relevant in overcommitted scenarios). But it does handle WFI and even does something similar to hlt polling, albeit not with an adaptive threshold.
+> > Sorry I'm not subscribed to qemu-devel (I'll subscribe in a bit) so
+> > I'll reply to your patch here. You have:
+> > 
+> > +                    /* Set cpu->hvf->sleeping so that we get a
+> > SIG_IPI signal. */
+> > +                    cpu->hvf->sleeping = true;
+> > +                    smp_mb();
+> > +
+> > +                    /* Bail out if we received an IRQ meanwhile */
+> > +                    if (cpu->thread_kicked || (cpu->interrupt_request &
+> > +                        (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
+> > +                        cpu->hvf->sleeping = false;
+> > +                        break;
+> > +                    }
+> > +
+> > +                    /* nanosleep returns on signal, so we wake up on kick. */
+> > +                    nanosleep(ts, NULL);
+> > 
+> > and then send the signal conditional on whether sleeping is true, but
+> > I think this is racy. If the signal is sent after sleeping is set to
+> > true but before entering nanosleep then I think it will be ignored and
+> > we will miss the wakeup. That's why in my implementation I block IPI
+> > on the CPU thread at startup and then use pselect to atomically
+> > unblock and begin sleeping. The signal is sent unconditionally so
+> > there's no need to worry about races between actually sleeping and the
+> > "we think we're sleeping" state. It may lead to an extra wakeup but
+> > that's better than missing it entirely.
+> 
+> 
+> Thanks a bunch for the comment! So the trick I was using here is to modify
+> the timespec from the kick function before sending the IPI signal. That way,
+> we know that either we are inside the sleep (where the signal wakes it up)
+> or we are outside the sleep (where timespec={} will make it return
+> immediately).
+> 
+> The only race I can think of is if nanosleep does calculations based on the
+> timespec and we happen to send the signal right there and then.
+> 
+> The problem with blocking IPIs is basically what Frank was describing
+> earlier: How do you unset the IPI signal pending status? If the signal is
+> never delivered, how can pselect differentiate "signal from last time is
+> still pending" from "new signal because I got an IPI"?
+> 
+> 
 
-What I observe is that when returning from a pending signal pselect
-consumes the signal (which is also consistent with my understanding of
-what pselect does). That means that it doesn't matter if we take a
-second WFx exit because once we reach the pselect in the second WFx
-exit the signal will have been consumed by the pselect in the first
-exit and we will just wait for the next one.
+Hi Alex,
 
-I don't know why things may have been going wrong in your
-implementation but it may be related to the issue with
-mach_absolute_time() which I posted about separately and was also
-causing busy loops for us in some cases. Once that issue was fixed in
-our implementation we started seeing sleep until VTIMER due work
-properly.
+There was a patch for x86 HVF that implements CPU kick and it wasn't
+merged (mostly because of my lazyness). It has some changes like you
+introduced in the series and VMX-specific handling of preemption timer
+to gurantee interrupt delivery without kick loss:
 
->
->
-> > I reckon that you could improve things a little by unblocking the
-> > signal and then reblocking it before unlocking iothread (e.g. with a
-> > pselect with zero time interval), which would flush any pending
-> > signals. Since any such signal would correspond to a signal from last
-> > time (because we still have the iothread lock) we know that any future
-> > signals should correspond to new IPIs.
->
->
-> Yeah, I think you actually *have* to do exactly that, because otherwise
-> pselect() will always return after 0ns because the signal is still pendin=
-g.
->
-> And yes, I agree that that starts to sound a bit less racy now. But it
-> means we can probably also just do
->
->    - WFI handler
->    - block SIG_IPI
->    - set hvf->sleeping =3D true
->    - check for pending interrupts
->    - pselect()
->    - unblock SIG_IPI
->
-> which means we run with SIG_IPI unmasked by default. I don't think the
-> number of signal mask changes is any different with that compared to
-> running with SIG_IPI always masked, right?
+https://patchwork.kernel.org/project/qemu-devel/patch/20200729124832.79375-1-r.bolshakov@yadro.com/
 
-And unlock/lock iothread around the pselect? I suppose that could work
-but as I mentioned it would just be an optimization.
+I wonder if it'd possible to have common handling of kicks for both x86
+and arm (given that arch-specific bits are wrapped)?
 
-Maybe I can try to make my approach work on top of your series, or if
-you already have a patch I can try to debug it. Let me know.
-
-Peter
+Thanks,
+Roman

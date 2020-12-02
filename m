@@ -1,351 +1,363 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2300857lfc;
-        Thu, 11 Feb 2021 06:16:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxd7CQ/xHP7CMB3IxNzzUeis3nTq06uv9XF1eXJXOQlhHJUb0VYiYTRylDQSC6WdpDlX7CA
-X-Received: by 2002:a25:f81d:: with SMTP id u29mr9562649ybd.335.1613053005781;
-        Thu, 11 Feb 2021 06:16:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613053005; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1556506lfb;
+        Wed, 2 Dec 2020 14:20:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwkjLwgT6JigYnNJz7MCvXJp1XoZPBoDbLpqg+4ZWa5PNy1wpXgl596VJvOWXXBGW8g9NUp
+X-Received: by 2002:a25:5f4c:: with SMTP id h12mr506050ybm.166.1606947606832;
+        Wed, 02 Dec 2020 14:20:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606947606; cv=none;
         d=google.com; s=arc-20160816;
-        b=bD1R3MdH54HayZn4fj3GWbZWgcW7tsmiFUNOjjolYnJx2qzxhCAb1ZaAKaLY2p47Z6
-         nSMod86Mr1Wlj1qUSp1EOUJIwY2SAZ22V4hf7wub18fae9KFCn/S1hZjA6W8Q8di7H3g
-         JS2dxvUeVPLm2xMURWWrfBiMzoABoucmSdpqfIbW2u2Yw3gn1Z3Yr4Hl+urvLIdo1AUP
-         oA0kVKlU7fYOFV/czIwRvuvpjUCU48qDqqopXaXPRN4vGlDlcJm/RQC64VlDWctH3FXo
-         Flo2HOu6MRJofV2Y934CBt1GOZVW5/JvnbSyIH0NXUoKo3P2BZ8yEih9TapnfSUkZqJV
-         HgNA==
+        b=h4kmO7FRtXT6QrRnvwTeTjn79rG0xlib5zthWc4ZnwRi11UoH1+d2nNMBTdrySnpLh
+         cILUDaoH0PBLOgeHM5HRBaMEiNoan18OBdEdW3yNcZgA1G1aFe1S4j/6fXjtsHboNmRv
+         u/SWBRxL80nlr8msxdx8U/9sqOuSi5rcRW9at07xvx0InhiUaK1Yt0mze2grOT0NL1tX
+         ifT9OvDWLGCk4Off6A29r1sqnMT1n2p2Kx02JLqJh7eWTExXCP1zqq6ZLJ5CcfoQRDFC
+         7BnzgFdN0r0j/awbR57eR6oxuAw3QDYuCkChSX5Ie/f5mNiRKuO7a/fR7GwVe/0LGCQq
+         8yng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=7eOlTk2qrx8/UrDgQ0CzyBOLoXb5mii0mWS5SmQs9Vk=;
-        b=Dwc5hkJTf3VZjU6eAc187vH65ETq4vbb+tViDU7jwFa/BTyMSmwdZgLdHbyZx+gBqh
-         QgLdPIxKzhiicpSmPvhGGI9NyQr1XGeKK7AI7Mpg51cUC93WBBiUd9KoAGfcI8ppB0wf
-         u93bjbJm4UYgB8SViA1JZzUWwQHrHS3q4C08MYah8pHZW3SZO0A2g4pTh3gVppev6afq
-         AA3GCE7sBr+wGoQ4uDzKRB/j65vAEwEbxrD/L4M84X0saU9DITBsGpOrSTuUd8KW9Vw7
-         DYAfV6Ph3BDUnrrRYsqdT4fI7v/YERyT68rrRAiZP5MOl80jpvqXO0ZjoA+hWrssp2C5
-         QHYQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:mime-version:dkim-signature;
+        bh=Z2oMFh0UtFsC+WX1cHN7TFNpNKzs/ZPOQBocx/DRAls=;
+        b=LK0HACZ+oXiIXcRvF4Bh4qOkzDDQuGiusrpPIVL1HifnZxKuEzuWHOPE+F8qKjCrJf
+         AYNcXhF8Je84ggbSMvGNHKwMJaYB3qUzZqS0kyaFG7gxNRtricIfENrSdjFNqSjj80yc
+         jHiZ5zWYM3czxl13Apo88EqMs9ArVAZkXFtI1U+7xFTeXEaogFrVjaWxPvSEHqwHxvDo
+         mSDlpe4bq26qSCwe6lqysqV+TO1SW86+Qe55bpaNI7Tg/FVbzpluXQG7wiiCSvUHxRbH
+         tgEsjy6Y6xU8jtZtIpHf7LiUHI3GTJtzNC+MZ0uCvONXQwWDfXipjEvvUWSjuJkewzGN
+         Cazw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wMYPzBbE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Dr9FwZSS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si5194169ybi.440.2021.02.11.06.16.45
+        by mx.google.com with ESMTPS id x15si2974170ybs.347.2020.12.02.14.20.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 06:16:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Dec 2020 14:20:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wMYPzBbE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44026 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Dr9FwZSS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:58512 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAClx-0006Zw-1w
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 09:16:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55610)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kkaTm-0007PO-7c
+	for alex.bennee@linaro.org; Wed, 02 Dec 2020 17:20:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lACl0-0006Xt-AC
- for qemu-devel@nongnu.org; Thu, 11 Feb 2021 09:15:48 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:40487)
+ (Exim 4.90_1) (envelope-from <lfy@google.com>) id 1kkaTV-0007OL-KF
+ for qemu-arm@nongnu.org; Wed, 02 Dec 2020 17:19:49 -0500
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:44011)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lACkb-00074J-C8
- for qemu-devel@nongnu.org; Thu, 11 Feb 2021 09:15:40 -0500
-Received: by mail-wm1-x335.google.com with SMTP id o24so5889230wmh.5
- for <qemu-devel@nongnu.org>; Thu, 11 Feb 2021 06:15:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=7eOlTk2qrx8/UrDgQ0CzyBOLoXb5mii0mWS5SmQs9Vk=;
- b=wMYPzBbEp0b3jaAQyRoAgbHq61Tg5zHYmLZrCBICQnyGHmM9X+huDXNHU9s/IpDoLd
- 9eO8p3ud7PZFDbVnVpao4/tVOrmD6+oghWBej3NE+ojIN6vgtOKRRUrZmwf8ZRozdNTn
- aru7IPHwgNBneb5jLdgkf1YK1IOJ+4c90zDMlXR4w+esnokUuobEDwKdRIGSEX8osV3k
- TgvNWX0JrB52InpHb1Ip34vC+T0uWRmosEddl8FbZaC4G6101R11WMl0tWSyq1lNlyOl
- CiOUodBtfKre4nlKpc/tcOpXeq6vvFdiJBO8NKl8eMwwMpQbawScq828R0tdxX9Gp8Ei
- JC0w==
+ (Exim 4.90_1) (envelope-from <lfy@google.com>) id 1kkaTT-00059A-BI
+ for qemu-arm@nongnu.org; Wed, 02 Dec 2020 17:19:49 -0500
+Received: by mail-yb1-xb2f.google.com with SMTP id r127so130140yba.10
+ for <qemu-arm@nongnu.org>; Wed, 02 Dec 2020 14:19:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=Z2oMFh0UtFsC+WX1cHN7TFNpNKzs/ZPOQBocx/DRAls=;
+ b=Dr9FwZSSjNO/PsUB2bqkJTcem83yRpBtx+KF9X6VxJcaVIRrHZoQsNmLuPdNiDPus/
+ xUtTbJMpDayFt8vyoVVot9Y6lkCG9c5XJiF1W8tL9L71QfkzR+H0dUFBpBUwv+XdHruH
+ rKqeR9cmJbxvVCQOyuNEC0RFAEcnRqQpoWtJONbWQfIbfWTRrX21L8YTm/fpz9qCB30H
+ DCF2pZkWPIlNpKKs8d0I62OsSSeP+dKOTHzUGEk5YpwONWBeEeC9RZK0aN4PDlKzGa/A
+ T+zGj8WJBCOJQR5kob12KFQ28mta3W/yq44tVRaiWKP8kWB+cSbz+WCBZfH1Ur1vlybs
+ eJLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=7eOlTk2qrx8/UrDgQ0CzyBOLoXb5mii0mWS5SmQs9Vk=;
- b=cr356uObRyw+WGzs/sErpJ7ihaR/Isk/yfql0MZCbnu3T3/r7Vwwg4EWXpRhgXSFTq
- mUk3EQk1wRwfjfH4kqTvdpl0yFJ6bfyvLvvkOXtYHZM9EIEX7zptW2CDp2/md+kP1NSU
- 35QYjVz0TNCxCabKrYeNwJwaBpOjzSTAiYDyoWismAWdgyeBnBgIcnfiZYwt2ZJWIDR5
- UfcNQShJW4CEElj3eCBFWgej5laPSv3H9YtITLqydDFDxwL98xFd0N6Gt/CUZDrttwfC
- VniBru8TPgV2sbGcFP9lKhghuPo8UosfTzt40v4e1EnSX8prIETaCpP/OTBrXy4izmvL
- 1c3g==
-X-Gm-Message-State: AOAM530S5+MQ5YAdv2VHNRppt/31d4xUPAnJGKOA1CTy4mo0ReeB5Qa/
- zeV0KncrGMbqZBvouNh12NmJiw==
-X-Received: by 2002:a7b:cb05:: with SMTP id u5mr5307374wmj.140.1613052919109; 
- Thu, 11 Feb 2021 06:15:19 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id h13sm5223291wrv.20.2021.02.11.06.15.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Feb 2021 06:15:18 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 2/9] hw/display/pl110: Pull included-once parts of template
- header into pl110.c
-Date: Thu, 11 Feb 2021 14:15:08 +0000
-Message-Id: <20210211141515.8755-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210211141515.8755-1-peter.maydell@linaro.org>
-References: <20210211141515.8755-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=Z2oMFh0UtFsC+WX1cHN7TFNpNKzs/ZPOQBocx/DRAls=;
+ b=nu+OjWS1/p9ieIegiX8k6RT0SbiwYPj4NwLCTt9NuE82MOuGLkYUDdH0ORm6Z7DqjT
+ REGjoM/dxKyztbtTsS9QYabiAd2xDf+rV1rkr2YaIeo9OmfgzZC/HMfJ/DYabfpeJ7J4
+ z+tKv8RksjSbtvPyMhY6XQcdARQoLCCdbpEYfJOCQ2BuKbGAVSQANXkdHPEDuNSvXoTp
+ CUgUhZb8d9uh0KAXVDN8weuf37Z1NhDD2KDnpZNjV6lt+qCkOXMsKpvGbtcsygyWPlvk
+ 3KYmR+kGfhLXV9oqTyvLwRdeBF6TJ73S+JRkA32nVrRgvifzt1AQozVZqXGBq6gHFb0k
+ htfw==
+X-Gm-Message-State: AOAM531ST0bfgMi4q4/TjcyRFxvVp/bYkFsHQ96lPnl0zJihZv1GptOw
+ 0ErvkfZRXloVKa5nbwGhWPVC6Wu0HJhwRc3XxmSWOA==
+X-Received: by 2002:a25:abce:: with SMTP id v72mr459970ybi.138.1606947583047; 
+ Wed, 02 Dec 2020 14:19:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+From: Frank Yang <lfy@google.com>
+Date: Wed, 2 Dec 2020 14:19:31 -0800
+Message-ID: <CAEkmjvXGccGs2QhaiLFupTDWcnp4O+qez-uj8QdbRG13UfCy2Q@mail.gmail.com>
+Subject: [PATCH v1 1/1] hvf: arm: Properly sync guest time on migration
+To: Alexander Graf <agraf@csgraf.de>
+Cc: Peter Collingbourne <pcc@google.com>, Frank Yang <lfy@google.com>, 
+ Roman Bolshakov <r.bolshakov@yadro.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ qemu-arm <qemu-arm@nongnu.org>, 
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000dcc34405b582a311"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=lfy@google.com; helo=mail-yb1-xb2f.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2phtEAuLSDkS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HVphalLkIe2q
 
-The pl110_template.h header has a doubly-nested multiple-include pattern:
- * pl110.c includes it once for each host bit depth (now always 32)
- * every time it is included, it includes itself 6 times, to account
-   for multiple guest device pixel and byte orders
+--000000000000dcc34405b582a311
+Content-Type: text/plain; charset="UTF-8"
 
-Now we only have to deal with 32-bit host bit depths, we can move the
-code corresponding to the outer layer of this double-nesting to be
-directly in pl110.c and reduce the template header to a single layer
-of nesting.
+From downstream:
+https://android-review.googlesource.com/c/platform/external/qemu/+/1515002
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Based on v3 of Alexander Graf's patches
+
+https://patchew.org/QEMU/20201202190408.2041-1-agraf@csgraf.de
+
+We need to adjust CNTVOFF_EL2 so that time doesnt warp.  Even though we
+can set separate CNTVOFF_EL2 values per vCPU, it just is not worth the
+require effort to do that accurately---with individual values, even if
+they are a tiny bit off it can result in a lockup due to inconsistent
+time differences between vCPUs. So just use a global approximate value
+for now.
+
+Not tested in upstream yet, but Android emulator snapshots work without
+time warp now.
+
+Signed-off-by: Lingfeng Yang <lfy@google.com>
 ---
- hw/display/pl110_template.h | 100 +-----------------------------------
- hw/display/pl110.c          |  79 ++++++++++++++++++++++++++++
- 2 files changed, 80 insertions(+), 99 deletions(-)
+ accel/hvf/hvf-cpus.c     |  3 +++
+ include/sysemu/hvf_int.h |  4 ++++
+ target/arm/hvf/hvf.c     | 43 +++++++++++++++++++++++++++++++++++++++-
+ target/i386/hvf/hvf.c    |  4 ++++
+ 4 files changed, 53 insertions(+), 1 deletion(-)
 
-diff --git a/hw/display/pl110_template.h b/hw/display/pl110_template.h
-index 36ba791c6fd..0d8471db636 100644
---- a/hw/display/pl110_template.h
-+++ b/hw/display/pl110_template.h
-@@ -10,105 +10,9 @@
-  */
- 
- #ifndef ORDER
--
--#if BITS == 8
--#define COPY_PIXEL(to, from) *(to++) = from
--#elif BITS == 15 || BITS == 16
--#define COPY_PIXEL(to, from) do { *(uint16_t *)to = from; to += 2; } while (0)
--#elif BITS == 24
--#define COPY_PIXEL(to, from)    \
--    do {                        \
--        *(to++) = from;         \
--        *(to++) = (from) >> 8;  \
--        *(to++) = (from) >> 16; \
--    } while (0)
--#elif BITS == 32
--#define COPY_PIXEL(to, from) do { *(uint32_t *)to = from; to += 4; } while (0)
--#else
--#error unknown bit depth
-+#error "pl110_template.h is only for inclusion by pl110.c"
- #endif
- 
--#undef RGB
--#define BORDER bgr
--#define ORDER 0
--#include "pl110_template.h"
--#define ORDER 1
--#include "pl110_template.h"
--#define ORDER 2
--#include "pl110_template.h"
--#undef BORDER
--#define RGB
--#define BORDER rgb
--#define ORDER 0
--#include "pl110_template.h"
--#define ORDER 1
--#include "pl110_template.h"
--#define ORDER 2
--#include "pl110_template.h"
--#undef BORDER
--
--static drawfn glue(pl110_draw_fn_,BITS)[48] =
--{
--    glue(pl110_draw_line1_lblp_bgr,BITS),
--    glue(pl110_draw_line2_lblp_bgr,BITS),
--    glue(pl110_draw_line4_lblp_bgr,BITS),
--    glue(pl110_draw_line8_lblp_bgr,BITS),
--    glue(pl110_draw_line16_555_lblp_bgr,BITS),
--    glue(pl110_draw_line32_lblp_bgr,BITS),
--    glue(pl110_draw_line16_lblp_bgr,BITS),
--    glue(pl110_draw_line12_lblp_bgr,BITS),
--
--    glue(pl110_draw_line1_bbbp_bgr,BITS),
--    glue(pl110_draw_line2_bbbp_bgr,BITS),
--    glue(pl110_draw_line4_bbbp_bgr,BITS),
--    glue(pl110_draw_line8_bbbp_bgr,BITS),
--    glue(pl110_draw_line16_555_bbbp_bgr,BITS),
--    glue(pl110_draw_line32_bbbp_bgr,BITS),
--    glue(pl110_draw_line16_bbbp_bgr,BITS),
--    glue(pl110_draw_line12_bbbp_bgr,BITS),
--
--    glue(pl110_draw_line1_lbbp_bgr,BITS),
--    glue(pl110_draw_line2_lbbp_bgr,BITS),
--    glue(pl110_draw_line4_lbbp_bgr,BITS),
--    glue(pl110_draw_line8_lbbp_bgr,BITS),
--    glue(pl110_draw_line16_555_lbbp_bgr,BITS),
--    glue(pl110_draw_line32_lbbp_bgr,BITS),
--    glue(pl110_draw_line16_lbbp_bgr,BITS),
--    glue(pl110_draw_line12_lbbp_bgr,BITS),
--
--    glue(pl110_draw_line1_lblp_rgb,BITS),
--    glue(pl110_draw_line2_lblp_rgb,BITS),
--    glue(pl110_draw_line4_lblp_rgb,BITS),
--    glue(pl110_draw_line8_lblp_rgb,BITS),
--    glue(pl110_draw_line16_555_lblp_rgb,BITS),
--    glue(pl110_draw_line32_lblp_rgb,BITS),
--    glue(pl110_draw_line16_lblp_rgb,BITS),
--    glue(pl110_draw_line12_lblp_rgb,BITS),
--
--    glue(pl110_draw_line1_bbbp_rgb,BITS),
--    glue(pl110_draw_line2_bbbp_rgb,BITS),
--    glue(pl110_draw_line4_bbbp_rgb,BITS),
--    glue(pl110_draw_line8_bbbp_rgb,BITS),
--    glue(pl110_draw_line16_555_bbbp_rgb,BITS),
--    glue(pl110_draw_line32_bbbp_rgb,BITS),
--    glue(pl110_draw_line16_bbbp_rgb,BITS),
--    glue(pl110_draw_line12_bbbp_rgb,BITS),
--
--    glue(pl110_draw_line1_lbbp_rgb,BITS),
--    glue(pl110_draw_line2_lbbp_rgb,BITS),
--    glue(pl110_draw_line4_lbbp_rgb,BITS),
--    glue(pl110_draw_line8_lbbp_rgb,BITS),
--    glue(pl110_draw_line16_555_lbbp_rgb,BITS),
--    glue(pl110_draw_line32_lbbp_rgb,BITS),
--    glue(pl110_draw_line16_lbbp_rgb,BITS),
--    glue(pl110_draw_line12_lbbp_rgb,BITS),
--};
--
--#undef BITS
--#undef COPY_PIXEL
--
--#else
--
- #if ORDER == 0
- #define NAME glue(glue(lblp_, BORDER), BITS)
- #ifdef HOST_WORDS_BIGENDIAN
-@@ -395,5 +299,3 @@ static void glue(pl110_draw_line12_,NAME)(void *opaque, uint8_t *d, const uint8_
- #undef NAME
- #undef SWAP_WORDS
- #undef ORDER
--
--#endif
-diff --git a/hw/display/pl110.c b/hw/display/pl110.c
-index a0d4126ce7f..ce300662e8b 100644
---- a/hw/display/pl110.c
-+++ b/hw/display/pl110.c
-@@ -124,7 +124,86 @@ static const unsigned char *idregs[] = {
+diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
+index a981ccde70..484c7717f5 100644
+--- a/accel/hvf/hvf-cpus.c
++++ b/accel/hvf/hvf-cpus.c
+@@ -456,6 +456,9 @@ static int hvf_accel_init(MachineState *ms)
+     hvf_state = s;
+     memory_listener_register(&hvf_memory_listener, &address_space_memory);
+     cpus_register_accel(&hvf_cpus);
++
++    hvf_arch_init(s);
++
+     return 0;
+ }
+
+diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+index 13adf6ea77..08830782c9 100644
+--- a/include/sysemu/hvf_int.h
++++ b/include/sysemu/hvf_int.h
+@@ -55,6 +55,9 @@ struct HVFState {
+     hvf_slot slots[32];
+     int num_slots;
+
++#if defined(__aarch64__)
++    uint64_t ticks;
++#endif
+     hvf_vcpu_caps *hvf_caps;
  };
- 
- #define BITS 32
-+#define COPY_PIXEL(to, from) do { *(uint32_t *)to = from; to += 4; } while (0)
+ extern HVFState *hvf_state;
+@@ -73,5 +76,6 @@ void hvf_arch_vcpu_destroy(CPUState *cpu);
+ int hvf_vcpu_exec(CPUState *cpu);
+ hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+ void hvf_kick_vcpu_thread(CPUState *cpu);
++void hvf_arch_init(HVFState* s);
+
+ #endif
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 9442e2f232..37380c6c53 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -312,6 +312,10 @@ int hvf_put_registers(CPUState *cpu)
+     uint64_t val;
+     int i;
+
++    /* Sync up CNTVOFF_EL2 */
++    env->cp15.cntvoff_el2 = hvf_state->ticks;
++    hv_vcpu_set_vtimer_offset(cpu->hvf->fd, env->cp15.cntvoff_el2);
 +
-+#undef RGB
-+#define BORDER bgr
-+#define ORDER 0
- #include "pl110_template.h"
-+#define ORDER 1
-+#include "pl110_template.h"
-+#define ORDER 2
-+#include "pl110_template.h"
-+#undef BORDER
-+#define RGB
-+#define BORDER rgb
-+#define ORDER 0
-+#include "pl110_template.h"
-+#define ORDER 1
-+#include "pl110_template.h"
-+#define ORDER 2
-+#include "pl110_template.h"
-+#undef BORDER
+     for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
+         val = *(uint64_t *)((void *)env + hvf_reg_match[i].offset);
+         ret = hv_vcpu_set_reg(cpu->hvf->fd, hvf_reg_match[i].reg, val);
+@@ -418,6 +422,8 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+ {
+ }
+
++static HVFState* hvf_state = 0;
 +
-+static drawfn pl110_draw_fn_32[48] = {
-+    pl110_draw_line1_lblp_bgr32,
-+    pl110_draw_line2_lblp_bgr32,
-+    pl110_draw_line4_lblp_bgr32,
-+    pl110_draw_line8_lblp_bgr32,
-+    pl110_draw_line16_555_lblp_bgr32,
-+    pl110_draw_line32_lblp_bgr32,
-+    pl110_draw_line16_lblp_bgr32,
-+    pl110_draw_line12_lblp_bgr32,
+ int hvf_arch_init_vcpu(CPUState *cpu)
+ {
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+@@ -795,7 +801,11 @@ int hvf_vcpu_exec(CPUState *cpu)
+                                         &cval);
+                 assert_hvf_ok(r);
+
+-                int64_t ticks_to_sleep = cval - mach_absolute_time();
++                /* mach_absolute_time() is an absolute host tick number. We
++                 * have set up the guest to use the host tick number offset
++                 * by env->cp15.cntvoff_el2.
++                 */
++                int64_t ticks_to_sleep = cval - (mach_absolute_time() -
+env->cp15.cntvoff_el2);
+                 if (ticks_to_sleep < 0) {
+                     break;
+                 }
+@@ -855,3 +865,34 @@ int hvf_vcpu_exec(CPUState *cpu)
+         }
+     }
+ }
 +
-+    pl110_draw_line1_bbbp_bgr32,
-+    pl110_draw_line2_bbbp_bgr32,
-+    pl110_draw_line4_bbbp_bgr32,
-+    pl110_draw_line8_bbbp_bgr32,
-+    pl110_draw_line16_555_bbbp_bgr32,
-+    pl110_draw_line32_bbbp_bgr32,
-+    pl110_draw_line16_bbbp_bgr32,
-+    pl110_draw_line12_bbbp_bgr32,
++static int hvf_mig_state_pre_save(void* opaque) {
++    struct HVFState* s = opaque;
++    s->ticks -= mach_absolute_time();
++    return 0;
++}
 +
-+    pl110_draw_line1_lbbp_bgr32,
-+    pl110_draw_line2_lbbp_bgr32,
-+    pl110_draw_line4_lbbp_bgr32,
-+    pl110_draw_line8_lbbp_bgr32,
-+    pl110_draw_line16_555_lbbp_bgr32,
-+    pl110_draw_line32_lbbp_bgr32,
-+    pl110_draw_line16_lbbp_bgr32,
-+    pl110_draw_line12_lbbp_bgr32,
++static int hvf_mig_state_post_load(void* opaque) {
++    struct HVFState* s = opaque;
++    m->ticks += mach_absolute_time();
++    return 0;
++}
 +
-+    pl110_draw_line1_lblp_rgb32,
-+    pl110_draw_line2_lblp_rgb32,
-+    pl110_draw_line4_lblp_rgb32,
-+    pl110_draw_line8_lblp_rgb32,
-+    pl110_draw_line16_555_lblp_rgb32,
-+    pl110_draw_line32_lblp_rgb32,
-+    pl110_draw_line16_lblp_rgb32,
-+    pl110_draw_line12_lblp_rgb32,
 +
-+    pl110_draw_line1_bbbp_rgb32,
-+    pl110_draw_line2_bbbp_rgb32,
-+    pl110_draw_line4_bbbp_rgb32,
-+    pl110_draw_line8_bbbp_rgb32,
-+    pl110_draw_line16_555_bbbp_rgb32,
-+    pl110_draw_line32_bbbp_rgb32,
-+    pl110_draw_line16_bbbp_rgb32,
-+    pl110_draw_line12_bbbp_rgb32,
-+
-+    pl110_draw_line1_lbbp_rgb32,
-+    pl110_draw_line2_lbbp_rgb32,
-+    pl110_draw_line4_lbbp_rgb32,
-+    pl110_draw_line8_lbbp_rgb32,
-+    pl110_draw_line16_555_lbbp_rgb32,
-+    pl110_draw_line32_lbbp_rgb32,
-+    pl110_draw_line16_lbbp_rgb32,
-+    pl110_draw_line12_lbbp_rgb32,
++const VMStateDescription vmstate_hvf_migration = {
++    .name = "hvf-migration",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .pre_save = hvf_mig_state_pre_save,
++    .post_load = hvf_mig_state_post_load,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT64(ticks_to_save, HVFState),
++        VMSTATE_END_OF_LIST()
++    },
 +};
 +
-+#undef BITS
-+#undef COPY_PIXEL
-+
- 
- static int pl110_enabled(PL110State *s)
- {
--- 
-2.20.1
++void hvf_arch_init(HVFState* s) {
++    hvf_state = s;
++    hvf_state->ticks = 0;
++    vmstate_register(NULL, 0, &vmstate_hvf_migration, hvf_state);
++}
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 08b4adecd9..7ca6387620 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -557,3 +557,7 @@ int hvf_vcpu_exec(CPUState *cpu)
 
+     return ret;
+ }
++
++void hvf_arch_init(HVFState* s) {
++    (void)s;
++}
+-- 
+2.24.3 (Apple Git-128)
+
+--000000000000dcc34405b582a311
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div>From downstream: <a href=3D"https://android-revie=
+w.googlesource.com/c/platform/external/qemu/+/1515002">https://android-revi=
+ew.googlesource.com/c/platform/external/qemu/+/1515002</a><br><br>Based on =
+v3 of Alexander Graf&#39;s patches<br><br><a href=3D"https://patchew.org/QE=
+MU/20201202190408.2041-1-agraf@csgraf.de">https://patchew.org/QEMU/20201202=
+190408.2041-1-agraf@csgraf.de</a><br><br>We need to adjust CNTVOFF_EL2 so t=
+hat time doesnt warp.=C2=A0 Even though we<br>can set separate CNTVOFF_EL2 =
+values per vCPU, it just is not worth the<br>require effort to do that accu=
+rately---with individual values, even if<br>they are a tiny bit off it can =
+result in a lockup due to inconsistent<br>time differences between vCPUs. S=
+o just use a global approximate value<br>for now.<br><br>Not tested in upst=
+ream yet, but Android emulator snapshots work without<br>time warp now.<br>=
+<br>Signed-off-by: Lingfeng Yang &lt;<a href=3D"mailto:lfy@google.com">lfy@=
+google.com</a>&gt;<br>---<br>=C2=A0accel/hvf/hvf-cpus.c =C2=A0 =C2=A0 | =C2=
+=A03 +++<br>=C2=A0include/sysemu/hvf_int.h | =C2=A04 ++++<br>=C2=A0target/a=
+rm/hvf/hvf.c =C2=A0 =C2=A0 | 43 +++++++++++++++++++++++++++++++++++++++-<br=
+>=C2=A0target/i386/hvf/hvf.c =C2=A0 =C2=A0| =C2=A04 ++++<br>=C2=A04 files c=
+hanged, 53 insertions(+), 1 deletion(-)<br><br>diff --git a/accel/hvf/hvf-c=
+pus.c b/accel/hvf/hvf-cpus.c<br>index a981ccde70..484c7717f5 100644<br>--- =
+a/accel/hvf/hvf-cpus.c<br>+++ b/accel/hvf/hvf-cpus.c<br>@@ -456,6 +456,9 @@=
+ static int hvf_accel_init(MachineState *ms)<br>=C2=A0 =C2=A0 =C2=A0hvf_sta=
+te =3D s;<br>=C2=A0 =C2=A0 =C2=A0memory_listener_register(&amp;hvf_memory_l=
+istener, &amp;address_space_memory);<br>=C2=A0 =C2=A0 =C2=A0cpus_register_a=
+ccel(&amp;hvf_cpus);<br>+<br>+ =C2=A0 =C2=A0hvf_arch_init(s);<br>+<br>=C2=
+=A0 =C2=A0 =C2=A0return 0;<br>=C2=A0}<br>=C2=A0<br>diff --git a/include/sys=
+emu/hvf_int.h b/include/sysemu/hvf_int.h<br>index 13adf6ea77..08830782c9 10=
+0644<br>--- a/include/sysemu/hvf_int.h<br>+++ b/include/sysemu/hvf_int.h<br=
+>@@ -55,6 +55,9 @@ struct HVFState {<br>=C2=A0 =C2=A0 =C2=A0hvf_slot slots[=
+32];<br>=C2=A0 =C2=A0 =C2=A0int num_slots;<br>=C2=A0<br>+#if defined(__aarc=
+h64__)<br>+ =C2=A0 =C2=A0uint64_t ticks;<br>+#endif<br>=C2=A0 =C2=A0 =C2=A0=
+hvf_vcpu_caps *hvf_caps;<br>=C2=A0};<br>=C2=A0extern HVFState *hvf_state;<b=
+r>@@ -73,5 +76,6 @@ void hvf_arch_vcpu_destroy(CPUState *cpu);<br>=C2=A0int=
+ hvf_vcpu_exec(CPUState *cpu);<br>=C2=A0hvf_slot *hvf_find_overlap_slot(uin=
+t64_t, uint64_t);<br>=C2=A0void hvf_kick_vcpu_thread(CPUState *cpu);<br>+vo=
+id hvf_arch_init(HVFState* s);<br>=C2=A0<br>=C2=A0#endif<br>diff --git a/ta=
+rget/arm/hvf/hvf.c b/target/arm/hvf/hvf.c<br>index 9442e2f232..37380c6c53 1=
+00644<br>--- a/target/arm/hvf/hvf.c<br>+++ b/target/arm/hvf/hvf.c<br>@@ -31=
+2,6 +312,10 @@ int hvf_put_registers(CPUState *cpu)<br>=C2=A0 =C2=A0 =C2=A0=
+uint64_t val;<br>=C2=A0 =C2=A0 =C2=A0int i;<br>=C2=A0<br>+ =C2=A0 =C2=A0/* =
+Sync up CNTVOFF_EL2 */<br>+ =C2=A0 =C2=A0env-&gt;cp15.cntvoff_el2 =3D hvf_s=
+tate-&gt;ticks;<br>+ =C2=A0 =C2=A0hv_vcpu_set_vtimer_offset(cpu-&gt;hvf-&gt=
+;fd, env-&gt;cp15.cntvoff_el2);<br>+<br>=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i=
+ &lt; ARRAY_SIZE(hvf_reg_match); i++) {<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0val =3D *(uint64_t *)((void *)env + hvf_reg_match[i].offset);<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0ret =3D hv_vcpu_set_reg(cpu-&gt;hvf-&gt;fd, hvf_=
+reg_match[i].reg, val);<br>@@ -418,6 +422,8 @@ void hvf_arch_vcpu_destroy(C=
+PUState *cpu)<br>=C2=A0{<br>=C2=A0}<br>=C2=A0<br>+static HVFState* hvf_stat=
+e =3D 0;<br>+<br>=C2=A0int hvf_arch_init_vcpu(CPUState *cpu)<br>=C2=A0{<br>=
+=C2=A0 =C2=A0 =C2=A0ARMCPU *arm_cpu =3D ARM_CPU(cpu);<br>@@ -795,7 +801,11 =
+@@ int hvf_vcpu_exec(CPUState *cpu)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;cval);<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0assert_hvf_ok(r);<br>=C2=A0<br>- =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int64_t ticks_to_sle=
+ep =3D cval - mach_absolute_time();<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0/* mach_absolute_time() is an absolute host tick numbe=
+r. We<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * have s=
+et up the guest to use the host tick number offset<br>+ =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * by env-&gt;cp15.cntvoff_el2.<br>+ =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>+ =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int64_t ticks_to_sleep =3D cva=
+l - (mach_absolute_time() - env-&gt;cp15.cntvoff_el2);<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (ticks_to_sleep &lt; 0) {<b=
+r>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0break;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+}<br>@@ -855,3 +865,34 @@ int hvf_vcpu_exec(CPUState *cpu)<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0}<br>=C2=A0 =C2=A0 =C2=A0}<br>=C2=A0}<br>+<br>+static =
+int hvf_mig_state_pre_save(void* opaque) {<br>+ =C2=A0 =C2=A0struct HVFStat=
+e* s =3D opaque;<br>+ =C2=A0 =C2=A0s-&gt;ticks -=3D mach_absolute_time();<b=
+r>+ =C2=A0 =C2=A0return 0;<br>+}<br>+<br>+static int hvf_mig_state_post_loa=
+d(void* opaque) {<br>+ =C2=A0 =C2=A0struct HVFState* s =3D opaque;<br>+ =C2=
+=A0 =C2=A0m-&gt;ticks +=3D mach_absolute_time();<br>+ =C2=A0 =C2=A0return 0=
+;<br>+}<br>+<br>+<br>+const VMStateDescription vmstate_hvf_migration =3D {<=
+br>+ =C2=A0 =C2=A0.name =3D &quot;hvf-migration&quot;,<br>+ =C2=A0 =C2=A0.v=
+ersion_id =3D 1,<br>+ =C2=A0 =C2=A0.minimum_version_id =3D 1,<br>+ =C2=A0 =
+=C2=A0.pre_save =3D hvf_mig_state_pre_save,<br>+ =C2=A0 =C2=A0.post_load =
+=3D hvf_mig_state_post_load,<br>+ =C2=A0 =C2=A0.fields =3D (VMStateField[])=
+ {<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT64(ticks_to_save, HVFState),=
+<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_END_OF_LIST()<br>+ =C2=A0 =C2=A0},=
+<br>+};<br>+<br>+void hvf_arch_init(HVFState* s) {<br>+ =C2=A0 =C2=A0hvf_st=
+ate =3D s;<br>+ =C2=A0 =C2=A0hvf_state-&gt;ticks =3D 0;<br>+ =C2=A0 =C2=A0v=
+mstate_register(NULL, 0, &amp;vmstate_hvf_migration, hvf_state);<br>+}<br>d=
+iff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c<br>index 08b4adec=
+d9..7ca6387620 100644<br>--- a/target/i386/hvf/hvf.c<br>+++ b/target/i386/h=
+vf/hvf.c<br>@@ -557,3 +557,7 @@ int hvf_vcpu_exec(CPUState *cpu)<br>=C2=A0<=
+br>=C2=A0 =C2=A0 =C2=A0return ret;<br>=C2=A0}<br>+<br>+void hvf_arch_init(H=
+VFState* s) {<br>+ =C2=A0 =C2=A0(void)s;<br>+}<br>-- <br>2.24.3 (Apple Git-=
+128)<br></div></div>
+
+--000000000000dcc34405b582a311--

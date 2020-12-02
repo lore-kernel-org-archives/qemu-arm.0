@@ -1,110 +1,113 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2303292lfc;
-        Thu, 11 Feb 2021 06:19:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwqw2Kgwa9f6d6STDDzw++XLRt2WFalrVhUlDOzXfHsAuy8rcSn5HupaNxeJNepM/0mq08o
-X-Received: by 2002:a25:3307:: with SMTP id z7mr11120012ybz.113.1613053158862;
-        Thu, 11 Feb 2021 06:19:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613053158; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1599943lfb;
+        Wed, 2 Dec 2020 15:29:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyTDmr1LcU0dND89LoyE/K1UmNpOOCkgeZLpPCRrkXHNBgyWKx6emZeEZvFOhyip442ZjXv
+X-Received: by 2002:a25:dc0f:: with SMTP id y15mr767867ybe.494.1606951755764;
+        Wed, 02 Dec 2020 15:29:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606951755; cv=none;
         d=google.com; s=arc-20160816;
-        b=MvQ1y69+Gm1DS8FzsIRkkioseY9UvLuamd5IHs8sRJUr7kTHYmc5HsZSxgLAWqwfvX
-         61+NcfqnLqyCA++4q2pSvfbHkqi/tB2YdqBJqLOq1JpfiPUBv9pguyCcvDAvKyTF0GvT
-         rLQTg4gLCfS+0DEI9qZV1tyFqjSnSjHyDM0GrijyrFhJEYemhefS2Gq+OK0a7e9+8mQJ
-         mRY4Rnu4A4JX0ckzlEpizZYQFoFOqKWRVmHWAIG39d731p67p/yAy/POv3aiaWBu5iU0
-         SmV8Mne49og5MfQIKp+HM7r54uZ5phk7xK9oGVJai5WV/fjt+RenQKg/5+VtfzWq5rhI
-         7v+Q==
+        b=1JrKEzvPZ4/YgIDV7tDb8I6zwoSqtpqfkyVrJD/bIzfdGaixiJzSkInfRHIdKM83JG
+         IvcYQ7tt/zlzAMN71JnXGD3Ajx6wjL73w7/0qETYQT+kfJLkHQ7gQ2Qdr03j+EPXg2Dg
+         o3Ie1d/6SIaS8jQsbLtTN3KrRcm/Fikv/CARNEaGvZYX1lbC3OHXcLH8/mf1ga3LyFpg
+         tOlNBZj4op3niWqhkWyGxZT5+i0igMxmLbMU8GRVgtuC2BB+7ruLr/phgj3SiXCd0g9A
+         Q2NjMkapGiPsucCfPOMLpZ5aEu3yvjaAVqxjlvPeEqPxonBhoxmU/J5fKYS7dIt1iHt/
+         zDWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=/q6QTfiiOxA3oY14+4dd/XG0OuRlBQOoQGLBGtVV1NU=;
-        b=f6N1sfWSROp4v0KcOT84IDaTiRDIXS1UDfyOiJSPehccScYpxdo/g5+nQmGpZGaaat
-         XfBPcyeAee8A0ItfFJqaIixq0SrV1k/9xJlKI9dqKQxKDcxFPktaRuMX2SqiM5dZqJKO
-         YER0f/8f/DOzWKjbj3zXy5QdkSyupj7GNuqaVywbVHVQzA4qwIhXGxT00uKgmQxCqrjx
-         RXR68hTp53ZLdzNo2dqgTKxUbx3M7s4nfHPDfj+POk0GhwQVMl99wVS7JPTWbdh0G0l2
-         RRm5tRp3sEAOvHUypWznDL4LJxkqhAE0ySG3w/2COBMYU/f7AatWDchtI3jbVRUPn8rk
-         g9Yw==
+        bh=sHz4OKSDkB4X2/Q7yJFO7hSfYBzAsnEHkvj3wqLCRrM=;
+        b=hMcZbZAjzKujlEYu+o6JBPz4w/k3iOvzTPlkjbJvJw8hEPlYnL6L+3bsJfoJ1hZzNK
+         wIP3uHCn5oGKNni+yLYwfC/vceyl170sNrFM0oUBfBxcDPHRUrTlXs9VWEacvDJfpIlq
+         v3X9seyvqtViOrzg1A8PbzQ0EfKg1SW+Nyyw0cOmUxKOD0C4s0prJduNqzYPuIHdFJMR
+         RCli1u24515qaTTtG6XeA9O5RpFiJHWNhx9o+6UIygI6YWFgMYG4WByAUA9lUmMhBhTS
+         +mrcxMCFM7w/KGi2jbPIdygnyF4khrXIXAANRTnY1XjMYG9B+FoJNUWCHmTn8AmSjuUo
+         kQ/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LTLXxVsQ;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=FdNhmzcg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m82si5260204ybc.198.2021.02.11.06.19.18
+        by mx.google.com with ESMTPS id r18si89172ybk.307.2020.12.02.15.29.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 06:19:18 -0800 (PST)
+        Wed, 02 Dec 2020 15:29:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LTLXxVsQ;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=FdNhmzcg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54976 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:37398 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lACoQ-0002o4-80
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 09:19:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55640)
+	id 1kkbYh-0002vQ-3X
+	for alex.bennee@linaro.org; Wed, 02 Dec 2020 18:29:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lACl2-0006YS-6t
- for qemu-arm@nongnu.org; Thu, 11 Feb 2021 09:15:50 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:54371)
+ (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kkbY2-0002UG-MS
+ for qemu-arm@nongnu.org; Wed, 02 Dec 2020 18:28:34 -0500
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:36476)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lACkf-00076I-CX
- for qemu-arm@nongnu.org; Thu, 11 Feb 2021 09:15:47 -0500
-Received: by mail-wm1-x334.google.com with SMTP id w4so5694087wmi.4
- for <qemu-arm@nongnu.org>; Thu, 11 Feb 2021 06:15:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/q6QTfiiOxA3oY14+4dd/XG0OuRlBQOoQGLBGtVV1NU=;
- b=LTLXxVsQea7Bwumij9ZCPhZWWihDB7JxfVYdK40vFrhv8hsLJBYK2TxkzOSxROsWLg
- eha77Qauv509mfO1/+cqyd9e3Tw0B5FSo/7n+boO6MmUC5Jfz97UUhN8sNUje2UPeLU1
- pu/88scVSKZ5kymsbzkYwJtydNn5mwWHITtPMsNV8fo1KVJ+xvOOONuRLpkmWzFgVyIw
- yTIZ0R3WuiN5dn30McldkH7uHrTVus2nYIUDHT3Hjhu1Y/Sc1Oo9jOoHhL9LHTekyY4M
- XjLjBjtqWRwgD19wEZh/4BOFT49mzCR3p2U/MzFeFvPvgdPEj5VNG5+k/Rw+bLNlMIbf
- 4dsg==
+ (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kkbY0-0005U7-PU
+ for qemu-arm@nongnu.org; Wed, 02 Dec 2020 18:28:34 -0500
+Received: by mail-io1-xd41.google.com with SMTP id z136so158640iof.3
+ for <qemu-arm@nongnu.org>; Wed, 02 Dec 2020 15:28:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=sHz4OKSDkB4X2/Q7yJFO7hSfYBzAsnEHkvj3wqLCRrM=;
+ b=FdNhmzcgFOBh/mreXcMLvgrZD3CUJDn9UlTtzqXMuDVYJ1Kv65/uh0GKTgPageNYO5
+ tx71Sm/C1hgArKAXdMRN3CI4v8yVnjM7fQbOy88wk2fDd+mjFCiOl/mtfs5PjXF9Ot0r
+ +VEITRswjlmltjCpLQvyPYp0wwAt9N0b5tHc30OInNwjuccaAMinS+zVpQxYy4ZYUsXT
+ ElkcXqBjcqct4nneGddWeoAhp/a3tCexiieyf2SUdk2tHeCv0Vft9XJHc812kcd1T1yp
+ LcTziXO/M3a6gPYHKiydw2FqJp2JRmJZJp9oREyrkUnJS287rGIdt5k8gq759yyuF58d
+ X9fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/q6QTfiiOxA3oY14+4dd/XG0OuRlBQOoQGLBGtVV1NU=;
- b=a02AZ6a3diR7jry9kIEb8UMRscVBHYZbVa5VYvbOHFjkkyWuhmD/eFIVK4BUe6V8+R
- aVK4FwjawypXySwBsOGx3IN1/f2YrJTy8zYPh00LGsxvGV7coB6dwUnmqM8oxFC8q8O6
- j+6VuxMjb6D+wRvpdXqmtRvov+b5/qRNeUcKrAAVY4Y8juLMfYfk2d84cAjVgyJqAt95
- +pBgcVT7uMoLolLfTtNwSSxJa/KUAOGaw+iUkLj0CUGtmei0pSJXRtVahnAifF9L7zqI
- YjbsClfarsyobWdXaxBV1wP3tcs5jw1cqYwK0n1m12ihENwj0q1a7k2/AAgk/UiZ0kI1
- ax7Q==
-X-Gm-Message-State: AOAM533mAjjKMUF8yQtvYdQhF5WMiHB4DmIy48BER78eDLXhYIqJ1CTm
- TIdGkbKf2QoAOANr32DVT4WVPFfEqYXcGg==
-X-Received: by 2002:a1c:8096:: with SMTP id b144mr5604040wmd.169.1613052923456; 
- Thu, 11 Feb 2021 06:15:23 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id h13sm5223291wrv.20.2021.02.11.06.15.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Feb 2021 06:15:23 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 7/9] hw/display/pxa2xx: Apply brace-related coding style fixes
- to template header
-Date: Thu, 11 Feb 2021 14:15:13 +0000
-Message-Id: <20210211141515.8755-8-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210211141515.8755-1-peter.maydell@linaro.org>
-References: <20210211141515.8755-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=sHz4OKSDkB4X2/Q7yJFO7hSfYBzAsnEHkvj3wqLCRrM=;
+ b=sILrkD0+1iElWNHzwumWj8K6lYatR4YeH/j2ZcruGDFBFdqyyW9aB/rzVrFGvcuCEz
+ e8eeucA32dbJR8RjIHd1EH0slJHqvFxyo+26ClZzzDnuUvC6Y+h1581EcSR4IueHEMlu
+ Tg7trD2+ZTBN/YAkQDtpt8OqLxiJmWrtCwe3bOls1S/p2ODlmkm93trEY9/e5tWb8Whz
+ KIFWOqk6EMzkPm5nFJeRKJO8ypnVrifcFvKzJ04ukzB1WsXPPNeHqJGmVinTl8OXsfKL
+ z0Tw0dffYsMMwLgn0K0XZBftzD3QaeNgTjf7AtgXBl4TNqxSomRvLJoNSaEgTp67Rglq
+ 2DXg==
+X-Gm-Message-State: AOAM530RGo6qUIW8oXzmB/ABxqp44gihVGhxDlhEKMBp1z6xaI4/yIKr
+ 8hO/ajY15V6Gl0tm9WboBywOG7wWF32Vz+vUy2Xeeg==
+X-Received: by 2002:a05:6638:b30:: with SMTP id
+ c16mr665504jab.61.1606951711513; 
+ Wed, 02 Dec 2020 15:28:31 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <CAEkmjvXGccGs2QhaiLFupTDWcnp4O+qez-uj8QdbRG13UfCy2Q@mail.gmail.com>
+ <2dc974cc-abe2-d034-1720-d5a2651a9042@csgraf.de>
+ <CAEkmjvV-XPmBCGsOnBhZ20t6D+vbp+7pOUpDeMJL3dKAjZvErQ@mail.gmail.com>
+ <658b1719-4635-edab-f3e2-6a9ac0bc01a1@csgraf.de>
+In-Reply-To: <658b1719-4635-edab-f3e2-6a9ac0bc01a1@csgraf.de>
+From: Peter Collingbourne <pcc@google.com>
+Date: Wed, 2 Dec 2020 15:28:20 -0800
+Message-ID: <CAMn1gO4KNq_EBrwmHjhFzp==VdEq+ExrKQHmYfz5RKvDj1Q4GA@mail.gmail.com>
+Subject: Re: [PATCH v1 1/1] hvf: arm: Properly sync guest time on migration
+To: Alexander Graf <agraf@csgraf.de>
+Cc: Frank Yang <lfy@google.com>, Roman Bolshakov <r.bolshakov@yadro.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, 
+ Cameron Esfahani <dirty@apple.com>, qemu-arm <qemu-arm@nongnu.org>, 
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=pcc@google.com; helo=mail-io1-xd41.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,161 +120,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mOgBb38ZPeXd
+X-TUID: O8GrO6nGC4PK
 
-We're about to move code from the template header into pxa2xx_lcd.c.
-Before doing that, make coding style fixes so checkpatch doesn't
-complain about the patch which moves the code. This commit fixes
-missing braces in the SKIP_PIXEL() macro definition and in if()
-statements.
+On Wed, Dec 2, 2020 at 2:57 PM Alexander Graf <agraf@csgraf.de> wrote:
+>
+>
+> On 02.12.20 23:46, Frank Yang wrote:
+>
+>
+>
+> On Wed, Dec 2, 2020 at 2:28 PM Alexander Graf <agraf@csgraf.de> wrote:
+>>
+>>
+>> On 02.12.20 23:19, Frank Yang wrote:
+>>
+>>
+>> From downstream: https://android-review.googlesource.com/c/platform/exte=
+rnal/qemu/+/1515002
+>>
+>> Based on v3 of Alexander Graf's patches
+>>
+>> https://patchew.org/QEMU/20201202190408.2041-1-agraf@csgraf.de
+>>
+>> We need to adjust CNTVOFF_EL2 so that time doesnt warp.  Even though we
+>> can set separate CNTVOFF_EL2 values per vCPU, it just is not worth the
+>> require effort to do that accurately---with individual values, even if
+>> they are a tiny bit off it can result in a lockup due to inconsistent
+>> time differences between vCPUs. So just use a global approximate value
+>> for now.
+>>
+>> Not tested in upstream yet, but Android emulator snapshots work without
+>> time warp now.
+>>
+>> Signed-off-by: Lingfeng Yang <lfy@google.com>
+>>
+>>
+>> If we just always make CNTV start at the same 0 as QEMU_CLOCK_VIRTUAL, w=
+e should be able to just recover the offset after migration by looking at Q=
+EMU_CLOCK_VIRTUAL to set CNTVOFF, right?
+>>
+>> That would end up much easier than this patch I hope.
+>>
+>>
+>
+> The virtual clock interfaces/implementations in QEMU seem complex to me r=
+elative to the fix needed here and they don't seem to compute ticks with ma=
+ch_absolute_time() (which in this case we want since we want to compute in =
+timer ticks instead of having to mess with ns / cycle conversions). I do ag=
+ree this patch does seem more complicated on the surface though versus "jus=
+t" setting cntvoff directly to some value. Maybe we should simplify the QEM=
+U_CLOCK_VIRTUAL implementation first to maintain CNTVOFF_EL2/CNTV using mac=
+h_absolute_time() first?
+>
+>
+> So QEMU_CLOCK_VIRTUAL calls cpu_get_clock() which just adds an offset to =
+gettimeofday(). This offset is already part of the live migration stream[1]=
+. So if you just configure CNTVOFF_EL2 based on QEMU_CLOCK_VIRTUAL adjusted=
+ by the clock frequency on vcpu init, you should have everything you need. =
+You can do that on every CPU init even, as the virtual clock will just be 0=
+ on start.
+>
+> The only thing we need to change then is to move the WFI from a direct ca=
+ll to mach_absolute_time() to also check the virtual clock instead. I would=
+ hope that gettimeofday() calls mach_absolute_time() in the background too =
+to speed it up.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/display/pxa2xx_template.h | 47 +++++++++++++++++++++---------------
- 1 file changed, 28 insertions(+), 19 deletions(-)
+I'm not sure that something based on gettimeofday() (or
+clock_gettime(CLOCK_MONOTONIC) which it looks like cpu_get_clock() can
+also call) will work. It will include time spent asleep so it won't
+correspond to mach_absolute_time() aka guest CNTVCT_EL0.
 
-diff --git a/hw/display/pxa2xx_template.h b/hw/display/pxa2xx_template.h
-index 711fd9994e2..1c13d3ac007 100644
---- a/hw/display/pxa2xx_template.h
-+++ b/hw/display/pxa2xx_template.h
-@@ -9,7 +9,7 @@
-  * Framebuffer format conversion routines.
-  */
- 
--# define SKIP_PIXEL(to)		to += deststep
-+# define SKIP_PIXEL(to) do { to += deststep; } while (0)
- # define COPY_PIXEL(to, from)    \
-     do {                         \
-         *(uint32_t *) to = from; \
-@@ -142,10 +142,11 @@ static void pxa2xx_draw_line16t(void *opaque,
-         data >>= 5;
-         r = (data & 0x1f) << 3;
-         data >>= 5;
--        if (data & 1)
-+        if (data & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         data >>= 1;
-         b = (data & 0x1f) << 3;
-         data >>= 5;
-@@ -153,10 +154,11 @@ static void pxa2xx_draw_line16t(void *opaque,
-         data >>= 5;
-         r = (data & 0x1f) << 3;
-         data >>= 5;
--        if (data & 1)
-+        if (data & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         width -= 2;
-         src += 4;
-     }
-@@ -248,10 +250,11 @@ static void pxa2xx_draw_line19(void *opaque,
-         data >>= 6;
-         r = (data & 0x3f) << 2;
-         data >>= 6;
--        if (data & 1)
-+        if (data & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         width -= 1;
-         src += 4;
-     }
-@@ -281,10 +284,11 @@ static void pxa2xx_draw_line19p(void *opaque,
-         data[0] >>= 6;
-         r = (data[0] & 0x3f) << 2;
-         data[0] >>= 6;
--        if (data[0] & 1)
-+        if (data[0] & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         data[0] >>= 6;
-         b = (data[0] & 0x3f) << 2;
-         data[0] >>= 6;
-@@ -292,10 +296,11 @@ static void pxa2xx_draw_line19p(void *opaque,
-         data[1] >>= 4;
-         r = (data[1] & 0x3f) << 2;
-         data[1] >>= 6;
--        if (data[1] & 1)
-+        if (data[1] & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         data[1] >>= 6;
-         b = (data[1] & 0x3f) << 2;
-         data[1] >>= 6;
-@@ -303,10 +308,11 @@ static void pxa2xx_draw_line19p(void *opaque,
-         data[1] >>= 6;
-         r = ((data[2] & 0x3) << 6) | (data[1] << 2);
-         data[2] >>= 2;
--        if (data[2] & 1)
-+        if (data[2] & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         data[2] >>= 6;
-         b = (data[2] & 0x3f) << 2;
-         data[2] >>= 6;
-@@ -314,10 +320,11 @@ static void pxa2xx_draw_line19p(void *opaque,
-         data[2] >>= 6;
-         r = data[2] << 2;
-         data[2] >>= 6;
--        if (data[2] & 1)
-+        if (data[2] & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         width -= 4;
-     }
- }
-@@ -359,10 +366,11 @@ static void pxa2xx_draw_line24t(void *opaque,
-         data >>= 8;
-         r = data & 0xff;
-         data >>= 8;
--        if (data & 1)
-+        if (data & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         width -= 1;
-         src += 4;
-     }
-@@ -384,10 +392,11 @@ static void pxa2xx_draw_line25(void *opaque,
-         data >>= 8;
-         r = data & 0xff;
-         data >>= 8;
--        if (data & 1)
-+        if (data & 1) {
-             SKIP_PIXEL(dest);
--        else
-+        } else {
-             COPY_PIXEL(dest, rgb_to_pixel32(r, g, b));
-+        }
-         width -= 1;
-         src += 4;
-     }
--- 
-2.20.1
-
+Peter

@@ -1,99 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1633901lfo;
-        Thu, 4 Feb 2021 18:20:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyrfgANPKYe0m50c1/dAPEIof6AO9nsEykbjCoTIpXHnX9MTUaLPbIfzixNuiz7a5Sv0H8h
-X-Received: by 2002:a25:cb92:: with SMTP id b140mr2931908ybg.433.1612491647043;
-        Thu, 04 Feb 2021 18:20:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612491647; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1211142lfb;
+        Wed, 2 Dec 2020 06:45:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyXm0AOsuauKjR7J+GGDSvoPsCXqONKhpQiC+8+9amtugjArE1rhhMsfXGo9b2F1qmHSPVB
+X-Received: by 2002:a25:da0f:: with SMTP id n15mr2996249ybf.481.1606920351577;
+        Wed, 02 Dec 2020 06:45:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606920351; cv=none;
         d=google.com; s=arc-20160816;
-        b=DePAb3+gbZLAalAeagGHdP0OXx6+14BI2lxOqM6GwnEFRszB5aVMQwhw2apR1mnpjY
-         br9mB6JstsqvjAqkF0qyfZsTfrVHnopLSXEugW1kP3f5t8buQ/X6oEdoXhbBeg8TqfV9
-         jxrP+Nu+JJ1420EiHTZefJAw3A/BrE/7w8IDotS+bjbQEnqpBdCNW2M2UL6XwsIharDA
-         LWebcZHOnJAPaQPp5Zv/EHkcJGRKH+kc6ulUnVEDohBboIVfRRM8QXxu7a6yF8QQ2P41
-         jRsheeSOWncXH2cP+Y9NqD+WlX8GNuHKqbq/myruAhD5FCqkdT4prCnzAVDMp/oaEc7v
-         kOPg==
+        b=N/Xa2bTEcW6AvdAzEtw049512DRC6cGHyEVSCQeXd4EvAMAiG3r4gMu4W/eQ61/nQ+
+         f1Airyc2S6C7yFLkt0hDaFYID8aUYtTC8Lr9wH1cJclAps71bfCEF5u+t/PJJgP769/0
+         nFa1PkZ2GB5azltsQmuPciw4hDI6WCFUvbSo1wpvYiNmr5eyFtrvtaplaF7+9kOVDPd2
+         3rZHfMNCbmMfxr5g3ULnQrvBkUMCsd7tU4GpR4JnZKd6jXh4BHd1iZc369ergw6SDT9T
+         hujBCwjPZogyjDmy2nFw2YKcxYrTcMr3NNjGvDoOX5tmFD0GxRPqU/GVs/UYs61u8XBX
+         xnKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:date:to:from:subject:message-id
-         :dkim-signature;
-        bh=kxZ08gdFWgnbbu/XoHH1SGEbS1d0c+AUA/NzfSJAkxs=;
-        b=IMWeJ5NIroGpc5HFMpNDNYiKy27Djog8890hSmDaaSvjvG0cvpU/jnHB7KtYFwwYPs
-         hGBJyc7chQyr8Q43NkDm2mknqmCKfBV67VYCGA+Fx2dJS089NTCp92gjnUt2epq7vD6l
-         3/miBwMreFmLUWtYJGGHQ12eMd49swrXUcWECGeec22HMNDdy3N9mClUN76Udd7ACILg
-         gDJkCrxEpp6mfs73y2q/24vjTeNzkKBheRMvjBYEO9vhbAZtRthEgzABDrkdtiNIE6Fn
-         k/cJB18O5QZABC4gJCX8ziQSQzygP/+7KiirLsvvRnvt81TPXUtvo4FY2F7U7UvWMZ3e
-         YFMA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=hjwNWt57Ej4U7zipruW3su4cFwClr7ZfkPb/UCNL6zk=;
+        b=Z47YU5bhQrviaVGV3afAv1A9VninO6l54RYP0cIHG7uJdqy5q5hjrwsgefC7+J+N6p
+         6WjEDXrfEqd7rpy04ct3p3jpPTbCUwYzevcWKNPfMMjjFZwHq10hH9Dai7vOUZDux0Bw
+         diQ0ywVEeNOlToLGb2cTrhR60xhnDxFTDG6oSQiQB6CXKWkdHEuHrr0gicXuEhbFUQfE
+         4bfTA0pUN/lF0dQkSOjEK9wowYTC1Ly+hoXYTwTPTsUGI4KRjZap33R9xmm986Wy6tSM
+         v7KU2B3/89h5TFvEVOr8UuD5cEsELe8qxBZM9DC6gbAWqysng+ej/MpmawifIfegKf9N
+         8UkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nhb0BG1F;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFW6uJhi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n190si8498042ybn.445.2021.02.04.18.20.46
+        by mx.google.com with ESMTPS id e18si2204702ybp.285.2020.12.02.06.45.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Feb 2021 18:20:47 -0800 (PST)
+        Wed, 02 Dec 2020 06:45:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nhb0BG1F;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFW6uJhi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48642 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37498 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7qjm-0003C3-Ca
-	for alex.bennee@linaro.org; Thu, 04 Feb 2021 21:20:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48084)
+	id 1kkTOA-0003d6-Uv
+	for alex.bennee@linaro.org; Wed, 02 Dec 2020 09:45:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
- id 1l7qje-0003BJ-5f; Thu, 04 Feb 2021 21:20:38 -0500
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c]:46630)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kkTO1-0003cV-MF; Wed, 02 Dec 2020 09:45:41 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:42345)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
- id 1l7qja-0000LA-G0; Thu, 04 Feb 2021 21:20:37 -0500
-Received: by mail-io1-xd2c.google.com with SMTP id u8so5424552ior.13;
- Thu, 04 Feb 2021 18:20:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kkTNz-0006Ls-Vd; Wed, 02 Dec 2020 09:45:41 -0500
+Received: by mail-pl1-x641.google.com with SMTP id s2so1230356plr.9;
+ Wed, 02 Dec 2020 06:45:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:user-agent:mime-version
+ h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=kxZ08gdFWgnbbu/XoHH1SGEbS1d0c+AUA/NzfSJAkxs=;
- b=Nhb0BG1FMaP8pC9KH0Ik+XWv7hBYSN6TuAIpRocbEGm7LQXbfvMCh5aGnnc4IwltoR
- DoCMbELMv3/dgkorR+aXQwkfvzc0nFDnYtBs73T9i3nv/9ymMKIBk+Tn1HTVwDX2S2S1
- AGfRI23P0jWVkPF4WPvd3f+fOTD5nr9qPTtIhgmru9Y4UTQa5/flV1tI+cPql2TeFX4O
- UzSe9dJf0tzjMbZnuib6TfE7sVvoQBb/3JIX1kUp9omwetyT3CgXB7PMUXvIJRIJipsj
- p0hx800xAPYd9huIOFIro978x5VMsDrFlwzKcqmr/EE1ezIzgo1vGRO1IFPBBE9oRxQk
- TpSw==
+ bh=hjwNWt57Ej4U7zipruW3su4cFwClr7ZfkPb/UCNL6zk=;
+ b=UFW6uJhi2Mwztjtz3suJeEeYxREgIsWs/uMlcnRNGJYDIWVLK9JmEXwstsqUaJoTlK
+ xrKnOxNBjEC1LlKjH7VpwDFz8lqIkYh6MmeLdbK4VUtDFiEJL/78YXJvFl8ELwZ7D7pk
+ +92Y5CGuUMQu7GCN6mVUI6YJEeV7d0Cjb9krj2Cr83ut1HYKDh9ZrjCXKD+Cp2Zkkkep
+ O4D9AePXD0zM0mTsyxQeDUpfx3Itd7Rnq4RiC2JhulLkQ1rU36hJvjdnmrsCDp0/hivg
+ GJP8ou0Tx/0xtyRofACF6f+qJPgoaBrFouYrCs5CZtcCpmAWCAyKKGbM3sCo2idj8FLZ
+ 3sjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:user-agent
- :mime-version:content-transfer-encoding;
- bh=kxZ08gdFWgnbbu/XoHH1SGEbS1d0c+AUA/NzfSJAkxs=;
- b=YVAKeEzgas7xiz0OfslGwMe9nIscuPj99U9T+uzPkPD6/3cvisRlJAF2+1osC7gNfD
- tJ+zipcuby2XvLXn23UXOXU+gbF80xgcBBNXOIf1SjVEAa0E7Fl/SoNb6hN1boHeN2tY
- 9r5B6MNvGPtZLg3NDJdygInp2LMqUld5Qs83sW4ZfOIGGPCpJeI1yxtrLqahq2elR+4i
- JI1E074/w0lBwLmRcxK2sX3ZU+eUuxnnVg8r6SqZfPslkx+4mJWwUvhUeb5gKUCEWcpb
- thOZmuFYn+CGWlDHZoC4m2H8wvlpputpogn0pq/4TS0cPxVmZ33NkOaGei+VuQ8O6Qua
- lF9w==
-X-Gm-Message-State: AOAM533SSSsF7A8RsterA92hzFQ4tGtpCEeBKThuDTE9mrIaqifVixKh
- 483WI66lDj7KeoVN0aul64FRXD2Vx5uju4IkMBk=
-X-Received: by 2002:a02:a90a:: with SMTP id n10mr2664688jam.7.1612491632681;
- Thu, 04 Feb 2021 18:20:32 -0800 (PST)
-Received: from [127.0.0.1] (ec2-3-14-82-192.us-east-2.compute.amazonaws.com.
- [3.14.82.192])
- by smtp.gmail.com with ESMTPSA id f8sm3472897ioh.42.2021.02.04.18.20.29
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=hjwNWt57Ej4U7zipruW3su4cFwClr7ZfkPb/UCNL6zk=;
+ b=iD+jTWra4uXzePFAgSgrPMw+VVDeJJdaMkLtp9gS828V5lCjGwKIwXAXDFUcytBRmx
+ Kub4mbXQaUOCOQZ0v4OZXCzlUt21dNT39/vh6+JRhNVx73B/jdi1qucqk3XUG4zEsMgv
+ bqQVldOgWTnnhcBQW6PCcLYKL6WJJWuvZZft2eaPrpGpTh6wrbRdYK5KWSsMwLfc2uMy
+ qSr2ahXDnizkvPakeViSMPduliK2UxOvZMaMEjtcL5qsyiJ5eUjey82paM4qfnA4EfWR
+ +uWtbR7rAm3VoN4cZWUZlPNZFb1W/4JQu+Y8TFgU4aodQRSja7k3/mW+/5R6QXgcAGyO
+ MFiw==
+X-Gm-Message-State: AOAM531IGxeGHBGB4aH9qdDjdJ0S96ASia8UeTPRmZ2r9aQQl4Wa4oLE
+ jFEn/OsXsmvy6v95zVNwvUc=
+X-Received: by 2002:a17:90a:9306:: with SMTP id p6mr233329pjo.50.1606920337819; 
+ Wed, 02 Dec 2020 06:45:37 -0800 (PST)
+Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
+ [144.168.56.201])
+ by smtp.gmail.com with ESMTPSA id u6sm92367pfb.197.2020.12.02.06.45.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Feb 2021 18:20:32 -0800 (PST)
-Message-ID: <db793d463822491bc581fa3204f733adb649faa6.camel@gmail.com>
-Subject: [PATCH v2] arm: xlnx-versal: fix virtio-mmio base address assignment
-From: schspa <schspa@gmail.com>
-To: qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>
-Date: Fri, 05 Feb 2021 10:20:23 +0800
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.38.3 
+ Wed, 02 Dec 2020 06:45:37 -0800 (PST)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Alistair Francis <alistair.francis@wdc.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH v2 1/2] hw/ssi: imx_spi: Use a macro for number of chip
+ selects supported
+Date: Wed,  2 Dec 2020 22:45:22 +0800
+Message-Id: <20201202144523.24526-1-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2c;
- envelope-from=schspa@gmail.com; helo=mail-io1-xd2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pl1-x641.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,69 +116,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Bin Meng <bin.meng@windriver.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E1qFonB2HnxM
+X-TUID: 1fziI8Xo9uYr
 
+From: Bin Meng <bin.meng@windriver.com>
 
-At the moment the following QEMU command line triggers an assertion
-failure On xlnx-versal SOC:
-  qemu-system-aarch64 \
-      -machine xlnx-versal-virt -nographic -smp 2 -m 128 \
-      -fsdev local,id=shareid,path=${HOME}/work,security_model=none \
-      -device virtio-9p-device,fsdev=shareid,mount_tag=share \
-      -fsdev local,id=shareid1,path=${HOME}/Music,security_model=none \
-      -device virtio-9p-device,fsdev=shareid1,mount_tag=share1
+Avoid using a magic number (4) everywhere for the number of chip
+selects supported.
 
-  qemu-system-aarch64: ../migration/savevm.c:860:
-  vmstate_register_with_alias_id:
-  Assertion `!se->compat || se->instance_id == 0' failed.
-
-This problem was fixed on arm virt platform in commit f58b39d2d5b
-("virtio-mmio: format transport base address in BusClass.get_dev_path")
-
-It works perfectly on arm virt platform. but there is still there on
-xlnx-versal SOC.
-
-The main difference between arm virt and xlnx-versal is they use
-different way to create virtio-mmio qdev. on arm virt, it calls
-sysbus_create_simple("virtio-mmio", base, pic[irq]); which will call
-sysbus_mmio_map internally and assign base address to subsys device
-mmio correctly. but xlnx-versal's implements won't do this.
-
-However, xlnx-versal can't switch to sysbus_create_simple() to create
-virtio-mmio device. It's because xlnx-versal's cpu use
-VersalVirt.soc.fpd.apu.mr as it's memory. which is subregion of
-system_memory. sysbus_create_simple will add virtio to system_memory,
-which can't be accessed by cpu.
-
-Besides, xlnx-versal can't add sysbus_mmio_map api call too, because
-this will add memory region to system_memory, and it can't be added
-to VersalVirt.soc.fpd.apu.mr again.
-
-We can solve this by simply assign mmio[0].addr directly. makes
-virtio_mmio_bus_get_dev_path to produce correct unique device path.
-
-Signed-off-by: schspa <schspa@gmail.com>
+Signed-off-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- hw/arm/xlnx-versal-virt.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 8482cd6196..87b92ec6c3 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -490,6 +490,7 @@ static void create_virtio_regions(VersalVirt *s)
-         object_property_add_child(OBJECT(&s->soc), name, OBJECT(dev));
-         sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic_irq);
-+        SYS_BUS_DEVICE(dev)->mmio[0].addr = base;
-         mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-         memory_region_add_subregion(&s->soc.mr_ps, base, mr);
-         g_free(name);
+(no changes since v1)
+
+ hw/ssi/imx_spi.c         | 4 ++--
+ include/hw/ssi/imx_spi.h | 5 ++++-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+index d8885ae454..e605049a21 100644
+--- a/hw/ssi/imx_spi.c
++++ b/hw/ssi/imx_spi.c
+@@ -361,7 +361,7 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
+ 
+             /* We are in master mode */
+ 
+-            for (i = 0; i < 4; i++) {
++            for (i = 0; i < ECSPI_NUM_CS; i++) {
+                 qemu_set_irq(s->cs_lines[i],
+                              i == imx_spi_selected_channel(s) ? 0 : 1);
+             }
+@@ -424,7 +424,7 @@ static void imx_spi_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+ 
+-    for (i = 0; i < 4; ++i) {
++    for (i = 0; i < ECSPI_NUM_CS; ++i) {
+         sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->cs_lines[i]);
+     }
+ 
+diff --git a/include/hw/ssi/imx_spi.h b/include/hw/ssi/imx_spi.h
+index b82b17f364..eeaf49bbac 100644
+--- a/include/hw/ssi/imx_spi.h
++++ b/include/hw/ssi/imx_spi.h
+@@ -77,6 +77,9 @@
+ 
+ #define EXTRACT(value, name) extract32(value, name##_SHIFT, name##_LENGTH)
+ 
++/* number of chip selects supported */
++#define ECSPI_NUM_CS 4
++
+ #define TYPE_IMX_SPI "imx.spi"
+ OBJECT_DECLARE_SIMPLE_TYPE(IMXSPIState, IMX_SPI)
+ 
+@@ -89,7 +92,7 @@ struct IMXSPIState {
+ 
+     qemu_irq irq;
+ 
+-    qemu_irq cs_lines[4];
++    qemu_irq cs_lines[ECSPI_NUM_CS];
+ 
+     SSIBus *bus;
+ 
 -- 
-2.30.0
-
+2.25.1
 

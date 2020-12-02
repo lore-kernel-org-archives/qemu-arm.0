@@ -1,60 +1,60 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1422674lfb;
-        Wed, 2 Dec 2020 11:05:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyTiM++VBBwBJEakKpdO3j5nfPs8tly2Sreo0rcDP/8so60JJzAFJeMnxLJqsIlS2H1j+pX
-X-Received: by 2002:a25:884:: with SMTP id 126mr4279963ybi.154.1606935932794;
-        Wed, 02 Dec 2020 11:05:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606935932; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1423170lfb;
+        Wed, 2 Dec 2020 11:06:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxWkqn+i8mJD6AAJjUUhJkRLj7YRg9aVPGBUB4TRqgVYc5AKyf6P6eTxoIAzH++n5/1DcCh
+X-Received: by 2002:a25:318b:: with SMTP id x133mr5814782ybx.201.1606935969712;
+        Wed, 02 Dec 2020 11:06:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606935969; cv=none;
         d=google.com; s=arc-20160816;
-        b=gBGNIXRkbZn5qaxwkLwRuRHhl7TkqbLesyZOsCG8rfduEscr+6YbvjVr3Q+TelRtmR
-         CzMIJpZipGudZz/+y5Rg5d0JvbWZevUVQijF5sRsqtzopcIhW0Ss7FLHAvvgwFEpfU6C
-         dKGJt4EheELfqz2f6EpCSygSA8dKwIryV8vw7KsQtS0G7zdPTghUnoXvLJSXfpPNKGhh
-         GzJtl0jX4aEOP4H063+PI3x2T/XCau5OHWtuzj2xpn2jtxpWLd5X+EDrIfXgR1HcBy8a
-         oOeLtREC1hOduF+yxv/GCZFCcUy4FfyRp3a2Z1MH0Jd5mz+zmrJDCM3WTWJcidpoA36Q
-         Bx8g==
+        b=GwvUhpu55u7Tx4XE1NAN0lIBTHXAD9XaGo4C92UPRhuPDnm9h19BQ9TW2hWZXA6/hD
+         ROWKBEONrTAiDfREkCxmgmXNO1KObV92ViiDvf3hHo6sQ51mLdJItskteuXLFlUkrVCs
+         DiBU/b2Ibp0M0NdKCscO+IiHsiAQGtDa+pnCnwSoHo6YWmXhYN3XpOl2QNfgvVkksYIf
+         MtydTGz3MEGBJVbmwizgChXF2igrz7WrS7W40smXVxCoVfQM7mCuIg1xXcTstvlAMaOX
+         LQsNhtlxxtUH6hypWJoeAf0rzCysyWz0DmfRhAHsGEXqQQDWbXIajww0uoQW0EtBB9C4
+         WYzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=5NuTG1c5WsV8b4VmD2OB1G9WTv93KmgNC/OhQJxIMAg=;
-        b=I9svPzqPRbx+07drDJvLVxRFfxf15FvEXd1ZhW3goT7cK/FGa33+z8+y4avm7z6wGf
-         Z2VAhYVgfSsHOQr89a8QmFQ1y0gCK0nYp3clJ8IiQs0/FrPX8nzFQbfnlPdblRaaxq3W
-         8oLz1odEOfkfnP80/si2PYaht5ha5ZzrBC9ijCGk7o4tzUXoIBJG7qPvjKJHzTIq/p0i
-         QVWMFBIH+Kd5Ovpl+WkgvKGPSEN5lc1X1KjO3Ay7cvZffvK9+u2Em8EotPj7IsuICSof
-         1DnuF1zxjk/IrBrhGhlUzuqAN3Pf/Wy+/0Q5UJk27BugY7L3GQQqzSXzUXIjdXdKle9m
-         1Zyw==
+        bh=BDAhTSb/joRX8a5QdpkDYN2fIvfqRnrY13VoSt9Mwzw=;
+        b=Ak7zTxmkonzFbaPi4Pr+LuQCqckU2kJcqmVRj3ubT9AaqdjlCEwHcCQ5AyIQsFE9Wv
+         4h6dQwBB/nZEuWG+pxTf6DP0uWp0RaxCZIk3DVqXus43B43yyXBczdWWKJFTPaGRCZdL
+         G49jSSpsLaQdhqTvyvuU3VHm3DbvFywvlVouHzshisTn5jptpliSFoIVfTPgwvY8VTNK
+         WqpEsfcntwwIC3F0sbGmbGjOfnLAi/mWMRYa0GFGJ24VNyqba0dSQWOtKYxsmI6vrpKo
+         mRhiGLhb+pxSKhiG7V2y2xZdGFM4liy24tY9Xq8HShP2rHRWFIxprCo3nB7aiAL9VVNQ
+         Jq1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f70si3136328yba.270.2020.12.02.11.05.32
+        by mx.google.com with ESMTPS id l8si2569375ybb.193.2020.12.02.11.06.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 11:05:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Dec 2020 11:06:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45428 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44760 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkXRU-00047S-30
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 14:05:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58898)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kkXS5-0003qc-1r
+	for alex.bennee@linaro.org; Wed, 02 Dec 2020 14:06:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58908)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kkXQS-0003Fb-1B; Wed, 02 Dec 2020 14:04:28 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:56470
+ id 1kkXQT-0003L5-VP; Wed, 02 Dec 2020 14:04:29 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:56516
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1kkXQI-0005GL-NT; Wed, 02 Dec 2020 14:04:27 -0500
+ id 1kkXQO-0005Hb-5m; Wed, 02 Dec 2020 14:04:29 -0500
 Received: from localhost.localdomain
  (dynamic-077-007-031-140.77.7.pool.telefonica.de [77.7.31.140])
- by csgraf.de (Postfix) with ESMTPSA id 0FA7D390036D;
- Wed,  2 Dec 2020 20:04:17 +0100 (CET)
+ by csgraf.de (Postfix) with ESMTPSA id A173939004F5;
+ Wed,  2 Dec 2020 20:04:19 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 06/10] hvf: Add Apple Silicon support
-Date: Wed,  2 Dec 2020 20:04:04 +0100
-Message-Id: <20201202190408.2041-7-agraf@csgraf.de>
+Subject: [PATCH v3 09/10] hvf: arm: Add support for GICv3
+Date: Wed,  2 Dec 2020 20:04:07 +0100
+Message-Id: <20201202190408.2041-10-agraf@csgraf.de>
 X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 In-Reply-To: <20201202190408.2041-1-agraf@csgraf.de>
 References: <20201202190408.2041-1-agraf@csgraf.de>
@@ -68,783 +68,225 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: myNPdtBvFHu7
+ qemu-arm@nongnu.org, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EqFNtfJv1b0N
 
-With Apple Silicon available to the masses, it's a good time to add support
-for driving its virtualization extensions from QEMU.
+We currently only support GICv2 emulation. To also support GICv3, we will
+need to pass a few system registers into their respective handler functions.
 
-This patch adds all necessary architecture specific code to get basic VMs
-working. It's still pretty raw, but definitely functional.
-
-Known limitations:
-
-  - Vtimer acknowledgement is hacky
-  - Should implement more sysregs and fault on invalid ones then
-  - WFI handling is missing, need to marry it with vtimer
+This patch adds handling for all of the required system registers, so that
+we can run with more than 8 vCPUs.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
-
 ---
+ target/arm/hvf/hvf.c | 141 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 141 insertions(+)
 
-v1 -> v2:
-
-  - Merge vcpu kick function patch
-  - Implement WFI handling (allows vCPUs to sleep)
-  - Synchronize system registers (fixes OVMF crashes and reboot)
-  - Don't always call cpu_synchronize_state()
-  - Use more fine grained iothread locking
-  - Populate aa64mmfr0 from hardware
-
-v2 -> v3:
-
-  - Advance PC on SMC
-  - Use cp list interface for sysreg syncs
-  - Do not set current_cpu
-  - Fix sysreg isread mask
-  - Move sysreg handling to functions
-  - Remove WFI logic again
-  - Revert to global iothread locking
----
- MAINTAINERS              |   5 +
- accel/hvf/hvf-cpus.c     |  14 +
- include/sysemu/hvf_int.h |   5 +-
- target/arm/hvf/hvf.c     | 620 +++++++++++++++++++++++++++++++++++++++
- 4 files changed, 643 insertions(+), 1 deletion(-)
- create mode 100644 target/arm/hvf/hvf.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ca4b6d9279..9cd1d9d448 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -439,6 +439,11 @@ F: accel/accel.c
- F: accel/Makefile.objs
- F: accel/stubs/Makefile.objs
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 79aeeb237b..dfdf0827e4 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -23,6 +23,7 @@
  
-+Apple Silicon HVF CPUs
-+M: Alexander Graf <agraf@csgraf.de>
-+S: Maintained
-+F: target/arm/hvf/
+ #include "exec/address-spaces.h"
+ #include "hw/irq.h"
++#include "hw/intc/gicv3_internal.h"
+ #include "qemu/main-loop.h"
+ #include "sysemu/accel.h"
+ #include "sysemu/cpus.h"
+@@ -47,6 +48,33 @@
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 1, 14, 0)
+ #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 0, 9, 13)
+ 
++#define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 4, 12, 8)
++#define SYSREG_ICC_AP0R1_EL1     SYSREG(3, 0, 5, 12, 8)
++#define SYSREG_ICC_AP0R2_EL1     SYSREG(3, 0, 6, 12, 8)
++#define SYSREG_ICC_AP0R3_EL1     SYSREG(3, 0, 7, 12, 8)
++#define SYSREG_ICC_AP1R0_EL1     SYSREG(3, 0, 0, 12, 9)
++#define SYSREG_ICC_AP1R1_EL1     SYSREG(3, 0, 1, 12, 9)
++#define SYSREG_ICC_AP1R2_EL1     SYSREG(3, 0, 2, 12, 9)
++#define SYSREG_ICC_AP1R3_EL1     SYSREG(3, 0, 3, 12, 9)
++#define SYSREG_ICC_ASGI1R_EL1    SYSREG(3, 0, 6, 12, 11)
++#define SYSREG_ICC_BPR0_EL1      SYSREG(3, 0, 3, 12, 8)
++#define SYSREG_ICC_BPR1_EL1      SYSREG(3, 0, 3, 12, 12)
++#define SYSREG_ICC_CTLR_EL1      SYSREG(3, 0, 4, 12, 12)
++#define SYSREG_ICC_DIR_EL1       SYSREG(3, 0, 1, 12, 11)
++#define SYSREG_ICC_EOIR0_EL1     SYSREG(3, 0, 1, 12, 8)
++#define SYSREG_ICC_EOIR1_EL1     SYSREG(3, 0, 1, 12, 12)
++#define SYSREG_ICC_HPPIR0_EL1    SYSREG(3, 0, 2, 12, 8)
++#define SYSREG_ICC_HPPIR1_EL1    SYSREG(3, 0, 2, 12, 12)
++#define SYSREG_ICC_IAR0_EL1      SYSREG(3, 0, 0, 12, 8)
++#define SYSREG_ICC_IAR1_EL1      SYSREG(3, 0, 0, 12, 12)
++#define SYSREG_ICC_IGRPEN0_EL1   SYSREG(3, 0, 6, 12, 12)
++#define SYSREG_ICC_IGRPEN1_EL1   SYSREG(3, 0, 7, 12, 12)
++#define SYSREG_ICC_PMR_EL1       SYSREG(3, 0, 0, 4, 6)
++#define SYSREG_ICC_RPR_EL1       SYSREG(3, 0, 3, 12, 11)
++#define SYSREG_ICC_SGI0R_EL1     SYSREG(3, 0, 7, 12, 11)
++#define SYSREG_ICC_SGI1R_EL1     SYSREG(3, 0, 5, 12, 11)
++#define SYSREG_ICC_SRE_EL1       SYSREG(3, 0, 5, 12, 12)
 +
- X86 HVF CPUs
- M: Cameron Esfahani <dirty@apple.com>
- M: Roman Bolshakov <r.bolshakov@yadro.com>
-diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
-index a423f629d5..e613c22ad0 100644
---- a/accel/hvf/hvf-cpus.c
-+++ b/accel/hvf/hvf-cpus.c
-@@ -60,6 +60,10 @@
+ #define WFX_IS_WFE (1 << 0)
  
- #include <Hypervisor/Hypervisor.h>
- 
-+#ifdef __aarch64__
-+#define HV_VM_DEFAULT NULL
-+#endif
-+
- /* Memory slots */
- 
- struct mac_slot {
-@@ -343,7 +347,11 @@ static int hvf_init_vcpu(CPUState *cpu)
-     pthread_sigmask(SIG_BLOCK, NULL, &set);
-     sigdelset(&set, SIG_IPI);
- 
-+#ifdef __aarch64__
-+    r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t **)&cpu->hvf->exit, NULL);
-+#else
-     r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf->fd, HV_VCPU_DEFAULT);
-+#endif
-     cpu->vcpu_dirty = 1;
-     assert_hvf_ok(r);
- 
-@@ -414,8 +422,14 @@ static void hvf_start_vcpu_thread(CPUState *cpu)
-                        cpu, QEMU_THREAD_JOINABLE);
+ struct hvf_reg_match {
+@@ -419,6 +447,38 @@ void hvf_kick_vcpu_thread(CPUState *cpu)
+     hv_vcpus_exit(&cpu->hvf->fd, 1);
  }
  
-+__attribute__((weak)) void hvf_kick_vcpu_thread(CPUState *cpu)
++static uint32_t hvf_reg2cp_reg(uint32_t reg)
 +{
-+    cpus_kick_thread(cpu);
++    return ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP,
++                              (reg >> 10) & 0xf,
++                              (reg >> 1) & 0xf,
++                              (reg >> 20) & 0x3,
++                              (reg >> 14) & 0x7,
++                              (reg >> 17) & 0x7);
 +}
 +
- static const CpusAccel hvf_cpus = {
-     .create_vcpu_thread = hvf_start_vcpu_thread,
-+    .kick_vcpu_thread = hvf_kick_vcpu_thread,
- 
-     .synchronize_post_reset = hvf_cpu_synchronize_post_reset,
-     .synchronize_post_init = hvf_cpu_synchronize_post_init,
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index 7967e33727..5f15119184 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -11,6 +11,7 @@
- #ifndef HVF_INT_H
- #define HVF_INT_H
- 
-+#include "qemu/osdep.h"
- #include <Hypervisor/Hypervisor.h>
- 
- #define HVF_MAX_VCPU 0x10
-@@ -59,7 +60,8 @@ struct HVFState {
- extern HVFState *hvf_state;
- 
- struct hvf_vcpu_state {
--    int fd;
-+    uint64_t fd;
-+    void *exit;
- };
- 
- void assert_hvf_ok(hv_return_t ret);
-@@ -69,5 +71,6 @@ int hvf_arch_init_vcpu(CPUState *cpu);
- void hvf_arch_vcpu_destroy(CPUState *cpu);
- int hvf_vcpu_exec(CPUState *cpu);
- hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
-+void hvf_kick_vcpu_thread(CPUState *cpu);
- 
- #endif
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-new file mode 100644
-index 0000000000..5ecce36d4a
---- /dev/null
-+++ b/target/arm/hvf/hvf.c
-@@ -0,0 +1,620 @@
-+/*
-+ * QEMU Hypervisor.framework support for Apple Silicon
-+
-+ * Copyright 2020 Alexander Graf <agraf@csgraf.de>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu-common.h"
-+#include "qemu/error-report.h"
-+
-+#include "sysemu/runstate.h"
-+#include "sysemu/hvf.h"
-+#include "sysemu/hvf_int.h"
-+#include "sysemu/hw_accel.h"
-+
-+#include <Hypervisor/Hypervisor.h>
-+
-+#include "exec/address-spaces.h"
-+#include "hw/irq.h"
-+#include "qemu/main-loop.h"
-+#include "sysemu/accel.h"
-+#include "sysemu/cpus.h"
-+#include "target/arm/cpu.h"
-+#include "target/arm/internals.h"
-+
-+#define HVF_DEBUG 0
-+#define DPRINTF(...)                                        \
-+    if (HVF_DEBUG) {                                        \
-+        fprintf(stderr, "HVF %s:%d ", __func__, __LINE__);  \
-+        fprintf(stderr, __VA_ARGS__);                       \
-+        fprintf(stderr, "\n");                              \
-+    }
-+
-+#define HVF_SYSREG(crn, crm, op0, op1, op2) \
-+        ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
-+#define PL1_WRITE_MASK 0x4
-+
-+#define SYSREG(op0, op1, op2, crn, crm) \
-+    ((op0 << 20) | (op2 << 17) | (op1 << 14) | (crn << 10) | (crm << 1))
-+#define SYSREG_MASK           SYSREG(0x3, 0x7, 0x7, 0xf, 0xf)
-+#define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 1, 14, 0)
-+#define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 0, 9, 13)
-+
-+#define WFX_IS_WFE (1 << 0)
-+
-+struct hvf_reg_match {
-+    int reg;
-+    uint64_t offset;
-+};
-+
-+static const struct hvf_reg_match hvf_reg_match[] = {
-+    { HV_REG_X0,   offsetof(CPUARMState, xregs[0]) },
-+    { HV_REG_X1,   offsetof(CPUARMState, xregs[1]) },
-+    { HV_REG_X2,   offsetof(CPUARMState, xregs[2]) },
-+    { HV_REG_X3,   offsetof(CPUARMState, xregs[3]) },
-+    { HV_REG_X4,   offsetof(CPUARMState, xregs[4]) },
-+    { HV_REG_X5,   offsetof(CPUARMState, xregs[5]) },
-+    { HV_REG_X6,   offsetof(CPUARMState, xregs[6]) },
-+    { HV_REG_X7,   offsetof(CPUARMState, xregs[7]) },
-+    { HV_REG_X8,   offsetof(CPUARMState, xregs[8]) },
-+    { HV_REG_X9,   offsetof(CPUARMState, xregs[9]) },
-+    { HV_REG_X10,  offsetof(CPUARMState, xregs[10]) },
-+    { HV_REG_X11,  offsetof(CPUARMState, xregs[11]) },
-+    { HV_REG_X12,  offsetof(CPUARMState, xregs[12]) },
-+    { HV_REG_X13,  offsetof(CPUARMState, xregs[13]) },
-+    { HV_REG_X14,  offsetof(CPUARMState, xregs[14]) },
-+    { HV_REG_X15,  offsetof(CPUARMState, xregs[15]) },
-+    { HV_REG_X16,  offsetof(CPUARMState, xregs[16]) },
-+    { HV_REG_X17,  offsetof(CPUARMState, xregs[17]) },
-+    { HV_REG_X18,  offsetof(CPUARMState, xregs[18]) },
-+    { HV_REG_X19,  offsetof(CPUARMState, xregs[19]) },
-+    { HV_REG_X20,  offsetof(CPUARMState, xregs[20]) },
-+    { HV_REG_X21,  offsetof(CPUARMState, xregs[21]) },
-+    { HV_REG_X22,  offsetof(CPUARMState, xregs[22]) },
-+    { HV_REG_X23,  offsetof(CPUARMState, xregs[23]) },
-+    { HV_REG_X24,  offsetof(CPUARMState, xregs[24]) },
-+    { HV_REG_X25,  offsetof(CPUARMState, xregs[25]) },
-+    { HV_REG_X26,  offsetof(CPUARMState, xregs[26]) },
-+    { HV_REG_X27,  offsetof(CPUARMState, xregs[27]) },
-+    { HV_REG_X28,  offsetof(CPUARMState, xregs[28]) },
-+    { HV_REG_X29,  offsetof(CPUARMState, xregs[29]) },
-+    { HV_REG_X30,  offsetof(CPUARMState, xregs[30]) },
-+    { HV_REG_PC,   offsetof(CPUARMState, pc) },
-+};
-+
-+struct hvf_sreg_match {
-+    int reg;
-+    uint32_t key;
-+};
-+
-+static const struct hvf_sreg_match hvf_sreg_match[] = {
-+    { HV_SYS_REG_DBGBVR0_EL1, HVF_SYSREG(0, 0, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR0_EL1, HVF_SYSREG(0, 0, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR0_EL1, HVF_SYSREG(0, 0, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR0_EL1, HVF_SYSREG(0, 0, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR1_EL1, HVF_SYSREG(0, 1, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR1_EL1, HVF_SYSREG(0, 1, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR1_EL1, HVF_SYSREG(0, 1, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR1_EL1, HVF_SYSREG(0, 1, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR2_EL1, HVF_SYSREG(0, 2, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR2_EL1, HVF_SYSREG(0, 2, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR2_EL1, HVF_SYSREG(0, 2, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR2_EL1, HVF_SYSREG(0, 2, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR3_EL1, HVF_SYSREG(0, 3, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR3_EL1, HVF_SYSREG(0, 3, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR3_EL1, HVF_SYSREG(0, 3, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR3_EL1, HVF_SYSREG(0, 3, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR4_EL1, HVF_SYSREG(0, 4, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR4_EL1, HVF_SYSREG(0, 4, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR4_EL1, HVF_SYSREG(0, 4, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR4_EL1, HVF_SYSREG(0, 4, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR5_EL1, HVF_SYSREG(0, 5, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR5_EL1, HVF_SYSREG(0, 5, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR5_EL1, HVF_SYSREG(0, 5, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR5_EL1, HVF_SYSREG(0, 5, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR6_EL1, HVF_SYSREG(0, 6, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR6_EL1, HVF_SYSREG(0, 6, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR6_EL1, HVF_SYSREG(0, 6, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR6_EL1, HVF_SYSREG(0, 6, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR7_EL1, HVF_SYSREG(0, 7, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR7_EL1, HVF_SYSREG(0, 7, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR7_EL1, HVF_SYSREG(0, 7, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR7_EL1, HVF_SYSREG(0, 7, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR8_EL1, HVF_SYSREG(0, 8, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR8_EL1, HVF_SYSREG(0, 8, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR8_EL1, HVF_SYSREG(0, 8, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR8_EL1, HVF_SYSREG(0, 8, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR9_EL1, HVF_SYSREG(0, 9, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR9_EL1, HVF_SYSREG(0, 9, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR9_EL1, HVF_SYSREG(0, 9, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR9_EL1, HVF_SYSREG(0, 9, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR10_EL1, HVF_SYSREG(0, 10, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR10_EL1, HVF_SYSREG(0, 10, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR10_EL1, HVF_SYSREG(0, 10, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR10_EL1, HVF_SYSREG(0, 10, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR11_EL1, HVF_SYSREG(0, 11, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR11_EL1, HVF_SYSREG(0, 11, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR11_EL1, HVF_SYSREG(0, 11, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR11_EL1, HVF_SYSREG(0, 11, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR12_EL1, HVF_SYSREG(0, 12, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR12_EL1, HVF_SYSREG(0, 12, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR12_EL1, HVF_SYSREG(0, 12, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR12_EL1, HVF_SYSREG(0, 12, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR13_EL1, HVF_SYSREG(0, 13, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR13_EL1, HVF_SYSREG(0, 13, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR13_EL1, HVF_SYSREG(0, 13, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR13_EL1, HVF_SYSREG(0, 13, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR14_EL1, HVF_SYSREG(0, 14, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR14_EL1, HVF_SYSREG(0, 14, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR14_EL1, HVF_SYSREG(0, 14, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR14_EL1, HVF_SYSREG(0, 14, 14, 0, 7) },
-+
-+    { HV_SYS_REG_DBGBVR15_EL1, HVF_SYSREG(0, 15, 14, 0, 4) },
-+    { HV_SYS_REG_DBGBCR15_EL1, HVF_SYSREG(0, 15, 14, 0, 5) },
-+    { HV_SYS_REG_DBGWVR15_EL1, HVF_SYSREG(0, 15, 14, 0, 6) },
-+    { HV_SYS_REG_DBGWCR15_EL1, HVF_SYSREG(0, 15, 14, 0, 7) },
-+
-+#ifdef SYNC_NO_RAW_REGS
-+    /*
-+     * The registers below are manually synced on init because they are
-+     * marked as NO_RAW. We still list them to make number space sync easier.
-+     */
-+    { HV_SYS_REG_MDCCINT_EL1, HVF_SYSREG(0, 2, 2, 0, 0) },
-+    { HV_SYS_REG_MIDR_EL1, HVF_SYSREG(0, 0, 3, 0, 0) },
-+    { HV_SYS_REG_MPIDR_EL1, HVF_SYSREG(0, 0, 3, 0, 5) },
-+    { HV_SYS_REG_ID_AA64PFR0_EL1, HVF_SYSREG(0, 4, 3, 0, 0) },
-+#endif
-+    { HV_SYS_REG_ID_AA64PFR1_EL1, HVF_SYSREG(0, 4, 3, 0, 2) },
-+    { HV_SYS_REG_ID_AA64DFR0_EL1, HVF_SYSREG(0, 5, 3, 0, 0) },
-+    { HV_SYS_REG_ID_AA64DFR1_EL1, HVF_SYSREG(0, 5, 3, 0, 1) },
-+    { HV_SYS_REG_ID_AA64ISAR0_EL1, HVF_SYSREG(0, 6, 3, 0, 0) },
-+    { HV_SYS_REG_ID_AA64ISAR1_EL1, HVF_SYSREG(0, 6, 3, 0, 1) },
-+#ifdef SYNC_NO_MMFR0
-+    /* We keep the hardware MMFR0 around. HW limits are there anyway */
-+    { HV_SYS_REG_ID_AA64MMFR0_EL1, HVF_SYSREG(0, 7, 3, 0, 0) },
-+#endif
-+    { HV_SYS_REG_ID_AA64MMFR1_EL1, HVF_SYSREG(0, 7, 3, 0, 1) },
-+    { HV_SYS_REG_ID_AA64MMFR2_EL1, HVF_SYSREG(0, 7, 3, 0, 2) },
-+
-+    { HV_SYS_REG_MDSCR_EL1, HVF_SYSREG(0, 2, 2, 0, 2) },
-+    { HV_SYS_REG_SCTLR_EL1, HVF_SYSREG(1, 0, 3, 0, 0) },
-+    { HV_SYS_REG_CPACR_EL1, HVF_SYSREG(1, 0, 3, 0, 2) },
-+    { HV_SYS_REG_TTBR0_EL1, HVF_SYSREG(2, 0, 3, 0, 0) },
-+    { HV_SYS_REG_TTBR1_EL1, HVF_SYSREG(2, 0, 3, 0, 1) },
-+    { HV_SYS_REG_TCR_EL1, HVF_SYSREG(2, 0, 3, 0, 2) },
-+
-+    { HV_SYS_REG_APIAKEYLO_EL1, HVF_SYSREG(2, 1, 3, 0, 0) },
-+    { HV_SYS_REG_APIAKEYHI_EL1, HVF_SYSREG(2, 1, 3, 0, 1) },
-+    { HV_SYS_REG_APIBKEYLO_EL1, HVF_SYSREG(2, 1, 3, 0, 2) },
-+    { HV_SYS_REG_APIBKEYHI_EL1, HVF_SYSREG(2, 1, 3, 0, 3) },
-+    { HV_SYS_REG_APDAKEYLO_EL1, HVF_SYSREG(2, 2, 3, 0, 0) },
-+    { HV_SYS_REG_APDAKEYHI_EL1, HVF_SYSREG(2, 2, 3, 0, 1) },
-+    { HV_SYS_REG_APDBKEYLO_EL1, HVF_SYSREG(2, 2, 3, 0, 2) },
-+    { HV_SYS_REG_APDBKEYHI_EL1, HVF_SYSREG(2, 2, 3, 0, 3) },
-+    { HV_SYS_REG_APGAKEYLO_EL1, HVF_SYSREG(2, 3, 3, 0, 0) },
-+    { HV_SYS_REG_APGAKEYHI_EL1, HVF_SYSREG(2, 3, 3, 0, 1) },
-+
-+    { HV_SYS_REG_SPSR_EL1, HVF_SYSREG(4, 0, 3, 1, 0) },
-+    { HV_SYS_REG_ELR_EL1, HVF_SYSREG(4, 0, 3, 0, 1) },
-+    { HV_SYS_REG_SP_EL0, HVF_SYSREG(4, 1, 3, 0, 0) },
-+    { HV_SYS_REG_AFSR0_EL1, HVF_SYSREG(5, 1, 3, 0, 0) },
-+    { HV_SYS_REG_AFSR1_EL1, HVF_SYSREG(5, 1, 3, 0, 1) },
-+    { HV_SYS_REG_ESR_EL1, HVF_SYSREG(5, 2, 3, 0, 0) },
-+    { HV_SYS_REG_FAR_EL1, HVF_SYSREG(6, 0, 3, 0, 0) },
-+    { HV_SYS_REG_PAR_EL1, HVF_SYSREG(7, 4, 3, 0, 0) },
-+    { HV_SYS_REG_MAIR_EL1, HVF_SYSREG(10, 2, 3, 0, 0) },
-+    { HV_SYS_REG_AMAIR_EL1, HVF_SYSREG(10, 3, 3, 0, 0) },
-+    { HV_SYS_REG_VBAR_EL1, HVF_SYSREG(12, 0, 3, 0, 0) },
-+    { HV_SYS_REG_CONTEXTIDR_EL1, HVF_SYSREG(13, 0, 3, 0, 1) },
-+    { HV_SYS_REG_TPIDR_EL1, HVF_SYSREG(13, 0, 3, 0, 4) },
-+    { HV_SYS_REG_CNTKCTL_EL1, HVF_SYSREG(14, 1, 3, 0, 0) },
-+    { HV_SYS_REG_CSSELR_EL1, HVF_SYSREG(0, 0, 3, 2, 0) },
-+    { HV_SYS_REG_TPIDR_EL0, HVF_SYSREG(13, 0, 3, 3, 2) },
-+    { HV_SYS_REG_TPIDRRO_EL0, HVF_SYSREG(13, 0, 3, 3, 3) },
-+    { HV_SYS_REG_CNTV_CTL_EL0, HVF_SYSREG(14, 3, 3, 3, 1) },
-+    { HV_SYS_REG_CNTV_CVAL_EL0, HVF_SYSREG(14, 3, 3, 3, 2) },
-+    { HV_SYS_REG_SP_EL1, HVF_SYSREG(4, 1, 3, 4, 0) },
-+};
-+
-+int hvf_get_registers(CPUState *cpu)
++static uint64_t hvf_sysreg_read_cp(CPUState *cpu, uint32_t reg)
 +{
 +    ARMCPU *arm_cpu = ARM_CPU(cpu);
 +    CPUARMState *env = &arm_cpu->env;
-+    hv_return_t ret;
-+    uint64_t val;
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
-+        ret = hv_vcpu_get_reg(cpu->hvf->fd, hvf_reg_match[i].reg, &val);
-+        *(uint64_t *)((void *)env + hvf_reg_match[i].offset) = val;
-+        assert_hvf_ok(ret);
-+    }
-+
-+    val = 0;
-+    ret = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_FPCR, &val);
-+    assert_hvf_ok(ret);
-+    vfp_set_fpcr(env, val);
-+
-+    val = 0;
-+    ret = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_FPSR, &val);
-+    assert_hvf_ok(ret);
-+    vfp_set_fpsr(env, val);
-+
-+    ret = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_CPSR, &val);
-+    assert_hvf_ok(ret);
-+    pstate_write(env, val);
-+
-+    for (i = 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
-+        ret = hv_vcpu_get_sys_reg(cpu->hvf->fd, hvf_sreg_match[i].reg, &val);
-+        assert_hvf_ok(ret);
-+
-+        arm_cpu->cpreg_values[i] = val;
-+    }
-+    write_list_to_cpustate(arm_cpu);
-+
-+    return 0;
-+}
-+
-+int hvf_put_registers(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    hv_return_t ret;
-+    uint64_t val;
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
-+        val = *(uint64_t *)((void *)env + hvf_reg_match[i].offset);
-+        ret = hv_vcpu_set_reg(cpu->hvf->fd, hvf_reg_match[i].reg, val);
-+
-+        assert_hvf_ok(ret);
-+    }
-+
-+    ret = hv_vcpu_set_reg(cpu->hvf->fd, HV_REG_FPCR, vfp_get_fpcr(env));
-+    assert_hvf_ok(ret);
-+
-+    ret = hv_vcpu_set_reg(cpu->hvf->fd, HV_REG_FPSR, vfp_get_fpsr(env));
-+    assert_hvf_ok(ret);
-+
-+    ret = hv_vcpu_set_reg(cpu->hvf->fd, HV_REG_CPSR, pstate_read(env));
-+    assert_hvf_ok(ret);
-+
-+    write_cpustate_to_list(arm_cpu, false);
-+    for (i = 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
-+        val = arm_cpu->cpreg_values[i];
-+        ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, hvf_sreg_match[i].reg, val);
-+        assert_hvf_ok(ret);
-+    }
-+
-+    return 0;
-+}
-+
-+static void flush_cpu_state(CPUState *cpu)
-+{
-+    if (cpu->vcpu_dirty) {
-+        hvf_put_registers(cpu);
-+        cpu->vcpu_dirty = false;
-+    }
-+}
-+
-+static void hvf_set_reg(CPUState *cpu, int rt, uint64_t val)
-+{
-+    hv_return_t r;
-+
-+    flush_cpu_state(cpu);
-+
-+    if (rt < 31) {
-+        r = hv_vcpu_set_reg(cpu->hvf->fd, HV_REG_X0 + rt, val);
-+        assert_hvf_ok(r);
-+    }
-+}
-+
-+static uint64_t hvf_get_reg(CPUState *cpu, int rt)
-+{
++    const ARMCPRegInfo *ri;
 +    uint64_t val = 0;
-+    hv_return_t r;
 +
-+    flush_cpu_state(cpu);
-+
-+    if (rt < 31) {
-+        r = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_X0 + rt, &val);
-+        assert_hvf_ok(r);
++    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
++    if (ri) {
++        if (ri->type & ARM_CP_CONST) {
++            val = ri->resetvalue;
++        } else if (ri->readfn) {
++            val = ri->readfn(env, ri);
++        } else {
++            val = CPREG_FIELD64(env, ri);
++        }
++        DPRINTF("vgic read from %s [val=%016llx]", ri->name, val);
 +    }
 +
 +    return val;
 +}
 +
-+void hvf_arch_vcpu_destroy(CPUState *cpu)
-+{
-+}
+ static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
+ {
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+@@ -432,6 +492,39 @@ static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
+     case SYSREG_PMCCNTR_EL0:
+         val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+         break;
++    case SYSREG_ICC_AP0R0_EL1:
++    case SYSREG_ICC_AP0R1_EL1:
++    case SYSREG_ICC_AP0R2_EL1:
++    case SYSREG_ICC_AP0R3_EL1:
++    case SYSREG_ICC_AP1R0_EL1:
++    case SYSREG_ICC_AP1R1_EL1:
++    case SYSREG_ICC_AP1R2_EL1:
++    case SYSREG_ICC_AP1R3_EL1:
++    case SYSREG_ICC_ASGI1R_EL1:
++    case SYSREG_ICC_BPR0_EL1:
++    case SYSREG_ICC_BPR1_EL1:
++    case SYSREG_ICC_DIR_EL1:
++    case SYSREG_ICC_EOIR0_EL1:
++    case SYSREG_ICC_EOIR1_EL1:
++    case SYSREG_ICC_HPPIR0_EL1:
++    case SYSREG_ICC_HPPIR1_EL1:
++    case SYSREG_ICC_IAR0_EL1:
++    case SYSREG_ICC_IAR1_EL1:
++    case SYSREG_ICC_IGRPEN0_EL1:
++    case SYSREG_ICC_IGRPEN1_EL1:
++    case SYSREG_ICC_PMR_EL1:
++    case SYSREG_ICC_SGI0R_EL1:
++    case SYSREG_ICC_SGI1R_EL1:
++    case SYSREG_ICC_SRE_EL1:
++        val = hvf_sysreg_read_cp(cpu, reg);
++        break;
++    case SYSREG_ICC_CTLR_EL1:
++        val = hvf_sysreg_read_cp(cpu, reg);
 +
-+int hvf_arch_init_vcpu(CPUState *cpu)
++        /* AP0R registers above 0 don't trap, expose less PRIs to fit */
++        val &= ~ICC_CTLR_EL1_PRIBITS_MASK;
++        val |= 4 << ICC_CTLR_EL1_PRIBITS_SHIFT;
++        break;
+     default:
+         DPRINTF("unhandled sysreg read %08x (op0=%d op1=%d op2=%d "
+                 "crn=%d crm=%d)", reg, (reg >> 20) & 0x3,
+@@ -443,6 +536,24 @@ static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
+     return val;
+ }
+ 
++static void hvf_sysreg_write_cp(CPUState *cpu, uint32_t reg, uint64_t val)
 +{
 +    ARMCPU *arm_cpu = ARM_CPU(cpu);
 +    CPUARMState *env = &arm_cpu->env;
-+    uint32_t sregs_match_len = ARRAY_SIZE(hvf_sreg_match);
-+    uint64_t pfr;
-+    hv_return_t ret;
-+    int i;
++    const ARMCPRegInfo *ri;
 +
-+    env->aarch64 = 1;
-+    asm volatile("mrs %0, cntfrq_el0" : "=r"(arm_cpu->gt_cntfrq_hz));
++    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
 +
-+    /* Allocate enough space for our sysreg sync */
-+    arm_cpu->cpreg_indexes = g_renew(uint64_t, arm_cpu->cpreg_indexes,
-+                                     sregs_match_len);
-+    arm_cpu->cpreg_values = g_renew(uint64_t, arm_cpu->cpreg_values,
-+                                    sregs_match_len);
-+    arm_cpu->cpreg_vmstate_indexes = g_renew(uint64_t,
-+                                             arm_cpu->cpreg_vmstate_indexes,
-+                                             sregs_match_len);
-+    arm_cpu->cpreg_vmstate_values = g_renew(uint64_t,
-+                                            arm_cpu->cpreg_vmstate_values,
-+                                            sregs_match_len);
-+
-+    memset(arm_cpu->cpreg_values, 0, sregs_match_len * sizeof(uint64_t));
-+    arm_cpu->cpreg_array_len = sregs_match_len;
-+    arm_cpu->cpreg_vmstate_array_len = sregs_match_len;
-+
-+    /* Populate cp list for all known sysregs */
-+    for (i = 0; i < sregs_match_len; i++) {
-+        const ARMCPRegInfo *ri;
-+
-+        arm_cpu->cpreg_indexes[i] = cpreg_to_kvm_id(hvf_sreg_match[i].key);
-+
-+        ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_sreg_match[i].key);
-+        if (ri) {
-+            assert(!(ri->type & ARM_CP_NO_RAW));
++    if (ri) {
++        if (ri->writefn) {
++            ri->writefn(env, ri, val);
++        } else {
++            CPREG_FIELD64(env, ri) = val;
 +        }
++        DPRINTF("vgic write to %s [val=%016llx]", ri->name, val);
 +    }
-+    write_cpustate_to_list(arm_cpu, false);
-+
-+    /* Set CP_NO_RAW system registers on init */
-+    ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, HV_SYS_REG_MIDR_EL1,
-+                              arm_cpu->midr);
-+    assert_hvf_ok(ret);
-+
-+    ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, HV_SYS_REG_MPIDR_EL1,
-+                              arm_cpu->mp_affinity);
-+    assert_hvf_ok(ret);
-+
-+    ret = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_ID_AA64PFR0_EL1, &pfr);
-+    assert_hvf_ok(ret);
-+    pfr |= env->gicv3state ? (1 << 24) : 0;
-+    ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
-+    assert_hvf_ok(ret);
-+
-+    /* We're limited to underlying hardware caps, override internal versions */
-+    ret = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_ID_AA64MMFR0_EL1,
-+                              &arm_cpu->isar.id_aa64mmfr0);
-+    assert_hvf_ok(ret);
-+
-+    return 0;
 +}
 +
-+void hvf_kick_vcpu_thread(CPUState *cpu)
-+{
-+    hv_vcpus_exit(&cpu->hvf->fd, 1);
-+}
-+
-+static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    uint64_t val = 0;
-+
-+    switch (reg) {
-+    case SYSREG_CNTPCT_EL0:
-+        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) /
-+              gt_cntfrq_period_ns(arm_cpu);
+ static void hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+ {
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+@@ -450,6 +561,36 @@ static void hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     switch (reg) {
+     case SYSREG_CNTPCT_EL0:
+         break;
++    case SYSREG_ICC_AP0R0_EL1:
++    case SYSREG_ICC_AP0R1_EL1:
++    case SYSREG_ICC_AP0R2_EL1:
++    case SYSREG_ICC_AP0R3_EL1:
++    case SYSREG_ICC_AP1R0_EL1:
++    case SYSREG_ICC_AP1R1_EL1:
++    case SYSREG_ICC_AP1R2_EL1:
++    case SYSREG_ICC_AP1R3_EL1:
++    case SYSREG_ICC_ASGI1R_EL1:
++    case SYSREG_ICC_BPR0_EL1:
++    case SYSREG_ICC_BPR1_EL1:
++    case SYSREG_ICC_CTLR_EL1:
++    case SYSREG_ICC_DIR_EL1:
++    case SYSREG_ICC_HPPIR0_EL1:
++    case SYSREG_ICC_HPPIR1_EL1:
++    case SYSREG_ICC_IAR0_EL1:
++    case SYSREG_ICC_IAR1_EL1:
++    case SYSREG_ICC_IGRPEN0_EL1:
++    case SYSREG_ICC_IGRPEN1_EL1:
++    case SYSREG_ICC_PMR_EL1:
++    case SYSREG_ICC_SGI0R_EL1:
++    case SYSREG_ICC_SGI1R_EL1:
++    case SYSREG_ICC_SRE_EL1:
++        hvf_sysreg_write_cp(cpu, reg, val);
 +        break;
-+    case SYSREG_PMCCNTR_EL0:
-+        val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+        break;
-+    default:
-+        DPRINTF("unhandled sysreg read %08x (op0=%d op1=%d op2=%d "
-+                "crn=%d crm=%d)", reg, (reg >> 20) & 0x3,
-+                (reg >> 14) & 0x7, (reg >> 17) & 0x7,
-+                (reg >> 10) & 0xf, (reg >> 1) & 0xf);
-+        break;
-+    }
-+
-+    return val;
-+}
-+
-+static void hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+
-+    switch (reg) {
-+    case SYSREG_CNTPCT_EL0:
-+        break;
-+    default:
-+        DPRINTF("unhandled sysreg write %08x", reg);
-+        break;
-+    }
-+}
-+
-+static int hvf_inject_interrupts(CPUState *cpu)
-+{
-+    if (cpu->interrupt_request & CPU_INTERRUPT_FIQ) {
-+        DPRINTF("injecting FIQ");
-+        hv_vcpu_set_pending_interrupt(cpu->hvf->fd, HV_INTERRUPT_TYPE_FIQ, true);
-+    }
-+
-+    if (cpu->interrupt_request & CPU_INTERRUPT_HARD) {
-+        DPRINTF("injecting IRQ");
-+        hv_vcpu_set_pending_interrupt(cpu->hvf->fd, HV_INTERRUPT_TYPE_IRQ, true);
-+    }
-+
-+    return 0;
-+}
-+
-+int hvf_vcpu_exec(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    hv_vcpu_exit_t *hvf_exit = cpu->hvf->exit;
-+    hv_return_t r;
-+
-+    while (1) {
-+        bool advance_pc = false;
-+
-+        qemu_wait_io_event_common(cpu);
-+        flush_cpu_state(cpu);
-+
-+        if (hvf_inject_interrupts(cpu)) {
-+            return EXCP_INTERRUPT;
-+        }
-+
-+        if (cpu->halted) {
-+            return EXCP_HLT;
-+        }
-+
-+        qemu_mutex_unlock_iothread();
-+        assert_hvf_ok(hv_vcpu_run(cpu->hvf->fd));
-+
-+        /* handle VMEXIT */
-+        uint64_t exit_reason = hvf_exit->reason;
-+        uint64_t syndrome = hvf_exit->exception.syndrome;
-+        uint32_t ec = syn_get_ec(syndrome);
-+
-+        qemu_mutex_lock_iothread();
-+        switch (exit_reason) {
-+        case HV_EXIT_REASON_EXCEPTION:
-+            /* This is the main one, handle below. */
-+            break;
-+        case HV_EXIT_REASON_VTIMER_ACTIVATED:
-+            qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
-+            continue;
-+        case HV_EXIT_REASON_CANCELED:
-+            /* we got kicked, no exit to process */
-+            continue;
-+        default:
-+            assert(0);
-+        }
-+
-+        switch (ec) {
-+        case EC_DATAABORT: {
-+            bool isv = syndrome & ARM_EL_ISV;
-+            bool iswrite = (syndrome >> 6) & 1;
-+            bool s1ptw = (syndrome >> 7) & 1;
-+            uint32_t sas = (syndrome >> 22) & 3;
-+            uint32_t len = 1 << sas;
-+            uint32_t srt = (syndrome >> 16) & 0x1f;
-+            uint64_t val = 0;
-+
-+            DPRINTF("data abort: [pc=0x%llx va=0x%016llx pa=0x%016llx isv=%x "
-+                    "iswrite=%x s1ptw=%x len=%d srt=%d]\n",
-+                    env->pc, hvf_exit->exception.virtual_address,
-+                    hvf_exit->exception.physical_address, isv, iswrite,
-+                    s1ptw, len, srt);
-+
-+            assert(isv);
-+
-+            if (iswrite) {
-+                val = hvf_get_reg(cpu, srt);
-+                address_space_write(&address_space_memory,
-+                                    hvf_exit->exception.physical_address,
-+                                    MEMTXATTRS_UNSPECIFIED, &val, len);
-+
-+                /*
-+                 * We do not have a callback to see if the timer is out of
-+                 * pending state. That means every MMIO write could
-+                 * potentially be an EOI ends the vtimer. Until we get an
-+                 * actual callback, let's just see if the timer is still
-+                 * pending on every possible toggle point.
-+                 */
-+                qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 0);
-+                hv_vcpu_set_vtimer_mask(cpu->hvf->fd, false);
-+            } else {
-+                address_space_read(&address_space_memory,
-+                                   hvf_exit->exception.physical_address,
-+                                   MEMTXATTRS_UNSPECIFIED, &val, len);
-+                hvf_set_reg(cpu, srt, val);
-+            }
-+
-+            advance_pc = true;
-+            break;
-+        }
-+        case EC_SYSTEMREGISTERTRAP: {
-+            bool isread = (syndrome >> 0) & 1;
-+            uint32_t rt = (syndrome >> 5) & 0x1f;
-+            uint32_t reg = syndrome & SYSREG_MASK;
-+            uint64_t val = 0;
-+
-+            DPRINTF("sysreg %s operation reg=%08x (op0=%d op1=%d op2=%d "
-+                    "crn=%d crm=%d)", (isread) ? "read" : "write",
-+                    reg, (reg >> 20) & 0x3,
-+                    (reg >> 14) & 0x7, (reg >> 17) & 0x7,
-+                    (reg >> 10) & 0xf, (reg >> 1) & 0xf);
-+
-+            if (isread) {
-+                hvf_set_reg(cpu, rt, hvf_sysreg_read(cpu, reg));
-+            } else {
-+                val = hvf_get_reg(cpu, rt);
-+                hvf_sysreg_write(cpu, reg, val);
-+            }
-+
-+            advance_pc = true;
-+            break;
-+        }
-+        case EC_WFX_TRAP:
-+            advance_pc = true;
-+            break;
-+        case EC_AA64_HVC:
-+            cpu_synchronize_state(cpu);
-+            if (arm_is_psci_call(arm_cpu, EXCP_HVC)) {
-+                arm_handle_psci_call(arm_cpu);
-+            } else {
-+                DPRINTF("unknown HVC! %016llx", env->xregs[0]);
-+                env->xregs[0] = -1;
-+            }
-+            break;
-+        case EC_AA64_SMC:
-+            cpu_synchronize_state(cpu);
-+            if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
-+                arm_handle_psci_call(arm_cpu);
-+            } else {
-+                DPRINTF("unknown SMC! %016llx", env->xregs[0]);
-+                env->xregs[0] = -1;
-+            }
-+            env->pc += 4;
-+            break;
-+        default:
-+            cpu_synchronize_state(cpu);
-+            DPRINTF("exit: %llx [ec=0x%x pc=0x%llx]", syndrome, ec, env->pc);
-+            error_report("%llx: unhandled exit %llx", env->pc, exit_reason);
-+        }
-+
-+        if (advance_pc) {
-+            uint64_t pc;
-+
-+            flush_cpu_state(cpu);
-+
-+            r = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_PC, &pc);
-+            assert_hvf_ok(r);
-+            pc += 4;
-+            r = hv_vcpu_set_reg(cpu->hvf->fd, HV_REG_PC, pc);
-+            assert_hvf_ok(r);
-+        }
-+    }
-+}
++    case SYSREG_ICC_EOIR0_EL1:
++    case SYSREG_ICC_EOIR1_EL1:
++        hvf_sysreg_write_cp(cpu, reg, val);
++        qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 0);
++        hv_vcpu_set_vtimer_mask(cpu->hvf->fd, false);
+     default:
+         DPRINTF("unhandled sysreg write %08x", reg);
+         break;
 -- 
 2.24.3 (Apple Git-128)
 

@@ -1,67 +1,109 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1440017lfb;
-        Wed, 2 Dec 2020 11:28:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzYeh8z4r2RJxtONKmbRvQJyv4pMZwjQO6cZ11At+Hgoj0RQtYoGetShTrFeuWSSjITHggQ
-X-Received: by 2002:a25:2f4e:: with SMTP id v75mr6490874ybv.18.1606937325965;
-        Wed, 02 Dec 2020 11:28:45 -0800 (PST)
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1463043lfb;
+        Wed, 2 Dec 2020 12:02:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy7hPIvwpfLkZd1FdTuW8cRdF7MFyuv4nBkULIlhUGBMc2ITFdIPgIuQZ6Tk7DZ3044IAoU
+X-Received: by 2002:a25:7354:: with SMTP id o81mr4595072ybc.107.1606939346503;
+        Wed, 02 Dec 2020 12:02:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606939346; cv=none;
+        d=google.com; s=arc-20160816;
+        b=htwiqp+/k9ckqc276fqAcLx7+CPthZDIPLGI3RvjZFBHMDeenZUxBL/Gjyb5AH6HsH
+         wn3waBGKeC96z9T6gIMVbB9lZ9033lzSETsPDiNSIyaIJb3hA9CY9f+KaSGbCZCfMOx9
+         fbm0Nr3rK6jxuG/6MPXJiQ5TrtD2zumlkt8sQYicKjoWZ+hPX2v+DjJeYBkPfVELOKF4
+         3l+tgTSMW5sLkSEiDT3mrgLufH7pVEXGX3RbRAJy5FGx5LN87+rbdKgubuK7Zoe/MULw
+         O+QEp92jEcuzcozEPF/+YZoI3R6RdR4quDHvjcLt81BwsSa0zxQCRpuQ5zSUXIZg5Xic
+         KPcw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=4Tnx1/g/Fq99lzQzhHiuxAqrwBmkAdDBRHd0RGAObQo=;
+        b=Yg/ybWp8rgu70mCrbx1vG+hbpBrQDplhEiJevYsVCUwomCy6r4ztIzGN/VefMem1Wn
+         i3dvveYfM4ruliC8VnQOI4ZazJtcq/4JWP0l6hGLw55raRh2loXA8HmFuNeBekdYpFCe
+         /E0g7u24Rjc8dfVTjf0LXFyCdbE6BoVFacFxwxugMp1pDOTCTGgZSk/gBj1QRrXKYbyl
+         VsTWyKwcRJsais0ZU3NUnRp1LFOZw6ZYsMj94c8jXDL4k0+r/kG0sv5MfdZtYeSKCkim
+         0tbCDiu+RKloFiEQ8OzdjSUpMYlKepDxGL7h6B4c0Cu1zS+Ca9WOH216zlXmuTarPO7U
+         1PLA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=d1sPGZHK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a130si2479015ybg.311.2020.12.02.11.28.45
+        by mx.google.com with ESMTPS id d16si2838161yba.66.2020.12.02.12.02.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 11:28:45 -0800 (PST)
+        Wed, 02 Dec 2020 12:02:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57446 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=d1sPGZHK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:52834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkXnx-0005F5-7u
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 14:28:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35516)
+	id 1kkYKX-0001t9-TS
+	for alex.bennee@linaro.org; Wed, 02 Dec 2020 15:02:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kkXnX-000572-SM; Wed, 02 Dec 2020 14:28:20 -0500
-Resent-Date: Wed, 02 Dec 2020 14:28:19 -0500
-Resent-Message-Id: <E1kkXnX-000572-SM@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21731)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kkXnT-0008BF-LH; Wed, 02 Dec 2020 14:28:19 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1606937271; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=XgjDYUU44RXe3lnWCBhkaKGbKMfkBsNf4+/OL/mPCwcROwYarN4S4gpRry8YZrMiS52C5qW42gcmnVGMHn3U4OLlU1ZtPn5Pokm7+JHMf3V9QOTEYruHYLLiHr7dSWxFZIWCbFEaV4GMwfZzeTyHj416h99I/n//2MSVOys2hgg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1606937271;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=Z8e+ju/b/+mDnj36+u1478I9nuwZEklHYLrlSqmbSlI=; 
- b=WZi8KL0YYoaOWF+TkBfHcGxSu9eXKHsDw87AUj6ZEyUz169lWR7PUIo1VmGr3/6DRkv3GAYCJTb748QkxB/qIbyx8oSfGUyuELuTm4CqWQg3l9S38g6UHzZD2TOGJuOOqCOHM8Qo4/JBNqTt8SdbT5nppKOGLuHZLVAVhWeYlJg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1606937269398260.577084508207;
- Wed, 2 Dec 2020 11:27:49 -0800 (PST)
-In-Reply-To: <20201202190408.2041-1-agraf@csgraf.de>
-Subject: Re: [PATCH v3 00/10] hvf: Implement Apple Silicon Support
-Message-ID: <160693726616.24523.2712621693150225719@9aeb27d8af94>
+ (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kkYKP-0001rv-0S
+ for qemu-arm@nongnu.org; Wed, 02 Dec 2020 15:02:17 -0500
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:39323)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kkYKN-0004B0-JY
+ for qemu-arm@nongnu.org; Wed, 02 Dec 2020 15:02:16 -0500
+Received: by mail-il1-x141.google.com with SMTP id q1so2704009ilt.6
+ for <qemu-arm@nongnu.org>; Wed, 02 Dec 2020 12:02:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4Tnx1/g/Fq99lzQzhHiuxAqrwBmkAdDBRHd0RGAObQo=;
+ b=d1sPGZHKqba42eW1L2jtTFWkUOZtJ6a1F6rJUEuv3//R28tu9gg0Woap9yfHzQEHCS
+ Eih7ldmhdE0aGhMGfuFneJmoY5pJ8hYbWWbJy/PMCoYczTEio4Qd5rZ7hxQIsMMbDmbs
+ kN91pf3Dgoe6TODaByKAyeKXmXPramNCaqXNVWYYf9n6/3DAqqf2vSx6yPTSySzOlMDK
+ Q/vS/VYJb6irCAgG8NPWQW9wJxsgMBaMegX7PiXUKWwMttHJrRoX87b7sh1TVxtMc5pK
+ 37JbvBgprw5oihLie5e65Jr29LdhYrGoHTPTuZmwgGAnMpc3rZRI+ztA3bVgUp+zguBO
+ /a5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4Tnx1/g/Fq99lzQzhHiuxAqrwBmkAdDBRHd0RGAObQo=;
+ b=RvYpQwnZM08IC8HDdrTYBmHoa4mLX06RgBDposHbRyX8j3X+YIvtyyyHA+xqJpTcR1
+ c8BIeWDpdRglh2ZWQRscvVAgIQ+G4nexUj3pXkYttJfrUiJ93HWC+HP80AdbIuP0M2e3
+ 3Nh4aRGOOG86d0BJqhtTCzpLhe8EfkLZCui04siRB/ORqgey4tiRSHAmvcgo/G/hHQPY
+ Y1ShkhfaFw5Es7R8n/I7xTIa3hqgWz+bW2ydWfnw5lpVSEKzVnpqao8/K5WIG4lmVRmA
+ utbp8EAwk7acWaZ7BKZ2jbGxgYRnqy8ju/NBDmbCSrKN4mS+HtsSNBv6qJpvuQNZJ0vB
+ lTtg==
+X-Gm-Message-State: AOAM531+K9LRA7IEc5NzNO1xSidL1NNhhhaIzYeOToc6hsjcIyP00u/5
+ VrCugkgwbpk5POiWxpDYf2NdoPJitxBciqbHNSoEyA==
+X-Received: by 2002:a05:6e02:f86:: with SMTP id
+ v6mr2178086ilo.56.1606939333506; 
+ Wed, 02 Dec 2020 12:02:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: agraf@csgraf.de
-Date: Wed, 2 Dec 2020 11:27:49 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <27f51056925889c41b763b71c992f04d935157c4.1606884132.git.pcc@google.com>
+ <f01281f814ceba088595917eb06d4cb21db820f1.1606884132.git.pcc@google.com>
+ <23335280-d732-4bf7-af49-068e00601414@csgraf.de>
+In-Reply-To: <23335280-d732-4bf7-af49-068e00601414@csgraf.de>
+From: Peter Collingbourne <pcc@google.com>
+Date: Wed, 2 Dec 2020 12:02:02 -0800
+Message-ID: <CAMn1gO4bze4PsU6LbXAGxe3VC2xop-h=xXjdUuv4ZP0P66R01g@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] arm/hvf: Add a WFI handler
+To: Alexander Graf <agraf@csgraf.de>
+Cc: Frank Yang <lfy@google.com>, Roman Bolshakov <r.bolshakov@yadro.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, 
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=pcc@google.com; helo=mail-il1-x141.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,93 +116,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
- qemu-arm@nongnu.org, lfy@google.com, pbonzini@redhat.com, pcc@google.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HwR9mViLQPMa
+X-TUID: vK/OFRRErGxo
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTIwMjE5MDQwOC4yMDQx
-LTEtYWdyYWZAY3NncmFmLmRlLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUgc29t
-ZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5mb3Jt
-YXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMDEyMDIxOTA0MDguMjA0MS0xLWFn
-cmFmQGNzZ3JhZi5kZQpTdWJqZWN0OiBbUEFUQ0ggdjMgMDAvMTBdIGh2ZjogSW1wbGVtZW50IEFw
-cGxlIFNpbGljb24gU3VwcG9ydAoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFz
-aApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1s
-b2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBU
-cnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRz
-L2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0K
-ClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBo
-dHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAg
-ICAgcGF0Y2hldy8yMDIwMTIwMjE5MDQwOC4yMDQxLTEtYWdyYWZAY3NncmFmLmRlIC0+IHBhdGNo
-ZXcvMjAyMDEyMDIxOTA0MDguMjA0MS0xLWFncmFmQGNzZ3JhZi5kZQpTd2l0Y2hlZCB0byBhIG5l
-dyBicmFuY2ggJ3Rlc3QnCjRkODI3ZjMgaHZmOiBhcm06IEltcGxlbWVudCAtY3B1IGhvc3QKYmRl
-MDExMCBodmY6IGFybTogQWRkIHN1cHBvcnQgZm9yIEdJQ3YzCjVjODI0ZDcgYXJtL2h2ZjogQWRk
-IGEgV0ZJIGhhbmRsZXIKNjhmMjhjNiBhcm06IEFkZCBIeXBlcnZpc29yLmZyYW1ld29yayBidWls
-ZCB0YXJnZXQKYWU0ODgwMCBodmY6IEFkZCBBcHBsZSBTaWxpY29uIHN1cHBvcnQKY2VkMDNhNSBo
-dmY6IGFybTogTWFyayBDUFUgYXMgZGlydHkgb24gcmVzZXQKOTgzMGJmNiBhcm06IFNldCBQU0NJ
-IHRvIDAuMiBmb3IgSFZGCmIyMjE4ZGYgaHZmOiBJbnRyb2R1Y2UgaHZmIHZjcHUgc3RydWN0CjBk
-NWYwNzUgaHZmOiBNb3ZlIGNvbW1vbiBjb2RlIG91dAo2YWUzNzNhIGh2ZjogQWRkIGh5cGVydmlz
-b3IgZW50aXRsZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzCgo9PT0gT1VUUFVUIEJFR0lOID09PQox
-LzEwIENoZWNraW5nIGNvbW1pdCA2YWUzNzNhZjM1ZDkgKGh2ZjogQWRkIGh5cGVydmlzb3IgZW50
-aXRsZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzKQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVs
-ZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMxNjogCm5ldyBm
-aWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDYzIGxpbmVzIGNo
-ZWNrZWQKClBhdGNoIDEvMTAgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
-YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
-ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMi8xMCBDaGVja2lu
-ZyBjb21taXQgMGQ1ZjA3NTU5ZDU2IChodmY6IE1vdmUgY29tbW9uIGNvZGUgb3V0KQpXQVJOSU5H
-OiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQg
-dXBkYXRpbmc/CiMzODogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEg
-d2FybmluZ3MsIDEwODggbGluZXMgY2hlY2tlZAoKUGF0Y2ggMi8xMCBoYXMgc3R5bGUgcHJvYmxl
-bXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3Np
-dGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1B
-SU5UQUlORVJTLgozLzEwIENoZWNraW5nIGNvbW1pdCBiMjIxOGRmOWRhYmMgKGh2ZjogSW50cm9k
-dWNlIGh2ZiB2Y3B1IHN0cnVjdCkKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzEz
-ODogRklMRTogdGFyZ2V0L2kzODYvaHZmL2h2Zi5jOjIxMzoKKyAgICB3dm1jcyhjcHUtPmh2Zi0+
-ZmQsIFZNQ1NfRU5UUllfQ1RMUywgY2FwMmN0cmwoaHZmX3N0YXRlLT5odmZfY2Fwcy0+dm14X2Nh
-cF9lbnRyeSwKCkVSUk9SOiAiKGZvbyopIiBzaG91bGQgYmUgIihmb28gKikiCiM3NDY6IEZJTEU6
-IHRhcmdldC9pMzg2L2h2Zi94ODZodmYuYzo4NToKKyAgICBpZiAoaHZfdmNwdV93cml0ZV9mcHN0
-YXRlKGNwdV9zdGF0ZS0+aHZmLT5mZCwgKHZvaWQqKXhzYXZlLCA0MDk2KSkgewoKRVJST1I6ICIo
-Zm9vKikiIHNob3VsZCBiZSAiKGZvbyAqKSIKIzgyNzogRklMRTogdGFyZ2V0L2kzODYvaHZmL3g4
-Nmh2Zi5jOjE2NzoKKyAgICBpZiAoaHZfdmNwdV9yZWFkX2Zwc3RhdGUoY3B1X3N0YXRlLT5odmYt
-PmZkLCAodm9pZCopeHNhdmUsIDQwOTYpKSB7Cgp0b3RhbDogMiBlcnJvcnMsIDEgd2FybmluZ3Ms
-IDk5NiBsaW5lcyBjaGVja2VkCgpQYXRjaCAzLzEwIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNl
-IHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBv
-cnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMu
-Cgo0LzEwIENoZWNraW5nIGNvbW1pdCA5ODMwYmY2MzMzMTMgKGFybTogU2V0IFBTQ0kgdG8gMC4y
-IGZvciBIVkYpCjUvMTAgQ2hlY2tpbmcgY29tbWl0IGNlZDAzYTVmYTFlYiAoaHZmOiBhcm06IE1h
-cmsgQ1BVIGFzIGRpcnR5IG9uIHJlc2V0KQo2LzEwIENoZWNraW5nIGNvbW1pdCBhZTQ4ODAwMDdi
-MTIgKGh2ZjogQWRkIEFwcGxlIFNpbGljb24gc3VwcG9ydCkKV0FSTklORzogYXJjaGl0ZWN0dXJl
-IHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzQ3OiBGSUxFOiBhY2NlbC9odmYv
-aHZmLWNwdXMuYzo2MzoKKyNpZmRlZiBfX2FhcmNoNjRfXwoKV0FSTklORzogYXJjaGl0ZWN0dXJl
-IHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzU4OiBGSUxFOiBhY2NlbC9odmYv
-aHZmLWNwdXMuYzozNTA6CisjaWZkZWYgX19hYXJjaDY0X18KCldBUk5JTkc6IGFkZGVkLCBtb3Zl
-ZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzEx
-MTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVy
-cwojNTc1OiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo0NjA6CisgICAgICAgIGh2X3ZjcHVf
-c2V0X3BlbmRpbmdfaW50ZXJydXB0KGNwdS0+aHZmLT5mZCwgSFZfSU5URVJSVVBUX1RZUEVfRklR
-LCB0cnVlKTsKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM1ODA6IEZJTEU6IHRh
-cmdldC9hcm0vaHZmL2h2Zi5jOjQ2NToKKyAgICAgICAgaHZfdmNwdV9zZXRfcGVuZGluZ19pbnRl
-cnJ1cHQoY3B1LT5odmYtPmZkLCBIVl9JTlRFUlJVUFRfVFlQRV9JUlEsIHRydWUpOwoKdG90YWw6
-IDAgZXJyb3JzLCA1IHdhcm5pbmdzLCA2ODggbGluZXMgY2hlY2tlZAoKUGF0Y2ggNi8xMCBoYXMg
-c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
-ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
-S1BBVENIIGluIE1BSU5UQUlORVJTLgo3LzEwIENoZWNraW5nIGNvbW1pdCA2OGYyOGM2MmY2ODIg
-KGFybTogQWRkIEh5cGVydmlzb3IuZnJhbWV3b3JrIGJ1aWxkIHRhcmdldCkKV0FSTklORzogYWRk
-ZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0
-aW5nPwojNDc6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5p
-bmdzLCAzNiBsaW5lcyBjaGVja2VkCgpQYXRjaCA3LzEwIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxl
-YXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyBy
-ZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5F
-UlMuCjgvMTAgQ2hlY2tpbmcgY29tbWl0IDVjODI0ZDdhNGE1ZSAoYXJtL2h2ZjogQWRkIGEgV0ZJ
-IGhhbmRsZXIpCjkvMTAgQ2hlY2tpbmcgY29tbWl0IGJkZTAxMTBkOTE2MyAoaHZmOiBhcm06IEFk
-ZCBzdXBwb3J0IGZvciBHSUN2MykKMTAvMTAgQ2hlY2tpbmcgY29tbWl0IDRkODI3ZjM5YjIwNSAo
-aHZmOiBhcm06IEltcGxlbWVudCAtY3B1IGhvc3QpCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBj
-b21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0
-Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAxMjAyMTkwNDA4LjIwNDEtMS1hZ3JhZkBjc2dy
-YWYuZGUvdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0
-ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFz
-ZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+On Wed, Dec 2, 2020 at 10:49 AM Alexander Graf <agraf@csgraf.de> wrote:
+>
+>
+> On 02.12.20 05:44, Peter Collingbourne wrote:
+> > Sleep on WFI until the VTIMER is due but allow ourselves to be woken
+> > up on IPI.
+> >
+> > Signed-off-by: Peter Collingbourne <pcc@google.com>
+> > ---
+> > v3:
+> > - move the simplified locking to a separate patch
+> > - spin on sleep <2ms
+> >
+> > v2:
+> > - simplify locking further
+> > - wait indefinitely on disabled or masked timers
+> >
+> >   accel/hvf/hvf-cpus.c     |  4 +--
+> >   include/sysemu/hvf_int.h |  1 +
+> >   target/arm/hvf/hvf.c     | 56 ++++++++++++++++++++++++++++++++++++++++
+> >   3 files changed, 59 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
+> > index e613c22ad0..b2c8fb57f6 100644
+> > --- a/accel/hvf/hvf-cpus.c
+> > +++ b/accel/hvf/hvf-cpus.c
+> > @@ -344,8 +344,8 @@ static int hvf_init_vcpu(CPUState *cpu)
+> >       sigact.sa_handler = dummy_signal;
+> >       sigaction(SIG_IPI, &sigact, NULL);
+> >
+> > -    pthread_sigmask(SIG_BLOCK, NULL, &set);
+> > -    sigdelset(&set, SIG_IPI);
+> > +    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->unblock_ipi_mask);
+> > +    sigdelset(&cpu->hvf->unblock_ipi_mask, SIG_IPI);
+>
+>
+> That turns set into an unused variable, no? I'll fix it up while
+> applying though. The rest looks great, I'll push it as part of my next
+> patch set.
+
+Yes, thanks for spotting that, your fixup looks good.
+
+Peter

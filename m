@@ -1,102 +1,108 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp665188lfg;
-        Wed, 24 Feb 2021 07:39:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzuqgBo8mNmVWZNNkUj+WATRoEwkYs3f4gh4apUIj9Ly7teqjkL1Tdvv6icgmi0XSji/1yo
-X-Received: by 2002:a6b:5b0f:: with SMTP id v15mr24850027ioh.78.1614181181775;
-        Wed, 24 Feb 2021 07:39:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614181181; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp660991lfb;
+        Tue, 1 Dec 2020 16:14:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzK9bdbfp0SyZUAZWVP74W5sFemoaolNKhok0tUFvk0z4jyEV1QKayaOvAcYKIWWeRh5hW3
+X-Received: by 2002:a25:3b03:: with SMTP id i3mr8438325yba.276.1606868066419;
+        Tue, 01 Dec 2020 16:14:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606868066; cv=none;
         d=google.com; s=arc-20160816;
-        b=CGqgHDBv8qziCzSj1qQ3/KU73BU8H/9x44jFNL2X3XMkQk+DW4phGmBSNlxvcQV6jB
-         lnKEljpzRYRuZGgkXwPgGq78O3SXdGid5gQeoqbobPdCkfpP3qVJZJufXlBaYlTq+IS9
-         wgQEzV0tohsiSO3po6DJYSoNFdLAeBmIQjSjAoe6PMHMrryWpwmYi8NncruCCrUlxWpd
-         by9jPnh8jnSF2Ce1Er3Jz/48GuIk7PLLrC/sjFWH1lp8wpsNCwCPRQAQvWLtK004NmE/
-         EGo/JpkPaNNSKOKjqaYnTu50NstAebEb2w63lwyoR5r6KJJMOcDxgUrqQ7q3HdVWK0Is
-         qRgg==
+        b=o+AkgSSAKII7CpkaLoN/N+1GFXitrRgbYpmJ+AO6iM39LOQZSd8kLNCDOoCT8Wr6QQ
+         isKbFh+r/piGdY9GMyv/JZPd8/wdI6lfDsjKTqoN738sXq56nSqab7VYGP54C8t25YOq
+         u89gFPK/5pJmgEBkvqGotJHlpwcHcrCuIqJunY8AcYAcYA5i0HKyaOTYqNFjSXwbMVLu
+         lMUKE1cYdo88U6nUQaHPpV1fZC9F+2IGnQaIz9++em9dWbsCy/Q55qWnjfyTQB4+uT7f
+         IPY86hPrcUvaiR5+uZR2l7ATbg9WlABMAgmQHyayyu0vEN0DEancMhI7P+gmS/vhG9Re
+         AxrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=wcvO80PB4Mm9eVNcFCpfntalBgZqOcSgRtKUaMTOGgE=;
-        b=mfigPOAveJsNb4vA5+upbcthNtjQQ+C4syEMlMgQ7nmVMGCgeaAbMEhDCl+i++6hEh
-         MCPE+emOOSbHiu4rwoUdPCGixS0LwQHp4AjizLXozrN2Up9XV6kXhZHdCD1oQO0+cUUV
-         ZZiJL897FRAqWRA1SmW4x3QD8IvaVKidOB+XQy1/B0T75zhFzJtji50Nw6PINJVyZ99u
-         eDKSvEfdd4iGVFJIxIbL6H09cq6U1F9ZQfe/XzZhF5P//XX7/7F+hiC3ijCWWU+o1oCu
-         CQxa6iVMcv1/zNm54EZHvWy/ikm6qm/zhdm40b/fT4iUI6h+WznsQhFs5F4AkCvF+y97
-         0w9w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Ms2y6LB7pV+xBjtjWRR0tZJprFfybZJkirPgYxQNBFA=;
+        b=axw6wQt7TdAgF5y0zynu3QAntT1sYygmEpPJixDCSMhix0CA2F+GxN3ulGeRqYUuEc
+         DjrUpijGSDSCzWTYHhuQ/f1eO8fMLwCJxQcYf3S2AvFZ6n/1WL+4bKwE2nANl1zesEsX
+         yEmgKtPGtVaBlvelHeTZ8uyGKesBJdhrdNIbDtwGx6qENKyJNOWq0zmZWQv4DsUFDJYL
+         OGCt8b6Q2ewcprwBmXC1P3T2xxaRu+MFMN9B2Y8/+nuTFeWbyqv0zeQkEkWBsMo+k+bX
+         tkS6VZTWIsgfSAe9diYS5YgU4BpKlDFZ19WUDHxdEnGPVCOnxFOqXYg2mYg5u5tK8q8l
+         gB3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20161025 header.b=S6P7AUgD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v6si2228562ilu.92.2021.02.24.07.39.41
+        by mx.google.com with ESMTPS id p4si103866yba.101.2020.12.01.16.14.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Feb 2021 07:39:41 -0800 (PST)
+        Tue, 01 Dec 2020 16:14:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56032 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=S6P7AUgD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:53848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEwGL-0000gs-2W
-	for alex.bennee@linaro.org; Wed, 24 Feb 2021 10:39:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47970)
+	id 1kkFmr-0004yM-Qb
+	for alex.bennee@linaro.org; Tue, 01 Dec 2020 19:14:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1lEwG0-0000fV-Jw; Wed, 24 Feb 2021 10:39:21 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2192)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1lEwFw-0002rJ-Bg; Wed, 24 Feb 2021 10:39:20 -0500
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.55])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4Dm0Qf6N5sz5Vhc;
- Wed, 24 Feb 2021 23:36:58 +0800 (CST)
-Received: from dggpemm100012.china.huawei.com (7.185.36.212) by
- DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Wed, 24 Feb 2021 23:38:59 +0800
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- dggpemm100012.china.huawei.com (7.185.36.212) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Wed, 24 Feb 2021 23:38:58 +0800
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.2106.006; Wed, 24 Feb 2021 15:38:56 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>
-Subject: RE: [RFC v7 26/26] vfio/pci: Implement return_page_response page
- response callback
-Thread-Topic: [RFC v7 26/26] vfio/pci: Implement return_page_response page
- response callback
-Thread-Index: AQHWvEUTUiE9WTe+7E+ovBX+zyeIRqpeRGbwgAAIYwCAAA9WoIAAIHCAgAlxCQCAAB3dwA==
-Date: Wed, 24 Feb 2021 15:38:56 +0000
-Message-ID: <0c74eadade7b45c7b59cf38a205af396@huawei.com>
-References: <20201116181349.11908-1-eric.auger@redhat.com>
- <20201116181349.11908-27-eric.auger@redhat.com>
- <494e4bdf5ecd4b528a016d4545d45f71@huawei.com>
- <f11ef533-da64-3d6a-24f5-79d5e7a205da@redhat.com>
- <5f85d8999c0c40a29c32ac63b8730fa8@huawei.com>
- <679c5696-c73f-517d-f555-90ec2c767fbb@redhat.com>
- <41b9d3a2-1199-5dad-876b-10efa51638bb@redhat.com>
-In-Reply-To: <41b9d3a2-1199-5dad-876b-10efa51638bb@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.95.44]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kkFmP-0004y4-RI
+ for qemu-arm@nongnu.org; Tue, 01 Dec 2020 19:13:58 -0500
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:37312)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1kkFmL-0002cR-5X
+ for qemu-arm@nongnu.org; Tue, 01 Dec 2020 19:13:57 -0500
+Received: by mail-il1-x142.google.com with SMTP id k8so3507667ilr.4
+ for <qemu-arm@nongnu.org>; Tue, 01 Dec 2020 16:13:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Ms2y6LB7pV+xBjtjWRR0tZJprFfybZJkirPgYxQNBFA=;
+ b=S6P7AUgDHbwFarSRMd676g0p36P0LHqZF84Qm5XQnr8a+d++J2GF8Y5UzAhTKHYfKq
+ /3+7GV+qIRle/BPj/TUrVBNZlOVjIyWRCi6p5/8lgJwnmUskGB+wn48vFgFe6WNOMN4W
+ QhhIhgqDwGshoiydmQzcEWnQFMumfYqt2t9QnP/7fN2L3yzIMwDXaNT/jOmgeVZd5wYC
+ +OhRUuioa8pI7now2DKxbt3Jw6wB5cV1uFW2eR7j6Y5Nfi+d9rVR2E9A6/XT5TDRUWk1
+ MEeXlg3slhmR+122Z8AZAA69cHklG0vJvSmLN+xAdx1T7GWaCQR3nblCAkvu0GgPypX8
+ bF+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Ms2y6LB7pV+xBjtjWRR0tZJprFfybZJkirPgYxQNBFA=;
+ b=lnROZi3SsOAlMdBxTlVqTKEl8TxK13sqeZfSqrneuNOLAYIjY37v1+bYOlrEcBwiRo
+ e2DXyeYvl/ncAM7oLwA1Bn84QQaOGa1mM8XomhJTnYRvHf4AihiwEc+2z8i8TXO4TXjE
+ HOWBWxFah4nBvgFx4ifz2sC7ag+TTzJje4BYuNB25D3OngoBDZKAWOcXosXp8gutG+MG
+ pL4ilfuxqCkCY8nVlmrs2u+JGJjW+fsulAr8ByWaf3XULNzPydEz3VrahMf7zoHzs2l9
+ b6IL7IFzmP9JYu8aySJCaq7svDL+rqwFqWSuJJFMzy0f1YgYchm/Dm2ZvElIlyvuB9sT
+ Mb4g==
+X-Gm-Message-State: AOAM533yxqdDYtl66+Od3D3p8GRVL5J7HKU8ysWcgm3g/H+Yw1YcvUb0
+ jiiaApwkdCGfp1Xv/LEMfiNoGoTK6hWc2nURSAB7mQ==
+X-Received: by 2002:a92:990e:: with SMTP id p14mr190484ili.28.1606868029464;
+ Tue, 01 Dec 2020 16:13:49 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=shameerali.kolothum.thodi@huawei.com; helo=szxga03-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <4a2d15d01087207e2fba1f55ad312727dbfc782e.1606856104.git.pcc@google.com>
+ <d91deec6e2c68a9cf0e911251992b4d845be14ab.1606856104.git.pcc@google.com>
+ <bd199d49-91a6-e14a-41c3-4a4325c8eff2@csgraf.de>
+In-Reply-To: <bd199d49-91a6-e14a-41c3-4a4325c8eff2@csgraf.de>
+From: Peter Collingbourne <pcc@google.com>
+Date: Tue, 1 Dec 2020 16:13:38 -0800
+Message-ID: <CAMn1gO73SfYxEeHf5xyp0=R3UCKnjfLEACV1JpoEHEzz4yUBtg@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] arm/hvf: Stop setting current_cpu
+To: Alexander Graf <agraf@csgraf.de>
+Cc: Frank Yang <lfy@google.com>, Roman Bolshakov <r.bolshakov@yadro.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, 
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
+ envelope-from=pcc@google.com; helo=mail-il1-x142.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,39 +115,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>,
- "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "tn@semihalf.com" <tn@semihalf.com>, "peterx@redhat.com" <peterx@redhat.com>,
- "nicoleotsuka@gmail.com" <nicoleotsuka@gmail.com>,
- "vivek.gautam@arm.com" <vivek.gautam@arm.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- "zhangfei.gao@gmail.com" <zhangfei.gao@gmail.com>,
- yuzenghui <yuzenghui@huawei.com>, qubingbing <qubingbing@hisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GGriHuP3wFB3
+X-TUID: 6AKDllksqvyK
 
-SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBBdWdlciBF
-cmljIFttYWlsdG86ZXJpYy5hdWdlckByZWRoYXQuY29tXQ0KPiBTZW50OiAyNCBGZWJydWFyeSAy
-MDIxIDEzOjQ0DQo+IFRvOiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFtZWVyYWxpLmtv
-bG90aHVtLnRob2RpQGh1YXdlaS5jb20+Ow0KPiBlcmljLmF1Z2VyLnByb0BnbWFpbC5jb207IHFl
-bXUtZGV2ZWxAbm9uZ251Lm9yZzsgcWVtdS1hcm1Abm9uZ251Lm9yZzsNCj4gYWxleC53aWxsaWFt
-c29uQHJlZGhhdC5jb20NCj4gQ2M6IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgamFjb2IuanVu
-LnBhbkBsaW51eC5pbnRlbC5jb207DQo+IHpoYW5nZmVpLmdhb0BnbWFpbC5jb207IGplYW4tcGhp
-bGlwcGVAbGluYXJvLm9yZzsgdG5Ac2VtaWhhbGYuY29tOw0KPiBwZXRlcnhAcmVkaGF0LmNvbTsg
-bmljb2xlb3RzdWthQGdtYWlsLmNvbTsgdml2ZWsuZ2F1dGFtQGFybS5jb207DQo+IHlpLmwubGl1
-QGludGVsLmNvbTsgWmVuZ3RhbyAoQikgPHByaW1lLnplbmdAaGlzaWxpY29uLmNvbT47IHl1emVu
-Z2h1aQ0KPiA8eXV6ZW5naHVpQGh1YXdlaS5jb20+OyBxdWJpbmdiaW5nIDxxdWJpbmdiaW5nQGhp
-c2lsaWNvbi5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUkZDIHY3IDI2LzI2XSB2ZmlvL3BjaTogSW1w
-bGVtZW50IHJldHVybl9wYWdlX3Jlc3BvbnNlIHBhZ2UNCj4gcmVzcG9uc2UgY2FsbGJhY2sNCj4g
-DQo+IEhpIFNoYW1lZXIsDQpbLi4uXQ0KIA0KPiBJIHNlbnQgdGhlIHJlc3BpbiBvbiB0b3Agb2Yg
-bWFzdGVyIGJyYW5jaCArIEplYW4tUGhpbGlwcGUncw0KPiBbUEFUQ0ggdjEyIDAwLzEwXSBpb21t
-dTogSS9PIHBhZ2UgZmF1bHRzIGZvciBTTU1VdjMuDQo+IGJlY2F1c2UgSSB0aG91Z2h0IGl0IG1h
-a2VzIG1vcmUgc2Vuc2UgdG8gcG9zdCBvbiBtYXN0ZXIgKyBzb21lIG5lYXJseQ0KPiAicmVhZHkg
-dG8gZ28iIHN0dWZmLg0KDQpZZXMuIEkgc2VlIHRoYXQuIFRoYW5rcyBmb3IgdGhlIHJlc3Bpbi4g
-V2lsbCB0YWtlIGEgbG9vayBhdCB0aGlzIHNvb24uDQoNCj4gDQo+IE5ldmVydGhlbGVzcyBJIHdp
-bGwgZG8gbXkgYmVzdCB0byBwcmVwYXJlIGFzYXAgYSBicmFuY2ggYmFzZWQgb24gSmVhbidzDQo+
-IHN2YS9jdXJyZW50IGJyYW5jaCAoYmFzZWQgb24gNS4xMS1yYzUpDQoNCk9rLg0KDQpDaGVlcnMs
-DQpTaGFtZWVyDQoNCg0K
+On Tue, Dec 1, 2020 at 2:11 PM Alexander Graf <agraf@csgraf.de> wrote:
+>
+>
+> On 01.12.20 22:00, Peter Collingbourne wrote:
+> > This variable is already being set by the generic HVF code and it's a
+> > thread-local variable so I don't see how it can be overwritten.
+> >
+> > Signed-off-by: Peter Collingbourne <pcc@google.com>
+>
+>
+> Yikes :). Yes, absolutely!
+>
+> Would you mind if I squash this straight into my patch?
+
+Sure, please go ahead.
+
+Peter
+
+>
+>
+> Thanks,
+>
+> Alex
+>
+>
+> > ---
+> >   target/arm/hvf/hvf.c | 8 --------
+> >   1 file changed, 8 deletions(-)
+> >
+> > diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> > index 3321d48aa2..40984fcf4d 100644
+> > --- a/target/arm/hvf/hvf.c
+> > +++ b/target/arm/hvf/hvf.c
+> > @@ -364,7 +364,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+> >       do {
+> >           bool advance_pc = false;
+> >
+> > -        current_cpu = cpu;
+> >           qemu_wait_io_event_common(cpu);
+> >
+> >           flush_cpu_state(cpu);
+> > @@ -391,7 +390,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+> >               /* This is the main one, handle below. */
+> >               break;
+> >           case HV_EXIT_REASON_VTIMER_ACTIVATED:
+> > -            current_cpu = cpu;
+> >               qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
+> >               continue;
+> >           case HV_EXIT_REASON_CANCELED:
+> > @@ -412,8 +410,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+> >               uint32_t srt = (syndrome >> 16) & 0x1f;
+> >               uint64_t val = 0;
+> >
+> > -            current_cpu = cpu;
+> > -
+> >               DPRINTF("data abort: [pc=0x%llx va=0x%016llx pa=0x%016llx isv=%x "
+> >                       "iswrite=%x s1ptw=%x len=%d srt=%d]\n",
+> >                       env->pc, hvf_exit->exception.virtual_address,
+> > @@ -523,7 +519,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+> >               break;
+> >           case EC_AA64_HVC:
+> >               cpu_synchronize_state(cpu);
+> > -            current_cpu = cpu;
+> >               if (arm_is_psci_call(arm_cpu, EXCP_HVC)) {
+> >                   arm_handle_psci_call(arm_cpu);
+> >               } else {
+> > @@ -533,7 +528,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+> >               break;
+> >           case EC_AA64_SMC:
+> >               cpu_synchronize_state(cpu);
+> > -            current_cpu = cpu;
+> >               if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
+> >                   arm_handle_psci_call(arm_cpu);
+> >               } else {
+> > @@ -561,7 +555,5 @@ int hvf_vcpu_exec(CPUState *cpu)
+> >           }
+> >       } while (ret == 0);
+> >
+> > -    current_cpu = cpu;
+> > -
+> >       return ret;
+> >   }

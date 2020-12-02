@@ -1,71 +1,66 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1431479lfb;
-        Wed, 2 Dec 2020 11:17:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxM6G2xnIpc4SkUVDhMPoguMrsdedGSCR+uhovyckDR/ehF2D53yoHJLFjZFDpMscHx3dnd
-X-Received: by 2002:a25:2208:: with SMTP id i8mr7470623ybi.100.1606936620739;
-        Wed, 02 Dec 2020 11:17:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606936620; cv=none;
-        d=google.com; s=arc-20160816;
-        b=tUaifNezRD4hmFz99NNiaA/QqQF4tKcXzPgfC15rbtJgDnQThmPH3qqGv5bDiHPsiw
-         9RfDgQBp7JAybRHeybHkG+EYZm/c6L1MKP7F9IX9WWjjKvkjWRQfwBD65oYw8fZurN/M
-         syhh/l8pAhd1Q/F8IGCyWojttwHqc8TEUT9GLiO9aQQbYbbT8RJPJiGWQjJNQe3QlDcX
-         ZLvpuWnNe7Z4wqUtga6tUiXRwyiXLsOzkJ1vCLlSJMZG1J/Ya5scZfsZS0aoqA/Ri5Ti
-         VuLQw4rrf8c1ascOsebJ5DC1vZTtr1RMjLIN7nq7Hy8G6aQirJJrsHvf7ArHRV3D4Y1Y
-         m98Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=69+TEjxfB72G8RTGnpGv/gXBTtegrutfmclfPwJ6a1s=;
-        b=dIPKlcNQfjwcqBIyeGQcd/YMsOX5jxQDqd2f5VLyr0bBkGwhj4oFdFAphGuuH9uHg8
-         ac5PSPX88hjEIa9pWlyTzdmUJUAHPnUwdq95RVBpBiIRNTJZrKqeb+j7/3Vt5ti6yr7A
-         01zl4gzi9EIxe/JiXL5ux1G5ciox80HxQrh2HAkDht1EagsaBUrK56sXen9Ro1ndlEK2
-         Pwb4NHbfw9QH+230s8C2HBP7HXdkoN8rnL+DfDrWKBf9kb6zfzKqQKHyuVdXnt3N0K63
-         CcFuNWGWFFcbITRYvTcKv29p1Xa2GhxQafTYJs07GbIhRj3T8Q2VKq9CdkXq3d8jCLYp
-         HcBA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1440017lfb;
+        Wed, 2 Dec 2020 11:28:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzYeh8z4r2RJxtONKmbRvQJyv4pMZwjQO6cZ11At+Hgoj0RQtYoGetShTrFeuWSSjITHggQ
+X-Received: by 2002:a25:2f4e:: with SMTP id v75mr6490874ybv.18.1606937325965;
+        Wed, 02 Dec 2020 11:28:45 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f21si2730356ybg.275.2020.12.02.11.17.00
+        by mx.google.com with ESMTPS id a130si2479015ybg.311.2020.12.02.11.28.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 11:17:00 -0800 (PST)
+        Wed, 02 Dec 2020 11:28:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40594 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkXca-0005il-4U
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 14:17:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58888)
+	id 1kkXnx-0005F5-7u
+	for alex.bennee@linaro.org; Wed, 02 Dec 2020 14:28:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35516)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kkXQR-0003EF-FF; Wed, 02 Dec 2020 14:04:27 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:56518
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kkXQO-0005Hc-3w; Wed, 02 Dec 2020 14:04:27 -0500
-Received: from localhost.localdomain
- (dynamic-077-007-031-140.77.7.pool.telefonica.de [77.7.31.140])
- by csgraf.de (Postfix) with ESMTPSA id 4BEF239004FC;
- Wed,  2 Dec 2020 20:04:20 +0100 (CET)
-From: Alexander Graf <agraf@csgraf.de>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 10/10] hvf: arm: Implement -cpu host
-Date: Wed,  2 Dec 2020 20:04:08 +0100
-Message-Id: <20201202190408.2041-11-agraf@csgraf.de>
-X-Mailer: git-send-email 2.24.3 (Apple Git-128)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kkXnX-000572-SM; Wed, 02 Dec 2020 14:28:20 -0500
+Resent-Date: Wed, 02 Dec 2020 14:28:19 -0500
+Resent-Message-Id: <E1kkXnX-000572-SM@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21731)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kkXnT-0008BF-LH; Wed, 02 Dec 2020 14:28:19 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1606937271; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=XgjDYUU44RXe3lnWCBhkaKGbKMfkBsNf4+/OL/mPCwcROwYarN4S4gpRry8YZrMiS52C5qW42gcmnVGMHn3U4OLlU1ZtPn5Pokm7+JHMf3V9QOTEYruHYLLiHr7dSWxFZIWCbFEaV4GMwfZzeTyHj416h99I/n//2MSVOys2hgg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1606937271;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=Z8e+ju/b/+mDnj36+u1478I9nuwZEklHYLrlSqmbSlI=; 
+ b=WZi8KL0YYoaOWF+TkBfHcGxSu9eXKHsDw87AUj6ZEyUz169lWR7PUIo1VmGr3/6DRkv3GAYCJTb748QkxB/qIbyx8oSfGUyuELuTm4CqWQg3l9S38g6UHzZD2TOGJuOOqCOHM8Qo4/JBNqTt8SdbT5nppKOGLuHZLVAVhWeYlJg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1606937269398260.577084508207;
+ Wed, 2 Dec 2020 11:27:49 -0800 (PST)
 In-Reply-To: <20201202190408.2041-1-agraf@csgraf.de>
-References: <20201202190408.2041-1-agraf@csgraf.de>
+Subject: Re: [PATCH v3 00/10] hvf: Implement Apple Silicon Support
+Message-ID: <160693726616.24523.2712621693150225719@9aeb27d8af94>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: agraf@csgraf.de
+Date: Wed, 2 Dec 2020 11:27:49 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -79,163 +74,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
+ qemu-arm@nongnu.org, lfy@google.com, pbonzini@redhat.com, pcc@google.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /XD/CHUFiDzZ
+X-TUID: HwR9mViLQPMa
 
-Now that we have working system register sync, we push more target CPU
-properties into the virtual machine. That might be useful in some
-situations, but is not the typical case that users want.
-
-So let's add a -cpu host option that allows them to explicitly pass all
-CPU capabilities of their host CPU into the guest.
-
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
----
- include/sysemu/hvf.h |  2 ++
- target/arm/cpu.c     |  9 ++++++---
- target/arm/cpu.h     |  2 ++
- target/arm/hvf/hvf.c | 41 +++++++++++++++++++++++++++++++++++++++++
- target/arm/kvm_arm.h |  2 --
- 5 files changed, 51 insertions(+), 5 deletions(-)
-
-diff --git a/include/sysemu/hvf.h b/include/sysemu/hvf.h
-index f893768df9..7eb61cf094 100644
---- a/include/sysemu/hvf.h
-+++ b/include/sysemu/hvf.h
-@@ -19,6 +19,8 @@
- #ifdef CONFIG_HVF
- uint32_t hvf_get_supported_cpuid(uint32_t func, uint32_t idx,
-                                  int reg);
-+struct ARMCPU;
-+void hvf_arm_set_cpu_features_from_host(struct ARMCPU *cpu);
- extern bool hvf_allowed;
- #define hvf_enabled() (hvf_allowed)
- #else /* !CONFIG_HVF */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 9a501ea4bd..087c6292b6 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2279,12 +2279,16 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- }
- 
--#ifdef CONFIG_KVM
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
- static void arm_host_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-+#ifdef CONFIG_KVM
-     kvm_arm_set_cpu_features_from_host(cpu);
-+#else
-+    hvf_arm_set_cpu_features_from_host(cpu);
-+#endif
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-     }
-@@ -2296,7 +2300,6 @@ static const TypeInfo host_arm_cpu_type_info = {
-     .parent = TYPE_AARCH64_CPU,
-     .instance_init = arm_host_initfn,
- };
--
- #endif
- 
- static void arm_cpu_instance_init(Object *obj)
-@@ -2355,7 +2358,7 @@ static void arm_cpu_register_types(void)
- 
-     type_register_static(&arm_cpu_type_info);
- 
--#ifdef CONFIG_KVM
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-     type_register_static(&host_arm_cpu_type_info);
- #endif
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e5514c8286..e54963aa8b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2823,6 +2823,8 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define ARM_CPU_TYPE_NAME(name) (name ARM_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_ARM_CPU
- 
-+#define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
-+
- #define cpu_signal_handler cpu_arm_signal_handler
- #define cpu_list arm_cpu_list
- 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index dfdf0827e4..9442e2f232 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -373,6 +373,47 @@ static uint64_t hvf_get_reg(CPUState *cpu, int rt)
-     return val;
- }
- 
-+void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
-+{
-+    ARMISARegisters host_isar;
-+    const struct isar_regs {
-+        int reg;
-+        uint64_t *val;
-+    } regs[] = {
-+        { HV_SYS_REG_ID_AA64PFR0_EL1, &host_isar.id_aa64pfr0 },
-+        { HV_SYS_REG_ID_AA64PFR1_EL1, &host_isar.id_aa64pfr1 },
-+        { HV_SYS_REG_ID_AA64DFR0_EL1, &host_isar.id_aa64dfr0 },
-+        { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
-+        { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
-+        { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
-+        { HV_SYS_REG_ID_AA64MMFR0_EL1, &host_isar.id_aa64mmfr0 },
-+        { HV_SYS_REG_ID_AA64MMFR1_EL1, &host_isar.id_aa64mmfr1 },
-+        { HV_SYS_REG_ID_AA64MMFR2_EL1, &host_isar.id_aa64mmfr2 },
-+    };
-+    hv_vcpu_t fd;
-+    hv_vcpu_exit_t *exit;
-+    int i;
-+
-+    cpu->dtb_compatible = "arm,arm-v8";
-+    cpu->env.features = (1ULL << ARM_FEATURE_V8) |
-+                        (1ULL << ARM_FEATURE_NEON) |
-+                        (1ULL << ARM_FEATURE_AARCH64) |
-+                        (1ULL << ARM_FEATURE_PMU) |
-+                        (1ULL << ARM_FEATURE_GENERIC_TIMER);
-+
-+    /* We set up a small vcpu to extract host registers */
-+
-+    assert_hvf_ok(hv_vcpu_create(&fd, &exit, NULL));
-+    for (i = 0; i < ARRAY_SIZE(regs); i++) {
-+        assert_hvf_ok(hv_vcpu_get_sys_reg(fd, regs[i].reg, regs[i].val));
-+    }
-+    assert_hvf_ok(hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &cpu->midr));
-+    assert_hvf_ok(hv_vcpu_destroy(fd));
-+
-+    cpu->isar = host_isar;
-+    cpu->reset_sctlr = 0x00c50078;
-+}
-+
- void hvf_arch_vcpu_destroy(CPUState *cpu)
- {
- }
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index eb81b7059e..081727a37e 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -214,8 +214,6 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-  */
- void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
- 
--#define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
--
- /**
-  * ARMHostCPUFeatures: information about the host CPU (identified
-  * by asking the host kernel)
--- 
-2.24.3 (Apple Git-128)
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTIwMjE5MDQwOC4yMDQx
+LTEtYWdyYWZAY3NncmFmLmRlLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUgc29t
+ZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5mb3Jt
+YXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMDEyMDIxOTA0MDguMjA0MS0xLWFn
+cmFmQGNzZ3JhZi5kZQpTdWJqZWN0OiBbUEFUQ0ggdjMgMDAvMTBdIGh2ZjogSW1wbGVtZW50IEFw
+cGxlIFNpbGljb24gU3VwcG9ydAoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFz
+aApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1s
+b2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBU
+cnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRz
+L2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0K
+ClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBo
+dHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAg
+ICAgcGF0Y2hldy8yMDIwMTIwMjE5MDQwOC4yMDQxLTEtYWdyYWZAY3NncmFmLmRlIC0+IHBhdGNo
+ZXcvMjAyMDEyMDIxOTA0MDguMjA0MS0xLWFncmFmQGNzZ3JhZi5kZQpTd2l0Y2hlZCB0byBhIG5l
+dyBicmFuY2ggJ3Rlc3QnCjRkODI3ZjMgaHZmOiBhcm06IEltcGxlbWVudCAtY3B1IGhvc3QKYmRl
+MDExMCBodmY6IGFybTogQWRkIHN1cHBvcnQgZm9yIEdJQ3YzCjVjODI0ZDcgYXJtL2h2ZjogQWRk
+IGEgV0ZJIGhhbmRsZXIKNjhmMjhjNiBhcm06IEFkZCBIeXBlcnZpc29yLmZyYW1ld29yayBidWls
+ZCB0YXJnZXQKYWU0ODgwMCBodmY6IEFkZCBBcHBsZSBTaWxpY29uIHN1cHBvcnQKY2VkMDNhNSBo
+dmY6IGFybTogTWFyayBDUFUgYXMgZGlydHkgb24gcmVzZXQKOTgzMGJmNiBhcm06IFNldCBQU0NJ
+IHRvIDAuMiBmb3IgSFZGCmIyMjE4ZGYgaHZmOiBJbnRyb2R1Y2UgaHZmIHZjcHUgc3RydWN0CjBk
+NWYwNzUgaHZmOiBNb3ZlIGNvbW1vbiBjb2RlIG91dAo2YWUzNzNhIGh2ZjogQWRkIGh5cGVydmlz
+b3IgZW50aXRsZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzCgo9PT0gT1VUUFVUIEJFR0lOID09PQox
+LzEwIENoZWNraW5nIGNvbW1pdCA2YWUzNzNhZjM1ZDkgKGh2ZjogQWRkIGh5cGVydmlzb3IgZW50
+aXRsZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzKQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVs
+ZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMxNjogCm5ldyBm
+aWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDYzIGxpbmVzIGNo
+ZWNrZWQKClBhdGNoIDEvMTAgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
+YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
+ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMi8xMCBDaGVja2lu
+ZyBjb21taXQgMGQ1ZjA3NTU5ZDU2IChodmY6IE1vdmUgY29tbW9uIGNvZGUgb3V0KQpXQVJOSU5H
+OiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQg
+dXBkYXRpbmc/CiMzODogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEg
+d2FybmluZ3MsIDEwODggbGluZXMgY2hlY2tlZAoKUGF0Y2ggMi8xMCBoYXMgc3R5bGUgcHJvYmxl
+bXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3Np
+dGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1B
+SU5UQUlORVJTLgozLzEwIENoZWNraW5nIGNvbW1pdCBiMjIxOGRmOWRhYmMgKGh2ZjogSW50cm9k
+dWNlIGh2ZiB2Y3B1IHN0cnVjdCkKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzEz
+ODogRklMRTogdGFyZ2V0L2kzODYvaHZmL2h2Zi5jOjIxMzoKKyAgICB3dm1jcyhjcHUtPmh2Zi0+
+ZmQsIFZNQ1NfRU5UUllfQ1RMUywgY2FwMmN0cmwoaHZmX3N0YXRlLT5odmZfY2Fwcy0+dm14X2Nh
+cF9lbnRyeSwKCkVSUk9SOiAiKGZvbyopIiBzaG91bGQgYmUgIihmb28gKikiCiM3NDY6IEZJTEU6
+IHRhcmdldC9pMzg2L2h2Zi94ODZodmYuYzo4NToKKyAgICBpZiAoaHZfdmNwdV93cml0ZV9mcHN0
+YXRlKGNwdV9zdGF0ZS0+aHZmLT5mZCwgKHZvaWQqKXhzYXZlLCA0MDk2KSkgewoKRVJST1I6ICIo
+Zm9vKikiIHNob3VsZCBiZSAiKGZvbyAqKSIKIzgyNzogRklMRTogdGFyZ2V0L2kzODYvaHZmL3g4
+Nmh2Zi5jOjE2NzoKKyAgICBpZiAoaHZfdmNwdV9yZWFkX2Zwc3RhdGUoY3B1X3N0YXRlLT5odmYt
+PmZkLCAodm9pZCopeHNhdmUsIDQwOTYpKSB7Cgp0b3RhbDogMiBlcnJvcnMsIDEgd2FybmluZ3Ms
+IDk5NiBsaW5lcyBjaGVja2VkCgpQYXRjaCAzLzEwIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNl
+IHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBv
+cnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMu
+Cgo0LzEwIENoZWNraW5nIGNvbW1pdCA5ODMwYmY2MzMzMTMgKGFybTogU2V0IFBTQ0kgdG8gMC4y
+IGZvciBIVkYpCjUvMTAgQ2hlY2tpbmcgY29tbWl0IGNlZDAzYTVmYTFlYiAoaHZmOiBhcm06IE1h
+cmsgQ1BVIGFzIGRpcnR5IG9uIHJlc2V0KQo2LzEwIENoZWNraW5nIGNvbW1pdCBhZTQ4ODAwMDdi
+MTIgKGh2ZjogQWRkIEFwcGxlIFNpbGljb24gc3VwcG9ydCkKV0FSTklORzogYXJjaGl0ZWN0dXJl
+IHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzQ3OiBGSUxFOiBhY2NlbC9odmYv
+aHZmLWNwdXMuYzo2MzoKKyNpZmRlZiBfX2FhcmNoNjRfXwoKV0FSTklORzogYXJjaGl0ZWN0dXJl
+IHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzU4OiBGSUxFOiBhY2NlbC9odmYv
+aHZmLWNwdXMuYzozNTA6CisjaWZkZWYgX19hYXJjaDY0X18KCldBUk5JTkc6IGFkZGVkLCBtb3Zl
+ZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzEx
+MTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVy
+cwojNTc1OiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo0NjA6CisgICAgICAgIGh2X3ZjcHVf
+c2V0X3BlbmRpbmdfaW50ZXJydXB0KGNwdS0+aHZmLT5mZCwgSFZfSU5URVJSVVBUX1RZUEVfRklR
+LCB0cnVlKTsKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM1ODA6IEZJTEU6IHRh
+cmdldC9hcm0vaHZmL2h2Zi5jOjQ2NToKKyAgICAgICAgaHZfdmNwdV9zZXRfcGVuZGluZ19pbnRl
+cnJ1cHQoY3B1LT5odmYtPmZkLCBIVl9JTlRFUlJVUFRfVFlQRV9JUlEsIHRydWUpOwoKdG90YWw6
+IDAgZXJyb3JzLCA1IHdhcm5pbmdzLCA2ODggbGluZXMgY2hlY2tlZAoKUGF0Y2ggNi8xMCBoYXMg
+c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
+ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
+S1BBVENIIGluIE1BSU5UQUlORVJTLgo3LzEwIENoZWNraW5nIGNvbW1pdCA2OGYyOGM2MmY2ODIg
+KGFybTogQWRkIEh5cGVydmlzb3IuZnJhbWV3b3JrIGJ1aWxkIHRhcmdldCkKV0FSTklORzogYWRk
+ZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0
+aW5nPwojNDc6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5p
+bmdzLCAzNiBsaW5lcyBjaGVja2VkCgpQYXRjaCA3LzEwIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxl
+YXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyBy
+ZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5F
+UlMuCjgvMTAgQ2hlY2tpbmcgY29tbWl0IDVjODI0ZDdhNGE1ZSAoYXJtL2h2ZjogQWRkIGEgV0ZJ
+IGhhbmRsZXIpCjkvMTAgQ2hlY2tpbmcgY29tbWl0IGJkZTAxMTBkOTE2MyAoaHZmOiBhcm06IEFk
+ZCBzdXBwb3J0IGZvciBHSUN2MykKMTAvMTAgQ2hlY2tpbmcgY29tbWl0IDRkODI3ZjM5YjIwNSAo
+aHZmOiBhcm06IEltcGxlbWVudCAtY3B1IGhvc3QpCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBj
+b21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0
+Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAxMjAyMTkwNDA4LjIwNDEtMS1hZ3JhZkBjc2dy
+YWYuZGUvdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0
+ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFz
+ZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t

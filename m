@@ -1,78 +1,102 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp262269lfb;
-        Thu, 3 Dec 2020 03:02:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJySBuLgAQGUxly0h1aZryTiR25f3iKAtXsBb+xKEZOqXEOmfB/SnL29WkTFOgx9r8/gx7js
-X-Received: by 2002:a25:6903:: with SMTP id e3mr3815826ybc.295.1606993372941;
-        Thu, 03 Dec 2020 03:02:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606993372; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp301902lfb;
+        Thu, 3 Dec 2020 04:02:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw2Pvkjy5CH0FPZknsFMvxlq8OS+e8Ysv9h/bUtrTZX0U5ufi9Q/cvPB0cKP9QRWEJzAAP2
+X-Received: by 2002:a25:f88:: with SMTP id 130mr3931018ybp.130.1606996964108;
+        Thu, 03 Dec 2020 04:02:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606996964; cv=none;
         d=google.com; s=arc-20160816;
-        b=iYTAUULUUQrEj69sTgQIeY5JU7jhzperXeCSTZk4GjivxvKW+YYAs6/basMs4nboT5
-         85tnHcL2+VfUEiQF2TlFR+YMLx/I8lCepuAaxXsHzZZv/IzXm2W1g/swUxgHTvLsOeQ4
-         XltplvHbZ4vFiqUsM8zX5Nd1c7eRqpsBr1dNdr1SIvSNXxWXZxAPq6ozpeDWO1WFq73g
-         dMsXpWfUZBFxnwe1KhcwdkOEPMThU8klE9fge/vBfaVRD7o6TP0U8vi+nGZnHw7li7dZ
-         DjJTzz7Jj+DTfflVj5m1Y41cPDPBVBJwws3KqnZUGEs4IKJ70J2ut2HrFoS2hszmXyUZ
-         BJwQ==
+        b=UmG3p+8WIIhxZg60ZaUCXqABdmUA3MFYcD0NNUWG2ilYCx5XEgnF2g74tHwWy4BXYV
+         6UuFwlyoFowj6+2QZTZfW9qsmM43LbkKuvBMXW1Y2Se5FBTioi8S2hXbKIx+YAtRpiMF
+         xlCuyTmqB29DRaFD58WUkA/ub9NAvPoCwS4uCQ9ZdYp1tZMj402AtjwaZV3YE+orzt+D
+         ePKUmlpPUsAYqndXwbdgkaP6xrfWAO7T1Vz3C+vTaxrEU0Yt3uhI6+CqZ2w7gZxuujq7
+         Ji8nkOvpgPH+h5anD1L1+yBeXR/22xw7ifyhwZ2cY7MFu7tKGyfV2pdFYkdMXpEm8t3A
+         yMLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=0KjwnkXfDW05etPi05P15QUF34iuBqgZODod+VF2MYo=;
-        b=abkW0L/zLjA/reQOqAC9L4nHOSM5a3PvkshhDvon6Hf6gLvifLq2EeT4l+i646u/Ai
-         DoPzCJtS4gxMSjilzQYObVZ7VpKNqgehrNmYIllZfx0OKqXHR3Sg/d1OXWS8jMl0roeW
-         KjyG2//7sTEUmimm41UN5kLdUneD1xhpt/dkljhrQeB5CkcEeyGRgKQAWPlAXsmptJdG
-         Al6Yl5W5nfCfUL+evuYI8ZkLqkrTC2diUWVv30yutVkhReG+dGb45cg0lz5r/rIs7q1j
-         1c9XqFs3gXhofkI3DDxwb7gpIrTwAN227oV1UnTw6/FIvaevQWmifmm9AFTApqOfi+Mf
-         Nwhg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=l2EX9rFVjdU8ZgSy095fWUbIKXz7hjNnhxld8X3d5FI=;
+        b=G3chg/cYpUVpb7dOFtW4vdHDjEJ437EKcUsqCPnt+6kRKa4YvBKJmpHMQk8sq/gZsZ
+         JFwqEn5keVM4SDmijZYk39EO0wHdpc2W97Ek6DLuEplMWX+K3zGGZwABj/qMX1k8+Kea
+         8ioMDWe3JNbiO+qDcy8V3vVFj6VgsOGUUBmSEKAeP91wkv6TNOxmeKy15GBSvRbsCT20
+         B/PRmGyAaSwRXh5ck/V2abD82xFfXqzgGI92Ny53v1+0TpSphJwpKEE60KdQSCOZjbkI
+         mEvbbolasIPg3oEi3hEHamO+U6wDdVEaUSI6gK1vcPv86VjZOKB67pscswhs0VwY6lrX
+         bOEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=HdfeOvDK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6si1535336ybp.262.2020.12.03.03.02.52
+        by mx.google.com with ESMTPS id h19si1718602ybg.353.2020.12.03.04.02.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Dec 2020 03:02:52 -0800 (PST)
+        Thu, 03 Dec 2020 04:02:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43918 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=HdfeOvDK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkmNw-00050x-8J
-	for alex.bennee@linaro.org; Thu, 03 Dec 2020 06:02:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47234)
+	id 1kknJr-0001hn-GO
+	for alex.bennee@linaro.org; Thu, 03 Dec 2020 07:02:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kkmGg-00050A-H1; Thu, 03 Dec 2020 05:55:22 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:47114
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kkmGe-0002HG-A1; Thu, 03 Dec 2020 05:55:22 -0500
-Received: from Alexanders-Mac-mini.local
- (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
- by csgraf.de (Postfix) with UTF8SMTPSA id AD38339000E4;
- Thu,  3 Dec 2020 11:55:17 +0100 (CET)
-Subject: Re: [PATCH v3 05/10] hvf: arm: Mark CPU as dirty on reset
-To: Roman Bolshakov <r.bolshakov@yadro.com>
-References: <20201202190408.2041-1-agraf@csgraf.de>
- <20201202190408.2041-6-agraf@csgraf.de>
- <20201203015218.GA82480@SPB-NB-133.local>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <55e5dac5-6508-da7f-3f29-05ee225b13da@csgraf.de>
-Date: Thu, 3 Dec 2020 11:55:17 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
- Gecko/20100101 Thunderbird/84.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kknJb-0001gj-2o
+ for qemu-arm@nongnu.org; Thu, 03 Dec 2020 07:02:27 -0500
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:42130)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kknJY-0008O6-7M
+ for qemu-arm@nongnu.org; Thu, 03 Dec 2020 07:02:26 -0500
+Received: by mail-ej1-x644.google.com with SMTP id d17so3049423ejy.9
+ for <qemu-arm@nongnu.org>; Thu, 03 Dec 2020 04:02:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=l2EX9rFVjdU8ZgSy095fWUbIKXz7hjNnhxld8X3d5FI=;
+ b=HdfeOvDKg+0k+ivKN1VzVjNfTTmsGN/JGslYCvK52MN066+KjVXo8mCCCXcChoUlYJ
+ S0D76iiQAApA1SwPpIOSD+LxwpCfPBW1mTrCaLhdeRPomZ/EfH0lRXPBHpOSNsRx27BZ
+ xdEvVXGGx3Vge5AzbqhRyKbGpXeZXWRLk5XYbt8THj+rizAlIv6wQOT0txRYhyBUiQwG
+ Pn7Dyv2sJRKNTnHxBdUDSYlrGUNNThU7JKlR75E6ZWSKp0FSqQkllJix/cFCfG7KYYq0
+ LXl4YzUDScOFY+KBHg76dgXOq9w2HIlui6YbhOzEwvJx4a4WocRd2ts5obNTbw/Pu50z
+ a3RQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=l2EX9rFVjdU8ZgSy095fWUbIKXz7hjNnhxld8X3d5FI=;
+ b=uZXseO8t45+eSwRW8zUL41F2ND0Ze6FSr1ZK/EX03aO0U3Qp4LdrOA3WQLK+GRtWqs
+ vJpDCnGHfDv99o0mp0JX8ZszCy5GEHKI5En/p4Xltm+P5H5yRLpssa0rI8qNkSUPJ3qC
+ JeoKysoJbDfkK4gvLVmgv6N2SxKk2utm6f78Seaas0fGfsb5YcuAAYHUr6AN6CiRNpkV
+ KStdhSIjv3ojNQoDfNQjuguHEXh4OBxfXCTr1Bcmg12OBSJHOEfQZgebZyOInrxlJQJi
+ hNoWJc1c+29zQTAH8Jp1RJLDo3HSEEyzufYjH5dtQgr9GhsCXNLOjaPTVRGLqHrepQGm
+ 6pvw==
+X-Gm-Message-State: AOAM531RRfvQFzyxHZAJQVfJy2NXQ/GuDEpPF3FnFOsMbJjjqysKVDEZ
+ j6lUMxRBR1pJ1sI9E1N+RK4ymi9i9tesW89qyHZHtJ7UHgE=
+X-Received: by 2002:a17:906:31d2:: with SMTP id
+ f18mr2154051ejf.407.1606996942513; 
+ Thu, 03 Dec 2020 04:02:22 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201203015218.GA82480@SPB-NB-133.local>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20201119215617.29887-1-peter.maydell@linaro.org>
+In-Reply-To: <20201119215617.29887-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Dec 2020 12:02:11 +0000
+Message-ID: <CAFEAcA8kzf-PuETU=3WuDnwJ3Nw+MceO6UwEA5A_ky4a6nKRpg@mail.gmail.com>
+Subject: Re: [PATCH v2 00/28] target/arm: Implement v8.1M and Cortex-M55
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -85,44 +109,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nQFOymgLhAU4
+X-TUID: yYR4Lpxo4dZu
 
-
-On 03.12.20 02:52, Roman Bolshakov wrote:
-> On Wed, Dec 02, 2020 at 08:04:03PM +0100, Alexander Graf wrote:
->> When clearing internal state of a CPU, we should also make sure that HVF
->> knows about it and can push the new values down to vcpu state.
->>
-> I'm sorry if I'm asking something dumb. But isn't
-> cpu_synchronize_all_post_reset() is supposed to push QEMU state into HVF
-> (or any other accel) after reset?
+On Thu, 19 Nov 2020 at 21:56, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> For x86 it used to work:
->
->    static void do_hvf_cpu_synchronize_post_reset(CPUState *cpu,
->                                                  run_on_cpu_data arg)
->    {
->        hvf_put_registers(cpu);                                                                                                                                                                cpu->vcpu_dirty = false;
->    }
+> This is a v2 because it's a respin of "target/arm: More v8.1M
+> features".  The bad news is it's nearly doubled in length.  The good
+> news is that this is because the new patches on the end are enough to
+> implement all the remaining missing v8.1M specifics to the point
+> where we can provide a Cortex-M55 CPU.  (There is as yet no board
+> model that uses the Cortex-M55, though; that's next on my todo list.)
 
+I'm going to take all of this series into target-arm.next except:
 
-Yes, it works because after the reset is done, there is no other 
-register modification happening. With the PSCI emulation code in QEMU, 
-we still do modify CPU state after reset though.
+>   target/arm: Implement FPCXT_NS fp system register
+>   hw/intc/armv7m_nvic: Correct handling of CCR.BFHFNMIGN
+>   target/arm: Implement Cortex-M55 model
 
-Different question though: Why do we need the post_reset() call at all 
-here to push state? We would just push it on the next run anyways, 
-right? So if we don't set vcpu_dirty to false then, we wouldn't need 
-this patch here I think.
+(since the first two need a v2 and we don't want to enable the
+CPU until all the pieces are there).
 
-
-Alex
-
+thanks
+-- PMM

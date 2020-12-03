@@ -1,103 +1,78 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp248614lfb;
-        Thu, 3 Dec 2020 02:39:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy/pycUXgNMtAJ0EBMd9jedFrA5+VJozwr4PuJwcW90zjHGTOhiTT+2iTOlzaYshqWiQfeu
-X-Received: by 2002:a5b:48a:: with SMTP id n10mr3515289ybp.455.1606991987474;
-        Thu, 03 Dec 2020 02:39:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606991987; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp262269lfb;
+        Thu, 3 Dec 2020 03:02:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJySBuLgAQGUxly0h1aZryTiR25f3iKAtXsBb+xKEZOqXEOmfB/SnL29WkTFOgx9r8/gx7js
+X-Received: by 2002:a25:6903:: with SMTP id e3mr3815826ybc.295.1606993372941;
+        Thu, 03 Dec 2020 03:02:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606993372; cv=none;
         d=google.com; s=arc-20160816;
-        b=SUepBXfr3Jo1Yzr/Klgq4Yas7gkH+/xs3eTtYXk8xtbsJPtSkLiO3B8R1t0XQu1eyu
-         gVmsVXB/ZX4z9HSxiAM7r+Ug72Ch5Jz9tr4Zx+LNbgANcMpJ0a4pU/XY6HfHWYHG40Vq
-         ER68hnsta2RyeAuGMaXm1u7py4IIbOCkB+2kEXVNHViyG6raahvXjd8l3rcUv/w00LoS
-         vwEN52HvLWvjne0yIGPNWHpKs1pGVyd+VXEM7LaVOuaQWUS/uJYIrfghyDOPXmav2tDq
-         lDltpGZtgNpSz1kGjYD9Gs1OxF232S/vrNUnFYVgpGm/Mdir3QJ+awU0he2v/HBjsnmP
-         Rqsw==
+        b=iYTAUULUUQrEj69sTgQIeY5JU7jhzperXeCSTZk4GjivxvKW+YYAs6/basMs4nboT5
+         85tnHcL2+VfUEiQF2TlFR+YMLx/I8lCepuAaxXsHzZZv/IzXm2W1g/swUxgHTvLsOeQ4
+         XltplvHbZ4vFiqUsM8zX5Nd1c7eRqpsBr1dNdr1SIvSNXxWXZxAPq6ozpeDWO1WFq73g
+         dMsXpWfUZBFxnwe1KhcwdkOEPMThU8klE9fge/vBfaVRD7o6TP0U8vi+nGZnHw7li7dZ
+         DjJTzz7Jj+DTfflVj5m1Y41cPDPBVBJwws3KqnZUGEs4IKJ70J2ut2HrFoS2hszmXyUZ
+         BJwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=BUjgo1qkfa3S+Sfjcxcwk2Ax460gihm/QmpA7rCamGw=;
-        b=EECpeWWYgAf9IwKj+gLDmTHNX1lmDIDRRXjLLiUcmnOXOXkE5HiSmU2aoNOEHpysuF
-         iwlASXWntcBeooGjaVr7UDVRmqO9d3jzbZ+rIZnu5iHR7CGj0NI9GSJhdV31o6Amavuw
-         VMwBOS8MRDzDUbS7CbnPzDDr3L8eHuyXnnkAoqmsM4fo7vmTZAQEG7HO/0ZBJBE2nORg
-         MmfaipXGCO4hr0Qg/tFKHwYsc3ygu1WyvBW3t01l3vRFx05o6uu5crHD3Rat4YXzrFUz
-         hCB8MnYVfgNyGJGCelzv1ldMU5/XXi79YDQaqufDeDyhqaUcE6I5v+ppzF2TImcTgLHX
-         tLtQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=0KjwnkXfDW05etPi05P15QUF34iuBqgZODod+VF2MYo=;
+        b=abkW0L/zLjA/reQOqAC9L4nHOSM5a3PvkshhDvon6Hf6gLvifLq2EeT4l+i646u/Ai
+         DoPzCJtS4gxMSjilzQYObVZ7VpKNqgehrNmYIllZfx0OKqXHR3Sg/d1OXWS8jMl0roeW
+         KjyG2//7sTEUmimm41UN5kLdUneD1xhpt/dkljhrQeB5CkcEeyGRgKQAWPlAXsmptJdG
+         Al6Yl5W5nfCfUL+evuYI8ZkLqkrTC2diUWVv30yutVkhReG+dGb45cg0lz5r/rIs7q1j
+         1c9XqFs3gXhofkI3DDxwb7gpIrTwAN227oV1UnTw6/FIvaevQWmifmm9AFTApqOfi+Mf
+         Nwhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=vguxJSy5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d77si2048346ybc.153.2020.12.03.02.39.47
+        by mx.google.com with ESMTPS id e6si1535336ybp.262.2020.12.03.03.02.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Dec 2020 02:39:47 -0800 (PST)
+        Thu, 03 Dec 2020 03:02:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=vguxJSy5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
-Received: from localhost ([::1]:33244 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkm1a-0004PM-Rq
-	for alex.bennee@linaro.org; Thu, 03 Dec 2020 05:39:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42534)
+	id 1kkmNw-00050x-8J
+	for alex.bennee@linaro.org; Thu, 03 Dec 2020 06:02:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kkm1Q-0004M1-U0; Thu, 03 Dec 2020 05:39:36 -0500
-Received: from mta-02.yadro.com ([89.207.88.252]:56574 helo=mta-01.yadro.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kkm1N-0004sC-V4; Thu, 03 Dec 2020 05:39:36 -0500
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id A1998413BD;
- Thu,  3 Dec 2020 10:39:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- in-reply-to:content-disposition:content-type:content-type
- :mime-version:references:message-id:subject:subject:from:from
- :date:date:received:received:received; s=mta-01; t=1606991970;
- x=1608806371; bh=wj36yIT+3pZgY4sK+JJ1LI/dPb0oMQFzuk91x5L/pko=; b=
- vguxJSy5QCHK7HDS/KDBTJMRi1czsVkc1F/o1fQpFcNoytt+Rn70KLo0NQGcnx75
- k0ogb9UyCfUl3LGrGDQamHVJYQtekKbtYsMSfYqR6y+cWEMgPt6JiN7+Hlfkz3Y8
- ChUJVX76RKEQvdr4uEFLywA/PNBSKLQfKOckBfsODyw=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r-RIGAwabQAK; Thu,  3 Dec 2020 13:39:30 +0300 (MSK)
-Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
- [172.17.100.103])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id BAF014131C;
- Thu,  3 Dec 2020 13:39:29 +0300 (MSK)
-Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
- (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Thu, 3 Dec
- 2020 13:39:29 +0300
-Date: Thu, 3 Dec 2020 13:39:49 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: Alexander Graf <agraf@csgraf.de>
-Subject: Re: [PATCH v3 08/10] arm/hvf: Add a WFI handler
-Message-ID: <20201203103949.GC7201@SPB-NB-133.local>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1kkmGg-00050A-H1; Thu, 03 Dec 2020 05:55:22 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:47114
+ helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1kkmGe-0002HG-A1; Thu, 03 Dec 2020 05:55:22 -0500
+Received: from Alexanders-Mac-mini.local
+ (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
+ by csgraf.de (Postfix) with UTF8SMTPSA id AD38339000E4;
+ Thu,  3 Dec 2020 11:55:17 +0100 (CET)
+Subject: Re: [PATCH v3 05/10] hvf: arm: Mark CPU as dirty on reset
+To: Roman Bolshakov <r.bolshakov@yadro.com>
 References: <20201202190408.2041-1-agraf@csgraf.de>
- <20201202190408.2041-9-agraf@csgraf.de>
+ <20201202190408.2041-6-agraf@csgraf.de>
+ <20201203015218.GA82480@SPB-NB-133.local>
+From: Alexander Graf <agraf@csgraf.de>
+Message-ID: <55e5dac5-6508-da7f-3f29-05ee225b13da@csgraf.de>
+Date: Thu, 3 Dec 2020 11:55:17 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
+ Gecko/20100101 Thunderbird/84.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20201202190408.2041-9-agraf@csgraf.de>
-X-Originating-IP: [172.17.204.212]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-03.corp.yadro.com (172.17.100.103)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201203015218.GA82480@SPB-NB-133.local>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,169 +93,36 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l+n6VpKqZzfa
-
-On Wed, Dec 02, 2020 at 08:04:06PM +0100, Alexander Graf wrote:
-> From: Peter Collingbourne <pcc@google.com>
-> 
-> Sleep on WFI until the VTIMER is due but allow ourselves to be woken
-> up on IPI.
-> 
-> Signed-off-by: Peter Collingbourne <pcc@google.com>
-> [agraf: Remove unused 'set' variable, always advance PC on WFX trap]
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> ---
->  accel/hvf/hvf-cpus.c     |  5 ++--
->  include/sysemu/hvf_int.h |  1 +
->  target/arm/hvf/hvf.c     | 55 ++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 58 insertions(+), 3 deletions(-)
-> 
-> diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
-> index e613c22ad0..a981ccde70 100644
-> --- a/accel/hvf/hvf-cpus.c
-> +++ b/accel/hvf/hvf-cpus.c
-> @@ -337,15 +337,14 @@ static int hvf_init_vcpu(CPUState *cpu)
->      cpu->hvf = g_malloc0(sizeof(*cpu->hvf));
->  
->      /* init cpu signals */
-> -    sigset_t set;
->      struct sigaction sigact;
->  
->      memset(&sigact, 0, sizeof(sigact));
->      sigact.sa_handler = dummy_signal;
->      sigaction(SIG_IPI, &sigact, NULL);
->  
-> -    pthread_sigmask(SIG_BLOCK, NULL, &set);
-> -    sigdelset(&set, SIG_IPI);
-> +    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->unblock_ipi_mask);
-> +    sigdelset(&cpu->hvf->unblock_ipi_mask, SIG_IPI);
->  
->  #ifdef __aarch64__
->      r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t **)&cpu->hvf->exit, NULL);
-> diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-> index 5f15119184..13adf6ea77 100644
-> --- a/include/sysemu/hvf_int.h
-> +++ b/include/sysemu/hvf_int.h
-> @@ -62,6 +62,7 @@ extern HVFState *hvf_state;
->  struct hvf_vcpu_state {
->      uint64_t fd;
->      void *exit;
-> +    sigset_t unblock_ipi_mask;
->  };
->  
->  void assert_hvf_ok(hv_return_t ret);
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 5ecce36d4a..79aeeb237b 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -2,6 +2,7 @@
->   * QEMU Hypervisor.framework support for Apple Silicon
->  
->   * Copyright 2020 Alexander Graf <agraf@csgraf.de>
-> + * Copyright 2020 Google LLC
->   *
->   * This work is licensed under the terms of the GNU GPL, version 2 or later.
->   * See the COPYING file in the top-level directory.
-> @@ -18,6 +19,7 @@
->  #include "sysemu/hw_accel.h"
->  
->  #include <Hypervisor/Hypervisor.h>
-> +#include <mach/mach_time.h>
->  
->  #include "exec/address-spaces.h"
->  #include "hw/irq.h"
-> @@ -413,6 +415,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->  
->  void hvf_kick_vcpu_thread(CPUState *cpu)
->  {
-> +    cpus_kick_thread(cpu);
->      hv_vcpus_exit(&cpu->hvf->fd, 1);
->  }
->  
-> @@ -468,6 +471,18 @@ static int hvf_inject_interrupts(CPUState *cpu)
->      return 0;
->  }
->  
-> +static void hvf_wait_for_ipi(CPUState *cpu, struct timespec *ts)
-> +{
-> +    /*
-> +     * Use pselect to sleep so that other threads can IPI us while we're
-> +     * sleeping.
-> +     */
-> +    qatomic_mb_set(&cpu->thread_kicked, false);
-> +    qemu_mutex_unlock_iothread();
-
-I raised a concern earlier, but I don't for sure if a kick could be lost
-right here. On x86 it could be lost.
-
-> +    pselect(0, 0, 0, 0, ts, &cpu->hvf->unblock_ipi_mask);
-> +    qemu_mutex_lock_iothread();
-> +}
-> +
->  int hvf_vcpu_exec(CPUState *cpu)
->  {
->      ARMCPU *arm_cpu = ARM_CPU(cpu);
-> @@ -579,6 +594,46 @@ int hvf_vcpu_exec(CPUState *cpu)
->          }
->          case EC_WFX_TRAP:
->              advance_pc = true;
-> +            if (!(syndrome & WFX_IS_WFE) && !(cpu->interrupt_request &
-> +                (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
-> +
-> +                uint64_t ctl;
-> +                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CTL_EL0,
-> +                                        &ctl);
-> +                assert_hvf_ok(r);
-> +
-> +                if (!(ctl & 1) || (ctl & 2)) {
-> +                    /* Timer disabled or masked, just wait for an IPI. */
-> +                    hvf_wait_for_ipi(cpu, NULL);
-> +                    break;
-> +                }
-> +
-> +                uint64_t cval;
-> +                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CVAL_EL0,
-> +                                        &cval);
-> +                assert_hvf_ok(r);
-> +
-> +                int64_t ticks_to_sleep = cval - mach_absolute_time();
+X-TUID: nQFOymgLhAU4
 
 
-Apple reference recommends to use [1]:
+On 03.12.20 02:52, Roman Bolshakov wrote:
+> On Wed, Dec 02, 2020 at 08:04:03PM +0100, Alexander Graf wrote:
+>> When clearing internal state of a CPU, we should also make sure that HVF
+>> knows about it and can push the new values down to vcpu state.
+>>
+> I'm sorry if I'm asking something dumb. But isn't
+> cpu_synchronize_all_post_reset() is supposed to push QEMU state into HVF
+> (or any other accel) after reset?
+>
+> For x86 it used to work:
+>
+>    static void do_hvf_cpu_synchronize_post_reset(CPUState *cpu,
+>                                                  run_on_cpu_data arg)
+>    {
+>        hvf_put_registers(cpu);                                                                                                                                                                cpu->vcpu_dirty = false;
+>    }
 
-  clock_gettime_nsec_np(CLOCK_UPTIME_RAW)
 
-It, internally in Libc, invokes mach_absolute_time() [2].
+Yes, it works because after the reset is done, there is no other 
+register modification happening. With the PSCI emulation code in QEMU, 
+we still do modify CPU state after reset though.
 
-1. https://developer.apple.com/documentation/kernel/1462446-mach_absolute_time
-2. https://opensource.apple.com/source/Libc/Libc-1158.1.2/gen/clock_gettime.c.auto.html
+Different question though: Why do we need the post_reset() call at all 
+here to push state? We would just push it on the next run anyways, 
+right? So if we don't set vcpu_dirty to false then, we wouldn't need 
+this patch here I think.
 
-Thanks,
-Roman
 
-> +                if (ticks_to_sleep < 0) {
-> +                    break;
-> +                }
-> +
-> +                uint64_t seconds = ticks_to_sleep / arm_cpu->gt_cntfrq_hz;
-> +                uint64_t nanos =
-> +                    (ticks_to_sleep - arm_cpu->gt_cntfrq_hz * seconds) *
-> +                    1000000000 / arm_cpu->gt_cntfrq_hz;
-> +
-> +                /*
-> +                 * Don't sleep for less than 2ms. This is believed to improve
-> +                 * latency of message passing workloads.
-> +                 */
-> +                if (!seconds && nanos < 2000000) {
-> +                    break;
-> +                }
-> +
-> +                struct timespec ts = { seconds, nanos };
-> +                hvf_wait_for_ipi(cpu, &ts);
-> +            }
->              break;
->          case EC_AA64_HVC:
->              cpu_synchronize_state(cpu);
-> -- 
-> 2.24.3 (Apple Git-128)
-> 
+Alex
+

@@ -1,124 +1,104 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp323481lfb;
-        Thu, 3 Dec 2020 04:31:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyUEMCqMDksgO51WJMNqluCdbPtXKRl64V242oJZiZ2kL4USTGygXcYDwll1f2cedD6pbyN
-X-Received: by 2002:a25:6801:: with SMTP id d1mr4127177ybc.9.1606998670935;
-        Thu, 03 Dec 2020 04:31:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606998670; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp344756lfb;
+        Thu, 3 Dec 2020 05:02:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwDmNOAW4jKMCIcCBqutLQjiBqKogEWDFXsJG5jLIt+4spE1jiHD8V0kK1PGaQz6i+cnCc3
+X-Received: by 2002:a25:c054:: with SMTP id c81mr4579305ybf.184.1607000571405;
+        Thu, 03 Dec 2020 05:02:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607000571; cv=none;
         d=google.com; s=arc-20160816;
-        b=LolsAnFrfhKsU4gzGX/AYEes8/cmjiPmgTHEgSBKSZSrZ2KzDCESnZ65o/Zcd5RlUt
-         i9x3LeeO8YRiM4eLqnwO+1kKiXbtTeu4tviUgYOCxLuxRpvZ439Ex3R5ExOyWWw11m5p
-         DH96VnJFUotIZUHpeRE9M0VM2eebNFIse3UBVtXpEGTamt5SB6KnnznE+JE8F5tVqXyK
-         lXcYRxEAyBjPdj7nR03m38bo44LKfyvGIV3yk1wLLltJZG/JQ9zq/oNIhvjW1soziCag
-         LdgZSq6lpNtD2OrncLiGggxF/vmj72l3r/4w9HH3pRtBOV/CCnrjfHkRqOzgEaLQEjzs
-         ADyA==
+        b=sqpNztfJb28/ZsyRg/UjjvmhhH7wFKrRueb+p6bgwm6ZnVbWUHYVrHQZwtBA9NNb3t
+         RUVfeYMi5xmeUqsXeFB7krNo0Q2SXIWlUZLjxFvGyG5bIw/V6HuOG9d21VRX1g5Cp68E
+         Y/q4L6eJiPkOq38sX/fYd9kZDO6sv1YpFMvsBBXhBBRX+SZvzU8+nKJ2FeBTXbX0FEqy
+         Q8zJxn4aBvlzpDJUzlr6fFJJBZzlYZ6w5JJo7kMGCB0qe74zusRLRho3SBO5Oj0PPkxz
+         OWhvMmBlEvdH11xQRbMc2fvt+sU0wQZCUrA6yXTJWaPrGYD4LhNBjnYiPwZefOnZAwVc
+         5SmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=7kS5OzR9MaP4rg6v65bO9wp7fuT8Mlo97khH7RfT/8A=;
-        b=wKagkFClowQj3WDmSjuqZN7ITM7dWJvY1vqzl4JN5D7tSQqegUWiFizE5UGfR8KyUa
-         JY0DiaZ4gEAZy4VGyWc8yLVLP9kL49aqjzcwBKe/jjNGXOeRKAecJclvjkxuUby+hF8H
-         iJvmhiFBt4cSh6lpnVj1z7Dod2CVibyL/BwAPrskUAKn6cDIIqEYduqXCtb/rrrR0wD0
-         cLcIoMNMb/2zkI07lGPMsPtldPsawc9dUaKrksIFoIT2fUEO6RlnpNHsi3ItLhKja3m7
-         mrAT5QgVkZPt7cp4O+l6mO+sU7/PkBAubACeHrXWYWuY5qs9/UVPkoyIz+U8QvKooW0r
-         +bjw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=EqtnYKuxTXFz8hVlyG13tZ4cMa1SxJUgFvUR+bkRYow=;
+        b=HDQshgNmNbyiNgJCi3qljXar+1FEBQ7hQIz0Myezl2KiICvZ9tPYcE//WdWsfaoOGh
+         WoOBGB+mPWIhH8vT47V5sZ/IQyKnVSGoIM+hNmKVQoh7mISLXOkmPTkZNitM8kn9jvRb
+         mysRFQcVYxNti09fDQhSOOGJ71kqjotU8Xwy82F5/h5eBIWeeWHxoTuhTiDbnHml3jH4
+         j6D31bujHwY4Lv9Riukf3HARvU4wckUnKYSdFocG2rTnKMJg691oT/X1QfsKxx0IlR69
+         hbCjKH+k2V+RkOXaGwco02GfV3z3jNGU8bo8E4AWgnWEreIli0fh0JzM0TPS2TY7vVRQ
+         VGYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cOUtf14H;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=D8+2IqVN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v190si1574615ybb.310.2020.12.03.04.31.10
+        by mx.google.com with ESMTPS id v14si1869901ybe.402.2020.12.03.05.02.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Dec 2020 04:31:10 -0800 (PST)
+        Thu, 03 Dec 2020 05:02:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cOUtf14H;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=D8+2IqVN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59624 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:33730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kknlO-000642-AU
-	for alex.bennee@linaro.org; Thu, 03 Dec 2020 07:31:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41554)
+	id 1kkoG2-0007CZ-M5
+	for alex.bennee@linaro.org; Thu, 03 Dec 2020 08:02:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kknlD-00062X-4k
- for qemu-arm@nongnu.org; Thu, 03 Dec 2020 07:30:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46910)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kknlB-0001ZX-0c
- for qemu-arm@nongnu.org; Thu, 03 Dec 2020 07:30:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606998656;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7kS5OzR9MaP4rg6v65bO9wp7fuT8Mlo97khH7RfT/8A=;
- b=cOUtf14Hxuu8lpI1dlOogmafbyaAmuQAxYBUCPY7DBMc3D3qjjjB/MdRNmfdqGB4Lz8z3P
- jTnlynyp4ip/28TaSUX/XewM4LikH8TEwZoyEYSKytuNI1L6Uf9rPFGyZZ8sDkCV9bxDtY
- KpDsCI6d2etaocGPIzlMGa2PtV9oXMY=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-57-wAAPLmfENYm2dryyZIHCVQ-1; Thu, 03 Dec 2020 07:30:53 -0500
-X-MC-Unique: wAAPLmfENYm2dryyZIHCVQ-1
-Received: by mail-wr1-f72.google.com with SMTP id 91so1140586wrk.17
- for <qemu-arm@nongnu.org>; Thu, 03 Dec 2020 04:30:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7kS5OzR9MaP4rg6v65bO9wp7fuT8Mlo97khH7RfT/8A=;
- b=TXHGvR7I9JhWp9Gx8g0wMeyi8K/Vm2vWegmY28Qv+KNDEwjS7BFAHVLeF3hmfr3a1t
- fALnnKEvGAU2RetEvVJY9PfuuHmlEsI3qioXcwIf1jep/9o8NVY+xqnwkbT/gJKJMOV9
- CuWg2152cZiEUccIWxY4HVbrvcxvkGQWNFQNTppgKzeCu/Sq02zoIia7s4LVty6TT6ak
- xEDm/DdzWgrw+5irpq8qxC2zpoV/2/BnkhXEf7uixaLi7YiVteUhfvs1AxmNxD6j/cdn
- LZjAkwyYK2oZREcUIBWgd3F+IoA/VDhpyhndHMnKYp4uXOcNIt5MrvhKNXt4BGkolkgn
- 5N6g==
-X-Gm-Message-State: AOAM533UZ/YOBgOZbdsOmshuHyNGSYaALCyRabs36irfuSfsyGiNPczV
- 63JEMHMrUfAWJlyVbUBqB0LQsbBGJycIybKAg0ielIFqZ1/QAouVjmmYaz2YeMlFWkAKsWjG2aE
- V/jYGMjwHLmHY
-X-Received: by 2002:a1c:2ec6:: with SMTP id u189mr3154406wmu.31.1606998651841; 
- Thu, 03 Dec 2020 04:30:51 -0800 (PST)
-X-Received: by 2002:a1c:2ec6:: with SMTP id u189mr3154389wmu.31.1606998651603; 
- Thu, 03 Dec 2020 04:30:51 -0800 (PST)
-Received: from [192.168.1.36] (111.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.111])
- by smtp.gmail.com with ESMTPSA id 20sm1299479wmk.16.2020.12.03.04.30.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Dec 2020 04:30:50 -0800 (PST)
-Subject: Re: [PATCH for-6.0 00/11] target/arm: enforce alignment
-To: Peter Maydell <peter.maydell@linaro.org>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-References: <20201125040642.2339476-1-richard.henderson@linaro.org>
- <CAFEAcA9XFGbyYfcpoOVhtV_wySi9=DyMGe84C4uwYG14Z6bD6Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <56701347-e0a0-ae47-8bba-f5cdff253475@redhat.com>
-Date: Thu, 3 Dec 2020 13:30:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kkoFd-00079l-GZ; Thu, 03 Dec 2020 08:02:29 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:36298 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kkoFZ-00038u-Ld; Thu, 03 Dec 2020 08:02:25 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id C1A2C413E4;
+ Thu,  3 Dec 2020 13:02:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1607000533;
+ x=1608814934; bh=CL4/18eonhp2DebrzEauZKFHFiBt5QLcBVr0+4Yp9H4=; b=
+ D8+2IqVNiCyjcdFpgO72SQRmLl90pg9Pd1kWakzDe47H4gR2/dnakyDqCRshOmb+
+ DT3gLakUGJ0+3W1KV9jpwzNJkbreOpnGEVU6deWgtGi6yM8nVDMyhX0kms4n8uMF
+ Za6frn8TyBzDLVa00TtxQZJMuWIGyqhvQudjjBnk9zs=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mTncT90QvS9m; Thu,  3 Dec 2020 16:02:13 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id 768A04137E;
+ Thu,  3 Dec 2020 16:02:13 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Thu, 3 Dec
+ 2020 16:02:13 +0300
+Date: Thu, 3 Dec 2020 16:02:33 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Alexander Graf <agraf@csgraf.de>
+Subject: Re: [PATCH v3 05/10] hvf: arm: Mark CPU as dirty on reset
+Message-ID: <20201203130233.GA14685@SPB-NB-133.local>
+References: <20201202190408.2041-1-agraf@csgraf.de>
+ <20201202190408.2041-6-agraf@csgraf.de>
+ <20201203015218.GA82480@SPB-NB-133.local>
+ <55e5dac5-6508-da7f-3f29-05ee225b13da@csgraf.de>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9XFGbyYfcpoOVhtV_wySi9=DyMGe84C4uwYG14Z6bD6Q@mail.gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <55e5dac5-6508-da7f-3f29-05ee225b13da@csgraf.de>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,41 +112,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p/IX8KEx1/kL
+X-TUID: dVuk8q4mL9Bp
 
-Cc'ing Pavel
-
-On 12/1/20 4:55 PM, Peter Maydell wrote:
-> On Wed, 25 Nov 2020 at 04:06, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> As reported in https://bugs.launchpad.net/bugs/1905356
->>
->> Not implementing SCTLR.A, but all of the other required
->> alignment for SCTLR.A=0 in Table A3-1.
+On Thu, Dec 03, 2020 at 11:55:17AM +0100, Alexander Graf wrote:
 > 
-> Something in this series breaks the 'make check-acceptance'
-> record-and-replay test:
+> On 03.12.20 02:52, Roman Bolshakov wrote:
+> > On Wed, Dec 02, 2020 at 08:04:03PM +0100, Alexander Graf wrote:
+> > > When clearing internal state of a CPU, we should also make sure that HVF
+> > > knows about it and can push the new values down to vcpu state.
+> > > 
+> > I'm sorry if I'm asking something dumb. But isn't
+> > cpu_synchronize_all_post_reset() is supposed to push QEMU state into HVF
+> > (or any other accel) after reset?
+> > 
+> > For x86 it used to work:
+> > 
+> >    static void do_hvf_cpu_synchronize_post_reset(CPUState *cpu,
+> >                                                  run_on_cpu_data arg)
+> >    {
+> >        hvf_put_registers(cpu);
+> >        cpu->vcpu_dirty = false;
+> >    }
 > 
->  (30/40) tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_aarch64_virt:
-> PASS (9.14 s)
->  (31/40) tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_arm_virt:
-> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
-> Timeout reached\nOriginal status: ERROR\n{'name':
-> '31-tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_arm_virt',
-> 'logdir': '/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/result...
-> (90.19 s)
 > 
-> The log shows the "recording execution" apparently hanging,
-> with the last output from the guest
-> [    3.183662] Registering SWP/SWPB emulation handler
-> 
-> thanks
-> -- PMM
+> Yes, it works because after the reset is done, there is no other register
+> modification happening. With the PSCI emulation code in QEMU, we still do
+> modify CPU state after reset though.
 > 
 
+Maybe I miss something but that doesn't seem correct. Why PSCI reset is
+split from machine reset?
+
+> Different question though: Why do we need the post_reset() call at all here
+> to push state?
+
+My understanding that post_reset is akin to a commit of the CPU state
+after all reset actions have been done to QEMU CPU Arch env state. i.e.
+arch/machine reset modifies env state and then the env is pushed to
+accel. cpu->vcpu_dirty is cleared because env is in-sync with vcpu.
+
+> We would just push it on the next run anyways, right?
+
+That's correct (at least for x86 HVF).
+
+> So if we don't set vcpu_dirty to false then, we wouldn't need this
+> patch here I think.
+>
+
+That's right but the same post-reset approach is used for all accels,
+including KVM. But I haven't found this for TCG.
+
+Regards,
+Roman

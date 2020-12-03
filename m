@@ -1,92 +1,92 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1632467lfb;
-        Wed, 2 Dec 2020 16:20:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz0hb+pfC6yNBfUJl8mb1W3f/13RrHoxWrly35f4HweeCEwX2t9s6npbnAxGAfZQk4lYQA+
-X-Received: by 2002:a25:cb55:: with SMTP id b82mr1114607ybg.334.1606954846167;
-        Wed, 02 Dec 2020 16:20:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606954846; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1644887lfb;
+        Wed, 2 Dec 2020 16:41:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxeqRViym8fGUzWyqgk6EmFjd1zxy2mQl0JL+b36xyJ5EYY6wX/w5mH9J/E7HjmGAjpkAlB
+X-Received: by 2002:a25:41c7:: with SMTP id o190mr1138335yba.324.1606956117125;
+        Wed, 02 Dec 2020 16:41:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606956117; cv=none;
         d=google.com; s=arc-20160816;
-        b=ycaBBXijYuRe3DbZC+7czP5TQiIh+X0KHNen8CNtFAbtbTjQFvNZoHKuVdN2F7NBlt
-         KHDB7OineWVWl0tilZ3dU4Ma4Dx7YqA5sMONYDZB1ie1PHDZKfEzV+cWGtxImxGflPcy
-         TCNWn57Ci1oYSSh4JGpjz5SNxfKqoDzekDv+v9fz/CSOMt3ko84o/a19IZ7njjOISDax
-         In8fY3lw5pCimxQv7YdTG2p24Cueb81rtTvKbr+PG2HkdJdEQUjaRI4gIXOzJBaqfQHD
-         3uwqkyFxs9G2DeXojIRzGjnkBL0qScqPUxu+bjzGnGmB+YgvrxjhR4Kmi0PUQwmQFUUt
-         HRlQ==
+        b=DOe/lwM24cOKHywbnmj80U5/SuVSgs0SIZURRvzFL7vB5xiycmA6gNjABNenr0zbcv
+         X7RUCY31Sjrmj6gZBc9FLAsHw0VsdiDqXfHlc8O5EKBEMdfXZsj7pJtQZZ+uNz2Vs+mP
+         lpPYOEPbE8UfF57tGhLVmsL5EgiSSIExos7fM2vxAmaqD/gztmDY/zxYqxcvLDkJDqyO
+         a1bbczf4RcuLSow08jdngp/rzVHAo8K+XqF5ZmQ5Wfc6OpBwYC71tC2LJTxNwefcDUUm
+         ZL6OVOryvdoZgW50k8BknMGdvsO0KHpEhkLBrGfFWaJUstsw23R+gtiN988TCP2VI6De
+         waNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Bt7cBdrelduVxPrnEwK2xs6Hgj9rGN3UgXubm87OufA=;
-        b=VUO0mYj5RmULuEVDYgqWBxOR9XHU1i4Gv2Qmecyxm7FxXiUN7n0YePYRUeUqMeK65B
-         x2EeUFQiFeVUvCU+hKgs+KvOxu2wG9FUF1xHLI8Pi8riwR0uR5wa98h9j8ZvosTmrLE8
-         bvp8JpR7b8hH4r+9Mco6S7cOFybiJboFZ+iuR8HuHgRYowJ/IwrlWDe2DF9X1JA+8Vnk
-         9Z05cvhocuYjb1AE0JghJoa7x7vtGd4j4s/rFTHFAYI0New+Rg/XcdT/w+ZELMbdxaB+
-         Bj6G5VpXKG/Q9IpNVAGd9a4mn5bWaHhaq66HL9yKYdE8Y5UywBY+I82eVVyglMu87PM+
-         w8DQ==
+        bh=Uk+L9DsChPJiVL25OuwJ6siRnBpBs1wpnH+xUmRy2Xw=;
+        b=Gb9+3P+pbiEKPO06y/ExmCbot9+KytkIzPDc+YidTSA5HECgpYJ5p9itZlJQ+EW14P
+         uzoNKOlcERU7i27cZDpI66Wf9MBRYyR6ZkzByO0BboRQ/dRm6eHc8I4HpvOOWAhG2GPV
+         HWVpQVtHxj3I/E4sSBMyj9feD7QelEBDVTCiS7hLKjapf3r06m6wCiRaoQmDvpyxcrG4
+         apQlnyz1vH9qCX6acSifYKDpFaN3lGEYeW2JqXUrWx5PRxwpDQVS6SK+S7IOP+rjSTJG
+         5mmiiOg0udeHb3fqfoNObqn1BOwZ7WT2yz6fnQvvAWdDubVfkq1ZY2HoRad9v9NNsEgt
+         g5tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=AU0w+qQo;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=F4obksI2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si208274ybm.118.2020.12.02.16.20.46
+        by mx.google.com with ESMTPS id f197si194864ybg.149.2020.12.02.16.41.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 16:20:46 -0800 (PST)
+        Wed, 02 Dec 2020 16:41:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=AU0w+qQo;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=F4obksI2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
-Received: from localhost ([::1]:38260 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49594 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkcMX-000223-JL
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 19:20:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48980)
+	id 1kkch2-0000X1-HA
+	for alex.bennee@linaro.org; Wed, 02 Dec 2020 19:41:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kkcMK-000217-02; Wed, 02 Dec 2020 19:20:32 -0500
-Received: from mta-02.yadro.com ([89.207.88.252]:35028 helo=mta-01.yadro.com)
+ id 1kkcgq-0000WP-Mc; Wed, 02 Dec 2020 19:41:44 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:35298 helo=mta-01.yadro.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kkcMH-0003Iz-4U; Wed, 02 Dec 2020 19:20:31 -0500
+ id 1kkcgn-0006tx-DR; Wed, 02 Dec 2020 19:41:44 -0500
 Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id 940FF41395;
- Thu,  3 Dec 2020 00:20:26 +0000 (UTC)
+ by mta-01.yadro.com (Postfix) with ESMTP id D0CD94137A;
+ Thu,  3 Dec 2020 00:41:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
  in-reply-to:content-disposition:content-type:content-type
  :mime-version:references:message-id:subject:subject:from:from
- :date:date:received:received:received; s=mta-01; t=1606954825;
- x=1608769226; bh=Bk/O5w7FSWsWuOApjcv3o/daW/V6RfyKt7mN66cVFFY=; b=
- AU0w+qQoXm12htrnqMqwGLpdCmK9OB9ViZAPu0p1Xhn0pCbJHctBvobXQe5UMKFD
- MJawaZF7ymq+9DAkyNJq2mR29CGee1t8gecm5coNFlj96UD2YQD3NHnSR7PxkuvX
- fSQ8TVwc6EV9S90ai001jNtN/tqHMJ4pFGjeVip8mv4=
+ :date:date:received:received:received; s=mta-01; t=1606956097;
+ x=1608770498; bh=URO/v4zBFuJEc4EyxyOUNrVOlRQJcC1Wixq1GiQHcZQ=; b=
+ F4obksI2nBeqxwo7RqzmL7yVIG5sNYPbCxkUOIsq+gxECh61agHUxnwG4hlk11+l
+ KTD98Kh8Ku/D0uTw/xSDiaOVkY4eHLl4CrqIk9Pz9owU2WXkXXTGbZQSqINeOdaY
+ 17oo82G7xq9umFn+EEFWnqztiHi8hySBLksmeM3lOoc=
 X-Virus-Scanned: amavisd-new at yadro.com
 Received: from mta-01.yadro.com ([127.0.0.1])
  by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jS6VBQaKNQVy; Thu,  3 Dec 2020 03:20:25 +0300 (MSK)
+ with ESMTP id 1RBxTEHYtFzF; Thu,  3 Dec 2020 03:41:37 +0300 (MSK)
 Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
  [172.17.100.103])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
  (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id 5722B4131A;
- Thu,  3 Dec 2020 03:20:24 +0300 (MSK)
+ by mta-01.yadro.com (Postfix) with ESMTPS id 47E2441377;
+ Thu,  3 Dec 2020 03:41:36 +0300 (MSK)
 Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
  (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Thu, 3 Dec
- 2020 03:20:24 +0300
-Date: Thu, 3 Dec 2020 03:20:42 +0300
+ 2020 03:41:36 +0300
+Date: Thu, 3 Dec 2020 03:41:55 +0300
 From: Roman Bolshakov <r.bolshakov@yadro.com>
 To: Alexander Graf <agraf@csgraf.de>
-Subject: Re: [PATCH v3 02/10] hvf: Move common code out
-Message-ID: <20201203002042.GB34964@SPB-NB-133.local>
+Subject: Re: [PATCH v3 03/10] hvf: Introduce hvf vcpu struct
+Message-ID: <20201203004155.GA75161@SPB-NB-133.local>
 References: <20201202190408.2041-1-agraf@csgraf.de>
- <20201202190408.2041-3-agraf@csgraf.de>
+ <20201202190408.2041-4-agraf@csgraf.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <20201202190408.2041-3-agraf@csgraf.de>
+In-Reply-To: <20201202190408.2041-4-agraf@csgraf.de>
 X-Originating-IP: [172.17.204.212]
 X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
  T-EXCH-03.corp.yadro.com (172.17.100.103)
@@ -118,89 +118,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FEQX3xUsMpBr
+X-TUID: tx/ObgXhaz4B
 
-On Wed, Dec 02, 2020 at 08:04:00PM +0100, Alexander Graf wrote:
-> Until now, Hypervisor.framework has only been available on x86_64 systems.
-> With Apple Silicon shipping now, it extends its reach to aarch64. To
-> prepare for support for multiple architectures, let's move common code out
-> into its own accel directory.
+On Wed, Dec 02, 2020 at 08:04:01PM +0100, Alexander Graf wrote:
+> We will need more than a single field for hvf going forward. To keep
+> the global vcpu struct uncluttered, let's allocate a special hvf vcpu
+> struct, similar to how hax does it.
 > 
-> [...]
->
-> diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-> new file mode 100644
-> index 0000000000..de9bad23a8
-> --- /dev/null
-> +++ b/include/sysemu/hvf_int.h
-> @@ -0,0 +1,69 @@
-> +/*
-> + * QEMU Hypervisor.framework (HVF) support > + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + */
-> +
-> +/* header to be included in HVF-specific code */
-> +
-> +#ifndef HVF_INT_H
-> +#define HVF_INT_H
-> +
-> +#include <Hypervisor/Hypervisor.h>
-> +
 
-From here
+Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
 
-> +#define HVF_MAX_VCPU 0x10
-> +
-> +extern struct hvf_state hvf_global;
-> +
-> +struct hvf_vm {
-> +    int id;
-> +    struct hvf_vcpu_state *vcpus[HVF_MAX_VCPU];
-> +};
-> +
-> +struct hvf_state {
-> +    uint32_t version;
-> +    struct hvf_vm *vm;
-> +    uint64_t mem_quota;
-> +};
-> +
-
-and down to here, it doesn't seem to be a common code, rather unused
-definitions. They can be safely dropped:
-
-diff --git a/target/i386/hvf/hvf-i386.h b/target/i386/hvf/hvf-i386.h
-index e0edffd077..e31938e5ff 100644
---- a/target/i386/hvf/hvf-i386.h
-+++ b/target/i386/hvf/hvf-i386.h
-@@ -21,21 +21,6 @@
- #include "cpu.h"
- #include "x86.h"
-
--#define HVF_MAX_VCPU 0x10
--
--extern struct hvf_state hvf_global;
--
--struct hvf_vm {
--    int id;
--    struct hvf_vcpu_state *vcpus[HVF_MAX_VCPU];
--};
--
--struct hvf_state {
--    uint32_t version;
--    struct hvf_vm *vm;
--    uint64_t mem_quota;
--};
--
- /* hvf_slot flags */
- #define HVF_SLOT_LOG (1 << 0)
-
-@@ -75,7 +60,6 @@ hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
-
- /* Host specific functions */
- int hvf_inject_interrupt(CPUArchState *env, int vector);
--int hvf_vcpu_run(struct hvf_vcpu_state *vcpu);
- #endif
-
- #endif
+Thanks,
+Roman

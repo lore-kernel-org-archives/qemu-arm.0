@@ -1,180 +1,207 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1276487lfc;
-        Sun, 21 Feb 2021 14:27:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyuyOfhEgnQmTrlCqWKzFMK/qTEbtOBs9CnqmBFp1TeE6aN80jTTET/DDzkociwE9/duGyG
-X-Received: by 2002:a05:6e02:881:: with SMTP id z1mr12877515ils.288.1613946465594;
-        Sun, 21 Feb 2021 14:27:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613946465; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp115710lfb;
+        Thu, 3 Dec 2020 15:49:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxeV396q9H455GRoh3RGGsY9zx0i1zmNJsOasnJUl8dLte78EhdIIzQ0rPVIwn1dtYvLPCT
+X-Received: by 2002:a5b:c08:: with SMTP id f8mr2450498ybq.398.1607039362839;
+        Thu, 03 Dec 2020 15:49:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607039362; cv=none;
         d=google.com; s=arc-20160816;
-        b=kYIgY2MkMDWLOlqZ/5OO06DoS8uyOH6JGqvVqHkujq18HBux/xTSxHbNJSKkKX+Rrr
-         7oYAlWGPDcds5LvP1heXjypM64L3qL1xLwSks9ajpc8I87MDw29+IJDCtntjAPq9mB+W
-         yhJYAgR7m+0Z8TyVwqBlwrf3x9XPZrkv9Bc8g7az3l/+efE0sqNiHphiwGbIPF26q1zf
-         b9Clj33ABAAdkuawPJgvG56kQb7yZCALhTKAr+35d6KzX6mb9mK+ywd2mSgUFc3urTPT
-         WwWyjFQNOt8BSh4P70UqkcyVZZTL2BNFtIBQHsSaLRtE4Gywgg9uZa/yaOumPk+ZVmVK
-         CCqg==
+        b=Uw+P4GFiY6EtItVXhz7yO5bSyrSJZZUMG34dwABBfANbElRZIteFa5QzagofGDpdZK
+         DjQ0r7TPk1xDspAwb+CRbhMVkCFXm6qRSJCT/6k1dyDKlyRr5zTVaACc2e+GYnSo+7La
+         Vb9Xqe2ipcSF6I6/O1QyhnHwRTvK8Dxsd8XQIiSu7h72muek7eVybbmAsmIpuGLnCGi6
+         IzICfqXJy+86lwPxd0NU6DkrbsURcrFUljI3pDIOinWHXp/BwryD6hYvoocnED7pQmpP
+         Mdm4sjHqE6ncSojb/K5aND81LvgXB7Y2a+N+gwMr84x55G89XBlJVVPdxfevwjlTlkhO
+         6QUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=cEXLvbn+xOMhhi0R83S9d9mv5EMrvbKx+ABzbeLQvl8=;
-        b=R/q6LT6K3FQmLsMCRdRzAerML5gqW1Y3D9wzRtBb+TwiqMq9vJJl47y/2y+e9cEubF
-         01lPzjUYTIPJirTLUgf/j4Azj74TXo2CkTfLyzzsHyPGuTDYfKvTYB14EX/ash9Fz8Qv
-         wwnBrjCKt4s5gX8PBlRrLF1Wg8z+QmTa6maH+h9Mta1iPPB1+BNmMob8bID9cqubM1dd
-         4Bk0+JMlfgPb8mbyxuFE1gF05/8GeziZ0xwHzUIII6JxtmfSK5ZUGpwoeXfY5FmgS9wR
-         206ZkyvWzofYASDt72xdLSC5Nb4XsU8e723ToRsI37D5linPNK9pJ4Zj6js7ZDJVjAmX
-         sZ3Q==
+         :mime-version:message-id:date:subject:to:from;
+        bh=FVVeDu1VJRfi9d0YAK4DgcBT4/90TKqU+HNEM73A4+4=;
+        b=ZFQJhzscYPzkLLwdc2gSFXpgYfUiRLMJZgYdTn2csherm8w1origSJX3+JrC39eE7C
+         ULP3kzYUNeAonjXAkUK332NqvoFJcQu23BbDgy64PzaPgC7RJDLNUzQ9mNLovzMpsX5S
+         KTvXOGNZwz+TYQBaN2+7jKUsdchp1rUlfXf3Imq54sjr+RSw6ktIHW4XrmWmfJjqnaDO
+         e3xWbOGdpjXHpP0s5B0D+6uwMZrnVqOOLkQG6oJTTvcRans8flGOCzzT669Lqhw1tLJj
+         7NDcxi4cyCY/t+Rt6fZ98cg3EZeMnmDMPnrqurEhHuOjca44FSo1+Mr48uNOtonwJYbF
+         Naaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eSeWjLq+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a4si9524992ios.8.2021.02.21.14.27.45
+        by mx.google.com with ESMTPS id w9si354763ybe.424.2020.12.03.15.49.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Feb 2021 14:27:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Dec 2020 15:49:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eSeWjLq+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60754 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lDxCa-0006pb-Tg
-	for alex.bennee@linaro.org; Sun, 21 Feb 2021 17:27:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60586)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kkyLi-0002We-6h
+	for alex.bennee@linaro.org; Thu, 03 Dec 2020 18:49:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58338)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lDxBW-0006LO-UC; Sun, 21 Feb 2021 17:26:39 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:34176)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lDxBS-0004Lw-RP; Sun, 21 Feb 2021 17:26:38 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id n4so17155971wrx.1;
- Sun, 21 Feb 2021 14:26:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=cEXLvbn+xOMhhi0R83S9d9mv5EMrvbKx+ABzbeLQvl8=;
- b=eSeWjLq+KyscXQ8Th017uO4fqnLfNOGj1jhqKRVZxvfslt9thLpQkdj9gAz+gV2uYS
- nAzrsd/of2lfj/e306RaaqsmhFbkmtn5nYZ4OMbIw9fSH+FsUQWxcjwuOCKQSIEw+62h
- WrBmGC2d+XhMJFjVON9XQ75qnFI1z/FDhohCB/oeFAE0X0iPr1eFlrJs/oPE9mgiSsW/
- b7ka2h/tvLYtlAONyw39pLSczlMC2qQLmxZYmKFrvqo26d7d7HXkMhd2g1IVmJdNOBDU
- UeWIZO37PZX/7Vvf6IVzHgpHkvhxiIU+MvHF2REGm9c1fktS4H1iE54/40XLfJAMLqVZ
- pLEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cEXLvbn+xOMhhi0R83S9d9mv5EMrvbKx+ABzbeLQvl8=;
- b=rHRGUnTK2NRwIksi9xxYti1b9no7mfRWYnzGqxmTJXLYysPz+eDnrlmUFzYGkkw75F
- +xDj3FZOOxJtZfzJ0WpMSLbzq927a6C6RDhOjU5/7+i61FW8lDmVBwJzU9zon6OAR1+F
- fMhR35FbuSML9B1cBeiWlnN0sJsHYQY0t6Koz09UlGXDuojr72Ugkxbk0lUet6mzW3Gt
- EIIyI30T/mglWT0EUwUGpyWuckubJ43kwtJiM7WLpdySr6vEx0hSdpNBlM9naGAL3VU1
- RydwrihWDs7Pkk/ntKH2rGQYCUmab2R8I9rAraUK98a69xQpfAtUlQVwnBtoSvqfiCAy
- 9hyg==
-X-Gm-Message-State: AOAM530c/79xw4z9aOaK9HCj2lEnyVllatuwJBs8OfP5lSWWo4fqPaAG
- oOMyew5F57UonsLIYGkeh1alCO+ydB8=
-X-Received: by 2002:adf:f4d1:: with SMTP id h17mr696657wrp.350.1613946389648; 
- Sun, 21 Feb 2021 14:26:29 -0800 (PST)
-Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id 2sm26365710wre.24.2021.02.21.14.26.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 14:26:29 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1kkyLT-0002W7-4d; Thu, 03 Dec 2020 18:49:07 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:57470
+ helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1kkyLQ-0003Lf-F5; Thu, 03 Dec 2020 18:49:06 -0500
+Received: from localhost.localdomain
+ (dynamic-077-002-092-143.77.2.pool.telefonica.de [77.2.92.143])
+ by csgraf.de (Postfix) with ESMTPSA id 2459E39003C3;
+ Fri,  4 Dec 2020 00:48:58 +0100 (CET)
+From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 2/3] target/arm/cpu: Update coding style to make
- checkpatch.pl happy
-Date: Sun, 21 Feb 2021 23:26:16 +0100
-Message-Id: <20210221222617.2579610-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210221222617.2579610-1-f4bug@amsat.org>
-References: <20210221222617.2579610-1-f4bug@amsat.org>
+Subject: [PATCH v4 00/11] hvf: Implement Apple Silicon Support
+Date: Fri,  4 Dec 2020 00:48:46 +0100
+Message-Id: <20201203234857.21051-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +kzd7q+6uIzC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JhWsgLVZk1xQ
 
-We will move this code in the next commit. Clean it up
-first to avoid checkpatch.pl errors.
+Now that Apple Silicon is widely available, people are obviously excited
+to try and run virtualized workloads on them, such as Linux and Windows.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/arm/cpu.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+This patch set implements a fully functional version to get the ball
+going on that. With this applied, I can successfully run both Linux and
+Windows as guests. I am not aware of any limitations specific to
+Hypervisor.framework apart from:
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a772fd4926f..6865ea76466 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1972,7 +1972,8 @@ static void cortex_a8_initfn(Object *obj)
- }
- 
- static const ARMCPRegInfo cortexa9_cp_reginfo[] = {
--    /* power_control should be set to maximum latency. Again,
-+    /*
-+     * power_control should be set to maximum latency. Again,
-      * default to 0 and set by private hook
-      */
-     { .name = "A9_PWRCTL", .cp = 15, .crn = 15, .crm = 0, .opc1 = 0, .opc2 = 0,
-@@ -2009,7 +2010,8 @@ static void cortex_a9_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
-     set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
--    /* Note that A9 supports the MP extensions even for
-+    /*
-+     * Note that A9 supports the MP extensions even for
-      * A9UP and single-core A9MP (which are both different
-      * and valid configurations; we don't model A9UP).
-      */
-@@ -2046,7 +2048,8 @@ static uint64_t a15_l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     MachineState *ms = MACHINE(qdev_get_machine());
- 
--    /* Linux wants the number of processors from here.
-+    /*
-+     * Linux wants the number of processors from here.
-      * Might as well set the interrupt-controller bit too.
-      */
-     return ((ms->smp.cpus - 1) << 24) | (1 << 23);
-@@ -2093,7 +2096,8 @@ static void cortex_a7_initfn(Object *obj)
-     cpu->isar.id_mmfr1 = 0x40000000;
-     cpu->isar.id_mmfr2 = 0x01240000;
-     cpu->isar.id_mmfr3 = 0x02102211;
--    /* a7_mpcore_r0p5_trm, page 4-4 gives 0x01101110; but
-+    /*
-+     * a7_mpcore_r0p5_trm, page 4-4 gives 0x01101110; but
-      * table 4-41 gives 0x02101110, which includes the arm div insns.
-      */
-     cpu->isar.id_isar0 = 0x02101110;
+  - Live migration / savevm
+  - gdbstub debugging (SP register)
+
+
+Enjoy!
+
+Alex
+
+v1 -> v2:
+
+  - New patch: hvf: Actually set SIG_IPI mask
+  - New patch: hvf: Introduce hvf vcpu struct
+  - New patch: hvf: arm: Mark CPU as dirty on reset
+  - Removed patch: hw/arm/virt: Disable highmem when on hypervisor.framework
+  - Removed patch: arm: Synchronize CPU on PSCI on
+  - Fix build on 32bit arm
+  - Merge vcpu kick function patch into ARM enablement
+  - Implement WFI handling (allows vCPUs to sleep)
+  - Synchronize system registers (fixes OVMF crashes and reboot)
+  - Don't always call cpu_synchronize_state()
+  - Use more fine grained iothread locking
+  - Populate aa64mmfr0 from hardware
+  - Make safe to ctrl-C entitlement application
+
+v2 -> v3:
+
+  - Removed patch: hvf: Actually set SIG_IPI mask
+  - New patch: hvf: arm: Add support for GICv3
+  - New patch: hvf: arm: Implement -cpu host
+  - Advance PC on SMC
+  - Use cp list interface for sysreg syncs
+  - Do not set current_cpu
+  - Fix sysreg isread mask
+  - Move sysreg handling to functions
+  - Remove WFI logic again
+  - Revert to global iothread locking
+
+v3 -> v4:
+
+  - Removed patch: hvf: arm: Mark CPU as dirty on reset
+  - New patch: hvf: Simplify post reset/init/loadvm hooks
+  - Remove i386-softmmu target (meson.build for hvf target)
+  - Combine both if statements (PSCI)
+  - Use hv.h instead of Hypervisor.h for 10.15 compat
+  - Remove manual inclusion of Hypervisor.h in common .c files
+  - No longer include Hypervisor.h in arm hvf .c files
+  - Remove unused exe_full variable
+  - Reuse exe_name variable
+
+Alexander Graf (10):
+  hvf: Add hypervisor entitlement to output binaries
+  hvf: x86: Remove unused definitions
+  hvf: Move common code out
+  hvf: Introduce hvf vcpu struct
+  arm: Set PSCI to 0.2 for HVF
+  hvf: Simplify post reset/init/loadvm hooks
+  hvf: Add Apple Silicon support
+  arm: Add Hypervisor.framework build target
+  hvf: arm: Add support for GICv3
+  hvf: arm: Implement -cpu host
+
+Peter Collingbourne (1):
+  arm/hvf: Add a WFI handler
+
+ MAINTAINERS                  |  14 +-
+ accel/hvf/entitlements.plist |   8 +
+ accel/hvf/hvf-all.c          |  54 +++
+ accel/hvf/hvf-cpus.c         | 466 +++++++++++++++++++
+ accel/hvf/meson.build        |   7 +
+ accel/meson.build            |   1 +
+ include/hw/core/cpu.h        |   3 +-
+ include/sysemu/hvf.h         |   2 +
+ include/sysemu/hvf_int.h     |  66 +++
+ meson.build                  |  40 +-
+ scripts/entitlement.sh       |  13 +
+ target/arm/cpu.c             |  13 +-
+ target/arm/cpu.h             |   2 +
+ target/arm/hvf/hvf.c         | 856 +++++++++++++++++++++++++++++++++++
+ target/arm/hvf/meson.build   |   3 +
+ target/arm/kvm_arm.h         |   2 -
+ target/arm/meson.build       |   2 +
+ target/i386/hvf/hvf-cpus.c   | 131 ------
+ target/i386/hvf/hvf-cpus.h   |  25 -
+ target/i386/hvf/hvf-i386.h   |  49 +-
+ target/i386/hvf/hvf.c        | 462 +++----------------
+ target/i386/hvf/meson.build  |   1 -
+ target/i386/hvf/vmx.h        |  24 +-
+ target/i386/hvf/x86.c        |  28 +-
+ target/i386/hvf/x86_descr.c  |  26 +-
+ target/i386/hvf/x86_emu.c    |  62 +--
+ target/i386/hvf/x86_mmu.c    |   4 +-
+ target/i386/hvf/x86_task.c   |  12 +-
+ target/i386/hvf/x86hvf.c     | 224 ++++-----
+ target/i386/hvf/x86hvf.h     |   2 -
+ 30 files changed, 1786 insertions(+), 816 deletions(-)
+ create mode 100644 accel/hvf/entitlements.plist
+ create mode 100644 accel/hvf/hvf-all.c
+ create mode 100644 accel/hvf/hvf-cpus.c
+ create mode 100644 accel/hvf/meson.build
+ create mode 100644 include/sysemu/hvf_int.h
+ create mode 100755 scripts/entitlement.sh
+ create mode 100644 target/arm/hvf/hvf.c
+ create mode 100644 target/arm/hvf/meson.build
+ delete mode 100644 target/i386/hvf/hvf-cpus.c
+ delete mode 100644 target/i386/hvf/hvf-cpus.h
+
 -- 
-2.26.2
+2.24.3 (Apple Git-128)
 

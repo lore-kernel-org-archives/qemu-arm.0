@@ -1,180 +1,197 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp578170lfo;
-        Thu, 28 Jan 2021 13:31:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzxjvKt4OrVQF2oJhkl9UO6pMjcxHXYiAnqdDbn0yHZbU1HENlR02SrIr0XqA14PyqYlKCj
-X-Received: by 2002:a25:c407:: with SMTP id u7mr1691209ybf.449.1611869515671;
-        Thu, 28 Jan 2021 13:31:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611869515; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp967959lfb;
+        Fri, 4 Dec 2020 12:18:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzmCjihknzt6jrtpBEVPv48SRkh0uUk3Siccb7dNuCfnyf/SgEb7HBOCvqLuSqXW48aj1G5
+X-Received: by 2002:a25:5f4b:: with SMTP id h11mr3559906ybm.363.1607113101559;
+        Fri, 04 Dec 2020 12:18:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607113101; cv=none;
         d=google.com; s=arc-20160816;
-        b=RsMyuCo9zYzoBUbeCr7Idj/Jedt/kVep4tjZ/r6XMAVR7QMbebF1z0C4Y6vI5xcFtB
-         WK4TdxNrXqm+Z+e0tlSVQwYV2ZqIn2o+GrAHpN6rrMS3Qx7WZ1nrfzpCLjY4Q6hUNU7v
-         ScmuSz2aOSL0XEfkpGOKSUyEOQwmGfZUIiyks9JvmSVHsCmFDBfEEwd/R4W9L8WxslzM
-         gA+OjPM0LrVQRisGRLqYdMrPy/LbsnlzAj213i5BOL6pO/PNxeZyz4ADukxOMO1V8qnf
-         QXQoWVR3V+DIo7YXFwdXoSuLL0QHYolFYIkl2qTycguhe9xqes8woMc9DXc8ueQgAghH
-         5k4A==
+        b=V4b2EiaujaZCDR+6l1D7vr0909a2xbauuTMzjxQDwlQP/cKDsbUH3a1bxr9g7kaHcs
+         WyHe1ClL1ZKbrmaNvf52bKqSePKqU2z/U9Hhd/QZdUgDwCJQkq8zI0tmAmSs+GFQR+6G
+         70eVToDPec5PwibbGCBSg8o9/kFUjttgZmgZKw3cthOOPbiz2smudKxX14EmdKPYgtq0
+         id0kavypIAlkm6oJUC7OITNVamgux4Q37lMDJJ/CCCuRZos9ethriyQAZWgwCk0IfGko
+         EM70CK9jou/7dYIWOZE9hCo1W22h5sIUfA6WebzQUZgTUqqNL/Z9x1qsm3faa2bw2vuf
+         GdXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=bXce2jqyzXt5VCPVL5P4ZOOaG8p3M/O5OY6ApDO1CRE=;
-        b=Am39jbFNvjgPBtJnXZnRY1rrkgwI6CrNJKI3ts7UA4VADGN9bqd3BT1DeBJ3PBi1Nz
-         JMsuO3bGB1Gv2rm87/8sA2N9ftznzRAhP74qTmbpxYZ1P5MuSfjatZwUZmgBwymhg30S
-         z/NBePXh7iN+kS4UDunIWKwjoyvExIWKCgMb/HOajZhLZ4DFz0tKVmzFWAYuIKBj7f1x
-         TehzvI2OqI5y+x5K1RXBB6F1gdxgaj3408/RfC6UHkmU2P6RKeddI3X2HyD5r5vm14Te
-         NiVVSm406cJ0ifypNobRnAQNyS39aKip3izvDvWAJylfjiuKDxd3U+PvzdS0PPbt+9G/
-         UhZA==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Zix5yg8BY5Vd2yK0fKpVFjrIsiSXh3m348evVK1e0Es=;
+        b=l8Lchl+eZrfaKWHpgJ6AwrHw9qotoyXrZzByu6fqwV3m+Z8dSIhENagbYoNQxehNxK
+         O0OUqPkl9f6ZplqPMl2j7fugpr5yaqjyd3yT7a3w02WY6JaExliFhLUPeskBDCLcwWQZ
+         6e3obN+B+bBS5xudKmao3CaPKuPW3DDTAHli5/ZeCkjZJMbUEuC9qsQ0L3Wap55e1bX2
+         7nKZVXa82zVqDAxyXoSiGva6TaoleXKgymW+EIQdTCx3LI5e479CIN0T03yceaYiPfwe
+         1qNzcHNuil6EgxuaoezPCddeiTqVFlginqUVAyK1VImw8bgwKE9AOEx6TAeI3q0sQA3A
+         SDiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g0vZuwpd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=KbmCMHmd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m68si3127847ybm.2.2021.01.28.13.31.55
+        by mx.google.com with ESMTPS id f17si2383589ybq.253.2020.12.04.12.18.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 13:31:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Dec 2020 12:18:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g0vZuwpd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36446 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=KbmCMHmd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54378 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5EtP-0003qv-0e
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 16:31:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45420)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1klHX2-0005UF-Tc
+	for alex.bennee@linaro.org; Fri, 04 Dec 2020 15:18:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1l5Et1-0003mW-84
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 16:31:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23441)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1l5Esw-0002jR-Gq
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 16:31:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1611869483;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bXce2jqyzXt5VCPVL5P4ZOOaG8p3M/O5OY6ApDO1CRE=;
- b=g0vZuwpdczGo2HPh9dzdj0SpLawv6HTFFNs9pSfqP0+EhO80emSuRHKZho8v7OYmc4u+qO
- LaXc10el+cUa1qTC/wXXLxjVj71D5naRLjQBg2YDNbV8gJv7224NmAiouKMShrzofmv6VQ
- pp9wBLE9WPc2NKXuNL+7HdsbksOQrxY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-202-sIznfFDjPfq_DBZgPFytpg-1; Thu, 28 Jan 2021 16:30:15 -0500
-X-MC-Unique: sIznfFDjPfq_DBZgPFytpg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A2BC48030A0;
- Thu, 28 Jan 2021 21:30:13 +0000 (UTC)
-Received: from [10.36.114.62] (ovpn-114-62.ams2.redhat.com [10.36.114.62])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5093F1F469;
- Thu, 28 Jan 2021 21:30:12 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/smmuv3: Fix addr_mask for range-based invalidation
-From: Auger Eric <eric.auger@redhat.com>
-To: Zenghui Yu <yuzenghui@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20201225095015.609-1-yuzenghui@huawei.com>
- <4e114709-e5c2-1860-c760-c05aa3ed5388@redhat.com>
-Message-ID: <45f3334d-f0b4-9a40-1bd1-78bd04735eaf@redhat.com>
-Date: Thu, 28 Jan 2021 22:30:09 +0100
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1klExm-0001nk-Mn
+ for qemu-devel@nongnu.org; Fri, 04 Dec 2020 12:33:57 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:40268)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1klExB-0002Yu-UD
+ for qemu-devel@nongnu.org; Fri, 04 Dec 2020 12:33:32 -0500
+Received: by mail-oi1-x244.google.com with SMTP id p126so6961283oif.7
+ for <qemu-devel@nongnu.org>; Fri, 04 Dec 2020 09:28:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Zix5yg8BY5Vd2yK0fKpVFjrIsiSXh3m348evVK1e0Es=;
+ b=KbmCMHmd/VejOOJK5IhwP1q6I0YvtRI0Kt7As4tuqsNfpmd/jEFouPQiIvLSOtATJJ
+ OSi3Q3Hsh7I1++6jPmEK1NmKXuH5YGXSPashDsRwOmka+fwY2wSuw39HKIj9YFWAhTWY
+ Jnq6UzO8jzxXclK8TA61w6jDO5qgyWXrstsvbxbtWIg7UXEPN90QrENThjWFbiH0UjO8
+ clH4YT6bpTyEKCi+zRtOVUk2x5bjtvEE7MLQSE6ZJBf8aYVN7PDwjAbGSXZHUjV5Dkx+
+ +ygGsM/Xz2eSEYuO/rnwzZM0h/KYHVTzZuW+D9dD+GUK6wS/+Hzq8pl01BtZ8m5Qg/4i
+ cv7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Zix5yg8BY5Vd2yK0fKpVFjrIsiSXh3m348evVK1e0Es=;
+ b=m0pW1DW2qxAQPA23pslT8iU4aN6EzoJmSf1aWgxsqDfZwLvZ9qOXbni1CKfOKiqUS+
+ eM4TmZGQqupzgfLE+Z87chygZZn4tkDB3LYiacLkOsSQSgOcJbQ4AAVaFChhE/syiRaF
+ Vfxmboo2C2a3PqOBU9eavIPHyFVy9F3irCwoBLuxb3KerNs7/EuD5sxaoMGgoIw+UQQs
+ lzxzis1HwPeuDwck1fAMoW9OENn/vuM8utpJKkdeNcLm/T/p7FvMcuv9cKFWxG1K19L2
+ 7cTUCEtgFwsmGtItCJqvrtteZQWpratsiuuUFoX74H9WKWeQ87g0AunTAHgQ1Pv9ls6Q
+ 4PfQ==
+X-Gm-Message-State: AOAM533FHBwL06fX+9ZRJE3lYdYtQqYzihIWNvmknCU51poOEXBB58R3
+ OvJJwEoZk+769ynQTG6XxyRM6X59pi9uOTsg
+X-Received: by 2002:aca:72c1:: with SMTP id p184mr4000016oic.86.1607102921294; 
+ Fri, 04 Dec 2020 09:28:41 -0800 (PST)
+Received: from [172.24.51.127] (168.189-204-159.bestelclientes.com.mx.
+ [189.204.159.168])
+ by smtp.gmail.com with ESMTPSA id 30sm127085oth.7.2020.12.04.09.28.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 04 Dec 2020 09:28:40 -0800 (PST)
+Subject: Re: [PATCH for-6.0 00/11] target/arm: enforce alignment
+To: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20201125040642.2339476-1-richard.henderson@linaro.org>
+ <CAFEAcA9XFGbyYfcpoOVhtV_wySi9=DyMGe84C4uwYG14Z6bD6Q@mail.gmail.com>
+ <56701347-e0a0-ae47-8bba-f5cdff253475@redhat.com>
+ <3d6d46d8-04bc-7ad8-d71e-4ce15a6e7e47@ispras.ru>
+ <CAFEAcA_ATUZ+v8VE8q34mmi3pLhg3qFDHgi7mQB-JJKDEZuzaw@mail.gmail.com>
+ <3ab6b7fb-51cf-0ec4-2c70-e86bb01dcc3f@ispras.ru>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <05e61e91-c983-4952-ee31-859961cc9120@linaro.org>
+Date: Fri, 4 Dec 2020 11:28:33 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <4e114709-e5c2-1860-c760-c05aa3ed5388@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <3ab6b7fb-51cf-0ec4-2c70-e86bb01dcc3f@ispras.ru>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.252,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x244.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w6a1yM5IWQ9n
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BfWLzBBWE9KH
 
-Hi Zenghui,
-
-On 1/28/21 9:25 AM, Auger Eric wrote:
-> Hi Zenghui,
-> 
-> On 12/25/20 10:50 AM, Zenghui Yu wrote:
->> When performing range-based IOTLB invalidation, we should decode the TG
->> field into the corresponding translation granule size so that we can pass
->> the correct invalidation range to backend. Set @granule to (tg * 2 + 10) to
->> properly emulate the architecture.
+On 12/4/20 12:17 AM, Pavel Dovgalyuk wrote:
+> On 03.12.2020 19:14, Peter Maydell wrote:
+>> On Thu, 3 Dec 2020 at 16:10, Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru> wrote:
+>>>
+>>> On 03.12.2020 15:30, Philippe Mathieu-Daudé wrote:
+>>>> Cc'ing Pavel
+>>>>
+>>>> On 12/1/20 4:55 PM, Peter Maydell wrote:
+>>>>> On Wed, 25 Nov 2020 at 04:06, Richard Henderson
+>>>>> <richard.henderson@linaro.org> wrote:
+>>>>>>
+>>>>>> As reported in https://bugs.launchpad.net/bugs/1905356
+>>>>>>
+>>>>>> Not implementing SCTLR.A, but all of the other required
+>>>>>> alignment for SCTLR.A=0 in Table A3-1.
+>>>>>
+>>>>> Something in this series breaks the 'make check-acceptance'
+>>>>> record-and-replay test:
+>>>>>
+>>>>>    (30/40)
+>>>>> tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_aarch64_virt:
+>>>>> PASS (9.14 s)
+>>>>>    (31/40)
+>>>>> tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_arm_virt:
+>>>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+>>>>> Timeout reached\nOriginal status: ERROR\n{'name':
+>>>>> '31-tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_arm_virt',
+>>>>> 'logdir':
+>>>>> '/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/result...
+>>>>> (90.19 s)
+>>>>>
+>>>>> The log shows the "recording execution" apparently hanging,
+>>>>> with the last output from the guest
+>>>>> [    3.183662] Registering SWP/SWPB emulation handler
+>>>
+>>> I looked through the patches and it does not seem that they can break
+>>> anything.
+>>> Could it be the same avocado/chardev socket glitch as in some previous
+>>> failures?
+>>> What happens when re-running this test?
 >>
->> Fixes: d52915616c05 ("hw/arm/smmuv3: Get prepared for range invalidation")
->> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+>> I ran it a couple of times with the patchset and it failed the same
+>> way each time. Without is fine.
 > 
-> Good catch! I tested with older guest kernels though. I wonder how I did
-> not face the bug?
-Please ignore this wrong comment as this corresponds to recent kernels
-instead. Still puzzled anyway ;-)
+> I applied the patches and got no failures on my local machine.
+> 
+> Do you have any ideas on debugging this bug?
+> What does "arm-clang" means? Is the host compiler is clang?
 
-Eric
-> 
-> 
->> ---
->>  hw/arm/smmuv3.c | 4 +++-
->>  1 file changed, 3 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index bbca0e9f20..65231c7d52 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->>  {
->>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
->>      IOMMUTLBEvent event;
->> -    uint8_t granule = tg;
->> +    uint8_t granule;
->>  
->>      if (!tg) {
->>          SMMUEventInfo event = {.inval_ste_allowed = true};
->> @@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->>              return;
->>          }
->>          granule = tt->granule_sz;
->> +    } else {
->> +        guanule = tg * 2 + 10;
-> maybe just init granule to this value above while fixing the typo.
-> 
-> Thanks
-> 
-> Eric
->>      }
->>  
->>      event.type = IOMMU_NOTIFIER_UNMAP;
->>
+I have reproduced it:
 
+qemu-system-arm: /home/rth/qemu/qemu/include/tcg/tcg.h:339: get_alignment_bits:
+Assertion `(((1 << (10 - 1)) | (1 << (10 - 2)) | (1 << (10 - 3)) | (1 << (10 -
+4)) | (1 << (10 - 5)) | (1 << (10 - 6))) & ((1 << a) - 1)) == 0' failed.
+Aborted (core dumped)
+
+You need --enable-debug-tcg for this assert.
+
+It's incredibly stupid of avocado to report SIGABRT as a timeout.
+
+
+r~

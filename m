@@ -1,101 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp966833lfc;
-        Sun, 21 Feb 2021 04:12:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzajIrWGK4xk0NCgXcffmPywj2rYJ+XPCvhhUP07PxjuggLlSWvw6RKZpv4lYExBabw04ne
-X-Received: by 2002:a25:4252:: with SMTP id p79mr24936272yba.492.1613909550534;
-        Sun, 21 Feb 2021 04:12:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613909550; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp698350lfb;
+        Fri, 4 Dec 2020 06:50:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJypMVjHRzko4yFFwVIoE+bXlFnK5U15Bsh/IZGgtHeNKi7qn/9b4GBuXf33zLSjb9SKvkAX
+X-Received: by 2002:a25:ae53:: with SMTP id g19mr6140753ybe.288.1607093409216;
+        Fri, 04 Dec 2020 06:50:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607093409; cv=none;
         d=google.com; s=arc-20160816;
-        b=SygDg5fa4SgzSg0WFwAWhWsb7vHjB8Tv6IQARLUt+L0IPJathoh3QfZVHcooKYJD4A
-         JgsM98NBt73/qYOSunb7zl0uzvtEvkOLVrL0PxEn/T2dZSsrKMnHsSJsblFM96sl5rVH
-         xHwpNzss8Z7GO4m8BZX6/8J69sxYlpNrNj+1/TtTaFw2OY/td84l/mqwEuA+yc/Vwvv1
-         a8OElYeyypeNLRZJ5hMV7eikxNNtmi/3uSPczNReWIq9xqR7uTxZELidmKl6GXLB6Tau
-         JMa1I6QWGbMBOWG5x54bFZgSpb6BUInkgq1sExqGYG3V/1he6L0o9c6KI06lDmRMF3zu
-         AZ6w==
+        b=uTTNnXryplhNojZ5TVinC1wFdIGkmwmqszVrtpUvf+bLINzn/naKs3c68yI6BVPd+T
+         DKplhLJHmhrv0x4p3eHRzUEep5nSm9hJtvuAmHu2LLlBsElKLofQAl1f9T3ThJreJNM8
+         oOozOJEHFRCMD/i6Q95LhvdvE89KCJWW/1olNubSFw3f48s6rcXl3bShYYt+g2fC9uaH
+         ie906+IaxVsFWdcQ+FoPV2LrsHX2fdlsTCHfiLsWWQRFjhG0gi8bWNAOvWocenmxYmXa
+         qiHeM2hJ7lJFYFizEcmd0zOSuz+Dv7j+yevWVH/VXagyDIJG+Y6kpnQIg0q/mI2ESBFu
+         r7wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ePgzoOyWpt4Witqye3vdqFhEOaApnPYTFSOKtHPnDJg=;
-        b=QQoebL8AST99Z4/kgOwuabpT+cW07tHRczyVU1N+GinA5onHyfSgIxbWv43IYtjjuO
-         eZFSne8Rt+hSb1zVG8kGuzhURYuMF4+P745w8iIgX6R8SWcQUqbM4NsjpolExVuDEg84
-         RGETA3oeCslcV3OXq6oVeLZgmnReQkoW/ChZtmCvvX/WQbxOsVS6nOiGG4/hFzoMrEDf
-         7SanxZu1F5cVKD6dtF+7nc5uPdzIIsjlV1ZNpkLK7wZOEXlr8qZia71Qh+bfQXZqMFlk
-         gderaW9CdDHIUaL5H0hW86suUisZD0zMY8Tz2AXai385kpo+8vH+j2tPICKXfurQCpdY
-         mtiQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=wJaD1CcfrX+gDvYqQT0Wot1QgoVeYjVEBtk9V/P9i2o=;
+        b=g3oA09bv443vuPaKYQK/kNE3iTXrEjuV1RizMS+pU2edotwN6FBmDlCrXXVKytJUQy
+         JD7jMEPM34DLftr/2TrQ8Jn+5/E9RlLsGHUI55QzVEqcZXgfT76V7dADwZ0HOv75icg2
+         z9zNm2Qn7lEoIiYi5XTJsHd/jt+efsEuWMH2yUk09IX43axuk8l+FjYlubkEVO/OlDKR
+         XH1un1rsv54c13JrM3CKXRQ/quEtnczfE63OFiCio9vbQ9X3JwEguR7pQtYhFKY0Pb3N
+         hJibMWI7jt0/xnZy3kLusrP4YTLmOO3T2SxvXxkGtelRLowtjW+LaIHryK7Tt3sATzO9
+         z/xA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XIyPdCCJ;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=pGJvA4NG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si16400601ybm.8.2021.02.21.04.12.30
+        by mx.google.com with ESMTPS id r184si1910821ybf.24.2020.12.04.06.50.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Feb 2021 04:12:30 -0800 (PST)
+        Fri, 04 Dec 2020 06:50:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XIyPdCCJ;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=pGJvA4NG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45146 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:49058 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lDnbB-0007PW-Tq
-	for alex.bennee@linaro.org; Sun, 21 Feb 2021 07:12:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38058)
+	id 1klCPQ-0006JQ-KX
+	for alex.bennee@linaro.org; Fri, 04 Dec 2020 09:50:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lDnb1-0007Nc-7q
- for qemu-arm@nongnu.org; Sun, 21 Feb 2021 07:12:19 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:37069)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lDnay-0001rP-Qw
- for qemu-arm@nongnu.org; Sun, 21 Feb 2021 07:12:18 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id h25so4669198eds.4
- for <qemu-arm@nongnu.org>; Sun, 21 Feb 2021 04:12:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ePgzoOyWpt4Witqye3vdqFhEOaApnPYTFSOKtHPnDJg=;
- b=XIyPdCCJfw+EzhdOefRgsznjvu+mXcQTLQwgcZ0hQgZJirMLSYEXdTlsViCb1gxFAu
- omgh7eCbS6vjwyPxEIAYhkTx9hEtXAhOxu9K2nHgjA+tVPCQndHEMSvJo++K0zb6Q1Sq
- Yyf2e55bBVj+Wvr84H4Rka01lozexgCo3Gi3jj1iVCobYBmWhE8mHv4Tt4apwItcjAcR
- cza92zytt5kdIoaueCZbVaKs+xfnZrnjk6IYPmOhog/NPa8zOST227wrT3khBhlWtyv4
- otPeLpMyvpqjRdNcEOGoOGVBtTnM+PugX4NkWvV1g5b1jGBFx0fs80NvMODFSpnK+WuI
- eztA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ePgzoOyWpt4Witqye3vdqFhEOaApnPYTFSOKtHPnDJg=;
- b=UUITm+Wapp9gV0EUYysvrAipTlCIgv5ynWYFn83orqsMrPj4HduOqWuSRMyFClPUP+
- TzhZ2z0yHapAy76klYsFsvQ49Jx2vZG0PITycUFw5muT/Qn0ftpLAS0VIQD+vDNFkIvb
- KIoZ+9ajTkA1KQQ4K0xCzMLQIGMmQMiQPK49/nEGSF71t5HoqY4trMoMxzv1OLL88YLf
- JHiJmyv4pyauBSdW5wSlM8gij9JDjFJLCJjUlgbQRje21ge1eZwB1q8LVlelHhjqgFhx
- uuT3a2gSk624hxRfaH9yx4WU7n40l0uDF1BMHd5sl6dCcDjKbS6qOe06x5k+GzGUgISC
- U/rA==
-X-Gm-Message-State: AOAM5308TbAO7DOb0coWSqf+kGnMVmUYBoxtKSLExozLSFZ8iUpoFFzw
- Axxa473y2EtWXdwD95xtKIwtmbwdr5IAc+JBDNRwGw==
-X-Received: by 2002:a05:6402:3514:: with SMTP id
- b20mr17390252edd.100.1613909535184; 
- Sun, 21 Feb 2021 04:12:15 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1klCPH-0006Il-A1; Fri, 04 Dec 2020 09:49:59 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:40160 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1klCPF-0004GQ-Ku; Fri, 04 Dec 2020 09:49:59 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id AF9F841448;
+ Fri,  4 Dec 2020 14:49:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1607093392;
+ x=1608907793; bh=QldUVOVf3+mraCRsEzt3ld+hk/iPYrp9FUN3ECLUhmo=; b=
+ pGJvA4NG8Vd/CsKalzpZSnIzrQVHJhOR7QyfV+nKAkieELU21nfHWCo1EF6HxpSR
+ HlJCQ4balnxKXGWWzB2KKPA+g1WCY+BAckdHJDRH8Ja1eOBFs3Q6DLhdz0JfXdJ+
+ zbe2evip7uqcoywud4qO2klcB0Ws4YP4KcqePN8WVEo=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i1k4xDQPOApF; Fri,  4 Dec 2020 17:49:52 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id 01FFD41447;
+ Fri,  4 Dec 2020 17:49:51 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Fri, 4 Dec
+ 2020 17:49:51 +0300
+Date: Fri, 4 Dec 2020 17:50:14 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Alexander Graf <agraf@csgraf.de>
+Subject: Re: [PATCH v4 01/11] hvf: Add hypervisor entitlement to output
+ binaries
+Message-ID: <20201204145014.GA86904@SPB-NB-133.local>
+References: <20201203234857.21051-1-agraf@csgraf.de>
+ <20201203234857.21051-2-agraf@csgraf.de>
 MIME-Version: 1.0
-References: <20210220212903.20944-1-richard.henderson@linaro.org>
-In-Reply-To: <20210220212903.20944-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 21 Feb 2021 12:12:04 +0000
-Message-ID: <CAFEAcA_3GUsYLY89Y62k0Rfaqu3JHdPYphueW2t04C6FgvQmTA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] tcg/aarch64: Fixes to vector ops
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20201203234857.21051-2-agraf@csgraf.de>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,27 +111,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vbfJ2u7uliBw
+X-TUID: JpLcn++7I3BK
 
-On Sat, 20 Feb 2021 at 21:29, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> I guess it has been a while since I've run aa32 risu on aa64 host.
->
-> The launchpad bug is something that should have been seen from the
-> beginning, but the similar aa64 operations are expanded as integer
-> code, not vector code.  The aa32 neon code has only recently been
-> converted to use gvecs.
->
-> The cmle0 (zero) bug has been exposed by the recent constant
-> propagation improvements; previously we saw a reg/reg compare.
+On Fri, Dec 04, 2020 at 12:48:47AM +0100, Alexander Graf wrote:
+> In macOS 11, QEMU only gets access to Hypervisor.framework if it has the
+> respective entitlement. Add an entitlement template and automatically self
+> sign and apply the entitlement in the build.
+> 
 
-Idle thought: would it be possible to have a test framework that
-exercised the TCG backend without being dependent on a particular
-guest frontend?
-
-thanks
--- PMM
+Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>

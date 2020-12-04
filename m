@@ -1,66 +1,102 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp125384lfb;
-        Thu, 3 Dec 2020 16:04:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz2BhQcaXKxXlnvN3f9sudOwshgrbHPjxjKR06RSpzvfs/vja7rMY+7XvVYKVVRGpautIWB
-X-Received: by 2002:a25:d983:: with SMTP id q125mr2526415ybg.78.1607040272132;
-        Thu, 03 Dec 2020 16:04:32 -0800 (PST)
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp699133lfb;
+        Fri, 4 Dec 2020 06:51:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJygpqrit2Ujqrqnp6jExSPz7hE9T3dERYGFx2l8ocpqO2m5gkcoIsc4PrjfhfDk8Qisesm5
+X-Received: by 2002:a25:6dd5:: with SMTP id i204mr6535095ybc.267.1607093472184;
+        Fri, 04 Dec 2020 06:51:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607093472; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LyPJoj+Y7deQ8wF1couYxsge6Q7Bn0Vx7I2r82xGMGo/PanxOfwv+6ouBdGgvEMC49
+         bWKZf8vJvvsd91DucQErJuixlcaD+2YFITxK5JNIo7SvctTi3ggAc5vn+Z4jMu3FsoPA
+         mBnlVABlqXz3OzCGoxMGRy22vkMnbrCjiB1NdrYHPTbfrsUyFLjQML69+LjAFV5nEEIF
+         AG7DpcTzbykQ0h3y7e26ST2Vd2w6MCxaVwAGAVGkV3N3iBYRI2ap97wAsiEQSo2ycTrr
+         eCTUiImAxBfptD701Ly0kiAv2u9EO8JCuMgvBBhEtLCBlINK5pMQIC8BCdrqqz6PgKhC
+         hoZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=E8+90RQFfYii8+Yy+msELRq/ZT/Wg/CFhErpICp8IE0=;
+        b=C5snYyMBM4VlnxCZAQgJfBAqWMU6wcnDGgguuz8tM3NHG+eGzPD3Srcv2jJFu2wGZU
+         TwjCOwZIKvQqNRWGLEqN5cJFS1tzKxpdPfbxZfW67nu/7f4gc4sR4iSacbSPiQTVp1fM
+         Om+3ulV4OyeuSvyfs8WL3altrSYG2f97d2ZZ8IlRVkqWdZ2Mytg0eQ4KedYro6lw0hAQ
+         LC1VYWK6FwwGHjFic0jXxdY+nQlII+gUGjEyLGFBKrYyaxNCzrPU6lF3XmDoVpwdDjEo
+         9W/4L260c08vtCzrNEkTaxaA+U5IvSy+fZfpwAzcRffcLgd87l4Lk9lUbHlgMHUV9ShP
+         UFcA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=NXGn9w7n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f197si348744ybg.149.2020.12.03.16.04.31
+        by mx.google.com with ESMTPS id x39si2009122ybd.456.2020.12.04.06.51.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Dec 2020 16:04:32 -0800 (PST)
+        Fri, 04 Dec 2020 06:51:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47286 helo=lists1p.gnu.org)
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=NXGn9w7n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:50600 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkyaN-0000Dg-Ej
-	for alex.bennee@linaro.org; Thu, 03 Dec 2020 19:04:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33700)
+	id 1klCQR-00073P-JG
+	for alex.bennee@linaro.org; Fri, 04 Dec 2020 09:51:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59666)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kkyaE-0000DS-Q5; Thu, 03 Dec 2020 19:04:22 -0500
-Resent-Date: Thu, 03 Dec 2020 19:04:22 -0500
-Resent-Message-Id: <E1kkyaE-0000DS-Q5@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21739)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1klCQI-00071l-6c; Fri, 04 Dec 2020 09:51:02 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:40228 helo=mta-01.yadro.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kkyaB-00005L-Rc; Thu, 03 Dec 2020 19:04:22 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1607040234; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=gHiPfBpmKEC8I35qqpWrwGQXVfDsRI1QPqczTNhzyF/tPWVJcuc4Yv0FIZxDB0gYaNZOzWnuQhMBVvO0zilvWQbWAtz9rcv51q5n6sLAV0QVGPnuofr0wu2NA3rFGJ9SLTsxUYbNZL2SS2DHGgF/GI2m182ZNUqz5fpEb9RUWpE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1607040234;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=yuZNEJMIGD8YDfD0nYF/TcwtObkdP+zJLgWRBZgWc5E=; 
- b=CkTD+A+fHHRK5CYblJlCHYVrNLR3E7dydhhOx9n91Ppi7J1jVsmg/3XC02sgby/wNZSdxJPizJfleVCLO6iVv5dsjybxC/Eb2zCPsh98gsZu/+G7CQDiTycfZpGAg41fT/XS+5cvtUnK6OeTVL5oXWq5rHx+IMPfpPGyYI4utlA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1607040231900131.03371343197944;
- Thu, 3 Dec 2020 16:03:51 -0800 (PST)
-In-Reply-To: <20201203234857.21051-1-agraf@csgraf.de>
-Subject: Re: [PATCH v4 00/11] hvf: Implement Apple Silicon Support
-Message-ID: <160704022852.5436.2687604944611531475@600e7e483b3a>
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1klCQG-0004jj-3w; Fri, 04 Dec 2020 09:51:01 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id C5D594138D;
+ Fri,  4 Dec 2020 14:50:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1607093456;
+ x=1608907857; bh=NUTBOoab5b7l2/UYHZzuYZCRGIpYd3V/74ehzFMbufU=; b=
+ NXGn9w7nf1IhVFm9/7unPI1SWH8Qu0dBV8DeABDTNOcgXVqQmFW5YH6moYN9Zh25
+ 03r/6hG4BlnO3YkFwFJ+Zvhh3CWZIRmuIIEZjjBFiZenmTOZ63rXFeaxgvOUjCzC
+ VRcrBQcKppEXCECHDqhgTz2bdK5qQu8kvjPuVyQPUdA=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lpLddXC48tRS; Fri,  4 Dec 2020 17:50:56 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id CFA0D41370;
+ Fri,  4 Dec 2020 17:50:56 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Fri, 4 Dec
+ 2020 17:50:56 +0300
+Date: Fri, 4 Dec 2020 17:51:19 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Alexander Graf <agraf@csgraf.de>
+Subject: Re: [PATCH v4 02/11] hvf: x86: Remove unused definitions
+Message-ID: <20201204145119.GB86904@SPB-NB-133.local>
+References: <20201203234857.21051-1-agraf@csgraf.de>
+ <20201203234857.21051-3-agraf@csgraf.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: agraf@csgraf.de
-Date: Thu, 3 Dec 2020 16:03:51 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20201203234857.21051-3-agraf@csgraf.de>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,98 +110,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
- qemu-arm@nongnu.org, lfy@google.com, pbonzini@redhat.com, pcc@google.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5kz8pZXMmpCn
+X-TUID: zPODl2D6ZcVh
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTIwMzIzNDg1Ny4yMTA1
-MS0xLWFncmFmQGNzZ3JhZi5kZS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
-bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
-bWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAxMjAzMjM0ODU3LjIxMDUxLTEt
-YWdyYWZAY3NncmFmLmRlClN1YmplY3Q6IFtQQVRDSCB2NCAwMC8xMV0gaHZmOiBJbXBsZW1lbnQg
-QXBwbGUgU2lsaWNvbiBTdXBwb3J0Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9i
-YXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAt
-LWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVz
-IFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3Njcmlw
-dHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09
-PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9t
-IGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAg
-ICAgICBwYXRjaGV3LzIwMjAxMjAzMjM0ODU3LjIxMDUxLTEtYWdyYWZAY3NncmFmLmRlIC0+IHBh
-dGNoZXcvMjAyMDEyMDMyMzQ4NTcuMjEwNTEtMS1hZ3JhZkBjc2dyYWYuZGUKU3dpdGNoZWQgdG8g
-YSBuZXcgYnJhbmNoICd0ZXN0Jwo2Y2FmMjFhIGh2ZjogYXJtOiBJbXBsZW1lbnQgLWNwdSBob3N0
-CmZhMjI5OGEgaHZmOiBhcm06IEFkZCBzdXBwb3J0IGZvciBHSUN2MwozMDVmOTQyIGFybS9odmY6
-IEFkZCBhIFdGSSBoYW5kbGVyCjU2ZjZmYzcgYXJtOiBBZGQgSHlwZXJ2aXNvci5mcmFtZXdvcmsg
-YnVpbGQgdGFyZ2V0CmZiMTZlODUgaHZmOiBBZGQgQXBwbGUgU2lsaWNvbiBzdXBwb3J0CjIyM2Uw
-MmMgaHZmOiBTaW1wbGlmeSBwb3N0IHJlc2V0L2luaXQvbG9hZHZtIGhvb2tzCjAxM2UyNTAgYXJt
-OiBTZXQgUFNDSSB0byAwLjIgZm9yIEhWRgpkMTNhZWUwIGh2ZjogSW50cm9kdWNlIGh2ZiB2Y3B1
-IHN0cnVjdAplYjgyOTcxIGh2ZjogTW92ZSBjb21tb24gY29kZSBvdXQKMzgwNWEzYSBodmY6IHg4
-NjogUmVtb3ZlIHVudXNlZCBkZWZpbml0aW9ucwo0NDM3YzdmIGh2ZjogQWRkIGh5cGVydmlzb3Ig
-ZW50aXRsZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzEx
-IENoZWNraW5nIGNvbW1pdCA0NDM3YzdmOTQyMDUgKGh2ZjogQWRkIGh5cGVydmlzb3IgZW50aXRs
-ZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzKQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRl
-ZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMxNjogCm5ldyBmaWxl
-IG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDYyIGxpbmVzIGNoZWNr
-ZWQKClBhdGNoIDEvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55
-IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBt
-YWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMi8xMSBDaGVja2luZyBj
-b21taXQgMzgwNWEzYTllNTE2IChodmY6IHg4NjogUmVtb3ZlIHVudXNlZCBkZWZpbml0aW9ucykK
-My8xMSBDaGVja2luZyBjb21taXQgZWI4Mjk3MTg0Y2EwIChodmY6IE1vdmUgY29tbW9uIGNvZGUg
-b3V0KQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5U
-QUlORVJTIG5lZWQgdXBkYXRpbmc/CiMzOTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDog
-MCBlcnJvcnMsIDEgd2FybmluZ3MsIDEwNTQgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMy8xMSBoYXMg
-c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
-ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
-S1BBVENIIGluIE1BSU5UQUlORVJTLgo0LzExIENoZWNraW5nIGNvbW1pdCBkMTNhZWUwN2ZjNTQg
-KGh2ZjogSW50cm9kdWNlIGh2ZiB2Y3B1IHN0cnVjdCkKV0FSTklORzogbGluZSBvdmVyIDgwIGNo
-YXJhY3RlcnMKIzE0MDogRklMRTogdGFyZ2V0L2kzODYvaHZmL2h2Zi5jOjIxMzoKKyAgICB3dm1j
-cyhjcHUtPmh2Zi0+ZmQsIFZNQ1NfRU5UUllfQ1RMUywgY2FwMmN0cmwoaHZmX3N0YXRlLT5odmZf
-Y2Fwcy0+dm14X2NhcF9lbnRyeSwKCkVSUk9SOiAiKGZvbyopIiBzaG91bGQgYmUgIihmb28gKiki
-CiM3NDg6IEZJTEU6IHRhcmdldC9pMzg2L2h2Zi94ODZodmYuYzo4NToKKyAgICBpZiAoaHZfdmNw
-dV93cml0ZV9mcHN0YXRlKGNwdV9zdGF0ZS0+aHZmLT5mZCwgKHZvaWQqKXhzYXZlLCA0MDk2KSkg
-ewoKRVJST1I6ICIoZm9vKikiIHNob3VsZCBiZSAiKGZvbyAqKSIKIzgyOTogRklMRTogdGFyZ2V0
-L2kzODYvaHZmL3g4Nmh2Zi5jOjE2NzoKKyAgICBpZiAoaHZfdmNwdV9yZWFkX2Zwc3RhdGUoY3B1
-X3N0YXRlLT5odmYtPmZkLCAodm9pZCopeHNhdmUsIDQwOTYpKSB7Cgp0b3RhbDogMiBlcnJvcnMs
-IDEgd2FybmluZ3MsIDk5NiBsaW5lcyBjaGVja2VkCgpQYXRjaCA0LzExIGhhcyBzdHlsZSBwcm9i
-bGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBv
-c2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4g
-TUFJTlRBSU5FUlMuCgo1LzExIENoZWNraW5nIGNvbW1pdCAwMTNlMjUwNjE2NmEgKGFybTogU2V0
-IFBTQ0kgdG8gMC4yIGZvciBIVkYpCjYvMTEgQ2hlY2tpbmcgY29tbWl0IDIyM2UwMmNiZmEwZiAo
-aHZmOiBTaW1wbGlmeSBwb3N0IHJlc2V0L2luaXQvbG9hZHZtIGhvb2tzKQo3LzExIENoZWNraW5n
-IGNvbW1pdCBmYjE2ZTg1YjZjYTMgKGh2ZjogQWRkIEFwcGxlIFNpbGljb24gc3VwcG9ydCkKV0FS
-TklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzQ3
-OiBGSUxFOiBhY2NlbC9odmYvaHZmLWNwdXMuYzo2MToKKyNpZmRlZiBfX2FhcmNoNjRfXwoKV0FS
-TklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzU4
-OiBGSUxFOiBhY2NlbC9odmYvaHZmLWNwdXMuYzozMzU6CisjaWZkZWYgX19hYXJjaDY0X18KCldB
-Uk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM5
-MDogRklMRTogaW5jbHVkZS9zeXNlbXUvaHZmX2ludC5oOjE1OgorI2lmZGVmIF9fYWFyY2g2NF9f
-CgpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlO
-RVJTIG5lZWQgdXBkYXRpbmc/CiMxMTY6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKV0FSTklORzog
-bGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzU3ODogRklMRTogdGFyZ2V0L2FybS9odmYvaHZmLmM6
-NDU4OgorICAgICAgICBodl92Y3B1X3NldF9wZW5kaW5nX2ludGVycnVwdChjcHUtPmh2Zi0+ZmQs
-IEhWX0lOVEVSUlVQVF9UWVBFX0ZJUSwgdHJ1ZSk7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hh
-cmFjdGVycwojNTgzOiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo0NjM6CisgICAgICAgIGh2
-X3ZjcHVfc2V0X3BlbmRpbmdfaW50ZXJydXB0KGNwdS0+aHZmLT5mZCwgSFZfSU5URVJSVVBUX1RZ
-UEVfSVJRLCB0cnVlKTsKCnRvdGFsOiAwIGVycm9ycywgNiB3YXJuaW5ncywgNjkxIGxpbmVzIGNo
-ZWNrZWQKClBhdGNoIDcvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
-YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
-ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KOC8xMSBDaGVja2lu
-ZyBjb21taXQgNTZmNmZjN2E5OTJlIChhcm06IEFkZCBIeXBlcnZpc29yLmZyYW1ld29yayBidWls
-ZCB0YXJnZXQpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMg
-TUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzQ3OiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQKCnRv
-dGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMzYgbGluZXMgY2hlY2tlZAoKUGF0Y2ggOC8xMSBo
-YXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3Jz
-CmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpD
-SEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgo5LzExIENoZWNraW5nIGNvbW1pdCAzMDVmOTQyNzJi
-MDEgKGFybS9odmY6IEFkZCBhIFdGSSBoYW5kbGVyKQoxMC8xMSBDaGVja2luZyBjb21taXQgZmEy
-Mjk4YTZmNzgwIChodmY6IGFybTogQWRkIHN1cHBvcnQgZm9yIEdJQ3YzKQoxMS8xMSBDaGVja2lu
-ZyBjb21taXQgNmNhZjIxYWE5ODc3IChodmY6IGFybTogSW1wbGVtZW50IC1jcHUgaG9zdCkKPT09
-IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBm
-dWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDEyMDMy
-MzQ4NTcuMjEwNTEtMS1hZ3JhZkBjc2dyYWYuZGUvdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1l
-c3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRw
-czovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1k
-ZXZlbEByZWRoYXQuY29t
+On Fri, Dec 04, 2020 at 12:48:48AM +0100, Alexander Graf wrote:
+> The hvf i386 has a few struct and cpp definitions that are never
+> used. Remove them.
+> 
+
+Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
+Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
+
+Thanks,
+Roman

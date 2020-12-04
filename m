@@ -1,159 +1,177 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9259203lfc;
-        Fri, 19 Feb 2021 10:59:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzLEXWU3twSF5jk1eOjaX6GJVEGYNm3E9wzDHHDP+xkPQDrEf3RInBgp0SqYwrzwoZnxw6t
-X-Received: by 2002:a17:906:654d:: with SMTP id u13mr9722809ejn.299.1613761146033;
-        Fri, 19 Feb 2021 10:59:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613761146; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp504890lfb;
+        Fri, 4 Dec 2020 02:48:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyNZTdJmVjDn7P+zmRIR+WtsmPg/di9qJTq58+u8Fgu7SstYE1sg33i7p9G20LrV6K0KvuP
+X-Received: by 2002:a25:d57:: with SMTP id 84mr4992157ybn.248.1607078886676;
+        Fri, 04 Dec 2020 02:48:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607078886; cv=none;
         d=google.com; s=arc-20160816;
-        b=BVYzVPBzvbC1LwqsP9c/6eD3xuUWZprufJ/nBrpg+4LgWExvzrDN+bFQmdWhY2luQM
-         keeB/J+xPac0N0PH0Pl+6/IOqPFt05PR+OEu6O8aFg6jTCq8kHlzJXc+GurYFnOlVCUX
-         vdrFLGGtSfKz4g84JdhdgiPVlMJLEFUIcE6J7wLSslgaaGdgb9+Y29fcLveSV81kYFbc
-         Doqy4hbR6gZ2z9WQ+RolL50FME88VNncyL+KyPQdF/e04l10rQg7ffL0q9W23o+P/4dc
-         c9fZsxnlsSlCS3iGjhP/FoMtQ2baey57uuPlMnv+4HQ9nkQoR8u8W0xExshlYeDbh9CR
-         LegQ==
+        b=0n3r5+81NW8EE8v1VQCiHI/pMn3R9RjJ72PQ7xXSwNl+vrHMW0YEl+nfzOr3d7x8y2
+         lyf51BDUqck11dykjKZpWKgSka+wZKcVRUDOXi85pP5xgjyLC8r3nCLaXDmeVmVHtrqx
+         J1saoSCQ/dudcUkWjUVzVd7hKIrGch55oOUdjKZb+o22FmdhrEzmLGgK/xnEg6Bwx3D7
+         0f4MjUmY6kqvzcSpDA31GMm+6gWe8yrZc6EBkvmRZztAgHWEkkMzftQsIVXqBM1m3Ix+
+         qjaj7nYSZFcYvyS8G0ekPip2/hl3+CN/Q6asC2xzeB9SHl+ndvpB8U41GKBD4inFL8JV
+         q69w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=mrtLKwySMOFm14Rd5nOFINDtx5JqFBLBgMJ4Heu3Gpc=;
-        b=Wr1UA6lKjBd863MDzrVlaKDjeMo+X2E6zN2PxOHwpHZuFoO8CtkJHshbBvvoY496x+
-         F1JRQjiSZcIcD7zDtYwrEzR+o+JmNrFtrC1gU7ynIsdeoC7L7bPcWWopehDNGeGXeG+4
-         jCzKrcXK/EHi0r9ymoSSiNnXXGHci77zBtBWpjfWvygUqSlv+j/Bht/DE4LpX/imXIQ0
-         1ybW6+HRHc27Tj9xG7n0NlsbGyvmiRhDu6T4b7WJIiQrd0ARg3sfY6b+zREGyEJs5Dw9
-         G+Su9rHmaIY/kRobUDOEFRWfcilOBOtkwbQ1zLW9XOuS+0vB8IMyktNv7xTYeD7XV2uA
-         qzuA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=6TTqW7mkp5Li+n3dS2ZLTebTM9AUputYqwEgjNtIH04=;
+        b=gumaBvh3frNHYMh6T748qdnx7XuXg5dqTK7r881yVSwBlxmHcNSMPeEwu6x8Zg9G4Z
+         p3WJ4WbU7gnGksMH+6In5UnR+VOFENHjjnyoYHguzi92ejLXwWXN0AbFZGIHxnnYbLQI
+         UIcjUZrUOxGlja9i6eCwTTgy1Qnvzj5a18mug5F/unRXWHTZQxBYJ+o0J0geM25T27qf
+         RQfhNy81OjO6l+VOU2MljKbIKE2iWF6g9YfPi7kgd+4TUg2/LpbINX8hs+/jj2XMeRjT
+         ZvrAmIUeFMI3nB1zn560LsoEK2K4vttO9rx5tsoA3Lt1sB531YgX8Gy2KrV49H011x5H
+         ksmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VWufO0hc;
-       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id x11si6308163edl.220.2021.02.19.10.59.05
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s4si1378849ybe.230.2020.12.04.02.48.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2021 10:59:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 04 Dec 2020 02:48:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VWufO0hc;
-       spf=pass (google.com: domain of crosa@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1613761145;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=mrtLKwySMOFm14Rd5nOFINDtx5JqFBLBgMJ4Heu3Gpc=;
-	b=VWufO0hcAO5MkOtZxkvgBM/6WoJTubnmKQi9hzdT9/Y29aQbBxiM5igI2zgfU+flzn51YT
-	y/ya6C2uQRNaqrJAsUixasGe8nZY03qrRp9yUpGY5hZ185i/UPwe4uF7tnTPGZS7M7gWY1
-	ZCkKzFnaLwmpY7bcpYFC75lFeHoxdgw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-595-j5bB5UguP_ecZTCWaZDlUg-1; Fri, 19 Feb 2021 13:59:01 -0500
-X-MC-Unique: j5bB5UguP_ecZTCWaZDlUg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EEDC3107ACFE;
-	Fri, 19 Feb 2021 18:58:58 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-114-28.rdu2.redhat.com [10.10.114.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3BF405C1BB;
-	Fri, 19 Feb 2021 18:58:57 +0000 (UTC)
-Date: Fri, 19 Feb 2021 13:58:55 -0500
-From: Cleber Rosa <crosa@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: Niek Linnenbank <nieklinnenbank@gmail.com>,
-	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, peter.maydell@linaro.org,
-	Thomas Huth <thuth@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
-	f4bug@amsat.org, b.galvani@gmail.com, qemu-arm@nongnu.org,
-	Pavel.Dovgaluk@ispras.ru,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Willian Rampazzo <wrampazz@redhat.com>
-Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
-Message-ID: <20210219185855.GA619233@localhost.localdomain>
-References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
- <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
- <YCuVC4T+TFjuskhF@redhat.com>
- <CAPan3Wo+c+4F82cM+UDQu+JH9eQdqL2gjnikXmg3PZKTXCP_jg@mail.gmail.com>
- <cc5f65a8-204b-17ad-3bba-61a3919ef798@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52288 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kl8d9-0000Dh-2N
+	for alex.bennee@linaro.org; Fri, 04 Dec 2020 05:48:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35296)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1kl8cl-0000Bz-3A; Fri, 04 Dec 2020 05:47:39 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2823)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1kl8ci-0003e0-09; Fri, 04 Dec 2020 05:47:38 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CnTsf47PCzkklb;
+ Fri,  4 Dec 2020 18:46:46 +0800 (CST)
+Received: from [10.174.184.205] (10.174.184.205) by
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 4 Dec 2020 18:45:11 +0800
+Subject: Re: [PATCH RFC] vfio: Move the saving of the config space to the
+ right place in VFIO migration
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+References: <20201114091731.157-1-lushenming@huawei.com>
+ <860bd707-8862-2584-6e12-67c86f092dba@nvidia.com>
+ <20201119104127.5e243efa@w520.home>
+ <a7be9306-f800-0323-293e-217e2e9f6015@huawei.com>
+ <20201120150146.5e5693e9@w520.home>
+ <09549a98-85a0-fe4e-59fc-fdb636a4a5cd@huawei.com>
+ <20201123193336.GA32690@nvidia.com> <20201123144622.75a18812@w520.home>
+ <ed6c0920-8a26-fafe-01a6-3021c5a92adb@huawei.com>
+ <20201202105502.GB3226@work-vm>
+From: Shenming Lu <lushenming@huawei.com>
+Message-ID: <8ecb83bd-c15c-69aa-0f65-4e3c5074a2a9@huawei.com>
+Date: Fri, 4 Dec 2020 18:45:10 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-In-Reply-To: <cc5f65a8-204b-17ad-3bba-61a3919ef798@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="6c2NcOVqGQ03X4Wi"
-Content-Disposition: inline
-X-TUID: AYxwrvKOVzqA
+In-Reply-To: <20201202105502.GB3226@work-vm>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.184.205]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=lushenming@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Neo Jia <cjia@nvidia.com>, Marc Zyngier <maz@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
+ qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ yuzenghui@huawei.com, wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E/jSMWaAPaKR
 
---6c2NcOVqGQ03X4Wi
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, Feb 19, 2021 at 07:24:01PM +0100, Philippe Mathieu-Daud=E9 wrote:
->=20
-> I hope you understand the concern I have is not with you in particular,
-> and I used your case to start a discussion with the QEMU community.
->=20
-> FWIW I missed the URL change because I still have the image cached in
-> Avocado so my testing ran fine. Which makes me wonder...
->=20
-> Cleber, Willian, should Avocado display information about cached
-> artifacts? Such "Using artifact downloaded 7 months ago".
->
 
-As of Avocado 85.0 (currently used in QEMU), it's possible to set the
-"expire" parameter to "fetch_asset", see:
+On 2020/12/2 18:55, Dr. David Alan Gilbert wrote:
+> * Shenming Lu (lushenming@huawei.com) wrote:
+>> Hi,
+>>
+>> After reading everyone's opinions, we have a rough idea for this issue.
+>>
+>> One key point is whether it is necessary to setup the config space before
+>> the device can accept further migration data. I think it is decided by
+>> the vendor driver, so we can simply ask the vendor driver about it in
+>> .save_setup, which could avoid a lot of unnecessary copies and settings.
+>> Once we have known the need, we can iterate the config space (before)
+>> along with the device migration data in .save_live_iterate and
+>> .save_live_complete_precopy, and if not needed, we can only migrate the
+>> config space in .save_state.
+>>
+>> Another key point is that the interrupt enabling should be after the
+>> restoring of the interrupt controller (might not only interrupts).
+>> My solution is to add a subflag at the beginning of the config data
+>> (right after VFIO_MIG_FLAG_DEV_CONFIG_STATE) to indicate the triggered
+>> actions on the dst (such as whether to enable interrupts).
+>>
+>> Below is it's workflow.
+>>
+>> On the save path:
+>> 	In vfio_save_setup():
+>> 	Ask the vendor driver if it needs the config space setup before it
+>> 	can accept further migration data.
+> 
+> You could argue that you could always send an initial copy of the config
+> data at the start; and then send new versions at the end anyway.
+> But is this just about interrupts?
 
-  https://avocado-framework.readthedocs.io/en/85.0/api/test/avocado.html#av=
-ocado.Test.fetch_asset
+In the current implementation, the effect of the config space is mainly about
+interrupts (SET_IRQS ioctl).
 
-In this case, if we want assets to not be used if they're are 30 days
-or older, that could be set to 86400.  The expired asset not being used,
-and then not being able to be fetched again, would cause a test to be
-canceled.
+> Is the dst going to interpret the
+> received migration data differently depending on the config data?
 
-Cache browsing/listing/manipulation using the "avocado assets" command
-is planned for Avocado 86.0, see:
+I also have a little doubt about the dependency... But not sure.
 
-  https://github.com/avocado-framework/avocado/issues/4311
-
-> > So what I can do
-> > instead is:
-> >=20
-> > =A0 - update the patch to use github to store the artifacts, and their
-> > licenses (other tests also use github)
->=20
-> Until there is better solutions, this is the option I prefer.
->
-
-+1.
-
-Regards,
-- Cleber.
-
---6c2NcOVqGQ03X4Wi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAmAwCm0ACgkQZX6NM6Xy
-CfOqXg/+OedAWfYGLoW0Ff6Cs2CXBP3yLGWZHKCy0k1/jwghzV9Ve/LEsW6+oXeA
-FKNQ6VIc6pultpz6VXeb7jxcUPezn4JmOhcY2OrRfJqJLs18g9+iYMNlMBdaVOAY
-fU0R9Ou1IhpflJTTO3mE/ruCtiM5MS1swnfr9xbVNmimJ9v+i9Y7526RTtcLRrOE
-zEBjvK/I27mOfSUKNC3kWBlGjG5FuL6ZZMoDDQcc79wxxCtjaqlrsCO0WxY/+BOv
-kyza8Lqm/DniYMpys996Bm7fqsYgElfrqHTKLkQn5yIifFu8B8ZB3OKL/LZLwBTM
-pJrn9N3J/ZVQVYzK+TB1f3JwDVlHac6f0YtzWiTOvoQuAkV+vBnTVAjSWsHowOST
-mRIZlRQB2k6QHvaeExRWWSUykXDYdxd4w+PgTsrCHei7CBrOLwMeuprdYUQ8D0/K
-KAAbbf+wkLC0PHRBIYpxeK6/rndSO3tl8KvidilgPdik8p6+lzf2LtcKI/AC5ajL
-OxVj9flUdIdTnfvi3ciVIwH9L/YuzKDjfXc6N/BaTvcRsQ1YaHhE95WQgyLVNTnT
-523Q7wMK9ZDKg5WSR8SAYM9nN0LaeV4e97NXRSqnTPnwg6k1Oafnft4e3OVb6VIK
-LLpMpBTNrSEHEueK7PJpnd0WeCQxqANcQX+a2dZycRYBmVoqmP4=
-=i7jE
------END PGP SIGNATURE-----
-
---6c2NcOVqGQ03X4Wi--
+> That
+> would seem dangerous if the config data was to change during the
+> migration.
+> 
+> Dave
+> 
+>> 		|
+>> 	In vfio_save_iterate() (pre-copy):
+>> 	If *needed*, save the config space which would be setup on the dst
+>> 	before the migration data, but send with a subflag to instruct not
+>> 	to (such as) enable interrupts.
+>> 		|
+>> 	In vfio_save_complete_precopy() (stop-and-copy, iterable process):
+>> 	The same as that in vfio_save_iterate().
+>> 		|
+>> 	In .save_state (stop-and-copy, non-iterable process):
+>> 	If *needed*, only send a subflag to instruct to enable interrupts.
+>> 	If *not needed*, save the config space and setup everything on the dst.
+>>
+>> Besides the above idea, we might be able to choose to let the vendor driver do
+>> more: qemu just sends and writes the config data (before) along with the device
+>> migration data every time, and it's up to the vendor driver to filter out/buffer
+>> the received data or reorder the settings...
+>>
+>> Thanks,
+>> Shenming
+>>

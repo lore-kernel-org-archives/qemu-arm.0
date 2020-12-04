@@ -1,122 +1,105 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp16317041lfq;
-        Tue, 5 Jan 2021 03:03:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzUSYkz5dU5kjgtz0HpnTMcUCGEOY/BfsXvbZ3+MczPOWt9oMbV5MQiZvazUB1QxPLmTRPY
-X-Received: by 2002:a25:d913:: with SMTP id q19mr118192005ybg.180.1609844618398;
-        Tue, 05 Jan 2021 03:03:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609844618; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp990438lfb;
+        Fri, 4 Dec 2020 12:50:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJygRs5tYEcFrzU8iUrh7UliOYs0XVFCmtcg+hWJVQnv3X63rzyotQpMZHU0HgOEpx27ASrz
+X-Received: by 2002:a25:418e:: with SMTP id o136mr8137674yba.158.1607115013407;
+        Fri, 04 Dec 2020 12:50:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607115013; cv=none;
         d=google.com; s=arc-20160816;
-        b=B/KXt1/iJVrcp3S5NBX85SEIAEb9Loghnm9SFTDGcWkuZG2eivGS7Xqvhv8x5A1w11
-         OEfgOUYjbML0Sod5m4hl5bHTzuuhh57AHCqgh+mOeKGptoqGmWKb7ySar7LJksyVf4VP
-         ANfuAJ0mcNMg3CBLJu+n2RJwkWHI57VAbFhyOwUa2DtFqprBYF4IrWd//wmV4pW1igGx
-         ZLg93DsbbNSsEv6t4f/IvNm6qqJFiW11uCKdkdNOCgR6IitfxmXi9+wXnPLyMKf4t83/
-         fUdR+HgkZ9ruEDX1bbwsg8uh2vBob2JDpYBdUzGWCG05wyc3xVyPT2FZ2mwxfFk3tshb
-         QTiw==
+        b=dG+pREVnBYrTgsgWDFoUPe9jLrCoIKvp2kK4Z5ilB9WkgXkB3+D/HZb7Cu3872tk7A
+         RQpatt8b9pU4Nosymaxo9UMFqohNbzoumUtB5lBuOcr27/CWICktBfH6dSLilHnktdje
+         vRzk+6zfXujgKfuOVJaHZ6OgW5vv7aT5sMli358ZwuJXXzgh8Ycozld2JOS+SrtcTPQK
+         s71+BYiUSrAKb6qw++k4aA2tM+tnluALT81uJb+l56KDPN0GB7fwR8zg+BhGpSv80IDh
+         2IuCUMoB0L1x0aW+gfSYhuVfrww3CEvsnnoXtMRX40lU+yQHyC75s06ll4EGxdS+tbHy
+         4bcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=8cu6HkCB5CpxmqJ03sR67WS1+WODTfgIc3D+gNm2MqU=;
-        b=UrNzsvslR24Lu2FKOfy3/uQkTcq854fN4hDA2WS5YFeaqAdC1OHgElYj5l/SMU0rx3
-         5l0F5qQirDsobSy52EPXBAbpyCpQuuCTseWe3BSaE/+rC7kg6cLTY0p2Dp1aibIsVSrc
-         4wFTaB1SzAIGMxs2np+kFr6pnGWkFidzFNCPufNAdRYmTHLPR0HT1tG8BqKsRpGXoidA
-         189NZPe0ho6BXDqxfW8Z7hsA09ar12x+j2bOfxocBVL9uYyaYVsVy4zjKcEiH2+LmkAI
-         XNjcoLPW4hUFDUggruhJ2KlLdQHjCUER7AFHvbEEu3FLE3gg7uYn8sPcpOV+R54OpXOB
-         7hTw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=BLHvaZ58IPfbrE3S/Xl2dGS7oCKy9lC7E9SCyskayrY=;
+        b=S+4HMK2hscP36nEcl1SSQIP5/d7L4KEdtLjP5WpMivBkdUecZ6akXFP2WX66KB18gh
+         3fb2BQpEj0lXNib5xg+XMMaDQv0S6lpgkC3mK+IjvcYM5rMkLZ69sNwbyo6doeZc8FIN
+         rz1IvB5vzmIiI4j+TohPC87mP+AU+wv8IS/c0mIN2//F/rskSAKSXG58D1208l8IofjT
+         4JqiNyCP6eCU+LVxIYDIGryos7jg9z1qFRJlPJH+SMKBKoCWNRS1PPvnwZlRTz6OuC9n
+         mDkBsGMWn2o76E9S22RZ2EV+T70bPkI9NwojXF1tRySmdUFGujZwuvbLsRHybnlWlMr2
+         Qx4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GdlseIO5;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=l2xUQh8w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si57634847yba.386.2021.01.05.03.03.38
+        by mx.google.com with ESMTPS id y17si3437255ybk.378.2020.12.04.12.50.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jan 2021 03:03:38 -0800 (PST)
+        Fri, 04 Dec 2020 12:50:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GdlseIO5;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=l2xUQh8w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50150 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:34952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kwk7l-0003JC-L4
-	for alex.bennee@linaro.org; Tue, 05 Jan 2021 06:03:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60228)
+	id 1klI1s-0000QB-Pn
+	for alex.bennee@linaro.org; Fri, 04 Dec 2020 15:50:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kwk72-0003HI-AK
- for qemu-arm@nongnu.org; Tue, 05 Jan 2021 06:02:52 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46892)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kwk6z-00076c-Ir
- for qemu-arm@nongnu.org; Tue, 05 Jan 2021 06:02:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1609844568;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8cu6HkCB5CpxmqJ03sR67WS1+WODTfgIc3D+gNm2MqU=;
- b=GdlseIO5+by6Y1DM04m8GNhJmEQabEZEFK5TZOpKUMmc/XWpnycRxWW+9WFdqZHcuiVOtt
- +mDHvAPJLmS+oxlKJTs7+vVDIe85Niy0HqjrDKneuLdgJihdvZbzmFDraywSiczdnaozyY
- KJTgUUnlY7j/fOWf9I0/LJg5DuNGfNs=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-487-6n4ElkjYN1-n9V1Oa3Lp5A-1; Tue, 05 Jan 2021 06:02:47 -0500
-X-MC-Unique: 6n4ElkjYN1-n9V1Oa3Lp5A-1
-Received: by mail-wr1-f69.google.com with SMTP id q18so14673618wrc.20
- for <qemu-arm@nongnu.org>; Tue, 05 Jan 2021 03:02:47 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=mbl5QmC5aHI8ZfdwVbKvx4Xv3Z0CQD3R2rpo6FmAyfQ=;
- b=Mr/nfy5keRyWb45nEa+2pUwLhxPHew8HtSWmJoa+jbnXdVXSgB68i3vzgwX//Psl1k
- +KCaEsf88U4oJ42XR/03b5WKACAPv3aBnWuj43XW1R+KpAjiHRcsugbihSGioMjXHC0h
- lTqWBqdwEsl3PJqCaJ3kf0QBkyy4WgW8KdRrQ3WP/dbVw7s6YtlvM48W9e99a851miFU
- 9oNpfIpA6Uc8fO+u/7Q/kKot63us55O2j1bDlx4JMbTtWn/raKJgPg3L2cSRxI+6rVD5
- QyluyOyN8o3j5TeQKtIqhDlNlJP95JVe90ZpuZzAma1E72KF89uLCiZmetmst45irkMQ
- S1qA==
-X-Gm-Message-State: AOAM531TkJ8aQPaiwKfGfgmjlRv71Hnx37JOQ6AkMhwQTUQ0tpoRbw1E
- m4jEBb5+2G6LfXPC1iY7AbGPLt0I7TWrVkTg65lH+rfeQkGTBUhLgY17CTYJFuQGFToObm4vpK7
- y2ZxRi7vKk5K7
-X-Received: by 2002:a05:6000:1d1:: with SMTP id
- t17mr86763568wrx.164.1609844563962; 
- Tue, 05 Jan 2021 03:02:43 -0800 (PST)
-X-Received: by 2002:a05:6000:1d1:: with SMTP id
- t17mr86763531wrx.164.1609844563667; 
- Tue, 05 Jan 2021 03:02:43 -0800 (PST)
-Received: from redhat.com (bzq-79-178-32-166.red.bezeqint.net. [79.178.32.166])
- by smtp.gmail.com with ESMTPSA id j2sm61399868wrh.78.2021.01.05.03.02.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Jan 2021 03:02:42 -0800 (PST)
-Date: Tue, 5 Jan 2021 06:02:39 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH v2 3/3] hw/i386: expose a "smbios-ep" PC machine property
-Message-ID: <20210105055815-mutt-send-email-mst@kernel.org>
-References: <20201214205029.2991222-1-ehabkost@redhat.com>
- <20201214205029.2991222-4-ehabkost@redhat.com>
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1klFcA-0007G7-Fl; Fri, 04 Dec 2020 13:15:40 -0500
+Received: from mta-02.yadro.com ([89.207.88.252]:47738 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1klFc0-0003QE-4K; Fri, 04 Dec 2020 13:15:22 -0500
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id 62A68413F1;
+ Fri,  4 Dec 2020 18:15:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1607105714;
+ x=1608920115; bh=YVGyE8TlAzd8/jfGdj6zfujGWcv13xuBM4HkZSrsiqI=; b=
+ l2xUQh8wSKibMxU9ggiQlfsn0T/pwPVDHwDTdqA/38SvYxxnhYEVlKOFqyc8U7pS
+ dC/+VcHkOkjMmQ20AWJBAZd0IPOwcXfaA/TME+K6JOpwanKoAjtvLjlDPaocicjY
+ Jhh/EwoXsLlGZNX/WUtfHdIO0mGtvUdGeIaSdfOSjOM=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i8FiuNgjj_3F; Fri,  4 Dec 2020 21:15:14 +0300 (MSK)
+Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
+ [172.17.100.103])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id 79A5A4139B;
+ Fri,  4 Dec 2020 21:15:13 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
+ (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Fri, 4 Dec
+ 2020 21:15:13 +0300
+Date: Fri, 4 Dec 2020 21:15:36 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Peter Collingbourne <pcc@google.com>
+Subject: Re: [PATCH v3 08/10] arm/hvf: Add a WFI handler
+Message-ID: <20201204181536.GL86904@SPB-NB-133.local>
+References: <20201202190408.2041-1-agraf@csgraf.de>
+ <20201202190408.2041-9-agraf@csgraf.de>
+ <20201203103949.GC7201@SPB-NB-133.local>
+ <CAMn1gO4adJvkWDMV6e0Caigh7B3O5STq=S5P_F6SbWi58x22CQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201214205029.2991222-4-ehabkost@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.243,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <CAMn1gO4adJvkWDMV6e0Caigh7B3O5STq=S5P_F6SbWi58x22CQ@mail.gmail.com>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-03.corp.yadro.com (172.17.100.103)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,171 +113,104 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alexander Graf <agraf@csgraf.de>, qemu-arm <qemu-arm@nongnu.org>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0seHNGrK9Yf2
+X-TUID: /mKOL3SiKoWh
 
-On Mon, Dec 14, 2020 at 03:50:29PM -0500, Eduardo Habkost wrote:
-> From: Daniel P. Berrangé <berrange@redhat.com>
+On Thu, Dec 03, 2020 at 10:18:14AM -0800, Peter Collingbourne wrote:
+> On Thu, Dec 3, 2020 at 2:39 AM Roman Bolshakov <r.bolshakov@yadro.com> wrote:
+> >
+> > On Wed, Dec 02, 2020 at 08:04:06PM +0100, Alexander Graf wrote:
+> > > From: Peter Collingbourne <pcc@google.com>
+> > >
+> > > Sleep on WFI until the VTIMER is due but allow ourselves to be woken
+> > > up on IPI.
+> > >
+> > > Signed-off-by: Peter Collingbourne <pcc@google.com>
+> > > [agraf: Remove unused 'set' variable, always advance PC on WFX trap]
+> > > Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> > > ---
+> > > +static void hvf_wait_for_ipi(CPUState *cpu, struct timespec *ts)
+> > > +{
+> > > +    /*
+> > > +     * Use pselect to sleep so that other threads can IPI us while we're
+> > > +     * sleeping.
+> > > +     */
+> > > +    qatomic_mb_set(&cpu->thread_kicked, false);
+> > > +    qemu_mutex_unlock_iothread();
+> >
+> > I raised a concern earlier, but I don't for sure if a kick could be lost
+> > right here. On x86 it could be lost.
 > 
-> The i440fx and Q35 machine types are both hardcoded to use the legacy
-> SMBIOS 2.1 entry point. This is a sensible conservative choice because
-> SeaBIOS only supports SMBIOS 2.1
+> If the signal is sent right before the pselect() it will be blocked
+> i.e. left pending. With the pselect() we get an atomic unblock of
+> SIG_IPI at the same time as we begin sleeping, which means that we
+> will receive the signal and leave the pselect() immediately.
 > 
-> EDK2, however, can also support SMBIOS 3.0 and QEMU already uses this on
-> the ARM virt machine type.
+> I think at some point macOS had an incorrect implementation of
+> pselect() where the signal mask was non-atomically set in userspace
+> which could lead to the signal being missed but I checked the latest
+> XNU sources and it looks like the pselect() implementation has been
+> moved to the kernel.
 > 
-> This adds a property to allow the choice of SMBIOS entry point versions
-> For example to opt in to version 3.0
-> 
->    $QEMU -machine q35,smbios-ep=3_0
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
-Just one small point: wouldn't it be a good idea to eschew
-abbreviation here, and call the property smbios-entry-point
-or even smbios-entry-point-type or smbios-entry-point-version?
+Yeah, you're right here.
 
-> ---
-> This is patch was previously submitted at:
-> https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@redhat.com
+> > > +    pselect(0, 0, 0, 0, ts, &cpu->hvf->unblock_ipi_mask);
+> > > +    qemu_mutex_lock_iothread();
+> > > +}
+> > > +
+> > >  int hvf_vcpu_exec(CPUState *cpu)
+> > >  {
+> > >      ARMCPU *arm_cpu = ARM_CPU(cpu);
+> > > @@ -579,6 +594,46 @@ int hvf_vcpu_exec(CPUState *cpu)
+> > >          }
+> > >          case EC_WFX_TRAP:
+> > >              advance_pc = true;
+> > > +            if (!(syndrome & WFX_IS_WFE) && !(cpu->interrupt_request &
+> > > +                (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
+> > > +
+> > > +                uint64_t ctl;
+> > > +                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CTL_EL0,
+> > > +                                        &ctl);
+> > > +                assert_hvf_ok(r);
+> > > +
+> > > +                if (!(ctl & 1) || (ctl & 2)) {
+> > > +                    /* Timer disabled or masked, just wait for an IPI. */
+> > > +                    hvf_wait_for_ipi(cpu, NULL);
+> > > +                    break;
+> > > +                }
+> > > +
+> > > +                uint64_t cval;
+> > > +                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CVAL_EL0,
+> > > +                                        &cval);
+> > > +                assert_hvf_ok(r);
+> > > +
+> > > +                int64_t ticks_to_sleep = cval - mach_absolute_time();
+> >
+> >
+> > Apple reference recommends to use [1]:
+> >
+> >   clock_gettime_nsec_np(CLOCK_UPTIME_RAW)
+> >
+> > It, internally in Libc, invokes mach_absolute_time() [2].
+> >
+> > 1. https://developer.apple.com/documentation/kernel/1462446-mach_absolute_time
+> > 2. https://opensource.apple.com/source/Libc/Libc-1158.1.2/gen/clock_gettime.c.auto.html
 > 
-> Changes from v1:
-> * Include qapi-visit-smbios.h instead of qapi-visit-machine.h
-> * Commit message fix: s/smbios_ep/smbios-ep/
-> ---
->  include/hw/i386/pc.h |  3 +++
->  hw/i386/pc.c         | 26 ++++++++++++++++++++++++++
->  hw/i386/pc_piix.c    |  2 +-
->  hw/i386/pc_q35.c     |  2 +-
->  4 files changed, 31 insertions(+), 2 deletions(-)
+> I think that recommendation is because most people want to deal with
+> seconds, not ticks. In our case we specifically want ticks because
+> we're comparing against a ticks value from the guest, so I don't see
+> the benefit of converting from ticks to seconds and back again.
 > 
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 2aa8797c6e..2075093b32 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -11,6 +11,7 @@
->  #include "hw/acpi/acpi_dev_interface.h"
->  #include "hw/hotplug.h"
->  #include "qom/object.h"
-> +#include "hw/firmware/smbios.h"
->  
->  #define HPET_INTCAP "hpet-intcap"
->  
-> @@ -38,6 +39,7 @@ typedef struct PCMachineState {
->      /* Configuration options: */
->      uint64_t max_ram_below_4g;
->      OnOffAuto vmport;
-> +    SmbiosEntryPointType smbios_ep;
->  
->      bool acpi_build_enabled;
->      bool smbus_enabled;
-> @@ -62,6 +64,7 @@ typedef struct PCMachineState {
->  #define PC_MACHINE_SATA             "sata"
->  #define PC_MACHINE_PIT              "pit"
->  #define PC_MACHINE_MAX_FW_SIZE      "max-fw-size"
-> +#define PC_MACHINE_SMBIOS_EP        "smbios-ep"
->  
->  /**
->   * PCMachineClass:
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 640fb5b0b7..3cc559e0d9 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -81,6 +81,7 @@
->  #include "hw/mem/nvdimm.h"
->  #include "qapi/error.h"
->  #include "qapi/qapi-visit-common.h"
-> +#include "qapi/qapi-visit-smbios.h"
->  #include "qapi/visitor.h"
->  #include "hw/core/cpu.h"
->  #include "hw/usb.h"
-> @@ -1532,6 +1533,23 @@ static void pc_machine_set_hpet(Object *obj, bool value, Error **errp)
->      pcms->hpet_enabled = value;
->  }
->  
-> +static void pc_machine_get_smbios_ep(Object *obj, Visitor *v, const char *name,
-> +                                     void *opaque, Error **errp)
-> +{
-> +    PCMachineState *pcms = PC_MACHINE(obj);
-> +    SmbiosEntryPointType smbios_ep = pcms->smbios_ep;
-> +
-> +    visit_type_SmbiosEntryPointType(v, name, &smbios_ep, errp);
-> +}
-> +
-> +static void pc_machine_set_smbios_ep(Object *obj, Visitor *v, const char *name,
-> +                                     void *opaque, Error **errp)
-> +{
-> +    PCMachineState *pcms = PC_MACHINE(obj);
-> +
-> +    visit_type_SmbiosEntryPointType(v, name, &pcms->smbios_ep, errp);
-> +}
-> +
->  static void pc_machine_get_max_ram_below_4g(Object *obj, Visitor *v,
->                                              const char *name, void *opaque,
->                                              Error **errp)
-> @@ -1621,6 +1639,8 @@ static void pc_machine_initfn(Object *obj)
->      pcms->vmport = ON_OFF_AUTO_OFF;
->  #endif /* CONFIG_VMPORT */
->      pcms->max_ram_below_4g = 0; /* use default */
-> +    pcms->smbios_ep = SMBIOS_ENTRY_POINT_TYPE_2_1;
-> +
->      /* acpi build is enabled by default if machine supports it */
->      pcms->acpi_build_enabled = PC_MACHINE_GET_CLASS(pcms)->has_acpi_build;
->      pcms->smbus_enabled = true;
-> @@ -1759,6 +1779,12 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
->          NULL, NULL);
->      object_class_property_set_description(oc, PC_MACHINE_MAX_FW_SIZE,
->          "Maximum combined firmware size");
-> +
-> +    object_class_property_add(oc, PC_MACHINE_SMBIOS_EP, "str",
-> +        pc_machine_get_smbios_ep, pc_machine_set_smbios_ep,
-> +        NULL, NULL);
-> +    object_class_property_set_description(oc, PC_MACHINE_SMBIOS_EP,
-> +        "SMBIOS Entry Point version [v2_1, v3_0]");
 
-To me this reads like the legal values are v2_1 and v3_0, in fact
-they are 2_1 and 3_0.
+Thanks for the clarifications, Peter.
 
-
->  }
->  
->  static const TypeInfo pc_machine_info = {
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 08b82df4d1..30ae7f27af 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -179,7 +179,7 @@ static void pc_init1(MachineState *machine,
->          smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
->                              mc->name, pcmc->smbios_legacy_mode,
->                              pcmc->smbios_uuid_encoded,
-> -                            SMBIOS_ENTRY_POINT_TYPE_2_1);
-> +                            pcms->smbios_ep);
->      }
->  
->      /* allocate ram and load rom/bios */
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index f71b1e2dcf..9974426806 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -198,7 +198,7 @@ static void pc_q35_init(MachineState *machine)
->          smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
->                              mc->name, pcmc->smbios_legacy_mode,
->                              pcmc->smbios_uuid_encoded,
-> -                            SMBIOS_ENTRY_POINT_TYPE_2_1);
-> +                            pcms->smbios_ep);
->      }
->  
->      /* allocate ram and load rom/bios */
-> -- 
-> 2.28.0
-
+Regards,
+Roman

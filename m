@@ -1,71 +1,66 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp120243lfb;
-        Thu, 3 Dec 2020 15:57:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyjwNzvGrToxQ/gEo8BinJ3/i4iREKpFPthMSiaX3zhHVHAqy+Kc9ixExpX3HCQFRgNQSGt
-X-Received: by 2002:a25:b88d:: with SMTP id w13mr2460016ybj.217.1607039852217;
-        Thu, 03 Dec 2020 15:57:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607039852; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Q7wtLYffw8DvCyWKeRVpDT0HFj1+Ou/TyVNuGPlakVMUCrV7IZxFP0HO/j+5SBJ9/s
-         GIxoq1w4v7sgP2W5XkQ8dGymEhEEmeSNZG7z9IMY8GsMimlO0c3e5D5ViJ5TyHsxxqPK
-         w5FwV1AMT3dQ0xoPZTLAvmqgLdJpB804KenElbaQdd/wSAQNNv9jiGGUIjAiE9yS3k7/
-         Jx02H9VrUAjHBY8ILb3P45xw5HanaAPRb3CCta132hX5gHnJtkoYdvO0Zv1dRqKYbn2T
-         KkX60WRjPue9J6gdnTKVFFaBNooz7CfarEEfVmfF4afuiJ1DULwGi234iBVZPI0GCVoZ
-         9f1Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=zv6eT3iVfAUAVgccYVm025e2cWNgo/aZFWn+XnsqGaM=;
-        b=JueX7wD16yHw7ESLtGOX7AiS/JtNr0S2r8EZT5H8o+2i410hDgQ4vo4JSrtjAuWbjZ
-         pgmM9Q0O7wIRBB5rLOUKY1Qi4DwILmpuyTm/dw3iRDPX3I7aGPLgkDbxKUrtxvS47rYd
-         8wfZJu5VxnEI9Wt1YDIbkMIPDohWSIw6Q75l0xuexHbO2rfMXhA3HOPFBPxb2WBw3Er6
-         MXWiJre0wbHcuFy1TGGnnS2fPvMLhbzjnSDQmIQa8l0F7qKxFA7ABgq64UpaG/noVmsr
-         tNsSC3Qhw9NiriwqcIw1fVaLwNWghhDgbew8CCi0DE6Cy9w/inu5w6bwRPIVHY5Xk9FF
-         CMuQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp125384lfb;
+        Thu, 3 Dec 2020 16:04:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz2BhQcaXKxXlnvN3f9sudOwshgrbHPjxjKR06RSpzvfs/vja7rMY+7XvVYKVVRGpautIWB
+X-Received: by 2002:a25:d983:: with SMTP id q125mr2526415ybg.78.1607040272132;
+        Thu, 03 Dec 2020 16:04:32 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a67si306611ybg.316.2020.12.03.15.57.32
+        by mx.google.com with ESMTPS id f197si348744ybg.149.2020.12.03.16.04.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Dec 2020 15:57:32 -0800 (PST)
+        Thu, 03 Dec 2020 16:04:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40122 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47286 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkyTb-0005KH-KP
-	for alex.bennee@linaro.org; Thu, 03 Dec 2020 18:57:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58480)
+	id 1kkyaN-0000Dg-Ej
+	for alex.bennee@linaro.org; Thu, 03 Dec 2020 19:04:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33700)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kkyLr-0003Iw-Kz; Thu, 03 Dec 2020 18:49:31 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:57584
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kkyLp-0003Q5-MT; Thu, 03 Dec 2020 18:49:31 -0500
-Received: from localhost.localdomain
- (dynamic-077-002-092-143.77.2.pool.telefonica.de [77.2.92.143])
- by csgraf.de (Postfix) with ESMTPSA id 36AB0390051A;
- Fri,  4 Dec 2020 00:49:03 +0100 (CET)
-From: Alexander Graf <agraf@csgraf.de>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 09/11] arm/hvf: Add a WFI handler
-Date: Fri,  4 Dec 2020 00:48:55 +0100
-Message-Id: <20201203234857.21051-10-agraf@csgraf.de>
-X-Mailer: git-send-email 2.24.3 (Apple Git-128)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kkyaE-0000DS-Q5; Thu, 03 Dec 2020 19:04:22 -0500
+Resent-Date: Thu, 03 Dec 2020 19:04:22 -0500
+Resent-Message-Id: <E1kkyaE-0000DS-Q5@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21739)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kkyaB-00005L-Rc; Thu, 03 Dec 2020 19:04:22 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1607040234; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=gHiPfBpmKEC8I35qqpWrwGQXVfDsRI1QPqczTNhzyF/tPWVJcuc4Yv0FIZxDB0gYaNZOzWnuQhMBVvO0zilvWQbWAtz9rcv51q5n6sLAV0QVGPnuofr0wu2NA3rFGJ9SLTsxUYbNZL2SS2DHGgF/GI2m182ZNUqz5fpEb9RUWpE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1607040234;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=yuZNEJMIGD8YDfD0nYF/TcwtObkdP+zJLgWRBZgWc5E=; 
+ b=CkTD+A+fHHRK5CYblJlCHYVrNLR3E7dydhhOx9n91Ppi7J1jVsmg/3XC02sgby/wNZSdxJPizJfleVCLO6iVv5dsjybxC/Eb2zCPsh98gsZu/+G7CQDiTycfZpGAg41fT/XS+5cvtUnK6OeTVL5oXWq5rHx+IMPfpPGyYI4utlA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1607040231900131.03371343197944;
+ Thu, 3 Dec 2020 16:03:51 -0800 (PST)
 In-Reply-To: <20201203234857.21051-1-agraf@csgraf.de>
-References: <20201203234857.21051-1-agraf@csgraf.de>
+Subject: Re: [PATCH v4 00/11] hvf: Implement Apple Silicon Support
+Message-ID: <160704022852.5436.2687604944611531475@600e7e483b3a>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: agraf@csgraf.de
+Date: Thu, 3 Dec 2020 16:03:51 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -79,167 +74,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
+ qemu-arm@nongnu.org, lfy@google.com, pbonzini@redhat.com, pcc@google.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rii6/g3ImZ/D
+X-TUID: 5kz8pZXMmpCn
 
-From: Peter Collingbourne <pcc@google.com>
-
-Sleep on WFI until the VTIMER is due but allow ourselves to be woken
-up on IPI.
-
-In this implementation IPI is blocked on the CPU thread at startup and
-pselect() is used to atomically unblock the signal and begin sleeping.
-The signal is sent unconditionally so there's no need to worry about
-races between actually sleeping and the "we think we're sleeping"
-state. It may lead to an extra wakeup but that's better than missing
-it entirely.
-
-Signed-off-by: Peter Collingbourne <pcc@google.com>
-[agraf: Remove unused 'set' variable, always advance PC on WFX trap]
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
----
- accel/hvf/hvf-cpus.c     |  5 ++--
- include/sysemu/hvf_int.h |  1 +
- target/arm/hvf/hvf.c     | 56 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 59 insertions(+), 3 deletions(-)
-
-diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
-index ef18f01a7d..3414c190c3 100644
---- a/accel/hvf/hvf-cpus.c
-+++ b/accel/hvf/hvf-cpus.c
-@@ -322,15 +322,14 @@ static int hvf_init_vcpu(CPUState *cpu)
-     cpu->hvf = g_malloc0(sizeof(*cpu->hvf));
- 
-     /* init cpu signals */
--    sigset_t set;
-     struct sigaction sigact;
- 
-     memset(&sigact, 0, sizeof(sigact));
-     sigact.sa_handler = dummy_signal;
-     sigaction(SIG_IPI, &sigact, NULL);
- 
--    pthread_sigmask(SIG_BLOCK, NULL, &set);
--    sigdelset(&set, SIG_IPI);
-+    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->unblock_ipi_mask);
-+    sigdelset(&cpu->hvf->unblock_ipi_mask, SIG_IPI);
- 
- #ifdef __aarch64__
-     r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t **)&cpu->hvf->exit, NULL);
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index c2ac6c8f97..7a397fe85a 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -51,6 +51,7 @@ extern HVFState *hvf_state;
- struct hvf_vcpu_state {
-     uint64_t fd;
-     void *exit;
-+    sigset_t unblock_ipi_mask;
- };
- 
- void assert_hvf_ok(hv_return_t ret);
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 8f5e2b0bd0..979008e188 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2,6 +2,7 @@
-  * QEMU Hypervisor.framework support for Apple Silicon
- 
-  * Copyright 2020 Alexander Graf <agraf@csgraf.de>
-+ * Copyright 2020 Google LLC
-  *
-  * This work is licensed under the terms of the GNU GPL, version 2 or later.
-  * See the COPYING file in the top-level directory.
-@@ -17,6 +18,8 @@
- #include "sysemu/hvf_int.h"
- #include "sysemu/hw_accel.h"
- 
-+#include <mach/mach_time.h>
-+
- #include "exec/address-spaces.h"
- #include "hw/irq.h"
- #include "qemu/main-loop.h"
-@@ -411,6 +414,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
- 
- void hvf_kick_vcpu_thread(CPUState *cpu)
- {
-+    cpus_kick_thread(cpu);
-     hv_vcpus_exit(&cpu->hvf->fd, 1);
- }
- 
-@@ -466,6 +470,18 @@ static int hvf_inject_interrupts(CPUState *cpu)
-     return 0;
- }
- 
-+static void hvf_wait_for_ipi(CPUState *cpu, struct timespec *ts)
-+{
-+    /*
-+     * Use pselect to sleep so that other threads can IPI us while we're
-+     * sleeping.
-+     */
-+    qatomic_mb_set(&cpu->thread_kicked, false);
-+    qemu_mutex_unlock_iothread();
-+    pselect(0, 0, 0, 0, ts, &cpu->hvf->unblock_ipi_mask);
-+    qemu_mutex_lock_iothread();
-+}
-+
- int hvf_vcpu_exec(CPUState *cpu)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -577,6 +593,46 @@ int hvf_vcpu_exec(CPUState *cpu)
-         }
-         case EC_WFX_TRAP:
-             advance_pc = true;
-+            if (!(syndrome & WFX_IS_WFE) && !(cpu->interrupt_request &
-+                (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
-+
-+                uint64_t ctl;
-+                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CTL_EL0,
-+                                        &ctl);
-+                assert_hvf_ok(r);
-+
-+                if (!(ctl & 1) || (ctl & 2)) {
-+                    /* Timer disabled or masked, just wait for an IPI. */
-+                    hvf_wait_for_ipi(cpu, NULL);
-+                    break;
-+                }
-+
-+                uint64_t cval;
-+                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CVAL_EL0,
-+                                        &cval);
-+                assert_hvf_ok(r);
-+
-+                int64_t ticks_to_sleep = cval - mach_absolute_time();
-+                if (ticks_to_sleep < 0) {
-+                    break;
-+                }
-+
-+                uint64_t seconds = ticks_to_sleep / arm_cpu->gt_cntfrq_hz;
-+                uint64_t nanos =
-+                    (ticks_to_sleep - arm_cpu->gt_cntfrq_hz * seconds) *
-+                    1000000000 / arm_cpu->gt_cntfrq_hz;
-+
-+                /*
-+                 * Don't sleep for less than 2ms. This is believed to improve
-+                 * latency of message passing workloads.
-+                 */
-+                if (!seconds && nanos < 2000000) {
-+                    break;
-+                }
-+
-+                struct timespec ts = { seconds, nanos };
-+                hvf_wait_for_ipi(cpu, &ts);
-+            }
-             break;
-         case EC_AA64_HVC:
-             cpu_synchronize_state(cpu);
--- 
-2.24.3 (Apple Git-128)
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTIwMzIzNDg1Ny4yMTA1
+MS0xLWFncmFmQGNzZ3JhZi5kZS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
+bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
+bWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAxMjAzMjM0ODU3LjIxMDUxLTEt
+YWdyYWZAY3NncmFmLmRlClN1YmplY3Q6IFtQQVRDSCB2NCAwMC8xMV0gaHZmOiBJbXBsZW1lbnQg
+QXBwbGUgU2lsaWNvbiBTdXBwb3J0Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9i
+YXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAt
+LWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVz
+IFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3Njcmlw
+dHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09
+PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9t
+IGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAg
+ICAgICBwYXRjaGV3LzIwMjAxMjAzMjM0ODU3LjIxMDUxLTEtYWdyYWZAY3NncmFmLmRlIC0+IHBh
+dGNoZXcvMjAyMDEyMDMyMzQ4NTcuMjEwNTEtMS1hZ3JhZkBjc2dyYWYuZGUKU3dpdGNoZWQgdG8g
+YSBuZXcgYnJhbmNoICd0ZXN0Jwo2Y2FmMjFhIGh2ZjogYXJtOiBJbXBsZW1lbnQgLWNwdSBob3N0
+CmZhMjI5OGEgaHZmOiBhcm06IEFkZCBzdXBwb3J0IGZvciBHSUN2MwozMDVmOTQyIGFybS9odmY6
+IEFkZCBhIFdGSSBoYW5kbGVyCjU2ZjZmYzcgYXJtOiBBZGQgSHlwZXJ2aXNvci5mcmFtZXdvcmsg
+YnVpbGQgdGFyZ2V0CmZiMTZlODUgaHZmOiBBZGQgQXBwbGUgU2lsaWNvbiBzdXBwb3J0CjIyM2Uw
+MmMgaHZmOiBTaW1wbGlmeSBwb3N0IHJlc2V0L2luaXQvbG9hZHZtIGhvb2tzCjAxM2UyNTAgYXJt
+OiBTZXQgUFNDSSB0byAwLjIgZm9yIEhWRgpkMTNhZWUwIGh2ZjogSW50cm9kdWNlIGh2ZiB2Y3B1
+IHN0cnVjdAplYjgyOTcxIGh2ZjogTW92ZSBjb21tb24gY29kZSBvdXQKMzgwNWEzYSBodmY6IHg4
+NjogUmVtb3ZlIHVudXNlZCBkZWZpbml0aW9ucwo0NDM3YzdmIGh2ZjogQWRkIGh5cGVydmlzb3Ig
+ZW50aXRsZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzEx
+IENoZWNraW5nIGNvbW1pdCA0NDM3YzdmOTQyMDUgKGh2ZjogQWRkIGh5cGVydmlzb3IgZW50aXRs
+ZW1lbnQgdG8gb3V0cHV0IGJpbmFyaWVzKQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRl
+ZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMxNjogCm5ldyBmaWxl
+IG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDYyIGxpbmVzIGNoZWNr
+ZWQKClBhdGNoIDEvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55
+IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBt
+YWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMi8xMSBDaGVja2luZyBj
+b21taXQgMzgwNWEzYTllNTE2IChodmY6IHg4NjogUmVtb3ZlIHVudXNlZCBkZWZpbml0aW9ucykK
+My8xMSBDaGVja2luZyBjb21taXQgZWI4Mjk3MTg0Y2EwIChodmY6IE1vdmUgY29tbW9uIGNvZGUg
+b3V0KQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5U
+QUlORVJTIG5lZWQgdXBkYXRpbmc/CiMzOTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDog
+MCBlcnJvcnMsIDEgd2FybmluZ3MsIDEwNTQgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMy8xMSBoYXMg
+c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
+ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
+S1BBVENIIGluIE1BSU5UQUlORVJTLgo0LzExIENoZWNraW5nIGNvbW1pdCBkMTNhZWUwN2ZjNTQg
+KGh2ZjogSW50cm9kdWNlIGh2ZiB2Y3B1IHN0cnVjdCkKV0FSTklORzogbGluZSBvdmVyIDgwIGNo
+YXJhY3RlcnMKIzE0MDogRklMRTogdGFyZ2V0L2kzODYvaHZmL2h2Zi5jOjIxMzoKKyAgICB3dm1j
+cyhjcHUtPmh2Zi0+ZmQsIFZNQ1NfRU5UUllfQ1RMUywgY2FwMmN0cmwoaHZmX3N0YXRlLT5odmZf
+Y2Fwcy0+dm14X2NhcF9lbnRyeSwKCkVSUk9SOiAiKGZvbyopIiBzaG91bGQgYmUgIihmb28gKiki
+CiM3NDg6IEZJTEU6IHRhcmdldC9pMzg2L2h2Zi94ODZodmYuYzo4NToKKyAgICBpZiAoaHZfdmNw
+dV93cml0ZV9mcHN0YXRlKGNwdV9zdGF0ZS0+aHZmLT5mZCwgKHZvaWQqKXhzYXZlLCA0MDk2KSkg
+ewoKRVJST1I6ICIoZm9vKikiIHNob3VsZCBiZSAiKGZvbyAqKSIKIzgyOTogRklMRTogdGFyZ2V0
+L2kzODYvaHZmL3g4Nmh2Zi5jOjE2NzoKKyAgICBpZiAoaHZfdmNwdV9yZWFkX2Zwc3RhdGUoY3B1
+X3N0YXRlLT5odmYtPmZkLCAodm9pZCopeHNhdmUsIDQwOTYpKSB7Cgp0b3RhbDogMiBlcnJvcnMs
+IDEgd2FybmluZ3MsIDk5NiBsaW5lcyBjaGVja2VkCgpQYXRjaCA0LzExIGhhcyBzdHlsZSBwcm9i
+bGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBv
+c2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4g
+TUFJTlRBSU5FUlMuCgo1LzExIENoZWNraW5nIGNvbW1pdCAwMTNlMjUwNjE2NmEgKGFybTogU2V0
+IFBTQ0kgdG8gMC4yIGZvciBIVkYpCjYvMTEgQ2hlY2tpbmcgY29tbWl0IDIyM2UwMmNiZmEwZiAo
+aHZmOiBTaW1wbGlmeSBwb3N0IHJlc2V0L2luaXQvbG9hZHZtIGhvb2tzKQo3LzExIENoZWNraW5n
+IGNvbW1pdCBmYjE2ZTg1YjZjYTMgKGh2ZjogQWRkIEFwcGxlIFNpbGljb24gc3VwcG9ydCkKV0FS
+TklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzQ3
+OiBGSUxFOiBhY2NlbC9odmYvaHZmLWNwdXMuYzo2MToKKyNpZmRlZiBfX2FhcmNoNjRfXwoKV0FS
+TklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzU4
+OiBGSUxFOiBhY2NlbC9odmYvaHZmLWNwdXMuYzozMzU6CisjaWZkZWYgX19hYXJjaDY0X18KCldB
+Uk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVkCiM5
+MDogRklMRTogaW5jbHVkZS9zeXNlbXUvaHZmX2ludC5oOjE1OgorI2lmZGVmIF9fYWFyY2g2NF9f
+CgpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlO
+RVJTIG5lZWQgdXBkYXRpbmc/CiMxMTY6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKV0FSTklORzog
+bGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzU3ODogRklMRTogdGFyZ2V0L2FybS9odmYvaHZmLmM6
+NDU4OgorICAgICAgICBodl92Y3B1X3NldF9wZW5kaW5nX2ludGVycnVwdChjcHUtPmh2Zi0+ZmQs
+IEhWX0lOVEVSUlVQVF9UWVBFX0ZJUSwgdHJ1ZSk7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hh
+cmFjdGVycwojNTgzOiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo0NjM6CisgICAgICAgIGh2
+X3ZjcHVfc2V0X3BlbmRpbmdfaW50ZXJydXB0KGNwdS0+aHZmLT5mZCwgSFZfSU5URVJSVVBUX1RZ
+UEVfSVJRLCB0cnVlKTsKCnRvdGFsOiAwIGVycm9ycywgNiB3YXJuaW5ncywgNjkxIGxpbmVzIGNo
+ZWNrZWQKClBhdGNoIDcvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
+YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
+ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KOC8xMSBDaGVja2lu
+ZyBjb21taXQgNTZmNmZjN2E5OTJlIChhcm06IEFkZCBIeXBlcnZpc29yLmZyYW1ld29yayBidWls
+ZCB0YXJnZXQpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMg
+TUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzQ3OiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQKCnRv
+dGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMzYgbGluZXMgY2hlY2tlZAoKUGF0Y2ggOC8xMSBo
+YXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3Jz
+CmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpD
+SEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgo5LzExIENoZWNraW5nIGNvbW1pdCAzMDVmOTQyNzJi
+MDEgKGFybS9odmY6IEFkZCBhIFdGSSBoYW5kbGVyKQoxMC8xMSBDaGVja2luZyBjb21taXQgZmEy
+Mjk4YTZmNzgwIChodmY6IGFybTogQWRkIHN1cHBvcnQgZm9yIEdJQ3YzKQoxMS8xMSBDaGVja2lu
+ZyBjb21taXQgNmNhZjIxYWE5ODc3IChodmY6IGFybTogSW1wbGVtZW50IC1jcHUgaG9zdCkKPT09
+IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBm
+dWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDEyMDMy
+MzQ4NTcuMjEwNTEtMS1hZ3JhZkBjc2dyYWYuZGUvdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1l
+c3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRw
+czovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1k
+ZXZlbEByZWRoYXQuY29t

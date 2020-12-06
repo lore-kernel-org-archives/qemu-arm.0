@@ -1,72 +1,64 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2238269lfb;
-        Sun, 6 Dec 2020 03:52:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyMlOKRdy1AuOPvt2FidwLtvX14UDmyAWK6qR+WzcYu8ap/Kgy5zzmrbkmqSg0lB08O6QYi
-X-Received: by 2002:a25:2495:: with SMTP id k143mr16475137ybk.396.1607255559364;
-        Sun, 06 Dec 2020 03:52:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607255559; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2270558lfb;
+        Sun, 6 Dec 2020 04:46:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxyFee/AWBSRg6tUmujKo06GljSQsrMpS1B1TyHwEKm1whvw+teVqucmn2uV+uMJs+kz6rB
+X-Received: by 2002:a05:6638:22bc:: with SMTP id z28mr15472469jas.62.1607258800176;
+        Sun, 06 Dec 2020 04:46:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607258800; cv=none;
         d=google.com; s=arc-20160816;
-        b=L4RvVa9MUO5JfILr0nuOqLjIJTDrQcin7P5cCfxx9gXCU8ztUTttwo4pq5ugEO3/Ig
-         URuBbsigcKulhPL0WFy6JEO0PbPpzgv7ss+RHZP5Z7MqL+j/oCX07I379EUGO7rLYh6X
-         cORZCyXCJC+OJKbnVn3XfcggC/qSSyiZbyJNWcHqcoFK6Ry1X/CdpWKcb0zwDvCS5Jns
-         1gsTucCcl6Puog5r1HVwF/NzA6GonsK80q3CVHdttBa0ywsLQwd11TcIWTK+5xpQIEeP
-         nVF8DdeKn4gzSrULMeRYlpzvUXzab0ZjpTYtIezdkz+Ip/m/7q9HzTTtN5txwME1Pvl0
-         eMDw==
+        b=a28L4hRQtHHfzxgvLafKChVNhzIHpBbT5MM7v0HyW1mqJUPuDIfezfbgUnHG0k+qCl
+         Ux5oicFqFDCqgPpwIq6LA3QcKRO2mI69RNnB9g/btXdTlw3NAWusMVlnZC4QzhU39tii
+         LGKx4sSIIxTEQXLJr05OdJdwsYhKFyqSe9/CLshj7T+jq63qh4XUtlvU5DqUAAbR0AOG
+         JwPbIoId7g1XsywskdbLcAH0oI6z9CYqzBR5avrKw4dmDorCxvJBe8i6ixh0XGID7hM/
+         peGW5TInSruHYCq6zPAHRV+uDqF+SIr/RzZ2rZ6njIdX1fGJKw9xD8j+buIaznnk/WYp
+         8cIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:sender:precedence:errors-to:list-subscribe:list-help
-         :list-post:list-unsubscribe:list-id;
-        bh=QXN11YjZ1vXjJBEYEKORWd+AxNil9vOhCUsNnGsnr90=;
-        b=BZuDXfBxGm5ac7VSwyQceTP+zh0ZER5AXGq7PLjkP2MuZbcWnzmRuJfX/qIwFRYUdp
-         uAnVENUuXubR9aViDo79XZQtY9qUUPw3xdHaQqh1xj1lgNWCM8ytfQy8X0dVyZiYsdBa
-         cfN+EumIpKIaax4y0DaNFqxkcoyi+NhqeQVkMVTfEIGwcaYyIcUyolzUGWmkUQp5s0HP
-         6ZDCTRT6LufTZpHQG2agRE7upr1UfxiLLwT2yWhZyv1VUItT7E9vcADy3TfTZb0Hj/bb
-         HtQgHCLfw8KqQPpIulesbB2WeZUpqkMSvW95O2eK5vMN0XBXrqGJKiPtfUQH/V5RfYNK
-         z4sA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature:sender
+         :precedence:errors-to:list-subscribe:list-help:list-post
+         :list-unsubscribe:list-id;
+        bh=K+a8GLNhS5kz1ayNB+wyvyeVq/+HoG6SYkYYVIKVY/c=;
+        b=LstzeUJ1Sx6hZDAkNg95Cx6vfl+YDC+NB3fZOW+HPyt3IGJ7yc2FawgEvTaGERF4l2
+         pauEYSNPer7Nzm8d8FNSgrSm3CvjiglCZflmqmh65tGGyw94Zdii91Pfn6WtrSu743ou
+         Glg907rpD60vbRtL0xnqstdKd5R2OZy8gQ+v1k6bQs5pfBfy55ctNDScsjqLaXIAZqd9
+         +2QieZSkaiWdR8M2c6cn3m8aj7ZUKVQNpRriUUxQqDPzykQU1UtL+cvFPw4pSiFoUv/B
+         wptz6NID+SSAxBmOxiCKpxnZW5Ck25+wfGZxIVbx0ZJmvWi+Il61XdEJ4pI9kav1J7u/
+         5yfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EBE+gLP1;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aMeOiHqo;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id 7si5122325ybb.268.2020.12.06.03.52.39
+        by mx.google.com with ESMTPS id q8si7591661ilg.89.2020.12.06.04.46.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Dec 2020 03:52:39 -0800 (PST)
+        Sun, 06 Dec 2020 04:46:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EBE+gLP1;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aMeOiHqo;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.45615.81053 (Exim 4.92)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from list by lists.xenproject.org with outflank-mailman.45638.81079 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1klsZ8-0007jo-Kx; Sun, 06 Dec 2020 11:50:58 +0000
+	id 1kltPK-0004CP-97; Sun, 06 Dec 2020 12:44:54 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 45615.81053; Sun, 06 Dec 2020 11:50:58 +0000
+Received: by outflank-mailman (output) from mailman id 45638.81079; Sun, 06 Dec 2020 12:44:54 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1klsZ8-0007jh-Hf; Sun, 06 Dec 2020 11:50:58 +0000
-Received: by outflank-mailman (input) for mailman id 45615;
- Sun, 06 Dec 2020 11:50:57 +0000
+	id 1kltPK-0004CI-6G; Sun, 06 Dec 2020 12:44:54 +0000
+Received: by outflank-mailman (input) for mailman id 45638;
+ Sun, 06 Dec 2020 12:44:52 +0000
 Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=PoKi=FK=redhat.com=philmd@srs-us1.protection.inumbo.net>)
- id 1klsZ7-0007jc-1P
- for xen-devel@lists.xenproject.org; Sun, 06 Dec 2020 11:50:57 +0000
-Received: from us-smtp-delivery-124.mimecast.com (unknown [216.205.24.124])
- by us1-rack-iad1.inumbo.com (Halon) with ESMTP
- id c1b59f2b-76c4-45b2-9d98-fb1505625120;
- Sun, 06 Dec 2020 11:50:56 +0000 (UTC)
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-547-BMajkwIfPnmK6VH6JJ9Bew-1; Sun, 06 Dec 2020 06:50:52 -0500
-Received: by mail-ed1-f71.google.com with SMTP id ca7so4521800edb.12
- for <xen-devel@lists.xenproject.org>; Sun, 06 Dec 2020 03:50:51 -0800 (PST)
-Received: from [192.168.1.36] (111.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.111])
- by smtp.gmail.com with ESMTPSA id m7sm7840045ejr.119.2020.12.06.03.50.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 06 Dec 2020 03:50:49 -0800 (PST)
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=DarT=FK=gmail.com=bmeng.cn@srs-us1.protection.inumbo.net>)
+ id 1kltPI-0004CD-Rl
+ for xen-devel@lists.xenproject.org; Sun, 06 Dec 2020 12:44:52 +0000
+Received: from mail-yb1-xb44.google.com (unknown [2607:f8b0:4864:20::b44])
+ by us1-rack-iad1.inumbo.com (Halon) with ESMTPS
+ id f13a4457-78ea-4c88-ac4f-bbb7250fefb5;
+ Sun, 06 Dec 2020 12:44:51 +0000 (UTC)
+Received: by mail-yb1-xb44.google.com with SMTP id g15so10265298ybq.6
+ for <xen-devel@lists.xenproject.org>; Sun, 06 Dec 2020 04:44:51 -0800 (PST)
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -78,185 +70,191 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
 Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: c1b59f2b-76c4-45b2-9d98-fb1505625120
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1607255455;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QXN11YjZ1vXjJBEYEKORWd+AxNil9vOhCUsNnGsnr90=;
-	b=EBE+gLP1VnuZXkYYJXL5Tc1+GLAbpusfPwc0dNuTzw7ukVxINXFXPAqy+8ijESSE1m5UmA
-	V6jE7nS8qPYnVABjwlIG5tvbXiVntISRAhVIdQ6BbnOMaHChg7qZoZo6EeSHlhnB4haDtQ
-	Tb+BSyPxNxniUR9Lj2nUKOv1nvESOtI=
-X-MC-Unique: BMajkwIfPnmK6VH6JJ9Bew-1
+X-Inumbo-ID: f13a4457-78ea-4c88-ac4f-bbb7250fefb5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=K+a8GLNhS5kz1ayNB+wyvyeVq/+HoG6SYkYYVIKVY/c=;
+        b=aMeOiHqoWIlEFCaxZAxK537taWLP3YfLwHy9hr55Tv3/XfK/C+gOgMr0zIm7IYgTrS
+         DuaGXSFleXbBusET2TL2Gr9LYyyVL3MMXAZbeJO65i0daGzKnCM8/QjGPb/iLClvi2Xt
+         dk05SPvKyoiefbvMrkObf6y+C5DmP2FfFTiyBZ6D64TLDhjV+cYcdT6SoaspwmMaURqB
+         sejpNooNuAB6Pz53TrqPJO3tPLB7qpIqxlt9ecd8FZupF+l8q2Fm67QvOm0TDMcNI8vd
+         okm0GGeT210P/4BCUkbdztGT6oxXeUvxAI53QvTIwtFW7DEufjgUu8wF4758je3Tf5Vp
+         w5Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=QXN11YjZ1vXjJBEYEKORWd+AxNil9vOhCUsNnGsnr90=;
-        b=KaDTtXdx90ZYAb44gMZ4Bg/C05a2PGnc/GKi6LrJbeLAFq+h08mLC1jB/Y+F/AvPBx
-         b+M6E9t1si3xxJSgPqMUGQ5fPhi2+2MnVKvFCc9uiqiKc+uME4xELSHEMe69uBG32yaU
-         RdlrayVoFyD2KeeibLUXds7lb3au3cUm87RHTwH3lkAP2ZAFPd8oyRJZWr4GRT9JBWzG
-         TaX3N3tXQJ6ZjjxgtvJhRTHOnxffh3P61Kp9smftb9+/18ORxffzEj9jM+APt9wuN4cc
-         /RFJYbUCov+ENXUemzrL1SZmoDlY/Ep6ibRPjdk2Fmb3eDihsEO/+EmFEMAhgTG3J9CN
-         qlPA==
-X-Gm-Message-State: AOAM531I8Ug8A2HNHN8jj579YTube+jM8K1dvRBwRp8mjwYqBEzzOYhw
-	8nesKUDxHORTOhGIxecV3v6VV80SuPSBnh9Lpwqv6I3N0RTPN8RwRflc8N9V5J+StvONFsjRG5Z
-	ktqXfgF8a7LCTKb1UmE6bXdTGqXs=
-X-Received: by 2002:a17:907:3312:: with SMTP id ym18mr14924839ejb.437.1607255450929;
-        Sun, 06 Dec 2020 03:50:50 -0800 (PST)
-X-Received: by 2002:a17:907:3312:: with SMTP id ym18mr14924825ejb.437.1607255450726;
-        Sun, 06 Dec 2020 03:50:50 -0800 (PST)
-Subject: Re: [PATCH 3/3] net: checksum: Introduce fine control over checksum
- type
-To: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>,
- Li Zhijian <lizhijian@cn.fujitsu.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Jason Wang <jasowang@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Joel Stanley <joel@jms.id.au>, Beniamino Galvani <b.galvani@gmail.com>,
- Zhang Chen <chen.zhang@intel.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, qemu-arm@nongnu.org, xen-devel@lists.xenproject.org,
- Anthony Perard <anthony.perard@citrix.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>
-References: <1607220847-24096-1-git-send-email-bmeng.cn@gmail.com>
- <1607220847-24096-3-git-send-email-bmeng.cn@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <9f8cdb69-7b74-4034-223f-bfa62cb4e440@redhat.com>
-Date: Sun, 6 Dec 2020 12:50:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=K+a8GLNhS5kz1ayNB+wyvyeVq/+HoG6SYkYYVIKVY/c=;
+        b=StkBkiJ5MTJ5F2iXqzH9IJrdkQjwhUNZJkH7oxZOVbEVfX8qCFNDy1yIpREyoW/X06
+         LegLXiF9p6Bn4NuuAY4JcfPRlCMTuHgQplSEDy5XSBupHd8cu+k1kNuHG5JINXqkDGJ2
+         vlgl0owogTIznG2d5RNJKYbbQyaD1k11g7XfeiQiijULfTQ1yupwK6+GoDPCYiitY9Qa
+         aVW+JEtqK+X1GuOVjBMWQYiW+5oCePppIMHwYsiBcxUj1yVZVJJPjopJsyA4pzqt9nA+
+         iagww9AnP9W4CRvzS32SDf1Rui6lTfkzeZST53o2Wyn4Nw3NiZfTPTg0lByHbfeCIgHm
+         CSTg==
+X-Gm-Message-State: AOAM5337IuaxazK8mHpam3/UKEcVBCFklccfF+p2sk/DUmOfeGG96JFb
+	8B/OsRZYFdxzBtDc03KIOLV2zb5lYEGdPHBy1BM=
+X-Received: by 2002:a25:bb50:: with SMTP id b16mr18111943ybk.152.1607258691399;
+ Sun, 06 Dec 2020 04:44:51 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1607220847-24096-3-git-send-email-bmeng.cn@gmail.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 7dyHwqo+O4v8
+References: <1607220847-24096-1-git-send-email-bmeng.cn@gmail.com>
+ <1607220847-24096-3-git-send-email-bmeng.cn@gmail.com> <9f8cdb69-7b74-4034-223f-bfa62cb4e440@redhat.com>
+In-Reply-To: <9f8cdb69-7b74-4034-223f-bfa62cb4e440@redhat.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 6 Dec 2020 20:44:40 +0800
+Message-ID: <CAEUhbmUBeUzjPG=2-WF=UnpMnVkH3qT0FkXpgBhP==yt53UfBg@mail.gmail.com>
+Subject: Re: [PATCH 3/3] net: checksum: Introduce fine control over checksum type
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>, 
+	Li Zhijian <lizhijian@cn.fujitsu.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	Andrew Jeffery <andrew@aj.id.au>, Jason Wang <jasowang@redhat.com>, Bin Meng <bin.meng@windriver.com>, 
+	Joel Stanley <joel@jms.id.au>, Beniamino Galvani <b.galvani@gmail.com>, Zhang Chen <chen.zhang@intel.com>, 
+	Stefano Stabellini <sstabellini@kernel.org>, Peter Chubb <peter.chubb@nicta.com.au>, 
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, xen-devel@lists.xenproject.org, 
+	Anthony Perard <anthony.perard@citrix.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+	qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 6qpjGjJSFnOV
 
-Hi Ben,
+Hi Philippe,
 
-On 12/6/20 3:14 AM, Bin Meng wrote:
-> From: Bin Meng <bin.meng@windriver.com>
-> 
-> At present net_checksum_calculate() blindly calculates all types of
-> checksums (IP, TCP, UDP). Some NICs may have a per type setting in
-> their BDs to control what checksum should be offloaded. To support
-> such hardware behavior, introduce a 'csum_flag' parameter to the
-> net_checksum_calculate() API to allow fine control over what type
-> checksum is calculated.
-> 
-> Existing users of this API are updated accordingly.
-> 
-> Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> 
-> ---
-> 
->  hw/net/allwinner-sun8i-emac.c |  2 +-
->  hw/net/cadence_gem.c          |  2 +-
->  hw/net/fsl_etsec/rings.c      |  8 +++-----
->  hw/net/ftgmac100.c            | 10 +++++++++-
->  hw/net/imx_fec.c              | 15 +++------------
->  hw/net/virtio-net.c           |  2 +-
->  hw/net/xen_nic.c              |  2 +-
->  include/net/checksum.h        |  7 ++++++-
+On Sun, Dec 6, 2020 at 7:50 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
+> Hi Ben,
+>
+> On 12/6/20 3:14 AM, Bin Meng wrote:
+> > From: Bin Meng <bin.meng@windriver.com>
+> >
+> > At present net_checksum_calculate() blindly calculates all types of
+> > checksums (IP, TCP, UDP). Some NICs may have a per type setting in
+> > their BDs to control what checksum should be offloaded. To support
+> > such hardware behavior, introduce a 'csum_flag' parameter to the
+> > net_checksum_calculate() API to allow fine control over what type
+> > checksum is calculated.
+> >
+> > Existing users of this API are updated accordingly.
+> >
+> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> >
+> > ---
+> >
+> >  hw/net/allwinner-sun8i-emac.c |  2 +-
+> >  hw/net/cadence_gem.c          |  2 +-
+> >  hw/net/fsl_etsec/rings.c      |  8 +++-----
+> >  hw/net/ftgmac100.c            | 10 +++++++++-
+> >  hw/net/imx_fec.c              | 15 +++------------
+> >  hw/net/virtio-net.c           |  2 +-
+> >  hw/net/xen_nic.c              |  2 +-
+> >  include/net/checksum.h        |  7 ++++++-
+>
+> When sending a such API refactor, patch is easier to
+> review if you setup the scripts/git.orderfile config.
 
-When sending a such API refactor, patch is easier to
-review if you setup the scripts/git.orderfile config.
+Sure. I thought I have done this before but apparently not on the
+machine this series was genearated :)
 
->  net/checksum.c                | 18 ++++++++++++++----
->  net/filter-rewriter.c         |  4 ++--
->  10 files changed, 41 insertions(+), 29 deletions(-)
-...
-> diff --git a/include/net/checksum.h b/include/net/checksum.h
-> index 05a0d27..7dec37e 100644
-> --- a/include/net/checksum.h
-> +++ b/include/net/checksum.h
-> @@ -21,11 +21,16 @@
->  #include "qemu/bswap.h"
->  struct iovec;
->  
-> +#define CSUM_IP     0x01
+>
+> >  net/checksum.c                | 18 ++++++++++++++----
+> >  net/filter-rewriter.c         |  4 ++--
+> >  10 files changed, 41 insertions(+), 29 deletions(-)
+> ...
+> > diff --git a/include/net/checksum.h b/include/net/checksum.h
+> > index 05a0d27..7dec37e 100644
+> > --- a/include/net/checksum.h
+> > +++ b/include/net/checksum.h
+> > @@ -21,11 +21,16 @@
+> >  #include "qemu/bswap.h"
+> >  struct iovec;
+> >
+> > +#define CSUM_IP     0x01
+>
+> IMO this is IP_HEADER,
 
-IMO this is IP_HEADER,
+Yes, but I believe no one will misread it, no?
 
-> +#define CSUM_TCP    0x02
-> +#define CSUM_UDP    0x04
+>
+> > +#define CSUM_TCP    0x02
+> > +#define CSUM_UDP    0x04
+>
+> and these IP_PAYLOAD, regardless the payload protocol.
 
-and these IP_PAYLOAD, regardless the payload protocol.
+We have to distinguish TCP and UDP.
 
-> +#define CSUM_ALL    (CSUM_IP | CSUM_TCP | CSUM_UDP)
+>
+> > +#define CSUM_ALL    (CSUM_IP | CSUM_TCP | CSUM_UDP)
+>
+> Maybe CSUM_HEADER / CSUM_PAYLOAD / CSUM_FULL (aka RAW?).
+>
+> > +
+> >  uint32_t net_checksum_add_cont(int len, uint8_t *buf, int seq);
+> >  uint16_t net_checksum_finish(uint32_t sum);
+> >  uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+> >                               uint8_t *addrs, uint8_t *buf);
+> > -void net_checksum_calculate(uint8_t *data, int length);
+> > +void net_checksum_calculate(uint8_t *data, int length, int csum_flag);
+> >
+> >  static inline uint32_t
+> >  net_checksum_add(int len, uint8_t *buf)
+> > diff --git a/net/checksum.c b/net/checksum.c
+> > index dabd290..70f4eae 100644
+> > --- a/net/checksum.c
+> > +++ b/net/checksum.c
+> > @@ -57,7 +57,7 @@ uint16_t net_checksum_tcpudp(uint16_t length, uint16_=
+t proto,
+> >      return net_checksum_finish(sum);
+> >  }
+> >
+> > -void net_checksum_calculate(uint8_t *data, int length)
+> > +void net_checksum_calculate(uint8_t *data, int length, int csum_flag)
+> >  {
+> >      int mac_hdr_len, ip_len;
+> >      struct ip_header *ip;
+> > @@ -108,9 +108,11 @@ void net_checksum_calculate(uint8_t *data, int len=
+gth)
+> >      }
+> >
+> >      /* Calculate IP checksum */
+> > -    stw_he_p(&ip->ip_sum, 0);
+> > -    csum =3D net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
+> > -    stw_be_p(&ip->ip_sum, csum);
+> > +    if (csum_flag & CSUM_IP) {
+> > +        stw_he_p(&ip->ip_sum, 0);
+> > +        csum =3D net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
+> > +        stw_be_p(&ip->ip_sum, csum);
+> > +    }
+> >
+> >      if (IP4_IS_FRAGMENT(ip)) {
+> >          return; /* a fragmented IP packet */
+> > @@ -128,6 +130,10 @@ void net_checksum_calculate(uint8_t *data, int len=
+gth)
+> >      switch (ip->ip_p) {
+> >      case IP_PROTO_TCP:
+> >      {
+> > +        if (!(csum_flag & CSUM_TCP)) {
+> > +            return;
+> > +        }
+> > +
+> >          tcp_header *tcp =3D (tcp_header *)(ip + 1);
+> >
+> >          if (ip_len < sizeof(tcp_header)) {
+> > @@ -148,6 +154,10 @@ void net_checksum_calculate(uint8_t *data, int len=
+gth)
+> >      }
+> >      case IP_PROTO_UDP:
+> >      {
+> > +        if (!(csum_flag & CSUM_UDP)) {
+> > +            return;
+> > +        }
+> > +
+> >          udp_header *udp =3D (udp_header *)(ip + 1);
+> >
+> >          if (ip_len < sizeof(udp_header)) {
+> ...
 
-Maybe CSUM_HEADER / CSUM_PAYLOAD / CSUM_FULL (aka RAW?).
-
-> +
->  uint32_t net_checksum_add_cont(int len, uint8_t *buf, int seq);
->  uint16_t net_checksum_finish(uint32_t sum);
->  uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
->                               uint8_t *addrs, uint8_t *buf);
-> -void net_checksum_calculate(uint8_t *data, int length);
-> +void net_checksum_calculate(uint8_t *data, int length, int csum_flag);
->  
->  static inline uint32_t
->  net_checksum_add(int len, uint8_t *buf)
-> diff --git a/net/checksum.c b/net/checksum.c
-> index dabd290..70f4eae 100644
-> --- a/net/checksum.c
-> +++ b/net/checksum.c
-> @@ -57,7 +57,7 @@ uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
->      return net_checksum_finish(sum);
->  }
->  
-> -void net_checksum_calculate(uint8_t *data, int length)
-> +void net_checksum_calculate(uint8_t *data, int length, int csum_flag)
->  {
->      int mac_hdr_len, ip_len;
->      struct ip_header *ip;
-> @@ -108,9 +108,11 @@ void net_checksum_calculate(uint8_t *data, int length)
->      }
->  
->      /* Calculate IP checksum */
-> -    stw_he_p(&ip->ip_sum, 0);
-> -    csum = net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
-> -    stw_be_p(&ip->ip_sum, csum);
-> +    if (csum_flag & CSUM_IP) {
-> +        stw_he_p(&ip->ip_sum, 0);
-> +        csum = net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
-> +        stw_be_p(&ip->ip_sum, csum);
-> +    }
->  
->      if (IP4_IS_FRAGMENT(ip)) {
->          return; /* a fragmented IP packet */
-> @@ -128,6 +130,10 @@ void net_checksum_calculate(uint8_t *data, int length)
->      switch (ip->ip_p) {
->      case IP_PROTO_TCP:
->      {
-> +        if (!(csum_flag & CSUM_TCP)) {
-> +            return;
-> +        }
-> +
->          tcp_header *tcp = (tcp_header *)(ip + 1);
->  
->          if (ip_len < sizeof(tcp_header)) {
-> @@ -148,6 +154,10 @@ void net_checksum_calculate(uint8_t *data, int length)
->      }
->      case IP_PROTO_UDP:
->      {
-> +        if (!(csum_flag & CSUM_UDP)) {
-> +            return;
-> +        }
-> +
->          udp_header *udp = (udp_header *)(ip + 1);
->  
->          if (ip_len < sizeof(udp_header)) {
-...
-
+Regards,
+Bin

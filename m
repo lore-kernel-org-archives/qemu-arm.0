@@ -1,203 +1,262 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp76899lfb;
-        Wed, 2 Dec 2020 21:26:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwvl0TpdvgdmsUChPc9O/YmYiesy4tR+51ykncP/sTZPVRRRKRpxHfx0BmGSgZDvKDyApqA
-X-Received: by 2002:a25:1143:: with SMTP id 64mr2070029ybr.391.1606973164145;
-        Wed, 02 Dec 2020 21:26:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606973164; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2238269lfb;
+        Sun, 6 Dec 2020 03:52:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyMlOKRdy1AuOPvt2FidwLtvX14UDmyAWK6qR+WzcYu8ap/Kgy5zzmrbkmqSg0lB08O6QYi
+X-Received: by 2002:a25:2495:: with SMTP id k143mr16475137ybk.396.1607255559364;
+        Sun, 06 Dec 2020 03:52:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607255559; cv=none;
         d=google.com; s=arc-20160816;
-        b=fmeeXOVaVszfk2LTahdrlKeJEEAo/csPJTpE0ceRNDUBS9xoU7D9F1vK80lTzVkNHW
-         y7fV7jnN6F3AKSTOEV/GZ1IDMljQCrdKANAmhV8ycO2pVEIusQL4N9YUFNq4FH6WnS5s
-         /zS2NFDSwSMAOGOC6BLViMy1f+Xb9xILd9szPrIwWKZchbfozIaXc8FlUuo2ih9WkjVE
-         CyDDxeagBwNsxI74vjKubSd9qj8Tux1x+IT5poyqFQYgNsZ2r4di5f4KeGvqXk/5FnjD
-         0XRw9bXoi4C846TLS4CJty4jS3ygeHPnDfcHSt/ABEIFPq4AmVZzSnMFUkx5zEsrGpW8
-         J+eQ==
+        b=L4RvVa9MUO5JfILr0nuOqLjIJTDrQcin7P5cCfxx9gXCU8ztUTttwo4pq5ugEO3/Ig
+         URuBbsigcKulhPL0WFy6JEO0PbPpzgv7ss+RHZP5Z7MqL+j/oCX07I379EUGO7rLYh6X
+         cORZCyXCJC+OJKbnVn3XfcggC/qSSyiZbyJNWcHqcoFK6Ry1X/CdpWKcb0zwDvCS5Jns
+         1gsTucCcl6Puog5r1HVwF/NzA6GonsK80q3CVHdttBa0ywsLQwd11TcIWTK+5xpQIEeP
+         nVF8DdeKn4gzSrULMeRYlpzvUXzab0ZjpTYtIezdkz+Ip/m/7q9HzTTtN5txwME1Pvl0
+         eMDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=qlEyGUkDoiZLf64NqGBECaO1HMFfso8oAuQcT7uC7uM=;
-        b=UjMzcLHMIEHwM+GRx3yL6sF/YPeamQNjdG/N6IbYI0wFKGCziGVkszc2g6zOuj+g0g
-         oFH57osBME64Fpb2C1dPuvRvW9VpV6BH/LBmfJM3yymnk0hVBJ2ZeFDg1o0ormIxWbnQ
-         +E6BERPx0zJgTXdG9jqdyDnBcN/MDUK/0k8/WiQuidU2GPi1/WriPdY9SUpgfgBB/UIg
-         MStDcW/DBHVMw+xsO7WF8DFzhzdFmEfOe5eZagkZww4mSve4Q2D6bstdmwWjFrfSfUsq
-         RHq9bhmdjyaa/U+L5KIpDF5oB4voqGwa0i0rmwqEXzcU5lVeBdU9izq8QTzl4sRrAWsY
-         DR8g==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:sender:precedence:errors-to:list-subscribe:list-help
+         :list-post:list-unsubscribe:list-id;
+        bh=QXN11YjZ1vXjJBEYEKORWd+AxNil9vOhCUsNnGsnr90=;
+        b=BZuDXfBxGm5ac7VSwyQceTP+zh0ZER5AXGq7PLjkP2MuZbcWnzmRuJfX/qIwFRYUdp
+         uAnVENUuXubR9aViDo79XZQtY9qUUPw3xdHaQqh1xj1lgNWCM8ytfQy8X0dVyZiYsdBa
+         cfN+EumIpKIaax4y0DaNFqxkcoyi+NhqeQVkMVTfEIGwcaYyIcUyolzUGWmkUQp5s0HP
+         6ZDCTRT6LufTZpHQG2agRE7upr1UfxiLLwT2yWhZyv1VUItT7E9vcADy3TfTZb0Hj/bb
+         HtQgHCLfw8KqQPpIulesbB2WeZUpqkMSvW95O2eK5vMN0XBXrqGJKiPtfUQH/V5RfYNK
+         z4sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=It6RAH58;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u106si722502ybi.236.2020.12.02.21.26.03
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 21:26:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EBE+gLP1;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id 7si5122325ybb.268.2020.12.06.03.52.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 06 Dec 2020 03:52:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=It6RAH58;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
-Received: from localhost ([::1]:34508 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkh7z-0006c1-I9
-	for alex.bennee@linaro.org; Thu, 03 Dec 2020 00:26:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57542)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kkh7f-0006bI-Ak; Thu, 03 Dec 2020 00:25:43 -0500
-Received: from mta-02.yadro.com ([89.207.88.252]:40422 helo=mta-01.yadro.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1kkh7d-0005mv-8b; Thu, 03 Dec 2020 00:25:43 -0500
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id 8B57C413A8;
- Thu,  3 Dec 2020 05:25:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- in-reply-to:content-disposition:content-type:content-type
- :mime-version:references:message-id:subject:subject:from:from
- :date:date:received:received:received; s=mta-01; t=1606973138;
- x=1608787539; bh=2/IhSf7FyQQ55bTxTloFB8s0JWYvvdECkjYzOAmPO6Y=; b=
- It6RAH58vGCaZRoOC7U7XO1go2H5YKO4tjN0la4pqL7j0mSJI0HZ5X5T9Y2MW4hQ
- rCJ1UAZH3z91W2s9srhZvScOamlfMveDOkrLpyEWfyQw6qtvCp5vsJsiDQkGKXwQ
- D/lvuGi63EVhpIRoWrjFyT8C7Xh/rxZkFu3roR3W3eM=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C1Hpi2AiGzdL; Thu,  3 Dec 2020 08:25:38 +0300 (MSK)
-Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
- [172.17.100.103])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id 7CA1C41277;
- Thu,  3 Dec 2020 08:25:38 +0300 (MSK)
-Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
- (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Thu, 3 Dec
- 2020 08:25:38 +0300
-Date: Thu, 3 Dec 2020 08:25:57 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: Alexander Graf <agraf@csgraf.de>
-Subject: Re: [PATCH v3 07/10] arm: Add Hypervisor.framework build target
-Message-ID: <20201203052557.GC82480@SPB-NB-133.local>
-References: <20201202190408.2041-1-agraf@csgraf.de>
- <20201202190408.2041-8-agraf@csgraf.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20201202190408.2041-8-agraf@csgraf.de>
-X-Originating-IP: [172.17.204.212]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-03.corp.yadro.com (172.17.100.103)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EBE+gLP1;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from list by lists.xenproject.org with outflank-mailman.45615.81053 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1klsZ8-0007jo-Kx; Sun, 06 Dec 2020 11:50:58 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 45615.81053; Sun, 06 Dec 2020 11:50:58 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1klsZ8-0007jh-Hf; Sun, 06 Dec 2020 11:50:58 +0000
+Received: by outflank-mailman (input) for mailman id 45615;
+ Sun, 06 Dec 2020 11:50:57 +0000
+Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=PoKi=FK=redhat.com=philmd@srs-us1.protection.inumbo.net>)
+ id 1klsZ7-0007jc-1P
+ for xen-devel@lists.xenproject.org; Sun, 06 Dec 2020 11:50:57 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [216.205.24.124])
+ by us1-rack-iad1.inumbo.com (Halon) with ESMTP
+ id c1b59f2b-76c4-45b2-9d98-fb1505625120;
+ Sun, 06 Dec 2020 11:50:56 +0000 (UTC)
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-547-BMajkwIfPnmK6VH6JJ9Bew-1; Sun, 06 Dec 2020 06:50:52 -0500
+Received: by mail-ed1-f71.google.com with SMTP id ca7so4521800edb.12
+ for <xen-devel@lists.xenproject.org>; Sun, 06 Dec 2020 03:50:51 -0800 (PST)
+Received: from [192.168.1.36] (111.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.111])
+ by smtp.gmail.com with ESMTPSA id m7sm7840045ejr.119.2020.12.06.03.50.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 06 Dec 2020 03:50:49 -0800 (PST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: c1b59f2b-76c4-45b2-9d98-fb1505625120
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1607255455;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=QXN11YjZ1vXjJBEYEKORWd+AxNil9vOhCUsNnGsnr90=;
+	b=EBE+gLP1VnuZXkYYJXL5Tc1+GLAbpusfPwc0dNuTzw7ukVxINXFXPAqy+8ijESSE1m5UmA
+	V6jE7nS8qPYnVABjwlIG5tvbXiVntISRAhVIdQ6BbnOMaHChg7qZoZo6EeSHlhnB4haDtQ
+	Tb+BSyPxNxniUR9Lj2nUKOv1nvESOtI=
+X-MC-Unique: BMajkwIfPnmK6VH6JJ9Bew-1
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=QXN11YjZ1vXjJBEYEKORWd+AxNil9vOhCUsNnGsnr90=;
+        b=KaDTtXdx90ZYAb44gMZ4Bg/C05a2PGnc/GKi6LrJbeLAFq+h08mLC1jB/Y+F/AvPBx
+         b+M6E9t1si3xxJSgPqMUGQ5fPhi2+2MnVKvFCc9uiqiKc+uME4xELSHEMe69uBG32yaU
+         RdlrayVoFyD2KeeibLUXds7lb3au3cUm87RHTwH3lkAP2ZAFPd8oyRJZWr4GRT9JBWzG
+         TaX3N3tXQJ6ZjjxgtvJhRTHOnxffh3P61Kp9smftb9+/18ORxffzEj9jM+APt9wuN4cc
+         /RFJYbUCov+ENXUemzrL1SZmoDlY/Ep6ibRPjdk2Fmb3eDihsEO/+EmFEMAhgTG3J9CN
+         qlPA==
+X-Gm-Message-State: AOAM531I8Ug8A2HNHN8jj579YTube+jM8K1dvRBwRp8mjwYqBEzzOYhw
+	8nesKUDxHORTOhGIxecV3v6VV80SuPSBnh9Lpwqv6I3N0RTPN8RwRflc8N9V5J+StvONFsjRG5Z
+	ktqXfgF8a7LCTKb1UmE6bXdTGqXs=
+X-Received: by 2002:a17:907:3312:: with SMTP id ym18mr14924839ejb.437.1607255450929;
+        Sun, 06 Dec 2020 03:50:50 -0800 (PST)
+X-Received: by 2002:a17:907:3312:: with SMTP id ym18mr14924825ejb.437.1607255450726;
+        Sun, 06 Dec 2020 03:50:50 -0800 (PST)
+Subject: Re: [PATCH 3/3] net: checksum: Introduce fine control over checksum
+ type
+To: Bin Meng <bmeng.cn@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NsQjpXNBAvCJ
+ Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>,
+ Li Zhijian <lizhijian@cn.fujitsu.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Jason Wang <jasowang@redhat.com>, Bin Meng <bin.meng@windriver.com>,
+ Joel Stanley <joel@jms.id.au>, Beniamino Galvani <b.galvani@gmail.com>,
+ Zhang Chen <chen.zhang@intel.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, qemu-arm@nongnu.org, xen-devel@lists.xenproject.org,
+ Anthony Perard <anthony.perard@citrix.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <1607220847-24096-1-git-send-email-bmeng.cn@gmail.com>
+ <1607220847-24096-3-git-send-email-bmeng.cn@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <9f8cdb69-7b74-4034-223f-bfa62cb4e440@redhat.com>
+Date: Sun, 6 Dec 2020 12:50:47 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
+MIME-Version: 1.0
+In-Reply-To: <1607220847-24096-3-git-send-email-bmeng.cn@gmail.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: 7dyHwqo+O4v8
 
-On Wed, Dec 02, 2020 at 08:04:05PM +0100, Alexander Graf wrote:
-> Now that we have all logic in place that we need to handle Hypervisor.framework
-> on Apple Silicon systems, let's add CONFIG_HVF for aarch64 as well so that we
-> can build it.
+Hi Ben,
+
+On 12/6/20 3:14 AM, Bin Meng wrote:
+> From: Bin Meng <bin.meng@windriver.com>
 > 
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> At present net_checksum_calculate() blindly calculates all types of
+> checksums (IP, TCP, UDP). Some NICs may have a per type setting in
+> their BDs to control what checksum should be offloaded. To support
+> such hardware behavior, introduce a 'csum_flag' parameter to the
+> net_checksum_calculate() API to allow fine control over what type
+> checksum is calculated.
+> 
+> Existing users of this API are updated accordingly.
+> 
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
 > 
 > ---
 > 
-> v1 -> v2:
-> 
->   - Fix build on 32bit arm
-> ---
->  meson.build                | 11 ++++++++++-
->  target/arm/hvf/meson.build |  3 +++
->  target/arm/meson.build     |  2 ++
->  3 files changed, 15 insertions(+), 1 deletion(-)
->  create mode 100644 target/arm/hvf/meson.build
-> 
-> diff --git a/meson.build b/meson.build
-> index 2a7ff5560c..bff3fe7089 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -74,16 +74,25 @@ else
->  endif
+>  hw/net/allwinner-sun8i-emac.c |  2 +-
+>  hw/net/cadence_gem.c          |  2 +-
+>  hw/net/fsl_etsec/rings.c      |  8 +++-----
+>  hw/net/ftgmac100.c            | 10 +++++++++-
+>  hw/net/imx_fec.c              | 15 +++------------
+>  hw/net/virtio-net.c           |  2 +-
+>  hw/net/xen_nic.c              |  2 +-
+>  include/net/checksum.h        |  7 ++++++-
+
+When sending a such API refactor, patch is easier to
+review if you setup the scripts/git.orderfile config.
+
+>  net/checksum.c                | 18 ++++++++++++++----
+>  net/filter-rewriter.c         |  4 ++--
+>  10 files changed, 41 insertions(+), 29 deletions(-)
+...
+> diff --git a/include/net/checksum.h b/include/net/checksum.h
+> index 05a0d27..7dec37e 100644
+> --- a/include/net/checksum.h
+> +++ b/include/net/checksum.h
+> @@ -21,11 +21,16 @@
+>  #include "qemu/bswap.h"
+>  struct iovec;
 >  
->  accelerator_targets = { 'CONFIG_KVM': kvm_targets }
+> +#define CSUM_IP     0x01
+
+IMO this is IP_HEADER,
+
+> +#define CSUM_TCP    0x02
+> +#define CSUM_UDP    0x04
+
+and these IP_PAYLOAD, regardless the payload protocol.
+
+> +#define CSUM_ALL    (CSUM_IP | CSUM_TCP | CSUM_UDP)
+
+Maybe CSUM_HEADER / CSUM_PAYLOAD / CSUM_FULL (aka RAW?).
+
 > +
-> +if cpu in ['x86', 'x86_64']
-> +  hvf_targets = ['i386-softmmu', 'x86_64-softmmu']
-
-i386-softmmu had issues with hvf. Perhaps better to leave it disabled
-for the target as it was before.
-
-Thanks,
-Roman
-
-> +elif cpu in ['aarch64']
-> +  hvf_targets = ['aarch64-softmmu']
-> +else
-> +  hvf_targets = []
-> +endif
-> +
->  if cpu in ['x86', 'x86_64', 'arm', 'aarch64']
->    # i368 emulator provides xenpv machine type for multiple architectures
->    accelerator_targets += {
->      'CONFIG_XEN': ['i386-softmmu', 'x86_64-softmmu'],
-> +    'CONFIG_HVF': hvf_targets,
->    }
->  endif
->  if cpu in ['x86', 'x86_64']
->    accelerator_targets += {
->      'CONFIG_HAX': ['i386-softmmu', 'x86_64-softmmu'],
-> -    'CONFIG_HVF': ['x86_64-softmmu'],
->      'CONFIG_WHPX': ['i386-softmmu', 'x86_64-softmmu'],
->    }
->  endif
-> diff --git a/target/arm/hvf/meson.build b/target/arm/hvf/meson.build
-> new file mode 100644
-> index 0000000000..855e6cce5a
-> --- /dev/null
-> +++ b/target/arm/hvf/meson.build
-> @@ -0,0 +1,3 @@
-> +arm_softmmu_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: files(
-> +  'hvf.c',
-> +))
-> diff --git a/target/arm/meson.build b/target/arm/meson.build
-> index f5de2a77b8..95bebae216 100644
-> --- a/target/arm/meson.build
-> +++ b/target/arm/meson.build
-> @@ -56,5 +56,7 @@ arm_softmmu_ss.add(files(
->    'psci.c',
->  ))
+>  uint32_t net_checksum_add_cont(int len, uint8_t *buf, int seq);
+>  uint16_t net_checksum_finish(uint32_t sum);
+>  uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+>                               uint8_t *addrs, uint8_t *buf);
+> -void net_checksum_calculate(uint8_t *data, int length);
+> +void net_checksum_calculate(uint8_t *data, int length, int csum_flag);
 >  
-> +subdir('hvf')
+>  static inline uint32_t
+>  net_checksum_add(int len, uint8_t *buf)
+> diff --git a/net/checksum.c b/net/checksum.c
+> index dabd290..70f4eae 100644
+> --- a/net/checksum.c
+> +++ b/net/checksum.c
+> @@ -57,7 +57,7 @@ uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+>      return net_checksum_finish(sum);
+>  }
+>  
+> -void net_checksum_calculate(uint8_t *data, int length)
+> +void net_checksum_calculate(uint8_t *data, int length, int csum_flag)
+>  {
+>      int mac_hdr_len, ip_len;
+>      struct ip_header *ip;
+> @@ -108,9 +108,11 @@ void net_checksum_calculate(uint8_t *data, int length)
+>      }
+>  
+>      /* Calculate IP checksum */
+> -    stw_he_p(&ip->ip_sum, 0);
+> -    csum = net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
+> -    stw_be_p(&ip->ip_sum, csum);
+> +    if (csum_flag & CSUM_IP) {
+> +        stw_he_p(&ip->ip_sum, 0);
+> +        csum = net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
+> +        stw_be_p(&ip->ip_sum, csum);
+> +    }
+>  
+>      if (IP4_IS_FRAGMENT(ip)) {
+>          return; /* a fragmented IP packet */
+> @@ -128,6 +130,10 @@ void net_checksum_calculate(uint8_t *data, int length)
+>      switch (ip->ip_p) {
+>      case IP_PROTO_TCP:
+>      {
+> +        if (!(csum_flag & CSUM_TCP)) {
+> +            return;
+> +        }
 > +
->  target_arch += {'arm': arm_ss}
->  target_softmmu_arch += {'arm': arm_softmmu_ss}
-> -- 
-> 2.24.3 (Apple Git-128)
-> 
+>          tcp_header *tcp = (tcp_header *)(ip + 1);
+>  
+>          if (ip_len < sizeof(tcp_header)) {
+> @@ -148,6 +154,10 @@ void net_checksum_calculate(uint8_t *data, int length)
+>      }
+>      case IP_PROTO_UDP:
+>      {
+> +        if (!(csum_flag & CSUM_UDP)) {
+> +            return;
+> +        }
+> +
+>          udp_header *udp = (udp_header *)(ip + 1);
+>  
+>          if (ip_len < sizeof(udp_header)) {
+...
+

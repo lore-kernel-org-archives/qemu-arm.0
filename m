@@ -1,161 +1,109 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2732483lfb;
-        Sun, 6 Dec 2020 18:45:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz9Lpu/XzkYuU6Fd+Y0BjZ9ccwm0te22ip/dE1yKPM54YvliMLnyvJImjbEziF3w+vDGL0Y
-X-Received: by 2002:a62:1d10:0:b029:163:deb3:5df2 with SMTP id d16-20020a621d100000b0290163deb35df2mr14181178pfd.68.1607309119637;
-        Sun, 06 Dec 2020 18:45:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607309119; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2803716lfb;
+        Sun, 6 Dec 2020 21:11:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwZhl7u0rDrwk0tVp4X+KVd81eeBUBPHNQ6c0f3IJ+EcV1U/fb6qLrhYJOLcMf3FYOVj2rU
+X-Received: by 2002:a25:7909:: with SMTP id u9mr13699138ybc.333.1607317887046;
+        Sun, 06 Dec 2020 21:11:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607317887; cv=none;
         d=google.com; s=arc-20160816;
-        b=AUHJXBfRMTlOKt42IkUOfFu65OQNy05zQfJS9pI4fUceezq0H+vlPqJp2P5dietjgr
-         UZof1KM9fuykzGdQqaMVooKwyE0Sdf3GUK7eafSIKVmczpXe9i1A3eWHfbadVi/EUcVt
-         iJ+l7+utCnTbbN1OaLTzcV/MYF6hTz4gRQp6LsOOT8SbJcNgQ/l1ubn0fb4EBu+oCTC6
-         br+7133kuJ3+ae37XPnn1IV+/JBv8AK7XjIuYjKM7pmiIgnPiQWFDNE0wU5wLzWKn8Xj
-         8aSHc7eIWtEH6QoDNBLj9FBy90nNTo4I9ANV8mcbfGsUGS1o7bKpQX1rKnxaQwylsSRn
-         RPxA==
+        b=OGawua2V4x0kscgAUZszQXw7kQG+kDl8+vFjtblDBsxPPuNxt2a0WtzxyiyA2c3HRP
+         /DWwi56LIEFoRSEKqEaLm866qwiLSXYHDW5zt1CXWfmMIOL0f0w4n2o0EIEuAwvm4Ovj
+         h3IVHRMARCgYDQgY57Z/Y4OaEVY5/A2ScRJsWSao3/EsrxBCrUwOrPwH2kxiWCRYm6dK
+         Y2c6UZ9btHNWFGDTHKCS/8g+n+nYcUX07XYiw3rCT6BQedGIfrOPm0zPPW/TNIuzeRkY
+         +zNoPFpz5jGefwUyVLDrfiiDYB8ZcnSLktKdstpWqLBnpWoLTUw3b/PjKZ1T6wny/+YS
+         1VYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=oX/i18cMyZezswinCGtYHPwoZH95r8aVXhATyAlmGJs=;
-        b=tvjJ39eVY+vbSYlB2WW2i5jnVUV5JfJgdpvdSm7/S4izRnQKpJmomSutA0YuVN63nO
-         vqwt/8LF2bLkYaZ58ZuAK90uNJ24+WQpBLBfec9dSRcNwse2pDfQj9u713lTmx8Drkno
-         1PNt+xdn0x205tMktqJ2QI7UElHupbaynTnJuDActcuHG78aqxVJ0aYaNslTIAtRETfw
-         1odH7V5phVtuzxE8JpbNJ9oEJsRHfAEArj+TJ2eHmeE+61OZ55YnTOtGakGDYxaop4j9
-         04C9eA4z2Jxqm2uVD+x+YcE8mr3YOaeXwjI5nn2JmxVtqCDJvIK6NWTbIfzGPv1tXD0p
-         jWWg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=Qab4deHbU/VN7oqCq/ddeCw/xxFnxVTtrXJHAdanJ30=;
+        b=TmZBd5hU9i9xXEy6nOQWVWWZV60Ucjnitg648jCSs9bO7xnd7tUBrNIN6m4HjOEDGe
+         YB/Fom0BZYrUyohkivJlvyvHvHFA26dVYg2dNr/GUYlJVYNd+vu6Sf3NE/c+CnkkTkU0
+         rat74LgKoyfiOR7zhJLIobbzO0q1vzasuzlxpRpfFl95nXNMmeRNDTXpw2Vhc+OTKZba
+         5O8yIJhqHNXbKTKyIA3m3jjWCGIBHavU+eDleUq2t9T9a4sA7nPs+BPEozoEaHc1mg7O
+         5anNRHfRngFssoAsL4HzHsboSNWRcglqIQQS2F8kfIUofkpkVVSM1hmUPrieXvjmNNc6
+         WRIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=NUcv192B;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (ozlabs.org. [2401:3900:2:1::2])
-        by mx.google.com with ESMTPS id lk4si8774929pjb.91.2020.12.06.18.45.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Dec 2020 18:45:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wd2KUSwn;
+       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id v9si9386785ybp.362.2020.12.06.21.11.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 06 Dec 2020 21:11:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=NUcv192B;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 4Cq72d3llFz9sVx; Mon,  7 Dec 2020 13:45:13 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1607309113;
-	bh=TC0GOGaKbPAwP2EkbRQ9BPtcqZhEMWFvPmP9ecxIISo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NUcv192BLmiuo8zL9otdtQLt0UfmEo9EO574qHkkb6rjQT6zTr7LJVVf2p3ucpts5
-	 7cCe77CeGg6dbknawRx9okhPJam/pPRWj1UOXXKDU9Ofz0d7yY7SUKIGVn6xqTuM1f
-	 BBPukzLSjLblB+Cwg8oG8n6FG6BUR8UK014fAN+4=
-Date: Mon, 7 Dec 2020 12:38:38 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	xen-devel@lists.xenproject.org, kvm@vger.kernel.org,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Willian Rampazzo <wrampazz@redhat.com>, Paul Durrant <paul@xen.org>,
-	Huacai Chen <chenhc@lemote.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Claudio Fontana <cfontana@suse.de>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 6/8] gitlab-ci: Add KVM PPC cross-build jobs
-Message-ID: <20201207013838.GA2555@yekko.fritz.box>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wd2KUSwn;
+       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1607317886;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Qab4deHbU/VN7oqCq/ddeCw/xxFnxVTtrXJHAdanJ30=;
+	b=Wd2KUSwnCLr0XfStrF0+coXglJjXzI4yua/+Gv+o/8GdKmFNkomTSQG8Nqwj0Me2XwAM0M
+	YwCJ2w2COGhRJ8jGWgheBtEn1/bi+Xwqxj+difq0eSzhVDmCy86Ncpp31sc93amy2oDZ/q
+	nuyZLbMA25pr7OZF5koYPo6hZeEL83c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-508-v49AIyVENfWDHZqo9wU_CQ-1; Mon, 07 Dec 2020 00:11:24 -0500
+X-MC-Unique: v49AIyVENfWDHZqo9wU_CQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5CB29800D55;
+	Mon,  7 Dec 2020 05:11:22 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-85.ams2.redhat.com [10.36.112.85])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C9D315D6AB;
+	Mon,  7 Dec 2020 05:11:09 +0000 (UTC)
+Subject: Re: [PATCH 1/8] gitlab-ci: Replace YAML anchors by extends
+ (cross_system_build_job)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ xen-devel@lists.xenproject.org, kvm@vger.kernel.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Willian Rampazzo
+ <wrampazz@redhat.com>, Paul Durrant <paul@xen.org>,
+ Huacai Chen <chenhc@lemote.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Claudio Fontana <cfontana@suse.de>, Halil Pasic <pasic@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, David Gibson
+ <david@gibson.dropbear.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-s390x@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-arm@nongnu.org
 References: <20201206185508.3545711-1-philmd@redhat.com>
- <20201206185508.3545711-7-philmd@redhat.com>
+ <20201206185508.3545711-2-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <e5494ad3-a67e-0013-b48f-0fa82d67c397@redhat.com>
+Date: Mon, 7 Dec 2020 06:11:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="liOOAslEiF7prFVr"
-Content-Disposition: inline
-In-Reply-To: <20201206185508.3545711-7-philmd@redhat.com>
-X-TUID: YnDQ8mT3FRXd
+In-Reply-To: <20201206185508.3545711-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-TUID: Tx4EzAjqF2wx
 
-
---liOOAslEiF7prFVr
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sun, Dec 06, 2020 at 07:55:06PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Cross-build PPC target with KVM and TCG accelerators enabled.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+On 06/12/2020 19.55, Philippe Mathieu-Daudé wrote:
+> 'extends' is an alternative to using YAML anchors
+> and is a little more flexible and readable. See:
+> https://docs.gitlab.com/ee/ci/yaml/#extends
+> 
+> More importantly it allows exploding YAML jobs.
+> 
+> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
-> later this job build KVM-only.
-> ---
->  .gitlab-ci.d/crossbuilds-kvm-ppc.yml | 5 +++++
->  .gitlab-ci.yml                       | 1 +
->  MAINTAINERS                          | 1 +
->  3 files changed, 7 insertions(+)
->  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-ppc.yml
+>  .gitlab-ci.d/crossbuilds.yml | 40 ++++++++++++++++++------------------
+>  1 file changed, 20 insertions(+), 20 deletions(-)
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> diff --git a/.gitlab-ci.d/crossbuilds-kvm-ppc.yml b/.gitlab-ci.d/crossbui=
-lds-kvm-ppc.yml
-> new file mode 100644
-> index 00000000000..9df8bcf5a73
-> --- /dev/null
-> +++ b/.gitlab-ci.d/crossbuilds-kvm-ppc.yml
-> @@ -0,0 +1,5 @@
-> +cross-ppc64el-kvm:
-> +  extends: .cross_accel_build_job
-> +  variables:
-> +    IMAGE: debian-ppc64el-cross
-> +    TARGETS: ppc64-softmmu
-> diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
-> index a69619d7319..024624908e8 100644
-> --- a/.gitlab-ci.yml
-> +++ b/.gitlab-ci.yml
-> @@ -15,6 +15,7 @@ include:
->    - local: '/.gitlab-ci.d/crossbuilds-kvm-x86.yml'
->    - local: '/.gitlab-ci.d/crossbuilds-kvm-arm.yml'
->    - local: '/.gitlab-ci.d/crossbuilds-kvm-s390x.yml'
-> +  - local: '/.gitlab-ci.d/crossbuilds-kvm-ppc.yml'
-> =20
->  .native_build_job_template: &native_build_job_definition
->    stage: build
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index d41401f6683..c7766782174 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -397,6 +397,7 @@ PPC KVM CPUs
->  M: David Gibson <david@gibson.dropbear.id.au>
->  S: Maintained
->  F: target/ppc/kvm.c
-> +F: .gitlab-ci.d/crossbuilds-kvm-ppc.yml
-> =20
->  S390 KVM CPUs
->  M: Halil Pasic <pasic@linux.ibm.com>
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---liOOAslEiF7prFVr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl/Nh5wACgkQbDjKyiDZ
-s5LYEhAA36/x+ZVjKjbCR9cpbx/bxHW9hRFzSUsSkrFIx/72fqe7yXS0+kSyiZXE
-yZw9xCYqyHNWkGbRdPbWWeICzn7uKP4JrKOGXhIWYmuAdCmRoodf95DLaEEsgyW1
-kJswja2Od7ZqPytGo3Ybe540knkUj6a/Hae5nskOMw6f3RfjC1sLeCLz5Dfzup3F
-0tbSKBXobELtf0AP7PIut9DQZKdorQXf4OO0gJDOkCqHUsvkuL0HqJ7mARHu0ca2
-oFCZaO5Ko8frdptD5ik/n77Nqi+MqJrp81LvkiJrLRCSZPoex8RUWcAg/gDcQfoL
-3nd92ZnOyWmuo72Pz0LK3jQCaIyvxVzikuWqpdeYK1/fQ3wx3em2S1vaksXmSbRJ
-RXgIE/zSbZhbKSqpeQyowhJ1N0MxgrTiAwXJMapfwoA0z7rOvMFNAhhX2RLEIPYC
-G/9c/KHEtBod2tp0GSUtMkIM2k/Dq9jobShxZubJOV3Z2bMsuILrPBccYIaEjjzT
-eA8OCWafnik+e2Rqi9SOrTbVqgsVqOmhw1Muu5zrgRLBahI9FQx9XKC2Wji6mbTB
-3/+qZ67nkzA29J4wfMi+WDpGUztqt6Ee65opWx8tTmOUMB2ReWYovhh34IbtsL4s
-5RwEYP5Fm5CbUoZ0m/O2dsUXPt66NDALXeP51FDZuup1HQXp5y4=
-=Obzg
------END PGP SIGNATURE-----
-
---liOOAslEiF7prFVr--
+Reviewed-by: Thomas Huth <thuth@redhat.com>

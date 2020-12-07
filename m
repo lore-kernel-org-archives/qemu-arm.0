@@ -1,260 +1,161 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2270558lfb;
-        Sun, 6 Dec 2020 04:46:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxyFee/AWBSRg6tUmujKo06GljSQsrMpS1B1TyHwEKm1whvw+teVqucmn2uV+uMJs+kz6rB
-X-Received: by 2002:a05:6638:22bc:: with SMTP id z28mr15472469jas.62.1607258800176;
-        Sun, 06 Dec 2020 04:46:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607258800; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2732483lfb;
+        Sun, 6 Dec 2020 18:45:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz9Lpu/XzkYuU6Fd+Y0BjZ9ccwm0te22ip/dE1yKPM54YvliMLnyvJImjbEziF3w+vDGL0Y
+X-Received: by 2002:a62:1d10:0:b029:163:deb3:5df2 with SMTP id d16-20020a621d100000b0290163deb35df2mr14181178pfd.68.1607309119637;
+        Sun, 06 Dec 2020 18:45:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607309119; cv=none;
         d=google.com; s=arc-20160816;
-        b=a28L4hRQtHHfzxgvLafKChVNhzIHpBbT5MM7v0HyW1mqJUPuDIfezfbgUnHG0k+qCl
-         Ux5oicFqFDCqgPpwIq6LA3QcKRO2mI69RNnB9g/btXdTlw3NAWusMVlnZC4QzhU39tii
-         LGKx4sSIIxTEQXLJr05OdJdwsYhKFyqSe9/CLshj7T+jq63qh4XUtlvU5DqUAAbR0AOG
-         JwPbIoId7g1XsywskdbLcAH0oI6z9CYqzBR5avrKw4dmDorCxvJBe8i6ixh0XGID7hM/
-         peGW5TInSruHYCq6zPAHRV+uDqF+SIr/RzZ2rZ6njIdX1fGJKw9xD8j+buIaznnk/WYp
-         8cIg==
+        b=AUHJXBfRMTlOKt42IkUOfFu65OQNy05zQfJS9pI4fUceezq0H+vlPqJp2P5dietjgr
+         UZof1KM9fuykzGdQqaMVooKwyE0Sdf3GUK7eafSIKVmczpXe9i1A3eWHfbadVi/EUcVt
+         iJ+l7+utCnTbbN1OaLTzcV/MYF6hTz4gRQp6LsOOT8SbJcNgQ/l1ubn0fb4EBu+oCTC6
+         br+7133kuJ3+ae37XPnn1IV+/JBv8AK7XjIuYjKM7pmiIgnPiQWFDNE0wU5wLzWKn8Xj
+         8aSHc7eIWtEH6QoDNBLj9FBy90nNTo4I9ANV8mcbfGsUGS1o7bKpQX1rKnxaQwylsSRn
+         RPxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature:sender
-         :precedence:errors-to:list-subscribe:list-help:list-post
-         :list-unsubscribe:list-id;
-        bh=K+a8GLNhS5kz1ayNB+wyvyeVq/+HoG6SYkYYVIKVY/c=;
-        b=LstzeUJ1Sx6hZDAkNg95Cx6vfl+YDC+NB3fZOW+HPyt3IGJ7yc2FawgEvTaGERF4l2
-         pauEYSNPer7Nzm8d8FNSgrSm3CvjiglCZflmqmh65tGGyw94Zdii91Pfn6WtrSu743ou
-         Glg907rpD60vbRtL0xnqstdKd5R2OZy8gQ+v1k6bQs5pfBfy55ctNDScsjqLaXIAZqd9
-         +2QieZSkaiWdR8M2c6cn3m8aj7ZUKVQNpRriUUxQqDPzykQU1UtL+cvFPw4pSiFoUv/B
-         wptz6NID+SSAxBmOxiCKpxnZW5Ck25+wfGZxIVbx0ZJmvWi+Il61XdEJ4pI9kav1J7u/
-         5yfg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=oX/i18cMyZezswinCGtYHPwoZH95r8aVXhATyAlmGJs=;
+        b=tvjJ39eVY+vbSYlB2WW2i5jnVUV5JfJgdpvdSm7/S4izRnQKpJmomSutA0YuVN63nO
+         vqwt/8LF2bLkYaZ58ZuAK90uNJ24+WQpBLBfec9dSRcNwse2pDfQj9u713lTmx8Drkno
+         1PNt+xdn0x205tMktqJ2QI7UElHupbaynTnJuDActcuHG78aqxVJ0aYaNslTIAtRETfw
+         1odH7V5phVtuzxE8JpbNJ9oEJsRHfAEArj+TJ2eHmeE+61OZ55YnTOtGakGDYxaop4j9
+         04C9eA4z2Jxqm2uVD+x+YcE8mr3YOaeXwjI5nn2JmxVtqCDJvIK6NWTbIfzGPv1tXD0p
+         jWWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aMeOiHqo;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id q8si7591661ilg.89.2020.12.06.04.46.39
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=NUcv192B;
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+Return-Path: <dgibson@ozlabs.org>
+Received: from ozlabs.org (ozlabs.org. [2401:3900:2:1::2])
+        by mx.google.com with ESMTPS id lk4si8774929pjb.91.2020.12.06.18.45.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Dec 2020 04:46:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+        Sun, 06 Dec 2020 18:45:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aMeOiHqo;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from list by lists.xenproject.org with outflank-mailman.45638.81079 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1kltPK-0004CP-97; Sun, 06 Dec 2020 12:44:54 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 45638.81079; Sun, 06 Dec 2020 12:44:54 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1kltPK-0004CI-6G; Sun, 06 Dec 2020 12:44:54 +0000
-Received: by outflank-mailman (input) for mailman id 45638;
- Sun, 06 Dec 2020 12:44:52 +0000
-Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
- by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=DarT=FK=gmail.com=bmeng.cn@srs-us1.protection.inumbo.net>)
- id 1kltPI-0004CD-Rl
- for xen-devel@lists.xenproject.org; Sun, 06 Dec 2020 12:44:52 +0000
-Received: from mail-yb1-xb44.google.com (unknown [2607:f8b0:4864:20::b44])
- by us1-rack-iad1.inumbo.com (Halon) with ESMTPS
- id f13a4457-78ea-4c88-ac4f-bbb7250fefb5;
- Sun, 06 Dec 2020 12:44:51 +0000 (UTC)
-Received: by mail-yb1-xb44.google.com with SMTP id g15so10265298ybq.6
- for <xen-devel@lists.xenproject.org>; Sun, 06 Dec 2020 04:44:51 -0800 (PST)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: f13a4457-78ea-4c88-ac4f-bbb7250fefb5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=K+a8GLNhS5kz1ayNB+wyvyeVq/+HoG6SYkYYVIKVY/c=;
-        b=aMeOiHqoWIlEFCaxZAxK537taWLP3YfLwHy9hr55Tv3/XfK/C+gOgMr0zIm7IYgTrS
-         DuaGXSFleXbBusET2TL2Gr9LYyyVL3MMXAZbeJO65i0daGzKnCM8/QjGPb/iLClvi2Xt
-         dk05SPvKyoiefbvMrkObf6y+C5DmP2FfFTiyBZ6D64TLDhjV+cYcdT6SoaspwmMaURqB
-         sejpNooNuAB6Pz53TrqPJO3tPLB7qpIqxlt9ecd8FZupF+l8q2Fm67QvOm0TDMcNI8vd
-         okm0GGeT210P/4BCUkbdztGT6oxXeUvxAI53QvTIwtFW7DEufjgUu8wF4758je3Tf5Vp
-         w5Cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=K+a8GLNhS5kz1ayNB+wyvyeVq/+HoG6SYkYYVIKVY/c=;
-        b=StkBkiJ5MTJ5F2iXqzH9IJrdkQjwhUNZJkH7oxZOVbEVfX8qCFNDy1yIpREyoW/X06
-         LegLXiF9p6Bn4NuuAY4JcfPRlCMTuHgQplSEDy5XSBupHd8cu+k1kNuHG5JINXqkDGJ2
-         vlgl0owogTIznG2d5RNJKYbbQyaD1k11g7XfeiQiijULfTQ1yupwK6+GoDPCYiitY9Qa
-         aVW+JEtqK+X1GuOVjBMWQYiW+5oCePppIMHwYsiBcxUj1yVZVJJPjopJsyA4pzqt9nA+
-         iagww9AnP9W4CRvzS32SDf1Rui6lTfkzeZST53o2Wyn4Nw3NiZfTPTg0lByHbfeCIgHm
-         CSTg==
-X-Gm-Message-State: AOAM5337IuaxazK8mHpam3/UKEcVBCFklccfF+p2sk/DUmOfeGG96JFb
-	8B/OsRZYFdxzBtDc03KIOLV2zb5lYEGdPHBy1BM=
-X-Received: by 2002:a25:bb50:: with SMTP id b16mr18111943ybk.152.1607258691399;
- Sun, 06 Dec 2020 04:44:51 -0800 (PST)
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=NUcv192B;
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 4Cq72d3llFz9sVx; Mon,  7 Dec 2020 13:45:13 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1607309113;
+	bh=TC0GOGaKbPAwP2EkbRQ9BPtcqZhEMWFvPmP9ecxIISo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NUcv192BLmiuo8zL9otdtQLt0UfmEo9EO574qHkkb6rjQT6zTr7LJVVf2p3ucpts5
+	 7cCe77CeGg6dbknawRx9okhPJam/pPRWj1UOXXKDU9Ofz0d7yY7SUKIGVn6xqTuM1f
+	 BBPukzLSjLblB+Cwg8oG8n6FG6BUR8UK014fAN+4=
+Date: Mon, 7 Dec 2020 12:38:38 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	xen-devel@lists.xenproject.org, kvm@vger.kernel.org,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Willian Rampazzo <wrampazz@redhat.com>, Paul Durrant <paul@xen.org>,
+	Huacai Chen <chenhc@lemote.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Claudio Fontana <cfontana@suse.de>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 6/8] gitlab-ci: Add KVM PPC cross-build jobs
+Message-ID: <20201207013838.GA2555@yekko.fritz.box>
+References: <20201206185508.3545711-1-philmd@redhat.com>
+ <20201206185508.3545711-7-philmd@redhat.com>
 MIME-Version: 1.0
-References: <1607220847-24096-1-git-send-email-bmeng.cn@gmail.com>
- <1607220847-24096-3-git-send-email-bmeng.cn@gmail.com> <9f8cdb69-7b74-4034-223f-bfa62cb4e440@redhat.com>
-In-Reply-To: <9f8cdb69-7b74-4034-223f-bfa62cb4e440@redhat.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sun, 6 Dec 2020 20:44:40 +0800
-Message-ID: <CAEUhbmUBeUzjPG=2-WF=UnpMnVkH3qT0FkXpgBhP==yt53UfBg@mail.gmail.com>
-Subject: Re: [PATCH 3/3] net: checksum: Introduce fine control over checksum type
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>, 
-	Li Zhijian <lizhijian@cn.fujitsu.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	Andrew Jeffery <andrew@aj.id.au>, Jason Wang <jasowang@redhat.com>, Bin Meng <bin.meng@windriver.com>, 
-	Joel Stanley <joel@jms.id.au>, Beniamino Galvani <b.galvani@gmail.com>, Zhang Chen <chen.zhang@intel.com>, 
-	Stefano Stabellini <sstabellini@kernel.org>, Peter Chubb <peter.chubb@nicta.com.au>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, xen-devel@lists.xenproject.org, 
-	Anthony Perard <anthony.perard@citrix.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="liOOAslEiF7prFVr"
+Content-Disposition: inline
+In-Reply-To: <20201206185508.3545711-7-philmd@redhat.com>
+X-TUID: YnDQ8mT3FRXd
+
+
+--liOOAslEiF7prFVr
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 6qpjGjJSFnOV
 
-Hi Philippe,
+On Sun, Dec 06, 2020 at 07:55:06PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Cross-build PPC target with KVM and TCG accelerators enabled.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> ---
+> later this job build KVM-only.
+> ---
+>  .gitlab-ci.d/crossbuilds-kvm-ppc.yml | 5 +++++
+>  .gitlab-ci.yml                       | 1 +
+>  MAINTAINERS                          | 1 +
+>  3 files changed, 7 insertions(+)
+>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-ppc.yml
 
-On Sun, Dec 6, 2020 at 7:50 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> Hi Ben,
->
-> On 12/6/20 3:14 AM, Bin Meng wrote:
-> > From: Bin Meng <bin.meng@windriver.com>
-> >
-> > At present net_checksum_calculate() blindly calculates all types of
-> > checksums (IP, TCP, UDP). Some NICs may have a per type setting in
-> > their BDs to control what checksum should be offloaded. To support
-> > such hardware behavior, introduce a 'csum_flag' parameter to the
-> > net_checksum_calculate() API to allow fine control over what type
-> > checksum is calculated.
-> >
-> > Existing users of this API are updated accordingly.
-> >
-> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> >
-> > ---
-> >
-> >  hw/net/allwinner-sun8i-emac.c |  2 +-
-> >  hw/net/cadence_gem.c          |  2 +-
-> >  hw/net/fsl_etsec/rings.c      |  8 +++-----
-> >  hw/net/ftgmac100.c            | 10 +++++++++-
-> >  hw/net/imx_fec.c              | 15 +++------------
-> >  hw/net/virtio-net.c           |  2 +-
-> >  hw/net/xen_nic.c              |  2 +-
-> >  include/net/checksum.h        |  7 ++++++-
->
-> When sending a such API refactor, patch is easier to
-> review if you setup the scripts/git.orderfile config.
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-Sure. I thought I have done this before but apparently not on the
-machine this series was genearated :)
+> diff --git a/.gitlab-ci.d/crossbuilds-kvm-ppc.yml b/.gitlab-ci.d/crossbui=
+lds-kvm-ppc.yml
+> new file mode 100644
+> index 00000000000..9df8bcf5a73
+> --- /dev/null
+> +++ b/.gitlab-ci.d/crossbuilds-kvm-ppc.yml
+> @@ -0,0 +1,5 @@
+> +cross-ppc64el-kvm:
+> +  extends: .cross_accel_build_job
+> +  variables:
+> +    IMAGE: debian-ppc64el-cross
+> +    TARGETS: ppc64-softmmu
+> diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+> index a69619d7319..024624908e8 100644
+> --- a/.gitlab-ci.yml
+> +++ b/.gitlab-ci.yml
+> @@ -15,6 +15,7 @@ include:
+>    - local: '/.gitlab-ci.d/crossbuilds-kvm-x86.yml'
+>    - local: '/.gitlab-ci.d/crossbuilds-kvm-arm.yml'
+>    - local: '/.gitlab-ci.d/crossbuilds-kvm-s390x.yml'
+> +  - local: '/.gitlab-ci.d/crossbuilds-kvm-ppc.yml'
+> =20
+>  .native_build_job_template: &native_build_job_definition
+>    stage: build
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d41401f6683..c7766782174 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -397,6 +397,7 @@ PPC KVM CPUs
+>  M: David Gibson <david@gibson.dropbear.id.au>
+>  S: Maintained
+>  F: target/ppc/kvm.c
+> +F: .gitlab-ci.d/crossbuilds-kvm-ppc.yml
+> =20
+>  S390 KVM CPUs
+>  M: Halil Pasic <pasic@linux.ibm.com>
 
->
-> >  net/checksum.c                | 18 ++++++++++++++----
-> >  net/filter-rewriter.c         |  4 ++--
-> >  10 files changed, 41 insertions(+), 29 deletions(-)
-> ...
-> > diff --git a/include/net/checksum.h b/include/net/checksum.h
-> > index 05a0d27..7dec37e 100644
-> > --- a/include/net/checksum.h
-> > +++ b/include/net/checksum.h
-> > @@ -21,11 +21,16 @@
-> >  #include "qemu/bswap.h"
-> >  struct iovec;
-> >
-> > +#define CSUM_IP     0x01
->
-> IMO this is IP_HEADER,
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Yes, but I believe no one will misread it, no?
+--liOOAslEiF7prFVr
+Content-Type: application/pgp-signature; name="signature.asc"
 
->
-> > +#define CSUM_TCP    0x02
-> > +#define CSUM_UDP    0x04
->
-> and these IP_PAYLOAD, regardless the payload protocol.
+-----BEGIN PGP SIGNATURE-----
 
-We have to distinguish TCP and UDP.
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl/Nh5wACgkQbDjKyiDZ
+s5LYEhAA36/x+ZVjKjbCR9cpbx/bxHW9hRFzSUsSkrFIx/72fqe7yXS0+kSyiZXE
+yZw9xCYqyHNWkGbRdPbWWeICzn7uKP4JrKOGXhIWYmuAdCmRoodf95DLaEEsgyW1
+kJswja2Od7ZqPytGo3Ybe540knkUj6a/Hae5nskOMw6f3RfjC1sLeCLz5Dfzup3F
+0tbSKBXobELtf0AP7PIut9DQZKdorQXf4OO0gJDOkCqHUsvkuL0HqJ7mARHu0ca2
+oFCZaO5Ko8frdptD5ik/n77Nqi+MqJrp81LvkiJrLRCSZPoex8RUWcAg/gDcQfoL
+3nd92ZnOyWmuo72Pz0LK3jQCaIyvxVzikuWqpdeYK1/fQ3wx3em2S1vaksXmSbRJ
+RXgIE/zSbZhbKSqpeQyowhJ1N0MxgrTiAwXJMapfwoA0z7rOvMFNAhhX2RLEIPYC
+G/9c/KHEtBod2tp0GSUtMkIM2k/Dq9jobShxZubJOV3Z2bMsuILrPBccYIaEjjzT
+eA8OCWafnik+e2Rqi9SOrTbVqgsVqOmhw1Muu5zrgRLBahI9FQx9XKC2Wji6mbTB
+3/+qZ67nkzA29J4wfMi+WDpGUztqt6Ee65opWx8tTmOUMB2ReWYovhh34IbtsL4s
+5RwEYP5Fm5CbUoZ0m/O2dsUXPt66NDALXeP51FDZuup1HQXp5y4=
+=Obzg
+-----END PGP SIGNATURE-----
 
->
-> > +#define CSUM_ALL    (CSUM_IP | CSUM_TCP | CSUM_UDP)
->
-> Maybe CSUM_HEADER / CSUM_PAYLOAD / CSUM_FULL (aka RAW?).
->
-> > +
-> >  uint32_t net_checksum_add_cont(int len, uint8_t *buf, int seq);
-> >  uint16_t net_checksum_finish(uint32_t sum);
-> >  uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
-> >                               uint8_t *addrs, uint8_t *buf);
-> > -void net_checksum_calculate(uint8_t *data, int length);
-> > +void net_checksum_calculate(uint8_t *data, int length, int csum_flag);
-> >
-> >  static inline uint32_t
-> >  net_checksum_add(int len, uint8_t *buf)
-> > diff --git a/net/checksum.c b/net/checksum.c
-> > index dabd290..70f4eae 100644
-> > --- a/net/checksum.c
-> > +++ b/net/checksum.c
-> > @@ -57,7 +57,7 @@ uint16_t net_checksum_tcpudp(uint16_t length, uint16_=
-t proto,
-> >      return net_checksum_finish(sum);
-> >  }
-> >
-> > -void net_checksum_calculate(uint8_t *data, int length)
-> > +void net_checksum_calculate(uint8_t *data, int length, int csum_flag)
-> >  {
-> >      int mac_hdr_len, ip_len;
-> >      struct ip_header *ip;
-> > @@ -108,9 +108,11 @@ void net_checksum_calculate(uint8_t *data, int len=
-gth)
-> >      }
-> >
-> >      /* Calculate IP checksum */
-> > -    stw_he_p(&ip->ip_sum, 0);
-> > -    csum =3D net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
-> > -    stw_be_p(&ip->ip_sum, csum);
-> > +    if (csum_flag & CSUM_IP) {
-> > +        stw_he_p(&ip->ip_sum, 0);
-> > +        csum =3D net_raw_checksum((uint8_t *)ip, IP_HDR_GET_LEN(ip));
-> > +        stw_be_p(&ip->ip_sum, csum);
-> > +    }
-> >
-> >      if (IP4_IS_FRAGMENT(ip)) {
-> >          return; /* a fragmented IP packet */
-> > @@ -128,6 +130,10 @@ void net_checksum_calculate(uint8_t *data, int len=
-gth)
-> >      switch (ip->ip_p) {
-> >      case IP_PROTO_TCP:
-> >      {
-> > +        if (!(csum_flag & CSUM_TCP)) {
-> > +            return;
-> > +        }
-> > +
-> >          tcp_header *tcp =3D (tcp_header *)(ip + 1);
-> >
-> >          if (ip_len < sizeof(tcp_header)) {
-> > @@ -148,6 +154,10 @@ void net_checksum_calculate(uint8_t *data, int len=
-gth)
-> >      }
-> >      case IP_PROTO_UDP:
-> >      {
-> > +        if (!(csum_flag & CSUM_UDP)) {
-> > +            return;
-> > +        }
-> > +
-> >          udp_header *udp =3D (udp_header *)(ip + 1);
-> >
-> >          if (ip_len < sizeof(udp_header)) {
-> ...
-
-Regards,
-Bin
+--liOOAslEiF7prFVr--

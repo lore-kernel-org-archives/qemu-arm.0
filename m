@@ -1,138 +1,173 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2967304lfb;
-        Mon, 7 Dec 2020 02:04:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwkE+KN3Lyi0JDKYDuxgUrJ7Zx/siVXT7n8Ja/AdfSuCW+c/K2PvBJhhz0pLEuXUIi3rF9J
-X-Received: by 2002:a25:6d8a:: with SMTP id i132mr22054684ybc.5.1607335491035;
-        Mon, 07 Dec 2020 02:04:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607335491; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2978697lfb;
+        Mon, 7 Dec 2020 02:23:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzr5+hiBwbG5GeT6NKq37y0vj6TZ8+eZSEmkgguf9QtZx/4t/g7fwQbUWeADmnzQxV+A09t
+X-Received: by 2002:a05:6402:229b:: with SMTP id cw27mr18968892edb.23.1607336629430;
+        Mon, 07 Dec 2020 02:23:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607336629; cv=none;
         d=google.com; s=arc-20160816;
-        b=YyFehSTDnn9EcTxnaGTRXbyKEHc7F3vE6fWpNQLvHB/9IzjvtUaQJ4eFI0LQ6EWTIG
-         2oCvmpw+163WvMPX63DT1aZiRVqQB5h9+Kic4DA1GRBobBDkG6dwuwvR8RGvpFUgdis3
-         XK72W7enxmzhONnjx8WAT/XfK/JI3QZyHw1EpuS76O0L6p17ugatz4sjWiKJPQ1b7la4
-         BHEfn9H4JFGTeH5EFX9BmKYokZ4iV91Dy0U3MH36sL3SQAVlZ6toLwELPQSO9uPZNHtS
-         1U7KzK57AlO/A+xa+nQgQ8TBsaM5EtoYy9nj2He8Ff56dPjd8Z+IWdb/uZXvfiSvYW9I
-         E0eQ==
+        b=Ci5970QLu6JgjuocXTqk0lHvlvLp9XfEjk9sBKh1ZH8Aw3lFMdsJ2+3TuraiKfpZs5
+         NZiPArvxemV6PYueEbcrqg/Agii7e6NT0g/RTNntMpmQofFQW0DY4OhXUkcShcgUl5cM
+         cknaRtilGtTV6rzaR2os/TQssycjBpg6fweCZxIEjJWczMHvI49OVWPTTj1jUzshPh7F
+         ifWg3G2qyAUKOBOfM+oR55bpGKIaGTTsZRuCPW2s6NkUMz80b3c0KOfRoyRU8/9qlNWA
+         5VIGEcF/qd4tzmgPmv4b1n6m9bOw5ZKujC6XMhpc6q1VpFKarYjQSKXjjc6flxIPGYO7
+         14pA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=NYGMZWwBeIh3fFPx69mvYjTdx1z088fxfHeToI+lsX8=;
-        b=Oj/oMr8xv5DzFBkiqwBsB6mrzctbXQXiMPT7gZ/g41cNVwpv1FmZnmc9mWZyS4CPhp
-         sBBvHSqJ2uSNNou/txj0xIqQf9ppABymUo7kzafdvnZqN/s9tJQ1/X2XaZcn16xgsV96
-         2uhP0UTXHEv0zxAg9DGlg0UT8OY086+gLcKvoyZqRJuuahLOQYyPZroWbS6KLFezSQgj
-         f37PGNd+PNx74VQQCgMjpvc9FjEKKlaM6Zo2AQa09yzBrl348Y0ic4I6BFqN4PYVwWrb
-         K7RaxMdgZoIbK5WXVREGDSwOUh3QF7yTWTUPVqastandZK/3Z72DO5SEb7YoauKKr+js
-         nv3Q==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=0qgjftJvMWB28i7vhzEDVbkT48Qo4f02gO6Q9KnMTyo=;
+        b=HKTlHlpkHbRnBPizZ/ELVeLzZoAjqK2x8OYtto3IKJDIPkNd7zyoxoiFX4j8SCOPOy
+         DkQz3cCuQe5JCd+YPbiHpKqWZcXNgroQrERBsS7jzOn0/3HTZQwTBviMHIyspX0D5Bpz
+         B5nXpAUj9WL9BPBiBv61XSUvDCp2YX4Usbe8zHUjeS/VhMh09gDLS6D2JRZUwOGfQNoC
+         fc9lFf0+vthvprS6ynVEVzHcUTHF8ll3e3y4LpxJODSxEkKHkFombQBwwsn6P4aJmNoW
+         x/miMpFz201EvH3HM+DnmgQ4V04Z2Ua1fFhhIC+i50MOTso8Fzlqf4n3/7t8WSlSbHK5
+         6vHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="IUj/WNf5";
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F3jphWWx;
+       spf=pass (google.com: domain of berrange@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id h7si12509794ybm.477.2020.12.07.02.04.50
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id l3si8217191edi.333.2020.12.07.02.23.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 07 Dec 2020 02:04:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        Mon, 07 Dec 2020 02:23:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="IUj/WNf5";
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F3jphWWx;
+       spf=pass (google.com: domain of berrange@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1607335490;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	s=mimecast20190719; t=1607336628;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=NYGMZWwBeIh3fFPx69mvYjTdx1z088fxfHeToI+lsX8=;
-	b=IUj/WNf5h8IqWTIOYg2z84Hv9lQBHEyKKAIlxidutKotmmyqXc3FpcRUuwERstCHy0B0tT
-	kf9Z+L1alyvdKNdvuqCwkaIXbeuvz7wF3DLBEs2HwE8c6/p5vABFyblj54irnClcuEHY6I
-	I/KvIc6erd2CSwBb2aGFbDlmayJoaX4=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-378-hIVLNijkMTKDQNsaT7tWmQ-1; Mon, 07 Dec 2020 05:04:49 -0500
-X-MC-Unique: hIVLNijkMTKDQNsaT7tWmQ-1
-Received: by mail-wm1-f72.google.com with SMTP id o203so3956319wmo.3
-        for <alex.bennee@linaro.org>; Mon, 07 Dec 2020 02:04:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=NYGMZWwBeIh3fFPx69mvYjTdx1z088fxfHeToI+lsX8=;
-        b=ZAWcmcDgrdg3DFJPWhC4DCPq4QwLDp49KTwiugtQvrVC1ktN/+GNjwsnOV8QL/3EfP
-         3E/+/1FveyNXfKQ8GTF61vvnO9hrHZEn4rMBMTIjKOra1FAlwXGIfkfDoWpsQNiEPamq
-         xU0eeeaMWFbS+FGYO6IOqem6oM3hYU8RRfc3/njDi05M255CG5wYNLStHTtqrDijXATX
-         49Kxeymax/Ze/7+6wYbr7b3nEPuswq9I3tM4VLg7cnTwiGhhOzi0m+clAwZm4X6tmjgM
-         cwcoSaZaPumo7SuOVgbrPsOzbknx1TYr7qFBD/Qx6jraTfIiS7Ig0ZAhvvAmzXU5AArZ
-         wxeQ==
-X-Gm-Message-State: AOAM531GLGgznLRFj96Egjpqay4FeuqhJyVl7sY19O+ckbZjPoiWA0n4
-	sfXJGhsm8e4mITTv8Omku31sq9JD1wz2q6d88DxkQIXXRsfC4u22fabBQ6Df3V1W61lazKV/PCW
-	en2S0gcHx7u/dI3m/
-X-Received: by 2002:a1c:4604:: with SMTP id t4mr16984337wma.17.1607335487736;
-        Mon, 07 Dec 2020 02:04:47 -0800 (PST)
-X-Received: by 2002:a1c:4604:: with SMTP id t4mr16984316wma.17.1607335487585;
-        Mon, 07 Dec 2020 02:04:47 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (101.red-88-21-206.staticip.rima-tde.net. [88.21.206.101])
-        by smtp.gmail.com with ESMTPSA id e17sm4403139wrw.84.2020.12.07.02.04.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Dec 2020 02:04:46 -0800 (PST)
-Subject: Re: [PATCH 3/8] gitlab-ci: Add KVM X86 cross-build jobs
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- xen-devel@lists.xenproject.org, kvm@vger.kernel.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Willian Rampazzo
- <wrampazz@redhat.com>, Paul Durrant <paul@xen.org>,
- Huacai Chen <chenhc@lemote.com>, Anthony Perard <anthony.perard@citrix.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Claudio Fontana <cfontana@suse.de>, Halil Pasic <pasic@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, David Gibson
- <david@gibson.dropbear.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-s390x@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-arm@nongnu.org
+	bh=0qgjftJvMWB28i7vhzEDVbkT48Qo4f02gO6Q9KnMTyo=;
+	b=F3jphWWxTBKIayQyMHQgdh6xxeWjdYrFKjCRV0i0E2UGtJveyNTweXCj7exJqs/OmfZUJ7
+	iIJkBVrZvynEeO6pKLOJzQjwjeL/GdoqrkXMvx0xZLCRhH6zP7ZjS7CdExRix5qk6UIff1
+	l1i7Yq23hvCL1ArjXY5zSqVS6A7Q2P4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-451-W4NZmy85M4282Y90Lqh5rw-1; Mon, 07 Dec 2020 05:23:32 -0500
+X-MC-Unique: W4NZmy85M4282Y90Lqh5rw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7432C801AE8;
+	Mon,  7 Dec 2020 10:23:29 +0000 (UTC)
+Received: from redhat.com (ovpn-113-137.ams2.redhat.com [10.36.113.137])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 435C360BD8;
+	Mon,  7 Dec 2020 10:23:19 +0000 (UTC)
+Date: Mon, 7 Dec 2020 10:23:16 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org,
+	Paul Durrant <paul@xen.org>, Thomas Huth <thuth@redhat.com>,
+	Willian Rampazzo <wrampazz@redhat.com>,
+	Huacai Chen <chenhc@lemote.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	xen-devel@lists.xenproject.org,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [PATCH 0/8] gitlab-ci: Add accelerator-specific Linux jobs
+Message-ID: <20201207102316.GF3102898@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20201206185508.3545711-1-philmd@redhat.com>
- <20201206185508.3545711-4-philmd@redhat.com>
- <1048bbc0-7124-3564-4219-aa32ed11a35b@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <951882fd-fae0-2dec-5a81-d72adf139511@redhat.com>
-Date: Mon, 7 Dec 2020 11:04:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <1048bbc0-7124-3564-4219-aa32ed11a35b@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: XT3u37hUKlBa
+In-Reply-To: <20201206185508.3545711-1-philmd@redhat.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-TUID: xiTt5OkxCf+b
 
-On 12/7/20 6:20 AM, Thomas Huth wrote:
-> On 06/12/2020 19.55, Philippe Mathieu-Daudé wrote:
->> Cross-build x86 target with only KVM accelerator enabled.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  .gitlab-ci.d/crossbuilds-kvm-x86.yml | 6 ++++++
->>  .gitlab-ci.yml                       | 1 +
->>  MAINTAINERS                          | 1 +
->>  3 files changed, 8 insertions(+)
->>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-x86.yml
+On Sun, Dec 06, 2020 at 07:55:00PM +0100, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> We already have a job that tests with KVM enabled and TCG disabled in the
-> main .gitlab-ci.yml file, the "build-tcg-disabled" job. So I don't quite see
-> the point in adding yet another job that does pretty much the same? Did I
-> miss something?
+> I was custom to use Travis-CI for testing KVM builds on s390x/ppc
+> with the Travis-CI jobs.
+> 
+> During October Travis-CI became unusable for me (extremely slow,
+> see [1]). Then my free Travis account got updated to the new
+> "10K credit minutes allotment" [2] which I burned without reading
+> the notification email in time (I'd burn them eventually anyway).
+> 
+> Today Travis-CI is pointless to me. While I could pay to run my
+> QEMU jobs, I don't think it is fair for an Open Source project to
+> ask its forks to pay for a service.
+> 
+> As we want forks to run some CI before contributing patches, and
+> we have cross-build Docker images available for Linux hosts, I
+> added some cross KVM/Xen build jobs to Gitlab-CI.
+> 
+> Cross-building doesn't have the same coverage as native building,
+> as we can not run the tests. But this is still useful to get link
+> failures.
+> 
+> Each job is added in its own YAML file, so it is easier to notify
+> subsystem maintainers in case of troubles.
+> 
+> Resulting pipeline:
+> https://gitlab.com/philmd/qemu/-/pipelines/225948077
+> 
+> Regards,
+> 
+> Phil.
+> 
+> [1] https://travis-ci.community/t/build-delays-for-open-source-project/10272
+> [2] https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing
+> 
+> Philippe Mathieu-Daudé (8):
+>   gitlab-ci: Replace YAML anchors by extends (cross_system_build_job)
+>   gitlab-ci: Introduce 'cross_accel_build_job' template
+>   gitlab-ci: Add KVM X86 cross-build jobs
+>   gitlab-ci: Add KVM ARM cross-build jobs
+>   gitlab-ci: Add KVM s390x cross-build jobs
+>   gitlab-ci: Add KVM PPC cross-build jobs
+>   gitlab-ci: Add KVM MIPS cross-build jobs
+>   gitlab-ci: Add Xen cross-build jobs
+> 
+>  .gitlab-ci.d/crossbuilds-kvm-arm.yml   |  5 +++
+>  .gitlab-ci.d/crossbuilds-kvm-mips.yml  |  5 +++
+>  .gitlab-ci.d/crossbuilds-kvm-ppc.yml   |  5 +++
+>  .gitlab-ci.d/crossbuilds-kvm-s390x.yml |  6 +++
+>  .gitlab-ci.d/crossbuilds-kvm-x86.yml   |  6 +++
+>  .gitlab-ci.d/crossbuilds-xen.yml       | 14 +++++++
 
-I missed it was x86-specific myself.
+Adding so many different files here is crazy IMHO, and then should
+all be under the same GitLab CI maintainers, not the respective
+arch maintainers.  The MAINTAINERS file is saying who is responsible
+for the contents of the .yml file, not who is responsible for making
+sure KVM works on that arch. 
 
-> 
->  Thomas
-> 
+>  .gitlab-ci.d/crossbuilds.yml           | 52 ++++++++++++++++----------
+>  .gitlab-ci.yml                         |  6 +++
+>  MAINTAINERS                            |  6 +++
+>  9 files changed, 85 insertions(+), 20 deletions(-)
+>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-arm.yml
+>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-mips.yml
+>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-ppc.yml
+>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-s390x.yml
+>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-x86.yml
+>  create mode 100644 .gitlab-ci.d/crossbuilds-xen.yml
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

@@ -1,66 +1,65 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2803716lfb;
-        Sun, 6 Dec 2020 21:11:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwZhl7u0rDrwk0tVp4X+KVd81eeBUBPHNQ6c0f3IJ+EcV1U/fb6qLrhYJOLcMf3FYOVj2rU
-X-Received: by 2002:a25:7909:: with SMTP id u9mr13699138ybc.333.1607317887046;
-        Sun, 06 Dec 2020 21:11:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607317887; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2810161lfb;
+        Sun, 6 Dec 2020 21:20:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx2YAS7RiRaff9wGb1eB2//3bX0bq6MuYZGHqaPOIAEsxBwJ+FzPhRXbzeHnbQMrWOkPi6z
+X-Received: by 2002:a17:906:7cc6:: with SMTP id h6mr17127276ejp.161.1607318452341;
+        Sun, 06 Dec 2020 21:20:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607318452; cv=none;
         d=google.com; s=arc-20160816;
-        b=OGawua2V4x0kscgAUZszQXw7kQG+kDl8+vFjtblDBsxPPuNxt2a0WtzxyiyA2c3HRP
-         /DWwi56LIEFoRSEKqEaLm866qwiLSXYHDW5zt1CXWfmMIOL0f0w4n2o0EIEuAwvm4Ovj
-         h3IVHRMARCgYDQgY57Z/Y4OaEVY5/A2ScRJsWSao3/EsrxBCrUwOrPwH2kxiWCRYm6dK
-         Y2c6UZ9btHNWFGDTHKCS/8g+n+nYcUX07XYiw3rCT6BQedGIfrOPm0zPPW/TNIuzeRkY
-         +zNoPFpz5jGefwUyVLDrfiiDYB8ZcnSLktKdstpWqLBnpWoLTUw3b/PjKZ1T6wny/+YS
-         1VYQ==
+        b=ZY+lA/XpyvCMaCaPwxMO7JTOR+tYvs5aMaUSXJPYZvh0DJbnG4TZmC2b0Klfd6mRu5
+         S4yvLJCMy4qoQM6WWRRz3vxLKeuG1rg+fWxbMtCaVgd3fm/6bLfsOJ4umNso68Zkqnkp
+         rJh5yXMehOSppa7LOv77rSEmEYlVQ+/A8GGjknfeE6xw//ob11/QsI++3JtIPwG0RjgN
+         WEPuMUBonWxhuO1turHnE0hNIFUSCKNMiwcAh4+AtMyBVedfQgOo1uYfZbB9vhu+UFNI
+         RbL/ybVUPjqcuQeBn2aKiQ5aut27D4PvqJou4cS1vUblY/GV07E3+u96WwGTW1S3LgwR
+         fYJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=Qab4deHbU/VN7oqCq/ddeCw/xxFnxVTtrXJHAdanJ30=;
-        b=TmZBd5hU9i9xXEy6nOQWVWWZV60Ucjnitg648jCSs9bO7xnd7tUBrNIN6m4HjOEDGe
-         YB/Fom0BZYrUyohkivJlvyvHvHFA26dVYg2dNr/GUYlJVYNd+vu6Sf3NE/c+CnkkTkU0
-         rat74LgKoyfiOR7zhJLIobbzO0q1vzasuzlxpRpfFl95nXNMmeRNDTXpw2Vhc+OTKZba
-         5O8yIJhqHNXbKTKyIA3m3jjWCGIBHavU+eDleUq2t9T9a4sA7nPs+BPEozoEaHc1mg7O
-         5anNRHfRngFssoAsL4HzHsboSNWRcglqIQQS2F8kfIUofkpkVVSM1hmUPrieXvjmNNc6
-         WRIg==
+        bh=5i5jUUW575PHEv2nQ9iBjazPdMewihveiWGYT6cOBCc=;
+        b=mJlJsnQGRS+zzoCx4Dxn/in1Zc+RoZmbPSqrzON3BKrncdpHMuHtRCfPm8Vtjkwfhm
+         CHEB/CaTfFy6i8wKTCg+SdeU+g6Yx4EuKktS8vsSrCddcppVo47cLRkIE6xe1DiZmgrQ
+         I/rt44i3gaFAb1n6DSDqRliPZOD1tnG3bCOsHSOkYxEa3T+rlpLYUzok9+Qk/Ft0tEh3
+         JzqWO/HMaSTLqxFYJN/del0ZnCYHtTPv5Xjnkdyd1oPiIwTDIfymmovwEOfXkSA8Z6w7
+         1QHe95jtVI1wyVseniNYHbX0OSHbpIVo39dE62kyuWBgE05WCjuxjMygHfRg0JJjhkR3
+         Nrzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wd2KUSwn;
-       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HfV4Ww8y;
+       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id v9si9386785ybp.362.2020.12.06.21.11.26
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id ca6si1659181edb.504.2020.12.06.21.20.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Dec 2020 21:11:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        Sun, 06 Dec 2020 21:20:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wd2KUSwn;
-       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HfV4Ww8y;
+       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1607317886;
+	s=mimecast20190719; t=1607318451;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Qab4deHbU/VN7oqCq/ddeCw/xxFnxVTtrXJHAdanJ30=;
-	b=Wd2KUSwnCLr0XfStrF0+coXglJjXzI4yua/+Gv+o/8GdKmFNkomTSQG8Nqwj0Me2XwAM0M
-	YwCJ2w2COGhRJ8jGWgheBtEn1/bi+Xwqxj+difq0eSzhVDmCy86Ncpp31sc93amy2oDZ/q
-	nuyZLbMA25pr7OZF5koYPo6hZeEL83c=
+	bh=5i5jUUW575PHEv2nQ9iBjazPdMewihveiWGYT6cOBCc=;
+	b=HfV4Ww8yr14fKlE2T0NMaxsH+ItBz57KalYIE4r5FWSAdRsIVBxFK/YqYpHhKqmfEm2Xra
+	mQn9UtDHoUVnVJMyRjVeGBbB5uOjNz6wM1w8d9pTnXPJtHuigC7DpdMtGPr/5BAeiVopgY
+	QQFS62rHPVJ7fxvj1PW6Ct5PGtQhQVo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-508-v49AIyVENfWDHZqo9wU_CQ-1; Mon, 07 Dec 2020 00:11:24 -0500
-X-MC-Unique: v49AIyVENfWDHZqo9wU_CQ-1
+ us-mta-383-xoOH7ohQMkiOcx7_FPWO6A-1; Mon, 07 Dec 2020 00:20:49 -0500
+X-MC-Unique: xoOH7ohQMkiOcx7_FPWO6A-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5CB29800D55;
-	Mon,  7 Dec 2020 05:11:22 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5DEF91005504;
+	Mon,  7 Dec 2020 05:20:46 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-85.ams2.redhat.com [10.36.112.85])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C9D315D6AB;
-	Mon,  7 Dec 2020 05:11:09 +0000 (UTC)
-Subject: Re: [PATCH 1/8] gitlab-ci: Replace YAML anchors by extends
- (cross_system_build_job)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1CF885D6AB;
+	Mon,  7 Dec 2020 05:20:35 +0000 (UTC)
+Subject: Re: [PATCH 3/8] gitlab-ci: Add KVM X86 cross-build jobs
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
@@ -69,7 +68,8 @@ Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Willian Rampazzo
  <wrampazz@redhat.com>, Paul Durrant <paul@xen.org>,
- Huacai Chen <chenhc@lemote.com>, Marcelo Tosatti <mtosatti@redhat.com>,
+ Huacai Chen <chenhc@lemote.com>, Anthony Perard <anthony.perard@citrix.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
  Stefano Stabellini <sstabellini@kernel.org>,
  Claudio Fontana <cfontana@suse.de>, Halil Pasic <pasic@linux.ibm.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -79,31 +79,34 @@ Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-s390x@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  qemu-arm@nongnu.org
 References: <20201206185508.3545711-1-philmd@redhat.com>
- <20201206185508.3545711-2-philmd@redhat.com>
+ <20201206185508.3545711-4-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <e5494ad3-a67e-0013-b48f-0fa82d67c397@redhat.com>
-Date: Mon, 7 Dec 2020 06:11:08 +0100
+Message-ID: <1048bbc0-7124-3564-4219-aa32ed11a35b@redhat.com>
+Date: Mon, 7 Dec 2020 06:20:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201206185508.3545711-2-philmd@redhat.com>
+In-Reply-To: <20201206185508.3545711-4-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-TUID: Tx4EzAjqF2wx
+X-TUID: 9SQ7c/KkZi3g
 
 On 06/12/2020 19.55, Philippe Mathieu-Daudé wrote:
-> 'extends' is an alternative to using YAML anchors
-> and is a little more flexible and readable. See:
-> https://docs.gitlab.com/ee/ci/yaml/#extends
+> Cross-build x86 target with only KVM accelerator enabled.
 > 
-> More importantly it allows exploding YAML jobs.
-> 
-> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  .gitlab-ci.d/crossbuilds.yml | 40 ++++++++++++++++++------------------
->  1 file changed, 20 insertions(+), 20 deletions(-)
+>  .gitlab-ci.d/crossbuilds-kvm-x86.yml | 6 ++++++
+>  .gitlab-ci.yml                       | 1 +
+>  MAINTAINERS                          | 1 +
+>  3 files changed, 8 insertions(+)
+>  create mode 100644 .gitlab-ci.d/crossbuilds-kvm-x86.yml
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+We already have a job that tests with KVM enabled and TCG disabled in the
+main .gitlab-ci.yml file, the "build-tcg-disabled" job. So I don't quite see
+the point in adding yet another job that does pretty much the same? Did I
+miss something?
+
+ Thomas

@@ -1,211 +1,455 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1173320lfc;
-        Wed, 3 Jun 2020 23:28:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdgBiew+6VFZvzKlj3aMG87NFiR9ND1mINDMdy05z03jv3UNuCLR8lT1GzgQr6Yv0qqedc
-X-Received: by 2002:a25:71c6:: with SMTP id m189mr5861985ybc.187.1591252139559;
-        Wed, 03 Jun 2020 23:28:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591252139; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4160941lfb;
+        Tue, 8 Dec 2020 08:27:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJykNssxP/bMafSylKh9H0CWmG+aAwbwcjmDmg4IK+v5NnmQhZnyph6hpOyuQazjrEbjTDtj
+X-Received: by 2002:a25:d7d4:: with SMTP id o203mr31762268ybg.286.1607444862183;
+        Tue, 08 Dec 2020 08:27:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607444862; cv=none;
         d=google.com; s=arc-20160816;
-        b=LdDUM36kWRV1jyb2f+i26VhDB99lPcjkXQ6RsaNlKB1iw7QzC8MQ9jtG2DiNMD4PTm
-         MOmajOGUEPTt0+uiajWOlLzZ1L8Ur7g2j2EOK2sn5hzvPBqc2m+MasEekkZ4FpMUFHeQ
-         qQS8sJsoyU/MBGWWL8MAW9HKnG5yObRLLSBBVO7UU5TIanCExD4i3oYr9QqNObmArxx9
-         M/AcLvtT4d7+KimGmRje2yH/uv/t6IBjOOu6yXxSOzBS+/RfnJM3b6m0dtyb/dXg8te5
-         mSsFOwo60xdwoWH3tb/cNNf1wAl60LM2AYu4Ob3k2CUicF96ApNwy6QtUh9MHgX9lruL
-         gh0A==
+        b=FMrONkJ7PduonnQ4STCyfPtfq3SzMxEOtFavvNlkbBYsV3VfYBlkApdGC0vhhe8dsD
+         VwjkZWuUz1rLydnlAypXi7uF36sr/UWJnq5w8Jsp3Mfe5c15sBf5QwPn24SdrQZcDpqU
+         8CnHkVlJTMsqbiMvGMlwlb+zTDsd2dbaCeNGaIrL326tIkcj8COxpAKDecM+pSYix2Qo
+         e8FiD9U/OPwiInoXrxuuHNDuNXUpqQWxP+dqyXhNB6DBAY2LZurei8XOTosUvwvFvxJZ
+         5Ky2lapn/O85Gpn7q7lRgJ5UzWe+ko3dpLAaCo1yav7qIQSZYnP8BBe3oj81JFNc5BCj
+         QGRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=jnMavzySpePqX+y55tnoGtnM1AAZep+OLH/uhTantFk=;
-        b=oXYzLJMoLFlh19zCl9HaaXeRsMAV0mm4n9Wbbg/OIpIbfe7whUb43VCP49CWIMbHFN
-         Sd3BLRhvdCytFfUckadx3WdgB8K8xQcR8wIdLiy5sWS66TLQcvZAwsN4UeRzm4J4Bez4
-         RK8ithCck/VC9j/DzuKGu2rp2mX+j107u8BgKAB3Q8YA5eNwWuLf25C8KR2oBo9F4p/K
-         bWnlW7qysk7POlF5hY5B9zUKPSB/dVWIxU67c7yfAOZJV9ay5bG0MhZEtAzTEEQevnf7
-         Ix0CKi0L3ZmEXU/dposehQQdjhOLi+6mOqXsYOFQfhoepOWIy9JDzySGEGKUKbnKyBmS
-         RE3g==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=k885aNYqhxoJLaos0R3P3MIwCPHxMLkrMSizTXw6ZzE=;
+        b=vsiZAf4+NXz88jWnP+X35aib9zfH6G1Egpd5/T2Us71xuxbuULo2URGfoMbrTRNbxs
+         gDHulWM2cBar7STxaBcVoE+iWrM1sfJuyA1zoO4HeUOUeEfGsu8XxDDHXfkFUwcEXF6l
+         EPpr+V/ro2TjOl73LJEZA7M28TllJoI+O7eRIlCwAEF5BthD+V2nQyczOKp/uiP4lDdV
+         nVb0TdyGCXtEi6SuWuGT6CtoLmyVTqHsj8i5tL/hZ5VkeH2cYj4eS2XqYvr7mFkpVKQd
+         a/v1JKkpuqWT0va9VkwBpj6RLqRPWMONhaWWIT0BTsMGDIoWvignL4y9DsjDbCeKLPUy
+         D2AA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dH249+Z6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Nw/REeBI";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si3747631ybi.459.2020.06.03.23.28.59
+        by mx.google.com with ESMTPS id k5si5080335ybj.83.2020.12.08.08.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jun 2020 23:28:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Dec 2020 08:27:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dH249+Z6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:33804 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Nw/REeBI";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33242 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgjN4-0004Rn-Q1
-	for alex.bennee@linaro.org; Thu, 04 Jun 2020 02:28:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38674)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kmfq1-00047Z-HH
+	for alex.bennee@linaro.org; Tue, 08 Dec 2020 11:27:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jgjMs-0004Pa-Ta; Thu, 04 Jun 2020 02:28:46 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37371)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jgjMr-0006Pg-Nw; Thu, 04 Jun 2020 02:28:46 -0400
-Received: by mail-wr1-x441.google.com with SMTP id x13so4755217wrv.4;
- Wed, 03 Jun 2020 23:28:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=jnMavzySpePqX+y55tnoGtnM1AAZep+OLH/uhTantFk=;
- b=dH249+Z60ca54BkSRgR2dQ/1gP6/iWN6DN2V0X57ZSuFHfFGoDc9Wrd7X6kz41xMLM
- QkRc9iEde+6Ah8LYnKU0Uc53elndSrhQFd2Hkd6g0sFI4xq4c64dJ/5avkDLrcfFLZo5
- Z+41z1iVtAHattIjG6xj3BQj4NrWjs9036P6WCudItCN7CqSofQGWQUANQ47cG/TNtWU
- oeJJ8HMrLww/Uuy7Do04Vd1qGjx8VZEPDy2PzL/kB46LyXUwgN5h2zKSJhENAjstMt40
- +ALZ12TojrPa6hwFKwE4+oQwX7NgnLz7GkCqw6hSwCIHwzW4LObwfyaD8lF+sPtzEfe6
- WHDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jnMavzySpePqX+y55tnoGtnM1AAZep+OLH/uhTantFk=;
- b=F2FPgR2EAt3nlW03M9PoJvnFNMsbD5EGoXhRYNTc7CAh61CMoFtyJeoDhX30ISzw9E
- NIesN86JrJu5b8CN29vjx9fuXji5vYDsfz5zblZtdylpc/NJj/1Fyqowj64FPpZzUclj
- e/yMWWVA/EhFlWBGup9fOHbJ0MgezBtUzDd0C6TCjQUloRNpBl4btIgTKu4d3Ow7Hy/l
- 5hHcEQAYhoKnZQMpFNGMR4xBoL/yovC3JuNZE4gRQdc4XIkl70hjzsP6qZtMqkCT8YhO
- auw/2pUSNTBq4LWTwN0ZMGcP1rfCuthXIGLyJM/nYKTOMtySWmwAj2ypo97Ctoj1vNyS
- ttYA==
-X-Gm-Message-State: AOAM533vxHRo2n9qi6BjkTKPagn3xg5hSpHnJ/zTyLVtZwIXQmXDl+u5
- GmzejSPbOqw3OGaspXlblo01du4C
-X-Received: by 2002:a5d:4204:: with SMTP id n4mr2967706wrq.247.1591252123134; 
- Wed, 03 Jun 2020 23:28:43 -0700 (PDT)
-Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id v19sm5767431wml.26.2020.06.03.23.28.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Jun 2020 23:28:42 -0700 (PDT)
-Subject: Re: [PATCH v2 2/2] hw: arm: Set vendor property for IMX SDHCI
- emulations
-To: Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200603145258.195920-1-linux@roeck-us.net>
- <20200603145258.195920-3-linux@roeck-us.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6b80c595-761f-b083-af09-867c420026e0@amsat.org>
-Date: Thu, 4 Jun 2020 08:28:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kmflH-0001bT-Ir
+ for qemu-devel@nongnu.org; Tue, 08 Dec 2020 11:22:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38326)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kmflD-0007h5-Oj
+ for qemu-devel@nongnu.org; Tue, 08 Dec 2020 11:22:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607444562;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=k885aNYqhxoJLaos0R3P3MIwCPHxMLkrMSizTXw6ZzE=;
+ b=Nw/REeBIRRZkoLTTqa2hMKNed8H6mEVz39whJ3raBapR5OitC7od7PPo+/za3a9hAQJHR/
+ rnifAtSxim4igjgjRJ/XHVImD49QNB20E09kd9K4ejkJEElrQjxm/csz+3h2YxcLz9wHjc
+ 64GLeFBaPcMGe0y95SBRKVcR5WY1/0w=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-340-UCLi0tCpP0y6Ii339vXg5Q-1; Tue, 08 Dec 2020 11:22:38 -0500
+X-MC-Unique: UCLi0tCpP0y6Ii339vXg5Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3238280EDB3;
+ Tue,  8 Dec 2020 16:22:37 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.65])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E11665D9E2;
+ Tue,  8 Dec 2020 16:22:27 +0000 (UTC)
+Date: Tue, 8 Dec 2020 17:22:25 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Marian Posteuca <posteuca@mutex.one>
+Subject: Re: [PATCH] acpi: Permit OEM ID and OEM table ID fields to be changed
+Message-ID: <20201208172225.333bd4d4@redhat.com>
+In-Reply-To: <20201206212823.16333-1-posteuca@mutex.one>
+References: <20201206212823.16333-1-posteuca@mutex.one>
 MIME-Version: 1.0
-In-Reply-To: <20200603145258.195920-3-linux@roeck-us.net>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EW1Xekj9a6We
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: H52W7Ku+6SAc
 
-On 6/3/20 4:52 PM, Guenter Roeck wrote:
-> Set vendor property to IMX to enable IMX specific functionality
-> in sdhci code.
+On Sun,  6 Dec 2020 23:28:23 +0200
+Marian Posteuca <posteuca@mutex.one> wrote:
+
+> Qemu's ACPI table generation sets the fields OEM ID and OEM table ID
+> to "BOCHS " and "BXPCxxxx" where "xxxx" is replaced by the ACPI
+> table name.
 > 
-> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> Some games like Red Dead Redemption 2 seem to check the ACPI OEM ID
+> and OEM table ID for the strings "BOCHS" and "BXPC" and if they are
+> found, the game crashes(this may be an intentional detection
+> mechanism to prevent playing the game in a virtualized environment).
+> 
+> This patch allows you to override these default values.
+> 
+> The feature can be used in this manner:
+>   qemu -acpidefault oem_id=ABCDEF,oem_table_id=EFGH
+> 
+> The oem_id string must be exactly 6 bytes in size, and the
+> oem_table_id string must be exactly 4 bytes in size. If either of
+> these parameters is not set, the current default values will be
+> used for the one missing.
+> 
+> This does not affect the -acpitable option (for user-defined ACPI
+> tables), which has precedence over -acpidefault option.
+>
+> Signed-off-by: Marian Posteuca <posteuca@mutex.one>
 > ---
-> v2: Added missing error checks
->     Added Philippe's Tested-by: tag
+>  hw/acpi/aml-build.c         | 51 +++++++++++++++++++++++++++++++---
+>  hw/arm/virt-acpi-build.c    |  2 +-
+>  hw/i386/acpi-build.c        |  2 +-
+>  hw/i386/acpi-microvm.c      |  2 +-
+>  include/hw/acpi/aml-build.h |  6 ++--
+>  qemu-options.hx             | 18 ++++++++++++
+>  softmmu/vl.c                | 55 +++++++++++++++++++++++++++++++++++++
+>  7 files changed, 126 insertions(+), 10 deletions(-)
 > 
->  hw/arm/fsl-imx25.c  | 6 ++++++
->  hw/arm/fsl-imx6.c   | 6 ++++++
->  hw/arm/fsl-imx6ul.c | 2 ++
->  hw/arm/fsl-imx7.c   | 2 ++
->  4 files changed, 16 insertions(+)
-> 
-> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-> index cdaa79c26b..a853ffcc00 100644
-> --- a/hw/arm/fsl-imx25.c
-> +++ b/hw/arm/fsl-imx25.c
-> @@ -274,6 +274,12 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
->                                   &err);
->          object_property_set_uint(OBJECT(&s->esdhc[i]), IMX25_ESDHC_CAPABILITIES,
->                                   "capareg", &err);
-> +        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
-> +                                 "vendor", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 3792ba96ce..033d6a743d 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -28,6 +28,9 @@
+>  #include "hw/boards.h"
+>  #include "hw/acpi/tpm.h"
+>  
+> +#define ACPI_BUILD_APPNAME6 "BOCHS "
+> +#define ACPI_BUILD_APPNAME4 "BXPC"
+> +
+>  static GArray *build_alloc_array(void)
+>  {
+>      return g_array_new(false, true /* clear */, 1);
+> @@ -1538,6 +1541,47 @@ Aml *aml_object_type(Aml *object)
+>      return var;
+>  }
+>  
+> +void acpi_get_oem_id_default(unsigned char *oem_id)
+> +{
+> +    QemuOpts *opts;
+> +    const char *opt_oem_id = NULL;
+> +
+> +    opts = qemu_opts_find(qemu_find_opts("acpidefault"), NULL);
+> +    if (opts) {
+> +        opt_oem_id = qemu_opt_get(opts, "oem_id");
+> +    }
+> +
+> +    if (opt_oem_id == NULL) {
+> +        memcpy(oem_id, ACPI_BUILD_APPNAME6, 6);
+> +    } else {
+> +        memcpy(oem_id, opt_oem_id, 6);
+> +    }
+> +}
+> +
+> +void acpi_get_oem_table_id_default(const char *sig,
+> +                                   unsigned char *oem_table_id)
+> +{
+> +    QemuOpts *opts;
+> +    const char *opt_oem_table_id = NULL;
+> +
+> +    opts = qemu_opts_find(qemu_find_opts("acpidefault"), NULL);
+> +    if (opts) {
+> +        opt_oem_table_id = qemu_opt_get(opts, "oem_table_id");
+> +    }
+> +
+> +    if (opt_oem_table_id == NULL) {
+> +        memcpy(oem_table_id, ACPI_BUILD_APPNAME4, 4);
+> +        if (sig) {
+> +            memcpy(oem_table_id + 4, sig, 4);
 > +        }
->          object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
->          if (err) {
->              error_propagate(errp, err);
-> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-> index f58c85aa8c..29677cfd59 100644
-> --- a/hw/arm/fsl-imx6.c
-> +++ b/hw/arm/fsl-imx6.c
-> @@ -350,6 +350,12 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
->                                   &err);
->          object_property_set_uint(OBJECT(&s->esdhc[i]), IMX6_ESDHC_CAPABILITIES,
->                                   "capareg", &err);
-> +        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
-> +                                 "vendor", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
+> +    } else {
+> +        memcpy(oem_table_id, opt_oem_table_id, 4);
+> +        if (sig) {
+> +            memcpy(oem_table_id + 4, sig, 4);
 > +        }
->          object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
->          if (err) {
->              error_propagate(errp, err);
-> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-> index 3ecb212da6..ce1462927c 100644
-> --- a/hw/arm/fsl-imx6ul.c
-> +++ b/hw/arm/fsl-imx6ul.c
-> @@ -505,6 +505,8 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->              FSL_IMX6UL_USDHC2_IRQ,
->          };
->  
-> +        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
-> +                                        "vendor", &error_abort);
->          object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
->                                   &error_abort);
->  
-> diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
-> index 89c3b64c06..dbf16b2814 100644
-> --- a/hw/arm/fsl-imx7.c
-> +++ b/hw/arm/fsl-imx7.c
-> @@ -416,6 +416,8 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
->              FSL_IMX7_USDHC3_IRQ,
->          };
->  
-> +        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
-> +                                 "vendor", &error_abort);
->          object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
->                                   &error_abort);
->  
-> 
+> +    }
+> +}
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+think about aml-build as a library, it shouldn't access random (CLI) stuff
+outside itself unless there isn't any other way around problem.
+
+I'd prefer to extend build_header() and its callers to pass ids as arguments,
+and make acpi_build() figure out if it should use default or user provided values.
+
+more exactly since we are taking about game which I'd assume only pc machine
+needs this change.
+I'd suggest to add respective properties to pc_machine_class_init(),
+and drop all manual option handling you are adding here.
+Then pc_machine_initfn() can set default values for them and if user provides
+id properties it will override defaults automatically.
+All that's left is for acpi_build() to pass property values from machine
+to table building functions.
+
+
+>  void
+>  build_header(BIOSLinker *linker, GArray *table_data,
+>               AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
+> @@ -1552,18 +1596,17 @@ build_header(BIOSLinker *linker, GArray *table_data,
+>      if (oem_id) {
+>          strncpy((char *)h->oem_id, oem_id, sizeof h->oem_id);
+>      } else {
+> -        memcpy(h->oem_id, ACPI_BUILD_APPNAME6, 6);
+> +        acpi_get_oem_id_default(h->oem_id);
+>      }
+>  
+>      if (oem_table_id) {
+>          strncpy((char *)h->oem_table_id, oem_table_id, sizeof(h->oem_table_id));
+>      } else {
+> -        memcpy(h->oem_table_id, ACPI_BUILD_APPNAME4, 4);
+> -        memcpy(h->oem_table_id + 4, sig, 4);
+> +        acpi_get_oem_table_id_default(sig, h->oem_table_id);
+>      }
+>  
+>      h->oem_revision = cpu_to_le32(1);
+> -    memcpy(h->asl_compiler_id, ACPI_BUILD_APPNAME4, 4);
+> +    acpi_get_oem_table_id_default(NULL, h->asl_compiler_id);
+>      h->asl_compiler_revision = cpu_to_le32(1);
+>      /* Checksum to be filled in by Guest linker */
+>      bios_linker_loader_add_checksum(linker, ACPI_BUILD_TABLE_FILE,
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 9747a6458f..cbeb8f8262 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -734,10 +734,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      {
+>          AcpiRsdpData rsdp_data = {
+>              .revision = 2,
+> -            .oem_id = ACPI_BUILD_APPNAME6,
+>              .xsdt_tbl_offset = &xsdt,
+>              .rsdt_tbl_offset = NULL,
+>          };
+> +        acpi_get_oem_id_default(rsdp_data.oem_id);
+>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
+>      }
+>  
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 1f5c211245..5e75ebdcc3 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2555,10 +2555,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>      {
+>          AcpiRsdpData rsdp_data = {
+>              .revision = 0,
+> -            .oem_id = ACPI_BUILD_APPNAME6,
+>              .xsdt_tbl_offset = NULL,
+>              .rsdt_tbl_offset = &rsdt,
+>          };
+> +        acpi_get_oem_id_default(rsdp_data.oem_id);
+>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
+>          if (!pcmc->rsdp_in_ram) {
+>              /* We used to allocate some extra space for RSDP revision 2 but
+> diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
+> index d34a301b84..04db8ce0ac 100644
+> --- a/hw/i386/acpi-microvm.c
+> +++ b/hw/i386/acpi-microvm.c
+> @@ -215,10 +215,10 @@ static void acpi_build_microvm(AcpiBuildTables *tables,
+>          AcpiRsdpData rsdp_data = {
+>              /* ACPI 2.0: 5.2.4.3 RSDP Structure */
+>              .revision = 2, /* xsdt needs v2 */
+> -            .oem_id = ACPI_BUILD_APPNAME6,
+>              .xsdt_tbl_offset = &xsdt,
+>              .rsdt_tbl_offset = NULL,
+>          };
+> +        acpi_get_oem_id_default(rsdp_data.oem_id);
+>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
+>      }
+>  
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index fe0055fffb..a5527ac4ad 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -7,9 +7,6 @@
+>  /* Reserve RAM space for tables: add another order of magnitude. */
+>  #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
+>  
+> -#define ACPI_BUILD_APPNAME6 "BOCHS "
+> -#define ACPI_BUILD_APPNAME4 "BXPC"
+> -
+>  #define ACPI_BUILD_TABLE_FILE "etc/acpi/tables"
+>  #define ACPI_BUILD_RSDP_FILE "etc/acpi/rsdp"
+>  #define ACPI_BUILD_TPMLOG_FILE "etc/tpm/log"
+> @@ -399,6 +396,9 @@ Aml *aml_concatenate(Aml *source1, Aml *source2, Aml *target);
+>  Aml *aml_object_type(Aml *object);
+>  
+>  void build_append_int_noprefix(GArray *table, uint64_t value, int size);
+> +void acpi_get_oem_id_default(unsigned char *oem_id);
+> +void acpi_get_oem_table_id_default(const char *sig,
+> +                                   unsigned char *oem_table_id);
+>  void
+>  build_header(BIOSLinker *linker, GArray *table_data,
+>               AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 2c83390504..09147621e5 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -3455,6 +3455,24 @@ SRST
+>      from ./my\_blob.bin.
+>  ERST
+>  
+> +DEF("acpidefault", HAS_ARG, QEMU_OPTION_acpidefault,
+> +    "-acpidefault oem_id=<OEMID>,oem_table_id=<OEMTABLEID>\n"
+> +    "                set default OEM ID (6 bytes) and OEM table ID (4 bytes)\n",
+> +    QEMU_ARCH_ALL)
+> +SRST
+> +``-acpidefault oem_id=oem-id,oem_table_id=oem-table-id``
+> +    Set the default OEM ID and OEM table ID used in ACPI tables.  The
+> +    OEM ID should be 6 bytes (pad with spaces if needed), and the OEM
+> +    table ID should be 4 bytes.
+> +
+> +    If not set, qemu uses ``BOCHS`` and ``BXPCxxxx`` where
+> +    xxxx is the table name (eg. ``BXPCRSDT`` in the RSDT table).
+> +
+> +    If you are adding user-defined ACPI tables on the qemu command line,
+> +    use ``-acpitable`` instead.  The defaults here will not be used in this
+> +    case.
+> +ERST
+> +
+>  DEF("serial", HAS_ARG, QEMU_OPTION_serial, \
+>      "-serial dev     redirect the serial port to char device 'dev'\n",
+>      QEMU_ARCH_ALL)
+> diff --git a/softmmu/vl.c b/softmmu/vl.c
+> index e6e0ad5a92..59d071feb6 100644
+> --- a/softmmu/vl.c
+> +++ b/softmmu/vl.c
+> @@ -506,6 +506,24 @@ static QemuOptsList qemu_fw_cfg_opts = {
+>      },
+>  };
+>  
+> +static QemuOptsList qemu_acpidefault_opts = {
+> +    .name = "acpidefault",
+> +    .merge_lists = true,
+> +    .head = QTAILQ_HEAD_INITIALIZER(qemu_acpidefault_opts.head),
+> +    .desc = {
+> +        {
+> +            .name = "oem_id",
+> +            .type = QEMU_OPT_STRING,
+> +            .help = "Set default OEM ID (6 bytes)",
+> +        }, {
+> +            .name = "oem_table_id",
+> +            .type = QEMU_OPT_STRING,
+> +            .help = "Set default OEM table ID (4 bytes)",
+> +        },
+> +        { /* end of list */ }
+> +    },
+> +};
+> +
+>  /**
+>   * Get machine options
+>   *
+> @@ -2092,6 +2110,30 @@ static int parse_fw_cfg(void *opaque, QemuOpts *opts, Error **errp)
+>      return 0;
+>  }
+>  
+> +static int check_acpi_option(QemuOpts *opts)
+> +{
+> +    const char *oem_id;
+> +    const char *oem_table_id;
+> +
+> +    oem_id = qemu_opt_get(opts, "oem_id");
+> +    if (oem_id) {
+> +        if (strlen(oem_id) != 6) {
+> +            error_report("-acpidefault oem_id parameter must be 6 bytes long");
+> +            return -1;
+> +        }
+> +    }
+> +    oem_table_id = qemu_opt_get(opts, "oem_table_id");
+> +    if (oem_table_id) {
+> +        size_t len = strlen(oem_table_id);
+> +        if (len != 4) {
+> +            error_report("-acpidefault oem_table_id parameter "
+> +                         "must be 4 bytes long");
+> +            return -1;
+> +        }
+> +    }
+> +    return 0;
+> +}
+> +
+>  static int device_help_func(void *opaque, QemuOpts *opts, Error **errp)
+>  {
+>      return qdev_device_help(opts);
+> @@ -2948,6 +2990,7 @@ void qemu_init(int argc, char **argv, char **envp)
+>      qemu_add_opts(&qemu_icount_opts);
+>      qemu_add_opts(&qemu_semihosting_config_opts);
+>      qemu_add_opts(&qemu_fw_cfg_opts);
+> +    qemu_add_opts(&qemu_acpidefault_opts);
+>      module_call_init(MODULE_INIT_OPTS);
+>  
+>      runstate_init();
+> @@ -3490,6 +3533,13 @@ void qemu_init(int argc, char **argv, char **envp)
+>                      exit(1);
+>                  }
+>                  break;
+> +            case QEMU_OPTION_acpidefault:
+> +                opts = qemu_opts_parse_noisily(qemu_find_opts("acpidefault"),
+> +                                               optarg, false);
+> +                if (opts == NULL) {
+> +                    exit(1);
+> +                }
+> +                break;
+>              case QEMU_OPTION_preconfig:
+>                  preconfig_exit_requested = false;
+>                  break;
+> @@ -4387,6 +4437,11 @@ void qemu_init(int argc, char **argv, char **envp)
+>      qemu_opts_foreach(qemu_find_opts("fw_cfg"),
+>                        parse_fw_cfg, fw_cfg_find(), &error_fatal);
+>  
+> +     if (check_acpi_option(qemu_opts_find(qemu_find_opts("acpidefault"),
+> +                                         NULL)) < 0) {
+> +        exit(1);
+> +    }
+> +
+>      /* init USB devices */
+>      if (machine_usb(current_machine)) {
+>          if (foreach_device_config(DEV_USB, usb_parse) < 0)
+

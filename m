@@ -1,104 +1,89 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2020461lfb;
-        Thu, 7 May 2020 07:32:40 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIV0N+H0EXzerxKmv5g2Rnuv9jFNtERYk0reqLaVFbalw39yYx0UEWI9C5Z9fjAYXj9xvNY
-X-Received: by 2002:a37:c08:: with SMTP id 8mr14720706qkm.47.1588861959962;
-        Thu, 07 May 2020 07:32:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588861959; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4692796lfb;
+        Tue, 8 Dec 2020 22:59:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxlbDsBkgRRrSfeFx1YQgjsgGX6wJc+NtMm6CVaPScYp/8vCRsshZp2QZClNxlTxMEMfaDv
+X-Received: by 2002:a25:8b89:: with SMTP id j9mr1592458ybl.302.1607497145955;
+        Tue, 08 Dec 2020 22:59:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607497145; cv=none;
         d=google.com; s=arc-20160816;
-        b=G/BxRYWGwOiATyzNqos445Ihbhqez4LK3quV9A5P3Q8nUupEMztYuhABmKyFIwiTOo
-         7/EcH3yIE5seEYyHuxF6uT/ywrz/JNGGjGFb8hTRJPNVyJ1WGewGs9wZjF5PXvbvHHf9
-         ZwdRtLN9xGxFqhoetrwjyXen3e7Howllbq2V+5UAWBFvtIiIU0WV7mRPLSzV7HjdMk+c
-         GwfNsBNTfLYwxt5RxTqNJaGIEqt3mttVcWTREyKr6gK6qPv6mkRu1ijeSKMty0ICJaHm
-         oq5Bstfy011UJk31usz4k4a/ugAcvugUoy8tg1LpscTDj6SGbvIYaVCNK/lJJoL9TtZb
-         nP3g==
+        b=E5PkBR3ZYBLaVRyJp05b/2aS5J4zrREmRUK6l1QckUhkw53NuWBNMBLBjdLhhbtA1s
+         yXIb+jc6TpT2XzAAURpB6ogXqxyzO1hKdUcSbrvtPPIu9hCp3+GonVHXeGwJFteARCPR
+         2b8ohWky969qJf1Y/W6YDKQbXpR3otrpz4km6JDxrXiC9Xgm2fZ0/cHnGF7gDFZETjRl
+         A8a+mICXUxbiKGzy9YKlYgW49kuzDF7jNucrdbCMTIftSY4qYuDKdMqkDpQFTz73Q+y7
+         n5cDwBbbuqW0FFPiIGw7sJpixVfu5AhfesCF8CwE3PGa5YARagXr0Guee4nT+FbD71pc
+         pPAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=kJBIOjg1/vpKO3dXS6/GfKGaHw8J1OOw7+Moht2OEPE=;
-        b=iBEPfhasSD1jUAUoZKoJgY8flayt9gqW84LJfNYd9L8zhlOZnYMnBhz9ID8/EcjDPD
-         8bVl1UBNDY48S7xkVTZh5WAgmuMCbVDYiarEiyrS9nJ7uFiL1F2OOzAu7W1q9h85jQfI
-         y3p4Fx3gd/bF9CftXD4AVv2F5th8aReYuMaA0OX1EWyfs3ujUHf6RWbDBu+P9V+Qd5am
-         dYSQd3cClqP4kAELb1cDHXH/lsbq+EI4neJaea2UscFvQbr4JsR7ehPZSYtR8aEg4fkF
-         g6liS8oU4UP8gXQi62p3BLzpPOGIrCHaqfEYyQCB0xjYmkR4Ub5r8U2FjpdRPMRuRPak
-         bcJQ==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=yuQEycw51l23nV9/rEd6xzlonmrKyPBPn64zUwqPUJE=;
+        b=HDhrgxjnYMll0kqRGcY0qhbEru6I2PiHlSR30JzkKFQ2OmMjhM21xWRuQf0JDGjhsZ
+         +jeECepJRagtJUdoxOBiRpCinSiXToxHlUy3v8IdwLCDI+u4bdaLyhJMVpBq03PzgPe1
+         WJjs0WZVxj7d5HkPzwSBU600z6JvZ8onYlYhO4Ruk4VTVm4mDxvfxaLqMYrLJf6ixm24
+         S3+Q3AEPIjI5uAvyRK6G6sxSUTGyQ1w00Q8cl1Z1IYIz6EZSenvAVf1hKjvgmKCWtjVN
+         sOxtV4o31fgsvValu/7C1SXEfaGSjjWH/gQ1LsiTtWMQntm+0ID0Vc/nyBf4g0p829O0
+         ZiEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Se9k//S0";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id n4si2967090qkg.96.2020.05.07.07.32.39
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f21si894118ybg.275.2020.12.08.22.59.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 May 2020 07:32:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Tue, 08 Dec 2020 22:59:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Se9k//S0";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60152 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42902 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWhZn-0000Ce-Ct
-	for alex.bennee@linaro.org; Thu, 07 May 2020 10:32:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44224)
+	id 1kmtRJ-0002Fe-AC
+	for alex.bennee@linaro.org; Wed, 09 Dec 2020 01:59:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jWhZb-0000C7-9u
- for qemu-arm@nongnu.org; Thu, 07 May 2020 10:32:27 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:25231
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jWhZY-0006GG-Dj
- for qemu-arm@nongnu.org; Thu, 07 May 2020 10:32:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588861943;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=kJBIOjg1/vpKO3dXS6/GfKGaHw8J1OOw7+Moht2OEPE=;
- b=Se9k//S0utlNNGGUhqJB2SXce0yRNmZrF/jaReEaztWMMUgSXfOlkkc9OtR82vTMUwSGgy
- Q5AbfzC9yurX5YLd0CqukVXfb+43nmH6MvJ91UGz870UHal42uoy3E/Ssl6iDbiFj2isGD
- CSZjgmmBR1yJMKdsgL07wnvK11qTwCk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-387-Lm2wdatrN8ey0lwBs9uTUQ-1; Thu, 07 May 2020 10:32:16 -0400
-X-MC-Unique: Lm2wdatrN8ey0lwBs9uTUQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A98D6A0BD9;
- Thu,  7 May 2020 14:32:14 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-214.ams2.redhat.com [10.36.114.214])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 418B7707BA;
- Thu,  7 May 2020 14:32:04 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org,
- bbhushan2@marvell.com, peterx@redhat.com, armbru@redhat.com
-Subject: [PATCH 0/5] VIRTIO-IOMMU probe request support and MSI bypass on ARM
-Date: Thu,  7 May 2020 16:31:56 +0200
-Message-Id: <20200507143201.31080-1-eric.auger@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kmtR8-0002FT-2g; Wed, 09 Dec 2020 01:58:54 -0500
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2184)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kmtR5-0001mj-1h; Wed, 09 Dec 2020 01:58:53 -0500
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.55])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4CrSYN5DNSz5245;
+ Wed,  9 Dec 2020 14:58:00 +0800 (CST)
+Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
+ DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Wed, 9 Dec 2020 14:58:41 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.162]) by
+ dggemm422-hub.china.huawei.com ([169.254.138.104]) with mapi id
+ 14.03.0487.000; Wed, 9 Dec 2020 14:58:35 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: zhukeqian <zhukeqian1@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Igor Mammedov <imammedo@redhat.com>, "Eduardo
+ Habkost" <ehabkost@redhat.com>
+Subject: RE: [PATCH] bugfix: hostmem: Free host_nodes list right after visited
+Thread-Topic: [PATCH] bugfix: hostmem: Free host_nodes list right after visited
+Thread-Index: AQHWzdb2bpPhpoOZ/kejtTT+18xBT6nuSzDg
+Date: Wed, 9 Dec 2020 06:58:35 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83BADE9F8@dggemm531-mbx.china.huawei.com>
+References: <20201209025648.23068-1-zhukeqian1@huawei.com>
+In-Reply-To: <20201209025648.23068-1-zhukeqian1@huawei.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.185.149]
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/07 00:55:34
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,56 +96,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: mst@redhat.com
+Cc: "Chenzhendong \(alex\)" <alex.chen@huawei.com>,
+ "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IOfeHOJqA5EB
+X-TUID: QeRE3j5e8OtE
 
-By default the virtio-iommu translates MSI transactions. This
-behavior is inherited from ARM SMMU. However the virt machine
-code knows where the MSI doorbells are so we can easily
-declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
-setting the guest iommu subsystem will not need to map MSIs.
-This setup will simplify VFIO integration.
+> -----Original Message-----
+> From: zhukeqian
+> Sent: Wednesday, December 9, 2020 10:57 AM
+> To: Peter Maydell <peter.maydell@linaro.org>; Igor Mammedov
+> <imammedo@redhat.com>; Eduardo Habkost <ehabkost@redhat.com>
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; Wanghaibin (D)
+> <wanghaibin.wang@huawei.com>; Chenqun (kuhn)
+> <kuhn.chenqun@huawei.com>; Chenzhendong (alex)
+> <alex.chen@huawei.com>; zhukeqian <zhukeqian1@huawei.com>
+> Subject: [PATCH] bugfix: hostmem: Free host_nodes list right after visite=
+d
+>=20
+> In host_memory_backend_get_host_nodes, we build host_nodes list and
+> output it to v (a StringOutputVisitor) but forget to free the list. This =
+fixes the
+> memory leak.
+>=20
+> The memory leak stack:
+>=20
+> =3D=3Dqemu-kvm=3D=3D209357=3D=3DERROR: LeakSanitizer: detected memory lea=
+ks Direct
+> leak of 32 byte(s) in 2 object(s) allocated from:
+>   #0 0xfffe430e3393 in __interceptor_calloc
+> (/lib64/libasan.so.4+0xd3393)  ??:?
+>   #1 0xfffe41d58b9b in g_malloc0 (/lib64/libglib-2.0.so.0+0x58b9b)  ??:?
+>   #2 0xaaac0cdb6e43 (/usr/libexec/qemu-kvm+0xe16e43)
+> backends/hostmem.c:94
+>   #3 0xaaac0d2edf83 (/usr/libexec/qemu-kvm+0x134df83) qom/object.c:1478
+>   #4 0xaaac0c976513 (/usr/libexec/qemu-kvm+0x9d6513)
+> hw/core/machine-qmp-cmds.c:312
+>   #5 0xaaac0d2e980b (/usr/libexec/qemu-kvm+0x134980b) qom/object.c:1001
+>   #6 0xaaac0c97779b (/usr/libexec/qemu-kvm+0x9d779b)
+> hw/core/machine-qmp-cmds.c:328 (discriminator 1)
+>   #7 0xaaac0d26ed3f (/usr/libexec/qemu-kvm+0x12ced3f)
+> qapi/qapi-commands-machine.c:327
+>   #8 0xaaac0d43d647 (/usr/libexec/qemu-kvm+0x149d647)
+> qapi/qmp-dispatch.c:147
+>   #9 0xaaac0d21f74b (/usr/libexec/qemu-kvm+0x127f74b) monitor/qmp.c:120
+>   #10 0xaaac0d22074b (/usr/libexec/qemu-kvm+0x128074b)
+> monitor/qmp.c:209 (discriminator 4)
+>   #11 0xaaac0d4daefb (/usr/libexec/qemu-kvm+0x153aefb) util/async.c:117
+>   #12 0xaaac0d4e30fb (/usr/libexec/qemu-kvm+0x15430fb)
+> util/aio-posix.c:459
+>   #13 0xaaac0d4dac8f (/usr/libexec/qemu-kvm+0x153ac8f) util/async.c:268
+>   #14 0xfffe41d52a6b in g_main_context_dispatch
+> (/lib64/libglib-2.0.so.0+0x52a6b)  ??:?
+>   #15 0xaaac0d4e0e97 (/usr/libexec/qemu-kvm+0x1540e97)
+> util/main-loop.c:218
+>   #16 0xaaac0cd9bfa7 (/usr/libexec/qemu-kvm+0xdfbfa7)  vl.c:1791
+>   #17 0xaaac0c823bc3 (/usr/libexec/qemu-kvm+0x883bc3)  vl.c:4473
+>   #18 0xfffe40ab3ebf in __libc_start_main (/lib64/libc.so.6+0x23ebf)  ??:=
+?
+>   #19 0xaaac0c82ed5f (/usr/libexec/qemu-kvm+0x88ed5f)  ??:?
+> SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
+>=20
+> Fixes: 4cf1b76bf1e2 (hostmem: add properties for NUMA memory policy)
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> ---
 
-In this series, the ITS doorbell is declared as an MSI region to
-be bypassed by the VIRTIO-IOMMU.
+Tested-by: Chen Qun <kuhn.chenqun@huawei.com>
 
-This paves the way to the x86 integration where the MSI region
-[0xFEE00000,0xFEEFFFFF] will be exposed by q35 machine. However
-this is not part of this series.
+By the way, the bug detailed stack is as follows:
+ Direct leak of 32 byte(s) in 2 object(s) allocated from:
+    #0 0xfffda30b3393 in __interceptor_calloc (/usr/lib64/libasan.so.4+0xd3=
+393)
+    #1 0xfffda1d28b9b in g_malloc0 (/usr/lib64/libglib-2.0.so.0+0x58b9b)
+    #2 0xaaab05ca6e43 in host_memory_backend_get_host_nodes backends/hostme=
+m.c:94
+    #3 0xaaab061ddf83 in object_property_get_uint16List qom/object.c:1478
+    #4 0xaaab05866513 in query_memdev hw/core/machine-qmp-cmds.c:312
+    #5 0xaaab061d980b in do_object_child_foreach qom/object.c:1001
+    #6 0xaaab0586779b in qmp_query_memdev hw/core/machine-qmp-cmds.c:328
+    #7 0xaaab0615ed3f in qmp_marshal_query_memdev qapi/qapi-commands-machin=
+e.c:327
+    #8 0xaaab0632d647 in do_qmp_dispatch qapi/qmp-dispatch.c:147
+    #9 0xaaab0632d647 in qmp_dispatch qapi/qmp-dispatch.c:190
+    #10 0xaaab0610f74b in monitor_qmp_dispatch monitor/qmp.c:120
+    #11 0xaaab0611074b in monitor_qmp_bh_dispatcher monitor/qmp.c:209
+    #12 0xaaab063caefb in aio_bh_poll util/async.c:117
+    #13 0xaaab063d30fb in aio_dispatch util/aio-posix.c:459
+    #14 0xaaab063cac8f in aio_ctx_dispatch util/async.c:268
+    #15 0xfffda1d22a6b in g_main_context_dispatch (/usr/lib64/libglib-2.0.s=
+o.0+0x52a6b)
+    #16 0xaaab063d0e97 in glib_pollfds_poll util/main-loop.c:218
+    #17 0xaaab063d0e97 in os_host_main_loop_wait util/main-loop.c:241
+    #18 0xaaab063d0e97 in main_loop_wait util/main-loop.c:517
+    #19 0xaaab05c8bfa7 in main_loop /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:17=
+91
+    #20 0xaaab05713bc3 in main /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:4473
+    #21 0xfffda0a83ebf in __libc_start_main (/usr/lib64/libc.so.6+0x23ebf)
+    #22 0xaaab0571ed5f  (aarch64-softmmu/qemu-system-aarch64+0x88ed5f)
 
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/v5.0.0-virtio-iommu-msi-bypass-v1
-
-History:
-- Most of those patches were respinned from
-  [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
-  except the last one which is new
+ SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
 
 
-Eric Auger (5):
-  qdev: Introduce DEFINE_PROP_RESERVED_REGION
-  virtio-iommu: Implement RESV_MEM probe request
-  virtio-iommu: Handle reserved regions in the translation process
-  virtio-iommu-pci: Add array of Interval properties
-  hw/arm/virt: Let the virtio-iommu bypass MSIs
-
- include/exec/memory.h            |   6 ++
- include/hw/qdev-properties.h     |   3 +
- include/hw/virtio/virtio-iommu.h |   2 +
- include/qemu/typedefs.h          |   1 +
- hw/arm/virt.c                    |   5 ++
- hw/core/qdev-properties.c        |  89 +++++++++++++++++++++++++
- hw/virtio/virtio-iommu-pci.c     |   3 +
- hw/virtio/virtio-iommu.c         | 109 ++++++++++++++++++++++++++++++-
- hw/virtio/trace-events           |   1 +
- 9 files changed, 217 insertions(+), 2 deletions(-)
-
---=20
-2.20.1
+>  backends/hostmem.c | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/backends/hostmem.c b/backends/hostmem.c index
+> 4bde00e8e7..9f9ac95edd 100644
+> --- a/backends/hostmem.c
+> +++ b/backends/hostmem.c
+> @@ -105,6 +105,7 @@ host_memory_backend_get_host_nodes(Object *obj,
+> Visitor *v, const char *name,
+>=20
+>  ret:
+>      visit_type_uint16List(v, name, &host_nodes, errp);
+> +    qapi_free_uint16List(host_nodes);
+>  }
+>=20
+>  static void
+> --
+> 2.23.0
 

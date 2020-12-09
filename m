@@ -1,67 +1,69 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4734209lfb;
-        Wed, 9 Dec 2020 00:10:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy5PoZaaOnLn/70Jo8js6IlfQln9MxXz/cwMWJruebGX4h2fpbd4AW/OQJb92TQ9ygMMkQm
-X-Received: by 2002:a25:2cd6:: with SMTP id s205mr1842392ybs.279.1607501437011;
-        Wed, 09 Dec 2020 00:10:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607501437; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4734333lfb;
+        Wed, 9 Dec 2020 00:10:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyXlUqnEuiHoWkV4baq/n6L4n1GZBEnXKbctDbLruaZPk5LAISj/CGtr4V1C9snoW5NukAq
+X-Received: by 2002:a25:3b8e:: with SMTP id i136mr1922873yba.487.1607501443112;
+        Wed, 09 Dec 2020 00:10:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607501442; cv=none;
         d=google.com; s=arc-20160816;
-        b=0cNrcoRSL0U84db4GCe3YzIywGg7nfAzyzoHBP45ZQHeS3pbWMlUo/fDVL7wl1WOQO
-         DFjo8NVBrXXRyFHxF5uR+5BfhG+/aikgCapZe3MzcKhxXV17PQSmIfJmabq9DqBdfh1V
-         S88k2Md9bP6NmxuPB56MoSduz309mhmHheGUiyWWY4fz6vLeKNG1OhKMAiu6XEwNFCs6
-         /OFNeGwrA2j9GSP4sBeqhAP5SSe7hsOmr7nrYn2P1ndjyFMsZI+fDdfM7DSd9KAM6VzQ
-         XtxsgBH4iIjgSQgHrDS4PWWu/ulxP3vSsXxDIbdeb9jSTS/3zwJVNz3A4h4Q18KFq06I
-         unDg==
+        b=RqHldkeG6/Ewy86+GjC86lXrUV7JVcmyCI8c/IID3rz2DoVnS+lhWYt49UptmMrFsG
+         ZvjGPLBRrfh8FJvvmSQUxfOgL9/59fbKfLUwpVV/Ktxo7dTPqcM+tFtd1bTpg1oq+ZOE
+         B/KzKg8ImbwZHHJQnp2NR4tAakXr8q+M912TVg6G69MTM2t+RcsihV91qHQI9BFrB8Bk
+         qlCmlfkqZtbI8Q04gc2gD4V1OJSNj7mkmHWM7/x8DGZ5SrRo9LlJUEXLEK4wcCCkgg5B
+         oArbHKrNqLWq+zW4xCIBCJ2sWjmMjl0oEV+WYX71gGcjk3m12RpU8bYQpPu1LYpqH2Cc
+         lKvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=84TzfBm3ASAybHx+A4LJxsvh1hcL7hENSN4OTnpQQDQ=;
-        b=Fmlb6jfIEf+PL3Rab4vJN1GNvHEFBskDLUXw+/C3gXygwqBMRu6JWk7tctmL36QRja
-         PbrRhyoVfaO/FJRcV358P42zGSAxNB9L+VXXG6kyh1W9RQ5Uxm2n8p1PSBvsW3nIYiA+
-         l2SYXYMplTIH5I6otM/Nho50vuTssChb/3w8K6qBlvxMKfXGo44OkS6Qh2flHdOizr9+
-         tVp5a/Z5GoHPbnJBid/SEa90e7vn1C42OMrUBfyLmMHzh0sAlrqsuZYtMLcCh2Zb92Yh
-         cfL/eQZVEO45+08UbWYDFX5Z5g03jfRxzbXaouelGGJf375SSwAs/W4hNYwMqlgnG6qY
-         3zAw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=dDMdyJ88wgwNXqHkLuw5KGq5Ud0jmhDLtFd5/wWfmRk=;
+        b=uzGOrlklbLYqZT0nwtIFlenHqygcU8IfrbFK+D6xZrAd3QPZgzBqdCiRd0tbvyTKNg
+         yCfXZEUnpMb9RwiOdgyjacxel3qSp2JoSq38ua6g0qDYf5GOsgvTykzBRW95V0J5vzoH
+         rrzIYwYMd9y827pHlU1gyCqEh5Z7hfRpcbgP1duQRUyg1FNMdDFlDZ2GdVr6WXhk2M0B
+         lmGIk2MGLurp03fsmJbUI5rLkFGS9wJ32t0F16I3EGsHuIATrxojWjP4Y7RkVoK0mY+y
+         vbCoUEeX3NpADspFB1OZZf3H08omGy6qVxyzPtUFargs9QX8ceoQLW5/R6w56VMy8hKO
+         0fVw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u206si976937ybb.13.2020.12.09.00.10.36
+        by mx.google.com with ESMTPS id e72si1208339ybb.173.2020.12.09.00.10.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Dec 2020 00:10:37 -0800 (PST)
+        Wed, 09 Dec 2020 00:10:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47716 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47988 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kmuYW-0003Oo-Cn
-	for alex.bennee@linaro.org; Wed, 09 Dec 2020 03:10:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41532)
+	id 1kmuYc-0003W3-9S
+	for alex.bennee@linaro.org; Wed, 09 Dec 2020 03:10:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kmuYJ-0003O3-HH; Wed, 09 Dec 2020 03:10:23 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2471)
+ id 1kmuYO-0003Tm-5Y; Wed, 09 Dec 2020 03:10:28 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2991)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kmuYH-0006ve-JJ; Wed, 09 Dec 2020 03:10:23 -0500
+ id 1kmuYM-00070A-58; Wed, 09 Dec 2020 03:10:27 -0500
 Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CrV7t68HyzM23Z;
- Wed,  9 Dec 2020 16:09:30 +0800 (CST)
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CrV8G2Nslzhpmv;
+ Wed,  9 Dec 2020 16:09:50 +0800 (CST)
 Received: from DESKTOP-7FEPK9S.china.huawei.com (10.174.187.219) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 9 Dec 2020 16:10:02 +0800
+ 14.3.487.0; Wed, 9 Dec 2020 16:10:15 +0800
 From: Shenming Lu <lushenming@huawei.com>
 To: Alex Williamson <alex.williamson@redhat.com>, Kirti Wankhede
  <kwankhede@nvidia.com>, Cornelia Huck <cohuck@redhat.com>, "Dr . David Alan
  Gilbert" <dgilbert@redhat.com>, Eric Auger <eric.auger@redhat.com>,
  <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [RFC PATCH v2 0/3] vfio: Some fixes and optimizations for VFIO
- migration
-Date: Wed, 9 Dec 2020 16:09:16 +0800
-Message-ID: <20201209080919.156-1-lushenming@huawei.com>
+Subject: [RFC PATCH v2 1/3] vfio: Move the saving of the config space to the
+ right place in VFIO migration
+Date: Wed, 9 Dec 2020 16:09:17 +0800
+Message-ID: <20201209080919.156-2-lushenming@huawei.com>
 X-Mailer: git-send-email 2.27.0.windows.1
+In-Reply-To: <20201209080919.156-1-lushenming@huawei.com>
+References: <20201209080919.156-1-lushenming@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -92,32 +94,83 @@ Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
  qemu-arm@nongnu.org, yuzenghui@huawei.com, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rxg8JUKUTpfK
+X-TUID: M6oQpWYt57Wl
 
-This patch set includes two fixes and one optimization for VFIO migration
-as blew:
-Patch 1-2:
-- Fix two ordering problems in migration.
+On ARM64 the VFIO SET_IRQS ioctl is dependent on the VM interrupt
+setup, if the restoring of the VFIO PCI device config space is
+before the VGIC, an error might occur in the kernel.
 
-Patch 3:
-- Optimize the enabling process of the MSI-X vectors in migration.
+So we move the saving of the config space to the non-iterable
+process, so that it will be called after the VGIC according to
+their priorities.
 
-Thanks,
-Shenming
+As for the possible dependence of the device specific migration
+data on it's config space, we can let the vendor driver to
+include any config info it needs in its own data stream.
+(Should we note this in the header file linux-headers/linux/vfio.h?)
 
-Shenming Lu (3):
-  vfio: Move the saving of the config space to the right place in VFIO
-    migration
-  vfio: Set the priority of the VFIO VM state change handler explicitly
-  vfio: Avoid disabling and enabling vectors repeatedly in VFIO
-    migration
+Signed-off-by: Shenming Lu <lushenming@huawei.com>
+---
+ hw/vfio/migration.c | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
 
- hw/pci/msix.c         | 17 +++++++++++++++++
- hw/vfio/migration.c   | 28 +++++++++++++++++-----------
- hw/vfio/pci.c         | 10 ++++++++--
- include/hw/pci/msix.h |  2 ++
- 4 files changed, 44 insertions(+), 13 deletions(-)
-
+diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+index 00daa50ed8..3b9de1353a 100644
+--- a/hw/vfio/migration.c
++++ b/hw/vfio/migration.c
+@@ -575,11 +575,6 @@ static int vfio_save_complete_precopy(QEMUFile *f, void *opaque)
+         return ret;
+     }
+ 
+-    ret = vfio_save_device_config_state(f, opaque);
+-    if (ret) {
+-        return ret;
+-    }
+-
+     ret = vfio_update_pending(vbasedev);
+     if (ret) {
+         return ret;
+@@ -620,6 +615,19 @@ static int vfio_save_complete_precopy(QEMUFile *f, void *opaque)
+     return ret;
+ }
+ 
++static void vfio_save_state(QEMUFile *f, void *opaque)
++{
++    VFIODevice *vbasedev = opaque;
++    int ret;
++
++    /* The device specific data is migrated in the iterable process. */
++    ret = vfio_save_device_config_state(f, opaque);
++    if (ret) {
++        error_report("%s: Failed to save device config space",
++                     vbasedev->name);
++    }
++}
++
+ static int vfio_load_setup(QEMUFile *f, void *opaque)
+ {
+     VFIODevice *vbasedev = opaque;
+@@ -670,11 +678,7 @@ static int vfio_load_state(QEMUFile *f, void *opaque, int version_id)
+         switch (data) {
+         case VFIO_MIG_FLAG_DEV_CONFIG_STATE:
+         {
+-            ret = vfio_load_device_config_state(f, opaque);
+-            if (ret) {
+-                return ret;
+-            }
+-            break;
++            return vfio_load_device_config_state(f, opaque);
+         }
+         case VFIO_MIG_FLAG_DEV_SETUP_STATE:
+         {
+@@ -720,6 +724,7 @@ static SaveVMHandlers savevm_vfio_handlers = {
+     .save_live_pending = vfio_save_pending,
+     .save_live_iterate = vfio_save_iterate,
+     .save_live_complete_precopy = vfio_save_complete_precopy,
++    .save_state = vfio_save_state,
+     .load_setup = vfio_load_setup,
+     .load_cleanup = vfio_load_cleanup,
+     .load_state = vfio_load_state,
 -- 
 2.19.1
 

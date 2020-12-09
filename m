@@ -1,188 +1,144 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3825072lfa;
-        Mon, 2 Nov 2020 03:03:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzMch/t2pVuFie12rwqWFeLa6zr7+Fnji/vF2YATGScfCBEjaIkF7yDYmCM58cYq/6acgLk
-X-Received: by 2002:a37:5904:: with SMTP id n4mr13940761qkb.364.1604315015097;
-        Mon, 02 Nov 2020 03:03:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604315015; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4567667lfb;
+        Tue, 8 Dec 2020 18:57:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxWhvPx0Pnw/oWRUVCWXhyY2UrboNz6WfzyHWnkNbkLCGXPuzqXlBfQBTWoHATM/1oodcXv
+X-Received: by 2002:a05:6902:20a:: with SMTP id j10mr648199ybs.293.1607482649441;
+        Tue, 08 Dec 2020 18:57:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607482649; cv=none;
         d=google.com; s=arc-20160816;
-        b=HXIFB0OJDigouggfKDmwjVl2TyDt6nrEZXcAgjuls9ELG8TJ4WrTanI/4Qi13clEah
-         eQp/R9J1URjBUz0B+EaRHBtM0e3YXO3MuIH2pms5KJTb7mT+Cc0tr8qYnbLadNRPqYaD
-         pD4epDqO80cTe9rumMpbkiz4wCq4Yrkhf2RBajEH3scshO3Ch6gc7ou4vvijaiW10Hqa
-         E2rR+jE4YCLVKvjYDtf5pzkpIrTZdMs4anx4M9c1lWghJ2IzjnOSicGf4rQDuOQXKYTw
-         S2qJaN34Az+8myhaujdZrz9pMzbs+8vBozlSWEAPehD2PvzprDrWYHNWJS/4MkOqTuN0
-         bR2g==
+        b=Ze3SamXMY0MnSpMUZffzr0RoLRddEKVciOSyIQkRiCSpcTjykCYfmUrr6ag36VTEpw
+         pKYQW1IvVznwPnPPZ4UMd+al6mEt+98N5APcIcMuT0FCZuPE8iCqbdzHGXsuFGVhtBBX
+         57MERW8/Rgqo3mR8sjJi8oECQXTVfHP+vk33O9rWudNAhv025ubyXTV1LPtsD0rXOIX3
+         XwH6cKVKr255sEctGtBLndMYGEKF5v/pzkfw4laIKRTvLtNAn+bdITSXjAR4veECCjei
+         dlPej4sUsLD1MLLkcTnyyNqkyoMb33E3pvvs9NXVyPz3+hTb+mqF4j7H5QDer/4+nBbM
+         WG8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=/O6whqyZGzqhwEdvakL+z1MDAcOObLvONikcTRy/0XQ=;
-        b=0VIoOdLCLLZdqtFvizgiyDjoAeEVDRh50X0V1ujNmsHyQoCYKSNGxQVDkSWM2jhhiO
-         OHmpJnMefLESe74dd2mV1AAWdRwnYhQXqURvtEWEVha7bvAxb+EhNUNNbB1tNnbCwhtA
-         6lsmbUlDCZvDJXqdKGHc/303C5+9Fyy4foiI95H6aEvtYNHQ1W2lPBNHNA8Ms5RwECNu
-         ScoCUJigB1OS+zWSl6/Z9qQ7/arVxX4MKR6Yr/4tQ0RYnUcePygsIycs3B+avsTjInhq
-         o3HNsDhlu4NekldyNyIyY+tldyQSOubZxjchDMl5erLUNVC8iDFIR4GMkEe9D7MpNLNh
-         Oz2Q==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=J2z9Gk4CCpSkRNlPczFduG0xvLJTihuwXtdSxJyNrMw=;
+        b=L4DbK/D75axmgKbspoTAQAcqcahqZX2ex+ITbHZo0xjMnlSqwKfP6HqH6hHTHbZl/W
+         TLCgrVIYN9QDm0a2wwe0v5fVvuuhvkcV+CwgUF+WPYxztGrgx0aX48iHpcEYznJIGeYN
+         e0iaI84N85BTkfhZaEVLJvyhb/RPxj0h1DDMmkv7x+HxMmyWsx/jOaR1ks85GwcilVTg
+         ELEiNvd+LvNNvO72kz4PeVHHl2MNlHqhIdXsuUOlRnxM7zYveqPOFmF+gWfr9u1WD0MD
+         9mge+BAt5j+RccOoNNCV3ZsIiVnBaj/VUbBibiASL2eTancRwtKdwfzAY2/Hw5liZp2x
+         UAWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10si8820921qtm.5.2020.11.02.03.03.34
+        by mx.google.com with ESMTPS id x77si421466ybe.306.2020.12.08.18.57.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 03:03:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Dec 2020 18:57:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37462 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZXcc-0006Ug-HN
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 06:03:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38200)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kmpfU-0000c7-O2
+	for alex.bennee@linaro.org; Tue, 08 Dec 2020 21:57:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kZXXR-0007XL-9k; Mon, 02 Nov 2020 05:58:13 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:39570
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1kZXXP-0006mw-LW; Mon, 02 Nov 2020 05:58:12 -0500
-Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 46BA66053E;
- Mon,  2 Nov 2020 11:58:05 +0100 (CET)
-From: remi.denis.courmont@huawei.com
-To: qemu-arm@nongnu.org
-Subject: [PATCH 12/14] target/arm: set HPFAR_EL2.NS on secure stage 2 faults
-Date: Mon,  2 Nov 2020 12:58:00 +0200
-Message-Id: <20201102105802.39332-12-remi.denis.courmont@huawei.com>
-X-Mailer: git-send-email 2.29.1
-In-Reply-To: <2172054.ElGaqSPkdT@basile.remlab.net>
-References: <2172054.ElGaqSPkdT@basile.remlab.net>
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kmpfH-0000bw-JV; Tue, 08 Dec 2020 21:57:15 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2990)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kmpfF-0002ka-2U; Tue, 08 Dec 2020 21:57:15 -0500
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CrMBg6Wc6zhpdK;
+ Wed,  9 Dec 2020 10:56:27 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
+ DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 9 Dec 2020 10:56:50 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
+ <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PATCH] bugfix: hostmem: Free host_nodes list right after visited
+Date: Wed, 9 Dec 2020 10:56:48 +0800
+Message-ID: <20201209025648.23068-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 05:57:15
-X-ACL-Warn: Detected OS   = ???
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.37]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lQLxt+A9RWQK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, alex.chen@huawei.com, qemu-arm@nongnu.org,
+ kuhn.chenqun@huawei.com, wanghaibin.wang@huawei.com,
+ Keqian Zhu <zhukeqian1@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DMAJcfA2dge/
 
-From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+In host_memory_backend_get_host_nodes, we build host_nodes
+list and output it to v (a StringOutputVisitor) but forget
+to free the list. This fixes the memory leak.
 
-Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+The memory leak stack:
+
+==qemu-kvm==209357==ERROR: LeakSanitizer: detected memory leaks
+Direct leak of 32 byte(s) in 2 object(s) allocated from:
+  #0 0xfffe430e3393 in __interceptor_calloc (/lib64/libasan.so.4+0xd3393)  ??:?
+  #1 0xfffe41d58b9b in g_malloc0 (/lib64/libglib-2.0.so.0+0x58b9b)  ??:?
+  #2 0xaaac0cdb6e43 (/usr/libexec/qemu-kvm+0xe16e43)  backends/hostmem.c:94
+  #3 0xaaac0d2edf83 (/usr/libexec/qemu-kvm+0x134df83) qom/object.c:1478
+  #4 0xaaac0c976513 (/usr/libexec/qemu-kvm+0x9d6513)  hw/core/machine-qmp-cmds.c:312
+  #5 0xaaac0d2e980b (/usr/libexec/qemu-kvm+0x134980b) qom/object.c:1001
+  #6 0xaaac0c97779b (/usr/libexec/qemu-kvm+0x9d779b)  hw/core/machine-qmp-cmds.c:328 (discriminator 1)
+  #7 0xaaac0d26ed3f (/usr/libexec/qemu-kvm+0x12ced3f) qapi/qapi-commands-machine.c:327
+  #8 0xaaac0d43d647 (/usr/libexec/qemu-kvm+0x149d647) qapi/qmp-dispatch.c:147
+  #9 0xaaac0d21f74b (/usr/libexec/qemu-kvm+0x127f74b) monitor/qmp.c:120
+  #10 0xaaac0d22074b (/usr/libexec/qemu-kvm+0x128074b) monitor/qmp.c:209 (discriminator 4)
+  #11 0xaaac0d4daefb (/usr/libexec/qemu-kvm+0x153aefb) util/async.c:117
+  #12 0xaaac0d4e30fb (/usr/libexec/qemu-kvm+0x15430fb) util/aio-posix.c:459
+  #13 0xaaac0d4dac8f (/usr/libexec/qemu-kvm+0x153ac8f) util/async.c:268
+  #14 0xfffe41d52a6b in g_main_context_dispatch (/lib64/libglib-2.0.so.0+0x52a6b)  ??:?
+  #15 0xaaac0d4e0e97 (/usr/libexec/qemu-kvm+0x1540e97)  util/main-loop.c:218
+  #16 0xaaac0cd9bfa7 (/usr/libexec/qemu-kvm+0xdfbfa7)  vl.c:1791
+  #17 0xaaac0c823bc3 (/usr/libexec/qemu-kvm+0x883bc3)  vl.c:4473
+  #18 0xfffe40ab3ebf in __libc_start_main (/lib64/libc.so.6+0x23ebf)  ??:?
+  #19 0xaaac0c82ed5f (/usr/libexec/qemu-kvm+0x88ed5f)  ??:?
+SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
+
+Fixes: 4cf1b76bf1e2 (hostmem: add properties for NUMA memory policy)
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 ---
- target/arm/cpu.h        | 2 ++
- target/arm/helper.c     | 6 ++++++
- target/arm/internals.h  | 2 ++
- target/arm/tlb_helper.c | 3 +++
- 4 files changed, 13 insertions(+)
+ backends/hostmem.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a5ee7452d9..495acf2d0a 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1482,6 +1482,8 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define HCR_TWEDEN    (1ULL << 59)
- #define HCR_TWEDEL    MAKE_64BIT_MASK(60, 4)
+diff --git a/backends/hostmem.c b/backends/hostmem.c
+index 4bde00e8e7..9f9ac95edd 100644
+--- a/backends/hostmem.c
++++ b/backends/hostmem.c
+@@ -105,6 +105,7 @@ host_memory_backend_get_host_nodes(Object *obj, Visitor *v, const char *name,
  
-+#define HPFAR_NS      (1ULL << 63)
-+
- #define SCR_NS                (1U << 0)
- #define SCR_IRQ               (1U << 1)
- #define SCR_FIQ               (1U << 2)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a2bc6801e0..74fd759d48 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3447,6 +3447,9 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-                 target_el = 3;
-             } else {
-                 env->cp15.hpfar_el2 = extract64(fi.s2addr, 12, 47) << 4;
-+                if (fi.s1ns) {
-+                    env->cp15.hpfar_el2 |= HPFAR_NS;
-+                }
-                 target_el = 2;
-             }
-             take_exc = true;
-@@ -10453,6 +10456,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-             fi->s2addr = addr;
-             fi->stage2 = true;
-             fi->s1ptw = true;
-+            fi->s1ns = !*is_secure;
-             return ~0;
-         }
-         if ((arm_hcr_el2_eff(env) & HCR_PTW) && (cacheattrs.attrs & 0xf0) == 0) {
-@@ -10464,6 +10468,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-             fi->s2addr = addr;
-             fi->stage2 = true;
-             fi->s1ptw = true;
-+            fi->s1ns = !*is_secure;
-             return ~0;
-         }
-         addr = s2pa;
-@@ -11360,6 +11365,7 @@ do_fault:
-     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
-     fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_Stage2 ||
-                                mmu_idx == ARMMMUIdx_Stage2_S);
-+    fi->s1ns = mmu_idx == ARMMMUIdx_Stage2_S;
-     return true;
+ ret:
+     visit_type_uint16List(v, name, &host_nodes, errp);
++    qapi_free_uint16List(host_nodes);
  }
  
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index d53b0c22fe..188997c701 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -593,6 +593,7 @@ typedef enum ARMFaultType {
-  * @s2addr: Address that caused a fault at stage 2
-  * @stage2: True if we faulted at stage 2
-  * @s1ptw: True if we faulted at stage 2 while doing a stage 1 page-table walk
-+ * @s1ns: True if we faulted on a non-secure IPA while in secure state
-  * @ea: True if we should set the EA (external abort type) bit in syndrome
-  */
- typedef struct ARMMMUFaultInfo ARMMMUFaultInfo;
-@@ -603,6 +604,7 @@ struct ARMMMUFaultInfo {
-     int domain;
-     bool stage2;
-     bool s1ptw;
-+    bool s1ns;
-     bool ea;
- };
- 
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index b35dc8a011..450969a742 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -63,6 +63,9 @@ static void QEMU_NORETURN arm_deliver_fault(ARMCPU *cpu, vaddr addr,
-     if (fi->stage2) {
-         target_el = 2;
-         env->cp15.hpfar_el2 = extract64(fi->s2addr, 12, 47) << 4;
-+        if (fi->s1ns) {
-+            env->cp15.hpfar_el2 |= HPFAR_NS;
-+        }
-     }
-     same_el = (arm_current_el(env) == target_el);
- 
+ static void
 -- 
-2.29.1
+2.23.0
 

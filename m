@@ -1,191 +1,172 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp864836lfb;
-        Wed, 25 Nov 2020 13:36:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxBgNRfe9aWIziihV7WHj6URZnN2trHUAfYLVUFWY1TEzcE1/2N3kof65uvUdHLiQT6M1yu
-X-Received: by 2002:a17:90b:e0a:: with SMTP id ge10mr6559923pjb.211.1606340195771;
-        Wed, 25 Nov 2020 13:36:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606340195; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4913525lfb;
+        Wed, 9 Dec 2020 04:47:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw2/YtVut6dPzfk/0DU474q0VKXtwx6dPQjNHnRbf4kO13dAPx8FMR93r/m5Qdfl9oC7AW0
+X-Received: by 2002:a25:abab:: with SMTP id v40mr3347751ybi.156.1607518031401;
+        Wed, 09 Dec 2020 04:47:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607518031; cv=none;
         d=google.com; s=arc-20160816;
-        b=cMOq7yv40Vdm8hBo8sf1QPqgCUK7KcgvZuXwbFDdCZefz/HprxLLA4XRnA6BpH5xI5
-         nCv3K8UC2pC0jA8cmdk2Ir0hWRX1YGpkgXJV2q0da3Moo665hBIlH8M/DBhAVOzogeOX
-         6NKntfA/CNLVYegYRI++LyGDkTjl0zcU2Sdg+zVGRyCZ+RDzDRbQwvo0vS/GsV5ETKw3
-         R6sMUbGE8j9zzmPK6p+Ado/+NuqsZpI5Qmy33BsxK08dBOphmJmdzZzAdSCIsSRZgsDH
-         e4Z9tMQTLlHjhZrntiRfmkeq+V3C8/eMaMc6Xf/992N7edok9ol6MjExfN3/0bPLLcER
-         +zbg==
+        b=Sw8kGjWoG1r5wQF3u8iLjPTjHhkPcGf//GHLr4lw5Ed76M94BcqY7pxF8NMMZ8no6k
+         2+0vWNUSqbJQzlR3sP7EkX7pHlX57NbpCZI8f07qWY2plrM436fSJO8Z90GK9JA9BsUb
+         skWSS+DNaOk4Dq3QYXeRp4puzDdNhQmi/g7o8JtvagHqsVrW/Q0fPM/p8KdSsWFgOExR
+         OPtl3aGvrKMpbmBJVJiH5Bwo/aCOLrDN+boqyTCzc6hpF/yOsg4KP0NaWMBdp+S2hXpH
+         qqCYy/PhcfKQ6zHlAhNMfhyoBBo5SFJ1XG0mnZKohIzJC+wkHd2ZW+UL3X3Su550AJLP
+         //2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=Cayx0LMpRbGoW11vUGACsJCxYxfI6jR9yWeom47DT7w=;
-        b=dw4yn0b9of5TGNtkdVK/94Ib/IYTXvQUkk8OwwTuHHYcvIAvvz1cLZXiiny/UZQoo0
-         /LVbmZkpUW3z4cuAjITjItElRzLOCeMPKWPsZjW5wEwNPBOplkijmnWxsOoWfGuiHMBY
-         cMf+7KF4zKS1F0fwNzrVrUs72qgJT+5xAZa+PvuX4pD+enelb5T3dyaQfI0YenmIZjXZ
-         sofO5FydIs29dpeTjdCQtA3mJy6ujJ+W2G52TyHhYMyK8IQ5gcDttvm/hQaQ2mi9h/mu
-         4ygWPS2k5QTy/ZRvFxI0A3t13yvjzu4EEk2Fbdwcue86vTlvCkwVDEaOZDmMuR224apS
-         HJVA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=LD8H6CUKIPGaBEoQu/VjYMXArMC4gfoh7GTu0kHur6I=;
+        b=FqqrhXLhYQ7ovP7gsd9p+FbGxNf3q+rkWqMrJ9xQYtp311IsXv37Vo305G2ubT79Mk
+         nJP/t9RG0VhTsaro5MpOuLi5d3vLPH+qK+sv6bz+3zZfx0tePbuGDQZfqVVfc9P+ACdn
+         4C9BhPwIIHCwK83XSIZXa/2zsE1x9TiZPcXXCVdRebT6lx9MIwjzl4uwSv9SOX8WHSmm
+         48ERWEuu8KxYx/pjl6/PAwMmwTSh/Bez2RzIB9bAbJs80Lij/6RKr2z4FVAt9skpZeKl
+         vuCVlzLqura1DdtjzUQcnDhZ+FgsfsdxOWNPP0cJ1670ovVaYUBhRBZPVhb6Gv/qwkvI
+         vREQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=ooRBkaYO;
-       dkim=pass header.i=@keithp.com header.s=mail header.b="Pb/e9FqA";
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Return-Path: <keithp@keithp.com>
-Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id k14si3059726pgt.384.2020.11.25.13.36.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2020 13:36:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZmAQ6rSc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n124si1983873ybc.139.2020.12.09.04.47.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 09 Dec 2020 04:47:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=ooRBkaYO;
-       dkim=pass header.i=@keithp.com header.s=mail header.b="Pb/e9FqA";
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 165343F2E28B;
-	Wed, 25 Nov 2020 13:36:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1606340194; bh=Cw84Eb20GftlPfR2b4GGp2hGK6fNq0OdbxjdyxpyqIY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ooRBkaYO9o8cYqWlVPe7zarLUNe/qPPBr9F9qol7Z9CZEJf/Jd/5IDmi40qZsxPQT
-	 8Xc/eWdzqxQTF30byqcQ1Rj0VnQXex3xImTYQmMStdfIhJntiE2UT9EJjAFRhCdHda
-	 vBzt/MBRqlPpkTX7OCFm71wDXEl0XHHx+8qkxv6dok/xuzrwLOOHeYLFOznvbnQOa/
-	 2b8ElsS774lbT4pvmXSTa0/EDxKBytYwtZZqG0dtIufFzX8onnqblqYVpiXRJbAaMf
-	 Qb+736Q3Pbs8rpvmbb/RK7GsbLPEUtqJHR3qRFKchg30dhs3RWg5jGagsnUCkIN6+o
-	 y46nw3LuLtJIA==
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
-	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id 9-WVyI-M0toE; Wed, 25 Nov 2020 13:36:33 -0800 (PST)
-Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id D16493F2E28D;
-	Wed, 25 Nov 2020 13:36:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1606340191; bh=Cw84Eb20GftlPfR2b4GGp2hGK6fNq0OdbxjdyxpyqIY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Pb/e9FqAYFnbrb+spiZKTq66SzJZiP3ORQEPM1Le4kR4VD+JqkgVuoONdJUeG4c5O
-	 t2eFVVjMFC5EAoz3PEaSmwgkIfUrrbWLmBKn6uZjTrnWBCHM/814KmTiNOAFmmiDYc
-	 HFnPncBgfus8dAF61TOKmEiVOYJ+0LTEt3cvouMTaw+oSuPcY3uy8xD9EZG9U8jIYS
-	 2nR9zl7pDX3ECSKEafWCdtAx3/TpByY4LRGqwA/mGKo82CSCrNmMRWbWsQWST60zmu
-	 KF7OjtIcMwsqL85BAYxzjyvupwUaySVoexjbsTV15Njb3MG2xbVWgTanaGK77tBzVy
-	 PV9Nhi7f3dYxw==
-Received: by keithp.com (Postfix, from userid 1000)
-	id A9DE215821C6; Wed, 25 Nov 2020 13:36:31 -0800 (PST)
-From: Keith Packard <keithp@keithp.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Keith Packard <keithp@keithp.com>
-Subject: [PATCH 6/8] semihosting: Implement SYS_ELAPSED and SYS_TICKFREQ
-Date: Wed, 25 Nov 2020 13:36:15 -0800
-Message-Id: <20201125213617.2496935-7-keithp@keithp.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201125213617.2496935-1-keithp@keithp.com>
-References: <20201125213617.2496935-1-keithp@keithp.com>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZmAQ6rSc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51560 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kmysA-0002vC-Gn
+	for alex.bennee@linaro.org; Wed, 09 Dec 2020 07:47:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47874)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kmyrg-0002sy-Ea
+ for qemu-arm@nongnu.org; Wed, 09 Dec 2020 07:46:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21548)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kmyre-0002jS-UU
+ for qemu-arm@nongnu.org; Wed, 09 Dec 2020 07:46:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607517998;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LD8H6CUKIPGaBEoQu/VjYMXArMC4gfoh7GTu0kHur6I=;
+ b=ZmAQ6rSc8/o55yfavLBI/khyF/LoeEP2ysscOkGlh19yXa6/a+sc0/6tBsODGeQ8tLjpcS
+ wktBoVZvNFfMrIZXD56jBDk09m6S1VsFQNvyVbJCV+g/gsfVkTiskFI7ZraWo5M/oXczqH
+ HuCQtU7mdOkNyRFKsqjWr524OZC32Y0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-543-Hzqg_MwOPv6TC4Votw4ZxQ-1; Wed, 09 Dec 2020 07:46:33 -0500
+X-MC-Unique: Hzqg_MwOPv6TC4Votw4ZxQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DF11F1922057;
+ Wed,  9 Dec 2020 12:46:09 +0000 (UTC)
+Received: from gondolin (ovpn-113-135.ams2.redhat.com [10.36.113.135])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 74C827092B;
+ Wed,  9 Dec 2020 12:45:39 +0000 (UTC)
+Date: Wed, 9 Dec 2020 13:45:37 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Shenming Lu <lushenming@huawei.com>
+Subject: Re: [RFC PATCH v2 2/3] vfio: Set the priority of the VFIO VM state
+ change handler explicitly
+Message-ID: <20201209134537.5c7ab401.cohuck@redhat.com>
+In-Reply-To: <20201209080919.156-3-lushenming@huawei.com>
+References: <20201209080919.156-1-lushenming@huawei.com>
+ <20201209080919.156-3-lushenming@huawei.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: QEcR3Tv9SeRV
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ mst@redhat.com, qemu-devel@nongnu.org, Marc Zyngier <maz@kernel.org>,
+ Kirti Wankhede <kwankhede@nvidia.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, yuzenghui@huawei.com,
+ wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BeVfr5PHChjl
 
-These are part of Semihosting for AArch32 and AArch64 Release 2.0
+On Wed, 9 Dec 2020 16:09:18 +0800
+Shenming Lu <lushenming@huawei.com> wrote:
 
-Signed-off-by: Keith Packard <keithp@keithp.com>
----
- hw/semihosting/common-semi.c | 16 ++++++++++++++++
- include/qemu/timer.h         |  2 ++
- util/qemu-timer-common.c     |  4 ++++
- 3 files changed, 22 insertions(+)
+> In the VFIO VM state change handler, VFIO devices are transitioned
+> in the _SAVING state, which should keep them from sending interrupts.
+> Then we can save the pending states of all interrupts in the GIC VM
+> state change handler (on ARM).
+> 
+> So we have to set the priority of the VFIO VM state change handler
+> explicitly (like virtio devices) to ensure it is called before the
+> GIC's in saving.
 
-diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index 2b6a3fd9fd..c84b0d906b 100644
---- a/hw/semihosting/common-semi.c
-+++ b/hw/semihosting/common-semi.c
-@@ -38,6 +38,7 @@
- #include "hw/semihosting/console.h"
- #include "hw/semihosting/common-semi.h"
- #include "qemu/log.h"
-+#include "qemu/timer.h"
- #ifdef CONFIG_USER_ONLY
- #include "qemu.h"
- 
-@@ -69,6 +70,8 @@
- #define TARGET_SYS_EXIT        0x18
- #define TARGET_SYS_SYNCCACHE   0x19
- #define TARGET_SYS_EXIT_EXTENDED 0x20
-+#define TARGET_SYS_ELAPSED     0x30
-+#define TARGET_SYS_TICKFREQ    0x31
- 
- /* ADP_Stopped_ApplicationExit is used for exit(0),
-  * anything else is implemented as exit(1) */
-@@ -832,6 +835,7 @@ target_ulong do_common_semihosting(CPUState *cs)
-     uint32_t ret;
-     uint32_t len;
-     GuestFD *gf;
-+    int64_t elapsed;
- 
-     (void) env; /* Used implicitly by arm lock_user macro */
-     nr = common_semi_arg(cs, 0) & 0xffffffffU;
-@@ -1241,6 +1245,18 @@ target_ulong do_common_semihosting(CPUState *cs)
-         }
-         gdb_exit(cs->env_ptr, ret);
-         exit(ret);
-+    case TARGET_SYS_ELAPSED:
-+        elapsed = get_clock() - clock_start;
-+        if (sizeof(target_ulong) == 8) {
-+            SET_ARG(0, elapsed);
-+        } else {
-+            SET_ARG(0, (uint32_t) elapsed);
-+            SET_ARG(1, (uint32_t) (elapsed >> 32));
-+        }
-+        return 0;
-+    case TARGET_SYS_TICKFREQ:
-+        /* qemu always uses nsec */
-+        return 1000000000;
-     case TARGET_SYS_SYNCCACHE:
-         /*
-          * Clean the D-cache and invalidate the I-cache for the specified
-diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-index bdecc5b41f..ca6fae51f1 100644
---- a/include/qemu/timer.h
-+++ b/include/qemu/timer.h
-@@ -806,6 +806,8 @@ static inline int64_t get_clock_realtime(void)
-     return tv.tv_sec * 1000000000LL + (tv.tv_usec * 1000);
- }
- 
-+extern int64_t clock_start;
-+
- /* Warning: don't insert tracepoints into these functions, they are
-    also used by simpletrace backend and tracepoints would cause
-    an infinite recursion! */
-diff --git a/util/qemu-timer-common.c b/util/qemu-timer-common.c
-index baf3317f74..cc1326f726 100644
---- a/util/qemu-timer-common.c
-+++ b/util/qemu-timer-common.c
-@@ -27,6 +27,8 @@
- /***********************************************************/
- /* real time host monotonic timer */
- 
-+int64_t clock_start;
-+
- #ifdef _WIN32
- 
- int64_t clock_freq;
-@@ -41,6 +43,7 @@ static void __attribute__((constructor)) init_get_clock(void)
-         exit(1);
-     }
-     clock_freq = freq.QuadPart;
-+    clock_start = get_clock();
- }
- 
- #else
-@@ -55,5 +58,6 @@ static void __attribute__((constructor)) init_get_clock(void)
-     if (clock_gettime(CLOCK_MONOTONIC, &ts) == 0) {
-         use_rt_clock = 1;
-     }
-+    clock_start = get_clock();
- }
- #endif
--- 
-2.29.2
+What this patch does is to make the priority of the vfio migration
+state change handler depending on the position in the qdev tree. As all
+state change handlers with no explicit priority are added at priority
+0, this will make sure that this handler runs before (save) resp. after
+(restore) nearly all other handlers, which will address your issue here
+(and possibly similar ones).
+
+So, this patch seems fine for now, but I'm wondering whether we need to
+think more about priorities for handlers in general, and if there are
+more hidden dependencies lurking in there.
+
+> 
+> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+> Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
+> ---
+>  hw/vfio/migration.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+> index 3b9de1353a..97ea82b100 100644
+> --- a/hw/vfio/migration.c
+> +++ b/hw/vfio/migration.c
+> @@ -862,7 +862,8 @@ static int vfio_migration_init(VFIODevice *vbasedev,
+>      register_savevm_live(id, VMSTATE_INSTANCE_ID_ANY, 1, &savevm_vfio_handlers,
+>                           vbasedev);
+>  
+> -    migration->vm_state = qemu_add_vm_change_state_handler(vfio_vmstate_change,
+> +    migration->vm_state = qdev_add_vm_change_state_handler(vbasedev->dev,
+> +                                                           vfio_vmstate_change,
+>                                                             vbasedev);
+>      migration->migration_state.notify = vfio_migration_state_notifier;
+>      add_migration_state_change_notifier(&migration->migration_state);
+

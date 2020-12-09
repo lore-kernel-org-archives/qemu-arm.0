@@ -1,158 +1,130 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4902175lfb;
-        Wed, 9 Dec 2020 04:31:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz6hgtk6PUu0zlFebnGzai3l/Pzlbkdz9Ykb03JnJGLzjz2Fsf59gCx4VZYUhdNBJVbJp2T
-X-Received: by 2002:a25:5c2:: with SMTP id 185mr3145368ybf.161.1607517072306;
-        Wed, 09 Dec 2020 04:31:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607517072; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5093163lfb;
+        Wed, 9 Dec 2020 08:29:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwopYDKxtH/tNznPdelpf3FwjdDHe38THEVLSkGy4jsGz/9NAr8+OuaHozp7oUhxFw7VqfE
+X-Received: by 2002:a63:1764:: with SMTP id 36mr2627426pgx.177.1607531377716;
+        Wed, 09 Dec 2020 08:29:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607531377; cv=none;
         d=google.com; s=arc-20160816;
-        b=YVlUtEMQ1RH2RglLhIHJCT0SNpoTVHc3RDvxPr/6K1ekqOzhaf/7zeIV2kmHjsn9hU
-         Yd+8rIQJHr12I9RUG9CkhfqABhzI9r3wSDtf71Hnh14lRHVPDJXgnJyAvuy+6iAM9d/B
-         kHivQ9oznKyNAwKEtzKIPOF/eS8r+VYwi3d4lDYcwAUwsP3ZwmG6t5fXvyvp6rBqRTjW
-         wa8sX/t8i0hWPRcbpt5RM1lsjhEJzeDqqXVVIAHW0ryFeM9hQqxmnn9MlJs7xxhTlS1+
-         qj4t2Vnb3MZ5zOfuQKfNJmcnGY4KwB+boS7pKq5ewCiSNedOgDh6fJDj35LF/XY0OGKi
-         lI3g==
+        b=If2Iq9VZDScXLRESLPsbHwmIfQn3+fL53zTiKnAf3r1PLE3GuAQ+veG7o7ILZCSLq+
+         7COsOCm0YmhC1sHTt57gnXfZLuUQbILGifww7ykL+6fLcZchWXRVxm6ZnYdcd++DbHdn
+         Tk+8bzGkxPlNs6zecBLYfOq0gnvWbClaUIcOgS+CCOPN5fcaOhNlckjht4gSF/HUoevG
+         uNKer/CYTL949sJQHb5+bOVsPAGODphSfhp64iTpxwj8zQ2woGhgD3yZkfnlNFIsVYSn
+         036kLnudOkpe0e1u9hdML7QqI6Omz9bLeXGzvvMwnf6EFp9AALPx/sI51t/mBpGaiomp
+         Efsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=knk/7SMK06nT463TgLi3CGb9tMWaA9M2L0P91mUeT+M=;
-        b=AlCao5nE9GpMM0pY1CoY4bL7Wk4JwDF+kyT4DigSzWgVScgNI34VjQLDYtzTP8m0tH
-         9WUE7hmweficpuOBUU+lMm67aZOC3/i+DnFT6lQCMzXegEerQ0wpclbqAThoit0CPKok
-         JHaPoEJf8Ko4uGWhaYcnX3K3BrO0CLzZn5Xm9+u6j8+nipCQbqgiqIMrEfdwFLj3up3O
-         ZFhdkRV0T+b0PtvkbSwutz2xd22RryvGT+88kaYr7v5o3OweOD6VXvKEksVY9KugEjHm
-         PInMlGWfoHRhelmM2C+LNLWotoMYyMzmQgsgoE6wk9j0+BmqNEZpF6rbvxSs9Isj4cL1
-         FVEA==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=NfvvG9R1oZHC0/72KAn4eRO/RbaxPTHZX0E9qTml3UI=;
+        b=Tqh6TUKkeViwnsW8ieDHaxHsDlDjOxBsIH9s066w0SaNTophqqcy9UBsIUyib+DOAg
+         OhKuZ7ZxNZHWGwcY5oDWU+pHmiFSf/ZEVxZ/BxQ9XnVUNd6znUZBqDMEWLTVfuPmiqGt
+         ztoOXHQqGHsmU2w1jcc1RVY2E1PKPfUWpGy24kCch5B+eOi+l6EEcWaChy65aB7oy2s1
+         HRGBzgGRS35EqEa3+qonsT7+2wOCBf+SU34fXETdnOc7U+4df3hjxc+xOcb0qF1hwEAK
+         0vFUE6TJKoCoqHp5fIV9U80a9aSMWk+l682QWvWeajUIu96kDqmyh6Vwzvo/AG5qRi6a
+         zyug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i1r1IHKE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10si1891515ybq.331.2020.12.09.04.31.12
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Dec 2020 04:31:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Return-Path: <keithp@keithp.com>
+Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
+        by mx.google.com with ESMTPS id lk3si1590809pjb.0.2020.12.09.08.29.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Dec 2020 08:29:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i1r1IHKE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40492 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kmych-000615-Kt
-	for alex.bennee@linaro.org; Wed, 09 Dec 2020 07:31:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45262)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kmybx-0005zL-7I
- for qemu-arm@nongnu.org; Wed, 09 Dec 2020 07:30:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:26331)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kmybl-0005eT-1r
- for qemu-arm@nongnu.org; Wed, 09 Dec 2020 07:30:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607517009;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=knk/7SMK06nT463TgLi3CGb9tMWaA9M2L0P91mUeT+M=;
- b=i1r1IHKEfW+kbeaMHX+3As1rBW1/NqXvX+pqZuIvLkKyIHptI7UPdV618NE2scljjcFROj
- iJ0STi/0HAcKuHHdHKkD8E3ljKItScpgRi2Br5uxKGRKv/xquX4q28D2vcrALwPu6r9DoW
- vYP689EblTWzfdRbOXy+brB2v6NhooM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-47-DUszSkpbPESt4OPb73Ohlw-1; Wed, 09 Dec 2020 07:30:05 -0500
-X-MC-Unique: DUszSkpbPESt4OPb73Ohlw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6DE1C73A0;
- Wed,  9 Dec 2020 12:30:03 +0000 (UTC)
-Received: from gondolin (ovpn-113-135.ams2.redhat.com [10.36.113.135])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 74FCB60BF3;
- Wed,  9 Dec 2020 12:29:50 +0000 (UTC)
-Date: Wed, 9 Dec 2020 13:29:47 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Shenming Lu <lushenming@huawei.com>
-Subject: Re: [RFC PATCH v2 1/3] vfio: Move the saving of the config space to
- the right place in VFIO migration
-Message-ID: <20201209132947.3177f130.cohuck@redhat.com>
-In-Reply-To: <20201209080919.156-2-lushenming@huawei.com>
-References: <20201209080919.156-1-lushenming@huawei.com>
- <20201209080919.156-2-lushenming@huawei.com>
-Organization: Red Hat GmbH
+       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Received: from localhost (localhost [127.0.0.1])
+	by elaine.keithp.com (Postfix) with ESMTP id 72F8F3F2E329;
+	Wed,  9 Dec 2020 08:29:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1607531376; bh=NfvvG9R1oZHC0/72KAn4eRO/RbaxPTHZX0E9qTml3UI=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=syXM6nJ8lwxL0amBETOnN1p1SckCQYDv5U4mPPW/2YfeTOArON8cCF/QOYDuHzrbs
+	 CAVZNTkOEA01WyciO1sxR0S7pwbKE5eqUj2ka14ZzGxMgzChMZz/qhXn4LbHtJpiwF
+	 oMXmkmrf50Y6mkeiO0F0mkozOtThwxrbuavVEV8m0r2zc5+EaXj+yfoKIClcusJB8q
+	 vPpnni8NEPyMtrQZs7d3FOBE0Z8XJUR110eEMK7Imn8NlumNfPL9BR3MkHR9bXG4ST
+	 YIV7TXhwjp3x9lvAiAqBP5yC5UgyXKhtsXR42qcnDn923N4N4jsYreuNxyx3LTZM6w
+	 SQ/Li2sZe1ePw==
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id 6I6X17j2ur1b; Wed,  9 Dec 2020 08:29:36 -0800 (PST)
+Received: from keithp.com (koto.keithp.com [10.0.0.2])
+	by elaine.keithp.com (Postfix) with ESMTPSA id 0E6273F2DE35;
+	Wed,  9 Dec 2020 08:29:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1607531376; bh=NfvvG9R1oZHC0/72KAn4eRO/RbaxPTHZX0E9qTml3UI=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=syXM6nJ8lwxL0amBETOnN1p1SckCQYDv5U4mPPW/2YfeTOArON8cCF/QOYDuHzrbs
+	 CAVZNTkOEA01WyciO1sxR0S7pwbKE5eqUj2ka14ZzGxMgzChMZz/qhXn4LbHtJpiwF
+	 oMXmkmrf50Y6mkeiO0F0mkozOtThwxrbuavVEV8m0r2zc5+EaXj+yfoKIClcusJB8q
+	 vPpnni8NEPyMtrQZs7d3FOBE0Z8XJUR110eEMK7Imn8NlumNfPL9BR3MkHR9bXG4ST
+	 YIV7TXhwjp3x9lvAiAqBP5yC5UgyXKhtsXR42qcnDn923N4N4jsYreuNxyx3LTZM6w
+	 SQ/Li2sZe1ePw==
+Received: by keithp.com (Postfix, from userid 1000)
+	id EA9AC15820DB; Wed,  9 Dec 2020 08:29:35 -0800 (PST)
+From: Keith Packard <keithp@keithp.com>
+To: Kito Cheng <kito.cheng@gmail.com>
+Cc: qemu-devel@nongnu.org, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Alistair
+ Francis <Alistair.Francis@wdc.com>, Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>, Laurent Vivier <laurent@vivier.eu>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>
+Subject: Re: [PATCH 5/8] riscv: Add semihosting support [v13]
+In-Reply-To: <CA+yXCZC038LfuswrAo6W3gHXfGkwPscMEKDQJvutV7xcoC+wPw@mail.gmail.com>
+References: <20201125213617.2496935-1-keithp@keithp.com>
+ <20201125213617.2496935-6-keithp@keithp.com>
+ <CA+yXCZC038LfuswrAo6W3gHXfGkwPscMEKDQJvutV7xcoC+wPw@mail.gmail.com>
+Date: Wed, 09 Dec 2020 08:29:35 -0800
+Message-ID: <87r1nz6iz4.fsf@keithp.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
- mst@redhat.com, qemu-devel@nongnu.org, Marc Zyngier <maz@kernel.org>,
- Kirti Wankhede <kwankhede@nvidia.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, yuzenghui@huawei.com,
- wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w9v0wo9IX81i
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+X-TUID: UwQzBREKNJ6b
 
-On Wed, 9 Dec 2020 16:09:17 +0800
-Shenming Lu <lushenming@huawei.com> wrote:
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-> On ARM64 the VFIO SET_IRQS ioctl is dependent on the VM interrupt
-> setup, if the restoring of the VFIO PCI device config space is
-> before the VGIC, an error might occur in the kernel.
-> 
-> So we move the saving of the config space to the non-iterable
-> process, so that it will be called after the VGIC according to
-> their priorities.
-> 
-> As for the possible dependence of the device specific migration
-> data on it's config space, we can let the vendor driver to
-> include any config info it needs in its own data stream.
-> (Should we note this in the header file linux-headers/linux/vfio.h?)
+Kito Cheng <kito.cheng@gmail.com> writes:
 
-Given that the header is our primary source about how this interface
-should act, we need to properly document expectations about what will
-be saved/restored when there (well, in the source file in the kernel.)
-That goes in both directions: what a userspace must implement, and what
-a vendor driver can rely on.
+> Hi Keith:
+>
+> Thanks for the patch, I've verified with newlib semihosting support
+> which is contributed by Craig Blackmore from embecosm,
+> and I would like to add semihosting to user mode, do you mind add this
+> patch into this patch series?
 
-[Related, but not a todo for you: I think we're still missing proper
-documentation of the whole migration feature.]
+I tried to add that already, but I admit that I haven't tested it in a
+while. You should find that there are patches to linux-user/semihost.c
+and linux-user/qemu.h to enable it.
 
-> 
-> Signed-off-by: Shenming Lu <lushenming@huawei.com>
-> ---
->  hw/vfio/migration.c | 25 +++++++++++++++----------
->  1 file changed, 15 insertions(+), 10 deletions(-)
+=2D-=20
+=2Dkeith
 
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl/Q+28ACgkQ2yIaaQAA
+ABGFNw//Ul4a0PbfO3j4ey6T6eC53q1i4ObgE0Bsatdm6xLYgMB7CyJ8Bn/T8h8d
+/J31ZrEuRl3+vZhMZE4BGm6BuMEW/uwbrlKjfkTTep4T7JzXSDxUBaO4xa7OYnkI
+6R/k9QYoOdvo31zfYG6zg6B1U8FtwnX1mSCUb+GjELEwKdea3yxa64yzapWnzsnU
+TqkEP3Vux/M4M+z1LFkZfmvjhVaYcuNczuY3XbL1R7HZJGQktIaBh/lLvOPSL5u7
+CQP6H7GZMJMrbJ4VH2KmcyBHFERlBsodXmJKf/ed7fzQLcuhKEYyuzzJ8JeQqwS0
+IoHu6DCA5LbzNZQPvjxY2WJ8Rxzpq7uNbrioNC5xLIPvypzdVJUUW4u20bP8wJtf
+jUvFNK1ZJYTGomlpL4p+5/f8M2MCj61Fz7wJaHRt12SIRYP0Lt1m4Obkglh9Aneh
+PTvepH9BIqEd7FFoJMIFJ2bCcs6Yva8f5lAlW2MPxSs1s42iCVTyOHU/IrcX6e1y
+HH68QwmxaJb9XoUV4luCD7WSXm3x8uyH3nPLsxxhTNd/EsczDK/r3q7v4cAjmPQm
+URnGQx88afZnpI4xPmCPWI6IGmUta8gzCYw6BdcJbQOA8bxIyTFklV9ouzV25awT
+Vnc0GlPGnSi6AjgdHv7wSi7qcuA2SWfLuc+wZZdHTXMyAKT43SQ=
+=aNTI
+-----END PGP SIGNATURE-----
+--=-=-=--

@@ -1,516 +1,154 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1230280lfc;
-        Sun, 21 Feb 2021 12:40:14 -0800 (PST)
-X-Received: by 2002:a5e:870f:: with SMTP id y15mr5137379ioj.68.1613940014354;
-        Sun, 21 Feb 2021 12:40:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613940014; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5779974lfb;
+        Thu, 10 Dec 2020 02:51:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyQFBP7lnthBa+P/r7npBodc85lJ/tjEkE0W93d0SC5LPTLsbbexjQn6YMC9ZVdYaekTHaS
+X-Received: by 2002:a5b:706:: with SMTP id g6mr9876934ybq.34.1607597466718;
+        Thu, 10 Dec 2020 02:51:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607597466; cv=none;
         d=google.com; s=arc-20160816;
-        b=XWRcO+5R/E0RcnxrFFRLRcWi0noLVXfZpCxstROxkAQ8XkHp8YgtyFLaqCEP8Ska0N
-         mawS1XNur/ZJnllnLwdUQrupaQU0lqlXS8RwB8B2hO79HS32CzES1aaX5it+ZwWZZtco
-         zysqBFeWzKBWMGVVazwf6qya2angVnhR6ZSsQ8zzExByYySUiNR7FJ4L06I1kQ73A9cE
-         wtbueYR/7+0LvQ5MtUm4j0zaBZIPiEkU9/ApqwFhfsSo9PtYRTZ+xUqkn/lFzEwuMjfW
-         gxdUUCdYB+lDiaKqqASpPWdfzpAKlbAsRFQnxTYNAGwe6LZHHyjU17ZIK+y5WInR/Qle
-         yFng==
+        b=IHdoVfD9KM6G35ZlqtgjNaPblhX0kXmzmrxFzfEfgyRfKIZ2s3TEFwN/5NQikx6CQ8
+         F4IcOMEO0D1CHtnc2aSJmaS3kqX4+uRZf5bWVsET1RPxZlb19f2t3aemYUhTw3Lkat/1
+         9nHPxYPi5zsXFZYK7pZ2Zbrq/UlyodBUE4O5mEvC+sqUK5fFvr5nsWmHYr2hm8eaNGH0
+         N6o8x/JsX9LBKvNaCAldCFS71RW6dK1uPI2zsu1xRoILVLQeb4MGOVWQuvsQPpTb9u3c
+         gUy1BJPUqVamdkm/2EOLWWeCnK9pTAJjzGI82Jn9vZ85Rae9U6Ydb0r7PQ0OcR9rrO6l
+         d0Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=l0FUBik8MO7SDKDsE4xl2I8btwbve4nOtcFD4Rn1Wl8=;
-        b=ep/PqF7LaMnV0Z+7omxEhG18/CutBJ37pZwnfDUyLj+gBDut+NBWNauSPgtBUOpFUx
-         R6rYF39lKXvQEnlGcolhiH4LaFjpXC4u7U0gYKDJi3qSHskYRjAhp2BUjGBiN2bXQZqO
-         LXfR8HNusdAYLO7JnExsCZYDvrY/YuqCOI8AKsacM8TX5I/3XDaDBGlJMHhd1cnrzYlI
-         7sCghwPoOYtHx2cryPsAU7V4DWzoaY/XigqHvlv1PE2B6KhcdZ0FrR96p9CG0MPwk7Gt
-         ttg5DFDzuEx/DU2cGKIc/TLlqhgBudQE7cSHgl8ZKKN3yeFRYy89t29raZxba0EImsXC
-         DSkw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=KrYP15ej/zq5NJsb+6YTdcWbaZZh9pJvDWdJ+EbaMlI=;
+        b=vDTF6v/tvwBvqLd3uvY3oaFOEHC0oci0gGoOCDYXImpBj2kGCAJSmdljlcCtBn5/3M
+         7xWKzfzc1H6kbpC6x9h/zZ43qVEOJC0ukK8p9nobvHAwk1HymLo0V42U4Vaga+d5C8AG
+         npXpOUQJxd2bD9qUbzODJkonym/rSLMQAwvn++Ii5W68N1AxzieU4YHXhPAWsQfAcD8+
+         9xZwlo9MGVoHdo5ZBkub0knpXDQ1cV8+vpEKGgBvHZbt1fpDZUr7uflenNg+B0SlC+a0
+         TqCWGhifmjVy4opowwbXXDHUiKM+yPjgvfQw+Mm9tLMPc+GOrhqkBpiiTgvIRl6wodOZ
+         FvQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FIfGR80Y;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g72sor22096909jac.6.2021.02.21.12.40.14
-        (Google Transport Security);
-        Sun, 21 Feb 2021 12:40:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x6si4778348ybp.201.2020.12.10.02.51.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Dec 2020 02:51:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FIfGR80Y;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=l0FUBik8MO7SDKDsE4xl2I8btwbve4nOtcFD4Rn1Wl8=;
-        b=FIfGR80YanTkpTfM0ppzrBlUlMP3oHcurawjloJYbW00wXI+RFoDdQrAVV5jxTwm2f
-         DKYfl3eBmNq3uq4a9ycCAxDC/1cyGw5LQcZP2bi03E89wapb2f4DkZw2Uis2sR0mB0yN
-         W/gXSZ50VTYv9uryZlkX/SlT0tajcH7jOs7aGNVcYPaIE/3TLXBv/K6ATU1lYjq0sAYx
-         A9HPAo4x8x45f4+2VY9VOB7HXHokJJSTX/rQqKPIz23Mx49gcwwFqPNZ/Ed3x3w3076J
-         I6cyAh3L5u8qLjwZKZQ43kArzmRdZA0F0bYSSWvJnr/Xg1SsoBV2dRyj93v7spxZftfC
-         1UjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=l0FUBik8MO7SDKDsE4xl2I8btwbve4nOtcFD4Rn1Wl8=;
-        b=tpZ7PwCl0vuuQcKTO+Vyp1vmQzyowl0I79HWCwmRcjhbn5fnL4aqUhM6qpISNCcNkd
-         OIDUio8QXll/ltWA5ZOLVQuOgv4mOrBPjuBjsD/FPc6SzWHOpM2J3Y2Ftv39OC/XDAxW
-         2X0u6T4ECEg9y97Bu5JqsjEfqXAGMzhlEWkRL7Sz2BDWixKHpJd1c+/zxGjpgzcWtlBE
-         PZ9iIyKBHGAxL/d9lAJa8u2vZlMvU/fr5r1Y/9ORSVsrZ7h8MOpGtBp6B3/Lz4eq9ihf
-         Em9lNHhStQCQ6/yUBNxkROZMsruYUWsQ3zd6i3JqvtMmgnESXiFNtVwDqFHjCD6JAP66
-         Q88A==
-X-Gm-Message-State: AOAM530kRbp3+3YvkHsYAW4C03uxpKrf8OseP3hIs57ZktS/9+DUhrE5
-	1y0PQTM5yS3w0VCce32O/5k4NaTZ8j+4RpY3d8A=
-X-Google-Smtp-Source: ABdhPJyzG0J8fX1kVM7TFqXthA/pwKWawWyu4YuZsBe+SGsz3PTMNz9bArvSb7wVmyNfZuvZGYmvp7RD0lgYPHEISM4=
-X-Received: by 2002:a05:6638:3491:: with SMTP id t17mr19160041jal.81.1613940013874;
- Sun, 21 Feb 2021 12:40:13 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43718 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1knJXO-0003qf-0F
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 05:51:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37180)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1knJXB-0003nJ-MT; Thu, 10 Dec 2020 05:50:53 -0500
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:39207)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1knJX9-00049H-UH; Thu, 10 Dec 2020 05:50:53 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.171])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id C00F8795D422;
+ Thu, 10 Dec 2020 11:50:47 +0100 (CET)
+Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 10 Dec
+ 2020 11:50:46 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G0068a724068-dc88-4184-bd71-7a8e057968c6,
+ 35DF0118C1BD2D4E469FA4C27706E890450E7B32) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH aspeed-5.2] aspeed: g220a-bmc: Add an FRU
+To: John Wang <wangzhiqiang.bj@bytedance.com>, <xuxiaohan@bytedance.com>,
+ <yulei.sh@bytedance.com>
+References: <20201210103607.556-1-wangzhiqiang.bj@bytedance.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <a45faa74-2c4a-9f87-cbf2-d40ac7c49aa8@kaod.org>
+Date: Thu, 10 Dec 2020 11:50:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
- <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com> <YCuVC4T+TFjuskhF@redhat.com>
- <CAPan3Wo+c+4F82cM+UDQu+JH9eQdqL2gjnikXmg3PZKTXCP_jg@mail.gmail.com> <cc5f65a8-204b-17ad-3bba-61a3919ef798@redhat.com>
-In-Reply-To: <cc5f65a8-204b-17ad-3bba-61a3919ef798@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Sun, 21 Feb 2021 21:40:02 +0100
-Message-ID: <CAPan3WqvNYh3+=1b3juzNg7r8nAJ4yhAeqqdhsJvMf8GC1ke5Q@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
-	QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, Pavel.Dovgaluk@ispras.ru, 
-	Cleber Rosa <crosa@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
-	Willian Rampazzo <wrampazz@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000003745c105bbdeb1d4"
-X-TUID: Jh9W2bgPb+K9
+In-Reply-To: <20201210103607.556-1-wangzhiqiang.bj@bytedance.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: aefdf6e4-623b-4528-83a2-17c07c5ff9a8
+X-Ovh-Tracer-Id: 18268570414678182764
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrudektddgvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopeifrghnghiihhhiqhhirghnghdrsghjsegshihtvggurghntggvrdgtohhm
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lrmAmU/ast8E
 
---0000000000003745c105bbdeb1d4
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Feb 19, 2021 at 7:24 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
-
-> Hi Niek,
->
-> On 2/17/21 9:57 PM, Niek Linnenbank wrote:
-> > Hi Daniel, Philippe,
-> >
-> > Op di 16 feb. 2021 10:49 schreef Daniel P. Berrang=C3=A9 <berrange@redh=
-at.com
-> > <mailto:berrange@redhat.com>>:
-> >
-> >     On Fri, Feb 12, 2021 at 03:10:00PM +0100, Philippe Mathieu-Daud=C3=
-=A9
-> wrote:
-> >     > Hi Niek and QEMU community,
-> >     >
-> >     > On 2/11/21 11:00 PM, Niek Linnenbank wrote:
-> >     > > The following are maintenance patches for the Allwinner H3. The
-> >     first patch
-> >     > > is a proposal to relocate the binary artifacts of the acceptanc=
-e
-> >     tests away
-> >     > > from the apt.armbian.com <http://apt.armbian.com> domain. In th=
-e
-> >     past we had problems with artifacts being
-> >     > > removed, and now the recently added Armbian 20.08.1 image has
-> >     been removed as well:
-> >     > >
-> >     > > $ wget
-> >
-> https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bion=
-ic_current_5.8.5.img.xz
-> >     <
-> https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bion=
-ic_current_5.8.5.img.xz
-> >
-> >     > > Connecting to dl.armbian.com <http://dl.armbian.com>
-> >     (dl.armbian.com <http://dl.armbian.com>)|2605:7900:20::5|:443...
-> >     connected.
-> >     > > ...
-> >     > > HTTP request sent, awaiting response... 404 Not Found
-> >     > > 2021-02-11 22:34:45 ERROR 404: Not Found.
-> >     > >
-> >     > > I've now added the artifacts to a server maintained by me. The
-> >     machine has a stable
-> >     > > uptime of several years, ~100Mbit bandwidth and plenty of
-> >     available storage.
-> >     > > Also for other artifacts if needed. I'm open to discuss if ther=
-e
-> >     is a proposal
-> >     > > for a better location for these artifacts or a more generic qem=
-u
-> >     location.
-> >     >
-> >     > Thanks for trying to fix this long standing problem.
-> >     >
-> >     > While this works in your case, this doesn't scale to the communit=
-y,
-> >     > as not all contributors have access to such hardware and bandwidt=
-h
-> /
-> >     > storage.
-> >     >
-> >     > While your first patch is useful in showing where the artifacts a=
-re
-> >     > stored doesn't matter - as long as we use cryptographic hashes - =
-I
-> >     > think it is a step in the wrong direction, so I am not keen on
-> >     > accepting it.
-> >     >
-> >     > My personal view is that any contributor should have the same
-> >     > possibilities to add tests to the project. Now I am also open to
-> >     > discuss with the others :) I might be proven wrong, and it could
-> >     > be better to rely on good willing contributors rather than having
-> >     > nothing useful at all.
-> >
-> >     There aren't many options here
-> >
-> >      1. Rely on a vendor to provide stable download URLs for images
-> >
-> >      2. QEMU host all images we use in testing
-> >
-> >      3. Contributor finds some site to upload images to
-> >
-> >
-> >     For the armbian images we rely on (1), but the URLs didn't turn out
-> >     to be
-> >     stable. In fact no OS vendor seems to have guaranteed stable URLs
-> >     forever,
-> >     regardless of distro, though most eventually do have an archive sit=
-e
-> >     that
-> >     has good life. Armbian was an exception in this respect IIUC.
-> >
-> >     (2) would solve the long term stability problem as QEMU would be in
-> full
-> >     control, and could open it up for any images we need. The big
-> challenge
-> >     there is that QEMU now owns the license compliance problem. Merely
-> >     uploading
-> >     binary images/packages without the corresponding source is generall=
-y
-> >     a license
-> >     violation. QEMU could provide hosting, but we need to be clear abou=
-t
-> >     the fact
-> >     that we now own the license compliance problem ourselves. Many site=
-s
-> >     hosting
-> >     images simply ignore this problem, but that doesn't make it right.
-> >
-> >
-> >     This series is proposing (3), with a site the contributor happens t=
-o
-> >     control
-> >     themselves, but using a free 3rd party hosting site is no different
-> >     really.
-> >     Again there is a the same need for license compliance, but it is no=
-w
-> the
-> >     responsibility of the user, not QEMU project.
-> >
-> >     In this http://www.freenos.org/pub/qemu/cubieboard/
-> >     <http://www.freenos.org/pub/qemu/cubieboard/> site I can't even see
-> a
-> >     directory listing, so even if corresponding source does exist in
-> >     this server,
-> >     I can't find it.
-> >
-> >     The isn't really a problem for QEMU CI to consume the images, but a=
-s
-> >     a free
-> >     software developer I don't like encouraging practices that are not
-> >     compliant
-> >     with licensing reuqirement.
-> >
-> >     It is an open question whether the (3) is really better than (1) in
-> >     terms
-> >     of URL stability long term, especially if running off a user's
-> personal
-> >     server.
-> >
-> >
-> > I understand your concerns. My goal here was to be able to re-activate
-> > the orangepi tests, so we can capture bugs early on.
->
-> I hope you understand the concern I have is not with you in particular,
-> and I used your case to start a discussion with the QEMU community.
->
-
-Hi Philippe,
-
-Yeah I understand. I agree as well we should try to find a long-term
-general solution.
+On 12/10/20 11:36 AM, John Wang wrote:
+> Add an eeprom device and fill it with fru
+> information
+> 
+> $ ipmitool fru print 0
+> Product Manufacturer  : Bytedance
+> Product Name          : G220A
+> 
+> Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
 
 
->
-> FWIW I missed the URL change because I still have the image cached in
-> Avocado so my testing ran fine. Which makes me wonder...
->
-> Cleber, Willian, should Avocado display information about cached
-> artifacts? Such "Using artifact downloaded 7 months ago".
->
-> > So what I can do
-> > instead is:
-> >
-> >   - update the patch to use github to store the artifacts, and their
-> > licenses (other tests also use github)
->
-> Until there is better solutions, this is the option I prefer.
->
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Allright, I'll prepare a reworked patch soon that uses github and re-send
-it.
+Thanks,
 
-Kind regards,
-Niek
+C. 
 
+> ---
+>  hw/arm/aspeed.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 04c8ad2bcd..fc80d45513 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -595,6 +595,18 @@ static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+>      object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+>      object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+>      object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
+> +
+> +    static uint8_t eeprom_buf[2 * 1024] = {
+> +            0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0xfe,
+> +            0x01, 0x06, 0x00, 0xc9, 0x42, 0x79, 0x74, 0x65,
+> +            0x64, 0x61, 0x6e, 0x63, 0x65, 0xc5, 0x47, 0x32,
+> +            0x32, 0x30, 0x41, 0xc4, 0x41, 0x41, 0x42, 0x42,
+> +            0xc4, 0x43, 0x43, 0x44, 0x44, 0xc4, 0x45, 0x45,
+> +            0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
+> +            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
+> +    };
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
+> +                          eeprom_buf);
+>  }
+>  
+>  static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+> 
 
->
-> >   - or change the patch to use updated armbian links that work (for now=
-)
-> >
-> > If we can agree on either of these solutions, so the orangepi tests can
-> > be re-activated, that would be great.
-> >
-> > Kind regards,
-> > Niek
->
->
-
---=20
-Niek Linnenbank
-
---0000000000003745c105bbdeb1d4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Feb 19, 2021 at 7:24 PM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redh=
-at.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">Hi Niek,<br>
-<br>
-On 2/17/21 9:57 PM, Niek Linnenbank wrote:<br>
-&gt; Hi Daniel, Philippe,<br>
-&gt; <br>
-&gt; Op di 16 feb. 2021 10:49 schreef Daniel P. Berrang=C3=A9 &lt;<a href=
-=3D"mailto:berrange@redhat.com" target=3D"_blank">berrange@redhat.com</a><b=
-r>
-&gt; &lt;mailto:<a href=3D"mailto:berrange@redhat.com" target=3D"_blank">be=
-rrange@redhat.com</a>&gt;&gt;:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On Fri, Feb 12, 2021 at 03:10:00PM +0100, Philippe =
-Mathieu-Daud=C3=A9 wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; Hi Niek and QEMU community,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; On 2/11/21 11:00 PM, Niek Linnenbank wrote:<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; The following are maintenance patches for=
- the Allwinner H3. The<br>
-&gt;=C2=A0 =C2=A0 =C2=A0first patch<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; is a proposal to relocate the binary arti=
-facts of the acceptance<br>
-&gt;=C2=A0 =C2=A0 =C2=A0tests away<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; from the <a href=3D"http://apt.armbian.co=
-m" rel=3D"noreferrer" target=3D"_blank">apt.armbian.com</a> &lt;<a href=3D"=
-http://apt.armbian.com" rel=3D"noreferrer" target=3D"_blank">http://apt.arm=
-bian.com</a>&gt; domain. In the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0past we had problems with artifacts being<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; removed, and now the recently added Armbi=
-an 20.08.1 image has<br>
-&gt;=C2=A0 =C2=A0 =C2=A0been removed as well:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; $ wget<br>
-&gt;=C2=A0 =C2=A0 =C2=A0<a href=3D"https://dl.armbian.com/orangepipc/archiv=
-e/Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz" rel=3D"noreferrer=
-" target=3D"_blank">https://dl.armbian.com/orangepipc/archive/Armbian_20.08=
-.1_Orangepipc_bionic_current_5.8.5.img.xz</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;<a href=3D"https://dl.armbian.com/orangepipc/ar=
-chive/Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz" rel=3D"norefe=
-rrer" target=3D"_blank">https://dl.armbian.com/orangepipc/archive/Armbian_2=
-0.08.1_Orangepipc_bionic_current_5.8.5.img.xz</a>&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; Connecting to <a href=3D"http://dl.armbia=
-n.com" rel=3D"noreferrer" target=3D"_blank">dl.armbian.com</a> &lt;<a href=
-=3D"http://dl.armbian.com" rel=3D"noreferrer" target=3D"_blank">http://dl.a=
-rmbian.com</a>&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0(<a href=3D"http://dl.armbian.com" rel=3D"noreferre=
-r" target=3D"_blank">dl.armbian.com</a> &lt;<a href=3D"http://dl.armbian.co=
-m" rel=3D"noreferrer" target=3D"_blank">http://dl.armbian.com</a>&gt;)|2605=
-:7900:20::5|:443...<br>
-&gt;=C2=A0 =C2=A0 =C2=A0connected.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; ...<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; HTTP request sent, awaiting response... 4=
-04 Not Found<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; 2021-02-11 22:34:45 ERROR 404: Not Found.=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; I&#39;ve now added the artifacts to a ser=
-ver maintained by me. The<br>
-&gt;=C2=A0 =C2=A0 =C2=A0machine has a stable<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; uptime of several years, ~100Mbit bandwid=
-th and plenty of<br>
-&gt;=C2=A0 =C2=A0 =C2=A0available storage.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; Also for other artifacts if needed. I&#39=
-;m open to discuss if there<br>
-&gt;=C2=A0 =C2=A0 =C2=A0is a proposal<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; &gt; for a better location for these artifacts=
- or a more generic qemu<br>
-&gt;=C2=A0 =C2=A0 =C2=A0location.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; Thanks for trying to fix this long standing pr=
-oblem.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; While this works in your case, this doesn&#39;=
-t scale to the community,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; as not all contributors have access to such ha=
-rdware and bandwidth /<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; storage.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; While your first patch is useful in showing wh=
-ere the artifacts are<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; stored doesn&#39;t matter - as long as we use =
-cryptographic hashes - I<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; think it is a step in the wrong direction, so =
-I am not keen on<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; accepting it.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; My personal view is that any contributor shoul=
-d have the same<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; possibilities to add tests to the project. Now=
- I am also open to<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; discuss with the others :) I might be proven w=
-rong, and it could<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; be better to rely on good willing contributors=
- rather than having<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&gt; nothing useful at all.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0There aren&#39;t many options here<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A01. Rely on a vendor to provide stable downloa=
-d URLs for images<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A02. QEMU host all images we use in testing<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0=C2=A03. Contributor finds some site to upload imag=
-es to<br>
-&gt; <br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0For the armbian images we rely on (1), but the URLs=
- didn&#39;t turn out<br>
-&gt;=C2=A0 =C2=A0 =C2=A0to be<br>
-&gt;=C2=A0 =C2=A0 =C2=A0stable. In fact no OS vendor seems to have guarante=
-ed stable URLs<br>
-&gt;=C2=A0 =C2=A0 =C2=A0forever,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0regardless of distro, though most eventually do hav=
-e an archive site<br>
-&gt;=C2=A0 =C2=A0 =C2=A0that<br>
-&gt;=C2=A0 =C2=A0 =C2=A0has good life. Armbian was an exception in this res=
-pect IIUC.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0(2) would solve the long term stability problem as =
-QEMU would be in full<br>
-&gt;=C2=A0 =C2=A0 =C2=A0control, and could open it up for any images we nee=
-d. The big challenge<br>
-&gt;=C2=A0 =C2=A0 =C2=A0there is that QEMU now owns the license compliance =
-problem. Merely<br>
-&gt;=C2=A0 =C2=A0 =C2=A0uploading<br>
-&gt;=C2=A0 =C2=A0 =C2=A0binary images/packages without the corresponding so=
-urce is generally<br>
-&gt;=C2=A0 =C2=A0 =C2=A0a license<br>
-&gt;=C2=A0 =C2=A0 =C2=A0violation. QEMU could provide hosting, but we need =
-to be clear about<br>
-&gt;=C2=A0 =C2=A0 =C2=A0the fact<br>
-&gt;=C2=A0 =C2=A0 =C2=A0that we now own the license compliance problem ours=
-elves. Many sites<br>
-&gt;=C2=A0 =C2=A0 =C2=A0hosting<br>
-&gt;=C2=A0 =C2=A0 =C2=A0images simply ignore this problem, but that doesn&#=
-39;t make it right.<br>
-&gt; <br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0This series is proposing (3), with a site the contr=
-ibutor happens to<br>
-&gt;=C2=A0 =C2=A0 =C2=A0control<br>
-&gt;=C2=A0 =C2=A0 =C2=A0themselves, but using a free 3rd party hosting site=
- is no different<br>
-&gt;=C2=A0 =C2=A0 =C2=A0really.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Again there is a the same need for license complian=
-ce, but it is now the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0responsibility of the user, not QEMU project.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0In this <a href=3D"http://www.freenos.org/pub/qemu/=
-cubieboard/" rel=3D"noreferrer" target=3D"_blank">http://www.freenos.org/pu=
-b/qemu/cubieboard/</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;<a href=3D"http://www.freenos.org/pub/qemu/cubi=
-eboard/" rel=3D"noreferrer" target=3D"_blank">http://www.freenos.org/pub/qe=
-mu/cubieboard/</a>&gt; site I can&#39;t even see a<br>
-&gt;=C2=A0 =C2=A0 =C2=A0directory listing, so even if corresponding source =
-does exist in<br>
-&gt;=C2=A0 =C2=A0 =C2=A0this server,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0I can&#39;t find it.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0The isn&#39;t really a problem for QEMU CI to consu=
-me the images, but as<br>
-&gt;=C2=A0 =C2=A0 =C2=A0a free<br>
-&gt;=C2=A0 =C2=A0 =C2=A0software developer I don&#39;t like encouraging pra=
-ctices that are not<br>
-&gt;=C2=A0 =C2=A0 =C2=A0compliant<br>
-&gt;=C2=A0 =C2=A0 =C2=A0with licensing reuqirement.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0It is an open question whether the (3) is really be=
-tter than (1) in<br>
-&gt;=C2=A0 =C2=A0 =C2=A0terms<br>
-&gt;=C2=A0 =C2=A0 =C2=A0of URL stability long term, especially if running o=
-ff a user&#39;s personal<br>
-&gt;=C2=A0 =C2=A0 =C2=A0server.<br>
-&gt; <br>
-&gt; <br>
-&gt; I understand your concerns. My goal here was to be able to re-activate=
-<br>
-&gt; the orangepi tests, so we can capture bugs early on.<br>
-<br>
-I hope you understand the concern I have is not with you in particular,<br>
-and I used your case to start a discussion with the QEMU community.<br></bl=
-ockquote><div><br></div><div>Hi Philippe,</div><div><br></div><div>Yeah I u=
-nderstand. I agree as well we should try to find a long-term general soluti=
-on.<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">
-<br>
-FWIW I missed the URL change because I still have the image cached in<br>
-Avocado so my testing ran fine. Which makes me wonder...<br>
-<br>
-Cleber, Willian, should Avocado display information about cached<br>
-artifacts? Such &quot;Using artifact downloaded 7 months ago&quot;.<br>
-<br>
-&gt; So what I can do<br>
-&gt; instead is:<br>
-&gt; <br>
-&gt; =C2=A0 - update the patch to use github to store the artifacts, and th=
-eir<br>
-&gt; licenses (other tests also use github)<br>
-<br>
-Until there is better solutions, this is the option I prefer.<br></blockquo=
-te><div><br></div><div>Allright, I&#39;ll prepare a reworked patch soon tha=
-t uses github and re-send it.</div><div><br></div><div>Kind regards,</div><=
-div>Niek<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-<br>
-&gt; =C2=A0 - or change the patch to use updated armbian links that work (f=
-or now)<br>
-&gt; <br>
-&gt; If we can agree on either of these solutions, so the orangepi tests ca=
-n<br>
-&gt; be re-activated, that would be great.=C2=A0<br>
-&gt; <br>
-&gt; Kind regards,<br>
-&gt; Niek<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---0000000000003745c105bbdeb1d4--

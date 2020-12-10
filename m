@@ -1,109 +1,128 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1211142lfb;
-        Wed, 2 Dec 2020 06:45:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyXm0AOsuauKjR7J+GGDSvoPsCXqONKhpQiC+8+9amtugjArE1rhhMsfXGo9b2F1qmHSPVB
-X-Received: by 2002:a25:da0f:: with SMTP id n15mr2996249ybf.481.1606920351577;
-        Wed, 02 Dec 2020 06:45:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606920351; cv=none;
-        d=google.com; s=arc-20160816;
-        b=N/Xa2bTEcW6AvdAzEtw049512DRC6cGHyEVSCQeXd4EvAMAiG3r4gMu4W/eQ61/nQ+
-         f1Airyc2S6C7yFLkt0hDaFYID8aUYtTC8Lr9wH1cJclAps71bfCEF5u+t/PJJgP769/0
-         nFa1PkZ2GB5azltsQmuPciw4hDI6WCFUvbSo1wpvYiNmr5eyFtrvtaplaF7+9kOVDPd2
-         3rZHfMNCbmMfxr5g3ULnQrvBkUMCsd7tU4GpR4JnZKd6jXh4BHd1iZc369ergw6SDT9T
-         hujBCwjPZogyjDmy2nFw2YKcxYrTcMr3NNjGvDoOX5tmFD0GxRPqU/GVs/UYs61u8XBX
-         xnKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=hjwNWt57Ej4U7zipruW3su4cFwClr7ZfkPb/UCNL6zk=;
-        b=Z47YU5bhQrviaVGV3afAv1A9VninO6l54RYP0cIHG7uJdqy5q5hjrwsgefC7+J+N6p
-         6WjEDXrfEqd7rpy04ct3p3jpPTbCUwYzevcWKNPfMMjjFZwHq10hH9Dai7vOUZDux0Bw
-         diQ0ywVEeNOlToLGb2cTrhR60xhnDxFTDG6oSQiQB6CXKWkdHEuHrr0gicXuEhbFUQfE
-         4bfTA0pUN/lF0dQkSOjEK9wowYTC1Ly+hoXYTwTPTsUGI4KRjZap33R9xmm986Wy6tSM
-         v7KU2B3/89h5TFvEVOr8UuD5cEsELe8qxBZM9DC6gbAWqysng+ej/MpmawifIfegKf9N
-         8UkA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFW6uJhi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp13225lfb;
+        Thu, 10 Dec 2020 12:14:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxYdZZLvCCZPmCr5UtyurIiSn6zpj1XMP50QYt0UxdU8CPxaunomUi83zQdTbKBpZlt5sRg
+X-Received: by 2002:a25:7e03:: with SMTP id z3mr13544619ybc.251.1607631282813;
+        Thu, 10 Dec 2020 12:14:42 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18si2204702ybp.285.2020.12.02.06.45.51
+        by mx.google.com with ESMTPS id z7si5503727ybz.208.2020.12.10.12.14.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 06:45:51 -0800 (PST)
+        Thu, 10 Dec 2020 12:14:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFW6uJhi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37498 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="HnB/gOHm";
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52752 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkTOA-0003d6-Uv
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 09:45:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39028)
+	id 1knSKo-0007Jy-3t
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 15:14:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39732)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kkTO1-0003cV-MF; Wed, 02 Dec 2020 09:45:41 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:42345)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kkTNz-0006Ls-Vd; Wed, 02 Dec 2020 09:45:41 -0500
-Received: by mail-pl1-x641.google.com with SMTP id s2so1230356plr.9;
- Wed, 02 Dec 2020 06:45:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hjwNWt57Ej4U7zipruW3su4cFwClr7ZfkPb/UCNL6zk=;
- b=UFW6uJhi2Mwztjtz3suJeEeYxREgIsWs/uMlcnRNGJYDIWVLK9JmEXwstsqUaJoTlK
- xrKnOxNBjEC1LlKjH7VpwDFz8lqIkYh6MmeLdbK4VUtDFiEJL/78YXJvFl8ELwZ7D7pk
- +92Y5CGuUMQu7GCN6mVUI6YJEeV7d0Cjb9krj2Cr83ut1HYKDh9ZrjCXKD+Cp2Zkkkep
- O4D9AePXD0zM0mTsyxQeDUpfx3Itd7Rnq4RiC2JhulLkQ1rU36hJvjdnmrsCDp0/hivg
- GJP8ou0Tx/0xtyRofACF6f+qJPgoaBrFouYrCs5CZtcCpmAWCAyKKGbM3sCo2idj8FLZ
- 3sjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hjwNWt57Ej4U7zipruW3su4cFwClr7ZfkPb/UCNL6zk=;
- b=iD+jTWra4uXzePFAgSgrPMw+VVDeJJdaMkLtp9gS828V5lCjGwKIwXAXDFUcytBRmx
- Kub4mbXQaUOCOQZ0v4OZXCzlUt21dNT39/vh6+JRhNVx73B/jdi1qucqk3XUG4zEsMgv
- bqQVldOgWTnnhcBQW6PCcLYKL6WJJWuvZZft2eaPrpGpTh6wrbRdYK5KWSsMwLfc2uMy
- qSr2ahXDnizkvPakeViSMPduliK2UxOvZMaMEjtcL5qsyiJ5eUjey82paM4qfnA4EfWR
- +uWtbR7rAm3VoN4cZWUZlPNZFb1W/4JQu+Y8TFgU4aodQRSja7k3/mW+/5R6QXgcAGyO
- MFiw==
-X-Gm-Message-State: AOAM531IGxeGHBGB4aH9qdDjdJ0S96ASia8UeTPRmZ2r9aQQl4Wa4oLE
- jFEn/OsXsmvy6v95zVNwvUc=
-X-Received: by 2002:a17:90a:9306:: with SMTP id p6mr233329pjo.50.1606920337819; 
- Wed, 02 Dec 2020 06:45:37 -0800 (PST)
-Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
- [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id u6sm92367pfb.197.2020.12.02.06.45.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Dec 2020 06:45:37 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <alistair.francis@wdc.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH v2 1/2] hw/ssi: imx_spi: Use a macro for number of chip
- selects supported
-Date: Wed,  2 Dec 2020 22:45:22 +0800
-Message-Id: <20201202144523.24526-1-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
+ id 1knSJX-0006zg-7q; Thu, 10 Dec 2020 15:13:23 -0500
+Received: from mail-mw2nam10on2079.outbound.protection.outlook.com
+ ([40.107.94.79]:39745 helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
+ id 1knSJU-0000Zx-Aa; Thu, 10 Dec 2020 15:13:22 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XdiIG9LwezqDUhxG3MH2cyRIsKT07oWEOxnrPbBdWv/hkBS19wWX/UvA5aLxz+09uJFK2HujSeT8g/PM4hLBj54tjxqUFvhmf2sVAbgX7NSw1mHspl7UlU3d81QLew4TdTaT+y38n44PfJb4bDW76JcTr5+zZZQBinRkDZ4p9kP0s06rMsFQanZGAAHgGKFIQyw/qcTBi9kiON7pfl5avV8aqiKsvFNkUFAd4ZL5pz43mXlJN20GmqfNwotPuVsOzlZNOab3I/LD1vQ3cH7VrvG2z82t6Ij5xCAJadVXLIxM+ST6wFzdE5YK1kYqp7anauY5V7ZlXCjThpbNnprl9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1cDUHWeG5GH2et1kluSMeWSmN8dnWORpo7uhJVwMByU=;
+ b=jjcZMIRyFBVFi7DtVQfYTy8UmpjSBcgNKN3vk8VxGkJAwrcr7jKA534h7vj8nWKtxx9WntpSsAWqi1tZg+qtcrUh/U0UoVM8OJY0d1nRTvqUriuMiF7651+bTSDqjmREg8IuTvroGDZQPFS2eVDOTxOl/eOsVF7b/SBJJ4XHxtfqGyBp8kriTmplb4qTVm9yGsKxW9/MMOCq90ik3Wc1WEKFCTqL+wFkxxwSM9AuOpNbLl1L1sV8gLDSZ23XeNT9v3p+raDajJHf5GDP3Ow70LVTrwOYuTkjej4mG2ky3KsUhpFWFPKKgsxn+5CASdzdW1kFESrTlknk4UcE9MSsFQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.62.198) smtp.rcpttodomain=gmail.com smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1cDUHWeG5GH2et1kluSMeWSmN8dnWORpo7uhJVwMByU=;
+ b=HnB/gOHmkIcSWohqsJvGL0Aa407ldjlTr+R/XP0vcs/fNTB3MawQ28PzUOTlL17onXC1EfYWkvO1R3XZ0LrxMBV7Ev86TjkoXv8nHRjgpX3y81rMtE0RYsjH3QNsmKs9cm84zGV4yt7L/Cb+Ki0D/oVMcGpdUsP255raXVKpCMY=
+Received: from BLAPR03CA0059.namprd03.prod.outlook.com (2603:10b6:208:32d::34)
+ by DM6PR02MB5546.namprd02.prod.outlook.com (2603:10b6:5:35::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3632.19; Thu, 10 Dec
+ 2020 20:13:10 +0000
+Received: from BL2NAM02FT041.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:208:32d:cafe::bd) by BLAPR03CA0059.outlook.office365.com
+ (2603:10b6:208:32d::34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3632.23 via Frontend
+ Transport; Thu, 10 Dec 2020 20:13:10 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.62.198)
+ smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.62.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.62.198; helo=xsj-pvapexch01.xlnx.xilinx.com;
+Received: from xsj-pvapexch01.xlnx.xilinx.com (149.199.62.198) by
+ BL2NAM02FT041.mail.protection.outlook.com (10.152.77.122) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.3654.12 via Frontend Transport; Thu, 10 Dec 2020 20:13:10 +0000
+Received: from xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) by
+ xsj-pvapexch01.xlnx.xilinx.com (172.19.86.40) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1913.5; Thu, 10 Dec 2020 12:13:09 -0800
+Received: from smtp.xilinx.com (172.19.127.96) by
+ xsj-pvapexch02.xlnx.xilinx.com (172.19.86.41) with Microsoft SMTP Server id
+ 15.1.1913.5 via Frontend Transport; Thu, 10 Dec 2020 12:13:09 -0800
+Received: from [10.71.118.230] (port=60336 helo=localhost)
+ by smtp.xilinx.com with esmtp (Exim 4.90)
+ (envelope-from <edgar@xilinx.com>)
+ id 1knSJJ-0002C3-D4; Thu, 10 Dec 2020 12:13:09 -0800
+Date: Thu, 10 Dec 2020 21:13:09 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+To: Alistair Francis <alistair23@gmail.com>
+Subject: Re: [RFC PATCH] hw/misc/zynq_slcr: Avoid #DIV/0! error
+Message-ID: <20201210201309.GQ22548@toto>
+References: <20201210141610.884600-1-f4bug@amsat.org>
+ <CAKmqyKN7OMipCzi-B+qNJb_J--ontKzpwX5J=rQ8zye3tmYePQ@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pl1-x641.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <CAKmqyKN7OMipCzi-B+qNJb_J--ontKzpwX5J=rQ8zye3tmYePQ@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 4805ca25-916f-4263-bb5d-08d89d48044d
+X-MS-TrafficTypeDiagnostic: DM6PR02MB5546:
+X-Microsoft-Antispam-PRVS: <DM6PR02MB5546416AF8037A925AC4B8C3C2CB0@DM6PR02MB5546.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:5797;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ICjKhm+OHO89nbEzRcU2jB5lugSuu8rSvxS1cNJekhn+W3mpkbOoed3+QdRiX4jUJ3THpwNw6kTwdoLKWWdXspFsVWKID/0WxycRkLQGxNNPFyaHGL5gCyy4sIZVZWD6qKUnMU9+fxxIWf0JpPUPn+USMytEgOtDZXRMZnI45u7PujsaSw+fQPxZ6cIuL67PIV6aCOyQ2pKPotK+4KjHdRXkOwi5kgUC4j+VRri/i4jDVDmDEY/Uyqx+rVSDq/hwU21Ts422CcBALFLLPgvGVy2Awe3rzyjgkuGv4qxjFPIfEiBYkZK/LQxu0BKrxr4h6lp29eBsnjCMTI3IOApqYXpvzSSYIaMd0IdQmS5f5HUfjcMUFDtLa8c0hiacUFQHUaaNnA6Guuu6m5r8zkOaTQ==
+X-Forefront-Antispam-Report: CIP:149.199.62.198; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapexch01.xlnx.xilinx.com;
+ PTR:unknown-62-198.xilinx.com; CAT:NONE;
+ SFS:(4636009)(7916004)(136003)(346002)(376002)(46966005)(426003)(33656002)(33716001)(508600001)(36906005)(26005)(356005)(83380400001)(4326008)(7416002)(47076004)(8936002)(70586007)(336012)(6916009)(70206006)(9786002)(53546011)(186003)(54906003)(1076003)(7636003)(9686003)(8676002)(2906002)(82310400003)(5660300002);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Dec 2020 20:13:10.6925 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4805ca25-916f-4263-bb5d-08d89d48044d
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.62.198];
+ Helo=[xsj-pvapexch01.xlnx.xilinx.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL2NAM02FT041.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR02MB5546
+Received-SPF: pass client-ip=40.107.94.79; envelope-from=edgar@xilinx.com;
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,71 +135,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mauro Matteo Cascella <mcascell@redhat.com>,
+ Gaoning Pan <gaoning.pgn@antgroup.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+ Gaoning Pan <pgn@zju.edu.cn>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1fziI8Xo9uYr
+X-TUID: OwTLgDBXPRx9
 
-From: Bin Meng <bin.meng@windriver.com>
+On Thu, Dec 10, 2020 at 08:39:32AM -0800, Alistair Francis wrote:
+> On Thu, Dec 10, 2020 at 6:27 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+> >
+> > Malicious user can set the feedback divisor for the PLLs
+> > to zero, triggering a floating-point exception (SIGFPE).
+> >
+> > As the datasheet [*] is not clear how hardware behaves
+> > when these bits are zeroes, use the maximum divisor
+> > possible (128) to avoid the software FPE.
+> >
+> > [*] Zynq-7000 TRM, UG585 (v1.12.2)
+> >     B.28 System Level Control Registers (slcr)
+> >     -> "Register (slcr) ARM_PLL_CTRL"
+> >     25.10.4 PLLs
+> >     -> "Software-Controlled PLL Update"
+> >
+> > Fixes: 38867cb7ec9 ("hw/misc/zynq_slcr: add clock generation for uarts")
+> > Reported-by: Gaoning Pan <pgn@zju.edu.cn>
+> > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> > ---
+> > Cc: Damien Hedde <damien.hedde@greensocs.com>
+> > Cc: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > Cc: Alistair Francis <alistair.francis@wdc.com>
+> > Cc: Gaoning Pan <gaoning.pgn@antgroup.com>
+> > Cc: Mauro Matteo Cascella <mcascell@redhat.com>
+> >
+> > Alternative is to threat that as PLL disabled and return 0...
+> 
+> I'm not sure which is better, but this patch now is better then before:
+> 
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Avoid using a magic number (4) everywhere for the number of chip
-selects supported.
+I agree with Alistair:
 
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
----
-
-(no changes since v1)
-
- hw/ssi/imx_spi.c         | 4 ++--
- include/hw/ssi/imx_spi.h | 5 ++++-
- 2 files changed, 6 insertions(+), 3 deletions(-)
-
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index d8885ae454..e605049a21 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -361,7 +361,7 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
- 
-             /* We are in master mode */
- 
--            for (i = 0; i < 4; i++) {
-+            for (i = 0; i < ECSPI_NUM_CS; i++) {
-                 qemu_set_irq(s->cs_lines[i],
-                              i == imx_spi_selected_channel(s) ? 0 : 1);
-             }
-@@ -424,7 +424,7 @@ static void imx_spi_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
-     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
- 
--    for (i = 0; i < 4; ++i) {
-+    for (i = 0; i < ECSPI_NUM_CS; ++i) {
-         sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->cs_lines[i]);
-     }
- 
-diff --git a/include/hw/ssi/imx_spi.h b/include/hw/ssi/imx_spi.h
-index b82b17f364..eeaf49bbac 100644
---- a/include/hw/ssi/imx_spi.h
-+++ b/include/hw/ssi/imx_spi.h
-@@ -77,6 +77,9 @@
- 
- #define EXTRACT(value, name) extract32(value, name##_SHIFT, name##_LENGTH)
- 
-+/* number of chip selects supported */
-+#define ECSPI_NUM_CS 4
-+
- #define TYPE_IMX_SPI "imx.spi"
- OBJECT_DECLARE_SIMPLE_TYPE(IMXSPIState, IMX_SPI)
- 
-@@ -89,7 +92,7 @@ struct IMXSPIState {
- 
-     qemu_irq irq;
- 
--    qemu_irq cs_lines[4];
-+    qemu_irq cs_lines[ECSPI_NUM_CS];
- 
-     SSIBus *bus;
- 
--- 
-2.25.1
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 

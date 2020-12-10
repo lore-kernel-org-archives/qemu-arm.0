@@ -1,74 +1,74 @@
-Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1073934qvk;
-        Thu, 10 Dec 2020 05:49:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxf8I+kr+X6a50DikdNGNEUJkP0QPwnluUccG+EHLvT/KfNJmgfeiEeOru8sqN/w7MwRiWB
-X-Received: by 2002:a02:3541:: with SMTP id y1mr8756737jae.66.1607608187390;
-        Thu, 10 Dec 2020 05:49:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607608187; cv=none;
+Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1074493qvk;
+        Thu, 10 Dec 2020 05:50:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz2QVV00V7SdbHTxh1VEaCSx19KSNjr1I89KfmsjQAZkRASw8iXgpVit7q5OkB9DCt7lKSx
+X-Received: by 2002:a5d:84cf:: with SMTP id z15mr5503715ior.81.1607608225348;
+        Thu, 10 Dec 2020 05:50:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607608225; cv=none;
         d=google.com; s=arc-20160816;
-        b=cWfmspv5wzmcRmn2eMt9Sxw/YvDvVzlwZXfpaPKGmC9NA4+0zh9IU69v/YLBTiX5Af
-         pOqqdaHsMdht4FIAWqCgdYgNSHG25glCDdzEjOV2XlkaU1F0Zfuceu5lnwUZXWjIvB9R
-         4MAKLaFCwVA4wKeDcoSe2tUq/T/1lel2a1L4luCdnzeEyeZtu5BPrIXVjjWkUcds9dSB
-         brGM/nHf1NvLkX8PZxeiVZmUq8PdJ0Da3ISlO9pq5ukX244q4Y/90WYo8jIuiahl42m4
-         sdAt72SYI5AVgiOG3+Rmgl2XUWyQqcutR/Ly4VpXFeHGsZiMbLw37KIGnCgl/IRs2vaH
-         EKMw==
+        b=iULOlYlFFd7dJSwTAZZun0Li7fKJnFSiLP0ArWFL7Cip9HBioMPC1SYs1K9HZ0e25W
+         0iqvppt6Z3vJdlydyiklXLoed8zoqxaduhiR8Mx7F3V6YDn5MXWIqOqKdprMFoWwmwNO
+         A3k+A+5BbntaSEkwcEkHRIlcfppqvcyhmifKh3V08hEUrEFkT4Nw6eJf/3EiDsy206KA
+         PCbCsItK8z64cXGxaxZAYe6tlFbKy7i6vGQWUrsVO4qDtzwjnBK8hMjyIRUpJv8gQs3J
+         1/ieg7OSFGK+H7OxoJ9nSvb8+YKAaWWpm7z0P4izGwqoyylKvIYPyG3oVARyvbgxoBoW
+         xOow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature:sender:precedence:errors-to:list-subscribe
-         :list-help:list-post:list-unsubscribe:list-id;
-        bh=anpnx/tw5p62yFhBITy05bzKP3wcJQGVw5OZrWMts1E=;
-        b=ERxfIj3KzueVJndTWlXOY4SORxUgheBxM40N2MBfFDXyF8fpVdT/4n/JxijF2ycs0U
-         JC4sy6B96VuerkjHw1emE5QGZKDXRIy3dvXS74QQXdbcCcNbPB5l/ymwD/njD0LclUnJ
-         J7qAFyTPyTibPIRTl1Jyb+eHEoOStZ0DMTr8bewMSNwEgZ8HaW5tNur2L2XIRNmoAxkl
-         Dc4dY/jn6B0KucmyrY5IiF79/AR7UqAdkivBfrSuC6goJZchjYTbbAuxGfgBBASRd9RE
-         +PaKLOWEfltzYV9wuiIXqujpxdkOshS/ZnoKgyQPmn6MJLt7CoWfBxAekPdTjugqH2Jl
-         Gg6Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
+         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
+         :list-id;
+        bh=7laBw/T720iHN/BJanY29fxaiafvWQ3ZmcJva9ZXuMM=;
+        b=ukU7djfnDoR2xYDlYrRz1U6oMAbY+TLInUJYiIaNGko9ntGmcnFguHaltOMaq40eu4
+         otIlAxZfVHiEBEFA06zXm9K4xl+5ai8UvrQN3YxsxB1H7J0p+T5C6P5TNSqz7bSs/0Yi
+         SEWydOns28cLqaCEteHeAJQpRIgzck+6N0Mjff0sralQWGXSeA0rJap8sQrrv5u6Zpvs
+         7dDY7f60mNPv70vJeuWUU9CnzLhFMmjjXyUrsxM2Igisnn4nwGWAK6/4MI0Z2NVdAZ3H
+         QgYbP+EXV+moLnpA6HnzZAs5cIPeJqTMa+YD/mRgcm+Y8KobNtS7T3utsDbvLOf+3JHe
+         FMxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BAwICLTL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ANqaQT1l;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id l16si4531590jaj.31.2020.12.10.05.49.47
+        by mx.google.com with ESMTPS id 13si400020ilx.79.2020.12.10.05.50.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Dec 2020 05:49:47 -0800 (PST)
+        Thu, 10 Dec 2020 05:50:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BAwICLTL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ANqaQT1l;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.49239.87043 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.49257.87091 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1knMIr-0006MU-3P; Thu, 10 Dec 2020 13:48:17 +0000
+	id 1knMJn-0006j2-8s; Thu, 10 Dec 2020 13:49:15 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 49239.87043; Thu, 10 Dec 2020 13:48:17 +0000
+Received: by outflank-mailman (output) from mailman id 49257.87091; Thu, 10 Dec 2020 13:49:15 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1knMIr-0006MN-0J; Thu, 10 Dec 2020 13:48:17 +0000
-Received: by outflank-mailman (input) for mailman id 49239;
- Thu, 10 Dec 2020 13:48:15 +0000
-Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
- helo=us1-amaz-eas2.inumbo.com)
+	id 1knMJn-0006iu-5Z; Thu, 10 Dec 2020 13:49:15 +0000
+Received: by outflank-mailman (input) for mailman id 49257;
+ Thu, 10 Dec 2020 13:49:13 +0000
+Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
  by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
  <SRS0=nlUt=FO=redhat.com=marcandre.lureau@srs-us1.protection.inumbo.net>)
- id 1knMIp-0006MI-2X
- for xen-devel@lists.xenproject.org; Thu, 10 Dec 2020 13:48:15 +0000
-Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
- by us1-amaz-eas2.inumbo.com (Halon) with ESMTP
- id 9b677d54-238b-4520-a7da-6b7d44d251e6;
- Thu, 10 Dec 2020 13:48:13 +0000 (UTC)
+ id 1knMJl-0006hu-QX
+ for xen-devel@lists.xenproject.org; Thu, 10 Dec 2020 13:49:13 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [216.205.24.124])
+ by us1-rack-iad1.inumbo.com (Halon) with ESMTP
+ id 21b8f01f-55b9-48e6-bbe1-a4a823d5b3bd;
+ Thu, 10 Dec 2020 13:49:13 +0000 (UTC)
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-322-p-pu4U4xNmybGAAj8pkIRQ-1; Thu, 10 Dec 2020 08:48:09 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-277-tt29vyJuMMCsKfnRw_kDUw-1; Thu, 10 Dec 2020 08:49:08 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4A6141005E48;
- Thu, 10 Dec 2020 13:48:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 08B9315732;
+ Thu, 10 Dec 2020 13:49:07 +0000 (UTC)
 Received: from localhost (unknown [10.36.110.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 521085D9DD;
- Thu, 10 Dec 2020 13:47:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E42817046C;
+ Thu, 10 Dec 2020 13:48:52 +0000 (UTC)
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -80,17 +80,18 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
 Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 9b677d54-238b-4520-a7da-6b7d44d251e6
+X-Inumbo-ID: 21b8f01f-55b9-48e6-bbe1-a4a823d5b3bd
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1607608093;
+	s=mimecast20190719; t=1607608153;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=anpnx/tw5p62yFhBITy05bzKP3wcJQGVw5OZrWMts1E=;
-	b=BAwICLTLxv0oGQhFhA1ceAn2wOYQBQX0BSZEsKBi36D0gnUw4vGL1QXL+t2JTxsqurA7Mu
-	NDe4KM0SWPygZUlWjPq0hXrbszlrRKnJgfBFebiKk9b9rb4fN8cGaQOciYHsFtV87YCsta
-	GuB8aWhiOmTcO65pBV24OkHYXvCoQPg=
-X-MC-Unique: p-pu4U4xNmybGAAj8pkIRQ-1
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=7laBw/T720iHN/BJanY29fxaiafvWQ3ZmcJva9ZXuMM=;
+	b=ANqaQT1lsdDYaddE5Ao3ia4AWUQA6ms+ISiHhRX+lcKKyTSCFUrGPnDEFz+eLKc5CF2UCA
+	2mANAcMRDg5sCa1RoVnPdOfoJZ5xc/ec1phnziOgzQz1vEFZXc8EcMgVyu4driASHBiTm9
+	Pbrh87A2JLiFpCt7MEJwhJmsipW8M2U=
+X-MC-Unique: tt29vyJuMMCsKfnRw_kDUw-1
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: philmd@redhat.com,
@@ -107,75 +108,54 @@ Cc: philmd@redhat.com,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 00/13] Remove GCC < 4.8 checks
-Date: Thu, 10 Dec 2020 17:47:39 +0400
-Message-Id: <20201210134752.780923-1-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 04/13] qemu-plugin.h: remove GCC < 4
+Date: Thu, 10 Dec 2020 17:47:43 +0400
+Message-Id: <20201210134752.780923-5-marcandre.lureau@redhat.com>
+In-Reply-To: <20201210134752.780923-1-marcandre.lureau@redhat.com>
+References: <20201210134752.780923-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=marcandre.lureau@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: +UhmvRtV319H
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: CQzKSuAUuXAj
 
-From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>=0D
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Hi,=0D
-=0D
-Since commit efc6c07 ("configure: Add a test for the minimum compiler versi=
-on"),=0D
-QEMU explicitely depends on GCC >=3D 4.8.=0D
-=0D
-v3:=0D
- - drop first patch replacing QEMU_GNUC_PREREQ with G_GNUC_CHECK_VERSION=0D
- - add last patch to remove QEMU_GNUC_PREREQ=0D
- - tweak commit messages to replace clang 3.8 with clang 3.4=0D
- - fix some extra coding style=0D
- - collect r-b/a-b tags=0D
-=0D
-v2:=0D
- - include reviewed Philippe earlier series=0D
- - drop problematic patch to replace GCC_FMT_ATTR, but tweak the check to b=
-e clang=0D
- - replace QEMU_GNUC_PREREQ with G_GNUC_CHECK_VERSION=0D
- - split changes=0D
- - add patches to drop __GNUC__ checks (clang advertizes itself as 4.2.1, u=
-nless=0D
-   -fgnuc-version=3D0)=0D
-=0D
-Marc-Andr=C3=A9 Lureau (11):=0D
-  compiler.h: remove GCC < 3 __builtin_expect fallback=0D
-  qemu-plugin.h: remove GCC < 4=0D
-  tests: remove GCC < 4 fallbacks=0D
-  virtiofsd: replace _Static_assert with QEMU_BUILD_BUG_ON=0D
-  compiler.h: explicit case for Clang printf attribute=0D
-  audio: remove GNUC & MSVC check=0D
-  poison: remove GNUC check=0D
-  xen: remove GNUC check=0D
-  compiler: remove GNUC check=0D
-  linux-user: remove GNUC check=0D
-  compiler.h: remove QEMU_GNUC_PREREQ=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (2):=0D
-  qemu/atomic: Drop special case for unsupported compiler=0D
-  accel/tcg: Remove special case for GCC < 4.6=0D
-=0D
- include/exec/poison.h              |  2 --=0D
- include/hw/xen/interface/io/ring.h |  9 ------=0D
- include/qemu/atomic.h              | 17 -----------=0D
- include/qemu/compiler.h            | 45 ++++++++----------------------=0D
- include/qemu/qemu-plugin.h         |  9 ++----=0D
- scripts/cocci-macro-file.h         |  1 -=0D
- tools/virtiofsd/fuse_common.h      | 11 +-------=0D
- accel/tcg/cpu-exec.c               |  2 +-=0D
- audio/audio.c                      |  8 +-----=0D
- linux-user/strace.c                |  4 ---=0D
- tests/tcg/arm/fcvt.c               |  8 ++----=0D
- 11 files changed, 20 insertions(+), 96 deletions(-)=0D
-=0D
---=20=0D
-2.29.0=0D
-=0D
+Since commit efc6c07 ("configure: Add a test for the minimum compiler
+version"), QEMU explicitely depends on GCC >= 4.8.
+
+(clang >= 3.4 advertizes itself as GCC >= 4.2 compatible)
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ include/qemu/qemu-plugin.h | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index bab8b0d4b3..5775e82c4e 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -28,13 +28,8 @@
+   #endif
+   #define QEMU_PLUGIN_LOCAL
+ #else
+-  #if __GNUC__ >= 4
+-    #define QEMU_PLUGIN_EXPORT __attribute__((visibility("default")))
+-    #define QEMU_PLUGIN_LOCAL  __attribute__((visibility("hidden")))
+-  #else
+-    #define QEMU_PLUGIN_EXPORT
+-    #define QEMU_PLUGIN_LOCAL
+-  #endif
++  #define QEMU_PLUGIN_EXPORT __attribute__((visibility("default")))
++  #define QEMU_PLUGIN_LOCAL  __attribute__((visibility("hidden")))
+ #endif
+ 
+ typedef uint64_t qemu_plugin_id_t;
+-- 
+2.29.0
 

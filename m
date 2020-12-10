@@ -1,161 +1,175 @@
-Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1074493qvk;
-        Thu, 10 Dec 2020 05:50:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz2QVV00V7SdbHTxh1VEaCSx19KSNjr1I89KfmsjQAZkRASw8iXgpVit7q5OkB9DCt7lKSx
-X-Received: by 2002:a5d:84cf:: with SMTP id z15mr5503715ior.81.1607608225348;
-        Thu, 10 Dec 2020 05:50:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607608225; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5944185lfb;
+        Thu, 10 Dec 2020 06:20:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxLan0xnkJriXFYuxhk0QGYzdRBaFuxehWCpKovZKhhrz9Q3Jsu+ixkd9XtUDAUm8+drBtp
+X-Received: by 2002:a25:15c8:: with SMTP id 191mr11090350ybv.256.1607610035217;
+        Thu, 10 Dec 2020 06:20:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607610035; cv=none;
         d=google.com; s=arc-20160816;
-        b=iULOlYlFFd7dJSwTAZZun0Li7fKJnFSiLP0ArWFL7Cip9HBioMPC1SYs1K9HZ0e25W
-         0iqvppt6Z3vJdlydyiklXLoed8zoqxaduhiR8Mx7F3V6YDn5MXWIqOqKdprMFoWwmwNO
-         A3k+A+5BbntaSEkwcEkHRIlcfppqvcyhmifKh3V08hEUrEFkT4Nw6eJf/3EiDsy206KA
-         PCbCsItK8z64cXGxaxZAYe6tlFbKy7i6vGQWUrsVO4qDtzwjnBK8hMjyIRUpJv8gQs3J
-         1/ieg7OSFGK+H7OxoJ9nSvb8+YKAaWWpm7z0P4izGwqoyylKvIYPyG3oVARyvbgxoBoW
-         xOow==
+        b=aKSIvZk/Lp79NfAORHFgZ8MPH2BQJtVNqzAAoq6DTABwmcJuRuGS6A/DhNSk7PjrHp
+         6Xuv4leaAatZ+9zAIz7Z/x4lHW7mzOxLYL6PFCNQyqIHDEczBuen7XjFU7y+B/QRawLX
+         3OvjJwOSKSLD3lD+z3ZAZioph7/nSYteqhS/NAV2dhvYr6RRlW6I61v8oR3H24TB2XU0
+         7CVLWTH8IS9CJ5+zl0hhGjd0XuyTGZCwelkCAPzYyUfay7+jVDUJhqUPVAYiqXIKZFKr
+         OB0ug+NET4J5+oQpTrBaqDyng8pnAmD51yqYyRTloVLhfTohUYJZrcD5enojOt0Zhyx1
+         gEJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
-         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
-         :list-id;
-        bh=7laBw/T720iHN/BJanY29fxaiafvWQ3ZmcJva9ZXuMM=;
-        b=ukU7djfnDoR2xYDlYrRz1U6oMAbY+TLInUJYiIaNGko9ntGmcnFguHaltOMaq40eu4
-         otIlAxZfVHiEBEFA06zXm9K4xl+5ai8UvrQN3YxsxB1H7J0p+T5C6P5TNSqz7bSs/0Yi
-         SEWydOns28cLqaCEteHeAJQpRIgzck+6N0Mjff0sralQWGXSeA0rJap8sQrrv5u6Zpvs
-         7dDY7f60mNPv70vJeuWUU9CnzLhFMmjjXyUrsxM2Igisnn4nwGWAK6/4MI0Z2NVdAZ3H
-         QgYbP+EXV+moLnpA6HnzZAs5cIPeJqTMa+YD/mRgcm+Y8KobNtS7T3utsDbvLOf+3JHe
-         FMxg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=MqIwFv8FtosuPTOH+76+Ccv7DmvEu0dknfwXXb3hwPw=;
+        b=db84JMuGosVpXkVdO3mm9ObRnhmht05VNgxrnaZlWEoYmp8EHSVZm5jvP66Hcn1pHy
+         kPE/JDe7Dloxunj4VOrOylPjYdO8eThwY63FZ8USnP0xptpkJ7EmYrza1ZA3IABYfF12
+         n8EhvqTvDn6iLQ3TTWVtRVqAf4GbHHTE0ZSg3NOd6fUZ7O8Lhc7l6lAJIpjxJ/l0keIL
+         Ai7Xe9GLPCWImhPFZt7Jrfenid8KXB8emY9hcderwAQMjzxr/IMBN0qVtQlA4MiTVUd2
+         SJ8Jc8I+Dj9G+7Du3BrT6tAoAR8qcaroz3Oaz4hQYdAaPTN6CzlLN834JRr4fpuKnAfi
+         gUVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ANqaQT1l;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id 13si400020ilx.79.2020.12.10.05.50.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Dec 2020 05:50:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D8M7eer8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 201si5440830ybf.130.2020.12.10.06.20.35
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Dec 2020 06:20:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ANqaQT1l;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.49257.87091 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1knMJn-0006j2-8s; Thu, 10 Dec 2020 13:49:15 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 49257.87091; Thu, 10 Dec 2020 13:49:15 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1knMJn-0006iu-5Z; Thu, 10 Dec 2020 13:49:15 +0000
-Received: by outflank-mailman (input) for mailman id 49257;
- Thu, 10 Dec 2020 13:49:13 +0000
-Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
- by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=nlUt=FO=redhat.com=marcandre.lureau@srs-us1.protection.inumbo.net>)
- id 1knMJl-0006hu-QX
- for xen-devel@lists.xenproject.org; Thu, 10 Dec 2020 13:49:13 +0000
-Received: from us-smtp-delivery-124.mimecast.com (unknown [216.205.24.124])
- by us1-rack-iad1.inumbo.com (Halon) with ESMTP
- id 21b8f01f-55b9-48e6-bbe1-a4a823d5b3bd;
- Thu, 10 Dec 2020 13:49:13 +0000 (UTC)
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-277-tt29vyJuMMCsKfnRw_kDUw-1; Thu, 10 Dec 2020 08:49:08 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 08B9315732;
- Thu, 10 Dec 2020 13:49:07 +0000 (UTC)
-Received: from localhost (unknown [10.36.110.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E42817046C;
- Thu, 10 Dec 2020 13:48:52 +0000 (UTC)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 21b8f01f-55b9-48e6-bbe1-a4a823d5b3bd
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1607608153;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7laBw/T720iHN/BJanY29fxaiafvWQ3ZmcJva9ZXuMM=;
-	b=ANqaQT1lsdDYaddE5Ao3ia4AWUQA6ms+ISiHhRX+lcKKyTSCFUrGPnDEFz+eLKc5CF2UCA
-	2mANAcMRDg5sCa1RoVnPdOfoJZ5xc/ec1phnziOgzQz1vEFZXc8EcMgVyu4driASHBiTm9
-	Pbrh87A2JLiFpCt7MEJwhJmsipW8M2U=
-X-MC-Unique: tt29vyJuMMCsKfnRw_kDUw-1
-From: marcandre.lureau@redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D8M7eer8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:55534 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1knMo6-0002DN-KY
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 09:20:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60442)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1knMk2-0006QZ-OL; Thu, 10 Dec 2020 09:16:22 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:34346)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1knMjw-0003Z0-15; Thu, 10 Dec 2020 09:16:22 -0500
+Received: by mail-wr1-x443.google.com with SMTP id k14so5661351wrn.1;
+ Thu, 10 Dec 2020 06:16:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MqIwFv8FtosuPTOH+76+Ccv7DmvEu0dknfwXXb3hwPw=;
+ b=D8M7eer8ludLMyOVanrF/5s+a+ekwjBYkWEE9/lKm1X+rseJozSoctOp0+pobdUjLh
+ TxoNC+Mo6RhujfEJVtcVEYjouLxfLkNMHjv6vKVOI2V9Qo/6qpEqgZkonoWzQof+6g+m
+ ciBg+B4ve6QI728QJ7bN2OPUS1MIwIfM8135GcWMH6H4CiiYENoQRHxqrtiMaaIOyNUE
+ zx6AECRKgH2r/pqrd50uIRTZQkokS2duec1VqGSpVdoigjzVHB4R9KmwQKQaG7FA3W30
+ Nxt4fWSBJ55WOuM7SrQpn4xnv2GL/oZBqk9/RC9CLjcSwnYAkjEAPC52QRUIQZXIJjAU
+ +t6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=MqIwFv8FtosuPTOH+76+Ccv7DmvEu0dknfwXXb3hwPw=;
+ b=hApNj4iBuYxbJ1K2Lmz4UvDKC60QFWgHVlfrrumwwVVDTFVlYEUTUooNG/tQ25W0FS
+ jvzKQVuoSRC7XRn6hmlG/sng1Pr82/InewZBqtLwn2pBVxQxR8I4if4raupDImosa2//
+ wjCSTkVHwOjcmr84iaWSpGDYkfH4SW03WzY6WaRfLZHGFS4fpF1osvwD/MEp8odMYQMZ
+ p3eEPQmfGcQ5bKHWO1VyH1TdIPizI7Ok6VolSlQ7p1YKkYOA5TdVmEcgKX5DwspUJEEp
+ g3qhiU1Rms688CIwyvCt/Ye4NKbFJi3avCfnVBZGRptGkxleV172q8BQWBisvEpn1iYw
+ SqRA==
+X-Gm-Message-State: AOAM532qgn/uw5x3K+CF750o6L9zY3jnO4RsElW0mDX69ZKr/DfNi2WR
+ nERuYz87ktE9JlgbOXFy9Mr3EUF02iM=
+X-Received: by 2002:a5d:68c9:: with SMTP id p9mr8514912wrw.139.1607609772968; 
+ Thu, 10 Dec 2020 06:16:12 -0800 (PST)
+Received: from x1w.redhat.com (101.red-88-21-206.staticip.rima-tde.net.
+ [88.21.206.101])
+ by smtp.gmail.com with ESMTPSA id a13sm9787526wrt.96.2020.12.10.06.16.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Dec 2020 06:16:12 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: philmd@redhat.com,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paul Durrant <paul@xen.org>,
-	xen-devel@lists.xenproject.org,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 04/13] qemu-plugin.h: remove GCC < 4
-Date: Thu, 10 Dec 2020 17:47:43 +0400
-Message-Id: <20201210134752.780923-5-marcandre.lureau@redhat.com>
-In-Reply-To: <20201210134752.780923-1-marcandre.lureau@redhat.com>
-References: <20201210134752.780923-1-marcandre.lureau@redhat.com>
+Subject: [RFC PATCH] hw/misc/zynq_slcr: Avoid #DIV/0! error
+Date: Thu, 10 Dec 2020 15:16:10 +0100
+Message-Id: <20201210141610.884600-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=marcandre.lureau@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: CQzKSuAUuXAj
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mauro Matteo Cascella <mcascell@redhat.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Gaoning Pan <gaoning.pgn@antgroup.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ Gaoning Pan <pgn@zju.edu.cn>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ThoHYUN+99fG
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+Malicious user can set the feedback divisor for the PLLs
+to zero, triggering a floating-point exception (SIGFPE).
 
-Since commit efc6c07 ("configure: Add a test for the minimum compiler
-version"), QEMU explicitely depends on GCC >= 4.8.
+As the datasheet [*] is not clear how hardware behaves
+when these bits are zeroes, use the maximum divisor
+possible (128) to avoid the software FPE.
 
-(clang >= 3.4 advertizes itself as GCC >= 4.2 compatible)
+[*] Zynq-7000 TRM, UG585 (v1.12.2)
+    B.28 System Level Control Registers (slcr)
+    -> "Register (slcr) ARM_PLL_CTRL"
+    25.10.4 PLLs
+    -> "Software-Controlled PLL Update"
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Fixes: 38867cb7ec9 ("hw/misc/zynq_slcr: add clock generation for uarts")
+Reported-by: Gaoning Pan <pgn@zju.edu.cn>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/qemu/qemu-plugin.h | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+Cc: Damien Hedde <damien.hedde@greensocs.com>
+Cc: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Cc: Alistair Francis <alistair.francis@wdc.com>
+Cc: Gaoning Pan <gaoning.pgn@antgroup.com>
+Cc: Mauro Matteo Cascella <mcascell@redhat.com>
 
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index bab8b0d4b3..5775e82c4e 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -28,13 +28,8 @@
-   #endif
-   #define QEMU_PLUGIN_LOCAL
- #else
--  #if __GNUC__ >= 4
--    #define QEMU_PLUGIN_EXPORT __attribute__((visibility("default")))
--    #define QEMU_PLUGIN_LOCAL  __attribute__((visibility("hidden")))
--  #else
--    #define QEMU_PLUGIN_EXPORT
--    #define QEMU_PLUGIN_LOCAL
--  #endif
-+  #define QEMU_PLUGIN_EXPORT __attribute__((visibility("default")))
-+  #define QEMU_PLUGIN_LOCAL  __attribute__((visibility("hidden")))
- #endif
+Alternative is to threat that as PLL disabled and return 0...
+---
+ hw/misc/zynq_slcr.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index a2b28019e3c..66504a9d3ab 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -217,6 +217,11 @@ static uint64_t zynq_slcr_compute_pll(uint64_t input, uint32_t ctrl_reg)
+         return 0;
+     }
  
- typedef uint64_t qemu_plugin_id_t;
++    /* Consider zero feedback as maximum divide ratio possible */
++    if (!mult) {
++        mult = 1 << R_xxx_PLL_CTRL_PLL_FPDIV_LENGTH;
++    }
++
+     /* frequency multiplier -> period division */
+     return input / mult;
+ }
 -- 
-2.29.0
+2.26.2
 

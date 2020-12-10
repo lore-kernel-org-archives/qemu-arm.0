@@ -1,105 +1,109 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3705707lfo;
-        Mon, 1 Feb 2021 11:57:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzeUPHU9hfshGI+Bhq5cmIHo2KHj4ZExuJKw/zvs/OL2TdyPMDTVdNBFckAOuiS2/juvwik
-X-Received: by 2002:a25:35d4:: with SMTP id c203mr27801319yba.371.1612209458939;
-        Mon, 01 Feb 2021 11:57:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612209458; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5869552lfb;
+        Thu, 10 Dec 2020 04:55:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyQepzXJVhA/BocmHn/5q8rF6nug4N9YAw0BNqqfQVNsmYM1SrxcaX1YI5a0RHGCZe9P4Qa
+X-Received: by 2002:a25:7c43:: with SMTP id x64mr8721645ybc.267.1607604908505;
+        Thu, 10 Dec 2020 04:55:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607604908; cv=none;
         d=google.com; s=arc-20160816;
-        b=b1WDsYAnWrL93gMl2uVBXM7rOIwqbkgX3HlnM1KnvlAj21oq8FsO1c2NXB8BJFZiro
-         BnEkbwRFGH29IlgJH7XmVWDzhjSyGBRWbzO97y+53UNm5Fjahis92+e+TpNypQGWfwLM
-         7bJosaBmcM5eLA8MWidn7cHPdin0YrARZfKRCVNcLRWUyzAnb0oBWMhplNc4WLv4JFQf
-         HF6Rpie8Q3iJ0vtpYbapsnVhZN0HbEfgLRL/U3Gd1uOf4RSXNVO+pmbYpQc8qMDolrbt
-         sLxSAwAEI2DM+Lb0GevOWoIBDZng25zXtGq4H4B7eleK5CV5LFu2N2snU8zLLG2j9pAx
-         QHAA==
+        b=LpXAEeRtnRTfahWH/lXI1ekgXOl2s33ml9geIMFfE9af2166Ju0s7Ayc2YYxxCunIJ
+         l6AX9b4+QfjodLiONeWe8nRJ7d7kxFAZ2pxPY22E+O41kA4DQh7enaeyWPYoyAP5vr8r
+         8srQ3AzliPHc02Uy3o7OLVHMJkTdtVUe0HhkNaAlTWLOfPDhJaDcK8D6PHrP0GcahGZW
+         4KX7oc7Nyzu1uB6gCG40aWnchHR5Axo0n0x1dxjtzJc9zf/wbB9hhrX5lFcmodokv94J
+         Tm6ToeNCa6fSnGQxI/SWEmYGh+QUjJ5aMD/xp5te6if+KqTDCNpUDIMpeXXSw7qUUF/C
+         GjCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=MJpC+ZhoVpPrt82JDN2+JYljtbRDmVTcwos129cyrEY=;
-        b=Z75pxIgNLZnGdE3DBWvGe0/FA8nMzgr6v96i7DOfTfA8CusdJZLFJH12VsggIJz5AA
-         5YZ/7i7aK0QvTdSytSuDLAbIRWQ+8cj6YA6icz/7WuVIAtdAgeVzbSIE9gqJf89sTgBw
-         hI9UR4yrpq79xDXH6/8iw0GdbYFXQAjtO/k6O+H2XQj+dGe97voSaML4qErCRORgmBa6
-         hUqe3FUoaMVpD6QuWgzrPcq2DE9kmy7FHC2ksRsZezO9sw6pXWPzm9pAL751+cNuYxgu
-         FiYe+DKiqvhW4tsLqwBHq/jO1IKntJrm6ncnXLYgHwXff7HIowAmyrlQj6eR20K2Khvd
-         2qcg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=QpL1M1N4+02Eo3Qecfl0bWliFgEqvRD2BMbzyQGTP1M=;
+        b=fUFY2h9m0G1k159lf8Eu/dJBj83dFQHjRhQRxz/JfFNy9zeAEt3ptDwAnggF7XLoqJ
+         58i3qIzbWQ62l3pAgrXS+lsoLZ6oQYJZXwKtjXHxi2eQi4RzeDiHA3FgCvsEZgtXyjCb
+         bOgB75R1EvmXr7d33BXQ+zOB3Kp63uXsJBYT4jAD3SsCUsM/YZeEmL4PHsg08lRuVnoJ
+         bV8g1os9IR2aWV51wK3q76vFiqJ3vPvQRA93dBEBWh/yJskgEXTmrsxBJpJ5eeKlobqc
+         xbJzXpQXWAX9UN8IJyG7wKhK5HAw6Hj1GNsFmDoTDoryBKHgPAgZSt/ttgyYoVP8m8zE
+         kzEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eXtLoe8a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k67si12206728ybc.123.2021.02.01.11.57.38
+        by mx.google.com with ESMTPS id d5si4848115ybn.352.2020.12.10.04.55.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Feb 2021 11:57:38 -0800 (PST)
+        Thu, 10 Dec 2020 04:55:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eXtLoe8a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48760 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6fKM-0000IH-AX
-	for alex.bennee@linaro.org; Mon, 01 Feb 2021 14:57:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53674)
+	id 1knLTP-0004d8-S5
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 07:55:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6fJU-0000Em-Km; Mon, 01 Feb 2021 14:56:44 -0500
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:35802)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6fJS-0005UL-V5; Mon, 01 Feb 2021 14:56:44 -0500
-Received: by mail-io1-xd2b.google.com with SMTP id y19so18761378iov.2;
- Mon, 01 Feb 2021 11:56:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=MJpC+ZhoVpPrt82JDN2+JYljtbRDmVTcwos129cyrEY=;
- b=eXtLoe8a8JJSEVA7zc0HC8MGyIpGJodjCwSAA9/YRrCB09CwQQOUBsI+rLl/98mZmf
- 5v7hiUCA5BQJsIdsiSPWL/ZGpqOAKiP5AVRaVep631lC4Y0b7wnjVk0OYh/1lKwJiQkP
- Q/mTn2GACqe5uIMNKRsZ74IOsQhrF3PFAD1KmOgj8UM3Ib7F3J/kWemc3a3ImOsOcWM7
- UNSQ5ABQ49Sa9cWil+lrC/kvvR4Oq3NIR1N4fMqxQSbmpiq55hLpz9L63LRVGruJcVKJ
- t0/2WD39T2tvjTOUuHKGtL2O42CHhTCy1w/qfT31p0EbasO0MW5KLzpfR+kYx9s+cJGP
- +5bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=MJpC+ZhoVpPrt82JDN2+JYljtbRDmVTcwos129cyrEY=;
- b=s8FJrXUEDxrWCBBTMzziEhwLNAFBNc3ujYV7erBrRrQ/GNMqw7T/y0KTn8JmJ3vJRj
- UYWvAGuXyghFbPwevOERljeJGxzoZdlymi2zNILVgaYzyaK+cLddXfnistz+rrfKnbIg
- rcWbgl0GhejjhzGDGflQYWjp95WDoCtmhYwWnLeRdJwoyPVmk4AdbrLcFoJSqfcG2Whb
- jGev+cscW+33BsjcJ46b1HavrZuTpRuD/TP2hVNnRiw2D2dLuNTmwJmilq5EKUrtBrCY
- ZfImxEXClKA+KqmRyGbywJ9DfCK2K1lLaNihz4AQoyL46ixTLFbjddmOmxicmr2Rj0Co
- 7X+w==
-X-Gm-Message-State: AOAM532EYqFKwoXDrwIe0L/0v2Bkq8A66M4t2J5L20T0CpVnaM20FDo1
- kYAn52ctx2FjyO0EBeOJcHQwHSRlyAvtqYpWCPKuRdx/OJ4=
-X-Received: by 2002:a6b:4003:: with SMTP id k3mr13377175ioa.105.1612209401352; 
- Mon, 01 Feb 2021 11:56:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1knLQ2-0001bo-Jy; Thu, 10 Dec 2020 07:51:40 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:65334)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1knLPy-0001S7-QF; Thu, 10 Dec 2020 07:51:37 -0500
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 0BACjOWl145934; Thu, 10 Dec 2020 07:51:23 -0500
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 35bky803k3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 10 Dec 2020 07:51:22 -0500
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 0BACVVcK003686;
+ Thu, 10 Dec 2020 12:51:20 GMT
+Received: from b06cxnps4074.portsmouth.uk.ibm.com
+ (d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
+ by ppma03ams.nl.ibm.com with ESMTP id 3581u85sxh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 10 Dec 2020 12:51:20 +0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 0BACpIS116712144
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 10 Dec 2020 12:51:18 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2768C5204F;
+ Thu, 10 Dec 2020 12:51:18 +0000 (GMT)
+Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with SMTP id E6DC552051;
+ Thu, 10 Dec 2020 12:51:17 +0000 (GMT)
+Received: from yukon.ibmuc.com (sig-9-145-158-23.de.ibm.com [9.145.158.23])
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 26500220156;
+ Thu, 10 Dec 2020 13:51:17 +0100 (CET)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 0/5] aspeed queue
+Date: Thu, 10 Dec 2020 13:51:10 +0100
+Message-Id: <20201210125115.1812083-1-clg@kaod.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20210131184449.382425-1-f4bug@amsat.org>
- <20210131184449.382425-5-f4bug@amsat.org>
-In-Reply-To: <20210131184449.382425-5-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 1 Feb 2021 11:56:14 -0800
-Message-ID: <CAKmqyKNRGf6jF_T6A_t=LK_kROa3Vg4tZjRo9+qeRXhJGM6Zpg@mail.gmail.com>
-Subject: Re: [PATCH v3 4/6] hw/arm/xlnx-versal: Versal SoC requires ZynqMP
- peripherals
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd2b.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.343, 18.0.737
+ definitions=2020-12-10_05:2020-12-09,
+ 2020-12-10 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ spamscore=0 clxscore=1034 impostorscore=0 priorityscore=1501
+ malwarescore=0 bulkscore=0 suspectscore=0 mlxlogscore=863 mlxscore=0
+ adultscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2012100080
+Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,55 +116,58 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>, Niek Linnenbank <nieklinnenbank@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aUvZ47J76SQ8
+X-TUID: E3vrgkskcbmJ
 
-On Sun, Jan 31, 2021 at 10:51 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->
-> The Versal SoC instantiates the TYPE_XLNX_ZYNQMP_RTC object in
-> versal_create_rtc()(). Select CONFIG_XLNX_ZYNQMP to fix:
->
->   $ make check-qtest-aarch64
->   ...
->   Running test qtest-aarch64/qom-test
->   qemu-system-aarch64: missing object type 'xlnx-zynmp.rtc'
->   Broken pipe
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+The following changes since commit 5e7b204dbfae9a562fc73684986f936b97f638=
+77:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+  Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into stagi=
+ng (2020-12-09 20:08:54 +0000)
 
-Alistair
+are available in the Git repository at:
 
-> ---
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 09298881f2f..be017b997ab 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -364,6 +364,7 @@ config XLNX_VERSAL
->      select VIRTIO_MMIO
->      select UNIMP
->      select XLNX_ZDMA
-> +    select XLNX_ZYNQMP
->
->  config NPCM7XX
->      bool
-> --
-> 2.26.2
->
->
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20201210
+
+for you to fetch changes up to 6f5f6507e49df4820207a94f3aeaaeab08092d32:
+
+  aspeed: g220a-bmc: Add an FRU (2020-12-10 12:11:03 +0100)
+
+----------------------------------------------------------------
+Aspeed patches :
+
+* New device model for EMC1413/EMC1414 temperature sensors (I2C)
+* New g220a-bmc Aspeed machine
+* couple of Aspeed cleanups
+
+----------------------------------------------------------------
+C=C3=A9dric Le Goater (1):
+      aspeed/smc: Add support for address lane disablement
+
+Joel Stanley (1):
+      ast2600: SRAM is 89KB
+
+John Wang (3):
+      hw/misc: add an EMC141{3,4} device model
+      aspeed: Add support for the g220a-bmc board
+      aspeed: g220a-bmc: Add an FRU
+
+ include/hw/misc/emc141x_regs.h |  37 +++++
+ hw/arm/aspeed.c                |  72 +++++++++
+ hw/arm/aspeed_ast2600.c        |   2 +-
+ hw/misc/emc141x.c              | 326 +++++++++++++++++++++++++++++++++++=
+++++++
+ hw/ssi/aspeed_smc.c            |  25 +++-
+ tests/qtest/emc141x-test.c     |  81 ++++++++++
+ hw/arm/Kconfig                 |   1 +
+ hw/misc/Kconfig                |   4 +
+ hw/misc/meson.build            |   1 +
+ tests/qtest/meson.build        |   1 +
+ 10 files changed, 542 insertions(+), 8 deletions(-)
+ create mode 100644 include/hw/misc/emc141x_regs.h
+ create mode 100644 hw/misc/emc141x.c
+ create mode 100644 tests/qtest/emc141x-test.c

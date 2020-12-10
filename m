@@ -1,90 +1,87 @@
-Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1042907qvk;
-        Thu, 10 Dec 2020 05:09:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxjUYGGbnJjl36ctS7VjzDJrd1nFEYECTlNpHC60SMKYYWeJ1Xt0HWDq7ZQvcywdCAe0h9t
-X-Received: by 2002:ac8:6f3c:: with SMTP id i28mr8909564qtv.8.1607605790475;
-        Thu, 10 Dec 2020 05:09:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607605790; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5891960lfb;
+        Thu, 10 Dec 2020 05:20:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzPYFI+TPIS3tB/mF/M/ABEGJz6VmAOAzvTzhIdK1VRhKC6ovaMu4Q6n3y0zYHdI9TRK35l
+X-Received: by 2002:a25:348a:: with SMTP id b132mr2905966yba.378.1607606409205;
+        Thu, 10 Dec 2020 05:20:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607606409; cv=none;
         d=google.com; s=arc-20160816;
-        b=JaTQGF0DW4iyZYEvGW+/c/cMfX1HBW5y/aYEH5xiHDZdckc21uk5MO9hbReNCLs8Sr
-         IuBsbShVjAFq2LKHvnfosc+mXBYDXr0EXY0kTVhvOfCmxVIg5ttfikxv5SlnuHk2Y2nb
-         OBT0PUUTFTZ3tApxQZeIEjODZ3Wi2R0GVSG5y4e4dbKVZ/ZEJb5wGtYWf/6mXkxok/Pt
-         wVMOFW5YgVRJUxa/L02sW2Q46o4g32tw7OQfli7hDdW93cdrNssF4Ik+/44fFeDY8XGy
-         nPMWzJ3vYTPL52afiCag5Bd8lOfzbyggVNmXJz6nL7DW8gdApqZMGksOhzc1m7LEXmVu
-         JeJg==
+        b=wRIGmmxJMqec5tl0lGESjwEfRowNciedMa48WcBmMSM9pSlWRHWcRKiFrcm9SlMSw9
+         8XSYpkD/fEjejAyiRKSoE7quADTRsON4Qx/65BKRvIGWYzmlBPXra0nSj0ryHaW9GcsH
+         DKMY9QJz+wXiEnUtYA4mKxbtRyVJq6McuHVjHyD25jbJ4gdcro4BhtIGHHxIUKdZHN3l
+         kfKULeK3j+nj2w3qUdHS55gjWuoOwkffplo/FxBNnAUo4yLugLrVBGHjkIwK0dAkJZ92
+         Xgeat/3ZDUc1qAJS+CdaYJzfq57RqINSbMeCfbxDHFkzhidb17Xh3qBzw778xX7lzcs1
+         ZbyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=vQFjJx5o2GAkHtAq6tVODyCc2thCgEmuWGwkLthniEE=;
-        b=XPJKeJwxaT2KfQfW3722GNjGyPF5mUQ8RBGgVcjzLy1hjCodXM6ESEuq3mSkugVW3T
-         0fs8YP2eo9Ou8xLsNyxVD+ZHDBdkOPZeJAHAEIloIsCx4NTHs/uwrIcLZ2tFuNmPIePr
-         9rC654ee6liBh6wqfDz++RaCquOGYA/+SOAM311XwyrJUh36SN8FxjK/sBf72At9U2eg
-         ImQVzUqHDWZKDoxVY8yjNK/La93Y1sIl4+Te2dIMz09Wc7oMdvaCeJiwDRkmFbqR0PaE
-         JR+SlI6RmfgiuUo4FJKh2C1UeWhUpZygi76uhMRjICDFJG8LqfiJayv/Ijj/qNNFT1I1
-         1zuA==
+        bh=LuklwB7eU9dVj1vtrAhmx/P3/HUfmtdHfystlM8tVjo=;
+        b=og8HyJDXWpe7SxdbYZv1oi2t5IyZCd9HGOdxFP6gAoGAByWHMDBR9AQxOSe85VCuEe
+         wfhC1EyhyoSB8t9vvQfEfqjc1L7woWJQqSYaWM9KgLbDPh8k+7WmnltQW+g6moeqLMnr
+         hPMf7ZWT68Hx5/xyCg46z6CKsf80nTKmfoywJ2wW0v50Tfne2LO2GfqUsjLPSeoLc7Rq
+         2xkBCGXDPyTARhA9E14+TiNLiBYsaFO9CdUHRU9ldvYbwZuzCy5/ZcGLL2ah5uQyrDE4
+         mukzwNzZcl1IkBR8iy3vxouvs9PY2XDUcfwPhbVtr+mX3VcqJX5FNx009SoSBXmI1x2T
+         AXtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p19si699234vso.159.2020.12.10.05.09.50
+        by mx.google.com with ESMTPS id e141si5385553ybb.120.2020.12.10.05.20.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Dec 2020 05:09:50 -0800 (PST)
+        Thu, 10 Dec 2020 05:20:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32846 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knLhd-00087L-1T
-	for alex.bennee@linaro.org; Thu, 10 Dec 2020 08:09:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37356)
+	id 1knLrc-0006rC-Fh
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 08:20:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37772)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1knLQ9-0001nj-LG; Thu, 10 Dec 2020 07:51:45 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:14598)
+ id 1knLR9-00034G-JK; Thu, 10 Dec 2020 07:52:47 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:53834)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1knLQ7-0001UU-DH; Thu, 10 Dec 2020 07:51:45 -0500
-Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
+ id 1knLR8-0001oE-5g; Thu, 10 Dec 2020 07:52:47 -0500
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 0BAC48Ea001075; Thu, 10 Dec 2020 07:51:25 -0500
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 35bj9m37uw-1
+ 0BACXD6g067315; Thu, 10 Dec 2020 07:52:39 -0500
+Received: from ppma03fra.de.ibm.com (6b.4a.5195.ip4.static.sl-reverse.com
+ [149.81.74.107])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 35bkbkhbds-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 10 Dec 2020 07:51:25 -0500
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 0BACVQ4f003655;
- Thu, 10 Dec 2020 12:51:23 GMT
-Received: from b06cxnps4076.portsmouth.uk.ibm.com
- (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
- by ppma03ams.nl.ibm.com with ESMTP id 3581u85sxn-1
+ Thu, 10 Dec 2020 07:52:39 -0500
+Received: from pps.filterd (ppma03fra.de.ibm.com [127.0.0.1])
+ by ppma03fra.de.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 0BACqXiZ021407;
+ Thu, 10 Dec 2020 12:52:37 GMT
+Received: from b06cxnps3074.portsmouth.uk.ibm.com
+ (d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
+ by ppma03fra.de.ibm.com with ESMTP id 3581u8rhyx-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 10 Dec 2020 12:51:23 +0000
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 0BACpLMY17170912
+ Thu, 10 Dec 2020 12:52:37 +0000
+Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
+ [9.149.105.232])
+ by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 0BACpK6w21299688
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 10 Dec 2020 12:51:21 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 42DF811C04A;
- Thu, 10 Dec 2020 12:51:21 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 00B4011C054;
- Thu, 10 Dec 2020 12:51:21 +0000 (GMT)
+ Thu, 10 Dec 2020 12:51:20 GMT
+Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6F0FF52051;
+ Thu, 10 Dec 2020 12:51:20 +0000 (GMT)
 Received: from smtp.tlslab.ibm.com (unknown [9.101.4.1])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with SMTP;
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with SMTP id 33F355204F;
  Thu, 10 Dec 2020 12:51:20 +0000 (GMT)
 Received: from yukon.ibmuc.com (sig-9-145-158-23.de.ibm.com [9.145.158.23])
- by smtp.tlslab.ibm.com (Postfix) with ESMTP id 34995220156;
- Thu, 10 Dec 2020 13:51:20 +0100 (CET)
+ by smtp.tlslab.ibm.com (Postfix) with ESMTP id 779BE220188;
+ Thu, 10 Dec 2020 13:51:19 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 4/5] aspeed/smc: Add support for address lane disablement
-Date: Thu, 10 Dec 2020 13:51:14 +0100
-Message-Id: <20201210125115.1812083-5-clg@kaod.org>
+Subject: [PULL 3/5] ast2600: SRAM is 89KB
+Date: Thu, 10 Dec 2020 13:51:13 +0100
+Message-Id: <20201210125115.1812083-4-clg@kaod.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201210125115.1812083-1-clg@kaod.org>
 References: <20201210125115.1812083-1-clg@kaod.org>
@@ -96,11 +93,11 @@ X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.343, 18.0.737
  definitions=2020-12-10_05:2020-12-09,
  2020-12-10 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=652
- malwarescore=0 phishscore=0 impostorscore=0 bulkscore=0 mlxscore=0
- lowpriorityscore=0 clxscore=1034 suspectscore=0 spamscore=0 adultscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2012100080
+ mlxlogscore=793 spamscore=0
+ phishscore=0 adultscore=0 lowpriorityscore=0 suspectscore=0
+ priorityscore=1501 impostorscore=0 clxscore=1034 mlxscore=0 malwarescore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2012100082
 Received-SPF: softfail client-ip=148.163.156.1; envelope-from=clg@kaod.org;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -18
@@ -122,102 +119,39 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
- Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mHbV1UbT5Qbq
+X-TUID: poTtCQKJCjta
 
-The controller can be configured to disable or enable address and data
-byte lanes when issuing commands. This is useful in read command mode
-to send SPI NOR commands that don't have an address space, such as
-RDID. It's a good way to have a unified read operation for registers
-and flash contents accesses.
+From: Joel Stanley <joel@jms.id.au>
 
-A new SPI driver proposed by Aspeed makes use of this feature. Add
-support for address lanes to start with. We will do the same for the
-data lanes if they are controlled one day.
+On the AST2600A1, the SRAM size was increased to 89KB.
 
-Cc: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Message-Id: <20201120161547.740806-2-clg@kaod.org>
+Fixes: 7582591ae745 ("aspeed: Support AST2600A1 silicon revision")
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Message-Id: <20201112012113.835858-1-joel@jms.id.au>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 25 ++++++++++++++++++-------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+ hw/arm/aspeed_ast2600.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 795784e5f364..e3d5e26058c0 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -71,6 +71,16 @@
- #define   INTR_CTRL_CMD_ABORT_EN          (1 << 2)
- #define   INTR_CTRL_WRITE_PROTECT_EN      (1 << 1)
-=20
-+/* Command Control Register */
-+#define R_CE_CMD_CTRL      (0x0C / 4)
-+#define   CTRL_ADDR_BYTE0_DISABLE_SHIFT       4
-+#define   CTRL_DATA_BYTE0_DISABLE_SHIFT       0
-+
-+#define aspeed_smc_addr_byte_enabled(s, i)                              =
- \
-+    (!((s)->regs[R_CE_CMD_CTRL] & (1 << (CTRL_ADDR_BYTE0_DISABLE_SHIFT +=
- (i)))))
-+#define aspeed_smc_data_byte_enabled(s, i)                              =
- \
-+    (!((s)->regs[R_CE_CMD_CTRL] & (1 << (CTRL_DATA_BYTE0_DISABLE_SHIFT +=
- (i)))))
-+
- /* CEx Control Register */
- #define R_CTRL0           (0x10 / 4)
- #define   CTRL_IO_QPI              (1 << 31)
-@@ -702,19 +712,17 @@ static void aspeed_smc_flash_setup(AspeedSMCFlash *=
-fl, uint32_t addr)
- {
-     const AspeedSMCState *s =3D fl->controller;
-     uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
--    int i;
-+    int i =3D aspeed_smc_flash_is_4byte(fl) ? 4 : 3;
-=20
-     /* Flash access can not exceed CS segment */
-     addr =3D aspeed_smc_check_segment_addr(fl, addr);
-=20
-     ssi_transfer(s->spi, cmd);
--
--    if (aspeed_smc_flash_is_4byte(fl)) {
--        ssi_transfer(s->spi, (addr >> 24) & 0xff);
-+    while (i--) {
-+        if (aspeed_smc_addr_byte_enabled(s, i)) {
-+            ssi_transfer(s->spi, (addr >> (i * 8)) & 0xff);
-+        }
-     }
--    ssi_transfer(s->spi, (addr >> 16) & 0xff);
--    ssi_transfer(s->spi, (addr >> 8) & 0xff);
--    ssi_transfer(s->spi, (addr & 0xff));
-=20
-     /*
-      * Use fake transfers to model dummy bytes. The value should
-@@ -988,6 +996,7 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr =
-addr, unsigned int size)
-         (addr >=3D s->r_timings &&
-          addr < s->r_timings + s->ctrl->nregs_timings) ||
-         addr =3D=3D s->r_ce_ctrl ||
-+        addr =3D=3D R_CE_CMD_CTRL ||
-         addr =3D=3D R_INTR_CTRL ||
-         addr =3D=3D R_DUMMY_DATA ||
-         (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) ||
-@@ -1276,6 +1285,8 @@ static void aspeed_smc_write(void *opaque, hwaddr a=
-ddr, uint64_t data,
-         if (value !=3D s->regs[R_SEG_ADDR0 + cs]) {
-             aspeed_smc_flash_set_segment(s, cs, value);
-         }
-+    } else if (addr =3D=3D R_CE_CMD_CTRL) {
-+        s->regs[addr] =3D value & 0xff;
-     } else if (addr =3D=3D R_DUMMY_DATA) {
-         s->regs[addr] =3D value & 0xff;
-     } else if (addr =3D=3D R_INTR_CTRL) {
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 1450bde7cf26..12e4a16d3765 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -481,7 +481,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass=
+ *oc, void *data)
+     sc->name         =3D "ast2600-a1";
+     sc->cpu_type     =3D ARM_CPU_TYPE_NAME("cortex-a7");
+     sc->silicon_rev  =3D AST2600_A1_SILICON_REV;
+-    sc->sram_size    =3D 0x10000;
++    sc->sram_size    =3D 0x16400;
+     sc->spis_num     =3D 2;
+     sc->ehcis_num    =3D 2;
+     sc->wdts_num     =3D 4;
 --=20
 2.26.2
 

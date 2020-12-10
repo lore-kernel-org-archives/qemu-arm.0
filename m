@@ -1,86 +1,84 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5493565lfb;
-        Wed, 9 Dec 2020 18:22:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxc03FJsDS/cWyZOk1t4NvwdDQ5dS0B2jw9Ps0FMShDs34L9+ztsQEn6m+1Gp0aoRkr5TqC
-X-Received: by 2002:a25:be52:: with SMTP id d18mr7832696ybm.176.1607566931642;
-        Wed, 09 Dec 2020 18:22:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607566931; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5519488lfb;
+        Wed, 9 Dec 2020 19:12:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwax/oF5TF8RGigGOH0KWz0u6sNJv7bsQPoFUfhJbwyRRKYCNSMkpLY1NrMabzytWbnKs+c
+X-Received: by 2002:a25:6003:: with SMTP id u3mr7500947ybb.126.1607569942155;
+        Wed, 09 Dec 2020 19:12:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607569942; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gos5CuWkWcdEv+ltvTwdkeMRTJWaeBnl84fKylpR+EIqUL9CD9WoR+DrSFQj32XlmN
-         gDFhpeNM4ZWATK78zA0rgE8xPXAP4jO2D210zqcmcM+BUQv64tXCutRnhIYzWt6LFCP7
-         AFVpUJjAG99TnmVH8uzFLo3b0/v9o5uQcAlHZhjL11vkA0x/1hn861WBOtLbEQA+SapC
-         umMuzpHyErOyEQC9FsVqSO3QbnS4u2zl4upcWP08EzBDp8fbzfZXQNmcKFLvDeqhlrZj
-         SkJ9yjKv6m/MDxU2boyARfLiDAVNxsolYclGcP4a24H7IXBQ7/CYHGTOLoa36Lf8+jBe
-         uOJg==
+        b=NrPeOLKD0WX1zRkAIcYjRlMq62GC/084Vafn/JlMcQofdpg6sSqfbm4GAiryvh01t/
+         Xtp0UWS6KFnxCAP6vmkj4T3pTJw4OpEl97oFWU1XvPB9zbplt+0ascyox8vtpF6BjbSi
+         U7zX5yoJA59cOidkPVV9aF/2GgkggRGJ5Wgj15SDOpl56g301wChVptuP145zEsKFFo7
+         PlTi2w8QhrYkQrMsT7Jrs8GCgK6NLJxaiV+UL+akHAr4lq5lNXyzs2WA/Pn2qcWlO3YS
+         H0gxIS78p+PJXTQQZkrl2u37FNfeblZiTiBwd3yGuZRXldCu8ulOw+2R6pY6hD62h+Y9
+         p80w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=Bb5PLdiBOaSCTqn5X91mD1p/UH6QtnGNUaIHnZDnBRo=;
-        b=CbmInX6Kwh2tKx/yvni0kNxF/uHhSltd5NWvvYlTFpqnoW1p/OYTVVjRLZdhya+dIX
-         wSrnVwAWvFGo1pZWuDWfJFWS5cbRkDjmqQzg2+2hp4GszK3cEC2KcdIy54evbxMQ1gWB
-         m6SbYja/SgkazDVlxSRW96U1Qx2y6uZnVoeiJbIoxu1lSQ+actxLSqgatQNxRcSuHn7v
-         1j24Zaq7rzS2RGSbD1fz3FVj9Wmkw314bOdy44UIf5ggik1s5TQ3dzIeN0zYmxsU2iRW
-         nDRw/ybxfPEsKPtcDbwKoMovgO+pdp2yHmoOcwq85zCIiqMiV3SLmlKZrvcGpt1FNW9z
-         m42Q==
+        bh=kiTb7nAWg0LSDPDOPtO9hnXPW0Yfdyw8Rj0vxxhKu28=;
+        b=x7cTg0e+2P8jHnloEm/on4aQD5IBBKERmGklYmGkTqBl+JXZ0OAg5E0oPQXLewbHvb
+         j7BWP1o+XBFMNLOehlC8RRmc2+GIcN7zBRNDX6aX/r9WZLBR1hD9NSe4I27UHvjROBxP
+         2819u1LKtKbafvgary6m8hhgTD34/I0XOVDtcxTc1JTxQqaVuuITGTNvMKY8bzbtDpen
+         EllHHujElacOb3VyfgsHY4qjHfyq4U/pDJ+s32tn4cIKkdz4we1poy3/QDBRbfb8qoNP
+         EGDz369IYpb0K3wpnExoi6p9fn1DVClRz26QJdiXt8AKgCUITF0TQKihHmstfFJyPlzE
+         Y6Yw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4si3652023ybk.374.2020.12.09.18.22.11
+        by mx.google.com with ESMTPS id c1si2564535ybi.98.2020.12.09.19.12.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Dec 2020 18:22:11 -0800 (PST)
+        Wed, 09 Dec 2020 19:12:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41176 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knBar-0000Nw-Qy
-	for alex.bennee@linaro.org; Wed, 09 Dec 2020 21:22:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50654)
+	id 1knCNR-0000CQ-JY
+	for alex.bennee@linaro.org; Wed, 09 Dec 2020 22:12:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1knBaS-0000NE-8V; Wed, 09 Dec 2020 21:21:44 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2828)
+ id 1knCMn-0000C5-PM; Wed, 09 Dec 2020 22:11:41 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2473)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1knBaP-0003Pk-Jm; Wed, 09 Dec 2020 21:21:43 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CryM55SqJzkkWT;
- Thu, 10 Dec 2020 10:20:49 +0800 (CST)
+ id 1knCMi-0000RI-VM; Wed, 09 Dec 2020 22:11:41 -0500
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CrzSg42TvzM0Cm;
+ Thu, 10 Dec 2020 11:10:43 +0800 (CST)
 Received: from [10.174.187.219] (10.174.187.219) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 10 Dec 2020 10:21:22 +0800
-Subject: Re: [RFC PATCH v2 1/3] vfio: Move the saving of the config space to
- the right place in VFIO migration
-To: Alex Williamson <alex.williamson@redhat.com>, Cornelia Huck
- <cohuck@redhat.com>
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 10 Dec 2020 11:11:18 +0800
+Subject: Re: [RFC PATCH v2 2/3] vfio: Set the priority of the VFIO VM state
+ change handler explicitly
+To: Cornelia Huck <cohuck@redhat.com>
 References: <20201209080919.156-1-lushenming@huawei.com>
- <20201209080919.156-2-lushenming@huawei.com>
- <20201209132947.3177f130.cohuck@redhat.com>
- <20201209113431.5b252e93@omen.home>
+ <20201209080919.156-3-lushenming@huawei.com>
+ <20201209134537.5c7ab401.cohuck@redhat.com>
 From: Shenming Lu <lushenming@huawei.com>
-Message-ID: <3f7db9e7-3c98-5022-e907-e6214815fae9@huawei.com>
-Date: Thu, 10 Dec 2020 10:21:21 +0800
+Message-ID: <817ace0f-ddcf-db7f-8f92-f94cc450fb90@huawei.com>
+Date: Thu, 10 Dec 2020 11:11:17 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.2.2
 MIME-Version: 1.0
-In-Reply-To: <20201209113431.5b252e93@omen.home>
+In-Reply-To: <20201209134537.5c7ab401.cohuck@redhat.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.219]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=lushenming@huawei.com; helo=szxga04-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=lushenming@huawei.com; helo=szxga05-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -94,61 +92,71 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
- mst@redhat.com, Marc Zyngier <maz@kernel.org>, qemu-devel@nongnu.org,
+ mst@redhat.com, qemu-devel@nongnu.org, Marc Zyngier <maz@kernel.org>,
+ Kirti Wankhede <kwankhede@nvidia.com>,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- yuzenghui@huawei.com, wanghaibin.wang@huawei.com
+ Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, yuzenghui@huawei.com,
+ wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pPn2k10OyQsV
+X-TUID: eCs49rLukcUs
 
-On 2020/12/10 2:34, Alex Williamson wrote:
-> On Wed, 9 Dec 2020 13:29:47 +0100
-> Cornelia Huck <cohuck@redhat.com> wrote:
+On 2020/12/9 20:45, Cornelia Huck wrote:
+> On Wed, 9 Dec 2020 16:09:18 +0800
+> Shenming Lu <lushenming@huawei.com> wrote:
 > 
->> On Wed, 9 Dec 2020 16:09:17 +0800
->> Shenming Lu <lushenming@huawei.com> wrote:
+>> In the VFIO VM state change handler, VFIO devices are transitioned
+>> in the _SAVING state, which should keep them from sending interrupts.
+>> Then we can save the pending states of all interrupts in the GIC VM
+>> state change handler (on ARM).
 >>
->>> On ARM64 the VFIO SET_IRQS ioctl is dependent on the VM interrupt
->>> setup, if the restoring of the VFIO PCI device config space is
->>> before the VGIC, an error might occur in the kernel.
->>>
->>> So we move the saving of the config space to the non-iterable
->>> process, so that it will be called after the VGIC according to
->>> their priorities.
->>>
->>> As for the possible dependence of the device specific migration
->>> data on it's config space, we can let the vendor driver to
->>> include any config info it needs in its own data stream.
->>> (Should we note this in the header file linux-headers/linux/vfio.h?)  
+>> So we have to set the priority of the VFIO VM state change handler
+>> explicitly (like virtio devices) to ensure it is called before the
+>> GIC's in saving.
+> 
+> What this patch does is to make the priority of the vfio migration
+> state change handler depending on the position in the qdev tree. As all
+> state change handlers with no explicit priority are added at priority
+> 0, this will make sure that this handler runs before (save) resp. after
+> (restore) nearly all other handlers, which will address your issue here
+> (and possibly similar ones).
+> 
+> So, this patch seems fine for now, but I'm wondering whether we need to
+> think more about priorities for handlers in general, and if there are
+> more hidden dependencies lurking in there.
+
+As far as I know, as for the migration of interrupt, on x86 the sync from
+the PIR field to the Virtual-APIC page for posted interrupts (in
+KVM_GET_LAPIC ioctl) is after the pause of VFIO devices, which is fine.
+Not sure about others...
+
+Thanks,
+Shenming
+
+> 
 >>
->> Given that the header is our primary source about how this interface
->> should act, we need to properly document expectations about what will
->> be saved/restored when there (well, in the source file in the kernel.)
->> That goes in both directions: what a userspace must implement, and what
->> a vendor driver can rely on.
-
-Yeah, in order to make the vendor driver and QEMU cooperate better, we might
-need to document some expectations about the data section in the migration
-region...
-
+>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+>> Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
+>> ---
+>>  hw/vfio/migration.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
 >>
->> [Related, but not a todo for you: I think we're still missing proper
->> documentation of the whole migration feature.]
-> 
-> Yes, we never saw anything past v1 of the documentation patch.  Thanks,
-> 
-
-By the way, is there anything unproper with this patch? Wish your suggestion. :-)
-
-> Alex
-> 
-> 
->>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
->>> ---
->>>  hw/vfio/migration.c | 25 +++++++++++++++----------
->>>  1 file changed, 15 insertions(+), 10 deletions(-)  
+>> diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+>> index 3b9de1353a..97ea82b100 100644
+>> --- a/hw/vfio/migration.c
+>> +++ b/hw/vfio/migration.c
+>> @@ -862,7 +862,8 @@ static int vfio_migration_init(VFIODevice *vbasedev,
+>>      register_savevm_live(id, VMSTATE_INSTANCE_ID_ANY, 1, &savevm_vfio_handlers,
+>>                           vbasedev);
+>>  
+>> -    migration->vm_state = qemu_add_vm_change_state_handler(vfio_vmstate_change,
+>> +    migration->vm_state = qdev_add_vm_change_state_handler(vbasedev->dev,
+>> +                                                           vfio_vmstate_change,
+>>                                                             vbasedev);
+>>      migration->migration_state.notify = vfio_migration_state_notifier;
+>>      add_migration_state_change_notifier(&migration->migration_state);
 > 
 > .
 > 

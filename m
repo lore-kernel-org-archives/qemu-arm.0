@@ -1,175 +1,181 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1211767lfb;
-        Wed, 2 Dec 2020 06:46:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxnL95TmFpKx06wcK7EfyyhcDOxF3awBG6kLfien9mofH1D+VInrRVxASd/XZw8yvBWgHnx
-X-Received: by 2002:a25:51c7:: with SMTP id f190mr4487844ybb.299.1606920402399;
-        Wed, 02 Dec 2020 06:46:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606920402; cv=none;
+Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1073934qvk;
+        Thu, 10 Dec 2020 05:49:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxf8I+kr+X6a50DikdNGNEUJkP0QPwnluUccG+EHLvT/KfNJmgfeiEeOru8sqN/w7MwRiWB
+X-Received: by 2002:a02:3541:: with SMTP id y1mr8756737jae.66.1607608187390;
+        Thu, 10 Dec 2020 05:49:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607608187; cv=none;
         d=google.com; s=arc-20160816;
-        b=hilqfA3mNBpdoHe7ZJASy8vBtHTgK5DcDtevHF87pGdY0w4+2gf6s3KFWO+WhxTxKG
-         BrYfDVnAFAD2wE/g/DVunaFyCThelKx2VA87QMrw3wUbtd3Kp5qWSoYb/v2eaW94kfKu
-         5yPX+VhUna+CGCG9DcoRcaKBZMPP4yn7BxFGzkzYfGIhQFV34Oj7Ny9D7xnVT/bQJJSF
-         b/YIHKejfTAEKLJ216awnijYox7XEAZIcxOb30vbkrFzn2q4OLqT50m450leaUmDY5dQ
-         Hqp2A2Aufi/QZcOvSLvG0EtWcfjrqMscyOg9l0ACUgpDgzAJ+CiTyZ5D4pelAhu3dd52
-         HHGA==
+        b=cWfmspv5wzmcRmn2eMt9Sxw/YvDvVzlwZXfpaPKGmC9NA4+0zh9IU69v/YLBTiX5Af
+         pOqqdaHsMdht4FIAWqCgdYgNSHG25glCDdzEjOV2XlkaU1F0Zfuceu5lnwUZXWjIvB9R
+         4MAKLaFCwVA4wKeDcoSe2tUq/T/1lel2a1L4luCdnzeEyeZtu5BPrIXVjjWkUcds9dSB
+         brGM/nHf1NvLkX8PZxeiVZmUq8PdJ0Da3ISlO9pq5ukX244q4Y/90WYo8jIuiahl42m4
+         sdAt72SYI5AVgiOG3+Rmgl2XUWyQqcutR/Ly4VpXFeHGsZiMbLw37KIGnCgl/IRs2vaH
+         EKMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=fkbY38y+uyqMVcJivAUjLwtmcJVovS8vLBnCWge6hes=;
-        b=stFChcxdeHvnmGqJqJNGbCBGuIOny6zCFl2qaoLsGmweXDjweQ42p39bGdI98tIc2X
-         vRRBVoZCBbBUsi8G2v1bL8C+VD2YLoaHsZJvYODZOVuYB4i+q8KS5zFTWN7Kg9Xhaimy
-         lUnfPSWAobaJaSwGlNBW4S78Q+DngtFH+jsSNXWx3UR9kaDBEqLfov2tkinVm6vCtYSy
-         fsiHRSV5w/F0x2lAFLlyjQQVajAaJfdiq4LuH6iQH8fs+U0z70LFQArjDX+dKFJQZRTM
-         s3GmgpTTWyis8sa+nZXwTLOAUqibJ5B18fsEUgSBXhCLrs7Gv0/lmyWfpGlcX0rnub7G
-         fj4Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:sender:precedence:errors-to:list-subscribe
+         :list-help:list-post:list-unsubscribe:list-id;
+        bh=anpnx/tw5p62yFhBITy05bzKP3wcJQGVw5OZrWMts1E=;
+        b=ERxfIj3KzueVJndTWlXOY4SORxUgheBxM40N2MBfFDXyF8fpVdT/4n/JxijF2ycs0U
+         JC4sy6B96VuerkjHw1emE5QGZKDXRIy3dvXS74QQXdbcCcNbPB5l/ymwD/njD0LclUnJ
+         J7qAFyTPyTibPIRTl1Jyb+eHEoOStZ0DMTr8bewMSNwEgZ8HaW5tNur2L2XIRNmoAxkl
+         Dc4dY/jn6B0KucmyrY5IiF79/AR7UqAdkivBfrSuC6goJZchjYTbbAuxGfgBBASRd9RE
+         +PaKLOWEfltzYV9wuiIXqujpxdkOshS/ZnoKgyQPmn6MJLt7CoWfBxAekPdTjugqH2Jl
+         Gg6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="rcVFF/7M";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2si2192680ybj.453.2020.12.02.06.46.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 06:46:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BAwICLTL;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id l16si4531590jaj.31.2020.12.10.05.49.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Dec 2020 05:49:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="rcVFF/7M";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37888 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkTOz-0003ru-QN
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 09:46:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39170)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kkTO8-0003nd-61; Wed, 02 Dec 2020 09:45:48 -0500
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:42348)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kkTO5-0006N3-4A; Wed, 02 Dec 2020 09:45:47 -0500
-Received: by mail-pl1-x644.google.com with SMTP id s2so1230535plr.9;
- Wed, 02 Dec 2020 06:45:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=fkbY38y+uyqMVcJivAUjLwtmcJVovS8vLBnCWge6hes=;
- b=rcVFF/7M+zeDyLVhrBorBVBBQXnvER90HVH3kl+HonZd0KbrvZ3W9aciDoHJFzTyHF
- RRX+5jXB965Qt+p1TQwGelzen1fEcBs2zwnFVExGgjD1ZP0py6Dtpw4nsgb10ABKhLHN
- wR3ywfpJUNV0tx5mcfm257FN1W9aiVSoCT/+NNdSB7V6IMi8oWJgg7+Jim8SWC6FgIpr
- eJhIRE2hVLN5H1Tq8SGzLGUmpOO1q0uW93djpu4H1trTqIeJq6PxALpXP+4R/PhuvYcd
- P63JmqxPUmeOoHLgYvbJwMDR1igOLQN32Y3bMnuFPAD0Y/+ap4ojyQQpqjGD6sA4bzfs
- g66Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=fkbY38y+uyqMVcJivAUjLwtmcJVovS8vLBnCWge6hes=;
- b=nFgOvipCweiLRA/PuvWDtQpVO4fBKKHOzTiLoo9AhZr+8quQHogceBfl/W9XsZzVDB
- Y37E3BW+In85IbqyhlzrJHB0vBF+fWsV0LwbgbkV4cD0ssRNxZs5AXDus27emLayRD5u
- jnGG9xr0Te38lHLV5WRsbe+MgiQ4/557DYorbOPeHGyjNjGODUvpyRce+bYnqqcfNli9
- cxz8hjSQLjNKu2JV9loAqRzBbzwYPHostowr9w8yUPRSNCirZry0Ac/KlQwVE0AQUyF0
- j3T8KYODMCGTF8ZjdQYwjFDxyjfIrCTY2joJ0ODBhfJwADaxLocLVnrk7KaV6oVJ7gda
- UNVg==
-X-Gm-Message-State: AOAM5311lCfvLtXMHGMzKB6+MwmIn6sTsnRFF+74BpNyFAvvUgopZX4U
- ox+UrrQ3j/dFZqWrvns7d5M=
-X-Received: by 2002:a17:902:bd98:b029:d9:7b0:e1e5 with SMTP id
- q24-20020a170902bd98b02900d907b0e1e5mr2948568pls.77.1606920343531; 
- Wed, 02 Dec 2020 06:45:43 -0800 (PST)
-Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
- [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id u6sm92367pfb.197.2020.12.02.06.45.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Dec 2020 06:45:43 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <alistair.francis@wdc.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH v2 2/2] hw/ssi: imx_spi: Disable chip selects in
- imx_spi_reset()
-Date: Wed,  2 Dec 2020 22:45:23 +0800
-Message-Id: <20201202144523.24526-2-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201202144523.24526-1-bmeng.cn@gmail.com>
-References: <20201202144523.24526-1-bmeng.cn@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pl1-x644.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BAwICLTL;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from list by lists.xenproject.org with outflank-mailman.49239.87043 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1knMIr-0006MU-3P; Thu, 10 Dec 2020 13:48:17 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 49239.87043; Thu, 10 Dec 2020 13:48:17 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1knMIr-0006MN-0J; Thu, 10 Dec 2020 13:48:17 +0000
+Received: by outflank-mailman (input) for mailman id 49239;
+ Thu, 10 Dec 2020 13:48:15 +0000
+Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
+ helo=us1-amaz-eas2.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=nlUt=FO=redhat.com=marcandre.lureau@srs-us1.protection.inumbo.net>)
+ id 1knMIp-0006MI-2X
+ for xen-devel@lists.xenproject.org; Thu, 10 Dec 2020 13:48:15 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
+ by us1-amaz-eas2.inumbo.com (Halon) with ESMTP
+ id 9b677d54-238b-4520-a7da-6b7d44d251e6;
+ Thu, 10 Dec 2020 13:48:13 +0000 (UTC)
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-322-p-pu4U4xNmybGAAj8pkIRQ-1; Thu, 10 Dec 2020 08:48:09 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4A6141005E48;
+ Thu, 10 Dec 2020 13:48:07 +0000 (UTC)
+Received: from localhost (unknown [10.36.110.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 521085D9DD;
+ Thu, 10 Dec 2020 13:47:55 +0000 (UTC)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
- Bin Meng <bin.meng@windriver.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EFgSkNM0j8P7
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 9b677d54-238b-4520-a7da-6b7d44d251e6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1607608093;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=anpnx/tw5p62yFhBITy05bzKP3wcJQGVw5OZrWMts1E=;
+	b=BAwICLTLxv0oGQhFhA1ceAn2wOYQBQX0BSZEsKBi36D0gnUw4vGL1QXL+t2JTxsqurA7Mu
+	NDe4KM0SWPygZUlWjPq0hXrbszlrRKnJgfBFebiKk9b9rb4fN8cGaQOciYHsFtV87YCsta
+	GuB8aWhiOmTcO65pBV24OkHYXvCoQPg=
+X-MC-Unique: p-pu4U4xNmybGAAj8pkIRQ-1
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: philmd@redhat.com,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Paul Durrant <paul@xen.org>,
+	xen-devel@lists.xenproject.org,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v3 00/13] Remove GCC < 4.8 checks
+Date: Thu, 10 Dec 2020 17:47:39 +0400
+Message-Id: <20201210134752.780923-1-marcandre.lureau@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=marcandre.lureau@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: +UhmvRtV319H
 
-From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>=0D
 
-When a write to ECSPI_CONREG register to disable the SPI controller,
-imx_spi_reset() is called to reset the controller, during which CS
-lines should have been disabled, otherwise the state machine of any
-devices (e.g.: SPI flashes) connected to the SPI master is stuck to
-its last state and responds incorrectly to any follow-up commands.
-
-Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
-Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-
----
-
-Changes in v2:
-- Fix the "Fixes" tag in the commit message
-
- hw/ssi/imx_spi.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index e605049a21..85c172e815 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -231,6 +231,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
- static void imx_spi_reset(DeviceState *dev)
- {
-     IMXSPIState *s = IMX_SPI(dev);
-+    int i;
- 
-     DPRINTF("\n");
- 
-@@ -243,6 +244,10 @@ static void imx_spi_reset(DeviceState *dev)
- 
-     imx_spi_update_irq(s);
- 
-+    for (i = 0; i < ECSPI_NUM_CS; i++) {
-+        qemu_set_irq(s->cs_lines[i], 1);
-+    }
-+
-     s->burst_length = 0;
- }
- 
--- 
-2.25.1
+Hi,=0D
+=0D
+Since commit efc6c07 ("configure: Add a test for the minimum compiler versi=
+on"),=0D
+QEMU explicitely depends on GCC >=3D 4.8.=0D
+=0D
+v3:=0D
+ - drop first patch replacing QEMU_GNUC_PREREQ with G_GNUC_CHECK_VERSION=0D
+ - add last patch to remove QEMU_GNUC_PREREQ=0D
+ - tweak commit messages to replace clang 3.8 with clang 3.4=0D
+ - fix some extra coding style=0D
+ - collect r-b/a-b tags=0D
+=0D
+v2:=0D
+ - include reviewed Philippe earlier series=0D
+ - drop problematic patch to replace GCC_FMT_ATTR, but tweak the check to b=
+e clang=0D
+ - replace QEMU_GNUC_PREREQ with G_GNUC_CHECK_VERSION=0D
+ - split changes=0D
+ - add patches to drop __GNUC__ checks (clang advertizes itself as 4.2.1, u=
+nless=0D
+   -fgnuc-version=3D0)=0D
+=0D
+Marc-Andr=C3=A9 Lureau (11):=0D
+  compiler.h: remove GCC < 3 __builtin_expect fallback=0D
+  qemu-plugin.h: remove GCC < 4=0D
+  tests: remove GCC < 4 fallbacks=0D
+  virtiofsd: replace _Static_assert with QEMU_BUILD_BUG_ON=0D
+  compiler.h: explicit case for Clang printf attribute=0D
+  audio: remove GNUC & MSVC check=0D
+  poison: remove GNUC check=0D
+  xen: remove GNUC check=0D
+  compiler: remove GNUC check=0D
+  linux-user: remove GNUC check=0D
+  compiler.h: remove QEMU_GNUC_PREREQ=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (2):=0D
+  qemu/atomic: Drop special case for unsupported compiler=0D
+  accel/tcg: Remove special case for GCC < 4.6=0D
+=0D
+ include/exec/poison.h              |  2 --=0D
+ include/hw/xen/interface/io/ring.h |  9 ------=0D
+ include/qemu/atomic.h              | 17 -----------=0D
+ include/qemu/compiler.h            | 45 ++++++++----------------------=0D
+ include/qemu/qemu-plugin.h         |  9 ++----=0D
+ scripts/cocci-macro-file.h         |  1 -=0D
+ tools/virtiofsd/fuse_common.h      | 11 +-------=0D
+ accel/tcg/cpu-exec.c               |  2 +-=0D
+ audio/audio.c                      |  8 +-----=0D
+ linux-user/strace.c                |  4 ---=0D
+ tests/tcg/arm/fcvt.c               |  8 ++----=0D
+ 11 files changed, 20 insertions(+), 96 deletions(-)=0D
+=0D
+--=20=0D
+2.29.0=0D
+=0D
 

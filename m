@@ -1,388 +1,198 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1708888lfc;
-        Wed, 10 Feb 2021 14:32:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzwMWHPX7tqF3yQmHCTi+bOwpcEN1ccPKQaEl8XvAzQj6K26/g5UXOM0OuuKXbvPzD4oGUG
-X-Received: by 2002:a5b:702:: with SMTP id g2mr7352965ybq.285.1612996330928;
-        Wed, 10 Feb 2021 14:32:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612996330; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp6102849lfb;
+        Thu, 10 Dec 2020 09:21:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwDT6ysfPnzT0AmKus6fQ5ejuwyHTOqrL+lcCCv/PYm4coydKsGjLmIURFDSjJD9KHc6D0/
+X-Received: by 2002:a25:ca17:: with SMTP id a23mr13121045ybg.229.1607620919190;
+        Thu, 10 Dec 2020 09:21:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607620919; cv=none;
         d=google.com; s=arc-20160816;
-        b=f1ybBZnjBAAKu2VZV/4khZ4NewHoZXP/lUm+GqqXKqk6ZuSTsmsEp52ExCtnayUOPn
-         hIWiUB/bRl6E0OIXi+njyr4473HOnhz54xHqE5nREgw1IgJ5uUcO9o9BM2D2K0YD4iOo
-         VXf6oa97knRDJLEPxM/C680+UNljpiVtrurN+94ZKi0zEGMxmB0furZfNgouclL9tOuG
-         +8HiPEL0CRRG/q1pPB1fO+nvuHundj9T+wrbiuHRE9z/WXUxg75+dVQ6H0ULvCuguq4c
-         wogKAo+YnfTte3XjiizBAYTH2yudosId3J3rFozhwdksT+BgCIugYb159SlR2E8QszZY
-         fR+w==
+        b=Z+1qIdaAkVekQLLU1DGfmZuw3QiS3kywiQpbwujvkvl1NALkRTRd3ppsUpTwNHvXkW
+         q3pWXVo7YxtUz4oHNO6Dmm1PJLa6OAsB1OLtiZd++bAhOhsvv6Z7vThgen4nvG3XMJDC
+         AiRyN5TeMrYlv9pElEcgBPXsnySHU04F8i90YCW12M1xUPCysKSDpyAltmxnbbOJ6tIU
+         FTF9hIOY+NzXjipCTGZXqUhiQJcx2LLWhO0FLjM+iU6ZGa8FqTrZC5mq3rssLfklXSmp
+         75TM9PA6a41YGAQX2jrQqDVJNE151htLkMuJXFy0zBDuAmizIz76JXnwfZJRR4+Mg23P
+         5nUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id;
-        bh=koVAcAZKs6zm/7IksulZCkjUTNdqVHGo48laPVpE9lI=;
-        b=lFXDkaPDIVWLtlJO7uRpb1yrr9qrcQHbXW66hSE4UDQsh8E1rNBnQw2nPUWMJ+XuE2
-         0lS+dognO/cvKJlt74nc9RSI7rMG+NlA2rQU0mmK5gPBSR/SFX46M3Y2sQxsJcmrdN+9
-         qBxwg6ZfPRtiJFu2nj+NG44rLa6z+lmXDT7+r5cz1H8jlhlFgP2QX7eNI/wYXjWO95QT
-         sxe8pWFCYVXH6ley/TEQr+C4KqSFZngIJ66dJoCax0FxN+kvMdzbtlLua9KKbV9vxWiR
-         Xs0MEVlw/VPMc+7ZVYqSE3VcE6OazEn6n80j2d2tv9PJIAaA9wypzchfjxqNeOQ+RQ9L
-         5vDA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=pfj1puOpiJL6VjR02uzkC4xoC7j8c4k8TsJ1EKm2VO4=;
+        b=qBtNCdwB7wcQceYILGA0mWWPor20fUJhDloC0d3bifQOhlALFbcujPkcdx7+fsFYdG
+         HcLv1KD9tqKXV/h6n7sKHpG7mDP6z3ZS6yLdosN69t8xdx3zj9TGv1WVd/Jvz8Jc/N7z
+         FKrlPjnIpKln46IEMs1u+pOKxyLAwdckvO68aqyXiKFtj4T1jTk1JrqhysW+3feDrkTg
+         5Yg5cPlRx0TElRRkQV9owB3icuwv9i/fFC4hlmDtwg5XMWACYjq+Ps9CZt3+yhzu/aiV
+         4qOZXT5Fr1JJOV14ztq7Ef2SpAISs0Axv2/y7cW77zz1tvMauG9c3wUv5klIOYl+q66W
+         AEvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cLI8+kdw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k67si3291365ybc.123.2021.02.10.14.32.10
+        by mx.google.com with ESMTPS id b139si6271856ybg.237.2020.12.10.09.21.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 14:32:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Dec 2020 09:21:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34960 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cLI8+kdw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59432 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9y1q-0000Ez-3Y
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 17:32:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59028)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1knPde-00058O-BY
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 12:21:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50148)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1l9xrG-0007WN-Iu; Wed, 10 Feb 2021 17:21:16 -0500
-Received: from mail.csgraf.de ([85.25.223.15]:40488 helo=zulu616.server4you.de)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1l9xrA-0007Af-8x; Wed, 10 Feb 2021 17:21:14 -0500
-Received: from Alexanders-Mac-mini.local (unknown [188.138.100.120])
- by csgraf.de (Postfix) with UTF8SMTPSA id BC6F860803D4;
- Wed, 10 Feb 2021 23:21:00 +0100 (CET)
-Message-ID: <298dcf49-1a99-9406-275f-b05c8befd13b@csgraf.de>
-Date: Wed, 10 Feb 2021 23:20:55 +0100
+ (Exim 4.90_1) (envelope-from <mcascell@redhat.com>)
+ id 1knPdH-00055M-AE
+ for qemu-arm@nongnu.org; Thu, 10 Dec 2020 12:21:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32366)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mcascell@redhat.com>)
+ id 1knPdB-0002uV-Mc
+ for qemu-arm@nongnu.org; Thu, 10 Dec 2020 12:21:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607620887;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pfj1puOpiJL6VjR02uzkC4xoC7j8c4k8TsJ1EKm2VO4=;
+ b=cLI8+kdw1lgtw/Eloxl8kLvK/1bYWDztUliGmZf/q1czfDm2FO6kTyZUd1vI+x2oDSGpLt
+ gzTU2m+Q1MhPz+MIA+Ql6ITuxLFtkzYt+/+Pd6kO5eXNtFsVTKmrBpU0Ff22Lji26KE71p
+ sSW4gDQ4re59Kspi67t4PVz3ujx+GRc=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-234---X9xsU7NKqbzTl9vy5JJw-1; Thu, 10 Dec 2020 12:21:25 -0500
+X-MC-Unique: --X9xsU7NKqbzTl9vy5JJw-1
+Received: by mail-ed1-f71.google.com with SMTP id dh21so2725318edb.6
+ for <qemu-arm@nongnu.org>; Thu, 10 Dec 2020 09:21:25 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=pfj1puOpiJL6VjR02uzkC4xoC7j8c4k8TsJ1EKm2VO4=;
+ b=kPM+37reQPenpT4aBTCIgTbAxMURP2grpiZuOcK7oFp5O5eXGrTlTqzcCgKZTwRb3Y
+ XY7MqrfMCQ/ywho6oZi2nB5m+TW4ooddJElQhWnYkTm/Xc6G+mQFo7liLLDahPQ+SoeW
+ acIoRQ1y4WF6vkCPefV68kju64p/ihSXrHGgrwbJVIUhsCj8J093rDPx5qu+SaL7d6zb
+ JC9fT0mSJcU1rCsJ/TDeEoclp3cxg+xdlmJ3OyNhvl26X0rZG41/hCM+pifYLddMWZ72
+ vOZtTbfzr/nIRG9pKu6UxaJgmHlJRafAwZ8XqWHFeJzV0MIdC50dweLJXDJEOHixbbV1
+ 3s/w==
+X-Gm-Message-State: AOAM531umrE/Lh8xXYNvCuMLQLqWV/AOTttMdGJoXgqOHZjz4ZqCPutE
+ SMgmuE+uZ/OE1vnJ2HkAvGGBQa0q8lxEKD+ljJHW6p9Xg9er4Q74Hv29O5EvN7DIDaHRDSKGcq/
+ CCxBN/1SwUgBlApJ5azxd3oZlXHSY
+X-Received: by 2002:a17:906:c087:: with SMTP id
+ f7mr7374241ejz.492.1607620884404; 
+ Thu, 10 Dec 2020 09:21:24 -0800 (PST)
+X-Received: by 2002:a17:906:c087:: with SMTP id
+ f7mr7374225ejz.492.1607620884230; 
+ Thu, 10 Dec 2020 09:21:24 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:86.0)
- Gecko/20100101 Thunderbird/86.0
-Subject: Re: [PATCH v6 07/11] hvf: Add Apple Silicon support
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210120224444.71840-1-agraf@csgraf.de>
- <20210120224444.71840-8-agraf@csgraf.de>
- <CAFEAcA_-4GYk_+jdczWE720-VH1CLcS+1jVB2LzG=bBBJc8w-g@mail.gmail.com>
-From: Alexander Graf <agraf@csgraf.de>
-In-Reply-To: <CAFEAcA_-4GYk_+jdczWE720-VH1CLcS+1jVB2LzG=bBBJc8w-g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
+References: <20201210141610.884600-1-f4bug@amsat.org>
+In-Reply-To: <20201210141610.884600-1-f4bug@amsat.org>
+From: Mauro Matteo Cascella <mcascell@redhat.com>
+Date: Thu, 10 Dec 2020 18:21:13 +0100
+Message-ID: <CAA8xKjXOgSHh+MQnnLRaPCtkC-but0-Y4oi9Fi607o3iOjiiCw@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw/misc/zynq_slcr: Avoid #DIV/0! error
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mcascell@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=mcascell@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.211,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Collingbourne <pcc@google.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HCJ1RbEbgvVk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Gaoning Pan <gaoning.pgn@antgroup.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>, Gaoning Pan <pgn@zju.edu.cn>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: H8vaM6h5fHlV
 
-
-On 28.01.21 16:52, Peter Maydell wrote:
-> On Wed, 20 Jan 2021 at 22:44, Alexander Graf <agraf@csgraf.de> wrote:
->> With Apple Silicon available to the masses, it's a good time to add support
->> for driving its virtualization extensions from QEMU.
->>
->> This patch adds all necessary architecture specific code to get basic VMs
->> working. It's still pretty raw, but definitely functional.
->>
->> Known limitations:
->>
->>    - Vtimer acknowledgement is hacky
->>    - Should implement more sysregs and fault on invalid ones then
->>    - WFI handling is missing, need to marry it with vtimer
->>
->> Signed-off-by: Alexander Graf <agraf@csgraf.de>
->> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
->> --- a/accel/hvf/hvf-cpus.c
->> +++ b/accel/hvf/hvf-cpus.c
->> @@ -58,6 +58,10 @@
->>   #include "sysemu/runstate.h"
->>   #include "qemu/guest-random.h"
->>
->> +#ifdef __aarch64__
->> +#define HV_VM_DEFAULT NULL
->> +#endif
->>   /* Memory slots */
->>
->>   struct mac_slot {
->> @@ -328,7 +332,11 @@ static int hvf_init_vcpu(CPUState *cpu)
->>       pthread_sigmask(SIG_BLOCK, NULL, &set);
->>       sigdelset(&set, SIG_IPI);
->>
->> +#ifdef __aarch64__
->> +    r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t **)&cpu->hvf->exit, NULL);
->> +#else
->>       r = hv_vcpu_create((hv_vcpuid_t *)&cpu->hvf->fd, HV_VCPU_DEFAULT);
->> +#endif
->>       cpu->vcpu_dirty = 1;
->>       assert_hvf_ok(r);
->>
->> @@ -399,8 +407,14 @@ static void hvf_start_vcpu_thread(CPUState *cpu)
->>                          cpu, QEMU_THREAD_JOINABLE);
->>   }
->>
->> +__attribute__((weak)) void hvf_kick_vcpu_thread(CPUState *cpu)
->> +{
->> +    cpus_kick_thread(cpu);
->> +}
->> +
->>   static const CpusAccel hvf_cpus = {
->>       .create_vcpu_thread = hvf_start_vcpu_thread,
->> +    .kick_vcpu_thread = hvf_kick_vcpu_thread,
->>
->>       .synchronize_post_reset = hvf_cpu_synchronize_post_reset,
->>       .synchronize_post_init = hvf_cpu_synchronize_post_init,
->> diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
->> index 9d3cb53e47..c2ac6c8f97 100644
->> --- a/include/sysemu/hvf_int.h
->> +++ b/include/sysemu/hvf_int.h
->> @@ -11,7 +11,12 @@
->>   #ifndef HVF_INT_H
->>   #define HVF_INT_H
->>
->> +#include "qemu/osdep.h"
-> .h files must never include osdep.h (all .c files do as their first
-> include line).
+On Thu, Dec 10, 2020 at 3:16 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
 >
->> +#ifdef __aarch64__
->> +#include <Hypervisor/Hypervisor.h>
->> +#else
->>   #include <Hypervisor/hv.h>
->> +#endif
->>
->>   /* hvf_slot flags */
->>   #define HVF_SLOT_LOG (1 << 0)
->> @@ -44,7 +49,8 @@ struct HVFState {
->>   extern HVFState *hvf_state;
->>
->>   struct hvf_vcpu_state {
->> -    int fd;
->> +    uint64_t fd;
-> Why the change in the type for 'fd' ?
-
-
-Because it is a uint64_t on ARM:
-
-typedef uint64_t hv_vcpu_t
-
-while it is "unsigned" on x86:
-
-typedef unsigned hv_vcpuid_t;
-
-
+> Malicious user can set the feedback divisor for the PLLs
+> to zero, triggering a floating-point exception (SIGFPE).
 >
->> +    void *exit;
-> Can we define this as a "hv_vcpu_exit_t *" so we don't have to
-> cast it in the call to hv_vcpu_create() ?
-
-
-That will break compilation on x86, because hv_vcpu_exit_t is only 
-defined for ARM.
-
-
+> As the datasheet [*] is not clear how hardware behaves
+> when these bits are zeroes, use the maximum divisor
+> possible (128) to avoid the software FPE.
 >
->>   };
->>
->>   void assert_hvf_ok(hv_return_t ret);
->> @@ -54,5 +60,6 @@ int hvf_arch_init_vcpu(CPUState *cpu);
->>   void hvf_arch_vcpu_destroy(CPUState *cpu);
->>   int hvf_vcpu_exec(CPUState *cpu);
->>   hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
->> +void hvf_kick_vcpu_thread(CPUState *cpu);
->>
->>   #endif
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> new file mode 100644
->> index 0000000000..8f18efe856
->> --- /dev/null
->> +++ b/target/arm/hvf/hvf.c
->> @@ -0,0 +1,618 @@
->> +/*
->> + * QEMU Hypervisor.framework support for Apple Silicon
->> +
->> + * Copyright 2020 Alexander Graf <agraf@csgraf.de>
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
->> + * See the COPYING file in the top-level directory.
->> + *
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu-common.h"
->> +#include "qemu/error-report.h"
->> +
->> +#include "sysemu/runstate.h"
->> +#include "sysemu/hvf.h"
->> +#include "sysemu/hvf_int.h"
->> +#include "sysemu/hw_accel.h"
->> +
->> +#include "exec/address-spaces.h"
->> +#include "hw/irq.h"
->> +#include "qemu/main-loop.h"
->> +#include "sysemu/accel.h"
->> +#include "sysemu/cpus.h"
->> +#include "target/arm/cpu.h"
->> +#include "target/arm/internals.h"
->> +
->> +#define HVF_DEBUG 0
->> +#define DPRINTF(...)                                        \
->> +    if (HVF_DEBUG) {                                        \
->> +        fprintf(stderr, "HVF %s:%d ", __func__, __LINE__);  \
->> +        fprintf(stderr, __VA_ARGS__);                       \
->> +        fprintf(stderr, "\n");                              \
->> +    }
-> No new DPRINTF macros, please. Use tracepoints.
+> [*] Zynq-7000 TRM, UG585 (v1.12.2)
+>     B.28 System Level Control Registers (slcr)
+>     -> "Register (slcr) ARM_PLL_CTRL"
+>     25.10.4 PLLs
+>     -> "Software-Controlled PLL Update"
 >
->> +
->> +#define HVF_SYSREG(crn, crm, op0, op1, op2) \
->> +        ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
->> +#define PL1_WRITE_MASK 0x4
->> +
->> +#define SYSREG(op0, op1, crn, crm, op2) \
->> +    ((op0 << 20) | (op2 << 17) | (op1 << 14) | (crn << 10) | (crm << 1))
->> +#define SYSREG_MASK           SYSREG(0x3, 0x7, 0xf, 0xf, 0x7)
->> +#define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
->> +#define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
->> +
->> +#define WFX_IS_WFE (1 << 0)
+> Fixes: 38867cb7ec9 ("hw/misc/zynq_slcr: add clock generation for uarts")
+> Reported-by: Gaoning Pan <pgn@zju.edu.cn>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> Cc: Damien Hedde <damien.hedde@greensocs.com>
+> Cc: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Cc: Alistair Francis <alistair.francis@wdc.com>
+> Cc: Gaoning Pan <gaoning.pgn@antgroup.com>
+> Cc: Mauro Matteo Cascella <mcascell@redhat.com>
 >
+> Alternative is to threat that as PLL disabled and return 0...
+> ---
+>  hw/misc/zynq_slcr.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 >
->> +static const struct hvf_sreg_match hvf_sreg_match[] = {
->> +    { HV_SYS_REG_DBGBVR0_EL1, HVF_SYSREG(0, 0, 14, 0, 4) },
->> +    { HV_SYS_REG_DBGBCR0_EL1, HVF_SYSREG(0, 0, 14, 0, 5) },
->> +    { HV_SYS_REG_DBGWVR0_EL1, HVF_SYSREG(0, 0, 14, 0, 6) },
->> +    { HV_SYS_REG_DBGWCR0_EL1, HVF_SYSREG(0, 0, 14, 0, 7) },
-> I'm not a huge fan of this big long hardcoded list of registers.
-> Is there some way to work from either the QEMU cpregs hashtable
-> or asking the hypervisor framework about what sysregs it has?
-> (Compare the KVM approach, though I admit it has its own issues,
-> so if there's a genuinely better way to do something I'm not
-> ruling it out on principle.)
-
-
-If you can think of a way, I'm all ears. So far I could not see one? The 
-supported sysregs is an enum. I could not see any way to query hvf for a 
-list of supported ones.
-
-The enum values *seem* to be encoded the same way KVM encodes them, so 
-we could maybe get away with only an array rather than the struct list. 
-Though that's a bit fragile, as we don't have any guarantees that the 
-register encoding is static.
-
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index a2b28019e3c..66504a9d3ab 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -217,6 +217,11 @@ static uint64_t zynq_slcr_compute_pll(uint64_t input=
+, uint32_t ctrl_reg)
+>          return 0;
+>      }
 >
->> +#ifdef SYNC_NO_RAW_REGS
-> What's this ifdef for?
-
-
-There's a comment right below that explains it. I did not want to make 
-it #if 0 and wanted to ensure that we list all the enum values from the 
-header in the register list.
-
-
+> +    /* Consider zero feedback as maximum divide ratio possible */
+> +    if (!mult) {
+> +        mult =3D 1 << R_xxx_PLL_CTRL_PLL_FPDIV_LENGTH;
+> +    }
+> +
+>      /* frequency multiplier -> period division */
+>      return input / mult;
+>  }
+> --
+> 2.26.2
 >
->
->> +int hvf_get_registers(CPUState *cpu)
->> +{
->> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
->> +    CPUARMState *env = &arm_cpu->env;
->> +    hv_return_t ret;
->> +    uint64_t val;
->> +    int i;
->> +
->> +    for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
->> +        ret = hv_vcpu_get_reg(cpu->hvf->fd, hvf_reg_match[i].reg, &val);
->> +        *(uint64_t *)((void *)env + hvf_reg_match[i].offset) = val;
->> +        assert_hvf_ok(ret);
->> +    }
->> +
->> +    val = 0;
->> +    ret = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_FPCR, &val);
->> +    assert_hvf_ok(ret);
->> +    vfp_set_fpcr(env, val);
->> +
->> +    val = 0;
->> +    ret = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_FPSR, &val);
->> +    assert_hvf_ok(ret);
->> +    vfp_set_fpsr(env, val);
->> +
->> +    ret = hv_vcpu_get_reg(cpu->hvf->fd, HV_REG_CPSR, &val);
->> +    assert_hvf_ok(ret);
->> +    pstate_write(env, val);
->> +
->> +    for (i = 0; i < ARRAY_SIZE(hvf_sreg_match); i++) {
->> +        ret = hv_vcpu_get_sys_reg(cpu->hvf->fd, hvf_sreg_match[i].reg, &val);
->> +        assert_hvf_ok(ret);
->> +
->> +        arm_cpu->cpreg_values[i] = val;
->> +    }
->> +    write_list_to_cpustate(arm_cpu);
-> Have I missed it, or are we not syncing the FPU/vector registers?
 
+This patch fixes RHBZ#1906388:
+https://bugzilla.redhat.com/show_bug.cgi?id=3D1906388
 
-You're absolutely right, they're missing! I'll sync them as well...
-
-
->
->> +    return 0;
->> +}
->> +            if (iswrite) {
->> +                val = hvf_get_reg(cpu, srt);
->> +                address_space_write(&address_space_memory,
->> +                                    hvf_exit->exception.physical_address,
->> +                                    MEMTXATTRS_UNSPECIFIED, &val, len);
-> Does the hvf framework provide a way to report the external-abort
-> if address_space_write() returns something other than MEMTX_OK ?
-
-
-I'm afraid we'd have to manually jump to the interrupt vector if we want 
-to do this.
-
-
->
->> +            break;
->> +        case EC_AA64_SMC:
->> +            cpu_synchronize_state(cpu);
->> +            if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
->> +                arm_handle_psci_call(arm_cpu);
-> Have you checked that all the PSCI code really can cope
-> with being called from a non-TCG accelerator? (As an example
-> the CPU_SUSPEND implementation calls the TCG wfi helper...)
-
-
-I have not explicitly tried it, but I don't see why the TCG 
-implementation of wfi should in principle break with hvf.
-
-
->
->> +            } else {
->> +                DPRINTF("unknown SMC! %016llx", env->xregs[0]);
->> +                env->xregs[0] = -1;
-> This should inject an UNDEF exception into the guest. (Compare
-> the pre_smc helper in target/arm/op_helper.c for TCG.)
-
-
-That would break Windows, which is one of the main use cases for hvf 
-support in QEMU.
-
-
-Alex
-
+Thank you,
+--=20
+Mauro Matteo Cascella
+Red Hat Product Security
+PGP-Key ID: BB3410B0
 

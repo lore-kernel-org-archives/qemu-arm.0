@@ -1,75 +1,106 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5670474lfb;
-        Wed, 9 Dec 2020 23:53:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyfx3UUYrOC0o6sSWaIK8QOWcAzG/EeJPVRsbNqpJ2dLXfyU9+OOyAJy3LbeMl25VjwZ1fg
-X-Received: by 2002:a25:2e07:: with SMTP id u7mr256427ybu.393.1607586800982;
-        Wed, 09 Dec 2020 23:53:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607586800; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5739185lfb;
+        Thu, 10 Dec 2020 01:46:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzIs+ZsceUJ9ri2gSiCkpWiJP53Ikxli2zHRtUMzHD4bIGKvt4aTDhkiNNEyTSO/4LAu+o2
+X-Received: by 2002:a25:c74e:: with SMTP id w75mr8795085ybe.520.1607593560896;
+        Thu, 10 Dec 2020 01:46:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607593560; cv=none;
         d=google.com; s=arc-20160816;
-        b=WarGoeKw19gkQuxkOPYS/G0kuNXk6rgxwwUswcZG2HNFe51te5CEexPNGLMpCots2v
-         vFcrazWIQYWs2Qe+xnKACJB2YQBJyLVrCRreMxuZb79NklgPPItMmzznnpIXFsyYBRXt
-         lHWAXqtsMJNuAZKsZdSILvyf9viG9Sr95QHIOnJP5zpOXvXfbNlzvN2WFCIRraXIUWZM
-         R0sdz5mGr9kJufHeg5da5fwiQfeecgS6O5NE2K3PICV+nXRJuDhwjEvtl7J+9pLCAj/c
-         Xg3EI2M5yYechspMP8TlG17dd6Ehvs6huRrNYyBi2VzIeBAV5mEnwQgsxWGOSqYYbY/k
-         Arcg==
+        b=kEl6bdNmN/yUZK574kxpy7/5/8gCdEahGR+jR1IoGjF1A7Ngs4jq4Y39Hb5JNcCbHD
+         gu7dgbixHGqub7pxEosc9X/Y/wdMEKZnEwMIzoVr5o71ZXYU+wfcEgYCgaSLioqBRNJp
+         sDTlBFaj19gdBYlbse0o39E5wMmcgGqNfBiHye3EUmtw9QRtugbHxEoij4qtdTFtQ6Gi
+         ajSaRMYDLcE9JJ4oEvoAwLgedyxQhpdjPgTAVZSSwhHblrEv6vqGWzYFBG3z1wDrXmaf
+         WCxY2Eh3eBje143/799h+N14g94EHGHnV/EV8OCb8avZBU6yZvAH4tkgyhHj8OiYht8S
+         HlCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=SVPMv1t7JXnRZNxpzMb8/JwFSGAYB65lrPR0RkuTRLM=;
-        b=PFQoUBlI4qPRl0hdGKIRD/dBEoofRQJNAidAPHEUt19Edl17RlGiLz4lOmagJn2vFG
-         HgD3oiNFMV+tTSAZOCw1WAsn/tKrbSxZ26CWmRvg6clcDfTxzGa9aucS3ZV2vOvay/SR
-         gVQdvMUmtOdwgDSPlGOpX6j8M+dkvkZcErpOVvJMaIyFMIye9FARykjZyw28DlgtXEQi
-         7KXdTKH2DlvMt4UNlCHc/ZLSRX99ZS9Xmx4eSf0r9eWUbp4d1+iQBV6lEs0gp79t1lgK
-         ONuOggqf+DW08MjXX+6+Azg2JPGXfEpE9PbRTLEO+QSWR+V5ItYys8n+AduCEyP64E6i
-         XpZA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=TWMy+vEzRfGjLz57DaLZWfTfKi01Gbapd5qFwY6zS2M=;
+        b=CdcsVa/hSvMMmt7YUdla+mi+Qn+U6JLXiYVdmeazkC15aTdU+5WUqnEcQhF51fnHMr
+         MHnYBPL0/fV9ZIQO+RJMPB13uD5not7gO0mqMFSNNuurbbJJyuFbbRcrpBpYl7Z+zqZY
+         LFMuRigiLE82nQdOBlJJoCMB39sNy+NFhvWiVZOz0zraMWxhfFJBX05HkR67taA/ls8E
+         aSEuqETklDtzsten4Bn557+gunStY2CVLlVgQoeVPtX2HNR+SR2BMOFnxYspYyaBMw0W
+         pdTRJA92F4sGxZ4n8tknwq4gBFNvJ/kq24uWLqAVPuInrSFjLx0vRaVeYM5AxRtUVGRn
+         S6CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=ja12nSRr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l2si4296830ybt.221.2020.12.09.23.53.20
+        by mx.google.com with ESMTPS id d6si4642404ybj.64.2020.12.10.01.46.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Dec 2020 23:53:20 -0800 (PST)
+        Thu, 10 Dec 2020 01:46:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53968 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=ja12nSRr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:51076 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knGlM-0004Vi-Ep
-	for alex.bennee@linaro.org; Thu, 10 Dec 2020 02:53:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55706)
+	id 1knIWO-0002BZ-4q
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 04:46:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49302)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1knGl8-0004VA-Lf; Thu, 10 Dec 2020 02:53:06 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2829)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1knGl6-0002dH-2s; Thu, 10 Dec 2020 02:53:06 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cs5jJ3k86zknpL;
- Thu, 10 Dec 2020 15:52:04 +0800 (CST)
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 10 Dec 2020 15:52:39 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
- <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH v2] bugfix: hostmem: Free host_nodes list right after visited
-Date: Thu, 10 Dec 2020 15:52:26 +0800
-Message-ID: <20201210075226.20196-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1knIRm-0007Fk-Ha
+ for qemu-arm@nongnu.org; Thu, 10 Dec 2020 04:41:14 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:38027)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1knIRf-0005HD-HQ
+ for qemu-arm@nongnu.org; Thu, 10 Dec 2020 04:41:12 -0500
+Received: by mail-oi1-x241.google.com with SMTP id o25so5075505oie.5
+ for <qemu-arm@nongnu.org>; Thu, 10 Dec 2020 01:41:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bytedance-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=TWMy+vEzRfGjLz57DaLZWfTfKi01Gbapd5qFwY6zS2M=;
+ b=ja12nSRr4rcfDkJJ3osFE8sJ+5tM/ZhPKp+O0/eZ79J/r+1kdJzIKZ85py0DB1SeBW
+ fofLIWuIyAcHd2ym0k1yVRtKmEl/nfZwg/AGfN2QpG1nZn5lFtiFjGZDv4F4PU37cBSd
+ c9BBW1FOucuJwhcs5qvi1Q+lS7JV8FBcIF0VBAOd4wYA53S9pRtsBDEqpMoSPrQs6HMI
+ h5cCjUvFyMC9G0bc8zae/jGUwWgIum5XtiQoNOlQn3p58YtFhnjHj3MpN9ieFCLHTRsM
+ sxnSgFSVoM6tE3AJBIWLIG1vGJTV8boi9OXl8wVNqHKiTWTEWl8nsDeKA1m1+tGXvt03
+ 4/Xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=TWMy+vEzRfGjLz57DaLZWfTfKi01Gbapd5qFwY6zS2M=;
+ b=g81OZNYYFwrfWSa54ZW6HnnVR6jUGeqVfLqekKYJr+qPJvRhl69gn0WvHjuaRFiSSZ
+ SgWzAXFzdJ61AnHxzN7WR1rElUBp9vTNOLstD2N1txx1aFP5v2PSYreJ1iEtJm/i/9+Z
+ VKz+neTYdn+o8yVOjOiVDF7tnWb08AnL2fmcq43U7BpY/4lnZobwLW5WufDqdkfGu/ng
+ JGpAnW8BD1Thu9cjm8qJcjIM9K/gGgZrtWAAE98+qRajxmIGG6TXjnRC993KMJDQmzOf
+ VS/DKAPxjLFIOMZpz7XYSg/jdpvJKQk/de9dJtIMTyKzHX2tD6LZA3Eg8RebT1qjMZrC
+ x/3g==
+X-Gm-Message-State: AOAM530iztmcHNOQ6qf3lvgwfcTKMHZrejzz/IDQlBx/5GW5GkylSbHt
+ uHJhzxeZOblHKEBYiEb/kF7zFCXiXjcugRg/PYKfOg==
+X-Received: by 2002:a05:6808:2cb:: with SMTP id
+ a11mr4915395oid.93.1607593265092; 
+ Thu, 10 Dec 2020 01:41:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.37]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhukeqian1@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20201122105134.671-1-wangzhiqiang.bj@bytedance.com>
+ <6ac8833e-9e45-9dff-af3b-e8b46bbd3fc5@kaod.org>
+In-Reply-To: <6ac8833e-9e45-9dff-af3b-e8b46bbd3fc5@kaod.org>
+From: John Wang <wangzhiqiang.bj@bytedance.com>
+Date: Thu, 10 Dec 2020 17:40:54 +0800
+Message-ID: <CAH0XSJu_ZCS0p6iztv9aqd6uf2S79N1G6--vTvNC0Oyp2SKsww@mail.gmail.com>
+Subject: Re: [External] Re: [PATCH v4 1/2] hw/misc: add an EMC141{3,
+ 4} device model
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
+ envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-oi1-x241.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -83,72 +114,589 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, alex.chen@huawei.com, qemu-arm@nongnu.org,
- kuhn.chenqun@huawei.com, wanghaibin.wang@huawei.com,
- Keqian Zhu <zhukeqian1@huawei.com>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?B?6YOB6Zu3?= <yulei.sh@bytedance.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>, Lotus Xu <xuxiaohan@bytedance.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vXPeuXM/p/y1
+X-TUID: YS3mTdQgTjKf
 
-In host_memory_backend_get_host_nodes, we build host_nodes
-list and output it to v (a StringOutputVisitor) but forget
-to free the list. This fixes the memory leak.
+ping :)
 
-The memory leak stack:
+I'm sorry I had a break(v3 -> v4)  for a while to do something else
 
- Direct leak of 32 byte(s) in 2 object(s) allocated from:
-    #0 0xfffda30b3393 in __interceptor_calloc (/usr/lib64/libasan.so.4+0xd3393)
-    #1 0xfffda1d28b9b in g_malloc0 (/usr/lib64/libglib-2.0.so.0+0x58b9b)
-    #2 0xaaab05ca6e43 in host_memory_backend_get_host_nodes backends/hostmem.c:94
-    #3 0xaaab061ddf83 in object_property_get_uint16List qom/object.c:1478
-    #4 0xaaab05866513 in query_memdev hw/core/machine-qmp-cmds.c:312
-    #5 0xaaab061d980b in do_object_child_foreach qom/object.c:1001
-    #6 0xaaab0586779b in qmp_query_memdev hw/core/machine-qmp-cmds.c:328
-    #7 0xaaab0615ed3f in qmp_marshal_query_memdev qapi/qapi-commands-machine.c:327
-    #8 0xaaab0632d647 in do_qmp_dispatch qapi/qmp-dispatch.c:147
-    #9 0xaaab0632d647 in qmp_dispatch qapi/qmp-dispatch.c:190
-    #10 0xaaab0610f74b in monitor_qmp_dispatch monitor/qmp.c:120
-    #11 0xaaab0611074b in monitor_qmp_bh_dispatcher monitor/qmp.c:209
-    #12 0xaaab063caefb in aio_bh_poll util/async.c:117
-    #13 0xaaab063d30fb in aio_dispatch util/aio-posix.c:459
-    #14 0xaaab063cac8f in aio_ctx_dispatch util/async.c:268
-    #15 0xfffda1d22a6b in g_main_context_dispatch (/usr/lib64/libglib-2.0.so.0+0x52a6b)
-    #16 0xaaab063d0e97 in glib_pollfds_poll util/main-loop.c:218
-    #17 0xaaab063d0e97 in os_host_main_loop_wait util/main-loop.c:241
-    #18 0xaaab063d0e97 in main_loop_wait util/main-loop.c:517
-    #19 0xaaab05c8bfa7 in main_loop /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:1791
-    #20 0xaaab05713bc3 in main /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:4473
-    #21 0xfffda0a83ebf in __libc_start_main (/usr/lib64/libc.so.6+0x23ebf)
-    #22 0xaaab0571ed5f  (aarch64-softmmu/qemu-system-aarch64+0x88ed5f)
- SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
-
-Fixes: 4cf1b76bf1e2 (hostmem: add properties for NUMA memory policy)
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Tested-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
----
- backends/hostmem.c | 1 +
- 1 file changed, 1 insertion(+)
----
-
-v2:
- - Update commit message.
- - Add Chen Qun's T.b.
- - Add Igor's R.b.
-
-diff --git a/backends/hostmem.c b/backends/hostmem.c
-index 4bde00e8e7..9f9ac95edd 100644
---- a/backends/hostmem.c
-+++ b/backends/hostmem.c
-@@ -105,6 +105,7 @@ host_memory_backend_get_host_nodes(Object *obj, Visitor *v, const char *name,
- 
- ret:
-     visit_type_uint16List(v, name, &host_nodes, errp);
-+    qapi_free_uint16List(host_nodes);
- }
- 
- static void
--- 
-2.23.0
-
+On Mon, Nov 23, 2020 at 8:21 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 11/22/20 11:51 AM, John Wang wrote:
+> > Largely inspired by the TMP421 temperature sensor, here is a model for
+> > the EMC1413/EMC1414 temperature sensors.
+> >
+> > Specs can be found here :
+> >   http://ww1.microchip.com/downloads/en/DeviceDoc/20005274A.pdf
+> >
+> > Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>
+> Thanks,
+>
+> C.
+>
+> > ---
+> > v4:
+> >   -Fix QOM style name
+> >   -Add unittest
+> > v3:
+> >   - update the link to the spec
+> >   - Rename emc1413.c to emc141x.c
+> >   - Add sensors_count in EMC141XClass
+> >   - Make emc1413_read/write easier to review :)
+> > v2:
+> >   - Remove DeviceInfo
+> >   - commit message: TMP423 -> TMP421
+> > ---
+> >  hw/arm/Kconfig                 |   1 +
+> >  hw/misc/Kconfig                |   4 +
+> >  hw/misc/emc141x.c              | 326 +++++++++++++++++++++++++++++++++
+> >  hw/misc/meson.build            |   1 +
+> >  include/hw/misc/emc141x_regs.h |  37 ++++
+> >  tests/qtest/emc141x-test.c     |  81 ++++++++
+> >  tests/qtest/meson.build        |   1 +
+> >  7 files changed, 451 insertions(+)
+> >  create mode 100644 hw/misc/emc141x.c
+> >  create mode 100644 include/hw/misc/emc141x_regs.h
+> >  create mode 100644 tests/qtest/emc141x-test.c
+> >
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index e69a9009cf..eb8a8844cf 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -407,6 +407,7 @@ config ASPEED_SOC
+> >      select SSI_M25P80
+> >      select TMP105
+> >      select TMP421
+> > +    select EMC141X
+> >      select UNIMP
+> >      select LED
+> >
+> > diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> > index dc44dc14f6..cf18ac08e6 100644
+> > --- a/hw/misc/Kconfig
+> > +++ b/hw/misc/Kconfig
+> > @@ -13,6 +13,10 @@ config TMP421
+> >      bool
+> >      depends on I2C
+> >
+> > +config EMC141X
+> > +    bool
+> > +    depends on I2C
+> > +
+> >  config ISA_DEBUG
+> >      bool
+> >      depends on ISA_BUS
+> > diff --git a/hw/misc/emc141x.c b/hw/misc/emc141x.c
+> > new file mode 100644
+> > index 0000000000..f7c53d48a4
+> > --- /dev/null
+> > +++ b/hw/misc/emc141x.c
+> > @@ -0,0 +1,326 @@
+> > +/*
+> > + * SMSC EMC141X temperature sensor.
+> > + *
+> > + * Copyright (c) 2020 Bytedance Corporation
+> > + * Written by John Wang <wangzhiqiang.bj@bytedance.com>
+> > + *
+> > + * This program is free software; you can redistribute it and/or
+> > + * modify it under the terms of the GNU General Public License as
+> > + * published by the Free Software Foundation; either version 2 or
+> > + * (at your option) version 3 of the License.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + *
+> > + * You should have received a copy of the GNU General Public License a=
+long
+> > + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "hw/i2c/i2c.h"
+> > +#include "migration/vmstate.h"
+> > +#include "qapi/error.h"
+> > +#include "qapi/visitor.h"
+> > +#include "qemu/module.h"
+> > +#include "qom/object.h"
+> > +#include "hw/misc/emc141x_regs.h"
+> > +
+> > +#define SENSORS_COUNT_MAX    4
+> > +
+> > +struct EMC141XState {
+> > +    I2CSlave parent_obj;
+> > +    struct {
+> > +        uint8_t raw_temp_min;
+> > +        uint8_t raw_temp_current;
+> > +        uint8_t raw_temp_max;
+> > +    } sensor[SENSORS_COUNT_MAX];
+> > +    uint8_t len;
+> > +    uint8_t data;
+> > +    uint8_t pointer;
+> > +};
+> > +
+> > +struct EMC141XClass {
+> > +    I2CSlaveClass parent_class;
+> > +    uint8_t model;
+> > +    unsigned sensors_count;
+> > +};
+> > +
+> > +#define TYPE_EMC141X "emc141x"
+> > +OBJECT_DECLARE_TYPE(EMC141XState, EMC141XClass, EMC141X)
+> > +
+> > +static void emc141x_get_temperature(Object *obj, Visitor *v, const cha=
+r *name,
+> > +                                    void *opaque, Error **errp)
+> > +{
+> > +    EMC141XState *s =3D EMC141X(obj);
+> > +    EMC141XClass *sc =3D EMC141X_GET_CLASS(s);
+> > +    int64_t value;
+> > +    unsigned tempid;
+> > +
+> > +    if (sscanf(name, "temperature%u", &tempid) !=3D 1) {
+> > +        error_setg(errp, "error reading %s: %s", name, g_strerror(errn=
+o));
+> > +        return;
+> > +    }
+> > +
+> > +    if (tempid >=3D sc->sensors_count) {
+> > +        error_setg(errp, "error reading %s", name);
+> > +        return;
+> > +    }
+> > +
+> > +    value =3D s->sensor[tempid].raw_temp_current * 1000;
+> > +
+> > +    visit_type_int(v, name, &value, errp);
+> > +}
+> > +
+> > +static void emc141x_set_temperature(Object *obj, Visitor *v, const cha=
+r *name,
+> > +                                    void *opaque, Error **errp)
+> > +{
+> > +    EMC141XState *s =3D EMC141X(obj);
+> > +    EMC141XClass *sc =3D EMC141X_GET_CLASS(s);
+> > +    int64_t temp;
+> > +    unsigned tempid;
+> > +
+> > +    if (!visit_type_int(v, name, &temp, errp)) {
+> > +        return;
+> > +    }
+> > +
+> > +    if (sscanf(name, "temperature%u", &tempid) !=3D 1) {
+> > +        error_setg(errp, "error reading %s: %s", name, g_strerror(errn=
+o));
+> > +        return;
+> > +    }
+> > +
+> > +    if (tempid >=3D sc->sensors_count) {
+> > +        error_setg(errp, "error reading %s", name);
+> > +        return;
+> > +    }
+> > +
+> > +    s->sensor[tempid].raw_temp_current =3D temp / 1000;
+> > +}
+> > +
+> > +static void emc141x_read(EMC141XState *s)
+> > +{
+> > +    EMC141XClass *sc =3D EMC141X_GET_CLASS(s);
+> > +    switch (s->pointer) {
+> > +    case EMC141X_DEVICE_ID:
+> > +        s->data =3D sc->model;
+> > +        break;
+> > +    case EMC141X_MANUFACTURER_ID:
+> > +        s->data =3D MANUFACTURER_ID;
+> > +        break;
+> > +    case EMC141X_REVISION:
+> > +        s->data =3D REVISION;
+> > +        break;
+> > +    case EMC141X_TEMP_HIGH0:
+> > +        s->data =3D s->sensor[0].raw_temp_current;
+> > +        break;
+> > +    case EMC141X_TEMP_HIGH1:
+> > +        s->data =3D s->sensor[1].raw_temp_current;
+> > +        break;
+> > +    case EMC141X_TEMP_HIGH2:
+> > +        s->data =3D s->sensor[2].raw_temp_current;
+> > +        break;
+> > +    case EMC141X_TEMP_HIGH3:
+> > +        s->data =3D s->sensor[3].raw_temp_current;
+> > +        break;
+> > +    case EMC141X_TEMP_MAX_HIGH0:
+> > +        s->data =3D s->sensor[0].raw_temp_max;
+> > +        break;
+> > +    case EMC141X_TEMP_MAX_HIGH1:
+> > +        s->data =3D s->sensor[1].raw_temp_max;
+> > +        break;
+> > +    case EMC141X_TEMP_MAX_HIGH2:
+> > +        s->data =3D s->sensor[2].raw_temp_max;
+> > +        break;
+> > +    case EMC141X_TEMP_MAX_HIGH3:
+> > +        s->data =3D s->sensor[3].raw_temp_max;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH0:
+> > +        s->data =3D s->sensor[0].raw_temp_min;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH1:
+> > +        s->data =3D s->sensor[1].raw_temp_min;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH2:
+> > +        s->data =3D s->sensor[2].raw_temp_min;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH3:
+> > +        s->data =3D s->sensor[3].raw_temp_min;
+> > +        break;
+> > +    default:
+> > +        s->data =3D 0;
+> > +    }
+> > +}
+> > +
+> > +static void emc141x_write(EMC141XState *s)
+> > +{
+> > +    switch (s->pointer) {
+> > +    case EMC141X_TEMP_MAX_HIGH0:
+> > +        s->sensor[0].raw_temp_max =3D s->data;
+> > +        break;
+> > +    case EMC141X_TEMP_MAX_HIGH1:
+> > +        s->sensor[1].raw_temp_max =3D s->data;
+> > +        break;
+> > +    case EMC141X_TEMP_MAX_HIGH2:
+> > +        s->sensor[2].raw_temp_max =3D s->data;
+> > +        break;
+> > +    case EMC141X_TEMP_MAX_HIGH3:
+> > +        s->sensor[3].raw_temp_max =3D s->data;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH0:
+> > +        s->sensor[0].raw_temp_min =3D s->data;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH1:
+> > +        s->sensor[1].raw_temp_min =3D s->data;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH2:
+> > +        s->sensor[2].raw_temp_min =3D s->data;
+> > +        break;
+> > +    case EMC141X_TEMP_MIN_HIGH3:
+> > +        s->sensor[3].raw_temp_min =3D s->data;
+> > +        break;
+> > +    default:
+> > +        s->data =3D 0;
+> > +    }
+> > +}
+> > +
+> > +static uint8_t emc141x_rx(I2CSlave *i2c)
+> > +{
+> > +    EMC141XState *s =3D EMC141X(i2c);
+> > +
+> > +    if (s->len =3D=3D 0) {
+> > +        s->len++;
+> > +        return s->data;
+> > +    } else {
+> > +        return 0xff;
+> > +    }
+> > +}
+> > +
+> > +static int emc141x_tx(I2CSlave *i2c, uint8_t data)
+> > +{
+> > +    EMC141XState *s =3D EMC141X(i2c);
+> > +
+> > +    if (s->len =3D=3D 0) {
+> > +        /* first byte is the reg pointer */
+> > +        s->pointer =3D data;
+> > +        s->len++;
+> > +    } else if (s->len =3D=3D 1) {
+> > +        s->data =3D data;
+> > +        emc141x_write(s);
+> > +    }
+> > +
+> > +    return 0;
+> > +}
+> > +
+> > +static int emc141x_event(I2CSlave *i2c, enum i2c_event event)
+> > +{
+> > +    EMC141XState *s =3D EMC141X(i2c);
+> > +
+> > +    if (event =3D=3D I2C_START_RECV) {
+> > +        emc141x_read(s);
+> > +    }
+> > +
+> > +    s->len =3D 0;
+> > +    return 0;
+> > +}
+> > +
+> > +static const VMStateDescription vmstate_emc141x =3D {
+> > +    .name =3D "EMC141X",
+> > +    .version_id =3D 0,
+> > +    .minimum_version_id =3D 0,
+> > +    .fields =3D (VMStateField[]) {
+> > +        VMSTATE_UINT8(len, EMC141XState),
+> > +        VMSTATE_UINT8(data, EMC141XState),
+> > +        VMSTATE_UINT8(pointer, EMC141XState),
+> > +        VMSTATE_I2C_SLAVE(parent_obj, EMC141XState),
+> > +        VMSTATE_END_OF_LIST()
+> > +    }
+> > +};
+> > +
+> > +static void emc141x_reset(DeviceState *dev)
+> > +{
+> > +    EMC141XState *s =3D EMC141X(dev);
+> > +    int i;
+> > +
+> > +    for (i =3D 0; i < SENSORS_COUNT_MAX; i++) {
+> > +        s->sensor[i].raw_temp_max =3D 0x55;
+> > +    }
+> > +    s->pointer =3D 0;
+> > +    s->len =3D 0;
+> > +}
+> > +
+> > +static void emc141x_initfn(Object *obj)
+> > +{
+> > +    object_property_add(obj, "temperature0", "int",
+> > +                        emc141x_get_temperature,
+> > +                        emc141x_set_temperature, NULL, NULL);
+> > +    object_property_add(obj, "temperature1", "int",
+> > +                        emc141x_get_temperature,
+> > +                        emc141x_set_temperature, NULL, NULL);
+> > +    object_property_add(obj, "temperature2", "int",
+> > +                        emc141x_get_temperature,
+> > +                        emc141x_set_temperature, NULL, NULL);
+> > +    object_property_add(obj, "temperature3", "int",
+> > +                        emc141x_get_temperature,
+> > +                        emc141x_set_temperature, NULL, NULL);
+> > +}
+> > +
+> > +static void emc141x_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > +    I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
+> > +
+> > +    dc->reset =3D emc141x_reset;
+> > +    k->event =3D emc141x_event;
+> > +    k->recv =3D emc141x_rx;
+> > +    k->send =3D emc141x_tx;
+> > +    dc->vmsd =3D &vmstate_emc141x;
+> > +}
+> > +
+> > +static void emc1413_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    EMC141XClass *ec =3D EMC141X_CLASS(klass);
+> > +
+> > +    emc141x_class_init(klass, data);
+> > +    ec->model =3D EMC1413_DEVICE_ID;
+> > +    ec->sensors_count =3D 3;
+> > +}
+> > +
+> > +static void emc1414_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    EMC141XClass *ec =3D EMC141X_CLASS(klass);
+> > +
+> > +    emc141x_class_init(klass, data);
+> > +    ec->model =3D EMC1414_DEVICE_ID;
+> > +    ec->sensors_count =3D 4;
+> > +}
+> > +
+> > +static const TypeInfo emc141x_info =3D {
+> > +    .name          =3D TYPE_EMC141X,
+> > +    .parent        =3D TYPE_I2C_SLAVE,
+> > +    .instance_size =3D sizeof(EMC141XState),
+> > +    .class_size    =3D sizeof(EMC141XClass),
+> > +    .instance_init =3D emc141x_initfn,
+> > +    .abstract      =3D true,
+> > +};
+> > +
+> > +static const TypeInfo emc1413_info =3D {
+> > +    .name          =3D "emc1413",
+> > +    .parent        =3D TYPE_EMC141X,
+> > +    .class_init    =3D emc1413_class_init,
+> > +};
+> > +
+> > +static const TypeInfo emc1414_info =3D {
+> > +    .name          =3D "emc1414",
+> > +    .parent        =3D TYPE_EMC141X,
+> > +    .class_init    =3D emc1414_class_init,
+> > +};
+> > +
+> > +static void emc141x_register_types(void)
+> > +{
+> > +    type_register_static(&emc141x_info);
+> > +    type_register_static(&emc1413_info);
+> > +    type_register_static(&emc1414_info);
+> > +}
+> > +
+> > +type_init(emc141x_register_types)
+> > diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> > index 1cd48e8a0f..ce15ffceb9 100644
+> > --- a/hw/misc/meson.build
+> > +++ b/hw/misc/meson.build
+> > @@ -9,6 +9,7 @@ softmmu_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: fil=
+es('pci-testdev.c'))
+> >  softmmu_ss.add(when: 'CONFIG_SGA', if_true: files('sga.c'))
+> >  softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+> >  softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
+> > +softmmu_ss.add(when: 'CONFIG_EMC141X', if_true: files('emc141x.c'))
+> >  softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+> >  softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c=
+'))
+> >  softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
+> > diff --git a/include/hw/misc/emc141x_regs.h b/include/hw/misc/emc141x_r=
+egs.h
+> > new file mode 100644
+> > index 0000000000..0560fb7c5c
+> > --- /dev/null
+> > +++ b/include/hw/misc/emc141x_regs.h
+> > @@ -0,0 +1,37 @@
+> > +/*
+> > + * SMSC EMC141X temperature sensor.
+> > + *
+> > + * Browse the data sheet:
+> > + *
+> > + *    http://ww1.microchip.com/downloads/en/DeviceDoc/20005274A.pdf
+> > + *
+> > + * This work is licensed under the terms of the GNU GPL, version 2 or
+> > + * later. See the COPYING file in the top-level directory.
+> > + */
+> > +
+> > +#ifndef TMP105_REGS_H
+> > +#define TMP105_REGS_H
+> > +
+> > +#define EMC1413_DEVICE_ID                0x21
+> > +#define EMC1414_DEVICE_ID                0x25
+> > +#define MANUFACTURER_ID                  0x5d
+> > +#define REVISION                         0x04
+> > +
+> > +/* the EMC141X registers */
+> > +#define EMC141X_TEMP_HIGH0               0x00
+> > +#define EMC141X_TEMP_HIGH1               0x01
+> > +#define EMC141X_TEMP_HIGH2               0x23
+> > +#define EMC141X_TEMP_HIGH3               0x2a
+> > +#define EMC141X_TEMP_MAX_HIGH0           0x05
+> > +#define EMC141X_TEMP_MIN_HIGH0           0x06
+> > +#define EMC141X_TEMP_MAX_HIGH1           0x07
+> > +#define EMC141X_TEMP_MIN_HIGH1           0x08
+> > +#define EMC141X_TEMP_MAX_HIGH2           0x15
+> > +#define EMC141X_TEMP_MIN_HIGH2           0x16
+> > +#define EMC141X_TEMP_MAX_HIGH3           0x2c
+> > +#define EMC141X_TEMP_MIN_HIGH3           0x2d
+> > +#define EMC141X_DEVICE_ID                0xfd
+> > +#define EMC141X_MANUFACTURER_ID          0xfe
+> > +#define EMC141X_REVISION                 0xff
+> > +
+> > +#endif
+> > diff --git a/tests/qtest/emc141x-test.c b/tests/qtest/emc141x-test.c
+> > new file mode 100644
+> > index 0000000000..714058806a
+> > --- /dev/null
+> > +++ b/tests/qtest/emc141x-test.c
+> > @@ -0,0 +1,81 @@
+> > +/*
+> > + * QTest testcase for the EMC141X temperature sensor
+> > + *
+> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
+later.
+> > + * See the COPYING file in the top-level directory.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +
+> > +#include "libqtest-single.h"
+> > +#include "libqos/qgraph.h"
+> > +#include "libqos/i2c.h"
+> > +#include "qapi/qmp/qdict.h"
+> > +#include "hw/misc/emc141x_regs.h"
+> > +
+> > +#define EMC1414_TEST_ID   "emc1414-test"
+> > +
+> > +static int qmp_emc1414_get_temperature(const char *id)
+> > +{
+> > +    QDict *response;
+> > +    int ret;
+> > +
+> > +    response =3D qmp("{ 'execute': 'qom-get', 'arguments': { 'path': %=
+s, "
+> > +                   "'property': 'temperature0' } }", id);
+> > +    g_assert(qdict_haskey(response, "return"));
+> > +    ret =3D qdict_get_int(response, "return");
+> > +    qobject_unref(response);
+> > +    return ret;
+> > +}
+> > +
+> > +static void qmp_emc1414_set_temperature(const char *id, int value)
+> > +{
+> > +    QDict *response;
+> > +
+> > +    response =3D qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %=
+s, "
+> > +                   "'property': 'temperature0', 'value': %d } }", id, =
+value);
+> > +    g_assert(qdict_haskey(response, "return"));
+> > +    qobject_unref(response);
+> > +}
+> > +
+> > +static void send_and_receive(void *obj, void *data, QGuestAllocator *a=
+lloc)
+> > +{
+> > +    uint16_t value;
+> > +    QI2CDevice *i2cdev =3D (QI2CDevice *)obj;
+> > +
+> > +    value =3D qmp_emc1414_get_temperature(EMC1414_TEST_ID);
+> > +    g_assert_cmpuint(value, =3D=3D, 0);
+> > +
+> > +    value =3D i2c_get8(i2cdev, EMC141X_TEMP_HIGH0);
+> > +    g_assert_cmphex(value, =3D=3D, 0);
+> > +
+> > +    /* The default max value is 85C, 0x55=3D85 */
+> > +    value =3D i2c_get8(i2cdev, EMC141X_TEMP_MAX_HIGH0);
+> > +    g_assert_cmphex(value, =3D=3D, 0x55);
+> > +
+> > +    value =3D i2c_get8(i2cdev, EMC141X_TEMP_MIN_HIGH0);
+> > +    g_assert_cmphex(value, =3D=3D, 0);
+> > +
+> > +    /* 3000mc =3D 30C */
+> > +    qmp_emc1414_set_temperature(EMC1414_TEST_ID, 30000);
+> > +    value =3D qmp_emc1414_get_temperature(EMC1414_TEST_ID);
+> > +    g_assert_cmpuint(value, =3D=3D, 30000);
+> > +
+> > +    value =3D i2c_get8(i2cdev, EMC141X_TEMP_HIGH0);
+> > +    g_assert_cmphex(value, =3D=3D, 30);
+> > +
+> > +}
+> > +
+> > +static void emc1414_register_nodes(void)
+> > +{
+> > +    QOSGraphEdgeOptions opts =3D {
+> > +        .extra_device_opts =3D "id=3D" EMC1414_TEST_ID ",address=3D0x7=
+0"
+> > +    };
+> > +    add_qi2c_address(&opts, &(QI2CAddress) { 0x70 });
+> > +
+> > +    qos_node_create_driver("emc1414", i2c_device_create);
+> > +    qos_node_consumes("emc1414", "i2c-bus", &opts);
+> > +
+> > +    qos_add_test("tx-rx", "emc1414", send_and_receive, NULL);
+> > +}
+> > +libqos_init(emc1414_register_nodes);
+> > diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> > index c19f1c8503..d776befd6e 100644
+> > --- a/tests/qtest/meson.build
+> > +++ b/tests/qtest/meson.build
+> > @@ -188,6 +188,7 @@ qos_test_ss.add(
+> >    'sdhci-test.c',
+> >    'spapr-phb-test.c',
+> >    'tmp105-test.c',
+> > +  'emc141x-test.c',
+> >    'usb-hcd-ohci-test.c',
+> >    'virtio-test.c',
+> >    'virtio-blk-test.c',
+> >
+>

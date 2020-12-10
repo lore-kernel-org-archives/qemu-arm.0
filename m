@@ -1,91 +1,76 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp193326lfq;
-        Fri, 11 Dec 2020 07:38:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz9pRnlx9Bw6Kwc80+Ed1WSqwPokVQaKRYWceIBNv6nq8+RBmwQsyTXUmKFDtxzW2kzIAZI
-X-Received: by 2002:a5b:44d:: with SMTP id s13mr18343743ybp.300.1607701105502;
-        Fri, 11 Dec 2020 07:38:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607701105; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5670474lfb;
+        Wed, 9 Dec 2020 23:53:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyfx3UUYrOC0o6sSWaIK8QOWcAzG/EeJPVRsbNqpJ2dLXfyU9+OOyAJy3LbeMl25VjwZ1fg
+X-Received: by 2002:a25:2e07:: with SMTP id u7mr256427ybu.393.1607586800982;
+        Wed, 09 Dec 2020 23:53:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607586800; cv=none;
         d=google.com; s=arc-20160816;
-        b=bciSgALbEytS6kCPogkdVRG2yZ1V5A1mb6qDyFUCZUsJ1YOk+TqLLgaKjVhLcVhN6n
-         rqiuzbdjzGlZtyK/QJRg7o0CmwjOHBIfoYEhlidrwl+fG8bQRrAwbX48fBfPgF64KwEY
-         GXltVXiXambY3Z69J9BWWWFu5qUZqR2CZy8N/9ldYzR2o6Gtq6GgLP9o6TzF8gIGTBpk
-         RmfidTjARW0s5RIs96imf3A0WisRcXwj3CXGkMowLnw5Q5iKL3GyzUeHR1xYNR6ju8tp
-         UEaaLZHVtaaiXjeWy5FMxOgeFwIYl8Mlm/bvhIaVWUc89jUEeHeBBYuT6RR87kTlnLLA
-         dWtQ==
+        b=WarGoeKw19gkQuxkOPYS/G0kuNXk6rgxwwUswcZG2HNFe51te5CEexPNGLMpCots2v
+         vFcrazWIQYWs2Qe+xnKACJB2YQBJyLVrCRreMxuZb79NklgPPItMmzznnpIXFsyYBRXt
+         lHWAXqtsMJNuAZKsZdSILvyf9viG9Sr95QHIOnJP5zpOXvXfbNlzvN2WFCIRraXIUWZM
+         R0sdz5mGr9kJufHeg5da5fwiQfeecgS6O5NE2K3PICV+nXRJuDhwjEvtl7J+9pLCAj/c
+         Xg3EI2M5yYechspMP8TlG17dd6Ehvs6huRrNYyBi2VzIeBAV5mEnwQgsxWGOSqYYbY/k
+         Arcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=yGflhQBSiFs/eM4mgy3gVdQvdSYWMbAJHsHwRD/lO44=;
-        b=TE4L+z8j7zBvd/ugTlsuuery1ZVIK6lnxld2+bUkpGaj3efI0CGPJObQVRYDcAxbob
-         sTaIpTwsP4+F9I6lC7tlB7oE51r+a9DVldPQl3QitJBAzh91M4bOIOkL8f5axHvahh74
-         90tVdpMHAB7r/372ReKMpdD3jjvSq4nNOHXfOLKzUJppHxlXmiydiL1DPb5ommoHDp46
-         Rhj6h1GozPuXioQm7EKj222HyO6xkj+kGg/LkECn42ecAe/K2YNaXNKPCZXPCVMgR31o
-         jmKfAqclsDP0KtvJdTAXN0snRu8n2l78k/XcxgoE4KKD9zUBJ0BHLw8H33eHKW3Gquve
-         mbAQ==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=SVPMv1t7JXnRZNxpzMb8/JwFSGAYB65lrPR0RkuTRLM=;
+        b=PFQoUBlI4qPRl0hdGKIRD/dBEoofRQJNAidAPHEUt19Edl17RlGiLz4lOmagJn2vFG
+         HgD3oiNFMV+tTSAZOCw1WAsn/tKrbSxZ26CWmRvg6clcDfTxzGa9aucS3ZV2vOvay/SR
+         gVQdvMUmtOdwgDSPlGOpX6j8M+dkvkZcErpOVvJMaIyFMIye9FARykjZyw28DlgtXEQi
+         7KXdTKH2DlvMt4UNlCHc/ZLSRX99ZS9Xmx4eSf0r9eWUbp4d1+iQBV6lEs0gp79t1lgK
+         ONuOggqf+DW08MjXX+6+Azg2JPGXfEpE9PbRTLEO+QSWR+V5ItYys8n+AduCEyP64E6i
+         XpZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=3upY+hNb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si8628689ybt.380.2020.12.11.07.38.25
+        by mx.google.com with ESMTPS id l2si4296830ybt.221.2020.12.09.23.53.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Dec 2020 07:38:25 -0800 (PST)
+        Wed, 09 Dec 2020 23:53:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=3upY+hNb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45932 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53968 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knkUy-0001H0-Mw
-	for alex.bennee@linaro.org; Fri, 11 Dec 2020 10:38:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53652)
+	id 1knGlM-0004Vi-Ep
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 02:53:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
- id 1knkJQ-0006Os-B0; Fri, 11 Dec 2020 10:26:28 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:35686)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1knGl8-0004VA-Lf; Thu, 10 Dec 2020 02:53:06 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2829)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <damien.hedde@greensocs.com>)
- id 1knkJB-0006d1-SZ; Fri, 11 Dec 2020 10:26:27 -0500
-Received: from [172.17.10.10] (unknown [172.17.10.10])
- by beetle.greensocs.com (Postfix) with ESMTPSA id DDEDD21C35;
- Fri, 11 Dec 2020 15:26:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1607700367;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=yGflhQBSiFs/eM4mgy3gVdQvdSYWMbAJHsHwRD/lO44=;
- b=3upY+hNb9DLikMAWt7rk1Xlg7dyfX5lj7DSlxwix4mUAttUPaLzoLXzfiE8nsLxUgdz+2G
- kDOUasxeUbMTeLVWL6OpG6hS/3ETK5Lahua7wP08v2aiOYvz2ozLO0NBSrOzf8TI5vud2u
- jstdsnlkxUTKf3SrN+SmXIQtU3EgrdI=
-Subject: Re: [RFC PATCH] hw/misc/zynq_slcr: Avoid #DIV/0! error
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>,
- Alistair Francis <alistair23@gmail.com>
-References: <20201210141610.884600-1-f4bug@amsat.org>
- <CAKmqyKN7OMipCzi-B+qNJb_J--ontKzpwX5J=rQ8zye3tmYePQ@mail.gmail.com>
- <20201210201309.GQ22548@toto>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <9b1a67e2-c7d1-a220-0a5a-5bcb188e5c64@greensocs.com>
-Date: Fri, 11 Dec 2020 16:26:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1knGl6-0002dH-2s; Thu, 10 Dec 2020 02:53:06 -0500
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cs5jJ3k86zknpL;
+ Thu, 10 Dec 2020 15:52:04 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 10 Dec 2020 15:52:39 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
+ <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PATCH v2] bugfix: hostmem: Free host_nodes list right after visited
+Date: Thu, 10 Dec 2020 15:52:26 +0800
+Message-ID: <20201210075226.20196-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20201210201309.GQ22548@toto>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=5.135.226.135;
- envelope-from=damien.hedde@greensocs.com; helo=beetle.greensocs.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.37]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -98,56 +83,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Mauro Matteo Cascella <mcascell@redhat.com>,
- Gaoning Pan <gaoning.pgn@antgroup.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- Gaoning Pan <pgn@zju.edu.cn>
+Cc: qemu-devel@nongnu.org, alex.chen@huawei.com, qemu-arm@nongnu.org,
+ kuhn.chenqun@huawei.com, wanghaibin.wang@huawei.com,
+ Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aTWQ0HiyrVgY
+X-TUID: vXPeuXM/p/y1
 
+In host_memory_backend_get_host_nodes, we build host_nodes
+list and output it to v (a StringOutputVisitor) but forget
+to free the list. This fixes the memory leak.
 
+The memory leak stack:
 
-On 12/10/20 9:13 PM, Edgar E. Iglesias wrote:
-> On Thu, Dec 10, 2020 at 08:39:32AM -0800, Alistair Francis wrote:
->> On Thu, Dec 10, 2020 at 6:27 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>
->>> Malicious user can set the feedback divisor for the PLLs
->>> to zero, triggering a floating-point exception (SIGFPE).
->>>
->>> As the datasheet [*] is not clear how hardware behaves
->>> when these bits are zeroes, use the maximum divisor
->>> possible (128) to avoid the software FPE.
->>>
->>> [*] Zynq-7000 TRM, UG585 (v1.12.2)
->>>     B.28 System Level Control Registers (slcr)
->>>     -> "Register (slcr) ARM_PLL_CTRL"
->>>     25.10.4 PLLs
->>>     -> "Software-Controlled PLL Update"
->>>
->>> Fixes: 38867cb7ec9 ("hw/misc/zynq_slcr: add clock generation for uarts")
->>> Reported-by: Gaoning Pan <pgn@zju.edu.cn>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>> Cc: Damien Hedde <damien.hedde@greensocs.com>
->>> Cc: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
->>> Cc: Alistair Francis <alistair.francis@wdc.com>
->>> Cc: Gaoning Pan <gaoning.pgn@antgroup.com>
->>> Cc: Mauro Matteo Cascella <mcascell@redhat.com>
->>>
->>> Alternative is to threat that as PLL disabled and return 0...
->>
->> I'm not sure which is better, but this patch now is better then before:
->>
->> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> 
-> I agree with Alistair:
-> 
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> 
+ Direct leak of 32 byte(s) in 2 object(s) allocated from:
+    #0 0xfffda30b3393 in __interceptor_calloc (/usr/lib64/libasan.so.4+0xd3393)
+    #1 0xfffda1d28b9b in g_malloc0 (/usr/lib64/libglib-2.0.so.0+0x58b9b)
+    #2 0xaaab05ca6e43 in host_memory_backend_get_host_nodes backends/hostmem.c:94
+    #3 0xaaab061ddf83 in object_property_get_uint16List qom/object.c:1478
+    #4 0xaaab05866513 in query_memdev hw/core/machine-qmp-cmds.c:312
+    #5 0xaaab061d980b in do_object_child_foreach qom/object.c:1001
+    #6 0xaaab0586779b in qmp_query_memdev hw/core/machine-qmp-cmds.c:328
+    #7 0xaaab0615ed3f in qmp_marshal_query_memdev qapi/qapi-commands-machine.c:327
+    #8 0xaaab0632d647 in do_qmp_dispatch qapi/qmp-dispatch.c:147
+    #9 0xaaab0632d647 in qmp_dispatch qapi/qmp-dispatch.c:190
+    #10 0xaaab0610f74b in monitor_qmp_dispatch monitor/qmp.c:120
+    #11 0xaaab0611074b in monitor_qmp_bh_dispatcher monitor/qmp.c:209
+    #12 0xaaab063caefb in aio_bh_poll util/async.c:117
+    #13 0xaaab063d30fb in aio_dispatch util/aio-posix.c:459
+    #14 0xaaab063cac8f in aio_ctx_dispatch util/async.c:268
+    #15 0xfffda1d22a6b in g_main_context_dispatch (/usr/lib64/libglib-2.0.so.0+0x52a6b)
+    #16 0xaaab063d0e97 in glib_pollfds_poll util/main-loop.c:218
+    #17 0xaaab063d0e97 in os_host_main_loop_wait util/main-loop.c:241
+    #18 0xaaab063d0e97 in main_loop_wait util/main-loop.c:517
+    #19 0xaaab05c8bfa7 in main_loop /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:1791
+    #20 0xaaab05713bc3 in main /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:4473
+    #21 0xfffda0a83ebf in __libc_start_main (/usr/lib64/libc.so.6+0x23ebf)
+    #22 0xaaab0571ed5f  (aarch64-softmmu/qemu-system-aarch64+0x88ed5f)
+ SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
 
-Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+Fixes: 4cf1b76bf1e2 (hostmem: add properties for NUMA memory policy)
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Tested-by: Chen Qun <kuhn.chenqun@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+ backends/hostmem.c | 1 +
+ 1 file changed, 1 insertion(+)
+---
+
+v2:
+ - Update commit message.
+ - Add Chen Qun's T.b.
+ - Add Igor's R.b.
+
+diff --git a/backends/hostmem.c b/backends/hostmem.c
+index 4bde00e8e7..9f9ac95edd 100644
+--- a/backends/hostmem.c
++++ b/backends/hostmem.c
+@@ -105,6 +105,7 @@ host_memory_backend_get_host_nodes(Object *obj, Visitor *v, const char *name,
+ 
+ ret:
+     visit_type_uint16List(v, name, &host_nodes, errp);
++    qapi_free_uint16List(host_nodes);
+ }
+ 
+ static void
+-- 
+2.23.0
+

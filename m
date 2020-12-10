@@ -1,106 +1,86 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp248543lfq;
-        Fri, 11 Dec 2020 08:48:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxe7qN9O4RTY9HuSaUm+rjixp1nJ6FYisu4VgiJVSo6WdHIzjped3NuMjDVMBxBBab+jezM
-X-Received: by 2002:a25:374c:: with SMTP id e73mr20967708yba.376.1607705296042;
-        Fri, 11 Dec 2020 08:48:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607705296; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5493565lfb;
+        Wed, 9 Dec 2020 18:22:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxc03FJsDS/cWyZOk1t4NvwdDQ5dS0B2jw9Ps0FMShDs34L9+ztsQEn6m+1Gp0aoRkr5TqC
+X-Received: by 2002:a25:be52:: with SMTP id d18mr7832696ybm.176.1607566931642;
+        Wed, 09 Dec 2020 18:22:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607566931; cv=none;
         d=google.com; s=arc-20160816;
-        b=rQqOpg82xUbZv8X7oK1r/d/rncyE8pFN+yaigqb4/388ekJJ0igwP6B6hxJd5wAhe0
-         Szq6wRbkwKjaO5ti+AZvXpfrCHflHO3M9kOdwVM42uJbbBjqhBnj9tdlm3zUX0u9TxYf
-         Hk8R75+uWJjw3e0tMYQqls1Vuure11+iDPLmoHP0yFrERDanhMiVaip76pJKsfg32dHz
-         mdLd485pfzq6t8eiUgGXXOTw/Y5DJ7tZtG8gjkR4DtMjfi+tHTpnDFEmZKSCeY5FFN7l
-         7yTTuuavCHNlWRRCiMDqocSa1bHWg1qBIZZ76b/Xf75/7x+WGep00PyzklcEAdC2W0TD
-         3GDw==
+        b=Gos5CuWkWcdEv+ltvTwdkeMRTJWaeBnl84fKylpR+EIqUL9CD9WoR+DrSFQj32XlmN
+         gDFhpeNM4ZWATK78zA0rgE8xPXAP4jO2D210zqcmcM+BUQv64tXCutRnhIYzWt6LFCP7
+         AFVpUJjAG99TnmVH8uzFLo3b0/v9o5uQcAlHZhjL11vkA0x/1hn861WBOtLbEQA+SapC
+         umMuzpHyErOyEQC9FsVqSO3QbnS4u2zl4upcWP08EzBDp8fbzfZXQNmcKFLvDeqhlrZj
+         SkJ9yjKv6m/MDxU2boyARfLiDAVNxsolYclGcP4a24H7IXBQ7/CYHGTOLoa36Lf8+jBe
+         uOJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=FtFahMWUkxRH3ltuNlCugR+DBs5lwmd7BUQy5DiOZ9c=;
-        b=0mZtTwSVPDxVBjOzhKokwr6DF9cGyZU9moLXwFKVZOj82Z2WG76xEkhniEEnvoD4Q+
-         xpaWcgTF2/OfE8gV6eMu7BftScp4NB2qbGWRfRZAQNso31z2/8tYYzd66kt4qVRosnPT
-         dlF54vQdMnjpdNzh4JlxFBhE4AmnErxRAJF1Mf4uodCzfWtaaPtWwkK9DCek4O0cx86u
-         oHkwFhIV21iFocc6+3WNLjHHU45+5okK0i7pYHkzj30AktpPP6mVROdNZEHwEMLeQZHk
-         xZn9T4x/ix87+v1p+Vr2NgnbOJ4nOdq35/U1jCYaYS1tb9V93liPXEd4AEo8sQTTjSvf
-         tDjw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=Bb5PLdiBOaSCTqn5X91mD1p/UH6QtnGNUaIHnZDnBRo=;
+        b=CbmInX6Kwh2tKx/yvni0kNxF/uHhSltd5NWvvYlTFpqnoW1p/OYTVVjRLZdhya+dIX
+         wSrnVwAWvFGo1pZWuDWfJFWS5cbRkDjmqQzg2+2hp4GszK3cEC2KcdIy54evbxMQ1gWB
+         m6SbYja/SgkazDVlxSRW96U1Qx2y6uZnVoeiJbIoxu1lSQ+actxLSqgatQNxRcSuHn7v
+         1j24Zaq7rzS2RGSbD1fz3FVj9Wmkw314bOdy44UIf5ggik1s5TQ3dzIeN0zYmxsU2iRW
+         nDRw/ybxfPEsKPtcDbwKoMovgO+pdp2yHmoOcwq85zCIiqMiV3SLmlKZrvcGpt1FNW9z
+         m42Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oEhS7gSV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11si9094482ybc.446.2020.12.11.08.48.15
+        by mx.google.com with ESMTPS id e4si3652023ybk.374.2020.12.09.18.22.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Dec 2020 08:48:16 -0800 (PST)
+        Wed, 09 Dec 2020 18:22:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oEhS7gSV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51188 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knlaZ-0004ra-De
-	for alex.bennee@linaro.org; Fri, 11 Dec 2020 11:48:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44646)
+	id 1knBar-0000Nw-Qy
+	for alex.bennee@linaro.org; Wed, 09 Dec 2020 21:22:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1knlZp-0004p6-SX
- for qemu-arm@nongnu.org; Fri, 11 Dec 2020 11:47:30 -0500
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:37616)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1knlZn-0002BX-1Y
- for qemu-arm@nongnu.org; Fri, 11 Dec 2020 11:47:29 -0500
-Received: by mail-ej1-x642.google.com with SMTP id ga15so13233990ejb.4
- for <qemu-arm@nongnu.org>; Fri, 11 Dec 2020 08:47:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FtFahMWUkxRH3ltuNlCugR+DBs5lwmd7BUQy5DiOZ9c=;
- b=oEhS7gSVpRHn5YciAEauWSPvNlb6NMI3u3nz+nSmMFdkU48Q0XTJQ5f46/YSJXRvhG
- DEHe8GGWNQTANnSttuCDUmIHvbkr8wP/U00AzbObK7VCTjzBQOLiiycmDAxMOZ11SoCW
- Zq8qH3MPEs4IEda/6YMxjQ8ZxRSXBDdjobDEc9YVSwY5AlRN4cY/CAPE2Xh3GQCYmeNV
- VOGfwDmIz1D2muoT/0Vz4cfLJ3cw6skyJ80ktaEd5XpIB+3D8qqNqVYXv99eVpc40MTe
- 8c7YOZIWWXQnclZjAOOIvFpWyvSF9qIHe+hrsPDCf/yv8AH6xjR3V/4NuK3lDCuw72Fm
- DXAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=FtFahMWUkxRH3ltuNlCugR+DBs5lwmd7BUQy5DiOZ9c=;
- b=a3x58yY9W+KnRHYSzvlTILGdpAy2ULlkm+YOt7d7A5t5yO4clmH/ukBxDVj3FRsA1q
- jLjgSfbfQgFU2Xs1TTL1BK7mBSOYP5PcA0AFXSMQ50KzObsOdjgEziLvOFx/LBJIBAge
- mlbR2srECkNoYXCIFWuWTX1Igi1EBHE6zdUG+MLbin/qEK3hIykWYydZ+Asnw4m5alfw
- 6Z2gArc3+KpOKqRd03G+NfTBfNrA02bQ92Ve/bhIMMqHRfja9FhXrp+EBVM2ydfVgCa0
- DJurcSWxD8sK73XvOEwGfoGyo7WALPvQI8NGbqnTwSYbINDuIPs5BcYk33X/t21tiR0N
- 1KNg==
-X-Gm-Message-State: AOAM532zFnJzNBaOqSX6Q/LJ/Z5RRe7IH2JGGAxlkSufgfBzZPJzgbXE
- WP6/ui/dZqL7/p31FpV+GIlgT2rBh1qeLGFD7G4edg==
-X-Received: by 2002:a17:906:6b88:: with SMTP id
- l8mr11831626ejr.482.1607705245328; 
- Fri, 11 Dec 2020 08:47:25 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1knBaS-0000NE-8V; Wed, 09 Dec 2020 21:21:44 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2828)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1knBaP-0003Pk-Jm; Wed, 09 Dec 2020 21:21:43 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CryM55SqJzkkWT;
+ Thu, 10 Dec 2020 10:20:49 +0800 (CST)
+Received: from [10.174.187.219] (10.174.187.219) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 10 Dec 2020 10:21:22 +0800
+Subject: Re: [RFC PATCH v2 1/3] vfio: Move the saving of the config space to
+ the right place in VFIO migration
+To: Alex Williamson <alex.williamson@redhat.com>, Cornelia Huck
+ <cohuck@redhat.com>
+References: <20201209080919.156-1-lushenming@huawei.com>
+ <20201209080919.156-2-lushenming@huawei.com>
+ <20201209132947.3177f130.cohuck@redhat.com>
+ <20201209113431.5b252e93@omen.home>
+From: Shenming Lu <lushenming@huawei.com>
+Message-ID: <3f7db9e7-3c98-5022-e907-e6214815fae9@huawei.com>
+Date: Thu, 10 Dec 2020 10:21:21 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-References: <20201208122306.8933-1-leif@nuviainc.com>
- <20201208122306.8933-4-leif@nuviainc.com>
- <CAFEAcA-vT4eAxn7K=ULu7wGomfW7akEG=eSVGp4j7CSKtksuHg@mail.gmail.com>
- <20201211161236.GT1664@vanye>
-In-Reply-To: <20201211161236.GT1664@vanye>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 11 Dec 2020 16:47:13 +0000
-Message-ID: <CAFEAcA-aqTt4zsd0Eq8dpyJJ7hArZHKx_ge8=Us8DVMpHeXBSA@mail.gmail.com>
-Subject: Re: [PATCH 3/5] target/arm: add descriptions of CLIDR_EL1,
- CCSIDR_EL1, CTR_EL0 to cpu.h
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20201209113431.5b252e93@omen.home>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.219]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=lushenming@huawei.com; helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,57 +93,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ mst@redhat.com, Marc Zyngier <maz@kernel.org>, qemu-devel@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ yuzenghui@huawei.com, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aXR707tx2GGR
+X-TUID: pPn2k10OyQsV
 
-On Fri, 11 Dec 2020 at 16:12, Leif Lindholm <leif@nuviainc.com> wrote:
->
-> On Fri, Dec 11, 2020 at 14:45:55 +0000, Peter Maydell wrote:
-> > On Tue, 8 Dec 2020 at 12:23, Leif Lindholm <leif@nuviainc.com> wrote:
-> > >
-> > > Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+On 2020/12/10 2:34, Alex Williamson wrote:
+> On Wed, 9 Dec 2020 13:29:47 +0100
+> Cornelia Huck <cohuck@redhat.com> wrote:
+> 
+>> On Wed, 9 Dec 2020 16:09:17 +0800
+>> Shenming Lu <lushenming@huawei.com> wrote:
+>>
+>>> On ARM64 the VFIO SET_IRQS ioctl is dependent on the VM interrupt
+>>> setup, if the restoring of the VFIO PCI device config space is
+>>> before the VGIC, an error might occur in the kernel.
+>>>
+>>> So we move the saving of the config space to the non-iterable
+>>> process, so that it will be called after the VGIC according to
+>>> their priorities.
+>>>
+>>> As for the possible dependence of the device specific migration
+>>> data on it's config space, we can let the vendor driver to
+>>> include any config info it needs in its own data stream.
+>>> (Should we note this in the header file linux-headers/linux/vfio.h?)  
+>>
+>> Given that the header is our primary source about how this interface
+>> should act, we need to properly document expectations about what will
+>> be saved/restored when there (well, in the source file in the kernel.)
+>> That goes in both directions: what a userspace must implement, and what
+>> a vendor driver can rely on.
 
-> > > +FIELD(CCSIDR_EL1, ASSOCIATIVITY, 3, 20)
-> >
-> > The ASSOCIATIVITY field is bits [23:3], so it's
-> > 21 bits long, not 20, right ?
->
-> Err, indeed.
->
-> > > +FIELD(CCSIDR_EL1, NUMSETS, 32, 23)
-> >
-> > Similarly, NUMSETS is [55:32] so 24 bits long.
->
-> Sorry, brain must have taken holiday.
->
-> Would you like a v2 of this patch, fixing those?
+Yeah, in order to make the vendor driver and QEMU cooperate better, we might
+need to document some expectations about the data section in the migration
+region...
 
-Yes please.
+>>
+>> [Related, but not a todo for you: I think we're still missing proper
+>> documentation of the whole migration feature.]
+> 
+> Yes, we never saw anything past v1 of the documentation patch.  Thanks,
+> 
 
-> > > +
-> > > +FIELD(CTR_EL0,  IMINLINE, 0, 4)
-> > > +FIELD(CTR_EL0,  L1IP, 14, 2)
-> > > +FIELD(CTR_EL0,  DMINLINE, 16, 4)
-> > > +FIELD(CTR_EL0,  ERG, 20, 4)
-> > > +FIELD(CTR_EL0,  CWG, 24, 4)
-> > > +FIELD(CTR_EL0,  IDC, 28, 1)
-> > > +FIELD(CTR_EL0,  DIC, 29, 1)
-> > > +
-> > >  FIELD(MIDR_EL1, REVISION, 0, 4)
-> > >  FIELD(MIDR_EL1, PARTNUM, 4, 12)
-> > >  FIELD(MIDR_EL1, ARCHITECTURE, 16, 4)
-> >
-> > Any reason not to define the other fields here?
-> > FIELD(MIDR_EL1, VARIANT, 20, 4)
-> > FIELD(MIDR_EL1, IMPLEMENTER, 24, 8)
->
-> Those are just context, not added by this patch.
-> (Glad to see I'm not the only one making that mistake...)
+By the way, is there anything unproper with this patch? Wish your suggestion. :-)
 
-Doh!
-
-thanks
--- PMM
+> Alex
+> 
+> 
+>>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+>>> ---
+>>>  hw/vfio/migration.c | 25 +++++++++++++++----------
+>>>  1 file changed, 15 insertions(+), 10 deletions(-)  
+> 
+> .
+> 

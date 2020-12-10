@@ -1,179 +1,169 @@
-Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1080861qvk;
-        Thu, 10 Dec 2020 05:59:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz4ggro8z0k8jcWrOznCg3oexj9W7/oW5G8zgQHO/zmgo6ohIBDFfhuVjVdLWvxiVCv/934
-X-Received: by 2002:a92:ba08:: with SMTP id o8mr9117042ili.249.1607608784527;
-        Thu, 10 Dec 2020 05:59:44 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607608784; cv=pass;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5950952lfb;
+        Thu, 10 Dec 2020 06:28:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwE8itvR08tBc3xB+dhU1h1E4mnOayLKFMyIS6TdEFRd3pExGfaq5k8+l8CZftVEmAdhZTT
+X-Received: by 2002:a25:bccc:: with SMTP id l12mr11422039ybm.295.1607610512574;
+        Thu, 10 Dec 2020 06:28:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607610512; cv=none;
         d=google.com; s=arc-20160816;
-        b=IRGL+92YmYzL4dypCXhZD57VzUht5D8mMexKiluFUDyjbetZGK3rrpr8uCRVsCPe+t
-         gQXkFFAAPjJGLp/6u/trRM/9CWk2o9zPGyZyoMKR/Nvh8CCNzzPIM9OG44f/5EHyd55l
-         zvS35ZEcx7yPmNRNlGrVs694AhsrzejQq0/eziUIgP78Y/wz4UcoI1oNOuH+//ZEyJQv
-         7WV1m3W0YQq9DvLMCmJYx2/OJRsTLkFvurlDwKhbY1KylllaMLlRYy/rTVh/ldCnmgBi
-         56LOfqoKqhxm/M7CYY2xDRMH2aBWKb0bYT4gzZx/5RYzrUgtWoIdCl+5vyTFn3beoCng
-         jseA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:content-transfer-encoding:mime-version:message-id
-         :subject:reply-to:in-reply-to:sender:precedence:errors-to
-         :list-subscribe:list-help:list-post:list-unsubscribe:list-id
-         :resent-from:resent-message-id:resent-date;
-        bh=FqEloFzX8R1oXIXHz5gZRze20BKsfvsbNvg1Fkrpw5E=;
-        b=VLxg47syvftGpUFknNsSIGsAGsreWBUumrC8oTdwyuZ9CxpmDVoFTDhGzm3b0RlPCQ
-         6trvY/dG6z66QFXihTguhzBtficoN9paEkneUv2AXd+V9C+HH7cmHjMZDrcEcumsit+e
-         Z5rFRfRgeS+ExnGS2Nx8B4NyLdNxa+JvGw1uNP6KJGJaZScNBGHEFRwlgVm0IOGJ5yHx
-         Qsi2Akq5S1+v0E/deHTk5kdVQnilyuU4ZlznwM3XKPLy27dcRu/r7ptTPMFX3/S3Efwz
-         uZ1oB1d1zzWDbBUJcsvQU0iVnctv2/ulfUQbAD2ZzrthalWUAUBZc2j8xSWPnrXQmXho
-         RIFg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id l5si4197754jas.104.2020.12.10.05.59.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Dec 2020 05:59:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+        b=kqdQJonor0TLTOzekrPa7wh8wa9Z3WEhRZI7zeXX9vEUCxkzbWFN0pcU45Qxj1gW3P
+         k7Twwy4Jh67fFbD6PX/dlvLLAqiZYhUG3VCE+fYQ8xH/8xCYM9rVKmPX7NGkEWPzA6oi
+         99vLkCuONQjtDuAhjTMHpoNmHaUade41zov0qPjIA0kDfyYm3hL0W/gZzcK/FZI4zD6U
+         LrhesVyNZhsako2LqlNPqhU3aImj/yzgLJrkL5E5Oayswf6mZN1IiZDw41WFO2mhe3cG
+         175qwR/fQo63FB4asToy229EuwFwmNzDmuZ1b9J1mhzoWw+9NgEKWoWB+Qc84FXutGt6
+         rUrQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=h0ZkNmdrRk1QmBSvbXHC8b9Yk7HUiLC1aWMMCjxRxnY=;
+        b=xhaOqvZdzekTelHK8HLIoyEqJzODGTTRc46c+ozC2qEGtOuCbWlxzlRiQKRy1A+Py6
+         S0nXA6OtIBfOvgg/0GnwRr2/1MANgGJBgA4Ew4FDdp4u94e18mZ43Qfwp9zqT/XQWTcW
+         tG/Glty4hDoaN/9mip12JKozAmfp8enz6UcZGjuZnQvbWXVlyPmLJf3ZUY6UvyjJ0oX6
+         HcvPbbWZ8ifXy28omPxEm2PxuoDIn+vwfKfUU9kLii2DgBWRs/8HES+vBCskuFS7xMI0
+         5pvBE0ebG0qepQlOSNKW7ORn8HeGrAKOK1CZL3eIL1efVdJFwQSrKlT8CNHgSDKeCN9j
+         ueUQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=F4QheKpi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w131si5121742ybg.302.2020.12.10.06.28.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Dec 2020 06:28:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org
-Received: from list by lists.xenproject.org with outflank-mailman.49323.87210 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1knMSD-0000Uo-2o; Thu, 10 Dec 2020 13:57:57 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 49323.87210; Thu, 10 Dec 2020 13:57:57 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1knMSC-0000Uh-W4; Thu, 10 Dec 2020 13:57:56 +0000
-Resent-Date: Thu, 10 Dec 2020 13:57:56 +0000
-Resent-Message-Id: <E1knMSC-0000Uh-W4@lists.xenproject.org>
-Received: by outflank-mailman (input) for mailman id 49323;
- Thu, 10 Dec 2020 13:57:55 +0000
-Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
- helo=us1-amaz-eas2.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=31WP=FO=patchew.org=no-reply@srs-us1.protection.inumbo.net>)
- id 1knMSB-0000Uc-Go
- for xen-devel@lists.xenproject.org; Thu, 10 Dec 2020 13:57:55 +0000
-Received: from sender4-of-o56.zoho.com (unknown [136.143.188.56])
- by us1-amaz-eas2.inumbo.com (Halon) with ESMTPS
- id 939a9c36-487b-4f88-8b91-b10ade743df1;
- Thu, 10 Dec 2020 13:57:54 +0000 (UTC)
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1607608665218928.6832951833587;
- Thu, 10 Dec 2020 05:57:45 -0800 (PST)
-Resent-From: 
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 939a9c36-487b-4f88-8b91-b10ade743df1
-ARC-Seal: i=1; a=rsa-sha256; t=1607608667; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=J7yP/bEcqUv7RGlQn2+HOgTRvXtN83USY+vfvkEnpC3H3bveRAvH2vBshR99WVsDPGSkx4siWC2XRiIJBBPevmrfZHEreKZmVgUi5jqGTFSUslwc+va7/dfG2zMY6Q+/Hj0DKDWTxAZvoWK2zD1raWa60/ZeWnBeCTbw6pZ6Ojs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1607608667; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-	bh=FqEloFzX8R1oXIXHz5gZRze20BKsfvsbNvg1Fkrpw5E=; 
-	b=nnlYfeVVM2I51k1BWBbq+ctE0KKAmNCJRNn2KkvSoV6WAm37gKQr219+RBgDo7ECHccOXcj0k4IOTd2nQkbDfIxtJnpX1OT7dfaK2B+hJYGDD500SY1lXfgPtfljDEQMp4QTDq+7xgAs4r0lcgLKGKl7CGt/iuTEsZfSncVnjrU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-In-Reply-To: <20201210134752.780923-1-marcandre.lureau@redhat.com>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v3 00/13] Remove GCC < 4.8 checks
-Message-ID: <160760866227.10419.11672890973023491886@600e7e483b3a>
+       dkim=fail header.i=@linaro.org header.s=google header.b=F4QheKpi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46314 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1knMvn-0001m3-U9
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 09:28:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36080)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1knMv7-0001kZ-6O
+ for qemu-arm@nongnu.org; Thu, 10 Dec 2020 09:27:49 -0500
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:35845)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1knMv5-0007os-DF
+ for qemu-arm@nongnu.org; Thu, 10 Dec 2020 09:27:48 -0500
+Received: by mail-ej1-x644.google.com with SMTP id lt17so7599508ejb.3
+ for <qemu-arm@nongnu.org>; Thu, 10 Dec 2020 06:27:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=h0ZkNmdrRk1QmBSvbXHC8b9Yk7HUiLC1aWMMCjxRxnY=;
+ b=F4QheKpiJJxVg1rHl8Qc5ltjP127YbCLivdRTsGvE/XgdZc4gFui1VMaywti47I6x+
+ wTN6MdEF2x/sMYb8G1GowTyblyKhQyTl/dbsFBnLJk9k0hu0t6QczluJUnNcHp8baCae
+ 2E0jP0hXt/1s/BKOzp2M5R2JellblkE1jgjiGwETIGouxXMEDxZ4AekqsqCC7gE64ysC
+ Rg16qM3W1/LT0hxPqs1JXkaJ/3/pP2QNmgEFeXFLmVsB6eUoiESufJj58d1A5D/6rerG
+ X1Ysd5zsc3glD0HXcqM6kom6yR+d52wZwzFm572+S2LeuxOQtu207RB0pOg5bOip5+hZ
+ n2Iw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=h0ZkNmdrRk1QmBSvbXHC8b9Yk7HUiLC1aWMMCjxRxnY=;
+ b=LZ07FSRCnze6OCuqF6F5Ymo4is8LRkiICOLVwMc+4m195HQoA7wProzO9vgZLfiuRh
+ JiisLDQmibNIgzqdIkfMYe2Nn0rYxEQHBuRl8uKyHlfeorn7k5ZppESv66Kj+jM/qD5h
+ OAkOsxzYE7OVifWyh8Byx3kjlqIrKBPHHiDnx+dBvjUec4NTh3wlDNeDqqH4b8KyZHPK
+ GRn1yaML/XXMOEOdSBhdH7sWKSP8ivaOJJepjg90SJjwpPfEPF6xhSxj0+b5oF3375KC
+ F2Ock0TykqmEroDrtEbDo/W/Ic6Pm6NOeU9XfuOVYdfJX/QxPGb5lT+1efBKUPfonzXB
+ wFxQ==
+X-Gm-Message-State: AOAM533y/MbbQJSRi17YK0GdOanTwlx6YMJYDjF/hCHj/xJRNhOBZfC/
+ Yy7em/C9XfTGeWMtXWXdYKHLQl+3EksTgGXf6oss1Q==
+X-Received: by 2002:a17:906:31d2:: with SMTP id
+ f18mr6606354ejf.407.1607610465440; 
+ Thu, 10 Dec 2020 06:27:45 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-From: no-reply@patchew.org
-To: marcandre.lureau@redhat.com
-Cc: qemu-devel@nongnu.org, philmd@redhat.com, richard.henderson@linaro.org, laurent@vivier.eu, paul@xen.org, xen-devel@lists.xenproject.org, stefanha@redhat.com, kraxel@redhat.com, sstabellini@kernel.org, anthony.perard@citrix.com, dgilbert@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org, marcandre.lureau@redhat.com
-Date: Thu, 10 Dec 2020 05:57:45 -0800 (PST)
-X-ZohoMailClient: External
-X-TUID: 76alfJTnhhpq
+References: <20201210134752.780923-1-marcandre.lureau@redhat.com>
+ <20201210134752.780923-9-marcandre.lureau@redhat.com>
+ <a162ec7c-4dc3-5784-866e-dc95f6919b1f@redhat.com>
+In-Reply-To: <a162ec7c-4dc3-5784-866e-dc95f6919b1f@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 10 Dec 2020 14:27:34 +0000
+Message-ID: <CAFEAcA_xbEm+DmP5hixtkzWJK1fi8X7wZh+eGKmDneZv_=-xbA@mail.gmail.com>
+Subject: Re: [PATCH v3 08/13] audio: remove GNUC & MSVC check
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Stefano Stabellini <sstabellini@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Paul Durrant <paul@xen.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-arm <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ "open list:X86" <xen-devel@lists.xenproject.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wKFpTUcMfHMl
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTIxMDEzNDc1Mi43ODA5
-MjMtMS1tYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2Vl
-bXMgdG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBm
-b3IKbW9yZSBpbmZvcm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMTIxMDEz
-NDc1Mi43ODA5MjMtMS1tYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20KU3ViamVjdDogW1BBVENI
-IHYzIDAwLzEzXSBSZW1vdmUgR0NDIDwgNC44IGNoZWNrcwoKPT09IFRFU1QgU0NSSVBUIEJFR0lO
-ID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAw
-CmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2Fs
-IGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0
-b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1Qg
-U0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4
-ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICAg
-NWU3YjIwNC4uMTgwODM0ZCAgbWFzdGVyICAgICAtPiBtYXN0ZXIKIC0gW3RhZyB1cGRhdGVdICAg
-ICAgcGF0Y2hldy8yMDIwMTIwODA1NTA0My4zMTU0OC0xLWxlcnNla0ByZWRoYXQuY29tIC0+IHBh
-dGNoZXcvMjAyMDEyMDgwNTUwNDMuMzE1NDgtMS1sZXJzZWtAcmVkaGF0LmNvbQogLSBbdGFnIHVw
-ZGF0ZV0gICAgICBwYXRjaGV3LzIwMjAxMjA5MTAwODExLjE5MDMxNi0xLWFuZHJleS5ncnV6ZGV2
-QHZpcnR1b3p6by5jb20gLT4gcGF0Y2hldy8yMDIwMTIwOTEwMDgxMS4xOTAzMTYtMS1hbmRyZXku
-Z3J1emRldkB2aXJ0dW96em8uY29tCiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvMjAyMDEy
-MTAxMjU5MjkuMTEzNjM5MC0xLW1sZXZpdHNrQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDIwMTIx
-MDEyNTkyOS4xMTM2MzkwLTEtbWxldml0c2tAcmVkaGF0LmNvbQogKiBbbmV3IHRhZ10gICAgICAg
-ICBwYXRjaGV3LzIwMjAxMjEwMTM0NzUyLjc4MDkyMy0xLW1hcmNhbmRyZS5sdXJlYXVAcmVkaGF0
-LmNvbSAtPiBwYXRjaGV3LzIwMjAxMjEwMTM0NzUyLjc4MDkyMy0xLW1hcmNhbmRyZS5sdXJlYXVA
-cmVkaGF0LmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjc3OGEyZTMgY29tcGls
-ZXIuaDogcmVtb3ZlIFFFTVVfR05VQ19QUkVSRVEKMGEzZjQxMCBsaW51eC11c2VyOiByZW1vdmUg
-R05VQyBjaGVjawo5Njc4YzFlIGNvbXBpbGVyOiByZW1vdmUgR05VQyBjaGVjawphMDEzOGY4IHhl
-bjogcmVtb3ZlIEdOVUMgY2hlY2sKNDBmMzE3MCBwb2lzb246IHJlbW92ZSBHTlVDIGNoZWNrCmI4
-MGY1Y2IgYXVkaW86IHJlbW92ZSBHTlVDICYgTVNWQyBjaGVjawpiNjM1ZjVmIGNvbXBpbGVyLmg6
-IGV4cGxpY2l0IGNhc2UgZm9yIENsYW5nIHByaW50ZiBhdHRyaWJ1dGUKZDUyZjNjNCB2aXJ0aW9m
-c2Q6IHJlcGxhY2UgX1N0YXRpY19hc3NlcnQgd2l0aCBRRU1VX0JVSUxEX0JVR19PTgo5YmJlMmEw
-IHRlc3RzOiByZW1vdmUgR0NDIDwgNCBmYWxsYmFja3MKN2MzMzBjYiBxZW11LXBsdWdpbi5oOiBy
-ZW1vdmUgR0NDIDwgNAo0MzRkZTVkIGNvbXBpbGVyLmg6IHJlbW92ZSBHQ0MgPCAzIF9fYnVpbHRp
-bl9leHBlY3QgZmFsbGJhY2sKMDY5OWU3OCBhY2NlbC90Y2c6IFJlbW92ZSBzcGVjaWFsIGNhc2Ug
-Zm9yIEdDQyA8IDQuNgowM2UyMzE4IHFlbXUvYXRvbWljOiBEcm9wIHNwZWNpYWwgY2FzZSBmb3Ig
-dW5zdXBwb3J0ZWQgY29tcGlsZXIKCj09PSBPVVRQVVQgQkVHSU4gPT09CjEvMTMgQ2hlY2tpbmcg
-Y29tbWl0IDAzZTIzMTgzZmI1NSAocWVtdS9hdG9taWM6IERyb3Agc3BlY2lhbCBjYXNlIGZvciB1
-bnN1cHBvcnRlZCBjb21waWxlcikKMi8xMyBDaGVja2luZyBjb21taXQgMDY5OWU3OGEyNWZiIChh
-Y2NlbC90Y2c6IFJlbW92ZSBzcGVjaWFsIGNhc2UgZm9yIEdDQyA8IDQuNikKV0FSTklORzogYXJj
-aGl0ZWN0dXJlIHNwZWNpZmljIGRlZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzMwOiBGSUxFOiBh
-Y2NlbC90Y2cvY3B1LWV4ZWMuYzo3Mjc6CisjaWYgZGVmaW5lZChfX2NsYW5nX18pCgp0b3RhbDog
-MCBlcnJvcnMsIDEgd2FybmluZ3MsIDggbGluZXMgY2hlY2tlZAoKUGF0Y2ggMi8xMyBoYXMgc3R5
-bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBm
-YWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BB
-VENIIGluIE1BSU5UQUlORVJTLgozLzEzIENoZWNraW5nIGNvbW1pdCA0MzRkZTVkMjQ0MWEgKGNv
-bXBpbGVyLmg6IHJlbW92ZSBHQ0MgPCAzIF9fYnVpbHRpbl9leHBlY3QgZmFsbGJhY2spCjQvMTMg
-Q2hlY2tpbmcgY29tbWl0IDdjMzMwY2I2ZTQ0YyAocWVtdS1wbHVnaW4uaDogcmVtb3ZlIEdDQyA8
-IDQpCjUvMTMgQ2hlY2tpbmcgY29tbWl0IDliYmUyYTAwYTIyOCAodGVzdHM6IHJlbW92ZSBHQ0Mg
-PCA0IGZhbGxiYWNrcykKRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYmV0d2VlbiBmdW5jdGlvbiBu
-YW1lIGFuZCBvcGVuIHBhcmVudGhlc2lzICcoJwojMzA6IEZJTEU6IHRlc3RzL3RjZy9hcm0vZmN2
-dC5jOjc2OgorIyBkZWZpbmUgU05BTkYgKF9fYnVpbHRpbl9uYW5zZiAoIiIpKQoKRVJST1I6IHNw
-YWNlIHByb2hpYml0ZWQgYmV0d2VlbiBmdW5jdGlvbiBuYW1lIGFuZCBvcGVuIHBhcmVudGhlc2lz
-ICcoJwojMzE6IEZJTEU6IHRlc3RzL3RjZy9hcm0vZmN2dC5jOjc3OgorIyBkZWZpbmUgU05BTiAo
-X19idWlsdGluX25hbnMgKCIiKSkKCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGJldHdlZW4gZnVu
-Y3Rpb24gbmFtZSBhbmQgb3BlbiBwYXJlbnRoZXNpcyAnKCcKIzMyOiBGSUxFOiB0ZXN0cy90Y2cv
-YXJtL2ZjdnQuYzo3ODoKKyMgZGVmaW5lIFNOQU5MIChfX2J1aWx0aW5fbmFuc2wgKCIiKSkKCnRv
-dGFsOiAzIGVycm9ycywgMCB3YXJuaW5ncywgMTQgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNS8xMyBo
-YXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3Jz
-CmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpD
-SEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKNi8xMyBDaGVja2luZyBjb21taXQgZDUyZjNjNDll
-N2Y4ICh2aXJ0aW9mc2Q6IHJlcGxhY2UgX1N0YXRpY19hc3NlcnQgd2l0aCBRRU1VX0JVSUxEX0JV
-R19PTikKNy8xMyBDaGVja2luZyBjb21taXQgYjYzNWY1ZjBmMWMwIChjb21waWxlci5oOiBleHBs
-aWNpdCBjYXNlIGZvciBDbGFuZyBwcmludGYgYXR0cmlidXRlKQpXQVJOSU5HOiBhcmNoaXRlY3R1
-cmUgc3BlY2lmaWMgZGVmaW5lcyBzaG91bGQgYmUgYXZvaWRlZAojMzg6IEZJTEU6IGluY2x1ZGUv
-cWVtdS9jb21waWxlci5oOjEwMjoKKyNpZiBkZWZpbmVkKF9fY2xhbmdfXykKCnRvdGFsOiAwIGVy
-cm9ycywgMSB3YXJuaW5ncywgMzAgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNy8xMyBoYXMgc3R5bGUg
-cHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxz
-ZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENI
-IGluIE1BSU5UQUlORVJTLgo4LzEzIENoZWNraW5nIGNvbW1pdCBiODBmNWNiMTUzYWUgKGF1ZGlv
-OiByZW1vdmUgR05VQyAmIE1TVkMgY2hlY2spCjkvMTMgQ2hlY2tpbmcgY29tbWl0IDQwZjMxNzA2
-YzU1NCAocG9pc29uOiByZW1vdmUgR05VQyBjaGVjaykKMTAvMTMgQ2hlY2tpbmcgY29tbWl0IGEw
-MTM4ZjhiOGNhMSAoeGVuOiByZW1vdmUgR05VQyBjaGVjaykKMTEvMTMgQ2hlY2tpbmcgY29tbWl0
-IDk2NzhjMWUxYjBkOCAoY29tcGlsZXI6IHJlbW92ZSBHTlVDIGNoZWNrKQoxMi8xMyBDaGVja2lu
-ZyBjb21taXQgMGEzZjQxMDJiY2ZhIChsaW51eC11c2VyOiByZW1vdmUgR05VQyBjaGVjaykKMTMv
-MTMgQ2hlY2tpbmcgY29tbWl0IDc3OGEyZTMxYzVjZSAoY29tcGlsZXIuaDogcmVtb3ZlIFFFTVVf
-R05VQ19QUkVSRVEpCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRo
-IGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9y
-Zy9sb2dzLzIwMjAxMjEwMTM0NzUyLjc4MDkyMy0xLW1hcmNhbmRyZS5sdXJlYXVAcmVkaGF0LmNv
-bS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBh
-dXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNl
-bmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+On Thu, 10 Dec 2020 at 14:26, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> On 12/10/20 2:47 PM, marcandre.lureau@redhat.com wrote:
+> > From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> >
+> > QEMU requires either GCC or Clang, which both advertize __GNUC__.
+> > Drop MSVC fallback path.
+> >
+> > Note: I intentionally left further cleanups for a later work.
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> >  audio/audio.c | 8 +-------
+> >  1 file changed, 1 insertion(+), 7 deletions(-)
+> >
+> > diff --git a/audio/audio.c b/audio/audio.c
+> > index 46578e4a58..d7a00294de 100644
+> > --- a/audio/audio.c
+> > +++ b/audio/audio.c
+> > @@ -122,13 +122,7 @@ int audio_bug (const char *funcname, int cond)
+> >
+> >  #if defined AUDIO_BREAKPOINT_ON_BUG
+> >  #  if defined HOST_I386
+> > -#    if defined __GNUC__
+> > -        __asm__ ("int3");
+> > -#    elif defined _MSC_VER
+> > -        _asm _emit 0xcc;
+> > -#    else
+> > -        abort ();
+> > -#    endif
+> > +      __asm__ ("int3");
+>
+> This was 15 years ago... Why not simply use abort() today?
+
+That's what I suggested when I looked at this patch in
+the previous version of the patchset, yes...
+
+-- PMM

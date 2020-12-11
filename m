@@ -1,60 +1,60 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp171241lfq;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp171245lfq;
         Fri, 11 Dec 2020 07:13:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy9kfSrZ7z9ODvYakN6nPn9YJz6GREnSmolrMyDixVEdcIhi672Qgxgqsv06EhXJSdKHJgh
-X-Received: by 2002:a25:bb8f:: with SMTP id y15mr20171011ybg.451.1607699608341;
+X-Google-Smtp-Source: ABdhPJwowBGYWMvQtHwxxmKf6Ueah7vmMTEbbfiuq5dOXn8wIn5nBnJa91M/Ij+ud+eS9or+HuXX
+X-Received: by 2002:a25:2a11:: with SMTP id q17mr19643464ybq.477.1607699608578;
         Fri, 11 Dec 2020 07:13:28 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1607699608; cv=none;
         d=google.com; s=arc-20160816;
-        b=o4GBvlW3O00alBtabo9g4JHvfZAFamsvyKKpslXRvhUGqqmoSUM6DYATPPnafsM+YK
-         P3xWtKyO8Yz2JyUNalR0mOyf5D4YIgA+fELBtHlySBCVWMt/WkX+TinIe+6flXETIXOb
-         Y6P0wT2Aal3zXaarSKiklyglbmlz9lEL8hXfU0OnWQLwtXkHFlp91kpyRr+4G3QPNy2E
-         koYGA+Km3gRHw3V3VOE0ar53qaPx1f8nc4/VAnacd8t82dVF7nFYJLY4IgdpMn7MCjUL
-         +DiOc9pNi0OVOfGC+AygvxttQUOEoJCcCQctwcrVN1Fu2njZuSmfzCTrgq6uNvZjmbvO
-         vUhg==
+        b=dq5ImcayCWEWPJSPxo5oj4nxICs24IHUwvLWIgUlxr4AxYQNKpDUxjYBuOQ1QVhcw3
+         3hilAtObQG9LxTDAuxjVsPfDqkeQpk575zuDSXgQO2uYpEE55El+3eFxqArtIUCTe8eZ
+         UJsfhQ9SHwFACa6sMFk6M9qvBOVlII+ZRcWmucZnKrMNLplEeK2OLLetVrCPhhZ6xzYM
+         53rMu4zRiae3AHWv5Z+J8W92LOBHvDvfovDxmBkztISJ6ZwdU3T5Y7xPIcx2JlpXLV22
+         FCtyyVMjUU9cuJqNYMFP7LjbRZRYCUMjn4ZIDkXw8Fnkao4iRnIyMltNtwi5qq1+cxUA
+         shRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=lPdcHEXOg5ztz9wqVb0CVFJDgv8Z2THyEnDofnvLaz8=;
-        b=kKeyiak2bj/2hmcNIhW/yzCtft6ZdWRFPsPRllUK+g4J8RokRQH6nOA/jaafcju+6n
-         Nkul5M0gMgBVy/S46m2Uf2Tbtpsb+0XukHFs0UQYsEhAzR2DhyKU2hcKCQq3pwk1zSah
-         DV4A0LAbp+fkvLh7mvby4D4tuqyF+PQSWbrJDR7LfritR9GHm01S1XW7HMDRD6vznTjx
-         Wc2YKwAXPWuQ4EmD4k7V0ik/dSUsouIvaCQ78sA0HjB0FINNc7fYnocbRL0/leqVcpL+
-         IAImZsLzLg8aDqsThSo+Y8dHCbpdjmrV2wBfOa1hChpXKY8uV5E9Udz1d3s5tOd49jlF
-         OTKA==
+        bh=aaOFCptlfmMRp0wsZafUm5dehOxaltM4new/NYJD2aU=;
+        b=pTc/AQaUm22U5SQaDfJZbrxnxG3ejEaQkLE9RGwrnzmbjb4g+jPHIQOLEkzbTlP9Wf
+         ugyYhZ4wTaZjqUspQy0R8KnVl+pIrrqfJRjOexaYb76aoY0AHfySN74vsn532VzaioAP
+         IrGpjW5rsBNtC/ZNuuXC1OzhyjXwa+sKgJcBoI+jOfmhcvthYfv0IlbzJUz7fW1Nvo+u
+         8050v0Az0JzxKpazkC9yu+cCOsVxq4s3vytI966IFetiyu4014WgsvZ7oRxgvsfEO//V
+         wy3WV46cd0oLmQxBGK6apFdc4dYyUeUiHhL87PHjYv75UBQ21AIQ6ckq/YfYf+QbcAXP
+         ESXg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9si8182904ybr.430.2020.12.11.07.13.28
+        by mx.google.com with ESMTPS id p79si7892192ybg.205.2020.12.11.07.13.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 11 Dec 2020 07:13:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37724 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37720 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knk6p-0007SJ-O1
+	id 1knk6p-0007Rz-RR
 	for alex.bennee@linaro.org; Fri, 11 Dec 2020 10:13:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50836)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50838)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1knk6V-0007Rg-Ma; Fri, 11 Dec 2020 10:13:07 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:36482
+ id 1knk6V-0007Rj-SU; Fri, 11 Dec 2020 10:13:07 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:36504
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1knk6S-0001sY-LC; Fri, 11 Dec 2020 10:13:07 -0500
+ id 1knk6S-0001sc-Ju; Fri, 11 Dec 2020 10:13:07 -0500
 Received: from localhost.localdomain
  (dynamic-077-007-081-179.77.7.pool.telefonica.de [77.7.81.179])
- by csgraf.de (Postfix) with ESMTPSA id 4AF5739003C7;
+ by csgraf.de (Postfix) with ESMTPSA id CE73239004C1;
  Fri, 11 Dec 2020 16:13:02 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 01/11] hvf: Add hypervisor entitlement to output binaries
-Date: Fri, 11 Dec 2020 16:12:50 +0100
-Message-Id: <20201211151300.85322-2-agraf@csgraf.de>
+Subject: [PATCH v5 02/11] hvf: x86: Remove unused definitions
+Date: Fri, 11 Dec 2020 16:12:51 +0100
+Message-Id: <20201211151300.85322-3-agraf@csgraf.de>
 X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 In-Reply-To: <20201211151300.85322-1-agraf@csgraf.de>
 References: <20201211151300.85322-1-agraf@csgraf.de>
@@ -88,114 +88,53 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KfZUGI+sxPOI
+X-TUID: 4qZr2mtdVMhW
 
-In macOS 11, QEMU only gets access to Hypervisor.framework if it has the
-respective entitlement. Add an entitlement template and automatically self
-sign and apply the entitlement in the build.
+The hvf i386 has a few struct and cpp definitions that are never
+used. Remove them.
 
+Suggested-by: Roman Bolshakov <r.bolshakov@yadro.com>
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
 Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
-
 ---
+ target/i386/hvf/hvf-i386.h | 16 ----------------
+ 1 file changed, 16 deletions(-)
 
-v1 -> v2:
-
-  - Make safe to ctrl-C
-
-v3 -> v4:
-
-  - Remove unused exe_full variable
-  - Reuse exe_name variable
----
- accel/hvf/entitlements.plist |  8 ++++++++
- meson.build                  | 29 +++++++++++++++++++++++++----
- scripts/entitlement.sh       | 13 +++++++++++++
- 3 files changed, 46 insertions(+), 4 deletions(-)
- create mode 100644 accel/hvf/entitlements.plist
- create mode 100755 scripts/entitlement.sh
-
-diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.plist
-new file mode 100644
-index 0000000000..154f3308ef
---- /dev/null
-+++ b/accel/hvf/entitlements.plist
-@@ -0,0 +1,8 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-+<plist version="1.0">
-+<dict>
-+    <key>com.apple.security.hypervisor</key>
-+    <true/>
-+</dict>
-+</plist>
-diff --git a/meson.build b/meson.build
-index 9ea05ab49f..0c59bea475 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1849,9 +1849,14 @@ foreach target : target_dirs
-     }]
-   endif
-   foreach exe: execs
--    emulators += {exe['name']:
--         executable(exe['name'], exe['sources'],
--               install: true,
-+    exe_name = exe['name']
-+    exe_sign = 'CONFIG_HVF' in config_target
-+    if exe_sign
-+      exe_name += '-unsigned'
-+    endif
-+
-+    emulator = executable(exe_name, exe['sources'],
-+               install: not exe_sign,
-                c_args: c_args,
-                dependencies: arch_deps + deps + exe['dependencies'],
-                objects: lib.extract_all_objects(recursive: true),
-@@ -1859,7 +1864,23 @@ foreach target : target_dirs
-                link_depends: [block_syms, qemu_syms] + exe.get('link_depends', []),
-                link_args: link_args,
-                gui_app: exe['gui'])
--    }
-+
-+    if exe_sign
-+      emulators += {exe['name'] : custom_target(exe['name'],
-+                   install: true,
-+                   install_dir: get_option('bindir'),
-+                   depends: emulator,
-+                   output: exe['name'],
-+                   command: [
-+                     meson.current_source_dir() / 'scripts/entitlement.sh',
-+                     meson.current_build_dir() / exe_name,
-+                     meson.current_build_dir() / exe['name'],
-+                     meson.current_source_dir() / 'accel/hvf/entitlements.plist'
-+                   ])
-+      }
-+    else
-+      emulators += {exe['name']: emulator}
-+    endif
+diff --git a/target/i386/hvf/hvf-i386.h b/target/i386/hvf/hvf-i386.h
+index e0edffd077..e31938e5ff 100644
+--- a/target/i386/hvf/hvf-i386.h
++++ b/target/i386/hvf/hvf-i386.h
+@@ -21,21 +21,6 @@
+ #include "cpu.h"
+ #include "x86.h"
  
-     if 'CONFIG_TRACE_SYSTEMTAP' in config_host
-       foreach stp: [
-diff --git a/scripts/entitlement.sh b/scripts/entitlement.sh
-new file mode 100755
-index 0000000000..c540fa6435
---- /dev/null
-+++ b/scripts/entitlement.sh
-@@ -0,0 +1,13 @@
-+#!/bin/sh -e
-+#
-+# Helper script for the build process to apply entitlements
-+
-+SRC="$1"
-+DST="$2"
-+ENTITLEMENT="$3"
-+
-+trap 'rm "$DST.tmp"' exit
-+cp -af "$SRC" "$DST.tmp"
-+codesign --entitlements "$ENTITLEMENT" --force -s - "$DST.tmp"
-+mv "$DST.tmp" "$DST"
-+trap '' exit
+-#define HVF_MAX_VCPU 0x10
+-
+-extern struct hvf_state hvf_global;
+-
+-struct hvf_vm {
+-    int id;
+-    struct hvf_vcpu_state *vcpus[HVF_MAX_VCPU];
+-};
+-
+-struct hvf_state {
+-    uint32_t version;
+-    struct hvf_vm *vm;
+-    uint64_t mem_quota;
+-};
+-
+ /* hvf_slot flags */
+ #define HVF_SLOT_LOG (1 << 0)
+ 
+@@ -75,7 +60,6 @@ hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+ 
+ /* Host specific functions */
+ int hvf_inject_interrupt(CPUArchState *env, int vector);
+-int hvf_vcpu_run(struct hvf_vcpu_state *vcpu);
+ #endif
+ 
+ #endif
 -- 
 2.24.3 (Apple Git-128)
 

@@ -1,597 +1,209 @@
-Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1579823qvk;
-        Thu, 10 Dec 2020 18:04:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzz4AyB0kS3L4rmeEehrUBMNBkRy+/bmn7dZfOS7ZADvsIteK5tv1SIFydTLVsFXWORyFbX
-X-Received: by 2002:a25:d483:: with SMTP id m125mr1135432ybf.330.1607652281795;
-        Thu, 10 Dec 2020 18:04:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607652281; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp276873lfb;
+        Thu, 10 Dec 2020 19:05:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJywWW4O8IWWc3GPNECo7EiFr6HA/+clC0tCcP7mqRIAUIxq9cl4ld3kgFq5iCvBxfRWSTXm
+X-Received: by 2002:a25:4f0a:: with SMTP id d10mr15089867ybb.100.1607655938743;
+        Thu, 10 Dec 2020 19:05:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607655938; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ea/pi/0WZuN72qQVd7x0kjipTwoEX/alJ+ifjuDLNAHUliDHgEUWwbu1t092hm9W2T
-         XV0/RtEbNzJDJ19pcGPO3hNCdUCDpYhcEFLSU6OXZJZrseVp3vMriXYr5/14YD01KwFG
-         /kiEFsaR2RPMS518dZ7L/YreZzgEbp0qvvFhylLXjo58ouv5vGmwaZsnuT/DoO2oiIsA
-         iXIiy7345ZQapmPh/9cKsQIwB3GyprXlqrp+XULAipfy47bO+eEfJbuwMy/w4dCxy/WM
-         wkpLA5NtzEn70erSLq22nbt+U7CMjDYOUomSvq2ebnRV23pUCqRgwWZk0dlwkWiuzbR8
-         w/VA==
+        b=mRtqjI0CQC4PFIOaHkspy3moxpx80ydejiv6OfrU48ken8Fipmd8y+2GoAGPUT8hqf
+         ZiTiNU6DJr0PJ9KdHXwyQBAXJzXtqWvEbabaBpxlrQI/52yFodH8B9Y+7sC29R0EwZF1
+         /fHWnfVSOeItI93RD+wVSs9qEurzg2URoBDYp69BFT4Iubg9UIiNSvzDUvM7y5Zf8v7K
+         FBQvFnsqMzhOyOfYi3/50tcIc8WUW0qSvFWMesIYHYfmrGDYHOQl0w9tsy7toJZvFS0p
+         fSgYC8UFjDFzFnhEV/UdOIH/xnSCzsXTxkjpwhltomT69KSQ3yqsPwNrGYF9jWHIbLAW
+         5EkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:references:mime-version:message-id:in-reply-to:date
-         :dkim-signature;
-        bh=4VHKIK3Zl3M4dYV9Wc80s3WWD/x1jRZu8ubXlR1N6DM=;
-        b=KSOoNJaxsmxqG/jgRZikR0gZwsajgpuno4T65wsRX+uz2iCCQrGpxvphZLT1toOLpz
-         wkO9+8G6PNq5SzwbAyjDC559eFwivgNDY4C+dW+CUsfyJ/uGlQXKXuRfL5PztK3s9kh7
-         HjTavvbOoeTIwvnHxejpv5n4Xd1ARPAXnMMMVP0joXBbB17Yekf8QHu3EKSFh44L0aif
-         JG7NjeHNpd7NEcA7xanSk0qRZuUbxdaeXOxSnh+J2823k8g0biVjDnUeicnMDmVFOra3
-         cQ2F88DdTZjS+CgnZJpiKRoXaV5kt0LDE/OasKcEZpI/obULtXvix70UKuNxAHD+rvZk
-         RV5g==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=7Bqe7TUfqEXtWYklNV7hKPySGhYcLApAf1F2RPky7D4=;
+        b=MCdEWDT6OWNgnYD04IB5xj2krr0EsqF784wk9zsTgB1C4AfszD2lJKxnQobVAsjb/K
+         7K20qTqDQ0yGSjQOzu2GJcE5QbgYONzhNNQjF777fwJh6cvBetMxfTISXM713r3X4aXn
+         rvoRWh1eVSqsvQtnBdh7WrxOEuHHvp9nj+Pk6jjjXaUiQnRAkbs0nmxBfiD+hYq0xfi4
+         kiDmDd50zMyms9/gIhavy7IDrpmK6Wwt6lt5ghJ4TICP1nth74k4zpBZtJkchX5NHfXF
+         6If/bUmRpdT68f6Q/kZQp0ts0aRcQPCUI+/zF6kXVwl1RL8byNjySi2s3l0uFWhfhbxl
+         6t0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=uQFAe2Bp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MTz+Yx0f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 81si6458416ybo.218.2020.12.10.18.04.41
+        by mx.google.com with ESMTPS id r3si7882438ybc.118.2020.12.10.19.05.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Dec 2020 18:04:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Dec 2020 19:05:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=uQFAe2Bp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:49022 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MTz+Yx0f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40494 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knXnV-0002DW-9G
-	for alex.bennee@linaro.org; Thu, 10 Dec 2020 21:04:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58414)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1knYkU-0005pa-3E
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 22:05:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <32NDSXwgKCskB9wp387wv33v0t.r315t19-stAt0232v29.36v@flex--wuhaotsh.bounces.google.com>)
- id 1knXbj-0001mp-T2
- for qemu-devel@nongnu.org; Thu, 10 Dec 2020 20:52:31 -0500
-Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449]:47881)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1knYk0-0005pF-OH; Thu, 10 Dec 2020 22:05:08 -0500
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:42415)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <32NDSXwgKCskB9wp387wv33v0t.r315t19-stAt0232v29.36v@flex--wuhaotsh.bounces.google.com>)
- id 1knXbg-0007DJ-Sq
- for qemu-devel@nongnu.org; Thu, 10 Dec 2020 20:52:31 -0500
-Received: by mail-pf1-x449.google.com with SMTP id x21so2283742pff.14
- for <qemu-devel@nongnu.org>; Thu, 10 Dec 2020 17:52:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=4VHKIK3Zl3M4dYV9Wc80s3WWD/x1jRZu8ubXlR1N6DM=;
- b=uQFAe2BpBghVBNc/UxrQNiWLx5F9dWy4QS68F88VuJyt2d0na3IygfiXqkO0Yic8pR
- P61dCepmArZITifLBTjO7Tn96mQZhBdKEzreU8KWkcNsVQepHLMzGj0KCj8xJalLJDgx
- pKkPRDVho8l9GL5BuXS1SCZihDLQB54q87pP17ALcVk1/Ny/fd7oX4xRBrjCoE/njMeZ
- lCuQVZrVV4JkJWldeY61RSfPOy0Er9dtBe8cXhc60YGzQ5gozFBkQxeKrlj7ZkB0F5ad
- O3s1QIWwdwrFpP2g2M1pO0mNOAwlx3UZOUrZJPXY/Y47nf6SiKyTdTZLT+7l3/X4rcKj
- vKqg==
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1knYja-0007Cc-Pl; Thu, 10 Dec 2020 22:05:08 -0500
+Received: by mail-oi1-x243.google.com with SMTP id l200so8271901oig.9;
+ Thu, 10 Dec 2020 19:04:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:reply-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=7Bqe7TUfqEXtWYklNV7hKPySGhYcLApAf1F2RPky7D4=;
+ b=MTz+Yx0futif80qpy7eoEareq5bBeomWVnSSVCUp3d/LG9w7RZFzlXbFgjXAmuS15v
+ jnIMbJbEvUwk1tpY1FZRMhBPabzqn1+m3TGaxnJDQstH7J9zuFNyZ5VhQ10upXiGUpSV
+ N+uVOKU4JP0CwiwdAFUQOPpVa7GHJcNBauPk+n+H9Qb8wNNz0PLOJVcNsxklPvZhariY
+ R5AF0WnRE76IO247iD/a3p26EBARnpOyLyomuZLscjzBf7XmEFQF+ib6hakCJvStuTw6
+ YVb30naQY1tJEZ5aMmF5HEprIPZSAvDAbzJPIj47CYBnyXimNZpO7acBDVO+IWWm+Sau
+ rORQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=4VHKIK3Zl3M4dYV9Wc80s3WWD/x1jRZu8ubXlR1N6DM=;
- b=P5NLOXEJVMwl3s/CHOgirQ5TWV8yo3sg3+0irWot6lDIKkvSmagNeq2Kf1ZsCglp9y
- QsMXBSyLsBkpjrbM+zIxu3jYRu1byitjE/a0RUVvu5quaubIIHK6L/W0ifoX+aUEoxGZ
- C0jwsoqCBphoQBDYaAo5+b/1VB1iwk3Qpqw5dEQQbLZgxieq2DCY/rfhPp3euX9c7106
- 69GIAA36+ubnEoXI71/r5GPwXR6m7OMB+NFoIP9IHYLLBT2UIXuD/dSHCi23bk4Hb46L
- SsDBakv1WcC+gs+gomziPiHg6Eo/NBI7a2IL9jCOuUyP3UXD4zrriO+EvkA5C9pFCj/U
- UBCg==
-X-Gm-Message-State: AOAM530PtQwJ4KjSdXSzFP2TSrMlwbxbvYFE2R3JbzUH2dLv6D558csJ
- 7GhIgToctkjl151rjK0nuMB7xME/6VH/7w==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90a:414d:: with SMTP id
- m13mr10864989pjg.229.1607651544556; Thu, 10 Dec 2020 17:52:24 -0800 (PST)
-Date: Thu, 10 Dec 2020 17:51:56 -0800
-In-Reply-To: <20201211015156.2053372-1-wuhaotsh@google.com>
-Message-Id: <20201211015156.2053372-8-wuhaotsh@google.com>
-Mime-Version: 1.0
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :reply-to:references:mime-version:content-disposition:in-reply-to;
+ bh=7Bqe7TUfqEXtWYklNV7hKPySGhYcLApAf1F2RPky7D4=;
+ b=hDt3YWnliGFAmDZb/QRVcGK6BqoZE7sWhM01h8VFMVdgNxjLbAeA9ypyZqIy+2+0gM
+ bk1Cj/5ZFrxqp7MhEoZENNLn89Z+brYgbjOzqfuK4T3UaxoSJgNHZR4k+AAFnRygZr7s
+ Bvwn4odM2q7yJ1qZW5KL2Z8VJyjMO03nl5LiA4PQNGMdPvwb3iEXHR0szgJ8RT3Tl4Ss
+ zLu1EGX7F3kLrfKwyc7dnEpWE21RKXQvemvnDiaPt93Uj4w/0x6VQPLhQJkTRLuOW3LE
+ zJeDKaceqc1g8p1ub/wypT/dRTiJpQtY3MU8ol7xHylgeMF9V6oayxPoFfdNep+eiQM5
+ Ii8A==
+X-Gm-Message-State: AOAM532SjyJ+/+yJrslry53acIt2HH0wiZUmWns4Oyd0GgSRcGuHhX5A
+ O7NHqnsCEiTcGOVEoj4rCw==
+X-Received: by 2002:aca:ad8d:: with SMTP id w135mr7466149oie.27.1607655879006; 
+ Thu, 10 Dec 2020 19:04:39 -0800 (PST)
+Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
+ by smtp.gmail.com with ESMTPSA id y35sm1566582otb.5.2020.12.10.19.04.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Dec 2020 19:04:38 -0800 (PST)
+Received: from minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:9cf8:f63f:d424:8677])
+ by serve.minyard.net (Postfix) with ESMTPSA id 0CBB2180570;
+ Fri, 11 Dec 2020 03:04:37 +0000 (UTC)
+Date: Thu, 10 Dec 2020 21:04:35 -0600
+From: Corey Minyard <minyard@acm.org>
+To: Hao Wu <wuhaotsh@google.com>
+Subject: Re: [PATCH 0/7] Additional NPCM7xx devices and IPMI BMC emulation
+ support
+Message-ID: <20201211030435.GI11017@minyard.net>
 References: <20201211015156.2053372-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.29.2.684.gfbc64c5ab5-goog
-Subject: [PATCH 7/7] hw/ipmi: Add an IPMI external host device
-To: peter.maydell@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
- envelope-from=32NDSXwgKCskB9wp387wv33v0t.r315t19-stAt0232v29.36v@flex--wuhaotsh.bounces.google.com;
- helo=mail-pf1-x449.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20201211015156.2053372-1-wuhaotsh@google.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=tcminyard@gmail.com; helo=mail-oi1-x243.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org,
- hskinnemoen@google.com, wuhaotsh@google.com, kfting@nuvoton.com,
- qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Hao Wu <wuhaotsh@google.com>
-From: Hao Wu via <qemu-devel@nongnu.org>
-X-TUID: LP1947FxcSz2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
+Cc: peter.maydell@linaro.org, venture@google.com, hskinnemoen@google.com,
+ qemu-devel@nongnu.org, kfting@nuvoton.com, qemu-arm@nongnu.org,
+ Avi.Fishman@nuvoton.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: p0ouzm+KC2WD
 
-The IPMI external host device works for Baseband Management Controller
-(BMC) emulations. It works as a representation of a host class that
-connects to a given BMC.  It can connect to a real host hardware or a
-emulated or simulated host device. In particular it can connect to a
-host QEMU instance with device ipmi-bmc-extern.
+On Thu, Dec 10, 2020 at 05:51:49PM -0800, Hao Wu wrote:
+> This patch series include a few more NPCM7XX devices including
+> 
+> - Analog Digital Converter (ADC)
+> - Pulse Width Modulation (PWM)
+> - Keyboard Style Controller (KSC)
+> 
+> To utilize these modules we also add two extra functionalities:
+> 
+> 1. We modified the CLK module to generate clock values using qdev_clock.
+>    These clocks are used to determine various clocks in NPCM7XX devices.
+> 2. We added support for emulating IPMI responder devices in BMC machines,
+>    similar to the existing IPMI device support for CPU emulation. This allows
+>    a qemu instance running BMC firmware to serve as an external BMC for a qemu
+>    instance running server software. It utilizes the KCS module we implemented.
 
-For more details of IPMI host device in BMC emulation, see
-docs/specs/ipmi.rst.
+Looking at the IPMI changes, why didn't you just re-use the existing
+IPMI infrastructure?  ipmi_host.[ch] is basically a subset of ipmi.[ch],
+and the ipmi_host_extern looks like a copy of of ipmi_bmc_extern with
+some names changed.  That kind of code duplication is not acceptable.
+Plus you copied my code and removed my copyrights, which is really
+not acceptable and illegal.
 
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
----
- hw/ipmi/ipmi_host_extern.c | 435 +++++++++++++++++++++++++++++++++++++
- hw/ipmi/meson.build        |   1 +
- 2 files changed, 436 insertions(+)
- create mode 100644 hw/ipmi/ipmi_host_extern.c
+I'm not exactly sure why you needed you own KCS interface, either.  It
+looks like the interface is somewhat different in some ways, but
+integrating it into the current KCS code is probably a better choice if
+that can be done.
 
-diff --git a/hw/ipmi/ipmi_host_extern.c b/hw/ipmi/ipmi_host_extern.c
-new file mode 100644
-index 0000000000..6b5d45d403
---- /dev/null
-+++ b/hw/ipmi/ipmi_host_extern.c
-@@ -0,0 +1,435 @@
-+/*
-+ * IPMI Host external connection
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+/*
-+ * This is designed to connect to a host QEMU VM that runs ipmi_bmc_extern.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "qemu/timer.h"
-+#include "chardev/char-fe.h"
-+#include "hw/ipmi/ipmi.h"
-+#include "hw/ipmi/ipmi_host.h"
-+#include "hw/ipmi/ipmi_responder.h"
-+#include "hw/qdev-properties.h"
-+#include "migration/vmstate.h"
-+
-+#define VM_MSG_CHAR        0xA0 /* Marks end of message */
-+#define VM_CMD_CHAR        0xA1 /* Marks end of a command */
-+#define VM_ESCAPE_CHAR     0xAA /* Set bit 4 from the next byte to 0 */
-+
-+#define VM_PROTOCOL_VERSION        1
-+#define VM_CMD_VERSION             0xff /* A version number byte follows */
-+#define VM_CMD_RESET               0x04
-+#define VM_CMD_CAPABILITIES        0x08
-+
-+#define TYPE_IPMI_HOST_EXTERN "ipmi-host-extern"
-+#define IPMI_HOST_EXTERN(obj) OBJECT_CHECK(IPMIHostExtern, (obj), \
-+                                        TYPE_IPMI_HOST_EXTERN)
-+
-+typedef struct IPMIHostExtern {
-+    IPMIHost parent;
-+    CharBackend chr;
-+    struct QEMUTimer *extern_timer;
-+
-+    bool connected;
-+    uint8_t capability;
-+
-+    unsigned char inbuf[MAX_IPMI_MSG_SIZE + 2];
-+    unsigned int inpos;
-+    bool in_escape;
-+    bool in_too_many;
-+    bool sending_cmd;
-+
-+    unsigned char outbuf[(MAX_IPMI_MSG_SIZE + 2) * 2 + 1];
-+    unsigned int outpos;
-+    unsigned int outlen;
-+} IPMIHostExtern;
-+
-+static unsigned char
-+ipmb_checksum(const unsigned char *data, int size, unsigned char start)
-+{
-+    unsigned char csum = start;
-+
-+    for (; size > 0; size--, data++) {
-+            csum += *data;
-+    }
-+    return csum;
-+}
-+
-+static void continue_send(IPMIHostExtern *ihe)
-+{
-+    int ret;
-+
-+    if (ihe->outlen == 0) {
-+        return;
-+    }
-+    ret = qemu_chr_fe_write(&ihe->chr, ihe->outbuf + ihe->outpos,
-+                            ihe->outlen - ihe->outpos);
-+    if (ret > 0) {
-+        ihe->outpos += ret;
-+    }
-+    if (ihe->outpos < ihe->outlen) {
-+        /* Not fully transmitted, try again in a 10ms */
-+        timer_mod_ns(ihe->extern_timer,
-+                     qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + 10000000);
-+    } else {
-+        /* Sent */
-+        ihe->outlen = 0;
-+        ihe->outpos = 0;
-+    }
-+}
-+
-+static void extern_timeout(void *opaque)
-+{
-+    IPMIHostExtern *ihe = opaque;
-+
-+    if (ihe->connected) {
-+        continue_send(ihe);
-+    }
-+}
-+
-+static void addchar(IPMIHostExtern *ihe, unsigned char ch)
-+{
-+    switch (ch) {
-+    case VM_MSG_CHAR:
-+    case VM_CMD_CHAR:
-+    case VM_ESCAPE_CHAR:
-+        /* Escape the special characters. */
-+        ihe->outbuf[ihe->outlen++] = VM_ESCAPE_CHAR;
-+        ch |= 0x10;
-+        /* fall through */
-+    default:
-+        ihe->outbuf[ihe->outlen++] = ch;
-+    }
-+}
-+
-+static void send_version(IPMIHostExtern *ihe)
-+{
-+    addchar(ihe, VM_CMD_VERSION);
-+    addchar(ihe, VM_PROTOCOL_VERSION);
-+    ihe->outbuf[ihe->outlen++] = VM_CMD_CHAR;
-+    continue_send(ihe);
-+}
-+
-+/*
-+ * Handle a command (typically IPMI response) from IPMI responder
-+ * and send it out to the external host.
-+ */
-+static void ipmi_host_extern_handle_command(IPMIHost *h, uint8_t *cmd,
-+        unsigned cmd_len, unsigned max_cmd_len, uint8_t msg_id)
-+{
-+    IPMIHostExtern *ihe = IPMI_HOST_EXTERN(h);
-+    uint8_t err = 0, csum;
-+    int i;
-+
-+    if (!ihe->connected) {
-+        /* We are not connected to external host. Just do nothing. */
-+        return;
-+    }
-+    addchar(ihe, msg_id);
-+    /* If it's too short or it was truncated, return an error. */
-+    if (cmd_len < 2) {
-+        err = IPMI_CC_REQUEST_DATA_LENGTH_INVALID;
-+    } else if ((cmd_len > max_cmd_len) || (cmd_len > MAX_IPMI_MSG_SIZE)) {
-+        err = IPMI_CC_REQUEST_DATA_TRUNCATED;
-+    }
-+    if (err) {
-+        /* Send out the error message */
-+        unsigned char rsp[3];
-+
-+        rsp[0] = cmd[0] | 0x04;
-+        rsp[1] = cmd[1];
-+        rsp[2] = err;
-+        for (i = 0; i < 3; ++i) {
-+            addchar(ihe, rsp[i]);
-+        }
-+        csum = ipmb_checksum(&msg_id, 1, 0);
-+        addchar(ihe, -ipmb_checksum(rsp, 3, csum));
-+    } else {
-+        for (i = 0; i < cmd_len; i++) {
-+            addchar(ihe, cmd[i]);
-+        }
-+        csum = ipmb_checksum(&msg_id, 1, 0);
-+        addchar(ihe, -ipmb_checksum(cmd, cmd_len, csum));
-+    }
-+
-+    ihe->outbuf[ihe->outlen++] = VM_MSG_CHAR;
-+
-+    /* Start the transmit */
-+    continue_send(ihe);
-+}
-+
-+/*
-+ * This function handles an IPMI message received from an external host by
-+ * sending it to the IPMI responder class.
-+ */
-+static void handle_msg(IPMIHostExtern *ihe)
-+{
-+    IPMIResponderClass *k = IPMI_RESPONDER_GET_CLASS(ihe->parent.responder);
-+    if (unlikely(ihe->in_escape)) {
-+        ipmi_debug("msg escape not ended\n");
-+        return;
-+    }
-+    if (unlikely(ihe->inpos < 4)) {
-+        ipmi_debug("msg too short\n");
-+        return;
-+    }
-+    if (unlikely(ihe->in_too_many)) {
-+        ihe->inbuf[3] = IPMI_CC_REQUEST_DATA_TRUNCATED;
-+        ihe->inpos = 4;
-+    } else if (unlikely(ipmb_checksum(ihe->inbuf, ihe->inpos, 0) != 0)) {
-+        ipmi_debug("msg checksum failure\n");
-+        return;
-+    } else {
-+        ihe->inpos--; /* Remove checkum */
-+    }
-+
-+    k->handle_req(ihe->parent.responder, ihe->inbuf[0], ihe->inbuf + 1,
-+            ihe->inpos - 1);
-+}
-+
-+/* This function handles a control command from the host. */
-+static void handle_command(IPMIHostExtern *ihe)
-+{
-+    uint8_t cmd;
-+
-+    if (unlikely(ihe->in_too_many)) {
-+        ipmi_debug("cmd in too many\n");
-+        return;
-+    }
-+
-+    if (unlikely(ihe->in_escape)) {
-+        ipmi_debug("cmd ends with escape character\n");
-+        return;
-+    }
-+
-+    if (unlikely(ihe->inpos < 1)) {
-+        ipmi_debug("empty command.\n");
-+        return;
-+    }
-+
-+    cmd = ihe->inbuf[0];
-+    switch (cmd) {
-+    case VM_CMD_VERSION:
-+        /* The host informs us the protocol version. */
-+        if (unlikely(ihe->inpos < 2)) {
-+            ipmi_debug("Host cmd version truncated.\n");
-+            break;
-+        }
-+        if (unlikely(ihe->inbuf[1] != VM_PROTOCOL_VERSION)) {
-+            ipmi_debug("Host protocol version %u is different from our version"
-+                    " %u\n", ihe->inbuf[1], VM_PROTOCOL_VERSION);
-+        }
-+        break;
-+    case VM_CMD_RESET:
-+        /* The host tells us a reset has happened. */
-+        break;
-+    case VM_CMD_CAPABILITIES:
-+        /* The host tells us its capability. */
-+        if (unlikely(ihe->inpos < 2)) {
-+            ipmi_debug("Host cmd capability truncated.\n");
-+            break;
-+        }
-+        ihe->capability = ihe->inbuf[1];
-+        break;
-+    default:
-+        /* The host shouldn't send us this command. Just ignore if they do. */
-+        ipmi_debug("Host cmd type %02x is invalid.\n", cmd);
-+    }
-+}
-+
-+/* Clear the state of ipmi-host-extern. Happens at the end of a message. */
-+static void clear_state(IPMIHostExtern *ihe)
-+{
-+    ihe->in_escape = false;
-+    ihe->in_too_many = false;
-+    ihe->inpos = 0;
-+}
-+
-+/* We always welcome an incoming request. */
-+static int can_receive(void *opaque)
-+{
-+    return 1;
-+}
-+
-+/*
-+ * This function mirrors ipmi-bmc-extern. It handles an incoming character
-+ * sequence and translates it into IPMI message.
-+ */
-+static void receive(void *opaque, const uint8_t *buf, int size)
-+{
-+    IPMIHostExtern *ihe = opaque;
-+    int i;
-+
-+    for (i = 0; i < size; ++i) {
-+        uint8_t ch = buf[i];
-+
-+        switch (ch) {
-+        case VM_MSG_CHAR:
-+            /* The preceding characters are an IPMI message. */
-+            handle_msg(ihe);
-+            clear_state(ihe);
-+            break;
-+
-+        case VM_CMD_CHAR:
-+            /* The preceding characters are a control command. */
-+            handle_command(ihe);
-+            clear_state(ihe);
-+            break;
-+
-+        case VM_ESCAPE_CHAR:
-+            ihe->in_escape = true;
-+            break;
-+
-+        default:
-+            if (ihe->in_escape) {
-+                ch &= ~0x10;
-+                ihe->in_escape = false;
-+            }
-+            if (ihe->in_too_many) {
-+                break;
-+            }
-+            if (ihe->inpos >= ARRAY_SIZE(ihe->inbuf)) {
-+                ihe->in_too_many = true;
-+                break;
-+            }
-+            ihe->inbuf[ihe->inpos++] = ch;
-+            break;
-+        }
-+    }
-+    return;
-+}
-+
-+static void chr_event(void *opaque, QEMUChrEvent event)
-+{
-+    IPMIHostExtern *ihe = opaque;
-+
-+    switch (event) {
-+    case CHR_EVENT_OPENED:
-+        ihe->connected = true;
-+        clear_state(ihe);
-+        send_version(ihe);
-+        break;
-+
-+    case CHR_EVENT_CLOSED:
-+        ihe->connected = false;
-+        break;
-+
-+    case CHR_EVENT_BREAK:
-+    case CHR_EVENT_MUX_IN:
-+    case CHR_EVENT_MUX_OUT:
-+        /* Ignore */
-+        break;
-+
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void ipmi_host_extern_responder_check(const Object *obj,
-+        const char *name, Object *val, Error **errp)
-+{
-+    IPMIHostExtern *ihe = IPMI_HOST_EXTERN(obj);
-+
-+    if (ihe->parent.responder) {
-+        error_setg(errp, "IPMI host already has a responder");
-+    }
-+}
-+
-+static void ipmi_host_extern_realize(DeviceState *dev, Error **errp)
-+{
-+    IPMIHostExtern *ihe = IPMI_HOST_EXTERN(dev);
-+    IPMIResponderClass *rk;
-+
-+    if (!qemu_chr_fe_backend_connected(&ihe->chr)) {
-+        error_setg(errp, "IPMI external host requires chardev attribute");
-+        return;
-+    }
-+
-+    qemu_chr_fe_set_handlers(&ihe->chr, can_receive, receive,
-+                             chr_event, NULL, ihe, NULL, true);
-+
-+    if (ihe->parent.responder == NULL) {
-+        error_setg(errp, "IPMI host requires responder attribute");
-+        return;
-+    }
-+    rk = IPMI_RESPONDER_GET_CLASS(ihe->parent.responder);
-+    rk->set_host(ihe->parent.responder, &ihe->parent);
-+}
-+
-+static const VMStateDescription vmstate_ipmi_host_extern = {
-+    .name = TYPE_IPMI_HOST_EXTERN,
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void ipmi_host_extern_init(Object *obj)
-+{
-+    IPMIHostExtern *ihe = IPMI_HOST_EXTERN(obj);
-+
-+    object_property_add_link(OBJECT(ihe), "responder", TYPE_IPMI_RESPONDER,
-+            (Object **)(&ihe->parent.responder),
-+            ipmi_host_extern_responder_check, OBJ_PROP_LINK_STRONG);
-+    ihe->extern_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, extern_timeout, ihe);
-+    vmstate_register(NULL, 0, &vmstate_ipmi_host_extern, ihe);
-+}
-+
-+static void ipmi_host_extern_finalize(Object *obj)
-+{
-+    IPMIHostExtern *ihe = IPMI_HOST_EXTERN(obj);
-+
-+    timer_del(ihe->extern_timer);
-+    timer_free(ihe->extern_timer);
-+}
-+
-+static Property ipmi_host_extern_properties[] = {
-+    DEFINE_PROP_CHR("chardev", IPMIHostExtern, chr),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void ipmi_host_extern_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    IPMIHostClass *bk = IPMI_HOST_CLASS(oc);
-+
-+    bk->handle_command = ipmi_host_extern_handle_command;
-+    dc->hotpluggable = false;
-+    dc->realize = ipmi_host_extern_realize;
-+    device_class_set_props(dc, ipmi_host_extern_properties);
-+}
-+
-+static const TypeInfo ipmi_host_extern_type = {
-+    .name          = TYPE_IPMI_HOST_EXTERN,
-+    .parent        = TYPE_IPMI_HOST,
-+    .instance_size = sizeof(IPMIHostExtern),
-+    .instance_init = ipmi_host_extern_init,
-+    .instance_finalize = ipmi_host_extern_finalize,
-+    .class_init    = ipmi_host_extern_class_init,
-+ };
-+
-+static void ipmi_host_extern_register_types(void)
-+{
-+    type_register_static(&ipmi_host_extern_type);
-+}
-+
-+type_init(ipmi_host_extern_register_types)
-diff --git a/hw/ipmi/meson.build b/hw/ipmi/meson.build
-index 1261489fbd..8352913288 100644
---- a/hw/ipmi/meson.build
-+++ b/hw/ipmi/meson.build
-@@ -8,6 +8,7 @@ ipmi_ss.add(when: 'CONFIG_ISA_IPMI_BT', if_true: files('isa_ipmi_bt.c'))
- ipmi_ss.add(when: 'CONFIG_PCI_IPMI_BT', if_true: files('pci_ipmi_bt.c'))
- ipmi_ss.add(when: 'CONFIG_IPMI_SSIF', if_true: files('smbus_ipmi.c'))
- ipmi_ss.add(when: 'CONFIG_IPMI_HOST', if_true: files('ipmi_host.c'))
-+ipmi_ss.add(when: 'CONFIG_IPMI_HOST', if_true: files('ipmi_host_extern.c'))
- ipmi_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_kcs.c'))
- 
- softmmu_ss.add_all(when: 'CONFIG_IPMI', if_true: ipmi_ss)
--- 
-2.29.2.684.gfbc64c5ab5-goog
+-corey
 
+> 
+> Hao Wu (7):
+>   hw/misc: Add clock converter in NPCM7XX CLK module
+>   hw/timer: Refactor NPCM7XX Timer to use CLK clock
+>   hw/adc: Add an ADC module for NPCM7XX
+>   hw/misc: Add a PWM module for NPCM7XX
+>   hw/ipmi: Add an IPMI host interface
+>   hw/ipmi: Add a KCS Module for NPCM7XX
+>   hw/ipmi: Add an IPMI external host device
+> 
+>  default-configs/devices/arm-softmmu.mak |   2 +
+>  docs/system/arm/nuvoton.rst             |   6 +-
+>  hw/adc/meson.build                      |   1 +
+>  hw/adc/npcm7xx_adc.c                    | 318 ++++++++++
+>  hw/arm/npcm7xx.c                        |  65 +-
+>  hw/ipmi/Kconfig                         |   5 +
+>  hw/ipmi/ipmi_host.c                     |  40 ++
+>  hw/ipmi/ipmi_host_extern.c              | 435 +++++++++++++
+>  hw/ipmi/meson.build                     |   3 +
+>  hw/ipmi/npcm7xx_kcs.c                   | 570 +++++++++++++++++
+>  hw/misc/meson.build                     |   1 +
+>  hw/misc/npcm7xx_clk.c                   | 795 +++++++++++++++++++++++-
+>  hw/misc/npcm7xx_pwm.c                   | 535 ++++++++++++++++
+>  hw/timer/npcm7xx_timer.c                |  25 +-
+>  include/hw/adc/npcm7xx_adc.h            |  72 +++
+>  include/hw/arm/npcm7xx.h                |   6 +
+>  include/hw/ipmi/ipmi_host.h             |  56 ++
+>  include/hw/ipmi/ipmi_responder.h        |  66 ++
+>  include/hw/ipmi/npcm7xx_kcs.h           | 105 ++++
+>  include/hw/misc/npcm7xx_clk.h           | 146 ++++-
+>  include/hw/misc/npcm7xx_pwm.h           | 106 ++++
+>  include/hw/timer/npcm7xx_timer.h        |   1 +
+>  tests/qtest/meson.build                 |   4 +-
+>  tests/qtest/npcm7xx_adc-test.c          | 400 ++++++++++++
+>  tests/qtest/npcm7xx_pwm-test.c          | 490 +++++++++++++++
+>  25 files changed, 4221 insertions(+), 32 deletions(-)
+>  create mode 100644 hw/adc/npcm7xx_adc.c
+>  create mode 100644 hw/ipmi/ipmi_host.c
+>  create mode 100644 hw/ipmi/ipmi_host_extern.c
+>  create mode 100644 hw/ipmi/npcm7xx_kcs.c
+>  create mode 100644 hw/misc/npcm7xx_pwm.c
+>  create mode 100644 include/hw/adc/npcm7xx_adc.h
+>  create mode 100644 include/hw/ipmi/ipmi_host.h
+>  create mode 100644 include/hw/ipmi/ipmi_responder.h
+>  create mode 100644 include/hw/ipmi/npcm7xx_kcs.h
+>  create mode 100644 include/hw/misc/npcm7xx_pwm.h
+>  create mode 100644 tests/qtest/npcm7xx_adc-test.c
+>  create mode 100644 tests/qtest/npcm7xx_pwm-test.c
+> 
+> -- 
+> 2.29.2.684.gfbc64c5ab5-goog
+> 

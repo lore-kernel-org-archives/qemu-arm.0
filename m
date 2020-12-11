@@ -1,106 +1,107 @@
-Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1575859qvk;
-        Thu, 10 Dec 2020 17:57:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxXGCgjpTrxCQOnn3MiDJmOOMgT8XCFfIpm4I9TfcapbCnpCwfaBfajBSweLIZ7Mq3diDaN
-X-Received: by 2002:a25:3b05:: with SMTP id i5mr15871442yba.453.1607651862049;
-        Thu, 10 Dec 2020 17:57:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607651862; cv=none;
+Received: by 2002:a0c:db0e:0:0:0:0:0 with SMTP id d14csp1576541qvk;
+        Thu, 10 Dec 2020 17:59:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJytapx+Ix0MBwR3qf6xLsaUPTVPZxrc1NJg1YO/WOKFb9XtS/cPMMLPiJuj+VMDYTiYYPyD
+X-Received: by 2002:a5b:701:: with SMTP id g1mr14105828ybq.343.1607651942951;
+        Thu, 10 Dec 2020 17:59:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607651942; cv=none;
         d=google.com; s=arc-20160816;
-        b=tY+m5hqiaDGM2KGlYmvvIc3UPBECByP7E5IoVN3Wxm6mhiFGppeoiV+yLnuA/4PO3E
-         nBaAsoklzVYI2uYUK8Zz3Vtjy8Cps9ft2UcZYFVHSBt8+mIeej0xQG0kip3IIhYt4hNh
-         MWHvOnVIvv1ORdL8TBdNcOom4qyamR+2akXrrJ+kz+DemtFH4ZXOFbiOkKVbyi7uLBTv
-         ni0ZH5RXrI2JlO31Wbx6hT/96/D/vITRPg2MCAdAVAzFlb5KxGipZAkl25xF0AM7SWoT
-         EDebsz4bslvAJi1iEtfuJUpMBXUAd+w27EMg/PgTqanjRFq6UZOMeP589eH1GLr08r2q
-         eEzA==
+        b=hHoWD1J0kkAjb0KLDjQbQ8bXjd4fYYJz8Cb8rbTq/go8IHjefGElWeMKn0fUaf70ii
+         RURQewJR8WxiIZqtaFXByDC3lelovF82zBoKhNDoIePwsS4umSyo9QLxU0lA+sXZpGzq
+         DNrmwywEwXKYL0Mitf2NLwDjFNzXmsTFpmo/QkPFPV+2L8UfqDX9vmrAFnTH0m5sZ3c3
+         obA8pY0u2HAoqXIE/Dz1lhGPcOmrS9uyQPOXmLg2Illz20lEwC2bUKE7QPWM8ahMyL8K
+         hlfhvdHx6H7oT9EAITr05tWHKa6JpsPhYeZaVKjD6tNXui54FnhPhefgDUYHtlHlhUIY
+         JXCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:to
          :subject:references:mime-version:message-id:in-reply-to:date
          :dkim-signature;
-        bh=atO/eByn2GHwCNdU/vKptHQ0BjhHEFXcyGIO8itsblY=;
-        b=BPElURUl3SYhPcu43rOlS79oqQrUVcb2QfE9g0v4qOCzMtVqQc1hI/k1HZ/yeRfWy5
-         dDpUGXMWe0oyD2WlmprVvo4WAZP+f4bFeEoElxha6M3nyafHt1d7d8Z7xA0BuYW7dPTx
-         8Ph5237GeZNXCtbW+czC+9R+cvtPK8wkc0vBwXHrjWM8MENOqMP6yOj4GOL4s3vTlI5w
-         ROcx+lKoAVRfeydddtWaGR5x3MKrD4CQuXwijN9nYFhdLyrzqJgIoky9naumFKmwAGNw
-         A+tW9MrElkLJ5Fqt1wZ0AK7Z3LQoHFLm2nLF1PsqjLw7I62BKRHfOtXYfkorY00na/CS
-         jMFg==
+        bh=cKCtRn1dkFOSwY3ieDqlEqe46CjfgnOoKtbkb72JIac=;
+        b=adWM2QXQERkxQ3XJJI/PEaDcuvaCfoFELY0LW0xJ65qJWHFNQPFRgSbrq9LIMv6Zf0
+         vMeR2ThwKPa2KGl5bF0QJtxRUAI4voFFgGkkta7fkAVDg3evM/rqyPrCBjqu9j2aoXbr
+         TRU7xwvPJ+dn1+Cyie2oU+b15CIP9tu+rUAjAG0WnMdx4oYn+HYf4vIH+f+1kqD4ZQ2r
+         XHrdGhzCryr9LMn/+ww26oQvJtHKqFJqzM1OuogJIknWObF3buYEudmX2Wyoh3kqnuiX
+         9PMLzletRsrq7FV3CsYkMllwIIR9bExeRxYkv2G3h1ZcvCq1kIoN6xEULlpXxl1UmKsr
+         /nIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=mwWpZmn9;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=iOoF3iSk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y63si6612253yby.344.2020.12.10.17.57.41
+        by mx.google.com with ESMTPS id o8si6607070ybm.475.2020.12.10.17.59.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Dec 2020 17:57:42 -0800 (PST)
+        Thu, 10 Dec 2020 17:59:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=mwWpZmn9;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=iOoF3iSk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38510 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knXgj-0005Zt-Hn
-	for alex.bennee@linaro.org; Thu, 10 Dec 2020 20:57:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58266)
+	id 1knXi2-0006jJ-Dp
+	for alex.bennee@linaro.org; Thu, 10 Dec 2020 20:59:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <30NDSXwgKCsE31ohv0zonvvnsl.jvtxlt1-kl2lsuvunu1.vyn@flex--wuhaotsh.bounces.google.com>)
- id 1knXbc-0001dq-QW
- for qemu-devel@nongnu.org; Thu, 10 Dec 2020 20:52:24 -0500
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49]:51424)
+ <31dDSXwgKCsY86tm054ts00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--wuhaotsh.bounces.google.com>)
+ id 1knXbf-0001hu-Ry
+ for qemu-devel@nongnu.org; Thu, 10 Dec 2020 20:52:28 -0500
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:57106)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <30NDSXwgKCsE31ohv0zonvvnsl.jvtxlt1-kl2lsuvunu1.vyn@flex--wuhaotsh.bounces.google.com>)
- id 1knXbV-00078e-Vn
- for qemu-devel@nongnu.org; Thu, 10 Dec 2020 20:52:24 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id h75so9133706ybg.18
- for <qemu-devel@nongnu.org>; Thu, 10 Dec 2020 17:52:16 -0800 (PST)
+ <31dDSXwgKCsY86tm054ts00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--wuhaotsh.bounces.google.com>)
+ id 1knXbb-0007BJ-0k
+ for qemu-devel@nongnu.org; Thu, 10 Dec 2020 20:52:27 -0500
+Received: by mail-pg1-x54a.google.com with SMTP id z2so5390130pgb.23
+ for <qemu-devel@nongnu.org>; Thu, 10 Dec 2020 17:52:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=atO/eByn2GHwCNdU/vKptHQ0BjhHEFXcyGIO8itsblY=;
- b=mwWpZmn9iLKVzbCUAn5OkQs7Fa+Ghc+qUrFLkWxZcCN411T00ueuEXsn1YVeU9zAvq
- aHPsSKkLNamvJSAC/stZ2KoTFTb2ffvWxvJYYtoHTRm+1FFGYec7yXzJYg9rfwDD7fgk
- XyllV0PkvZC7y2AQt+Y0UCroH7nt//ymVG7lMLt/WjsaCtGw4jyfmQIItQmnPQ+a985J
- HgI154XvkOWmUAH1NbJfdBUA3/P+RlnUIwGr781yhtzkBEIdtj1TNgUunaVA/Q2XsyKy
- UbKJ+74uOqUKB7PJ27s9jGnr8Q392Ng0Tq6zlNcAdTLP+xswL/ZonO+n0W5FINisVNIF
- pYdw==
+ :from:to:cc; bh=cKCtRn1dkFOSwY3ieDqlEqe46CjfgnOoKtbkb72JIac=;
+ b=iOoF3iSknyFAfnAqW3e3MzqsRKI7VlfXAo8EpS8JgDm2fuIe7q4XzUb6mnyW8qpwU7
+ rl7UXbjJXrksi7FxMS3hSYF2EVdyfWwJcgK4To+lAstsz4q7/Nyn0Yyn5fQ+4+GYxtkr
+ zszkO+q4GVOzIrXvfCGvF1A4XC6WaQRmbJdIzIM3lmTZEx8MCwgrB2ZjrXIkgpBFFehP
+ bT9iN8a41v0tg6OF0TWl9ZQnv5gveL08GunuLUcw3weC8sgvDp2KI8EmZrQFD5xH3vV8
+ 7U8qtB98OMD62irdHuxz2VAVAPPKF59a1pGwp/cjdGcPCdFuR6nUN23PYScRX+y2UpiB
+ NOFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=atO/eByn2GHwCNdU/vKptHQ0BjhHEFXcyGIO8itsblY=;
- b=LiVhBAJZb0CCb3wQHtHJSTtNImbPSIsVG24XdZdGtYq2d2qmvUBdwSsGfyB2IpNNFS
- st0Rr66dXNbp9JJPssPnZQVtzHCncclr56ew7s9amgjPqYiNAt7DYGba81sHxP1/Qklx
- mbM3evCAKegBmvp6i3bZ3VNhUvEbSWBrJvmN3+HSK9J2HkzHIe+7yWq4EEzhabCNzlS5
- aI7qpZfcH7yebylf5eNUdkRY65Bae9XVvSrAqL23ujWx7ucuSR4w1fs0a+4nFF2/ejL+
- Kjy7HWgZBb4GIvZaqZM9rckgvbDu1qnlKrI7/xt8SKOUNx3aDtrNUDiFyovQiO5TEqa2
- WHiQ==
-X-Gm-Message-State: AOAM530i3+hE9fJULjjkH82szetOuC9VJLX81pJw/UQwfzfInFjpxs86
- 4tNIkD+nYWk0w+mKwdx2AY5fv02KQXVQiQ==
+ bh=cKCtRn1dkFOSwY3ieDqlEqe46CjfgnOoKtbkb72JIac=;
+ b=BQHOkN0WUZt1mGeWhrtMHp+Yj/IkgD6fZeBomnrQlk4yx0G8nw+Dnb6xbjeOnAkPNf
+ Hcwn/2ru1cWFPLA+EHv6vy2Rs/CRgUT8tfQLJfCcCNhprheW3ha7kZSUN7EiKQoOpOLs
+ hJZT4PkmdcTAJZtZkXxHiRNy474K+vll5XsXgSpCkj5p8n6JNmVpVPin4K3wQ4a0w5J3
+ Tzfo0p7YVs9w33w6eSIFOXAb1PR7ZJywEgnWZRZXdfek8BNOd9GQfVBCG2PiMNViKE6a
+ mndDMOgMt1L52BzKuz0jq6I4d+HKiwNp1fw/v+SVrbXwXzgmLVw/oJBoKCE/70176ff1
+ 9Lsg==
+X-Gm-Message-State: AOAM5331BoKCueb7CHOcC1O3UMBDiSxVx8AFj1zXqKasn7oIp2P22FD8
+ 6SfqYZvQo8OgMN/bW9agXI3jOnXXNDy7Hg==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a25:c386:: with SMTP id
- t128mr5374132ybf.208.1607651536229; Thu, 10 Dec 2020 17:52:16 -0800 (PST)
-Date: Thu, 10 Dec 2020 17:51:51 -0800
+ (user=wuhaotsh job=sendgmr) by 2002:a17:902:8f82:b029:da:f37f:79bf with SMTP
+ id z2-20020a1709028f82b02900daf37f79bfmr8976578plo.79.1607651541057; Thu, 10
+ Dec 2020 17:52:21 -0800 (PST)
+Date: Thu, 10 Dec 2020 17:51:54 -0800
 In-Reply-To: <20201211015156.2053372-1-wuhaotsh@google.com>
-Message-Id: <20201211015156.2053372-3-wuhaotsh@google.com>
+Message-Id: <20201211015156.2053372-6-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20201211015156.2053372-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.29.2.684.gfbc64c5ab5-goog
-Subject: [PATCH 2/7] hw/timer: Refactor NPCM7XX Timer to use CLK clock
+Subject: [PATCH 5/7] hw/ipmi: Add an IPMI host interface
 To: peter.maydell@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=30NDSXwgKCsE31ohv0zonvvnsl.jvtxlt1-kl2lsuvunu1.vyn@flex--wuhaotsh.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
+ envelope-from=31dDSXwgKCsY86tm054ts00sxq.o0y2qy6-pq7qxz0zsz6.03s@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pg1-x54a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,175 +121,252 @@ Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to: Hao Wu <wuhaotsh@google.com>
 From: Hao Wu via <qemu-devel@nongnu.org>
-X-TUID: t7VW2UqU21CW
+X-TUID: aSGBvLRSxwab
 
-This patch makes NPCM7XX Timer to use a the timer clock generated by the
-CLK module instead of the magic nubmer TIMER_REF_HZ.
+The IPMI host interface is used to emulate IPMI related devices on a
+System-on-Chip (SoC) used for Baseband Management Controller (BMC).
+This interface consists of two components: IPMI host and IPMI responder.
+An IPMI responder is a device to intercept reads and writes to the
+system interface registers in the host. An IPMI host emulates the host
+behavior on a BMC emulation.
+
+For more information see docs/spec/ipmi.rst.
 
 Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
 Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/arm/npcm7xx.c                 |  5 +++++
- hw/timer/npcm7xx_timer.c         | 25 +++++++++++++++----------
- include/hw/misc/npcm7xx_clk.h    |  6 ------
- include/hw/timer/npcm7xx_timer.h |  1 +
- 4 files changed, 21 insertions(+), 16 deletions(-)
+ default-configs/devices/arm-softmmu.mak |  2 +
+ hw/ipmi/Kconfig                         |  5 ++
+ hw/ipmi/ipmi_host.c                     | 40 +++++++++++++++
+ hw/ipmi/meson.build                     |  1 +
+ include/hw/ipmi/ipmi_host.h             | 56 +++++++++++++++++++++
+ include/hw/ipmi/ipmi_responder.h        | 66 +++++++++++++++++++++++++
+ 6 files changed, 170 insertions(+)
+ create mode 100644 hw/ipmi/ipmi_host.c
+ create mode 100644 include/hw/ipmi/ipmi_host.h
+ create mode 100644 include/hw/ipmi/ipmi_responder.h
 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 47e2b6fc40..fabfb1697b 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -22,6 +22,7 @@
- #include "hw/char/serial.h"
- #include "hw/loader.h"
- #include "hw/misc/unimp.h"
-+#include "hw/qdev-clock.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
- #include "qemu/units.h"
-@@ -420,6 +421,10 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-         int first_irq;
-         int j;
+diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
+index 08a32123b4..864bac4501 100644
+--- a/default-configs/devices/arm-softmmu.mak
++++ b/default-configs/devices/arm-softmmu.mak
+@@ -27,6 +27,8 @@ CONFIG_GUMSTIX=y
+ CONFIG_SPITZ=y
+ CONFIG_TOSA=y
+ CONFIG_Z2=y
++CONFIG_IPMI=y
++CONFIG_IPMI_HOST=y
+ CONFIG_NPCM7XX=y
+ CONFIG_COLLIE=y
+ CONFIG_ASPEED_SOC=y
+diff --git a/hw/ipmi/Kconfig b/hw/ipmi/Kconfig
+index 9befd4f422..9e487eb42f 100644
+--- a/hw/ipmi/Kconfig
++++ b/hw/ipmi/Kconfig
+@@ -6,6 +6,11 @@ config IPMI_LOCAL
+     default y
+     depends on IPMI
  
-+        /* Connect the timer clock. */
-+        qdev_connect_clock_in(DEVICE(&s->tim[i]), "clock", qdev_get_clock_out(
-+                    DEVICE(&s->clk), "timer-clock"));
++config IPMI_HOST
++    bool
++    default y
++    depends on IPMI
 +
-         sysbus_realize(sbd, &error_abort);
-         sysbus_mmio_map(sbd, 0, npcm7xx_tim_addr[i]);
+ config IPMI_EXTERN
+     bool
+     default y
+diff --git a/hw/ipmi/ipmi_host.c b/hw/ipmi/ipmi_host.c
+new file mode 100644
+index 0000000000..7a6d4eb323
+--- /dev/null
++++ b/hw/ipmi/ipmi_host.c
+@@ -0,0 +1,40 @@
++/*
++ * IPMI Host emulation
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "hw/ipmi/ipmi_host.h"
++#include "hw/ipmi/ipmi_responder.h"
++
++static TypeInfo ipmi_responder_type_info = {
++    .name = TYPE_IPMI_RESPONDER,
++    .parent = TYPE_INTERFACE,
++    .class_size = sizeof(IPMIResponderClass),
++};
++
++static TypeInfo ipmi_host_type_info = {
++    .name = TYPE_IPMI_HOST,
++    .parent = TYPE_DEVICE,
++    .instance_size = sizeof(IPMIHost),
++    .abstract = true,
++    .class_size = sizeof(IPMIHostClass),
++};
++
++static void ipmi_register_types(void)
++{
++    type_register_static(&ipmi_responder_type_info);
++    type_register_static(&ipmi_host_type_info);
++}
++
++type_init(ipmi_register_types)
+diff --git a/hw/ipmi/meson.build b/hw/ipmi/meson.build
+index 9622ea2a2c..9ec4dcb957 100644
+--- a/hw/ipmi/meson.build
++++ b/hw/ipmi/meson.build
+@@ -7,5 +7,6 @@ ipmi_ss.add(when: 'CONFIG_PCI_IPMI_KCS', if_true: files('pci_ipmi_kcs.c'))
+ ipmi_ss.add(when: 'CONFIG_ISA_IPMI_BT', if_true: files('isa_ipmi_bt.c'))
+ ipmi_ss.add(when: 'CONFIG_PCI_IPMI_BT', if_true: files('pci_ipmi_bt.c'))
+ ipmi_ss.add(when: 'CONFIG_IPMI_SSIF', if_true: files('smbus_ipmi.c'))
++ipmi_ss.add(when: 'CONFIG_IPMI_HOST', if_true: files('ipmi_host.c'))
  
-diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c
-index d24445bd6e..9469c959e2 100644
---- a/hw/timer/npcm7xx_timer.c
-+++ b/hw/timer/npcm7xx_timer.c
-@@ -17,8 +17,8 @@
- #include "qemu/osdep.h"
- 
- #include "hw/irq.h"
-+#include "hw/qdev-clock.h"
- #include "hw/qdev-properties.h"
--#include "hw/misc/npcm7xx_clk.h"
- #include "hw/timer/npcm7xx_timer.h"
- #include "migration/vmstate.h"
- #include "qemu/bitops.h"
-@@ -130,7 +130,7 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer *t, uint32_t count)
- {
-     int64_t ns = count;
- 
--    ns *= NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;
-+    ns *= NANOSECONDS_PER_SECOND / clock_get_hz(t->ctrl->clock);
-     ns *= npcm7xx_tcsr_prescaler(t->tcsr);
- 
-     return ns;
-@@ -141,7 +141,7 @@ static uint32_t npcm7xx_timer_ns_to_count(NPCM7xxTimer *t, int64_t ns)
- {
-     int64_t count;
- 
--    count = ns / (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ);
-+    count = ns / (NANOSECONDS_PER_SECOND / clock_get_hz(t->ctrl->clock));
-     count /= npcm7xx_tcsr_prescaler(t->tcsr);
- 
-     return count;
-@@ -166,8 +166,10 @@ static uint32_t npcm7xx_watchdog_timer_prescaler(const NPCM7xxWatchdogTimer *t)
- static void npcm7xx_watchdog_timer_reset_cycles(NPCM7xxWatchdogTimer *t,
-         int64_t cycles)
- {
-+    g_assert(clock_get_hz(t->ctrl->clock) == 25000000);
-     uint32_t prescaler = npcm7xx_watchdog_timer_prescaler(t);
--    int64_t ns = (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ) * cycles;
-+    int64_t ns = (NANOSECONDS_PER_SECOND / clock_get_hz(t->ctrl->clock))
-+        * cycles;
- 
-     /*
-      * The reset function always clears the current timer. The caller of the
-@@ -606,10 +608,11 @@ static void npcm7xx_timer_hold_reset(Object *obj)
-     qemu_irq_lower(s->watchdog_timer.irq);
- }
- 
--static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)
-+static void npcm7xx_timer_init(Object *obj)
- {
--    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(dev);
-+    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(obj);
-     SysBusDevice *sbd = &s->parent;
-+    DeviceState *dev = DEVICE(obj);
-     int i;
-     NPCM7xxWatchdogTimer *w;
- 
-@@ -627,11 +630,12 @@ static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)
-             npcm7xx_watchdog_timer_expired, w);
-     sysbus_init_irq(sbd, &w->irq);
- 
--    memory_region_init_io(&s->iomem, OBJECT(s), &npcm7xx_timer_ops, s,
-+    memory_region_init_io(&s->iomem, obj, &npcm7xx_timer_ops, s,
-                           TYPE_NPCM7XX_TIMER, 4 * KiB);
-     sysbus_init_mmio(sbd, &s->iomem);
-     qdev_init_gpio_out_named(dev, &w->reset_signal,
-             NPCM7XX_WATCHDOG_RESET_GPIO_OUT, 1);
-+    s->clock = qdev_init_clock_in(dev, "clock", NULL, NULL);
- }
- 
- static const VMStateDescription vmstate_npcm7xx_base_timer = {
-@@ -675,10 +679,11 @@ static const VMStateDescription vmstate_npcm7xx_watchdog_timer = {
- 
- static const VMStateDescription vmstate_npcm7xx_timer_ctrl = {
-     .name = "npcm7xx-timer-ctrl",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(tisr, NPCM7xxTimerCtrlState),
-+        VMSTATE_CLOCK(clock, NPCM7xxTimerCtrlState),
-         VMSTATE_STRUCT_ARRAY(timer, NPCM7xxTimerCtrlState,
-                              NPCM7XX_TIMERS_PER_CTRL, 0, vmstate_npcm7xx_timer,
-                              NPCM7xxTimer),
-@@ -697,7 +702,6 @@ static void npcm7xx_timer_class_init(ObjectClass *klass, void *data)
-     QEMU_BUILD_BUG_ON(NPCM7XX_TIMER_REGS_END > NPCM7XX_TIMER_NR_REGS);
- 
-     dc->desc = "NPCM7xx Timer Controller";
--    dc->realize = npcm7xx_timer_realize;
-     dc->vmsd = &vmstate_npcm7xx_timer_ctrl;
-     rc->phases.enter = npcm7xx_timer_enter_reset;
-     rc->phases.hold = npcm7xx_timer_hold_reset;
-@@ -708,6 +712,7 @@ static const TypeInfo npcm7xx_timer_info = {
-     .parent             = TYPE_SYS_BUS_DEVICE,
-     .instance_size      = sizeof(NPCM7xxTimerCtrlState),
-     .class_init         = npcm7xx_timer_class_init,
-+    .instance_init      = npcm7xx_timer_init,
- };
- 
- static void npcm7xx_timer_register_type(void)
-diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h
-index f641f95f3e..d5c8d16ca4 100644
---- a/include/hw/misc/npcm7xx_clk.h
-+++ b/include/hw/misc/npcm7xx_clk.h
-@@ -20,12 +20,6 @@
- #include "hw/clock.h"
- #include "hw/sysbus.h"
- 
--/*
-- * The reference clock frequency for the timer modules, and the SECCNT and
-- * CNTR25M registers in this module, is always 25 MHz.
-- */
--#define NPCM7XX_TIMER_REF_HZ            (25000000)
--
- /*
-  * Number of registers in our device state structure. Don't change this without
-  * incrementing the version_id in the vmstate.
-diff --git a/include/hw/timer/npcm7xx_timer.h b/include/hw/timer/npcm7xx_timer.h
-index 6993fd723a..d45c051b56 100644
---- a/include/hw/timer/npcm7xx_timer.h
-+++ b/include/hw/timer/npcm7xx_timer.h
-@@ -101,6 +101,7 @@ struct NPCM7xxTimerCtrlState {
- 
-     uint32_t    tisr;
- 
-+    Clock       *clock;
-     NPCM7xxTimer timer[NPCM7XX_TIMERS_PER_CTRL];
-     NPCM7xxWatchdogTimer watchdog_timer;
- };
+ softmmu_ss.add_all(when: 'CONFIG_IPMI', if_true: ipmi_ss)
+diff --git a/include/hw/ipmi/ipmi_host.h b/include/hw/ipmi/ipmi_host.h
+new file mode 100644
+index 0000000000..a703cc3854
+--- /dev/null
++++ b/include/hw/ipmi/ipmi_host.h
+@@ -0,0 +1,56 @@
++/*
++ * IPMI host interface
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#ifndef HW_IPMI_HOST_H
++#define HW_IPMI_HOST_H
++
++#include "hw/ipmi/ipmi_responder.h"
++
++#define TYPE_IPMI_HOST "ipmi-host"
++#define IPMI_HOST(obj) \
++     OBJECT_CHECK(IPMIHost, (obj), TYPE_IPMI_HOST)
++#define IPMI_HOST_CLASS(obj_class) \
++     OBJECT_CLASS_CHECK(IPMIHostClass, (obj_class), TYPE_IPMI_HOST)
++#define IPMI_HOST_GET_CLASS(obj) \
++     OBJECT_GET_CLASS(IPMIHostClass, (obj), TYPE_IPMI_HOST)
++
++/**
++ * struct IPMIHost defines an IPMI host interface. It can be a simulator or a
++ * connection to an emulated or real host.
++ * @responder: The IPMI responder that handles an IPMI message.
++ */
++typedef struct IPMIHost {
++    DeviceState parent;
++
++    IPMIResponder *responder;
++} IPMIHost;
++
++/**
++ * struct IPMIHostClass defines an IPMI host class.
++ * @handle_command: Handle a command to the host.
++ */
++typedef struct IPMIHostClass {
++    DeviceClass parent;
++
++    /*
++     * Handle a command to the bmc.
++     */
++    void (*handle_command)(struct IPMIHost *s,
++                           uint8_t *cmd, unsigned int cmd_len,
++                           unsigned int max_cmd_len, uint8_t msg_id);
++} IPMIHostClass;
++
++#endif /* HW_IPMI_HOST_H */
+diff --git a/include/hw/ipmi/ipmi_responder.h b/include/hw/ipmi/ipmi_responder.h
+new file mode 100644
+index 0000000000..e3e4ef39d4
+--- /dev/null
++++ b/include/hw/ipmi/ipmi_responder.h
+@@ -0,0 +1,66 @@
++/*
++ * IPMI responder interface
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#ifndef HW_IPMI_RESPONDER_H
++#define HW_IPMI_RESPONDER_H
++
++#include "qemu/osdep.h"
++#include "hw/qdev-core.h"
++#include "qom/object.h"
++
++#define TYPE_IPMI_RESPONDER_PREFIX "ipmi-responder-"
++#define TYPE_IPMI_RESPONDER "ipmi-responder"
++#define IPMI_RESPONDER(obj) \
++     INTERFACE_CHECK(IPMIResponder, (obj), TYPE_IPMI_RESPONDER)
++#define IPMI_RESPONDER_CLASS(class) \
++     OBJECT_CLASS_CHECK(IPMIResponderClass, (class), TYPE_IPMI_RESPONDER)
++#define IPMI_RESPONDER_GET_CLASS(class) \
++     OBJECT_GET_CLASS(IPMIResponderClass, (class), TYPE_IPMI_RESPONDER)
++
++struct IPMIHost;
++
++/**
++ * This interface is implemented by each IPMI responder device (KCS, BT, PCI,
++ * etc.) An IPMI host device uses it to transfer data to the emulated BMC.
++ */
++typedef struct IPMIResponder IPMIResponder;
++
++/**
++ * struct IPMIResponderClass implemented by an IPMI responder device like KCS to
++ * handle commands from connected IPMI host device.
++ * @get_host: Return the IPMI host (e.g. ipmi-host-extern) that uses this
++ *  responder.
++ * @set_host: Set the IPMI host (e.g. ipmi-host-extern) that uses this
++ *  responder.
++ * @get_backend_data: Return the backend device (e.g. KCS, BT) of the
++ *  corresponding responder.
++ * @handle_req: The IPMI Host device calls this function when it receives a sane
++ *  IPMI message. A responder should handle this message.
++ */
++typedef struct IPMIResponderClass {
++    InterfaceClass parent;
++
++    struct IPMIHost *(*get_host)(struct IPMIResponder *s);
++
++    void (*set_host)(struct IPMIResponder *s, struct IPMIHost *h);
++
++    void *(*get_backend_data)(struct IPMIResponder *s);
++
++    void (*handle_req)(struct IPMIResponder *s, uint8_t msg_id,
++            unsigned char *req, unsigned req_len);
++} IPMIResponderClass;
++
++#endif /* HW_IPMI_RESPONDER_H */
 -- 
 2.29.2.684.gfbc64c5ab5-goog
 

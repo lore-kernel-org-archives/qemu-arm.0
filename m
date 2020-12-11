@@ -1,130 +1,179 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp5093163lfb;
-        Wed, 9 Dec 2020 08:29:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwopYDKxtH/tNznPdelpf3FwjdDHe38THEVLSkGy4jsGz/9NAr8+OuaHozp7oUhxFw7VqfE
-X-Received: by 2002:a63:1764:: with SMTP id 36mr2627426pgx.177.1607531377716;
-        Wed, 09 Dec 2020 08:29:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607531377; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp147413lfq;
+        Fri, 11 Dec 2020 06:47:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz/KyNPVlA4i8Agb/JNyBsdJ5/vCEFgG3aLojU8QDCo3aFcgbSMu/v6n+hCKH9d6ZKHMWrw
+X-Received: by 2002:a25:c786:: with SMTP id w128mr18907116ybe.322.1607698039344;
+        Fri, 11 Dec 2020 06:47:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607698039; cv=none;
         d=google.com; s=arc-20160816;
-        b=If2Iq9VZDScXLRESLPsbHwmIfQn3+fL53zTiKnAf3r1PLE3GuAQ+veG7o7ILZCSLq+
-         7COsOCm0YmhC1sHTt57gnXfZLuUQbILGifww7ykL+6fLcZchWXRVxm6ZnYdcd++DbHdn
-         Tk+8bzGkxPlNs6zecBLYfOq0gnvWbClaUIcOgS+CCOPN5fcaOhNlckjht4gSF/HUoevG
-         uNKer/CYTL949sJQHb5+bOVsPAGODphSfhp64iTpxwj8zQ2woGhgD3yZkfnlNFIsVYSn
-         036kLnudOkpe0e1u9hdML7QqI6Omz9bLeXGzvvMwnf6EFp9AALPx/sI51t/mBpGaiomp
-         Efsg==
+        b=XNlWodtCAtKx8o7B9wKfJfI+BnwDEUMOfTesbvptv2EMJm3tm3ZnC+2OJvV66M/cZv
+         qJntb6Mm8sPTfFF932i6Nf4bZa0cMvL1LqLAt8mR7dAR+x9YorZnstAD69LwsgMDYx9j
+         H6WVRCyzKmeRJTtxUI/wY2dRmCeSteK3nN6AFxXyamtld/IZVQqBSCNxz6Vn+IrKgwfL
+         biKkAXuMUThEbQxWgW/ypckrZmt3YHNbhEH5r3LA2or2D99h8nYrmDFPw1hXzRyVdIa8
+         VDUj5ZDy4/RF03yWoIgV2nfpKFvdD5UUlHehufjxftMpzG5/n263QEX9x0IvxeIHTPYe
+         9rEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=NfvvG9R1oZHC0/72KAn4eRO/RbaxPTHZX0E9qTml3UI=;
-        b=Tqh6TUKkeViwnsW8ieDHaxHsDlDjOxBsIH9s066w0SaNTophqqcy9UBsIUyib+DOAg
-         OhKuZ7ZxNZHWGwcY5oDWU+pHmiFSf/ZEVxZ/BxQ9XnVUNd6znUZBqDMEWLTVfuPmiqGt
-         ztoOXHQqGHsmU2w1jcc1RVY2E1PKPfUWpGy24kCch5B+eOi+l6EEcWaChy65aB7oy2s1
-         HRGBzgGRS35EqEa3+qonsT7+2wOCBf+SU34fXETdnOc7U+4df3hjxc+xOcb0qF1hwEAK
-         0vFUE6TJKoCoqHp5fIV9U80a9aSMWk+l682QWvWeajUIu96kDqmyh6Vwzvo/AG5qRi6a
-         zyug==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=E/QXE6Dp1WojnzptChsobRJCnxriTuOC+w+XlEAsmAY=;
+        b=ib5ukHHaQugyes08GC3YGJ/iZigflgYKSaHSCCChmkk0j1NWH2JCOkKGt8XE0PPjC6
+         p9AKHjE9lg3h5XhoL2dymJkPQJev08it92tIHu8p+DI+/ZVHQVeSLrUWi8AQgtyQMV2H
+         sQuiTwGyDnlCfj9XFOtH6O+hxUvyt72VTHNimA9U03nhwY17sipbbck49ZRtbqN1oZGj
+         nAYQXqfH6WOmVnk35fLUyUHqq5itki54KwMtMnixVxwFclculjfdS4XKX8Ur2bUelbDf
+         W1ruf3RTuPE1YOmZhX0k/wc9hQLVVrhYFP8XVTZsGL8EZEBAQrVbZplRSkl4R8qa5tjl
+         tRwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Return-Path: <keithp@keithp.com>
-Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id lk3si1590809pjb.0.2020.12.09.08.29.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Dec 2020 08:29:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UF5rb05p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o138si6826407yba.85.2020.12.11.06.47.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 11 Dec 2020 06:47:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=syXM6nJ8;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 72F8F3F2E329;
-	Wed,  9 Dec 2020 08:29:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607531376; bh=NfvvG9R1oZHC0/72KAn4eRO/RbaxPTHZX0E9qTml3UI=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=syXM6nJ8lwxL0amBETOnN1p1SckCQYDv5U4mPPW/2YfeTOArON8cCF/QOYDuHzrbs
-	 CAVZNTkOEA01WyciO1sxR0S7pwbKE5eqUj2ka14ZzGxMgzChMZz/qhXn4LbHtJpiwF
-	 oMXmkmrf50Y6mkeiO0F0mkozOtThwxrbuavVEV8m0r2zc5+EaXj+yfoKIClcusJB8q
-	 vPpnni8NEPyMtrQZs7d3FOBE0Z8XJUR110eEMK7Imn8NlumNfPL9BR3MkHR9bXG4ST
-	 YIV7TXhwjp3x9lvAiAqBP5yC5UgyXKhtsXR42qcnDn923N4N4jsYreuNxyx3LTZM6w
-	 SQ/Li2sZe1ePw==
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
-	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id 6I6X17j2ur1b; Wed,  9 Dec 2020 08:29:36 -0800 (PST)
-Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id 0E6273F2DE35;
-	Wed,  9 Dec 2020 08:29:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607531376; bh=NfvvG9R1oZHC0/72KAn4eRO/RbaxPTHZX0E9qTml3UI=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=syXM6nJ8lwxL0amBETOnN1p1SckCQYDv5U4mPPW/2YfeTOArON8cCF/QOYDuHzrbs
-	 CAVZNTkOEA01WyciO1sxR0S7pwbKE5eqUj2ka14ZzGxMgzChMZz/qhXn4LbHtJpiwF
-	 oMXmkmrf50Y6mkeiO0F0mkozOtThwxrbuavVEV8m0r2zc5+EaXj+yfoKIClcusJB8q
-	 vPpnni8NEPyMtrQZs7d3FOBE0Z8XJUR110eEMK7Imn8NlumNfPL9BR3MkHR9bXG4ST
-	 YIV7TXhwjp3x9lvAiAqBP5yC5UgyXKhtsXR42qcnDn923N4N4jsYreuNxyx3LTZM6w
-	 SQ/Li2sZe1ePw==
-Received: by keithp.com (Postfix, from userid 1000)
-	id EA9AC15820DB; Wed,  9 Dec 2020 08:29:35 -0800 (PST)
-From: Keith Packard <keithp@keithp.com>
-To: Kito Cheng <kito.cheng@gmail.com>
-Cc: qemu-devel@nongnu.org, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Alistair
- Francis <Alistair.Francis@wdc.com>, Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Sagar Karandikar <sagark@eecs.berkeley.edu>
-Subject: Re: [PATCH 5/8] riscv: Add semihosting support [v13]
-In-Reply-To: <CA+yXCZC038LfuswrAo6W3gHXfGkwPscMEKDQJvutV7xcoC+wPw@mail.gmail.com>
-References: <20201125213617.2496935-1-keithp@keithp.com>
- <20201125213617.2496935-6-keithp@keithp.com>
- <CA+yXCZC038LfuswrAo6W3gHXfGkwPscMEKDQJvutV7xcoC+wPw@mail.gmail.com>
-Date: Wed, 09 Dec 2020 08:29:35 -0800
-Message-ID: <87r1nz6iz4.fsf@keithp.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=UF5rb05p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47870 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1knjhW-000479-OH
+	for alex.bennee@linaro.org; Fri, 11 Dec 2020 09:47:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44134)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1knjgY-0003TO-8y
+ for qemu-arm@nongnu.org; Fri, 11 Dec 2020 09:46:25 -0500
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:45619)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1knjgO-0000Ra-Pe
+ for qemu-arm@nongnu.org; Fri, 11 Dec 2020 09:46:18 -0500
+Received: by mail-ej1-x643.google.com with SMTP id qw4so12637885ejb.12
+ for <qemu-arm@nongnu.org>; Fri, 11 Dec 2020 06:46:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=E/QXE6Dp1WojnzptChsobRJCnxriTuOC+w+XlEAsmAY=;
+ b=UF5rb05pnbPzZEOULtgIEga/Yj4F1nH8uNy8Hd6yvJvKh8+BM7KSIHtnYAAO4fc1Nn
+ KPUzDpktHDrxWXlGOwDvISN9OMsT1uJ1zAu2QI4Z/YrpACAW9NYy4dsfDRLGjm1YBtSL
+ 5K2683tn6yoyf45gP+hVDNyMg1Mp1udV6U5txzoM3cLquK1AGxg3xgsEdLe1y4FwCftg
+ Nxwafyr3ZUB4p0Ao9O2Rw1GZqUZICvQzH649dQ/k7SLLyJmtdgTyaLT72ka3hqwn7HsC
+ di8yg5tOYjFG1OS7YTVHd9V+IMs0S9GbnXGk2ERXbyWDiipVQd1QKnm1uBmnuVItWz1I
+ LiPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=E/QXE6Dp1WojnzptChsobRJCnxriTuOC+w+XlEAsmAY=;
+ b=oIurR/mYjKZUJyinMHR8ymltP9WmRpMpUmwhuKmpDtcJwrGHuA73Y3C4dhp//3zjN8
+ nd4fKejGxavn6KzXf5z2Seh5VdLDW+cVrHZfQLpq69klTMxvjHoyz+/DU6opGS2Rmhh7
+ q6dfCe2p0naQeKgGnsTicWGIJ2oKLDe1ZMhPm4ucjQL//yOmsA2lLq3d/6T5IyjH0IlX
+ M82YabKs5suVEsCbdaeVl7Bif+hPlrqzRsZJhQDDAuVFcrOaBWtlL9MYi52MqsNnVXRw
+ NeZ60vVd5xPPtAkVD51QLoskX3klA15fwp9/emzDmuDANNtz9FqWU4RXb1Nu2LWgizcB
+ MUwQ==
+X-Gm-Message-State: AOAM531oIOp1jW9A9NB0vHvxeDljZFtZRN2umJh++1/PXrT7y2FCrCeU
+ 2VOKE5intsXkG/pAAbsyDzi0dzTMxg+qJe8oQna5oA==
+X-Received: by 2002:a17:906:1151:: with SMTP id
+ i17mr11518565eja.250.1607697966268; 
+ Fri, 11 Dec 2020 06:46:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-X-TUID: UwQzBREKNJ6b
+References: <20201208122306.8933-1-leif@nuviainc.com>
+ <20201208122306.8933-4-leif@nuviainc.com>
+In-Reply-To: <20201208122306.8933-4-leif@nuviainc.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 11 Dec 2020 14:45:55 +0000
+Message-ID: <CAFEAcA-vT4eAxn7K=ULu7wGomfW7akEG=eSVGp4j7CSKtksuHg@mail.gmail.com>
+Subject: Re: [PATCH 3/5] target/arm: add descriptions of CLIDR_EL1,
+ CCSIDR_EL1, CTR_EL0 to cpu.h
+To: Leif Lindholm <leif@nuviainc.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x643.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ghQquvcIh/cj
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-Kito Cheng <kito.cheng@gmail.com> writes:
-
-> Hi Keith:
+On Tue, 8 Dec 2020 at 12:23, Leif Lindholm <leif@nuviainc.com> wrote:
 >
-> Thanks for the patch, I've verified with newlib semihosting support
-> which is contributed by Craig Blackmore from embecosm,
-> and I would like to add semihosting to user mode, do you mind add this
-> patch into this patch series?
+> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+> ---
+>  target/arm/cpu.h | 24 ++++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index b54d1dc092..5e9e8061f7 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1713,6 +1713,30 @@ FIELD(V7M_FPCCR, ASPEN, 31, 1)
+>  /*
+>   * System register ID fields.
+>   */
+> +FIELD(CLIDR_EL1, CTYPE1, 0, 3)
+> +FIELD(CLIDR_EL1, CTYPE2, 3, 3)
+> +FIELD(CLIDR_EL1, CTYPE3, 6, 3)
+> +FIELD(CLIDR_EL1, CTYPE4, 9, 3)
+> +FIELD(CLIDR_EL1, CTYPE5, 12, 3)
+> +FIELD(CLIDR_EL1, CTYPE6, 15, 3)
+> +FIELD(CLIDR_EL1, CTYPE7, 18, 3)
+> +FIELD(CLIDR_EL1, LOUIS, 21, 3)
+> +FIELD(CLIDR_EL1, LOC, 24, 3)
+> +FIELD(CLIDR_EL1, LOUU, 27, 3)
+> +FIELD(CLIDR_EL1, ICB, 30, 3)
+> +
+> +FIELD(CCSIDR_EL1, LINESIZE, 0, 3)
+> +FIELD(CCSIDR_EL1, ASSOCIATIVITY, 3, 20)
 
-I tried to add that already, but I admit that I haven't tested it in a
-while. You should find that there are patches to linux-user/semihost.c
-and linux-user/qemu.h to enable it.
+The ASSOCIATIVITY field is bits [23:3], so it's
+21 bits long, not 20, right ?
 
-=2D-=20
-=2Dkeith
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+> +FIELD(CCSIDR_EL1, NUMSETS, 32, 23)
 
------BEGIN PGP SIGNATURE-----
+Similarly, NUMSETS is [55:32] so 24 bits long.
 
-iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl/Q+28ACgkQ2yIaaQAA
-ABGFNw//Ul4a0PbfO3j4ey6T6eC53q1i4ObgE0Bsatdm6xLYgMB7CyJ8Bn/T8h8d
-/J31ZrEuRl3+vZhMZE4BGm6BuMEW/uwbrlKjfkTTep4T7JzXSDxUBaO4xa7OYnkI
-6R/k9QYoOdvo31zfYG6zg6B1U8FtwnX1mSCUb+GjELEwKdea3yxa64yzapWnzsnU
-TqkEP3Vux/M4M+z1LFkZfmvjhVaYcuNczuY3XbL1R7HZJGQktIaBh/lLvOPSL5u7
-CQP6H7GZMJMrbJ4VH2KmcyBHFERlBsodXmJKf/ed7fzQLcuhKEYyuzzJ8JeQqwS0
-IoHu6DCA5LbzNZQPvjxY2WJ8Rxzpq7uNbrioNC5xLIPvypzdVJUUW4u20bP8wJtf
-jUvFNK1ZJYTGomlpL4p+5/f8M2MCj61Fz7wJaHRt12SIRYP0Lt1m4Obkglh9Aneh
-PTvepH9BIqEd7FFoJMIFJ2bCcs6Yva8f5lAlW2MPxSs1s42iCVTyOHU/IrcX6e1y
-HH68QwmxaJb9XoUV4luCD7WSXm3x8uyH3nPLsxxhTNd/EsczDK/r3q7v4cAjmPQm
-URnGQx88afZnpI4xPmCPWI6IGmUta8gzCYw6BdcJbQOA8bxIyTFklV9ouzV25awT
-Vnc0GlPGnSi6AjgdHv7wSi7qcuA2SWfLuc+wZZdHTXMyAKT43SQ=
-=aNTI
------END PGP SIGNATURE-----
---=-=-=--
+> +
+> +FIELD(CTR_EL0,  IMINLINE, 0, 4)
+> +FIELD(CTR_EL0,  L1IP, 14, 2)
+> +FIELD(CTR_EL0,  DMINLINE, 16, 4)
+> +FIELD(CTR_EL0,  ERG, 20, 4)
+> +FIELD(CTR_EL0,  CWG, 24, 4)
+> +FIELD(CTR_EL0,  IDC, 28, 1)
+> +FIELD(CTR_EL0,  DIC, 29, 1)
+> +
+>  FIELD(MIDR_EL1, REVISION, 0, 4)
+>  FIELD(MIDR_EL1, PARTNUM, 4, 12)
+>  FIELD(MIDR_EL1, ARCHITECTURE, 16, 4)
+
+Any reason not to define the other fields here?
+FIELD(MIDR_EL1, VARIANT, 20, 4)
+FIELD(MIDR_EL1, IMPLEMENTER, 24, 8)
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

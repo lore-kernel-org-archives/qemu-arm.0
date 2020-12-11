@@ -1,105 +1,106 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp507454lfq;
-        Fri, 11 Dec 2020 14:37:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyNBCBLpod3vS2X0sypcW8Kzk2Z4zx2Y74BRWG/pjNjwRRBQBH4DQQPkdNypRn6zMPPmsi+
-X-Received: by 2002:a25:8401:: with SMTP id u1mr22953224ybk.96.1607726278284;
-        Fri, 11 Dec 2020 14:37:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607726278; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp516590lfq;
+        Fri, 11 Dec 2020 14:55:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw6qxejX2stmeEZozfX9XqYfHweY+V32Pw9uOTzfNQnBgfXRkrBBH/kv3qZ2XiRC8Ea4rk+
+X-Received: by 2002:a25:6902:: with SMTP id e2mr22311052ybc.97.1607727306361;
+        Fri, 11 Dec 2020 14:55:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607727306; cv=none;
         d=google.com; s=arc-20160816;
-        b=JVz7q4qUwFj6PDQwAgJdDDw1GgodP8SFv7OR6gNzvYBcT+W0OD5ktLOyVZ4y13udZ2
-         dOpPZ3cryDx+zyB+n6WAd8a+w3kYgtUO9fUZsAcFOfUwrcP9C/T1E+1UMgGpZlamlbAB
-         CfqWEc8HiJjShMi/DDF9B59XMXV5ayBi9fOvUtW3KZwolR/QoLXidpZP7CLO6kSNCtey
-         KgFtMc6d4ZhD+7SSIXn1+g5QGxi28sT1kkFH75zJ+6mLl+WrP2QVzP3wjnEXa9GA1+fY
-         +IiRFuJc1pdHKbh8HUJq7WYiEj4BFx5mjZ9SHxZo5gb8OUWrblOpgOOecoc32Ki0xsm3
-         UtOA==
+        b=O0/17HfdH1HJxk/oO/UTLWK8YeqxpUbxKrA3ZKdsbnWu+/Wzm7JzsI7D2/CZQZWtB3
+         mXLGLPkLKhwgqndEd16Vb+gcrcXbqnfLBy70BBlV+b9qQggWLZqs7CDmUZL3qr/2SbOO
+         N8WnAbxUPb7+Sq/PfAyaDh0nX/IZbQeSdotKf7iLrlamc2tnD9vb1AbTdKZYsHs33Fyk
+         xaYDsR5M0tgprITYBume/Rz5i3PBughIyzRWKvh4CTzQSR1aRNc73o92NFzvL+rBcbPX
+         D0YWqidbpjOG4ZZR/JIDHfPhKhGwXrQJdk8Qke/QowqP2CUTaT3YnAzjVtx/daq+ZbOY
+         K8UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
+         :subject:references:mime-version:message-id:in-reply-to:date
          :dkim-signature;
-        bh=qEmjy/8vk3/5tVoHt3DAuCGhxai+lJk/GoA2h1anmJA=;
-        b=YgtbpeCSv0j5AixDoV+S7J77Flr8J0ZZ4j4liBLHLq7cY9ScMhpOt4P3CJytZliPJQ
-         MRQkprG7tWwfelq+9l7LjR6QSd812H4entJ8+7kSkxVZ20eXypVdVZsXGI0iJTXj/Jma
-         iBtUV6VmBcj1O4dAOYzjuBmAJoNkwKz4UlfI+CSlqiDSWSqevAjqXVYgwtvhO7Dzb/mM
-         o+ixSu70vhm9HjO2YPVRMJGe65jU/OEJE//gKJvLi0BzqXzs5lMmPh8cBzSXoDq+I0pd
-         yiEnduSmxH+Usx/JLfGFvttOoPi9tKN8bwasQsnfpkJlRImj54MVsHOPECVW297blEZH
-         sQWg==
+        bh=atO/eByn2GHwCNdU/vKptHQ0BjhHEFXcyGIO8itsblY=;
+        b=S18b2pMkqCiQMMUdJ/gj+aZvMzqA/HXgB/ukaocbTIJx0faOwDwX/o+oSCRQFtVP9p
+         J4tDKgv7f33kzTzeiKCRuQH6+aqEvFdPlcP2D5S8eH0UZoLa5FMJ1vhaMmE4k8aAVE8u
+         HcvRjZgcC6NGnYUWpc556sc0wuzi03Myu9DK0E8iLd5mOC674BZmOrA2e0fXYkVtxtHX
+         tOA+Zj/KmFx5Aj/S/fGDdIDD1+8Tin+n4+HsImtocKHcHCbryeHdLy1F3jN7boY/aQfC
+         XTL8Hbv7VWJglapTVhoBK1ITrysrcNKkPG0D4V28rpuT//I9m0oYj3QukAJ8HeXLJgpH
+         tn3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UzE0gW+C;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=EhzvlVHw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o139si10494998ybg.432.2020.12.11.14.37.58
+        by mx.google.com with ESMTPS id q7si9012052ybm.214.2020.12.11.14.55.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Dec 2020 14:37:58 -0800 (PST)
+        Fri, 11 Dec 2020 14:55:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UzE0gW+C;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=EhzvlVHw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33978 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:60008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knr2v-0000mC-QG
-	for alex.bennee@linaro.org; Fri, 11 Dec 2020 17:37:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60770)
+	id 1knrJZ-00044E-MN
+	for alex.bennee@linaro.org; Fri, 11 Dec 2020 17:55:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1knqa7-0003Bj-SD
- for qemu-arm@nongnu.org; Fri, 11 Dec 2020 17:08:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39202)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1knqZi-0006pE-Rq
- for qemu-arm@nongnu.org; Fri, 11 Dec 2020 17:08:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607724461;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qEmjy/8vk3/5tVoHt3DAuCGhxai+lJk/GoA2h1anmJA=;
- b=UzE0gW+CGCLf6RCJ46r4iFFPdA1bw6RgjWPBpgkl1dDam9/yWOJG9ZhGESu8SQoEcUzd0e
- VLR+dVXFtmoITQDk9M7cLT8R4w2tFhtzwhEvWhOCoXYTyK4K4t5pfcU7v9VA52b9uEuJkW
- lnKlio+J0nb2EKnPXpjLAjxT8vQFB30=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-455-6ojzbqprPIum9yEA41rcSg-1; Fri, 11 Dec 2020 17:07:39 -0500
-X-MC-Unique: 6ojzbqprPIum9yEA41rcSg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1DDD419251A0;
- Fri, 11 Dec 2020 22:07:38 +0000 (UTC)
-Received: from localhost (ovpn-116-160.rdu2.redhat.com [10.10.116.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EB94460BE5;
- Fri, 11 Dec 2020 22:07:31 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 29/32] qdev: Rename qdev_prop_* to prop_info_*
-Date: Fri, 11 Dec 2020 17:05:26 -0500
-Message-Id: <20201211220529.2290218-30-ehabkost@redhat.com>
-In-Reply-To: <20201211220529.2290218-1-ehabkost@redhat.com>
-References: <20201211220529.2290218-1-ehabkost@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ (Exim 4.90_1) (envelope-from
+ <3VvHTXwgKCI0DByr5A9yx55x2v.t537v3B-r83454x4B.58x@flex--wuhaotsh.bounces.google.com>)
+ id 1knqox-0006KF-EB
+ for qemu-arm@nongnu.org; Fri, 11 Dec 2020 17:23:27 -0500
+Received: from mail-qt1-x849.google.com ([2607:f8b0:4864:20::849]:49364)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3VvHTXwgKCI0DByr5A9yx55x2v.t537v3B-r83454x4B.58x@flex--wuhaotsh.bounces.google.com>)
+ id 1knqor-0003Ky-ME
+ for qemu-arm@nongnu.org; Fri, 11 Dec 2020 17:23:27 -0500
+Received: by mail-qt1-x849.google.com with SMTP id a11so6454349qto.16
+ for <qemu-arm@nongnu.org>; Fri, 11 Dec 2020 14:23:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=sender:date:in-reply-to:message-id:mime-version:references:subject
+ :from:to:cc; bh=atO/eByn2GHwCNdU/vKptHQ0BjhHEFXcyGIO8itsblY=;
+ b=EhzvlVHwpl8GgmjJObWRdyMtxCr8P/Uz7DdIv4FvDRMTxSHGmAJc0tCuTm0Uj0LQOW
+ loOsadG9r8NW84PQa65fW90fZv+A8ZI+Nlaa8B0a4zp95D43DZwnDjcvu9ij43yPNXLI
+ axGA80GQCl2odPwztgCdFncSNqCpxN8ee1cq5u2BvQhdRk0taZbgzkf0kbnuM2GWcRn3
+ GlwRKn1S3vXnFPO2tZyJt7EA27DJylZfPE35jA4wgOp6PTnitSbZZT/28hpkzOyx9Qzk
+ +noTb8ghxIWFQ1aN6Q/AJvvpEYxkWuFBtTo3w8ne21slrTQLaKnp2Zq3Z7Kut/KeRubV
+ e1Cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=atO/eByn2GHwCNdU/vKptHQ0BjhHEFXcyGIO8itsblY=;
+ b=N8FMOVOr1oqmfW7MPP6JVjj7YrC6aE7SIhXcfusHhdEYBfWq8P690MVWC8MiVGB9Tk
+ wWYE2FnEBBj3fLiMmmaztV7zyx9RlQAg64nQYhW3LzTilZ2F/oA3nXy80qFzrT/CEuE5
+ d72em9wK9HhJXaxFxRySFXVBnRhAKfLr4pZwmI5o+gEIRobem4BX90A8EVcv5TEZtfdW
+ KBc2A3ksMw7RAnZs/pPJIyfCuWdgKwxwBug31mE/Eg0VQkIn155zepZZCmw1eeUKuQnO
+ h5P66+y80MLxD85JVNOgq9z60YQEsYN2wKRMiMMmY7tlnqcuDR+Va9jP070RmyoXARxn
+ Tuyw==
+X-Gm-Message-State: AOAM530hVc43OOIUlHD95v2BGeuSUK1KOWPu9LxUrPn13K+JqkDu4seE
+ 96U3Yi7hgkKfOKjzgdkSBCOdvTIP6FgT1A==
+X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
+ (user=wuhaotsh job=sendgmr) by 2002:a0c:9e5a:: with SMTP id
+ z26mr18957132qve.2.1607725398467; Fri, 11 Dec 2020 14:23:18 -0800 (PST)
+Date: Fri, 11 Dec 2020 14:22:21 -0800
+In-Reply-To: <20201211222223.2252172-1-wuhaotsh@google.com>
+Message-Id: <20201211222223.2252172-3-wuhaotsh@google.com>
+Mime-Version: 1.0
+References: <20201211222223.2252172-1-wuhaotsh@google.com>
+X-Mailer: git-send-email 2.29.2.684.gfbc64c5ab5-goog
+Subject: [PATCH v2 2/4] hw/timer: Refactor NPCM7XX Timer to use CLK clock
+To: peter.maydell@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::849;
+ envelope-from=3VvHTXwgKCI0DByr5A9yx55x2v.t537v3B-r83454x4B.58x@flex--wuhaotsh.bounces.google.com;
+ helo=mail-qt1-x849.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,429 +113,182 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, John Snow <jsnow@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Stefan Berger <stefanb@linux.ibm.com>
+Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org,
+ hskinnemoen@google.com, wuhaotsh@google.com, kfting@nuvoton.com,
+ qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yzbiPlh4ZZmK
+Reply-to: Hao Wu <wuhaotsh@google.com>
+From: Hao Wu via <qemu-arm@nongnu.org>
+X-TUID: VBy/Sz6qOIyH
 
-The basic property types in qdev-properties.c are not going to be
-qdev-specific anymore.  Rename the variables to prop_info_*.
+This patch makes NPCM7XX Timer to use a the timer clock generated by the
+CLK module instead of the magic nubmer TIMER_REF_HZ.
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
-Changes v1 -> v2:
-* Redone patch after moving UUID property to qdev-properties-system.c
----
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: "Daniel P. Berrangé" <berrange@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Cc: Jason Wang <jasowang@redhat.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>
-Cc: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
----
- include/hw/qdev-properties.h | 62 ++++++++++++++++++------------------
- hw/core/qdev-properties.c    | 36 ++++++++++-----------
- hw/intc/arm_gicv3_common.c   |  2 +-
- hw/intc/rx_icu.c             |  4 +--
- hw/misc/arm_sysctl.c         |  4 +--
- hw/net/e1000e.c              |  6 ++--
- target/arm/cpu.c             |  2 +-
- target/sparc/cpu.c           |  2 +-
- 8 files changed, 59 insertions(+), 59 deletions(-)
+ hw/arm/npcm7xx.c                 |  5 +++++
+ hw/timer/npcm7xx_timer.c         | 25 +++++++++++++++----------
+ include/hw/misc/npcm7xx_clk.h    |  6 ------
+ include/hw/timer/npcm7xx_timer.h |  1 +
+ 4 files changed, 21 insertions(+), 16 deletions(-)
 
-diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-index 68e544708b..90222822f1 100644
---- a/include/hw/qdev-properties.h
-+++ b/include/hw/qdev-properties.h
-@@ -44,22 +44,22 @@ struct PropertyInfo {
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 47e2b6fc40..fabfb1697b 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -22,6 +22,7 @@
+ #include "hw/char/serial.h"
+ #include "hw/loader.h"
+ #include "hw/misc/unimp.h"
++#include "hw/qdev-clock.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+ #include "qemu/units.h"
+@@ -420,6 +421,10 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+         int first_irq;
+         int j;
  
- /*** qdev-properties.c ***/
++        /* Connect the timer clock. */
++        qdev_connect_clock_in(DEVICE(&s->tim[i]), "clock", qdev_get_clock_out(
++                    DEVICE(&s->clk), "timer-clock"));
++
+         sysbus_realize(sbd, &error_abort);
+         sysbus_mmio_map(sbd, 0, npcm7xx_tim_addr[i]);
  
--extern const PropertyInfo qdev_prop_bit;
--extern const PropertyInfo qdev_prop_bit64;
--extern const PropertyInfo qdev_prop_bool;
--extern const PropertyInfo qdev_prop_enum;
--extern const PropertyInfo qdev_prop_uint8;
--extern const PropertyInfo qdev_prop_uint16;
--extern const PropertyInfo qdev_prop_uint32;
--extern const PropertyInfo qdev_prop_int32;
--extern const PropertyInfo qdev_prop_uint64;
--extern const PropertyInfo qdev_prop_int64;
--extern const PropertyInfo qdev_prop_size;
--extern const PropertyInfo qdev_prop_string;
--extern const PropertyInfo qdev_prop_on_off_auto;
--extern const PropertyInfo qdev_prop_size32;
--extern const PropertyInfo qdev_prop_arraylen;
--extern const PropertyInfo qdev_prop_link;
-+extern const PropertyInfo prop_info_bit;
-+extern const PropertyInfo prop_info_bit64;
-+extern const PropertyInfo prop_info_bool;
-+extern const PropertyInfo prop_info_enum;
-+extern const PropertyInfo prop_info_uint8;
-+extern const PropertyInfo prop_info_uint16;
-+extern const PropertyInfo prop_info_uint32;
-+extern const PropertyInfo prop_info_int32;
-+extern const PropertyInfo prop_info_uint64;
-+extern const PropertyInfo prop_info_int64;
-+extern const PropertyInfo prop_info_size;
-+extern const PropertyInfo prop_info_string;
-+extern const PropertyInfo prop_info_on_off_auto;
-+extern const PropertyInfo prop_info_size32;
-+extern const PropertyInfo prop_info_arraylen;
-+extern const PropertyInfo prop_info_link;
+diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c
+index d24445bd6e..9469c959e2 100644
+--- a/hw/timer/npcm7xx_timer.c
++++ b/hw/timer/npcm7xx_timer.c
+@@ -17,8 +17,8 @@
+ #include "qemu/osdep.h"
  
- #define DEFINE_PROP(_name, _state, _field, _prop, _type, ...) {  \
-         .name      = (_name),                                    \
-@@ -78,7 +78,7 @@ extern const PropertyInfo qdev_prop_link;
-     DEFINE_PROP(_name, _state, _field, _prop, _type)
- 
- #define DEFINE_PROP_BIT(_name, _state, _field, _bit, _defval)   \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_bit, uint32_t, \
-+    DEFINE_PROP(_name, _state, _field, prop_info_bit, uint32_t, \
-                 .bitnr       = (_bit),                          \
-                 .set_default = true,                            \
-                 .defval.u    = (bool)_defval)
-@@ -92,13 +92,13 @@ extern const PropertyInfo qdev_prop_link;
-     DEFINE_PROP(_name, _state, _field, _prop, _type)
- 
- #define DEFINE_PROP_BIT64(_name, _state, _field, _bit, _defval)   \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_bit64, uint64_t, \
-+    DEFINE_PROP(_name, _state, _field, prop_info_bit64, uint64_t, \
-                 .bitnr    = (_bit),                               \
-                 .set_default = true,                              \
-                 .defval.u  = (bool)_defval)
- 
- #define DEFINE_PROP_BOOL(_name, _state, _field, _defval)     \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_bool, bool, \
-+    DEFINE_PROP(_name, _state, _field, prop_info_bool, bool, \
-                 .set_default = true,                         \
-                 .defval.u    = (bool)_defval)
- 
-@@ -131,7 +131,7 @@ extern const PropertyInfo qdev_prop_link;
- #define DEFINE_PROP_ARRAY(_name, _state, _field,               \
-                           _arrayfield, _arrayprop, _arraytype) \
-     DEFINE_PROP((PROP_ARRAY_LEN_PREFIX _name),                 \
--                _state, _field, qdev_prop_arraylen, uint32_t,  \
-+                _state, _field, prop_info_arraylen, uint32_t,  \
-                 .set_default = true,                           \
-                 .defval.u = 0,                                 \
-                 .arrayinfo = &(_arrayprop),                    \
-@@ -139,29 +139,29 @@ extern const PropertyInfo qdev_prop_link;
-                 .arrayoffset = offsetof(_state, _arrayfield))
- 
- #define DEFINE_PROP_LINK(_name, _state, _field, _type, _ptr_type)     \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
-+    DEFINE_PROP(_name, _state, _field, prop_info_link, _ptr_type,     \
-                 .link_type  = _type)
- 
- #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint8, uint8_t)
- #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint16, uint16_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint16, uint16_t)
- #define DEFINE_PROP_UINT32(_n, _s, _f, _d)                      \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint32, uint32_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint32, uint32_t)
- #define DEFINE_PROP_INT32(_n, _s, _f, _d)                      \
--    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_int32, int32_t)
-+    DEFINE_PROP_SIGNED(_n, _s, _f, _d, prop_info_int32, int32_t)
- #define DEFINE_PROP_UINT64(_n, _s, _f, _d)                      \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint64, uint64_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_uint64, uint64_t)
- #define DEFINE_PROP_INT64(_n, _s, _f, _d)                      \
--    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_int64, int64_t)
-+    DEFINE_PROP_SIGNED(_n, _s, _f, _d, prop_info_int64, int64_t)
- #define DEFINE_PROP_SIZE(_n, _s, _f, _d)                       \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_size, uint64_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_size, uint64_t)
- #define DEFINE_PROP_STRING(_n, _s, _f)             \
--    DEFINE_PROP(_n, _s, _f, qdev_prop_string, char*)
-+    DEFINE_PROP(_n, _s, _f, prop_info_string, char*)
- #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
--    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
-+    DEFINE_PROP_SIGNED(_n, _s, _f, _d, prop_info_on_off_auto, OnOffAuto)
- #define DEFINE_PROP_SIZE32(_n, _s, _f, _d)                       \
--    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_size32, uint32_t)
-+    DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, prop_info_size32, uint32_t)
- 
- #define DEFINE_PROP_END_OF_LIST()               \
-     {}
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index d2f565f552..c1dd4ae71b 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -121,7 +121,7 @@ void field_prop_set_default_value_enum(ObjectProperty *op,
-         qapi_enum_lookup(prop->info->enum_table, prop->defval.i));
- }
- 
--const PropertyInfo qdev_prop_enum = {
-+const PropertyInfo prop_info_enum = {
-     .name  = "enum",
-     .get   = field_prop_get_enum,
-     .set   = field_prop_set_enum,
-@@ -132,7 +132,7 @@ const PropertyInfo qdev_prop_enum = {
- 
- static uint32_t qdev_get_prop_mask(Property *prop)
+ #include "hw/irq.h"
++#include "hw/qdev-clock.h"
+ #include "hw/qdev-properties.h"
+-#include "hw/misc/npcm7xx_clk.h"
+ #include "hw/timer/npcm7xx_timer.h"
+ #include "migration/vmstate.h"
+ #include "qemu/bitops.h"
+@@ -130,7 +130,7 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer *t, uint32_t count)
  {
--    assert(prop->info == &qdev_prop_bit);
-+    assert(prop->info == &prop_info_bit);
-     return 0x1 << prop->bitnr;
- }
+     int64_t ns = count;
  
-@@ -174,7 +174,7 @@ static void set_default_value_bool(ObjectProperty *op, const Property *prop)
-     object_property_set_default_bool(op, prop->defval.u);
- }
+-    ns *= NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;
++    ns *= NANOSECONDS_PER_SECOND / clock_get_hz(t->ctrl->clock);
+     ns *= npcm7xx_tcsr_prescaler(t->tcsr);
  
--const PropertyInfo qdev_prop_bit = {
-+const PropertyInfo prop_info_bit = {
-     .name  = "bool",
-     .description = "on/off",
-     .get   = prop_get_bit,
-@@ -186,7 +186,7 @@ const PropertyInfo qdev_prop_bit = {
- 
- static uint64_t qdev_get_prop_mask64(Property *prop)
+     return ns;
+@@ -141,7 +141,7 @@ static uint32_t npcm7xx_timer_ns_to_count(NPCM7xxTimer *t, int64_t ns)
  {
--    assert(prop->info == &qdev_prop_bit64);
-+    assert(prop->info == &prop_info_bit64);
-     return 0x1ull << prop->bitnr;
- }
+     int64_t count;
  
-@@ -223,7 +223,7 @@ static void prop_set_bit64(Object *obj, Visitor *v, const char *name,
-     bit64_prop_set(obj, prop, value);
- }
+-    count = ns / (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ);
++    count = ns / (NANOSECONDS_PER_SECOND / clock_get_hz(t->ctrl->clock));
+     count /= npcm7xx_tcsr_prescaler(t->tcsr);
  
--const PropertyInfo qdev_prop_bit64 = {
-+const PropertyInfo prop_info_bit64 = {
-     .name  = "bool",
-     .description = "on/off",
-     .get   = prop_get_bit64,
-@@ -251,7 +251,7 @@ static void set_bool(Object *obj, Visitor *v, const char *name, void *opaque,
-     visit_type_bool(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_bool = {
-+const PropertyInfo prop_info_bool = {
-     .name  = "bool",
-     .get   = get_bool,
-     .set   = set_bool,
-@@ -290,7 +290,7 @@ void field_prop_set_default_value_uint(ObjectProperty *op,
-     object_property_set_default_uint(op, prop->defval.u);
- }
- 
--const PropertyInfo qdev_prop_uint8 = {
-+const PropertyInfo prop_info_uint8 = {
-     .name  = "uint8",
-     .get   = get_uint8,
-     .set   = set_uint8,
-@@ -317,7 +317,7 @@ static void set_uint16(Object *obj, Visitor *v, const char *name,
-     visit_type_uint16(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_uint16 = {
-+const PropertyInfo prop_info_uint16 = {
-     .name  = "uint16",
-     .get   = get_uint16,
-     .set   = set_uint16,
-@@ -362,14 +362,14 @@ static void set_int32(Object *obj, Visitor *v, const char *name, void *opaque,
-     visit_type_int32(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_uint32 = {
-+const PropertyInfo prop_info_uint32 = {
-     .name  = "uint32",
-     .get   = get_uint32,
-     .set   = set_uint32,
-     .set_default_value = field_prop_set_default_value_uint,
- };
- 
--const PropertyInfo qdev_prop_int32 = {
-+const PropertyInfo prop_info_int32 = {
-     .name  = "int32",
-     .get   = field_prop_get_int32,
-     .set   = set_int32,
-@@ -414,14 +414,14 @@ static void set_int64(Object *obj, Visitor *v, const char *name,
-     visit_type_int64(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_uint64 = {
-+const PropertyInfo prop_info_uint64 = {
-     .name  = "uint64",
-     .get   = get_uint64,
-     .set   = set_uint64,
-     .set_default_value = field_prop_set_default_value_uint,
- };
- 
--const PropertyInfo qdev_prop_int64 = {
-+const PropertyInfo prop_info_int64 = {
-     .name  = "int64",
-     .get   = get_int64,
-     .set   = set_int64,
-@@ -464,7 +464,7 @@ static void set_string(Object *obj, Visitor *v, const char *name,
-     *ptr = str;
- }
- 
--const PropertyInfo qdev_prop_string = {
-+const PropertyInfo prop_info_string = {
-     .name  = "str",
-     .release = release_string,
-     .get   = get_string,
-@@ -473,7 +473,7 @@ const PropertyInfo qdev_prop_string = {
- 
- /* --- on/off/auto --- */
- 
--const PropertyInfo qdev_prop_on_off_auto = {
-+const PropertyInfo prop_info_on_off_auto = {
-     .name = "OnOffAuto",
-     .description = "on/off/auto",
-     .enum_table = &OnOffAuto_lookup,
-@@ -516,7 +516,7 @@ static void set_size32(Object *obj, Visitor *v, const char *name, void *opaque,
-     *ptr = value;
- }
- 
--const PropertyInfo qdev_prop_size32 = {
-+const PropertyInfo prop_info_size32 = {
-     .name  = "size",
-     .get = field_prop_get_size32,
-     .set = set_size32,
-@@ -613,7 +613,7 @@ static void set_prop_arraylen(Object *obj, Visitor *v, const char *name,
-     }
- }
- 
--const PropertyInfo qdev_prop_arraylen = {
-+const PropertyInfo prop_info_arraylen = {
-     .name = "uint32",
-     .get = get_uint32,
-     .set = set_prop_arraylen,
-@@ -812,7 +812,7 @@ static void set_size(Object *obj, Visitor *v, const char *name, void *opaque,
-     visit_type_size(v, name, ptr, errp);
- }
- 
--const PropertyInfo qdev_prop_size = {
-+const PropertyInfo prop_info_size = {
-     .name  = "size",
-     .get = get_size,
-     .set = set_size,
-@@ -830,7 +830,7 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
-                                           OBJ_PROP_LINK_STRONG);
- }
- 
--const PropertyInfo qdev_prop_link = {
-+const PropertyInfo prop_info_link = {
-     .name = "link",
-     .create = create_link_property,
- };
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 58ef65f589..6d06b4d4c5 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -496,7 +496,7 @@ static Property arm_gicv3_common_properties[] = {
-     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
-     DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
--                      redist_region_count, qdev_prop_uint32, uint32_t),
-+                      redist_region_count, prop_info_uint32, uint32_t),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/intc/rx_icu.c b/hw/intc/rx_icu.c
-index e5c01807b9..dde05eaf8b 100644
---- a/hw/intc/rx_icu.c
-+++ b/hw/intc/rx_icu.c
-@@ -363,9 +363,9 @@ static const VMStateDescription vmstate_rxicu = {
- 
- static Property rxicu_properties[] = {
-     DEFINE_PROP_ARRAY("ipr-map", RXICUState, nr_irqs, map,
--                      qdev_prop_uint8, uint8_t),
-+                      prop_info_uint8, uint8_t),
-     DEFINE_PROP_ARRAY("trigger-level", RXICUState, nr_sense, init_sense,
--                      qdev_prop_uint8, uint8_t),
-+                      prop_info_uint8, uint8_t),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
-index 42d4693854..634f3d916f 100644
---- a/hw/misc/arm_sysctl.c
-+++ b/hw/misc/arm_sysctl.c
-@@ -628,10 +628,10 @@ static Property arm_sysctl_properties[] = {
-     DEFINE_PROP_UINT32("proc_id", arm_sysctl_state, proc_id, 0),
-     /* Daughterboard power supply voltages (as reported via SYS_CFG) */
-     DEFINE_PROP_ARRAY("db-voltage", arm_sysctl_state, db_num_vsensors,
--                      db_voltage, qdev_prop_uint32, uint32_t),
-+                      db_voltage, prop_info_uint32, uint32_t),
-     /* Daughterboard clock reset values (as reported via SYS_CFG) */
-     DEFINE_PROP_ARRAY("db-clock", arm_sysctl_state, db_num_clocks,
--                      db_clock_reset, qdev_prop_uint32, uint32_t),
-+                      db_clock_reset, prop_info_uint32, uint32_t),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
-index a8a77eca95..9d2f471c7c 100644
---- a/hw/net/e1000e.c
-+++ b/hw/net/e1000e.c
-@@ -686,15 +686,15 @@ static void e1000e_class_init(ObjectClass *class, void *data)
-     dc->reset = e1000e_qdev_reset;
-     dc->vmsd = &e1000e_vmstate;
- 
--    e1000e_prop_disable_vnet = qdev_prop_uint8;
-+    e1000e_prop_disable_vnet = prop_info_uint8;
-     e1000e_prop_disable_vnet.description = "Do not use virtio headers, "
-                                            "perform SW offloads emulation "
-                                            "instead";
- 
--    e1000e_prop_subsys_ven = qdev_prop_uint16;
-+    e1000e_prop_subsys_ven = prop_info_uint16;
-     e1000e_prop_subsys_ven.description = "PCI device Subsystem Vendor ID";
- 
--    e1000e_prop_subsys = qdev_prop_uint16;
-+    e1000e_prop_subsys = prop_info_uint16;
-     e1000e_prop_subsys.description = "PCI device Subsystem ID";
- 
-     device_class_set_props(dc, e1000e_properties);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d6188f6566..bb34ff1aab 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1111,7 +1111,7 @@ static Property arm_cpu_has_mpu_property =
- static Property arm_cpu_pmsav7_dregion_property =
-             DEFINE_PROP_UNSIGNED_NODEFAULT("pmsav7-dregion", ARMCPU,
-                                            pmsav7_dregion,
--                                           qdev_prop_uint32, uint32_t);
-+                                           prop_info_uint32, uint32_t);
- 
- static bool arm_get_pmu(Object *obj, Error **errp)
+     return count;
+@@ -166,8 +166,10 @@ static uint32_t npcm7xx_watchdog_timer_prescaler(const NPCM7xxWatchdogTimer *t)
+ static void npcm7xx_watchdog_timer_reset_cycles(NPCM7xxWatchdogTimer *t,
+         int64_t cycles)
  {
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index b730146bbe..0da2190cac 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -839,7 +839,7 @@ static Property sparc_cpu_properties[] = {
-     DEFINE_PROP_BIT("cmt",      SPARCCPU, env.def.features, 12, false),
-     DEFINE_PROP_BIT("gl",       SPARCCPU, env.def.features, 13, false),
-     DEFINE_PROP_UNSIGNED("iu-version", SPARCCPU, env.def.iu_version, 0,
--                         qdev_prop_uint64, target_ulong),
-+                         prop_info_uint64, target_ulong),
-     DEFINE_PROP_UINT32("fpu-version", SPARCCPU, env.def.fpu_version, 0),
-     DEFINE_PROP_UINT32("mmu-version", SPARCCPU, env.def.mmu_version, 0),
-     DEFINE_PROP("nwindows",     SPARCCPU, env.def.nwindows,
++    g_assert(clock_get_hz(t->ctrl->clock) == 25000000);
+     uint32_t prescaler = npcm7xx_watchdog_timer_prescaler(t);
+-    int64_t ns = (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ) * cycles;
++    int64_t ns = (NANOSECONDS_PER_SECOND / clock_get_hz(t->ctrl->clock))
++        * cycles;
+ 
+     /*
+      * The reset function always clears the current timer. The caller of the
+@@ -606,10 +608,11 @@ static void npcm7xx_timer_hold_reset(Object *obj)
+     qemu_irq_lower(s->watchdog_timer.irq);
+ }
+ 
+-static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)
++static void npcm7xx_timer_init(Object *obj)
+ {
+-    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(dev);
++    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(obj);
+     SysBusDevice *sbd = &s->parent;
++    DeviceState *dev = DEVICE(obj);
+     int i;
+     NPCM7xxWatchdogTimer *w;
+ 
+@@ -627,11 +630,12 @@ static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)
+             npcm7xx_watchdog_timer_expired, w);
+     sysbus_init_irq(sbd, &w->irq);
+ 
+-    memory_region_init_io(&s->iomem, OBJECT(s), &npcm7xx_timer_ops, s,
++    memory_region_init_io(&s->iomem, obj, &npcm7xx_timer_ops, s,
+                           TYPE_NPCM7XX_TIMER, 4 * KiB);
+     sysbus_init_mmio(sbd, &s->iomem);
+     qdev_init_gpio_out_named(dev, &w->reset_signal,
+             NPCM7XX_WATCHDOG_RESET_GPIO_OUT, 1);
++    s->clock = qdev_init_clock_in(dev, "clock", NULL, NULL);
+ }
+ 
+ static const VMStateDescription vmstate_npcm7xx_base_timer = {
+@@ -675,10 +679,11 @@ static const VMStateDescription vmstate_npcm7xx_watchdog_timer = {
+ 
+ static const VMStateDescription vmstate_npcm7xx_timer_ctrl = {
+     .name = "npcm7xx-timer-ctrl",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
++    .version_id = 2,
++    .minimum_version_id = 2,
+     .fields = (VMStateField[]) {
+         VMSTATE_UINT32(tisr, NPCM7xxTimerCtrlState),
++        VMSTATE_CLOCK(clock, NPCM7xxTimerCtrlState),
+         VMSTATE_STRUCT_ARRAY(timer, NPCM7xxTimerCtrlState,
+                              NPCM7XX_TIMERS_PER_CTRL, 0, vmstate_npcm7xx_timer,
+                              NPCM7xxTimer),
+@@ -697,7 +702,6 @@ static void npcm7xx_timer_class_init(ObjectClass *klass, void *data)
+     QEMU_BUILD_BUG_ON(NPCM7XX_TIMER_REGS_END > NPCM7XX_TIMER_NR_REGS);
+ 
+     dc->desc = "NPCM7xx Timer Controller";
+-    dc->realize = npcm7xx_timer_realize;
+     dc->vmsd = &vmstate_npcm7xx_timer_ctrl;
+     rc->phases.enter = npcm7xx_timer_enter_reset;
+     rc->phases.hold = npcm7xx_timer_hold_reset;
+@@ -708,6 +712,7 @@ static const TypeInfo npcm7xx_timer_info = {
+     .parent             = TYPE_SYS_BUS_DEVICE,
+     .instance_size      = sizeof(NPCM7xxTimerCtrlState),
+     .class_init         = npcm7xx_timer_class_init,
++    .instance_init      = npcm7xx_timer_init,
+ };
+ 
+ static void npcm7xx_timer_register_type(void)
+diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h
+index f641f95f3e..d5c8d16ca4 100644
+--- a/include/hw/misc/npcm7xx_clk.h
++++ b/include/hw/misc/npcm7xx_clk.h
+@@ -20,12 +20,6 @@
+ #include "hw/clock.h"
+ #include "hw/sysbus.h"
+ 
+-/*
+- * The reference clock frequency for the timer modules, and the SECCNT and
+- * CNTR25M registers in this module, is always 25 MHz.
+- */
+-#define NPCM7XX_TIMER_REF_HZ            (25000000)
+-
+ /*
+  * Number of registers in our device state structure. Don't change this without
+  * incrementing the version_id in the vmstate.
+diff --git a/include/hw/timer/npcm7xx_timer.h b/include/hw/timer/npcm7xx_timer.h
+index 6993fd723a..d45c051b56 100644
+--- a/include/hw/timer/npcm7xx_timer.h
++++ b/include/hw/timer/npcm7xx_timer.h
+@@ -101,6 +101,7 @@ struct NPCM7xxTimerCtrlState {
+ 
+     uint32_t    tisr;
+ 
++    Clock       *clock;
+     NPCM7xxTimer timer[NPCM7XX_TIMERS_PER_CTRL];
+     NPCM7xxWatchdogTimer watchdog_timer;
+ };
 -- 
-2.28.0
+2.29.2.684.gfbc64c5ab5-goog
 

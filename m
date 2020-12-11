@@ -1,92 +1,92 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp148832lfq;
-        Fri, 11 Dec 2020 06:49:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwW75Uc726Am/FXJ+1CIpjDHJyhwlUO8RFpautWKsg+MxRMxtVNuImlQ9mIT6eQ9XJL+ite
-X-Received: by 2002:a25:3b93:: with SMTP id i141mr19214700yba.499.1607698143233;
-        Fri, 11 Dec 2020 06:49:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607698143; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp151422lfq;
+        Fri, 11 Dec 2020 06:52:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwpqARoEzULINkPmNhZRIF/bvgMz5S0FA1irkTkDmkq4DNu4mVJWyiQ9rKbdYMcYpa6CJRX
+X-Received: by 2002:a5b:3d2:: with SMTP id t18mr18511652ybp.474.1607698335138;
+        Fri, 11 Dec 2020 06:52:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607698335; cv=none;
         d=google.com; s=arc-20160816;
-        b=XYCUAN3pQNYFNrtLHCEc41Gv1CvP9LKPEp2ARsL6z7+BHHpRubkD0rUurJADhdKBQ0
-         TQax0hJW088PEZ8DgCH1vBZ6+sAZ1DYc2EJqBRRfIIcSBIrkmZK4/qLv6ao3KpV/J58A
-         BKBZYu87fYljYqu6zd6Q9BZcsAjxS5yzjcZiY1dExK/BASlECBsGy62jeJc4TPyitzG5
-         cwMABUbz4nWod4GIuXcxy9eVcKe+qzxbSX4O6U3YtS4VL90flWRYd0+LqAnLaBMXSmmf
-         y9SGqc9JnQ+B7WB0yWxo0nvxCjm+PvSBYouqsZf0ih0VTH/R0b/zoKY0/m9slHnmVwt2
-         rZaQ==
+        b=wOFz88eD5uVT80LY1NzkfO/AIYJ/WWnhfFH8lB0S6ZUTcdLFZ0n34F7e7BDxcpaOWv
+         OTrXXj60t+sPS17JOyKAK4B7JXMWnNkBATylm5EzNKO2TMYfCPG1hnSBxfeQNFuMS57i
+         w3kYeOvQ3re0iGv0euI0upZIqVs8vvwRWnA5wPX7IyxdoAVQJKNUUMQDvtQdDqQkWwoB
+         WUs2tkZnRN0As27174VIUCSMkbq3NuerzHYCK42HKI3EmLKOhNMxf8IbDaDtZHAyK5jx
+         emGORU1HYpqtmes6OiVX0duPWx2yxKMpciczL2zdQS1XX/sxXE6IWYxkGxJm+RcNzYOb
+         uWkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=PFf8RezM67PvJ05XLYcCmMVBzSoXGcsAzU/AhY4rV1Q=;
-        b=PKfzzTVv+wnEziWzTAuZZhj/Sx5C86ama+oyOebx38s8i6lN9PWUNS0c1tauDBHDWy
-         MgGpN5JWtjnNnW7CUP6gO8/dBD5OdX67qTKUpbHweKj09SaL9AKp3poqBBAX2IUkJ14K
-         mVAHKWrGEH1HRudupdX3a+VL3VkVLwLsYF+nxGUBsuTSROVmAprFbN31Dp1F5+TBodzE
-         va+n5CwMlosk3EgXf8pcKFbBvFsHK/ePwxtj461nycnqPUpF8vZ0DizStu0ZFfXRXqtq
-         bkcVe4EaYsyFZfcaLeWcm0Ve1cZr1aIyg0YUaFiOcYrO4YQXILfWO7tdtR7O5vozJ5Vo
-         fe1Q==
+        bh=ATarSdgZ4SHf3l2vLgaCEZfDsVKDkLa+HC7ltLN2fIU=;
+        b=LkccrQ4WPkInTEr8o6VDUPoztvzOcpfL/JLzMtEbaOzkEEELz7+252FhsgLyNPcG/E
+         v5phsQvlA0iMmRbwcgSdIdvGglK5I0SafrfTDSIBaremxY+T+MbaTPX/qFg3sw3i7QVH
+         FezjQTae2g7uC/a9ZrrGvcpdLuvGJSRyiwF2u+z/Y4uoOb8z+HsLT79RMBjnrFeom4Zk
+         nbrIBICnstplUrqW02zaVJED4ShxwVVUecYAdzdItvH+d5fJSlmC+D/GiR9cZDfI9jym
+         vOBwHb9rQ88+E4ohd/BUcF2gOPHZ/pbIPoWQcsVKgd4fjkoPwPLX9iCXOqxUoUdQFfkV
+         otZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uURBCfG6;
+       dkim=fail header.i=@linaro.org header.s=google header.b=FQ7TkphA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h125si8713181yba.281.2020.12.11.06.49.03
+        by mx.google.com with ESMTPS id k9si7161780ybg.383.2020.12.11.06.52.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Dec 2020 06:49:03 -0800 (PST)
+        Fri, 11 Dec 2020 06:52:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uURBCfG6;
+       dkim=fail header.i=@linaro.org header.s=google header.b=FQ7TkphA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50894 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58390 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knjjC-0005OM-Jv
-	for alex.bennee@linaro.org; Fri, 11 Dec 2020 09:49:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44598)
+	id 1knjmI-00008j-GE
+	for alex.bennee@linaro.org; Fri, 11 Dec 2020 09:52:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45402)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1knjih-0005MC-Li
- for qemu-devel@nongnu.org; Fri, 11 Dec 2020 09:48:31 -0500
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:46214)
+ id 1knjlX-00006d-Lv
+ for qemu-devel@nongnu.org; Fri, 11 Dec 2020 09:51:30 -0500
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:42378)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1knjig-0001Ju-1A
- for qemu-devel@nongnu.org; Fri, 11 Dec 2020 09:48:31 -0500
-Received: by mail-ej1-x643.google.com with SMTP id bo9so12659912ejb.13
- for <qemu-devel@nongnu.org>; Fri, 11 Dec 2020 06:48:29 -0800 (PST)
+ id 1knjlU-0002Sp-NF
+ for qemu-devel@nongnu.org; Fri, 11 Dec 2020 09:51:27 -0500
+Received: by mail-ej1-x643.google.com with SMTP id d17so12696103ejy.9
+ for <qemu-devel@nongnu.org>; Fri, 11 Dec 2020 06:51:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PFf8RezM67PvJ05XLYcCmMVBzSoXGcsAzU/AhY4rV1Q=;
- b=uURBCfG6JXROVIsayNwcNlQ40vNSft2259U/EudyNejmxphaisPeTCr2gA+5lLqG8n
- HSDSdZhfUfJi7Ve9dmIR1oBtQYTuftd7jqR3kcsW989ENoaX6z3yGtVYlWS0vH60gpPI
- B1ue7ihhWi1zHyHPuHPfKiAlTieSpa7M05OcAdLWSYjcauQapANCB8cF2MSTIJ/dDe3W
- BWWFpk5/3B6xRwYx96uerGKhtuo7vZfuXqLeVxjcNoRQ1rSsLpb3O0xV5/HV0BTTvDnc
- MxBZCxvxqAG4gMWy2ITWi8ph8rsDZDR1u5k/BUnxvqEUg0Tnmkd7u2nkGkvqger4wywv
- wHmA==
+ :cc; bh=ATarSdgZ4SHf3l2vLgaCEZfDsVKDkLa+HC7ltLN2fIU=;
+ b=FQ7TkphATazrlxtDMbuBbdxLmjEZxW9RUDj8RN+TviGuiGy37B7QIfzh0/OFnQEm9Z
+ RweANuuqnWdWY2lP8flTQhMQGivlG751z5XhtoafPLD15M6qWWnFb5hTUIuWXfzs0g6H
+ 0b+6Y5DQKc/7Gwv1Tl/kmfKnpnhyc0/Hpwc0k7azjRlfryb31E88v83jGPSOuv+v7Wjo
+ e8tdzJ29JYn1Awu7t9m2gbWNHlwBJRhxn9zZy+UsQ/OTv2lxGjJrIdpIjnPTN6ITq92X
+ VsOzyyVyZOsi4O4g2JEkMGeD5Br7mcn/0eu9+s5z9YUKaOSvEF4eIDzS1m2LXo06R/oo
+ 9f+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=PFf8RezM67PvJ05XLYcCmMVBzSoXGcsAzU/AhY4rV1Q=;
- b=ldvDFTMof/KpxVbEdzZYo4Ok7zsMB+C6PxnuY2ZmyjH+pGG6YTAo7xUsGo9dXZBswb
- FDWG1MuleI0d4NrNnt64Iun9PwPXUzUHF8Vmagv4rqJmhsoaH69H6oZ11/9GvHppu5H5
- xkVufdwurVwqPcaKmORb13qn5/OrmVBzrJvTvjg0tOrbX7Kq0y08L8+X6Jz95SYEl1pG
- oEOlU9L0muB3ZFtuTmpJJWr2nxLSlWuP8vGd3HDDzhuWRJ624vOZgeGIpf3JXC+mp3zj
- rUwEFqiQB429eXTah6PwA1/Sh+Mu1UooFntJ+yziPtJrN0jSBtMqQvGYPGaQImWCO+gK
- ciLQ==
-X-Gm-Message-State: AOAM530g1YX8Dr75D1/kCdj8OLfHAmVdUFJdutXzlon6XTmsWuGAFCog
- K/vun8MgiGGqUZfvlVHcZu4MUSVjjM5k8efm6Rp8/w==
+ bh=ATarSdgZ4SHf3l2vLgaCEZfDsVKDkLa+HC7ltLN2fIU=;
+ b=X+t82hnrRYVK4KMPodCp9vEQgQ+5AM5ExrTk0qvPqka1cj1kBVUgFJRGJMoFdLvqDf
+ 0P9ByyYlJUrpk2mAQWYoYsz2B47ZH9Yiwu/A4rG6ZjF3/JuZnIaJnp8ozJhzGUbawkpL
+ 7HRXY9GYPPtWVSw7BTkYMKFBvMiJitDCwwobSc/mH2TzbiJ7XCSBX/DMLTiyO6qqEfpP
+ WWMOGm0GaQ6LuJzioJni+YmmYiZrpVlg2/SS4AjEXESLRBUYt4U4foWFHnyjwqdpscbC
+ LrnIT60OTB2X5I93Li+khCBPhI489OMm5dIS0ZrlguR9ioeI6gG6rHTyDFVwBIGBP1Rg
+ lASg==
+X-Gm-Message-State: AOAM532MP3kFZ6fPR/KZ2dFj3baNk/9M/XyWIAZaQcOdBGT9SfZHHOP3
+ OObF3KzPkQC73+fltxj7TAHzYjeY5t+O2FpIEFcJ0g==
 X-Received: by 2002:a17:907:971c:: with SMTP id
- jg28mr11251008ejc.85.1607698106720; 
- Fri, 11 Dec 2020 06:48:26 -0800 (PST)
+ jg28mr11261616ejc.85.1607698283039; 
+ Fri, 11 Dec 2020 06:51:23 -0800 (PST)
 MIME-Version: 1.0
 References: <20201208122306.8933-1-leif@nuviainc.com>
- <20201208122306.8933-5-leif@nuviainc.com>
-In-Reply-To: <20201208122306.8933-5-leif@nuviainc.com>
+ <20201208122306.8933-6-leif@nuviainc.com>
+In-Reply-To: <20201208122306.8933-6-leif@nuviainc.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 11 Dec 2020 14:48:15 +0000
-Message-ID: <CAFEAcA9oXDLRA7UJTepqpBWHNDdbtghxjtYtUdEzb6ckeY00Pg@mail.gmail.com>
-Subject: Re: [PATCH 4/5] target/arm: add aarch64 ID register fields to cpu.h
+Date: Fri, 11 Dec 2020 14:51:11 +0000
+Message-ID: <CAFEAcA-KhOTnWiVxWdwABaiq7Eg9zw2ny8LH5ee=2=rGF2-pcg@mail.gmail.com>
+Subject: Re: [PATCH 5/5] target/arm: add aarch32 ID register fields to cpu.h
 To: Leif Lindholm <leif@nuviainc.com>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2a00:1450:4864:20::643;
@@ -114,14 +114,35 @@ Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UL2FyGIFd+QT
+X-TUID: CFky5crGesCW
 
 On Tue, 8 Dec 2020 at 12:23, Leif Lindholm <leif@nuviainc.com> wrote:
 >
 > Add entries present in ARM DDI 0487F.c (August 2020).
 >
 > Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+> ---
+>  target/arm/cpu.h | 37 +++++++++++++++++++++++++++++++++++++
+>  1 file changed, 37 insertions(+)
 
+>  FIELD(ID_MMFR4, CCIDX, 24, 4)
+>  FIELD(ID_MMFR4, EVT, 28, 4)
+>
+> +FIELD(ID_MMFR5, ETS, 0, 4)
+> +
+> +FIELD(ID_PFR0, STATE0, 0, 4)
+> +FIELD(ID_PFR0, STATE1, 4, 4)
+> +FIELD(ID_PFR0, STATE2, 8, 4)
+> +FIELD(ID_PFR0, STATE3, 12, 4)
+> +FIELD(ID_PFR0, CSV2, 16, 4)
+> +FIELD(ID_PFR0, AMU, 20, 4)
+> +FIELD(ID_PFR0, DIT, 24, 4)
+> +FIELD(ID_PFR0, RAS, 28, 4)
+
+The ID_PFR0 definitions are already in master now
+commit 46f4976f22a45 has gone in.
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

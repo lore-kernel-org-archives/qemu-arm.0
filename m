@@ -1,290 +1,134 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1453792lfc;
-        Mon, 8 Feb 2021 11:56:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwdvAw4nsElOsIwEGQ26nge/LcNv64Tri77uGaF2tn2BJowS0p7rgUO8xuBZmLDa8gTeNoP
-X-Received: by 2002:a25:e654:: with SMTP id d81mr11250777ybh.207.1612814212563;
-        Mon, 08 Feb 2021 11:56:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612814212; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1014592lfq;
+        Sat, 12 Dec 2020 06:02:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzb7rWOKBuIIkln/LN8wCi4pZs/uit5/xKm8Y/o0zJgS0RQjwIZEgRsPgfyGU5C4kZ2UMD/
+X-Received: by 2002:a05:6602:2211:: with SMTP id n17mr21506514ion.107.1607781759784;
+        Sat, 12 Dec 2020 06:02:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607781759; cv=none;
         d=google.com; s=arc-20160816;
-        b=yNeteilBqSWGFTgdfT4eoTufmpvaG+vkwCd+qZzUC3OUgTtlJj9I4VqOTr05OHdzXH
-         VWBkhosTzK7yUYeUawvoEMrDNgEiu5PlxWs1zf2aIo6C7KfN8EMJ2fMI+cXzfi3LZPMl
-         j3O3w2cSdlF3ovVhpxNdJjySBTTmtZQM0lImohmdrAlp0ws8tjAzDdgnToyn/3zIiqam
-         w+pTp7IsyJoGWBPbdUdGysLWe9J2+gfgiwxOdcZkDPi9uZedksiGK+Fa8sYKuqaBAfF1
-         0G5nyIIgNYS5DeICVj+ZydGcRM6BElGCC3kJMehvUqsQ1EAJgS6YlE1DiItLCrApgg02
-         pryA==
+        b=qT5ebaKGep21DnJJgSEF04/4xsmNiGHUZ2M+N1HYm4vsVws+wsIjKNXFNjfqjTYd9K
+         CiVUoowuNLEdU58x1fj6IEPsiu1wx07TLt1yfP01Qd3/mBygnKxoIj1hpjq1OP0XM45F
+         tkoEbIUpgSxr6Zh3tTY8IDb/LwwhX6PiAq3nwiE9CbLTnY9LZrdI6bBi8iIWGJS7P+BU
+         9QA3/xPE13umTM5eUzHuX1ExRG+jMbmm6bbf4QRcTldahTpXSdlNn5YIPypEo+PP57+N
+         ibBoDAFApvICJoMgsSow5bHWQgOveqZXsIfFENkRIufxA6fp2AE9cIiUGm/GHkqKPxa1
+         loZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=w7voTdSrdIvUZbkDbt8ve6u7eVgmZyr3khG4QbJpEGo=;
-        b=vxeWkT86O3FEXOXl1zMLcAY3ENERmXkueetygDSidpa/Aw1W4wyGN9q1uMxBn/9mDv
-         Pt7aMeRGmbEuMYWuQ+tzNhZW3Hf9UOR3+KbO4olUoCHkAS7kCGpgWbQHI2TJZk7u5HN1
-         HWxzYqUpjly5QSDIPOk8AnBpZmlWxk3+rWTaBJrO1zkG4Myih8htTfwUyNlmRSnNgLX+
-         vv8k7+rg75WDD3PdVD8Ts3cEDrJ3LP77rVkD9kVYncDEvh7vzxP2005QuI04WTyRIioZ
-         AqoDtJt1W4Yk6UGE2WzR0HtZUyJWX9dBbxUYoeg93YXDc9ae4UGi0dfZz/GdAiDTZfts
-         t/pQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature:sender
+         :precedence:errors-to:list-subscribe:list-help:list-post
+         :list-unsubscribe:list-id;
+        bh=tzUsb1oAOgAwkhpFJliDtvmjm9NTDD2Shb+dSAyDTts=;
+        b=DYyKyo+E0YrovUrxtywTKmbd1p7VW13FodAJZW+xILPl34M18TzzXwtIuwD6zITdol
+         km0+nT6S0hkJb/oBdBSCS7wkoFJYhct9aQy1Ee2HoesGTnn0yIx/fKB82BSvmSp4ApAW
+         cx8GRdYe68gQIafpTbEaNTjUZIirxxKmBX/50Ac7GiT9asinKRoOXacJysTuize5eGne
+         DhcmOcz4ycDr0sFJRyGCr9V1jJP1CCEq7DUkZ2V+5ps0F/wqb2qRhd7+Maz2/zNfTyuq
+         MyiRjegGYRb3obRMAxZU3Nx3u08RErE4mysJ92H+7ZOKrqMxtHNF5PTRzfAnNjRCBIQ6
+         MAWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b0Iooh59;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si17869554ybt.404.2021.02.08.11.56.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Feb 2021 11:56:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=n9AuUX2U;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id 8si373270iln.91.2020.12.12.06.02.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 12 Dec 2020 06:02:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b0Iooh59;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41470 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9CeR-00020v-T6
-	for alex.bennee@linaro.org; Mon, 08 Feb 2021 14:56:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39406)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1l98Ie-0006Ks-TY; Mon, 08 Feb 2021 10:18:06 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:45217)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1l98IZ-00009h-59; Mon, 08 Feb 2021 10:18:04 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id t5so18519839eds.12;
- Mon, 08 Feb 2021 07:17:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=w7voTdSrdIvUZbkDbt8ve6u7eVgmZyr3khG4QbJpEGo=;
- b=b0Iooh595bziyS8Ro2/egRtiB2gudwhJlpS2xDv6w6w3R9pzuPUVZmLRTUaGk40tn5
- fLQye+AaemQ5vKTgQg39etzvrq703HD06XeebtyMXhstqdp8NpdvhNifwkPpnyFchLUl
- Asbp+6yl9Me9YZyRjulDEcKU9ZuVh2ycv4AJh4PtQNgwyFxBByUCOJh2bMu9qk9fcFuh
- F93qoGufljkqEtV4ZO3feEqNIOHAAeUZs8scrfp+dV7pSsgTDNEogKCCV8DgCdbZL9pN
- xGsTwo3IewlYtXvgteCN84PgajjV1IQcKZuSXqbrL/UxdUJ0Apljc+98j52CUIH0Tki1
- 0Q1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=w7voTdSrdIvUZbkDbt8ve6u7eVgmZyr3khG4QbJpEGo=;
- b=IaQLXwef8lvNAoDYRvVN0xI9UZO8tjDnfZnEdJTzgS0LrfigDruvitKFZLv+v+SeY6
- HB4cUM316sN6MWVVzfJzY1v4OUY0kDJJdg4dsZKbwO3y6TezEHoD1YAf5N/PaEx2XcYa
- YXHhf/fqIv00d05p+G4QJ4BN59NWkHEbxdW85Sx+V9oh8V2c/YsRTrITJBsxXgfV8GXT
- lPvG8GcSYDjMtP56CSRIlV+HgGLh2MM/XlTzH6t354x9FJYchbLVO8kKblEaFiuVlS0G
- BKUZNQCC5/GFnMPedn70U6MLnk2oLrNC8vk+VkDIJUf1tONDiDu5aArR4QyVa9IFWmFk
- Ou4g==
-X-Gm-Message-State: AOAM533u2nUvwmWG2KXmXKuCpAj27Ub7vnJpRNRrdy+ESiPTtkFqaOc/
- 6jKuWLOCTjBf/lMlWRWXrHJSyjQekwJbDA+c8Kk=
-X-Received: by 2002:aa7:cb8f:: with SMTP id r15mr17787819edt.130.1612797477438; 
- Mon, 08 Feb 2021 07:17:57 -0800 (PST)
-MIME-Version: 1.0
-References: <1612761924-68000-1-git-send-email-bmeng.cn@gmail.com>
- <1612761924-68000-3-git-send-email-bmeng.cn@gmail.com>
- <20210208124425.GI477672@toto>
- <CAEUhbmV=QLCuk5_bymrVNPO_vEU=R1A3urAaqhnNAgSGpiTsGw@mail.gmail.com>
- <CAJy5ezooJ21SAFhR2Pf=1aAwBkPEUivbCawZy-geCx+g36EP2Q@mail.gmail.com>
- <CAEUhbmVZr0pAW86kYjiXryN3cOaPc2LmrH9=fqLQUUdJrKX4Cw@mail.gmail.com>
-In-Reply-To: <CAEUhbmVZr0pAW86kYjiXryN3cOaPc2LmrH9=fqLQUUdJrKX4Cw@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Mon, 8 Feb 2021 16:17:46 +0100
-Message-ID: <CAJy5ezqPC365CAjzMmAfSyKw9uL+ur48bD4=WmMQWHA+_fCE=A@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] hw/ssi: xilinx_spips: Implement basic QSPI DMA
- support
-To: Bin Meng <bmeng.cn@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000bcca0c05bad4ac01"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+       dkim=pass header.i=@linaro.org header.s=google header.b=n9AuUX2U;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from list by lists.xenproject.org with outflank-mailman.51179.90091 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1ko5SE-0002uE-58; Sat, 12 Dec 2020 14:00:58 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 51179.90091; Sat, 12 Dec 2020 14:00:58 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1ko5SE-0002u7-27; Sat, 12 Dec 2020 14:00:58 +0000
+Received: by outflank-mailman (input) for mailman id 51179;
+ Sat, 12 Dec 2020 14:00:56 +0000
+Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=twOw=FQ=linaro.org=peter.maydell@srs-us1.protection.inumbo.net>)
+ id 1ko5SC-0002u2-4A
+ for xen-devel@lists.xenproject.org; Sat, 12 Dec 2020 14:00:56 +0000
+Received: from mail-ed1-x542.google.com (unknown [2a00:1450:4864:20::542])
+ by us1-rack-iad1.inumbo.com (Halon) with ESMTPS
+ id 2fb17729-8f50-472c-bd9f-3f358ec2a00c;
+ Sat, 12 Dec 2020 14:00:55 +0000 (UTC)
+Received: by mail-ed1-x542.google.com with SMTP id h16so12382703edt.7
+ for <xen-devel@lists.xenproject.org>; Sat, 12 Dec 2020 06:00:54 -0800 (PST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9UBfAo61Fr3G
-
---000000000000bcca0c05bad4ac01
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 2fb17729-8f50-472c-bd9f-3f358ec2a00c
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=tzUsb1oAOgAwkhpFJliDtvmjm9NTDD2Shb+dSAyDTts=;
+        b=n9AuUX2UaXmUg0AQdVSCooAu338lwKCj9TI2vXMFYlfT+MrTniTIB3Ov4IeJJ5EASR
+         fbuhpAaxcZ3RGcMtOTpL0vuS7vQfIonVhunxKGjpdkHffC8pDVeLM+InDVDm6o6XpkbL
+         P6mG/3LV2OG3XF25pE3QaRjGvYuLBCnnBACJy2Dm+Y04ZS8ugdVDQSP+lDYK/HgVSMgZ
+         29A4LIoUdyE3oh2fqxw4yUP5njhz0KUSLA5tl6Um9hjkmo+W55NmseDlfeyJ7sFCzJt1
+         CnKA/jTtQxx8LpkVLOx9uTfZIrZeUYOjPn0FxC1TP9zqMDzGn71l0mcZNCBuVxM6ZVxE
+         Tk0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=tzUsb1oAOgAwkhpFJliDtvmjm9NTDD2Shb+dSAyDTts=;
+        b=CVgijQYcVm2B710/mz9IMa+dgqbd8TXMjtrQahJzSZj/Lwv+tMy+IgB5xn6CsGYuzQ
+         o/2Y3FIUSC1fLqwUu2R56KcV0Vyo34F5qW+ROevxnFgffSpoN2E5CdzFciFLpjfdBjOu
+         JTt11XTBCJVSI2BqnQ8E1O2ziZfFCvjgbdrCEneTfzEtgA3aRAXe6qgste9hCMuHGyub
+         b3fKMK5Crj52uH5yR/qToIqwpbX7r5kB0CNByZ5GHrvXSXzzmtL/a0cgYWFEzHK3KNO3
+         2Qru1SrDqNkPa/Fpl5Oyr6K0Bj1fe78t7tV0TaaSoqcvoQAhHpVCT04omRqKSsTUOOIK
+         llPQ==
+X-Gm-Message-State: AOAM531al2L2Jqd9IVT1DPInztyj75aDjQggnANf8F1PjmtYfcPMs/vt
+	h3hTXWpfd6wN+D8aymV/0WYF1WrcV5unwHS/YoNGJw==
+X-Received: by 2002:aa7:c388:: with SMTP id k8mr16509651edq.36.1607781654038;
+ Sat, 12 Dec 2020 06:00:54 -0800 (PST)
+MIME-Version: 1.0
+References: <20201210134752.780923-1-marcandre.lureau@redhat.com> <20201210134752.780923-12-marcandre.lureau@redhat.com>
+In-Reply-To: <20201210134752.780923-12-marcandre.lureau@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 12 Dec 2020 14:00:42 +0000
+Message-ID: <CAFEAcA_3eSKuAZj=pwV33csLdbVnsAhkm4ZNehinn7YYUkJ44A@mail.gmail.com>
+Subject: Re: [PATCH v3 11/13] compiler: remove GNUC check
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Laurent Vivier <laurent@vivier.eu>, 
+	Paul Durrant <paul@xen.org>, "open list:X86" <xen-devel@lists.xenproject.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Stefano Stabellini <sstabellini@kernel.org>, Anthony Perard <anthony.perard@citrix.com>, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-
-On Mon, Feb 8, 2021 at 3:45 PM Bin Meng <bmeng.cn@gmail.com> wrote:
-
-> Hi Edgar,
->
-> On Mon, Feb 8, 2021 at 10:34 PM Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
-> >
-> >
-> >
-> > On Mon, 8 Feb 2021, 15:10 Bin Meng, <bmeng.cn@gmail.com> wrote:
-> >>
-> >> Hi Edgar,
-> >>
-> >> On Mon, Feb 8, 2021 at 8:44 PM Edgar E. Iglesias
-> >> <edgar.iglesias@gmail.com> wrote:
-> >> >
-> >> > On Mon, Feb 08, 2021 at 01:25:24PM +0800, Bin Meng wrote:
-> >> > > From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> >> > >
-> >> > > ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
-> >> > > is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
-> >> > > crash. This is observed when testing VxWorks 7.
-> >> > >
-> >> > > Add a basic implementation of QSPI DMA functionality.
-> >> > >
-> >> > > Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> >> > > Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> >> >
-> >> > + Francisco
-> >> >
-> >> > Hi,
-> >> >
-> >> > Like Peter commented on the previous version, the DMA unit is actully
-> separate.
-> >>
-> >> Is it really separate? In the Xilinx ZynqMP datasheet, it's an
-> >> integrated DMA unit dedicated for QSPI usage. IIUC, other modules on
-> >> the ZynqMP SoC cannot use it to do any DMA transfer. To me this is no
-> >> different like a DMA engine in a ethernet controller.
-> >
-> >
-> > Yes, it's a separate module.
-> >
-> >>
-> >> > This module is better modelled by pushing data through the Stream
-> framework
-> >> > into the DMA. The DMA model is not upstream but can be found here:
-> >> > https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c
-> >> >
-> >>
-> >> What's the benefit of modeling it using the stream framework?
-> >
-> >
-> >
-> > Because it matches real hw and this particular dma exists in various
-> instances, not only in qspi. We don't want duplicate implementations of the
-> same dma.
-> >
->
-> Would you please share more details, like what other peripherals are
-> using this same DMA model?
->
->
-It's used by the Crypto blocks (SHA, AES) and by the bitstream programming
-blocks on the ZynqMP.
-In Versal there's the same plus some additional uses of this DMA...
-
-Best regards,
-Edgar
-
---000000000000bcca0c05bad4ac01
-Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-TUID: 7QD4IMM1bj/b
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 8, 2021 at 3:45 PM Bin Me=
-ng &lt;<a href=3D"mailto:bmeng.cn@gmail.com">bmeng.cn@gmail.com</a>&gt; wro=
-te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
-0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hi Edgar,<br=
+On Thu, 10 Dec 2020 at 13:50, <marcandre.lureau@redhat.com> wrote:
 >
-<br>
-On Mon, Feb 8, 2021 at 10:34 PM Edgar E. Iglesias<br>
-&lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">edgar.igl=
-esias@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; On Mon, 8 Feb 2021, 15:10 Bin Meng, &lt;<a href=3D"mailto:bmeng.cn@gma=
-il.com" target=3D"_blank">bmeng.cn@gmail.com</a>&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; Hi Edgar,<br>
-&gt;&gt;<br>
-&gt;&gt; On Mon, Feb 8, 2021 at 8:44 PM Edgar E. Iglesias<br>
-&gt;&gt; &lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">=
-edgar.iglesias@gmail.com</a>&gt; wrote:<br>
-&gt;&gt; &gt;<br>
-&gt;&gt; &gt; On Mon, Feb 08, 2021 at 01:25:24PM +0800, Bin Meng wrote:<br>
-&gt;&gt; &gt; &gt; From: Xuzhou Cheng &lt;<a href=3D"mailto:xuzhou.cheng@wi=
-ndriver.com" target=3D"_blank">xuzhou.cheng@windriver.com</a>&gt;<br>
-&gt;&gt; &gt; &gt;<br>
-&gt;&gt; &gt; &gt; ZynqMP QSPI supports SPI transfer using DMA mode, but cu=
-rrently this<br>
-&gt;&gt; &gt; &gt; is unimplemented. When QSPI is programmed to use DMA mod=
-e, QEMU will<br>
-&gt;&gt; &gt; &gt; crash. This is observed when testing VxWorks 7.<br>
-&gt;&gt; &gt; &gt;<br>
-&gt;&gt; &gt; &gt; Add a basic implementation of QSPI DMA functionality.<br=
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >
-&gt;&gt; &gt; &gt;<br>
-&gt;&gt; &gt; &gt; Signed-off-by: Xuzhou Cheng &lt;<a href=3D"mailto:xuzhou=
-.cheng@windriver.com" target=3D"_blank">xuzhou.cheng@windriver.com</a>&gt;<=
-br>
-&gt;&gt; &gt; &gt; Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@w=
-indriver.com" target=3D"_blank">bin.meng@windriver.com</a>&gt;<br>
-&gt;&gt; &gt;<br>
-&gt;&gt; &gt; + Francisco<br>
-&gt;&gt; &gt;<br>
-&gt;&gt; &gt; Hi,<br>
-&gt;&gt; &gt;<br>
-&gt;&gt; &gt; Like Peter commented on the previous version, the DMA unit is=
- actully separate.<br>
-&gt;&gt;<br>
-&gt;&gt; Is it really separate? In the Xilinx ZynqMP datasheet, it&#39;s an=
-<br>
-&gt;&gt; integrated DMA unit dedicated for QSPI usage. IIUC, other modules =
-on<br>
-&gt;&gt; the ZynqMP SoC cannot use it to do any DMA transfer. To me this is=
- no<br>
-&gt;&gt; different like a DMA engine in a ethernet controller.<br>
-&gt;<br>
-&gt;<br>
-&gt; Yes, it&#39;s a separate module.<br>
-&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; &gt; This module is better modelled by pushing data through the St=
-ream framework<br>
-&gt;&gt; &gt; into the DMA. The DMA model is not upstream but can be found =
-here:<br>
-&gt;&gt; &gt; <a href=3D"https://github.com/Xilinx/qemu/blob/master/hw/dma/=
-csu_stream_dma.c" rel=3D"noreferrer" target=3D"_blank">https://github.com/X=
-ilinx/qemu/blob/master/hw/dma/csu_stream_dma.c</a><br>
-&gt;&gt; &gt;<br>
-&gt;&gt;<br>
-&gt;&gt; What&#39;s the benefit of modeling it using the stream framework?<=
-br>
-&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; Because it matches real hw and this particular dma exists in various i=
-nstances, not only in qspi. We don&#39;t want duplicate implementations of =
-the same dma.<br>
-&gt;<br>
-<br>
-Would you please share more details, like what other peripherals are<br>
-using this same DMA model?<br>
-<br></blockquote></div><div class=3D"gmail_quote"><br></div><div class=3D"g=
-mail_quote">It&#39;s used by the Crypto blocks (SHA, AES) and by the bitstr=
-eam programming blocks on the ZynqMP.</div><div class=3D"gmail_quote">In Ve=
-rsal there&#39;s the same plus some additional uses of this DMA...</div><di=
-v class=3D"gmail_quote"><br></div><div class=3D"gmail_quote">Best regards,<=
-/div><div class=3D"gmail_quote">Edgar<br></div><div class=3D"gmail_quote"><=
-br></div></div>
+> QEMU requires Clang or GCC, that define and support __GNUC__ extensions.
+>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  include/qemu/compiler.h | 8 +-------
+>  1 file changed, 1 insertion(+), 7 deletions(-)
 
---000000000000bcca0c05bad4ac01--
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

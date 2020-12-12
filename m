@@ -1,100 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3716812lfa;
-        Mon, 19 Oct 2020 02:53:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwT8DmHrJUF+SoYdRWHJNhSqf2hPkMQjb8J5YkpY6l8G5U0EXh24ebFRyTSZN0rtHQucIQk
-X-Received: by 2002:a25:16c4:: with SMTP id 187mr20378996ybw.496.1603101182684;
-        Mon, 19 Oct 2020 02:53:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603101182; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp575205lfq;
+        Fri, 11 Dec 2020 16:28:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyiTdq+CdQhkPqgp2FpgaVpYUdYFx1B7gpdoovQk9Q1dUwUrR3i+0BRQmrPLew/QLLLQU63
+X-Received: by 2002:a25:6a84:: with SMTP id f126mr22844669ybc.271.1607732934038;
+        Fri, 11 Dec 2020 16:28:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607732934; cv=none;
         d=google.com; s=arc-20160816;
-        b=CyBBkZjq2KVHm8SFb4UV+Qc8tYhLnpvT74+Odp1Ha9iu2L5eFeqeC16vgOWrM81JYe
-         4OZO5fmRd6RvTzKyuq1L7S/FtpJWnvekyvfNhPuTZodtvYW6b3uWDXjwlrdq12OvLdke
-         3SPE5QDgq/qFZTHCS0kg/ffkJRMc+M1jIOa3TX+o5iHDLY2Zjqs15FJz+56xbsOIqhYt
-         GkE/uem/LHR/HAiEYusg2n2RbVt99T/dJuSTHBNoZcobvaCPZT4v+XPpNbNY1lHaPei/
-         1TrmgC4GJ2QvSqP418HSjink/1C4yojwyiW0ihf2dVjRO4RjtnNtq0mYADisnCsxJP8O
-         Yo3A==
+        b=0JtOBq1dAOB4UBRJbcPbbwzYJGjMXgrX/Fp18C3TwkmP8Vv8KAFvtTHt4kHmJjz6tQ
+         96heoSQgsY4pw571WMMSSGaXtbKtlhCnw0Cje7+Zb162mYHGY5WVj14bVaKtkQdgOF2n
+         VpuftjCO7P1SaHfQhkHVcWrVGXOXn/2vyNYFbXUnsDJMnA/4kFgboyRh8msOCcjTiv5R
+         Dv/KidC7wUScuLxap/yivx46lq41Xk4EH6wB2t4n26ZAv+zkNYT686ku6uDoseHFVtoR
+         XQzm8sNjNIwktXHRGTzBq/zbqH4P7gjq3DiKmRe6d+9HaFWMqsdKEoHYTX8fiSktqg3Q
+         1cXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=wgZScEWYKTpXPaYbK3zydk54RFmHl/X/t15IeTCJRI8=;
-        b=H299GSlohvxWtvvCuiPnvnoS/AnCbpyGKwf/O225YIhdodRPyZhnMo4iwhKqopXARM
-         2oYUAJ3wcDuUikv09U49ydvrzjGWwFkTVuNEpvfEQO22CRuHn+0/+mv7REzbu/xuui7R
-         YKBspEPNxwASBCt0hr6mkcokuCiSxOzpAwMwaqD74ylCkUn8L8XqIy5zxmML4ue4KAqZ
-         qOquC0Rx/bbrsOlXv2kJgkHNOmprSecVJ4MT4w19DST4eHAMaUKpYyMJpOydqy//8D8N
-         fgeAvxQ9M1RGXKUaV8OA+AbWbBqQU3uRcqeVRKSkc66lzjIlfk8yLGxnYuLbdI0gpp7p
-         IC0Q==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=HGLJ0XFr2eycSdONf5XaKpiYmQbvEjGPa2F44v0a9B8=;
+        b=Y0OfZi+t5CjpXVLi3cDUi0u2DmPziUZ2LWgZjEKCfus3F1Jun9bg2uGUtsjfIe+OAu
+         LPuvhjCgtbqkvGAmrqTyq+yhtd7+JN+JZDtlH6a+d/Wa/Y+PiXDQPDJKPOBN30Ui7Tc6
+         w9UKtXaokNRKS54QpAsQJaCGjhXd/JPKsHhBexjBLYRsmYbiO8nWnMAIf35lCMszN/QD
+         e2UcnqAgyPJnfD66JAS0Eo2zMZ/iSZFOdJJ5axg5n6XwgO+mdeNKd1X1BQlCkAVzOMWv
+         3nDeuOfWlEibjgMZijrZbPubi37mWF4lCPAsxkwMfdzjBGjOUDH2eIlL1C8z4fLFOfNH
+         92yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lKtrtm9n;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VwdVfDjP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4si10601187ybs.48.2020.10.19.02.53.02
+        by mx.google.com with ESMTPS id i13si9743485ybm.455.2020.12.11.16.28.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Oct 2020 02:53:02 -0700 (PDT)
+        Fri, 11 Dec 2020 16:28:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lKtrtm9n;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50548 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VwdVfDjP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kURqg-0002h8-4C
-	for alex.bennee@linaro.org; Mon, 19 Oct 2020 05:53:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52084)
+	id 1knsmL-0003K6-Cu
+	for alex.bennee@linaro.org; Fri, 11 Dec 2020 19:28:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kURpc-0002BV-FS; Mon, 19 Oct 2020 05:51:56 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:35024)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1knsaX-0003BI-55; Fri, 11 Dec 2020 19:16:41 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:33029)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kURpb-0002lg-0N; Mon, 19 Oct 2020 05:51:56 -0400
-Received: by mail-wr1-x443.google.com with SMTP id n15so10670826wrq.2;
- Mon, 19 Oct 2020 02:51:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1knsaV-0005yB-38; Fri, 11 Dec 2020 19:16:40 -0500
+Received: by mail-ot1-x341.google.com with SMTP id b18so9930170ots.0;
+ Fri, 11 Dec 2020 16:16:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wgZScEWYKTpXPaYbK3zydk54RFmHl/X/t15IeTCJRI8=;
- b=lKtrtm9n3lWzzlfifUOD61dnSul5OX0l+d8EiLEpBlUSICBCLBXbtbkDKQvkfsR7YI
- /ML4uNued4yo8sOLM4gqZAJQH67342v+d3NZqsLPE7W9tnvLTzhukxzWF3L4LM75uHF4
- L0Esx8CQF85NBi6lGALa0FSC+OJhsJjia2YJK8M7mK0uut7cQJIlDj/Xn++jf3A6HMsa
- 56ld6A2mr48zasF6RnIJ/qjJTT1b6HDNHfCcR5DNaiJkRGbJZ+u2jFhW7tEBZY8XnbOW
- DlBvaQm3YJrDxSc8a+J8n53BohsojY2y96jKOuL3lBdxb3uqjVLETcXFaQLv5FLyh8xt
- //mw==
+ h=sender:date:from:to:cc:subject:message-id:reply-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=HGLJ0XFr2eycSdONf5XaKpiYmQbvEjGPa2F44v0a9B8=;
+ b=VwdVfDjPNG8Qv53oJ++Qpu3EVwKs74cYDnqqFD1Mx1mQvzwNYLaBfdJOewmKgs0tV4
+ y+86LI8FKzJczUTmRIW1tATQD/gNC2cFi8DCbry4DcypBhwHEJgz3coZHcf92HPcsmjT
+ dn/QeJNjseb1mTU5gF5vFwcFt/gLeC7sqxKZ3wwg4cQ9t2eLaqf5MTibnkjXJLmItyS4
+ hawkGqRiAeI5KJ1dFMD2+Ia2fVDWnqAVgMNVgwcBYw9FueflHvfVf2LIOzA2ZkwVgBkx
+ 5nvgVBsqMbfRO6h5z2jjW4GcT36F9tVMKjkyjhZnOn2T9Pv/zTKeMmghs47e4co3/wJB
+ TiKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=wgZScEWYKTpXPaYbK3zydk54RFmHl/X/t15IeTCJRI8=;
- b=erFDkrtcsSDYKCuc5s6TR4BHwwXd3IIXKLMhis4Ea3RxXrN2qfF2VVob8B70jOlkmx
- CtJnbhRsdh4WF3H29UdBn9WFpjeJNsb/ZxvTs5L2Ogc8osefcQUiekFq1XhXJTq5axIJ
- Al/gWvYN1T4Rxz28JM5KhaZW5Z5vkRrpwZw+FjKci5mhlXBK2VSpXOlVMA2xRGDCNIbA
- 6mWegUFAoZ4wZls9MYUOA4t7wV2Q7qNkRVEcF0uymCg66d94JJqcGOkJ0DSIIUXzd1rR
- vE3RlXO0AIjmL9nFaouyb1aIkVUiiKytK/Xb+g39f9vUkGVU3BjyVqYlUOTtNkGnrYWj
- fzxA==
-X-Gm-Message-State: AOAM530mRD1kPQqVW9dJEBrgnj0LA6CxQISzB251wu8a7VtXnKZrdsJp
- yoy+kaLuQi52CHjxz6Hp4fsJqn7Gqog=
-X-Received: by 2002:adf:e54b:: with SMTP id z11mr19803289wrm.128.1603101110100; 
- Mon, 19 Oct 2020 02:51:50 -0700 (PDT)
-Received: from x1w.redhat.com (36.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.36])
- by smtp.gmail.com with ESMTPSA id t19sm16560535wmi.26.2020.10.19.02.51.48
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :reply-to:references:mime-version:content-disposition:in-reply-to;
+ bh=HGLJ0XFr2eycSdONf5XaKpiYmQbvEjGPa2F44v0a9B8=;
+ b=gZ6etnF3/5LA5BQgmHBblOOQq5YWb2DhCQ0NarHsCDL639JiNm0R2lVHWIoMyzhZhY
+ Xbhl9cfCk7XYQmrqcobFpzCyCaJCN6nof0aOweQu8LvwOD1UYmmeeDAs9mQv49KgcAND
+ q7RhNWmyo2PIFnpSH+kz5ZU8riJzi/U2hJgJodm1V19i+6BijvowlVm9Zn/2ZriXSpPA
+ FT8+apyxnMWulyYz3l783KVYuFKgK4Jr41BFuGnKING/uGBpsYtnqbwumfeiLuPEKlP3
+ x7vXXhTwfxk1417zylploWpHy4roCFyO3khr3SvyDqFrDFV4Iv3nUumPZbsHXeEz9Ycf
+ iT9w==
+X-Gm-Message-State: AOAM532Kxq+iu4nuDfaiNKxoS0j0vBgwZYue3FQST9ms8I9AXaST1M+U
+ bsgBLdrUdEaoMJ7YxEYJ/g==
+X-Received: by 2002:a9d:614f:: with SMTP id c15mr11736686otk.362.1607732197282; 
+ Fri, 11 Dec 2020 16:16:37 -0800 (PST)
+Received: from serve.minyard.net ([47.184.170.156])
+ by smtp.gmail.com with ESMTPSA id 60sm2208673otn.35.2020.12.11.16.16.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2020 02:51:49 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/nseries: Fix loading kernel image on n8x0 machines
-Date: Mon, 19 Oct 2020 11:51:48 +0200
-Message-Id: <20201019095148.1602119-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ Fri, 11 Dec 2020 16:16:36 -0800 (PST)
+Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:cc8:2ec7:33ae:b2d9])
+ by serve.minyard.net (Postfix) with ESMTPSA id 63E28180048;
+ Sat, 12 Dec 2020 00:16:35 +0000 (UTC)
+Date: Fri, 11 Dec 2020 18:16:34 -0600
+From: Corey Minyard <minyard@acm.org>
+To: Hao Wu <wuhaotsh@google.com>
+Subject: Re: [PATCH 0/7] Additional NPCM7xx devices and IPMI BMC emulation
+ support
+Message-ID: <20201212001634.GK11017@minyard.net>
+References: <20201211015156.2053372-1-wuhaotsh@google.com>
+ <20201211030435.GI11017@minyard.net>
+ <CAGcCb12UyiPoU=cPd3W3Mwj+jZHbWWESEPY-dhaSWXDqGdhM0w@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAGcCb12UyiPoU=cPd3W3Mwj+jZHbWWESEPY-dhaSWXDqGdhM0w@mail.gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=tcminyard@gmail.com; helo=mail-ot1-x341.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -115,46 +118,153 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>
+Reply-To: minyard@acm.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm@nongnu.org, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8k1eYn2vz4IR
+X-TUID: mh93qQ08xOxN
 
-Commit 7998beb9c2e removed the ram_size initialization in the
-arm_boot_info structure, however it is used by arm_load_kernel().
+On Fri, Dec 11, 2020 at 12:56:07PM -0800, Hao Wu wrote:
+> Tl,dr: We'll remove the IPMI changes from the current patch set and
+> refactor
+>           them in a separate patch set.
+> 
+> Thank you for your review! On high level, we are trying to emulate the BMC
+> side of the IPMI protocol. So we cannot directly use the existing IPMI code.
+> However, they do have a lot in duplication as you pointed out. So we'll
+> refactor
+> the existing IPMI code and update in a way that we only add the required
+> functionality.
 
-Initialize the field to fix:
+Ah, I didn't figure that out from what you posted.  So the idea is you
+can create the BMC side of the system in one qemu session with your
+changes and then you connect it to a host system running qemu with the
+host side of the interface.
 
-  $ qemu-system-arm -M n800 -append 'console=ttyS1' \
-    -kernel meego-arm-n8x0-1.0.80.20100712.1431-vmlinuz-2.6.35~rc4-129.1-n8x0
-  qemu-system-arm: kernel 'meego-arm-n8x0-1.0.80.20100712.1431-vmlinuz-2.6.35~rc4-129.1-n8x0' is too large to fit in RAM (kernel size 1964608, RAM size 0)
+The wire protocol is basically symmetric, but the command handling will
+need to be separate.  So you probably want to split out the base
+protocol from ipmi_bmc_extern into its own file and use that from your
+own file, to avoid the duplication.
 
-Noticed while running the test introduced in commit 050a82f0c5b
-("tests/acceptance: Add a test for the N800 and N810 arm machines").
+You need to do proper ATTN handling on the BMC side.  And you will also
+need ties into GPIOs and whatnot for doing the reset, NMI, etc.
 
-Fixes: 7998beb9c2e ("arm/nseries: use memdev for RAM")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/nseries.c | 1 +
- 1 file changed, 1 insertion(+)
+"ipmi_host" is probably not the best name.  At least to me that implied
+the host side of the interface.  I'm not coming up with something I
+really like, though.  Maybe "bmc_host"?  That's more descriptive, though
+I'm sure a better name exists.  Then you could have "bmc_host_extern"
+for the protocol.  If you come up with a better naming scheme, the
+existing files can be renamed, too.
 
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index e48092ca047..76fd7fe9854 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -1318,6 +1318,7 @@ static void n8x0_init(MachineState *machine,
-         g_free(sz);
-         exit(EXIT_FAILURE);
-     }
-+    binfo->ram_size = machine->ram_size;
- 
-     memory_region_add_subregion(get_system_memory(), OMAP2_Q2_BASE,
-                                 machine->ram);
--- 
-2.26.2
+Thanks,
 
+-corey
+
+> 
+> As for the KCS module, the BMC side of the protocol is the opposite
+> direction
+> of the existing ipmi_kcs.c code which is on the host/CPU side. For example,
+> in READ_STATE the CPU would read data while the BMC would write data.
+> So we can't directly use the same implementation. (They're different files
+> in
+> Linux either.) However, we can refactor it to re-use some of the common
+> definitions.
+> 
+> We would like to remove the IPMI and KCS stuff from the current patch set.
+> We'll send the refactored code in a separate patch set after addressing
+> your concerns.
+> 
+> Thanks again for the review!
+> 
+> On Thu, Dec 10, 2020 at 7:04 PM Corey Minyard <minyard@acm.org> wrote:
+> 
+> > On Thu, Dec 10, 2020 at 05:51:49PM -0800, Hao Wu wrote:
+> > > This patch series include a few more NPCM7XX devices including
+> > >
+> > > - Analog Digital Converter (ADC)
+> > > - Pulse Width Modulation (PWM)
+> > > - Keyboard Style Controller (KSC)
+> > >
+> > > To utilize these modules we also add two extra functionalities:
+> > >
+> > > 1. We modified the CLK module to generate clock values using qdev_clock.
+> > >    These clocks are used to determine various clocks in NPCM7XX devices.
+> > > 2. We added support for emulating IPMI responder devices in BMC machines,
+> > >    similar to the existing IPMI device support for CPU emulation. This
+> > allows
+> > >    a qemu instance running BMC firmware to serve as an external BMC for
+> > a qemu
+> > >    instance running server software. It utilizes the KCS module we
+> > implemented.
+> >
+> > Looking at the IPMI changes, why didn't you just re-use the existing
+> > IPMI infrastructure?  ipmi_host.[ch] is basically a subset of ipmi.[ch],
+> > and the ipmi_host_extern looks like a copy of of ipmi_bmc_extern with
+> > some names changed.  That kind of code duplication is not acceptable.
+> > Plus you copied my code and removed my copyrights, which is really
+> > not acceptable and illegal.
+> >
+> > I'm not exactly sure why you needed you own KCS interface, either.  It
+> > looks like the interface is somewhat different in some ways, but
+> > integrating it into the current KCS code is probably a better choice if
+> > that can be done.
+> >
+> > -corey
+> >
+> > >
+> > > Hao Wu (7):
+> > >   hw/misc: Add clock converter in NPCM7XX CLK module
+> > >   hw/timer: Refactor NPCM7XX Timer to use CLK clock
+> > >   hw/adc: Add an ADC module for NPCM7XX
+> > >   hw/misc: Add a PWM module for NPCM7XX
+> > >   hw/ipmi: Add an IPMI host interface
+> > >   hw/ipmi: Add a KCS Module for NPCM7XX
+> > >   hw/ipmi: Add an IPMI external host device
+> > >
+> > >  default-configs/devices/arm-softmmu.mak |   2 +
+> > >  docs/system/arm/nuvoton.rst             |   6 +-
+> > >  hw/adc/meson.build                      |   1 +
+> > >  hw/adc/npcm7xx_adc.c                    | 318 ++++++++++
+> > >  hw/arm/npcm7xx.c                        |  65 +-
+> > >  hw/ipmi/Kconfig                         |   5 +
+> > >  hw/ipmi/ipmi_host.c                     |  40 ++
+> > >  hw/ipmi/ipmi_host_extern.c              | 435 +++++++++++++
+> > >  hw/ipmi/meson.build                     |   3 +
+> > >  hw/ipmi/npcm7xx_kcs.c                   | 570 +++++++++++++++++
+> > >  hw/misc/meson.build                     |   1 +
+> > >  hw/misc/npcm7xx_clk.c                   | 795 +++++++++++++++++++++++-
+> > >  hw/misc/npcm7xx_pwm.c                   | 535 ++++++++++++++++
+> > >  hw/timer/npcm7xx_timer.c                |  25 +-
+> > >  include/hw/adc/npcm7xx_adc.h            |  72 +++
+> > >  include/hw/arm/npcm7xx.h                |   6 +
+> > >  include/hw/ipmi/ipmi_host.h             |  56 ++
+> > >  include/hw/ipmi/ipmi_responder.h        |  66 ++
+> > >  include/hw/ipmi/npcm7xx_kcs.h           | 105 ++++
+> > >  include/hw/misc/npcm7xx_clk.h           | 146 ++++-
+> > >  include/hw/misc/npcm7xx_pwm.h           | 106 ++++
+> > >  include/hw/timer/npcm7xx_timer.h        |   1 +
+> > >  tests/qtest/meson.build                 |   4 +-
+> > >  tests/qtest/npcm7xx_adc-test.c          | 400 ++++++++++++
+> > >  tests/qtest/npcm7xx_pwm-test.c          | 490 +++++++++++++++
+> > >  25 files changed, 4221 insertions(+), 32 deletions(-)
+> > >  create mode 100644 hw/adc/npcm7xx_adc.c
+> > >  create mode 100644 hw/ipmi/ipmi_host.c
+> > >  create mode 100644 hw/ipmi/ipmi_host_extern.c
+> > >  create mode 100644 hw/ipmi/npcm7xx_kcs.c
+> > >  create mode 100644 hw/misc/npcm7xx_pwm.c
+> > >  create mode 100644 include/hw/adc/npcm7xx_adc.h
+> > >  create mode 100644 include/hw/ipmi/ipmi_host.h
+> > >  create mode 100644 include/hw/ipmi/ipmi_responder.h
+> > >  create mode 100644 include/hw/ipmi/npcm7xx_kcs.h
+> > >  create mode 100644 include/hw/misc/npcm7xx_pwm.h
+> > >  create mode 100644 tests/qtest/npcm7xx_adc-test.c
+> > >  create mode 100644 tests/qtest/npcm7xx_pwm-test.c
+> > >
+> > > --
+> > > 2.29.2.684.gfbc64c5ab5-goog
+> > >
+> >

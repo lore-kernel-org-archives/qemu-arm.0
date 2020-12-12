@@ -1,140 +1,250 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp862570lfq;
-        Wed, 16 Dec 2020 17:51:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzoA16tUvZLpYOYMcrd7oZOUzybtmYSbkGY7d1CJir9x1QfP1q8aGXorPEFAJ0p3GvF7gs/
-X-Received: by 2002:a25:748a:: with SMTP id p132mr23849221ybc.268.1608169916215;
-        Wed, 16 Dec 2020 17:51:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608169916; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1009747lfq;
+        Sat, 12 Dec 2020 05:55:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzjc+JC8RysTa5ynMRnP2kAQ8zF0RyHhpISxKIt306AcHFfqHRZETab0iE5zso1aRF4L2QH
+X-Received: by 2002:a25:b708:: with SMTP id t8mr25463076ybj.223.1607781320485;
+        Sat, 12 Dec 2020 05:55:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607781320; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ph28SKQbU7TJ5YQf4jgmqiaCFIMWKdvncyQOnJTcAaMJIrAM866SbjUrVVLVn18r52
-         T0dN7cev32p8dUFjxggzZqUGRkIma/pSTis1bXGYv9NNjZo2CtRo687Gf/+5jl9Woord
-         1l7ybYCFuahTlBj6yF4Twz7my9Ov4tKVzgRygMLTh2UKPepUAaM4GEiL0ewF8NAr4/yU
-         WoiYcD5uT71H0DlX8Dv8Ztik4WXMpXVKQPEzwXj66cyY067p/G33HsN5BHA+E9CIOHd2
-         oAS5FljO6zwJnJWwwn4UjPo9SyB6E3KK1qac5OwpNpoDVkEcOjV12rWvEBTMu9VOuTuu
-         /ymA==
+        b=xyzw2jW48xSsq2ietCMargdaDA8dB6bGgNu64DBQGqWAguwEpEhxcS1jCR009jxsWo
+         MtUG8h39OG9bvBeAAkMHRW80LdwnmnCeimXNLl11D3+MbRmL6a7gY+bh2LoKAHuzg32H
+         wnslkMIidxwoOYjjuijrc3MIyq9Uavtp/uKId2uISFuM7iG22i15Fmcwg6uA9Iwpa6RW
+         NG3fXVxEge+gOfVXbAIYUUKGsiR2nvzhDWSroeoMh/kODdLpyN+R7nuZVr0w4rxcY3BM
+         DoCU1o3oTWT+j2i4/4O0Ux1llkvBJZvCA6rvoezEHRi4UQuBTWrYT/CVkrIW9O1Rcpd5
+         U0fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=sH/ndD48dYLjGjS/hRL2DO3I5tRlvdT0bb+Sbj7jE48=;
-        b=oeRbED0AVqViVTFyJ2K4TPvTBgR78SfrgAUSrkXqD2V11GAhHEPh1iljERIWJBMD+P
-         yH6OOre/oTZjEBO1MMwYyLowughlH0/wD7uI4l5UlT8iUEPkb03gEeih5xplpYfDWEth
-         LMZS+DqPTEc80rxQiBhnna+9pr/AI19N6/9D1oXetK8zGgOq4fvRKZ7gUobmBYE7huOr
-         p+4bsRBEI5YOr5Tx8l34PngMWY+DYBFqU4nHlrYvU+Uc/apT5glKakoi4tSYhhv2tZuy
-         apD0XRxStHy09aNckeSxUErqGqgvTfsodH41TEVc+bzPF1tNY+yHtAqbEQYUYb36zlkN
-         Fr5w==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature:sender:precedence:errors-to
+         :list-subscribe:list-help:list-post:list-unsubscribe:list-id;
+        bh=aqJp4gKfamwnwqe8EMieEJaV+n0fzH9AmnYkNTme3fQ=;
+        b=ABaG8P5CXuV0K57avp0vSI5V9UDJxVju8G1EZLZSkQWuRGdoyaSDKBaTdczrc3u/jL
+         MtsFTH6lb7/nbr2AZ5e/mEWt9u+VSNkKzwM63av9yB/w6WJMCFtR6kohYlb8gQ146wNY
+         nKWW+dm1e49dsAqCjXTDjQoyrt4CK6bD3BivQK+cqxG152m9wd+XN6YjXM9lf89Vwy+w
+         IHT+d91gHCdZ23JM9HPVHqEg/U3/6UzuAoFR92sm/ak2JmKuOBw1QH4Hyq65D9h2LGmi
+         SnorVEDovdGMZz+3KGd0beqX0OF8SpOegu2lAZyd3Zy48WZjhcK9shvoU3SxMC+eupGe
+         Wsxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5si2380927ybo.330.2020.12.16.17.51.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Dec 2020 17:51:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TC+B4GNR;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id n193si12783494ybf.90.2020.12.12.05.55.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 12 Dec 2020 05:55:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47430 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kpiSR-0000z3-KH
-	for alex.bennee@linaro.org; Wed, 16 Dec 2020 20:51:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51798)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kpiR8-0000yN-Uj; Wed, 16 Dec 2020 20:50:35 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2609)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kpiR5-0005tC-Dr; Wed, 16 Dec 2020 20:50:34 -0500
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CxFKz3bs1z7Fhk;
- Thu, 17 Dec 2020 09:49:43 +0800 (CST)
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
- DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.498.0; Thu, 17 Dec 2020 09:50:14 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Andrew Jones <drjones@redhat.com>, Peter Xu <peterx@redhat.com>
-Subject: [PATCH v2 2/2] accel: kvm: Add aligment assert for
- kvm_log_clear_one_slot
-Date: Thu, 17 Dec 2020 09:49:41 +0800
-Message-ID: <20201217014941.22872-3-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
-In-Reply-To: <20201217014941.22872-1-zhukeqian1@huawei.com>
-References: <20201217014941.22872-1-zhukeqian1@huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.37]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=zhukeqian1@huawei.com;
- helo=szxga07-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=TC+B4GNR;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from list by lists.xenproject.org with outflank-mailman.51171.90079 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1ko5Kv-0001nC-Ca; Sat, 12 Dec 2020 13:53:25 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 51171.90079; Sat, 12 Dec 2020 13:53:25 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1ko5Kv-0001n5-9N; Sat, 12 Dec 2020 13:53:25 +0000
+Received: by outflank-mailman (input) for mailman id 51171;
+ Sat, 12 Dec 2020 13:53:24 +0000
+Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=BfRh=FQ=gmail.com=marcandre.lureau@srs-us1.protection.inumbo.net>)
+ id 1ko5Ku-0001n0-Cz
+ for xen-devel@lists.xenproject.org; Sat, 12 Dec 2020 13:53:24 +0000
+Received: from mail-ed1-x544.google.com (unknown [2a00:1450:4864:20::544])
+ by us1-rack-iad1.inumbo.com (Halon) with ESMTPS
+ id ab2a89e8-f81f-455e-98ba-0e7b79a8f4c6;
+ Sat, 12 Dec 2020 13:53:23 +0000 (UTC)
+Received: by mail-ed1-x544.google.com with SMTP id v22so12359642edt.9
+ for <xen-devel@lists.xenproject.org>; Sat, 12 Dec 2020 05:53:23 -0800 (PST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jiangkunkun@huawei.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
- Keqian Zhu <zhukeqian1@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hbGBddoKGe2Q
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: ab2a89e8-f81f-455e-98ba-0e7b79a8f4c6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=aqJp4gKfamwnwqe8EMieEJaV+n0fzH9AmnYkNTme3fQ=;
+        b=TC+B4GNRTpn/r+SvL+bvNGYRqF3e8Vj1nDNqdPPO4ItwyM9NESVl6FUy+NYJbvv6op
+         hOB08xCYyw0iQP0A8lF2jmnF9pqVq+GqWhzpAJoYg9ISZu1z9cxQCw5zD7hSBPmXvfpi
+         tEg3reKaZg4RwHzdNRXuZebgzfDbWmpxhQxXqFPRsjd8yi4+drOgBBry/98/eAWGaKJw
+         8zmHMVfoiMIEURI/0g8m9ib9djl4YfB93MOBvy2NN9o0d9TWELP0HbyX4GyUhh3vDcDA
+         J+Z6Wdh8eynJ5jj4PW8EXBfNdMTqNoD/wg1EpmTfGv5zaEgohAt8iGwbx8oG8sfGZe/6
+         WI+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=aqJp4gKfamwnwqe8EMieEJaV+n0fzH9AmnYkNTme3fQ=;
+        b=G+f6u2FknhmX9T0UZ/bQno7Kq5M8pXvJGYDWaklgf4F8ShVvg+f4zW20F1QBlbV6OU
+         5gpADZ7CE0qy1bhq4gVf/57ogslpDOxiAorDXo1+iKklAKnDQO9/GloGW7yzXf5Zuf1n
+         yhqXQrcbKSzxIr5nB34HlbOFEI2+n0392B7QicCFlDDjXtRmfpPQdVpQfBTg36X8bGi5
+         wc0QfxYw5ti7kwyW+AsfDpaJWF3RanmetXeiHK12JxGkcizsC2lVupmQRJp9xcsXHlJw
+         KXiCmMX8DZ9oKszjv5Gu3pEtAY9fYh/mFbSon4wLsAsQV0P3DIB0tAIXFAExAg+yqVuH
+         O9pA==
+X-Gm-Message-State: AOAM530g+7HArpiOfVjE3GnaYnAbVE0ZWN4Olt+su6Alx2pxafEoYpEo
+	z6Sx0+2APygqCoOIv8dEdXM6FTFxIWbxe1nCwPc=
+X-Received: by 2002:a05:6402:1155:: with SMTP id g21mr17219102edw.53.1607781202707;
+ Sat, 12 Dec 2020 05:53:22 -0800 (PST)
+MIME-Version: 1.0
+References: <20201210134752.780923-1-marcandre.lureau@redhat.com> <20201210134752.780923-12-marcandre.lureau@redhat.com>
+In-Reply-To: <20201210134752.780923-12-marcandre.lureau@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Sat, 12 Dec 2020 17:53:10 +0400
+Message-ID: <CAJ+F1CL=m4bLdCaKHYuVNTzBdGZnK-_q5pGNoV8N37-H51u+Dw@mail.gmail.com>
+Subject: Re: [PATCH v3 11/13] compiler: remove GNUC check
+To: QEMU <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stefano Stabellini <sstabellini@kernel.org>, 
+	Paul Durrant <paul@xen.org>, Richard Henderson <richard.henderson@linaro.org>, 
+	Laurent Vivier <laurent@vivier.eu>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+	"open list:ARM" <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000076cb0505b644bb52"
+X-TUID: 4FIPlRmmqW8R
 
-The parameters start and size are transfered from QEMU memory
-emulation layer. It can promise that they are TARGET_PAGE_SIZE
-aligned. However, KVM needs they are qemu_real_page_size aligned.
+--00000000000076cb0505b644bb52
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Though no caller breaks this aligned requirement currently, we'd
-better add an explicit assert to avoid future breaking.
+On Thu, Dec 10, 2020 at 6:14 PM <marcandre.lureau@redhat.com> wrote:
 
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
----
- accel/kvm/kvm-all.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> QEMU requires Clang or GCC, that define and support __GNUC__ extensions.
+>
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  include/qemu/compiler.h | 8 +-------
+>  1 file changed, 1 insertion(+), 7 deletions(-)
+>
+> diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+> index 6212295e52..5e6cf2c8e8 100644
+> --- a/include/qemu/compiler.h
+> +++ b/include/qemu/compiler.h
+> @@ -64,14 +64,10 @@
+>      (offsetof(container, field) + sizeof_field(container, field))
+>
+>  /* Convert from a base type to a parent type, with compile time
+> checking.  */
+> -#ifdef __GNUC__
+>  #define DO_UPCAST(type, field, dev) ( __extension__ ( { \
+>      char __attribute__((unused)) offset_must_be_zero[ \
+>          -offsetof(type, field)]; \
+>      container_of(dev, type, field);}))
+> -#else
+> -#define DO_UPCAST(type, field, dev) container_of(dev, type, field)
+> -#endif
+>
+>  #define typeof_field(type, field) typeof(((type *)0)->field)
+>  #define type_check(t1,t2) ((t1*)0 - (t2*)0)
+> @@ -102,7 +98,7 @@
+>  #if defined(__clang__)
+>  /* clang doesn't support gnu_printf, so use printf. */
+>  # define GCC_FMT_ATTR(n, m) __attribute__((format(printf, n, m)))
+> -#elif defined(__GNUC__)
+> +#else
+>  /* Use gnu_printf (qemu uses standard format strings). */
+>  # define GCC_FMT_ATTR(n, m) __attribute__((format(gnu_printf, n, m)))
+>  # if defined(_WIN32)
+> @@ -112,8 +108,6 @@
+>   */
+>  #  define __printf__ __gnu_printf__
+>  # endif
+> -#else
+> -#define GCC_FMT_ATTR(n, m)
+>  #endif
+>
+>  #ifndef __has_warning
+> --
+> 2.29.0
+>
+>
+>
+Peter, Paolo, anyone to give a review?
+thanks
 
----
-v2
- - Address Andrew's commment (Use assert instead of return err).
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index f6b16a8df8..73b195cc41 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -692,6 +692,10 @@ out:
- #define KVM_CLEAR_LOG_ALIGN  (qemu_real_host_page_size << KVM_CLEAR_LOG_SHIFT)
- #define KVM_CLEAR_LOG_MASK   (-KVM_CLEAR_LOG_ALIGN)
- 
-+/*
-+ * As the granule of kvm dirty log is qemu_real_host_page_size,
-+ * @start and @size are expected and restricted to align to it.
-+ */
- static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
-                                   uint64_t size)
- {
-@@ -701,6 +705,9 @@ static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
-     unsigned long *bmap_clear = NULL, psize = qemu_real_host_page_size;
-     int ret;
- 
-+    /* Make sure start and size are qemu_real_host_page_size aligned */
-+    assert(QEMU_IS_ALIGNED(start | size, psize));
-+
-     /*
-      * We need to extend either the start or the size or both to
-      * satisfy the KVM interface requirement.  Firstly, do the start
--- 
-2.23.0
+--=20
+Marc-Andr=C3=A9 Lureau
 
+--00000000000076cb0505b644bb52
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Dec 10, 2020 at 6:14 PM &lt;<=
+a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com</=
+a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fr=
+om: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@redhat.co=
+m" target=3D"_blank">marcandre.lureau@redhat.com</a>&gt;<br>
+<br>
+QEMU requires Clang or GCC, that define and support __GNUC__ extensions.<br=
+>
+<br>
+Signed-off-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lurea=
+u@redhat.com" target=3D"_blank">marcandre.lureau@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0include/qemu/compiler.h | 8 +-------<br>
+=C2=A01 file changed, 1 insertion(+), 7 deletions(-)<br>
+<br>
+diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h<br>
+index 6212295e52..5e6cf2c8e8 100644<br>
+--- a/include/qemu/compiler.h<br>
++++ b/include/qemu/compiler.h<br>
+@@ -64,14 +64,10 @@<br>
+=C2=A0 =C2=A0 =C2=A0(offsetof(container, field) + sizeof_field(container, f=
+ield))<br>
+<br>
+=C2=A0/* Convert from a base type to a parent type, with compile time check=
+ing.=C2=A0 */<br>
+-#ifdef __GNUC__<br>
+=C2=A0#define DO_UPCAST(type, field, dev) ( __extension__ ( { \<br>
+=C2=A0 =C2=A0 =C2=A0char __attribute__((unused)) offset_must_be_zero[ \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-offsetof(type, field)]; \<br>
+=C2=A0 =C2=A0 =C2=A0container_of(dev, type, field);}))<br>
+-#else<br>
+-#define DO_UPCAST(type, field, dev) container_of(dev, type, field)<br>
+-#endif<br>
+<br>
+=C2=A0#define typeof_field(type, field) typeof(((type *)0)-&gt;field)<br>
+=C2=A0#define type_check(t1,t2) ((t1*)0 - (t2*)0)<br>
+@@ -102,7 +98,7 @@<br>
+=C2=A0#if defined(__clang__)<br>
+=C2=A0/* clang doesn&#39;t support gnu_printf, so use printf. */<br>
+=C2=A0# define GCC_FMT_ATTR(n, m) __attribute__((format(printf, n, m)))<br>
+-#elif defined(__GNUC__)<br>
++#else<br>
+=C2=A0/* Use gnu_printf (qemu uses standard format strings). */<br>
+=C2=A0# define GCC_FMT_ATTR(n, m) __attribute__((format(gnu_printf, n, m)))=
+<br>
+=C2=A0# if defined(_WIN32)<br>
+@@ -112,8 +108,6 @@<br>
+=C2=A0 */<br>
+=C2=A0#=C2=A0 define __printf__ __gnu_printf__<br>
+=C2=A0# endif<br>
+-#else<br>
+-#define GCC_FMT_ATTR(n, m)<br>
+=C2=A0#endif<br>
+<br>
+=C2=A0#ifndef __has_warning<br>
+-- <br>
+2.29.0<br>
+<br>
+<br></blockquote><div><br></div><div>Peter, Paolo, anyone to give a review?=
+</div><div>thanks<br></div></div><br clear=3D"all"><br>-- <br><div dir=3D"l=
+tr" class=3D"gmail_signature">Marc-Andr=C3=A9 Lureau<br></div></div>
+
+--00000000000076cb0505b644bb52--

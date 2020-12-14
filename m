@@ -1,110 +1,101 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2889614lfq;
-        Mon, 14 Dec 2020 12:24:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyDusXsDAQ0bzfhd9SOYBTuqN6+sj3vb2DgQAwJWUZyeXlIAY4442/mpaDVpFuq/FXY8ZtI
-X-Received: by 2002:a25:ad93:: with SMTP id z19mr38387527ybi.486.1607977450121;
-        Mon, 14 Dec 2020 12:24:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607977450; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2908876lfq;
+        Mon, 14 Dec 2020 12:52:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwhwCOAH2ZtHtEMTNEfn6x4rvyIl7XRZhy45bUbnbiEhe8ohUMvK10RxQgYUalYDotM1tap
+X-Received: by 2002:a25:810c:: with SMTP id o12mr40108683ybk.74.1607979154048;
+        Mon, 14 Dec 2020 12:52:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607979154; cv=none;
         d=google.com; s=arc-20160816;
-        b=JP9fDT5EiME4rGxQXqbjTX0MSnb3EyyCBjSomEYwrsYVjis7SoIlzyJe4o7oypmZZA
-         sgXQWKak4N2tsmtpYuYPPYP8XnLVBtQOIXQh1EmCQhLkgQp9LGo3kAIZPOeakxqcFTyR
-         GtZ0SAxKX3bnNK1zOp8js+DHumkHn06tTw8PcxZnx7TTKPiMJLLOSBMtwamjnZQENXSg
-         dzYy6+voR5aJblkQRxBr+Qu1sE6zc+Sm9EvLmSFTri71yh6e+KLmvEMm3Pjr2bhTmqEE
-         UA3Hu9JNmeOOGgpmSKMY5puxMxYI4rm4lSs6D1Qf991+fH3lXFX52lybck13UNc3hC8n
-         NgCg==
+        b=co23lrSR88e+DnsIbsCsDlhjUtYeZAkyvNxj+q/BAORqrtAYjY8MeiQknLpUAMdtDq
+         jnoZwPDR7RoM6K4oiRRU62Trw8Y6eVvLrpssDchWSKfSJDvPsc7RcKI93mUXXhSIVT0W
+         uRaehEu4xE9uMPpBSNWrmFAWuF+9c7oAJzz8WQzgKpEeB34ImScu/V06DJMrV5YmpKM3
+         5c/yi2jcrgnp4LeVKt8lupofOYeQXdjsYPHtUzae38tnOThNPSkRWVT2CJApPNDqERWd
+         59zQWG24dkQ70fFwuCM48+6ENCd4eduAbJiQ+WhRI3eXdMkO6QEmB5py0aM3r6COzhQF
+         C5EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=JwsepyuXYc7GayLTZJ2zaNcwjYwyjPdiQ/lSSlYJXOg=;
-        b=cxI+aXEiONn/xqzAjJOFaKlfjZCVF4/k3vBkWEJw/TpVYzwS96o53zeuvxpeqK+0VE
-         /1h7UXcoV+aGOZWAgoxKJupiql7JRQcNwhhMBI6OtSoYk0MSGDk8BhaW/+qHhmFR0EJu
-         irfn0hKn7o9xWpMv6BUmZqWEr6u03EwUMWaJjbeRHbZLajSLN5JZG1dIlvmv/C2Zphgc
-         Scc3T4c1ZPHEaBzK6ZDzUwNaJ71hleMBttJTjgurjOzQxJpZscxPZqUm4hyp+oIvRKCP
-         bWr7ggDZ5iSQfEVo/2LTOCoJ7GNqcsW1fRM6xKTIi8Z7vba6assHTLl4MIcHOu8MorCa
-         AfFA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=e8s0qM6SVULiVakZ+lFdI424N9CKza+D/1TsLuhzs68=;
+        b=DC5rcIszLMzLMZB4wfLbxmctdLfx/aZMuyoY46NRGfOhc+4+ilZCPLIqQHKXozsVFt
+         nxnH4QVwxzdfkyNCkHQtAg43sdA9zgpmWokGREXq+bHIJQieqtC16WoMTwkq4/zhXAXL
+         OIdxIG9x7ZBA3hhpJSYwKLU6FGMYFDLOzE3XPigl4YCcMFKjaGZvToDvDUlfIZMGJbrD
+         iNkcVV+uFAQA0V0jLZXOl3GuT39xUsp+D8NSXlLqHq/eDH5EvkYqDlWW/8dz92d74hn5
+         06qloRrzV2wW2xYZMLWVPyElsFTtEW/ZycBnCdxccZ80lOtXCwBIykH5POcwKgttTkjx
+         jung==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=JjFY4Vzg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HRZqDRFQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si17132635yba.386.2020.12.14.12.24.09
+        by mx.google.com with ESMTPS id k62si17208833ybf.87.2020.12.14.12.52.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Dec 2020 12:24:10 -0800 (PST)
+        Mon, 14 Dec 2020 12:52:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=JjFY4Vzg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56292 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HRZqDRFQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47722 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kouO9-0000W7-GF
-	for alex.bennee@linaro.org; Mon, 14 Dec 2020 15:24:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44734)
+	id 1koupd-0007aG-Ck
+	for alex.bennee@linaro.org; Mon, 14 Dec 2020 15:52:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50840)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1kouNm-0000UE-9E
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:46 -0500
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:39594)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1kouNk-0006dw-F5
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:46 -0500
-Received: by mail-pf1-x441.google.com with SMTP id m6so3142654pfm.6
- for <qemu-devel@nongnu.org>; Mon, 14 Dec 2020 12:23:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=JwsepyuXYc7GayLTZJ2zaNcwjYwyjPdiQ/lSSlYJXOg=;
- b=JjFY4Vzg5FRwv67h2PgI04RkipmDhnB5DJU4M/FLsACdyZ5gWBmwFaAYuuvqE09fm7
- kEn+dCztcTjFfrrJA1uHE7S3qkiM7S8/IjnNf/+Yw2P0yl0GA0yPVUVoUEhAEoy4W45p
- gtsR6HJOHjjDS1qA8DmH+kWsIeNle/SRWfndxkjZq4aLvmITLH9bBMxDwGfQtanbM8bj
- aHJmElSC7s+R+aMAhaiSOgjpXm3MgRtpayrtVsFZgQxpjQBBqOZ74WeIDjn/j5SvyL9O
- sJswfotTZAaI+Lj8O6kpWbi+XKmFsFQc5a+SSwkmYp/ImLWbPOUol0U2KFLXJ9HKBFtc
- su5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=JwsepyuXYc7GayLTZJ2zaNcwjYwyjPdiQ/lSSlYJXOg=;
- b=Cz1urr+p3GDVSjCCEAo/M+ABBz8pEPJEyC4PWlFmpaP6seGqDj2/u+rJN+N2fv/UMP
- pVhLICb1FeS7x5Ld+Z+mYd6BdXTrhklYBtt+AXC2/TINMYHy7IP20YyaZpry1Gqm1aDa
- 2N5mY3FNdnhAaAvInXUIgX3d6A8Yz+Oe50PspzG5gx7iTAYfSzYn2fDGvoAndMlFgbQ4
- drPjcsrltFGWOaHnZ8/LacXcu8M4fefAs7TdVQP3cG6taPXGfCTMuDXB8dHz/OqT6Xzp
- q6VhoscfSU7zONDJOzMZ8E4cc0kPs+eeltPvUj2nvqSAZ4VfeYk8IatLzr0k5fdyXZI3
- 0+mQ==
-X-Gm-Message-State: AOAM533c1tEUnNTlwoitoEdJlSilw4xOeiDs/1SBnfMe9JgXgjKDHpt6
- BrNwxQfXtRDp7ACyNEfmtji6qZhN7JOsHkiDDpeb5SCf/VVdLCBQ8rt5BM+o1UygNa1DUF61bFM
- u/GxehqDZovLU1ldhm2ZR9yzAgdBkKjMuCcakss2R+B5TSd2Bj9qY784sg8oll24/9iQ3SnwW7g
- ==
-X-Received: by 2002:a62:8448:0:b029:197:9ab7:9fdb with SMTP id
- k69-20020a6284480000b02901979ab79fdbmr25432256pfd.49.1607977422696; 
- Mon, 14 Dec 2020 12:23:42 -0800 (PST)
-Received: from cube.nuviainc.com (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id a141sm20927524pfa.189.2020.12.14.12.23.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Dec 2020 12:23:42 -0800 (PST)
-From: Rebecca Cran <rebecca@nuviainc.com>
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kount-0006GD-1d
+ for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:50:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51990)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kounq-0001er-Or
+ for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:50:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1607979039;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=e8s0qM6SVULiVakZ+lFdI424N9CKza+D/1TsLuhzs68=;
+ b=HRZqDRFQMCsDcBV/VeRolcLVyrIzoo31566u6gobvRniLSZpSa2EF88FQfVP5CtXA61sUz
+ 3oPaaLcTEcA821DwhdrvAMiZxJHhs8Tm96TJjmjKixiI9XlI8i66lNB2OJDKpmGdh3d4AJ
+ aOUe9bgVkeDavsmRnvpe6xqSwKZ6kBI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-497-_zrDCkvEOv65EhIZL6k0Fw-1; Mon, 14 Dec 2020 15:50:36 -0500
+X-MC-Unique: _zrDCkvEOv65EhIZL6k0Fw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A7506190A7A0;
+ Mon, 14 Dec 2020 20:50:34 +0000 (UTC)
+Received: from localhost (ovpn-116-160.rdu2.redhat.com [10.10.116.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1E58760BE2;
+ Mon, 14 Dec 2020 20:50:31 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 1/3] target/arm: add FEAT_TLBIOS support
-Date: Mon, 14 Dec 2020 13:23:27 -0700
-Message-Id: <20201214202329.26765-2-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201214202329.26765-1-rebecca@nuviainc.com>
-References: <20201214202329.26765-1-rebecca@nuviainc.com>
+Subject: [PATCH v2 0/3] pc: Support configuration of SMBIOS entry point type
+Date: Mon, 14 Dec 2020 15:50:26 -0500
+Message-Id: <20201214205029.2991222-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=rebecca@nuviainc.com; helo=mail-pf1-x441.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,100 +108,52 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Rebecca Cran <rebecca@nuviainc.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PnA9FHMuZxnp
+X-TUID: 7PSOnCeLVfs8
 
-ARMv8.4 adds the mandatory FEAT_TLBIOS, which provides instructions
-for TLB invalidation of entries in the Outer Shareable domain.
-
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
----
- target/arm/helper.c | 30 ++++++++++++++++++++
- 1 file changed, 30 insertions(+)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7b8bcd69030f..28556eb48b44 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4870,6 +4870,10 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 0,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vmalle1is_write },
-+    { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_vmalle1is_write },
-     { .name = "TLBI_VAE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 1,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-@@ -4878,6 +4882,10 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 2,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vmalle1is_write },
-+    { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
-+      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_vmalle1is_write },
-     { .name = "TLBI_VAAE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 3,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-@@ -4914,16 +4922,30 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
-       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 7,
-       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vae1_write },
-+    { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle1is_write },
-     { .name = "TLBI_IPAS2E1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 1,
-       .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_IPAS2E1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 0,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-     { .name = "TLBI_IPAS2LE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 5,
-       .access = PL2_W, .type = ARM_CP_NOP },
-+    { .name = "TLBI_IPAS2LE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 4,
-+      .access = PL2_W, .type = ARM_CP_NOP },
-     { .name = "TLBI_ALLE1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_alle1is_write },
-+   { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle1is_write },
-     { .name = "TLBI_VMALLS12E1IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 6,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
-@@ -5590,6 +5612,10 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 0,
-       .access = PL2_W, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_alle2is_write },
-+    { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL2_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle2is_write },
-     { .name = "TLBI_VAE2IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
-       .type = ARM_CP_NO_RAW, .access = PL2_W,
-@@ -5795,6 +5821,10 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 3, .opc2 = 0,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_alle3is_write },
-+    { .name = "TLBI_ALLE3OS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_alle3is_write },
-     { .name = "TLBI_VAE3IS", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 3, .opc2 = 1,
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
--- 
-2.26.2
+This includes code previously submitted[1] by Daniel P. Berrang=C3=A9=0D
+to add a "smbios-ep" machine property on PC.=0D
+=0D
+SMBIOS 3.0 is necessary to support more than ~720 VCPUs, as a=0D
+large number of VCPUs can easily hit the table size limit of=0D
+SMBIOS 2.1 entry points.=0D
+=0D
+[1] https://lore.kernel.org/qemu-devel/20200908165438.1008942-5-berrange@re=
+dhat.com=0D
+    https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@re=
+dhat.com=0D
+=0D
+Daniel P. Berrang=C3=A9 (1):=0D
+  hw/i386: expose a "smbios-ep" PC machine property=0D
+=0D
+Eduardo Habkost (2):=0D
+  smbios: Rename SMBIOS_ENTRY_POINT_* enums=0D
+  hw/smbios: Use qapi for SmbiosEntryPointType=0D
+=0D
+ qapi/qapi-schema.json        |  1 +=0D
+ qapi/smbios.json             | 11 +++++++++++=0D
+ include/hw/firmware/smbios.h | 10 ++--------=0D
+ include/hw/i386/pc.h         |  3 +++=0D
+ hw/arm/virt.c                |  2 +-=0D
+ hw/i386/pc.c                 | 26 ++++++++++++++++++++++++++=0D
+ hw/i386/pc_piix.c            |  2 +-=0D
+ hw/i386/pc_q35.c             |  2 +-=0D
+ hw/smbios/smbios.c           |  8 ++++----=0D
+ qapi/meson.build             |  1 +=0D
+ 10 files changed, 51 insertions(+), 15 deletions(-)=0D
+ create mode 100644 qapi/smbios.json=0D
+=0D
+--=20=0D
+2.28.0=0D
+=0D
 

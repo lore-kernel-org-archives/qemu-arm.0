@@ -1,142 +1,90 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id o7sm16481507wrw.62.2020.12.14.11.05.15
+        by smtp.gmail.com with ESMTPSA id i7sm19387803wrv.12.2020.12.14.07.01.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Dec 2020 11:05:15 -0800 (PST)
+        Mon, 14 Dec 2020 07:01:07 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B6ADA1FF7E;
-	Mon, 14 Dec 2020 19:05:14 +0000 (GMT)
-References: <1607937538-69471-1-git-send-email-bmeng.cn@gmail.com>
- <1607937538-69471-2-git-send-email-bmeng.cn@gmail.com>
- <87blewvftl.fsf@linaro.org>
- <CAEUhbmVJbdi_STsy=SGxYapLdd9oZq5i0abhjzKLzyjYA9Yxbw@mail.gmail.com>
+	by zen.linaroharston (Postfix) with ESMTP id E6DCE1FF7E;
+	Mon, 14 Dec 2020 15:01:06 +0000 (GMT)
+References: <20201125213617.2496935-1-keithp@keithp.com>
+ <873608vde9.fsf@linaro.org>
 User-agent: mu4e 1.5.7; emacs 28.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Bin Meng <bmeng.cn@gmail.com>
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Peter Maydell
- <peter.maydell@linaro.org>, "qemu-devel@nongnu.org Developers"
- <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org
- <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 1/3] hw/misc: imx6_ccm: Update PMU_MISC0 reset value
-Date: Mon, 14 Dec 2020 19:05:01 +0000
-In-reply-to: <CAEUhbmVJbdi_STsy=SGxYapLdd9oZq5i0abhjzKLzyjYA9Yxbw@mail.gmail.com>
-Message-ID: <87mtygtdhx.fsf@linaro.org>
+To: Keith Packard <keithp@keithp.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Laurent Vivier
+ <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>
+Subject: Re: [PATCH 0/8] Add RISC-V semihosting 0.2. Finish ARM semihosting 2.0
+Date: Mon, 14 Dec 2020 14:58:12 +0000
+In-reply-to: <873608vde9.fsf@linaro.org>
+Message-ID: <87wnxktost.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 1bikPmpzmg/0
+X-TUID: NYVI0ekIZYe2
 
 
-Bin Meng <bmeng.cn@gmail.com> writes:
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-> On Mon, Dec 14, 2020 at 6:32 PM Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
->>
->>
->> Bin Meng <bmeng.cn@gmail.com> writes:
->>
->> > From: Bin Meng <bin.meng@windriver.com>
->> >
->> > U-Boot expects PMU_MISC0 register bit 7 is set (see init_bandgap()
->> > in arch/arm/mach-imx/mx6/soc.c) during boot. This bit indicates the
->> > bandgap has stabilized.
->> >
->> > With this change, the latest upstream U-Boot (v2021.01-rc3) for imx6
->> > sabrelite board (mx6qsabrelite_defconfig), with a slight change made
->> > by switching CONFIG_OF_SEPARATE to CONFIG_OF_EMBED, boots to U-Boot
->> > shell on QEMU with the following command:
->> >
->> > $ qemu-system-arm -M sabrelite -m 1G -kernel u-boot -display none \
->> >     -serial null -serial stdio
->> >
->> > Boot log below:
->> >
->> >   U-Boot 2021.01-rc3 (Dec 12 2020 - 17:40:02 +0800)
->> >
->> >   CPU:   Freescale i.MX?? rev1.0 at 792 MHz
->> >   Reset cause: POR
->> >   Model: Freescale i.MX6 Quad SABRE Lite Board
->> >   Board: SABRE Lite
->> >   I2C:   ready
->> >   DRAM:  1 GiB
->> >   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0x5c scl.gp=3D0x55
->> >   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
->> >   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0x6d scl.gp=3D0x6c
->> >   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
->> >   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0xcb scl.gp=3D0x5
->> >   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
->> >   MMC:   FSL_SDHC: 0, FSL_SDHC: 1
->> >   Loading Environment from MMC... *** Warning - No block device, using=
- default environment
->> >
->> >   In:    serial
->> >   Out:   serial
->> >   Err:   serial
->> >   Net:   Board Net Initialization Failed
->> >   No ethernet found.
->> >   starting USB...
->> >   Bus usb@2184000: usb dr_mode not found
->> >   USB EHCI 1.00
->> >   Bus usb@2184200: USB EHCI 1.00
->> >   scanning bus usb@2184000 for devices... 1 USB Device(s) found
->> >   scanning bus usb@2184200 for devices... 1 USB Device(s) found
->> >          scanning usb for storage devices... 0 Storage Device(s) found
->> >          scanning usb for ethernet devices... 0 Ethernet Device(s) fou=
-nd
->> >   Hit any key to stop autoboot:  0
->> >   =3D>
->> >
->> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
->> > ---
->> >
->> >  hw/misc/imx6_ccm.c | 2 +-
->> >  1 file changed, 1 insertion(+), 1 deletion(-)
->> >
->> > diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
->> > index cb74042..7e031b6 100644
->> > --- a/hw/misc/imx6_ccm.c
->> > +++ b/hw/misc/imx6_ccm.c
->> > @@ -450,7 +450,7 @@ static void imx6_ccm_reset(DeviceState *dev)
->> >      s->analog[PMU_REG_3P0] =3D 0x00000F74;
->> >      s->analog[PMU_REG_2P5] =3D 0x00005071;
->> >      s->analog[PMU_REG_CORE] =3D 0x00402010;
->> > -    s->analog[PMU_MISC0] =3D 0x04000000;
->> > +    s->analog[PMU_MISC0] =3D 0x04000080;
->>
->> Are the registers different on the imx6ul machine or should a similar
->> change be made to imx6ul_ccm_reset?
+> Keith Packard <keithp@keithp.com> writes:
 >
-> I am not sure. I did not try the mcimx6ul-evk machine. I only looked
-> at the i.MX6 DQ reference manual, and current user in QEMU of this
-> imx6_ccm is only the sabrelite machine.
->
+>> This series adds support for RISC-V Semihosting, version 0.2 as
+>> specified here:
 >>
->> Also what is the write behaviour of this bit? If it is RAO/WI then
->> analog_mask needs fixing so a write to the register doesn't reset the
->> state.
+>> 	https://github.com/riscv/riscv-semihosting-spec/releases/tag/0.2
 >>
->> >      s->analog[PMU_MISC1] =3D 0x00000000;
->> >      s->analog[PMU_MISC2] =3D 0x00272727;
+>> This specification references the ARM semihosting release 2.0 as specifi=
+ed here:
 >>
+>> 	https://static.docs.arm.com/100863/0200/semihosting.pdf
+>>
+>> That specification includes several semihosting calls which were not
+>> previously implemented. This series includes implementations for the
+>> remaining calls so that both RISC-V and ARM versions are now complete.
+>>
+>> Tests for release 2.0 can be found in picolibc on the semihost-2.0-all
+>> branch:
+>>
+>> 	https://github.com/picolibc/picolibc/tree/semihost-2.0-all
+>>
+>> These tests uncovered a bug in the SYS_HEAPINFO implementation for
+>> ARM, which has been fixed in this series as well.
+>>
+>> The series is structured as follows:
+>>
+>>  1. Move shared semihosting files
+>>  2. Change public common semihosting APIs
+>>  3. Change internal semihosting interfaces
+>>  4. Fix SYS_HEAPINFO crash on ARM
+>>  5. Add RISC-V semihosting implementation
+>>  6-8. Add missing semihosting operations from release 2.0
+>>
+>> Signed-off-by: Keith Packard <keithp@keithp.com>
 >
-> There is no analog_mask in the imx6_ccm codes. It exists in the
-> imx6ul_ccm however.
+> Queued to semihosting/next, thanks.
 
-My bad - I was grepping for PMU_MISC0. It would be nice to nail down if
-there is any similarity between the two instances. Doing a diff between
-the two does look pretty similar which makes me wonder if there is scope
-for a more generic shared code implementation with a few feature flags.
-I suspect that is a more involved job however which is out of scope for
-this series.
+Hmm scratch that... it fails in a number of linux-user only builds with:
 
->
-> The i.MX6 DQ reference manual says this bit is RW, and does not
-> document the behavior of write. AFAICT this bit is only concerned by
-> the bootloader.
->
-> Regards,
-> Bin
+  /usr/bin/ld: libqemu-aarch64_be-linux-user.fa.p/linux-user_aarch64_cpu_lo=
+op.c.o: in function `cpu_loop':
+  /builds/stsquad/qemu/build/../linux-user/aarch64/cpu_loop.c:133: undefine=
+d reference to `do_common_semihosting'
+  collect2: error: ld returned 1 exit status
+  [651/2871] Compiling C object libqemu-alpha-linux-user.fa.p/target_alpha_=
+translate.c.o
+  ninja: build stopped: subcommand failed.
 
+As well as a chunk of the various cross builds, see:
+
+  https://gitlab.com/stsquad/qemu/-/pipelines/229443833/failures
+
+On the next re-spin could you include Kito Cheng's patch for linux-user
+support and also drop the version numbering from the commit titles so I
+don't have to file them off again.
+
+Thanks,
 
 --=20
 Alex Benn=C3=A9e

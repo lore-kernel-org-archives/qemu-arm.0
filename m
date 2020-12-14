@@ -1,88 +1,141 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id 125sm31425025wmc.27.2020.12.14.03.31.52
+        by smtp.gmail.com with ESMTPSA id v20sm30561301wml.34.2020.12.14.07.17.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Dec 2020 03:31:52 -0800 (PST)
+        Mon, 14 Dec 2020 07:17:32 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B78771FF7E;
-	Mon, 14 Dec 2020 11:31:51 +0000 (GMT)
-References: <20201125213617.2496935-1-keithp@keithp.com>
- <20201125213617.2496935-6-keithp@keithp.com>
- <CA+yXCZC038LfuswrAo6W3gHXfGkwPscMEKDQJvutV7xcoC+wPw@mail.gmail.com>
- <87r1nz6iz4.fsf@keithp.com>
- <CA+yXCZA7XhLXDN7ZDk8D90eyXOLCzsrzwUyego1Sn=D9x3BGMQ@mail.gmail.com>
+	by zen.linaroharston (Postfix) with ESMTP id 0036A1FF7E;
+	Mon, 14 Dec 2020 15:17:31 +0000 (GMT)
+References: <1607937538-69471-1-git-send-email-bmeng.cn@gmail.com>
+ <1607937538-69471-2-git-send-email-bmeng.cn@gmail.com>
+ <87blewvftl.fsf@linaro.org>
+ <CAEUhbmVJbdi_STsy=SGxYapLdd9oZq5i0abhjzKLzyjYA9Yxbw@mail.gmail.com>
 User-agent: mu4e 1.5.7; emacs 28.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Kito Cheng <kito.cheng@gmail.com>
-Cc: Keith Packard <keithp@keithp.com>, qemu-devel@nongnu.org, Alistair
- Francis <Alistair.Francis@wdc.com>, Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>, Laurent Vivier <laurent@vivier.eu>,
- Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Sagar Karandikar <sagark@eecs.berkeley.edu>
-Subject: Re: [PATCH 5/8] riscv: Add semihosting support [v13]
-Date: Mon, 14 Dec 2020 11:29:35 +0000
-In-reply-to: <CA+yXCZA7XhLXDN7ZDk8D90eyXOLCzsrzwUyego1Sn=D9x3BGMQ@mail.gmail.com>
-Message-ID: <87zh2gtyhk.fsf@linaro.org>
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Peter Maydell
+ <peter.maydell@linaro.org>, "qemu-devel@nongnu.org Developers"
+ <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org
+ <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 1/3] hw/misc: imx6_ccm: Update PMU_MISC0 reset value
+Date: Mon, 14 Dec 2020 15:02:04 +0000
+In-reply-to: <CAEUhbmVJbdi_STsy=SGxYapLdd9oZq5i0abhjzKLzyjYA9Yxbw@mail.gmail.com>
+Message-ID: <87tusoto1g.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: TLV3YoEhPQ0a
+X-TUID: YrbnbNqG9GtE
 
 
-Kito Cheng <kito.cheng@gmail.com> writes:
+Bin Meng <bmeng.cn@gmail.com> writes:
 
-> Hi Keith:
+> On Mon, Dec 14, 2020 at 6:32 PM Alex Benn=C3=A9e <alex.bennee@linaro.org>=
+ wrote:
+>>
+>>
+>> Bin Meng <bmeng.cn@gmail.com> writes:
+>>
+>> > From: Bin Meng <bin.meng@windriver.com>
+>> >
+>> > U-Boot expects PMU_MISC0 register bit 7 is set (see init_bandgap()
+>> > in arch/arm/mach-imx/mx6/soc.c) during boot. This bit indicates the
+>> > bandgap has stabilized.
+>> >
+>> > With this change, the latest upstream U-Boot (v2021.01-rc3) for imx6
+>> > sabrelite board (mx6qsabrelite_defconfig), with a slight change made
+>> > by switching CONFIG_OF_SEPARATE to CONFIG_OF_EMBED, boots to U-Boot
+>> > shell on QEMU with the following command:
+>> >
+>> > $ qemu-system-arm -M sabrelite -m 1G -kernel u-boot -display none \
+>> >     -serial null -serial stdio
+>> >
+>> > Boot log below:
+>> >
+>> >   U-Boot 2021.01-rc3 (Dec 12 2020 - 17:40:02 +0800)
+>> >
+>> >   CPU:   Freescale i.MX?? rev1.0 at 792 MHz
+>> >   Reset cause: POR
+>> >   Model: Freescale i.MX6 Quad SABRE Lite Board
+>> >   Board: SABRE Lite
+>> >   I2C:   ready
+>> >   DRAM:  1 GiB
+>> >   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0x5c scl.gp=3D0x55
+>> >   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
+>> >   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0x6d scl.gp=3D0x6c
+>> >   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
+>> >   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0xcb scl.gp=3D0x5
+>> >   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
+>> >   MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+>> >   Loading Environment from MMC... *** Warning - No block device, using=
+ default environment
+>> >
+>> >   In:    serial
+>> >   Out:   serial
+>> >   Err:   serial
+>> >   Net:   Board Net Initialization Failed
+>> >   No ethernet found.
+>> >   starting USB...
+>> >   Bus usb@2184000: usb dr_mode not found
+>> >   USB EHCI 1.00
+>> >   Bus usb@2184200: USB EHCI 1.00
+>> >   scanning bus usb@2184000 for devices... 1 USB Device(s) found
+>> >   scanning bus usb@2184200 for devices... 1 USB Device(s) found
+>> >          scanning usb for storage devices... 0 Storage Device(s) found
+>> >          scanning usb for ethernet devices... 0 Ethernet Device(s) fou=
+nd
+>> >   Hit any key to stop autoboot:  0
+>> >   =3D>
+>> >
+>> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+>> > ---
+>> >
+>> >  hw/misc/imx6_ccm.c | 2 +-
+>> >  1 file changed, 1 insertion(+), 1 deletion(-)
+>> >
+>> > diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
+>> > index cb74042..7e031b6 100644
+>> > --- a/hw/misc/imx6_ccm.c
+>> > +++ b/hw/misc/imx6_ccm.c
+>> > @@ -450,7 +450,7 @@ static void imx6_ccm_reset(DeviceState *dev)
+>> >      s->analog[PMU_REG_3P0] =3D 0x00000F74;
+>> >      s->analog[PMU_REG_2P5] =3D 0x00005071;
+>> >      s->analog[PMU_REG_CORE] =3D 0x00402010;
+>> > -    s->analog[PMU_MISC0] =3D 0x04000000;
+>> > +    s->analog[PMU_MISC0] =3D 0x04000080;
+>>
+>> Are the registers different on the imx6ul machine or should a similar
+>> change be made to imx6ul_ccm_reset?
 >
-> Thanks for your reply, but it seems like we need some more modification in
->  linux-user/riscv/cpu_loop.c to enable that, I guess I should post that i=
-n mail
-> rather than attachment :)
+> I am not sure. I did not try the mcimx6ul-evk machine. I only looked
+> at the i.MX6 DQ reference manual, and current user in QEMU of this
+> imx6_ccm is only the sabrelite machine.
 >
-> Patch here:
+>>
+>> Also what is the write behaviour of this bit? If it is RAO/WI then
+>> analog_mask needs fixing so a write to the register doesn't reset the
+>> state.
+>>
+>> >      s->analog[PMU_MISC1] =3D 0x00000000;
+>> >      s->analog[PMU_MISC2] =3D 0x00272727;
+>>
 >
-> From 2f1eb5825a6dda177d3289106970eab05cb08445 Mon Sep 17 00:00:00 2001
-> From: Kito Cheng <kito.cheng@sifive.com>
-> Date: Wed, 9 Dec 2020 14:24:51 +0800
-> Subject: [PATCH] riscv: Add semihosting support for user mode
+> There is no analog_mask in the imx6_ccm codes. It exists in the
+> imx6ul_ccm however.
 >
-> This could make testing easier and ARM/AArch64 has support on
-> their linux user mode too, so I think it should be reasonable.
->
-> Verified GCC testsuite with newlib/semihosting.
->
-> Signed-off-by: Kito Cheng <kito.cheng@sifive.com>
+> The i.MX6 DQ reference manual says this bit is RW, and does not
+> document the behavior of write. AFAICT this bit is only concerned by
+> the bootloader.
 
-If the riscv linux-user maintainer is happy with it I'll take it through
-semihosting/next. It certainly has a use case in the ARM case.
+My bad - I was grepping for PMU_MISC0. It would be nice to nail down if
+there is any similarity between the two instances. Doing a diff between
+the two does look pretty similar which makes me wonder if there is scope
+for a more generic shared code implementation with a few feature flags.
+I suspect that is a more involved job however which is out of scope for
+this series.
 
-> ---
->  linux-user/riscv/cpu_loop.c | 5 +++++
->  1 file changed, 5 insertions(+)
 >
-> diff --git a/linux-user/riscv/cpu_loop.c b/linux-user/riscv/cpu_loop.c
-> index aa9e437875..9665dabb09 100644
-> --- a/linux-user/riscv/cpu_loop.c
-> +++ b/linux-user/riscv/cpu_loop.c
-> @@ -23,6 +23,7 @@
->  #include "qemu.h"
->  #include "cpu_loop-common.h"
->  #include "elf.h"
-> +#include "hw/semihosting/common-semi.h"
->
->  void cpu_loop(CPURISCVState *env)
->  {
-> @@ -91,6 +92,10 @@ void cpu_loop(CPURISCVState *env)
->              sigcode =3D TARGET_SEGV_MAPERR;
->              sigaddr =3D env->badaddr;
->              break;
-> +        case RISCV_EXCP_SEMIHOST:
-> +            env->gpr[xA0] =3D do_common_semihosting(cs);
-> +            env->pc +=3D 4;
-> +            break;
->          case EXCP_DEBUG:
->          gdbstep:
->              signum =3D TARGET_SIGTRAP;
+> Regards,
+> Bin
 
 
 --=20

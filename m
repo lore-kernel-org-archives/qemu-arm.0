@@ -1,569 +1,150 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2877510lfq;
-        Mon, 14 Dec 2020 12:07:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxa68T06EDNmX1ZKYrinUEQ8YfDIfJRMDYnpluZ/WOyFp5qzMme03QPIwKy0kKlxf+hyb0C
-X-Received: by 2002:a63:d810:: with SMTP id b16mr25422704pgh.110.1607976442077;
-        Mon, 14 Dec 2020 12:07:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607976442; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2890671lfq;
+        Mon, 14 Dec 2020 12:25:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy4keBJupo8M3b7L7M85U9EEkhpQIUUNaYKprbd0B1owx9Z4kLi4+FhWoJb+ui1pv0H1su8
+X-Received: by 2002:a25:234d:: with SMTP id j74mr29720153ybj.93.1607977538699;
+        Mon, 14 Dec 2020 12:25:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607977538; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZldziQj9PZx8i3VIptSBaE4uV3ihKSCzH971AwYTbHymOrP+oLxRR4/4S5FVHd5Tqu
-         I6CQ13M6+RYiWf7+32irCTbq758bZEmf/ZoseSvF2J4bBWA8RhJDKtPhM58KfPTmL0CJ
-         0+1jOCSkQpqTY9NvxqN+WHAkMOIr8lQb03isupl6Lqg1Iic/zOXnFzCoY4NAiRP56WFm
-         gra+st7b/TjoWyqfFAKdCeV8rUZaoPMLsn4eLktq/9Yym3g6nxkAr3r4SqKxn/nmC92L
-         qD0Yz5BIfBZRs4qV7OmBGHN0g58382558b7UmfObh2aOOtbK6jo0FV0hgEaTNiLgOieJ
-         oTQQ==
+        b=QxVJVUd4n0bnh1dTRMRvKGg0pnvtNINRh7xipyq/b9Xhuh6qXcie10p3xEK3JCpoSf
+         +nIayfF8+FnO7dQXGbnIf+rwjhFfzDKU080fymxZlZe8j7OVd40UbYJnvXaEYFJ8AgJp
+         an0xXvwkZJkNX47r4DKUKfGQyMjxlQ7H7x+U1POhvhfblfsTUf0EvEUj7rHC9ClAQ60f
+         9uVapH3h3XAe3PF7Or5c23zU4da47ob2vCLW9dm1jbLoOyFPyEuWParalTV1Fcew6TY0
+         sxfrzSBVCKNf0NMqFt2ZlRXNxjSy9EfyzUHQzbftEFK198mgrwcLCc0hgMfJbUu8YBy5
+         PrUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=IuGv4H2xEsDhXTm2gdnXzMxdBmQB5NgIC9pd0aZxaOE=;
-        b=G3uX8aIz63yuos6M5YjpIGpcEIMBiXTqnXgbAq39jhyT1jybSgEPwYDwxHYGYlmpcU
-         8PK2PICrfi4eRD+ms6G28D5jtiRrpFQzMYP0482esdgBNhmSI1b2l/vv5pgglzC45bvr
-         ku1s4E7IsbDSa0DUC9t1DC6+SSWQ+OMEEpMcTMpPvgpAyxUpjNQ/fCn2iSMD73M3JYZa
-         /s3viXU8LICcDQLWT1iy8ErqR6tIiNTpRT//29hziQSrAlmU+52+iyAxnfmvg+UC+WN9
-         1vO4sMayImuwjUcRJ7ljeTYFLWkENPrrvaqywvpmmm2fEhfE5iHwbpA3TrMQtx6YR8sr
-         n42Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=8uKymEvHxLhI/HESvCLlvDaFGVnfnEsKv4uQPw8Lgj0=;
+        b=lsQqlEYUXAznWFeokST63r/qIjCFZmVsrIAvoX6lw+kRg1RGB/S6jhq0vu99pIpj9S
+         2eQB4VsvRPlKiULOsVPhFC4sedwvvnDuQDEVi+1rb5+AwQeP4x40ZQ2fa+lBpXCCMr/O
+         1MCsT/QSBusf5mnBVRtFlcZ4ILiH999ahpGm6/1RtjpHuVjRxsgXww+xOATM1ISNp4Gf
+         V9XUC9EFnjTB1Jajv0y6tBFTB3guD5c3HCXDnAlZJJtjqVhQ6T6mSXrnzFPptADZGnfY
+         b7fg4D4OHq1S6wqXOHhSqfE9n/iKv0hKZDj+1mZSfPFF0/YUaKNnSZ/e6uFKWIZUvnWX
+         BRVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=K9RUcJnu;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=pWzMZHCs;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Return-Path: <keithp@keithp.com>
-Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id w128si16802478pfc.266.2020.12.14.12.07.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Dec 2020 12:07:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=b3Jg1bD0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n21si18405379yba.428.2020.12.14.12.25.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 14 Dec 2020 12:25:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=K9RUcJnu;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=pWzMZHCs;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 66C173F2E378;
-	Mon, 14 Dec 2020 12:07:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607976440; bh=0eZXdSlmEZzZ/qZ6vpzpqHEOFeMQka/AJEayELnsFOw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=K9RUcJnu1kL7f5vGJVsBY0VmdS+V5c/qcEgP+TcGDpkFnOu3CuqLNsCehlcpAVEmh
-	 7GLbPHLEkyvbqdan68TTRKXv0myLbfEjxJK0MMAcgasw+dLSp5Al2W2e7jyaXPPe6n
-	 x/SbAHcxbyZknFvBQ9W2+eVHq5WoErUrU8rrWcO4xJIjlU1OQBmghoERsbkPUP7TJQ
-	 TgXmNhlyUm5n8E2npzf9XqtA9Mo75GPvCPpsCGVM5iGDurxm45nlNobMDUzNqVkYzl
-	 xlizQRYbt6OvsWu6q8ag3NrCZYE8PLQ7F+gOiWkUpMHaDoHdh1l+we+SAt2P1qEbpn
-	 q3ds4slxVlscg==
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
-	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id uH6c-ckDlbg0; Mon, 14 Dec 2020 12:07:19 -0800 (PST)
-Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id C693C3F2E37E;
-	Mon, 14 Dec 2020 12:07:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607976437; bh=0eZXdSlmEZzZ/qZ6vpzpqHEOFeMQka/AJEayELnsFOw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=pWzMZHCshxWhc9iAJC+k6ZTWl8gONa6sPXy2amtPqayoA7Qoo6hzY7TQcVct1LLHf
-	 Lmaxbh7qty671dL/P/6K/LmWCKrCsfijSkqCjvFpPjJ/A1mg0GEg3HSYmcFw5ryPNP
-	 89C6WPHqcKzbjFvaPFJpJVZmXWEtV7sbh+GMS1bIq78pBqy635ieYwpzp5bzYfT7sZ
-	 losIMaTVm0JaPias7i2qPUpU+/u0XCumKBpEIhNAxNfQUvsW8LVkDaDRskEcT65Hqe
-	 O9JS13xtLqMxBBA4AChpxYeI1S1KsrgDDXH65U96DuEBeaEluNFIPBQp8A4+QAAOQe
-	 IKMHpTUttLObg==
-Received: by keithp.com (Postfix, from userid 1000)
-	id 4CAB3158222B; Mon, 14 Dec 2020 12:07:17 -0800 (PST)
-From: Keith Packard <keithp@keithp.com>
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=b3Jg1bD0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60450 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kouPa-0002D7-30
+	for alex.bennee@linaro.org; Mon, 14 Dec 2020 15:25:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44784)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1kouNp-0000Yo-8P
+ for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:49 -0500
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:37721)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1kouNn-0006et-Qk
+ for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:49 -0500
+Received: by mail-pg1-x541.google.com with SMTP id c12so12948421pgm.4
+ for <qemu-devel@nongnu.org>; Mon, 14 Dec 2020 12:23:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=8uKymEvHxLhI/HESvCLlvDaFGVnfnEsKv4uQPw8Lgj0=;
+ b=b3Jg1bD0h40cQzECQaVmhjMaJsCTGQCvcddKA7qpx2D5/nzfex2Ja6oUAL3hHc2H1D
+ H7nu++PnTyMYRj/LvigPXQ/82j8XzI6yamCwMC4mF99soHwVBHYgR0xClHtOYslIw85B
+ plOzD2ING28+yT2R5Kj2f7VT2ANkjGrOeKbFRujbyM6Ai9N3A3dQ3JQieDSUZhXeKc/d
+ v4bSVlLO/yOi4BUVYec4KtIHFZ95lfUbiZe8r01X5WRK5k6BcRz3jJTVgkCzWh6agiOk
+ t9JYJR9GjnVvRfSYpla4PO2d5KLmFZcNz8Q/4bsFG35m5rKzCQsADufZjfgIICmF/SAz
+ b8Xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8uKymEvHxLhI/HESvCLlvDaFGVnfnEsKv4uQPw8Lgj0=;
+ b=ZAcu2uVXR/q3VHuCp+A34jVt5QfC3iMLfljctSCGJ26t65+nhRBc+NEAZQcYSwAXm3
+ LjJ7hcEUZtL/HJfcgUpkWO+3vQfSq2rVy9jL1Q30zgidRD5/YXLLgAF3gqk9gXaNXqeW
+ DQ2v4QcapGwyO52JUI823D/qjMV4UnA3efM04CNLeL6EuP4kP2N4KyjxBWlD8nJEgcu1
+ 7oWTvSSMIyV75JuojlLf9NwW5z+PxwRp59oB2YuSMi1tdiLUrbTFN+m4WSR3dQyxMlyA
+ pEyJ6uSUfoAebOhU/gA1AKfx1NCjACyl2cMV54yN6hvbFbwJet15V16mQvhPilnu9NMA
+ niCw==
+X-Gm-Message-State: AOAM531X/Suih/1Um/hqQgkP1W8vhDlA51BTtS8E96/YN7SM5tiK7Tto
+ f28CIoBWw2d0d3aeeSqzFu4+M6z0N3BBDQLEUU4cI18EOiOVG5JlsaFpWvquV8CGkpUM+vD1Zle
+ 54VEqO2Nvsg+MmLUXKA17ROMiQKEXLaaTjZqwLbI912mGPcj6NCQcVWdg2v/VQuZy/rG67OIRIw
+ ==
+X-Received: by 2002:aa7:9722:0:b029:19e:2832:4f63 with SMTP id
+ k2-20020aa797220000b029019e28324f63mr25482629pfg.58.1607977426221; 
+ Mon, 14 Dec 2020 12:23:46 -0800 (PST)
+Received: from cube.nuviainc.com (c-174-52-16-57.hsd1.ut.comcast.net.
+ [174.52.16.57])
+ by smtp.gmail.com with ESMTPSA id a141sm20927524pfa.189.2020.12.14.12.23.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Dec 2020 12:23:45 -0800 (PST)
+From: Rebecca Cran <rebecca@nuviainc.com>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Keith Packard <keithp@keithp.com>
-Subject: [PATCH 5/9] riscv: Add semihosting support
-Date: Mon, 14 Dec 2020 12:07:09 -0800
-Message-Id: <20201214200713.3886611-6-keithp@keithp.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201214200713.3886611-1-keithp@keithp.com>
-References: <87wnxktost.fsf@linaro.org>
- <20201214200713.3886611-1-keithp@keithp.com>
+Subject: [PATCH 3/3] target/arm: set ID_AA64ISAR0.TLB to 2 for max AARCH64 CPU
+ type
+Date: Mon, 14 Dec 2020 13:23:29 -0700
+Message-Id: <20201214202329.26765-4-rebecca@nuviainc.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20201214202329.26765-1-rebecca@nuviainc.com>
+References: <20201214202329.26765-1-rebecca@nuviainc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: vkOpFWbrjbHP
+Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
+ envelope-from=rebecca@nuviainc.com; helo=mail-pg1-x541.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Rebecca Cran <rebecca@nuviainc.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wIeMa5siPmYI
 
-Adapt the arm semihosting support code for RISCV. This implementation
-is based on the standard for RISC-V semihosting version 0.2 as
-documented in
+Enable support for FEAT_TLBIOS and FEAT_TLBIRANGE by setting
+ID_AA64ISAR0.TLB to 2 for the max AARCH64 CPU type.
 
-   https://github.com/riscv/riscv-semihosting-spec/releases/tag/0.2
-
-Signed-off-by: Keith Packard <keithp@keithp.com>
-
+Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
 ---
+ target/arm/cpu64.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-v2:
-	Update PC after exception is handled to follow
-	change in the ARM version for SYS_READC
-
-v3:
-	Disallow semihosting in user mode; report a regular
-	breakpoint in that case.
-
-v4:
-	Fix errors reported by checkpatch
-
-v5:
-	Reference current RISC-V semihosting specification
-
-v6:
-	Add support for semihosting in riscv64-linux-user and
-	riscv32-linux-user
-
-v7:
-	Add meson build support
-
-v8:
-	Fix errors reported by checkpatch that crept in.
-
-v9:
-	Changes suggested by Alistair Francis <alistair23@gmail.com>:
-	Don't add me to the MAINTAINERS file.
-	Remove duplicate #include in target/riscv/cpu.h
-	Reference RISC-V semihosting spec in target/riscv/riscv-semi.c
-
-v10:
-	Use common semihosting implementation instead of a separate copy.
-
-	Make sure addresses of the three breakpoint-signaling
-	instructions all lie within the same page. Change suggested by
-	Richard Henderson <richard.henderson@linaro.org>
-
-v11:
-	Use CONFIG_ARM_COMPATIBLE_SEMIHOSTING
-
-v12:
-	Fix bug in SYS_EXIT support on rv64
-
-v13:
-	Add common_semi_rambase implementation. This locates the
-	memory region containing the stack and uses the base of that.
-
-	Fix SET_ARG and GET_ARG on rv64 targets to operate on 64-bit
-	values rather than 32-bit. Put_user_ual/get_user_ual are
-	confusingly defined by softmmu-semi.h as being equivalent to
-	put_user_u32/get_user_u32.
----
- default-configs/devices/riscv32-softmmu.mak   |  2 +
- default-configs/devices/riscv64-softmmu.mak   |  2 +
- .../targets/riscv32-linux-user.mak            |  1 +
- .../targets/riscv64-linux-user.mak            |  1 +
- hw/semihosting/common-semi.c                  | 82 ++++++++++++++++++-
- hw/semihosting/common-semi.h                  |  5 +-
- linux-user/qemu.h                             |  4 +-
- linux-user/semihost.c                         |  8 +-
- qemu-options.hx                               | 10 ++-
- target/riscv/cpu_bits.h                       |  1 +
- target/riscv/cpu_helper.c                     | 10 +++
- .../riscv/insn_trans/trans_privileged.c.inc   | 37 ++++++++-
- target/riscv/translate.c                      | 11 +++
- 13 files changed, 162 insertions(+), 12 deletions(-)
-
-diff --git a/default-configs/devices/riscv32-softmmu.mak b/default-configs/devices/riscv32-softmmu.mak
-index 94a236c9c2..d847bd5692 100644
---- a/default-configs/devices/riscv32-softmmu.mak
-+++ b/default-configs/devices/riscv32-softmmu.mak
-@@ -3,6 +3,8 @@
- # Uncomment the following lines to disable these optional devices:
- #
- #CONFIG_PCI_DEVICES=n
-+CONFIG_SEMIHOSTING=y
-+CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 649213082ff9..4b9c5887cc1c 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -620,6 +620,7 @@ static void aarch64_max_initfn(Object *obj)
+         t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);
+         t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);
+         t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2); /* v8.5-CondM */
++        t = FIELD_DP64(t, ID_AA64ISAR0, TLB, 2);
+         t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);
+         cpu->isar.id_aa64isar0 = t;
  
- # Boards:
- #
-diff --git a/default-configs/devices/riscv64-softmmu.mak b/default-configs/devices/riscv64-softmmu.mak
-index 76b6195648..d5eec75f05 100644
---- a/default-configs/devices/riscv64-softmmu.mak
-+++ b/default-configs/devices/riscv64-softmmu.mak
-@@ -3,6 +3,8 @@
- # Uncomment the following lines to disable these optional devices:
- #
- #CONFIG_PCI_DEVICES=n
-+CONFIG_SEMIHOSTING=y
-+CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
- 
- # Boards:
- #
-diff --git a/default-configs/targets/riscv32-linux-user.mak b/default-configs/targets/riscv32-linux-user.mak
-index dfb259e8aa..6a9d1b1bc1 100644
---- a/default-configs/targets/riscv32-linux-user.mak
-+++ b/default-configs/targets/riscv32-linux-user.mak
-@@ -2,3 +2,4 @@ TARGET_ARCH=riscv32
- TARGET_BASE_ARCH=riscv
- TARGET_ABI_DIR=riscv
- TARGET_XML_FILES= gdb-xml/riscv-32bit-cpu.xml gdb-xml/riscv-32bit-fpu.xml gdb-xml/riscv-64bit-fpu.xml gdb-xml/riscv-32bit-csr.xml gdb-xml/riscv-32bit-virtual.xml
-+CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-diff --git a/default-configs/targets/riscv64-linux-user.mak b/default-configs/targets/riscv64-linux-user.mak
-index b13895f3b0..0a92849a1b 100644
---- a/default-configs/targets/riscv64-linux-user.mak
-+++ b/default-configs/targets/riscv64-linux-user.mak
-@@ -2,3 +2,4 @@ TARGET_ARCH=riscv64
- TARGET_BASE_ARCH=riscv
- TARGET_ABI_DIR=riscv
- TARGET_XML_FILES= gdb-xml/riscv-64bit-cpu.xml gdb-xml/riscv-32bit-fpu.xml gdb-xml/riscv-64bit-fpu.xml gdb-xml/riscv-64bit-csr.xml gdb-xml/riscv-64bit-virtual.xml
-+CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index f09deff4d3..f0cf5f10f5 100644
---- a/hw/semihosting/common-semi.c
-+++ b/hw/semihosting/common-semi.c
-@@ -1,6 +1,6 @@
- /*
-  *  Semihosting support for systems modeled on the Arm "Angel"
-- *  semihosting syscalls design.
-+ *  semihosting syscalls design. This includes Arm and RISC-V processors
-  *
-  *  Copyright (c) 2005, 2007 CodeSourcery.
-  *  Copyright (c) 2019 Linaro
-@@ -25,6 +25,10 @@
-  *  ARM Semihosting is documented in:
-  *     Semihosting for AArch32 and AArch64 Release 2.0
-  *     https://static.docs.arm.com/100863/0200/semihosting.pdf
-+ *
-+ *  RISC-V Semihosting is documented in:
-+ *     RISC-V Semihosting
-+ *     https://github.com/riscv/riscv-semihosting-spec/blob/main/riscv-semihosting-spec.adoc
-  */
- 
- #include "qemu/osdep.h"
-@@ -222,6 +226,42 @@ common_semi_rambase(CPUState *cs)
- 
- #endif /* TARGET_ARM */
- 
-+#ifdef TARGET_RISCV
-+static inline target_ulong
-+common_semi_arg(CPUState *cs, int argno)
-+{
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+    return env->gpr[xA0 + argno];
-+}
-+
-+static inline void
-+common_semi_set_ret(CPUState *cs, target_ulong ret)
-+{
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+    env->gpr[xA0] = ret;
-+}
-+
-+static inline bool
-+common_semi_sys_exit_extended(CPUState *cs, int nr)
-+{
-+    return (nr == TARGET_SYS_EXIT_EXTENDED || sizeof(target_ulong) == 8);
-+}
-+
-+#ifndef CONFIG_USER_ONLY
-+
-+static inline target_ulong
-+common_semi_rambase(CPUState *cs)
-+{
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+    return common_semi_find_region_base(env->gpr[xSP]);
-+}
-+#endif
-+
-+#endif
-+
- /*
-  * Allocate a new guest file descriptor and return it; if we
-  * couldn't allocate a new fd then return -1.
-@@ -398,6 +438,12 @@ static target_ulong common_semi_flen_buf(CPUState *cs)
-         sp = env->regs[13];
-     }
- #endif
-+#ifdef TARGET_RISCV
-+    RISCVCPU *cpu = RISCV_CPU(cs);
-+    CPURISCVState *env = &cpu->env;
-+
-+    sp = env->gpr[xSP];
-+#endif
- 
-     return sp - 64;
- }
-@@ -741,6 +787,37 @@ static const GuestFDFunctions guestfd_fns[] = {
-      put_user_u32(val, args + (n) * 4))
- #endif
- 
-+#ifdef TARGET_RISCV
-+
-+/*
-+ * get_user_ual is defined as get_user_u32 in softmmu-semi.h,
-+ * we need a macro that fetches a target_ulong
-+ */
-+#define get_user_utl(arg, p)                    \
-+    ((sizeof(target_ulong) == 8) ?              \
-+     get_user_u64(arg, p) :                     \
-+     get_user_u32(arg, p))
-+
-+/*
-+ * put_user_ual is defined as put_user_u32 in softmmu-semi.h,
-+ * we need a macro that stores a target_ulong
-+ */
-+#define put_user_utl(arg, p)                    \
-+    ((sizeof(target_ulong) == 8) ?              \
-+     put_user_u64(arg, p) :                     \
-+     put_user_u32(arg, p))
-+
-+#define GET_ARG(n) do {                                                 \
-+        if (get_user_utl(arg ## n, args + (n) * sizeof(target_ulong))) { \
-+            errno = EFAULT;                                             \
-+            return set_swi_errno(cs, -1);                              \
-+        }                                                               \
-+    } while (0)
-+
-+#define SET_ARG(n, val)                                 \
-+    put_user_utl(val, args + (n) * sizeof(target_ulong))
-+#endif
-+
- /*
-  * Do a semihosting call.
-  *
-@@ -1179,6 +1256,9 @@ target_ulong do_common_semihosting(CPUState *cs)
-         if (is_a64(cs->env_ptr)) {
-             return 0;
-         }
-+#endif
-+#ifdef TARGET_RISCV
-+        return 0;
- #endif
-         /* fall through -- invalid for A32/T32 */
-     default:
-diff --git a/hw/semihosting/common-semi.h b/hw/semihosting/common-semi.h
-index bc53e92c79..0bfab1c669 100644
---- a/hw/semihosting/common-semi.h
-+++ b/hw/semihosting/common-semi.h
-@@ -1,6 +1,6 @@
- /*
-  *  Semihosting support for systems modeled on the Arm "Angel"
-- *  semihosting syscalls design.
-+ *  semihosting syscalls design. This includes Arm and RISC-V processors
-  *
-  *  Copyright (c) 2005, 2007 CodeSourcery.
-  *  Copyright (c) 2019 Linaro
-@@ -26,6 +26,9 @@
-  *     Semihosting for AArch32 and AArch64 Release 2.0
-  *     https://static.docs.arm.com/100863/0200/semihosting.pdf
-  *
-+ *  RISC-V Semihosting is documented in:
-+ *     RISC-V Semihosting
-+ *     https://github.com/riscv/riscv-semihosting-spec/blob/main/riscv-semihosting-spec.adoc
-  */
- 
- #ifndef COMMON_SEMI_H
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 534753ca12..17aa992165 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -109,6 +109,8 @@ typedef struct TaskState {
-     /* FPA state */
-     FPA11 fpa;
- # endif
-+#endif
-+#if defined(TARGET_ARM) || defined(TARGET_RISCV)
-     int swi_errno;
- #endif
- #if defined(TARGET_I386) && !defined(TARGET_X86_64)
-@@ -122,7 +124,7 @@ typedef struct TaskState {
- #ifdef TARGET_M68K
-     abi_ulong tp_value;
- #endif
--#if defined(TARGET_ARM) || defined(TARGET_M68K)
-+#if defined(TARGET_ARM) || defined(TARGET_M68K) || defined(TARGET_RISCV)
-     /* Extra fields for semihosted binaries.  */
-     abi_ulong heap_base;
-     abi_ulong heap_limit;
-diff --git a/linux-user/semihost.c b/linux-user/semihost.c
-index a1f0f6050e..c0015ee7f6 100644
---- a/linux-user/semihost.c
-+++ b/linux-user/semihost.c
-@@ -1,11 +1,11 @@
- /*
-- * ARM Semihosting Console Support
-+ * ARM Compatible Semihosting Console Support.
-  *
-  * Copyright (c) 2019 Linaro Ltd
-  *
-- * Currently ARM is unique in having support for semihosting support
-- * in linux-user. So for now we implement the common console API but
-- * just for arm linux-user.
-+ * Currently ARM and RISC-V are unique in having support for
-+ * semihosting support in linux-user. So for now we implement the
-+ * common console API but just for arm and risc-v linux-user.
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/qemu-options.hx b/qemu-options.hx
-index e60ad42976..329e7597ed 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4186,10 +4186,10 @@ ERST
- DEF("semihosting", 0, QEMU_OPTION_semihosting,
-     "-semihosting    semihosting mode\n",
-     QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA | QEMU_ARCH_LM32 |
--    QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2)
-+    QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
- SRST
- ``-semihosting``
--    Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II only).
-+    Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V only).
- 
-     Note that this allows guest direct access to the host filesystem, so
-     should only be used with a trusted guest OS.
-@@ -4201,10 +4201,10 @@ DEF("semihosting-config", HAS_ARG, QEMU_OPTION_semihosting_config,
-     "-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]\n" \
-     "                semihosting configuration\n",
- QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA | QEMU_ARCH_LM32 |
--QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2)
-+QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2 | QEMU_ARCH_RISCV)
- SRST
- ``-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]``
--    Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II
-+    Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II, RISC-V
-     only).
- 
-     Note that this allows guest direct access to the host filesystem, so
-@@ -4219,6 +4219,8 @@ SRST
-     open/read/write/seek/select. Tensilica baremetal libc for ISS and
-     linux platform "sim" use this interface.
- 
-+    On RISC-V this implements the standard semihosting API, version 0.2.
-+
-     ``target=native|gdb|auto``
-         Defines where the semihosting calls will be addressed, to QEMU
-         (``native``) or to GDB (``gdb``). The default is ``auto``, which
-diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
-index 24b24c69c5..f0d3d1c07e 100644
---- a/target/riscv/cpu_bits.h
-+++ b/target/riscv/cpu_bits.h
-@@ -544,6 +544,7 @@
- #define RISCV_EXCP_INST_PAGE_FAULT               0xc /* since: priv-1.10.0 */
- #define RISCV_EXCP_LOAD_PAGE_FAULT               0xd /* since: priv-1.10.0 */
- #define RISCV_EXCP_STORE_PAGE_FAULT              0xf /* since: priv-1.10.0 */
-+#define RISCV_EXCP_SEMIHOST                      0x10
- #define RISCV_EXCP_INST_GUEST_PAGE_FAULT         0x14
- #define RISCV_EXCP_LOAD_GUEST_ACCESS_FAULT       0x15
- #define RISCV_EXCP_VIRT_INSTRUCTION_FAULT        0x16
-diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-index a2787b1d48..e730fd1fe9 100644
---- a/target/riscv/cpu_helper.c
-+++ b/target/riscv/cpu_helper.c
-@@ -24,6 +24,7 @@
- #include "exec/exec-all.h"
- #include "tcg/tcg-op.h"
- #include "trace.h"
-+#include "hw/semihosting/common-semi.h"
- 
- int riscv_cpu_mmu_index(CPURISCVState *env, bool ifetch)
- {
-@@ -844,6 +845,15 @@ void riscv_cpu_do_interrupt(CPUState *cs)
-     target_ulong htval = 0;
-     target_ulong mtval2 = 0;
- 
-+    if  (cause == RISCV_EXCP_SEMIHOST) {
-+        if (env->priv >= PRV_S) {
-+            env->gpr[xA0] = do_common_semihosting(cs);
-+            env->pc += 4;
-+            return;
-+        }
-+        cause = RISCV_EXCP_BREAKPOINT;
-+    }
-+
-     if (!async) {
-         /* set tval to badaddr for traps with address information */
-         switch (cause) {
-diff --git a/target/riscv/insn_trans/trans_privileged.c.inc b/target/riscv/insn_trans/trans_privileged.c.inc
-index 2a61a853bf..32312be202 100644
---- a/target/riscv/insn_trans/trans_privileged.c.inc
-+++ b/target/riscv/insn_trans/trans_privileged.c.inc
-@@ -29,7 +29,42 @@ static bool trans_ecall(DisasContext *ctx, arg_ecall *a)
- 
- static bool trans_ebreak(DisasContext *ctx, arg_ebreak *a)
- {
--    generate_exception(ctx, RISCV_EXCP_BREAKPOINT);
-+    target_ulong    ebreak_addr = ctx->base.pc_next;
-+    target_ulong    pre_addr = ebreak_addr - 4;
-+    target_ulong    post_addr = ebreak_addr + 4;
-+    uint32_t pre    = 0;
-+    uint32_t ebreak = 0;
-+    uint32_t post   = 0;
-+
-+    /*
-+     * The RISC-V semihosting spec specifies the following
-+     * three-instruction sequence to flag a semihosting call:
-+     *
-+     *      slli zero, zero, 0x1f       0x01f01013
-+     *      ebreak                      0x00100073
-+     *      srai zero, zero, 0x7        0x40705013
-+     *
-+     * The two shift operations on the zero register are no-ops, used
-+     * here to signify a semihosting exception, rather than a breakpoint.
-+     *
-+     * Uncompressed instructions are required so that the sequence is easy
-+     * to validate.
-+     *
-+     * The three instructions are required to lie in the same page so
-+     * that no exception will be raised when fetching them.
-+     */
-+
-+    if ((pre_addr & TARGET_PAGE_MASK) == (post_addr & TARGET_PAGE_MASK)) {
-+        pre    = opcode_at(&ctx->base, pre_addr);
-+        ebreak = opcode_at(&ctx->base, ebreak_addr);
-+        post   = opcode_at(&ctx->base, post_addr);
-+    }
-+
-+    if  (pre == 0x01f01013 && ebreak == 0x00100073 && post == 0x40705013) {
-+        generate_exception(ctx, RISCV_EXCP_SEMIHOST);
-+    } else {
-+        generate_exception(ctx, RISCV_EXCP_BREAKPOINT);
-+    }
-     exit_tb(ctx); /* no chaining */
-     ctx->base.is_jmp = DISAS_NORETURN;
-     return true;
-diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-index 554d52a4be..0f28b5f41e 100644
---- a/target/riscv/translate.c
-+++ b/target/riscv/translate.c
-@@ -64,6 +64,7 @@ typedef struct DisasContext {
-     uint16_t vlen;
-     uint16_t mlen;
-     bool vl_eq_vlmax;
-+    CPUState *cs;
- } DisasContext;
- 
- #ifdef TARGET_RISCV64
-@@ -747,6 +748,15 @@ static bool gen_shift(DisasContext *ctx, arg_r *a,
-     return true;
- }
- 
-+static uint32_t opcode_at(DisasContextBase *dcbase, target_ulong pc)
-+{
-+    DisasContext *ctx = container_of(dcbase, DisasContext, base);
-+    CPUState *cpu = ctx->cs;
-+    CPURISCVState *env = cpu->env_ptr;
-+
-+    return cpu_ldl_code(env, pc);
-+}
-+
- /* Include insn module translation function */
- #include "insn_trans/trans_rvi.c.inc"
- #include "insn_trans/trans_rvm.c.inc"
-@@ -814,6 +824,7 @@ static void riscv_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     ctx->lmul = FIELD_EX32(tb_flags, TB_FLAGS, LMUL);
-     ctx->mlen = 1 << (ctx->sew  + 3 - ctx->lmul);
-     ctx->vl_eq_vlmax = FIELD_EX32(tb_flags, TB_FLAGS, VL_EQ_VLMAX);
-+    ctx->cs = cs;
- }
- 
- static void riscv_tr_tb_start(DisasContextBase *db, CPUState *cpu)
 -- 
-2.29.2
+2.26.2
+

@@ -1,72 +1,72 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2877470lfq;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2877479lfq;
         Mon, 14 Dec 2020 12:07:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwMK3EXVX4QIFeTDTipUcpdwTvyK8fQIrXq5eCcOPfu5JJsA3soHrr2U/Mef3jXuJdBUdHC
-X-Received: by 2002:a17:902:fe95:b029:da:fa53:666 with SMTP id x21-20020a170902fe95b02900dafa530666mr24190686plm.72.1607976440011;
+X-Google-Smtp-Source: ABdhPJzqV2h5o7fJpvYE2kh0rbeIIx73C5NKW/NSF2s1bmD01H8qfdkgb/qClAvmkzEZh3rZAAsH
+X-Received: by 2002:a17:90a:9dc9:: with SMTP id x9mr26417741pjv.82.1607976440491;
         Mon, 14 Dec 2020 12:07:20 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1607976440; cv=none;
         d=google.com; s=arc-20160816;
-        b=EGgB2jypf5TE7v4AAA1WXH8t0nHKXUEfzT1yodOXLjFDXU869vwboXyyGMcXgBGASt
-         ze+H9XYyCqRaK4IyqHf/Z8dLk06esMVqXWQBxrmsCWiH1kjqSn28UeZJ4qAb/w89GF6m
-         9MR47TREwfHlKz4HVB1NSvG6xi6P7JJ4agecIB/oTyc6rgbhaXPMcvVltrz2jhWzR8DH
-         3bKgNJAl4sSOXH7pFkUqw2W5TTaAj+UcY1j3csunh74aF9FNdQ4NsfHCWaFRqIV1Qrxi
-         Du44sA+wRWwWBdu8jiONPu5qFIXYYNBuDqABU9rOAJjXP50sXzukN38oBtL07TJ4e9tx
-         yiYQ==
+        b=yup7fFJKbIEfAqS1fF/xk1i1RADQCpWn9e2crr6f3aNVOXzXqBYOEoCb/2Mk3yQapO
+         B873O3tQ3MqoBtK5N0nFDjQycearA7jQMbujRgVEAd2hp55f5ccqrlz06eJ5cGUAyTnG
+         Iu0yJg4TgHROB4EKhFkc6j9PXnAKsn40XCsYnkclJF2C5FywjXkxxtb3miIUbJ5uPshE
+         qdDx0fTv8ZiZXanA3KmQUTS16JpePxYOLrp0Ly6LloGxCL2RPGtKCBgEYOumHuKl9wk7
+         XIQOX70dpCTBW4FyG0LJ425O1TtU1OVNGG9qK8jVoY6wqG9BrsqLtys8Q7crvE0T80ly
+         svEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=qlegxJfvZcTjnYxrLxNnZr/mJ7//MzmXmfpo6d0D5HI=;
-        b=JfhmPGdZDmIE3q5aCaeBBAd3ftpJF4WXs6ScRe7Ztjfrpn+4pJXZuTq38BuOBbX9LO
-         AbBQn50Va3m+r3IOWSV0/nbS8jZxt+rmfWLmEVzeCBjLSQWyQGZk9TrymianWXEULs+N
-         vcX3NCBqYj4EsQtlbSGsAW/dNOUo0iC8odrBLufmHCt+uT96aCtN7eLtmlqmDv351oOI
-         I8saHdIeuwXxm3gwFPzdqQjmtU7rZGuehr9kN8znI5XebPdMY2SXIzFUxVi2EyoRearq
-         qGXjcOyPI9uqBVGIjUhbhN5mMeNsIjCoZN3Dn9nzQv9oRnBEK6ByMh+KBG3yChSbBPIK
-         u88Q==
+        bh=e8/JBkf5XRYR2jlmHhXQa/oAfk42i4YKZ5CQNriX1pQ=;
+        b=beK+vfrt3ahQvV18p4G3PivUQzqM9U4jJM3PFvht0MZ4CznSn3uV1la7m4V0VYzK2V
+         OAaBU/GyRE4R3KGR4LPsP1/Cg30bBcZEyBVoUyq9zIUKCW645orI2zQ2njsmxv+bUPbZ
+         CliMGdaBr+pgpXg73hY+Qx+0lBNzzjopGpLQpSCvbVC0zQUsn6+eHOEVChfDwPUliRYq
+         +CO6DBVSD+37Jqkqwacyj1tbbcXwx6xpcyYbFxiYWygsHluMAl2NusUJ4RN400A0TCcz
+         2ifRk1qgx/EY7Qjfw3+UMZUPSl1eXhn6ac5jwd9tj2HSjcGjiQbVHvQi8PeC8QSZ1/e1
+         jXqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=hEXj2fRM;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=VlRNnvPN;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=cbiEveV3;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=mFbBYCaZ;
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Return-Path: <keithp@keithp.com>
 Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id f18si17680500pju.114.2020.12.14.12.07.19
+        by mx.google.com with ESMTPS id g17si17105669plo.55.2020.12.14.12.07.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Dec 2020 12:07:19 -0800 (PST)
+        Mon, 14 Dec 2020 12:07:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=hEXj2fRM;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=VlRNnvPN;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=cbiEveV3;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=mFbBYCaZ;
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id A84543F2D6F1;
-	Mon, 14 Dec 2020 12:07:18 -0800 (PST)
+	by elaine.keithp.com (Postfix) with ESMTP id 767B33F2DF09;
+	Mon, 14 Dec 2020 12:07:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607976438; bh=RmH2R6QxobB3gCYv+aIjULuWn7gQGSuqYqflCGwU5OI=;
+	t=1607976439; bh=ETONX6pqJAgbbD1tdRpZsjEs+0tSmO0TnizYqDWs4oo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hEXj2fRM9SbPndVcaUqg0TVhjj2/AtI69re/MzLFhtGVNt03673uynrUCYZKNdfVq
-	 vAKAs+3YlqVkFjarPajSMDP6FYDUz7Wmb+g8AK0asZy6B57bv9TlAKh4QD5zwKzkkG
-	 Dg0qfZcBtIvQYWn0fGzO5NYh4o/CjS2ewLM7Q7EjSaDCjdHDq12g+qD4VI/JH9kPNO
-	 joEhc+uuYcKrz2UWV2oY7wDvCwjBUJOd+S5y7xKoWq9kHSrjY3APUxzoi1RmmbUORw
-	 TUoSjYcmRQz5Q6EwadfU2h/wQU+FvMkKHwLRKNJRtqpxXoJdwQlNr7O+2ZyTvB5FU/
-	 vClSSolfFUDqQ==
+	b=cbiEveV3R2SZJ/mhqYRYlC6eSPKhEF8zsEZOlRUej8gN7ukEDhYTq/XWnn8LfnJGC
+	 4PA2AvEf15tyAAaNpaPoi1O8+XfzDlgnYEn7RemeLVtxpE0UIku2NJWfLDNYDz+M78
+	 JahBklPRLAEe2HclYy0Ru8I4Fn0FQFJIvs94a9fRMrgLI7D7jjhomWBdALthGeiasR
+	 8Ts62JUKDiYvR8NIsNcxjuSquk2xxDQHq98zUrzY3MojeHaj+uRMije6Lr72i1U/+w
+	 RKNo3sSUDgVtJUoLfoFs9TSY3jSOgTnxZRH6EdGTxHCRXWwux+ilW/IvnP+P2mAZS7
+	 jPT/6nCMKxb7A==
 X-Virus-Scanned: Debian amavisd-new at keithp.com
 Received: from elaine.keithp.com ([127.0.0.1])
 	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id HpKMlp2pV3hq; Mon, 14 Dec 2020 12:07:18 -0800 (PST)
+	with LMTP id c_rhjW2eHzcO; Mon, 14 Dec 2020 12:07:18 -0800 (PST)
 Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id 995633F2E379;
+	by elaine.keithp.com (Postfix) with ESMTPSA id 89C593F2E35B;
 	Mon, 14 Dec 2020 12:07:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607976437; bh=RmH2R6QxobB3gCYv+aIjULuWn7gQGSuqYqflCGwU5OI=;
+	t=1607976437; bh=ETONX6pqJAgbbD1tdRpZsjEs+0tSmO0TnizYqDWs4oo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VlRNnvPNCSbCiXxm1EL8YehsVCioLiaAVgn6nICuV49OCiJFTgb4G9OQ5i8wlAdwZ
-	 mCIYeinfVhD9vj6QvTfxmDzlrY8zCMvHMrSCnO6PsuoZ43HrUiercC8IE/T3SlpfWI
-	 MHPFag52RVxX9PR2+KGewfnOE/QlX2vwyzuMlTDLYY8l8iZU4BtRCTa3FL6UTn/dLD
-	 bvHpQmbpwsf6naSjvMlKQ1dGyOuVUQgdq4EtiwY0qwHow+MEekz/s7s5aGY2vXOMYI
-	 plfqHQ+4jDyjbNNmxIb9uG0RRgQynBL4KeWR24QRUJpKN/kSUPkvN3ChmatnsHxht7
-	 0iYX4VYZmfW1g==
+	b=mFbBYCaZK3vw0UXTTf7N8qZv/l1qF3XUxLyHREbUt17MXjTs/GEpgUAzj999mFXL2
+	 ondce+m2XlrqMQbgWXlRJHCHfamisWorwwd6ObF5o+tw7Sfny4PQqheMm+QpVEiR8j
+	 w0rOC4Ke+XHgZs70GJuXeL6ABhJaD7PRZz2JpZHjMexZ2uF0JVwx1wS2vGCXZhl3/I
+	 4WROLV7QqzakrBfuRO+7j1UNZXS34ajwADiw3fj/YYxO2NY82wS2i0M8TcPagmYx2m
+	 VafYiC2n6eZ3/DxI1ye/A4qzJYkpugxnPrxQt3cqm4ZqC1CIHNVK79VKeRb2cIHfHP
+	 znzsxLKlrJU9g==
 Received: by keithp.com (Postfix, from userid 1000)
-	id 484181582202; Mon, 14 Dec 2020 12:07:17 -0800 (PST)
+	id 396D01582185; Mon, 14 Dec 2020 12:07:17 -0800 (PST)
 From: Keith Packard <keithp@keithp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -78,94 +78,162 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org,
 	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Keith Packard <keithp@keithp.com>
-Subject: [PATCH 4/9] semihosting: Support SYS_HEAPINFO when env->boot_info is not set
-Date: Mon, 14 Dec 2020 12:07:08 -0800
-Message-Id: <20201214200713.3886611-5-keithp@keithp.com>
+	Keith Packard <keithp@keithp.com>,
+	Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH 1/9] semihosting: Move ARM semihosting code to shared directories
+Date: Mon, 14 Dec 2020 12:07:05 -0800
+Message-Id: <20201214200713.3886611-2-keithp@keithp.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214200713.3886611-1-keithp@keithp.com>
 References: <87wnxktost.fsf@linaro.org>
  <20201214200713.3886611-1-keithp@keithp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: gsvcIdYX/7Jx
+X-TUID: YdqDb1dNAfZq
 
-env->boot_info is only set in some ARM startup paths, so we cannot
-rely on it to support the SYS_HEAPINFO semihosting function. When not
-available, fallback to finding a RAM memory region containing the
-current stack and use the base of that.
+This commit renames two files which provide ARM semihosting support so
+that they can be shared by other architectures:
+
+ 1. target/arm/arm-semi.c     -> hw/semihosting/common-semi.c
+ 2. linux-user/arm/semihost.c -> linux-user/semihost.c
+
+The build system was modified use a new config variable,
+CONFIG_ARM_COMPATIBLE_SEMIHOSTING, which has been added to the ARM
+softmmu and linux-user default configs. The contents of the source
+files has not been changed in this patch.
 
 Signed-off-by: Keith Packard <keithp@keithp.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
----
+----
 
 v2
-	Explicitly convert 64-bits to 128-bits in find_region_base
-	for hosts that don't have native 128-bit int type.
----
- hw/semihosting/common-semi.c | 43 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 42 insertions(+), 1 deletion(-)
+	Place common-semi.c name in arm_ss, just as arm-semi.c was
 
-diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index 33c82f73b1..f09deff4d3 100644
---- a/hw/semihosting/common-semi.c
-+++ b/hw/semihosting/common-semi.c
-@@ -137,6 +137,36 @@ typedef struct GuestFD {
+v3
+	Create CONFIG_ARM_COMPATIBLE_SEMIHOSTING and assign in
+	arm config files
+
+v4
+	Also update aarch64_be default config
+---
+ default-configs/devices/arm-softmmu.mak               | 1 +
+ default-configs/targets/aarch64-linux-user.mak        | 1 +
+ default-configs/targets/aarch64_be-linux-user.mak     | 1 +
+ default-configs/targets/arm-linux-user.mak            | 1 +
+ hw/semihosting/Kconfig                                | 3 +++
+ target/arm/arm-semi.c => hw/semihosting/common-semi.c | 0
+ hw/semihosting/meson.build                            | 3 +++
+ linux-user/arm/meson.build                            | 3 ---
+ linux-user/meson.build                                | 1 +
+ linux-user/{arm => }/semihost.c                       | 0
+ target/arm/meson.build                                | 2 --
+ 11 files changed, 11 insertions(+), 5 deletions(-)
+ rename target/arm/arm-semi.c => hw/semihosting/common-semi.c (100%)
+ rename linux-user/{arm => }/semihost.c (100%)
+
+diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
+index 08a32123b4..0500156a0c 100644
+--- a/default-configs/devices/arm-softmmu.mak
++++ b/default-configs/devices/arm-softmmu.mak
+@@ -42,4 +42,5 @@ CONFIG_FSL_IMX25=y
+ CONFIG_FSL_IMX7=y
+ CONFIG_FSL_IMX6UL=y
+ CONFIG_SEMIHOSTING=y
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+ CONFIG_ALLWINNER_H3=y
+diff --git a/default-configs/targets/aarch64-linux-user.mak b/default-configs/targets/aarch64-linux-user.mak
+index 163c9209f4..4713253709 100644
+--- a/default-configs/targets/aarch64-linux-user.mak
++++ b/default-configs/targets/aarch64-linux-user.mak
+@@ -2,3 +2,4 @@ TARGET_ARCH=aarch64
+ TARGET_BASE_ARCH=arm
+ TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
+ TARGET_HAS_BFLT=y
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/default-configs/targets/aarch64_be-linux-user.mak b/default-configs/targets/aarch64_be-linux-user.mak
+index 4c953cf8c5..fae831558d 100644
+--- a/default-configs/targets/aarch64_be-linux-user.mak
++++ b/default-configs/targets/aarch64_be-linux-user.mak
+@@ -3,3 +3,4 @@ TARGET_BASE_ARCH=arm
+ TARGET_WORDS_BIGENDIAN=y
+ TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
+ TARGET_HAS_BFLT=y
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/default-configs/targets/arm-linux-user.mak b/default-configs/targets/arm-linux-user.mak
+index c7cd872e86..e741ffd4d3 100644
+--- a/default-configs/targets/arm-linux-user.mak
++++ b/default-configs/targets/arm-linux-user.mak
+@@ -3,3 +3,4 @@ TARGET_SYSTBL_ABI=common,oabi
+ TARGET_SYSTBL=syscall.tbl
+ TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml
+ TARGET_HAS_BFLT=y
++CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+diff --git a/hw/semihosting/Kconfig b/hw/semihosting/Kconfig
+index efe0a30734..4c30dc6b16 100644
+--- a/hw/semihosting/Kconfig
++++ b/hw/semihosting/Kconfig
+@@ -1,3 +1,6 @@
  
- static GArray *guestfd_array;
+ config SEMIHOSTING
+        bool
++
++config ARM_COMPATIBLE_SEMIHOSTING
++       bool
+diff --git a/target/arm/arm-semi.c b/hw/semihosting/common-semi.c
+similarity index 100%
+rename from target/arm/arm-semi.c
+rename to hw/semihosting/common-semi.c
+diff --git a/hw/semihosting/meson.build b/hw/semihosting/meson.build
+index f40ac574c4..5b4a170270 100644
+--- a/hw/semihosting/meson.build
++++ b/hw/semihosting/meson.build
+@@ -2,3 +2,6 @@ specific_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: files(
+   'config.c',
+   'console.c',
+ ))
++
++specific_ss.add(when: ['CONFIG_ARM_COMPATIBLE_SEMIHOSTING'],
++		if_true: files('common-semi.c'))
+diff --git a/linux-user/arm/meson.build b/linux-user/arm/meson.build
+index 432984b58e..5a93c925cf 100644
+--- a/linux-user/arm/meson.build
++++ b/linux-user/arm/meson.build
+@@ -1,6 +1,3 @@
+-linux_user_ss.add(when: 'TARGET_AARCH64', if_true: files('semihost.c'))
+-linux_user_ss.add(when: 'TARGET_ARM', if_true: files('semihost.c'))
+-
+ subdir('nwfpe')
  
-+#ifndef CONFIG_USER_ONLY
-+#include "exec/address-spaces.h"
-+/*
-+ * Find the base of a RAM region containing the specified address
-+ */
-+static inline hwaddr
-+common_semi_find_region_base(hwaddr addr)
-+{
-+    MemoryRegion *subregion;
-+
-+    /*
-+     * Find the chunk of R/W memory containing the address.  This is
-+     * used for the SYS_HEAPINFO semihosting call, which should
-+     * probably be using information from the loaded application.
-+     */
-+    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
-+                   subregions_link) {
-+        if (subregion->ram && !subregion->readonly) {
-+            Int128 top128 = int128_add(int128_make64(subregion->addr),
-+                                       subregion->size);
-+            Int128 addr128 = int128_make64(addr);
-+            if (subregion->addr <= addr && int128_lt(addr128, top128)) {
-+                return subregion->addr;
-+            }
-+        }
-+    }
-+    return 0;
-+}
-+#endif
-+
- #ifdef TARGET_ARM
- static inline target_ulong
- common_semi_arg(CPUState *cs, int argno)
-@@ -175,7 +205,18 @@ common_semi_rambase(CPUState *cs)
- {
-     CPUArchState *env = cs->env_ptr;
-     const struct arm_boot_info *info = env->boot_info;
--    return info->loader_start;
-+    target_ulong sp;
-+
-+    if (info) {
-+        return info->loader_start;
-+    }
-+
-+    if (is_a64(env)) {
-+        sp = env->xregs[31];
-+    } else {
-+        sp = env->regs[13];
-+    }
-+    return common_semi_find_region_base(sp);
- }
- #endif
+ syscall_nr_generators += {
+diff --git a/linux-user/meson.build b/linux-user/meson.build
+index 2b94e4ba24..7fe28d659e 100644
+--- a/linux-user/meson.build
++++ b/linux-user/meson.build
+@@ -16,6 +16,7 @@ linux_user_ss.add(rt)
  
+ linux_user_ss.add(when: 'TARGET_HAS_BFLT', if_true: files('flatload.c'))
+ linux_user_ss.add(when: 'TARGET_I386', if_true: files('vm86.c'))
++linux_user_ss.add(when: 'CONFIG_ARM_COMPATIBLE_SEMIHOSTING', if_true: files('semihost.c'))
+ 
+ 
+ syscall_nr_generators = {}
+diff --git a/linux-user/arm/semihost.c b/linux-user/semihost.c
+similarity index 100%
+rename from linux-user/arm/semihost.c
+rename to linux-user/semihost.c
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index f5de2a77b8..15b936c101 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -32,8 +32,6 @@ arm_ss.add(files(
+ ))
+ arm_ss.add(zlib)
+ 
+-arm_ss.add(when: 'CONFIG_TCG', if_true: files('arm-semi.c'))
+-
+ arm_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c', 'kvm64.c'), if_false: files('kvm-stub.c'))
+ 
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
 -- 
 2.29.2

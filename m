@@ -1,163 +1,309 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2729315lfq;
-        Mon, 14 Dec 2020 08:59:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxLZIEO/AF8syxpUrNEkqWRJ8yI5PpzZIszxq77Icyeg8YY54xa4BzpYCmXYlKzaSkcbqXL
-X-Received: by 2002:a25:d10f:: with SMTP id i15mr38161823ybg.244.1607965143738;
-        Mon, 14 Dec 2020 08:59:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607965143; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2770705lfq;
+        Mon, 14 Dec 2020 09:49:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwLB1/cDZzt652jzpF42Mt4XNcL4jR4Y1zRn+xcUdzBqJLEJmCBQJgCswU0GTBjsZcLtBYX
+X-Received: by 2002:a25:d44:: with SMTP id 65mr37706042ybn.260.1607968166362;
+        Mon, 14 Dec 2020 09:49:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607968166; cv=none;
         d=google.com; s=arc-20160816;
-        b=f0Xehrklq/Fc6GmBjiklAHKFXfcsNRvEo9CN2dBb0o+RFoGg58HZ0NDVg86k2L+W2k
-         C+PGE7KRPeaJZxxbIBW5YZ45Ax/T7lL+NrsLxftBB3YrXsMI+ijDXdJBkSsNPuCBpgup
-         cG7TBj2aLk9ntVThenDfJO9wDYGQ7u9HJt8PCiMX4WUs8vfEvOwae0M8MGJ5rWKWXHkj
-         jXYCo2dtN15G8Zf6Ri2EmGqsllnDgbb3gW/Jtya9jILpxEW21kga5ILyXyFFddh/p3gR
-         ek0vif0L8fHqBSQjcW8bgLfhX5atd4Mje6MOQF/JZkQc7O4rBgP7p66wYw3eWywJjZsG
-         muXQ==
+        b=V/l8KiJTc45GPJQ5d3UFJxNQHV+KLn+KexwETLeiRzeotNnSiYQtKJmh7y1Cn/I8JZ
+         NML3BUm60v51kiylepqG2grDgqK4kBxNAC+1Q1Ks7xZHv9walR9uS+VD4hVp0WNmPNSd
+         tPTdPV8EmnAfK85a8WJDeGzNLCbauJIWqPvM9Ejted9E9hWOlRavJmGVnPIvI9vgL87K
+         Q+KqZAG1rZBTSzASpn4mvKFu7sdOQPowCV85UfiZyAuodxYrSzNP/2ERHILgie8xl4IH
+         b7HTKIxMmIKsgYBP6xnEjx3E75j6CLqERVX3QwiNX5a840ZhRGNdCjqcVaKSFzuJG2gF
+         Yj/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
+         :subject:message-id:date:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=nzkkrxNsf/tKSpJy0Ol/DYhuNPJEQyRqILQRkCfzVFw=;
-        b=Joyn5IdBZ4706bMPHzPoQgT68gE6dcW+a7IckxDIiaIX5OR1aeOyHOq5r+oB8phNcv
-         OAyI31g6jdDMmIHoamiX8MQRHR3Ze5H56inl+XUyeyWEt/zfIYV2h7NYtmUvvqneWtRV
-         xo8pTqQzvnCCHhliodcvP5zK7GV3kddzyDrVZMwGuR9G8FY+0SSOYWHYUPf3uzJADxMS
-         qX5T6/FoMsCLxSv4rZRtTKr5VeS2S4KjuTSBiFGlCwtHIK/m7GjUTF96rmzl9HdsKh0r
-         azR/slFuT3DqQT/60gY9jgbrYy4Wj6b5e6rU5sjLxHzEy6Z8i2Sm8HPnHR40myCsRyvz
-         MLMQ==
+        bh=+EQrl+gkKCuJ/kCP8jGocGj5VkI/HZ5P7oyiFCzLReo=;
+        b=d59uO75cF6s7ROJNVS/q9/L5cruJSEwWbu7uaU8h3gicUiPAyKUp6MuUKjHisJvArP
+         9CXKCqiXr7dEv2W27uhuBw7BCDV9LL66NTCENIDZmUGKFZy6ongfYx6yAlDcFiTCj5so
+         quvM7ooH0lBSrnf/bn8zgvRPbT+1Qw7L3IT6a7+xHqpYBiSWiSwhbL3GlbUFA8tAwVbD
+         OhO/86OohvPqJwpZeZ35F7ibS0tiqagzA6GUWR0MOC2ujmUTb0WUTpqmrlrDfKFJBddz
+         zu7HakKNIYiZbnDgG/Gd5RUJN/DY18bS5T4jj0NrEHrOr5K7DxJaJKGGT5fcqPS5RSQy
+         nxbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="OKK/22HE";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@google.com header.s=20161025 header.b=UvswvQMj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4si18375452ybj.249.2020.12.14.08.59.03
+        by mx.google.com with ESMTPS id n197si18781272ybg.488.2020.12.14.09.49.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Dec 2020 08:59:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Dec 2020 09:49:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="OKK/22HE";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40576 helo=lists1p.gnu.org)
+       dkim=fail header.i=@google.com header.s=20161025 header.b=UvswvQMj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:55878 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1korBf-0002xr-3j
-	for alex.bennee@linaro.org; Mon, 14 Dec 2020 11:59:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50878)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1koryP-0006TQ-Or
+	for alex.bennee@linaro.org; Mon, 14 Dec 2020 12:49:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37508)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1korAX-0002ow-Gk
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 11:57:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29491)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1korAT-0003dL-2f
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 11:57:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607965066;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=nzkkrxNsf/tKSpJy0Ol/DYhuNPJEQyRqILQRkCfzVFw=;
- b=OKK/22HEkZddUhpVI8gVNgUxzULUXeTxVv5VsJNn4NTD38eTo/2ird+4hsow3bojQmk7yX
- HbnylFKtpr1NuTIP2qW3otBjWniwyljBnV+T5Z8cC4gDoVvvUY3FjCgAUVVE/ARgYnDtyl
- +ABU5mG15gwtO5BhkPfhN0acSUgFOr8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-51-dOTt1Uv3MgeXrCvhXQnztA-1; Mon, 14 Dec 2020 11:57:42 -0500
-X-MC-Unique: dOTt1Uv3MgeXrCvhXQnztA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 007DB1006C85;
- Mon, 14 Dec 2020 16:57:41 +0000 (UTC)
-Received: from localhost (ovpn-113-200.ams2.redhat.com [10.36.113.200])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E6D352BCD0;
- Mon, 14 Dec 2020 16:57:32 +0000 (UTC)
-Date: Mon, 14 Dec 2020 16:57:31 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: marcandre.lureau@redhat.com
-Subject: Re: [PATCH v3 06/13] virtiofsd: replace _Static_assert with
- QEMU_BUILD_BUG_ON
-Message-ID: <20201214165731.GH620320@stefanha-x1.localdomain>
-References: <20201210134752.780923-1-marcandre.lureau@redhat.com>
- <20201210134752.780923-7-marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1koryF-0006S8-8O
+ for qemu-arm@nongnu.org; Mon, 14 Dec 2020 12:49:15 -0500
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:37606)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1koryC-0006AH-0A
+ for qemu-arm@nongnu.org; Mon, 14 Dec 2020 12:49:15 -0500
+Received: by mail-lf1-x141.google.com with SMTP id o17so29389035lfg.4
+ for <qemu-arm@nongnu.org>; Mon, 14 Dec 2020 09:49:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+EQrl+gkKCuJ/kCP8jGocGj5VkI/HZ5P7oyiFCzLReo=;
+ b=UvswvQMjComVRsNhR3Jcg+jRLzQXgN9mynSoGoMUe85kOEGv0UqI/ge/Wi/N/ga0Dg
+ ny4qZ+WEovqiaVO+1sCt6rifeIrjlO9Rnp+0JaV5BhttFGR8NwAv0HmrDtH2HlhsDMwp
+ HvXVa5REyiCb+wB+SDy9CveiZ0giwYjhkIR1nBuqUtblpZZWqReiJYG/Or5i+jamGxDf
+ CU4uz3VP2/FNCMxtlhzywqdMhEmtC1M7h5tdjtxLNc0P30e8OfxJFGIGMWZ4ZnwAkfPz
+ lq8s21ZBSNYk8RE0qp2Ju9bNO+4psUf2pJO/4S0JLE5YOemDUK9ATZTMKqaLzm6ravZJ
+ Wjbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+EQrl+gkKCuJ/kCP8jGocGj5VkI/HZ5P7oyiFCzLReo=;
+ b=mRrx67x1syXtPQ6ReVyfgA0hO0HxCiP2raiivT7i1Xj3bN91FxCM2FVgRlBEdf1mzo
+ Fnw95jK7AOZX/vfrCWkxATMhGjjh7ZSb7/mseh8fOSEOiTDdRQ9w9ludyUW/K+iQAqjM
+ 6K9w0gFZC1qH4SibeuOCnbsexTCX48m38e8RPSlxrHPgIxnMtdmRgCzveXKIJcQRhG7e
+ dbUncHbZ5/P4M7Vy6OSNQOggjvUrL/L4fUAuV8cwVd7Ny2WGZpkjA/ENgDfnWrQs25li
+ ZLyApcSAD1VpoIud/GEEJaO/ikSn3xTnTuY43Af3234VfxL4a3RGG9U+RQ/4jACZUi0T
+ OEKw==
+X-Gm-Message-State: AOAM5301F3LruJc6nTJ3gZ/K6K3K8oJSK1xbZBb57JuUlbf6Xa+UQFLC
+ EWvCVUuXXHKcM+HKrfc3XnfodI/4Qxl7f4SOryv4GA==
+X-Received: by 2002:a2e:8745:: with SMTP id q5mr10583543ljj.77.1607968148040; 
+ Mon, 14 Dec 2020 09:49:08 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201210134752.780923-7-marcandre.lureau@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="Enx9fNJ0XV5HaWRu"
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+References: <20201211222223.2252172-1-wuhaotsh@google.com>
+ <20201211222223.2252172-4-wuhaotsh@google.com>
+ <2d6eca6e-1690-8411-51c2-c0e7f8e8d677@amsat.org>
+In-Reply-To: <2d6eca6e-1690-8411-51c2-c0e7f8e8d677@amsat.org>
+Date: Mon, 14 Dec 2020 09:48:56 -0800
+Message-ID: <CAGcCb11CdDmLrndTTij6wMBNC1p7Y0VCowL+Y11oyg6+YS29Bg@mail.gmail.com>
+Subject: Re: [PATCH v2 3/4] hw/adc: Add an ADC module for NPCM7XX
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="000000000000469f1305b67042ca"
+Received-SPF: pass client-ip=2a00:1450:4864:20::141;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x141.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- philmd@redhat.com, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zOhlO4gzzqqG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, minyard@acm.org,
+ Patrick Venture <venture@google.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to: Hao Wu <wuhaotsh@google.com>
+From: Hao Wu via <qemu-arm@nongnu.org>
+X-TUID: LnEialjQDD23
 
---Enx9fNJ0XV5HaWRu
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+--000000000000469f1305b67042ca
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Dec 10, 2020 at 05:47:45PM +0400, marcandre.lureau@redhat.com wrote=
-:
-> From: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
->=20
-> This allows to get rid of a check for older GCC version (which was a bit
-> bogus too since it was falling back on c++ version..)
->=20
-> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  tools/virtiofsd/fuse_common.h | 11 +----------
->  1 file changed, 1 insertion(+), 10 deletions(-)
+Thanks for your comment! We'll incorporate them into our next patch version=
+.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+We plan to let the user use QOM get/set QMP commands to control ADC/PWM
+values, similar to hw/misc/tmp105.c. The user can set a voltage value as
+input using QOM-set, and the QEMU guest can read the converted value
+through this module. Similar for PWM, the user can read the duty-cycle and
+frequency using QOM-get. The user can also run a third-party simulator and
+alter these values during execution. Our test code also shows how to deal
+with these values.
 
---Enx9fNJ0XV5HaWRu
-Content-Type: application/pgp-signature; name="signature.asc"
+If you have a better suggestion, please let us know.
 
------BEGIN PGP SIGNATURE-----
+On Sun, Dec 13, 2020 at 3:47 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/XmXsACgkQnKSrs4Gr
-c8hM/QgAo7goQSbSjtniQApqy5STJw15VfReJdpV17jhRtfEYUPuLzhVUULS8G8b
-WI0xMh1L83QCQmaFxogrLPGI+zXM+slDrmn/zPcX3tyVXcs6UfJw6hbV2gk1y8fA
-kOCUVF1aTRe5M2SezgchbA6badCZ+Wv28xdAqvVbARJXOKKDWP3lZwaKsUESu9Os
-JyzoFCOajcEZru/pMKpd3DYKKjmHyr+AWMaY3+LEXAjJYi2SZfuTNDb30aiomP9N
-9ArM4OFuww0DmiKzYaOA8IurGv3KSXFbxMyckl05OKHW18iAjX2e9o7lXe3OFFOO
-LI+MK8lFJx1vbKX7lBL8Li1tsThXnA==
-=jtpu
------END PGP SIGNATURE-----
+> On 12/11/20 11:22 PM, Hao Wu via wrote:
+> > The ADC is part of NPCM7XX Module. Its behavior is controled by the
+> > ADC_CON register. It converts one of the eight analog inputs into a
+> > digital input and stores it in the ADC_DATA register when enabled.
+> >
+> > Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+> > Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> > ---
+> >  docs/system/arm/nuvoton.rst    |   2 +-
+> >  hw/adc/meson.build             |   1 +
+> >  hw/adc/npcm7xx_adc.c           | 318 ++++++++++++++++++++++++++
+> >  hw/arm/npcm7xx.c               |  24 +-
+> >  include/hw/adc/npcm7xx_adc.h   |  72 ++++++
+> >  include/hw/arm/npcm7xx.h       |   2 +
+> >  tests/qtest/meson.build        |   3 +-
+> >  tests/qtest/npcm7xx_adc-test.c | 400 +++++++++++++++++++++++++++++++++
+> >  8 files changed, 819 insertions(+), 3 deletions(-)
+> >  create mode 100644 hw/adc/npcm7xx_adc.c
+> >  create mode 100644 include/hw/adc/npcm7xx_adc.h
+> >  create mode 100644 tests/qtest/npcm7xx_adc-test.c
+> ...
+>
+> > +static void npcm7xx_adc_init(Object *obj)
+> > +{
+> > +    NPCM7xxADCState *s =3D NPCM7XX_ADC(obj);
+> > +    SysBusDevice *sbd =3D &s->parent;
+> > +    int i;
+> > +
+> > +    sysbus_init_irq(sbd, &s->irq);
+> > +
+> > +    timer_init_ns(&s->conv_timer, QEMU_CLOCK_VIRTUAL,
+> > +            npcm7xx_adc_convert_done, s);
+> > +    timer_init_ns(&s->reset_timer, QEMU_CLOCK_VIRTUAL,
+> > +            npcm7xx_adc_reset_done, s);
+> > +    memory_region_init_io(&s->iomem, obj, &npcm7xx_adc_ops, s,
+> > +                          TYPE_NPCM7XX_ADC, 4 * KiB);
+> > +    sysbus_init_mmio(sbd, &s->iomem);
+> > +    s->clock =3D qdev_init_clock_in(DEVICE(s), "clock", NULL, NULL);
+> > +
+> > +    for (i =3D 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
+> > +        object_property_add_uint32_ptr(obj, "adci[*]",
+> > +                &s->adci[i], OBJ_PROP_FLAG_WRITE);
+>
+> How do you use this, any example?
+>
+> FWIW I'm experimenting with other ADC to use the "audio/audio.h"
+> API (which is not voice/audio specific, but generic DSP), then
+> I can pass any QEMU source and consume it using AUD_read() to fill
+> the ADC buffer (device sram or in main ram).
+>
+> But I'm doing that alone during my free time, so don't expect it
+> any time soon :(
+>
+> > +    }
+> > +    object_property_add_uint32_ptr(obj, "vref",
+> > +            &s->vref, OBJ_PROP_FLAG_WRITE);
+> > +    npcm7xx_adc_calibrate(s);
+> > +}
+>
 
---Enx9fNJ0XV5HaWRu--
+--000000000000469f1305b67042ca
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr">Thanks for your comment! We&#39;ll incorporate them into o=
+ur next patch version.<div><br></div><div>We plan to let the user use QOM g=
+et/set QMP commands to control ADC/PWM values, similar to hw/misc/tmp105.c.=
+ The user can set a voltage value as input using QOM-set, and the QEMU gues=
+t can read the converted value through this module. Similar for PWM, the us=
+er can read the duty-cycle and frequency using QOM-get. The user can also r=
+un a third-party simulator and alter these values during execution. Our tes=
+t code also shows how to deal with these values.</div><div><br></div><div>I=
+f you have a better suggestion, please let us know.</div></div><br><div cla=
+ss=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Dec 13, 20=
+20 at 3:47 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat=
+.org" target=3D"_blank">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
+lid rgb(204,204,204);padding-left:1ex">On 12/11/20 11:22 PM, Hao Wu via wro=
+te:<br>
+&gt; The ADC is part of NPCM7XX Module. Its behavior is controled by the<br=
+>
+&gt; ADC_CON register. It converts one of the eight analog inputs into a<br=
+>
+&gt; digital input and stores it in the ADC_DATA register when enabled.<br>
+&gt; <br>
+&gt; Reviewed-by: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@googl=
+e.com" target=3D"_blank">hskinnemoen@google.com</a>&gt;<br>
+&gt; Reviewed-by: Tyrone Ting &lt;<a href=3D"mailto:kfting@nuvoton.com" tar=
+get=3D"_blank">kfting@nuvoton.com</a>&gt;<br>
+&gt; Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" targe=
+t=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 docs/system/arm/nuvoton.rst=C2=A0 =C2=A0 |=C2=A0 =C2=A02 +-<br>
+&gt;=C2=A0 hw/adc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 =C2=A01 +<br>
+&gt;=C2=A0 hw/adc/npcm7xx_adc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 3=
+18 ++++++++++++++++++++++++++<br>
+&gt;=C2=A0 hw/arm/npcm7xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0|=C2=A0 24 +-<br>
+&gt;=C2=A0 include/hw/adc/npcm7xx_adc.h=C2=A0 =C2=A0|=C2=A0 72 ++++++<br>
+&gt;=C2=A0 include/hw/arm/npcm7xx.h=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=
+=A02 +<br>
+&gt;=C2=A0 tests/qtest/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
+=A03 +-<br>
+&gt;=C2=A0 tests/qtest/npcm7xx_adc-test.c | 400 +++++++++++++++++++++++++++=
+++++++<br>
+&gt;=C2=A0 8 files changed, 819 insertions(+), 3 deletions(-)<br>
+&gt;=C2=A0 create mode 100644 hw/adc/npcm7xx_adc.c<br>
+&gt;=C2=A0 create mode 100644 include/hw/adc/npcm7xx_adc.h<br>
+&gt;=C2=A0 create mode 100644 tests/qtest/npcm7xx_adc-test.c<br>
+...<br>
+<br>
+&gt; +static void npcm7xx_adc_init(Object *obj)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 NPCM7xxADCState *s =3D NPCM7XX_ADC(obj);<br>
+&gt; +=C2=A0 =C2=A0 SysBusDevice *sbd =3D &amp;s-&gt;parent;<br>
+&gt; +=C2=A0 =C2=A0 int i;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 sysbus_init_irq(sbd, &amp;s-&gt;irq);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 timer_init_ns(&amp;s-&gt;conv_timer, QEMU_CLOCK_VIRTUAL=
+,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 npcm7xx_adc_convert_done, s=
+);<br>
+&gt; +=C2=A0 =C2=A0 timer_init_ns(&amp;s-&gt;reset_timer, QEMU_CLOCK_VIRTUA=
+L,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 npcm7xx_adc_reset_done, s);=
+<br>
+&gt; +=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;iomem, obj, &amp;npcm7=
+xx_adc_ops, s,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 TYPE_NPCM7XX_ADC, 4 * KiB);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_init_mmio(sbd, &amp;s-&gt;iomem);<br>
+&gt; +=C2=A0 =C2=A0 s-&gt;clock =3D qdev_init_clock_in(DEVICE(s), &quot;clo=
+ck&quot;, NULL, NULL);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 for (i =3D 0; i &lt; NPCM7XX_ADC_NUM_INPUTS; ++i) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 object_property_add_uint32_ptr(obj, &quot=
+;adci[*]&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;s-&gt;ad=
+ci[i], OBJ_PROP_FLAG_WRITE);<br>
+<br>
+How do you use this, any example?<br>
+<br>
+FWIW I&#39;m experimenting with other ADC to use the &quot;audio/audio.h&qu=
+ot;<br>
+API (which is not voice/audio specific, but generic DSP), then<br>
+I can pass any QEMU source and consume it using AUD_read() to fill<br>
+the ADC buffer (device sram or in main ram).<br>
+<br>
+But I&#39;m doing that alone during my free time, so don&#39;t expect it<br=
+>
+any time soon :(<br>
+<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 object_property_add_uint32_ptr(obj, &quot;vref&quot;,<b=
+r>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;s-&gt;vref, OBJ_PROP_F=
+LAG_WRITE);<br>
+&gt; +=C2=A0 =C2=A0 npcm7xx_adc_calibrate(s);<br>
+&gt; +}<br>
+</blockquote></div>
+
+--000000000000469f1305b67042ca--

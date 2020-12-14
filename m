@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id v20sm30561301wml.34.2020.12.14.07.17.32
+        by smtp.gmail.com with ESMTPSA id o7sm16481507wrw.62.2020.12.14.11.05.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Dec 2020 07:17:32 -0800 (PST)
+        Mon, 14 Dec 2020 11:05:15 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0036A1FF7E;
-	Mon, 14 Dec 2020 15:17:31 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id B6ADA1FF7E;
+	Mon, 14 Dec 2020 19:05:14 +0000 (GMT)
 References: <1607937538-69471-1-git-send-email-bmeng.cn@gmail.com>
  <1607937538-69471-2-git-send-email-bmeng.cn@gmail.com>
  <87blewvftl.fsf@linaro.org>
@@ -18,13 +18,13 @@ Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Peter Maydell
  <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org
  <qemu-arm@nongnu.org>
 Subject: Re: [PATCH 1/3] hw/misc: imx6_ccm: Update PMU_MISC0 reset value
-Date: Mon, 14 Dec 2020 15:02:04 +0000
+Date: Mon, 14 Dec 2020 19:05:01 +0000
 In-reply-to: <CAEUhbmVJbdi_STsy=SGxYapLdd9oZq5i0abhjzKLzyjYA9Yxbw@mail.gmail.com>
-Message-ID: <87tusoto1g.fsf@linaro.org>
+Message-ID: <87mtygtdhx.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: YrbnbNqG9GtE
+X-TUID: 1bikPmpzmg/0
 
 
 Bin Meng <bmeng.cn@gmail.com> writes:
@@ -121,10 +121,6 @@ nd
 >
 > There is no analog_mask in the imx6_ccm codes. It exists in the
 > imx6ul_ccm however.
->
-> The i.MX6 DQ reference manual says this bit is RW, and does not
-> document the behavior of write. AFAICT this bit is only concerned by
-> the bootloader.
 
 My bad - I was grepping for PMU_MISC0. It would be nice to nail down if
 there is any similarity between the two instances. Doing a diff between
@@ -133,6 +129,10 @@ for a more generic shared code implementation with a few feature flags.
 I suspect that is a more involved job however which is out of scope for
 this series.
 
+>
+> The i.MX6 DQ reference manual says this bit is RW, and does not
+> document the behavior of write. AFAICT this bit is only concerned by
+> the bootloader.
 >
 > Regards,
 > Bin

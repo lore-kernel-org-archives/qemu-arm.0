@@ -1,195 +1,143 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1678030lfq;
-        Sun, 13 Dec 2020 03:29:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwNElzFn7/P5Ucn/vdu/Xuy4v2vDmrLm6nvJjZcs+j4gRd79Jlz/Wupun3iSGczmibboYTw
-X-Received: by 2002:a25:6604:: with SMTP id a4mr30855382ybc.412.1607858962418;
-        Sun, 13 Dec 2020 03:29:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607858962; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2877113lfq;
+        Mon, 14 Dec 2020 12:06:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJynCnz4V/LfTEOF3bq19AlbJAdjWdg93zegb/5xWW/mGKrX1MBrTRiIOl6NaVIiSHIcl/BG
+X-Received: by 2002:a17:902:5581:b029:da:a817:1753 with SMTP id g1-20020a1709025581b02900daa8171753mr24004751pli.76.1607976413216;
+        Mon, 14 Dec 2020 12:06:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607976413; cv=none;
         d=google.com; s=arc-20160816;
-        b=aSY0JzjdTij+IFid8ydCgmC03ucnZ9yL68xWqJnwGAXpzKShgwIanpWN83nWDpgHTS
-         hiu7BWpw6JrI+PQT5awd+Qa92ZndmmKDZqMF0fbNsEoPyfbBNe/Iiwe244vJwHKEDF1t
-         x5OoYUM6N/DaFhoooIIoGyVojAQLfGK8K4bhOGtvxHwpPMP45xnli1ZRPUVm+EyD+ZYp
-         4ujpoG6BQpaf3l3cJrbc+r5dfWoQCyVznJuCee4DzSKKyUn8DJmMCv+FDVaMW7acf7cu
-         0mY8Jrxgby41gDFG6O4/3KBI2lZgWSM83UN2RKFQkaGDnn959JfUk8stNo5ay4x85a34
-         +maQ==
+        b=zoYpZRCcUBImeehi1JfULiJvw6jBRpcFr72lsZ0JzC5FqGzX9G8fciH0xQ7UaEL+cz
+         Pqo2gl/H7MJpBynx+MSaMohlyRCVmrqytuvOwmcmtHbp6W7pZynbGRhsZg+pG88pN8FS
+         c5xaL6YWRgZoPueaa8p79zwlCJOtVewiuOZRxjkpOWhwvQhilfrU8OC7Reyk1DwmTX06
+         8DmWYjLUIYhCoHKP7d0akX1ZcBywtlwJzvN9SjVXY6axsa2hlp5n6LI4X9ixuohSYnOx
+         edcOVXLxac78NF83rnRm7ouh9Sfqx8FAlkcy7Ezz6NBJEL+s0R/2xO6ku6OKCetLtRg1
+         qJrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Lybk7XaClP2JemyhFrS8HW8CbAKsRUfWFVVDPHrbpgc=;
-        b=tNxwN3DNjz0yRom5By4NQGuJH6hV7BXch5q7Dahrz5HEKsgOYyB2yY8tfkAeXB4jQ6
-         gQEFtvUWgPgyzs0kuGI187il6i1NtQ1xAXOObGpFKTr18ZprWj2k/VEMYSVZtp8hYJlH
-         Fm9+RyTLCxUtaJ9g2+OAixh37zF6fsvf1kFW/rfbq+6Xgfj+HpjV85tZenYLFDpVK5wp
-         tntIX8DvJFPQ7bzqbOYyFzAzExpyn7QJ5zBiNeT/z+PU2ab8N8GScJasMn6xUrtItA5B
-         9DFq8RZwEs3IfbkHE/PKL+eC9f5EybKfOkrmJG/zqKXTc2UriO5BoTpvldVFpI87pVgS
-         HvPQ==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=HUfUSvybAaBPUkP3qeBA60G3EShSzxiLvf/oRoT3+lU=;
+        b=dmqVQWWudfMSFNXoBBBcv8TIjpIT6XBYarkd7vzYhOKmgte0WyrA9EbMSgesHUJx9N
+         WrobHZl7wB00SgfAxlVNajZlgBFUL5AgzWhz1ZwXUbZmPj47lqd+vT4t99AV+7xacl0E
+         ah/jWH2WXxlVSujpQgn+s7iXO+mVZAKtKAIdDfXTfkQuQMdOFJkHTyP9HkiCA6O6Dl/B
+         84Qn366TRWIpWMszgY9mw76EWNNQQtCxGOteM4Fr+oDHIF6mFuChtvGXTo1hUYlP67Pp
+         rdDd4BIa/iwRzsuH/pzyY3qc1lnEd9NdI0ebGSMkyWHYRRN4vZJAaMoFoLPjeU1pi2VJ
+         zGCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ilObLoG1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n62si14639979ybf.174.2020.12.13.03.29.22
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 13 Dec 2020 03:29:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=jk4jsl8V;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=jk4jsl8V;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Return-Path: <keithp@keithp.com>
+Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
+        by mx.google.com with ESMTPS id s24si6625264plp.63.2020.12.14.12.06.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Dec 2020 12:06:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ilObLoG1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44222 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1koPZ3-00018q-N0
-	for alex.bennee@linaro.org; Sun, 13 Dec 2020 06:29:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58492)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1koPYg-00018Q-Vb; Sun, 13 Dec 2020 06:28:59 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:41090)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1koPYf-0004Lw-BZ; Sun, 13 Dec 2020 06:28:58 -0500
-Received: by mail-wr1-x441.google.com with SMTP id a12so13535227wrv.8;
- Sun, 13 Dec 2020 03:28:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Lybk7XaClP2JemyhFrS8HW8CbAKsRUfWFVVDPHrbpgc=;
- b=ilObLoG1DJlOENJ4sPbCesDN56eOG/yd411cnKcti9Q2YgKMmPA5YNaq+a6lKzpvph
- nxHpKyTdqdcYHROmRhUonfC+sdtX48V1Vx9fnXXaa5uD+VdthdxY63QxHcotJotOeqLY
- OrYmRJd5+RC1TwrajxQr43I/tdXspw75Sy8goMmD9Jen+pkaSUP8BW+q7tKsrZUdhqqC
- tkFtXNghe7w306Z1N0G8hsfK4IAtJ3Bqy2Lw5PJs73yrMdaFZPRD3IDW6aIXnLPAZMF7
- kYssbZc8qkuM6md0NF3QIo18TUloBcsr1+/9n54bULj9cs2ySgtcqubKSuGBVggSwMfr
- 5PWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Lybk7XaClP2JemyhFrS8HW8CbAKsRUfWFVVDPHrbpgc=;
- b=fMSvYUN+jdMSP3xqLZw47yI68ZFbS1ueOI9bxVl1DK6PvNUd85ETqbHeR9xUfW5faX
- AJRzHhvV4Bsts3ovMssj3H4d/zV+IWyweR91R9nq6c30O31LlkDbrJn7r7ymair95xb6
- u65gbn59W0idpp9wARr7BaE8oWaLIudRnKXGBE8yHk3aSPTgMoCFb5wzpsx8ZTTFZvLv
- zJTPv7fvuUPCz6oHJ2vuOhNoJc+qkccQcBqbw83nj6EAdXTBsK4DPyR7kqxUUppUgCDd
- ibTL+ce+ktl+VnrG0Cqj+EnBUutnFwEff7PGGPEplO+/5b8d5TtxoX6CXbs9SZRRbCth
- Nddw==
-X-Gm-Message-State: AOAM531yx3mHtYwoi1+3Nep974Tno4+u4IuYOGovKLDcWt7fPrBRZ045
- cOnrMivgAqJRXAs+utdveHY=
-X-Received: by 2002:adf:97ce:: with SMTP id t14mr23817522wrb.368.1607858935427; 
- Sun, 13 Dec 2020 03:28:55 -0800 (PST)
-Received: from [192.168.1.36] (101.red-88-21-206.staticip.rima-tde.net.
- [88.21.206.101])
- by smtp.gmail.com with ESMTPSA id o83sm25128218wme.21.2020.12.13.03.28.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 13 Dec 2020 03:28:54 -0800 (PST)
-Subject: Re: [PATCH v2 2/4] hw/timer: Refactor NPCM7XX Timer to use CLK clock
-To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
-References: <20201211222223.2252172-1-wuhaotsh@google.com>
- <20201211222223.2252172-3-wuhaotsh@google.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b089845f-636e-2cef-ff31-9367a99ff80a@amsat.org>
-Date: Sun, 13 Dec 2020 12:28:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.5.0
+       dkim=pass header.i=@keithp.com header.s=mail header.b=jk4jsl8V;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=jk4jsl8V;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Received: from localhost (localhost [127.0.0.1])
+	by elaine.keithp.com (Postfix) with ESMTP id E8C733F2D6F1;
+	Mon, 14 Dec 2020 12:06:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1607976411; bh=5V1bigVxEuJjLuQkNQxMsgsuiXxEmEsEJ6n2ArsDgqY=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=jk4jsl8V3FqSP0VOUIKVDyaVRQOGUI0OYEbX40mZvsrTl5vmcIpJiYjypfNp2hyFC
+	 jvioZ/GVrrUY2CwT5QmhBeMKnYqC2b05o08WchRqPn83FOngcedSQoB7Md/dHkKAnY
+	 iVHWxghoaF+MPRp7y8lTeX8zkA9buHinf+hLciBeVzYJoP4vspRRcfWDe4N+vVbhnE
+	 xmStgMpIGIa5kBIe6bD1xqTncTRhEeorLI9FzO8jQh6hmYTQG/pBg8ZH+a1WcaYMqE
+	 aFsVTY4W0cT/Sw0w84N+vxYhcm3fZmIGlw2N/jKmSiGBLRoY/NI+fRjHecGP0IBZmx
+	 CGM40OtehjQxg==
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id Z0Yuyjx_olgg; Mon, 14 Dec 2020 12:06:51 -0800 (PST)
+Received: from keithp.com (koto.keithp.com [10.0.0.2])
+	by elaine.keithp.com (Postfix) with ESMTPSA id 874F53F2D6D3;
+	Mon, 14 Dec 2020 12:06:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1607976411; bh=5V1bigVxEuJjLuQkNQxMsgsuiXxEmEsEJ6n2ArsDgqY=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=jk4jsl8V3FqSP0VOUIKVDyaVRQOGUI0OYEbX40mZvsrTl5vmcIpJiYjypfNp2hyFC
+	 jvioZ/GVrrUY2CwT5QmhBeMKnYqC2b05o08WchRqPn83FOngcedSQoB7Md/dHkKAnY
+	 iVHWxghoaF+MPRp7y8lTeX8zkA9buHinf+hLciBeVzYJoP4vspRRcfWDe4N+vVbhnE
+	 xmStgMpIGIa5kBIe6bD1xqTncTRhEeorLI9FzO8jQh6hmYTQG/pBg8ZH+a1WcaYMqE
+	 aFsVTY4W0cT/Sw0w84N+vxYhcm3fZmIGlw2N/jKmSiGBLRoY/NI+fRjHecGP0IBZmx
+	 CGM40OtehjQxg==
+Received: by keithp.com (Postfix, from userid 1000)
+	id 67DC315820DB; Mon, 14 Dec 2020 12:06:51 -0800 (PST)
+From: Keith Packard <keithp@keithp.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Laurent Vivier
+ <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>
+Subject: Re: [PATCH 0/8] Add RISC-V semihosting 0.2. Finish ARM semihosting 2.0
+In-Reply-To: <87wnxktost.fsf@linaro.org>
+References: <20201125213617.2496935-1-keithp@keithp.com>
+ <873608vde9.fsf@linaro.org> <87wnxktost.fsf@linaro.org>
+Date: Mon, 14 Dec 2020 12:06:50 -0800
+Message-ID: <87sg88kv8l.fsf@keithp.com>
 MIME-Version: 1.0
-In-Reply-To: <20201211222223.2252172-3-wuhaotsh@google.com>
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+X-TUID: iOf9+Tqa3rXg
+
+--=-=-=
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org,
- hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org,
- Avi.Fishman@nuvoton.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BxhwmSBzUq0m
+Content-Transfer-Encoding: quoted-printable
 
-Hi Wu,
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-[The list is mangling your From: ...]
+> Hmm scratch that... it fails in a number of linux-user only builds with:
+>
+>   /usr/bin/ld: libqemu-aarch64_be-linux-user.fa.p/linux-user_aarch64_cpu_=
+loop.c.o: in function `cpu_loop':
+>   /builds/stsquad/qemu/build/../linux-user/aarch64/cpu_loop.c:133: undefi=
+ned reference to `do_common_semihosting'
+>   collect2: error: ld returned 1 exit status
+>   [651/2871] Compiling C object libqemu-alpha-linux-user.fa.p/target_alph=
+a_translate.c.o
+>   ninja: build stopped: subcommand failed.
 
-On 12/11/20 11:22 PM, Hao Wu via wrote:
-> This patch makes NPCM7XX Timer to use a the timer clock generated by the
-> CLK module instead of the magic nubmer TIMER_REF_HZ.
+I missed changing default-configs/targets/aarch64_be-linux-user.mak.
 
-Typo "number".
+>   https://gitlab.com/stsquad/qemu/-/pipelines/229443833/failures
 
-> 
-> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> ---
->  hw/arm/npcm7xx.c                 |  5 +++++
->  hw/timer/npcm7xx_timer.c         | 25 +++++++++++++++----------
->  include/hw/misc/npcm7xx_clk.h    |  6 ------
->  include/hw/timer/npcm7xx_timer.h |  1 +
->  4 files changed, 21 insertions(+), 16 deletions(-)
-> 
-> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-> index 47e2b6fc40..fabfb1697b 100644
-> --- a/hw/arm/npcm7xx.c
-> +++ b/hw/arm/npcm7xx.c
-> @@ -22,6 +22,7 @@
->  #include "hw/char/serial.h"
->  #include "hw/loader.h"
->  #include "hw/misc/unimp.h"
-> +#include "hw/qdev-clock.h"
->  #include "hw/qdev-properties.h"
->  #include "qapi/error.h"
->  #include "qemu/units.h"
-> @@ -420,6 +421,10 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
->          int first_irq;
->          int j;
->  
-> +        /* Connect the timer clock. */
-> +        qdev_connect_clock_in(DEVICE(&s->tim[i]), "clock", qdev_get_clock_out(
-> +                    DEVICE(&s->clk), "timer-clock"));
-> +
->          sysbus_realize(sbd, &error_abort);
->          sysbus_mmio_map(sbd, 0, npcm7xx_tim_addr[i]);
->  
-> diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c
-> index d24445bd6e..9469c959e2 100644
-> --- a/hw/timer/npcm7xx_timer.c
-> +++ b/hw/timer/npcm7xx_timer.c
-> @@ -17,8 +17,8 @@
->  #include "qemu/osdep.h"
->  
->  #include "hw/irq.h"
-> +#include "hw/qdev-clock.h"
->  #include "hw/qdev-properties.h"
-> -#include "hw/misc/npcm7xx_clk.h"
->  #include "hw/timer/npcm7xx_timer.h"
->  #include "migration/vmstate.h"
->  #include "qemu/bitops.h"
-> @@ -130,7 +130,7 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer *t, uint32_t count)
->  {
->      int64_t ns = count;
->  
-> -    ns *= NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;
-> +    ns *= NANOSECONDS_PER_SECOND / clock_get_hz(t->ctrl->clock);
+Some of these were caused by a missing explicit cast to Int128, which is
+needed on hosts without compiler support for 128-bit ints. The rest
+app to have been the same problem with aarch64_be-linux-user.
 
-Why not use clock_get_ns()?
+> On the next re-spin could you include Kito Cheng's patch for linux-user
+> support and also drop the version numbering from the commit titles so I
+> don't have to file them off again.
+
+Yup, all done. Thanks much for the review and for getting these tests
+run. I've rebased on current master and fixed the problems identified
+above.
+
+=2D-=20
+=2Dkeith
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl/XxdsACgkQ2yIaaQAA
+ABGi0xAAoCmjzGuCvpEWqx3i6M0Nsozlz/xkU1y3XzHlRyXa/xwTXGD+yHofWIlb
+wRwkhTTJXymAKhUJJe9NR3uQvdqNMnyIGD7+5+RRA6KyCr3wqRh5opU6IYCSPNa6
+Ndfp16Z0EJLf5DBT+yHywR9HAeTNrwWi0pWx/9obSrbTT4KjDx0B2x2mO7mAGTZ9
+cm8s1Un4X+KsiI2AHRA/AF9irp4oOxGg+QRY7uBeZtY/fZUp4PayN1xzWoh6aNl/
+mDtARbwxiDiRDrUyKg5c4rAfzMrPmN85Ixp5JIsrYuI6c/HyLW6F7U3GrBQrKIXu
+9cX+eVPQ/PtCd9RZszSCUmcz+F7Rf0HyOCTPXlpzIvBctOGoVAOne27/NgmFrIYM
+prbuJVRI97UdAaoZReSRyORaiKQMrm/lLp5qwiwz2y9nVMwSMECH8yvJO+ZncjrU
+4taIhXUsvwEjaY/zlFAKol9q+yeHfRIC3BFUB23+7jpwDvuYmRyIdCXEWSObklDa
+FD8mIe2dg9qlRYh2oY5wbsE+MJmW+UuojUqDcVfAhb3SXUbJUdrXIzRwCHIrLo+B
+HRT/9bhN3JmOEmVq7U07Ib0vgc7Ka9h6r3b9hasrM6iLdp05Mhe532VVSHp7r5Le
+becy3SLndwQ8V+ojUzS8nOzmnbOuh076n3X1ZO8KPf8SOlyJhHQ=
+=9MMN
+-----END PGP SIGNATURE-----
+--=-=-=--

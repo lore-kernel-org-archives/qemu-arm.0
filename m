@@ -1,107 +1,110 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2889591lfq;
-        Mon, 14 Dec 2020 12:24:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz8N4iLtpSNt98fBqKL4gSDpL20ulJcXe1NuiLGnTSXaCw8uyTkxUvVZm+t9p7N3/TMpqTG
-X-Received: by 2002:a25:6a84:: with SMTP id f126mr39085635ybc.271.1607977447595;
-        Mon, 14 Dec 2020 12:24:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607977447; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2889614lfq;
+        Mon, 14 Dec 2020 12:24:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyDusXsDAQ0bzfhd9SOYBTuqN6+sj3vb2DgQAwJWUZyeXlIAY4442/mpaDVpFuq/FXY8ZtI
+X-Received: by 2002:a25:ad93:: with SMTP id z19mr38387527ybi.486.1607977450121;
+        Mon, 14 Dec 2020 12:24:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607977450; cv=none;
         d=google.com; s=arc-20160816;
-        b=auqEV+v5zLm+TrMdv14KLcfeHMbO/Ws7milPLDIIpAIPRq8DCCkeeIUwucEZuoFY2Y
-         pK6izy7jFrFT8pF3cjewo4dDPvEMkw22F0LHPBQXIuRb3eLOC7eSr/NarOecXChBl2HQ
-         WaTjFN40AT711UcJxAvVEQlwanItPTXUR6YiQOeNau3vyT+nj/RAhCaiAy3hDYN0Fk9K
-         1rbwXph8zyfbU3etv1cn/el4hHuvfbeqSz9jtWzt6uIZ58+XiSa770NLpyRx8z23glAy
-         H+1M9Pk+5PGWszN3EckGXSPFe9izbtJLjdZBkMeEtqn5ylVsbKgO1LmgZP1tykB9nyid
-         Jkeg==
+        b=JP9fDT5EiME4rGxQXqbjTX0MSnb3EyyCBjSomEYwrsYVjis7SoIlzyJe4o7oypmZZA
+         sgXQWKak4N2tsmtpYuYPPYP8XnLVBtQOIXQh1EmCQhLkgQp9LGo3kAIZPOeakxqcFTyR
+         GtZ0SAxKX3bnNK1zOp8js+DHumkHn06tTw8PcxZnx7TTKPiMJLLOSBMtwamjnZQENXSg
+         dzYy6+voR5aJblkQRxBr+Qu1sE6zc+Sm9EvLmSFTri71yh6e+KLmvEMm3Pjr2bhTmqEE
+         UA3Hu9JNmeOOGgpmSKMY5puxMxYI4rm4lSs6D1Qf991+fH3lXFX52lybck13UNc3hC8n
+         NgCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=S0WuH8TqiJA40G8DCzmQLw+nViHVVO8sxjmSX+Vtmrc=;
-        b=PrIouIkNH97XMwpZGeA+70sLizkLeTs2cdAk+DK8uR7qcvnpljs5DxVxTv4kdxxr9t
-         E+dVfntJ4h6S2zf53gyN7dQOT8RdEgFbzdV2hj7bCCZPVAMBAzqJ3oRiG0Osj85Dz3eI
-         8WgnEt3wgH6WmQE6ggC5BnA2TBMkswE1eEAxThD8gLvjgXOZ9jCx/JSzrGVczSD5QrJU
-         5155CYQgxNurv/KAMizXC5q9XDuN36vto7Wo+SnlxnTXWrgDwDY3W4i+a7p6XmZ7Fet+
-         HWtOdYWfiA/+XOBh3O1v6M2+BhlEDlGzoJwYPOyJFU6/9gpSnBvMKD5IEOVw2rsGFM/e
-         jPJQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=JwsepyuXYc7GayLTZJ2zaNcwjYwyjPdiQ/lSSlYJXOg=;
+        b=cxI+aXEiONn/xqzAjJOFaKlfjZCVF4/k3vBkWEJw/TpVYzwS96o53zeuvxpeqK+0VE
+         /1h7UXcoV+aGOZWAgoxKJupiql7JRQcNwhhMBI6OtSoYk0MSGDk8BhaW/+qHhmFR0EJu
+         irfn0hKn7o9xWpMv6BUmZqWEr6u03EwUMWaJjbeRHbZLajSLN5JZG1dIlvmv/C2Zphgc
+         Scc3T4c1ZPHEaBzK6ZDzUwNaJ71hleMBttJTjgurjOzQxJpZscxPZqUm4hyp+oIvRKCP
+         bWr7ggDZ5iSQfEVo/2LTOCoJ7GNqcsW1fRM6xKTIi8Z7vba6assHTLl4MIcHOu8MorCa
+         AfFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=N2yxVIdk;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=JjFY4Vzg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9si16758287ybr.430.2020.12.14.12.24.07
+        by mx.google.com with ESMTPS id o13si17132635yba.386.2020.12.14.12.24.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Dec 2020 12:24:07 -0800 (PST)
+        Mon, 14 Dec 2020 12:24:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=N2yxVIdk;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=JjFY4Vzg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56248 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kouO7-0000UF-0S
-	for alex.bennee@linaro.org; Mon, 14 Dec 2020 15:24:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44696)
+	id 1kouO9-0000W7-GF
+	for alex.bennee@linaro.org; Mon, 14 Dec 2020 15:24:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44734)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1kouNk-0000Tv-M5
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:44 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:52097)
+ id 1kouNm-0000UE-9E
+ for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:46 -0500
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:39594)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1kouNi-0006dZ-3n
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:44 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id z12so7002759pjn.1
- for <qemu-devel@nongnu.org>; Mon, 14 Dec 2020 12:23:41 -0800 (PST)
+ id 1kouNk-0006dw-F5
+ for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:23:46 -0500
+Received: by mail-pf1-x441.google.com with SMTP id m6so3142654pfm.6
+ for <qemu-devel@nongnu.org>; Mon, 14 Dec 2020 12:23:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S0WuH8TqiJA40G8DCzmQLw+nViHVVO8sxjmSX+Vtmrc=;
- b=N2yxVIdkuEAZcJCtd7c3I1Rhux/UjFq0foQrVsp8NLD4jacmFZpqwMfhTWvQtIX5uP
- jcUoQQRuFciU3+gWF2sle66M3EX6SkpTGcBPV7+EawVfGmWurAIP246qOgXlFiiiBQpD
- aYc9C9Wqt5JEgo8a7vomGn26cjZYLcBe16V/xeOuL+z+A/+YLS5wLfxtyiLHk10j6gbt
- l7niGScr3D+Mp9quLMgY4pBGtsFZhI6mXqY8WYSpRHMQGrdnowehBqPqHv6oSJ8r9np7
- 26XAKU6QZOmxGqQXjzB7vU6bLhB+/VBCOCsOLWNJKtu5EoBkibuECXJQ30tjd0jfPc/j
- N7rA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=JwsepyuXYc7GayLTZJ2zaNcwjYwyjPdiQ/lSSlYJXOg=;
+ b=JjFY4Vzg5FRwv67h2PgI04RkipmDhnB5DJU4M/FLsACdyZ5gWBmwFaAYuuvqE09fm7
+ kEn+dCztcTjFfrrJA1uHE7S3qkiM7S8/IjnNf/+Yw2P0yl0GA0yPVUVoUEhAEoy4W45p
+ gtsR6HJOHjjDS1qA8DmH+kWsIeNle/SRWfndxkjZq4aLvmITLH9bBMxDwGfQtanbM8bj
+ aHJmElSC7s+R+aMAhaiSOgjpXm3MgRtpayrtVsFZgQxpjQBBqOZ74WeIDjn/j5SvyL9O
+ sJswfotTZAaI+Lj8O6kpWbi+XKmFsFQc5a+SSwkmYp/ImLWbPOUol0U2KFLXJ9HKBFtc
+ su5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=S0WuH8TqiJA40G8DCzmQLw+nViHVVO8sxjmSX+Vtmrc=;
- b=tHhBrgBOC1v+52mMr+9Agp79f9JuCG2FQJVizxyYF9rR/sfXUAz08jeYHdZg4iTf0g
- jWNd5OunYxPrBLXtdwbixH3IhmpoKqjmb+8dKTGqFdnOy32sDsEmR4KdJZlH5D3YQj8o
- g0o9c96a5P6mh3ngm32EV3mEivGXfE21JXzp0JFFv6hM807D39QMKGYHfiKrrlM4JUaO
- ZYhpWhJWJcU63pAqooyaaROhfvL3EsM43KxkytjEPgLf35Y85BXKEa+jUQdtg/GDNneO
- jydXlOuwOYwvT+cwKEz2eMi+KgNVqDj1mEkuqEINoZRpBNo5yf15h3aTLcpdqIcDLnGr
- LRcA==
-X-Gm-Message-State: AOAM530aNwBKA7vF7LzLClq/1dVTKwVu1xVQyitQM0RaNAq5fSZAJePm
- WN2x+P9WqWIYLe41O12rFoS/S9V/h9NLwBZWjQKnXpVXu5gJlF+SN9u3aIz3FSpdhU8mW3mbTe3
- /kEzhbcP5IUrM+ekThfp+aHuFZDp/KbtAi4UumoMg4+nYmzX3jhXTt2dpv+k5V5bNKh6h3EjsQw
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=JwsepyuXYc7GayLTZJ2zaNcwjYwyjPdiQ/lSSlYJXOg=;
+ b=Cz1urr+p3GDVSjCCEAo/M+ABBz8pEPJEyC4PWlFmpaP6seGqDj2/u+rJN+N2fv/UMP
+ pVhLICb1FeS7x5Ld+Z+mYd6BdXTrhklYBtt+AXC2/TINMYHy7IP20YyaZpry1Gqm1aDa
+ 2N5mY3FNdnhAaAvInXUIgX3d6A8Yz+Oe50PspzG5gx7iTAYfSzYn2fDGvoAndMlFgbQ4
+ drPjcsrltFGWOaHnZ8/LacXcu8M4fefAs7TdVQP3cG6taPXGfCTMuDXB8dHz/OqT6Xzp
+ q6VhoscfSU7zONDJOzMZ8E4cc0kPs+eeltPvUj2nvqSAZ4VfeYk8IatLzr0k5fdyXZI3
+ 0+mQ==
+X-Gm-Message-State: AOAM533c1tEUnNTlwoitoEdJlSilw4xOeiDs/1SBnfMe9JgXgjKDHpt6
+ BrNwxQfXtRDp7ACyNEfmtji6qZhN7JOsHkiDDpeb5SCf/VVdLCBQ8rt5BM+o1UygNa1DUF61bFM
+ u/GxehqDZovLU1ldhm2ZR9yzAgdBkKjMuCcakss2R+B5TSd2Bj9qY784sg8oll24/9iQ3SnwW7g
  ==
-X-Received: by 2002:a17:90a:4892:: with SMTP id
- b18mr16265104pjh.64.1607977420445; 
- Mon, 14 Dec 2020 12:23:40 -0800 (PST)
+X-Received: by 2002:a62:8448:0:b029:197:9ab7:9fdb with SMTP id
+ k69-20020a6284480000b02901979ab79fdbmr25432256pfd.49.1607977422696; 
+ Mon, 14 Dec 2020 12:23:42 -0800 (PST)
 Received: from cube.nuviainc.com (c-174-52-16-57.hsd1.ut.comcast.net.
  [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id a141sm20927524pfa.189.2020.12.14.12.23.39
+ by smtp.gmail.com with ESMTPSA id a141sm20927524pfa.189.2020.12.14.12.23.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Dec 2020 12:23:39 -0800 (PST)
+ Mon, 14 Dec 2020 12:23:42 -0800 (PST)
 From: Rebecca Cran <rebecca@nuviainc.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/3] target/arm: add FEAT_TLBIOS and FEAT_TLBIRANGE support
-Date: Mon, 14 Dec 2020 13:23:26 -0700
-Message-Id: <20201214202329.26765-1-rebecca@nuviainc.com>
+Subject: [PATCH 1/3] target/arm: add FEAT_TLBIOS support
+Date: Mon, 14 Dec 2020 13:23:27 -0700
+Message-Id: <20201214202329.26765-2-rebecca@nuviainc.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20201214202329.26765-1-rebecca@nuviainc.com>
+References: <20201214202329.26765-1-rebecca@nuviainc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=rebecca@nuviainc.com; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=rebecca@nuviainc.com; helo=mail-pf1-x441.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,22 +122,95 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Rebecca Cran <rebecca@nuviainc.com>,
  Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6T5kkiKrQvWh
+X-TUID: PnA9FHMuZxnp
 
-This series adds support for FEAT_TLBIOS and FEAT_TLBIRANGE, both of
-which are mandatory in ARMv8.4.
+ARMv8.4 adds the mandatory FEAT_TLBIOS, which provides instructions
+for TLB invalidation of entries in the Outer Shareable domain.
 
-Rebecca Cran (3):
-  target/arm: add FEAT_TLBIOS support
-  target/arm: add FEAT_TLBIRANGE support
-  target/arm: set ID_AA64ISAR0.TLB to 2 for max AARCH64 CPU type
+Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+---
+ target/arm/helper.c | 30 ++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
- accel/tcg/cputlb.c      |  24 ++
- include/exec/exec-all.h |  39 +++
- target/arm/cpu64.c      |   1 +
- target/arm/helper.c     | 303 ++++++++++++++++++++
- 4 files changed, 367 insertions(+)
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7b8bcd69030f..28556eb48b44 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4870,6 +4870,10 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 0,
+       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vmalle1is_write },
+     { .name = "TLBI_VAE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 1,
+       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+@@ -4878,6 +4882,10 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 2,
+       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_vmalle1is_write },
++    { .name = "TLBI_ASIDE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 2,
++      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_vmalle1is_write },
+     { .name = "TLBI_VAAE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 3, .opc2 = 3,
+       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+@@ -4914,16 +4922,30 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 7, .opc2 = 7,
+       .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_vae1_write },
++    { .name = "TLBI_VMALLS12E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 6,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle1is_write },
+     { .name = "TLBI_IPAS2E1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 1,
+       .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_IPAS2E1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 0,
++      .access = PL2_W, .type = ARM_CP_NOP },
+     { .name = "TLBI_IPAS2LE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 5,
+       .access = PL2_W, .type = ARM_CP_NOP },
++    { .name = "TLBI_IPAS2LE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 4,
++      .access = PL2_W, .type = ARM_CP_NOP },
+     { .name = "TLBI_ALLE1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
+       .access = PL2_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_alle1is_write },
++   { .name = "TLBI_ALLE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 4,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle1is_write },
+     { .name = "TLBI_VMALLS12E1IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 6,
+       .access = PL2_W, .type = ARM_CP_NO_RAW,
+@@ -5590,6 +5612,10 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 0,
+       .access = PL2_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_alle2is_write },
++    { .name = "TLBI_ALLE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle2is_write },
+     { .name = "TLBI_VAE2IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
+       .type = ARM_CP_NO_RAW, .access = PL2_W,
+@@ -5795,6 +5821,10 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 3, .opc2 = 0,
+       .access = PL3_W, .type = ARM_CP_NO_RAW,
+       .writefn = tlbi_aa64_alle3is_write },
++    { .name = "TLBI_ALLE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 0,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_alle3is_write },
+     { .name = "TLBI_VAE3IS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 3, .opc2 = 1,
+       .access = PL3_W, .type = ARM_CP_NO_RAW,
 -- 
 2.26.2
 

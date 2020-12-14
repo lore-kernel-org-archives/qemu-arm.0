@@ -1,104 +1,108 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2429277lfq;
-        Mon, 14 Dec 2020 02:30:22 -0800 (PST)
-X-Received: by 2002:a25:e910:: with SMTP id n16mr35447571ybd.269.1607941822248;
-        Mon, 14 Dec 2020 02:30:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607941822; cv=none;
-        d=google.com; s=arc-20160816;
-        b=TfMC3kobeuGEghTU2lHGvphtjC9HenO7pqDqcMow6QZjb9VhQosiZ0zbwPQHPScMW/
-         w3WTCmRhG4pxsQ0dBjdCDRqejdm0ZdT0a/7GTiep8bEKAsUOprLo1WeRzZ/EE654AkGT
-         smo4TFjJcpYvmDyt0IRxVslhg2S6PLUUUbNwXodYFALjwByaB0o1BK3mu8cQ8rnQAEXU
-         Ne4hZCzUrQ+YKcxQ3o+yz7dcFapPjJyD70KbSA/9hSWvyxAAsCB5FPxXAb3jt1tqg+m7
-         RMacbURrMZLcgr0kYme2Og321rWOCuMkbSoiqvg5sL04giYpu0QaFYNEvvca5yUNiSOB
-         2ePg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=W1nOVW6vpV4RMIvnGQchOOBYWcL+YJha58w53tValYQ=;
-        b=HsO4CE4gtKIm0Oq2TJF9nwctiBMxSGJ6mmV0hcoK2ql/DPa+7X+oUHsGY8NfgH2stq
-         F5DTI41xUhgL7AbD30HrLe6MCyoih+GqQ087ZY3G0C0OlRIwktYObPVFxF2S/KWQ9J7c
-         rYJvGf0oT2N9DT/jjlH8tDCeA3wFVv3ohGyPWoLs9xwyC5pp1+r/Iy/iC0CEkQQhYAIs
-         Jxk1S6+99MfFnTB44oVuzPSM6tVF6vecXxqr72Sz23zcm2h8KTkQw5DTx8yVWJNz4hn/
-         yJjsaTkxF7Co6FGseK8xBaSVc1l+9Ay/qjvLJEUDX5NNH+Y6xX8WjiyByPylaA5pHKBe
-         MqFw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N9N+ewHK;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bmeng.cn@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id i4sor4626321ybj.212.2020.12.14.02.30.22
-        (Google Transport Security);
-        Mon, 14 Dec 2020 02:30:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=N9N+ewHK;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=W1nOVW6vpV4RMIvnGQchOOBYWcL+YJha58w53tValYQ=;
-        b=N9N+ewHKNzgW2VXmZT0ljvzFSyWW/DLMbi6xNgBEY2xKxn0wh2jc6YD8PE+YuSdZqB
-         /1smFUN0WoRr0yKTwlnp1VXWhkJrqUtd5ta4TXD78EiFNjrWROVl8GYwSaFQdbuDLR/P
-         bWXmv4mIEVnMgf8KFVgZwRDRdjnZBPUD1GxdKfPWWvBDxcUFd/8Yg8nwf3U391JIwwTh
-         kYzrDnVPC9/Zmmkyjlymhteipv/XkYYC/pgOLewNDBWOU3M148YRydcDRmsOHaDnsW4m
-         GM9rTjkwcGbUtOud2FiW5iNEHaoo7EeerB83VwOLf1lfgx/sKo4v5uXGZCmJLbNhINkd
-         vzgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=W1nOVW6vpV4RMIvnGQchOOBYWcL+YJha58w53tValYQ=;
-        b=JmWGnkotQyCDi6CQ+d9LQLyirFChLMeoq3wBHE3lz81wvUiG5RtyoxQuvi3q+txZhc
-         iSmXmEARW1AbhawouQS3r1XwGMy4EpguOTt9y+Mvl9MXlDzUjjpeg9+iv6J8g4LQpSVn
-         e5A2oYxr7MC/yTzCYS8pHhu866iPwm3n1S1y2TDJ84ziDBBjswYVXhxDDAXXwOdA9Tmd
-         06rhNBIVtYKv1rv6sLO9PsJFr14RZ22k9n+jNEZe1sLBMjgGn2pjk6Uq3Z8bJwiuKRte
-         WqT8kq8xtOQ++XyX905ZGrR7SM45lrvYtYJ2888h+4BVLEDRHADH1yc0VPq4pLQ+4bHb
-         TVUQ==
-X-Gm-Message-State: AOAM533aujIQv541SVeR4QCHg0Iu56sKhf3qEJg235sewdpYAKpd2EUP
-	2Hmd1P+K+cWM/JthyO5D5UsPBfsCVZppkoQKFaEUxjJr
-X-Google-Smtp-Source: ABdhPJyod4/KKGKBrSLTlINW1Nrn+IAQNfO9QDuwrDb7N3hKHY+kx+UkfNDqmMOsG623YQ7vnvboshmWOm68gy2lsfE=
-X-Received: by 2002:a25:aaee:: with SMTP id t101mr33601669ybi.517.1607941821774;
- Mon, 14 Dec 2020 02:30:21 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id n9sm13073722wrq.41.2020.12.14.02.32.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Dec 2020 02:32:07 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id E9AA01FF7E;
+	Mon, 14 Dec 2020 10:32:06 +0000 (GMT)
+References: <1607937538-69471-1-git-send-email-bmeng.cn@gmail.com>
+ <1607937538-69471-2-git-send-email-bmeng.cn@gmail.com>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Bin Meng <bmeng.cn@gmail.com>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-devel@nongnu.org, Bin Meng
+ <bin.meng@windriver.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 1/3] hw/misc: imx6_ccm: Update PMU_MISC0 reset value
+Date: Mon, 14 Dec 2020 10:26:50 +0000
+In-reply-to: <1607937538-69471-2-git-send-email-bmeng.cn@gmail.com>
+Message-ID: <87blewvftl.fsf@linaro.org>
 MIME-Version: 1.0
-References: <1607937538-69471-1-git-send-email-bmeng.cn@gmail.com> <87eejsvg5k.fsf@linaro.org>
-In-Reply-To: <87eejsvg5k.fsf@linaro.org>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 14 Dec 2020 18:30:10 +0800
-Message-ID: <CAEUhbmXk379CmfdGB8Ua9-=Gv1cPfih3bu8Z=r_8w+J461tZRQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/arm: sabrelite: Improve emulation fidelity to
- allow booting upstream U-Boot
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, Peter Maydell <peter.maydell@linaro.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>, 
-	qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: U1UN1Vhc0cV2
+X-TUID: 1DlSVFDwaDDu
 
-On Mon, Dec 14, 2020 at 6:24 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
->
->
-> Bin Meng <bmeng.cn@gmail.com> writes:
->
-> > From: Bin Meng <bin.meng@windriver.com>
-> >
-> > At present the upstream U-Boot (as of today, v2021.01-rc3) does not
-> > boot on QEMU sabrelite machine.
->
-> Are there any public build artefacts for u-boot on saberlite that could
-> be used for an acceptance test?
 
-I am not aware of one. Upstream U-Boot has build pipelines but it does
-not publish artifacts.
+Bin Meng <bmeng.cn@gmail.com> writes:
 
+> From: Bin Meng <bin.meng@windriver.com>
 >
-> > This fixes several issues to improve emulation fidelity of the i.MX6
-> > sabrelite board. With this series, upstream U-Boot can boot to U-Boot
-> > command shell.
-> >
+> U-Boot expects PMU_MISC0 register bit 7 is set (see init_bandgap()
+> in arch/arm/mach-imx/mx6/soc.c) during boot. This bit indicates the
+> bandgap has stabilized.
+>
+> With this change, the latest upstream U-Boot (v2021.01-rc3) for imx6
+> sabrelite board (mx6qsabrelite_defconfig), with a slight change made
+> by switching CONFIG_OF_SEPARATE to CONFIG_OF_EMBED, boots to U-Boot
+> shell on QEMU with the following command:
+>
+> $ qemu-system-arm -M sabrelite -m 1G -kernel u-boot -display none \
+>     -serial null -serial stdio
+>
+> Boot log below:
+>
+>   U-Boot 2021.01-rc3 (Dec 12 2020 - 17:40:02 +0800)
+>
+>   CPU:   Freescale i.MX?? rev1.0 at 792 MHz
+>   Reset cause: POR
+>   Model: Freescale i.MX6 Quad SABRE Lite Board
+>   Board: SABRE Lite
+>   I2C:   ready
+>   DRAM:  1 GiB
+>   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0x5c scl.gp=3D0x55
+>   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
+>   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0x6d scl.gp=3D0x6c
+>   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
+>   force_idle_bus: sda=3D0 scl=3D0 sda.gp=3D0xcb scl.gp=3D0x5
+>   force_idle_bus: failed to clear bus, sda=3D0 scl=3D0
+>   MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+>   Loading Environment from MMC... *** Warning - No block device, using de=
+fault environment
+>
+>   In:    serial
+>   Out:   serial
+>   Err:   serial
+>   Net:   Board Net Initialization Failed
+>   No ethernet found.
+>   starting USB...
+>   Bus usb@2184000: usb dr_mode not found
+>   USB EHCI 1.00
+>   Bus usb@2184200: USB EHCI 1.00
+>   scanning bus usb@2184000 for devices... 1 USB Device(s) found
+>   scanning bus usb@2184200 for devices... 1 USB Device(s) found
+>          scanning usb for storage devices... 0 Storage Device(s) found
+>          scanning usb for ethernet devices... 0 Ethernet Device(s) found
+>   Hit any key to stop autoboot:  0
+>   =3D>
+>
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> ---
+>
+>  hw/misc/imx6_ccm.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
+> index cb74042..7e031b6 100644
+> --- a/hw/misc/imx6_ccm.c
+> +++ b/hw/misc/imx6_ccm.c
+> @@ -450,7 +450,7 @@ static void imx6_ccm_reset(DeviceState *dev)
+>      s->analog[PMU_REG_3P0] =3D 0x00000F74;
+>      s->analog[PMU_REG_2P5] =3D 0x00005071;
+>      s->analog[PMU_REG_CORE] =3D 0x00402010;
+> -    s->analog[PMU_MISC0] =3D 0x04000000;
+> +    s->analog[PMU_MISC0] =3D 0x04000080;
 
-Regards,
-Bin
+Are the registers different on the imx6ul machine or should a similar
+change be made to imx6ul_ccm_reset?
+
+Also what is the write behaviour of this bit? If it is RAO/WI then
+analog_mask needs fixing so a write to the register doesn't reset the
+state.
+
+>      s->analog[PMU_MISC1] =3D 0x00000000;
+>      s->analog[PMU_MISC2] =3D 0x00272727;
+
+
+--=20
+Alex Benn=C3=A9e

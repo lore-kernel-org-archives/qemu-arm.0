@@ -1,72 +1,72 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2877509lfq;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2877516lfq;
         Mon, 14 Dec 2020 12:07:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz1R2iDI/uagTi57gP1R8Bbghrx57kbjW48kxN442UtTBjlh4hxW6Ag5WLOYPG2aUHvctpa
-X-Received: by 2002:aa7:9f0f:0:b029:19b:c68f:61cd with SMTP id g15-20020aa79f0f0000b029019bc68f61cdmr19232713pfr.45.1607976442016;
+X-Google-Smtp-Source: ABdhPJyV7YyPKvOp5FE775eHx0UtNLSj7R+t/U7emlvhmED5mAl++cXVGf2xO0fwt7OThwupoe3s
+X-Received: by 2002:a62:1b06:0:b029:19d:d05d:f67a with SMTP id b6-20020a621b060000b029019dd05df67amr25195062pfb.78.1607976442355;
         Mon, 14 Dec 2020 12:07:22 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1607976442; cv=none;
         d=google.com; s=arc-20160816;
-        b=fD+p4yGKtBnLi9+482yv8DY00nSMdKZ6JoG1LMn+3OFu26VPEH7oxh6Mu0Uz1cqYfA
-         2tZ3/9/0pYpAKYL1EtsMSLre1R5uo9Tbw8i51BfRGN2Qy82FBtu6boJpUezMMcqHJs9A
-         0BhdiRZkhrqwUNZ0852WWO1SIu5U+GTdBa/Lf7djO0ZsgmBI+J/shd4cdhniHnddLVac
-         Yr75q/rO3Ndg9z+9v1IwFfX0M+y18OiwkmQFur2r6QKFHOLF+Ylz6QN1klwI28Ix8k5q
-         /C2TcZld32F4XCEAt6AK1B6ndY+7SbdVmuxdW14pzZzguZEfWoS1WiVs5IHYFpP7jP00
-         Iq9A==
+        b=Cu5Gh2xVdy+0QpLrQ8xU+DUZMXZAGIK16096Go1Oh1fi8WEHu9IHVJh0liHFBSzs6O
+         mW1EWo/4F2pUW3i+nmKrMQAhHPfpsyULkDBczqkZRRrznGnklcDmcW4u0TMSwZ+DLK8y
+         /ccu+ZGBJan7II2FB/stIcZj9rMm4vQksvvkU04Pf4Un2sjcSYWR5wRPjqyAUTF681LN
+         XpdloccUXJ/KZCOr7kLHj5580HnXvybWNDre9hiJ0aAoo1kl43CRQD8b7hDm7tBvEpa0
+         g7aAf5tNyqiP2H6aoG4n76j2nylNlaHdcR/bcwhjdl3n/0gvZFJ4wjmzPI8KJsZrMgOX
+         eMUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=QJp82fJyHE1Gre3UwZcMoAj5kMmKZQ6nbF8e1W+WZWQ=;
-        b=k3x6qaW1yg4ahEjvygx2lDQUidYdCTS3mQOJDUYo/TA8y7Q3SoangEqvtSP0566Qxi
-         IwCKmlcgTeX0XWVIq5HBDJd6cRXdWJLqfLWO/0LdWd7bbMWawT0sTiCPhQWDwWMGuR3X
-         bkqaVmJRa0tVgcfv2KXJ8fbCCKwfjMJdOFtrBtm3oLnFW4KRhnImR6uwaegiK02/0nHg
-         uvRY0j/1Cp0pJ115RLFq4htzCcP5CUX0H3H8qQQqoLIEKpjySz33eM+LnkcJaK6trFQM
-         Clazr/U7UuEwzhGpujzMSJoscDSXVfLXA3lYrL/XPGMO2uNL1JtB4ETep83BmDiMYwOJ
-         MEjA==
+        bh=hc1suCpwgqGstWBGIr/Djt3Z4l7yWC89pyLo8A6B0VE=;
+        b=NPAVacmzDwpxy5MXHtQQY+04SdYpSu95b81Ho5+9N01fFUMxafVTdWcbAq/CQEY2V2
+         PibeiZcCzqc1wVn7bW09XEIxEm33t/HaxwRpoaI+k9+zvkVrWCOEim506Ll9SXSm53Gh
+         gzSs7UOGgKAU6ng7Bwswl1ry7UvxK/io9HkNeyZPI1AB0zwU4saY7UBMgrj9qaBKRWmW
+         nAJDvszO9bVP9WnuaSiPjduHFIIhAdoSYG0iRiLklbbcn54Ui94aNQhqc5osKQ/Rpoif
+         8PPTGkZOv4EK8P4zezs/iKQErQJw6Xhk4iwEbGLwE2rb+6lCASHwmzJ3HhDfcnQvp989
+         HT7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=AiNFmKDX;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=kX0aD8NE;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=LuNw2ZaD;
+       dkim=pass header.i=@keithp.com header.s=mail header.b="lQikXlR/";
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Return-Path: <keithp@keithp.com>
 Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id a4si17238199plm.126.2020.12.14.12.07.21
+        by mx.google.com with ESMTPS id n5si16954722pfo.305.2020.12.14.12.07.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Dec 2020 12:07:21 -0800 (PST)
+        Mon, 14 Dec 2020 12:07:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=AiNFmKDX;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=kX0aD8NE;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=LuNw2ZaD;
+       dkim=pass header.i=@keithp.com header.s=mail header.b="lQikXlR/";
        spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 70D5A3F2E379;
+	by elaine.keithp.com (Postfix) with ESMTP id 06ED03F2E37E;
 	Mon, 14 Dec 2020 12:07:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607976440; bh=hQi7XNjThMLl/udTyFPvqRIZNTAapk1ep38UsAcUgpY=;
+	t=1607976441; bh=SHaBrTVYFaEGb4To3qkPAGlihv7272MZZpVhhlOyO1A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AiNFmKDXy+2EReHVKgyGFXDfEAfC2J0Kc8gAnr+HOhZpZqZBLxY7OkdbNfpzOi/Yy
-	 oBkMFXwWjGIwefR0MpOdyb01amqNN/0pZYsH+iFOEKXV9MG2zRnud8zHj2YistQuWC
-	 TshnwKaOFKOpn/dfS7ON/kL72ypcn5nUivjWxk1I3DxK51Y5p403Kz/ygmwSqtd20u
-	 3RFmWWYdB7bXz36QVhKZXSnX9m0DKy+MHqK7S1XqSYk5JsffgdJwdmVelCMmuSOh7c
-	 KbXDKZRqIOWJc8jK83AwnZNVHBmQTl7V1p8DwC9TlK2lofkjoWmN6/gEjIG2YKzz8d
-	 ZWnOgOMaN2s7Q==
+	b=LuNw2ZaDvhHrmM7DlwbXWqyGt2Kk9rujLnzy/QZ4H+oIEZXwsEabvd42ct3sBYxJQ
+	 dhzaIj0BHWQtEuPWc0ls7XoDqX0sySvH7xp/45BVT193CgV9yeHdyUq23aNrTBy9Ql
+	 9m51qYuqxRucJCE+skVCfhlZYs1id6fnWIm3gdUJouR2+GFdkr8g9vf6ZEiyOdq8az
+	 eR3FxEVi8TkYVPmMqTxNCWe4MYz3tjiycXVDW5O/NVAMxhe7my/qqXvRaLW/1FBjw8
+	 Zwu5MJhneaLY2cEVlnxYYVPg2VTwmaZsB6sYeBG2pOforKDbW+EVcUpN9KReHoyJxw
+	 Bw6g4ohH4X7Zw==
 X-Virus-Scanned: Debian amavisd-new at keithp.com
 Received: from elaine.keithp.com ([127.0.0.1])
 	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id L4_QGprx9P5J; Mon, 14 Dec 2020 12:07:20 -0800 (PST)
+	with LMTP id moJfYBEkvgQC; Mon, 14 Dec 2020 12:07:20 -0800 (PST)
 Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id BC7EC3F2E37D;
+	by elaine.keithp.com (Postfix) with ESMTPSA id B9C4C3F2E37A;
 	Mon, 14 Dec 2020 12:07:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1607976437; bh=hQi7XNjThMLl/udTyFPvqRIZNTAapk1ep38UsAcUgpY=;
+	t=1607976437; bh=SHaBrTVYFaEGb4To3qkPAGlihv7272MZZpVhhlOyO1A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kX0aD8NEdURO+6Mrpfe1Qv2/XSx6SMl4OMPu9dvz1P8vXXU9UhvjUM/4H7E8sPQ6O
-	 L+AKZHCrdKdnU81ZdrqCBjfq8CoHhMdurG0+9j3ogN6MsYYfjajVxdOfbk0SB7rnmu
-	 4j9yg240nYq8LCXszUoBDOVlwozDzInVFZyg6WJ7Hsul5jaRpAmNumPZpb20ifF0Z/
-	 K9jKLLnTpF1lwHHVwNTuATHqeYjSXn5YxcQFlFr/mLC/apC38yTQ2aroiB48XB2gs2
-	 IUQqbbGDer3+9MUn4FtX27I38R6pEK8PIcDB0L1z0sauV+KqLD+gWLqipP1IUo1UIm
-	 FPygFfyZkU//g==
+	b=lQikXlR/ZLy2EEIdkPMWnOYaq+lT+w1rFYuaydjqXOv/u/TSZgZcBK3GnEzbFDKSa
+	 WmA5r0hhgDMoAvK5686xqXRVhevCezaIxVtL4hddEyYfb/cbmER4LUC9TZTl+jc4vG
+	 p/0tIlBAQAILOj/A/r8XIzl3OxUgVkaMCPisErvR1PNCA3MyzE0+XyF6wGh+nLrc27
+	 N3pFw9J+hHKgO0elyDcMuU9Z84PtVE3CKhqoUGAYlrdbi9EoZv2I9Oe9WcKKYETV/4
+	 c4/zoDtpN6rkBDd1toMt0Lj2BhRen2SRStr61AQ6qXj8JSflFxLgM5bsFM+uFRNx3E
+	 rTWCjTjz3Yz7g==
 Received: by keithp.com (Postfix, from userid 1000)
-	id 552321582258; Mon, 14 Dec 2020 12:07:17 -0800 (PST)
+	id 50F581582231; Mon, 14 Dec 2020 12:07:17 -0800 (PST)
 From: Keith Packard <keithp@keithp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -78,115 +78,54 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org,
 	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Kito Cheng <kito.cheng@sifive.com>,
 	Keith Packard <keithp@keithp.com>
-Subject: [PATCH 7/9] semihosting: Implement SYS_ELAPSED and SYS_TICKFREQ
-Date: Mon, 14 Dec 2020 12:07:11 -0800
-Message-Id: <20201214200713.3886611-8-keithp@keithp.com>
+Subject: [PATCH 6/9] riscv: Add semihosting support for user mode
+Date: Mon, 14 Dec 2020 12:07:10 -0800
+Message-Id: <20201214200713.3886611-7-keithp@keithp.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20201214200713.3886611-1-keithp@keithp.com>
 References: <87wnxktost.fsf@linaro.org>
  <20201214200713.3886611-1-keithp@keithp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: AlmrzksrgHgM
+X-TUID: ZJtv4i2HXQ+u
 
-These are part of Semihosting for AArch32 and AArch64 Release 2.0
+From: Kito Cheng <kito.cheng@sifive.com>
 
-Signed-off-by: Keith Packard <keithp@keithp.com>
+This could made testing more easier and ARM/AArch64 has supported on
+their linux user mode too, so I think it should be reasonable.
+
+Verified GCC testsuite with newlib/semihosting.
+
+Signed-off-by: Kito Cheng <kito.cheng@sifive.com>
+Reviewed-by: Keith Packard <keithp@keithp.com>
 ---
- hw/semihosting/common-semi.c | 16 ++++++++++++++++
- include/qemu/timer.h         |  2 ++
- util/qemu-timer-common.c     |  4 ++++
- 3 files changed, 22 insertions(+)
+ linux-user/riscv/cpu_loop.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index f0cf5f10f5..b1368d945c 100644
---- a/hw/semihosting/common-semi.c
-+++ b/hw/semihosting/common-semi.c
-@@ -38,6 +38,7 @@
- #include "hw/semihosting/console.h"
- #include "hw/semihosting/common-semi.h"
- #include "qemu/log.h"
-+#include "qemu/timer.h"
- #ifdef CONFIG_USER_ONLY
+diff --git a/linux-user/riscv/cpu_loop.c b/linux-user/riscv/cpu_loop.c
+index aa9e437875..9665dabb09 100644
+--- a/linux-user/riscv/cpu_loop.c
++++ b/linux-user/riscv/cpu_loop.c
+@@ -23,6 +23,7 @@
  #include "qemu.h"
+ #include "cpu_loop-common.h"
+ #include "elf.h"
++#include "hw/semihosting/common-semi.h"
  
-@@ -73,6 +74,8 @@
- #define TARGET_SYS_EXIT        0x18
- #define TARGET_SYS_SYNCCACHE   0x19
- #define TARGET_SYS_EXIT_EXTENDED 0x20
-+#define TARGET_SYS_ELAPSED     0x30
-+#define TARGET_SYS_TICKFREQ    0x31
- 
- /* ADP_Stopped_ApplicationExit is used for exit(0),
-  * anything else is implemented as exit(1) */
-@@ -837,6 +840,7 @@ target_ulong do_common_semihosting(CPUState *cs)
-     uint32_t ret;
-     uint32_t len;
-     GuestFD *gf;
-+    int64_t elapsed;
- 
-     (void) env; /* Used implicitly by arm lock_user macro */
-     nr = common_semi_arg(cs, 0) & 0xffffffffU;
-@@ -1246,6 +1250,18 @@ target_ulong do_common_semihosting(CPUState *cs)
-         }
-         gdb_exit(cs->env_ptr, ret);
-         exit(ret);
-+    case TARGET_SYS_ELAPSED:
-+        elapsed = get_clock() - clock_start;
-+        if (sizeof(target_ulong) == 8) {
-+            SET_ARG(0, elapsed);
-+        } else {
-+            SET_ARG(0, (uint32_t) elapsed);
-+            SET_ARG(1, (uint32_t) (elapsed >> 32));
-+        }
-+        return 0;
-+    case TARGET_SYS_TICKFREQ:
-+        /* qemu always uses nsec */
-+        return 1000000000;
-     case TARGET_SYS_SYNCCACHE:
-         /*
-          * Clean the D-cache and invalidate the I-cache for the specified
-diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-index bdecc5b41f..ca6fae51f1 100644
---- a/include/qemu/timer.h
-+++ b/include/qemu/timer.h
-@@ -806,6 +806,8 @@ static inline int64_t get_clock_realtime(void)
-     return tv.tv_sec * 1000000000LL + (tv.tv_usec * 1000);
- }
- 
-+extern int64_t clock_start;
-+
- /* Warning: don't insert tracepoints into these functions, they are
-    also used by simpletrace backend and tracepoints would cause
-    an infinite recursion! */
-diff --git a/util/qemu-timer-common.c b/util/qemu-timer-common.c
-index baf3317f74..cc1326f726 100644
---- a/util/qemu-timer-common.c
-+++ b/util/qemu-timer-common.c
-@@ -27,6 +27,8 @@
- /***********************************************************/
- /* real time host monotonic timer */
- 
-+int64_t clock_start;
-+
- #ifdef _WIN32
- 
- int64_t clock_freq;
-@@ -41,6 +43,7 @@ static void __attribute__((constructor)) init_get_clock(void)
-         exit(1);
-     }
-     clock_freq = freq.QuadPart;
-+    clock_start = get_clock();
- }
- 
- #else
-@@ -55,5 +58,6 @@ static void __attribute__((constructor)) init_get_clock(void)
-     if (clock_gettime(CLOCK_MONOTONIC, &ts) == 0) {
-         use_rt_clock = 1;
-     }
-+    clock_start = get_clock();
- }
- #endif
+ void cpu_loop(CPURISCVState *env)
+ {
+@@ -91,6 +92,10 @@ void cpu_loop(CPURISCVState *env)
+             sigcode = TARGET_SEGV_MAPERR;
+             sigaddr = env->badaddr;
+             break;
++        case RISCV_EXCP_SEMIHOST:
++            env->gpr[xA0] = do_common_semihosting(cs);
++            env->pc += 4;
++            break;
+         case EXCP_DEBUG:
+         gdbstep:
+             signum = TARGET_SIGTRAP;
 -- 
 2.29.2

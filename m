@@ -1,272 +1,158 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2909963lfq;
-        Mon, 14 Dec 2020 12:54:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw/s4/SRSzFJLaCFEO8EIz8d8GP2MJQFtGyCEQlNLiC1g0hd+aLPC7tRYHF4En2X5eC0dFX
-X-Received: by 2002:a25:5f52:: with SMTP id h18mr27261253ybm.285.1607979269517;
-        Mon, 14 Dec 2020 12:54:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607979269; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2967453lfq;
+        Mon, 14 Dec 2020 14:22:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzLdISGaIiHkagXnALUiCSlLcXdGtPLTeDBhhhRxGlqKIO9G+A2tlrhYkY2RLnbGhwA2tgn
+X-Received: by 2002:a25:428c:: with SMTP id p134mr39318953yba.354.1607984537327;
+        Mon, 14 Dec 2020 14:22:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607984537; cv=none;
         d=google.com; s=arc-20160816;
-        b=ov/iahfhOsT4s0dEVGd43U0eRFEyoASLLVNWsCZoE1nwL0ILnVwgNhWmW/ud2gmvYh
-         2+4sr6qycwnPugiti0hFyY/MvWgCYfAXFuv8N3OU17Ad7zBNjlCOyDjQuA/riQ1qk7Z6
-         /g0cRunAOx3a09Jjyt96sVGwkn2dnNK207a0hC3yc7uwj/EGlCF+tq0hwpxgrW//U1ks
-         dJTyAwEUJjl3+w2Qe+W7PLuwv8ZwdJyCGV03Vf/QDtCoYCUxApv8EWXHK5vxrOyYDUcH
-         Nki10w2cV6f69u7bfHnOoT1n1F0S1ztQg6W83Pqdo6eiIVE9BebiMaxTF/oq7INpUJ9N
-         BrEg==
+        b=K6i947K/U6FEXks1SfHrq5PUERtMhwirrKF6pfSIIKUi1p0/LNNwHDcZABIVIb9+vQ
+         xnYtHVqOaWSknMpSiEY4P3vtws0ERil7vbDFYifW1MVEJuKn9ZD3JY4wPPIMEu81Py5f
+         hOusiIy3k59mlOhIv5828hjJtoxu/H819TiZu8AeAeAiOxHiXGx9NjJuQq+mTqdJnpKZ
+         RgQU3wIfg1GC+kYPXkpMhlXwQMG0S5cFt2hE45w76qrngED2EsVCpltiA2Ff9qW/qzNa
+         g4s+DprMrrzhUB/dVfpzcB1MyHpXM4V8opt5y+sO+dcUQl65POiJXUSMrUwLRds2aFYG
+         fS8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=RtdSpy+EuJ3LZzqelkFJA7fB+vcxup1ngl3sortIzSs=;
-        b=wGB8gvx6bHf/Jbfd8ZkTEwK/H9lVQlV9f+WSpPJhTqAszGkX20jUDh8xJc9tfCc5v6
-         SeKsjRSmwAOb2JCheJF/faKxCOxI/0MLWnEBrCH9I47k1f73ITIPEXlnQbJTa5f+KLef
-         YsVuUeRgCz2GrokvLHoasL8t3XyfHmAq8qNxgrQLvlSLSOV6irDs0lfkdpe8nWjSOsS1
-         dictYFegHrN9F9nT/7QVnhZk4ncW0isnLeEpPwT95IdBvrmKVgA7J/3gFDOywcgPVKKG
-         Y3+KQh1IkLgiV6LDD9Pt/XcnXRuSJIhbONdelY1Bmr4ov9+Vw82XFxCXWaIWUU2mIgug
-         h1ng==
+        bh=T8UChHoIwBEiicq6XXISwbaZDtZv7FINyWUE/0T1qPQ=;
+        b=MEwAMIplPujfAB6eWq19aBwgxFKBDs3vCdLME2cQKP1ProaURX46kPiAMNL0IBm9Pb
+         EGQ1jBNvt/33nEQShvNHe+vnIr41n6g2d+VqRXPIrCqf1wwbZ2dc9IaQk570xfUml/Od
+         qhpQ4f8tnrj/xZ063bh3PNXm4aXY36V0CwCGYx86FFOSayTyg1c+70qKdDWNdHrXDlIx
+         K5/QcXrIkTJ0NxjoFHJrgD3lFuwc7NLYpbfHJlcCiT7bxhs5SIGYV+7JNcYJLqK0Bd7b
+         8FVYZA9IpIB/8ORy8YZgajGqg+1HR3LExEC+8X4iYZjg7Tl56Sqwm7yBXciSUKbCGnFc
+         1EoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AUsec5rR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NSK7x4cd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h204si17553991ybh.420.2020.12.14.12.54.29
+        by mx.google.com with ESMTPS id w131si18072512ybg.302.2020.12.14.14.22.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Dec 2020 12:54:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Dec 2020 14:22:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AUsec5rR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56586 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NSK7x4cd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kourU-0002sT-T7
-	for alex.bennee@linaro.org; Mon, 14 Dec 2020 15:54:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50906)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kowES-00009j-Js
+	for alex.bennee@linaro.org; Mon, 14 Dec 2020 17:22:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50632)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kouo2-0006IV-Gz
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:50:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26929)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kouny-0001i4-Cg
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 15:50:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1607979048;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RtdSpy+EuJ3LZzqelkFJA7fB+vcxup1ngl3sortIzSs=;
- b=AUsec5rREaSqMuGTKrJjGZv5ui6UNwwUjCaN18ou6dtDUeDg/uVlPV/8OM2ojvZqsVs2wa
- UzDdmNe2lipKgJhjdesqjpSCcuRdw3HozlsWQmhQRnlO7kMsGlQ6UDpqAQp7JlU7M8vEvD
- DCjZTY1XkBjx1C0j27U2LZCVk13KiYU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-174-zjNiDgKcMfW_rJqo8TTuVg-1; Mon, 14 Dec 2020 15:50:46 -0500
-X-MC-Unique: zjNiDgKcMfW_rJqo8TTuVg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D9AF8735D0;
- Mon, 14 Dec 2020 20:50:45 +0000 (UTC)
-Received: from localhost (ovpn-116-160.rdu2.redhat.com [10.10.116.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2CEC11001901;
- Mon, 14 Dec 2020 20:50:42 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kowEG-000071-Es; Mon, 14 Dec 2020 17:22:05 -0500
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:39330)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kowEE-0005gB-FU; Mon, 14 Dec 2020 17:22:04 -0500
+Received: by mail-lf1-x143.google.com with SMTP id a12so34274225lfl.6;
+ Mon, 14 Dec 2020 14:22:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=T8UChHoIwBEiicq6XXISwbaZDtZv7FINyWUE/0T1qPQ=;
+ b=NSK7x4cdySy45qlEoMjebrrrekBsuRnj3R4Zs6RcM6zHalW6iHL40aEgO3qhNF7Gew
+ sw0U9FhnqV3106xyMFSW3+09eQOJpoks+URTG6U81zkVAl82vbVJqel4Gw/Z0X8wR0H7
+ /OuezSNNEth3iDBVk0J8HjYj+54OEPR/TpwwJGFuyFRf7FQyDwBCK7ZT/SqFLFxM0Lk+
+ vigrM6lcd7YTc/tWw3yQlKejKFKT9c/w8XPK8VxHD0mOBGg5J1x95gYtzb6qnt+k8gTl
+ yEtTtPJioT06kDkdmEwfVF/GmTA3ZA+1kKMS/V8fSoQakenmhtXrFyYDOOHSfFroR/B0
+ FqRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=T8UChHoIwBEiicq6XXISwbaZDtZv7FINyWUE/0T1qPQ=;
+ b=tTBUkDFIGWL+qjg5F4zCb6XLkQtedFaNWebI4I5cJMkSpEJ0Tfo071h7ujt9V3qMaG
+ t+33hagANh7Wh3Sj3h0LeWNNwpSpjJ+nJhcLktqsCQtnYgUOUkrlx/resjvmc91F9kmt
+ 9KgibQ2Y2gO4+r+R5nKwV557pAlSz6cOPQ1/wPe9/0HUl4Gq/OK7eZZkyKA4AMtKGoiY
+ HamrsGl/dkFV2SV3ZQLX3boJuoJwPh6TRUjrEByeb7dn52vYz4UoBTjCIz7Dxpr3hBJc
+ qawv23L8fe25iydjtGwBXCWN47n6j+fM7XSUS4mJDgl3o4Kw6G06R9az/z4+CRIRLKdc
+ JIQA==
+X-Gm-Message-State: AOAM531rtoTY5BhMRKvmacz+2KBxhbqP0xJCAuIsrlg6SG4K/HgIXyDe
+ GgFqmLx+6inkKKxCCeIK/6AXHxJ6SXBRfg==
+X-Received: by 2002:a19:8b88:: with SMTP id n130mr9832231lfd.527.1607984520444; 
+ Mon, 14 Dec 2020 14:22:00 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id m11sm2462941ljp.12.2020.12.14.14.21.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Dec 2020 14:21:59 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/3] hw/i386: expose a "smbios-ep" PC machine property
-Date: Mon, 14 Dec 2020 15:50:29 -0500
-Message-Id: <20201214205029.2991222-4-ehabkost@redhat.com>
-In-Reply-To: <20201214205029.2991222-1-ehabkost@redhat.com>
-References: <20201214205029.2991222-1-ehabkost@redhat.com>
+Subject: [PATCH v1 1/1] intc/arm_gic: Fix gic_irq_signaling_enabled() for vCPUs
+Date: Mon, 14 Dec 2020 23:21:54 +0100
+Message-Id: <20201214222154.3480243-2-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20201214222154.3480243-1-edgar.iglesias@gmail.com>
+References: <20201214222154.3480243-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x143.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Michael Roth <mdroth@linux.vnet.ibm.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IkzZ8ng1E0w+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: damien.hedde@greensocs.com, peter.maydell@linaro.org,
+ sstabellini@kernel.org, edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ figlesia@xilinx.com, luc.michel@greensocs.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E60R5+oL9c3k
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-The i440fx and Q35 machine types are both hardcoded to use the legacy
-SMBIOS 2.1 entry point. This is a sensible conservative choice because
-SeaBIOS only supports SMBIOS 2.1
+Correct the indexing into s->cpu_ctlr for vCPUs.
 
-EDK2, however, can also support SMBIOS 3.0 and QEMU already uses this on
-the ARM virt machine type.
-
-This adds a property to allow the choice of SMBIOS entry point versions
-For example to opt in to version 3.0
-
-   $QEMU -machine q35,smbios-ep=3_0
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
-This is patch was previously submitted at:
-https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@redhat.com
+ hw/intc/arm_gic.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Changes from v1:
-* Include qapi-visit-smbios.h instead of qapi-visit-machine.h
-* Commit message fix: s/smbios_ep/smbios-ep/
----
- include/hw/i386/pc.h |  3 +++
- hw/i386/pc.c         | 26 ++++++++++++++++++++++++++
- hw/i386/pc_piix.c    |  2 +-
- hw/i386/pc_q35.c     |  2 +-
- 4 files changed, 31 insertions(+), 2 deletions(-)
-
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 2aa8797c6e..2075093b32 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -11,6 +11,7 @@
- #include "hw/acpi/acpi_dev_interface.h"
- #include "hw/hotplug.h"
- #include "qom/object.h"
-+#include "hw/firmware/smbios.h"
- 
- #define HPET_INTCAP "hpet-intcap"
- 
-@@ -38,6 +39,7 @@ typedef struct PCMachineState {
-     /* Configuration options: */
-     uint64_t max_ram_below_4g;
-     OnOffAuto vmport;
-+    SmbiosEntryPointType smbios_ep;
- 
-     bool acpi_build_enabled;
-     bool smbus_enabled;
-@@ -62,6 +64,7 @@ typedef struct PCMachineState {
- #define PC_MACHINE_SATA             "sata"
- #define PC_MACHINE_PIT              "pit"
- #define PC_MACHINE_MAX_FW_SIZE      "max-fw-size"
-+#define PC_MACHINE_SMBIOS_EP        "smbios-ep"
- 
- /**
-  * PCMachineClass:
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 640fb5b0b7..3cc559e0d9 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -81,6 +81,7 @@
- #include "hw/mem/nvdimm.h"
- #include "qapi/error.h"
- #include "qapi/qapi-visit-common.h"
-+#include "qapi/qapi-visit-smbios.h"
- #include "qapi/visitor.h"
- #include "hw/core/cpu.h"
- #include "hw/usb.h"
-@@ -1532,6 +1533,23 @@ static void pc_machine_set_hpet(Object *obj, bool value, Error **errp)
-     pcms->hpet_enabled = value;
- }
- 
-+static void pc_machine_get_smbios_ep(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    PCMachineState *pcms = PC_MACHINE(obj);
-+    SmbiosEntryPointType smbios_ep = pcms->smbios_ep;
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index c60dc6b5e6..af41e2fb44 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -141,6 +141,8 @@ static inline void gic_get_best_virq(GICState *s, int cpu,
+ static inline bool gic_irq_signaling_enabled(GICState *s, int cpu, bool virt,
+                                     int group_mask)
+ {
++    int cpu_iface = virt ? (cpu + GIC_NCPU) : cpu;
 +
-+    visit_type_SmbiosEntryPointType(v, name, &smbios_ep, errp);
-+}
-+
-+static void pc_machine_set_smbios_ep(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    PCMachineState *pcms = PC_MACHINE(obj);
-+
-+    visit_type_SmbiosEntryPointType(v, name, &pcms->smbios_ep, errp);
-+}
-+
- static void pc_machine_get_max_ram_below_4g(Object *obj, Visitor *v,
-                                             const char *name, void *opaque,
-                                             Error **errp)
-@@ -1621,6 +1639,8 @@ static void pc_machine_initfn(Object *obj)
-     pcms->vmport = ON_OFF_AUTO_OFF;
- #endif /* CONFIG_VMPORT */
-     pcms->max_ram_below_4g = 0; /* use default */
-+    pcms->smbios_ep = SMBIOS_ENTRY_POINT_TYPE_2_1;
-+
-     /* acpi build is enabled by default if machine supports it */
-     pcms->acpi_build_enabled = PC_MACHINE_GET_CLASS(pcms)->has_acpi_build;
-     pcms->smbus_enabled = true;
-@@ -1759,6 +1779,12 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-         NULL, NULL);
-     object_class_property_set_description(oc, PC_MACHINE_MAX_FW_SIZE,
-         "Maximum combined firmware size");
-+
-+    object_class_property_add(oc, PC_MACHINE_SMBIOS_EP, "str",
-+        pc_machine_get_smbios_ep, pc_machine_set_smbios_ep,
-+        NULL, NULL);
-+    object_class_property_set_description(oc, PC_MACHINE_SMBIOS_EP,
-+        "SMBIOS Entry Point version [v2_1, v3_0]");
- }
- 
- static const TypeInfo pc_machine_info = {
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 08b82df4d1..30ae7f27af 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -179,7 +179,7 @@ static void pc_init1(MachineState *machine,
-         smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
-                             mc->name, pcmc->smbios_legacy_mode,
-                             pcmc->smbios_uuid_encoded,
--                            SMBIOS_ENTRY_POINT_TYPE_2_1);
-+                            pcms->smbios_ep);
+     if (!virt && !(s->ctlr & group_mask)) {
+         return false;
+     }
+@@ -149,7 +151,7 @@ static inline bool gic_irq_signaling_enabled(GICState *s, int cpu, bool virt,
+         return false;
      }
  
-     /* allocate ram and load rom/bios */
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index f71b1e2dcf..9974426806 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -198,7 +198,7 @@ static void pc_q35_init(MachineState *machine)
-         smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
-                             mc->name, pcmc->smbios_legacy_mode,
-                             pcmc->smbios_uuid_encoded,
--                            SMBIOS_ENTRY_POINT_TYPE_2_1);
-+                            pcms->smbios_ep);
+-    if (!(s->cpu_ctlr[cpu] & group_mask)) {
++    if (!(s->cpu_ctlr[cpu_iface] & group_mask)) {
+         return false;
      }
  
-     /* allocate ram and load rom/bios */
 -- 
-2.28.0
+2.25.1
 

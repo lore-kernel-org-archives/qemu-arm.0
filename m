@@ -1,109 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3665884lfq;
-        Tue, 15 Dec 2020 08:49:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxTUNOICBh6CCmM4+cKSl5twdQPqmxFXZVLXMxzPo5yy+/M23OwjVeABdfPiMqtWQqTU6X0
-X-Received: by 2002:a25:73c3:: with SMTP id o186mr39713718ybc.182.1608050960563;
-        Tue, 15 Dec 2020 08:49:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608050960; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3687029lfq;
+        Tue, 15 Dec 2020 09:14:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxit4HkiULzm1E4HVkU8zYMBIOp7dICRy6eCsrKhASs4YyMyQNlqkoJvp0xOxMzNRZ1hYNv
+X-Received: by 2002:a25:4b42:: with SMTP id y63mr41640374yba.10.1608052464641;
+        Tue, 15 Dec 2020 09:14:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608052464; cv=none;
         d=google.com; s=arc-20160816;
-        b=DhVL+nN2KLMP7gDT4Cy4zGTGt1bbVZV2PXSGfrI8EDkwzlGIWX2wudVV/SOj5vn52g
-         aoEAJ0naKKiRb2+Q+VVYYrS6SLPp6QMnigiVkM7b/ZPHDtX/Z64yLWDCTBwDPHnDKqhR
-         wYJzfp46oemw81hOvDvC5wVUvPGmOQ3+xE3hAfeM4L/tefoJ5Dx9ozcNJ2tCpMRTvsxY
-         Xse56rGkNJu5yJfq/AY7utxp1pgXXFF36vIJds6fssmMTxcW2GDuJxox2MA7hBlRjrfC
-         cHgb0iNjIMx4o6gSODfXnpxBsMqXJDXheVrskMB63m/bZF2GjB+wcRPHAPE5iGdRdqTe
-         Np4Q==
+        b=HYr3IwuJipgkXKwNuaOBGqTQ/Imkf3/0vmDlE7Yb76VFh7OG9JClysHhXXBFbzyW4U
+         ccWqOYXIpLFjqTyE3AYdnRZtZidmyi+EuTgFls2qDhommZSS33u1qm68wHDDxEn3RkB4
+         OhMzYfDYT23lUnnmG0MJ0xw0twXFuWFvTadmpayoYYziydrC28olPk1y+7eCQuy/wlAx
+         6OK4xKg1xDRprghvz1QxLwey1YeRabZUU7RCK5moYq56SYo7GqK/g6jv+WerdZCRF8Af
+         SmFGoNLWpgSel8+nsHs9jptuGRrZniWdixanUmns+2EU74MA6Y+cGQc3+o58oanSpxEk
+         3s3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=WNNqnZnfqs8OvXv038kS/0J0X5bejNls4QjbquwZHlA=;
-        b=qCRm8AoFvO7+cT/vbpQGpXkbFQiJygX1PJcpilDbOcXHeiTcHOv9Bx8k4cExrYMlmg
-         yvB9JeM2sYcqkwa+/ZMtYFc7cJMzMC5GW8201nUImcYsnCqAtuH9f55DqvOg6AcKagGJ
-         UHzA8d0rSG4Q6EyTKZ3P/3tnizEpHFVMukAGvAeH81ursDGdpROcWA84sRdwwEMfvpLb
-         0vW7ww0J+EdeYGAUgWCkxzKxnqYBG6vQRliaXM7LpvEfdNH4W31YkyPH6krlP4wfQ7aQ
-         9NahQx+pJ8ezK+oTn9tXjX5BkhFuyaKlnf9Bx/vKHWp/ku7LJR6MD5iUhAQhJakI3Kzs
-         JHfQ==
+        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
+         :subject:message-id:date:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=xwb33KDVUeuxveR0XnLxUJImmBOS1vIqA9nH4lvQrSc=;
+        b=W/LHmagevSxHmyRwY38blly8OVtb3biyeVmo1QhsCMeOHbPejhPbw7aU2oW1NGxQI7
+         JiX43Au3VW27QaSBFpNgz7RJT66EkXf11Hzp79ugRlNhBi5MKPgvQpRDozyqfchr15FW
+         JX1yyGpOSXEnvcdDE8MBMnLGoOE5b3/8o7CnO64llt5qlilJJsNkz+NO6WobSHbJVMVY
+         P62h2zEAB2rPN6P98L9nGsY/+uH2vKmVG2MeEjI2qccU98CdiVXJXh9anufZZ4Y2ssRt
+         SmKiF6HjDcoiCEFlVmcdRYaCiZFwG2uQ8tsiWdH1LsGiGZAf2uakvMGRNiyqLtv0T0Pf
+         nN1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=I7IWYCCY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@google.com header.s=20161025 header.b="vQ/t2Vb4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y123si20692887yby.158.2020.12.15.08.49.20
+        by mx.google.com with ESMTPS id b9si4605142ybr.8.2020.12.15.09.14.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Dec 2020 08:49:20 -0800 (PST)
+        Tue, 15 Dec 2020 09:14:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=I7IWYCCY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34266 helo=lists1p.gnu.org)
+       dkim=fail header.i=@google.com header.s=20161025 header.b="vQ/t2Vb4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:42576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kpDVn-0000i2-U1
-	for alex.bennee@linaro.org; Tue, 15 Dec 2020 11:49:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44992)
+	id 1kpDu3-00024U-VY
+	for alex.bennee@linaro.org; Tue, 15 Dec 2020 12:14:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kpDVf-0000hk-4f
- for qemu-arm@nongnu.org; Tue, 15 Dec 2020 11:49:11 -0500
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36242)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1kpDtu-00023o-F4
+ for qemu-arm@nongnu.org; Tue, 15 Dec 2020 12:14:14 -0500
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:35381)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kpDVc-00073H-TP
- for qemu-arm@nongnu.org; Tue, 15 Dec 2020 11:49:10 -0500
-Received: by mail-wm1-x343.google.com with SMTP id y23so19183595wmi.1
- for <qemu-arm@nongnu.org>; Tue, 15 Dec 2020 08:49:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=WNNqnZnfqs8OvXv038kS/0J0X5bejNls4QjbquwZHlA=;
- b=I7IWYCCYZfh+7FB6mMuFVur1b2+4bpEu2QGhHUhEYGivOIqc7O3SqMXJilBvpNWAXI
- Lh73IttAsWIkeDOQjp8k9A998IiCCOR+j67K0l/cn9rOkWqz0zngHd8bEXeXAHgD7PO0
- UBsdpoiTpx9jAFnexpHl86Lkf+eLeDPyAb4w8P5nmjtxnfdVhqkl/GM5Oxyx24TWeodh
- NuyfSRp/N3NqjCDyiToyCJL3AyGMqOs5XgQmp6CiZtLMN68xRgdHPg14MHognvZX01ez
- IPdl3YDKfDFm49Df7GBqdDVlLSFVZofOrDwPNAipiqhSGuZos5AHFrr5PlzIpp9bF/S+
- gn2Q==
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1kpDts-0003p3-9s
+ for qemu-arm@nongnu.org; Tue, 15 Dec 2020 12:14:14 -0500
+Received: by mail-lf1-x141.google.com with SMTP id a9so41317758lfh.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Dec 2020 09:14:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xwb33KDVUeuxveR0XnLxUJImmBOS1vIqA9nH4lvQrSc=;
+ b=vQ/t2Vb4oR5liQ/356OFh7mHEPmTHn6pKRy2FGO9pLe27zfMY/thKpS9d10JdiiZef
+ yVa9WF/WvDt1NHFF3Iu7yC1arpWp4JEmax7vzvVMs1TtUMQzgwFlF/0YfgmXYeFFoyQL
+ xn58VXn908ooRkIyNHlsMqGQGIw/gx9UZNA/fbhPUctupwP2W3RPt26qucfmlLftPwv/
+ WeDUa7Dz2vI6ELyOkwvtmL9aRHCkeIF/vVkeu3+wCbrsW8fwk1J0jpIapKKFrtVCrbin
+ HmaVBImgKWaaU0QTc8V1oJZJsyG593OMRal0eNrf+AolKPhn+oxtZnoFQWKI1kHE6OY9
+ OiXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=WNNqnZnfqs8OvXv038kS/0J0X5bejNls4QjbquwZHlA=;
- b=b9JZV4L1vJHnplH4cSW0W+HZhONO/HT0hk1cYBF9TyrB3BNOrtKobmv6ksIZ8aKtrZ
- XgcFaUXyVMUDeZWwo2LKiBXMMNgBHbcUJIs+gaM5s1IVsKFSyqoc6dqaqZ1OXSOOi6Jc
- NC4sA40X2h4NoTRW/YLYizMJV5n0/f/+nnc9fOj685+N2xKcUOCZmkqyQnEl6JAMwVzo
- 3bK9Q8V1/H/KJ4h3NaB/+NDRwZhgUl077fpZnCh3O60/2CadT8KWp2+MGul1wxwOVlUI
- PG1z3DbRK7cXlHveN0n9UDKMrb68hO0av063NorOcHBrC36NkYqdjYUZ2yGtbETMGDvL
- 1JGw==
-X-Gm-Message-State: AOAM530hGrVvICwGj5ZsKuY/MTTvwoEfCn4vB784fv+IuNodMoxovMle
- OWoAC7Zhv+g/oU9MqGiQvIBdvQ==
-X-Received: by 2002:a1c:a9c8:: with SMTP id s191mr4883546wme.89.1608050947008; 
- Tue, 15 Dec 2020 08:49:07 -0800 (PST)
-Received: from vanye (cpc1-cmbg19-2-0-cust915.5-4.cable.virginm.net.
- [82.27.183.148])
- by smtp.gmail.com with ESMTPSA id i8sm37133779wma.32.2020.12.15.08.49.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Dec 2020 08:49:06 -0800 (PST)
-Date: Tue, 15 Dec 2020 16:49:04 +0000
-From: Leif Lindholm <leif@nuviainc.com>
-To: Laurent Desnogues <laurent.desnogues@gmail.com>
-Subject: Re: [PATCH v2 3/5] target/arm: add descriptions of CLIDR_EL1,
- CCSIDR_EL1, CTR_EL0 to cpu.h
-Message-ID: <20201215164904.GY1664@vanye>
-References: <20201215114828.18076-1-leif@nuviainc.com>
- <20201215114828.18076-4-leif@nuviainc.com>
- <CABoDooPXUC585huW0-1Md1WTAO0AwhKvOe20FioU=SbOJ+FdkA@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xwb33KDVUeuxveR0XnLxUJImmBOS1vIqA9nH4lvQrSc=;
+ b=LCsUQfLv3wbnX5REtanFf4F47pakGNrDimz+9qCGQIOcO4UPwvbTjIH9SOZu/mJc8H
+ /xobF7PgWBEHCuzttpXqIGLZbXFOTWKUXUA85aVRk76ytMZEk88L2+zMINWufjoEC/4S
+ 8DTJy9/HICelkqHLYfBV3fcLpLBZNDGp/F65IJAPt1Lgcn6+TcvrKR49PVMFU7kiFMas
+ moEQ/RvJWPTygAj2DTNkQ6Rtz0l2e8oNUDiTq0GWKC8tFep/nkLWPS4KyU9LJUK+W5LX
+ N8NNBQlKbXY2kRorgv/FAG9mfm9L4z+pbwUxRzBLd+sogwDTKE5mmfxaJnWZD+M33qgV
+ +DDQ==
+X-Gm-Message-State: AOAM533Q6MU8FXbPi/61tJ1p2TS0kQpU4VgRjROqb9UH+p2h29QrRpyc
+ 6MV5ri7diwfrcNlmmzuxBDGkXZ88EM/7ifGXUAG9hg==
+X-Received: by 2002:a2e:8745:: with SMTP id q5mr12453800ljj.77.1608052450274; 
+ Tue, 15 Dec 2020 09:14:10 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CABoDooPXUC585huW0-1Md1WTAO0AwhKvOe20FioU=SbOJ+FdkA@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=leif@nuviainc.com; helo=mail-wm1-x343.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20201215001312.3120777-1-wuhaotsh@google.com>
+ <b356d726-4b6c-ab4b-237a-c31dd658c5b2@amsat.org>
+In-Reply-To: <b356d726-4b6c-ab4b-237a-c31dd658c5b2@amsat.org>
+Date: Tue, 15 Dec 2020 09:13:58 -0800
+Message-ID: <CAGcCb13sgLS+kRwtXoSKrVNxyfjbH_9-BwgJfo4rS7eE-BMoUA@mail.gmail.com>
+Subject: Re: [PATCH v3 0/5] Additional NPCM7xx devices
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="00000000000014b6cb05b683e341"
+Received-SPF: pass client-ip=2a00:1450:4864:20::141;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x141.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,99 +110,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, minyard@acm.org,
+ Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ f4bug@armsat.org, qemu-arm <qemu-arm@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1GhbNjS18mxP
+Reply-to: Hao Wu <wuhaotsh@google.com>
+From: Hao Wu via <qemu-arm@nongnu.org>
+X-TUID: CHD5EJJeXYbL
 
-On Tue, Dec 15, 2020 at 13:23:58 +0100, Laurent Desnogues wrote:
-> Hello,
-> 
-> On Tue, Dec 15, 2020 at 12:51 PM Leif Lindholm <leif@nuviainc.com> wrote:
+--00000000000014b6cb05b683e341
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thanks for the tip! I'll use that in the future.
+
+Best,
+
+Hao
+
+On Tue, Dec 15, 2020 at 7:17 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
+
+> On 12/15/20 1:13 AM, Hao Wu via wrote:
+> > This patch series include a few more NPCM7XX devices including
 > >
-> > Signed-off-by: Leif Lindholm <leif@nuviainc.com>
-> > ---
-> >  target/arm/cpu.h | 24 ++++++++++++++++++++++++
-> >  1 file changed, 24 insertions(+)
+> > - Analog Digital Converter (ADC)
+> > - Pulse Width Modulation (PWM)
 > >
-> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > index fadd1a47df..90ba707b64 100644
-> > --- a/target/arm/cpu.h
-> > +++ b/target/arm/cpu.h
-> > @@ -1736,6 +1736,30 @@ FIELD(V7M_FPCCR, ASPEN, 31, 1)
-> >  /*
-> >   * System register ID fields.
-> >   */
-> > +FIELD(CLIDR_EL1, CTYPE1, 0, 3)
-> > +FIELD(CLIDR_EL1, CTYPE2, 3, 3)
-> > +FIELD(CLIDR_EL1, CTYPE3, 6, 3)
-> > +FIELD(CLIDR_EL1, CTYPE4, 9, 3)
-> > +FIELD(CLIDR_EL1, CTYPE5, 12, 3)
-> > +FIELD(CLIDR_EL1, CTYPE6, 15, 3)
-> > +FIELD(CLIDR_EL1, CTYPE7, 18, 3)
-> > +FIELD(CLIDR_EL1, LOUIS, 21, 3)
-> > +FIELD(CLIDR_EL1, LOC, 24, 3)
-> > +FIELD(CLIDR_EL1, LOUU, 27, 3)
-> > +FIELD(CLIDR_EL1, ICB, 30, 3)
-> > +
-> > +FIELD(CCSIDR_EL1, LINESIZE, 0, 3)
-> > +FIELD(CCSIDR_EL1, ASSOCIATIVITY, 3, 21)
-> > +FIELD(CCSIDR_EL1, NUMSETS, 32, 24)
-> 
-> The positions and sizes of the ASSOCIATIVITY and NUMSETS CCSIDR fields
-> depend on whether the ARMv8.3-CCIDX extension is implemented or not.
-> If we really want to define the fields this way, we perhaps should
-> define two sets.  Or at the very least, add a comment stating this
-> definition is for ARMv8.3-CCIDX.
-
-Urgh, sorry for this.
-I added the fields only to make the CPU definition more readable, so I
-think we don't need to worry about runtime handling of this?
-But I don't think it makes sense to add only the one form.
-Should I use CCIDX_CCSIDR_EL1 for these ones and add
-
-/* When FEAT_CCIDX is not implemented */
-FIELD(CCSIDR_EL1, LINESIZE, 0, 3)
-FIELD(CCSIDR_EL1, ASSOCIATIVITY, 3, 10)
-FIELD(CCSIDR_EL1, NUMSETS, 13, 15)
-
-with a comment that
-/* When FEAT_CCIDX is implemented */
-for the former set
-?
-
-> > +FIELD(CTR_EL0,  IMINLINE, 0, 4)
-> > +FIELD(CTR_EL0,  L1IP, 14, 2)
-> > +FIELD(CTR_EL0,  DMINLINE, 16, 4)
-> > +FIELD(CTR_EL0,  ERG, 20, 4)
-> > +FIELD(CTR_EL0,  CWG, 24, 4)
-> > +FIELD(CTR_EL0,  IDC, 28, 1)
-> > +FIELD(CTR_EL0,  DIC, 29, 1)
-> 
-> There's a missing field:  TminLine which starts at bit 32.
-
-Ack, oops.
-
-> If
-> implemented, that would require to make ctr a 64-bit integer.
-
-As far as I can tell, this will be safe with existing code - should I
-fold in a patch extending the register?
-
-Regards,
-
-Leif
-
-> Thanks,
-> 
-> Laurent
-> 
-> > +
-> >  FIELD(MIDR_EL1, REVISION, 0, 4)
-> >  FIELD(MIDR_EL1, PARTNUM, 4, 12)
-> >  FIELD(MIDR_EL1, ARCHITECTURE, 16, 4)
-> > --
-> > 2.20.1
+> > We also modified the CLK module to generate clock values using
+> qdev_clock.
+> > These clocks are used to determine various clocks in NPCM7XX devices.
 > >
-> >
+> > Thank you for your review.
+>
+> The list is still rewriting your author ident.
+>
+> Maybe try 'git-format-patch --from' next time to force it
+> on each patch?
+>
+> Regards,
+>
+> Phil.
+>
+
+--00000000000014b6cb05b683e341
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thanks for the tip! I&#39;ll use that in the future.<br><d=
+iv><br></div><div>Best,</div><div><br></div><div>Hao</div></div><br><div cl=
+ass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Dec 15, 2=
+020 at 7:17 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex">On 12/15/20 1:13 AM, Hao Wu via wrote:<br>
+&gt; This patch series include a few more NPCM7XX devices including<br>
+&gt; <br>
+&gt; - Analog Digital Converter (ADC)<br>
+&gt; - Pulse Width Modulation (PWM)<br>
+&gt; <br>
+&gt; We also modified the CLK module to generate clock values using qdev_cl=
+ock.<br>
+&gt; These clocks are used to determine various clocks in NPCM7XX devices.<=
+br>
+&gt; <br>
+&gt; Thank you for your review.<br>
+<br>
+The list is still rewriting your author ident.<br>
+<br>
+Maybe try &#39;git-format-patch --from&#39; next time to force it<br>
+on each patch?<br>
+<br>
+Regards,<br>
+<br>
+Phil.<br>
+</blockquote></div>
+
+--00000000000014b6cb05b683e341--

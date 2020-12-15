@@ -1,110 +1,112 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1479329lfb;
-        Fri, 6 Nov 2020 09:10:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzleoSnKU6HgGd0NhtkpKtVfcbziqyMcLLdgivab+d+XzYgpzVh0a/xGCPZDs7pwSPfleXb
-X-Received: by 2002:a05:6214:87:: with SMTP id n7mr2556799qvr.16.1604682615604;
-        Fri, 06 Nov 2020 09:10:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604682615; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3591585lfq;
+        Tue, 15 Dec 2020 07:17:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyUrnafp41FR87/MuW8pAkx8soj2dXTjN3Cjm5WCvqGqaXqDzuZmWAxHjcusdbHFLfvrVaw
+X-Received: by 2002:a5b:ed2:: with SMTP id a18mr36973700ybs.246.1608045447467;
+        Tue, 15 Dec 2020 07:17:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608045447; cv=none;
         d=google.com; s=arc-20160816;
-        b=r0vn5ZOIOKd5C71VpZPBqb28mHwjyzXXE4nb6Oygv0CrNrVtcqWM2aEQzTdnR2RPpV
-         5d3oQpsePqpZd26lcnM/jvyyUuSt6m3wIGtnbkMNreO4Wi3T03f9CF7QDxrfNMtwiojI
-         V3Xxc3a236VfG82RGQ2doa4wNsxUVil3DadcEn0w9SH6nYhvndP0kQ8RIYtkeNZkvi3m
-         c1GLGm9203ksq+rYpdIsGAAimyOAvoq4mFdu7IDlrGKVyjmXk/IgRTcUlhXpAuIK52PT
-         YK18W0ZxLPR82DYYkuuJx1H/f1xZIuBs1Qrc8CQQ9olRFSIsPInkFtGVVaiJ6f0SQ6/9
-         X6bA==
+        b=d2WsjnMqYVbU6rFKoaGqkfxOkDZN6hmpCCLFzUrBSSoO2GfZpdxeoDy3oFi4djyXR3
+         dnYsbk0SFnASTZJzjerOQvq9/IV9LE9oi7/K3jQEMs7yvSYVZI8yFbUxjnPgeDqV+M8i
+         VaP1Bhnz6befBp1LhklgChu91e8n+Qp0OcWYF41pT8mIK+jrYRoNT1LOMgQSy+CGnRPq
+         rSVqWYeCVT7pQ94w7gCByFeqHW/uWZjGReZTJMzxwHNBXRno7f7fQATkG93aaKgHVkRV
+         sK4aHi79zLOQXkxDqra9p1c9hAZfZF6XvQP1gkHeA+dJD28cit1m3P9+4vcjn9NycMRl
+         sjZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:date:message-id:from
-         :references:to:subject:dkim-signature;
-        bh=pCc2OHwduMCbNswptc9B/atjIkhqIhKb8LFY7rv/A8Q=;
-        b=qRzei8P26De6Fv43nhY+YjYKJwTKuT2wRom9AjvfyaLHBPKyk8SUBE/JVm9ZGlEXHv
-         FvN88Oo6TG58a+3XYCQk+SXawMNgFITXOUDvp7vfACmttqoI+CQxlaTgkPgf9CW6W7Mj
-         ctjrcR1rzqvQ6JpUm7iAcwdWo+dp7JXD9FSPiN2KAi7qoBiG0dj+hmmESh/3xiMbUr4Q
-         NALKONV93tMc8OLIRL7px03O7LB75YPeTxV5jS/RsFGguG6RgY8AKe3tEceAmCZr590D
-         2ubkAQt+wF0QHMNoo+2nmLqlglfRb5bqlFUJCYF9DWHfPbRQYqrSrAW7W8GDZqQ5eRFf
-         Zlfw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=K7wiNA9gRrZBuhWyInSErztbGgYmZ7mqFItBrxYEAIg=;
+        b=s4mEOtAxBepgZ3UqvauPcwyyYZJGIlnNDw8w98ld79cnpkOjTBSeT5Qhy5/NPvEBjv
+         SVI7zp7T4BRQvQZ/bQQLcs1u/b9t/HzO4o+j1jp4wosHzigGPDWyDGXF5Cb/H5Hbgk4C
+         DOeaZ4gPGDYXBBCtCmu/8EIE9oZLg4ugjN3YSRid4IefqZJNVE/ZanBivDqFeqn0nBgH
+         PHFRYMRsCwrnP85k4CURA3c0KjU8CHv4+9sHgBV2YR+nrrxnKQpsxg3r2onG5m2gyyTq
+         1/nsMX4ZzBGWoZE/bW3GK9OANNAAt0Sihfk9GM6Y9EElbNNhMmicF8N0zy9vt79xYZEc
+         b32Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iMtzWjoI;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=im9CoPG3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18si714964qtp.110.2020.11.06.09.10.15
+        by mx.google.com with ESMTPS id p197si27496523ybc.189.2020.12.15.07.17.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Nov 2020 09:10:15 -0800 (PST)
+        Tue, 15 Dec 2020 07:17:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iMtzWjoI;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=im9CoPG3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60444 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:48374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kb5Ff-0007kJ-12
-	for alex.bennee@linaro.org; Fri, 06 Nov 2020 12:10:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34248)
+	id 1kpC4s-0004eX-Qk
+	for alex.bennee@linaro.org; Tue, 15 Dec 2020 10:17:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kb5FV-0007iQ-AY
- for qemu-arm@nongnu.org; Fri, 06 Nov 2020 12:10:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47020)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kb5FT-00031d-1M
- for qemu-arm@nongnu.org; Fri, 06 Nov 2020 12:10:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604682601;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pCc2OHwduMCbNswptc9B/atjIkhqIhKb8LFY7rv/A8Q=;
- b=iMtzWjoIlVSlgJO84jwjDMNrBBS++NSeAt8KBsOqehHTfp2WAKHKniumV9JU6TuZs5yOD3
- 7uYyoZw5wgrt99b9EAlD6DENXXK2o3BpCRFiJgfSe6EB7icgZHT++mh4qIWPTEM62Boupp
- 2C62lGJL7VVNZod1vIwYeW+zqI7WjeQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-200-t5aAyBMzOzqdm32kVbB9uQ-1; Fri, 06 Nov 2020 12:09:58 -0500
-X-MC-Unique: t5aAyBMzOzqdm32kVbB9uQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15795101962D;
- Fri,  6 Nov 2020 17:09:57 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-115-95.ams2.redhat.com
- [10.36.115.95])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D39C06EF75;
- Fri,  6 Nov 2020 17:09:54 +0000 (UTC)
-Subject: Re: Question on UEFI ACPI tables setup and probing on arm64
-To: Ying Fang <fangying1@huawei.com>, Igor Mammedov <imammedo@redhat.com>
-References: <ee3b7fdf-f6ba-cafc-5b44-42b0bcda01c5@huawei.com>
- <20201103133913.1fee3337@redhat.com>
- <a79383a6-92d4-5b10-d143-414543caab70@redhat.com>
- <5310d14d-8dbe-ba97-fdf1-4f3f10f91f3a@huawei.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <813efc59-2ce4-e2be-894f-e48ca66ce603@redhat.com>
-Date: Fri, 6 Nov 2020 18:09:53 +0100
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kpC4i-0004dw-17; Tue, 15 Dec 2020 10:17:16 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:51798)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kpC4g-0001lg-Cw; Tue, 15 Dec 2020 10:17:15 -0500
+Received: by mail-wm1-x342.google.com with SMTP id v14so17198170wml.1;
+ Tue, 15 Dec 2020 07:17:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=K7wiNA9gRrZBuhWyInSErztbGgYmZ7mqFItBrxYEAIg=;
+ b=im9CoPG3EMBkig94KTF44Ky6Q5eUByNYv/mR/ASYvELgIyPg7KRF0P2+GVE394xIXY
+ kmYgbTntYPJ3RINLNLB+iA5fYT11N/P44YcptUoX5EthPi9KB13sq/7wNVBg7iifi3VU
+ +ZqH595/n6hEtcMYIC3vc9jz563pIbEpmkBsNyTsyhyxSQvyEdOpAeranK0bJUGNoqSq
+ EYnw0jLTBZ0HPosLFJYvjpaOIRw/4WMKKwLv0+Nm1jYpyqYrhpFc+xGM2TW/OMjws0Sw
+ ny6PBXJJrKgg2cMZRAATq2vUoY2d0x6qdhAZdbRXkEvynITVzuX9fNYIGZxHPlr+MZre
+ KfHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=K7wiNA9gRrZBuhWyInSErztbGgYmZ7mqFItBrxYEAIg=;
+ b=Xz1OPbFRPLxm85bTWVqXsrVKXV+XDARCgh5wgOtKFcU2SywDqlX73SnJtvKVldUWRY
+ ZKYRk2NFK29Z4qreNDJO3gULjir6RjfDdQ0sNB5czdYqovKswybh8wlGmfSd2doYyHFU
+ i3u+8dBM/2Mf6oJvVVyXAgSdA1EP9g9WQqU+oXa3c6tBE2+5adzwR+ouOjj0+a9q/MzJ
+ X7iLAdoPlYhz6tk6amPk05yzsc2ej3wh/MCXPoSkJr5ZCh9YQ8mdj89U+v7w067R8IZ4
+ /kSg4S0VbT1vi5wJDpZ8ak7q2Ij/F/cABFwqqrpWPPB8RGSJe+3tJh+fYLgL7/DzNa35
+ wiLg==
+X-Gm-Message-State: AOAM531+G40vinKMWINXnWxmeAGyMokPAb+17IylcEGZwk0VvjnbhAGx
+ tfaSPUb18BRNrG4f6TwouUE=
+X-Received: by 2002:a1c:bd43:: with SMTP id n64mr33585907wmf.169.1608045432586; 
+ Tue, 15 Dec 2020 07:17:12 -0800 (PST)
+Received: from [192.168.43.238] (65.red-95-127-157.staticip.rima-tde.net.
+ [95.127.157.65])
+ by smtp.gmail.com with ESMTPSA id i11sm35992054wmd.47.2020.12.15.07.17.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Dec 2020 07:17:11 -0800 (PST)
+Subject: Re: [PATCH v3 0/5] Additional NPCM7xx devices
+To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
+References: <20201215001312.3120777-1-wuhaotsh@google.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b356d726-4b6c-ab4b-237a-c31dd658c5b2@amsat.org>
+Date: Tue, 15 Dec 2020 16:17:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.0
 MIME-Version: 1.0
-In-Reply-To: <5310d14d-8dbe-ba97-fdf1-4f3f10f91f3a@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20201215001312.3120777-1-wuhaotsh@google.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/06 06:30:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,58 +119,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Drew Jones <drjones@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- "wangzhigang17@huawei.com" <wangzhigang17@huawei.com>,
- "Ard Biesheuvel \(ARM address\)" <ard.biesheuvel@arm.com>, philmd@redhat.com
+Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org,
+ hskinnemoen@google.com, kfting@nuvoton.com, f4bug@armsat.org,
+ qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rg2+CVTC5Cui
+X-TUID: AeBBhxBIWdxp
 
-On 11/05/20 05:30, Ying Fang wrote:
-
-> I see it in Qemu the *loader_start* is fixed at 1 GiB on the
-> physical address space which points to the DRAM base. In ArmVirtQemu.dsc
-> PcdDeviceTreeInitialBaseAddress is set 0x40000000 with correspondence.
+On 12/15/20 1:13 AM, Hao Wu via wrote:
+> This patch series include a few more NPCM7XX devices including
 > 
-> Here I also see the discussion about DRAM base for ArmVirtQemu.
-> https://lists.gnu.org/archive/html/qemu-devel/2017-10/msg03127.html
+> - Analog Digital Converter (ADC)
+> - Pulse Width Modulation (PWM)
 > 
-> I am still not sure how UEFI knows that it is running on a ArmVirtQemu
-> machine type.
+> We also modified the CLK module to generate clock values using qdev_clock.
+> These clocks are used to determine various clocks in NPCM7XX devices.
+> 
+> Thank you for your review.
 
-It doesn't know. It remains a convention.
+The list is still rewriting your author ident.
 
-This part is not auto-detected; the constants in QEMU and edk2 are
-independently open-coded, their values were synchronized by human effort
-initially.
+Maybe try 'git-format-patch --from' next time to force it
+on each patch?
 
-The user or the management layer have to make sure they boot a UEFI
-firmware binary on the machine type that is compatible with the machine
-type.
+Regards,
 
-There is some meta-data to help with that:
-
-> Does UEFI derive it from the fdt *compatible* property ?
-
-Please see the schema "docs/interop/firmware.json" in the QEMU tree; in
-particular the @FirmwareTarget element.
-
-For an actual example: QEMU bundles some edk2 firmware binaries (purely
-as a convenience, not for production), and those are accompanied by
-matching descriptor files. See
-"pc-bios/descriptors/60-edk2-aarch64.json". (It is a template that's
-fixed up during QEMU installation, but that's tangential here.)
-
-    "targets": [
-        {
-            "architecture": "aarch64",
-            "machines": [
-                "virt-*"
-            ]
-        }
-    ],
-
-Thanks
-Laszlo
-
+Phil.

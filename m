@@ -1,139 +1,166 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3420707lfq;
-        Tue, 15 Dec 2020 03:54:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyQ5KkGZytB+g5l1f/Joy5eXfkPc5KU+bAHIrtYVOpEOrXv5Z6l++TNNjBn5DFf2yf0HyLa
-X-Received: by 2002:a25:42d0:: with SMTP id p199mr44030483yba.352.1608033282907;
-        Tue, 15 Dec 2020 03:54:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608033282; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3423183lfq;
+        Tue, 15 Dec 2020 03:58:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwI778xQgv8LhPE+UT1wbvDRiLImLyCc/EQrKygTzpyZG/odxzQ6+2dhegezQph47rMGiqJ
+X-Received: by 2002:a25:4113:: with SMTP id o19mr33361627yba.156.1608033529540;
+        Tue, 15 Dec 2020 03:58:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608033529; cv=none;
         d=google.com; s=arc-20160816;
-        b=BJQbFSeF3oIYI4lZSTJ1jm5ddRU919Z8BSXAI318p+z7JLtAXUAC9sxHm9ss5ETa/v
-         FivMO9DM9qq2tQq5k95pY7gALNBtpyUCLIaX09PTYZ2vLW4XSKHrJovSK02yWGLKPXhC
-         BpECH5uXzfpwpMPzHQkihOY+e2DzSyD7j8QMW3uqihbLtPuBptcXKxLDBmiGzsUZ6qGG
-         YLDZIkayXCANn97/SV5zsHbJZGaY0ap6vEs1BYvDJkBzXOST+14yFF/afGQZsKDpaV5/
-         tkwn3rXb9W/YNADPWMIeGXQBFcJPRVRTcO7s8eP5M9UHnRrvYEZsslf7eYG+MIWnkmsE
-         BIMg==
+        b=erzXq5+SQg+DSkxonCSFSe4UPpmH1bRkr3ZZTRl3UNyWfPeLbxhaoEAWoyv8MRSfrJ
+         Ao8BwuBllXikgj9ITxw7L8Si4QPH/xYWLt3BWPQ6mT6zjoUuwSGdxV8WpFfJZgZBzKIi
+         1R0GdAhT59/UJ3j9NBwByTlMC1xaG1QDOI5IrkJKfGfaORqcPfc9xk7LVLD2Lu4d4S5O
+         oQIGUJJJs1E2g/FLB2NtZFGjlwQv7pYY+U6x36eGdO75kmp6VRGhV7ZeGQHps6whEwjq
+         rHrOy8lgs3CMaYLoZbtqQPz+qtHY1/y7CyyRAKzkMYz/dxdUzdRra80O1JLD+l/Aiyr6
+         mWUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=/9QQtjKAJGy//+MTZlPDZ6IKf2rSvh+1DJ3vCYIdDTI=;
-        b=JFwZ6kX1U8X0nkx080hgTZ90WRwrorkoR+CBrwM8RQG1EUNyhSHinxiVotGsTV5AKV
-         q6ZcnncQX2ifmP0in0enXhGaPjpYvkFFzL7x6rfamS1IUPzeIGDDCeBBWhaf6OOj0zx7
-         SRZmwRtr8m+j0Sm4SaPJSz4L47iEHVlYmaHoQ1TnewcNm30O044m3DGOWVQ/Yhg5ZBJ3
-         EFrxOHiLd59GqWZPKwerdzVhKxGDC5UUxe+X8NbqsLsyTNix/7bmACM8T/806WobuNuV
-         fBupNwY0q+CT0Nc7q69ENmYLhi+ve6+f/OcRZg92mdxEyuj5wxvRwsoccYv6xY/jO0+b
-         lvhw==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=zEvgeCZcAUWjuDImRhmKhkrDhLilJbzDBBzY6nS2xZo=;
+        b=UOjM7IButr/nhxr/fthopS1pPoZwTNxq7CCOdYVDbDLNnKAqgNnlyiY9atkGEnLOKF
+         h5x74uSrGXnHqZD21V0B45+XYu+hPPiF5/BhiNEQvhKpNvKDCoH4t7M7WqstoUnUstBD
+         Z9u7GlrPFrGOReQTJCVpSlwNEp7qL0rch/M+3DwfTkqlNKUPRWR8wwYhgq5lhNjD9Ds7
+         x+eGVJeyBeafJ3L9ymsWuDKH2QcwgNXycP2oBMKg8G5HkITIZWMtKjp2E0k6IG0/1dnE
+         pxjmeJQSqsgVp8nQVS/IZ23ORA8xtPJRDjwPAC+cEjShbfSIJCKUnomoYTfFducFrU7/
+         AyLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=gl8+BAhe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aa5cACNw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x77si9426996ybe.13.2020.12.15.03.54.42
+        by mx.google.com with ESMTPS id k9si18481057ybg.383.2020.12.15.03.58.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Dec 2020 03:54:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Dec 2020 03:58:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=gl8+BAhe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47310 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aa5cACNw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kp8ug-0006w4-BS
-	for alex.bennee@linaro.org; Tue, 15 Dec 2020 06:54:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60214)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kp8ye-0002Mq-0J
+	for alex.bennee@linaro.org; Tue, 15 Dec 2020 06:58:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33390)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kp8pr-0000Zh-Rc
- for qemu-arm@nongnu.org; Tue, 15 Dec 2020 06:49:43 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:52689)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kp8pp-0001Pw-38
- for qemu-arm@nongnu.org; Tue, 15 Dec 2020 06:49:43 -0500
-Received: by mail-wm1-x344.google.com with SMTP id a6so16613235wmc.2
- for <qemu-arm@nongnu.org>; Tue, 15 Dec 2020 03:49:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=/9QQtjKAJGy//+MTZlPDZ6IKf2rSvh+1DJ3vCYIdDTI=;
- b=gl8+BAhekKeLNRD6oy/XGkse7JAVU6AGOpP2P4L4GNlA4UeKS+77NIRu2D836YHRxq
- oUr6kBf7ymGAxTjqvoqggszIB38lQ5o04vsue/YyLFXXt/moVNSKgEAolBRqCp0ce6Rp
- 07rEiQ89odcDS3HMhmaqaAE16SgH2MeHRxILeYuUOlxyyxKZjhCr5eq5fDd4TIFLhH/w
- OkgyavbFrxMfzAA2SoJL+YUma0O1FAcrQUjtBuvaGgqvzKexWLAODiWuADvQX0uggBlc
- TbItV8leLWFCrm4VO+P1t9kqb/LXMaxH9S5P815o0BfPGDZqiWtJ5LInaTHoFvjr47yc
- 6zRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=/9QQtjKAJGy//+MTZlPDZ6IKf2rSvh+1DJ3vCYIdDTI=;
- b=neL2aBOitIsHeEG4Jh+EYx4JrTYeLrylcT3sZp/Va/+6u7GfTD4mX+R5KJQ+URZwt3
- o1ju/7fk1l1n3YGEcKHli8K3NmVmhodKkh0aBLINyIaTAyFY4V+kY+nI6RL1pKpmZmvd
- LOTPHdd/z7S5Oz7byTQQf0Z5wydn86lUWimLjn+ZsstVUce1vc2VSDQSrg2GykegM6uY
- oLbKMvSbysoz/jT3EPAASem10vya+rSbCr8lY8kWQOU7BmQckpmD613mDH/lfc0uJdGC
- k7xVv1BXuTQMn6/YC66DcMOSVs8YL62d3QC+3IycmsoTQ7qMaxxU31kVWC4XDBVnq65l
- +GAg==
-X-Gm-Message-State: AOAM531wS8ySMVP/kXQGH+RzbHTsYtQgYn3SD+PWo0sRJ5EgIvmFD3zH
- W0+fAvgwIatoYcX/x3X2KogOtg==
-X-Received: by 2002:a1c:40c:: with SMTP id 12mr31927455wme.40.1608032979528;
- Tue, 15 Dec 2020 03:49:39 -0800 (PST)
-Received: from vanye (cpc1-cmbg19-2-0-cust915.5-4.cable.virginm.net.
- [82.27.183.148])
- by smtp.gmail.com with ESMTPSA id g184sm38507050wma.16.2020.12.15.03.49.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Dec 2020 03:49:39 -0800 (PST)
-Date: Tue, 15 Dec 2020 11:49:37 +0000
-From: Leif Lindholm <leif@nuviainc.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 3/5] target/arm: add descriptions of CLIDR_EL1,
- CCSIDR_EL1, CTR_EL0 to cpu.h
-Message-ID: <20201215114937.GV1664@vanye>
-References: <20201214123553.2515-1-leif@nuviainc.com>
- <CAFEAcA-X-JV9TXgnuoqw0ZDH8W9ZyiHAEiBW=epsYyb3fJ7FkA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kp8w9-0008Ey-HH
+ for qemu-devel@nongnu.org; Tue, 15 Dec 2020 06:56:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51636)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kp8w7-0003a0-Rk
+ for qemu-devel@nongnu.org; Tue, 15 Dec 2020 06:56:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1608033353;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zEvgeCZcAUWjuDImRhmKhkrDhLilJbzDBBzY6nS2xZo=;
+ b=aa5cACNwZwI/r15FfpONIvFvMfciXbMtjlaLOrRFYq80BO8BKWjzXzNTCtP2G0VVsWeRAx
+ Vw5VVcF0Kgs9DYa1N5ZZB73N878cggPn3+4dY5ExFDX+zhuqO/EglAhkcHZreq94hXZigB
+ gVWslgz4JFwl4VrsMNHDq6EC+6aN0QM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-325-JLylySS-MwignBZiz57Q0w-1; Tue, 15 Dec 2020 06:55:51 -0500
+X-MC-Unique: JLylySS-MwignBZiz57Q0w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0D6061922963;
+ Tue, 15 Dec 2020 11:55:50 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-113-73.ams2.redhat.com
+ [10.36.113.73])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5B5E160854;
+ Tue, 15 Dec 2020 11:55:43 +0000 (UTC)
+Date: Tue, 15 Dec 2020 12:55:41 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Keqian Zhu <zhukeqian1@huawei.com>
+Subject: Re: [PATCH 2/2] accel: kvm: Add aligment check for
+ kvm_log_clear_one_slot
+Message-ID: <20201215115541.vgbt7aaiueyw7ury@kamzik.brq.redhat.com>
+References: <20201215071948.23940-1-zhukeqian1@huawei.com>
+ <20201215071948.23940-3-zhukeqian1@huawei.com>
 MIME-Version: 1.0
+In-Reply-To: <20201215071948.23940-3-zhukeqian1@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA-X-JV9TXgnuoqw0ZDH8W9ZyiHAEiBW=epsYyb3fJ7FkA@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=leif@nuviainc.com; helo=mail-wm1-x344.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f/mz2OW07aKB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, jiangkunkun@huawei.com,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com, Zenghui Yu <yuzenghui@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CZpOup+6VC6Z
 
-On Mon, Dec 14, 2020 at 13:36:51 +0000, Peter Maydell wrote:
-> On Mon, 14 Dec 2020 at 12:36, Leif Lindholm <leif@nuviainc.com> wrote:
-> >
-> > Signed-off-by: Leif Lindholm <leif@nuviainc.com>
-> > ---
-> > v1->v2:
-> > - Correct CCSIDR_EL1 field sizes.
+On Tue, Dec 15, 2020 at 03:19:48PM +0800, Keqian Zhu wrote:
+> The parameters start and size are transfered from QEMU memory
+> emulation layer. It can promise that they are TARGET_PAGE_SIZE
+> aligned. However, KVM needs they are qemu_real_page_size aligned.
 > 
-> Hi -- could you resend the whole series for a v2, please?
-> The tools (and people) that handle patches get a bit confused
-> by partial series.
+> Though no caller breaks this aligned requirement currently, we'd
+> better add an explicit check to avoid future breaking.
+> 
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> ---
+>  accel/kvm/kvm-all.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index c5e06288eb..3d0e3aa872 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -701,6 +701,11 @@ static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
+>      unsigned long *bmap_clear = NULL, psize = qemu_real_host_page_size;
+>      int ret;
+>  
+> +    /* Make sure start and size are psize aligned */
+> +    if (!QEMU_IS_ALIGNED(start, psize) || !QEMU_IS_ALIGNED(size, psize)) {
+> +        return -EINVAL;
+> +    }
+> +
+>      /*
+>       * We need to extend either the start or the size or both to
+>       * satisfy the KVM interface requirement.  Firstly, do the start
+> -- 
+> 2.23.0
+> 
+>
 
-Of course :)
-Done, and noted for future.
+It's not clear to me that this function has any restrictions on start
+and size. If it does, then please document those restrictions in the
+function's header and assert rather than return.
 
-/
-    Leif
+Thanks,
+drew
+

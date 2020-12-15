@@ -1,967 +1,533 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3019177lfq;
-        Mon, 14 Dec 2020 16:17:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyGpURZnEGXbSoWlBCUyVx60/6xnqAsu54G5UxBM9DQ2PD0phPNk1JTHgtO8JcybpoiA1LW
-X-Received: by 2002:a25:284:: with SMTP id 126mr38771681ybc.22.1607991440923;
-        Mon, 14 Dec 2020 16:17:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607991440; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3019401lfq;
+        Mon, 14 Dec 2020 16:17:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz2v20fv7XQfKqUl8zd8N3Ved1MZ2sb10OOuKa+tZoxm6rY22FCJAvJEFka0sEN8F/59gVA
+X-Received: by 2002:a5b:b0b:: with SMTP id z11mr38703946ybp.164.1607991468788;
+        Mon, 14 Dec 2020 16:17:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607991468; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Xalt8gFQJf3nyMnhOfd9UwqYO3w1wthwKMnV56ksVjBZ7l+FJZrICBV6gDGLC6xkD
-         q+pvazQQde9zMqdgeoRU3LdSU/Adnfa6psgrxcnuoRJZ7Zfrdw+s2D6Tnhx+f1/nDFpc
-         oKsDy1CSTSBMYxv3Cxi4srrOAEPofxZPkmzAg5d9MBZia4onnDFdcrS1Nr20XKchd8En
-         LjgK4K1deRNRhL1/89QlkxWMtWm9r3PM7CfeJjd8CM3NXlZqUx6nxGMsi+2jvMlkICeW
-         RP7l+DMdntirEvhGdCN76F1/lYgCFmqm8Ytz5VBsrY5ngEib4PAgdt99JHBV3WJQ84Yk
-         YpBg==
+        b=hLbMQW6JjZDaZ9CsftUTiRXUo5eqZ+BdDURDCMKU0e9bv4OiyKoo+t4B7MT54v6aZn
+         8bAf5IPZSldWv/I5iTgqHONosgr2LoHjIWPi+pYf/F6g1D0ANBYMZcHpqhS7EsWKpmEm
+         YMwC588fNqpJy6OdNGcalHOI52q9+yrK4Owng9+9g9yjuPsHOeEMKt2Y7aRkPtvL+h49
+         Tm1EOwggNLVK3ZUapQcCvElUo1A1AX+ol3TjUd7STWbAsZ4Zjw67uEl+gzfeaVOAwgwN
+         CHT0sj46dHuEIt9IGxmx8FKPAXG/JJuslUYbdvYJXasPNEdlYnEau1IkTY9tdlCOx+I7
+         wOCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:references:mime-version:message-id:in-reply-to:date
+         :subject:message-id:date:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=qtzuvZDBjhbbdWk5aVJ0PFwcqcxVkIKHxqOHi0qJ4nI=;
-        b=lfQma9OFUp4z1pjFL320SGPg9lmGz9RoJ4yuT8eyVpESkOpg7hRbwVemugDu0wL8Ea
-         Yk2TxKprm9JlD+oWmBky0ps+t/hUQ3nVjd9IoaFtOn2ySredDvQA6RnndPK6zFj2KDtx
-         IYUTZC//Ld0W7fJknvctMC4feSIDsoZH4smacB8+4j4ZFhUYQBB1NVLpZvOMJZMd2f4q
-         J+sz/g4tCzqHNydzBt5DiKWUa36oMCTt0rd1S1x3ABoXCPF2EJQHHZcEQ9DyKIFuoBvW
-         IPMBc0jJ8dYCZ+uWEWJzaS90Q6mqtx9xvDhDNqPl7T6JgIen6qPu7SAYTIGugyhdwMuG
-         hHkg==
+        bh=KUClhekkUfnVtYs4hq8OfWJQ89NHr94pk2v0JJC2WQI=;
+        b=sl8lJkwGG7kaYaN94Qg/UScApBu3C/pQltpeXjxa1fWhVELQHbks97jd8TMDby0N60
+         ZqzfUuhd4RcBhyMfDmm1fOqnnP+FNMCFdT9iaoGCFjboEmbBapbfsAe44l/GMRs1ro0g
+         ostQVuDG/dQQU7KT43gZXj9RLlhVieB+/Kh/TwYVqildGLe/aPb4Ueho5ZE+xyekMcOc
+         cFeZzS/ZCt6IJTwV0c+uZJ7Qnk2OduaL8pA4A6TVWirAiXRdKBfUvrKyvMWUCzkAEsju
+         K4d64IOE1pqS44iV5DwMPF5JIEw23dH9mH9eawPoP5GGOGk06ilHnhkQlWed9kOmdZDY
+         9Ssw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b="d8t3PUe/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@google.com header.s=20161025 header.b=S5vSUMoV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e134si17293263yba.92.2020.12.14.16.17.20
+        by mx.google.com with ESMTPS id d34si11598069yba.296.2020.12.14.16.17.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Dec 2020 16:17:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Dec 2020 16:17:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b="d8t3PUe/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@google.com header.s=20161025 header.b=S5vSUMoV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:40774 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43948 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1koy1o-0003zr-7I
-	for alex.bennee@linaro.org; Mon, 14 Dec 2020 19:17:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46920)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1koy2G-0005Kw-30
+	for alex.bennee@linaro.org; Mon, 14 Dec 2020 19:17:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47388)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3qv_XXwgKCg8B9wp387wv33v0t.r315t19-stAt0232v29.36v@flex--wuhaotsh.bounces.google.com>)
- id 1koxyD-0000jF-L5
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 19:13:37 -0500
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549]:33949)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1koy1O-0004XJ-U9
+ for qemu-arm@nongnu.org; Mon, 14 Dec 2020 19:16:55 -0500
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:44965)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3qv_XXwgKCg8B9wp387wv33v0t.r315t19-stAt0232v29.36v@flex--wuhaotsh.bounces.google.com>)
- id 1koxy9-00037d-Of
- for qemu-devel@nongnu.org; Mon, 14 Dec 2020 19:13:37 -0500
-Received: by mail-pg1-x549.google.com with SMTP id z24so12914218pgu.1
- for <qemu-devel@nongnu.org>; Mon, 14 Dec 2020 16:13:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1koy1K-0003WS-KX
+ for qemu-arm@nongnu.org; Mon, 14 Dec 2020 19:16:54 -0500
+Received: by mail-lf1-x143.google.com with SMTP id m25so34788946lfc.11
+ for <qemu-arm@nongnu.org>; Mon, 14 Dec 2020 16:16:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=qtzuvZDBjhbbdWk5aVJ0PFwcqcxVkIKHxqOHi0qJ4nI=;
- b=d8t3PUe/5Q8GH2j3xlNOUEMGfFzfmD9E4x8jVv3Mp0Btt2lg20wVOcwrsgBLcPDN4s
- NTIA/8vCLtfzjTxlL5Fg1+n7LSscH/GKpYqk2jz6I5PbHfKssT+sxabD6IXJpUarp2DJ
- KP9rcR6ckace9vPTRdogpigynGR/FA7b50Nb2WeSsyzOEEnmdMXzxUuaTfh7++4qzTSR
- XcW65rUZDBEJJpK9qeduGA/RPcfxBM0N7mCd6Qc2YqiVWmXWaOj/FdqVEWy5OCV8T0aC
- i+ldBl7yg8HzGI4WORy9pBsE/sEOsM17tW5KBBz9uUavxh/Y/O1u1jNDSMcVA7qotMaN
- jJUA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KUClhekkUfnVtYs4hq8OfWJQ89NHr94pk2v0JJC2WQI=;
+ b=S5vSUMoVND0ojHnpHbW6YxfgMYuv3Fi5x97oHwpR1ZHnlMZNz2q8yCZiOTr9yZoVpx
+ DHDeKKGtEopp5E1I9EqvUbZRU+efsE+4aTg3/hgoGC+YgbknRRD/OqdKMVf17Z6p9gG3
+ yzsEmKQqKJNW9VJrCkzsYe3oQmQmeyWU45L4+TS0KhlwxbpbShBcQ3azAgXO2o02lCVG
+ OVnDokIvVhpYIzQ5EqbVKD6qFcZ/We62V/VcmvHuG2P2NkGjmWhkUo/7AidmAStR1FAy
+ Sx3X9kOj3Vgu8vsr9hSzFlMdSUcmvJjdlACBubUq7yZsfoDadULJzBixiBHxyiXMoX8C
+ EYBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=qtzuvZDBjhbbdWk5aVJ0PFwcqcxVkIKHxqOHi0qJ4nI=;
- b=Q7lzzm3pEYCVO3/dWmaD8olNj1wKRgU24zkZCRR2B8TWHFEte7sRblOWWuMZEnuSak
- WPsNFQH8t95EvLRMmWa93GqhKNkIzRSAdZyuLP8AoYSuJuZzr/NSw1q7pj68/pSFJRK0
- bE4lk09QBtkPAZO9XUA7vbcOzx1g62etlKukJBRX23idCVGitu5DnJLS9UBb6rJPvLK4
- s6W4kPrJXR9FvTQTtdelhM9VV2O7nw54AjmlFST6WIvqI+BBJjDKLlUwQRRMQzN8OJIM
- p85n7F11bZAfOjIundOZsHPPDqafo6IxqumM8Tx2GQ5SAf48y/ewQMRVk30vUBd/ifQE
- 5M9Q==
-X-Gm-Message-State: AOAM530L+B+KovqlCVaC+E0AncRvWGZC/TTzBKI6PnJK1Fl5ibf4Ohpj
- DXAqRWU2xTwCGXZJw3oNtPBRDdgptmWQRg==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a62:7fcd:0:b029:19f:5d05:4a83 with SMTP
- id a196-20020a627fcd0000b029019f5d054a83mr19317039pfd.45.1607991210993; Mon,
- 14 Dec 2020 16:13:30 -0800 (PST)
-Date: Mon, 14 Dec 2020 16:13:11 -0800
-In-Reply-To: <20201215001312.3120777-1-wuhaotsh@google.com>
-Message-Id: <20201215001312.3120777-5-wuhaotsh@google.com>
-Mime-Version: 1.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KUClhekkUfnVtYs4hq8OfWJQ89NHr94pk2v0JJC2WQI=;
+ b=jYI3H/ILR5OTt2E2zMFV4zoENXANWmUQfRiVBJwPTBomgkqrWX+YPAtypkZ0SFdgWb
+ O4y5VHvPz2AsGpi/nOxA8b+H2PGs18NUrUKyzfa5zSpxSirGNbj6FZGzTR98YcsOSaK6
+ 2Wv6v+TOKXAolPNvAmM2HB5ydx87iryluD7+2i9ny+LFsajZPJhZi/LEieAYccHLwjs0
+ y4G7gqVI/ciQmQ6irSR7QBhM3NGa3MjCKhkAiyMrHJVQz8ICsYPwuS2ZzuQQENwA/IpP
+ zma4K3DxIloBAVNVTzSbAOCX2dAr5DFq396QsqFIqO8kzMkSQOoMXe1GvuJ8RYhfRANe
+ 584w==
+X-Gm-Message-State: AOAM533DNezvBQcTN8D5beYVyOIUz8eYEZDmMbC93gRs7Fw4uo9S3U/f
+ U5IOKWdvXGFr2h/G1KdKFb6k88VQlt6w5Hhr6WYdrw==
+X-Received: by 2002:a2e:8745:: with SMTP id q5mr11016593ljj.77.1607991408970; 
+ Mon, 14 Dec 2020 16:16:48 -0800 (PST)
+MIME-Version: 1.0
 References: <20201215001312.3120777-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.29.2.684.gfbc64c5ab5-goog
-Subject: [PATCH v3 4/5] hw/misc: Add a PWM module for NPCM7XX
-To: peter.maydell@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3qv_XXwgKCg8B9wp387wv33v0t.r315t19-stAt0232v29.36v@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x549.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ <20201215001312.3120777-3-wuhaotsh@google.com>
+In-Reply-To: <20201215001312.3120777-3-wuhaotsh@google.com>
+Date: Mon, 14 Dec 2020 16:16:36 -0800
+Message-ID: <CAGcCb11nKdeqnjOZLQUCHM_uCop5kNwgkcWA5AJcOtWV1TC6dg@mail.gmail.com>
+Subject: Re: [PATCH v3 2/5] hw/timer: Refactor NPCM7XX Timer to use CLK clock
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000bc309505b675ac34"
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x143.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org,
- hskinnemoen@google.com, wuhaotsh@google.com, kfting@nuvoton.com,
- f4bug@armsat.org, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: minyard@acm.org, Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to: Hao Wu <wuhaotsh@google.com>
-From: Hao Wu via <qemu-devel@nongnu.org>
-X-TUID: C/yR9vHIrvWG
+From: Hao Wu via <qemu-arm@nongnu.org>
+X-TUID: iB8H4zXT/Li0
 
-The PWM module is part of NPCM7XX module. Each NPCM7XX module has two
-identical PWM modules. Each module contains 4 PWM entries. Each PWM has
-two outputs: frequency and duty_cycle. Both are computed using inputs
-from software side.
+--000000000000bc309505b675ac34
+Content-Type: text/plain; charset="UTF-8"
 
-This module does not model detail pulse signals since it is expensive.
-It also does not model interrupts and watchdogs that are dependant on
-the detail models. The interfaces for these are left in the module so
-that anyone in need for these functionalities can implement on their
-own.
+On Mon, Dec 14, 2020 at 4:13 PM Hao Wu <wuhaotsh@google.com> wrote:
 
-The user can read the duty cycle and frequency using qom-get command.
+> This patch makes NPCM7XX Timer to use a the timer clock generated by the
+> CLK module instead of the magic number TIMER_REF_HZ.
+>
+> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>  hw/arm/npcm7xx.c                 |  5 +++++
+>  hw/timer/npcm7xx_timer.c         | 23 +++++++++++++----------
+>  include/hw/misc/npcm7xx_clk.h    |  6 ------
+>  include/hw/timer/npcm7xx_timer.h |  1 +
+>  4 files changed, 19 insertions(+), 16 deletions(-)
+>
+> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+> index 47e2b6fc40..fabfb1697b 100644
+> --- a/hw/arm/npcm7xx.c
+> +++ b/hw/arm/npcm7xx.c
+> @@ -22,6 +22,7 @@
+>  #include "hw/char/serial.h"
+>  #include "hw/loader.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/qdev-clock.h"
+>  #include "hw/qdev-properties.h"
+>  #include "qapi/error.h"
+>  #include "qemu/units.h"
+> @@ -420,6 +421,10 @@ static void npcm7xx_realize(DeviceState *dev, Error
+> **errp)
+>          int first_irq;
+>          int j;
+>
+> +        /* Connect the timer clock. */
+> +        qdev_connect_clock_in(DEVICE(&s->tim[i]), "clock",
+> qdev_get_clock_out(
+> +                    DEVICE(&s->clk), "timer-clock"));
+> +
+>          sysbus_realize(sbd, &error_abort);
+>          sysbus_mmio_map(sbd, 0, npcm7xx_tim_addr[i]);
+>
+> diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c
+> index d24445bd6e..8147b53000 100644
+> --- a/hw/timer/npcm7xx_timer.c
+> +++ b/hw/timer/npcm7xx_timer.c
+> @@ -17,8 +17,8 @@
+>  #include "qemu/osdep.h"
+>
+>  #include "hw/irq.h"
+> +#include "hw/qdev-clock.h"
+>  #include "hw/qdev-properties.h"
+> -#include "hw/misc/npcm7xx_clk.h"
+>  #include "hw/timer/npcm7xx_timer.h"
+>  #include "migration/vmstate.h"
+>  #include "qemu/bitops.h"
+> @@ -130,7 +130,7 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer
+> *t, uint32_t count)
+>  {
+>      int64_t ns = count;
+>
+> -    ns *= NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;
+> +    ns *= clock_get_ns(t->ctrl->clock);
+>      ns *= npcm7xx_tcsr_prescaler(t->tcsr);
+>
+>      return ns;
+> @@ -141,7 +141,7 @@ static uint32_t npcm7xx_timer_ns_to_count(NPCM7xxTimer
+> *t, int64_t ns)
+>  {
+>      int64_t count;
+>
+> -    count = ns / (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ);
+> +    count = ns / clock_get_ns(t->ctrl->clock);
+>      count /= npcm7xx_tcsr_prescaler(t->tcsr);
+>
+>      return count;
+> @@ -167,7 +167,7 @@ static void
+> npcm7xx_watchdog_timer_reset_cycles(NPCM7xxWatchdogTimer *t,
+>          int64_t cycles)
+>  {
+>      uint32_t prescaler = npcm7xx_watchdog_timer_prescaler(t);
+> -    int64_t ns = (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ) * cycles;
+> +    int64_t ns = clock_get_ns(t->ctrl->clock) * cycles;
+>
+>      /*
+>       * The reset function always clears the current timer. The caller of
+> the
+> @@ -606,10 +606,11 @@ static void npcm7xx_timer_hold_reset(Object *obj)
+>      qemu_irq_lower(s->watchdog_timer.irq);
+>  }
+>
+> -static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)
+> +static void npcm7xx_timer_init(Object *obj)
+>  {
+> -    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(dev);
+> +    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(obj);
+>      SysBusDevice *sbd = &s->parent;
+> +    DeviceState *dev = DEVICE(obj);
+>      int i;
+>      NPCM7xxWatchdogTimer *w;
+>
+> @@ -627,11 +628,12 @@ static void npcm7xx_timer_realize(DeviceState *dev,
+> Error **errp)
+>              npcm7xx_watchdog_timer_expired, w);
+>      sysbus_init_irq(sbd, &w->irq);
+>
+> -    memory_region_init_io(&s->iomem, OBJECT(s), &npcm7xx_timer_ops, s,
+> +    memory_region_init_io(&s->iomem, obj, &npcm7xx_timer_ops, s,
+>                            TYPE_NPCM7XX_TIMER, 4 * KiB);
+>      sysbus_init_mmio(sbd, &s->iomem);
+>      qdev_init_gpio_out_named(dev, &w->reset_signal,
+>              NPCM7XX_WATCHDOG_RESET_GPIO_OUT, 1);
+> +    s->clock = qdev_init_clock_in(dev, "clock", NULL, NULL);
+>  }
+>
+>  static const VMStateDescription vmstate_npcm7xx_base_timer = {
+> @@ -675,10 +677,11 @@ static const VMStateDescription
+> vmstate_npcm7xx_watchdog_timer = {
+>
+>  static const VMStateDescription vmstate_npcm7xx_timer_ctrl = {
+>      .name = "npcm7xx-timer-ctrl",
+> -    .version_id = 1,
+> -    .minimum_version_id = 1,
+> +    .version_id = 2,
+> +    .minimum_version_id = 2,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT32(tisr, NPCM7xxTimerCtrlState),
+> +        VMSTATE_CLOCK(clock, NPCM7xxTimerCtrlState),
+>          VMSTATE_STRUCT_ARRAY(timer, NPCM7xxTimerCtrlState,
+>                               NPCM7XX_TIMERS_PER_CTRL, 0,
+> vmstate_npcm7xx_timer,
+>                               NPCM7xxTimer),
+> @@ -697,7 +700,6 @@ static void npcm7xx_timer_class_init(ObjectClass
+> *klass, void *data)
+>      QEMU_BUILD_BUG_ON(NPCM7XX_TIMER_REGS_END > NPCM7XX_TIMER_NR_REGS);
+>
+>      dc->desc = "NPCM7xx Timer Controller";
+> -    dc->realize = npcm7xx_timer_realize;
+>      dc->vmsd = &vmstate_npcm7xx_timer_ctrl;
+>      rc->phases.enter = npcm7xx_timer_enter_reset;
+>      rc->phases.hold = npcm7xx_timer_hold_reset;
+> @@ -708,6 +710,7 @@ static const TypeInfo npcm7xx_timer_info = {
+>      .parent             = TYPE_SYS_BUS_DEVICE,
+>      .instance_size      = sizeof(NPCM7xxTimerCtrlState),
+>      .class_init         = npcm7xx_timer_class_init,
+> +    .instance_init      = npcm7xx_timer_init,
+>  };
+>
+>  static void npcm7xx_timer_register_type(void)
+> diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h
+> index f641f95f3e..d5c8d16ca4 100644
+> --- a/include/hw/misc/npcm7xx_clk.h
+> +++ b/include/hw/misc/npcm7xx_clk.h
+> @@ -20,12 +20,6 @@
+>  #include "hw/clock.h"
+>  #include "hw/sysbus.h"
+>
+> -/*
+> - * The reference clock frequency for the timer modules, and the SECCNT and
+> - * CNTR25M registers in this module, is always 25 MHz.
+> - */
+> -#define NPCM7XX_TIMER_REF_HZ            (25000000)
+> -
+>  /*
+>   * Number of registers in our device state structure. Don't change this
+> without
+>   * incrementing the version_id in the vmstate.
+> diff --git a/include/hw/timer/npcm7xx_timer.h
+> b/include/hw/timer/npcm7xx_timer.h
+> index 6993fd723a..d45c051b56 100644
+> --- a/include/hw/timer/npcm7xx_timer.h
+> +++ b/include/hw/timer/npcm7xx_timer.h
+> @@ -101,6 +101,7 @@ struct NPCM7xxTimerCtrlState {
+>
+>      uint32_t    tisr;
+>
+> +    Clock       *clock;
+>      NPCM7xxTimer timer[NPCM7XX_TIMERS_PER_CTRL];
+>      NPCM7xxWatchdogTimer watchdog_timer;
+>  };
+> --
+> 2.29.2.684.gfbc64c5ab5-goog
+>
+>
 
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
----
- docs/system/arm/nuvoton.rst   |   2 +-
- hw/arm/npcm7xx.c              |  26 +-
- hw/misc/meson.build           |   1 +
- hw/misc/npcm7xx_pwm.c         | 559 ++++++++++++++++++++++++++++++++++
- hw/misc/trace-events          |   6 +
- include/hw/arm/npcm7xx.h      |   2 +
- include/hw/misc/npcm7xx_pwm.h | 106 +++++++
- 7 files changed, 699 insertions(+), 3 deletions(-)
- create mode 100644 hw/misc/npcm7xx_pwm.c
- create mode 100644 include/hw/misc/npcm7xx_pwm.h
+--000000000000bc309505b675ac34
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index 35829f8d0b..a1786342e2 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -42,6 +42,7 @@ Supported devices
-  * USB host (USBH)
-  * GPIO controller
-  * Analog to Digital Converter (ADC)
-+ * Pulse Width Modulation (PWM)
- 
- Missing devices
- ---------------
-@@ -61,7 +62,6 @@ Missing devices
-  * Peripheral SPI controller (PSPI)
-  * SD/MMC host
-  * PECI interface
-- * Pulse Width Modulation (PWM)
-  * Tachometer
-  * PCI and PCIe root complex and bridges
-  * VDM and MCTP support
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index b22a8c966d..72040d4079 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -102,6 +102,8 @@ enum NPCM7xxInterrupt {
-     NPCM7XX_WDG2_IRQ,                   /* Timer Module 2 Watchdog */
-     NPCM7XX_EHCI_IRQ            = 61,
-     NPCM7XX_OHCI_IRQ            = 62,
-+    NPCM7XX_PWM0_IRQ            = 93,   /* PWM module 0 */
-+    NPCM7XX_PWM1_IRQ,                   /* PWM module 1 */
-     NPCM7XX_GPIO0_IRQ           = 116,
-     NPCM7XX_GPIO1_IRQ,
-     NPCM7XX_GPIO2_IRQ,
-@@ -144,6 +146,12 @@ static const hwaddr npcm7xx_fiu3_flash_addr[] = {
-     0xb8000000, /* CS3 */
- };
- 
-+/* Register base address for each PWM Module */
-+static const hwaddr npcm7xx_pwm_addr[] = {
-+    0xf0103000,
-+    0xf0104000,
-+};
-+
- static const struct {
-     hwaddr regs_addr;
-     uint32_t unconnected_pins;
-@@ -353,6 +361,10 @@ static void npcm7xx_init(Object *obj)
-         object_initialize_child(obj, npcm7xx_fiu[i].name, &s->fiu[i],
-                                 TYPE_NPCM7XX_FIU);
-     }
-+
-+    for (i = 0; i < ARRAY_SIZE(s->pwm); i++) {
-+        object_initialize_child(obj, "pwm[*]", &s->pwm[i], TYPE_NPCM7XX_PWM);
-+    }
- }
- 
- static void npcm7xx_realize(DeviceState *dev, Error **errp)
-@@ -513,6 +525,18 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->ohci), 0,
-                        npcm7xx_irq(s, NPCM7XX_OHCI_IRQ));
- 
-+    /* PWM Modules. Cannot fail. */
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_pwm_addr) != ARRAY_SIZE(s->pwm));
-+    for (i = 0; i < ARRAY_SIZE(s->pwm); i++) {
-+        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->pwm[i]);
-+
-+        qdev_connect_clock_in(DEVICE(&s->pwm[i]), "clock", qdev_get_clock_out(
-+                    DEVICE(&s->clk), "apb3-clock"));
-+        sysbus_realize(sbd, &error_abort);
-+        sysbus_mmio_map(sbd, 0, npcm7xx_pwm_addr[i]);
-+        sysbus_connect_irq(sbd, i, npcm7xx_irq(s, NPCM7XX_PWM0_IRQ + i));
-+    }
-+
-     /*
-      * Flash Interface Unit (FIU). Can fail if incorrect number of chip selects
-      * specified, but this is a programming error.
-@@ -580,8 +604,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.peci",         0xf0100000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.siox[1]",      0xf0101000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.siox[2]",      0xf0102000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.pwm[0]",       0xf0103000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.pwm[1]",       0xf0104000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.mft[0]",       0xf0180000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.mft[1]",       0xf0181000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.mft[2]",       0xf0182000,   4 * KiB);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index ce15ffceb9..607cd38a21 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -64,6 +64,7 @@ softmmu_ss.add(when: 'CONFIG_MAINSTONE', if_true: files('mst_fpga.c'))
- softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
-   'npcm7xx_clk.c',
-   'npcm7xx_gcr.c',
-+  'npcm7xx_pwm.c',
-   'npcm7xx_rng.c',
- ))
- softmmu_ss.add(when: 'CONFIG_OMAP', if_true: files(
-diff --git a/hw/misc/npcm7xx_pwm.c b/hw/misc/npcm7xx_pwm.c
-new file mode 100644
-index 0000000000..402555538a
---- /dev/null
-+++ b/hw/misc/npcm7xx_pwm.c
-@@ -0,0 +1,559 @@
-+/*
-+ * Nuvoton NPCM7xx PWM Module
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "hw/irq.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/misc/npcm7xx_pwm.h"
-+#include "migration/vmstate.h"
-+#include "qemu/bitops.h"
-+#include "qemu/error-report.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/units.h"
-+#include "trace.h"
-+
-+/* 32-bit register indices. */
-+enum NPCM7xxPWMRegisters {
-+    NPCM7XX_PWM_PPR,
-+    NPCM7XX_PWM_CSR,
-+    NPCM7XX_PWM_PCR,
-+    NPCM7XX_PWM_CNR0,
-+    NPCM7XX_PWM_CMR0,
-+    NPCM7XX_PWM_PDR0,
-+    NPCM7XX_PWM_CNR1,
-+    NPCM7XX_PWM_CMR1,
-+    NPCM7XX_PWM_PDR1,
-+    NPCM7XX_PWM_CNR2,
-+    NPCM7XX_PWM_CMR2,
-+    NPCM7XX_PWM_PDR2,
-+    NPCM7XX_PWM_CNR3,
-+    NPCM7XX_PWM_CMR3,
-+    NPCM7XX_PWM_PDR3,
-+    NPCM7XX_PWM_PIER,
-+    NPCM7XX_PWM_PIIR,
-+    NPCM7XX_PWM_PWDR0,
-+    NPCM7XX_PWM_PWDR1,
-+    NPCM7XX_PWM_PWDR2,
-+    NPCM7XX_PWM_PWDR3,
-+    NPCM7XX_PWM_REGS_END,
-+};
-+
-+/* Register field definitions. */
-+#define NPCM7XX_PPR(rv, index)      extract32((rv), npcm7xx_ppr_base[index], 8)
-+#define NPCM7XX_CSR(rv, index)      extract32((rv), npcm7xx_csr_base[index], 3)
-+#define NPCM7XX_CH(rv, index)       extract32((rv), npcm7xx_ch_base[index], 4)
-+#define NPCM7XX_CH_EN               BIT(0)
-+#define NPCM7XX_CH_INV              BIT(2)
-+#define NPCM7XX_CH_MOD              BIT(3)
-+
-+/* Offset of each PWM channel's prescaler in the PPR register. */
-+static const int npcm7xx_ppr_base[] = { 0, 0, 8, 8 };
-+/* Offset of each PWM channel's clock selector in the CSR register. */
-+static const int npcm7xx_csr_base[] = { 0, 4, 8, 12 };
-+/* Offset of each PWM channel's control variable in the PCR register. */
-+static const int npcm7xx_ch_base[] = { 0, 8, 12, 16 };
-+
-+static uint32_t npcm7xx_pwm_calculate_freq(NPCM7xxPWM *p)
-+{
-+    uint32_t ppr;
-+    uint32_t csr;
-+    uint32_t freq;
-+
-+    if (!p->running) {
-+        return 0;
-+    }
-+
-+    csr = NPCM7XX_CSR(p->module->csr, p->index);
-+    ppr = NPCM7XX_PPR(p->module->ppr, p->index);
-+    freq = clock_get_hz(p->module->clock);
-+    freq /= ppr + 1;
-+    /* csr can only be 0~4 */
-+    if (csr > 4) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid csr value %u\n",
-+                      __func__, csr);
-+        csr = 4;
-+    }
-+    /* freq won't be changed if csr == 4. */
-+    if (csr < 4) {
-+        freq >>= csr + 1;
-+    }
-+
-+    return freq / (p->cnr + 1);
-+}
-+
-+static uint32_t npcm7xx_pwm_calculate_duty(NPCM7xxPWM *p)
-+{
-+    uint64_t duty;
-+
-+    if (p->running) {
-+        if (p->cnr == 0) {
-+            duty = 0;
-+        } else if (p->cmr >= p->cnr) {
-+            duty = NPCM7XX_PWM_MAX_DUTY;
-+        } else {
-+            duty = NPCM7XX_PWM_MAX_DUTY * (p->cmr + 1) / (p->cnr + 1);
-+        }
-+    } else {
-+        duty = 0;
-+    }
-+
-+    if (p->inverted) {
-+        duty = NPCM7XX_PWM_MAX_DUTY - duty;
-+    }
-+
-+    return duty;
-+}
-+
-+static void npcm7xx_pwm_update_freq(NPCM7xxPWM *p)
-+{
-+    uint32_t freq = npcm7xx_pwm_calculate_freq(p);
-+
-+    if (freq != p->freq) {
-+        trace_npcm7xx_pwm_update_freq(DEVICE(p->module)->canonical_path,
-+                                      p->index, p->freq, freq);
-+        p->freq = freq;
-+    }
-+}
-+
-+static void npcm7xx_pwm_update_duty(NPCM7xxPWM *p)
-+{
-+    uint32_t duty = npcm7xx_pwm_calculate_duty(p);
-+
-+    if (duty != p->duty) {
-+        trace_npcm7xx_pwm_update_duty(DEVICE(p->module)->canonical_path,
-+                                      p->index, p->duty, duty);
-+        p->duty = duty;
-+    }
-+}
-+
-+static void npcm7xx_pwm_update_output(NPCM7xxPWM *p)
-+{
-+    npcm7xx_pwm_update_freq(p);
-+    npcm7xx_pwm_update_duty(p);
-+}
-+
-+static void npcm7xx_pwm_write_ppr(NPCM7xxPWMState *s, uint32_t new_ppr)
-+{
-+    int i;
-+    uint32_t old_ppr = s->ppr;
-+
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_ppr_base) != NPCM7XX_PWM_PER_MODULE);
-+    s->ppr = new_ppr;
-+    for (i = 0; i < NPCM7XX_PWM_PER_MODULE; ++i) {
-+        if (NPCM7XX_PPR(old_ppr, i) != NPCM7XX_PPR(new_ppr, i)) {
-+            npcm7xx_pwm_update_freq(&s->pwm[i]);
-+        }
-+    }
-+}
-+
-+static void npcm7xx_pwm_write_csr(NPCM7xxPWMState *s, uint32_t new_csr)
-+{
-+    int i;
-+    uint32_t old_csr = s->csr;
-+
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_csr_base) != NPCM7XX_PWM_PER_MODULE);
-+    s->csr = new_csr;
-+    for (i = 0; i < NPCM7XX_PWM_PER_MODULE; ++i) {
-+        if (NPCM7XX_CSR(old_csr, i) != NPCM7XX_CSR(new_csr, i)) {
-+            npcm7xx_pwm_update_freq(&s->pwm[i]);
-+        }
-+    }
-+}
-+
-+static void npcm7xx_pwm_write_pcr(NPCM7xxPWMState *s, uint32_t new_pcr)
-+{
-+    int i;
-+    bool inverted;
-+    uint32_t pcr;
-+    NPCM7xxPWM *p;
-+
-+    s->pcr = new_pcr;
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_ch_base) != NPCM7XX_PWM_PER_MODULE);
-+    for (i = 0; i < NPCM7XX_PWM_PER_MODULE; ++i) {
-+        p = &s->pwm[i];
-+        pcr = NPCM7XX_CH(new_pcr, i);
-+        inverted = pcr & NPCM7XX_CH_INV;
-+
-+        /*
-+         * We only run a PWM channel with toggle mode. Single-shot mode does not
-+         * generate frequency and duty-cycle values.
-+         */
-+        if ((pcr & NPCM7XX_CH_EN) && (pcr & NPCM7XX_CH_MOD)) {
-+            if (p->running) {
-+                /* Re-run this PWM channel if inverted changed. */
-+                if (p->inverted ^ inverted) {
-+                    p->inverted = inverted;
-+                    npcm7xx_pwm_update_duty(p);
-+                }
-+            } else {
-+                /* Run this PWM channel. */
-+                p->running = true;
-+                p->inverted = inverted;
-+                npcm7xx_pwm_update_output(p);
-+            }
-+        } else {
-+            /* Clear this PWM channel. */
-+            p->running = false;
-+            p->inverted = inverted;
-+            npcm7xx_pwm_update_output(p);
-+        }
-+    }
-+
-+}
-+
-+static hwaddr npcm7xx_cnr_index(hwaddr reg)
-+{
-+    switch (reg) {
-+    case NPCM7XX_PWM_CNR0:
-+        return 0;
-+    case NPCM7XX_PWM_CNR1:
-+        return 1;
-+    case NPCM7XX_PWM_CNR2:
-+        return 2;
-+    case NPCM7XX_PWM_CNR3:
-+        return 3;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static hwaddr npcm7xx_cmr_index(hwaddr reg)
-+{
-+    switch (reg) {
-+    case NPCM7XX_PWM_CMR0:
-+        return 0;
-+    case NPCM7XX_PWM_CMR1:
-+        return 1;
-+    case NPCM7XX_PWM_CMR2:
-+        return 2;
-+    case NPCM7XX_PWM_CMR3:
-+        return 3;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static hwaddr npcm7xx_pdr_index(hwaddr reg)
-+{
-+    switch (reg) {
-+    case NPCM7XX_PWM_PDR0:
-+        return 0;
-+    case NPCM7XX_PWM_PDR1:
-+        return 1;
-+    case NPCM7XX_PWM_PDR2:
-+        return 2;
-+    case NPCM7XX_PWM_PDR3:
-+        return 3;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static hwaddr npcm7xx_pwdr_index(hwaddr reg)
-+{
-+    switch (reg) {
-+    case NPCM7XX_PWM_PWDR0:
-+        return 0;
-+    case NPCM7XX_PWM_PWDR1:
-+        return 1;
-+    case NPCM7XX_PWM_PWDR2:
-+        return 2;
-+    case NPCM7XX_PWM_PWDR3:
-+        return 3;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static uint64_t npcm7xx_pwm_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    NPCM7xxPWMState *s = opaque;
-+    hwaddr reg = offset / sizeof(uint32_t);
-+    uint64_t value = 0;
-+
-+    switch (reg) {
-+    case NPCM7XX_PWM_CNR0:
-+    case NPCM7XX_PWM_CNR1:
-+    case NPCM7XX_PWM_CNR2:
-+    case NPCM7XX_PWM_CNR3:
-+        value = s->pwm[npcm7xx_cnr_index(reg)].cnr;
-+        break;
-+
-+    case NPCM7XX_PWM_CMR0:
-+    case NPCM7XX_PWM_CMR1:
-+    case NPCM7XX_PWM_CMR2:
-+    case NPCM7XX_PWM_CMR3:
-+        value = s->pwm[npcm7xx_cmr_index(reg)].cmr;
-+        break;
-+
-+    case NPCM7XX_PWM_PDR0:
-+    case NPCM7XX_PWM_PDR1:
-+    case NPCM7XX_PWM_PDR2:
-+    case NPCM7XX_PWM_PDR3:
-+        value = s->pwm[npcm7xx_pdr_index(reg)].pdr;
-+        break;
-+
-+    case NPCM7XX_PWM_PWDR0:
-+    case NPCM7XX_PWM_PWDR1:
-+    case NPCM7XX_PWM_PWDR2:
-+    case NPCM7XX_PWM_PWDR3:
-+        value = s->pwm[npcm7xx_pwdr_index(reg)].pwdr;
-+        break;
-+
-+    case NPCM7XX_PWM_PPR:
-+        value = s->ppr;
-+        break;
-+
-+    case NPCM7XX_PWM_CSR:
-+        value = s->csr;
-+        break;
-+
-+    case NPCM7XX_PWM_PCR:
-+        value = s->pcr;
-+        break;
-+
-+    case NPCM7XX_PWM_PIER:
-+        value = s->pier;
-+        break;
-+
-+    case NPCM7XX_PWM_PIIR:
-+        value = s->piir;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid offset 0x%04" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
-+    }
-+
-+    trace_npcm7xx_pwm_read(DEVICE(s)->canonical_path, offset, value);
-+    return value;
-+}
-+
-+static void npcm7xx_pwm_write(void *opaque, hwaddr offset,
-+                                uint64_t v, unsigned size)
-+{
-+    NPCM7xxPWMState *s = opaque;
-+    NPCM7xxPWM *p;
-+    hwaddr reg = offset / sizeof(uint32_t);
-+    uint32_t value = v;
-+
-+    trace_npcm7xx_pwm_write(DEVICE(s)->canonical_path, offset, value);
-+    switch (reg) {
-+    case NPCM7XX_PWM_CNR0:
-+    case NPCM7XX_PWM_CNR1:
-+    case NPCM7XX_PWM_CNR2:
-+    case NPCM7XX_PWM_CNR3:
-+        p = &s->pwm[npcm7xx_cnr_index(reg)];
-+        p->cnr = value;
-+        npcm7xx_pwm_update_output(p);
-+        break;
-+
-+    case NPCM7XX_PWM_CMR0:
-+    case NPCM7XX_PWM_CMR1:
-+    case NPCM7XX_PWM_CMR2:
-+    case NPCM7XX_PWM_CMR3:
-+        p = &s->pwm[npcm7xx_cmr_index(reg)];
-+        p->cmr = value;
-+        npcm7xx_pwm_update_output(p);
-+        break;
-+
-+    case NPCM7XX_PWM_PDR0:
-+    case NPCM7XX_PWM_PDR1:
-+    case NPCM7XX_PWM_PDR2:
-+    case NPCM7XX_PWM_PDR3:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: register @ 0x%04" HWADDR_PRIx " is read-only\n",
-+                      __func__, offset);
-+        break;
-+
-+    case NPCM7XX_PWM_PWDR0:
-+    case NPCM7XX_PWM_PWDR1:
-+    case NPCM7XX_PWM_PWDR2:
-+    case NPCM7XX_PWM_PWDR3:
-+        qemu_log_mask(LOG_UNIMP,
-+                     "%s: register @ 0x%04" HWADDR_PRIx " is not implemented\n",
-+                     __func__, offset);
-+        break;
-+
-+    case NPCM7XX_PWM_PPR:
-+        npcm7xx_pwm_write_ppr(s, value);
-+        break;
-+
-+    case NPCM7XX_PWM_CSR:
-+        npcm7xx_pwm_write_csr(s, value);
-+        break;
-+
-+    case NPCM7XX_PWM_PCR:
-+        npcm7xx_pwm_write_pcr(s, value);
-+        break;
-+
-+    case NPCM7XX_PWM_PIER:
-+        qemu_log_mask(LOG_UNIMP,
-+                     "%s: register @ 0x%04" HWADDR_PRIx " is not implemented\n",
-+                     __func__, offset);
-+        break;
-+
-+    case NPCM7XX_PWM_PIIR:
-+        qemu_log_mask(LOG_UNIMP,
-+                     "%s: register @ 0x%04" HWADDR_PRIx " is not implemented\n",
-+                     __func__, offset);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid offset 0x%04" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
-+    }
-+}
-+
-+
-+static const struct MemoryRegionOps npcm7xx_pwm_ops = {
-+    .read       = npcm7xx_pwm_read,
-+    .write      = npcm7xx_pwm_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid      = {
-+        .min_access_size        = 4,
-+        .max_access_size        = 4,
-+        .unaligned              = false,
-+    },
-+};
-+
-+static void npcm7xx_pwm_enter_reset(Object *obj, ResetType type)
-+{
-+    NPCM7xxPWMState *s = NPCM7XX_PWM(obj);
-+    int i;
-+
-+    for (i = 0; i < NPCM7XX_PWM_PER_MODULE; i++) {
-+        NPCM7xxPWM *p = &s->pwm[i];
-+
-+        p->cnr = 0x00000000;
-+        p->cmr = 0x00000000;
-+        p->pdr = 0x00000000;
-+        p->pwdr = 0x00000000;
-+    }
-+
-+    s->ppr = 0x00000000;
-+    s->csr = 0x00000000;
-+    s->pcr = 0x00000000;
-+    s->pier = 0x00000000;
-+    s->piir = 0x00000000;
-+}
-+
-+static void npcm7xx_pwm_hold_reset(Object *obj)
-+{
-+    NPCM7xxPWMState *s = NPCM7XX_PWM(obj);
-+    int i;
-+
-+    for (i = 0; i < NPCM7XX_PWM_PER_MODULE; i++) {
-+        qemu_irq_lower(s->pwm[i].irq);
-+    }
-+}
-+
-+static void npcm7xx_pwm_init(Object *obj)
-+{
-+    NPCM7xxPWMState *s = NPCM7XX_PWM(obj);
-+    SysBusDevice *sbd = &s->parent;
-+    int i;
-+
-+    for (i = 0; i < NPCM7XX_PWM_PER_MODULE; i++) {
-+        NPCM7xxPWM *p = &s->pwm[i];
-+        p->module = s;
-+        p->index = i;
-+        sysbus_init_irq(sbd, &p->irq);
-+    }
-+
-+    memory_region_init_io(&s->iomem, obj, &npcm7xx_pwm_ops, s,
-+                          TYPE_NPCM7XX_PWM, 4 * KiB);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    s->clock = qdev_init_clock_in(DEVICE(s), "clock", NULL, NULL);
-+
-+    for (i = 0; i < NPCM7XX_PWM_PER_MODULE; ++i) {
-+        object_property_add_uint32_ptr(obj, "freq[*]",
-+                &s->pwm[i].freq, OBJ_PROP_FLAG_READ);
-+        object_property_add_uint32_ptr(obj, "duty[*]",
-+                &s->pwm[i].duty, OBJ_PROP_FLAG_READ);
-+    }
-+}
-+
-+static const VMStateDescription vmstate_npcm7xx_pwm = {
-+    .name = "npcm7xx-pwm",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_BOOL(running, NPCM7xxPWM),
-+        VMSTATE_BOOL(inverted, NPCM7xxPWM),
-+        VMSTATE_UINT8(index, NPCM7xxPWM),
-+        VMSTATE_UINT32(cnr, NPCM7xxPWM),
-+        VMSTATE_UINT32(cmr, NPCM7xxPWM),
-+        VMSTATE_UINT32(pdr, NPCM7xxPWM),
-+        VMSTATE_UINT32(pwdr, NPCM7xxPWM),
-+        VMSTATE_UINT32(freq, NPCM7xxPWM),
-+        VMSTATE_UINT32(duty, NPCM7xxPWM),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static const VMStateDescription vmstate_npcm7xx_pwm_module = {
-+    .name = "npcm7xx-pwm-module",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_CLOCK(clock, NPCM7xxPWMState),
-+        VMSTATE_STRUCT_ARRAY(pwm, NPCM7xxPWMState,
-+                             NPCM7XX_PWM_PER_MODULE, 0, vmstate_npcm7xx_pwm,
-+                             NPCM7xxPWM),
-+        VMSTATE_UINT32(ppr, NPCM7xxPWMState),
-+        VMSTATE_UINT32(csr, NPCM7xxPWMState),
-+        VMSTATE_UINT32(pcr, NPCM7xxPWMState),
-+        VMSTATE_UINT32(pier, NPCM7xxPWMState),
-+        VMSTATE_UINT32(piir, NPCM7xxPWMState),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static void npcm7xx_pwm_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    QEMU_BUILD_BUG_ON(NPCM7XX_PWM_REGS_END > NPCM7XX_PWM_NR_REGS);
-+
-+    dc->desc = "NPCM7xx PWM Controller";
-+    dc->vmsd = &vmstate_npcm7xx_pwm_module;
-+    rc->phases.enter = npcm7xx_pwm_enter_reset;
-+    rc->phases.hold = npcm7xx_pwm_hold_reset;
-+}
-+
-+static const TypeInfo npcm7xx_pwm_info = {
-+    .name               = TYPE_NPCM7XX_PWM,
-+    .parent             = TYPE_SYS_BUS_DEVICE,
-+    .instance_size      = sizeof(NPCM7xxPWMState),
-+    .class_init         = npcm7xx_pwm_class_init,
-+    .instance_init      = npcm7xx_pwm_init,
-+};
-+
-+static void npcm7xx_pwm_register_type(void)
-+{
-+    type_register_static(&npcm7xx_pwm_info);
-+}
-+type_init(npcm7xx_pwm_register_type);
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index b5118acd3f..d626b9d7a7 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -120,6 +120,12 @@ npcm7xx_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 " valu
- npcm7xx_rng_read(uint64_t offset, uint64_t value, unsigned size) "offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
- npcm7xx_rng_write(uint64_t offset, uint64_t value, unsigned size) "offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
- 
-+# npcm7xx_pwm.c
-+npcm7xx_pwm_read(const char *id, uint64_t offset, uint32_t value) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
-+npcm7xx_pwm_write(const char *id, uint64_t offset, uint32_t value) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
-+npcm7xx_pwm_update_freq(const char *id, uint8_t index, uint32_t old_value, uint32_t new_value) "%s pwm[%u] Update Freq: old_freq: %u, new_freq: %u"
-+npcm7xx_pwm_update_duty(const char *id, uint8_t index, uint32_t old_value, uint32_t new_value) "%s pwm[%u] Update Duty: old_duty: %u, new_duty: %u"
-+
- # stm32f4xx_syscfg.c
- stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interupt: GPIO: %d, Line: %d; Level: %d"
- stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 51e1c7620d..f6227aa8aa 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -23,6 +23,7 @@
- #include "hw/mem/npcm7xx_mc.h"
- #include "hw/misc/npcm7xx_clk.h"
- #include "hw/misc/npcm7xx_gcr.h"
-+#include "hw/misc/npcm7xx_pwm.h"
- #include "hw/misc/npcm7xx_rng.h"
- #include "hw/nvram/npcm7xx_otp.h"
- #include "hw/timer/npcm7xx_timer.h"
-@@ -78,6 +79,7 @@ typedef struct NPCM7xxState {
-     NPCM7xxCLKState     clk;
-     NPCM7xxTimerCtrlState tim[3];
-     NPCM7xxADCState     adc;
-+    NPCM7xxPWMState     pwm[2];
-     NPCM7xxOTPState     key_storage;
-     NPCM7xxOTPState     fuse_array;
-     NPCM7xxMCState      mc;
-diff --git a/include/hw/misc/npcm7xx_pwm.h b/include/hw/misc/npcm7xx_pwm.h
-new file mode 100644
-index 0000000000..b83f965f1a
---- /dev/null
-+++ b/include/hw/misc/npcm7xx_pwm.h
-@@ -0,0 +1,106 @@
-+/*
-+ * Nuvoton NPCM7xx PWM Module
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+#ifndef NPCM7XX_PWM_H
-+#define NPCM7XX_PWM_H
-+
-+#include "qemu/osdep.h"
-+#include "hw/clock.h"
-+#include "hw/sysbus.h"
-+#include "hw/irq.h"
-+
-+/* Each PWM module holds 4 PWM channels. */
-+#define NPCM7XX_PWM_PER_MODULE 4
-+
-+/*
-+ * Number of registers in one pwm module. Don't change this without increasing
-+ * the version_id in vmstate.
-+ */
-+#define NPCM7XX_PWM_NR_REGS (0x54 / sizeof(uint32_t))
-+
-+/*
-+ * The maximum duty values. Each duty unit represents 1/NPCM7XX_PWM_MAX_DUTY
-+ * cycles. For example, if NPCM7XX_PWM_MAX_DUTY=1,000,000 and a PWM has a duty
-+ * value of 100,000 the duty cycle for that PWM is 10%.
-+ */
-+#define NPCM7XX_PWM_MAX_DUTY 1000000
-+
-+typedef struct NPCM7xxPWMState NPCM7xxPWMState;
-+
-+/**
-+ * struct NPCM7xxPWM - The state of a single PWM channel.
-+ * @module: The PWM module that contains this channel.
-+ * @irq: GIC interrupt line to fire on expiration if enabled.
-+ * @running: Whether this PWM channel is generating output.
-+ * @inverted: Whether this PWM channel is inverted.
-+ * @index: The index of this PWM channel.
-+ * @cnr: The counter register.
-+ * @cmr: The comparator register.
-+ * @pdr: The data register.
-+ * @pwdr: The watchdog register.
-+ * @freq: The frequency of this PWM channel.
-+ * @duty: The duty cycle of this PWM channel. One unit represents
-+ *   1/NPCM7XX_MAX_DUTY cycles.
-+ */
-+typedef struct NPCM7xxPWM {
-+    NPCM7xxPWMState         *module;
-+
-+    qemu_irq                irq;
-+
-+    bool                    running;
-+    bool                    inverted;
-+
-+    uint8_t                 index;
-+    uint32_t                cnr;
-+    uint32_t                cmr;
-+    uint32_t                pdr;
-+    uint32_t                pwdr;
-+
-+    uint32_t                freq;
-+    uint32_t                duty;
-+} NPCM7xxPWM;
-+
-+/**
-+ * struct NPCM7xxPWMState - Pulse Width Modulation device state.
-+ * @parent: System bus device.
-+ * @iomem: Memory region through which registers are accessed.
-+ * @clock: The PWM clock.
-+ * @pwm: The PWM channels owned by this module.
-+ * @ppr: The prescaler register.
-+ * @csr: The clock selector register.
-+ * @pcr: The control register.
-+ * @pier: The interrupt enable register.
-+ * @piir: The interrupt indication register.
-+ */
-+struct NPCM7xxPWMState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion iomem;
-+
-+    Clock       *clock;
-+    NPCM7xxPWM pwm[NPCM7XX_PWM_PER_MODULE];
-+
-+    uint32_t    ppr;
-+    uint32_t    csr;
-+    uint32_t    pcr;
-+    uint32_t    pier;
-+    uint32_t    piir;
-+};
-+
-+#define TYPE_NPCM7XX_PWM "npcm7xx-pwm"
-+#define NPCM7XX_PWM(obj) \
-+    OBJECT_CHECK(NPCM7xxPWMState, (obj), TYPE_NPCM7XX_PWM)
-+
-+#endif /* NPCM7XX_PWM_H */
--- 
-2.29.2.684.gfbc64c5ab5-goog
+<div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Mon, Dec 14, 2020 at 4:13 PM Hao Wu &lt;<a href=3D"=
+mailto:wuhaotsh@google.com">wuhaotsh@google.com</a>&gt; wrote:<br></div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-lef=
+t:1px solid rgb(204,204,204);padding-left:1ex">This patch makes NPCM7XX Tim=
+er to use a the timer clock generated by the<br>
+CLK module instead of the magic number TIMER_REF_HZ.<br>
+<br>
+Reviewed-by: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@google.com=
+" target=3D"_blank">hskinnemoen@google.com</a>&gt;<br>
+Reviewed-by: Tyrone Ting &lt;<a href=3D"mailto:kfting@nuvoton.com" target=
+=3D"_blank">kfting@nuvoton.com</a>&gt;<br>
+Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" target=3D"=
+_blank">wuhaotsh@google.com</a>&gt;<br>
+---<br>
+=C2=A0hw/arm/npcm7xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0|=C2=A0 5 +++++<br>
+=C2=A0hw/timer/npcm7xx_timer.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 23 ++++++=
++++++++----------<br>
+=C2=A0include/hw/misc/npcm7xx_clk.h=C2=A0 =C2=A0 |=C2=A0 6 ------<br>
+=C2=A0include/hw/timer/npcm7xx_timer.h |=C2=A0 1 +<br>
+=C2=A04 files changed, 19 insertions(+), 16 deletions(-)<br>
+<br>
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c<br>
+index 47e2b6fc40..fabfb1697b 100644<br>
+--- a/hw/arm/npcm7xx.c<br>
++++ b/hw/arm/npcm7xx.c<br>
+@@ -22,6 +22,7 @@<br>
+=C2=A0#include &quot;hw/char/serial.h&quot;<br>
+=C2=A0#include &quot;hw/loader.h&quot;<br>
+=C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
++#include &quot;hw/qdev-clock.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
+=C2=A0#include &quot;qapi/error.h&quot;<br>
+=C2=A0#include &quot;qemu/units.h&quot;<br>
+@@ -420,6 +421,10 @@ static void npcm7xx_realize(DeviceState *dev, Error **=
+errp)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int first_irq;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int j;<br>
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Connect the timer clock. */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_connect_clock_in(DEVICE(&amp;s-&gt;tim[i]=
+), &quot;clock&quot;, qdev_get_clock_out(<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 DEVI=
+CE(&amp;s-&gt;clk), &quot;timer-clock&quot;));<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_realize(sbd, &amp;error_abort);<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(sbd, 0, npcm7xx_tim_addr[=
+i]);<br>
+<br>
+diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c<br>
+index d24445bd6e..8147b53000 100644<br>
+--- a/hw/timer/npcm7xx_timer.c<br>
++++ b/hw/timer/npcm7xx_timer.c<br>
+@@ -17,8 +17,8 @@<br>
+=C2=A0#include &quot;qemu/osdep.h&quot;<br>
+<br>
+=C2=A0#include &quot;hw/irq.h&quot;<br>
++#include &quot;hw/qdev-clock.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
+-#include &quot;hw/misc/npcm7xx_clk.h&quot;<br>
+=C2=A0#include &quot;hw/timer/npcm7xx_timer.h&quot;<br>
+=C2=A0#include &quot;migration/vmstate.h&quot;<br>
+=C2=A0#include &quot;qemu/bitops.h&quot;<br>
+@@ -130,7 +130,7 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer *=
+t, uint32_t count)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0int64_t ns =3D count;<br>
+<br>
+-=C2=A0 =C2=A0 ns *=3D NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;<br>
++=C2=A0 =C2=A0 ns *=3D clock_get_ns(t-&gt;ctrl-&gt;clock);<br>
+=C2=A0 =C2=A0 =C2=A0ns *=3D npcm7xx_tcsr_prescaler(t-&gt;tcsr);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0return ns;<br>
+@@ -141,7 +141,7 @@ static uint32_t npcm7xx_timer_ns_to_count(NPCM7xxTimer =
+*t, int64_t ns)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0int64_t count;<br>
+<br>
+-=C2=A0 =C2=A0 count =3D ns / (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_H=
+Z);<br>
++=C2=A0 =C2=A0 count =3D ns / clock_get_ns(t-&gt;ctrl-&gt;clock);<br>
+=C2=A0 =C2=A0 =C2=A0count /=3D npcm7xx_tcsr_prescaler(t-&gt;tcsr);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0return count;<br>
+@@ -167,7 +167,7 @@ static void npcm7xx_watchdog_timer_reset_cycles(NPCM7xx=
+WatchdogTimer *t,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int64_t cycles)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t prescaler =3D npcm7xx_watchdog_timer_prescaler=
+(t);<br>
+-=C2=A0 =C2=A0 int64_t ns =3D (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_H=
+Z) * cycles;<br>
++=C2=A0 =C2=A0 int64_t ns =3D clock_get_ns(t-&gt;ctrl-&gt;clock) * cycles;<=
+br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/*<br>
+=C2=A0 =C2=A0 =C2=A0 * The reset function always clears the current timer. =
+The caller of the<br>
+@@ -606,10 +606,11 @@ static void npcm7xx_timer_hold_reset(Object *obj)<br>
+=C2=A0 =C2=A0 =C2=A0qemu_irq_lower(s-&gt;watchdog_timer.irq);<br>
+=C2=A0}<br>
+<br>
+-static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)<br>
++static void npcm7xx_timer_init(Object *obj)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 NPCM7xxTimerCtrlState *s =3D NPCM7XX_TIMER(dev);<br>
++=C2=A0 =C2=A0 NPCM7xxTimerCtrlState *s =3D NPCM7XX_TIMER(obj);<br>
+=C2=A0 =C2=A0 =C2=A0SysBusDevice *sbd =3D &amp;s-&gt;parent;<br>
++=C2=A0 =C2=A0 DeviceState *dev =3D DEVICE(obj);<br>
+=C2=A0 =C2=A0 =C2=A0int i;<br>
+=C2=A0 =C2=A0 =C2=A0NPCM7xxWatchdogTimer *w;<br>
+<br>
+@@ -627,11 +628,12 @@ static void npcm7xx_timer_realize(DeviceState *dev, E=
+rror **errp)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0npcm7xx_watchdog_timer_expi=
+red, w);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_init_irq(sbd, &amp;w-&gt;irq);<br>
+<br>
+-=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;iomem, OBJECT(s), &amp;npcm=
+7xx_timer_ops, s,<br>
++=C2=A0 =C2=A0 memory_region_init_io(&amp;s-&gt;iomem, obj, &amp;npcm7xx_ti=
+mer_ops, s,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0TYPE_NPCM7XX_TIMER, 4 * KiB);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_init_mmio(sbd, &amp;s-&gt;iomem);<br>
+=C2=A0 =C2=A0 =C2=A0qdev_init_gpio_out_named(dev, &amp;w-&gt;reset_signal,<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NPCM7XX_WATCHDOG_RESET_GPIO=
+_OUT, 1);<br>
++=C2=A0 =C2=A0 s-&gt;clock =3D qdev_init_clock_in(dev, &quot;clock&quot;, N=
+ULL, NULL);<br>
+=C2=A0}<br>
+<br>
+=C2=A0static const VMStateDescription vmstate_npcm7xx_base_timer =3D {<br>
+@@ -675,10 +677,11 @@ static const VMStateDescription vmstate_npcm7xx_watch=
+dog_timer =3D {<br>
+<br>
+=C2=A0static const VMStateDescription vmstate_npcm7xx_timer_ctrl =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.name =3D &quot;npcm7xx-timer-ctrl&quot;,<br>
+-=C2=A0 =C2=A0 .version_id =3D 1,<br>
+-=C2=A0 =C2=A0 .minimum_version_id =3D 1,<br>
++=C2=A0 =C2=A0 .version_id =3D 2,<br>
++=C2=A0 =C2=A0 .minimum_version_id =3D 2,<br>
+=C2=A0 =C2=A0 =C2=A0.fields =3D (VMStateField[]) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_UINT32(tisr, NPCM7xxTimerCtrlStat=
+e),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_CLOCK(clock, NPCM7xxTimerCtrlState),<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0VMSTATE_STRUCT_ARRAY(timer, NPCM7xxTimerC=
+trlState,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 NPCM7XX_TIMERS_PER_CTRL, 0, vmstate_npcm7xx=
+_timer,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 NPCM7xxTimer),<br>
+@@ -697,7 +700,6 @@ static void npcm7xx_timer_class_init(ObjectClass *klass=
+, void *data)<br>
+=C2=A0 =C2=A0 =C2=A0QEMU_BUILD_BUG_ON(NPCM7XX_TIMER_REGS_END &gt; NPCM7XX_T=
+IMER_NR_REGS);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;NPCM7xx Timer Controller&quot;;<b=
+r>
+-=C2=A0 =C2=A0 dc-&gt;realize =3D npcm7xx_timer_realize;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_npcm7xx_timer_ctrl;<br>
+=C2=A0 =C2=A0 =C2=A0rc-&gt;phases.enter =3D npcm7xx_timer_enter_reset;<br>
+=C2=A0 =C2=A0 =C2=A0rc-&gt;phases.hold =3D npcm7xx_timer_hold_reset;<br>
+@@ -708,6 +710,7 @@ static const TypeInfo npcm7xx_timer_info =3D {<br>
+=C2=A0 =C2=A0 =C2=A0.parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+=3D TYPE_SYS_BUS_DEVICE,<br>
+=C2=A0 =C2=A0 =C2=A0.instance_size=C2=A0 =C2=A0 =C2=A0 =3D sizeof(NPCM7xxTi=
+merCtrlState),<br>
+=C2=A0 =C2=A0 =C2=A0.class_init=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=3D npcm7x=
+x_timer_class_init,<br>
++=C2=A0 =C2=A0 .instance_init=C2=A0 =C2=A0 =C2=A0 =3D npcm7xx_timer_init,<b=
+r>
+=C2=A0};<br>
+<br>
+=C2=A0static void npcm7xx_timer_register_type(void)<br>
+diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h<=
+br>
+index f641f95f3e..d5c8d16ca4 100644<br>
+--- a/include/hw/misc/npcm7xx_clk.h<br>
++++ b/include/hw/misc/npcm7xx_clk.h<br>
+@@ -20,12 +20,6 @@<br>
+=C2=A0#include &quot;hw/clock.h&quot;<br>
+=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+<br>
+-/*<br>
+- * The reference clock frequency for the timer modules, and the SECCNT and=
+<br>
+- * CNTR25M registers in this module, is always 25 MHz.<br>
+- */<br>
+-#define NPCM7XX_TIMER_REF_HZ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (250=
+00000)<br>
+-<br>
+=C2=A0/*<br>
+=C2=A0 * Number of registers in our device state structure. Don&#39;t chang=
+e this without<br>
+=C2=A0 * incrementing the version_id in the vmstate.<br>
+diff --git a/include/hw/timer/npcm7xx_timer.h b/include/hw/timer/npcm7xx_ti=
+mer.h<br>
+index 6993fd723a..d45c051b56 100644<br>
+--- a/include/hw/timer/npcm7xx_timer.h<br>
++++ b/include/hw/timer/npcm7xx_timer.h<br>
+@@ -101,6 +101,7 @@ struct NPCM7xxTimerCtrlState {<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t=C2=A0 =C2=A0 tisr;<br>
+<br>
++=C2=A0 =C2=A0 Clock=C2=A0 =C2=A0 =C2=A0 =C2=A0*clock;<br>
+=C2=A0 =C2=A0 =C2=A0NPCM7xxTimer timer[NPCM7XX_TIMERS_PER_CTRL];<br>
+=C2=A0 =C2=A0 =C2=A0NPCM7xxWatchdogTimer watchdog_timer;<br>
+=C2=A0};<br>
+-- <br>
+2.29.2.684.gfbc64c5ab5-goog<br>
+<br>
+</blockquote></div>
 
+--000000000000bc309505b675ac34--

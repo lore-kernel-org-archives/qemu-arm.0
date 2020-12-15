@@ -1,103 +1,106 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3017393lfq;
-        Mon, 14 Dec 2020 16:13:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx2ydvyOaCVr3TneoKDOJf2EQfpuouT8PxaJW22QetQ1Ms4RADP72yty1lus5WyHKFeAZ+s
-X-Received: by 2002:a25:497:: with SMTP id 145mr36799403ybe.275.1607991218389;
-        Mon, 14 Dec 2020 16:13:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607991218; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3017454lfq;
+        Mon, 14 Dec 2020 16:13:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwE/a6D5OqL5Oc00tXS0TbGaR/MJVvxd58gJtG0bbNGmtz4fgFBh5Nay95p6FJEjf5XHsEw
+X-Received: by 2002:a5b:50f:: with SMTP id o15mr39824884ybp.171.1607991226968;
+        Mon, 14 Dec 2020 16:13:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607991226; cv=none;
         d=google.com; s=arc-20160816;
-        b=rrfdma6u4P2x0xghO67ZjirbejPaFcv/mJP4ZdIiNvt8xG4vL14QioQZy0bii831Wh
-         LbaNq8yiUXccYiEQW07NEVqeO4f9cL+xbCozxehuO0a7nJbS8/7PJcVIrqep/+DiRsTY
-         nayPbBdYKUKmN/v0ebJ+s2nJHbblB9RpBSzY/8D4PuXJryMryCcwIFDo/P95y/YCipkN
-         EIFS9OdHIN7vtLaXaLaoeLlTW+tOr9ikarJty9tG+vIouoPZ6t2899uUDZTaTa0jR20X
-         EfCWXm5JsYGkVJr2GS10ULDgD13Cz+DCTckrEIxQdJqcU8DeZdsxnYxrVoh19S4m/aYS
-         rYow==
+        b=puWipWP+eFbK6Vmfx26buhZFqTnvydEU9A/n3JsXpa+v3GAKTVbpPonfFK4UoPz1Oo
+         G5enFpaAB15mrVRYRuFO4e1zR407jFcnJtVpowFUh+AflwRrPvIzjOrqp9hmhyZEEZaZ
+         zhDGZ9nZHD6+Y3K86hKEtkxezqe6FTx1lp1Vo6A96KNXSl1Qqcc1yR0dSxMbdlzhr7Qa
+         KP20LfawO0Q6r7UaAHP3/dhP7Bb6CMPYnCtfArNqdg2mBSQ5rnp587ingbH49Wl8ICdR
+         biM67bLS1j6oEvSG4R/tmXiDEPEcieinwcY/AcYruheKN3i77NLZLwSrU12ypsnfXubY
+         DB7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:mime-version:message-id:date:dkim-signature;
-        bh=S4tbciDLXdHnTTms2a/xfml3e34Cth0kvYsqk3Pk5rc=;
-        b=KyqVGUhgWFu1tlHZsPknpGi9PyTrC36ISNPlpfQO3oPZ8I3js6EsCYFl/2YMWiC/HZ
-         /VxCVk97yfBpGAZEPOgFAz21ESW7zqqtcNZnQ7BgnAppZndhhi8XhjwUHRtU6Z5ZO7Q4
-         me6SZjeJ2v+tED4Zgqeg/6ELv7CWWF8S3QTpND6ATPe3Nvq3PUE++cgv679nRTbJaabM
-         7bsDbQ/9gupZfRMHdQ2e8oSrHhaqncc8KwFZwwxXcdguHODeRV9rxD9fKKdMarnoAynn
-         dhci41p1qj2sGudELIXoSGsQdJTZG+eFxrb5srn5fRRX9/12WrqRGJnvUsi2zpN5F7rM
-         N/+g==
+         :subject:references:mime-version:message-id:in-reply-to:date
+         :dkim-signature;
+        bh=mTcs8OEWxSaViuIcL5NViBc2vMl6bv7JTLHRCBz2igg=;
+        b=XBziql+z/abimh83g0TGXMBsK3CSVumjIdGuJgI/kb5jVcfUCzgRl8ni5SYTtj4dD/
+         CzyGQHh9AbmDoDnOJ8LD5fc4d5B5AykYXkoEIaKpd6vBfeBtKb73fFfzW3Yt2UfLEa+k
+         E43KG4tujgadm9MyRBOtk2qpaOwa15n2KFRjriwGX9BYywDnOVKSxRRc6CdUSrpHqHBN
+         5jjfCwPqC8Pj3L+yN+AgoGxm2bIoNm1f8+BImVOQETdvg0UHi/8ydWHZfgwYGSwFmY1t
+         sD/0mA5pXiv/Psw5T642+sfbQHi4506E+ZuFLqs0Ib428HyQAdMNvTCwdn4TUXWMfwu0
+         /axA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=mqrXxcqv;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=YfEP9Yj6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si13107334ybf.237.2020.12.14.16.13.38
+        by mx.google.com with ESMTPS id k63si19090499ybb.422.2020.12.14.16.13.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Dec 2020 16:13:38 -0800 (PST)
+        Mon, 14 Dec 2020 16:13:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=mqrXxcqv;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=YfEP9Yj6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:60630 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1koxyD-0000SC-LJ
-	for alex.bennee@linaro.org; Mon, 14 Dec 2020 19:13:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46742)
+	id 1koxyM-0000aq-Au
+	for alex.bennee@linaro.org; Mon, 14 Dec 2020 19:13:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3pP_XXwgKCAk53qjx21qpxxpun.lxvznv3-j0vwxwpw3.x0p@flex--wuhaotsh.bounces.google.com>)
- id 1koxy3-0000S1-Ni
- for qemu-arm@nongnu.org; Mon, 14 Dec 2020 19:13:27 -0500
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49]:50738)
+ <3p__XXwgKCAw86tm054ts00sxq.o0y2qy6-m3yz0zsz6.03s@flex--wuhaotsh.bounces.google.com>)
+ id 1koxy9-0000XN-1A
+ for qemu-arm@nongnu.org; Mon, 14 Dec 2020 19:13:33 -0500
+Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749]:49559)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3pP_XXwgKCAk53qjx21qpxxpun.lxvznv3-j0vwxwpw3.x0p@flex--wuhaotsh.bounces.google.com>)
- id 1koxy2-00036Q-7z
- for qemu-arm@nongnu.org; Mon, 14 Dec 2020 19:13:27 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id b123so6161488ybh.17
- for <qemu-arm@nongnu.org>; Mon, 14 Dec 2020 16:13:25 -0800 (PST)
+ <3p__XXwgKCAw86tm054ts00sxq.o0y2qy6-m3yz0zsz6.03s@flex--wuhaotsh.bounces.google.com>)
+ id 1koxy5-00036x-BF
+ for qemu-arm@nongnu.org; Mon, 14 Dec 2020 19:13:32 -0500
+Received: by mail-qk1-x749.google.com with SMTP id l7so13804606qkl.16
+ for <qemu-arm@nongnu.org>; Mon, 14 Dec 2020 16:13:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:message-id:mime-version:subject:from:to:cc;
- bh=S4tbciDLXdHnTTms2a/xfml3e34Cth0kvYsqk3Pk5rc=;
- b=mqrXxcqv//E7MFcmfSkcGPEf7kI3/jmJVtCD57JtqiiUYzBKcbGcKnC1molhvlpOB5
- 77hZVJ+dbHiy5cu+W/w5nnHRST0Xg1fZ2beuXiGRyilu75f4gcT5EZ6Gbi08FJlMByo0
- bwkrl8AVzHMDHRJ+SClQEywKC/58LJh2iEWi1AWN4Gxk1Xy7vMEBUXYKCK7KlQeHgu5R
- 3DFFUyfxer1W6TAHeL6+KJ1h/oLkL9jvaMDEtZDYXBLU6K29SdcRZy7E50o2MmpBrtCn
- JRuRIHg+etxIXFk7JZYbBCJLTKcJLNFZh5RksfSCjHhZvk3qideA8J2K2vxLOxAMPfkj
- oukQ==
+ h=sender:date:in-reply-to:message-id:mime-version:references:subject
+ :from:to:cc; bh=mTcs8OEWxSaViuIcL5NViBc2vMl6bv7JTLHRCBz2igg=;
+ b=YfEP9Yj6zMyXtN6VVTXmrO9PtWmeyvJOogc0unvSmn2Rlbx6fhaSKp3mMv8EixXYEa
+ J5PHXRPIltH2vg0mepJRyJvCDMf9b6EJ9yoRn0MxeTOUXYQ3Et5RNRcW9YwCBhXDXTIh
+ aT4RySci3Kor8638PD4vDPJ0nJi+CzIwZE+F1Y6fq5ANxsYAhQ+Z3KMkjHjFb7aiOLuD
+ mblIzJbxsZN7+z8/OXYLO87aisAcXyWHsnNADpdsgXnQq6GnUsyvPNg4qERJcOX2KcG4
+ c96z90sxvQ3mtsxhql+By/FiWUeizFsh73/H3IMqkiAExVHInRX0rn/u3AnVjfqOaUJQ
+ MnIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
- :to:cc;
- bh=S4tbciDLXdHnTTms2a/xfml3e34Cth0kvYsqk3Pk5rc=;
- b=mJqB1agNgwjnMWCHp452wEMpl9KRZ7ITRQJcjUV0aiDktPltXP/eYBh+SNt6+/3xiG
- ZVn+LuRzp4WnDMweEIDpWygsOTbTCCOV+2lufOLdPUZuJrIddOshz9zBC8oIh07SYwiB
- JSgo2Ol2SP5iCMd5T1yr4p1xKYA1pAFRMBJhMSPnQZ5/4OUo/hkucnVyHBLdJdN2KgOt
- hcHJdTq6jnSWCIN3fqy/BfUSxaAfNp2D4ihUtStdkFPzhCczuZa5YyspQ7ZC5uCL1sEy
- w1ad8xWijdKt0b+JkXFZnJa9tv72AGjtitUw0dSkZ3pCTsrLblmjuBGhev8ZZAcs/50z
- bt2g==
-X-Gm-Message-State: AOAM532Z2X6f+Kg4JdB7elZ9SZMVv152Q/6e4DLeV0d4Aqnt7/r6m2ot
- X3ViT3WQGR9Oxq5FUBhAQkikmyiy6QJ9Eg==
+ h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=mTcs8OEWxSaViuIcL5NViBc2vMl6bv7JTLHRCBz2igg=;
+ b=h1JIN+cBmexZeoR5z1CwuGO8qbdG7TepP0MYqApHbJPNN57Xt/WrSH07x80nw4St8V
+ ZBoL9zEL7KYEdG5RigQse/mxWgOJ1zHhtqQ48Yzw6AHIysB2BQTIb23Cc+BtdNQTGp/R
+ a47oPp9khkCmqPg41ftHRFNdYbBUwsiadcXQIly51DrEvKhVWZ54z9OCDmiJvUmEMVTM
+ Pe61/Jdg1n91yyCNkzJ2Nchs2oDcbJM80b6x6dJr/jDZ1knLbxkhLXk3Tr1XoGCe23uB
+ GoR0hKcwHjJfpii6PeZJMsu/dBO4NeiMiHAMKU4XkrJAe7pfl+2mFyyETITYAES1VD/0
+ eFMQ==
+X-Gm-Message-State: AOAM531EzZFpphlhOADhQ0pfrh2EVsA1VWxSWNwoWp8wra/IlfrNN/xX
+ REp2VkuULJTyT5a9pZuJm55XTFukV9OExA==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a05:6902:6d4:: with SMTP id
- m20mr12622634ybt.434.1607991204270; Mon, 14 Dec 2020 16:13:24 -0800 (PST)
-Date: Mon, 14 Dec 2020 16:13:07 -0800
-Message-Id: <20201215001312.3120777-1-wuhaotsh@google.com>
+ (user=wuhaotsh job=sendgmr) by 2002:ad4:4f41:: with SMTP id
+ eu1mr19379200qvb.1.1607991207663; Mon, 14 Dec 2020 16:13:27 -0800 (PST)
+Date: Mon, 14 Dec 2020 16:13:09 -0800
+In-Reply-To: <20201215001312.3120777-1-wuhaotsh@google.com>
+Message-Id: <20201215001312.3120777-3-wuhaotsh@google.com>
 Mime-Version: 1.0
+References: <20201215001312.3120777-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.29.2.684.gfbc64c5ab5-goog
-Subject: [PATCH v3 0/5] Additional NPCM7xx devices
+Subject: [PATCH v3 2/5] hw/timer: Refactor NPCM7XX Timer to use CLK clock
 To: peter.maydell@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3pP_XXwgKCAk53qjx21qpxxpun.lxvznv3-j0vwxwpw3.x0p@flex--wuhaotsh.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::749;
+ envelope-from=3p__XXwgKCAw86tm054ts00sxq.o0y2qy6-m3yz0zsz6.03s@flex--wuhaotsh.bounces.google.com;
+ helo=mail-qk1-x749.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,64 +120,172 @@ Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to: Hao Wu <wuhaotsh@google.com>
 From: Hao Wu via <qemu-arm@nongnu.org>
-X-TUID: szi+kzYfxSi0
+X-TUID: 1Hag/7+9iD5R
 
-This patch series include a few more NPCM7XX devices including
+This patch makes NPCM7XX Timer to use a the timer clock generated by the
+CLK module instead of the magic number TIMER_REF_HZ.
 
-- Analog Digital Converter (ADC)
-- Pulse Width Modulation (PWM)
+Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+---
+ hw/arm/npcm7xx.c                 |  5 +++++
+ hw/timer/npcm7xx_timer.c         | 23 +++++++++++++----------
+ include/hw/misc/npcm7xx_clk.h    |  6 ------
+ include/hw/timer/npcm7xx_timer.h |  1 +
+ 4 files changed, 19 insertions(+), 16 deletions(-)
 
-We also modified the CLK module to generate clock values using qdev_clock.
-These clocks are used to determine various clocks in NPCM7XX devices.
-
-Thank you for your review.
-
-Changes since v2:
-- Split PWM test into a separate patch in the patch set
-- Add trace events for PWM's update_freq/update_duty
-- Add trace events for ioread/iowrite in ADC and PWM
-- Use timer_get_ns in hw/timer/npcm7xx_timer.c
-- Update commit message in ADC/PWM to mention qom-get/set method for usage
-- Fix typos
-
-Changes since v1:
-- We removed the IPMI and KCS related code from this patch set.
-
-Hao Wu (5):
-  hw/misc: Add clock converter in NPCM7XX CLK module
-  hw/timer: Refactor NPCM7XX Timer to use CLK clock
-  hw/adc: Add an ADC module for NPCM7XX
-  hw/misc: Add a PWM module for NPCM7XX
-  hw/misc: Add QTest for NPCM7XX PWM Module
-
- docs/system/arm/nuvoton.rst      |   4 +-
- hw/adc/meson.build               |   1 +
- hw/adc/npcm7xx_adc.c             | 321 +++++++++++++
- hw/adc/trace-events              |   5 +
- hw/arm/npcm7xx.c                 |  55 ++-
- hw/misc/meson.build              |   1 +
- hw/misc/npcm7xx_clk.c            | 795 ++++++++++++++++++++++++++++++-
- hw/misc/npcm7xx_pwm.c            | 559 ++++++++++++++++++++++
- hw/misc/trace-events             |   6 +
- hw/timer/npcm7xx_timer.c         |  23 +-
- include/hw/adc/npcm7xx_adc.h     |  72 +++
- include/hw/arm/npcm7xx.h         |   4 +
- include/hw/misc/npcm7xx_clk.h    | 146 +++++-
- include/hw/misc/npcm7xx_pwm.h    | 106 +++++
- include/hw/timer/npcm7xx_timer.h |   1 +
- meson.build                      |   1 +
- tests/qtest/meson.build          |   4 +-
- tests/qtest/npcm7xx_adc-test.c   | 400 ++++++++++++++++
- tests/qtest/npcm7xx_pwm-test.c   | 490 +++++++++++++++++++
- 19 files changed, 2964 insertions(+), 30 deletions(-)
- create mode 100644 hw/adc/npcm7xx_adc.c
- create mode 100644 hw/adc/trace-events
- create mode 100644 hw/misc/npcm7xx_pwm.c
- create mode 100644 include/hw/adc/npcm7xx_adc.h
- create mode 100644 include/hw/misc/npcm7xx_pwm.h
- create mode 100644 tests/qtest/npcm7xx_adc-test.c
- create mode 100644 tests/qtest/npcm7xx_pwm-test.c
-
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 47e2b6fc40..fabfb1697b 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -22,6 +22,7 @@
+ #include "hw/char/serial.h"
+ #include "hw/loader.h"
+ #include "hw/misc/unimp.h"
++#include "hw/qdev-clock.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+ #include "qemu/units.h"
+@@ -420,6 +421,10 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+         int first_irq;
+         int j;
+ 
++        /* Connect the timer clock. */
++        qdev_connect_clock_in(DEVICE(&s->tim[i]), "clock", qdev_get_clock_out(
++                    DEVICE(&s->clk), "timer-clock"));
++
+         sysbus_realize(sbd, &error_abort);
+         sysbus_mmio_map(sbd, 0, npcm7xx_tim_addr[i]);
+ 
+diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c
+index d24445bd6e..8147b53000 100644
+--- a/hw/timer/npcm7xx_timer.c
++++ b/hw/timer/npcm7xx_timer.c
+@@ -17,8 +17,8 @@
+ #include "qemu/osdep.h"
+ 
+ #include "hw/irq.h"
++#include "hw/qdev-clock.h"
+ #include "hw/qdev-properties.h"
+-#include "hw/misc/npcm7xx_clk.h"
+ #include "hw/timer/npcm7xx_timer.h"
+ #include "migration/vmstate.h"
+ #include "qemu/bitops.h"
+@@ -130,7 +130,7 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer *t, uint32_t count)
+ {
+     int64_t ns = count;
+ 
+-    ns *= NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;
++    ns *= clock_get_ns(t->ctrl->clock);
+     ns *= npcm7xx_tcsr_prescaler(t->tcsr);
+ 
+     return ns;
+@@ -141,7 +141,7 @@ static uint32_t npcm7xx_timer_ns_to_count(NPCM7xxTimer *t, int64_t ns)
+ {
+     int64_t count;
+ 
+-    count = ns / (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ);
++    count = ns / clock_get_ns(t->ctrl->clock);
+     count /= npcm7xx_tcsr_prescaler(t->tcsr);
+ 
+     return count;
+@@ -167,7 +167,7 @@ static void npcm7xx_watchdog_timer_reset_cycles(NPCM7xxWatchdogTimer *t,
+         int64_t cycles)
+ {
+     uint32_t prescaler = npcm7xx_watchdog_timer_prescaler(t);
+-    int64_t ns = (NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ) * cycles;
++    int64_t ns = clock_get_ns(t->ctrl->clock) * cycles;
+ 
+     /*
+      * The reset function always clears the current timer. The caller of the
+@@ -606,10 +606,11 @@ static void npcm7xx_timer_hold_reset(Object *obj)
+     qemu_irq_lower(s->watchdog_timer.irq);
+ }
+ 
+-static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)
++static void npcm7xx_timer_init(Object *obj)
+ {
+-    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(dev);
++    NPCM7xxTimerCtrlState *s = NPCM7XX_TIMER(obj);
+     SysBusDevice *sbd = &s->parent;
++    DeviceState *dev = DEVICE(obj);
+     int i;
+     NPCM7xxWatchdogTimer *w;
+ 
+@@ -627,11 +628,12 @@ static void npcm7xx_timer_realize(DeviceState *dev, Error **errp)
+             npcm7xx_watchdog_timer_expired, w);
+     sysbus_init_irq(sbd, &w->irq);
+ 
+-    memory_region_init_io(&s->iomem, OBJECT(s), &npcm7xx_timer_ops, s,
++    memory_region_init_io(&s->iomem, obj, &npcm7xx_timer_ops, s,
+                           TYPE_NPCM7XX_TIMER, 4 * KiB);
+     sysbus_init_mmio(sbd, &s->iomem);
+     qdev_init_gpio_out_named(dev, &w->reset_signal,
+             NPCM7XX_WATCHDOG_RESET_GPIO_OUT, 1);
++    s->clock = qdev_init_clock_in(dev, "clock", NULL, NULL);
+ }
+ 
+ static const VMStateDescription vmstate_npcm7xx_base_timer = {
+@@ -675,10 +677,11 @@ static const VMStateDescription vmstate_npcm7xx_watchdog_timer = {
+ 
+ static const VMStateDescription vmstate_npcm7xx_timer_ctrl = {
+     .name = "npcm7xx-timer-ctrl",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
++    .version_id = 2,
++    .minimum_version_id = 2,
+     .fields = (VMStateField[]) {
+         VMSTATE_UINT32(tisr, NPCM7xxTimerCtrlState),
++        VMSTATE_CLOCK(clock, NPCM7xxTimerCtrlState),
+         VMSTATE_STRUCT_ARRAY(timer, NPCM7xxTimerCtrlState,
+                              NPCM7XX_TIMERS_PER_CTRL, 0, vmstate_npcm7xx_timer,
+                              NPCM7xxTimer),
+@@ -697,7 +700,6 @@ static void npcm7xx_timer_class_init(ObjectClass *klass, void *data)
+     QEMU_BUILD_BUG_ON(NPCM7XX_TIMER_REGS_END > NPCM7XX_TIMER_NR_REGS);
+ 
+     dc->desc = "NPCM7xx Timer Controller";
+-    dc->realize = npcm7xx_timer_realize;
+     dc->vmsd = &vmstate_npcm7xx_timer_ctrl;
+     rc->phases.enter = npcm7xx_timer_enter_reset;
+     rc->phases.hold = npcm7xx_timer_hold_reset;
+@@ -708,6 +710,7 @@ static const TypeInfo npcm7xx_timer_info = {
+     .parent             = TYPE_SYS_BUS_DEVICE,
+     .instance_size      = sizeof(NPCM7xxTimerCtrlState),
+     .class_init         = npcm7xx_timer_class_init,
++    .instance_init      = npcm7xx_timer_init,
+ };
+ 
+ static void npcm7xx_timer_register_type(void)
+diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h
+index f641f95f3e..d5c8d16ca4 100644
+--- a/include/hw/misc/npcm7xx_clk.h
++++ b/include/hw/misc/npcm7xx_clk.h
+@@ -20,12 +20,6 @@
+ #include "hw/clock.h"
+ #include "hw/sysbus.h"
+ 
+-/*
+- * The reference clock frequency for the timer modules, and the SECCNT and
+- * CNTR25M registers in this module, is always 25 MHz.
+- */
+-#define NPCM7XX_TIMER_REF_HZ            (25000000)
+-
+ /*
+  * Number of registers in our device state structure. Don't change this without
+  * incrementing the version_id in the vmstate.
+diff --git a/include/hw/timer/npcm7xx_timer.h b/include/hw/timer/npcm7xx_timer.h
+index 6993fd723a..d45c051b56 100644
+--- a/include/hw/timer/npcm7xx_timer.h
++++ b/include/hw/timer/npcm7xx_timer.h
+@@ -101,6 +101,7 @@ struct NPCM7xxTimerCtrlState {
+ 
+     uint32_t    tisr;
+ 
++    Clock       *clock;
+     NPCM7xxTimer timer[NPCM7XX_TIMERS_PER_CTRL];
+     NPCM7xxWatchdogTimer watchdog_timer;
+ };
 -- 
 2.29.2.684.gfbc64c5ab5-goog
 

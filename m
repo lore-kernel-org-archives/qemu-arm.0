@@ -1,104 +1,106 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp445654lfq;
-        Fri, 11 Dec 2020 13:00:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxbvurXkB6Un+4qmobfLzyUEDTIs5Em5z8T43PFO10UjnbQKfn6MmCja8wcnhVveZGSZdSM
-X-Received: by 2002:a25:dcd1:: with SMTP id y200mr22265711ybe.28.1607720425710;
-        Fri, 11 Dec 2020 13:00:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607720425; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3565699lfq;
+        Tue, 15 Dec 2020 06:48:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2rZF4QqAZRkF/fK/lgI7v+PPVObjaikmDTibqbBeN5vbi4wx86U5yddLIPKqul9jZYQ8g
+X-Received: by 2002:a05:6902:100f:: with SMTP id w15mr41223199ybt.25.1608043692850;
+        Tue, 15 Dec 2020 06:48:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608043692; cv=none;
         d=google.com; s=arc-20160816;
-        b=UnqhQpN+X/JtjzYlyv/IvHLpl3xn6M5byO0/UHExB0dwZMzDAKWmWBV1y8+dnvX++z
-         ZWK0I88bHzEWBKcmuHKi2jnzBxiz9uEVpfcJeQ/npDskfUzAi3+/2OFjc4X98FRtJV0b
-         GcFFYpMexzTe1PB4CK1bZ/bzRFRq4Kuega2TsqOnBJMcEF7F2OAcC24Q/bHlQDIDhEeC
-         n2W4V+QyYs6uZmThi6Earxcg5g/LGeb5Xh9OvqyOqtUJC9GU0xwoZlJAelZZkQ/MrD8T
-         M3SJSCHWk/0Qjk4SJ/nHTL67mfAcFXDPzyh/h8A66gOdE+fKwzbAfeIotkLAzPlujuee
-         Rt0g==
+        b=iVbVU6pb003k5z2csyV2qFJH8t51S5wJuoR36GSPJYsenKjMoUPPphYDNjrwCQJH/b
+         7aMz7EN9Xoso1cSa8tDtcw3vMPIi26xKV1aYdQCOf9d7tybf4MvCvoMcZ67XZDPKKY6l
+         a3hYGozLl74b3/9yKmOVuJq7PdUQ7T7+kNDLOSarWVqE88Nlyn7Qgt637axiFt8UCTnH
+         OvmUXXJEqQ0DbW5SBio4KLTcDjJ7JfNYVLfFPzqFsMO0D34PRNakCzSIxTOflsAJlhyR
+         GJW2Y9xsdMPgdSM4P4X8XrHUCkdQazekyxlaWccwiEjKJT2by9BdjB6mK4hyH9I0arzh
+         OTCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:message-id:date:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=YR4cLcbxQMTvwfBGnh9TSVXqjdIzc3mQ7vR9rR1oYWE=;
-        b=pczvwyqefh3qkOPZwWoJA+iDblPDy9+NNxNb0eHVOys914batar1QJ57PYp2qqF1gb
-         KBsxAv40z0F6caMLgFImPYbS3jp9VoCToS0KPa+mdKYzLSZebhV0uy7Pk7S1w7OvlSY5
-         OptupFZ9KAdnnN+F0HLCJevtIdwiBZ9xpRY9Fgrp5MHgMj8UlPIqB8GwhcVNSHxzktjp
-         gXFNfn6aYJge96SRVVBu463FdVmbxFnE02lHrgpfgYHZ9rNg/qnu6p2pc8G9gS6i2/D6
-         Jnr7C8ZVgVHSOIDCCpElUznozvoSqdwDCGf8QSZsj2RdwjaxQygpmFT7fQCWPivWb5Dj
-         JtzA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=6nKNZyQ5mwOCGiSTv8PcByBpUnp/OJYzR5xUJtXpQ+Q=;
+        b=hAyFpENek1NYaCWKkqJjkvib1nRWXIEmZMAaQ5ndtO5QQmM3IZ5wDcGwQKKljJ6CIN
+         fbiY0v3APsRYwh1OUQnpLdheSG3fG1igQFHvjfkrd8xNNEK7WjAER0Uxo3gbm8+HAnsY
+         Qz4SKT1XE9iWj1GMmjQF+KP8gMkXmZY9vCGfwKArlrZ0RzmALSr48Axfo9r20ItUZg2s
+         3p4pZtrzruHsuHs0ZkmzLbgz55/yBAXKvT9pU0nr9Y4J/5spR+hCIgSVYG/dybSPmnwy
+         8QdGUATsjKic99gqtbWv3kWypEodlhxkJ1Iof4+G40lyplj8AqRaYB3aJxpE+sl8qqjl
+         GWiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=gUQ7qcuH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EHhhIuoq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7si10617365ybk.123.2020.12.11.13.00.25
+        by mx.google.com with ESMTPS id o5si19954957ybk.220.2020.12.15.06.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Dec 2020 13:00:25 -0800 (PST)
+        Tue, 15 Dec 2020 06:48:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=gUQ7qcuH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EHhhIuoq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:56682 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34034 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knpWb-00060m-2f
-	for alex.bennee@linaro.org; Fri, 11 Dec 2020 16:00:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43310)
+	id 1kpBca-0003BT-97
+	for alex.bennee@linaro.org; Tue, 15 Dec 2020 09:48:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1knpSi-0004Yx-Gl
- for qemu-devel@nongnu.org; Fri, 11 Dec 2020 15:56:24 -0500
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:41197)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kpBWz-0005xe-5l
+ for qemu-devel@nongnu.org; Tue, 15 Dec 2020 09:42:25 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:34484)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1knpSg-0000Sl-6s
- for qemu-devel@nongnu.org; Fri, 11 Dec 2020 15:56:24 -0500
-Received: by mail-lf1-x144.google.com with SMTP id r24so15143076lfm.8
- for <qemu-devel@nongnu.org>; Fri, 11 Dec 2020 12:56:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YR4cLcbxQMTvwfBGnh9TSVXqjdIzc3mQ7vR9rR1oYWE=;
- b=gUQ7qcuHfHWssv55xAJGMad0J0KdWqGG/tkdtWxu8xo1M4e+nWLq17ph4LGMFDue6o
- 8OyCQqxyr3c/30k/iFn5W6gbmXjQjxUN0+NwF/LrjVAvZvT42st0pWOC5PQ5RbqUK7Uq
- anSUuXSpM5vLc+B1bS28hBgBlK2xp1U10cD1vbkG7hpQc/6YFi4PeuSnpJhfOhqwuebH
- HI3V4Efk3U3KbeH2qrMsevszMbQYC4Zr5LHWzbe9ouEpsMdlmJE6Vo2AHbvfTvPktI4o
- dAiVb0wxWE9pXBxzVhh4MDM24kEdpQx7t+8SSWDjzjoWoRTtWqwRCb2qyKdSeDERcg7K
- ccEQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kpBWw-0000I0-2s
+ for qemu-devel@nongnu.org; Tue, 15 Dec 2020 09:42:24 -0500
+Received: by mail-wr1-x443.google.com with SMTP id q18so12564674wrn.1
+ for <qemu-devel@nongnu.org>; Tue, 15 Dec 2020 06:42:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6nKNZyQ5mwOCGiSTv8PcByBpUnp/OJYzR5xUJtXpQ+Q=;
+ b=EHhhIuoqwTmX2v4/Wcxq4ENCTTvFib33OgMXAeM9aC7VW24v1V/6akoay/aBHP/Zun
+ /VXmYBuzoJ4xbi00jHUBQHge6xWKz/3joH+gHVG/rZRtEk9Ij1iIQKQk0JlY2RKK1TFY
+ gsVBNv2PqZMXklycL8Z61JQn/WEhEcQEZU8dsWunMSFLlVu/IBLVJwy8y6/xaK6ycKHT
+ 09szXZ7hc86brQBuIsi8IXlQZv1jxrx0lurqtkA29AgGsvdF+RjeqoF8zSfm8ojevDeP
+ F6vNVBcDLUpzlvOKV/Yu1fASY9HOHsecMOnE2p7lqZd02hiqmbRuPEeiRjVy89hmimgx
+ V7BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YR4cLcbxQMTvwfBGnh9TSVXqjdIzc3mQ7vR9rR1oYWE=;
- b=Bq+srAwyz9MjRwt/7AJ8g+Z/6uNRYadJsWBcRO9yFgXC/NtG4mYiv9BbwX910RALSL
- vwh/Q3qolqxFV1vKtJytCrsXVX2OUJanKJBR/OlhHzvyyms6AeXT069mO28Feh6tuqzP
- uYFwGFWCow1TV+E+Bu0HK12Oz0tSFZ3VXRdlKIyNvfc4smTIwAvPfbVCrOLgUPApAyD6
- 7ruMrLm55yaCFJc0Xg1ZaFtFRUYaCC4WI3XKQOY22ZxA5Hu0b5vsR/rIeJZ47e413RbV
- cLiD/t4QPWXJtNS/1jLGGbD868qYUdwrE68RJC8iWft6mV4SW1ss445vMbMyxRpoMTtB
- pTIA==
-X-Gm-Message-State: AOAM533rTL1+DOkFcn9L1KQAeWuLholXvA0Mr/dS1uLikQLvkF4IRpS0
- kOaDCtxe8t7/Ap0BE+lZ1BDjCaZc2/N4KYjw0E7qKQ==
-X-Received: by 2002:a19:3811:: with SMTP id f17mr5026362lfa.28.1607720178455; 
- Fri, 11 Dec 2020 12:56:18 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6nKNZyQ5mwOCGiSTv8PcByBpUnp/OJYzR5xUJtXpQ+Q=;
+ b=Sftf1ZmYHYNCyZbCIu/9hHBBIS7OHASvtoJedVTxYQc147Zmp30r02KQp+eW8hI5m/
+ xoBL96qnkQR1yuoYpfHXFYeckJBIEUqXb/XkbaLwal1sULhHiKvpRUpUYi0+iTG4Jj29
+ GuDagHZmuaphWkj+15yp6K3doOztdIxrYukEz6FGVJ0smP7LfjfDM5h8pPo/KpCoJFg+
+ syYru/s2G8P4EDKTDwUBvNsk2mdSuqpl7MkcAr2Pwc6SOOIm1sIbbpRwnIdO4y5MSLCd
+ CYI7pnSh7MProKPQDsUyOETmGo4vL6wXqPH0QOezOnuDny8RVUWSGd+7+s5DdhafL/p1
+ j0FA==
+X-Gm-Message-State: AOAM530t2O+c+jUNGEfHU81dw6je9zFLwLezwpaKm7zYAOQOTSvDe1+H
+ pAbUt7ViOGR+CxqXCzwU/t8yGA==
+X-Received: by 2002:adf:dc8b:: with SMTP id r11mr34830700wrj.131.1608043337083; 
+ Tue, 15 Dec 2020 06:42:17 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id z22sm35049810wml.1.2020.12.15.06.42.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Dec 2020 06:42:16 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] hw/arm/highbank: Drop dead KVM support code
+Date: Tue, 15 Dec 2020 14:42:15 +0000
+Message-Id: <20201215144215.28482-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20201211015156.2053372-1-wuhaotsh@google.com>
- <20201211030435.GI11017@minyard.net>
-In-Reply-To: <20201211030435.GI11017@minyard.net>
-Date: Fri, 11 Dec 2020 12:56:07 -0800
-Message-ID: <CAGcCb12UyiPoU=cPd3W3Mwj+jZHbWWESEPY-dhaSWXDqGdhM0w@mail.gmail.com>
-Subject: Re: [PATCH 0/7] Additional NPCM7xx devices and IPMI BMC emulation
- support
-To: minyard@acm.org
-Content-Type: multipart/alternative; boundary="00000000000022fbbe05b636869d"
-Received-SPF: pass client-ip=2a00:1450:4864:20::144;
- envelope-from=wuhaotsh@google.com; helo=mail-lf1-x144.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,278 +113,63 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Patrick Venture <venture@google.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm@nongnu.org, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+Cc: Rob Herring <robh@kernel.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Hao Wu <wuhaotsh@google.com>
-From: Hao Wu via <qemu-devel@nongnu.org>
-X-TUID: v8XMXzRIi3Hw
+X-TUID: R8WuAOWBf4YR
 
---00000000000022fbbe05b636869d
-Content-Type: text/plain; charset="UTF-8"
+Support for running KVM on 32-bit Arm hosts was removed in commit
+82bf7ae84ce739e.  You can still run a 32-bit guest on a 64-bit Arm
+host CPU, but because Arm KVM requires the host and guest CPU types
+to match, it is not possible to run a guest that requires a Cortex-A9
+or Cortex-A15 CPU there.  That means that the code in the
+highbank/midway board models to support KVM is no longer used, and we
+can delete it.
 
-Tl,dr: We'll remove the IPMI changes from the current patch set and
-refactor
-          them in a separate patch set.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/highbank.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
-Thank you for your review! On high level, we are trying to emulate the BMC
-side of the IPMI protocol. So we cannot directly use the existing IPMI code.
-However, they do have a lot in duplication as you pointed out. So we'll
-refactor
-the existing IPMI code and update in a way that we only add the required
-functionality.
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index bf7b8f4c648..bf886268c57 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -26,7 +26,6 @@
+ #include "hw/arm/boot.h"
+ #include "hw/loader.h"
+ #include "net/net.h"
+-#include "sysemu/kvm.h"
+ #include "sysemu/runstate.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/boards.h"
+@@ -38,6 +37,7 @@
+ #include "hw/cpu/a15mpcore.h"
+ #include "qemu/log.h"
+ #include "qom/object.h"
++#include "cpu.h"
+ 
+ #define SMP_BOOT_ADDR           0x100
+ #define SMP_BOOT_REG            0x40
+@@ -396,15 +396,9 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
+     highbank_binfo.loader_start = 0;
+     highbank_binfo.write_secondary_boot = hb_write_secondary;
+     highbank_binfo.secondary_cpu_reset_hook = hb_reset_secondary;
+-    if (!kvm_enabled()) {
+-        highbank_binfo.board_setup_addr = BOARD_SETUP_ADDR;
+-        highbank_binfo.write_board_setup = hb_write_board_setup;
+-        highbank_binfo.secure_board_setup = true;
+-    } else {
+-        warn_report("cannot load built-in Monitor support "
+-                    "if KVM is enabled. Some guests (such as Linux) "
+-                    "may not boot.");
+-    }
++    highbank_binfo.board_setup_addr = BOARD_SETUP_ADDR;
++    highbank_binfo.write_board_setup = hb_write_board_setup;
++    highbank_binfo.secure_board_setup = true;
+ 
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &highbank_binfo);
+ }
+-- 
+2.20.1
 
-As for the KCS module, the BMC side of the protocol is the opposite
-direction
-of the existing ipmi_kcs.c code which is on the host/CPU side. For example,
-in READ_STATE the CPU would read data while the BMC would write data.
-So we can't directly use the same implementation. (They're different files
-in
-Linux either.) However, we can refactor it to re-use some of the common
-definitions.
-
-We would like to remove the IPMI and KCS stuff from the current patch set.
-We'll send the refactored code in a separate patch set after addressing
-your concerns.
-
-Thanks again for the review!
-
-On Thu, Dec 10, 2020 at 7:04 PM Corey Minyard <minyard@acm.org> wrote:
-
-> On Thu, Dec 10, 2020 at 05:51:49PM -0800, Hao Wu wrote:
-> > This patch series include a few more NPCM7XX devices including
-> >
-> > - Analog Digital Converter (ADC)
-> > - Pulse Width Modulation (PWM)
-> > - Keyboard Style Controller (KSC)
-> >
-> > To utilize these modules we also add two extra functionalities:
-> >
-> > 1. We modified the CLK module to generate clock values using qdev_clock.
-> >    These clocks are used to determine various clocks in NPCM7XX devices.
-> > 2. We added support for emulating IPMI responder devices in BMC machines,
-> >    similar to the existing IPMI device support for CPU emulation. This
-> allows
-> >    a qemu instance running BMC firmware to serve as an external BMC for
-> a qemu
-> >    instance running server software. It utilizes the KCS module we
-> implemented.
->
-> Looking at the IPMI changes, why didn't you just re-use the existing
-> IPMI infrastructure?  ipmi_host.[ch] is basically a subset of ipmi.[ch],
-> and the ipmi_host_extern looks like a copy of of ipmi_bmc_extern with
-> some names changed.  That kind of code duplication is not acceptable.
-> Plus you copied my code and removed my copyrights, which is really
-> not acceptable and illegal.
->
-> I'm not exactly sure why you needed you own KCS interface, either.  It
-> looks like the interface is somewhat different in some ways, but
-> integrating it into the current KCS code is probably a better choice if
-> that can be done.
->
-> -corey
->
-> >
-> > Hao Wu (7):
-> >   hw/misc: Add clock converter in NPCM7XX CLK module
-> >   hw/timer: Refactor NPCM7XX Timer to use CLK clock
-> >   hw/adc: Add an ADC module for NPCM7XX
-> >   hw/misc: Add a PWM module for NPCM7XX
-> >   hw/ipmi: Add an IPMI host interface
-> >   hw/ipmi: Add a KCS Module for NPCM7XX
-> >   hw/ipmi: Add an IPMI external host device
-> >
-> >  default-configs/devices/arm-softmmu.mak |   2 +
-> >  docs/system/arm/nuvoton.rst             |   6 +-
-> >  hw/adc/meson.build                      |   1 +
-> >  hw/adc/npcm7xx_adc.c                    | 318 ++++++++++
-> >  hw/arm/npcm7xx.c                        |  65 +-
-> >  hw/ipmi/Kconfig                         |   5 +
-> >  hw/ipmi/ipmi_host.c                     |  40 ++
-> >  hw/ipmi/ipmi_host_extern.c              | 435 +++++++++++++
-> >  hw/ipmi/meson.build                     |   3 +
-> >  hw/ipmi/npcm7xx_kcs.c                   | 570 +++++++++++++++++
-> >  hw/misc/meson.build                     |   1 +
-> >  hw/misc/npcm7xx_clk.c                   | 795 +++++++++++++++++++++++-
-> >  hw/misc/npcm7xx_pwm.c                   | 535 ++++++++++++++++
-> >  hw/timer/npcm7xx_timer.c                |  25 +-
-> >  include/hw/adc/npcm7xx_adc.h            |  72 +++
-> >  include/hw/arm/npcm7xx.h                |   6 +
-> >  include/hw/ipmi/ipmi_host.h             |  56 ++
-> >  include/hw/ipmi/ipmi_responder.h        |  66 ++
-> >  include/hw/ipmi/npcm7xx_kcs.h           | 105 ++++
-> >  include/hw/misc/npcm7xx_clk.h           | 146 ++++-
-> >  include/hw/misc/npcm7xx_pwm.h           | 106 ++++
-> >  include/hw/timer/npcm7xx_timer.h        |   1 +
-> >  tests/qtest/meson.build                 |   4 +-
-> >  tests/qtest/npcm7xx_adc-test.c          | 400 ++++++++++++
-> >  tests/qtest/npcm7xx_pwm-test.c          | 490 +++++++++++++++
-> >  25 files changed, 4221 insertions(+), 32 deletions(-)
-> >  create mode 100644 hw/adc/npcm7xx_adc.c
-> >  create mode 100644 hw/ipmi/ipmi_host.c
-> >  create mode 100644 hw/ipmi/ipmi_host_extern.c
-> >  create mode 100644 hw/ipmi/npcm7xx_kcs.c
-> >  create mode 100644 hw/misc/npcm7xx_pwm.c
-> >  create mode 100644 include/hw/adc/npcm7xx_adc.h
-> >  create mode 100644 include/hw/ipmi/ipmi_host.h
-> >  create mode 100644 include/hw/ipmi/ipmi_responder.h
-> >  create mode 100644 include/hw/ipmi/npcm7xx_kcs.h
-> >  create mode 100644 include/hw/misc/npcm7xx_pwm.h
-> >  create mode 100644 tests/qtest/npcm7xx_adc-test.c
-> >  create mode 100644 tests/qtest/npcm7xx_pwm-test.c
-> >
-> > --
-> > 2.29.2.684.gfbc64c5ab5-goog
-> >
->
-
---00000000000022fbbe05b636869d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Tl,dr: We&#39;ll remove the IPMI changes =
-from the current patch set and refactor=C2=A0</div><div dir=3D"ltr">=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 them in a separate patch set.</div><div dir=3D"=
-ltr"><br></div><div>Thank you for your review! On high level, we are trying=
- to emulate the BMC</div><div>side of the IPMI protocol. So we cannot direc=
-tly use the existing IPMI code.</div><div>However, they do have a lot in du=
-plication as you pointed out. So we&#39;ll refactor</div><div>the existing =
-IPMI code and update in a way that we only add the required</div><div>funct=
-ionality.</div><div><br></div><div>As for the KCS module, the BMC side of t=
-he protocol is the opposite direction</div><div>of the existing ipmi_kcs.c =
-code which is on the host/CPU side. For example,</div><div>in READ_STATE th=
-e CPU would read data while the BMC would write data.</div><div>So we can&#=
-39;t directly use the same implementation. (They&#39;re different files in<=
-/div><div>Linux either.) However, we can refactor it to re-use some of the =
-common definitions.</div><div><br></div><div>We would like to remove the IP=
-MI and KCS stuff from the current patch set.</div><div>We&#39;ll send the r=
-efactored code in a separate=C2=A0patch set after addressing</div><div>your=
- concerns.</div><div><br></div><div>Thanks again for the review!</div><br><=
-div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Dec=
- 10, 2020 at 7:04 PM Corey Minyard &lt;<a href=3D"mailto:minyard@acm.org" t=
-arget=3D"_blank">minyard@acm.org</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">On Thu, Dec 10, 2020 at 05:51:49PM -0800, =
-Hao Wu wrote:<br>
-&gt; This patch series include a few more NPCM7XX devices including<br>
-&gt; <br>
-&gt; - Analog Digital Converter (ADC)<br>
-&gt; - Pulse Width Modulation (PWM)<br>
-&gt; - Keyboard Style Controller (KSC)<br>
-&gt; <br>
-&gt; To utilize these modules we also add two extra functionalities:<br>
-&gt; <br>
-&gt; 1. We modified the CLK module to generate clock values using qdev_cloc=
-k.<br>
-&gt;=C2=A0 =C2=A0 These clocks are used to determine various clocks in NPCM=
-7XX devices.<br>
-&gt; 2. We added support for emulating IPMI responder devices in BMC machin=
-es,<br>
-&gt;=C2=A0 =C2=A0 similar to the existing IPMI device support for CPU emula=
-tion. This allows<br>
-&gt;=C2=A0 =C2=A0 a qemu instance running BMC firmware to serve as an exter=
-nal BMC for a qemu<br>
-&gt;=C2=A0 =C2=A0 instance running server software. It utilizes the KCS mod=
-ule we implemented.<br>
-<br>
-Looking at the IPMI changes, why didn&#39;t you just re-use the existing<br=
->
-IPMI infrastructure?=C2=A0 ipmi_host.[ch] is basically a subset of ipmi.[ch=
-],<br>
-and the ipmi_host_extern looks like a copy of of ipmi_bmc_extern with<br>
-some names changed.=C2=A0 That kind of code duplication is not acceptable.<=
-br>
-Plus you copied my code and removed my copyrights, which is really<br>
-not acceptable and illegal.<br>
-<br>
-I&#39;m not exactly sure why you needed you own KCS interface, either.=C2=
-=A0 It<br>
-looks like the interface is somewhat different in some ways, but<br>
-integrating it into the current KCS code is probably a better choice if<br>
-that can be done.<br>
-<br>
--corey<br>
-<br>
-&gt; <br>
-&gt; Hao Wu (7):<br>
-&gt;=C2=A0 =C2=A0hw/misc: Add clock converter in NPCM7XX CLK module<br>
-&gt;=C2=A0 =C2=A0hw/timer: Refactor NPCM7XX Timer to use CLK clock<br>
-&gt;=C2=A0 =C2=A0hw/adc: Add an ADC module for NPCM7XX<br>
-&gt;=C2=A0 =C2=A0hw/misc: Add a PWM module for NPCM7XX<br>
-&gt;=C2=A0 =C2=A0hw/ipmi: Add an IPMI host interface<br>
-&gt;=C2=A0 =C2=A0hw/ipmi: Add a KCS Module for NPCM7XX<br>
-&gt;=C2=A0 =C2=A0hw/ipmi: Add an IPMI external host device<br>
-&gt; <br>
-&gt;=C2=A0 default-configs/devices/arm-softmmu.mak |=C2=A0 =C2=A02 +<br>
-&gt;=C2=A0 docs/system/arm/nuvoton.rst=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0|=C2=A0 =C2=A06 +-<br>
-&gt;=C2=A0 hw/adc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 hw/adc/npcm7xx_adc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 318 ++++++++++<br>
-&gt;=C2=A0 hw/arm/npcm7xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 65 +-<br>
-&gt;=C2=A0 hw/ipmi/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +<br>
-&gt;=C2=A0 hw/ipmi/ipmi_host.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 40 ++<br>
-&gt;=C2=A0 hw/ipmi/ipmi_host_extern.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 | 435 +++++++++++++<br>
-&gt;=C2=A0 hw/ipmi/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A03 +<br>
-&gt;=C2=A0 hw/ipmi/npcm7xx_kcs.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0| 570 +++++++++++++++++<br>
-&gt;=C2=A0 hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt;=C2=A0 hw/misc/npcm7xx_clk.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0| 795 +++++++++++++++++++++++-<br>
-&gt;=C2=A0 hw/misc/npcm7xx_pwm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0| 535 ++++++++++++++++<br>
-&gt;=C2=A0 hw/timer/npcm7xx_timer.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 |=C2=A0 25 +-<br>
-&gt;=C2=A0 include/hw/adc/npcm7xx_adc.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 |=C2=A0 72 +++<br>
-&gt;=C2=A0 include/hw/arm/npcm7xx.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A06 +<br>
-&gt;=C2=A0 include/hw/ipmi/ipmi_host.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0|=C2=A0 56 ++<br>
-&gt;=C2=A0 include/hw/ipmi/ipmi_responder.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
-=A0 66 ++<br>
-&gt;=C2=A0 include/hw/ipmi/npcm7xx_kcs.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 105 ++++<br>
-&gt;=C2=A0 include/hw/misc/npcm7xx_clk.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 146 ++++-<br>
-&gt;=C2=A0 include/hw/misc/npcm7xx_pwm.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 106 ++++<br>
-&gt;=C2=A0 include/hw/timer/npcm7xx_timer.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
-=A0 =C2=A01 +<br>
-&gt;=C2=A0 tests/qtest/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +-<br>
-&gt;=C2=A0 tests/qtest/npcm7xx_adc-test.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- | 400 ++++++++++++<br>
-&gt;=C2=A0 tests/qtest/npcm7xx_pwm-test.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- | 490 +++++++++++++++<br>
-&gt;=C2=A0 25 files changed, 4221 insertions(+), 32 deletions(-)<br>
-&gt;=C2=A0 create mode 100644 hw/adc/npcm7xx_adc.c<br>
-&gt;=C2=A0 create mode 100644 hw/ipmi/ipmi_host.c<br>
-&gt;=C2=A0 create mode 100644 hw/ipmi/ipmi_host_extern.c<br>
-&gt;=C2=A0 create mode 100644 hw/ipmi/npcm7xx_kcs.c<br>
-&gt;=C2=A0 create mode 100644 hw/misc/npcm7xx_pwm.c<br>
-&gt;=C2=A0 create mode 100644 include/hw/adc/npcm7xx_adc.h<br>
-&gt;=C2=A0 create mode 100644 include/hw/ipmi/ipmi_host.h<br>
-&gt;=C2=A0 create mode 100644 include/hw/ipmi/ipmi_responder.h<br>
-&gt;=C2=A0 create mode 100644 include/hw/ipmi/npcm7xx_kcs.h<br>
-&gt;=C2=A0 create mode 100644 include/hw/misc/npcm7xx_pwm.h<br>
-&gt;=C2=A0 create mode 100644 tests/qtest/npcm7xx_adc-test.c<br>
-&gt;=C2=A0 create mode 100644 tests/qtest/npcm7xx_pwm-test.c<br>
-&gt; <br>
-&gt; -- <br>
-&gt; 2.29.2.684.gfbc64c5ab5-goog<br>
-&gt; <br>
-</blockquote></div></div>
-
---00000000000022fbbe05b636869d--

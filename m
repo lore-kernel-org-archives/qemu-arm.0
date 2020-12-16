@@ -1,177 +1,158 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp693935lfq;
-        Fri, 15 Jan 2021 15:22:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyj5eSTtauzqki1W19gKAvx1nCwRPlqkVMLk1DfNb3zbX09YBdWsunaQ//uOLJunZLgz15C
-X-Received: by 2002:a25:40d:: with SMTP id 13mr22409429ybe.422.1610752969204;
-        Fri, 15 Jan 2021 15:22:49 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp101409lfq;
+        Tue, 15 Dec 2020 22:44:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxgAE5qqApx2swEtJmPZ8EQYC1iuOZBgWwm02RE/19zh9+OGyJq2AmL4RNgVoqzxJPgVQoO
+X-Received: by 2002:a25:bdd0:: with SMTP id g16mr16901440ybk.365.1608101069845;
+        Tue, 15 Dec 2020 22:44:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608101069; cv=none;
+        d=google.com; s=arc-20160816;
+        b=CaxxiWpPkatP67tyOE20bLHBbxNNvNQsS6Z5gQzolNZmRv5yERaZLCotBdUyYQMx9M
+         rVHH5zf0rFUgOBl/diL5mz0mS7s3D2EXGRwVbGlMSZpFbi+kHgiYttDFbMiGOoSI6q84
+         GiAh3VqB0lytG1xL34YQF0MW4XsLM+zII0wl/S9BNQwDjv4d4uvVD/lyvMU13FPXaU3+
+         HpRZiTlxdZsoMFEnWMHMba3d8k8xN9zxF1cNk0QieCRnH0ekhT9KoGOU/6VhI5Tgh1kd
+         T+6jOMUwdgmBzxZqiWiJdGb+JFvwauMMVCdYKFUhw+fm6zLN2rGJIXi5gfj74ZgZsLxJ
+         CNHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Wcza4gvWhaFqDoP8VtrDuLYucz6EpPowrBdkki8zJ4A=;
+        b=MwXJaFfhTT1wMWoH+/ljQpMNcoFd5nS2x4fBaXA7QeFMEbxED7B8YfYMerI7jKZNW/
+         O1jpna7UxllSNg8A5eMtya5nwf4uyGfRiQE6J1N9K4kseKke2A5Ctx7XAnB8lIIqjqd7
+         OAyzMriEATDSW4PX9TzoFrEVf7JfYF87eYqS8eFfJjhghP7rXAEPkNt67P1uQ6565Zbx
+         fAL0qdLAH/1u6ZuTNF6e3hY8MtZofXMmEu8OOf2rIrlPu2hyhqo28CUPbEqDxnwzr757
+         U8/GnwAfXP9BVu21MPL6xxQKsp0HAWBbCmv6Tr/lu+DHBIPofaOg1E/fznttHu8VQpm4
+         hRoQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G/ghZDp+";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si9787947ybo.110.2021.01.15.15.22.49
+        by mx.google.com with ESMTPS id f21si487777ybg.275.2020.12.15.22.44.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Jan 2021 15:22:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Dec 2020 22:44:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40150 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G/ghZDp+";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l0YQa-0001ns-KE
-	for alex.bennee@linaro.org; Fri, 15 Jan 2021 18:22:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59490)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kpQY1-0007h3-7b
+	for alex.bennee@linaro.org; Wed, 16 Dec 2020 01:44:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57848)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l0YK0-0005E7-Op; Fri, 15 Jan 2021 18:16:00 -0500
-Resent-Date: Fri, 15 Jan 2021 18:16:00 -0500
-Resent-Message-Id: <E1l0YK0-0005E7-Op@lists.gnu.org>
-Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21442)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l0YJv-0005uF-OY; Fri, 15 Jan 2021 18:16:00 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1610752551; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=T/91J/O14jjQGadms56n+bsEPx6WFhIRGrsy3LxGVX3ZSJkuICeNAa3RNYUCQZq/bFVXkbePCj4G7VaBqtF38Z9UYtzZ9v9D8iprR4RzBPZLFFBZ1Dg3aL8Wy70R56qeqh6JVpufq/x23y6j/BdC3Zgn5JkvRRotOXYSoYloT5U=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1610752551;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=9L5TRySUhvSxtSi0xjfZ4gO/2DZUsdSAOytNk/daxcg=; 
- b=DpLSGJ5wV9DCnHbhe0BIYfaLOmAfM25owPc/OIbpsX9cGaj9foPoTsenpyb3irSuumQ9emzrmCmHrFvPb2cQen/o1XTq0c7bucdTXAfF68Lc6Oehx5yKDMGI+20nJddTzGtBUHEMqtS7IS3QUrpyW6as7aYSRT0w44lLXkTYzP0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1610752548955743.1531274025117;
- Fri, 15 Jan 2021 15:15:48 -0800 (PST)
-In-Reply-To: <20210115224645.1196742-1-richard.henderson@linaro.org>
-Subject: Re: [PATCH v3 00/21] target-arm: Implement ARMv8.5-MemTag, user mode
-Message-ID: <161075254772.14767.8192630492635003479@73fb1a5943b8>
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kpQXe-0007gc-Ns
+ for qemu-arm@nongnu.org; Wed, 16 Dec 2020 01:44:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35576)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kpQXc-0001SQ-Mg
+ for qemu-arm@nongnu.org; Wed, 16 Dec 2020 01:44:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1608101043;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Wcza4gvWhaFqDoP8VtrDuLYucz6EpPowrBdkki8zJ4A=;
+ b=G/ghZDp+m0e8Dsh8JbFMFwqBf6IM3KGW7W2kHTfXlPb/MNFANqMZyliSE+w/I2NL7qmGrg
+ m1aVr2z38eV6h2hAsDcJyvcMjuWRcNTK6msp3n7/T4ExQIMDJBxxbTloQ7IcmscBik/ZJi
+ qI8wcU+za8k+yQAEV6bZGeA2pJ5pbdc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-363-zQ9TAPXZMiK_d1FEaNg1wg-1; Wed, 16 Dec 2020 01:44:00 -0500
+X-MC-Unique: zQ9TAPXZMiK_d1FEaNg1wg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 821B4800D53;
+ Wed, 16 Dec 2020 06:43:58 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.81])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A1C335C67A;
+ Wed, 16 Dec 2020 06:43:56 +0000 (UTC)
+Date: Wed, 16 Dec 2020 07:43:53 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: David Edmondson <david.edmondson@oracle.com>
+Subject: Re: [PATCH] hw/arm/virt: Remove virt machine state 'smp_cpus'
+Message-ID: <20201216064353.2n4evhicybkkuf7z@kamzik.brq.redhat.com>
+References: <20201215174815.51520-1-drjones@redhat.com>
+ <cun8s9zorr3.fsf@zarquon.hh.sledj.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Date: Fri, 15 Jan 2021 15:15:48 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.54; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o54.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <cun8s9zorr3.fsf@zarquon.hh.sledj.net>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s+dx3YxvAVxk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: fangying1@huawei.com, peter.maydell@linaro.org, salil.mehta@huawei.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mEXpjDMMg5PK
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDExNTIyNDY0NS4xMTk2
-NzQyLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBz
-ZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93
-IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMTE1
-MjI0NjQ1LjExOTY3NDItMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnClN1YmplY3Q6IFtQ
-QVRDSCB2MyAwMC8yMV0gdGFyZ2V0LWFybTogSW1wbGVtZW50IEFSTXY4LjUtTWVtVGFnLCB1c2Vy
-IG1vZGUKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJz
-ZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
-bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
-IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
-IC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhj
-ZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIu
-Y29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAtIFt0YWcgdXBkYXRlXSAgICAgIHBhdGNoZXcvMjAy
-MDExMDQwOTI5MDAuMjEyMTQtMS1ncmVlbi53YW5Ac2lmaXZlLmNvbSAtPiBwYXRjaGV3LzIwMjAx
-MTA0MDkyOTAwLjIxMjE0LTEtZ3JlZW4ud2FuQHNpZml2ZS5jb20KIC0gW3RhZyB1cGRhdGVdICAg
-ICAgcGF0Y2hldy8yMDIxMDExMDE4NTEwOS4yOTg0MS0xLXNwYWNlLm1vbmtleS5kZWxpdmVyc0Bn
-bWFpbC5jb20gLT4gcGF0Y2hldy8yMDIxMDExMDE4NTEwOS4yOTg0MS0xLXNwYWNlLm1vbmtleS5k
-ZWxpdmVyc0BnbWFpbC5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIxMDExNTIy
-NDY0NS4xMTk2NzQyLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZyAtPiBwYXRjaGV3LzIw
-MjEwMTE1MjI0NjQ1LjExOTY3NDItMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnClN3aXRj
-aGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKYjUxYzYyYiB0ZXN0cy90Y2cvYWFyY2g2NDogQWRk
-IG10ZSBzbW9rZSB0ZXN0cwoyYmI2NjUxIHRhcmdldC9hcm06IEVuYWJsZSBNVEUgZm9yIHVzZXIt
-b25seQo1ODEwMDZiIHRhcmdldC9hcm06IEFkZCBhbGxvY2F0aW9uIHRhZyBzdG9yYWdlIGZvciB1
-c2VyIG1vZGUKMzk5NWMxMyBsaW51eC11c2VyL2FhcmNoNjQ6IFNpZ25hbCBTRUdWX01URUFFUlIg
-Zm9yIGFzeW5jIHRhZyBjaGVjayBlcnJvcgozYjI3MzVhIGxpbnV4LXVzZXIvYWFyY2g2NDogU2ln
-bmFsIFNFR1ZfTVRFU0VSUiBmb3Igc3luYyB0YWcgY2hlY2sgZmF1bHQKODc3NzNkYyBsaW51eC11
-c2VyL2FhcmNoNjQ6IFBhc3Mgc3luZHJvbWUgdG8gRVhDXypfQUJPUlQKYzc3YjllNyB0YXJnZXQv
-YXJtOiBTcGxpdCBvdXQgc3luZHJvbWUuaCBmcm9tIGludGVybmFscy5oCjAzNDA5ZGIgbGludXgt
-dXNlci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJPVF9NVEUKYTM0OTE4NiBsaW51eC11c2VyL2FhcmNo
-NjQ6IEltcGxlbWVudCBQUl9NVEVfVENGIGFuZCBQUl9NVEVfVEFHCjFiZjMwMTQgbGludXgtdXNl
-ci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJfVEFHR0VEX0FERFJfRU5BQkxFCmRkYTZhYmEgZXhlYzog
-QWRkIHN1cHBvcnQgZm9yIFRBUkdFVF9UQUdHRURfQUREUkVTU0VTCjM3ZWNiZGIgbGludXgtdXNl
-cjogRml4IGd1ZXN0X2FkZHJfdmFsaWQgdnMgcmVzZXJ2ZWRfdmEKYjQ1ZTAzNyBsaW51eC11c2Vy
-OiBEbyBub3QgdXNlIGd1ZXN0X2FkZHJfdmFsaWQgZm9yIGgyZ192YWxpZApjYWJiYjA3IGJzZC11
-c2VyOiBUaWR5IFZFUklGWV9SRUFEL1ZFUklGWV9XUklURQo5NTI4ODkwIGxpbnV4LXVzZXI6IFRp
-ZHkgVkVSSUZZX1JFQUQvVkVSSUZZX1dSSVRFCjA3NGYxYjYgbGludXgtdXNlcjogQ2hlY2sgZm9y
-IG92ZXJmbG93IGluIGFjY2Vzc19vawphNTdhYWEzIGV4ZWM6IEltcHJvdmUgdHlwZXMgZm9yIGd1
-ZXN0X2FkZHJfdmFsaWQKYWNiMjhjNyBleGVjOiBVc2UgdWludHB0cl90IGluIGNwdV9sZHN0LmgK
-NmI2MzBmZiBleGVjOiBVc2UgdWludHB0cl90IGZvciBndWVzdF9iYXNlCjZiN2RhYTMgbGludXgt
-dXNlcjogSW50cm9kdWNlIFBBR0VfQU5PTgpiN2RjMDVkIHRjZzogSW50cm9kdWNlIHRhcmdldC1z
-cGVjaWZpYyBwYWdlIGRhdGEgZm9yIHVzZXItb25seQoKPT09IE9VVFBVVCBCRUdJTiA9PT0KMS8y
-MSBDaGVja2luZyBjb21taXQgYjdkYzA1ZGRjYzViICh0Y2c6IEludHJvZHVjZSB0YXJnZXQtc3Bl
-Y2lmaWMgcGFnZSBkYXRhIGZvciB1c2VyLW9ubHkpCjIvMjEgQ2hlY2tpbmcgY29tbWl0IDZiN2Rh
-YTM0Mjk4YyAobGludXgtdXNlcjogSW50cm9kdWNlIFBBR0VfQU5PTikKMy8yMSBDaGVja2luZyBj
-b21taXQgNmI2MzBmZmU0YzY2IChleGVjOiBVc2UgdWludHB0cl90IGZvciBndWVzdF9iYXNlKQo0
-LzIxIENoZWNraW5nIGNvbW1pdCBhY2IyOGM3Y2I2MGIgKGV4ZWM6IFVzZSB1aW50cHRyX3QgaW4g
-Y3B1X2xkc3QuaCkKNS8yMSBDaGVja2luZyBjb21taXQgYTU3YWFhMzM1OWYyIChleGVjOiBJbXBy
-b3ZlIHR5cGVzIGZvciBndWVzdF9hZGRyX3ZhbGlkKQo2LzIxIENoZWNraW5nIGNvbW1pdCAwNzRm
-MWI2YTAzZDMgKGxpbnV4LXVzZXI6IENoZWNrIGZvciBvdmVyZmxvdyBpbiBhY2Nlc3Nfb2spCjcv
-MjEgQ2hlY2tpbmcgY29tbWl0IDk1Mjg4OTA2NmJhMCAobGludXgtdXNlcjogVGlkeSBWRVJJRllf
-UkVBRC9WRVJJRllfV1JJVEUpCjgvMjEgQ2hlY2tpbmcgY29tbWl0IGNhYmJiMDc1MDhmNiAoYnNk
-LXVzZXI6IFRpZHkgVkVSSUZZX1JFQUQvVkVSSUZZX1dSSVRFKQo5LzIxIENoZWNraW5nIGNvbW1p
-dCBiNDVlMDM3YzA4ZDIgKGxpbnV4LXVzZXI6IERvIG5vdCB1c2UgZ3Vlc3RfYWRkcl92YWxpZCBm
-b3IgaDJnX3ZhbGlkKQoxMC8yMSBDaGVja2luZyBjb21taXQgMzdlY2JkYmY2YTA4IChsaW51eC11
-c2VyOiBGaXggZ3Vlc3RfYWRkcl92YWxpZCB2cyByZXNlcnZlZF92YSkKMTEvMjEgQ2hlY2tpbmcg
-Y29tbWl0IGRkYTZhYmE2OGNjMiAoZXhlYzogQWRkIHN1cHBvcnQgZm9yIFRBUkdFVF9UQUdHRURf
-QUREUkVTU0VTKQoxMi8yMSBDaGVja2luZyBjb21taXQgMWJmMzAxNDNkMThkIChsaW51eC11c2Vy
-L2FhcmNoNjQ6IEltcGxlbWVudCBQUl9UQUdHRURfQUREUl9FTkFCTEUpCjEzLzIxIENoZWNraW5n
-IGNvbW1pdCBhMzQ5MTg2ZDI3ZjAgKGxpbnV4LXVzZXIvYWFyY2g2NDogSW1wbGVtZW50IFBSX01U
-RV9UQ0YgYW5kIFBSX01URV9UQUcpCjE0LzIxIENoZWNraW5nIGNvbW1pdCAwMzQwOWRiMmU0ZWMg
-KGxpbnV4LXVzZXIvYWFyY2g2NDogSW1wbGVtZW50IFBST1RfTVRFKQoxNS8yMSBDaGVja2luZyBj
-b21taXQgYzc3YjllNzJlYjMyICh0YXJnZXQvYXJtOiBTcGxpdCBvdXQgc3luZHJvbWUuaCBmcm9t
-IGludGVybmFscy5oKQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBk
-b2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMyNzc6IApuZXcgZmlsZSBtb2RlIDEwMDY0
-NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCA1MzAgbGluZXMgY2hlY2tlZAoKUGF0Y2gg
-MTUvMjEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNl
-IGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVy
-LCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMTYvMjEgQ2hlY2tpbmcgY29tbWl0IDg3
-NzczZGNhN2UzOCAobGludXgtdXNlci9hYXJjaDY0OiBQYXNzIHN5bmRyb21lIHRvIEVYQ18qX0FC
-T1JUKQoxNy8yMSBDaGVja2luZyBjb21taXQgM2IyNzM1YWMyYzMyIChsaW51eC11c2VyL2FhcmNo
-NjQ6IFNpZ25hbCBTRUdWX01URVNFUlIgZm9yIHN5bmMgdGFnIGNoZWNrIGZhdWx0KQoxOC8yMSBD
-aGVja2luZyBjb21taXQgMzk5NWMxMzI4M2NiIChsaW51eC11c2VyL2FhcmNoNjQ6IFNpZ25hbCBT
-RUdWX01URUFFUlIgZm9yIGFzeW5jIHRhZyBjaGVjayBlcnJvcikKMTkvMjEgQ2hlY2tpbmcgY29t
-bWl0IDU4MTAwNmJmMDQxYSAodGFyZ2V0L2FybTogQWRkIGFsbG9jYXRpb24gdGFnIHN0b3JhZ2Ug
-Zm9yIHVzZXIgbW9kZSkKMjAvMjEgQ2hlY2tpbmcgY29tbWl0IDJiYjY2NTFmYmNmNyAodGFyZ2V0
-L2FybTogRW5hYmxlIE1URSBmb3IgdXNlci1vbmx5KQoyMS8yMSBDaGVja2luZyBjb21taXQgYjUx
-YzYyYmJkOTgwICh0ZXN0cy90Y2cvYWFyY2g2NDogQWRkIG10ZSBzbW9rZSB0ZXN0cykKV0FSTklO
-RzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVk
-IHVwZGF0aW5nPwojMjg6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKRVJST1I6IHRyYWlsaW5nIHN0
-YXRlbWVudHMgc2hvdWxkIGJlIG9uIG5leHQgbGluZQojMTU3OiBGSUxFOiB0ZXN0cy90Y2cvYWFy
-Y2g2NC9tdGUtMy5jOjQ2OgorICAgIHdoaWxlICgxKTsKCkVSUk9SOiBicmFjZXMge30gYXJlIG5l
-Y2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBzdGF0ZW1lbnQKIzE1NzogRklMRTogdGVzdHMv
-dGNnL2FhcmNoNjQvbXRlLTMuYzo0NjoKKyAgICB3aGlsZSAoMSk7ClsuLi5dCgpFUlJPUjogdXNl
-IHFlbXVfcmVhbF9ob3N0X3BhZ2Vfc2l6ZSBpbnN0ZWFkIG9mIGdldHBhZ2VzaXplKCkKIzE5Mjog
-RklMRTogdGVzdHMvdGNnL2FhcmNoNjQvbXRlLTQuYzoyODoKKyAgICBzaXplX3Qgc2l6ZSA9IGdl
-dHBhZ2VzaXplKCkgKiA0OwoKdG90YWw6IDMgZXJyb3JzLCAxIHdhcm5pbmdzLCAyMzEgbGluZXMg
-Y2hlY2tlZAoKUGF0Y2ggMjEvMjEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAg
-SWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRv
-IHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCj09PSBPVVRQ
-VVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBs
-b2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjEwMTE1MjI0NjQ1
-LjExOTY3NDItMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRj
-aC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0
-Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
-IHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On Tue, Dec 15, 2020 at 06:20:48PM +0000, David Edmondson wrote:
+> On Tuesday, 2020-12-15 at 18:48:15 +01, Andrew Jones wrote:
+> 
+> > virt machine's 'smp_cpus' and machine->smp.cpus must always have the
+> > same value. And, anywhere we have virt machine state we have machine
+> > state. So let's remove the redundancy. Also, to make it easier to see
+> > that machine->smp is the true source for "smp_cpus" and "max_cpus",
+> > avoid passing them in function parameters, preferring instead to get
+> > them from the state.
+> >
+> > No functional change intended.
+> >
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> 
+> Minor question below...
+> 
+> Reviewed-by: David Edmondson <david.edmondson@oracle.com>
+
+Thanks
+
+> >  static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> >  {
+> > -    int cpu;
+> > -    int addr_cells = 1;
+> >      const MachineState *ms = MACHINE(vms);
+> > +    int smp_cpus = ms->smp.cpus, cpu;
+> 
+> Is it house-style to have initialised and un-initialised local variables
+> declared on the same line?
+>
+
+checkpatch.pl doesn't complain and a grep of qemu shows hundreds of other
+examples. That said, I only see one other example in hw/arm/virt.c, so if
+we'd rather avoid it, I'll repost.
+
+Thanks,
+drew
+

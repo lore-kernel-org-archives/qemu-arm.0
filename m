@@ -1,110 +1,359 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp651387lfq;
-        Wed, 16 Dec 2020 11:55:27 -0800 (PST)
-X-Received: by 2002:a05:6808:2cb:: with SMTP id a11mr2915382oid.93.1608148526930;
-        Wed, 16 Dec 2020 11:55:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608148526; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp740555lfq;
+        Wed, 16 Dec 2020 14:13:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxwPLXReN2fHjHzzACdCIDHrv+swhNTSJu/cLDHBMtcLXKjyM8c0rByS7pg5/m77dc1aZ2P
+X-Received: by 2002:a25:e646:: with SMTP id d67mr51192807ybh.405.1608156804050;
+        Wed, 16 Dec 2020 14:13:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608156804; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y24x2x4MeoGhs9KPI+d+V3gL6dTHBmWzyvv0TE2+bCEX4xcYT90OwAc5ge08f7rMYD
-         9ymxluy9Nq5elXUpR5GEYt2Qt4zz344C28E54raZFflEIgZcjf/ez8aZI88EDwxPMVy8
-         PQZHeyscP5SUMndq5DJ1ce0K3tLHi3tcfehkcrF4CdPKqcHgCFUutOq/zhvyYywosv26
-         hqKramlvei1s0P+d0cOgINatLMTP5dl+DlTjJR/DAJeKKI/bVM6TdAVwsG3ZDCeXEsCb
-         88uor0pjnorHrLc0cYkxHGSczeatSJi+8A4vNxsgTYHc3R3KfxxtUMsAZw7wTsLkLT0t
-         y21A==
+        b=l1p8eMtFdJxDs1vHqgvu7GW/CgR7bvWNgr8Icw63p/PNPOL00c3lH47BjhkW1J7Ll+
+         o0nHDI+qLiz3tpR77RvaYKGYyJ89wANeUwZl5UpPrQWpuoYqKUk3IJ/+CtD+bEMsr5/y
+         Sz3yn7V52TkT7B6q2pH03k3PdSXuPqprfhLXNnAIC8OOlLTQFQtH1fqkKXzvTZR0MhQv
+         Kz8xfaS22654qL/Ga0RiKzZ/Tb3wxKUuKiN4dleLvnqMaebOkegzMASStoft5NRPNEbG
+         7X+Y2q9dXIs8u6kzzHvUwGuR30WVibgQWatH6jX8VEiKOIaXc3vbJJAFnu/S+Rg1x/V5
+         irtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=holC9FieOMLJMIML1wTWQ69ici2u+YywvFKu6WFDdZY=;
-        b=cxEIjTIyhTuGPw0MEGDqybwi+QsztYQoKbwOM54BCP5pO9GQl492MzwLkB3wG4xwt/
-         2PsOXuhYqoSDoriBDFNTwmIMa13IyBNQDdjgzWGzTAox/6Vc5HJ2hMPqF9f57RYB3sMr
-         FJ5sayzqGFM749SgSohFIjWDdcb4MnxwnaRyJyjJKgcndvb16dZWqdGwTwwmJbcJCT6y
-         MPU21opQHbUhxX8jYiDzVE4Ao7gs/m2tZUoZ8aUGWYQMg/KFkeyNt3D02h5WXSkRvjA2
-         cwTJL5Of7rrutqxKU8eu8ta0e1RhhXVUZwxP0k/Kp2biloiX3/qVzeVGDlXGO3F6lZRC
-         kJYg==
+        bh=SQXrzJArfxsBPVI51zc0owik3SGrciUEYy+KV9vR1So=;
+        b=PYhoAbx8m3VOE8kBWgTw48mfNoYyXGoe+YPWY91LsLWQ7qn4LQVLEbE/5iW0ji5DNB
+         shPyVUPbW45rjFTvems2QHtXuFbyr0igG0Bjn7W3wjFztnRtDyJ3g5yngn+ZRT00iMUI
+         rvhuGFAegEn0VCWo4QPHj2wDt8YUCPMC2Y098Hap3UBEKZLNbeTECgdSBKyit7AUTVCx
+         5vyYxt4Xb8Gmvo5tbt4kchj2IEDoAfqGshc5bL03Yl7tqkqxzSEYIEIVzgvZMk41VYKw
+         H52fPHYUtnBXycFVxFhWQ1134vd99aRManPSoTSNs3bq1W19K+W963Wg7QQMKXkgtJlF
+         a10A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O3gtqoTv;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y187sor781474oie.92.2020.12.16.11.55.26
+       dkim=fail header.i=@linaro.org header.s=google header.b=eQSwKTBV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e197si2699294ybb.269.2020.12.16.14.13.23
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 16 Dec 2020 11:55:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 16 Dec 2020 14:13:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O3gtqoTv;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=holC9FieOMLJMIML1wTWQ69ici2u+YywvFKu6WFDdZY=;
-        b=O3gtqoTvxZfzGyD0+GL/zNFVO2U4nKpg3vDRFuBGRUnGfMTAmj93w6d0b1L9/tKjxY
-         yBRexS/3Y5xS/FWi8CKCfo15NNaLy9jbN/Z+EoVTy+tiqrcj2CpZFfVHTaWvTzNxlFik
-         neY5eO+HX0M0zgw7pykolkxd1aQujNnajGaeXBnmc3DPzlkKZ7a5o+rLo2JTE7seZzUg
-         /PuXn2RXZjH3FuQhkdyNYzIE06A6cii5+iG30sQVNAmqrsnJSpYcHn4obEunDk9KpUX2
-         T+7qCw24VQVk2g4LEC1TEMata+WfSoSi3iI/zK/jB8hWek8L2DdBThVlFW4AAQ51oS7z
-         H3WA==
+       dkim=fail header.i=@linaro.org header.s=google header.b=eQSwKTBV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53832 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kpf2x-0003AE-74
+	for alex.bennee@linaro.org; Wed, 16 Dec 2020 17:13:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60152)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kpf2Y-00038O-8S
+ for qemu-arm@nongnu.org; Wed, 16 Dec 2020 17:13:00 -0500
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331]:32828)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kpf2S-0006CK-Kd
+ for qemu-arm@nongnu.org; Wed, 16 Dec 2020 17:12:55 -0500
+Received: by mail-ot1-x331.google.com with SMTP id b24so7452021otj.0
+ for <qemu-arm@nongnu.org>; Wed, 16 Dec 2020 14:12:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=SQXrzJArfxsBPVI51zc0owik3SGrciUEYy+KV9vR1So=;
+ b=eQSwKTBVrGToUsXTp7BI9+wyC5OUKF/xT76TJD/UlijvTJcGKhNJVJKhSboyk0bEno
+ fWrWlTrzGRh7KCRObEN+w98i3oPcf4oz0VDiK31LUZaloH5sSxEap3oQlKfO5k1T8UJH
+ vd/IkSiQd0dTj+5lLUWlWQaqHt2GDS9T2WiqiZtcPcWCqsC1LgQJoJF5pTnfcyoGKjPu
+ LrDcJGJH9Ewhe9eUIL9AGPWsXOoWrJRVeeCvoeexw/QvcHPLKzX69XTTF4XcEtAbt6hw
+ 3QFDT7wyvEPktNNPso8vd0kJ3RpYT9KdBI/oXpu7gD38j8/rRHYXPR5inpHbxDpBtR4x
+ nIcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=holC9FieOMLJMIML1wTWQ69ici2u+YywvFKu6WFDdZY=;
-        b=aiWsb7VfDIhlHTnFov3yLyF9O1IzzfPsww9p8GRhbGRheNqV/Ly7KxZXCaMIVoDNc/
-         pRCYdk551sdFB0Jq/OlOZvzUyYDQVHsUb11inHbi9p5lgayGqPQoK6M31vvRlkdM1yyD
-         HMuvcVZ0wtG4xFSaJjtt6SOvka9mtNS5a3tc2A5LOF7WU8m49wh4Wf73XBYurNP97DI0
-         hNFw99cvojgVwPmeFxLOzIF2AO5ngcEENUvYxf/dI4w9M2GjAcrFgL0aaaQ+yjA8dtnz
-         j00qDqHjuzQb1ykcueKcVjfIjfzFFl8pUPEkmyzxUliEW6KD6kgNF62h1uRVSVL82MpR
-         oWvA==
-X-Gm-Message-State: AOAM530UZVDk01i6hTsxybDjxpPyM5ujUaw+BSsheCSoEnHRtB/w4QhM
-	koeWC9lxlUc6Tll9CUbe/0J7SgfIWgb32/LzeNA=
-X-Google-Smtp-Source: ABdhPJyV/OXzVcCqPqiy9u0xSlzP2gKg6mCN5t9yXBwo2NeAvlbFlvVJ4m4nFa9D1qg39SCkHI76Vg==
-X-Received: by 2002:aca:c7c2:: with SMTP id x185mr2873996oif.143.1608148526617;
-        Wed, 16 Dec 2020 11:55:26 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id z3sm714009ooj.26.2020.12.16.11.55.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Dec 2020 11:55:26 -0800 (PST)
-Subject: Re: [PATCH v1 4/6] gdbstub: drop CPUEnv from gdb_exit()
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-References: <20201214153012.12723-1-alex.bennee@linaro.org>
- <20201214153012.12723-5-alex.bennee@linaro.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=SQXrzJArfxsBPVI51zc0owik3SGrciUEYy+KV9vR1So=;
+ b=DLz3kNE7AgKwU7zTEIU+pSqyhKfWhVy0a7nhLdCgjMoyBADwflvLPAK+Et9aokmqUi
+ tOgiwY+SCpaH/P6mBA44a5T+NOfUNUyGX6YFG3vu+NPaqPnORwKPhjteqOk54Fwwf7Gq
+ odHJOEyGBJqNQ/ZsyOwAHifAQvXnLU3FrU/jwEejDKs2wpNSc3/C+KBeHXsaSnLTGgNM
+ vlhp9XGEUaYZ6O73WfQ0x4JhH8EZn4SkXg1FChjwPDj9P3cSE4bGEfS6zgwXLNJFmOsD
+ NKnEr96+uv2muNRqfjjagohqrCH8dJyj2ntJ8GRbud7dOiAjrU5mSBhngpeTqXnUoJK0
+ 5DZg==
+X-Gm-Message-State: AOAM531jp2nKmL7QIHd7BjZyzR3wkAjAK9UJA1LWUmiyMqKXAKRu7BrX
+ mnobmC059lxxzCJUO+nWuqM5nQ==
+X-Received: by 2002:a9d:ece:: with SMTP id 72mr26526952otj.358.1608156770864; 
+ Wed, 16 Dec 2020 14:12:50 -0800 (PST)
+Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net.
+ [187.189.51.144])
+ by smtp.gmail.com with ESMTPSA id z9sm758965ote.13.2020.12.16.14.12.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Dec 2020 14:12:50 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <380799b0-cad1-3a36-0164-365aa80e3dbb@linaro.org>
-Date: Wed, 16 Dec 2020 13:55:23 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 1/3] target/arm: Implement an IMPDEF pauth algorithm
+Date: Wed, 16 Dec 2020 16:12:45 -0600
+Message-Id: <20201216221247.522686-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20201216221247.522686-1-richard.henderson@linaro.org>
+References: <20201216221247.522686-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20201214153012.12723-5-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: WiaHD/9IforK
+Received-SPF: pass client-ip=2607:f8b0:4864:20::331;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3BGsE6fB5mFF
 
-On 12/14/20 9:30 AM, Alex Bennée wrote:
-> gdb_exit() has never needed anything from env and I doubt we are going
-> to start now.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  include/exec/gdbstub.h    | 2 +-
->  bsd-user/syscall.c        | 6 +++---
->  gdbstub.c                 | 2 +-
->  linux-user/exit.c         | 2 +-
->  target/arm/arm-semi.c     | 2 +-
->  target/m68k/m68k-semi.c   | 2 +-
->  target/nios2/nios2-semi.c | 2 +-
->  7 files changed, 9 insertions(+), 9 deletions(-)
+Without hardware acceleration, a cryptographically strong
+algorithm is too expensive for pauth_computepac.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Even with hardware accel, we are not currently expecting
+to link the linux-user binaries to any crypto libraries,
+and doing so would generally make the --static build fail.
 
-r~
+So choose XXH64 as a reasonably quick and decent hash.
+
+Tested-by: Mark Rutland <mark.rutland@arm.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v2: Move the XXH64 bits to xxhash.h (ajb).
+    Create isar_feature_aa64_pauth_arch and fixup a comment
+    in isar_feature_aa64_pauth that no longer applies.
+---
+ include/qemu/xxhash.h     | 82 +++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.h          | 15 +++++--
+ target/arm/pauth_helper.c | 41 +++++++++++++++++---
+ 3 files changed, 129 insertions(+), 9 deletions(-)
+
+diff --git a/include/qemu/xxhash.h b/include/qemu/xxhash.h
+index 076f1f6054..cf45859a19 100644
+--- a/include/qemu/xxhash.h
++++ b/include/qemu/xxhash.h
+@@ -119,4 +119,86 @@ static inline uint32_t qemu_xxhash6(uint64_t ab, uint64_t cd, uint32_t e,
+     return qemu_xxhash7(ab, cd, e, f, 0);
+ }
+ 
++/*
++ * Component parts of the XXH64 algorithm from
++ * https://github.com/Cyan4973/xxHash/blob/v0.8.0/xxhash.h
++ *
++ * The complete algorithm looks like
++ *
++ *  i = 0;
++ *  if (len >= 32) {
++ *      v1 = seed + XXH_PRIME64_1 + XXH_PRIME64_2;
++ *      v2 = seed + XXH_PRIME64_2;
++ *      v3 = seed + 0;
++ *      v4 = seed - XXH_PRIME64_1;
++ *      do {
++ *          v1 = XXH64_round(v1, get64bits(input + i));
++ *          v2 = XXH64_round(v2, get64bits(input + i + 8));
++ *          v3 = XXH64_round(v3, get64bits(input + i + 16));
++ *          v4 = XXH64_round(v4, get64bits(input + i + 24));
++ *      } while ((i += 32) <= len);
++ *      h64 = XXH64_mergerounds(v1, v2, v3, v4);
++ *  } else {
++ *      h64 = seed + XXH_PRIME64_5;
++ *  }
++ *  h64 += len;
++ *
++ *  for (; i + 8 <= len; i += 8) {
++ *      h64 ^= XXH64_round(0, get64bits(input + i));
++ *      h64 = rol64(h64, 27) * XXH_PRIME64_1 + XXH_PRIME64_4;
++ *  }
++ *  for (; i + 4 <= len; i += 4) {
++ *      h64 ^= get32bits(input + i) * PRIME64_1;
++ *      h64 = rol64(h64, 23) * XXH_PRIME64_2 + XXH_PRIME64_3;
++ *  }
++ *  for (; i < len; i += 1) {
++ *      h64 ^= get8bits(input + i) * XXH_PRIME64_5;
++ *      h64 = rol64(h64, 11) * XXH_PRIME64_1;
++ *  }
++ *
++ *  return XXH64_avalanche(h64)
++ *
++ * Exposing the pieces instead allows for simplified usage when
++ * the length is a known constant and the inputs are in registers.
++ */
++#define XXH_PRIME64_1   0x9E3779B185EBCA87ULL
++#define XXH_PRIME64_2   0xC2B2AE3D27D4EB4FULL
++#define XXH_PRIME64_3   0x165667B19E3779F9ULL
++#define XXH_PRIME64_4   0x85EBCA77C2B2AE63ULL
++#define XXH_PRIME64_5   0x27D4EB2F165667C5ULL
++
++static inline uint64_t XXH64_round(uint64_t acc, uint64_t input)
++{
++    return rol64(acc + input * XXH_PRIME64_2, 31) * XXH_PRIME64_1;
++}
++
++static inline uint64_t XXH64_mergeround(uint64_t acc, uint64_t val)
++{
++    return (acc ^ XXH64_round(0, val)) * XXH_PRIME64_1 + XXH_PRIME64_4;
++}
++
++static inline uint64_t XXH64_mergerounds(uint64_t v1, uint64_t v2,
++                                         uint64_t v3, uint64_t v4)
++{
++    uint64_t h64;
++
++    h64 = rol64(v1, 1) + rol64(v2, 7) + rol64(v3, 12) + rol64(v4, 18);
++    h64 = XXH64_mergeround(h64, v1);
++    h64 = XXH64_mergeround(h64, v2);
++    h64 = XXH64_mergeround(h64, v3);
++    h64 = XXH64_mergeround(h64, v4);
++
++    return h64;
++}
++
++static inline uint64_t XXH64_avalanche(uint64_t h64)
++{
++    h64 ^= h64 >> 33;
++    h64 *= XXH_PRIME64_2;
++    h64 ^= h64 >> 29;
++    h64 *= XXH_PRIME64_3;
++    h64 ^= h64 >> 32;
++    return h64;
++}
++
+ #endif /* QEMU_XXHASH_H */
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 7e6c881a7e..70e9618d13 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3852,10 +3852,8 @@ static inline bool isar_feature_aa64_fcma(const ARMISARegisters *id)
+ static inline bool isar_feature_aa64_pauth(const ARMISARegisters *id)
+ {
+     /*
+-     * Note that while QEMU will only implement the architected algorithm
+-     * QARMA, and thus APA+GPA, the host cpu for kvm may use implementation
+-     * defined algorithms, and thus API+GPI, and this predicate controls
+-     * migration of the 128-bit keys.
++     * Return true if any form of pauth is enabled, as this
++     * predicate controls migration of the 128-bit keys.
+      */
+     return (id->id_aa64isar1 &
+             (FIELD_DP64(0, ID_AA64ISAR1, APA, 0xf) |
+@@ -3864,6 +3862,15 @@ static inline bool isar_feature_aa64_pauth(const ARMISARegisters *id)
+              FIELD_DP64(0, ID_AA64ISAR1, GPI, 0xf))) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_pauth_arch(const ARMISARegisters *id)
++{
++    /*
++     * Return true if pauth is enabled with the architected QARMA algorithm.
++     * QEMU will always set APA+GPA to the same value.
++     */
++    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, APA) != 0;
++}
++
+ static inline bool isar_feature_aa64_sb(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, SB) != 0;
+diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
+index 564c48faa6..226bcf6c45 100644
+--- a/target/arm/pauth_helper.c
++++ b/target/arm/pauth_helper.c
+@@ -24,6 +24,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "exec/helper-proto.h"
+ #include "tcg/tcg-gvec-desc.h"
++#include "qemu/xxhash.h"
+ 
+ 
+ static uint64_t pac_cell_shuffle(uint64_t i)
+@@ -207,8 +208,8 @@ static uint64_t tweak_inv_shuffle(uint64_t i)
+     return o;
+ }
+ 
+-static uint64_t pauth_computepac(uint64_t data, uint64_t modifier,
+-                                 ARMPACKey key)
++static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
++                                             ARMPACKey key)
+ {
+     static const uint64_t RC[5] = {
+         0x0000000000000000ull,
+@@ -272,6 +273,36 @@ static uint64_t pauth_computepac(uint64_t data, uint64_t modifier,
+     return workingval;
+ }
+ 
++static uint64_t pauth_computepac_impdef(uint64_t data, uint64_t modifier,
++                                        ARMPACKey key)
++{
++    /*
++     * The XXH64 algorithmm, simplified for size 32.
++     * See the description of the algorithm in xxhash.h.
++     */
++    uint64_t v1 = QEMU_XXHASH_SEED + XXH_PRIME64_1 + XXH_PRIME64_2;
++    uint64_t v2 = QEMU_XXHASH_SEED + XXH_PRIME64_2;
++    uint64_t v3 = QEMU_XXHASH_SEED + 0;
++    uint64_t v4 = QEMU_XXHASH_SEED - XXH_PRIME64_1;
++
++    v1 = XXH64_round(v1, data);
++    v2 = XXH64_round(v2, modifier);
++    v3 = XXH64_round(v3, key.lo);
++    v4 = XXH64_round(v4, key.hi);
++
++    return XXH64_avalanche(XXH64_mergerounds(v1, v2, v3, v4));
++}
++
++static uint64_t pauth_computepac(CPUARMState *env, uint64_t data,
++                                 uint64_t modifier, ARMPACKey key)
++{
++    if (cpu_isar_feature(aa64_pauth_arch, env_archcpu(env))) {
++        return pauth_computepac_architected(data, modifier, key);
++    } else {
++        return pauth_computepac_impdef(data, modifier, key);
++    }
++}
++
+ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
+                              ARMPACKey *key, bool data)
+ {
+@@ -292,7 +323,7 @@ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
+     bot_bit = 64 - param.tsz;
+     ext_ptr = deposit64(ptr, bot_bit, top_bit - bot_bit, ext);
+ 
+-    pac = pauth_computepac(ext_ptr, modifier, *key);
++    pac = pauth_computepac(env, ext_ptr, modifier, *key);
+ 
+     /*
+      * Check if the ptr has good extension bits and corrupt the
+@@ -341,7 +372,7 @@ static uint64_t pauth_auth(CPUARMState *env, uint64_t ptr, uint64_t modifier,
+     uint64_t pac, orig_ptr, test;
+ 
+     orig_ptr = pauth_original_ptr(ptr, param);
+-    pac = pauth_computepac(orig_ptr, modifier, *key);
++    pac = pauth_computepac(env, orig_ptr, modifier, *key);
+     bot_bit = 64 - param.tsz;
+     top_bit = 64 - 8 * param.tbi;
+ 
+@@ -442,7 +473,7 @@ uint64_t HELPER(pacga)(CPUARMState *env, uint64_t x, uint64_t y)
+     uint64_t pac;
+ 
+     pauth_check_trap(env, arm_current_el(env), GETPC());
+-    pac = pauth_computepac(x, y, env->keys.apga);
++    pac = pauth_computepac(env, x, y, env->keys.apga);
+ 
+     return pac & 0xffffffff00000000ull;
+ }
+-- 
+2.25.1
+

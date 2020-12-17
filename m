@@ -1,153 +1,176 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1340401lfq;
-        Thu, 17 Dec 2020 06:38:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwKQeHVMyqPRakC/iR5qOvC3iGTG9bTeEAhiOsTBP80a1DLie/xI7GQhcHbsJBuxDqtjQNl
-X-Received: by 2002:a25:6853:: with SMTP id d80mr53733438ybc.47.1608215893598;
-        Thu, 17 Dec 2020 06:38:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608215893; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1494394lfq;
+        Thu, 17 Dec 2020 09:26:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyyuhUlH40x1TrPR4jhlyvsOWvSciFGkA0CREA6ao+52CwJZrzZi9+QecctZW9Gy0b+hK1T
+X-Received: by 2002:a25:3290:: with SMTP id y138mr173247yby.485.1608226016092;
+        Thu, 17 Dec 2020 09:26:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608226016; cv=none;
         d=google.com; s=arc-20160816;
-        b=KjvGos9YoUPoJbrRunLyOmwcV0VU/WedfQf+m2XCUGxHKQyqD45Q+JArurqV6aAG81
-         wQMctsJoIW7pL1L/0KbO4ULdffOYPpwIj3wqHDoXqCS2zDxc5eGsmFujw0DPDD6+lqdk
-         gwvbK4j8MwFhrJYVFXc5lr7aPtrebva1ZPYG+CFN2sbdITERUTiE87syZ6L1cwamrT07
-         kS3t5ilRatLGyhJZJsfF58/BrE1lX0/yV7z7QWQbwrxY6/EYST2ZE+6tce/d3YaUtGRz
-         KR1ra6DG4qc93Dtb2xocrcs0j0iV2SxRyEKGIr9MF/0N/H+K2RH3mBuBoTQ5wOsZJZi0
-         Hzfw==
+        b=FZJ/4nHAUDvdjukfbZ+kokdpXUP0R2ROQw0E2l5lyz5YBMFjKym+QvVIqU5izUGlz8
+         89MOPMTkfRcrgG8ICHHg5NQZy/owlAWGO6kvjFSMfww37OOzs4E2MMbF3EPhNqA3oTko
+         sykWJfH2ZAif65y/tihybtG0GzIRy0CVfwMyOJKliZPAtZFcFzq2Ma/1NvO4EdJMT0Ie
+         ps8LdUo+WPpdJYsAPLov21r2ikfu2mpf5PvgMppstXcQDZjetR9S47lS7nWVo/NN6Il/
+         rRudXKf8EAfheVxuqdQvdKcQ7z7dHHV9DboYctdJiM/uF/O3+JsEnCRyAi3BsfdGoAdD
+         exTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=s3dIxyTS8y3OicPT8ExvIWlNk6sXUNBdh3LfqSfY1dA=;
-        b=sFQ9f7uO7TV5UzUYnhq7+Nw1wwHT6+cU84d0NaY3o2o9WjthPSXUPYZ7+fmBjvOilx
-         HLNplYrEuakc8VlQTmtyPB6xtZcIcD7fuxhY+nlkEjdFcxfLc6WLYxTKcdTxWFl2o44L
-         BcENpVtg2Y1QfB/jMzc2WKc1R8Dw/bDUoAaHUG17Gly1adtzpqPs2kENRuvwcGKuHjA2
-         bT9KO/taEKt8jGNp1NiLL7IkFuAuoQvKPCimklNCQyJbb8K+EHBmu1W6Q61MydNANpZ0
-         LfQP6qphlRruUdWr0Czd7V/0D08s6SrAhqICRJBQWf9gRKt6GYYTXt30x5KKKpCqMkJl
-         oP0w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=pk8pZlSDtOlQHyoU32LLSVOGAqbZDAz9MqpHi2igKTg=;
+        b=yVqXgiyl8wxM+Fp6XGcsFmuN4scQiudvOAgCfCvGq//8hU/8uM//ez+/DDN5VSuZ5G
+         XCVc16QCh+KplHDjW9W4VBy0skrkymYqRT72ksPYMoQ46LlHE97a5Ep8/fA0iJRd1dIi
+         FSRAei7yCcIcXHLrh/ttKldS7i7y00iqG1ZUsPUJhU3+Z7WB4iYp23JdTZbcAyeJiWzu
+         3eiiO+6X5fF5zSychLVjAUqzo5nOzUZPXwlOm0422cK3SpS1W+FMmxXKLFz0rmJ6Rl+R
+         YgXq91NzjhjdTgKGFrFTq6oauB9FLpHsgdiDikR1qCEkzQMkRD2VNw/Ir/3LhIuQktHN
+         +icw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A2cQs2md;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=GivMsj2r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p66si5276016yba.244.2020.12.17.06.38.13
+        by mx.google.com with ESMTPS id 66si4717873ybl.209.2020.12.17.09.26.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Dec 2020 06:38:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Dec 2020 09:26:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A2cQs2md;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42266 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=GivMsj2r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kpuQ0-0005fP-Tv
-	for alex.bennee@linaro.org; Thu, 17 Dec 2020 09:38:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57750)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kpx3H-0003OX-Eg
+	for alex.bennee@linaro.org; Thu, 17 Dec 2020 12:26:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kpuP0-0005eD-IP
- for qemu-devel@nongnu.org; Thu, 17 Dec 2020 09:37:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31253)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kpuOv-0007qz-0f
- for qemu-devel@nongnu.org; Thu, 17 Dec 2020 09:37:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1608215821;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=s3dIxyTS8y3OicPT8ExvIWlNk6sXUNBdh3LfqSfY1dA=;
- b=A2cQs2mdsz9beqYZc2ErcFACgix9tFU90gmwMLzFi5/VxkQBIpE/uCsFxyFQQGfrvxOWPs
- dR7BOm195Flxr2YreLFE/u3s/kc2QxbkPWMKpqvAdY4lTA5t6Nb4Erw2SfzYgJF+acYdKT
- reXfBEqi5kppdsVuI3zRsyqFT0B+9fo=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-359-hvZOFeL4NHqiZoq5lUYZ2Q-1; Thu, 17 Dec 2020 09:36:55 -0500
-X-MC-Unique: hvZOFeL4NHqiZoq5lUYZ2Q-1
-Received: by mail-qt1-f198.google.com with SMTP id e14so20841002qtr.8
- for <qemu-devel@nongnu.org>; Thu, 17 Dec 2020 06:36:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kpx0a-0000fK-3g
+ for qemu-arm@nongnu.org; Thu, 17 Dec 2020 12:24:08 -0500
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230]:40109)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kpx0Y-0007OC-8O
+ for qemu-arm@nongnu.org; Thu, 17 Dec 2020 12:24:07 -0500
+Received: by mail-oi1-x230.google.com with SMTP id p126so33016177oif.7
+ for <qemu-arm@nongnu.org>; Thu, 17 Dec 2020 09:24:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=pk8pZlSDtOlQHyoU32LLSVOGAqbZDAz9MqpHi2igKTg=;
+ b=GivMsj2rh7Sscp74kWIpcs5y3Vy+G9tMe5NMDqxutHUSn+BmU1uL9Nrn/pUpVefRV0
+ 9RPm4iOZMqTVd8Gue/inUmgnTfamvFCcFF92NlBA71U0Y4ClPZf4Wl5k2fM9SblvnDDM
+ 3hEMptu7HkgHcJJ5mlR2LXGsoZ1Pkq93DqDdlvNKdTgEjiqv6/9sxi0GgcWY92rPJamC
+ UfOQpQ2KJp4a1nLeE5S5P1vA0ziPQ5AKoI2tx1ndSqaa65pbaf9C0osBF7P5VBl2WKxk
+ ObQ7igJS0u3JphxFgF1bRzPQJKBuuOou5KOqB8Utw08JQM/d9+ByLnegxVI7vqK5p4r6
+ sg8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=s3dIxyTS8y3OicPT8ExvIWlNk6sXUNBdh3LfqSfY1dA=;
- b=YlBsQP72HfUGB+h6rS4nFON5nA7Zy4loXHosPNTa/HQmOQ/rvwb0fR0uLWnJb1tvUc
- P8PO5XkwrfNuHnFpG2wilPfwplYaoddCQN19ob3BHMTbQKFbhFiEj17i4IpcNQXFw1eJ
- LcxJS18lCb6K7SPo/U6VVJnur1stl/rf1At1ajMqQdKn7hUOVbYWS2Dyi8Cfhu+8f2rN
- cj771EhhZyUSfei4dXWrxJLwNFQKtLEG+Bc1yADdhmESyXpHZZYnOO27ck1+fvl3FLdr
- Tw8jtD3PGSuG2WRX/PNQCW+BRfeY7aVNd8n12eBaiwYlzONICp6TotG9V6Ag46qBYxvZ
- dfQA==
-X-Gm-Message-State: AOAM531M2w2YFXhoCpeBgoA9+HhKga2DmSm++TW2S2f1+SzMJ9MxyXSO
- vFn90lFR6CBOX/7EcLZ+G3iU6W5iwzAojegdo5UgvH0cLwQ6ahz0pQn8STR4bDlvn2hJWhq+O+Z
- I1jWVjuuBIePZHkM=
-X-Received: by 2002:a05:6214:80d:: with SMTP id
- df13mr49747205qvb.10.1608215815265; 
- Thu, 17 Dec 2020 06:36:55 -0800 (PST)
-X-Received: by 2002:a05:6214:80d:: with SMTP id
- df13mr49747180qvb.10.1608215815054; 
- Thu, 17 Dec 2020 06:36:55 -0800 (PST)
-Received: from xz-x1 ([142.126.83.202])
- by smtp.gmail.com with ESMTPSA id s11sm3519531qkm.124.2020.12.17.06.36.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Dec 2020 06:36:54 -0800 (PST)
-Date: Thu, 17 Dec 2020 09:36:52 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Subject: Re: [PATCH v2 2/2] accel: kvm: Add aligment assert for
- kvm_log_clear_one_slot
-Message-ID: <20201217143652.GC39844@xz-x1>
-References: <20201217014941.22872-1-zhukeqian1@huawei.com>
- <20201217014941.22872-3-zhukeqian1@huawei.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=pk8pZlSDtOlQHyoU32LLSVOGAqbZDAz9MqpHi2igKTg=;
+ b=kwEqvM9af/uvdQtgjRVz192n0BT7FmYgkFVo6ItEmRlur6ErMP7EE0ELkR9GOGhjmI
+ 5KqVV93nnMhkH61E7HKT+4wXmUQCaXS4sJRqMcFDQsNRIkqINp1MlpIYC9k2Vpkcyno/
+ WG7FR/m3AjhJPPiUMfA7mdh8CXnOGz5GCNSSW0WvZ5yi1RtYr53/2H0WHbfO6Wnu0k6o
+ BF5142M3dVWaUwANif/bLC00MKrCWvMiFgrMOVnz3NMVAo7O03A7w6BjOXfCfcfiNQvj
+ RUqEsEz730jQHB5jHqcksaucAi1Gtyi56OYYMwN55CBSA2HYM3SQd9hCfKSvKYTSFwHN
+ sfKg==
+X-Gm-Message-State: AOAM531yLE3JnpfimRED3x/KdztgCV39gRCTpx7yQrGufSTRYHvNa2Hv
+ hCWz1QSxT5EjtBH5PNhgXFi75g==
+X-Received: by 2002:a54:400d:: with SMTP id x13mr95922oie.81.1608225844643;
+ Thu, 17 Dec 2020 09:24:04 -0800 (PST)
+Received: from [10.10.121.52] (fixed-187-189-51-144.totalplay.net.
+ [187.189.51.144])
+ by smtp.gmail.com with ESMTPSA id q77sm1357441ooq.15.2020.12.17.09.24.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Dec 2020 09:24:04 -0800 (PST)
+Subject: Re: [PATCH v2 10/17] linux-user/aarch64: Implement PR_MTE_TCF and
+ PR_MTE_TAG
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200605041733.415188-1-richard.henderson@linaro.org>
+ <20200605041733.415188-11-richard.henderson@linaro.org>
+ <CAFEAcA8fAB_DDrBjjVCCKwiE_n=05q1KYyWMR_2EuhOa0+EKww@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <817d21f6-6494-e7c7-5eca-037b04b64f9f@linaro.org>
+Date: Thu, 17 Dec 2020 11:24:01 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201217014941.22872-3-zhukeqian1@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAFEAcA8fAB_DDrBjjVCCKwiE_n=05q1KYyWMR_2EuhOa0+EKww@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::230;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x230.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- jiangkunkun@huawei.com, qemu-devel@nongnu.org,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com, Zenghui Yu <yuzenghui@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QOukFBlTAJfy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Stephen Long <steplong@quicinc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2QqB//feeus1
 
-On Thu, Dec 17, 2020 at 09:49:41AM +0800, Keqian Zhu wrote:
-> The parameters start and size are transfered from QEMU memory
-> emulation layer. It can promise that they are TARGET_PAGE_SIZE
-> aligned. However, KVM needs they are qemu_real_page_size aligned.
+On 6/25/20 11:50 AM, Peter Maydell wrote:
+> On Fri, 5 Jun 2020 at 05:17, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> These prctl fields are required for the function of MTE.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > 
-> Though no caller breaks this aligned requirement currently, we'd
-> better add an explicit assert to avoid future breaking.
+> This API doesn't seem to be in the upstream kernel yet, right?
+
+It has finally landed in 5.10.
+Thus the long delay since my last revision.
+
+>> +                    /*
+>> +                     * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
+>> +                     * Note that the syscall values are consistent with hw.
+>> +                     */
+>> +                    env->cp15.sctlr_el[1] =
+>> +                        deposit64(env->cp15.sctlr_el[1], 38, 2,
+>> +                                  arg2 >> TARGET_PR_MTE_TCF_SHIFT);
 > 
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> This actually will be per-thread since each linux-user thread has
+> its own CPU. You probably need to do something to make it be
+> inherited across clone and fork, though (assuming those are
+> the required semantics).
 
-Acked-by: Peter Xu <peterx@redhat.com>
+FWIW, these are a per-thread quantities.
 
--- 
-Peter Xu
+>>From arch/arm64/kernel/mte.c:
+> void mte_thread_switch(struct task_struct *next)
+> {
+>         if (!system_supports_mte())
+>                 return;
+> 
+>         /* avoid expensive SCTLR_EL1 accesses if no change */
+>         if (current->thread.sctlr_tcf0 != next->thread.sctlr_tcf0)
+>                 update_sctlr_el1_tcf0(next->thread.sctlr_tcf0);
+>         update_gcr_el1_excl(next->thread.gcr_user_incl);
+> }
 
+I don't think I have to do anything special wrt fork/clone, as env->cp15 will
+get copied by our own cpu_copy().
+
+
+r~

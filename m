@@ -1,115 +1,100 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp897628lfq;
-        Wed, 13 Jan 2021 16:29:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzJRMAWxxXFN5dKPzOduT0zHjwNrggP2TwJFzZZ5eGaYBpkdM4RwEOu9CrJhTTwfJstWFup
-X-Received: by 2002:a25:5a04:: with SMTP id o4mr6746803ybb.269.1610584161421;
-        Wed, 13 Jan 2021 16:29:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610584161; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1301138lfq;
+        Thu, 17 Dec 2020 05:57:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzt3Zop+ICn20T1FHsYKEES9px3mZbMD2vOACNHDGNeoAw7mc88lrK6sNKPFonywgeXhWij
+X-Received: by 2002:a25:383:: with SMTP id 125mr3232462ybd.120.1608213470931;
+        Thu, 17 Dec 2020 05:57:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608213470; cv=none;
         d=google.com; s=arc-20160816;
-        b=L74fcbCeU8qyNA9s+B7Q+avc01e98OQiHMLGFaP86/iZp2O6NuNYsl3qBQ1FvuGnwJ
-         dwPugMY8lucV8jsQRyr30TB49NuMpCY1DGPJGUQIJmaygdQsCNvLrJ2p5KS1e8d7htv+
-         xrtx5RAaOFxBhSzH2d+1wi8BFskpPG7/VP9XaeEhqO7KvJkbiOk9ccYnc7onhXv/Y7q7
-         NX7uFK4/Thm/VaGgSskCQ4T/49H7Tgb4ayFAJnBDU/SzXkKTY2xXeShyZWPiHVRLRoMk
-         z+Z5/ggVu0ublWyQMJo12vOkARKaNj0DiVXiLY6O1C+4nyeH8bz/Abbzu8U5h7yNtljB
-         LLrw==
+        b=UdElQfSa0qOq89eam5tYhaIld5b8ptX1b7DAVQiBm41UFpLjWZAK6qjF6OSkPKnu0A
+         0mcjKOE732qAK/qqhqXktPZEp/xVFiQPCqwvGOcO47zhJoDZOPCF7R7KUk8oHcYTyor0
+         7BYl/CgwHVjLFhNIlsKoW1tC5l+DZeGvvSQdE9ZlGKjHfQpceQrhj9pysqjH9tP28lDb
+         AQLxhVwkajxv4VPYnype8pw+wXEEz8zEGuP4Umpt4fuflePKvg4hg1yB30q4nlJq/VSp
+         D/PwdJObwRrW+dmVMGt2chZQBUQAiTKtvYSVnPJBQXMVhBnw6CyP831h/KXwA2TWaNtd
+         UTcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=5nMYmMTdVYgu7E6Wqq3JcuqKHISmWZCZhp0OGnyFcyo=;
-        b=DlntcA8lJxlmd4nscfSJXUAyFO4khvEEFZgnmUV9IrUhPKutiegsGWuOj0ReTpTWA4
-         2rzUcRHRb+CRyljrafQdx3TWBDfdankOjghYPUzqpQ/cG9eZoJsb05RMWTAM17BqW2P+
-         g3tmNvDSNaaQ4ypnLubw/2kZb1OZx8RqOsoDCD2ffMdCCDKyotAIEAjop0lUn1z9PKtO
-         I57rVl+FQHtUv1j7nCXx2QvzdmFcqwEdHSQIlOgA9xaZ8Dn0YYfcKG0dLfF50PFMmNxI
-         pJ+MCqg32dhjeRGW7dEp6V4RW2oHvmjk9QE1JPDJSv4RXZE4uwNDXDrqpoL6PyVUucJm
-         T37w==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=zK29gl89aiEqHVybhB8M63sFl8kr3tsfqE9jGc8pkOI=;
+        b=ZPBsCtNhKoSpZClNY9h4OKV6rK8FyKQnwGGOg7BOnG39TTVuM8+MebhgbHVb3O43QX
+         JjFQIQSJzTdUqhbB9HLwH0tosJBqsGKueob9AL1tPYey/Jlf0rr2R/j+1nNQy++6FgTl
+         x9MpGtctB05EmpTIwPt+/5289qf8FPe9NIvLoq2OWls6kPZoqmxqdxEyWW0cvAmHiabx
+         lI/lkyagb6vT2ZajUe2TWQ0BZNUkEQmmiGqLtpRtJHRPJgln1V4GC6BSSRDcCoeqHtDE
+         SWTyleZt0gF4HIouULd/oMOUHVC2X4tpGJvTE+B35FSikfz6g2U4ENtlwrUpSOlSKTvN
+         azCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HxR3kavm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ntnzhzHq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d204si3089519ybh.382.2021.01.13.16.29.20
+        by mx.google.com with ESMTPS id z5si4755006ybg.128.2020.12.17.05.57.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 16:29:21 -0800 (PST)
+        Thu, 17 Dec 2020 05:57:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HxR3kavm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ntnzhzHq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51514 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45210 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzqVs-0005Rf-Aq
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 19:29:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42028)
+	id 1kptmw-0006hQ-9h
+	for alex.bennee@linaro.org; Thu, 17 Dec 2020 08:57:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kzqVa-0005RN-26
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 19:29:02 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:41274)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kptmh-0006gv-KH
+ for qemu-arm@nongnu.org; Thu, 17 Dec 2020 08:57:37 -0500
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f]:45191)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kzqVY-0000KS-4A
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 19:29:01 -0500
-Received: by mail-pl1-x635.google.com with SMTP id y8so2018289plp.8
- for <qemu-arm@nongnu.org>; Wed, 13 Jan 2021 16:28:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kptmb-0003BW-RW
+ for qemu-arm@nongnu.org; Thu, 17 Dec 2020 08:57:33 -0500
+Received: by mail-lf1-x12f.google.com with SMTP id x20so38013652lfe.12
+ for <qemu-arm@nongnu.org>; Thu, 17 Dec 2020 05:57:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5nMYmMTdVYgu7E6Wqq3JcuqKHISmWZCZhp0OGnyFcyo=;
- b=HxR3kavm8p+Gx1nK94zFXnLNNG3rFoepgBl5PFPNVP0mu9+bUPJyMp6IZDytB8CVq4
- Kbh+n9PEN35PW8bDBUgj6/zSGsZ7BZqbNzWzzW7m77F7bH53exJC4vgjBOAB2UszAfZs
- 4UTsodqy/exJZ3184PZ27sOxAoIJWONSAv5D8wJ6xiDXhei9xdErSexJtYKU49HFxaXh
- ygp7462j1+WPQXehY9tHL4O1c2xcsj3ya5sEgrHWaQ2TP0GQ/psWSNAZhFY6oOxABT6n
- U9W4yei/2zTEgfbtAv/jd49JEdi2yWxkeNV14y+ajq/8MpGJd2izDDV8GLIOFNFLXsdN
- u64Q==
+ h=from:to:cc:subject:date:message-id;
+ bh=zK29gl89aiEqHVybhB8M63sFl8kr3tsfqE9jGc8pkOI=;
+ b=ntnzhzHq4rDYpUMblcZfzMgUPECn38Iq4NOcqob4tFecj2qvKWIUYgpRgbj89a66iz
+ FT9V4IFVnqVRV1+JlHvjWtPNtA21s3tUXTcbcgk6I+5RQv0byAXLsKjaKCOBIHmYlwb7
+ 9tO7WusyylZfTtNWTIjCtiI/1zRMFdNJ51M+QEzBQmuXojsMCiVeaLsboGowGH1cWvXD
+ gTfvwiyuJCnfYH8zSN7d1OLAZzZsjjn9BDoSls/sQ8+EYAtwJJ1vw/Cws7iy+/cU3lnq
+ CLtJknQ3PeDtJ9cQCe+WbHo+FH3NK2L77allNn2gYL3avnidLWg4eW88a+LB7ayK/WsA
+ buAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5nMYmMTdVYgu7E6Wqq3JcuqKHISmWZCZhp0OGnyFcyo=;
- b=H6JV8aRKoxhqPxiJnKqUNCqRJrlsuf4+67RaKqyXMhnbqw3RUyoez2ZwCshYLEEI6u
- TOkG2O7bLtQq8Roi17qI3EQYoum2wY6hLeCR81euFcUJdBlJbKXOXpNuvxll6hPmjYjA
- EkrYcyH/KAGKT9zEzMTPTmvZ4evyOfkYNe3ZC6RlQ1PC4LdHnPWfykozZbQJkmaQfM29
- kQirSahkWSdHB4d7p1iPJ6QW81ANp/OzI2OwY1kaw8MmMCvm7K79lhkkwhcsHXd19i9m
- cs4JhRQjHO5YxMOS5h6FD8eOhVXjIuF7ycUla3jodYAVkG6k/Cu6BtWZJTMtwcSgtH3s
- RmGw==
-X-Gm-Message-State: AOAM5321hUy0RdpLth9DiHw3IVzw0gSIQ+22Nan7tXDtCnxMJlxIOzEB
- 5EbFj9PyOOhdOpxH6d+C2WAghg==
-X-Received: by 2002:a17:90b:23d6:: with SMTP id
- md22mr1986058pjb.206.1610584137786; 
- Wed, 13 Jan 2021 16:28:57 -0800 (PST)
-Received: from [10.25.18.3] (rrcs-173-197-107-21.west.biz.rr.com.
- [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id 8sm3427718pfz.93.2021.01.13.16.28.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Jan 2021 16:28:57 -0800 (PST)
-Subject: Re: [PATCH v2 3/6] tcg/ppc: Hoist common argument loads in
- tcg_out_op()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210113172459.2481060-1-f4bug@amsat.org>
- <20210113172459.2481060-4-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <bc9f392a-5b4d-899e-f34f-392a3c2b3379@linaro.org>
-Date: Wed, 13 Jan 2021 14:28:52 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20210113172459.2481060-4-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=zK29gl89aiEqHVybhB8M63sFl8kr3tsfqE9jGc8pkOI=;
+ b=QnoKke2RsYrog6Len2tSR/9gSBrG4Q4VQZcv5VUDh08NwC4iJQe9c/2uIkJg74q4Mg
+ wKbpZ/9fWPFsCqJLbbrHXDGncrcA1X9CCKZVcKA35KFZJm+HYoQAz2lObDpbcnOqxK0c
+ zlANEE+nnZgaE1cPvaGwTfRiYxV0b2BXkuNd5Boe+1BNsObGV6YKBn40a+aeuWx2rBRp
+ GGi2BfS8e690QAC0IbGEYEHmOOZBHXVZBCBzkP4reQnkEpquH+66qBdysNLKhHCGh2qP
+ AMp7MwBnQV0WLyF8HMWCchYOb7zMMWO6TlD0FcrOT2Af62q9J9lgXYCcl4Dwg2JMKxdJ
+ CuIQ==
+X-Gm-Message-State: AOAM5312k6TiJri3fMLTgvhRNRoL4iu/JdQm6LrcWJMLY1CQ1/55Bb/K
+ cMunjKcD7OeMlwkFBnAXMelyiqdb5d+rTQ==
+X-Received: by 2002:ac2:46e4:: with SMTP id q4mr14281326lfo.413.1608213447167; 
+ Thu, 17 Dec 2020 05:57:27 -0800 (PST)
+Received: from localhost.localdomain ([2.92.195.184])
+ by smtp.gmail.com with ESMTPSA id q2sm593613lfn.67.2020.12.17.05.57.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Dec 2020 05:57:26 -0800 (PST)
+From: Maxim Uvarov <maxim.uvarov@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] arm-virt: add secure pl061 for reset/power down
+Date: Thu, 17 Dec 2020 16:57:13 +0300
+Message-Id: <20201217135713.9715-1-maxim.uvarov@linaro.org>
+X-Mailer: git-send-email 2.17.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=maxim.uvarov@linaro.org; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -124,47 +109,231 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- qemu-riscv@nongnu.org, Stefan Weil <sw@weilnetz.de>,
- Cornelia Huck <cohuck@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Miroslav Rezanina <mrezanin@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Maxim Uvarov <maxim.uvarov@linaro.org>, peter.maydell@linaro.org,
+ francois.ozog@linaro.org, Jose.Marinho@arm.com, tf-a@lists.trustedfirmware.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jcAzWlHIZqfy
+X-TUID: EzDVR2s1UfEV
 
-On 1/13/21 7:24 AM, Philippe Mathieu-Daudé wrote:
->      case INDEX_op_ld8s_i32:
->      case INDEX_op_ld8s_i64:
-> -        tcg_out_mem_long(s, LBZ, LBZX, args[0], args[1], args[2]);
-> +        tcg_out_mem_long(s, LBZ, LBZX, a0, a1, a2);
->          tcg_out32(s, EXTSB | RS(args[0]) | RA(args[0]));
+Add secure pl061 for reset/power down machine from
+the secure world (Arm Trusted Firmware).
+Use the same gpio 3 and gpio 4 which were used by
+non acpi variant of linux power control gpios.
 
-Missed replacements.
+Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
+---
+ This patch works together with ATF patch:
+	https://github.com/muvarov/arm-trusted-firmware/commit/dd4401d8eb8e0f3018b335b81ce7a96d6cb16d0f	
 
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
->          if (const_args[2]) {
+ Previus discussion for reboot issue was here:
+	https://www.mail-archive.com/qemu-devel@nongnu.org/msg757705.html
 
-Missed replacement.
-
->          do_addi_32:
->              tcg_out_mem_long(s, ADDI, ADD, a0, a1, (int32_t)a2);
-> @@ -2475,7 +2481,6 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc, const TCGArg *args,
->          }
->          break;
->      case INDEX_op_sub_i32:
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
->          if (const_args[1]) {
->              if (const_args[2]) {
-
-And again.
-
-Let's just drop the hoisting parts and only do the signature parts for now.
-I'd rather think of a way to split up this large function than waste time
-optimizing it.
+ Regards,
+ Maxim.
 
 
-r~
+ hw/arm/Kconfig        |  1 +
+ hw/arm/virt.c         | 24 +++++++++++++
+ hw/gpio/Kconfig       |  3 ++
+ hw/gpio/gpio_pwr.c    | 83 +++++++++++++++++++++++++++++++++++++++++++
+ hw/gpio/meson.build   |  1 +
+ include/hw/arm/virt.h |  1 +
+ 6 files changed, 113 insertions(+)
+ create mode 100644 hw/gpio/gpio_pwr.c
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0a242e4c5d..13cc42dcc8 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -17,6 +17,7 @@ config ARM_VIRT
+     select PL011 # UART
+     select PL031 # RTC
+     select PL061 # GPIO
++    select GPIO_PWR
+     select PLATFORM_BUS
+     select SMBIOS
+     select VIRTIO_MMIO
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 96985917d3..eff0345303 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -147,6 +147,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
++    [VIRT_SECURE_GPIO] =        { 0x09031000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+@@ -189,6 +190,7 @@ static const int a15irqmap[] = {
+     [VIRT_GPIO] = 7,
+     [VIRT_SECURE_UART] = 8,
+     [VIRT_ACPI_GED] = 9,
++    [VIRT_SECURE_GPIO] = 10,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+@@ -864,6 +866,24 @@ static void create_gpio(const VirtMachineState *vms)
+     g_free(nodename);
+ }
+ 
++static void create_gpio_secure(const VirtMachineState *vms)
++{
++    DeviceState *pl061_dev;
++    static DeviceState *gpio_pwr_dev;
++
++    hwaddr base = vms->memmap[VIRT_SECURE_GPIO].base;
++    int irq = vms->irqmap[VIRT_SECURE_GPIO];
++
++    pl061_dev = sysbus_create_simple("pl061", base,
++                                     qdev_get_gpio_in(vms->gic, irq));
++
++    gpio_pwr_dev = sysbus_create_simple("gpio-pwr", -1,
++                                        qdev_get_gpio_in(pl061_dev, 3));
++
++    qdev_connect_gpio_out(pl061_dev, 3, qdev_get_gpio_in(gpio_pwr_dev, 3));
++    qdev_connect_gpio_out(pl061_dev, 4, qdev_get_gpio_in(gpio_pwr_dev, 4));
++}
++
+ static void create_virtio_devices(const VirtMachineState *vms)
+ {
+     int i;
+@@ -1993,6 +2013,10 @@ static void machvirt_init(MachineState *machine)
+         create_gpio(vms);
+     }
+ 
++    if (vms->secure) {
++        create_gpio_secure(vms);
++    }
++
+      /* connect powerdown request */
+      vms->powerdown_notifier.notify = virt_powerdown_req;
+      qemu_register_powerdown_notifier(&vms->powerdown_notifier);
+diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+index b6fdaa2586..f0e7405f6e 100644
+--- a/hw/gpio/Kconfig
++++ b/hw/gpio/Kconfig
+@@ -8,5 +8,8 @@ config PL061
+ config GPIO_KEY
+     bool
+ 
++config GPIO_PWR
++    bool
++
+ config SIFIVE_GPIO
+     bool
+diff --git a/hw/gpio/gpio_pwr.c b/hw/gpio/gpio_pwr.c
+new file mode 100644
+index 0000000000..dded12381b
+--- /dev/null
++++ b/hw/gpio/gpio_pwr.c
+@@ -0,0 +1,83 @@
++/*
++ * GPIO qemu power controller
++ *
++ * Copyright (c) 2020 Linaro Limited
++ *
++ * Author: Maxim Uvarov <maxim.uvarov@linaro.org>
++ *
++ * Virtual gpio driver which can be used on top of pl061
++ * to reboot and shutdown qemu virtual machine. One of use
++ * case is gpio driver for secure world application (ARM
++ * Trusted Firmware.).
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/irq.h"
++#include "hw/sysbus.h"
++#include "sysemu/runstate.h"
++
++#define TYPE_GPIOPWR "gpio-pwr"
++OBJECT_DECLARE_SIMPLE_TYPE(GPIO_PWR_State, GPIOPWR)
++
++struct GPIO_PWR_State {
++    SysBusDevice parent_obj;
++    qemu_irq irq;
++};
++
++static void gpio_pwr_set_irq(void *opaque, int irq, int level)
++{
++    GPIO_PWR_State *s = (GPIO_PWR_State *)opaque;
++
++    qemu_set_irq(s->irq, 1);
++
++    if (level) {
++        return;
++    }
++
++    switch (irq) {
++    case 3:
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++        break;
++    case 4:
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
++        break;
++    default:
++        printf("qemu; gpio_pwr: unknown interrupt %d lvl %d\n",
++               irq, level);
++    }
++}
++
++
++static void gpio_pwr_realize(DeviceState *dev, Error **errp)
++{
++    GPIO_PWR_State *s = GPIOPWR(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    sysbus_init_irq(sbd, &s->irq);
++    qdev_init_gpio_in(dev, gpio_pwr_set_irq, 8);
++}
++
++static void gpio_pwr_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = gpio_pwr_realize;
++}
++
++static const TypeInfo gpio_pwr_info = {
++    .name          = TYPE_GPIOPWR,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(GPIO_PWR_State),
++    .class_init    = gpio_pwr_class_init,
++};
++
++static void gpio_pwr_register_types(void)
++{
++    type_register_static(&gpio_pwr_info);
++}
++
++type_init(gpio_pwr_register_types)
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 5c0a7d7b95..79568f00ce 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -1,5 +1,6 @@
+ softmmu_ss.add(when: 'CONFIG_E500', if_true: files('mpc8xxx.c'))
+ softmmu_ss.add(when: 'CONFIG_GPIO_KEY', if_true: files('gpio_key.c'))
++softmmu_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
+ softmmu_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
+ softmmu_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
+ softmmu_ss.add(when: 'CONFIG_PUV3', if_true: files('puv3_gpio.c'))
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index abf54fab49..77a4523cc7 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -81,6 +81,7 @@ enum {
+     VIRT_GPIO,
+     VIRT_SECURE_UART,
+     VIRT_SECURE_MEM,
++    VIRT_SECURE_GPIO,
+     VIRT_PCDIMM_ACPI,
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+-- 
+2.17.1
+

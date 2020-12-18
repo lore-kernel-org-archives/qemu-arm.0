@@ -1,90 +1,231 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2126072lfq;
-        Fri, 18 Dec 2020 01:45:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyhwCdgLZRKu35RjLSDgvxybyuHYi/lY3fLqWJ2AMl4prVJIvgZFx1M2gNm6PFsbxxO3mbH
-X-Received: by 2002:a5d:6cd4:: with SMTP id c20mr2475444wrc.57.1608284721011;
-        Fri, 18 Dec 2020 01:45:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608284721; cv=none;
-        d=google.com; s=arc-20160816;
-        b=iw1loRL5wIpq7PBeDDegQHGHNqfdulqks1hcdbEq0drWF8CGlb/duU+hRnDlbP3zAO
-         seelB+ddgKB2PJwRA+ySKw26kQSb9NaD9WF5khGs80YiDRUt4c4Yw77NG3EX5m3sztnT
-         bnspa9yfL9jWjFcHonPBiMK1lFjae0YpM7PoIsr6gZ5RVH4bAyNFpGCB6R/d33KEh/WC
-         JLn/OtSeQ9C31i1elpWxsHhOIKBIeVD/3G5JP2aaT2SMyEs8emxxuGHx3GKiJklJrfQT
-         0I4CnctJX36CbTD00ZsGvJO/EfsCeyuvB9OsWp3xiMxHq1rSAQRXPKqHq0614SUW4owu
-         ZhVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :organization:message-id:date:subject:cc:to:from;
-        bh=bUQrql1ubGsDGL0WxIam+hzPK434UIpMBojD10jdX5Q=;
-        b=W2Sf77w973vNsG+6xLIX0wNyVesE3qk8j+Ot0yuZ1YuIHm85pYPOdOEhCx7fmQPKvb
-         TBIN0NCrSK6gdZpVBiXs95P+N8Rn9aSJEFbfktechDM0dXddQY8KQA5vGSNl2JFjX0VK
-         987siBz2D1mf3Hs4pxYhM8kK5Vlmu5RUo83y4OzQPozJyL8KvEgC1EMn024oWnAYevfi
-         b+mz6alVGtmBAoAIssWbgkFc4mqIEB3dM6K6uYmpBOEYZODVCYe5JPIf7BiWEcyuh9GR
-         XuTwKVuT9AhF4qnlGPoObhho0KIeSazlA5yamcyplYgI0Yz1RbWnwSHUc5a6ruTBaDbx
-         hoaQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of remi@remlab.net designates 2001:41d0:2:5a1a:: as permitted sender) smtp.mailfrom=remi@remlab.net
-Return-Path: <remi@remlab.net>
-Received: from ns207790.ip-94-23-215.eu (poy.remlab.net. [2001:41d0:2:5a1a::])
-        by mx.google.com with ESMTP id m22si7302273wmg.122.2020.12.18.01.45.20;
-        Fri, 18 Dec 2020 01:45:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of remi@remlab.net designates 2001:41d0:2:5a1a:: as permitted sender) client-ip=2001:41d0:2:5a1a::;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of remi@remlab.net designates 2001:41d0:2:5a1a:: as permitted sender) smtp.mailfrom=remi@remlab.net
-Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
-	(Authenticated sender: remi)
-	by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id 06F375FA93;
-	Fri, 18 Dec 2020 10:45:19 +0100 (CET)
-From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
-To: qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>, Philippe =?ISO-8859-1?Q?Mathieu=2DDaud=E9?= <f4bug@amsat.org>, Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCHv3 00/17] ARMv8.4 Secure EL2
-Date: Fri, 18 Dec 2020 11:45:19 +0200
-Message-ID: <1841243.PYKUYFuaPT@basile.remlab.net>
-Organization: Huawei Technologies, Finland
-In-Reply-To: <874kkwgzbe.fsf@linaro.org>
-References: <3333301.iIbC2pHGDl@basile.remlab.net> <2120950.iZASKD2KPV@basile.remlab.net> <874kkwgzbe.fsf@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id o13sm10681961wmc.44.2020.12.18.03.27.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Dec 2020 03:27:14 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 909B31FF98;
+	Fri, 18 Dec 2020 11:27:08 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Luis Machado <luis.machado@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v2 9/9] target/arm: use official org.gnu.gdb.aarch64.sve layout for registers
+Date: Fri, 18 Dec 2020 11:27:07 +0000
+Message-Id: <20201218112707.28348-10-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201218112707.28348-1-alex.bennee@linaro.org>
+References: <20201218112707.28348-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: E/D2OCYPfdkA
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: +zFoHNeNuDlF
 
-Le tiistaina 8. joulukuuta 2020, 16.11.15 EET Alex Benn=C3=A9e a =C3=A9crit=
- :
-> > Wiki implies that dependencies are automatically installed, but I
-> > guess not?
->=20
-> They should be in the venv that is built when you run the test the first
-> time. Running the above command without the -V which it doesn't
-> recognise gives me a list:
->=20
->   14:12:25 [alex@zen:~/l/q/b/all]
-> xen/guest-loader-and-arm-build-cleanups-v2|=E2=9C=9A3=E2=80=A6(+5/-5) +
-> ./tests/venv/bin/avocado list tests/acceptance/ | head -n 10 INSTRUMENTED
-> tests/acceptance/boot_linux.py:BootLinuxX8664.test_pc_i440fx_tcg
-> INSTRUMENTED
-> tests/acceptance/boot_linux.py:BootLinuxX8664.test_pc_i440fx_kvm
-> INSTRUMENTED tests/acceptance/boot_linux.py:BootLinuxX8664.test_pc_q35_tcg
-> INSTRUMENTED tests/acceptance/boot_linux.py:BootLinuxX8664.test_pc_q35_kvm
-> INSTRUMENTED tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg
-> INSTRUMENTED
-> tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_kvm_gicv2
-> INSTRUMENTED
-> tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_kvm_gicv3
-> INSTRUMENTED tests/acceptance/boot_linux.py:BootLinuxPPC64.test_pseries_t=
-cg
-> INSTRUMENTED
-> tests/acceptance/boot_linux.py:BootLinuxS390X.test_s390_ccw_virtio_tcg
-> INSTRUMENTED
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_x86_64_pc
-> Exception ignored in: <_io.TextIOWrapper name=3D'<stdout>' mode=3D'w'
-> encoding=3D'UTF-8'> BrokenPipeError: [Errno 32] Broken pipe
->=20
-> I wonder are you running an in-tree build?
+While GDB can work with any XML description given to it there is
+special handling for SVE registers on the GDB side which makes the
+users life a little better. The changes aren't that major and all the
+registers save the $vg reported the same. All that changes is:
 
-Yes. I suppose somebody fixed something because I can run the test cases no=
-w=20
-and pinpoint the failing change, though I've yet to debug it succesfully.
+  - report org.gnu.gdb.aarch64.sve
+  - use gdb nomenclature for names and types
+  - minor re-ordering of the types to match reference
+  - re-enable ieee_half (as we know gdb supports it now)
+  - $vg is now a 64 bit int
+  - check $vN and $zN aliasing in test
 
-=2D-=20
-R=C3=A9mi Denis-Courmont
+[NOTE: there seems a limitation on the indexing of the pseudo $vN
+registers which I'm not sure if it's intentional]
 
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Luis Machado <luis.machado@linaro.org>
+---
+ target/arm/gdbstub.c                        | 75 ++++++++-------------
+ target/arm/helper.c                         |  2 +-
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py | 11 +++
+ 3 files changed, 41 insertions(+), 47 deletions(-)
+
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 866595b4f1..a8fff2a3d0 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -195,22 +195,17 @@ static const struct TypeSize vec_lanes[] = {
+     { "uint128", 128, 'q', 'u' },
+     { "int128", 128, 'q', 's' },
+     /* 64 bit */
++    { "ieee_double", 64, 'd', 'f' },
+     { "uint64", 64, 'd', 'u' },
+     { "int64", 64, 'd', 's' },
+-    { "ieee_double", 64, 'd', 'f' },
+     /* 32 bit */
++    { "ieee_single", 32, 's', 'f' },
+     { "uint32", 32, 's', 'u' },
+     { "int32", 32, 's', 's' },
+-    { "ieee_single", 32, 's', 'f' },
+     /* 16 bit */
++    { "ieee_half", 16, 'h', 'f' },
+     { "uint16", 16, 'h', 'u' },
+     { "int16", 16, 'h', 's' },
+-    /*
+-     * TODO: currently there is no reliable way of telling
+-     * if the remote gdb actually understands ieee_half so
+-     * we don't expose it in the target description for now.
+-     * { "ieee_half", 16, 'h', 'f' },
+-     */
+     /* bytes */
+     { "uint8", 8, 'b', 'u' },
+     { "int8", 8, 'b', 's' },
+@@ -223,17 +218,16 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+     GString *s = g_string_new(NULL);
+     DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
+     g_autoptr(GString) ts = g_string_new("");
+-    int i, bits, reg_width = (cpu->sve_max_vq * 128);
++    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
+     info->num = 0;
+     g_string_printf(s, "<?xml version=\"1.0\"?>");
+     g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+-    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.aarch64.sve\">");
++    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
+ 
+     /* First define types and totals in a whole VL */
+     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+         int count = reg_width / vec_lanes[i].size;
+-        g_string_printf(ts, "vq%d%c%c", count,
+-                        vec_lanes[i].sz, vec_lanes[i].suffix);
++        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
+         g_string_append_printf(s,
+                                "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+                                ts->str, vec_lanes[i].gdb_type, count);
+@@ -243,39 +237,37 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+      * signed and potentially float versions of each size from 128 to
+      * 8 bits.
+      */
+-    for (bits = 128; bits >= 8; bits /= 2) {
+-        int count = reg_width / bits;
+-        g_string_append_printf(s, "<union id=\"vq%dn\">", count);
+-        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-            if (vec_lanes[i].size == bits) {
+-                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%d%c%c\"/>",
+-                                       vec_lanes[i].suffix,
+-                                       count,
+-                                       vec_lanes[i].sz, vec_lanes[i].suffix);
++    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
++        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
++        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
++        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
++            if (vec_lanes[j].size == bits) {
++                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
++                                       vec_lanes[j].suffix,
++                                       vec_lanes[j].sz, vec_lanes[j].suffix);
+             }
+         }
+         g_string_append(s, "</union>");
+     }
+     /* And now the final union of unions */
+-    g_string_append(s, "<union id=\"vq\">");
+-    for (bits = 128; bits >= 8; bits /= 2) {
+-        int count = reg_width / bits;
+-        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+-            if (vec_lanes[i].size == bits) {
+-                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%dn\"/>",
+-                                       vec_lanes[i].sz, count);
+-                break;
+-            }
+-        }
++    g_string_append(s, "<union id=\"svev\">");
++    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
++        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
++        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
++                               suf[i], suf[i]);
+     }
+     g_string_append(s, "</union>");
+ 
++    /* Finally the sve prefix type */
++    g_string_append_printf(s,
++                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
++                           reg_width / 8);
++
+     /* Then define each register in parts for each vq */
+     for (i = 0; i < 32; i++) {
+         g_string_append_printf(s,
+                                "<reg name=\"z%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" group=\"vector\""
+-                               " type=\"vq\"/>",
++                               " regnum=\"%d\" type=\"svev\"/>",
+                                i, reg_width, base_reg++);
+         info->num++;
+     }
+@@ -287,31 +279,22 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+                            " regnum=\"%d\" group=\"float\""
+                            " type=\"int\"/>", base_reg++);
+     info->num += 2;
+-    /*
+-     * Predicate registers aren't so big they are worth splitting up
+-     * but we do need to define a type to hold the array of quad
+-     * references.
+-     */
+-    g_string_append_printf(s,
+-                           "<vector id=\"vqp\" type=\"uint16\" count=\"%d\"/>",
+-                           cpu->sve_max_vq);
++
+     for (i = 0; i < 16; i++) {
+         g_string_append_printf(s,
+                                "<reg name=\"p%d\" bitsize=\"%d\""
+-                               " regnum=\"%d\" group=\"vector\""
+-                               " type=\"vqp\"/>",
++                               " regnum=\"%d\" type=\"svep\"/>",
+                                i, cpu->sve_max_vq * 16, base_reg++);
+         info->num++;
+     }
+     g_string_append_printf(s,
+                            "<reg name=\"ffr\" bitsize=\"%d\""
+                            " regnum=\"%d\" group=\"vector\""
+-                           " type=\"vqp\"/>",
++                           " type=\"svep\"/>",
+                            cpu->sve_max_vq * 16, base_reg++);
+     g_string_append_printf(s,
+                            "<reg name=\"vg\" bitsize=\"64\""
+-                           " regnum=\"%d\" group=\"vector\""
+-                           " type=\"uint32\"/>",
++                           " regnum=\"%d\" type=\"int\"/>",
+                            base_reg++);
+     info->num += 2;
+     g_string_append_printf(s, "</feature>");
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7b8bcd6903..8633b3eef6 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -276,7 +276,7 @@ static int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
+          * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
+          */
+         int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
+-        return gdb_get_reg32(buf, vq * 2);
++        return gdb_get_reg64(buf, vq * 2);
+     }
+     default:
+         /* gdbstub asked for something out our range */
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+index 972cf73c31..f8cdab2e14 100644
+--- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
++++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+@@ -40,6 +40,17 @@ class TestBreakpoint(gdb.Breakpoint):
+         except gdb.error:
+             report(False, "checking zregs (out of range)")
+ 
++        # check the v pseudo regs - I'm not sure if them capping out
++        # at [15] is intentional though.
++        try:
++            for i in range(0, 16):
++                val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
++                val_v = gdb.parse_and_eval("$v0.b.u[%d]" % i)
++                report(int(val_z) == int(val_v),
++                       "v0.b.u[%d] == z0.b.u[%d]" % (i, i))
++        except gdb.error:
++            report(False, "checking vregs (out of range)")
++
+ 
+ def run_test():
+     "Run through the tests one by one"
+-- 
+2.20.1

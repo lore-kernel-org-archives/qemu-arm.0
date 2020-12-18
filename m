@@ -1,136 +1,71 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1787591lfb;
-        Thu, 26 Nov 2020 13:56:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy9Q3RtX9s2lSGScp47yEYSbEFVpOXxdg+oR++9LoMpKrIzO5mNFfDGsUbLanT6WFHa3oFq
-X-Received: by 2002:a25:2485:: with SMTP id k127mr5204734ybk.522.1606427793318;
-        Thu, 26 Nov 2020 13:56:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606427793; cv=none;
-        d=google.com; s=arc-20160816;
-        b=sgjCTfP4LatvcxAfiZiarzMzKb5hLn6c1BzUKR8+X3CqPFtshIhW8SFMl3qg1by2aR
-         di1HLqDJCKS4GRnBhfO8zKJdcye8YwTLY2RYX4t1HAO3UIq02j/yOvj3QhuPS1Gm/GHJ
-         Ld7Zv8GGbPM/7EktphCqsGj/54ClhE7xUwzQvfu21S8dsFCg5o2US5yS6e35PLlBZSng
-         4xkIaWNvS1RLGheH5Ro+MGet5AksfABHKXLmoYBDlfar7/7lZJL2G9E+l2kzsPDqpYnW
-         WcCHLKMcoubGNejSUR8bL2hyj+ivkTpHiBu4Y4VwyTJpEslkBTnoH/yrkFWVRYIpQRei
-         4blg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=apYShrcG+MlxobSP2g/bKYRJK2gok/VAaFJ68uBLj0g=;
-        b=N4YawLYkmZoskLX0Sd2vezCBiBMx28OdN5ENMry6rZL4LkS6fTwy30G1pxaCWwXyc+
-         z5/1TEcTISbjpoSRxBecldcEDNgR+wL11k2K+uFjxgxOs4T9nl+MJ+OO5CKG0APOQWtg
-         DqB6URMdO/mPWaWloVNjUVjwkKqXx8WhvxVZf3OD8WWn+a2OiFQnD5nCE+bgfZ4vW7K+
-         /AW/zTm6SJJeb3eWcVX9b6cg8EXzOKBcCjqzSgmt7F7ZT5JndUt6U8rOMegLHUVHhmJP
-         ns6oLENJ1tSX4QUZhwWeZR9KKSmYF6+i923FIDb51pAdEGt58XhzOS20P0w7mrh0J+ZZ
-         ntxw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j129si5704132ybb.309.2020.11.26.13.56.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Nov 2020 13:56:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46920 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kiPFg-000192-Ms
-	for alex.bennee@linaro.org; Thu, 26 Nov 2020 16:56:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36334)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kiP9r-0001s0-TB; Thu, 26 Nov 2020 16:50:31 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:60636
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kiP9m-0005ng-B6; Thu, 26 Nov 2020 16:50:31 -0500
-Received: from localhost.localdomain
- (dynamic-077-009-187-158.77.9.pool.telefonica.de [77.9.187.158])
- by csgraf.de (Postfix) with ESMTPSA id CE7FE39005E9;
- Thu, 26 Nov 2020 22:50:21 +0100 (CET)
-From: Alexander Graf <agraf@csgraf.de>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id d191sm11790680wmd.24.2020.12.18.07.19.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Dec 2020 07:19:48 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 2E9CE1FF7E;
+	Fri, 18 Dec 2020 15:19:47 +0000 (GMT)
+References: <20201218112707.28348-1-alex.bennee@linaro.org>
+ <20201218112707.28348-10-alex.bennee@linaro.org>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 8/8] hw/arm/virt: Disable highmem when on hypervisor.framework
-Date: Thu, 26 Nov 2020 22:50:17 +0100
-Message-Id: <20201126215017.41156-9-agraf@csgraf.de>
-X-Mailer: git-send-email 2.24.3 (Apple Git-128)
-In-Reply-To: <20201126215017.41156-1-agraf@csgraf.de>
-References: <20201126215017.41156-1-agraf@csgraf.de>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Luis Machado
+ <luis.machado@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, "open
+ list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH  v2 9/9] target/arm: use official
+ org.gnu.gdb.aarch64.sve layout for registers
+Date: Fri, 18 Dec 2020 15:17:26 +0000
+In-reply-to: <20201218112707.28348-10-alex.bennee@linaro.org>
+Message-ID: <87k0tfqgz0.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sQp0mZWMkpv4
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: AIUS4cUuZDp9
 
-The Apple M1 only supports up to 36 bits of physical address space. That
-means we can not fit the 64bit MMIO BAR region into our address space.
 
-To fix this, let's not expose a 64bit MMIO BAR region when running on
-Apple Silicon.
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-I have not been able to find a way to enumerate that easily, so let's
-just assume we always have that little PA space on hypervisor.framework
-systems.
+> While GDB can work with any XML description given to it there is
+> special handling for SVE registers on the GDB side which makes the
+> users life a little better. The changes aren't that major and all the
+> registers save the $vg reported the same. All that changes is:
+>
+>   - report org.gnu.gdb.aarch64.sve
+>   - use gdb nomenclature for names and types
+>   - minor re-ordering of the types to match reference
+>   - re-enable ieee_half (as we know gdb supports it now)
+>   - $vg is now a 64 bit int
+>   - check $vN and $zN aliasing in test
+>
+> [NOTE: there seems a limitation on the indexing of the pseudo $vN
+> registers which I'm not sure if it's intentional]
 
-Signed-off-by: Alexander Graf <agraf@csgraf.de>
----
- hw/arm/virt.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+It is (v registers are the aliased vector registers, not an alternative
+to the z register).
+>=20=20
+> +        # check the v pseudo regs - I'm not sure if them capping out
+> +        # at [15] is intentional though.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 27dbeb549e..d74053ecd4 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -45,6 +45,7 @@
- #include "hw/display/ramfb.h"
- #include "net/net.h"
- #include "sysemu/device_tree.h"
-+#include "sysemu/hvf.h"
- #include "sysemu/numa.h"
- #include "sysemu/runstate.h"
- #include "sysemu/sysemu.h"
-@@ -1746,6 +1747,14 @@ static void machvirt_init(MachineState *machine)
-     unsigned int smp_cpus = machine->smp.cpus;
-     unsigned int max_cpus = machine->smp.max_cpus;
- 
-+    /*
-+     * On Hypervisor.framework capable systems, we only have 36 bits of PA
-+     * space, which is not enough to fit a 64bit BAR space
-+     */
-+    if (hvf_enabled()) {
-+        vms->highmem = false;
-+    }
-+
-     /*
-      * In accelerated mode, the memory map is computed earlier in kvm_type()
-      * to create a VM with the right number of IPA bits.
--- 
-2.24.3 (Apple Git-128)
+I'm going to change this comment to:
 
+  Check the aliased V registers are set and GDB has correctly
+  created them for us having recognised and handled SVE.
+
+> +        try:
+> +            for i in range(0, 16):
+> +                val_z =3D gdb.parse_and_eval("$z0.b.u[%d]" % i)
+> +                val_v =3D gdb.parse_and_eval("$v0.b.u[%d]" % i)
+> +                report(int(val_z) =3D=3D int(val_v),
+> +                       "v0.b.u[%d] =3D=3D z0.b.u[%d]" % (i, i))
+> +        except gdb.error:
+> +            report(False, "checking vregs (out of range)")
+> +
+>=20=20
+>  def run_test():
+>      "Run through the tests one by one"
+
+
+--=20
+Alex Benn=C3=A9e

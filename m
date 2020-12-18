@@ -1,156 +1,113 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id l8sm14438759wrb.73.2020.12.18.03.27.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Dec 2020 03:27:13 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4B2E21FF92;
-	Fri, 18 Dec 2020 11:27:08 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v2 6/9] gdbstub: drop CPUEnv from gdb_exit()
-Date: Fri, 18 Dec 2020 11:27:04 +0000
-Message-Id: <20201218112707.28348-7-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201218112707.28348-1-alex.bennee@linaro.org>
-References: <20201218112707.28348-1-alex.bennee@linaro.org>
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2347522lfq;
+        Fri, 18 Dec 2020 06:33:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz1Q+AiqIpiaLz+/nw+1cGJn6iBoWFh2QDfI4e7+svjzUTQbSyVZhSX4Ywobqhir4DdkMjR
+X-Received: by 2002:a25:690b:: with SMTP id e11mr6115393ybc.314.1608301983640;
+        Fri, 18 Dec 2020 06:33:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608301983; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HgJivMjqnMnFsS5/TjFP5m9eSG1RZ9hedsLXTbqsySo7TZ4NMFqtkuI+Fs5ABCC6FF
+         i+Ax376JWN/xGuQfjgYKiR5mV+1mFLXR9SOA1MJ5uV8ud1rP9HWkWG50K7STzcnJyVq6
+         DfIt/7vs9+vnfIAHXOsGvJ0qnaCVK9LC2/OcXzhpj8jTMYKR/dNVhViNMs8Z2LrdyxdN
+         dQCbuc875p/ZMRYqWBWIQVcOsUVe5Z3GcjliN4spJjigvThg0hfkwoL1zBmNXbIubCLP
+         OqAdFE846Z/GSe8Yq06jG4aWGJmP8e0FoHzMk3cbGbK4QvhLvvUfQB7mcRsRTfOE7eUG
+         07Ew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:message-id:date:subject:to:from;
+        bh=xI5D3KG2I1aziZcUtcVkYavWnfgdEkuOHf8JBCbfNZo=;
+        b=VTdO3LmZJY12ie0FrlHq3GHf76nAWKSmtZG2fkmtaaa/ahy7q66sDsVcLS2A842Kh0
+         yNm/Zky1asezycr0MGsz4zVAn4pK3927/F6exfILsIiE+tw+FBZ7om635pp2beOk/czi
+         edch2+onLZ7WEB0lxAug33dEF6lJ2jPLuU32V81RmBHdJ5xOMq/6k5jJznZZLwIYTjes
+         sovskIjS6qhRr2Kl6eSnt/2CfypBMAEzM9WvzITj3AMGar46hQB5y+U6GVDS+utaKZtf
+         WTTPWcKSIHEe0RpohwLu5dpTCSnoy/7zVKaPRK5hV/ec7D+tBotQvjxyd1FfvR2Ifa/o
+         iI2g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p137si8011322ybg.226.2020.12.18.06.33.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 18 Dec 2020 06:33:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36360 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kqGoZ-00016p-1e
+	for alex.bennee@linaro.org; Fri, 18 Dec 2020 09:33:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41158)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kqGoP-00015g-Os; Fri, 18 Dec 2020 09:32:54 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56798
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kqGoN-0007Og-9J; Fri, 18 Dec 2020 09:32:53 -0500
+Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
+ [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
+ (Authenticated sender: remi)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id BC81C5FC85;
+ Fri, 18 Dec 2020 15:32:47 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
+To: qemu-arm@nongnu.org
+Subject: [RFC][PATCH 0/3] ARMv8.4-TTST extension
+Date: Fri, 18 Dec 2020 16:32:45 +0200
+Message-ID: <7884934.NyiUUSuA9g@basile.remlab.net>
+Organization: Huawei Technologies, Finland
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: HboigkvGne2g
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tcrJRbmrzLIx
 
-gdb_exit() has never needed anything from env and I doubt we are going
-to start now.
+	Hello,
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20201214153012.12723-5-alex.bennee@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/exec/gdbstub.h    | 2 +-
- bsd-user/syscall.c        | 6 +++---
- gdbstub.c                 | 2 +-
- linux-user/exit.c         | 2 +-
- target/arm/arm-semi.c     | 2 +-
- target/m68k/m68k-semi.c   | 2 +-
- target/nios2/nios2-semi.c | 2 +-
- 7 files changed, 9 insertions(+), 9 deletions(-)
+The following changes since commit 6d3fd902ab9c4d6762532d4b5cce2275e458aa32:
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 94d8f83e92..492db0f512 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -46,7 +46,7 @@ void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...);
- void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va);
- int use_gdb_syscalls(void);
- void gdb_set_stop_cpu(CPUState *cpu);
--void gdb_exit(CPUArchState *, int);
-+void gdb_exit(int);
- #ifdef CONFIG_USER_ONLY
- /**
-  * gdb_handlesig: yield control to gdb
-diff --git a/bsd-user/syscall.c b/bsd-user/syscall.c
-index d38ec7a162..adc3d21b54 100644
---- a/bsd-user/syscall.c
-+++ b/bsd-user/syscall.c
-@@ -333,7 +333,7 @@ abi_long do_freebsd_syscall(void *cpu_env, int num, abi_long arg1,
- #ifdef CONFIG_GPROF
-         _mcleanup();
- #endif
--        gdb_exit(cpu_env, arg1);
-+        gdb_exit(arg1);
-         qemu_plugin_atexit_cb();
-         /* XXX: should free thread stack and CPU env */
-         _exit(arg1);
-@@ -435,7 +435,7 @@ abi_long do_netbsd_syscall(void *cpu_env, int num, abi_long arg1,
- #ifdef CONFIG_GPROF
-         _mcleanup();
- #endif
--        gdb_exit(cpu_env, arg1);
-+        gdb_exit(arg1);
-         qemu_plugin_atexit_cb();
-         /* XXX: should free thread stack and CPU env */
-         _exit(arg1);
-@@ -514,7 +514,7 @@ abi_long do_openbsd_syscall(void *cpu_env, int num, abi_long arg1,
- #ifdef CONFIG_GPROF
-         _mcleanup();
- #endif
--        gdb_exit(cpu_env, arg1);
-+        gdb_exit(arg1);
-         qemu_plugin_atexit_cb();
-         /* XXX: should free thread stack and CPU env */
-         _exit(arg1);
-diff --git a/gdbstub.c b/gdbstub.c
-index 15d3a8e1f5..afa553e8fc 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -3068,7 +3068,7 @@ static void gdb_read_byte(uint8_t ch)
- }
- 
- /* Tell the remote gdb that the process has exited.  */
--void gdb_exit(CPUArchState *env, int code)
-+void gdb_exit(int code)
- {
-   char buf[4];
- 
-diff --git a/linux-user/exit.c b/linux-user/exit.c
-index 1594015444..70b344048c 100644
---- a/linux-user/exit.c
-+++ b/linux-user/exit.c
-@@ -34,6 +34,6 @@ void preexit_cleanup(CPUArchState *env, int code)
- #ifdef CONFIG_GCOV
-         __gcov_dump();
- #endif
--        gdb_exit(env, code);
-+        gdb_exit(code);
-         qemu_plugin_atexit_cb();
- }
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index f7b7bff522..93360e28c7 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -1101,7 +1101,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-              */
-             ret = (args == ADP_Stopped_ApplicationExit) ? 0 : 1;
-         }
--        gdb_exit(env, ret);
-+        gdb_exit(ret);
-         exit(ret);
-     case TARGET_SYS_SYNCCACHE:
-         /*
-diff --git a/target/m68k/m68k-semi.c b/target/m68k/m68k-semi.c
-index 27600e0cc0..d919245e4f 100644
---- a/target/m68k/m68k-semi.c
-+++ b/target/m68k/m68k-semi.c
-@@ -195,7 +195,7 @@ void do_m68k_semihosting(CPUM68KState *env, int nr)
-     args = env->dregs[1];
-     switch (nr) {
-     case HOSTED_EXIT:
--        gdb_exit(env, env->dregs[0]);
-+        gdb_exit(env->dregs[0]);
-         exit(env->dregs[0]);
-     case HOSTED_OPEN:
-         GET_ARG(0);
-diff --git a/target/nios2/nios2-semi.c b/target/nios2/nios2-semi.c
-index d7a80dd303..e508b2fafc 100644
---- a/target/nios2/nios2-semi.c
-+++ b/target/nios2/nios2-semi.c
-@@ -215,7 +215,7 @@ void do_nios2_semihosting(CPUNios2State *env)
-     args = env->regs[R_ARG1];
-     switch (nr) {
-     case HOSTED_EXIT:
--        gdb_exit(env, env->regs[R_ARG0]);
-+        gdb_exit(env->regs[R_ARG0]);
-         exit(env->regs[R_ARG0]);
-     case HOSTED_OPEN:
-         GET_ARG(0);
--- 
-2.20.1
+  target/arm: refactor vae1_tlbmask() (2020-12-18 12:27:56 +0200)
+
+follow. They add support for small translation tables, allowing for=20
+translation regimes as small as 16-bits. This extension is nominally a=20
+required dependency of Secure EL2.
+
+=2D---------------------------------------------------------------
+R=C3=A9mi Denis-Courmont (3):
+      target/arm: keep translation start level unsigned
+      target/arm: ARMv8.4-TTST extension
+      target/arm: enable Small Translation tables in max CPU
+
+ target/arm/cpu.h    |  5 +++++
+ target/arm/cpu64.c  |  1 +
+ target/arm/helper.c | 25 +++++++++++++++----------
+ 3 files changed, 21 insertions(+), 10 deletions(-)
+
+=2D-=20
+R=C3=A9mi Denis-Courmont
+
+

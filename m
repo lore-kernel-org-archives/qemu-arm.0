@@ -1,60 +1,60 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2163409lfq;
-        Fri, 18 Dec 2020 02:40:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwoXCSS2yRue/4ou4YvYPNyeXLUDZ8wvPpITnOLFigYKqtJ0klIg2XCKXK5SQV43K2qIvFJ
-X-Received: by 2002:a25:84cc:: with SMTP id x12mr5158316ybm.426.1608288046752;
-        Fri, 18 Dec 2020 02:40:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608288046; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2163941lfq;
+        Fri, 18 Dec 2020 02:41:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzryK7SsZ7mWTKNYVRYVWjotFuro3NKbr/f20iY/6RYg6TbO2XPBEWOGHfUUfQNfXO6PuLR
+X-Received: by 2002:a25:374c:: with SMTP id e73mr5406161yba.376.1608288106897;
+        Fri, 18 Dec 2020 02:41:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608288106; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rb0OJ/ut/nRC67vyuk54yD9VkpZgU5PLtDZjff57atvtVj1xOQExUlR631yGLFPIwp
-         NBYaN7R/aB+QVIfofkgfUYgB6S8sIdehOmVn6LH3M3EhRYESoY8JJoES5BW+L03yMT/i
-         rw2ywfmzp9V305d8YJbM2jSbgtAKEZ00eZJY8VdYI2ZDyRSi5/l34WS2VgZtpahO/Fy6
-         xtnsJwIAK9uPnLXKwp2q922gARsO1IfRnA/nTV2EY2K23rDwHBKYrPQM6omqytS2LraA
-         Zeds36lcoUzK8Ghs8ZFqudEZ4AC8EwALgseT1RXpCXXQM/9CseRohn/0u2dZxh3U8YGn
-         x5ZQ==
+        b=z03b5sZumPZj9WtjwG9QEDICTXF2mnDF93h6mqluLBm3HqqFtYC6sn5Mejh4ye9c4c
+         XSV6/WB3Meq5USOTsL//LIbKBZsixsyr6fJY7rTbv9WON2j085WAbDJZsQ86OxU+xiOS
+         jmaRqoI0RHB6QWCHSnKCnEXQRkL6B743gtqsUG0NW6aPwnbD6hClaxxpN5oBZqxRVsbM
+         Af5dm+WaorQtLx4nbw2pi63aX+9zVRGrYcXNFBGhRRMFq6oC7ktZLRP7nMs2bXqcocez
+         eMMDpSRvEwhC5iCI/WXJoCxyN4cDKrNII8IQcxN47ocFA7huJLqzCGGEe5I8UzQDmgcP
+         5orA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=ja7QGhKfIT1kg2OICkvQ4iOqKAscfPuTV7gKddrpfE8=;
-        b=D0QmBUcGJA9K+QLn7Z9rAZx8zqlMJjRhwDpAM9NaRP6MzOOfT1YAWMhtPpSz4HVwi9
-         C03k0gBJSUf24suFPpvJDHrfsQEaURnbrmQgfr81Aqh8fL5MBfO2PN6tYZA3CgO3aBqY
-         cWy74fonTgr9o35auSi99Nu+xRXKfHMsAW/zz68KoZZUK3go6AziP68uqdM+19TbrvNr
-         45xZwE9SxCcAaW8U+NRw0hzIB5Yg8qwdIE6hZBLDztJI5Q/Faz1R9ZUxVrPAtLCNl2D5
-         IMpFrmYmDB/pKedMGYHVOxwAmRiGEpog53JySkVdrBtwgsSB0q4fhNoDPFC0zWXs6at2
-         AxPw==
+        bh=u/mHDpUwCLJG0bICvoUeZlyIM5lb2teF0a1hQiaITTE=;
+        b=c3T99+hW7dW8cGXmT377ivL6s0ogu3xVUom2o+CMGpwEqkcLRV4A9ym5vHGfi4z2sE
+         k9dEHjHJhBtRVah1+y3wHVSsfYnoJfs4AawmB4eO9Y6mQPHnjECIhgC+6ICyLPOqXlw4
+         J0PwFUaNUahhRkOmKuSg9fQvtYPT/upVTieo1El3wcXrJ6b9ZCjxR1a0rgxlx1h1zUqB
+         kemaau+9JcVjo9SUwvPMPWOUlt0ndpNhUy2Von2GE6EPgfNtbrRRrDGBPTBT6DHnGkv5
+         yFuPUMGZLnaSmT1yRnk7LU98gAk3LptRS2UHnuI8RBU6GTYkbQ+ebc7L08FYMpThZYXi
+         QjPg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t127si7452614ybf.263.2020.12.18.02.40.46
+        by mx.google.com with ESMTPS id w11si7831683ybs.204.2020.12.18.02.41.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Dec 2020 02:40:46 -0800 (PST)
+        Fri, 18 Dec 2020 02:41:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42772 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kqDBm-0001bb-4E
-	for alex.bennee@linaro.org; Fri, 18 Dec 2020 05:40:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46682)
+	id 1kqDCk-0002v3-8e
+	for alex.bennee@linaro.org; Fri, 18 Dec 2020 05:41:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46734)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kqD9B-000652-92; Fri, 18 Dec 2020 05:38:05 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:55284
+ id 1kqD9D-00069k-7g; Fri, 18 Dec 2020 05:38:07 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:55286
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kqD98-0003JJ-9g; Fri, 18 Dec 2020 05:38:04 -0500
+ id 1kqD9B-0003Jk-Ko; Fri, 18 Dec 2020 05:38:06 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id E8F0B60088;
- Fri, 18 Dec 2020 11:38:00 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 4251A6009A;
+ Fri, 18 Dec 2020 11:38:01 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 05/18] target/arm: factor MDCR_EL2 common handling
-Date: Fri, 18 Dec 2020 12:37:46 +0200
-Message-Id: <20201218103759.19929-5-remi.denis.courmont@huawei.com>
+Subject: [PATCH 06/18] target/arm: declare new AA64PFR0 bit-fields
+Date: Fri, 18 Dec 2020 12:37:47 +0200
+Message-Id: <20201218103759.19929-6-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <3337797.iIbC2pHGDl@basile.remlab.net>
 References: <3337797.iIbC2pHGDl@basile.remlab.net>
@@ -84,134 +84,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HYgbY38gcSnj
+X-TUID: HX/HjFUXJfi6
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-
-This adds a common helper to compute the effective value of MDCR_EL2.
-That is the actual value if EL2 is enabled in the current security
-context, or 0 elsewise.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 38 ++++++++++++++++++++++----------------
- 1 file changed, 22 insertions(+), 16 deletions(-)
+ target/arm/cpu.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c784efac8c..b85c1bf9d8 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -538,6 +538,11 @@ static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
-     return CP_ACCESS_TRAP_UNCATEGORIZED;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c4e370df06..6a5a253eb6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1881,6 +1881,12 @@ FIELD(ID_AA64PFR0, ADVSIMD, 20, 4)
+ FIELD(ID_AA64PFR0, GIC, 24, 4)
+ FIELD(ID_AA64PFR0, RAS, 28, 4)
+ FIELD(ID_AA64PFR0, SVE, 32, 4)
++FIELD(ID_AA64PFR0, SEL2, 36, 4)
++FIELD(ID_AA64PFR0, MPAM, 40, 4)
++FIELD(ID_AA64PFR0, AMU, 44, 4)
++FIELD(ID_AA64PFR0, DIT, 48, 4)
++FIELD(ID_AA64PFR0, CSV2, 56, 4)
++FIELD(ID_AA64PFR0, CSV3, 60, 4)
+ 
+ FIELD(ID_AA64PFR1, BT, 0, 4)
+ FIELD(ID_AA64PFR1, SBSS, 4, 4)
+@@ -3928,6 +3934,11 @@ static inline bool isar_feature_aa64_sve(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SVE) != 0;
  }
  
-+static uint64_t arm_mdcr_el2_eff(CPUARMState *env)
++static inline bool isar_feature_aa64_sel2(const ARMISARegisters *id)
 +{
-+    return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
++    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SEL2) != 0;
 +}
 +
- /* Check for traps to "powerdown debug" registers, which are controlled
-  * by MDCR.TDOSA
-  */
-@@ -545,11 +550,11 @@ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
+ static inline bool isar_feature_aa64_vh(const ARMISARegisters *id)
  {
-     int el = arm_current_el(env);
--    bool mdcr_el2_tdosa = (env->cp15.mdcr_el2 & MDCR_TDOSA) ||
--        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    bool mdcr_el2_tdosa = (mdcr_el2 & MDCR_TDOSA) || (mdcr_el2 & MDCR_TDE) ||
-         (arm_hcr_el2_eff(env) & HCR_TGE);
- 
--    if (el < 2 && mdcr_el2_tdosa && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tdosa) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDOSA)) {
-@@ -565,11 +570,11 @@ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
-     int el = arm_current_el(env);
--    bool mdcr_el2_tdra = (env->cp15.mdcr_el2 & MDCR_TDRA) ||
--        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    bool mdcr_el2_tdra = (mdcr_el2 & MDCR_TDRA) || (mdcr_el2 & MDCR_TDE) ||
-         (arm_hcr_el2_eff(env) & HCR_TGE);
- 
--    if (el < 2 && mdcr_el2_tdra && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tdra) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
-@@ -585,11 +590,11 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
-     int el = arm_current_el(env);
--    bool mdcr_el2_tda = (env->cp15.mdcr_el2 & MDCR_TDA) ||
--        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    bool mdcr_el2_tda = (mdcr_el2 & MDCR_TDA) || (mdcr_el2 & MDCR_TDE) ||
-         (arm_hcr_el2_eff(env) & HCR_TGE);
- 
--    if (el < 2 && mdcr_el2_tda && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tda) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
-@@ -605,9 +610,9 @@ static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  bool isread)
- {
-     int el = arm_current_el(env);
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
- 
--    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
--        && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
-@@ -1347,12 +1352,12 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
-      * trapping to EL2 or EL3 for other accesses.
-      */
-     int el = arm_current_el(env);
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
- 
-     if (el == 0 && !(env->cp15.c9_pmuserenr & 1)) {
-         return CP_ACCESS_TRAP;
-     }
--    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
--        && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
-@@ -1431,7 +1436,8 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-     bool enabled, prohibited, filtered;
-     bool secure = arm_is_secure(env);
-     int el = arm_current_el(env);
--    uint8_t hpmn = env->cp15.mdcr_el2 & MDCR_HPMN;
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    uint8_t hpmn = mdcr_el2 & MDCR_HPMN;
- 
-     if (!arm_feature(env, ARM_FEATURE_PMU)) {
-         return false;
-@@ -1441,13 +1447,13 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-             (counter < hpmn || counter == 31)) {
-         e = env->cp15.c9_pmcr & PMCRE;
-     } else {
--        e = env->cp15.mdcr_el2 & MDCR_HPME;
-+        e = mdcr_el2 & MDCR_HPME;
-     }
-     enabled = e && (env->cp15.c9_pmcnten & (1 << counter));
- 
-     if (!secure) {
-         if (el == 2 && (counter < hpmn || counter == 31)) {
--            prohibited = env->cp15.mdcr_el2 & MDCR_HPMD;
-+            prohibited = mdcr_el2 & MDCR_HPMD;
-         } else {
-             prohibited = false;
-         }
+     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, VH) != 0;
 -- 
 2.29.2
 

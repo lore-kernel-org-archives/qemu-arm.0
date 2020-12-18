@@ -1,60 +1,60 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2171553lfq;
-        Fri, 18 Dec 2020 02:53:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwtWR5I3+mVmqqSzoWBvy7ZUDt2PxoNnOIJ4Q75L2Iz+qN7ARlYtAHupV2yrbcNfTA5J1Rn
-X-Received: by 2002:a5b:702:: with SMTP id g2mr4678517ybq.407.1608288835171;
-        Fri, 18 Dec 2020 02:53:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608288835; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2173319lfq;
+        Fri, 18 Dec 2020 02:56:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxZYZc97DN5znodfjxbPFAAvzQeL27HkzlPo/UO5s1nKdOz9c1cs/L+cqLGZTnD3pJywZ/I
+X-Received: by 2002:a25:234c:: with SMTP id j73mr5217217ybj.116.1608289010085;
+        Fri, 18 Dec 2020 02:56:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608289010; cv=none;
         d=google.com; s=arc-20160816;
-        b=sajyOaVR7DNkmoPoIyfny0fZ0Cs+hoY4DLSvnIH5/5HVAEwupfXa3hrPBsOH6nQzIH
-         ywq/q3e3BLFnWZAc25bo/Nvr/JHo9fKfw5flW+weQXT/0oNGvUlKaa9EiKVXCle9Uf/D
-         58rW+GdVuJG7H1fNxMZWtzYySCuI8MEJHBeX5A9HfrEH4SxEWc0kW6bnUlZ30nK2S0yj
-         6MZ0bYvsmulHiXVO9npZMIKGXELXDupbsBfd1XFbGiQ7FSPAl8J8dxGEk/Bxxllqfzi9
-         TziADJGgoXvzC0VlvAqYOe+vnWkDbE+NoC0KMECEdi/UXyL71hrXT7BbAEnQmZKRVKia
-         4Mrg==
+        b=mT+2VC+ycw19GEaphrPEyiBSh8PYskto0CS/OpP2C7IPNifA6aYOsAVtV9YmNJ3/Hc
+         i2RxANg3eGx7LahS8jIlxgh4B3WE8dk+kO4p0jjtW9d3qdhHoXYDkkLl764nzmYSRW8H
+         Fd4Ist5HgIrZeXxQgqJc7B4w5VAIvZoaJ4tOEdzMdbLtWExd3rGkjN9J2YX7h38ask5Z
+         na/wbJT4kkBGnk0WdBeRGTSlrdTWx4oVc/6HVkVwSePfhrbwLnee7nnv7kGkLf2110Ka
+         z3e4RplXlWXWdMMn8LjKs+9vv5zhjUFoKslCSKHvNxEyT0Enh516ng8hdAYy8KKCKddA
+         lV+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=qWb7KGxMPSHlY7UQHKn5vkuKHgIx02pv6Hxr/u5u6Bc=;
-        b=Vrvcwq31yNcwRvXQ3sW8VixKvcwueQstO8fUvZnZM67gAT1+2b3Cn6xshoKt1xBVki
-         15uIRG5ydsoCq/sSOnE66eBV2mJE60HZhTD3SvZcct/3COB8fB7ylMpghWAWPT8HkAVB
-         45sQMik6o8aUPX/VvnGygsDq3g7MqBus3+k4amahxYG+m2C+OT8Q62HHt7E0S1O1M7Wn
-         iADPXELvyDCpO0xcaLLCzSoyXitSR1Uv+n0dHaAAVpU/ZrKBqAGYvfIfXps8B/SJmYIh
-         vwQcToXbbfF/fCczYiezqxdTHp9GN2AcJ/JeNvOLCCGiOfZa4lMHyhhe/TrieKvvzMGG
-         qnuA==
+        bh=1hehaVR7oQwiyE7Ji/Y6iAQ20rRANbkpUOsIqzYGc0s=;
+        b=RmGVZUm0zwQfX2kY0hhLVCRG+JPXx7NlvAP7FoxzsjqK34qAf3ww9+u0xbnry4RibE
+         wUYCH5s12MkWrNw6N+tc9Xlg9/UhUZ5CUGClcLbnbgT6jarF59NIxJ0dJozrZPAOyv1c
+         5GwUKO+xNtCUghf0zTpljfwnei0U19P2hONgRkTEOnD0gHWvCCAV/PbwCRTPnxA1CsLF
+         zxbnV1cvBrplypm40ZzxU1OxTKfDQehLVlN0vqDEFejrVPmlixbbI8Gi5eD8U+31fT3J
+         3VQT0LeTVOCKY+qOL25rb1qSGZ+OLoCs0tQhRFcGgpYo/c9bl3tBV4Pr2NVpCy9rjCZb
+         2f6A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3si8494523ybk.368.2020.12.18.02.53.55
+        by mx.google.com with ESMTPS id v201si8778449ybe.88.2020.12.18.02.56.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Dec 2020 02:53:55 -0800 (PST)
+        Fri, 18 Dec 2020 02:56:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50532 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kqDOT-00084r-0W
-	for alex.bennee@linaro.org; Fri, 18 Dec 2020 05:53:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46892)
+	id 1kqDRJ-0003kp-ER
+	for alex.bennee@linaro.org; Fri, 18 Dec 2020 05:56:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kqD9Z-00075R-OZ; Fri, 18 Dec 2020 05:38:29 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:55304
+ id 1kqD9b-00076r-U1; Fri, 18 Dec 2020 05:38:31 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:55306
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kqD9X-0003LX-E4; Fri, 18 Dec 2020 05:38:29 -0500
+ id 1kqD9Y-0003Lr-5M; Fri, 18 Dec 2020 05:38:31 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id B0E9760726;
- Fri, 18 Dec 2020 11:38:03 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 3B027607AF;
+ Fri, 18 Dec 2020 11:38:04 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 15/18] target/arm: set HPFAR_EL2.NS on secure stage 2 faults
-Date: Fri, 18 Dec 2020 12:37:56 +0200
-Message-Id: <20201218103759.19929-15-remi.denis.courmont@huawei.com>
+Subject: [PATCH 17/18] target/arm: enable Secure EL2 in max CPU
+Date: Fri, 18 Dec 2020 12:37:58 +0200
+Message-Id: <20201218103759.19929-17-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <3337797.iIbC2pHGDl@basile.remlab.net>
 References: <3337797.iIbC2pHGDl@basile.remlab.net>
@@ -84,103 +84,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jpvuAMYIImZO
+X-TUID: 7iwxlpEObIKT
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h        | 2 ++
- target/arm/helper.c     | 6 ++++++
- target/arm/internals.h  | 2 ++
- target/arm/tlb_helper.c | 3 +++
- 4 files changed, 13 insertions(+)
+ target/arm/cpu64.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9de4224f22..e5c05111e1 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1482,6 +1482,8 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
- #define HCR_TWEDEN    (1ULL << 59)
- #define HCR_TWEDEL    MAKE_64BIT_MASK(60, 4)
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 7cf9fc4bc6..3dc2f5da6c 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -641,6 +641,7 @@ static void aarch64_max_initfn(Object *obj)
+         t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
+         t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);
+         t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);
++        t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);
+         cpu->isar.id_aa64pfr0 = t;
  
-+#define HPFAR_NS      (1ULL << 63)
-+
- #define SCR_NS                (1U << 0)
- #define SCR_IRQ               (1U << 1)
- #define SCR_FIQ               (1U << 2)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5147d77861..f1c6b5b8ba 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3444,6 +3444,9 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-                 target_el = 3;
-             } else {
-                 env->cp15.hpfar_el2 = extract64(fi.s2addr, 12, 47) << 4;
-+                if (arm_is_secure_below_el3(env) && fi.s1ns) {
-+                    env->cp15.hpfar_el2 |= HPFAR_NS;
-+                }
-                 target_el = 2;
-             }
-             take_exc = true;
-@@ -10430,6 +10433,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-             fi->s2addr = addr;
-             fi->stage2 = true;
-             fi->s1ptw = true;
-+            fi->s1ns = !*is_secure;
-             return ~0;
-         }
-         if ((arm_hcr_el2_eff(env) & HCR_PTW) &&
-@@ -10442,6 +10446,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-             fi->s2addr = addr;
-             fi->stage2 = true;
-             fi->s1ptw = true;
-+            fi->s1ns = !*is_secure;
-             return ~0;
-         }
- 
-@@ -11350,6 +11355,7 @@ do_fault:
-     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
-     fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_Stage2 ||
-                                mmu_idx == ARMMMUIdx_Stage2_S);
-+    fi->s1ns = mmu_idx == ARMMMUIdx_Stage2;
-     return true;
- }
- 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 3aec10263e..27cc93f15a 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -593,6 +593,7 @@ typedef enum ARMFaultType {
-  * @s2addr: Address that caused a fault at stage 2
-  * @stage2: True if we faulted at stage 2
-  * @s1ptw: True if we faulted at stage 2 while doing a stage 1 page-table walk
-+ * @s1ns: True if we faulted on a non-secure IPA while in secure state
-  * @ea: True if we should set the EA (external abort type) bit in syndrome
-  */
- typedef struct ARMMMUFaultInfo ARMMMUFaultInfo;
-@@ -603,6 +604,7 @@ struct ARMMMUFaultInfo {
-     int domain;
-     bool stage2;
-     bool s1ptw;
-+    bool s1ns;
-     bool ea;
- };
- 
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index b35dc8a011..df85079d9f 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -63,6 +63,9 @@ static void QEMU_NORETURN arm_deliver_fault(ARMCPU *cpu, vaddr addr,
-     if (fi->stage2) {
-         target_el = 2;
-         env->cp15.hpfar_el2 = extract64(fi->s2addr, 12, 47) << 4;
-+        if (arm_is_secure_below_el3(env) && fi->s1ns) {
-+            env->cp15.hpfar_el2 |= HPFAR_NS;
-+        }
-     }
-     same_el = (arm_current_el(env) == target_el);
- 
+         t = cpu->isar.id_aa64pfr1;
 -- 
 2.29.2
 

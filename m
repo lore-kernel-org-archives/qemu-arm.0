@@ -1,66 +1,66 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2347522lfq;
-        Fri, 18 Dec 2020 06:33:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz1Q+AiqIpiaLz+/nw+1cGJn6iBoWFh2QDfI4e7+svjzUTQbSyVZhSX4Ywobqhir4DdkMjR
-X-Received: by 2002:a25:690b:: with SMTP id e11mr6115393ybc.314.1608301983640;
-        Fri, 18 Dec 2020 06:33:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608301983; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2348212lfq;
+        Fri, 18 Dec 2020 06:33:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxyzBImyCFpitSQcXa+hkFXYLSSWXk6pkrqagdYpEDCQk3aBJu1SJJ0MDVsHZNYYb2VFQQw
+X-Received: by 2002:a25:b703:: with SMTP id t3mr6716937ybj.96.1608302023952;
+        Fri, 18 Dec 2020 06:33:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608302023; cv=none;
         d=google.com; s=arc-20160816;
-        b=HgJivMjqnMnFsS5/TjFP5m9eSG1RZ9hedsLXTbqsySo7TZ4NMFqtkuI+Fs5ABCC6FF
-         i+Ax376JWN/xGuQfjgYKiR5mV+1mFLXR9SOA1MJ5uV8ud1rP9HWkWG50K7STzcnJyVq6
-         DfIt/7vs9+vnfIAHXOsGvJ0qnaCVK9LC2/OcXzhpj8jTMYKR/dNVhViNMs8Z2LrdyxdN
-         dQCbuc875p/ZMRYqWBWIQVcOsUVe5Z3GcjliN4spJjigvThg0hfkwoL1zBmNXbIubCLP
-         OqAdFE846Z/GSe8Yq06jG4aWGJmP8e0FoHzMk3cbGbK4QvhLvvUfQB7mcRsRTfOE7eUG
-         07Ew==
+        b=Vrl7oQYDom0jrZ6Btq7KiFh9TKn4IcNl26eIYHL2iUYvBozmuoAHTGqcjlvDR5FjJE
+         uxwtHBJN6L4aJXQfkZmhPa7TcHQYWcmAETWuVulEvO5jE0t146mtZH7H/lAVV3qeuZTT
+         SM/sunttiri1TzK8fwY309kM6gakM2YoDNU9D/DMOfGB9FareLmLZvE/Ns1x2HgsAKGG
+         l7YRd1wLYdPH6ZmIsbY9NN9Nb2p1zwEb4lIgTDVIayDclfVLHediZXOveWKL3kZCjCcm
+         b1pBQXoUcs02g9owx47mDc2dc0vU+Z+WWUmuYvVJAgu3q+U61jGIZ7WkJFrFWUklJvr/
+         lQ/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:message-id:date:subject:to:from;
-        bh=xI5D3KG2I1aziZcUtcVkYavWnfgdEkuOHf8JBCbfNZo=;
-        b=VTdO3LmZJY12ie0FrlHq3GHf76nAWKSmtZG2fkmtaaa/ahy7q66sDsVcLS2A842Kh0
-         yNm/Zky1asezycr0MGsz4zVAn4pK3927/F6exfILsIiE+tw+FBZ7om635pp2beOk/czi
-         edch2+onLZ7WEB0lxAug33dEF6lJ2jPLuU32V81RmBHdJ5xOMq/6k5jJznZZLwIYTjes
-         sovskIjS6qhRr2Kl6eSnt/2CfypBMAEzM9WvzITj3AMGar46hQB5y+U6GVDS+utaKZtf
-         WTTPWcKSIHEe0RpohwLu5dpTCSnoy/7zVKaPRK5hV/ec7D+tBotQvjxyd1FfvR2Ifa/o
-         iI2g==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=fl6zaWovK9QmVLc9FgNyuGc9BhVvNvUwYhDm2CqMm/Q=;
+        b=xwb55aRSchiDMnwfnTB7wkras1jSAGSDXKcn1MeziaTZft1aMxeZ/S67IKEZayXyX2
+         B79U8PU7bHrYWdGNlGsK81hzDkRt5DI4LHfmn3QSqaVxJzpqmSz0c2IVgKB9c8O7nLjH
+         9axTJKqn3eLkWeNqOHt9t2Gl0BYlz6MAJFe00DTPHhA9/UoszwthlitfE4t4ZsbzV02M
+         lNNcj0B/KmewD5WFzPTUt6/SZBh7F+jMfK03ydEdffbJSSoMA1VFTwc7+UlEDyJpbu3J
+         TdBZ71pR2+eyik88/QctoxUa3cSbCytyz2YdVDnOtPyfDbwNVuk1n1un6BkRSeFKlyvC
+         uUtA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p137si8011322ybg.226.2020.12.18.06.33.03
+        by mx.google.com with ESMTPS id w11si8315393ybs.204.2020.12.18.06.33.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Dec 2020 06:33:03 -0800 (PST)
+        Fri, 18 Dec 2020 06:33:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36360 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kqGoZ-00016p-1e
-	for alex.bennee@linaro.org; Fri, 18 Dec 2020 09:33:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41158)
+	id 1kqGpD-0001Wm-96
+	for alex.bennee@linaro.org; Fri, 18 Dec 2020 09:33:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kqGoP-00015g-Os; Fri, 18 Dec 2020 09:32:54 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56798
+ id 1kqGow-0001V8-1z; Fri, 18 Dec 2020 09:33:26 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56810
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kqGoN-0007Og-9J; Fri, 18 Dec 2020 09:32:53 -0500
-Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
- [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
- (Authenticated sender: remi)
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id BC81C5FC85;
- Fri, 18 Dec 2020 15:32:47 +0100 (CET)
-From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
+ id 1kqGot-0007YD-8F; Fri, 18 Dec 2020 09:33:25 -0500
+Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 102F85FFBB;
+ Fri, 18 Dec 2020 15:33:22 +0100 (CET)
+From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [RFC][PATCH 0/3] ARMv8.4-TTST extension
-Date: Fri, 18 Dec 2020 16:32:45 +0200
-Message-ID: <7884934.NyiUUSuA9g@basile.remlab.net>
-Organization: Huawei Technologies, Finland
+Subject: [PATCH 3/3] target/arm: enable Small Translation tables in max CPU
+Date: Fri, 18 Dec 2020 16:33:21 +0200
+Message-Id: <20201218143321.102872-3-remi.denis.courmont@huawei.com>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <7884934.NyiUUSuA9g@basile.remlab.net>
+References: <7884934.NyiUUSuA9g@basile.remlab.net>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
  helo=ns207790.ip-94-23-215.eu
 X-Spam_score_int: -16
@@ -84,30 +84,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tcrJRbmrzLIx
+X-TUID: PhG+EPmv1pWX
 
-	Hello,
+From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-The following changes since commit 6d3fd902ab9c4d6762532d4b5cce2275e458aa32:
+Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+---
+ target/arm/cpu64.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-  target/arm: refactor vae1_tlbmask() (2020-12-18 12:27:56 +0200)
-
-follow. They add support for small translation tables, allowing for=20
-translation regimes as small as 16-bits. This extension is nominally a=20
-required dependency of Secure EL2.
-
-=2D---------------------------------------------------------------
-R=C3=A9mi Denis-Courmont (3):
-      target/arm: keep translation start level unsigned
-      target/arm: ARMv8.4-TTST extension
-      target/arm: enable Small Translation tables in max CPU
-
- target/arm/cpu.h    |  5 +++++
- target/arm/cpu64.c  |  1 +
- target/arm/helper.c | 25 +++++++++++++++----------
- 3 files changed, 21 insertions(+), 10 deletions(-)
-
-=2D-=20
-R=C3=A9mi Denis-Courmont
-
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 3dc2f5da6c..8d3473db3e 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -670,6 +670,7 @@ static void aarch64_max_initfn(Object *obj)
+         t = cpu->isar.id_aa64mmfr2;
+         t = FIELD_DP64(t, ID_AA64MMFR2, UAO, 1);
+         t = FIELD_DP64(t, ID_AA64MMFR2, CNP, 1); /* TTCNP */
++        t = FIELD_DP64(t, ID_AA64MMFR2, ST, 1); /* TTST */
+         cpu->isar.id_aa64mmfr2 = t;
+ 
+         /* Replicate the same data to the 32-bit id registers.  */
+-- 
+2.29.2
 

@@ -1,158 +1,165 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2484210lfq;
-        Fri, 18 Dec 2020 09:14:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzHtlQsg+rlG52s03/F7fXwytPj+FGBKcBpUAHmbwWAbFXm4tfIROUedixXau2AIbNj+Qn2
-X-Received: by 2002:a25:7ac3:: with SMTP id v186mr7539616ybc.191.1608311647218;
-        Fri, 18 Dec 2020 09:14:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608311647; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2089340lfq;
+        Fri, 18 Dec 2020 00:46:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz+qku0bu+sK+0c1qL9coMuccdi084UK3TJhqbY8/cdV7y3FXM5cWjPlC13N698CBT+ev8X
+X-Received: by 2002:a25:d609:: with SMTP id n9mr4690555ybg.396.1608281184692;
+        Fri, 18 Dec 2020 00:46:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608281184; cv=none;
         d=google.com; s=arc-20160816;
-        b=j9cwnrPvDggY6XEjbD8XKUmEWHTTN6YScSWiVfeEtDWOk55djjYrO6an/h0f7mcNCp
-         DwkHK1S8OQyoI8/Lu2Be+2p+RsrlJ7CWyV1p6tlDHHjp2FwqVenPwFk1zhURz6Y7tvch
-         WBPBhODw9F/SEj8EXSRXkZbeARs1AmgOUrxPEdUK3uRnof+xYpYIleBrJdeYE14byYlW
-         RTn88LznbssBZCFYbYB7BwZgxceCAhF+N9dT3H0nRGRkAe9ofz06RLHoWS8z5yYE9p+x
-         ivo+XJlwGCPhPIvJmKvFBlIsVCF4GwyW0ehpxiK+lHqAJkw7+44X/7Ye/s7Sk7OmDOuq
-         cMLw==
+        b=EuBRKjjqMWnM47n5ZEougjnvZYREYnlbK5uVa4Ref3uJSSzVGbFf8m1CR9d4IugYdS
+         LP+kfbtc/kAWxjko4C6xEpi71BytvhZnEDxSLHJDwvMqI4xnRANwIAC50rLuvOJkvWkT
+         p6aNAuAIevCxxC8fUZIXPhUFR2CXMr9Tnulrlmbq5foNqnr/LKeLLEqR8hme5XlkaOfQ
+         NcH8KbmMgUDZHmqbzDZkD6+/ks6NlMcvUGy96qR8hPnfyIYZGeoGb+soce8AL7aMAgY+
+         zmynpEe8EZbpYxh8BXNhhYKCQmSuc6ZvaPfDJaO8+VGWSMrolQZ5wIe9Cb7fUOTfHFww
+         DxZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=BPVhun/R5Pjm/1P81mrRRfh1iV7PU5izmcRUhojmqUg=;
-        b=rU/Q5V8ud5z0D3cJFIVQvBQpQV6fzZelHNc/1c7MmLUl55mfdQPH4XA/xwF0P8zVS6
-         p1ZDxvt6SQ6jOM8FqrVFByKh4oDDyyMQeFo8pWFIMye7I22/o9nHqRs7RKlYOEFWKczS
-         mXvtGAP5UH4KR7mp27woO58ieVw2d5nY7U5QrZfc5XeKFQglgJlchxZMfnySIVq6muZc
-         J6vRcVnhJB6tp75YUM3eaC4rnEmYCK1O7pThWjCp071Z7ln5Wvjpf/8x+3GozTAobD+I
-         UkN48sxOGKVIGYENHyaqiHWG4q/fwflGxSVfYMq2inmm9amsMiIcOfX/aitt/exxnEmO
-         TFew==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=uflIc8/5R8Vj9Sn6BLF79IkXd27YiA9YI4s6jbUWtek=;
+        b=lX8IGMs60XXlZBAcl85Qn9DSSQlLbm69j3KJwp8SVBoQAIE0EbKrE6ZgIOHj4N6ban
+         WX7T6O7DKNPJV55l68fIN7TN9wY/WQXSP0Ay6L51e8rV6OEV6H+JCebdkGQKJ85+JW4m
+         tlCFJr7wKYYlHUWSOAYkRjYq1bM269YA32qbYpxFlq3b3j4AYxYmj9+hW66sL3gFFpAv
+         +Isp8uZaa6O+ssT40ciRzSG2Tsfpd9F9D93RbbXgO2V6d/10xovAyp2of5m1qzFuUnUE
+         S/7TTYknPrZYBpxrjuj+gILl5ZLwRDpi7TzDFvUomUkuvVTHwZunY4kk2onyWUKNcdQM
+         0HBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ePbvw/Vn";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b12si8536546ybn.336.2020.12.18.09.14.07
+        by mx.google.com with ESMTPS id w17si7636303ybs.268.2020.12.18.00.46.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Dec 2020 09:14:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Dec 2020 00:46:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ePbvw/Vn";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42070 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kqJKQ-0006h7-8z
-	for alex.bennee@linaro.org; Fri, 18 Dec 2020 12:14:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57388)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kqBP6-0001mx-2a
+	for alex.bennee@linaro.org; Fri, 18 Dec 2020 03:46:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kqJJK-0006XW-3p
- for qemu-devel@nongnu.org; Fri, 18 Dec 2020 12:12:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32152)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kqJJI-0008Fq-OW
- for qemu-devel@nongnu.org; Fri, 18 Dec 2020 12:12:57 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1608311575;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=BPVhun/R5Pjm/1P81mrRRfh1iV7PU5izmcRUhojmqUg=;
- b=ePbvw/VnfHJMlG8dJG4x8oNyNM9P0SAgtzsaPaMZS+PRqF99aPDHmYqx8l2vJPHsb6jygr
- JUq8W9VmHFFsaZqQsaIkVoIct49Z94i7GPO5UhrQwA0r0FqTnnTPFFcpTMO/vF2DsvDUHB
- tLfBrK0He0Tu4VL8IZ9UtImsIA4AFCo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-466-gVQNQRmINOGx-Fh7DnyYmw-1; Fri, 18 Dec 2020 12:12:52 -0500
-X-MC-Unique: gVQNQRmINOGx-Fh7DnyYmw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6E6B9809DCD;
- Fri, 18 Dec 2020 17:12:51 +0000 (UTC)
-Received: from localhost (ovpn-112-107.ams2.redhat.com [10.36.112.107])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0D0FD648A8;
- Fri, 18 Dec 2020 17:12:49 +0000 (UTC)
-Date: Thu, 17 Dec 2020 10:09:48 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: zhukeqian <zhukeqian1@huawei.com>
-Subject: Re: Ping: [PATCH v2 0/2] bugfix: Decrease dirty bitmap blocks after
- we remove ramblock
-Message-ID: <20201217100948.GF4338@stefanha-x1.localdomain>
-References: <20201130131104.10600-1-zhukeqian1@huawei.com>
- <34d6fc79-aafb-54cc-6a07-4f4c2c0e0db8@huawei.com>
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kqBOt-0001lE-PW; Fri, 18 Dec 2020 03:46:13 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2567)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kqBOl-0006RJ-LO; Fri, 18 Dec 2020 03:46:11 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Cy2W42NYwzhsBK;
+ Fri, 18 Dec 2020 16:45:20 +0800 (CST)
+Received: from [10.174.187.37] (10.174.187.37) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 18 Dec 2020 16:45:41 +0800
+Subject: Ping: [PATCH v2] bugfix: hostmem: Free host_nodes list right after
+ visited
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20201210075226.20196-1-zhukeqian1@huawei.com>
+From: Keqian Zhu <zhukeqian1@huawei.com>
+Message-ID: <3f8e6aa5-f5eb-9a84-3089-e82a7de74ad0@huawei.com>
+Date: Fri, 18 Dec 2020 16:45:41 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <34d6fc79-aafb-54cc-6a07-4f4c2c0e0db8@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="hUH5gZbnpyIv7Mn4"
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -7
-X-Spam_score: -0.8
-X-Spam_bar: /
-X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_24_48=1.34,
- DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20201210075226.20196-1-zhukeqian1@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.37]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=zhukeqian1@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>,
- kuhn.chenqun@huawei.com, qemu-devel@nongnu.org,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
- wanghaibin.wang@huawei.com, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hvUKTC5jWVP+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, wanghaibin.wang@huawei.com,
+ qemu-devel@nongnu.org, alex.chen@huawei.com, qemu-arm@nongnu.org,
+ kuhn.chenqun@huawei.com, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YTc8By8MkQ8M
 
---hUH5gZbnpyIv7Mn4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi Peter,
 
-On Thu, Dec 03, 2020 at 10:02:05PM +0800, zhukeqian wrote:
-> Hi folks, kindly ping ...
->=20
-> This bugfix can save several MBs memory, waiting for review, thanks.
+Friendly ping :-) Are you going to queue this?
 
-Paolo: Please take a look when you get a chance.
+Thanks,
+Keqian
 
-I left a comment because Patch 1 doesn't seem to take RCU into account.
-
-Stefan
-
---hUH5gZbnpyIv7Mn4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/bLmwACgkQnKSrs4Gr
-c8j6hQf/eeMf9jaNvYJ49d6JoWBgMsnbnbMFYo7Vb+cPC0dqOGmQdKMI9S2d0Uht
-44AGRBF0JaN6RGDtPc1RmOSUAZXLbjmEmQ+R3PNHwLsvbmHtEkmYnuRCSfDr/AT/
-bEdhervbOiFwmdpB3wFt9XS0KFTMj8t2GAE16GR8K7f7rThnI6bYxZWeUAkpcXlT
-Q/AAjfyqyKGO3EZYoyPGVEVoD00jOKdi2xcxgsuDwWkLp7kGCd7HLB6rApIOgMdv
-tYj+ETB9CpYiDfPi6sq3N+iLG8jVgTT4tVFcY1gL4zmyK6FKIHqbvaznbehA5vY4
-d0JRf3oj7VSG03rvDHl4+VDXTSbTVA==
-=LXyt
------END PGP SIGNATURE-----
-
---hUH5gZbnpyIv7Mn4--
-
+On 2020/12/10 15:52, Keqian Zhu wrote:
+> In host_memory_backend_get_host_nodes, we build host_nodes
+> list and output it to v (a StringOutputVisitor) but forget
+> to free the list. This fixes the memory leak.
+> 
+> The memory leak stack:
+> 
+>  Direct leak of 32 byte(s) in 2 object(s) allocated from:
+>     #0 0xfffda30b3393 in __interceptor_calloc (/usr/lib64/libasan.so.4+0xd3393)
+>     #1 0xfffda1d28b9b in g_malloc0 (/usr/lib64/libglib-2.0.so.0+0x58b9b)
+>     #2 0xaaab05ca6e43 in host_memory_backend_get_host_nodes backends/hostmem.c:94
+>     #3 0xaaab061ddf83 in object_property_get_uint16List qom/object.c:1478
+>     #4 0xaaab05866513 in query_memdev hw/core/machine-qmp-cmds.c:312
+>     #5 0xaaab061d980b in do_object_child_foreach qom/object.c:1001
+>     #6 0xaaab0586779b in qmp_query_memdev hw/core/machine-qmp-cmds.c:328
+>     #7 0xaaab0615ed3f in qmp_marshal_query_memdev qapi/qapi-commands-machine.c:327
+>     #8 0xaaab0632d647 in do_qmp_dispatch qapi/qmp-dispatch.c:147
+>     #9 0xaaab0632d647 in qmp_dispatch qapi/qmp-dispatch.c:190
+>     #10 0xaaab0610f74b in monitor_qmp_dispatch monitor/qmp.c:120
+>     #11 0xaaab0611074b in monitor_qmp_bh_dispatcher monitor/qmp.c:209
+>     #12 0xaaab063caefb in aio_bh_poll util/async.c:117
+>     #13 0xaaab063d30fb in aio_dispatch util/aio-posix.c:459
+>     #14 0xaaab063cac8f in aio_ctx_dispatch util/async.c:268
+>     #15 0xfffda1d22a6b in g_main_context_dispatch (/usr/lib64/libglib-2.0.so.0+0x52a6b)
+>     #16 0xaaab063d0e97 in glib_pollfds_poll util/main-loop.c:218
+>     #17 0xaaab063d0e97 in os_host_main_loop_wait util/main-loop.c:241
+>     #18 0xaaab063d0e97 in main_loop_wait util/main-loop.c:517
+>     #19 0xaaab05c8bfa7 in main_loop /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:1791
+>     #20 0xaaab05713bc3 in main /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:4473
+>     #21 0xfffda0a83ebf in __libc_start_main (/usr/lib64/libc.so.6+0x23ebf)
+>     #22 0xaaab0571ed5f  (aarch64-softmmu/qemu-system-aarch64+0x88ed5f)
+>  SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
+> 
+> Fixes: 4cf1b76bf1e2 (hostmem: add properties for NUMA memory policy)
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Tested-by: Chen Qun <kuhn.chenqun@huawei.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> ---
+>  backends/hostmem.c | 1 +
+>  1 file changed, 1 insertion(+)
+> ---
+> 
+> v2:
+>  - Update commit message.
+>  - Add Chen Qun's T.b.
+>  - Add Igor's R.b.
+> 
+> diff --git a/backends/hostmem.c b/backends/hostmem.c
+> index 4bde00e8e7..9f9ac95edd 100644
+> --- a/backends/hostmem.c
+> +++ b/backends/hostmem.c
+> @@ -105,6 +105,7 @@ host_memory_backend_get_host_nodes(Object *obj, Visitor *v, const char *name,
+>  
+>  ret:
+>      visit_type_uint16List(v, name, &host_nodes, errp);
+> +    qapi_free_uint16List(host_nodes);
+>  }
+>  
+>  static void
+> 

@@ -1,111 +1,381 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2173319lfq;
-        Fri, 18 Dec 2020 02:56:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxZYZc97DN5znodfjxbPFAAvzQeL27HkzlPo/UO5s1nKdOz9c1cs/L+cqLGZTnD3pJywZ/I
-X-Received: by 2002:a25:234c:: with SMTP id j73mr5217217ybj.116.1608289010085;
-        Fri, 18 Dec 2020 02:56:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608289010; cv=none;
-        d=google.com; s=arc-20160816;
-        b=mT+2VC+ycw19GEaphrPEyiBSh8PYskto0CS/OpP2C7IPNifA6aYOsAVtV9YmNJ3/Hc
-         i2RxANg3eGx7LahS8jIlxgh4B3WE8dk+kO4p0jjtW9d3qdhHoXYDkkLl764nzmYSRW8H
-         Fd4Ist5HgIrZeXxQgqJc7B4w5VAIvZoaJ4tOEdzMdbLtWExd3rGkjN9J2YX7h38ask5Z
-         na/wbJT4kkBGnk0WdBeRGTSlrdTWx4oVc/6HVkVwSePfhrbwLnee7nnv7kGkLf2110Ka
-         z3e4RplXlWXWdMMn8LjKs+9vv5zhjUFoKslCSKHvNxEyT0Enh516ng8hdAYy8KKCKddA
-         lV+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=1hehaVR7oQwiyE7Ji/Y6iAQ20rRANbkpUOsIqzYGc0s=;
-        b=RmGVZUm0zwQfX2kY0hhLVCRG+JPXx7NlvAP7FoxzsjqK34qAf3ww9+u0xbnry4RibE
-         wUYCH5s12MkWrNw6N+tc9Xlg9/UhUZ5CUGClcLbnbgT6jarF59NIxJ0dJozrZPAOyv1c
-         5GwUKO+xNtCUghf0zTpljfwnei0U19P2hONgRkTEOnD0gHWvCCAV/PbwCRTPnxA1CsLF
-         zxbnV1cvBrplypm40ZzxU1OxTKfDQehLVlN0vqDEFejrVPmlixbbI8Gi5eD8U+31fT3J
-         3VQT0LeTVOCKY+qOL25rb1qSGZ+OLoCs0tQhRFcGgpYo/c9bl3tBV4Pr2NVpCy9rjCZb
-         2f6A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v201si8778449ybe.88.2020.12.18.02.56.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Dec 2020 02:56:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60212 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kqDRJ-0003kp-ER
-	for alex.bennee@linaro.org; Fri, 18 Dec 2020 05:56:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46956)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kqD9b-00076r-U1; Fri, 18 Dec 2020 05:38:31 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:55306
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1kqD9Y-0003Lr-5M; Fri, 18 Dec 2020 05:38:31 -0500
-Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 3B027607AF;
- Fri, 18 Dec 2020 11:38:04 +0100 (CET)
-From: remi.denis.courmont@huawei.com
-To: qemu-arm@nongnu.org
-Subject: [PATCH 17/18] target/arm: enable Secure EL2 in max CPU
-Date: Fri, 18 Dec 2020 12:37:58 +0200
-Message-Id: <20201218103759.19929-17-remi.denis.courmont@huawei.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <3337797.iIbC2pHGDl@basile.remlab.net>
-References: <3337797.iIbC2pHGDl@basile.remlab.net>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id a17sm13644131wrs.20.2020.12.18.03.27.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 18 Dec 2020 03:27:13 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 117011FF90;
+	Fri, 18 Dec 2020 11:27:08 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v2 4/9] gdbstub: implement a softmmu based test
+Date: Fri, 18 Dec 2020 11:27:02 +0000
+Message-Id: <20201218112707.28348-5-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201218112707.28348-1-alex.bennee@linaro.org>
+References: <20201218112707.28348-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7iwxlpEObIKT
+X-TUID: 6yIcD/+UmE2n
 
-From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+This adds a new tests that allows us to test softmmu only features
+including watchpoints. To do achieve this we need to:
 
-Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+  - add _exit: labels to the boot codes
+  - write a memory.py test case
+  - plumb the test case into the build system
+  - tweak the run_test script to:
+    - re-direct output when asked
+    - use socket based connection for all tests
+    - add a small pause before connection
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu64.c | 1 +
- 1 file changed, 1 insertion(+)
+ tests/guest-debug/run-test.py                 |  36 +++--
+ tests/tcg/aarch64/Makefile.softmmu-target     |   1 +
+ tests/tcg/aarch64/system/boot.S               |   1 +
+ tests/tcg/i386/Makefile.softmmu-target        |   1 +
+ tests/tcg/i386/system/boot.S                  |   2 +-
+ tests/tcg/multiarch/gdbstub/memory.py         | 130 ++++++++++++++++++
+ .../multiarch/system/Makefile.softmmu-target  |  19 ++-
+ tests/tcg/x86_64/Makefile.softmmu-target      |   1 +
+ tests/tcg/x86_64/system/boot.S                |   2 +-
+ 9 files changed, 181 insertions(+), 12 deletions(-)
+ create mode 100644 tests/tcg/multiarch/gdbstub/memory.py
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 7cf9fc4bc6..3dc2f5da6c 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -641,6 +641,7 @@ static void aarch64_max_initfn(Object *obj)
-         t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-         t = FIELD_DP64(t, ID_AA64PFR0, FP, 1);
-         t = FIELD_DP64(t, ID_AA64PFR0, ADVSIMD, 1);
-+        t = FIELD_DP64(t, ID_AA64PFR0, SEL2, 1);
-         cpu->isar.id_aa64pfr0 = t;
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 0c4f5c3808..8b91ff95af 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -16,6 +16,7 @@ import subprocess
+ import shutil
+ import shlex
+ import os
++from time import sleep
+ from tempfile import TemporaryDirectory
  
-         t = cpu->isar.id_aa64pfr1;
+ def get_args():
+@@ -27,10 +28,21 @@ def get_args():
+                         required=True)
+     parser.add_argument("--test", help="GDB test script",
+                         required=True)
+-    parser.add_argument("--gdb", help="The gdb binary to use", default=None)
++    parser.add_argument("--gdb", help="The gdb binary to use",
++                        default=None)
++    parser.add_argument("--output", help="A file to redirect output to")
+ 
+     return parser.parse_args()
+ 
++
++def log(output, msg):
++    if output:
++        output.write(msg + "\n")
++        output.flush()
++    else:
++        print(msg)
++
++
+ if __name__ == '__main__':
+     args = get_args()
+ 
+@@ -42,18 +54,25 @@ if __name__ == '__main__':
+     if not args.gdb:
+         print("We need gdb to run the test")
+         exit(-1)
++    if args.output:
++        output = open(args.output, "w")
++    else:
++        output = None
+ 
+     socket_dir = TemporaryDirectory("qemu-gdbstub")
+     socket_name = os.path.join(socket_dir.name, "gdbstub.socket")
+ 
+     # Launch QEMU with binary
+     if "system" in args.qemu:
+-        cmd = "%s %s %s -s -S" % (args.qemu, args.qargs, args.binary)
++        cmd = "%s %s %s -gdb unix:path=%s,server" % (args.qemu,
++                                                     args.qargs,
++                                                     args.binary,
++                                                     socket_name)
+     else:
+         cmd = "%s %s -g %s %s" % (args.qemu, args.qargs, socket_name,
+                                   args.binary)
+ 
+-    print("QEMU CMD: %s" % (cmd))
++    log(output, "QEMU CMD: %s" % (cmd))
+     inferior = subprocess.Popen(shlex.split(cmd))
+ 
+     # Now launch gdb with our test and collect the result
+@@ -63,16 +82,15 @@ if __name__ == '__main__':
+     # disable prompts in case of crash
+     gdb_cmd += " -ex 'set confirm off'"
+     # connect to remote
+-    if "system" in args.qemu:
+-        gdb_cmd += " -ex 'target remote localhost:1234'"
+-    else:
+-        gdb_cmd += " -ex 'target remote %s'" % (socket_name)
++    gdb_cmd += " -ex 'target remote %s'" % (socket_name)
+     # finally the test script itself
+     gdb_cmd += " -x %s" % (args.test)
+ 
+-    print("GDB CMD: %s" % (gdb_cmd))
+ 
+-    result = subprocess.call(gdb_cmd, shell=True);
++    sleep(1)
++    log(output, "GDB CMD: %s" % (gdb_cmd))
++
++    result = subprocess.call(gdb_cmd, shell=True, stdout=output)
+ 
+     # A negative result is the result of an internal gdb failure like
+     # a crash. We force a return of 0 so we don't fail the test on
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index 1057a8ac49..a7286ac295 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -15,6 +15,7 @@ CRT_PATH=$(AARCH64_SYSTEM_SRC)
+ LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
+ LDFLAGS=-Wl,-T$(LINK_SCRIPT)
+ TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
++EXTRA_RUNS+=$(MULTIARCH_RUNS)
+ CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
+ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+ 
+diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+index b14e94f332..e190b1efa6 100644
+--- a/tests/tcg/aarch64/system/boot.S
++++ b/tests/tcg/aarch64/system/boot.S
+@@ -197,6 +197,7 @@ __start:
+ 	bl	main
+ 
+ 	/* pass return value to sys exit */
++_exit:
+ 	mov    x1, x0
+ 	ldr    x0, =0x20026 /* ADP_Stopped_ApplicationExit */
+ 	stp    x0, x1, [sp, #-16]!
+diff --git a/tests/tcg/i386/Makefile.softmmu-target b/tests/tcg/i386/Makefile.softmmu-target
+index 1c8790eecd..5266f2335a 100644
+--- a/tests/tcg/i386/Makefile.softmmu-target
++++ b/tests/tcg/i386/Makefile.softmmu-target
+@@ -19,6 +19,7 @@ CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
+ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+ 
+ TESTS+=$(MULTIARCH_TESTS)
++EXTRA_RUNS+=$(MULTIARCH_RUNS)
+ 
+ # building head blobs
+ .PRECIOUS: $(CRT_OBJS)
+diff --git a/tests/tcg/i386/system/boot.S b/tests/tcg/i386/system/boot.S
+index 90aa174908..794c2cb0ad 100644
+--- a/tests/tcg/i386/system/boot.S
++++ b/tests/tcg/i386/system/boot.S
+@@ -76,7 +76,7 @@ _start:
+          */
+         call main
+ 
+-        /* output any non-zero result in eax to isa-debug-exit device */
++_exit:	/* output any non-zero result in eax to isa-debug-exit device */
+         test %al, %al
+         jz 1f
+         out %ax, $0xf4
+diff --git a/tests/tcg/multiarch/gdbstub/memory.py b/tests/tcg/multiarch/gdbstub/memory.py
+new file mode 100644
+index 0000000000..67864ad902
+--- /dev/null
++++ b/tests/tcg/multiarch/gdbstub/memory.py
+@@ -0,0 +1,130 @@
++from __future__ import print_function
++#
++# Test some of the softmmu debug features with the multiarch memory
++# test. It is a port of the original vmlinux focused test case but
++# using the "memory" test instead.
++#
++# This is launched via tests/guest-debug/run-test.py
++#
++
++import gdb
++import sys
++
++failcount = 0
++
++
++def report(cond, msg):
++    "Report success/fail of test"
++    if cond:
++        print("PASS: %s" % (msg))
++    else:
++        print("FAIL: %s" % (msg))
++        global failcount
++        failcount += 1
++
++
++def check_step():
++    "Step an instruction, check it moved."
++    start_pc = gdb.parse_and_eval('$pc')
++    gdb.execute("si")
++    end_pc = gdb.parse_and_eval('$pc')
++
++    return not (start_pc == end_pc)
++
++
++#
++# Currently it's hard to create a hbreak with the pure python API and
++# manually matching PC to symbol address is a bit flaky thanks to
++# function prologues. However internally QEMU's gdbstub treats them
++# the same as normal breakpoints so it will do for now.
++#
++def check_break(sym_name):
++    "Setup breakpoint, continue and check we stopped."
++    sym, ok = gdb.lookup_symbol(sym_name)
++    bp = gdb.Breakpoint(sym_name, gdb.BP_BREAKPOINT)
++
++    gdb.execute("c")
++
++    # hopefully we came back
++    end_pc = gdb.parse_and_eval('$pc')
++    report(bp.hit_count == 1,
++           "break @ %s (%s %d hits)" % (end_pc, sym.value(), bp.hit_count))
++
++    bp.delete()
++
++
++def do_one_watch(sym, wtype, text):
++
++    wp = gdb.Breakpoint(sym, gdb.BP_WATCHPOINT, wtype)
++    gdb.execute("c")
++    report_str = "%s for %s" % (text, sym)
++
++    if wp.hit_count > 0:
++        report(True, report_str)
++        wp.delete()
++    else:
++        report(False, report_str)
++
++
++def check_watches(sym_name):
++    "Watch a symbol for any access."
++
++    # Should hit for any read
++    do_one_watch(sym_name, gdb.WP_ACCESS, "awatch")
++
++    # Again should hit for reads
++    do_one_watch(sym_name, gdb.WP_READ, "rwatch")
++
++    # Finally when it is written
++    do_one_watch(sym_name, gdb.WP_WRITE, "watch")
++
++
++def run_test():
++    "Run through the tests one by one"
++
++    print("Checking we can step the first few instructions")
++    step_ok = 0
++    for i in range(3):
++        if check_step():
++            step_ok += 1
++
++    report(step_ok == 3, "single step in boot code")
++
++    # If we get here we have missed some of the other breakpoints.
++    print("Setup catch-all for _exit")
++    cbp = gdb.Breakpoint("_exit", gdb.BP_BREAKPOINT)
++
++    check_break("main")
++    check_watches("test_data[128]")
++
++    report(cbp.hit_count == 0, "didn't reach backstop")
++
++#
++# This runs as the script it sourced (via -x, via run-test.py)
++#
++try:
++    inferior = gdb.selected_inferior()
++    arch = inferior.architecture()
++    print("ATTACHED: %s" % arch.name())
++except (gdb.error, AttributeError):
++    print("SKIPPING (not connected)", file=sys.stderr)
++    exit(0)
++
++if gdb.parse_and_eval('$pc') == 0:
++    print("SKIP: PC not set")
++    exit(0)
++
++try:
++    # These are not very useful in scripts
++    gdb.execute("set pagination off")
++
++    # Run the actual tests
++    run_test()
++except (gdb.error):
++    print("GDB Exception: %s" % (sys.exc_info()[0]))
++    failcount += 1
++    pass
++
++# Finally kill the inferior and exit gdb with a count of failures
++gdb.execute("kill")
++exit(failcount)
+diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
+index db4bbeda44..4657f6e4cf 100644
+--- a/tests/tcg/multiarch/system/Makefile.softmmu-target
++++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
+@@ -7,8 +7,25 @@
+ # complications of building.
+ #
+ 
+-MULTIARCH_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/multiarch/system
++MULTIARCH_SRC=$(SRC_PATH)/tests/tcg/multiarch
++MULTIARCH_SYSTEM_SRC=$(MULTIARCH_SRC)/system
+ VPATH+=$(MULTIARCH_SYSTEM_SRC)
+ 
+ MULTIARCH_TEST_SRCS=$(wildcard $(MULTIARCH_SYSTEM_SRC)/*.c)
+ MULTIARCH_TESTS = $(patsubst $(MULTIARCH_SYSTEM_SRC)/%.c, %, $(MULTIARCH_TEST_SRCS))
++
++ifneq ($(HAVE_GDB_BIN),)
++GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
++
++run-gdbstub-memory: memory
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(HAVE_GDB_BIN) \
++		--qemu $(QEMU) \
++		--output $<.gdb.out \
++		--qargs \
++		"-monitor none -display none -chardev file$(COMMA)path=$<.out$(COMMA)id=output $(QEMU_OPTS)" \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/memory.py, \
++	"softmmu gdbstub support")
++
++MULTIARCH_RUNS += run-gdbstub-memory
++endif
+diff --git a/tests/tcg/x86_64/Makefile.softmmu-target b/tests/tcg/x86_64/Makefile.softmmu-target
+index df252e761c..1bd763f2e6 100644
+--- a/tests/tcg/x86_64/Makefile.softmmu-target
++++ b/tests/tcg/x86_64/Makefile.softmmu-target
+@@ -19,6 +19,7 @@ CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
+ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+ 
+ TESTS+=$(MULTIARCH_TESTS)
++EXTRA_RUNS+=$(MULTIARCH_RUNS)
+ 
+ # building head blobs
+ .PRECIOUS: $(CRT_OBJS)
+diff --git a/tests/tcg/x86_64/system/boot.S b/tests/tcg/x86_64/system/boot.S
+index 73b19a2bda..f8a2fcc839 100644
+--- a/tests/tcg/x86_64/system/boot.S
++++ b/tests/tcg/x86_64/system/boot.S
+@@ -124,7 +124,7 @@ _start:
+         /* don't worry about stack frame, assume everthing is garbage when we return */
+ 	call main
+ 
+-        /* output any non-zero result in eax to isa-debug-exit device */
++_exit:	/* output any non-zero result in eax to isa-debug-exit device */
+         test %al, %al
+         jz 1f
+         out %ax, $0xf4
 -- 
-2.29.2
-
+2.20.1

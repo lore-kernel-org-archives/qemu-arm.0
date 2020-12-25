@@ -1,83 +1,77 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp7237150lfq;
-        Thu, 24 Dec 2020 00:43:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy/4IUB+jrRTwb1T7oRjOFcrEGa33Ru7YftfbCD5MRkRsamKfj/jP5c3WyW/r+3s8/zgIMo
-X-Received: by 2002:a25:5303:: with SMTP id h3mr41374319ybb.58.1608799417458;
-        Thu, 24 Dec 2020 00:43:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608799417; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp8046221lfq;
+        Fri, 25 Dec 2020 01:50:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyZovqp1WwYU+o1YWKYcJfscAj8IuPkabaLhUoe7YULZX8JPfTzh+ZdSuPuGNpj1AZrusK+
+X-Received: by 2002:a25:4090:: with SMTP id n138mr32416186yba.276.1608889856128;
+        Fri, 25 Dec 2020 01:50:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608889856; cv=none;
         d=google.com; s=arc-20160816;
-        b=EGUGlpYkCMBpGyARQSeOKUWRk1yxTpeqoOjFjEkgjf3v1h7l0lvYS1kEMw4Y1FbSxr
-         Ja50IjXafbki+Xga7KLq0z3lDFN8TOgFtdC5y8Ix6VDOukUB/VSnd7b0X9w31XBLhQD6
-         7dBPoYt4js511hSBlFP0qxn9Uv2/B4NR9y+eRW0IwHmy0UtTbSF2NPt6nu+d6mg5QIeI
-         UBMfWUFIh616Vc1fcUgKhMwQP6y266AubhhbzJIWN6cDeIWBYXdGADVkITs/+Sbbyrb0
-         EeRv/5Zyi141hdFVwLCLFdJYlAwK5dRL/DB8AGJYRqvNPjUpdl9uaNqIVl6L8yA59Fz6
-         wQ2A==
+        b=KnvhxvRxQ0Czi4MC4112m9KvRcURXcCZtt09N9fJYacNC2ge1bURWo3ZYtYroVIIET
+         u9AOeLDIVaDMkrYHFlJ1tRwUnmXa5UChwRVYsSxRsnXUAt1W85nYqcgSI5tk33IkksCk
+         BoeNfLqn8EkYI0dud0uh5xrIQXeHoLOE6FqDmwR1zgq0VAgTNUmebFbk4iFRJW3EsyAb
+         7pqwSTcyBesOmnrcRcaJxAssEpzv4jekz07s9oLKzTbWW3A9BAgJv3MjUFCCWr6p3jvE
+         gUgpl9IxGKGlz39PauhnrVDijYcj/bNL/5jylE0OINCspD47a3giQJLJG4R8ZJA5BA52
+         uHCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=Hm8MrSh/Q5S0IM9vdvO5XFmcs9M0xJBxsisq/fEt54Q=;
-        b=IUxMHC88UA0ysFOwMwNvxbyEvQDi78MjTegh3rLnvshBZBUT+EA3yIQHBI1v6mVfgE
-         CJxFYB4hW9P32wFdkzUEE3OMtpXhwRFtioHbySHmFR85KJ+Mu0sK6Kjnhj2KxgMfR7Ce
-         08mEuntqmxE70M9lCIK89mG/J7tDQeL6neJXfNAtVEURJ5riF+itxRRrNj38tMmfEuhg
-         HHokiEYURgSx2aA7FHBaNTEgdIugtg6XRk0BRijfpPEQGRZEznB/bPg+nurecUXKLrVk
-         CbHVF3V94dj+kJxABI5YCG4qeN94NjEmcAwlhLE8xYtnoWZCn+lFM+aeCtUaFAcbi5/v
-         dRhA==
+         :mime-version:message-id:date:subject:to:from;
+        bh=BfKAYogb3o6ZXhVJEmYpNFHBtwl3uF/E70Ieu82QiYM=;
+        b=lE8zxqnfg5WL487oex78xXci2s/cO2m6SBboL1kXSHKmde+2tVVQ8AtidcdA5f7Vrj
+         yjcKq4Rv/3BHmDsGRR5d7G8XnlgGPzDF4E1bUQXIFpDVFdLfxj2r82G+DMlABnZw1eq+
+         fKusLDbcZ71VAgb97cA8VCGFnfyBkCJpRqo/EmSfouxSJDKifTg6Bddt/DPSQwSwSUMf
+         IMtm1RlzdFXKaYiUBs6VijYuMhXzzrK1sfwUaywrHO7TiHpv/k8Ka5bLZRpbuYCrToF6
+         p8UK4YAhxsEeJ/PoSF5OVYzqg2cnz9Y6XCc7Dr859wdt8tEjXK3cLQvDHsRmBbs8MRKk
+         z6UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p79si24724199ybg.205.2020.12.24.00.43.37
+        by mx.google.com with ESMTPS id u10si27286748ybi.148.2020.12.25.01.50.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Dec 2020 00:43:37 -0800 (PST)
+        Fri, 25 Dec 2020 01:50:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56342 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ksMDd-000268-0R
-	for alex.bennee@linaro.org; Thu, 24 Dec 2020 03:43:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36864)
+	id 1ksjkN-0005aE-Hc
+	for alex.bennee@linaro.org; Fri, 25 Dec 2020 04:50:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1ksMDT-00025i-Eb; Thu, 24 Dec 2020 03:43:23 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2572)
+ id 1ksjkD-0005Zq-Pa; Fri, 25 Dec 2020 04:50:45 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2573)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1ksMDO-00011d-Ev; Thu, 24 Dec 2020 03:43:23 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4D1k9122ZqzhwlN;
- Thu, 24 Dec 2020 16:42:29 +0800 (CST)
-Received: from [10.174.185.179] (10.174.185.179) by
- DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.498.0; Thu, 24 Dec 2020 16:42:55 +0800
-Subject: Re: [RFC v7 12/26] vfio: Set up nested stage mappings
-To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <alex.williamson@redhat.com>
-References: <20201116181349.11908-1-eric.auger@redhat.com>
- <20201116181349.11908-13-eric.auger@redhat.com>
+ id 1ksjkB-0003OE-0z; Fri, 25 Dec 2020 04:50:45 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4D2McL3ddyzhwsq;
+ Fri, 25 Dec 2020 17:49:54 +0800 (CST)
+Received: from DESKTOP-8RFUVS3.china.huawei.com (10.174.185.179) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 25 Dec 2020 17:50:20 +0800
 From: Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <c0afbbcb-ef4d-fff2-3667-663cfdfea6f3@huawei.com>
-Date: Thu, 24 Dec 2020 16:42:55 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>
+Subject: [PATCH] hw/arm/smmuv3: Fix addr_mask for range-based invalidation
+Date: Fri, 25 Dec 2020 17:50:15 +0800
+Message-ID: <20201225095015.609-1-yuzenghui@huawei.com>
+X-Mailer: git-send-email 2.23.0.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20201116181349.11908-13-eric.auger@redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.174.185.179]
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=45.249.212.32; envelope-from=yuzenghui@huawei.com;
  helo=szxga06-in.huawei.com
-X-Spam_score_int: -66
-X-Spam_score: -6.7
-X-Spam_bar: ------
-X-Spam_report: (-6.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.521,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -90,125 +84,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jacob.jun.pan@linux.intel.com,
- jean-philippe@linaro.org, tn@semihalf.com,
- shameerali.kolothum.thodi@huawei.com, nicoleotsuka@gmail.com,
- vivek.gautam@arm.com, yi.l.liu@intel.com, peterx@redhat.com,
- zhangfei.gao@gmail.com
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pt4mmN7rvsN+
+X-TUID: MOU7d5BqYkD9
 
-Hi Eric,
+When performing range-based IOTLB invalidation, we should decode the TG
+field into the corresponding translation granule size so that we can pass
+the correct invalidation range to backend. Set @granule to (tg * 2 + 10) to
+properly emulate the architecture.
 
-On 2020/11/17 2:13, Eric Auger wrote:
-> In nested mode, legacy vfio_iommu_map_notify cannot be used as
-> there is no "caching" mode and we do not trap on map.
-> 
-> On Intel, vfio_iommu_map_notify was used to DMA map the RAM
-> through the host single stage.
-> 
-> With nested mode, we need to setup the stage 2 and the stage 1
-> separately. This patch introduces a prereg_listener to setup
-> the stage 2 mapping.
-> 
-> The stage 1 mapping, owned by the guest, is passed to the host
-> when the guest invalidates the stage 1 configuration, through
-> a dedicated PCIPASIDOps callback. Guest IOTLB invalidations
-> are cascaded downto the host through another IOMMU MR UNMAP
-> notifier.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v6 -> v7:
-> - remove PASID based invalidation
-> 
-> v5 -> v6:
-> - add error_report_err()
-> - remove the abort in case of nested stage case
-> 
-> v4 -> v5:
-> - use VFIO_IOMMU_SET_PASID_TABLE
-> - use PCIPASIDOps for config notification
-> 
-> v3 -> v4:
-> - use iommu_inv_pasid_info for ASID invalidation
-> 
-> v2 -> v3:
-> - use VFIO_IOMMU_ATTACH_PASID_TABLE
-> - new user API
-> - handle leaf
-> 
-> v1 -> v2:
-> - adapt to uapi changes
-> - pass the asid
-> - pass IOMMU_NOTIFIER_S1_CFG when initializing the config notifier
-> ---
->   hw/vfio/common.c     | 111 +++++++++++++++++++++++++++++++++++++++++--
->   hw/vfio/pci.c        |  21 ++++++++
->   hw/vfio/trace-events |   2 +
->   3 files changed, 129 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> index a9e3c77863..6b3bba7ff9 100644
-> --- a/hw/vfio/common.c
-> +++ b/hw/vfio/common.c
-> @@ -597,6 +597,45 @@ static bool vfio_get_xlat_addr(IOMMUTLBEntry *iotlb, void **vaddr,
->       return true;
->   }
->   
-> +/* Propagate a guest IOTLB invalidation to the host (nested mode) */
-> +static void vfio_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
-> +{
-> +    VFIOGuestIOMMU *giommu = container_of(n, VFIOGuestIOMMU, n);
-> +    hwaddr start = iotlb->iova + giommu->iommu_offset;
-> +    VFIOContainer *container = giommu->container;
-> +    struct vfio_iommu_type1_cache_invalidate ustruct = {};
-> +    struct iommu_inv_addr_info *addr_info = &ustruct.info.granu.addr_info;
-> +    size_t size = iotlb->addr_mask + 1;
-> +    int ret;
-> +
-> +    assert(iotlb->perm == IOMMU_NONE);
-> +
-> +    ustruct.argsz = sizeof(ustruct);
-> +    ustruct.flags = 0;
-> +    ustruct.info.argsz = sizeof(struct iommu_cache_invalidate_info);
-> +    ustruct.info.version = IOMMU_CACHE_INVALIDATE_INFO_VERSION_1;
-> +
-> +    ustruct.info.cache = IOMMU_CACHE_INV_TYPE_IOTLB;
-> +    ustruct.info.granularity = IOMMU_INV_GRANU_ADDR;
+Fixes: d52915616c05 ("hw/arm/smmuv3: Get prepared for range invalidation")
+Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+---
+ hw/arm/smmuv3.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-It seems that all guest IOTLB invalidation will be propagated to host
-using the ADDR granularity. I'm afraid that TLBI_{NS}NH_ALL command
-emulating will be a time consuming process...
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index bbca0e9f20..65231c7d52 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+ {
+     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+     IOMMUTLBEvent event;
+-    uint8_t granule = tg;
++    uint8_t granule;
+ 
+     if (!tg) {
+         SMMUEventInfo event = {.inval_ste_allowed = true};
+@@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+             return;
+         }
+         granule = tt->granule_sz;
++    } else {
++        guanule = tg * 2 + 10;
+     }
+ 
+     event.type = IOMMU_NOTIFIER_UNMAP;
+-- 
+2.19.1
 
-> +    addr_info->flags = IOMMU_INV_ADDR_FLAGS_ARCHID;
-> +    if (iotlb->leaf) {
-> +        addr_info->flags |= IOMMU_INV_ADDR_FLAGS_LEAF;
-> +    }
-> +    addr_info->archid = iotlb->arch_id;
-
-...and looks like both @arch_id and @leaf are not properly set in that
-case. The same for TLBI_NH_ASID command.
-
-(Or maybe I've missed something in the vsmmu code?)
-
-
-Thanks,
-Zenghui
-
-> +    addr_info->addr = start;
-> +    addr_info->granule_size = size;
-> +    addr_info->nb_granules = 1;
-> +    trace_vfio_iommu_addr_inv_iotlb(iotlb->arch_id, start, size, 1,
-> +                                    iotlb->leaf);
-> +
-> +    ret = ioctl(container->fd, VFIO_IOMMU_CACHE_INVALIDATE, &ustruct);
-> +    if (ret) {
-> +        error_report("%p: failed to invalidate CACHE for 0x%"PRIx64
-> +                     " mask=0x%"PRIx64" (%d)",
-> +                     container, start, iotlb->addr_mask, ret);
-> +    }
-> +}

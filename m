@@ -1,76 +1,80 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp8509133lfq;
-        Fri, 25 Dec 2020 17:46:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzjhA6scoga3c0bIRI0Lqho7v18XowNjXiWOSGlPJHM4qh5OkKfHqoNF/til01PwzHyq/Cc
-X-Received: by 2002:a25:10c3:: with SMTP id 186mr49938475ybq.195.1608947168917;
-        Fri, 25 Dec 2020 17:46:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608947168; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp8646865lfq;
+        Fri, 25 Dec 2020 23:12:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz+dl4m9g8l7oYGUwwr6VDPLTOQMRlVrhyoTNRX6pm8WN+SzEp3MNJf1CvhrzRhuj1KAhUe
+X-Received: by 2002:a25:37d7:: with SMTP id e206mr35485725yba.77.1608966759827;
+        Fri, 25 Dec 2020 23:12:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1608966759; cv=none;
         d=google.com; s=arc-20160816;
-        b=v5OyGp40IId5EyTrbgTggi0dPnnAks4vM1ghYomQs+PPh4g4caRHt/yLoT90LVxl+D
-         szPV7yR7IUNPIlJmKILPCh0oOYpICBroGhaRboxQEhKR8K37fj/f8rouehkWps8J3u/+
-         7TEgWbmb8ilZApDI9ffJDjVdsNl3OydtivnUh6+YjlCuFzrKGiyE6NKp9AfUkr1xXtvo
-         gWTsHCZ+04oWq/OA47zBP6C99Z3h06OCrVHU/+u9BoC++7OzrfoJuU4HBYK9QPFdBOza
-         GsDnA3bocgd2GLKqYw5R/KC1bdYJzxiaCkecLGeUoOCOvzETURYTyN45qA8Tmh0xrWFN
-         Zlzg==
+        b=XmPL+T9dV13dQG/AplTav311+bkjFoPQVfcJbvvB21/5KO+MJwW3hKc2t4jnoiMyYF
+         brvYHhmswPGSU2k9jmIi85hOsF36rLypeLF693awz+gxxGcqj+6l+QhZ2JWOUcfCFmpE
+         hFaOVKYkK2Gym7hgc2Y7puUkVwAs7bhkZ6/wDyoMd0ArTYJ/H7iPLvc0q9UmSttL1ygH
+         2p6BGNtkv/P1mI+cvxbYQ/CW914BIpT7DYQ39oNmq5FZJNSMum0ruLJbzdaklR2yHJLF
+         lIT7iWxYT5AMR7SkAEy5OyJXKTChnmxeLaxN8d0CVybCD0vYOxkn7L/PKcK6ayZcMONS
+         gbTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=LgHvrsF0tIuMw9CQL/9QRWCY2Qpr1UEDhHV3eiyLtF8=;
-        b=aDL1MkEdE4l/HummLQcHLIpo9nySoqB5BK116oVw8EDsqV7LCbTyqmU19TOFVN1WDm
-         aP7Fg6AWq3HYphgD5rsOzbMkTWRl+bCRYLkkS1ZOgsoPBq9MUJyfHxlwAtb5UTGjws6Y
-         07WqTYEL/IAujPOpv7PLciV4GdZstGq0wvreOPONV67LU4UwLURsAgJHIBzzO70SmQIi
-         WQgqJuF1YR5GyfIdTMy+7GRefmv//TQnBWFI3zPQts3BAPWmJOpE6a2/Nok6Gqt2m68c
-         Z6T56631ozObvZ660hGd59Fc70ZGYHqfNLZojQj0d2ccIo84M8PIO1IgmwLKUGmzATwr
-         vRMA==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=2AUZJPpS98Jeen3O6jKQn+WeHREEfqZBzHS9zcWnKmo=;
+        b=SNnFcvY05bM62YfxzrywFhjRE+G3VAnusnb+kS9o5fQQPrklvszzvIH8BMJ+MK98VD
+         XJCVTEQBzdgvJaRMNSBfSM4tp0FXVABZG1/9ggWfrc7CISPb7fjs1ychibAwv+9H4Bd/
+         t7OSX3Npos3GWzLg8md5ewIR2aEBZ6yU7gMxVMZGDTBjNhWvaIghfVz2M1+ZPer7eE3w
+         x9DBxKuqp0JEcM7OVhntJ78WQoKcfN3fY1Bkf+VLLIuI6NS9ND9wnNAR9lMZn/DwOLtp
+         kwyNBcA3LEkB41V6ugWkuWwluovB3LQMTe9yHK+9PYO3bWosxqfV5ii8t6F/POSXBNVm
+         lIWg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13si29710989ybp.227.2020.12.25.17.46.08
+        by mx.google.com with ESMTPS id n124si32610283ybc.139.2020.12.25.23.12.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Dec 2020 17:46:08 -0800 (PST)
+        Fri, 25 Dec 2020 23:12:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57658 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44568 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ksyem-0005LK-9g
-	for alex.bennee@linaro.org; Fri, 25 Dec 2020 20:46:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49644)
+	id 1kt3kh-000287-6s
+	for alex.bennee@linaro.org; Sat, 26 Dec 2020 02:12:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54114)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1ksyeR-0005L5-9z; Fri, 25 Dec 2020 20:45:47 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2836)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kt3kT-00027w-Em; Sat, 26 Dec 2020 02:12:21 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2574)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
- id 1ksyeO-0005Cm-Uj; Fri, 25 Dec 2020 20:45:47 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4D2mnx4rBFzkwTp;
- Sat, 26 Dec 2020 09:44:37 +0800 (CST)
-Received: from [10.174.185.179] (10.174.185.179) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.498.0; Sat, 26 Dec 2020 09:45:29 +0800
-Subject: Re: [PATCH] hw/arm/smmuv3: Fix addr_mask for range-based invalidation
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>
-References: <20201225095015.609-1-yuzenghui@huawei.com>
-From: Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <eb91a3fa-1e51-b1dd-008f-2aace04385a0@huawei.com>
-Date: Sat, 26 Dec 2020 09:45:29 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kt3kQ-0007aL-I7; Sat, 26 Dec 2020 02:12:21 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4D2w3132c3zhwKn;
+ Sat, 26 Dec 2020 15:11:25 +0800 (CST)
+Received: from [10.174.187.37] (10.174.187.37) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.498.0; Sat, 26 Dec 2020 15:11:53 +0800
+Subject: Re: [PATCH v2 1/2] ramlist: Make dirty bitmap blocks of ramlist
+ resizable
+To: Stefan Hajnoczi <stefanha@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>, "Dr . David Alan
+ Gilbert" <dgilbert@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20201130131104.10600-1-zhukeqian1@huawei.com>
+ <20201130131104.10600-2-zhukeqian1@huawei.com>
+ <20201217100501.GE4338@stefanha-x1.localdomain>
+ <7306ed10-871a-58ab-06d4-daa1efc5c9a7@huawei.com>
+From: Keqian Zhu <zhukeqian1@huawei.com>
+Message-ID: <bbfc0b13-0917-6851-e10f-c7001ff9fd22@huawei.com>
+Date: Sat, 26 Dec 2020 15:11:53 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <20201225095015.609-1-yuzenghui@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
+In-Reply-To: <7306ed10-871a-58ab-06d4-daa1efc5c9a7@huawei.com>
+Content-Type: text/plain; charset="windows-1252"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.185.179]
+X-Originating-IP: [10.174.187.37]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=yuzenghui@huawei.com;
- helo=szxga04-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=zhukeqian1@huawei.com;
+ helo=szxga06-in.huawei.com
 X-Spam_score_int: -57
 X-Spam_score: -5.8
 X-Spam_bar: -----
@@ -89,23 +93,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com
+Cc: kuhn.chenqun@huawei.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UYIpBkzTffhn
+X-TUID: v1y1koXC/CyZ
 
-On 2020/12/25 17:50, Zenghui Yu wrote:
-> @@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->               return;
->           }
->           granule = tt->granule_sz;
-> +    } else {
-> +        guanule = tg * 2 + 10;
 
-I'm embarrassed about that.
+[...]
 
-s/guanule/granule/
+>>> -        for (j = old_num_blocks; j < new_num_blocks; j++) {
+>>> -            new_blocks->blocks[j] = bitmap_new(DIRTY_MEMORY_BLOCK_SIZE);
+>>> +        if (extend) {
+>>> +            for (j = cpy_num_blocks; j < new_num_blocks; j++) {
+>>> +                new_blocks->blocks[j] = bitmap_new(DIRTY_MEMORY_BLOCK_SIZE);
+>>> +            }
+>>> +        } else {
+>>> +            for (j = cpy_num_blocks; j < old_num_blocks; j++) {
+>>> +                /* We are safe to free it, for that it is out-of-use */
+>>> +                g_free(old_blocks->blocks[j]);
+>>
+>> This looks unsafe because this code uses Read Copy Update (RCU):
+>>
+>>   old_blocks = qatomic_rcu_read(&ram_list.dirty_memory[i]);
+>>
+>> Other threads may still be accessing old_blocks so we cannot modify it
+>> immediately. Changes need to be deferred until the next RCU period.
+>> g_free_rcu() needs to be used to do this.
+>>
+> Hi Stefan,
+> 
+> You are right. I was thinking about the VM life cycle before. We shrink the dirty_memory
+> when we are removing unused ramblock. However we can not rely on this.
+> 
+> I also notice that "Organization into blocks allows dirty memory to grow (but not shrink)
+> under RCU". Why "but not shrink"? Any thoughts?
+Hi,
 
->       }
->   
->       event.type = IOMMU_NOTIFIER_UNMAP;
+After my analysis, it's both unsafe to grow or shrink under RCU.
+
+ram_list.blocks and ram_list.dirty_memory[X] are closely related and
+both protected by RCU. For the lockless RCU readers, we can't promise they
+always see consistent version of the two structures.
+
+For grow, a reader may see un-growed @dirty_memory and growed @blocks, causing out-of-bound access.
+For shrink, a reader may see shrinked @dirty_memory and un-shrinked @blocks, causing out-of-bound access too.
+
+I think it's a design problem, RCU can just protect one structure, not two.
+
+Thanks,
+Keqian.
+> 
+> [...]
+>  * Organization into blocks allows dirty memory to grow (but not shrink) under
+>  * RCU.  When adding new RAMBlocks requires the dirty memory to grow, a new
+>  * DirtyMemoryBlocks array is allocated with pointers to existing blocks kept
+>  * the same.  Other threads can safely access existing blocks while dirty
+>  * memory is being grown.  When no threads are using the old DirtyMemoryBlocks
+>  * anymore it is freed by RCU (but the underlying blocks stay because they are
+>  * pointed to from the new DirtyMemoryBlocks).
+>  */
+> #define DIRTY_MEMORY_BLOCK_SIZE ((ram_addr_t)256 * 1024 * 8)
+> typedef struct {
+>     struct rcu_head rcu;
+>     unsigned long *blocks[];
+> } DirtyMemoryBlocks;
+> [...]
+> 
+> Thanks,
+> Keqian
+> 
+> 
+> .
+> 

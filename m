@@ -1,86 +1,93 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp8646865lfq;
-        Fri, 25 Dec 2020 23:12:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz+dl4m9g8l7oYGUwwr6VDPLTOQMRlVrhyoTNRX6pm8WN+SzEp3MNJf1CvhrzRhuj1KAhUe
-X-Received: by 2002:a25:37d7:: with SMTP id e206mr35485725yba.77.1608966759827;
-        Fri, 25 Dec 2020 23:12:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608966759; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp9803203lfq;
+        Sun, 27 Dec 2020 15:13:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzYt8pVt+PMaXASnSkIDpY4eJQYhQMhIAJ8lYT0zcaxAwvJzRueICZQX5ePRIbmgrjTY/jh
+X-Received: by 2002:a25:2317:: with SMTP id j23mr4010455ybj.388.1609110783774;
+        Sun, 27 Dec 2020 15:13:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609110783; cv=none;
         d=google.com; s=arc-20160816;
-        b=XmPL+T9dV13dQG/AplTav311+bkjFoPQVfcJbvvB21/5KO+MJwW3hKc2t4jnoiMyYF
-         brvYHhmswPGSU2k9jmIi85hOsF36rLypeLF693awz+gxxGcqj+6l+QhZ2JWOUcfCFmpE
-         hFaOVKYkK2Gym7hgc2Y7puUkVwAs7bhkZ6/wDyoMd0ArTYJ/H7iPLvc0q9UmSttL1ygH
-         2p6BGNtkv/P1mI+cvxbYQ/CW914BIpT7DYQ39oNmq5FZJNSMum0ruLJbzdaklR2yHJLF
-         lIT7iWxYT5AMR7SkAEy5OyJXKTChnmxeLaxN8d0CVybCD0vYOxkn7L/PKcK6ayZcMONS
-         gbTA==
+        b=ptUK1u0YyY1zfNgXxjU9j6GWKxXxqMAmUJuhs+SfHEK3Hja1sHAdd+zoQ7qGXylyc3
+         kcFxbmryif/S6wweYrQNxo4tP93r90lEc6gvMp9yA85atF1f3z5JOoNmOA7Gb1VKjMjS
+         z5L/T20s4CPmMUn3ti5SJtW5LhZOGgkpFpWxpS8Dei1Y83S4U5U7c7lHBTXiWPSh7bLK
+         W89ucMz7RwnBK1wosfjwZltxJlI0ESypOefhZvnpc/OgM56vaq+uI+vzJ3BRdQaadigA
+         PQmBqvMGWP8ZEBv5mxuU4DjZt6rz47D9Ylf6ZcUbvqPjyA1VBxo+g054l3gy24ijF1rD
+         vtZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=2AUZJPpS98Jeen3O6jKQn+WeHREEfqZBzHS9zcWnKmo=;
-        b=SNnFcvY05bM62YfxzrywFhjRE+G3VAnusnb+kS9o5fQQPrklvszzvIH8BMJ+MK98VD
-         XJCVTEQBzdgvJaRMNSBfSM4tp0FXVABZG1/9ggWfrc7CISPb7fjs1ychibAwv+9H4Bd/
-         t7OSX3Npos3GWzLg8md5ewIR2aEBZ6yU7gMxVMZGDTBjNhWvaIghfVz2M1+ZPer7eE3w
-         x9DBxKuqp0JEcM7OVhntJ78WQoKcfN3fY1Bkf+VLLIuI6NS9ND9wnNAR9lMZn/DwOLtp
-         kwyNBcA3LEkB41V6ugWkuWwluovB3LQMTe9yHK+9PYO3bWosxqfV5ii8t6F/POSXBNVm
-         lIWg==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:to:from:dkim-signature;
+        bh=x0tlcnEaIzgDNJFigEv9f9l4gjl1U2/aS1sW7SzoplM=;
+        b=iXXbvXL9K0w9pxXSWuRhsR8ub5V+NMi5fHi+gsA9L5DH2jl14JqWjPXCXfchou7R4A
+         ZQxeBxdaDNc25GTvc+Na8YRAE/3D1j/OdUVGStCxDcVHFNiSvyE70iDFylQku3iFZp3A
+         bAiUNLVxNCdt27Sy/DrhEqmwDNQ5U/7Q+O3a1yiIivWndNX/rs8vrXWrNrM2MU12Ifqn
+         S1diOF8F9qzhpzey1vpMV7H/Cy3ARNoG1BX/L6Jl7bYljo3DuuRPuc+vj7k6Qvc9pOga
+         k7qrzNDt/x4O9cdAFCo6MFCqDGAOb806esPOIDUQXXo6VShFPJ/uEJqpymxhtDuJqXFq
+         Q96w==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mutex.one header.s=default header.b=B2gMQXZp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n124si32610283ybc.139.2020.12.25.23.12.39
+        by mx.google.com with ESMTPS id i136si9161324yba.368.2020.12.27.15.13.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Dec 2020 23:12:39 -0800 (PST)
+        Sun, 27 Dec 2020 15:13:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mutex.one header.s=default header.b=B2gMQXZp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44568 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37180 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kt3kh-000287-6s
-	for alex.bennee@linaro.org; Sat, 26 Dec 2020 02:12:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54114)
+	id 1ktfDj-00066Q-7P
+	for alex.bennee@linaro.org; Sun, 27 Dec 2020 18:13:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43198)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kt3kT-00027w-Em; Sat, 26 Dec 2020 02:12:21 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2574)
+ (Exim 4.90_1) (envelope-from <posteuca@mutex.one>)
+ id 1ktfDX-00066B-EY; Sun, 27 Dec 2020 18:12:51 -0500
+Received: from mail.mutex.one ([62.77.152.124]:35832)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kt3kQ-0007aL-I7; Sat, 26 Dec 2020 02:12:21 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4D2w3132c3zhwKn;
- Sat, 26 Dec 2020 15:11:25 +0800 (CST)
-Received: from [10.174.187.37] (10.174.187.37) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.498.0; Sat, 26 Dec 2020 15:11:53 +0800
-Subject: Re: [PATCH v2 1/2] ramlist: Make dirty bitmap blocks of ramlist
- resizable
-To: Stefan Hajnoczi <stefanha@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>, "Dr . David Alan
- Gilbert" <dgilbert@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20201130131104.10600-1-zhukeqian1@huawei.com>
- <20201130131104.10600-2-zhukeqian1@huawei.com>
- <20201217100501.GE4338@stefanha-x1.localdomain>
- <7306ed10-871a-58ab-06d4-daa1efc5c9a7@huawei.com>
-From: Keqian Zhu <zhukeqian1@huawei.com>
-Message-ID: <bbfc0b13-0917-6851-e10f-c7001ff9fd22@huawei.com>
-Date: Sat, 26 Dec 2020 15:11:53 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+ (Exim 4.90_1) (envelope-from <posteuca@mutex.one>)
+ id 1ktfDV-00074Q-Px; Sun, 27 Dec 2020 18:12:51 -0500
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.mutex.one (Postfix) with ESMTP id 4577CBF426F7;
+ Mon, 28 Dec 2020 01:12:45 +0200 (EET)
+X-Virus-Scanned: Debian amavisd-new at mail.mutex.one
+Received: from mail.mutex.one ([127.0.0.1])
+ by localhost (mail.mutex.one [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5lUszS5YsjFg; Mon, 28 Dec 2020 01:12:44 +0200 (EET)
+Received: [127.0.0.1] (localhost [127.0.0.1])nknown [109.103.89.101])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.mutex.one (Postfix) with ESMTPSA id 580F9BF426BC;
+ Mon, 28 Dec 2020 01:12:44 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mutex.one; s=default;
+ t=1609110764; bh=xS/FIkdJMUsq++QyeLG4EutDW3emZ/ZZcdspCegkC5M=;
+ h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+ b=B2gMQXZpuHAWmgeYVTeBlV3KvhmHi3E09VoFGO0zMnXdyeGXujvrIKwDTrDroiGOZ
+ H8iztdTKIiBBWZUOMjvpkXI/fMNsGxUjAvrxiOVJJqxeI+ChLbYSTzvdIdY+o2T58X
+ UuOqg8NADFsStj2WtTEi/wUD/q1LCZiVxBYxgN5I=
+From: Marian Posteuca <posteuca@mutex.one>
+To: Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v2] acpi: Permit OEM ID and OEM table ID fields to be
+ changed
+In-Reply-To: <93c58d9d-63c6-b2d8-2b12-d7ed4aa1b171@redhat.com>
+References: <20201222113353.31224-1-posteuca@mutex.one>
+ <d04375f8-f6bc-91d6-cd6e-217a689002e3@msgid.tls.msk.ru>
+ <87eejh4zpq.fsf@mutex.one>
+ <93c58d9d-63c6-b2d8-2b12-d7ed4aa1b171@redhat.com>
+Date: Mon, 28 Dec 2020 01:12:40 +0200
+Message-ID: <87tus64zdj.fsf@mutex.one>
 MIME-Version: 1.0
-In-Reply-To: <7306ed10-871a-58ab-06d4-daa1efc5c9a7@huawei.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.37]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=zhukeqian1@huawei.com;
- helo=szxga06-in.huawei.com
-X-Spam_score_int: -57
-X-Spam_score: -5.8
-X-Spam_bar: -----
-X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.561,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=62.77.152.124; envelope-from=posteuca@mutex.one;
+ helo=mail.mutex.one
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,76 +100,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kuhn.chenqun@huawei.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- wanghaibin.wang@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v1y1koXC/CyZ
+X-TUID: KHPYg2Li0BCm
 
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-[...]
-
->>> -        for (j = old_num_blocks; j < new_num_blocks; j++) {
->>> -            new_blocks->blocks[j] = bitmap_new(DIRTY_MEMORY_BLOCK_SIZE);
->>> +        if (extend) {
->>> +            for (j = cpy_num_blocks; j < new_num_blocks; j++) {
->>> +                new_blocks->blocks[j] = bitmap_new(DIRTY_MEMORY_BLOCK_SIZE);
->>> +            }
->>> +        } else {
->>> +            for (j = cpy_num_blocks; j < old_num_blocks; j++) {
->>> +                /* We are safe to free it, for that it is out-of-use */
->>> +                g_free(old_blocks->blocks[j]);
+> On 22/12/20 16:39, Marian Posteuca wrote:
+>>>> Qemu's ACPI table generation sets the fields OEM ID and OEM table ID
+>>>> to "BOCHS " and "BXPCxxxx" where "xxxx" is replaced by the ACPI
+>>>> table name.
+>>>>
+>>>> Some games like Red Dead Redemption 2 seem to check the ACPI OEM ID
+>>>> and OEM table ID for the strings "BOCHS" and "BXPC" and if they are
+>>>> found, the game crashes(this may be an intentional detection
+>>>> mechanism to prevent playing the game in a virtualized environment).
+>>> This isn't a technical question/comment about the patch itself, but
+>>> about something different.  Do we really want to play this whack-a-mole
+>>> game? If we change ACPI table IDs, those who want to disallow running
+>>> their software inside qemu/kvm will find some other way to check for
+>>> this environment. We will change that, - just to be found again. And
+>>> so on.. is it productive? I don't think so.
 >>
->> This looks unsafe because this code uses Read Copy Update (RCU):
->>
->>   old_blocks = qatomic_rcu_read(&ram_list.dirty_memory[i]);
->>
->> Other threads may still be accessing old_blocks so we cannot modify it
->> immediately. Changes need to be deferred until the next RCU period.
->> g_free_rcu() needs to be used to do this.
->>
-> Hi Stefan,
-> 
-> You are right. I was thinking about the VM life cycle before. We shrink the dirty_memory
-> when we are removing unused ramblock. However we can not rely on this.
-> 
-> I also notice that "Organization into blocks allows dirty memory to grow (but not shrink)
-> under RCU". Why "but not shrink"? Any thoughts?
-Hi,
-
-After my analysis, it's both unsafe to grow or shrink under RCU.
-
-ram_list.blocks and ram_list.dirty_memory[X] are closely related and
-both protected by RCU. For the lockless RCU readers, we can't promise they
-always see consistent version of the two structures.
-
-For grow, a reader may see un-growed @dirty_memory and growed @blocks, causing out-of-bound access.
-For shrink, a reader may see shrinked @dirty_memory and un-shrinked @blocks, causing out-of-bound access too.
-
-I think it's a design problem, RCU can just protect one structure, not two.
-
-Thanks,
-Keqian.
-> 
-> [...]
->  * Organization into blocks allows dirty memory to grow (but not shrink) under
->  * RCU.  When adding new RAMBlocks requires the dirty memory to grow, a new
->  * DirtyMemoryBlocks array is allocated with pointers to existing blocks kept
->  * the same.  Other threads can safely access existing blocks while dirty
->  * memory is being grown.  When no threads are using the old DirtyMemoryBlocks
->  * anymore it is freed by RCU (but the underlying blocks stay because they are
->  * pointed to from the new DirtyMemoryBlocks).
->  */
-> #define DIRTY_MEMORY_BLOCK_SIZE ((ram_addr_t)256 * 1024 * 8)
-> typedef struct {
->     struct rcu_head rcu;
->     unsigned long *blocks[];
-> } DirtyMemoryBlocks;
-> [...]
-> 
-> Thanks,
-> Keqian
-> 
-> 
-> .
-> 
+>> My personal opinion is that as long as it's not too difficult to mask
+>> that the guest is running in a virtualized environment we should try to
+>> do these changes. But I guess this can only be judged on per change basis.
+>
+> I don't have any particular opinion against the "arms 
+> race"/"whack-a-mole" situation.  We played the game (and sort of won, 
+> they got tired of changing the drivers) against NVIDIA already.
+>
+> For 6.0 I'm already planning to revamp a bunch of machine properties, 
+> for example making -acpitable file=xxx a synonym for "-machine 
+> acpi.tables.N.file=xxx".  Perhaps we could plan for that and make the 
+> option "-machine acpi.oem_id".
+This looks like a great idea.
+Noob question here, should I change my patch in any way for this to happen?
+>
+> Paolo

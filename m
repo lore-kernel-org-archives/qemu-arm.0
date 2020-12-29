@@ -1,104 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp11005455lfq;
-        Tue, 29 Dec 2020 03:31:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzOcrzrg/A3T0ohCqPhW8SpYiPSCRRWqw1buCpZTYl3d9YGSTgdqkrAYWnA1d7DTKNv2B4u
-X-Received: by 2002:a25:25c2:: with SMTP id l185mr68612604ybl.140.1609241518712;
-        Tue, 29 Dec 2020 03:31:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609241518; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp11077040lfq;
+        Tue, 29 Dec 2020 05:20:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJybq+iT6JUKYnY97uRG9apd+MlV8eAy63lka1D661OIOaBZpjqmtEbWCZBfSGhkhc4BQ1iq
+X-Received: by 2002:a25:880a:: with SMTP id c10mr13383709ybl.456.1609248030127;
+        Tue, 29 Dec 2020 05:20:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609248030; cv=none;
         d=google.com; s=arc-20160816;
-        b=UR40xJ8yNRXYw/QjqvLFJ5wfugUwI8cgWKN3JazDwBr3+ie9+2CCi4RT1mCh4GFmsx
-         A7sdeTJu3y37AsCIm2HiSfcLHiTVk1ckx133gt1ZftTFxTZsxYpnr5k2m2XX2b/Zr+7e
-         8P09lQNfEJkLCxyJvZAUHyG2ZAiAGqVBCIlD7e43QVk5bdJvIf81LrhbpaGQC7jM+zm9
-         l6wGD4RUzHeJ6/ZKdBxnUfmPL0fte6LBuucoIYnY9tze7x3Yzd5HPSXH4CXbIO39yW4e
-         YM9OUCS/GAHuyumiQoFpI0yb/n/LxaNhWhLo9ZuNObWcmKGXdEH567N9s7Rc25lmGKgZ
-         FYoA==
+        b=0khs3pWv0N+VeMuMAprINGb+1uGWHyHt6U9Spz447W++YlHDAaceICaTqYmx0kUxUp
+         RGNsgYT+/bAfmsiLnSpxn1QaMUkRSk2XIc0nOSEtFzdZMsXAQ74GgY56JJI41A7osTJ1
+         oA1/NyMXLz2Pn3Dz3lG1yZOtxlJ+ZM0/CdyXTY+a/EfmAhRHsF3uNyD7SRtGe+PzbUdK
+         Hea+DQHNrnXyERMqA+6ekd8GKt9eh2nvTkadP5sAj9p/4Iv1vy8bWQhtFMsmDoHPKuie
+         wRSjfz51fuQRuFQ2h3trfx1m91+TTFjvpDpM5TKODP6rFQl6THVBBD2jUQ86EYvHFu+v
+         sR+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Af6WOi56EjHz65nCJbhiCPwlx7bq/OTWInbgG1l9JxE=;
-        b=iZif7N1NFntXRauQm72f+7gt7bgoTCnwgVizh3DOJj+Oi4+vvlTaDD4Jc8o5AH75fs
-         rCEs8Aci9N2bbgBVvaD7q4WhlKwW4/UMc7iecPAnbmuhZH9HvKUXyPEt+l/N985+phWt
-         OhP7IKtpMDCQNDsuz6u2LZXDFYOJSqb23D6rk3q2ZUDXrsICrEHoE9T+LhMiAJ79Y1aU
-         yRfVUqBVYMSJ8VVEKR+HyuqCKusQKWis79WoO0zgVOeJKGdRLEgdjdCurJpHfk1T/cbj
-         zaL3+t++tRZP3f7JiFySuVE6Pug35ME3KyngMU/N2anLfRdaDnbEoYvxjbhf74/avN0V
-         NG+w==
+        bh=Xc2QnPvaMIA4l+6Smu7mnjddpYRMr/RirnZalYyGHfQ=;
+        b=hF83KAduUZVbdz3HsYQTFvKL0Yo1HnzhtPW7StX66t66y4epNaR7BR2GCWVzuCVq+F
+         WMFlMdrjM3p9lk/5MWTIWNCnO+Y97Gy7ZFiVG5sLx8HvVGHw9NnNP6aW8FLY/3UOH/5D
+         cg7/jfkTWv0PokJS1+eILTC2Cy9/WLFFoeL2VjHwpTgM+j7j22dsZThbBe/UGKB95+3Q
+         VEpcFczCZzF3m3Ysjg8dix2JWzyeQFpjbyVwyM8w6iPfl78uqWFx/8ST14YFQFD8Iw8b
+         99pqQsIWGt0RUM4ZrmBgzpCVNh2HaN08vWxNTn0M7hFvLwIjMgwr6QtHVDGzDL/Tp0ft
+         lUQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wiyg0DY1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i5CMbEmg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w10si38324913ybt.39.2020.12.29.03.31.58
+        by mx.google.com with ESMTPS id l9si22984531ybj.237.2020.12.29.05.20.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Dec 2020 03:31:58 -0800 (PST)
+        Tue, 29 Dec 2020 05:20:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wiyg0DY1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i5CMbEmg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45922 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50744 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kuDEM-0001ss-2h
-	for alex.bennee@linaro.org; Tue, 29 Dec 2020 06:31:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43212)
+	id 1kuEvN-0005ol-Gk
+	for alex.bennee@linaro.org; Tue, 29 Dec 2020 08:20:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35016)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kuDE6-0001rk-M6
- for qemu-arm@nongnu.org; Tue, 29 Dec 2020 06:31:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41572)
+ id 1kuEvE-0005oc-VN
+ for qemu-arm@nongnu.org; Tue, 29 Dec 2020 08:20:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:29108)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kuDE1-000823-Bj
- for qemu-arm@nongnu.org; Tue, 29 Dec 2020 06:31:42 -0500
+ id 1kuEvB-0000ym-Fx
+ for qemu-arm@nongnu.org; Tue, 29 Dec 2020 08:20:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1609241491;
+ s=mimecast20190719; t=1609248016;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Af6WOi56EjHz65nCJbhiCPwlx7bq/OTWInbgG1l9JxE=;
- b=Wiyg0DY1j6p3axweAFqY5PGb11C6qy2UaQgVVYiWWgGFwjeI2QemGenBswYdGiF/230o9b
- +s4usqPAF2TAkkWdbSvsOSES0WNXidzEk/kjU/TAjZIiyCAJBwzR1bD2L12/SnWlwUb1HD
- WVNmux/P512M/2nCRr9xMgh6KHliNWI=
+ bh=Xc2QnPvaMIA4l+6Smu7mnjddpYRMr/RirnZalYyGHfQ=;
+ b=i5CMbEmgh17N7fWl3uuEwc1o7as5SDf9V9NN4YwtZeNAuZ2wJQE0l0dCo6LU7HZP3Gluq9
+ tun7in1iXxFZNZWiyA+To+Qjb2SvLRozhZ/cU/NS4gfi9kGG8T2Eh2GYu9onW1120oBxvQ
+ w/3xoTo3qAEpbQYA/An55NiiDgcbEMI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-410-8P_X3J72NW-vxJrPcABivw-1; Tue, 29 Dec 2020 06:31:29 -0500
-X-MC-Unique: 8P_X3J72NW-vxJrPcABivw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-122-RxoaunwjMEq4voijxgo4Bw-1; Tue, 29 Dec 2020 08:20:14 -0500
+X-MC-Unique: RxoaunwjMEq4voijxgo4Bw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B40D6801817;
- Tue, 29 Dec 2020 11:31:27 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B26E2879500;
+ Tue, 29 Dec 2020 13:20:12 +0000 (UTC)
 Received: from localhost (unknown [10.40.208.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1818060BE5;
- Tue, 29 Dec 2020 11:31:19 +0000 (UTC)
-Date: Tue, 29 Dec 2020 12:31:18 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C5AA16B8DA;
+ Tue, 29 Dec 2020 13:20:03 +0000 (UTC)
+Date: Tue, 29 Dec 2020 14:20:01 +0100
 From: Igor Mammedov <imammedo@redhat.com>
-To: Marian Posteuca <posteuca@mutex.one>
-Subject: Re: [PATCH v2] acpi: Permit OEM ID and OEM table ID fields to be
- changed
-Message-ID: <20201229123118.64e1a41f@redhat.com>
-In-Reply-To: <878s9onq41.fsf@mutex.one>
-References: <20201222113353.31224-1-posteuca@mutex.one>
- <20201223115445.71dc9f8c@redhat.com> <878s9onq41.fsf@mutex.one>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [PATCH v2 0/3] pc: Support configuration of SMBIOS entry point
+ type
+Message-ID: <20201229142001.3b28fdf2@redhat.com>
+In-Reply-To: <20201214205029.2991222-1-ehabkost@redhat.com>
+References: <20201214205029.2991222-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.178,
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
@@ -114,58 +113,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Ben Warren <ben@skyportsystems.com>,
- "Michael S.
- Tsirkin" <mst@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org, Dongjiu Geng <gengdongjiu@huawei.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Xiang Zheng <zhengxiang9@huawei.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, "Daniel
+ P. Berrange" <berrange@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tG1awoKrITM8
+X-TUID: 6x3W56IhicNf
 
-On Wed, 23 Dec 2020 23:56:30 +0200
-Marian Posteuca <posteuca@mutex.one> wrote:
+On Mon, 14 Dec 2020 15:50:26 -0500
+Eduardo Habkost <ehabkost@redhat.com> wrote:
 
-> Thanks for the thorough review.
-> 
-> Igor Mammedov <imammedo@redhat.com> writes:
-> > On Tue, 22 Dec 2020 13:33:53 +0200
-> > Marian Posteuca <posteuca@mutex.one> wrote:
-> >
-> > I see defaults are now initialized in pcmc->oem_[table_]id fields,
-> > and sometimes used from there, so question is why
-> > do we need use_sig_oem and keeping old code
-> >
-> >     if (oem_id) {                                                                
-> >         strncpy((char *)h->oem_id, oem_id, sizeof h->oem_id);                    
-> >     } else {                                                                     
-> >         memcpy(h->oem_id, ACPI_BUILD_APPNAME6, 6);                               
-> >     }                                                                            
-> >                                                                                  
-> >     if ()) {                                                          
-> >         strncpy((char *)h->oem_table_id, oem_table_id, sizeof(h->oem_table_id)); 
-> >     } else {                                                                     
-> >         memcpy(h->oem_table_id, ACPI_BUILD_APPNAME4, 4);                         
-> >         memcpy(h->oem_table_id + 4, sig, 4);                                     
-> >     }  
-> > I'd rather drop 'else' branches altogether and simplify to something like this
-> >
-> > g_assert(oem_id);
-> > strncpy((char *)h->oem_id, oem_id, sizeof h->oem_id);
-> > g_assert(oem_table_id)
-> > strncpy((char *)h->oem_table_id, oem_table_id, sizeof(h->oem_table_id));
-> > + padding
-> >
-> > and make sure ids are properly propagated everywhere.
-> >  
-> 
-> I'm not sure if I understood this point correctly. You want to remove the appending
-> of the sig part to the oem_table_id field, and just use whatever is
-> passed by the caller for oem_table_id?
-yes, according to spec unique oem_table_id helps only in distinguishing different
-pieces of DSDT/SSDT tables, for other tables it doesn't make any sense to make it unique.
-and this matches what real machines do.
+> This includes code previously submitted[1] by Daniel P. Berrang=C3=A9
+> to add a "smbios-ep" machine property on PC.
+>=20
+> SMBIOS 3.0 is necessary to support more than ~720 VCPUs, as a
+> large number of VCPUs can easily hit the table size limit of
+> SMBIOS 2.1 entry points.
+
+Eduardo,
+do you plan to submit Seabios patches for SMBIOS 3.0?
+will OVMF pick up new tables automatically?
+
+>=20
+> [1] https://lore.kernel.org/qemu-devel/20200908165438.1008942-5-berrange@=
+redhat.com
+>     https://lore.kernel.org/qemu-devel/20200908165438.1008942-6-berrange@=
+redhat.com
+>=20
+> Daniel P. Berrang=C3=A9 (1):
+>   hw/i386: expose a "smbios-ep" PC machine property
+>=20
+> Eduardo Habkost (2):
+>   smbios: Rename SMBIOS_ENTRY_POINT_* enums
+>   hw/smbios: Use qapi for SmbiosEntryPointType
+>=20
+>  qapi/qapi-schema.json        |  1 +
+>  qapi/smbios.json             | 11 +++++++++++
+>  include/hw/firmware/smbios.h | 10 ++--------
+>  include/hw/i386/pc.h         |  3 +++
+>  hw/arm/virt.c                |  2 +-
+>  hw/i386/pc.c                 | 26 ++++++++++++++++++++++++++
+>  hw/i386/pc_piix.c            |  2 +-
+>  hw/i386/pc_q35.c             |  2 +-
+>  hw/smbios/smbios.c           |  8 ++++----
+>  qapi/meson.build             |  1 +
+>  10 files changed, 51 insertions(+), 15 deletions(-)
+>  create mode 100644 qapi/smbios.json
+>=20
 

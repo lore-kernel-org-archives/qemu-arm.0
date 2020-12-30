@@ -1,114 +1,104 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp12282283lfq;
-        Wed, 30 Dec 2020 14:38:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxMtCcE0GqX5ErrKUEml9gb7iGOqZ2z0mF/dtkdEjTOQZIXyALSN97xzJq312D075iqHtsB
-X-Received: by 2002:a25:50a:: with SMTP id 10mr78326332ybf.115.1609367914642;
-        Wed, 30 Dec 2020 14:38:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609367914; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp12318641lfq;
+        Wed, 30 Dec 2020 15:51:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyRxmTbPvSv9WJAXLirvPajOEfYyA3zAChuOov3nN0K3rLP9qDmYYUQXK082f1ETt05QW/w
+X-Received: by 2002:a25:55c5:: with SMTP id j188mr60335165ybb.455.1609372312216;
+        Wed, 30 Dec 2020 15:51:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609372312; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tk85bQJRMBzS5KcNUfmJRQIgYoHeogD9aQtBjP317ZSd/TcD3FTSbYOjlhpA0/xG+A
-         1zwAsHaBzvYq5WFxIdzHthZbGbwuQyUggaipnUFr5n2bPnHu48BcYDFmIqJd5/LwKdwv
-         XZvIbzF+/fzzigSr1aJ/Be8394M9wdfJ1R61rWrEiKMLFJSB7CHw12WGrUUCia/wFXKB
-         tsDMBi3qeEzzmtdDOjGZOsRMsP+4qYHHd8TLEi8gegNRukAzk7Noj8xqX3ZzF2+80tM6
-         aTzoyH6ADOXEMyrmPp4/cXCoHe68SEj9b7gwx50bWiGO0wG9x5g8rfJNVZn67s//EZnK
-         5Ngw==
+        b=Te5Oh+G1MBWXDQdX8c2LkdSThYs0laswaByUtjOKkPzkbCDLnFrYajCjARe+RTFBi7
+         DbrLjLr6jh3Y7URxm0pea3Z8g3KGp/wFjiWDffAaiFinQl2bKR44dKH6lSyeu300okVw
+         TCvGkEiqcmyGpTr6Vjq3ANvRf4P6aT004N09TEYy+vcPqO3KgiIMK5bsBOX7+4d67Z33
+         FuKHDKgEKRHxeCF0LyqGTIjAH/obggeD+PIDQXbIYfyrNH3gyijjHS+czIpic1KwRsmc
+         w/zLVjBdUBB/qnv1nsMPcxQnY9erV7evkgpKIi8bjG/a4cF7YH6ngQzQAIUBy/TCbfab
+         pbvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=Aj/bWab8koY6Czj/Y98SO0WFOeHwIQhdjdAZnaEgc1Q=;
-        b=J/Mrfuk8OIfe2DJLyoQKxXpBglJZGQIUNeq1UM4sbMscl9eWCUx9UVj1O46VKvPIP8
-         KVXZZcgwBkflSYz2R0bbhxjctVL21GZsVL/zNcPf44jz1K7gQM+pEi6RPEUujGNpXziL
-         pJ7TbxeHz6SMtUL3qhr/0fu0NCNA8Ejrohb5VDIYU8R3rv4KGLSO3oW9kqds+IFWqQd2
-         sv1WcoNfYEAwcWcJsyX+NaF/GHxQYNvJUnuyTfrasiTu0VtjhO84MIVUpOxaxi4BUsnu
-         EtEUG2Fzd9Z7jZfeWJqiweeylqxzXKwkCc4j9+cz3PkfptIXVKsrx/9w5WE1NzO+23M1
-         h9WA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=INrNCSPHna5Q5SFMnCRtfb0NpALehAgSQWwjH/1FFg4=;
+        b=hyNvymLaFbZWHkOJEXvAjfJflxvT776H6PXazf9KYmMCzAGBJIjFcRkj0PCgdwH78N
+         pzK6IzzyO92riWqFw7qREfP3XyLvUEJ3ZaAnT/g1NziKhTKdjFRuNafLd1vGvX/ErUXI
+         IIRdTaLNeJjnA9/k/qO20sCzBZog7KzaUFHKa/ffDifwc2L1e6mstNBTZUF2lfgFSv8f
+         MRgeMHrlJdO+RKGQ52ls4PVFHiegKQgQk5X+/gNemUGICmSZcMncUAdVYZUvRaRlQXCt
+         Aba5BuUlA58U1JNOobNstSMLBJ2UqKsOZ1rMkYMGP+jKuSCoIX8/3hHVKthHeS9JWwH2
+         Fsgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EKsWOQPA;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=suMEZOrn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7si27715561ybr.445.2020.12.30.14.38.34
+        by mx.google.com with ESMTPS id c13si29657786ybg.242.2020.12.30.15.51.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Dec 2020 14:38:34 -0800 (PST)
+        Wed, 30 Dec 2020 15:51:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EKsWOQPA;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=suMEZOrn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54918 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kuk70-0005d3-0z
-	for alex.bennee@linaro.org; Wed, 30 Dec 2020 17:38:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55996)
+	id 1kulFv-0001NQ-LK
+	for alex.bennee@linaro.org; Wed, 30 Dec 2020 18:51:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kuk6m-0005b1-3d
- for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:38:20 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:32811)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kulFk-0001NF-Id; Wed, 30 Dec 2020 18:51:40 -0500
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31]:43640)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kuk6k-00011f-Ix
- for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:38:19 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id w1so2437004pjc.0
- for <qemu-arm@nongnu.org>; Wed, 30 Dec 2020 14:38:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Aj/bWab8koY6Czj/Y98SO0WFOeHwIQhdjdAZnaEgc1Q=;
- b=EKsWOQPA5RmQuuctMcAhVGd1+zlBXGqeepBBABFmXl5qHLBdRTVEh6jqJTpLNtPTRJ
- MocPXTsysdFEtEK8Ln2qFh4qmIxk4WmOmVFKX2VKU2qzJccCkf9JNaKjKbmAnoH3UmXP
- 8b3oRH9ySiT2q/SPc9mJYC1eHBC5zGaSy/NCI+dyqRyTJ+i93wgMVlhIzdmWvEN+Q5Oj
- E18uiIiF4jByDlefinwMdFtwWA7gxFVxbBs4wsTTO1SdPdU0n0ZFtG5ddqS3TJz++Atn
- O7B5JTeU+wugerWJ8X9gAk1DP202DEh3A5NLdqQeCuFWk924FVMUhgXG9O1wM4zHMmI+
- jojQ==
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kulFh-0000dr-Kt; Wed, 30 Dec 2020 18:51:40 -0500
+Received: by mail-yb1-xb31.google.com with SMTP id y128so16104058ybf.10;
+ Wed, 30 Dec 2020 15:51:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=INrNCSPHna5Q5SFMnCRtfb0NpALehAgSQWwjH/1FFg4=;
+ b=suMEZOrnuhYHOCIhzkbpV2rWmLo4F/V5xfsFPaCS6Z7hb41SS27kPP/BQS4btBGgK1
+ I6dkUHJR1YDQCXnUShRv0MG+vPlwClx0X2cdsymceEhuFrFE26JeLpNYL3WJac3hbJG4
+ Ezl8dL1m1ki8ObhMv8cWf335Uaecb67Fpb5u4yyc83a+Nmg6oGCxXBg/s8p0TrESrMyh
+ n+ChWIvShT83nMEG26KBojEcL/0tbc+ICpG8TYL+v6mW5EDYcjcsOZriyEPnmZLg9SRi
+ NQwfa6EBEHf9sPWuHB4wquiM751iz05mRd5rgC39BYDYAyy+T9KdAOljZuowrKAZM/VX
+ D4fQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Aj/bWab8koY6Czj/Y98SO0WFOeHwIQhdjdAZnaEgc1Q=;
- b=dSRuM2hTN/t6n2Nip+8mEUZGwr7adGhkgZ/rcqlzC8Qkw+EIRSIp5O/cBJ555MGBaL
- jIiqwDu3piNvtv2Fop59zkd4eQq8bDY7Dq6HXoyGT74TM44G1RLwlxOzhDdKl0VFtANf
- 2XcQdCJQp+NL+1B1SjVdHOZh4aCtrVUj73wdLvbXB7UnlHcjg0UvOzebt2lMqTKp9lAJ
- gwPWtDEPcPcgagDEA9BznXeYvwskeKscSgZ8nJL3cbkZM2k8QuhJm3HHjE41Oe5QvnmV
- EZ0NQFFRPAsL3csKkZtndp9WYw3EBme77HfFr4K70oF8LkoSmgQLMTVEOlzlPNnqCBMO
- +5Lg==
-X-Gm-Message-State: AOAM533bumOc5kQ/Uku6Pl1CCytdv4grp9h2ighHUzHV0n+nRJ2TinjB
- lhKlVNqyYBjqYANWmEANfXBg+A==
-X-Received: by 2002:a17:90a:eacf:: with SMTP id
- ev15mr10917613pjb.174.1609367896995; 
- Wed, 30 Dec 2020 14:38:16 -0800 (PST)
-Received: from [192.168.1.11] (174-21-150-71.tukw.qwest.net. [174.21.150.71])
- by smtp.gmail.com with ESMTPSA id
- a23sm8406566pjh.19.2020.12.30.14.38.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Dec 2020 14:38:16 -0800 (PST)
-Subject: Re: [PATCH 1/3] target/arm: keep translation start level unsigned
-From: Richard Henderson <richard.henderson@linaro.org>
-To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
-References: <7884934.NyiUUSuA9g@basile.remlab.net>
- <20201218143321.102872-1-remi.denis.courmont@huawei.com>
- <c2af03a8-9f56-fb43-485c-91ec0fbdef31@linaro.org>
-Message-ID: <002743e6-10d3-88b3-961a-8571efb4d1ed@linaro.org>
-Date: Wed, 30 Dec 2020 14:38:14 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=INrNCSPHna5Q5SFMnCRtfb0NpALehAgSQWwjH/1FFg4=;
+ b=h0j4ByJbxjivW3oJpex+sRkEhqR0qMMAsmFwJ7yAKni3y9QQuJJe8Fk/FgQO4xVbce
+ 2T+mzYe92EFLycr660VdjPT8GWpcsZx3PM9518eJs1mGaSfGt9Z/AJM4kOzQ5l7rih1K
+ wm2cxA5ZCsdaZOGC7GUveEe7Sqibza8QEwRusewR+Gwe3DuZFyaYaolgoTICIuGPgmwl
+ +FjonFFDJ2RMQXi5iRhMGFWau3v2+BeY2DMF1iVIokbQHSl7p85hIOmDxwg2PN94ML0s
+ MZ8vxV5QLIDRTAlrTatH+B9q8yJmXWceaNGhr8rFTPNb/n7oqClw5WOyEw4pIcvPELL+
+ RfrQ==
+X-Gm-Message-State: AOAM532Pp4SL9sk1gFWZskqMsMpEoBWtYEj7Al7/uLisNCVkgRH6IUCb
+ jgW4KW4Jxqsi0vdsjcnmFrKEVIusu4SmeBZ3TJs=
+X-Received: by 2002:a25:5a43:: with SMTP id o64mr23692664ybb.387.1609372296259; 
+ Wed, 30 Dec 2020 15:51:36 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <c2af03a8-9f56-fb43-485c-91ec0fbdef31@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.399,
+References: <20201202144523.24526-1-bmeng.cn@gmail.com>
+ <CAEUhbmUtCvXCKoQGU9b6+UX1juChVfHkugODjo2psBnRw+7NTw@mail.gmail.com>
+ <CAEUhbmV8gfgtb=hXwimhPfMHs_nJ24PKHLynydZRVkuM8njV6g@mail.gmail.com>
+In-Reply-To: <CAEUhbmV8gfgtb=hXwimhPfMHs_nJ24PKHLynydZRVkuM8njV6g@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Thu, 31 Dec 2020 07:51:24 +0800
+Message-ID: <CAEUhbmUfXOqPyQqFaLgekLApo7MBjMJnL97z0vY=0Rsh9rW-+w@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] hw/ssi: imx_spi: Use a macro for number of chip
+ selects supported
+To: Alistair Francis <alistair.francis@wdc.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, 
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb31.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -123,66 +113,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: Bin Meng <bin.meng@windriver.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2U33XJX0EBGg
+X-TUID: 4s4VF2hkWrxL
 
-On 12/30/20 2:10 PM, Richard Henderson wrote:
-> On 12/18/20 6:33 AM, remi.denis.courmont@huawei.com wrote:
->> From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
->>
->> Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
->> ---
->>  target/arm/helper.c | 14 ++++++--------
->>  1 file changed, 6 insertions(+), 8 deletions(-)
-> 
-> The patch does more than what is described above.
-> 
->>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index df195c314c..b927e53ab0 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -10821,17 +10821,12 @@ do_fault:
->>   * Returns true if the suggested S2 translation parameters are OK and
->>   * false otherwise.
->>   */
->> -static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
->> +static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, uint32_t level,
->>                                 int inputsize, int stride)
->>  {
->>      const int grainsize = stride + 3;
->>      int startsizecheck;
->>  
->> -    /* Negative levels are never allowed.  */
->> -    if (level < 0) {
->> -        return false;
->> -    }
->> -
-> 
-> I would expect this to be the only hunk from the patch description.  Probably
-> changing this negative check to a >= 3 check.
+On Tue, Dec 22, 2020 at 2:24 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+>
+> On Wed, Dec 16, 2020 at 6:24 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+> >
+> > Hi Alistair, Peter,
+> >
+> > On Wed, Dec 2, 2020 at 10:45 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+> > >
+> > > From: Bin Meng <bin.meng@windriver.com>
+> > >
+> > > Avoid using a magic number (4) everywhere for the number of chip
+> > > selects supported.
+> > >
+> > > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> > > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> > > ---
+> > >
+> > > (no changes since v1)
+> > >
+> > >  hw/ssi/imx_spi.c         | 4 ++--
+> > >  include/hw/ssi/imx_spi.h | 5 ++++-
+> > >  2 files changed, 6 insertions(+), 3 deletions(-)
+> > >
+> >
+> > Ping, not sure who is going to pick up this series?
+>
+> Ping?
 
-Having read the next patch, I think you should drop this type change.
-
->> @@ -11203,7 +11201,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
->>  
->>          if (!aarch64 || stride == 9) {
->>              /* AArch32 or 4KB pages */
->> -            startlevel = 2 - sl0;
->> +            startlevel = (2 - sl0) & 3;
-
-This hunk belongs with the next patch, implementing TTST, and should be
-conditional.  I.e.
-
-    if (stride == 9) {
-        startlevel = 2 - sl0;
-        if (aarch64 &&
-            cpu_isar_feature(aa64_st, env_archcpu(env)) {
-            startlevel &= 3;
-        }
-    ...
-
-
-r~
+Ping?

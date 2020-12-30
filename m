@@ -1,238 +1,199 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp6266669lfq;
-        Tue, 22 Dec 2020 22:26:31 -0800 (PST)
-X-Received: by 2002:a05:620a:1203:: with SMTP id u3mr25026894qkj.39.1608704791211;
-        Tue, 22 Dec 2020 22:26:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608704791; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp12268482lfq;
+        Wed, 30 Dec 2020 14:10:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzJjb7E3l3/sGbTDkSqM9GJODjUW1nc8itNRerSqhjeHh0aabB7JNBcI984luwAKNY+jlKU
+X-Received: by 2002:a25:c845:: with SMTP id y66mr75106785ybf.110.1609366230776;
+        Wed, 30 Dec 2020 14:10:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609366230; cv=none;
         d=google.com; s=arc-20160816;
-        b=OuUb0h+9LWG7LxPjI4Lm/0yR9afy/Mi99Sd4sYxHraQJrTm+9Tv/73Ef2OoOrn3aUl
-         eMQl6jFa0UktVINDrp3nIZiVviYGLjlG0EPIglcOa+wmPontua0eeRrW6P+zOSsfprgz
-         HG3aw/uMtLPdfJGJimOMd5YPjfSjVbMAs4JfF7y+1hJHdNh9QR3jva09hLQeMxjrEyfS
-         XgIHsFMiJZtvzPKwHgrGZdZ62uUkFdtPrCVxW++5a63d5OZG2gwDHxbcfk0/Ey9jpAj/
-         vPsnJzGVfoVibEsdsJwPpuTRHSW+7KTUSPjf9Efv4X2PMFMCOWC7mMhfwuYVMB1DV7wv
-         bawg==
+        b=E6Nldz0BAswI6j3XYnaiQyU19ZDHPRRzaJxd3AgWJONqcQ1ptJSFYwtBs9tdlAvIaE
+         qWLiBAJpfA5AQj44YAHitsvMFR+mhFSTkh9UpJ+U+mbWwDP1fCbjqgMv2G1NDeOZLbvg
+         gLNYrC6N6qqeM0qK1PJlITWjxYJ0Al5ADlKqPByPLFr32um1/GY9WEgdfP7ugbejqeis
+         FKRRAjVyE47im40XxFAPdcTuQtI2kRRSjpr3cWfuiK6ZFGeAt5E6YOuDLMqmIUlHPUNK
+         T6g2vlU7fGK/9LvYAAmBd7eSo5LzrNj4L+jN8y2OV8M+0OVMCJZPEyjtnZC9cARZtAi9
+         tO9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=ea300HOW8ofLPhUdOkUc6i+pqGe3xUrkR+h2FXHkW9Y=;
-        b=CWABY9Yu1UrTn4+KWCUYTwFb3WSsV0jR3LPhz2jqULqRQRahRPXhDkPPu+OgE4wCzB
-         nQBjkwtoBa6MhOcqLA01S3E+MBu5RdYT08eRbDjXwhj/9UwAXyBUuUgKUl5Iy8DuRtxt
-         Mf/geNEwXHMjDs9MNPhibiQGHacgTn+pRv7vI6E0xsGkvtnN7oOppfsMIVN35OcKcx7P
-         LE4KXByJoJen2/6UEaYvNOk7dzNQlmBVXJ2uvLRJFCWUHXbRakAhvDI0YS8EMdVjJgXb
-         oNHJ+oJjbUpnJDjTRo+ScL86O/Wt+Sv94bqWTS3UBXZYqAzJIyYmqPtw1COP97szeNMj
-         n+gQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=8Xa9D8hkDiPC8lrxl3e57tQR2jaDhyJNrSs+US9y60M=;
+        b=A0JxzPJskWj07X4R+fVQp5DxsiiQkNv4UJYM/1chQdSs1RYXjSzGy0ze58lenAaAC8
+         WmHQ9uefREM/MCkYnRcoX26T4xxaIAigDlCZk/W4htP7ZrJqNCVup8jjSwMgwEfcWCB2
+         CRVdWaIv4sJG2SD8wTnLMtjLv1WJ2Oiq3VOWqI1JQY0oEBCqNkiZ1Fg8F2fsRIJ2PMSe
+         0lsHK6hHLh1uSZknIBnZoNRX4OvP4CXpNLse4Hj522uuLbaXreoBrafEu4KEKruncTVr
+         kpOOHEVHel+Hxz97eR9CUi8yujU7o7NcqCzYXPpdUOFm0biM8AreRV12lzW2rRSxJIfs
+         0RnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ObNgumNL;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bmeng.cn@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w2sor20643874qtd.28.2020.12.22.22.26.31
-        (Google Transport Security);
-        Tue, 22 Dec 2020 22:26:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mVQal34p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e191si41985719ybf.280.2020.12.30.14.10.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 30 Dec 2020 14:10:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ObNgumNL;
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=ea300HOW8ofLPhUdOkUc6i+pqGe3xUrkR+h2FXHkW9Y=;
-        b=ObNgumNLd+bUAV74TogOAQDr+wP6wP0cQ/3chCX/rBr85CIMBgPwd9bKTTYzJO5RMp
-         0glu1+cgLTwCKrJvdqEQOkLOFbEZSi3u+K04bWWakvj+SJ/KEOUvCmsMMkhuQrtB9d3K
-         4/ThHgYL10cOhRCqXGRCXInbelxmu43T/sZW0SyemAcpLpw1iUQP0iN/Zn2NhgVIXr+e
-         XSJ6qZTkEGgzRvoKin+e1Zmd0dEZrHqIE3hd69/I2Dz4lcoQlVNAzV4qkAadLHGF4A2n
-         y3NVmpqZ4S41x224+qLuyYrSHlI0SMWNxtdAxWm9Ltq43YZNi0lW4CJhUA/ymLiEH2sC
-         jMAA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=mVQal34p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34192 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kujfq-0003d8-64
+	for alex.bennee@linaro.org; Wed, 30 Dec 2020 17:10:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48776)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kujff-0003cX-Mp
+ for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:10:19 -0500
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:36850)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kujfa-0007pL-AZ
+ for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:10:17 -0500
+Received: by mail-pg1-x531.google.com with SMTP id c132so754460pga.3
+ for <qemu-arm@nongnu.org>; Wed, 30 Dec 2020 14:10:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=8Xa9D8hkDiPC8lrxl3e57tQR2jaDhyJNrSs+US9y60M=;
+ b=mVQal34pNKTzK5/gW8txkkaYGwOrbfkeZfouy8JJNnL88QosyILpYxZ8V44gZIHiia
+ BjJ1ndIqmZWIk/SAoMUkzobkaLwkRa3b3fb41dYrgOsZfTAA8TEjphaGvToTxFzrn2Xr
+ 02Qle0s5+oxmeV8aoT9SPZ9a/JssPrp0qV7HvIEc257kDqzHgxoHIVsKkeslhJ1ocYK0
+ Hz1Q/rPnF0rHDQCrzatj6JL8tcXYWZtZJbkrVSnz17c6cJCOosI0lrfxF9IYXa9HkyyA
+ 7MbVNYAhIMj7dZrvBBxac5BJJqMeez39ryi8ANTP7s702P9MUUfXolh7uHfzexjNhv+W
+ 6ohQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=ea300HOW8ofLPhUdOkUc6i+pqGe3xUrkR+h2FXHkW9Y=;
-        b=okGFKzckxhdtDnoPMBgmDE0ID0+Dk2+ZcY3DTTWSMx34Kj7RAoqOuBwSfXRFnuiAoO
-         3Y0OwjOUlSHAbJII1mnv9n5dkLol0nlhglC5oHGNH+q+sdIZmXfQpF89gnGTINNCV/5Y
-         MObx1xyeRvYtwDB8t29sYO4mTBE19r1pAJqwyKHVMdwIXa9k64RguntSPj2OBySqlMQ7
-         9kwdNpIb3mCxKDyG2TdGxb4CaPtDLG4O3+PSw2i0bdUlrh7/y02FEv/8c/rm4caRG5Re
-         L9vnVMVanAdhtn6FMWPBNpKXqABQJRZcDG0f9jVOWtjKYtspBeUPfXp0QT9Wv2ILgmoo
-         LHXg==
-X-Gm-Message-State: AOAM531GHflMZqL98/Ne2R13LI1kFqs/aLBiY1uQIIF9IvSaCgSb14Az
-	kKPElThgPFKrN/rA4o7mUrYUB95+G2c=
-X-Google-Smtp-Source: ABdhPJwK81CR7eCyMnY6CNaSfSLP2Xv7Z/zqEPlnhEMLtzsldzR0hS7iAJVdWAcm7pbLNazeSbtv2A==
-X-Received: by 2002:ac8:5a90:: with SMTP id c16mr24560007qtc.331.1608704790879;
-        Tue, 22 Dec 2020 22:26:30 -0800 (PST)
-Return-Path: <bmeng.cn@gmail.com>
-Received: from pek-vx-bsp2.wrs.com (unknown-124-94.windriver.com. [147.11.124.94])
-        by smtp.gmail.com with ESMTPSA id q32sm14518589qtb.0.2020.12.22.22.26.27
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Dec 2020 22:26:30 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH v2 4/4] docs/system: arm: Add sabrelite board description
-Date: Wed, 23 Dec 2020 14:26:07 +0800
-Message-Id: <1608704767-9317-5-git-send-email-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1608704767-9317-1-git-send-email-bmeng.cn@gmail.com>
-References: <1608704767-9317-1-git-send-email-bmeng.cn@gmail.com>
-X-TUID: W1cOwOk7YMiH
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=8Xa9D8hkDiPC8lrxl3e57tQR2jaDhyJNrSs+US9y60M=;
+ b=O/dzO+Z00d8r4n7zrIAuxKPyoUFW1ESM1O/jLtNvRp8NXyguTGoK5RIF2Yfj+APW6j
+ OE3aedTgFBGNJYubE03FkHxbXviTPxy6C25+Sl4PCQ27KDYdQg0qFvy0u+tsajWxd2mp
+ WSbUG2xPbO4e2CjNRi+TxwjEJHR+gVxiZsekmzmea+alwuiglhf8nqKPBoUsolIjAom9
+ 1MzLW/R5D6ZWf/OwUfvwG2PDO0tL5KufwUkWQFkvw4i5YDbyiAhoEBMxV949mSZPpfCv
+ hUuAjU1wloAAPTyiTqxonkxI3tz88hD/Y1cIVUFi5bB/j8dwVt0Ydt0nfhwQQFM9ZGgx
+ em1g==
+X-Gm-Message-State: AOAM530KFaYzQ2hlIbHBJiqmxkw3j80quSMioVDfXT9vwTB5GK/l+UwN
+ 78mHh2RnGB0NH+Z3+N3tChXS4g==
+X-Received: by 2002:a65:494f:: with SMTP id q15mr53804870pgs.367.1609366212239; 
+ Wed, 30 Dec 2020 14:10:12 -0800 (PST)
+Received: from [192.168.1.11] (174-21-150-71.tukw.qwest.net. [174.21.150.71])
+ by smtp.gmail.com with ESMTPSA id
+ d203sm44349129pfd.148.2020.12.30.14.10.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Dec 2020 14:10:11 -0800 (PST)
+Subject: Re: [PATCH 1/3] target/arm: keep translation start level unsigned
+To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
+References: <7884934.NyiUUSuA9g@basile.remlab.net>
+ <20201218143321.102872-1-remi.denis.courmont@huawei.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <c2af03a8-9f56-fb43-485c-91ec0fbdef31@linaro.org>
+Date: Wed, 30 Dec 2020 14:10:09 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20201218143321.102872-1-remi.denis.courmont@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
+X-Spam_score_int: -54
+X-Spam_score: -5.5
+X-Spam_bar: -----
+X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.399,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OMMR2oyI9PmE
 
-From: Bin Meng <bin.meng@windriver.com>
+On 12/18/20 6:33 AM, remi.denis.courmont@huawei.com wrote:
+> From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+> 
+> Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+> ---
+>  target/arm/helper.c | 14 ++++++--------
+>  1 file changed, 6 insertions(+), 8 deletions(-)
 
-This adds the target guide for SABRE Lite board, and documents how
-to boot a Linux kernel and U-Boot bootloader.
+The patch does more than what is described above.
 
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index df195c314c..b927e53ab0 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -10821,17 +10821,12 @@ do_fault:
+>   * Returns true if the suggested S2 translation parameters are OK and
+>   * false otherwise.
+>   */
+> -static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+> +static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, uint32_t level,
+>                                 int inputsize, int stride)
+>  {
+>      const int grainsize = stride + 3;
+>      int startsizecheck;
+>  
+> -    /* Negative levels are never allowed.  */
+> -    if (level < 0) {
+> -        return false;
+> -    }
+> -
 
----
+I would expect this to be the only hunk from the patch description.  Probably
+changing this negative check to a >= 3 check.
 
-Changes in v2:
-- new patch: add sabrelite target guide
 
- docs/system/arm/sabrelite.rst | 119 ++++++++++++++++++++++++++++++++++++++++++
- docs/system/target-arm.rst    |   1 +
- 2 files changed, 120 insertions(+)
- create mode 100644 docs/system/arm/sabrelite.rst
+r~
 
-diff --git a/docs/system/arm/sabrelite.rst b/docs/system/arm/sabrelite.rst
-new file mode 100644
-index 0000000..4c5d101
---- /dev/null
-+++ b/docs/system/arm/sabrelite.rst
-@@ -0,0 +1,119 @@
-+Boundary Devices SABRE Lite (``sabrelite``)
-+===========================================
-+
-+Boundary Devices SABRE Lite i.MX6 Development Board is a low-cost development
-+platform featuring the powerful Freescale / NXP Semiconductor's i.MX 6 Quad
-+Applications Processor.
-+
-+Supported devices
-+-----------------
-+
-+The SABRE Lite machine supports the following devices:
-+
-+ * Up to 4 Cortex A9 cores
-+ * Generic Interrupt Controller
-+ * 1 Clock Controller Module
-+ * 1 System Reset Controller
-+ * 5 UARTs
-+ * 2 EPIC timers
-+ * 1 GPT timer
-+ * 2 Watchdog timers
-+ * 1 FEC ethernet controller
-+ * 3 I2C controllers
-+ * 7 GPIO controllers
-+ * 4 SDHC storage controllers
-+ * 4 USB 2.0 host controllers
-+ * 5 ECSPI controllers
-+ * 1 SST 25VF016B flash
-+
-+Please note above list is a complete superset the QEMU SABRE Lite machine can
-+support. For a normal use case, a device tree blob that reprents a real world
-+SABRE Lite board, only exposes a subset of devices to the guest software.
-+
-+Boot options
-+------------
-+
-+The SABRE Lite machine can start using the standard -kernel functionality
-+for loading a Linux kernel, U-Boot bootloader or ELF executable.
-+
-+Running Linux kernel
-+--------------------
-+
-+Linux mainline v5.10 release is tested at the time of writing. To build a Linux
-+mainline kernel that can be booted by the SABRE Lite machine, simply configure
-+the kernel using the imx_v6_v7_defconfig configuration:
-+
-+.. code-block:: bash
-+
-+  $ export ARCH=arm
-+  $ export CROSS_COMPILE=arm-linux-gnueabihf-
-+  $ make imx_v6_v7_defconfig
-+  $ make
-+
-+To boot the newly built Linux kernel in QEMU with the SABRE Lite machine, use:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
-+      -display none -serial null -serial stdio \
-+      -kernel arch/arm/boot/zImage \
-+      -dtb arch/arm/boot/dts/imx6q-sabrelite.dtb \
-+      -initrd /path/to/rootfs.ext4 \
-+      -append "root=/dev/ram"
-+
-+Running U-Boot
-+--------------
-+
-+U-Boot mainline v2020.10 release is tested at the time of writing. To build a
-+U-Boot mainline bootloader that can be booted by the SABRE Lite machine, use
-+the mx6qsabrelite_defconfig with similar commands as described above for Linux:
-+
-+.. code-block:: bash
-+
-+  $ export CROSS_COMPILE=arm-linux-gnueabihf-
-+  $ make mx6qsabrelite_defconfig
-+
-+Note we need to adjust settings by:
-+
-+.. code-block:: bash
-+
-+  $ make menuconfig
-+
-+then manually select the following configuration in U-Boot:
-+
-+  Device Tree Control > Provider of DTB for DT Control > Embedded DTB
-+
-+To start U-Boot using the SABRE Lite machine, provide the u-boot binary to
-+the -kernel argument, along with an SD card image with rootfs:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
-+      -display none -serial null -serial stdio \
-+      -kernel u-boot
-+
-+The following example shows booting Linux kernel from dhcp, and uses the
-+rootfs on an SD card. This requies some additional command line parameters
-+for QEMU:
-+
-+.. code-block:: none
-+
-+  -nic user,tftp=/path/to/kernel/zImage \
-+  -drive file=sdcard.img,id=rootfs -device sd-card,drive=rootfs
-+
-+The directory for the built-in TFTP server should also contain the device tree
-+blob of the SABRE Lite board. The sample SD card image was populated with the
-+root file system with one single partition. You may adjust the kernel "root="
-+boot parameter accordingly.
-+
-+After U-Boot boots, type the following commands in the U-Boot command shell to
-+boot the Linux kernel:
-+
-+.. code-block:: none
-+
-+  => setenv ethaddr 00:11:22:33:44:55
-+  => setenv bootfile zImage
-+  => dhcp
-+  => tftpboot 14000000 imx6q-sabrelite.dtb
-+  => setenv bootargs root=/dev/mmcblk3p1
-+  => bootz 12000000 - 14000000
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index bde4b8e..edd013c 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -83,6 +83,7 @@ undocumented; you can get a complete list by running
-    arm/versatile
-    arm/vexpress
-    arm/aspeed
-+   arm/sabrelite
-    arm/digic
-    arm/musicpal
-    arm/gumstix
--- 
-2.7.4
+>      startsizecheck = inputsize - ((3 - level) * stride + grainsize);
+>      if (startsizecheck < 1 || startsizecheck > stride + 4) {
+>          return false;
+> @@ -10856,6 +10851,9 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+>              if (level == 0 && pamax <= 42) {
+>                  return false;
+>              }
+> +            if (level == 3) {
+> +                return false;
+> +            }
+>              break;
+>          default:
+>              g_assert_not_reached();
+> @@ -10871,7 +10869,7 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, int level,
+>          /* AArch32 only supports 4KB pages. Assert on that.  */
+>          assert(stride == 9);
+>  
+> -        if (level == 0) {
+> +        if (level == 0 || level >= 3) {
+>              return false;
+>          }
+>      }
+> @@ -11203,7 +11201,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+>  
+>          if (!aarch64 || stride == 9) {
+>              /* AArch32 or 4KB pages */
+> -            startlevel = 2 - sl0;
+> +            startlevel = (2 - sl0) & 3;
+>          } else {
+>              /* 16KB or 64KB pages */
+>              startlevel = 3 - sl0;
+> 
+

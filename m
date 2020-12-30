@@ -1,108 +1,108 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp12281339lfq;
-        Wed, 30 Dec 2020 14:36:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJylbgzO1A3dg5z/O/CF7m+7gvMOYPZEkXV0AwcRoOPs3C/maZJFSr8tZ9fQxoFpjHoBokKm
-X-Received: by 2002:a25:dce:: with SMTP id 197mr79451684ybn.52.1609367805402;
-        Wed, 30 Dec 2020 14:36:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609367805; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp12281713lfq;
+        Wed, 30 Dec 2020 14:37:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzlWlkydD3gReuuoXRcxf7zyf3KsglzP775Dfl6f5OtcV2IjSFgYRDOti8d6J0KR9RCU4fg
+X-Received: by 2002:a25:c052:: with SMTP id c79mr74365752ybf.287.1609367847797;
+        Wed, 30 Dec 2020 14:37:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609367847; cv=none;
         d=google.com; s=arc-20160816;
-        b=eRtyNklCRBNvII+BxQWtgbf+vvCuwL+2+XyeLn6Y4nptUao/kpPMmVBKy/l5r6BHPZ
-         VMLUh5BNrVMmR+SKSovBvmRbS/mO7zlfWUn+zq9m/KJDE84Cimn3hBcAgY5NNfJ7r3ED
-         z6UAsQEDRSLQBwQ5w12HjtebIDmHpYXlSqkHxqAy3M9UPVS8Zf1beZkn6q7/pC578bOT
-         GeVZyeXaW8A9atIr+ecLpDqTqw/k/f8keyJXeQdO1pszAImbgp6/FnDYb4YGTDBprZfg
-         txlvDWvnBSVrRmERmZ5VtcFxvvSMXedZFNIFlkBc0VJ9ljXbFcB/TBO//6LaHTTz5DDN
-         xA8g==
+        b=m5auG2FyKojLh7WvNNfUHmhvni+jN5F8u1fUK4DbFWPu9p5qH7g0lQeBtt4kNPiyIH
+         E8AhRnTvE+Pueuoh+Fs3+R6hszStGSBGrqZQuqVm0gCeblSgHFek0D+naVwCOsmyApOR
+         UCNDYZxeZCpWA4vZH5I/wpfws12ot7l5ue78XXKSWa5tXTKgMxGFdJd2qYyuA5ehiIxn
+         RhZeEShk62TeSWTmnjD/esR3jktlwtOEv47CYDsQp1MXhgFuoKgxBIyeDoQbxGrZ3bc2
+         z53hFso3yW3AmZvZFFn0hY4tVYLxY+GZ79sKqbSpEfphJoXtaqSzVl33dQrEYZV8FhN8
+         m7ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=OyjdfDwERMLG6x3pGPpeUjZ/46ETxripnbSBpTFfDDI=;
-        b=l9TmTfK39bZ+TxTEQqtr16Uv+Lo+xAglyOT8MN/qJzMnnAFybeivYZonajA1T79uWZ
-         HXPLG2SvBPH/3HySlc+OwwLil5epPSZp+PUPRTykZJNBKoupmZ9X9L4Q+qYfwbF8QJVd
-         azquKwk3K7fcI8Okt0hu5eLeIU6VSPVQIEJ+LrWpKuO/i0sS1jKVTMPdcPIfFdsTWWw6
-         S0dKSYSsVVuHASetRwL5tX9eaw2G197VFfHBw9PAKt4jCXhP+lydBm0LQ9Wb43a2JW87
-         B3OaghC6lHrLWSz9yTRzGHR83zslP9gOB0gZ3L0UkwINdMdePyqWq168JkGDwm7sq/rx
-         nG1w==
+        bh=gp8A0yWzZKPMbq4rW1oqmT8ZXZHB3NWiwHwY3t8Pxvs=;
+        b=Y3XDdygHm4vtTuYEamRXqLueoZZ6rfOOSyILUpjttXdL3TUBc0mRl7hTJp2KEfl2NG
+         mJfVPkapk0riJAs+OujLv7wanjGmY1UX6zHlz7W3CJPI79cEiR2gKSS3xkXp2sPpzEs5
+         Bj0OHuhhj61NmRl0XztlYJAcYDBsJM/O3oYM85bCssJ8gF2i3cjs7aKbjRarohHNZwqu
+         cTm2t/oziduJa5C38R1HDmn6VOiX6itGc1GDSA4khtlAhqDmn7c0haGd6K9luufzipg5
+         8lPtkdPeRS2AtYOkB9B+MXsO0f2i74G8avf9fp/1jWqYArHzW4PZPmybr9RiJwu7uKdD
+         oBcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e8WHeLkO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NPYUqwfC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h7si40715389ybm.252.2020.12.30.14.36.45
+        by mx.google.com with ESMTPS id q82si41122961ybb.349.2020.12.30.14.37.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Dec 2020 14:36:45 -0800 (PST)
+        Wed, 30 Dec 2020 14:37:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e8WHeLkO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NPYUqwfC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50322 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kuk5E-0003ia-Gb
-	for alex.bennee@linaro.org; Wed, 30 Dec 2020 17:36:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55510)
+	id 1kuk5v-0004BR-3w
+	for alex.bennee@linaro.org; Wed, 30 Dec 2020 17:37:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kuk56-0003i5-SK
- for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:36:36 -0500
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534]:34454)
+ id 1kuk5a-00049V-B0
+ for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:37:06 -0500
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:44130)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kuk55-0000Wr-3x
- for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:36:36 -0500
-Received: by mail-pg1-x534.google.com with SMTP id i5so12127577pgo.1
- for <qemu-arm@nongnu.org>; Wed, 30 Dec 2020 14:36:34 -0800 (PST)
+ id 1kuk5Y-0000fY-Ss
+ for qemu-arm@nongnu.org; Wed, 30 Dec 2020 17:37:06 -0500
+Received: by mail-pg1-x52a.google.com with SMTP id p18so12086096pgm.11
+ for <qemu-arm@nongnu.org>; Wed, 30 Dec 2020 14:37:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OyjdfDwERMLG6x3pGPpeUjZ/46ETxripnbSBpTFfDDI=;
- b=e8WHeLkOtC4ZwG4iVT7m4A4qXDUyLx1QsbzvQ5PmuXsX2kw8gqhkb4JR68Ghs4ClRP
- mZIhU68YbQp0a2nYnIezX2zUgfdUo+GomjbE4oHCfNQzTDD5wU4MwzA3hNRZ1vsc2BU1
- 4V28pMQ2raaGx/PeDWa1LSRpHlyLHi0amCJZvu1310U9iWWDZt5/IpD6+R2BDtPIUs1u
- okY+RuPMhSFtcroxZwZP4lgDCo4bmV7m5/17QAH4nw/e//VzapRyPZhUfns0arV37UuI
- 3/pER4aigq11ZC2Dkc5T3XMMUkMCRkpLWDqTVTbnu9f5dwG6Ge354N0lOj1SQQhUHydU
- qqgg==
+ bh=gp8A0yWzZKPMbq4rW1oqmT8ZXZHB3NWiwHwY3t8Pxvs=;
+ b=NPYUqwfCt8BTX3uRAfHDA57+OoXzUZUZ3Vv8NvUC/S6qZiF7J/heGjte5iCemR7Ruy
+ w4fBfBd2sRkdXClejlQdo+c9D5uAnni3PWt67vh4pr2+KeynjtUpu7xAA/MzSN9Ebsxx
+ pZkwK8wSh+q1HDoRM+ZBTa9zKcC9EWDmAbxQuwlWtwoiOz44qNGhvUWoSphudJ2wT3fW
+ ++ybXoSFw8B6L6ZyS3AZWligxkoB+DKCIIrTNoBfb6NAOElB+K1edg6y/aWBpV1EQq9E
+ AReiwcz50b8vj2CoNju2huf0aUCdKFa303Q7gd3YXdgR1ZsNWxYQVouaHFY9jEQk8tl6
+ JMXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=OyjdfDwERMLG6x3pGPpeUjZ/46ETxripnbSBpTFfDDI=;
- b=TLr2bkBl4JEQGSyoYiIEkIEdyQWpJbLRAmIztwvtJDmHfoJ9BCAtqpIbfkWAOVu0VN
- aRjH/MCpoMv8A9Q2/zO+HlzqqmUZ1qFK6BO2uP0VxdJmMk7ygmEfZOlrgzGh8aq4cbnX
- cNXZc5XqaP4q2aOtBUVBGBoHuPu8Mz0v2VwwCU5+d0GB6xaNfmMCQH79Ekz6HZ/rUTtP
- VQfleKl9MMMQyDptGcdQwiYAv9mDlZk604DFCe95Fna2rKegV2+n0DmUaRUbqm5ZXH6w
- l/BkqOg+zqopSRlL02YjEP6JViOuZVJMN6IG6H2jY/6gfq+lqrMBhOueiFRi1opDzigQ
- H0gA==
-X-Gm-Message-State: AOAM530IMSvA4OcMHllRmRaPJUV+urYOXDLN0pdccU4SjiA8D7ybYC+O
- R9D4zTU2mwWD217zPY9p+HExBQ==
-X-Received: by 2002:a62:864e:0:b029:1ab:e82c:d724 with SMTP id
- x75-20020a62864e0000b02901abe82cd724mr47315218pfd.9.1609367793402; 
- Wed, 30 Dec 2020 14:36:33 -0800 (PST)
+ bh=gp8A0yWzZKPMbq4rW1oqmT8ZXZHB3NWiwHwY3t8Pxvs=;
+ b=kDG7fQKcMIiePvxFt5q/ZvMnKPf61iL9IEiXNqXo1Nu6GhiYsmv5fGP9B/spArnDcV
+ QHjNew+o/J8y+Fp/941ISNVeM0fPjqoAJC6y1U+EPodmrtdTLY4DAujlCiXpx00jyUnq
+ fyo/3nORKUia4YGhmk9m1iE8+J8tkzRmGfpwG+p2yxqyKVVmpJDm0mOOxyUrFo7YQwDf
+ fafnoC8FDe1x/NTtlQHvMLF+l2XqVcctGjbSITA0rc6unb70Qf8MtViYuRI7lCsKWDY3
+ xlYoRBug886DfW180vmj3Vie9cD/4QwTFqu7z3c+qzZWLeZi1DuqunpIAmgFKnzxA/e2
+ OX2g==
+X-Gm-Message-State: AOAM532lRWZJdaCdLCi9pK3z+ChsWGkD8iOfuLRJs9A4W5ZKZEczM5PE
+ dL5TQUoMIuA3y26M2NxevjfZlQ==
+X-Received: by 2002:aa7:8a0d:0:b029:19c:2209:7b59 with SMTP id
+ m13-20020aa78a0d0000b029019c22097b59mr49755663pfa.81.1609367823714; 
+ Wed, 30 Dec 2020 14:37:03 -0800 (PST)
 Received: from [192.168.1.11] (174-21-150-71.tukw.qwest.net. [174.21.150.71])
  by smtp.gmail.com with ESMTPSA id
- jz20sm8088039pjb.4.2020.12.30.14.36.32
+ h4sm41231159pfc.185.2020.12.30.14.37.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Dec 2020 14:36:32 -0800 (PST)
-Subject: Re: [PATCH 2/3] target/arm: ARMv8.4-TTST extension
+ Wed, 30 Dec 2020 14:37:03 -0800 (PST)
+Subject: Re: [PATCH 3/3] target/arm: enable Small Translation tables in max CPU
 To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
 References: <7884934.NyiUUSuA9g@basile.remlab.net>
- <20201218143321.102872-2-remi.denis.courmont@huawei.com>
+ <20201218143321.102872-3-remi.denis.courmont@huawei.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <3505851a-caa0-698d-49da-49beca168a54@linaro.org>
-Date: Wed, 30 Dec 2020 14:36:31 -0800
+Message-ID: <2c1fb01f-78ea-9f87-940b-246ea236277a@linaro.org>
+Date: Wed, 30 Dec 2020 14:37:01 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201218143321.102872-2-remi.denis.courmont@huawei.com>
+In-Reply-To: <20201218143321.102872-3-remi.denis.courmont@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x534.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
 X-Spam_score_int: -54
 X-Spam_score: -5.5
 X-Spam_bar: -----
@@ -125,79 +125,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o48XlWxhr/Nx
+X-TUID: NPBz3uz119mx
 
 On 12/18/20 6:33 AM, remi.denis.courmont@huawei.com wrote:
 > From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 > 
-> This adds for the Small Translation tables extension in AArch64 state.
-> 
 > Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 > ---
->  target/arm/cpu.h    |  5 +++++
->  target/arm/helper.c | 13 ++++++++++---
->  2 files changed, 15 insertions(+), 3 deletions(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 39abb2a36b..604b9cdd0e 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -3991,6 +3991,11 @@ static inline bool isar_feature_aa64_uao(const ARMISARegisters *id)
->      return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, UAO) != 0;
->  }
->  
-> +static inline bool isar_feature_aa64_st(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, ST) != 0;
-> +}
-> +
->  static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
->  {
->      return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index b927e53ab0..c3a186db35 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -10851,7 +10851,7 @@ static bool check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, uint32_t level,
->              if (level == 0 && pamax <= 42) {
->                  return false;
->              }
-> -            if (level == 3) {
-> +            if (level == 3 && !cpu_isar_feature(aa64_st, cpu)) {
->                  return false;
->              }
->              break;
+>  target/arm/cpu64.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-As mentioned vs patch 1, I think this hunk should be handled differently.
-
-> @@ -10946,7 +10946,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
->  {
->      uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
->      bool epd, hpd, using16k, using64k;
-> -    int select, tsz, tbi;
-> +    int select, tsz, tbi, max_tsz;
->  
->      if (!regime_has_2_ranges(mmu_idx)) {
->          select = 0;
-> @@ -10981,7 +10981,14 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
->              hpd = extract64(tcr, 42, 1);
->          }
->      }
-> -    tsz = MIN(tsz, 39);  /* TODO: ARMv8.4-TTST */
-> +
-> +    if (cpu_isar_feature(aa64_st, env_archcpu(env))) {
-> +        max_tsz = 48 - using64k;
-> +    } else {
-> +        max_tsz = 39;
-> +    }
-> +
-> +    tsz = MIN(tsz, max_tsz);
->      tsz = MAX(tsz, 16);  /* TODO: ARMv8.2-LVA  */
->  
->      /* Present TBI as a composite with TBID.  */
-> 
-
-But the rest of the patch looks good.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

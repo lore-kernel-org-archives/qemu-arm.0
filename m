@@ -1,163 +1,303 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp315186lfq;
-        Tue, 5 Jan 2021 13:12:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz4Bq3wcg8l0BS6HYHtRa43OVEqbh+62tH5mdCqJTy10P3glpKFovKBrjiYVC1BJK7zWPv5
-X-Received: by 2002:a25:24d5:: with SMTP id k204mr1808552ybk.167.1609881179320;
-        Tue, 05 Jan 2021 13:12:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609881179; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp340299lfq;
+        Tue, 5 Jan 2021 13:57:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxLOHNWS7QobtkZAt+jBRjHtiTJ9a9qz9OcJdjfe16QYFMJZAz2+GwsVCU+502CinxLfn4k
+X-Received: by 2002:a25:afd1:: with SMTP id d17mr2031017ybj.6.1609883826825;
+        Tue, 05 Jan 2021 13:57:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609883826; cv=none;
         d=google.com; s=arc-20160816;
-        b=OuugrQ4PO4lL1ft4UbaeO4pEzXtso4BEB5TLUC6q0IXeZGLF5Qy40/P90MVGj5CYLJ
-         Hl1M+hTJc93n9dQl3KEfV5BOgi0F83bjCuTmJtQdCJRCJjvCXVKVjLEOftADNHonCUko
-         O2SUMttpB1sb9VtS8EAApu6hb4bbwszUHCZl1qKNE9/M3o0tZ8aoJDIxW4kwIps4pJ6l
-         hxtvG8ti2yjrZUbE3URgeUhrLQHuY7CUNarAga9A3S8rFHZFlFguJ9wRJsZPwZG/Hx38
-         KU1/fLRzatsgCNXiV0b2jtZaCqF9op+WxAVzutwaKdfYaU935KG8ZDklfoJAf+2/N5gn
-         njIw==
+        b=dbGD/G7ugM0pgnOkupM0CK4/Q/D6wK3OmoVyr9cd+Aj/Kg1aQ2t+xWkkcNpg5EI6nh
+         KR0MT4p5Q4UugW10P18WRgkWkOuxxpuO9fzVt3BJtVN4Y14JapoG9BSkv0jFMUO9Jfwc
+         lY8mDPxTGdz7FnkMEgYI6DeTjl0r2kEW4swD6WQqLCZ0we3+LsntsNvW0Bf2rOaPV1oz
+         +cwGNT8V2RLGkqbOAcWn6CjDd3S6A1E2THLLfNHXGqld7w6QolbJsj5kDUUSqbxGuOoF
+         GnxNSf26yBFkEmRxO8FJvs76/Ri8lf3ofmLEjEWmPVCfjHad45t80ekqODEcEiOWQxol
+         9W9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=CJzM8vGuJJ7uphomVoIK3FvyeywCzrMEff/uX/RUGhQ=;
-        b=zgpx9pxQcx4hquZBit5ACUhv0y8vswLBSbORkk23hoY2pfrlyYnjH6hfsWC2WKhM9D
-         7IjpZs7YrN3IqH6pE0yBBGMOgmmqfQtilmojmtpXdIxNdDv5Dram83HH+NIChStBAySO
-         IjCJD2D6dWTAQfiTuO89fYcYRGBwFxbgUv17VGW9hTPR+pqGgdi7OQv47ry4/HW8CbOC
-         Xi6mEC9WS3CHH7/i90JClzFG8pMsxA0pD07rjSQNotf6xkAIy+aLxUtCZYN22Y/K4lgo
-         wA9I863yZpo9kmw++5J0s/hfPTv2NX6Ii+MAmRFYUt1G4zX3vFpvnJY6JppoBiqvhiOQ
-         HFFA==
+        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
+         :subject:message-id:date:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=CJTR5P+O1pAD9ZwARwSZ/K8/6oUZwdn6dUQpE4KreUU=;
+        b=X0Eoty64QGsrOgBTmBOZZyPbrHt10rJqhUJ+big6RFBWmboikY+I9dl7YwlBKsBEzN
+         13egvfriazJ8ANfZZ46EFdKMdnbN8+Bjpkdd9y9/VB38HULL8dRgqE2p5WBfN0fUX7Ry
+         RbXB77cWl0hLhIAJsBMGVn16p43eXsDwHLFeTQwKrDZRgnEMM9LVGW56PNo5c/QxFmuL
+         MerQcymABLaKguAqQpiUb+sxVexhwhANOewpyNev/Ts1VfWO0ofQ0vQgOgfnwwDJo2jm
+         4niK44TP17f52P7VRfSodKYQSke4q7nDXfTlMteN/MAW6VN2Vkk3RUnNVewrz1XK9ZfS
+         8g0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nQoLdb9H;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@google.com header.s=20161025 header.b=X3nJsZLr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r35si467668ybd.310.2021.01.05.13.12.59
+        by mx.google.com with ESMTPS id b9si625999ybr.8.2021.01.05.13.57.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Jan 2021 13:12:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Jan 2021 13:57:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nQoLdb9H;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44548 helo=lists1p.gnu.org)
+       dkim=fail header.i=@google.com header.s=20161025 header.b=X3nJsZLr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:41554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kwtdS-000599-Oc
-	for alex.bennee@linaro.org; Tue, 05 Jan 2021 16:12:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51832)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kwuKA-0002dH-85
+	for alex.bennee@linaro.org; Tue, 05 Jan 2021 16:57:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kwtdJ-00057q-EE; Tue, 05 Jan 2021 16:12:49 -0500
-Received: from mail-il1-x132.google.com ([2607:f8b0:4864:20::132]:37334)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1kwuJn-0002d2-1c
+ for qemu-devel@nongnu.org; Tue, 05 Jan 2021 16:56:43 -0500
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134]:39511)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kwtdH-0005vM-QO; Tue, 05 Jan 2021 16:12:49 -0500
-Received: by mail-il1-x132.google.com with SMTP id k8so1070622ilr.4;
- Tue, 05 Jan 2021 13:12:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1kwuJl-0004za-0i
+ for qemu-devel@nongnu.org; Tue, 05 Jan 2021 16:56:42 -0500
+Received: by mail-lf1-x134.google.com with SMTP id a12so2021493lfl.6
+ for <qemu-devel@nongnu.org>; Tue, 05 Jan 2021 13:56:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CJzM8vGuJJ7uphomVoIK3FvyeywCzrMEff/uX/RUGhQ=;
- b=nQoLdb9HSjZeeEmET9F+xZE56nPZqliJIuRKKXgFOdKhGagTfNZ0qEN+AtOWa48GzE
- T7c+xuq6FfNPxyJ1WeonzqRCIJDY9Qiwjb9aV11C5bY8YM1ALCb95amsyED28LAt8rjY
- FxHQ66FEzKu2fmhEb2g8LhFyx+pTSJf6U1JJUAebc+mv+0h4fSmk4bX4N9WBi0NJKgGJ
- 2SJjVBosLF1XejAKXA9oNPTf6Jhx1V9vPyOA5dY/MvRuak1igQbxBLlWTh12qs3UkFnK
- o56Wdsv6WEJi7td88Ym4aAzwpmqgieiSe2ZK5p1tDVH4SHLflCmWoIMpqv3Kmf/ntBa6
- o44w==
+ :cc; bh=CJTR5P+O1pAD9ZwARwSZ/K8/6oUZwdn6dUQpE4KreUU=;
+ b=X3nJsZLrGDkre0IxhwB9gU76MRmgh7NQQkgtmp+2qgfMN2myC1CqKbyupf/g2JGSKB
+ ePT96owqK6R0bUltPu1FuQg5iF09pnelWWk46QC8eHo1iOdCnVN11L6zkHbmabV+v/vu
+ o5uQ9VJs/ggBrzXEHevTQMOLE8m8l6/Z2UVqtsWHeN6Xl0WoczwVZn+MKfKNEO2aCCaN
+ AEdihsmfHRofpW/EEzwAxde7+/D9BhED9pdFBZpgbdQZbPbDsHSh/v/LHum5/Mcs2YpY
+ dA7kpcBmfs7Oa9yvL5p4Yz5UEUP9AfWXPt39D4KbcBeOtQV4Zj5zMKY2DhtvZ83v/BEX
+ qcEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=CJzM8vGuJJ7uphomVoIK3FvyeywCzrMEff/uX/RUGhQ=;
- b=Wn0nZBS1ExFgINeFwwdUZKgLX9S4916cD/zwGCEt2PBf2bLXegft5qaMf8rHPmcOsh
- a8kVPaKEZpmo1ArsKDvebwTCmXCSmXjPPc9UPvfmheM2iwPBQT4H1pd3cwT3IkNYJRDg
- KjrO+O5tOImah8s4DnIAcOZYh/2RTift1uGFlZi+wJiOkZLXo+Qsnbs+1bGEAbpHLU5Y
- BQELvfihQYOG0QHWsVjdvI6i2v4g/t+f+Y3VNYkUwkly1FGxSaTHBmKGtQtNgaM686d8
- qTWKt4KMUSvoilqzsoRK8Hf90ZNN3RImqfnXHd+TPFCgbA/E0RyFWtjC4pxY8gvYtrf8
- vLxg==
-X-Gm-Message-State: AOAM531h8fUSgZ9QEqccm/7gM1KTVlILtIB6KzL4iseIssNz7TC2vVSg
- Pu0m0arV89dmQdX0JPKoQmDh8f5IfgoWkNV9bouCGVasp0Q=
-X-Received: by 2002:a05:6e02:ca5:: with SMTP id 5mr1471370ilg.40.1609881166022; 
- Tue, 05 Jan 2021 13:12:46 -0800 (PST)
+ bh=CJTR5P+O1pAD9ZwARwSZ/K8/6oUZwdn6dUQpE4KreUU=;
+ b=ZAbKiKB8WNsrInsaUnPEGIlakaXGODbofY+vqwvr4vRuvRnEPt+LvSEf/0zhWTfY3x
+ D87xmojvUt8b6CSgsHki681FQ6EoRzldS4OjV/MHGvJR+nM0LgpOTU+i/TVPzhGTOcWY
+ rCF47RRTzbjTNp8IMV46PRX6y0Rq1i7xdbUHIoThykQGQtICV0Slves40gps2hrj4dje
+ d92K6AaA+ZLZMe6lpJITT2rI/Dg2EAsGLPUsDfoWyzAicaQahCh9s+MEBVeqADsWgQ+5
+ eDCR/xMwzWACKZwqKl9QLluyo8e6oGIZNFkxUNY6oSqCEsoOk+XIejgHvVTdnOu4oAbr
+ 7RQw==
+X-Gm-Message-State: AOAM531HRJkbYHdlzwB4R9OVAd5t2GcLP1rzRDTTsZBEQ6z1ndmMNdnj
+ zaJtd2zG0pw0muM3XGET6XXm1g2XUxGWYJQT9gqGtQ==
+X-Received: by 2002:ac2:4d14:: with SMTP id r20mr576847lfi.410.1609883793668; 
+ Tue, 05 Jan 2021 13:56:33 -0800 (PST)
 MIME-Version: 1.0
-References: <20201202144523.24526-1-bmeng.cn@gmail.com>
- <CAEUhbmUtCvXCKoQGU9b6+UX1juChVfHkugODjo2psBnRw+7NTw@mail.gmail.com>
- <CAKmqyKPy-V77t-COOb2Vp5DasfduC49Uy51EcCfSRos+M-JkKw@mail.gmail.com>
-In-Reply-To: <CAKmqyKPy-V77t-COOb2Vp5DasfduC49Uy51EcCfSRos+M-JkKw@mail.gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 5 Jan 2021 13:12:19 -0800
-Message-ID: <CAKmqyKPGpNvvhvsZ_vUrjasj_sjy+yHP0n5VdkNnBpv3CfbwRw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] hw/ssi: imx_spi: Use a macro for number of chip
- selects supported
-To: Bin Meng <bmeng.cn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x132.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20201217004349.3740927-1-wuhaotsh@google.com>
+In-Reply-To: <20201217004349.3740927-1-wuhaotsh@google.com>
+Date: Tue, 5 Jan 2021 13:56:22 -0800
+Message-ID: <CAGcCb10FdAJs2qkwU3COtapt-xtNAAJg7oVPCFdE-LUHFjwBKQ@mail.gmail.com>
+Subject: Re: [PATCH v4 0/6] Additional NPCM7xx devices
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000a7214905b82e4742"
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x134.google.com
+X-Spam_score_int: -179
+X-Spam_score: -18.0
+X-Spam_bar: ------------------
+X-Spam_report: (-18.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.369,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Alistair Francis <alistair.francis@wdc.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3/HAORBRMJe/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <minyard@acm.org>, Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to: Hao Wu <wuhaotsh@google.com>
+From: Hao Wu via <qemu-devel@nongnu.org>
+X-TUID: A498inXaF1rv
 
-On Tue, Jan 5, 2021 at 1:08 PM Alistair Francis <alistair23@gmail.com> wrote:
->
-> On Wed, Dec 16, 2020 at 2:25 AM Bin Meng <bmeng.cn@gmail.com> wrote:
-> >
-> > Hi Alistair, Peter,
-> >
-> > On Wed, Dec 2, 2020 at 10:45 PM Bin Meng <bmeng.cn@gmail.com> wrote:
-> > >
-> > > From: Bin Meng <bin.meng@windriver.com>
-> > >
-> > > Avoid using a magic number (4) everywhere for the number of chip
-> > > selects supported.
-> > >
-> > > Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> > > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> > > ---
-> > >
-> > > (no changes since v1)
-> > >
-> > >  hw/ssi/imx_spi.c         | 4 ++--
-> > >  include/hw/ssi/imx_spi.h | 5 ++++-
-> > >  2 files changed, 6 insertions(+), 3 deletions(-)
-> > >
-> >
-> > Ping, not sure who is going to pick up this series?
->
-> It should be reviewed by Jean-Christophe and then probably go via the ARM tree.
+--000000000000a7214905b82e4742
+Content-Type: text/plain; charset="UTF-8"
 
-Ah, I just realised I apparently have `hw/ssi/*` listed in
-MAINTAINERS. As this file is specifically mentioned somewhere else in
-MAINTAINERS and I know very little about IMX I'm going to leave this
-alone still.
+Ping?
 
-Alistair
+On Wed, Dec 16, 2020 at 4:45 PM Hao Wu <wuhaotsh@google.com> wrote:
 
+> This patch series include a few more NPCM7XX devices including
 >
-> Alistair
+> - Analog Digital Converter (ADC)
+> - Pulse Width Modulation (PWM)
 >
-> >
-> > Regards,
-> > Bin
-> >
+> We also modified the CLK module to generate clock values using qdev_clock.
+> These clocks are used to determine various clocks in NPCM7XX devices.
+>
+> Thank you for your review.
+>
+> Changes since v3:
+> - Use type casting instead of accessing parent object in all devices.
+>
+> Changes since v2:
+> - Split PWM test into a separate patch in the patch set
+> - Add trace events for PWM's update_freq/update_duty
+> - Add trace events for ioread/iowrite in ADC and PWM
+> - Use timer_get_ns in hw/timer/npcm7xx_timer.c
+> - Update commit message in ADC/PWM to mention qom-get/set method for usage
+> - Fix typos
+>
+> Changes since v1:
+> - We removed the IPMI and KCS related code from this patch set.
+>
+> Hao Wu (6):
+>   hw/misc: Add clock converter in NPCM7XX CLK module
+>   hw/timer: Refactor NPCM7XX Timer to use CLK clock
+>   hw/adc: Add an ADC module for NPCM7XX
+>   hw/misc: Add a PWM module for NPCM7XX
+>   hw/misc: Add QTest for NPCM7XX PWM Module
+>   hw/*: Use type casting for SysBusDevice in NPCM7XX
+>
+>  docs/system/arm/nuvoton.rst      |   4 +-
+>  hw/adc/meson.build               |   1 +
+>  hw/adc/npcm7xx_adc.c             | 321 +++++++++++++
+>  hw/adc/trace-events              |   5 +
+>  hw/arm/npcm7xx.c                 |  55 ++-
+>  hw/arm/npcm7xx_boards.c          |   2 +-
+>  hw/mem/npcm7xx_mc.c              |   2 +-
+>  hw/misc/meson.build              |   1 +
+>  hw/misc/npcm7xx_clk.c            | 797 ++++++++++++++++++++++++++++++-
+>  hw/misc/npcm7xx_gcr.c            |   2 +-
+>  hw/misc/npcm7xx_pwm.c            | 559 ++++++++++++++++++++++
+>  hw/misc/npcm7xx_rng.c            |   2 +-
+>  hw/misc/trace-events             |   6 +
+>  hw/nvram/npcm7xx_otp.c           |   2 +-
+>  hw/ssi/npcm7xx_fiu.c             |   2 +-
+>  hw/timer/npcm7xx_timer.c         |  25 +-
+>  include/hw/adc/npcm7xx_adc.h     |  72 +++
+>  include/hw/arm/npcm7xx.h         |   4 +
+>  include/hw/misc/npcm7xx_clk.h    | 146 +++++-
+>  include/hw/misc/npcm7xx_pwm.h    | 106 ++++
+>  include/hw/timer/npcm7xx_timer.h |   1 +
+>  meson.build                      |   1 +
+>  tests/qtest/meson.build          |   4 +-
+>  tests/qtest/npcm7xx_adc-test.c   | 400 ++++++++++++++++
+>  tests/qtest/npcm7xx_pwm-test.c   | 490 +++++++++++++++++++
+>  25 files changed, 2972 insertions(+), 38 deletions(-)
+>  create mode 100644 hw/adc/npcm7xx_adc.c
+>  create mode 100644 hw/adc/trace-events
+>  create mode 100644 hw/misc/npcm7xx_pwm.c
+>  create mode 100644 include/hw/adc/npcm7xx_adc.h
+>  create mode 100644 include/hw/misc/npcm7xx_pwm.h
+>  create mode 100644 tests/qtest/npcm7xx_adc-test.c
+>  create mode 100644 tests/qtest/npcm7xx_pwm-test.c
+>
+> --
+> 2.29.2.684.gfbc64c5ab5-goog
+>
+>
+
+--000000000000a7214905b82e4742
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Ping?</div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
+ class=3D"gmail_attr">On Wed, Dec 16, 2020 at 4:45 PM Hao Wu &lt;<a href=3D=
+"mailto:wuhaotsh@google.com">wuhaotsh@google.com</a>&gt; wrote:<br></div><b=
+lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
+ft:1px solid rgb(204,204,204);padding-left:1ex">This patch series include a=
+ few more NPCM7XX devices including<br>
+<br>
+- Analog Digital Converter (ADC)<br>
+- Pulse Width Modulation (PWM)<br>
+<br>
+We also modified the CLK module to generate clock values using qdev_clock.<=
+br>
+These clocks are used to determine various clocks in NPCM7XX devices.<br>
+<br>
+Thank you for your review.<br>
+<br>
+Changes since v3:<br>
+- Use type casting instead of accessing parent object in all devices.<br>
+<br>
+Changes since v2:<br>
+- Split PWM test into a separate patch in the patch set<br>
+- Add trace events for PWM&#39;s update_freq/update_duty<br>
+- Add trace events for ioread/iowrite in ADC and PWM<br>
+- Use timer_get_ns in hw/timer/npcm7xx_timer.c<br>
+- Update commit message in ADC/PWM to mention qom-get/set method for usage<=
+br>
+- Fix typos<br>
+<br>
+Changes since v1:<br>
+- We removed the IPMI and KCS related code from this patch set.<br>
+<br>
+Hao Wu (6):<br>
+=C2=A0 hw/misc: Add clock converter in NPCM7XX CLK module<br>
+=C2=A0 hw/timer: Refactor NPCM7XX Timer to use CLK clock<br>
+=C2=A0 hw/adc: Add an ADC module for NPCM7XX<br>
+=C2=A0 hw/misc: Add a PWM module for NPCM7XX<br>
+=C2=A0 hw/misc: Add QTest for NPCM7XX PWM Module<br>
+=C2=A0 hw/*: Use type casting for SysBusDevice in NPCM7XX<br>
+<br>
+=C2=A0docs/system/arm/nuvoton.rst=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +-<br=
+>
+=C2=A0hw/adc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0|=C2=A0 =C2=A01 +<br>
+=C2=A0hw/adc/npcm7xx_adc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+ 321 +++++++++++++<br>
+=C2=A0hw/adc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 =C2=A05 +<br>
+=C2=A0hw/arm/npcm7xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0|=C2=A0 55 ++-<br>
+=C2=A0hw/arm/npcm7xx_boards.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
+=A02 +-<br>
+=C2=A0hw/mem/npcm7xx_mc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 =C2=A02 +-<br>
+=C2=A0hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 =C2=A01 +<br>
+=C2=A0hw/misc/npcm7xx_clk.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 797 =
+++++++++++++++++++++++++++++++-<br>
+=C2=A0hw/misc/npcm7xx_gcr.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
+=A0 =C2=A02 +-<br>
+=C2=A0hw/misc/npcm7xx_pwm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 559 =
+++++++++++++++++++++++<br>
+=C2=A0hw/misc/npcm7xx_rng.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
+=A0 =C2=A02 +-<br>
+=C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 =C2=A06 +<br>
+=C2=A0hw/nvram/npcm7xx_otp.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
+=A0 =C2=A02 +-<br>
+=C2=A0hw/ssi/npcm7xx_fiu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 =C2=A02 +-<br>
+=C2=A0hw/timer/npcm7xx_timer.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 25 =
++-<br>
+=C2=A0include/hw/adc/npcm7xx_adc.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 72 +++<br>
+=C2=A0include/hw/arm/npcm7xx.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=
+=A04 +<br>
+=C2=A0include/hw/misc/npcm7xx_clk.h=C2=A0 =C2=A0 | 146 +++++-<br>
+=C2=A0include/hw/misc/npcm7xx_pwm.h=C2=A0 =C2=A0 | 106 ++++<br>
+=C2=A0include/hw/timer/npcm7xx_timer.h |=C2=A0 =C2=A01 +<br>
+=C2=A0meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+=C2=A0tests/qtest/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
+=A04 +-<br>
+=C2=A0tests/qtest/npcm7xx_adc-test.c=C2=A0 =C2=A0| 400 ++++++++++++++++<br>
+=C2=A0tests/qtest/npcm7xx_pwm-test.c=C2=A0 =C2=A0| 490 +++++++++++++++++++<=
+br>
+=C2=A025 files changed, 2972 insertions(+), 38 deletions(-)<br>
+=C2=A0create mode 100644 hw/adc/npcm7xx_adc.c<br>
+=C2=A0create mode 100644 hw/adc/trace-events<br>
+=C2=A0create mode 100644 hw/misc/npcm7xx_pwm.c<br>
+=C2=A0create mode 100644 include/hw/adc/npcm7xx_adc.h<br>
+=C2=A0create mode 100644 include/hw/misc/npcm7xx_pwm.h<br>
+=C2=A0create mode 100644 tests/qtest/npcm7xx_adc-test.c<br>
+=C2=A0create mode 100644 tests/qtest/npcm7xx_pwm-test.c<br>
+<br>
+-- <br>
+2.29.2.684.gfbc64c5ab5-goog<br>
+<br>
+</blockquote></div>
+
+--000000000000a7214905b82e4742--

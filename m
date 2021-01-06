@@ -1,123 +1,118 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp600437lfq;
-        Tue, 5 Jan 2021 22:35:22 -0800 (PST)
-X-Received: by 2002:a17:902:8216:b029:dc:1e79:e74c with SMTP id x22-20020a1709028216b02900dc1e79e74cmr3020388pln.5.1609914921960;
-        Tue, 05 Jan 2021 22:35:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609914921; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp616968lfq;
+        Tue, 5 Jan 2021 23:07:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz2n/9K02M8mySKLFa212IhFrRimzN+IV4ea699G55tXmiofmneuYrzqffZFg/gn1u3nDxQ
+X-Received: by 2002:a25:b341:: with SMTP id k1mr4377590ybg.37.1609916879154;
+        Tue, 05 Jan 2021 23:07:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609916879; cv=none;
         d=google.com; s=arc-20160816;
-        b=ti8DeILbve6FKUHi2sAQ01P1zC9JGw52CAsHyrsFc2sM6vLI5OKtsmA2XkU4Ye0OfQ
-         5yy4QY5QEx/wOH4noBrYdFCh0w+TO2C23G8t2WuN5JcrtvEORqJhaHZl8Ja2NwOiA2/o
-         6hYqQl9jzs3kXDtAqKJccTMzqmyq9a84m1fO1+quD3Lpk02CJ0/eazwX4q7pGlqdI7K1
-         k2rxDFEVAiy8s7QUnEuxScwCPhdUBeNf+BLg5p7Qu2OUOqA0t5OaHVjxqTd+wR8hgeEe
-         dO9m4qPPlmJrJxngTZLzvToLrLDUd8vAbH6RxCbKsiedEdJ0cr2f4LnwnU9bT68an5h5
-         jocg==
+        b=P4bJVhCPQWSCu6IdkP5HpcHeE9UgYt89ySE08BC+4YCylnBAtNGjvhdjqwu2vaMNoe
+         5y2YGE1Hr+MtZyOB7Ks0Sder7V3Y+idkLjWjg7l5pHCcrkQTMcr9Ygpe0Gi56X9thB05
+         U/0G94gF8PxdRD/Y8JFBkd5sNDNl30RXtKtrfMJR/XkCWHIDsfYEKIeBhv8LL2QUwFhX
+         sdjqR6P38dgQZiZBvZKjUpYbehJkFFr4E4N9EevNQRFDrgoNkvKvihhaoImthySQKDtP
+         bRi3QY1b+90+EZFx/+rrbYODbrgEdlBqAOdBP2elGNVRb3cj+gUwS5VfLv7NuPooBguX
+         igbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vUQGbC64bDqMXxpl/W2K5oV7pP0S99JpmeJuH9H8/cc=;
-        b=wNJ56sz0csAKas84SMdSVbvivkSQzvRZ6Ll2AtvdCFle7qm5KJ8nMFmBDWhyQnjAoO
-         18GiimYyd34DL+APOtu6QWvPPobummCwS4lRT/HSAd0UjNHM5ZY8DnTAkvOkkeZti/mm
-         3CLDttV7cwM6EvLaLimZZ6gua1udtSoDpP3kNQUZzB+YMuo/lLqp0lE1U9aNP3w++Y/P
-         mpvBNXOU6Jg8Xfme080fsxdolc5hJO9NhyqhZ+hOIN4Nbz0wRwiCiDq3rqdmHp1E9seS
-         YeK2WT8ZGtS8gbtWTOISUxeFXgwiKWn8uH8O9J8ldU62BiXAG3trnt/iZzUeLP2W7IIY
-         lGqA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=3LAkGkvAKzXQfhOImdR8oz4Jwoc5fEK6IoeEKmObH00=;
+        b=GB83BGQsJ5HH4CZjlzep0R6TvJr1MMitBz5SFaHitxVT4LH/7XMOooJ2oRp3Mp7EDW
+         e1KYkxG0LJBk5UvmfnLQ6yQ3FP0wrgrwmoyxEv+7le3sUhLDLfR7h5KgS0mE8RO2XCD7
+         xDWJagb0bTiLuX8Bi62nbkXoM5J8gREgOWOpWoOFw0NmX5dRxrj8MFTeq2fxwLm3bZUc
+         SkSGytayH1YPe0p8kiWymAb32bgDuraS7902BKZc8ka/v+pGzDRlgfnDarwwpO/y0b3X
+         2CAMLNPN8nOXHk/sT3HYhgeQzcOJl438BOQGDH3wnvqpXHaLrPGwLXqXHXtjRYh5YgIz
+         cw5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="kYw4/eTB";
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bmeng.cn@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h5sor629756pfq.50.2021.01.05.22.35.21
-        (Google Transport Security);
-        Tue, 05 Jan 2021 22:35:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b18si1881529ybr.32.2021.01.05.23.07.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 05 Jan 2021 23:07:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="kYw4/eTB";
-       spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=vUQGbC64bDqMXxpl/W2K5oV7pP0S99JpmeJuH9H8/cc=;
-        b=kYw4/eTB1G6lMgphoYcEdTkE6Y3XhuX7y2Gv1Z79nxdeYmFTIvUx208b6pzhS/G4bM
-         K04OygNhrCQ2C6yl/tMkHS5JJVpYjAlP1WmcGP1SSRb0uiGyZi1lS9KtnXMDWQUzC4/p
-         xd5ThvHyjBDpLuQALbQdmF2M97VmVQ1HRQz+UmA0oHlLNh7ExzsiNbcSoe4RjN9Kbx7H
-         BEUm8sahraxA0dYKZkr+qKxMous7CkYtur+it0qG4PxNQKq3Zi759JkV+426ihXaVvf9
-         53J0AaGH7GF1APxwJoQKDV+z4NrI7RrYvBhTsnI2vIAn4v79XvzdJQd1CZa0+lnT56QO
-         j10A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=vUQGbC64bDqMXxpl/W2K5oV7pP0S99JpmeJuH9H8/cc=;
-        b=s8Bz4ZXUjDkslfSZDh8RZjQ+d4sCNJT1OprFl9ewP9UIOBj8KLjddkZPR7ZwR4AYAH
-         KurBUlQw1+VeBaceq9KMDptTEvfiAtpD7acFcIacv2FL+FaJpi7+6vP59LSWUEaSGJmP
-         7tO0eSzBP2HP53FgLNjLn92yqntnnN2yVAe+EwodAXHKWMh0J5HJJ5uGZLLR9BJ8wQWy
-         CdMZavy6mNAQKuPb6ENLHN+1Ib5CB1A87WCcnr/DX6MKeN0zGrjwK/ikeW/QB3knwNqz
-         GWTFNrKsGhtstATwu61R++rD5OxGNbljr0+RpxUIhpxVbmZz3ueEiXXJF39qpwK4QQmw
-         B5ww==
-X-Gm-Message-State: AOAM532myWlxAAMb/hF4saEoSsRWLQYOfAZFzxo925NTM/ETtkrl92RW
-	9Lod63qSloV1bplbQaipX1xckFF88fw=
-X-Google-Smtp-Source: ABdhPJzor6mekBld2kLIpXbxd8gS8ZKt2oH2WYSIzudsMYA3FcnH49deBSZ2z2x5vGQH1RzhRWQL0w==
-X-Received: by 2002:a05:6a00:14d1:b029:19d:d135:bacf with SMTP id w17-20020a056a0014d1b029019dd135bacfmr2459792pfu.12.1609914921290;
-        Tue, 05 Jan 2021 22:35:21 -0800 (PST)
-Return-Path: <bmeng.cn@gmail.com>
-Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com. [144.168.56.201])
-        by smtp.gmail.com with ESMTPSA id cu4sm1132976pjb.18.2021.01.05.22.35.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Jan 2021 22:35:20 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH v3 2/4] hw/msic: imx6_ccm: Correct register value for silicon type
-Date: Wed,  6 Jan 2021 14:35:02 +0800
-Message-Id: <20210106063504.10841-3-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210106063504.10841-1-bmeng.cn@gmail.com>
-References: <20210106063504.10841-1-bmeng.cn@gmail.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45386 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kx2vG-0004fD-I8
+	for alex.bennee@linaro.org; Wed, 06 Jan 2021 02:07:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46388)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kx2v3-0004f0-HY; Wed, 06 Jan 2021 02:07:45 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3020)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1kx2uy-0004F3-13; Wed, 06 Jan 2021 02:07:45 -0500
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4D9gQD5RSpzj392;
+ Wed,  6 Jan 2021 15:06:28 +0800 (CST)
+Received: from [10.174.184.42] (10.174.184.42) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.498.0; Wed, 6 Jan 2021 15:07:13 +0800
+Subject: Re: [PATCH v2 0/2] accel: kvm: Some bugfixes for kvm dirty log
+To: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+References: <20201217014941.22872-1-zhukeqian1@huawei.com>
+From: Keqian Zhu <zhukeqian1@huawei.com>
+Message-ID: <6c1a62af-1aa7-cc7f-28de-9761d88faa8f@huawei.com>
+Date: Wed, 6 Jan 2021 15:07:12 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 2qNkFdTlio56
+In-Reply-To: <20201217014941.22872-1-zhukeqian1@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.184.42]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.249,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, jiangkunkun@huawei.com,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
+ Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kKYdcP4pr16T
 
-From: Bin Meng <bin.meng@windriver.com>
+Friendly ping ...
 
-Currently when U-Boot boots, it prints "??" for i.MX processor:
+Hi, please queue this well reviewed series, Thanks :-)
 
-  CPU:   Freescale i.MX?? rev1.0 at 792 MHz
+Keqian
 
-The register that was used to determine the silicon type is
-undocumented in the latest IMX6DQRM (Rev. 6, 05/2020), but we
-can refer to get_cpu_rev() in arch/arm/mach-imx/mx6/soc.c in
-the U-Boot source codes that USB_ANALOG_DIGPROG is used.
-
-Update its reset value to indicate i.MX6Q.
-
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
-
-(no changes since v1)
-
- hw/misc/imx6_ccm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
-index 7e031b6775..4c830fd89a 100644
---- a/hw/misc/imx6_ccm.c
-+++ b/hw/misc/imx6_ccm.c
-@@ -462,7 +462,7 @@ static void imx6_ccm_reset(DeviceState *dev)
-     s->analog[USB_ANALOG_USB2_VBUS_DETECT] = 0x00000004;
-     s->analog[USB_ANALOG_USB2_CHRG_DETECT] = 0x00000000;
-     s->analog[USB_ANALOG_USB2_MISC] = 0x00000002;
--    s->analog[USB_ANALOG_DIGPROG] = 0x00000000;
-+    s->analog[USB_ANALOG_DIGPROG] = 0x00630000;
- 
-     /* all PLLs need to be locked */
-     s->analog[CCM_ANALOG_PLL_ARM]   |= CCM_ANALOG_PLL_LOCK;
--- 
-2.25.1
+On 2020/12/17 9:49, Keqian Zhu wrote:
+> Hi all,
+> 
+> This series fixes memory waste and adds alignment check for unmatched
+> qemu_real_host_page_size and TARGET_PAGE_SIZE.
+> 
+> Thanks.
+> 
+> Keqian Zhu (2):
+>   accel: kvm: Fix memory waste under mismatch page size
+>   accel: kvm: Add aligment assert for kvm_log_clear_one_slot
+> 
+>  accel/kvm/kvm-all.c | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
+> 

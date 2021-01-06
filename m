@@ -1,93 +1,133 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1201246lfc;
-        Sun, 21 Feb 2021 11:34:03 -0800 (PST)
-X-Received: by 2002:aa7:d816:: with SMTP id v22mr19422072edq.37.1613936042935;
-        Sun, 21 Feb 2021 11:34:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613936042; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp784048lfq;
+        Wed, 6 Jan 2021 04:13:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy+hu0wa2F5ppp0L0su0+TKaCdKjIC4bdSHIJNaOMo7gSuPvCPl8U0KFsn52auWYf3TaikJ
+X-Received: by 2002:a25:40cb:: with SMTP id n194mr5595461yba.30.1609935235274;
+        Wed, 06 Jan 2021 04:13:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609935235; cv=none;
         d=google.com; s=arc-20160816;
-        b=QKGCZi+a6SKOZGFuGpEh2ziZ5UrJLRgz3vqJRQVpHJEM8RWue6xVNdUr23m/rxP7ti
-         AW0N/uT+PDdpCkSj4Z+BS7vSoNc4SqeNPwDRYw0Tl15PyLdnycaNnUwr07AR19BG6czi
-         9mN8Q3rzCaUP+/GlQcuap0GhH6LZVt3b4G/9VsWmn3ymsFbLt8ay8pOMW9tqIyJznl4L
-         PRMZSRIPxRe5nPHys464B1+E16IXWPnBnzI61bzaN6+aAaRPAvjxJ59Zf9Aj1RUic/ph
-         YPmkJ++MXoEq0z7wZLJW5Hy0K/J+84qWla4sHS/tN2wHt5no4mTtHpAb4aImb2Acrc7v
-         mByg==
+        b=ikto5mXvWnWorUMblUVVpcj7HTUqItPAdbAh4Nw0lAtmjIRS02izk+h1L+SlECKT86
+         B1zAmU1Mg9uR8agPCmub1U4aeGtlwhgE1Z2y6jaVkeOEBsbqIeg8DUe8kyxNVQoDRDEA
+         CVid7rpxnoE0q+hqKpaamgvwWeS8DV+HgaF83NxAYOfRMesfd6G/0fUFx1Lc1djggnug
+         jFbveCw7v++tVDXw7/0H50lH5AmU/U6HZiKhq6xHZPCuDbVP4YM+UjUM9DdxAsq2lW8p
+         LB6Fnzw6WgL+6qr8slHKOhkzQNDNwBIijmIBJurEz6vU7Z/7bZs76n+otDRbyazvFO8l
+         2QPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=zBEwbRQZqPnJXRYP2FP1goznLCE+yrtMu47gx1HCXa4=;
-        b=C11c4Y1wJ9cdqOceM1hff49hn2BFiogt4Lq9IFD831cHkHcRqEt8dAQCNWfdDfkUsx
-         G1wXfkZRi+1PBZC0MTdCif9Por/xIOV6UF/r8TWUdCbRSitafD3f/uMFgJakB55uPHEX
-         UAywUy4gEJYAKk9+OgT0AIp0BwGPzjdVY7ATU/L14TVSXyQ5JcG3nbYbx2y8YKmR5vvt
-         Uajw5TD5AnCufrQgq4+tECANQQxbKOJIvW5nLBY3jA3rCRP9RGyrpKdJR6zrAeeitw67
-         Su1nmFSrdWtz9bSdweHDo3eURIhd5w4uTzUJsSwZjmfnXtENyWzp7PtOk/aElWQhebR8
-         bXPw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=c+EzoNODPzaBLH17xv1nNpILReIYs1e3B66+EmkgoMM=;
+        b=Lws90TxfEpvufRdRZHIWNgz1aidlay4B9zGWCvP4MXuEph8aupPQxkLZaPwxnVF0qu
+         GZ+gXEgMu44to2WAH8Zk9jCaNCTVJ6lgsEB1tQBE/8dIaW8XlnjyhYEiInPsKnIpQ5r6
+         wAQ3WYLpyeJOkjJsm77KoWI+d6ApTLPat5zaxPlyjxNFpkeN+66mmNKfKe77t4E0J5a9
+         n47k1TVp4W41FXRH9byUMhNjmOr3Z1o4j+0/cirBRQFOttdbF9WwZdXEkxYmtCUreG0K
+         6l+o/J89kSwPghOSAkfnB0CkkPqR9Uggh4Bp2LWtKyrHvQTO6IDqqvGMZhLqaK7WHSUb
+         k4cQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="J/2OUPci";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id qt10sor6711822ejb.46.2021.02.21.11.34.02
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SOaUizf7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w5si2617187ybo.210.2021.01.06.04.13.55
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 21 Feb 2021 11:34:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 06 Jan 2021 04:13:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="J/2OUPci";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=zBEwbRQZqPnJXRYP2FP1goznLCE+yrtMu47gx1HCXa4=;
-        b=J/2OUPcihfNJ4FCDRe8Qigzz5UuX9PqUmQOg1A15JFALO0iihdrRjdaIfHpTjonkk+
-         3adVsLFrZCZSMo6g0hhDh4tIXRWIXgMWn/Hz5hE8KYLX6of3ZM1RcbAJl5f3ippktWkG
-         hf7ZLAkZkKFt5iWkFzdp0eUi5qnoiDRNPc10VhMqsTf8rLi+QHNNfbygPgXjWaW7lNro
-         /QCQ/x7vWrsDOV5LL6DcU55ApQEuPzM+VtYiVYUALOtzLLCCl44M6hgHOzYzN0SCn5H6
-         jvmk1SALCMNgjOGkTv5+IaGnxhuZHkhikNC9El8JUW4Bw/NJFCaArcIaAWkvUtL3EFd9
-         8vuA==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SOaUizf7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:58376 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kx7hK-0002jO-Mv
+	for alex.bennee@linaro.org; Wed, 06 Jan 2021 07:13:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33902)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yunextus@gmail.com>)
+ id 1kx4PZ-0001o0-6A
+ for qemu-arm@nongnu.org; Wed, 06 Jan 2021 03:43:21 -0500
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:36651)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <yunextus@gmail.com>)
+ id 1kx4PW-0007OX-M8
+ for qemu-arm@nongnu.org; Wed, 06 Jan 2021 03:43:20 -0500
+Received: by mail-ej1-x62e.google.com with SMTP id lt17so4064297ejb.3
+ for <qemu-arm@nongnu.org>; Wed, 06 Jan 2021 00:43:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=c+EzoNODPzaBLH17xv1nNpILReIYs1e3B66+EmkgoMM=;
+ b=SOaUizf7Moe+GVf2RJ/oAuNWu5tiZdf9MsA79cizt5BczfuH/4Z3rfDKXRuxoZsi6y
+ 07KdWbt7mCF7LatGNvfNH77Ow9OK7Rcx0spmOBEy4KkoExUfV6IOfuP1xA4AGzbFUbFS
+ SB+Hch4kVMs0vkF2yrTNJx1vabi6Of7mcnL2/VR0HxTXW5BiaPjDITHDxoJzoHQGqNLA
+ PmtugTYuBe0+FP/9CdbM//e9zAzt3EDd7BLRbo3Q5SUlV/poWL4Bzxs6BSM8nb0YALAN
+ Byp49QNjU6yKqJExInQ56wjNoPAnmsD7aoZ2COujcU3DCkgj1gRmjy4D+phyJIvekkM/
+ 57ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=zBEwbRQZqPnJXRYP2FP1goznLCE+yrtMu47gx1HCXa4=;
-        b=H6EIvs9SvbH2xXjETM6K00MywCN7nuxAYXPFpVQr6SNIfvXFcOvCXQyAxBnvMzy6tP
-         AgP/T7z9eGfPUTBjwItcXrU4B6fLOTWQ5cjvDv/c3U2Hyub9FNuYg6T2zHbcRFXOZJI1
-         CrK1q3bRIcV8xJx8Vo0ZPT0b+UrDObdTLQCoEUFBI4qDvG96bjY/6s3i2JxXULQAN8W9
-         eyqAwOsNRrd2YycSMJFpUezoU4yVmNw9/iEMMMQj5e2o/xQxn3n5qGidT6DFG35mCKMU
-         6DguLR3FNSmRc3bRK3ADM6fclF9GlKJwfAUSoUVh8OIoBAbslHpq69v+eQy9ozIwFBFY
-         5NSw==
-X-Gm-Message-State: AOAM530cYTAeqASqRDavtXUOifyT0Q7yK65Id1DcyJhI3ur119uvFBqT
-	gtdbW8eR5HvIOs/ukKF/uidLR8b4jCNv4Dm59qJm1obD
-X-Google-Smtp-Source: ABdhPJx0nusow2zAbE1Do+Uf9EJH8RTbfH97UWPpv3QAaeNvvJY6aLBYiFFVy9aVJ+o0uFXHcx4bzNnz4R9i8VHaWOo=
-X-Received: by 2002:a17:906:66cc:: with SMTP id k12mr1658746ejp.382.1613936042667;
- Sun, 21 Feb 2021 11:34:02 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=c+EzoNODPzaBLH17xv1nNpILReIYs1e3B66+EmkgoMM=;
+ b=sXXfyPHxSh6VqyXvF2TJUPen+CbJ1vA/VHX3mUxY0TQo/UqSHEhBcp98zX2TctS1g3
+ ct/w/FshW5g/z62H7QxPMoEnmUTGNNlk4E/ScdXrqtzpn1Tb0bvAV5zWnXWhfIWNqlGT
+ ooFPr7YM6VWnrBX4DAvd5cGKvOpefNjOstAKw4AcyA0Lgcwm+cCTgoOeQ3JsVStP7A+/
+ siA+55hF99NhXdpVo+La4W+9UoXazYO6bpvEcivHBIyfnTBekYlW0zp3aauXltgOihTx
+ mMIQGDXJmBtM49hHlHlKgxvt1qGd0qxMGsKup4sdHa1on7IHmSRARUrNVapdukHsfggf
+ Vsaw==
+X-Gm-Message-State: AOAM533TUChXyC/GzBVI1BZvUeKOkGEu+UNENUnzFuMgDlTRt1/EQRiX
+ mD9OvehN2UYVIhaf99/50In8MV7nIJlFiCCyk5hcAYbhMRzKig==
+X-Received: by 2002:a17:906:1f07:: with SMTP id
+ w7mr2117055ejj.519.1609922596661; 
+ Wed, 06 Jan 2021 00:43:16 -0800 (PST)
 MIME-Version: 1.0
-References: <cef2f119-3612-65a0-d828-b480179dc3a9@amsat.org>
-In-Reply-To: <cef2f119-3612-65a0-d828-b480179dc3a9@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 21 Feb 2021 19:33:51 +0000
-Message-ID: <CAFEAcA-yLQNLVUPZPRnTTNupkUrgcTRHVR=SW1Yb6KEUeQjkoQ@mail.gmail.com>
-Subject: Re: tests: n810 arm failing
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+From: Yu Nexus <yunextus@gmail.com>
+Date: Wed, 6 Jan 2021 09:43:06 +0100
+Message-ID: <CABUrsp+wLFdSDPrHX66gQSXyk1GKS0M29x1g3sOw0UBK9MOe2Q@mail.gmail.com>
+Subject: MTE support inside QEMU?
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000007d700e05b8375073"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=yunextus@gmail.com; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 06 Jan 2021 07:13:44 -0500
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V+j2LB0pIwak
+
+--0000000000007d700e05b8375073
 Content-Type: text/plain; charset="UTF-8"
+
+Is there full support for ARMv8.5 Memory Tagging Extensions (MTE) inside
+QEMU?
+So is this MTE example code supposed to work inside QEMU?
+https://www.kernel.org/doc/html/latest/arm64/memory-tagging-extension.html
+
+--0000000000007d700e05b8375073
+Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: v4/vgYQuPezP
 
-On Sun, 21 Feb 2021 at 17:26, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Hi,
->
-> The n810 arm test failed on latest master:
->
-> https://gitlab.com/qemu-project/qemu/-/jobs/1045015424/artifacts/browse/b=
-uild/tests/results/latest/test-results/26-tests_acceptance_machine_arm_n8x0=
-.py_N8x0Machine.test_n810/
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Is there full support fo=
+r ARMv8.5 Memory Tagging Extensions (MTE) inside QEMU?<br></div><div dir=3D=
+"ltr">So is this MTE example code supposed to work inside QEMU?=C2=A0<a hre=
+f=3D"https://www.kernel.org/doc/html/latest/arm64/memory-tagging-extension.=
+html" target=3D"_blank">https://www.kernel.org/doc/html/latest/arm64/memory=
+-tagging-extension.html</a></div></div></div>
 
-It passed on the gitlab CI run on the exact same commit hash
-as 'staging' before I pushed the merge, though...
-
--- PMM
+--0000000000007d700e05b8375073--

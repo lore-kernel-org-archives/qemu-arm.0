@@ -1,71 +1,71 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp600421lfq;
-        Tue, 5 Jan 2021 22:35:19 -0800 (PST)
-X-Received: by 2002:aa7:9738:0:b029:19d:dce0:d8e7 with SMTP id k24-20020aa797380000b029019ddce0d8e7mr2717590pfg.14.1609914919149;
-        Tue, 05 Jan 2021 22:35:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609914919; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp600468lfq;
+        Tue, 5 Jan 2021 22:35:24 -0800 (PST)
+X-Received: by 2002:a65:51c8:: with SMTP id i8mr2940359pgq.81.1609914924748;
+        Tue, 05 Jan 2021 22:35:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609914924; cv=none;
         d=google.com; s=arc-20160816;
-        b=q+2eCHuziPfasKEz4KL31wPaROUavsMMgECLMqubS5WTnwatoCGfeIoT5G+d0WkmI3
-         ul8sb6QcMo6Sm/KiYQtczxKfiON52QtQ7eLtX/0OB8DBBGGQuXQijy6UI7pdtCjcZMdc
-         PDano2fB4OQcjUTOt/+d1ybPafDLJKl9ZucsJfdoGHKjqUpsMfxm29dzNBDEbZ986GGx
-         tBPhMbArwq1bPfKuiBpWg63WKKqybdC0fD+t4Z7dO6jt6vJ9Ii0r1PD7XyXnvUbdzmp9
-         20qX3YJKdhzr2CDDfbmiWDi6CMcHIft7nCf5sKeqA5mtu5Hu/s9Cfh58EbRJBIim0Arc
-         Id8w==
+        b=nlz0poNUzZ0l9FPbTrPc/+Ib4S6Ov1vjvFcTR8z+PHu5G7S5Soe3PWI5C6j8aDG2xs
+         SvphOX1wSxR0Od301c1mn0Ax4CJDRrfH7LhmBGnR4HIkZym+fz7VoY83sOB5e5/4UVvc
+         zbwqcELux2T/PaPerkyxG0+C+K6Y8tpsVlXd9dYnmUY0UG8JrxugrFibaXls8Iykmi1I
+         /VHQ/Hic+mz8qzJOXMkNtcDlwEq9wtB7fq6mTCV2E/2zn4XEgCZZsHY1Zu44Qde5rCma
+         ftMxEZufl/nE/dkorSlUyBG4IztHzffemsviFkdEwaNNPDKbt7IeCFDacNEfYlLMFxTX
+         Si6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hI10iUcIAI/iQ1m4mauQ5SNhBSk9eoPehRL5woqTjh0=;
-        b=ZcoGSHQchlIiOVQxiiAUDdiDHnSRTd6ya1VDdk48EgWDVDoqlUWq3gV0dbSW/ngU/x
-         suVbwtdbTtEdk9NbDK6NT7ZWvlBeKWO2nEMgAo+gjvZtznocHRYMi+CD+NKQvdMhq/ST
-         /S6fYfkK1T3RPq7P0Uvh2FwwmqaRtilTDVBhGmWttRMsglaBeRkZeXnrK50Hlrq6dGBC
-         msCS69ag7FtPtZM7BhnDjpyBQ4/vqPFtHzfzunFDCRzWIfxrU76KGv/XFcnQEcKxkXeR
-         YoBo19gxf49xGqIDcSGPXQFG9wAiGTTn6k56RbSGFU5JOItUXUE0S8/X8rDfPiTrXVo2
-         L2eA==
+        bh=CXG7bK3DGo/swZLf3xUG4CksXWWUngcawbrNPY8Gm1o=;
+        b=kk7jCL9Em1S00Bs+MXUN74IK3aqmVESR/t50updm5sH7mLuuCjHgMSZ0x666f/GIyn
+         ldbSgPsa8+Y1LefsxDVII7oZ14WBVtJzMReE0NE3AhCmq+qxOcgBMLqiT/+0cJCwiZ8+
+         ZZObAfj+ZAZgiN8mw5Dw7SdjYKfw31haWwwsY5K9DRKelioj0yMhwooqEUkc/JEWeA6M
+         wdk0A8KGB6ThkuRoBEjRyg8Lu2X4NKKyZMqHftZEE8Skc+8ULtf+ttbOFNbqdFHsRrhv
+         OWqR6oKbA+IPOrN5omcWWzZ4R4hwTRjBrqbUaZSob/XM7D8KmSvqlSJFpLif/U0yvQQr
+         RlKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Cirqna35;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LHZ6mdL7;
        spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bmeng.cn@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k15sor764049pls.25.2021.01.05.22.35.18
+        by mx.google.com with SMTPS id e1sor774433pls.33.2021.01.05.22.35.24
         (Google Transport Security);
-        Tue, 05 Jan 2021 22:35:19 -0800 (PST)
+        Tue, 05 Jan 2021 22:35:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Cirqna35;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LHZ6mdL7;
        spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=hI10iUcIAI/iQ1m4mauQ5SNhBSk9eoPehRL5woqTjh0=;
-        b=Cirqna35dtXcLZQD2EsT66GQGcUbjHQdzG1rkJ09VrqTojHqqeycKV+wyMbMlX563Z
-         cM3Nq9hpiyxcj4CYwa8s4c5esP/zfFUnMfQlMG95fEYbhDzkXxKH5y6dogE3gslqu3OY
-         j8ITonjQ5IL1gkYMp3ANDwNcLlMgnAGEuOPp68yHz7DHPJytWTASupvQperkEBdk+aDa
-         zLbYac4QlUUySnqG4cAgOUYNAjvuIjGgOO94O/CmxY6VlzaOYwanB8VyOQXZ6wfN3mNq
-         6KHn3LdMwEnNch3+lRLruN8Ekig/FUpbAv9HfsgsRd1PUyYVH8yAdXJvDDsqGG7jHmIU
-         VIzA==
+        bh=CXG7bK3DGo/swZLf3xUG4CksXWWUngcawbrNPY8Gm1o=;
+        b=LHZ6mdL7ECrIk0DSUNHKlIRmiWe71383NBHMeAggswZHKZiSZ3xctUiFSL9YSrgbgx
+         Q+WZ0tYqT5D6NeaQObm5XZNuXcTtMqOFTlAf+YOXOgP9bqApsTc3YebU/JHTe48+m6B3
+         gl5iHUT1wP+QXYvjXgijBittEE3MjeOGqGnHM/8bnMlDuvaL4Rvr5D1xI5hwZGOZ47Kk
+         S6wDqynDhzewulPPGEh1nTDcgj7s9MqTquzZD4js6IAkaZOESylDF7RtBXkKEzXoBBNu
+         O89e4CPHMv7FPkMtc4lZIWzO9jptOrgtF4xabbZG49+NB1T9pBXDRndXDQzDdidQDjy5
+         UiVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=hI10iUcIAI/iQ1m4mauQ5SNhBSk9eoPehRL5woqTjh0=;
-        b=iI5ydtwU41+3lVi88uMyDhcDhLBN+axts7EY09yJ0Ff/E+dVKUoUznaYYx23Cy+Dp+
-         BfGPwqlf+i/s2cbae67qpCBHfVnEygYMe5p/H7cs0Xev+CyN7AQZAknaHQVCRCcXWMM8
-         6nFM2LGxMGREDlEo99nq3/IY4oQNxNoC7GZcZeAL5T3obLFFm8Unb8OE8Pw/5Eq/2dT/
-         icDy2rVUQmedc3v8RiozskYBArAPe4TWtD7wDA5diYbRfXg/wcJISOTnT/52LfzY4XIO
-         wrrHkBkrA4fyoYysggjVNttk7bR0AcIfnXGWes7NYrc+ZsNIrVtW5G5SMTFm+9N/wAGf
-         dCGQ==
-X-Gm-Message-State: AOAM533jjw46nPGTOlKd1sr938BBFrmVkECS4ipX49IlHyLHoaLJHz/Q
-	Q2jw7WejTXbwSBu4QZ3LU5xZdKf4nFA=
-X-Google-Smtp-Source: ABdhPJwGl7aSlb4N5qQUKOqbhaQy/7mo+ogiUeTv28yqfxJdN96xOBYNX+F7U2vNubF0yR3Exi3TNA==
-X-Received: by 2002:a17:902:bf4a:b029:da:d0b8:6489 with SMTP id u10-20020a170902bf4ab02900dad0b86489mr3170171pls.58.1609914918392;
-        Tue, 05 Jan 2021 22:35:18 -0800 (PST)
+        bh=CXG7bK3DGo/swZLf3xUG4CksXWWUngcawbrNPY8Gm1o=;
+        b=UJ75HlZVQGZNmQdvSEB7QggA2lTnkSSpcsHxVpF8eMk2I0M2KLso2RDDYDyhXTjsFN
+         Zn0JDAVk823sZiZLGCQGhdBc6nrb8mjZIpCvaBJzENjzzxep8mny7QEWWdH19Z2NODJw
+         4T0vTRz2vnafEtz/LtQmdoT6Fjg5kVBXofHD3dYilYAS4FAnddvoWoG5fK7kwDyMb8Ik
+         na6hDy8y0r4cZHjrcxYXu0DIUi9v1M6RfMTxcmF35Cld0Y81tz5HymKgPXphknATb0Ia
+         COyTWEOHj48NL4bGdnjikNkFK4buw7mRBW/J8aohTLlAyKol/xopcrVdk9EZLeodBQm3
+         SD4g==
+X-Gm-Message-State: AOAM532sdEoA0X/jt24PrFI1fiXJeeo1RkyOJ36BiZFv95uK3qT+pBDS
+	WcNsAk+ruGWlyBUxbwDE6OixeUoqrTA=
+X-Google-Smtp-Source: ABdhPJyOtT/Dzea5HsTFMD2HJVEVlpVqcOS2hxl0kKuEjQyj7KLnuly37ZqQkh1gQxB5lisfFE3RYg==
+X-Received: by 2002:a17:902:6b87:b029:dc:3402:18af with SMTP id p7-20020a1709026b87b02900dc340218afmr3126456plk.29.1609914924141;
+        Tue, 05 Jan 2021 22:35:24 -0800 (PST)
 Return-Path: <bmeng.cn@gmail.com>
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com. [144.168.56.201])
-        by smtp.gmail.com with ESMTPSA id cu4sm1132976pjb.18.2021.01.05.22.35.15
+        by smtp.gmail.com with ESMTPSA id cu4sm1132976pjb.18.2021.01.05.22.35.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Jan 2021 22:35:17 -0800 (PST)
+        Tue, 05 Jan 2021 22:35:23 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,65 +73,41 @@ To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH v3 1/4] hw/misc: imx6_ccm: Update PMU_MISC0 reset value
-Date: Wed,  6 Jan 2021 14:35:01 +0800
-Message-Id: <20210106063504.10841-2-bmeng.cn@gmail.com>
+Subject: [PATCH v3 3/4] hw/arm: sabrelite: Connect the Ethernet PHY at address 6
+Date: Wed,  6 Jan 2021 14:35:03 +0800
+Message-Id: <20210106063504.10841-4-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210106063504.10841-1-bmeng.cn@gmail.com>
 References: <20210106063504.10841-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hAoopuR5Edzz
+X-TUID: cZG8fafB/zG5
 
 From: Bin Meng <bin.meng@windriver.com>
 
-U-Boot expects PMU_MISC0 register bit 7 is set (see init_bandgap()
-in arch/arm/mach-imx/mx6/soc.c) during boot. This bit indicates the
-bandgap has stabilized.
+At present, when booting U-Boot on QEMU sabrelite, we see:
 
-With this change, the latest upstream U-Boot (v2021.01-rc3) for imx6
-sabrelite board (mx6qsabrelite_defconfig), with a slight change made
-by switching CONFIG_OF_SEPARATE to CONFIG_OF_EMBED, boots to U-Boot
-shell on QEMU with the following command:
-
-$ qemu-system-arm -M sabrelite -smp 4 -m 1G -kernel u-boot \
-    -display none -serial null -serial stdio
-
-Boot log below:
-
-  U-Boot 2021.01-rc3 (Dec 12 2020 - 17:40:02 +0800)
-
-  CPU:   Freescale i.MX?? rev1.0 at 792 MHz
-  Reset cause: POR
-  Model: Freescale i.MX6 Quad SABRE Lite Board
-  Board: SABRE Lite
-  I2C:   ready
-  DRAM:  1 GiB
-  force_idle_bus: sda=0 scl=0 sda.gp=0x5c scl.gp=0x55
-  force_idle_bus: failed to clear bus, sda=0 scl=0
-  force_idle_bus: sda=0 scl=0 sda.gp=0x6d scl.gp=0x6c
-  force_idle_bus: failed to clear bus, sda=0 scl=0
-  force_idle_bus: sda=0 scl=0 sda.gp=0xcb scl.gp=0x5
-  force_idle_bus: failed to clear bus, sda=0 scl=0
-  MMC:   FSL_SDHC: 0, FSL_SDHC: 1
-  Loading Environment from MMC... *** Warning - No block device, using default environment
-
-  In:    serial
-  Out:   serial
-  Err:   serial
   Net:   Board Net Initialization Failed
   No ethernet found.
-  starting USB...
-  Bus usb@2184000: usb dr_mode not found
-  USB EHCI 1.00
-  Bus usb@2184200: USB EHCI 1.00
-  scanning bus usb@2184000 for devices... 1 USB Device(s) found
-  scanning bus usb@2184200 for devices... 1 USB Device(s) found
-         scanning usb for storage devices... 0 Storage Device(s) found
-         scanning usb for ethernet devices... 0 Ethernet Device(s) found
-  Hit any key to stop autoboot:  0
-  =>
+
+U-Boot scans PHY at address 4/5/6/7 (see board_eth_init() in the
+U-Boot source: board/boundary/nitrogen6x/nitrogen6x.c). On the real
+board, the Ethernet PHY is at address 6. Adjust this by updating the
+"fec-phy-num" property of the fsl_imx6 SoC object.
+
+With this change, U-Boot sees the PHY but complains MAC address:
+
+  Net:   using phy at 6
+  FEC [PRIME]
+  Error: FEC address not set.
+
+This is due to U-Boot tries to read the MAC address from the fuse,
+which QEMU does not have any valid content filled in. However this
+does not prevent the Ethernet from working in QEMU. We just need to
+set up the MAC address later in the U-Boot command shell, by:
+
+  => setenv ethaddr 00:11:22:33:44:55
 
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
@@ -139,21 +115,23 @@ Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
 (no changes since v1)
 
- hw/misc/imx6_ccm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/sabrelite.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
-index cb740427ec..7e031b6775 100644
---- a/hw/misc/imx6_ccm.c
-+++ b/hw/misc/imx6_ccm.c
-@@ -450,7 +450,7 @@ static void imx6_ccm_reset(DeviceState *dev)
-     s->analog[PMU_REG_3P0] = 0x00000F74;
-     s->analog[PMU_REG_2P5] = 0x00005071;
-     s->analog[PMU_REG_CORE] = 0x00402010;
--    s->analog[PMU_MISC0] = 0x04000000;
-+    s->analog[PMU_MISC0] = 0x04000080;
-     s->analog[PMU_MISC1] = 0x00000000;
-     s->analog[PMU_MISC2] = 0x00272727;
+diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+index 91d8c43a7e..a3dbf85e0e 100644
+--- a/hw/arm/sabrelite.c
++++ b/hw/arm/sabrelite.c
+@@ -51,6 +51,10 @@ static void sabrelite_init(MachineState *machine)
  
+     s = FSL_IMX6(object_new(TYPE_FSL_IMX6));
+     object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
++
++    /* Ethernet PHY address is 6 */
++    object_property_set_int(OBJECT(s), "fec-phy-num", 6, &error_fatal);
++
+     qdev_realize(DEVICE(s), NULL, &error_fatal);
+ 
+     memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
 -- 
 2.25.1

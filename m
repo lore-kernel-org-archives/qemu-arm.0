@@ -1,198 +1,339 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3799634lfq;
-        Tue, 12 Jan 2021 10:53:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxBOln7qN5FEnG6A19TOzN60Lt80f6a1nukOfdUVHQY9sPpqyM6yCWe34MTbnabp/ciD1SM
-X-Received: by 2002:a25:244:: with SMTP id 65mr1436663ybc.350.1610477623538;
-        Tue, 12 Jan 2021 10:53:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610477623; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp977238lfq;
+        Wed, 6 Jan 2021 08:34:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyLqabwnAF5kjL0z2cZ353KdYCcGvV9GytpI+tVpbwbIkbEwf/wDbwGvZXcYOMjoIvcnJD+
+X-Received: by 2002:a25:4d83:: with SMTP id a125mr7349561ybb.371.1609950896580;
+        Wed, 06 Jan 2021 08:34:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609950896; cv=none;
         d=google.com; s=arc-20160816;
-        b=AlB9NyA0JxaNwFz8eDMaTPdlQLOQFEa1ULGKciSDtPZ4VTssDn3sAWj7+KpMxW4hU3
-         a07KcLA6r4lT5fMWJ7kitGQIBM5PwijmGwvhryGcaC1v3m6zQuQXZqJuAtpAQ3hyLC/m
-         SW372uAFDynMooa7ixIiR5mem75bz7DVMFTqBvuiOAzD/YlaZJhf7jWiAA3IzglOxoaD
-         x6a7Yi3ACsHjtHFM2nbhdg6V98RRoIRZn0AaOwHojNPebjgi+EgSexBBdrE2ag+K+it3
-         /DVCm14T9PS14io4DzPAFs4PKDnXa4s6NxJ30QRLwlUY3jYvzzdhsBfBmBe6W9ZR1+VO
-         wEWg==
+        b=0HLzDQy5iMvM694izzOIfvAY7ZT3ys2AxEG+PuPJqjxafYkXRZ5jeD3Zm88qzNChYq
+         WgtmF9vQ1lStA8GaLLQfFaXK7O8PetNUmC9q6Ah6kluOi3zID+yrrKW0AAHquiSYcdZU
+         yWPPsbuSY0nlaqVNbiIakKfG0clSbwS4KSIaAOot3P5rthLZdyBSh+fFrFJPNEFnizzJ
+         CQkCdxcscUeyCDB89QTNByLTn1T37IoOebKMj6W4rZlzIPkaVqXmMUsDWFO55l1EtgXA
+         oh8ul2N/O2c1TQkBTNyBZ7Sh7/zZq4Fziv6iT2QwbHPpnAD0BhdIvzCi/0TXCw3FDjbr
+         CrKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=4l0kq3wxIJBsGcT12cxU3gmDmz9IWzR6E0aRKmJTUjQ=;
-        b=HmgEvBvTFIla9mQZ5vCmA7NZs8gw/aajf7H2C1JTy/e5D93N4LZzkNQ+JYU1m2u0TX
-         l55VUh2dwm4Shmfl2IP+ewIN5MxIsr4vmpsbbqlt1NU881ubwMiiTZAxaCGsgPp0VYhH
-         sb4TOamaHpyBdHMxiRhEC2F6GPDIqesURlhTSYHaqIANtR77F8g4Hxrojd1pXih21Eq8
-         ZnbR021SBoQ56HgeuOCe50wR5FFYN/Mw+m5GbJcIJl7QegNkPNfxjoX+tgo8AaXkCpgS
-         KWdXvXj/HWOOrAQ+fkytS4zZea4dxq65sqmm+OU+08etZEWRMSRWq9wD8cs7GtrNizMj
-         PpUw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=RgU9dGticdphsSaLrRmybn5CdxeA33enllGnwQIPTUw=;
+        b=G5hwDk8JisDDeDSyZs2Qsn9U/svYFBfMEUWrLWdJR6OWPapufJkhXhugj2HDFUVadB
+         Kc5b9/34p249lcqSVZ2TL6u3A8QbnvXZ4Z/x0DJaQFZeF9OYOXbL9CSSmXOEOn6VVq5W
+         dcPwrE96P20KOD0vuhNQIkx1N6MrTxBOLsK8tdtAU3yVzJWYU5p97dANnCMJTHqTSV5G
+         MZpUTZC+SwIfC3+fxhx8xIkhe5MGD+y/gF/0opwmmrznYzCCYG6f+JZIczI0tG2nxFG3
+         xf0lWLzuSSOSUJ8dvM5uh5k9+Jad4XZeqUGD16iXGJkEtVsd0HK3ru0ts0gSOXrD0pX5
+         /xdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mFaV7NYm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=QopZ+UeQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1si3208698ybf.392.2021.01.12.10.53.43
+        by mx.google.com with ESMTPS id m74si4447687ybm.161.2021.01.06.08.34.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 10:53:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 06 Jan 2021 08:34:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mFaV7NYm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60048 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=QopZ+UeQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52242 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzOnW-0000fd-QN
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 13:53:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55662)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kxBlv-0004k6-Us
+	for alex.bennee@linaro.org; Wed, 06 Jan 2021 11:34:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kzOXA-0002PW-Ni; Tue, 12 Jan 2021 13:36:48 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:36999)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kxBle-0004jB-1Y
+ for qemu-arm@nongnu.org; Wed, 06 Jan 2021 11:34:38 -0500
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131]:45469)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kzOX9-0007bO-6D; Tue, 12 Jan 2021 13:36:48 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id cm17so3473335edb.4;
- Tue, 12 Jan 2021 10:36:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=4l0kq3wxIJBsGcT12cxU3gmDmz9IWzR6E0aRKmJTUjQ=;
- b=mFaV7NYmXIn6g4HptlIczJ+2QraPAoku178SziHN3Ki75DJqHBhEvxiMUFN9Db/nBx
- +hpOdBPj375NjffcD1HiIAs4TLsQpAJ3SS+TswKMivRx88KPUJ9KDomUrY4NOxyYm9OP
- kkT0DnHoxyD3eW1DWDNDV9rr0qpNuOs0BbiHOSJgWV1M5i1nla/YhnCt/7M4qY777ylt
- vsU4V9oZXrS4cp5QMIaaIVzk6ftBVMGoMDQO+lq/WvOTP6vZkFIK2a4TuYCpUwyNxT+p
- KueS7vkMS0OWpht6FpjzH2EztTtYqkHyle3ThJksYEMhKjsC0pu3vmRcOhN5IanM1qDq
- ooog==
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kxBlZ-0000hN-RR
+ for qemu-arm@nongnu.org; Wed, 06 Jan 2021 11:34:37 -0500
+Received: by mail-lf1-x131.google.com with SMTP id x20so7790127lfe.12
+ for <qemu-arm@nongnu.org>; Wed, 06 Jan 2021 08:34:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RgU9dGticdphsSaLrRmybn5CdxeA33enllGnwQIPTUw=;
+ b=QopZ+UeQtAARpfEVwrqF1PgxT7BEvE8yQDBmG+KGsJPZqZG9IqVDKRS6tAP3WOTgG7
+ Mq8aI5Ik86fr821l3IhLgZoP5Q6otFCjCWv/I0jhP6jhB3of7YCX/6YX9COOBJi+YPZg
+ ARjKZdQGp3uxrbvLhrOvG56cG5AZwVwNYdkBUmyB9kvJsPEudeDdpDQtUtBqDAIlutxZ
+ 4mNEFVSwU0JlZZPAJiIpIh5O7dY5v9NKYUDzOYzMDlUSGGNppuYW7SAd7xyNnOyhLh9p
+ YF6z5AXCVOe+KpwqM+Oa7pzzyR2je3T0b98ya9HK/pJKht9AybIDRJvtjsvFs0RLOxvu
+ i1cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=4l0kq3wxIJBsGcT12cxU3gmDmz9IWzR6E0aRKmJTUjQ=;
- b=TAIIQKe6L76Dv5S4lgpRqrMW80V99szn2Okt033+pFGjjZNLztLbKC+JMJuhpwlpj0
- Tts32xCoJZrh8XyYxWZKnmHrYAM+1g8dVGkCOy+5RlTHpb0667LAaO7Fn6MMTbD1JWMq
- jktMuijlZDKFFQitkNMIsIwOzEvxtIgskBo+pH+DbLD8AL3dVT7xLu5b3BYGSe05OkPR
- +kyNLT6nMsEzTofV4tl4vm9nYf84ZXNtCftDKuQh5nT+bEXb4HJzB6Ji4kNyIXZJ8pzQ
- lXUV06f7KMCfokf6aKkQ66Sc6hmvPNxgvwm0xemri9XR2V9rkb+RMJ7HVuk/tZPijYtX
- GTeg==
-X-Gm-Message-State: AOAM5308XKw6FFVqk9SNkyuFXiCt1oXQ5ww420V0BqYOHKXfuMJxJIao
- 947iIochQLjzwd/pFBKzYAw=
-X-Received: by 2002:a50:fe0e:: with SMTP id f14mr372860edt.159.1610476605633; 
- Tue, 12 Jan 2021 10:36:45 -0800 (PST)
-Received: from x1w.redhat.com (190.red-83-57-173.dynamicip.rima-tde.net.
- [83.57.173.190])
- by smtp.gmail.com with ESMTPSA id k21sm1830660edq.26.2021.01.12.10.36.44
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RgU9dGticdphsSaLrRmybn5CdxeA33enllGnwQIPTUw=;
+ b=iVWdKxlRxVOq38AO/eT6kwmE//3hi9H92lgIelLDghKo9pPX/qZ86yEFq1IrEF5TNi
+ Vez3SX3txFeL2gvS4s36DS4rHodDjkvt4VGEdgyPwRKVi0z1BgulF44EsXpjoeSg0Q5J
+ OBoeKlSmFipO4MH4Nmf86e5I0pgonpZvrC2Bpd6pFrvRkAwX/mI0ApC+VPuPNw4P+gyK
+ BwiqMvyMeXqvVYmzyTN5VPatkv1ent4Cj/TGOvU9SCdJJEfaETvwZBmpbxzOcKqvk2Px
+ lOHSoIs8JwiSPS2Nr3SPLU3IsKOV7NjGi14DOMCROk8jlrDuaQu+iLoXbreE+Of0zOvp
+ NIGA==
+X-Gm-Message-State: AOAM533LHIZZxTrPVQ/wi26DuZD/AWr1TwZGlaL9GUlW+9xDvZKxBuQP
+ CDxNH//94iV/65d+InBU73hiQDn49nTiQg==
+X-Received: by 2002:a2e:9ed5:: with SMTP id h21mr2258417ljk.125.1609950870631; 
+ Wed, 06 Jan 2021 08:34:30 -0800 (PST)
+Received: from localhost.localdomain ([176.59.51.124])
+ by smtp.gmail.com with ESMTPSA id t1sm508710ljg.44.2021.01.06.08.34.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 10:36:44 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Bin Meng <bin.meng@windriver.com>, qemu-devel@nongnu.org,
- Bin Meng <bmeng.cn@gmail.com>
-Subject: [RFC PATCH v6 11/11] hw/ssi: imx_spi: Correct tx and rx fifo
- endianness
-Date: Tue, 12 Jan 2021 19:35:29 +0100
-Message-Id: <20210112183529.2011863-12-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210112183529.2011863-1-f4bug@amsat.org>
-References: <20210112183529.2011863-1-f4bug@amsat.org>
+ Wed, 06 Jan 2021 08:34:29 -0800 (PST)
+From: Maxim Uvarov <maxim.uvarov@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCHv3] arm-virt: add secure pl061 for reset/power down
+Date: Wed,  6 Jan 2021 19:34:26 +0300
+Message-Id: <20210106163426.9971-1-maxim.uvarov@linaro.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=maxim.uvarov@linaro.org; helo=mail-lf1-x131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hrrj1uGNIVMz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Maxim Uvarov <maxim.uvarov@linaro.org>,
+ f4bug@amsat.org, Jose.Marinho@arm.com, tf-a@lists.trustedfirmware.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QYv938B3N+dP
 
-From: Bin Meng <bin.meng@windriver.com>
+Add secure pl061 for reset/power down machine from
+the secure world (Arm Trusted Firmware).
+Use the same gpio 3 and gpio 4 which were used by
+non acpi variant of linux power control gpios.
 
-The endianness of data exchange between tx and rx fifo is incorrect.
-Earlier bytes are supposed to show up on MSB and later bytes on LSB,
-ie: in big endian. The manual does not explicitly say this, but the
-U-Boot and Linux driver codes have a swap on the data transferred
-to tx fifo and from rx fifo.
-
-With this change, U-Boot read from / write to SPI flash tests pass.
-
-  => sf test 1ff000 1000
-  SPI flash test:
-  0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
-  1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
-  2 write: 235 ticks, 17 KiB/s 0.136 Mbps
-  3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
-  Test passed
-  0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
-  1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
-  2 write: 235 ticks, 17 KiB/s 0.136 Mbps
-  3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
-
-Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Message-Id: <20210112145526.31095-7-bmeng.cn@gmail.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
 ---
- hw/ssi/imx_spi.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ v3: added missed include qemu/log.h for qemu_log(.. 
+ v2: replace printf with qemu_log (Philippe Mathieu-Daudé)
 
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index c4e2d2e1c97..38892698918 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -176,7 +176,6 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+ hw/arm/Kconfig        |  1 +
+ hw/arm/virt.c         | 24 ++++++++++++
+ hw/gpio/Kconfig       |  3 ++
+ hw/gpio/gpio_pwr.c    | 85 +++++++++++++++++++++++++++++++++++++++++++
+ hw/gpio/meson.build   |  1 +
+ include/hw/arm/virt.h |  1 +
+ 6 files changed, 115 insertions(+)
+ create mode 100644 hw/gpio/gpio_pwr.c
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0a242e4c5d..13cc42dcc8 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -17,6 +17,7 @@ config ARM_VIRT
+     select PL011 # UART
+     select PL031 # RTC
+     select PL061 # GPIO
++    select GPIO_PWR
+     select PLATFORM_BUS
+     select SMBIOS
+     select VIRTIO_MMIO
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 96985917d3..eff0345303 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -147,6 +147,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
++    [VIRT_SECURE_GPIO] =        { 0x09031000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+@@ -189,6 +190,7 @@ static const int a15irqmap[] = {
+     [VIRT_GPIO] = 7,
+     [VIRT_SECURE_UART] = 8,
+     [VIRT_ACPI_GED] = 9,
++    [VIRT_SECURE_GPIO] = 10,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+@@ -864,6 +866,24 @@ static void create_gpio(const VirtMachineState *vms)
+     g_free(nodename);
+ }
  
-     while (!fifo32_is_empty(&s->tx_fifo)) {
-         int tx_burst = 0;
--        int index = 0;
++static void create_gpio_secure(const VirtMachineState *vms)
++{
++    DeviceState *pl061_dev;
++    static DeviceState *gpio_pwr_dev;
++
++    hwaddr base = vms->memmap[VIRT_SECURE_GPIO].base;
++    int irq = vms->irqmap[VIRT_SECURE_GPIO];
++
++    pl061_dev = sysbus_create_simple("pl061", base,
++                                     qdev_get_gpio_in(vms->gic, irq));
++
++    gpio_pwr_dev = sysbus_create_simple("gpio-pwr", -1,
++                                        qdev_get_gpio_in(pl061_dev, 3));
++
++    qdev_connect_gpio_out(pl061_dev, 3, qdev_get_gpio_in(gpio_pwr_dev, 3));
++    qdev_connect_gpio_out(pl061_dev, 4, qdev_get_gpio_in(gpio_pwr_dev, 4));
++}
++
+ static void create_virtio_devices(const VirtMachineState *vms)
+ {
+     int i;
+@@ -1993,6 +2013,10 @@ static void machvirt_init(MachineState *machine)
+         create_gpio(vms);
+     }
  
-         if (s->burst_length <= 0) {
-             s->burst_length = imx_spi_burst_length(s);
-@@ -197,7 +196,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-         rx = 0;
++    if (vms->secure) {
++        create_gpio_secure(vms);
++    }
++
+      /* connect powerdown request */
+      vms->powerdown_notifier.notify = virt_powerdown_req;
+      qemu_register_powerdown_notifier(&vms->powerdown_notifier);
+diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+index b6fdaa2586..f0e7405f6e 100644
+--- a/hw/gpio/Kconfig
++++ b/hw/gpio/Kconfig
+@@ -8,5 +8,8 @@ config PL061
+ config GPIO_KEY
+     bool
  
-         while (tx_burst > 0) {
--            uint8_t byte = tx & 0xff;
-+            uint8_t byte = tx >> (tx_burst - 8);
- 
-             DPRINTF("writing 0x%02x\n", (uint32_t)byte);
- 
-@@ -206,13 +205,11 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
- 
-             DPRINTF("0x%02x read\n", (uint32_t)byte);
- 
--            tx = tx >> 8;
--            rx |= (byte << (index * 8));
-+            rx = (rx << 8) | byte;
- 
-             /* Remove 8 bits from the actual burst */
-             tx_burst -= 8;
-             s->burst_length -= 8;
--            index++;
-         }
- 
-         DPRINTF("data rx:0x%08x\n", rx);
++config GPIO_PWR
++    bool
++
+ config SIFIVE_GPIO
+     bool
+diff --git a/hw/gpio/gpio_pwr.c b/hw/gpio/gpio_pwr.c
+new file mode 100644
+index 0000000000..0d0680c9f7
+--- /dev/null
++++ b/hw/gpio/gpio_pwr.c
+@@ -0,0 +1,85 @@
++/*
++ * GPIO qemu power controller
++ *
++ * Copyright (c) 2020 Linaro Limited
++ *
++ * Author: Maxim Uvarov <maxim.uvarov@linaro.org>
++ *
++ * Virtual gpio driver which can be used on top of pl061
++ * to reboot and shutdown qemu virtual machine. One of use
++ * case is gpio driver for secure world application (ARM
++ * Trusted Firmware.).
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/irq.h"
++#include "hw/sysbus.h"
++#include "sysemu/runstate.h"
++
++#define TYPE_GPIOPWR "gpio-pwr"
++OBJECT_DECLARE_SIMPLE_TYPE(GPIO_PWR_State, GPIOPWR)
++
++struct GPIO_PWR_State {
++    SysBusDevice parent_obj;
++    qemu_irq irq;
++};
++
++static void gpio_pwr_set_irq(void *opaque, int irq, int level)
++{
++    GPIO_PWR_State *s = (GPIO_PWR_State *)opaque;
++
++    qemu_set_irq(s->irq, 1);
++
++    if (level) {
++        return;
++    }
++
++    switch (irq) {
++    case 3:
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++        break;
++    case 4:
++        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "qemu; gpio_pwr: unknown interrupt %d lvl %d\n",
++                      irq, level);
++    }
++}
++
++
++static void gpio_pwr_realize(DeviceState *dev, Error **errp)
++{
++    GPIO_PWR_State *s = GPIOPWR(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    sysbus_init_irq(sbd, &s->irq);
++    qdev_init_gpio_in(dev, gpio_pwr_set_irq, 8);
++}
++
++static void gpio_pwr_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = gpio_pwr_realize;
++}
++
++static const TypeInfo gpio_pwr_info = {
++    .name          = TYPE_GPIOPWR,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(GPIO_PWR_State),
++    .class_init    = gpio_pwr_class_init,
++};
++
++static void gpio_pwr_register_types(void)
++{
++    type_register_static(&gpio_pwr_info);
++}
++
++type_init(gpio_pwr_register_types)
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 5c0a7d7b95..79568f00ce 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -1,5 +1,6 @@
+ softmmu_ss.add(when: 'CONFIG_E500', if_true: files('mpc8xxx.c'))
+ softmmu_ss.add(when: 'CONFIG_GPIO_KEY', if_true: files('gpio_key.c'))
++softmmu_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
+ softmmu_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
+ softmmu_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
+ softmmu_ss.add(when: 'CONFIG_PUV3', if_true: files('puv3_gpio.c'))
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index abf54fab49..77a4523cc7 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -81,6 +81,7 @@ enum {
+     VIRT_GPIO,
+     VIRT_SECURE_UART,
+     VIRT_SECURE_MEM,
++    VIRT_SECURE_GPIO,
+     VIRT_PCDIMM_ACPI,
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
 -- 
-2.26.2
+2.17.1
 

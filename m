@@ -1,110 +1,105 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp627131lfo;
-        Thu, 28 Jan 2021 14:54:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwCYzjNkhMYFghL/TRfHaVbQ2BnwvmockC0YUUT76LfPCZM4IXCuevrW//0ZdPN/3rNRfdO
-X-Received: by 2002:a5b:7c1:: with SMTP id t1mr2013874ybq.480.1611874491275;
-        Thu, 28 Jan 2021 14:54:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611874491; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1001461lfq;
+        Wed, 6 Jan 2021 09:07:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxyCXurauhh5oUwMEUfFkPuLFDXzNzgFYfiHY7+JIDClVG6CBS9J8k8TIuQTkPkoMlXmt2L
+X-Received: by 2002:a25:6ec3:: with SMTP id j186mr7543314ybc.165.1609952866476;
+        Wed, 06 Jan 2021 09:07:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609952866; cv=none;
         d=google.com; s=arc-20160816;
-        b=I4AZBn+/yZoEJGTqoPHwZdB9kMWhrC3/eyufrUj5thssUq9b9d6zNT809o2fLcVRf6
-         6EZJ/avWvHtXySpiaK/plRC7/I1TC9wuuy429neTRg7xGN8Go6ivIU4C0u/g67uIS9BC
-         aCBtVcy8+b1nDGkInxsPTHBSHDmWPeufpHDXrpRYw/8JfAo2jauj3wfBquUQzfMyNbQD
-         53za7miKy6BYvKi1dSnFT1ErBMpMX0QKRcoaQzWKPL8vBkgoUXr7+wU6vldbkMvZCvS9
-         iBs87Te/eVkyiKgUF0cw4SwTU6KqquJQyV1Nh3eNWi1gRg7tKjkBr7wDfp7PkhMhAbmY
-         la/g==
+        b=SgwsGOlRohNp8YThkr48IRdu+0gED9J3Br73utcDiKvbaF4HegnDhIZrYp0ipp1i0J
+         4ihf3ye+6E15k0+i7BhAXlBUJhwPP5PGcJ6s5kk80eyfjn2bWESBYUpRTkNhM2+2mEU9
+         lcin/d1wqUTbqexNW4eqa4n1EeaAwd3cKz5K6bTCtLaFuXhH/6TsNMYW1WGbNOkDhQX5
+         nUfOs53hTsczUlTZyJ+w+Nts8sd6ROdj2j8/aAWX+pDqt/PaVJdq9/KZ9/rshGKubp5d
+         hbTeYvXUcMZcZ8eo/RcrZSWleAweNwGuiZbyL7dtbnvn+UWhBviBVS+Sb93FFF1i7lnd
+         R+Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=5bvrCnDcElA75br2YmmksQwg8lUlxPa22qY4Fj6h+lg=;
-        b=dTMFZaEHLRZcPReOUTwjYkI6DusdiRhSSDvPARVczHPknZslDbfG0vqu04dzgZysyx
-         9Bb98pXq2/eabP3KX0qiFiyqx/d42FETCXRcbrZQ3NImSKLQ1s17Oa4ja83tYx6ydfFj
-         OK6Flx11EN/44SjKEn+kPKQrYFBg1juRB9FHBm+E1e4+7xFpBle3lZNvPFpt2SzgyzQD
-         rIXtGRSJ64n5sjXT4GURTHhku8yvegLtTgCDfJYTXjttu/ALiPmO+5OUkaAaQtcsEaV9
-         pKexCg98okdkjdINRs9bpfMCv4Dqkc3M+xdbU80/mOJZeuXOl7sMtxG6HoWqGQAbybRa
-         Ba9g==
+        bh=ehrLtNBTNRbeo/Y70jedK8fZnXOpc2+Da3hK5em4AC4=;
+        b=hwAmIEddqea8w7+DoNs3QXQAM2obJZbrqexBU0djEHzUwRZeltqJ9L0aWlrU0tEgs5
+         ynNkeFCFiQIa7CRGblsuYYbxG4D+qnRj6ingBzaEpbz5RkflEGUeki33ZzCBjmrMvIEl
+         i6Me+pkiMkiRCy6m+qJ1akaU9u9Dgf65d52kDRr5wjO+CXGV4V7LxsQgi1T1C1Uw3F6G
+         DfD2F1Te9zLeBucaPTpbsGKSHicajLUiCR2vf2NRlyHtECURaJmkaqJeewP78drF2CR7
+         QsY9xZFx3GpZRSr32mtX1Ut7YfwxRQDxvqMHd3yNcbd4rCfw1qKgXcUpTIS47YkSQgb/
+         vVgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M0SbjigO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BEeKwjKI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si91938ybm.105.2021.01.28.14.54.51
+        by mx.google.com with ESMTPS id w13si3387618ybq.480.2021.01.06.09.07.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 14:54:51 -0800 (PST)
+        Wed, 06 Jan 2021 09:07:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M0SbjigO;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BEeKwjKI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46146 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5GBe-0001jF-LM
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 17:54:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33318)
+	id 1kxCHh-0002US-Pr
+	for alex.bennee@linaro.org; Wed, 06 Jan 2021 12:07:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33880)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5Fze-0005hy-4e
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:26 -0500
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c]:40928)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5FzP-0008BO-OF
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:25 -0500
-Received: by mail-pg1-x52c.google.com with SMTP id b21so5277259pgk.7
- for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 14:42:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5bvrCnDcElA75br2YmmksQwg8lUlxPa22qY4Fj6h+lg=;
- b=M0SbjigOnaVcix0YSJ9WpeivyMKfPUPSwXYyLXDBI4l6ARdj1qYWsQgn23n8/xgCkl
- EhW/1W58NUhWiKOLTavHBp5kplKDyi6rN+mozKwK3teETJ/andTw5UMaJuQn424lcFBa
- Whyj98QH2XRPMoYRKOscRyvzXK8HZPG/HJTEhgFbZVLhXosP0QhuChjL1Ze2b83CUafa
- HgSNRZn85T9mPtHrFtnsm6zUWDD/00HJQp4Oy7ezq16zihRJkvVO1pjgBpiQKdsBO6S1
- UzUgyaifN74wizJ83ZSX4OQ+SKYCqoaLNdg5J6TSkGyyeXhRWvEQRi38yNfDSjANJ/UT
- wdQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5bvrCnDcElA75br2YmmksQwg8lUlxPa22qY4Fj6h+lg=;
- b=XDGm9DFmvEQ3wlJd2c6wiC3vQv9JLWD9g2t6z9ReduQmCmbFdeRmJNtdEhMP1d5OYG
- 1466qae5BZGjg5pQlvMF078SHUqsbp0n4fMfZ/oK9E7+z7qDY+SakszHYRNl6vVN/OZP
- c//Hr3+8XvbgJrhYhJiykm1R//WsHzAwk4D6WjP/eBToHFIAR++DI5PstCB7emBxhDZ4
- 3GZ3BhYB5Z62tN1Ch0AZAqplulYj6QlkywUV+0ifqWJzlkGJo5zgFk8vSEbQwMfTym1N
- jJUIxs4Qw1vKr2MwLljJRZDIBsmlZ8HOb9itZ6MpqswLilYWiLcDHn34k9lWjiMjyXyU
- jhuQ==
-X-Gm-Message-State: AOAM53101b+pEN0CKF8ksjkgzKf9kETH4pM3CGTMKGeUZzoFOFcmiZde
- tPmew/EHa5iJVUWrEQK7FiogxaL36Li55NQP
-X-Received: by 2002:a63:c441:: with SMTP id m1mr1512364pgg.353.1611873729575; 
- Thu, 28 Jan 2021 14:42:09 -0800 (PST)
-Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
- [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id m10sm6042358pjs.25.2021.01.28.14.42.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jan 2021 14:42:08 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 15/23] linux-user/aarch64: Implement PR_MTE_TCF and
- PR_MTE_TAG
-Date: Thu, 28 Jan 2021 12:41:33 -1000
-Message-Id: <20210128224141.638790-16-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210128224141.638790-1-richard.henderson@linaro.org>
-References: <20210128224141.638790-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1kxCCT-0006Ah-CH
+ for qemu-devel@nongnu.org; Wed, 06 Jan 2021 12:02:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30146)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1kxCCP-0005Sn-0U
+ for qemu-devel@nongnu.org; Wed, 06 Jan 2021 12:02:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1609952533;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ehrLtNBTNRbeo/Y70jedK8fZnXOpc2+Da3hK5em4AC4=;
+ b=BEeKwjKIuThmHkgQ1m71q5fpYEiQ2dHdmC3OopfRpml5oYtEcQcb1Sg1/iF3ZK5fFWsVi3
+ +byJHqAd6nWC7hS6je+1H/0ja1KgqCvtzQ6we21NEYiamga05icNxgCGs8rXuMlqHaq3rt
+ +TM2b4Ha/TNEgnAaTxa+M9buERkd14s=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-206-qqizzyyzNxCGqwJRVGUQww-1; Wed, 06 Jan 2021 12:02:11 -0500
+X-MC-Unique: qqizzyyzNxCGqwJRVGUQww-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19D54190A7A1;
+ Wed,  6 Jan 2021 17:02:10 +0000 (UTC)
+Received: from localhost (ovpn-113-208.ams2.redhat.com [10.36.113.208])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 694641002393;
+ Wed,  6 Jan 2021 17:02:06 +0000 (UTC)
+Date: Wed, 6 Jan 2021 17:02:05 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Keqian Zhu <zhukeqian1@huawei.com>
+Subject: Re: [PATCH v2] Docs/RCU: Correct sample code of qatomic_rcu_set
+Message-ID: <20210106170205.GA133350@stefanha-x1.localdomain>
+References: <20210106071710.15836-1-zhukeqian1@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210106071710.15836-1-zhukeqian1@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="xHFwDpU9dbj6ez1V"
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.252,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,110 +112,52 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com, Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EfUIcBUA0Vqn
+X-TUID: KUvpfwIMMUsF
 
-These prctl fields are required for the function of MTE.
+--xHFwDpU9dbj6ez1V
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- linux-user/aarch64/target_syscall.h |  9 ++++++
- linux-user/syscall.c                | 43 +++++++++++++++++++++++++++++
- 2 files changed, 52 insertions(+)
+On Wed, Jan 06, 2021 at 03:17:10PM +0800, Keqian Zhu wrote:
+> Correct sample code to avoid confusing readers.
+>=20
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Cc: qemu-trivial@nongnu.org
+> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+> Reviewed-by: Peter Xu <peterx@redhat.com>
+> ---
+>=20
+> v2:
+>  - Add Cc and R-b.
+>=20
+> ---
+>  docs/devel/rcu.txt | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/target_syscall.h
-index 820601dfcc..76f6c3391d 100644
---- a/linux-user/aarch64/target_syscall.h
-+++ b/linux-user/aarch64/target_syscall.h
-@@ -33,5 +33,14 @@ struct target_pt_regs {
- #define TARGET_PR_SET_TAGGED_ADDR_CTRL 55
- #define TARGET_PR_GET_TAGGED_ADDR_CTRL 56
- # define TARGET_PR_TAGGED_ADDR_ENABLE  (1UL << 0)
-+/* MTE tag check fault modes */
-+# define TARGET_PR_MTE_TCF_SHIFT       1
-+# define TARGET_PR_MTE_TCF_NONE        (0UL << TARGET_PR_MTE_TCF_SHIFT)
-+# define TARGET_PR_MTE_TCF_SYNC        (1UL << TARGET_PR_MTE_TCF_SHIFT)
-+# define TARGET_PR_MTE_TCF_ASYNC       (2UL << TARGET_PR_MTE_TCF_SHIFT)
-+# define TARGET_PR_MTE_TCF_MASK        (3UL << TARGET_PR_MTE_TCF_SHIFT)
-+/* MTE tag inclusion mask */
-+# define TARGET_PR_MTE_TAG_SHIFT       3
-+# define TARGET_PR_MTE_TAG_MASK        (0xffffUL << TARGET_PR_MTE_TAG_SHIFT)
- 
- #endif /* AARCH64_TARGET_SYSCALL_H */
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 46526f50b0..d645eb8f44 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -10967,17 +10967,53 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-             {
-                 abi_ulong valid_mask = TARGET_PR_TAGGED_ADDR_ENABLE;
-                 CPUARMState *env = cpu_env;
-+                ARMCPU *cpu = env_archcpu(env);
-+
-+                if (cpu_isar_feature(aa64_mte, cpu)) {
-+                    valid_mask |= TARGET_PR_MTE_TCF_MASK;
-+                    valid_mask |= TARGET_PR_MTE_TAG_MASK;
-+                }
- 
-                 if ((arg2 & ~valid_mask) || arg3 || arg4 || arg5) {
-                     return -TARGET_EINVAL;
-                 }
-                 env->tagged_addr_enable = arg2 & TARGET_PR_TAGGED_ADDR_ENABLE;
-+
-+                if (cpu_isar_feature(aa64_mte, cpu)) {
-+                    switch (arg2 & TARGET_PR_MTE_TCF_MASK) {
-+                    case TARGET_PR_MTE_TCF_NONE:
-+                    case TARGET_PR_MTE_TCF_SYNC:
-+                    case TARGET_PR_MTE_TCF_ASYNC:
-+                        break;
-+                    default:
-+                        return -EINVAL;
-+                    }
-+
-+                    /*
-+                     * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
-+                     * Note that the syscall values are consistent with hw.
-+                     */
-+                    env->cp15.sctlr_el[1] =
-+                        deposit64(env->cp15.sctlr_el[1], 38, 2,
-+                                  arg2 >> TARGET_PR_MTE_TCF_SHIFT);
-+
-+                    /*
-+                     * Write PR_MTE_TAG to GCR_EL1[Exclude].
-+                     * Note that the syscall uses an include mask,
-+                     * and hardware uses an exclude mask -- invert.
-+                     */
-+                    env->cp15.gcr_el1 =
-+                        deposit64(env->cp15.gcr_el1, 0, 16,
-+                                  ~arg2 >> TARGET_PR_MTE_TAG_SHIFT);
-+                    arm_rebuild_hflags(env);
-+                }
-                 return 0;
-             }
-         case TARGET_PR_GET_TAGGED_ADDR_CTRL:
-             {
-                 abi_long ret = 0;
-                 CPUARMState *env = cpu_env;
-+                ARMCPU *cpu = env_archcpu(env);
- 
-                 if (arg2 || arg3 || arg4 || arg5) {
-                     return -TARGET_EINVAL;
-@@ -10985,6 +11021,13 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-                 if (env->tagged_addr_enable) {
-                     ret |= TARGET_PR_TAGGED_ADDR_ENABLE;
-                 }
-+                if (cpu_isar_feature(aa64_mte, cpu)) {
-+                    /* See above. */
-+                    ret |= (extract64(env->cp15.sctlr_el[1], 38, 2)
-+                            << TARGET_PR_MTE_TCF_SHIFT);
-+                    ret = deposit64(ret, TARGET_PR_MTE_TAG_SHIFT, 16,
-+                                    ~env->cp15.gcr_el1);
-+                }
-                 return ret;
-             }
- #endif /* AARCH64 */
--- 
-2.25.1
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--xHFwDpU9dbj6ez1V
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/17Q0ACgkQnKSrs4Gr
+c8gZpgf/YNO4iFwAYjwd3y/gTXwdffsM/jadr2ElZQmD8kpXrxKzBjtCq7+zsDsU
+f0GmHKjd6WCJNg/0Fli7gExWwWcF6Yazol1pCK3XcilbEBSDyCgrWKsB0sOdHJMs
+3zEBi6BQDE5uC61Vk7a2yezGZYl3w1NJ3D1Qn5JvlWx0yOWPt3pkz3MDNCP9GO0a
+A3diaDB355bcRfq0BiSKL5XjmTU/NdA7qHWIOHYdPgad5Vd7jLL2qbLfqysca1E6
+StDse/NvG6/eIf0NupZX5qIkbpSFZUZ1yCM/ty7WJNv0V5Fhysyip+7agRGSd+C/
+5uWnnSR0kUSKZEcXVDDIBDrX5GNIkg==
+=i5Xn
+-----END PGP SIGNATURE-----
+
+--xHFwDpU9dbj6ez1V--
 

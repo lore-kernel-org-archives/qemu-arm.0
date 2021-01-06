@@ -1,71 +1,71 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp600468lfq;
-        Tue, 5 Jan 2021 22:35:24 -0800 (PST)
-X-Received: by 2002:a65:51c8:: with SMTP id i8mr2940359pgq.81.1609914924748;
-        Tue, 05 Jan 2021 22:35:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609914924; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp600492lfq;
+        Tue, 5 Jan 2021 22:35:28 -0800 (PST)
+X-Received: by 2002:a17:902:34f:b029:dc:3032:e47d with SMTP id 73-20020a170902034fb02900dc3032e47dmr3128265pld.15.1609914927789;
+        Tue, 05 Jan 2021 22:35:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609914927; cv=none;
         d=google.com; s=arc-20160816;
-        b=nlz0poNUzZ0l9FPbTrPc/+Ib4S6Ov1vjvFcTR8z+PHu5G7S5Soe3PWI5C6j8aDG2xs
-         SvphOX1wSxR0Od301c1mn0Ax4CJDRrfH7LhmBGnR4HIkZym+fz7VoY83sOB5e5/4UVvc
-         zbwqcELux2T/PaPerkyxG0+C+K6Y8tpsVlXd9dYnmUY0UG8JrxugrFibaXls8Iykmi1I
-         /VHQ/Hic+mz8qzJOXMkNtcDlwEq9wtB7fq6mTCV2E/2zn4XEgCZZsHY1Zu44Qde5rCma
-         ftMxEZufl/nE/dkorSlUyBG4IztHzffemsviFkdEwaNNPDKbt7IeCFDacNEfYlLMFxTX
-         Si6Q==
+        b=ZOjmTZfOmbapgz1RUt4X6cii4AIzYOL3CvFBVKsn8yxeVFtGqNRZF+fYWBnh/lMekc
+         IUq/Hy2yIPDn9GFH5Ef+D/QEN4LWcC/m6p+ltEn6yA+n/gDpNvSl+adS/c7x1+4hE4gY
+         TIrF6sraIQ3Yz8+J3Sx69ICWOxN3sXqmnOdl3Ov52wnxo7LXOrwivpSNb8HiIx6Irt2j
+         UBIdxvXi++JN/IsX43NCkUhsbE2KBoL71GLI99ZraQu6q/TrTe/W3tbTWuhqHCDB6ATN
+         x52ytYWg22MKyuPLlbUf2lCTKFJ1qUveLg37xDTDxfg4o/iZsPUgEVfsu2eBRk8TGBJ2
+         LTlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CXG7bK3DGo/swZLf3xUG4CksXWWUngcawbrNPY8Gm1o=;
-        b=kk7jCL9Em1S00Bs+MXUN74IK3aqmVESR/t50updm5sH7mLuuCjHgMSZ0x666f/GIyn
-         ldbSgPsa8+Y1LefsxDVII7oZ14WBVtJzMReE0NE3AhCmq+qxOcgBMLqiT/+0cJCwiZ8+
-         ZZObAfj+ZAZgiN8mw5Dw7SdjYKfw31haWwwsY5K9DRKelioj0yMhwooqEUkc/JEWeA6M
-         wdk0A8KGB6ThkuRoBEjRyg8Lu2X4NKKyZMqHftZEE8Skc+8ULtf+ttbOFNbqdFHsRrhv
-         OWqR6oKbA+IPOrN5omcWWzZ4R4hwTRjBrqbUaZSob/XM7D8KmSvqlSJFpLif/U0yvQQr
-         RlKg==
+        bh=zirkRo36lTO4K/qI+C44rWOQIVLw5skxXSXDCk/pUuk=;
+        b=l+8hmvC1drLEX+xFlAUo5vp5tf3axZkuoYhuRlVaJVJpn4yw2ALOQQHiFqTbbkv5SZ
+         AqggOjxnwBHC/JY0919mV4E0ItuIilSARwp84vYRwpUlC/pHUe6Um+B4JUkxXcLoMKbG
+         yxkuIAonQO+AzPNfN9oSesHLcYXq8cihcWJmQ5dngklIhGLbBgse3aGVUFawC4EupsGd
+         KhcuX9V6WvvLv/CpFEn+RzRarKHayCw71PG1O9kdD4pyDJPBNiXCs6Lx1BCNzocLJ/77
+         7cgmuRicwPd3ktM0Ww3AvWNbpMCOBkRUXAdGKjC3uw14n51w4hrOn6EJotOiJo17+TzF
+         iSjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LHZ6mdL7;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EKu+6Upc;
        spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bmeng.cn@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e1sor774433pls.33.2021.01.05.22.35.24
+        by mx.google.com with SMTPS id e3sor633480pfe.98.2021.01.05.22.35.27
         (Google Transport Security);
-        Tue, 05 Jan 2021 22:35:24 -0800 (PST)
+        Tue, 05 Jan 2021 22:35:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=LHZ6mdL7;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=EKu+6Upc;
        spf=pass (google.com: domain of bmeng.cn@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=bmeng.cn@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=CXG7bK3DGo/swZLf3xUG4CksXWWUngcawbrNPY8Gm1o=;
-        b=LHZ6mdL7ECrIk0DSUNHKlIRmiWe71383NBHMeAggswZHKZiSZ3xctUiFSL9YSrgbgx
-         Q+WZ0tYqT5D6NeaQObm5XZNuXcTtMqOFTlAf+YOXOgP9bqApsTc3YebU/JHTe48+m6B3
-         gl5iHUT1wP+QXYvjXgijBittEE3MjeOGqGnHM/8bnMlDuvaL4Rvr5D1xI5hwZGOZ47Kk
-         S6wDqynDhzewulPPGEh1nTDcgj7s9MqTquzZD4js6IAkaZOESylDF7RtBXkKEzXoBBNu
-         O89e4CPHMv7FPkMtc4lZIWzO9jptOrgtF4xabbZG49+NB1T9pBXDRndXDQzDdidQDjy5
-         UiVg==
+        bh=zirkRo36lTO4K/qI+C44rWOQIVLw5skxXSXDCk/pUuk=;
+        b=EKu+6UpcBy1Tv9H8dQ/07rW4qzuces4VX5DmsfSS/aQ5+lztA9W1QbWL83suPklalP
+         cfFTwnMQtNkctSyasKiX9WRrSJst3U/W19PSC3YousmrA1xXkEg9s6pdX/EzgGmkNqMi
+         o/4fNoT3SZf+jztYOIthh4GRTuf8uxUHAZIsAPA/wBPeggHiIuKLC5hA5zP8iuGU/aH0
+         8WtXFYO28Jm+lqxzTQUaAViWW1h9xaCxiEg3nuJBfVZI6MKFbXp4SnmaRhQsUpq2p4Gm
+         CPxKykRT+JcXq8vC4AeUs3pvJ/TGypSCbGP1QrH/zT/pjnGXGdE6aTyzkiHJhRw9HCqK
+         UrIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=CXG7bK3DGo/swZLf3xUG4CksXWWUngcawbrNPY8Gm1o=;
-        b=UJ75HlZVQGZNmQdvSEB7QggA2lTnkSSpcsHxVpF8eMk2I0M2KLso2RDDYDyhXTjsFN
-         Zn0JDAVk823sZiZLGCQGhdBc6nrb8mjZIpCvaBJzENjzzxep8mny7QEWWdH19Z2NODJw
-         4T0vTRz2vnafEtz/LtQmdoT6Fjg5kVBXofHD3dYilYAS4FAnddvoWoG5fK7kwDyMb8Ik
-         na6hDy8y0r4cZHjrcxYXu0DIUi9v1M6RfMTxcmF35Cld0Y81tz5HymKgPXphknATb0Ia
-         COyTWEOHj48NL4bGdnjikNkFK4buw7mRBW/J8aohTLlAyKol/xopcrVdk9EZLeodBQm3
-         SD4g==
-X-Gm-Message-State: AOAM532sdEoA0X/jt24PrFI1fiXJeeo1RkyOJ36BiZFv95uK3qT+pBDS
-	WcNsAk+ruGWlyBUxbwDE6OixeUoqrTA=
-X-Google-Smtp-Source: ABdhPJyOtT/Dzea5HsTFMD2HJVEVlpVqcOS2hxl0kKuEjQyj7KLnuly37ZqQkh1gQxB5lisfFE3RYg==
-X-Received: by 2002:a17:902:6b87:b029:dc:3402:18af with SMTP id p7-20020a1709026b87b02900dc340218afmr3126456plk.29.1609914924141;
-        Tue, 05 Jan 2021 22:35:24 -0800 (PST)
+        bh=zirkRo36lTO4K/qI+C44rWOQIVLw5skxXSXDCk/pUuk=;
+        b=fiOweAaJoySL+6FjS1o776sQUEdukJXvw4nakf9svrDMv7wH8EJ1C8CvEi0YpAPL84
+         sjJsyQhVgDMEOBqn1qZ2gm9hc9xZfuON2p6J/HdVesrWrGK24deYyQG+qq2OGzoMxy6V
+         6i8x1WleHsE/x/klM7GmkLsSgMNesWyB5D2X7t9rbrjh7nCk+mOdDvLS/GLBnN5QFRan
+         xGzt5cJXalWtOuqnkidupuWbDdjBFjhTDwzmL03a0vwK2Sn3SLX44eXQ9OtfYe8V/P5b
+         CX8w6Cp4SKIWEVS9MaEXK6X9wFvhtM3y7NfJXaQyC2sL5+M+oIFzTuhP+HVvdM6T08G0
+         YGOQ==
+X-Gm-Message-State: AOAM530SDDiEqx3fndzxIASYGyTkpaUTaYJfGDkswn03LwYvzTUXFkMH
+	f6dIWbvkk3n5jTBcpHecZur4LghqoXg=
+X-Google-Smtp-Source: ABdhPJwDtFD+iIX78m2ia0TKjGvnyCfpqy/giSENGmC5vcQFgoS/JJ5oHvP/iN7Q7sFXaEUW2CdNqw==
+X-Received: by 2002:a63:d141:: with SMTP id c1mr2939779pgj.75.1609914927117;
+        Tue, 05 Jan 2021 22:35:27 -0800 (PST)
 Return-Path: <bmeng.cn@gmail.com>
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com. [144.168.56.201])
-        by smtp.gmail.com with ESMTPSA id cu4sm1132976pjb.18.2021.01.05.22.35.21
+        by smtp.gmail.com with ESMTPSA id cu4sm1132976pjb.18.2021.01.05.22.35.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Jan 2021 22:35:23 -0800 (PST)
+        Tue, 05 Jan 2021 22:35:26 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,65 +73,174 @@ To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Bin Meng <bin.meng@windriver.com>
-Subject: [PATCH v3 3/4] hw/arm: sabrelite: Connect the Ethernet PHY at address 6
-Date: Wed,  6 Jan 2021 14:35:03 +0800
-Message-Id: <20210106063504.10841-4-bmeng.cn@gmail.com>
+Subject: [PATCH v3 4/4] docs/system: arm: Add sabrelite board description
+Date: Wed,  6 Jan 2021 14:35:04 +0800
+Message-Id: <20210106063504.10841-5-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210106063504.10841-1-bmeng.cn@gmail.com>
 References: <20210106063504.10841-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: cZG8fafB/zG5
+X-TUID: d5lECt/rqGqG
 
 From: Bin Meng <bin.meng@windriver.com>
 
-At present, when booting U-Boot on QEMU sabrelite, we see:
-
-  Net:   Board Net Initialization Failed
-  No ethernet found.
-
-U-Boot scans PHY at address 4/5/6/7 (see board_eth_init() in the
-U-Boot source: board/boundary/nitrogen6x/nitrogen6x.c). On the real
-board, the Ethernet PHY is at address 6. Adjust this by updating the
-"fec-phy-num" property of the fsl_imx6 SoC object.
-
-With this change, U-Boot sees the PHY but complains MAC address:
-
-  Net:   using phy at 6
-  FEC [PRIME]
-  Error: FEC address not set.
-
-This is due to U-Boot tries to read the MAC address from the fuse,
-which QEMU does not have any valid content filled in. However this
-does not prevent the Ethernet from working in QEMU. We just need to
-set up the MAC address later in the U-Boot command shell, by:
-
-  => setenv ethaddr 00:11:22:33:44:55
+This adds the target guide for SABRE Lite board, and documents how
+to boot a Linux kernel and U-Boot bootloader.
 
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
 ---
 
-(no changes since v1)
+Changes in v3:
+- correct 2 typos in sabrelite.rst
 
- hw/arm/sabrelite.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Changes in v2:
+- new patch: add sabrelite target guide
 
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 91d8c43a7e..a3dbf85e0e 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -51,6 +51,10 @@ static void sabrelite_init(MachineState *machine)
- 
-     s = FSL_IMX6(object_new(TYPE_FSL_IMX6));
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
+ docs/system/arm/sabrelite.rst | 119 ++++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst    |   1 +
+ 2 files changed, 120 insertions(+)
+ create mode 100644 docs/system/arm/sabrelite.rst
+
+diff --git a/docs/system/arm/sabrelite.rst b/docs/system/arm/sabrelite.rst
+new file mode 100644
+index 0000000000..71713310e3
+--- /dev/null
++++ b/docs/system/arm/sabrelite.rst
+@@ -0,0 +1,119 @@
++Boundary Devices SABRE Lite (``sabrelite``)
++===========================================
 +
-+    /* Ethernet PHY address is 6 */
-+    object_property_set_int(OBJECT(s), "fec-phy-num", 6, &error_fatal);
++Boundary Devices SABRE Lite i.MX6 Development Board is a low-cost development
++platform featuring the powerful Freescale / NXP Semiconductor's i.MX 6 Quad
++Applications Processor.
 +
-     qdev_realize(DEVICE(s), NULL, &error_fatal);
- 
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
++Supported devices
++-----------------
++
++The SABRE Lite machine supports the following devices:
++
++ * Up to 4 Cortex A9 cores
++ * Generic Interrupt Controller
++ * 1 Clock Controller Module
++ * 1 System Reset Controller
++ * 5 UARTs
++ * 2 EPIC timers
++ * 1 GPT timer
++ * 2 Watchdog timers
++ * 1 FEC Ethernet controller
++ * 3 I2C controllers
++ * 7 GPIO controllers
++ * 4 SDHC storage controllers
++ * 4 USB 2.0 host controllers
++ * 5 ECSPI controllers
++ * 1 SST 25VF016B flash
++
++Please note above list is a complete superset the QEMU SABRE Lite machine can
++support. For a normal use case, a device tree blob that represents a real world
++SABRE Lite board, only exposes a subset of devices to the guest software.
++
++Boot options
++------------
++
++The SABRE Lite machine can start using the standard -kernel functionality
++for loading a Linux kernel, U-Boot bootloader or ELF executable.
++
++Running Linux kernel
++--------------------
++
++Linux mainline v5.10 release is tested at the time of writing. To build a Linux
++mainline kernel that can be booted by the SABRE Lite machine, simply configure
++the kernel using the imx_v6_v7_defconfig configuration:
++
++.. code-block:: bash
++
++  $ export ARCH=arm
++  $ export CROSS_COMPILE=arm-linux-gnueabihf-
++  $ make imx_v6_v7_defconfig
++  $ make
++
++To boot the newly built Linux kernel in QEMU with the SABRE Lite machine, use:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
++      -display none -serial null -serial stdio \
++      -kernel arch/arm/boot/zImage \
++      -dtb arch/arm/boot/dts/imx6q-sabrelite.dtb \
++      -initrd /path/to/rootfs.ext4 \
++      -append "root=/dev/ram"
++
++Running U-Boot
++--------------
++
++U-Boot mainline v2020.10 release is tested at the time of writing. To build a
++U-Boot mainline bootloader that can be booted by the SABRE Lite machine, use
++the mx6qsabrelite_defconfig with similar commands as described above for Linux:
++
++.. code-block:: bash
++
++  $ export CROSS_COMPILE=arm-linux-gnueabihf-
++  $ make mx6qsabrelite_defconfig
++
++Note we need to adjust settings by:
++
++.. code-block:: bash
++
++  $ make menuconfig
++
++then manually select the following configuration in U-Boot:
++
++  Device Tree Control > Provider of DTB for DT Control > Embedded DTB
++
++To start U-Boot using the SABRE Lite machine, provide the u-boot binary to
++the -kernel argument, along with an SD card image with rootfs:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
++      -display none -serial null -serial stdio \
++      -kernel u-boot
++
++The following example shows booting Linux kernel from dhcp, and uses the
++rootfs on an SD card. This requires some additional command line parameters
++for QEMU:
++
++.. code-block:: none
++
++  -nic user,tftp=/path/to/kernel/zImage \
++  -drive file=sdcard.img,id=rootfs -device sd-card,drive=rootfs
++
++The directory for the built-in TFTP server should also contain the device tree
++blob of the SABRE Lite board. The sample SD card image was populated with the
++root file system with one single partition. You may adjust the kernel "root="
++boot parameter accordingly.
++
++After U-Boot boots, type the following commands in the U-Boot command shell to
++boot the Linux kernel:
++
++.. code-block:: none
++
++  => setenv ethaddr 00:11:22:33:44:55
++  => setenv bootfile zImage
++  => dhcp
++  => tftpboot 14000000 imx6q-sabrelite.dtb
++  => setenv bootargs root=/dev/mmcblk3p1
++  => bootz 12000000 - 14000000
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index bde4b8e044..edd013c7bb 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -83,6 +83,7 @@ undocumented; you can get a complete list by running
+    arm/versatile
+    arm/vexpress
+    arm/aspeed
++   arm/sabrelite
+    arm/digic
+    arm/musicpal
+    arm/gumstix
 -- 
 2.25.1

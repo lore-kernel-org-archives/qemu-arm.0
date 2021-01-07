@@ -1,158 +1,416 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp605177lfq;
-        Thu, 7 Jan 2021 12:53:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzB8s8lw1docMvNxPcQsWbMCxZlmZiuBhkebgBAP/Nn+MEsjI5gr3Sa1PwAEFwgxjel+6oA
-X-Received: by 2002:a5b:107:: with SMTP id 7mr943657ybx.253.1610052837029;
-        Thu, 07 Jan 2021 12:53:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610052837; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp613807lfq;
+        Thu, 7 Jan 2021 13:07:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxFpv4V8NbsBgi7PASRaJuisH39BJLvwrrpGXuhB24lw1jpBA6RfHB0hI4J9GQau+moxfLj
+X-Received: by 2002:a25:d3c8:: with SMTP id e191mr1102754ybf.234.1610053655892;
+        Thu, 07 Jan 2021 13:07:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610053655; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZMVDeChEotVkqvo7hJ9fzzBrHN7Wm8+iQEtCpUl032eTrG/k2UzF9C5Qp8edgE4/gl
-         OvAgXzWT7BzaiWH4UAeTL675DlGCnnd/EI41t/89kkXBr5ITr2057J295IHt1pxxcZlB
-         If/EHPWn0b/jE9bHaz4KIcZveA7AnRqAKOHPRQawMHM/FGxLweVx5SFt8mE786QqhwHe
-         NsXwybrYVWnakeSF4bQ5aK+E09cjccQW2Nwr6RicsqSfSUzGnOuF6YhBy3j6ewM3DNX8
-         E1zpWaLYVq0xE3+SD/G5lEow1yTCDW2bdL0ZBd17KGWWL3ysiFR9673VYuQBzsKwQb2D
-         f0+A==
+        b=RVoQd+9WKmjmWLmVXy1KQ5lcZUiy1Q17QBNkW1akSrYEDa0CZ3c5TZZm+Q3eMvsn7g
+         /VhNRhqMV6Y+b3kftQA9ZofAeR6SZHxWP18V1bF9CsoYf8NfXFuN3QTAvNqCBOLrR5Wr
+         HJ3A4hyxZTzYDXVeTyfKzV0tSEeACkGhZ2e5WEChCb2kzymu9thT4YJWMDemL4i3sD4o
+         XVGUHeodQ6jkMrfYfYU/lgREbzYkh4sJlQjVJaOgvSNfeAzhnCuHAgBIyfYTeJJTEHNS
+         fiqr/mNkW5vRp7P6FWmmgcSZDIGmsLs7c1mHJ1HfbxbofetuXVY5waOdjnZQQCSj1NQD
+         HFZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=mCnTY9YH3EC4LSSj4YJLFMo2b7CqxHLmm6hE4pJzs6s=;
-        b=s9isM/y9pmk0qqgj/DpqIzihFVa0Lv6U9soH9R6W82Kn4H3lJCLcBDGqag8mPKyTc6
-         BAV9WxxhDlXNA+H0ZLotQFv46JpirlzyFzcxDfFq/XOrL1h5kKkQRD+izhI9rUwNmrJn
-         0vDqtGABq2coVKqqdpMfaX27KwHjeDJG1tpOe8bO4f+kvJTHnhSJmkrZ0zxxKYA0si2y
-         xiQabI+sL3ZOU6eBZvI4AF5xGrGvaWGPyp207oKYG+GLEpfUczxRajHp7GgsOOJZ9CPv
-         99lPSwcuwmDWSbqn4QhAUlYqRuPQj6DJ1z9zcAFn0Vn9CuAkL9NYULKr/diWorxgtBYi
-         Fmow==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nML7IqxwblApEN2NnbFGVwk0803/EiwYLNm+/Bxj8F4=;
+        b=QjTsQq2Hov0/ollGFKbrE/Vo5pKcT2fgTNUxKGAspinKjzA09w24biUwtJVE8/zdUb
+         h8BfPohR4xUD8pJKKuhHwCeEfvRkQXjm5OSMVsdTh7hqi7P39uJSSl/FhML5nGbQR2Xk
+         VQpAeU7tq+gpyx0occkRUbfTkPb1/T1yZ+jGFWSS9rox60N0yrJUdan+L2Pm2EEjqXcb
+         UL1dVmpBkzJCqme7qvNHgbpgxKxijF3rUgbv7fhSPxcPg44aT+vlG9TCyUV/cD48+6co
+         1hBj79AuUxq26qcimvfg4qPHI06Ece4lMEEin4ZpgRPkBsMcHKkji2ZR6qjsJChFJ9nk
+         Z/kA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HFAG/mkt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=JYCRX0i+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y27si6948876ybi.466.2021.01.07.12.53.56
+        by mx.google.com with ESMTPS id s74si7687769ybc.229.2021.01.07.13.07.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Jan 2021 12:53:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Jan 2021 13:07:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="HFAG/mkt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=JYCRX0i+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45696 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50500 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxcI8-0006ns-Dv
-	for alex.bennee@linaro.org; Thu, 07 Jan 2021 15:53:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52468)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kxcVL-0004Xa-9u
+	for alex.bennee@linaro.org; Thu, 07 Jan 2021 16:07:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kxc2j-0004oy-91
- for qemu-devel@nongnu.org; Thu, 07 Jan 2021 15:38:01 -0500
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:38390)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxcVB-0004Wo-S6
+ for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:07:26 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:35640)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kxc2h-0000Zf-KT
- for qemu-devel@nongnu.org; Thu, 07 Jan 2021 15:38:00 -0500
-Received: by mail-pf1-x433.google.com with SMTP id d2so4630109pfq.5
- for <qemu-devel@nongnu.org>; Thu, 07 Jan 2021 12:37:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxcV5-0002bS-PP
+ for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:07:25 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id q22so11719348eja.2
+ for <qemu-arm@nongnu.org>; Thu, 07 Jan 2021 13:07:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mCnTY9YH3EC4LSSj4YJLFMo2b7CqxHLmm6hE4pJzs6s=;
- b=HFAG/mktg+NZj22C7bg0yAHn0Fr92NH9PA19yh8a2IrHwQAO4z+oF49iHZnZrxhfdh
- 1k9iIIKT97auX160LTFVhzX8ftSsM+AISeRrLc/puBLl5mRVwOMWz/CjnQxSBs9sTXOn
- OF+nF+JcgkrZo5VwWDtXOBUbFTaE11BhOfczY3eN1w/KTC9MMX/FN9CjURCcz+WBOkel
- HB4mdbVAWuWWbAMZALpnbsvKScy7Si1Bn0YPvLWskDg23nsg5M/nziqN+JFFuDaax66v
- uON/C5NMmhrbQunM98Mta4KOv61lupZ2fUj1IGcw3aHbTcpyDjTq0nN1GAaP1+Nro5ZR
- zndw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nML7IqxwblApEN2NnbFGVwk0803/EiwYLNm+/Bxj8F4=;
+ b=JYCRX0i+1V2HMySwUXaOGorxzp6Z76lVMqQSgGzV4Y4eJPG+eFtHRwzM170F4VUp6q
+ kaM858ElI1B/vAq5qNxzwhA1lxQykDQr7kotiRFbO4G5MvT0qmgacBXwDl2SG1ykqQur
+ 2WB1TEWOPhhNquKOJzgb6MR1BnRCO1kkr24vc1Ntesrk32il/V4ktsSsYXa8roiTOksb
+ DH3qatHpv5BkQbopOKzWAkLb8TXugFBQevpF2ZyCYDZrMedR1gPzy5WdbRazwSXK3MNM
+ ayOZCP0uV3Q3Gh7EmRKh3w1R/HlZvhsIxhqk920hB8I9eCgOFHNtzAYur0T3KVkbKUxz
+ yT7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mCnTY9YH3EC4LSSj4YJLFMo2b7CqxHLmm6hE4pJzs6s=;
- b=DB3zNN96y9GviE2a8er3mFPG5vNHi3yTdp9oNunfbG6fv7cFkRvXFl0SHtfKN2QJKW
- HwV+B5kTxdBNnVazshMdl9EferPeoSrJpye9G6C/g1KbfRXJHnUtqH1r19h+EYaQIfYj
- aKbdcQj1WFRePWRvo+yh1CDrgONB8Zzd2r637PFJoKXZ31o8Q9C3/9ctfrdKXE/ScBfI
- ly5x/fH0cfGdZxXSrudjppNc6ayybgdbPfghUZYT/Za4iFf5mAwl2A+fDPYU4OISlAEw
- XTXLb2ottcQ/w5Q2x0EwbULZEdOsfPd8DyX8d0vL12XJj8ogTCBHhFpAx7O+OEw6jS9n
- XVjw==
-X-Gm-Message-State: AOAM532HrJscsD5+SdJ4aSmod6Q0rnT8cGwNqMBEqs6wVzlY5Dgs959D
- mr39c2loCHsL+iUQGGjGcRUjXw==
-X-Received: by 2002:a63:f64c:: with SMTP id u12mr3600240pgj.98.1610051878136; 
- Thu, 07 Jan 2021 12:37:58 -0800 (PST)
-Received: from [10.25.18.38] (rrcs-173-197-107-21.west.biz.rr.com.
- [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id w19sm6951773pgf.23.2021.01.07.12.37.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Jan 2021 12:37:57 -0800 (PST)
-Subject: Re: [PATCH v2 05/24] target/arm: Fix SCTLR_B test for TCGv_i64
- load/store
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20201208180118.157911-1-richard.henderson@linaro.org>
- <20201208180118.157911-6-richard.henderson@linaro.org>
- <CAFEAcA9sT4JdPWkojp0r6yazJc5vbmzWHwnkMtChTQ1aZ2uugQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f1451527-804b-04f2-7d73-89cdb0247b37@linaro.org>
-Date: Thu, 7 Jan 2021 10:37:54 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nML7IqxwblApEN2NnbFGVwk0803/EiwYLNm+/Bxj8F4=;
+ b=Vd7gNKc3lXEv3lWiQRd6+/3jNxrbrKWsA/IaSDXpx5Tx++2SLrM4H7JKgjqTOxngOp
+ QtMV+YigZ7B/qLcBWgzWHII+8Sg3O3KAWHeJ4GBmKkedGmBeoeoW+wz0t9yhSVIN4WSb
+ itUxjX/bSN7vuFgF4iX6Yz7QVX+RitkrEk9wdH9BB1fh7hLpow6fKsOd1T5C8vtrRkRQ
+ kanxys4V2urs+lt/p2pXhLnZld71594+Zt/tGg+meRB6yOvEy8Nbduf+RyutRjKa1rir
+ 2CYTQ74uKp6ZutnLGXuaiLVep3rAN+aJy8WNdKrOWxDioXLYq5EFPsA3Vej8wjgO2tDY
+ etvA==
+X-Gm-Message-State: AOAM531613jAS3TW85s1/CRbwLkWXAuVj3iId0/v3khTbDvATTXu6Lsw
+ qb2O+eg4W7gCUkomXwNZ4bYwbanOnIAx0hdHwaYf4A==
+X-Received: by 2002:a17:906:1151:: with SMTP id
+ i17mr527842eja.250.1610053637978; 
+ Thu, 07 Jan 2021 13:07:17 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9sT4JdPWkojp0r6yazJc5vbmzWHwnkMtChTQ1aZ2uugQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+References: <20201217004349.3740927-1-wuhaotsh@google.com>
+ <20201217004349.3740927-4-wuhaotsh@google.com>
+In-Reply-To: <20201217004349.3740927-4-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Jan 2021 21:07:06 +0000
+Message-ID: <CAFEAcA_RGz3N2RtxiNBwfuM6Xx34DqjkvyB=JncjyfOk_mBzSg@mail.gmail.com>
+Subject: Re: [PATCH v4 3/6] hw/adc: Add an ADC module for NPCM7XX
+To: Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.267,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JwEJXHAn+/83
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <minyard@acm.org>, Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xaXtYs06Hp3M
 
-On 1/7/21 6:00 AM, Peter Maydell wrote:
-> On Tue, 8 Dec 2020 at 18:01, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Just because operating on a TCGv_i64 temporary does not
->> mean that we're performing a 64-bit operation.  Restrict
->> the frobbing to actual 64-bit operations.
-> 
-> If I understand correctly, this patch isn't actually a behaviour
-> change because at this point the only users of gen_aa32_ld_i64()
-> and gen_aa32_st_i64() are in fact performing 64-bit operations
-> so the (opc & MO_SIZE) == MO_64 test is always true.
+On Thu, 17 Dec 2020 at 00:45, Hao Wu <wuhaotsh@google.com> wrote:
+>
+> The ADC is part of NPCM7XX Module. Its behavior is controled by the
+> ADC_CON register. It converts one of the eight analog inputs into a
+> digital input and stores it in the ADC_DATA register when enabled.
+>
+> Users can alter input value by using qom-set QMP command.
+>
+> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>  docs/system/arm/nuvoton.rst    |   2 +-
+>  hw/adc/meson.build             |   1 +
+>  hw/adc/npcm7xx_adc.c           | 321 ++++++++++++++++++++++++++
+>  hw/adc/trace-events            |   5 +
+>  hw/arm/npcm7xx.c               |  24 +-
+>  include/hw/adc/npcm7xx_adc.h   |  72 ++++++
+>  include/hw/arm/npcm7xx.h       |   2 +
+>  meson.build                    |   1 +
+>  tests/qtest/meson.build        |   3 +-
+>  tests/qtest/npcm7xx_adc-test.c | 400 +++++++++++++++++++++++++++++++++
+>  10 files changed, 828 insertions(+), 3 deletions(-)
+>  create mode 100644 hw/adc/npcm7xx_adc.c
+>  create mode 100644 hw/adc/trace-events
+>  create mode 100644 include/hw/adc/npcm7xx_adc.h
+>  create mode 100644 tests/qtest/npcm7xx_adc-test.c
+>
+> diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+> index b00d405d52..35829f8d0b 100644
+> --- a/docs/system/arm/nuvoton.rst
+> +++ b/docs/system/arm/nuvoton.rst
+> @@ -41,6 +41,7 @@ Supported devices
+>   * Random Number Generator (RNG)
+>   * USB host (USBH)
+>   * GPIO controller
+> + * Analog to Digital Converter (ADC)
+>
+>  Missing devices
+>  ---------------
+> @@ -58,7 +59,6 @@ Missing devices
+>   * USB device (USBD)
+>   * SMBus controller (SMBF)
+>   * Peripheral SPI controller (PSPI)
+> - * Analog to Digital Converter (ADC)
+>   * SD/MMC host
+>   * PECI interface
+>   * Pulse Width Modulation (PWM)
+> diff --git a/hw/adc/meson.build b/hw/adc/meson.build
+> index 0d62ae96ae..6ddee23813 100644
+> --- a/hw/adc/meson.build
+> +++ b/hw/adc/meson.build
+> @@ -1 +1,2 @@
+>  softmmu_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
+> +softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
+> diff --git a/hw/adc/npcm7xx_adc.c b/hw/adc/npcm7xx_adc.c
+> new file mode 100644
+> index 0000000000..f213b6a6df
+> --- /dev/null
+> +++ b/hw/adc/npcm7xx_adc.c
+> @@ -0,0 +1,321 @@
+> +/*
+> + * Nuvoton NPCM7xx ADC Module
+> + *
+> + * Copyright 2020 Google LLC
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms of the GNU General Public License as published by the
+> + * Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful, but WITHOUT
+> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+> + * for more details.
+> + */
+> +
+> +#include "hw/adc/npcm7xx_adc.h"
 
-Correct.
+First #include in every .c file must always be "qemu/osdep.h"
+(and .h files never include osdep.h).
 
-> (Presumably
-> subsequent patches are going to add uses of these functions that
-> want to load smaller sizes?)
+> +#include "hw/qdev-clock.h"
+> +#include "hw/qdev-properties.h"
+> +#include "migration/vmstate.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "qemu/timer.h"
+> +#include "qemu/units.h"
+> +#include "trace.h"
+> +
+> +/* 32-bit register indices. */
+> +enum NPCM7xxADCRegisters {
+> +    NPCM7XX_ADC_CON,
+> +    NPCM7XX_ADC_DATA,
+> +    NPCM7XX_ADC_REGS_END,
+> +};
+> +
+> +/* Register field definitions. */
+> +#define NPCM7XX_ADC_CON_MUX(rv) extract32(rv, 24, 4)
+> +#define NPCM7XX_ADC_CON_INT_EN  BIT(21)
+> +#define NPCM7XX_ADC_CON_REFSEL  BIT(19)
+> +#define NPCM7XX_ADC_CON_INT     BIT(18)
+> +#define NPCM7XX_ADC_CON_EN      BIT(17)
+> +#define NPCM7XX_ADC_CON_RST     BIT(16)
+> +#define NPCM7XX_ADC_CON_CONV    BIT(14)
+> +#define NPCM7XX_ADC_CON_DIV(rv) extract32(rv, 1, 8)
+> +
+> +#define NPCM7XX_ADC_MAX_RESULT      1023
+> +#define NPCM7XX_ADC_DEFAULT_IREF    2000000
+> +#define NPCM7XX_ADC_CONV_CYCLES     20
+> +#define NPCM7XX_ADC_RESET_CYCLES    10
+> +#define NPCM7XX_ADC_R0_INPUT        500000
+> +#define NPCM7XX_ADC_R1_INPUT        1500000
+> +
+> +static void npcm7xx_adc_reset(NPCM7xxADCState *s)
+> +{
+> +    timer_del(&s->conv_timer);
+> +    timer_del(&s->reset_timer);
+> +    s->con = 0x000c0001;
+> +    s->data = 0x00000000;
+> +}
+> +
+> +static uint32_t npcm7xx_adc_convert(uint32_t input, uint32_t ref)
+> +{
+> +    uint32_t result;
+> +
+> +    result = input * (NPCM7XX_ADC_MAX_RESULT + 1) / ref;
+> +    if (result > NPCM7XX_ADC_MAX_RESULT) {
+> +        result = NPCM7XX_ADC_MAX_RESULT;
+> +    }
+> +
+> +    return result;
+> +}
+> +
+> +static uint32_t npcm7xx_adc_prescaler(NPCM7xxADCState *s)
+> +{
+> +    return 2 * (NPCM7XX_ADC_CON_DIV(s->con) + 1);
+> +}
+> +
+> +static void npcm7xx_adc_start_timer(Clock *clk, QEMUTimer *timer,
+> +        uint32_t cycles, uint32_t prescaler)
+> +{
+> +    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+> +    int64_t freq = clock_get_hz(clk);
+> +    int64_t ns;
+> +
+> +    ns = (NANOSECONDS_PER_SECOND * cycles * prescaler / freq);
 
-Correct.
-
-> If that's right, worth mentioning
-> explicitly in the commit message, I think.
-
-Will do.
+Don't calculate time-in-nanoseconds via clock_get_hz(),
+please. Use (the new) clock_ticks_to_ns().
 
 
-r~
+> +    ns += now;
+> +    timer_mod(timer, ns);
+> +}
+> +
+> +static void npcm7xx_adc_start_reset(NPCM7xxADCState *s)
+> +{
+> +    uint32_t prescaler = npcm7xx_adc_prescaler(s);
+> +
+> +    npcm7xx_adc_start_timer(s->clock, &s->reset_timer, NPCM7XX_ADC_RESET_CYCLES,
+> +            prescaler);
+> +}
+> +
+> +static void npcm7xx_adc_start_convert(NPCM7xxADCState *s)
+> +{
+> +    uint32_t prescaler = npcm7xx_adc_prescaler(s);
+> +
+> +    npcm7xx_adc_start_timer(s->clock, &s->conv_timer, NPCM7XX_ADC_CONV_CYCLES,
+> +            prescaler);
+> +}
+> +
+> +static void npcm7xx_adc_reset_done(void *opaque)
+> +{
+> +    NPCM7xxADCState *s = opaque;
+> +
+> +    npcm7xx_adc_reset(s);
+> +}
+> +
+> +static void npcm7xx_adc_convert_done(void *opaque)
+> +{
+> +    NPCM7xxADCState *s = opaque;
+> +    uint32_t input = NPCM7XX_ADC_CON_MUX(s->con);
+> +    uint32_t ref = (s->con & NPCM7XX_ADC_CON_REFSEL)
+> +        ? s->iref : s->vref;
+> +
+> +    g_assert(input < NPCM7XX_ADC_NUM_INPUTS);
+
+It looks to me given that the CON_MUX field is 4 bits and
+NUM_INPUTS is only 8 that the guest can trigger this assert
+if it writes a bogus value to the register. You should do
+something other than asserting in this situation (eg you
+can log a guest error and do nothing, or if you happen to
+know what the h/w does in this case that's the best thing).
+
+> +    s->data = npcm7xx_adc_convert(s->adci[input], ref);
+> +    if (s->con & NPCM7XX_ADC_CON_INT_EN) {
+> +        s->con |= NPCM7XX_ADC_CON_INT;
+> +        qemu_irq_raise(s->irq);
+> +    }
+> +    s->con &= ~NPCM7XX_ADC_CON_CONV;
+> +}
+> +
+> +static void npcm7xx_adc_calibrate(NPCM7xxADCState *adc)
+> +{
+> +    adc->calibration_r_values[0] = npcm7xx_adc_convert(NPCM7XX_ADC_R0_INPUT,
+> +            adc->iref);
+> +    adc->calibration_r_values[1] = npcm7xx_adc_convert(NPCM7XX_ADC_R1_INPUT,
+> +            adc->iref);
+> +}
+> +
+> +static void npcm7xx_adc_write_con(NPCM7xxADCState *s, uint32_t new_con)
+> +{
+> +    uint32_t old_con = s->con;
+> +
+> +    /* Write ADC_INT to 1 to clear it */
+> +    if (new_con & NPCM7XX_ADC_CON_INT) {
+> +        new_con &= ~NPCM7XX_ADC_CON_INT;
+> +    } else if (old_con & NPCM7XX_ADC_CON_INT) {
+> +        new_con |= NPCM7XX_ADC_CON_INT;
+> +    }
+> +
+> +    s->con = new_con;
+> +
+> +    if (s->con & NPCM7XX_ADC_CON_RST) {
+> +        if (!(old_con & NPCM7XX_ADC_CON_RST)) {
+> +            npcm7xx_adc_start_reset(s);
+> +        }
+> +    } else {
+> +        timer_del(&s->reset_timer);
+> +    }
+
+Emulating "this device really takes X length of time to
+complete a guest-requested reset" is usually a higher
+degree of fidelity than we bother to model. I assume
+that some guest software can't cope with the device
+resetting faster than advertised ?
+
+> +    if ((s->con & NPCM7XX_ADC_CON_EN)) {
+> +        if (s->con & NPCM7XX_ADC_CON_CONV) {
+> +            if (!(old_con & NPCM7XX_ADC_CON_CONV)) {
+> +                npcm7xx_adc_start_convert(s);
+> +            }
+> +        } else {
+> +            timer_del(&s->conv_timer);
+> +        }
+> +    }
+> +}
+> +
+> +static uint64_t npcm7xx_adc_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    uint64_t value = 0;
+> +    NPCM7xxADCState *s = opaque;
+> +    hwaddr reg = offset / sizeof(uint32_t);
+
+If you defined your register offsets with the REG32() macro
+in include/hw/registerfields.h then it would define
+A_FOO constants for you which are at the byte offsets of
+the 32-bit registers, and you could avoid converting
+the offset by dividing by 4 here. This isn't an obligatory
+change, but I think it ends up neater code.
+
+
+
+> diff --git a/include/hw/adc/npcm7xx_adc.h b/include/hw/adc/npcm7xx_adc.h
+> new file mode 100644
+> index 0000000000..7f9acbeaa1
+> --- /dev/null
+> +++ b/include/hw/adc/npcm7xx_adc.h
+> @@ -0,0 +1,72 @@
+> +/*
+> + * Nuvoton NPCM7xx ADC Module
+> + *
+> + * Copyright 2020 Google LLC
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms of the GNU General Public License as published by the
+> + * Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful, but WITHOUT
+> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+> + * for more details.
+> + */
+> +#ifndef NPCM7XX_ADC_H
+> +#define NPCM7XX_ADC_H
+> +
+> +#include "qemu/osdep.h"
+
+.h files never include osdep.h (because the .c files always do).
+
+thanks
+-- PMM

@@ -1,293 +1,158 @@
-Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp1495464qvb;
-        Thu, 7 Jan 2021 13:43:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwO/sqg1pFXq7GOq19Am6lSEyTetEEj4W9k87hTxxPfDGQskk/4kwtw20nU5sJDDHyBxsWM
-X-Received: by 2002:a25:3812:: with SMTP id f18mr1161438yba.327.1610055809382;
-        Thu, 07 Jan 2021 13:43:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610055809; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp605177lfq;
+        Thu, 7 Jan 2021 12:53:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzB8s8lw1docMvNxPcQsWbMCxZlmZiuBhkebgBAP/Nn+MEsjI5gr3Sa1PwAEFwgxjel+6oA
+X-Received: by 2002:a5b:107:: with SMTP id 7mr943657ybx.253.1610052837029;
+        Thu, 07 Jan 2021 12:53:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610052837; cv=none;
         d=google.com; s=arc-20160816;
-        b=iovQQwjx6CYj95D6mfw6TTt8UbHjMFqBBmA9VqDfNBstZ/1pG4rLtk7/33isd5i2IB
-         aFCV+5oAE06xxav8CZTHhh+wWn2vtwFxDb+OMGYOcROt96qHuRuNIkvwekhDJtQ5aZNA
-         a0uNZ+ZLfnrL6EsU8jl+o/tQ8uR9eJ+uGvVMYZTXXWlXpVLIrccl0cxhkA3RJWl9svu0
-         bH6HObZCZTUFtziVduJIW5FvZ9m2gP/L7pVRS8Jq+xqvaGYa7kyc6Rfef1t7miaeM5QZ
-         qBHiTRldok6QXzU2ZGk9SvPrGTV+n7YkJ5kqJMLG8TXbPF5Vy1KHtq7OugAvLhWdk4j3
-         WA1g==
+        b=ZMVDeChEotVkqvo7hJ9fzzBrHN7Wm8+iQEtCpUl032eTrG/k2UzF9C5Qp8edgE4/gl
+         OvAgXzWT7BzaiWH4UAeTL675DlGCnnd/EI41t/89kkXBr5ITr2057J295IHt1pxxcZlB
+         If/EHPWn0b/jE9bHaz4KIcZveA7AnRqAKOHPRQawMHM/FGxLweVx5SFt8mE786QqhwHe
+         NsXwybrYVWnakeSF4bQ5aK+E09cjccQW2Nwr6RicsqSfSUzGnOuF6YhBy3j6ewM3DNX8
+         E1zpWaLYVq0xE3+SD/G5lEow1yTCDW2bdL0ZBd17KGWWL3ysiFR9673VYuQBzsKwQb2D
+         f0+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:message-id:date:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=1JT21Ksn1nsFZ4DghxP3AoXJYW1SnYHBOVRlgQU7MUM=;
-        b=g+OURw2Ubf/Ci2P/HkjTbh3LHltmNTwb8QhluqxM2byKseSHCS8eHkXmRVhHqftLhl
-         TaEQXYQu43Do69e0GRmiXhRKUdqzBrd0wgb6BKtABlvVnClN2cVV264E4gbCBy7ZmBHy
-         t/mPb8yDWhVtY0pZ8AFzsaJm6mqvCPNYW0Cgi8nhWT1a7LjuPTNUensJzSUvLgW0iaqY
-         qtSPxNS1s6aEpGXSDlfXGE4hNT2oZX2xOtcjK3w+6fzlSEQbmiron9iMzOkOt2gy7iNv
-         Bcz3MXwzEPwfhsEvcj1T56l3tSEmuMQUZaGntxTBa/uZr6qH2A0hWoiV0ohrCIvkmXx0
-         8vIQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=mCnTY9YH3EC4LSSj4YJLFMo2b7CqxHLmm6hE4pJzs6s=;
+        b=s9isM/y9pmk0qqgj/DpqIzihFVa0Lv6U9soH9R6W82Kn4H3lJCLcBDGqag8mPKyTc6
+         BAV9WxxhDlXNA+H0ZLotQFv46JpirlzyFzcxDfFq/XOrL1h5kKkQRD+izhI9rUwNmrJn
+         0vDqtGABq2coVKqqdpMfaX27KwHjeDJG1tpOe8bO4f+kvJTHnhSJmkrZ0zxxKYA0si2y
+         xiQabI+sL3ZOU6eBZvI4AF5xGrGvaWGPyp207oKYG+GLEpfUczxRajHp7GgsOOJZ9CPv
+         99lPSwcuwmDWSbqn4QhAUlYqRuPQj6DJ1z9zcAFn0Vn9CuAkL9NYULKr/diWorxgtBYi
+         Fmow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b="Km/BQSKu";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="HFAG/mkt";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6si7564057ybo.478.2021.01.07.13.43.29
+        by mx.google.com with ESMTPS id y27si6948876ybi.466.2021.01.07.12.53.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Jan 2021 13:43:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Jan 2021 12:53:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b="Km/BQSKu";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:47442 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="HFAG/mkt";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxd44-0001kX-TU
-	for alex.bennee@linaro.org; Thu, 07 Jan 2021 16:43:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38250)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kxcI8-0006ns-Dv
+	for alex.bennee@linaro.org; Thu, 07 Jan 2021 15:53:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1kxd3w-0001k2-57
- for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:43:20 -0500
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a]:44658)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kxc2j-0004oy-91
+ for qemu-devel@nongnu.org; Thu, 07 Jan 2021 15:38:01 -0500
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:38390)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1kxd3t-0006lk-JW
- for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:43:19 -0500
-Received: by mail-lf1-x12a.google.com with SMTP id m25so18003783lfc.11
- for <qemu-arm@nongnu.org>; Thu, 07 Jan 2021 13:43:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1JT21Ksn1nsFZ4DghxP3AoXJYW1SnYHBOVRlgQU7MUM=;
- b=Km/BQSKuzBOZTlgvydjgbBUwESiai4bRFItpsb5P+IntSnyZOVXE8epw97J1p2Or/l
- ybjToe+IoZL0eRt9YEBDDFbYw99aRnPOFnsOnX32KwQpoOjM+P1gdlG6rZMxYUD94jzW
- Kco5U3yuuPpz5Ky0fzEFkTFmGpHvUAdNnEvWzXgSJlj+xzz5V0cX8iEcJYkTqdL98zc3
- 7xIwJUSW9jCfiD/6mW4Xhuw2NvuemLpq7Asr/ArQp2lWKSmKet1PJk8yQ1dT/SDZ7xpN
- +S4mgEBPgWzN/hP1CsB9DvUjOPw6rQPC07xMaCb/XXgbk+MaUx89OUnmM5tNveZneQNd
- CWqw==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kxc2h-0000Zf-KT
+ for qemu-devel@nongnu.org; Thu, 07 Jan 2021 15:38:00 -0500
+Received: by mail-pf1-x433.google.com with SMTP id d2so4630109pfq.5
+ for <qemu-devel@nongnu.org>; Thu, 07 Jan 2021 12:37:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=mCnTY9YH3EC4LSSj4YJLFMo2b7CqxHLmm6hE4pJzs6s=;
+ b=HFAG/mktg+NZj22C7bg0yAHn0Fr92NH9PA19yh8a2IrHwQAO4z+oF49iHZnZrxhfdh
+ 1k9iIIKT97auX160LTFVhzX8ftSsM+AISeRrLc/puBLl5mRVwOMWz/CjnQxSBs9sTXOn
+ OF+nF+JcgkrZo5VwWDtXOBUbFTaE11BhOfczY3eN1w/KTC9MMX/FN9CjURCcz+WBOkel
+ HB4mdbVAWuWWbAMZALpnbsvKScy7Si1Bn0YPvLWskDg23nsg5M/nziqN+JFFuDaax66v
+ uON/C5NMmhrbQunM98Mta4KOv61lupZ2fUj1IGcw3aHbTcpyDjTq0nN1GAaP1+Nro5ZR
+ zndw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1JT21Ksn1nsFZ4DghxP3AoXJYW1SnYHBOVRlgQU7MUM=;
- b=iak933GBtO51l1hQZP3pQBW2sP11uL1z1dkcGrSDT2xeLA+HjwZXaujnsB9Xgv18dS
- 8xYjibA98IwPPm5OjGKaArD6W17tGtJShxEIE6CqTxzy311456EPTM82wQiSl4NU8p5J
- Hm9XUav/ZBd6LXKUk0pDegX8wPhegg+xBmaBUDUdT8wgCquvYhj9FFLHQqfbt0WdhwEk
- umb9q64rPaFbgRyLmEGIFXbTDuafy0EEj8Llb+BssGste35bHPVN+kKfoS40cfngawtm
- oEOG23wt0bBF1tIw/r/uCiVgf4DOk/DM+wH2BQM3BF8r39M1k2UUeLqsxue/x2KKzHgD
- 8X7Q==
-X-Gm-Message-State: AOAM530EB/l1C81ws5I5M5KoqVR/GacFHQsrjp5tLim7uqQR5YGrW3H7
- 5AwE8wJxGAeyLzbKC9RFgsIdxG4WTR0eo2LWsK5/rA==
-X-Received: by 2002:a05:651c:217:: with SMTP id
- y23mr175289ljn.247.1610055792309; 
- Thu, 07 Jan 2021 13:43:12 -0800 (PST)
-MIME-Version: 1.0
-References: <20201217004349.3740927-1-wuhaotsh@google.com>
- <20201217004349.3740927-3-wuhaotsh@google.com>
- <CAFEAcA_jEYK_e7uoJCKn=+om8c6cCRW0Xt5TKi6mzto+zE44Fg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_jEYK_e7uoJCKn=+om8c6cCRW0Xt5TKi6mzto+zE44Fg@mail.gmail.com>
-Date: Thu, 7 Jan 2021 13:43:01 -0800
-Message-ID: <CAGcCb12=joJd4GDgLu249HfN6FrzJ-a+OQz=a5c0t4Upd_W+eA@mail.gmail.com>
-Subject: Re: [PATCH v4 2/6] hw/timer: Refactor NPCM7XX Timer to use CLK clock
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=mCnTY9YH3EC4LSSj4YJLFMo2b7CqxHLmm6hE4pJzs6s=;
+ b=DB3zNN96y9GviE2a8er3mFPG5vNHi3yTdp9oNunfbG6fv7cFkRvXFl0SHtfKN2QJKW
+ HwV+B5kTxdBNnVazshMdl9EferPeoSrJpye9G6C/g1KbfRXJHnUtqH1r19h+EYaQIfYj
+ aKbdcQj1WFRePWRvo+yh1CDrgONB8Zzd2r637PFJoKXZ31o8Q9C3/9ctfrdKXE/ScBfI
+ ly5x/fH0cfGdZxXSrudjppNc6ayybgdbPfghUZYT/Za4iFf5mAwl2A+fDPYU4OISlAEw
+ XTXLb2ottcQ/w5Q2x0EwbULZEdOsfPd8DyX8d0vL12XJj8ogTCBHhFpAx7O+OEw6jS9n
+ XVjw==
+X-Gm-Message-State: AOAM532HrJscsD5+SdJ4aSmod6Q0rnT8cGwNqMBEqs6wVzlY5Dgs959D
+ mr39c2loCHsL+iUQGGjGcRUjXw==
+X-Received: by 2002:a63:f64c:: with SMTP id u12mr3600240pgj.98.1610051878136; 
+ Thu, 07 Jan 2021 12:37:58 -0800 (PST)
+Received: from [10.25.18.38] (rrcs-173-197-107-21.west.biz.rr.com.
+ [173.197.107.21])
+ by smtp.gmail.com with ESMTPSA id w19sm6951773pgf.23.2021.01.07.12.37.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 Jan 2021 12:37:57 -0800 (PST)
+Subject: Re: [PATCH v2 05/24] target/arm: Fix SCTLR_B test for TCGv_i64
+ load/store
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000924a2905b8565325"
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=wuhaotsh@google.com; helo=mail-lf1-x12a.google.com
-X-Spam_score_int: -179
-X-Spam_score: -18.0
-X-Spam_bar: ------------------
-X-Spam_report: (-18.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.382,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+References: <20201208180118.157911-1-richard.henderson@linaro.org>
+ <20201208180118.157911-6-richard.henderson@linaro.org>
+ <CAFEAcA9sT4JdPWkojp0r6yazJc5vbmzWHwnkMtChTQ1aZ2uugQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <f1451527-804b-04f2-7d73-89cdb0247b37@linaro.org>
+Date: Thu, 7 Jan 2021 10:37:54 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9sT4JdPWkojp0r6yazJc5vbmzWHwnkMtChTQ1aZ2uugQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.267,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <minyard@acm.org>, Patrick Venture <venture@google.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Hao Wu <wuhaotsh@google.com>
-From: Hao Wu via <qemu-arm@nongnu.org>
-X-TUID: ygYfiOBVOzFo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JwEJXHAn+/83
 
---000000000000924a2905b8565325
-Content-Type: text/plain; charset="UTF-8"
+On 1/7/21 6:00 AM, Peter Maydell wrote:
+> On Tue, 8 Dec 2020 at 18:01, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Just because operating on a TCGv_i64 temporary does not
+>> mean that we're performing a 64-bit operation.  Restrict
+>> the frobbing to actual 64-bit operations.
+> 
+> If I understand correctly, this patch isn't actually a behaviour
+> change because at this point the only users of gen_aa32_ld_i64()
+> and gen_aa32_st_i64() are in fact performing 64-bit operations
+> so the (opc & MO_SIZE) == MO_64 test is always true.
 
-On Thu, Jan 7, 2021 at 12:51 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+Correct.
 
-> On Thu, 17 Dec 2020 at 00:45, Hao Wu <wuhaotsh@google.com> wrote:
-> >
-> > This patch makes NPCM7XX Timer to use a the timer clock generated by the
-> > CLK module instead of the magic number TIMER_REF_HZ.
-> >
-> > Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
-> > Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> > ---
-> >  hw/arm/npcm7xx.c                 |  5 +++++
-> >  hw/timer/npcm7xx_timer.c         | 25 ++++++++++++++-----------
-> >  include/hw/misc/npcm7xx_clk.h    |  6 ------
-> >  include/hw/timer/npcm7xx_timer.h |  1 +
-> >  4 files changed, 20 insertions(+), 17 deletions(-)
->
-> > @@ -130,7 +130,7 @@ static int64_t
-> npcm7xx_timer_count_to_ns(NPCM7xxTimer *t, uint32_t count)
-> >  {
-> >      int64_t ns = count;
-> >
-> > -    ns *= NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;
-> > +    ns *= clock_get_ns(t->ctrl->clock);
-> >      ns *= npcm7xx_tcsr_prescaler(t->tcsr);
->
-> I'm afraid that since you wrote and sent this we've updated the
-> clock API (in commits 554d523785ef868 and de6a65f11d7e5a2a93f),
-> so clock_get_ns() doesn't exist any more. Instead there is
-> a new function clock_ticks_to_ns().
->
-> The idea of the new function is that clocks don't necessarily
-> have a period which is a whole number of nanoseconds, so
-> doing arithmetic on the return value from clock_get_ns()
-> introduces rounding errors, especially in the case of
-> "multiply clock_get_ns() by a tick count to get a duration".
-> (The worst case for this is "clock frequency >1GHz", at which
-> point the rounding means that clock_get_ns() returns 0...)
->
-> There is as yet no function for "convert duration to
-> tick count", so code like:
->    count = ns / clock_get_ns(t->ctrl->clock);
->
-> should probably for the moment call clock_ticks_to_ns()
-> passing a tick count of 1. But I plan to write a patchset
-> soon which will avoid the need to do that.
->
-> Strictly speaking, even "call clock_ticks_to_ns() and
-> then multiply by the prescaler value" can introduce
-> rounding error; to deal with that I think you'd need to
-> either have an internal Clock object whose period you
-> adjusted as the prescalar value was updated by the guest,
-> or else do arithmetic with the return value of clock_get()
-> (which is in units of 2^-32 ns); I'm not sure either is
-> worth it.
->
-In this particular case, rounding error is less of a concern since the
-clock should be ~25MHz (in the old implementation it was a fixed value.)
+> (Presumably
+> subsequent patches are going to add uses of these functions that
+> want to load smaller sizes?)
 
-Since the prescaler is always an integer, a possible alternative might be
-ns = clock_ticks_to_ns(t->ctrl->clock, count *
-npcm7xx_tcsr_prescaler(t->tcsr))
+Correct.
 
-and for code to convert ns to count can go
-count = ns / clock_ticks_to_ns(t->ctrl->clock,
-npcm7xx_tcsr_prescaler(t->tcsr))
-or use the new API you proposed.
+> If that's right, worth mentioning
+> explicitly in the commit message, I think.
 
-We'll also need to apply similar changes to other places in the patchset
-(ADC and/or PWM) that need to compute clock value.
+Will do.
 
->
-> thanks
-> -- PMM
->
 
---000000000000924a2905b8565325
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"></div><br><div class=3D"gmail_quote"><div=
- dir=3D"ltr" class=3D"gmail_attr">On Thu, Jan 7, 2021 at 12:51 PM Peter May=
-dell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.o=
-rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
-n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">On Thu, 17 Dec 2020 at 00:45, Hao Wu &lt;<a href=3D"mailto:wuhaotsh@googl=
-e.com" target=3D"_blank">wuhaotsh@google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; This patch makes NPCM7XX Timer to use a the timer clock generated by t=
-he<br>
-&gt; CLK module instead of the magic number TIMER_REF_HZ.<br>
-&gt;<br>
-&gt; Reviewed-by: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@googl=
-e.com" target=3D"_blank">hskinnemoen@google.com</a>&gt;<br>
-&gt; Reviewed-by: Tyrone Ting &lt;<a href=3D"mailto:kfting@nuvoton.com" tar=
-get=3D"_blank">kfting@nuvoton.com</a>&gt;<br>
-&gt; Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" targe=
-t=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/arm/npcm7xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0|=C2=A0 5 +++++<br>
-&gt;=C2=A0 hw/timer/npcm7xx_timer.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 25 +=
-+++++++++++++-----------<br>
-&gt;=C2=A0 include/hw/misc/npcm7xx_clk.h=C2=A0 =C2=A0 |=C2=A0 6 ------<br>
-&gt;=C2=A0 include/hw/timer/npcm7xx_timer.h |=C2=A0 1 +<br>
-&gt;=C2=A0 4 files changed, 20 insertions(+), 17 deletions(-)<br>
-<br>
-&gt; @@ -130,7 +130,7 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTi=
-mer *t, uint32_t count)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 int64_t ns =3D count;<br>
-&gt;<br>
-&gt; -=C2=A0 =C2=A0 ns *=3D NANOSECONDS_PER_SECOND / NPCM7XX_TIMER_REF_HZ;<=
-br>
-&gt; +=C2=A0 =C2=A0 ns *=3D clock_get_ns(t-&gt;ctrl-&gt;clock);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ns *=3D npcm7xx_tcsr_prescaler(t-&gt;tcsr);<br>
-<br>
-I&#39;m afraid that since you wrote and sent this we&#39;ve updated the<br>
-clock API (in commits 554d523785ef868 and de6a65f11d7e5a2a93f),<br>
-so clock_get_ns() doesn&#39;t exist any more. Instead there is<br>
-a new function clock_ticks_to_ns().<br>
-<br>
-The idea of the new function is that clocks don&#39;t necessarily<br>
-have a period which is a whole number of nanoseconds, so<br>
-doing arithmetic on the return value from clock_get_ns()<br>
-introduces rounding errors, especially in the case of<br>
-&quot;multiply clock_get_ns() by a tick count to get a duration&quot;.<br>
-(The worst case for this is &quot;clock frequency &gt;1GHz&quot;, at which<=
-br>
-point the rounding means that clock_get_ns() returns 0...)<br>
-<br>
-There is as yet no function for &quot;convert duration to<br>
-tick count&quot;, so code like:<br>
-=C2=A0 =C2=A0count =3D ns / clock_get_ns(t-&gt;ctrl-&gt;clock);<br>
-<br>
-should probably for the moment call clock_ticks_to_ns()<br>
-passing a tick count of 1. But I plan to write a patchset<br>
-soon which will avoid the need to do that.<br>
-<br>
-Strictly speaking, even &quot;call clock_ticks_to_ns() and<br>
-then multiply by the prescaler value&quot; can introduce<br>
-rounding error; to deal with that I think you&#39;d need to<br>
-either have an internal Clock object whose period you<br>
-adjusted as the prescalar value was updated by the guest,<br>
-or else do arithmetic with the return value of clock_get()<br>
-(which is in units of 2^-32 ns); I&#39;m not sure either is<br>
-worth it.<br></blockquote><div>In this particular case, rounding error is l=
-ess of a concern since the clock should be ~25MHz (in the old implementatio=
-n it was a fixed value.)</div><div><br></div><div>Since the prescaler is al=
-ways an integer, a possible alternative might be</div><div>ns =3D clock_tic=
-ks_to_ns(t-&gt;ctrl-&gt;clock, count * npcm7xx_tcsr_prescaler(t-&gt;tcsr))<=
-/div><div><br></div><div>and for code to convert ns to count can go</div><d=
-iv>count =3D ns / clock_ticks_to_ns(t-&gt;ctrl-&gt;clock, npcm7xx_tcsr_pres=
-caler(t-&gt;tcsr))<br></div><div>or use the new API you proposed.</div><div=
-><br></div><div>We&#39;ll also need to apply similar changes to other place=
-s in the patchset (ADC and/or PWM) that need=C2=A0to compute clock value.</=
-div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
-der-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---000000000000924a2905b8565325--
+r~

@@ -1,102 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp614713lfq;
-        Thu, 7 Jan 2021 13:09:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyJN4hXUmv00culv/Oe4iTUnq8NZgr0wdk4r3RGLa57dSMV66gzwSlodZAwAqSHHWYMvGqc
-X-Received: by 2002:a25:ca85:: with SMTP id a127mr1016629ybg.432.1610053742570;
-        Thu, 07 Jan 2021 13:09:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610053742; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp615915lfq;
+        Thu, 7 Jan 2021 13:10:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyIh3jyHPFn8N20pVQ5K28L777WSolvCnzpug2wG2cCWfZ+/p/NxCBVJBJVqfg7QhhRCwdv
+X-Received: by 2002:a25:880a:: with SMTP id c10mr1076081ybl.456.1610053844167;
+        Thu, 07 Jan 2021 13:10:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610053844; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y6/EeuUbrdmgi+cB90b04CTGJNbh9w0t6gV8aoggngJPuJMzAMHac/iLGyzkgwhy+a
-         1or16yUmH/f3X6kT+Rr/PPcrkxqH/GmMMRmQf9FEOVUnvOjlds5si3WTHGdTAollGz5p
-         NSAQbdEYS3dbIsgURnCifPpmO576WSLcZoer2POjkBqxQfyXCBXQtukQSg2ZJfpZB5Pi
-         MWLJlDEzh0gwUvbTxAAy6ZISI7mL97qxIYOPtIFxE3LM8LxHguZaO0/zh3epu14QRcHK
-         FOqIeVlbKs5HML7X/qlmGvo1DEIKSqk3FjeYNlF2r3LPGc+oUIjJInMjUqD1MNp1yMMX
-         GCwQ==
+        b=IJpnA8JRYdww6dEcg6mTJFjkEoFOLKH9OOAAcufX29LvS/ONxeVwVgqVucuKffjipt
+         je8Me3xAqIRAD2kmVCiu/O8loiCe4bEkPJ+S/tCnNySLPbBcrn6Kkpd3fztdhYO75vgm
+         JcBccSQH7UCUyxegYkZe6LVt6Q1LhrJ1Te/K510KbyMPSzVAVo/gVLlc0Zqb5gsJ6qF9
+         V5grBqXHhz8gbAJLG+KQ6vwKM3A2RXsY1tsKxf0t4xYEcId+ED7qMH3rIUF0f7OtAeD8
+         nrOAk5JJMLJUATNYtDCAxzSdasyrinI0n4kvttd5rL9S4BGMVWlW+EDN7Kv7jdv0V5MG
+         XAqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zMl9HB+CoeXivwtGRa00mnivVk8GGwQAiI6UYMzRyho=;
-        b=zP9ctpYkrPK303WZt0yaNAAfOua5u/Mo5EKUpjfLd23d+yz5DWicB53DUhT0xy5GB+
-         Dqdhl5E5vqela49ZNco0J8kMAfjzqBdS8XkXsHEL05riDJxgVT7ZLVGtzbitAWV40L9N
-         WPAKvmsEJ8P7THP2al+n6XTc+mpp5G0g5fZJ58OE3HyOsLXoDr5Kh8U/dOm3Mekfzx6H
-         QNnQ4ttu6SWtrQHwbbphwq38pLPYdfIP74HVtf7WGfi11pROcbbXnyckTYkwMgLEwGMJ
-         6cBTDMCwUginMkqdr6EXd1IycfYVnizuN/9leaC7RE3vnL9WxeE7JWAkSNv2Ga5ICFnd
-         68eA==
+        bh=OMeoWbothf8/Ef4qD/ayPFIJQJ3UmD5fLaQFggFJsRo=;
+        b=olBDgLRNRB3H3MaBc1w/sbGTVVnHLtdu0VPJjZgqFDbOJdUye/Aasm0wMQr9HclKKD
+         8xqhODaakfdZlC64a758b1xESIibNv/6Yqhc+lHAptKD0nmtOaAawNywbolkmWmrjwA/
+         S6jloqAMdczBg+o4ShSD5DlN/R3I7n+Fa95Lce2xQWFxTyYHDaCtBFaqOD2G0ule1tKA
+         i5UPnlsMTvhb9aPjOJUhObQZGVSxqMEpJILyoPDaOvaMnw9991w+AtE4NsW/CoikGLut
+         fUWNzL21kpj6OzNRIg7hD5gZPnmLf+zuGNJ4N3Mj28sPWoan2/kEoFl4WurlacI5o41S
+         X/1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="cXMp+Cy/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ymGFm+Ga;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n15si6886551yba.113.2021.01.07.13.09.02
+        by mx.google.com with ESMTPS id g6si7137864ybo.108.2021.01.07.13.10.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Jan 2021 13:09:02 -0800 (PST)
+        Thu, 07 Jan 2021 13:10:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="cXMp+Cy/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ymGFm+Ga;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53164 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxcWj-0005hU-Vs
-	for alex.bennee@linaro.org; Thu, 07 Jan 2021 16:09:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59964)
+	id 1kxcYN-0006m0-Jr
+	for alex.bennee@linaro.org; Thu, 07 Jan 2021 16:10:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60292)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kxcWE-0005SW-9x
- for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:08:30 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:43169)
+ id 1kxcY4-0006kQ-Kt
+ for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:10:24 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:46969)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kxcW8-00034a-Gx
- for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:08:30 -0500
-Received: by mail-ed1-x534.google.com with SMTP id y24so9069964edt.10
- for <qemu-arm@nongnu.org>; Thu, 07 Jan 2021 13:08:24 -0800 (PST)
+ id 1kxcY0-0003aW-Cx
+ for qemu-arm@nongnu.org; Thu, 07 Jan 2021 16:10:24 -0500
+Received: by mail-ed1-x532.google.com with SMTP id v26so150852eds.13
+ for <qemu-arm@nongnu.org>; Thu, 07 Jan 2021 13:10:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zMl9HB+CoeXivwtGRa00mnivVk8GGwQAiI6UYMzRyho=;
- b=cXMp+Cy/JMgy9H01KiWx4ox09DK+ha8i9819ixe4IZnC1PIkjqlm7z+s7i3uUOsc3R
- WP5AG5FRVIWqK2cODy6n8fjXpkXkUGHLiiQzEsMuTPhfwgQk8QbQBYNRi99ZJYtSW+af
- QLFHah2y/ygnez4HR/zBEKC6aVCu9EBHvMFHN0M0wfySdAPIwGhuKaYfkFjgTYRP+GOZ
- bNrGKosxEPhfeFDj/ZvP+TY8nxsEI1cEFozxoKkEJWTzhfI9eg0zXT7lkcW3Gyw4buyd
- 2thOqB+UVgjMu4E76tSvk3VfSSENlyIwLBjog+z64ko9lULsEFqyR7oOyFvRbv+5WInS
- N7Tg==
+ :cc; bh=OMeoWbothf8/Ef4qD/ayPFIJQJ3UmD5fLaQFggFJsRo=;
+ b=ymGFm+GaGxKYWGRArnBN2pHrJhiGfw7CJMMQGaA5dKFC/it7n5NgVkAdpj8FIWPsxO
+ HmgtT104eDKYEP2hcfFCqQXQhmDeDvJDlCkFQOWTcR1a/GR68Mt/V6tNxEVaeHMaRwdB
+ AR5ADhy23e5A7b827v/2bkMOGhqnSWwurKrNFQGifcaRTePcCMTVAWcIYgDA+cIhU14Q
+ km0JC9zPwgtwzeCG+IKXfuB/d3h8bn54tOjWo2Z0q8DxJz5RHVq3dhlzUoniYlZQl9lk
+ UDc+33Vb2/A1ZTlTvqAHvhBhadtIi8kIw+mijR2JODBa+RUqB7dp3CYGFnxL/gQSHrQh
+ VJsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zMl9HB+CoeXivwtGRa00mnivVk8GGwQAiI6UYMzRyho=;
- b=bRqb7akbEfwH92g/j11t9kSOpMnoEqLWQIrisuPzu+6NDxqm8yMEwR5c5jlmS07OYi
- vtSu7qvCeYqcgCT1zP8fT2e34cShIEnBA7d6sAdsPdMWHxH8Jt2Xcdorddays+3BpCzz
- nJmGKDxxl9pTNLo9FYOOcL8HjHDLQ1i9Q87izt+KnFKYgS+ZlNTX8lDOaf/WsXn6hokz
- dohrb5LO4tHJIPmwGErnd5h4YGYpVhvsqvai0D3byle5BVHW9qenonteDQyvDkGoVdKM
- NnLTeXFerkTt4HR64KjmeWKOdjflZa2BDiDMkLsGWTl/51sUuLBZrZZv/s8BTBe5ZkeT
- Vz5w==
-X-Gm-Message-State: AOAM532A8VKrhjHmiNjJFuCbPWzabwT7greki5+hOpQutypX8ucMT77M
- 4aYVIxukcWu03i/dpKeuk3URy+nTOy8ZCnocNtGaVw==
-X-Received: by 2002:aa7:d915:: with SMTP id a21mr2971927edr.251.1610053703000; 
- Thu, 07 Jan 2021 13:08:23 -0800 (PST)
+ bh=OMeoWbothf8/Ef4qD/ayPFIJQJ3UmD5fLaQFggFJsRo=;
+ b=Dh10hfNatN0HgDgMOuoI36TBXt9BlWuq5ify7gmLHG7c0ICA7rzbrztkZrHH72+i52
+ nJmlIqEzvwD1oer0V2guZxxLoPSC1W4V/7xbnki1tm7aPQJWYVtCe+dW+4im7lQxdbdF
+ 6w4P7sJNqJVtJ0qBuwLwgukAVYTUTb8gPZM4bkytnajeS/ms8CrKI0/piMToO9tIZZo9
+ u+Fjy700dD5Dzu2Gsv4ixN9K4QrLsPmgeqfOrdybAJMvRkD5eYCYZP211KWhMrOmP/d+
+ PtPP71Mt4LpID0H0AM7PDx9nGk7ZOUE2qGEEI1LObHmHU5eSni5QQHYTswTxxwKbXBpS
+ IR2w==
+X-Gm-Message-State: AOAM530gJc63s+/wWeQaryfFvtAYOpEhIDFRuyb/GYWb6/4QFj44FC5g
+ j9K5HPFS0VJGqDbwHWSzBC7U+fqBdMpeAY1KUf3kxg==
+X-Received: by 2002:a05:6402:1383:: with SMTP id
+ b3mr2951085edv.100.1610053818967; 
+ Thu, 07 Jan 2021 13:10:18 -0800 (PST)
 MIME-Version: 1.0
 References: <20201217004349.3740927-1-wuhaotsh@google.com>
- <20201217004349.3740927-7-wuhaotsh@google.com>
-In-Reply-To: <20201217004349.3740927-7-wuhaotsh@google.com>
+ <20201217004349.3740927-6-wuhaotsh@google.com>
+In-Reply-To: <20201217004349.3740927-6-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Jan 2021 21:08:11 +0000
-Message-ID: <CAFEAcA_dHwgAPcDxPW0xWcGrA=zW46Y+s79eK3KEt4A8m4=Emg@mail.gmail.com>
-Subject: Re: [PATCH v4 6/6] hw/*: Use type casting for SysBusDevice in NPCM7XX
+Date: Thu, 7 Jan 2021 21:10:07 +0000
+Message-ID: <CAFEAcA_BTy5z5TUkGifxSkX9xgxMTfgYwQ6daPnGvtWTnV2MFA@mail.gmail.com>
+Subject: Re: [PATCH v4 5/6] hw/misc: Add QTest for NPCM7XX PWM Module
 To: Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,14 +117,15 @@ Cc: Corey Minyard <minyard@acm.org>, Patrick Venture <venture@google.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xfFosnXU0423
+X-TUID: gkuSB6el02mx
 
 On Thu, 17 Dec 2020 at 00:45, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> A device shouldn't access its parent object which is QOM internal.
-> Instead it should use type cast for this purporse. This patch fixes this
-> issue for all NPCM7XX Devices.
+> We add a qtest for the PWM in the previous patch. It proves it works as
+> expected.
 >
+> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 > Signed-off-by: Hao Wu <wuhaotsh@google.com>
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>

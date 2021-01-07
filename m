@@ -1,61 +1,61 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp458806lfq;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp458815lfq;
         Thu, 7 Jan 2021 09:07:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJypjVMHtiIEsgvLbiVIpPuETEQSBt22uka7UJcQ3/7638MGhFRh78TZndp1KS0zNzpXqn2R
-X-Received: by 2002:a17:902:59dd:b029:db:cda3:39c0 with SMTP id d29-20020a17090259ddb02900dbcda339c0mr2950177plj.81.1610039249737;
-        Thu, 07 Jan 2021 09:07:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610039249; cv=none;
+X-Google-Smtp-Source: ABdhPJxg1p+K46wdnWFKFsxk6LiO8SHbSbsOzscTNNt2s6YaN3VqpAo7z3ffiro/jIROjc3b7dXO
+X-Received: by 2002:a63:cc05:: with SMTP id x5mr2761400pgf.254.1610039250251;
+        Thu, 07 Jan 2021 09:07:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610039250; cv=none;
         d=google.com; s=arc-20160816;
-        b=cbKOSBPdS2v/efBLfvaYo4f7LTwp0HtzxFJcqmeRdY+nY9Q4LWf0qDApV7RmqA2/uf
-         GLt7tpsBZyUkTq2T/ku+vn3yqo6GNcRF6qR6EMCRNo4tURUkG4UAxYeITeTUjO53pJsG
-         sz3b0NConxFgH19XWwrHjVaxxnAHZ7nBA1IYgLbZhqhyC0FllZz5r1/Bk7STDYzNnyHN
-         KtJNkxNWZASewq3O1oyXSisseG/xHObXY/iKoPG+FGz7wu3WPJeHX3GWodEArak4jE6V
-         qwm0ewEfjHDWa+jIfbQ78+LJc3MDPoptS2xzXMCrMjtoWyVJUuw4xrpQLGC0Z28Zh0gh
-         Ajgw==
+        b=jEJXE+pWDMvV9xuU87uxMiNNXjfTZnEp8a9bmhJbz8oU1XnBGeHwabKe7BDRb1PjS3
+         NCSUhim906AODjbjh4mLVH9aCJqlzEtiE4hrxxlNLGKc8Vzc62gpM2MjXz2WjOUSoPZ2
+         iiYTZ9Ir4dRQ9LHSkaq4hkDlizys7xMTY4n3oduxk/ifXNbCKYiBabmlUh9Na39fq7c+
+         sEdfofxe46Oux3GcKdebY3RZyyc58p+Mj4RTyUw2sk3npFLFWD8wTWe/PibqFY3ZQYij
+         saLB4KYRalHM+B92azPw4kigaiPvF97XyhPj6v0A9cqVVzCJXq3fm4Xbr1QqZPtGBCcw
+         1oMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=47XPx38ZimaR8oNiruRmudVAGS8k+gN5rSz7NwM/0V4=;
-        b=OKrswPSJHbzLaHgKXAdqWVAZvL2Iap0iQMnSR4RLQw6RP3y195hOo0jfAtYWanIefi
-         PYAkvB6V7I2JfwMPtJtP8QNGuVhJDfaVRfMsY/jjik205SN/99qeVBX3h8dmtwjoIQ5K
-         WyA+f18KXoO7I4+qycHuTCTPVAnaQgo+qlugaNOvq4tV6htr5O41vvFfIifI7VkZDb1V
-         OisJFJQgtRS80BGEyJjmBd7rviBEm74QJUY1avrbcSmoXNgqAiioqno72wYeFEMObU9T
-         5owEZl95UoIc5IeXIi8MDClsw1TkC3DXWpcEqaUSnUOYUNr1CiCVHhAHtn7hVx5GSV+Q
-         J0DQ==
+        bh=T1nT969KuUYdfI3m9Q/iDSXSzl9KoeVO5a4UIV36cyg=;
+        b=jX5ihQ8fJsuUZDSygu2crTHb2MJWD1HKYi6h1alWgzvQ07NGz/7LVBb+riEoZNDkDz
+         VlL2GFvO3CpOkVgaJUVUwLMtsrQxq3ftKkVD4g4YO1UUuYXEcj4jHW7Tww4AhLkgN8Ye
+         4QUaYDNkFuxEiSW5sSjOgxvNI/g7skQFDccG5zA+YvoJmcMBg7fXz6frNQcYL1AI2lRK
+         bJ9iw902L1bZYyk0Ih1ENKICJVV7d/yVOcGljn/c24dhWwuhc/d7VIYlrdXejifETrGI
+         qE6pAjgRLAs6v0mB+afBnH8WyJc31gYF6iXiqFnDIHBRVGrd9mz8PYrwPdgmTWsRtOSn
+         qUJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=VTx2UJmB;
+       dkim=pass header.i=@keithp.com header.s=mail header.b="q6QV/diK";
        spf=pass (google.com: best guess record for domain of keithp@vr.keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@vr.keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Return-Path: <keithp@vr.keithp.com>
 Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id m6si6449261pgl.142.2021.01.07.09.07.29
+        by mx.google.com with ESMTPS id h8si6543062pgd.119.2021.01.07.09.07.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Jan 2021 09:07:29 -0800 (PST)
+        Thu, 07 Jan 2021 09:07:30 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of keithp@vr.keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=VTx2UJmB;
+       dkim=pass header.i=@keithp.com header.s=mail header.b="q6QV/diK";
        spf=pass (google.com: best guess record for domain of keithp@vr.keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@vr.keithp.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
 Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 651A13F2E263;
+	by elaine.keithp.com (Postfix) with ESMTP id D649F3F2E33F;
 	Thu,  7 Jan 2021 09:07:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1610039247; bh=EHscTKWyEFqqL+QpnQrPGpYwQDdIi+ZqeBK7ty7vNd4=;
+	t=1610039247; bh=HQ2no4pmFUfdvBf2Fr5onjS6Anm6WNhxIKyNg4sErU0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VTx2UJmB7bJh+gvAJL8W+2iWppS/c4VI1d5n643dTZWYLEjZDtstQBnxKLhW70R5B
-	 JtLz3rJcZjd6eCM94P35Fl8IbYjyuBC+HpINy6gZVRwQnUvMiEnOOdwNVJaBoe96YO
-	 Rz/SCivWuNy2q0TTdD/9z9X74Ksf/XJHmIUgnaEbbUgAzhjZ4TrCYZ1BVi44K8Uq4i
-	 CgWye4SbdZLvkBqTv5ORYiebK/s78lOxTCfwkJToGbvMIbXnRXu0Zwg2mjgW24TwRP
-	 wkjwz1xBfrY323yCEVBrKkFC56rlkqoHiztBMUcoQF1w4I3Lk0sv4t9KxwEWjpSYWs
-	 pgcBR7J5umPKA==
+	b=q6QV/diK9I+bDV+cCRonS0Dqr3ZqElKCegoM3HjGg9Nay1O7PBIThyocXEMQX2dl7
+	 MPpFVmlQGb1JmvRPMF9uKdnyNHKKg5wwJMca3YgIhpfusHOcanyVQde8VqwLVdJxhc
+	 MEoYJPXtKC5BsjwQgIgjt59UKHGfLr9Liu4ySwThthx8FZP5d26r018fQkH0XB71pg
+	 GY+5SJWzHn5eLxE9M7w1J1C3jQURLbAfWI/KyXnYW1wf+vnhLtB/wQDHg0fV1XIuNp
+	 Qd278RITnaO4AYUZYm/+DmLFBMsdOZyWBjaJSmHKA03MKZtv3AsgpdwFdiWKWUKnFf
+	 AAv5r+TxQ508Q==
 X-Virus-Scanned: Debian amavisd-new at keithp.com
 Received: from elaine.keithp.com ([127.0.0.1])
 	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id VbLQYyZhT5_6; Thu,  7 Jan 2021 09:07:27 -0800 (PST)
+	with LMTP id gq7fO4VHvDkL; Thu,  7 Jan 2021 09:07:27 -0800 (PST)
 Received: from vr.keithp.com (vr.keithp.com [10.0.0.39])
-	by elaine.keithp.com (Postfix) with ESMTP id 1F7EC3F2E362;
+	by elaine.keithp.com (Postfix) with ESMTP id 3F63E3F2E381;
 	Thu,  7 Jan 2021 09:07:24 -0800 (PST)
 Received: by vr.keithp.com (Postfix, from userid 1000)
-	id 0445A742DC7; Thu,  7 Jan 2021 09:07:23 -0800 (PST)
+	id 2CFD2742D0D; Thu,  7 Jan 2021 09:07:23 -0800 (PST)
 From: Keith Packard <keithp@keithp.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -68,88 +68,114 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-riscv@nongnu.org,
 	Sagar Karandikar <sagark@eecs.berkeley.edu>,
 	Keith Packard <keithp@keithp.com>
-Subject: [PATCH 4/9] semihosting: Support SYS_HEAPINFO when env->boot_info is not set
-Date: Thu,  7 Jan 2021 09:07:12 -0800
-Message-Id: <20210107170717.2098982-5-keithp@keithp.com>
+Subject: [PATCH 7/9] semihosting: Implement SYS_ELAPSED and SYS_TICKFREQ
+Date: Thu,  7 Jan 2021 09:07:15 -0800
+Message-Id: <20210107170717.2098982-8-keithp@keithp.com>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210107170717.2098982-1-keithp@keithp.com>
 References: <20210107170717.2098982-1-keithp@keithp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: VMxaf8UH4xvm
+X-TUID: +PdLvEL/C8tu
 
-env->boot_info is only set in some ARM startup paths, so we cannot
-rely on it to support the SYS_HEAPINFO semihosting function. When not
-available, fallback to finding a RAM memory region containing the
-current stack and use the base of that.
+These are part of Semihosting for AArch32 and AArch64 Release 2.0
 
 Signed-off-by: Keith Packard <keithp@keithp.com>
-
-Message-Id: <20201214200713.3886611-5-keithp@keithp.com>
+Message-Id: <20201214200713.3886611-8-keithp@keithp.com>
 ---
- hw/semihosting/common-semi.c | 43 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 42 insertions(+), 1 deletion(-)
+ hw/semihosting/common-semi.c | 16 ++++++++++++++++
+ include/qemu/timer.h         |  2 ++
+ util/qemu-timer-common.c     |  4 ++++
+ 3 files changed, 22 insertions(+)
 
 diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index 33c82f73b1..f09deff4d3 100644
+index f0cf5f10f5..b1368d945c 100644
 --- a/hw/semihosting/common-semi.c
 +++ b/hw/semihosting/common-semi.c
-@@ -137,6 +137,36 @@ typedef struct GuestFD {
+@@ -38,6 +38,7 @@
+ #include "hw/semihosting/console.h"
+ #include "hw/semihosting/common-semi.h"
+ #include "qemu/log.h"
++#include "qemu/timer.h"
+ #ifdef CONFIG_USER_ONLY
+ #include "qemu.h"
  
- static GArray *guestfd_array;
+@@ -73,6 +74,8 @@
+ #define TARGET_SYS_EXIT        0x18
+ #define TARGET_SYS_SYNCCACHE   0x19
+ #define TARGET_SYS_EXIT_EXTENDED 0x20
++#define TARGET_SYS_ELAPSED     0x30
++#define TARGET_SYS_TICKFREQ    0x31
  
-+#ifndef CONFIG_USER_ONLY
-+#include "exec/address-spaces.h"
-+/*
-+ * Find the base of a RAM region containing the specified address
-+ */
-+static inline hwaddr
-+common_semi_find_region_base(hwaddr addr)
-+{
-+    MemoryRegion *subregion;
-+
-+    /*
-+     * Find the chunk of R/W memory containing the address.  This is
-+     * used for the SYS_HEAPINFO semihosting call, which should
-+     * probably be using information from the loaded application.
-+     */
-+    QTAILQ_FOREACH(subregion, &get_system_memory()->subregions,
-+                   subregions_link) {
-+        if (subregion->ram && !subregion->readonly) {
-+            Int128 top128 = int128_add(int128_make64(subregion->addr),
-+                                       subregion->size);
-+            Int128 addr128 = int128_make64(addr);
-+            if (subregion->addr <= addr && int128_lt(addr128, top128)) {
-+                return subregion->addr;
-+            }
+ /* ADP_Stopped_ApplicationExit is used for exit(0),
+  * anything else is implemented as exit(1) */
+@@ -837,6 +840,7 @@ target_ulong do_common_semihosting(CPUState *cs)
+     uint32_t ret;
+     uint32_t len;
+     GuestFD *gf;
++    int64_t elapsed;
+ 
+     (void) env; /* Used implicitly by arm lock_user macro */
+     nr = common_semi_arg(cs, 0) & 0xffffffffU;
+@@ -1246,6 +1250,18 @@ target_ulong do_common_semihosting(CPUState *cs)
+         }
+         gdb_exit(cs->env_ptr, ret);
+         exit(ret);
++    case TARGET_SYS_ELAPSED:
++        elapsed = get_clock() - clock_start;
++        if (sizeof(target_ulong) == 8) {
++            SET_ARG(0, elapsed);
++        } else {
++            SET_ARG(0, (uint32_t) elapsed);
++            SET_ARG(1, (uint32_t) (elapsed >> 32));
 +        }
-+    }
-+    return 0;
-+}
-+#endif
++        return 0;
++    case TARGET_SYS_TICKFREQ:
++        /* qemu always uses nsec */
++        return 1000000000;
+     case TARGET_SYS_SYNCCACHE:
+         /*
+          * Clean the D-cache and invalidate the I-cache for the specified
+diff --git a/include/qemu/timer.h b/include/qemu/timer.h
+index bdecc5b41f..ca6fae51f1 100644
+--- a/include/qemu/timer.h
++++ b/include/qemu/timer.h
+@@ -806,6 +806,8 @@ static inline int64_t get_clock_realtime(void)
+     return tv.tv_sec * 1000000000LL + (tv.tv_usec * 1000);
+ }
+ 
++extern int64_t clock_start;
 +
- #ifdef TARGET_ARM
- static inline target_ulong
- common_semi_arg(CPUState *cs, int argno)
-@@ -175,7 +205,18 @@ common_semi_rambase(CPUState *cs)
- {
-     CPUArchState *env = cs->env_ptr;
-     const struct arm_boot_info *info = env->boot_info;
--    return info->loader_start;
-+    target_ulong sp;
+ /* Warning: don't insert tracepoints into these functions, they are
+    also used by simpletrace backend and tracepoints would cause
+    an infinite recursion! */
+diff --git a/util/qemu-timer-common.c b/util/qemu-timer-common.c
+index baf3317f74..cc1326f726 100644
+--- a/util/qemu-timer-common.c
++++ b/util/qemu-timer-common.c
+@@ -27,6 +27,8 @@
+ /***********************************************************/
+ /* real time host monotonic timer */
+ 
++int64_t clock_start;
 +
-+    if (info) {
-+        return info->loader_start;
-+    }
-+
-+    if (is_a64(env)) {
-+        sp = env->xregs[31];
-+    } else {
-+        sp = env->regs[13];
-+    }
-+    return common_semi_find_region_base(sp);
+ #ifdef _WIN32
+ 
+ int64_t clock_freq;
+@@ -41,6 +43,7 @@ static void __attribute__((constructor)) init_get_clock(void)
+         exit(1);
+     }
+     clock_freq = freq.QuadPart;
++    clock_start = get_clock();
+ }
+ 
+ #else
+@@ -55,5 +58,6 @@ static void __attribute__((constructor)) init_get_clock(void)
+     if (clock_gettime(CLOCK_MONOTONIC, &ts) == 0) {
+         use_rt_clock = 1;
+     }
++    clock_start = get_clock();
  }
  #endif
- 
 -- 
 2.29.2

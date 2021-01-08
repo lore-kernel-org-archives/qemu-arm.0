@@ -1,98 +1,96 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp545019lfq;
-        Fri, 8 Jan 2021 06:32:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyF/H0J9VoG8ARUAXEOAu1AWK2mA4NDV9zmQvCh/V/wHoov5Op9PMwC7/7630yRZy9Es4MF
-X-Received: by 2002:a25:2506:: with SMTP id l6mr6610319ybl.32.1610116332436;
-        Fri, 08 Jan 2021 06:32:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610116332; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp559212lfq;
+        Fri, 8 Jan 2021 06:50:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzDB0aNNzbg9Cuvz53AJ6ZgpVHqay+/rSKP2En6p7KfOTnbdqsMVoMH3QISCrzUNA57U8Oj
+X-Received: by 2002:a25:d24e:: with SMTP id j75mr5833576ybg.186.1610117424297;
+        Fri, 08 Jan 2021 06:50:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610117424; cv=none;
         d=google.com; s=arc-20160816;
-        b=qb3RhAYSlhuKh0Ca16RqjJjXlkorj1KQhMImMrl10jb8k4kw6Cl1y0pTrH63YBvdeF
-         MGdYmkcxYhAxTd/HyjFLH0jcwALGxqVhmYHwUs0uQd/rTMoGLOkhFY5I29C1/iV3ykBn
-         aIVoM7Un0VbIIcbUL0nEgmOvJoc76+u/31Eu2/omfRoLoERLWIlcIDzSo0dxjGGvbfSQ
-         ztN7J1IHS4UvhR4PIHOndqguVT8jc0yAuOg9pQ/rDkPEuBBulP7lWUD7jOyPlFtiLcBv
-         bCWayxZn2OHE+W+syHY59rz3bxSdXKsrz+4FoMhQogVORETB6AUZYgX4rmieJ4ETHIrv
-         YSCw==
+        b=UIypwbf8kyz2HNnbBqL+V4mi53BrN0My9CqvAiH1qtEwCDg8zNRo6Ut8sPcXJMDqqb
+         XO7jXDTCROVeuZn1CFBINULdU4lMKRl+uQUfg0mZ4gP7ReQJSg5zKrOP79+qD2T76/b1
+         uxvDQEOxpvU0BOYJrTn8qmJ6yS80svkM9FSryAOizKRI9vP6PUNZyi/afcKzxzXWgPIp
+         SPMvQRMFp9SmG8Qove3vcR/YKa99sXr0jusspom/pVU0azR98/6GgDS0nJpJ/I+91OXB
+         6oalaUlJaYAelZ/2WYXc/5PxoRHX0MUOFD0LPZAD/OEs5Lh0bu0tiw+/cDunpJ31ub8f
+         C8fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Z2fET9aT5jYvH4mQ6JfrVdx+5XT3aGRhAsHcbfWCoRU=;
-        b=tciTC7Tdpz2X1y03k3AwdtonEKeGLlnvoSYfm2nkUO3xiGtcbYBv1/fK6bKQArmecn
-         7G4JOFdXhEo26EWpsG0bUtwsVPVeKSO/4rjqlpGma1IUQlZ2CE5L6Qz3adRxtHBBWnmI
-         m2i85tDev9BRe9M8umKWDHcHTLwPhF4paSe+Z3wkpGCpL8h4xZ6S6cMv/BezU+em9RTy
-         DrMHwu1lwH6BBJG+FeJvMqKU0qUIeh6nbEqwgjCvZbEx9u7ovqoVnLo7+tIiO35u1lKV
-         vyjSAsXe4zgmsqdyI2zHERE1zeJLIdfBc1wjIzDtqgTP74lYSvQD7r1qKkVAEdhUvYee
-         LNwg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=EPrlCp8NjczREcv59nZpUeZQD3tdKHQamXpMTRmG/NE=;
+        b=hWi8qvUOsOjTq8Bw9axVWWuBpRFB+GZGx8USeoRHVYOGwIM8h0eJlQvTuN8dPFF9AZ
+         0nXimUDeohHMeKZoYxd3kXHEasuqYeptJzpHdkqJSR6s4nRRlx4fdQIFV/YngZksrpq2
+         6gNjyLihl2N7E1phNE8qfRVJqVS7c9TNtCuTo8Vo/uGrrtdeyANnCej6mpiX0YYo058B
+         QOKb8IfV/f95QN0j/mEtMuxlESWBNGoorBSmunuBVZFwUOtCOgnlkUZQT9y6ZywXfTxT
+         vjAEtio6yVHx+nkVfTcpHqieI/A+X4fJxt22iQLYX+dIlx27S5GvchDKccGhYtPhLKoA
+         2kRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c2NE2Snx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=qRt7mPVd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 19si9428114ybn.476.2021.01.08.06.32.12
+        by mx.google.com with ESMTPS id p197si11626719ybc.155.2021.01.08.06.50.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jan 2021 06:32:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Jan 2021 06:50:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c2NE2Snx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=qRt7mPVd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52874 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38948 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxsoF-0000sG-Og
-	for alex.bennee@linaro.org; Fri, 08 Jan 2021 09:32:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59016)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kxt5r-00006b-O7
+	for alex.bennee@linaro.org; Fri, 08 Jan 2021 09:50:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kxso4-0000ro-Oq
- for qemu-arm@nongnu.org; Fri, 08 Jan 2021 09:32:00 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:41862)
+ id 1kxt4x-00087c-NS
+ for qemu-devel@nongnu.org; Fri, 08 Jan 2021 09:49:27 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:34518)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kxso2-0005MN-1l
- for qemu-arm@nongnu.org; Fri, 08 Jan 2021 09:32:00 -0500
-Received: by mail-ej1-x629.google.com with SMTP id ce23so14752212ejb.8
- for <qemu-arm@nongnu.org>; Fri, 08 Jan 2021 06:31:56 -0800 (PST)
+ id 1kxt4v-0002un-C2
+ for qemu-devel@nongnu.org; Fri, 08 Jan 2021 09:49:27 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id g20so14929027ejb.1
+ for <qemu-devel@nongnu.org>; Fri, 08 Jan 2021 06:49:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Z2fET9aT5jYvH4mQ6JfrVdx+5XT3aGRhAsHcbfWCoRU=;
- b=c2NE2SnxwR/oBnwjpP7cI199pSHyqdvz9xe5r9t490W3su6eoYeNozjuEsWjj3Sfhc
- cD90yI71Lv4luMKf0RViHEfXp8iwAMqNs8qDhE9lonIc3lWsfFoSfXRT+8V4Uqb/Le6o
- gs9Pi3swK0UfSAlLrPN276V55UFKFrQWmrRmrjcNVbpmHzMaeGQ8WC0szso9ZdgfHYt+
- phguDuIjUj7tZegMkQhrunBCelOWxqKjjGEroXiPNzKtnIE34Zjh8NrAUaTo6V6H4gZ8
- gLi7vxMmH7627UgTCQuPOvKrUT2zLpY0M4aUPlQjpuyPUjAA6V/kzTOKKAgs7tRsw3Nm
- 9UBQ==
+ :cc; bh=EPrlCp8NjczREcv59nZpUeZQD3tdKHQamXpMTRmG/NE=;
+ b=qRt7mPVdi6i0OXx7q83lbdqMrI6t0AayzvJgQj8Iw35ln7dAbgLG25aVugw5NgQCvu
+ hWZYcf3rrwHkDRE66an7JrfLxWWs1fR+emKJqaUw5/RWJ2nij2tf4rVSorADLrhYmcdY
+ in397cOZms27hcpiFbVqJVon4kDDTVMCPhTbv1wRGDi3PqhK4kmVKvy32gIe5UPDPEKn
+ BlhTgxfTS3Us0O0J0E3LCqz4zbrAOJNuC37Qlj1oz+eo5aj2xC5V7xOwjqbnkD231CIw
+ koGJHmP5n5E2nICGZDEC1K41nzuvgRu6PY5jd7EclGZskNSFnfD5rydXv7UOciWDnK56
+ pBIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Z2fET9aT5jYvH4mQ6JfrVdx+5XT3aGRhAsHcbfWCoRU=;
- b=MPbnjmyw0LUnfnpgHDSA8pit/ydYFhmGLBD1jQyeYK83spi7zJkhEMCcXG1G0TcbUK
- pp9G9/+pN5RTPqWvRJ0ejM5QufVrgfmrD7aQ3uaQC9fqvSTjsZmuZKz/ejTriBBkZIGZ
- nkguYAC094uZ7QlIPPMfn+BtLaVl0Y5MyfLS6qda0qnaX3rWVea7FQnjvtwCu5kQfvDV
- jBK0Gwyy25QE5KEUsZbKhZF41O9G5eE0zCDnOnpI1yZvUUxQRhG5WSJtIPXf/HlPrE3z
- gQ4mNtihttm34OPIYc+f3MNnA51JlqME/aIPJY1MESwBDGQf5cNIVGxkgLldZyG40k+B
- tn+w==
-X-Gm-Message-State: AOAM532Pt+qbkn43zM1UcOkbTDyflBAVUvLhqyIIQmrdJQs1vraFncTz
- w1OdKvVfpH1nQy0zMypLZxBmltFOnUat0a95loow4w==
-X-Received: by 2002:a17:906:31d2:: with SMTP id
- f18mr2744082ejf.407.1610116315014; 
- Fri, 08 Jan 2021 06:31:55 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=EPrlCp8NjczREcv59nZpUeZQD3tdKHQamXpMTRmG/NE=;
+ b=WZYk2urj+webchknQm1CP1k0D0B19pkyaeJw9UxZNHI8haF/Ezn8RESPZ0/va5fCZT
+ 9oVosxOJrA6IOFBVkVgP0BahkmCSHtnaNcINGcAqgCvAFiLUwff9dSdcFuO1khQlDBEl
+ I3ePy6UxQ0tVQ/qrN++SVwENUtsXltM1CUgnykFnnXOwGhkW4nyH/bD8FXgB9GKuKrWB
+ M0ajU6yWVlJ5lzYWTbEuDKOC84Qub9qeB5jyXmMJBGdQ+Qv4BZ3dovUx8d26xcsPBa0Q
+ zNv+XaebNakDFTv5p8RK3cpAb0SABBaI9bJMvVx0o8ytq2Sq9ncwLhOnmUb/zkdpU13N
+ ijYg==
+X-Gm-Message-State: AOAM530WbWAkW8mK3uhFr4LnbGxgMmjmlqujicFWhArQ/scoYSK8naVK
+ ITOTaOmGH0dGeRUwqme+sVaWYcDEjDhsdqPRvRd8zw==
+X-Received: by 2002:a17:906:e250:: with SMTP id
+ gq16mr2773095ejb.382.1610117363818; 
+ Fri, 08 Jan 2021 06:49:23 -0800 (PST)
 MIME-Version: 1.0
-References: <20210106163426.9971-1-maxim.uvarov@linaro.org>
-In-Reply-To: <20210106163426.9971-1-maxim.uvarov@linaro.org>
+References: <1608182913-54603-1-git-send-email-bmeng.cn@gmail.com>
+ <1608182913-54603-2-git-send-email-bmeng.cn@gmail.com>
+In-Reply-To: <1608182913-54603-2-git-send-email-bmeng.cn@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Jan 2021 14:31:43 +0000
-Message-ID: <CAFEAcA9cH+30iwuR++faaz3LmzkvqFHuMcPZ38HdX5q5nqJ_KA@mail.gmail.com>
-Subject: Re: [PATCHv3] arm-virt: add secure pl061 for reset/power down
-To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Date: Fri, 8 Jan 2021 14:49:12 +0000
+Message-ID: <CAFEAcA84tudyJ7NBkKb1YGhV3p5EMZ+6dD7DJicNT_hk0w1sVg@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/ssi: imx_spi: Correct tx and rx fifo endianness
+To: Bin Meng <bmeng.cn@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,137 +99,123 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Jose.Marinho@arm.com,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8c5a6/KtGOEK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Bin Meng <bin.meng@windriver.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mXNRNkRKsMRZ
 
-On Wed, 6 Jan 2021 at 16:34, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+On Thu, 17 Dec 2020 at 05:28, Bin Meng <bmeng.cn@gmail.com> wrote:
 >
-> Add secure pl061 for reset/power down machine from
-> the secure world (Arm Trusted Firmware).
-> Use the same gpio 3 and gpio 4 which were used by
-> non acpi variant of linux power control gpios.
+> From: Bin Meng <bin.meng@windriver.com>
 >
-> Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
+> The endianness of data exchange between tx and rx fifo is incorrect.
+> Earlier bytes are supposed to show up on MSB and later bytes on LSB,
+> ie: in big endian. The manual does not explicitly say this, but the
+> U-Boot and Linux driver codes have a swap on the data transferred
+> to tx fifo and from rx fifo.
+
+To check my understanding, if we have a burst length of 16 bits, say,
+when we do the fifo32_pop() of a 32 bit word, where in that
+word and which way round are the 2 bytes we are going to transfer ?
+
+> With this change, U-Boot read from / write to SPI flash tests pass.
+>
+>   => sf test 1ff000 1000
+>   SPI flash test:
+>   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+>   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+>   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+>   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
+>   Test passed
+>   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+>   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+>   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+>   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
+>
+> Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+>
 > ---
->  v3: added missed include qemu/log.h for qemu_log(..
->  v2: replace printf with qemu_log (Philippe Mathieu-Daud=C3=A9)
 >
->  hw/arm/Kconfig        |  1 +
->  hw/arm/virt.c         | 24 ++++++++++++
->  hw/gpio/Kconfig       |  3 ++
->  hw/gpio/gpio_pwr.c    | 85 +++++++++++++++++++++++++++++++++++++++++++
->  hw/gpio/meson.build   |  1 +
->  include/hw/arm/virt.h |  1 +
->  6 files changed, 115 insertions(+)
->  create mode 100644 hw/gpio/gpio_pwr.c
-
-Could you put "Implement new gpio_pwr device" and "wire up
-gpio_pwr device in virt board" in separate patches please?
-(That is, turn this into a two-patch patchset.)
-
-> +static void create_gpio_secure(const VirtMachineState *vms)
-> +{
-> +    DeviceState *pl061_dev;
-> +    static DeviceState *gpio_pwr_dev;
-> +
-> +    hwaddr base =3D vms->memmap[VIRT_SECURE_GPIO].base;
-> +    int irq =3D vms->irqmap[VIRT_SECURE_GPIO];
-> +
-> +    pl061_dev =3D sysbus_create_simple("pl061", base,
-> +                                     qdev_get_gpio_in(vms->gic, irq));
-
-sysbus_create_simple() will map the device into the default
-(NonSecure) address space. You need to pass secure_sysmem into
-the create_ function and use that (compare create_uart()).
-
-> +
-> +    gpio_pwr_dev =3D sysbus_create_simple("gpio-pwr", -1,
-> +                                        qdev_get_gpio_in(pl061_dev, 3));
-> +
-> +    qdev_connect_gpio_out(pl061_dev, 3, qdev_get_gpio_in(gpio_pwr_dev, 3=
-));
-> +    qdev_connect_gpio_out(pl061_dev, 4, qdev_get_gpio_in(gpio_pwr_dev, 4=
-));
-> +}
-> +
->  static void create_virtio_devices(const VirtMachineState *vms)
+>  hw/ssi/imx_spi.c | 16 ++++++++++++----
+>  1 file changed, 12 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> index 509fb9f..71f0902 100644
+> --- a/hw/ssi/imx_spi.c
+> +++ b/hw/ssi/imx_spi.c
+> @@ -156,13 +156,14 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
 >  {
->      int i;
-> @@ -1993,6 +2013,10 @@ static void machvirt_init(MachineState *machine)
->          create_gpio(vms);
->      }
+>      uint32_t tx;
+>      uint32_t rx;
+> +    uint32_t data;
+> +    uint8_t byte;
 >
-> +    if (vms->secure) {
-> +        create_gpio_secure(vms);
-> +    }
+>      DPRINTF("Begin: TX Fifo Size = %d, RX Fifo Size = %d\n",
+>              fifo32_num_used(&s->tx_fifo), fifo32_num_used(&s->rx_fifo));
+>
+>      while (!fifo32_is_empty(&s->tx_fifo)) {
+>          int tx_burst = 0;
+> -        int index = 0;
+>
+>          if (s->burst_length <= 0) {
+>              s->burst_length = imx_spi_burst_length(s);
+> @@ -183,10 +184,18 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+>              tx_burst = 32;
+>          }
+>
+> +        data = 0;
+> +        for (int i = 0; i < tx_burst / 8; i++) {
+> +            byte = tx & 0xff;
+> +            tx = tx >> 8;
+> +            data = (data << 8) | byte;
+> +        }
+> +        tx = data;
+> +
 
-The 'virt' board has strict versioning -- this means that, for
-instance, the 'virt-5.2' machine must always look exactly like
-the version of 'virt' that shipped in QEMU's 5.2 release, with
-no extra guest visible devices. So you need to add the flags
-and code so that this new secure PL061 is only present from
-virt-6.0 and onwards. This means a flag no_secure_gpio in the
-VirtMachineClass and a flag secure_gpio in the VirtMachineState,
-a line setting vmc->no_secure_gpio to true in virt_machine_5_2_options(),
-code in virt_instance_init() to set vms->secure_gpio from
-vmc->no_secure_gpio, and then only create the secure GPIO if
-vms->secure_gpio is true. The 'no_its'/'its' flags are the
-right pattern to use. (Yes, having no_foo in the class struct
-and foo in the state struct is deliberate.)
+Why carefully reverse the order of bytes in the word and then
+take a byte at a time from the bottom of the word in the loop below,
+when you could change the loop to take bytes from the top of the word
+instead ?
 
-> diff --git a/hw/gpio/gpio_pwr.c b/hw/gpio/gpio_pwr.c
-> new file mode 100644
-> index 0000000000..0d0680c9f7
-> --- /dev/null
-> +++ b/hw/gpio/gpio_pwr.c
-> @@ -0,0 +1,85 @@
-> +/*
-> + * GPIO qemu power controller
-> + *
-> + * Copyright (c) 2020 Linaro Limited
-> + *
-> + * Author: Maxim Uvarov <maxim.uvarov@linaro.org>
-> + *
-> + * Virtual gpio driver which can be used on top of pl061
-> + * to reboot and shutdown qemu virtual machine. One of use
-> + * case is gpio driver for secure world application (ARM
-> + * Trusted Firmware.).
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-
-What is the interface of this device intended to be?
-As written it has:
- * 8 input GPIO lines, of which all except 3 and 4 are
-   ignored; asserting input line 3 triggers a shutdown,
-   and asserting input line 4 triggers a reset
- * one output IRQ line, which is asserted whenever any
-   input GPIO line is set to any level, and never cleared
-
-This seems a very weird choice of interface. I was expecting
-something much more simple:
- * no output IRQ or GPIO lines
- * two named input GPIO lines:
-    'reset' : when asserted, trigger system reset
-    'shutdown' : when asserted, trigger system shutdown
+>          rx = 0;
+>
+>          while (tx_burst > 0) {
+> -            uint8_t byte = tx & 0xff;
+> +            byte = tx & 0xff;
+>
+>              DPRINTF("writing 0x%02x\n", (uint32_t)byte);
+>
+> @@ -196,12 +205,11 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+>              DPRINTF("0x%02x read\n", (uint32_t)byte);
+>
+>              tx = tx >> 8;
+> -            rx |= (byte << (index * 8));
+> +            rx = (rx << 8) | byte;
+>
+>              /* Remove 8 bits from the actual burst */
+>              tx_burst -= 8;
+>              s->burst_length -= 8;
+> -            index++;
+>          }
+>
+>          DPRINTF("data rx:0x%08x\n", rx);
+> --
+> 2.7.4
 
 thanks
 -- PMM

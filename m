@@ -1,72 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp332003lfq;
-        Fri, 8 Jan 2021 01:08:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyfftxVmalCx3sMqPl8WcEg+46u7YT8+XID/ic7SbJn5F9xDUiRDmMkambKeo6BPPkgOmrW
-X-Received: by 2002:a25:ba88:: with SMTP id s8mr4434554ybg.183.1610096919639;
-        Fri, 08 Jan 2021 01:08:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610096919; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp531947lfq;
+        Fri, 8 Jan 2021 06:15:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwdCQyLk1baAf7SvfGb8LTDRGhnXHflZzoQ4xv9LToiaH25c4tKnEiPaHuaxoY8a3ogzRbj
+X-Received: by 2002:a25:da56:: with SMTP id n83mr5657080ybf.265.1610115352967;
+        Fri, 08 Jan 2021 06:15:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610115352; cv=none;
         d=google.com; s=arc-20160816;
-        b=yVfO99gopbstLr1l8k58JjTGT0QgpnHdPVmpAG9O0CnPwDjoS3RfmuZc5DXUyLBI6+
-         NFlOQYNxx+dGoN7+kQivWnoSztZgrVnt7xdAoPaiXwFLj7vqD4HS1/g9CWVsvf3Z9bYX
-         KVJRBnjSOYjA1rH9CTnbut43VDEHQBZ0gknM/AyswA5ND0TUVWbi2rkJJTZ5lJc52u2o
-         Bc47Wz5QsaFRTxI1NoLnZJxIHh13qbPTTbwHBeBDTx1RDa32fll2OME80oHeNyi2HdxW
-         iAxEde82u68heB6ENMFYCtPAic+fGdeBtwR5NNjUWktXEfn86R/oYORbZrIPtSNUvZes
-         gVuw==
+        b=LLHJV+4ReCqTFu7ibSb85kHJsZkVSXIcoEOoUwySU9TdOImN1HKHYfyvBYLAm6lw5/
+         owuPOD23g5tiSuWVc157330cSPFoerLUQXMGYgmCR7lTC81D3KeQhjPXGin3cWwFDcDJ
+         /0oUhG7V+h61DfSj3AbcSVMR5H6wM0Z55ojj7fBtq5oo8Bf0+QvnZesAvOBIFT8mfPV0
+         70LZ6uZa75B848ThkucqTk0lKWNlUBqFY5Syf9JCSiuzyVLalsPh0lM302SdOlJ8psuw
+         b8iPeXmWeVEoUvd09WjcjHUsA75NblyhwcfchB50WE2Yl012cvs4NIuk+73idCSHWLjT
+         Apiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=iuSyTUM9QXFJyTodvb9RUOKS2oKxA9kJD7GNIV6zoQ8=;
-        b=wBO2LmvU4nGk9XD5l1Yq7vPPq4kgsP5Nup9kXLm+/LpvtLM/C0YFKClMfpGyDvcjKz
-         UJm1VaF86W2xrdyAP9+yxXQHDtkEUBahzEhj7om/t9BwUNN41r664kNz4/v0Emb2Z4Qf
-         TnRRlcN4ycVAod/GilV1jaCMqXMW0rgjaJj1ev9E74/7QuFfm1W3Bgkwjfv7NQwx80bY
-         FprDyo+HHb8IP2FkNhcveAhUvcabNaMVRqNFerH9stDdyk1XUJElhCE2Anaw3R7aY3/r
-         kQyMjr49/Yo+hAjXIaTNZbdvK7EXyJVfdjxL25VFoRHFwiNuVXdhuUKsS5nziBPlwNEZ
-         DyWw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PC4MWs3iyKPd4utj/FSXQHOmAjGulN6flg4XLteTLLo=;
+        b=jDNvl6VZAwY603aKLr6C48qx6BFZJ3JedsvZXPoe1juZYu0/XLx1dztXXd98jwydTK
+         bGn5qj2IR7BOUcueQWMJA/lDhrCuuTQRgYcFowMcgdJiUEvyH2gzlnFjK0OHJZp38ERx
+         a9ylgpQ9HfkPKMDTTIuoDDpcuahVDs5JCH7/M4hsJ7pPv9aiKx2igeeQjK1KKDTFcKnO
+         l0o5+zQu1Ja3Kgh6X9onGr2PdUFIU2aWSVe0cWqC1C6wjtWek69VB/PTm+3bpmRh0L6z
+         Px0rRe0GsaMr4LhRVXbpJYgCPQpdKsbvLUdxYTjo75CTXmxzbHR74VqCI8gl2d8ue/7j
+         DlYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=FHuFjJr+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r9si10361789ybr.44.2021.01.08.01.08.39
+        by mx.google.com with ESMTPS id k13si9065439ybm.220.2021.01.08.06.15.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jan 2021 01:08:39 -0800 (PST)
+        Fri, 08 Jan 2021 06:15:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48472 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=FHuFjJr+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxnl9-0003qJ-0D
-	for alex.bennee@linaro.org; Fri, 08 Jan 2021 04:08:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44028)
+	id 1kxsYS-0002w0-CS
+	for alex.bennee@linaro.org; Fri, 08 Jan 2021 09:15:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kxnkz-0003pz-Dr; Fri, 08 Jan 2021 04:08:29 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:42254
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1kxnku-00007E-LR; Fri, 08 Jan 2021 04:08:26 -0500
-Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id D41F85FC66;
- Fri,  8 Jan 2021 10:08:17 +0100 (CET)
-From: remi.denis.courmont@huawei.com
-To: qemu-arm@nongnu.org
-Subject: [PATCHv2 1/2] target/arm: ARMv8.4-TTST extension
-Date: Fri,  8 Jan 2021 11:08:16 +0200
-Message-Id: <20210108090817.6127-1-remi.denis.courmont@huawei.com>
-X-Mailer: git-send-email 2.30.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxsYD-0002uB-WE
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 09:15:38 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:34062)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxsYA-0007w2-6E
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 09:15:36 -0500
+Received: by mail-ej1-x634.google.com with SMTP id g20so14783854ejb.1
+ for <qemu-arm@nongnu.org>; Fri, 08 Jan 2021 06:15:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PC4MWs3iyKPd4utj/FSXQHOmAjGulN6flg4XLteTLLo=;
+ b=FHuFjJr+BwzpJITJIrGrGxI8BY2S4IfQl7xq1BJmwjTTnBRN/xAyhrfVTv3uQw80II
+ FtC/eFPQvw/yvHw0LeMNcSi0vS35y5R2rg5Oq6WVyIL0DNfpgY8FyN3fy4xzg4wuBGeI
+ bEkiGQIipLvjr5yPE9aB1m4rTHGPPo6oPSTN7b/3Ln96xP6sxG7LY92O2dnaYUBHgi7a
+ 83HGexGi/hmmgWewFXVOvDp+1/VUcmcDtYRKEGWr7+Q7UhMBfKMzuDFKAalCkHkqxboW
+ grrBK8yfSWp9G/iarLmGwwo33SKacIDep9M6FNepQ/BUzTXceTzLHSlkNlViwe877cn6
+ mOJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PC4MWs3iyKPd4utj/FSXQHOmAjGulN6flg4XLteTLLo=;
+ b=uVGC4n489yXSKQ9k4oj3f7ZMiXryXcOnct/z7yB6sDdAYFpkBlzbX7cBg+ACDjKjzy
+ 8vGyUZGEjVXKc41ysYpUGQqWZckhuLqhgNCvz2+XbmaJRD8UpoAguJV3LUSAfB5vXt+6
+ HbuJFmmgalwBUX/aVERPAIvWjZfyB0swrcyHiEu5JeM7N0DfbS/cQZ+KJ853uC+mga/x
+ ssc00Q54Z986+l6CA9f5k3a22sLbuvUbWaUWxKdu1RKYS1zjk+Rn6ZcR4Et63K/4rqmU
+ ZJuMRzhMXZRNAPNMsYUgeFpYL+6jBrRvCV3UwE53E2CDXH0cD2HXh2X/MS0JthGBrqwF
+ ZC+w==
+X-Gm-Message-State: AOAM530ktrBRG6umJgms0FlhH6cN81gz0u/dthIbQbsMg6+48YHNXyOU
+ GQ+CRV1RLvWe7HT1I8WoOFtSyME/k9VWrqgCYXJ/uQ==
+X-Received: by 2002:a17:906:3d4a:: with SMTP id
+ q10mr2793914ejf.85.1610115331730; 
+ Fri, 08 Jan 2021 06:15:31 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20201216221247.522686-1-richard.henderson@linaro.org>
+ <20201216221247.522686-2-richard.henderson@linaro.org>
+In-Reply-To: <20201216221247.522686-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 8 Jan 2021 14:15:20 +0000
+Message-ID: <CAFEAcA8zz2ApaqE7h7LEhPML2KZLysQ9i2e7msDB0nhdJKkDnw@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] target/arm: Implement an IMPDEF pauth algorithm
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,77 +110,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: Mark Rutland <mark.rutland@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u6yBhRmadopH
+X-TUID: pFdqtBrIDpO2
 
-From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+On Wed, 16 Dec 2020 at 22:12, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Without hardware acceleration, a cryptographically strong
+> algorithm is too expensive for pauth_computepac.
+>
+> Even with hardware accel, we are not currently expecting
+> to link the linux-user binaries to any crypto libraries,
+> and doing so would generally make the --static build fail.
+>
+> So choose XXH64 as a reasonably quick and decent hash.
+>
+> Tested-by: Mark Rutland <mark.rutland@arm.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> v2: Move the XXH64 bits to xxhash.h (ajb).
+>     Create isar_feature_aa64_pauth_arch and fixup a comment
+>     in isar_feature_aa64_pauth that no longer applies.
+> ---
 
-This adds for the Small Translation tables extension in AArch64 state.
+> +static uint64_t pauth_computepac_impdef(uint64_t data, uint64_t modifier,
+> +                                        ARMPACKey key)
+> +{
+> +    /*
+> +     * The XXH64 algorithmm, simplified for size 32.
+> +     * See the description of the algorithm in xxhash.h.
+> +     */
+> +    uint64_t v1 = QEMU_XXHASH_SEED + XXH_PRIME64_1 + XXH_PRIME64_2;
+> +    uint64_t v2 = QEMU_XXHASH_SEED + XXH_PRIME64_2;
+> +    uint64_t v3 = QEMU_XXHASH_SEED + 0;
+> +    uint64_t v4 = QEMU_XXHASH_SEED - XXH_PRIME64_1;
+> +
+> +    v1 = XXH64_round(v1, data);
+> +    v2 = XXH64_round(v2, modifier);
+> +    v3 = XXH64_round(v3, key.lo);
+> +    v4 = XXH64_round(v4, key.hi);
+> +
+> +    return XXH64_avalanche(XXH64_mergerounds(v1, v2, v3, v4));
 
-Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
----
- target/arm/cpu.h    |  5 +++++
- target/arm/helper.c | 15 +++++++++++++--
- 2 files changed, 18 insertions(+), 2 deletions(-)
+Since the only use of xxh64 we make is "feed in 4 64 bit inputs
+and get a 64 bit result", why provide all the components and
+stitch them together here rather than following the existing
+pattern we have for qemu_xxhash* (the xxh32 algorithm) and
+providing a function
+ static inline uint64_t qemu_xxhash64_4(uint64_t a, uint64_t b,
+                                        uint64_t c, uint64_t d)
+in xxhash.h ?
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 7e6c881a7e..ad37ff61c6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3936,6 +3936,11 @@ static inline bool isar_feature_aa64_uao(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, UAO) != 0;
- }
- 
-+static inline bool isar_feature_aa64_st(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, ST) != 0;
-+}
-+
- static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2d0d4cd1e1..bf54616c23 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10842,7 +10842,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
-     bool epd, hpd, using16k, using64k;
--    int select, tsz, tbi;
-+    int select, tsz, tbi, max_tsz;
- 
-     if (!regime_has_2_ranges(mmu_idx)) {
-         select = 0;
-@@ -10877,7 +10877,14 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
-             hpd = extract64(tcr, 42, 1);
-         }
-     }
--    tsz = MIN(tsz, 39);  /* TODO: ARMv8.4-TTST */
-+
-+    if (cpu_isar_feature(aa64_st, env_archcpu(env))) {
-+        max_tsz = 48 - using64k;
-+    } else {
-+        max_tsz = 39;
-+    }
-+
-+    tsz = MIN(tsz, max_tsz);
-     tsz = MAX(tsz, 16);  /* TODO: ARMv8.2-LVA  */
- 
-     /* Present TBI as a composite with TBID.  */
-@@ -11096,6 +11103,10 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
-         if (!aarch64 || stride == 9) {
-             /* AArch32 or 4KB pages */
-             startlevel = 2 - sl0;
-+
-+            if (cpu_isar_feature(aa64_st, cpu)) {
-+                startlevel &= 3;
-+            }
-         } else {
-             /* 16KB or 64KB pages */
-             startlevel = 3 - sl0;
--- 
-2.30.0
-
+thanks
+-- PMM

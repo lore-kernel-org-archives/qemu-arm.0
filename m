@@ -1,105 +1,105 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp737438lfq;
-        Fri, 8 Jan 2021 10:53:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyIHTnk6CL3vOJsctNlfLyfQm63K+3FgrN7cFj8BcaagFPuM6UMrNMSMtk1F8yAYs0lVgx2
-X-Received: by 2002:a25:538a:: with SMTP id h132mr7068799ybb.247.1610132014800;
-        Fri, 08 Jan 2021 10:53:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610132014; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp704201lfq;
+        Fri, 8 Jan 2021 10:04:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxgd8gdmfPp0JYVtqxHaWa2NCb0Ew6Hiw57svR1KQ/2HUdgDhuCiKm0n42RGP03/vKLKRLJ
+X-Received: by 2002:ab0:43a7:: with SMTP id l36mr3953492ual.106.1610129065603;
+        Fri, 08 Jan 2021 10:04:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610129065; cv=none;
         d=google.com; s=arc-20160816;
-        b=YBg2L0GBCmg3ZKkghuldbY/qxQ2H7C/VJdx3bj3GhXWDZJ2yM41UOGfTdsMGIxwUO5
-         llNHhkowUPeFq4kdBoan63WdkRAFTapD+Cg/6nvcEbdch9m2ggMZj5rhfALByTuwB2ug
-         Fi1AQUtsYxyPqtTIvSIMJVMPVX/7tn3HyHV7Dg4W0DemMEeBuMzMPCQBC1mKkmUIjS+e
-         Jqd0ttzFi0KbyQvNVEk2HHceuDacDasrpi/U6gY0dEVqUj428QseWrEFMVNBwwGRvW84
-         S9wPjFBRuRTMioYPExt4OAqYjNQUiwaW5Hi8nPiQFDittZVvJ4bUN1sksXLVo8h9Gsnz
-         lO3g==
+        b=Z9+PxkhOy7W9+d7YnCBpMTwGSAPU8YLdQ/cmfU0hSrI4vdfZoMD3yYiLYICDZ/DE6N
+         ROWgsM9gX42JhEpxG5FoYl8nrzcIGMcOEsu02U6wiJSAYvrm55F8Wd/9OLWtaExWYEyA
+         FbuWGGefXf6qSVQoLfI8z7B1ACuFxBtGiRthqKjLc34QWBgVOjHVGoHEPhYT8zA3vWCQ
+         46LWy7cP+KEY58dArCgP7urJOAwDyaTkeKgKeoXc3Iac6QCJf6h+owM8hivuIOY8GVK4
+         O8Gb/4RcGGAyJFN12WQxv+tYGoU3SzUdoq3XhLZ5F0lvQ7REx99x+xIYjzP34460TwDe
+         bwvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=E6mZPiQraiTh4Bg0YyL1OAnwyrTn4m3pw4jIvmfgdr8=;
-        b=SLgjxO/o1S2QCvv6SYKAIUf59RHsao9iFSOZ/WQGcjxFgjJ4sRJEOK4I/uXsBYLXvW
-         67Ajp5ghX7hA27IOaD1x/qFsMCQVvzBjX9RIgLFK8ymiQCJbovUINPZPrOvUcTFopwG5
-         nNatZhdTmXa5fsi2oNOr6ug07OIf8aSexKwgUZcFq6cvAMptwX/exmHqo+8sgCcmzKcI
-         2YANBVyOvF/glCAHgcB659iQSaQNuADrOYfX8SMj8lianfzEJ7SGFuUU7SPcykKif6xg
-         tLUGRE73bfkE2pHgxRatSsdMOSJoWyyy2yHYuF7NU0q+D6+kQvFILyD/BTGz3uxHk9C7
-         kwKQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=sLl9sUWU5h1UaKwkdvYGg+aIysds12c5wVsNDj2Vf+M=;
+        b=egdBeSzlqws/wIpy70li4Kg/jI1Jwbfq7ZGjFPUN1y4D8Fx1YVEjXu7kKBzNxRXVny
+         C3wvoo8Z8R5VTUhEV+JX8y411gjmyrnZZ4WHVzUIaYFCLTZCxILDcz5PuSFo8FBAvFih
+         3qJsrwEBvuvrROzI3WrtFgT0pnDSAv/pgDDWi12WZfTY75IuF4j+WR+KipkCBQHxbXmF
+         zJ5XTk7ASXVFMNMCU6bIX4BKrDv0weOuRdUmdBYQTzhTJoLG7SYMKIVNVnROotZxvzMV
+         mEBULnfS2t5TeAV6RTftQQDBOfxhh4bk72VDe2VvldYZ0lxkqokPXV0NMqblciB7ydxm
+         x7Hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=OJtJfz2c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=jNl9yJZ7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11si10064719ybs.204.2021.01.08.10.53.34
+        by mx.google.com with ESMTPS id e1si731027vkk.93.2021.01.08.10.04.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jan 2021 10:53:34 -0800 (PST)
+        Fri, 08 Jan 2021 10:04:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=OJtJfz2c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45062 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=jNl9yJZ7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxwtC-0004GO-5Q
-	for alex.bennee@linaro.org; Fri, 08 Jan 2021 13:53:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34126)
+	id 1kxw7c-0000SG-V9
+	for alex.bennee@linaro.org; Fri, 08 Jan 2021 13:04:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47714)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kxwrg-00023Z-4w
- for qemu-arm@nongnu.org; Fri, 08 Jan 2021 13:52:00 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:34992)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxw7N-0000Hm-2u
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 13:04:09 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:55307)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kxwrd-0000sq-PL
- for qemu-arm@nongnu.org; Fri, 08 Jan 2021 13:51:59 -0500
-Received: by mail-wr1-x431.google.com with SMTP id r3so9987606wrt.2
- for <qemu-arm@nongnu.org>; Fri, 08 Jan 2021 10:51:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=E6mZPiQraiTh4Bg0YyL1OAnwyrTn4m3pw4jIvmfgdr8=;
- b=OJtJfz2cno5qxT9BC/EfF1BoMXPJV/wgmu3AliPwQcl5NOwQ8v19EwpX0Rw2IWjnza
- D9akoSh28WwyLxMt1qbJKIKD1rswYXBddIaeQoojzGjJ3mcafi/p191MezPgw/pqpnMy
- aqhVOf6cfgwB5I5vZKCcRMmJb6XFOotPYV21BrOrE1l3arg0OMltz7uSzp3xwmIzuheC
- FMOihFoj4osKVy7PbkJViSUB264+2WlqBPH8n5iWfyx8eDpmmjTPUSAwCZgEjxALZJYJ
- QqLt1UJ+6soELKCmN14DDMe5nu7sZeqczdkgOJ1yZafAR8R17mMLop+MLJx2A0jcUByS
- bcKg==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxw7K-0000of-1U
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 13:04:08 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id c124so8470080wma.5
+ for <qemu-arm@nongnu.org>; Fri, 08 Jan 2021 10:04:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=sLl9sUWU5h1UaKwkdvYGg+aIysds12c5wVsNDj2Vf+M=;
+ b=jNl9yJZ7H9EuXoiJUE+GCLCalCIeZA7XK+lgB2M9mdx1MUIBVgm18vzdMOKaOzOEj9
+ mrLhLKYK/npPjTDe8nC8FunizcZNJ/E3oIpr65nQq40q1OCB0cW+4SH9sm5u8fOcDjak
+ doLX0dyZTytslaClQ86fD8IyStuxIAP/elNFVvq9cuIyx35ehK9AZh/ChAge1O2sizNE
+ p3KkoqFaLV6BlozLRwoPH2CpqXAP2uttsWxAd+zrfCwJaZpujmD6Ql4tu/ujxKWnOYMy
+ B02Stu2tAZAuIoA4YhrubM9ZFTA7OTE0ma++9nIEVt0b3mvqKjrk80Qf7ONLn4juEtnG
+ Qqvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=E6mZPiQraiTh4Bg0YyL1OAnwyrTn4m3pw4jIvmfgdr8=;
- b=Yw8lPFgAiy72ga87p2JWMSiYYWI1oqTHmxSena/PN7T9oMNdSYffxyCV/PVGsh6jgk
- cThQFQB/kMhTHjVaQIX0rhwEljgsBSZDulM8vuz84k44BR7MNdz/eiKvzG24UXauOsMz
- 5nkTKBml0HP5iW64CRFGnlEN9zupIASJRRdEKJGuGmWjcOtevcHsge1hDerz2fyQ5g9/
- eC8MQzEEfGo/GONUHGSXwv5VlCOAQhuwiebyBuM0VZ9DXkKFnVa4gO9zjrFmcBx77MES
- uB4u2M2nT1AsUYAYVqbPAqbogQgDLFxoLWIDcRP2h/hkC1vZeEziTs7C6WbnEjNHp3Bs
- NZRQ==
-X-Gm-Message-State: AOAM530l9STaQRoJmE+HB4V9m+xe1MCreJtd1ca39wK+9fwR/SScZCs/
- D9MnfKnf8KBkPZIw7s/ZZsO/ow==
-X-Received: by 2002:adf:f6cc:: with SMTP id y12mr4967155wrp.35.1610131916364; 
- Fri, 08 Jan 2021 10:51:56 -0800 (PST)
-Received: from vanye.hemma.eciton.net
- (cpc1-cmbg19-2-0-cust915.5-4.cable.virginm.net. [82.27.183.148])
- by smtp.gmail.com with ESMTPSA id b19sm12353373wmj.37.2021.01.08.10.51.55
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=sLl9sUWU5h1UaKwkdvYGg+aIysds12c5wVsNDj2Vf+M=;
+ b=s9UIOWfLEFjST6wQ5Qb9RMC+6x1qtn7/Zs/7hcbq1iRRXYUyyb/g/HplYwEvvTGs1I
+ Eqznc0mVAY8fxvpoBZm5neliLV29rWS7sjJdde+TKTAXt4coGhC8wfZ+D+HtAy9SwCIA
+ rHZ6pyWHtCu1oy2k6VunSq4hxJfCPv9YHOOYVl8aqgn2thKiGQMf1nw5S/ZHdqz21rtu
+ 7SsT6+bkNIrM3SzaLwa7LDDtL2lWPS6WF0itYI2K4tFaSD3Ftufg91iZ4pPyU5sQ+5pZ
+ UicdADXJwWP65kyNngV/Pd/HQXRFvTruAkcnWPu63y59tdT3ou8uyRwucNZ3BGvPmS2L
+ 8HSw==
+X-Gm-Message-State: AOAM532TGcUPXwFVZGm+z1fngyJSrE59g1xeH1ib5QtAI7RVj3RDYURS
+ xSIoRbItBcInDSrHkOHR/DXOXtS423chJA==
+X-Received: by 2002:a1c:a344:: with SMTP id m65mr4059516wme.108.1610129043909; 
+ Fri, 08 Jan 2021 10:04:03 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id s1sm13423029wrv.97.2021.01.08.10.04.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Jan 2021 10:51:55 -0800 (PST)
-From: Leif Lindholm <leif@nuviainc.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 1/6] target/arm: fix typo in cpu.h ID_AA64PFR1 field name
-Date: Fri,  8 Jan 2021 18:51:49 +0000
-Message-Id: <20210108185154.8108-2-leif@nuviainc.com>
+ Fri, 08 Jan 2021 10:04:03 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/2] lan9118: Fix RX Status FIFO PEEK value
+Date: Fri,  8 Jan 2021 18:03:59 +0000
+Message-Id: <20210108180401.2263-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210108185154.8108-1-leif@nuviainc.com>
-References: <20210108185154.8108-1-leif@nuviainc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=leif@nuviainc.com; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,36 +113,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: caClP8983rmE
+X-TUID: DvoASFDjtF+i
 
-SBSS -> SSBS
+This patchset fixes https://bugs.launchpad.net/bugs/1904954 :
+we give a bogus value for the RX Status FIFO peek register,
+because of a copy-and-paste error. (This bug has been present since
+2009 when the device model was first added.)
 
-Signed-off-by: Leif Lindholm <leif@nuviainc.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Laurent Desnogues <laurent.desnogues@gmail.com>
----
- target/arm/cpu.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Patch 1 fixes the bug; patch 2 does a little bit of tidyup while
+I was looking at this bit of the code.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 7e6c881a7e..5e3cf77ec7 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1883,7 +1883,7 @@ FIELD(ID_AA64PFR0, RAS, 28, 4)
- FIELD(ID_AA64PFR0, SVE, 32, 4)
- 
- FIELD(ID_AA64PFR1, BT, 0, 4)
--FIELD(ID_AA64PFR1, SBSS, 4, 4)
-+FIELD(ID_AA64PFR1, SSBS, 4, 4)
- FIELD(ID_AA64PFR1, MTE, 8, 4)
- FIELD(ID_AA64PFR1, RAS_FRAC, 12, 4)
- 
+thanks
+-- PMM
+
+Peter Maydell (2):
+  hw/net/lan9118: Fix RX Status FIFO PEEK value
+  hw/net/lan9118: Add symbolic constants for register offsets
+
+ hw/net/lan9118.c | 26 +++++++++++++++++++-------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
+
 -- 
 2.20.1
 

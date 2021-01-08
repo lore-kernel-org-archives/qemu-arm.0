@@ -1,107 +1,105 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp757222lfq;
-        Fri, 8 Jan 2021 11:20:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwCj39rAG/cgVpi6yiIfUh+asssRQST4fVTYDvFNc+kCdL50xM5znJsnyTtOinSBEwBEFbW
-X-Received: by 2002:a25:843:: with SMTP id 64mr7527548ybi.421.1610133655293;
-        Fri, 08 Jan 2021 11:20:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610133655; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp737908lfq;
+        Fri, 8 Jan 2021 10:54:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy5IKnVRZI7uHnC4+bUsyw9XoALYKwTIJwkloCmp/KH/X9qMEIKKXVdr+D3srXlEMhLK/qQ
+X-Received: by 2002:a25:42d0:: with SMTP id p199mr7791724yba.352.1610132066622;
+        Fri, 08 Jan 2021 10:54:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610132066; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dtx0JP2T4GVxbMWnvnSmTpgPi2IjllScp83GQ8lHheWp/UsyZDu0bnhsCdnKaXk7lI
-         OJG1XzO2PJIAVl4CRsKBflf5viNESZK6dbOtY7mlgZN0ZUouqlI0soAYK+dvxvIOYUcj
-         VTVGlM2n/T1RWeQnmLp6vk5jLDhlyNWe1LeYs9qy8V6wACHr8IzjkSjt765yI1duw4il
-         IzcnceIFQLMvBRgH2/w1A9JTDDVLKO2X/Yf+5krqToB9/tMlQ6lG6M11COhDaNXCInw0
-         A1Pdzm518xm0CRdnUB+epbUILObP/3IjKwBJ3vPbHM6NqDbzML9ViEcIl1tPDxLGkuej
-         qXUg==
+        b=jHKOy44V5rIH/UnvPq8urUp93KlSmPktvJFMpvr/dZjptFQB6S4fkoYALHdUcKpvj2
+         CCPdrPprADV4cjVVQs9ZmVYD0DnQThMHYC+1SQbWBMAtrDWlW/qZWvwmZ9gRcdFAYaK7
+         0mRlrE9g6Rb2pqNjJFnKMnmSURc2MRaAPXJIQfAhDzRdv9hJPWkLRyfG71GP97AED4Hn
+         xfS8fLVk7kgI6oFPnJKuNHgI1ZZ8M6mxu1GxdqDtxlCtPmEXdv/q5nlmN6sQfCa2KPVm
+         lEvc6rc8ZhTRI0gPt1aONBld6i/IWZqtZultIY+6e4CGJ87lOefcYPKVXEVtJUf1VbnY
+         5N/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:references:mime-version:message-id:in-reply-to:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=vapmRTP1KBSBnDnAlHWx2VYwkoCsg+HRcO+UGgH76zY=;
-        b=Wcs3OYu3HZhenSWJIBr3QIcc7YLZZitXfDL5KuUoboKfkoUtnxIu6K/bg/aZCi63JV
-         hdD+iQb9vyMpLiHOeCEooc1Zz6LjISlMdH8dS9wEoWtwj1QU02R9Oply2eWhbQ8Qi/8x
-         8LTqgnwiKpsNf1g1CzhHTnHWNvZYfMzDibKXqMQlVZWK/Dd8JCo0Bf+rztebWb3Lo5MU
-         63wU0fDE1PthipKdSv6IPTEFSNVoGdbseumXNO5JGCeyWS/U25Vsudi3XP/L3Ygx0vkG
-         sqcp1E4ErkLxe/2kpHYQq3J1Irh6NWly8Jx8hWoixFxmiuWkapnJv5ZVO8Am84+MG6N/
-         fOcQ==
+        bh=G9DNKOB4bf/aDdhp+8z1U9qK/OVof8+z2xA07VIxIrg=;
+        b=O8nTKyoMQ63LVDYk94Syw6lcvy33s5bqWMhDSLd8YrFLEg2F81rghbCXo5sJMjJ0MU
+         qsEHUY+mxK+Y0rTET+56vjQAfcoVkckqZhjcy7WeC3D0Et6ilQW3OAI3jSgSbCJ1CEm/
+         cEYzMSzJCacQ/q+RtfYDl7CGGIHdYIH0RMJ0Ptv7GZaXH4XExS4zYG0Z8BCZeyNnM3UE
+         UvlOrfg8a4ookzUxYgmbhMvWhhQfyQEkiWEvKRsVxLRgZmOl19oTAGKKX70CUa2HEBBf
+         scDnSSIkERuQYwzTuz2S/dgfDwimogGoeFizvqMFFg0oLPPljFqrEFsekK488yQdjoU8
+         o1Uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=bDjqYKNr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=wJKRhsG4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n18si9264948ybp.144.2021.01.08.11.20.55
+        by mx.google.com with ESMTPS id h6si9487387ybc.407.2021.01.08.10.54.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jan 2021 11:20:55 -0800 (PST)
+        Fri, 08 Jan 2021 10:54:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=bDjqYKNr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:59572 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=wJKRhsG4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49340 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxxJe-00080S-Jm
-	for alex.bennee@linaro.org; Fri, 08 Jan 2021 14:20:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40420)
+	id 1kxwu2-00067A-1T
+	for alex.bennee@linaro.org; Fri, 08 Jan 2021 13:54:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3J674XwgKCGwgeRKYdcRQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--wuhaotsh.bounces.google.com>)
- id 1kxx9o-0001Cq-QD
- for qemu-arm@nongnu.org; Fri, 08 Jan 2021 14:10:46 -0500
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:50032)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kxwrk-00028y-Vt
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 13:52:06 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:45286)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3J674XwgKCGwgeRKYdcRQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--wuhaotsh.bounces.google.com>)
- id 1kxx9f-0007MI-HB
- for qemu-arm@nongnu.org; Fri, 08 Jan 2021 14:10:44 -0500
-Received: by mail-pg1-x54a.google.com with SMTP id c3so8083960pgq.16
- for <qemu-arm@nongnu.org>; Fri, 08 Jan 2021 11:10:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=vapmRTP1KBSBnDnAlHWx2VYwkoCsg+HRcO+UGgH76zY=;
- b=bDjqYKNr+ALw7XegDtghmoqnTIQn7lzYqtXMXnfw4a+nXH8uPfq5jkmYnLNZk2+3vr
- ctm3/P+dRv5mqx+GMSPd5Gs5XEBXJTEd+erEfimPc63Ema40dFq0iYIqkvPWCDuCRdHj
- HuT4QiZruSGQqsAQEvg6/5rozs6X9Ha0h6j1VpbXM4iLs9T85ISnn+C6so4hWTh7zQEH
- U+IN1Poq6d6m3zHHHoDbjvLQFauzONoWKlKaV5EkHxRfYQnP5vyHr3HNnSCPNkVyNVnV
- sT2uOR2z3280/fY8kx9/EkgYEzMMTPPWN1RlLnMovsBErM5eAUjvBF+RmuDaEr/SeMN6
- KzRQ==
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kxwri-0000v8-F7
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 13:52:03 -0500
+Received: by mail-wr1-x434.google.com with SMTP id d26so9927001wrb.12
+ for <qemu-arm@nongnu.org>; Fri, 08 Jan 2021 10:52:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=G9DNKOB4bf/aDdhp+8z1U9qK/OVof8+z2xA07VIxIrg=;
+ b=wJKRhsG4HvJ9BBuWBhyh3QW5KEC6FQgj0xXAQYW8f5P4m923gPdc51UruCvPJg/zRE
+ Z8YDQMWshw28YxIrdySv+xtWEJLgOaMAidgHptRzAlt+VXajSAnuUfTC4vtkIjqYjcal
+ yC8vsqB9x3LcR1DIK9EAY627IWdIin34FD5v39yXCWYj+cB0dqss0v4eD63zpPJUuWJd
+ 7gkaIlv/ApgWcbSzvMYKWAudMynX51Qw44RO+nkXhfDd6lvUEGpTVI8GzGLHfWWWJfYs
+ dnszaox+sHIkNVB5zqlg0tM0Auvjzk+qIr3aS3VW+ANYk/89rMh9pfU8It6lDY9pvhiT
+ UC2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=vapmRTP1KBSBnDnAlHWx2VYwkoCsg+HRcO+UGgH76zY=;
- b=Phdm538Lh6lkoy3TwC6toZlMuWpyVo0y/fhVjKjJOwEyN1qi1H0T82qWofgRhBjp29
- ZSFXUbV/uSusYBuxRNkdyNwQD+90wOu+hqo4CCnXcFgNfGUUJhOAHYre1hLaOQzT5vsj
- lrl5pjgI7dQ1yY1IRsgbujSERmmdrNvs5hzAOGlez/ZyialqMF8u2//DOHzSlL4vHFWr
- WwlrS+z00O+yXm5pYuLSLsl/+DEhxqQQO9OdRfS3/hcdpP8W8hn0ivAFiJZu++gtM8im
- grqtOqvPzSAdDoKxNvmU6NIZrbRQ985S/eFeMvxHum5icb50RjzK7n3l+LI/Gsi8cxJW
- 9yQQ==
-X-Gm-Message-State: AOAM533HdBw3S4m9J/ZqR/qaJqJnrG5C9hu2HQooIMDkZ4CkSdmyUWQZ
- jaAigOCGEbYR7hYKbKpXuqbGa8iIK9BUUQ==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a62:7651:0:b029:1a5:929b:1681 with SMTP
- id r78-20020a6276510000b02901a5929b1681mr4995262pfc.27.1610133031547; Fri, 08
- Jan 2021 11:10:31 -0800 (PST)
-Date: Fri,  8 Jan 2021 11:09:44 -0800
-In-Reply-To: <20210108190945.949196-1-wuhaotsh@google.com>
-Message-Id: <20210108190945.949196-6-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20210108190945.949196-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.29.2.729.g45daf8777d-goog
-Subject: [PATCH v5 5/6] hw/misc: Add QTest for NPCM7XX PWM Module
-To: peter.maydell@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3J674XwgKCGwgeRKYdcRQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x54a.google.com
-X-Spam_score_int: -99
-X-Spam_score: -10.0
-X-Spam_bar: ----------
-X-Spam_report: (-10.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.386,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=G9DNKOB4bf/aDdhp+8z1U9qK/OVof8+z2xA07VIxIrg=;
+ b=V3JZWRskY4Av5F1jHgumy2nC5Tc2sJmhgJvMtjVBkiJxHQkJ3TEeV5dgC4TzXxFajf
+ /4edIUTABOhZsMPdEzd3Xyq/lauqd7DLm+E+uFYzZBheJM73yyWKtlEM1jmGtqFp95Y1
+ YBWmh/NuMro0261spKTSttr4pKAXy+MmlRTzMTeL/FlcRfxBen3OpbMcANgjOqRbL2Z9
+ IcHvtUULMQLBbMiVntsKw6P7skfeY11xQsBGNUa4Za4OCLRKIVTp41lBxhPM0pBJ+D5n
+ Egw8nXO7KH0MfhhGM2gC8uYbLinrHz8KeOnc+5p/3bQP3b+lh8YhAoLdsSK/E1PyuL7Y
+ i5mQ==
+X-Gm-Message-State: AOAM530ZnS9fZOnUks4MWWyA6M2EHksPgUgWnVu+u4V4twsDx6yhlkPW
+ ZAXAALGx/TVF9saPMyw3Fl0tvQ==
+X-Received: by 2002:adf:eb87:: with SMTP id t7mr4907450wrn.316.1610131921052; 
+ Fri, 08 Jan 2021 10:52:01 -0800 (PST)
+Received: from vanye.hemma.eciton.net
+ (cpc1-cmbg19-2-0-cust915.5-4.cable.virginm.net. [82.27.183.148])
+ by smtp.gmail.com with ESMTPSA id b19sm12353373wmj.37.2021.01.08.10.52.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Jan 2021 10:52:00 -0800 (PST)
+From: Leif Lindholm <leif@nuviainc.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 6/6] target/arm: add aarch32 ID register fields to cpu.h
+Date: Fri,  8 Jan 2021 18:51:54 +0000
+Message-Id: <20210108185154.8108-7-leif@nuviainc.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210108185154.8108-1-leif@nuviainc.com>
+References: <20210108185154.8108-1-leif@nuviainc.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,536 +112,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org,
- hskinnemoen@google.com, wuhaotsh@google.com, kfting@nuvoton.com,
- qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, f4bug@amsat.org
+Cc: Laurent Desnogues <laurent.desnogues@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Hao Wu <wuhaotsh@google.com>
-From: Hao Wu via <qemu-arm@nongnu.org>
-X-TUID: KMyTKnV2yIev
+X-TUID: DzzuqC/yyPy3
 
-We add a qtest for the PWM in the previous patch. It proves it works as
-expected.
+Add entries present in ARM DDI 0487F.c (August 2020).
 
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Leif Lindholm <leif@nuviainc.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Laurent Desnogues <laurent.desnogues@gmail.com>
 ---
- tests/qtest/meson.build        |   1 +
- tests/qtest/npcm7xx_pwm-test.c | 490 +++++++++++++++++++++++++++++++++
- 2 files changed, 491 insertions(+)
- create mode 100644 tests/qtest/npcm7xx_pwm-test.c
+ target/arm/cpu.h | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 955710d1c5..0b5467f084 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -136,6 +136,7 @@ qtests_sparc64 = \
- qtests_npcm7xx = \
-   ['npcm7xx_adc-test',
-    'npcm7xx_gpio-test',
-+   'npcm7xx_pwm-test',
-    'npcm7xx_rng-test',
-    'npcm7xx_timer-test',
-    'npcm7xx_watchdog_timer-test']
-diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
-new file mode 100644
-index 0000000000..33fbdf5f54
---- /dev/null
-+++ b/tests/qtest/npcm7xx_pwm-test.c
-@@ -0,0 +1,490 @@
-+/*
-+ * QTests for Nuvoton NPCM7xx PWM Modules.
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "libqos/libqtest.h"
-+#include "qapi/qmp/qdict.h"
-+#include "qapi/qmp/qnum.h"
-+
-+#define REF_HZ          25000000
-+
-+/* Register field definitions. */
-+#define CH_EN           BIT(0)
-+#define CH_INV          BIT(2)
-+#define CH_MOD          BIT(3)
-+
-+/* Registers shared between all PWMs in a module */
-+#define PPR             0x00
-+#define CSR             0x04
-+#define PCR             0x08
-+#define PIER            0x3c
-+#define PIIR            0x40
-+
-+/* CLK module related */
-+#define CLK_BA          0xf0801000
-+#define CLKSEL          0x04
-+#define CLKDIV1         0x08
-+#define CLKDIV2         0x2c
-+#define PLLCON0         0x0c
-+#define PLLCON1         0x10
-+#define PLL_INDV(rv)    extract32((rv), 0, 6)
-+#define PLL_FBDV(rv)    extract32((rv), 16, 12)
-+#define PLL_OTDV1(rv)   extract32((rv), 8, 3)
-+#define PLL_OTDV2(rv)   extract32((rv), 13, 3)
-+#define APB3CKDIV(rv)   extract32((rv), 28, 2)
-+#define CLK2CKDIV(rv)   extract32((rv), 0, 1)
-+#define CLK4CKDIV(rv)   extract32((rv), 26, 2)
-+#define CPUCKSEL(rv)    extract32((rv), 0, 2)
-+
-+#define MAX_DUTY        1000000
-+
-+typedef struct PWMModule {
-+    int irq;
-+    uint64_t base_addr;
-+} PWMModule;
-+
-+typedef struct PWM {
-+    uint32_t cnr_offset;
-+    uint32_t cmr_offset;
-+    uint32_t pdr_offset;
-+    uint32_t pwdr_offset;
-+} PWM;
-+
-+typedef struct TestData {
-+    const PWMModule *module;
-+    const PWM *pwm;
-+} TestData;
-+
-+static const PWMModule pwm_module_list[] = {
-+    {
-+        .irq        = 93,
-+        .base_addr  = 0xf0103000
-+    },
-+    {
-+        .irq        = 94,
-+        .base_addr  = 0xf0104000
-+    }
-+};
-+
-+static const PWM pwm_list[] = {
-+    {
-+        .cnr_offset     = 0x0c,
-+        .cmr_offset     = 0x10,
-+        .pdr_offset     = 0x14,
-+        .pwdr_offset    = 0x44,
-+    },
-+    {
-+        .cnr_offset     = 0x18,
-+        .cmr_offset     = 0x1c,
-+        .pdr_offset     = 0x20,
-+        .pwdr_offset    = 0x48,
-+    },
-+    {
-+        .cnr_offset     = 0x24,
-+        .cmr_offset     = 0x28,
-+        .pdr_offset     = 0x2c,
-+        .pwdr_offset    = 0x4c,
-+    },
-+    {
-+        .cnr_offset     = 0x30,
-+        .cmr_offset     = 0x34,
-+        .pdr_offset     = 0x38,
-+        .pwdr_offset    = 0x50,
-+    },
-+};
-+
-+static const int ppr_base[] = { 0, 0, 8, 8 };
-+static const int csr_base[] = { 0, 4, 8, 12 };
-+static const int pcr_base[] = { 0, 8, 12, 16 };
-+
-+static const uint32_t ppr_list[] = {
-+    0,
-+    1,
-+    10,
-+    100,
-+    255, /* Max possible value. */
-+};
-+
-+static const uint32_t csr_list[] = {
-+    0,
-+    1,
-+    2,
-+    3,
-+    4, /* Max possible value. */
-+};
-+
-+static const uint32_t cnr_list[] = {
-+    0,
-+    1,
-+    50,
-+    100,
-+    150,
-+    200,
-+    1000,
-+    10000,
-+    65535, /* Max possible value. */
-+};
-+
-+static const uint32_t cmr_list[] = {
-+    0,
-+    1,
-+    10,
-+    50,
-+    100,
-+    150,
-+    200,
-+    1000,
-+    10000,
-+    65535, /* Max possible value. */
-+};
-+
-+/* Returns the index of the PWM module. */
-+static int pwm_module_index(const PWMModule *module)
-+{
-+    ptrdiff_t diff = module - pwm_module_list;
-+
-+    g_assert_true(diff >= 0 && diff < ARRAY_SIZE(pwm_module_list));
-+
-+    return diff;
-+}
-+
-+/* Returns the index of the PWM entry. */
-+static int pwm_index(const PWM *pwm)
-+{
-+    ptrdiff_t diff = pwm - pwm_list;
-+
-+    g_assert_true(diff >= 0 && diff < ARRAY_SIZE(pwm_list));
-+
-+    return diff;
-+}
-+
-+static uint64_t pwm_qom_get(QTestState *qts, const char *path, const char *name)
-+{
-+    QDict *response;
-+
-+    g_test_message("Getting properties %s from %s", name, path);
-+    response = qtest_qmp(qts, "{ 'execute': 'qom-get',"
-+            " 'arguments': { 'path': %s, 'property': %s}}",
-+            path, name);
-+    /* The qom set message returns successfully. */
-+    g_assert_true(qdict_haskey(response, "return"));
-+    return qnum_get_uint(qobject_to(QNum, qdict_get(response, "return")));
-+}
-+
-+static uint64_t pwm_get_freq(QTestState *qts, int module_index, int pwm_index)
-+{
-+    char path[100];
-+    char name[100];
-+
-+    sprintf(path, "/machine/soc/pwm[%d]", module_index);
-+    sprintf(name, "freq[%d]", pwm_index);
-+
-+    return pwm_qom_get(qts, path, name);
-+}
-+
-+static uint64_t pwm_get_duty(QTestState *qts, int module_index, int pwm_index)
-+{
-+    char path[100];
-+    char name[100];
-+
-+    sprintf(path, "/machine/soc/pwm[%d]", module_index);
-+    sprintf(name, "duty[%d]", pwm_index);
-+
-+    return pwm_qom_get(qts, path, name);
-+}
-+
-+static uint32_t get_pll(uint32_t con)
-+{
-+    return REF_HZ * PLL_FBDV(con) / (PLL_INDV(con) * PLL_OTDV1(con)
-+            * PLL_OTDV2(con));
-+}
-+
-+static uint64_t read_pclk(QTestState *qts)
-+{
-+    uint64_t freq = REF_HZ;
-+    uint32_t clksel = qtest_readl(qts, CLK_BA + CLKSEL);
-+    uint32_t pllcon;
-+    uint32_t clkdiv1 = qtest_readl(qts, CLK_BA + CLKDIV1);
-+    uint32_t clkdiv2 = qtest_readl(qts, CLK_BA + CLKDIV2);
-+
-+    switch (CPUCKSEL(clksel)) {
-+    case 0:
-+        pllcon = qtest_readl(qts, CLK_BA + PLLCON0);
-+        freq = get_pll(pllcon);
-+        break;
-+    case 1:
-+        pllcon = qtest_readl(qts, CLK_BA + PLLCON1);
-+        freq = get_pll(pllcon);
-+        break;
-+    case 2:
-+        break;
-+    case 3:
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    freq >>= (CLK2CKDIV(clkdiv1) + CLK4CKDIV(clkdiv1) + APB3CKDIV(clkdiv2));
-+
-+    return freq;
-+}
-+
-+static uint32_t pwm_selector(uint32_t csr)
-+{
-+    switch (csr) {
-+    case 0:
-+        return 2;
-+    case 1:
-+        return 4;
-+    case 2:
-+        return 8;
-+    case 3:
-+        return 16;
-+    case 4:
-+        return 1;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static uint64_t pwm_compute_freq(QTestState *qts, uint32_t ppr, uint32_t csr,
-+        uint32_t cnr)
-+{
-+    return read_pclk(qts) / ((ppr + 1) * pwm_selector(csr) * (cnr + 1));
-+}
-+
-+static uint64_t pwm_compute_duty(uint32_t cnr, uint32_t cmr, bool inverted)
-+{
-+    uint64_t duty;
-+
-+    if (cnr == 0) {
-+        /* PWM is stopped. */
-+        duty = 0;
-+    } else if (cmr >= cnr) {
-+        duty = MAX_DUTY;
-+    } else {
-+        duty = MAX_DUTY * (cmr + 1) / (cnr + 1);
-+    }
-+
-+    if (inverted) {
-+        duty = MAX_DUTY - duty;
-+    }
-+
-+    return duty;
-+}
-+
-+static uint32_t pwm_read(QTestState *qts, const TestData *td, unsigned offset)
-+{
-+    return qtest_readl(qts, td->module->base_addr + offset);
-+}
-+
-+static void pwm_write(QTestState *qts, const TestData *td, unsigned offset,
-+        uint32_t value)
-+{
-+    qtest_writel(qts, td->module->base_addr + offset, value);
-+}
-+
-+static uint32_t pwm_read_ppr(QTestState *qts, const TestData *td)
-+{
-+    return extract32(pwm_read(qts, td, PPR), ppr_base[pwm_index(td->pwm)], 8);
-+}
-+
-+static void pwm_write_ppr(QTestState *qts, const TestData *td, uint32_t value)
-+{
-+    pwm_write(qts, td, PPR, value << ppr_base[pwm_index(td->pwm)]);
-+}
-+
-+static uint32_t pwm_read_csr(QTestState *qts, const TestData *td)
-+{
-+    return extract32(pwm_read(qts, td, CSR), csr_base[pwm_index(td->pwm)], 3);
-+}
-+
-+static void pwm_write_csr(QTestState *qts, const TestData *td, uint32_t value)
-+{
-+    pwm_write(qts, td, CSR, value << csr_base[pwm_index(td->pwm)]);
-+}
-+
-+static uint32_t pwm_read_pcr(QTestState *qts, const TestData *td)
-+{
-+    return extract32(pwm_read(qts, td, PCR), pcr_base[pwm_index(td->pwm)], 4);
-+}
-+
-+static void pwm_write_pcr(QTestState *qts, const TestData *td, uint32_t value)
-+{
-+    pwm_write(qts, td, PCR, value << pcr_base[pwm_index(td->pwm)]);
-+}
-+
-+static uint32_t pwm_read_cnr(QTestState *qts, const TestData *td)
-+{
-+    return pwm_read(qts, td, td->pwm->cnr_offset);
-+}
-+
-+static void pwm_write_cnr(QTestState *qts, const TestData *td, uint32_t value)
-+{
-+    pwm_write(qts, td, td->pwm->cnr_offset, value);
-+}
-+
-+static uint32_t pwm_read_cmr(QTestState *qts, const TestData *td)
-+{
-+    return pwm_read(qts, td, td->pwm->cmr_offset);
-+}
-+
-+static void pwm_write_cmr(QTestState *qts, const TestData *td, uint32_t value)
-+{
-+    pwm_write(qts, td, td->pwm->cmr_offset, value);
-+}
-+
-+/* Check pwm registers can be reset to default value */
-+static void test_init(gconstpointer test_data)
-+{
-+    const TestData *td = test_data;
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+    int module = pwm_module_index(td->module);
-+    int pwm = pwm_index(td->pwm);
-+
-+    g_assert_cmpuint(pwm_get_freq(qts, module, pwm), ==, 0);
-+    g_assert_cmpuint(pwm_get_duty(qts, module, pwm), ==, 0);
-+
-+    qtest_quit(qts);
-+}
-+
-+/* One-shot mode should not change frequency and duty cycle. */
-+static void test_oneshot(gconstpointer test_data)
-+{
-+    const TestData *td = test_data;
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+    int module = pwm_module_index(td->module);
-+    int pwm = pwm_index(td->pwm);
-+    uint32_t ppr, csr, pcr;
-+    int i, j;
-+
-+    pcr = CH_EN;
-+    for (i = 0; i < ARRAY_SIZE(ppr_list); ++i) {
-+        ppr = ppr_list[i];
-+        pwm_write_ppr(qts, td, ppr);
-+
-+        for (j = 0; j < ARRAY_SIZE(csr_list); ++j) {
-+            csr = csr_list[j];
-+            pwm_write_csr(qts, td, csr);
-+            pwm_write_pcr(qts, td, pcr);
-+
-+            g_assert_cmpuint(pwm_read_ppr(qts, td), ==, ppr);
-+            g_assert_cmpuint(pwm_read_csr(qts, td), ==, csr);
-+            g_assert_cmpuint(pwm_read_pcr(qts, td), ==, pcr);
-+            g_assert_cmpuint(pwm_get_freq(qts, module, pwm), ==, 0);
-+            g_assert_cmpuint(pwm_get_duty(qts, module, pwm), ==, 0);
-+        }
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+/* In toggle mode, the PWM generates correct outputs. */
-+static void test_toggle(gconstpointer test_data)
-+{
-+    const TestData *td = test_data;
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+    int module = pwm_module_index(td->module);
-+    int pwm = pwm_index(td->pwm);
-+    uint32_t ppr, csr, pcr, cnr, cmr;
-+    int i, j, k, l;
-+    uint64_t expected_freq, expected_duty;
-+
-+    pcr = CH_EN | CH_MOD;
-+    for (i = 0; i < ARRAY_SIZE(ppr_list); ++i) {
-+        ppr = ppr_list[i];
-+        pwm_write_ppr(qts, td, ppr);
-+
-+        for (j = 0; j < ARRAY_SIZE(csr_list); ++j) {
-+            csr = csr_list[j];
-+            pwm_write_csr(qts, td, csr);
-+
-+            for (k = 0; k < ARRAY_SIZE(cnr_list); ++k) {
-+                cnr = cnr_list[k];
-+                pwm_write_cnr(qts, td, cnr);
-+
-+                for (l = 0; l < ARRAY_SIZE(cmr_list); ++l) {
-+                    cmr = cmr_list[l];
-+                    pwm_write_cmr(qts, td, cmr);
-+                    expected_freq = pwm_compute_freq(qts, ppr, csr, cnr);
-+                    expected_duty = pwm_compute_duty(cnr, cmr, false);
-+
-+                    pwm_write_pcr(qts, td, pcr);
-+                    g_assert_cmpuint(pwm_read_ppr(qts, td), ==, ppr);
-+                    g_assert_cmpuint(pwm_read_csr(qts, td), ==, csr);
-+                    g_assert_cmpuint(pwm_read_pcr(qts, td), ==, pcr);
-+                    g_assert_cmpuint(pwm_read_cnr(qts, td), ==, cnr);
-+                    g_assert_cmpuint(pwm_read_cmr(qts, td), ==, cmr);
-+                    g_assert_cmpuint(pwm_get_duty(qts, module, pwm),
-+                            ==, expected_duty);
-+                    if (expected_duty != 0 && expected_duty != 100) {
-+                        /* Duty cycle with 0 or 100 doesn't need frequency. */
-+                        g_assert_cmpuint(pwm_get_freq(qts, module, pwm),
-+                                ==, expected_freq);
-+                    }
-+
-+                    /* Test inverted mode */
-+                    expected_duty = pwm_compute_duty(cnr, cmr, true);
-+                    pwm_write_pcr(qts, td, pcr | CH_INV);
-+                    g_assert_cmpuint(pwm_read_pcr(qts, td), ==, pcr | CH_INV);
-+                    g_assert_cmpuint(pwm_get_duty(qts, module, pwm),
-+                            ==, expected_duty);
-+                    if (expected_duty != 0 && expected_duty != 100) {
-+                        /* Duty cycle with 0 or 100 doesn't need frequency. */
-+                        g_assert_cmpuint(pwm_get_freq(qts, module, pwm),
-+                                ==, expected_freq);
-+                    }
-+
-+                }
-+            }
-+        }
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+static void pwm_add_test(const char *name, const TestData* td,
-+        GTestDataFunc fn)
-+{
-+    g_autofree char *full_name = g_strdup_printf(
-+            "npcm7xx_pwm/module[%d]/pwm[%d]/%s", pwm_module_index(td->module),
-+            pwm_index(td->pwm), name);
-+    qtest_add_data_func(full_name, td, fn);
-+}
-+#define add_test(name, td) pwm_add_test(#name, td, test_##name)
-+
-+int main(int argc, char **argv)
-+{
-+    TestData test_data_list[ARRAY_SIZE(pwm_module_list) * ARRAY_SIZE(pwm_list)];
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    for (int i = 0; i < ARRAY_SIZE(pwm_module_list); ++i) {
-+        for (int j = 0; j < ARRAY_SIZE(pwm_list); ++j) {
-+            TestData *td = &test_data_list[i * ARRAY_SIZE(pwm_list) + j];
-+
-+            td->module = &pwm_module_list[i];
-+            td->pwm = &pwm_list[j];
-+
-+            add_test(init, td);
-+            add_test(oneshot, td);
-+            add_test(toggle, td);
-+        }
-+    }
-+
-+    return g_test_run();
-+}
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 8300341a26..af3cce51f4 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1830,6 +1830,8 @@ FIELD(ID_ISAR6, DP, 4, 4)
+ FIELD(ID_ISAR6, FHM, 8, 4)
+ FIELD(ID_ISAR6, SB, 12, 4)
+ FIELD(ID_ISAR6, SPECRES, 16, 4)
++FIELD(ID_ISAR6, BF16, 20, 4)
++FIELD(ID_ISAR6, I8MM, 24, 4)
+ 
+ FIELD(ID_MMFR0, VMSA, 0, 4)
+ FIELD(ID_MMFR0, PMSA, 4, 4)
+@@ -1840,6 +1842,24 @@ FIELD(ID_MMFR0, AUXREG, 20, 4)
+ FIELD(ID_MMFR0, FCSE, 24, 4)
+ FIELD(ID_MMFR0, INNERSHR, 28, 4)
+ 
++FIELD(ID_MMFR1, L1HVDVA, 0, 4)
++FIELD(ID_MMFR1, L1UNIVA, 4, 4)
++FIELD(ID_MMFR1, L1HVDSW, 8, 4)
++FIELD(ID_MMFR1, L1UNISW, 12, 4)
++FIELD(ID_MMFR1, L1HVD, 16, 4)
++FIELD(ID_MMFR1, L1UNI, 20, 4)
++FIELD(ID_MMFR1, L1TSTCLN, 24, 4)
++FIELD(ID_MMFR1, BPRED, 28, 4)
++
++FIELD(ID_MMFR2, L1HVDFG, 0, 4)
++FIELD(ID_MMFR2, L1HVDBG, 4, 4)
++FIELD(ID_MMFR2, L1HVDRNG, 8, 4)
++FIELD(ID_MMFR2, HVDTLB, 12, 4)
++FIELD(ID_MMFR2, UNITLB, 16, 4)
++FIELD(ID_MMFR2, MEMBARR, 20, 4)
++FIELD(ID_MMFR2, WFISTALL, 24, 4)
++FIELD(ID_MMFR2, HWACCFLG, 28, 4)
++
+ FIELD(ID_MMFR3, CMAINTVA, 0, 4)
+ FIELD(ID_MMFR3, CMAINTSW, 4, 4)
+ FIELD(ID_MMFR3, BPMAINT, 8, 4)
+@@ -1858,6 +1878,8 @@ FIELD(ID_MMFR4, LSM, 20, 4)
+ FIELD(ID_MMFR4, CCIDX, 24, 4)
+ FIELD(ID_MMFR4, EVT, 28, 4)
+ 
++FIELD(ID_MMFR5, ETS, 0, 4)
++
+ FIELD(ID_PFR0, STATE0, 0, 4)
+ FIELD(ID_PFR0, STATE1, 4, 4)
+ FIELD(ID_PFR0, STATE2, 8, 4)
+@@ -1876,6 +1898,10 @@ FIELD(ID_PFR1, SEC_FRAC, 20, 4)
+ FIELD(ID_PFR1, VIRT_FRAC, 24, 4)
+ FIELD(ID_PFR1, GIC, 28, 4)
+ 
++FIELD(ID_PFR2, CSV3, 0, 4)
++FIELD(ID_PFR2, SSBS, 4, 4)
++FIELD(ID_PFR2, RAS_FRAC, 8, 4)
++
+ FIELD(ID_AA64ISAR0, AES, 4, 4)
+ FIELD(ID_AA64ISAR0, SHA1, 8, 4)
+ FIELD(ID_AA64ISAR0, SHA2, 12, 4)
+@@ -1990,6 +2016,8 @@ FIELD(ID_DFR0, MPROFDBG, 20, 4)
+ FIELD(ID_DFR0, PERFMON, 24, 4)
+ FIELD(ID_DFR0, TRACEFILT, 28, 4)
+ 
++FIELD(ID_DFR1, MTPMU, 0, 4)
++
+ FIELD(DBGDIDR, SE_IMP, 12, 1)
+ FIELD(DBGDIDR, NSUHD_IMP, 14, 1)
+ FIELD(DBGDIDR, VERSION, 16, 4)
 -- 
-2.29.2.729.g45daf8777d-goog
+2.20.1
 

@@ -1,108 +1,139 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp453437lfq;
-        Fri, 8 Jan 2021 04:33:03 -0800 (PST)
-X-Received: by 2002:a05:6402:610:: with SMTP id n16mr5004749edv.172.1610109182994;
-        Fri, 08 Jan 2021 04:33:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610109182; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp532940lfq;
+        Fri, 8 Jan 2021 06:16:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw9hZc6lXXfmwjtX5uSwlnI0XEQ7PmUGPr7eWrpyIL3IhMTh1ph180CFazmlLFB94sXy5hJ
+X-Received: by 2002:ab0:1d95:: with SMTP id l21mr2930865uak.138.1610115412693;
+        Fri, 08 Jan 2021 06:16:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610115412; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lax/iubh7oT9QhDP/xHV23p60M/fnb73nMPuA0Vn+oTpl1A/yKX/zO8K7VgEu00ZFM
-         BGJKyZov9CydhfxKnVKN4FzUvjxqa87No7CBJt0Y2+hMkaxFBUF+ohkwkqFAGCjqWRon
-         nl8IM/T+cv8Tz31r0BJo/V7/PMtvspuh+zYOERrSGEHTwAq0eqRWBQ8aGbT/DdpGI6tr
-         olTd9pifCNyyNJUZq6gk3DI1ApQgc5Rj8+aAZ0cVW0wfFzaKgLN0xVxn/M6o1HH3dz/X
-         +rHvhusGK+bhgQr4ZH+FOnz8Kbi3x4B8t63GQuHyruzYvYj+5hwVry+gnV4vz//qJ5Bu
-         +MVw==
+        b=TF2pmKpePpr+bNS87UdmzCruiz+7r4DciBjziJ8b1N2z1StU4GpwmTQNVzyphdeDEe
+         21pGI9+Bz4cW0xmS03IRFfqv1U6LOJ/44OETM/F8gM2pjSWZBsYEWgwQbpyKcCKqa+R6
+         2rM3EahhDn7eAhQXgak2iMTwLl12dLIzwnOMZb9C5jv93cx14zP8i8Sqid3nMMDiwW5A
+         nlJhWQdutwyR436GlLU98t3TvdqJBsm9jbKdW6YfefrQBQTloKo9i6eKodkgbMA326bU
+         ZNa75NtRvpOFpgnu6PJD25JIswVOjI5k/WVi5g5T27ld1VB9osQVg3SGK063fTwU7P2u
+         O5kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=m/b6wFjDIupbvlkZPrdivnWfIEm3/ToydQnfE+0PcQs=;
-        b=pzoaUUGPU5F4DdYFXNIB1dF9szQA4bqzTKMv+WV9bdUi8gg+JI700XHs0LhqsfV/ea
-         kIyZ+AwOjR3H5x/Px316ND91zXD2kmeaz1dwDAWaD97FbgLAKPGVBY1fTK1zd0e/9PuT
-         dqbDXXeOyvxNioS4hNua+1BXp7RV2TS5Cfvbih++k64ItGvit7ZuMypI15M25yc3x7Pc
-         0RQqIBRydPpNhVEfkwRYHLOreNGEBnzhQXuoqp3FfIOenW+tF/K5FW8E3pgy0qxyUY22
-         5B4DI09n15U6S/gTkuKIsSkLTKthKI8PpLnf08uJA20zsNH7RkKMqB2ltQxpxcDnAiC+
-         kQaw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=mLQfpG/xAL/ln16xrJTSA3DJ4YwPS5WhjEJngGqR6gs=;
+        b=jY4PKMM71IZ39g83/n5H4cydAaN2HcJnConChVwr0WdlEryc3fVi84SdZv5wGCHUJD
+         GTfImEBgu/P1Jo++mB2Ty4s3IPFuCXLE3fPR/YRfagi8daBrlsV6oJHGuEjNXnaFU1kX
+         sKBsef3TJJAJ64b+YXgLKcGTaqKrGNBXRXfmWo830e3qu6qDTS9tNGvxY7RcjC5fqLhz
+         swvyG3ax0R9TgxeEkQTGoYZLsaq+NWb+n1KGmQrfuE36ZUkel2i7b740TencN1KR5EfY
+         xDK9KsijzD4emd6NEU6u3sPuXe2oFZd/a0KbuCXuW7uzVF2bLMbpyBzMLP7ZvB9DzZCe
+         dMCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sbP7y+UN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r21sor5812474eja.83.2021.01.08.04.33.02
+       dkim=fail header.i=@linaro.org header.s=google header.b=OHLVtNHB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e12si488754vso.26.2021.01.08.06.16.52
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 08 Jan 2021 04:33:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 08 Jan 2021 06:16:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sbP7y+UN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=m/b6wFjDIupbvlkZPrdivnWfIEm3/ToydQnfE+0PcQs=;
-        b=sbP7y+UNhg+POmULDcnPoum1OYT/C6sh/crty3KndnYnIrliusB/PmDl/ublCagdQ1
-         Wmo2B7JCeIzKWU3Db7HKIkIhyS21m5QI8WJ+I5INzP02LSInjFal28vVJW/bOGJEFwyZ
-         et9finAzmVb49pzzsl4h/yh5xSIxIZghEJZ4wGKeXAPei44wD2IzDP0VndKGrbkz6Lfd
-         YFxLYd15HeNN45+oBA3uZFRW7icBgXKZ80WYbJPJ2jzJyE8LvGZi9THAzZAQf/WraiLp
-         hMYulIwV+XYPMruiuIiw9svoJiizbyMeq5JrmdKQeHrmXFz7gm1jIcPu4kMnKXImLYCA
-         JHaA==
+       dkim=fail header.i=@linaro.org header.s=google header.b=OHLVtNHB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43214 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kxsZQ-0003df-0r
+	for alex.bennee@linaro.org; Fri, 08 Jan 2021 09:16:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54694)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxsZ4-0003cU-Ig
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 09:16:30 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:45809)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kxsZ3-0008Hm-0T
+ for qemu-arm@nongnu.org; Fri, 08 Jan 2021 09:16:30 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id r5so11263911eda.12
+ for <qemu-arm@nongnu.org>; Fri, 08 Jan 2021 06:16:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=mLQfpG/xAL/ln16xrJTSA3DJ4YwPS5WhjEJngGqR6gs=;
+ b=OHLVtNHB+2BCxQKaNgj6fgBd/yPMcjWxDycF9GYIoQdWppGbjIMzKSL4XztoDlQm5b
+ oe2sY7sm8X5yW2gJbZYNK080Db1p9axUSMP2r56BRRhI5qFdL0ayV8d/gFeJ9+pyEcod
+ bBU25DPYbjj24QP/r7oCmqjzmw6i7QxQ25fQn+LoO3dFrdy0HUUSQ3jr91hEVEVWMwcM
+ ZZafUn7YYsjFqfQKkGrhZtTnO1unkIMdK9ghwmhDi37x43ihvf0HpWxBL8O/0M7PEZ3W
+ 0YaCx9UO4L29yjKGTM22TKmjqwwwL3trbMLxjYjX/hh7yHu7bxWIEw6HqkDbWKwZuwFc
+ 6nhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=m/b6wFjDIupbvlkZPrdivnWfIEm3/ToydQnfE+0PcQs=;
-        b=XPTQ16K8urkNr+MuD72swwAvX6tvzHcv/JyBNe8SkcAaLvYw8UYuksyQWdohTzPi00
-         2ybrYsF5ojNJlhrHXH/3nd5275hFiZw1TWJqfG2p/zJmb9f/5OwErFmOmRLF2FcwbKuR
-         jFdE973UQdPxBLpnwml3btO4U3eluYmTmEqFGNkKvgVvWGQo8q9vA4a3KLzxcoYpLL2E
-         JjVPTqLYNALQcYX8B+UvubyH+iMQUO/9o9J6XngOGP7CYFS90GzksZGTuDXxEzqFz38s
-         wlSbF5jog0acZnH6/E5Cg4hYde5oQ5eYZf9KyOHldXES6gvoQ1UWpXoRxQb/yD6nT6m/
-         k1gA==
-X-Gm-Message-State: AOAM530y9XLW4ELe16pfIL6sMew7NrXdB9jGFzHKy03vFMPbC1af7RpI
-	QqBQQxicVoNFXGdkpjWZSOBtZFQbGI36AekcrvCcBQ13
-X-Google-Smtp-Source: ABdhPJwdiwLyWAAOJ20aWYX2VCXY1kCBN6OWt2ziwddP5UDIl3Y0FJIhLCzEVn1f8CAsNx1WJOpGwcsX180fT71QgWs=
-X-Received: by 2002:aa7:cdc3:: with SMTP id h3mr5037337edw.52.1610109182722;
- Fri, 08 Jan 2021 04:33:02 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=mLQfpG/xAL/ln16xrJTSA3DJ4YwPS5WhjEJngGqR6gs=;
+ b=tz05AjqdYlmtNfprwcaoRCil+nKcty/pgb2uTJczPqx6IOs1uWNN4XtbwH1E9JnqW1
+ Ww6s5zzGxfjbT+zYFi1N+CqZ4/t0IWHoZTF41VKx/MLO4k4gIAWaICb2HMphWoQgcdwg
+ X8AdimlV4VBtWOh1dQKdp7d54zrocJ/8ynZTWX1HNMSlHLc9dgAT6ti1iZguSm1xf4iM
+ twTT7YvyXDGEsFMoKddgQCfxfScXyx9VQhnc+b00ipYUUlyFLoZ7YeW97F6YODctuHKR
+ l9kzJtUmPoRxGnoIhy8fVU6Db4WrMeQXyDjC1IAbEK/H5eYrhuq6VLa0bdyspaSZNiOm
+ BhDg==
+X-Gm-Message-State: AOAM531iKPBAdcRiarmbHYltxBjwsHElSBFgigrXSho5mpwZiFzCefp9
+ dE0N0IG3PYIQ11klyo5RKizHOtQPjDu1K/dS7ZGbmQ==
+X-Received: by 2002:a05:6402:366:: with SMTP id
+ s6mr5296788edw.44.1610115387614; 
+ Fri, 08 Jan 2021 06:16:27 -0800 (PST)
 MIME-Version: 1.0
-References: <20210106063504.10841-1-bmeng.cn@gmail.com>
-In-Reply-To: <20210106063504.10841-1-bmeng.cn@gmail.com>
+References: <20201216221247.522686-1-richard.henderson@linaro.org>
+ <20201216221247.522686-3-richard.henderson@linaro.org>
+In-Reply-To: <20201216221247.522686-3-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Jan 2021 12:32:51 +0000
-Message-ID: <CAFEAcA_FdQBSQkr5z7PFnC7TzWkaA92w4Msy4bCrB2qUbXWLMA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/4] hw/arm: sabrelite: Improve emulation fidelity to
- allow booting upstream U-Boot
-To: Bin Meng <bmeng.cn@gmail.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, Bin Meng <bin.meng@windriver.com>
+Date: Fri, 8 Jan 2021 14:16:16 +0000
+Message-ID: <CAFEAcA-ptDOQ-yO5KXiVe3E1UFyDH8wj-705F7fQXR4bsVxxBA@mail.gmail.com>
+Subject: Re: [PATCH v4 2/3] target/arm: Add cpu properties to control pauth
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: KYqWTC46tVEy
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Nzq+grnJZzSN
 
-On Wed, 6 Jan 2021 at 06:35, Bin Meng <bmeng.cn@gmail.com> wrote:
+On Wed, 16 Dec 2020 at 22:12, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> From: Bin Meng <bin.meng@windriver.com>
+> The crypto overhead of emulating pauth can be significant for
+> some workloads.  Add two boolean properties that allows the
+> feature to be turned off, on with the architected algorithm,
+> or on with an implementation defined algorithm.
 >
+> We need two intermediate booleans to control the state while
+> parsing properties lest we clobber ID_AA64ISAR1 into an invalid
+> intermediate state.
 >
-> At present the upstream U-Boot (as of today, v2021.01-rc3) does not
-> boot on QEMU sabrelite machine.
->
-> This fixes several issues to improve emulation fidelity of the i.MX6
-> sabrelite board. With this series, upstream U-Boot can boot to U-Boot
-> command shell. While we are here, add a target guide for this board
-> to help people run Linux kernel and U-Boot on QEMU.
->
-> Changes in v3:
-> - correct 2 typos in sabrelite.rst
->
-> Changes in v2:
-> - new patch: add sabrelite target guide
->
-> Bin Meng (4):
->   hw/misc: imx6_ccm: Update PMU_MISC0 reset value
->   hw/msic: imx6_ccm: Correct register value for silicon type
->   hw/arm: sabrelite: Connect the Ethernet PHY at address 6
->   docs/system: arm: Add sabrelite board description
+> Tested-by: Mark Rutland <mark.rutland@arm.com>
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
+Could we have some documentation of the properties in
+docs/system/arm/cpu-features.rst, please?
 
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

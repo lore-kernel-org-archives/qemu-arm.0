@@ -1,230 +1,257 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id k10sm14065753wrq.38.2021.01.08.14.43.02
+        by smtp.gmail.com with ESMTPSA id u66sm13673919wmg.30.2021.01.08.14.43.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Jan 2021 14:43:08 -0800 (PST)
+        Fri, 08 Jan 2021 14:43:11 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E67FE1FF99;
-	Fri,  8 Jan 2021 22:42:57 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 4B2511FF9C;
+	Fri,  8 Jan 2021 22:42:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Luis Machado <luis.machado@linaro.org>,
+Cc: Keith Packard <keithp@keithp.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Laurent Vivier <laurent@vivier.eu>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 10/20] target/arm: use official org.gnu.gdb.aarch64.sve layout for registers
-Date: Fri,  8 Jan 2021 22:42:46 +0000
-Message-Id: <20210108224256.2321-11-alex.bennee@linaro.org>
+Subject: [PATCH  v1 13/20] semihosting: Change common-semi API to be architecture-independent
+Date: Fri,  8 Jan 2021 22:42:49 +0000
+Message-Id: <20210108224256.2321-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210108224256.2321-1-alex.bennee@linaro.org>
 References: <20210108224256.2321-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: s6EFUKZrWi6D
+X-TUID: 0QSe/uu/ba95
 
-While GDB can work with any XML description given to it there is
-special handling for SVE registers on the GDB side which makes the
-users life a little better. The changes aren't that major and all the
-registers save the $vg reported the same. All that changes is:
+From: Keith Packard <keithp@keithp.com>
 
-  - report org.gnu.gdb.aarch64.sve
-  - use gdb nomenclature for names and types
-  - minor re-ordering of the types to match reference
-  - re-enable ieee_half (as we know gdb supports it now)
-  - $vg is now a 64 bit int
-  - check $vN and $zN aliasing in test
+The public API is now defined in
+hw/semihosting/common-semi.h. do_common_semihosting takes CPUState *
+instead of CPUARMState *. All internal functions have been renamed
+common_semi_ instead of arm_semi_ or arm_. Aside from the API change,
+there are no functional changes in this patch.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Luis Machado <luis.machado@linaro.org>
-Message-Id: <20201218112707.28348-10-alex.bennee@linaro.org>
+Signed-off-by: Keith Packard <keithp@keithp.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Message-Id: <20210107170717.2098982-3-keithp@keithp.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/gdbstub.c                        | 75 ++++++++-------------
- target/arm/helper.c                         |  2 +-
- tests/tcg/aarch64/gdbstub/test-sve-ioctl.py | 11 +++
- 3 files changed, 41 insertions(+), 47 deletions(-)
+ hw/semihosting/common-semi.h  | 36 +++++++++++++++++++++++++++++++++++
+ target/arm/cpu.h              |  8 --------
+ hw/semihosting/common-semi.c  | 16 ++++++++++------
+ linux-user/aarch64/cpu_loop.c |  3 ++-
+ linux-user/arm/cpu_loop.c     |  3 ++-
+ target/arm/helper.c           |  5 +++--
+ target/arm/m_helper.c         |  7 ++++++-
+ 7 files changed, 59 insertions(+), 19 deletions(-)
+ create mode 100644 hw/semihosting/common-semi.h
 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 866595b4f1..a8fff2a3d0 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -195,22 +195,17 @@ static const struct TypeSize vec_lanes[] = {
-     { "uint128", 128, 'q', 'u' },
-     { "int128", 128, 'q', 's' },
-     /* 64 bit */
-+    { "ieee_double", 64, 'd', 'f' },
-     { "uint64", 64, 'd', 'u' },
-     { "int64", 64, 'd', 's' },
--    { "ieee_double", 64, 'd', 'f' },
-     /* 32 bit */
-+    { "ieee_single", 32, 's', 'f' },
-     { "uint32", 32, 's', 'u' },
-     { "int32", 32, 's', 's' },
--    { "ieee_single", 32, 's', 'f' },
-     /* 16 bit */
-+    { "ieee_half", 16, 'h', 'f' },
-     { "uint16", 16, 'h', 'u' },
-     { "int16", 16, 'h', 's' },
--    /*
--     * TODO: currently there is no reliable way of telling
--     * if the remote gdb actually understands ieee_half so
--     * we don't expose it in the target description for now.
--     * { "ieee_half", 16, 'h', 'f' },
--     */
-     /* bytes */
-     { "uint8", 8, 'b', 'u' },
-     { "int8", 8, 'b', 's' },
-@@ -223,17 +218,16 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
-     GString *s = g_string_new(NULL);
-     DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
-     g_autoptr(GString) ts = g_string_new("");
--    int i, bits, reg_width = (cpu->sve_max_vq * 128);
-+    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
-     info->num = 0;
-     g_string_printf(s, "<?xml version=\"1.0\"?>");
-     g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
--    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.aarch64.sve\">");
-+    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
+diff --git a/hw/semihosting/common-semi.h b/hw/semihosting/common-semi.h
+new file mode 100644
+index 0000000000..bc53e92c79
+--- /dev/null
++++ b/hw/semihosting/common-semi.h
+@@ -0,0 +1,36 @@
++/*
++ *  Semihosting support for systems modeled on the Arm "Angel"
++ *  semihosting syscalls design.
++ *
++ *  Copyright (c) 2005, 2007 CodeSourcery.
++ *  Copyright (c) 2019 Linaro
++ *  Written by Paul Brook.
++ *
++ *  Copyright © 2020 by Keith Packard <keithp@keithp.com>
++ *  Adapted for systems other than ARM, including RISC-V, by Keith Packard
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation; either version 2 of the License, or
++ *  (at your option) any later version.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
++ *
++ *  ARM Semihosting is documented in:
++ *     Semihosting for AArch32 and AArch64 Release 2.0
++ *     https://static.docs.arm.com/100863/0200/semihosting.pdf
++ *
++ */
++
++#ifndef COMMON_SEMI_H
++#define COMMON_SEMI_H
++
++target_ulong do_common_semihosting(CPUState *cs);
++
++#endif /* COMMON_SEMI_H */
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 7e6c881a7e..49d9a314db 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1068,14 +1068,6 @@ static inline void aarch64_sve_change_el(CPUARMState *env, int o,
+ static inline void aarch64_add_sve_properties(Object *obj) { }
+ #endif
  
-     /* First define types and totals in a whole VL */
-     for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
-         int count = reg_width / vec_lanes[i].size;
--        g_string_printf(ts, "vq%d%c%c", count,
--                        vec_lanes[i].sz, vec_lanes[i].suffix);
-+        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
-         g_string_append_printf(s,
-                                "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
-                                ts->str, vec_lanes[i].gdb_type, count);
-@@ -243,39 +237,37 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
-      * signed and potentially float versions of each size from 128 to
-      * 8 bits.
+-#if !defined(CONFIG_TCG)
+-static inline target_ulong do_arm_semihosting(CPUARMState *env)
+-{
+-    g_assert_not_reached();
+-}
+-#else
+-target_ulong do_arm_semihosting(CPUARMState *env);
+-#endif
+ void aarch64_sync_32_to_64(CPUARMState *env);
+ void aarch64_sync_64_to_32(CPUARMState *env);
+ 
+diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
+index 93360e28c7..2e959aba08 100644
+--- a/hw/semihosting/common-semi.c
++++ b/hw/semihosting/common-semi.c
+@@ -1,10 +1,14 @@
+ /*
+- *  Arm "Angel" semihosting syscalls
++ *  Semihosting support for systems modeled on the Arm "Angel"
++ *  semihosting syscalls design.
+  *
+  *  Copyright (c) 2005, 2007 CodeSourcery.
+  *  Copyright (c) 2019 Linaro
+  *  Written by Paul Brook.
+  *
++ *  Copyright © 2020 by Keith Packard <keithp@keithp.com>
++ *  Adapted for systems other than ARM, including RISC-V, by Keith Packard
++ *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+  *  the Free Software Foundation; either version 2 of the License, or
+@@ -373,12 +377,12 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
+      * do anything with its return value, because it is not necessarily
+      * the result of the syscall, but could just be the old value of X0.
+      * The only thing safe to do with this is that the callers of
+-     * do_arm_semihosting() will write it straight back into X0.
++     * do_common_semihosting() will write it straight back into X0.
+      * (In linux-user mode, the callback will have happened before
+      * gdb_do_syscallv() returns.)
+      *
+      * We should tidy this up so neither this function nor
+-     * do_arm_semihosting() return a value, so the mistake of
++     * do_common_semihosting() return a value, so the mistake of
+      * doing something with the return value is not possible to make.
       */
--    for (bits = 128; bits >= 8; bits /= 2) {
--        int count = reg_width / bits;
--        g_string_append_printf(s, "<union id=\"vq%dn\">", count);
--        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
--            if (vec_lanes[i].size == bits) {
--                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%d%c%c\"/>",
--                                       vec_lanes[i].suffix,
--                                       count,
--                                       vec_lanes[i].sz, vec_lanes[i].suffix);
-+    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
-+        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
-+        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
-+        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
-+            if (vec_lanes[j].size == bits) {
-+                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
-+                                       vec_lanes[j].suffix,
-+                                       vec_lanes[j].sz, vec_lanes[j].suffix);
-             }
-         }
-         g_string_append(s, "</union>");
-     }
-     /* And now the final union of unions */
--    g_string_append(s, "<union id=\"vq\">");
--    for (bits = 128; bits >= 8; bits /= 2) {
--        int count = reg_width / bits;
--        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
--            if (vec_lanes[i].size == bits) {
--                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%dn\"/>",
--                                       vec_lanes[i].sz, count);
--                break;
--            }
--        }
-+    g_string_append(s, "<union id=\"svev\">");
-+    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
-+        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
-+        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
-+                               suf[i], suf[i]);
-     }
-     g_string_append(s, "</union>");
  
-+    /* Finally the sve prefix type */
-+    g_string_append_printf(s,
-+                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
-+                           reg_width / 8);
-+
-     /* Then define each register in parts for each vq */
-     for (i = 0; i < 32; i++) {
-         g_string_append_printf(s,
-                                "<reg name=\"z%d\" bitsize=\"%d\""
--                               " regnum=\"%d\" group=\"vector\""
--                               " type=\"vq\"/>",
-+                               " regnum=\"%d\" type=\"svev\"/>",
-                                i, reg_width, base_reg++);
-         info->num++;
-     }
-@@ -287,31 +279,22 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
-                            " regnum=\"%d\" group=\"float\""
-                            " type=\"int\"/>", base_reg++);
-     info->num += 2;
--    /*
--     * Predicate registers aren't so big they are worth splitting up
--     * but we do need to define a type to hold the array of quad
--     * references.
--     */
--    g_string_append_printf(s,
--                           "<vector id=\"vqp\" type=\"uint16\" count=\"%d\"/>",
--                           cpu->sve_max_vq);
-+
-     for (i = 0; i < 16; i++) {
-         g_string_append_printf(s,
-                                "<reg name=\"p%d\" bitsize=\"%d\""
--                               " regnum=\"%d\" group=\"vector\""
--                               " type=\"vqp\"/>",
-+                               " regnum=\"%d\" type=\"svep\"/>",
-                                i, cpu->sve_max_vq * 16, base_reg++);
-         info->num++;
-     }
-     g_string_append_printf(s,
-                            "<reg name=\"ffr\" bitsize=\"%d\""
-                            " regnum=\"%d\" group=\"vector\""
--                           " type=\"vqp\"/>",
-+                           " type=\"svep\"/>",
-                            cpu->sve_max_vq * 16, base_reg++);
-     g_string_append_printf(s,
-                            "<reg name=\"vg\" bitsize=\"64\""
--                           " regnum=\"%d\" group=\"vector\""
--                           " type=\"uint32\"/>",
-+                           " regnum=\"%d\" type=\"int\"/>",
-                            base_reg++);
-     info->num += 2;
-     g_string_append_printf(s, "</feature>");
+@@ -675,10 +679,10 @@ static const GuestFDFunctions guestfd_fns[] = {
+  * leave the register unchanged. We use 0xdeadbeef as the return value
+  * when there isn't a defined return value for the call.
+  */
+-target_ulong do_arm_semihosting(CPUARMState *env)
++target_ulong do_common_semihosting(CPUState *cs)
+ {
+-    ARMCPU *cpu = env_archcpu(env);
+-    CPUState *cs = env_cpu(env);
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
+     target_ulong args;
+     target_ulong arg0, arg1, arg2, arg3;
+     char * s;
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index bbe9fefca8..42b9c15f53 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -22,6 +22,7 @@
+ #include "qemu.h"
+ #include "cpu_loop-common.h"
+ #include "qemu/guest-random.h"
++#include "hw/semihosting/common-semi.h"
+ 
+ #define get_user_code_u32(x, gaddr, env)                \
+     ({ abi_long __r = get_user_u32((x), (gaddr));       \
+@@ -129,7 +130,7 @@ void cpu_loop(CPUARMState *env)
+             queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+             break;
+         case EXCP_SEMIHOST:
+-            env->xregs[0] = do_arm_semihosting(env);
++            env->xregs[0] = do_common_semihosting(cs);
+             env->pc += 4;
+             break;
+         case EXCP_YIELD:
+diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+index 3d272b56ef..cadfb7fa43 100644
+--- a/linux-user/arm/cpu_loop.c
++++ b/linux-user/arm/cpu_loop.c
+@@ -22,6 +22,7 @@
+ #include "qemu.h"
+ #include "elf.h"
+ #include "cpu_loop-common.h"
++#include "hw/semihosting/common-semi.h"
+ 
+ #define get_user_code_u32(x, gaddr, env)                \
+     ({ abi_long __r = get_user_u32((x), (gaddr));       \
+@@ -421,7 +422,7 @@ void cpu_loop(CPUARMState *env)
+             }
+             break;
+         case EXCP_SEMIHOST:
+-            env->regs[0] = do_arm_semihosting(env);
++            env->regs[0] = do_common_semihosting(cs);
+             env->regs[15] += env->thumb ? 2 : 4;
+             break;
+         case EXCP_INTERRUPT:
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d077dd9ef5..d434044f07 100644
+index d434044f07..a2ad77eb4e 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -276,7 +276,7 @@ static int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
-          * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
-          */
-         int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
--        return gdb_get_reg32(buf, vq * 2);
-+        return gdb_get_reg64(buf, vq * 2);
+@@ -34,6 +34,7 @@
+ #ifdef CONFIG_TCG
+ #include "arm_ldst.h"
+ #include "exec/cpu_ldst.h"
++#include "hw/semihosting/common-semi.h"
+ #endif
+ 
+ #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+@@ -9875,13 +9876,13 @@ static void handle_semihosting(CPUState *cs)
+         qemu_log_mask(CPU_LOG_INT,
+                       "...handling as semihosting call 0x%" PRIx64 "\n",
+                       env->xregs[0]);
+-        env->xregs[0] = do_arm_semihosting(env);
++        env->xregs[0] = do_common_semihosting(cs);
+         env->pc += 4;
+     } else {
+         qemu_log_mask(CPU_LOG_INT,
+                       "...handling as semihosting call 0x%x\n",
+                       env->regs[0]);
+-        env->regs[0] = do_arm_semihosting(env);
++        env->regs[0] = do_common_semihosting(cs);
+         env->regs[15] += env->thumb ? 2 : 4;
      }
-     default:
-         /* gdbstub asked for something out our range */
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-index 972cf73c31..b9ef169c1a 100644
---- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-+++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-@@ -40,6 +40,17 @@ class TestBreakpoint(gdb.Breakpoint):
-         except gdb.error:
-             report(False, "checking zregs (out of range)")
+ }
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 643dcafb83..6176003029 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -31,6 +31,7 @@
+ #ifdef CONFIG_TCG
+ #include "arm_ldst.h"
+ #include "exec/cpu_ldst.h"
++#include "hw/semihosting/common-semi.h"
+ #endif
  
-+        # Check the aliased V registers are set and GDB has correctly
-+        # created them for us having recognised and handled SVE.
-+        try:
-+            for i in range(0, 16):
-+                val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
-+                val_v = gdb.parse_and_eval("$v0.b.u[%d]" % i)
-+                report(int(val_z) == int(val_v),
-+                       "v0.b.u[%d] == z0.b.u[%d]" % (i, i))
-+        except gdb.error:
-+            report(False, "checking vregs (out of range)")
-+
- 
- def run_test():
-     "Run through the tests one by one"
+ static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
+@@ -2306,7 +2307,11 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+         qemu_log_mask(CPU_LOG_INT,
+                       "...handling as semihosting call 0x%x\n",
+                       env->regs[0]);
+-        env->regs[0] = do_arm_semihosting(env);
++#ifdef CONFIG_TCG
++        env->regs[0] = do_common_semihosting(cs);
++#else
++        g_assert_not_reached();
++#endif
+         env->regs[15] += env->thumb ? 2 : 4;
+         return;
+     case EXCP_BKPT:
 -- 
 2.20.1

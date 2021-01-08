@@ -1,101 +1,73 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp784048lfq;
-        Wed, 6 Jan 2021 04:13:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy+hu0wa2F5ppp0L0su0+TKaCdKjIC4bdSHIJNaOMo7gSuPvCPl8U0KFsn52auWYf3TaikJ
-X-Received: by 2002:a25:40cb:: with SMTP id n194mr5595461yba.30.1609935235274;
-        Wed, 06 Jan 2021 04:13:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609935235; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp332003lfq;
+        Fri, 8 Jan 2021 01:08:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyfftxVmalCx3sMqPl8WcEg+46u7YT8+XID/ic7SbJn5F9xDUiRDmMkambKeo6BPPkgOmrW
+X-Received: by 2002:a25:ba88:: with SMTP id s8mr4434554ybg.183.1610096919639;
+        Fri, 08 Jan 2021 01:08:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610096919; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikto5mXvWnWorUMblUVVpcj7HTUqItPAdbAh4Nw0lAtmjIRS02izk+h1L+SlECKT86
-         B1zAmU1Mg9uR8agPCmub1U4aeGtlwhgE1Z2y6jaVkeOEBsbqIeg8DUe8kyxNVQoDRDEA
-         CVid7rpxnoE0q+hqKpaamgvwWeS8DV+HgaF83NxAYOfRMesfd6G/0fUFx1Lc1djggnug
-         jFbveCw7v++tVDXw7/0H50lH5AmU/U6HZiKhq6xHZPCuDbVP4YM+UjUM9DdxAsq2lW8p
-         LB6Fnzw6WgL+6qr8slHKOhkzQNDNwBIijmIBJurEz6vU7Z/7bZs76n+otDRbyazvFO8l
-         2QPg==
+        b=yVfO99gopbstLr1l8k58JjTGT0QgpnHdPVmpAG9O0CnPwDjoS3RfmuZc5DXUyLBI6+
+         NFlOQYNxx+dGoN7+kQivWnoSztZgrVnt7xdAoPaiXwFLj7vqD4HS1/g9CWVsvf3Z9bYX
+         KVJRBnjSOYjA1rH9CTnbut43VDEHQBZ0gknM/AyswA5ND0TUVWbi2rkJJTZ5lJc52u2o
+         Bc47Wz5QsaFRTxI1NoLnZJxIHh13qbPTTbwHBeBDTx1RDa32fll2OME80oHeNyi2HdxW
+         iAxEde82u68heB6ENMFYCtPAic+fGdeBtwR5NNjUWktXEfn86R/oYORbZrIPtSNUvZes
+         gVuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=c+EzoNODPzaBLH17xv1nNpILReIYs1e3B66+EmkgoMM=;
-        b=Lws90TxfEpvufRdRZHIWNgz1aidlay4B9zGWCvP4MXuEph8aupPQxkLZaPwxnVF0qu
-         GZ+gXEgMu44to2WAH8Zk9jCaNCTVJ6lgsEB1tQBE/8dIaW8XlnjyhYEiInPsKnIpQ5r6
-         wAQ3WYLpyeJOkjJsm77KoWI+d6ApTLPat5zaxPlyjxNFpkeN+66mmNKfKe77t4E0J5a9
-         n47k1TVp4W41FXRH9byUMhNjmOr3Z1o4j+0/cirBRQFOttdbF9WwZdXEkxYmtCUreG0K
-         6l+o/J89kSwPghOSAkfnB0CkkPqR9Uggh4Bp2LWtKyrHvQTO6IDqqvGMZhLqaK7WHSUb
-         k4cQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=iuSyTUM9QXFJyTodvb9RUOKS2oKxA9kJD7GNIV6zoQ8=;
+        b=wBO2LmvU4nGk9XD5l1Yq7vPPq4kgsP5Nup9kXLm+/LpvtLM/C0YFKClMfpGyDvcjKz
+         UJm1VaF86W2xrdyAP9+yxXQHDtkEUBahzEhj7om/t9BwUNN41r664kNz4/v0Emb2Z4Qf
+         TnRRlcN4ycVAod/GilV1jaCMqXMW0rgjaJj1ev9E74/7QuFfm1W3Bgkwjfv7NQwx80bY
+         FprDyo+HHb8IP2FkNhcveAhUvcabNaMVRqNFerH9stDdyk1XUJElhCE2Anaw3R7aY3/r
+         kQyMjr49/Yo+hAjXIaTNZbdvK7EXyJVfdjxL25VFoRHFwiNuVXdhuUKsS5nziBPlwNEZ
+         DyWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SOaUizf7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w5si2617187ybo.210.2021.01.06.04.13.55
+        by mx.google.com with ESMTPS id r9si10361789ybr.44.2021.01.08.01.08.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Jan 2021 04:13:55 -0800 (PST)
+        Fri, 08 Jan 2021 01:08:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SOaUizf7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58376 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48472 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kx7hK-0002jO-Mv
-	for alex.bennee@linaro.org; Wed, 06 Jan 2021 07:13:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33902)
+	id 1kxnl9-0003qJ-0D
+	for alex.bennee@linaro.org; Fri, 08 Jan 2021 04:08:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yunextus@gmail.com>)
- id 1kx4PZ-0001o0-6A
- for qemu-arm@nongnu.org; Wed, 06 Jan 2021 03:43:21 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:36651)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yunextus@gmail.com>)
- id 1kx4PW-0007OX-M8
- for qemu-arm@nongnu.org; Wed, 06 Jan 2021 03:43:20 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id lt17so4064297ejb.3
- for <qemu-arm@nongnu.org>; Wed, 06 Jan 2021 00:43:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=c+EzoNODPzaBLH17xv1nNpILReIYs1e3B66+EmkgoMM=;
- b=SOaUizf7Moe+GVf2RJ/oAuNWu5tiZdf9MsA79cizt5BczfuH/4Z3rfDKXRuxoZsi6y
- 07KdWbt7mCF7LatGNvfNH77Ow9OK7Rcx0spmOBEy4KkoExUfV6IOfuP1xA4AGzbFUbFS
- SB+Hch4kVMs0vkF2yrTNJx1vabi6Of7mcnL2/VR0HxTXW5BiaPjDITHDxoJzoHQGqNLA
- PmtugTYuBe0+FP/9CdbM//e9zAzt3EDd7BLRbo3Q5SUlV/poWL4Bzxs6BSM8nb0YALAN
- Byp49QNjU6yKqJExInQ56wjNoPAnmsD7aoZ2COujcU3DCkgj1gRmjy4D+phyJIvekkM/
- 57ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=c+EzoNODPzaBLH17xv1nNpILReIYs1e3B66+EmkgoMM=;
- b=sXXfyPHxSh6VqyXvF2TJUPen+CbJ1vA/VHX3mUxY0TQo/UqSHEhBcp98zX2TctS1g3
- ct/w/FshW5g/z62H7QxPMoEnmUTGNNlk4E/ScdXrqtzpn1Tb0bvAV5zWnXWhfIWNqlGT
- ooFPr7YM6VWnrBX4DAvd5cGKvOpefNjOstAKw4AcyA0Lgcwm+cCTgoOeQ3JsVStP7A+/
- siA+55hF99NhXdpVo+La4W+9UoXazYO6bpvEcivHBIyfnTBekYlW0zp3aauXltgOihTx
- mMIQGDXJmBtM49hHlHlKgxvt1qGd0qxMGsKup4sdHa1on7IHmSRARUrNVapdukHsfggf
- Vsaw==
-X-Gm-Message-State: AOAM533TUChXyC/GzBVI1BZvUeKOkGEu+UNENUnzFuMgDlTRt1/EQRiX
- mD9OvehN2UYVIhaf99/50In8MV7nIJlFiCCyk5hcAYbhMRzKig==
-X-Received: by 2002:a17:906:1f07:: with SMTP id
- w7mr2117055ejj.519.1609922596661; 
- Wed, 06 Jan 2021 00:43:16 -0800 (PST)
-MIME-Version: 1.0
-From: Yu Nexus <yunextus@gmail.com>
-Date: Wed, 6 Jan 2021 09:43:06 +0100
-Message-ID: <CABUrsp+wLFdSDPrHX66gQSXyk1GKS0M29x1g3sOw0UBK9MOe2Q@mail.gmail.com>
-Subject: MTE support inside QEMU?
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kxnkz-0003pz-Dr; Fri, 08 Jan 2021 04:08:29 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:42254
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kxnku-00007E-LR; Fri, 08 Jan 2021 04:08:26 -0500
+Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id D41F85FC66;
+ Fri,  8 Jan 2021 10:08:17 +0100 (CET)
+From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000007d700e05b8375073"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=yunextus@gmail.com; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Subject: [PATCHv2 1/2] target/arm: ARMv8.4-TTST extension
+Date: Fri,  8 Jan 2021 11:08:16 +0200
+Message-Id: <20210108090817.6127-1-remi.denis.courmont@huawei.com>
+X-Mailer: git-send-email 2.30.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 06 Jan 2021 07:13:44 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,27 +79,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V+j2LB0pIwak
+X-TUID: u6yBhRmadopH
 
---0000000000007d700e05b8375073
-Content-Type: text/plain; charset="UTF-8"
+From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-Is there full support for ARMv8.5 Memory Tagging Extensions (MTE) inside
-QEMU?
-So is this MTE example code supposed to work inside QEMU?
-https://www.kernel.org/doc/html/latest/arm64/memory-tagging-extension.html
+This adds for the Small Translation tables extension in AArch64 state.
 
---0000000000007d700e05b8375073
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+---
+ target/arm/cpu.h    |  5 +++++
+ target/arm/helper.c | 15 +++++++++++++--
+ 2 files changed, 18 insertions(+), 2 deletions(-)
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Is there full support fo=
-r ARMv8.5 Memory Tagging Extensions (MTE) inside QEMU?<br></div><div dir=3D=
-"ltr">So is this MTE example code supposed to work inside QEMU?=C2=A0<a hre=
-f=3D"https://www.kernel.org/doc/html/latest/arm64/memory-tagging-extension.=
-html" target=3D"_blank">https://www.kernel.org/doc/html/latest/arm64/memory=
--tagging-extension.html</a></div></div></div>
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 7e6c881a7e..ad37ff61c6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3936,6 +3936,11 @@ static inline bool isar_feature_aa64_uao(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, UAO) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_st(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr2, ID_AA64MMFR2, ST) != 0;
++}
++
+ static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64pfr1, ID_AA64PFR1, BT) != 0;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 2d0d4cd1e1..bf54616c23 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10842,7 +10842,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+ {
+     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
+     bool epd, hpd, using16k, using64k;
+-    int select, tsz, tbi;
++    int select, tsz, tbi, max_tsz;
+ 
+     if (!regime_has_2_ranges(mmu_idx)) {
+         select = 0;
+@@ -10877,7 +10877,14 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+             hpd = extract64(tcr, 42, 1);
+         }
+     }
+-    tsz = MIN(tsz, 39);  /* TODO: ARMv8.4-TTST */
++
++    if (cpu_isar_feature(aa64_st, env_archcpu(env))) {
++        max_tsz = 48 - using64k;
++    } else {
++        max_tsz = 39;
++    }
++
++    tsz = MIN(tsz, max_tsz);
+     tsz = MAX(tsz, 16);  /* TODO: ARMv8.2-LVA  */
+ 
+     /* Present TBI as a composite with TBID.  */
+@@ -11096,6 +11103,10 @@ static bool get_phys_addr_lpae(CPUARMState *env, uint64_t address,
+         if (!aarch64 || stride == 9) {
+             /* AArch32 or 4KB pages */
+             startlevel = 2 - sl0;
++
++            if (cpu_isar_feature(aa64_st, cpu)) {
++                startlevel &= 3;
++            }
+         } else {
+             /* 16KB or 64KB pages */
+             startlevel = 3 - sl0;
+-- 
+2.30.0
 
---0000000000007d700e05b8375073--

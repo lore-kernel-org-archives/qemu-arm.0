@@ -1,116 +1,106 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1621688lfq;
-        Sat, 9 Jan 2021 15:55:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwuo6v6hKFgPIr+pnIdEr0E10XJCo2hsDEZJiSEg29bemHA75jhuJR1mBQfWAzbQH6B7JN3
-X-Received: by 2002:a25:60d4:: with SMTP id u203mr14189257ybb.197.1610236535550;
-        Sat, 09 Jan 2021 15:55:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610236535; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1670299lfq;
+        Sat, 9 Jan 2021 17:41:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzZn6DZP/polPyhe10rdaXqkzfRODAYhRznSfjQhzGagYb2TyVyGP8IwhfMIoZye3ONl+/J
+X-Received: by 2002:a25:af87:: with SMTP id g7mr14406677ybh.420.1610242907992;
+        Sat, 09 Jan 2021 17:41:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610242907; cv=none;
         d=google.com; s=arc-20160816;
-        b=IhYApm3+Q0cijFoKb8S3duzvNgNFLkRcto4CHqFjcg6EGaNNlTlWclfLiLQQ5REy1P
-         rQAIQnMzuu51L+qLjOhP0EPxRYbYaErWyciUmUe6s0wGR8W+L0NhNyoZT4/6bZ+EJkKc
-         R8GdXdtdJA5oMFA6dtrBdQVPcMBIunSoC5FsFelfr5WgHD3A9pgVr3XkMq42jZgimu9w
-         mVUn1jS7NsSlkWDw+zc16QUZmTyV+XhAez8H7PKkIFKGl5tWK9CXrv8K+5Rr322oE7fI
-         vFcjJZWhK2I6Nnx/QDM8Z7EYAGf5v97ubENcnVmkBp7oDGiMwKJh4F1lUsElPGhdoljf
-         OgHA==
+        b=bY42RJT2Z+7u2RD5iEo0qOfmfDk5YLqWOQPQDAT42LexpaBFVwuRIzjm/KdE4kYenG
+         Fb8/uk3zyZRa3R9n+erMpWiDKU57BPyQPo3mP4hq17Uy9UKRQzLqEipeFVGYD2tEhLuk
+         Q4FrcR8kg9bkl0iLdUkzQSVNsXVYP962HHwiO1KVyb21Y4A+R0x1mcfeqzu3yh8PltoW
+         xwPmp9x7VIfTAL/B6mHgGTbcIIJ2MyNEVPpM238bUJ9+2CpvTKsBZVl1eIa1wztTbKid
+         ri7cgCKKXGGmD+oCP8pYEk9by46lcZnpJGD/o4e/mYAEXXN5mPM06wlSnS6bx0GjGX+n
+         Og5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=vijG4FFreQy6BJ60KhlPviZ62YJiRPrEV+PjAUukHhY=;
-        b=kx6muIOEikF3/+Y4iSY17Dtp6koS7ieUCJshpyZoCqbW6nIvst6DTQXRkc3RUmckKb
-         u7YgAaMtuODZvMETyLne+5eZ1UKii3CklJQFQUUrx7FQT+CUKr9SjD/NL8DmoCKoqGuP
-         wwhTAoy3Cg2NHgB3paMlVzNylQORmtEzEo/rqo+8lCPavx8IaNf7sLiMY7z5ihPUlDeL
-         GrS/bOAkS+P1NWsgs5UN7j4TPnVO/8lfBhRbnJWdaxihVZSgHduW8ug/lrZijMrVfTks
-         LAvlIXNr+9XuWemtBEJAlQWLNUfgeIK3XRc1WP2/Q0tyJdY2D35H83+qf9xTpI+yI6uS
-         j+WA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=gIjULYWuqJ1F49GLhY2vgT82AIUwduomrfCmJVdsDwk=;
+        b=cdpM5VV3KXkDhibGkgK9pTOUToaFp3d8CqYlDMw/hisb0KBOwcbEikIqWrDwIm6SsB
+         HFAkPZG3nIsimX3HJ4QJDLLOx6evJg00k70UqcK4xTlWOFUgbbJvMHUVA3GR6nhH3hjm
+         a2LXSZVd9SUy+S1BvnYn7lAaUiYofLcyPzaUMwPWnrWmUc6UlFag3zukAElxCr+3k6CB
+         NOfPFnKVowRnIkS+ISARVxMqTS8zWVL0/jC9zcu8t7ngHrMRIo5OXB6YJR0AMobBRfV7
+         km1Kemub/Ld7Famr+wxY5vyH8huswDUdcCr8d1899GLLk/Mq1OFjt0ogx1fEo6sjYyOu
+         42Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qWuNT32P;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t2fxiP7X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p191si14389414ybc.360.2021.01.09.15.55.35
+        by mx.google.com with ESMTPS id i12si13436368ybt.213.2021.01.09.17.41.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 09 Jan 2021 15:55:35 -0800 (PST)
+        Sat, 09 Jan 2021 17:41:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qWuNT32P;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t2fxiP7X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59248 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kyO50-0004sb-Vu
-	for alex.bennee@linaro.org; Sat, 09 Jan 2021 18:55:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43980)
+	id 1kyPjn-0004hP-E3
+	for alex.bennee@linaro.org; Sat, 09 Jan 2021 20:41:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kyO4e-0004r7-DB; Sat, 09 Jan 2021 18:55:12 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:51479)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kyPjf-0004hB-EK; Sat, 09 Jan 2021 20:41:39 -0500
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:43880)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kyO4c-0002R9-Cw; Sat, 09 Jan 2021 18:55:11 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id v14so10684479wml.1;
- Sat, 09 Jan 2021 15:55:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kyPjd-0004pC-BQ; Sat, 09 Jan 2021 20:41:39 -0500
+Received: by mail-yb1-xb30.google.com with SMTP id y128so13351385ybf.10;
+ Sat, 09 Jan 2021 17:41:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vijG4FFreQy6BJ60KhlPviZ62YJiRPrEV+PjAUukHhY=;
- b=qWuNT32Phdvc7LAOanhFdba1eloGqKA2ViJP7EQJnhg94OiFjenn00Jwl08RTrQ4/0
- mWhAf4ybj0KvU6qAcmr9nqmW0fpoRmQOHxDyMoY77pC6D84RHmCQeGRxLZsdghZCdjNE
- Jj9aK1lEq6zkoTBuYz5M0a3oaSTchUNPYwhLqlptJgD68W1pkG2hPFsaYIKf5c/O/XEa
- v6iydhnbWA/9gpj360dSwqPugQYnSg5oPhRUEBttL4CqfX8hsE03oqgj3GTU4NkekTWF
- FZD3CKeCT70gbfVS2jQ0Z9wneFCUA3UspWBzSLDyFlelGssLPBe0Vu+w5UdoLznmp2Vy
- Lu0g==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=gIjULYWuqJ1F49GLhY2vgT82AIUwduomrfCmJVdsDwk=;
+ b=t2fxiP7XfkaBv7tUSVql5HnMX1NcPEQ+d2JVrp27r7931ruUQPzeP20Bk0VOUDitio
+ ENquTruoG2URu37Yg7hyHCPHR2DwlXAUcLGwyzRWNYS4SqBpm50oBZ8x+iUIY0Zjn6N1
+ ZddTKM/p8v/xtpEsnsGQ/41Rg69piA1IJty9268M5+S+70FnrWKNlDXWHR0g3jJ3lAgO
+ w8qTaUILXXga+6BMSqdO/dO60+2AzZsybc0iTrodRm/13TrHPJ4ECcpqkx8JZF9Sd556
+ ljlkgBNue5EZf9CWsnyhetvKC1OMQxLdWueCUN3+gh+pRGW7TA+0X9QjKQPo3+PzrB58
+ yc7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vijG4FFreQy6BJ60KhlPviZ62YJiRPrEV+PjAUukHhY=;
- b=g3eE0vV0h+WoYq1nvGgM7kzpMfhhJkLd+kmbumwO0rbnS5FOjBb2Lr7b5Ar/j93V0L
- chWwVnQpzsKH6isAdAjscBUio+j+uNHfTdv7ADmMSQXZ28KzfWr5ds/kGiF5E/m58fdD
- A2oyVqaz6st1BiMFQ5/MKLcfePRp3wC1GF6u7x0kulY4s2ftK3sLS3/7iKA+cktb+JMN
- swhF6Xz1cZEVHvydxd/C8ggtueOqMZO7zWA//AAepqKgNnAte4BzR9OY9XRsDa7tnvSv
- Oe1tShmPMij5HTF9afkcWTfw89shTfJz6nWLnfA9St692zWeAbNlaDeVxUp8Zk5/kSJP
- IJUg==
-X-Gm-Message-State: AOAM531j4nSx+fFQ9IpB6OyKCD0w+UdEPRSsrFowEpq0t1TwiMMv8kbP
- CbNkgXLzvTuOiJlOK3Me1d4=
-X-Received: by 2002:a1c:220a:: with SMTP id i10mr8667970wmi.93.1610236507989; 
- Sat, 09 Jan 2021 15:55:07 -0800 (PST)
-Received: from [192.168.1.36] (129.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.129])
- by smtp.gmail.com with ESMTPSA id k1sm18892921wrn.46.2021.01.09.15.55.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 09 Jan 2021 15:55:07 -0800 (PST)
-Subject: Re: [PATCH v3 4/6] hw/ssi: imx_spi: Log unimplemented burst length
-To: Bin Meng <bmeng.cn@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210109123545.12001-1-bmeng.cn@gmail.com>
- <20210109123545.12001-5-bmeng.cn@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <7c966c4e-eccd-3fe9-7811-b5b2c6c65c69@amsat.org>
-Date: Sun, 10 Jan 2021 00:55:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=gIjULYWuqJ1F49GLhY2vgT82AIUwduomrfCmJVdsDwk=;
+ b=QqoXjxg/ylFX/ZTCpXPD3YNBKIAsUpvfc+xeZAzu920UM8AfsmmJ3/Cgxo48EgE1Zy
+ l+mq/B47JSAxdulAnXv4iE+MSoQFL8i58GsNNoXJ7/xZs7qq5s+3WIVoIsHZC7eu6O0a
+ nhO2lUIMHXTg9IYh+fpWEtDDY1F8umQMkk1Ww9xYN8tPX2EbYMECYaHrtf4fauRXrAHZ
+ 65CSIubc8qsbgzAQoFAjbubrqYmCBn44QY8sjk0+Ho+Qln+nv8MyFwNnXVegRPNnyUk0
+ PVCYipop5j3UpKoA/wjH9NtTxKWqPJSd7cEXab8dXrJzt0ga5g7WtCnjduYlk0jMQMRS
+ I8JQ==
+X-Gm-Message-State: AOAM533a2ywe3+mzecNXhDgjYopAmPM0wXOZM9ybAl/fKL6in1b27AXv
+ 8jZcPwVCSKpsfzgUHAgnngB+AB+bWdTASdyCkHI=
+X-Received: by 2002:a25:aaee:: with SMTP id
+ t101mr14666001ybi.517.1610242895594; 
+ Sat, 09 Jan 2021 17:41:35 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210109123545.12001-5-bmeng.cn@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.255,
+References: <20210109123545.12001-1-bmeng.cn@gmail.com>
+ <20210109123545.12001-4-bmeng.cn@gmail.com>
+ <ca66c21a-c3f8-8e96-033e-56548280b4b1@amsat.org>
+In-Reply-To: <ca66c21a-c3f8-8e96-033e-56548280b4b1@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 10 Jan 2021 09:41:24 +0800
+Message-ID: <CAEUhbmU-MC7ue_G551ezkiQdcQi5JxwCsJMsT_NOpsMdmGegYQ@mail.gmail.com>
+Subject: Re: [PATCH v3 3/6] hw/ssi: imx_spi: Remove imx_spi_update_irq() in
+ imx_spi_reset()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,59 +113,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pskbXeNRThwF
+X-TUID: lQiIcPkYd/tc
 
-On 1/9/21 1:35 PM, Bin Meng wrote:
-> From: Bin Meng <bin.meng@windriver.com>
-> 
-> Current implementation of the imx spi controller expects the burst
-> length to be multiple of 8, which is the most normal use case.
+Hi Philippe,
 
-s/normal/common/?
+On Sun, Jan 10, 2021 at 7:53 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 1/9/21 1:35 PM, Bin Meng wrote:
+> > From: Bin Meng <bin.meng@windriver.com>
+> >
+> > Usually the approach is that the device on the other end of the line
+> > is going to reset its state anyway, so there's no need to actively
+> > signal an irq line change during the reset hook.
+> >
+> > Move imx_spi_update_irq() out of imx_spi_reset(), along with the
+> > disabling of chip selects, to a new function imx_spi_soft_reset()
+> > that is called when the controller is disabled.
+>
+> Now I read this patch, forget my comment on previous patch.
+>
+> >
+> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> >
+> > ---
+> >
+> > Changes in v3:
+> > - new patch: remove imx_spi_update_irq() in imx_spi_reset()
+> >
+> >  hw/ssi/imx_spi.c | 21 ++++++++++++++-------
+> >  1 file changed, 14 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> > index 8d429e703f..880939f595 100644
+> > --- a/hw/ssi/imx_spi.c
+> > +++ b/hw/ssi/imx_spi.c
+> > @@ -241,9 +241,20 @@ static void imx_spi_reset(DeviceState *dev)
+> >      imx_spi_rxfifo_reset(s);
+> >      imx_spi_txfifo_reset(s);
+> >
+> > +    s->burst_length =3D 0;
+> > +}
+> > +
+> > +static void imx_spi_soft_reset(IMXSPIState *s)
+> > +{
+> > +    int i;
+> > +
+> > +    imx_spi_reset(DEVICE(s));
+>
+> Hmm usually hard reset include soft reset.
 
-> 
-> In case the burst length is not what we expect, log it to give user
-> a chance to notice it.
-> 
-> Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> 
-> ---
-> 
-> Changes in v3:
-> - new patch: log unimplemented burst length
-> 
->  hw/ssi/imx_spi.c | 11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> index 880939f595..609d4b658e 100644
-> --- a/hw/ssi/imx_spi.c
-> +++ b/hw/ssi/imx_spi.c
-> @@ -128,7 +128,16 @@ static uint8_t imx_spi_selected_channel(IMXSPIState *s)
->  
->  static uint32_t imx_spi_burst_length(IMXSPIState *s)
->  {
-> -    return EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-> +    uint32_t burst;
-> +
-> +    burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-> +    if (burst % 8) {
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "[%s]%s: burst length not multiple of 8!\n",
-> +                      TYPE_IMX_SPI, __func__);
+That's my understanding as well.
 
-Please log the burst length value in the log message.
+>
+> > +
+> >      imx_spi_update_irq(s);
+> >
+> > -    s->burst_length =3D 0;
+> > +    for (i =3D 0; i < ECSPI_NUM_CS; i++) {
+> > +        qemu_set_irq(s->cs_lines[i], 1);
+>
+> Isn't this part of the hard reset?
+>
 
-With it:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+I think we can rename the name to imx_spi_hard_reset() to avoid such confus=
+ion.
 
-> +    }
-> +
-> +    return burst;
->  }
->  
->  static bool imx_spi_is_enabled(IMXSPIState *s)
-> 
+> > +    }
+> >  }
+> >
+> >  static uint64_t imx_spi_read(void *opaque, hwaddr offset, unsigned siz=
+e)
+> > @@ -351,12 +362,8 @@ static void imx_spi_write(void *opaque, hwaddr off=
+set, uint64_t value,
+> >          s->regs[ECSPI_CONREG] =3D value;
+> >
+> >          if (!imx_spi_is_enabled(s)) {
+> > -            /* device is disabled, so this is a reset */
+> > -            imx_spi_reset(DEVICE(s));
+> > -
+> > -            for (int i =3D 0; i < ECSPI_NUM_CS; i++) {
+> > -                qemu_set_irq(s->cs_lines[i], 1);
+> > -            }
+> > +            /* device is disabled, so this is a soft reset */
+> > +            imx_spi_soft_reset(s);
+>
+> Maybe you can restructure patches 2/3, first introduce
+> imx_spi_soft_reset() - this patch - then fix ECSPI_CONREG
+> - the previous patch -.
+
+Sure.
+
+Regards,
+Bin

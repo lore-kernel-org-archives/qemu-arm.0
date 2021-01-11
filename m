@@ -1,114 +1,108 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2862981lfq;
-        Mon, 11 Jan 2021 09:37:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJze8NSaLSP93TlSSO6i5/CnpASG5o7E1uIOpP9Azi7rHfc23cU8dBg6SIZ92yvapV+uTitA
-X-Received: by 2002:a25:843:: with SMTP id 64mr1111001ybi.421.1610386660547;
-        Mon, 11 Jan 2021 09:37:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610386660; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2920991lfq;
+        Mon, 11 Jan 2021 11:06:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx4m+PbNQRfYPw+eCGnkz/WWpkmKHTKyMdkPXH/Ju8gT4ogeuUYSACXAC7qxxIGGnGivb65
+X-Received: by 2002:a25:5c1:: with SMTP id 184mr1721482ybf.173.1610391999497;
+        Mon, 11 Jan 2021 11:06:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610391999; cv=none;
         d=google.com; s=arc-20160816;
-        b=lCNV1P7NxmR62qiK+gZr8gd+wKbQ6hFGptQshSDk9CIqITqUY7jIeG+DJCJbj7BawE
-         mVEj+MOB5w5lePEftKEfQlRg1R+NHwYrqJlaflY1G+v5mHmZZaZInuPQzsx69QHH/wPO
-         HMEhCN5D+URtDP+N8z2beK7WKByTNVtaIy8dXDv4MWw7xewHgWBXsmRbKQmnQ2dUf6rS
-         Q26HBUqxB0R0nhi8tu6UrtqvYjQcqx6bCzXEA5uOjl7a+u6RaHiRwcljYCEpSK3v9FlP
-         bjJ6eQB7qN+rKn1HnxV9SwR5ajz+bvIknhrxOgDiUtcvVVykOYkqRRi9LRaHkK/8ZGbH
-         Y2wA==
+        b=j1gY/8X+L7LHgI0pTEi4J92tntN2+fIDMaAj6F/OuxH1q28HcIOgVo2RLH9Yrq3GMO
+         JkoZi/7sHCM4DoNCoUz3dFpt2q/mqnukvixtQvcoc34jP4RGanupJJs/TdBlnYbYHBtc
+         fsCQKJVbtJPo8CcdAlpaFsKXSezlvTyDgVvMG23hyOrmKcUGtE94tvm4bz4zggVC/SZO
+         Cei5R0APuIvbACfMzzKQF6FtHu8jGQB+9rIsK/KscFix3TPyWw9RK1huTdU6kW24ExuK
+         kHSiJhuvEv9zYnzCn8NDeTvFirdE8Q1idGAvHo/Dv8CUFK0dcRov7tLxCYkOJr8iuuDu
+         JxSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=KcBBYyRIsubFJ5K7YVoag2+OIR54LyMij+S3tqSg3SU=;
-        b=0X3V2IZg26q4A06IVjpdB0MCxxRpjrbJwy2Q3875nKKPVegBOAZYHrP4CzF8VwP90I
-         Ut4HS+z2yTFBCGPTcjZG7koOXn1Jw1LfX8W5v5CNBaz4Na4A65qXHefjZxUBxOX1rdwv
-         vVmchh9mz3eFuMTB9N6rSYIJrIgjriIogmK9tqeepqvTk1IhpIwcFqE1NJaP0z0zMGzj
-         KM1pvo+mydTeC4ck+G5S3XT+DY2n6ZumR3noVgl89EzuBW3zFlWdR+kN4ThDAGadq9di
-         rrKSs34OrX0aL9DX9ei8fkmaL5l2hrF5tpiRj+/yDmYUHpiGyXVOYHTYWPNHZzn4wF2k
-         CM8A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=t7cb1wo+zig4w5wRyfLayVY9BN4eEXg6/tPvYTE+r/M=;
+        b=hZy6fSq76PpdrsolnwmGZNvpFYt6Gt3hdgGnI2f2mRuSW66CY7Fo5/NySEnsBOkuk6
+         4NzDKC5UdC52SFLC4ygu+aPWcX79ZOCSOc7bQhwmEHCcu6tkENLzFSJ+U4oXLI/vI9Hr
+         gPmcQ17UrDR5jHwyVyYwGB5OK3m8+OgzZILsTS08swqcTsnKZaFL5ZGpiSpG1wvAoT3g
+         eN1ecHK1xSrK7bndS8kEaPDnMp3wIyBMHVdtqpObRGmI7XrE2CsD72Y+l0P8EXKFrfTE
+         UNJz9erbkG31AhIN93OWDFRq0JWFRP0N9aMblykM2AIxtwgWkgFLUCdzZkzFnKDHGuCv
+         bZHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ass7ItIg;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nXwMW4Q9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f8si401300ybp.195.2021.01.11.09.37.40
+        by mx.google.com with ESMTPS id x205si583210ybx.442.2021.01.11.11.06.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jan 2021 09:37:40 -0800 (PST)
+        Mon, 11 Jan 2021 11:06:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ass7ItIg;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nXwMW4Q9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40856 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kz18N-00031W-Ti
-	for alex.bennee@linaro.org; Mon, 11 Jan 2021 12:37:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52396)
+	id 1kz2WU-0002On-Q4
+	for alex.bennee@linaro.org; Mon, 11 Jan 2021 14:06:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47056)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz0uE-00056b-C9
- for qemu-arm@nongnu.org; Mon, 11 Jan 2021 12:23:02 -0500
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:41821)
+ id 1kz2RZ-0005yI-Gg
+ for qemu-arm@nongnu.org; Mon, 11 Jan 2021 14:01:33 -0500
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:34655)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz0uB-0000nx-LE
- for qemu-arm@nongnu.org; Mon, 11 Jan 2021 12:23:01 -0500
-Received: by mail-pf1-x42b.google.com with SMTP id q20so314635pfu.8
- for <qemu-arm@nongnu.org>; Mon, 11 Jan 2021 09:22:59 -0800 (PST)
+ id 1kz2RX-0006QN-M0
+ for qemu-arm@nongnu.org; Mon, 11 Jan 2021 14:01:33 -0500
+Received: by mail-pg1-x532.google.com with SMTP id i5so283012pgo.1
+ for <qemu-arm@nongnu.org>; Mon, 11 Jan 2021 11:01:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KcBBYyRIsubFJ5K7YVoag2+OIR54LyMij+S3tqSg3SU=;
- b=Ass7ItIgdyqkDHQpekFD7Pdvu8l5Lc8O3Aj7ZjiXf8uVKZQhMM+311Wx84fd7Mm5rY
- VWSJBdvVkvg9ZpXQIIOSTngKPOwdyFUR17oWDe1hDYEF59L291wQ3sZ4eN6fil+N5V03
- xqMTjozaCEWuKyqTYmJGsL8rl9OnY1oBG4ugG3ku17Sj5XlRL/fRP64xvfrj3myHZ0z3
- cSMnycpq+XOyuYWmFPtsL78SfefCn9Bh6wykm/r3fY8YNsPFFBMoK6RT1D5YFZS/TbrZ
- t5MlNk5zKBvYkfBs+X+ByPuzoq+/FX0bVC2TG5NAFJ2tekOJrSzbYSv3Kh9NrUO8r54+
- PE/A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=t7cb1wo+zig4w5wRyfLayVY9BN4eEXg6/tPvYTE+r/M=;
+ b=nXwMW4Q9gwcedvGzBG/JeCMSXLQGMumCuHav6OoSOTfElFgD6ewT5f1YHRN25Fp06M
+ PgwurTbe7eQ/8aTCQxmu8IEB0poaF1rC4fULY4Ye3CYufZBTmOQHe0LkEnAx7CAeVmUh
+ 6UkzPMFZGGq2USV74v77Pe7idqzBCWiuFbohsZELfWq2AFXkJYWZpW551UT6JyYY/+mw
+ CdqAB6KbFt1wPNrmOYpDBiCHfTrzJoBSsBai6jmFYbX7QoNiuobgje+3dJEZola7Lu1g
+ KlnEf4mYr6YbIHAxWzzzLASDrhSQVIICAykV3UeDEubkMnx6xNwdh6KQMonHI8qevHW5
+ kZAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KcBBYyRIsubFJ5K7YVoag2+OIR54LyMij+S3tqSg3SU=;
- b=m/Re5ySnjFOo64PLl/TTAT5X61J2dPUAfTvv9VQs6SAS8ArDAopqT43Ylgykac98Qe
- lnNoCtGY+koEpAXtNbMTQawlveZ83ZQD5H87bP3N055QR2aaNo8sE0LeuUI/4m9gWQ/E
- F9f6/Kr144P9T+VPBMVpFsqjCsBNMPw98U1z+VZDIkprSCMBMhXDji8Aa9dH8UnhAZu/
- 7BKdMM5ymlyyzv7eW7QF6dd/TMUVyNcJDnBaYQtES+gzcNmQG3OxSFjv9tF/GSCwsb+y
- HiR2Oyy7hyIqec3jXF33XxJRwhOOEiZt2pbijrpz8LKr/ktaeIpyXgX3aAj75ti6Ix1B
- w2xA==
-X-Gm-Message-State: AOAM531gYiOB5KVgBIugR9/yzx4Q7F37wyurMgsyK/XjnBS73JPiTmub
- r0PbqnsIK1cWcwUKrXGElNm/MQ==
-X-Received: by 2002:aa7:95a4:0:b029:19e:abd2:4a88 with SMTP id
- a4-20020aa795a40000b029019eabd24a88mr432060pfk.2.1610385778087; 
- Mon, 11 Jan 2021 09:22:58 -0800 (PST)
-Received: from [10.25.18.119] (rrcs-173-197-107-21.west.biz.rr.com.
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=t7cb1wo+zig4w5wRyfLayVY9BN4eEXg6/tPvYTE+r/M=;
+ b=tiJff+FXm3r8DYbM+dB1ivAUmWO9h0u0JIJxqZU+RzjzWh8GB2zJXitBiXkjwkyfIK
+ ecRxfi+o/E3FOGWhbmj5BO8k31/cHz9LJO9Nn/br4+rzgp8hyFbpmRuukHuZcz3yIzjf
+ YeTCcPloc5OzrOvx1d/2tRlhEVSSpRIhayhCp+dJnYUxkoHBZk0BY37yPMH8UJWwtHVu
+ QCbdm2fYw3p/4PFir9Ug9JbOrnYa72MsejduYW69mXFcdFXor8IEuOa/dtpvLAbQt6DX
+ p5b2dFKy47qW1H7dezYzF67DjEPX/tFUBYRLEZAshkNnPgOgcku3rQW8Wn+Dzo2OiTyU
+ HKyQ==
+X-Gm-Message-State: AOAM532rrTv9h92Uih4ywOv4UKWpPbkOgf3ZgiDmRBpDIK0IWudLh+Wh
+ lGZD4cDBzrbVoCKtgKSa3huAv0YYBi2iyg==
+X-Received: by 2002:aa7:8d12:0:b029:1ae:4344:3b4f with SMTP id
+ j18-20020aa78d120000b02901ae43443b4fmr780455pfe.16.1610391690404; 
+ Mon, 11 Jan 2021 11:01:30 -0800 (PST)
+Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
  [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id v19sm86080pjg.50.2021.01.11.09.22.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Jan 2021 09:22:56 -0800 (PST)
-Subject: Re: [PATCH 0/5] tcg: Restrict tcg_out_op() to arrays of
- TCG_MAX_OP_ARGS elements
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20210111150114.1415930-1-f4bug@amsat.org>
+ by smtp.gmail.com with ESMTPSA id n195sm350395pfd.169.2021.01.11.11.01.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Jan 2021 11:01:29 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <43f360be-af44-27ce-619b-7a2ad169aa2f@linaro.org>
-Date: Mon, 11 Jan 2021 07:22:52 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 08/30] target/arm: Move TBFLAG_ANY bits to the bottom
+Date: Mon, 11 Jan 2021 09:00:51 -1000
+Message-Id: <20210111190113.303726-9-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210111190113.303726-1-richard.henderson@linaro.org>
+References: <20210111190113.303726-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20210111150114.1415930-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -123,34 +117,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-riscv@nongnu.org,
- Stefan Weil <sw@weilnetz.de>, Huacai Chen <chenhuacai@kernel.org>,
- Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EFhZhkhLvD7v
+X-TUID: WFFQKNuuruPd
 
-On 1/11/21 5:01 AM, Philippe Mathieu-Daudé wrote:
-> Attempt to fix the warning reported by Miroslav using GCC 10:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg771520.html
-> 
-> Philippe Mathieu-Daudé (5):
->   tcg/arm: Hoist common argument loads in tcg_out_op()
->   tcg/ppc: Hoist common argument loads in tcg_out_op()
->   tcg/s390: Hoist common argument loads in tcg_out_op()
->   tcg: Restrict tcg_out_op() to arrays of TCG_MAX_OP_ARGS elements
->   tcg: Restrict tcg_out_vec_op() to arrays of TCG_MAX_OP_ARGS elements
+Now that other bits have been moved out of tb->flags,
+there's no point in filling from the top.
 
-I've been trying to figure out a cleaner way to handle these, but this is
-certainly ok for now, and avoids the Werror.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 43bcd21959..aa2f2d3a04 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3275,15 +3275,15 @@ typedef ARMCPU ArchCPU;
+  *
+  * Unless otherwise noted, these bits are cached in env->hflags.
+  */
+-FIELD(TBFLAG_ANY, AARCH64_STATE, 31, 1)
+-FIELD(TBFLAG_ANY, SS_ACTIVE, 30, 1)
+-FIELD(TBFLAG_ANY, PSTATE__SS, 29, 1)    /* Not cached. */
+-FIELD(TBFLAG_ANY, BE_DATA, 28, 1)
+-FIELD(TBFLAG_ANY, MMUIDX, 24, 4)
++FIELD(TBFLAG_ANY, AARCH64_STATE, 0, 1)
++FIELD(TBFLAG_ANY, SS_ACTIVE, 1, 1)
++FIELD(TBFLAG_ANY, PSTATE__SS, 2, 1)      /* Not cached. */
++FIELD(TBFLAG_ANY, BE_DATA, 3, 1)
++FIELD(TBFLAG_ANY, MMUIDX, 4, 4)
+ /* Target EL if we take a floating-point-disabled exception */
+-FIELD(TBFLAG_ANY, FPEXC_EL, 22, 2)
++FIELD(TBFLAG_ANY, FPEXC_EL, 8, 2)
+ /* For A-profile only, target EL for debug exceptions.  */
+-FIELD(TBFLAG_ANY, DEBUG_TARGET_EL, 20, 2)
++FIELD(TBFLAG_ANY, DEBUG_TARGET_EL, 10, 2)
+ 
+ /*
+  * Bit usage when in AArch32 state, both A- and M-profile.
+-- 
+2.25.1
 
-Will queue to tcg-next.
-
-r~

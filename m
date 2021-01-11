@@ -1,439 +1,191 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2825433lfq;
-        Mon, 11 Jan 2021 08:46:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyyqOl5MrHp+J+rTZEpAipYuaJmDB41WpyVJ/0PJQjRPnh4MDCGUHzDmB0NOqcwYDnnVIg5
-X-Received: by 2002:a25:3211:: with SMTP id y17mr810754yby.301.1610383601819;
-        Mon, 11 Jan 2021 08:46:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610383601; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2763130lfq;
+        Mon, 11 Jan 2021 07:20:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx9yC7UGMxk9AiQmadKfkSQlO/sVrJ0iSOKhDlw7YRRzaeUSCxt0N4J9LSbAZBz7v9eYe64
+X-Received: by 2002:aa7:dd4b:: with SMTP id o11mr14439850edw.303.1610378428095;
+        Mon, 11 Jan 2021 07:20:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610378428; cv=none;
         d=google.com; s=arc-20160816;
-        b=cxVeZ7zZJKwCtOkfFAnzLlkSdeWoWrOuLNM2wCdgmqG++cuxHeBDwt6mqQ45x5UJ5N
-         hp5WVnbaOfwYUt1WTEs7XxgywcoytAaHZiupy74QkrPnlDfDGRr9LGJpsihK8h248/Oq
-         ewqsyF+MpuRUcZPJsBBQAubWWrYlfQJJdWO+jton1zH9stzyQcBT82EN+LYSYZQTmn9g
-         VirEaj1K2RRcFx1MpXJmBuiTdlx2m90oZ8yF/iLptzGirwzbu7CnfJUWD4YV5rKmSyhx
-         VpVF9AzkdUnKPxxauShEOnuglBzUpaMynh3SLl9Sk9E6P7wHdUv4Ir2/+y6QOGdd7vfK
-         5/bw==
+        b=pAN8Z0ekFlAZapdyNpHx7JHIWynZerBGDbaqxoMGV6ZqWzbQ8ExCYC/0RtEyia2+br
+         jHrlsDf/+HzMmp8kK2P5MpW7f5Y4ma+1dQkrqxPigpfrbYBstF1Q22rAQ/XGiVSrcIUi
+         NqGnP8Vfew3xDcHBZYqBBW1HQPlFEcd+d1XzgjjybbGR/Q778vb5ZOcNgsh6CeM6LZbz
+         fDp3tgtbpdrLu4O78RM7bumTTfoBIXV+I+s257/ZO49U3sulv9K4p5z3uE0P01UhWwB/
+         QK7EZZebTqtyLWuMVOyfU/9cawkM6xadbKK2cuBUaYXzMRUGtcYyQn6wTDv6RhqkSm4j
+         2C9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=1YniCezRSRwdefMDR6TwR8sRlC1CiINu/1FSkSm9je0=;
-        b=EljyTxvuaQE2M7TDlIOsZ+yzi6aT+fYN/uqTPRsMxf/zEzt3xt4wU9DUKA1pqKnmqT
-         +EYVijpjlsxpr/05B7XKDHgARbzt9L7zSR4Cn+Z3s0RALcJ3YPAcKd/1zkfoyYMYE1rV
-         mvLoYiyxXdmIvlhq38jyWObkwY5kawuQEYkE8bwWdLW0HRNOf5zDj/NH4Piv65wd1D0x
-         UU7YgzCPW3y+14453PGAmKBW89pO8ibLZ9lqVRRKJRduPlSz+k2atRIzWBhw8ZxBNNg8
-         G/iwB4ZFeK+WkSUuGAyCcRCRdQNdGVfPC0mfTXyzl5nKPVChFTPjHXbu+UHlMo14M6bw
-         GgxQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=LM7AeLfQEqrU558zvQoXSQweJ4vkeUX1kaefzrhoJho=;
+        b=KuYFXFShNO7l44sU+HGdhewhBJdBaEl5Ag3OD/1yf3E33WRFk7HutIqkdsH3vc5XHi
+         O9nFL/RJE1rQY741H9oFsQ5oAmhiQQu44YgxXHP2mnN0e4cno7Q6s/UXSHWqB2OAji8x
+         OqzGiCIzWXtelgS8miQcN9N48bkdJa36SaW9RxIXztQFNYEmCEa2gxcNISCKMyp4MxJE
+         ItD2QSHv5IvOfK/z4Oei8p7edFnsxh5MTmvxhahSt44ZvWDEaGTcgzRetzEmeqQcyFsP
+         ho0jOvIk2nhySWPtoND1/trpwd3zJlWPGqqn09jew7j6H3kUtvmWhVNhf4OSQo9W8xnC
+         c8rA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G1rVDsJZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s64si272695yba.294.2021.01.11.08.46.41
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KQqX9eyi;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id p10si6676986eji.254.2021.01.11.07.20.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jan 2021 08:46:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 Jan 2021 07:20:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=G1rVDsJZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42276 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kz0L3-0004HL-6B
-	for alex.bennee@linaro.org; Mon, 11 Jan 2021 11:46:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43446)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <natechancellor@gmail.com>)
- id 1kz0Kl-0004FS-88; Mon, 11 Jan 2021 11:46:24 -0500
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730]:41355)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <natechancellor@gmail.com>)
- id 1kz0Ki-00024w-I1; Mon, 11 Jan 2021 11:46:23 -0500
-Received: by mail-qk1-x730.google.com with SMTP id 19so29383qkm.8;
- Mon, 11 Jan 2021 08:46:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=1YniCezRSRwdefMDR6TwR8sRlC1CiINu/1FSkSm9je0=;
- b=G1rVDsJZ2H2t3attag4v5LFrOkBbnltlaUKWDhe/wg/bF+Xkrf5uCrOSVyNQdhL24U
- Hexdrzd9BrAP+4tSpNafKjv5DxMSFr27aMikqecRLiym5cuVo9Tv+C5Zy2ZcV73CaAoT
- /tKKYuCyWq7HKCWWqeeIb0FgkpmrU0tzqIFikTJviGMsRtsC0W72NyV0KwrpclmXo6xb
- iGOLRsq08LTUIrfsG8ceDt0MnjpNspBn/Z+k4uEELgxaXMN7WVDadEC/bivQ/QhT0yu8
- pNoJHyPSgeNlXVj5VRCYo109II80d38sO7bhq7ukSdIYorsaMi3rDdtzS0oJCtgI/qIp
- jGhw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KQqX9eyi;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1610378427;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=LM7AeLfQEqrU558zvQoXSQweJ4vkeUX1kaefzrhoJho=;
+	b=KQqX9eyiCU3TeauEIutAIqglmCw7fPNWuVuRZv70PfPRCvxLfkxRKik4M9cNsFX0RnJFD4
+	9gYTs4hJuhCTq3B9WAolj5y5egdICv2NC5eZFClnyTEhXE4cdrU+WcyLUNNezwYZpd4lZ5
+	L5eymDy3MHneEQIBle9ItXgBw7H/Wt8=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-477-8fXULJ8zNJCs-5szMz2jxw-1; Mon, 11 Jan 2021 10:20:25 -0500
+X-MC-Unique: 8fXULJ8zNJCs-5szMz2jxw-1
+Received: by mail-ej1-f70.google.com with SMTP id ny19so36899ejb.10
+        for <alex.bennee@linaro.org>; Mon, 11 Jan 2021 07:20:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=1YniCezRSRwdefMDR6TwR8sRlC1CiINu/1FSkSm9je0=;
- b=QlmflWOzXfIxynwzcL6ViU3sPIkaMEDAOzAzd7187Mr/GqiFCqPNJIG1NQlUi1FQry
- +3vNDHisnvOMxGJrYvQTm3+ukrw8MvFc2fQ+YTRhRanucCUlSpbVMgBd1yLnUOBsf5oO
- 23RTg+zFRip283goSZWKzPgO1w7iYumY9TPifGy0kIhRJgxiLW8Fwc5qHN45t/77geyl
- SaFrzd+mAM9BbcAEja8sg9aehitDRXnQPp0tCrBTqwvFzPjylw8hTHnQ9+2E1t5l999z
- 0Zic1pd5a8ynWiz4T3peJQ9SvcWhSpbLaecE6TRiKliupK87jHLOYq8BA+7xXNKK8hdJ
- InZg==
-X-Gm-Message-State: AOAM5310PuYZ4kmYiJ5ekFHFgpEgVsoFQRcD3xr1OfX2UNLzmGq6NIuI
- CnZN8pKrwHAjaO6KYvt3R7o=
-X-Received: by 2002:a37:e108:: with SMTP id c8mr134738qkm.305.1610383578319;
- Mon, 11 Jan 2021 08:46:18 -0800 (PST)
-Received: from ubuntu-m3-large-x86 ([2604:1380:45f1:1d00::1])
- by smtp.gmail.com with ESMTPSA id f82sm155529qkb.135.2021.01.11.08.46.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 08:46:17 -0800 (PST)
-Date: Mon, 11 Jan 2021 09:46:16 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 4/5] hw/ppc/ppc4xx_pci: Replace pointless warning by
- assert()
-Message-ID: <20210111164616.GA2122272@ubuntu-m3-large-x86>
-References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-5-f4bug@amsat.org>
- <20210111011117.GA215408@ubuntu-m3-large-x86>
- <9bf21ccd-7e23-8329-35b8-bf09d35e335b@amsat.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Ucd06r2eJPcCIqt9QCTk/uw4j4Vi5AVfWPojlXh2MWo=;
+        b=kTJelFtWhvIQOBZn1VtQz0d97CTRm3zFL3BRWM/rR6eGrWugWKzX+QcYrvscJgSLZy
+         jg/g98BdApdeImn4bF80rJ0ua7Sw7R0ji/SvBQR2VOQNemNa5DjA1JPB26aPb+uwFZ7z
+         dp4HKUHFSP8um2Bdne+/9GBfkt6mc+Wc7+j3VBAD6L9PFA5AfkwfOLNxV3IjYIshSo01
+         9H6WcY+54HNTPFJ+Bq195Yit31Hj9sZZD0WMR4E3TRXMBRhliQtNIA366tcV/ZPDaxJZ
+         xrOz8t34hCwAVB9SvTIEvr8eITfBgED4EoWE1GzqJPPBL47GGqKQIjiZc1XGW1m9HyOy
+         BJ3g==
+X-Gm-Message-State: AOAM533kU+h+upVsfnwfJGCmvcMiBk9KUhv3UwIULxtLClzf46VTTg0u
+	AOYaQiBRcRp23o3x6WxKI8mXqKBUTzJgjCFS6LW6mKnjqoWEiKpjy2YzxdUAUFg6bSrQlaWBiIi
+	Rwg2x9QGB5zR451Tk
+X-Received: by 2002:a17:907:e9e:: with SMTP id ho30mr11282834ejc.529.1610378424338;
+        Mon, 11 Jan 2021 07:20:24 -0800 (PST)
+X-Received: by 2002:a17:907:e9e:: with SMTP id ho30mr11282789ejc.529.1610378424080;
+        Mon, 11 Jan 2021 07:20:24 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from x1w.redhat.com (129.red-88-21-205.staticip.rima-tde.net. [88.21.205.129])
+        by smtp.gmail.com with ESMTPSA id y17sm7157263ejj.84.2021.01.11.07.20.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Jan 2021 07:20:23 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Huacai Chen <chenhuacai@kernel.org>,
+	Greg Kurz <groug@kaod.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-trivial@nongnu.org,
+	Amit Shah <amit@kernel.org>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	qemu-arm@nongnu.org,
+	John Snow <jsnow@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Paul Durrant <paul@xen.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Max Reitz <mreitz@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Fam Zheng <fam@euphon.net>,
+	qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	kvm@vger.kernel.org,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	xen-devel@lists.xenproject.org,
+	Cornelia Huck <cohuck@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	qemu-block@nongnu.org,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Thomas Huth <thuth@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>
+Subject: [PATCH 0/2] sysemu: Let VMChangeStateHandler take boolean 'running'
+ argument
+Date: Mon, 11 Jan 2021 16:20:18 +0100
+Message-Id: <20210111152020.1422021-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <9bf21ccd-7e23-8329-35b8-bf09d35e335b@amsat.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::730;
- envelope-from=natechancellor@gmail.com; helo=mail-qk1-x730.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2l9SAw/97jjT
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: fA98lLny5S1j
 
-On Mon, Jan 11, 2021 at 11:04:25AM +0100, Philippe Mathieu-Daudé wrote:
-> +Peter
-> 
-> On 1/11/21 2:11 AM, Nathan Chancellor wrote:
-> > On Tue, Sep 01, 2020 at 12:40:42PM +0200, Philippe Mathieu-DaudÃƒÂ© wrote:
-> >> We call pci_register_root_bus() to register 4 IRQs with the
-> >> ppc4xx_pci_set_irq() handler. As it can only be called with
-> >> values in the [0-4[ range, replace the pointless warning by
-> >> an assert().
-> >>
-> >> Signed-off-by: Philippe Mathieu-DaudÃƒÂ© <f4bug@amsat.org>
-> >> ---
-> >>  hw/ppc/ppc4xx_pci.c | 5 +----
-> >>  1 file changed, 1 insertion(+), 4 deletions(-)
-> >>
-> >> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-> >> index cd3f192a138..503ef46b39a 100644
-> >> --- a/hw/ppc/ppc4xx_pci.c
-> >> +++ b/hw/ppc/ppc4xx_pci.c
-> >> @@ -256,10 +256,7 @@ static void ppc4xx_pci_set_irq(void *opaque, int irq_num, int level)
-> >>      qemu_irq *pci_irqs = opaque;
-> >>  
-> >>      trace_ppc4xx_pci_set_irq(irq_num);
-> >> -    if (irq_num < 0) {
-> >> -        fprintf(stderr, "%s: PCI irq %d\n", __func__, irq_num);
-> >> -        return;
-> >> -    }
-> >> +    assert(irq_num >= 0);
-> >>      qemu_set_irq(pci_irqs[irq_num], level);
-> >>  }
-> >>  
-> >> -- 
-> >> 2.26.2
-> >>
-> >>
-> > 
-> > Hopefully reporting this here is okay, I find Launchpad hard to use but
-> > I can file it there if need be.
-> > 
-> > The assertion added by this patch triggers while trying to boot a
-> > ppc44x_defconfig Linux kernel:
-> > 
-> > $ qemu-system-ppc \
-> >     -machine bamboo \
-> >     -no-reboot \
-> >     -append console=ttyS0 \
-> >     -display none \
-> >     -kernel uImage \
-> >     -m 128m \
-> >     -nodefaults \
-> >     -serial mon:stdio
-> > Linux version 5.11.0-rc3 (nathan@ubuntu-m3-large-x86) (powerpc-linux-gcc (GCC) 10.2.0, GNU ld (GNU Binutils) 2.35) #1 Sun Jan 10 15:52:24 MST 2021
-> > Using PowerPC 44x Platform machine description
-> > ioremap() called early from find_legacy_serial_ports+0x64c/0x794. Use early_ioremap() instead
-> ...
-> > PCI: Probing PCI hardware
-> > PCI host bridge to bus 0000:00
-> > pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
-> > pci_bus 0000:00: root bus resource [mem 0xa0000000-0xbfffffff]
-> > pci_bus 0000:00: root bus resource [bus 00-ff]
-> > pci_bus 0000:00: busn_res: [bus 00-ff] end is updated to ff
-> > pci 0000:00:00.0: [1014:027f] type 00 class 0x068000
-> > qemu-system-ppc: ../hw/ppc/ppc4xx_pci.c:259: ppc4xx_pci_set_irq: Assertion `irq_num >= 0' failed.
-> > 
-> > On v5.2.0, it looks like a higher assertion triggers, added by
-> > commit 459ca8bfa4 ("pci: Assert irqnum is between 0 and bus->nirqs in
-> > pci_bus_change_irq_level").
-> > 
-> > qemu-system-ppc: ../hw/pci/pci.c:253: pci_bus_change_irq_level: Assertion `irq_num >= 0' failed.
-> 
-> Running with '-trace ppc4xx_pci\*':
-> 
-> 1275265@1610357661.994462:ppc4xx_pci_map_irq devfn 0x0 irq 0 -> 0
-> 1275265@1610357661.994480:ppc4xx_pci_set_irq PCI irq -1
-> 
-> (gdb) bt
-> #0  0x00007fc70a8a19e5 in raise () at /lib64/libc.so.6
-> #1  0x00007fc70a88a895 in abort () at /lib64/libc.so.6
-> #2  0x00007fc70a88a769 in _nl_load_domain.cold () at /lib64/libc.so.6
-> #3  0x00007fc70a899e76 in annobin_assert.c_end () at /lib64/libc.so.6
-> #4  0x0000560953c2bfe0 in ppc4xx_pci_set_irq (opaque=0x560955dcf9a0,
-> irq_num=-1, level=0) at hw/ppc/ppc4xx_pci.c:259
-> #5  0x0000560953a20474 in pci_change_irq_level (pci_dev=0x560955dd0e40,
-> irq_num=-1, change=0) at hw/pci/pci.c:262
-> #6  0x0000560953a1d028 in pci_update_irq_disabled (d=0x560955dd0e40,
-> was_irq_disabled=0) at hw/pci/pci.c:1375
-> #7  0x0000560953a1ccb3 in pci_default_write_config (d=0x560955dd0e40,
-> addr=4, val_in=1030, l=2) at hw/pci/pci.c:1415
-> #8  0x0000560953978977 in pci_host_config_write_common
-> (pci_dev=0x560955dd0e40, addr=4, limit=256, val=1030, len=2) at
-> hw/pci/pci_host.c:83
-> #9  0x0000560953978cb9 in pci_data_write (s=0x560955dd0210,
-> addr=2147483652, val=1030, len=2) at hw/pci/pci_host.c:120
-> #10 0x0000560953978eeb in pci_host_data_write (opaque=0x560955dcf350,
-> addr=0, val=1030, len=2) at hw/pci/pci_host.c:167
-> 
-> How can irq be -1? pci_update_irq_disabled() hasn't been updated
-> since commit a7b15a5cc626 (2009-12-23):
-> 
-> 1368 static void pci_update_irq_disabled(PCIDevice *d, int was_irq_disabled)
-> 1369 {
-> 1370     int i, disabled = pci_irq_disabled(d);
-> 1371     if (disabled == was_irq_disabled)
-> 1372         return;
-> 1373     for (i = 0; i < PCI_NUM_PINS; ++i) {
-> 1374         int state = pci_irq_state(d, i);
-> 1375         pci_change_irq_level(d, i, disabled ? -state : state);
-> 1376     }
-> 1377 }
-> 
-> Let's rebuild using --enable-sanitizers to check an overflow occured:
-> 
-> 1286013@1610358549.342593:ppc4xx_pci_map_irq devfn 0x0 irq 0 -> 0
-> =================================================================
-> ==1286011==ERROR: AddressSanitizer: heap-buffer-overflow on address
-> 0x60200004f78c at pc 0x55b6d738454c bp 0x7f779b9f7810 sp 0x7f779b9f7808
-> READ of size 4 at 0x60200004f78c thread T2
->     #0 0x55b6d738454b in pci_change_irq_level hw/pci/pci.c:261:29
->     #1 0x55b6d73763be in pci_update_irq_disabled hw/pci/pci.c:1375:9
->     #2 0x55b6d7374e2d in pci_default_write_config hw/pci/pci.c:1415:9
->     #3 0x55b6d70cb8ec in pci_host_config_write_common hw/pci/pci_host.c:83:5
->     #4 0x55b6d70cc43f in pci_data_write hw/pci/pci_host.c:120:5
->     #5 0x55b6d70ccd43 in pci_host_data_write hw/pci/pci_host.c:167:9
->     #6 0x55b6d8505348 in memory_region_write_accessor softmmu/memory.c:483:5
->     #7 0x55b6d8504c1a in access_with_adjusted_size softmmu/memory.c:544:18
->     #8 0x55b6d8503316 in memory_region_dispatch_write
-> softmmu/memory.c:1465:16
->     #9 0x55b6d878ab51 in flatview_write_continue exec.c:3177:23
->     #10 0x55b6d8779046 in flatview_write exec.c:3217:14
->     #11 0x55b6d879d1ab in subpage_write exec.c:2829:12
->     #12 0x55b6d8505af7 in memory_region_write_with_attrs_accessor
-> softmmu/memory.c:503:12
->     #13 0x55b6d8504af4 in access_with_adjusted_size softmmu/memory.c:539:18
->     #14 0x55b6d850376e in memory_region_dispatch_write
-> softmmu/memory.c:1472:13
->     #15 0x55b6d8485b60 in io_writex accel/tcg/cputlb.c:1121:9
->     #16 0x55b6d845ef8b in store_helper accel/tcg/cputlb.c:2140:13
->     #17 0x55b6d845f558 in helper_le_stw_mmu accel/tcg/cputlb.c:2194:5
->     #18 0x7f77a40c0252  (<unknown module>)
-> 
-> 0x60200004f78c is located 4 bytes to the left of 16-byte region
-> [0x60200004f790,0x60200004f7a0)
-> allocated by thread T0 here:
->     #0 0x55b6d6ab9227 in calloc (qemu-system-ppc+0x1a9f227)
->     #1 0x7f77f3ab19b0 in g_malloc0 (/lib64/libglib-2.0.so.0+0x589b0)
->     #2 0x55b6d7370ef0 in pci_register_root_bus hw/pci/pci.c:493:5
->     #3 0x55b6d7dec5de in ppc4xx_pcihost_realize hw/ppc/ppc4xx_pci.c:318:9
->     #4 0x55b6d8a04ffb in device_set_realized hw/core/qdev.c:864:13
->     #5 0x55b6d89309e8 in property_set_bool qom/object.c:2202:5
->     #6 0x55b6d8928f92 in object_property_set qom/object.c:1349:5
->     #7 0x55b6d891aa29 in object_property_set_qobject qom/qom-qobject.c:28:10
->     #8 0x55b6d8929d71 in object_property_set_bool qom/object.c:1416:15
->     #9 0x55b6d89f76fc in qdev_realize hw/core/qdev.c:379:12
->     #10 0x55b6d89f7734 in qdev_realize_and_unref hw/core/qdev.c:386:11
->     #11 0x55b6d7ccc37e in sysbus_realize_and_unref hw/core/sysbus.c:261:12
->     #12 0x55b6d7ccc0a3 in sysbus_create_varargs hw/core/sysbus.c:236:5
->     #13 0x55b6d7dbce60 in bamboo_init hw/ppc/ppc440_bamboo.c:212:11
->     #14 0x55b6d6c3cdae in machine_run_board_init hw/core/machine.c:1144:5
->     #15 0x55b6d86893ee in qemu_init softmmu/vl.c:4355:5
->     #16 0x55b6d6af0f49 in main softmmu/main.c:49:5
->     #17 0x7f77f23bd041 in __libc_start_main (/lib64/libc.so.6+0x27041)
-> 
-> Thread T2 created by T0 here:
->     #0 0x55b6d6a32bb6 in pthread_create (qemu-system-ppc+0x1a18bb6)
->     #1 0x55b6d92a1df4 in qemu_thread_create util/qemu-thread-posix.c:558:11
->     #2 0x55b6d8807dc5 in qemu_tcg_init_vcpu softmmu/cpus.c:1926:13
->     #3 0x55b6d8807142 in qemu_init_vcpu softmmu/cpus.c:2047:9
->     #4 0x55b6d7e79f88 in ppc_cpu_realize
-> target/ppc/translate_init.c.inc:10146:5
->     #5 0x55b6d8a04ffb in device_set_realized hw/core/qdev.c:864:13
->     #6 0x55b6d89309e8 in property_set_bool qom/object.c:2202:5
->     #7 0x55b6d8928f92 in object_property_set qom/object.c:1349:5
->     #8 0x55b6d891aa29 in object_property_set_qobject qom/qom-qobject.c:28:10
->     #9 0x55b6d8929d71 in object_property_set_bool qom/object.c:1416:15
->     #10 0x55b6d89f76fc in qdev_realize hw/core/qdev.c:379:12
->     #11 0x55b6d724d4db in cpu_create hw/core/cpu.c:62:10
->     #12 0x55b6d7dbc024 in bamboo_init hw/ppc/ppc440_bamboo.c:183:11
->     #13 0x55b6d6c3cdae in machine_run_board_init hw/core/machine.c:1144:5
->     #14 0x55b6d86893ee in qemu_init softmmu/vl.c:4355:5
->     #15 0x55b6d6af0f49 in main softmmu/main.c:49:5
->     #16 0x7f77f23bd041 in __libc_start_main (/lib64/libc.so.6+0x27041)
-> 
-> SUMMARY: AddressSanitizer: heap-buffer-overflow hw/pci/pci.c:261:29 in
-> pci_change_irq_level
-> Shadow bytes around the buggy address:
->   0x0c0480001ea0: fa fa fd fd fa fa fd fd fa fa 00 06 fa fa 00 02
->   0x0c0480001eb0: fa fa fd fd fa fa fd fd fa fa 00 06 fa fa 00 02
->   0x0c0480001ec0: fa fa fd fd fa fa fd fd fa fa 00 06 fa fa 00 02
->   0x0c0480001ed0: fa fa 00 00 fa fa 00 00 fa fa 00 01 fa fa 05 fa
->   0x0c0480001ee0: fa fa 06 fa fa fa fd fd fa fa 06 fa fa fa 00 03
-> =>0x0c0480001ef0: fa[fa]00 00 fa fa fd fa fa fa fd fa fa fa fd fa
->   0x0c0480001f00: fa fa fd fa fa fa 00 01 fa fa fd fd fa fa fd fa
->   0x0c0480001f10: fa fa fd fd fa fa 00 02 fa fa fd fa fa fa 00 02
->   0x0c0480001f20: fa fa 05 fa fa fa 07 fa fa fa 00 01 fa fa 07 fa
->   0x0c0480001f30: fa fa 05 fa fa fa 07 fa fa fa fd fd fa fa 00 02
->   0x0c0480001f40: fa fa 05 fa fa fa 07 fa fa fa 00 01 fa fa 07 fa
-> Shadow byte legend (one shadow byte represents 8 application bytes):
->   Addressable:           00
->   Partially addressable: 01 02 03 04 05 06 07
->   Heap left redzone:       fa
->   Freed heap region:       fd
->   Stack left redzone:      f1
->   Stack mid redzone:       f2
->   Stack right redzone:     f3
->   Stack after return:      f5
->   Stack use after scope:   f8
->   Global redzone:          f9
->   Global init order:       f6
->   Poisoned by user:        f7
->   Container overflow:      fc
->   Array cookie:            ac
->   Intra object redzone:    bb
->   ASan internal:           fe
->   Left alloca redzone:     ca
->   Right alloca redzone:    cb
->   Shadow gap:              cc
-> ==1286011==ABORTING
-> 
-> I see this sysbus_create_varargs() call in bamboo_init()
-> has recently been updated by Peter in commit 0270d74ef88
-> ("hw/ppc/ppc440_bamboo: Drop use of ppcuic_init()").
-> 
-> Running with current master (7b09f127738) the assert is
-> not reached:
-> 
-> Linux version 5.11.0-rc3 (nathan@ubuntu-m3-large-x86) (powerpc-linux-gcc
-> (GCC) 10.2.0, GNU ld (GNU Binutils) 2.35) #1 Sun Jan 10 15:52:24 MST 2021
-> Using PowerPC 44x Platform machine description
-> ioremap() called early from find_legacy_serial_ports+0x64c/0x794. Use
-> early_ioremap() instead
-> printk: bootconsole [udbg0] enabled
-> -----------------------------------------------------
-> phys_mem_size     = 0x8000000
-> dcache_bsize      = 0x20
-> icache_bsize      = 0x20
-> cpu_features      = 0x0000000000000100
->   possible        = 0x0000000040000100
->   always          = 0x0000000000000100
-> cpu_user_features = 0x8c008000 0x00000000
-> mmu_features      = 0x00000008
-> -----------------------------------------------------
-> Zone ranges:
->   Normal   [mem 0x0000000000000000-0x0000000007ffffff]
-> Movable zone start for each node
-> Early memory node ranges
->   node   0: [mem 0x0000000000000000-0x0000000007ffffff]
-> Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
-> MMU: Allocated 1088 bytes of context maps for 255 contexts
-> Built 1 zonelists, mobility grouping on.  Total pages: 32448
-> Kernel command line: console=ttyS0
-> Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
-> Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
-> mem auto-init: stack:off, heap alloc:off, heap free:off
-> Memory: 122712K/131072K available (5040K kernel code, 236K rwdata, 1260K
-> rodata, 200K init, 134K bss, 8360K reserved, 0K cma-reserved)
-> Kernel virtual memory layout:
->   * 0xffbdf000..0xfffff000  : fixmap
->   * 0xffbdd000..0xffbdf000  : early ioremap
->   * 0xd1000000..0xffbdd000  : vmalloc & ioremap
-> SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
-> NR_IRQS: 512, nr_irqs: 512, preallocated irqs: 16
-> Oops: Exception in kernel mode, sig: 4 [#1]
-> BE PAGE_SIZE=4K PowerPC 44x Platform
-> Modules linked in:
-> CPU: 0 PID: 0 Comm: swapper Not tainted 5.11.0-rc3 #1
-> NIP:  c0019e58 LR: c062e3a0 CTR: c0019e58
-> REGS: c067fe90 TRAP: 0700   Not tainted  (5.11.0-rc3)
-> MSR:  000a1000 <CE,ME>  CR: 84000224  XER: 20000000
-> 
-> GPR00: c062e370 c067ff50 c065c300 c0019e58 00000000 c0019238 c067fde0
-> c065c300
-> GPR08: 00000000 00000000 c066fca4 00000066 84000222 00000000 00000000
-> 00000000
-> GPR16: 00000000 00000000 00000000 00000000 00000000 00000000 c0000010
-> 00000000
-> GPR24: c0651594 c0651594 c0690000 c7ffe080 c0690000 c05c6f64 c0680000
-> c0802100
-> NIP [c0019e58] __mtdcr_table+0xc20/0x3ff8
-> LR [c062e3a0] uic_init_one+0x13c/0x214
-> Call Trace:
-> [c067ff50] [c062e370] uic_init_one+0x10c/0x214 (unreliable)
-> [c067ff80] [c062e4f8] uic_init_tree+0x80/0x174
-> [c067ffb0] [c0627af8] start_kernel+0x33c/0x508
-> [c067fff0] [c0000044] _start+0x44/0x88
-> Instruction dump:
-> 7c9f2b86 4e800020 7c603286 4e800020 7c803386 4e800020 7c613286 4e800020
-> 7c813386 4e800020 7c623286 4e800020 <7c823386> 4e800020 7c633286 4e800020
-> random: get_random_bytes called from oops_exit+0x44/0x84 with crng_init=0
-> ---[ end trace 0000000000000000 ]---
-> 
-> Kernel panic - not syncing: Attempted to kill the idle task!
-> Rebooting in 180 seconds..
-> 
-> I suppose we can end this thread as NOTABUG.
-> 
-> Thanks for testing and your report,
-> 
-> Phil.
-
-For what it's worth, I initially ran into this assertion on v5.2.0,
-which does not include Peter's commit since it is only in master (and
-I reported a problem with separately). If they are indeed related then
-fair enough :) thanks for taking a look.
-
-Cheers,
-Nathan
+Trivial prototype change to clarify the use of the 'running'=0D
+argument of VMChangeStateHandler.=0D
+=0D
+Green CI:=0D
+https://gitlab.com/philmd/qemu/-/pipelines/239497352=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (2):=0D
+  sysemu/runstate: Let runstate_is_running() return bool=0D
+  sysemu: Let VMChangeStateHandler take boolean 'running' argument=0D
+=0D
+ include/sysemu/runstate.h   | 12 +++++++++---=0D
+ target/arm/kvm_arm.h        |  2 +-=0D
+ target/ppc/cpu-qom.h        |  2 +-=0D
+ accel/xen/xen-all.c         |  2 +-=0D
+ audio/audio.c               |  2 +-=0D
+ block/block-backend.c       |  2 +-=0D
+ gdbstub.c                   |  2 +-=0D
+ hw/block/pflash_cfi01.c     |  2 +-=0D
+ hw/block/virtio-blk.c       |  2 +-=0D
+ hw/display/qxl.c            |  2 +-=0D
+ hw/i386/kvm/clock.c         |  2 +-=0D
+ hw/i386/kvm/i8254.c         |  2 +-=0D
+ hw/i386/kvmvapic.c          |  2 +-=0D
+ hw/i386/xen/xen-hvm.c       |  2 +-=0D
+ hw/ide/core.c               |  2 +-=0D
+ hw/intc/arm_gicv3_its_kvm.c |  2 +-=0D
+ hw/intc/arm_gicv3_kvm.c     |  2 +-=0D
+ hw/intc/spapr_xive_kvm.c    |  2 +-=0D
+ hw/misc/mac_via.c           |  2 +-=0D
+ hw/net/e1000e_core.c        |  2 +-=0D
+ hw/nvram/spapr_nvram.c      |  2 +-=0D
+ hw/ppc/ppc.c                |  2 +-=0D
+ hw/ppc/ppc_booke.c          |  2 +-=0D
+ hw/s390x/tod-kvm.c          |  2 +-=0D
+ hw/scsi/scsi-bus.c          |  2 +-=0D
+ hw/usb/hcd-ehci.c           |  2 +-=0D
+ hw/usb/host-libusb.c        |  2 +-=0D
+ hw/usb/redirect.c           |  2 +-=0D
+ hw/vfio/migration.c         |  2 +-=0D
+ hw/virtio/virtio-rng.c      |  2 +-=0D
+ hw/virtio/virtio.c          |  2 +-=0D
+ net/net.c                   |  2 +-=0D
+ softmmu/memory.c            |  2 +-=0D
+ softmmu/runstate.c          |  4 ++--=0D
+ target/arm/kvm.c            |  2 +-=0D
+ target/i386/kvm/kvm.c       |  2 +-=0D
+ target/i386/sev.c           |  2 +-=0D
+ target/i386/whpx/whpx-all.c |  2 +-=0D
+ target/mips/kvm.c           |  4 ++--=0D
+ ui/gtk.c                    |  2 +-=0D
+ ui/spice-core.c             |  2 +-=0D
+ 41 files changed, 51 insertions(+), 45 deletions(-)=0D
+=0D
+--=20=0D
+2.26.2=0D
+=0D

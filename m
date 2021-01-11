@@ -1,160 +1,248 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2782023lfq;
-        Mon, 11 Jan 2021 07:46:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyfEn+JTb1JXn5Nax5jcZ3qRGUR1o2aKPg3lWA8PEnH7W3psNjl2u5OEj/vqMk/fGq5ZZFU
-X-Received: by 2002:a25:1d43:: with SMTP id d64mr495903ybd.380.1610379976669;
-        Mon, 11 Jan 2021 07:46:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610379976; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2750346lfq;
+        Mon, 11 Jan 2021 07:05:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxRZYKZLrpab4Tqk3ShxUOBBLiWro3C7VFkhoQMY2174baowEx+HNrrVjVaWL53YERZAn01
+X-Received: by 2002:ac8:6c4a:: with SMTP id z10mr15475111qtu.183.1610377551154;
+        Mon, 11 Jan 2021 07:05:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610377551; cv=none;
         d=google.com; s=arc-20160816;
-        b=jLDQlbeB5h8dCF5ZjxU3mwBpupXAza9pcD0yEmzFE327Ug5e5loHbbX0eC9gmtB5io
-         xBh814Qqdz7IFf5x7Ip6Xxa87ypUNz8Cjd4N9IcqPBTd8PekDF2jatzQBq3M+EckIFHN
-         VqC8clpgUEJ/NQt2+HkmZzQP5fYc/2jXdSdIw0bJckl2VauyBgFP/2FyE/uToq1faQMT
-         /yrC0mTH6b0oOq7VPhrZcX9gZV5/Si60evfNWcKFYaOWk12dn9LAzzFost4q6QrhQrHs
-         eB93hqqIbFDsUzErqFl8PWMkb/H/iJx2C3rM4Tw1CgZ0pD7Ytao6wtBv2rC5W+Jfatm8
-         VU9g==
+        b=mRi7I9qvro4h6YxGZlY5f4/Iw7J7KQBxJ3nc9oMXyZww/pDX7Db9D5/liNEZr7UHsT
+         IvphIhUL/e8aqqNuAwhiep3rjtkaP3N7ob6MZOnfv1UMl/cqcp+UxXInp/W3eipBiiI4
+         M7SCA/EraCTFcIJwHG4LSpvBraBybKupaWAP93cn759FAuc7ls7zlDVRTL4SMKhC488B
+         NNt/ql4zJMvM5acXdfJ/ZcopYoy+u+BNGYhPQWz6VYxvZCUmg52DVXlfgRZLOfkFK9PL
+         eqBeCYa8xS0MR7s3TrKqIWIWRtzw+QbxBo/qj77UxjST37V+TvEY3hWzhTe3JXv/8VI4
+         VOiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=0xRYk4aYqXFkNtZPxQXZaXbFCshIPXtqYxoLwPPDwhs=;
-        b=pq7fhPnorhQqPhtMv5pzVFT7MS8YUvXR2SjyTF0BSrf7zYCKL9u3Exz5XdrakCvOT9
-         yAndstkT7OBeGV8ZB1GXkvCrKKLa92FET3NvsyZxWVDeMEHv8Ohif1CtWarZZ7MzP0u6
-         ERg8MVDet+hbBlowv7zvJw1C70xNbT+lMVoiIwOgmWlUl15s9LXWTjWV2/VwEeWzZHCg
-         y4NH7L8Flim1I0WjvIvZBZPsOLcTtKM+iZRflpfQK9MvXVY1VVxLkx5tX+Y5I+lvBdYF
-         NTVpDfqlF/P0kVdkNTUNPeZr/IKoOlnZPvYfU9DEc/Ot8Xs8fDVX3VX+M1zF6kWg6H95
-         +QdQ==
+        bh=+Yz+q+sYA548DZkc3uhP8nuaBAcly6SiME04TkIbzu0=;
+        b=XlUAEKaguQFZ/GcioJAKb66d5iRc9JvAo5PNrMYmoQ42ULBJUIsG2laPmi5858GquR
+         M1dbADfuFu8my04R2bQPJEzoCVq0bdnMzC6GiCqaP/Rv+M33CWe/OtqSt1WnIpndlsHC
+         eKzU2yuOkMlR/Ri3i8WUwxE9kwLTDXijP6wnZvtcx8E3zJXcZDWbs+Ih2c+GVViGd9F4
+         zvscBvwVDxcdtNJft2Lp91L8vGWHYMkcn4gX/IhehlWNrN5fGIYmRmobseUHD7JVXkqw
+         WVCD+tTpPjVIRJlKk9TTti45rn/uHoIEb8pCQyZqq5g8hHc1kiyWv0EExAwWu20tyGY3
+         Wijg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NcdUW+8t;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id k15si163068ybp.200.2021.01.11.07.46.16
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PejHZBub;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h4si85330ybk.286.2021.01.11.07.05.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Jan 2021 07:46:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 Jan 2021 07:05:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NcdUW+8t;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1610379976;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0xRYk4aYqXFkNtZPxQXZaXbFCshIPXtqYxoLwPPDwhs=;
-	b=NcdUW+8tgXxvjHqgdM3BeOh1DmgKv6MsYguucJPLSESR0Sr9LGG74fB8RLl8T+SvoTy1y5
-	ls6N9reeqeWdNr3JDy5OA3IS4rHow9CbhnNkbqJr5Q9NkZOLroU+ZpyqgDQl9UkI0hAFpF
-	PXC8ftr7hArChtruvLGCuRQpAkHwGEw=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-274-8EsPi8WvNYSkjXKBoDPI7A-1; Mon, 11 Jan 2021 10:46:12 -0500
-X-MC-Unique: 8EsPi8WvNYSkjXKBoDPI7A-1
-Received: by mail-ed1-f69.google.com with SMTP id z20so8362129edl.21
-        for <alex.bennee@linaro.org>; Mon, 11 Jan 2021 07:46:12 -0800 (PST)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PejHZBub;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:55082 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kyylS-0005Ze-E4
+	for alex.bennee@linaro.org; Mon, 11 Jan 2021 10:05:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45146)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kyyhX-0001Ls-DV; Mon, 11 Jan 2021 10:01:47 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:45529)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kyyhU-0001Uv-Ro; Mon, 11 Jan 2021 10:01:47 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id qw4so25081193ejb.12;
+ Mon, 11 Jan 2021 07:01:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+Yz+q+sYA548DZkc3uhP8nuaBAcly6SiME04TkIbzu0=;
+ b=PejHZBubdAGZ3MyD7BeZLf8GSdxbtdEHpKiQ9OZWiN+wMSNTTFCH0Dg/97ZjM4TXW0
+ 2OVKBZTjbqVrY9QarWetjQKiVb9iA7gwDkFWgpO3N12SQhqqg3dLkQkHgjNcRg0UHbbs
+ Ftgx5PJDU7PNcUMbb2y8OB/TZpT5oUx5XLyVm/Y4VATRlwJs2K2nv+YkikIH+MYn42eh
+ 56qJvEX10gjPgw3fglxqCm08eBnuSw9SVthdVU7HYjJTw3uyP5Q/2NZCY3Y/1CsKJSqL
+ 5jhLPqxFCvEA3k615otkxN40fRBJ4vwFQNB3JVhcv4LvJJ3Boe4I12zT8NQjDtAaw9b1
+ wsww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=0xRYk4aYqXFkNtZPxQXZaXbFCshIPXtqYxoLwPPDwhs=;
-        b=Y7QK9JirZOYPVs6WR3Kd+YG+tvxj5nyCdgBvdZ0NaSpiR9PSme+VFjrDE64ScpxgLb
-         tY0CPDbGOapH/dYS0MZGxfOsl0WBoDTmsbdpaH3OIKDI3sJSIW7BHcYvuzuO6cH4EHwp
-         eyaBuF+7J39NGqIrojXeRqkWLTsOiaOh6rKmjLNcSF1UHGZH+tz73KkCVGqGLMaPo5c8
-         DJku/f6OXXbLmTMpJrDV+JAB/c3OwmGmkB3VAmrn/FOhm+gnvUcjLG6tAsOZ7oPNKkh+
-         rtgGBSucgRuw5M7+s9nE8VsQLkGC351I/m5HoO/eUuWbWK8+lSHAEy27gCBYU9p6/MaC
-         r//A==
-X-Gm-Message-State: AOAM532bGxZr+XjiwZvNj2IX8cEV8wn2SN+cdpGUkTRnmw/AMm0JKXvk
-	eCbnE2q1VN1zppijV/8fp+gxLSmt0eyu5MSm/dthl73TPr6p2OXyynIPcD6bYRC4BUTU4l1iUek
-	+pU58TtlwHuH7yMbW
-X-Received: by 2002:a17:906:9388:: with SMTP id l8mr89933ejx.22.1610379971109;
-        Mon, 11 Jan 2021 07:46:11 -0800 (PST)
-X-Received: by 2002:a17:906:9388:: with SMTP id l8mr89919ejx.22.1610379970926;
-        Mon, 11 Jan 2021 07:46:10 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (129.red-88-21-205.staticip.rima-tde.net. [88.21.205.129])
-        by smtp.gmail.com with ESMTPSA id d13sm7204083ejc.44.2021.01.11.07.46.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Jan 2021 07:46:10 -0800 (PST)
-Subject: Re: [PATCH v1 12/20] semihosting: Move ARM semihosting code to shared
- directories
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Keith Packard <keithp@keithp.com>, Laurent Vivier <laurent@vivier.eu>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>
-References: <20210108224256.2321-1-alex.bennee@linaro.org>
- <20210108224256.2321-13-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <60effd22-55a1-1021-ecbe-4899e68ea9cd@redhat.com>
-Date: Mon, 11 Jan 2021 16:46:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=+Yz+q+sYA548DZkc3uhP8nuaBAcly6SiME04TkIbzu0=;
+ b=hlPKEm2Z54PsHKHKxtQrAc+lDVQgTq+jZMuZsF2WxI6phvYWZsxdvh3nNFL0etmNJp
+ 0om8fc90ta/yp31E6cf7mUjs1xEL0L3Y+Ze/XhAIFLo0mc9bU2DuVVfPVeKunvI/vrgb
+ apnLCpUnGUgm7K3pJ1zZXLzlNcsbJ0D4glTWe+BTsgqFTKytUltl2t1D/wld+N2+ojcH
+ +edvquipRO+NbAL5homWpYtSCsq3qZcMtBjNBR0H4uvPJP19IYMpnVnQqhkNjPNWJGBW
+ vqfJD24BiNqSjxxaGIOruT5Dd2ZmK13kF9nbOUYw0bS+2AWuBBN3AA8vffxjDJG14RF4
+ Jx1Q==
+X-Gm-Message-State: AOAM532whLmfjTMmuNsnqMl6ov5DqnOjlMukY7sJ8pIu9zNmEArkZHkJ
+ TvuVmI9v/RU9KKPW/alr7XrLd+Eh9Zg=
+X-Received: by 2002:a17:906:d0c1:: with SMTP id
+ bq1mr10818129ejb.202.1610377302012; 
+ Mon, 11 Jan 2021 07:01:42 -0800 (PST)
+Received: from x1w.redhat.com (129.red-88-21-205.staticip.rima-tde.net.
+ [88.21.205.129])
+ by smtp.gmail.com with ESMTPSA id cc8sm68591edb.17.2021.01.11.07.01.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Jan 2021 07:01:41 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH 4/5] tcg: Restrict tcg_out_op() to arrays of
+ TCG_MAX_OP_ARGS elements
+Date: Mon, 11 Jan 2021 16:01:13 +0100
+Message-Id: <20210111150114.1415930-5-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210111150114.1415930-1-f4bug@amsat.org>
+References: <20210111150114.1415930-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210108224256.2321-13-alex.bennee@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wECJBM5eZlK6
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-riscv@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>, Huacai Chen <chenhuacai@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Miroslav Rezanina <mrezanin@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C0kazwQ3WviV
 
-On 1/8/21 11:42 PM, Alex Bennée wrote:
-> From: Keith Packard <keithp@keithp.com>
-> 
-> This commit renames two files which provide ARM semihosting support so
-> that they can be shared by other architectures:
-> 
->  1. target/arm/arm-semi.c     -> hw/semihosting/common-semi.c
->  2. linux-user/arm/semihost.c -> linux-user/semihost.c
-> 
-> The build system was modified use a new config variable,
-> CONFIG_ARM_COMPATIBLE_SEMIHOSTING, which has been added to the ARM
-> softmmu and linux-user default configs. The contents of the source
-> files has not been changed in this patch.
-> 
-> Signed-off-by: Keith Packard <keithp@keithp.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20210107170717.2098982-2-keithp@keithp.com>
-> ---
->  default-configs/devices/arm-softmmu.mak               | 1 +
->  default-configs/targets/aarch64-linux-user.mak        | 1 +
->  default-configs/targets/aarch64_be-linux-user.mak     | 1 +
->  default-configs/targets/arm-linux-user.mak            | 1 +
->  default-configs/targets/armeb-linux-user.mak          | 1 +
->  target/arm/arm-semi.c => hw/semihosting/common-semi.c | 0
->  linux-user/{arm => }/semihost.c                       | 0
->  hw/semihosting/Kconfig                                | 3 +++
->  hw/semihosting/meson.build                            | 3 +++
->  linux-user/arm/meson.build                            | 3 ---
->  linux-user/meson.build                                | 1 +
->  target/arm/meson.build                                | 2 --
->  12 files changed, 12 insertions(+), 5 deletions(-)
->  rename target/arm/arm-semi.c => hw/semihosting/common-semi.c (100%)
->  rename linux-user/{arm => }/semihost.c (100%)
-...
+tcg_reg_alloc_op() allocates arrays of TCG_MAX_OP_ARGS elements.
 
-> diff --git a/hw/semihosting/Kconfig b/hw/semihosting/Kconfig
-> index efe0a30734..4c30dc6b16 100644
-> --- a/hw/semihosting/Kconfig
-> +++ b/hw/semihosting/Kconfig
-> @@ -1,3 +1,6 @@
->  
->  config SEMIHOSTING
->         bool
-> +
-> +config ARM_COMPATIBLE_SEMIHOSTING
-> +       bool
+The Aarch64 target already does this since commit 8d8db193f25
+("tcg-aarch64: Hoist common argument loads in tcg_out_op"),
+SPARC since commit b357f902bff ("tcg-sparc: Hoist common argument
+loads in tcg_out_op").
 
-This misses:
+RISCV missed it upon introduction in commit bdf503819ee
+("tcg/riscv: Add the out op decoder"), MIPS since commit
+22ee3a987d5 ("tcg-mips: Hoist args loads") and i386 since
+commit 42d5b514928 ("tcg/i386: Hoist common arguments in
+tcg_out_op").
 
-          "select SEMIHOSTING"
+Provide this information as a hint to the compiler in the function
+prototype, and update the funtion definitions.
 
-'SEMIHOSTING' is a bit confusing. Wondering about better names,
-maybe SEMIHOSTING_HOST_CONSOLE is clearer? (question not related
-to this patch).
+This fixes this warning (using GCC 11):
+
+    tcg/aarch64/tcg-target.c.inc:1855:37: error: argument 3 of type 'const TCGArg[16]' {aka 'const long unsigned int[16]'} with mismatched bound [-Werror=array-parameter=]
+    tcg/aarch64/tcg-target.c.inc:1856:34: error: argument 4 of type 'const int[16]' with mismatched bound [-Werror=array-parameter=]
+
+Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+RFC because such compiler hint is somehow "new" to me.
+
+Also I expect this to be superseeded by Richard 'tcg constant'
+branch mentioned here:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg771401.html
+---
+ tcg/tcg.c                  | 5 +++--
+ tcg/i386/tcg-target.c.inc  | 3 ++-
+ tcg/mips/tcg-target.c.inc  | 3 ++-
+ tcg/riscv/tcg-target.c.inc | 3 ++-
+ tcg/tci/tcg-target.c.inc   | 5 +++--
+ 5 files changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 472bf1755bf..97d074d8fab 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -110,8 +110,9 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1,
+ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg);
+ static void tcg_out_movi(TCGContext *s, TCGType type,
+                          TCGReg ret, tcg_target_long arg);
+-static void tcg_out_op(TCGContext *s, TCGOpcode opc, const TCGArg *args,
+-                       const int *const_args);
++static void tcg_out_op(TCGContext *s, TCGOpcode opc,
++                       const TCGArg args[TCG_MAX_OP_ARGS],
++                       const int const_args[TCG_MAX_OP_ARGS]);
+ #if TCG_TARGET_MAYBE_vec
+ static bool tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
+                             TCGReg dst, TCGReg src);
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index 46e856f4421..d121dca8789 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -2215,7 +2215,8 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is64)
+ }
+ 
+ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+-                              const TCGArg *args, const int *const_args)
++                              const TCGArg args[TCG_MAX_OP_ARGS],
++                              const int const_args[TCG_MAX_OP_ARGS])
+ {
+     TCGArg a0, a1, a2;
+     int c, const_a2, vexop, rexw = 0;
+diff --git a/tcg/mips/tcg-target.c.inc b/tcg/mips/tcg-target.c.inc
+index add157f6c32..b9bb54f0ecc 100644
+--- a/tcg/mips/tcg-target.c.inc
++++ b/tcg/mips/tcg-target.c.inc
+@@ -1691,7 +1691,8 @@ static void tcg_out_clz(TCGContext *s, MIPSInsn opcv2, MIPSInsn opcv6,
+ }
+ 
+ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+-                              const TCGArg *args, const int *const_args)
++                              const TCGArg args[TCG_MAX_OP_ARGS],
++                              const int const_args[TCG_MAX_OP_ARGS])
+ {
+     MIPSInsn i1, i2;
+     TCGArg a0, a1, a2;
+diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
+index c60b91ba58f..5bf0d069532 100644
+--- a/tcg/riscv/tcg-target.c.inc
++++ b/tcg/riscv/tcg-target.c.inc
+@@ -1238,7 +1238,8 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is_64)
+ static const tcg_insn_unit *tb_ret_addr;
+ 
+ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+-                       const TCGArg *args, const int *const_args)
++                       const TCGArg args[TCG_MAX_OP_ARGS],
++                       const int const_args[TCG_MAX_OP_ARGS])
+ {
+     TCGArg a0 = args[0];
+     TCGArg a1 = args[1];
+diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
+index d5a4d9d37cf..60464524f3d 100644
+--- a/tcg/tci/tcg-target.c.inc
++++ b/tcg/tci/tcg-target.c.inc
+@@ -553,8 +553,9 @@ static inline void tcg_out_call(TCGContext *s, const tcg_insn_unit *arg)
+     old_code_ptr[1] = s->code_ptr - old_code_ptr;
+ }
+ 
+-static void tcg_out_op(TCGContext *s, TCGOpcode opc, const TCGArg *args,
+-                       const int *const_args)
++static void tcg_out_op(TCGContext *s, TCGOpcode opc,
++                       const TCGArg args[TCG_MAX_OP_ARGS],
++                       const int const_args[TCG_MAX_OP_ARGS])
+ {
+     uint8_t *old_code_ptr = s->code_ptr;
+ 
+-- 
+2.26.2
+

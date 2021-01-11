@@ -1,515 +1,160 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2749743lfq;
-        Mon, 11 Jan 2021 07:05:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwnhPfIl1nc7Vi/5FUCLaOQ/fgvrBW+gCNf7DAKmSH5oOp4r3bT1NuWx2XfKGSEhi/GghFE
-X-Received: by 2002:a25:42d0:: with SMTP id p199mr237863yba.352.1610377511433;
-        Mon, 11 Jan 2021 07:05:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610377511; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2782023lfq;
+        Mon, 11 Jan 2021 07:46:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyfEn+JTb1JXn5Nax5jcZ3qRGUR1o2aKPg3lWA8PEnH7W3psNjl2u5OEj/vqMk/fGq5ZZFU
+X-Received: by 2002:a25:1d43:: with SMTP id d64mr495903ybd.380.1610379976669;
+        Mon, 11 Jan 2021 07:46:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610379976; cv=none;
         d=google.com; s=arc-20160816;
-        b=ElTjRRqxKm069gJzvHcBq1yqoYOOTsLHCYhcp4iMhVUyrfe2SG9jwyVkHLcOBcp4j3
-         o+Vx6qJSt4ftJTz8SCm1NQ6hMuPXmjDHFEpytY9kTYk6A1Y3NoxFxOX3sRBYChJ8bSD7
-         ajIAuM11BDwWdg5RgUE5SrNdjv2pgwSDV1RYHvMYGqTbBPLejVk7nZ2t/dMh+UW6y9Te
-         h72r3tfonExLxveH1Bgzs0tSZ100e202sx0FZEi0rynQbZiDeM6JihaMMhi9bA0+fA0b
-         atXSEnlx43KgQKNA5zXMPpTo+xikJcEkRpv6RWXzHk3FGjeBVEcTRox7iDwFpUQDyFO0
-         A9vA==
+        b=jLDQlbeB5h8dCF5ZjxU3mwBpupXAza9pcD0yEmzFE327Ug5e5loHbbX0eC9gmtB5io
+         xBh814Qqdz7IFf5x7Ip6Xxa87ypUNz8Cjd4N9IcqPBTd8PekDF2jatzQBq3M+EckIFHN
+         VqC8clpgUEJ/NQt2+HkmZzQP5fYc/2jXdSdIw0bJckl2VauyBgFP/2FyE/uToq1faQMT
+         /yrC0mTH6b0oOq7VPhrZcX9gZV5/Si60evfNWcKFYaOWk12dn9LAzzFost4q6QrhQrHs
+         eB93hqqIbFDsUzErqFl8PWMkb/H/iJx2C3rM4Tw1CgZ0pD7Ytao6wtBv2rC5W+Jfatm8
+         VU9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=7h+ZogQhx4K7jgIahkOF5Dqk41tHkgsSVlTN0LVAfCk=;
-        b=f5XoEpVwmQ6bmGnP2FF1V/gLb67clbqo+OHOfLWEzy2gufjeINavu01mztfRBhKk8s
-         zvD/J2Iy1Ok1/dfmo2i/nXOs22H6R3nJ06mEXX9rHkWnH3n/aLmPqYljZ56tVHOUHfmy
-         wABvw65/ZHuiQLJ8X/bX3ECwI92SW0kj9oOt8SZUiP/fmtw9gYjKfpgxeDhcD7KLmKGQ
-         zefV6BRytzz3M0FGRhfzFIZllNJrEJSABX22mBgoLYmLZ0zjXotB58nVGRTA081Q8ndO
-         DpALwhCEoT7Y3FzwrhlmlzRGFtaPURoksvJZrLC3pLAqW4THCmyQnrEOTnLBr//X3HX2
-         AG8Q==
+        bh=0xRYk4aYqXFkNtZPxQXZaXbFCshIPXtqYxoLwPPDwhs=;
+        b=pq7fhPnorhQqPhtMv5pzVFT7MS8YUvXR2SjyTF0BSrf7zYCKL9u3Exz5XdrakCvOT9
+         yAndstkT7OBeGV8ZB1GXkvCrKKLa92FET3NvsyZxWVDeMEHv8Ohif1CtWarZZ7MzP0u6
+         ERg8MVDet+hbBlowv7zvJw1C70xNbT+lMVoiIwOgmWlUl15s9LXWTjWV2/VwEeWzZHCg
+         y4NH7L8Flim1I0WjvIvZBZPsOLcTtKM+iZRflpfQK9MvXVY1VVxLkx5tX+Y5I+lvBdYF
+         NTVpDfqlF/P0kVdkNTUNPeZr/IKoOlnZPvYfU9DEc/Ot8Xs8fDVX3VX+M1zF6kWg6H95
+         +QdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="dP4/4q4X";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p65si83346ybp.320.2021.01.11.07.05.11
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NcdUW+8t;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id k15si163068ybp.200.2021.01.11.07.46.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jan 2021 07:05:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 Jan 2021 07:46:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="dP4/4q4X";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52808 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kyyko-0004cq-Nz
-	for alex.bennee@linaro.org; Mon, 11 Jan 2021 10:05:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45010)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kyyhG-0001Da-JP; Mon, 11 Jan 2021 10:01:37 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:35853)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kyyhC-0001RU-Vx; Mon, 11 Jan 2021 10:01:29 -0500
-Received: by mail-ed1-x531.google.com with SMTP id b2so47014edm.3;
- Mon, 11 Jan 2021 07:01:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=7h+ZogQhx4K7jgIahkOF5Dqk41tHkgsSVlTN0LVAfCk=;
- b=dP4/4q4XQWeA6wBuzQkSzM8QWT1yNWctBl4v3qpL9diGRWgKWVySO3+0AwWetA7z7q
- WJb5CWk97B+VcDrbdXBatONWkudewoH040b9og40B1GpKmJStkNLH0uuFVgQcL/qopT7
- dCgpJUbOnmUByhU+kvGzWAntK6PU1Ag2Zr4PTfEAzICRkxSfUmISopPo+xKvfm2BZH+K
- 8eE+lZK2EXN3JETu5+5e0j30mWYwVrv+XkuWVZNDqgnMaaoPxFspsOJqtRZl3R4+rtTQ
- MMPhZMK9p+1+zHNmXY5VebVyTnixI2L5a452D3Q7cXXKZUJa6dQL4DWxR8rDwvwM8V4s
- NY3w==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NcdUW+8t;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1610379976;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0xRYk4aYqXFkNtZPxQXZaXbFCshIPXtqYxoLwPPDwhs=;
+	b=NcdUW+8tgXxvjHqgdM3BeOh1DmgKv6MsYguucJPLSESR0Sr9LGG74fB8RLl8T+SvoTy1y5
+	ls6N9reeqeWdNr3JDy5OA3IS4rHow9CbhnNkbqJr5Q9NkZOLroU+ZpyqgDQl9UkI0hAFpF
+	PXC8ftr7hArChtruvLGCuRQpAkHwGEw=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-274-8EsPi8WvNYSkjXKBoDPI7A-1; Mon, 11 Jan 2021 10:46:12 -0500
+X-MC-Unique: 8EsPi8WvNYSkjXKBoDPI7A-1
+Received: by mail-ed1-f69.google.com with SMTP id z20so8362129edl.21
+        for <alex.bennee@linaro.org>; Mon, 11 Jan 2021 07:46:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=7h+ZogQhx4K7jgIahkOF5Dqk41tHkgsSVlTN0LVAfCk=;
- b=a9h458TGwuS51e622vSKLH4wyALMDS9ijbjk45/v+tnQ7//9Pe6fmQmb9VBn4ZTrOj
- I2Wbzo6rC1fqwpdEjs2GiAxNjvUfo1NS8ryG0ojXS3Y0IhEcEPIsZ7VsaxDie3pFotCy
- 5YxDqi1ZXqzjVGwhTkez4v91+vP+QM54gQQzmYE7Y6aVz16bjmUvbQ+Maw7o/Pl56Qit
- E5WBzOmYHl2tZp4Vs4xezPA3qXWPcOMo6YJYHEJCZHVkQmwpiAdKqprvCzHpqH3KG55i
- ovjfsEIkcRsusGws3X4S77yDgjG744GjrNesRxWnIMwXuiQdSXX4Xw5BJBfpHjeQmsa7
- JVgw==
-X-Gm-Message-State: AOAM530yGw41a/8+36g6QtDlzKfIDIAs6JyaiikdqN375rloG6NzMhCE
- tzOly2Im58xJc6yONIrkyBKTAv2Ajbs=
-X-Received: by 2002:aa7:d485:: with SMTP id b5mr13875717edr.214.1610377284077; 
- Mon, 11 Jan 2021 07:01:24 -0800 (PST)
-Received: from x1w.redhat.com (129.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.129])
- by smtp.gmail.com with ESMTPSA id cw7sm5317247ejc.13.2021.01.11.07.01.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 07:01:23 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/5] tcg/arm: Hoist common argument loads in tcg_out_op()
-Date: Mon, 11 Jan 2021 16:01:10 +0100
-Message-Id: <20210111150114.1415930-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210111150114.1415930-1-f4bug@amsat.org>
-References: <20210111150114.1415930-1-f4bug@amsat.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=0xRYk4aYqXFkNtZPxQXZaXbFCshIPXtqYxoLwPPDwhs=;
+        b=Y7QK9JirZOYPVs6WR3Kd+YG+tvxj5nyCdgBvdZ0NaSpiR9PSme+VFjrDE64ScpxgLb
+         tY0CPDbGOapH/dYS0MZGxfOsl0WBoDTmsbdpaH3OIKDI3sJSIW7BHcYvuzuO6cH4EHwp
+         eyaBuF+7J39NGqIrojXeRqkWLTsOiaOh6rKmjLNcSF1UHGZH+tz73KkCVGqGLMaPo5c8
+         DJku/f6OXXbLmTMpJrDV+JAB/c3OwmGmkB3VAmrn/FOhm+gnvUcjLG6tAsOZ7oPNKkh+
+         rtgGBSucgRuw5M7+s9nE8VsQLkGC351I/m5HoO/eUuWbWK8+lSHAEy27gCBYU9p6/MaC
+         r//A==
+X-Gm-Message-State: AOAM532bGxZr+XjiwZvNj2IX8cEV8wn2SN+cdpGUkTRnmw/AMm0JKXvk
+	eCbnE2q1VN1zppijV/8fp+gxLSmt0eyu5MSm/dthl73TPr6p2OXyynIPcD6bYRC4BUTU4l1iUek
+	+pU58TtlwHuH7yMbW
+X-Received: by 2002:a17:906:9388:: with SMTP id l8mr89933ejx.22.1610379971109;
+        Mon, 11 Jan 2021 07:46:11 -0800 (PST)
+X-Received: by 2002:a17:906:9388:: with SMTP id l8mr89919ejx.22.1610379970926;
+        Mon, 11 Jan 2021 07:46:10 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (129.red-88-21-205.staticip.rima-tde.net. [88.21.205.129])
+        by smtp.gmail.com with ESMTPSA id d13sm7204083ejc.44.2021.01.11.07.46.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 11 Jan 2021 07:46:10 -0800 (PST)
+Subject: Re: [PATCH v1 12/20] semihosting: Move ARM semihosting code to shared
+ directories
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Keith Packard <keithp@keithp.com>, Laurent Vivier <laurent@vivier.eu>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20210108224256.2321-1-alex.bennee@linaro.org>
+ <20210108224256.2321-13-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <60effd22-55a1-1021-ecbe-4899e68ea9cd@redhat.com>
+Date: Mon, 11 Jan 2021 16:46:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210108224256.2321-13-alex.bennee@linaro.org>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-riscv@nongnu.org,
- Stefan Weil <sw@weilnetz.de>, Huacai Chen <chenhuacai@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XRq7XIqsTkDA
+X-TUID: wECJBM5eZlK6
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- tcg/arm/tcg-target.c.inc | 173 +++++++++++++++++++--------------------
- 1 file changed, 86 insertions(+), 87 deletions(-)
+On 1/8/21 11:42 PM, Alex Bennée wrote:
+> From: Keith Packard <keithp@keithp.com>
+> 
+> This commit renames two files which provide ARM semihosting support so
+> that they can be shared by other architectures:
+> 
+>  1. target/arm/arm-semi.c     -> hw/semihosting/common-semi.c
+>  2. linux-user/arm/semihost.c -> linux-user/semihost.c
+> 
+> The build system was modified use a new config variable,
+> CONFIG_ARM_COMPATIBLE_SEMIHOSTING, which has been added to the ARM
+> softmmu and linux-user default configs. The contents of the source
+> files has not been changed in this patch.
+> 
+> Signed-off-by: Keith Packard <keithp@keithp.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20210107170717.2098982-2-keithp@keithp.com>
+> ---
+>  default-configs/devices/arm-softmmu.mak               | 1 +
+>  default-configs/targets/aarch64-linux-user.mak        | 1 +
+>  default-configs/targets/aarch64_be-linux-user.mak     | 1 +
+>  default-configs/targets/arm-linux-user.mak            | 1 +
+>  default-configs/targets/armeb-linux-user.mak          | 1 +
+>  target/arm/arm-semi.c => hw/semihosting/common-semi.c | 0
+>  linux-user/{arm => }/semihost.c                       | 0
+>  hw/semihosting/Kconfig                                | 3 +++
+>  hw/semihosting/meson.build                            | 3 +++
+>  linux-user/arm/meson.build                            | 3 ---
+>  linux-user/meson.build                                | 1 +
+>  target/arm/meson.build                                | 2 --
+>  12 files changed, 12 insertions(+), 5 deletions(-)
+>  rename target/arm/arm-semi.c => hw/semihosting/common-semi.c (100%)
+>  rename linux-user/{arm => }/semihost.c (100%)
+...
 
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index 0fd11264544..94cc12a0fc6 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -1747,15 +1747,24 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is64)
- 
- static void tcg_out_epilogue(TCGContext *s);
- 
--static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
--                const TCGArg *args, const int *const_args)
-+static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-+                       const TCGArg args[TCG_MAX_OP_ARGS],
-+                       const int const_args[TCG_MAX_OP_ARGS])
- {
-     TCGArg a0, a1, a2, a3, a4, a5;
-     int c;
- 
-+    /* Hoist the loads of the most common arguments.  */
-+    a0 = args[0];
-+    a1 = args[1];
-+    a2 = args[2];
-+    a3 = args[3];
-+    a4 = args[4];
-+    a5 = args[5];
-+
-     switch (opc) {
-     case INDEX_op_exit_tb:
--        tcg_out_movi(s, TCG_TYPE_PTR, TCG_REG_R0, args[0]);
-+        tcg_out_movi(s, TCG_TYPE_PTR, TCG_REG_R0, a0);
-         tcg_out_epilogue(s);
-         break;
-     case INDEX_op_goto_tb:
-@@ -1765,7 +1774,7 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             TCGReg base = TCG_REG_PC;
- 
-             tcg_debug_assert(s->tb_jmp_insn_offset == 0);
--            ptr = (intptr_t)tcg_splitwx_to_rx(s->tb_jmp_target_addr + args[0]);
-+            ptr = (intptr_t)tcg_splitwx_to_rx(s->tb_jmp_target_addr + a0);
-             dif = tcg_pcrel_diff(s, (void *)ptr) - 8;
-             dil = sextract32(dif, 0, 12);
-             if (dif != dil) {
-@@ -1778,39 +1787,39 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-                 tcg_out_movi32(s, COND_AL, base, ptr - dil);
-             }
-             tcg_out_ld32_12(s, COND_AL, TCG_REG_PC, base, dil);
--            set_jmp_reset_offset(s, args[0]);
-+            set_jmp_reset_offset(s, a0);
-         }
-         break;
-     case INDEX_op_goto_ptr:
--        tcg_out_bx(s, COND_AL, args[0]);
-+        tcg_out_bx(s, COND_AL, a0);
-         break;
-     case INDEX_op_br:
--        tcg_out_goto_label(s, COND_AL, arg_label(args[0]));
-+        tcg_out_goto_label(s, COND_AL, arg_label(a0));
-         break;
- 
-     case INDEX_op_ld8u_i32:
--        tcg_out_ld8u(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_ld8u(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_ld8s_i32:
--        tcg_out_ld8s(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_ld8s(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_ld16u_i32:
--        tcg_out_ld16u(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_ld16u(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_ld16s_i32:
--        tcg_out_ld16s(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_ld16s(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_ld_i32:
--        tcg_out_ld32u(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_ld32u(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_st8_i32:
--        tcg_out_st8(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_st8(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_st16_i32:
--        tcg_out_st16(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_st16(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_st_i32:
--        tcg_out_st32(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_st32(s, COND_AL, a0, a1, a2);
-         break;
- 
-     case INDEX_op_movcond_i32:
-@@ -1818,34 +1827,33 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-          * so we only need to do "if condition passed, move v1 to dest".
-          */
-         tcg_out_dat_rIN(s, COND_AL, ARITH_CMP, ARITH_CMN, 0,
--                        args[1], args[2], const_args[2]);
--        tcg_out_dat_rIK(s, tcg_cond_to_arm_cond[args[5]], ARITH_MOV,
--                        ARITH_MVN, args[0], 0, args[3], const_args[3]);
-+                        a1, a2, const_args[2]);
-+        tcg_out_dat_rIK(s, tcg_cond_to_arm_cond[a5], ARITH_MOV,
-+                        ARITH_MVN, a0, 0, a3, const_args[3]);
-         break;
-     case INDEX_op_add_i32:
-         tcg_out_dat_rIN(s, COND_AL, ARITH_ADD, ARITH_SUB,
--                        args[0], args[1], args[2], const_args[2]);
-+                        a0, a1, a2, const_args[2]);
-         break;
-     case INDEX_op_sub_i32:
-         if (const_args[1]) {
-             if (const_args[2]) {
--                tcg_out_movi32(s, COND_AL, args[0], args[1] - args[2]);
-+                tcg_out_movi32(s, COND_AL, a0, a1 - a2);
-             } else {
--                tcg_out_dat_rI(s, COND_AL, ARITH_RSB,
--                               args[0], args[2], args[1], 1);
-+                tcg_out_dat_rI(s, COND_AL, ARITH_RSB, a0, a2, a1, 1);
-             }
-         } else {
-             tcg_out_dat_rIN(s, COND_AL, ARITH_SUB, ARITH_ADD,
--                            args[0], args[1], args[2], const_args[2]);
-+                            a0, a1, a2, const_args[2]);
-         }
-         break;
-     case INDEX_op_and_i32:
-         tcg_out_dat_rIK(s, COND_AL, ARITH_AND, ARITH_BIC,
--                        args[0], args[1], args[2], const_args[2]);
-+                        a0, a1, a2, const_args[2]);
-         break;
-     case INDEX_op_andc_i32:
-         tcg_out_dat_rIK(s, COND_AL, ARITH_BIC, ARITH_AND,
--                        args[0], args[1], args[2], const_args[2]);
-+                        a0, a1, a2, const_args[2]);
-         break;
-     case INDEX_op_or_i32:
-         c = ARITH_ORR;
-@@ -1854,11 +1862,9 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-         c = ARITH_EOR;
-         /* Fall through.  */
-     gen_arith:
--        tcg_out_dat_rI(s, COND_AL, c, args[0], args[1], args[2], const_args[2]);
-+        tcg_out_dat_rI(s, COND_AL, c, a0, a1, a2, const_args[2]);
-         break;
-     case INDEX_op_add2_i32:
--        a0 = args[0], a1 = args[1], a2 = args[2];
--        a3 = args[3], a4 = args[4], a5 = args[5];
-         if (a0 == a3 || (a0 == a5 && !const_args[5])) {
-             a0 = TCG_REG_TMP;
-         }
-@@ -1866,11 +1872,9 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-                         a0, a2, a4, const_args[4]);
-         tcg_out_dat_rIK(s, COND_AL, ARITH_ADC, ARITH_SBC,
-                         a1, a3, a5, const_args[5]);
--        tcg_out_mov_reg(s, COND_AL, args[0], a0);
-+        tcg_out_mov_reg(s, COND_AL, a0, a0);
-         break;
-     case INDEX_op_sub2_i32:
--        a0 = args[0], a1 = args[1], a2 = args[2];
--        a3 = args[3], a4 = args[4], a5 = args[5];
-         if ((a0 == a3 && !const_args[3]) || (a0 == a5 && !const_args[5])) {
-             a0 = TCG_REG_TMP;
-         }
-@@ -1894,68 +1898,64 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             tcg_out_dat_rIK(s, COND_AL, ARITH_SBC, ARITH_ADC,
-                             a1, a3, a5, const_args[5]);
-         }
--        tcg_out_mov_reg(s, COND_AL, args[0], a0);
-+        tcg_out_mov_reg(s, COND_AL, a0, a0);
-         break;
-     case INDEX_op_neg_i32:
--        tcg_out_dat_imm(s, COND_AL, ARITH_RSB, args[0], args[1], 0);
-+        tcg_out_dat_imm(s, COND_AL, ARITH_RSB, a0, a1, 0);
-         break;
-     case INDEX_op_not_i32:
--        tcg_out_dat_reg(s, COND_AL,
--                        ARITH_MVN, args[0], 0, args[1], SHIFT_IMM_LSL(0));
-+        tcg_out_dat_reg(s, COND_AL, ARITH_MVN, a0, 0, a1, SHIFT_IMM_LSL(0));
-         break;
-     case INDEX_op_mul_i32:
--        tcg_out_mul32(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_mul32(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_mulu2_i32:
--        tcg_out_umull32(s, COND_AL, args[0], args[1], args[2], args[3]);
-+        tcg_out_umull32(s, COND_AL, a0, a1, a2, a3);
-         break;
-     case INDEX_op_muls2_i32:
--        tcg_out_smull32(s, COND_AL, args[0], args[1], args[2], args[3]);
-+        tcg_out_smull32(s, COND_AL, a0, a1, a2, a3);
-         break;
--    /* XXX: Perhaps args[2] & 0x1f is wrong */
-+    /* XXX: Perhaps a2 & 0x1f is wrong */
-     case INDEX_op_shl_i32:
-         c = const_args[2] ?
--                SHIFT_IMM_LSL(args[2] & 0x1f) : SHIFT_REG_LSL(args[2]);
-+                SHIFT_IMM_LSL(a2 & 0x1f) : SHIFT_REG_LSL(a2);
-         goto gen_shift32;
-     case INDEX_op_shr_i32:
--        c = const_args[2] ? (args[2] & 0x1f) ? SHIFT_IMM_LSR(args[2] & 0x1f) :
--                SHIFT_IMM_LSL(0) : SHIFT_REG_LSR(args[2]);
-+        c = const_args[2] ? (a2 & 0x1f) ? SHIFT_IMM_LSR(a2 & 0x1f) :
-+                SHIFT_IMM_LSL(0) : SHIFT_REG_LSR(a2);
-         goto gen_shift32;
-     case INDEX_op_sar_i32:
--        c = const_args[2] ? (args[2] & 0x1f) ? SHIFT_IMM_ASR(args[2] & 0x1f) :
--                SHIFT_IMM_LSL(0) : SHIFT_REG_ASR(args[2]);
-+        c = const_args[2] ? (a2 & 0x1f) ? SHIFT_IMM_ASR(a2 & 0x1f) :
-+                SHIFT_IMM_LSL(0) : SHIFT_REG_ASR(a2);
-         goto gen_shift32;
-     case INDEX_op_rotr_i32:
--        c = const_args[2] ? (args[2] & 0x1f) ? SHIFT_IMM_ROR(args[2] & 0x1f) :
--                SHIFT_IMM_LSL(0) : SHIFT_REG_ROR(args[2]);
-+        c = const_args[2] ? (a2 & 0x1f) ? SHIFT_IMM_ROR(a2 & 0x1f) :
-+                SHIFT_IMM_LSL(0) : SHIFT_REG_ROR(a2);
-         /* Fall through.  */
-     gen_shift32:
--        tcg_out_dat_reg(s, COND_AL, ARITH_MOV, args[0], 0, args[1], c);
-+        tcg_out_dat_reg(s, COND_AL, ARITH_MOV, a0, 0, a1, c);
-         break;
- 
-     case INDEX_op_rotl_i32:
-         if (const_args[2]) {
--            tcg_out_dat_reg(s, COND_AL, ARITH_MOV, args[0], 0, args[1],
--                            ((0x20 - args[2]) & 0x1f) ?
--                            SHIFT_IMM_ROR((0x20 - args[2]) & 0x1f) :
-+            tcg_out_dat_reg(s, COND_AL, ARITH_MOV, a0, 0, a1,
-+                            ((0x20 - a2) & 0x1f) ?
-+                            SHIFT_IMM_ROR((0x20 - a2) & 0x1f) :
-                             SHIFT_IMM_LSL(0));
-         } else {
--            tcg_out_dat_imm(s, COND_AL, ARITH_RSB, TCG_REG_TMP, args[2], 0x20);
--            tcg_out_dat_reg(s, COND_AL, ARITH_MOV, args[0], 0, args[1],
-+            tcg_out_dat_imm(s, COND_AL, ARITH_RSB, TCG_REG_TMP, a2, 0x20);
-+            tcg_out_dat_reg(s, COND_AL, ARITH_MOV, a0, 0, a1,
-                             SHIFT_REG_ROR(TCG_REG_TMP));
-         }
-         break;
- 
-     case INDEX_op_ctz_i32:
--        tcg_out_dat_reg(s, COND_AL, INSN_RBIT, TCG_REG_TMP, 0, args[1], 0);
-+        tcg_out_dat_reg(s, COND_AL, INSN_RBIT, TCG_REG_TMP, 0, a1, 0);
-         a1 = TCG_REG_TMP;
-         goto do_clz;
- 
-     case INDEX_op_clz_i32:
--        a1 = args[1];
-     do_clz:
--        a0 = args[0];
--        a2 = args[2];
-         c = const_args[2];
-         if (c && a2 == 32) {
-             tcg_out_dat_reg(s, COND_AL, INSN_CLZ, a0, 0, a1, 0);
-@@ -1970,28 +1970,28 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
- 
-     case INDEX_op_brcond_i32:
-         tcg_out_dat_rIN(s, COND_AL, ARITH_CMP, ARITH_CMN, 0,
--                       args[0], args[1], const_args[1]);
--        tcg_out_goto_label(s, tcg_cond_to_arm_cond[args[2]],
--                           arg_label(args[3]));
-+                        a0, a1, const_args[1]);
-+        tcg_out_goto_label(s, tcg_cond_to_arm_cond[a2],
-+                           arg_label(a3));
-         break;
-     case INDEX_op_setcond_i32:
-         tcg_out_dat_rIN(s, COND_AL, ARITH_CMP, ARITH_CMN, 0,
--                        args[1], args[2], const_args[2]);
--        tcg_out_dat_imm(s, tcg_cond_to_arm_cond[args[3]],
--                        ARITH_MOV, args[0], 0, 1);
--        tcg_out_dat_imm(s, tcg_cond_to_arm_cond[tcg_invert_cond(args[3])],
--                        ARITH_MOV, args[0], 0, 0);
-+                        a1, a2, const_args[2]);
-+        tcg_out_dat_imm(s, tcg_cond_to_arm_cond[a3],
-+                        ARITH_MOV, a0, 0, 1);
-+        tcg_out_dat_imm(s, tcg_cond_to_arm_cond[tcg_invert_cond(a3)],
-+                        ARITH_MOV, a0, 0, 0);
-         break;
- 
-     case INDEX_op_brcond2_i32:
-         c = tcg_out_cmp2(s, args, const_args);
--        tcg_out_goto_label(s, tcg_cond_to_arm_cond[c], arg_label(args[5]));
-+        tcg_out_goto_label(s, tcg_cond_to_arm_cond[c], arg_label(a5));
-         break;
-     case INDEX_op_setcond2_i32:
-         c = tcg_out_cmp2(s, args + 1, const_args + 1);
--        tcg_out_dat_imm(s, tcg_cond_to_arm_cond[c], ARITH_MOV, args[0], 0, 1);
-+        tcg_out_dat_imm(s, tcg_cond_to_arm_cond[c], ARITH_MOV, a0, 0, 1);
-         tcg_out_dat_imm(s, tcg_cond_to_arm_cond[tcg_invert_cond(c)],
--                        ARITH_MOV, args[0], 0, 0);
-+                        ARITH_MOV, a0, 0, 0);
-         break;
- 
-     case INDEX_op_qemu_ld_i32:
-@@ -2008,63 +2008,62 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-         break;
- 
-     case INDEX_op_bswap16_i32:
--        tcg_out_bswap16(s, COND_AL, args[0], args[1]);
-+        tcg_out_bswap16(s, COND_AL, a0, a1);
-         break;
-     case INDEX_op_bswap32_i32:
--        tcg_out_bswap32(s, COND_AL, args[0], args[1]);
-+        tcg_out_bswap32(s, COND_AL, a0, a1);
-         break;
- 
-     case INDEX_op_ext8s_i32:
--        tcg_out_ext8s(s, COND_AL, args[0], args[1]);
-+        tcg_out_ext8s(s, COND_AL, a0, a1);
-         break;
-     case INDEX_op_ext16s_i32:
--        tcg_out_ext16s(s, COND_AL, args[0], args[1]);
-+        tcg_out_ext16s(s, COND_AL, a0, a1);
-         break;
-     case INDEX_op_ext16u_i32:
--        tcg_out_ext16u(s, COND_AL, args[0], args[1]);
-+        tcg_out_ext16u(s, COND_AL, a0, a1);
-         break;
- 
-     case INDEX_op_deposit_i32:
--        tcg_out_deposit(s, COND_AL, args[0], args[2],
--                        args[3], args[4], const_args[2]);
-+        tcg_out_deposit(s, COND_AL, a0, a2, a3, a4, const_args[2]);
-         break;
-     case INDEX_op_extract_i32:
--        tcg_out_extract(s, COND_AL, args[0], args[1], args[2], args[3]);
-+        tcg_out_extract(s, COND_AL, a0, a1, a2, a3);
-         break;
-     case INDEX_op_sextract_i32:
--        tcg_out_sextract(s, COND_AL, args[0], args[1], args[2], args[3]);
-+        tcg_out_sextract(s, COND_AL, a0, a1, a2, a3);
-         break;
-     case INDEX_op_extract2_i32:
-         /* ??? These optimization vs zero should be generic.  */
-         /* ??? But we can't substitute 2 for 1 in the opcode stream yet.  */
-         if (const_args[1]) {
-             if (const_args[2]) {
--                tcg_out_movi(s, TCG_TYPE_REG, args[0], 0);
-+                tcg_out_movi(s, TCG_TYPE_REG, a0, 0);
-             } else {
--                tcg_out_dat_reg(s, COND_AL, ARITH_MOV, args[0], 0,
--                                args[2], SHIFT_IMM_LSL(32 - args[3]));
-+                tcg_out_dat_reg(s, COND_AL, ARITH_MOV, a0, 0,
-+                                a2, SHIFT_IMM_LSL(32 - a3));
-             }
-         } else if (const_args[2]) {
--            tcg_out_dat_reg(s, COND_AL, ARITH_MOV, args[0], 0,
--                            args[1], SHIFT_IMM_LSR(args[3]));
-+            tcg_out_dat_reg(s, COND_AL, ARITH_MOV, a0, 0,
-+                            a1, SHIFT_IMM_LSR(a3));
-         } else {
-             /* We can do extract2 in 2 insns, vs the 3 required otherwise.  */
-             tcg_out_dat_reg(s, COND_AL, ARITH_MOV, TCG_REG_TMP, 0,
--                            args[2], SHIFT_IMM_LSL(32 - args[3]));
--            tcg_out_dat_reg(s, COND_AL, ARITH_ORR, args[0], TCG_REG_TMP,
--                            args[1], SHIFT_IMM_LSR(args[3]));
-+                            a2, SHIFT_IMM_LSL(32 - a3));
-+            tcg_out_dat_reg(s, COND_AL, ARITH_ORR, a0, TCG_REG_TMP,
-+                            a1, SHIFT_IMM_LSR(a3));
-         }
-         break;
- 
-     case INDEX_op_div_i32:
--        tcg_out_sdiv(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_sdiv(s, COND_AL, a0, a1, a2);
-         break;
-     case INDEX_op_divu_i32:
--        tcg_out_udiv(s, COND_AL, args[0], args[1], args[2]);
-+        tcg_out_udiv(s, COND_AL, a0, a1, a2);
-         break;
- 
-     case INDEX_op_mb:
--        tcg_out_mb(s, args[0]);
-+        tcg_out_mb(s, a0);
-         break;
- 
-     case INDEX_op_mov_i32:  /* Always emitted via tcg_out_mov.  */
--- 
-2.26.2
+> diff --git a/hw/semihosting/Kconfig b/hw/semihosting/Kconfig
+> index efe0a30734..4c30dc6b16 100644
+> --- a/hw/semihosting/Kconfig
+> +++ b/hw/semihosting/Kconfig
+> @@ -1,3 +1,6 @@
+>  
+>  config SEMIHOSTING
+>         bool
+> +
+> +config ARM_COMPATIBLE_SEMIHOSTING
+> +       bool
 
+This misses:
+
+          "select SEMIHOSTING"
+
+'SEMIHOSTING' is a bit confusing. Wondering about better names,
+maybe SEMIHOSTING_HOST_CONSOLE is clearer? (question not related
+to this patch).

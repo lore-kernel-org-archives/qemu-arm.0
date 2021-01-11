@@ -1,111 +1,111 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2750549lfq;
-        Mon, 11 Jan 2021 07:06:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx0ht2p0QTq7pkXCqanKp/0nGUVcUGwBTX8mzk2cm+GjdglBgHOakyk3idHQtPEBObhPVPv
-X-Received: by 2002:a25:d10f:: with SMTP id i15mr274056ybg.244.1610377564212;
-        Mon, 11 Jan 2021 07:06:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610377564; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2920932lfq;
+        Mon, 11 Jan 2021 11:06:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxf3HOTrx01JSv18y8RNZZnBta81quYFVTFmK9jIWOg26Jes+nc+FFQsS2q4B+n6ja3t65+
+X-Received: by 2002:a5b:404:: with SMTP id m4mr1777469ybp.436.1610391995245;
+        Mon, 11 Jan 2021 11:06:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610391995; cv=none;
         d=google.com; s=arc-20160816;
-        b=D7DOsL2rKvq7TbTWykh5d2EvS/M6gSqC2xCmLWDlH7PfnBFpx+EGQMXAVBJ2CTetc9
-         c6QzD1yfpF/dKDQjuyybd8tAusPhOFpC04c9VQCWiC8KHN64uJTU4KFv4xhaC4UCcaxq
-         OlxtQeZSY86AZRYEfQjjiTNABqcSyS4fAGrA24u14sxd5zcnzbiHh5vrEz58EN+mrukZ
-         aj97/ZFozOyVpOl/qexdc9rptmVDM0yqy/MuGlUrKOCGnfsGxsUaM81CaWOr+vaNEV9z
-         dN+PqSu3j/IHU5RBWh7DzOC8x8r/ez1EdtaE2HPaMRbQSrIyTBWRBxuXPehRL3ThxKTE
-         V4mA==
+        b=ejfTksK20YHWXqtLfrcCG1gRU2k3Z6VV6N+uoJl65zUpYJy0hCnNso1gEsxwOHVI5U
+         T2td/rnzaqnI7VBOkOPpcD2bct4W/2vURMVJ4brnLmH7aQHOinbCRRUDW22fbN0o7QR+
+         5cDDWHJFsZ57hcIYAi2ZW/mYGImu+Hp3dLpXgSkl99OTGVZvFm72vaHoDJm4U1H+6eIG
+         sh0507wKTWNxtfdI7Gjpr5MZoiWVcSEnbb/PxRkN4V9illvcdFoPRlmIOslAmT3m4opW
+         Y+4to0zhq1NmutHUhFbbb4K6dLnXHOUix4xNW20hMT4T0FHoBDn6ygNV0ZG4/Pd7cRKk
+         UCYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xngzeQsXbx86Y0kY9uD4ruhCQIyXt4hJmccYItVWSgE=;
-        b=vok9gt0KookMBAAlouDXMEOOccBUi0NgS0yyIexc65P0G4uiGlPGw5C+gMGOv177qG
-         cp1gwHAr4GnzbWQD802yuOaTXPhROFiEHco/RCDhisvGlhlonQIHJADjGip96cTEzsmB
-         lqcNfoIXefTWcIn9UIWHjF7Mg5pV4WVLx1eN3xwvnGN8VAEwXjPxZc2VFD5HqkJiWAko
-         y2suwmOAjMNqRNfYv56n6UU8PQ/MYGTnsdOE55xXwwkl8SFLDdrykOl9e55NNKOIe/gR
-         XwVrppB89uQh8g6M+n76BAnJ+KD8gFLWxAn+Ni69UPiniNITLkzG09WGinPWQ9069qE8
-         ppng==
+        bh=5Vo6hKG+XeXChWCO/nvW6DJ7PoxmnMyeEjcU9Aitm8k=;
+        b=qm7oEqv7KSVGWXlHGPHVWisonnF2BOz3Jxc5x1MKm64lhIB/OELqqXFLmgfDLQLHNO
+         rVXfkFg6zY7ByNAsJu15CKpgX1KUD5Ry2JSC5SNfRnEKfSi1+u8d+wI5DVd2G8Ex39Ue
+         Br0I0ykq2b94Qx423S3STaa0c+3VG0cNq/rVNTUSyd/RpQD0wLheVtF7DT3NkgeFEpSO
+         aBABDEVYjWGqgJWVuC1nciJmshy4Xr+kk9cQt3lwvAdvq/t2KE3EBwtCpqgjEELvAEgZ
+         MNxR3d+I/qXKx2zTFfnIjPqW2jrgwYZ63cWlmIca41m9egQg+4Hc/mT/ZQo51MvIDXVu
+         4nAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JU8/uZzy";
+       dkim=fail header.i=@linaro.org header.s=google header.b=wB8QbFzC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m124si103759yba.153.2021.01.11.07.06.04
+        by mx.google.com with ESMTPS id k19si633280ybj.293.2021.01.11.11.06.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jan 2021 07:06:04 -0800 (PST)
+        Mon, 11 Jan 2021 11:06:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JU8/uZzy";
+       dkim=fail header.i=@linaro.org header.s=google header.b=wB8QbFzC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56428 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kyylf-00067O-G8
-	for alex.bennee@linaro.org; Mon, 11 Jan 2021 10:06:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45176)
+	id 1kz2WQ-0002Ak-Ks
+	for alex.bennee@linaro.org; Mon, 11 Jan 2021 14:06:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kyyhd-0001a3-2S; Mon, 11 Jan 2021 10:01:53 -0500
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:34510)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kz2RW-0005rx-Cb
+ for qemu-arm@nongnu.org; Mon, 11 Jan 2021 14:01:30 -0500
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:42405)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kyyhb-0001Vl-EH; Mon, 11 Jan 2021 10:01:52 -0500
-Received: by mail-ej1-x631.google.com with SMTP id g20so83123ejb.1;
- Mon, 11 Jan 2021 07:01:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kz2RU-0006OZ-Cb
+ for qemu-arm@nongnu.org; Mon, 11 Jan 2021 14:01:30 -0500
+Received: by mail-pg1-x52b.google.com with SMTP id g15so256858pgu.9
+ for <qemu-arm@nongnu.org>; Mon, 11 Jan 2021 11:01:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xngzeQsXbx86Y0kY9uD4ruhCQIyXt4hJmccYItVWSgE=;
- b=JU8/uZzyfrbCCh0sfNNRgDfkqxalS6KTv/bDHUEEQWCbD2O+7GHhpXW5jPv2F5/Otj
- ED89jPRaY4rSPbLXDOmAD4pYYOFh4eiGlSUL5E1aYNUwyOBYmM590+O4CHqGsPdJiI3T
- MEuO41mbNYK9zfHoRye9MP3MANfc3Y+N9cPHyaltOIJjukQ3bgE/Di8uoGiph0Pw8Nz5
- O7qDedIU6bQIH39IeJ3ycpfwG0BsWJcqrMAgxCp4I9fDHPnKN4QTqR+yDdZXClXKY/BC
- pBxKlz2d/G2tNiPmZpAQxqWOPqpburxAXsusZUsAlQZ6twjehGHFpIxNlxpAZi+Fvmxh
- gsUg==
+ bh=5Vo6hKG+XeXChWCO/nvW6DJ7PoxmnMyeEjcU9Aitm8k=;
+ b=wB8QbFzCmsJAZTXrsgIP+l7TBsqQDhPTNBcXt3a68iZP+fMcz5sVl/XBacPT/dFsCo
+ r6N+1UvTNvw/Q0xtA5/G+5LU6elom4o2h9D/p8x/9cTWFsDxFl56CCgl8/zhRSGsZep2
+ vkHwd+cw059z5Atmu8r7ZvJHIRuauWu9j81OHN1Glr2BNy8R2E8BscB5Qz6zmAoAL+Gj
+ XKOxnbjAhzVCJGKu43BM3ZEy+g6P0jARQZqAQpXMb9DRc7tYS2wTAfsc5r9iVHBW7Wny
+ 4rm4UNgPSYBl13HzA3HXiEZq8+kzCKydRscVlDPQvfz9vuEWiww0+vZ2KcZWQU0MsWHJ
+ iKag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=xngzeQsXbx86Y0kY9uD4ruhCQIyXt4hJmccYItVWSgE=;
- b=fdcYO8G2+U1MUF5iikH3rYya3vx95UUft2kL7cdrsdHufwJSaw+Ko2TUmEwe2vzbgJ
- k+pMFUnbvnqffy5fDmTpGVdWde+oQ37UGj3Hfws8t7lCc7OqWoQBPZEx+VvnQjLmHdOT
- SGDP4LzyAiLy7RAzW1f+tZiAIdpt+EAkaOXLmhE+u0H/9FU0CgHgyb53sJ8Vh/MSVnhG
- uV8pXMf7Bff5BoyPHv9E1V/uLfddb0jdP+d8/qveo9cZA799vafrQRX3j7lRswKlqVtK
- hZ1PgPXdPbmep05gBvZ4M4gyurXquOYHBSE2p3CUjhx5tgW3yKaGOagR1+4PhJxe6c+D
- TgEQ==
-X-Gm-Message-State: AOAM531u9uvSGG+jClZUJUBx3ejG+2/9M6j3Y2dboC8YaM1Scfuhvax5
- 3I6kRTp5F0KzaQ4RUfPWT3+s3M8wLQQ=
-X-Received: by 2002:a17:906:fcda:: with SMTP id
- qx26mr11168873ejb.213.1610377308517; 
- Mon, 11 Jan 2021 07:01:48 -0800 (PST)
-Received: from x1w.redhat.com (129.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.129])
- by smtp.gmail.com with ESMTPSA id b21sm51043edr.53.2021.01.11.07.01.46
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=5Vo6hKG+XeXChWCO/nvW6DJ7PoxmnMyeEjcU9Aitm8k=;
+ b=qIhVJ/K4cCYWjpJB7RGv9AIujhfe0pkHSLNvBbJuxMDoPSS9uo26v0YueYQ7P62jbN
+ pEKoma04k108Af8jhEfj3K1i1FPMoJj14Nys6o2Uyo5ukerUrgnA/czT9fk5DsuVXX2I
+ F32Et3H6Ne5p7LjwnagN9GfPdYKnYuTAdOib/Is0DHQSFgBTTYfuC9/WY0Vq6fXfPR56
+ RAJzxMeXDui7BxI90xf2gMwGbV1CLxBMlWSlocDKdzPCZ6MFqus0fuThCcBO3s8WFlLU
+ KsvLBUIIG85xbBQFn1cc0/79VPSgICSk9Ga5BDn6H4XjSWWrb4r9z4sOGj+U59Llg6xS
+ M8iw==
+X-Gm-Message-State: AOAM531QN9SLwVmxgAbEaM1L1w44qCdJ51aQsN8hsfdfYAz/MfZWsXep
+ PE5nEcwrL6crC9pcO5cljihUTQ==
+X-Received: by 2002:aa7:860b:0:b029:19e:2827:93b7 with SMTP id
+ p11-20020aa7860b0000b029019e282793b7mr827804pfn.22.1610391686700; 
+ Mon, 11 Jan 2021 11:01:26 -0800 (PST)
+Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
+ [173.197.107.21])
+ by smtp.gmail.com with ESMTPSA id n195sm350395pfd.169.2021.01.11.11.01.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 07:01:47 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ Mon, 11 Jan 2021 11:01:26 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 5/5] tcg: Restrict tcg_out_vec_op() to arrays of
- TCG_MAX_OP_ARGS elements
-Date: Mon, 11 Jan 2021 16:01:14 +0100
-Message-Id: <20210111150114.1415930-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210111150114.1415930-1-f4bug@amsat.org>
-References: <20210111150114.1415930-1-f4bug@amsat.org>
+Subject: [PATCH v3 06/30] target/arm: Move mode specific TB flags to
+ tb->cs_base
+Date: Mon, 11 Jan 2021 09:00:49 -1000
+Message-Id: <20210111190113.303726-7-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210111190113.303726-1-richard.henderson@linaro.org>
+References: <20210111190113.303726-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,104 +118,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-riscv@nongnu.org,
- Stefan Weil <sw@weilnetz.de>, Huacai Chen <chenhuacai@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CjHyJqrd3wwz
+X-TUID: kwHsACuJGsB5
 
-tcg_reg_alloc_op() allocates arrays of TCG_MAX_OP_ARGS elements.
+Now that we have all of the proper macros defined, expanding
+the CPUARMTBFlags structure and populating the two TB fields
+is relatively simple.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/tcg.c                    | 14 ++++++++------
- tcg/aarch64/tcg-target.c.inc |  3 ++-
- tcg/i386/tcg-target.c.inc    |  3 ++-
- tcg/ppc/tcg-target.c.inc     |  3 ++-
- 4 files changed, 14 insertions(+), 9 deletions(-)
+ target/arm/cpu.h       | 49 ++++++++++++++++++++++++------------------
+ target/arm/translate.h |  2 +-
+ target/arm/helper.c    |  2 +-
+ 3 files changed, 30 insertions(+), 23 deletions(-)
 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 97d074d8fab..3a20327f9cb 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -120,9 +120,10 @@ static bool tcg_out_dupm_vec(TCGContext *s, TCGType type, unsigned vece,
-                              TCGReg dst, TCGReg base, intptr_t offset);
- static void tcg_out_dupi_vec(TCGContext *s, TCGType type,
-                              TCGReg dst, tcg_target_long arg);
--static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc, unsigned vecl,
--                           unsigned vece, const TCGArg *args,
--                           const int *const_args);
-+static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
-+                           unsigned vecl, unsigned vece,
-+                           const TCGArg args[TCG_MAX_OP_ARGS],
-+                           const int const_args[TCG_MAX_OP_ARGS]);
- #else
- static inline bool tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
-                                    TCGReg dst, TCGReg src)
-@@ -139,9 +140,10 @@ static inline void tcg_out_dupi_vec(TCGContext *s, TCGType type,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c7700c9c85..af70462cfa 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -221,6 +221,7 @@ typedef struct ARMPACKey {
+ /* See the commentary above the TBFLAG field definitions.  */
+ typedef struct CPUARMTBFlags {
+     uint32_t flags;
++    target_ulong flags2;
+ } CPUARMTBFlags;
+ 
+ typedef struct CPUARMState {
+@@ -3251,20 +3252,26 @@ typedef ARMCPU ArchCPU;
+ #include "exec/cpu-all.h"
+ 
+ /*
+- * Bit usage in the TB flags field: bit 31 indicates whether we are
+- * in 32 or 64 bit mode. The meaning of the other bits depends on that.
+- * We put flags which are shared between 32 and 64 bit mode at the top
+- * of the word, and flags which apply to only one mode at the bottom.
++ * We have more than 32-bits worth of state per TB, so we split the data
++ * between tb->flags and tb->cs_base, which is otherwise unused for ARM.
++ * We collect these two parts in CPUARMTBFlags where they are named
++ * flags and flags2 respectively.
+  *
+- *  31          20    18    14          9              0
+- * +--------------+-----+-----+----------+--------------+
+- * |              |     |   TBFLAG_A32   |              |
+- * |              |     +-----+----------+  TBFLAG_AM32 |
+- * |  TBFLAG_ANY  |           |TBFLAG_M32|              |
+- * |              +-----------+----------+--------------|
+- * |              |            TBFLAG_A64               |
+- * +--------------+-------------------------------------+
+- *  31          20                                     0
++ * The flags that are shared between all execution modes, TBFLAG_ANY,
++ * are stored in flags.  The flags that are specific to a given mode
++ * are stores in flags2.  Since cs_base is sized on the configured
++ * address size, flags2 always has 64-bits for A64, and a minimum of
++ * 32-bits for A32 and M32.
++ *
++ * The bits for 32-bit A-profile and M-profile partially overlap:
++ *
++ *  18             9              0
++ * +----------------+--------------+
++ * |   TBFLAG_A32   |              |
++ * +-----+----------+  TBFLAG_AM32 |
++ * |     |TBFLAG_M32|              |
++ * +-----+----------+--------------+
++ *     14          9              0
+  *
+  * Unless otherwise noted, these bits are cached in env->hflags.
+  */
+@@ -3342,19 +3349,19 @@ FIELD(TBFLAG_A64, MTE0_ACTIVE, 19, 1)
+ #define DP_TBFLAG_ANY(DST, WHICH, VAL) \
+     (DST.flags = FIELD_DP32(DST.flags, TBFLAG_ANY, WHICH, VAL))
+ #define DP_TBFLAG_A64(DST, WHICH, VAL) \
+-    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_A64, WHICH, VAL))
++    (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_A64, WHICH, VAL))
+ #define DP_TBFLAG_A32(DST, WHICH, VAL) \
+-    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_A32, WHICH, VAL))
++    (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_A32, WHICH, VAL))
+ #define DP_TBFLAG_M32(DST, WHICH, VAL) \
+-    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_M32, WHICH, VAL))
++    (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_M32, WHICH, VAL))
+ #define DP_TBFLAG_AM32(DST, WHICH, VAL) \
+-    (DST.flags = FIELD_DP32(DST.flags, TBFLAG_AM32, WHICH, VAL))
++    (DST.flags2 = FIELD_DP32(DST.flags2, TBFLAG_AM32, WHICH, VAL))
+ 
+ #define EX_TBFLAG_ANY(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_ANY, WHICH)
+-#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_A64, WHICH)
+-#define EX_TBFLAG_A32(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_A32, WHICH)
+-#define EX_TBFLAG_M32(IN, WHICH)   FIELD_EX32(IN.flags, TBFLAG_M32, WHICH)
+-#define EX_TBFLAG_AM32(IN, WHICH)  FIELD_EX32(IN.flags, TBFLAG_AM32, WHICH)
++#define EX_TBFLAG_A64(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_A64, WHICH)
++#define EX_TBFLAG_A32(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_A32, WHICH)
++#define EX_TBFLAG_M32(IN, WHICH)   FIELD_EX32(IN.flags2, TBFLAG_M32, WHICH)
++#define EX_TBFLAG_AM32(IN, WHICH)  FIELD_EX32(IN.flags2, TBFLAG_AM32, WHICH)
+ 
+ /**
+  * cpu_mmu_index:
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index f30287e554..50c2aba066 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -402,7 +402,7 @@ typedef void AtomicThreeOpFn(TCGv_i64, TCGv_i64, TCGv_i64, TCGArg, MemOp);
+  */
+ static inline CPUARMTBFlags arm_tbflags_from_tb(const TranslationBlock *tb)
  {
-     g_assert_not_reached();
+-    return (CPUARMTBFlags){ tb->flags };
++    return (CPUARMTBFlags){ tb->flags, tb->cs_base };
  }
--static inline void tcg_out_vec_op(TCGContext *s, TCGOpcode opc, unsigned vecl,
--                                  unsigned vece, const TCGArg *args,
--                                  const int *const_args)
-+static inline void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
-+                                  unsigned vecl, unsigned vece,
-+                                  const TCGArg args[TCG_MAX_OP_ARGS],
-+                                  const int const_args[TCG_MAX_OP_ARGS])
- {
-     g_assert_not_reached();
+ 
+ /*
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index cc73acc927..0d7c8817b6 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -13030,7 +13030,6 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+     CPUARMTBFlags flags;
+     uint32_t pstate_for_ss;
+ 
+-    *cs_base = 0;
+     assert_hflags_rebuild_correctly(env);
+     flags = env->hflags;
+ 
+@@ -13101,6 +13100,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+     }
+ 
+     *pflags = flags.flags;
++    *cs_base = flags.flags2;
  }
-diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-index ab199b143f3..32811976e78 100644
---- a/tcg/aarch64/tcg-target.c.inc
-+++ b/tcg/aarch64/tcg-target.c.inc
-@@ -2276,7 +2276,8 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
  
- static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
-                            unsigned vecl, unsigned vece,
--                           const TCGArg *args, const int *const_args)
-+                           const TCGArg args[TCG_MAX_OP_ARGS],
-+                           const int const_args[TCG_MAX_OP_ARGS])
- {
-     static const AArch64Insn cmp_insn[16] = {
-         [TCG_COND_EQ] = I3616_CMEQ,
-diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
-index d121dca8789..87bf75735a1 100644
---- a/tcg/i386/tcg-target.c.inc
-+++ b/tcg/i386/tcg-target.c.inc
-@@ -2654,7 +2654,8 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
- 
- static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
-                            unsigned vecl, unsigned vece,
--                           const TCGArg *args, const int *const_args)
-+                           const TCGArg args[TCG_MAX_OP_ARGS],
-+                           const int const_args[TCG_MAX_OP_ARGS])
- {
-     static int const add_insn[4] = {
-         OPC_PADDB, OPC_PADDW, OPC_PADDD, OPC_PADDQ
-diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-index d37b519d693..279ec4b743c 100644
---- a/tcg/ppc/tcg-target.c.inc
-+++ b/tcg/ppc/tcg-target.c.inc
-@@ -3137,7 +3137,8 @@ static bool tcg_out_dupm_vec(TCGContext *s, TCGType type, unsigned vece,
- 
- static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
-                            unsigned vecl, unsigned vece,
--                           const TCGArg *args, const int *const_args)
-+                           const TCGArg args[TCG_MAX_OP_ARGS],
-+                           const int const_args[TCG_MAX_OP_ARGS])
- {
-     static const uint32_t
-         add_op[4] = { VADDUBM, VADDUHM, VADDUWM, VADDUDM },
+ #ifdef TARGET_AARCH64
 -- 
-2.26.2
+2.25.1
 

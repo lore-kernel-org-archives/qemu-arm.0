@@ -1,104 +1,104 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2937785lfq;
-        Mon, 11 Jan 2021 11:30:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwyOWDi8Wf5+WHr59VNq+sFFT5rQGMcyJuyEnkeVEwZ4LC+hgZdxz5Efovy3hjgP36aiXCw
-X-Received: by 2002:a25:3cc3:: with SMTP id j186mr1954794yba.344.1610393447644;
-        Mon, 11 Jan 2021 11:30:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610393447; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2942010lfq;
+        Mon, 11 Jan 2021 11:37:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz0s2s3/kSnYLXOHNN8Oe8iqZsHxrg4WQ04v7NiSidefXq2nq4gRhQbd34dc3gsBGDogdt/
+X-Received: by 2002:a25:7c06:: with SMTP id x6mr1940419ybc.445.1610393825031;
+        Mon, 11 Jan 2021 11:37:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610393825; cv=none;
         d=google.com; s=arc-20160816;
-        b=xfFiMSrHlfcLbyIUy5KocreYXiiuZ5+260pLyYjonxfXtt48J5riQ5SNjo67RAnXet
-         9RaZoG29erdNYh6TnLJobaQkc/BppsNKJbM0/sLfZxUp6JPnSPRhkxqXinwizAHGqpD4
-         snwKC4QtLiP85ZaApq+UFlCCpIopYQJQx7Jn1b1gl+HhS6jt2ks0Q0qTm7ULDBrmTXXf
-         4iR3g2vdVS5QIg3HlkO9drQpZEnlJjjqo5x+jvTazd7kjt2kJxariaDWYZUrM/mXJyba
-         e3btcvgq1NywKyKn7IqAH3uoGXegCPGle+fskvI1FDxlBEblIMfA4fhgmTSuFqywlYcB
-         6mBg==
+        b=mb02Hkve/tMtyiZEQr2XaqEnc0b82E1fEGUjJXX6hn2+IOo+sEQPtma+LlojEELM3x
+         iykpl+yKRamjz6bUg4kltW95W3eeOHeTp85jqI9Iag3yQ65muJvzSa6mR+7M+maSxcUQ
+         7J/1L0Tex4Y5SdcLZhsN+fOZLJ0V0B/gBmS1lJGEuawAWvx1TIQhdOGZjJ1O9oZ4fJO/
+         MUN8ZNd4dIDSTngjyjZq9odgzlpEuwD+1gZpRGFLJrkCt3jc5e6GibTNIH1dmf0EwAtD
+         nwF2BLmdc/68ebO2iT0yJsMRCjvIcHXGTk4Z5LYRnviGe4pwmjnOzogmyhtucrm6Kgo2
+         aBPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=lAlv71XV4SKUNxt7geYws+zgzPBGM/IzIZrTaZWAMU4=;
-        b=qqH/J7RQBJphHWftU5z52TC7AExMKXEvx7VmeQKksysFrhLQkglMlCcfDkfOBfV1cp
-         XZ1WfBPrgxuojGZcIcLAqzLAyHA97rPTGG3ReebqtvEKv+yTkPn7/ik/LT7Ba0iKOHyz
-         ea1WL0OZ8hzEW6OhUiucr5KVhpaSCcpa0sB+QTAaUrv2HoXHnJRYdRxkdFB3unOsK/eB
-         oHV1+3MMwQWZ7IunEvvKFGwVAu3zjEOmeIg0h0/rgk6DPUp+wuj5fnDOgt5GwKUZuQ/O
-         Yl/mXq3ICVGpePenYrmsO4zLxgI7IDEFCYoPZF8ic7AWxEgLEz126pqM/bdw0AfCoMvR
-         UAFA==
+        bh=LMCF8q7A21kXUpOcDk/n6acbUew2GqwmafvBGjmsF/Q=;
+        b=nom8HFbih4sWgvR30dayAAURiy6NWv+AovT++L5cEg/8MfHtHX8d1mmozVEAnHrJyC
+         iDc7+KmeX3rRmJvlFND5RQF66CbJ7qi4PgUrX5cLqMhtEJxhL2KOoJhjCwlmlzvsersX
+         ZKIWCzmvKX0izlfGxjvV8Pdd9wtgEywxkFj/7B1oVI5XhWZS1i8lS3UvBUDYYEjdySEa
+         dPt25B0yVrzusTCwSpWqCbgG5TTfKipNPP8SgWI9wjEYIF9kKeE96LBdj3kd12xz9Jcu
+         B9V63mlbCzFH0F2hJ5ZxZ9QVa5ABfC3FGrFqPWMC1HVouf0HlG2BGUGBSmyNrEFB+crj
+         45wQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=q2uySl2J;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ila6muUf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12si674711ybp.339.2021.01.11.11.30.47
+        by mx.google.com with ESMTPS id t2si764184ybt.197.2021.01.11.11.37.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jan 2021 11:30:47 -0800 (PST)
+        Mon, 11 Jan 2021 11:37:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=q2uySl2J;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ila6muUf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51548 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35638 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kz2tq-0006Id-Va
-	for alex.bennee@linaro.org; Mon, 11 Jan 2021 14:30:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47686)
+	id 1kz2zw-0003IZ-DH
+	for alex.bennee@linaro.org; Mon, 11 Jan 2021 14:37:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz2S7-0006QM-Ga
- for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:02:08 -0500
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029]:37369)
+ id 1kz2S5-0006OX-8B
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:02:05 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:35928)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz2S3-0006X9-Rb
- for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:02:07 -0500
-Received: by mail-pj1-x1029.google.com with SMTP id b5so107117pjk.2
- for <qemu-devel@nongnu.org>; Mon, 11 Jan 2021 11:02:03 -0800 (PST)
+ id 1kz2S2-0006WT-1m
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:02:04 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id l23so109676pjg.1
+ for <qemu-devel@nongnu.org>; Mon, 11 Jan 2021 11:02:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=lAlv71XV4SKUNxt7geYws+zgzPBGM/IzIZrTaZWAMU4=;
- b=q2uySl2J4wtk/YcI7vLoMM8s8/yTn1lxkCvT9/kIfY6w2RDzxyue/Y0l1k+SpuzBUg
- KE9R2TnDn6yNJXxXOphsVG6Dj62wyIJ5X27Gzn5McmevJCQ5obhMPElX7+v+rgU/V26t
- hQ5Eb9OL4gkCZAfXU4uIvcXuuOAB9aw6OKWIlNFfGUSrafwk9M27Iu52ogZVQsSA5lJr
- PK9JBxoLlJ8iMu0IDI3d4BR/WpLThJKr1VbjgsDoNGYtijulhWrTVIjH3lVyf7/aaNL+
- KFGe3m1Z62L9hPXK2SLKXbCcFYeWgkYHLCjPicBqrBXtnXteIjGJ8Aq5NAVFGjQ8K4TE
- UP2Q==
+ bh=LMCF8q7A21kXUpOcDk/n6acbUew2GqwmafvBGjmsF/Q=;
+ b=ila6muUfv1NetpureejFZh0kulP+DrMan01CqbWIwGd9s5fPWoAWozRnmspD+34IPX
+ wyZvmL5pXuheuJWl+C9UstsqlfKcGscju8/aiu5zaUsRkoK0o98yRQgw2EdurUkIeUQT
+ EmKU8nbCwYfeT6gmIyzXFWRLLoO0DfGv8B/Zht4UHcX/183Sg+7Lc0edC9yWxBv/8bjO
+ idpnX1YMFVycpCFOOi43FA77JpqEi6slCO1x8/ArIur/kdhMNSBSrEGohlRoMlauXFq2
+ SQUbtemb8ZzR3v7CuMuszx+3KeSBllbBILTAvYbHfrlTIyz1OvlihGl2Yr18ZU7QCy1h
+ fXsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lAlv71XV4SKUNxt7geYws+zgzPBGM/IzIZrTaZWAMU4=;
- b=Gpyl5MMcmQt7E6GqPRTbmTmU2Kv0ei0+dazHZf2TOyqk8wLSaasU7/QNE51uld/p7J
- d4ksvn0suIjtgqH4VqfIeMev7FqW0F35ONFrFbF1DWbQi8TEUr0HbrvHfJuQYmaYtgBy
- CyNhNZ3MccH90TMg+edZdISUObFco7sjdH9wn+hezISncGOnaNOEBuuTrxKHza29sj2w
- aW5uCzx917cuSonWORApsThozqSlYvPGWHz/3aj7SDQFWZwgbw6y5aeq48uB2r6ap2cn
- WasI9jU4BUSMmVs6KeB9MRjNLFMvVw/noCjtRTcQ+cC8Aft80lsEMozC42857r85d2o1
- PQaw==
-X-Gm-Message-State: AOAM533Kipa9z7+1++HS2aPCcTOInFOhec6WArJl3q0xGOKip4Oq430D
- VbClIRhoUK1gk8XKohCxkxGSjtWYrHVNlA==
-X-Received: by 2002:a17:902:ee02:b029:db:c0d6:57f9 with SMTP id
- z2-20020a170902ee02b02900dbc0d657f9mr1132017plb.65.1610391722178; 
- Mon, 11 Jan 2021 11:02:02 -0800 (PST)
+ bh=LMCF8q7A21kXUpOcDk/n6acbUew2GqwmafvBGjmsF/Q=;
+ b=QWdqdTScCJMGv+yUVr3UgezS3u+gdMZDyiYx78ZKRb3ah7rlduPORPzLnVAoY/IKcw
+ v4iG4doutnVCinEtj2PR5hVJHhqoFWHeHidlb756RQ2c7tEKliTVMJbMAg68cSskohMH
+ H2qw5W+3F7LNWlQJ2OwWxA+vY2GQoEmDMZYryXQRyY252eMtwBYIIiU4V4l7gpK8XxSa
+ WhICfhDuCcenEU4+BtUdlQT2jvKrv6VCIBSeT8qKHnPeJmE8vDIQ4wuMfTT/9EI1ZBFb
+ g1XuXQgdH8QSmpzKDY41BMyXt5QjzhNAgXqp85oSC7bwo4WL+2pxdp33W2m48xGhaxzM
+ IssQ==
+X-Gm-Message-State: AOAM532uKbLx+sXGcm9VEfTYUYGaghq34A8rcnLMGxcpIbXVJXJpuU/5
+ H8+mNjGMJ+5lVCS9ZnUvijQHdkoyce6rxw==
+X-Received: by 2002:a17:902:fe95:b029:da:fa53:666 with SMTP id
+ x21-20020a170902fe95b02900dafa530666mr714476plm.72.1610391720129; 
+ Mon, 11 Jan 2021 11:02:00 -0800 (PST)
 Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
  [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id n195sm350395pfd.169.2021.01.11.11.02.00
+ by smtp.gmail.com with ESMTPSA id n195sm350395pfd.169.2021.01.11.11.01.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 11:02:01 -0800 (PST)
+ Mon, 11 Jan 2021 11:01:59 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 26/30] target/arm: Enforce alignment for aa64
- load-acq/store-rel
-Date: Mon, 11 Jan 2021 09:01:09 -1000
-Message-Id: <20210111190113.303726-27-richard.henderson@linaro.org>
+Subject: [PATCH v3 25/30] target/arm: Use finalize_memop for aa64 fpr
+ load/store
+Date: Mon, 11 Jan 2021 09:01:08 -1000
+Message-Id: <20210111190113.303726-26-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210111190113.303726-1-richard.henderson@linaro.org>
 References: <20210111190113.303726-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,101 +121,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k5fT3HU3/PH5
+X-TUID: jkFeQND8gr+M
+
+For 128-bit load/store, use 16-byte alignment.  This
+requires that we perform the two operations in the
+correct order so that we generate the alignment fault
+before modifying memory.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-a64.c | 23 ++++++++++++++---------
- 1 file changed, 14 insertions(+), 9 deletions(-)
+ target/arm/translate-a64.c | 42 +++++++++++++++++++++++---------------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
 
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 9255763ea7..7f37f8bb12 100644
+index 5d93fcf25b..9255763ea7 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -2669,7 +2669,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-         clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-                                     true, rn != 31, size);
--        do_gpr_st(s, cpu_reg(s, rt), clean_addr, size, true, rt,
-+        /* TODO: ARMv8.4-LSE SCTLR.nAA */
-+        do_gpr_st(s, cpu_reg(s, rt), clean_addr, size | MO_ALIGN, true, rt,
-                   disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
-         return;
+@@ -957,25 +957,33 @@ static void do_gpr_ld(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
+ static void do_fp_st(DisasContext *s, int srcidx, TCGv_i64 tcg_addr, int size)
+ {
+     /* This writes the bottom N bits of a 128 bit wide vector to memory */
+-    TCGv_i64 tmp = tcg_temp_new_i64();
+-    tcg_gen_ld_i64(tmp, cpu_env, fp_reg_offset(s, srcidx, MO_64));
++    TCGv_i64 tmplo = tcg_temp_new_i64();
++    MemOp mop;
++
++    tcg_gen_ld_i64(tmplo, cpu_env, fp_reg_offset(s, srcidx, MO_64));
++
+     if (size < 4) {
+-        tcg_gen_qemu_st_i64(tmp, tcg_addr, get_mem_index(s),
+-                            s->be_data + size);
++        mop = finalize_memop(s, size);
++        tcg_gen_qemu_st_i64(tmplo, tcg_addr, get_mem_index(s), mop);
+     } else {
+         bool be = s->be_data == MO_BE;
+         TCGv_i64 tcg_hiaddr = tcg_temp_new_i64();
++        TCGv_i64 tmphi = tcg_temp_new_i64();
  
-@@ -2686,8 +2687,9 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         }
-         clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-                                     false, rn != 31, size);
--        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, size, false, true, rt,
--                  disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
-+        /* TODO: ARMv8.4-LSE SCTLR.nAA */
-+        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, size | MO_ALIGN, false, true,
-+                  rt, disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
-         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-         return;
++        tcg_gen_ld_i64(tmphi, cpu_env, fp_reg_hi_offset(s, srcidx));
++
++        mop = s->be_data | MO_Q;
++        tcg_gen_qemu_st_i64(be ? tmphi : tmplo, tcg_addr, get_mem_index(s),
++                            mop | (s->align_mem ? MO_ALIGN_16 : 0));
+         tcg_gen_addi_i64(tcg_hiaddr, tcg_addr, 8);
+-        tcg_gen_qemu_st_i64(tmp, be ? tcg_hiaddr : tcg_addr, get_mem_index(s),
+-                            s->be_data | MO_Q);
+-        tcg_gen_ld_i64(tmp, cpu_env, fp_reg_hi_offset(s, srcidx));
+-        tcg_gen_qemu_st_i64(tmp, be ? tcg_addr : tcg_hiaddr, get_mem_index(s),
+-                            s->be_data | MO_Q);
++        tcg_gen_qemu_st_i64(be ? tmplo : tmphi, tcg_hiaddr,
++                            get_mem_index(s), mop);
++
+         tcg_temp_free_i64(tcg_hiaddr);
++        tcg_temp_free_i64(tmphi);
+     }
  
-@@ -3476,15 +3478,18 @@ static void disas_ldst_ldapr_stlr(DisasContext *s, uint32_t insn)
-     int size = extract32(insn, 30, 2);
-     TCGv_i64 clean_addr, dirty_addr;
-     bool is_store = false;
--    bool is_signed = false;
-     bool extend = false;
-     bool iss_sf;
+-    tcg_temp_free_i64(tmp);
++    tcg_temp_free_i64(tmplo);
+ }
+ 
+ /*
+@@ -986,10 +994,11 @@ static void do_fp_ld(DisasContext *s, int destidx, TCGv_i64 tcg_addr, int size)
+     /* This always zero-extends and writes to a full 128 bit wide vector */
+     TCGv_i64 tmplo = tcg_temp_new_i64();
+     TCGv_i64 tmphi = NULL;
 +    MemOp mop;
  
-     if (!dc_isar_feature(aa64_rcpc_8_4, s)) {
-         unallocated_encoding(s);
-         return;
-     }
- 
-+    /* TODO: ARMv8.4-LSE SCTLR.nAA */
-+    mop = size | MO_ALIGN;
-+
-     switch (opc) {
-     case 0: /* STLURB */
-         is_store = true;
-@@ -3496,21 +3501,21 @@ static void disas_ldst_ldapr_stlr(DisasContext *s, uint32_t insn)
-             unallocated_encoding(s);
-             return;
-         }
--        is_signed = true;
-+        mop |= MO_SIGN;
-         break;
-     case 3: /* LDAPURS* 32-bit variant */
-         if (size > 1) {
-             unallocated_encoding(s);
-             return;
-         }
--        is_signed = true;
-+        mop |= MO_SIGN;
-         extend = true; /* zero-extend 32->64 after signed load */
-         break;
-     default:
-         g_assert_not_reached();
-     }
- 
--    iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
-+    iss_sf = disas_ldst_compute_iss_sf(size, (mop & MO_SIGN) != 0, opc);
- 
-     if (rn == 31) {
-         gen_check_sp_alignment(s);
-@@ -3523,13 +3528,13 @@ static void disas_ldst_ldapr_stlr(DisasContext *s, uint32_t insn)
-     if (is_store) {
-         /* Store-Release semantics */
-         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
--        do_gpr_st(s, cpu_reg(s, rt), clean_addr, size, true, rt, iss_sf, true);
-+        do_gpr_st(s, cpu_reg(s, rt), clean_addr, mop, true, rt, iss_sf, true);
+     if (size < 4) {
+-        MemOp memop = s->be_data + size;
+-        tcg_gen_qemu_ld_i64(tmplo, tcg_addr, get_mem_index(s), memop);
++        mop = finalize_memop(s, size);
++        tcg_gen_qemu_ld_i64(tmplo, tcg_addr, get_mem_index(s), mop);
      } else {
-         /*
-          * Load-AcquirePC semantics; we implement as the slightly more
-          * restrictive Load-Acquire.
-          */
--        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, size + is_signed * MO_SIGN,
-+        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, mop,
-                   extend, true, rt, iss_sf, true);
-         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+         bool be = s->be_data == MO_BE;
+         TCGv_i64 tcg_hiaddr;
+@@ -997,11 +1006,12 @@ static void do_fp_ld(DisasContext *s, int destidx, TCGv_i64 tcg_addr, int size)
+         tmphi = tcg_temp_new_i64();
+         tcg_hiaddr = tcg_temp_new_i64();
+ 
++        mop = s->be_data | MO_Q;
++        tcg_gen_qemu_ld_i64(be ? tmphi : tmplo, tcg_addr, get_mem_index(s),
++                            mop | (s->align_mem ? MO_ALIGN_16 : 0));
+         tcg_gen_addi_i64(tcg_hiaddr, tcg_addr, 8);
+-        tcg_gen_qemu_ld_i64(tmplo, be ? tcg_hiaddr : tcg_addr, get_mem_index(s),
+-                            s->be_data | MO_Q);
+-        tcg_gen_qemu_ld_i64(tmphi, be ? tcg_addr : tcg_hiaddr, get_mem_index(s),
+-                            s->be_data | MO_Q);
++        tcg_gen_qemu_ld_i64(be ? tmplo : tmphi, tcg_hiaddr,
++                            get_mem_index(s), mop);
+         tcg_temp_free_i64(tcg_hiaddr);
      }
+ 
 -- 
 2.25.1
 

@@ -1,109 +1,110 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2919723lfq;
-        Mon, 11 Jan 2021 11:04:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyIyjfXBC8DVsLzCEzSKyAOfDNc7qOiNFEHfYNuPquAEs5fDnLDIKo7syLYKb12vZ6+lGV3
-X-Received: by 2002:a25:4258:: with SMTP id p85mr1578582yba.423.1610391894369;
-        Mon, 11 Jan 2021 11:04:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610391894; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2940157lfq;
+        Mon, 11 Jan 2021 11:34:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzC3fGIbDehb7O6aK5NnvlVktVTB0h/Ox2ATqFLidPEMlJ7TtCHLWlpm5Jt7QPp8CFA94Ky
+X-Received: by 2002:a25:6981:: with SMTP id e123mr1981958ybc.194.1610393654813;
+        Mon, 11 Jan 2021 11:34:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610393654; cv=none;
         d=google.com; s=arc-20160816;
-        b=nl7AD53supWDPGVHNu/2m2RR+FjOhkRJ73IsG7OzsOoJfAXY1p1IWTEnyazRbg+6hq
-         VUee/a4A7AbXBQKhcnd1Z8S11RAF2LKJV0hWHbRdlvp8KcOCWupw8fXjkZ5NMiXtTJAu
-         aJFj/+A7iGIeKnjDJeBIf8nDBingXDGzjmv2wfHxtE3XNrOrZ9ZB86ZFjjyggPCXv8oz
-         ostwTUu0pKHKvTTTSoJPR70RzXlcHdi/gTEyrNhnzmA57y3jS0WjEBGPQ+5j4uWuS2fn
-         QN0NiZESzEEt6MCo0qHSR5+Jc9bZyPgJI17JCDeAi2Y9WBtnDwPnodnL3lyugoTBlI1X
-         ejhA==
+        b=orN/NkT5cVhfv7eaUBqXuQlbMlYEJ6D9Z91vh8pl8FfTk3GIqzoNgtOuiYbHYWU0kR
+         jYuRcPy2W8zFUtisYDyldpBjFKY+V/h5hpa3AuesMiOUmdKiUgblFRjsCW/h5d+eArvw
+         mLLUXaSyfEMe0slJKWmiTEZy7eDjSXXCFOMuTwdzfs5LFu6LfeJ4c7WGbnFr+wWpEI8x
+         5josHNyK3D/uMxhr0FtTGgPgXtcWRoSyYl2Pu/mMIz1hoY78HDw0s9gCFOrNuOLcne2p
+         gW8+xRddtfLLv7h2cWjz9zbXJCtk0GCKbYgvHfMXoshcSn49mHyvzrxuQ423YHptrwQD
+         oSHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8XIA/+X37AvNazV2jisISm3ZiIWDvYr5zvekcj4Rlqc=;
-        b=pvNBf5x/TlJJE551Q/V9NELy90GHOZJQa9O9z+D3U0tw3Rue7iBDQJLOrXptzqakmi
-         34ETZSXFMgpRMyAN9fnl+MNhFZy6On1EYC6GhPawYXLQeO32Nyfoq19+sqTJTx2WQ2qv
-         lS+2y49mJNnQh4rx0m/pm/FVPSxZkkNX4x3HlzjzgI7YS25eaK8KuDYOQ2/LStlO9p+F
-         Z589bvgxpRYgnnfdg116YRAlPkYnWEuqZb3zfI6Pmsz+1jMfsi0X7ezV0xLSlM1hz9WR
-         AR/Hb/y42wwle9FgffzIZHlo53e0zKvHIiyYycRX8cuEnFCPFoe9fXbHlw5a3Z5mBfdb
-         vrKg==
+        bh=4UQ2EbntzblTY+Cr/OZTR2n9Wiol6cqQRRjRkzPpLXE=;
+        b=urfd7Ni1aqL8E3xWTrB8GJuPfupLoSwB5ZGruKq7m6nuQddSO+9Qy741GXAAsKR7ck
+         p6+rh4fAYCJxhwlWOjzuCMtvsX4M8jaNU1AHZg25OczwLoO3OTp8epOof/yV3Nm+lo3u
+         flOIaZby8h0FN/SIW36nlv175uRI56dfpaNRmda9dFnIeg+DAGtu6Iu22QdaKOiUKngB
+         xnkTyZNrq3JxWG1qDyj29UijzXZoIoyVTRfSJN0rELzKGB1TM515LnJtObOPfVBbQUV6
+         YfeTW+FYb5hjAyjWgYBiC0tFJpzF+YtNdvQxYkakR341wMi3JUEkNakHI9n6dyACf67I
+         orRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cN938TE5;
+       dkim=fail header.i=@linaro.org header.s=google header.b="DqjI/wiA";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si647450ybi.148.2021.01.11.11.04.54
+        by mx.google.com with ESMTPS id y14si603417ybb.398.2021.01.11.11.34.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jan 2021 11:04:54 -0800 (PST)
+        Mon, 11 Jan 2021 11:34:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cN938TE5;
+       dkim=fail header.i=@linaro.org header.s=google header.b="DqjI/wiA";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51992 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58084 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kz2Un-0008A0-La
-	for alex.bennee@linaro.org; Mon, 11 Jan 2021 14:04:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46856)
+	id 1kz2xC-0000kQ-57
+	for alex.bennee@linaro.org; Mon, 11 Jan 2021 14:34:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz2RO-0005ft-Et
- for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:01:22 -0500
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:42407)
+ id 1kz2SH-0006VE-IJ
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:02:18 -0500
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:38842)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz2RM-0006Mg-5s
- for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:01:22 -0500
-Received: by mail-pg1-x52e.google.com with SMTP id g15so256581pgu.9
- for <qemu-devel@nongnu.org>; Mon, 11 Jan 2021 11:01:19 -0800 (PST)
+ id 1kz2SA-0006Yu-Lo
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 14:02:17 -0500
+Received: by mail-pg1-x52b.google.com with SMTP id q7so271529pgm.5
+ for <qemu-devel@nongnu.org>; Mon, 11 Jan 2021 11:02:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8XIA/+X37AvNazV2jisISm3ZiIWDvYr5zvekcj4Rlqc=;
- b=cN938TE5rE+EPWVe+3ynvGY0NH2UDEeH9IIQGdwXBJ6IWOSFjRT1qQdhx758J0QVAg
- lX9CHNXanximN3zGvU7oCdaeZSgrd+6xOrvByA9PWSH85NzmY52XhIBBshAvin+3M+W1
- B1jr7CUGnZkK7A8Qyfk0wPumg+Ah9iLetOZIvV4QJTU7Wo/6anyhJ+E3xCWu5WrLb18e
- qpQqLfhljYzVX7S7OF9E8zQVvc5WgOMDAO03PPAf3IitkAnBc+BDV1ARjXTYl0gRW5eI
- Ta+IAB0rii3/I3GKQtKE9B1Ni5kDyWzAQ7Qnbv/ox0lOtPJkmqQmPiYyEuU5GaPMDapH
- IaDg==
+ bh=4UQ2EbntzblTY+Cr/OZTR2n9Wiol6cqQRRjRkzPpLXE=;
+ b=DqjI/wiA63h9Z7VIF6PcWjfh5XEff8lw2NSEp5sKkS/kn3Ywcd58Q1bw7A0U51HJkX
+ 61cG3Cl1pnRSyeLyn57ryvbpQpyu9/DrcKUUwLQCZELnvGBuDSfe5G1v6Ctgmup9ECFh
+ MOQ3cjUY2LDd+TGHz0cMEVmgp6dgpDNX7yLkSQl7Ckgu6GTtWYkA6V83PKxNHsooQgMe
+ 9qeGTC3w9uguFz+jL7KKbSYjsiFRAQ3G56X3QtTNisSCMlZTXfthqqit5XYTQoE/JvKd
+ TGsiv8gVgwZBZjcnQBhJ45jaxZ/DJn0w1yiRsBkpg5X+jgyivo6m24O211cuBWAttV8+
+ 0Okg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8XIA/+X37AvNazV2jisISm3ZiIWDvYr5zvekcj4Rlqc=;
- b=KZm61zj4vz7ETAXsD89jhQzUlKS4sQPz4z3m4aVLV8R7AY5CUzuyXUoZ8VCatlXYvF
- g8Hj/WNUv0Vuu9r7OAXRG2Ydj4EMlomCNzWlEZHnRmJNwWr3oTMQLItGGgSksORCamgM
- waI4Hjbw08+kf2yhrcnrGG5lu/aB9UApXNkuIxLzXiWsn9gysAjE0AvGJJ5Dh3AVZS2j
- opjiaVo0rkMCJ3In4r5Lu/eqUuENfn9mwKNysHIZw5G0ALEIZMSQucnqbmf4JG3dSnBr
- X9BfpoTerA4rhyBWesK6f7yB7+fBdVUPTqR+YcZz7dpBmGtR9FMr78XhjUib4ugR0rXO
- 3ZNQ==
-X-Gm-Message-State: AOAM533LaywG252+AE6/Osy0W0LvDwKSRDnR7jmfK5LB7hxzwTn07smD
- LUil1hH6h9Qtt+ztbnBckD18scaAvgkyeg==
-X-Received: by 2002:a63:5642:: with SMTP id g2mr930203pgm.434.1610391678178;
- Mon, 11 Jan 2021 11:01:18 -0800 (PST)
+ bh=4UQ2EbntzblTY+Cr/OZTR2n9Wiol6cqQRRjRkzPpLXE=;
+ b=CGQHRxyJgQmMy8cHldftY8qXtozV8ZoJGLTCGUXybAR8wrgyfuy92dUhNMRyxo6EeV
+ ElYmNL9uJ62y2j6XRnXirO7oU+5CjmS6n6wPlK9B4p2Nkirx5macwZF68zCpBC4wCljI
+ 6K5M4XBcHGILRKzpxLNsBMX0kz6YINrsIV7a9rQbbXg596N+IEByQkWWi7yuL320Q5tO
+ Pxw/KXAnjIkuSSIOPH3MXX3VL45YDkKS/EO6E7mjcjPspb2jLUJRWfQBLZig/HFDYqwi
+ kM9w7JgOE8OfufmCnz6yJqFYBnyDjsNElJHauyi9FkY/meJyfs1yb0CbJEWZgKHeQ8hC
+ o3Sg==
+X-Gm-Message-State: AOAM531F4uanztTJXKlkr6bOYeYSuwNWyuQ/w5NWAUPsJ+PUF4jfOzOT
+ A5rW1EYgOChx9zuv+R6YXN1zR5P6uhjwMg==
+X-Received: by 2002:a62:b50f:0:b029:19e:2974:b7a4 with SMTP id
+ y15-20020a62b50f0000b029019e2974b7a4mr1010303pfe.61.1610391729154; 
+ Mon, 11 Jan 2021 11:02:09 -0800 (PST)
 Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
  [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id n195sm350395pfd.169.2021.01.11.11.01.16
+ by smtp.gmail.com with ESMTPSA id n195sm350395pfd.169.2021.01.11.11.02.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 11:01:17 -0800 (PST)
+ Mon, 11 Jan 2021 11:02:08 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 01/30] target/arm: Fix decode of align in VLDST_single
-Date: Mon, 11 Jan 2021 09:00:44 -1000
-Message-Id: <20210111190113.303726-2-richard.henderson@linaro.org>
+Subject: [PATCH v3 30/30] target/arm: Enforce alignment for sve LD1R
+Date: Mon, 11 Jan 2021 09:01:13 -1000
+Message-Id: <20210111190113.303726-31-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210111190113.303726-1-richard.henderson@linaro.org>
 References: <20210111190113.303726-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,55 +120,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0tO8puK6WH1g
-
-The encoding of size = 2 and size = 3 had the incorrect decode
-for align, overlapping the stride field.  This error was hidden
-by what should have been unnecessary masking in translate.
+X-TUID: 9fKjJGN5w50K
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/neon-ls.decode       | 4 ++--
- target/arm/translate-neon.c.inc | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ target/arm/translate-sve.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/neon-ls.decode b/target/arm/neon-ls.decode
-index c17f5019e3..0a2a0e15db 100644
---- a/target/arm/neon-ls.decode
-+++ b/target/arm/neon-ls.decode
-@@ -46,7 +46,7 @@ VLD_all_lanes  1111 0100 1 . 1 0 rn:4 .... 11 n:2 size:2 t:1 a:1 rm:4 \
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 0c3a6d2121..6125e734af 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -5011,7 +5011,7 @@ static bool trans_LD1R_zpri(DisasContext *s, arg_rpri_load *a)
+     clean_addr = gen_mte_check1(s, temp, false, true, msz);
  
- VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 00 n:2 reg_idx:3 align:1 rm:4 \
-                vd=%vd_dp size=0 stride=1
--VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 01 n:2 reg_idx:2 align:2 rm:4 \
-+VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 01 n:2 reg_idx:2 . align:1 rm:4 \
-                vd=%vd_dp size=1 stride=%imm1_5_p1
--VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 10 n:2 reg_idx:1 align:3 rm:4 \
-+VLDST_single   1111 0100 1 . l:1 0 rn:4 .... 10 n:2 reg_idx:1 . align:2 rm:4 \
-                vd=%vd_dp size=2 stride=%imm1_6_p1
-diff --git a/target/arm/translate-neon.c.inc b/target/arm/translate-neon.c.inc
-index f6c68e30ab..0e5828744b 100644
---- a/target/arm/translate-neon.c.inc
-+++ b/target/arm/translate-neon.c.inc
-@@ -606,7 +606,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-     switch (nregs) {
-     case 1:
-         if (((a->align & (1 << a->size)) != 0) ||
--            (a->size == 2 && ((a->align & 3) == 1 || (a->align & 3) == 2))) {
-+            (a->size == 2 && (a->align == 1 || a->align == 2))) {
-             return false;
-         }
-         break;
-@@ -621,7 +621,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
-         }
-         break;
-     case 4:
--        if ((a->size == 2) && ((a->align & 3) == 3)) {
-+        if (a->size == 2 && a->align == 3) {
-             return false;
-         }
-         break;
+     tcg_gen_qemu_ld_i64(temp, clean_addr, get_mem_index(s),
+-                        s->be_data | dtype_mop[a->dtype]);
++                        finalize_memop(s, dtype_mop[a->dtype]));
+ 
+     /* Broadcast to *all* elements.  */
+     tcg_gen_gvec_dup_i64(esz, vec_full_reg_offset(s, a->rd),
 -- 
 2.25.1
 

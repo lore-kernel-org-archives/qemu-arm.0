@@ -1,250 +1,301 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2306722lfq;
-        Sun, 10 Jan 2021 17:12:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJycKHWE/+1jcHhEDtUZW2yRNQPxY0RaVOmwKUCy7qY8pj39t6EqpHHjfIyNf3/g348m6xbl
-X-Received: by 2002:a25:40d1:: with SMTP id n200mr20528423yba.266.1610327567557;
-        Sun, 10 Jan 2021 17:12:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610327567; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2671875lfq;
+        Mon, 11 Jan 2021 05:20:53 -0800 (PST)
+X-Received: by 2002:ac8:44c2:: with SMTP id b2mr15100759qto.1.1610371253458;
+        Mon, 11 Jan 2021 05:20:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610371253; cv=none;
         d=google.com; s=arc-20160816;
-        b=GKRcvg+6kHjs4rlusF1/CN5eUnmugALbQjxOMCJtKhJkOKrkJBlnVqYH70bSYdlk36
-         oSPBU4rZlOBZJO9xhh2qVRXsegDPj1y/mGY8YpTczLqDyxBpomQ2VxZrVlIviMVP2CqC
-         DSmnWYpoCZDoYl9Ya0HJVNoUxMnNvmAMl4yWcd0qxx4cWG83bsgMojuzI9m9BaZ6wcXB
-         djOac6gB2nt6HfTW0xwnBBENtJcS+3mx1BMlW2tJnAgTyKyvr3Y2cUvxoXGxgQa8ZYwe
-         wQkTkLx1MGeBd1DFu+U9hWjT46vYS/TnaEOp7ekqyHTfjhrP8/SLKwPbGtwiGrO07Qqa
-         boQA==
+        b=xp+eBUwQmwhRFuq433CTII7zwZsSCEpHD7TA6e7xB9LAKMPerpKwn4OpDAcUPUviCi
+         WmwpNLzQ9+J+Pdr/4V6rqJ1qvPHCQpBn6dW08KxG+p1t1g12TkFgbk43v7YtJ11+CegD
+         Bn7CDXatk3TcsGjNH+0pNNGkdWfXnZdcBxcfIBV9Ecl4ASODpZqZhX6ATb3elqrWWOZr
+         8ODL3kIrDOuQO+ZeiOvxciBzkuqdMDJRK2KmEHdwsYgjsjahjU16I3bPpUmblrBxHvNZ
+         uwz7ImHgOsbsUGb1jVkENYjY9MMlApyfYl/lGNIpAxC6UzzxH0eocsNYbE8UxbK35gMa
+         EHIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=40xBpLb9i5JA4ltONMM4DzrFU4VYMiEYWHZMM/Qqmkk=;
-        b=XLtEGIy314PEaFRu61zeGOKOniCgxFu9UjWt743vLUq7Zt0bvSbTpQbyNEsMrI2JGR
-         AbWeRpu39cx6hFCDRtQK/tREHyIusg90K+35zuEY6ZIXTh+glqGdYuAGY3xtulLrRru1
-         /QxVXM0sP2oUR3JSS72kVbnf/e+VUTONFsj4/e5EqI1YrSXZZMF2k2KW95c2XNHRfCQK
-         LkwdZNXjbU949LmYdKOYtXXABHoWqm8HufzPMbwlaHh71IG+gWBXl6dXNPGqCTVZHl9h
-         7FV6wEgxtbjJxWYOADehza9x0OK/dDMwGSIu9w30xw+qUlfFkJl+beH3ewAqIbB8yhOK
-         TJQw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=vDQkcZI0wWmNt8h50euO1l/PLOOvX4eDx8P1AuC31Sw=;
+        b=BgSY5CE8/D08oft0gKEcAkMfFPP+GIM6sXLwEMjs1wiQLoSsmSOscLtQkUnQdrZbMe
+         1RlUXBkZYEej/RMZTqvw/x1q6KiPxRdPCQkU5b0FM5UIzlSam/vQ6rtRZ+8FjiRI6SNH
+         EkbzrtPDKnPVKiI0o/nPiuYol2V1HsxjzXwn5FJMTE2Y/N2maGEXAJXyqSXhD9y6nVJt
+         DBs1EW1vPRspaseGTCnsAyWS+Ptbl1O/kbXVV//+Wcm/5WAzYX819rmpMHaunVEBgIYZ
+         U7I8yOoRD5t9S1GlDhnrYiJGCnF0R66HpfK9T9dcu+Pw+/SnL314ab3EZiYXrSZV4yYS
+         jS3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mz47lXaK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l13si2593751ybt.334.2021.01.10.17.12.47
+       dkim=pass header.i=@linaro.org header.s=google header.b=hN1BLfbM;
+       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <luis.machado@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t23sor8044522qke.63.2021.01.11.05.20.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Jan 2021 17:12:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 11 Jan 2021 05:20:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mz47lXaK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54760 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kyllG-0002Rr-Vn
-	for alex.bennee@linaro.org; Sun, 10 Jan 2021 20:12:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33642)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <natechancellor@gmail.com>)
- id 1kyljw-0001yi-F3; Sun, 10 Jan 2021 20:11:24 -0500
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:45093)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <natechancellor@gmail.com>)
- id 1kylju-0007T4-F8; Sun, 10 Jan 2021 20:11:24 -0500
-Received: by mail-io1-xd34.google.com with SMTP id n4so16159671iow.12;
- Sun, 10 Jan 2021 17:11:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=40xBpLb9i5JA4ltONMM4DzrFU4VYMiEYWHZMM/Qqmkk=;
- b=Mz47lXaKQWi00yo77UwbZK85P1iMJ2oCt5Wzq+qFQnYI8+kFTNZqE2yttwE6ggfJ4B
- 8nSeeSOB+92QEFbhZ78NSX4r2ntLwWso1xWns3QoMKoN638m8rXR6fKKxq05HfJTQhhb
- PtQoF/jHCaILpRRJNH9tBRD9o/w2fuH1umnT/EzaIn+5CnwIMfl6AELkQENdAE+mAfKM
- J74EK7H8dkdUEvEbYv5tDCGYpY8HY8mRfQA6fNU/9W/jOFYgsSg95+olvifWqQfC294v
- H70JZXKXIPHkRX/WsAsA4T4VCrBb6oOb2DOjmsqNUZKuQxv106zeXsU+gZRM94w5fVxb
- GxMA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=hN1BLfbM;
+       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=vDQkcZI0wWmNt8h50euO1l/PLOOvX4eDx8P1AuC31Sw=;
+        b=hN1BLfbMipyFtSETZB+dZ+AyD3OTI3oLT6JrpMb5LfVL1y7h+W8QmJjLrVG82TgZdz
+         kBMCLxx4GqjCZdHkGZAV8BzgrsRoguiMP3EQEh2ZdDP5g3lfLaYb/iVprnTunWp2cMZn
+         GjPWAhTc6I0ZPxZX4gnr+IMJrhiRLFo8ln8GzyTbyrubTvSeuWDReNrYwhhekUyDGEMN
+         tJV279RYajk4MDr2oL/4bbnAy8yy/T6d+pvmJ+ChMcWxoxC6A7iq6zAQA9GeibF4i/nS
+         R1d7mDcZiBNMuZRkXSrQxSSqwt1GaYS3u1fu9qmMFb6xzQIHJ4Teii0ArHZMvuLV6iDO
+         LHYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=40xBpLb9i5JA4ltONMM4DzrFU4VYMiEYWHZMM/Qqmkk=;
- b=GOkutqKoYCab9X6zerrLmYzqtNwAqu/koJXpozU062fEFcEmM0zfhUIC9ukjfwWJad
- LF07TfAxuN+yGm0xnQ9x8OZzmvX0O6jEYzGbD393cECQ9Z9KFbN8cF9tFM2UPZDWvIGf
- vQ6i9fc3JpslcU3sQ0FE3XrqoaTneg2+uP17AvXf+baVuy96ya0K4X+OCQ+1T4m0oS+Z
- CzGnyXw3KxUgRLENCjh/V9+d1PqOehIrdY0N54Wv2uyLbNC/auB+ooCM5uGJlnlnwHRP
- sqtLHa7tpGc3MPrI6yu8yySIlOrsRctXNfE67xxjkBl/CT9PTBF8C9h4clF4Fh88V2A0
- kQbQ==
-X-Gm-Message-State: AOAM532W/TaamU1jvRmuaBTAIoZtasrL/67jyXthKclFr0aCN1aKmBwt
- usIIG7J+rCVNGHtpEroQ0Os=
-X-Received: by 2002:a02:91c2:: with SMTP id s2mr12672310jag.48.1610327479943; 
- Sun, 10 Jan 2021 17:11:19 -0800 (PST)
-Received: from ubuntu-m3-large-x86 ([2604:1380:45f1:1d00::1])
- by smtp.gmail.com with ESMTPSA id m19sm13943066ila.81.2021.01.10.17.11.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 10 Jan 2021 17:11:19 -0800 (PST)
-Date: Sun, 10 Jan 2021 18:11:17 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 4/5] hw/ppc/ppc4xx_pci: Replace pointless warning by
- assert()
-Message-ID: <20210111011117.GA215408@ubuntu-m3-large-x86>
-References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-5-f4bug@amsat.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200901104043.91383-5-f4bug@amsat.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
- envelope-from=natechancellor@gmail.com; helo=mail-io1-xd34.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=vDQkcZI0wWmNt8h50euO1l/PLOOvX4eDx8P1AuC31Sw=;
+        b=Q3P4s4VlOKWXJGd8uyFvRgaLxofgfs1ytqfxrWlpnjWXjBcj/ePhZyrGXqubrUIVlO
+         wl1gWOjbvkpzjwjbjm8kcNN7VR4zna/Owp/ZeEb9xTtt/3aiP+6X6UKRocNVdTyjd5Gq
+         lV2Y+hkAFtqcu5t6k94RL9F9gxeQ5fRVyxzdEfQxGDfOCFORWBoUpbMYNQeCQeZ6XHnF
+         7srYPzFP9ihsNI902xEnpbH5b0vvas2MLt4PI8YcOge2KneVz0aSronQ+/oUqLYwTnGn
+         O8OK5soe/eZ2e5YzltEIR542d4lhMZXYSJlSeXk2LKDdSTqaDpy7pXKGVLqp2u8xmYA6
+         pbSg==
+X-Gm-Message-State: AOAM531o3hiv+njAT4M2qUaoYVq+0glivoS2fL2xfHSxKLgTxFkmIkxJ
+	HClKlwoojuCW3v+RBJg35TIBbipy
+X-Google-Smtp-Source: ABdhPJxx1t9yuVPNExmTzuvmlsy5uoNzwHIY26vJjppVr+/0oSV28eBl0Ox85eb9vJQe0JWB5tDInw==
+X-Received: by 2002:a37:744:: with SMTP id 65mr15363384qkh.71.1610371252956;
+        Mon, 11 Jan 2021 05:20:52 -0800 (PST)
+Return-Path: <luis.machado@linaro.org>
+Received: from ?IPv6:2804:7f0:8284:874d:20e9:a3d4:1db5:c30a? ([2804:7f0:8284:874d:20e9:a3d4:1db5:c30a])
+        by smtp.gmail.com with ESMTPSA id c139sm8439799qke.24.2021.01.11.05.20.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 11 Jan 2021 05:20:51 -0800 (PST)
+Subject: Re: [PATCH v1 10/20] target/arm: use official org.gnu.gdb.aarch64.sve
+ layout for registers
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zsYhDUb5fkAE
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20210108224256.2321-1-alex.bennee@linaro.org>
+ <20210108224256.2321-11-alex.bennee@linaro.org>
+From: Luis Machado <luis.machado@linaro.org>
+Message-ID: <9ee1443e-821d-9cec-c29a-6111385937ad@linaro.org>
+Date: Mon, 11 Jan 2021 10:20:48 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20210108224256.2321-11-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: ii3BHMHkXxVo
 
-On Tue, Sep 01, 2020 at 12:40:42PM +0200, Philippe Mathieu-DaudÈ wrote:
-> We call pci_register_root_bus() to register 4 IRQs with the
-> ppc4xx_pci_set_irq() handler. As it can only be called with
-> values in the [0-4[ range, replace the pointless warning by
-> an assert().
+For the record, the layout looks OK to me.
+
+Just a reminder that GDB will soon support bfloat16 types. A patch may 
+be pushed this month.
+
+On 1/8/21 7:42 PM, Alex Benn√©e wrote:
+> While GDB can work with any XML description given to it there is
+> special handling for SVE registers on the GDB side which makes the
+> users life a little better. The changes aren't that major and all the
+> registers save the $vg reported the same. All that changes is:
 > 
-> Signed-off-by: Philippe Mathieu-DaudÈ <f4bug@amsat.org>
+>    - report org.gnu.gdb.aarch64.sve
+>    - use gdb nomenclature for names and types
+>    - minor re-ordering of the types to match reference
+>    - re-enable ieee_half (as we know gdb supports it now)
+>    - $vg is now a 64 bit int
+>    - check $vN and $zN aliasing in test
+> 
+> Signed-off-by: Alex Benn√©e <alex.bennee@linaro.org>
+> Cc: Luis Machado <luis.machado@linaro.org>
+> Message-Id: <20201218112707.28348-10-alex.bennee@linaro.org>
+> Signed-off-by: Alex Benn√©e <alex.bennee@linaro.org>
 > ---
->  hw/ppc/ppc4xx_pci.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>   target/arm/gdbstub.c                        | 75 ++++++++-------------
+>   target/arm/helper.c                         |  2 +-
+>   tests/tcg/aarch64/gdbstub/test-sve-ioctl.py | 11 +++
+>   3 files changed, 41 insertions(+), 47 deletions(-)
 > 
-> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-> index cd3f192a138..503ef46b39a 100644
-> --- a/hw/ppc/ppc4xx_pci.c
-> +++ b/hw/ppc/ppc4xx_pci.c
-> @@ -256,10 +256,7 @@ static void ppc4xx_pci_set_irq(void *opaque, int irq_num, int level)
->      qemu_irq *pci_irqs = opaque;
->  
->      trace_ppc4xx_pci_set_irq(irq_num);
-> -    if (irq_num < 0) {
-> -        fprintf(stderr, "%s: PCI irq %d\n", __func__, irq_num);
-> -        return;
-> -    }
-> +    assert(irq_num >= 0);
->      qemu_set_irq(pci_irqs[irq_num], level);
->  }
->  
-> -- 
-> 2.26.2
+> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+> index 866595b4f1..a8fff2a3d0 100644
+> --- a/target/arm/gdbstub.c
+> +++ b/target/arm/gdbstub.c
+> @@ -195,22 +195,17 @@ static const struct TypeSize vec_lanes[] = {
+>       { "uint128", 128, 'q', 'u' },
+>       { "int128", 128, 'q', 's' },
+>       /* 64 bit */
+> +    { "ieee_double", 64, 'd', 'f' },
+>       { "uint64", 64, 'd', 'u' },
+>       { "int64", 64, 'd', 's' },
+> -    { "ieee_double", 64, 'd', 'f' },
+>       /* 32 bit */
+> +    { "ieee_single", 32, 's', 'f' },
+>       { "uint32", 32, 's', 'u' },
+>       { "int32", 32, 's', 's' },
+> -    { "ieee_single", 32, 's', 'f' },
+>       /* 16 bit */
+> +    { "ieee_half", 16, 'h', 'f' },
+>       { "uint16", 16, 'h', 'u' },
+>       { "int16", 16, 'h', 's' },
+> -    /*
+> -     * TODO: currently there is no reliable way of telling
+> -     * if the remote gdb actually understands ieee_half so
+> -     * we don't expose it in the target description for now.
+> -     * { "ieee_half", 16, 'h', 'f' },
+> -     */
+>       /* bytes */
+>       { "uint8", 8, 'b', 'u' },
+>       { "int8", 8, 'b', 's' },
+> @@ -223,17 +218,16 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+>       GString *s = g_string_new(NULL);
+>       DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
+>       g_autoptr(GString) ts = g_string_new("");
+> -    int i, bits, reg_width = (cpu->sve_max_vq * 128);
+> +    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
+>       info->num = 0;
+>       g_string_printf(s, "<?xml version=\"1.0\"?>");
+>       g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+> -    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.aarch64.sve\">");
+> +    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
+>   
+>       /* First define types and totals in a whole VL */
+>       for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+>           int count = reg_width / vec_lanes[i].size;
+> -        g_string_printf(ts, "vq%d%c%c", count,
+> -                        vec_lanes[i].sz, vec_lanes[i].suffix);
+> +        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
+>           g_string_append_printf(s,
+>                                  "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+>                                  ts->str, vec_lanes[i].gdb_type, count);
+> @@ -243,39 +237,37 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+>        * signed and potentially float versions of each size from 128 to
+>        * 8 bits.
+>        */
+> -    for (bits = 128; bits >= 8; bits /= 2) {
+> -        int count = reg_width / bits;
+> -        g_string_append_printf(s, "<union id=\"vq%dn\">", count);
+> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+> -            if (vec_lanes[i].size == bits) {
+> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%d%c%c\"/>",
+> -                                       vec_lanes[i].suffix,
+> -                                       count,
+> -                                       vec_lanes[i].sz, vec_lanes[i].suffix);
+> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+> +        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
+> +        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
+> +            if (vec_lanes[j].size == bits) {
+> +                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
+> +                                       vec_lanes[j].suffix,
+> +                                       vec_lanes[j].sz, vec_lanes[j].suffix);
+>               }
+>           }
+>           g_string_append(s, "</union>");
+>       }
+>       /* And now the final union of unions */
+> -    g_string_append(s, "<union id=\"vq\">");
+> -    for (bits = 128; bits >= 8; bits /= 2) {
+> -        int count = reg_width / bits;
+> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+> -            if (vec_lanes[i].size == bits) {
+> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%dn\"/>",
+> -                                       vec_lanes[i].sz, count);
+> -                break;
+> -            }
+> -        }
+> +    g_string_append(s, "<union id=\"svev\">");
+> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+> +        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
+> +                               suf[i], suf[i]);
+>       }
+>       g_string_append(s, "</union>");
+>   
+> +    /* Finally the sve prefix type */
+> +    g_string_append_printf(s,
+> +                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
+> +                           reg_width / 8);
+> +
+>       /* Then define each register in parts for each vq */
+>       for (i = 0; i < 32; i++) {
+>           g_string_append_printf(s,
+>                                  "<reg name=\"z%d\" bitsize=\"%d\""
+> -                               " regnum=\"%d\" group=\"vector\""
+> -                               " type=\"vq\"/>",
+> +                               " regnum=\"%d\" type=\"svev\"/>",
+>                                  i, reg_width, base_reg++);
+>           info->num++;
+>       }
+> @@ -287,31 +279,22 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+>                              " regnum=\"%d\" group=\"float\""
+>                              " type=\"int\"/>", base_reg++);
+>       info->num += 2;
+> -    /*
+> -     * Predicate registers aren't so big they are worth splitting up
+> -     * but we do need to define a type to hold the array of quad
+> -     * references.
+> -     */
+> -    g_string_append_printf(s,
+> -                           "<vector id=\"vqp\" type=\"uint16\" count=\"%d\"/>",
+> -                           cpu->sve_max_vq);
+> +
+>       for (i = 0; i < 16; i++) {
+>           g_string_append_printf(s,
+>                                  "<reg name=\"p%d\" bitsize=\"%d\""
+> -                               " regnum=\"%d\" group=\"vector\""
+> -                               " type=\"vqp\"/>",
+> +                               " regnum=\"%d\" type=\"svep\"/>",
+>                                  i, cpu->sve_max_vq * 16, base_reg++);
+>           info->num++;
+>       }
+>       g_string_append_printf(s,
+>                              "<reg name=\"ffr\" bitsize=\"%d\""
+>                              " regnum=\"%d\" group=\"vector\""
+> -                           " type=\"vqp\"/>",
+> +                           " type=\"svep\"/>",
+>                              cpu->sve_max_vq * 16, base_reg++);
+>       g_string_append_printf(s,
+>                              "<reg name=\"vg\" bitsize=\"64\""
+> -                           " regnum=\"%d\" group=\"vector\""
+> -                           " type=\"uint32\"/>",
+> +                           " regnum=\"%d\" type=\"int\"/>",
+>                              base_reg++);
+>       info->num += 2;
+>       g_string_append_printf(s, "</feature>");
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index d077dd9ef5..d434044f07 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -276,7 +276,7 @@ static int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
+>            * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
+>            */
+>           int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
+> -        return gdb_get_reg32(buf, vq * 2);
+> +        return gdb_get_reg64(buf, vq * 2);
+>       }
+>       default:
+>           /* gdbstub asked for something out our range */
+> diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+> index 972cf73c31..b9ef169c1a 100644
+> --- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+> +++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+> @@ -40,6 +40,17 @@ class TestBreakpoint(gdb.Breakpoint):
+>           except gdb.error:
+>               report(False, "checking zregs (out of range)")
+>   
+> +        # Check the aliased V registers are set and GDB has correctly
+> +        # created them for us having recognised and handled SVE.
+> +        try:
+> +            for i in range(0, 16):
+> +                val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
+> +                val_v = gdb.parse_and_eval("$v0.b.u[%d]" % i)
+> +                report(int(val_z) == int(val_v),
+> +                       "v0.b.u[%d] == z0.b.u[%d]" % (i, i))
+> +        except gdb.error:
+> +            report(False, "checking vregs (out of range)")
+> +
+>   
+>   def run_test():
+>       "Run through the tests one by one"
 > 
-> 
-
-Hopefully reporting this here is okay, I find Launchpad hard to use but
-I can file it there if need be.
-
-The assertion added by this patch triggers while trying to boot a
-ppc44x_defconfig Linux kernel:
-
-$ qemu-system-ppc \
-    -machine bamboo \
-    -no-reboot \
-    -append console=ttyS0 \
-    -display none \
-    -kernel uImage \
-    -m 128m \
-    -nodefaults \
-    -serial mon:stdio
-Linux version 5.11.0-rc3 (nathan@ubuntu-m3-large-x86) (powerpc-linux-gcc (GCC) 10.2.0, GNU ld (GNU Binutils) 2.35) #1 Sun Jan 10 15:52:24 MST 2021
-Using PowerPC 44x Platform machine description
-ioremap() called early from find_legacy_serial_ports+0x64c/0x794. Use early_ioremap() instead
-printk: bootconsole [udbg0] enabled
------------------------------------------------------
-phys_mem_size     = 0x8000000
-dcache_bsize      = 0x20
-icache_bsize      = 0x20
-cpu_features      = 0x0000000000000100
-  possible        = 0x0000000040000100
-  always          = 0x0000000000000100
-cpu_user_features = 0x8c008000 0x00000000
-mmu_features      = 0x00000008
------------------------------------------------------
-Zone ranges:
-  Normal   [mem 0x0000000000000000-0x0000000007ffffff]
-Movable zone start for each node
-Early memory node ranges
-  node   0: [mem 0x0000000000000000-0x0000000007ffffff]
-Initmem setup node 0 [mem 0x0000000000000000-0x0000000007ffffff]
-MMU: Allocated 1088 bytes of context maps for 255 contexts
-Built 1 zonelists, mobility grouping on.  Total pages: 32448
-Kernel command line: console=ttyS0
-Dentry cache hash table entries: 16384 (order: 4, 65536 bytes, linear)
-Inode-cache hash table entries: 8192 (order: 3, 32768 bytes, linear)
-mem auto-init: stack:off, heap alloc:off, heap free:off
-Memory: 122712K/131072K available (5040K kernel code, 236K rwdata, 1260K rodata, 200K init, 134K bss, 8360K reserved, 0K cma-reserved)
-Kernel virtual memory layout:
-  * 0xffbdf000..0xfffff000  : fixmap
-  * 0xffbdd000..0xffbdf000  : early ioremap
-  * 0xd1000000..0xffbdd000  : vmalloc & ioremap
-SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
-NR_IRQS: 512, nr_irqs: 512, preallocated irqs: 16
-UIC0 (32 IRQ sources) at DCR 0xc0
-random: get_random_u32 called from start_kernel+0x370/0x508 with crng_init=0
-clocksource: timebase: mask: 0xffffffffffffffff max_cycles: 0x5c4093a7d1, max_idle_ns: 440795210635 ns
-clocksource: timebase mult[2800000] shift[24] registered
-pid_max: default: 32768 minimum: 301
-Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
-Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
-clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-futex hash table entries: 256 (order: -1, 3072 bytes, linear)
-NET: Registered protocol family 16
-DMA: preallocated 128 KiB GFP_KERNEL pool for atomic allocations
-
-PCI host bridge /plb/pci@ec000000 (primary) ranges:
- MEM 0x00000000a0000000..0x00000000bfffffff -> 0x00000000a0000000
-  IO 0x00000000e8000000..0x00000000e800ffff -> 0x0000000000000000
-4xx PCI DMA offset set to 0x00000000
-4xx PCI DMA window base to 0x0000000000000000
-DMA window size 0x0000000080000000
-PCI: Probing PCI hardware
-PCI host bridge to bus 0000:00
-pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
-pci_bus 0000:00: root bus resource [mem 0xa0000000-0xbfffffff]
-pci_bus 0000:00: root bus resource [bus 00-ff]
-pci_bus 0000:00: busn_res: [bus 00-ff] end is updated to ff
-pci 0000:00:00.0: [1014:027f] type 00 class 0x068000
-qemu-system-ppc: ../hw/ppc/ppc4xx_pci.c:259: ppc4xx_pci_set_irq: Assertion `irq_num >= 0' failed.
-
-On v5.2.0, it looks like a higher assertion triggers, added by
-commit 459ca8bfa4 ("pci: Assert irqnum is between 0 and bus->nirqs in
-pci_bus_change_irq_level").
-
-qemu-system-ppc: ../hw/pci/pci.c:253: pci_bus_change_irq_level: Assertion `irq_num >= 0' failed.
-
-I have uploaded the kernel image here:
-
-https://github.com/nathanchance/bug-files/blob/8edf230441bd8eda067973fdf0eb063c94f04379/qemu-0270d74ef886235051c13c39b0de88500c628a02/uImage
-
-Cheers,
-Nathan

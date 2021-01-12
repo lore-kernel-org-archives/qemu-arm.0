@@ -1,104 +1,84 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3547946lfq;
-        Tue, 12 Jan 2021 05:23:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxoNErzCWkvZ5fThex6gGlHe/ONEeYXa8IMtgZckDaU9Nof7f8YsjlrS+VbR0E8dr6A5Bmn
-X-Received: by 2002:a25:500c:: with SMTP id e12mr6997421ybb.129.1610457808450;
-        Tue, 12 Jan 2021 05:23:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610457808; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3550861lfq;
+        Tue, 12 Jan 2021 05:27:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw6N3NsVyzx80Acdn5dh8pFgryWYeR9CG3pbIs1qXHbn2K5NJ2j8epp2PlDdGKj6XJ1BmVs
+X-Received: by 2002:a25:5015:: with SMTP id e21mr2827815ybb.14.1610458057717;
+        Tue, 12 Jan 2021 05:27:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610458057; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ccy9jEufYebw1TMlgIfPI4TL9hKdu8url03ruhUPXr6cC+0jrDEqzJqDRDbcUwJ/cD
-         KMcTz21FriL9ezI5eMvaX4dUaAH6wDGj7YsK16C6dtmkK57pFA7VS1hvs+/NvZyjj3UW
-         Rh3H9g835M/mHRAY2Rtc412Qf39bdI9AgRl+5SOWhQzz4TXk1emn7mUs64uzbmuERzdM
-         UJQuQGSCLrmFMKtFrMeyms8QXdiL4YdVrT9xW/j7iv1fJ3af8s5EdYB7MwEmp0HJ6uy9
-         O94rSX5mkmkdLKNs7dNFvRdhhjKmgItPBVujDTE6SPQNl/JLkxiHn3XA3lhfteoylXoi
-         LKrQ==
+        b=1EGJ1AQHDfnuHc1U2uNT9s0cWRjpb6nsv8JEe7ZGE4VeK84m8w4pmYasgjKcwqdj5j
+         sLxSdtcV7ZNNYu1ZAj9Vz9wlVkM7/AvyHXe1pyRnbIpt98YBzo2ghEIX3PJBeljNHNb+
+         kHSxjZOXOobz4gn0TZ8+mIvUD+q/4K4MzTwll06MgiOVVc1uIr0ZIQ/CmtpZWuByf6q+
+         wx8dJQBRD5rzG4TxSOI6Ftn7BHXiDG7Z/wGTHP/wwGx19gxKeNO/gtr9cIxQMtNUatAq
+         ClMCQAxSn6w/DbTDZ3dN9W88LxgOwEK11eDtxBklXlD6sEGb+HFuL+KaplCASQvMroh4
+         nVPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=jJiD+zL7smMtkFT4BxyE4od7dpalnmb3KEODWWJUWYs=;
-        b=zfOHh+agt6jqt9GB8qQA1pD8srG85O7QtjxxiHTlcr2bPS//PiDOf62mFTW0TMp96E
-         xfXdvQVsgLraZVyuR7JqhZIlXK+4puaMwqSibCw9RfTaSBx33zvZHzdN+mtRnwMBHd3j
-         1Y+OTSF67E3zjz4VnQT4ID10lGvH3eI6jsC4zoYEPolNsTVcNP1COLXJTMD2x5oNmj7j
-         lyx8x6xu06xiUAJQceU3YxYkwcspfImwfxaaG/ap34cuY+NgYwj7n1bc0HBjm1rerYI3
-         bmuOGQo0e18ehW4UgNDanu0Epf8M083IoHwFtzPDWeeht9YeLx3Y3+ji673ubILRAxsD
-         Y1Pw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=YrJJNCO7Xuc20nOJZx9QC2M4P5D6EQpX8fzbvB3tPmc=;
+        b=GMtu81xkyCcsep45jkUh6OvrHjIgOY0oJJATMS6lWKzbWPrgBZwkx2eHbmKrgcW+p9
+         1wmnmEvGvMnY09+xeAfhXI6UUtw6/q3p+KUAHUIm6QDaffeVfFfvdOctIhebEvdyusKu
+         byGA/HC5SkXoWSyQmxBMAICDp1z2oK2cnL8bfGlZPoyo6cq9s4Q9hsCooEZjuY3Jdsod
+         lRE1QsjqAKchOfFID2+dp9dhBZk3MqwPqFzFUGbxt7fJH7y8wpzECS79bloMdmDghrti
+         uMEuk2OE9Uy0Wp3+a3CrbtHZiS9zLF2+DV1J08fsBWzbiQoRjz5Kd8jLFyv+pMh9BVcr
+         HCcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rrQic8Ht;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si2868701ybh.397.2021.01.12.05.23.28
+        by mx.google.com with ESMTPS id k4si2551654ybc.387.2021.01.12.05.27.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 05:23:28 -0800 (PST)
+        Tue, 12 Jan 2021 05:27:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rrQic8Ht;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47020 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54070 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzJdv-0002m8-KQ
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 08:23:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35338)
+	id 1kzJhx-0005mB-4I
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 08:27:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kzJdI-0002k9-Ih; Tue, 12 Jan 2021 08:22:49 -0500
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32]:46359)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kzJdF-0006Y5-8L; Tue, 12 Jan 2021 08:22:48 -0500
-Received: by mail-yb1-xb32.google.com with SMTP id f6so2101314ybq.13;
- Tue, 12 Jan 2021 05:22:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jJiD+zL7smMtkFT4BxyE4od7dpalnmb3KEODWWJUWYs=;
- b=rrQic8Ht3v+ZfOsIhZ3xd15ONBrWLXZ6bTECIaw355f57AuZDYRcpwHowap8qZvL35
- lj7MWGrTTfitbZfV16lJUw6Exq/5uvlCm/ILUdfypVhWYeWk3B19eudia0YZTc1fejPx
- 6jccf1UztEa6sQbfNx1tkZQ07bYrea7vfgJd5g/D4VIulal2pm9dPDBpd8Wm8y6flEkY
- 7uR3600uUx0BTxCHaDYRW++dVC5jL7s0Z3HFKUgUt03Nf3jZJszixYCrNCgplnCAZgG/
- BxkxxBpAAsT2nAQ4jU1yNqr/BSwU4qW1AxGIag2LemNFUDM2nbOvphHJaWak0U9EW5XO
- QP/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jJiD+zL7smMtkFT4BxyE4od7dpalnmb3KEODWWJUWYs=;
- b=M9g0cQedWGuPSlkAojCqU2Mg7BehC7T6b3QZsVP9Rwwk7dP7wgXhxLLY26oFQ/xiPx
- oJAoKWqAVJP9qVf/68cVab1/7inUEQhnQb7RWoaeQYgX4NwyUSjrCw245w/FJHzP4k4T
- aelqU866YkHvT32hJVWWFPzPHMnmDdiAPXmNBQw8K3P72lur+3L0IuO45o0bD7Rx9Wqj
- 4b5u43xCXIxUVvO7w3YIfq2rLQWZx90YhEAbfrShFQ5Y/GSpqhdmwD1FDbR/lz774S1O
- nKxtLamfwNmHm1dOaA4AwcXGw7lkdi0ekuJg9LaVblzzQIJz1akF+lLeysqoNAe+qJYL
- qKUw==
-X-Gm-Message-State: AOAM532V7vxxtwZMsWtuthcg1tMrPMLJEfUDJ6ksxUYy8U/r6OeDwmE8
- qBdOQYub2jORizXjIJD0xSAUdPIRVecoIUCpsN8=
-X-Received: by 2002:a25:4744:: with SMTP id u65mr6964100yba.239.1610457763763; 
- Tue, 12 Jan 2021 05:22:43 -0800 (PST)
-MIME-Version: 1.0
-References: <20210110081429.10126-1-bmeng.cn@gmail.com>
- <20210110081429.10126-3-bmeng.cn@gmail.com>
- <CAFEAcA8W8vxA8AJY-Ka+--drv_asw5soaFNO90VzVENApMMH0w@mail.gmail.com>
- <CAEUhbmW2NaTNusZ123D7FPAK6uJZtCuak=UOtEE6Nc5fNfnsHQ@mail.gmail.com>
- <CAFEAcA8Yc9d5d0R3_m5FQE6NE6Gk3_RnDrX45eg0D0nCgaW4WA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8Yc9d5d0R3_m5FQE6NE6Gk3_RnDrX45eg0D0nCgaW4WA@mail.gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Tue, 12 Jan 2021 21:22:32 +0800
-Message-ID: <CAEUhbmXkB7NDeUr1_cUR5nXPtmwrzFqfL5YTa12VnwERQOJ4Pw@mail.gmail.com>
-Subject: Re: [PATCH v4 2/6] hw/ssi: imx_spi: Remove imx_spi_update_irq() in
- imx_spi_reset()
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kzJhj-0005ke-Kp; Tue, 12 Jan 2021 08:27:23 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2914)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kzJgu-0007dj-07; Tue, 12 Jan 2021 08:27:23 -0500
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DFWXH2sT5z15s2h;
+ Tue, 12 Jan 2021 21:25:03 +0800 (CST)
+Received: from [10.174.186.67] (10.174.186.67) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 12 Jan 2021 21:25:56 +0800
+Subject: Re: [RFC PATCH v3 10/13] target/arm/cpu: Add cpu cache description
+ for arm
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20201109030452.2197-1-fangying1@huawei.com>
+ <20201109030452.2197-11-fangying1@huawei.com>
+ <CAFEAcA-CuagYtA_9c7KrkvoBJqKnUNnT7M=C_MN1EnU4k1kAxQ@mail.gmail.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <41e9d848-c478-8873-769b-e1cc85253db7@huawei.com>
+Date: Tue, 12 Jan 2021 21:25:56 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-CuagYtA_9c7KrkvoBJqKnUNnT7M=C_MN1EnU4k1kAxQ@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.186.67]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
+ helo=szxga04-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,99 +91,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Andrew Jones <drjones@redhat.com>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Igor Mammedov <imammedo@redhat.com>, salil.mehta@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MfrGWnG7M/uu
+X-TUID: 5d6ftWUkRh2O
 
-On Tue, Jan 12, 2021 at 9:19 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Tue, 12 Jan 2021 at 12:54, Bin Meng <bmeng.cn@gmail.com> wrote:
-> >
-> > On Tue, Jan 12, 2021 at 6:49 PM Peter Maydell <peter.maydell@linaro.org> wrote:
-> > >
-> > > On Sun, 10 Jan 2021 at 08:15, Bin Meng <bmeng.cn@gmail.com> wrote:
-> > > >
-> > > > From: Bin Meng <bin.meng@windriver.com>
-> > > >
-> > > > Usually the approach is that the device on the other end of the line
-> > > > is going to reset its state anyway, so there's no need to actively
-> > > > signal an irq line change during the reset hook.
-> > > >
-> > > > Move imx_spi_update_irq() out of imx_spi_reset(), to a new function
-> > > > imx_spi_hard_reset() that is called when the controller is disabled.
-> > > >
-> > > > Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> > > >
-> > > > ---
-> > > >
-> > > > Changes in v4:
-> > > > - adujst the patch 2,3 order
-> > > > - rename imx_spi_soft_reset() to imx_spi_hard_reset() to avoid confusion
-> > > >
-> > > > Changes in v3:
-> > > > - new patch: remove imx_spi_update_irq() in imx_spi_reset()
-> > > >
-> > > >  hw/ssi/imx_spi.c | 14 ++++++++++----
-> > > >  1 file changed, 10 insertions(+), 4 deletions(-)
-> > > >
-> > > > diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> > > > index e605049a21..2c4c5ec1b8 100644
-> > > > --- a/hw/ssi/imx_spi.c
-> > > > +++ b/hw/ssi/imx_spi.c
-> > > > @@ -241,11 +241,16 @@ static void imx_spi_reset(DeviceState *dev)
-> > > >      imx_spi_rxfifo_reset(s);
-> > > >      imx_spi_txfifo_reset(s);
-> > > >
-> > > > -    imx_spi_update_irq(s);
-> > > > -
-> > > >      s->burst_length = 0;
-> > > >  }
-> > > >
-> > > > +static void imx_spi_hard_reset(IMXSPIState *s)
-> > > > +{
-> > > > +    imx_spi_reset(DEVICE(s));
-> > > > +
-> > > > +    imx_spi_update_irq(s);
-> > > > +}
-> > > > +
-> > > >  static uint64_t imx_spi_read(void *opaque, hwaddr offset, unsigned size)
-> > > >  {
-> > > >      uint32_t value = 0;
-> > > > @@ -351,8 +356,9 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
-> > > >          s->regs[ECSPI_CONREG] = value;
-> > > >
-> > > >          if (!imx_spi_is_enabled(s)) {
-> > > > -            /* device is disabled, so this is a reset */
-> > > > -            imx_spi_reset(DEVICE(s));
-> > > > +            /* device is disabled, so this is a hard reset */
-> > > > +            imx_spi_hard_reset(s);
-> > > > +
-> > > >              return;
-> > > >          }
-> > >
-> > > The function of the code is correct, but you seem to have the function
-> > > naming backwards here. Generally:
-> > >  * soft reset == the reset triggered by the register write
-> > >  * hard reset == power-on reset == the dc->reset function
-> > >
-> > > I think this is what Philippe was trying to say.
-> >
-> > Philippe said: "Hmm usually hard reset include soft reset."
->
-> True in hardware, but for QEMU there are some things we don't
-> want to do in what we would call a hard or power-on reset.
->
 
-OK, will revert to use imx_spi_soft_reset().
 
-> > Since we are moving imx_spi_update_irq() out of imx_spi_reset() to a
-> > new function called imx_spi_soft_reset() (what I did in v3), that
-> > confused him (and I felt the same thing), so I renamed
-> > imx_spi_soft_reset() to imx_spi_hard_reset() in v4..
+On 11/30/2020 9:00 PM, Peter Maydell wrote:
+> On Mon, 9 Nov 2020 at 03:05, Ying Fang <fangying1@huawei.com> wrote:
+>>
+>> Add the CPUCacheInfo structure to hold cpu cache information for ARM cpus.
+>> A classic three level cache topology is used here. The default cache
+>> capacity is given and userspace can overwrite these values.
+>>
+>> Signed-off-by: Ying Fang <fangying1@huawei.com>
+>> ---
+>>   target/arm/cpu.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+>>   target/arm/cpu.h | 27 +++++++++++++++++++++++++++
+>>   2 files changed, 69 insertions(+)
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 056319859f..f1bac7452c 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -27,6 +27,7 @@
+>>   #include "qapi/visitor.h"
+>>   #include "cpu.h"
+>>   #include "internals.h"
+>> +#include "qemu/units.h"
+>>   #include "exec/exec-all.h"
+>>   #include "hw/qdev-properties.h"
+>>   #if !defined(CONFIG_USER_ONLY)
+>> @@ -997,6 +998,45 @@ uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz)
+>>       return (Aff1 << ARM_AFF1_SHIFT) | Aff0;
+>>   }
+>>
+>> +static CPUCaches default_cache_info = {
+>> +    .l1d_cache = &(CPUCacheInfo) {
+>> +    .type = DATA_CACHE,
+>> +        .level = 1,
+>> +        .size = 64 * KiB,
+>> +        .line_size = 64,
+>> +        .associativity = 4,
+>> +        .sets = 256,
+>> +        .attributes = 0x02,
+>> +    },
+> 
+> Would it be possible to populate this structure from the
+> CLIDR/CCSIDR ID register values, rather than having to
+> specify the same thing in two places?
 
-Regards,
-Bin
+Sorry I missed this reply.
+
+I had tried to fetch CLIDR/CCSID ID register values of host cpu
+from KVM, however I did not get the value expected. May I made
+some mistakes in KVM side.
+
+Thanks for your guide, I'll try to populate them again.
+
+> 
+> thanks
+> -- PMM
+> .
+> 
+
+Thanks.
+Ying.

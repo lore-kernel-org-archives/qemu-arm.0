@@ -1,211 +1,129 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3522721lfq;
-        Tue, 12 Jan 2021 04:51:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxGgkGfMg08BmVtODs3kk2cmOJWGVU79GeziqeiENH7aCdRDcK0/hOT+GSXZUe14/2dZZZr
-X-Received: by 2002:a5b:e88:: with SMTP id z8mr6064717ybr.201.1610455886072;
-        Tue, 12 Jan 2021 04:51:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610455886; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3376429lfq;
+        Tue, 12 Jan 2021 01:04:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxOx+82REJ0bkP1cc5DrX/XiM1rSnfMbCvmWXpG8kUFGgNdbS1xYveNWr3Xr8lukUs8i9SJ
+X-Received: by 2002:a25:ea09:: with SMTP id p9mr5314601ybd.109.1610442266207;
+        Tue, 12 Jan 2021 01:04:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610442266; cv=none;
         d=google.com; s=arc-20160816;
-        b=wvifbUIcFCT4Pb9+aVX2b1PBL0cZNUg0VxV9bkL1bKYtTnm3y6GaMpibMoFi8WBr1k
-         uD/FWGYQrajVbaU9j/Ah8oZ808YwrVnQe33McLq8ta2Rp0hDW9YqtVreI6FNbraqbhVl
-         TnI01N+q3S+M7d4qZ8ThTvlCrY+2SPlGQKSjCTmGs4BcXZ/IOLUwJ3Lx5zQV7gBygu52
-         cl+ZrKncS1gafRwY3ZvlVN2nyd5UhieUtZjXZwQm7lwy60vpl32eNtCS9GmlQIU6yF4y
-         /0yQG+eD38CPrUD0NhFT69ydARwGm9jB6mqxr8WyuMjutnwqPk5ul/wRlETrdB4nKup3
-         x9lw==
+        b=EqddrIJF6xis/odt8MIhkUC5j32ZG/+euaADYhsjQAcY+51+9DS2GGVUNLp7Zdmm1a
+         J5iWqjhyLwKmceJZJWev35GYp9y8yfeogP6AO/wordE9Yd/+qsHik4rNoLdBAoJGIkRF
+         djufVKwcbsEX8YytYW6bLnM9mm0Bf9OAo+f+tFCjsf1pDcqmhJQTcA40pERJhwqU8gJ8
+         zwlDZU6Y8+q0+mEPC+5j1sI2GrqtEam6771XGAdW7EMJvUtc4ccSBYjdGLSapJkgj6N6
+         JpccEe4p/FGdlUprJNrezOC5HVkxY5wain7aR5Jk8amIPdAWwfUVKjXe/l4lkbnilZKU
+         H5FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=9POOe9Uv0dP1f0gRGFIKg+L5i1Fh268DrexSVAThGAc=;
-        b=gpZK2puycd4ULqNIulCZX8KfQlQhHlcYY3uVcStjxZ80EyBBXoMlvGANDNcfIQSa0z
-         tmPVHqHzz8wiE9ysDLFNaSWdnkMbU4AEs08ppdhMTJ9PHf7E3ETnfJSkIL/qWdnc4tiJ
-         TYEJeZbcPBLfNYEvEEQUU2ErMwT2ZJIZcPGT29+brfmIQlJrwDAel8YSGSXVvLHGgJM/
-         G3PcjxoVJ5Qw1++WsqvvpET4mjQcsoWkovoB5Xi9GgXZ5wPWa4nqVgMQZ/akJ5E/bq1l
-         v0EybcP7BsyYvAnL4X9rY/z3TUxZBfRHkHmfKLImT4FIo6zsGE5AVkLyWqu+dETu79s+
-         xzFQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:organization:message-id:date
+         :subject:to:from;
+        bh=OROJFRwE9zk61IOTIIRnTjk9Bj7n+MqTVsOQUp3ywac=;
+        b=buR3CKqop87c/i1KhEybqci97FumZWkWwwmVOEAGUYW8cRZmXE19hkFvSZxMbgAEgM
+         rVRdfgoI3+JYELOByPUi1Wu3VcxjVuPmj0Sv/+Br1KN9Zb5Nd+67rfGR6KzQUdTAhHYL
+         ZdxEuqY0RfZgB8i0EeLvY286CIiYXR2IiOFPBfqE5rswkYU/ozJt3sFxFjDOpUfbew2d
+         U1g9HzlbF8NBcfj0dFQFIP2OsuBY4QVDOPTfq/7uyaIR6TtH3FLMvzNMnYf/HUUyQomk
+         psvAc+StdaPsx049MFRWROvM8c3bwEFZaR9wORpdDxF/1BRPMEj943Bw5NHTgYeLmiiS
+         RN3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R0HCgg5g;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b63si2815335ybg.240.2021.01.12.04.51.25
+        by mx.google.com with ESMTPS id w5si2232661ybo.210.2021.01.12.01.04.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 04:51:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Jan 2021 01:04:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R0HCgg5g;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38946 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzJ8v-00035a-EY
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 07:51:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54872)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzFbF-0004SY-Km
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 04:04:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56360)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kzJ6K-0001UG-1h; Tue, 12 Jan 2021 07:48:44 -0500
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36]:34514)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kzJ6H-000388-OG; Tue, 12 Jan 2021 07:48:43 -0500
-Received: by mail-yb1-xb36.google.com with SMTP id x6so1591042ybr.1;
- Tue, 12 Jan 2021 04:48:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9POOe9Uv0dP1f0gRGFIKg+L5i1Fh268DrexSVAThGAc=;
- b=R0HCgg5g0o7UXktJCq3bf8od7RrFGGfPfVrbszzg5smSi6au/Ln+YlWG/YOPmBnPbc
- 7fAX35itlFUx9pMlmcREj7/p9ydry4sSfDUyq7wnfro0x0tChzNahgW/QYo/+n4LjTGj
- BhAqvufKWT+Dn4Bg/b0b/AA3oH7r7d0x1RHcEqNI4tznriPAl56/HgS/RaALrbwRNbii
- 18DQw2ESdI0qKzxSpSPs0nycuPJuV0TxQ8fJy96E7ygjrh37OgdinSREgIBECTtSoeki
- 57t8gInkvECtxdZPRqkIvwvOSfFbqKt84AV/TFoYTw/Rb8Vw8a3gWymZBLcCF9sCH9LJ
- 9Zew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9POOe9Uv0dP1f0gRGFIKg+L5i1Fh268DrexSVAThGAc=;
- b=Bz0ZqBhSbwQ1mJrGgW0IaQnUMbj+8AVjF3rIiER4tHHYMitE4DS1RTDbbtwLibuo5C
- rTsJPE2G8LG8WcEoFqkf1SJ6/Xo6OiGOuBczU7t1CWa25CXU9g1CS8axVmuJfM+wQZBS
- o7Q9Zjrxji3G0EK+Y13ARU17XbClapCx7s8gk426i2aRIwyZHRug8QLWurMh7XlEFdut
- EVbFsHby73yfnORdLHe7/D1PileuxoT75zHJdE38+2ELiNwySYswvS6oBQuRswx6IOYZ
- 1MiwJrbLVVTh/e/bd1Kh9uWWXfxxiG3c41HDkQDjuYjHisbNTe/Zq6McoAWA5+5MACfW
- MR7g==
-X-Gm-Message-State: AOAM531h51cA9IqGFa9ABtLoYhnnogP5CXj0up9Y5+ISPQy57hz1zsU7
- pabIdb9w96ce20ho7iMXeCMH5/D2eeFW5DBkRA4=
-X-Received: by 2002:a25:3bc5:: with SMTP id i188mr3259533yba.332.1610455720151; 
- Tue, 12 Jan 2021 04:48:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kzFb4-0004S5-LZ; Tue, 12 Jan 2021 04:04:14 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:55344
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kzFb2-0002zG-Ad; Tue, 12 Jan 2021 04:04:14 -0500
+Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
+ [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
+ (Authenticated sender: remi)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id ADF4F5FCEF;
+ Tue, 12 Jan 2021 10:04:07 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
+To: qemu-arm@nongnu.org
+Subject: Re: [PATCH 07/18] target/arm: add 64-bit S-EL2 to EL exception table
+Date: Tue, 12 Jan 2021 11:04:05 +0200
+Message-ID: <4589283.GXAFRqVoOG@basile.remlab.net>
+Organization: Huawei Technologies, Finland
+In-Reply-To: <6e1eec7e-35de-4276-68ec-7e12cb73a699@linaro.org>
+References: <3337797.iIbC2pHGDl@basile.remlab.net>
+ <20201218103759.19929-7-remi.denis.courmont@huawei.com>
+ <6e1eec7e-35de-4276-68ec-7e12cb73a699@linaro.org>
 MIME-Version: 1.0
-References: <20210110081429.10126-1-bmeng.cn@gmail.com>
- <20210110081429.10126-7-bmeng.cn@gmail.com>
- <CAFEAcA-RPxLHSVuGDk=Wn-+2kGG6+L_VQfkiaGNEfJ8X1-Mkzg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-RPxLHSVuGDk=Wn-+2kGG6+L_VQfkiaGNEfJ8X1-Mkzg@mail.gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Tue, 12 Jan 2021 20:48:29 +0800
-Message-ID: <CAEUhbmX-M5XJQsZ3J_tE27+pjjG+fhcUOkVX0efSAyMorZfWFw@mail.gmail.com>
-Subject: Re: [PATCH v4 6/6] hw/ssi: imx_spi: Correct tx and rx fifo endianness
-To: Peter Maydell <peter.maydell@linaro.org>
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb36.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g+0eKThweoii
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yLqYiVIYYD4o
 
-On Tue, Jan 12, 2021 at 6:46 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Sun, 10 Jan 2021 at 08:15, Bin Meng <bmeng.cn@gmail.com> wrote:
-> >
-> > From: Bin Meng <bin.meng@windriver.com>
-> >
-> > The endianness of data exchange between tx and rx fifo is incorrect.
-> > Earlier bytes are supposed to show up on MSB and later bytes on LSB,
-> > ie: in big endian. The manual does not explicitly say this, but the
-> > U-Boot and Linux driver codes have a swap on the data transferred
-> > to tx fifo and from rx fifo.
-> >
-> > With this change, U-Boot read from / write to SPI flash tests pass.
-> >
-> >   => sf test 1ff000 1000
-> >   SPI flash test:
-> >   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
-> >   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
-> >   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
-> >   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
-> >   Test passed
-> >   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
-> >   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
-> >   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
-> >   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
-> >
-> > Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
-> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> >
+Le tiistaina 12. tammikuuta 2021, 2.04.30 EET Richard Henderson a =C3=A9cri=
+t :
+> On 12/18/20 12:37 AM, remi.denis.courmont@huawei.com wrote:
+> > From: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
+> >=20
+> > With the ARMv8.4-SEL2 extension, EL2 is a legal exception level in
+> > secure mode, though it can only be AArch64.
+> >=20
+> > This patch adds the target EL for exceptions from 64-bit S-EL2.
+> >=20
+> > It also fixes the target EL to EL2 when HCR.{A,F,I}MO are set in secure
+> > mode. Those values were never used in practice as the effective value of
+> > HCR was always 0 in secure mode.
+> >=20
+> > Signed-off-by: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
 > > ---
-> >
-> > (no changes since v3)
-> >
-> > Changes in v3:
-> > - Simplify the tx fifo endianness handling
-> >
-> >  hw/ssi/imx_spi.c | 7 ++-----
-> >  1 file changed, 2 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> > index 47c8a0f572..b5124a6426 100644
-> > --- a/hw/ssi/imx_spi.c
-> > +++ b/hw/ssi/imx_spi.c
-> > @@ -171,7 +171,6 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-> >
-> >      while (!fifo32_is_empty(&s->tx_fifo)) {
-> >          int tx_burst = 0;
-> > -        int index = 0;
-> >
-> >          if (s->burst_length <= 0) {
-> >              s->burst_length = imx_spi_burst_length(s);
-> > @@ -192,7 +191,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-> >          rx = 0;
-> >
-> >          while (tx_burst > 0) {
-> > -            uint8_t byte = tx & 0xff;
-> > +            uint8_t byte = tx >> (tx_burst - 8);
-> >
-> >              DPRINTF("writing 0x%02x\n", (uint32_t)byte);
-> >
-> > @@ -201,13 +200,11 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-> >
-> >              DPRINTF("0x%02x read\n", (uint32_t)byte);
-> >
-> > -            tx = tx >> 8;
-> > -            rx |= (byte << (index * 8));
-> > +            rx = (rx << 8) | byte;
-> >
-> >              /* Remove 8 bits from the actual burst */
-> >              tx_burst -= 8;
-> >              s->burst_length -= 8;
-> > -            index++;
-> >          }
->
-> This version of the loop definitely looks a lot neater. However,
-> looking at the code I don't think there's anything that forces the
-> guest to set a burst length that's a multiple of 8, so you need
-> to handle that somehow. Otherwise on the last time through the
-> loop (tx_burst - 8) can be negative, which is undefined behaviour
-> when you try to shift by it.
+> >=20
+> >  target/arm/helper.c    | 10 +++++-----
+> >  target/arm/op_helper.c |  4 ++--
+> >  2 files changed, 7 insertions(+), 7 deletions(-)
+>=20
+> At some point I think it would be worthwhile to convert that target_el_ta=
+ble
+> back to code.  It is really hard to follow with 6 indicies.  Not your
+> fault.
 
-Yes, that's why I added a patch to log the unimplemented behavior to
-notify the user.
+I don't have an opinion. I suspect that it will be hard to follow either wa=
+y.=20
+This patch does not add complexity per se. In particular, it does not add y=
+et=20
+another dimension. It just fills missing/unused entries.
 
-> I think just rounding tx_burst up to a multiple of 8 before
-> the start of the loop would do the right thing ?
+=2D-=20
+R=C3=A9mi Denis-Courmont
 
-Probably. Given all flash transfers are normally multiple of 8-bits I
-am not sure what the real hardware behavior is when it is not multiple
-of 8, but I will try to add something in the next version.
 
-Regards,
-Bin

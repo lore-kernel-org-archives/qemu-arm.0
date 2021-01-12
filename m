@@ -1,148 +1,142 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp1940549lfb;
-        Sat, 23 Jan 2021 12:35:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzBjsx08/0RWIGMkRRVDR0LGiixqpl9DBw/tkKOWTBv1Fi9RjvwSofyxQrHdIZ+xa7HuquS
-X-Received: by 2002:a25:ea49:: with SMTP id o9mr14002916ybe.39.1611434139306;
-        Sat, 23 Jan 2021 12:35:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611434139; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3096351lfq;
+        Mon, 11 Jan 2021 16:16:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw720EiE9ywVOOtYwuOkgC5vSv9N3ANcHLmdKHp5HMDMgX0sQpwI5KbwHWkrA/Xma4RK7qP
+X-Received: by 2002:a25:938a:: with SMTP id a10mr3145848ybm.49.1610410598793;
+        Mon, 11 Jan 2021 16:16:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610410598; cv=none;
         d=google.com; s=arc-20160816;
-        b=EAYT2au19z8aEaNhVlJ8uPG5h0E5M1nqFjQ5YxnMI6anaW/NVIfrtv01LHIUXUSBWX
-         Qxpr9yYqlSNW/J6i0k2r3uC8yzgA2UAreyp9xIsNBUMYfgxQ4kzHG0tQo2oMj6L9tcrr
-         GheFhLLpJ35Tx/HgZqdRr6B8cZllmBK0/pZ7rOzVD4cSKP9kEjzAbZOBb40X2xvZnEwF
-         rEsr1H1tD1pFQ/E5U90t8kwLJTr9MsypAGbaFokcluvhy5ebB/YlsSASsSSNbt952eOA
-         X8i9bBSNq6as6epXr5D/r3A7vCTg1aHf95qs2gkiTgn5S+eD1/e6PmK7SaSFHBSMOo7T
-         z4dQ==
+        b=l5IlFiaO7TnwzwzEagcsZsTBsaPVqG3L+oVj0QORxSi6LatYe/rUmJN83luaohdH89
+         H350bJJ1n4ldh8w6hAd4vMORvtd082zSU/o5bbXFMQJPnh0eKaq2wloH6qZmIhkCkegg
+         bMpnTWLJdx8mJcZzZd/nh4vfqY7CBmA2uAMYgSRkoXzi6N8BlgGFO0HhDzUjLBOpzjMe
+         liBdn8oq8NDj4d0AproFTfMrQjp1kPLPEPFRsNV01DDlD5BeAJfo2PONzKYHsOK/XApd
+         CJRBF/JIXwJN/lwFEYPCPHsrhoOqP/toxItlKglNHKGfTuvfyJuWttv6cP+xGfr7tPvA
+         oYGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=6e+z3MckAZFaGT703sf2KecvlXuBkoiUJcmnxnowGZU=;
-        b=F5CVpnYEVluGyKYiiela41i/VqPXaj2GisADSXHhElYIlpmTlfmy0aEUQnkc0Vh9K8
-         LBwBE9xVWJOwc0qEGSoklsbBUEuAAMC8WY98VXj/jHGxJnsIRqe6t+Qhme1WF7MppGiM
-         JaoTeurikJST/TysGp4R9EN5PijPQjXKN813sqYiDwKLVtsN6LgLvhnbzlChO/HHtU85
-         2HisPBYdJBhKKlah/8pv1PbUH2/hLmHhxhMpE06cg2xDuKlOyYKSu6bbGMhcotyGihh1
-         nVTYQaq751ZZRjkP+RWAt3yYNp0YZLseteJM81qAD64l9bqi/beA+pgvRaT6mMae/+/V
-         66EA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=RLBeLmNm4wbSY3ku5Iqz7J1SWOX3iUZ4RuiRWaCWtO4=;
+        b=JtvbRQaAvhY86u8fPn2Yac3vkGhL2BftRQy63uILiWY3KwALQ3U7LPNylw37mR//kJ
+         xnwIejxlBjRKIhPjZoakGdNIoa04EWIRmIfSDe9tvM+hM5CwcUuSAmn9zl15bQuxKSbf
+         nUT9Iw4hkH3niVgenEFXYprcmAGO7gTl7BiQVjc5Z/MCwQ2GDMeceDL3QHpCir6Wag7K
+         es5ldZRKBE46PewXHjhlgVNgQBR21wm8shO2lAENaMCKKFUBNYu8YbSYsi/hEbjJvHOe
+         wAKbiLwF0gLGjHv3JC5Y2yp6g+yBiYL7/XSuda5nQWYFrpBxBxhaKGQrbkimeN+TBPQP
+         kPHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=SChU8k6S;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=MKxI0yHb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a4si11429484ybk.217.2021.01.23.12.35.39
+        by mx.google.com with ESMTPS id u3si1226642ybm.316.2021.01.11.16.16.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 23 Jan 2021 12:35:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Jan 2021 16:16:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=SChU8k6S;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:60006 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=MKxI0yHb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57814 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l3PdC-0008BH-Lw
-	for alex.bennee@linaro.org; Sat, 23 Jan 2021 15:35:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40264)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kz7MU-0004Dk-6a
+	for alex.bennee@linaro.org; Mon, 11 Jan 2021 19:16:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l3PbC-0006i4-4B; Sat, 23 Jan 2021 15:33:34 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:58896)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l3PbA-0004Xs-DN; Sat, 23 Jan 2021 15:33:33 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id B9F75C602E6;
- Sat, 23 Jan 2021 21:33:29 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1611434009;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=6e+z3MckAZFaGT703sf2KecvlXuBkoiUJcmnxnowGZU=;
- b=SChU8k6SM9NnCFHEQHpuh0aNi1kxogPietfj30yXmO0XnEFPP/nAyDoK475RrRewytZ7+y
- nWyV8HKaCaKMqzx7S5UsXGYJPfnZ6vcRZKwu+rLBMHUenkWk1fV6ZsVtW7x1Xj3jQ9c4zM
- wkKbw0mN0yStHF95UYpeNLIdVHukHvmvnCIkiMAhoEPX5WkzevpoVgRPMIdobCC2dfZsIy
- lo+e7wTrjh+k4FowAbV/MPObi8G1bdUFIySDZkY31pkpj9irQUlnzdITzcn6YvAedMIe6r
- hdBO3tRH7JBBWVSzUY+vmulu6ABrFV3OlTQy3QLvTa7wDh/zkCe9WMpwzVSO+A==
-Date: Sat, 23 Jan 2021 21:33:51 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 25/25] hw/arm/stellaris: Remove board-creation reset of
- STELLARIS_SYS
-Message-ID: <20210123203351.453pcpozshxiwlxg@sekoia-pc.home.lmichel.fr>
-References: <20210121190622.22000-1-peter.maydell@linaro.org>
- <20210121190622.22000-26-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kz7K2-0002hF-Li
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 19:14:06 -0500
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:33443)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kz7K1-0005NR-BP
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 19:14:06 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id w1so674911pjc.0
+ for <qemu-devel@nongnu.org>; Mon, 11 Jan 2021 16:14:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=RLBeLmNm4wbSY3ku5Iqz7J1SWOX3iUZ4RuiRWaCWtO4=;
+ b=MKxI0yHb5zJXOT3KjRg1u889VmA3axTZAEL2ph/bNWmvyiunHO1nQzOK0phohNrOeU
+ 0vl+Qt7tig1kAqurQmoeFePVJOcxPbdVMgInNHXgjEWyEt0mhi9zfIlmsCa29o6Fv/r0
+ PAQjkEzXSSmPKITgXvjO/1VLs1zFkSO75mBSD0yJhvlHChdMngLFcxvS8jrSvolVmA4V
+ i2UmHWZBKVVokDgw6O3sYY5QdorA5mzhs6ezWlS5N8TK8pgGzy0Pi4gvSTpcx0iIKn6f
+ Kn03rihFg2Kdk+i42YDLdMgPiZ8XnBg+h4MsdDUOwkjm5cobuT2DH00Qy48Xh9QqtgYc
+ VzvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=RLBeLmNm4wbSY3ku5Iqz7J1SWOX3iUZ4RuiRWaCWtO4=;
+ b=lyaOjR9HDhaflwUzDGZI/axH5+dyhPfoDrXv0D/k6W0DNGnmV1Sw839MgpyQRNGSjY
+ e2iiVBBBKJmzNp/bRrneXB1jS/ys4MwRM/1kqCPMMIf7Cf5efpgn2zslxWDCAcEPNrH/
+ u1JdpJ+q2RQuil+X/sw/UWa99KWnntmsRFc19O2truHY1Ca5aqQaCsS1QnOvMKTM1y33
+ rI0U7NgyIFrZ0hDkcMjdC2ddo3snywJ6xk1cbhX1AS9Lsrg0WmHbLW9F+ixEuENrbg50
+ IH3eqM158Glp7RAbSyWPO9PX+c0eJD2jfqOvB5akBFjcThjGqM+7goAR//tFe/zs/zCp
+ 1X8g==
+X-Gm-Message-State: AOAM531vt0nJxvHWL5peLJMxaQJvZ8biD3hPK3PxrStHcfgOHknm/+Im
+ pLOaUM+CV0usTI33jKSTTIH/d+RgTezdDw==
+X-Received: by 2002:a17:90a:bb8c:: with SMTP id
+ v12mr1427521pjr.227.1610410443624; 
+ Mon, 11 Jan 2021 16:14:03 -0800 (PST)
+Received: from [10.25.18.119] (rrcs-173-197-107-21.west.biz.rr.com.
+ [173.197.107.21])
+ by smtp.gmail.com with ESMTPSA id gb9sm585357pjb.40.2021.01.11.16.14.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Jan 2021 16:14:03 -0800 (PST)
+Subject: Re: [PATCH 18/18] target/arm: refactor vae1_tlbmask()
+To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
+References: <3337797.iIbC2pHGDl@basile.remlab.net>
+ <20201218103759.19929-18-remi.denis.courmont@huawei.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <b4cc7dc0-15d8-63a5-88c3-b5bf7907321e@linaro.org>
+Date: Mon, 11 Jan 2021 14:14:00 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210121190622.22000-26-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
+In-Reply-To: <20201218103759.19929-18-remi.denis.courmont@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hOYy5MZsRXGw
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zmhe4ZInwNSp
 
-On 19:06 Thu 21 Jan     , Peter Maydell wrote:
-> Now that the watchdog device uses its Clock input rather than being
-> passed the value of system_clock_scale at creation time, we can
-> remove the hack where we reset the STELLARIS_SYS at board creation
-> time to force it to set system_clock_scale.  Instead it will be reset
-> at the usual point in startup and will inform the watchdog of the
-> clock frequency at that point.
+On 12/18/20 12:37 AM, remi.denis.courmont@huawei.com wrote:
+> From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-
+> Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 > ---
->  hw/arm/stellaris.c | 10 ----------
->  1 file changed, 10 deletions(-)
-> 
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index 5acb043a07e..ad72c0959f1 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -780,16 +780,6 @@ static DeviceState *stellaris_sys_init(uint32_t base, qemu_irq irq,
->      sysbus_mmio_map(sbd, 0, base);
->      sysbus_connect_irq(sbd, 0, irq);
->  
-> -    /*
-> -     * Normally we should not be resetting devices like this during
-> -     * board creation. For the moment we need to do so, because
-> -     * system_clock_scale will only get set when the STELLARIS_SYS
-> -     * device is reset, and we need its initial value to pass to
-> -     * the watchdog device. This hack can be removed once the
-> -     * watchdog has been converted to use a Clock input instead.
-> -     */
-> -    device_cold_reset(dev);
-> -
->      return dev;
->  }
->  
-> -- 
-> 2.20.1
-> 
+>  target/arm/helper.c | 25 +++++++++++--------------
+>  1 file changed, 11 insertions(+), 14 deletions(-)
 
--- 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
+

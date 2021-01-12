@@ -1,102 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3470626lfq;
-        Tue, 12 Jan 2021 03:38:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwOqtPP+2++ZWkmRQITpMQ/1OmiD2ILZkap6xS2Xm6Q/vzoQvGwZdStJ/dtKHNb/7Fh4p6Z
-X-Received: by 2002:a25:d0d4:: with SMTP id h203mr6230629ybg.274.1610451510061;
-        Tue, 12 Jan 2021 03:38:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610451510; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3473734lfq;
+        Tue, 12 Jan 2021 03:43:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzvdt1c4OqFDNHJEbz9hNtqPH7Cldt0bCnnCbZ/MDj+ctpx9gUoqSOGUCgi+M5h4A1OmrnE
+X-Received: by 2002:a25:68cc:: with SMTP id d195mr5484794ybc.424.1610451784965;
+        Tue, 12 Jan 2021 03:43:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610451784; cv=none;
         d=google.com; s=arc-20160816;
-        b=svp/UqKzFCb6bf9PZMbkBINcU72AViQqm3ib2Dhjcef4xxYat7oCy62Bx/7GG0tZt/
-         c12pJmaee8+LumxK46QNgRTL9wFifbbycVY69BwUVUrlXEkC0mIlILxVeFqxRt+Fi5sD
-         LipRgswHzVF77cPCOrvzSF2YO/nsGHJ2Vsb110tHQMPpy38I2U/nLQGJEh9oeNIi/M3b
-         FyaxE9Y+gPbtagmwiT4aXp6VRS6jtTnnQxgL5CAAz7SbSmx7VyawnmdCiMrLEF8affBn
-         md42X0uNhW4uqBVd/gaMiAALQSvon3h4Nn1M9cLnAeZm15iu4DeaiLS2NcexaJ5XqV6H
-         Migg==
+        b=SJhPR5A3OmX/t7+sfH+k7K9SxcmrbDm5GJvhh3IqD9ZZdg0/M35xFTUPzqVnap98wI
+         zPT1pG4ChTQW8e9dDedttS8VZ8g1IwS1O19b+q4rGHp79y2rGg3w4r4vEX4L+4cisT5e
+         zqXgIC7PJrF9CMnXp/f8Tj/+an6kLp6FU+5YE8aHrGSe1kJWGBG33q9lAkT/NiNIXb+7
+         skI+G7YUm8A2ztcXbg5Qk7qPHBAx3hc7f7uemg4M76wbdDh3YlbNVLrSfDzhkw6BiRBe
+         OCRPuKSS/6s2CYYiGqmAa5y7hn/ZIoxRvOd/eKT0mbk5uDorAektzlv6rztb34/ZxEl5
+         /p1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Z4yU4z7LjBbWtwDVWg9Fzy18EUDDU7JBdYr1lPxZwyQ=;
-        b=OVDVKaDUwGoT3zUyiw9rF1T6swzFrFqAbX5WPSuWdcHmsUXZG4Cg9ZWQ8vJgjK/8Pw
-         hCIiT1W+EsZDQMsm0HL+2AU3MlNqh2Y+mIiswRPdNgBa/xAcFNHA9q0AgGK8lWlgUtlt
-         EvA3Fy1LwmlqOe18FApID4wk8xewYgBuOoEif7ZIC5kJgjmzgVfJeSu+XWU8nWy5cSCE
-         360Eulv1B3xQOMLy4wEifMfRoFsiBkcWX8Hrjsb3vK8QkhvAwWa9No3pMm0cvjgLcTih
-         Mgrq0DhDxxNh3BWN7l5bBZ6k+iqAybKaRgrzROsfGZf6A+efKacFI+Q9NiaW5K0atw3U
-         QPOQ==
+        bh=Q/fRAJM1ajfNwQd5upbxc/igAiZlzPCEuC0QiXaTWaI=;
+        b=y406UprH0EJDx6vm0jJWYfA9RFWrhIOI8I2dYgJq6MxQvk/uizT3r3Zyb8oD2JKQ5v
+         aphmXw/Dr77HLnCrp6FtCtPKewmAf4JzQYe8lQkOkJT2oYvfN3Yj0u46h2U20np5X0mQ
+         7kiDwlh7akXjY78BPUuUnkowsQWnmamL62t5Xt+awf6/9l15NHnaYBAA2JNJVgVRZZ6I
+         H2eTjhKT/fANk1JqT50qmnQLNJJgoTSkt6zUasX0uA9e7iit71v2+Me8OVgFBoXlW8JR
+         uEWnMbYjk1fk4IzEHa6BSbATFjxckyBbQ477ZbwXUbByMVgyu6zpbKFPd1XwdjYL7pPO
+         LKyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vgrI7LmZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b="z3V/2afB";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c16si2724227ybk.207.2021.01.12.03.38.29
+        by mx.google.com with ESMTPS id t14si2670398ybk.180.2021.01.12.03.43.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 03:38:30 -0800 (PST)
+        Tue, 12 Jan 2021 03:43:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vgrI7LmZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b="z3V/2afB";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49566 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36658 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzI0L-0004Wf-DY
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:38:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35878)
+	id 1kzI4m-00032Q-9W
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:43:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kzHtn-0005vz-SY
- for qemu-devel@nongnu.org; Tue, 12 Jan 2021 06:31:44 -0500
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:32911)
+ id 1kzHsF-0004kM-2c
+ for qemu-devel@nongnu.org; Tue, 12 Jan 2021 06:30:07 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:34783)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kzHtl-00025z-N5
- for qemu-devel@nongnu.org; Tue, 12 Jan 2021 06:31:43 -0500
-Received: by mail-ej1-x62f.google.com with SMTP id b9so3059012ejy.0
- for <qemu-devel@nongnu.org>; Tue, 12 Jan 2021 03:31:41 -0800 (PST)
+ id 1kzHs8-0001Rh-52
+ for qemu-devel@nongnu.org; Tue, 12 Jan 2021 06:30:06 -0500
+Received: by mail-ej1-x630.google.com with SMTP id g20so3047591ejb.1
+ for <qemu-devel@nongnu.org>; Tue, 12 Jan 2021 03:29:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Z4yU4z7LjBbWtwDVWg9Fzy18EUDDU7JBdYr1lPxZwyQ=;
- b=vgrI7LmZukUVpIY0MlLqDNn2zEkeAbj6j6Nw5alh2nf/on4Z4fFDauRNAuLSJJMell
- 24plVha/x4SvYfIJj9jdbn+3LxnAevavUnTfO8wgcQTpLcvBhdP6rsmzJ/1KEvIc+GQU
- GdTvGK4qyxnOyCskdmVpYjjVTp3dKWOUZdqBB6B1PaTZ70mkctIdyywB9eQE65zhMYks
- +bE7aviWqzZUXLMujbEbMhoR7Ld26OBGi0o7ZyucSPywDUCZNT+av2Wqo7hQJqE9SaIg
- ykbPtcwXgmp8U+trkba21B6aEUuY3AV5q12QknzqcAisI7zZJDFNlKGnTLkHzzgr2L9C
- jkjA==
+ :cc; bh=Q/fRAJM1ajfNwQd5upbxc/igAiZlzPCEuC0QiXaTWaI=;
+ b=z3V/2afBjagaqzONjYB9cmQBojWCWLmj6w8hpySF5No9Jkiw4LXWsEuErh9joXeSAl
+ c8kTkR/AamYBRuzflismdda8rgcsdKtFRTFN03GhW8AmjrR8MMyvk9+mGRo3g1sQx7qI
+ hI6lKZteUAN42LJoRtb2KYggvDqKYZlJc/aWTAKbgKNKaLSsRYYND1Zi4c+OpV7G7FYH
+ 6ExRIkoNKHq/Q86jB5ngKKoteAoYDTHzs1cepXgEQRrwo3cFsOpO1DQTY0MR7MTAZAjs
+ hRaxCKEz/rYBTW3g7UBNpOJStCiw4Elj03rzjdilATbhF2ON2kOoDGR923Cd/LtnxWt0
+ JJew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Z4yU4z7LjBbWtwDVWg9Fzy18EUDDU7JBdYr1lPxZwyQ=;
- b=shU/fNaqXDPvBSgpxqo50kk3DjCb7wpFm0hJqOWYqcTTv2iNHDj9J2tSEFJunR/oC8
- kaOQo3cISi7ow8w7iGHZlw0un85Rk915f1n00dXSjR3uDKdWvpeVAdQiMQGHbx2E5oot
- bdjTXBIK1BY86Jc6dn2i3CEMawVVVpMBlSjezVgjMeuSu1L9X9mIbb4ledfBLkFJHRwo
- so9Rkgn0lLaitdF7hf1ug2G9VkoUTwZ3srgb8hKj020IaAUIimLH3RzQj8NeAlGtE9Ys
- BK3nu6nDN8haBHw8Pi752Ivy5VIYTM8sBu1jXTAQ53/g0F8BJ9zPhGffMmMS38b8hAFH
- t9wQ==
-X-Gm-Message-State: AOAM531EaVIPDa0KXMUaCzQSmWeRBvHfmdGmtFsUGG5XJL4iRs3ZnE7s
- egd9HDLsGEw79aWfgX4JgO+imgQE6Me9dtVkkivUzQ==
-X-Received: by 2002:a17:906:e94c:: with SMTP id
- jw12mr3005813ejb.56.1610451100135; 
- Tue, 12 Jan 2021 03:31:40 -0800 (PST)
+ bh=Q/fRAJM1ajfNwQd5upbxc/igAiZlzPCEuC0QiXaTWaI=;
+ b=MHYCerQ23Sg+sBGvcCSn6gj1e4iD6tHLoauSzD5856gfEpyDMSXCmwG4FKwNRuUeai
+ 9zt9+8LkObb//RlznHwd7FX4Oa4h6dfrSIUc4+1gSom0R4q//goofuMbQ7/XadbDNlHD
+ yMQ5ZN0Z+1A0BeNrKULrYZJX7gsTPtptAx5YxRSaL1lxoDMWaAHrS1Vlxs3Dti6iG3wD
+ KHlwvs9QAgAd6FkJyEldvtb+xBUcp3YDJiC5nYdEFUJNGSMJhmuwQAyWPRutuVmp2sVf
+ 1soshZ62DZFEZSQd7rNwLTMcxqVvThVdTwkmXCxrg+JrEYxiKPVH6JwnpjKWRGzaaVVX
+ c+dA==
+X-Gm-Message-State: AOAM531H+Qpoa6LSGQL8ZPdqdKGuxdKft8Iraf6ex0lSsX8/+fJxlqlF
+ XCAc3NxPiP7iXwZfwJ39cwaSnJ+29Xsf7t5Oq4nHcw==
+X-Received: by 2002:a17:906:3d4a:: with SMTP id
+ q10mr2907537ejf.85.1610450998050; 
+ Tue, 12 Jan 2021 03:29:58 -0800 (PST)
 MIME-Version: 1.0
 References: <20210108190945.949196-1-wuhaotsh@google.com>
-In-Reply-To: <20210108190945.949196-1-wuhaotsh@google.com>
+ <20210108190945.949196-4-wuhaotsh@google.com>
+In-Reply-To: <20210108190945.949196-4-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Jan 2021 11:31:29 +0000
-Message-ID: <CAFEAcA9akrH=CHxNysQSoddCtS+c4suQ9gWUXcyUBXiGc87Ojg@mail.gmail.com>
-Subject: Re: [PATCH v5 0/6] Additional NPCM7xx devices
+Date: Tue, 12 Jan 2021 11:29:46 +0000
+Message-ID: <CAFEAcA9LCEwjDfG-Gq+jokZtOjs6J_B_jJaazsRpYY0FVL9dww@mail.gmail.com>
+Subject: Re: [PATCH v5 3/6] hw/adc: Add an ADC module for NPCM7XX
 To: Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,22 +117,40 @@ Cc: Corey Minyard <minyard@acm.org>, Patrick Venture <venture@google.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cenEHxSNBwyA
+X-TUID: rH8z6toebeFe
 
 On Fri, 8 Jan 2021 at 19:10, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> This patch series include a few more NPCM7XX devices including
+> The ADC is part of NPCM7XX Module. Its behavior is controled by the
+> ADC_CON register. It converts one of the eight analog inputs into a
+> digital input and stores it in the ADC_DATA register when enabled.
 >
-> - Analog Digital Converter (ADC)
-> - Pulse Width Modulation (PWM)
+> Users can alter input value by using qom-set QMP command.
 >
-> We also modified the CLK module to generate clock values using qdev_clock.
-> These clocks are used to determine various clocks in NPCM7XX devices.
->
-> Thank you for your review.
+> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>  docs/system/arm/nuvoton.rst    |   2 +-
+>  hw/adc/meson.build             |   1 +
+>  hw/adc/npcm7xx_adc.c           | 301 ++++++++++++++++++++++++++
+>  hw/adc/trace-events            |   5 +
+>  hw/arm/npcm7xx.c               |  24 ++-
+>  include/hw/adc/npcm7xx_adc.h   |  69 ++++++
+>  include/hw/arm/npcm7xx.h       |   2 +
+>  meson.build                    |   1 +
+>  tests/qtest/meson.build        |   3 +-
+>  tests/qtest/npcm7xx_adc-test.c | 377 +++++++++++++++++++++++++++++++++
 
-Applied to target-arm.next with a fixup to the ADC patch for
-the missing trace.h file.
+Adding trace events to a directory for the first time
+requires also adding the hw/adc/trace.h file (which just has
+a single line '#include "trace/trace-hw_adc.h"'), otherwise
+this doesn't compile. I think that's the only issue with this
+patchset, though, so I'll just fix it up locally.
+
+(Stefan is going to send a patch fixing docs/devel/tracing.txt,
+which failed to mention the need for this step when adding
+a new subdir to tracing.)
 
 thanks
 -- PMM

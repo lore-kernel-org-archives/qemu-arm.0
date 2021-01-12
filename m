@@ -1,60 +1,60 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3459448lfq;
-        Tue, 12 Jan 2021 03:22:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJziUhqQSfDmVIBE4VvWhJjZhFSRJpORKwn2zdo2118jO0fOj9t9Lh3Z/xIEd+7vRv2iM2DB
-X-Received: by 2002:a5b:b51:: with SMTP id b17mr6008949ybr.44.1610450534893;
-        Tue, 12 Jan 2021 03:22:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610450534; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3460685lfq;
+        Tue, 12 Jan 2021 03:24:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxiWOUIIMIhQ4BhRgY71R2VLCskyFWffIaTQf7B3YoKxMlPqRGvHvBH+zRVmDh4MOHtvW5B
+X-Received: by 2002:a25:7c06:: with SMTP id x6mr5946284ybc.445.1610450659115;
+        Tue, 12 Jan 2021 03:24:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610450659; cv=none;
         d=google.com; s=arc-20160816;
-        b=yi0UNuf1lU0a3ui3Y/Va7AZ3YU06tIO9WmKBXIjWHqTXeR0RtQtdL6WIqjrrH+TJ5/
-         TcffTHGUVIZ6Sg+4dETBDkHuaBWCG4KtTzlxuS01xXNoB3Ln8MEQgjimQtLP7dFUArST
-         sOc39fl4nhqIoqlGSRO/YPG41sGdiA5vZUiRr3ig4cRo1LYT88nOL04Vh7Ej8MRmCbPZ
-         UKEuN0r7ixz9vrdnafFnaNFB7IE+Neg6ND3xS2khRC0izx5sqeS/kluv8LI2XY0Br//n
-         Qmd6kDhQBiPSlWktqC3ASF7Inqb3QJMrW5CWKMD91LvrKIl9ma88dUMYZVveJcUXPQs4
-         kA2Q==
+        b=tdMh4LAOtet7E4rvqBWAHBSffeabQVyt3f6jAI0uAL0kGcVKACPKQIR4XH0BeVlmH5
+         gP8qa9oCooOMNH5DoaZcFiQ+xSZRw9b51ZZjRSuva9vXZjGkjTSGTfEdHIlVhzW09QvV
+         2193U9bNlaIeOafodqBKhiCTuqtxvCMTiz7127ebRzaqKt6B2bwqfSJBFzc5S46h6y1b
+         qhKEhhhjjQ9bEVK6/7yVHtzprgaQCbQ2MR7e2BALxMmSS1ImzKSD1CNsAdACJ+7bF9kp
+         OvCxj4VuYi1DyX3tRySLKcoSSmdfV+N11kQxICnWDkMCm5kJhXwILJ1gRYPUWsUsUuwk
+         16Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=70avu3d7zQfpwa8A+UXHZMiLAWdZp4eCVUw8PZnw8HI=;
-        b=LvGeJCVYwa7pU9JkcUIZsbrbmUUb8Ub41hSnAJHVHW9UC3mqvLqTNYB/yNsAGtmFf5
-         uGkSOGR0aId2kWiPj9NavRGWkkLvepY2KZnL4N9pbta91fmgbk6Bs/fMc/1aOS18mF9j
-         6/CPYSgce3mfyFTuG7Lx+zjmoQUb72YPzxD8FMuHcljfRBPeVrDY3/C8ak/2MpMkE78n
-         tdPX99fnjQqgbza6aLxUyq5BJNULHqpL5T3twpHWg6Mh7qkJevAm8Dk5yfSI/NSHxkEV
-         6rZi6XU/ejZvE5DklMLokzykhfm9K25Wgp1AvZtZUPQhTNK3Zo1h3aXSHE++LfF9SaZI
-         XAMA==
+        bh=KKkeDio3HsDc7dYn9q/qivX2Zmq82qFu57kWSCe2I3Y=;
+        b=BvSfiBRKr/Qa44aBquBZ3Y3lLdnZNgDafldrR2Bp9w3e9GwRD7JJyRdKv9hBNmEu0e
+         PWNd+8oVHGZua9WPKD7zJDWnVqv+ifyDfUDXcbeE5hwFnR34FMsbB4W9zDsFORBIVTsa
+         IBKj26OW/WqxrHBPO42qjT3P/McM0FZOgQHpCi0YPOgz48u4SLT+i+h5Ny+xQ9acUzKx
+         VeEZmLi0QNWkNVP3ECv2cF8dJw7PcbyRpa951NFkYKOuNmwys78BwwtIJuFhtBNP74zc
+         kTGu7VWsF4JoHsbIsCuQ7wMJyp13LmQOsk4F8i4u3UzIVYR6G1aBFXA1nvG+IgBOynwL
+         UK5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n62si2598352ybf.174.2021.01.12.03.22.14
+        by mx.google.com with ESMTPS id k4si2368269ybc.387.2021.01.12.03.24.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 03:22:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Jan 2021 03:24:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34188 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43388 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzHkc-0002ix-6b
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:22:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53032)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzHmV-0006RQ-6s
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:24:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53034)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kzHBV-0003vr-N4; Tue, 12 Jan 2021 05:45:57 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56728
+ id 1kzHBV-0003vs-Mz; Tue, 12 Jan 2021 05:45:57 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56732
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kzHBO-0003UG-5m; Tue, 12 Jan 2021 05:45:55 -0500
+ id 1kzHBO-0003UK-7G; Tue, 12 Jan 2021 05:45:56 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id D74C2604F8;
- Tue, 12 Jan 2021 11:45:14 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 6294960573;
+ Tue, 12 Jan 2021 11:45:15 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 13/19] target/arm: generalize 2-stage page-walk condition
-Date: Tue, 12 Jan 2021 12:45:05 +0200
-Message-Id: <20210112104511.36576-13-remi.denis.courmont@huawei.com>
+Subject: [PATCH 15/19] target/arm: set HPFAR_EL2.NS on secure stage 2 faults
+Date: Tue, 12 Jan 2021 12:45:07 +0200
+Message-Id: <20210112104511.36576-15-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <12681824.uLZWGnKmhe@basile.remlab.net>
 References: <12681824.uLZWGnKmhe@basile.remlab.net>
@@ -70,65 +70,118 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MQMDl9uoNG7S
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AOmz6CYM0V4x
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-
-The stage_1_mmu_idx() already effectively keeps track of which
-translation regimes have two stages. Don't hard-code another test.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ target/arm/cpu.h        | 2 ++
+ target/arm/helper.c     | 6 ++++++
+ target/arm/internals.h  | 2 ++
+ target/arm/tlb_helper.c | 3 +++
+ 4 files changed, 13 insertions(+)
 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 0f90c772d7..e605791e47 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1482,6 +1482,8 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+ #define HCR_TWEDEN    (1ULL << 59)
+ #define HCR_TWEDEL    MAKE_64BIT_MASK(60, 4)
+ 
++#define HPFAR_NS      (1ULL << 63)
++
+ #define SCR_NS                (1U << 0)
+ #define SCR_IRQ               (1U << 1)
+ #define SCR_FIQ               (1U << 2)
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index fe95c2965d..d889a6cd17 100644
+index f451f281f6..7648f6fb97 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -12159,11 +12159,11 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-                    target_ulong *page_size,
-                    ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
- {
--    if (mmu_idx == ARMMMUIdx_E10_0 ||
--        mmu_idx == ARMMMUIdx_E10_1 ||
--        mmu_idx == ARMMMUIdx_E10_1_PAN) {
-+    ARMMMUIdx s1_mmu_idx = stage_1_mmu_idx(mmu_idx);
-+
-+    if (mmu_idx != s1_mmu_idx) {
-         /* Call ourselves recursively to do the stage 1 and then stage 2
--         * translations.
-+         * translations if mmu_idx is a two-stage regime.
-          */
-         if (arm_feature(env, ARM_FEATURE_EL2)) {
-             hwaddr ipa;
-@@ -12171,9 +12171,8 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-             int ret;
-             ARMCacheAttrs cacheattrs2 = {};
+@@ -3444,6 +3444,9 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+                 target_el = 3;
+             } else {
+                 env->cp15.hpfar_el2 = extract64(fi.s2addr, 12, 47) << 4;
++                if (arm_is_secure_below_el3(env) && fi.s1ns) {
++                    env->cp15.hpfar_el2 |= HPFAR_NS;
++                }
+                 target_el = 2;
+             }
+             take_exc = true;
+@@ -10426,6 +10429,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+             fi->s2addr = addr;
+             fi->stage2 = true;
+             fi->s1ptw = true;
++            fi->s1ns = !*is_secure;
+             return ~0;
+         }
+         if ((arm_hcr_el2_eff(env) & HCR_PTW) &&
+@@ -10438,6 +10442,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+             fi->s2addr = addr;
+             fi->stage2 = true;
+             fi->s1ptw = true;
++            fi->s1ns = !*is_secure;
+             return ~0;
+         }
  
--            ret = get_phys_addr(env, address, access_type,
--                                stage_1_mmu_idx(mmu_idx), &ipa, attrs,
--                                prot, page_size, fi, cacheattrs);
-+            ret = get_phys_addr(env, address, access_type, s1_mmu_idx, &ipa,
-+                                attrs, prot, page_size, fi, cacheattrs);
+@@ -11355,6 +11360,7 @@ do_fault:
+     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
+     fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_Stage2 ||
+                                mmu_idx == ARMMMUIdx_Stage2_S);
++    fi->s1ns = mmu_idx == ARMMMUIdx_Stage2;
+     return true;
+ }
  
-             /* If S1 fails or S2 is disabled, return early.  */
-             if (ret || regime_translation_disabled(env, ARMMMUIdx_Stage2)) {
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 3aec10263e..27cc93f15a 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -593,6 +593,7 @@ typedef enum ARMFaultType {
+  * @s2addr: Address that caused a fault at stage 2
+  * @stage2: True if we faulted at stage 2
+  * @s1ptw: True if we faulted at stage 2 while doing a stage 1 page-table walk
++ * @s1ns: True if we faulted on a non-secure IPA while in secure state
+  * @ea: True if we should set the EA (external abort type) bit in syndrome
+  */
+ typedef struct ARMMMUFaultInfo ARMMMUFaultInfo;
+@@ -603,6 +604,7 @@ struct ARMMMUFaultInfo {
+     int domain;
+     bool stage2;
+     bool s1ptw;
++    bool s1ns;
+     bool ea;
+ };
+ 
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index b35dc8a011..df85079d9f 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -63,6 +63,9 @@ static void QEMU_NORETURN arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+     if (fi->stage2) {
+         target_el = 2;
+         env->cp15.hpfar_el2 = extract64(fi->s2addr, 12, 47) << 4;
++        if (arm_is_secure_below_el3(env) && fi->s1ns) {
++            env->cp15.hpfar_el2 |= HPFAR_NS;
++        }
+     }
+     same_el = (arm_current_el(env) == target_el);
+ 
 -- 
 2.30.0
 

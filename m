@@ -1,74 +1,101 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3450488lfq;
-        Tue, 12 Jan 2021 03:09:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJze6/bkoZIxmhUgIyFpc0OsKETs9wQUt3zpTMpVb9tw/n9wLVoB2zZ9+AEIvmgkH5qJCvuZ
-X-Received: by 2002:a25:37d7:: with SMTP id e206mr5872240yba.77.1610449788800;
-        Tue, 12 Jan 2021 03:09:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610449788; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3522721lfq;
+        Tue, 12 Jan 2021 04:51:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxGgkGfMg08BmVtODs3kk2cmOJWGVU79GeziqeiENH7aCdRDcK0/hOT+GSXZUe14/2dZZZr
+X-Received: by 2002:a5b:e88:: with SMTP id z8mr6064717ybr.201.1610455886072;
+        Tue, 12 Jan 2021 04:51:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610455886; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZJ9bzLMNTZwkWms+YVEHv9sXgyZH4RWTiP9GTyeVrQUGNef4SrIeE7bulY//vwjDl
-         VCziBNh4j/sasgJ59u048PmyObpe7xdxx1juHA7LkiHvQgtGo1Kg4cNvYsOkzwXpcp8t
-         nnlrs5kSda09b44Jypap6rVZXNNTaqtSobV8t0IefiY4rJTapVSIUOuih+o6an7udPNy
-         dYluYpu1edSqE54UHugbdE+lxLgrd+Gn/m49uZhHCmY45OF3xkP7c0mfpobpP8fsG7SZ
-         sPABGyUMLR4ApQK0NMTtBoAsUy/WTrqYxQkUazmczxPGcFJdcqAi3az0ylecp2YkcJ/D
-         ChWw==
+        b=wvifbUIcFCT4Pb9+aVX2b1PBL0cZNUg0VxV9bkL1bKYtTnm3y6GaMpibMoFi8WBr1k
+         uD/FWGYQrajVbaU9j/Ah8oZ808YwrVnQe33McLq8ta2Rp0hDW9YqtVreI6FNbraqbhVl
+         TnI01N+q3S+M7d4qZ8ThTvlCrY+2SPlGQKSjCTmGs4BcXZ/IOLUwJ3Lx5zQV7gBygu52
+         cl+ZrKncS1gafRwY3ZvlVN2nyd5UhieUtZjXZwQm7lwy60vpl32eNtCS9GmlQIU6yF4y
+         /0yQG+eD38CPrUD0NhFT69ydARwGm9jB6mqxr8WyuMjutnwqPk5ul/wRlETrdB4nKup3
+         x9lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=o2AtnX+zRSMDNK2+1OGFHn0wrFr787u2TKUI/BZ/jxU=;
-        b=I/QD6aHk+vgBkumCFFSfDU5N+/GhzNPYcqDiSUwtPaBBuJ6P9MinKJUvcTzNPzujzb
-         CRVk8D20wFXyyu8qCRJMwx2OioBh6FZuX2nvGBcMrolrJ5xwdibbmojiAkwsfiM5WOL1
-         TNnXjOsYSLrmgnCqpfqOTVKaK2SoXQSambplvARU9XNIwfPiy/LITxJcbx+DLq7fxaNF
-         x5Z3kmCN0BqdyewckXjER4gAxDIgPfNwCTIqCCFHikfzwNomBwzjgdRgRqeEJZ69AGES
-         QOx0uDtohVFKUfKNxngWUXSzG89TptDcvQKgjpaebGQr5vWmRw+ciSCA6N6QuY2qkWFH
-         e/jg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=9POOe9Uv0dP1f0gRGFIKg+L5i1Fh268DrexSVAThGAc=;
+        b=gpZK2puycd4ULqNIulCZX8KfQlQhHlcYY3uVcStjxZ80EyBBXoMlvGANDNcfIQSa0z
+         tmPVHqHzz8wiE9ysDLFNaSWdnkMbU4AEs08ppdhMTJ9PHf7E3ETnfJSkIL/qWdnc4tiJ
+         TYEJeZbcPBLfNYEvEEQUU2ErMwT2ZJIZcPGT29+brfmIQlJrwDAel8YSGSXVvLHGgJM/
+         G3PcjxoVJ5Qw1++WsqvvpET4mjQcsoWkovoB5Xi9GgXZ5wPWa4nqVgMQZ/akJ5E/bq1l
+         v0EybcP7BsyYvAnL4X9rY/z3TUxZBfRHkHmfKLImT4FIo6zsGE5AVkLyWqu+dETu79s+
+         xzFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R0HCgg5g;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 63si2519129ybh.449.2021.01.12.03.09.48
+        by mx.google.com with ESMTPS id b63si2815335ybg.240.2021.01.12.04.51.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 03:09:48 -0800 (PST)
+        Tue, 12 Jan 2021 04:51:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51414 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R0HCgg5g;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38946 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzHYa-0003T3-5L
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:09:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53036)
+	id 1kzJ8v-00035a-EY
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 07:51:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kzHBV-0003vv-ME; Tue, 12 Jan 2021 05:45:57 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56722
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1kzHBQ-0003Sw-UU; Tue, 12 Jan 2021 05:45:57 -0500
-Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id DFF9B60605;
- Tue, 12 Jan 2021 11:45:15 +0100 (CET)
-From: remi.denis.courmont@huawei.com
-To: qemu-arm@nongnu.org
-Subject: [PATCH 17/19] target/arm: add ARMv8.4-SEL2 extension
-Date: Tue, 12 Jan 2021 12:45:09 +0200
-Message-Id: <20210112104511.36576-17-remi.denis.courmont@huawei.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <12681824.uLZWGnKmhe@basile.remlab.net>
-References: <12681824.uLZWGnKmhe@basile.remlab.net>
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kzJ6K-0001UG-1h; Tue, 12 Jan 2021 07:48:44 -0500
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36]:34514)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kzJ6H-000388-OG; Tue, 12 Jan 2021 07:48:43 -0500
+Received: by mail-yb1-xb36.google.com with SMTP id x6so1591042ybr.1;
+ Tue, 12 Jan 2021 04:48:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9POOe9Uv0dP1f0gRGFIKg+L5i1Fh268DrexSVAThGAc=;
+ b=R0HCgg5g0o7UXktJCq3bf8od7RrFGGfPfVrbszzg5smSi6au/Ln+YlWG/YOPmBnPbc
+ 7fAX35itlFUx9pMlmcREj7/p9ydry4sSfDUyq7wnfro0x0tChzNahgW/QYo/+n4LjTGj
+ BhAqvufKWT+Dn4Bg/b0b/AA3oH7r7d0x1RHcEqNI4tznriPAl56/HgS/RaALrbwRNbii
+ 18DQw2ESdI0qKzxSpSPs0nycuPJuV0TxQ8fJy96E7ygjrh37OgdinSREgIBECTtSoeki
+ 57t8gInkvECtxdZPRqkIvwvOSfFbqKt84AV/TFoYTw/Rb8Vw8a3gWymZBLcCF9sCH9LJ
+ 9Zew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9POOe9Uv0dP1f0gRGFIKg+L5i1Fh268DrexSVAThGAc=;
+ b=Bz0ZqBhSbwQ1mJrGgW0IaQnUMbj+8AVjF3rIiER4tHHYMitE4DS1RTDbbtwLibuo5C
+ rTsJPE2G8LG8WcEoFqkf1SJ6/Xo6OiGOuBczU7t1CWa25CXU9g1CS8axVmuJfM+wQZBS
+ o7Q9Zjrxji3G0EK+Y13ARU17XbClapCx7s8gk426i2aRIwyZHRug8QLWurMh7XlEFdut
+ EVbFsHby73yfnORdLHe7/D1PileuxoT75zHJdE38+2ELiNwySYswvS6oBQuRswx6IOYZ
+ 1MiwJrbLVVTh/e/bd1Kh9uWWXfxxiG3c41HDkQDjuYjHisbNTe/Zq6McoAWA5+5MACfW
+ MR7g==
+X-Gm-Message-State: AOAM531h51cA9IqGFa9ABtLoYhnnogP5CXj0up9Y5+ISPQy57hz1zsU7
+ pabIdb9w96ce20ho7iMXeCMH5/D2eeFW5DBkRA4=
+X-Received: by 2002:a25:3bc5:: with SMTP id i188mr3259533yba.332.1610455720151; 
+ Tue, 12 Jan 2021 04:48:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20210110081429.10126-1-bmeng.cn@gmail.com>
+ <20210110081429.10126-7-bmeng.cn@gmail.com>
+ <CAFEAcA-RPxLHSVuGDk=Wn-+2kGG6+L_VQfkiaGNEfJ8X1-Mkzg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-RPxLHSVuGDk=Wn-+2kGG6+L_VQfkiaGNEfJ8X1-Mkzg@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Tue, 12 Jan 2021 20:48:29 +0800
+Message-ID: <CAEUhbmX-M5XJQsZ3J_tE27+pjjG+fhcUOkVX0efSAyMorZfWFw@mail.gmail.com>
+Subject: Re: [PATCH v4 6/6] hw/ssi: imx_spi: Correct tx and rx fifo endianness
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b36;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb36.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -81,157 +108,104 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +DckMQjUyXrm
+X-TUID: g+0eKThweoii
 
-From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+On Tue, Jan 12, 2021 at 6:46 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Sun, 10 Jan 2021 at 08:15, Bin Meng <bmeng.cn@gmail.com> wrote:
+> >
+> > From: Bin Meng <bin.meng@windriver.com>
+> >
+> > The endianness of data exchange between tx and rx fifo is incorrect.
+> > Earlier bytes are supposed to show up on MSB and later bytes on LSB,
+> > ie: in big endian. The manual does not explicitly say this, but the
+> > U-Boot and Linux driver codes have a swap on the data transferred
+> > to tx fifo and from rx fifo.
+> >
+> > With this change, U-Boot read from / write to SPI flash tests pass.
+> >
+> >   => sf test 1ff000 1000
+> >   SPI flash test:
+> >   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+> >   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+> >   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+> >   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
+> >   Test passed
+> >   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+> >   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+> >   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+> >   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
+> >
+> > Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
+> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> >
+> > ---
+> >
+> > (no changes since v3)
+> >
+> > Changes in v3:
+> > - Simplify the tx fifo endianness handling
+> >
+> >  hw/ssi/imx_spi.c | 7 ++-----
+> >  1 file changed, 2 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> > index 47c8a0f572..b5124a6426 100644
+> > --- a/hw/ssi/imx_spi.c
+> > +++ b/hw/ssi/imx_spi.c
+> > @@ -171,7 +171,6 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+> >
+> >      while (!fifo32_is_empty(&s->tx_fifo)) {
+> >          int tx_burst = 0;
+> > -        int index = 0;
+> >
+> >          if (s->burst_length <= 0) {
+> >              s->burst_length = imx_spi_burst_length(s);
+> > @@ -192,7 +191,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+> >          rx = 0;
+> >
+> >          while (tx_burst > 0) {
+> > -            uint8_t byte = tx & 0xff;
+> > +            uint8_t byte = tx >> (tx_burst - 8);
+> >
+> >              DPRINTF("writing 0x%02x\n", (uint32_t)byte);
+> >
+> > @@ -201,13 +200,11 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+> >
+> >              DPRINTF("0x%02x read\n", (uint32_t)byte);
+> >
+> > -            tx = tx >> 8;
+> > -            rx |= (byte << (index * 8));
+> > +            rx = (rx << 8) | byte;
+> >
+> >              /* Remove 8 bits from the actual burst */
+> >              tx_burst -= 8;
+> >              s->burst_length -= 8;
+> > -            index++;
+> >          }
+>
+> This version of the loop definitely looks a lot neater. However,
+> looking at the code I don't think there's anything that forces the
+> guest to set a burst length that's a multiple of 8, so you need
+> to handle that somehow. Otherwise on the last time through the
+> loop (tx_burst - 8) can be negative, which is undefined behaviour
+> when you try to shift by it.
 
-This adds handling for the SCR_EL3.EEL2 bit.
+Yes, that's why I added a patch to log the unimplemented behavior to
+notify the user.
 
-Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
----
- target/arm/cpu.c       |  2 +-
- target/arm/cpu.h       |  8 ++++++--
- target/arm/helper.c    | 19 ++++++++++++++++---
- target/arm/translate.c | 14 ++++++++++++--
- 4 files changed, 35 insertions(+), 8 deletions(-)
+> I think just rounding tx_burst up to a multiple of 8 before
+> the start of the loop would do the right thing ?
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5530874686..b85b644941 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -480,7 +480,7 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
-              * masked from Secure state. The HCR and SCR settings
-              * don't affect the masking logic, only the interrupt routing.
-              */
--            if (target_el == 3 || !secure) {
-+            if (target_el == 3 || !secure || (env->cp15.scr_el3 & SCR_EEL2)) {
-                 unmasked = true;
-             }
-         } else {
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e605791e47..df510114f6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2094,7 +2094,10 @@ static inline bool arm_is_secure(CPUARMState *env)
- static inline bool arm_is_el2_enabled(CPUARMState *env)
- {
-     if (arm_feature(env, ARM_FEATURE_EL2)) {
--        return !arm_is_secure_below_el3(env);
-+        if (arm_is_secure_below_el3(env)) {
-+            return (env->cp15.scr_el3 & SCR_EEL2) != 0;
-+        }
-+        return true;
-     }
-     return false;
- }
-@@ -2141,7 +2144,8 @@ static inline bool arm_el_is_aa64(CPUARMState *env, int el)
-         return aa64;
-     }
- 
--    if (arm_feature(env, ARM_FEATURE_EL3)) {
-+    if (arm_feature(env, ARM_FEATURE_EL3) &&
-+        ((env->cp15.scr_el3 & SCR_NS) || !(env->cp15.scr_el3 & SCR_EEL2))) {
-         aa64 = aa64 && (env->cp15.scr_el3 & SCR_RW);
-     }
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7648f6fb97..32fc72d9ed 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -532,6 +532,9 @@ static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
-         return CP_ACCESS_OK;
-     }
-     if (arm_is_secure_below_el3(env)) {
-+        if (env->cp15.scr_el3 & SCR_EEL2) {
-+            return CP_ACCESS_TRAP_EL2;
-+        }
-         return CP_ACCESS_TRAP_EL3;
-     }
-     /* This will be EL1 NS and EL2 NS, which just UNDEF */
-@@ -2029,6 +2032,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
-         if (cpu_isar_feature(aa64_pauth, cpu)) {
-             valid_mask |= SCR_API | SCR_APK;
-         }
-+        if (cpu_isar_feature(aa64_sel2, cpu)) {
-+            valid_mask |= SCR_EEL2;
-+        }
-         if (cpu_isar_feature(aa64_mte, cpu)) {
-             valid_mask |= SCR_ATA;
-         }
-@@ -3387,13 +3393,16 @@ static CPAccessResult ats_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  bool isread)
- {
-     if (ri->opc2 & 4) {
--        /* The ATS12NSO* operations must trap to EL3 if executed in
-+        /* The ATS12NSO* operations must trap to EL3 or EL2 if executed in
-          * Secure EL1 (which can only happen if EL3 is AArch64).
-          * They are simply UNDEF if executed from NS EL1.
-          * They function normally from EL2 or EL3.
-          */
-         if (arm_current_el(env) == 1) {
-             if (arm_is_secure_below_el3(env)) {
-+                if (env->cp15.scr_el3 & SCR_EEL2) {
-+                    return CP_ACCESS_TRAP_UNCATEGORIZED_EL2;
-+                }
-                 return CP_ACCESS_TRAP_UNCATEGORIZED_EL3;
-             }
-             return CP_ACCESS_TRAP_UNCATEGORIZED;
-@@ -3656,7 +3665,8 @@ static void ats1h_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static CPAccessResult at_s1e2_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                      bool isread)
- {
--    if (arm_current_el(env) == 3 && !(env->cp15.scr_el3 & SCR_NS)) {
-+    if (arm_current_el(env) == 3 &&
-+        !(env->cp15.scr_el3 & (SCR_NS | SCR_EEL2))) {
-         return CP_ACCESS_TRAP;
-     }
-     return CP_ACCESS_OK;
-@@ -5755,12 +5765,15 @@ static CPAccessResult nsacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
- {
-     /* The NSACR is RW at EL3, and RO for NS EL1 and NS EL2.
--     * At Secure EL1 it traps to EL3.
-+     * At Secure EL1 it traps to EL3 or EL2.
-      */
-     if (arm_current_el(env) == 3) {
-         return CP_ACCESS_OK;
-     }
-     if (arm_is_secure_below_el3(env)) {
-+        if (env->cp15.scr_el3 & SCR_EEL2) {
-+            return CP_ACCESS_TRAP_EL2;
-+        }
-         return CP_ACCESS_TRAP_EL3;
-     }
-     /* Accesses from EL1 NS and EL2 NS are UNDEF for write but allow reads. */
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 8b6b7355c9..688cd41684 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -2832,9 +2832,19 @@ static bool msr_banked_access_decode(DisasContext *s, int r, int sysm, int rn,
-         }
-         if (s->current_el == 1) {
-             /* If we're in Secure EL1 (which implies that EL3 is AArch64)
--             * then accesses to Mon registers trap to EL3
-+             * then accesses to Mon registers trap to Secure EL2, if it exists,
-+             * otherwise EL3.
-              */
--            TCGv_i32 tcg_el = tcg_const_i32(3);
-+            TCGv_i32 tcg_el;
-+
-+            if (dc_isar_feature(aa64_sel2, s)) {
-+                /* Target EL is EL<3 minus SCR_EL3.EEL2> */
-+                tcg_el = load_cpu_field(cp15.scr_el3);
-+                tcg_gen_sextract_i32(tcg_el, tcg_el, ctz32(SCR_EEL2), 1);
-+                tcg_gen_addi_i32(tcg_el, tcg_el, 3);
-+            } else {
-+                tcg_el = tcg_const_i32(3);
-+            }
- 
-             gen_exception_el(s, EXCP_UDEF, syn_uncategorized(), tcg_el);
-             tcg_temp_free_i32(tcg_el);
--- 
-2.30.0
+Probably. Given all flash transfers are normally multiple of 8-bits I
+am not sure what the real hardware behavior is when it is not multiple
+of 8, but I will try to add something in the next version.
 
+Regards,
+Bin

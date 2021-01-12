@@ -1,153 +1,142 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3085893lfq;
-        Mon, 11 Jan 2021 16:00:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzLoL2p6Ls72I1uo5LpnpJXZE9VhtLayCn7CqZ0jCW/2jyNNQz49FXowanoprgp0AleITdj
-X-Received: by 2002:a25:1f87:: with SMTP id f129mr3209069ybf.142.1610409603337;
-        Mon, 11 Jan 2021 16:00:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610409603; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3088021lfq;
+        Mon, 11 Jan 2021 16:03:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx5U0JdYCnLyOSDLhSDSu/q7vYSCMPA2YGB7QotR/5mNIW6ysURevfAWSG3WElC1C9329+m
+X-Received: by 2002:a05:6902:6cc:: with SMTP id m12mr3051076ybt.56.1610409781204;
+        Mon, 11 Jan 2021 16:03:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610409781; cv=none;
         d=google.com; s=arc-20160816;
-        b=07ULk+P1peXrvS7KfAXVxYFa+bx35IprV8/BAx5LpjNiyZFv02yhEyoKihFqg5sOQf
-         FPGoceSL5YcX1Q9fke9gyNDp5xpsFtWWW5Mplzn/1Ah9UGnk5bgWBdkusE/s5qRvMFqN
-         1uvfRW4jllCXBdgr1uKN+DlFBZrPmThbe5+d1PiLVippKyR/Z8SX0CFGZ2QaFklc7PDx
-         9gvW43gXdnKVT/Jp1ZRL2pqHWcs+sK6t1M7FIMVdpTNw2ATImkT/sF1ZRHrYX3mYZXtn
-         AecSRzFIulEYrFw1AZ1L1IUnSSlFbdZEpQJLKtRy6uZlZWK86wfO+1hg8nAPDlaK1cCo
-         S4yw==
+        b=o/cfGEMZj082+Ex3xHbOBoWuZnvQl9CpAL3ywl6haT54ZqFN6uh5PHb8AGTAkm4Ye2
+         jpiixrNT/N5ojMcqhV82GSBvMv4MKdhRLQNBAJebsbxuVRk6Gdd0vbekLQ0phas8LTLB
+         aB6EoMKM3iUhnPd3PjmHfNzOGtKGrPAuA/YJtwJQtu6UXEKrYDwGUwhdxducdaIW7uA7
+         GTs1xURlxYPKUSih0KmcQVFvsYKcVIM3c/Hl/RP86cVsllkx0b0H/I0gURB5EPG4cHXi
+         nrt6ozOmmwMn6l44QWCTlZpjuewb/IiVudfYkdSv42n5N3oZepKqnaI/evFJutgLsNix
+         VUIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=zatfyXOxSXAm72pAS+OrSbicSsn0LfrDrs51sewnb54=;
-        b=xSDbLdV1Gotwi0Ei9NzA01DyEuZaAyBG7gFNBbsVCCOQs61HPLrzigOVByLz+wVXX/
-         5lTBSbf2g90E9nOG9knaTrA0WEj5vm3inm4fR9ShEDMdwKk2JgVNH9NT37STACAIFqxd
-         mZ8pPb/UAp+tttZxyeItiCiq9uoHCohRgSopbx8kxf6VoULpacmWN47QDozRC78045l1
-         BPv8Tz1pd7s4xV9mCGbAUhd9n9/fk6KwPulVeHDC8EsYmbrDU9KXMtsNgGFIw+ywfmG8
-         RUjGrcxXbDdyXxf8AEb+6USnC3TbKL1+fLpVfK+9qRP7oXn4hastlfn0FFkYp/U4niw9
-         4Zbg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=B/xCcpZT7AUXqjxug7629sTOGA9CVKu7LttJVCOlUIA=;
+        b=w3DHRnaNaRgsekcXi7o4plIhAaW5jLHpXfnNjlgjA6dUnYr2pSosMefsQyfd7BX9sY
+         0LUCIUoi99sOgr9VH3k+BH+ajRGFQOI+AbBbdkzPXqR5g1+zVMn3bsTRbFmrQNhL2zdK
+         GJfDWCeaBLCp+8Zl0NkrCN15o8GfsnA0JqqPJ8gKv9ZwYvNGTIafrlyN0U+7O98lP28p
+         JuGXEBOr/iW14Bt8YXuzjlYmBMXreATzC4H+DqlSRNKWCDarXar2So0iijpWEqJKoOVj
+         bMnZusEr7f+uvJpo0J7VAuFhB06DGKc7zET28uiVKGJlq05ryTevjw7HFQDC2dHHV6db
+         ZcoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Frk1CPUu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kVCWLw2+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si1130075yba.386.2021.01.11.16.00.03
+        by mx.google.com with ESMTPS id f85si1141417yba.418.2021.01.11.16.03.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Jan 2021 16:00:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Jan 2021 16:03:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Frk1CPUu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kVCWLw2+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58456 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kz76Q-00005s-MG
-	for alex.bennee@linaro.org; Mon, 11 Jan 2021 19:00:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33696)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kz79I-00012L-I2
+	for alex.bennee@linaro.org; Mon, 11 Jan 2021 19:03:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz74E-0005Pn-OU
- for qemu-arm@nongnu.org; Mon, 11 Jan 2021 18:57:46 -0500
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:33178)
+ id 1kz77q-0000zJ-6E
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 19:01:30 -0500
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:50920)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kz74D-0003Uv-2L
- for qemu-arm@nongnu.org; Mon, 11 Jan 2021 18:57:46 -0500
-Received: by mail-pg1-x533.google.com with SMTP id n25so238995pgb.0
- for <qemu-arm@nongnu.org>; Mon, 11 Jan 2021 15:57:44 -0800 (PST)
+ id 1kz77n-0003zf-VD
+ for qemu-devel@nongnu.org; Mon, 11 Jan 2021 19:01:29 -0500
+Received: by mail-pj1-x1032.google.com with SMTP id lj6so511611pjb.0
+ for <qemu-devel@nongnu.org>; Mon, 11 Jan 2021 16:01:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=zatfyXOxSXAm72pAS+OrSbicSsn0LfrDrs51sewnb54=;
- b=Frk1CPUujx4N30J9g24nO3Nim0kcrYUFCfyGK12O+bxMTwKx99ZWIkbJq3SkajgOgS
- N4Noo0C50FhowCOK4ZMaFhzP+HRmUhrRIlCenQKNiNx1r9wEZJjKw33V1gQusgs17iGD
- DLTOu7uSEG4P/jDS7zH3drazljXe7fGNfKkI2ypzfx4paxfedkIgUGfgOo9C3rgx6X5l
- kY9X3fEVHs84ZK+D3G5J3c0Qa989loUgErBc2CPs+hM0pH9HbMMk7kd+iNBwpjugyI3f
- W1SCKOmn8gJrNvai/JmPnHFlGvhHY4EHKIXkNLTg3rXJhKzzw5pL6ZojjrmNLJNVfdYg
- lN6Q==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=B/xCcpZT7AUXqjxug7629sTOGA9CVKu7LttJVCOlUIA=;
+ b=kVCWLw2+wCRJL/4onzNH51iZQ2xzoRexl/IIRwQ52OEk6ZbCOi1QY+OEUZQbKDRk8l
+ wh4Pn0yY9rahV9TXsAwseZdXGKYaUzd3emfQ6SXsU1pZQuSkweh4JAUBmLrymDmB3bnD
+ 27l9//Nu8KSuV0xWQhatDOk0fHDmoxhrJzl/pbUS83v4p0xDELlFT5bYImTzyHLDyS+l
+ 4ymu/fIcWNesA3TfuYJMtriPqs5hRxUcmB3bbxyhwFLJEEIIli7vZ0F+N9fmPUcgdACt
+ H/Jh+g7WdKMqPSofDBohnjh0RYNJqtMvoE/mLd/n9dMPYBWsZKU7oXN8tkMVYoasMD6+
+ lAIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=zatfyXOxSXAm72pAS+OrSbicSsn0LfrDrs51sewnb54=;
- b=BMgIh0n5Mhv/JL3O/IqdJsiVlEHIJ/GRyFGyab4Ysr5ds1xnuKhRqosvRhKrbYkAar
- uVJk269i20vBDOS1VcPyyA5ULu41O/X5LSn4UgdYVkkZ/SrEq+7hG277e+3JwmmtyOgy
- wv2InzXi/MW8EE2MzRwG43vM53TyGd/sXue7UgZUeHHe9C4o4FQcQ7hePb5gvI+sImdG
- nJ0vAh/4vv/K3F9xrZC5IHvFMsEIhT7Ak4/RgaAvP6jVVJ8eXh7Nn2COyS9lq+Oqb5pD
- dsNwyQJgmxCCvJXQQmyPtdc8NpBpGnH0lYwdRpNL2nTl3/0FkGcVaBOt1UF0RqTFZRJw
- rL2w==
-X-Gm-Message-State: AOAM533gXS0oAy6UYDOK0sKmz1b3UIsOi5QNyfr6n6EAjHtjEcmeb2cV
- zexBnL1hdScAFF/3vqSMV/HDsA==
-X-Received: by 2002:a63:d246:: with SMTP id t6mr1844270pgi.283.1610409463690; 
- Mon, 11 Jan 2021 15:57:43 -0800 (PST)
-Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
+ bh=B/xCcpZT7AUXqjxug7629sTOGA9CVKu7LttJVCOlUIA=;
+ b=ma1FidLwVoXuwRltVEZuFCYuggE/mv1odSoV8I/Id4w9a6RlZo1P2BFx5DyG1oP9Od
+ FtnR5WT32nIgZ4ooSAHylCgg/cAVpijqKhB9iyZZEyIDEoIxklDBiDA5w3f+dc8HYaCd
+ b1nVqhs69Ln942KQksCNemt2Z9T7EMADAwE1r9ipm7BjiyJX26sbIud0dGjEyGvIt/I8
+ qz6UtmYRkarR37RszBjfhTp2DWV2Ypo6A2x9O9EM2DkMc7AjSOVETPHG9ZnMgHzuJkBa
+ DB2CkV19+sH/pOrfuqRjdemTF3E5KhhULtIKU3R1LUN4el2uX/puYdR6ZwkaE9p98Ju1
+ kXwg==
+X-Gm-Message-State: AOAM530ClLkNTyB9qXLT8ySDcHYSwOjBo/00RfZGAHrCCYesGcEO4Yyt
+ +/5+VgOgamu/F5Q/zUBvn0VLsA==
+X-Received: by 2002:a17:90a:ba88:: with SMTP id
+ t8mr1364626pjr.229.1610409686410; 
+ Mon, 11 Jan 2021 16:01:26 -0800 (PST)
+Received: from [10.25.18.119] (rrcs-173-197-107-21.west.biz.rr.com.
  [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id s67sm872220pgb.60.2021.01.11.15.57.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Jan 2021 15:57:42 -0800 (PST)
+ by smtp.gmail.com with ESMTPSA id b11sm778926pfr.38.2021.01.11.16.01.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Jan 2021 16:01:25 -0800 (PST)
+Subject: Re: [PATCHv2 2/2] target/arm: enable Small Translation tables in max
+ CPU
+To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
+References: <20210108090817.6127-2-remi.denis.courmont@huawei.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v7 0/3] target/arm: Implement an IMPDEF pauth algorithm
-Date: Mon, 11 Jan 2021 13:57:37 -1000
-Message-Id: <20210111235740.462469-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+Message-ID: <8c89d84f-ae3f-d888-51ad-ed01cdcdd833@linaro.org>
+Date: Mon, 11 Jan 2021 14:01:22 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20210108090817.6127-2-remi.denis.courmont@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SrTH+8i+7BH8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Wke+cJllFXI/
 
-The architected pauth algorithm is quite slow without
-hardware support, and boot times for kernels that enable
-use of the feature have been significantly impacted.
-  
-Version 7 changes:
-  * Fix rebase error (drjones).
+On 1/7/21 11:08 PM, remi.denis.courmont@huawei.com wrote:
+> From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+> 
+> Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+> ---
+>  target/arm/cpu64.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Version 6 changes:
-  * Rearrange xxhash64 (pmm).
-  * Add documentation (pmm).
- 
- 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
 r~
-
-
-Richard Henderson (3):
-  target/arm: Implement an IMPDEF pauth algorithm
-  target/arm: Add cpu properties to control pauth
-  target/arm: Use object_property_add_bool for "sve" property
-
- docs/system/arm/cpu-features.rst | 21 +++++++
- include/qemu/xxhash.h            | 98 ++++++++++++++++++++++++++++++++
- target/arm/cpu.h                 | 25 ++++++--
- target/arm/cpu.c                 | 13 +++++
- target/arm/cpu64.c               | 64 +++++++++++++++------
- target/arm/monitor.c             |  1 +
- target/arm/pauth_helper.c        | 27 +++++++--
- tests/qtest/arm-cpu-features.c   | 13 +++++
- 8 files changed, 235 insertions(+), 27 deletions(-)
-
--- 
-2.25.1
-

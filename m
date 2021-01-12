@@ -1,107 +1,106 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3618224lfq;
-        Tue, 12 Jan 2021 06:56:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxji9Uru689NKZUHExzmZmo0IEYXwi9X7EDGb9ysk/wfuIjzMWo6FUbdWey+FzPfQy6OyMW
-X-Received: by 2002:a05:6902:20a:: with SMTP id j10mr7265814ybs.293.1610463398732;
-        Tue, 12 Jan 2021 06:56:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610463398; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3619882lfq;
+        Tue, 12 Jan 2021 06:59:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzssw6j8/LKUH0a/FfQ78HIrFwAFukueI41I4vqoYN79qgX+6mE9XOALSrHqYgf7tu2H6OV
+X-Received: by 2002:a25:d9c3:: with SMTP id q186mr7378302ybg.262.1610463554540;
+        Tue, 12 Jan 2021 06:59:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610463554; cv=none;
         d=google.com; s=arc-20160816;
-        b=xVY1JqjANBvSpJxlPvsuIVRR8Rm/U9MZSbNt+SXtXNZpfCtxw83UYa+Bm3JTymchZp
-         /AazZy8vurpkSbh9CT5rR9tRrrnmh/y7N1kpuQn5yJaFy+9D4Qhz9wHLfZTIiZUBcsVX
-         2D1eVNTeIOwKwzzR18425vQW4KmbxfhqWQdmmXq2hB+ps30u76Jr+PHqVZb0lHWtIGTL
-         UEY/su5IJegsynVHi76JD29+9smIAwpJFPG6T7TdEZNCLLmMahpG6C5un59wl2mWS+kV
-         4AVqmAFDp1MY581dRC1aJGcqfdJdvohUVw+ZBAVcq/Q8lRbadc58lFpGdp8nvMiB8bPJ
-         t8PA==
+        b=Gl0tW2DOj4zIbVH2ySQT75G58+9OkIc1Ey62sAfKZaGI/phdCpagzY0+D63yRVP6gB
+         970i/8W6W7i8MN79UHXDp2DxGHF8SKvEdXutLdW847kkONoFBWJNVXLUV8ohy4sNgAOK
+         8jqr/sz+VWmRskrTl1A5Xv4Mdsqai1SF9wQQJmNLcxsz/xiNV7BdLGTku0O7yNiF/GFi
+         wRcVmDc07LN14hbnnqghHUZs9P3OH1R4OSmdY7q0mSxjWrkO3KUrIST3zI8XnzfRTpkT
+         kM25bBiPd7XrdS4E5t99Rp/9e/Rp4yArPrZ7347aeVuVzEyeFWsDWQ2dGP4Xmig0qFuO
+         oLBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+Mb3Gb3M8mku4NpiAEdzwbwGDJi9TG7kc1WGZbG7wr8=;
-        b=EuhLtAjjzFivDsGxhDP1nHOdQALxGKQ7IM00B8lpSxY9VrHV/0/9reGEd2Lrq/2cOD
-         exYzaSkUa4VKfM5Ql8ou+FF18jLemBK6llmfM+tT6KEBjkrrDySsNsEmTVKdQabsd1d1
-         erqPWuVWdS07aTfn9x5IsBUtXHiwhY7brJl2MM5KfIgRIGnUaxZHmbC2cbu8D1RbyICm
-         l5lPBrRcgZhomSwZszVkrgW9NZMnm4im5a2gVBMkDlQ7VDPh89y8f3wZ6TJfK4JzhpgD
-         Q5a44Bqvv0ChvJYKrXBUDHTdY53WarOlm0yu5gv7gVUIRcYxolJbkeE4HYtbguBAJOl9
-         8KIA==
+        bh=OreTe0I+MY0/iL4Hv+5CUEoSzihVcjTr7+kKPCAh6xY=;
+        b=ra/q5KidQHQqogURuPo0XDIUrnu3+Iba0IywRBWp7Patu+4rHxJHlwJ6ycornYkEun
+         qSfeEn31rOxMnt3ZqsPAB7CVc1cwWjDZfqThvmSKLuLufyPEtLubKhS//Sq3ti2rNRK4
+         l2zfpB87gFNOzFsx4cb+GL5wXFdKqI0w/UF7g8cv3/z7maTM65J9akgUEGDVk3h5wRfy
+         xz7XEZHpnEX8WfTkOrmieDSjMeDk/ASl1QUxAofcoMo50dh69NxUFh3sUZVNCaLCOwNS
+         RsNjLTiscGFAIorVTOSZkGT6ZTvJI907LbK7iwPtuWThaoFFDAlYOvgRzU2JlGaNE3HP
+         jXZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AiA0hsFI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M7PHrdJL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o83si3276353ybc.486.2021.01.12.06.56.38
+        by mx.google.com with ESMTPS id g91si2985618ybi.385.2021.01.12.06.59.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 06:56:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Jan 2021 06:59:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AiA0hsFI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M7PHrdJL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59092 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzL66-00086y-1q
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 09:56:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56194)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzL8b-0002uQ-Qy
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 09:59:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kzL5M-00082n-IT; Tue, 12 Jan 2021 09:55:52 -0500
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029]:55618)
+ id 1kzL5J-0007va-Ch; Tue, 12 Jan 2021 09:55:49 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:46621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kzL5K-0004mj-TA; Tue, 12 Jan 2021 09:55:52 -0500
-Received: by mail-pj1-x1029.google.com with SMTP id p12so1718363pju.5;
- Tue, 12 Jan 2021 06:55:50 -0800 (PST)
+ id 1kzL5H-0004lk-Nh; Tue, 12 Jan 2021 09:55:49 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id v3so1502678plz.13;
+ Tue, 12 Jan 2021 06:55:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+Mb3Gb3M8mku4NpiAEdzwbwGDJi9TG7kc1WGZbG7wr8=;
- b=AiA0hsFItQRCKYjjo3cYdF38rHmLaN9uBdkzN37njizg3WBWHJe11s5AgXum8IQkow
- GpQHNNpRuWXc3j8Wim0/7nEFNSAbkJl93AM4qWHk5wpLCjBmvPeI9wMcAfzkwSaE/4a0
- IxiY2+pbIDqMPSHYmP4nsJ63jFz//E7Ewrq+q1WxCeh9OuvULevQRXc2KGmShvUObR33
- 22sOq8C61RKunQwdr7kmyEcWplqqXxwVJK83H1yGdZiUwk3i7Tez9aTgPRsNmXRfcKvk
- R4GVJffOcd65GlYGz6Kzuz5pr1V5jTEp/CF0P8pdu65kzexoe2GLY33DTBwMmrRxCgjj
- JVCg==
+ bh=OreTe0I+MY0/iL4Hv+5CUEoSzihVcjTr7+kKPCAh6xY=;
+ b=M7PHrdJLxAwSCjCSdNgybgvJ7+OQkrW0HECrC0XDj0OCoR8Mjgc6sojeC2X+5jk9og
+ ekFLG5X704D2fSEeUrurqmq/e7gf7bTDa8L4JLZaIV5Knbc7670yGjbOBLKkHjLLABwN
+ PzwrGfWEdW25a+2sbZeURvkFF3/YwKJsJu+CR1OMIV6IUSdk1o98nKzJ1EKEDPpRtWLE
+ ISJdSgkFwapQjQMRwg4HmfoVBo5+rh4PyVAvY3NPq5vqmsJJuLLZauu+xTvJMX1JHJLc
+ zyYwJdYCBwk1pL4658vXCaWVOcGuk5hgkxgSj6O/n8SjCqeBVUuqXUTy6z64bXq4lyvG
+ 9mOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+Mb3Gb3M8mku4NpiAEdzwbwGDJi9TG7kc1WGZbG7wr8=;
- b=KU6AGGNzJ1ZEz0T82+iLclAMhVnFEuOfuqKpkNmqkvJf+zWUn9PTe9ONiLRrWIMkjt
- l+ZRRUV5GDwNpjwmL6tLpfl2mMg6iX9wCEgB4UUyFQlH04Jq5uXRZ8xKqD5FIFCBMfBk
- h7ldclEqaFAn5MDuGJdMh+E10USacsaRDC4ks90xb4s15N0GIvgIaPIiprQYv0AmxGIY
- or7ahmB/z0KNPgCTtLX7BSjufXn9F7606rb0awB2LXCkw6awWr3BKB24EsWNopGQ8cOR
- /uZ63/+q05yruDn0D/2QMNzC/VeOru2dG0c3Z3zbYB1U6+IsUgGwMUr6HKfPkYpJmDfN
- mCGw==
-X-Gm-Message-State: AOAM532g+dQOAoWIzuJawRVNKKypksE35iT1np4L3p6gJ1Gm1cuB5NWI
- Jom0PXojgOtIQ+/OpmZ0rsA=
-X-Received: by 2002:a17:902:a711:b029:da:f065:1315 with SMTP id
- w17-20020a170902a711b02900daf0651315mr5552623plq.36.1610463349100; 
- Tue, 12 Jan 2021 06:55:49 -0800 (PST)
+ bh=OreTe0I+MY0/iL4Hv+5CUEoSzihVcjTr7+kKPCAh6xY=;
+ b=rbvyWAxhsUEsWmANfKwA43AYdoTxLU/LcqyBHYZ/ImIb/ljtgtuaVw1nCVQRL7rGhb
+ K8Xbi2I1Jhy1MqnBPTqey2pV3bO/h/TXDdXWT4TBrAAmtHlE7oKFbNokoeTuUysPS/fZ
+ +UIM0ob9ozlBVQwbFLpU9c5is937lLrZInUi6ijZf9x0M8g3rniXEL5q3404jmoJ9kjx
+ WB5kYXknIfHpAOYtYbtqPYb1sFrvYhK+Sn5uUtMtiPTZecTU0u9vaUORQZzYWd6BcR8R
+ RkNFCJZTqWf/+jrC0bcP/Rr3zwdQT90fD57avE61sPdhQlnRI4jIQu+KhrBQjWqytJeZ
+ Bt0w==
+X-Gm-Message-State: AOAM5333UwZF8iqfihl35xFJj8SS1zQBLSjP6KvL1nu0l0UdotGIukyB
+ zcjtbXKD+6e6RbXzUs9sK3U=
+X-Received: by 2002:a17:90b:1987:: with SMTP id
+ mv7mr5109881pjb.66.1610463346029; 
+ Tue, 12 Jan 2021 06:55:46 -0800 (PST)
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
  [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id l141sm3593938pfd.124.2021.01.12.06.55.46
+ by smtp.gmail.com with ESMTPSA id l141sm3593938pfd.124.2021.01.12.06.55.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 06:55:48 -0800 (PST)
+ Tue, 12 Jan 2021 06:55:45 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v5 3/6] hw/ssi: imx_spi: Disable chip selects when controller
- is disabled
-Date: Tue, 12 Jan 2021 22:55:23 +0800
-Message-Id: <20210112145526.31095-4-bmeng.cn@gmail.com>
+Subject: [PATCH v5 2/6] hw/ssi: imx_spi: Remove imx_spi_update_irq() in
+ imx_spi_reset()
+Date: Tue, 12 Jan 2021 22:55:22 +0800
+Message-Id: <20210112145526.31095-3-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210112145526.31095-1-bmeng.cn@gmail.com>
 References: <20210112145526.31095-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,69 +109,83 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
- Bin Meng <bin.meng@windriver.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YzLNKAqv8lhN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Bin Meng <bin.meng@windriver.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GeFHyuyRYcFJ
 
-From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+From: Bin Meng <bin.meng@windriver.com>
 
-When a write to ECSPI_CONREG register to disable the SPI controller,
-imx_spi_reset() is called to reset the controller, but chip select
-lines should have been disabled, otherwise the state machine of any
-devices (e.g.: SPI flashes) connected to the SPI master is stuck to
-its last state and responds incorrectly to any follow-up commands.
+Usually the approach is that the device on the other end of the line
+is going to reset its state anyway, so there's no need to actively
+signal an irq line change during the reset hook.
 
-Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
-Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+Move imx_spi_update_irq() out of imx_spi_reset(), to a new function
+imx_spi_soft_reset() that is called when the controller is disabled.
+
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 ---
 
-(no changes since v3)
+Changes in v5:
+- rename imx_spi_hard_reset() to imx_spi_soft_reset()
+
+Changes in v4:
+- adujst the patch 2,3 order
+- rename imx_spi_soft_reset() to imx_spi_hard_reset() to avoid confusion
 
 Changes in v3:
-- Move the chip selects disable out of imx_spi_reset()
+- new patch: remove imx_spi_update_irq() in imx_spi_reset()
 
-Changes in v2:
-- Fix the "Fixes" tag in the commit message
-
- hw/ssi/imx_spi.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/ssi/imx_spi.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 4d488b159a..880939f595 100644
+index e605049a21..4d488b159a 100644
 --- a/hw/ssi/imx_spi.c
 +++ b/hw/ssi/imx_spi.c
-@@ -246,9 +246,15 @@ static void imx_spi_reset(DeviceState *dev)
+@@ -241,11 +241,16 @@ static void imx_spi_reset(DeviceState *dev)
+     imx_spi_rxfifo_reset(s);
+     imx_spi_txfifo_reset(s);
  
- static void imx_spi_soft_reset(IMXSPIState *s)
- {
-+    int i;
-+
-     imx_spi_reset(DEVICE(s));
- 
-     imx_spi_update_irq(s);
-+
-+    for (i = 0; i < ECSPI_NUM_CS; i++) {
-+        qemu_set_irq(s->cs_lines[i], 1);
-+    }
+-    imx_spi_update_irq(s);
+-
+     s->burst_length = 0;
  }
  
++static void imx_spi_soft_reset(IMXSPIState *s)
++{
++    imx_spi_reset(DEVICE(s));
++
++    imx_spi_update_irq(s);
++}
++
  static uint64_t imx_spi_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value = 0;
+@@ -351,8 +356,9 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
+         s->regs[ECSPI_CONREG] = value;
+ 
+         if (!imx_spi_is_enabled(s)) {
+-            /* device is disabled, so this is a reset */
+-            imx_spi_reset(DEVICE(s));
++            /* device is disabled, so this is a soft reset */
++            imx_spi_soft_reset(s);
++
+             return;
+         }
+ 
 -- 
 2.25.1
 

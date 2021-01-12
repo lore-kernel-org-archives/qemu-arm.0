@@ -1,60 +1,60 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3448372lfq;
-        Tue, 12 Jan 2021 03:06:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyeeWYiVM3/PvSEUnmtQV8OjRk5NC7LNGtP+zOA8wotFa3VXfXbmJrX4GrgUSLWxYAztTy0
-X-Received: by 2002:a25:7789:: with SMTP id s131mr5973172ybc.212.1610449610977;
-        Tue, 12 Jan 2021 03:06:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610449610; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3448540lfq;
+        Tue, 12 Jan 2021 03:07:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzAy/BBN/WuVY66gsvWQTEKaz7rrEqq52jl8HqSogBAk/OjhKKqv44QWU3CwZVTYgtqA72W
+X-Received: by 2002:a25:d088:: with SMTP id h130mr5542320ybg.442.1610449625744;
+        Tue, 12 Jan 2021 03:07:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610449625; cv=none;
         d=google.com; s=arc-20160816;
-        b=ksOCUTk/G1YjCYgt54y2ZOwQrQ4PY1Ocuxugs85flgomsKgAiLmutA1TcUXtiQoS95
-         8IyQ94hVtf8TR1bJjQJaZqcEYth+gWk0cNkeXKdemal5GACq67ewLTrIqtoheh+y/49y
-         CEMkcf45IyYPctmqE4wmSpHz6C51Kzw6s2YObwskz0eRgX/jv6zOQaqKyOfMIrkpJp1p
-         Ycc25ar3Oxt4uPE1NUFHo6fc69sqgfBTR+Gp+Dgzdj2QELw6ySQkMbbw10FjSxuwN3ex
-         tMMZCkhZQn/Wy2qDyjeWZUbA9xzUPVIHHWzZHkXovTZDYzbMToUpJRImTs/Z9S1Mln6K
-         /oQQ==
+        b=dN5JFLfYIyE7o8v8Uvvlp/o+h4eSK/XAbbYBAFxdGlFpPTE8OWlbjN7TgLqkhmsS6J
+         G+8etq27xtA5hzgtSaZOceJFyrUOZkOZv2+ki3hyIw+zfcsWTSFtKlwaSH/LSPcoWdeu
+         22lW+wA7EEJUNV4qcxN4GlfJREGSSubPpMbxp79rjNkLweLs1r9X2DYxlBelwOzCBKIm
+         JIzrqwOEvyMCAA/+wMVtE5gISgtSgPmM744Q6xncGsutKMJUdlTicKzWa/WrHikEZ52m
+         4HyQL/HmZZLqbpWz9geAt++1oY3nCJdtskZt2HMHMzJbml2ii3Dz1/Pw6+EHEoXBSwfI
+         nUeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=DdwdG5tij4d0EWZ8uqCS6bhHg/QXW8+xj8FqC4mzO7Y=;
-        b=orLP3W1KbfT1uHDJOkhetkHVeVVv4KwV776mpvkhHpoj9a5GG33Wr5eAWtb+u8dI9J
-         2AhZz5AYueaNnDwaaDUcd7F2TfsVZkOYMZUFWOE0h1dgfpkiAixWCVpkVCpYbB/uI6Xk
-         /yVdX7pUjrnRhh3BNTjSdf5qHXyM6WYKK0mvMx9i3bzWBEWEJqqUXGjJHBCucNqA1gJ+
-         RLkc1ULJAVZzSS2mP1jJ57WpskS2Dvr1T+NYYh6R66Lgql145xDCAEJ5/9/Pqs+nBZhh
-         nL3qK8K6x0jehHeT2CQ0yC6eWa78RuPcKg+PsxLhGiILQnt/wHsjRzB31ZshEuf7Bo/a
-         Wrbw==
+        bh=p1wF924/yMa7j9FVToshxLfNs29URqIejCH9WDARL1o=;
+        b=mi+VgPHYHr9qibSFVis5HC+xOwo/64n+cbqreD073YWE9zKjLDyMmv0Hm1nQl5wqAd
+         8hdoXqF2NuL30lRRHUFlxiB5bDy9F3hz+9YPp9SA2ABfWKDsrLpiYhNg6rA4qLmC2nK8
+         QqBDf4LgPuCXry2Rtk5Hqecmi6lyOAhrefk8iCtXu0fbJ9nSJ7/fSbGOwDl7A+rSa/wX
+         M5Ft2mHnGzo6a2stikYxAEhnR4D6JftDKjHujJaxNkRhc4y3zFbdxDpBLxo5i9o3aMeF
+         yZfErhZUr6X9F+NaYrq9BOdYwcDJyF15KBskTqZzpDNkx6zOadXRJkFNN7vcJs43X2Y3
+         HMng==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2si2353343ybb.357.2021.01.12.03.06.50
+        by mx.google.com with ESMTPS id r35si2810913ybd.310.2021.01.12.03.07.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 03:06:50 -0800 (PST)
+        Tue, 12 Jan 2021 03:07:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41052 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzHVi-0007gY-8b
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:06:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52664)
+	id 1kzHVx-0008LY-1Q
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:07:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kzHAy-0003bE-G7; Tue, 12 Jan 2021 05:45:27 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56712
+ id 1kzHBT-0003vD-O5; Tue, 12 Jan 2021 05:45:57 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56726
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kzHAr-0003Lh-A5; Tue, 12 Jan 2021 05:45:23 -0500
+ id 1kzHBO-0003UH-6G; Tue, 12 Jan 2021 05:45:54 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id B639760228;
- Tue, 12 Jan 2021 11:45:12 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 9845B604F4;
+ Tue, 12 Jan 2021 11:45:14 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 05/19] target/arm: factor MDCR_EL2 common handling
-Date: Tue, 12 Jan 2021 12:44:57 +0200
-Message-Id: <20210112104511.36576-5-remi.denis.courmont@huawei.com>
+Subject: [PATCH 12/19] target/arm: translate NS bit in page-walks
+Date: Tue, 12 Jan 2021 12:45:04 +0200
+Message-Id: <20210112104511.36576-12-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <12681824.uLZWGnKmhe@basile.remlab.net>
 References: <12681824.uLZWGnKmhe@basile.remlab.net>
@@ -84,134 +84,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LNgraJvTTU7+
+X-TUID: tyAiODygyAQt
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-
-This adds a common helper to compute the effective value of MDCR_EL2.
-That is the actual value if EL2 is enabled in the current security
-context, or 0 elsewise.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 38 ++++++++++++++++++++++----------------
- 1 file changed, 22 insertions(+), 16 deletions(-)
+ target/arm/helper.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2676d227bb..7860ccd7ae 100644
+index 7d96897f9a..fe95c2965d 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -538,6 +538,11 @@ static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
-     return CP_ACCESS_TRAP_UNCATEGORIZED;
- }
- 
-+static uint64_t arm_mdcr_el2_eff(CPUARMState *env)
-+{
-+    return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
-+}
-+
- /* Check for traps to "powerdown debug" registers, which are controlled
-  * by MDCR.TDOSA
-  */
-@@ -545,11 +550,11 @@ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
- {
-     int el = arm_current_el(env);
--    bool mdcr_el2_tdosa = (env->cp15.mdcr_el2 & MDCR_TDOSA) ||
--        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    bool mdcr_el2_tdosa = (mdcr_el2 & MDCR_TDOSA) || (mdcr_el2 & MDCR_TDE) ||
-         (arm_hcr_el2_eff(env) & HCR_TGE);
- 
--    if (el < 2 && mdcr_el2_tdosa && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tdosa) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDOSA)) {
-@@ -565,11 +570,11 @@ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
-     int el = arm_current_el(env);
--    bool mdcr_el2_tdra = (env->cp15.mdcr_el2 & MDCR_TDRA) ||
--        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    bool mdcr_el2_tdra = (mdcr_el2 & MDCR_TDRA) || (mdcr_el2 & MDCR_TDE) ||
-         (arm_hcr_el2_eff(env) & HCR_TGE);
- 
--    if (el < 2 && mdcr_el2_tdra && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tdra) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
-@@ -585,11 +590,11 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
-     int el = arm_current_el(env);
--    bool mdcr_el2_tda = (env->cp15.mdcr_el2 & MDCR_TDA) ||
--        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    bool mdcr_el2_tda = (mdcr_el2 & MDCR_TDA) || (mdcr_el2 & MDCR_TDE) ||
-         (arm_hcr_el2_eff(env) & HCR_TGE);
- 
--    if (el < 2 && mdcr_el2_tda && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tda) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
-@@ -605,9 +610,9 @@ static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
-                                  bool isread)
- {
-     int el = arm_current_el(env);
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
- 
--    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
--        && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
-@@ -1347,12 +1352,12 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
-      * trapping to EL2 or EL3 for other accesses.
-      */
-     int el = arm_current_el(env);
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
- 
-     if (el == 0 && !(env->cp15.c9_pmuserenr & 1)) {
-         return CP_ACCESS_TRAP;
-     }
--    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
--        && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
-@@ -1431,7 +1436,8 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-     bool enabled, prohibited, filtered;
-     bool secure = arm_is_secure(env);
-     int el = arm_current_el(env);
--    uint8_t hpmn = env->cp15.mdcr_el2 & MDCR_HPMN;
-+    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
-+    uint8_t hpmn = mdcr_el2 & MDCR_HPMN;
- 
-     if (!arm_feature(env, ARM_FEATURE_PMU)) {
-         return false;
-@@ -1441,13 +1447,13 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-             (counter < hpmn || counter == 31)) {
-         e = env->cp15.c9_pmcr & PMCRE;
-     } else {
--        e = env->cp15.mdcr_el2 & MDCR_HPME;
-+        e = mdcr_el2 & MDCR_HPME;
-     }
-     enabled = e && (env->cp15.c9_pmcnten & (1 << counter));
- 
-     if (!secure) {
-         if (el == 2 && (counter < hpmn || counter == 31)) {
--            prohibited = env->cp15.mdcr_el2 & MDCR_HPMD;
-+            prohibited = mdcr_el2 & MDCR_HPMD;
-         } else {
-             prohibited = false;
+@@ -10429,6 +10429,18 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+             fi->s1ptw = true;
+             return ~0;
          }
++
++        if (arm_is_secure_below_el3(env)) {
++            /* Check if page table walk is to secure or non-secure PA space. */
++            if (*is_secure) {
++                *is_secure = !(env->cp15.vstcr_el2.raw_tcr & VSTCR_SW);
++            } else {
++                *is_secure = !(env->cp15.vtcr_el2.raw_tcr & VTCR_NSW);
++            }
++        } else {
++            assert(!*is_secure);
++        }
++
+         addr = s2pa;
+     }
+     return addr;
 -- 
 2.30.0
 

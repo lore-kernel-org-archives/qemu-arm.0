@@ -1,257 +1,219 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id u66sm13673919wmg.30.2021.01.08.14.43.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Jan 2021 14:43:11 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4B2511FF9C;
-	Fri,  8 Jan 2021 22:42:58 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Keith Packard <keithp@keithp.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 13/20] semihosting: Change common-semi API to be architecture-independent
-Date: Fri,  8 Jan 2021 22:42:49 +0000
-Message-Id: <20210108224256.2321-14-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210108224256.2321-1-alex.bennee@linaro.org>
-References: <20210108224256.2321-1-alex.bennee@linaro.org>
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3786442lfq;
+        Tue, 12 Jan 2021 10:36:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwKspc7TYJURlGKfn7h8gzxwETuE4+BEMC+pEStDPareW7m1ejlhgr3sUXYdBeJlgRkImZO
+X-Received: by 2002:a25:2057:: with SMTP id g84mr1086656ybg.133.1610476564537;
+        Tue, 12 Jan 2021 10:36:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610476564; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ndzvFFwNRYGTB0GWgexegvDk2qgjzs80q3Kto5c6jWuotlmIeQeRHEW3xahHv3ZCAW
+         +VKzDSu29Hj8GCi5hrb/kXC4FnQ6OAlyix7lms+s345ECc1vqJS8953pppJN2w6+sg7y
+         9k0UaqcMKKjD9EvzC4NPIsJxMr+il6xFzFeffia60pbvZVh43NJl7MXC4tf2spGZOw5p
+         cVgAJ4P+1IDw3Tokw9jKGX8Xp60OnyZvQT2csfAma1JVp4m9l2Dw34cWCqyZ05LGbKQY
+         HkngVEgwnNkZLF1QmuUDXYGOtTA20OiWvOI97cxHcj5z6vqwG16zXqK7zS8hVfIEzyq+
+         izjA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=txiwHr22GtoLnJcNkS7jAaB6MxcoOFxIFFZX9K+PMVM=;
+        b=eVSxZ3gxcxn21eeJRvVSx6Pe8uReqgmcoSgC8+vi9FEV/biq5T+OKt+nmNl3LWNSA+
+         jgwRoJC1OLrXjuceqIkRcAzZxIfHtGf///QCaUhMmK6dKShbbxK0R//MVHV+xzCUBl5u
+         /S/QzoyBMMJ2+6hr0aw244J0bTzwyotV//zqJ/UBSh9vO8tsrNQnw8FVvgWbMCrl1LO5
+         0fw/0uuWLbnBmfbz66HIW/58oWF2YcmktvdvTX0Ni5xo1wBrjU+da+zNMxd1PZ5AwK3i
+         zwDSQyV0bqeTUbFoTtkD3QERaF52uUudwGZBdw81Q3AEg0ILAnBIBYMbh+hRkxsZpQfL
+         +XVA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iK9hCcaa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x63si3508820ybh.326.2021.01.12.10.36.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Jan 2021 10:36:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iK9hCcaa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49414 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzOWR-0000nh-TE
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 13:36:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55248)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kzOVz-0000ls-Mh; Tue, 12 Jan 2021 13:35:36 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:44366)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kzOVy-00079j-0Q; Tue, 12 Jan 2021 13:35:35 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id w1so4883906ejf.11;
+ Tue, 12 Jan 2021 10:35:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=txiwHr22GtoLnJcNkS7jAaB6MxcoOFxIFFZX9K+PMVM=;
+ b=iK9hCcaaKvGDpLrFwfXALuQ9M1fRQ8IYBrvMWmqeMoDJ2orrltHDZSN8oyCwTDCbkS
+ pzgwRkKt/KuAF0nA/EDVX1h26F/e2Uc7qHCE21JuODDPhYczu8d60l7jimlJ0DRMoTa8
+ WCuIhgXL3IIPY48ZsgyZ0467lmJy8UiOAY0xFaM1Kw5q4aZ2vevyX7r0kcZH0i+hBq9J
+ /qImht5PtKHBXCBCcqYTB5rQtEjTbiBjuZqCf++BPikEBGCG0RoOCFiIy1p9owxsF8vF
+ t73hUOmrwIOGPmUV2gD7t/RGa4HjnC2LwiQIApF70DiSaEkdf/mZEY/FqKLE07MexwbW
+ Y6WA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=txiwHr22GtoLnJcNkS7jAaB6MxcoOFxIFFZX9K+PMVM=;
+ b=pgt93BDKMk18C3O2hLTvOicJcseOF4qvBj9eGxpJ+4Ujz3coKQ/oOHWSkTTZgQHgax
+ Zv2O+rTDU/J3DuYouP/LqGEs5kwPGl+Xcz+TzrURsiXYqvy+i/8XfCo0a36aGISrAm3P
+ ZKxRlBJKQkWZrLmLgbOZ7fUBEAVDt14Y8RduPeIhP6QRbcrUMHCOTbIyPBXqUURrlz77
+ k0xBYzjpEnvJAmzku/oTtFXs19jkVr/r6yqR72bzH+in9GgKALc9+jtaLKPhR3lMGGqZ
+ Ss8HcFrWEqJw8GaktBKG70i5Ru7rCD5L5tUMza3pDEzx3ch1J8v80j+jkr9O4R33+LkN
+ v9PQ==
+X-Gm-Message-State: AOAM532iK7tNj11hJVIUG9eDFDC2mcx1xEcfC03BQwVhkrYGo11PGXkv
+ eqnEubnNMjp/ifewwEBKjeU=
+X-Received: by 2002:a17:906:d93c:: with SMTP id
+ rn28mr135261ejb.50.1610476532195; 
+ Tue, 12 Jan 2021 10:35:32 -0800 (PST)
+Received: from x1w.redhat.com (190.red-83-57-173.dynamicip.rima-tde.net.
+ [83.57.173.190])
+ by smtp.gmail.com with ESMTPSA id d8sm1822878edm.75.2021.01.12.10.35.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Jan 2021 10:35:31 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Bin Meng <bin.meng@windriver.com>, qemu-devel@nongnu.org,
+ Bin Meng <bmeng.cn@gmail.com>
+Subject: [RFC PATCH v6 00/11] hw/ssi: imx_spi: Fix various bugs in the imx_spi
+ model
+Date: Tue, 12 Jan 2021 19:35:18 +0100
+Message-Id: <20210112183529.2011863-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 0QSe/uu/ba95
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pLNd1/Xa733o
 
-From: Keith Packard <keithp@keithp.com>
-
-The public API is now defined in
-hw/semihosting/common-semi.h. do_common_semihosting takes CPUState *
-instead of CPUARMState *. All internal functions have been renamed
-common_semi_ instead of arm_semi_ or arm_. Aside from the API change,
-there are no functional changes in this patch.
-
-Signed-off-by: Keith Packard <keithp@keithp.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20210107170717.2098982-3-keithp@keithp.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- hw/semihosting/common-semi.h  | 36 +++++++++++++++++++++++++++++++++++
- target/arm/cpu.h              |  8 --------
- hw/semihosting/common-semi.c  | 16 ++++++++++------
- linux-user/aarch64/cpu_loop.c |  3 ++-
- linux-user/arm/cpu_loop.c     |  3 ++-
- target/arm/helper.c           |  5 +++--
- target/arm/m_helper.c         |  7 ++++++-
- 7 files changed, 59 insertions(+), 19 deletions(-)
- create mode 100644 hw/semihosting/common-semi.h
-
-diff --git a/hw/semihosting/common-semi.h b/hw/semihosting/common-semi.h
-new file mode 100644
-index 0000000000..bc53e92c79
---- /dev/null
-+++ b/hw/semihosting/common-semi.h
-@@ -0,0 +1,36 @@
-+/*
-+ *  Semihosting support for systems modeled on the Arm "Angel"
-+ *  semihosting syscalls design.
-+ *
-+ *  Copyright (c) 2005, 2007 CodeSourcery.
-+ *  Copyright (c) 2019 Linaro
-+ *  Written by Paul Brook.
-+ *
-+ *  Copyright © 2020 by Keith Packard <keithp@keithp.com>
-+ *  Adapted for systems other than ARM, including RISC-V, by Keith Packard
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ *
-+ *  ARM Semihosting is documented in:
-+ *     Semihosting for AArch32 and AArch64 Release 2.0
-+ *     https://static.docs.arm.com/100863/0200/semihosting.pdf
-+ *
-+ */
-+
-+#ifndef COMMON_SEMI_H
-+#define COMMON_SEMI_H
-+
-+target_ulong do_common_semihosting(CPUState *cs);
-+
-+#endif /* COMMON_SEMI_H */
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 7e6c881a7e..49d9a314db 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1068,14 +1068,6 @@ static inline void aarch64_sve_change_el(CPUARMState *env, int o,
- static inline void aarch64_add_sve_properties(Object *obj) { }
- #endif
- 
--#if !defined(CONFIG_TCG)
--static inline target_ulong do_arm_semihosting(CPUARMState *env)
--{
--    g_assert_not_reached();
--}
--#else
--target_ulong do_arm_semihosting(CPUARMState *env);
--#endif
- void aarch64_sync_32_to_64(CPUARMState *env);
- void aarch64_sync_64_to_32(CPUARMState *env);
- 
-diff --git a/hw/semihosting/common-semi.c b/hw/semihosting/common-semi.c
-index 93360e28c7..2e959aba08 100644
---- a/hw/semihosting/common-semi.c
-+++ b/hw/semihosting/common-semi.c
-@@ -1,10 +1,14 @@
- /*
-- *  Arm "Angel" semihosting syscalls
-+ *  Semihosting support for systems modeled on the Arm "Angel"
-+ *  semihosting syscalls design.
-  *
-  *  Copyright (c) 2005, 2007 CodeSourcery.
-  *  Copyright (c) 2019 Linaro
-  *  Written by Paul Brook.
-  *
-+ *  Copyright © 2020 by Keith Packard <keithp@keithp.com>
-+ *  Adapted for systems other than ARM, including RISC-V, by Keith Packard
-+ *
-  *  This program is free software; you can redistribute it and/or modify
-  *  it under the terms of the GNU General Public License as published by
-  *  the Free Software Foundation; either version 2 of the License, or
-@@ -373,12 +377,12 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
-      * do anything with its return value, because it is not necessarily
-      * the result of the syscall, but could just be the old value of X0.
-      * The only thing safe to do with this is that the callers of
--     * do_arm_semihosting() will write it straight back into X0.
-+     * do_common_semihosting() will write it straight back into X0.
-      * (In linux-user mode, the callback will have happened before
-      * gdb_do_syscallv() returns.)
-      *
-      * We should tidy this up so neither this function nor
--     * do_arm_semihosting() return a value, so the mistake of
-+     * do_common_semihosting() return a value, so the mistake of
-      * doing something with the return value is not possible to make.
-      */
- 
-@@ -675,10 +679,10 @@ static const GuestFDFunctions guestfd_fns[] = {
-  * leave the register unchanged. We use 0xdeadbeef as the return value
-  * when there isn't a defined return value for the call.
-  */
--target_ulong do_arm_semihosting(CPUARMState *env)
-+target_ulong do_common_semihosting(CPUState *cs)
- {
--    ARMCPU *cpu = env_archcpu(env);
--    CPUState *cs = env_cpu(env);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     target_ulong args;
-     target_ulong arg0, arg1, arg2, arg3;
-     char * s;
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index bbe9fefca8..42b9c15f53 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -22,6 +22,7 @@
- #include "qemu.h"
- #include "cpu_loop-common.h"
- #include "qemu/guest-random.h"
-+#include "hw/semihosting/common-semi.h"
- 
- #define get_user_code_u32(x, gaddr, env)                \
-     ({ abi_long __r = get_user_u32((x), (gaddr));       \
-@@ -129,7 +130,7 @@ void cpu_loop(CPUARMState *env)
-             queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
-             break;
-         case EXCP_SEMIHOST:
--            env->xregs[0] = do_arm_semihosting(env);
-+            env->xregs[0] = do_common_semihosting(cs);
-             env->pc += 4;
-             break;
-         case EXCP_YIELD:
-diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-index 3d272b56ef..cadfb7fa43 100644
---- a/linux-user/arm/cpu_loop.c
-+++ b/linux-user/arm/cpu_loop.c
-@@ -22,6 +22,7 @@
- #include "qemu.h"
- #include "elf.h"
- #include "cpu_loop-common.h"
-+#include "hw/semihosting/common-semi.h"
- 
- #define get_user_code_u32(x, gaddr, env)                \
-     ({ abi_long __r = get_user_u32((x), (gaddr));       \
-@@ -421,7 +422,7 @@ void cpu_loop(CPUARMState *env)
-             }
-             break;
-         case EXCP_SEMIHOST:
--            env->regs[0] = do_arm_semihosting(env);
-+            env->regs[0] = do_common_semihosting(cs);
-             env->regs[15] += env->thumb ? 2 : 4;
-             break;
-         case EXCP_INTERRUPT:
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d434044f07..a2ad77eb4e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -34,6 +34,7 @@
- #ifdef CONFIG_TCG
- #include "arm_ldst.h"
- #include "exec/cpu_ldst.h"
-+#include "hw/semihosting/common-semi.h"
- #endif
- 
- #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
-@@ -9875,13 +9876,13 @@ static void handle_semihosting(CPUState *cs)
-         qemu_log_mask(CPU_LOG_INT,
-                       "...handling as semihosting call 0x%" PRIx64 "\n",
-                       env->xregs[0]);
--        env->xregs[0] = do_arm_semihosting(env);
-+        env->xregs[0] = do_common_semihosting(cs);
-         env->pc += 4;
-     } else {
-         qemu_log_mask(CPU_LOG_INT,
-                       "...handling as semihosting call 0x%x\n",
-                       env->regs[0]);
--        env->regs[0] = do_arm_semihosting(env);
-+        env->regs[0] = do_common_semihosting(cs);
-         env->regs[15] += env->thumb ? 2 : 4;
-     }
- }
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 643dcafb83..6176003029 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -31,6 +31,7 @@
- #ifdef CONFIG_TCG
- #include "arm_ldst.h"
- #include "exec/cpu_ldst.h"
-+#include "hw/semihosting/common-semi.h"
- #endif
- 
- static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
-@@ -2306,7 +2307,11 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-         qemu_log_mask(CPU_LOG_INT,
-                       "...handling as semihosting call 0x%x\n",
-                       env->regs[0]);
--        env->regs[0] = do_arm_semihosting(env);
-+#ifdef CONFIG_TCG
-+        env->regs[0] = do_common_semihosting(cs);
-+#else
-+        g_assert_not_reached();
-+#endif
-         env->regs[15] += env->thumb ? 2 : 4;
-         return;
-     case EXCP_BKPT:
--- 
-2.20.1
+Hi,=0D
+=0D
+As it is sometimes harder for me to express myself in plain=0D
+English, I found it easier to write the patches I was thinking=0D
+about. I know this doesn't scale.=0D
+=0D
+So this is how I understand the ecSPI reset works, after=0D
+looking at the IMX6DQRM.pdf datasheet.=0D
+=0D
+This is a respin of Ben's v5 series [*].=0D
+Tagged RFC because I have not tested it :)=0D
+=0D
+Sometimes changing device reset to better match hardware gives=0D
+trouble when using '-kernel ...' because there is no bootloader=0D
+setting the device in the state Linux expects it.=0D
+=0D
+Copy of Ben's v5 cover:=0D
+=0D
+  This series fixes a bunch of bugs in current implementation of the imx=0D
+  spi controller, including the following issues:=0D
+=0D
+  - chip select signal was not lower down when spi controller is disabled=0D
+  - remove imx_spi_update_irq() in imx_spi_reset()=0D
+  - round up the tx burst length to be multiple of 8=0D
+  - transfer incorrect data when the burst length is larger than 32 bit=0D
+  - spi controller tx and rx fifo endianness is incorrect=0D
+=0D
+[*] https://lists.gnu.org/archive/html/qemu-devel/2021-01/msg02333.html=0D
+=0D
+Diff with Ben's v5:=0D
+=0D
+Key:=0D
+[----] : patches are identical=0D
+[####] : number of functional differences between upstream/downstream patch=
+=0D
+[down] : patch is downstream-only=0D
+The flags [FC] indicate (F)unctional and (C)ontextual differences, respecti=
+ve=3D=0D
+ly=0D
+=0D
+001/11:[----] [--] 'hw/ssi: imx_spi: Use a macro for number of chip selects=
+ s=3D=0D
+upported'=0D
+002/11:[down] 'hw/ssi: imx_spi: Remove pointless variable initialization'=0D
+003/11:[down] 'hw/ssi: imx_spi: Convert some debug printf()s to trace event=
+s'=0D
+004/11:[down] 'hw/ssi: imx_spi: Reduce 'change_mask' variable scope'=0D
+005/11:[down] 'hw/ssi: imx_spi: Rework imx_spi_reset() to keep CONREG regis=
+te=3D=0D
+r value'=0D
+006/11:[down] 'hw/ssi: imx_spi: Rework imx_spi_read() to handle block disab=
+le=3D=0D
+d'=0D
+007/11:[down] 'hw/ssi: imx_spi: Rework imx_spi_write() to handle block disa=
+bl=3D=0D
+ed'=0D
+008/11:[0004] [FC] 'hw/ssi: imx_spi: Disable chip selects when controller i=
+s =3D=0D
+disabled'=0D
+009/11:[----] [--] 'hw/ssi: imx_spi: Round up the burst length to be multip=
+le=3D=0D
+ of 8'=0D
+010/11:[----] [--] 'hw/ssi: imx_spi: Correct the burst length > 32 bit tran=
+sf=3D=0D
+er logic'=0D
+011/11:[----] [--] 'hw/ssi: imx_spi: Correct tx and rx fifo endianness'=0D
+=0D
+Bin Meng (4):=0D
+  hw/ssi: imx_spi: Use a macro for number of chip selects supported=0D
+  hw/ssi: imx_spi: Round up the burst length to be multiple of 8=0D
+  hw/ssi: imx_spi: Correct the burst length > 32 bit transfer logic=0D
+  hw/ssi: imx_spi: Correct tx and rx fifo endianness=0D
+=0D
+Philippe Mathieu-Daud=3DC3=3DA9 (6):=0D
+  hw/ssi: imx_spi: Remove pointless variable initialization=0D
+  hw/ssi: imx_spi: Convert some debug printf()s to trace events=0D
+  hw/ssi: imx_spi: Reduce 'change_mask' variable scope=0D
+  hw/ssi: imx_spi: Rework imx_spi_reset() to keep CONREG register value=0D
+  hw/ssi: imx_spi: Rework imx_spi_read() to handle block disabled=0D
+  hw/ssi: imx_spi: Rework imx_spi_write() to handle block disabled=0D
+=0D
+Xuzhou Cheng (1):=0D
+  hw/ssi: imx_spi: Disable chip selects when controller is disabled=0D
+=0D
+ include/hw/ssi/imx_spi.h |   5 +-=0D
+ hw/ssi/imx_spi.c         | 147 +++++++++++++++++++++++----------------=0D
+ hw/ssi/trace-events      |   7 ++=0D
+ 3 files changed, 97 insertions(+), 62 deletions(-)=0D
+=0D
+--=3D20=0D
+2.26.2=0D
+=0D

@@ -1,139 +1,137 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3442485lfq;
-        Tue, 12 Jan 2021 02:59:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwpK0u2a5Oikgqhxyb2fUmGcBAJU2aaq/I9IyvoZaZWTBfpDarstWJBB/63BNrPq9RR06KR
-X-Received: by 2002:a25:4984:: with SMTP id w126mr5754122yba.391.1610449174260;
-        Tue, 12 Jan 2021 02:59:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610449174; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3470626lfq;
+        Tue, 12 Jan 2021 03:38:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwOqtPP+2++ZWkmRQITpMQ/1OmiD2ILZkap6xS2Xm6Q/vzoQvGwZdStJ/dtKHNb/7Fh4p6Z
+X-Received: by 2002:a25:d0d4:: with SMTP id h203mr6230629ybg.274.1610451510061;
+        Tue, 12 Jan 2021 03:38:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610451510; cv=none;
         d=google.com; s=arc-20160816;
-        b=c8N/UridvFr7i9wX2ABfVR4zR8OvM5NScYQa4E1nRthCJcDhfHY7ZRbNempeopPx6j
-         mrGvuPtpxKUNgvr9OXywbYQt6cpAEHtZEznmxGSWMRygeHucrEYUaTgRpl2oizoc+IeL
-         DBJ8yHuaBB5lVfu950go8hEeuYqCf/EwylTKLyuE5qG4kBu1IFELeGI6COh8nWmv8zhS
-         yztK15oALon4+n32wxE+dcNPx56F/I+roMD0wtZ6qHqdauLxfj4GnoHz+9v416DeA3Bd
-         fUjsBqldKWEpfN+X7xe0c69zIYbmD3AQjjdgpk/+f4uoeGALNCr+9zKFwlO1BNWFYTRm
-         U5IQ==
+        b=svp/UqKzFCb6bf9PZMbkBINcU72AViQqm3ib2Dhjcef4xxYat7oCy62Bx/7GG0tZt/
+         c12pJmaee8+LumxK46QNgRTL9wFifbbycVY69BwUVUrlXEkC0mIlILxVeFqxRt+Fi5sD
+         LipRgswHzVF77cPCOrvzSF2YO/nsGHJ2Vsb110tHQMPpy38I2U/nLQGJEh9oeNIi/M3b
+         FyaxE9Y+gPbtagmwiT4aXp6VRS6jtTnnQxgL5CAAz7SbSmx7VyawnmdCiMrLEF8affBn
+         md42X0uNhW4uqBVd/gaMiAALQSvon3h4Nn1M9cLnAeZm15iu4DeaiLS2NcexaJ5XqV6H
+         Migg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:message-id:date:subject:to:from;
-        bh=zkc4XNbldW1V4hQhEHaIixPTKgkRx6JJPmYSoF2Y7u8=;
-        b=YN8V6y9BniFrJnwALMhPVFQZ82NUaPPn4weEIRB5yP+JuPJj2XksXfvw8ZQqyZi9/4
-         5uGCTOsP5M5ECgtb9lH8TxJHYVJaJ06yEcFPnTkmqapqokDhW4E2gp+4ghDTNLf1ffDA
-         puK0qP49DjQNfeN8+x57nPFrBIgLcHYkBU7mIwlg0wi/ZRwsqp9Ql3ADo16KOmayzZjn
-         XXCPnI7uc4RN1BgfZbTUWBFpppsRvgpGjp5zy6TjjLfO712m4kvQmYe9XULUBXd5QmwU
-         iyMINBD+MkeveOr7dEoweyZKxLpaTMxa/AJdkm7jMjotD4vWf1BkTPzf1mGvfemAG8g3
-         KEgQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Z4yU4z7LjBbWtwDVWg9Fzy18EUDDU7JBdYr1lPxZwyQ=;
+        b=OVDVKaDUwGoT3zUyiw9rF1T6swzFrFqAbX5WPSuWdcHmsUXZG4Cg9ZWQ8vJgjK/8Pw
+         hCIiT1W+EsZDQMsm0HL+2AU3MlNqh2Y+mIiswRPdNgBa/xAcFNHA9q0AgGK8lWlgUtlt
+         EvA3Fy1LwmlqOe18FApID4wk8xewYgBuOoEif7ZIC5kJgjmzgVfJeSu+XWU8nWy5cSCE
+         360Eulv1B3xQOMLy4wEifMfRoFsiBkcWX8Hrjsb3vK8QkhvAwWa9No3pMm0cvjgLcTih
+         Mgrq0DhDxxNh3BWN7l5bBZ6k+iqAybKaRgrzROsfGZf6A+efKacFI+Q9NiaW5K0atw3U
+         QPOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=vgrI7LmZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h131si2323283ybh.239.2021.01.12.02.59.34
+        by mx.google.com with ESMTPS id c16si2724227ybk.207.2021.01.12.03.38.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 02:59:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Jan 2021 03:38:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58600 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=vgrI7LmZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzHOf-0002us-Ku
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 05:59:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52466)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzI0L-0004Wf-DY
+	for alex.bennee@linaro.org; Tue, 12 Jan 2021 06:38:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kzHAN-0002tO-73; Tue, 12 Jan 2021 05:44:47 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56696
- helo=ns207790.ip-94-23-215.eu)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>)
- id 1kzHAL-0003Az-1Q; Tue, 12 Jan 2021 05:44:46 -0500
-Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
- [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
- (Authenticated sender: remi)
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id C06225FCEF;
- Tue, 12 Jan 2021 11:44:41 +0100 (CET)
-From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
-To: qemu-arm@nongnu.org
-Subject: [PATCHv5 00/19] ARMv8.4-A Secure EL2
-Date: Tue, 12 Jan 2021 12:44:39 +0200
-Message-ID: <12681824.uLZWGnKmhe@basile.remlab.net>
-Organization: Huawei Technologies, Finland
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kzHtn-0005vz-SY
+ for qemu-devel@nongnu.org; Tue, 12 Jan 2021 06:31:44 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:32911)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kzHtl-00025z-N5
+ for qemu-devel@nongnu.org; Tue, 12 Jan 2021 06:31:43 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id b9so3059012ejy.0
+ for <qemu-devel@nongnu.org>; Tue, 12 Jan 2021 03:31:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Z4yU4z7LjBbWtwDVWg9Fzy18EUDDU7JBdYr1lPxZwyQ=;
+ b=vgrI7LmZukUVpIY0MlLqDNn2zEkeAbj6j6Nw5alh2nf/on4Z4fFDauRNAuLSJJMell
+ 24plVha/x4SvYfIJj9jdbn+3LxnAevavUnTfO8wgcQTpLcvBhdP6rsmzJ/1KEvIc+GQU
+ GdTvGK4qyxnOyCskdmVpYjjVTp3dKWOUZdqBB6B1PaTZ70mkctIdyywB9eQE65zhMYks
+ +bE7aviWqzZUXLMujbEbMhoR7Ld26OBGi0o7ZyucSPywDUCZNT+av2Wqo7hQJqE9SaIg
+ ykbPtcwXgmp8U+trkba21B6aEUuY3AV5q12QknzqcAisI7zZJDFNlKGnTLkHzzgr2L9C
+ jkjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Z4yU4z7LjBbWtwDVWg9Fzy18EUDDU7JBdYr1lPxZwyQ=;
+ b=shU/fNaqXDPvBSgpxqo50kk3DjCb7wpFm0hJqOWYqcTTv2iNHDj9J2tSEFJunR/oC8
+ kaOQo3cISi7ow8w7iGHZlw0un85Rk915f1n00dXSjR3uDKdWvpeVAdQiMQGHbx2E5oot
+ bdjTXBIK1BY86Jc6dn2i3CEMawVVVpMBlSjezVgjMeuSu1L9X9mIbb4ledfBLkFJHRwo
+ so9Rkgn0lLaitdF7hf1ug2G9VkoUTwZ3srgb8hKj020IaAUIimLH3RzQj8NeAlGtE9Ys
+ BK3nu6nDN8haBHw8Pi752Ivy5VIYTM8sBu1jXTAQ53/g0F8BJ9zPhGffMmMS38b8hAFH
+ t9wQ==
+X-Gm-Message-State: AOAM531EaVIPDa0KXMUaCzQSmWeRBvHfmdGmtFsUGG5XJL4iRs3ZnE7s
+ egd9HDLsGEw79aWfgX4JgO+imgQE6Me9dtVkkivUzQ==
+X-Received: by 2002:a17:906:e94c:: with SMTP id
+ jw12mr3005813ejb.56.1610451100135; 
+ Tue, 12 Jan 2021 03:31:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+References: <20210108190945.949196-1-wuhaotsh@google.com>
+In-Reply-To: <20210108190945.949196-1-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Jan 2021 11:31:29 +0000
+Message-ID: <CAFEAcA9akrH=CHxNysQSoddCtS+c4suQ9gWUXcyUBXiGc87Ojg@mail.gmail.com>
+Subject: Re: [PATCH v5 0/6] Additional NPCM7xx devices
+To: Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
- helo=ns207790.ip-94-23-215.eu
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pNL0paqejE6I
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <minyard@acm.org>, Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cenEHxSNBwyA
 
-	Hi,
+On Fri, 8 Jan 2021 at 19:10, Hao Wu <wuhaotsh@google.com> wrote:
+>
+> This patch series include a few more NPCM7XX devices including
+>
+> - Analog Digital Converter (ADC)
+> - Pulse Width Modulation (PWM)
+>
+> We also modified the CLK module to generate clock values using qdev_clock.
+> These clocks are used to determine various clocks in NPCM7XX devices.
+>
+> Thank you for your review.
 
-This adds Secure  EL2.
+Applied to target-arm.next with a fixup to the ADC patch for
+the missing trace.h file.
 
-Changes since version 4:
-=2D Fix NS unitialised in secure state stage 2 translation.
-=2D Remove EEL2 translation block flag in 32-bit mode.
-=2D Clarify comments on arm_is_el2_enabled().
-
-=2D---------------------------------------------------------------
-R=C3=A9mi Denis-Courmont (19):
-      target/arm: remove redundant tests
-      target/arm: add arm_is_el2_enabled() helper
-      target/arm: use arm_is_el2_enabled() where applicable
-      target/arm: use arm_hcr_el2_eff() where applicable
-      target/arm: factor MDCR_EL2 common handling
-      target/arm: declare new AA64PFR0 bit-fields
-      target/arm: add 64-bit S-EL2 to EL exception table
-      target/arm: add MMU stage 1 for Secure EL2
-      target/arm: add ARMv8.4-SEL2 system registers
-      target/arm: handle VMID change in secure state
-      target/arm: do S1_ptw_translate() before address space lookup
-      target/arm: translate NS bit in page-walks
-      target/arm: generalize 2-stage page-walk condition
-      target/arm: secure stage 2 translation regime
-      target/arm: set HPFAR_EL2.NS on secure stage 2 faults
-      target/arm: revector to run-time pick target EL
-      target/arm: add ARMv8.4-SEL2 extension
-      target/arm: enable Secure EL2 in max CPU
-      target/arm: refactor vae1_tlbmask()
-
- target/arm/cpu-param.h     |   2 +-
- target/arm/cpu.c           |  10 +-
- target/arm/cpu.h           |  90 ++++++++--
- target/arm/cpu64.c         |   1 +
- target/arm/helper-a64.c    |   8 +-
- target/arm/helper.c        | 414 ++++++++++++++++++++++++++++++-----------=
-=2D---
- target/arm/internals.h     |  36 ++++
- target/arm/op_helper.c     |   4 +-
- target/arm/tlb_helper.c    |   3 +
- target/arm/translate-a64.c |   4 +
- target/arm/translate.c     |  35 +++-
- 11 files changed, 430 insertions(+), 177 deletions(-)
-
-=2D-=20
-=E9=9B=B7=E7=B1=B3=E2=80=A7=E5=BE=B7=E5=B0=BC-=E5=BA=93=E5=B0=94=E8=92=99
-http://www.remlab.net/
-
-
-
+thanks
+-- PMM

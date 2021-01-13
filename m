@@ -1,107 +1,79 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp411399lfq;
-        Wed, 13 Jan 2021 05:01:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy8XrwzV2hqcqZQmODhl5oMRxo30K78OGhuCThuD0dYAiePkN3t6zwfmZISatYjqasEvByM
-X-Received: by 2002:a25:6755:: with SMTP id b82mr1530682ybc.232.1610542904482;
-        Wed, 13 Jan 2021 05:01:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610542904; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp420407lfq;
+        Wed, 13 Jan 2021 05:12:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwDvHZ22n874a52Pt15GKjQpfKZSTZS5eSFtpy9nzf5tT6SGzqcfyUKe1w9QAhOnF39I05u
+X-Received: by 2002:a25:d457:: with SMTP id m84mr3509679ybf.63.1610543564639;
+        Wed, 13 Jan 2021 05:12:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610543564; cv=none;
         d=google.com; s=arc-20160816;
-        b=e43XXIivjTZCDECuXSykP6RC/dwH2rEEf2fgOXDluKHCfAXXMQSmVtRoydKrw22nic
-         /H+2aDvZxTGrZZT6DJbK9jRkruegMaFJcKog6m8ahgX4FcWNo2EwRa2BOBxhq6iVtVnh
-         ZQbXSt+lAe7MduW/maodH34rzvU4OszRV1SwpSOZaEFnBu5/JGMCxd/C6g2vzEDbOVxp
-         ddr0Jn3VqMXIP2nNPqsiabTC3rvAj1pS9Yao1MtWbUsWBRC155kAwAmcqFpOk1KwcXhW
-         ujVO8k385Y5N3dM75+sGsBd4n+wH/7gEdOwB66C4W3TnxkBtHRraMbURqFVSHMXeJ5u9
-         LQzw==
+        b=mBAEb09acw90mSWUq3CAHWuTOKbJ18qovkRR+hIRnhnAucvWOIKdh0e6l5eHNobfoe
+         ezAEVW+l7Fod29ssHMJOL7HipORWHaRvyLqVK2MisWPN9uou5m117FVEdyRZMRs5ILYL
+         jK9t7A7xhZeaWtDZiXhVNFgqeIkeM3rjR1q8MFUovc3+2Kqro4bqO+ktWXAXltDxK7bM
+         j1gMZoZqGs0aXqpmeDY+2NN1qtcK/EvmMVHNBN6AbhF22DKm7T6Jm9H23xH6ea0JMbZD
+         7iH3auo85IPYHve0rmaOBHvRRMx0HelPflc8tVHOwXedHDgvbRiY8amZjGYKfjv8zYiZ
+         W4fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
-         :dkim-signature;
-        bh=vhG+8z8PVXOrdsTr0N2TRncoAAfd8YjSpWqrnJxZs64=;
-        b=GOc4bA8lzLMPyvTLMBsTFhGY0IQt6WN8MjqBO/QKRZG/TrqhsLM3Nizn85xgLEGM/s
-         R3Sf1f9o7P2BR+VOZszQqby3BC9b69RsdRvM98l9GIvrdnH1CntLwd0uvZr+92XbVG4V
-         06kIwHlHEhG65aFak7Np93jEgMjxXvxJrqsnvWiTosLGN3OtXgIXUKTZazZSHLR9Zxrm
-         8ZQs/UH/stQrsAOg9e5p2aoUguCrX/za94E/pNmIns3DflggE0gKIAq+bxGZVJJGqSz7
-         V9tpNZ6Q7te3yq4m3SrcpWbrGjxxHuELjhRABVSoho3NuSO+62Bn4LNe1xktJ6KtDRko
-         SQqw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:organization:message-id:date
+         :subject:to:from;
+        bh=avpM3ir21Tj+JRQ4qIEmrnv+2paX4U5/PNyus7tqRm8=;
+        b=wBZrfn4UDUIhFSbnR/v2NlrWruwVXxE90OnUu2Lhtt33oJrfrUOX4Gxp8GNW5AIVTS
+         JvF/N2uYOtvIfBtybaQvg9GQj3wMCP2fpYNgSJlITH1ra/665c0GmAigLsNSMkIRQCzt
+         VhpbUnb2n5ypfsuKv5Aw1ZmAYGnhS1MCnAJAb4+slVW2usVteflllkwvBaIrxvxiH6r7
+         8L+4qkcpjDPWebaMkqPS0xCPxMGAq0EBpQse/EEVShP6GlhXrLLoB93WTjTJET8iRnYg
+         yjbjJ6bzLkGIi5HsrssowJcvpJGYFrPz0apL+klWasqLkb1nsQ1n8Y01Vq1P895rNgrD
+         cFHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J5tdjMy6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u15si2620134ybi.77.2021.01.13.05.01.44
+        by mx.google.com with ESMTPS id y63si2175367yby.344.2021.01.13.05.12.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 05:01:44 -0800 (PST)
+        Wed, 13 Jan 2021 05:12:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J5tdjMy6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54494 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36172 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzfmR-0005WR-QL
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:01:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59344)
+	id 1kzfx6-0001kO-0e
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:12:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kzfls-00051x-2o
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:01:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38295)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kzflb-0000aI-89
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:01:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610542849;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=vhG+8z8PVXOrdsTr0N2TRncoAAfd8YjSpWqrnJxZs64=;
- b=J5tdjMy6c/9fi103Q6lTIEi15F2tZL6qw47zGNxf0YVbl/gBWHXIvjb9XaZae6PCUIXesi
- j3RlulKXN/u4VJZYAjo0H2gkDQVcOdv9r3roCQycOFG54cYiVx34o8aPHMasn0eYtQAVWC
- 0F9WbZydjImUPSUq9DquNYRhjVlymsg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-493-swu6iqdGMrGbFX1MZG0SPg-1; Wed, 13 Jan 2021 08:00:48 -0500
-X-MC-Unique: swu6iqdGMrGbFX1MZG0SPg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1D60D1005D5F;
- Wed, 13 Jan 2021 13:00:45 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-172.ams2.redhat.com
- [10.36.112.172])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D082819CBA;
- Wed, 13 Jan 2021 13:00:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 33E4C11386A7; Wed, 13 Jan 2021 14:00:24 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Subject: Re: [PATCH v3 4/7] qapi: Use QAPI_LIST_PREPEND() where possible
-References: <20201223221102.390740-1-eblake@redhat.com>
- <20201223221102.390740-5-eblake@redhat.com>
-Date: Wed, 13 Jan 2021 14:00:24 +0100
-In-Reply-To: <20201223221102.390740-5-eblake@redhat.com> (Eric Blake's message
- of "Wed, 23 Dec 2020 16:10:59 -0600")
-Message-ID: <87czy90z6f.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kzfwd-0001ja-4y; Wed, 13 Jan 2021 08:12:15 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:45692
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kzfwZ-0005TT-H6; Wed, 13 Jan 2021 08:12:14 -0500
+Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
+ [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
+ (Authenticated sender: remi)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id B855C5FC25;
+ Wed, 13 Jan 2021 14:12:05 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
+To: qemu-arm@nongnu.org
+Subject: Re: [PATCH 17/19] target/arm: add ARMv8.4-SEL2 extension
+Date: Wed, 13 Jan 2021 15:12:04 +0200
+Message-ID: <4284476.LvFx2qVVIh@basile.remlab.net>
+Organization: Huawei Technologies, Finland
+In-Reply-To: <6ffaca60-2fa0-ac7d-b430-0bbaee18b25a@linaro.org>
+References: <12681824.uLZWGnKmhe@basile.remlab.net>
+ <20210112104511.36576-17-remi.denis.courmont@huawei.com>
+ <6ffaca60-2fa0-ac7d-b430-0bbaee18b25a@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,113 +86,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- "open list:GLUSTER" <qemu-block@nongnu.org>,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Richard Henderson <richard.henderson@linaro.org>, "Dr. David Alan
- Gilbert" <dgilbert@redhat.com>, Greg Kurz <groug@kaod.org>, "open
- list:S390 KVM CPUs" <qemu-s390x@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- "open list:GLUSTER" <integration@gluster.org>,
- "Daniel P. =?utf-8?Q?Berr?= =?utf-8?Q?ang=C3=A9?=" <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Reitz <mreitz@redhat.com>, "open
- list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eeHY1o7ezSxl
+X-TUID: caoiWSxk27Kq
 
-Eric Blake <eblake@redhat.com> writes:
+Le tiistaina 12. tammikuuta 2021, 23.30.39 EET Richard Henderson a =C3=A9cr=
+it :
+> On 1/12/21 12:45 AM, remi.denis.courmont@huawei.com wrote:
+> > From: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
+> >=20
+> > This adds handling for the SCR_EL3.EEL2 bit.
+> >=20
+> > Signed-off-by: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
+>=20
+> The patch title seems to have gone awry.
+>=20
+> > @@ -2832,9 +2832,19 @@ static bool msr_banked_access_decode
+> >=20
+> >          }
+> >          if (s->current_el =3D=3D 1) {
+> >         =20
+> >              /* If we're in Secure EL1 (which implies that EL3 is AArch=
+64)
+> >=20
+> > -             * then accesses to Mon registers trap to EL3
+> > +             * then accesses to Mon registers trap to Secure EL2, if it
+> > exists, +             * otherwise EL3.
+> >=20
+> >               */
+> >=20
+> > -            TCGv_i32 tcg_el =3D tcg_const_i32(3);
+> > +            TCGv_i32 tcg_el;
+> > +
+> > +            if (dc_isar_feature(aa64_sel2, s)) {
+> > +                /* Target EL is EL<3 minus SCR_EL3.EEL2> */
+> > +                tcg_el =3D load_cpu_field(cp15.scr_el3);
+> > +                tcg_gen_sextract_i32(tcg_el, tcg_el, ctz32(SCR_EEL2), =
+1);
+> > +                tcg_gen_addi_i32(tcg_el, tcg_el, 3);
+> > +            } else {
+> > +                tcg_el =3D tcg_const_i32(3);
+> > +            }
+>=20
+> You can't test an aa64 feature without verifying that the cpu has aa64
+> support (if the cpu is strictly aa32, the aa64 registers are
+> undefined/uninitialized).  So:
+>=20
+>     if (arm_dc_feature(s, ARM_FEATURE_AARCH64) &&
+>         dc_isar_feature(aa64_sel2, s)) {
+>         ...
+>=20
 
-> Anywhere we create a list of just one item or by prepending items
-> (typically because order doesn't matter), we can use the
-> QAPI_LIST_PREPEND macro.  But places where we must keep the list in
-> order by appending remain open-coded until later patches.
->
-> Note that as a side effect, this also performs a cleanup of two minor
-> issues in qga/commands-posix.c: the old code was performing
->  new = g_malloc0(sizeof(*ret));
-> which 1) is confusing because you have to verify whether 'new' and
-> 'ret' are variables with the same type, and 2) would conflict with C++
-> compilation (not an actual problem for this file, but makes
-> copy-and-paste harder).
->
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+Hmm, yeah. Should this be an ifdef on TARGET_AARCH64 instead?
 
-Already in master as commit 54aa3de72e, except for:
+Also do we need to revector the exception code, or leave it mostly duplicat=
+ed=20
+as is?
 
-> diff --git a/hw/core/machine-qmp-cmds.c b/hw/core/machine-qmp-cmds.c
-> index 87f14140a381..156223a344ed 100644
-> --- a/hw/core/machine-qmp-cmds.c
-> +++ b/hw/core/machine-qmp-cmds.c
-[...]
-> @@ -297,41 +293,31 @@ void qmp_set_numa_node(NumaOptions *cmd, Error **errp)
->  static int query_memdev(Object *obj, void *opaque)
->  {
->      MemdevList **list = opaque;
-> -    MemdevList *m = NULL;
-> +    Memdev *m;
->      QObject *host_nodes;
->      Visitor *v;
->
->      if (object_dynamic_cast(obj, TYPE_MEMORY_BACKEND)) {
->          m = g_malloc0(sizeof(*m));
->
-> -        m->value = g_malloc0(sizeof(*m->value));
-> +        m->id = g_strdup(object_get_canonical_path_component(obj));
-> +        m->has_id = !!m->id;
->
-> -        m->value->id = g_strdup(object_get_canonical_path_component(obj));
-> -        m->value->has_id = !!m->value->id;
-> -
-> -        m->value->size = object_property_get_uint(obj, "size",
-> -                                                  &error_abort);
-> -        m->value->merge = object_property_get_bool(obj, "merge",
-> -                                                   &error_abort);
-> -        m->value->dump = object_property_get_bool(obj, "dump",
-> -                                                  &error_abort);
-> -        m->value->prealloc = object_property_get_bool(obj,
-> -                                                      "prealloc",
-> -                                                      &error_abort);
-> -        m->value->policy = object_property_get_enum(obj,
-> -                                                    "policy",
-> -                                                    "HostMemPolicy",
-> -                                                    &error_abort);
-> +        m->size = object_property_get_uint(obj, "size", &error_abort);
-> +        m->merge = object_property_get_bool(obj, "merge", &error_abort);
-> +        m->dump = object_property_get_bool(obj, "dump", &error_abort);
-> +        m->prealloc = object_property_get_bool(obj, "prealloc", &error_abort);
-> +        m->policy = object_property_get_enum(obj, "policy", "HostMemPolicy",
-> +                                             &error_abort);
->          host_nodes = object_property_get_qobject(obj,
->                                                   "host-nodes",
->                                                   &error_abort);
->          v = qobject_input_visitor_new(host_nodes);
-> -        visit_type_uint16List(v, NULL, &m->value->host_nodes, &error_abort);
-> +        visit_type_uint16List(v, NULL, &m->host_nodes, &error_abort);
->          visit_free(v);
->          qobject_unref(host_nodes);
->
-> -        m->next = *list;
-> -        *list = m;
-> +        QAPI_LIST_PREPEND(*list, m);
->      }
->
->      return 0;
-[...]
+
+> With those things changed,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>=20
+>=20
+> r~
+
+
+=2D-=20
+R=C3=A9mi Denis-Courmont
+
 

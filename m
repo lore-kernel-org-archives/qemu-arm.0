@@ -1,103 +1,100 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp168675lfq;
-        Tue, 12 Jan 2021 22:29:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwgAo8VnbYfzYnXd7WqA+bSWvy67PaU1V/a5Oaf2RyYgWgfgmEIAm+aP6ftCLjMQOKaeO8F
-X-Received: by 2002:a25:65d4:: with SMTP id z203mr1245384ybb.232.1610519376369;
-        Tue, 12 Jan 2021 22:29:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610519376; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp209246lfq;
+        Tue, 12 Jan 2021 23:40:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyz3Ami6M2PIpsqUuDvtxf+2COR4i7cA6HVMzRee46WrKxGGgEATTuml8CM/6bDmpcokHdg
+X-Received: by 2002:a25:d452:: with SMTP id m79mr1421728ybf.417.1610523636355;
+        Tue, 12 Jan 2021 23:40:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610523636; cv=none;
         d=google.com; s=arc-20160816;
-        b=H2vA4TE+rIVLi77/QHip4UMWNmKK7TIyIkIFPdmDpTBmoDVOAht49QZO7MsfBPzCS0
-         y3+rvhYxe3gaYpHCvrp0BGfLCTu0cQ66TOmmcVr40pvEwXUNh6tadbaEt2ore9Xx41+j
-         ilXEL7/5OuSnE00I9DRS7oyxIn3u1w2KiGq+b2BMIEvWqtykRRn6dBCYO6u4lbSaQEOg
-         N+VCzQDTsvTZoZyzMvWdnb27kg7rDFY57cU83vpp8L+KnEFQTM3rZjeEz731GbYGaoCU
-         Jnfel2srUPWzRyXYDQmCQNlBO3FhbjQ6IA4bWfqgiJPLLE7vPZ5f+CtvjyArGylK3WK0
-         Xm6A==
+        b=xNzmvfZ0oG80gp90gk7EA+CkIi0pd4f2hcflQ97pV9+99f1ntcIwXjzdtMrHx212T3
+         0ej2fWbi58R2ecJGUHXSAgmj9MbF2zTZIVIvyPPcGIe7SN/5uQ7pucqKE+XrEDYMOyZh
+         noN0APJt3pCHInsDb+ylOtM4cwFOzWQTVTQ09eDyVmLA8hthAkhhbf09xSfoyAId2KAb
+         ly2A/1q7Meiy0N1lzWgJ7kQmB7N6jua870oWxBFiz3AvzKQsJFHaDmiLOOMwf5UHN/R9
+         8Vo7eKzsVbzpy+xj6cxU14Y+SaaL7lAdMCy2fSOSLRojdDaxkSyazT1WD7Mbax2NX+fJ
+         vbvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=T7qIiA2TxHKspGb/1E//xY6dg2vkOf+MJQ6vthvW+io=;
-        b=frm+tFNkDHEf0y43QNao9glrsGFCkiXUFhXhoSzMVpr1mAGli2muBnPeTL82H6T3uo
-         4MVnOh2Qkej08ayCJZEExDn6QnPWZbpkCdr3MOhA1kbi7hjVgAcnyKUnenEpW6DX0hqn
-         nxR1UfmfweNIkO2I4wI1C2xTPo+9UgMtAG+zRkT/v/CTkRnyc60Xl7f3iz4xNPD/0RIH
-         g2viJjzfMmFNwFfoomd3b8Z573JMIVnJzK1KX9sHuFt9nm4/LoH/Anysx08aTZlI+OdT
-         HXRhGiZpVBgHAJ6rmNK6sTnwejJT9W9ubQC67MWTDpL0cBFleTTEhn6Ifcw/r0CA4nB6
-         /agw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=36m8pz5TZ5Bfe65O1IhCqd0gYUP+B+Tsz+AunDd5Ju4=;
+        b=fbk/QsjYsvZHZ2TGuWOFLscclcfmCoiQiS+TC0chsQMc68GZW7TuKz3cd+luCnA5LB
+         ScaFKPiy48fx2sB3FNt6At30zleVRnYtLn9VvBW35ErHGYIpwNQuVOojPx581GmNAHPX
+         YU8Xh2RO83aBO0qhN2A+frRCYjWUckjohL0tmuoiq7Jj+bI2t7kG9lA/KMjuxCML0pHE
+         CbtTNQyjmPumGq8Np0KCa8DMy2woXJz5/7cCRI8/KGhN/dPLfDo/fOa/vkTRNqtu+9I5
+         8v7sRjbkwN+WRVVBNzYfv0DpdQpMqVKN+hjkMoMfVsDelG9WIyX6vHBzlHPu0RcgT6jI
+         SbAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="jJ6Ws/2w";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xF7IiyL4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y5si1207776yba.276.2021.01.12.22.29.36
+        by mx.google.com with ESMTPS id i196si1336731yba.247.2021.01.12.23.40.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 22:29:36 -0800 (PST)
+        Tue, 12 Jan 2021 23:40:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="jJ6Ws/2w";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xF7IiyL4;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37888 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35106 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzZex-000603-OG
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 01:29:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37356)
+	id 1kzalf-0002GI-Ox
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 02:40:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51604)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kzZcS-0003xr-T3
- for qemu-devel@nongnu.org; Wed, 13 Jan 2021 01:27:00 -0500
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032]:36721)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kzacS-0003ql-VA
+ for qemu-devel@nongnu.org; Wed, 13 Jan 2021 02:31:06 -0500
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:35980)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kzZcP-0007E0-QU
- for qemu-devel@nongnu.org; Wed, 13 Jan 2021 01:27:00 -0500
-Received: by mail-pj1-x1032.google.com with SMTP id l23so527195pjg.1
- for <qemu-devel@nongnu.org>; Tue, 12 Jan 2021 22:26:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kzacO-0002xG-D8
+ for qemu-devel@nongnu.org; Wed, 13 Jan 2021 02:31:04 -0500
+Received: by mail-pj1-x1033.google.com with SMTP id l23so622564pjg.1
+ for <qemu-devel@nongnu.org>; Tue, 12 Jan 2021 23:30:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=T7qIiA2TxHKspGb/1E//xY6dg2vkOf+MJQ6vthvW+io=;
- b=jJ6Ws/2w+p97yRAO18F8fzwrOqQQ6U4ayRQ1xdosoE51b9ptNJpM7p5cNKpPHd/Uaw
- iTKtxO7cjcceaLErOI3OJdGAv8vLmPaatOKufTaziBwKDNfucPj1TPsDtINPwc59Fk0p
- n6bl/g6vny2kgpSIy0elhzMF/6S8slJO2RgkKWv2Wf1CXD/1cO5KUwSgkYcQrcCL1RBZ
- UiTkzaOoEbVOSxaK7A+smRTJzrRbpoGTiQMRTcdH+q2Y9tscpgJ6awPjjZuRj5Ib8iFA
- v2Bf4wQOWP5A4Dd1rOo5dqtIsfrYPIjm051xp+bFYJrPdINZYfCe+ENPL4mwy6yM6M0m
- 2eDA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=36m8pz5TZ5Bfe65O1IhCqd0gYUP+B+Tsz+AunDd5Ju4=;
+ b=xF7IiyL4ZIuHsi81vo/VLwpDSOi3dpwel9dbOYfR+3pU8k0GoLyaIGy8/LwdF1iatr
+ 7qQTsRJyr60EdkPHFKgY4V7xx13DWMYZJA3wo7QQP2poDUx2wwZVRibyjKHlQLhcrfHE
+ BHX3iYt8dyC6AdPj9PpwKAmZ9Sg4aZMGRr9wD3Er/zy5Zp4r7D7edHagJC7rxxsmDw2Z
+ d+ZnLahBOyyKOVx36UNNv6AqAC8bvId8jYWHFOxOqea04S9tWK++Dn53zba3jS3JOtuK
+ KhJp6XtwHuimQ+v53APidKdj8AziEH/HZzOUZsosqkFxFThISzDnuYBn9NTbVMDs87cG
+ M/7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=T7qIiA2TxHKspGb/1E//xY6dg2vkOf+MJQ6vthvW+io=;
- b=JyuCh2bKB60cZ3mr+Y8W5oQZ86b6TMI4H/+bEp+trXilSWghCloNLx6CvAuWgwJIA4
- 3u6DHwAGJwNcRLNSGQWylw1SJy9bpjS/2TssQxOHR/1sM5MugNAgNv1QqqDDD+2bFqjj
- sgrBNK1IhMgcuRT02pVorBByOnMI4h6VA76bDw1ajJaJuOmrc7rRqDSrLHdq50LI5Rzh
- a4uys9jMN2CdYtQJlvO3KhjphlUM9C9stffDk9tY0gmM/OkYMD2WTIHnnYvHGOCD6Rx9
- 5OXo2SQVu45HTR2Bzfk/v+kLEb9zROp/xibLv3iLResAEp2+dJkSWbkj/Xo1XZafmLQK
- NuCw==
-X-Gm-Message-State: AOAM533yylCv1r9+Am86rY4TzX4PjDigHqc+HlQvMReBZxpdcQymkJqF
- xIfNlReGc3SgjbkX3/N4AQh4B8AIJC35zw==
-X-Received: by 2002:a17:90b:128a:: with SMTP id
- fw10mr594858pjb.113.1610519216224; 
- Tue, 12 Jan 2021 22:26:56 -0800 (PST)
-Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
- [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id k25sm1138241pfi.10.2021.01.12.22.26.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jan 2021 22:26:55 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/4] target/arm: Introduce PREDDESC field definitions
-Date: Tue, 12 Jan 2021 20:26:47 -1000
-Message-Id: <20210113062650.593824-2-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210113062650.593824-1-richard.henderson@linaro.org>
-References: <20210113062650.593824-1-richard.henderson@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=36m8pz5TZ5Bfe65O1IhCqd0gYUP+B+Tsz+AunDd5Ju4=;
+ b=fzRLHrmiDlBEzLnyOm+UvSD4mxA0i2UOREIrv7BUpHz3WnXr7AmMIWaPs805lT9oxh
+ /rI7kCEhxCzuIbfZ0vwrhdpUnSlbAe/ZLQIWnvcPlRqEILOKL1GjVve1YhkmRiqxDhwL
+ +Pg8WfPZXRdAiNf7KK3byXCJmYlqYbf8BaQgb8GDk8PLZ2OG2sp482Vg/q1QQd/NjJpG
+ 9yQYYCDId7gjAwiIay6rwHruMHtC+mUEqSSC67zXDN1mvgQ/WkdKLZV7HGZEjzu/uWjQ
+ Ij2Zf0dX9UbnhV0hLpUroNN0vTVemkqxQ05lVkR8uF3gAQP1rp5NgwgAauWXAWpRxXId
+ 2aFA==
+X-Gm-Message-State: AOAM533T236BVB6DMKE7j5riJHUVMeo9Ywu3j46Wr4NawQ/BsnnRJZkn
+ B7mR+xZUM4y/UziKt4D0L9dovp39moolMaHJ235akQ==
+X-Received: by 2002:a17:90a:8a8b:: with SMTP id
+ x11mr924820pjn.54.1610523058246; 
+ Tue, 12 Jan 2021 23:30:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+References: <20210112143058.12159-1-maxim.uvarov@linaro.org>
+ <20210112143058.12159-3-maxim.uvarov@linaro.org>
+ <20210112153542.oqahdubzeoipyvun@kamzik.brq.redhat.com>
+ <CAFEAcA9O2kHpcvoofo0v3ahXNOQtw8cxaVC2hn+AjpH6A9RciA@mail.gmail.com>
+ <20210112162526.ob7eroamrdlowfyr@kamzik.brq.redhat.com>
+ <20210112162847.wik3h24isg4cmgyq@kamzik.brq.redhat.com>
+In-Reply-To: <20210112162847.wik3h24isg4cmgyq@kamzik.brq.redhat.com>
+From: Maxim Uvarov <maxim.uvarov@linaro.org>
+Date: Wed, 13 Jan 2021 10:30:47 +0300
+Message-ID: <CAD8XO3Y3sgZ3VXh7FhfcvvTckE2EUebivQ1nUnqTud2ApGUh=Q@mail.gmail.com>
+Subject: Re: [PATCHv4 2/2] arm-virt: add secure pl061 for reset/power down
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=maxim.uvarov@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,46 +114,82 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Jose Marinho <Jose.Marinho@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3be/9seBh04G
+X-TUID: FnobTtQXimse
 
-SVE predicate operations cannot use the "usual" simd_desc
-encoding, because the lengths are not a multiple of 8.
-But we were abusing the SIMD_* fields to store values anyway.
-This abuse broke when SIMD_OPRSZ_BITS was modified in e2e7168a214.
+- the same size for secure and non secure gpio. Arm doc says that
+secure memory is also split on 4k pages. So one page here has to be
+ok.
+- will add dtb.
+- I think then less options is better. So I will remove
+vmc->secure_gpio flag and keep only vmc flag.
 
-Introduce a new set of field definitions for exclusive use
-of predicates, so that it is obvious what kind of predicate
-we are manipulating.  To be used in future patches.
+Regards,
+Maxim.
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 5460678756..73698587d6 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1312,6 +1312,15 @@ void arm_log_exception(int idx);
- #define LOG2_TAG_GRANULE 4
- #define TAG_GRANULE      (1 << LOG2_TAG_GRANULE)
- 
-+/*
-+ * SVE predicates are 1/8 the size of SVE vectors, and cannot use
-+ * the same simd_desc() encoding due to restrictions on size.
-+ * Use these instead.
-+ */
-+FIELD(PREDDESC, OPRSZ, 0, 6)
-+FIELD(PREDDESC, ESZ, 6, 2)
-+FIELD(PREDDESC, DATA, 8, 24)
-+
- /*
-  * The SVE simd_data field, for memory ops, contains either
-  * rd (5 bits) or a shift count (2 bits).
--- 
-2.25.1
-
+On Tue, 12 Jan 2021 at 19:28, Andrew Jones <drjones@redhat.com> wrote:
+>
+> On Tue, Jan 12, 2021 at 11:25:30AM -0500, Andrew Jones wrote:
+> > On Tue, Jan 12, 2021 at 04:00:23PM +0000, Peter Maydell wrote:
+> > > On Tue, 12 Jan 2021 at 15:35, Andrew Jones <drjones@redhat.com> wrote:
+> > > >
+> > > > On Tue, Jan 12, 2021 at 05:30:58PM +0300, Maxim Uvarov wrote:
+> > > > > Add secure pl061 for reset/power down machine from
+> > > > > the secure world (Arm Trusted Firmware). Connect it
+> > > > > with gpio-pwr driver.
+> > >
+> > > > > +    /* connect secure pl061 to gpio-pwr */
+> > > > > +    qdev_connect_gpio_out(pl061_dev, ATF_GPIO_POWEROFF,
+> > > > > +                          qdev_get_gpio_in_named(gpio_pwr_dev, "reset", 0));
+> > > > > +    qdev_connect_gpio_out(pl061_dev, ATF_GPIO_REBOOT,
+> > > > > +                          qdev_get_gpio_in_named(gpio_pwr_dev, "shutdown", 0));
+> > > >
+> > > > I don't know anything about secure world, but it seems odd that we don't
+> > > > need to add anything to the DTB.
+> > >
+> > > We should be adding something to the DTB, yes. Look at
+> > > how create_uart() does this -- you set the 'status' and
+> > > 'secure-status' properties to indicate that the device is
+> > > secure-world only.
+> > >
+> > >
+> > >
+> > > > > +    if (vmc->no_secure_gpio) {
+> > > > > +        vms->secure_gpio = false;
+> > > > > +    }  else {
+> > > > > +        vms->secure_gpio = true;
+> > > > > +    }
+> > > >
+> > > > nit: vms->secure_gpio = !vmc->no_secure_gpio
+> > > >
+> > > > But do we even need vms->secure_gpio? Why not just do
+> > > >
+> > > >  if (vms->secure && !vmc->no_secure_gpio) {
+> > > >      create_gpio_secure(vms, secure_sysmem);
+> > > >  }
+> > > >
+> > > > in machvirt_init() ?
+> > >
+> > > We're just following the same pattern as vmc->no_its/vms->its,
+> > > aren't we ?
+> > >
+> >
+> > 'its' is a property that can be changed on the command line. Unless
+> > we want to be able to manage 'secure-gpio' separately from 'secure',
+> > then I think vmc->its plus 'secure' should be sufficient. We don't
+>
+> I meant to write 'vmc->no_secure_gpio and vms->secure' here.
+>
+> Thanks,
+> drew
+>
+> > always need both vmc and vms state, see 'no_ged'.
+> >
+> > Thanks,
+> > drew
+>

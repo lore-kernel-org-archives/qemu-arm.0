@@ -1,112 +1,112 @@
-Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp21565qvb;
-        Wed, 13 Jan 2021 05:37:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwfAdfutcHI7CffwmIdFRjiDk6q1tlQpO/tOzGwliqHDKKHzODEh/6MCf1QKu6EOQZa90Ix
-X-Received: by 2002:a25:9882:: with SMTP id l2mr2973211ybo.425.1610545061077;
-        Wed, 13 Jan 2021 05:37:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610545061; cv=none;
+Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp21761qvb;
+        Wed, 13 Jan 2021 05:37:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzEAaIr5kpl++IhiHhLY3AH6+T04hWiNpkgCnwN5LJKsWsZ0P/zJ63j3/wSriuzG0rJP23A
+X-Received: by 2002:a25:9204:: with SMTP id b4mr3366956ybo.98.1610545078766;
+        Wed, 13 Jan 2021 05:37:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610545078; cv=none;
         d=google.com; s=arc-20160816;
-        b=g+rssqUew9C24Lo8qSwZlHqYMK6NsH8mkO+gVPVed13iexstqZJuZzkVMvT1ISv+J9
-         qvI8ridCb7aRosj9L/VcsrR/0cwfGdhCP2vtwu0AoCXEF+KT/KVvIMYVUceH5qToxTyJ
-         3fOhCjlk4NGSVcm3LMTuLL3bWFv5Lh5yRb3AyIULk0f4ewE+gz0XE3vZT9tQCumin664
-         B9Zi0yAPuMlyhEKjbhWrdGYS4k6dHMAdMUjSeQksdo2kUF9LRhmPcn5L7GcvWgM2zvLy
-         y7ig6lOuSh9yyoNuepza7qPJPzIPeFo2RoHpBBOIEUpYRLY8SrZqy+k9JV6JSDlMNMOY
-         2Xpg==
+        b=zM0hxjCo8nJ7MOhlMaS5h54fYa3cfShZDto9dYxFJsA0/SvSKujAdp6qJf93D2qk4U
+         ZSQdkBfyr8Ti+8NuFnVUcDBwOCXmChnaetf2WAwiy7sWkTaVQ/rBjI1N8eVFvq3ikD0Z
+         J6gPoNj1yLVKijegnkiUj4nOB5wlEgmyLI1iQrzSlpUq2h79rNaTc6WyH3tN0PeMQAig
+         Av3ZFePQf9IWsOtQX6eztGukW2vyPDCxGl+T9Qcv9GEH84na7JmQ7Afmg73m7TTDEOzv
+         YSHdhBlmKAl0yNexbrW1qLxvUAQZwoRHpFqmo0DnhY8hi9T2FHYlQLzUAFL7BlVyOjCd
+         1yrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:message-id:date:user-agent
          :references:in-reply-to:subject:to:from:dkim-signature;
-        bh=ozCjCj0KoOgE4Zaz1sfJqi0oRDqpyppOnSMefLyC/cU=;
-        b=ACBixnEV6ruqzQoWaku/4Sd2FLUPJkKQY+IRVjyetrg58havhSfbR/6pIMfb1ucZfF
-         yv7sTfDvIO4SYtqNoJ44atvHKEx7Adq3yyMiLO0V00AVNrj9MR0bMr6xd/PZ15DFOggp
-         4L06QtDw3enUEkc5rf2ch2Ftpf1f/kH131XANUTVX1Bzw80VSCoBDgEpIU1woZBQb/BP
-         a4Xxr84chPkjLSJDuNtPBe19yuW9SuyRDfQaPtO8jBVbqxlY5z1WrRgsJZvdDcrSH8Tw
-         kSKL+SXElpPO7gdO4Zwk0n9RV9bHKke438aufvfefmOHLQmJAsz2yYTK7XX+KIy7fpCC
-         CQOQ==
+        bh=a8XwYsiGGHOPSJH7Yz5Tw5P2tfkHFb/+AReSQR2pzIQ=;
+        b=bNSOw6tYcuJp5iTdZIW0NrwB3a0YkBktq8Ic87mk695eiuS2ycFF7xuUi/lS7Pfg/S
+         e0sJ6PCKuju8S/embIaYLY8yZWFYpPsjEf9qCghNvBbHWzQ8InsiNmsWlk7+b7RWNWg7
+         8SS2YpiPu9DXYYDR1lPY2eGwpI+eP4QuERUY5rCtgXHpn7uH32xeUVJrkh35cf+K3eRC
+         PJY0Hk7LGucu0XqK8xSy9QM7mQOu4ZkCv9GKoZ31CNplne8OJ7B1w3GUKyfgRDR/vj4V
+         bgonXnTKb4co4u914x775C/7eDToEffqpu1FR0DosdZNvsoA6/82YG61yntms58o4jAy
+         Rj3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YaSgPTte;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UTW6EzCX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15si1965298ybe.101.2021.01.13.05.37.40
+        by mx.google.com with ESMTPS id x199si2445269ybg.160.2021.01.13.05.37.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 05:37:41 -0800 (PST)
+        Wed, 13 Jan 2021 05:37:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YaSgPTte;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UTW6EzCX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34768 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzgLE-0005vI-F5
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:37:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41548)
+	id 1kzgLW-0006Sa-7Z
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:37:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41664)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1kzgKa-0005sk-06
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:37:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38226)
+ id 1kzgKp-0005vL-08
+ for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:37:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22119)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1kzgKX-0007tb-47
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:36:59 -0500
+ id 1kzgKj-0007w1-1w
+ for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:37:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610545016;
+ s=mimecast20190719; t=1610545021;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ozCjCj0KoOgE4Zaz1sfJqi0oRDqpyppOnSMefLyC/cU=;
- b=YaSgPTtegEthDO5gQzzRasQbSNeCggUu0BTrRNHFnKKbdVcLk8IgtWvJCQIaGEr0pa0rBo
- 1ybp0pjzCY3vl1ZRoph2uElubYQicpoJydmsWmW+9yf/ENDqpTpH2E7rLUm6B1TrEcsvH6
- M2GxIfIhZsSK3IR39dRoYIbNKrSh+W4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-148-VpiulcFbN1a9QHVmlVpCgQ-1; Wed, 13 Jan 2021 08:36:54 -0500
-X-MC-Unique: VpiulcFbN1a9QHVmlVpCgQ-1
-Received: by mail-wr1-f72.google.com with SMTP id e12so976413wrp.10
- for <qemu-arm@nongnu.org>; Wed, 13 Jan 2021 05:36:54 -0800 (PST)
+ bh=a8XwYsiGGHOPSJH7Yz5Tw5P2tfkHFb/+AReSQR2pzIQ=;
+ b=UTW6EzCX3XwjovdzDIIzfmokDhOnOT+xXGV6dOKrwBupBPR2bGC0WO58hMsaRIcVEraRac
+ YvRKjkDD/CSpC8+ivwUEbXNvxzywNj5N2fl3ePVPlXy4dAK4FXx1ZE7kZRxJiCG8pjJ7cR
+ TloX4bopRILlK573NHjBmKcLR0P6iQw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-418-jOPAZhPMN-iSDFWxdXxcrA-1; Wed, 13 Jan 2021 08:35:32 -0500
+X-MC-Unique: jOPAZhPMN-iSDFWxdXxcrA-1
+Received: by mail-wr1-f69.google.com with SMTP id v7so973880wra.3
+ for <qemu-arm@nongnu.org>; Wed, 13 Jan 2021 05:35:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
  :user-agent:reply-to:date:message-id:mime-version
  :content-transfer-encoding;
- bh=4vGOXvngMiIHEkvOxc0i0Ro7ST82YJ/WLMStNoEm3DU=;
- b=j9dTECtvK3R9rQSaEMi0c71T8RCW9CtpjFHnSaK/CtmPnXZ2UMHu4udfS90DaX3d/P
- dA3Y1E8cMlsOUsxrVpp/spvZ5oJJ0tQf2K7uvOsrOYcfAkWJDDKRYkKwh/uzoRAs5VfJ
- BaLLGK8uL4LzWH2DAMO3dMVM40I06sdH9zsWlMZD7IhXSwao5/QtAKWuXGUJfBMxaTvs
- lXqDhcFz+mms/7AU4FVjr8+lI6qHv1Shtk2MiNl+GF2Ts1/gPfr8wC0XDhUJ0VO+sI6l
- pxUdgfcy34/FhefZrvOTIBEBJorjNnF5KHeg5vkmRXudEKGgIf83SQSwVSis1BZqpI0g
- +hUA==
-X-Gm-Message-State: AOAM533OygE6nqXnf00NAdnL6poleNj7mdqeY72PdVMLKVcfHiCycSK7
- 53rES9Bqe+HX4WUQGY7BrHvSDuN0vvsvM5M5OIflDoTqxESK1YQhCN2lSLgVnXuWe5nQTylXhps
- +Tql82351gOur
-X-Received: by 2002:a05:600c:21c8:: with SMTP id
- x8mr2248423wmj.146.1610545013346; 
- Wed, 13 Jan 2021 05:36:53 -0800 (PST)
-X-Received: by 2002:a05:600c:21c8:: with SMTP id
- x8mr2248404wmj.146.1610545013163; 
- Wed, 13 Jan 2021 05:36:53 -0800 (PST)
+ bh=a8XwYsiGGHOPSJH7Yz5Tw5P2tfkHFb/+AReSQR2pzIQ=;
+ b=GZL6AYrQkTkO9TCZqE5rSq4Gen/xwMN8BHPUnw9ognudzCGp5z9sq7ix0CwhW2vXnn
+ qkZ6beJ34sdZ0Zuz3hGBQhZqYF68YNMg2fyxzBperHlRT264GMB7ixc1hvVBIHMRI5vd
+ lnle8GrKtUfGkahq0js6lUnk8UG/6Hljjbv0k7pZS1NNEjVoQs50o4UXKxqq/crox9kd
+ lGy9Oy14r7u9RkZ/8YltFcOXwVsyEPeVH3rfCjLnhM0jc8y6I74YbB9qSvMkhA6GnJpX
+ cq3PJ1MBrgAY3OMbgYITqPAMx3TW9/ftivIpfFe0XJscrztBvoifbm/78qWmoa8sZR58
+ 73oA==
+X-Gm-Message-State: AOAM533Z5DuXK5dvLmi7rI59R+z2Qgpl6KmHvNU5WbVNHu7xLW23+onK
+ uwAmpjxn/Gb0L8hqf1AVJMOXEM7r2lDsBnKx9GiBd3lWIbOv7JuzdE21teGpJ4tmEaTfpGYOnmU
+ X4BE/PtZLln4R
+X-Received: by 2002:a05:6000:1043:: with SMTP id
+ c3mr2646570wrx.34.1610544931705; 
+ Wed, 13 Jan 2021 05:35:31 -0800 (PST)
+X-Received: by 2002:a05:6000:1043:: with SMTP id
+ c3mr2646554wrx.34.1610544931506; 
+ Wed, 13 Jan 2021 05:35:31 -0800 (PST)
 Received: from localhost (trasno.trasno.org. [83.165.45.250])
- by smtp.gmail.com with ESMTPSA id l8sm4332932wrb.73.2021.01.13.05.36.52
+ by smtp.gmail.com with ESMTPSA id b14sm3242414wrx.77.2021.01.13.05.35.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Jan 2021 05:36:52 -0800 (PST)
+ Wed, 13 Jan 2021 05:35:30 -0800 (PST)
 From: Juan Quintela <quintela@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v6 03/11] hw/ssi: imx_spi: Convert some debug
- printf()s to trace events
-In-Reply-To: <20210112183529.2011863-4-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 12 Jan 2021 19:35:21
+Subject: Re: [RFC PATCH v6 01/11] hw/ssi: imx_spi: Use a macro for number of
+ chip selects supported
+In-Reply-To: <20210112183529.2011863-2-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 12 Jan 2021 19:35:19
  +0100")
 References: <20210112183529.2011863-1-f4bug@amsat.org>
- <20210112183529.2011863-4-f4bug@amsat.org>
+ <20210112183529.2011863-2-f4bug@amsat.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
-Date: Wed, 13 Jan 2021 14:36:51 +0100
-Message-ID: <87mtxdgdqk.fsf@secure.mitica>
+Date: Wed, 13 Jan 2021 14:35:29 +0100
+Message-ID: <87v9c1gdsu.fsf@secure.mitica>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
@@ -114,15 +114,15 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -139,30 +139,26 @@ Reply-To: quintela@redhat.com
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>,
  qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- Bin Meng <bmeng.cn@gmail.com>
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ Peter Chubb <peter.chubb@nicta.com.au>, Bin Meng <bmeng.cn@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yh4eCs/io4y+
+X-TUID: ma4/WifMqnQ+
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> Convert some DPRINTF() to trace events.
+> From: Bin Meng <bin.meng@windriver.com>
 >
+> Avoid using a magic number (4) everywhere for the number of chip
+> selects supported.
+>
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Message-Id: <20210112145526.31095-2-bmeng.cn@gmail.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 
-> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-> index 612d3d6087a..20fcaf32df6 100644
-> --- a/hw/ssi/trace-events
-> +++ b/hw/ssi/trace-events
-> @@ -1,3 +1,5 @@
-> +# See docs/devel/tracing.txt for syntax documentation.
-> +
->  # aspeed_smc.c
-> =20
->  aspeed_smc_flash_set_segment(int cs, uint64_t reg, uint64_t start, uint6=
-4_t end) "CS%d segreg=3D0x%"PRIx64" [ 0x%"PRIx64" - 0x%"PRIx64" ]"
-
-Not that I am against the comment, but it looks spurious on this patch.
+A fast search don't show what resets cs_lines, but that is independent
+of this patch.
 

@@ -1,102 +1,118 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2005295lfg;
-        Mon, 8 Mar 2021 08:56:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxFibkbRszavMp5nZirXTdgs0aU7lpeGH8QtPIgLTNqlroBwTEblbcab22DWFhLFoZO/grz
-X-Received: by 2002:aca:3606:: with SMTP id d6mr8592085oia.103.1615222599210;
-        Mon, 08 Mar 2021 08:56:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615222599; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp481563lfq;
+        Wed, 13 Jan 2021 06:29:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwT6zXADLlgzHyY/xprKML20xg+UsLNWvp0XKnXKtWIqCtjGCbsCM+FsmJtnbFIqD29yrVr
+X-Received: by 2002:a25:10c3:: with SMTP id 186mr3402767ybq.195.1610548169671;
+        Wed, 13 Jan 2021 06:29:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610548169; cv=none;
         d=google.com; s=arc-20160816;
-        b=WIIClNLtD+rPf20gyPY4Mhg/hJ2/2lNo7tMgl0Eg7dd1Z9I4C9e+yw6FIMMgUqwBJE
-         uIw+RTZGjYr36CdvPvWgo4ySKjdNuGOVKeI/GI9hGQcWDe5S++AI0XqABoMNtWxG3KQ6
-         i4bvvXHy54gLjYn0VVaYBesdSwrVsseWB75CZGWHd5J6C7XAXDIUg+qvlq68LvYZJ+Qd
-         bj5DJDcjNbx96n5p7FEY6NNxTOotZ38bN6Wiv1Zs5HrgfHrLTTYrztLJo491t4GvvHeB
-         ZbBq8BcNUJ3WOS16U7CxzumCP5BFyzCa6AB34y+XRKc4IVEcfCoJlyQYDc4yHd9iFXme
-         vlSQ==
+        b=MbElRLferEoW+qlEgQ6IortANouiTuomOC3YvzT8F+WxrL8oMrbpkQXcTEdRt22F7f
+         WJaEjG/q+67qJJRCcDG+v7acd+L6FahCcK4NzIYVBKEh8aP9OPeHaQU2MzaGCN1cGfmc
+         5Z5MDeS2uJaUxFvvQp/zwOpEJDeaFsKkS0Ymbv/8CenmvHsMbWo5Wva0IoprRKxQ9IL0
+         gBKKSp9y/U12OLBuJPjK37E3vTb+ykA1A9QqEcmB6FNxSNJr0jZ/unwF5irgW/Dm4lks
+         Ge9HDJgKLExBXs4tJbQI3R1aCmU/FORYdp5oLYM71W+w2Yt6iUTz/xh8tSHCQoIStP1G
+         H/tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=3+cjnm2NMhV2lDtLBXMjHIyVu8kaD/hTsSebuRlTfu8=;
-        b=cQ1OftDfkhG2xC/t/zkNR9AuVRxBNUz7WAyO6s++kvMNbWw+FQgIIlp6ycStv9JZFM
-         XEdDTLsNppS2C6bW7Ois2V36FujWGtRmnNWxW1hvndP3KwgsZziNuERNOZm8Wx4ApeUD
-         BdyuAGxmV8X/3rwGNfEbiG+F6vTJttFpLvZBh1rOo1/Rsj2sgPrsSPoHQ9B1x0SxXEFt
-         m8nrcnhZsxJvyiOlQ/ir+57fxH1HK060autaWEaLTv2XAg8snfIPOHyP1c7p2lsk240z
-         U4BxR11MerL2lCEA9k44j+jjclTk2eifXCWhmhNYTbZPqdktIvrKKtwP2e49ZX/Nag74
-         BpzQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=qsKgoSsBPHBafxq+IO1/8gsOoDt/jc36Bb72jePkO88=;
+        b=A8Jk9bLY4w7UbPD+JSAHI9pc60F7oTJ1W5rUomRCuocHX4s5hIQHjn4m9bJJP4iZ/s
+         NRQHInYdHn/h+lgpWckf5dIPiZGjJzvwr/gNQybYIzsOh3RUnp5bOOOSzUFcXlRn6v0F
+         IXUXgn4n1QqxxzHhJJcn0x/p87wYf7/yGE2BhfEu5aVC06holoBop2pE+GW7GwdcNsT7
+         AT6KCUMbZ+TqQUxZsBlA/q2INNdyK99RSvCVIR8EtPu7zEml2GfmidIoFmc7MTBz5xeQ
+         Yp6QOaWr4Rza1od1lZFc+bsvoOYsuslooNkIXVDDmnuwfuAnpvFEcX2RZ7OZEZ2x70ua
+         RPEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=P2JWzhPn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EalX6Tk0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10si8814321otw.136.2021.03.08.08.56.39
+        by mx.google.com with ESMTPS id r9si2368361ybk.389.2021.01.13.06.29.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 08:56:39 -0800 (PST)
+        Wed, 13 Jan 2021 06:29:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=P2JWzhPn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EalX6Tk0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52376 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJJBO-0002si-DE
-	for alex.bennee@linaro.org; Mon, 08 Mar 2021 11:56:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44946)
+	id 1kzh9N-0005E0-17
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 09:29:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lJJ9c-0002pY-2D
- for qemu-devel@nongnu.org; Mon, 08 Mar 2021 11:54:48 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:36497)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lJJ9Y-0007hc-OX
- for qemu-devel@nongnu.org; Mon, 08 Mar 2021 11:54:47 -0500
-Received: by mail-ed1-x529.google.com with SMTP id l12so15783116edt.3
- for <qemu-devel@nongnu.org>; Mon, 08 Mar 2021 08:54:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3+cjnm2NMhV2lDtLBXMjHIyVu8kaD/hTsSebuRlTfu8=;
- b=P2JWzhPn45CZ+FDwbyq7YBg5ZmSiqD3Q+6fWQ9IMrBC1LrTkvDGuaiFsWMP13HdtNk
- XmLMMdYerOr57AMiTynxwCiOnjk1SxLP/GVV/BFQgWpGdfol4JQAf7n5O/mauQrqf6xx
- vkm9lhozw84sMTIHni3aAEtUUcfMdeqNhTLE4Pp9qjgF6PBwwC6cIbB3YggRuqNnO2+J
- jOyTp89h4Q0pqGI3ElunwePjRJ1YKWtHk9tbXqcOfrCR8RKsktXtAWL0VcS+QP6kTB4j
- y0gxFVqgQHqXfhziBCPMWDQ52qZdxBU7qlT2l3Dgtw68clMJDP5tfK9dYjTh/0N345Wq
- 5wzQ==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kzgxn-00054X-Qg
+ for qemu-devel@nongnu.org; Wed, 13 Jan 2021 09:17:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27505)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kzgxi-0008Sq-Ou
+ for qemu-devel@nongnu.org; Wed, 13 Jan 2021 09:17:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1610547446;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=qsKgoSsBPHBafxq+IO1/8gsOoDt/jc36Bb72jePkO88=;
+ b=EalX6Tk0tYmMG1lMJfoQiEgo0xZyTp4Ube1FdzFvje9zns3DgwPna/dNMzxoSGyx42gTHn
+ ZTWNBctayFIFRLdVDOSBCduETIW37JSoMlPhAhY1CjrRzzlmKMYC2ikYxMswbSGvHUCm7M
+ iOBA5C3U6czaFKDDgcBxfa2uEkvsz4c=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-313-b5OymlsGMIGFYoR3ghOFkQ-1; Wed, 13 Jan 2021 09:17:24 -0500
+X-MC-Unique: b5OymlsGMIGFYoR3ghOFkQ-1
+Received: by mail-wm1-f69.google.com with SMTP id r5so888390wma.2
+ for <qemu-devel@nongnu.org>; Wed, 13 Jan 2021 06:17:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3+cjnm2NMhV2lDtLBXMjHIyVu8kaD/hTsSebuRlTfu8=;
- b=Lk8nFKcq/SsRe0sScpHHWEJ8CBNCumNrrNcP4JzJmSz+nkGRyrG6b8GCVYn0Db1iWy
- 6cthbWKdqdxtVf1eZ7VJ0sRnFgYId4Qnv4BESMsiwewNdzujWu0dUlXtSt7etNikcUrZ
- tV/wDOWDnsrOB5cbDsIEL/ls3Wgp9+sBP+lLWRj/Y6ee7AKuJQwALXMROpR80OvxVRXK
- JfwIlhKUz/QK19xlECR/DKEFkas/B6FVmjVIDZRI8kUBbNz5YyJ6G3xNY9+zg3g/V4nq
- NZfMFCNCy0ppxcJMMoOFyVGL9f5rzeh0W0jC1T8S1k4/kd/U9uJwUSjhLNZHXtW4oJOx
- eFsA==
-X-Gm-Message-State: AOAM530abad+pNgStkGeitAVyQ5p6CtsJs/N9Bal5NJZB+cQAnHT0TqV
- zAuUvXB6bB0Y3A+z+4j2aj6zuCgwkLo8AuG76iqIlQ==
-X-Received: by 2002:aa7:cb0a:: with SMTP id s10mr3758973edt.36.1615222482706; 
- Mon, 08 Mar 2021 08:54:42 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=qsKgoSsBPHBafxq+IO1/8gsOoDt/jc36Bb72jePkO88=;
+ b=Oy4jQO7ohruUHV3kLBHOnezmnw3MKYvCCRyoMpTKb3ggAnKzcZl2qodFXvtZv/tX4S
+ OlDjJU2Q/PpaU1V7YpKGmdJxiBIMY2YDW4ZF/iuBedCWYJeqjQg7rrt/PG9t2e8VaUoQ
+ 16/6ktbsc4jWRs/8Prh4LSO6tulGw/9EcayrbJICnI6oiAEFZW1Qrfx0I5nkHKWWhiQK
+ qGaf0jZ6H7GdR80AznymMbm9laeTk3hp/rkCr/avU3jVVjr1R08dNZDrFcdMUW6xUZIx
+ 34CwvjaAHPCp97/c5coKxHRGI3vS2NnyMDxr6j9ECLtnfA9Xq0SFsEkWJKel3a6igSox
+ RmzA==
+X-Gm-Message-State: AOAM5331U+D7Y741nl8ih5xw8dl5qFfCWyQE4qFglV6vuM8hsm5sZTIX
+ puRGfHWPKtYvDWVn5g2V40CL5itvOxxMzsiU5juZ/zykjriQsBwX6G1Tb/Zy7TgTAZ6iBYBHTIh
+ ZXp1MW0vtVQVuUt8=
+X-Received: by 2002:a7b:c145:: with SMTP id z5mr2416572wmi.164.1610547443421; 
+ Wed, 13 Jan 2021 06:17:23 -0800 (PST)
+X-Received: by 2002:a7b:c145:: with SMTP id z5mr2416539wmi.164.1610547443116; 
+ Wed, 13 Jan 2021 06:17:23 -0800 (PST)
+Received: from redhat.com (bzq-79-178-32-166.red.bezeqint.net. [79.178.32.166])
+ by smtp.gmail.com with ESMTPSA id u6sm3960698wrm.90.2021.01.13.06.17.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Jan 2021 06:17:22 -0800 (PST)
+Date: Wed, 13 Jan 2021 09:17:19 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Marian Posteuca <posteuca@mutex.one>
+Subject: Re: [PATCH v3] acpi: Permit OEM ID and OEM table ID fields to be
+ changed
+Message-ID: <20210113091555-mutt-send-email-mst@kernel.org>
+References: <20201230221302.26800-1-posteuca@mutex.one>
+ <20210106182430.6bf1823a@redhat.com> <87bldvldsl.fsf@mutex.one>
 MIME-Version: 1.0
-References: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
- <20210302110955.1810487-2-edgar.iglesias@gmail.com>
-In-Reply-To: <20210302110955.1810487-2-edgar.iglesias@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Mar 2021 16:54:26 +0000
-Message-ID: <CAFEAcA-Bquwni3NN6BLfXjCntCwUqXuXx9=-RSpZgfHS+RgxqQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] hw/misc: versal: Add a model of the XRAM controller
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <87bldvldsl.fsf@mutex.one>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,98 +125,44 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Joe Komlodi <joe.komlodi@xilinx.com>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, francisco.iglesias@xilinx.com,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Sergio Lopez <slp@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Ben Warren <ben@skyportsystems.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3uyZlmKcJ1hU
+X-TUID: wVROOHMlbRA0
 
-On Tue, 2 Mar 2021 at 11:09, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
->
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Add a model of the Xilinx Versal Accelerator RAM (XRAM).
-> This is mainly a stub to make firmware happy. The size of
-> the RAMs can be probed. The interrupt mask logic is
-> modelled but none of the interrups will ever be raised
-> unless injected.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  include/hw/misc/xlnx-versal-xramc.h | 102 +++++++++++
->  hw/misc/xlnx-versal-xramc.c         | 253 ++++++++++++++++++++++++++++
->  hw/misc/meson.build                 |   1 +
->  3 files changed, 356 insertions(+)
->  create mode 100644 include/hw/misc/xlnx-versal-xramc.h
->  create mode 100644 hw/misc/xlnx-versal-xramc.c
->
-> diff --git a/include/hw/misc/xlnx-versal-xramc.h b/include/hw/misc/xlnx-versal-xramc.h
-> new file mode 100644
-> index 0000000000..68163cf330
-> --- /dev/null
-> +++ b/include/hw/misc/xlnx-versal-xramc.h
-> @@ -0,0 +1,102 @@
-> +/*
-> + * QEMU model of the Xilinx XRAM Controller.
-> + *
-> + * Copyright (c) 2021 Xilinx Inc.
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> + */
-> +
-> +#ifndef XLNX_VERSAL_XRAMC_H
-> +#define XLNX_VERSAL_XRAMC_H
-> +
-> +#include "qemu/osdep.h"
+On Mon, Jan 11, 2021 at 04:59:54PM +0200, Marian Posteuca wrote:
+> Igor Mammedov <imammedo@redhat.com> writes:
+> 
+> > overall looks good.
+> > Please add a test case for it, see
+> > tests/qtest/bios-tables-test.c for description how to do it
+> > an/or at
+> >   "[PATCH v3 08/12] tests/acpi: allow updates for expected data files"
+> > and follow up patches on the list.
+> When you say add a test case, do you mean only updating the binary
+> files in tests/data/acpi/{microvm,pc,q35,virt} according to the steps
+> at the start of the file bios-tables-test.c? Or do you also mean an actual
+> test case to be added in bios-tables-test.c?
+> 
+> Also the step 6 described in bios-tables-test.c mentions that the diff of
+> the ACPI table must be added to the commit log, but my change touches
+> all the tables for all architectures so that would mean that I would
+> have to create a huge commit log. How should I approach this?
 
-Headers must never include osdep.h.
+If the changes are the same, you can just write:
+the change is the same across all architectures,
+and show it.
 
-> +#include "hw/sysbus.h"
-> +#include "hw/register.h"
-> +#include "qemu/bitops.h"
-> +#include "qemu/log.h"
-> +#include "migration/vmstate.h"
-> +#include "hw/irq.h"
+Something I just tripped over: make sure not to
+include "---" lines in the diff. Otherwise git am
+can not apply the resulting patch.
 
-I bet you don't really need all of these includes in the header file;
-some of them belong in the .c file.
+-- 
+MST
 
-> +static void xram_ctrl_init(Object *obj)
-> +{
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
-> +
-> +    memory_region_init(&s->iomem, obj, TYPE_XLNX_XRAM_CTRL,
-> +                       XRAM_CTRL_R_MAX * 4);
-> +    reg_array =
-> +        register_init_block32(DEVICE(obj), xram_ctrl_regs_info,
-> +                              ARRAY_SIZE(xram_ctrl_regs_info),
-> +                              s->regs_info, s->regs,
-> +                              &xram_ctrl_ops,
-> +                              XLNX_XRAM_CTRL_ERR_DEBUG,
-> +                              XRAM_CTRL_R_MAX * 4);
-> +    memory_region_add_subregion(&s->iomem,
-> +                                0x0,
-> +                                &reg_array->mem);
-
-Isn't this just creating a container region that contains
-exactly one subregion that is the same size as it? Do we
-need to do this so that the reg_array is disposed of via
-refcounting or something ?
-
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    sysbus_init_irq(sbd, &s->irq);
-> +}
-
-thanks
--- PMM

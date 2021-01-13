@@ -1,158 +1,186 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4717110lfg;
-        Tue, 16 Mar 2021 09:18:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUhbyivuaKw7UclAtH6HF5mGWVMWndpGQVDVjQU+UZGsB+6AbHouqLh1IucoKmSOxB8K6r
-X-Received: by 2002:a67:edc8:: with SMTP id e8mr385622vsp.45.1615911527096;
-        Tue, 16 Mar 2021 09:18:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1615911527; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp643098lfq;
+        Wed, 13 Jan 2021 09:57:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2Xa06xVCS3tXdUiciigtF7PjLcj1FdixgCr1X0KGuNmsfuGYrHdNdVLeumBr4y3D5nNAS
+X-Received: by 2002:a25:2d49:: with SMTP id s9mr4814719ybe.65.1610560624008;
+        Wed, 13 Jan 2021 09:57:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610560624; cv=none;
         d=google.com; s=arc-20160816;
-        b=rS3N3QYVpaEyAid4/9/A9WvulnInawf7JilaJb2JQ7h1DlmqNL4gpJdgjU7G1NX/Tz
-         z1839lSfTbGaarldIjbTslvd6m8mXP//If8Ct3uZPDEr1Gje0XARAtw/KSbhVySNEa5a
-         IRdN8fptT570HhABk0/EV9/5KvECsIL7epiTGg/ZPjBghdkLZY1ODeD+O4iBsw99LFqw
-         NQrBoC9wqwGCPpmiCCdjS4/XKfr4uAWkdgsVYSp6hMJEq22AS6odxaLZnXeNJnWW5xJz
-         hQWVR2M/e8oQFlxS3CznfxV9oJTrZzUM/jXSePUQVUZ37i9fl/9EUmDGhcvP0rAAPFmY
-         qmdQ==
+        b=hsBSUdInrbd8k87K/njrqVwg5iD5uo03qlbMlPqOgnnOtF23PH5O5BWcp/SHs+phYb
+         UFLL5RxFnLFInv5iRf5zXgHp5pIDnWEdUjpVpDu+FAKYBJmxS6X93CP7vUVG77cvNWyV
+         i1jAfZCAPt1kZsGFhR4oEBFWoJagMA4SdEhJKp10CIBcB1nHjmzM7WNOiNHqZY8tc67+
+         2gWDbI3q4V6GYZbE1+Ui3tJa3uuLWfv0N81MfjvIm4Z4GQAG7RAM9IxjXa8unoeYKsPk
+         9j8/gNFKsdq9und8gHJvlbP85wZMkez8nIwe8ADRhHMFZ16neYQSH+yJ3ZXZ9rhRe/v/
+         OVEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=XU9TlxLhp01G0Y3Oy4/hNaIJ/CUvU8i6RMutZ7hVlKs=;
-        b=gOhpwwP+bjOk0vrPnH0lRBmjOn2OO8TTHfagO4JcpCaspHeRkNfvEM1kHQ3leADiZL
-         2KLqi3g44E/FMo+9xbiVjWWb74XsfL3KmG7Z6l5vdM+t5/CCzTpWsLwKtz4hPSNMcfnX
-         mkUVrdppkEX7EklCS2FeaXqN3QsDDucDem2IjsI3l1DyzYnjoIfT/1OhgvhK4RxLOZzF
-         nH1B9rjgA9H2BgP5U7IWXIJ6/M9WYaJMPQBBHKUF0m5jOkroSslS8+NGB9hHWLmL4edB
-         HMO+PU4V8y4DubFaXmJ4vZVMFMLiOMFMGrC8Qbpv5XMtGSFlAOamq9AK9eiAbl+iTaRg
-         mRAQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=KCk7TfTfwRCek4wOSD0IP+5auBOMydUqU5Lqt7Lsjo4=;
+        b=chK2ULigUC9/aiC1AO+5bYjGKGveY6OCbRK+e3u60oJvG+Hy+rbM/P1V6BVXInGzjV
+         GcBc6Z/jL6v3Gvuk2J2xRMAuX8720x4veuLWK09lWSopzmAdqXpJb3TRhV6IouGWclg8
+         zOflUHi+I5bwTrm+yZWzRYX63t04dOI9FUyaJVTVHWWJty3+rKRB+dONNc6HczATfPdN
+         6RTCzWfABPqiQQv5cbZt/8HPxuKqT/nINlawIa26sQb6LXGiyJfooFIlKOWeRqLhd+jz
+         i+2qMgQ7JC/NdVtM4rq+X3ZnfGjW1nTZJE/c22KAGE3Mz+7CFReulAFCzdN8qUpOVVmA
+         lV0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pc2uZi5m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GcO1E3t1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h23si2844805vsp.211.2021.03.16.09.18.46
+        by mx.google.com with ESMTPS id w4si570123ybw.376.2021.01.13.09.57.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Mar 2021 09:18:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Jan 2021 09:57:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pc2uZi5m;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42060 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GcO1E3t1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:44860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lMCP8-00083G-BF
-	for alex.bennee@linaro.org; Tue, 16 Mar 2021 12:18:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40258)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzkOF-0000om-6B
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 12:57:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lMCMa-0006jN-Tv
- for qemu-devel@nongnu.org; Tue, 16 Mar 2021 12:16:09 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:41780)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kzkNz-0000ny-Bm; Wed, 13 Jan 2021 12:56:47 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:36071)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lMCMX-0000hX-CO
- for qemu-devel@nongnu.org; Tue, 16 Mar 2021 12:16:08 -0400
-Received: by mail-ed1-x533.google.com with SMTP id z1so22231273edb.8
- for <qemu-devel@nongnu.org>; Tue, 16 Mar 2021 09:16:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XU9TlxLhp01G0Y3Oy4/hNaIJ/CUvU8i6RMutZ7hVlKs=;
- b=Pc2uZi5mZ4001S95ZX3Up0KwYvwAO9rJADIt7YLqehZQQQw476vRQTgpKGnVKSJg0K
- Nj7aFcbAGggA8/3vtufw/N5kPisF9F+pVfryB4EeuOYDtMrWYueQrcMhUNn7cds9bzz/
- IxfHZ3RLQ+jAIsHPILUSL04mjxr6HsRGay8Rblm9DN8mBwlHXWVnfn2sYisOKpfI6Z2c
- wzTIMUZjdh1ymKk5sGbjILh9g9+TYjqQ9uG9q3nMNXgFmr9eyu8mo/KhCf+3G0PafwDf
- edKPl4NCu9e6Ovo5wg3qzTbMdIxZ0Yyoxa9bRVudS4zzrC6LAbI8vrR4/trQCZgse8VV
- 1K4g==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kzkNx-0000XH-CW; Wed, 13 Jan 2021 12:56:47 -0500
+Received: by mail-wr1-x432.google.com with SMTP id t16so3079081wra.3;
+ Wed, 13 Jan 2021 09:56:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=KCk7TfTfwRCek4wOSD0IP+5auBOMydUqU5Lqt7Lsjo4=;
+ b=GcO1E3t136W7ipN+PcgDa7+Uqb4U5X+hDR9H//PEZcl+f+6jLM/dmibSnbwmCzX5Ia
+ ox/RG0oomu0Saa1GxAnsLvXlEKomo4pqcaQAZIl/wo2G8B821UupG5W8F3s1CgzeyEfh
+ Bi+Fp96brtpuNRGpJ5YHgt7byvrZY7vKXAmRofEeAB9r5bxfosjTWYvy+wDsmo9FpZj9
+ slEcD5ZOGgaCbJYte51bVdt2nC0mUg7lK4OJz+e09M0/Qj34Wb9lkBAq+nxCtYoWoAnw
+ IqQoqQAUPLpJrrCFgLwB5bIAwjY5VKlXqR55p1mI9j8RnxOrgxz0aJZcqoh/VtopuwRe
+ g4jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=XU9TlxLhp01G0Y3Oy4/hNaIJ/CUvU8i6RMutZ7hVlKs=;
- b=AatTbAHvf9p+GWmk4PHt/1hRwRf7O1U9pSW447tCd3EJbXQx4CohGIHu4/hm+pTjL8
- zdZ7KbeWNwOJEp58DBX4rvuqQK5kFbf7Tvj79HDOfsrF2OvimJJQVsJKNsnXMrSqs3bl
- mfgHWkdfoM3hJe5rmXli+dQLs/o7nUga45oANe8hF4nXoppmZH7PjnfD8blCAS9U61VI
- UaFScCZNQ7UJdnBmeO8aIbJx6MooG4Vzl8T9sPRilhrMz64Fq1zpP3NVXCpnvcWH2yqG
- koC0T6U1BmZjSFixoIsySCkZqdkTUMM1vmKWHBThTrL6VRGEnVQonQPxLlL570TJaIkv
- B3lg==
-X-Gm-Message-State: AOAM533jKaiRwr610en5IV1kVJOg+3/uKY8KtPLBKq/S/ng+IAIaY62R
- kLiprq0+L2fmH6gAki1+It1M3FNJedaYv7PYlEkWIQ==
-X-Received: by 2002:aa7:d686:: with SMTP id d6mr37697060edr.146.1615911363493; 
- Tue, 16 Mar 2021 09:16:03 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=KCk7TfTfwRCek4wOSD0IP+5auBOMydUqU5Lqt7Lsjo4=;
+ b=OCdny0MewH3N9IrRF4/ceYWDXQrXSzfqRVCuW/+/xrMV6sQLZoUdB0uUPpyagPDyGK
+ Ay/4yZh9uc3Dvf6ks0DrcNK6uUVKY1nizdcJ8+Y9dAtLlrsJGFxs4Zy2TIcWIwigkqFi
+ 17fkWO7NTNXtj1KFh8vyXUtcI5RKf9JOPYlgS3rxlaapxLWI79qk50uw7hDVV6ZbjHnN
+ gQAdBXxxpiBlQQgqAYw6BLsgn4RgP7pxwr3CYT9kNeiUazEiBz6d9BFb55AnJZakN6lG
+ WBPP/FagssU+xHPJe7DJ/Di9M+T5QwULJgO8aV4aIg8Dlhy0V6qP72b2S+rcgmeerBxG
+ /OCw==
+X-Gm-Message-State: AOAM531hYhh8Xi0aUvDKaXVUR6NRemsB3uZeK9npcxZP5n+y2NRZIjHA
+ iD94s9uz5wM3jD7csiy7dno=
+X-Received: by 2002:adf:bb0e:: with SMTP id r14mr3870914wrg.159.1610560603560; 
+ Wed, 13 Jan 2021 09:56:43 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id c20sm3795276wmb.38.2021.01.13.09.56.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 13 Jan 2021 09:56:42 -0800 (PST)
+Subject: Re: [RFC PATCH v6 00/11] hw/ssi: imx_spi: Fix various bugs in the
+ imx_spi model
+To: Bin Meng <bmeng.cn@gmail.com>
+References: <20210112183529.2011863-1-f4bug@amsat.org>
+ <CAEUhbmVmqYzCg0Edirp4UFhLpGGWbm5jFiTjOw=0=EhnSMsz3g@mail.gmail.com>
+ <74a2566b-cd32-743f-8088-c59e992be755@amsat.org>
+ <CAEUhbmU4wDdjY+nEiqHFpFsa6H1vJVpAitSjKt1+p1POEAONEQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <7c8e33c2-d86a-44ef-8d4c-0f6dcf9f7b2c@amsat.org>
+Date: Wed, 13 Jan 2021 18:56:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-References: <20210315164931.23477-1-shashi.mallela@linaro.org>
-In-Reply-To: <20210315164931.23477-1-shashi.mallela@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Mar 2021 16:15:41 +0000
-Message-ID: <CAFEAcA8q9sS-ob7XDKh62OX-R=5icXbhSTqD64KB-K+=yg2gOQ@mail.gmail.com>
-Subject: Re: [PATCH 1/2] hw/intc: GICv3 ITS implementation
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <CAEUhbmU4wDdjY+nEiqHFpFsa6H1vJVpAitSjKt1+p1POEAONEQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +UoTZy8X1nb2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Iqzke3TaWlSd
 
-On Mon, 15 Mar 2021 at 16:49, Shashi Mallela <shashi.mallela@linaro.org> wrote:
->
-> Implementation of Interrupt Translation Service which allows eventid
-> from devices to be translated to physical LPI IntIds.Extended the
-> redistributor functionality to process LPI Interrupts as well.
->
-> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-> ---
->  hw/intc/arm_gicv3.c                    |    6 +
->  hw/intc/arm_gicv3_common.c             |   20 +-
->  hw/intc/arm_gicv3_cpuif.c              |   15 +-
->  hw/intc/arm_gicv3_dist.c               |   22 +-
->  hw/intc/arm_gicv3_its.c                | 1386 ++++++++++++++++++++++++
->  hw/intc/arm_gicv3_its_common.c         |   17 +-
->  hw/intc/arm_gicv3_its_kvm.c            |    2 +-
->  hw/intc/arm_gicv3_redist.c             |  163 ++-
->  hw/intc/gicv3_internal.h               |  169 ++-
->  hw/intc/meson.build                    |    1 +
->  include/hw/intc/arm_gicv3_common.h     |   13 +
->  include/hw/intc/arm_gicv3_its_common.h |   12 +-
->  12 files changed, 1807 insertions(+), 19 deletions(-)
->  create mode 100644 hw/intc/arm_gicv3_its.c
+On 1/13/21 2:27 PM, Bin Meng wrote:
+> Hi Philippe,
+> 
+> On Wed, Jan 13, 2021 at 3:53 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> Hi Ben,
+>>
+>> On 1/13/21 4:29 AM, Bin Meng wrote:
+>>> On Wed, Jan 13, 2021 at 2:35 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>>
+>>>> Hi,
+>>>>
+>>>> As it is sometimes harder for me to express myself in plain
+>>>> English, I found it easier to write the patches I was thinking
+>>>> about. I know this doesn't scale.
+>>>>
+>>>> So this is how I understand the ecSPI reset works, after
+>>>> looking at the IMX6DQRM.pdf datasheet.
+>>>>
+>>>> This is a respin of Ben's v5 series [*].
+>>>> Tagged RFC because I have not tested it :)
+>>>
+>>> Unfortunately this series breaks SPI flash testing under both U-Boot
+>>> and VxWorks 7.
+>>
+>> Thanks for testing :) Can you provide the binary tested and the command
+>> line used? At least one, so I can have a look.
+> 
+> Sure, will send you offline.
 
-Hi; thanks for posting this. Unfortuantely 1800 lines is much
-too large a patch to be reviewable. Could you split the series
-up into smaller pieces, please? One possible structure would be
-to have a patch with the framework of the device but no actual
-implementation of register behaviour or command handling,
-followed by patches which add the behaviour piece by piece,
-and then finally the patch adding it to the board.
+Arf, stupid mistake in patch 7 :) With this diff I can run your
+test:
 
-I think it would also be useful to have the virt board
-support, as a demonstration that the emulated ITS and
-the KVM ITS have the same interface to the board code
-and are basically drop-in-replacements.
+-- >8 --
+--- a/hw/ssi/imx_spi.c
++++ b/hw/ssi/imx_spi.c
+@@ -343,7 +343,7 @@ static void imx_spi_write(void *opaque, hwaddr
+offset, uint64_t value,
+             return;
+         }
+         s->regs[ECSPI_CONREG] = value;
+-        if (value & ECSPI_CONREG_EN) {
++        if (!(value & ECSPI_CONREG_EN)) {
+             /* Keep disabled */
+             return;
+         }
+---
 
-Finally, for multi-patch series, please always send a cover letter
-(the "0/5" email, which the other patch emails are followups to;
-git format-patch should do this for you).
+Regards,
 
-thanks
--- PMM
+Phil.

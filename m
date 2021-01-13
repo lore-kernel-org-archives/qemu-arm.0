@@ -1,301 +1,177 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2671875lfq;
-        Mon, 11 Jan 2021 05:20:53 -0800 (PST)
-X-Received: by 2002:ac8:44c2:: with SMTP id b2mr15100759qto.1.1610371253458;
-        Mon, 11 Jan 2021 05:20:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610371253; cv=none;
+Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp15340qvb;
+        Wed, 13 Jan 2021 05:28:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzQgGKF8QO9kWEjlhiU8aIKEv8Sw/LyAjNEqu5+ZkuR0oUvYLOO60tpAx+ytj6/vlB/GraQ
+X-Received: by 2002:a25:d457:: with SMTP id m84mr3605671ybf.63.1610544495369;
+        Wed, 13 Jan 2021 05:28:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610544495; cv=none;
         d=google.com; s=arc-20160816;
-        b=xp+eBUwQmwhRFuq433CTII7zwZsSCEpHD7TA6e7xB9LAKMPerpKwn4OpDAcUPUviCi
-         WmwpNLzQ9+J+Pdr/4V6rqJ1qvPHCQpBn6dW08KxG+p1t1g12TkFgbk43v7YtJ11+CegD
-         Bn7CDXatk3TcsGjNH+0pNNGkdWfXnZdcBxcfIBV9Ecl4ASODpZqZhX6ATb3elqrWWOZr
-         8ODL3kIrDOuQO+ZeiOvxciBzkuqdMDJRK2KmEHdwsYgjsjahjU16I3bPpUmblrBxHvNZ
-         uwz7ImHgOsbsUGb1jVkENYjY9MMlApyfYl/lGNIpAxC6UzzxH0eocsNYbE8UxbK35gMa
-         EHIQ==
+        b=Y3s0X8xZE3UnKoTQ5FyxPg3t/OdsMpopv3uyuUOKAY70GSk0jXB4Rk/H2PGVdM/m9w
+         68yQ6j2+H9cIJEhC8URoWougXGhHt8o7w2pnGqNBW+hLM452oteGdzo9hk/Dxw/B/ANQ
+         kYqAT9kecYQFvp7o7k/khlIjri10sECMkXWgvKPy0Z779t5vwaEftMJW5BMDuxOO8mqP
+         J6IXZQJkyXD712+d8we3y5PVruz+RltNX2HV7w9ZuaNlZ46GDELxlm2XBg0s7CyganKa
+         Vs71mtihJ3YKeusZfzU6PCZxn3dNz9vWJt/LU6LnzIwQ1cYS8pQkz+leFThxscxpzBFL
+         aK2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=vDQkcZI0wWmNt8h50euO1l/PLOOvX4eDx8P1AuC31Sw=;
-        b=BgSY5CE8/D08oft0gKEcAkMfFPP+GIM6sXLwEMjs1wiQLoSsmSOscLtQkUnQdrZbMe
-         1RlUXBkZYEej/RMZTqvw/x1q6KiPxRdPCQkU5b0FM5UIzlSam/vQ6rtRZ+8FjiRI6SNH
-         EkbzrtPDKnPVKiI0o/nPiuYol2V1HsxjzXwn5FJMTE2Y/N2maGEXAJXyqSXhD9y6nVJt
-         DBs1EW1vPRspaseGTCnsAyWS+Ptbl1O/kbXVV//+Wcm/5WAzYX819rmpMHaunVEBgIYZ
-         U7I8yOoRD5t9S1GlDhnrYiJGCnF0R66HpfK9T9dcu+Pw+/SnL314ab3EZiYXrSZV4yYS
-         jS3g==
+        bh=GsOJlZDnOmaLHm617iqZrqPSsYXYDwDHCB+ZhkydkIU=;
+        b=xiDGXEEqXLM01xKsi1mmDjEU6MQ5TXK+6IJMoLOQvn9rj186E68Uc5vqI+O1Kqicqe
+         VIP+Wx6pWTh9LWcUUveE04vFJo1I9ZYNJahEqIJMa3RFypz4RHto8QAEflikmbXseuzH
+         YaPaCFIDmYRMK1OY8V1IfF5LcQVw7RGpG+m30X02YcevKJVv6YB/VMTAKRrTvJH1qexi
+         h2bG7K1cKXpPDiI2GSJ2HQU1SSt9pF6OlOhn9oYWb2/WCanB33KM8Bbk56iV58sfGzVC
+         +nWBJzKDOc4bcdsOzRD8WHWf4kkjisuwSj+9i8faFcNpUQFNsFRnRB5iYsd5xkAXnuGP
+         kX8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hN1BLfbM;
-       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <luis.machado@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t23sor8044522qke.63.2021.01.11.05.20.53
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=duqbQgJy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i12si1999966ybt.213.2021.01.13.05.28.15
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 11 Jan 2021 05:20:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 13 Jan 2021 05:28:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hN1BLfbM;
-       spf=pass (google.com: domain of luis.machado@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=luis.machado@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=vDQkcZI0wWmNt8h50euO1l/PLOOvX4eDx8P1AuC31Sw=;
-        b=hN1BLfbMipyFtSETZB+dZ+AyD3OTI3oLT6JrpMb5LfVL1y7h+W8QmJjLrVG82TgZdz
-         kBMCLxx4GqjCZdHkGZAV8BzgrsRoguiMP3EQEh2ZdDP5g3lfLaYb/iVprnTunWp2cMZn
-         GjPWAhTc6I0ZPxZX4gnr+IMJrhiRLFo8ln8GzyTbyrubTvSeuWDReNrYwhhekUyDGEMN
-         tJV279RYajk4MDr2oL/4bbnAy8yy/T6d+pvmJ+ChMcWxoxC6A7iq6zAQA9GeibF4i/nS
-         R1d7mDcZiBNMuZRkXSrQxSSqwt1GaYS3u1fu9qmMFb6xzQIHJ4Teii0ArHZMvuLV6iDO
-         LHYQ==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=duqbQgJy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52592 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzgC6-0001DV-TR
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:28:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39254)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kzgBv-0001Av-Fb; Wed, 13 Jan 2021 08:28:03 -0500
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:37394)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kzgBt-00046s-6p; Wed, 13 Jan 2021 08:28:03 -0500
+Received: by mail-yb1-xb30.google.com with SMTP id z1so2150848ybr.4;
+ Wed, 13 Jan 2021 05:28:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=GsOJlZDnOmaLHm617iqZrqPSsYXYDwDHCB+ZhkydkIU=;
+ b=duqbQgJywsdK6PGXC8LkIQ2sblz2UdLXIAMCNx3LTgdxxtHW8Tr2DIWtRRYsoXW8ex
+ Rk070r2rxnZKFg5RJPuOG2gHP2uovFsB0rrIPR2UjeIU6vnEFgd4Dw7N31iXokH0FB3h
+ xU4KIt/rlmwH4e69xwQbB/PyHnwhkxL/4JLUFZrAsvrqdzYxwDT3nFRLwQEQmhBOA7Lb
+ GzNk3xZ7fqnJ+koG2awBCaoh9hfw372BTQ5RTELzmcipdhxZG5doF1/1QuGejok1PbkH
+ GYEAZKt/+1sNFAVDAtCRR2fgFlgNjVndwJtTlNoKGZ0PE9dNaacs48/EYibFaNutgIyi
+ eRnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=vDQkcZI0wWmNt8h50euO1l/PLOOvX4eDx8P1AuC31Sw=;
-        b=Q3P4s4VlOKWXJGd8uyFvRgaLxofgfs1ytqfxrWlpnjWXjBcj/ePhZyrGXqubrUIVlO
-         wl1gWOjbvkpzjwjbjm8kcNN7VR4zna/Owp/ZeEb9xTtt/3aiP+6X6UKRocNVdTyjd5Gq
-         lV2Y+hkAFtqcu5t6k94RL9F9gxeQ5fRVyxzdEfQxGDfOCFORWBoUpbMYNQeCQeZ6XHnF
-         7srYPzFP9ihsNI902xEnpbH5b0vvas2MLt4PI8YcOge2KneVz0aSronQ+/oUqLYwTnGn
-         O8OK5soe/eZ2e5YzltEIR542d4lhMZXYSJlSeXk2LKDdSTqaDpy7pXKGVLqp2u8xmYA6
-         pbSg==
-X-Gm-Message-State: AOAM531o3hiv+njAT4M2qUaoYVq+0glivoS2fL2xfHSxKLgTxFkmIkxJ
-	HClKlwoojuCW3v+RBJg35TIBbipy
-X-Google-Smtp-Source: ABdhPJxx1t9yuVPNExmTzuvmlsy5uoNzwHIY26vJjppVr+/0oSV28eBl0Ox85eb9vJQe0JWB5tDInw==
-X-Received: by 2002:a37:744:: with SMTP id 65mr15363384qkh.71.1610371252956;
-        Mon, 11 Jan 2021 05:20:52 -0800 (PST)
-Return-Path: <luis.machado@linaro.org>
-Received: from ?IPv6:2804:7f0:8284:874d:20e9:a3d4:1db5:c30a? ([2804:7f0:8284:874d:20e9:a3d4:1db5:c30a])
-        by smtp.gmail.com with ESMTPSA id c139sm8439799qke.24.2021.01.11.05.20.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Jan 2021 05:20:51 -0800 (PST)
-Subject: Re: [PATCH v1 10/20] target/arm: use official org.gnu.gdb.aarch64.sve
- layout for registers
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20210108224256.2321-1-alex.bennee@linaro.org>
- <20210108224256.2321-11-alex.bennee@linaro.org>
-From: Luis Machado <luis.machado@linaro.org>
-Message-ID: <9ee1443e-821d-9cec-c29a-6111385937ad@linaro.org>
-Date: Mon, 11 Jan 2021 10:20:48 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=GsOJlZDnOmaLHm617iqZrqPSsYXYDwDHCB+ZhkydkIU=;
+ b=ZB+T2vndPIQ33DBNnA6EBVtiMO2nDQ097u4aGF2u7z2LAjv/lU62hnLy/977Bq8nnt
+ 9HoTkuZGPc7WP9tjfaAoBQeZjgjTZD5/69cqX060Kydn7rORE7ld4IdGs/zYyngXU46C
+ imq/IgGLD+hrKQ4y+7YfzB0qS1xYm6+fs2C5v55e1JqWov8CRaC8HIUXOVCPMsR5WC8p
+ 6mKkupddZ1KrbRdS0Bm4AUXNIYxzwzMAomo1UBKygV6tdG57WmwycwHUxD+rt9fNgtOc
+ ycotChnlwZoKhKdISWwg80Op8L35XXwkB8Mf3NLr0mOf7HL54QnKgHa3kfDaIode+bab
+ gsXg==
+X-Gm-Message-State: AOAM533ldSMzPPq0LtSorR6nFj4O3NSaFB3tN9Ehng01gUm1cxnYkxPd
+ TwO+K+PMbPlJm1Lc6ktXeR5VJ7bsL0gN999IlzY=
+X-Received: by 2002:a25:5a43:: with SMTP id o64mr3407039ybb.387.1610544479772; 
+ Wed, 13 Jan 2021 05:27:59 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210108224256.2321-11-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: ii3BHMHkXxVo
+References: <20210112183529.2011863-1-f4bug@amsat.org>
+ <CAEUhbmVmqYzCg0Edirp4UFhLpGGWbm5jFiTjOw=0=EhnSMsz3g@mail.gmail.com>
+ <74a2566b-cd32-743f-8088-c59e992be755@amsat.org>
+In-Reply-To: <74a2566b-cd32-743f-8088-c59e992be755@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Wed, 13 Jan 2021 21:27:48 +0800
+Message-ID: <CAEUhbmU4wDdjY+nEiqHFpFsa6H1vJVpAitSjKt1+p1POEAONEQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v6 00/11] hw/ssi: imx_spi: Fix various bugs in the
+ imx_spi model
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cjqd7MtoI0cZ
 
-For the record, the layout looks OK to me.
+Hi Philippe,
 
-Just a reminder that GDB will soon support bfloat16 types. A patch may 
-be pushed this month.
+On Wed, Jan 13, 2021 at 3:53 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> Hi Ben,
+>
+> On 1/13/21 4:29 AM, Bin Meng wrote:
+> > On Wed, Jan 13, 2021 at 2:35 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org> wrote:
+> >>
+> >> Hi,
+> >>
+> >> As it is sometimes harder for me to express myself in plain
+> >> English, I found it easier to write the patches I was thinking
+> >> about. I know this doesn't scale.
+> >>
+> >> So this is how I understand the ecSPI reset works, after
+> >> looking at the IMX6DQRM.pdf datasheet.
+> >>
+> >> This is a respin of Ben's v5 series [*].
+> >> Tagged RFC because I have not tested it :)
+> >
+> > Unfortunately this series breaks SPI flash testing under both U-Boot
+> > and VxWorks 7.
+>
+> Thanks for testing :) Can you provide the binary tested and the command
+> line used? At least one, so I can have a look.
 
-On 1/8/21 7:42 PM, Alex Bennée wrote:
-> While GDB can work with any XML description given to it there is
-> special handling for SVE registers on the GDB side which makes the
-> users life a little better. The changes aren't that major and all the
-> registers save the $vg reported the same. All that changes is:
-> 
->    - report org.gnu.gdb.aarch64.sve
->    - use gdb nomenclature for names and types
->    - minor re-ordering of the types to match reference
->    - re-enable ieee_half (as we know gdb supports it now)
->    - $vg is now a 64 bit int
->    - check $vN and $zN aliasing in test
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Luis Machado <luis.machado@linaro.org>
-> Message-Id: <20201218112707.28348-10-alex.bennee@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   target/arm/gdbstub.c                        | 75 ++++++++-------------
->   target/arm/helper.c                         |  2 +-
->   tests/tcg/aarch64/gdbstub/test-sve-ioctl.py | 11 +++
->   3 files changed, 41 insertions(+), 47 deletions(-)
-> 
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 866595b4f1..a8fff2a3d0 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -195,22 +195,17 @@ static const struct TypeSize vec_lanes[] = {
->       { "uint128", 128, 'q', 'u' },
->       { "int128", 128, 'q', 's' },
->       /* 64 bit */
-> +    { "ieee_double", 64, 'd', 'f' },
->       { "uint64", 64, 'd', 'u' },
->       { "int64", 64, 'd', 's' },
-> -    { "ieee_double", 64, 'd', 'f' },
->       /* 32 bit */
-> +    { "ieee_single", 32, 's', 'f' },
->       { "uint32", 32, 's', 'u' },
->       { "int32", 32, 's', 's' },
-> -    { "ieee_single", 32, 's', 'f' },
->       /* 16 bit */
-> +    { "ieee_half", 16, 'h', 'f' },
->       { "uint16", 16, 'h', 'u' },
->       { "int16", 16, 'h', 's' },
-> -    /*
-> -     * TODO: currently there is no reliable way of telling
-> -     * if the remote gdb actually understands ieee_half so
-> -     * we don't expose it in the target description for now.
-> -     * { "ieee_half", 16, 'h', 'f' },
-> -     */
->       /* bytes */
->       { "uint8", 8, 'b', 'u' },
->       { "int8", 8, 'b', 's' },
-> @@ -223,17 +218,16 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
->       GString *s = g_string_new(NULL);
->       DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
->       g_autoptr(GString) ts = g_string_new("");
-> -    int i, bits, reg_width = (cpu->sve_max_vq * 128);
-> +    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
->       info->num = 0;
->       g_string_printf(s, "<?xml version=\"1.0\"?>");
->       g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
-> -    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.aarch64.sve\">");
-> +    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
->   
->       /* First define types and totals in a whole VL */
->       for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
->           int count = reg_width / vec_lanes[i].size;
-> -        g_string_printf(ts, "vq%d%c%c", count,
-> -                        vec_lanes[i].sz, vec_lanes[i].suffix);
-> +        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
->           g_string_append_printf(s,
->                                  "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
->                                  ts->str, vec_lanes[i].gdb_type, count);
-> @@ -243,39 +237,37 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
->        * signed and potentially float versions of each size from 128 to
->        * 8 bits.
->        */
-> -    for (bits = 128; bits >= 8; bits /= 2) {
-> -        int count = reg_width / bits;
-> -        g_string_append_printf(s, "<union id=\"vq%dn\">", count);
-> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
-> -            if (vec_lanes[i].size == bits) {
-> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%d%c%c\"/>",
-> -                                       vec_lanes[i].suffix,
-> -                                       count,
-> -                                       vec_lanes[i].sz, vec_lanes[i].suffix);
-> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
-> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
-> +        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
-> +        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
-> +            if (vec_lanes[j].size == bits) {
-> +                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
-> +                                       vec_lanes[j].suffix,
-> +                                       vec_lanes[j].sz, vec_lanes[j].suffix);
->               }
->           }
->           g_string_append(s, "</union>");
->       }
->       /* And now the final union of unions */
-> -    g_string_append(s, "<union id=\"vq\">");
-> -    for (bits = 128; bits >= 8; bits /= 2) {
-> -        int count = reg_width / bits;
-> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
-> -            if (vec_lanes[i].size == bits) {
-> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%dn\"/>",
-> -                                       vec_lanes[i].sz, count);
-> -                break;
-> -            }
-> -        }
-> +    g_string_append(s, "<union id=\"svev\">");
-> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
-> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
-> +        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
-> +                               suf[i], suf[i]);
->       }
->       g_string_append(s, "</union>");
->   
-> +    /* Finally the sve prefix type */
-> +    g_string_append_printf(s,
-> +                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
-> +                           reg_width / 8);
-> +
->       /* Then define each register in parts for each vq */
->       for (i = 0; i < 32; i++) {
->           g_string_append_printf(s,
->                                  "<reg name=\"z%d\" bitsize=\"%d\""
-> -                               " regnum=\"%d\" group=\"vector\""
-> -                               " type=\"vq\"/>",
-> +                               " regnum=\"%d\" type=\"svev\"/>",
->                                  i, reg_width, base_reg++);
->           info->num++;
->       }
-> @@ -287,31 +279,22 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
->                              " regnum=\"%d\" group=\"float\""
->                              " type=\"int\"/>", base_reg++);
->       info->num += 2;
-> -    /*
-> -     * Predicate registers aren't so big they are worth splitting up
-> -     * but we do need to define a type to hold the array of quad
-> -     * references.
-> -     */
-> -    g_string_append_printf(s,
-> -                           "<vector id=\"vqp\" type=\"uint16\" count=\"%d\"/>",
-> -                           cpu->sve_max_vq);
-> +
->       for (i = 0; i < 16; i++) {
->           g_string_append_printf(s,
->                                  "<reg name=\"p%d\" bitsize=\"%d\""
-> -                               " regnum=\"%d\" group=\"vector\""
-> -                               " type=\"vqp\"/>",
-> +                               " regnum=\"%d\" type=\"svep\"/>",
->                                  i, cpu->sve_max_vq * 16, base_reg++);
->           info->num++;
->       }
->       g_string_append_printf(s,
->                              "<reg name=\"ffr\" bitsize=\"%d\""
->                              " regnum=\"%d\" group=\"vector\""
-> -                           " type=\"vqp\"/>",
-> +                           " type=\"svep\"/>",
->                              cpu->sve_max_vq * 16, base_reg++);
->       g_string_append_printf(s,
->                              "<reg name=\"vg\" bitsize=\"64\""
-> -                           " regnum=\"%d\" group=\"vector\""
-> -                           " type=\"uint32\"/>",
-> +                           " regnum=\"%d\" type=\"int\"/>",
->                              base_reg++);
->       info->num += 2;
->       g_string_append_printf(s, "</feature>");
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index d077dd9ef5..d434044f07 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -276,7 +276,7 @@ static int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
->            * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
->            */
->           int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
-> -        return gdb_get_reg32(buf, vq * 2);
-> +        return gdb_get_reg64(buf, vq * 2);
->       }
->       default:
->           /* gdbstub asked for something out our range */
-> diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-> index 972cf73c31..b9ef169c1a 100644
-> --- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-> +++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-> @@ -40,6 +40,17 @@ class TestBreakpoint(gdb.Breakpoint):
->           except gdb.error:
->               report(False, "checking zregs (out of range)")
->   
-> +        # Check the aliased V registers are set and GDB has correctly
-> +        # created them for us having recognised and handled SVE.
-> +        try:
-> +            for i in range(0, 16):
-> +                val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
-> +                val_v = gdb.parse_and_eval("$v0.b.u[%d]" % i)
-> +                report(int(val_z) == int(val_v),
-> +                       "v0.b.u[%d] == z0.b.u[%d]" % (i, i))
-> +        except gdb.error:
-> +            report(False, "checking vregs (out of range)")
-> +
->   
->   def run_test():
->       "Run through the tests one by one"
-> 
+Sure, will send you offline.
+
+>
+> >> Sometimes changing device reset to better match hardware gives
+> >> trouble when using '-kernel ...' because there is no bootloader
+> >> setting the device in the state Linux expects it.
+> >>
+> >
+> > Given most of the new changes in this RFC series are clean-ups, I
+> > suggest we apply the v5 series unless there is anything seriously
+> > wrong in v5, IOW, don't fix it unless it's broken.
+> >
+> > Thoughts?
+>
+> Up to the maintainer :)
+>
+> The IMX6DQRM datasheet is available here:
+> https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/i-MX-6DQ-Refe=
+rence-Manual-IMX6DQRM-R2-Part-1/ta-p/1115983
+> https://community.nxp.com/t5/i-MX-Processors-Knowledge-Base/i-MX-6DQ-Refe=
+rence-Manual-IMX6DQRM-R2-Part-2/ta-p/1118510
+
+Regards,
+Bin

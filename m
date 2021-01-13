@@ -1,99 +1,102 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp626905lfq;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp626904lfq;
         Wed, 13 Jan 2021 09:33:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy6TtY7tLYcccpcD30+bjfc/WcZuur4RzpLQ8Ghsr9789vDRjEQ381zhmyP8wdyF89vfgCD
-X-Received: by 2002:a25:d9c3:: with SMTP id q186mr4576798ybg.379.1610559198326;
+X-Google-Smtp-Source: ABdhPJyUkRybmKsYGCJxQ6b45d7lbRL1RXHcj+dAPTh35/lA5l633+d3/1Q/MSqWAZad6GZdEyI2
+X-Received: by 2002:a25:2fd7:: with SMTP id v206mr4779915ybv.420.1610559198322;
         Wed, 13 Jan 2021 09:33:18 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1610559198; cv=none;
         d=google.com; s=arc-20160816;
-        b=BuFEi09f5LvByedDxOvWD7UPC5myzHr5PNvoTFvQ3LVRg3Gh4lmpa3d03qw+wx6kyK
-         DbWT4/IbmkxO5f5ZUkjCM6mCuB4NyhebPCUSyw7EqnpZkgaFIxC30rL1JiWaEBXAlGuA
-         EhIN93VdH+zDka2v6YCEu9iIgMYH45HKJBenlT0wQRQobHahEtuZ5qoGXGxMlnwMAoRN
-         g8cPMzNrCWZLMLO9IHU/EdTHd7Zb9vLOm00exWafcPEA/gwJiLYNhLdQ3KwtEWbE6yB4
-         seOn4pAUjnD00h+WJJ9aUONuI/NjeOXVVbjGLrufhaj61Q749ujN30S3/rXAFDMWq/y0
-         PaeA==
+        b=nc1PVBhjbEjQVUmG4wj96qduU/f+64Zq+qOMSpes29ubaan/anjGjNwHT8jczX4b6C
+         GG31d3B7Uy3LCIamRxYJ5zYSP/1UyfWrzBUH59D4jORDZRDG19lReNDC03sTenzk+fTS
+         6VbK6haf1w+xdFyFl3btQfFe+waicMXlq73iPO/oBv8Cfl2Y84D4zaqyYLlpOSbTyu0R
+         TEnTTQwvKgt7eeACzfSKs0CxsUTHwXTmQT9cFY63wdcaJPnIbwOv2N+w72/2e30v+b9J
+         cKr/aGriLqqvbLoqlfmFnnr1p7M/lT2kt2PSp71yKzw/xinMtU9xuyDwbq+uVIb/hZQU
+         +xAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=qM+WMPm9+Hjt/UIhL77XA+4VCNDq6a3MUy1J9umBvsc=;
-        b=p96O4FCmPo1vU7v48SyOHhwlVvg+CIfTxmJ//HWH+T2ZG+aICX092GzuDPAfpTdn+A
-         P9yOOHBLN8JgQSiA95w9L4Zo/xRp0aUe5ZQM7daJ8sg1w74iltS4E5TclHnsoeEblm5g
-         7SSQLScDDgzBq55/+shbVPIuvVvc2+OyUngHrV9Y7TVJtazN1EIOMH9kO1XZP3aSQs3z
-         IrFdMQAZfm/5LKL7qvvv0oFNUt6e9FYduupQ4h1+4Pn2mGmJ/aVabmrPXnWQ1fXBxP4i
-         SiIA96aHTEYXcfqw7MOkZEBenfMQipq9Lk0kIQNufb9qmsVAJNPSLyM0TfhnhyfsfXbx
-         tyCg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=nbTY58aO/0J5mVZOizL8/L5H+yZ4rt3Ds459buh/Uo4=;
+        b=TxEjcw0HA8ewCf2e9W3sXe3fJobfnSjFX8K25ub3N8gquM8EG28+ISy2r3Ee2kbx6U
+         hQfWzc1nZvsrdo2ZsDQrvSXdkfA/KpdyeuZN6IbnYsTsDJX+sBCofENCAUF/GQK4P+R+
+         E7InPU8oSpW0Cc63YMJBXUBh/e3ivN+dhEECkmSI4ypSuIoIDB+xCRudXpfGH2+k5eJp
+         w5eQuiDuidGhXLt2QWYbgVwIrWVNQMQlkvOg2ACuzxBvF9eiSPzkBprg+tcKyvJa7PJD
+         Js7oe/pQVYGlNQto8NFzhQ1NpbfB5yfXKEJ6zNIgLU4XuGedeYxY9AxKhncMBRhLFK04
+         otIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VbbfHn04;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uoa946qK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6si2174990ybc.31.2021.01.13.09.33.18
+        by mx.google.com with ESMTPS id e191si2464091ybf.280.2021.01.13.09.33.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 13 Jan 2021 09:33:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VbbfHn04;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uoa946qK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51184 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51226 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzk1F-0006g2-O5
+	id 1kzk1F-0006h1-Ld
 	for alex.bennee@linaro.org; Wed, 13 Jan 2021 12:33:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41492)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kzjtL-0008BM-Gq; Wed, 13 Jan 2021 12:25:07 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:35300)
+ id 1kzjtq-000099-MR; Wed, 13 Jan 2021 12:25:43 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:54171)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kzjtI-0005wj-3P; Wed, 13 Jan 2021 12:25:07 -0500
-Received: by mail-wm1-x335.google.com with SMTP id e25so2346147wme.0;
- Wed, 13 Jan 2021 09:25:02 -0800 (PST)
+ id 1kzjtl-0006AW-OA; Wed, 13 Jan 2021 12:25:35 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id k10so2301946wmi.3;
+ Wed, 13 Jan 2021 09:25:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=qM+WMPm9+Hjt/UIhL77XA+4VCNDq6a3MUy1J9umBvsc=;
- b=VbbfHn04l2rBSxh0AvYQkbS7S1MJjdzqudjakpJcWpUI4z5K/c/liCeC9UgV9YhQTO
- Ci9dmAdy+ytRTTz77zCEXSkSlf2qc3/NiiJLE2GDkFZesVkA1TS/LneBEbMoqjpy9j68
- gDO9lL2Sr3V15p74uKh1aSzvmlAm7kcEWbQeRSnOSmnyJXMXAqSkCR91ExwuOjlCZaY1
- 29vxKh6sypY6lhlB/oRY8pKBuRKPHqU8beBTaCupUL0fvcdFffTtu5Y8YOqwB0I1mwTi
- aRDvsIdaumHSzD7zqZgNUSnlrQVxwHdtTTmEFDURAS9ZkBacWLyPTiQukq9MIrqaaguS
- RUjA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=nbTY58aO/0J5mVZOizL8/L5H+yZ4rt3Ds459buh/Uo4=;
+ b=uoa946qK+eG5eMCIzS2cz6yzKuNu/TbYio49p1yhcciT51de1vXX8hnCRTN6lZxLdh
+ 2CPDKNODcNGqKK0ZMIUo3lLiFGnqCz95hUZSZdEggWPdpRPlKUlm/ccrw2XniCjE/cCo
+ xWJyBtNpoYNy2Ro8lrTqpIF9QiRdAALofRFxiIVAqiiFUQT7Cw8NeZfu3yHdWoysQNB9
+ uIlLcQcfiMaxFiNjjkcXv3CU5tS4iiSi4+ZvpZO4VAnBtlxELdaNOFdMYqt4rlqFr+4u
+ Mznwtep1Hp5wvKAA1Xukf28WicT5hAO2ARCgWEI8wAPIoLPN5D0AFijUCTjpAGivhv4b
+ yAxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=qM+WMPm9+Hjt/UIhL77XA+4VCNDq6a3MUy1J9umBvsc=;
- b=MaMgIyxvMX7gql7MCgxhTQnededmpTgRWy+UWJIznJAZWqoMc0Ectp5DiSk02AvsWk
- 6HEPmxvxVxP/x4nuO1HgADqgDjdXbK4/pUnlyHq22zsk6dWyjueTVwRO4q45bRbfLFvn
- /1a87pCKJoa0yLKuZgzD0TsFpQjF2nT3w3fNNlkIrIcOLG7602vkqQ20ppRMF5hkWXyy
- Rk2HBfMAVXTumMWnK+K2/VTvSqO/u08SR41wfE8/yBvahJ17mJRkY5Vofa3+inGQDMcZ
- zaaDLx47pBZZMxbMVZhy2RY3TUHmYAge7ADJqBE2eG/rCnVP6WMGn+c1/N7ajhie/9Yw
- W0bQ==
-X-Gm-Message-State: AOAM531o/gVfRtn7Oofx/dAFFouDfgvqlujjWmLp+q79ZkeJmrQ8zM4i
- t2rrhVfI5ZAA29Me5E3TEY9Dk7Qw2Y4=
-X-Received: by 2002:a1c:8181:: with SMTP id c123mr286452wmd.23.1610558701509; 
- Wed, 13 Jan 2021 09:25:01 -0800 (PST)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=nbTY58aO/0J5mVZOizL8/L5H+yZ4rt3Ds459buh/Uo4=;
+ b=LsRiI0A34qU9zVnjDAp8QzxlFPhobhvlk9cDmSlO8svxmqc5nvNcAX/aN7FmgZ9Jt9
+ n90oFeyQULTo6j/YVS0fCsWOP2/3iKYoq8O6CFtXcUa28eqwnMFli7T4/3AnJtZ1Ejcw
+ 9kRcZ06wXyfJ3ElyFfN0DzvDSb/6QzFrt7GxnPh39sLHUHUVj1OQQC5g6ZH7ijBt0d8Z
+ sfPgCL9/UUnoh3vwzOK8lJMLhpWrX3oOisJDQc1PoTnSkXqF0oZe8XH13J1hDgxkWgFw
+ qjjNZZxom6QEbE8c7IQiJROfdZ58BmrLZ8A/EKdCJizssOTkSd1WPEqUMT6Rp5xQ36Zw
+ VuWw==
+X-Gm-Message-State: AOAM533ZTiyRufhC1FQXiazDFCdyAK3WFvy12pxz4+REW7AlInufxAg3
+ CdDkuLQMpU2gX1btjJJexQhqgdzxg2A=
+X-Received: by 2002:a1c:a583:: with SMTP id o125mr258893wme.91.1610558727675; 
+ Wed, 13 Jan 2021 09:25:27 -0800 (PST)
 Received: from x1w.redhat.com (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id h9sm4030774wre.24.2021.01.13.09.24.59
+ by smtp.gmail.com with ESMTPSA id 125sm3862219wmc.27.2021.01.13.09.25.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Jan 2021 09:25:00 -0800 (PST)
+ Wed, 13 Jan 2021 09:25:27 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 0/6] tcg: Restrict tcg_out_op() to arrays of
+Subject: [PATCH v2 5/6] tcg: Restrict tcg_out_op() to arrays of
  TCG_MAX_OP_ARGS elements
-Date: Wed, 13 Jan 2021 18:24:53 +0100
-Message-Id: <20210113172459.2481060-1-f4bug@amsat.org>
+Date: Wed, 13 Jan 2021 18:24:58 +0100
+Message-Id: <20210113172459.2481060-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210113172459.2481060-1-f4bug@amsat.org>
+References: <20210113172459.2481060-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -126,69 +129,115 @@ Cc: Thomas Huth <thuth@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MqtyHeSbPARO
+X-TUID: Ibhk4RwhqzeA
 
-Since v1:=0D
-- Redo the whole change, only hoisting when variable is used 10+ times=0D
-- Remove goto statement/label=0D
-- Take care of the following pattern:=0D
-=0D
-    case INDEX_op_bswap64_i64:=0D
-        a2 =3D3D TCG_REG_R0;=0D
-        if (a0 =3D3D=3D3D a1) {=0D
-            a0 =3D3D TCG_REG_R0;=0D
-            a2 =3D3D a1;=0D
-        }=0D
-        ...=0D
-        if (a0 =3D3D=3D3D 0) {=0D
-            tcg_out_mov(s, TCG_TYPE_REG, args[0], a0);=0D
-                                         ^^^^ take original a[0]=0D
-        }=0D
-=0D
-Attempt to fix the warning reported by Miroslav using GCC 10:=0D
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg771520.html=0D
-=0D
-Diff with v1:=0D
-=0D
-Key:=0D
-[----] : patches are identical=0D
-[####] : number of functional differences between upstream/downstream patch=
-=0D
-[down] : patch is downstream-only=0D
-The flags [FC] indicate (F)unctional and (C)ontextual differences, respecti=
-ve=3D=0D
-ly=0D
-=0D
-001/6:[0063] [FC] 'tcg/arm: Hoist common argument loads in tcg_out_op()'=0D
-002/6:[down] 'tcg/arm: Replace goto statement by fall through comment'=0D
-003/6:[0190] [FC] 'tcg/ppc: Hoist common argument loads in tcg_out_op()'=0D
-004/6:[0136] [FC] 'tcg/s390: Hoist common argument loads in tcg_out_op()'=0D
-005/6:[----] [--] 'tcg: Restrict tcg_out_op() to arrays of TCG_MAX_OP_ARGS =
-el=3D=0D
-ements'=0D
-006/6:[----] [--] 'tcg: Restrict tcg_out_vec_op() to arrays of TCG_MAX_OP_A=
-RG=3D=0D
-S elements'=0D
-=0D
-Philippe Mathieu-Daud=3DC3=3DA9 (6):=0D
-  tcg/arm: Hoist common argument loads in tcg_out_op()=0D
-  tcg/arm: Replace goto statement by fall through comment=0D
-  tcg/ppc: Hoist common argument loads in tcg_out_op()=0D
-  tcg/s390: Hoist common argument loads in tcg_out_op()=0D
-  tcg: Restrict tcg_out_op() to arrays of TCG_MAX_OP_ARGS elements=0D
-  tcg: Restrict tcg_out_vec_op() to arrays of TCG_MAX_OP_ARGS elements=0D
-=0D
- tcg/tcg.c                    |  19 +--=0D
- tcg/aarch64/tcg-target.c.inc |   3 +-=0D
- tcg/arm/tcg-target.c.inc     | 196 +++++++++++++++----------------=0D
- tcg/i386/tcg-target.c.inc    |   6 +-=0D
- tcg/mips/tcg-target.c.inc    |   3 +-=0D
- tcg/ppc/tcg-target.c.inc     | 191 ++++++++++++++----------------=0D
- tcg/riscv/tcg-target.c.inc   |   3 +-=0D
- tcg/s390/tcg-target.c.inc    | 222 +++++++++++++++++------------------=0D
- tcg/tci/tcg-target.c.inc     |   5 +-=0D
- 9 files changed, 311 insertions(+), 337 deletions(-)=0D
-=0D
---=3D20=0D
-2.26.2=0D
-=0D
+tcg_reg_alloc_op() allocates arrays of TCG_MAX_OP_ARGS elements.
+
+The Aarch64 target already does this since commit 8d8db193f25
+("tcg-aarch64: Hoist common argument loads in tcg_out_op"),
+SPARC since commit b357f902bff ("tcg-sparc: Hoist common argument
+loads in tcg_out_op").
+
+RISCV missed it upon introduction in commit bdf503819ee
+("tcg/riscv: Add the out op decoder"), MIPS since commit
+22ee3a987d5 ("tcg-mips: Hoist args loads") and i386 since
+commit 42d5b514928 ("tcg/i386: Hoist common arguments in
+tcg_out_op").
+
+Provide this information as a hint to the compiler in the function
+prototype, and update the funtion definitions.
+
+This fixes this warning (using GCC 11):
+
+    tcg/aarch64/tcg-target.c.inc:1855:37: error: argument 3 of type 'const TCGArg[16]' {aka 'const long unsigned int[16]'} with mismatched bound [-Werror=array-parameter=]
+    tcg/aarch64/tcg-target.c.inc:1856:34: error: argument 4 of type 'const int[16]' with mismatched bound [-Werror=array-parameter=]
+
+Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
+Reviewed-by: Miroslav Rezanina <mrezanin@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ tcg/tcg.c                  | 5 +++--
+ tcg/i386/tcg-target.c.inc  | 3 ++-
+ tcg/mips/tcg-target.c.inc  | 3 ++-
+ tcg/riscv/tcg-target.c.inc | 3 ++-
+ tcg/tci/tcg-target.c.inc   | 5 +++--
+ 5 files changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 472bf1755bf..97d074d8fab 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -110,8 +110,9 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1,
+ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg);
+ static void tcg_out_movi(TCGContext *s, TCGType type,
+                          TCGReg ret, tcg_target_long arg);
+-static void tcg_out_op(TCGContext *s, TCGOpcode opc, const TCGArg *args,
+-                       const int *const_args);
++static void tcg_out_op(TCGContext *s, TCGOpcode opc,
++                       const TCGArg args[TCG_MAX_OP_ARGS],
++                       const int const_args[TCG_MAX_OP_ARGS]);
+ #if TCG_TARGET_MAYBE_vec
+ static bool tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
+                             TCGReg dst, TCGReg src);
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index 46e856f4421..d121dca8789 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -2215,7 +2215,8 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is64)
+ }
+ 
+ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+-                              const TCGArg *args, const int *const_args)
++                              const TCGArg args[TCG_MAX_OP_ARGS],
++                              const int const_args[TCG_MAX_OP_ARGS])
+ {
+     TCGArg a0, a1, a2;
+     int c, const_a2, vexop, rexw = 0;
+diff --git a/tcg/mips/tcg-target.c.inc b/tcg/mips/tcg-target.c.inc
+index add157f6c32..b9bb54f0ecc 100644
+--- a/tcg/mips/tcg-target.c.inc
++++ b/tcg/mips/tcg-target.c.inc
+@@ -1691,7 +1691,8 @@ static void tcg_out_clz(TCGContext *s, MIPSInsn opcv2, MIPSInsn opcv6,
+ }
+ 
+ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+-                              const TCGArg *args, const int *const_args)
++                              const TCGArg args[TCG_MAX_OP_ARGS],
++                              const int const_args[TCG_MAX_OP_ARGS])
+ {
+     MIPSInsn i1, i2;
+     TCGArg a0, a1, a2;
+diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
+index c60b91ba58f..5bf0d069532 100644
+--- a/tcg/riscv/tcg-target.c.inc
++++ b/tcg/riscv/tcg-target.c.inc
+@@ -1238,7 +1238,8 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is_64)
+ static const tcg_insn_unit *tb_ret_addr;
+ 
+ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+-                       const TCGArg *args, const int *const_args)
++                       const TCGArg args[TCG_MAX_OP_ARGS],
++                       const int const_args[TCG_MAX_OP_ARGS])
+ {
+     TCGArg a0 = args[0];
+     TCGArg a1 = args[1];
+diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
+index d5a4d9d37cf..60464524f3d 100644
+--- a/tcg/tci/tcg-target.c.inc
++++ b/tcg/tci/tcg-target.c.inc
+@@ -553,8 +553,9 @@ static inline void tcg_out_call(TCGContext *s, const tcg_insn_unit *arg)
+     old_code_ptr[1] = s->code_ptr - old_code_ptr;
+ }
+ 
+-static void tcg_out_op(TCGContext *s, TCGOpcode opc, const TCGArg *args,
+-                       const int *const_args)
++static void tcg_out_op(TCGContext *s, TCGOpcode opc,
++                       const TCGArg args[TCG_MAX_OP_ARGS],
++                       const int const_args[TCG_MAX_OP_ARGS])
+ {
+     uint8_t *old_code_ptr = s->code_ptr;
+ 
+-- 
+2.26.2
+

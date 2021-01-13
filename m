@@ -1,76 +1,115 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4567667lfb;
-        Tue, 8 Dec 2020 18:57:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxWhvPx0Pnw/oWRUVCWXhyY2UrboNz6WfzyHWnkNbkLCGXPuzqXlBfQBTWoHATM/1oodcXv
-X-Received: by 2002:a05:6902:20a:: with SMTP id j10mr648199ybs.293.1607482649441;
-        Tue, 08 Dec 2020 18:57:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607482649; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp513479lfq;
+        Wed, 13 Jan 2021 07:07:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxzMHlh6fcGS5Q2x8OLBZShxyNVmpi1twXNnKlqk/l6dpzhH9k9/gm33Dn+frGLuCMrVtlZ
+X-Received: by 2002:a0c:e7cb:: with SMTP id c11mr2706157qvo.19.1610550472641;
+        Wed, 13 Jan 2021 07:07:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610550472; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ze3SamXMY0MnSpMUZffzr0RoLRddEKVciOSyIQkRiCSpcTjykCYfmUrr6ag36VTEpw
-         pKYQW1IvVznwPnPPZ4UMd+al6mEt+98N5APcIcMuT0FCZuPE8iCqbdzHGXsuFGVhtBBX
-         57MERW8/Rgqo3mR8sjJi8oECQXTVfHP+vk33O9rWudNAhv025ubyXTV1LPtsD0rXOIX3
-         XwH6cKVKr255sEctGtBLndMYGEKF5v/pzkfw4laIKRTvLtNAn+bdITSXjAR4veECCjei
-         dlPej4sUsLD1MLLkcTnyyNqkyoMb33E3pvvs9NXVyPz3+hTb+mqF4j7H5QDer/4+nBbM
-         WG8A==
+        b=Bg+6QCT5odmbKCQ6fuDNHMCmPvT6brUxbAyAdzr9ZvkJVb4TtbONpwXDlYN16chQTD
+         rcYmZI45VAEJIM3iqDtImQFtsBtXJ73kEuHSYsbZ9KISxyEdgpOZkMbTWo8lEimGOPlq
+         b7AllNSBL/kd8CkYU8jeo30ZLTq8nvfTFHnrLMZTJ+maoILcQ3wvcLZ2J1OdEjg7cSEq
+         QoYA7pTF9R++nAveDxipWKWsLljaL69GCh8wVJMBMEVjmcE4VQ2RXC206eUg8crInx3Y
+         Nu7mYCWpS9xbmcT10knX9Bp2YAAkqG2z+ZrI+PXu+f/Pj+T5EQGan3krxAW9FbxrG19H
+         UMuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=J2z9Gk4CCpSkRNlPczFduG0xvLJTihuwXtdSxJyNrMw=;
-        b=L4DbK/D75axmgKbspoTAQAcqcahqZX2ex+ITbHZo0xjMnlSqwKfP6HqH6hHTHbZl/W
-         TLCgrVIYN9QDm0a2wwe0v5fVvuuhvkcV+CwgUF+WPYxztGrgx0aX48iHpcEYznJIGeYN
-         e0iaI84N85BTkfhZaEVLJvyhb/RPxj0h1DDMmkv7x+HxMmyWsx/jOaR1ks85GwcilVTg
-         ELEiNvd+LvNNvO72kz4PeVHHl2MNlHqhIdXsuUOlRnxM7zYveqPOFmF+gWfr9u1WD0MD
-         9mge+BAt5j+RccOoNNCV3ZsIiVnBaj/VUbBibiASL2eTancRwtKdwfzAY2/Hw5liZp2x
-         UAWA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=JU0rEPktICofuJE6bNsBeUhhODIrPOx5iYAwhAA+TxA=;
+        b=an/kuuX0AvCHD0wt3YnX5AbFMdZ8ykGlTiykqj4Q5iFSbWmM12X+BWjikM2PlzTJ+O
+         +vBusGZfR7OPIwqA7CttLpDObj3pegasL9cNm+1FZzvxKU7vrkCdSe/bh12Xv0MEd6bi
+         tKCcMXZ8kV6WG8aM+WJtoEKMiUbh+zJpEE5mc7TrdZlD3pfkifnTzCeiETQxXfKpkaWb
+         PXqoTulBfURtcwl1JByWbFrtdYk9cakK2XoSt2W+18n98f1+P0PlIqt5AGJiOzH05CBF
+         /8HmesVuURoPR8D0mdEt9S0Jxso56RU5YkQT1waVUi8ojP4Kj8m4+FPOMKV7aNi8D0rb
+         IHyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O/U7LFZy";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x77si421466ybe.306.2020.12.08.18.57.29
+        by mx.google.com with ESMTPS id i140si2756610ybg.20.2021.01.13.07.07.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Dec 2020 18:57:29 -0800 (PST)
+        Wed, 13 Jan 2021 07:07:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38466 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O/U7LFZy";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:34608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kmpfU-0000c7-O2
-	for alex.bennee@linaro.org; Tue, 08 Dec 2020 21:57:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38482)
+	id 1kzhkV-00016B-Vd
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 10:07:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34714)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kmpfH-0000bw-JV; Tue, 08 Dec 2020 21:57:15 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2990)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kmpfF-0002ka-2U; Tue, 08 Dec 2020 21:57:15 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CrMBg6Wc6zhpdK;
- Wed,  9 Dec 2020 10:56:27 +0800 (CST)
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
- DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 9 Dec 2020 10:56:50 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Igor Mammedov
- <imammedo@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH] bugfix: hostmem: Free host_nodes list right after visited
-Date: Wed, 9 Dec 2020 10:56:48 +0800
-Message-ID: <20201209025648.23068-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kzhkC-0000vj-OG; Wed, 13 Jan 2021 10:07:33 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:52098)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kzhk9-0005I8-US; Wed, 13 Jan 2021 10:07:31 -0500
+Received: by mail-wm1-x330.google.com with SMTP id h17so1707945wmq.1;
+ Wed, 13 Jan 2021 07:07:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=JU0rEPktICofuJE6bNsBeUhhODIrPOx5iYAwhAA+TxA=;
+ b=O/U7LFZyilzoQW4LIG4QWlrsUeChNs7uMCt67VW7rC88mfEE1aGGWSUucUzPBsEBqc
+ QeQlirP7pVprIvpJZVSqt6St7L1bo3r54j9GfxX/hPjYrSKl7e2oJASgzWTZnnTYimt4
+ yiTvmnvjiOzFk2Bo69e2dVltdN9eVBOqEYSmRKzdb8yTuF2HUbGvPuL2qsw/5vzqSJUm
+ 56BBSeLEW3jogwiX0eIZ38DrNcR/LLIO/DBW9AJFqcDsCn8l4YuI8grg2KDug/OqaT15
+ oGB+FMoFTs2BqvBoHpDQg40UD1b7P761FlwnegHA/M9oSVYgatm/1wK0T48AIoxtVhso
+ 1Agg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JU0rEPktICofuJE6bNsBeUhhODIrPOx5iYAwhAA+TxA=;
+ b=IIwBcNfOlCJgyp7xYpIioya8VkpyBup6I+NVw5uI+FR7SZDqDHOM+kaisLMUlkMFsm
+ +7kgksez4FarPf1/eplXXg2ORNOOWXebx2wPQ5R6J0ruEXDyQa0j05v5VtMSkzYJv5d0
+ GXwyS4IL9qT0+t5YOt9ElbZ0dyO/LfxXiNYUuTFwtGsvLqfKzWlGLIEYX8tq9dlX5FYs
+ 80MQjng+M5q3Yed/wc1HzYpA++d0DWwa2QoIgUleK/Xvy10rYSdG3gAV8bhpPeM71G1O
+ yuJijNYLk0fSlyjqg3NUSil1QlfMAKgOmUkZ8RSNgk5sainF5Xl3K4oqKulsZ0F3Hg4B
+ 1RsA==
+X-Gm-Message-State: AOAM531CRAY+5RFjwgbVrCxvYgWdB4OjBS2ej0VF2YjIFadvLb0stWIv
+ M2jrFux0l8ig15/ZAZ+On+0=
+X-Received: by 2002:a05:600c:2292:: with SMTP id
+ 18mr2652046wmf.181.1610550446101; 
+ Wed, 13 Jan 2021 07:07:26 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id u26sm3244203wmm.24.2021.01.13.07.07.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 13 Jan 2021 07:07:25 -0800 (PST)
+Subject: Re: [PATCH 0/5] tcg: Restrict tcg_out_op() to arrays of
+ TCG_MAX_OP_ARGS elements
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20210111150114.1415930-1-f4bug@amsat.org>
+ <43f360be-af44-27ce-619b-7a2ad169aa2f@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e157e0ab-1d96-040c-5329-8ebb8064c7c2@amsat.org>
+Date: Wed, 13 Jan 2021 16:07:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.37]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <43f360be-af44-27ce-619b-7a2ad169aa2f@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,62 +122,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, alex.chen@huawei.com, qemu-arm@nongnu.org,
- kuhn.chenqun@huawei.com, wanghaibin.wang@huawei.com,
- Keqian Zhu <zhukeqian1@huawei.com>
+Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Huacai Chen <chenhuacai@kernel.org>, qemu-riscv@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>, Cornelia Huck <cohuck@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DMAJcfA2dge/
+X-TUID: hRYoy5s1YnP6
 
-In host_memory_backend_get_host_nodes, we build host_nodes
-list and output it to v (a StringOutputVisitor) but forget
-to free the list. This fixes the memory leak.
+On 1/11/21 6:22 PM, Richard Henderson wrote:
+> On 1/11/21 5:01 AM, Philippe Mathieu-Daudé wrote:
+>> Attempt to fix the warning reported by Miroslav using GCC 10:
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg771520.html
+>>
+>> Philippe Mathieu-Daudé (5):
+>>   tcg/arm: Hoist common argument loads in tcg_out_op()
+>>   tcg/ppc: Hoist common argument loads in tcg_out_op()
+>>   tcg/s390: Hoist common argument loads in tcg_out_op()
+>>   tcg: Restrict tcg_out_op() to arrays of TCG_MAX_OP_ARGS elements
+>>   tcg: Restrict tcg_out_vec_op() to arrays of TCG_MAX_OP_ARGS elements
+> 
+> I've been trying to figure out a cleaner way to handle these, but this is
+> certainly ok for now, and avoids the Werror.
+> 
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> Will queue to tcg-next.
 
-The memory leak stack:
-
-==qemu-kvm==209357==ERROR: LeakSanitizer: detected memory leaks
-Direct leak of 32 byte(s) in 2 object(s) allocated from:
-  #0 0xfffe430e3393 in __interceptor_calloc (/lib64/libasan.so.4+0xd3393)  ??:?
-  #1 0xfffe41d58b9b in g_malloc0 (/lib64/libglib-2.0.so.0+0x58b9b)  ??:?
-  #2 0xaaac0cdb6e43 (/usr/libexec/qemu-kvm+0xe16e43)  backends/hostmem.c:94
-  #3 0xaaac0d2edf83 (/usr/libexec/qemu-kvm+0x134df83) qom/object.c:1478
-  #4 0xaaac0c976513 (/usr/libexec/qemu-kvm+0x9d6513)  hw/core/machine-qmp-cmds.c:312
-  #5 0xaaac0d2e980b (/usr/libexec/qemu-kvm+0x134980b) qom/object.c:1001
-  #6 0xaaac0c97779b (/usr/libexec/qemu-kvm+0x9d779b)  hw/core/machine-qmp-cmds.c:328 (discriminator 1)
-  #7 0xaaac0d26ed3f (/usr/libexec/qemu-kvm+0x12ced3f) qapi/qapi-commands-machine.c:327
-  #8 0xaaac0d43d647 (/usr/libexec/qemu-kvm+0x149d647) qapi/qmp-dispatch.c:147
-  #9 0xaaac0d21f74b (/usr/libexec/qemu-kvm+0x127f74b) monitor/qmp.c:120
-  #10 0xaaac0d22074b (/usr/libexec/qemu-kvm+0x128074b) monitor/qmp.c:209 (discriminator 4)
-  #11 0xaaac0d4daefb (/usr/libexec/qemu-kvm+0x153aefb) util/async.c:117
-  #12 0xaaac0d4e30fb (/usr/libexec/qemu-kvm+0x15430fb) util/aio-posix.c:459
-  #13 0xaaac0d4dac8f (/usr/libexec/qemu-kvm+0x153ac8f) util/async.c:268
-  #14 0xfffe41d52a6b in g_main_context_dispatch (/lib64/libglib-2.0.so.0+0x52a6b)  ??:?
-  #15 0xaaac0d4e0e97 (/usr/libexec/qemu-kvm+0x1540e97)  util/main-loop.c:218
-  #16 0xaaac0cd9bfa7 (/usr/libexec/qemu-kvm+0xdfbfa7)  vl.c:1791
-  #17 0xaaac0c823bc3 (/usr/libexec/qemu-kvm+0x883bc3)  vl.c:4473
-  #18 0xfffe40ab3ebf in __libc_start_main (/lib64/libc.so.6+0x23ebf)  ??:?
-  #19 0xaaac0c82ed5f (/usr/libexec/qemu-kvm+0x88ed5f)  ??:?
-SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
-
-Fixes: 4cf1b76bf1e2 (hostmem: add properties for NUMA memory policy)
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
----
- backends/hostmem.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/backends/hostmem.c b/backends/hostmem.c
-index 4bde00e8e7..9f9ac95edd 100644
---- a/backends/hostmem.c
-+++ b/backends/hostmem.c
-@@ -105,6 +105,7 @@ host_memory_backend_get_host_nodes(Object *obj, Visitor *v, const char *name,
- 
- ret:
-     visit_type_uint16List(v, name, &host_nodes, errp);
-+    qapi_free_uint16List(host_nodes);
- }
- 
- static void
--- 
-2.23.0
-
+Please hold on, Miroslav found a regression in the PPC patch.

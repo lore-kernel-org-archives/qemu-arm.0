@@ -1,110 +1,110 @@
-Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp27359qvb;
-        Wed, 13 Jan 2021 05:47:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzVQL0ZxK46Im+ubFLLAsCssiTVHBISxAIwenUJMeDoBTwoesoB35eNxLDbcRpZd8IaW6qq
-X-Received: by 2002:a25:30c1:: with SMTP id w184mr3389706ybw.302.1610545625369;
-        Wed, 13 Jan 2021 05:47:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610545625; cv=none;
+Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp28381qvb;
+        Wed, 13 Jan 2021 05:48:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJytWjYCJDQo4DRCnT1kNFHzYNX52FY+CMi4jx5bWlaILUAZ6UQF+HMv+geErq433GXDJ3sj
+X-Received: by 2002:a25:d802:: with SMTP id p2mr3480753ybg.305.1610545718224;
+        Wed, 13 Jan 2021 05:48:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610545718; cv=none;
         d=google.com; s=arc-20160816;
-        b=tQAhxGZ5ZDRp8EGelbqnWKvbxWivbG2LQahsfMufG64WhDL5XeauJtJZeI4lu1EtmE
-         IE5W6Sx8aFtXYO1U8YyyzWqd9eYrSa/oIPgNqNwq86vMHzkJSmYupQIvVzSDUC//3s7F
-         dA22+/SnRbiZiIJWD1v6tA5DNIeEyMq0XYLj0trpjoyb4fqPxi2hI/aKFpIqHLx0cQkJ
-         4juSItBPGS1OzVgIp66NqaIis6eAME6KXKTi7M+y73CAZDk36NVsCoqnn9qHQfTgTSIa
-         gG4rqpDXVAtgGNh4b4WNOvGArE7bt15CIRbNgOwIlk4xKRGD1W7my7ngB4gD/IgFKlHM
-         ujTw==
+        b=qBK15qsrD12Ckl8KEgAwzT0w838ZTiUMx7e8SsSoQTO790fv3kJT08J+xGzgGWUHq6
+         rEuN5z4gW0vMZLGKxAmTd3NyoYFLSJ5fmcjzSJAsT68H0k9nRK7d0Da4EkVWsNeaqAjq
+         nsraTULwz5bkZHl2SVwdCPUOyarex3PXXOOSUKplZo5MtnRVyYDsr7xatQPFsQHc2n6H
+         H+KlMTJ493hqAiVTF1Y+0I37kIrBbwXxngmwDuE6NJ3vVioMqBaELE/PJ507XkFDBwOV
+         BTAtJMhFrvAbCB1Z9sWjLic++bmjHJ/brxBx1P6e91+fnLD6Z+awP8p/mkoyTVs7ngAX
+         LYGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:message-id:date:user-agent
          :references:in-reply-to:subject:to:from:dkim-signature;
-        bh=z4xSfq28ilhdS/dEKCCRIC+4nFcHCGo8hIdFUOMrRzE=;
-        b=HmKALBs+l/0T1D1sb1aA0F+o03Fn+In8z+BtAhqVhbSuEG0AnHle/Ju8B5+FH9KDOM
-         Qq9AN43dGrxGSovFaASdcHcYJfpwQxPqN2mSuFtlNtPf7GR+zfq4VEzRJBwuqzhaWedS
-         7mnahT4WdqIw/2I9bUcB/k2HsNn4xSlMNV+PyQp1xRdC4PQvgn4oSrVvcbiUs4ukYTax
-         jHjUMKMY7jgyA+rulpgT71+G7M/zQuD270gkxD5akQFR2o2RT5KDjsXm/adGuF8bJEyf
-         pK6rTxArCiMufyuGtSOKqIV9db0rTjKcKj+ueSQYuO2+KVpyD3uY4RUfb8qD+c9exSQH
-         Heew==
+        bh=ymhsrLTpVqf+YV4UDp3pX1LEnr75n0cl4NCRaFGDRVs=;
+        b=Zvt5uP9gsEVMLsF9mfZCKWEZSn4Go/nJeJwOYIJ3yWFr9vdIZReUkJXF3RpKMPP7Pt
+         +MvuhWqzQ7y+FW/z9foofQ4fW3B93OjLZg98sv6B5wsURJC0FZRHesPuy3Lpjt6xKN3V
+         Ep+PELV6LOU+4iNnGAe7S5898uhTgatdQhxnOx/okE7pmSxT8vlstdiAHlvHt91+NHwW
+         m0ruY/MdgT2nJztRxa+QxKAZ9engMcYfoLeslVbKTdhzpbOTbDSV9vgVNWEHEvLkEQwS
+         kkEhnXsWJUVToIqBdmz05fOmt4ZiD6G4navy47VOB+XYK8zQPKagj06Vccsi/2VShqdK
+         wBbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hPXh0lqg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YKQAV7DW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m184si2389743ybm.191.2021.01.13.05.47.05
+        by mx.google.com with ESMTPS id k133si2029522ybc.238.2021.01.13.05.48.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 05:47:05 -0800 (PST)
+        Wed, 13 Jan 2021 05:48:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hPXh0lqg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YKQAV7DW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47610 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzgUK-0003UT-Nb
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:47:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43816)
+	id 1kzgVp-00044x-OX
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:48:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1kzgU4-0003Sy-LW
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:46:48 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55332)
+ id 1kzgV8-000440-T2
+ for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:47:54 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40822)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1kzgU2-0003SJ-TS
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:46:48 -0500
+ id 1kzgV7-0003om-4w
+ for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:47:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610545606;
+ s=mimecast20190719; t=1610545672;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=z4xSfq28ilhdS/dEKCCRIC+4nFcHCGo8hIdFUOMrRzE=;
- b=hPXh0lqg+jVOLaeN3SowmtxLIVaQwjPCSUvzhFcH+I40eIVajJKrk43f/BgnYkoBVbRN3w
- IHWLrRQufD6wJvYQh99dxL+0+4iUqiQxgLFS9HrzxTox4OSLjf2RVTWMzq/ux5sGrSM6vf
- 40p0r8Jipxs6LhyJZ1Id9Pro9iv/mT4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-73-LmWhCuclPtCdL3QvWmllfA-1; Wed, 13 Jan 2021 08:46:43 -0500
-X-MC-Unique: LmWhCuclPtCdL3QvWmllfA-1
-Received: by mail-wm1-f71.google.com with SMTP id r1so844204wmn.8
- for <qemu-arm@nongnu.org>; Wed, 13 Jan 2021 05:46:43 -0800 (PST)
+ bh=ymhsrLTpVqf+YV4UDp3pX1LEnr75n0cl4NCRaFGDRVs=;
+ b=YKQAV7DWkhd2rwSn22HqISb+mRC+S30UUhOwf4y2VpEBdzBSDUYjCQktdTOasDqU9Aqit8
+ tbC2nh8rJOrER3HXGHN9+JLLf6lzVY2WyhUfof51GQ1bGdUURVri83wkJ628pAjfhlgCe9
+ 7+/j2i/JKgr0Z4r8WBGsA/PMwA+sENE=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-399-K9tbAvfiOi-6CWMyV5C60Q-1; Wed, 13 Jan 2021 08:47:50 -0500
+X-MC-Unique: K9tbAvfiOi-6CWMyV5C60Q-1
+Received: by mail-wr1-f69.google.com with SMTP id v5so1002989wrr.0
+ for <qemu-arm@nongnu.org>; Wed, 13 Jan 2021 05:47:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
  :user-agent:reply-to:date:message-id:mime-version
  :content-transfer-encoding;
- bh=z4xSfq28ilhdS/dEKCCRIC+4nFcHCGo8hIdFUOMrRzE=;
- b=Pbt6ZO8QDDhQnTCwLwQMDWflIWbzkhb6DIVaUddMG9gPxjot30mvEFkkG5+6PZ/yPc
- 0Ldcy+jG2reJyzx81mibCYg5+nYZ8l+OiftJ71K0sjAY4jiG7NihWutOsc7Efcf89zT7
- ylKfjr5eTRqkefo7FhYh/rSsp+JK2zVjWWYXAbtownnu0XGVGlvucGr1bru/H/7gnu7H
- AHorMq8Etb1p11JHe36nkSlq+LaJnt9Sm0zgzJFVjXwrX7q3ZNubGcBpB0rg19aGRIyj
- tL5y5Xr+uifYInmkXPqVSksSo0ecpLbj6GjQS/5TX0PTNYUw5DAVOIdb4WNUmJIxV08m
- 0edA==
-X-Gm-Message-State: AOAM532R60kBNwcroiehocHoN1okf2XVdzNRB7iSTDUn2Nf9whUEQstU
- DiTJXz2PZ+GB7+nDAfS6SA/KNLtAXDbv8faSUwwVifCktx58saqQU9o4WsrNuFRqCOGDN8kD/HU
- 3C+wSJd0t0Paa
-X-Received: by 2002:a1c:6a02:: with SMTP id f2mr2359707wmc.36.1610545602483;
- Wed, 13 Jan 2021 05:46:42 -0800 (PST)
-X-Received: by 2002:a1c:6a02:: with SMTP id f2mr2359688wmc.36.1610545602321;
- Wed, 13 Jan 2021 05:46:42 -0800 (PST)
+ bh=KcI38j+Zh3rURT7LR1cI4qN+NHTumYNN/a/93hEfFGI=;
+ b=FHXktgoS3bId3e+rcsbB81AnIhT6WGJT+G5h/SjXDS30OKtRgfGa7OwHnrZeKWfu8F
+ Rhdre6u8SoUa6y4uiMhrcmy+oX+KaJiJ1EA+OD8n1ggm6k9NbGofmVypBhVq3HhAE+PM
+ cwROCFB0qim359oO5OjBbYJCUV7ieOJIYhsVpcuSfr9L415CbUASqPtdBebYUImRuE5r
+ PCODJOkfImQqEDkF8YoORZKQBNvEAxFZtsxDZCSI6aAf1/Y8g574WeUXhrXfCUYeVnXN
+ Z0/hIfVEmCWVPNS/zBvBG/vz167eFvjOVqLBMebyNvfTlm9VIzwl0zXYmcZSPjkrTtA8
+ XIFw==
+X-Gm-Message-State: AOAM533+g03BWoue4ZmHIo89/VCvOuvVggBMc+4iYCX/WdMCBX/opekZ
+ ZAbJsTzDEb9uh9CPZsU0qsi44y5aiT+T079qZpGgykhm/O35JoXOPf4QdhwXU7QXcBXNLD134Bl
+ I5yGYfIX0cKoJ
+X-Received: by 2002:a1c:3206:: with SMTP id y6mr2240409wmy.127.1610545669443; 
+ Wed, 13 Jan 2021 05:47:49 -0800 (PST)
+X-Received: by 2002:a1c:3206:: with SMTP id y6mr2240394wmy.127.1610545669204; 
+ Wed, 13 Jan 2021 05:47:49 -0800 (PST)
 Received: from localhost (trasno.trasno.org. [83.165.45.250])
- by smtp.gmail.com with ESMTPSA id c11sm2620625wmd.36.2021.01.13.05.46.41
+ by smtp.gmail.com with ESMTPSA id l20sm3736801wrh.82.2021.01.13.05.47.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Jan 2021 05:46:41 -0800 (PST)
+ Wed, 13 Jan 2021 05:47:48 -0800 (PST)
 From: Juan Quintela <quintela@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v6 06/11] hw/ssi: imx_spi: Rework imx_spi_read() to
- handle block disabled
-In-Reply-To: <20210112183529.2011863-7-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 12 Jan 2021 19:35:24
- +0100")
+Subject: Re: [RFC PATCH v6 04/11] hw/ssi: imx_spi: Reduce 'change_mask'
+ variable scope
+In-Reply-To: <87im81gdig.fsf@secure.mitica> (Juan Quintela's message of "Wed, 
+ 13 Jan 2021 14:41:43 +0100")
 References: <20210112183529.2011863-1-f4bug@amsat.org>
- <20210112183529.2011863-7-f4bug@amsat.org>
+ <20210112183529.2011863-5-f4bug@amsat.org>
+ <87im81gdig.fsf@secure.mitica>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
-Date: Wed, 13 Jan 2021 14:46:40 +0100
-Message-ID: <87a6tdgda7.fsf@secure.mitica>
+Date: Wed, 13 Jan 2021 14:47:47 +0100
+Message-ID: <875z41gd8c.fsf@secure.mitica>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
@@ -141,17 +141,80 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bin Meng <bmeng.cn@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 98dhCk5k1R4/
+X-TUID: iiB8zLPzV0tm
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> When the block is disabled, it stay it is 'internal reset logic'
-> (internal clocks are gated off). Reading any register returns
-> its reset value. Only update this value if the device is enabled.
+Juan Quintela <quintela@redhat.com> wrote:
+> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >
-> Ref: i.MX 6DQ Applications Processor Reference Manual (IMX6DQRM),
->      chapter 21.7.3: Control Register (ECSPIx_CONREG)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> I think this one is wrong.
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Wrong is a strong word.  I mean that it changes behaviour and the commit
+message don't talk about changing behaviour.
+
+Later, Juan.
+
+>
+>
+>> ---
+>>  hw/ssi/imx_spi.c | 3 +--
+>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>
+>> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+>> index 35ab33c0511..bcc535f2893 100644
+>> --- a/hw/ssi/imx_spi.c
+>> +++ b/hw/ssi/imx_spi.c
+>> @@ -303,7 +303,6 @@ static void imx_spi_write(void *opaque, hwaddr offse=
+t, uint64_t value,
+>>  {
+>>      IMXSPIState *s =3D opaque;
+>>      uint32_t index =3D offset >> 2;
+>> -    uint32_t change_mask;
+>> =20
+>>      if (index >=3D  ECSPI_MAX) {
+>>          qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset =
+0x%"
+>> @@ -313,7 +312,6 @@ static void imx_spi_write(void *opaque, hwaddr offse=
+t, uint64_t value,
+>> =20
+>>      trace_imx_spi_write(index, imx_spi_reg_name(index), value);
+>> =20
+>> -    change_mask =3D s->regs[index] ^ value;
+>> =20
+>>      switch (index) {
+>>      case ECSPI_RXDATA:
+>> @@ -357,6 +355,7 @@ static void imx_spi_write(void *opaque, hwaddr offse=
+t, uint64_t value,
+>>          }
+>> =20
+>>          if (imx_spi_channel_is_master(s)) {
+>> +            uint32_t change_mask =3D s->regs[index] ^ value;
+>>              int i;
+>> =20
+>>              /* We are in master mode */
+>
+> The code does:
+>
+>     change_mask =3D s->regs[index] ^ value;
+>
+>     switch (index) {
+>
+>     ...
+>
+>     case ECSPI_CONREG:
+>         s->regs[ECSPI_CONREG] =3D value;  <<---- here
+>
+>         if (!imx_spi_is_enabled(s)) {
+>             /* device is disabled, so this is a reset */
+>             imx_spi_reset(DEVICE(s));
+>             return;
+>         }
+>
+>         if (imx_spi_channel_is_master(s)) {
+>             int i;
+>        >>>>>  You are setting change_mask here.
+>
+> At this point, s->regs[index] has a new value in "here".
+>
+> Later, Juan.
 

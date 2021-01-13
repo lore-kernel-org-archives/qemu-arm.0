@@ -1,155 +1,355 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2074011lfg;
-        Mon, 8 Mar 2021 10:23:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxrObhH7hU7Telt8siCaplAoE6/GtviQ3m4QwFSi98H3oywn8L0kR6mk+FaTiLuJHu/7UTM
-X-Received: by 2002:a92:dd82:: with SMTP id g2mr21449952iln.194.1615227790242;
-        Mon, 08 Mar 2021 10:23:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615227790; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp476436lfq;
+        Wed, 13 Jan 2021 06:23:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwnmj7Ha5Rfdbp7LFi6qBq21B0z+m7WYto9e5NMr9RybpPAYG3RdpfxxUMKK6LB0lGxIH4M
+X-Received: by 2002:a25:e047:: with SMTP id x68mr3557341ybg.160.1610547796692;
+        Wed, 13 Jan 2021 06:23:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610547796; cv=none;
         d=google.com; s=arc-20160816;
-        b=BCX17Zgy3iKXsogfyTvCyl26xFczf2Ef8G1N5v6c7E3K8Bbl/zA/0pFpuRxSJgY1HY
-         xV7YDYlUNty7Mb3n7zqlANRSNEZ8/qQqMgqaVkdNIb8hXBXA6paA9suM5Akr+27+cgLs
-         cneJyuyIiiwy0UQiRM3KgHqFLZLRRKiJK1CqLTx+Tsdv8irjqCp4PbszWtNwpkg47OPP
-         5bLO+U9NTf6K640KgSAs8mXS69sIrI8m4VMpdiMxlcaxnUveaXUKp5Ixy9pDoNX3LzAH
-         m94oWsVRivQv7q7L0smdzdru5F4vaSsH4yJ7rOIwoYkJwXo/DhcGcJLoopOLaAZJHUQA
-         MDPA==
+        b=rANEz9Xq/34MQ0QT0f0awLcE/CzprjM5SPWr7Be6hxUXarzPDWKlRMwhMu9Q2iAHjf
+         esrdc9N8N3kp+6kdWkQfTn3Skp8I+ecjOQmaBtgWfhz0EM7Wnsut8p/ejzv68Q6L0IGH
+         YXL/8zzjwVxMDR22phNGrQp0xr54pjbr29sosRLj2VJUDosglN0ezGxJ1HdlOlIyLCtI
+         ftVP45HoDsG5iNTt0rXVS4McATVNq7ACOWt84kJmaDlPT+NouqiscP2TmpcLG2A+BU6I
+         z9kAAl3vdKaQ0/yEuSt+BgrS1BZl8hTzEmcTpFcugPoJ/V/xmGTdbAG4Hoh/yECoSJPT
+         15XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=WcywYy0MwbLvp1uGuKwbkEhzLSElonvrYpbBsOj7Qzc=;
-        b=mqeiBH/sjCFJH+Mz/h6W+AScJm3+Tv152LBwzmhlkvV//tiKu3qYUgPEhEK7kORr88
-         aDniEo2Cc332HMQbiAzjMjKhZ9OZjnk0p036GleVfxuzKWHQxKSSyP/WGlxYzsAO2f/u
-         9Y6OAYzI/pAE5QQ19Ktpc/M5rDJo7YDNkyS5pa5h4g9ymh56hwueotFZxEzhtNmidqiN
-         g0UKIfXS/J8ufo3RiQKExsHgt8WCOcQJuK0/ZtvlFEr1Hh+A1uHXqdM1pRoyljVWCOhg
-         +E7+npE1OMij0sDtMT199Enjlq68Gfpx606Sl4WMx3ZR59HtyCtXc350PzEFAaSbj/8n
-         QExA==
+        bh=j/tzQYxcL9oPXA73zHHNehn2z9Rge6a9/KFC8AG2a48=;
+        b=cc3Ez3En6KcSQCyzyaR663/YV8d7LGzJyxxP02LwPNHAgE/M9jfJmxlsUu2dx6vCKF
+         6KUHRRA+KXn90QFmSp8mmJ+thhTQdl+d8XPsuvR7834v+H05QucW01EMyYTTdTI/yvb/
+         ExBiwa4R6HTJ+XiCeaHgp0tW3yxFCBhDzdw4MQlJ6uhVjcXAP4KrLeByFfzhCejnkBH5
+         xeqUyqeszTCfOvSnBUreOjzx7GbQ4GruL0LE0j1XWquM7/K3O/n59OcYe+Ph1bfws0k6
+         mZqmLul4WOPyPsjjrlzY7vk1JaIu8LEePxzuBWYNKCfk+EOmxcSwH2mONIA6xawi3fad
+         maCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GOoYbDgT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p+LdzPCw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i30si10649684ila.151.2021.03.08.10.23.10
+        by mx.google.com with ESMTPS id u5si2226726ybo.69.2021.01.13.06.23.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Mar 2021 10:23:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Jan 2021 06:23:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GOoYbDgT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34556 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p+LdzPCw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41244 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lJKX7-0005iY-Hk
-	for alex.bennee@linaro.org; Mon, 08 Mar 2021 13:23:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54658)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzh3M-0000Mj-0I
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 09:23:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lJJnP-0002Fo-Qm
- for qemu-arm@nongnu.org; Mon, 08 Mar 2021 12:35:55 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:40450)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kzgrk-0007Ax-0K; Wed, 13 Jan 2021 09:11:16 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:35843)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lJJnM-0008E7-Lc
- for qemu-arm@nongnu.org; Mon, 08 Mar 2021 12:35:55 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id ci14so21948512ejc.7
- for <qemu-arm@nongnu.org>; Mon, 08 Mar 2021 09:35:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kzgrh-0005cp-JP; Wed, 13 Jan 2021 09:11:15 -0500
+Received: by mail-ed1-x534.google.com with SMTP id b2so2060651edm.3;
+ Wed, 13 Jan 2021 06:11:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WcywYy0MwbLvp1uGuKwbkEhzLSElonvrYpbBsOj7Qzc=;
- b=GOoYbDgTObfs+5s0dyi1jb7LeWwx3yYBmeO1IqargXh/MdvSLVw+tzNsXg0ym/3V3e
- h2OG+F0azIgSXJeP7eh9tdWG3bLIYkceDUTQwFCx74Nv89cFO9lKCRqgMPtGvgHr2oCu
- smRbYj79+Th5XHCzVDQRnQ3UCAgOG+45mgatUxxoNRcbdmhLQW9WB8HB3Nb+Idt8JGrA
- pS7FWDHbexbb4xr7H1+d+4hIDQ4RaM2jJ9K2fE/FJejkq6ipKZa4gvuNY12zi+psxum4
- 5rHqYUAGjEH1/8e4C88XjE4tDEindRSjzAouzn7rATR+xvyPBTjWB4HsjF5DGUiHgSFp
- Rfrg==
+ :cc; bh=j/tzQYxcL9oPXA73zHHNehn2z9Rge6a9/KFC8AG2a48=;
+ b=p+LdzPCwrMO54FN2vizwydvYz8ZgMxrW79QbxiLQoiPNjuPMAwU+q5V6sseXnj7ZME
+ LnN6xPX3H+FlpyGiSWVTZoNTM59znEkyua6Q5eO4/a4Xv1G17tQRC7XdBNjEVd7kT0CL
+ WiJwSsVmd7BXkzWTYfVbU6PiOHBmx1ZDS4iYy0VagxHP5MBdNc0UNRFv3Su70n5np4/q
+ /ciNs8deNDbEDcOyxqInPBjyAxby7MY/kzub2UFTUmrOGVbGmUn53v6nePM5UvWMvVFb
+ iKcwh/33lBemxf4MdApj9qnIKq1cm8IZyHl9+gQ0BndyJNYQdCE6XJEYkQTXJB0x3e+5
+ XHdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=WcywYy0MwbLvp1uGuKwbkEhzLSElonvrYpbBsOj7Qzc=;
- b=QhhXpBvXiv/ioIYm34X/pQrYEIMDKY/hpu66ZMdgqn3kVj83daNeIBusxidEAXA9fB
- 4lJvpy6d5CQgtjy3+yO5pPXHH7+dJLjMhJt61DfvBrvhSA/2/KlwPKRPcNhsIMF7yZ0c
- SdasPptHKD3kjC0ciZASf8z+D7FZW9dSE8npxsQyb5mPIMcernTYL5b8sFRm1rjvz00O
- 10hlMZV9eCz69mz+La35qhUKAlW9rr26Z+PVY2WSI1evEy8vXLYKmOqyT156Hn0cHRCp
- jtCgHEBQ/tHdOge7qlVeMA8GQNHSnq9NjJkgCSfanTPf8eBCJFsC6ZPgyHUEFQ0VgG95
- y2Ag==
-X-Gm-Message-State: AOAM533xz14h8sxCHCwum0UKYhrKhhOdCxrFeMzhy8ia9NiBQcGfKs+u
- F81wgUTGEP9lmuxtxskD2tjveJHJlaH4syet9wt2Kg==
-X-Received: by 2002:a17:906:16ca:: with SMTP id
- t10mr16269429ejd.85.1615224951052; 
- Mon, 08 Mar 2021 09:35:51 -0800 (PST)
+ bh=j/tzQYxcL9oPXA73zHHNehn2z9Rge6a9/KFC8AG2a48=;
+ b=pEH7lrKMP8bNrIr+WRw54LDjCAX+GZ8mbm8o91Z1pDRlq0vxIviy+vjruirHVoew8F
+ UuIbsDjs1DpEHdBhDtP2gHLDgkkv+HFoFw2jYWyNliwdx59Ve/ul6M/QMat4QrJP0b3F
+ 8okAec8x8HOfSUFQwOfhn6ABYjQCnBBGaXVQ3r2yVuYgwSi6Ete5+Xfb+lvj1dDnICK8
+ YdHuF+76bo4kLLljWEIbws/j7MDQqJ9SpS8kT0s4xuXs+QO6EFbQcGbLDXewzG0Y2B6v
+ KJsO9g33o1/gJ3UNDn2zxgLcSFr6FA67SnZeemFed1NenYxQkg7WaL+CTbNOp2vXwe0K
+ Xi8g==
+X-Gm-Message-State: AOAM533QvZQUebJmO9ym7q0x6aHLT/wcF1ymkynwW+pXSXxWPblElFzh
+ lQ3eHRXERHwE6KnNRXrlMuKhar0SEJdMc7uWb3o=
+X-Received: by 2002:a05:6402:1714:: with SMTP id
+ y20mr1925629edu.2.1610547070906; 
+ Wed, 13 Jan 2021 06:11:10 -0800 (PST)
 MIME-Version: 1.0
-References: <20210219144617.4782-1-peter.maydell@linaro.org>
- <20210219144617.4782-44-peter.maydell@linaro.org>
- <5283165e-f8f8-fd5b-843c-2010d212785b@linaro.org>
- <CAFEAcA8kLV_gxbD+Gt+c4ShTxcPKEUHYvF26gmtDA_-iAuWdTQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8kLV_gxbD+Gt+c4ShTxcPKEUHYvF26gmtDA_-iAuWdTQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Mar 2021 17:35:34 +0000
-Message-ID: <CAFEAcA-JKTOoUpN=KOkYNsoT6_-wvJFhmkfG0qH84cSOX9CsVg@mail.gmail.com>
-Subject: Re: [PATCH 43/44] docs/system/arm/mps2.rst: Document the new
- mps3-an547 board
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
+References: <FRYP281MB0158389968A2A1C231F3A585ABFB0@FRYP281MB0158.DEUP281.PROD.OUTLOOK.COM>
+ <CAFEAcA9-EP7s-gNCsXf_59eOfo+hvTX_EwJjg02dHt0eyWOk9A@mail.gmail.com>
+ <15fc51bf-1473-2808-583e-c58eb1620577@greensocs.com>
+In-Reply-To: <15fc51bf-1473-2808-583e-c58eb1620577@greensocs.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Wed, 13 Jan 2021 15:11:01 +0100
+Message-ID: <CAJy5ezruHnVHbDFLzeMpj7=1=gSjExEE9H_3j6eVpr3-Pa0UVQ@mail.gmail.com>
+Subject: Re: [PATCH] Initialize Zynq7000 UART clocks on reset
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: multipart/alternative; boundary="0000000000000e376905b8c8b6cc"
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WyZE0xYP4a2s
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Michael Peter <michael.peter@hensoldt-cyber.de>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0rVNfs2eMyux
 
-On Fri, 5 Mar 2021 at 10:22, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 5 Mar 2021 at 01:28, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> >
-> > On 2/19/21 6:46 AM, Peter Maydell wrote:
-> > > @@ -1,5 +1,5 @@
-> > > -Arm MPS2 and MPS3 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an500``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``, ``mps3-an524``)
-> > > -=========================================================================================================================================
-> > > +Arm MPS2 and MPS3 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an500``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``, ``mps3-an524``, ``mps3-an547``)'
-> > I think you should drop the list here, as it has gotten *way* too long.
-> >
-> > > @@ -27,6 +27,8 @@ QEMU models the following FPGA images:
-> > >     Dual Cortex-M33 as documented in Arm Application Note AN521
-> > >   ``mps3-an524``
-> > >     Dual Cortex-M33 on an MPS3, as documented in Arm Application Note AN524
-> > > +``mps3-an547``
-> > > +  Cortex-M55 on an MPS3, as documented in Arm Application Note AN547
-> >
-> > The list is down here, anyway.
->
-> The title is what generates the text for the table of contents in the
-> next page up:
->
-> https://qemu-project.gitlab.io/qemu/system/target-arm.html#board-specific-documentation
->
-> I like having every board model listed explicitly in that ToC. (Though we
-> have broken this rule for the Aspeed boards with "*-bmc"...)
+--0000000000000e376905b8c8b6cc
+Content-Type: text/plain; charset="UTF-8"
 
-I put this patch into the pullreq as-is, because the series is otherwise
-ready to go and this was a minor thing; happy to send a followup patch
-tweaking the title text if we conclude that we want to do that.
+On Wed, 13 Jan 2021, 11:19 Damien Hedde, <damien.hedde@greensocs.com> wrote:
 
-thanks
--- PMM
+>
+> This is ok but I'm afraid we may end up doing this kind of thing in a
+> lot of devices. So maybe we should consider changing the behavior of
+> device_is_in_reset() so that it returns false in the reset-exit case.
+> What do you think ? (I've a patch for this, which make this one useless)
+>
+
+Thanks Damien,
+
+IMO, a central fix for this would be better, I agree with you.
+
+Thanks,
+Edgar
+
+
+
+> But this patch does not harm so, anyway:
+> Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
+>
+> On 1/7/21 9:00 PM, Peter Maydell wrote:
+> > Alistair/Edgar/Damien -- could I get a review from one of you
+> > for this Xilinx clock-gen related patch, please?
+> >
+> > thanks
+> > -- PMM
+> >
+> > On Tue, 24 Nov 2020 at 18:54, Michael Peter
+> > <michael.peter@hensoldt-cyber.de> wrote:
+> >>
+> >> Pass an additional argument to zynq_slcr_compute_clocks that indicates
+> whether an reset-exit condition
+> >> applies. If called from zynq_slcr_reset_exit, external clocks are
+> assumed to be active, even if the
+> >> device state indicates a reset state.
+> >>
+> >> Signed-off-by: Michael Peter <michael.peter@hensoldt-cyber.de>
+> >> ---
+> >>  hw/misc/zynq_slcr.c | 12 ++++++------
+> >>  1 file changed, 6 insertions(+), 6 deletions(-)
+> >>
+> >> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> >> index a2b28019e3..073122b934 100644
+> >> --- a/hw/misc/zynq_slcr.c
+> >> +++ b/hw/misc/zynq_slcr.c
+> >> @@ -269,12 +269,12 @@ static uint64_t zynq_slcr_compute_clock(const
+> uint64_t periods[],
+> >>   * But do not propagate them further. Connected clocks
+> >>   * will not receive any updates (See zynq_slcr_compute_clocks())
+> >>   */
+> >> -static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
+> >> +static void zynq_slcr_compute_clocks(ZynqSLCRState *s, bool
+> ignore_reset)
+> >>  {
+> >>      uint64_t ps_clk = clock_get(s->ps_clk);
+> >>
+> >>      /* consider outputs clocks are disabled while in reset */
+> >> -    if (device_is_in_reset(DEVICE(s))) {
+> >> +    if (!ignore_reset && device_is_in_reset(DEVICE(s))) {
+> >>          ps_clk = 0;
+> >>      }
+> >>
+> >> @@ -305,7 +305,7 @@ static void
+> zynq_slcr_propagate_clocks(ZynqSLCRState *s)
+> >>  static void zynq_slcr_ps_clk_callback(void *opaque)
+> >>  {
+> >>      ZynqSLCRState *s = (ZynqSLCRState *) opaque;
+> >> -    zynq_slcr_compute_clocks(s);
+> >> +    zynq_slcr_compute_clocks(s, false);
+> >>      zynq_slcr_propagate_clocks(s);
+> >>  }
+> >>
+> >> @@ -410,7 +410,7 @@ static void zynq_slcr_reset_hold(Object *obj)
+> >>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
+> >>
+> >>      /* will disable all output clocks */
+> >> -    zynq_slcr_compute_clocks(s);
+> >> +    zynq_slcr_compute_clocks(s, false);
+> >>      zynq_slcr_propagate_clocks(s);
+> >>  }
+> >>
+> >> @@ -419,7 +419,7 @@ static void zynq_slcr_reset_exit(Object *obj)
+> >>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
+> >>
+> >>      /* will compute output clocks according to ps_clk and registers */
+> >> -    zynq_slcr_compute_clocks(s);
+> >> +    zynq_slcr_compute_clocks(s, true);
+> >>      zynq_slcr_propagate_clocks(s);
+> >>  }
+> >>
+> >> @@ -558,7 +558,7 @@ static void zynq_slcr_write(void *opaque, hwaddr
+> offset,
+> >>      case R_ARM_PLL_CTRL:
+> >>      case R_DDR_PLL_CTRL:
+> >>      case R_UART_CLK_CTRL:
+> >> -        zynq_slcr_compute_clocks(s);
+> >> +        zynq_slcr_compute_clocks(s, false);
+> >>          zynq_slcr_propagate_clocks(s);
+> >>          break;
+> >>      }
+> >> --
+> >> 2.17.1
+> >
+>
+
+--0000000000000e376905b8c8b6cc
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, 13 Jan 2021, 11:19 Damien Hedde, &lt;<a href=
+=3D"mailto:damien.hedde@greensocs.com">damien.hedde@greensocs.com</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
+;border-left:1px #ccc solid;padding-left:1ex"><br>
+This is ok but I&#39;m afraid we may end up doing this kind of thing in a<b=
+r>
+lot of devices. So maybe we should consider changing the behavior of<br>
+device_is_in_reset() so that it returns false in the reset-exit case.<br>
+What do you think ? (I&#39;ve a patch for this, which make this one useless=
+)<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto"=
+>Thanks Damien,=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">IM=
+O, a central fix for this would be better, I agree with you.</div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">Thanks,=C2=A0</div><div dir=3D"auto">=
+Edgar</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=
+=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+But this patch does not harm so, anyway:<br>
+Reviewed-by: Damien Hedde &lt;<a href=3D"mailto:damien.hedde@greensocs.com"=
+ target=3D"_blank" rel=3D"noreferrer">damien.hedde@greensocs.com</a>&gt;<br=
+>
+<br>
+On 1/7/21 9:00 PM, Peter Maydell wrote:<br>
+&gt; Alistair/Edgar/Damien -- could I get a review from one of you<br>
+&gt; for this Xilinx clock-gen related patch, please?<br>
+&gt; <br>
+&gt; thanks<br>
+&gt; -- PMM<br>
+&gt; <br>
+&gt; On Tue, 24 Nov 2020 at 18:54, Michael Peter<br>
+&gt; &lt;<a href=3D"mailto:michael.peter@hensoldt-cyber.de" target=3D"_blan=
+k" rel=3D"noreferrer">michael.peter@hensoldt-cyber.de</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; Pass an additional argument to zynq_slcr_compute_clocks that indic=
+ates whether an reset-exit condition<br>
+&gt;&gt; applies. If called from zynq_slcr_reset_exit, external clocks are =
+assumed to be active, even if the<br>
+&gt;&gt; device state indicates a reset state.<br>
+&gt;&gt;<br>
+&gt;&gt; Signed-off-by: Michael Peter &lt;<a href=3D"mailto:michael.peter@h=
+ensoldt-cyber.de" target=3D"_blank" rel=3D"noreferrer">michael.peter@hensol=
+dt-cyber.de</a>&gt;<br>
+&gt;&gt; ---<br>
+&gt;&gt;=C2=A0 hw/misc/zynq_slcr.c | 12 ++++++------<br>
+&gt;&gt;=C2=A0 1 file changed, 6 insertions(+), 6 deletions(-)<br>
+&gt;&gt;<br>
+&gt;&gt; diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c<br>
+&gt;&gt; index a2b28019e3..073122b934 100644<br>
+&gt;&gt; --- a/hw/misc/zynq_slcr.c<br>
+&gt;&gt; +++ b/hw/misc/zynq_slcr.c<br>
+&gt;&gt; @@ -269,12 +269,12 @@ static uint64_t zynq_slcr_compute_clock(cons=
+t uint64_t periods[],<br>
+&gt;&gt;=C2=A0 =C2=A0* But do not propagate them further. Connected clocks<=
+br>
+&gt;&gt;=C2=A0 =C2=A0* will not receive any updates (See zynq_slcr_compute_=
+clocks())<br>
+&gt;&gt;=C2=A0 =C2=A0*/<br>
+&gt;&gt; -static void zynq_slcr_compute_clocks(ZynqSLCRState *s)<br>
+&gt;&gt; +static void zynq_slcr_compute_clocks(ZynqSLCRState *s, bool ignor=
+e_reset)<br>
+&gt;&gt;=C2=A0 {<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 uint64_t ps_clk =3D clock_get(s-&gt;ps_clk);<b=
+r>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* consider outputs clocks are disabled while =
+in reset */<br>
+&gt;&gt; -=C2=A0 =C2=A0 if (device_is_in_reset(DEVICE(s))) {<br>
+&gt;&gt; +=C2=A0 =C2=A0 if (!ignore_reset &amp;&amp; device_is_in_reset(DEV=
+ICE(s))) {<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ps_clk =3D 0;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;&gt;<br>
+&gt;&gt; @@ -305,7 +305,7 @@ static void zynq_slcr_propagate_clocks(ZynqSLC=
+RState *s)<br>
+&gt;&gt;=C2=A0 static void zynq_slcr_ps_clk_callback(void *opaque)<br>
+&gt;&gt;=C2=A0 {<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 ZynqSLCRState *s =3D (ZynqSLCRState *) opaque;=
+<br>
+&gt;&gt; -=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
+&gt;&gt; +=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, false);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<br>
+&gt;&gt;=C2=A0 }<br>
+&gt;&gt;<br>
+&gt;&gt; @@ -410,7 +410,7 @@ static void zynq_slcr_reset_hold(Object *obj)<=
+br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 ZynqSLCRState *s =3D ZYNQ_SLCR(obj);<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* will disable all output clocks */<br>
+&gt;&gt; -=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
+&gt;&gt; +=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, false);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<br>
+&gt;&gt;=C2=A0 }<br>
+&gt;&gt;<br>
+&gt;&gt; @@ -419,7 +419,7 @@ static void zynq_slcr_reset_exit(Object *obj)<=
+br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 ZynqSLCRState *s =3D ZYNQ_SLCR(obj);<br>
+&gt;&gt;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 /* will compute output clocks according to ps_=
+clk and registers */<br>
+&gt;&gt; -=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
+&gt;&gt; +=C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, true);<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<br>
+&gt;&gt;=C2=A0 }<br>
+&gt;&gt;<br>
+&gt;&gt; @@ -558,7 +558,7 @@ static void zynq_slcr_write(void *opaque, hwad=
+dr offset,<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 case R_ARM_PLL_CTRL:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 case R_DDR_PLL_CTRL:<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 case R_UART_CLK_CTRL:<br>
+&gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_slcr_compute_clocks(s);<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_slcr_compute_clocks(s, false);<b=
+r>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_slcr_propagate_clocks(s);<b=
+r>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;&gt; --<br>
+&gt;&gt; 2.17.1<br>
+&gt; <br>
+</blockquote></div></div></div>
+
+--0000000000000e376905b8c8b6cc--

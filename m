@@ -1,156 +1,155 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp513479lfq;
-        Wed, 13 Jan 2021 07:07:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxzMHlh6fcGS5Q2x8OLBZShxyNVmpi1twXNnKlqk/l6dpzhH9k9/gm33Dn+frGLuCMrVtlZ
-X-Received: by 2002:a0c:e7cb:: with SMTP id c11mr2706157qvo.19.1610550472641;
-        Wed, 13 Jan 2021 07:07:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610550472; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp215076lfq;
+        Thu, 14 Jan 2021 03:50:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwc5l4J8xQ4iN3rMKO5Mh2YafH/73M+clrI1//3R8muY2poieN/SiFgFLGJTVX5t8r+PoW1
+X-Received: by 2002:a25:3d47:: with SMTP id k68mr10038494yba.415.1610625051600;
+        Thu, 14 Jan 2021 03:50:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610625051; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bg+6QCT5odmbKCQ6fuDNHMCmPvT6brUxbAyAdzr9ZvkJVb4TtbONpwXDlYN16chQTD
-         rcYmZI45VAEJIM3iqDtImQFtsBtXJ73kEuHSYsbZ9KISxyEdgpOZkMbTWo8lEimGOPlq
-         b7AllNSBL/kd8CkYU8jeo30ZLTq8nvfTFHnrLMZTJ+maoILcQ3wvcLZ2J1OdEjg7cSEq
-         QoYA7pTF9R++nAveDxipWKWsLljaL69GCh8wVJMBMEVjmcE4VQ2RXC206eUg8crInx3Y
-         Nu7mYCWpS9xbmcT10knX9Bp2YAAkqG2z+ZrI+PXu+f/Pj+T5EQGan3krxAW9FbxrG19H
-         UMuQ==
+        b=oN94dHK6rxyFjhNKWWBPr9usDntG6aZZyJ74htarAEJOPy/lA0xZcXHsc0OI5zBBEs
+         xoCYgZGsuegoWaplmQh2txqGbgmcSbaf32ax8luJkBmXEqiV0XRD5uvw/RnJeJdwBxIM
+         3QQycpU05MDfk5zJHjFS4nARk8Aq9JakgGC5DFaTvyDLC4EV6WJKHDUxFQVUUNhbgyaT
+         hSS0x5anC9Zj7c/sds925KFExwByLWL+eTVX4Q6sF4hoJdkzq6baSPWZGKsgutXc2wxw
+         9JoJzQJ16SFJHNX+VRWdwK82uUG/PD3SJDRG4k7trHnDm61iVjOFbW4w6VTr+IXg64rL
+         2ryw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=JU0rEPktICofuJE6bNsBeUhhODIrPOx5iYAwhAA+TxA=;
-        b=an/kuuX0AvCHD0wt3YnX5AbFMdZ8ykGlTiykqj4Q5iFSbWmM12X+BWjikM2PlzTJ+O
-         +vBusGZfR7OPIwqA7CttLpDObj3pegasL9cNm+1FZzvxKU7vrkCdSe/bh12Xv0MEd6bi
-         tKCcMXZ8kV6WG8aM+WJtoEKMiUbh+zJpEE5mc7TrdZlD3pfkifnTzCeiETQxXfKpkaWb
-         PXqoTulBfURtcwl1JByWbFrtdYk9cakK2XoSt2W+18n98f1+P0PlIqt5AGJiOzH05CBF
-         /8HmesVuURoPR8D0mdEt9S0Jxso56RU5YkQT1waVUi8ojP4Kj8m4+FPOMKV7aNi8D0rb
-         IHyg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=C+sesLtFIEUJvJejbtTvulbw9IeJhCwP1JS7j+Ki3e0=;
+        b=DedAcznRvEWPo097viTH0Clo3LxXEDLqoyzMQVVK82euRqp08WQ0P7BAN8I8xMDI3b
+         W50RQqrc/Mch8VhkSsWGjbCrDV1T2KtafUh0LFD4pd2FKw28t0D69IMCa4RLmlNuDrlN
+         dlslsScTW/UqTR+wDdTJsisc6MNvyFOU/ApiO5vOttO6cu3GsjOLjUvl8jzZFc8ZYXx5
+         bJFeFs4vsUuoOIz769kRrb2XZjUcW9pUwB6lNc1dtNJ0LkrRRYxqkMr0U/wOr5FiRF7t
+         TbaUKLCTc22ZYKcMT55zWUWYWYDXRWAuEQt7TtGauRf894h2dIGe/JgORtSEoOdWC9Qv
+         m/xQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O/U7LFZy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="UD/cn+xi";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i140si2756610ybg.20.2021.01.13.07.07.52
+        by mx.google.com with ESMTPS id w17si4608315ybs.268.2021.01.14.03.50.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 07:07:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jan 2021 03:50:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O/U7LFZy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34608 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="UD/cn+xi";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53422 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzhkV-00016B-Vd
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 10:07:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34714)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l019P-0003rA-0H
+	for alex.bennee@linaro.org; Thu, 14 Jan 2021 06:50:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kzhkC-0000vj-OG; Wed, 13 Jan 2021 10:07:33 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:52098)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l017N-0002ru-8z
+ for qemu-devel@nongnu.org; Thu, 14 Jan 2021 06:48:46 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:34596)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kzhk9-0005I8-US; Wed, 13 Jan 2021 10:07:31 -0500
-Received: by mail-wm1-x330.google.com with SMTP id h17so1707945wmq.1;
- Wed, 13 Jan 2021 07:07:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=JU0rEPktICofuJE6bNsBeUhhODIrPOx5iYAwhAA+TxA=;
- b=O/U7LFZyilzoQW4LIG4QWlrsUeChNs7uMCt67VW7rC88mfEE1aGGWSUucUzPBsEBqc
- QeQlirP7pVprIvpJZVSqt6St7L1bo3r54j9GfxX/hPjYrSKl7e2oJASgzWTZnnTYimt4
- yiTvmnvjiOzFk2Bo69e2dVltdN9eVBOqEYSmRKzdb8yTuF2HUbGvPuL2qsw/5vzqSJUm
- 56BBSeLEW3jogwiX0eIZ38DrNcR/LLIO/DBW9AJFqcDsCn8l4YuI8grg2KDug/OqaT15
- oGB+FMoFTs2BqvBoHpDQg40UD1b7P761FlwnegHA/M9oSVYgatm/1wK0T48AIoxtVhso
- 1Agg==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l017K-0007Qv-Ds
+ for qemu-devel@nongnu.org; Thu, 14 Jan 2021 06:48:45 -0500
+Received: by mail-ed1-x534.google.com with SMTP id dk8so5397666edb.1
+ for <qemu-devel@nongnu.org>; Thu, 14 Jan 2021 03:48:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=C+sesLtFIEUJvJejbtTvulbw9IeJhCwP1JS7j+Ki3e0=;
+ b=UD/cn+xidaZQ0NxBesKmIeHvTCkhhmb6SXmEN1CDZNYXhJ9XQ4gO1sWSEqKrILBnOW
+ WxgO+et1m3w3ODZuCSDbkJCtl9gAABajDdP2xSfYa2EOEt3rNalbP3ZNuMa0uacqRnhn
+ uC/HSLkN88X8VkyUBeHeBYPTu93pAj1KGkdbEmOFGqtg+/VBf6khTbs8tfQgLSbCKmci
+ DPQrqVsSkY44sSh6w8lv24SouOnqDAcYHfzPgx2ray9zddqMKAJQTkVoFUkUsEJNlS2R
+ AQNoRDAcWt1DO9CyJWUcHbWpNkGMsZsS7fBwdsyojJaCjUWBuKcwb4U3jysZ7Rm2oOhE
+ bAqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=JU0rEPktICofuJE6bNsBeUhhODIrPOx5iYAwhAA+TxA=;
- b=IIwBcNfOlCJgyp7xYpIioya8VkpyBup6I+NVw5uI+FR7SZDqDHOM+kaisLMUlkMFsm
- +7kgksez4FarPf1/eplXXg2ORNOOWXebx2wPQ5R6J0ruEXDyQa0j05v5VtMSkzYJv5d0
- GXwyS4IL9qT0+t5YOt9ElbZ0dyO/LfxXiNYUuTFwtGsvLqfKzWlGLIEYX8tq9dlX5FYs
- 80MQjng+M5q3Yed/wc1HzYpA++d0DWwa2QoIgUleK/Xvy10rYSdG3gAV8bhpPeM71G1O
- yuJijNYLk0fSlyjqg3NUSil1QlfMAKgOmUkZ8RSNgk5sainF5Xl3K4oqKulsZ0F3Hg4B
- 1RsA==
-X-Gm-Message-State: AOAM531CRAY+5RFjwgbVrCxvYgWdB4OjBS2ej0VF2YjIFadvLb0stWIv
- M2jrFux0l8ig15/ZAZ+On+0=
-X-Received: by 2002:a05:600c:2292:: with SMTP id
- 18mr2652046wmf.181.1610550446101; 
- Wed, 13 Jan 2021 07:07:26 -0800 (PST)
-Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id u26sm3244203wmm.24.2021.01.13.07.07.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Jan 2021 07:07:25 -0800 (PST)
-Subject: Re: [PATCH 0/5] tcg: Restrict tcg_out_op() to arrays of
- TCG_MAX_OP_ARGS elements
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20210111150114.1415930-1-f4bug@amsat.org>
- <43f360be-af44-27ce-619b-7a2ad169aa2f@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e157e0ab-1d96-040c-5329-8ebb8064c7c2@amsat.org>
-Date: Wed, 13 Jan 2021 16:07:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=C+sesLtFIEUJvJejbtTvulbw9IeJhCwP1JS7j+Ki3e0=;
+ b=XvXgttxTu0nWDTxWYRwBBmmiRmO38E90Stp/BCvwA9R4gVensBP8/USNYp0Z1R4pAA
+ DrtIAe5OTeH8h6cZ42YlJnCR9it1M9FyS0IxVB5BSrBXj6p1/OskT7bCI5KhBE4tG0Cd
+ 0vlTyKtFUYauXYZeELET2b4VGk0SaZt/FTP0aZt/BWUNhLBtI2hCQfHxh/NE/XG6LKdr
+ ikmHnAPh9lxJKZg6j3/yz2SU6ZUKujDK8Po1HpG7JG38+4itO8S/HKkPJBxsTIj+EA+w
+ nTykoeueAumy2x0XvgJghUQtEfXlAHHJ8HMyMaoj/4QovW1t7BSm82nQsXzLA2PW7SWs
+ y4UQ==
+X-Gm-Message-State: AOAM532tDPCV1tLsBxfRjQesKdXqTF65FS9LPSFYgGilyOKvQNj7Pu36
+ NfMa4w64pzA2pHO9570sedJ5Vf9cq52KQQcZMRMjSw==
+X-Received: by 2002:aa7:cdc3:: with SMTP id h3mr5355613edw.52.1610624921067;
+ Thu, 14 Jan 2021 03:48:41 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <43f360be-af44-27ce-619b-7a2ad169aa2f@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+References: <20210112143058.12159-1-maxim.uvarov@linaro.org>
+ <20210112143058.12159-3-maxim.uvarov@linaro.org>
+ <20210112153542.oqahdubzeoipyvun@kamzik.brq.redhat.com>
+ <CAFEAcA9O2kHpcvoofo0v3ahXNOQtw8cxaVC2hn+AjpH6A9RciA@mail.gmail.com>
+ <20210112162526.ob7eroamrdlowfyr@kamzik.brq.redhat.com>
+ <20210112162847.wik3h24isg4cmgyq@kamzik.brq.redhat.com>
+ <CAD8XO3Y3sgZ3VXh7FhfcvvTckE2EUebivQ1nUnqTud2ApGUh=Q@mail.gmail.com>
+ <20210114000445.mg3xq2nq7kccbvjy@kamzik.brq.redhat.com>
+ <CAFEAcA96=ZjZyhMcpTSDvrHKXZY-uOUoQSi-jTbOLpFZdnkMuQ@mail.gmail.com>
+ <CAD8XO3Yxp6rcNgNRJ3+d8zEsYyS0myYs=rSNKtw849fEmdT+RQ@mail.gmail.com>
+ <CAD8XO3YCJjTZBZaP1MOwUzcMQ9t+tbjOAwMT4STqYmp=Lmvdmw@mail.gmail.com>
+In-Reply-To: <CAD8XO3YCJjTZBZaP1MOwUzcMQ9t+tbjOAwMT4STqYmp=Lmvdmw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 14 Jan 2021 11:48:29 +0000
+Message-ID: <CAFEAcA-A8Q1+0Pu4Csok+QFtw3qX2JZjt1buHeuWuFpqJhjTAg@mail.gmail.com>
+Subject: Re: [PATCHv4 2/2] arm-virt: add secure pl061 for reset/power down
+To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Huacai Chen <chenhuacai@kernel.org>, qemu-riscv@nongnu.org,
- Stefan Weil <sw@weilnetz.de>, Cornelia Huck <cohuck@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hRYoy5s1YnP6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, Jose Marinho <Jose.Marinho@arm.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8sleTFVpt7hW
 
-On 1/11/21 6:22 PM, Richard Henderson wrote:
-> On 1/11/21 5:01 AM, Philippe Mathieu-Daudé wrote:
->> Attempt to fix the warning reported by Miroslav using GCC 10:
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg771520.html
->>
->> Philippe Mathieu-Daudé (5):
->>   tcg/arm: Hoist common argument loads in tcg_out_op()
->>   tcg/ppc: Hoist common argument loads in tcg_out_op()
->>   tcg/s390: Hoist common argument loads in tcg_out_op()
->>   tcg: Restrict tcg_out_op() to arrays of TCG_MAX_OP_ARGS elements
->>   tcg: Restrict tcg_out_vec_op() to arrays of TCG_MAX_OP_ARGS elements
-> 
-> I've been trying to figure out a cleaner way to handle these, but this is
-> certainly ok for now, and avoids the Werror.
-> 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> Will queue to tcg-next.
+On Thu, 14 Jan 2021 at 11:24, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+>
+> On Thu, 14 Jan 2021 at 14:22, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+> > Does that mean that in that case you need all regions to be 64k
+> > aligned? I mean secure and non-secure.
+> > Has anybody tested 64k pages under qemu?
+> >     [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 }
+> >     [VIRT_UART] =               { 0x09000000, 0x00001000 },
+> >     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+> >     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+> >     [VIRT_SECURE_GPIO] =        { 0x09031000, 0x00001000 },
+> >     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+> >    [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> >
+> > Maxim.
+>
+> I.e. I see comment:
+>  * Note that devices should generally be placed at multiples of 0x10000,
+>  * to accommodate guests using 64K pages.
+>  */
+>
+> but it's not clear why UART, RTC and GPIO is not aligned to 64k.
 
-Please hold on, Miroslav found a regression in the PPC patch.
+Er, 0x09000000, 0x09010000 and 0x09030000 are all 64K aligned addresses.
+
+thanks
+-- PMM

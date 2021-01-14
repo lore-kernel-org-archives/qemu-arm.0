@@ -1,109 +1,109 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp406456lfq;
-        Thu, 14 Jan 2021 08:07:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyDGdfkr41YwkmsYI3MhNk1KKTV8QjNchbSBp5NKeE1fJ/u4TEQztcawaIPLm95jWr7qH2M
-X-Received: by 2002:a25:374c:: with SMTP id e73mr11894597yba.376.1610640457184;
-        Thu, 14 Jan 2021 08:07:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610640457; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp412534lfq;
+        Thu, 14 Jan 2021 08:14:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwwDJUgUI7C1kHJhTMAi5IbBcE0LbEBrBoDXS/Kjkxdk8lTAPqRh8tQhmOt4cTgRPSRdz0L
+X-Received: by 2002:a67:3093:: with SMTP id w141mr2163186vsw.27.1610640875991;
+        Thu, 14 Jan 2021 08:14:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610640875; cv=none;
         d=google.com; s=arc-20160816;
-        b=TVXWuhvMvLIEs7zlJjNoXEfcKtuJc3zPJPRCA0zx3HDIWzV0B+JfsYUHAoLLLj0Ua4
-         9Wz4phtZvZTtyUlssqFg/4MtayggKP704zdmv9kOQXJvYmf4Qap1S5h+1SVZuYej4+/j
-         lh0H4KEfMQokbGz4UiOU/usBSAnAtWs7IOyBgw4llV+AmgVDHDn04ziOBqnTUlCfNlDU
-         yhE4eJyHdfKJx5mStTivv5FYSoSPe4SM2YFPbYvtuI5IXr9VLTmNGfsyWW8+l+2CTceZ
-         8o4SPLDN3SwjDiYCe4iIk6JOWcxQ+V5uTkE/CObdltmfUij34fCNwdxWEdwPnl8WFU6z
-         H8qQ==
+        b=NhhMEtXY3dhFMYZlg0yr3IUeeyHIticPbWI+AT/YcV0NAkpX4hvFJ6ElYBEvPoWnqL
+         /8Y7aj94URRt+N/GafzwM+Ceit0rnaebEF3xuuZKyhfAMr8tuDfIMmsDLU9ugyWFbaGZ
+         291DRnCZo9xaoxBc+YNbDmWqjIo3qfkm9yHJxrKTBtHbvG99yOcRP/Tsq4OJUvFKPX6D
+         RwoQ1aZWbU6TI9MPpJD8rKHZM8GidboAKG0bldM6ufeWUQj7diLS9AS1Za1JyjQqEYlZ
+         bzYnWn+Y5JGNzl9vKi3d0CUwqdc4RVn+M6PKT0lnT+ob9mWXP20fPAIO3CRVTztpZa+d
+         5Nmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=3x0O8sPNXEDYftnuGsjOeZIu2Ubh3rhs2GG4FkkBl5M=;
-        b=FWUSwPfMhryu0U+n706DWzHI8B2kFqAt5tTTS/nP8Lzs5ib9Ioaa/FjO38NBf+ridT
-         DLOiYNUTnmaW2dNWO+MsCTRFQ1CpgCssvQ77WZkxQJyPn/06GeWcaqbQ8JOEw15ScPBL
-         aUX/p+zZC6e3l3huV6tJy0bDiFAq263o5lfaUgkPVyu7VdkpVwDCrXrg6naPofwGAioF
-         UuTlEUt3Yzh2Pr1ry3FydOiPKT+JJDHd8jvvZAgKVW/u9izR8Tyszbt9VDs7w3EsiPEj
-         roKWAfriFQHO0qkzi03bSy/WWqxqHm5bYF+DV4BjewiI1aYcUGLBZ3CZ6dGBKL5F3RlW
-         bgGA==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=5XT/S1rmYl0aWz2RdxT7IxZAvLzn8PyBUJ4yxYv5shI=;
+        b=Uwot+kwe1PMjLFbQxCJr5RXvgAPIk5sy7B5fQGpUuWzSFLByN8IBE2lEvnSjYnL1qc
+         CMt/28aOlVFWQ0jM5qso0wcS0EKOfLa4BGhDo47c2o31t8G3JxTrSzUNGu1Ol1fmUwbO
+         qG9YALc7tHEErBkLajwyj6gg9Eh8j0GrCq4ospkhwZYUwDhOgI/Ob4uOK58MbeqFTs4a
+         mJAR0xxXI7Q35sO4kYNQjMTcLnOCVlPdrt31HYpVuALJys+8TeEtXarkom8lroEZKwW+
+         kb0SfOAWkRQcbqfOeXlFwZifYH5hczLz647ZjHRB8livDoLuWcXVf9DIlH8D2cE2ab6X
+         djPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BRtb84e0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BT8rT0Ty;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si5226761yba.364.2021.01.14.08.07.37
+        by mx.google.com with ESMTPS id x10si1325668vsj.407.2021.01.14.08.14.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jan 2021 08:07:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jan 2021 08:14:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BRtb84e0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BT8rT0Ty;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41590 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36116 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l059s-000588-Ig
-	for alex.bennee@linaro.org; Thu, 14 Jan 2021 11:07:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57820)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l05Gd-0007Ol-8r
+	for alex.bennee@linaro.org; Thu, 14 Jan 2021 11:14:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l04s0-0000aC-1N; Thu, 14 Jan 2021 10:49:08 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:33714)
+ id 1l052u-0002Fc-6y; Thu, 14 Jan 2021 11:00:26 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:53435)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l04rx-0004rD-4L; Thu, 14 Jan 2021 10:49:06 -0500
-Received: by mail-wr1-x434.google.com with SMTP id t30so6297719wrb.0;
- Thu, 14 Jan 2021 07:49:04 -0800 (PST)
+ id 1l052p-0001Gv-EU; Thu, 14 Jan 2021 11:00:22 -0500
+Received: by mail-wm1-x330.google.com with SMTP id k10so4969511wmi.3;
+ Thu, 14 Jan 2021 08:00:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3x0O8sPNXEDYftnuGsjOeZIu2Ubh3rhs2GG4FkkBl5M=;
- b=BRtb84e0mahJhjpESPiR25z/dIoIswKCdGQlfDurjL7ceaB23gSSfX3pirb8BpgtLi
- Z0M0jcwu6yXQQE8F8B4kNK3CKCZGHe5M5Cc9uW7gHUEgPUpRVylzZAzohwqXq5aDySqu
- gCN8RXTdEm7HAQ/cpQCA+CxG3+gP3hiZkrlSEsjGR1dnTLZla6p6KdvPYd9ePf8g746B
- XwUfa8srWqcAE+IncAIVKG//AmeRStnAbcf0v3MQSqU1YhAa5T75zNT2GGgpUqY5W0x2
- tCEjojaiCj+t9ho3vWMneSYvEuuDdI0eYo+1UeZt0Wyv32huf0gJavDz/hY/BeSMuZfk
- 8LvA==
+ bh=5XT/S1rmYl0aWz2RdxT7IxZAvLzn8PyBUJ4yxYv5shI=;
+ b=BT8rT0TyBSUawHM+bnX+b+enr+CCK8H5JsispZcM83yBu7JIwgg563RdExVPTylEJ7
+ k8qy1SFEYyAtSnF/b8U6f+20Y5JwpuI9Ecv05/Z8FMdePDsz1WoyjpWC2vpOqdA8VtpB
+ k1g90Z8jEDVAbTMsVCB0oekZgDhzH4JoS5bccGXWjT+HrGTGy5KCRyubeCrVNZcL4zYp
+ 3LYXXDH9fTeEAkfHnLF4+kdZCvdM/QL1dAIQe4HYdEJsZWBCjLftriMF3KNCBjt5T22m
+ d2gvXxe+hSssQ7oExRlKlNePNVN1oLUGhlqjeGnzUz4GDwVKzOmgpT6vzQWQkCkaEzCD
+ OFtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=3x0O8sPNXEDYftnuGsjOeZIu2Ubh3rhs2GG4FkkBl5M=;
- b=GNJ6Tsx7XObq3tSD0FpJhDXrt8AbjCkWAVUdQjsFkZCKH31N5OCLldGpjGOL3mXH75
- iOO/2zpUD11HgFnHr57m7pw2KnYS4ik4aV6nMKoRhNSv2zkfD8W4rSRnvbA5Ivuwn76Y
- u/Ru6UXJx2Kz4Nxx8sWtchxf+8rEa/q3hQEITIJS7h5zbkzivBtxdi1pg2e07Z1YFWUG
- yNuIlCqo53piFuMJIFiLgUJb8kPhVseFfPaxUjDV5RDmW3TuGKy2HUZR4Ra4C7/St+pR
- XKuAbrmg17LsQPn0UiAQX4gBdBH0TIo5H9aqnJvd4meyocITf+MY4WLt12f1relSXLWA
- HeRQ==
-X-Gm-Message-State: AOAM530WiQjCExWFXZtLmx1TO0Kt37E8d6pBi6q/6x9KkP+6/HxFTDIv
- 0dzQncV8/qtUXwUQv+aRe+c=
-X-Received: by 2002:a5d:43ce:: with SMTP id v14mr8551968wrr.342.1610639343004; 
- Thu, 14 Jan 2021 07:49:03 -0800 (PST)
+ bh=5XT/S1rmYl0aWz2RdxT7IxZAvLzn8PyBUJ4yxYv5shI=;
+ b=uJnb4jChu02SjBzpXUbT9fAB/CFsNy/hqPyY9QVK5CJLCClUkmoE5rtp2gLnpr2rGn
+ 3y+0Mns6uc/ji6gH/1roLKpzRKuPFoNJLqSrfDEy8wgo08VsalHgFd0YCO2qGGKd6pFy
+ UrBSLdUFV5c8BABJNxzVvoXFMUOetvK2zPUn4HmCdsazHIFBjirESGmCv5StDmeG/6+P
+ +YKIgmjnrZoh8PRI7uQVyNOytgRkyd7D4yrhM3+HmuFjVsCl0VmELSxj/tCNba7oL19c
+ bTPFtk9MfITRtSNcc1lqJA9ucJRf2SR1A2Z50q3m/OkQSTGDhXUYVdeJ0YAPz4m5AT/N
+ C0tA==
+X-Gm-Message-State: AOAM531e8jLWohCWU/eFHWifvmdlLmYg97ZlZmxt1E8LQaMeHGIXfSVc
+ 9N88VUgm5bLuq0LsDV6dmDk=
+X-Received: by 2002:a1c:220b:: with SMTP id i11mr4671626wmi.8.1610640017531;
+ Thu, 14 Jan 2021 08:00:17 -0800 (PST)
 Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id h187sm9015911wmf.30.2021.01.14.07.49.01
+ by smtp.gmail.com with ESMTPSA id a24sm2979691wmj.17.2021.01.14.08.00.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 14 Jan 2021 07:49:02 -0800 (PST)
-Subject: Re: [PATCH 00/18] hw: Mark the device with no migratable fields
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Gerd Hoffmann <kraxel@redhat.com>
-References: <20200703201911.26573-1-f4bug@amsat.org>
- <CAFEAcA8Cu2N5qX55rUk_yd4R6PdJX+X5KPQmMiQPFakP3ShZ-A@mail.gmail.com>
+ Thu, 14 Jan 2021 08:00:16 -0800 (PST)
+Subject: Re: [RFC PATCH v6 00/11] hw/ssi: imx_spi: Fix various bugs in the
+ imx_spi model
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <17a5ddc4-c7d9-08f3-5260-f17e1bd48dac@amsat.org>
-Date: Thu, 14 Jan 2021 16:49:00 +0100
+To: Bin Meng <bmeng.cn@gmail.com>
+References: <20210112183529.2011863-1-f4bug@amsat.org>
+ <CAEUhbmVmqYzCg0Edirp4UFhLpGGWbm5jFiTjOw=0=EhnSMsz3g@mail.gmail.com>
+ <74a2566b-cd32-743f-8088-c59e992be755@amsat.org>
+ <CAEUhbmU4wDdjY+nEiqHFpFsa6H1vJVpAitSjKt1+p1POEAONEQ@mail.gmail.com>
+ <7c8e33c2-d86a-44ef-8d4c-0f6dcf9f7b2c@amsat.org>
+Message-ID: <c3782f79-10d0-1796-6b29-56f435ec96e8@amsat.org>
+Date: Thu, 14 Jan 2021 17:00:15 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8Cu2N5qX55rUk_yd4R6PdJX+X5KPQmMiQPFakP3ShZ-A@mail.gmail.com>
+In-Reply-To: <7c8e33c2-d86a-44ef-8d4c-0f6dcf9f7b2c@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -113,73 +113,62 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q4ZGjDfDMIjq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: x8faSYCgyfa4
 
-On 7/9/20 9:19 PM, Peter Maydell wrote:
-> On Fri, 3 Jul 2020 at 21:19, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+Hi Ben,
+
+On 1/13/21 6:56 PM, Philippe Mathieu-Daudé wrote:
+> On 1/13/21 2:27 PM, Bin Meng wrote:
+>> Hi Philippe,
 >>
->> This is a proof-of-concept after chatting with Peter Maydell
->> on IRC earlier.
+>>>> Unfortunately this series breaks SPI flash testing under both U-Boot
+>>>> and VxWorks 7.
+>>>
+>>> Thanks for testing :) Can you provide the binary tested and the command
+>>> line used? At least one, so I can have a look.
 >>
->> Introduce the vmstate_no_state_to_migrate structure, and
->> a reference to it: vmstate_qdev_no_state_to_migrate.
->> Use this reference in devices with no fields to migrate.
->>
->> This is useful to catch devices missing vmstate, such:
->> - ads7846
->> - mcf-uart
->> - mcf-fec
->> - versatile_i2c
->> - ...
->>
->> I am not sure about:
->> - gpex-pcihost
+>> Sure, will send you offline.
 > 
-> I think it's correct that this has no internal state:
-> the only interesting state is in the GPEXRootState, which
-> is a TYPE_GPEX_ROOT_DEVICE which migrates itself.
+> Arf, stupid mistake in patch 7 :) With this diff I can run your
+> test:
 > 
-> I made some comments on the "meaty" bits of the patchset,
-> and reviewed one or two of the "mark this device as
-> having no migration state" patches, but it doesn't seem
-> worth reviewing all of them until the migration submaintainers
-> have a chance to weigh in on whether they like the concept
-> (I expect they're busy right now with freeze-related stuff :-))
+> -- >8 --
+> --- a/hw/ssi/imx_spi.c
+> +++ b/hw/ssi/imx_spi.c
+> @@ -343,7 +343,7 @@ static void imx_spi_write(void *opaque, hwaddr
+> offset, uint64_t value,
+>              return;
+>          }
+>          s->regs[ECSPI_CONREG] = value;
+> -        if (value & ECSPI_CONREG_EN) {
+> +        if (!(value & ECSPI_CONREG_EN)) {
+>              /* Keep disabled */
+>              return;
+>          }
+> ---
 
-Now that we are far from freeze-date is a good time to ping
-again on this concept :)
+Could you have a try at this? Do you prefer I resubmit
+the whole series?
 
-Most of the devices are ARM except:
-- cpu-cluster (Eduardo/Marcel)
-- hcd-ohci (Gerd)
-- mac-nubus-bridge (Laurent)
-- generic QOM (Daniel, Paolo)
-
-Is someone against this proposal?
-
-Regards,
+Thanks,
 
 Phil.

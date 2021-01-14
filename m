@@ -1,102 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp372157lfq;
-        Thu, 14 Jan 2021 07:20:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyNjJpacoeHC6f1jvHYV1E584HoY+s5/zfFggWWjn87P4Y9yb8/PafJw5R4535fZHfBKZur
-X-Received: by 2002:a25:f40e:: with SMTP id q14mr11577526ybd.230.1610637647415;
-        Thu, 14 Jan 2021 07:20:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610637647; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp373057lfq;
+        Thu, 14 Jan 2021 07:21:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzkrVt2lNGuf5wVKsMSKwqgO+Hrfidiqi3JE1qCvvwf60n/4yY0WKLpNvgl8BKV+8bXrXrM
+X-Received: by 2002:a67:3008:: with SMTP id w8mr6899959vsw.32.1610637711793;
+        Thu, 14 Jan 2021 07:21:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610637711; cv=none;
         d=google.com; s=arc-20160816;
-        b=azfRqNeplCuY7XvRumI0eGNtrDQK0zzGS8ajOIhO935lmFOylDr+/o4upt5crqgpvA
-         tBlZmRw13gBFLqK0Wzm0Y5Q5uRNiy/qDEqT8eLoFgk3GioUkFtNZqy6DGPlQq3JguMdO
-         kl0vvQe08zVmrPUTmmB3/vxWayU6AiCAhIrsvat4wpga4Sz5PKLo3aCznCJFam+qooFc
-         OKzDV3RS5qanga06TxjYs/VE9hNv9IvGJuXAea1Vb7x66+232/XA/z4WsCVarHcDVXAO
-         ZgZDh4jIE3kRyT0Ag776zpyvXpMwy4hTYEu8b7k9eGvBX4kALAjXr6YDIYIDVgJ2O0E9
-         tCfA==
+        b=tdgGQfbx1HXNNHCrKUgVMBW0i47npqBHSS1pVeNVRbKHMVOMMT8/M29KJd2nAR/Kl5
+         HHzx89at2o6ZGXAUuI9MUE4FyTxg91+pAuvytF8qhZswjjdJFotnjv1UvNU00d4lYEdw
+         ioAK3qx/0gsKC0p8nPN/KgNIzC0my61ZDMJrMP3zaYvZMbeQ5bI/nMtjv5jf/XqH70eK
+         PeJq+5s32Jaabi2ITZ8b3BdxHWmnTDaN7q578ZR7wXixxKIgneTEqBBtPOsbwqZBjIgB
+         bZxPM3wqPjFtVzVc2y+WGNwtVPNUHGDLyCDF80jb6eGwG8GDwF8/k3us5UnGiWKKiCvK
+         30IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=gDI3Lg8zX7Mk9E+XiKTF8U/FUN1ufj38Nn84DY7D9Rg=;
-        b=fcsPO8h2C9SCF6F7/Hx+DStXb3fu9txPhjZgqpAwUyUVCh5rQ8Ij/5JhQqTaXTkGa1
-         gLcH8ySAKM/TyfZB0cgfq8IQix2GNCsxttW4Bl7Z6GCUNHlLNjhOMsXmTfIQ72wzfzjR
-         L5eQaekFOd3NVgx4/XIkIz6xDDBo87FR5N/+q/+lzp7nNgzg/YNPVpsCwogbWVWuUfSF
-         yJLcMnJOeB5nx5v6UHxWx6avDO9T/1balUX+rakzsJ/xg4xdZ7tkPK338voddBdf3LEO
-         NozYG1Y6h/BdClU32y6ULpDlTx4kqoodmHSGPfLhqKqYc6DkTtS4MoYPKAgtgB44TBcZ
-         Zh2A==
+        bh=PiPI+CgLlpFSv2u7mJkxDRuWofaYNb842QPJItTkQ38=;
+        b=iWckMgWwLzTXaXEIb634J8A5qBbUtGm02DxWfVZjaFAaX+w9Fmvh4/dQQKXWNR7Hlv
+         rvN+jnhwg2OybNF7sLrCMhkp6JFJegyzoa4x1UfznukG4FME32BInq/GMcvUba6F6JpZ
+         YNdC/rcRXaMfJj4wYX635oLee4JbHLM6nKmH5MOFcz6Djejgod6EewgQinkm8uiv1WlS
+         SYwYi+pQDv4VknRSPYnTc7K/SdEmbOvVpSPmZ92CwriF6GWnMGybgrqgnKO3b8swYuaR
+         kbr09y1XJcFT1Z54fVvTgv2f+0wlwPyTn5sgIcLoTASizTDGXOZchvUB3ydV44tGGGWm
+         he3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LvmPeXRE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VtN1Hex8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d23si6499883yba.178.2021.01.14.07.20.47
+        by mx.google.com with ESMTPS id c12si1090340vsk.410.2021.01.14.07.21.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jan 2021 07:20:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jan 2021 07:21:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LvmPeXRE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VtN1Hex8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37482 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42728 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l04QY-0007Xk-PM
-	for alex.bennee@linaro.org; Thu, 14 Jan 2021 10:20:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47618)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l04Ra-0001S9-VZ
+	for alex.bennee@linaro.org; Thu, 14 Jan 2021 10:21:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l04Gs-0006fH-Nz; Thu, 14 Jan 2021 10:10:47 -0500
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:54333)
+ id 1l04Gk-0006O1-3M; Thu, 14 Jan 2021 10:10:38 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034]:39918)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l04Gp-0004LW-Dg; Thu, 14 Jan 2021 10:10:46 -0500
-Received: by mail-pj1-x1034.google.com with SMTP id cq1so3230805pjb.4;
- Thu, 14 Jan 2021 07:10:42 -0800 (PST)
+ id 1l04Ge-0004GC-Nl; Thu, 14 Jan 2021 10:10:37 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id u4so3346709pjn.4;
+ Thu, 14 Jan 2021 07:10:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=gDI3Lg8zX7Mk9E+XiKTF8U/FUN1ufj38Nn84DY7D9Rg=;
- b=LvmPeXREe/DoGS3uPQpILVOB9giyOrwfc3z0kqGgCfcOOm/Z6ZJTpowkND+VrjA5r2
- Ay4xDha+dF9O/CS7Bc9u/KTpMyzyZhMVBFvwKvyfg1NHh/yTv2QPX/441BN5vjDnnZFq
- 5t12+wmy1Qz+ThL71jwLR6Ut1gVUGCnIYxFFdkSoPQqyDlFiBQNG0Dyt9OdwgJAHrPuc
- C94S5QL1mjb9SnoGk8fom/WDi9uQdKZeOlByhlihl2WrK6p9mlsg94YJal/JEy1OGhar
- rsm1LlZuepUPGynuidFJkiqAvlnREuDeuyrwhhIN4q0i6CNMzO7S/fbgK0HeLHxi976e
- OmtQ==
+ bh=PiPI+CgLlpFSv2u7mJkxDRuWofaYNb842QPJItTkQ38=;
+ b=VtN1Hex8SLAWi0tzmh4xr7xl5JyM2k2/LJjWGfFuytPyc/o87flnfDgp7c3PnHaGFa
+ 2ohTFqIgnRx60iiiH9J2ivZyAWnE8X2+btWMopgm0ZuUWzDQOB4lyN8f0dkMU0cM5QBR
+ YnzosbadCdLaeOVUoJ0Tew5x7LI4QIRKpw9AQ8ewC7vMroR7hihZSClW+EoYnEkLi+8O
+ Oes+19Q+BgbKaIxoPbvcOTHgdkDkyHhXjw6FmzevH53UOlrUvcp+156lgWUCL5clfSGk
+ J4rAEzfy//l3zbLhm6UeljMSkOiwyDCvdMzzRRYExN5rQ4QcjZOGnzpzUxzocALNrjxk
+ CpXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=gDI3Lg8zX7Mk9E+XiKTF8U/FUN1ufj38Nn84DY7D9Rg=;
- b=M0DEdLOznvyJJD/cqqunXWGz/N/GwYBb4ko5UoG1AMP/1e52oEpSOQTiklwHvFMJEQ
- x0x02aAsNo1wAXxxVfhCg912R6kEgT1h4Ecv/P3GV7NCB4Mb662CJn2S0yJ3BVlP0NHp
- zL9Mui+pH4Wwg4Yuknq7O0e0ExNjTOYUkBS79cW921bLl7qpyEZDmDJanY01O/MVROpm
- 5Zi4I7hgRa1eHEcGVmOxYcg769N9jeHPllLlAGXlD1QABKPYrXr9nx7BW5YmR3me4g9U
- /rYaAKA3jvatrmlsnuR0qwrktR0gSwzQhjcF474IsBwDcJWKbb6691zlMH3Kblm5oZey
- ZS9g==
-X-Gm-Message-State: AOAM532eKcGQfUo+gZTFbRqIvnCWhFec1FHvIvZwuKCeT5UuEQYwnpY4
- UBWTsXjkOhQh3VEFQzha0mM=
-X-Received: by 2002:a17:90a:5914:: with SMTP id
- k20mr5336869pji.199.1610637041843; 
- Thu, 14 Jan 2021 07:10:41 -0800 (PST)
+ bh=PiPI+CgLlpFSv2u7mJkxDRuWofaYNb842QPJItTkQ38=;
+ b=UJXhOTtVKQHdKSESRwVTurQ5oy725yMKy+ZU7QK5r+xgKPoy1cdtMB3dddvgR6Oi9S
+ tWc0kmJqTMtNNN+sDZCthT5g6GGHGy+Hf/iVp+5IgsE7FIM5x5xrj5m69HAKj+0j1MT5
+ CJ6D33TK2P62lMwrw2fzYzF8Wmpmq9d/3Tn1ty0A25uF9GUbfuVDvedIW/ptBghqXFfs
+ TdG2WfjK17nYrvzpOmWJg8Sju4PKxjHsnJGic3IMiMqBOjbPV8HyIe0wn9A2ZMF5P5jn
+ 5w2rFj1Q8EsIks3IHcm/c8xvqMt2YTSnqQnhNpPrbnDqgPsDhgQwRpo7bYtamvr8a+VW
+ Pzzg==
+X-Gm-Message-State: AOAM5337Tb+sC/ub9+zPoOW/92xZDawuEmr+kK6mpXfhntniFRVUNp5D
+ ysYrhZP4vUtZphar7s9BmlV8QjS3ZC4=
+X-Received: by 2002:a17:90a:eac3:: with SMTP id
+ ev3mr5290708pjb.27.1610637030962; 
+ Thu, 14 Jan 2021 07:10:30 -0800 (PST)
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
  [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id w21sm5372051pfq.67.2021.01.14.07.10.37
+ by smtp.gmail.com with ESMTPSA id w21sm5372051pfq.67.2021.01.14.07.10.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Jan 2021 07:10:41 -0800 (PST)
+ Thu, 14 Jan 2021 07:10:30 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Francisco Iglesias <frasse.iglesias@gmail.com>
-Subject: [PATCH 8/9] Revert "aspeed/smc: snoop SPI transfers to fake dummy
- cycles"
-Date: Thu, 14 Jan 2021 23:09:01 +0800
-Message-Id: <20210114150902.11515-9-bmeng.cn@gmail.com>
+Subject: [PATCH 6/9] hw/ssi: xilinx_spips: Fix generic fifo dummy cycle
+ handling
+Date: Thu, 14 Jan 2021 23:08:59 +0800
+Message-Id: <20210114150902.11515-7-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210114150902.11515-1-bmeng.cn@gmail.com>
 References: <20210114150902.11515-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
  envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1034.google.com
@@ -108,217 +109,100 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Bin Meng <bin.meng@windriver.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 85M2i9nRfEV6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
+ Bin Meng <bin.meng@windriver.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1fjGEEIAXTsV
 
 From: Bin Meng <bin.meng@windriver.com>
 
-This reverts commit f95c4bffdc4c53b29f89762cab4adc5a43f95daf.
+The description of the genenic command fifo register says:
 
-The incorrect implementation of dummy cycles in m25p80 model is now
-corrected. Revert this commit.
+  When [receive, transmit, data_xfer] = [0,0,1], the [immediate_data]
+  field represents the number of dummy cycle sent on the SPI interface.
 
+However we should not simply use the programmed value to determine
+how many times ssi_transfer() needs to be called to send the dummy
+bytes. ssi_transfer() is used to transfer a byte on the line, not
+a sigle bit. Previously the m25p80 flash model wronly implemented
+the dummy cycles for fast read command on some flashes. Now this
+mess is corrected and SPI flash controllers need to be updated to
+do the right thing.
+
+According to the example in the ZynqMP manual (ug1085, v2.2 [1])
+we need to convert the number of dummy cycles to bytes according to
+the SPI mode being used, and transfer the bytes via ssi_transfer().
+
+[1] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
+    table 24‐22, an example of Generic FIFO Contents for Quad I/O Read Command (EBh)
+
+Fixes: c95997a39de6 ("xilinx_spips: Add support for the ZynqMP Generic QSPI")
+Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 ---
 
- include/hw/ssi/aspeed_smc.h |   3 -
- hw/ssi/aspeed_smc.c         | 116 +-----------------------------------
- 2 files changed, 2 insertions(+), 117 deletions(-)
+ hw/ssi/xilinx_spips.c | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 16c03fe64f..46f3abf2e7 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -111,9 +111,6 @@ struct AspeedSMCState {
-     AddressSpace dram_as;
+diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+index a897034601..787de60f24 100644
+--- a/hw/ssi/xilinx_spips.c
++++ b/hw/ssi/xilinx_spips.c
+@@ -191,6 +191,10 @@
+     FIELD(GQSPI_GF_SNAPSHOT, EXPONENT, 9, 1)
+     FIELD(GQSPI_GF_SNAPSHOT, DATA_XFER, 8, 1)
+     FIELD(GQSPI_GF_SNAPSHOT, IMMEDIATE_DATA, 0, 8)
++#define GQSPI_GF_MODE_SPI     1
++#define GQSPI_GF_MODE_DSPI    2
++#define GQSPI_GF_MODE_QSPI    3
++
+ #define R_GQSPI_MOD_ID        (0x1fc / 4)
+ #define R_GQSPI_MOD_ID_RESET  (0x10a0000)
  
-     AspeedSMCFlash *flashes;
--
--    uint8_t snoop_index;
--    uint8_t snoop_dummies;
- };
- 
- #endif /* ASPEED_SMC_H */
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 1e78b5232f..0df5d91d19 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -187,9 +187,6 @@
- /* Flash opcodes. */
- #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
- 
--#define SNOOP_OFF         0xFF
--#define SNOOP_START       0x0
--
- /*
-  * Default segments mapping addresses and size for each peripheral per
-  * controller. These can be changed when board is initialized with the
-@@ -771,104 +768,6 @@ static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigned size)
-     return ret;
- }
- 
--/*
-- * TODO (clg@kaod.org): stolen from xilinx_spips.c. Should move to a
-- * common include header.
-- */
--typedef enum {
--    READ = 0x3,         READ_4 = 0x13,
--    FAST_READ = 0xb,    FAST_READ_4 = 0x0c,
--    DOR = 0x3b,         DOR_4 = 0x3c,
--    QOR = 0x6b,         QOR_4 = 0x6c,
--    DIOR = 0xbb,        DIOR_4 = 0xbc,
--    QIOR = 0xeb,        QIOR_4 = 0xec,
--
--    PP = 0x2,           PP_4 = 0x12,
--    DPP = 0xa2,
--    QPP = 0x32,         QPP_4 = 0x34,
--} FlashCMD;
--
--static int aspeed_smc_num_dummies(uint8_t command)
--{
--    switch (command) { /* check for dummies */
--    case READ: /* no dummy bytes/cycles */
--    case PP:
--    case DPP:
--    case QPP:
--    case READ_4:
--    case PP_4:
--    case QPP_4:
--        return 0;
--    case FAST_READ:
--    case DOR:
--    case QOR:
--    case DOR_4:
--    case QOR_4:
--        return 1;
--    case DIOR:
--    case FAST_READ_4:
--    case DIOR_4:
--        return 2;
--    case QIOR:
--    case QIOR_4:
--        return 4;
--    default:
--        return -1;
--    }
--}
--
--static bool aspeed_smc_do_snoop(AspeedSMCFlash *fl,  uint64_t data,
--                                unsigned size)
--{
--    AspeedSMCState *s = fl->controller;
--    uint8_t addr_width = aspeed_smc_flash_is_4byte(fl) ? 4 : 3;
--
--    trace_aspeed_smc_do_snoop(fl->id, s->snoop_index, s->snoop_dummies,
--                              (uint8_t) data & 0xff);
--
--    if (s->snoop_index == SNOOP_OFF) {
--        return false; /* Do nothing */
--
--    } else if (s->snoop_index == SNOOP_START) {
--        uint8_t cmd = data & 0xff;
--        int ndummies = aspeed_smc_num_dummies(cmd);
--
--        /*
--         * No dummy cycles are expected with the current command. Turn
--         * off snooping and let the transfer proceed normally.
--         */
--        if (ndummies <= 0) {
--            s->snoop_index = SNOOP_OFF;
--            return false;
--        }
--
--        s->snoop_dummies = ndummies * 8;
--
--    } else if (s->snoop_index >= addr_width + 1) {
--
--        /* The SPI transfer has reached the dummy cycles sequence */
--        for (; s->snoop_dummies; s->snoop_dummies--) {
--            ssi_transfer(s->spi, s->regs[R_DUMMY_DATA] & 0xff);
--        }
--
--        /* If no more dummy cycles are expected, turn off snooping */
--        if (!s->snoop_dummies) {
--            s->snoop_index = SNOOP_OFF;
--        } else {
--            s->snoop_index += size;
--        }
--
--        /*
--         * Dummy cycles have been faked already. Ignore the current
--         * SPI transfer
--         */
--        return true;
--    }
--
--    s->snoop_index += size;
--    return false;
--}
--
- static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
-                                    unsigned size)
- {
-@@ -887,10 +786,6 @@ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t data,
- 
-     switch (aspeed_smc_flash_mode(fl)) {
-     case CTRL_USERMODE:
--        if (aspeed_smc_do_snoop(fl, data, size)) {
--            break;
--        }
--
-         for (i = 0; i < size; i++) {
-             ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+@@ -492,7 +496,30 @@ static void xlnx_zynqmp_qspips_flush_fifo_g(XlnxZynqMPQSPIPS *s)
+                 }
+                 s->regs[R_GQSPI_DATA_STS] = 1ul << imm;
+             } else {
+-                s->regs[R_GQSPI_DATA_STS] = imm;
++                /*
++                 * When [receive, transmit, data_xfer] = [0,0,1], it represents
++                 * the number of dummy cycle sent on the SPI interface. We need
++                 * to convert the number of dummy cycles to bytes according to
++                 * the SPI mode being used.
++                 *
++                 * Ref: ug1085 v2.2 (December 2020) table 24‐22, an example of
++                 *      Generic FIFO Contents for Quad I/O Read Command (EBh)
++                 */
++                if (!ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, TRANSMIT) &&
++                    !ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, RECIEVE)) {
++                    uint8_t spi_mode = ARRAY_FIELD_EX32(s->regs, GQSPI_GF_SNAPSHOT, SPI_MODE);
++                    if (spi_mode == GQSPI_GF_MODE_QSPI) {
++                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 4, 8) / 8;
++                    } else if (spi_mode == GQSPI_GF_MODE_DSPI) {
++                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 2, 8) / 8;
++                    } else if (spi_mode == GQSPI_GF_MODE_SPI) {
++                        s->regs[R_GQSPI_DATA_STS] = ROUND_UP(imm * 1, 8) / 8;
++                    } else {
++                        qemu_log_mask(LOG_GUEST_ERROR, "Unknown SPI MODE: 0x%x ", spi_mode);
++                    }
++                } else {
++                    s->regs[R_GQSPI_DATA_STS] = imm;
++                }
+             }
          }
-@@ -937,8 +832,6 @@ static void aspeed_smc_flash_update_ctrl(AspeedSMCFlash *fl, uint32_t value)
- 
-     s->regs[s->r_ctrl0 + fl->id] = value;
- 
--    s->snoop_index = unselect ? SNOOP_OFF : SNOOP_START;
--
-     aspeed_smc_flash_do_select(fl, unselect);
- }
- 
-@@ -981,9 +874,6 @@ static void aspeed_smc_reset(DeviceState *d)
-     if (s->ctrl->segments == aspeed_segments_fmc) {
-         s->regs[s->r_conf] |= (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0);
-     }
--
--    s->snoop_index = SNOOP_OFF;
--    s->snoop_dummies = 0;
- }
- 
- static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
-@@ -1419,12 +1309,10 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
- 
- static const VMStateDescription vmstate_aspeed_smc = {
-     .name = "aspeed.smc",
--    .version_id = 2,
--    .minimum_version_id = 2,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
--        VMSTATE_UINT8(snoop_index, AspeedSMCState),
--        VMSTATE_UINT8(snoop_dummies, AspeedSMCState),
-         VMSTATE_END_OF_LIST()
-     }
- };
+         /* Zero length transfer check */
 -- 
 2.25.1
 

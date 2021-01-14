@@ -1,138 +1,212 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1411716lfb;
-        Wed, 2 Dec 2020 10:51:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyJXlru3Tz9xVL68/Kn+aBptkChEIn9Rfd6z3hM7bJ1R3EuL/q7Qyen8X3RWZxZIQRBDKhA
-X-Received: by 2002:a25:24d4:: with SMTP id k203mr5126963ybk.62.1606935076362;
-        Wed, 02 Dec 2020 10:51:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606935076; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp886408lfq;
+        Wed, 13 Jan 2021 16:10:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyE20XA09s92rhHyNKnNPJb87bXA7b36ODzHsxkNk9QZYSCZ3dy6Kikzf+/luj5KvfjlCiu
+X-Received: by 2002:a25:9b45:: with SMTP id u5mr7145714ybo.331.1610583046897;
+        Wed, 13 Jan 2021 16:10:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610583046; cv=none;
         d=google.com; s=arc-20160816;
-        b=EdTO4wlGwrfptHDV0Zb3+Ui/IposCRkma8M2Xg9FkrSCH1JE2ig3sF2QPxX2MF9qli
-         TLvs6sYxtVLKy7XOe/9h32fHFC0an6tzQT+fDMkLijzMJnYvk7pwEpkD0pHeMYs437sl
-         4/jiSPyNksoP83mYTy5HP8IErAPj0mKZep0yQeXmyUN1aZd3ZGwbVB3UVQicJM5RUMqE
-         sEz88/sn/W+RMk2L0eONkWuuncDMt2JVDCaPPo/gq3EZqOC0gFOQn/GbmqOFafeA8UmO
-         yWzeEAbs/badnDnyJemVi+QcHEfx991QvbSSSB868gH6FGBzzKl+ULmhQF83FXBvs8Nm
-         wpHg==
+        b=k+at6tKMADMNfh85wm+nqRq2NNR2LbEeRfmXcnQgns9HMIVIzp/Po2sOIZfa0+aBhb
+         0o9S26OfCOczkpPqX9N2Afgt/cKjyoDf0cAI6m2ePWowm20yakxsuwC/r35MSITdwPKc
+         jOOxM6ytjUki5jX8fya15Upo0aE4iI3Z7UpHitoeLZQYI7jfrnrIszKLW2VZntIUwZRa
+         pbuYeIrhmVIEw5+ts/4ROeF0zOji8hthDLICzCB5/EggFqX4YIUwCHZxDDNlD4fWU5Mi
+         04uWm7J+4zCmZ+TroZYf2tY33u5zUO4+zM9CEACM0nnejc/xXdEkQlcF0RcAiRiYj+T7
+         wTGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=+L1LdjKLZXpPtT/FwGd862fRRCryfoofTWElcvqHGQ4=;
-        b=zAWyXAN7PkWWPH2V2LJtOe4JwgkROT8u8aldRQ8xrEBxuuttgzL37dvCs7mmJGbPdr
-         u5/hr5kNt7idLHBEyBQrQ/Dx/0loY+b67w2ugOTd/2vmJ5OxhzTdTXzlaYu+gMWKkd1i
-         RdKE2Ilyr6hnFUM3PZdjcfVc/8tTGiZ5JG9pibzt6GPqJf0HwnpC+11hNmaRUnpRzdgQ
-         X7P7RwMStXNUWCxREOEL9I45GBCa/tzcc2UdF7w8II+BId/CSBDF3evoMwNEN1t55lFM
-         ejHZzitaYZMeRRTPLUiP5q/wnfj+zl4bM0S/xqDIqO0NEy0gjoGLqmEQI4crvW2pzDaF
-         ruow==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=6exoz4gE1h9IzidTcM0FsUollCqLpu8lLTXxxJuhK58=;
+        b=RUpttoGFdD4VDsAlKdQKjRA4dO1FJBsurJEqp4CqmeL3fso7KqsRKGRkkldNKTp4L8
+         Hm66ZgLAxYK6RBEeI3WJzPIoBBn3SgQ9j1g/PabsJatvoKyFkLf+NtAhsKQGKbNBvdXn
+         ruA+yK/aqm1zowZjXsZBl8shptPgfLF11yXJkAxMpHokVQVn1AlIjFogXoWJwyA2aFk9
+         UUfVlTvVUW9de+M9k2U66RYQSi3xd/JrXjcyJXGs/RpPKWABofFR4DQuvKJpxdCZMc0o
+         NpyaA+Z9PU7t5bLBz5WHko2xHACKAeyhR6btW7ugxH3VMP9AbyLEUjm8pX81x+l3EOSd
+         SS/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fX48nfRr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e76si2238556ybh.268.2020.12.02.10.51.16
+        by mx.google.com with ESMTPS id l131si4191901ybl.481.2021.01.13.16.10.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 10:51:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Jan 2021 16:10:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60384 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fX48nfRr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57630 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkXDf-0005FT-Pt
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 13:51:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54856)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kzqDt-0003Vt-Uv
+	for alex.bennee@linaro.org; Wed, 13 Jan 2021 19:10:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37714)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1kkXBd-0002o3-RP; Wed, 02 Dec 2020 13:49:10 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:55626
- helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <agraf@csgraf.de>)
- id 1kkXBb-0003CX-DZ; Wed, 02 Dec 2020 13:49:09 -0500
-Received: from Alexanders-Mini.alex.local
- (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
- by csgraf.de (Postfix) with UTF8SMTPSA id 32189390036D;
- Wed,  2 Dec 2020 19:49:03 +0100 (CET)
-Subject: Re: [PATCH v3 3/3] arm/hvf: Add a WFI handler
-To: Peter Collingbourne <pcc@google.com>
-References: <27f51056925889c41b763b71c992f04d935157c4.1606884132.git.pcc@google.com>
- <f01281f814ceba088595917eb06d4cb21db820f1.1606884132.git.pcc@google.com>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <23335280-d732-4bf7-af49-068e00601414@csgraf.de>
-Date: Wed, 2 Dec 2020 19:49:01 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:84.0)
- Gecko/20100101 Thunderbird/84.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kzq8F-0005gP-8c
+ for qemu-devel@nongnu.org; Wed, 13 Jan 2021 19:04:55 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:45028)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kzq8D-0000OO-71
+ for qemu-devel@nongnu.org; Wed, 13 Jan 2021 19:04:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1610582692;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=6exoz4gE1h9IzidTcM0FsUollCqLpu8lLTXxxJuhK58=;
+ b=fX48nfRre1KCJcABWW1MZtnEsuUzFvW1Wj6qlyr2sG0eZu++hkXq1gnKJXMHwqVZz9ATti
+ EZc5/x/BHmS+oDnsQXc0sYCP77nXW6pKnRpKG6dt+o1fkThjKKEW4vpzUjtYjEXVOh4OtN
+ 44XhQyETDJ26DvLNyIGTRSOZ4w+3V6c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-336-bV0LLfvzMF67Cu_PqcjAxw-1; Wed, 13 Jan 2021 19:04:50 -0500
+X-MC-Unique: bV0LLfvzMF67Cu_PqcjAxw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE3B68042A2;
+ Thu, 14 Jan 2021 00:04:48 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-112-138.rdu2.redhat.com
+ [10.10.112.138])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 375D15D9C0;
+ Thu, 14 Jan 2021 00:04:47 +0000 (UTC)
+Date: Wed, 13 Jan 2021 19:04:45 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Subject: Re: [PATCHv4 2/2] arm-virt: add secure pl061 for reset/power down
+Message-ID: <20210114000445.mg3xq2nq7kccbvjy@kamzik.brq.redhat.com>
+References: <20210112143058.12159-1-maxim.uvarov@linaro.org>
+ <20210112143058.12159-3-maxim.uvarov@linaro.org>
+ <20210112153542.oqahdubzeoipyvun@kamzik.brq.redhat.com>
+ <CAFEAcA9O2kHpcvoofo0v3ahXNOQtw8cxaVC2hn+AjpH6A9RciA@mail.gmail.com>
+ <20210112162526.ob7eroamrdlowfyr@kamzik.brq.redhat.com>
+ <20210112162847.wik3h24isg4cmgyq@kamzik.brq.redhat.com>
+ <CAD8XO3Y3sgZ3VXh7FhfcvvTckE2EUebivQ1nUnqTud2ApGUh=Q@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <f01281f814ceba088595917eb06d4cb21db820f1.1606884132.git.pcc@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
- helo=zulu616.server4you.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+In-Reply-To: <CAD8XO3Y3sgZ3VXh7FhfcvvTckE2EUebivQ1nUnqTud2ApGUh=Q@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rI6RG/j5ahJq
+ Jose Marinho <Jose.Marinho@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9mFv0AxKhadd
+
+On Wed, Jan 13, 2021 at 10:30:47AM +0300, Maxim Uvarov wrote:
+> - the same size for secure and non secure gpio. Arm doc says that
+> secure memory is also split on 4k pages. So one page here has to be
+> ok.
+
+To be clear, does that means 4k pages must be used? I'm not concerned
+with the size, but the alignment. If it's possible to use larger page
+sizes with secure memory, then we need to align to the maximum page
+size that may be used.
+
+Thanks,
+drew
 
 
-On 02.12.20 05:44, Peter Collingbourne wrote:
-> Sleep on WFI until the VTIMER is due but allow ourselves to be woken
-> up on IPI.
->
-> Signed-off-by: Peter Collingbourne <pcc@google.com>
-> ---
-> v3:
-> - move the simplified locking to a separate patch
-> - spin on sleep <2ms
->
-> v2:
-> - simplify locking further
-> - wait indefinitely on disabled or masked timers
->
->   accel/hvf/hvf-cpus.c     |  4 +--
->   include/sysemu/hvf_int.h |  1 +
->   target/arm/hvf/hvf.c     | 56 ++++++++++++++++++++++++++++++++++++++++
->   3 files changed, 59 insertions(+), 2 deletions(-)
->
-> diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
-> index e613c22ad0..b2c8fb57f6 100644
-> --- a/accel/hvf/hvf-cpus.c
-> +++ b/accel/hvf/hvf-cpus.c
-> @@ -344,8 +344,8 @@ static int hvf_init_vcpu(CPUState *cpu)
->       sigact.sa_handler = dummy_signal;
->       sigaction(SIG_IPI, &sigact, NULL);
->   
-> -    pthread_sigmask(SIG_BLOCK, NULL, &set);
-> -    sigdelset(&set, SIG_IPI);
-> +    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->unblock_ipi_mask);
-> +    sigdelset(&cpu->hvf->unblock_ipi_mask, SIG_IPI);
-
-
-That turns set into an unused variable, no? I'll fix it up while 
-applying though. The rest looks great, I'll push it as part of my next 
-patch set.
-
-
-Alex
+> - will add dtb.
+> - I think then less options is better. So I will remove
+> vmc->secure_gpio flag and keep only vmc flag.
+> 
+> Regards,
+> Maxim.
+> 
+> On Tue, 12 Jan 2021 at 19:28, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > On Tue, Jan 12, 2021 at 11:25:30AM -0500, Andrew Jones wrote:
+> > > On Tue, Jan 12, 2021 at 04:00:23PM +0000, Peter Maydell wrote:
+> > > > On Tue, 12 Jan 2021 at 15:35, Andrew Jones <drjones@redhat.com> wrote:
+> > > > >
+> > > > > On Tue, Jan 12, 2021 at 05:30:58PM +0300, Maxim Uvarov wrote:
+> > > > > > Add secure pl061 for reset/power down machine from
+> > > > > > the secure world (Arm Trusted Firmware). Connect it
+> > > > > > with gpio-pwr driver.
+> > > >
+> > > > > > +    /* connect secure pl061 to gpio-pwr */
+> > > > > > +    qdev_connect_gpio_out(pl061_dev, ATF_GPIO_POWEROFF,
+> > > > > > +                          qdev_get_gpio_in_named(gpio_pwr_dev, "reset", 0));
+> > > > > > +    qdev_connect_gpio_out(pl061_dev, ATF_GPIO_REBOOT,
+> > > > > > +                          qdev_get_gpio_in_named(gpio_pwr_dev, "shutdown", 0));
+> > > > >
+> > > > > I don't know anything about secure world, but it seems odd that we don't
+> > > > > need to add anything to the DTB.
+> > > >
+> > > > We should be adding something to the DTB, yes. Look at
+> > > > how create_uart() does this -- you set the 'status' and
+> > > > 'secure-status' properties to indicate that the device is
+> > > > secure-world only.
+> > > >
+> > > >
+> > > >
+> > > > > > +    if (vmc->no_secure_gpio) {
+> > > > > > +        vms->secure_gpio = false;
+> > > > > > +    }  else {
+> > > > > > +        vms->secure_gpio = true;
+> > > > > > +    }
+> > > > >
+> > > > > nit: vms->secure_gpio = !vmc->no_secure_gpio
+> > > > >
+> > > > > But do we even need vms->secure_gpio? Why not just do
+> > > > >
+> > > > >  if (vms->secure && !vmc->no_secure_gpio) {
+> > > > >      create_gpio_secure(vms, secure_sysmem);
+> > > > >  }
+> > > > >
+> > > > > in machvirt_init() ?
+> > > >
+> > > > We're just following the same pattern as vmc->no_its/vms->its,
+> > > > aren't we ?
+> > > >
+> > >
+> > > 'its' is a property that can be changed on the command line. Unless
+> > > we want to be able to manage 'secure-gpio' separately from 'secure',
+> > > then I think vmc->its plus 'secure' should be sufficient. We don't
+> >
+> > I meant to write 'vmc->no_secure_gpio and vms->secure' here.
+> >
+> > Thanks,
+> > drew
+> >
+> > > always need both vmc and vms state, see 'no_ged'.
+> > >
+> > > Thanks,
+> > > drew
+> >
+> 
 

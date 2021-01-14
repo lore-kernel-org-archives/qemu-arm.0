@@ -1,168 +1,185 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp403882lfq;
-        Thu, 14 Jan 2021 08:04:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJygzmvhIWOPgva62pIhMoqhbMVJL7ALWGW/W188p6ugFq/v/HdY/S7Dc3hEXlt5Qzhm2pCJ
-X-Received: by 2002:a25:738d:: with SMTP id o135mr11356015ybc.233.1610640285705;
-        Thu, 14 Jan 2021 08:04:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610640285; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp406456lfq;
+        Thu, 14 Jan 2021 08:07:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyDGdfkr41YwkmsYI3MhNk1KKTV8QjNchbSBp5NKeE1fJ/u4TEQztcawaIPLm95jWr7qH2M
+X-Received: by 2002:a25:374c:: with SMTP id e73mr11894597yba.376.1610640457184;
+        Thu, 14 Jan 2021 08:07:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610640457; cv=none;
         d=google.com; s=arc-20160816;
-        b=jMKaGET3U497JNxNvItZUkU/ltWEO8FWmeyiDtXuCOL4dWoCcdLl9l6ybeGZs85xq+
-         /yBKvcm6j6liLYf/4qPEMuTRQLYJe3zLjz2sHqh/8BBF9LIZyhC8WWAsRPRpv1nVEW7l
-         eU5StUEUNHlsA9nVF2B5cmNbHCII8RMJF9Lqh7tJIcF/4tk2Q+rzT+5qoWjJUh5TMODL
-         NnQ2ov0X4cebXcp111X9iORu6wgAkhuNKCUdrDVFu/ESCrOX5tuxOsxBwPcwbIk99tta
-         ceEI9KND181E+RxoWRw+yULPwlciek9OxqxXyHzYUNf19960wwfnMUnEL8A0xC6KV5RD
-         oKOg==
+        b=TVXWuhvMvLIEs7zlJjNoXEfcKtuJc3zPJPRCA0zx3HDIWzV0B+JfsYUHAoLLLj0Ua4
+         9Wz4phtZvZTtyUlssqFg/4MtayggKP704zdmv9kOQXJvYmf4Qap1S5h+1SVZuYej4+/j
+         lh0H4KEfMQokbGz4UiOU/usBSAnAtWs7IOyBgw4llV+AmgVDHDn04ziOBqnTUlCfNlDU
+         yhE4eJyHdfKJx5mStTivv5FYSoSPe4SM2YFPbYvtuI5IXr9VLTmNGfsyWW8+l+2CTceZ
+         8o4SPLDN3SwjDiYCe4iIk6JOWcxQ+V5uTkE/CObdltmfUij34fCNwdxWEdwPnl8WFU6z
+         H8qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=ZLCvurpnBG5U2vJ3uC0YnZuSpg2DuU2aBar4wPu5hl8=;
-        b=eKPJg8ypSMynMThsXSZxvoTgpuuQ+IZiXatjiVes43mNwQI48Dij3VeNRGEJ1TpXAi
-         8Ylb/S4Fq2+PMl/BMEydGBZk+LdlvmWSRo8Nznk+fAgTbJq4J9nscu28BzA4ej70qeS9
-         kV8StF9hN6A/6tMrL3secYScgALXiFiFS8B+hn4mMyr4gk6QDSooPgsWb5eOWAg7XnPm
-         aewXC4gAw5SL90Iurq+x/DmXjQOq0ZNCogNJIG4kN2x2dz7E/d6oGDn7MK6533a8OKkp
-         eW2x9YOiqe0C+01VYww+/HVpxeHmdYZtdiq/v3mRPedZeDpHOKYXinvtMyytkXtg+CXo
-         GyaA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=3x0O8sPNXEDYftnuGsjOeZIu2Ubh3rhs2GG4FkkBl5M=;
+        b=FWUSwPfMhryu0U+n706DWzHI8B2kFqAt5tTTS/nP8Lzs5ib9Ioaa/FjO38NBf+ridT
+         DLOiYNUTnmaW2dNWO+MsCTRFQ1CpgCssvQ77WZkxQJyPn/06GeWcaqbQ8JOEw15ScPBL
+         aUX/p+zZC6e3l3huV6tJy0bDiFAq263o5lfaUgkPVyu7VdkpVwDCrXrg6naPofwGAioF
+         UuTlEUt3Yzh2Pr1ry3FydOiPKT+JJDHd8jvvZAgKVW/u9izR8Tyszbt9VDs7w3EsiPEj
+         roKWAfriFQHO0qkzi03bSy/WWqxqHm5bYF+DV4BjewiI1aYcUGLBZ3CZ6dGBKL5F3RlW
+         bgGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aOHZomde;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BRtb84e0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z133si5722786ybz.330.2021.01.14.08.04.45
+        by mx.google.com with ESMTPS id 8si5226761yba.364.2021.01.14.08.07.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jan 2021 08:04:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Jan 2021 08:07:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aOHZomde;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39224 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BRtb84e0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:41590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l0576-0003sM-Lr
-	for alex.bennee@linaro.org; Thu, 14 Jan 2021 11:04:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34320)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l059s-000588-Ig
+	for alex.bennee@linaro.org; Thu, 14 Jan 2021 11:07:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l056I-0003r7-IC
- for qemu-arm@nongnu.org; Thu, 14 Jan 2021 11:03:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51707)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l056F-0002ew-CO
- for qemu-arm@nongnu.org; Thu, 14 Jan 2021 11:03:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610640226;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZLCvurpnBG5U2vJ3uC0YnZuSpg2DuU2aBar4wPu5hl8=;
- b=aOHZomdeSM1ra+seMg1gpWNIacpkwQx0DFBrHMtIZD7MF+YI7L4i6j0CjfvVriypaTAjIv
- Yu4LRKToAUH5fNxpEB8v0coH7xLBVCEBQ1vh32+V7nJs7sCR2NQVV3zd76AlJnd3Z6weuY
- O3cafQt4TSNORnLcVI7IwlOMxEhUxmI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-491-ViwbLcTkPxqfjLd_vJJRNQ-1; Thu, 14 Jan 2021 11:03:42 -0500
-X-MC-Unique: ViwbLcTkPxqfjLd_vJJRNQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 00C74EC1A5;
- Thu, 14 Jan 2021 16:03:41 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-112-154.rdu2.redhat.com
- [10.10.112.154])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C98A0100AE40;
- Thu, 14 Jan 2021 16:03:38 +0000 (UTC)
-Date: Thu, 14 Jan 2021 11:03:35 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: Maxim Uvarov <maxim.uvarov@linaro.org>
-Subject: Re: [PATCHv6 0/3] arm-virt: add secure pl061 for reset/power down
-Message-ID: <20210114160335.hvqdh7mqmm3vff52@kamzik.brq.redhat.com>
-References: <20210114145032.8457-1-maxim.uvarov@linaro.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l04s0-0000aC-1N; Thu, 14 Jan 2021 10:49:08 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:33714)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l04rx-0004rD-4L; Thu, 14 Jan 2021 10:49:06 -0500
+Received: by mail-wr1-x434.google.com with SMTP id t30so6297719wrb.0;
+ Thu, 14 Jan 2021 07:49:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=3x0O8sPNXEDYftnuGsjOeZIu2Ubh3rhs2GG4FkkBl5M=;
+ b=BRtb84e0mahJhjpESPiR25z/dIoIswKCdGQlfDurjL7ceaB23gSSfX3pirb8BpgtLi
+ Z0M0jcwu6yXQQE8F8B4kNK3CKCZGHe5M5Cc9uW7gHUEgPUpRVylzZAzohwqXq5aDySqu
+ gCN8RXTdEm7HAQ/cpQCA+CxG3+gP3hiZkrlSEsjGR1dnTLZla6p6KdvPYd9ePf8g746B
+ XwUfa8srWqcAE+IncAIVKG//AmeRStnAbcf0v3MQSqU1YhAa5T75zNT2GGgpUqY5W0x2
+ tCEjojaiCj+t9ho3vWMneSYvEuuDdI0eYo+1UeZt0Wyv32huf0gJavDz/hY/BeSMuZfk
+ 8LvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=3x0O8sPNXEDYftnuGsjOeZIu2Ubh3rhs2GG4FkkBl5M=;
+ b=GNJ6Tsx7XObq3tSD0FpJhDXrt8AbjCkWAVUdQjsFkZCKH31N5OCLldGpjGOL3mXH75
+ iOO/2zpUD11HgFnHr57m7pw2KnYS4ik4aV6nMKoRhNSv2zkfD8W4rSRnvbA5Ivuwn76Y
+ u/Ru6UXJx2Kz4Nxx8sWtchxf+8rEa/q3hQEITIJS7h5zbkzivBtxdi1pg2e07Z1YFWUG
+ yNuIlCqo53piFuMJIFiLgUJb8kPhVseFfPaxUjDV5RDmW3TuGKy2HUZR4Ra4C7/St+pR
+ XKuAbrmg17LsQPn0UiAQX4gBdBH0TIo5H9aqnJvd4meyocITf+MY4WLt12f1relSXLWA
+ HeRQ==
+X-Gm-Message-State: AOAM530WiQjCExWFXZtLmx1TO0Kt37E8d6pBi6q/6x9KkP+6/HxFTDIv
+ 0dzQncV8/qtUXwUQv+aRe+c=
+X-Received: by 2002:a5d:43ce:: with SMTP id v14mr8551968wrr.342.1610639343004; 
+ Thu, 14 Jan 2021 07:49:03 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id h187sm9015911wmf.30.2021.01.14.07.49.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 14 Jan 2021 07:49:02 -0800 (PST)
+Subject: Re: [PATCH 00/18] hw: Mark the device with no migratable fields
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Gerd Hoffmann <kraxel@redhat.com>
+References: <20200703201911.26573-1-f4bug@amsat.org>
+ <CAFEAcA8Cu2N5qX55rUk_yd4R6PdJX+X5KPQmMiQPFakP3ShZ-A@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <17a5ddc4-c7d9-08f3-5260-f17e1bd48dac@amsat.org>
+Date: Thu, 14 Jan 2021 16:49:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210114145032.8457-1-maxim.uvarov@linaro.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <CAFEAcA8Cu2N5qX55rUk_yd4R6PdJX+X5KPQmMiQPFakP3ShZ-A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.248,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.237,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Jose.Marinho@arm.com, f4bug@amsat.org,
- qemu-devel@nongnu.org, tf-a@lists.trustedfirmware.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CgPoVU9NY+qV
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Juan Quintela <quintela@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q4ZGjDfDMIjq
 
-On Thu, Jan 14, 2021 at 05:50:29PM +0300, Maxim Uvarov wrote:
->  v6: - 64k align gpio memory region (Andrew Jones)
->      - adjusted memory region to map this address in the corresponding atf patch
->  v5: - removed vms flag, added fdt  (Andrew Jones)
->      - added patch3 to combine secure and non secure pl061. It has to be
+On 7/9/20 9:19 PM, Peter Maydell wrote:
+> On Fri, 3 Jul 2020 at 21:19, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> This is a proof-of-concept after chatting with Peter Maydell
+>> on IRC earlier.
+>>
+>> Introduce the vmstate_no_state_to_migrate structure, and
+>> a reference to it: vmstate_qdev_no_state_to_migrate.
+>> Use this reference in devices with no fields to migrate.
+>>
+>> This is useful to catch devices missing vmstate, such:
+>> - ads7846
+>> - mcf-uart
+>> - mcf-fec
+>> - versatile_i2c
+>> - ...
+>>
+>> I am not sure about:
+>> - gpex-pcihost
+> 
+> I think it's correct that this has no internal state:
+> the only interesting state is in the GPEXRootState, which
+> is a TYPE_GPEX_ROOT_DEVICE which migrates itself.
+> 
+> I made some comments on the "meaty" bits of the patchset,
+> and reviewed one or two of the "mark this device as
+> having no migration state" patches, but it doesn't seem
+> worth reviewing all of them until the migration submaintainers
+> have a chance to weigh in on whether they like the concept
+> (I expect they're busy right now with freeze-related stuff :-))
 
-I think you should do non-functional change refactoring in patch 2 and
-then add the device with the DTB updates in patch 3.
+Now that we are far from freeze-date is a good time to ping
+again on this concept :)
 
-Thanks,
-drew
+Most of the devices are ARM except:
+- cpu-cluster (Eduardo/Marcel)
+- hcd-ohci (Gerd)
+- mac-nubus-bridge (Laurent)
+- generic QOM (Daniel, Paolo)
 
+Is someone against this proposal?
 
->        more easy to review if this changes are in the separate patch.
->  v4: rework patches accodring to Peter Maydells comments:
-> 	- split patches on gpio-pwr driver and arm-virt integration.
-> 	- start secure gpio only from virt-6.0.
-> 	- rework qemu interface for gpio-pwr to use 2 named gpio.
-> 	- put secure gpio to secure name space.
->  v3: added missed include qemu/log.h for qemu_log(.. 
->  v2: replace printf with qemu_log (Philippe Mathieu-Daudé)
-> 
-> This patch works together with ATF patch:
-> 	https://github.com/muvarov/arm-trusted-firmware/commit/7556d07e87f755c602cd9d90359341bdd14d9d57
-> 
-> Previus discussion for reboot issue was here:
->      https://www.mail-archive.com/qemu-devel@nongnu.org/msg757705.html
-> 
-> Maxim Uvarov (3):
->   hw: gpio: implement gpio-pwr driver for qemu reset/poweroff
->   arm-virt: add secure pl061 for reset/power down
->   arm-virt: combine code for secure and non secure pl061
-> 
->  hw/arm/Kconfig        |   1 +
->  hw/arm/virt.c         | 118 +++++++++++++++++++++++++++++++++++-------
->  hw/gpio/Kconfig       |   3 ++
->  hw/gpio/gpio_pwr.c    |  70 +++++++++++++++++++++++++
->  hw/gpio/meson.build   |   1 +
->  include/hw/arm/virt.h |   2 +
->  6 files changed, 175 insertions(+), 20 deletions(-)
->  create mode 100644 hw/gpio/gpio_pwr.c
-> 
-> -- 
-> 2.17.1
-> 
+Regards,
 
+Phil.

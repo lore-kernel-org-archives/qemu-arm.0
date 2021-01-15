@@ -1,97 +1,97 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp303626lfq;
-        Fri, 15 Jan 2021 06:23:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw/XkKGkL/DcjE4tIveg4S9SPUdcBT64kjc4V2vSkKO5WxTLECCYrHZ3FRFvF7Bl6dIKiu/
-X-Received: by 2002:a25:9885:: with SMTP id l5mr17674077ybo.501.1610720586589;
-        Fri, 15 Jan 2021 06:23:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610720586; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp317751lfq;
+        Fri, 15 Jan 2021 06:39:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxYN2lhqwNTQDCR3czNrTjvR1aJ4tkHUN2vaaPefWG688OXNc0jTVwnYuHnWDH+uvJaEUwa
+X-Received: by 2002:a25:2407:: with SMTP id k7mr19518401ybk.282.1610721589095;
+        Fri, 15 Jan 2021 06:39:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610721589; cv=none;
         d=google.com; s=arc-20160816;
-        b=tqSzURm33B7vUT0+Tcz9BeXQqYnD5eQIwIQmm02R5HeiMs1w7rJvF4rbw8QF/GMMQr
-         9RF7bEOtJu7M9AzdGA3mvnc/oweSmKHgMJPyUVWM78ywN3F+VDZktDMgWtl566VX+Fhg
-         jO3WJaPovyY6tCJ43kJtDpAZJ6XWmkZK5iXvqaI67hC89zrv94ZCV0SAc5RKqfFXuHLL
-         7VsQa0+dzcKOAJFy+cXwuxZxZ+L6zFXcZJzUzA9X2fPnqc9ACFUqd5wbPTVAjlfbYWsN
-         eYTJozQMaNMmZ0FWzROiKqI+Exq95uHAhLzzqY/AjcFmmaGMmYsVe7QBdtejTqbg2kAg
-         HiKg==
+        b=BYrh/S820OrnOb/Zp9miv5YWQpHKu0N9pKooxXEf7SPZ46gCmIUnmPQ0QJ7soz1Fg0
+         sORAvjiTXQMk2fhjK4FdlHn5IZcplXW3ERnwQn2W0CfpFr0Gi6OOG+bIyB5S962dgnAa
+         9bXlW1edPwUsI+cgCem4YNUQ/gZwiia+Y0Wjc6iOlqgyqAxkPtzGOSBDSGuhTl+mClWn
+         d8mRjbbcZ42qxZMaEjk4lbs5WPs21Mp80/LI/HmsZRK8X/k8GSHMwBtAG6xMphWRXpFe
+         Bs+tePP8tQZ/4zCc6kCM2R/B+h7Q9udPDi8Mzj9uq4cKyo6gJpjKgSvCkQbr3qCNhMqe
+         F0PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ixNEZN1pFQbixJvXzSJWe23RlLp2otnpJ4+txpnch/o=;
-        b=QewQfsHAN/aD1A0Av3Pet8VMDtuWBU/BnITZ4xW/wz29pd18eXdChbL77vhVaKcure
-         Mwjp5CtFjJbbJoGuke/vGGWtgRN0aDBxtoneqaDHFWupt7q3KyPyyixNk3XbgQLGyyOE
-         jNdRgkmNPzHmoy+B5cOaY4UVHc+qgB0uztg94jf/EMystAUlIPKAdCf2Ql3zDRBtM/29
-         T6nEyJQ4HqZVX+Cee3nhkezGoIsDG7Jpx82dQ35Hpimqth2BrEn4Ytdpx0YcwDQLaKsR
-         c4nh4W3VtjRZO89xS7SOmTARTDWepaL/XOqv6h/XNeILugAU8Q34GXy7J3Lno8KpmWyc
-         PbPQ==
+        bh=/VvweCqDZRlAevjUrDbgsRM1GiPcEDvH69lmfCC89iY=;
+        b=dPnKobTCnUg/vblWl9SiJI7WhCWuW234u2dcMQNSW+52jFZ1Ke2JDTaiEp2G74Re2b
+         ube01aoeRw4AXRhPKF4U2gNKMLwpF4s3puUNd1ws7oeXiw4mXALtiY+0DLYFtlCcfY6O
+         KUe5a35D/UuC9wjAD+9nqJQPJkckcbfohkrI7ECFJZvURG3v/h0eaQJWyi+gkRY9nzdI
+         Gf0RhIdLxxROaFOl0fYbM38TIa8lHGhWoYdosB3PL639zyPAURjxAZvHcPBrZYxC+IWw
+         jJ+yGcMwiXDIQrJFlq84bfJ3MlbAhr7tld62zXLDvJvlJhCh5KLnOxaEyhUVNblBKMAU
+         adAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F1Iq4pDK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QfpeyqQn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14si8546155ybp.62.2021.01.15.06.23.06
+        by mx.google.com with ESMTPS id 63si9022726ybn.141.2021.01.15.06.39.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Jan 2021 06:23:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 15 Jan 2021 06:39:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F1Iq4pDK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QfpeyqQn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39898 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l0Q0H-0002Qc-UN
-	for alex.bennee@linaro.org; Fri, 15 Jan 2021 09:23:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46538)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l0QGS-0005O8-GW
+	for alex.bennee@linaro.org; Fri, 15 Jan 2021 09:39:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l0PYy-0003Cm-FQ; Fri, 15 Jan 2021 08:54:54 -0500
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:38145)
+ id 1l0QFG-0004Q0-Q1; Fri, 15 Jan 2021 09:38:34 -0500
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b]:39914)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l0PYu-0000BM-Ki; Fri, 15 Jan 2021 08:54:52 -0500
-Received: by mail-yb1-xb30.google.com with SMTP id r63so5088760ybf.5;
- Fri, 15 Jan 2021 05:54:47 -0800 (PST)
+ id 1l0QFE-0002OP-CF; Fri, 15 Jan 2021 09:38:34 -0500
+Received: by mail-yb1-xb2b.google.com with SMTP id k4so5216518ybp.6;
+ Fri, 15 Jan 2021 06:38:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ixNEZN1pFQbixJvXzSJWe23RlLp2otnpJ4+txpnch/o=;
- b=F1Iq4pDKrn3IOwon2r2rmwNT32Sw1mjR67TxXwpbZfAz1GSeZ7RI+JxQnW8Ji3yOpx
- 9OJo5MGZnBjesiU1amQHo+4jMf4Ny0xo/F/kvnbB0whGtsnQ4YOjP+A+j5XdeIdliQCn
- gspjLruVKlPfgWgo60211Bur9mykT2lv/GVxLjr+u7zAm3c/UnJWEOrGiwvRlXmZ83YU
- 7Uqi/q2HROjfivDavAjmQRRnbZarrkt2eOeYDSyYuiCGnubSIV/OE7eWTVrf1OWLlKSa
- x856/kQPYrkG1SLTJzQNt8o83p8vvHuIyHOGBVK50/v7Ewb1msxJVS/6qAI7GuogdcrH
- zZsA==
+ :cc; bh=/VvweCqDZRlAevjUrDbgsRM1GiPcEDvH69lmfCC89iY=;
+ b=QfpeyqQn17DAW6rncpyCAwX5bA2P01iogNSVos6anQyiyVM6mvHE0Svi1uF7MicKC0
+ ndApnzlwltigtoZbHzYXBLpeiaU8Xdme2jvsHqCHGmMd4cr0gUjFApZtVXDkReqbp2xw
+ eI+vyOnF4/Qql+pKhPu9V6741ynwT6c+K6Q4oj07/fk7TkGoTJCK8LNeSnmtjmEqxh1y
+ 0fvk9bQG5BFgK+wTX1z898S8CjSVLskQxy4lIkURPyizTpzx+AJus3vDNBtMNcjQpFym
+ un4zwyeV7ALWSkUyY9HGwawdGl8H5uGqV9a9iAOJoy27aYSFTKzUGakj4edXSRZRBbZH
+ /EqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ixNEZN1pFQbixJvXzSJWe23RlLp2otnpJ4+txpnch/o=;
- b=pDllgeoKufoKcLsCJy5Kjw6HY7Io5aHwWSqlXzVrC5aq1B+ZfC0xKPMMmJBd2fdl7e
- fwgq+Mr8Aik0BPwr+JIboDdTsirA1F4kRw/MgcGCG3sYnL5yXtfjr29iC1S70RfJS+4J
- VLOA+/80lsQS2SuPJjMFJdRhpCrgL7cK1NfnehQMxIEP93kz1V6m+MK1UPLK01f011AF
- 6LMazjoT8jfGRdVtm7qIiZSO9de8aOybn6aBwI94wDls8k626opp7C2DJ1lLuAaGD79b
- yiEJO6Yv2TcSY3THZFfP1EiNcFat9RwKDMYSJD5B9fLxBHpOjSLCv4TY0Vci9vs8uDEB
- W0rg==
-X-Gm-Message-State: AOAM531pGZk02hyvZgFQA9fDCG6sXpQC1QKcMD23g+qjLFPJDL/5oQz4
- 4O3Rjd8jYY/+E8Qm0kj8EIl7oU6uFhCQuesWNGY=
-X-Received: by 2002:a05:6902:210:: with SMTP id
- j16mr18907535ybs.122.1610718886727; 
- Fri, 15 Jan 2021 05:54:46 -0800 (PST)
+ bh=/VvweCqDZRlAevjUrDbgsRM1GiPcEDvH69lmfCC89iY=;
+ b=FJGN9yWjsloOr4DqSEG8T00HL+K0SG3oAcAZnLif98Fcin6OnB+En+gNJn68hdBtlP
+ g2Zolye6NZdVAL4L0Rmuy3yMMXCqUYIRDG057PK5Ul108gEHCTbWzyNT3Hu1f0xIki7r
+ csTvuvqBWNVMyhPm8ik3AQORpxOn3gBn2vCta35JTELOVNsk+4NmlE7AIyzWjiqmJT5Y
+ D1beszO/8p49AYlwJs8IvQabmAPFkl1rmL0DHO04XT/lrNSs610QOIqXk6+I4xLFFOJ6
+ ykL9iaSf/8GWeDrx5CuxoBkPCaZjEN3sn/eCT4tifdnhh6pXW+khQ6GrU4gW49iTfKv3
+ iQyg==
+X-Gm-Message-State: AOAM532e6LmwGmxPFNLZ1q/7PiSeQzESFB1PkQuSCsFrjAKxSU3Yt5dN
+ 4vLAM50tWDne4tcM8o4Yne86BiWUf+SAYtCdyQA=
+X-Received: by 2002:a25:2a86:: with SMTP id
+ q128mr13724478ybq.387.1610721510468; 
+ Fri, 15 Jan 2021 06:38:30 -0800 (PST)
 MIME-Version: 1.0
 References: <20210114150902.11515-1-bmeng.cn@gmail.com>
  <20210114181300.GA29923@fralle-msi>
  <CAEUhbmXiYNFVY0EkrKqNGKV3C0QV0+WvkvEkfPUa-pSg2zGvuA@mail.gmail.com>
- <CAFQmdRYgc-Gs9JUtfzGtrpEdEm439mkyWfkcX3izvfRFuEpYgw@mail.gmail.com>
-In-Reply-To: <CAFQmdRYgc-Gs9JUtfzGtrpEdEm439mkyWfkcX3izvfRFuEpYgw@mail.gmail.com>
+ <20210115122627.GB29923@fralle-msi>
+In-Reply-To: <20210115122627.GB29923@fralle-msi>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 15 Jan 2021 21:54:34 +0800
-Message-ID: <CAEUhbmWp59Bu35Ga0U5TiZF4c0vDriFB4sebZc-k8ANRNRjybw@mail.gmail.com>
+Date: Fri, 15 Jan 2021 22:38:18 +0800
+Message-ID: <CAEUhbmVYgP063iqY0c10y9zKBmx00Z6vr3BO3RjoRo-CXQpYDw@mail.gmail.com>
 Subject: Re: [PATCH 0/9] hw/block: m25p80: Fix the mess of dummy bytes needed
  for fast read commands
-To: Havard Skinnemoen <hskinnemoen@google.com>
+To: Francisco Iglesias <frasse.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,40 +100,39 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Qemu-block <qemu-block@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
  Bin Meng <bin.meng@windriver.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Max Reitz <mreitz@redhat.com>, Tyrone Ting <kfting@nuvoton.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
  qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Joe Komlodi <komlodi@xilinx.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RvFoYo0jmi4K
+ Joe Komlodi <komlodi@xilinx.com>, Max Reitz <mreitz@redhat.com>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vNVQAP/z9upw
 
-Hi Havard,
+Hi Francisco,
 
-On Fri, Jan 15, 2021 at 11:29 AM Havard Skinnemoen
-<hskinnemoen@google.com> wrote:
+On Fri, Jan 15, 2021 at 8:26 PM Francisco Iglesias
+<frasse.iglesias@gmail.com> wrote:
 >
 > Hi Bin,
 >
-> On Thu, Jan 14, 2021 at 6:08 PM Bin Meng <bmeng.cn@gmail.com> wrote:
-> >
+> On [2021 Jan 15] Fri 10:07:52, Bin Meng wrote:
 > > Hi Francisco,
 > >
 > > On Fri, Jan 15, 2021 at 2:13 AM Francisco Iglesias
@@ -173,7 +172,38 @@ On Fri, Jan 15, 2021 at 11:29 AM Havard Skinnemoen
 > > was ever considered, otherwise all SPI controller models supporting
 > > software generation should have been found out seriously broken long
 > > time ago!
-> >
+>
+>
+> The controllers you are referring to might lack support for commands requiring
+> dummy clock cycles but I really hope they work with the other commands? If so I
+
+I am not sure why you view dummy clock cycles as something special
+that needs some special support from the SPI controller. For the case
+1 controller, it's nothing special from the controller perspective,
+just like sending out a command, or address bytes, or data. The
+controller just shifts data bit by bit from its tx fifo and that's it.
+In the Xilinx GQSPI controller case, the dummy cycles can either be
+sent via a regular data (the case 1 controller) in the tx fifo, or
+automatically generated (case 2 controller) by the hardware.
+
+> don't think it is fair to call them 'seriously broken' (and else we should
+> probably let the maintainers know about it). Most likely the lack of support
+
+I called it "seriously broken" because current implementation only
+considered one type of SPI controllers while completely ignoring the
+other type.
+
+> for the commands is because no request has been made for them. Also there is
+> one controller that has support.
+
+Definitely it's not "no request". Nearly all SPI flashes support the
+Fast Read (0Bh) command today, and 0Bh requires a dummy cycle. This is
+"seriously broken" for those case 1 type controllers because they
+cannot read anything from the m25p80 model at all. Unless the guest
+software being tested only uses Read (03h) command which is not
+affected. But I can't find a software that uses Read instead of Fast
+Read.
+
 > > The issue you pointed out that we require the total number of dummy
 > > bits should be multiple of 8 is true, that's why I added the
 > > unimplemented log message in this series (patch 2/3/4) to warn users
@@ -210,6 +240,85 @@ On Fri, Jan 15, 2021 at 11:29 AM Havard Skinnemoen
 > >
 > > Please send patches to explain this in detail how this is going to
 > > work. I am open to all possible solutions.
+>
+> In that case I suggest that you instead try with a device property
+> 'model_dummy_bytes' used to select to convert the accurate dummy clock cycle
+> count to dummy bytes inside m25p80. Below is an example on how to modify the
+
+No this is wrong in my view. This is not like a DMA vs. PIO handling.
+
+> decode_fast_read_cmd function (the other commands requiring dummy clock cycles
+> can follow a similar pattern). This way the fifo mode will be able to work the
+> way you desire while also keeping the current functionality intact. Suddenly
+> removing functionality (features) will take users by surprise.
+
+I don't think we are removing any features. This is a fix to make the
+model to be used by any SPI controllers.
+
+As I pointed out, both U-Boot and Linux have the multiple of 8
+assumption for the dummy bit, which is the default configuration for
+all flashes I have looked into so far. Can you please comment what use
+case you want to support? I requested a U-Boot/Linux kernel testing in
+the previous SST thread [1] against Xilinx GQSPI but there was no
+response.
+
+[1] http://patchwork.ozlabs.org/project/qemu-devel/patch/1606704602-59435-1-git-send-email-bmeng.cn@gmail.com/
+
+>
+> static void decode_fast_read_cmd(Flash *s)
+> {
+>     uint8_t dummy_clk_cycles = 0;
+>     uint8_t extra_bytes;
+>
+>     s->needed_bytes = get_addr_length(s);
+>
+>     /* Obtain the number of dummy clock cycles needed */
+>     switch (get_man(s)) {
+>     case MAN_WINBOND:
+>         dummy_clk_cycles += 8;
+>         break;
+>     case MAN_NUMONYX:
+>         dummy_clk_cycles += numonyx_extract_cfg_num_dummies(s);
+>         break;
+>     case MAN_MACRONIX:
+>         if (extract32(s->volatile_cfg, 6, 2) == 1) {
+>             dummy_clk_cycles += 6;
+>         } else {
+>             dummy_clk_cycles += 8;
+>         }
+>         break;
+>     case MAN_SPANSION:
+>         dummy_clk_cycles += extract32(s->spansion_cr2v,
+>                                     SPANSION_DUMMY_CLK_POS,
+>                                     SPANSION_DUMMY_CLK_LEN
+>                                     );
+>         break;
+>     default:
+>         break;
+>     }
+>
+>     if (s->model_dummy_bytes) {
+>         int lines = 1;
+>
+>         /*
+>          * Expect dummy bytes from the controller so convert the dummy
+>          * clock cycles to dummy_bytes.
+>          */
+>         extra_bytes = convert_to_dummy_bytes(dummy_clk_count, lines);
+>     } else {
+>         /* Model individual dummy clock cycles as byte writes */
+>         extra_bytes = dummy_clk_cycles;
+>     }
+>
+>     s->needed_bytes += extra_bytes;
+>     s->pos = 0;
+>     s->len = 0;
+>     s->state = STATE_COLLECTING_DATA;
+> }
+>
+> Best regards,
+> Francisco Iglesias
+>
 > >
 > > >
 > > > > - Dummy bytes not prepared by drivers. Drivers just tell the hardware
@@ -233,31 +342,10 @@ On Fri, Jan 15, 2021 at 11:29 AM Havard Skinnemoen
 > > cycles (including command/addr/dummy/data phases) to be modeled with
 > > bits. That way we can accurately emulate everything, for example one
 > > potential problem like transferring 9 bit in the data phase.
->
-> I agree with this. There's really nothing special about dummy cycles.
-> Making them special makes it super painful to implement SPI controller
-> emulation because you have to anticipate when ssi_transfer changes
-> semantics from byte-at-a-time to bit-at-a-time. I doubt all the SPI
-> controllers in the tree gets it right all the time.
->
-
-Yep, it's not just painful for SPI controllers, and for the case 1 SPI
-controller it's impossible to snoop the data to distinguish when the
-dummy cycles begin.
-
+> >
 > > However modeling everything with bit is super inefficient. My view is
 > > that we should avoid trying to support uncommon use cases (like not
 > > multiple of 8 for dummy bits) in QEMU.
->
-> Perhaps ssi_transfer could take an additional bits parameter? That
-> should make it possible to transfer any number of bits up to 32, while
-> keeping the common case simple on both sides. And it would work for
-> any SPI transfer, not just dummy cycles.
-
-This sounds like a good tradeoff from the emulator perspective. But I
-am not sure we should do this to solve the dummy cycle mess given all
-the default dummy cycle configurations so far match the multiple of 8
-assumption.
 
 Regards,
 Bin

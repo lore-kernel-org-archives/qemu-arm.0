@@ -1,107 +1,116 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp130603lfq;
-        Fri, 15 Jan 2021 02:11:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwnEkh2YbvbscYaUoyuz955jxYbbLT5lX5mnnMdtx0cPPJt1r2KAiKeOI2+ssHMd4xoa+o+
-X-Received: by 2002:a25:bd91:: with SMTP id f17mr17203648ybh.427.1610705506920;
-        Fri, 15 Jan 2021 02:11:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610705506; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp356131lfq;
+        Fri, 15 Jan 2021 07:25:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2UL4tDEASux9Qr+qY7UI8KcOG25PCmOG0R8FJCgTH4+baT78Ahg2hTR18KqMV6agbNQoB
+X-Received: by 2002:a25:ce8f:: with SMTP id x137mr18628347ybe.439.1610724301736;
+        Fri, 15 Jan 2021 07:25:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610724301; cv=none;
         d=google.com; s=arc-20160816;
-        b=TaMT3dZZe2U/24brpvOQQg8M4F/7DcXUxyVNMawCOKDPIIlloNeyJmD42nhuUMuGbW
-         olpISqQO2461icmK4OT7KB/9z9iM8PZ2d8pHT15/q0zxnXiLZuVtdsOvLAq+e3UTsHkX
-         QviGedD0YstG0/b58xd5yJBTdrC5VM0BpMSR+LvchZVfhlV6OIqmYZkTj00+7w46m9iT
-         y/pOcPskSrDRFW2zQ6eWYgpyztmLYEdRtN5IgBJ25InuVONo34L8b7lVxpX/ZnOe0GPj
-         MV11s28EA8VAc7f2tQupWbX4ry3rbGaP4gMmnPZn+1qF9U46NFHq8YWs07Ep/CSE7p86
-         3JJA==
+        b=fjUeM4vK+ZBBUvPcksK+13zjHOCW+8gFgFy0ioxDurl15HHxuelwYxHI4/mSEBPMY9
+         is8OmVXgocMqe7NOOHmyz5tcogGO9QeT8VTbIBDqsb/3CKiopEuTqPdPOxIDxmPOxEIj
+         ssnh82szObWQKFD8sy9TgI88tCjQyqwMdgtOFV+KNTbJISTqVwiuljUcOce+LbJ6dpR9
+         wWCSHk2LIBC91YSJbGRwHgFAGDIzwQgby19VF6cB48EZ9ucd2huFEnlGiFHc4fF67U7Z
+         7sAfdFUnKGPsYp/QDJxh3xamoOXAlugb0tz+Nqo1K5ii5kovzaC54YB09aGt/XFgcpZ3
+         kS/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=62h8W8c/MHOTaJfr80jgkPG/YCUcGgeW9/I/zkhkDxM=;
-        b=03uelfc39M1j869GezF0oraV7tm8Z/p56FvAD/JlHYfzqiv4RsoDZdPJLfJgm2pqOB
-         7sz/yMR1cxSXOYmNFGEMwfLXyBr0D3wryRsYXpUxPbnm2028FexXmtIbaYynQ9ThvOgY
-         AJx8Ny7BsmvSNgJIvOQrPmt8Q/98T/SIYetOi4j42VhzAiIyay8lXFs75oRniuNF+BlA
-         9et0xu+OInUgiI9UV7gaFCoxwMjLUKbUOtqqJFo2JX+vDnPfgkyPfsKtlQ5Ycu1qPpHi
-         0anfy4LWalhrOPbPhOi4PFxlCZ8z4aPu0rLo3GRTvaqAdMfl1vIJUlcY3fV8odB0ixHV
-         qyvQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=LLfoZnEhqqH7tIuWTVkeS30vFx9Vz628e63bkWRf8xg=;
+        b=tKDQY6jk5BivM3mfcxIQs49ObEM29jAmeWH4+VYN/v1Q0M/KYiawj0LpfF2rDKx92H
+         YZV+nk33t02HV7ah4tSzs2U+h6BsSMSixQQWi+5lHms+czD9RCjnURLsxFOebIKMmb5m
+         cuEnnzBpmSJ4l5mVVBRxD0MJpggCXBAAmk7ULc36JykZCScz29lAJOSPCz2JAQyapp65
+         VRGr2CvisKPsrqf/NR9t7H+z48evr4ShXg1pwG577IkUdOwf6tGuhPuzP1O9fE6X6/Pu
+         gdbCFyqI8i2sR/0m9qxuaj/JeWQkQcNturYA9vqf1F5G9sBBAZKkM/hAERVWxuPW/i5G
+         XBfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GyH5cAgj;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=llbJ2qKb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12si7726048ybj.345.2021.01.15.02.11.46
+        by mx.google.com with ESMTPS id 63si9116586ybn.141.2021.01.15.07.25.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Jan 2021 02:11:46 -0800 (PST)
+        Fri, 15 Jan 2021 07:25:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GyH5cAgj;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=llbJ2qKb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45106 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:34926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l0M54-00047f-9N
-	for alex.bennee@linaro.org; Fri, 15 Jan 2021 05:11:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55004)
+	id 1l0QyD-0007pq-5H
+	for alex.bennee@linaro.org; Fri, 15 Jan 2021 10:25:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1l0M4u-00046E-Tb
- for qemu-arm@nongnu.org; Fri, 15 Jan 2021 05:11:36 -0500
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:37526)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l0Qxw-0007pP-8d; Fri, 15 Jan 2021 10:24:47 -0500
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:38594)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1l0M4r-0001yf-Lm
- for qemu-arm@nongnu.org; Fri, 15 Jan 2021 05:11:36 -0500
-Received: by mail-lj1-x22c.google.com with SMTP id w26so9782870ljo.4
- for <qemu-arm@nongnu.org>; Fri, 15 Jan 2021 02:11:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=62h8W8c/MHOTaJfr80jgkPG/YCUcGgeW9/I/zkhkDxM=;
- b=GyH5cAgj8gBMOB9g6vIMa6uul6ha6L4Hbw0pM98N6O6QoRwupKRoSEWMK3VhHkcSU+
- GFcID6kPoUleGXhzGnEiVX42tI5PRV2bBqUFenMiAjPyYwJlDbooDaLyjpThj/Sz6sVv
- +eB1y7EUlSTZhe7+7DNcNl9EilDhQyZ3SK0DHhfgegaPFQViVjNdUBvpj/LR+Hkk4jN6
- 8/OA8ZAsdQYYEe1uqeqQj7TJrbLIC+ocejMh5G8zYo7lL3vps5epBzAeFokqYeswfrmQ
- IiW5L5wHBYuJH4OKlVWY1C4Zkgyl9qDIsOR4uuZoRVAjsg8x+SN4nE6uNEyCC6TpyVwv
- d9Zw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l0Qxu-0006cJ-Nl; Fri, 15 Jan 2021 10:24:44 -0500
+Received: by mail-ej1-x632.google.com with SMTP id 6so13832475ejz.5;
+ Fri, 15 Jan 2021 07:24:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LLfoZnEhqqH7tIuWTVkeS30vFx9Vz628e63bkWRf8xg=;
+ b=llbJ2qKbIK7yx4NVf7/owD+CTGOrA1BHQYdKlXcZZIoPL3Do4Pn5Q+H+O4Gd7+GbzN
+ pFDzs0D2RXrXPmoUQz2MRXIg4HZaeI1HF6HX39yZn54VmWbVP68R5Zc4wKjNRMavu1pd
+ o7m5sQZ53va0zEJQcjGT184Tp8RB920kKYOWQ9h12uoPEOBhtnvRJ7LKmD06UUAsOpDf
+ VaWtRyXRzO1D8GQjcs4D88Xnx76pFUtI/gTfFRup0E2TvlDuYFJFcozGSC0njd3d6i6I
+ 5JiUWnc7FQDCBRXmpnfrRYyObPqaz6hQhbBekF3QJ/5QeYq0WFtnYqyxjAbRmvUlotSc
+ +l+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=62h8W8c/MHOTaJfr80jgkPG/YCUcGgeW9/I/zkhkDxM=;
- b=oLxzErGTG/RJazlvv3GMNd1uLV6QZTd4eZuvXyUPu2V7X5eqCrLCiIksmlwmh41sf6
- zbLV2Zy8DvX+2d0rSbEirpsjoa/PZ+kxpZlRE3h3OV0c68BREg3zRCZFyoiBRbpW89ko
- SssiGyyR8egO9qloD8xvYk52ilc3zAQcfpnXC6JkNUx3QT+chBNkOoAnRJubTLM/tG2Y
- Pepjc+xvtoQzN7xLz5/QX4idtTrBxxAfWoskv5/gBf8h/GNGXEyt5LeOkRKpj7xH0goF
- PVDc/qQ8pPB+EOwEoV1oMl5s1u5eWqF1s7IfEgx81s8p7+/QVWLUbJC9Y33OYkVR8Qxi
- uBYQ==
-X-Gm-Message-State: AOAM532F31UZzL+tiNrR3b+2PwkXm5JFkz6ADCiAIZY6rXcTkLjCGnA2
- rK68cE3CZeIXtKgAwRVZuEaPNTMuboxqMA==
-X-Received: by 2002:a05:651c:383:: with SMTP id
- e3mr4970599ljp.422.1610705491760; 
- Fri, 15 Jan 2021 02:11:31 -0800 (PST)
-Received: from localhost.localdomain ([91.193.178.207])
- by smtp.gmail.com with ESMTPSA id a15sm731886lji.105.2021.01.15.02.11.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Jan 2021 02:11:31 -0800 (PST)
-From: Maxim Uvarov <maxim.uvarov@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCHv7 1/3] hw: gpio: implement gpio-pwr driver for qemu
- reset/poweroff
-Date: Fri, 15 Jan 2021 13:11:24 +0300
-Message-Id: <20210115101126.4259-2-maxim.uvarov@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210115101126.4259-1-maxim.uvarov@linaro.org>
-References: <20210115101126.4259-1-maxim.uvarov@linaro.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=maxim.uvarov@linaro.org; helo=mail-lj1-x22c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LLfoZnEhqqH7tIuWTVkeS30vFx9Vz628e63bkWRf8xg=;
+ b=omyVknqv6OQ0HJY7C0IudS0z0C9dvA491BDY5rWCimZ2t9ByF8K0zXsQEkF2zw/rNR
+ XtF3pD/p5ZwTQcNqeny+qYnafX78S80JcRpw+BeDbNM1FI8GkMwjBFc499muE+RCkYeA
+ IYZjzV4+rRHBPqgFYBHYwO+6nafLNuyK2wc6WOeq/0uXXar5QcpJL74FSWrMQtOX90te
+ 5V7ZwEurvCFH7xbSqZxhCLS+PKBE6zEYTKVyGorc7G1CZ1oIXVpw4H3FcvKFtlRXADsk
+ l3JqJYlvsUPEbCl1Lt2Fd3gpZ6CSL84k436CSdaxQEOUsoJwPWPxRKbnGijjPdC1q3iG
+ 9n2g==
+X-Gm-Message-State: AOAM533SSisR/G+It8xG9eDbf8IpAaex6yLGtRcrywnGDlcjtu1H+wGv
+ uBYpKIX79olzKbSLNH33X/s=
+X-Received: by 2002:a17:906:ce51:: with SMTP id
+ se17mr9059210ejb.314.1610724280497; 
+ Fri, 15 Jan 2021 07:24:40 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id q20sm3701495eju.1.2021.01.15.07.24.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 Jan 2021 07:24:39 -0800 (PST)
+Subject: Re: [RFC PATCH v6 04/11] hw/ssi: imx_spi: Reduce 'change_mask'
+ variable scope
+To: quintela@redhat.com
+References: <20210112183529.2011863-1-f4bug@amsat.org>
+ <20210112183529.2011863-5-f4bug@amsat.org> <87im81gdig.fsf@secure.mitica>
+ <875z41gd8c.fsf@secure.mitica>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <21102f76-d7b1-0b98-ad66-d8d76348aaef@amsat.org>
+Date: Fri, 15 Jan 2021 16:24:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
+MIME-Version: 1.0
+In-Reply-To: <875z41gd8c.fsf@secure.mitica>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,127 +123,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com,
- Maxim Uvarov <maxim.uvarov@linaro.org>, Jose.Marinho@arm.com, f4bug@amsat.org,
- tf-a@lists.trustedfirmware.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>,
+ qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
+ Bin Meng <bmeng.cn@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dIAf3nO4UDoB
+X-TUID: DJy0PDvs750H
 
-Implement gpio-pwr driver to allow reboot and poweroff machine.
-This is simple driver with just 2 gpios lines. Current use case
-is to reboot and poweroff virt machine in secure mode. Secure
-pl066 gpio chip is needed for that.
+On 1/13/21 2:47 PM, Juan Quintela wrote:
+> Juan Quintela <quintela@redhat.com> wrote:
+>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> I think this one is wrong.
+> 
+> Wrong is a strong word.  I mean that it changes behaviour and the commit
+> message don't talk about changing behaviour.
 
-Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
----
- hw/gpio/Kconfig     |  3 ++
- hw/gpio/gpio_pwr.c  | 70 +++++++++++++++++++++++++++++++++++++++++++++
- hw/gpio/meson.build |  1 +
- 3 files changed, 74 insertions(+)
- create mode 100644 hw/gpio/gpio_pwr.c
+Indeed. Well I'll simply drop this patch as it is not essential.
 
-diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
-index b6fdaa2586..f0e7405f6e 100644
---- a/hw/gpio/Kconfig
-+++ b/hw/gpio/Kconfig
-@@ -8,5 +8,8 @@ config PL061
- config GPIO_KEY
-     bool
- 
-+config GPIO_PWR
-+    bool
-+
- config SIFIVE_GPIO
-     bool
-diff --git a/hw/gpio/gpio_pwr.c b/hw/gpio/gpio_pwr.c
-new file mode 100644
-index 0000000000..8ed8d5d24f
---- /dev/null
-+++ b/hw/gpio/gpio_pwr.c
-@@ -0,0 +1,70 @@
-+/*
-+ * GPIO qemu power controller
-+ *
-+ * Copyright (c) 2020 Linaro Limited
-+ *
-+ * Author: Maxim Uvarov <maxim.uvarov@linaro.org>
-+ *
-+ * Virtual gpio driver which can be used on top of pl061
-+ * to reboot and shutdown qemu virtual machine. One of use
-+ * case is gpio driver for secure world application (ARM
-+ * Trusted Firmware.).
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+/*
-+ * QEMU interface:
-+ * two named input GPIO lines:
-+ *   'reset' : when asserted, trigger system reset
-+ *   'shutdown' : when asserted, trigger system shutdown
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+#include "sysemu/runstate.h"
-+
-+#define TYPE_GPIOPWR "gpio-pwr"
-+OBJECT_DECLARE_SIMPLE_TYPE(GPIO_PWR_State, GPIOPWR)
-+
-+struct GPIO_PWR_State {
-+    SysBusDevice parent_obj;
-+};
-+
-+static void gpio_pwr_reset(void *opaque, int n, int level)
-+{
-+    if (!level) {
-+        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-+    }
-+}
-+
-+static void gpio_pwr_shutdown(void *opaque, int n, int level)
-+{
-+    if (!level) {
-+        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+    }
-+}
-+
-+static void gpio_pwr_init(Object *obj)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+
-+    qdev_init_gpio_in_named(dev, gpio_pwr_reset, "reset", 1);
-+    qdev_init_gpio_in_named(dev, gpio_pwr_shutdown, "shutdown", 1);
-+}
-+
-+static const TypeInfo gpio_pwr_info = {
-+    .name          = TYPE_GPIOPWR,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(GPIO_PWR_State),
-+    .instance_init = gpio_pwr_init,
-+};
-+
-+static void gpio_pwr_register_types(void)
-+{
-+    type_register_static(&gpio_pwr_info);
-+}
-+
-+type_init(gpio_pwr_register_types)
-diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
-index 5c0a7d7b95..79568f00ce 100644
---- a/hw/gpio/meson.build
-+++ b/hw/gpio/meson.build
-@@ -1,5 +1,6 @@
- softmmu_ss.add(when: 'CONFIG_E500', if_true: files('mpc8xxx.c'))
- softmmu_ss.add(when: 'CONFIG_GPIO_KEY', if_true: files('gpio_key.c'))
-+softmmu_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
- softmmu_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
- softmmu_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
- softmmu_ss.add(when: 'CONFIG_PUV3', if_true: files('puv3_gpio.c'))
--- 
-2.17.1
+Thanks for reviewing the series!
 
+Phil.

@@ -1,103 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp685440lfq;
-        Fri, 15 Jan 2021 15:07:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyyEjpdI6iCOBEirRWBWNiklM8E77ajtFqqeRVtcTqJum41fI8hXtDYmOdplp0FZZlA6+Iw
-X-Received: by 2002:a25:c54b:: with SMTP id v72mr20851019ybe.258.1610752079459;
-        Fri, 15 Jan 2021 15:07:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610752079; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp686328lfq;
+        Fri, 15 Jan 2021 15:09:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxvkycQghED5uxYxEQSvkuxj1rKnv8kqiQ+pKo7hM74zPn6hY9gjkBToUpzhskemVyuT2oF
+X-Received: by 2002:a25:250b:: with SMTP id l11mr21919822ybl.196.1610752163307;
+        Fri, 15 Jan 2021 15:09:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610752163; cv=none;
         d=google.com; s=arc-20160816;
-        b=aJzhDyndcbaCf/X/Qr/exSTZ0fVm99wZUO3AAbINxPsM1tnjmKvDFMKD7OWncZnn1n
-         zQJMs5VI5vR9WexvEd2JHYC7Chv2JPsm8XJN0jpGzbNP2gPC/ehsuHJczjdE+rVWeM/a
-         y6KWMF44tqlF9u8ZVnAKokqDX2y0i4GNfNXZJKWbFrH2RtxkhTut0Idg07gQDpbmBxZl
-         X0JVZoZ+7n3EC3ksH0kMKllof1CURB1KGUwVDdMkATI7i0dIcfflgQnrAsOfPOS7pogJ
-         dcJbI2KwBFtXq1WocxaDqTuj871mnGNVkq50Qaivpt06B/nODxfFvnZcw/0FN/RKLp7h
-         t4nQ==
+        b=o9JeNT2ytqZlU69u6ejgi8Pqk/E/Ob5bnr112EVm2VUYTcvK9Xn4wyH5Yh/NRYaUfB
+         ht4DhW1WF9qGw5CrPi+kH7nKi7OSAEXttH6cXD+Rv/SrAr3g7KzfucfqcTKNJuyRTB4t
+         ty7Tvr1x3C4HIh/SNX65T3ztXIUt9ojhcQkaEUIfH4j5eOZQd00a67XH2TXQRxJBqjLf
+         37tf5+NqwD9uVd4itmGwgupKHkArj4No636dZ5oaw7kwfv0aVBrOq3D7eXkoNQrZ4QrG
+         I3pFq5j4ebDU9MUXScW/TUkhee32uayjwOIFHS2SXX/HScYtlyG2qvYBzRg9ovW6GR7n
+         GW/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=tHmvo/lrgkE+wi7yTJ56b6ape2S0MwV/XIHtk24Q15o=;
-        b=g3Urlsxqg8KIbvlpmOwQAVoIBY91lizliFPrr5jc7NCakjKBDdGuVWNQxvWXKuaO1m
-         tWUWizHFU/W3gtHzYR9jJ2LreIzuMx2cWM05PEEm87MCxooAdzwu4D6jGXiBf0JWSBfl
-         GjjFQF1nd3fsrZDIubdmt2rtkRmN2E3AzIOobx4Kmzy4ukYd0+5U/7u4cZDASJxBXrrx
-         dFb+5UUDIdJpmrwqpsNMhm83Mp+jvchoUiqX1sFQC3ga+tcz+meS/MuAchRLLIdBYSdv
-         3TwTRPzAkTcyguvuN9lx8w4aHUB8uuTbkiascquQPFJYMciwnDS0D9fICzyaXirJLGtR
-         6UBg==
+        bh=ed3dMxH1EDG+4PBQ/N+mQ4V0QrBrfta+sRgZmd+re9s=;
+        b=FY729UY2qiGJPhNygJ6PBqfmEQyaPusce4Fa7k9hBR5wRtj8Qyk/tOlpheQAW7cCz8
+         2jkeWY31cmgqhyN840q/StmDurjVIvlaJd1fbyLsJv/sJiio3ICFzrTQHVV4S8kydOJq
+         uO5kzXxDCbUd4womJcWzu0o6D4ncTD2Ke34ry0srWkhIQeD9MYnNTNDYepQ5TnvDAhLz
+         H4ChDF7orY3gtbAO8u2rCoRB295nCIm/nEnEXAgqXpwywcjv6Nf3KPPB4ZCEzMKC2Wpr
+         mniAEbgEKlvvooXkuBRyuRCHTwEn+uG9PTILTxrFzqhV85UQt6FLnRALXa2/VdZih3Sn
+         wegA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PVQmPkDZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NWG1XoMC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g205si9122876ybg.317.2021.01.15.15.07.59
+        by mx.google.com with ESMTPS id e12si9379229ybq.358.2021.01.15.15.09.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Jan 2021 15:07:59 -0800 (PST)
+        Fri, 15 Jan 2021 15:09:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PVQmPkDZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NWG1XoMC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35620 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39256 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l0YCE-0004ev-Q4
-	for alex.bennee@linaro.org; Fri, 15 Jan 2021 18:07:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53912)
+	id 1l0YDa-00068K-LA
+	for alex.bennee@linaro.org; Fri, 15 Jan 2021 18:09:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54136)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l0XsH-0003i9-MQ
- for qemu-devel@nongnu.org; Fri, 15 Jan 2021 17:47:21 -0500
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430]:38709)
+ id 1l0XsQ-0003xi-9s
+ for qemu-devel@nongnu.org; Fri, 15 Jan 2021 17:47:30 -0500
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a]:39883)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l0Xs6-0005GS-NP
- for qemu-devel@nongnu.org; Fri, 15 Jan 2021 17:47:21 -0500
-Received: by mail-pf1-x430.google.com with SMTP id y205so584029pfc.5
- for <qemu-devel@nongnu.org>; Fri, 15 Jan 2021 14:47:10 -0800 (PST)
+ id 1l0XsK-0005MV-CG
+ for qemu-devel@nongnu.org; Fri, 15 Jan 2021 17:47:28 -0500
+Received: by mail-pl1-x62a.google.com with SMTP id x18so5448978pln.6
+ for <qemu-devel@nongnu.org>; Fri, 15 Jan 2021 14:47:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=tHmvo/lrgkE+wi7yTJ56b6ape2S0MwV/XIHtk24Q15o=;
- b=PVQmPkDZuObSBMkVwP5TC2YbQzB6YZQzbNKRTYz3x3rJSlCRRm0EoPoK+HCBeT+qJr
- urbUWkSE4m9Gr4Fq/sWX64x07lVAHJRHqAU/GEXnEDERyNBHqEtxng4fF+kWGLJV8stJ
- /QUkhOlXkY0dwVqvr8yqRy5T6kUj2KzXKPBcmzGrtKOqOz0hq9dvKCD7+372kFaB3OyF
- /Jzq9QAh4+6pz8D7bvPvV7BO+GV/cdoBEKrLGwmZ17KQjOQEmEgBhlPl4yQzpQhWyin0
- TDppDi9gSmVa3mxyPXHEe4hCqFdmweQSGp2s08cMaBJUncCnCGcf5uBdgxrn8WtIGuFf
- oDLw==
+ bh=ed3dMxH1EDG+4PBQ/N+mQ4V0QrBrfta+sRgZmd+re9s=;
+ b=NWG1XoMCLlY2/0IX+2jKgi7AjabxEF8DFhqzqZND57S+BDrcPB7oeix2aoQoUbJEQI
+ pKT1aAJxESU7hsQIsEh34PBX2At59iRltsJPV2/T0WiTIKmoXlVBDOD2kfdQ2M4I6Xre
+ iBzBeA+Ob2msjt5HgQFbCBEN/2VsthO2lE440LJ9St1EwYB1PEjapjtNhZBe/D3/xOA4
+ pbNbTOtFbkfD95P7DYgC57iwMjSJYrp5kKym2ttjG8kEFkT3OWSGj7nu83FyNodEQMA2
+ q1ob6MYEvLwalQhchBjeW5smngKI+UppF/Pi7fhubp+GIsNZw2Uf7YJmQ2NaxhuUslBB
+ KqqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=tHmvo/lrgkE+wi7yTJ56b6ape2S0MwV/XIHtk24Q15o=;
- b=rKASMZn2r/FGW0i7bR86ZgeBUkHJGANhUqxx19TRV4Ax+U4vSjs2Ferv7+yIqQG/Fn
- F8vimgLJBEtoBdZbNfn/9BOrbvOAb3hgKwukCMnmIjhFLPxZE8M3z0alAVO1JdAZ0t8A
- ob4rXVnNm9m+TlLxvKXLnOnBEzN8AseSlIknhmRgVa4eCRzi4EhayydvX59E+uDKp2R/
- 25IwAY2aE4TC2Zh/kyqK4OiV2j3QNWcUyKyEuokDyXu5fjUvnfi1RQrnPwvl4Bqckdt9
- K6nb6ts1f7/7a9I9Qm49NsIQrOZYvqpiaexuQBi0rGnbUPFSCHJ9SLlR6Sty0oBv0Von
- GlZA==
-X-Gm-Message-State: AOAM531Thk+K+QA35mzWgAAW5Vt1bnIvVOm40w9Whb0Gb+K85TI+S/4D
- b1r6qQZEEijB0a33JToglvDuUe3q7IyI8nOv
-X-Received: by 2002:a63:d650:: with SMTP id d16mr14809092pgj.277.1610750829482; 
- Fri, 15 Jan 2021 14:47:09 -0800 (PST)
+ bh=ed3dMxH1EDG+4PBQ/N+mQ4V0QrBrfta+sRgZmd+re9s=;
+ b=I4Tv94OHghuXYTv9KEpRSQNJ6tsWJ9ALgrdMQy0cLu3UBnSsXtwx+EbtQkJIWIQoys
+ R/cp9tx2PMMe1hGsvs/W0IE1Xz7Ult/2ElqTvs8sqofy6xk8KoLf6ZYi5YFKhzCOV6J0
+ jiUi2kPnwYDqi+5KyAwZ3UhuD89tgv+2XBLItkYsXHqhgamgEijFEKtd0Z3chaUKubvr
+ 0uND6rwN+Zv5yhddLyp1IngHbQkU6BqG14DGqPWcRoPnSYYn3eJjlBQN8lRuXz8mr+dV
+ VMFAcR9cqQ4L626MAjSS9H51PxUibziNpUAsKDHeMZPP26Z01pFgLKcv4NM9R2b3IjMJ
+ ZHzg==
+X-Gm-Message-State: AOAM532HPaLqXyr+D/U1kj2GDbcoQLYGmXUv9xEizQn90squ3dNU+3jJ
+ r/7wG5ggkHpQ8gcHkSmygP+FZJRNiJjLbZtF
+X-Received: by 2002:a17:902:f54e:b029:de:19f9:c45f with SMTP id
+ h14-20020a170902f54eb02900de19f9c45fmr14657803plf.48.1610750843012; 
+ Fri, 15 Jan 2021 14:47:23 -0800 (PST)
 Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
  [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id s13sm9521700pfd.99.2021.01.15.14.47.08
+ by smtp.gmail.com with ESMTPSA id s13sm9521700pfd.99.2021.01.15.14.47.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Jan 2021 14:47:08 -0800 (PST)
+ Fri, 15 Jan 2021 14:47:22 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 13/21] linux-user/aarch64: Implement PR_MTE_TCF and
- PR_MTE_TAG
-Date: Fri, 15 Jan 2021 12:46:37 -1000
-Message-Id: <20210115224645.1196742-14-richard.henderson@linaro.org>
+Subject: [PATCH v3 21/21] tests/tcg/aarch64: Add mte smoke tests
+Date: Fri, 15 Jan 2021 12:46:45 -1000
+Message-Id: <20210115224645.1196742-22-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210115224645.1196742-1-richard.henderson@linaro.org>
 References: <20210115224645.1196742-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,108 +120,295 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dmIwJ+NRXXTf
-
-These prctl fields are required for the function of MTE.
+X-TUID: zODZ4EEGRXLa
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/target_syscall.h |  9 ++++++
- linux-user/syscall.c                | 44 +++++++++++++++++++++++++++++
- 2 files changed, 53 insertions(+)
+ tests/tcg/aarch64/mte.h           | 53 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/mte-1.c         | 25 +++++++++++++++
+ tests/tcg/aarch64/mte-2.c         | 42 ++++++++++++++++++++++++
+ tests/tcg/aarch64/mte-3.c         | 47 +++++++++++++++++++++++++++
+ tests/tcg/aarch64/mte-4.c         | 42 ++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  6 ++++
+ tests/tcg/configure.sh            |  4 +++
+ 7 files changed, 219 insertions(+)
+ create mode 100644 tests/tcg/aarch64/mte.h
+ create mode 100644 tests/tcg/aarch64/mte-1.c
+ create mode 100644 tests/tcg/aarch64/mte-2.c
+ create mode 100644 tests/tcg/aarch64/mte-3.c
+ create mode 100644 tests/tcg/aarch64/mte-4.c
 
-diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/target_syscall.h
-index 820601dfcc..76f6c3391d 100644
---- a/linux-user/aarch64/target_syscall.h
-+++ b/linux-user/aarch64/target_syscall.h
-@@ -33,5 +33,14 @@ struct target_pt_regs {
- #define TARGET_PR_SET_TAGGED_ADDR_CTRL 55
- #define TARGET_PR_GET_TAGGED_ADDR_CTRL 56
- # define TARGET_PR_TAGGED_ADDR_ENABLE  (1UL << 0)
-+/* MTE tag check fault modes */
-+# define TARGET_PR_MTE_TCF_SHIFT       1
-+# define TARGET_PR_MTE_TCF_NONE        (0UL << TARGET_PR_MTE_TCF_SHIFT)
-+# define TARGET_PR_MTE_TCF_SYNC        (1UL << TARGET_PR_MTE_TCF_SHIFT)
-+# define TARGET_PR_MTE_TCF_ASYNC       (2UL << TARGET_PR_MTE_TCF_SHIFT)
-+# define TARGET_PR_MTE_TCF_MASK        (3UL << TARGET_PR_MTE_TCF_SHIFT)
-+/* MTE tag inclusion mask */
-+# define TARGET_PR_MTE_TAG_SHIFT       3
-+# define TARGET_PR_MTE_TAG_MASK        (0xffffUL << TARGET_PR_MTE_TAG_SHIFT)
+diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
+new file mode 100644
+index 0000000000..038d33ab6c
+--- /dev/null
++++ b/tests/tcg/aarch64/mte.h
+@@ -0,0 +1,53 @@
++#include <assert.h>
++#include <string.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <unistd.h>
++#include <signal.h>
++#include <sys/mman.h>
++#include <sys/prctl.h>
++
++#ifndef PR_SET_TAGGED_ADDR_CTRL
++# define PR_SET_TAGGED_ADDR_CTRL  55
++#endif
++#ifndef PR_TAGGED_ADDR_ENABLE
++# define PR_TAGGED_ADDR_ENABLE    (1UL << 0)
++#endif
++#ifndef PR_MTE_TCF_SHIFT
++# define PR_MTE_TCF_SHIFT         1
++# define PR_MTE_TCF_NONE          (0UL << PR_MTE_TCF_SHIFT)
++# define PR_MTE_TCF_SYNC          (1UL << PR_MTE_TCF_SHIFT)
++# define PR_MTE_TCF_ASYNC         (2UL << PR_MTE_TCF_SHIFT)
++# define PR_MTE_TAG_SHIFT         3
++#endif
++
++#ifndef PROT_MTE
++# define PROT_MTE 0x20
++#endif
++
++#ifndef SEGV_MTEAERR
++# define SEGV_MTEAERR    8
++# define SEGV_MTESERR    9
++#endif
++
++static void enable_mte(int tcf)
++{
++    int r = prctl(PR_SET_TAGGED_ADDR_CTRL,
++                  PR_TAGGED_ADDR_ENABLE | tcf | (0xfffe << PR_MTE_TAG_SHIFT),
++                  0, 0, 0);
++    if (r < 0) {
++        perror("PR_SET_TAGGED_ADDR_CTRL");
++        exit(2);
++    }
++}
++
++static void *alloc_mte_mem(size_t size)
++{
++    void *p = mmap(NULL, size, PROT_READ | PROT_WRITE | PROT_MTE,
++                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    if (p == MAP_FAILED) {
++        perror("mmap PROT_MTE");
++        exit(2);
++    }
++    return p;
++}
+diff --git a/tests/tcg/aarch64/mte-1.c b/tests/tcg/aarch64/mte-1.c
+new file mode 100644
+index 0000000000..02bc978482
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-1.c
+@@ -0,0 +1,25 @@
++/*
++ * Memory tagging, basic pass cases.
++ */
++
++#include "mte.h"
++
++int main(int ac, char **av)
++{
++    int *p0, *p1, *p2;
++    long c;
++
++    enable_mte(PR_MTE_TCF_NONE);
++    p0 = alloc_mte_mem(sizeof(*p0));
++
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
++    assert(p1 != p0);
++    asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
++    assert(c == 0);
++
++    asm("stg %0, [%0]" : : "r"(p1));
++    asm("ldg %0, [%1]" : "=r"(p2) : "r"(p0), "0"(p0));
++    assert(p1 == p2);
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/mte-2.c b/tests/tcg/aarch64/mte-2.c
+new file mode 100644
+index 0000000000..a05f5183cb
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-2.c
+@@ -0,0 +1,42 @@
++/*
++ * Memory tagging, basic fail cases.
++ */
++
++#include "mte.h"
++
++void pass(int sig, siginfo_t *info, void *uc)
++{
++    assert(info->si_code == SEGV_MTESERR);
++    exit(0);
++}
++
++int main(int ac, char **av)
++{
++    struct sigaction sa;
++    int *p0, *p1, *p2;
++    long excl = 1;
++
++    enable_mte(PR_MTE_TCF_SYNC);
++    p0 = alloc_mte_mem(sizeof(*p0));
++
++    /* Create two differently tagged pointers.  */
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
++    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
++    assert(excl != 1);
++    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
++    assert(p1 != p2);
++
++    /* Store the tag from the first pointer.  */
++    asm("stg %0, [%0]" : : "r"(p1));
++
++    *p1 = 0;
++
++    memset(&sa, 0, sizeof(sa));
++    sa.sa_sigaction = pass;
++    sa.sa_flags = SA_SIGINFO;
++    sigaction(SIGSEGV, &sa, NULL);
++
++    *p2 = 0;
++
++    abort();
++}
+diff --git a/tests/tcg/aarch64/mte-3.c b/tests/tcg/aarch64/mte-3.c
+new file mode 100644
+index 0000000000..0d08b477cc
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-3.c
+@@ -0,0 +1,47 @@
++/*
++ * Memory tagging, basic fail cases.
++ */
++
++#include "mte.h"
++
++void pass(int sig, siginfo_t *info, void *uc)
++{
++    assert(info->si_code == SEGV_MTEAERR);
++    exit(0);
++}
++
++int main(int ac, char **av)
++{
++    struct sigaction sa;
++    int *p0, *p1, *p2;
++    long excl = 1;
++
++    enable_mte(PR_MTE_TCF_ASYNC);
++    p0 = alloc_mte_mem(sizeof(*p0));
++
++    /* Create two differently tagged pointers.  */
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
++    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
++    assert(excl != 1);
++    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
++    assert(p1 != p2);
++
++    /* Store the tag from the first pointer.  */
++    asm("stg %0, [%0]" : : "r"(p1));
++
++    *p1 = 0;
++
++    memset(&sa, 0, sizeof(sa));
++    sa.sa_sigaction = pass;
++    sa.sa_flags = SA_SIGINFO;
++    sigaction(SIGSEGV, &sa, NULL);
++
++    /*
++     * Signal for async error will happen eventually.
++     * For a real kernel this should be after the next IRQ (e.g. timer).
++     * For qemu linux-user, we kick the cpu and exit at the next TB.
++     * In either case, loop until this happens (or killed by timeout).
++     */
++    *p2 = 0;
++    while (1);
++}
+diff --git a/tests/tcg/aarch64/mte-4.c b/tests/tcg/aarch64/mte-4.c
+new file mode 100644
+index 0000000000..52aa6fae65
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-4.c
+@@ -0,0 +1,42 @@
++/*
++ * Memory tagging, basic fail cases.
++ */
++
++#include "mte.h"
++
++void __attribute__((noinline)) tagset(void *p, size_t size)
++{
++    size_t i;
++    for (i = 0; i < size; i += 16) {
++        asm("stg %0, [%0]" : : "r"(p + i));
++    }
++}
++
++void __attribute__((noinline)) tagcheck(void *p, size_t size)
++{
++    size_t i;
++    void *c;
++
++    for (i = 0; i < size; i += 16) {
++        asm("ldg %0, [%1]" : "=r"(c) : "r"(p + i), "0"(p));
++        assert(c == p);
++    }
++}
++
++int main(int ac, char **av)
++{
++    size_t size = getpagesize() * 4;
++    long excl = 1;
++    int *p0, *p1;
++
++    enable_mte(PR_MTE_TCF_ASYNC);
++    p0 = alloc_mte_mem(size);
++
++    /* Tag the pointer. */
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
++
++    tagset(p1, size);
++    tagcheck(p1, size);
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index d7d33e293c..bf53ad0087 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -35,6 +35,12 @@ endif
+ # bti-2 tests PROT_BTI, so no special compiler support required.
+ AARCH64_TESTS += bti-2
  
- #endif /* AARCH64_TARGET_SYSCALL_H */
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index ebb4e2898c..0316497636 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -10952,10 +10952,46 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-             {
-                 abi_ulong valid_mask = TARGET_PR_TAGGED_ADDR_ENABLE;
-                 CPUARMState *env = cpu_env;
-+                ARMCPU *cpu = env_archcpu(env);
++# MTE Tests
++ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_MTE),)
++AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
++mte-%: CFLAGS += -march=armv8.5-a+memtag
++endif
 +
-+                if (cpu_isar_feature(aa64_mte, cpu)) {
-+                    valid_mask |= TARGET_PR_MTE_TCF_MASK;
-+                    valid_mask |= TARGET_PR_MTE_TAG_MASK;
-+                }
+ # Semihosting smoke test for linux-user
+ AARCH64_TESTS += semihosting
+ run-semihosting: semihosting
+diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
+index e1b70e25f2..ba8ac9a93e 100755
+--- a/tests/tcg/configure.sh
++++ b/tests/tcg/configure.sh
+@@ -244,6 +244,10 @@ for target in $target_list; do
+                -mbranch-protection=standard -o $TMPE $TMPC; then
+                 echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
+             fi
++            if do_compiler "$target_compiler" $target_compiler_cflags \
++               -march=armv8.5-a+memtag -o $TMPE $TMPC; then
++                echo "CROSS_CC_HAS_ARMV8_MTE=y" >> $config_target_mak
++            fi
+         ;;
+     esac
  
-                 if ((arg2 & ~valid_mask) || arg3 || arg4 || arg5) {
-                     return -TARGET_EINVAL;
-                 }
-+
-+                if (cpu_isar_feature(aa64_mte, cpu)) {
-+                    switch (arg2 & TARGET_PR_MTE_TCF_MASK) {
-+                    case TARGET_PR_MTE_TCF_NONE:
-+                    case TARGET_PR_MTE_TCF_SYNC:
-+                    case TARGET_PR_MTE_TCF_ASYNC:
-+                        break;
-+                    default:
-+                        return -EINVAL;
-+                    }
-+
-+                    /*
-+                     * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
-+                     * Note that the syscall values are consistent with hw.
-+                     */
-+                    env->cp15.sctlr_el[1] =
-+                        deposit64(env->cp15.sctlr_el[1], 38, 2,
-+                                  arg2 >> TARGET_PR_MTE_TCF_SHIFT);
-+
-+                    /*
-+                     * Write PR_MTE_TAG to GCR_EL1[Exclude].
-+                     * Note that the syscall uses an include mask,
-+                     * and hardware uses an exclude mask -- invert.
-+                     */
-+                    env->cp15.gcr_el1 =
-+                        deposit64(env->cp15.gcr_el1, 0, 16,
-+                                  ~arg2 >> TARGET_PR_MTE_TAG_SHIFT);
-+                    arm_rebuild_hflags(env);
-+                }
-+
-                 env->untagged_addr_mask = (arg2 & TARGET_PR_TAGGED_ADDR_ENABLE
-                                            ? MAKE_64BIT_MASK(0, 56) : -1);
-                 return 0;
-@@ -10964,6 +11000,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-             {
-                 abi_long ret = 0;
-                 CPUARMState *env = cpu_env;
-+                ARMCPU *cpu = env_archcpu(env);
- 
-                 if (arg2 || arg3 || arg4 || arg5) {
-                     return -TARGET_EINVAL;
-@@ -10971,6 +11008,13 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-                 if (env->untagged_addr_mask != -1) {
-                     ret |= TARGET_PR_TAGGED_ADDR_ENABLE;
-                 }
-+                if (cpu_isar_feature(aa64_mte, cpu)) {
-+                    /* See above. */
-+                    ret |= (extract64(env->cp15.sctlr_el[1], 38, 2)
-+                            << TARGET_PR_MTE_TCF_SHIFT);
-+                    ret = deposit64(ret, TARGET_PR_MTE_TAG_SHIFT, 16,
-+                                    ~env->cp15.gcr_el1);
-+                }
-                 return ret;
-             }
- #endif /* AARCH64 */
 -- 
 2.25.1
 

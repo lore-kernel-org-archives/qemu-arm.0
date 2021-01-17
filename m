@@ -1,104 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1966821lfq;
-        Sun, 17 Jan 2021 11:26:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyVkcjLxdjfqd8nkiUws9vyk0stAxXuhjytPEFN6KEy1etIbKJL9OCD7crGI4r48YLVSeQ+
-X-Received: by 2002:a25:3897:: with SMTP id f145mr30997029yba.2.1610911602639;
-        Sun, 17 Jan 2021 11:26:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610911602; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1966829lfq;
+        Sun, 17 Jan 2021 11:26:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwqGtBC9s1t3LzIaxrYp1bp1Gql4WdjBMzlbLRbtxzRf3O0Rciq464GhVUuPb8DPSQ/lTr/
+X-Received: by 2002:a25:7310:: with SMTP id o16mr29236469ybc.471.1610911603342;
+        Sun, 17 Jan 2021 11:26:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610911603; cv=none;
         d=google.com; s=arc-20160816;
-        b=wA5Ow0LsLF0wYM2WJjRM2ci1KFLGvpGddlDk8B4ZWxS5CWJSapdhIzpfXBN9rf8SO7
-         ce7C0QulGWEbrHmktJlwDdnbwtrAxl3qGHIFkawGt8VCT670LqtqM2oaV6k6OPp5yTom
-         s1v7edj7DVHnDO147TmSV2emKmRMnyzO0XOzzaOmewH4Kt3BBxdWQAqGnYg1e/URj1Nm
-         hhLxwrfoI5TDmdeXxpmvkpFosUzVxEgrH7o6CbE7kw9KZ4rWsjx84tKSjqadnnJreEJZ
-         hWXCjh2XcQ8DH5zfyQqEBgb5IOLKXzZTI7ToQylzN9cRxnRUca+yLgwAnkAx9ZxJeh+N
-         Y5ZA==
+        b=sLjaJPiSBBpDCR+m8So0ykkFGpw3unLui+n21+W0QADRr9TBskJ3fjuvmy8o03Q8Bu
+         K65HCTH3URPBUZgfxejHLpwjEFC3/+69OfqLK1NBevYTKMTIgzCuqxa/IBmQzDbKKNHA
+         jTWq4c36xzhv+3r7vRcC8UPWB7YEg2vFl2Kk1Jlj+nOE6wxDegHxJMdmgZsozL+PvXEg
+         UwnN3jlptZO1AIvIOdGNTFX4n5OmbZXe2vLGovLXZQmq9JQxAXKULTmESmRf4h+mqhAZ
+         Z4MaN6L/EcQfyPLeopAyMZvQxStEYpd6cmy6lG9bSA+ZACU5vyUrDbkQP7x4Bv9OJDUk
+         jAUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qdebcebcEgAUy36pbkwOtCiC8gYa7FMBNTjw+ZgzJr8=;
-        b=y04kioE7cnZUW/CFy0/cggwXEdnHeX32CUbqmRXSU907rc1jAvuw6xax0SbPM3GE1c
-         nMv4SJCX9vi229o1uJsZ5bsvIsEnlT/MgvtbPSUOV3R5aGmgiXFHbAAMSKPfs24v0JMH
-         JwdzSYxiHaVBkeqgLrIue2cDQ9v+mSHmeKiCs8OjAZRhHAdi4YCr6pCdXjTaPj5Ic77R
-         bvnyfTKuGhKtLLVph3Dt8XymI4DMuX9PAmIEe4zewj1cLg7m4xRXxMvjD+D2D2OXt3Gf
-         XeT/r6KCN2f2UkrsrzJOsDVrtAVeL+rGhlxGtnPpPB4TtGIUF56lZXUvAqoFK3HLUFOj
-         gqDQ==
+        bh=B4YUxFFcqfLKGc47lrHSN4rEV4rWS7YudCY+3T61Wdo=;
+        b=H7FRzYNlRpkjrBjtE2Wzkwx7pNr0IdfbalisV6tHiF4ZDdKNAk9mjzzCSqmoRWsnVh
+         NbvBk7L935R0Fmg9+/Bz1/blFo+xh5C6IFQfHg4PI6k4bBvxsQs0hipcuy7AxiZStUvL
+         fFKUJSK+9eAVdjZQLBawR4i3PPSA4dDHPtAsZ62FnxX/Z9ONPWS/ESOT9bFBfyhdneV/
+         1sAi/lXarw3asKw6I1bYfZtHZgLletDYA+kLdReZGh2azkbbFYEB+doIQfQ1f9v5Zmkd
+         BvvkuNTdhatsxZ21/zGJkfm/YbwStgT7PjlKbRhrQnB3pg7Idipc+ixHcVf0rON3E3r/
+         aOhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=okh6rYyT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hw+879i6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k197si2998773ybk.321.2021.01.17.11.26.42
+        by mx.google.com with ESMTPS id d17si9301116ybj.30.2021.01.17.11.26.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Jan 2021 11:26:42 -0800 (PST)
+        Sun, 17 Jan 2021 11:26:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=okh6rYyT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hw+879i6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45272 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45348 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1DhB-0008De-0q
+	id 1l1DhC-0008JF-O8
 	for alex.bennee@linaro.org; Sun, 17 Jan 2021 14:26:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58006)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1Dft-0007fD-1w; Sun, 17 Jan 2021 14:25:21 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:46918)
+ id 1l1Dfy-0007qJ-4G; Sun, 17 Jan 2021 14:25:28 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:44251)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1Dfr-00054R-I4; Sun, 17 Jan 2021 14:25:20 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id d13so14417271wrc.13;
- Sun, 17 Jan 2021 11:25:18 -0800 (PST)
+ id 1l1Dfw-00058Q-Ph; Sun, 17 Jan 2021 14:25:25 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id w5so14425576wrm.11;
+ Sun, 17 Jan 2021 11:25:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qdebcebcEgAUy36pbkwOtCiC8gYa7FMBNTjw+ZgzJr8=;
- b=okh6rYyT8WPB0Ldi5fnznckOXxu8R9A29W7mOana5evBSJUO9M+PZ+mXlLmf12WOoE
- 5jGrSGADlg8sUsn4uA0vkc74lAAqe/Qo4RqoQzjoh989ikJDMP2WHAYOBZgx6olSyBW0
- rEIpmWGBSK/ojnfD51oSIXJeIMvHoJYWhSE7823T+P+txI7hi33ylobdsh10L1kGJDRj
- 7t/rEYZ2CHvxACFy9OUpIsfexlmg/zHHRh2ReiVK/aoODvSgQL+HVhKoAmcg2BfW66RZ
- yFkJCS2BTSzCngRyJ+m0NoAa4xWon5eo71UfslsmaPo81qwsbR6rGMRskT2guhxyRpbB
- c+tw==
+ bh=B4YUxFFcqfLKGc47lrHSN4rEV4rWS7YudCY+3T61Wdo=;
+ b=Hw+879i6FA5pURTaL7CQP+GLpMvdsoTGDwnuQ+9kmBYGhIiHk1hqFo/fNuYG49S7Wl
+ 2VviseMlvQfKy4hIX/zQDtdlIVAsWtfX+WMiImMd5c+/kdHvARiAQxuSb8t+GEJOV7QL
+ Y5ZZzst3Q4Y1CXWklRHxqOOlpl3jwMDJ1hqORJP9N1QFTFnFc1Haq4r/FPLUOttFlGO1
+ 0v0F7W3WXOL5BWGK5dKbCN3NbtqsMULQMiAhSmBAuJ1bA4Dr3UWI4Pdy+4c2o4/MZrhK
+ QC5cbq9CHb1EvOgXzYwwizz0TGeOI11Uvv0kfmwo9V9odEnabftjxLlu6nRGtwTlUPVl
+ NGmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=qdebcebcEgAUy36pbkwOtCiC8gYa7FMBNTjw+ZgzJr8=;
- b=rcqtMv1BgceMZq0tjKQy5KecbA325kZzSFcGXduq1FHzGt115FlXRdHMPxWRnh8dIe
- f2g/FDeEXqSnyQ9iQQ5FC2j4F/HVcw94ej8hHGJG5tZLinm/Tt/DPYVOqQVREXj+++R0
- S06dpwL6Qe0Rbr7igfL8wI2hkM+gYsjfz0RnzYMB5lWf0w0/JKH1B0xuJ6rsMIGh+Dun
- tptFVjbHC8F6wKySY1zBgty3SXAlKQkxmAmnpcjIDK1mtFNWiW/IdgXFFLTMuz1UGH/v
- vZKq+fFGtLA+vlTdU2UxSZ8DuPu7ieShCCpIr9GI1NTKrocAptnuoa3CcAKwP+RtmF17
- A4lg==
-X-Gm-Message-State: AOAM531Szrj9BSnMggIrmKNLelMsSO8j60aZbU9sh7PYl1OYMsE3qPan
- MGGi4Z6Ug+jCjzQ1r+JRF6k=
-X-Received: by 2002:a05:6000:368:: with SMTP id
- f8mr22623971wrf.150.1610911518019; 
- Sun, 17 Jan 2021 11:25:18 -0800 (PST)
+ bh=B4YUxFFcqfLKGc47lrHSN4rEV4rWS7YudCY+3T61Wdo=;
+ b=L3NPhxW5pTRqxaudwRgHXW/IpNe1SZkozztDOzrYOME16qlaFB0QWWiYPH+tH8Pedk
+ GXDbufQPSAr1K1F1axtFLqPDsmMiq2agNYjpYX1n0a5zRyQ9UdT9bt4yObjh/StWtSHO
+ URwB5n0PjiUx3ro6FE+cXqYZan/fgAQEsdqvOft/oeNf84YyxQKyFc7aikOWGagU3P5v
+ WiEjcpFTuFAUjotX8qsiH70w18OdsiO6vocd0ixj5zo6tjWbdDiY/sw9ANqSnlYZP053
+ S0U8mRSkGVo4mIsVOwRQLNf+eEHfnVdBPRdukDFnvyjh540T/QbupJY9s+SIBHlwDL59
+ zf/Q==
+X-Gm-Message-State: AOAM530U5doEn7uubbctF9R4ph3HbY7kjCzOBTYvsXJVBCJk3ysv0AQH
+ XEHRwxKTxgrrd27p79ze78w=
+X-Received: by 2002:a5d:47c3:: with SMTP id o3mr17313895wrc.175.1610911523243; 
+ Sun, 17 Jan 2021 11:25:23 -0800 (PST)
 Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id b13sm23004714wrt.31.2021.01.17.11.25.16
+ by smtp.gmail.com with ESMTPSA id c11sm22974584wmd.36.2021.01.17.11.25.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Jan 2021 11:25:16 -0800 (PST)
+ Sun, 17 Jan 2021 11:25:22 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 05/20] hw/arm/bcm283x: Mark devices with no migratable
- fields
-Date: Sun, 17 Jan 2021 20:24:31 +0100
-Message-Id: <20210117192446.23753-6-f4bug@amsat.org>
+Subject: [RFC PATCH v2 06/20] hw/arm/msf2-soc: Mark the device with no
+ migratable fields
+Date: Sun, 17 Jan 2021 20:24:32 +0100
+Message-Id: <20210117192446.23753-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210117192446.23753-1-f4bug@amsat.org>
 References: <20210117192446.23753-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -133,9 +132,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yDfdN5PEy2g7
+X-TUID: A6aKuXpDlb8P
 
-These devices don't have fields to migrate. Be explicit
+This device doesn't have fields to migrate. Be explicit
 by using vmstate_qdev_no_state_to_migrate.
 
 Add a more descriptive comment to keep a clear separation
@@ -143,56 +142,51 @@ between static property vs runtime changeable.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/arm/bcm2836.h     | 5 +++--
- hw/arm/bcm2835_peripherals.c | 1 +
- hw/arm/bcm2836.c             | 1 +
- 3 files changed, 5 insertions(+), 2 deletions(-)
+ include/hw/arm/msf2-soc.h | 11 ++++++-----
+ hw/arm/msf2-soc.c         |  1 +
+ 2 files changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-index 6f90cabfa3a..becb6cfd0a7 100644
---- a/include/hw/arm/bcm2836.h
-+++ b/include/hw/arm/bcm2836.h
-@@ -35,13 +35,14 @@ struct BCM283XState {
-     DeviceState parent_obj;
-     /*< public >*/
+diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+index d4061846855..41a328c77f9 100644
+--- a/include/hw/arm/msf2-soc.h
++++ b/include/hw/arm/msf2-soc.h
+@@ -52,6 +52,12 @@ struct MSF2State {
  
--    uint32_t enabled_cpus;
--
-     struct {
-         ARMCPU core;
-     } cpu[BCM283X_NCPUS];
-     BCM2836ControlState control;
-     BCM2835PeripheralState peripherals;
+     ARMv7MState armv7m;
+ 
++    MSF2SysregState sysreg;
++    MSSTimerState timer;
++    MSSSpiState spi[MSF2_NUM_SPIS];
++    MSF2EmacState emac;
 +
 +    /* Properties */
-+    uint32_t enabled_cpus;
+     char *cpu_type;
+     char *part_name;
+     uint64_t envm_size;
+@@ -60,11 +66,6 @@ struct MSF2State {
+     uint32_t m3clk;
+     uint8_t apb0div;
+     uint8_t apb1div;
+-
+-    MSF2SysregState sysreg;
+-    MSSTimerState timer;
+-    MSSSpiState spi[MSF2_NUM_SPIS];
+-    MSF2EmacState emac;
  };
  
- #endif /* BCM2836_H */
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index dcff13433e5..8cf85f028fd 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -386,6 +386,7 @@ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
-     DeviceClass *dc = DEVICE_CLASS(oc);
+ #endif
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index d2c29e82d13..2d163710f54 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -224,6 +224,7 @@ static void m2sxxx_soc_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
-     dc->realize = bcm2835_peripherals_realize;
+     dc->realize = m2sxxx_soc_realize;
 +    dc->vmsd = vmstate_qdev_no_state_to_migrate;
+     device_class_set_props(dc, m2sxxx_soc_properties);
  }
  
- static const TypeInfo bcm2835_peripherals_type_info = {
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index de7ade2878e..d2de99147cc 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -176,6 +176,7 @@ static void bcm283x_class_init(ObjectClass *oc, void *data)
- 
-     /* Reason: Must be wired up in code (see raspi_init() function) */
-     dc->user_creatable = false;
-+    dc->vmsd = vmstate_qdev_no_state_to_migrate;
- }
- 
- static void bcm2835_class_init(ObjectClass *oc, void *data)
 -- 
 2.26.2
 

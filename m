@@ -1,104 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1970737lfq;
-        Sun, 17 Jan 2021 11:35:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy2FpDqSAWg8pe7JqENFJaW48tpntWu5PVWqN6JoRCMEDGD56oNkxKh/qQeLdLTr90KnkH2
-X-Received: by 2002:a25:d24e:: with SMTP id j75mr31714575ybg.186.1610912135690;
-        Sun, 17 Jan 2021 11:35:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610912135; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1971558lfq;
+        Sun, 17 Jan 2021 11:37:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx6S6FtnNIqiGzhmWf5W+WUVbKjtARgJGGWvOcjd/fzZSeRBIaqR1FwlSUxPLODgkfb88Jg
+X-Received: by 2002:a25:457:: with SMTP id 84mr31524255ybe.224.1610912259727;
+        Sun, 17 Jan 2021 11:37:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610912259; cv=none;
         d=google.com; s=arc-20160816;
-        b=p+pXwCE6BsBaREDbITELZJgEzvNvsd8kUZmiY9bhGTjFdWDySV8HoQ5Y59+a7KObRS
-         IpupiGYWR+N1huaxxs7v3uPaQpv5hdA7BMdwbOw/wg+Ej1wK06AR7iWGiLRdEqQRuYsG
-         r12e+1VtHcTj4I422+jd4XHbP3AO4MFoURpILDZW5I8wnVhL2/0jb+plo2JKFZi+JfaR
-         kvkeYB1y0ydS71piCvWUJEMzEIAse8yAd+lmIMvweYSzk0G1L1cFQRPJ2zjQ0EHVDjJA
-         8Vq7Gc7DAnH2UOXopMagaLQAOAHy5XwGy4QSx7xI0nV6Lp+NW1/m2C9fx04Khgsh2hET
-         M6xQ==
+        b=OEbVRa5hyH4RzoEqAWqrvZHfIGe0X6Eo+ETgLbub5DvJkQZwWP+LqoT8gE4tLGq+5d
+         MLb80yzl1uX6zvBmVSwVG0Ui4k+U124b2K/7BO2nz/mVzUw6xjxuxmw3izBE5TqJ8+Jx
+         h429dzRbXMzfivf4zWjfbT94O/j4hY98NUQNrrVlY0fuHOHi8zQLpPQ3uWTZSVpv6jMQ
+         xLJWy1OexEeUI0WkZ7tqVMX1kiXaBE/vo1DHI8auDmF8TD42v1dj7iiDa7YRvQKqv0vW
+         mNHqrdldbvYmrUa8v3X+Q7U64WFxW/zlctrdchOgl6NEwTJ+K1CW5p1rYzRFLevaydMl
+         vb8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=D/vhGf9tYrzI/+Qv47CWtkJxcBt3ZEhYVSaLznm82dE=;
-        b=EZHxWZlOzaMeQsFHqbbURbxo2L2mrQJgOyc7VuBi0jXX0ZoF1W7W/nVB4CxbMyiJEe
-         0fVIKe3WS+EOHYyaa1UQZ4nJvhZTzZT+/YAar22M/wt+ThE1p6q55YfILwr0MqLQOx8O
-         mDbS+VYHzWqJM2FlnfSVAur+CwFh60UrJzJo9zHX8kxSs5kKwDZ1nzRiMpuW9AyXS7ou
-         rwiS3gep7KAs4WPMdQ7vEdkE3NpW1YbaVnwUGfC2l1SiJU0tHj+ayfFHhonVmbwsbt/+
-         tWwnY6WgmxJ2933wxDQzF2AEopk8+K5NSb1vG/dWWZEiAvAqz47xdJE1zGgfSdq+Vofh
-         +FJw==
+        bh=pKKkrFO8F1VopBGRhEeTOsmc/pmqYXz+y2wSUuToQKs=;
+        b=bp/RCKkH7r6wxlNfcMPKLLC5tx3P8Tp9jImgHZdPi+ngXE7FLyy+QoW39aW8t8FRTs
+         a3TXWDlPmihImOk1+cL5hMOBCJnwE1mLfjp4N/2GtYs4zyWJd7bfANYR8ZEmq0J/T8yb
+         Y22S4vVWEEVSF4anO3e/aXMFU1hRjKcZCAKieCOaA2OXif0K87ykhUy6eU8qo0/Wwm4I
+         Rkr4coejZjNYlNklvn8J+W/3gUXObOeXd2AHt1O5SmzFsMQUU0MwXaskXrMMnvegl6f1
+         +ac6rrwhz1akcFhajsfYCvkFuVTrkEfp9EXVy7434XYtY4mF9kDRBx0agZeO9k1595cX
+         uSNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="dDIS/7Ww";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=abdd41j0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j63si14373605ybb.463.2021.01.17.11.35.35
+        by mx.google.com with ESMTPS id i204si13870600ybb.495.2021.01.17.11.37.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Jan 2021 11:35:35 -0800 (PST)
+        Sun, 17 Jan 2021 11:37:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="dDIS/7Ww";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=abdd41j0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36470 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1Dpn-00087f-2E
-	for alex.bennee@linaro.org; Sun, 17 Jan 2021 14:35:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58344)
+	id 1l1Drn-0002f9-59
+	for alex.bennee@linaro.org; Sun, 17 Jan 2021 14:37:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1DhB-0000KT-RQ; Sun, 17 Jan 2021 14:26:42 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:55547)
+ id 1l1DgH-0007st-Dc; Sun, 17 Jan 2021 14:25:46 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:40411)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1DhA-0005cM-Fc; Sun, 17 Jan 2021 14:26:41 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id c124so11719241wma.5;
- Sun, 17 Jan 2021 11:26:39 -0800 (PST)
+ id 1l1DgF-0005GX-LP; Sun, 17 Jan 2021 14:25:44 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id 91so14457927wrj.7;
+ Sun, 17 Jan 2021 11:25:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=D/vhGf9tYrzI/+Qv47CWtkJxcBt3ZEhYVSaLznm82dE=;
- b=dDIS/7Ww+gYmBQD8IMElHJNn7JWSXIxRghqGgbo8cMyxwhw8p/6ubLO11lw+vm1ZQ2
- UqqHLYgUegb0abI5GEcwCObm3ghvemj1qkIY9BWUUpsuc3nBY1fIR/5egA46QCzJpq35
- YJQclTTYuUqdvZXRJdbSN3tn56EW9NfesLJaMLMXDaPPkk39A5cak7kHtnv/DJmGiEIe
- BCYLb69WO7aLof7gZKSu2Dgs5ZiWtWGYEGSU7MrLm1rf16ioj+u7Ckxh8gVoPGHA3trD
- tVed2SiZPpXpVTRpAdMFFkMSRsdt48VTaXD9guI/2L+4SqYbTEd8DbKlwJwfL6cijqzk
- wmgw==
+ bh=pKKkrFO8F1VopBGRhEeTOsmc/pmqYXz+y2wSUuToQKs=;
+ b=abdd41j0opUWZIuUA79sZKaCfzJERrHUNPpBxp+ZHP9t5WKnzb5qJ/cv5+00yp9P3/
+ yc4hBydIt/XHqiy2exOUhN60eGoeP36HdCZo/tb1kZCJvZfbjNBQ5WDlyVZcRvcyI8Mn
+ WVrMYcYcgCBQCKUobw2r6oXPrKWtBDGPEfQAqzjQ+J4rXQ+ikAhLLjR+5d85ecbEmp1M
+ d+KW1onX1CQ5tVeq++cvABJvIN6othWtak6A8KyB6IWpySztCN5T3Cl8yMagC6QUGdBa
+ xscbS5h6OHkcwHunFjNt5cUpDuwlGjhavY5pRCoo3POvPzUEBogQ0WUqiBdeYUav7tCN
+ Q64A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=D/vhGf9tYrzI/+Qv47CWtkJxcBt3ZEhYVSaLznm82dE=;
- b=LhSVJ5HiIoV5l9Srbs5EPezIrD9Z31JYO+BaXj/NMMD+sErx2eCq4ARbuR5jykyG18
- aHHKSyV4AULcULswq4COUcU8B6RXWzpyJbEeUyD+u+dcMzYcoauDM7TQgLO1MSddtNOm
- 4Y6YAY0837/a5iEl/agriIHXDzqe7PeZTCDgY9P3Zk/NFrcDdEoX1yVS85otYsY8FNop
- G3AFgSZiihD6jQ2Ia44NXkZLIdzW/+lz/VHeNpGkiuCv7pS1GFItSFSuY4/ROiCxjMPd
- D8+3wBgOwnRP9Fv8QW2Rr4fAziRPa1qS2f6Gg+IpFG5NDBI3lrNOSUKOekrPdFapOsbB
- eQew==
-X-Gm-Message-State: AOAM532Ven8f5L4zXl2b7k0x8S+cpOSBIGlFaGsq8CJhROb2BIqeeiG3
- 8VFDFHlehOgPi9kcru0V5Kc=
-X-Received: by 2002:a05:600c:255:: with SMTP id
- 21mr17520686wmj.69.1610911599053; 
- Sun, 17 Jan 2021 11:26:39 -0800 (PST)
+ bh=pKKkrFO8F1VopBGRhEeTOsmc/pmqYXz+y2wSUuToQKs=;
+ b=r87EdGk6ZaVpDBJ9/Vvco7UeYO30KR6822+Gz2qf491lbAAMkYgUZQLXTpq6UFyaP5
+ 3fRpb+0/U5E0YwNLaxi1EHejhBPku4tksy325bxurt2oVnsQPoRCoPT0Zwi3ak0VDbQ5
+ e8xz7PW1+bReooXmNww7vOMe9gMIWYEC1aEl08ZgUvUkGDulhL7xfMb0ghxcwcIwgbl1
+ gM62uuF1rZSMXpqpLFBNE+P5nrAXiU4wiw5cHUavFI9MqWgmRhRjEU599DXqvzL57We/
+ Be0bkPfJBbrmiTA034vIMDNGuq1cue4mPanr7Da+qxvVjE/FcgD7yJWqEgI70atGi8t1
+ eHzg==
+X-Gm-Message-State: AOAM532MxHmrn0Ly043bhgqwLOUepe5sEUKwxTbFDGAIC7CxDd4SIh4e
+ k4tRqE+uX5NapBytUP1lx2Q=
+X-Received: by 2002:adf:e9d2:: with SMTP id l18mr22023842wrn.179.1610911539529; 
+ Sun, 17 Jan 2021 11:25:39 -0800 (PST)
 Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id j7sm21720217wmb.40.2021.01.17.11.26.37
+ by smtp.gmail.com with ESMTPSA id d7sm13672923wmb.47.2021.01.17.11.25.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Jan 2021 11:26:38 -0800 (PST)
+ Sun, 17 Jan 2021 11:25:38 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 20/20] migration/vmstate: Simplify vmstate for
- user-mode CPU
-Date: Sun, 17 Jan 2021 20:24:46 +0100
-Message-Id: <20210117192446.23753-21-f4bug@amsat.org>
+Subject: [RFC PATCH v2 09/20] hw/cpu/cluster: Mark the device with no
+ migratable fields
+Date: Sun, 17 Jan 2021 20:24:35 +0100
+Message-Id: <20210117192446.23753-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210117192446.23753-1-f4bug@amsat.org>
 References: <20210117192446.23753-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -132,66 +131,28 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uuvZB87EfEVn
+X-TUID: R5wz5sX89odE
 
-User-mode wants an empty vmstate for the CPUs. We can
-use the generic vmstate_no_state_to_migrate object which
-is the same.
+This device doesn't have fields to migrate. Be explicit
+by using vmstate_qdev_no_state_to_migrate.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h       | 2 +-
- include/migration/vmstate.h | 3 ---
- stubs/vmstate.c             | 9 ---------
- 3 files changed, 1 insertion(+), 13 deletions(-)
+ hw/cpu/cluster.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c79a58db9b9..01e75cc7403 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -1132,7 +1132,7 @@ bool target_words_bigendian(void);
- #ifdef CONFIG_SOFTMMU
- extern const VMStateDescription vmstate_cpu_common;
- #else
--#define vmstate_cpu_common vmstate_user_mode_cpu_dummy
-+#define vmstate_cpu_common vmstate_no_state_to_migrate
- #endif
+diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
+index e444b7c29d1..95653a643ad 100644
+--- a/hw/cpu/cluster.c
++++ b/hw/cpu/cluster.c
+@@ -80,6 +80,7 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
  
- #define VMSTATE_CPU() {                                                     \
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 50559598eac..dfe20b5caa1 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -194,9 +194,6 @@ struct VMStateDescription {
-     const VMStateDescription **subsections;
- };
+     device_class_set_props(dc, cpu_cluster_properties);
+     dc->realize = cpu_cluster_realize;
++    dc->vmsd = vmstate_qdev_no_state_to_migrate;
  
--#if defined(CONFIG_USER_ONLY)
--extern const VMStateDescription vmstate_user_mode_cpu_dummy;
--#endif
- extern const VMStateDescription vmstate_no_state_to_migrate;
- 
- extern const VMStateInfo vmstate_info_bool;
-diff --git a/stubs/vmstate.c b/stubs/vmstate.c
-index 1d0e03e233b..c360a929f60 100644
---- a/stubs/vmstate.c
-+++ b/stubs/vmstate.c
-@@ -1,15 +1,6 @@
- #include "qemu/osdep.h"
- #include "migration/vmstate.h"
- 
--#if defined(CONFIG_USER_ONLY)
--const VMStateDescription vmstate_user_mode_cpu_dummy = {
--    .name = "cpu_common_user",
--    .fields = (VMStateField[]) {
--        VMSTATE_END_OF_LIST()
--    },
--};
--#endif
--
- const VMStateDescription vmstate_no_state_to_migrate = {
-     .name = "empty-state",
-     .fields = (VMStateField[]) {
+     /* This is not directly for users, CPU children must be attached by code */
+     dc->user_creatable = false;
 -- 
 2.26.2
 

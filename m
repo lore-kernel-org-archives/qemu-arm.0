@@ -1,95 +1,95 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1970211lfq;
-        Sun, 17 Jan 2021 11:34:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyVaA8Dkc5YkxSHI3aD+sjeG5lrrygYrpumERe7fFOzDm/zzexgWafcbp122t+ZKBHaX8qJ
-X-Received: by 2002:a25:ae49:: with SMTP id g9mr4506480ybe.381.1610912071284;
-        Sun, 17 Jan 2021 11:34:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610912071; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1966472lfq;
+        Sun, 17 Jan 2021 11:25:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzZ7SUzXCAovawtXDn+YhjJ888aGN7lc/MHWwI8usw84FkveUWGc1Q36g3sddQoVWvrM10q
+X-Received: by 2002:a25:b4d:: with SMTP id 74mr29809239ybl.189.1610911557013;
+        Sun, 17 Jan 2021 11:25:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610911557; cv=none;
         d=google.com; s=arc-20160816;
-        b=s7kCw1E2rLOSkFaGzQ7XS4tt3U9hlqs+H5ZMmDy9mkeApV5pTHJ5Ylq2ZdMDLVRjOl
-         wjq9jr9mTIkoUFF55FeL5z+tkJsK21LpvbmISqivrQs4Zl/5jufF+C0cv3CnVE6xwvKI
-         gs7fG4oDsF/LAoTPJA+CHKP/xbJKALILiijc7bzbSKXhsHA7wv0ZNHJ92htN3LU6ylbO
-         9rTFEw0yL6zl9Iz10b4BJTUtH4icpn/llAy6wP3xsePJQFYitzLrTxveAk52thGELEBZ
-         1CxvFxcWg6o6mBZ7DjaGZpu0t6eyFHkLU+25AX4G68TLlPheCgZp3M/XS6cFIXMXKmC/
-         mRww==
+        b=scscLWRLdQaHH4LQS7Irkgr/5FWi5wcT1rkwEWZKVtIwtJYq/Dv9BWKXtfOiIQ5q+3
+         dzXAgfTO5OJ1ECzpijS9g9pM5AzfXdVbMPHwVPbsB5Whb7SY/KwHOiHB2b3I9cgatggr
+         /c1O4//gF5dxry5xMAWTrSs2k+RQ1wOdaerzk2zdp1qncb0+KfQKeIEU2FGyyzRBBlQP
+         IoM9YMBDJy14fRbrRa/ut/qPtBQthvesVa3PR3g/ntKJgGLy50reZyZZ/Q1ZD9Vzs/11
+         wzagi7lB7yCmuWhnco0SGwpECrpSZj4eYcTxqOPZNjOaIXRyaJTX8rg7crqCuLtaaCHI
+         +T7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OG4UEEhgrdnthw/7SfhW0jpVgnxGKL48F7b84mxBL0Y=;
-        b=EmDmfjnbaXSGUcF4ZUZzku0e387Jh9SmVrj+agDaH3GZeZ9ANCoxWCGzz9Kl2lBiRn
-         0Gw84HnK+KbxkCLSmCqsJ1Q7ZKBoTtmJN7OtKpvsossiEFay7G1sSJJ5Gj5iuXl5y8g0
-         kNs/PFUuaHZf4Ja3nVGAeNCvo8LItL96ebrBh8sZoJRC2KxsVvWiP/tcD/tpQdATA9xR
-         j/nMJiYvL6q7GdOdqzPfmoYnx1fEEvCeo+1LB3Mm6jIJafZ2HQ4IkrJU5tu2kkhCi19O
-         UC9JnXoP5/jMaZpU0oblWHaCkfT0g8BtMSDKql7gsQOdcw7IGXTk9449q3DMykql/fzA
-         Ljbw==
+        bh=wgGk6yPxUB2DXYQxZxUZbUfoW7pWWFaws3b1nVoeQJI=;
+        b=fepAeqsYysLiZoeWzY60aPI51+2x3BinzHalxy0PIAQGuhWSjmZs4MRcOZUOXqkHNO
+         UumFgACMaaEPW4goKk5o0CbxC9GNiWYMOLkgMUz9maswlz+fObbqsMG7l5bwPOnmx0SE
+         5fIb247VmwVcjme7hJn/l0eaECy3weY7JDpBuxBbszUO/xttJIJRBIU743sIYeD+WzBc
+         cjVobbzlx3IC84np/jmwLU84YjnEJdUOnorr9xXl6tiIosR9Uf7dJuTyMSfjmgqt6Jd/
+         rWAOe48dZ+lUlcbw0FBnALod1cGVUf+4HBrsxAp0Ad3t17kNtTU5LHY1CrMLp/Uk85y+
+         2fhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d1hCPPD2;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bqRm9TOu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7si14058705ybk.283.2021.01.17.11.34.31
+        by mx.google.com with ESMTPS id w127si15118079ybw.164.2021.01.17.11.25.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Jan 2021 11:34:31 -0800 (PST)
+        Sun, 17 Jan 2021 11:25:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d1hCPPD2;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bqRm9TOu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35312 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1Dok-0007bT-In
-	for alex.bennee@linaro.org; Sun, 17 Jan 2021 14:34:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58232)
+	id 1l1DgS-0007fV-EF
+	for alex.bennee@linaro.org; Sun, 17 Jan 2021 14:25:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57938)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1Dgn-0008N5-Tc; Sun, 17 Jan 2021 14:26:17 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:40352)
+ id 1l1Dfk-0007dV-O3; Sun, 17 Jan 2021 14:25:14 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:38783)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1Dgk-0005PB-6z; Sun, 17 Jan 2021 14:26:16 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id r4so12028771wmh.5;
- Sun, 17 Jan 2021 11:26:12 -0800 (PST)
+ id 1l1Dfg-00051O-At; Sun, 17 Jan 2021 14:25:10 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id y187so12067502wmd.3;
+ Sun, 17 Jan 2021 11:25:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OG4UEEhgrdnthw/7SfhW0jpVgnxGKL48F7b84mxBL0Y=;
- b=d1hCPPD2xD1wJ+ELj4EXKXvHf5LWkdVFuJ6DUWt6j6JneNcQ5YKxKbitQlO+YmW+vO
- EnGhR+vcKbFIoe5cCUn/VYx+ycAQesN4/1eQKKGJ8aRaJ3O/iFxgq7XOsEEJGgOLFfVu
- 1Pv9HxD9KNv3eutgax74SADs46HixAvEknnx8jGCMz/i8NO+1YLgYT1z4s4Xuh5XHYTo
- E+XV3hrJ7nzNIE75qSqNrcxBlqp8dxtgsodEkFx93MEaPGLCxMpRyrRxLVglDI05Xl2D
- iU9v6VRnloJr1dHA5Xn1doJe9TcNhoTdsJY7MJOMcT3W8wGR67ygmXeqUHe5UQx4xmNN
- 04ug==
+ bh=wgGk6yPxUB2DXYQxZxUZbUfoW7pWWFaws3b1nVoeQJI=;
+ b=bqRm9TOuPkd2JJzuiyB3+fC/IaQmbzS4vjNWsXGFo8+5Mflus030NR2kBkBcyAY/TY
+ dX3c8vZ7mTigiWmGz1TjoZtig2/ssKmjq325+fujlQL59FlqKNOSopcsHzOYrOaSepVf
+ 4cAzYJILLGjz+GqgDA49atJK3MjD4tSF2eM5Ob1d0QiXVE0XTaHHwDfRTva9SAAddjDR
+ 8on2onc7unLskg1eeRVvy6qMjk+UCmlJZRW1lMCmco3StadumZWmL6EidgQVa2Cci5Ng
+ Yxlzv7LoOeScwOMTeFppoXhfkx+A8a+7/anoWV68P/Nc1kWtENblYlvDQGnX8OgnS2Rg
+ qtgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=OG4UEEhgrdnthw/7SfhW0jpVgnxGKL48F7b84mxBL0Y=;
- b=kgXJcf0UfVvKcTYTvGqOYbgvl9S67JbiIJTe68UISCFcD+dLZdseMgNQwMDtT0oGJ7
- IFk37QPj7fnuCqCvp5heTCvwnB3ZpMYchX6vKIgG5An/PpnmytjiJeSi5QzxYZMmo+IU
- 74ayC+eume0HFvrVqP/2SMn6ymPiPRWCoVyRNeHsoFGDfFkulXpuO1QoWy3FPKcSljIB
- W7TJvMJwUF+oN14zGUGnKntBYmrzg0f1GfIiIMqWriwyZfuwGZN5nGBsB4XpcFyKTwv5
- syAFqrT1lpHDKoSwyPJ89L1IvqIQWRg8KAYW8Ok+i57X1bE8F76Kw+ANAdKa6uqlMeZs
- DZDw==
-X-Gm-Message-State: AOAM532yEctNGjBclFblL+ld1TAzseKBAz02h93WD7jO0dR7gNDIjhiT
- +TjBycO6EtwN6+0ffxJsrQs=
-X-Received: by 2002:a7b:ce11:: with SMTP id m17mr721232wmc.158.1610911572131; 
- Sun, 17 Jan 2021 11:26:12 -0800 (PST)
+ bh=wgGk6yPxUB2DXYQxZxUZbUfoW7pWWFaws3b1nVoeQJI=;
+ b=bvJisTFXWKpJ2Sb1f+rIHH9YfUR6OxvqnyyUW+3TcAWUPijTwIvLU6TbngK9nHELHr
+ jnH/dF203lKWDqwQXo7no1VMZJDUnapiAOGROwkyjdYZFw3C2PEDIOn7VdbaZiJzYApC
+ +dsuN22q8fbyV0oFjXpMZpoDg06+mfUS7BpSiiyvE1M6/P61Sq1FcZZoseS7KpPnEQUy
+ DNTzZl3twq9z07eJew2mdWwvvEoFcExyaFEzj2re76o4yoiTiSpLORzbVineKDOQdgxu
+ XVliurjkkpc8nZX2CN+P9m9FkeJ3KwC/YoAtLA1qjYh33rTPcLfDc0i12vgHFJLdg/qf
+ 1Mnw==
+X-Gm-Message-State: AOAM531LwC8KxVgqfUzZKnPYPk0yY6pg027Q1qx2RKJheQzUG9BgIEjG
+ bSLxugjMBRNgmgrZ9jmH7Ik=
+X-Received: by 2002:a1c:e255:: with SMTP id z82mr9888944wmg.60.1610911506845; 
+ Sun, 17 Jan 2021 11:25:06 -0800 (PST)
 Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id v20sm27021723wra.19.2021.01.17.11.26.10
+ by smtp.gmail.com with ESMTPSA id g132sm7677099wmg.2.2021.01.17.11.25.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Jan 2021 11:26:11 -0800 (PST)
+ Sun, 17 Jan 2021 11:25:06 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 15/20] hw/nubus/mac-nubus-bridge: Mark the device with
- no migratable fields
-Date: Sun, 17 Jan 2021 20:24:41 +0100
-Message-Id: <20210117192446.23753-16-f4bug@amsat.org>
+Subject: [RFC PATCH v2 03/20] hw/arm/armv7m: Mark the device with no
+ migratable fields
+Date: Sun, 17 Jan 2021 20:24:29 +0100
+Message-Id: <20210117192446.23753-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210117192446.23753-1-f4bug@amsat.org>
 References: <20210117192446.23753-1-f4bug@amsat.org>
@@ -132,28 +132,31 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3rFyE4TtvFRL
+X-TUID: LNb3y9B8GJIR
 
-This device doesn't have fields to migrate. Be explicit
-by using vmstate_qdev_no_state_to_migrate.
+The TYPE_BITBAND device doesn't have fields to migrate.
+Be explicit by using vmstate_qdev_no_state_to_migrate.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/nubus/mac-nubus-bridge.c | 1 +
+v2: Reworded (Peter)
+---
+ hw/arm/armv7m.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/nubus/mac-nubus-bridge.c b/hw/nubus/mac-nubus-bridge.c
-index 7c329300b82..ede36ccc5dd 100644
---- a/hw/nubus/mac-nubus-bridge.c
-+++ b/hw/nubus/mac-nubus-bridge.c
-@@ -27,6 +27,7 @@ static void mac_nubus_bridge_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 8224d4ade9f..41ac1b88ab4 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -347,6 +347,7 @@ static void bitband_class_init(ObjectClass *klass, void *data)
      DeviceClass *dc = DEVICE_CLASS(klass);
  
-     dc->desc = "Nubus bridge";
+     dc->realize = bitband_realize;
 +    dc->vmsd = vmstate_qdev_no_state_to_migrate;
+     device_class_set_props(dc, bitband_properties);
  }
  
- static const TypeInfo mac_nubus_bridge_info = {
 -- 
 2.26.2
 

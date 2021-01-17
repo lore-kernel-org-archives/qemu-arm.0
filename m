@@ -1,131 +1,116 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5610807lfa;
-        Wed, 4 Nov 2020 03:27:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwszqO1y5M9pT6lI7TIctEDL5ve8PFp2L63SR6jv3kyJXpSApQvLDuOrbcc0a+gAANMX6wj
-X-Received: by 2002:a02:a619:: with SMTP id c25mr12966273jam.67.1604489247339;
-        Wed, 04 Nov 2020 03:27:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604489247; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1908239lfq;
+        Sun, 17 Jan 2021 09:29:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJycqpAMdjP/+Mx/HMtup4oF7dae4hS1aJgQFbyR40NqFhsNXIotTFL7Du7txLBTqNtWcM4T
+X-Received: by 2002:a25:1d5:: with SMTP id 204mr23352918ybb.417.1610904548474;
+        Sun, 17 Jan 2021 09:29:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610904548; cv=none;
         d=google.com; s=arc-20160816;
-        b=WA3I8uFkNyI0yPHIRtr7htmj24MocseRnoLtJpnwSp4YQGbBGmT/h+n9b/8iKEfN+4
-         2O0dvCf6mF4ymDpAv0cKqs0F4hHVviHnVqVWBtfkVqHXqsDGf/WUQPH/dLh6H0Vg9eKT
-         X5STWSImIoaZN+LcPB51G7jOC60Tm8hev85kmxI49fBH5MgXcVdToEAH0D+ppwM5/DSJ
-         cGR1W3GMkwj8/EUa+2HAgBzPWUh2zCKFiFF7zLSfFEOdfNgeizAXzMTGtuXbEj6eCnRy
-         5KitgyqLKycqo91xfABxPEKMoqew7AiiczS2jebjv4F100KMtMntHTm+5JHGSEIU+7ly
-         BSBg==
+        b=0FS4rCz5+nbv4BeV0jKfprShKvQ3AYiOlVcLb5zVhX4Gpj9Kr+ysJ3qLgA6809LptN
+         YmQfalL8EyDOxFkCqBBru7EDa1Lgtkp8TYsu7Bgz8AqtzVHKz/jRkY9m7IiITVsouo9M
+         GUDiGrAYwdhFyPiSdDPZWJHBArGTikf5zwpBenqHGc0YcIVmRnKAICpoBGKSELdv1vkg
+         0HSsx2HsiMT2KBvlLXwgcIihw9J36+MOJ+BZYnJv1DlENU35aCCbC+gnvyR6caHsrfCa
+         n2Tpu05nwoSRkv0vY40mVzcrtb3QNBnChUHYelTasCH004Wqmncgpv8xnlIiWZJfOYz6
+         b5vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=aw06nalMV1DPsFZMBKJv5oT3RYl/z3nb0C71ZaaIdFc=;
-        b=AdkokNS/lcu0x7DC5k7wHxovmZ39x2XSQXmpN+pXQhnmkj+bc5G4gJ0qMz1ZXlNds7
-         eoOjp+f+HHJoU3jP8CLNHnQJNtua8yI0WWuaI0V9FDZZsVECsEgNkHh/6/nmSfbR9s+F
-         FbVvIrLwZUrZE7emMHH2V2GiJY84W3HPnazpyIvRVSMRopbyMkqg2dl430S+QeUPdFnx
-         HScbPttqs3EhQaSPU2rGXObZ7L2Ij+iro4wcBfow/FXFDXhKfL6xduvr6NyEaKr3czZv
-         VaK+P/teO9iojrALHxK6hl8ZWfyIw41oUbe7i7pMWfMtRZJLRYDPKW6Wke3uwRLFs7hr
-         4I0w==
+        bh=wjL5E7Yxi5OMKSh3EgWuck0lfVOC8x4MHz5HEOfuN+g=;
+        b=Q322fLdvRaQwTKh7HhOGhhXZm1rVQNF9v6YDgRq0RE0z9Cky2BV5ExE+PeCM7Hkf1O
+         mpk8fiA7T7QqSWMMit20VDI2hD9HynwDzoA7EQpt/JoJcwXD56sUNYGFwrhaCS4WUwLA
+         EyOQSYtRuWuhBtk5nX51ep+TLD3yuoZGGrbj01wc6K1f7d1/nlmG4ibuO1EFCl4LITl6
+         vB+1Sz9EM2KKzVsnsFrNsUaR0dMr+xYUJY+Gr3wo6mQy5VHQk9h2ZdjSubyYjRFuK7nd
+         VJ1qHJA4FbZt18uj954FZWUzGPXppRiHrbkvv0p+SgSIOM8kfdOuwDnJrAS5nyiVui/g
+         cFnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FzLJ8oGx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m1A13RzD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f26si955292ioj.82.2020.11.04.03.27.27
+        by mx.google.com with ESMTPS id 128si13785522ybd.395.2021.01.17.09.29.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Nov 2020 03:27:27 -0800 (PST)
+        Sun, 17 Jan 2021 09:29:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FzLJ8oGx;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m1A13RzD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47846 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:57930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kaGwo-0000q7-Gx
-	for alex.bennee@linaro.org; Wed, 04 Nov 2020 06:27:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52940)
+	id 1l1BrP-0006hJ-U2
+	for alex.bennee@linaro.org; Sun, 17 Jan 2021 12:29:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kaGwY-0000pH-Gv
- for qemu-arm@nongnu.org; Wed, 04 Nov 2020 06:27:10 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52795)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kaGwV-0001iv-Oz
- for qemu-arm@nongnu.org; Wed, 04 Nov 2020 06:27:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604489226;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aw06nalMV1DPsFZMBKJv5oT3RYl/z3nb0C71ZaaIdFc=;
- b=FzLJ8oGxsS8YFpdmooOkWMtCOUx+YHhs73/FtS+J5M1EVvZGraYZJji1g2CI0+PwbXMBl2
- Tuhd9PkZqY1FjOG5RczyyoqjcB4D9ctOGltuoN5Gx80Tl5XLZGLr3KetZCDru6Fgndjs7j
- +/Dq3G/Jac7o5hBcPYYL3xed3S6fCK0=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-593-NA7LZoI4MvGn7OPpIm33Bw-1; Wed, 04 Nov 2020 06:27:04 -0500
-X-MC-Unique: NA7LZoI4MvGn7OPpIm33Bw-1
-Received: by mail-wr1-f71.google.com with SMTP id q15so9127024wrw.8
- for <qemu-arm@nongnu.org>; Wed, 04 Nov 2020 03:27:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l1BrI-0006gs-FA; Sun, 17 Jan 2021 12:29:00 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:35069)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l1BrG-0007df-Ne; Sun, 17 Jan 2021 12:29:00 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id e15so5490513wme.0;
+ Sun, 17 Jan 2021 09:28:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wjL5E7Yxi5OMKSh3EgWuck0lfVOC8x4MHz5HEOfuN+g=;
+ b=m1A13RzD2QmNYbjyP18xwQElSWd2g3MacTbZWlM2R9PKO0FJI1W43f5RznbZiWIwjh
+ IpwyBARnFi7PcZnVZY5WiHYMmySLQWLZFTmW6IDdxmMd+TtmeDeRsHnUXi0LsI70H1jK
+ X6uSi0p+RBiA1sv2i+pFWLzjuIx2iHWI/ZmnHxvt0ScaipIgV0DlGux3QbgjeUkPjyLF
+ wp6MSnS35o0fEGTcQQQFbccbr2zie8vqp2vjD6Iy6ltGS6UFN+EPCpMiiHAnDS/oq+2b
+ VYe3sDreMNzQjvuxc0353MD8WfSz1TLXa9X5qCEKp+KI44nIGnT/NpSIhz0nXocmA+TU
+ 6GsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=aw06nalMV1DPsFZMBKJv5oT3RYl/z3nb0C71ZaaIdFc=;
- b=eDrJ4B0tUau9CquIkYCm3vyOsjBpjVuElb5BacA4YB7ApifC96wFK6ryVyhgymi1eE
- rO+1MVNcYT0zw4EZiU2Hsh0N7vhOO9g19yQArMkkrL7uV7IRPa+NwCT4tfKDs7OV4Q7E
- X2eAUa39Yh204thCKweaBT12vxnMTWTE/Px7KMgUHIAhU7jkxl1NMPFEAJWmHr9gad0S
- TtASxyzyy/gHPep0kIf2BIFK7b0uvZSTbwN79GXQ3dYvUjL6ScwEuJkGeeEFO7IwDYuy
- obtM/wJNszTwxAtsypa5E9rBZMVbPcSN58QkQYClLYpMVLmd/HG2ZJj/XH+FxckyfpoC
- rsXA==
-X-Gm-Message-State: AOAM532+IRisRKzT/AKDKllBWY4KgPwe4i0qvu+CmGMvTjNdZOyxPUud
- 6KX1AtnVT9SoKK5t8Ekdsui7HPXsSg4Qyx4qD+s8OqDAhGvmhJ4m235jwzVXWjpBKl6gEm0l1B9
- uXTaUlAHqWAzw
-X-Received: by 2002:a1c:2583:: with SMTP id l125mr4015928wml.50.1604489223410; 
- Wed, 04 Nov 2020 03:27:03 -0800 (PST)
-X-Received: by 2002:a1c:2583:: with SMTP id l125mr4015901wml.50.1604489223197; 
- Wed, 04 Nov 2020 03:27:03 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id h12sm1997498wrw.70.2020.11.04.03.27.01
+ bh=wjL5E7Yxi5OMKSh3EgWuck0lfVOC8x4MHz5HEOfuN+g=;
+ b=hhnLrioFjFGieIO8NhAdJH1uOKML59ahXCjB2PWWVrJEySC56ey+Ydev4hYxHgLs2m
+ hqM0i/RTxEe25kxirtEQD6I3c/ndAJp5rwASrBkDyeukivdK+uKCFMxuxp4UQOi87xPY
+ J7QDTUPKeuhjnPgE1G96AsB8q+WoNVJEaVkHhFDDNZ4QyPNO8JPugfbxQPQYZoSMVwzq
+ ReH1tOL0PQ/FDuG9C86vQw/2sOE6KuDLiML0AfO48VDuu/SFI1QYWkGlL3iNvA3WRKU6
+ 0V881JYUCt2io3/Y9SKN4P4+is4inKQvQo73eRK5feEURxPxgkJepBOPjWw4Ew5Osp6r
+ umow==
+X-Gm-Message-State: AOAM531akbxr2rTQkBnADycGrN8LIJJdEII10ywe5zPzZKQl6aEnbxxc
+ RzGxbv8RUpo+33ay9nXNZYg=
+X-Received: by 2002:a1c:5454:: with SMTP id p20mr517738wmi.128.1610904536020; 
+ Sun, 17 Jan 2021 09:28:56 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id x17sm24097616wro.40.2021.01.17.09.28.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Nov 2020 03:27:02 -0800 (PST)
-Subject: Re: [PATCH-for-5.2? 3/5] tests/acceptance: Skip incomplete
- virtio_version tests using '@skip'
-To: Thomas Huth <thuth@redhat.com>, "Daniel P . Berrange"
- <berrange@redhat.com>, qemu-devel@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-References: <20201102144245.2134077-1-philmd@redhat.com>
- <20201102144245.2134077-4-philmd@redhat.com>
- <6fd67527-b887-54c5-8de6-4f54c8d66934@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <68b4585b-2cfd-7b24-af63-674d004d8e51@redhat.com>
-Date: Wed, 4 Nov 2020 12:27:00 +0100
+ Sun, 17 Jan 2021 09:28:55 -0800 (PST)
+Subject: Re: [RFC PATCH 18/18] hw/core/qdev: Display warning for devices
+ missing migration state
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+References: <20200703201911.26573-1-f4bug@amsat.org>
+ <20200703201911.26573-19-f4bug@amsat.org>
+ <CAFEAcA98Wz2URx3Pt0YfaoQSPnnMT4wg6HBfzdDO4Zq+4fgT5g@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a4a0c335-8ebf-4b22-b7ff-be59054b5705@amsat.org>
+Date: Sun, 17 Jan 2021 18:28:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <6fd67527-b887-54c5-8de6-4f54c8d66934@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAFEAcA98Wz2URx3Pt0YfaoQSPnnMT4wg6HBfzdDO4Zq+4fgT5g@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 00:03:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.252,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -138,70 +123,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc@nongnu.org,
+Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Antony Pavlov <antonynpavlov@gmail.com>
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nrau4Kilv7JE
+X-TUID: o20mEcT5/JS+
 
-On 11/4/20 12:13 PM, Thomas Huth wrote:
-> On 02/11/2020 15.42, Philippe Mathieu-Daudé wrote:
->> Prefer skipping incomplete tests with the "@skip" keyword,
->> rather than commenting the code.
+On 7/9/20 9:14 PM, Peter Maydell wrote:
+> On Fri, 3 Jul 2020 at 21:19, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> When built with --enable-qdev-debug, QEMU displays warnings
+>> listing devices missing migration state:
+>>
+>>   $ qemu-system-arm -S -M spitz
+>>   qemu-system-arm: warning: missing migration state for type: 'pxa270-c0-arm-cpu'
+>>   qemu-system-arm: warning: missing migration state for type: 'serial'
+>>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcmcia'
+>>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcmcia'
+>>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c-slave'
+>>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c-slave'
+>>   qemu-system-arm: warning: missing migration state for type: 'ads7846'
+>>   qemu-system-arm: warning: missing migration state for type: 'max1111'
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  tests/acceptance/virtio_version.py | 11 +++++++----
->>  1 file changed, 7 insertions(+), 4 deletions(-)
->>
->> diff --git a/tests/acceptance/virtio_version.py b/tests/acceptance/virtio_version.py
->> index 33593c29dd0..187bbfa1f42 100644
->> --- a/tests/acceptance/virtio_version.py
->> +++ b/tests/acceptance/virtio_version.py
->> @@ -140,17 +140,20 @@ def check_all_variants(self, qemu_devtype, virtio_devid):
->>          self.assertIn('conventional-pci-device', trans_ifaces)
->>          self.assertNotIn('pci-express-device', trans_ifaces)
->>  
->> +    @skip("virtio-blk requires 'driver' parameter")
+>> RFC because there might be something simpler than --enable-qdev-debug.
 > 
-> Shouldn't that be 'drive' instead of 'driver' ?
+> I think where we'd like to get to is installing a migration
+> blocker if the machine has any devices which don't have a vmsd.
+> But for that we'd need to be pretty sure we'd got all the devices
+> on machines where we care about migration, and we're clearly a
+> fair way from that (eg we need to do something about the
+> devices like the CPU which don't have a vmsd but handle their
+> migration some other way so they don't trigger the condition
+> for warning/migration-blocker).
 
-No clue, this is the previous commented line.
+Dave made a comment about it, I'd rather let him have a look.
 
-> 
->> +    def test_conventional_devs_driver(self):
->> +        self.check_all_variants('virtio-blk-pci', VIRTIO_BLOCK)
->> +
->> +    @skip("virtio-9p requires 'fsdev' parameter")
->> +    def test_conventional_devs_fsdev(self):
->> +        self.check_all_variants('virtio-9p-pci', VIRTIO_9P)
->>  
->>      def test_conventional_devs(self):
->>          self.check_all_variants('virtio-net-pci', VIRTIO_NET)
->> -        # virtio-blk requires 'driver' parameter
->> -        #self.check_all_variants('virtio-blk-pci', VIRTIO_BLOCK)
->>          self.check_all_variants('virtio-serial-pci', VIRTIO_CONSOLE)
->>          self.check_all_variants('virtio-rng-pci', VIRTIO_RNG)
->>          self.check_all_variants('virtio-balloon-pci', VIRTIO_BALLOON)
->>          self.check_all_variants('virtio-scsi-pci', VIRTIO_SCSI)
->> -        # virtio-9p requires 'fsdev' parameter
->> -        #self.check_all_variants('virtio-9p-pci', VIRTIO_9P)
-> 
-> I think I'd prefer to keep the stuff commented ... otherwise it will show up
-> in the logs, giving the impression that you could run the tests somehow if
-> you just provided the right environment, which is just not possible right now.
+> I don't have a strong objection to this --enable-qdev-debug, I guess.
+> Another option halfway between this and a full migration-blocker
+> would be do a warn_report() for the relevant devices when savevm
+> tries to migrate them.
 
-Well, we usually don't commit commented code like that.
-If it is committed, it is important, then it has to show up in
-the log. If you don't want it logged, why not remove it then?
+OK. The problem is vmstate_save_state() is not qdev specific, it
+migrates a blob, which we can not report much about. I'll repost
+using 2 warnings.
 
+Thanks for your review,
+
+Phil.

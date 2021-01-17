@@ -1,103 +1,103 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1971558lfq;
-        Sun, 17 Jan 2021 11:37:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx6S6FtnNIqiGzhmWf5W+WUVbKjtARgJGGWvOcjd/fzZSeRBIaqR1FwlSUxPLODgkfb88Jg
-X-Received: by 2002:a25:457:: with SMTP id 84mr31524255ybe.224.1610912259727;
-        Sun, 17 Jan 2021 11:37:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610912259; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1971666lfq;
+        Sun, 17 Jan 2021 11:37:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy9RTX+9Fc5IR6NtnMfG6E4kJt4Ql2ZXbaJqhB5PNlSeJlgXJ++mRP6tupHikSkWY9pu2Lk
+X-Received: by 2002:a25:dac6:: with SMTP id n189mr33140381ybf.85.1610912275141;
+        Sun, 17 Jan 2021 11:37:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610912275; cv=none;
         d=google.com; s=arc-20160816;
-        b=OEbVRa5hyH4RzoEqAWqrvZHfIGe0X6Eo+ETgLbub5DvJkQZwWP+LqoT8gE4tLGq+5d
-         MLb80yzl1uX6zvBmVSwVG0Ui4k+U124b2K/7BO2nz/mVzUw6xjxuxmw3izBE5TqJ8+Jx
-         h429dzRbXMzfivf4zWjfbT94O/j4hY98NUQNrrVlY0fuHOHi8zQLpPQ3uWTZSVpv6jMQ
-         xLJWy1OexEeUI0WkZ7tqVMX1kiXaBE/vo1DHI8auDmF8TD42v1dj7iiDa7YRvQKqv0vW
-         mNHqrdldbvYmrUa8v3X+Q7U64WFxW/zlctrdchOgl6NEwTJ+K1CW5p1rYzRFLevaydMl
-         vb8w==
+        b=Bh4vPfbiG+C8pzUUsmjsWMeV/i1EQ0xuL2u46nLW3bRipayNY78IKI2KzyF9PateKl
+         6rWIWvsQnRdUM0sjb0b52++DphmpxlodHCUVATQkLzHRcPh8jbPS3Qxx6oV5Lv2c3Z3C
+         liHXeJ0aK6VmbQhX36qSIu3dunK9aSS0DUCCNJsbLQKNH7coD0fZJyr/5vImvfVRCP6r
+         nBPeqjzKWNQk8JS0sbLkW1hjbcqggC35J/deMIFU151MD1b8LtPFMAj/cqt9DTWTCBun
+         kff1/yOPcAAhHq0iloW9FVGsh081ecqjbukTNuufeF6gurYsDBDO7BweByDV9bOFB2dz
+         GzJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=pKKkrFO8F1VopBGRhEeTOsmc/pmqYXz+y2wSUuToQKs=;
-        b=bp/RCKkH7r6wxlNfcMPKLLC5tx3P8Tp9jImgHZdPi+ngXE7FLyy+QoW39aW8t8FRTs
-         a3TXWDlPmihImOk1+cL5hMOBCJnwE1mLfjp4N/2GtYs4zyWJd7bfANYR8ZEmq0J/T8yb
-         Y22S4vVWEEVSF4anO3e/aXMFU1hRjKcZCAKieCOaA2OXif0K87ykhUy6eU8qo0/Wwm4I
-         Rkr4coejZjNYlNklvn8J+W/3gUXObOeXd2AHt1O5SmzFsMQUU0MwXaskXrMMnvegl6f1
-         +ac6rrwhz1akcFhajsfYCvkFuVTrkEfp9EXVy7434XYtY4mF9kDRBx0agZeO9k1595cX
-         uSNw==
+        bh=XogiRe5yl1pNdqgPP5V4b7SXP6ekjym12cW6DYLGVp0=;
+        b=emY5SGaP0WMH9FFpW1oKtLpBK+vGhD4Fr2Sjducwr/rKIwnlrj84+8V/RVbOQcyo/S
+         dmXHymnjscUVXkqifcH4oG1LEHJiM8Yk8G5ThtlxIT79//y433aR/Aul4gv9m4m7i0Xc
+         wpjVDQ66Llu1UaApgPncFmLzwHGtDDVBm0kLEy+nNP8gdbylVnnpt60Em0RKGXQWGaz/
+         jqPEAFDdpcDK6dmn50ZasrzKm5yZUShbMPtNBEHP0zdPTw4PLmEv1Wd0ZCBDX0j5ItHH
+         VIH2tuVQaO1KjWy9RLCVwUlu/oGDTTSDbYuQyCk8dFHwVddTIPch3+ft0VVmGCFwDnaJ
+         ghog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=abdd41j0;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dHzl2LAC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i204si13870600ybb.495.2021.01.17.11.37.39
+        by mx.google.com with ESMTPS id r15si15454121ybb.112.2021.01.17.11.37.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Jan 2021 11:37:39 -0800 (PST)
+        Sun, 17 Jan 2021 11:37:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=abdd41j0;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dHzl2LAC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43526 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44958 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1Drn-0002f9-59
-	for alex.bennee@linaro.org; Sun, 17 Jan 2021 14:37:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58102)
+	id 1l1Ds2-0003FQ-In
+	for alex.bennee@linaro.org; Sun, 17 Jan 2021 14:37:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1DgH-0007st-Dc; Sun, 17 Jan 2021 14:25:46 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:40411)
+ id 1l1Dgw-0008TM-LG; Sun, 17 Jan 2021 14:26:27 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:39008)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1DgF-0005GX-LP; Sun, 17 Jan 2021 14:25:44 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id 91so14457927wrj.7;
- Sun, 17 Jan 2021 11:25:40 -0800 (PST)
+ id 1l1Dgu-0005Wy-Uy; Sun, 17 Jan 2021 14:26:26 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id c5so14444877wrp.6;
+ Sun, 17 Jan 2021 11:26:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pKKkrFO8F1VopBGRhEeTOsmc/pmqYXz+y2wSUuToQKs=;
- b=abdd41j0opUWZIuUA79sZKaCfzJERrHUNPpBxp+ZHP9t5WKnzb5qJ/cv5+00yp9P3/
- yc4hBydIt/XHqiy2exOUhN60eGoeP36HdCZo/tb1kZCJvZfbjNBQ5WDlyVZcRvcyI8Mn
- WVrMYcYcgCBQCKUobw2r6oXPrKWtBDGPEfQAqzjQ+J4rXQ+ikAhLLjR+5d85ecbEmp1M
- d+KW1onX1CQ5tVeq++cvABJvIN6othWtak6A8KyB6IWpySztCN5T3Cl8yMagC6QUGdBa
- xscbS5h6OHkcwHunFjNt5cUpDuwlGjhavY5pRCoo3POvPzUEBogQ0WUqiBdeYUav7tCN
- Q64A==
+ bh=XogiRe5yl1pNdqgPP5V4b7SXP6ekjym12cW6DYLGVp0=;
+ b=dHzl2LACEwVQNJhxnDfIp+k/e2+8X0LFiprYl04+U7/AQgBLE93j09+DEwxBHCx72r
+ CpPITxjy0TJLx+gj5fT+DRnsn6nE411uOqW8Q0Qz+7e3Hzv2ATu6bA3hbpfk0+wVyWx0
+ urrTcZ+Q3haAu562yWx3+KF3Z1YQpnASASkSMdgJJ1h72rLOJOfRwKX3BllpWATYdY7H
+ SV3Cv0fvvH2RbAGCDNA7wxT2nNU8eHb1aDIpyyFwoOM4+7aue5h+I1mRqG+ItGfAI2Tu
+ LSeFn1EDviFdR6c5vpEaSX5nwDmIKmMKo8XujmtGig2c/WpZHoWmX90dUJgA4O/RwgFP
+ Jy5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=pKKkrFO8F1VopBGRhEeTOsmc/pmqYXz+y2wSUuToQKs=;
- b=r87EdGk6ZaVpDBJ9/Vvco7UeYO30KR6822+Gz2qf491lbAAMkYgUZQLXTpq6UFyaP5
- 3fRpb+0/U5E0YwNLaxi1EHejhBPku4tksy325bxurt2oVnsQPoRCoPT0Zwi3ak0VDbQ5
- e8xz7PW1+bReooXmNww7vOMe9gMIWYEC1aEl08ZgUvUkGDulhL7xfMb0ghxcwcIwgbl1
- gM62uuF1rZSMXpqpLFBNE+P5nrAXiU4wiw5cHUavFI9MqWgmRhRjEU599DXqvzL57We/
- Be0bkPfJBbrmiTA034vIMDNGuq1cue4mPanr7Da+qxvVjE/FcgD7yJWqEgI70atGi8t1
- eHzg==
-X-Gm-Message-State: AOAM532MxHmrn0Ly043bhgqwLOUepe5sEUKwxTbFDGAIC7CxDd4SIh4e
- k4tRqE+uX5NapBytUP1lx2Q=
-X-Received: by 2002:adf:e9d2:: with SMTP id l18mr22023842wrn.179.1610911539529; 
- Sun, 17 Jan 2021 11:25:39 -0800 (PST)
+ bh=XogiRe5yl1pNdqgPP5V4b7SXP6ekjym12cW6DYLGVp0=;
+ b=NZT33XADN0226G9ffxKXHsqLQsj4VkGjmwvJsljHiJFhUbPi1Zn0UJJ6YL8mBRSs5P
+ BVOFIjBb65qon+vWaNGZIsQubF4Av6jZ/tcBMo3IsBgfs2r0sFeJzfT4nyhUJYSaMMdS
+ nn0kUGFI1W9SSxr2IQReKkESaJf7Nx1Yq7dOLBuspdHL3XBDo/3TP2v/d3j43KiPNmq2
+ MYChHxFPJ03larWVfVBjahy/y/RBUczT8EDjogz0PxR4lG+S63QI8lsNYP3TqtyKdRQk
+ QS78016dkKVaU9xup8Cv+ltRIV/igRZBcr/ZKqwDq2VEp6QwAF/b1fqgqEXM7jyYd346
+ nixA==
+X-Gm-Message-State: AOAM532UtLF02mEycn5UT/qa4P/GRMCitWUGKWufGlVbvEZFTWqPQAiA
+ yXhosQ5HppcTKWP4CIorbII=
+X-Received: by 2002:adf:eecc:: with SMTP id a12mr22631110wrp.312.1610911582822; 
+ Sun, 17 Jan 2021 11:26:22 -0800 (PST)
 Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id d7sm13672923wmb.47.2021.01.17.11.25.37
+ by smtp.gmail.com with ESMTPSA id v4sm25387282wrw.42.2021.01.17.11.26.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Jan 2021 11:25:38 -0800 (PST)
+ Sun, 17 Jan 2021 11:26:22 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 09/20] hw/cpu/cluster: Mark the device with no
- migratable fields
-Date: Sun, 17 Jan 2021 20:24:35 +0100
-Message-Id: <20210117192446.23753-10-f4bug@amsat.org>
+Subject: [RFC PATCH v2 17/20] hw/pci-host/gpex: Mark device with no migratable
+ fields
+Date: Sun, 17 Jan 2021 20:24:43 +0100
+Message-Id: <20210117192446.23753-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210117192446.23753-1-f4bug@amsat.org>
 References: <20210117192446.23753-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -131,28 +131,31 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R5wz5sX89odE
+X-TUID: ICxGE+q/D+l7
 
-This device doesn't have fields to migrate. Be explicit
-by using vmstate_qdev_no_state_to_migrate.
+TYPE_GPEX_HOST does not have internal state to migrate.
+Its only interesting state is in the GPEXRootState, which
+is a TYPE_GPEX_ROOT_DEVICE which migrates itself.
+Explicit there is nothing to migrate by using the special
+vmstate_qdev_no_state_to_migrate.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/cpu/cluster.c | 1 +
+ hw/pci-host/gpex.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
-index e444b7c29d1..95653a643ad 100644
---- a/hw/cpu/cluster.c
-+++ b/hw/cpu/cluster.c
-@@ -80,6 +80,7 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index 2bdbe7b4561..2565dc27ae4 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -115,6 +115,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
  
-     device_class_set_props(dc, cpu_cluster_properties);
-     dc->realize = cpu_cluster_realize;
+     hc->root_bus_path = gpex_host_root_bus_path;
+     dc->realize = gpex_host_realize;
 +    dc->vmsd = vmstate_qdev_no_state_to_migrate;
- 
-     /* This is not directly for users, CPU children must be attached by code */
-     dc->user_creatable = false;
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+ }
 -- 
 2.26.2
 

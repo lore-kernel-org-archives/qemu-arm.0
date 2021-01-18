@@ -1,109 +1,90 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2431289lfq;
-        Mon, 18 Jan 2021 03:48:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyNcvGVtTfnqWfF/3H+YKZwZ3kv5/wTXgF/bzf7yXaMhJErsPb+CmMF1Jm0jGQFEVyaH5zZ
-X-Received: by 2002:a25:1e42:: with SMTP id e63mr36502824ybe.270.1610970535862;
-        Mon, 18 Jan 2021 03:48:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610970535; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2442213lfq;
+        Mon, 18 Jan 2021 04:05:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzaXOFyAMAqN4TtO43FjOj1XuXcm4H012bxFgUb2+ZmIy6A5M8JBYbecbTDolyrQwcoYwA8
+X-Received: by 2002:a25:e007:: with SMTP id x7mr35317334ybg.123.1610971500904;
+        Mon, 18 Jan 2021 04:05:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610971500; cv=none;
         d=google.com; s=arc-20160816;
-        b=AauUylbFNd/5oqLAd6drgYOhpibyfzghmbVxmLRcQu262yk+uN1Mf0jBIobS5o/PP7
-         YqIoFHcc92uk1VaFnYcy1v/yMih2y1nBhJwfsub5nWE/4NwrHl0ZsfnNRlwefpdqLs0a
-         f3Z8MAygf3NEs859dRQeps8LjNJkZ9VhF5DTao1KVz1LBy2hDNQqIoMOa0ArBMT8V4KQ
-         EvtMVavaAjeCUCKuZImRdzG9sLOSo6l1bZcjmdzBECHFVTVNpkTi6IE3ja1OQ0jGxi3R
-         QyJ1BOotC3eCFZTEyEAXATpKla5kFMGFaFrCQ6b3oI5Mccj1Qp0uH8TseGU1ACNanXvV
-         /NHQ==
+        b=cAgvKGoPAn4Y1uWqfEMBkETpWQSN4uzPXRyZhOpVfEYSHtloJvDysq2iE+vP4qllQS
+         YEIKdWNQmyiMOVzilXa1U5kvOVUtd3dn78NFe9ni/yHrIBSLS0CNx01Nl4jxXz+qpylR
+         QbtKKU0af446z6V8TIajnpcPc6h5uIZi5e6xPy1f1adojdr5F+k2ASJ4Z4g97NJn2+Gz
+         R3FqmnDgiPPBxN3wEXZZhzDiA7o3EqMatiyvO7egBfpIga3/11Y+05gCwqar4t4yPmc9
+         Spmh7q5S+fm9jiGOYRMFb0D21tGCY4OhmR63964KXIBlh00Byo4bYIFHGLXdvoLLMAjg
+         q/Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=VFMUsPlYLVMAWHd89rOzuMhGW52wriQcxIJYel05Sh8=;
-        b=LSKRzlYxv7AmFrAHJiGeOW95NrXBqX5/Jp4tIZaVKxWIHUfw0bH+6H85F4fG3gAvs1
-         TFeldaJP0pTDlnMQTflBcHHPuXkKGUgekcEEUDDn/0RJ8e0WM73IA9M4EAy7iinAiMIF
-         WDhBYCDKYIe/qD751aywEZeFPY19+rbBWD6eCXodnwajKK0N2MKCDEnxVHOIM73nKnZd
-         /176zRQZp9At9+1fBcNRJiVr2HmdKj3ILfLEtkcwZNaVj4wXQ6ZQ8mQcXlgjQ0uSn9PI
-         +JfxR90a/TrPkcf3LAFOJKkLfDlt0ROAymhuM/GVMrVDu21zrhT0lgIb+gc3rrWvQs8u
-         l2Yw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=w1kCdhlm0wb6r0vyZKjpruzxVrXCKVB/QNveoqbSQFM=;
+        b=o9X2HZO6M5DS06RWRxFLElDMFNniQOucOwfEP8dHZd/qtWVdTA4G/Kr35BW3TfnVby
+         7HzCb+RSXMtC5B9Q2yZOJm71FOKjkocqvZe+PpBZK4YzroF5tjt4LDfZ3CECoSp4HWtd
+         R2DUKX4qmY767kMT5By7ONa5s0UWTwzqSg3/pBcqxPTCAzlrh/kC5tbX7O5dBWBDNRiH
+         3DxUBYgAAxqeu70scXC7AAyEw/gA2S07Xehm+lT/dGXhngwMH1V2qIcp669qGnFJixN0
+         u2USOGGOMFzAMAc5Tb9jfYkOD03AhMVByfbdT0hC8P1eKMR1wBar1VLT+Iy9w8HzN38Q
+         XSLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7Qu6RNK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q82si17462876ybb.349.2021.01.18.03.48.55
+        by mx.google.com with ESMTPS id v69si11222443ybi.344.2021.01.18.04.05.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Jan 2021 03:48:55 -0800 (PST)
+        Mon, 18 Jan 2021 04:05:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7Qu6RNK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59090 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1T1j-0003KS-AT
-	for alex.bennee@linaro.org; Mon, 18 Jan 2021 06:48:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34062)
+	id 1l1THI-0000mL-B8
+	for alex.bennee@linaro.org; Mon, 18 Jan 2021 07:05:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l1T1b-0003JG-FG
- for qemu-arm@nongnu.org; Mon, 18 Jan 2021 06:48:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21021)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l1T1Z-0007p3-TX
- for qemu-arm@nongnu.org; Mon, 18 Jan 2021 06:48:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610970524;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VFMUsPlYLVMAWHd89rOzuMhGW52wriQcxIJYel05Sh8=;
- b=L7Qu6RNK7Bgot6aiS+GTkO49kC0DJ9YP6aWRy2Bb1ofQL9koDgwkPgJV7GBUzfkyfN3+3P
- D3iEJss7G1qDO6TPCgSvup+OPjIAjYcrKaEVpNDbFNc5pAk2O0i8ksOxgBASQ/DQUBKO1p
- hEGQCUKgSUlSc2NuaoTv61luSb4HaPs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-509-xeNc-rJKMce10F1jbaM7CQ-1; Mon, 18 Jan 2021 06:48:41 -0500
-X-MC-Unique: xeNc-rJKMce10F1jbaM7CQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3EE918C8C0C;
- Mon, 18 Jan 2021 11:48:38 +0000 (UTC)
-Received: from work-vm (ovpn-115-197.ams2.redhat.com [10.36.115.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A702260BFA;
- Mon, 18 Jan 2021 11:48:28 +0000 (UTC)
-Date: Mon, 18 Jan 2021 11:48:25 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v2 01/20] migration/vmstate: Restrict vmstate_dummy
- to user-mode
-Message-ID: <20210118114825.GJ2998@work-vm>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l1TH4-0000kS-OK; Mon, 18 Jan 2021 07:04:46 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:44413)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1l1TGz-0006UD-Qb; Mon, 18 Jan 2021 07:04:46 -0500
+Received: from [192.168.100.1] ([82.252.149.54]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N5W4y-1m8EBn2EWI-016vNa; Mon, 18 Jan 2021 13:04:25 +0100
+Subject: Re: [RFC PATCH v2 15/20] hw/nubus/mac-nubus-bridge: Mark the device
+ with no migratable fields
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org
 References: <20210117192446.23753-1-f4bug@amsat.org>
- <20210117192446.23753-2-f4bug@amsat.org>
+ <20210117192446.23753-16-f4bug@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <641232f7-5e65-f066-b1a3-24a89e074eab@vivier.eu>
+Date: Mon, 18 Jan 2021 13:04:21 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210117192446.23753-2-f4bug@amsat.org>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20210117192446.23753-16-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.189,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Provags-ID: V03:K1:uhQ20pO53uAaHGI95lgej+N+JCXx1J/pYMIgsjU6VGFH0+kSx4k
+ 1V63uBA45aafqYAWORdipxcR/yWWxhqHFI01AmpeOxdKKs98STtG2dW3DtLaDHE/K++Mjdc
+ ggoWO0xNDuo3RR45Zd0gqB8dSmQalxcxCcd1jQtc7W4WlwsvK33o0hqRWUSUXbhuZcVWPBW
+ OOb0A4g9Xp50L6cuUgcpQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oTBFu+24Gd8=:nnASlFm8m4tUi5ehpptpS9
+ L8bIe4mhb61Y8+LdlUwxk4AbbWvo9pDpfW7EUhXKp5XGZC84W+qCaAAVTJcWADRINcMIo4txb
+ Mths7T9M7o4yl4+VUia9VNdZ99mEBp8JDrwXSrqob8ICJ8wERfZsSFnmm/uyTYsGlTXEzS5Md
+ Kh3jfeiRj/IC+R2xySuftnN+FoMgTdkBdZPufIWZKsb322F+znMcOuW4ptiZabr8BJcLtLC5I
+ GI4yTCn3g7NbsUDFegEun1Qk6bUlNz7faNq2C3nM0iJuvvzjAVJKJWpRzXTdTSq3zXtRmo0TK
+ IPQYBGczR99Xx2PZMWZpmm2KTB0D2EwdeauURx4JHsiou8r5hjhIbY53SqLVxH9rbwUDfHGk+
+ oGkvxDQDPVCl/3LEIleQC4FoEu+Yql1LyuJdRQXJkYQVUibuBu2LxlEyUtLAC
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.194,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,88 +98,41 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
  Andrew Jeffery <andrew@aj.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Joel Stanley <joel@jms.id.au>, Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eHvfZwCxfwPw
+X-TUID: MHlb5iDeFKXL
 
-* Philippe Mathieu-Daudé (f4bug@amsat.org) wrote:
-> 'vmstate_dummy' is special and only used for user-mode. Rename
-> it to something more specific.
-> It was introduced restricted to user-mode in commit c71c3e99b8
-> ("Add a vmstate_dummy struct for CONFIG_USER_ONLY") but this
-> restriction was later removed in commit 6afc14e92ac ("migration:
-> Fix warning caused by missing declaration of vmstate_dummy").
-> Avoid the missing declaration warning by adding a stub for the
-> symbol, and restore the #ifdef'ry.
+Le 17/01/2021 à 20:24, Philippe Mathieu-Daudé a écrit :
+> This device doesn't have fields to migrate. Be explicit
+> by using vmstate_qdev_no_state_to_migrate.
 > 
-> Suggested-by: Daniel Berrangé <berrange@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
 > ---
->  include/hw/core/cpu.h       | 2 +-
->  include/migration/vmstate.h | 4 +++-
->  stubs/vmstate.c             | 4 +++-
->  3 files changed, 7 insertions(+), 3 deletions(-)
+>  hw/nubus/mac-nubus-bridge.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 140fa32a5e3..c79a58db9b9 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -1132,7 +1132,7 @@ bool target_words_bigendian(void);
->  #ifdef CONFIG_SOFTMMU
->  extern const VMStateDescription vmstate_cpu_common;
->  #else
-> -#define vmstate_cpu_common vmstate_dummy
-> +#define vmstate_cpu_common vmstate_user_mode_cpu_dummy
->  #endif
+> diff --git a/hw/nubus/mac-nubus-bridge.c b/hw/nubus/mac-nubus-bridge.c
+> index 7c329300b82..ede36ccc5dd 100644
+> --- a/hw/nubus/mac-nubus-bridge.c
+> +++ b/hw/nubus/mac-nubus-bridge.c
+> @@ -27,6 +27,7 @@ static void mac_nubus_bridge_class_init(ObjectClass *klass, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(klass);
 >  
->  #define VMSTATE_CPU() {                                                     \
-> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-> index 075ee800960..dda65c9987d 100644
-> --- a/include/migration/vmstate.h
-> +++ b/include/migration/vmstate.h
-> @@ -194,7 +194,9 @@ struct VMStateDescription {
->      const VMStateDescription **subsections;
->  };
+>      dc->desc = "Nubus bridge";
+> +    dc->vmsd = vmstate_qdev_no_state_to_migrate;
+>  }
 >  
-> -extern const VMStateDescription vmstate_dummy;
-> +#if defined(CONFIG_USER_ONLY)
-> +extern const VMStateDescription vmstate_user_mode_cpu_dummy;
-> +#endif
->  
->  extern const VMStateInfo vmstate_info_bool;
->  
-> diff --git a/stubs/vmstate.c b/stubs/vmstate.c
-> index cc4fe41dfc2..8da777a1fb4 100644
-> --- a/stubs/vmstate.c
-> +++ b/stubs/vmstate.c
-> @@ -1,7 +1,9 @@
->  #include "qemu/osdep.h"
->  #include "migration/vmstate.h"
->  
-> -const VMStateDescription vmstate_dummy = {};
-> +#if defined(CONFIG_USER_ONLY)
-> +const VMStateDescription vmstate_user_mode_cpu_dummy = {};
-> +#endif
->  
->  int vmstate_register_with_alias_id(VMStateIf *obj,
->                                     uint32_t instance_id,
-> -- 
-> 2.26.2
+>  static const TypeInfo mac_nubus_bridge_info = {
 > 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>

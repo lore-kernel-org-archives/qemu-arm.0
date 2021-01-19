@@ -1,253 +1,178 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3168288lfq;
-        Tue, 19 Jan 2021 01:32:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwjgBFi4W3DQyoNPVTzog2FpVGJ1GTzmC4OYVaxCGhu+N14ro5sLb9R+LV5yf1pnRUEPTCi
-X-Received: by 2002:a25:e0b:: with SMTP id 11mr4894390ybo.163.1611048761871;
-        Tue, 19 Jan 2021 01:32:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611048761; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3527642lfq;
+        Tue, 19 Jan 2021 09:49:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw7+kvsPwnrwebWyYbInZkgbg9GcviIlxiNaxQ14tXtxovH6e0yxnLAM3p9KKz/Uu+3Kzct
+X-Received: by 2002:a25:e7c2:: with SMTP id e185mr8135392ybh.94.1611078545593;
+        Tue, 19 Jan 2021 09:49:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611078545; cv=none;
         d=google.com; s=arc-20160816;
-        b=LPLKYWMNMLhSnjH46vz87ZlybM/j/z9pxydSaRn5H+lHDJB4+QK+3SxtbeelF1omQb
-         dGxBY+/xcAKDGRSopJsHujVDw6F7Jmz1eV0yKhUDPoHghGeu7UIOo8XypdRwmh1KLZYx
-         Vn77sTKCb08XQt6H6MAE2rtdnIZrZ74n6vEUYCDa1tdptE7I94e2rsQS0tO1+pvk1S1k
-         4tOBSWN5DQZF7vuKFaH6BGqQ0J4Mht13ZzE8YoUxfDsdPoNw6E9RK9MhFsAzkCgnKXQ7
-         pCcuTYJr51lEdQFX+QOq4MJdWTGdbSoO0HCWIg6ET2jcKAOrJ/i0oXQ0WHfFzdeuH9Yl
-         xGDA==
+        b=CSmgQ/BoDyHiEaKPaVcUpVOzCvCSzmOw3bWATZXpfCZ4LkIw3L4g1UfUUZ5pZ6pa7p
+         XPI9lYP2/gaAj17lUcI2XnSkCSKUs1Pxm/LR6J3gFNFcIXvM3eFVEPsQQEKzPHcB7Zef
+         75/YR1ewj6bGM7oTqCGbvM1h/6WEXCCGzDKW85p6DhSL46BoGZRWTu6NK9ycCH+Jgsdz
+         ldn4/TQ2/U/xnQ7BwxLGvrVl0EVokj9hI93q/aDBcEB87efBEoexHU8oadXLX+gcQBfk
+         QCgNDA0sRBs+7dO+L5UeKA3T06wYLpIas2u9SEhDkM7cBiltEJelVSCFoUTyJ3L4NOCS
+         XBNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=Xulv5qrwxLW33dgl698lNJ3S8VNsLvKeCSoAliN+00Q=;
-        b=d81e75PHQcHVadPJUt9d561fF2IUtU6hQ+uzDYS2YAHvEPBrWcxBlR3anhCtKSoBj3
-         LjQLcJC080HcZIiKVzIrYnpAZ7oT4kJzWdTwCi6/V3Y3+Wa1w3NVLnuGURw/EFJwv3ap
-         jqwKNi8cr3NAeWNWPhColXKPbyVhI383QSQoxZzexkOy8zs2Ybk7hk5P5b+Tu4KCWong
-         BMHrwxhv3M3lyS/WqQl+q9k6uVbxc1Ir5syHHnme7wvMsJgsFSSbVpQiU6/Svr+dRhN1
-         JxyV29axQ0M9QHe3m65nmL/7ZrLrpQvX9TnID4BwpfIfrIe7ZtOKVYZerBGs6ddZjk+V
-         cdGw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=teoFIjHTxxemjEhw6yQFudejaRj5aytDCRbSfMh6bro=;
+        b=WO6dDDOhobaXM0iBdYhFixOcN7H8nhee/3w6M3NMDZ1Pm1FfLJenVNMmSm6VHyIal2
+         0gZe2oIyWv5Y4uaSteQF9GSRHEKvXZi/P4TSfl8TWa6njknZ1QoAMPnA+88pFWdGIJuE
+         Rx/4MtWfJeXnS/H/ghyYBGTkjchuGGx3Tc0QD8fQbOeYj1Y7NS6ZiFdmj77V2j4N9Xms
+         fkqMUmIP2k7fz8p3wURUi8D0PTuCigIdZk6XsPAM1HcaM/xBsilo4jlJpO41dq3WMX31
+         AD9zSBDP7q8MzmW/kAi3Q2qoufXGLPaNo87oE17JQw2fXTLDN26uWG7Ug3kDBivjX2Br
+         lATA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WLVgi0kZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=YBNPM2mD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y13si18634076ybj.57.2021.01.19.01.32.41
+        by mx.google.com with ESMTPS id s64si11824804ybb.2.2021.01.19.09.49.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jan 2021 01:32:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Jan 2021 09:49:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WLVgi0kZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32944 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=YBNPM2mD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1nNR-0002NS-8G
-	for alex.bennee@linaro.org; Tue, 19 Jan 2021 04:32:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47744)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l1v7o-0006NR-SI
+	for alex.bennee@linaro.org; Tue, 19 Jan 2021 12:49:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l1nMX-0002MN-G9
- for qemu-devel@nongnu.org; Tue, 19 Jan 2021 04:31:46 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52015)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l1nMU-0004Lx-0f
- for qemu-devel@nongnu.org; Tue, 19 Jan 2021 04:31:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1611048699;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Xulv5qrwxLW33dgl698lNJ3S8VNsLvKeCSoAliN+00Q=;
- b=WLVgi0kZYwNJxvKv1SExsK80UYNXHAoj9KKXfLccsVugWdCTxtzj5/AkHpuvCgFCx3azrc
- T7pcDuEW+XBBQATvQ/KeCsXm6gqwol+pUpfOHhhNBr4LYAddjXTkxQRBoS22LE1XamrCz5
- 5nupxt8Rbb1Yzj4tB0+XvUpNTLoSZow=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-40-CssNfIJaMfuScwP84PLyXA-1; Tue, 19 Jan 2021 04:31:35 -0500
-X-MC-Unique: CssNfIJaMfuScwP84PLyXA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3735859;
- Tue, 19 Jan 2021 09:31:33 +0000 (UTC)
-Received: from work-vm (ovpn-115-97.ams2.redhat.com [10.36.115.97])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7FFAC27C2E;
- Tue, 19 Jan 2021 09:31:26 +0000 (UTC)
-Date: Tue, 19 Jan 2021 09:31:23 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v2 02/20] hw/core/qdev: Add
- vmstate_qdev_no_state_to_migrate
-Message-ID: <20210119093123.GB3008@work-vm>
-References: <20210117192446.23753-1-f4bug@amsat.org>
- <20210117192446.23753-3-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l1v0t-00018Z-89
+ for qemu-arm@nongnu.org; Tue, 19 Jan 2021 12:41:55 -0500
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:36344)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l1v0r-0001Vw-LM
+ for qemu-arm@nongnu.org; Tue, 19 Jan 2021 12:41:54 -0500
+Received: by mail-pg1-x533.google.com with SMTP id c132so13411773pga.3
+ for <qemu-arm@nongnu.org>; Tue, 19 Jan 2021 09:41:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=teoFIjHTxxemjEhw6yQFudejaRj5aytDCRbSfMh6bro=;
+ b=YBNPM2mDKEPhp6+dBaXjGiIyS3nhsBSpE0cZlwoRu/WzmrOqcShFoNbN9iVKK7j9rY
+ pWyyB9EoIWKOEQA2K2TOjgnnBB7r/zJ76q/RAdliL+zj5cSRnoZf8V1lH5EtmPNFmdJz
+ yan2oprXGKPjNje7MEVo7OKYPn3PJjYj/Tqer2JWUDSPEn8+n0Bp0k4U/Jsskyue/+5S
+ kMCTIMZAEBJzJRyrVGXxYylQEnqT/i16JkxMdwb3YTLxnVjpjxGY3tkpclGSbyis6WBk
+ TtTxvm7U13MKalnkSClOl5UGOdl++jqJjc3d8dEAzVob4OfzPLoSQVXZpFABy569+T3M
+ krvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=teoFIjHTxxemjEhw6yQFudejaRj5aytDCRbSfMh6bro=;
+ b=uZfmcg1CZ0veEcatv32gWg1pFXcNwSoEnnFCN+MViOJR2cnwfmjpR07AsndECvo4db
+ l4gWQOX0H3+Xl2ALWLL4/Nt7uNohRFO11cQW53oXW0rIvNULjnLgHoNGWO76L7Lrwmw2
+ YKIN/rMlU4YrFdpD2E2LtJAjZK23sz9TG7j+JBox55bULcGn11EaU2TfW1M6QPSFfmAK
+ 0rkClGnZ6TnHgg0dwybXsgN1U4FVVzN8tSFnsq4rAdbUDI7AOv1JC18LA4SOmYdgQ3uM
+ GyctVHPuFr/0aiXLd5noGhcBmf6H8o5UYS7GaWUa+GJy7FzSMJX25BYNVjCo+c1zJBLW
+ kCaQ==
+X-Gm-Message-State: AOAM531CkH2PPGrEPA9uoTJHiP+ECKUVp17NcsBJVAtSjjBxNAoNuU3E
+ 9BzFCFMv16E5Q4BFr399OXrTZ7glkwUqUA==
+X-Received: by 2002:a62:4e43:0:b029:1a4:684c:87ea with SMTP id
+ c64-20020a624e430000b02901a4684c87eamr5374554pfb.75.1611078111306; 
+ Tue, 19 Jan 2021 09:41:51 -0800 (PST)
+Received: from [192.168.3.43] (cpe-66-75-72-126.hawaii.res.rr.com.
+ [66.75.72.126])
+ by smtp.gmail.com with ESMTPSA id l3sm4036008pjz.27.2021.01.19.09.41.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Jan 2021 09:41:50 -0800 (PST)
+Subject: Re: [PATCH v3 10/21] linux-user: Fix guest_addr_valid vs reserved_va
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210115224645.1196742-1-richard.henderson@linaro.org>
+ <20210115224645.1196742-11-richard.henderson@linaro.org>
+ <CAFEAcA_O6FMNCLZ=rzEkehbrnwmyF3X_qgFYSNobi=EqKL5-WQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <390dffbb-84e6-ff01-2117-758d50871ecd@linaro.org>
+Date: Tue, 19 Jan 2021 07:41:47 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210117192446.23753-3-f4bug@amsat.org>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.175,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <CAFEAcA_O6FMNCLZ=rzEkehbrnwmyF3X_qgFYSNobi=EqKL5-WQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ostHMDTlewy8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Bk2snYP3c3WP
 
-* Philippe Mathieu-Daudé (f4bug@amsat.org) wrote:
-> Add vmstate_qdev_no_state_to_migrate, which is simply a
-> pointer to vmstate_no_state_to_migrate. This way all
-> qdev devices (including "hw/qdev-core.h") don't have to
-> include "migration/vmstate.h".
+On 1/19/21 7:03 AM, Peter Maydell wrote:
+> On Fri, 15 Jan 2021 at 22:47, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> We must always use GUEST_ADDR_MAX, because even 32-bit hosts can
+>> use -R <reserved_va> to restrict the memory address of the guest.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  include/exec/cpu_ldst.h | 9 ++++-----
+>>  1 file changed, 4 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+>> index 4e6ef3d542..e62f4fba00 100644
+>> --- a/include/exec/cpu_ldst.h
+>> +++ b/include/exec/cpu_ldst.h
+>> @@ -72,11 +72,10 @@ typedef uint64_t abi_ptr;
+>>  /* All direct uses of g2h and h2g need to go away for usermode softmmu.  */
+>>  #define g2h(x) ((void *)((uintptr_t)(abi_ptr)(x) + guest_base))
+>>
+>> -#if HOST_LONG_BITS <= TARGET_VIRT_ADDR_SPACE_BITS
+>> -#define guest_addr_valid(x) (1)
+>> -#else
+>> -#define guest_addr_valid(x) ((x) <= GUEST_ADDR_MAX)
+>> -#endif
+>> +static inline bool guest_addr_valid(abi_ulong x)
+>> +{
+>> +    return x <= GUEST_ADDR_MAX;
+>> +}
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
-> Unresolved issues:
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > 
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg721695.html
-> Peter:
-> > Does this definitely not put any data into the migration stream?
-> > We don't want to change what's on the wire for machines that
-> > use devices that start using this. (If it does by default, it
-> > would be easy to make the migration code special case the
-> > magic symbol to act like "no vmsd specified").
-> 
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg727634.html
-> Dave:
-> > I'd need to test it to be sure, but I think if we added a .needed
-> > to vmstate_no_state_to_migrate with a function that always returned
-> > false, then I think the stream would stay unchanged.
+> Looking back at patch 9 -- if we always check against
+> GUEST_ADDR_MAX here, should we also do that for h2g_valid(),
+> or are the two uses different ?
+> (The v2->v3 changes list for patch 9 suggests we may have
+> had this discussion previously, but I forget the details...)
 
-Yes I still think you need that; if you only use this for base classes
-rather than devices themselves you're probably OK; but if you use it on
-a device I think you'll end up with an empty-state entry in the
-migration stream.
+I had thought we should always check GUEST_ADDR_MAX.
 
-Dave
+If something is outside G_A_M, then it doesn't fit
+into the reserved_va that either (1) the user requested
+via the command-line or (2) for which the guest has
+constraints (e.g. TARGET_VIRT_ADDR_SPACE_BITS for sh4
+or mips, requiring 31-bit addresses).
 
-> ---
->  include/hw/qdev-core.h      | 2 ++
->  include/migration/vmstate.h | 1 +
->  hw/core/qdev.c              | 3 +++
->  migration/vmstate.c         | 7 +++++++
->  stubs/vmstate.c             | 7 +++++++
->  5 files changed, 20 insertions(+)
-> 
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index bafc311bfa1..d2c7a46e6a2 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -140,6 +140,8 @@ struct DeviceClass {
->      const char *bus_type;
->  };
->  
-> +extern const VMStateDescription *vmstate_qdev_no_state_to_migrate;
-> +
->  typedef struct NamedGPIOList NamedGPIOList;
->  
->  struct NamedGPIOList {
-> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-> index dda65c9987d..50559598eac 100644
-> --- a/include/migration/vmstate.h
-> +++ b/include/migration/vmstate.h
-> @@ -197,6 +197,7 @@ struct VMStateDescription {
->  #if defined(CONFIG_USER_ONLY)
->  extern const VMStateDescription vmstate_user_mode_cpu_dummy;
->  #endif
-> +extern const VMStateDescription vmstate_no_state_to_migrate;
->  
->  extern const VMStateInfo vmstate_info_bool;
->  
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index cefc5eaa0a9..f0d0afd438d 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -44,6 +44,9 @@
->  static bool qdev_hot_added = false;
->  bool qdev_hot_removed = false;
->  
-> +const VMStateDescription *vmstate_qdev_no_state_to_migrate =
-> +        &vmstate_no_state_to_migrate;
-> +
->  const VMStateDescription *qdev_get_vmsd(DeviceState *dev)
->  {
->      DeviceClass *dc = DEVICE_GET_CLASS(dev);
-> diff --git a/migration/vmstate.c b/migration/vmstate.c
-> index 05f87cdddc5..2c373774dfa 100644
-> --- a/migration/vmstate.c
-> +++ b/migration/vmstate.c
-> @@ -20,6 +20,13 @@
->  #include "qemu/error-report.h"
->  #include "trace.h"
->  
-> +const VMStateDescription vmstate_no_state_to_migrate = {
-> +    .name = "empty-state",
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static int vmstate_subsection_save(QEMUFile *f, const VMStateDescription *vmsd,
->                                     void *opaque, JSONWriter *vmdesc);
->  static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
-> diff --git a/stubs/vmstate.c b/stubs/vmstate.c
-> index 8da777a1fb4..f561f9f39bd 100644
-> --- a/stubs/vmstate.c
-> +++ b/stubs/vmstate.c
-> @@ -5,6 +5,13 @@
->  const VMStateDescription vmstate_user_mode_cpu_dummy = {};
->  #endif
->  
-> +const VMStateDescription vmstate_no_state_to_migrate = {
-> +    .name = "empty-state",
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  int vmstate_register_with_alias_id(VMStateIf *obj,
->                                     uint32_t instance_id,
->                                     const VMStateDescription *vmsd,
-> -- 
-> 2.26.2
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
+r~

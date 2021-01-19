@@ -1,99 +1,100 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3340677lfq;
-        Tue, 19 Jan 2021 05:52:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz0Y26LtcA33xzIVC/txxgQubzUWJlL+AS/6o2d5G8jggpa9KvIp6daJ4MsDCS1x9WkyvN2
-X-Received: by 2002:a25:ba81:: with SMTP id s1mr4775994ybg.120.1611064329362;
-        Tue, 19 Jan 2021 05:52:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611064329; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3341321lfq;
+        Tue, 19 Jan 2021 05:53:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxKt9gT164F+pAWPfm4EpVLIQaMXQlWF5fhCMUhkVMGZ3V/hSR6lIrJhVf0Du/AMhBar6IR
+X-Received: by 2002:a25:ac01:: with SMTP id w1mr1903055ybi.513.1611064390782;
+        Tue, 19 Jan 2021 05:53:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611064390; cv=none;
         d=google.com; s=arc-20160816;
-        b=H9TY13MUOrUi7p6NBpvZmHsmyAEERIEFC+LdOLN63tbEAqWenFrF8WCmXrd89Tpv16
-         tQZilB5P95R8f4QxqA1n2OylUS1wVcxRIJ+Y7ZwwUBVmMaeIpeeD1jy331A/dYPl8ec0
-         oF8mgdwjpf7NcZ7Kj8cfMwPI5oZE1p7zVj1AqFUymhtDH1DoFMx99QMJd/GnGnBjZQDI
-         T9Mp2//KddVoPgB+87JKCuqcdNMZrglZpFoNKsMTZZ1CzMMzRp40ZyyHf6n2EqE39GtS
-         CmHvfe/4F8dkEHpcDaBCWvL+fc8gHiDg5BZXaGHcXMqMkZQsLtE6BA4Bg5YHcQf92VHp
-         qzxQ==
+        b=hY2axr1St3JkxRUOFOkTu5371AXTLQDTHovdgH8O+DduC1x4RpeOw1eO2UVJxBMese
+         dEqpCsee5zYuNLFQD/nUCzXVV/PzhZLzwCtSDqblGlqSm75/FbiH//fBV1f7abYOQBrN
+         YhENwltPY8XUBSubRbS/mcosu0KRfqZAl9bC/I0DN12MDS4mWAmO/w+cShpNSaYrbVqG
+         JkLu/Doy2UzavJzR2WdyvMNWvnFjz1xzUZdiZ/14AkmojsF8u9xaQ1oP/9+9OZLQxGSR
+         x2eM9ErLxj4IvVzNQKEBQ4hTcUCFgNaq0XK7kEP0p6tgIC3LyCnZcYUCiy8XFjlIhj/L
+         fNZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=81q2vH6wgdVZqHaFuZsg0z4KTvL3AEbyHNnby4vouL8=;
-        b=sZASvFVA3LWb5yF0kbod1Nd9XatAaaEE/8E0tjM1h+KbtRDqNnvZcswIus/XyxiZ5A
-         1vGCaQ7c/c8nVWoRwz0g9XE9vpXXJYpnnPX4cidwL9XPl4rdnkxzGqkm4b/g6cJiiUZY
-         +Jo6aijh0X6zwuKkqlOvQP+4VaRpMU8DFPtB9QH9SP6hHOWyQknadNXE5uR5h2PIuom+
-         Z0PJpKc256G7ys5+G6otZQ1sRqcMyYYJgOcs3OaS4Z3+RbYSNWJ89lITRecWYtbW1S5s
-         Injn5YinP8dfFuHsjD7Y1ZHdOJcJbc6+5ZGXwDQHB7Gm0ipVcoYWt255TabO8J1MBTJB
-         +Wig==
+        bh=HWzb9NPxWe6zyUwwKtlVZgXltJoC0KnXjNfztjX3fMQ=;
+        b=nSwk1sBdpwfQDpPpFF3JBDjvvODJQkfeUlcdMrFMw6y8cPAqTXnGVMFhlpxkHUWfN/
+         HZNrke/Z/V5sxO3Lr3DjLGDN1Xt2jxeQnHK1Dn0MJ4SJ8QPeAYkH6Zbo/YCit27CnaVg
+         q5dU71nbmIkPcH5dqCO3T91aQqe1XT8bMhO+U/vWqYj17Rnj2yNjXOnb/lpcIw3onqSy
+         EESgiLOlImavaPSsE/vnbvBteVsOZU0ZliQXBXu7IT80X5GqQr1Evl5lTJg+jrv23rEA
+         8/NkA7kSCU8WLFJNpWYuktdzdL1C+1FvUg4h+HqldW20unKrG+2HlLbqO9fcFJItcSxY
+         T/eQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OB1lhn+E;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dl6T87y1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o10si17186760ybe.181.2021.01.19.05.52.09
+        by mx.google.com with ESMTPS id e17si17049577ybk.346.2021.01.19.05.53.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jan 2021 05:52:09 -0800 (PST)
+        Tue, 19 Jan 2021 05:53:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OB1lhn+E;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dl6T87y1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59068 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34454 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1rQW-0005RN-NV
-	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:52:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55334)
+	id 1l1rRW-00072U-4P
+	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:53:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55316)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l1rFY-0003EH-AG; Tue, 19 Jan 2021 08:40:52 -0500
-Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a]:40581)
+ id 1l1rFW-000374-32; Tue, 19 Jan 2021 08:40:46 -0500
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:35775)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l1rFW-0003XG-MG; Tue, 19 Jan 2021 08:40:48 -0500
-Received: by mail-io1-xd2a.google.com with SMTP id n2so22380028iom.7;
- Tue, 19 Jan 2021 05:40:45 -0800 (PST)
+ id 1l1rFT-0003WT-KS; Tue, 19 Jan 2021 08:40:45 -0500
+Received: by mail-io1-xd34.google.com with SMTP id y19so39553782iov.2;
+ Tue, 19 Jan 2021 05:40:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=81q2vH6wgdVZqHaFuZsg0z4KTvL3AEbyHNnby4vouL8=;
- b=OB1lhn+ERAtxV/VC4+8o8f0IKyRI6GVxoqscBkkTCQKqzo66KHVZre/TUsb4FfdHzP
- 3Hpc8WBy1KN3iGi9vkFf0eWZ2mo+o+bPSxTdKwnqyfbqh9dOG53T2mD/68TFIK3epnpd
- Mpaq6f2jDlFTwjmQou509507Aofvs9Be2H15X8c+RNdAHNDZdcarcbKiS/7a3oZ3IPvL
- a+/aypUcbfjJTQRk1vjn3Rhng5IUeAotNSaJ7FJ5IaJJVLUSWj9ICaSnafRRCVNfXkCg
- EV68wXbSb1lhNpgyR9Q3FHuDCTmOVorqLPaUX/3C3CWVefllg1unesQ4QbGvLqp3o3SG
- O5Gw==
+ bh=HWzb9NPxWe6zyUwwKtlVZgXltJoC0KnXjNfztjX3fMQ=;
+ b=dl6T87y1YNVYT4kq6iRLKx9UWiHGFGBkyR/JyAFmqAOQucTzLJFTXAE6ZNbikxpxf7
+ Iw9I2NckKPcz3JbyvDtgQpH+XvED1nYsQ/8DQ5StyTTbX2EiSnfpzU5U7lFQlNjHXQGy
+ h2fgqFDt4jJHAfGcO5/wcYOHSoF6k/TP09pNbEJLMaB7rzXg0FjOFwUpHB7JfGT3fypI
+ 2wcQOI5RYxAhrdUv1Gh9m/40iOzxwCXZbJcTu1VqNW4CLunYveaZdrRjz1kSjz4TTrF7
+ P1ML0XNh0kW1AEXXPkgsw90AizYj+GVA6Lp3IVW2Y7K3OEg6x7AIKOAok5w5DLGba1G/
+ P4TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=81q2vH6wgdVZqHaFuZsg0z4KTvL3AEbyHNnby4vouL8=;
- b=JL+jZV/PeWr9WCbAa6+VUq5p1pv2jN4nsN8/ufepRntcKbJJtqdwMFKKf2TRtbfKK0
- GEd8DXxdRI6xrR4J0MqRC6LShyZcLkIcd8GukXmtWvfniGYuiWXIrWZExOwd6LxsVJ7x
- mD78jlM5uciU3aLBhqCqB7Er7CKtUgJo7P68+J2KdzguGUpGoGIbawXM59EUiPF2eQ5x
- FI2Be4b6W9cBRfxwvv1XNtVjvy+kpLK5fUG1Hjy3QJO+gV8T6M1ygtnQPCSHK67RQlTE
- kimfNLlUpzeUILiz10G5PKzQj+x7YDGmJrilTLSWsCvymRMKtJ9yZEKKxRwztNj9jZrY
- 4/uA==
-X-Gm-Message-State: AOAM531OE5FvpNUBocAunkCJlcL0gxToxUXUA6ww2qSkFwbkPDr5NHwQ
- Ql9NPlkH0TVUQTBNNdGsBCDLusYVPAE=
-X-Received: by 2002:a02:3213:: with SMTP id j19mr3460480jaa.79.1611063645447; 
- Tue, 19 Jan 2021 05:40:45 -0800 (PST)
+ bh=HWzb9NPxWe6zyUwwKtlVZgXltJoC0KnXjNfztjX3fMQ=;
+ b=AIhZvHC6939cZE6OtmfVLQ5Ovj3ZpKHFpJRRfcFsKjovtUW+eM3vQWTVWGBvp4Se0y
+ nICviTPX67xpHRou8DxFngPL4n4t/8pUYmQS7obZjkaoF4MtE2sZaz1/hyJw+lfDx2bl
+ 7cWYalSb0NcnbOV9zNdflcY8biC5o60/MvEg+vu+o+DXOl+uYxLC03znuk/1ysoRsyyP
+ zi3dzFMvUZUWmTqcn+AQ0BO4sCdvGQZUlDaJya/No9UxWEHIJs/PgdCc5xpA6yITEaI+
+ kF8SmPK1HVPWM0ogQSmrRRiqfSFx6nRpIUDFiuqxtRUi0CEc8Jl4RKKjYmrVs1MMQV20
+ Mv0Q==
+X-Gm-Message-State: AOAM532N56A2Al0sf6uI9oFJSujt0bk0uqFBkygnAvvylM/vGhFiPDLH
+ iZPdcvQnI7CZNX3ZQRIXNQhwN9BTen8=
+X-Received: by 2002:a92:cd47:: with SMTP id v7mr3407233ilq.288.1611063639095; 
+ Tue, 19 Jan 2021 05:40:39 -0800 (PST)
 Received: from pek-vx-bsp2.wrs.com (unknown-124-94.windriver.com.
  [147.11.124.94])
- by smtp.gmail.com with ESMTPSA id s6sm11089546ild.45.2021.01.19.05.40.42
+ by smtp.gmail.com with ESMTPSA id s6sm11089546ild.45.2021.01.19.05.40.36
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 19 Jan 2021 05:40:44 -0800 (PST)
+ Tue, 19 Jan 2021 05:40:38 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v8 10/10] hw/ssi: imx_spi: Correct tx and rx fifo endianness
-Date: Tue, 19 Jan 2021 21:39:06 +0800
-Message-Id: <1611063546-20278-11-git-send-email-bmeng.cn@gmail.com>
+Subject: [PATCH v8 08/10] hw/ssi: imx_spi: Round up the burst length to be
+ multiple of 8
+Date: Tue, 19 Jan 2021 21:39:04 +0800
+Message-Id: <1611063546-20278-9-git-send-email-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
 References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2a;
- envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd2a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,79 +118,61 @@ Cc: Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hbco/U7Vp02l
+X-TUID: dxQRrsytI6Yf
 
 From: Bin Meng <bin.meng@windriver.com>
 
-The endianness of data exchange between tx and rx fifo is incorrect.
-Earlier bytes are supposed to show up on MSB and later bytes on LSB,
-ie: in big endian. The manual does not explicitly say this, but the
-U-Boot and Linux driver codes have a swap on the data transferred
-to tx fifo and from rx fifo.
+Current implementation of the imx spi controller expects the burst
+length to be multiple of 8, which is the most common use case.
 
-With this change, U-Boot read from / write to SPI flash tests pass.
+In case the burst length is not what we expect, log it to give user
+a chance to notice it, and round it up to be multiple of 8.
 
-  => sf test 1ff000 1000
-  SPI flash test:
-  0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
-  1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
-  2 write: 235 ticks, 17 KiB/s 0.136 Mbps
-  3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
-  Test passed
-  0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
-  1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
-  2 write: 235 ticks, 17 KiB/s 0.136 Mbps
-  3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
-
-Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
 ---
 
-(no changes since v3)
+(no changes since v5)
+
+Changes in v5:
+- round up the burst length to be multiple of 8
+
+Changes in v4:
+- s/normal/common/ in the commit message
+- log the burst length value in the log message
 
 Changes in v3:
-- Simplify the tx fifo endianness handling
+- new patch: log unimplemented burst length
 
- hw/ssi/imx_spi.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ hw/ssi/imx_spi.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index de0c481..dee7368 100644
+index 5838bb0..3c80725 100644
 --- a/hw/ssi/imx_spi.c
 +++ b/hw/ssi/imx_spi.c
-@@ -175,7 +175,6 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+@@ -128,7 +128,20 @@ static uint8_t imx_spi_selected_channel(IMXSPIState *s)
  
-     while (!fifo32_is_empty(&s->tx_fifo)) {
-         int tx_burst = 0;
--        int index = 0;
+ static uint32_t imx_spi_burst_length(IMXSPIState *s)
+ {
+-    return EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
++    uint32_t burst;
++
++    burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
++    if (burst % 8) {
++        qemu_log_mask(LOG_UNIMP,
++                      "[%s]%s: burst length (%d) not multiple of 8!\n",
++                      TYPE_IMX_SPI, __func__, burst);
++        burst = ROUND_UP(burst, 8);
++        qemu_log_mask(LOG_UNIMP,
++                      "[%s]%s: burst length rounded up to %d; this may not work.\n",
++                      TYPE_IMX_SPI, __func__, burst);
++    }
++
++    return burst;
+ }
  
-         if (s->burst_length <= 0) {
-             s->burst_length = imx_spi_burst_length(s);
-@@ -196,7 +195,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-         rx = 0;
- 
-         while (tx_burst > 0) {
--            uint8_t byte = tx & 0xff;
-+            uint8_t byte = tx >> (tx_burst - 8);
- 
-             DPRINTF("writing 0x%02x\n", (uint32_t)byte);
- 
-@@ -205,13 +204,11 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
- 
-             DPRINTF("0x%02x read\n", (uint32_t)byte);
- 
--            tx = tx >> 8;
--            rx |= (byte << (index * 8));
-+            rx = (rx << 8) | byte;
- 
-             /* Remove 8 bits from the actual burst */
-             tx_burst -= 8;
-             s->burst_length -= 8;
--            index++;
-         }
- 
-         DPRINTF("data rx:0x%08x\n", rx);
+ static bool imx_spi_is_enabled(IMXSPIState *s)
 -- 
 2.7.4
 

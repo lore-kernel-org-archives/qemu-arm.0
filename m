@@ -1,105 +1,105 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3341321lfq;
-        Tue, 19 Jan 2021 05:53:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxKt9gT164F+pAWPfm4EpVLIQaMXQlWF5fhCMUhkVMGZ3V/hSR6lIrJhVf0Du/AMhBar6IR
-X-Received: by 2002:a25:ac01:: with SMTP id w1mr1903055ybi.513.1611064390782;
-        Tue, 19 Jan 2021 05:53:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611064390; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3342477lfq;
+        Tue, 19 Jan 2021 05:55:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwyw7Nz4uLlj9zecvaAv5CN/32dLSnVC+AbKXlArpyCWye1ju8vH1Rwb1e0QJ6i7YAtBJH+
+X-Received: by 2002:a25:3d81:: with SMTP id k123mr5829083yba.430.1611064505791;
+        Tue, 19 Jan 2021 05:55:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611064505; cv=none;
         d=google.com; s=arc-20160816;
-        b=hY2axr1St3JkxRUOFOkTu5371AXTLQDTHovdgH8O+DduC1x4RpeOw1eO2UVJxBMese
-         dEqpCsee5zYuNLFQD/nUCzXVV/PzhZLzwCtSDqblGlqSm75/FbiH//fBV1f7abYOQBrN
-         YhENwltPY8XUBSubRbS/mcosu0KRfqZAl9bC/I0DN12MDS4mWAmO/w+cShpNSaYrbVqG
-         JkLu/Doy2UzavJzR2WdyvMNWvnFjz1xzUZdiZ/14AkmojsF8u9xaQ1oP/9+9OZLQxGSR
-         x2eM9ErLxj4IvVzNQKEBQ4hTcUCFgNaq0XK7kEP0p6tgIC3LyCnZcYUCiy8XFjlIhj/L
-         fNZg==
+        b=IwLE7AYGi2i7VtkOss2/q71+RI3UavlO2mEgK/v33UIk17Aig5y8MXuC3vauEueuEX
+         I4OtPcbhiJ17XOd0Vzdy/AXDkTpsNvPELuf/GvObHZwItqiPiCkIPeD5kWhdRQ03DFMF
+         hMuuPcJR85KrD7y5wVrwaqvgClgHy7omopoQWxNbnJNY+atq11JwjmSz8VKvdIWNeST+
+         QfbG+rTxv9jtwKFwD6qRpxGK+kcpKb9F5uE3nHcLgJWOEg691uhvFNrO06j8rzvoozFf
+         w4iJT1Af8cTjBEI4qek/o65VGWj6vcTsFI5OgzSccu+65VFCRv9Wy/TuiUUsWGWOadL3
+         8NQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=HWzb9NPxWe6zyUwwKtlVZgXltJoC0KnXjNfztjX3fMQ=;
-        b=nSwk1sBdpwfQDpPpFF3JBDjvvODJQkfeUlcdMrFMw6y8cPAqTXnGVMFhlpxkHUWfN/
-         HZNrke/Z/V5sxO3Lr3DjLGDN1Xt2jxeQnHK1Dn0MJ4SJ8QPeAYkH6Zbo/YCit27CnaVg
-         q5dU71nbmIkPcH5dqCO3T91aQqe1XT8bMhO+U/vWqYj17Rnj2yNjXOnb/lpcIw3onqSy
-         EESgiLOlImavaPSsE/vnbvBteVsOZU0ZliQXBXu7IT80X5GqQr1Evl5lTJg+jrv23rEA
-         8/NkA7kSCU8WLFJNpWYuktdzdL1C+1FvUg4h+HqldW20unKrG+2HlLbqO9fcFJItcSxY
-         T/eQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=d+vjECBYFoR6D1gAq6LxYtYPG1ClriFhGmGlhv7QJag=;
+        b=IQ9K4jx7LdeIPWl7vuH9F8S7xUT85qghxjfjnfB8tJSrCU/kKfqLPsO3zJSnYSr7cO
+         pRN67W5apylrugotGgHBwgr0+n/IT92Kw60gNcP9eER4c/IVlhDsKpiR/Y4CKH0oQFDe
+         COa0pUvfa/OMNSyhn19JXxtXsFbjYTV5kvTLn67CAm68EOAz2Xzg+gMamIvFQsZO/YVs
+         xiL7b7IoSwUy2L47x+Nbw1j0ga/ITQQunYHbgI/PeUGgIShK0y5ojKddxGtRx3ouzv9V
+         KEQ7sPLEb8x23j30hRTj+UO4pX4+9UafhikLi7ygOcmaGNpX9CWNE9qH27Sw9pG01cEE
+         0QNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dl6T87y1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VNOEhDZY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17si17049577ybk.346.2021.01.19.05.53.10
+        by mx.google.com with ESMTPS id h7si4736641ybh.288.2021.01.19.05.55.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jan 2021 05:53:10 -0800 (PST)
+        Tue, 19 Jan 2021 05:55:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dl6T87y1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VNOEhDZY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34454 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1rRW-00072U-4P
-	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:53:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55316)
+	id 1l1rTN-0001Rl-6S
+	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:55:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58636)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l1rFW-000374-32; Tue, 19 Jan 2021 08:40:46 -0500
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:35775)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l1rPX-0005dl-Hn
+ for qemu-devel@nongnu.org; Tue, 19 Jan 2021 08:51:07 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:33321)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l1rFT-0003WT-KS; Tue, 19 Jan 2021 08:40:45 -0500
-Received: by mail-io1-xd34.google.com with SMTP id y19so39553782iov.2;
- Tue, 19 Jan 2021 05:40:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=HWzb9NPxWe6zyUwwKtlVZgXltJoC0KnXjNfztjX3fMQ=;
- b=dl6T87y1YNVYT4kq6iRLKx9UWiHGFGBkyR/JyAFmqAOQucTzLJFTXAE6ZNbikxpxf7
- Iw9I2NckKPcz3JbyvDtgQpH+XvED1nYsQ/8DQ5StyTTbX2EiSnfpzU5U7lFQlNjHXQGy
- h2fgqFDt4jJHAfGcO5/wcYOHSoF6k/TP09pNbEJLMaB7rzXg0FjOFwUpHB7JfGT3fypI
- 2wcQOI5RYxAhrdUv1Gh9m/40iOzxwCXZbJcTu1VqNW4CLunYveaZdrRjz1kSjz4TTrF7
- P1ML0XNh0kW1AEXXPkgsw90AizYj+GVA6Lp3IVW2Y7K3OEg6x7AIKOAok5w5DLGba1G/
- P4TQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l1rPR-0005Ju-0i
+ for qemu-devel@nongnu.org; Tue, 19 Jan 2021 08:51:07 -0500
+Received: by mail-ed1-x534.google.com with SMTP id c6so14463934ede.0
+ for <qemu-devel@nongnu.org>; Tue, 19 Jan 2021 05:50:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=d+vjECBYFoR6D1gAq6LxYtYPG1ClriFhGmGlhv7QJag=;
+ b=VNOEhDZYFKYnZVyUKcLpLVuYPtgVIJf5JIohfKT4j/JCdn5ReKeNCpZDQki82g1Evr
+ GqrkFxhXPBgiGgcyYAUWoTMtNs1eQ1DfBPg721+2onicGY7UUVRMl+YwfqZqJ6vYVEiJ
+ kpNqiACNaNZzOc83bM2jQMZueI9Px1iTZFbideSdIPiWXdqA0J6bkIOJER8LafxY/GrU
+ EJIXxosuvN/9k0uQ8OV81MrsDhppCvYW9S9GbeezS/3ZZYSrqVPtCDTH2EjVnuNft9O5
+ 0cr6n0k3y0yWJb9khbbkii7nLs6lVqkJeQefjlvz93CaZGqkwEDaMZ/VrKzM6AwySzul
+ a6aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=HWzb9NPxWe6zyUwwKtlVZgXltJoC0KnXjNfztjX3fMQ=;
- b=AIhZvHC6939cZE6OtmfVLQ5Ovj3ZpKHFpJRRfcFsKjovtUW+eM3vQWTVWGBvp4Se0y
- nICviTPX67xpHRou8DxFngPL4n4t/8pUYmQS7obZjkaoF4MtE2sZaz1/hyJw+lfDx2bl
- 7cWYalSb0NcnbOV9zNdflcY8biC5o60/MvEg+vu+o+DXOl+uYxLC03znuk/1ysoRsyyP
- zi3dzFMvUZUWmTqcn+AQ0BO4sCdvGQZUlDaJya/No9UxWEHIJs/PgdCc5xpA6yITEaI+
- kF8SmPK1HVPWM0ogQSmrRRiqfSFx6nRpIUDFiuqxtRUi0CEc8Jl4RKKjYmrVs1MMQV20
- Mv0Q==
-X-Gm-Message-State: AOAM532N56A2Al0sf6uI9oFJSujt0bk0uqFBkygnAvvylM/vGhFiPDLH
- iZPdcvQnI7CZNX3ZQRIXNQhwN9BTen8=
-X-Received: by 2002:a92:cd47:: with SMTP id v7mr3407233ilq.288.1611063639095; 
- Tue, 19 Jan 2021 05:40:39 -0800 (PST)
-Received: from pek-vx-bsp2.wrs.com (unknown-124-94.windriver.com.
- [147.11.124.94])
- by smtp.gmail.com with ESMTPSA id s6sm11089546ild.45.2021.01.19.05.40.36
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 19 Jan 2021 05:40:38 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v8 08/10] hw/ssi: imx_spi: Round up the burst length to be
- multiple of 8
-Date: Tue, 19 Jan 2021 21:39:04 +0800
-Message-Id: <1611063546-20278-9-git-send-email-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
-References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
- envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd34.google.com
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=d+vjECBYFoR6D1gAq6LxYtYPG1ClriFhGmGlhv7QJag=;
+ b=rYVOrPqWkh5wAit/U52UBXVsFfzEvvHAE2GHDfGjoG+Aw9g6S0cxyQh9cD9aWh/NYs
+ xinh+W6f3Qctp8OL43RhGN5VadRlinIwNIxam3FNMjVOFERoBwkUsPvv6laxhRd9pDh9
+ rOQiSw1opa5mhMjNyivJiUXbChmC8OhOyKbqjbnzAypysIVLzfgSGLPUS3ZLpBRw8Imj
+ 9AiCfSXTSNicsygKbHZczo2gVdPa0JfOUJ0kP/Pt/pgId9PcxOzBwONoCIw0D+JHFW6o
+ nis/vmcFajNI0LoEomu4qsnpPuL2gkYtHiB+qYsSvu5KTKrGoKCTrsEsk9LBbq6CUJYF
+ proA==
+X-Gm-Message-State: AOAM532UXMKTGcaMRUuqmx6N3dWTu9NJR4Wi5Rfvb7AtCxV8sKThAOcD
+ X4Y9osoXEqzE2SK6lx1+FDus8YNBlzY81RZyz2aYcg==
+X-Received: by 2002:a05:6402:1a55:: with SMTP id
+ bf21mr3592180edb.146.1611064258924; 
+ Tue, 19 Jan 2021 05:50:58 -0800 (PST)
+MIME-Version: 1.0
+References: <20210117192446.23753-1-f4bug@amsat.org>
+ <20210117192446.23753-2-f4bug@amsat.org>
+In-Reply-To: <20210117192446.23753-2-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Jan 2021 13:50:47 +0000
+Message-ID: <CAFEAcA_358tUe-O9Yb94p=xDXXLTNM8EoQRvwMKEY_bmSTfzJQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 01/20] migration/vmstate: Restrict vmstate_dummy to
+ user-mode
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -114,65 +114,80 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dxQRrsytI6Yf
+X-TUID: 44HkeuS9ENOs
 
-From: Bin Meng <bin.meng@windriver.com>
+On Sun, 17 Jan 2021 at 19:24, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> 'vmstate_dummy' is special and only used for user-mode. Rename
+> it to something more specific.
+> It was introduced restricted to user-mode in commit c71c3e99b8
+> ("Add a vmstate_dummy struct for CONFIG_USER_ONLY") but this
+> restriction was later removed in commit 6afc14e92ac ("migration:
+> Fix warning caused by missing declaration of vmstate_dummy").
+> Avoid the missing declaration warning by adding a stub for the
+> symbol, and restore the #ifdef'ry.
 
-Current implementation of the imx spi controller expects the burst
-length to be multiple of 8, which is the most common use case.
+So what is the actual use of vmstate_dummy ? I had a grep
+through and as far as I can see the points where vmstate_cpu_common
+is used are all in softmmu-only code. I tried this patch
+and QEMU seems to compile OK:
 
-In case the burst length is not what we expect, log it to give user
-a chance to notice it, and round it up to be multiple of 8.
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 140fa32a5e3..a827417a4d8 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -1131,8 +1131,6 @@ bool target_words_bigendian(void);
 
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
+ #ifdef CONFIG_SOFTMMU
+ extern const VMStateDescription vmstate_cpu_common;
+-#else
+-#define vmstate_cpu_common vmstate_dummy
+ #endif
 
----
+ #define VMSTATE_CPU() {                                                   =
+  \
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 075ee800960..8df7b69f389 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -194,8 +194,6 @@ struct VMStateDescription {
+     const VMStateDescription **subsections;
+ };
 
-(no changes since v5)
+-extern const VMStateDescription vmstate_dummy;
+-
+ extern const VMStateInfo vmstate_info_bool;
 
-Changes in v5:
-- round up the burst length to be multiple of 8
+ extern const VMStateInfo vmstate_info_int8;
+diff --git a/stubs/vmstate.c b/stubs/vmstate.c
+index cc4fe41dfc2..8513d9204e4 100644
+--- a/stubs/vmstate.c
++++ b/stubs/vmstate.c
+@@ -1,8 +1,6 @@
+ #include "qemu/osdep.h"
+ #include "migration/vmstate.h"
 
-Changes in v4:
-- s/normal/common/ in the commit message
-- log the burst length value in the log message
+-const VMStateDescription vmstate_dummy =3D {};
+-
+ int vmstate_register_with_alias_id(VMStateIf *obj,
+                                    uint32_t instance_id,
+                                    const VMStateDescription *vmsd,
 
-Changes in v3:
-- new patch: log unimplemented burst length
-
- hw/ssi/imx_spi.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 5838bb0..3c80725 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -128,7 +128,20 @@ static uint8_t imx_spi_selected_channel(IMXSPIState *s)
- 
- static uint32_t imx_spi_burst_length(IMXSPIState *s)
- {
--    return EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-+    uint32_t burst;
-+
-+    burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-+    if (burst % 8) {
-+        qemu_log_mask(LOG_UNIMP,
-+                      "[%s]%s: burst length (%d) not multiple of 8!\n",
-+                      TYPE_IMX_SPI, __func__, burst);
-+        burst = ROUND_UP(burst, 8);
-+        qemu_log_mask(LOG_UNIMP,
-+                      "[%s]%s: burst length rounded up to %d; this may not work.\n",
-+                      TYPE_IMX_SPI, __func__, burst);
-+    }
-+
-+    return burst;
- }
- 
- static bool imx_spi_is_enabled(IMXSPIState *s)
--- 
-2.7.4
-
+thanks
+-- PMM

@@ -1,239 +1,179 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3337934lfq;
-        Tue, 19 Jan 2021 05:48:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwgPB8iwHUeEWmLCPbmPv/oQhy0ZVTlnkmIt1sTL++dnILf9duXzNs0TzQmV6UgS5Z3HH3y
-X-Received: by 2002:a25:1b05:: with SMTP id b5mr5876530ybb.298.1611064108814;
-        Tue, 19 Jan 2021 05:48:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611064108; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3338535lfq;
+        Tue, 19 Jan 2021 05:49:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwTOJUUgkSa3ZbaInRazAkvyOr1KKnYivQmvNC6uDRY6qHpt+eZmrtUXaDEIzpyu5RJpugU
+X-Received: by 2002:a25:2c97:: with SMTP id s145mr5962276ybs.249.1611064157687;
+        Tue, 19 Jan 2021 05:49:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611064157; cv=none;
         d=google.com; s=arc-20160816;
-        b=r4H7ROU+r0dyznkOwJU/Yd1+kgifdlZEYbNZUtFoMf0slEUNwZ+UT8bXCyHftJuR8R
-         UKE9AaMfXVHSz1q2D05/QKflWqBb1hSnLNJ257n+ixGBCkyTqVnhPDfP2usSKsF3clfu
-         s5gWvOU10uG07ucSvcRbh3ChZdf1gW8ay8iR/LlgAjar1XKRZgwIyjt3x68E4BoTLAaW
-         yIZO+JtjhD6Ri/tnqh7I/+bacxu/b/JfqbV0vC08FkD3L/kqCcqs+MLPXGgNEDCu8X1n
-         sU3gcf2FJpbGZtS6A9NBPc3fmOlryc4NFE+MQx051wPkQQ9BdGhJ/h5gu/PkVHifaiZu
-         rKKw==
+        b=FQHlXBomMJDo2c0SEu8rDafw09IlmWB9DBb6wjYqv//LgsdjGAT8ufJan4EoHAGQVf
+         ns3FLWLS2U+SUUCTOn5OpOlifBj2F3SSFFbb74imWgE1T+nZCuVnbYYdkhk336y3du6L
+         FPy00Scy3OhApEZ3gubDyP2c1LAZILb24h1A8x7dmUkbAGr0TuJ4O+/2TLUCAnZjj2l+
+         TDgpAtlUGGTJvzHCqoWhtotoZ8tHXhRGmKj/Si4gwWickk8UNXDKj2GgmBEBbkExTBfT
+         tg6ihrF7acYHLGAaqFFOPG4AsI8bQ925NQ66q9DsQ02RoFcXrkHm+hy4ca05KBX/Sk6z
+         ovXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2Q67n+S3uEeYMHzmz+arcMT93DBurRu0RAfUk0JZzFc=;
-        b=WfoZwI00WypBumVMVG64FV0OqGA8bgp/cOrU/jG70Q3hwmiu7Hb9fEdm0HFyLjseca
-         pn9p+P985g281fFnzAL8tx+s0WnUGI0g685DwlvPx9zLpXrpXrjbpvaYbddr1pfZr7Qb
-         Wi6Mg31Mm4j4HGDVeof0hGacWM/X4Kr+q2razIJZ7ztx+hYC5cgpyHTEVUhz7v1TQh25
-         fMpe6FKEAsaAFOw6CBqAQK11Vpm9NTTDPmLENqZWrK4cPEpXYXcmcFD6w8pGzubG68dy
-         W6egO7zz6RQu3QVOxO+EFWh2dq1TaRI0WbRWGz43Xim0dElkVBmyCqALTdL+RtldFQM6
-         iPGw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Ih8DXH2AR1+PTjLqD5HM8bi1+XcqteQvWXEW3+VB5p8=;
+        b=zm6gbBBexoC/lfLuEc4b5+813gDqQQAATIZsid+IfHG7mGV+Jnn86MM58dfaYx9skz
+         UV6R2qocGFpD7QjYjRUEhTieeF79rhTLS2ixV9oxz6Bj13PQ4EFEIma9Pz+0BlK8Er2d
+         X68TawykDj9iMagivrm5+qIYCQ3VUw5iK3vAh3ctB78HqIkzu8LDGkkczTxCPzSSu4UT
+         v7sAH8WLz7Bj2trqRPGFkzRDtdZzgq53G5Qf1no5nvHbCuZ7ypyZ0/m2b6ijDa+H9fXU
+         JTXCHKIp9lCk4aN4iBHuCPqSJZ6+dmUJYhJ3okQHh9xkY0a9whBQLNXxpxonr+xt7JZ8
+         I+7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="We/Vwhrf";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pEKXCxJd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t11si21214727ybp.365.2021.01.19.05.48.28
+        by mx.google.com with ESMTPS id y15si18195913ybj.230.2021.01.19.05.49.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jan 2021 05:48:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Jan 2021 05:49:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="We/Vwhrf";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50500 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pEKXCxJd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52070 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1rMy-0001oB-3J
-	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:48:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57562)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l1rNl-0002Uf-49
+	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:49:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55306)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1l1rMG-0001kb-Ae
- for qemu-arm@nongnu.org; Tue, 19 Jan 2021 08:47:44 -0500
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:53048)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1l1rFV-00034Y-98; Tue, 19 Jan 2021 08:40:45 -0500
+Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29]:43478)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1l1rM8-0004k2-1X
- for qemu-arm@nongnu.org; Tue, 19 Jan 2021 08:47:42 -0500
-Received: by mail-pj1-x1033.google.com with SMTP id kx7so2615749pjb.2
- for <qemu-arm@nongnu.org>; Tue, 19 Jan 2021 05:47:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2Q67n+S3uEeYMHzmz+arcMT93DBurRu0RAfUk0JZzFc=;
- b=We/VwhrfDdS0qp2/IYN8JA7q2yFFjUdin5S3iBOJOcAmJcL53o0yWHKI/j75c8fzr0
- 8NxAoxTFUfbXsQwnQPf8YCKHTWgUWJtMf054s5Whn3AnUMXrRDuOiybr8thmg/5H6t+D
- 1uWXC1aIKUq7H6Zvz2bMyUUBMaMVmLEAIqjZn7ZZz60T2x0boONeYtPnzNh5DZPSPFjS
- o7nKdosFZH97fAX36E2mcPfnISOdNWbToTZKd9eEO1VXEagElZKs0nwg8lzH6q0wT7EY
- g+RWzP1m8WQyfuU96yJ9Q3ULXGRcmm9OKiyAJjhtg/VYK0egpfbkpgS9zZh1iWlIxaCc
- esLw==
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1l1rFT-0003Wh-Ko; Tue, 19 Jan 2021 08:40:45 -0500
+Received: by mail-io1-xd29.google.com with SMTP id x21so21354187iog.10;
+ Tue, 19 Jan 2021 05:40:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Ih8DXH2AR1+PTjLqD5HM8bi1+XcqteQvWXEW3+VB5p8=;
+ b=pEKXCxJdHwxJVr9HfKLp+E/Ae/Nb+PYYmQUzI3ekzXXX9w2sqs7TgNtkIeZeKepwiq
+ 7CYqR4aESAJtz5Z9a4Z3FcAtHdG0MFHp89BdIOM7mES8yWMrJZuuAcOPRUjLvGQ6taHp
+ kD+gVqGpZcpaRtE56Y9RMPuaOzKKXAXZqI4zS1u6zYqpGLg519HsvHwP5T1D6jgxIQzs
+ 5aVAdg/JXzzSchMem8zbUBEDnWt+CkTn875ZWDiNLLF/Xi2/kAQ0qRr80nQwuwGBziD1
+ n2Z7/mumIEMQFmzQHTF0cHB0tE7Y8Ss7y6Aip9r61i47ueh4ph3jR4vab00dL3o+gzBG
+ tJ0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2Q67n+S3uEeYMHzmz+arcMT93DBurRu0RAfUk0JZzFc=;
- b=Tib0W/eUml75FcNtiTWKXuxqeVGrjuhAMeFLxUDjoeT1+P7VtTRYnhRZdYReErBs3z
- bEXYhYW9vwwqR1M8t4HISPlyZd9XFWjd6uI102AY+CJeO9F/oJwp6SbZxh7EWjGOg7UM
- OUnBffW9uyxO2i6+8RbbqICdiu8th2sBYkZ9+TYlIr2I5bnM7TY8TUrAOs7zFCZuKu3F
- 4sNeSOpLiWQKbyjwLiRKM4lWObSH+HOmuAAH1YvTqzSdT+7yJBzfrdmGwqMM3X6FcI3s
- nIxW7SquOMqgxh+ABVFZD5trQ9LIB9HD2GMDQmylS4i9WxvjL8Y8mBghxYbHU7dqzQxt
- SPlQ==
-X-Gm-Message-State: AOAM530Dxf599POrdbSDr0M12h7wzdBXkif9usk5FdGGruLNNjSHPYNo
- OhvDRcF+Nr4RZGquAMazXQSzT95oxSiboZAX6V3CMQ==
-X-Received: by 2002:a17:90a:808a:: with SMTP id
- c10mr5541698pjn.229.1611064052691; 
- Tue, 19 Jan 2021 05:47:32 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Ih8DXH2AR1+PTjLqD5HM8bi1+XcqteQvWXEW3+VB5p8=;
+ b=rnQ2j0FnJyMIjNQCfuBtp8fxPu1fpspexM6EDLA/h/Hy/Qagz8lPbSJPMu65bPqlTq
+ qWWO1Fm3TKNI2TNTOTHzjKfz3eJPls4l45tSSLPCtIHdO+ldfiwMZEKM1Dizco7KdVqH
+ cYd0PpsB2WB+MN0W+g9P22zPsmbGjTvF088csPRGZCWWVx+ov3hYIwaW1vuIjM6jFkdu
+ CDyrozI1u4sQvcVXYK8l8moJn9s+P++Ip7Wa/zOBQ/BXJgR5f642VM6spQFi6iHAC5J1
+ cX5sMCdcFXTgyyL+vlTqN5QXLyGxKK65PI7dyfldF/uOj5MfFxU98pD1x7qFMCT97jl6
+ 6kaA==
+X-Gm-Message-State: AOAM531zldYgSLj0tK3r88M/C0wXpIY6XDMtNS3y3/Et0MHElNI4WMXK
+ 7d2/sdE0aBac4lgCQFEXzCLF/YA7d2U=
+X-Received: by 2002:a05:6602:20c9:: with SMTP id
+ 9mr2904371ioz.51.1611063642160; 
+ Tue, 19 Jan 2021 05:40:42 -0800 (PST)
+Received: from pek-vx-bsp2.wrs.com (unknown-124-94.windriver.com.
+ [147.11.124.94])
+ by smtp.gmail.com with ESMTPSA id s6sm11089546ild.45.2021.01.19.05.40.39
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 19 Jan 2021 05:40:41 -0800 (PST)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH v8 09/10] hw/ssi: imx_spi: Correct the burst length > 32 bit
+ transfer logic
+Date: Tue, 19 Jan 2021 21:39:05 +0800
+Message-Id: <1611063546-20278-10-git-send-email-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
+References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-References: <20210115101126.4259-1-maxim.uvarov@linaro.org>
- <20210115101126.4259-4-maxim.uvarov@linaro.org>
- <CAFEAcA-p-H6ZS_8gwVWmBEnzoa0GtqNwUAESx2bXp3wpoGs9aQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA-p-H6ZS_8gwVWmBEnzoa0GtqNwUAESx2bXp3wpoGs9aQ@mail.gmail.com>
-From: Maxim Uvarov <maxim.uvarov@linaro.org>
-Date: Tue, 19 Jan 2021 16:47:21 +0300
-Message-ID: <CAD8XO3YjP8RUDd2T6+VwfnnCm4fk-i6x5DbmtOHF553yxt9Jtw@mail.gmail.com>
-Subject: Re: [PATCHv7 3/3] arm-virt: add secure pl061 for reset/power down
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=maxim.uvarov@linaro.org; helo=mail-pj1-x1033.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d29;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd29.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Jose Marinho <Jose.Marinho@arm.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J0YuwZHa4+sX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9Sg4XLTUhHUG
 
-On Tue, 19 Jan 2021 at 16:07, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 15 Jan 2021 at 10:11, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
-> >
-> > Add secure pl061 for reset/power down machine from
-> > the secure world (Arm Trusted Firmware). Connect it
-> > with gpio-pwr driver.
-> >
-> > Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
-> > ---
-> >  hw/arm/Kconfig        |  1 +
-> >  hw/arm/virt.c         | 50 +++++++++++++++++++++++++++++++++++++++++++
-> >  include/hw/arm/virt.h |  2 ++
-> >  3 files changed, 53 insertions(+)
-> >
-> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> > index 0a242e4c5d..13cc42dcc8 100644
-> > --- a/hw/arm/Kconfig
-> > +++ b/hw/arm/Kconfig
-> > @@ -17,6 +17,7 @@ config ARM_VIRT
-> >      select PL011 # UART
-> >      select PL031 # RTC
-> >      select PL061 # GPIO
-> > +    select GPIO_PWR
-> >      select PLATFORM_BUS
-> >      select SMBIOS
-> >      select VIRTIO_MMIO
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 26bb66e8e1..436ae894c9 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -153,6 +153,7 @@ static const MemMapEntry base_memmap[] = {
-> >      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
-> >      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
-> >      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
-> > +    [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
-> >      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-> >      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-> >      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-> > @@ -841,6 +842,46 @@ static void create_gpio_keys(const VirtMachineState *vms,
-> >                             "gpios", phandle, 3, 0);
-> >  }
-> >
-> > +#define ATF_GPIO_POWEROFF 3
-> > +#define ATF_GPIO_REBOOT   4
->
-> These aren't ATF specific, so you could name them SECURE_GPIO_POWEROFF
-> and SECURE_GPIO_REBOOT.
->
-OK.
+From: Bin Meng <bin.meng@windriver.com>
 
-> Remind me why we start with GPIO line number 3 and not 0 ?
->
+For the ECSPIx_CONREG register BURST_LENGTH field, the manual says:
 
-Original gpio power key use 3 and 4 (non-secure). I just selected the
-same to be consistent.
+0x020 A SPI burst contains the 1 LSB in first word and all 32 bits in second word.
+0x021 A SPI burst contains the 2 LSB in first word and all 32 bits in second word.
 
+Current logic uses either s->burst_length or 32, whichever smaller,
+to determine how many bits it should read from the tx fifo each time.
+For example, for a 48 bit burst length, current logic transfers the
+first 32 bit from the first word in the tx fifo, followed by a 16
+bit from the second word in the tx fifo, which is wrong. The correct
+logic should be: transfer the first 16 bit from the first word in
+the tx fifo, followed by a 32 bit from the second word in the tx fifo.
 
-> > +
-> > +static void create_gpio_pwr(const VirtMachineState *vms,
-> > +                            DeviceState *pl061_dev,
-> > +                            uint32_t phandle)
-> > +{
-> > +    DeviceState *gpio_pwr_dev;
-> > +
-> > +    /* gpio-pwr */
-> > +    gpio_pwr_dev = sysbus_create_simple("gpio-pwr", -1, NULL);
-> > +
-> > +    /* connect secure pl061 to gpio-pwr */
-> > +    qdev_connect_gpio_out(pl061_dev, ATF_GPIO_POWEROFF,
-> > +                          qdev_get_gpio_in_named(gpio_pwr_dev, "reset", 0));
-> > +    qdev_connect_gpio_out(pl061_dev, ATF_GPIO_REBOOT,
-> > +                          qdev_get_gpio_in_named(gpio_pwr_dev, "shutdown", 0));
->
-> You've connected the POWEROFF gpio line to 'reset' and the
-> REBOOT line to 'shutdown'. This looks like it's backwards.
->
+With this change, SPI flash can be successfully probed by U-Boot on
+imx6 sabrelite board.
 
-Oh, yes. Thanks for finding that.
+  => sf probe
+  SF: Detected sst25vf016b with page size 256 Bytes, erase size 4 KiB, total 2 MiB
 
-> > +    qemu_fdt_add_subnode(vms->fdt, "/gpio-pwr");
-> > +    qemu_fdt_setprop_string(vms->fdt, "/gpio-pwr", "compatible", "gpio-pwr");
-> > +    qemu_fdt_setprop_cell(vms->fdt, "/gpio-pwr", "#size-cells", 0);
-> > +    qemu_fdt_setprop_cell(vms->fdt, "/gpio-pwr", "#address-cells", 1);
-> > +
-> > +    qemu_fdt_add_subnode(vms->fdt, "/gpio-pwr/poweroff");
-> > +    qemu_fdt_setprop_string(vms->fdt, "/gpio-pwr/poweroff",
-> > +                            "label", "GPIO PWR Poweroff");
-> > +    qemu_fdt_setprop_cell(vms->fdt, "/gpio-pwr/poweroff", "code",
-> > +                          ATF_GPIO_POWEROFF);
-> > +    qemu_fdt_setprop_cells(vms->fdt, "/gpio-pwr/poweroff",
-> > +                           "gpios", phandle, 3, 0);
-> > +
-> > +    qemu_fdt_add_subnode(vms->fdt, "/gpio-pwr/reboot");
-> > +    qemu_fdt_setprop_string(vms->fdt, "/gpio-pwr/reboot",
-> > +                            "label", "GPIO PWR Reboot");
-> > +    qemu_fdt_setprop_cell(vms->fdt, "/gpio-pwr/reboot", "code",
-> > +                          ATF_GPIO_REBOOT);
-> > +    qemu_fdt_setprop_cells(vms->fdt, "/gpio-pwr/reboot",
-> > +                           "gpios", phandle, 3, 0);
->
-> There doesn't seem to be any documented 'gpio-pwr' devicetree
-> binding. Where does this come from ?
->
-gpio-pwr created from the first patch.  There are no bindings yet.
+Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
+Signed-off-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> I think the bindings you want to be using are
-> https://www.kernel.org/doc/Documentation/devicetree/bindings/power/reset/gpio-restart.txt
-> https://www.kernel.org/doc/Documentation/devicetree/bindings/power/reset/gpio-poweroff.txt
->
-These handles are from 'secure memory' where linux does not have
-access.  But I think we can use that
-binding with other compatible. Like compatible = "gpio-poweroff,secure".
+---
 
-Maxim.
+(no changes since v2)
 
-> thanks
-> -- PMM
+Changes in v2:
+- Use ternary operator as Philippe suggested
+
+ hw/ssi/imx_spi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+index 3c80725..de0c481 100644
+--- a/hw/ssi/imx_spi.c
++++ b/hw/ssi/imx_spi.c
+@@ -191,7 +191,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+ 
+         DPRINTF("data tx:0x%08x\n", tx);
+ 
+-        tx_burst = MIN(s->burst_length, 32);
++        tx_burst = (s->burst_length % 32) ? : 32;
+ 
+         rx = 0;
+ 
+-- 
+2.7.4
+

@@ -1,166 +1,253 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2625982lfq;
-        Fri, 18 Dec 2020 12:21:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyayLkIoxW9XGJyaeNR8XH+zKtWQxk9+/TNSJV7lXrYc45GfM+oUNPUUyXi0sD/Gz+yLW9E
-X-Received: by 2002:a05:6902:4f4:: with SMTP id w20mr8363003ybs.125.1608322910269;
-        Fri, 18 Dec 2020 12:21:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1608322910; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3168288lfq;
+        Tue, 19 Jan 2021 01:32:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwjgBFi4W3DQyoNPVTzog2FpVGJ1GTzmC4OYVaxCGhu+N14ro5sLb9R+LV5yf1pnRUEPTCi
+X-Received: by 2002:a25:e0b:: with SMTP id 11mr4894390ybo.163.1611048761871;
+        Tue, 19 Jan 2021 01:32:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611048761; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y+EwbNJR4+BG1FkWW0oall8qBRhVtzSC1Ph/DRHtJw9yKUcGilark4b2ulw4JIBduY
-         RQJlSKktg4aeKSv8ZqLRPdr3TCoELsA5/qWG3JwggNstxmm20UXiu8cGR7SPT4AQ6oqZ
-         9sSSqtsa64/CBixP+XxIohjic97vLkm2ZWGtkjHTN6+HHdNCya0+WJIw8Dd4taIi2V9T
-         89nzDQhVlHXlYpDLah53XR6ToWDSYHAHwQ/0WKa5/8PAzksY7AQv3zOeGVIsHI3yxKqE
-         97zrCRfZS75VlkEuBOrZMMCzc2H5cnpGW1/zMxH3PZtju1Ytkummmx2Tk/dzrZckwSVK
-         Vi8w==
+        b=LPLKYWMNMLhSnjH46vz87ZlybM/j/z9pxydSaRn5H+lHDJB4+QK+3SxtbeelF1omQb
+         dGxBY+/xcAKDGRSopJsHujVDw6F7Jmz1eV0yKhUDPoHghGeu7UIOo8XypdRwmh1KLZYx
+         Vn77sTKCb08XQt6H6MAE2rtdnIZrZ74n6vEUYCDa1tdptE7I94e2rsQS0tO1+pvk1S1k
+         4tOBSWN5DQZF7vuKFaH6BGqQ0J4Mht13ZzE8YoUxfDsdPoNw6E9RK9MhFsAzkCgnKXQ7
+         pCcuTYJr51lEdQFX+QOq4MJdWTGdbSoO0HCWIg6ET2jcKAOrJ/i0oXQ0WHfFzdeuH9Yl
+         xGDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=2/eoqxtBveu3XT4LGTqpMREIzeNVada/lruCwIPT5/0=;
-        b=OMer7a0tvlMw0Ah57L4R2223XIt4MOK2aI8+6o7b30/D8Bu+QNkxl6aY5Hz9AMERrX
-         4FOP97A62mD+qTT1gYz8ivPQdG4uoloqGDlVO40K8oDCrm4rCoDM4c+f0Y51ISJrpaLV
-         v7DMqA0PP0hCz5fBS+aNbfFgBIxwCSxkjwtYFqp/v41KUHWpVACVUqqkKg5m1yDOgwm7
-         QjJlrJ9IFu4OszJNpNIHi8frKwGUkl3OK/xtJI324ofeu9NaceWMksASciWG8j1dFPO5
-         y8+FxrUlp4pXsLbRYpCMG0ifgKLTwVK0bxGt8AdKOuzRXU3ypxFCMb3ReSQCenRkve8E
-         LEhA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:user-agent:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=Xulv5qrwxLW33dgl698lNJ3S8VNsLvKeCSoAliN+00Q=;
+        b=d81e75PHQcHVadPJUt9d561fF2IUtU6hQ+uzDYS2YAHvEPBrWcxBlR3anhCtKSoBj3
+         LjQLcJC080HcZIiKVzIrYnpAZ7oT4kJzWdTwCi6/V3Y3+Wa1w3NVLnuGURw/EFJwv3ap
+         jqwKNi8cr3NAeWNWPhColXKPbyVhI383QSQoxZzexkOy8zs2Ybk7hk5P5b+Tu4KCWong
+         BMHrwxhv3M3lyS/WqQl+q9k6uVbxc1Ir5syHHnme7wvMsJgsFSSbVpQiU6/Svr+dRhN1
+         JxyV29axQ0M9QHe3m65nmL/7ZrLrpQvX9TnID4BwpfIfrIe7ZtOKVYZerBGs6ddZjk+V
+         cdGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="agk3/0YQ";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WLVgi0kZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16si10341690ybl.135.2020.12.18.12.21.50
+        by mx.google.com with ESMTPS id y13si18634076ybj.57.2021.01.19.01.32.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Dec 2020 12:21:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Jan 2021 01:32:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="agk3/0YQ";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WLVgi0kZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60202 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kqMG5-0007ZF-N8
-	for alex.bennee@linaro.org; Fri, 18 Dec 2020 15:21:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49178)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l1nNR-0002NS-8G
+	for alex.bennee@linaro.org; Tue, 19 Jan 2021 04:32:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47744)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kqMFx-0007Z9-6f
- for qemu-arm@nongnu.org; Fri, 18 Dec 2020 15:21:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55439)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1l1nMX-0002MN-G9
+ for qemu-devel@nongnu.org; Tue, 19 Jan 2021 04:31:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52015)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kqMFu-0008GE-Cs
- for qemu-arm@nongnu.org; Fri, 18 Dec 2020 15:21:40 -0500
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1l1nMU-0004Lx-0f
+ for qemu-devel@nongnu.org; Tue, 19 Jan 2021 04:31:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1608322896;
+ s=mimecast20190719; t=1611048699;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2/eoqxtBveu3XT4LGTqpMREIzeNVada/lruCwIPT5/0=;
- b=agk3/0YQKeF2cjZtZ11n8fXURnj5KK5BtTg+pIEQgDejd/A3cdqiv+hP9vm7EjrD87/WL8
- /bRQDBMKTfBjq5psZeD5rgYDGtJjU3e+WqHyV2/GrjtVSXBg7hRIzfrnYyAizq8PQAmm0q
- qVVk1Uphsg9n9ZzKrVvfA95ozvfBAh0=
+ bh=Xulv5qrwxLW33dgl698lNJ3S8VNsLvKeCSoAliN+00Q=;
+ b=WLVgi0kZYwNJxvKv1SExsK80UYNXHAoj9KKXfLccsVugWdCTxtzj5/AkHpuvCgFCx3azrc
+ T7pcDuEW+XBBQATvQ/KeCsXm6gqwol+pUpfOHhhNBr4LYAddjXTkxQRBoS22LE1XamrCz5
+ 5nupxt8Rbb1Yzj4tB0+XvUpNTLoSZow=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-296-wJF8kCrPPfC2eE2DyEbBBg-1; Fri, 18 Dec 2020 15:21:34 -0500
-X-MC-Unique: wJF8kCrPPfC2eE2DyEbBBg-1
+ us-mta-40-CssNfIJaMfuScwP84PLyXA-1; Tue, 19 Jan 2021 04:31:35 -0500
+X-MC-Unique: CssNfIJaMfuScwP84PLyXA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6688B8144E2;
- Fri, 18 Dec 2020 20:21:33 +0000 (UTC)
-Received: from localhost (ovpn-115-226.rdu2.redhat.com [10.10.115.226])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EA1863AA2;
- Fri, 18 Dec 2020 20:21:32 +0000 (UTC)
-Date: Fri, 18 Dec 2020 15:21:31 -0500
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Subject: Re: [PATCH v2] bugfix: hostmem: Free host_nodes list right after
- visited
-Message-ID: <20201218202131.GV3140057@habkost.net>
-References: <20201210075226.20196-1-zhukeqian1@huawei.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3735859;
+ Tue, 19 Jan 2021 09:31:33 +0000 (UTC)
+Received: from work-vm (ovpn-115-97.ams2.redhat.com [10.36.115.97])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7FFAC27C2E;
+ Tue, 19 Jan 2021 09:31:26 +0000 (UTC)
+Date: Tue, 19 Jan 2021 09:31:23 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [RFC PATCH v2 02/20] hw/core/qdev: Add
+ vmstate_qdev_no_state_to_migrate
+Message-ID: <20210119093123.GB3008@work-vm>
+References: <20210117192446.23753-1-f4bug@amsat.org>
+ <20210117192446.23753-3-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20201210075226.20196-1-zhukeqian1@huawei.com>
+In-Reply-To: <20210117192446.23753-3-f4bug@amsat.org>
+User-Agent: Mutt/1.14.6 (2020-07-11)
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.175,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
- alex.chen@huawei.com, qemu-arm@nongnu.org, wanghaibin.wang@huawei.com,
- kuhn.chenqun@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wjC0eVos9vR1
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ostHMDTlewy8
 
-On Thu, Dec 10, 2020 at 03:52:26PM +0800, Keqian Zhu wrote:
-> In host_memory_backend_get_host_nodes, we build host_nodes
-> list and output it to v (a StringOutputVisitor) but forget
-> to free the list. This fixes the memory leak.
+* Philippe Mathieu-Daudé (f4bug@amsat.org) wrote:
+> Add vmstate_qdev_no_state_to_migrate, which is simply a
+> pointer to vmstate_no_state_to_migrate. This way all
+> qdev devices (including "hw/qdev-core.h") don't have to
+> include "migration/vmstate.h".
 > 
-> The memory leak stack:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> Unresolved issues:
 > 
->  Direct leak of 32 byte(s) in 2 object(s) allocated from:
->     #0 0xfffda30b3393 in __interceptor_calloc (/usr/lib64/libasan.so.4+0xd3393)
->     #1 0xfffda1d28b9b in g_malloc0 (/usr/lib64/libglib-2.0.so.0+0x58b9b)
->     #2 0xaaab05ca6e43 in host_memory_backend_get_host_nodes backends/hostmem.c:94
->     #3 0xaaab061ddf83 in object_property_get_uint16List qom/object.c:1478
->     #4 0xaaab05866513 in query_memdev hw/core/machine-qmp-cmds.c:312
->     #5 0xaaab061d980b in do_object_child_foreach qom/object.c:1001
->     #6 0xaaab0586779b in qmp_query_memdev hw/core/machine-qmp-cmds.c:328
->     #7 0xaaab0615ed3f in qmp_marshal_query_memdev qapi/qapi-commands-machine.c:327
->     #8 0xaaab0632d647 in do_qmp_dispatch qapi/qmp-dispatch.c:147
->     #9 0xaaab0632d647 in qmp_dispatch qapi/qmp-dispatch.c:190
->     #10 0xaaab0610f74b in monitor_qmp_dispatch monitor/qmp.c:120
->     #11 0xaaab0611074b in monitor_qmp_bh_dispatcher monitor/qmp.c:209
->     #12 0xaaab063caefb in aio_bh_poll util/async.c:117
->     #13 0xaaab063d30fb in aio_dispatch util/aio-posix.c:459
->     #14 0xaaab063cac8f in aio_ctx_dispatch util/async.c:268
->     #15 0xfffda1d22a6b in g_main_context_dispatch (/usr/lib64/libglib-2.0.so.0+0x52a6b)
->     #16 0xaaab063d0e97 in glib_pollfds_poll util/main-loop.c:218
->     #17 0xaaab063d0e97 in os_host_main_loop_wait util/main-loop.c:241
->     #18 0xaaab063d0e97 in main_loop_wait util/main-loop.c:517
->     #19 0xaaab05c8bfa7 in main_loop /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:1791
->     #20 0xaaab05713bc3 in main /root/rpmbuild/BUILD/qemu-4.1.0/vl.c:4473
->     #21 0xfffda0a83ebf in __libc_start_main (/usr/lib64/libc.so.6+0x23ebf)
->     #22 0xaaab0571ed5f  (aarch64-softmmu/qemu-system-aarch64+0x88ed5f)
->  SUMMARY: AddressSanitizer: 32 byte(s) leaked in 2 allocation(s).
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg721695.html
+> Peter:
+> > Does this definitely not put any data into the migration stream?
+> > We don't want to change what's on the wire for machines that
+> > use devices that start using this. (If it does by default, it
+> > would be easy to make the migration code special case the
+> > magic symbol to act like "no vmsd specified").
 > 
-> Fixes: 4cf1b76bf1e2 (hostmem: add properties for NUMA memory policy)
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Tested-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg727634.html
+> Dave:
+> > I'd need to test it to be sure, but I think if we added a .needed
+> > to vmstate_no_state_to_migrate with a function that always returned
+> > false, then I think the stream would stay unchanged.
 
-Queued, thanks!
+Yes I still think you need that; if you only use this for base classes
+rather than devices themselves you're probably OK; but if you use it on
+a device I think you'll end up with an empty-state entry in the
+migration stream.
 
+Dave
+
+> ---
+>  include/hw/qdev-core.h      | 2 ++
+>  include/migration/vmstate.h | 1 +
+>  hw/core/qdev.c              | 3 +++
+>  migration/vmstate.c         | 7 +++++++
+>  stubs/vmstate.c             | 7 +++++++
+>  5 files changed, 20 insertions(+)
+> 
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index bafc311bfa1..d2c7a46e6a2 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -140,6 +140,8 @@ struct DeviceClass {
+>      const char *bus_type;
+>  };
+>  
+> +extern const VMStateDescription *vmstate_qdev_no_state_to_migrate;
+> +
+>  typedef struct NamedGPIOList NamedGPIOList;
+>  
+>  struct NamedGPIOList {
+> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+> index dda65c9987d..50559598eac 100644
+> --- a/include/migration/vmstate.h
+> +++ b/include/migration/vmstate.h
+> @@ -197,6 +197,7 @@ struct VMStateDescription {
+>  #if defined(CONFIG_USER_ONLY)
+>  extern const VMStateDescription vmstate_user_mode_cpu_dummy;
+>  #endif
+> +extern const VMStateDescription vmstate_no_state_to_migrate;
+>  
+>  extern const VMStateInfo vmstate_info_bool;
+>  
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index cefc5eaa0a9..f0d0afd438d 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -44,6 +44,9 @@
+>  static bool qdev_hot_added = false;
+>  bool qdev_hot_removed = false;
+>  
+> +const VMStateDescription *vmstate_qdev_no_state_to_migrate =
+> +        &vmstate_no_state_to_migrate;
+> +
+>  const VMStateDescription *qdev_get_vmsd(DeviceState *dev)
+>  {
+>      DeviceClass *dc = DEVICE_GET_CLASS(dev);
+> diff --git a/migration/vmstate.c b/migration/vmstate.c
+> index 05f87cdddc5..2c373774dfa 100644
+> --- a/migration/vmstate.c
+> +++ b/migration/vmstate.c
+> @@ -20,6 +20,13 @@
+>  #include "qemu/error-report.h"
+>  #include "trace.h"
+>  
+> +const VMStateDescription vmstate_no_state_to_migrate = {
+> +    .name = "empty-state",
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>  static int vmstate_subsection_save(QEMUFile *f, const VMStateDescription *vmsd,
+>                                     void *opaque, JSONWriter *vmdesc);
+>  static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
+> diff --git a/stubs/vmstate.c b/stubs/vmstate.c
+> index 8da777a1fb4..f561f9f39bd 100644
+> --- a/stubs/vmstate.c
+> +++ b/stubs/vmstate.c
+> @@ -5,6 +5,13 @@
+>  const VMStateDescription vmstate_user_mode_cpu_dummy = {};
+>  #endif
+>  
+> +const VMStateDescription vmstate_no_state_to_migrate = {
+> +    .name = "empty-state",
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>  int vmstate_register_with_alias_id(VMStateIf *obj,
+>                                     uint32_t instance_id,
+>                                     const VMStateDescription *vmsd,
+> -- 
+> 2.26.2
+> 
 -- 
-Eduardo
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

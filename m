@@ -1,428 +1,273 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3301075lfq;
-        Tue, 19 Jan 2021 05:02:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwY+F2A76RNNwryRVc2wDbfhHAxYgMxutF1LXnUPF+3+EOjmzjmm2iD+lRCizb/+ZP9b1cZ
-X-Received: by 2002:a25:4015:: with SMTP id n21mr5677220yba.192.1611061346866;
-        Tue, 19 Jan 2021 05:02:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611061346; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3330614lfq;
+        Tue, 19 Jan 2021 05:38:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyrXMNr3u2dGgVBFwekdxKMWPgSZnJJykyFz62mwLCCppQyEA5oVSgcABxyoAEwIuig93bv
+X-Received: by 2002:adf:8184:: with SMTP id 4mr4638314wra.63.1611063523807;
+        Tue, 19 Jan 2021 05:38:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611063523; cv=none;
         d=google.com; s=arc-20160816;
-        b=PodMgdpiqPyK46gqlFO2Fpe1hGh/CiObscNCWVtm8m8TjIVEZt+1M1XrBJAvt1Ly96
-         qpmp5RJ/1FH0D/8gBy2Ps/iEjhr9jN+9YedXGlbo8G4KHDk1E7GA+c7Y+5rjWEi3t6/r
-         zgXdvzUbruxnErxoCTS4z/Kyt6r3J7OgqwGCFKmX07KECRhFW8WKjeCeMun09cFI303v
-         tIQgWLFBXL+N6bZTMCYsn/gkY049IU2Xf2r3D5hif/VpgKkU2VEJXyJhFvyFkNCbnk57
-         RyjY1KaeotMfm3EFtw92jcmYnTFlDX8qKlxEAh1jVRdE1g1zWjz+oDEdYUECnJJfa3mF
-         IQMQ==
+        b=AUxuSa/CJk3MMgfYBeqDvfDDFU4yeNxZE/wF5kYTbuMP/NgIO1+GpOXDKZKXFjEKxP
+         Geu9FroK2kMOBMBNMumg/gIUofG+1q8nl27xVl8kXrebgDKxB7R9Uh3IV4RN11z063J3
+         VYKqJcghEkkTfWDn+AzSyH+BQwq5IY5+zwRtYqGwubEM5P6wsCkO/V6uY4xIcdJ2HQEr
+         oayab4wrSqkKgMgbqRn9Ajy5jrU135bXZnan+aYjsAT9jT5RLOxuXpfn7Kd+KaSRMyI3
+         XIub7y2QtgiPuU6gt6l+BH+ivHWF0o5w6N6036CtC0cGYprJPj/+Fao7wNPYVOR7IIty
+         u/yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=WSyQL/wNaBrrrtKF4nXVrAQUnu57GKNMYm1rLmJTZuQ=;
-        b=Sx8K2gmHEAnViADlgMN2UfzSd42bQhVXor13i2+YG/3lcE0V6XEF5geM+ttoIOK8WW
-         sRq44eYrrtVJ3fP8Eo7oO9bq6dP8ENIidJgL8K2vYR42W5BQUbwkFOCmVX8gIAlH+o+3
-         Kqu8De8YE+aftXZyFAz1L46oNTklOU9nSzO0DWmIPyu90BomEgw1cfVPMkTtyrT4t1wL
-         /6hGh0pdwgUYJY8+fBf3I4tMZDqf6PITMD9gRaXPQ9e0Rc6IEFL3qVHQDOdlVT5cSwfb
-         TTqnmIKwlwh0/GOgNDPJ68dB8fleVo2Jft/R1kL8GDl+K87j3CxIIkcX6GAjygS3nNNs
-         BELw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=OQabYB3ngM2g8hWsHm3KYKBHvV6X5vE1wE+iXBfB5s0=;
+        b=AjdBliioWN7RqbW8Z8T3w4q6GBvqICwD9t2xt3oHYLcrg78wTNY8z9nIxzx1iQe3ql
+         QzpmH0JE4WCmlgjBXTGZAk/VwrBf9BVNw1n3mqYerE7uMbWbQHaXMf9+tZ9lV6Xp9xxN
+         9Qj8wgCbWcw1UgUXZNFKAwZVvn1EjP/Y/NjtxmRSH2/Gpdw7zMlMyIsSRPtkJkREhOyM
+         7ootK5kxt8u+BTyitwJ7wgtGY1euf8cW+/+4nuhWWpAKKQPjKBZhDEayYlzcSc8BMHqW
+         92CN/ejhKM8dWK9cb7vbCpeAvn+Qid8G8rRFT8F5JzxoUh5xg3RPw5QVpsldks/OGw64
+         P2WQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hkq9LTIM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9si4105158ybp.276.2021.01.19.05.02.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jan 2021 05:02:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
+Return-Path: <cfontana@suse.de>
+Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
+        by mx.google.com with ESMTPS id e1si17494063wrt.142.2021.01.19.05.38.43
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Jan 2021 05:38:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hkq9LTIM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43796 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1qeQ-0006Gn-7y
-	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:02:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44050)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1l1qdZ-0006EX-0m; Tue, 19 Jan 2021 08:01:33 -0500
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:32802)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1l1qdT-0005lm-9e; Tue, 19 Jan 2021 08:01:32 -0500
-Received: by mail-lj1-x22c.google.com with SMTP id u21so21840279lja.0;
- Tue, 19 Jan 2021 05:01:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=WSyQL/wNaBrrrtKF4nXVrAQUnu57GKNMYm1rLmJTZuQ=;
- b=hkq9LTIMyztqmtCiOHDTSrRHgi0MPJavcstJEgDoCxh5aGimzJi5jwNFOl1eyFT8cY
- Mn9CzWeYaAcDLpcGN1zuXO6Zeh+QMHIKlfYBmN/2PFN81cd3LU3fo6YjYqnESwgp49FV
- c/bN3W2+6cAA+VQtOvgL/SvJi1Un/uFV666JuaXnjEuBpILSlNc6+erexjWsQHFzg73d
- EvB12kyxzJ+DvcUYkZVVRaEdcsJE3t7h9LbJu3R0PpSxilSy7XFYKYHICfELVRJ9sDnn
- ici7U0NAVMnqoBqdZao71ZdRJOZMY6Pa8pW24mnJwXEtcXnDuKt4g+Ic5cpbOa7enRGL
- NYuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=WSyQL/wNaBrrrtKF4nXVrAQUnu57GKNMYm1rLmJTZuQ=;
- b=HKQ6G9TpqUZlouek/MMnd3iLeMYMFYNunFUgwGkFF9sqJ/Onc/tu+KWr2/Bf/iWaAf
- 8+4MvGdex9XabmFZvlRe1pUuLojqXKjkLNf3S1p73+thOT5Doo/La4DANZfTmmYeCoAR
- kNDj86q5c6ovkCjXBpu97v7XpJnDrhqkLe6zMqxTzEnWrLJQxWuHsWGGrmIb6cW5Q2Ft
- xeputjOQiOkfiTSLSadkMTyhFmcHmmdvmrz8Elol9Ahf4GLqNQ5E7WIN9f0E2Uxiqc3N
- jIkohc3mx2VXEuN7AEkhrdQlf1U/510lpgkVbkK1e5Esnph69xC9HlkQ2sDL6FLVkXIn
- Q4iQ==
-X-Gm-Message-State: AOAM532f3k3TIYab8ic4RI6iN7RFTjqtKdnxJBOJQSzNC3dRYvwL6UU1
- iPoOO9CO/veXM0Z0ufJIK2Y=
-X-Received: by 2002:a05:651c:217:: with SMTP id
- y23mr1793725ljn.247.1611061277508; 
- Tue, 19 Jan 2021 05:01:17 -0800 (PST)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- u16sm2282299lfr.288.2021.01.19.05.01.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Jan 2021 05:01:16 -0800 (PST)
-Date: Tue, 19 Jan 2021 14:01:14 +0100
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH 0/9] hw/block: m25p80: Fix the mess of dummy bytes needed
- for fast read commands
-Message-ID: <20210119130113.GA28306@fralle-msi>
-References: <20210114150902.11515-1-bmeng.cn@gmail.com>
- <20210114181300.GA29923@fralle-msi>
- <CAEUhbmXiYNFVY0EkrKqNGKV3C0QV0+WvkvEkfPUa-pSg2zGvuA@mail.gmail.com>
- <20210115122627.GB29923@fralle-msi>
- <CAEUhbmVYgP063iqY0c10y9zKBmx00Z6vr3BO3RjoRo-CXQpYDw@mail.gmail.com>
- <20210118100557.GA11373@fralle-msi>
- <CAEUhbmWT50o8OV_QAimhs5itWq3pFd6CTKup6PFpvSs2KYpf2w@mail.gmail.com>
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+	by mx2.suse.de (Postfix) with ESMTP id 24F35AB7F;
+	Tue, 19 Jan 2021 13:38:43 +0000 (UTC)
+Subject: Re: [PULL 21/30] target/arm: use official org.gnu.gdb.aarch64.sve
+ layout for registers
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ peter.maydell@linaro.org
+Cc: Luis Machado <luis.machado@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
+References: <20210115130828.23968-1-alex.bennee@linaro.org>
+ <20210115130828.23968-22-alex.bennee@linaro.org>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de>
+Date: Tue, 19 Jan 2021 14:38:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <20210115130828.23968-22-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAEUhbmWT50o8OV_QAimhs5itWq3pFd6CTKup6PFpvSs2KYpf2w@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x22c.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Qemu-block <qemu-block@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
- Bin Meng <bin.meng@windriver.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Joe Komlodi <komlodi@xilinx.com>, Max Reitz <mreitz@redhat.com>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cndgWlgPt9g0
+X-TUID: nIrUqoVeB1aE
 
-Hi Bin,
+Hi Alex,
 
-On [2021 Jan 18] Mon 20:32:19, Bin Meng wrote:
-> Hi Francisco,
-> 
-> On Mon, Jan 18, 2021 at 6:06 PM Francisco Iglesias
-> <frasse.iglesias@gmail.com> wrote:
-> >
-> > Hi Bin,
-> >
-> > On [2021 Jan 15] Fri 22:38:18, Bin Meng wrote:
-> > > Hi Francisco,
-> > >
-> > > On Fri, Jan 15, 2021 at 8:26 PM Francisco Iglesias
-> > > <frasse.iglesias@gmail.com> wrote:
-> > > >
-> > > > Hi Bin,
-> > > >
-> > > > On [2021 Jan 15] Fri 10:07:52, Bin Meng wrote:
-> > > > > Hi Francisco,
-> > > > >
-> > > > > On Fri, Jan 15, 2021 at 2:13 AM Francisco Iglesias
-> > > > > <frasse.iglesias@gmail.com> wrote:
-> > > > > >
-> > > > > > Hi Bin,
-> > > > > >
-> > > > > > On [2021 Jan 14] Thu 23:08:53, Bin Meng wrote:
-> > > > > > > From: Bin Meng <bin.meng@windriver.com>
-> > > > > > >
-> > > > > > > The m25p80 model uses s->needed_bytes to indicate how many follow-up
-> > > > > > > bytes are expected to be received after it receives a command. For
-> > > > > > > example, depending on the address mode, either 3-byte address or
-> > > > > > > 4-byte address is needed.
-> > > > > > >
-> > > > > > > For fast read family commands, some dummy cycles are required after
-> > > > > > > sending the address bytes, and the dummy cycles need to be counted
-> > > > > > > in s->needed_bytes. This is where the mess began.
-> > > > > > >
-> > > > > > > As the variable name (needed_bytes) indicates, the unit is in byte.
-> > > > > > > It is not in bit, or cycle. However for some reason the model has
-> > > > > > > been using the number of dummy cycles for s->needed_bytes. The right
-> > > > > > > approach is to convert the number of dummy cycles to bytes based on
-> > > > > > > the SPI protocol, for example, 6 dummy cycles for the Fast Read Quad
-> > > > > > > I/O (EBh) should be converted to 3 bytes per the formula (6 * 4 / 8).
-> > > > > >
-> > > > > > While not being the original implementor I must assume that above solution was
-> > > > > > considered but not chosen by the developers due to it is inaccuracy (it
-> > > > > > wouldn't be possible to model exacly 6 dummy cycles, only a multiple of 8,
-> > > > > > meaning that if the controller is wrongly programmed to generate 7 the error
-> > > > > > wouldn't be caught and the controller will still be considered "correct"). Now
-> > > > > > that we have this detail in the implementation I'm in favor of keeping it, this
-> > > > > > also because the detail is already in use for catching exactly above error.
-> > > > > >
-> > > > >
-> > > > > I found no clue from the commit message that my proposed solution here
-> > > > > was ever considered, otherwise all SPI controller models supporting
-> > > > > software generation should have been found out seriously broken long
-> > > > > time ago!
-> > > >
-> > > >
-> > > > The controllers you are referring to might lack support for commands requiring
-> > > > dummy clock cycles but I really hope they work with the other commands? If so I
-> > >
-> > > I am not sure why you view dummy clock cycles as something special
-> > > that needs some special support from the SPI controller. For the case
-> > > 1 controller, it's nothing special from the controller perspective,
-> > > just like sending out a command, or address bytes, or data. The
-> > > controller just shifts data bit by bit from its tx fifo and that's it.
-> > > In the Xilinx GQSPI controller case, the dummy cycles can either be
-> > > sent via a regular data (the case 1 controller) in the tx fifo, or
-> > > automatically generated (case 2 controller) by the hardware.
-> >
-> > Ok, I'll try to explain my view point a little differently. For that we also
-> > need to keep in mind that QEMU models HW, and any binary that runs on a HW
-> > board supported in QEMU should ideally run on that board inside QEMU aswell
-> > (this can be a bare metal application equaly well as a modified u-boot/Linux
-> > using SPI commands with a non multiple of 8 number of dummy clock cycles).
-> >
-> > Once functionality has been introduced into QEMU it is not easy to know which
-> > intentional or untentional features provided by the functionality are being
-> > used by users. One of the (perhaps not well known) features I'm aware of that
-> > is in use and is provided by the accurate dummy clock cycle modeling inside
-> > m25p80 is the be ability to test drivers accurately regarding the dummy clock
-> > cycles (even when using commands with a non-multiple of 8 number of dummy clock
-> > cycles), but there might be others aswell. So by removing this functionality
-> > above use case will brake, this since those test will not be reliable.
-> > Furthermore, since users tend to be creative it is not possible to know if
-> > there are other use cases that will be affected. This means that in case [1]
-> > needs to be followed the safe path is to add functionality instead of removing.
-> > Luckily it also easier in this case, see below.
-> 
-> I understand there might be users other than U-Boot/Linux that use an
-> odd number of dummy bits (not multiple of 8). If your concern was
-> about model behavior changes, sure I can update
-> qemu/docs/system/deprecated.rst to mention that some flashes in the
-> m25p80 model now implement dummy cycles as bytes.
+after updating to latest master today, I am getting the following error with
 
-Yes, something like that. My concern is that since this functionality has been
-in tree for while, users have found known or unknown features that got
-introduced by it. By removing the functionality (and the known/uknown features)
-we are riscing to brake our user's use cases (currently I'm aware of one
-feature/use case but it is not unlikely that there are more). [1] states that
-"In general features are intended to be supported indefinitely once introduced
-into QEMU", to me that makes very much sense because the opposite would mean
-that we were not reliable. So in case [1] needs to be honored it looks to be
-safer to add functionality instead of removing (and riscing the removal of use
-cases/features). Luckily I still believe in this case that it will be easier to
-go forward (even if I also agree on what you are saying below about what I
-proposed).
+make check-tcg
 
+qemu-system-aarch64: -gdb unix:path=/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server: info: QEMU waiting for connection on: disconnected:unix:/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server
+warning: while parsing target description (at line 47): Vector "svevhf" references undefined type "ieee_half"
+warning: Could not load XML target description; ignoring
+qemu-system-aarch64: QEMU: Terminated via GDBstub
 
-> 
-> > >
-> > > > don't think it is fair to call them 'seriously broken' (and else we should
-> > > > probably let the maintainers know about it). Most likely the lack of support
-> > >
-> > > I called it "seriously broken" because current implementation only
-> > > considered one type of SPI controllers while completely ignoring the
-> > > other type.
-> >
-> > If we change view and see this from the perspective of m25p80, it models the
-> > commands a certain way and provides an API that the SPI controllers need to
-> > implement for interacting with it. It is true that there are SPI controllers
-> > referred to above that do not support the portion of that API that corresponds
-> > to commands with dummy clock cycles, but I don't think it is true that this is
-> > broken since there is also one SPI controller that has a working implementation
-> > of m25p80's full API also when transfering through a tx fifo (use case 1). But
-> > as mentioned above, by doing a minor extension and improvement to m25p80's API
-> > and allow for toggling the accuracy from dummy clock cycles to dummy bytes [1]
-> > will still be honored as in the same time making it possible to have full
-> > support for the API in the SPI controllers that currently do not (please reread
-> > the proposal in my previous reply that attempts to do this). I myself see this
-> > as win/win situation, also because no controller should need modifications.
-> >
-> 
-> I am afraid your proposal does not work. Your proposed new device
-> property 'model_dummy_bytes' to select to convert the accurate dummy
-> clock cycle count to dummy bytes inside m25p80, is hard to justify as
-> a property to the flash itself, as the behavior is tightly coupled to
-> how the SPI controller works.
+Seems to indicate it is "ieee_half" -related?
 
-I agree on above. I decided though that instead of posting sample code in here
-I'll post an RFC with hopefully an improved proposal. I'll cc you. About below,
-Xilinx ZynqMP GQSPI should not need any modication in a first step.
+Thanks,
 
-> 
-> Please take a look at the Xilinx GQSPI controller, which supports both
-> use cases, that the dummy cycles can be transferred via tx fifo, or
-> generated by the controller automatically. Please read the example
-> given in:
-> 
->     table 24‐22, an example of Generic FIFO Contents for Quad I/O Read
-> Command (EBh)
-> 
-> in https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
-> 
-> If you choose to set the m25p80 device property 'model_dummy_bytes' to
-> true when working with the Xilinx GQSPI controller, you are bound to
-> only allow guest software to use tx fifo to transfer the dummy cycles,
-> and this is wrong.
-> 
-> >
-> > >
-> > > > for the commands is because no request has been made for them. Also there is
-> > > > one controller that has support.
-> > >
-> > > Definitely it's not "no request". Nearly all SPI flashes support the
-> > > Fast Read (0Bh) command today, and 0Bh requires a dummy cycle. This is
-> > > "seriously broken" for those case 1 type controllers because they
-> > > cannot read anything from the m25p80 model at all. Unless the guest
-> > > software being tested only uses Read (03h) command which is not
-> > > affected. But I can't find a software that uses Read instead of Fast
-> > > Read.
-> > >
-> > > > > The issue you pointed out that we require the total number of dummy
-> > > > > bits should be multiple of 8 is true, that's why I added the
-> > > > > unimplemented log message in this series (patch 2/3/4) to warn users
-> > > > > if this expectation is not met. However this will not cause any issue
-> > > > > when running U-Boot or Linux, because both spi-nor drivers expect the
-> > > > > same assumption as we do here.
-> > > > >
-> > > > > See U-Boot spi_nor_read_data() and Linux spi_nor_spimem_read_data(),
-> > > > > there is a logic to calculate the dummy bytes needed for fast read
-> > > > > command:
-> > > > >
-> > > > >     /* convert the dummy cycles to the number of bytes */
-> > > > >     op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
-> > > > >
-> > > > > Note the default dummy cycles configuration for all flashes I have
-> > > > > looked into as of today, meets the multiple of 8 assumption. On some
-> > > > > flashes the dummy cycle number is configurable, and if it's been
-> > > > > configured to be an odd value, it would not work on U-Boot/Linux in
-> > > > > the first place.
-> > > > >
-> > > > > > >
-> > > > > > > Things get complicated when interacting with different SPI or QSPI
-> > > > > > > flash controllers. There are major two cases:
-> > > > > > >
-> > > > > > > - Dummy bytes prepared by drivers, and wrote to the controller fifo.
-> > > > > > >   For such case, driver will calculate the correct number of dummy
-> > > > > > >   bytes and write them into the tx fifo. Fixing the m25p80 model will
-> > > > > > >   fix flashes working with such controllers.
-> > > > > >
-> > > > > > Above can be fixed while still keeping the detailed dummy cycle implementation
-> > > > > > inside m25p80. Perhaps one of the following could be looked into: configurating
-> > > > > > the amount, letting the spi ctrl fetch the amount from m25p80 or by inheriting
-> > > > > > some functionality handling this in the SPI controller. Or a mixture of above.
-> > > > >
-> > > > > Please send patches to explain this in detail how this is going to
-> > > > > work. I am open to all possible solutions.
-> > > >
-> > > > In that case I suggest that you instead try with a device property
-> > > > 'model_dummy_bytes' used to select to convert the accurate dummy clock cycle
-> > > > count to dummy bytes inside m25p80. Below is an example on how to modify the
-> > >
-> > > No this is wrong in my view. This is not like a DMA vs. PIO handling.
-> > >
-> > > > decode_fast_read_cmd function (the other commands requiring dummy clock cycles
-> > > > can follow a similar pattern). This way the fifo mode will be able to work the
-> > > > way you desire while also keeping the current functionality intact. Suddenly
-> > > > removing functionality (features) will take users by surprise.
-> > >
-> > > I don't think we are removing any features. This is a fix to make the
-> > > model to be used by any SPI controllers.
-> > >
-> > > As I pointed out, both U-Boot and Linux have the multiple of 8
-> > > assumption for the dummy bit, which is the default configuration for
-> > > all flashes I have looked into so far. Can you please comment what use
-> > > case you want to support? I requested a U-Boot/Linux kernel testing in
-> > > the previous SST thread [1] against Xilinx GQSPI but there was no
-> > > response.
-> >
-> > In [2] instructions on how to boot u-boot/Linux is found. For building the
-> > various software components I followed the official doc in [3].
-> 
-> I see the following QEMU commands are used to test booting U-Boot/Linux:
-> 
-> $ qemu-system-aarch64 -M xlnx-zcu102,secure=on,virtualization=on -m 4G
-> -serial stdio -display none -device loader,file=u-boot.elf -kernel
-> bl31.elf -device loader,addr=0x40000000,file=Image -device
-> loader,addr=0x2000000,file=system.dtb
-> 
-> I am not sure where the system.dtb gets built from?
+Claudio
 
-It is the instructions in [2] to look into. 'system.dtb' is the kernel dtb for
-zcu102 ([2] has been fixed). I created [2] purely for you, so respectfully I
-will ask you to try a little first before asking for further guidance.
-
-Best regards,
-Francisco Iglesias
-
-[1] qemu/docs/system/deprecated.rst
-[2] https://github.com/franciscoIglesias/qemu-cmdline/blob/master/xlnx-zcu102-atf-u-boot-linux.md
-
-
+On 1/15/21 2:08 PM, Alex Bennée wrote:
+> While GDB can work with any XML description given to it there is
+> special handling for SVE registers on the GDB side which makes the
+> users life a little better. The changes aren't that major and all the
+> registers save the $vg reported the same. All that changes is:
 > 
-> In [3], it mentions the Xilinx QEMU is used. And a different QEMU
-> command is used as the example to launch U-Boot which is different
-> from your command above.
+>   - report org.gnu.gdb.aarch64.sve
+>   - use gdb nomenclature for names and types
+>   - minor re-ordering of the types to match reference
+>   - re-enable ieee_half (as we know gdb supports it now)
+>   - $vg is now a 64 bit int
+>   - check $vN and $zN aliasing in test
 > 
-> See https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841606/QEMU+-+Zynq+UltraScale+MPSoC#QEMU-ZynqUltraScale+MPSoC-RunningaZynqUltraScale+U-bootImageOnXilinx'sARMQEMU
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Luis Machado <luis.machado@linaro.org>
+> Message-Id: <20210108224256.2321-11-alex.bennee@linaro.org>
 > 
-> $ ./aarch64-softmmu/qemu-system-aarch64 -M arm-generic-fdt -serial
-> mon:stdio -serial /dev/null -display none \
->   -device loader,addr=0xfd1a0104,data=0x8000000e,data-len=4 \ # Un-reset the A53
->   -device loader,file=./pre-built/linux/images/bl31.elf,cpu-num=0 \ #
-> ARM Trusted Firmware
->   -device loader,file=./pre-built/linux/images/u-boot.elf\ # The
-> u-boot exectuable
->   -hw-dtb ./pre-built/linux/images/zynqmp-qemu-arm.dtb # HW Device
-> Tree that QEMU uses to generate the model
+> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+> index 866595b4f1..a8fff2a3d0 100644
+> --- a/target/arm/gdbstub.c
+> +++ b/target/arm/gdbstub.c
+> @@ -195,22 +195,17 @@ static const struct TypeSize vec_lanes[] = {
+>      { "uint128", 128, 'q', 'u' },
+>      { "int128", 128, 'q', 's' },
+>      /* 64 bit */
+> +    { "ieee_double", 64, 'd', 'f' },
+>      { "uint64", 64, 'd', 'u' },
+>      { "int64", 64, 'd', 's' },
+> -    { "ieee_double", 64, 'd', 'f' },
+>      /* 32 bit */
+> +    { "ieee_single", 32, 's', 'f' },
+>      { "uint32", 32, 's', 'u' },
+>      { "int32", 32, 's', 's' },
+> -    { "ieee_single", 32, 's', 'f' },
+>      /* 16 bit */
+> +    { "ieee_half", 16, 'h', 'f' },
+>      { "uint16", 16, 'h', 'u' },
+>      { "int16", 16, 'h', 's' },
+> -    /*
+> -     * TODO: currently there is no reliable way of telling
+> -     * if the remote gdb actually understands ieee_half so
+> -     * we don't expose it in the target description for now.
+> -     * { "ieee_half", 16, 'h', 'f' },
+> -     */
+>      /* bytes */
+>      { "uint8", 8, 'b', 'u' },
+>      { "int8", 8, 'b', 's' },
+> @@ -223,17 +218,16 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+>      GString *s = g_string_new(NULL);
+>      DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
+>      g_autoptr(GString) ts = g_string_new("");
+> -    int i, bits, reg_width = (cpu->sve_max_vq * 128);
+> +    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
+>      info->num = 0;
+>      g_string_printf(s, "<?xml version=\"1.0\"?>");
+>      g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+> -    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.aarch64.sve\">");
+> +    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
+>  
+>      /* First define types and totals in a whole VL */
+>      for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+>          int count = reg_width / vec_lanes[i].size;
+> -        g_string_printf(ts, "vq%d%c%c", count,
+> -                        vec_lanes[i].sz, vec_lanes[i].suffix);
+> +        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
+>          g_string_append_printf(s,
+>                                 "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+>                                 ts->str, vec_lanes[i].gdb_type, count);
+> @@ -243,39 +237,37 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+>       * signed and potentially float versions of each size from 128 to
+>       * 8 bits.
+>       */
+> -    for (bits = 128; bits >= 8; bits /= 2) {
+> -        int count = reg_width / bits;
+> -        g_string_append_printf(s, "<union id=\"vq%dn\">", count);
+> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+> -            if (vec_lanes[i].size == bits) {
+> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%d%c%c\"/>",
+> -                                       vec_lanes[i].suffix,
+> -                                       count,
+> -                                       vec_lanes[i].sz, vec_lanes[i].suffix);
+> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+> +        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
+> +        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
+> +            if (vec_lanes[j].size == bits) {
+> +                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
+> +                                       vec_lanes[j].suffix,
+> +                                       vec_lanes[j].sz, vec_lanes[j].suffix);
+>              }
+>          }
+>          g_string_append(s, "</union>");
+>      }
+>      /* And now the final union of unions */
+> -    g_string_append(s, "<union id=\"vq\">");
+> -    for (bits = 128; bits >= 8; bits /= 2) {
+> -        int count = reg_width / bits;
+> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
+> -            if (vec_lanes[i].size == bits) {
+> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%dn\"/>",
+> -                                       vec_lanes[i].sz, count);
+> -                break;
+> -            }
+> -        }
+> +    g_string_append(s, "<union id=\"svev\">");
+> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
+> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
+> +        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
+> +                               suf[i], suf[i]);
+>      }
+>      g_string_append(s, "</union>");
+>  
+> +    /* Finally the sve prefix type */
+> +    g_string_append_printf(s,
+> +                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
+> +                           reg_width / 8);
+> +
+>      /* Then define each register in parts for each vq */
+>      for (i = 0; i < 32; i++) {
+>          g_string_append_printf(s,
+>                                 "<reg name=\"z%d\" bitsize=\"%d\""
+> -                               " regnum=\"%d\" group=\"vector\""
+> -                               " type=\"vq\"/>",
+> +                               " regnum=\"%d\" type=\"svev\"/>",
+>                                 i, reg_width, base_reg++);
+>          info->num++;
+>      }
+> @@ -287,31 +279,22 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+>                             " regnum=\"%d\" group=\"float\""
+>                             " type=\"int\"/>", base_reg++);
+>      info->num += 2;
+> -    /*
+> -     * Predicate registers aren't so big they are worth splitting up
+> -     * but we do need to define a type to hold the array of quad
+> -     * references.
+> -     */
+> -    g_string_append_printf(s,
+> -                           "<vector id=\"vqp\" type=\"uint16\" count=\"%d\"/>",
+> -                           cpu->sve_max_vq);
+> +
+>      for (i = 0; i < 16; i++) {
+>          g_string_append_printf(s,
+>                                 "<reg name=\"p%d\" bitsize=\"%d\""
+> -                               " regnum=\"%d\" group=\"vector\""
+> -                               " type=\"vqp\"/>",
+> +                               " regnum=\"%d\" type=\"svep\"/>",
+>                                 i, cpu->sve_max_vq * 16, base_reg++);
+>          info->num++;
+>      }
+>      g_string_append_printf(s,
+>                             "<reg name=\"ffr\" bitsize=\"%d\""
+>                             " regnum=\"%d\" group=\"vector\""
+> -                           " type=\"vqp\"/>",
+> +                           " type=\"svep\"/>",
+>                             cpu->sve_max_vq * 16, base_reg++);
+>      g_string_append_printf(s,
+>                             "<reg name=\"vg\" bitsize=\"64\""
+> -                           " regnum=\"%d\" group=\"vector\""
+> -                           " type=\"uint32\"/>",
+> +                           " regnum=\"%d\" type=\"int\"/>",
+>                             base_reg++);
+>      info->num += 2;
+>      g_string_append_printf(s, "</feature>");
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 5ab3f5ace3..8a492465d6 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -276,7 +276,7 @@ static int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
+>           * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
+>           */
+>          int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
+> -        return gdb_get_reg32(buf, vq * 2);
+> +        return gdb_get_reg64(buf, vq * 2);
+>      }
+>      default:
+>          /* gdbstub asked for something out our range */
+> diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+> index 972cf73c31..b9ef169c1a 100644
+> --- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+> +++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+> @@ -40,6 +40,17 @@ class TestBreakpoint(gdb.Breakpoint):
+>          except gdb.error:
+>              report(False, "checking zregs (out of range)")
+>  
+> +        # Check the aliased V registers are set and GDB has correctly
+> +        # created them for us having recognised and handled SVE.
+> +        try:
+> +            for i in range(0, 16):
+> +                val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
+> +                val_v = gdb.parse_and_eval("$v0.b.u[%d]" % i)
+> +                report(int(val_z) == int(val_v),
+> +                       "v0.b.u[%d] == z0.b.u[%d]" % (i, i))
+> +        except gdb.error:
+> +            report(False, "checking vregs (out of range)")
+> +
+>  
+>  def run_test():
+>      "Run through the tests one by one"
 > 
-> It is using a machine called "arm-generic-fdt", but in the mainline
-> QEMU there is no such machine called "arm-generic-fdt".
-> 
-> >
-> > Best regards,
-> > Francisco
-> >
-> > [1] qemu/docs/system/deprecated.rst
-> > [2] https://github.com/franciscoIglesias/qemu-cmdline/blob/master/xlnx-zcu102-atf-u-boot-linux.md
-> > [3] https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/460653138/Xilinx+Open+Source+Linux
-> >
-> 
-> Regards,
-> Bin

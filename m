@@ -1,80 +1,81 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2903881lfq;
-        Mon, 18 Jan 2021 16:32:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy3LyeJNwYZdxozmaCNJao7dQuDior9cFerJ9mOcFPpBNeIlPb2MlDj0go1lkas2DcNSxla
-X-Received: by 2002:a25:ba08:: with SMTP id t8mr2366025ybg.316.1611016362782;
-        Mon, 18 Jan 2021 16:32:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611016362; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2903979lfq;
+        Mon, 18 Jan 2021 16:32:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJynhxNIURUognreabbEBmSDZi5gFVZr4BAb1FANLAPgpIAI/Y6AKt7XjCmbjtC6//JWiupx
+X-Received: by 2002:a25:ab70:: with SMTP id u103mr2159413ybi.364.1611016374280;
+        Mon, 18 Jan 2021 16:32:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611016374; cv=none;
         d=google.com; s=arc-20160816;
-        b=kD3uyDMJcbZJ06AWd2yC4MN9Hy3uXI/WCfA+dw0bf2Z7AER0NmdOv9s+KVgJCNJgJT
-         bpE7d8RPsdE2FZtxjylih0OGb+1mY5fSsDPHNeh1Mj4pZ/n1a3qQltaw2oWHAvmCp7GT
-         0oH4xImadg/QqoUEYrv30aGyQwTNfSlE6fFwA/TtVDJ04sY1amNV1Ba3JZSDQczOd5/y
-         90TFd2cURSS32iLxvv/1G04Y6Ig8YgyxETPpPDDhwq2a61nrsrA0E6paI2XD8GILbX2y
-         dYGXswnvQJOHkdjWmnqS/9vSiBY0f+28mnWWoUKW+23ooyhDs0bv9RXJxX1TFsWrM3sq
-         O0VA==
+        b=zvnKVdAvPXy2Wvcrq7Lp7wVKCaeA/4oF/Ys2KjV0akm+FxPUJMnyFxAx7jwLp7/19p
+         ssxjUZbOgy36f9DFQoHuTBXS8bcI2EXFBSvA/ImPO/qxEKPLcJpJUeeBqNtH8LB5vGd7
+         ICzPkYPmH8NBfy6uySgPkv9TW4tK7H6WneoqqdAox0egtY6x6yHUw4anyq/Lsom0+Kz/
+         m8SjV5+HpTxoo6HStelYjV5KHUnsC7p34fjhH9ZBkRBkNom6tZfzYja8CjhZAw7+QGyG
+         SCJH79Y0vqChTj9NS3oXYPL7wKQ/JCEqjIAq0SX3/Kxa6aBembl44tj2Yy4EbUVIPAow
+         C6KA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=OTBJnF+8Kn+g2kRYLwrWqYWvist3tehW45ieCfy8RiY=;
-        b=gB6FQ5ADMG0rULlmZEw7hIE+J1HFeu8RycrrvbK7V52WRTMtSglyn7CacYxOrAl35E
-         3Easm1v3atV/h7HGEO2eL0v5sSELEs3+W7uSRo8c+iTE5tlxd6Ld0YrDryQa2uEkoi0d
-         5qSbzW+o940kcQmP1KLTazwBYcXCsDEndfJJq9tIxpnxHz6V/XhTejbZhKHxVUIHCByp
-         4gTUUR60dVvB26qSdqSpnrQeidv4gQpFPHuL2454S8zzFvBWl3jCBsSLuc0oSu7OOJMK
-         airJFqdoz+vgLA1bMg7qRwt58ofkWQpB6OeC6GJM08GieDScFBucHWW9m2B9Z3QIp+vd
-         Y+8A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=FzFL1Q3M2WbeZXOdJEN9+9YrjGQTS0aKgSP4P0BK8Ho=;
+        b=G4aQl8ovBkgACMwkx6QPdC0lI4xQqqYcgKESKbIq+HEeGMIhKCrOA4ymnnvYOCE1N7
+         ETBENB+m7jCnBL8DzpYLcVwbLktDvgdAL1PuriZEQW1knkTKOe2u8vjmLbVD24l+C2Qq
+         apaGCGYDdsn/f5/aeZL/FqcmWttFlkU3sg+OpuTMT+qvIsLP/H/UWVk8XJeqvU5wVqYj
+         /3BvdzLDgDkxQDMSykMW3lAPd6dQq/hSmL87FNTKtr0+TKyVbBzNT1Q2kqVSlff/EI/1
+         ywCmTc901XiOU1EAfDBQTZ0Uou/05nxT0/ADSi8J5XZh+jIDweo+iq6vDQL2xIMU/5W7
+         HTRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@mutex.one header.s=default header.b=DU2o1pnr;
+       dkim=fail header.i=@mutex.one header.s=default header.b="F48KP/Gp";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o188si14846234ybg.425.2021.01.18.16.32.42
+        by mx.google.com with ESMTPS id x74si19319400ybg.162.2021.01.18.16.32.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Jan 2021 16:32:42 -0800 (PST)
+        Mon, 18 Jan 2021 16:32:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@mutex.one header.s=default header.b=DU2o1pnr;
+       dkim=fail header.i=@mutex.one header.s=default header.b="F48KP/Gp";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48650 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48892 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1ewr-0002zj-Hs
-	for alex.bennee@linaro.org; Mon, 18 Jan 2021 19:32:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53102)
+	id 1l1ex3-00037U-Kj
+	for alex.bennee@linaro.org; Mon, 18 Jan 2021 19:32:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53118)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marian@mutex.one>)
- id 1l1ewe-0002yP-H3; Mon, 18 Jan 2021 19:32:28 -0500
-Received: from mail.mutex.one ([62.77.152.124]:49442)
+ id 1l1ewg-00030a-3j; Mon, 18 Jan 2021 19:32:30 -0500
+Received: from mail.mutex.one ([62.77.152.124]:49554)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marian@mutex.one>)
- id 1l1ewc-0004A4-4N; Mon, 18 Jan 2021 19:32:28 -0500
+ id 1l1ewd-0004Bn-OI; Mon, 18 Jan 2021 19:32:29 -0500
 Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.mutex.one (Postfix) with ESMTP id 07241BF4250E;
- Tue, 19 Jan 2021 02:32:21 +0200 (EET)
+ by mail.mutex.one (Postfix) with ESMTP id ED0E0BF4265B;
+ Tue, 19 Jan 2021 02:32:25 +0200 (EET)
 X-Virus-Scanned: Debian amavisd-new at mail.mutex.one
 Received: from mail.mutex.one ([127.0.0.1])
  by localhost (mail.mutex.one [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wRlDmgeo-Wb7; Tue, 19 Jan 2021 02:32:19 +0200 (EET)
+ with ESMTP id V8qHXvWHbvXq; Tue, 19 Jan 2021 02:32:25 +0200 (EET)
 Received: [127.0.0.1] (localhost [127.0.0.1])nknown [109.103.89.101])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.mutex.one (Postfix) with ESMTPSA id B7438BF4227A;
- Tue, 19 Jan 2021 02:32:19 +0200 (EET)
+ by mail.mutex.one (Postfix) with ESMTPSA id D1476BF423B3;
+ Tue, 19 Jan 2021 02:32:24 +0200 (EET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mutex.one; s=default;
- t=1611016339; bh=WsbrKiWSijFZOi0txX9TwEsaVHqaQQOrmRtQjMMAhhE=;
- h=From:To:Cc:Subject:Date:From;
- b=DU2o1pnrvX1qL0jL9Z8KFZPESPLQUvn2RioiZuVVxd/q16gQNemnJWpEOzxv6c/Lh
- mAoPmetc8YSyWGkLOAy46I3TJBHFiTZc7BiR3Pa1NbUMp/C/YSCtxiyoFfbI9NxP82
- 1hBAQESbdz/h2227C23d0slXdaxs7ewugCo21RiQ=
+ t=1611016345; bh=y7JLysCHpkns1hYxYdlzzv9H47TyaL9EnTVW5Ece6RA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=F48KP/GpE70+jhaT5F8fWBe7kBEe48c268fgVRdwqFnjR2AxwBJhpWegQHSyDKlxf
+ bsSpqTbsYUpkbhl07q+I/11QCKMYUWJrv3vEZStehr3ALLp0AK2T3k4n2KlVVXFQpm
+ DLjxRiLi0EWrRFAIxaOWlNdkAqAbe2/deZCukBkk=
 From: Marian Postevca <posteuca@mutex.one>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 0/5] acpi: Permit OEM ID and OEM table ID fields to be
- changed
-Date: Tue, 19 Jan 2021 02:32:11 +0200
-Message-Id: <20210119003216.17637-1-posteuca@mutex.one>
-Content-Type: text/plain; charset="utf-8"
+Subject: [PATCH v4 5/5] tests/acpi: disallow updates for expected data files
+Date: Tue, 19 Jan 2021 02:32:16 +0200
+Message-Id: <20210119003216.17637-6-posteuca@mutex.one>
+In-Reply-To: <20210119003216.17637-1-posteuca@mutex.one>
+References: <20210119003216.17637-1-posteuca@mutex.one>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=62.77.152.124; envelope-from=marian@mutex.one;
  helo=mail.mutex.one
 X-Spam_score_int: -20
@@ -107,181 +108,113 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Sergio Lopez <slp@redhat.com>,
  Xiao Guangrong <xiaoguangrong.eric@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OGquoK6Fnkkh
+X-TUID: c5zDu6aHuNQe
 
-Qemu's ACPI table generation sets the fields OEM ID and OEM table ID=0D
-to "BOCHS " and "BXPCxxxx" where "xxxx" is replaced by the ACPI=0D
-table name.=0D
-=0D
-Some games like Red Dead Redemption 2 seem to check the ACPI OEM ID=0D
-and OEM table ID for the strings "BOCHS" and "BXPC" and if they are=0D
-found, the game crashes(this may be an intentional detection=0D
-mechanism to prevent playing the game in a virtualized environment).=0D
-=0D
-This patch allows you to override these default values.=0D
-=0D
-The feature can be used in this manner:=0D
-qemu -machine oem-id=3DABCDEF,oem-table-id=3DGHIJKLMN=0D
-=0D
-The oem-id string can be up to 6 bytes in size, and the=0D
-oem-table-id string can be up to 8 bytes in size. If the string are=0D
-smaller than their respective sizes they will be padded with space.=0D
-If either of these parameters is not set, the current default values=0D
-will be used for the one missing.=0D
-=0D
-Note that the the OEM Table ID field will not be extended with the=0D
-name of the table, but will use either the default name or the user=0D
-provided one.=0D
-=0D
-This does not affect the -acpitable option (for user-defined ACPI=0D
-tables), which has precedence over -machine option.=0D
-=0D
-v4:=0D
-- Added testcases for pc,q35,microvm,aarch64=0D
-- Switched to strpadcpy() instead of own function=0D
-- Don't touch unrelated fields in tables=0D
-- Instead of VIRT_MACHINE(obj)->bar use Foo *vm =3D VIRT_MACHINE(obj);=0D
-  vm->bar=0D
-=0D
-v3:=0D
-- Do not append the sig part to OEM table id=0D
-- build_header() always sets the passed in values for oem_id=0D
-  and oem_table_id=0D
-- Fixed a call to g_strdup() with a non-terminated string=0D
-- Use MachineState structures to hold the OEM fields=0D
-- Proper error handling in object setters=0D
-- Added description for object setters/getters=0D
-- Added support for pc,q35,microvm,aarch64=0D
-=0D
-v2:=0D
-- Use machine properties to set the OEM fields values=0D
-- Pass the desired values from acpi_build()=0D
-=0D
-Marian Postevca (5):=0D
-  tests/acpi: allow updates for expected data files=0D
-  acpi: Permit OEM ID and OEM table ID fields to be changed=0D
-  tests/acpi: add OEM ID and OEM TABLE ID test=0D
-  tests/acpi: update expected data files=0D
-  tests/acpi: disallow updates for expected data files=0D
-=0D
- hw/acpi/hmat.h                       |   3 +-=0D
- hw/i386/acpi-common.h                |   3 +-=0D
- include/hw/acpi/acpi-defs.h          |   2 +-=0D
- include/hw/acpi/aml-build.h          |   8 +-=0D
- include/hw/acpi/ghes.h               |   3 +-=0D
- include/hw/acpi/pci.h                |   3 +-=0D
- include/hw/acpi/vmgenid.h            |   2 +-=0D
- include/hw/arm/virt.h                |   2 +=0D
- include/hw/i386/microvm.h            |   4 +=0D
- include/hw/i386/pc.h                 |   5 +-=0D
- include/hw/mem/nvdimm.h              |   3 +-=0D
- hw/acpi/aml-build.c                  |  29 ++---=0D
- hw/acpi/ghes.c                       |   5 +-=0D
- hw/acpi/hmat.c                       |   5 +-=0D
- hw/acpi/nvdimm.c                     |  18 +--=0D
- hw/acpi/pci.c                        |   5 +-=0D
- hw/acpi/vmgenid.c                    |   4 +-=0D
- hw/arm/virt-acpi-build.c             |  40 ++++---=0D
- hw/arm/virt.c                        |  63 ++++++++++=0D
- hw/i386/acpi-build.c                 |  86 +++++++++-----=0D
- hw/i386/acpi-common.c                |   5 +-=0D
- hw/i386/acpi-microvm.c               |  13 +-=0D
- hw/i386/microvm.c                    |  66 +++++++++++=0D
- hw/i386/pc.c                         |  64 ++++++++++=0D
- tests/qtest/bios-tables-test.c       | 170 +++++++++++++++++++++++----=0D
- tests/data/acpi/microvm/APIC         | Bin 70 -> 70 bytes=0D
- tests/data/acpi/microvm/APIC.ioapic2 | Bin 82 -> 82 bytes=0D
- tests/data/acpi/microvm/APIC.pcie    | Bin 110 -> 110 bytes=0D
- tests/data/acpi/microvm/DSDT         | Bin 365 -> 365 bytes=0D
- tests/data/acpi/microvm/DSDT.ioapic2 | Bin 365 -> 365 bytes=0D
- tests/data/acpi/microvm/DSDT.pcie    | Bin 3031 -> 3031 bytes=0D
- tests/data/acpi/microvm/DSDT.rtc     | Bin 404 -> 404 bytes=0D
- tests/data/acpi/microvm/DSDT.usb     | Bin 414 -> 414 bytes=0D
- tests/data/acpi/microvm/FACP         | Bin 268 -> 268 bytes=0D
- tests/data/acpi/pc/APIC              | Bin 120 -> 120 bytes=0D
- tests/data/acpi/pc/APIC.acpihmat     | Bin 128 -> 128 bytes=0D
- tests/data/acpi/pc/APIC.cphp         | Bin 160 -> 160 bytes=0D
- tests/data/acpi/pc/APIC.dimmpxm      | Bin 144 -> 144 bytes=0D
- tests/data/acpi/pc/DSDT              | Bin 5065 -> 5065 bytes=0D
- tests/data/acpi/pc/DSDT.acpihmat     | Bin 6390 -> 6390 bytes=0D
- tests/data/acpi/pc/DSDT.bridge       | Bin 6924 -> 6924 bytes=0D
- tests/data/acpi/pc/DSDT.cphp         | Bin 5529 -> 5529 bytes=0D
- tests/data/acpi/pc/DSDT.dimmpxm      | Bin 6719 -> 6719 bytes=0D
- tests/data/acpi/pc/DSDT.hpbridge     | Bin 5026 -> 5026 bytes=0D
- tests/data/acpi/pc/DSDT.hpbrroot     | Bin 3084 -> 3084 bytes=0D
- tests/data/acpi/pc/DSDT.ipmikcs      | Bin 5137 -> 5137 bytes=0D
- tests/data/acpi/pc/DSDT.memhp        | Bin 6424 -> 6424 bytes=0D
- tests/data/acpi/pc/DSDT.numamem      | Bin 5071 -> 5071 bytes=0D
- tests/data/acpi/pc/DSDT.roothp       | Bin 5261 -> 5261 bytes=0D
- tests/data/acpi/pc/FACP              | Bin 116 -> 116 bytes=0D
- tests/data/acpi/pc/HMAT.acpihmat     | Bin 280 -> 280 bytes=0D
- tests/data/acpi/pc/HPET              | Bin 56 -> 56 bytes=0D
- tests/data/acpi/pc/NFIT.dimmpxm      | Bin 240 -> 240 bytes=0D
- tests/data/acpi/pc/SLIT.cphp         | Bin 48 -> 48 bytes=0D
- tests/data/acpi/pc/SLIT.memhp        | Bin 48 -> 48 bytes=0D
- tests/data/acpi/pc/SRAT.acpihmat     | Bin 280 -> 280 bytes=0D
- tests/data/acpi/pc/SRAT.cphp         | Bin 304 -> 304 bytes=0D
- tests/data/acpi/pc/SRAT.dimmpxm      | Bin 392 -> 392 bytes=0D
- tests/data/acpi/pc/SRAT.memhp        | Bin 264 -> 264 bytes=0D
- tests/data/acpi/pc/SRAT.numamem      | Bin 224 -> 224 bytes=0D
- tests/data/acpi/pc/SSDT.dimmpxm      | Bin 734 -> 734 bytes=0D
- tests/data/acpi/pc/WAET              | Bin 40 -> 40 bytes=0D
- tests/data/acpi/q35/APIC             | Bin 120 -> 120 bytes=0D
- tests/data/acpi/q35/APIC.acpihmat    | Bin 128 -> 128 bytes=0D
- tests/data/acpi/q35/APIC.cphp        | Bin 160 -> 160 bytes=0D
- tests/data/acpi/q35/APIC.dimmpxm     | Bin 144 -> 144 bytes=0D
- tests/data/acpi/q35/DSDT             | Bin 7801 -> 7801 bytes=0D
- tests/data/acpi/q35/DSDT.acpihmat    | Bin 9126 -> 9126 bytes=0D
- tests/data/acpi/q35/DSDT.bridge      | Bin 7819 -> 7819 bytes=0D
- tests/data/acpi/q35/DSDT.cphp        | Bin 8265 -> 8265 bytes=0D
- tests/data/acpi/q35/DSDT.dimmpxm     | Bin 9455 -> 9455 bytes=0D
- tests/data/acpi/q35/DSDT.ipmibt      | Bin 7876 -> 7876 bytes=0D
- tests/data/acpi/q35/DSDT.memhp       | Bin 9160 -> 9160 bytes=0D
- tests/data/acpi/q35/DSDT.mmio64      | Bin 8932 -> 8932 bytes=0D
- tests/data/acpi/q35/DSDT.numamem     | Bin 7807 -> 7807 bytes=0D
- tests/data/acpi/q35/DSDT.tis         | Bin 8407 -> 8407 bytes=0D
- tests/data/acpi/q35/FACP             | Bin 244 -> 244 bytes=0D
- tests/data/acpi/q35/HMAT.acpihmat    | Bin 280 -> 280 bytes=0D
- tests/data/acpi/q35/HPET             | Bin 56 -> 56 bytes=0D
- tests/data/acpi/q35/MCFG             | Bin 60 -> 60 bytes=0D
- tests/data/acpi/q35/NFIT.dimmpxm     | Bin 240 -> 240 bytes=0D
- tests/data/acpi/q35/SLIT.cphp        | Bin 48 -> 48 bytes=0D
- tests/data/acpi/q35/SLIT.memhp       | Bin 48 -> 48 bytes=0D
- tests/data/acpi/q35/SRAT.acpihmat    | Bin 280 -> 280 bytes=0D
- tests/data/acpi/q35/SRAT.cphp        | Bin 304 -> 304 bytes=0D
- tests/data/acpi/q35/SRAT.dimmpxm     | Bin 392 -> 392 bytes=0D
- tests/data/acpi/q35/SRAT.memhp       | Bin 264 -> 264 bytes=0D
- tests/data/acpi/q35/SRAT.mmio64      | Bin 224 -> 224 bytes=0D
- tests/data/acpi/q35/SRAT.numamem     | Bin 224 -> 224 bytes=0D
- tests/data/acpi/q35/SSDT.dimmpxm     | Bin 734 -> 734 bytes=0D
- tests/data/acpi/q35/TPM2.tis         | Bin 76 -> 76 bytes=0D
- tests/data/acpi/q35/WAET             | Bin 40 -> 40 bytes=0D
- tests/data/acpi/virt/APIC            | Bin 168 -> 168 bytes=0D
- tests/data/acpi/virt/APIC.memhp      | Bin 168 -> 168 bytes=0D
- tests/data/acpi/virt/APIC.numamem    | Bin 168 -> 168 bytes=0D
- tests/data/acpi/virt/DSDT            | Bin 5204 -> 5204 bytes=0D
- tests/data/acpi/virt/DSDT.memhp      | Bin 6565 -> 6565 bytes=0D
- tests/data/acpi/virt/DSDT.numamem    | Bin 5204 -> 5204 bytes=0D
- tests/data/acpi/virt/DSDT.pxb        | Bin 7689 -> 7689 bytes=0D
- tests/data/acpi/virt/FACP            | Bin 268 -> 268 bytes=0D
- tests/data/acpi/virt/FACP.memhp      | Bin 268 -> 268 bytes=0D
- tests/data/acpi/virt/FACP.numamem    | Bin 268 -> 268 bytes=0D
- tests/data/acpi/virt/GTDT            | Bin 96 -> 96 bytes=0D
- tests/data/acpi/virt/GTDT.memhp      | Bin 96 -> 96 bytes=0D
- tests/data/acpi/virt/GTDT.numamem    | Bin 96 -> 96 bytes=0D
- tests/data/acpi/virt/MCFG            | Bin 60 -> 60 bytes=0D
- tests/data/acpi/virt/MCFG.memhp      | Bin 60 -> 60 bytes=0D
- tests/data/acpi/virt/MCFG.numamem    | Bin 60 -> 60 bytes=0D
- tests/data/acpi/virt/NFIT.memhp      | Bin 224 -> 224 bytes=0D
- tests/data/acpi/virt/SLIT.memhp      | Bin 48 -> 48 bytes=0D
- tests/data/acpi/virt/SPCR            | Bin 80 -> 80 bytes=0D
- tests/data/acpi/virt/SPCR.memhp      | Bin 80 -> 80 bytes=0D
- tests/data/acpi/virt/SPCR.numamem    | Bin 80 -> 80 bytes=0D
- tests/data/acpi/virt/SRAT.memhp      | Bin 226 -> 226 bytes=0D
- tests/data/acpi/virt/SRAT.numamem    | Bin 106 -> 106 bytes=0D
- tests/data/acpi/virt/SSDT.memhp      | Bin 736 -> 736 bytes=0D
- 116 files changed, 495 insertions(+), 116 deletions(-)=0D
-=0D
--- =0D
-2.26.2=0D
-=0D
+Signed-off-by: Marian Postevca <posteuca@mutex.one>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h | 94 ---------------------
+ 1 file changed, 94 deletions(-)
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index b20ae72949..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,95 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/virt/APIC",
+-"tests/data/acpi/virt/FACP",
+-"tests/data/acpi/virt/GTDT",
+-"tests/data/acpi/virt/MCFG",
+-"tests/data/acpi/virt/SPCR",
+-"tests/data/acpi/virt/DSDT",
+-"tests/data/acpi/virt/APIC.numamem",
+-"tests/data/acpi/virt/FACP.numamem",
+-"tests/data/acpi/virt/GTDT.numamem",
+-"tests/data/acpi/virt/MCFG.numamem",
+-"tests/data/acpi/virt/SPCR.numamem",
+-"tests/data/acpi/virt/DSDT.numamem",
+-"tests/data/acpi/virt/SRAT.numamem",
+-"tests/data/acpi/virt/DSDT.memhp",
+-"tests/data/acpi/virt/NFIT.memhp",
+-"tests/data/acpi/virt/SSDT.memhp",
+-"tests/data/acpi/virt/SLIT.memhp",
+-"tests/data/acpi/virt/SRAT.memhp",
+-"tests/data/acpi/virt/SPCR.memhp",
+-"tests/data/acpi/virt/MCFG.memhp",
+-"tests/data/acpi/virt/GTDT.memhp",
+-"tests/data/acpi/virt/APIC.memhp",
+-"tests/data/acpi/virt/FACP.memhp",
+-"tests/data/acpi/virt/DSDT.pxb",
+-
+-"tests/data/acpi/pc/SRAT.acpihmat",
+-"tests/data/acpi/pc/HPET",
+-"tests/data/acpi/pc/DSDT.hpbrroot",
+-"tests/data/acpi/pc/SRAT.numamem",
+-"tests/data/acpi/pc/DSDT.dimmpxm",
+-"tests/data/acpi/pc/DSDT.acpihmat",
+-"tests/data/acpi/pc/FACP",
+-"tests/data/acpi/pc/SRAT.cphp",
+-"tests/data/acpi/pc/DSDT.numamem",
+-"tests/data/acpi/pc/DSDT.bridge",
+-"tests/data/acpi/pc/HMAT.acpihmat",
+-"tests/data/acpi/pc/DSDT.cphp",
+-"tests/data/acpi/pc/APIC.dimmpxm",
+-"tests/data/acpi/pc/SRAT.memhp",
+-"tests/data/acpi/pc/SLIT.cphp",
+-"tests/data/acpi/pc/DSDT.hpbridge",
+-"tests/data/acpi/pc/NFIT.dimmpxm",
+-"tests/data/acpi/pc/APIC.cphp",
+-"tests/data/acpi/pc/SSDT.dimmpxm",
+-"tests/data/acpi/pc/SRAT.dimmpxm",
+-"tests/data/acpi/pc/APIC.acpihmat",
+-"tests/data/acpi/pc/DSDT.memhp",
+-"tests/data/acpi/pc/DSDT.ipmikcs",
+-"tests/data/acpi/pc/SLIT.memhp",
+-"tests/data/acpi/pc/WAET",
+-"tests/data/acpi/pc/DSDT",
+-"tests/data/acpi/pc/APIC",
+-"tests/data/acpi/pc/DSDT.roothp",
+-
+-"tests/data/acpi/q35/SRAT.acpihmat",
+-"tests/data/acpi/q35/HPET",
+-"tests/data/acpi/q35/SRAT.numamem",
+-"tests/data/acpi/q35/DSDT.dimmpxm",
+-"tests/data/acpi/q35/DSDT.acpihmat",
+-"tests/data/acpi/q35/FACP",
+-"tests/data/acpi/q35/DSDT.mmio64",
+-"tests/data/acpi/q35/SRAT.cphp",
+-"tests/data/acpi/q35/DSDT.numamem",
+-"tests/data/acpi/q35/DSDT.bridge",
+-"tests/data/acpi/q35/HMAT.acpihmat",
+-"tests/data/acpi/q35/DSDT.cphp",
+-"tests/data/acpi/q35/APIC.dimmpxm",
+-"tests/data/acpi/q35/SRAT.memhp",
+-"tests/data/acpi/q35/SLIT.cphp",
+-"tests/data/acpi/q35/NFIT.dimmpxm",
+-"tests/data/acpi/q35/APIC.cphp",
+-"tests/data/acpi/q35/SSDT.dimmpxm",
+-"tests/data/acpi/q35/SRAT.dimmpxm",
+-"tests/data/acpi/q35/APIC.acpihmat",
+-"tests/data/acpi/q35/MCFG",
+-"tests/data/acpi/q35/DSDT.memhp",
+-"tests/data/acpi/q35/SLIT.memhp",
+-"tests/data/acpi/q35/WAET",
+-"tests/data/acpi/q35/DSDT.ipmibt",
+-"tests/data/acpi/q35/DSDT.tis",
+-"tests/data/acpi/q35/SRAT.mmio64",
+-"tests/data/acpi/q35/TPM2.tis",
+-"tests/data/acpi/q35/DSDT",
+-"tests/data/acpi/q35/APIC",
+-
+-"tests/data/acpi/microvm/APIC.pcie",
+-"tests/data/acpi/microvm/DSDT.pcie",
+-"tests/data/acpi/microvm/DSDT.usb",
+-"tests/data/acpi/microvm/DSDT.rtc",
+-"tests/data/acpi/microvm/FACP",
+-"tests/data/acpi/microvm/APIC.ioapic2",
+-"tests/data/acpi/microvm/DSDT.ioapic2",
+-"tests/data/acpi/microvm/DSDT",
+-"tests/data/acpi/microvm/APIC",
+-- 
+2.26.2
+

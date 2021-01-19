@@ -1,106 +1,106 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3334469lfq;
-        Tue, 19 Jan 2021 05:43:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwcMmSxzo6rzk+KZTYDqo3jmeqSll09qmE38+ieNzrAwm6HVyaSz+FKCJWIOi9K59HwlDmr
-X-Received: by 2002:a25:ab8d:: with SMTP id v13mr1064789ybi.479.1611063832648;
-        Tue, 19 Jan 2021 05:43:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611063832; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3334603lfq;
+        Tue, 19 Jan 2021 05:44:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzcSs6PvBA2RiRM67aLGYVp2/zyK+CgqZ2kX69bEwQo3sTr8Ry6Rm3RQzlpmxe6333Jk7VN
+X-Received: by 2002:a25:296:: with SMTP id 144mr6004294ybc.212.1611063842602;
+        Tue, 19 Jan 2021 05:44:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611063842; cv=none;
         d=google.com; s=arc-20160816;
-        b=kiXV/hySgbfIFIocddJFRUZkbwxD4z1/ODt9aG0/YG6PNCH8+6TkhDH7zXJrGEBpR8
-         VY2D7AVNkJZp1+VPK0xnXT5FqaFR2TbNb0sPLI7ep7yt+xGVQ+LzsW3Ijca3VHVbzWdD
-         WId/gJYwdoGU8cCC5Fm4GBgTbLLfyq6b5NcbJJohZbMefokrGCga4Pc5Q95RK/eoE47D
-         2tp+tDNbtOGrY2KihMABFu1l4ZAi/G8TBGLOuHTdh6c+F/tyol+2Cijs7IiUSSDffALz
-         IA6ZAa2NNV1Ino8iO2jLZDztyoxEoJKW5S2HYwjfFh0SFgnFlSad/Nu3an1IUMMf1kkl
-         YpQw==
+        b=lOTaAyW5ECMiJl+p8SYs0bXoeOpu/Qx2aXuf2zA2A94BuGbYbeFB5Sc/WwUWcwavUg
+         XZ22DBYLo9S0sQoWpb8zv5bFNC4g8/wLxZ8j8PCWfR3bVTSrqjn2xDjFt8qe5KZcvOI4
+         4fHJCPFEQepblQgbZ2cQ1yKf04/j90MFzUifElllM+x+BIcTYZt/f41Fi/VoqRJk6cv2
+         CQax9pXXDEFWs6A9GCRN4sB88ZUdyfAQ7yqcWkxl6POlFqfkDa976yc8jTCaoPz/FDxd
+         yzOv0Ek1TsHSCo0VHK1hGbT1qVX7qh7VuN6hWN2Nv0p+bCQ3xXhhmWAfzdyKivBT0Zf0
+         Kdvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=SqWEsFEvcxyZ/X/Aq4mkUc4tlPZsiwZEYgKXZtCqeJg=;
-        b=e9DY0BlJIriNzl8sE1hKwW4ZPU8G5g42yYDDDzZvk6gvwQRQB5FMRkgqi3e34Hj+uF
-         ManiWVMuZ4nYGK9Uq2Sb+JVZJXDra3hwOcjVGccMMF6z+mvpZQZNgCNM0TtOVWSbVV6p
-         x/BP1xPP7JZZMzTcc6vG4UnmjdTqs7IA2vU3Qmupo7LpMMdhmp0SWq9c7XGJn4pv4mb9
-         cAbUTmTTj8zgdC95v5Z5tzTGZV7qbREdk7Lwd+Jq8yVYCCsXzilNx3cN6zFcTA7Vtutb
-         ta9s+QFrjcO8A/BLRthz/rT6W8xUwj/mqWiMnZgsRdWsJZqppLu7/2behG7xCRJ7ndmi
-         KxVQ==
+        bh=7gJngOH1B/sa/seE8Ljjvfh+JI+wjQtzMvApotHkWzA=;
+        b=L2AKhd4bBqlYP4yn0dwFTQMnjAu91CBhK1uFvDaUgVTnaaRPNS9f++BxnFN95hb0c9
+         3KD7FAQ/TUly0D4M0QoD3yc2R6Rl5pfAWINhkXw0/SxgssHxfCO1xQFr2qPzUx8p3IHf
+         eI3QMi1YiWUqR8oKUCQHS/X5NP/0Luqy8C+rThkGkOq4caD7+NCbPSKpMXJUnXDHgn13
+         iHST6hSR7B08meXn9YRs1NVmyF3EnhvDyo0BmOv2egIdVm2NVGA1xVtNdeD6mT/mPxHi
+         /CBhtz2qOtFqq/PoKti9ekxOgiUcgYsy2WsVm2b17dxU2IoFDmVlTamfeGrDHj2dwcE5
+         KFfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b13vNqwb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gh0yZC5b;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b34si13169811ybi.324.2021.01.19.05.43.52
+        by mx.google.com with ESMTPS id o202si14768836ybg.154.2021.01.19.05.44.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Jan 2021 05:43:52 -0800 (PST)
+        Tue, 19 Jan 2021 05:44:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b13vNqwb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gh0yZC5b;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1rIW-0004na-2I
-	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:43:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55172)
+	id 1l1rIf-0005DX-Si
+	for alex.bennee@linaro.org; Tue, 19 Jan 2021 08:44:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l1rFL-0002oZ-Ne; Tue, 19 Jan 2021 08:40:35 -0500
-Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35]:34361)
+ id 1l1rFM-0002pL-2w; Tue, 19 Jan 2021 08:40:36 -0500
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:39139)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l1rFA-0003Tx-FX; Tue, 19 Jan 2021 08:40:34 -0500
-Received: by mail-io1-xd35.google.com with SMTP id u17so39613917iow.1;
- Tue, 19 Jan 2021 05:40:23 -0800 (PST)
+ id 1l1rFF-0003U4-Tt; Tue, 19 Jan 2021 08:40:35 -0500
+Received: by mail-io1-xd2b.google.com with SMTP id e22so15849710iog.6;
+ Tue, 19 Jan 2021 05:40:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=SqWEsFEvcxyZ/X/Aq4mkUc4tlPZsiwZEYgKXZtCqeJg=;
- b=b13vNqwbiITGojMPjalYj7p5TXbJzDXWRobt3chF4FAMobgWd+7hysyKE5bmTt2SsR
- p0d7ubP947Fj4h6i7P1nfkr6kV4SpuXvOv6FRlcAWIHwcwlWpidYSfJ4okpMxrWunYbI
- gRM9pZx5kc/gB0pbSeT6k0SHr8LwxMy8Iid982G4nsuKWPq4Sg34IUmOb0pFhGMNsxwo
- 0btLkMi64HOcttk87QfiDGvIpx1Gj7OuBP2yKhTR6fCeJQ/gHYvSW4zIXctdtthFE1om
- AUGMMw7j6vecfpKc57cTplNTO20QebZWL/9CpUVvmoMix48OyBSy14C6yQYAULokpysD
- y/ag==
+ bh=7gJngOH1B/sa/seE8Ljjvfh+JI+wjQtzMvApotHkWzA=;
+ b=gh0yZC5b31mmFR6ZbDoxeaQWRnsnVHl/5YhCEw0XxFurBwazGUC7Ad/1DxWdGfC+K4
+ +uJVIXLFnYKEZfvieqIUuxVPmcT00wuic1axAy3K+tkn8+OWIiZVddzl2YeWBPdeAp1o
+ dJn06QYV1SDk4Ji2pMNIDaJ0B0vQoBaBDVWHzV5uiuxFYsNywLd9s/X869gsNpYIaWBe
+ XpSdQJR1ZEk/Lt95zNp2J/otmxT3ZqCBaMVYfm0kQ19Zmy48IEWI0sFRJ7TVHrY7hqMX
+ O/Cz3WvqF1pEVHd7uE8f/p045AvlBbni5auxMlpygUhaVMek7r82n3bxRdhhp/8POoOs
+ mkHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=SqWEsFEvcxyZ/X/Aq4mkUc4tlPZsiwZEYgKXZtCqeJg=;
- b=uWSpV1MP8SYMsBxfNMZ3Wmxi698q5TXfDrYU9gyV8K1CIC7a/EV1Dub0yRohuxwqIy
- vou97H4tHm9bUNUR2bbWcpe7VThWQF6mq5Dg9An2gcVGFhSMVGyL4FlLpeJjvevRKXC0
- lqnOX0teyMa3ZmrHBqFDTIkqrjbu68ePvDaqZyqMgkaEaLClBG0B08EQf7N/H5THdLlM
- pllY7gNsGo+kpFL1I54X0C8TA7nYsSWThaP4k8Czruniw0cYI6boy6uF2oHaua+w7B6z
- 5mmLbrc/4ugeA6qeifQAD1aVLNVRvxvB8lbCIKHhpiUE/37b55zvD0To9RVnObpZW/bI
- 6YSA==
-X-Gm-Message-State: AOAM531RjcCNFwd5rOXgBDQ0AkSxIIocf3XEPsDXfksQ9xONbEWwuZNA
- XX01YILm0NWNqGuEdrhGVvlt8+rYwTM=
-X-Received: by 2002:a05:6602:122b:: with SMTP id
- z11mr2914194iot.210.1611063622638; 
- Tue, 19 Jan 2021 05:40:22 -0800 (PST)
+ bh=7gJngOH1B/sa/seE8Ljjvfh+JI+wjQtzMvApotHkWzA=;
+ b=n6hq4of13iAdaDprwmrqblLpr134gg7iwkRP06dontpHxDzgIKhh5NvvwX9Kkj65R0
+ sg2M/NyTrxmE6rjF/45mepYBww6eYKbwsNV+qF9QxJJuqHbQEWQQJo64rG+40PWDNFas
+ fvq2Q5pefvxcU37zXYCQUc2u0ZA0+dvdiEEABF3MEZmPKTf0smfI62QOm1zu8djQoDsU
+ vFrJ2ffgjZV38RqqxORJXGPd1CRJImS7bDPEovYsMooFzK2Fr+g633Q1N/imgSz+cNOe
+ bTPUEcHAwQZIue4YD8VpW9x7jrGPEm3N9T6rolwvKFz+yJjLXcV7wsKfXS1BdPV5EMdQ
+ FttA==
+X-Gm-Message-State: AOAM532QuE4HkXIf0/4jfpY2VaAh/882s7ZiXlt2zmIbuzANwHPhJGcn
+ FBFyO9028+9cO2NK3Pc0Zuc=
+X-Received: by 2002:a05:6e02:1a6d:: with SMTP id
+ w13mr3567279ilv.181.1611063625865; 
+ Tue, 19 Jan 2021 05:40:25 -0800 (PST)
 Received: from pek-vx-bsp2.wrs.com (unknown-124-94.windriver.com.
  [147.11.124.94])
- by smtp.gmail.com with ESMTPSA id s6sm11089546ild.45.2021.01.19.05.40.19
+ by smtp.gmail.com with ESMTPSA id s6sm11089546ild.45.2021.01.19.05.40.22
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 19 Jan 2021 05:40:22 -0800 (PST)
+ Tue, 19 Jan 2021 05:40:25 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v8 03/10] hw/ssi: imx_spi: Remove pointless variable
- initialization
-Date: Tue, 19 Jan 2021 21:38:59 +0800
-Message-Id: <1611063546-20278-4-git-send-email-bmeng.cn@gmail.com>
+Subject: [PATCH v8 04/10] hw/ssi: imx_spi: Rework imx_spi_reset() to keep
+ CONREG register value
+Date: Tue, 19 Jan 2021 21:39:00 +0800
+Message-Id: <1611063546-20278-5-git-send-email-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
 References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d35;
- envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd35.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-io1-xd2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,16 +124,20 @@ Cc: Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F3Ffnbf/Egvu
+X-TUID: w/j3x+lLvTl6
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-'burst_length' is cleared in imx_spi_reset(), which is called
-after imx_spi_realize(). Remove the initialization to simplify.
+When the block is disabled, all registers are reset with the
+exception of the ECSPI_CONREG. It is initialized to zero
+when the instance is created.
+
+Ref: i.MX 6DQ Applications Processor Reference Manual (IMX6DQRM),
+     chapter 21.7.3: Control Register (ECSPIx_CONREG)
 
 Reviewed-by: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20210115153049.3353008-3-f4bug@amsat.org>
+Message-Id: <20210115153049.3353008-4-f4bug@amsat.org>
 Reviewed-by: Bin Meng <bin.meng@windriver.com>
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
@@ -145,24 +149,42 @@ Changes in v7:
 - remove the RFC tag
 
 Changes in v6:
-- new patch: [RFC] remove pointless variable initialization
+- new patch: [RFC] rework imx_spi_reset() to keep CONREG register value
 
- hw/ssi/imx_spi.c | 2 --
- 1 file changed, 2 deletions(-)
+ hw/ssi/imx_spi.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
 diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 4d488b1..8fb3c9b 100644
+index 8fb3c9b..c952a3d 100644
 --- a/hw/ssi/imx_spi.c
 +++ b/hw/ssi/imx_spi.c
-@@ -434,8 +434,6 @@ static void imx_spi_realize(DeviceState *dev, Error **errp)
-         sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->cs_lines[i]);
-     }
+@@ -231,12 +231,23 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+ static void imx_spi_reset(DeviceState *dev)
+ {
+     IMXSPIState *s = IMX_SPI(dev);
++    int i;
  
--    s->burst_length = 0;
+     DPRINTF("\n");
+ 
+-    memset(s->regs, 0, sizeof(s->regs));
 -
-     fifo32_create(&s->tx_fifo, ECSPI_FIFO_SIZE);
-     fifo32_create(&s->rx_fifo, ECSPI_FIFO_SIZE);
- }
+-    s->regs[ECSPI_STATREG] = 0x00000003;
++    for (i = 0; i < ARRAY_SIZE(s->regs); i++) {
++        switch (i) {
++        case ECSPI_CONREG:
++            /* CONREG is not updated on reset */
++            break;
++        case ECSPI_STATREG:
++            s->regs[i] = 0x00000003;
++            break;
++        default:
++            s->regs[i] = 0;
++            break;
++        }
++    }
+ 
+     imx_spi_rxfifo_reset(s);
+     imx_spi_txfifo_reset(s);
 -- 
 2.7.4
 

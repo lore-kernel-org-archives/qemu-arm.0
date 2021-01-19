@@ -1,128 +1,81 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3338939lfq;
-        Tue, 19 Jan 2021 05:49:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwVfIARjAjO9sBD4X+W5IrAYyDoiS11FMZzCYNoRECU50Fft1jt//AVt0/VAg+Y7V6q8Z3f
-X-Received: by 2002:a7b:c08b:: with SMTP id r11mr2596544wmh.11.1611064192519;
-        Tue, 19 Jan 2021 05:49:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611064192; cv=none;
-        d=google.com; s=arc-20160816;
-        b=OXrIS19L+iwGjXuPM5RCIeupMS5pb1oc6H+joOWJuYalBY7fzh2BPKlmYIwQD71Nw4
-         vYLR5fs2E1Sxm+gp6asF1OEraYNeXlZLxSlvqGMqYJSILKRJx3FY4wthOPYLOK0b95zm
-         nIWPjJcmMV91DULWSJi71j2UcHgeYUHd7jERyOSJTAdZtsd1ACmZ3OuJbLMsFgKXJrR3
-         u85wgjpemmzjQGI4Rih6iSyBuF8Md125ewoFsivT2PAYIO2yZrqm3ZdXzyx30hKrg/K3
-         FmVE5iAaoS4uh+piN7HX3GAe5Qzp5bgmlQ+yT6gmIgPbLJam1TppOGF4oj6Z5tuy7Z8k
-         TrBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:cc:to:from:subject;
-        bh=9iB6rum7tS0+c/vFPFGKVdP70TodfbSeXMzyaLBCTQk=;
-        b=HNojUglnmfTV7ImOhRQe3pr1w7v879XxOv1m4y8RF8pOBUjmdFacOvo2HiP/TVnfmu
-         J0Q+CosmY2piNsG46fOaqQWoNVH3zK//qYrooI7BfhhUYeu2WmTQGfu3MH7D63upJh/R
-         RvUMYdb+6NSgpSrCA2dintRE2brTHJ46fDR1RSpmZLWdVMFxnuQVm3RGuoZ0Fg3g66wV
-         yLlTx3Opb1K3mg4BMJdS/ONYvphV7M/l5/dqix969bkggOOeKuQQtb3c6D9KNzbMAJuM
-         J7m/FOU7rgQ5EA8o/PUQBq9yrweX+HtrE79zPLd3aazaEkbI+u3ThttFMTo2k8mOV6ZD
-         cnQg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
-Return-Path: <cfontana@suse.de>
-Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
-        by mx.google.com with ESMTPS id d17si1003493wrp.431.2021.01.19.05.49.52
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Jan 2021 05:49:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
-	by mx2.suse.de (Postfix) with ESMTP id F3696B185;
-	Tue, 19 Jan 2021 13:49:51 +0000 (UTC)
-Subject: Re: [PULL 21/30] target/arm: use official org.gnu.gdb.aarch64.sve
- layout for registers
-From: Claudio Fontana <cfontana@suse.de>
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Luis Machado <luis.machado@linaro.org>, qemu-devel@nongnu.org
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id h15sm4573652wmq.3.2021.01.19.06.51.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Jan 2021 06:51:11 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 0BAA81FF7E;
+	Tue, 19 Jan 2021 14:51:11 +0000 (GMT)
 References: <20210115130828.23968-1-alex.bennee@linaro.org>
  <20210115130828.23968-22-alex.bennee@linaro.org>
  <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de>
-Message-ID: <0a39b15c-4b34-1600-c8b6-cc73c7c89e00@suse.de>
-Date: Tue, 19 Jan 2021 14:49:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Claudio Fontana <cfontana@suse.de>
+Cc: peter.maydell@linaro.org, Luis Machado <luis.machado@linaro.org>, "open
+ list:ARM TCG CPUs" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
+Subject: Re: [PULL 21/30] target/arm: use official org.gnu.gdb.aarch64.sve
+ layout for registers
+Date: Tue, 19 Jan 2021 14:50:01 +0000
+In-reply-to: <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de>
+Message-ID: <874kjdugip.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <540354a8-bcba-aa82-814d-7f11dc75f5bf@suse.de>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: h3C5k5AgGP7t
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 4TlIELVjYXxH
 
-On 1/19/21 2:38 PM, Claudio Fontana wrote:
+
+Claudio Fontana <cfontana@suse.de> writes:
+
 > Hi Alex,
-> 
-> after updating to latest master today, I am getting the following error with
-> 
+>
+> after updating to latest master today, I am getting the following error w=
+ith
+>
 > make check-tcg
-> 
-> qemu-system-aarch64: -gdb unix:path=/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server: info: QEMU waiting for connection on: disconnected:unix:/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server
-> warning: while parsing target description (at line 47): Vector "svevhf" references undefined type "ieee_half"
+>
+> qemu-system-aarch64: -gdb unix:path=3D/tmp/tmp9ru5tgk8qemu-gdbstub/gdbstu=
+b.socket,server: info: QEMU waiting for connection on: disconnected:unix:/t=
+mp/tmp9ru5tgk8qemu-gdbstub/gdbstub.socket,server
+> warning: while parsing target description (at line 47): Vector "svevhf" r=
+eferences undefined type "ieee_half"
 > warning: Could not load XML target description; ignoring
 > qemu-system-aarch64: QEMU: Terminated via GDBstub
-> 
+>
 > Seems to indicate it is "ieee_half" -related?
-> 
+
+*sigh*
+
+yes - it is. I thought this was solved by the GDB version check in
+14/30. What does your gdb report?
+
+>
 > Thanks,
-> 
+>
 > Claudio
-
-also later on I get:
-
-  TEST    basic gdbstub support
-warning: while parsing target description (at line 47): Vector "svevhf" references undefined type "ieee_half"
-warning: Could not load XML target description; ignoring
-  TEST    basic gdbstub qXfer:auxv:read support
-warning: while parsing target description (at line 47): Vector "svevhf" references undefined type "ieee_half"
-warning: Could not load XML target description; ignoring
-  TEST    basic gdbstub SVE support
-warning: while parsing target description (at line 47): Vector "svevhf" references undefined type "ieee_half"
-warning: Could not load XML target description; ignoring
-*** stack smashing detected ***: <unknown> terminated
-  TEST    basic gdbstub SVE ZLEN support
-warning: while parsing target description (at line 47): Vector "svevhf" references undefined type "ieee_half"
-warning: Could not load XML target description; ignoring
-Python 3.6.10 (default, Jan 16 2020, 09:12:04) [GCC] on linux
-Type "help", "copyright", "credits" or "license" for more information.
-(InteractiveConsole)
-
-
-... and here it buzzes.
-
-Thanks,
-
-Claudio
-
-> 
-> On 1/15/21 2:08 PM, Alex Bennée wrote:
+>
+> On 1/15/21 2:08 PM, Alex Benn=C3=A9e wrote:
 >> While GDB can work with any XML description given to it there is
 >> special handling for SVE registers on the GDB side which makes the
 >> users life a little better. The changes aren't that major and all the
 >> registers save the $vg reported the same. All that changes is:
->>
+>>=20
 >>   - report org.gnu.gdb.aarch64.sve
 >>   - use gdb nomenclature for names and types
 >>   - minor re-ordering of the types to match reference
 >>   - re-enable ieee_half (as we know gdb supports it now)
 >>   - $vg is now a 64 bit int
 >>   - check $vN and $zN aliasing in test
->>
->> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>=20
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 >> Reviewed-by: Luis Machado <luis.machado@linaro.org>
 >> Message-Id: <20210108224256.2321-11-alex.bennee@linaro.org>
->>
+>>=20
 >> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
 >> index 866595b4f1..a8fff2a3d0 100644
 >> --- a/target/arm/gdbstub.c
 >> +++ b/target/arm/gdbstub.c
->> @@ -195,22 +195,17 @@ static const struct TypeSize vec_lanes[] = {
+>> @@ -195,22 +195,17 @@ static const struct TypeSize vec_lanes[] =3D {
 >>      { "uint128", 128, 'q', 'u' },
 >>      { "int128", 128, 'q', 's' },
 >>      /* 64 bit */
@@ -148,157 +101,178 @@ Claudio
 >>      /* bytes */
 >>      { "uint8", 8, 'b', 'u' },
 >>      { "int8", 8, 'b', 's' },
->> @@ -223,17 +218,16 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
->>      GString *s = g_string_new(NULL);
->>      DynamicGDBXMLInfo *info = &cpu->dyn_svereg_xml;
->>      g_autoptr(GString) ts = g_string_new("");
->> -    int i, bits, reg_width = (cpu->sve_max_vq * 128);
->> +    int i, j, bits, reg_width = (cpu->sve_max_vq * 128);
->>      info->num = 0;
->>      g_string_printf(s, "<?xml version=\"1.0\"?>");
->>      g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
->> -    g_string_append_printf(s, "<feature name=\"org.qemu.gdb.aarch64.sve\">");
->> +    g_string_append_printf(s, "<feature name=\"org.gnu.gdb.aarch64.sve\">");
->>  
+>> @@ -223,17 +218,16 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int b=
+ase_reg)
+>>      GString *s =3D g_string_new(NULL);
+>>      DynamicGDBXMLInfo *info =3D &cpu->dyn_svereg_xml;
+>>      g_autoptr(GString) ts =3D g_string_new("");
+>> -    int i, bits, reg_width =3D (cpu->sve_max_vq * 128);
+>> +    int i, j, bits, reg_width =3D (cpu->sve_max_vq * 128);
+>>      info->num =3D 0;
+>>      g_string_printf(s, "<?xml version=3D\"1.0\"?>");
+>>      g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd=
+\">");
+>> -    g_string_append_printf(s, "<feature name=3D\"org.qemu.gdb.aarch64.s=
+ve\">");
+>> +    g_string_append_printf(s, "<feature name=3D\"org.gnu.gdb.aarch64.sv=
+e\">");
+>>=20=20
 >>      /* First define types and totals in a whole VL */
->>      for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
->>          int count = reg_width / vec_lanes[i].size;
+>>      for (i =3D 0; i < ARRAY_SIZE(vec_lanes); i++) {
+>>          int count =3D reg_width / vec_lanes[i].size;
 >> -        g_string_printf(ts, "vq%d%c%c", count,
 >> -                        vec_lanes[i].sz, vec_lanes[i].suffix);
->> +        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].suffix);
+>> +        g_string_printf(ts, "svev%c%c", vec_lanes[i].sz, vec_lanes[i].s=
+uffix);
 >>          g_string_append_printf(s,
->>                                 "<vector id=\"%s\" type=\"%s\" count=\"%d\"/>",
+>>                                 "<vector id=3D\"%s\" type=3D\"%s\" count=
+=3D\"%d\"/>",
 >>                                 ts->str, vec_lanes[i].gdb_type, count);
->> @@ -243,39 +237,37 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
+>> @@ -243,39 +237,37 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int b=
+ase_reg)
 >>       * signed and potentially float versions of each size from 128 to
 >>       * 8 bits.
 >>       */
->> -    for (bits = 128; bits >= 8; bits /= 2) {
->> -        int count = reg_width / bits;
->> -        g_string_append_printf(s, "<union id=\"vq%dn\">", count);
->> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
->> -            if (vec_lanes[i].size == bits) {
->> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%d%c%c\"/>",
+>> -    for (bits =3D 128; bits >=3D 8; bits /=3D 2) {
+>> -        int count =3D reg_width / bits;
+>> -        g_string_append_printf(s, "<union id=3D\"vq%dn\">", count);
+>> -        for (i =3D 0; i < ARRAY_SIZE(vec_lanes); i++) {
+>> -            if (vec_lanes[i].size =3D=3D bits) {
+>> -                g_string_append_printf(s, "<field name=3D\"%c\" type=3D=
+\"vq%d%c%c\"/>",
 >> -                                       vec_lanes[i].suffix,
 >> -                                       count,
->> -                                       vec_lanes[i].sz, vec_lanes[i].suffix);
->> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
->> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
->> +        g_string_append_printf(s, "<union id=\"svevn%c\">", suf[i]);
->> +        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
->> +            if (vec_lanes[j].size == bits) {
->> +                g_string_append_printf(s, "<field name=\"%c\" type=\"svev%c%c\"/>",
+>> -                                       vec_lanes[i].sz, vec_lanes[i].su=
+ffix);
+>> +    for (bits =3D 128, i =3D 0; bits >=3D 8; bits /=3D 2, i++) {
+>> +        const char suf[] =3D { 'q', 'd', 's', 'h', 'b' };
+>> +        g_string_append_printf(s, "<union id=3D\"svevn%c\">", suf[i]);
+>> +        for (j =3D 0; j < ARRAY_SIZE(vec_lanes); j++) {
+>> +            if (vec_lanes[j].size =3D=3D bits) {
+>> +                g_string_append_printf(s, "<field name=3D\"%c\" type=3D=
+\"svev%c%c\"/>",
 >> +                                       vec_lanes[j].suffix,
->> +                                       vec_lanes[j].sz, vec_lanes[j].suffix);
+>> +                                       vec_lanes[j].sz, vec_lanes[j].su=
+ffix);
 >>              }
 >>          }
 >>          g_string_append(s, "</union>");
 >>      }
 >>      /* And now the final union of unions */
->> -    g_string_append(s, "<union id=\"vq\">");
->> -    for (bits = 128; bits >= 8; bits /= 2) {
->> -        int count = reg_width / bits;
->> -        for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
->> -            if (vec_lanes[i].size == bits) {
->> -                g_string_append_printf(s, "<field name=\"%c\" type=\"vq%dn\"/>",
+>> -    g_string_append(s, "<union id=3D\"vq\">");
+>> -    for (bits =3D 128; bits >=3D 8; bits /=3D 2) {
+>> -        int count =3D reg_width / bits;
+>> -        for (i =3D 0; i < ARRAY_SIZE(vec_lanes); i++) {
+>> -            if (vec_lanes[i].size =3D=3D bits) {
+>> -                g_string_append_printf(s, "<field name=3D\"%c\" type=3D=
+\"vq%dn\"/>",
 >> -                                       vec_lanes[i].sz, count);
 >> -                break;
 >> -            }
 >> -        }
->> +    g_string_append(s, "<union id=\"svev\">");
->> +    for (bits = 128, i = 0; bits >= 8; bits /= 2, i++) {
->> +        const char suf[] = { 'q', 'd', 's', 'h', 'b' };
->> +        g_string_append_printf(s, "<field name=\"%c\" type=\"svevn%c\"/>",
+>> +    g_string_append(s, "<union id=3D\"svev\">");
+>> +    for (bits =3D 128, i =3D 0; bits >=3D 8; bits /=3D 2, i++) {
+>> +        const char suf[] =3D { 'q', 'd', 's', 'h', 'b' };
+>> +        g_string_append_printf(s, "<field name=3D\"%c\" type=3D\"svevn%=
+c\"/>",
 >> +                               suf[i], suf[i]);
 >>      }
 >>      g_string_append(s, "</union>");
->>  
+>>=20=20
 >> +    /* Finally the sve prefix type */
 >> +    g_string_append_printf(s,
->> +                           "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
+>> +                           "<vector id=3D\"svep\" type=3D\"uint8\" coun=
+t=3D\"%d\"/>",
 >> +                           reg_width / 8);
 >> +
 >>      /* Then define each register in parts for each vq */
->>      for (i = 0; i < 32; i++) {
+>>      for (i =3D 0; i < 32; i++) {
 >>          g_string_append_printf(s,
->>                                 "<reg name=\"z%d\" bitsize=\"%d\""
->> -                               " regnum=\"%d\" group=\"vector\""
->> -                               " type=\"vq\"/>",
->> +                               " regnum=\"%d\" type=\"svev\"/>",
+>>                                 "<reg name=3D\"z%d\" bitsize=3D\"%d\""
+>> -                               " regnum=3D\"%d\" group=3D\"vector\""
+>> -                               " type=3D\"vq\"/>",
+>> +                               " regnum=3D\"%d\" type=3D\"svev\"/>",
 >>                                 i, reg_width, base_reg++);
 >>          info->num++;
 >>      }
->> @@ -287,31 +279,22 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int base_reg)
->>                             " regnum=\"%d\" group=\"float\""
->>                             " type=\"int\"/>", base_reg++);
->>      info->num += 2;
+>> @@ -287,31 +279,22 @@ int arm_gen_dynamic_svereg_xml(CPUState *cs, int b=
+ase_reg)
+>>                             " regnum=3D\"%d\" group=3D\"float\""
+>>                             " type=3D\"int\"/>", base_reg++);
+>>      info->num +=3D 2;
 >> -    /*
 >> -     * Predicate registers aren't so big they are worth splitting up
 >> -     * but we do need to define a type to hold the array of quad
 >> -     * references.
 >> -     */
 >> -    g_string_append_printf(s,
->> -                           "<vector id=\"vqp\" type=\"uint16\" count=\"%d\"/>",
+>> -                           "<vector id=3D\"vqp\" type=3D\"uint16\" coun=
+t=3D\"%d\"/>",
 >> -                           cpu->sve_max_vq);
 >> +
->>      for (i = 0; i < 16; i++) {
+>>      for (i =3D 0; i < 16; i++) {
 >>          g_string_append_printf(s,
->>                                 "<reg name=\"p%d\" bitsize=\"%d\""
->> -                               " regnum=\"%d\" group=\"vector\""
->> -                               " type=\"vqp\"/>",
->> +                               " regnum=\"%d\" type=\"svep\"/>",
+>>                                 "<reg name=3D\"p%d\" bitsize=3D\"%d\""
+>> -                               " regnum=3D\"%d\" group=3D\"vector\""
+>> -                               " type=3D\"vqp\"/>",
+>> +                               " regnum=3D\"%d\" type=3D\"svep\"/>",
 >>                                 i, cpu->sve_max_vq * 16, base_reg++);
 >>          info->num++;
 >>      }
 >>      g_string_append_printf(s,
->>                             "<reg name=\"ffr\" bitsize=\"%d\""
->>                             " regnum=\"%d\" group=\"vector\""
->> -                           " type=\"vqp\"/>",
->> +                           " type=\"svep\"/>",
+>>                             "<reg name=3D\"ffr\" bitsize=3D\"%d\""
+>>                             " regnum=3D\"%d\" group=3D\"vector\""
+>> -                           " type=3D\"vqp\"/>",
+>> +                           " type=3D\"svep\"/>",
 >>                             cpu->sve_max_vq * 16, base_reg++);
 >>      g_string_append_printf(s,
->>                             "<reg name=\"vg\" bitsize=\"64\""
->> -                           " regnum=\"%d\" group=\"vector\""
->> -                           " type=\"uint32\"/>",
->> +                           " regnum=\"%d\" type=\"int\"/>",
+>>                             "<reg name=3D\"vg\" bitsize=3D\"64\""
+>> -                           " regnum=3D\"%d\" group=3D\"vector\""
+>> -                           " type=3D\"uint32\"/>",
+>> +                           " regnum=3D\"%d\" type=3D\"int\"/>",
 >>                             base_reg++);
->>      info->num += 2;
+>>      info->num +=3D 2;
 >>      g_string_append_printf(s, "</feature>");
 >> diff --git a/target/arm/helper.c b/target/arm/helper.c
 >> index 5ab3f5ace3..8a492465d6 100644
 >> --- a/target/arm/helper.c
 >> +++ b/target/arm/helper.c
->> @@ -276,7 +276,7 @@ static int arm_gdb_get_svereg(CPUARMState *env, GByteArray *buf, int reg)
->>           * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
+>> @@ -276,7 +276,7 @@ static int arm_gdb_get_svereg(CPUARMState *env, GByt=
+eArray *buf, int reg)
+>>           * while the ZCR works in Vector Quads (VQ) which is 128bit chu=
+nks.
 >>           */
->>          int vq = sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
+>>          int vq =3D sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
 >> -        return gdb_get_reg32(buf, vq * 2);
 >> +        return gdb_get_reg64(buf, vq * 2);
 >>      }
 >>      default:
 >>          /* gdbstub asked for something out our range */
->> diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+>> diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aar=
+ch64/gdbstub/test-sve-ioctl.py
 >> index 972cf73c31..b9ef169c1a 100644
 >> --- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
 >> +++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
 >> @@ -40,6 +40,17 @@ class TestBreakpoint(gdb.Breakpoint):
 >>          except gdb.error:
 >>              report(False, "checking zregs (out of range)")
->>  
+>>=20=20
 >> +        # Check the aliased V registers are set and GDB has correctly
 >> +        # created them for us having recognised and handled SVE.
 >> +        try:
 >> +            for i in range(0, 16):
->> +                val_z = gdb.parse_and_eval("$z0.b.u[%d]" % i)
->> +                val_v = gdb.parse_and_eval("$v0.b.u[%d]" % i)
->> +                report(int(val_z) == int(val_v),
->> +                       "v0.b.u[%d] == z0.b.u[%d]" % (i, i))
+>> +                val_z =3D gdb.parse_and_eval("$z0.b.u[%d]" % i)
+>> +                val_v =3D gdb.parse_and_eval("$v0.b.u[%d]" % i)
+>> +                report(int(val_z) =3D=3D int(val_v),
+>> +                       "v0.b.u[%d] =3D=3D z0.b.u[%d]" % (i, i))
 >> +        except gdb.error:
 >> +            report(False, "checking vregs (out of range)")
 >> +
->>  
+>>=20=20
 >>  def run_test():
 >>      "Run through the tests one by one"
->>
-> 
-> 
+>>=20
+
+
+--=20
+Alex Benn=C3=A9e

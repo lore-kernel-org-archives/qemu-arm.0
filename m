@@ -1,221 +1,215 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1220006lfq;
-        Sat, 16 Jan 2021 08:29:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyqmQoFUG1lsaUWYGqOn5K/pGqLIQNGUCoMlobRBmGVclHj2YCAGtuY/0JdqMe2R2zDcanh
-X-Received: by 2002:a5b:410:: with SMTP id m16mr25547432ybp.451.1610814577445;
-        Sat, 16 Jan 2021 08:29:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610814577; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp395339lfq;
+        Wed, 20 Jan 2021 14:45:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2gS3twq08i6bRYtDZq7i4VV3J1pe6jr2h8XjdkFyWUf15KHmBSVmO3hSoaEGEypY4zQxA
+X-Received: by 2002:a5b:f08:: with SMTP id x8mr1550209ybr.217.1611182727039;
+        Wed, 20 Jan 2021 14:45:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611182727; cv=none;
         d=google.com; s=arc-20160816;
-        b=aDgkTQ4UEzA+aDIXDEvZopyoqCJWK9z5z0xsBED0SEwYMz53HLsPFD27iVfM/pKKFr
-         Yq3G2dBAAN+8gA6ug9AtWJlnfuLsAEfLmNDbGqPnECUP6PktyS28zVYTFhh2aCjcvfA6
-         3L+jMRlgbx/IQCv3gyxcB5cLNjmo0YIDRkNW7Gw1ULJP0BTSQiaVYRkS42y152xrQAfA
-         OoX49KIL7WWh0yOsLnO+k/oQ4sgNyjipounNyM99tlPp3ZvBE/DiLQ5o4E0++C9mekrh
-         FyHxmq3oqsz2M8MMZMiPTdVR/efNXgSVG2uahVsHr9QJuS4K5nfLxkmUI4h6BC0URXm2
-         l9qg==
+        b=dczGVIBi5DoL0wRS4KLpabuHZhqvFCYOVI0fPYO3haBRdT+iKm/wDx15HaewLQHQp1
+         fHdfZitrdwXMzjwpeSbB054bnwGRxAOXlnGoYsu++q8C08CZx5gTjSTnJSHamnKVaGoI
+         CkOtKLpjHAvRp0li89d+ehCZae88b+BjSzNetD5He0+D3j+BWPmB/Nv5B4l1yGb0mLzg
+         zwhP7gxwlkklKVnMT5Azv66cEum1kcxHIoYTJ5FlI51xHMfb9US6aJuVgnkuScyCfTjx
+         7AEUyOXQ8kN7rZ50E+17h1izUAPfJUwqauBZQ04bkBQ0jbVfjwMgZ7ZaHfuwLNvLzy8W
+         KA5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=9vkaKqpFog4RJaXK06vFucVy6NaXyIRoCFanRKsv9UY=;
-        b=FH1oOmU2fhsSobbwrzWAGcVFMRPAk5/+056OACk6/Eceu659uI7ysAdL44SBvByyuz
-         HHzIxKGTXaEv1WRHzrKDM5ME5JqJp1/aW2YF/4zQMmhjIaVAVxyqGAU2KxSav9MWIYYc
-         T9TWfiFSf6QiRDMttTmt4HbfOTO46EMlBF3uh7Ac8Nnx3zpgn7FeGEX/7DA5nLghFaQI
-         0lKsErWglIanlmt5ftmeIu1o8/OY6oFDfAE0maIE33kafZbt640FcWCyQ+wnJqFN0LUo
-         NMv1NknHvr/G0EhfRuyILNB3KJuUIZEq8m34MHVufPMzyCrh1QoHiR4xqw3qiqKw6Gx3
-         zD7g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=0Eax11lJ5vM37fCjXGUTVFvtXE4AvcSpDLHo0BTDjqI=;
+        b=t7NdAvGyS0Cdc86vbGbta1BXKvKyP5nmnErjnRjDAWg9+XsHH/OH58qCmNhGWwrq6o
+         Y6/7nuBTR/z+XXBCOkIi18IAVxSjsaGqBC/Pz4agJqFlh4/2fbk4c5+8g+/wRXRz89sW
+         pJ9oLl+0iABqW8qiL4k0ElK84WuN+WcY94TA/YsQTl2crCZjsqfDbmNMmJ8W/w+ZKA7G
+         qMue9TME3z3OiciDu/ogttEIIpIUFkIZzZzgcHhnNCMr4c0xVPzCbiaZYa+/7g+7mYXR
+         dYz77igEi6Oe+tzkITGtupnzkdg50pO4eWgfjyIIKL98yV/BICgrSDXplouBmSnRXBvv
+         Zlug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="nTvJX/hJ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si11761580ybg.47.2021.01.16.08.29.37
+        by mx.google.com with ESMTPS id r10si2824222ybl.240.2021.01.20.14.45.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Jan 2021 08:29:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Jan 2021 14:45:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bsdimp-com.20150623.gappssmtp.com header.s=20150623 header.b="nTvJX/hJ";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33056 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l0oSG-0007wh-SL
-	for alex.bennee@linaro.org; Sat, 16 Jan 2021 11:29:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56900)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l2MEA-0003rN-CV
+	for alex.bennee@linaro.org; Wed, 20 Jan 2021 17:45:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1l0oRk-0007vA-Ti
- for qemu-devel@nongnu.org; Sat, 16 Jan 2021 11:29:05 -0500
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834]:41159)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1l0oRh-0007tu-W9
- for qemu-devel@nongnu.org; Sat, 16 Jan 2021 11:29:04 -0500
-Received: by mail-qt1-x834.google.com with SMTP id j26so8334510qtq.8
- for <qemu-devel@nongnu.org>; Sat, 16 Jan 2021 08:28:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9vkaKqpFog4RJaXK06vFucVy6NaXyIRoCFanRKsv9UY=;
- b=nTvJX/hJ0W2GnVAQEyF85c1V7l20NwfxJzTENzyvasAOCrwnjoCAKJTVNbfsTUJXtz
- 4lnf3X7qjksnfQ13KSCmg4whpJDsjnYMYtQNpXWaV5xbnnPetDw/FG+KP+kVfi1WUk4C
- CgWRlQzlSdbSnKfMpTkUBVbIZEUFbHp5P9EluSkRN8f8nM6ShN3GOC49+GIlU3AAS/ks
- 2qAf8WYMhutBNCT9iEi332b1/VZpJs8QyB+4FSV7w0uoMnFGKmz6gE+3YziGZ/Jzwebc
- A4Zgpf3CO8Ma9lqnCWN7ODcxCmvO6/LUuxwUQEZnLGto+Lz+EpmYK6VFrv76+2vuttwc
- y60Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9vkaKqpFog4RJaXK06vFucVy6NaXyIRoCFanRKsv9UY=;
- b=sMWlwIRExICq7DEwpjHHBdVB3/Dod1WmoCTC3zG4YfWgzfb3vcbDCR++vRVf+5dW7X
- Cl6XIYc1g738ht+6kZiAu7ghw3q8LccmjE0WSdOS2Btk5dvTGy6JS/brZW63LwxHCV9g
- x+rQwIjB/rCFJvIWU4MhQdicrGNv1T64P2MbzIE1O5tpux5dxwoR5ZeWMrOEvelhp6rQ
- c8ZEcm3bVdYC6os6eM1pkfZv+vShvRF/3ekR/R7K8YAnqTjKTUEnEah0HHBjT4T0VgcC
- crO7QcFqK3UOJPrMGsYxGle08/z96bWwIWB6FPsSYeJxVC/tleU3WYLu3axhcSRVeTwp
- epoA==
-X-Gm-Message-State: AOAM530uytm86JaHZ5R3Wk2/TGtSJ+IPpPEkqLggB5osLPd+WeRzjIJn
- Ys4GTBdGs0FWunCbizuo/qp7s+pmAXLcPtVlPjDE+g==
-X-Received: by 2002:a05:622a:303:: with SMTP id
- q3mr16114033qtw.235.1610814538072; 
- Sat, 16 Jan 2021 08:28:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1l2MDd-0003rB-28; Wed, 20 Jan 2021 17:44:53 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:45084
+ helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1l2MDa-0001SZ-PA; Wed, 20 Jan 2021 17:44:52 -0500
+Received: from localhost.localdomain
+ (dynamic-077-002-091-253.77.2.pool.telefonica.de [77.2.91.253])
+ by csgraf.de (Postfix) with ESMTPSA id 23E0A39000FA;
+ Wed, 20 Jan 2021 23:44:46 +0100 (CET)
+From: Alexander Graf <agraf@csgraf.de>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v6 00/11] hvf: Implement Apple Silicon Support
+Date: Wed, 20 Jan 2021 23:44:33 +0100
+Message-Id: <20210120224444.71840-1-agraf@csgraf.de>
+X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 MIME-Version: 1.0
-References: <20210115224645.1196742-1-richard.henderson@linaro.org>
- <20210115224645.1196742-9-richard.henderson@linaro.org>
-In-Reply-To: <20210115224645.1196742-9-richard.henderson@linaro.org>
-From: Warner Losh <imp@bsdimp.com>
-Date: Sat, 16 Jan 2021 09:28:47 -0700
-Message-ID: <CANCZdfpZ3S+chhSfM-1wNgz5b7Xkc8GNYmo3Sooe72qn9iH6Zw@mail.gmail.com>
-Subject: Re: [PATCH v3 08/21] bsd-user: Tidy VERIFY_READ/VERIFY_WRITE
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="00000000000057592a05b906fcc0"
-Received-SPF: none client-ip=2607:f8b0:4864:20::834;
- envelope-from=wlosh@bsdimp.com; helo=mail-qt1-x834.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=188.138.100.120; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /j6YDQKoSI+n
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Frank Yang <lfy@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FdujEixUxhDF
 
---00000000000057592a05b906fcc0
-Content-Type: text/plain; charset="UTF-8"
+Now that Apple Silicon is widely available, people are obviously excited
+to try and run virtualized workloads on them, such as Linux and Windows.
 
-On Fri, Jan 15, 2021 at 3:56 PM Richard Henderson <
-richard.henderson@linaro.org> wrote:
+This patch set implements a fully functional version to get the ball
+going on that. With this applied, I can successfully run both Linux and
+Windows as guests. I am not aware of any limitations specific to
+Hypervisor.framework apart from:
 
-> These constants are only ever used with access_ok, and friends.
-> Rather than translating them to PAGE_* bits, let them equal
-> the PAGE_* bits to begin.
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->
-
-This looks OK to me.
-
-Reviewed-by: Warner Losh <imp@bsdimp.com>
+  - Live migration / savevm
+  - gdbstub debugging (SP register)
 
 
-> ---
->  bsd-user/qemu.h | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
->
-> diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
-> index f8bb1e5459..4076adabd0 100644
-> --- a/bsd-user/qemu.h
-> +++ b/bsd-user/qemu.h
-> @@ -218,13 +218,12 @@ extern unsigned long x86_stack_size;
->
->  /* user access */
->
-> -#define VERIFY_READ 0
-> -#define VERIFY_WRITE 1 /* implies read access */
-> +#define VERIFY_READ  PAGE_READ
-> +#define VERIFY_WRITE (PAGE_READ | PAGE_WRITE)
->
-> -static inline int access_ok(int type, abi_ulong addr, abi_ulong size)
-> +static inline bool access_ok(int type, abi_ulong addr, abi_ulong size)
->  {
-> -    return page_check_range((target_ulong)addr, size,
-> -                            (type == VERIFY_READ) ? PAGE_READ :
-> (PAGE_READ | PAGE_WRITE)) == 0;
-> +    return page_check_range((target_ulong)addr, size, type) == 0;
->  }
->
->  /* NOTE __get_user and __put_user use host pointers and don't check
-> access. */
-> --
->
+Enjoy!
 
---00000000000057592a05b906fcc0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Alex
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jan 15, 2021 at 3:56 PM Richa=
-rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
-nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">These constants are only ever used with access_ok, and fr=
-iends.<br>
-Rather than translating them to PAGE_* bits, let them equal<br>
-the PAGE_* bits to begin.<br>
-<br>
-Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" =
-target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-Signed-off-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@li=
-naro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br></block=
-quote><div><br></div><div>This looks OK to me.</div><div><br></div><div>Rev=
-iewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com">imp@bsdimp.com<=
-/a>&gt;</div><div>=C2=A0<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
----<br>
-=C2=A0bsd-user/qemu.h | 9 ++++-----<br>
-=C2=A01 file changed, 4 insertions(+), 5 deletions(-)<br>
-<br>
-diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h<br>
-index f8bb1e5459..4076adabd0 100644<br>
---- a/bsd-user/qemu.h<br>
-+++ b/bsd-user/qemu.h<br>
-@@ -218,13 +218,12 @@ extern unsigned long x86_stack_size;<br>
-<br>
-=C2=A0/* user access */<br>
-<br>
--#define VERIFY_READ 0<br>
--#define VERIFY_WRITE 1 /* implies read access */<br>
-+#define VERIFY_READ=C2=A0 PAGE_READ<br>
-+#define VERIFY_WRITE (PAGE_READ | PAGE_WRITE)<br>
-<br>
--static inline int access_ok(int type, abi_ulong addr, abi_ulong size)<br>
-+static inline bool access_ok(int type, abi_ulong addr, abi_ulong size)<br>
-=C2=A0{<br>
--=C2=A0 =C2=A0 return page_check_range((target_ulong)addr, size,<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 (type =3D=3D VERIFY_READ) ? PAGE_READ : (PAGE_READ=
- | PAGE_WRITE)) =3D=3D 0;<br>
-+=C2=A0 =C2=A0 return page_check_range((target_ulong)addr, size, type) =3D=
-=3D 0;<br>
-=C2=A0}<br>
-<br>
-=C2=A0/* NOTE __get_user and __put_user use host pointers and don&#39;t che=
-ck access. */<br>
--- <br></blockquote><div><br></div><div><br></div><div>=C2=A0</div></div></=
-div>
+v1 -> v2:
 
---00000000000057592a05b906fcc0--
+  - New patch: hvf: Actually set SIG_IPI mask
+  - New patch: hvf: Introduce hvf vcpu struct
+  - New patch: hvf: arm: Mark CPU as dirty on reset
+  - Removed patch: hw/arm/virt: Disable highmem when on hypervisor.framework
+  - Removed patch: arm: Synchronize CPU on PSCI on
+  - Fix build on 32bit arm
+  - Merge vcpu kick function patch into ARM enablement
+  - Implement WFI handling (allows vCPUs to sleep)
+  - Synchronize system registers (fixes OVMF crashes and reboot)
+  - Don't always call cpu_synchronize_state()
+  - Use more fine grained iothread locking
+  - Populate aa64mmfr0 from hardware
+  - Make safe to ctrl-C entitlement application
+
+v2 -> v3:
+
+  - Removed patch: hvf: Actually set SIG_IPI mask
+  - New patch: hvf: arm: Add support for GICv3
+  - New patch: hvf: arm: Implement -cpu host
+  - Advance PC on SMC
+  - Use cp list interface for sysreg syncs
+  - Do not set current_cpu
+  - Fix sysreg isread mask
+  - Move sysreg handling to functions
+  - Remove WFI logic again
+  - Revert to global iothread locking
+
+v3 -> v4:
+
+  - Removed patch: hvf: arm: Mark CPU as dirty on reset
+  - New patch: hvf: Simplify post reset/init/loadvm hooks
+  - Remove i386-softmmu target (meson.build for hvf target)
+  - Combine both if statements (PSCI)
+  - Use hv.h instead of Hypervisor.h for 10.15 compat
+  - Remove manual inclusion of Hypervisor.h in common .c files
+  - No longer include Hypervisor.h in arm hvf .c files
+  - Remove unused exe_full variable
+  - Reuse exe_name variable
+
+v4 -> v5:
+
+  - Use g_free() on destroy
+
+v5 -> v6:
+
+  - Switch SYSREG() macro order to the same as asm intrinsics
+
+Alexander Graf (10):
+  hvf: Add hypervisor entitlement to output binaries
+  hvf: x86: Remove unused definitions
+  hvf: Move common code out
+  hvf: Introduce hvf vcpu struct
+  arm: Set PSCI to 0.2 for HVF
+  hvf: Simplify post reset/init/loadvm hooks
+  hvf: Add Apple Silicon support
+  arm: Add Hypervisor.framework build target
+  hvf: arm: Add support for GICv3
+  hvf: arm: Implement -cpu host
+
+Peter Collingbourne (1):
+  arm/hvf: Add a WFI handler
+
+ MAINTAINERS                  |  13 +
+ accel/hvf/entitlements.plist |   8 +
+ accel/hvf/hvf-all.c          |  54 +++
+ accel/hvf/hvf-cpus.c         | 466 +++++++++++++++++++
+ accel/hvf/meson.build        |   7 +
+ accel/meson.build            |   1 +
+ include/hw/core/cpu.h        |   3 +-
+ include/sysemu/hvf.h         |   2 +
+ include/sysemu/hvf_int.h     |  66 +++
+ meson.build                  |  40 +-
+ scripts/entitlement.sh       |  13 +
+ target/arm/cpu.c             |  13 +-
+ target/arm/cpu.h             |   2 +
+ target/arm/hvf/hvf.c         | 856 +++++++++++++++++++++++++++++++++++
+ target/arm/hvf/meson.build   |   3 +
+ target/arm/kvm_arm.h         |   2 -
+ target/arm/meson.build       |   2 +
+ target/i386/hvf/hvf-cpus.c   | 131 ------
+ target/i386/hvf/hvf-cpus.h   |  25 -
+ target/i386/hvf/hvf-i386.h   |  49 +-
+ target/i386/hvf/hvf.c        | 462 +++----------------
+ target/i386/hvf/meson.build  |   1 -
+ target/i386/hvf/vmx.h        |  24 +-
+ target/i386/hvf/x86.c        |  28 +-
+ target/i386/hvf/x86_descr.c  |  26 +-
+ target/i386/hvf/x86_emu.c    |  62 +--
+ target/i386/hvf/x86_mmu.c    |   4 +-
+ target/i386/hvf/x86_task.c   |  12 +-
+ target/i386/hvf/x86hvf.c     | 224 ++++-----
+ target/i386/hvf/x86hvf.h     |   2 -
+ 30 files changed, 1786 insertions(+), 815 deletions(-)
+ create mode 100644 accel/hvf/entitlements.plist
+ create mode 100644 accel/hvf/hvf-all.c
+ create mode 100644 accel/hvf/hvf-cpus.c
+ create mode 100644 accel/hvf/meson.build
+ create mode 100644 include/sysemu/hvf_int.h
+ create mode 100755 scripts/entitlement.sh
+ create mode 100644 target/arm/hvf/hvf.c
+ create mode 100644 target/arm/hvf/meson.build
+ delete mode 100644 target/i386/hvf/hvf-cpus.c
+ delete mode 100644 target/i386/hvf/hvf-cpus.h
+
+-- 
+2.24.3 (Apple Git-128)
+

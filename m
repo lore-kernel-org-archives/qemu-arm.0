@@ -1,60 +1,60 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp395345lfq;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp395349lfq;
         Wed, 20 Jan 2021 14:45:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz89kp+q+rByCu71QZ42j1sOJL/75m6Mt7D7FLSkBMEAAjg2ckG8jlVETj3j1MDkHNP1/JC
-X-Received: by 2002:a25:99c6:: with SMTP id q6mr17025370ybo.408.1611182727875;
-        Wed, 20 Jan 2021 14:45:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611182727; cv=none;
+X-Google-Smtp-Source: ABdhPJxjiVPCb6O2iPpGrtHCt1QC0keC4AQ/pGr7wCLJF5zPFYuEye1xu25B6MB7Nn75yOo+A4UX
+X-Received: by 2002:a25:3ac3:: with SMTP id h186mr15557764yba.155.1611182728795;
+        Wed, 20 Jan 2021 14:45:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611182728; cv=none;
         d=google.com; s=arc-20160816;
-        b=NAUxAfWevTNWcsWqgBBaPWlWh8jmhFmIAYZcxYmtUMs9mIghDqv+xDBILlV7XANsWX
-         0ZRDzBbh2ur9J7oINr8G4DtNOnYPuL0x6d4xFek6W78oehNZduwyHyShoy37U8pATy1w
-         ChPs1TzfHsNqnjD33mjYOWnUV6ykBbvvWZjTk7ZUGO7ogOe0yp6lL3uwIdpplfyAFMP2
-         1OhGFvOYXvzONC4v0ihFXV5H+HryJV2SijYmincmkYbMOvLMLKknPsV/lsiCgny4kRI2
-         JHZj4dI8Pz4eaKqxmLrZsl3uOG4v3Zb36Rwt0fdp/alRFqEf/6ueNTUHqkuXoW6ECFbd
-         a5iA==
+        b=ra+h1G6Zz8wXAjWZ4XxCbsZk65li84z/9E22S4stEv+dTnIjZYS51XYLfjI3PVAw0R
+         dj8rOIYTe6r37n62+GAXDvjPA018VdhbCigS6y7Uva3Lwa4Wqn+DfLFQBAar+X5+Y1fn
+         n4KQUIZDZuWCf5KxuIITOPSOFFX5p99EpD4vsiD7bvC3IvlnB4sUg7wQL7Y7GI3sXNgk
+         t4KIopolrzXAN/+PNvLPpArPHYn9tITpBZ27ZOVtqwj/MnU7XVx3lBozjmdlLf09jY21
+         RZ8lW3/E/WqQXzKf4kKUIYIs3GwYEbuvvA6B/8mJO+XjON7Z3mz5xqTPvUrPVSXCDeUI
+         jp2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=6L3wUH7aVkfC+FpPCuZCo9SAkwSalOkQPL0eoGH4gUI=;
-        b=OyTRiyuPwD4s0QDsulSevaXvsFETAW75FC+bDZVjn+ASSwkvv5HQBUlLFfyYvsRiL9
-         EmPmLsimiCjEqsrSeiV3cH/yPoqfWM+y+dfkhUFaSYAAr4F6vJfT8SZtSGBag8StQd9E
-         kKkSo8igjKxBCS9Xn7bdguPxMTsL00votHwDX/YtEJQb/upfOm2rfhkFkJ/dWkp2ac+o
-         V6mWD3X9Kx5sHjMdKUMtBg42eCUTtcVAK67EOeb6vLQo/eq7oUjN5ri8GAqvs4eQS5YX
-         PQMoy23FgfZxWhVSTuSjaS7gSsO04Uuc684ZaZY4/WE6hTaOqT4Zz0SdEe0iXuef/1e4
-         rC0g==
+        bh=KiWA/7bo1sIuCFANwyh3qyk+9sRL1V1lSKCXxx/+Ivs=;
+        b=rZcGmQ7oXjjhvDH/HUGxqahVmRgSaywEHlyYkQWTbncvUXVfM1sGSJJTElHTgi9Y4M
+         5lwk4fi8i8rM42EOD71OMSXZ6E20T7jKPsXW06nVWfUQ76/0LXR2rGB2ytAZEsNwObJu
+         T3bJL5d4sOraHlMTHKZgPsC8fDuzz0Uq+2X+GcFusiTHaAVY2uabgA29e3/p61oMPd/B
+         R5hs3rk5z6FmyneZsf3KqbZLn1J1G7UnojRRoVdzW1EKVOHkYg6Wh8KxktBd5wUBJdSx
+         btkTuXDHl7CoaQ3mveQsyODK5OsNdFEc3NOrLHn2CtQ+sQUh2vp8B+Ud8Dxlf6DcCi8F
+         puWw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n5si3367998ybc.86.2021.01.20.14.45.27
+        by mx.google.com with ESMTPS id j194si2959910ybg.237.2021.01.20.14.45.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Jan 2021 14:45:27 -0800 (PST)
+        Wed, 20 Jan 2021 14:45:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34502 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2MEB-0003tC-4w
-	for alex.bennee@linaro.org; Wed, 20 Jan 2021 17:45:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56568)
+	id 1l2MEC-0003v4-2x
+	for alex.bennee@linaro.org; Wed, 20 Jan 2021 17:45:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1l2MDe-0003rm-W3; Wed, 20 Jan 2021 17:44:55 -0500
-Received: from mail.csgraf.de ([188.138.100.120]:45100
+ id 1l2MDf-0003sm-Nr; Wed, 20 Jan 2021 17:44:56 -0500
+Received: from mail.csgraf.de ([188.138.100.120]:45200
  helo=zulu616.server4you.de) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1l2MDa-0001Sd-P9; Wed, 20 Jan 2021 17:44:54 -0500
+ id 1l2MDd-0001V5-MB; Wed, 20 Jan 2021 17:44:55 -0500
 Received: from localhost.localdomain
  (dynamic-077-002-091-253.77.2.pool.telefonica.de [77.2.91.253])
- by csgraf.de (Postfix) with ESMTPSA id B306239003C7;
- Wed, 20 Jan 2021 23:44:46 +0100 (CET)
+ by csgraf.de (Postfix) with ESMTPSA id BCA273900565;
+ Wed, 20 Jan 2021 23:44:49 +0100 (CET)
 From: Alexander Graf <agraf@csgraf.de>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 01/11] hvf: Add hypervisor entitlement to output binaries
-Date: Wed, 20 Jan 2021 23:44:34 +0100
-Message-Id: <20210120224444.71840-2-agraf@csgraf.de>
+Subject: [PATCH v6 06/11] hvf: Simplify post reset/init/loadvm hooks
+Date: Wed, 20 Jan 2021 23:44:39 +0100
+Message-Id: <20210120224444.71840-7-agraf@csgraf.de>
 X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 In-Reply-To: <20210120224444.71840-1-agraf@csgraf.de>
 References: <20210120224444.71840-1-agraf@csgraf.de>
@@ -88,114 +88,97 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 57RdR+SFunMM
+X-TUID: Ue1wDwe23b4M
 
-In macOS 11, QEMU only gets access to Hypervisor.framework if it has the
-respective entitlement. Add an entitlement template and automatically self
-sign and apply the entitlement in the build.
+The hooks we have that call us after reset, init and loadvm really all
+just want to say "The reference of all register state is in the QEMU
+vcpu struct, please push it".
+
+We already have a working pushing mechanism though called cpu->vcpu_dirty,
+so we can just reuse that for all of the above, syncing state properly the
+next time we actually execute a vCPU.
+
+This fixes PSCI resets on ARM, as they modify CPU state even after the
+post init call has completed, but before we execute the vCPU again.
+
+To also make the scheme work for x86, we have to make sure we don't
+move stale eflags into our env when the vcpu state is dirty.
 
 Signed-off-by: Alexander Graf <agraf@csgraf.de>
 Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
 Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
-
 ---
+ accel/hvf/hvf-cpus.c     | 27 +++++++--------------------
+ target/i386/hvf/x86hvf.c |  5 ++++-
+ 2 files changed, 11 insertions(+), 21 deletions(-)
 
-v1 -> v2:
-
-  - Make safe to ctrl-C
-
-v3 -> v4:
-
-  - Remove unused exe_full variable
-  - Reuse exe_name variable
----
- accel/hvf/entitlements.plist |  8 ++++++++
- meson.build                  | 29 +++++++++++++++++++++++++----
- scripts/entitlement.sh       | 13 +++++++++++++
- 3 files changed, 46 insertions(+), 4 deletions(-)
- create mode 100644 accel/hvf/entitlements.plist
- create mode 100755 scripts/entitlement.sh
-
-diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.plist
-new file mode 100644
-index 0000000000..154f3308ef
---- /dev/null
-+++ b/accel/hvf/entitlements.plist
-@@ -0,0 +1,8 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-+<plist version="1.0">
-+<dict>
-+    <key>com.apple.security.hypervisor</key>
-+    <true/>
-+</dict>
-+</plist>
-diff --git a/meson.build b/meson.build
-index 3d889857a0..c667d64498 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2146,9 +2146,14 @@ foreach target : target_dirs
-     }]
-   endif
-   foreach exe: execs
--    emulators += {exe['name']:
--         executable(exe['name'], exe['sources'],
--               install: true,
-+    exe_name = exe['name']
-+    exe_sign = 'CONFIG_HVF' in config_target
-+    if exe_sign
-+      exe_name += '-unsigned'
-+    endif
-+
-+    emulator = executable(exe_name, exe['sources'],
-+               install: not exe_sign,
-                c_args: c_args,
-                dependencies: arch_deps + deps + exe['dependencies'],
-                objects: lib.extract_all_objects(recursive: true),
-@@ -2156,7 +2161,23 @@ foreach target : target_dirs
-                link_depends: [block_syms, qemu_syms] + exe.get('link_depends', []),
-                link_args: link_args,
-                gui_app: exe['gui'])
--    }
-+
-+    if exe_sign
-+      emulators += {exe['name'] : custom_target(exe['name'],
-+                   install: true,
-+                   install_dir: get_option('bindir'),
-+                   depends: emulator,
-+                   output: exe['name'],
-+                   command: [
-+                     meson.current_source_dir() / 'scripts/entitlement.sh',
-+                     meson.current_build_dir() / exe_name,
-+                     meson.current_build_dir() / exe['name'],
-+                     meson.current_source_dir() / 'accel/hvf/entitlements.plist'
-+                   ])
-+      }
-+    else
-+      emulators += {exe['name']: emulator}
-+    endif
+diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
+index 2c6796604a..a324da2757 100644
+--- a/accel/hvf/hvf-cpus.c
++++ b/accel/hvf/hvf-cpus.c
+@@ -275,39 +275,26 @@ static void hvf_cpu_synchronize_state(CPUState *cpu)
+     }
+ }
  
-     if 'CONFIG_TRACE_SYSTEMTAP' in config_host
-       foreach stp: [
-diff --git a/scripts/entitlement.sh b/scripts/entitlement.sh
-new file mode 100755
-index 0000000000..c540fa6435
---- /dev/null
-+++ b/scripts/entitlement.sh
-@@ -0,0 +1,13 @@
-+#!/bin/sh -e
-+#
-+# Helper script for the build process to apply entitlements
-+
-+SRC="$1"
-+DST="$2"
-+ENTITLEMENT="$3"
-+
-+trap 'rm "$DST.tmp"' exit
-+cp -af "$SRC" "$DST.tmp"
-+codesign --entitlements "$ENTITLEMENT" --force -s - "$DST.tmp"
-+mv "$DST.tmp" "$DST"
-+trap '' exit
+-static void do_hvf_cpu_synchronize_post_reset(CPUState *cpu,
+-                                              run_on_cpu_data arg)
++static void do_hvf_cpu_synchronize_set_dirty(CPUState *cpu,
++                                             run_on_cpu_data arg)
+ {
+-    hvf_put_registers(cpu);
+-    cpu->vcpu_dirty = false;
++    /* QEMU state is the reference, push it to HVF now and on next entry */
++    cpu->vcpu_dirty = true;
+ }
+ 
+ static void hvf_cpu_synchronize_post_reset(CPUState *cpu)
+ {
+-    run_on_cpu(cpu, do_hvf_cpu_synchronize_post_reset, RUN_ON_CPU_NULL);
+-}
+-
+-static void do_hvf_cpu_synchronize_post_init(CPUState *cpu,
+-                                             run_on_cpu_data arg)
+-{
+-    hvf_put_registers(cpu);
+-    cpu->vcpu_dirty = false;
++    run_on_cpu(cpu, do_hvf_cpu_synchronize_set_dirty, RUN_ON_CPU_NULL);
+ }
+ 
+ static void hvf_cpu_synchronize_post_init(CPUState *cpu)
+ {
+-    run_on_cpu(cpu, do_hvf_cpu_synchronize_post_init, RUN_ON_CPU_NULL);
+-}
+-
+-static void do_hvf_cpu_synchronize_pre_loadvm(CPUState *cpu,
+-                                              run_on_cpu_data arg)
+-{
+-    cpu->vcpu_dirty = true;
++    run_on_cpu(cpu, do_hvf_cpu_synchronize_set_dirty, RUN_ON_CPU_NULL);
+ }
+ 
+ static void hvf_cpu_synchronize_pre_loadvm(CPUState *cpu)
+ {
+-    run_on_cpu(cpu, do_hvf_cpu_synchronize_pre_loadvm, RUN_ON_CPU_NULL);
++    run_on_cpu(cpu, do_hvf_cpu_synchronize_set_dirty, RUN_ON_CPU_NULL);
+ }
+ 
+ static void hvf_vcpu_destroy(CPUState *cpu)
+diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
+index 0f2aeb1cf8..3111c0be4c 100644
+--- a/target/i386/hvf/x86hvf.c
++++ b/target/i386/hvf/x86hvf.c
+@@ -435,7 +435,10 @@ int hvf_process_events(CPUState *cpu_state)
+     X86CPU *cpu = X86_CPU(cpu_state);
+     CPUX86State *env = &cpu->env;
+ 
+-    env->eflags = rreg(cpu_state->hvf->fd, HV_X86_RFLAGS);
++    if (!cpu_state->vcpu_dirty) {
++        /* light weight sync for CPU_INTERRUPT_HARD and IF_MASK */
++        env->eflags = rreg(cpu_state->hvf->fd, HV_X86_RFLAGS);
++    }
+ 
+     if (cpu_state->interrupt_request & CPU_INTERRUPT_INIT) {
+         cpu_synchronize_state(cpu_state);
 -- 
 2.24.3 (Apple Git-128)
 

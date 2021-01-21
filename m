@@ -1,102 +1,103 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp176489lfb;
-        Thu, 21 Jan 2021 11:32:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJynBch3FClFkXj3spb/MPM0s1omPdHWj6kA8hGepujhch9+1IGXT1gX4gqbazhW/hcMHXVs
-X-Received: by 2002:a25:aa84:: with SMTP id t4mr1206735ybi.483.1611257576079;
-        Thu, 21 Jan 2021 11:32:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611257576; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp177342lfb;
+        Thu, 21 Jan 2021 11:34:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzkSC5mI95W+OqJZYN2ZD0jP2U75cKH3eRrvumDLZATj//zFMTA5Q+sJojD5pMROeY2sddY
+X-Received: by 2002:a25:d9c3:: with SMTP id q186mr1412108ybg.262.1611257650242;
+        Thu, 21 Jan 2021 11:34:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611257650; cv=none;
         d=google.com; s=arc-20160816;
-        b=bIPCWYa3eSCNukJzeF2ytOQRTk691HsAQJhvbTKRP9yFts8PzBfW5NqTfA+e8QwXEJ
-         9CoSsRFKXGhZzEfaWw2irvJmAePMzVEfZosYn5qrGTSYBCfc0+js414zRlv0ZR7hbBid
-         tyEgzQfwqcNvXiGiC2prkSa3IhUJvQJWroDrQjSJ7fx7Xdqc3WrkKXEL8es+9xh4PWrx
-         9uZwKoJWGDVEC3qPaUVwB/DWVtVqatFQn6bwwiEPtPuQXoVxOtZBQx64udJGMfDWBDmo
-         b+XMwjbhQhgE3ko1X6uDeCsNrWyZA0eAnfyvBdJfq0OsvOsUQAJZ3z5DkFqDj409Z6kl
-         aI6Q==
+        b=Is0O2Z6hrZeyRtatEeZloEbG4gr2BRqkOxwj5OEGGbKo/VjhZZV9/R6v23mugWcNUV
+         w0HjZr9gl98PiCpMLhxdyc9hC7GVsHtp3y701SzOjAWGb8WW9RmyoNEJqTW/VRbrBLrl
+         3/XdK4VeGcdYAIKqeM8nofFrbARV5axIWBOigDGSl7+KtIpySem0x+ko3z+Bpp+qGdUY
+         ITeuR7R17jWfGe4Za9nE+RkGf5BjG/sMwLfOfKZ9AugM6LYZZxqz8yYXBJOepDhL9FI4
+         ZrhFM4C7m5QFtDVD2ajx+bfxVgsCp660lHsaal2zKsVks8l8FfLvssEVgPnQFeDxnLYV
+         Z6vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=o6QQiJy5R4qmIV1z0aGnCLcQYm3mM8qRJ5jTAs1T+H8=;
-        b=QcdnCq/vuqNr/JjZqEyizOoLoahoaokIsKuldbz7YIC7xo5aMvYkV3T8XdZqJOtY1b
-         U85hAmuKwvz4NRv5MVlF981AI/7ieo+tiUUbTXU7Z9cU3RK74ZsWwpn87vwmz6uCb4wu
-         Y6+tOKy7f+go7cwAvKarr5jAEo0doRogtKlzZQzmt1GmnW8SnKkd3zuIJ05kHh7ahPUQ
-         MQXx6aQwW1qa3GNRCNVhqeabstLU6onPBATBZv6B4W+X5pvbYOUZ0rYqUr8m7VsQASb0
-         zys0KDwyrJfly9NlRZdl3tBuExMb3aPbSxXH6usptOj5OW2PNbfUm0wv6B5KwTY1KEyk
-         KJUA==
+        bh=uDxVLnL9xv9QeWzNKaXg1U1KaegZzyNUwA1UoAWaXas=;
+        b=TKNwPO9J163N39qY5ZBNJ0QhS0VR2IO4u924Jrp/JnBNXlmMvb4lj4xvhJXAEge3RC
+         ELj/FEhccxiOtlCddLuRx1vV2DUUB3KuDlVzRQQ++WzmjcXvoZOGDFiIADxSsKQxKC64
+         SMmMNMcGdDpYGp4sBNoV+8dZfdu9bSfxxDondJNp7o/4CmFCxzVDaWPvFp8X0qxYiVDM
+         AvBeBT46DPtCdf+s0OsSl38Cg1d9tlBDNXHAJ67e5BeMeIpFqzsSvBDJdj7Lp8bvqT/d
+         N8HL1/QdOI2TPvPrDtEiCGGzf6AGmNQYT7+OG4x7uFQZA/t6ZmDkug+QMIwKUFpEb/n9
+         EVMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZIts7p2S;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XZhC+Xrx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3si6491241ybk.78.2021.01.21.11.32.55
+        by mx.google.com with ESMTPS id t2si5950510ybl.203.2021.01.21.11.34.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 11:32:56 -0800 (PST)
+        Thu, 21 Jan 2021 11:34:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZIts7p2S;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XZhC+Xrx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55330 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58966 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2fhP-0001FN-Bn
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:32:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55990)
+	id 1l2fib-0002ns-Jd
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:34:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fIW-0002dV-UC
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:12 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:40575)
+ id 1l2fIV-0002Yf-2n
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:11 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:38002)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fI8-0005ww-Mc
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:12 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id c12so2816479wrc.7
- for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:47 -0800 (PST)
+ id 1l2fI7-0005v6-2E
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:10 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id y187so2436665wmd.3
+ for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=o6QQiJy5R4qmIV1z0aGnCLcQYm3mM8qRJ5jTAs1T+H8=;
- b=ZIts7p2SirGlVpgj+pmUABXAwdDoIRnny+XuuK8dCw7Oj7KL/umjn2C7T/UKu+qgal
- ZT2o4cpO0L55LtHBgOxX5qkFLrEd9/bJjkOzUzvZIuPv1CbN6LelHBLwX+gfOPaOsWCu
- YfI8Thho5dRD3GM24zPrJVh0At82R4bstvG2zvnDBCc4KiE8MMa8Uvr0G5fezNagRa2v
- 4ddl4ooHQX6PlVt3GdSobGFUd0xQZEPcAaSYsq7N4owfe2glYhCvGf7WAs+1meSTF0pW
- IpJxs8Zho3c3ZM00PARP1LVjxSoJpSetBhHye5ELdEFbUq/XjbPYAOhCnfInSL9CLT2V
- V7yw==
+ bh=uDxVLnL9xv9QeWzNKaXg1U1KaegZzyNUwA1UoAWaXas=;
+ b=XZhC+Xrx9Ww1AlqhNOlETwxevwiCnjLdAIp1pjcgbcGVsD92fuKCGyiUz3TBe92YZn
+ sTog1D1Fay1tTvbP2YBT31aqr/rnKy+OjqLty4wKss8KagBRAvNarGbCpBCC3CwFz6sL
+ 26pWQBVzXQcWXn9wwDDuMQctqKac76px5OglnGulWMUSej2YwQrr4p/dumOgY+8zSmVy
+ Bq2uNk1pyzuT81BHRHC9H2DoWlMk/8irKrT+i8i4GwP0amtV0/UdN7qyFEAw30Y9ZhRt
+ +rYPAXvW6gXz/PWLFnCHnfVLuvv4rfWkutr1sIJ+lH9nooNEJo6+vtjeVRJDK+GrY0pE
+ sSUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=o6QQiJy5R4qmIV1z0aGnCLcQYm3mM8qRJ5jTAs1T+H8=;
- b=o77vDIlyeLA5WrLs6leko3d3laz2v85j6jyHCh+gxSIBDNNLFl0yYQwynG53bZIG7u
- 6HF/jEdUhO/Gv5NCnA0+yq45AZupxPO0hOeKOuVq9ObqVe6qZqajSenmvfyusRKUtxaT
- 0DvNrEDWPvRMH+nYn58QnvSk7YSlGfA4pawmv9abwP/MdUcTtyR3zIycZqGXpRbI+rjz
- w+Nd42xe/LOlGnga4VAUGgY1GwC4tCnfQLX5a7qU1SRKmWkWsrdMs3HHJA8Z6UHMUFIn
- 12QMMnsm6vYkyTfCQnYod1hMuNZqmHU9/EwI0T6HwZKpH7EqtN93j5C5kNPLD1EX6JP1
- VXHg==
-X-Gm-Message-State: AOAM530hPYIeSyJ32l4mCDP1G/3pizg0XIDU3McrPTjjHQCH8LPAWntr
- bm0bqvdKkbdPVzgb7dubjFsTqg==
-X-Received: by 2002:a5d:6204:: with SMTP id y4mr941451wru.48.1611256006367;
- Thu, 21 Jan 2021 11:06:46 -0800 (PST)
+ bh=uDxVLnL9xv9QeWzNKaXg1U1KaegZzyNUwA1UoAWaXas=;
+ b=nVic41AOzdq7mbs90D04I9qRXctOIT1IA0QG3bvYHJ/A5fQEwctSvlRt4dZmGM8zi+
+ z+I5+RgILO6KXGiPwhNr/19lNKWsRAVZny7pOrxKOkZ7drCsMafn8FHGFwj7Re6qKLgM
+ jIshu5Gtva8YGA7Q1703SqSNUmWn3HTBdklbjr9uTqyEYorfpwGQklJUnE6J2G+NOVXb
+ kePs/f2ZeA0Aq/fYYf+5rQJiNiYGvosI6phv+3bT21sVtZICp/5OrJ3ZYUQJSBywyu86
+ /fhEWav4rZIWkK4DdqlbAr7mgc6ul8qRTs8Aze3z0lZb/r2zkOY4jeTOc9FJS7Lw+Seh
+ QsIQ==
+X-Gm-Message-State: AOAM533zbxs2H5AQ5gvQp7SCBithvpnouVxAtsKwCpkA1NO/RxHsDFk7
+ rL8p53QhJDfLV7584QZlp9NLoA==
+X-Received: by 2002:a1c:9cc5:: with SMTP id f188mr674223wme.171.1611256004490; 
+ Thu, 21 Jan 2021 11:06:44 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.45
+ by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jan 2021 11:06:45 -0800 (PST)
+ Thu, 21 Jan 2021 11:06:44 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 22/25] hw/arm/armsse: Use Clock to set system_clock_scale
-Date: Thu, 21 Jan 2021 19:06:19 +0000
-Message-Id: <20210121190622.22000-23-peter.maydell@linaro.org>
+Subject: [PATCH 20/25] hw/watchdog/cmsdk-apb-watchdog: Convert to use Clock
+ input
+Date: Thu, 21 Jan 2021 19:06:17 +0000
+Message-Id: <20210121190622.22000-21-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
 References: <20210121190622.22000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,68 +121,67 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2DXgn4GUWbCr
+X-TUID: VTgHznBEii0G
 
-Use the MAINCLK Clock input to set the system_clock_scale variable
-rather than using the mainclk_frq property.
+Switch the CMSDK APB watchdog device over to using its Clock input;
+the wdogclk_frq property is now ignored.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-At some point we should make the SysTick take a Clock itself so
-that we can get rid of the system_clock_scale global entirely.
-(In fact we want two Clocks: one that is the CPU clock and one
-for the 'external reference clock' whose period is currently
-hardcoded at 1000ns in systick_scale()...)
----
- hw/arm/armsse.c | 21 +++++++++++++++++----
- 1 file changed, 17 insertions(+), 4 deletions(-)
+ hw/watchdog/cmsdk-apb-watchdog.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 4349ce9bfdb..1da0c1be4c7 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -232,6 +232,16 @@ static void armsse_forward_sec_resp_cfg(ARMSSE *s)
-     qdev_connect_gpio_out(dev_splitter, 2, s->sec_resp_cfg_in);
+diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
+index b03bcb73628..9cad0c67da4 100644
+--- a/hw/watchdog/cmsdk-apb-watchdog.c
++++ b/hw/watchdog/cmsdk-apb-watchdog.c
+@@ -310,6 +310,15 @@ static void cmsdk_apb_watchdog_reset(DeviceState *dev)
+     ptimer_transaction_commit(s->timer);
  }
  
-+static void armsse_mainclk_update(void *opaque)
++static void cmsdk_apb_watchdog_clk_update(void *opaque)
 +{
-+    ARMSSE *s = ARM_SSE(opaque);
-+    /*
-+     * Set system_clock_scale from our Clock input; this is what
-+     * controls the tick rate of the CPU SysTick timer.
-+     */
-+    system_clock_scale = clock_ticks_to_ns(s->mainclk, 1);
++    CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(opaque);
++
++    ptimer_transaction_begin(s->timer);
++    ptimer_set_period_from_clock(s->timer, s->wdogclk, 1);
++    ptimer_transaction_commit(s->timer);
 +}
 +
- static void armsse_init(Object *obj)
+ static void cmsdk_apb_watchdog_init(Object *obj)
  {
-     ARMSSE *s = ARM_SSE(obj);
-@@ -451,9 +461,11 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+@@ -319,7 +328,8 @@ static void cmsdk_apb_watchdog_init(Object *obj)
+                           s, "cmsdk-apb-watchdog", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+     sysbus_init_irq(sbd, &s->wdogint);
+-    s->wdogclk = qdev_init_clock_in(DEVICE(s), "WDOGCLK", NULL, NULL);
++    s->wdogclk = qdev_init_clock_in(DEVICE(s), "WDOGCLK",
++                                    cmsdk_apb_watchdog_clk_update, s);
+ 
+     s->is_luminary = false;
+     s->id = cmsdk_apb_watchdog_id;
+@@ -329,9 +339,9 @@ static void cmsdk_apb_watchdog_realize(DeviceState *dev, Error **errp)
+ {
+     CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(dev);
+ 
+-    if (s->wdogclk_frq == 0) {
++    if (!clock_has_source(s->wdogclk)) {
+         error_setg(errp,
+-                   "CMSDK APB watchdog: wdogclk-frq property must be set");
++                   "CMSDK APB watchdog: WDOGCLK clock must be connected");
          return;
      }
  
--    if (!s->mainclk_frq) {
--        error_setg(errp, "MAINCLK_FRQ property was not set");
--        return;
-+    if (!clock_has_source(s->mainclk)) {
-+        error_setg(errp, "MAINCLK clock was not connected");
-+    }
-+    if (!clock_has_source(s->s32kclk)) {
-+        error_setg(errp, "S32KCLK clock was not connected");
-     }
+@@ -342,7 +352,7 @@ static void cmsdk_apb_watchdog_realize(DeviceState *dev, Error **errp)
+                            PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
  
-     assert(info->num_cpus <= SSE_MAX_CPUS);
-@@ -1115,7 +1127,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-      */
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
- 
--    system_clock_scale = NANOSECONDS_PER_SECOND / s->mainclk_frq;
-+    /* Set initial system_clock_scale from MAINCLK */
-+    armsse_mainclk_update(s);
+     ptimer_transaction_begin(s->timer);
+-    ptimer_set_freq(s->timer, s->wdogclk_frq);
++    ptimer_set_period_from_clock(s->timer, s->wdogclk, 1);
+     ptimer_transaction_commit(s->timer);
  }
  
- static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
 -- 
 2.20.1
 

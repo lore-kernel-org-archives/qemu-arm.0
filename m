@@ -1,102 +1,103 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp162925lfb;
-        Thu, 21 Jan 2021 11:13:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxFh5gkrbhoj3EMquyUuUAOHGKtVleBiEoi71dEnFPiSaIsLDZoPjPMys+ToLaKe7mRfw63
-X-Received: by 2002:a05:6902:1001:: with SMTP id w1mr1201769ybt.176.1611256382567;
-        Thu, 21 Jan 2021 11:13:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611256382; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp163101lfb;
+        Thu, 21 Jan 2021 11:13:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyUdRywd+jkFXLbb6kceLf53NM+L9udwW+mf+744TLSVT5Qcr3W3kxq3fxTo29xkW0GGfvV
+X-Received: by 2002:a25:b988:: with SMTP id r8mr91111ybg.268.1611256398904;
+        Thu, 21 Jan 2021 11:13:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611256398; cv=none;
         d=google.com; s=arc-20160816;
-        b=wgOlZ5vcA/uu2uxuVeTLS3l9ELHA8RijvsHCgXpGWnCxvHlWFndpR6H/TVh4ayi6qP
-         aGj+dzF2vKywAfyf+xrWnxeXGHt/CpeloEqHgKUbKaqpGdiFXoN6YMeSyx26PfxJDjnP
-         XLWHIe/dGydHfPp+4BABHao+JtgNL5DcYTcBoueoeypbUiJd1k3ALRDrzhutaM8O/rGp
-         8HR6I7v/VUfad3XJQKyieBPk2nFfIovCm4hJNhipl7+bH7PyKQRTBsaIjA27whzFm/0t
-         YKnVk4aJz27u4Vc1FnmV+APVy0UaC7BrzqxLzf2TG/B5S+/JwdJr1U6B1rHqoz7oaTAo
-         C3JQ==
+        b=OHpfLluCciRZOuOBqbL/A0n6/0PQd+lTA/kf5pab4Ps2rLvg2JofCDL7Tekf/TVbFP
+         ukTwRxzpL/8DWXl6ugxED6TJXy9ItlAAnbvCpQcT2N7g5t7g6idzC+7u/zTEvf73x8G8
+         aotskSEPiF8DHOmYZj04DD+2L9DHHJF7+RwcrLmkhWIB2XDFKKWKGtY0ZB7EZkoIV8Jv
+         KDlGi04T8882hb2MAJ2j0FzJ9ofzLVdf1E+oIM+ok+6ZFS8ZKCmhPTjBfjCQENxaTKQB
+         xekgpHXG4fhEBF1KitFU9HZWVq++5gf1LkqNVDNALDDv3xHk77wR/I3ptUQ6+dS7MAEL
+         I8EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=J9BR/GO6dAcwmljpzro+bgjrMat3zg7pQ+dtLLqxHsc=;
-        b=hiv2qdk+tVcLpxS5DkcKzeHfcttG8DR6wqyqh+yYyy9+ewJeA63yFTZuOtBakJsB4X
-         qnON3i5hGdZMTKAFrE8hDUfa2/Uygq514bqY8cMbiorsVt0vY6kQSRQs/+twUJY3LWHe
-         nDe1wsCPyp0uSRBGrgOw0yzCzML5VPqVDa1SHoIyF8FnIcyykDE4jgnRNKp9BEhwdHlr
-         7NjmsPPulvZ4jGHCt+hgjalvnnz482FOUOBcgRWSxJET0fgxrw0wWlRbzjqb3IEJkuvI
-         u1tYs2XwZVoGrDih67/KjGdAXkXW/MVDMaYTljRjTs5sovMOJbygGVzmxaScqDl53gzX
-         hnQg==
+        bh=KBXfwM4T9Rp9h29Xxm0HwwLnhBuBHTwg/UkEmxOGyBA=;
+        b=IeQitjf9NUF72WJBoOTizLGLlkxvQaiwPMVG28BhVriCLqCQ0ZCOLIdE1W8X2r3hi0
+         Nx+Uxi3QJCwHXnQwKcn+vbI7dWuMA3diNeisvDLQyXx2JwpcPSSKbkuY8A/QBW7RHWy0
+         oLw8nE3GR1GrLwYmQ67Ct+gMNmmozs7+kbfH9M66BMuETnpZ2/ff9qcYc85x3uPpSiFi
+         YIjP1l+DycdotexjtxXEMjRSjnBGYC+mNr+j35T9Wugb7B+rbVtG8NiU+a9OmSVmOkbL
+         8ZRcnDofc/q5FPQrT+/lscDUWyy7vgxrGiMnpgHiLG7/IPQCnnEJVb2vzdAE6leQRDXd
+         THsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=u2DYnA5U;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HbQ+RJT+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e72si6940140ybf.129.2021.01.21.11.13.02
+        by mx.google.com with ESMTPS id e72si6940811ybf.129.2021.01.21.11.13.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 11:13:02 -0800 (PST)
+        Thu, 21 Jan 2021 11:13:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=u2DYnA5U;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HbQ+RJT+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2fO9-0007y2-Ub
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:13:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55572)
+	id 1l2fOP-0008D4-SM
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:13:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fI5-0002En-FN
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:47 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:52022)
+ id 1l2fIL-0002MQ-4j
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:02 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:36225)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fHz-0005o7-Do
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:45 -0500
-Received: by mail-wm1-x336.google.com with SMTP id m2so2404689wmm.1
- for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:33 -0800 (PST)
+ id 1l2fI1-0005rv-0t
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:58 -0500
+Received: by mail-wm1-x334.google.com with SMTP id v184so2445513wma.1
+ for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=J9BR/GO6dAcwmljpzro+bgjrMat3zg7pQ+dtLLqxHsc=;
- b=u2DYnA5U4Z8C3w7JhcYg0Vixe5xG6Jep7LASdE1W3KY+Xj7m+J/12cImVpSSKCBBhE
- l35JrWTh1MaUQJD8+vO9/Kmv9ZBsiGrMZbqyciGiaIS73Wsz6AkV5A8a3RhyQHAuCZL+
- XdK6DapBZi8hAg5BNjFmirw+qIbFIndKAi20hgXaWAOrik35x74OF3qFUEWYhqcTG37o
- 0ay2Ze4AXXXEwk+pdP0dwAIYdYjI9ntVc3aFiZ+qsu1p+dK7c8V5UiULtYJSdmI+hc6J
- jPIFTro/oO0q+1QKAyu0m/GBXhxX523EpqlgWhsclABlZALXj/5O8fk2O9sEVY7OgQ3/
- TZmQ==
+ bh=KBXfwM4T9Rp9h29Xxm0HwwLnhBuBHTwg/UkEmxOGyBA=;
+ b=HbQ+RJT+9V0Kaew+eV+iz8pVd8lP/UKHrSmfNy1iwMRa6CoHQdj4DXCeFfV25GpQ10
+ flNoPhrMhLBQeC/wIypvM22vfONFPftnK7jVduecv9WsEcpQ5nCNoqq4U8XeqWmwz45Q
+ B5OdBtR8Du7sBUx0C7ZhgIIzbK/dkpFxzHAZWF1guIU6i18DdsS1FxPvB2Ed8raYLzry
+ xywU7jVHAFFJz7otfgUQR3V2aUzzjXgw217H8uepnVWWJh1HRW7OEGOfEdDcHX90EeKj
+ Kl06i3vv1bwHTt/RhFFNGrlHarW+uKVuUauKusOtbubpXuSp6Zj0xTIQwFc4uen2UC1L
+ luvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=J9BR/GO6dAcwmljpzro+bgjrMat3zg7pQ+dtLLqxHsc=;
- b=Dj1JDw2KF+j7pFrGJAFo9DhW+86LcS9HuIhFwbtLEXIm0OJ6YqBNzHMxMTtg3GX6HC
- QyIoYfNOZfPjOIMAti3FMzc3dY4xJdqZoHYXTPLzMowAfxhROc7fzUJi/IPZDGRa99Ew
- qIWzBJeRwYyY6pwSnydI1ujUNJyFY8b/FpyZYTV2peHIz8f6VAMZ2Uyrr5FcyUFyuQUx
- 7XArE4IZdKKJ8Sv9kPtOSfc32IFTJ9ZI9EoTl0cz4VkHwC1Pwm+Heiy1zeyu+x4z3hjO
- ML1v7eTFnE3vKB+xR04tEvTY7grP6UsJCLNwSGX69djFOdqCPgFkjtglct5K/d5fpytN
- 53VQ==
-X-Gm-Message-State: AOAM532qO2TVJaLYm/PpvZTT4DY1oSDmQm5VlLP5mfoDsyiIa0G586uz
- mAADN41kH0o4ouyGcQ835kfkSQ==
-X-Received: by 2002:a7b:ca4d:: with SMTP id m13mr788208wml.28.1611255992323;
- Thu, 21 Jan 2021 11:06:32 -0800 (PST)
+ bh=KBXfwM4T9Rp9h29Xxm0HwwLnhBuBHTwg/UkEmxOGyBA=;
+ b=jT3mdNt71rMtUjWhJklcFtsF1TbF9UPXK5Wh9+BzM4EWjBAkWWhOilXTYzwzem7ARX
+ dgnRlsrrE/DXoD/81vuXV47l8qPMaIE2e5iMACDoEyStQJGYE8Q6PFGTm7b0bAzzHjFb
+ vi2blKgFz51aemMMon6F3rj2iVDvR1CYHjVJtJnP/4YX3nqAEdRFLxjqk3HPTkT1IbLE
+ 4f1OgAZIXBb8GxOdCYcAJUZpNOtg5N3cnOi/vX4K53uqijt7ipcquUmyiTFKgqS1Va2S
+ JneNWde2rQkgnKwvcSbIvcUameNdIID+CMJ1cO+OA/c/SeP+Tk8u3m1Q4v2uKnYVeCXX
+ JecA==
+X-Gm-Message-State: AOAM532paaLGng6XNsgRenorFsPMtGd09kq+bfvH/lGBPopZGs0JqglU
+ nFv/hg2RoobJry/OwavVuB52nDz1CFrwTA==
+X-Received: by 2002:a05:600c:29cc:: with SMTP id
+ s12mr736043wmd.180.1611255999681; 
+ Thu, 21 Jan 2021 11:06:39 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.31
+ by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jan 2021 11:06:31 -0800 (PST)
+ Thu, 21 Jan 2021 11:06:39 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 07/25] hw/timer/cmsdk-apb-timer: Add Clock input
-Date: Thu, 21 Jan 2021 19:06:04 +0000
-Message-Id: <20210121190622.22000-8-peter.maydell@linaro.org>
+Subject: [PATCH 15/25] hw/arm/musca: Create and connect ARMSSE Clocks
+Date: Thu, 21 Jan 2021 19:06:12 +0000
+Message-Id: <20210121190622.22000-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
 References: <20210121190622.22000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,92 +121,66 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oq/zK7VyMH0l
+X-TUID: 1ejLnWsKzpQM
 
-As the first step in converting the CMSDK_APB_TIMER device to the
-Clock framework, add a Clock input.  For the moment we do nothing
-with this clock; we will change the behaviour from using the pclk-frq
-property to using the Clock once all the users of this device have
-been converted to wire up the Clock.
-
-Since the device doesn't already have a doc comment for its "QEMU
-interface", we add one including the new Clock.
-
-This is a migration compatibility break for machines mps2-an505,
-mps2-an521, musca-a, musca-b1.
+Create and connect the two clocks needed by the ARMSSE.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/timer/cmsdk-apb-timer.h | 9 +++++++++
- hw/timer/cmsdk-apb-timer.c         | 7 +++++--
- 2 files changed, 14 insertions(+), 2 deletions(-)
+ hw/arm/musca.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/include/hw/timer/cmsdk-apb-timer.h b/include/hw/timer/cmsdk-apb-timer.h
-index baa009bb2da..fc2aa97acac 100644
---- a/include/hw/timer/cmsdk-apb-timer.h
-+++ b/include/hw/timer/cmsdk-apb-timer.h
-@@ -15,11 +15,19 @@
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
- #include "hw/ptimer.h"
-+#include "hw/clock.h"
+diff --git a/hw/arm/musca.c b/hw/arm/musca.c
+index d82bef11cf2..a9292482a06 100644
+--- a/hw/arm/musca.c
++++ b/hw/arm/musca.c
+@@ -33,6 +33,7 @@
+ #include "hw/misc/tz-ppc.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/rtc/pl031.h"
++#include "hw/qdev-clock.h"
  #include "qom/object.h"
  
- #define TYPE_CMSDK_APB_TIMER "cmsdk-apb-timer"
- OBJECT_DECLARE_SIMPLE_TYPE(CMSDKAPBTimer, CMSDK_APB_TIMER)
+ #define MUSCA_NUMIRQ_MAX 96
+@@ -82,6 +83,8 @@ struct MuscaMachineState {
+     UnimplementedDeviceState sdio;
+     UnimplementedDeviceState gpio;
+     UnimplementedDeviceState cryptoisland;
++    Clock *sysclk;
++    Clock *s32kclk;
+ };
  
-+/*
-+ * QEMU interface:
-+ *  + QOM property "pclk-frq": frequency at which the timer is clocked
-+ *  + Clock input "pclk": clock for the timer
-+ *  + sysbus MMIO region 0: the register bank
-+ *  + sysbus IRQ 0: timer interrupt TIMERINT
-+ */
- struct CMSDKAPBTimer {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -29,6 +37,7 @@ struct CMSDKAPBTimer {
-     qemu_irq timerint;
-     uint32_t pclk_frq;
-     struct ptimer_state *timer;
-+    Clock *pclk;
+ #define TYPE_MUSCA_MACHINE "musca"
+@@ -96,6 +99,8 @@ OBJECT_DECLARE_TYPE(MuscaMachineState, MuscaMachineClass, MUSCA_MACHINE)
+  * don't model that in our SSE-200 model yet.
+  */
+ #define SYSCLK_FRQ 40000000
++/* Slow 32Khz S32KCLK frequency in Hz */
++#define S32KCLK_FRQ (32 * 1000)
  
-     uint32_t ctrl;
-     uint32_t value;
-diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
-index ae9c5422540..c63145ff553 100644
---- a/hw/timer/cmsdk-apb-timer.c
-+++ b/hw/timer/cmsdk-apb-timer.c
-@@ -35,6 +35,7 @@
- #include "hw/sysbus.h"
- #include "hw/irq.h"
- #include "hw/registerfields.h"
-+#include "hw/qdev-clock.h"
- #include "hw/timer/cmsdk-apb-timer.h"
- #include "migration/vmstate.h"
+ static qemu_irq get_sse_irq_in(MuscaMachineState *mms, int irqno)
+ {
+@@ -367,6 +372,11 @@ static void musca_init(MachineState *machine)
+         exit(1);
+     }
  
-@@ -212,6 +213,7 @@ static void cmsdk_apb_timer_init(Object *obj)
-                           s, "cmsdk-apb-timer", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->timerint);
-+    s->pclk = qdev_init_clock_in(DEVICE(s), "pclk", NULL, NULL);
- }
- 
- static void cmsdk_apb_timer_realize(DeviceState *dev, Error **errp)
-@@ -236,10 +238,11 @@ static void cmsdk_apb_timer_realize(DeviceState *dev, Error **errp)
- 
- static const VMStateDescription cmsdk_apb_timer_vmstate = {
-     .name = "cmsdk-apb-timer",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
-         VMSTATE_PTIMER(timer, CMSDKAPBTimer),
-+        VMSTATE_CLOCK(pclk, CMSDKAPBTimer),
-         VMSTATE_UINT32(ctrl, CMSDKAPBTimer),
-         VMSTATE_UINT32(value, CMSDKAPBTimer),
-         VMSTATE_UINT32(reload, CMSDKAPBTimer),
++    mms->sysclk = clock_new(OBJECT(machine), "SYSCLK");
++    clock_set_hz(mms->sysclk, SYSCLK_FRQ);
++    mms->s32kclk = clock_new(OBJECT(machine), "S32KCLK");
++    clock_set_hz(mms->s32kclk, S32KCLK_FRQ);
++
+     object_initialize_child(OBJECT(machine), "sse-200", &mms->sse,
+                             TYPE_SSE200);
+     ssedev = DEVICE(&mms->sse);
+@@ -376,6 +386,8 @@ static void musca_init(MachineState *machine)
+     qdev_prop_set_uint32(ssedev, "init-svtor", mmc->init_svtor);
+     qdev_prop_set_uint32(ssedev, "SRAM_ADDR_WIDTH", mmc->sram_addr_width);
+     qdev_prop_set_uint32(ssedev, "MAINCLK_FRQ", SYSCLK_FRQ);
++    qdev_connect_clock_in(ssedev, "MAINCLK", mms->sysclk);
++    qdev_connect_clock_in(ssedev, "S32KCLK", mms->s32kclk);
+     /*
+      * Musca-A takes the default SSE-200 FPU/DSP settings (ie no for
+      * CPU0 and yes for CPU1); Musca-B1 explicitly enables them for CPU0.
 -- 
 2.20.1
 

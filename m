@@ -1,95 +1,95 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp283714lfq;
-        Thu, 21 Jan 2021 02:04:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxdwedO9iIkJ0ZNAT3EK21Apn6Rt7F4/pAkG7i4CJ30pa1TXIKbqtk2PV2wLLCIbDhVRI+C
-X-Received: by 2002:a25:3bd5:: with SMTP id i204mr600734yba.19.1611223478076;
-        Thu, 21 Jan 2021 02:04:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611223478; cv=none;
+Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp101996lfq;
+        Thu, 21 Jan 2021 06:19:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzp7xLNBZywrlJJow1gqNE1zeLDyw5etgpoPLlp3NyyCCHsIUAn/1OuDT7rX5FqsMjbwdZj
+X-Received: by 2002:a25:e90a:: with SMTP id n10mr21050341ybd.296.1611238749031;
+        Thu, 21 Jan 2021 06:19:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611238749; cv=none;
         d=google.com; s=arc-20160816;
-        b=seSLW7dBnHHj1BrbUHFHCmFq9g4qa4NdbMU9SwKkrZ9+8USK6Kn/eT1clON0n7YFN5
-         Zh6MxKzoWyiFRHy7ZNEAIAP/eWs8Tv0WaJR/kZ3m4j+8vjAuXhLElyNLPGnNnqXA8Igb
-         sXtdsnkQRBusXOSaF50U0L5rQg5FiI9de8aSo0Yu+TOEeUG6VCm7EfdxTy3oRjoq4ai+
-         n5UdD39mFihhLRj5sNQNYHEUzpg6juvUmmpdnuZFlAcaoIe2mJvXRZa7npNBtEPN7/gt
-         lf+TAyR/RrZRtLPImxuGUUsUmey7kJMFqb6/90zUTsOh7GDxRQJa0nNI5ylyma7geyhu
-         C9BA==
+        b=nbI7X6dnuJSEeUQEYcjRJr/iBbq05VkxmUdzcLftcGwrVq+wwijro7EvzzB/3GDL0F
+         rdyyyGQWAOSBoIPRa9xUDpV+TQJQu1ZZ8fHXkctLn9+94ainv81k8Fs0huXoJGxbZOVH
+         Cowk+KcHAXep4a5gvPWDNXc3+LJx0Y8dI/f5g+8eRW826LV+6Qjecu9H34pDX+vYsBs+
+         xKdsOUeaBxI62WlkAdw9lonep2+XXaz/ioWamH/RFsjkxQfX4Kk2+OUrT0jkxqhR8HIP
+         gVSJjfY7Y+jqrZ7vrBeVUUxie2HYkmh842H47Vfbp/U/L2UMfOH+T+0v+q1uP5aEsOfK
+         g+CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:to:from:date:dkim-signature;
-        bh=SXwHnFyIoKrX28rtRsuF9EfUt1H9NkHp6Mh1clKX/5E=;
-        b=DBU+2hFvGQ7oJFzxJJQqQhN+0re+QIO+8EH0FUSJwqIZrRaEzTipfvXlvhUircvg2r
-         25xLtP6x8pkkn31zItApfBkBxSz3wHGdvEfj5G9UTscWoIl9+gMYoTGr2bSW/9kxKcXM
-         0ScOthGiACELXib4ONKX0/vZre10QbRtn3pSH/Sry1ipxBfLX3wQS0yF6MzWaa70XoFC
-         ZD/4waWM0crrxmHECpextdwTZJNbPE2E8IKgS5QsDoZtMiR2DN4oLBAChR3WIt48weCg
-         TVzBCesGnbtYVFmpTEAyr+oAMhhd8Mvw3XqIykoiCPw3jHGwfuYE+fWATcQxVyQCfcFd
-         2j9Q==
+        bh=9Ba2VZkAK1Ral+x3NWU0sxI9dcGvQgZH744lMcTH4XU=;
+        b=VKL0ZO4F0vYHsupBaFGvtGKHDf6oyi/J4k2RgmfRSxugFJsWKVcgCWbyHBgvG08Wwz
+         1ASPW5/wRcuS86cuwVx3Dqqoajn/3XaVl1ljlqcRFvkTPKHmNoGeHnEbBGpcBHSnCXaN
+         VS2MtuLFj/E197iWKkQAHG2ZdHIKwBIsNmJ6K8NUlWbWcd/pjG3R4z07MkFiMT5QtV5+
+         FKnaTWDkCtu1V3NQmXG3A4BOwEx/jOuQ+mzdk+2TzK8gz7+/7gb7y4qDsuTwhF+DF5gh
+         1L0W2FV2r8YWbEFlCklEvnDP/oJ39LwRme1qWLxe6xFAUyGUclbcVAiA+2onKoejinZj
+         aHkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oklYX0oK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zew26Ypi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2si4578266ybe.400.2021.01.21.02.04.37
+        by mx.google.com with ESMTPS id k1si4596542ybm.38.2021.01.21.06.19.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 02:04:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Jan 2021 06:19:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oklYX0oK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zew26Ypi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55200 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2WpR-000310-Cy
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 05:04:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59952)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l2ank-0000ds-B7
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 09:19:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1l2WmX-0000Ye-2y; Thu, 21 Jan 2021 05:01:38 -0500
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236]:34352)
+ id 1l2anY-0000dJ-Kp; Thu, 21 Jan 2021 09:18:56 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130]:43556)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1l2WmQ-0001I2-Nl; Thu, 21 Jan 2021 05:01:36 -0500
-Received: by mail-lj1-x236.google.com with SMTP id i17so1821585ljn.1;
- Thu, 21 Jan 2021 02:01:29 -0800 (PST)
+ id 1l2anS-0008Kw-Mw; Thu, 21 Jan 2021 09:18:56 -0500
+Received: by mail-lf1-x130.google.com with SMTP id q8so2699696lfm.10;
+ Thu, 21 Jan 2021 06:18:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=SXwHnFyIoKrX28rtRsuF9EfUt1H9NkHp6Mh1clKX/5E=;
- b=oklYX0oKlEvjP6BT/GtTRtZgB1WEDDWSBN5gmP1j51h3q1Hwv3yzzvq4nDWXyv71Ut
- FWP5o0iBnXcgGxlSQs4WeA63MF/r29/f55K2/z9F8ktm1yzSV35OivZdNf+uKRkBqwry
- n2mfhgc3YWiJmXFYQsQ+l+ig+N/y7jZ8kpDty14aYiZhRk+oBDsX0XxydOgrrAreoddM
- dT1caQXB/4cQbujisCIO3tZHEUq1kgGM8c5ELocR7CRNNeNyaH9yQA6KAz1lBLh5aB/o
- g9fc4aw59EGFt3NJD/UQG7m/W20oodJlQdIVyypcigYVJKhMUHdQ7XHvwaEyCG4Pmvbi
- BCag==
+ :user-agent; bh=9Ba2VZkAK1Ral+x3NWU0sxI9dcGvQgZH744lMcTH4XU=;
+ b=Zew26YpiYl5Gx1Msnb9a0WurNX29rnbZBKghAB9nRSsndAUGWdAwL2DoBMSKM1rI4H
+ WaH9RfQcHjLkTFcU6komvOARYb0eMx/g5IQUwEj46ZUZiHs+LVneB8xeqNqI4oowJKaE
+ yHGmWw/f62cX0sppvkPUFY1tKc1KucqHsMgQaD3l/Ji/0JRPJEjYD6WOdRN53kapFxmT
+ coapsRKAohkK5sL/Y0M6IpiNYAjRitvQiMsfVtMUcQ6KtmDm4T1QX8KY7gVjE7WUwi6J
+ gBBlASOceS3esrYTsEObqQxzned8btRX64clcabVfG+kyghx74L38k+tVLaSkpFm5bgW
+ opjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to:user-agent;
- bh=SXwHnFyIoKrX28rtRsuF9EfUt1H9NkHp6Mh1clKX/5E=;
- b=ueAfPJDsVWt/aR9wmQbY+HdwObYggPx6YUCyTUu3VEKUALUQ80AKFwYmbOD0dxgdKy
- YS5/MjyYeQQxS4EQb0fOZFcNYoh/UCJp58IaJgEGX60ZQyfq3Q/ej5Zu+9I2PwtKpF4l
- fWvhbkKp21VTZz71KsJfyWnTRcaRkqzTa2PdI8/2WWvjEbBr+cZambc9z4T2tYoCH0ya
- HaZr0B2Us/FGg87MYkf5bjD3KodlQXCvBjo6IGobPoJU4a9M3vlPvcApRi2nzmoo6UDZ
- C27wcMQrmjoxkOQ+BbnLxPC38nITNI86QDSsqOLdjO4zhh8QVjW2kB4lqzrwzhecPmi9
- P68A==
-X-Gm-Message-State: AOAM531E6/f7BG0c8Ihz2CMgwTIqGuxw/i44/rAw3aVEoBwcoLoWQu6G
- ynqle/p0gXyf2D4ZVr0kGOs=
-X-Received: by 2002:a2e:988d:: with SMTP id b13mr4600258ljj.176.1611223288004; 
- Thu, 21 Jan 2021 02:01:28 -0800 (PST)
+ bh=9Ba2VZkAK1Ral+x3NWU0sxI9dcGvQgZH744lMcTH4XU=;
+ b=sTqfffWc1UREfVN4EpROcYUE1U1IATKOS4UYRqmimZcO44ZIh63tEqDNySvYP4VK+8
+ +ao28t93E/tkWB4ZN08ZqJVC7mDMa1GwqJCOyPYvt30+X96/oJ3VLwNOHP+stjgOVcFn
+ 0kW5U/G8hupsM286ANZHH7T/PplEAiMXEHujEWihnsD+m5OMZdqdROtevzlEKhLFVUpA
+ xx/6fUfSDPi07hsruJP3FVeG7o9uOTAHvKagwef/eHYP2CiRQ4q3q2AYb1In/5kAoqly
+ x7oCqxSbKL7WoE4RcaCVo5dSLN4bOrzLtXXE9IlMf/jPkNNyrzK/UfnxjG5CwfHhCxrV
+ l6Xg==
+X-Gm-Message-State: AOAM5328p+kKjNtg7dMX7mPn27OzsONGHFtNT2FJRjWVLp+EDSDj8TuA
+ 4fNGRU7adcF6KSlsDvOrlws=
+X-Received: by 2002:a19:2c4:: with SMTP id 187mr6796882lfc.391.1611238727875; 
+ Thu, 21 Jan 2021 06:18:47 -0800 (PST)
 Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
  by smtp.gmail.com with ESMTPSA id
- v63sm477552lfa.89.2021.01.21.02.01.26
+ n25sm539900lfh.177.2021.01.21.06.18.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jan 2021 02:01:27 -0800 (PST)
-Date: Thu, 21 Jan 2021 11:01:25 +0100
+ Thu, 21 Jan 2021 06:18:47 -0800 (PST)
+Date: Thu, 21 Jan 2021 15:18:45 +0100
 From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: Bin Meng <bmeng.cn@gmail.com>
 Subject: Re: [PATCH 0/9] hw/block: m25p80: Fix the mess of dummy bytes needed
  for fast read commands
-Message-ID: <20210121100124.GB10391@fralle-msi>
+Message-ID: <20210121141844.GC10391@fralle-msi>
 References: <20210114181300.GA29923@fralle-msi>
  <CAEUhbmXiYNFVY0EkrKqNGKV3C0QV0+WvkvEkfPUa-pSg2zGvuA@mail.gmail.com>
  <20210115122627.GB29923@fralle-msi>
@@ -106,8 +106,8 @@ Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <CAEUhbmUh54vqXmtkjnTzk7Y6U+oZEbw-O3ode+CdKbfZ0Qs+9Q@mail.gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::236;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x236.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x130.google.com
 X-Spam_score_int: -1020
 X-Spam_score: -102.1
 X-Spam_bar: ---------------------------------------------------
@@ -117,17 +117,17 @@ X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  USER_IN_WELCOMELIST=-0.01,
  USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Qemu-block <qemu-block@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>,
@@ -138,11 +138,11 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
  Joe Komlodi <komlodi@xilinx.com>, Max Reitz <mreitz@redhat.com>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C3sGu5QApyKu
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vRWb6yRq29Uh
 
-Dear Bin,
+Hi Bin,
 
 On [2021 Jan 21] Thu 16:59:51, Bin Meng wrote:
 > Hi Francisco,
@@ -357,15 +357,10 @@ On [2021 Jan 21] Thu 16:59:51, Bin Meng wrote:
 > into 2 transfers, with one transfer using tx fifo, and the other one
 > using hardware dummy cycle generation?
 
-
-Above transfer is already handled in the model, and since it will not change it
-will still work afterwards.
-
-About below, sure I'll provide some doc once I get some time over.
+Sorry, I missunderstod. You are right, that won't work.
 
 Best regards,
 Francisco Iglesias
-
 
 > 
 > >

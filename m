@@ -1,100 +1,103 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp159282lfb;
-        Thu, 21 Jan 2021 11:07:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyg3MI1pq8pvXIjnS/5NBqR9S3dDYMExIB887HYYonmAMMotM7Jj1+oN5c0hzoyE6HD65HL
-X-Received: by 2002:a5b:f08:: with SMTP id x8mr1143752ybr.217.1611256069293;
-        Thu, 21 Jan 2021 11:07:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611256069; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp159370lfb;
+        Thu, 21 Jan 2021 11:07:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz3ERPwiRA+I0TtVMwVBfNgptn9WhJ5oeW/wysIYFMka4hRFxHALfYa3G7/eBHtBr8xBeV+
+X-Received: by 2002:a25:86c1:: with SMTP id y1mr1032877ybm.401.1611256076692;
+        Thu, 21 Jan 2021 11:07:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611256076; cv=none;
         d=google.com; s=arc-20160816;
-        b=D9g3VLaYmVqxbFLdhHL7xnDsorf/Ywvp+qzYsJ+kP31VYtsgVtJwjQO3P9mphadFNc
-         0FQwYVM23FSkYGXcgdyV2Tb4J5NgzH9t/B+vCZOf/EFU1NioZidJkufwBLHOwxfWcDiW
-         /RrReQjE5gx+4vlM+Muv9nnZzUkNXTRodQeYqThPnVLz4G4bT0lJOLUm1TdWDmx9UH++
-         6NDi9lf2xNZ/C3skarZFYjUH/sicwCJeC33qQp6KrUzz3pcEhpdi5KszQSdrFgMFPpYR
-         A2r2efGn74jdxkP6sM2OJ63pEwPpVaZ7BYEO+w/9jiADzRXHA4DGCh7l6YZhgv+pFshs
-         aAuQ==
+        b=HZn9EHmVLHKCissbhRlL2s6uhNax0kvoIzdIF29FAq7Pli0M1DCz3U9XIfxR9gN2K9
+         /QGetc74uCuHfGDcfaN2KVzGxkCbRQqQFY9uevyWp8fTL0mOJ11fsyrEBUIdZ9HOqh0q
+         9Rd98hVhAszGUkZPkFnzFPVoeyWUFhh8koTx9tdJDmkc94jFZ422WY4lsw5qDxNg/k2q
+         0aPEgxI3yjTYrMSGew6k3wK3USR7iw6wwfZHo2HH/u4pFfQP83TZRGLiZrSRbNAAqLFa
+         xzbDdiO1PyPs+qyMQeOnqcHEA/Gm7Pj99MGfn8jIHyCyHqVcokX194C3VaICapqG5GID
+         gwXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=8nqbDtQMOkOBn+f1BN8Oersk3By9xmyRL8fthJDxmjo=;
-        b=s3fmadkRIaGMZk5oLnuYXvSaUr1gdVSpmWwU/0kY4KCU6+lKtJMG9DOX9kOXFjDGMz
-         4MWRgCr2TeV2HSaG/3eAYYMEW6ZxHwW1h2F7ZcFLgR8s1WeTRRPM6wOMQcvjdODGkC81
-         60K9HeM3ts0IXrTBubCTDVF+FZTmMTbEU/dCdq5m6vpeXavmQOGbvHY9Ua1LXroIClb5
-         hSz890Ew63HPmDNkcqeKnmUuuHJBNSQBy0KXTwvHlbQ2g8TsYwE6r7JSHmzjqNvir9di
-         VyM8/yq2xGaQsv1pxj7nvmFPTvVrzRm1c8sSSKFYV/DKOiK/PtT8TlDfXAs7Q2xosdiJ
-         1R4g==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=jof7Fo3+SWgxMSAxHIHQk0SnRA/MK6xgKMN5PCrEdn4=;
+        b=ZoySW8kkO+rqrMZ8RTAsEYiUjaD59/pxjjhh9nAowbv8KoqzA82FVJG6jFDN42Pv9j
+         ElrG5M4imB0wojbMVcHss6pXYokBHjkkkXIHv2OFLStAEvqVIFa5X+M3wzE6bjQh45WR
+         lP0LiHwUVG2Joo+4k7nx+bMlJmt2TvIrTlN0iUq69IJ4uGGYc22zPQDdJ7kv6CXdaTA7
+         ZFTPNooYmVF660VZZJqo4QhqPzBY/pCBHHB+QkmAWiC3Q9jVUg6gfveiMn7Z60o9o88D
+         VaotidZvt26E1cNn+uoLhibVZwG+Ful3o8rvS+3KkOhbOJG//yOKaYAnsXa5TrextLQg
+         wzXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OMYJb446;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PEMWggmt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i18si3042790ybh.134.2021.01.21.11.07.49
+        by mx.google.com with ESMTPS id z1si5333847ybj.393.2021.01.21.11.07.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 11:07:49 -0800 (PST)
+        Thu, 21 Jan 2021 11:07:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OMYJb446;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PEMWggmt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58006 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58110 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2fJ6-0002B6-JR
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:07:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55438)
+	id 1l2fJD-0002FA-Dy
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:07:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55516)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fI1-0002AK-8s
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:41 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:43875)
+ id 1l2fI3-0002Co-P1
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:44 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:33939)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fHq-0005kB-1m
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:41 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id b5so2801648wrr.10
- for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:26 -0800 (PST)
+ id 1l2fHv-0005n8-J7
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:43 -0500
+Received: by mail-wr1-x430.google.com with SMTP id g10so2827766wrx.1
+ for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8nqbDtQMOkOBn+f1BN8Oersk3By9xmyRL8fthJDxmjo=;
- b=OMYJb446YdwVx3Sz8joU7T+kM3g+emdeUmUmwAJmP0vm/vDp7u+KoFvNVdsomURPgQ
- o8jmaVyH7rXr6AzQFWQ77UrYuipREuLGezUFC7ROY/DxecXDUxBxL4Zi11K+zNoqhgNa
- Nz4a976Gm6t6oJxYkK4gSIz0CTG9IfrrdmA2KQVF8Jx/VkHZFyquNJupMjbFJPAKtV3D
- 8OXI0LfmcMymb7WdjBfKkNJ2rvN5tcGiz+CA28H5wRYnKC7QNTTHQZe9d07a3dLQMP5A
- KqFM4GPPFw+3OnGWvkxqH2JcOFXtCOpCo0ytQcCIQ4oY5t+DMZrSbu4P2L773LvyhjI2
- M4UA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=jof7Fo3+SWgxMSAxHIHQk0SnRA/MK6xgKMN5PCrEdn4=;
+ b=PEMWggmtPQvZUQmsl2AhjBvXnR7M7NGjsP2U0Hv96ihz0G0p6si77+eAoImqx6xvXg
+ M7w9OG4Fs31uyDWbexjSX/mBVrrAFA9hSMEuGPzdWVUsT2/IB4aMGVJ5aHkDZPCpFBFL
+ 35DehO7LQbdBMJTU1WU9Mc1ipnOJaz3cEnl4wmyk2yZlz3PouUG+ogeb5p5arM/irKmE
+ RsQ9zid23b1HmwlMguRMoVG5Ks4MmTqGiyXcYXtXzwS+9fbgPQr5Nldziieq2joJpT97
+ gJJHc9v2IDJ8X96vwutfqWjYf3ZF6/zsEVfBX244sVB7G1WSyslt/guwKKKUmcTQQE/y
+ wP0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8nqbDtQMOkOBn+f1BN8Oersk3By9xmyRL8fthJDxmjo=;
- b=YhDYxr2EJXKJgr+rzeKjlRhFdrOCCIICzqkLeEKMVt4X7tcauO9QwpGwuDAwRxLPe6
- g+DGOssqQGApPo477X5bZXlIsLkbmIi/beXjuHUZxgKyy2ycgxtJWI2WsRY42Db+lHvJ
- 3JYJCQb4e/X9gSmHQYG5rKwC/q0o6mtPPcyp0zyZINZHeEAlfpGZ2hbEQGb0Re5fHkU4
- N3ytcUp1FnzvPetB/0iishABWY4NzXZZqsr1p5bHFSgiOqNx+93pW/BNmLNSKLWfhmRa
- kgY+yNLHn30Au5VIDtjheohaIkcG7PK6U/eL6FC/i220KK5qWqqbLwmir+B472W+cQAS
- pwuQ==
-X-Gm-Message-State: AOAM532nsUpQlOqd5cKnyr2371RUqek64y0iyfX4WkY9ScWV3Rp83h5i
- dPPg9p9JhFA1Pv/DjN27enEuGQ==
-X-Received: by 2002:adf:f512:: with SMTP id q18mr899200wro.55.1611255985413;
- Thu, 21 Jan 2021 11:06:25 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=jof7Fo3+SWgxMSAxHIHQk0SnRA/MK6xgKMN5PCrEdn4=;
+ b=Vh2dZnfpUioNvWhMqEwxFNpH02LIUQSx4yx5ADJDgYe6qmCy5zr1vDjytWEHgU1Bqj
+ c1CoTK92YfAL9IREcu1GuK60hqhlG2CLEkuzNUlNMuPkV8pGIwzmN6gEheq+9C0O+Aum
+ +MSHFKOaroKkzNa5HqRv6i985g1guwhgnop6yADsyPASR5o1mMH4WbwDJMUTwV3y1an/
+ VCpOX3fVS3zg9u8m2vmOrDymIZZl+rIQsWkf2PQm1lvHmJSIqrdrRNVaSEjduErIGwGq
+ Q5NlsDscOhoVJhBUV22s1011fyfOXY67Uq7KQBfg8HX2P3vZCOZOKlhnLvf/tewTdtmL
+ BBlA==
+X-Gm-Message-State: AOAM533S0s9fYMpqtqqgQI0IWO0uPzVFITrLB+G3cWOUTNvhnij6Ak+f
+ t4yod9C+qH4vN3nryKFayQGycQ==
+X-Received: by 2002:adf:d20b:: with SMTP id j11mr889515wrh.318.1611255991376; 
+ Thu, 21 Jan 2021 11:06:31 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.24
+ by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jan 2021 11:06:24 -0800 (PST)
+ Thu, 21 Jan 2021 11:06:30 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 00/25] Convert CMSDK timer, watchdog,
- dualtimer to Clock framework
-Date: Thu, 21 Jan 2021 19:05:57 +0000
-Message-Id: <20210121190622.22000-1-peter.maydell@linaro.org>
+Subject: [PATCH 06/25] hw/timer/cmsdk-apb-timer: Rename CMSDKAPBTIMER struct
+ to CMSDKAPBTimer
+Date: Thu, 21 Jan 2021 19:06:03 +0000
+Message-Id: <20210121190622.22000-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
+References: <20210121190622.22000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,124 +121,157 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eSwzSNrFRevv
+X-TUID: KOpX/uZMB9ip
 
-This patchset converts the CMSDK timer, watchdog and dualtimer devices
-to use the Clock framework instead of an integer property specifying
-a frequency in Hz. The series is quito a lot of patches but they
-should be mostly small and I hope easy to review.
+The state struct for the CMSDK APB timer device doesn't follow our
+usual naming convention of camelcase -- "CMSDK" and "APB" are both
+acronyms, but "TIMER" is not so should not be all-uppercase.
+Globally rename the struct to "CMSDKAPBTimer" (bringing it into line
+with CMSDKAPBWatchdog and CMSDKAPBDualTimer; CMSDKAPBUART remains
+as-is because "UART" is an acronym).
 
-The motivation here is the upcoming Arm SSE-300 model: this has a
-new kind of timer device, which I wanted to write in the modern style
-with a Clock input. That meant the ARMSSE container object needed
-to know about Clocks, so converting the existing devices it used
-to Clocks seemed like a good first step.
+Commit created with:
+ perl -p -i -e 's/CMSDKAPBTIMER/CMSDKAPBTimer/g' hw/timer/cmsdk-apb-timer.c include/hw/arm/armsse.h include/hw/timer/cmsdk-apb-timer.h
 
-The series as a whole is a migration compat break for the machines
-involved: mps2-an385, mps2-an386, mps2-an500, mps2-an511, mps2-an505,
-mps2-an521, musca-a, musca-b1, lm3s811evb, lm3s6965evb.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/arm/armsse.h            |  6 +++---
+ include/hw/timer/cmsdk-apb-timer.h |  4 ++--
+ hw/timer/cmsdk-apb-timer.c         | 28 ++++++++++++++--------------
+ 3 files changed, 19 insertions(+), 19 deletions(-)
 
-Series structure:
- * patches adding new clock and ptimer API functions
- * add tests for the devices
- * add Clock inputs to devices, which do nothing for now
- * wire up the clocks in the code that uses the devices
- * make the devices use the clocks and ignore the frq properties
- * remove the setting of the frq properties in code using the devices
- * remove the frq properties from the devices
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index 77f86771c30..83f5e28c16e 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -153,9 +153,9 @@ struct ARMSSE {
+     TZPPC apb_ppc0;
+     TZPPC apb_ppc1;
+     TZMPC mpc[IOTS_NUM_MPC];
+-    CMSDKAPBTIMER timer0;
+-    CMSDKAPBTIMER timer1;
+-    CMSDKAPBTIMER s32ktimer;
++    CMSDKAPBTimer timer0;
++    CMSDKAPBTimer timer1;
++    CMSDKAPBTimer s32ktimer;
+     qemu_or_irq ppc_irq_orgate;
+     SplitIRQ sec_resp_splitter;
+     SplitIRQ ppc_irq_splitter[NUM_PPCS];
+diff --git a/include/hw/timer/cmsdk-apb-timer.h b/include/hw/timer/cmsdk-apb-timer.h
+index 0d80b2a48cd..baa009bb2da 100644
+--- a/include/hw/timer/cmsdk-apb-timer.h
++++ b/include/hw/timer/cmsdk-apb-timer.h
+@@ -18,9 +18,9 @@
+ #include "qom/object.h"
  
-The new ptimer and clock functions are probably the most interesting part:
- * ptimer_set_period_from_clock(ptimer, clk, divisor)
-   is for setting the period of a ptimer directly from a Clock (possibly
-   accounting for the frequency being divided by some integer first) --
-   this avoids possible rounding errors if we went via ptimer_set_period()
-   or ptimer_set_freq()
- * clock_has_source()
-   returns true if an input Clock has been connected to an output clock;
-   this is for devices to be able to check in their realize method that
-   a mandatory clock was wired up by the board
-(More detailed info and rationale in patches 1 and 2.)
-
-A couple of bits of food-for-thought as a result of working with the
-relatively-new Clock APIs:
- * it might be worth thinking about whether we can have a fairly
-   lightweight implementation of a clock-divider or clock-multiplier,
-   because I feel they are pretty common. (For this series I opted
-   just to handle this via the ptimer_set_period_from_clock()
-   divisor argumuent.)
- * it feels a little awkward that devices with an input Clock need
-   to do ptimer_set_period_from_clock() or similar both in their
-   realize method (to cope with fixed-frequency input clocks, because
-   the clock callback functions are not called when board setup code
-   creates and configures those) and in the clock callback function
-   (to cope with variable-frequency clocks)
- * I found it odd that ptimer's period representation is 64.32
-   fixedpoint 2^-32 ns units, whereas Clock's is only 32.32
-   (so ptimer can handle much larger periods than Clock can.)
-   I forget why we didn't go for the same representation in Clock
-   as we have for ptimer...
- * there's no MAINTAINERS entry for the Clock framework
-
-I don't think these need to be blockers on this series, though.
-
-thanks
--- PMM
-
-Peter Maydell (25):
-  ptimer: Add new ptimer_set_period_from_clock() function
-  clock: Add new clock_has_source() function
-  tests: Add a simple test of the CMSDK APB timer
-  tests: Add a simple test of the CMSDK APB watchdog
-  tests: Add a simple test of the CMSDK APB dual timer
-  hw/timer/cmsdk-apb-timer: Rename CMSDKAPBTIMER struct to CMSDKAPBTimer
-  hw/timer/cmsdk-apb-timer: Add Clock input
-  hw/timer/cmsdk-apb-dualtimer: Add Clock input
-  hw/watchdog/cmsdk-apb-watchdog: Add Clock input
-  hw/arm/armsse: Rename "MAINCLK" property to "MAINCLK_FRQ"
-  hw/arm/armsse: Wire up clocks
-  hw/arm/mps2: Inline CMSDK_APB_TIMER creation
-  hw/arm/mps2: Create and connect SYSCLK Clock
-  hw/arm/mps2-tz: Create and connect ARMSSE Clocks
-  hw/arm/musca: Create and connect ARMSSE Clocks
-  hw/arm/stellaris: Convert SSYS to QOM device
-  hw/arm/stellaris: Create Clock input for watchdog
-  hw/timer/cmsdk-apb-timer: Convert to use Clock input
-  hw/timer/cmsdk-apb-dualtimer: Convert to use Clock input
-  hw/watchdog/cmsdk-apb-watchdog: Convert to use Clock input
-  tests/qtest/cmsdk-apb-watchdog-test: Test clock changes
-  hw/arm/armsse: Use Clock to set system_clock_scale
-  arm: Don't set freq properties on CMSDK timer, dualtimer, watchdog,
-    ARMSSE
-  arm: Remove frq properties on CMSDK timer, dualtimer, watchdog, ARMSSE
-  hw/arm/stellaris: Remove board-creation reset of STELLARIS_SYS
-
- docs/devel/clocks.rst                    |  16 +++
- include/hw/arm/armsse.h                  |  14 +-
- include/hw/clock.h                       |  15 ++
- include/hw/ptimer.h                      |  22 +++
- include/hw/timer/cmsdk-apb-dualtimer.h   |   5 +-
- include/hw/timer/cmsdk-apb-timer.h       |  34 ++---
- include/hw/watchdog/cmsdk-apb-watchdog.h |   5 +-
- include/qemu/typedefs.h                  |   1 +
- hw/arm/armsse.c                          |  47 +++++--
- hw/arm/mps2-tz.c                         |  14 +-
- hw/arm/mps2.c                            |  28 +++-
- hw/arm/musca.c                           |  13 +-
- hw/arm/stellaris.c                       | 170 +++++++++++++++++------
- hw/core/ptimer.c                         |  34 +++++
- hw/timer/cmsdk-apb-dualtimer.c           |  53 +++++--
- hw/timer/cmsdk-apb-timer.c               |  55 ++++----
- hw/watchdog/cmsdk-apb-watchdog.c         |  29 ++--
- tests/qtest/cmsdk-apb-dualtimer-test.c   | 131 +++++++++++++++++
- tests/qtest/cmsdk-apb-timer-test.c       |  76 ++++++++++
- tests/qtest/cmsdk-apb-watchdog-test.c    | 132 ++++++++++++++++++
- MAINTAINERS                              |   3 +
- tests/qtest/meson.build                  |   3 +
- 22 files changed, 758 insertions(+), 142 deletions(-)
- create mode 100644 tests/qtest/cmsdk-apb-dualtimer-test.c
- create mode 100644 tests/qtest/cmsdk-apb-timer-test.c
- create mode 100644 tests/qtest/cmsdk-apb-watchdog-test.c
-
+ #define TYPE_CMSDK_APB_TIMER "cmsdk-apb-timer"
+-OBJECT_DECLARE_SIMPLE_TYPE(CMSDKAPBTIMER, CMSDK_APB_TIMER)
++OBJECT_DECLARE_SIMPLE_TYPE(CMSDKAPBTimer, CMSDK_APB_TIMER)
+ 
+-struct CMSDKAPBTIMER {
++struct CMSDKAPBTimer {
+     /*< private >*/
+     SysBusDevice parent_obj;
+ 
+diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
+index f85f1309f37..ae9c5422540 100644
+--- a/hw/timer/cmsdk-apb-timer.c
++++ b/hw/timer/cmsdk-apb-timer.c
+@@ -67,14 +67,14 @@ static const int timer_id[] = {
+     0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
+ };
+ 
+-static void cmsdk_apb_timer_update(CMSDKAPBTIMER *s)
++static void cmsdk_apb_timer_update(CMSDKAPBTimer *s)
+ {
+     qemu_set_irq(s->timerint, !!(s->intstatus & R_INTSTATUS_IRQ_MASK));
+ }
+ 
+ static uint64_t cmsdk_apb_timer_read(void *opaque, hwaddr offset, unsigned size)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
+     uint64_t r;
+ 
+     switch (offset) {
+@@ -106,7 +106,7 @@ static uint64_t cmsdk_apb_timer_read(void *opaque, hwaddr offset, unsigned size)
+ static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
+                                   unsigned size)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
+ 
+     trace_cmsdk_apb_timer_write(offset, value, size);
+ 
+@@ -181,7 +181,7 @@ static const MemoryRegionOps cmsdk_apb_timer_ops = {
+ 
+ static void cmsdk_apb_timer_tick(void *opaque)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
+ 
+     if (s->ctrl & R_CTRL_IRQEN_MASK) {
+         s->intstatus |= R_INTSTATUS_IRQ_MASK;
+@@ -191,7 +191,7 @@ static void cmsdk_apb_timer_tick(void *opaque)
+ 
+ static void cmsdk_apb_timer_reset(DeviceState *dev)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(dev);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(dev);
+ 
+     trace_cmsdk_apb_timer_reset();
+     s->ctrl = 0;
+@@ -206,7 +206,7 @@ static void cmsdk_apb_timer_reset(DeviceState *dev)
+ static void cmsdk_apb_timer_init(Object *obj)
+ {
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(obj);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(obj);
+ 
+     memory_region_init_io(&s->iomem, obj, &cmsdk_apb_timer_ops,
+                           s, "cmsdk-apb-timer", 0x1000);
+@@ -216,7 +216,7 @@ static void cmsdk_apb_timer_init(Object *obj)
+ 
+ static void cmsdk_apb_timer_realize(DeviceState *dev, Error **errp)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(dev);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(dev);
+ 
+     if (s->pclk_frq == 0) {
+         error_setg(errp, "CMSDK APB timer: pclk-frq property must be set");
+@@ -239,17 +239,17 @@ static const VMStateDescription cmsdk_apb_timer_vmstate = {
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_PTIMER(timer, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(ctrl, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(value, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(reload, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(intstatus, CMSDKAPBTIMER),
++        VMSTATE_PTIMER(timer, CMSDKAPBTimer),
++        VMSTATE_UINT32(ctrl, CMSDKAPBTimer),
++        VMSTATE_UINT32(value, CMSDKAPBTimer),
++        VMSTATE_UINT32(reload, CMSDKAPBTimer),
++        VMSTATE_UINT32(intstatus, CMSDKAPBTimer),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+ 
+ static Property cmsdk_apb_timer_properties[] = {
+-    DEFINE_PROP_UINT32("pclk-frq", CMSDKAPBTIMER, pclk_frq, 0),
++    DEFINE_PROP_UINT32("pclk-frq", CMSDKAPBTimer, pclk_frq, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -266,7 +266,7 @@ static void cmsdk_apb_timer_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo cmsdk_apb_timer_info = {
+     .name = TYPE_CMSDK_APB_TIMER,
+     .parent = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(CMSDKAPBTIMER),
++    .instance_size = sizeof(CMSDKAPBTimer),
+     .instance_init = cmsdk_apb_timer_init,
+     .class_init = cmsdk_apb_timer_class_init,
+ };
 -- 
 2.20.1
 

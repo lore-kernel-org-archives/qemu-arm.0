@@ -1,109 +1,115 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp158834lfb;
-        Thu, 21 Jan 2021 11:07:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzZtGfKFuO+zw1TNS70R3/CC4vGmam1o61IV3mSk/a4Z6o8FlTuAdMkeGPonolio1Gr0eKW
-X-Received: by 2002:a25:3249:: with SMTP id y70mr1080487yby.281.1611256036595;
-        Thu, 21 Jan 2021 11:07:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611256036; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp255512lfb;
+        Thu, 21 Jan 2021 13:31:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzf+QygVrjcn/i7fgk8lRb9S6NSHacbj20OhTYouYbAyXRX7brNZ0YpG3CnZ++r6DmursRw
+X-Received: by 2002:a25:8882:: with SMTP id d2mr1955771ybl.7.1611264684714;
+        Thu, 21 Jan 2021 13:31:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611264684; cv=none;
         d=google.com; s=arc-20160816;
-        b=h4Ywml7Y1xF4Z3FM6VeEuIhFIesRRg4eoUzgMOdZk5kK1iEY0jV8GpIDPLoTIZkbWx
-         gW0J/Buw+A2W/WnNhIJngqClKB9FVW0yVbNu1XTX9dM6UY75feEm6bMSUTsYVcHTed5I
-         6dykpfHkvq+6eBcK3qhfVCylQNtEDDOV/L2uUwt8424V2/VUmrEjQb82sO9PmHr0tDN8
-         BMDpoZc3KjllWp3bdxgOzqD6LCeIBXGewgSs2msI81t95JL7h0fQvc1i94Fm5U/2O019
-         VseowuCfmjTg4Yd3wb/EFDR0mfoMJ++3tKUenFWFOQKngXtSMUQLR5zXjsu9vA1zgprP
-         vVyg==
+        b=Z+prd0tRqoOWdU/FqUy3oDqd+mK9s/xqGawMeCARbvucmQ7Ne6eGjGcmmAaLJhHzGJ
+         wVk78EjRVfiK8icv64senO3hAKnxEJb3DeMyuYeTp/5ylmRiswcVtUUIkF95p/M/5Qck
+         FMcaeHxlSDBGaU9KuUnv+XzEmHvmqzvEKBTX51QvxHF1NblnWbta3NAbBFF+/+n2EdzE
+         0E1h1Q6F1icwFlMNQSVUAaa3rnmgJV9D5Hty7Ra/nqc+U+2FPAyxnmO4jeHHLdqjcuBn
+         9h59vSmVXMQW2OPhQk6KZwnxED8Ubr84HG+JxoLq4ygcCw5bZofH6hkVXuzwGQQxpdUZ
+         Il/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=TB7wjfajbIvKGvglJefMlToUTk7cmyyxw+srKxsN0iM=;
-        b=aOeVs1vfDkQVLUDfAbLKcjZTIdZJuI+4K1AofLhGSk1zjWhFMIeTFrkpIzxGuw5UqC
-         EevzMwlYUPnFQB+VE7TceRLxJAjNK08nXzzW0W7ccQVzzWwugKKzaxCYrJHBzd/XpF42
-         n0ugzQ5rxdX4KkHw7e8mi7AL/d1JzEccoBPuLAkle7VPLEEGBH+kjzaUVNiT4eewVMiK
-         5MwKdgFoqjLpzfB+plvbImnz1BAZ3PoUt5Ei2+8q5pBDp4LnWDhC0yxsjHsM300te+ha
-         HaFtv0/LhsBaf/p/ieBC5U9me4AMtNKE+nFBO4qAoB4MFb6pAHS/lw7OvbaVIalFKl7a
-         UswQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=4/iUgRtZ+SdfZuLBX06+kzSTOFhrQyTCfQBm5lELLK0=;
+        b=naEQB+Iw/FsLdzGgEGP6ujwyjlErOI4Gvr5PST3Rgodnv+6wAcoLX4aQOe1zGJlEY1
+         pNZU9ZXX4V6Xt4qZdazsuqC9mm6yNUXymJQeSxUO8eaSg4360LiMyS3kW7d4jRR59vef
+         hepEVxeJEge7kWupl6o1uIgmeFDfpfpEFN4ZjA/aJCuCY6XEn0p08F6a70FRS+IPypLo
+         PCkVQM67h4ocJpFhuK/vZJptjVianvYLf18ux3u1Pv9ER9rNZGKZCE3K9Xj93x5yRKWk
+         OVBCMpPXwQ+yGlMZLTH8SHKQFde/o0ywRS1fYwAlYGxN9k6Joed5D6vuVzP2gRemnUG9
+         S+Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tG46E8L4;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oppMkzrS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11si5938874ybp.477.2021.01.21.11.07.16
+        by mx.google.com with ESMTPS id r6si3538246ybc.352.2021.01.21.13.31.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 11:07:16 -0800 (PST)
+        Thu, 21 Jan 2021 13:31:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tG46E8L4;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oppMkzrS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57998 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:32922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2fIZ-0002Ao-QI
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:07:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55350)
+	id 1l2hY4-0008BW-2W
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 16:31:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fHz-0002A1-SC
- for qemu-arm@nongnu.org; Thu, 21 Jan 2021 14:06:40 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46143)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l2hXl-00086x-UK; Thu, 21 Jan 2021 16:31:07 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:36216)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fHr-0005mm-Rt
- for qemu-arm@nongnu.org; Thu, 21 Jan 2021 14:06:39 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id q7so2797154wre.13
- for <qemu-arm@nongnu.org>; Thu, 21 Jan 2021 11:06:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=TB7wjfajbIvKGvglJefMlToUTk7cmyyxw+srKxsN0iM=;
- b=tG46E8L4NhWAz79VmzTFQli25+44SF+SEEPyDCObVfykbsivI3dQzc+yyaK5dkpgpX
- 1QiPeanvfPTyI1K0E5v57PSSIbxhvEwb09Z1aSTjnwIyhfhOYSCSb2QZDorfq3YsCjGw
- zojMo4+fQF88bx72fZMLfCJ+9OgGPBVJwjCT1jU9GOFum0yj0TNsz42oY7ghRM83+vvB
- yPpISmsPO2DF9aXpB4aUbOuIhvf6pH8m+UdtG2rSI+8uXeQs613FTTa0Xb96Unxnlm2o
- vOfr4yR3MNchPQiBeO8+tHil4nYEq4fjnCBIOCEL8ZzRW5agHddZ4UJBapIM0Jx0H5Xe
- UAyg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l2hXi-0002w4-OI; Thu, 21 Jan 2021 16:31:04 -0500
+Received: by mail-ej1-x631.google.com with SMTP id l9so4737435ejx.3;
+ Thu, 21 Jan 2021 13:31:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=4/iUgRtZ+SdfZuLBX06+kzSTOFhrQyTCfQBm5lELLK0=;
+ b=oppMkzrSPBxAAvFtwBvggNqVmI/8KkFOYgeniCnvii09RRkM0DY8d8GkrD3LMhVlmM
+ vHc1D9ra34BwZuRm9HQYSyfsWFw9/29zvxNAffZk8yTthcccVB0Dj3WqLp8tA+2sx4eo
+ FCfcWu5UafcWoOhko+MCyxZKyPK2qRQ5EP4wpbSt5m+zVAVFU4LnSILIRyoOylLM2+X5
+ no4Q4e62I+7814VvN1jOPqWKrfUzDQMOAcuk1yrEM5TDsaZIzhSn+acduP44tcjDKwXP
+ 5arNGgqatXNTHPbkYcb8i9CLFEKHVYUmkk15yYNgqj7zLTrC4IDVWwXfEq0Ku3/OwD4H
+ TuOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=TB7wjfajbIvKGvglJefMlToUTk7cmyyxw+srKxsN0iM=;
- b=NQOolxsW+nUGTOxnX6wSqec17lVFvTGOsxn/nd99fs6kynvELmBakAFFfNfKqx39Sq
- VqJnF9WnjgIp1Nbi7idvrO/LhBkdIzT3bOhBCmKzzq6eq0+Gsxzjy4SycKwXyuAlZpfE
- YSYKpuQdNumekjn2YPxrSVSovvqqyS7NfhrhrlhshbACKBkWd8CQ2IoeflO6wWS6eJ/A
- NAdR7Kf/9Ccaiahx07s2Ot1ssZBs8lXMfOTSiUOcOLAOzvn0QL4PBYHBsmsP7Yc0vMMh
- GtUsNj4Eo6pW8lg1WrUN1sjfvu5cYBEhiKTIfCFKW7i1LLFydqPA2Bt4o4P6MaftWn4x
- MlgA==
-X-Gm-Message-State: AOAM532/QKaabLOOS5XMyny5VJ+u3sFovxIZTxbG6Fkw+s0ovU6F4tgD
- 8UuYfJB4HGC2hHIz9lojEG+FEwbjQk2QNQ==
-X-Received: by 2002:adf:dc89:: with SMTP id r9mr932065wrj.52.1611255989324;
- Thu, 21 Jan 2021 11:06:29 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jan 2021 11:06:28 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 04/25] tests: Add a simple test of the CMSDK APB watchdog
-Date: Thu, 21 Jan 2021 19:06:01 +0000
-Message-Id: <20210121190622.22000-5-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4/iUgRtZ+SdfZuLBX06+kzSTOFhrQyTCfQBm5lELLK0=;
+ b=XQd0lZ+VJbSn+itLCc8Y6qywP9Y6ghpgBeAJd2CJuvJ8UriM12bqz6DadyacRsTLtR
+ 9O6PTrpicsmfifRTOjfZUnQ5B0JfpGxxPsFlU5HAZD1O9jumrrGGvaPRSoeLZdnjHTCZ
+ RBD5pz1rYWRdIgwfvoF/+JM+xyKF6eRdgMik8pJI1dp18NK93JMO08v4gPdhs2R0r6Tz
+ TBzW02wSUq7z8mzOWSaCSdraSiEFsWKo0SZThgPCp8ZF5kiVyiJwF2FuWHbONS5h2/LY
+ uuSk3PJpVRbfAiUql+Sw5M8kTSHiElWuyUkWKw64D8k31qC1EHUvNvblbk1olK/jegNZ
+ Nq4w==
+X-Gm-Message-State: AOAM531e3InHFQX0pwrDRJyD1gq+VnOrPDfZyQiijjfWMAF6YngvMH08
+ l2EuilbbyK9CEZXc5FBLzmji/42vowQ=
+X-Received: by 2002:a17:906:958f:: with SMTP id
+ r15mr923901ejx.360.1611264660808; 
+ Thu, 21 Jan 2021 13:31:00 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id bd5sm2970988edb.86.2021.01.21.13.30.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 21 Jan 2021 13:31:00 -0800 (PST)
+Subject: Re: [PATCH 15/25] hw/arm/musca: Create and connect ARMSSE Clocks
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20210121190622.22000-1-peter.maydell@linaro.org>
+ <20210121190622.22000-16-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <50daef47-3304-7395-b9b9-c32823c04324@amsat.org>
+Date: Thu, 21 Jan 2021 22:30:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
+In-Reply-To: <20210121190622.22000-16-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,133 +122,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U+sJdeiKTDtb
+X-TUID: R5rbCHwKpEEG
 
-Add a simple test of the CMSDK watchdog, since we're about to do some
-refactoring of how it is clocked.
+On 1/21/21 8:06 PM, Peter Maydell wrote:
+> Create and connect the two clocks needed by the ARMSSE.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/musca.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- tests/qtest/cmsdk-apb-watchdog-test.c | 80 +++++++++++++++++++++++++++
- MAINTAINERS                           |  1 +
- tests/qtest/meson.build               |  1 +
- 3 files changed, 82 insertions(+)
- create mode 100644 tests/qtest/cmsdk-apb-watchdog-test.c
-
-diff --git a/tests/qtest/cmsdk-apb-watchdog-test.c b/tests/qtest/cmsdk-apb-watchdog-test.c
-new file mode 100644
-index 00000000000..c6add1fee85
---- /dev/null
-+++ b/tests/qtest/cmsdk-apb-watchdog-test.c
-@@ -0,0 +1,80 @@
-+/*
-+ * QTest testcase for the CMSDK APB watchdog device
-+ *
-+ * Copyright (c) 2021 Linaro Limited
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+
-+/*
-+ * lm3s811evb watchdog; at board startup this runs at 200MHz / 16 == 12.5MHz,
-+ * which is 80ns per tick.
-+ */
-+#define WDOG_BASE 0x40000000
-+
-+#define WDOGLOAD 0
-+#define WDOGVALUE 4
-+#define WDOGCONTROL 8
-+#define WDOGINTCLR 0xc
-+#define WDOGRIS 0x10
-+#define WDOGMIS 0x14
-+#define WDOGLOCK 0xc00
-+
-+static void test_watchdog(void)
-+{
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+
-+    writel(WDOG_BASE + WDOGCONTROL, 1);
-+    writel(WDOG_BASE + WDOGLOAD, 1000);
-+
-+    /* Step to just past the 500th tick */
-+    clock_step(500 * 80 + 1);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-+
-+    /* Just past the 1000th tick: timer should have fired */
-+    clock_step(500 * 80);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 0);
-+
-+    /* VALUE reloads at following tick */
-+    clock_step(80);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-+
-+    /* Writing any value to WDOGINTCLR clears the interrupt and reloads */
-+    clock_step(500 * 80);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-+    writel(WDOG_BASE + WDOGINTCLR, 0);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    QTestState *s;
-+    int r;
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    s = qtest_start("-machine lm3s811evb");
-+
-+    qtest_add_func("/cmsdk-apb-watchdog/watchdog", test_watchdog);
-+
-+    r = g_test_run();
-+
-+    qtest_end();
-+
-+    return r;
-+}
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 010405b0884..58956497888 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -588,6 +588,7 @@ F: hw/char/cmsdk-apb-uart.c
- F: include/hw/char/cmsdk-apb-uart.h
- F: hw/watchdog/cmsdk-apb-watchdog.c
- F: include/hw/watchdog/cmsdk-apb-watchdog.h
-+F: tests/qtest/cmsdk-apb-watchdog-test.c
- F: hw/misc/tz-ppc.c
- F: include/hw/misc/tz-ppc.h
- F: hw/misc/tz-mpc.c
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 74addd74868..9e2ebc47041 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -142,6 +142,7 @@ qtests_npcm7xx = \
-    'npcm7xx_watchdog_timer-test']
- qtests_arm = \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_CMSDK_APB_WATCHDOG') ? ['cmsdk-apb-watchdog-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_PFLASH_CFI02') ? ['pflash-cfi02-test'] : []) +         \
-   (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
-   ['arm-cpu-features',
--- 
-2.20.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 

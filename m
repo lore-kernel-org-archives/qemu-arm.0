@@ -1,109 +1,109 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp166049lfb;
-        Thu, 21 Jan 2021 11:17:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzt4zR2478SO2eA5ShZ9JLQW69MOzJPRISV5inB6LcLtsZ1BiVBQ5kiqt5Bvo9HO5E/RRhU
-X-Received: by 2002:a25:7c46:: with SMTP id x67mr1215238ybc.464.1611256644766;
-        Thu, 21 Jan 2021 11:17:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611256644; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp166139lfb;
+        Thu, 21 Jan 2021 11:17:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyVRWQVn3Glh3uhPTsUxRr9dgQYLboY+5I7d3FaAOcnpWO+ptJyvyeS09gJuqY34wtawS3z
+X-Received: by 2002:a5b:98a:: with SMTP id c10mr1224645ybq.406.1611256651746;
+        Thu, 21 Jan 2021 11:17:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611256651; cv=none;
         d=google.com; s=arc-20160816;
-        b=UqlWmMHp0JKxGVHiYphbF86eQS5AJsiZJ1hqgPOGjmueGoutztVDEP8ji+UF/Ri5wA
-         au8YdXHYuepAl/INsf6Zonh9Vnof0kpEYJeGRM7MfP17XJLF9ccSreNJ9m8DdN+XjUwq
-         11QrreW7Ag3ggOBrf3s7QjGfyI42kcZN18MewaqwZvQ3wOomS68iSH4O5bCfXHDy3Xyg
-         Yk8XLjxFkBxDBTSL/D3TbVneqcsIwlHxmBC97vdng3NwgVMZ/RwYUo6Ds55FPByX6Nm1
-         M0bmF4Tq+LynfxlH+KtS9hzC5LJCN/yTJ2rWrBtwfbD3/hhvN+/25XGfF0Xn/yjWhlHw
-         L2PQ==
+        b=CHmOYyIMqxBEopZABSyf1b1cEqktEQ42n0xb/i3BFag7Pd3eBFULfmgTaOhDpiRdjF
+         UykcvCt/Od8/Z4QxPV/eoT6Pmjy+CLuI0wmRCeBweSikunAn97+HB9LBcYt24XZyAEOO
+         gGn4qW5v6NtqhBaHj5zxzJ4sYjZIjjLJTH4uH1PGqgAsbPAtYeoBcGchjtknhtCX90cG
+         dxUzerUpLKy2EBxFpriBuIE1voIHl/7vxoLhy/pyqdghAfQo1remn/2H6pH0bzKFiDUd
+         BEsgt3cLYuY7CP8R01JmWTm5CEQCsuTmYyEp7FdpcOU7HRm5ykzaxxwCTOBQkpAdNCVj
+         Simw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=NEZ5U7Po5BeujzVL1PMxzLMD8dogU0kUTKX4d32S7Mw=;
-        b=TFn+GRnilreoNISqFXYhdJ2HSZqTTfrw2kT5l4t0vVrBrv6BDv6G4amhkQFrlYZ1L+
-         f+SmyX8Do5pXwAqsSMwTER/gDV7UPN4U7yZ7j1j8O74L/quwyD+qIhKYKdhEpAM7/1Ea
-         JkGgAdGhvK00lWi6mc6YELKrjeLhD6Fvdio9+eBaSbx8xF2yg+aAmnoxxkgislNZ6IFx
-         WYRlNaIKrHpLoo8bJuNoUbuEy2J7nDqc81v/GTm3+VkGhnPV6fPv9vgXjiCTcAX0LjMC
-         TVtoAs9Y5oIaFyKccF7D7ZxTLlbrkuveVi4W2u9B4zAD059Np0u0+lNPplCRZdPrRQBV
-         MiCQ==
+        bh=0rKrl7iJBderO7McLU9xdXqR32edl/U7+oETLREFgpc=;
+        b=lyjxJSFE68BuuffUNUkbEDunCpplpTgOD2Sk/FX4moQcW0uO/uMDk7RF/WDs1lezgM
+         zuimbR3SK+UEJ8tocSqEUKYiV3oi+Ihs8v8/6hBaSVNrIrZBUqVoqLSzJnb0RyDS6Bc2
+         PKOCpTqhrcsZzjRruHmRaukhO0scNzYlpDSooY+b+e2Jiz8h4YisDSxKjHgrD1AScnM/
+         nEI1TC5yTGhjv7Lv1HkxecXL20sY180IPivBIFCXJh+aTGyLveg40CtkdBM/fQf7v1ur
+         UElcaOq/F8ZxKrnDt+t177fj3I89evZmEcOJyAwmh0heGAcJbM81VUXj94f6DCTbsC2B
+         Zvsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yae5CO8P;
+       dkim=fail header.i=@linaro.org header.s=google header.b=o5xVGYj6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i193si5257093yba.471.2021.01.21.11.17.24
+        by mx.google.com with ESMTPS id n2si5594176ybn.340.2021.01.21.11.17.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 11:17:24 -0800 (PST)
+        Thu, 21 Jan 2021 11:17:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yae5CO8P;
+       dkim=fail header.i=@linaro.org header.s=google header.b=o5xVGYj6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47696 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48254 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2fSO-0002cT-3h
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:17:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55660)
+	id 1l2fSV-00030I-5V
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:17:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55542)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fIB-0002H6-1N
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:52 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:36708)
+ id 1l2fI4-0002DO-Gf
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:44 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:44046)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fHz-0005pM-Gg
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:49 -0500
-Received: by mail-wr1-x430.google.com with SMTP id 6so2824931wri.3
- for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:36 -0800 (PST)
+ id 1l2fHz-0005oJ-2b
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:44 -0500
+Received: by mail-wr1-x436.google.com with SMTP id d16so2144772wro.11
+ for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NEZ5U7Po5BeujzVL1PMxzLMD8dogU0kUTKX4d32S7Mw=;
- b=yae5CO8Pdpe1iCQd1WZYhi23ZllqMFL4g+A/13mTrfun9hlfzhyBy9VEID5WM+0bch
- z5dZrEquwThQ8AMai651EEcttcY8H5VpXgGklpP/Xm+Y8hEL2b6LYnhHruluNcGbjp0o
- 0Bzc5efxuTDU3gjZzlNDXBD5JMfwUl0ZkWKLhUqPxCdfDkyzp986+1B8EPupdOIW6HSd
- 85ack7jonZnobQ0reN+jFjzZubW7ZZbZ+oyKJIechoCaFfC5dO2pz0u9NszdGutg63dx
- uHSThFO+kPVbt6B9KbXE+x31/QFC1sCo1rhvFSTKK0bq7MhHtmuxgcTaHM+nS4uENQ5g
- riNQ==
+ bh=0rKrl7iJBderO7McLU9xdXqR32edl/U7+oETLREFgpc=;
+ b=o5xVGYj6fJqYPGJqArDxdJUlPmUJ6v3eebK0MQPMjvr5Mq1HJ/phxgK3X11dcErZDc
+ nIklC5LhCi7P8IeWH8JoxCJz1dJ0r0e+tT3YA3zkr15HbUKNyVwc33WvI+D73cFEvLH5
+ 4+SdU2CFDMCTtw0FMGw+hqqSdUvzkiGR6TzOr5RnSQQ2h8YyChyFM0K1I9/okg+88jn4
+ tPo9v+u14kTXVc0Ur31wPHr/6UQmhkSqyJPWy0Hs3+0unVr/xPgeMAaODONR6Rpb9u33
+ 5I0t14ZtLGyO9ca+rOEfi/lTzMh09F3csoxmoTgFnrbW31iKRvwFWrcUewAxOUvmOu8A
+ xVoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=NEZ5U7Po5BeujzVL1PMxzLMD8dogU0kUTKX4d32S7Mw=;
- b=bpaGJ57aFSryszjHAKvg22sCGQy8nkrh/p+akdPqEbxYM67H8tzopebW9vTY16HIvk
- 2WrgIXJ0TRtpM0b8l1TL2gxtOIMJvy99lqQ5vHkBXhvqfjdw11k8CatNXHMF83nLagZZ
- QdbwrOCeXrVWS6V+aFBo5jQF3begIvLLiJOQ+xENftkevVrxKh40TOjO3LPX8SS1oIsc
- KcDeUykoSSQsET1Aq4N9Fy0mOVMQCVra/gGS/4qKE26wNDpXUg8q6myJh0z+RHZK2216
- IJp79eTmghxNhUfrrU7uLadZ8XnM4OuVLNJggZ34G0LNkTsecyT29L7BDkrSK3sUCvk4
- xslw==
-X-Gm-Message-State: AOAM531QZwqFvzK7lpl5Io4FhNrjYraTAoGykOcammY5lQ10pkmw177m
- +jOoAvQ1Uc6QnskOIxfLKBFFJg==
-X-Received: by 2002:adf:8285:: with SMTP id 5mr847952wrc.289.1611255996081;
- Thu, 21 Jan 2021 11:06:36 -0800 (PST)
+ bh=0rKrl7iJBderO7McLU9xdXqR32edl/U7+oETLREFgpc=;
+ b=K4U4weRa8ah2ACzbSRR2c9s1YxLltMNUFCmSihzhocy0rIk9qeOwXwg+jxEnu8wd/q
+ NJ79FiwNEYjDfBJ8+7R5ACKl94/VAcifYmXGnFFSmW8eLn4ABnM9IJjvhdvVyd97oX8Y
+ 12arZSAcQXaCwd+aQnvGy9g1U1prOeyinHy/V4VjfG/eS7t3kIPc6IBPI5GkBSrNupb5
+ dWQevftTwqiUxnq58rp6ZQQFtKjOyuvl8hk2/f/UIjWa9XeJj3spsvOQzjz+tDf9vtmh
+ ho2ToPnWG+hSqRNr4wVAhC0lApT1BDvLhVGS0uc/WA2Cj5YGebUGXkBBQ41wVqCy8BX2
+ ANXg==
+X-Gm-Message-State: AOAM530oMCCmbMGl/rOjymi5+sNLa94J3Zm7Ky2fZBJ0teUxvZzpmMKZ
+ Fl13gzR0DdQnhGRxAnPileo1Ymj/SAK13g==
+X-Received: by 2002:a5d:4ccb:: with SMTP id c11mr872864wrt.324.1611255993206; 
+ Thu, 21 Jan 2021 11:06:33 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.35
+ by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jan 2021 11:06:35 -0800 (PST)
+ Thu, 21 Jan 2021 11:06:32 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 11/25] hw/arm/armsse: Wire up clocks
-Date: Thu, 21 Jan 2021 19:06:08 +0000
-Message-Id: <20210121190622.22000-12-peter.maydell@linaro.org>
+Subject: [PATCH 08/25] hw/timer/cmsdk-apb-dualtimer: Add Clock input
+Date: Thu, 21 Jan 2021 19:06:05 +0000
+Message-Id: <20210121190622.22000-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
 References: <20210121190622.22000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,145 +120,91 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eqYkJtyvWQNE
+X-TUID: jlYdoiro/Aon
 
-Create two input clocks on the ARMSSE devices, one for the normal
-MAINCLK, and one for the 32KHz S32KCLK, and wire these up to the
-appropriate devices.  The old property-based clock frequency setting
-will remain in place until conversion is complete.
+As the first step in converting the CMSDK_APB_DUALTIMER device to the
+Clock framework, add a Clock input.  For the moment we do nothing
+with this clock; we will change the behaviour from using the pclk-frq
+property to using the Clock once all the users of this device have
+been converted to wire up the Clock.
 
-This is a migration compatibility break for machines mps2-an505,
-mps2-an521, musca-a, musca-b1.
+We take the opportunity to correct the name of the clock input to
+match the hardware -- the dual timer names the clock which drives the
+timers TIMCLK.  (It does also have a 'pclk' input, which is used only
+for the register and APB bus logic; on the SSE-200 these clocks are
+both connected together.)
+
+This is a migration compatibility break for machines mps2-an385,
+mps2-an386, mps2-an500, mps2-an511, mps2-an505, mps2-an521, musca-a,
+musca-b1.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armsse.h |  6 ++++++
- hw/arm/armsse.c         | 17 +++++++++++++++--
- 2 files changed, 21 insertions(+), 2 deletions(-)
+ include/hw/timer/cmsdk-apb-dualtimer.h | 3 +++
+ hw/timer/cmsdk-apb-dualtimer.c         | 7 +++++--
+ 2 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 4860a793f4b..bfa1e79c4fe 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -37,6 +37,8 @@
-  *  per-CPU identity and control register blocks
+diff --git a/include/hw/timer/cmsdk-apb-dualtimer.h b/include/hw/timer/cmsdk-apb-dualtimer.h
+index 08d9e6fa3d5..3adbb01dd34 100644
+--- a/include/hw/timer/cmsdk-apb-dualtimer.h
++++ b/include/hw/timer/cmsdk-apb-dualtimer.h
+@@ -17,6 +17,7 @@
   *
   * QEMU interface:
-+ *  + Clock input "MAINCLK": clock for CPUs and most peripherals
-+ *  + Clock input "S32KCLK": slow 32KHz clock used for a few peripherals
-  *  + QOM property "memory" is a MemoryRegion containing the devices provided
-  *    by the board model.
-  *  + QOM property "MAINCLK_FRQ" is the frequency of the main system clock
-@@ -103,6 +105,7 @@
- #include "hw/misc/armsse-mhu.h"
- #include "hw/misc/unimp.h"
- #include "hw/or-irq.h"
+  *  + QOM property "pclk-frq": frequency at which the timer is clocked
++ *  + Clock input "TIMCLK": clock (for both timers)
+  *  + sysbus MMIO region 0: the register bank
+  *  + sysbus IRQ 0: combined timer interrupt TIMINTC
+  *  + sysbus IRO 1: timer block 1 interrupt TIMINT1
+@@ -28,6 +29,7 @@
+ 
+ #include "hw/sysbus.h"
+ #include "hw/ptimer.h"
 +#include "hw/clock.h"
- #include "hw/core/split-irq.h"
- #include "hw/cpu/cluster.h"
  #include "qom/object.h"
-@@ -209,6 +212,9 @@ struct ARMSSE {
  
-     uint32_t nsccfg;
+ #define TYPE_CMSDK_APB_DUALTIMER "cmsdk-apb-dualtimer"
+@@ -62,6 +64,7 @@ struct CMSDKAPBDualTimer {
+     MemoryRegion iomem;
+     qemu_irq timerintc;
+     uint32_t pclk_frq;
++    Clock *timclk;
  
-+    Clock *mainclk;
-+    Clock *s32kclk;
-+
-     /* Properties */
-     MemoryRegion *board_memory;
-     uint32_t exp_numirq;
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index d2ba0459c44..4349ce9bfdb 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -21,6 +21,7 @@
- #include "hw/arm/armsse.h"
- #include "hw/arm/boot.h"
+     CMSDKAPBDualTimerModule timermod[CMSDK_APB_DUALTIMER_NUM_MODULES];
+     uint32_t timeritcr;
+diff --git a/hw/timer/cmsdk-apb-dualtimer.c b/hw/timer/cmsdk-apb-dualtimer.c
+index f6534241b94..781b496037b 100644
+--- a/hw/timer/cmsdk-apb-dualtimer.c
++++ b/hw/timer/cmsdk-apb-dualtimer.c
+@@ -25,6 +25,7 @@
  #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/registerfields.h"
 +#include "hw/qdev-clock.h"
+ #include "hw/timer/cmsdk-apb-dualtimer.h"
+ #include "migration/vmstate.h"
  
- /* Format of the System Information block SYS_CONFIG register */
- typedef enum SysConfigFormat {
-@@ -241,6 +242,9 @@ static void armsse_init(Object *obj)
-     assert(info->sram_banks <= MAX_SRAM_BANKS);
-     assert(info->num_cpus <= SSE_MAX_CPUS);
- 
-+    s->mainclk = qdev_init_clock_in(DEVICE(s), "MAINCLK", NULL, NULL);
-+    s->s32kclk = qdev_init_clock_in(DEVICE(s), "S32KCLK", NULL, NULL);
-+
-     memory_region_init(&s->container, obj, "armsse-container", UINT64_MAX);
- 
-     for (i = 0; i < info->num_cpus; i++) {
-@@ -711,6 +715,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-      * map its upstream ends to the right place in the container.
-      */
-     qdev_prop_set_uint32(DEVICE(&s->timer0), "pclk-frq", s->mainclk_frq);
-+    qdev_connect_clock_in(DEVICE(&s->timer0), "pclk", s->mainclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer0), errp)) {
-         return;
+@@ -445,6 +446,7 @@ static void cmsdk_apb_dualtimer_init(Object *obj)
+     for (i = 0; i < ARRAY_SIZE(s->timermod); i++) {
+         sysbus_init_irq(sbd, &s->timermod[i].timerint);
      }
-@@ -721,6 +726,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                              &error_abort);
++    s->timclk = qdev_init_clock_in(DEVICE(s), "TIMCLK", NULL, NULL);
+ }
  
-     qdev_prop_set_uint32(DEVICE(&s->timer1), "pclk-frq", s->mainclk_frq);
-+    qdev_connect_clock_in(DEVICE(&s->timer1), "pclk", s->mainclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer1), errp)) {
-         return;
-     }
-@@ -731,6 +737,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                              &error_abort);
+ static void cmsdk_apb_dualtimer_realize(DeviceState *dev, Error **errp)
+@@ -485,9 +487,10 @@ static const VMStateDescription cmsdk_dualtimermod_vmstate = {
  
-     qdev_prop_set_uint32(DEVICE(&s->dualtimer), "pclk-frq", s->mainclk_frq);
-+    qdev_connect_clock_in(DEVICE(&s->dualtimer), "TIMCLK", s->mainclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->dualtimer), errp)) {
-         return;
-     }
-@@ -889,6 +896,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-      *   0x4002f000: S32K timer
-      */
-     qdev_prop_set_uint32(DEVICE(&s->s32ktimer), "pclk-frq", S32KCLK);
-+    qdev_connect_clock_in(DEVICE(&s->s32ktimer), "pclk", s->s32kclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->s32ktimer), errp)) {
-         return;
-     }
-@@ -982,6 +990,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                           qdev_get_gpio_in_named(DEVICE(&s->armv7m), "NMI", 0));
- 
-     qdev_prop_set_uint32(DEVICE(&s->s32kwatchdog), "wdogclk-frq", S32KCLK);
-+    qdev_connect_clock_in(DEVICE(&s->s32kwatchdog), "WDOGCLK", s->s32kclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->s32kwatchdog), errp)) {
-         return;
-     }
-@@ -992,6 +1001,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     /* 0x40080000 .. 0x4008ffff : ARMSSE second Base peripheral region */
- 
-     qdev_prop_set_uint32(DEVICE(&s->nswatchdog), "wdogclk-frq", s->mainclk_frq);
-+    qdev_connect_clock_in(DEVICE(&s->nswatchdog), "WDOGCLK", s->mainclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->nswatchdog), errp)) {
-         return;
-     }
-@@ -1000,6 +1010,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->nswatchdog), 0, 0x40081000);
- 
-     qdev_prop_set_uint32(DEVICE(&s->swatchdog), "wdogclk-frq", s->mainclk_frq);
-+    qdev_connect_clock_in(DEVICE(&s->swatchdog), "WDOGCLK", s->mainclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->swatchdog), errp)) {
-         return;
-     }
-@@ -1127,9 +1138,11 @@ static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
- 
- static const VMStateDescription armsse_vmstate = {
-     .name = "iotkit",
+ static const VMStateDescription cmsdk_apb_dualtimer_vmstate = {
+     .name = "cmsdk-apb-dualtimer",
 -    .version_id = 1,
 -    .minimum_version_id = 1,
 +    .version_id = 2,
 +    .minimum_version_id = 2,
      .fields = (VMStateField[]) {
-+        VMSTATE_CLOCK(mainclk, ARMSSE),
-+        VMSTATE_CLOCK(s32kclk, ARMSSE),
-         VMSTATE_UINT32(nsccfg, ARMSSE),
-         VMSTATE_END_OF_LIST()
-     }
++        VMSTATE_CLOCK(timclk, CMSDKAPBDualTimer),
+         VMSTATE_STRUCT_ARRAY(timermod, CMSDKAPBDualTimer,
+                              CMSDK_APB_DUALTIMER_NUM_MODULES,
+                              1, cmsdk_dualtimermod_vmstate,
 -- 
 2.20.1
 

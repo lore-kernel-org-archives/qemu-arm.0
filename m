@@ -1,103 +1,103 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp172415lfb;
-        Thu, 21 Jan 2021 11:26:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwTG6KUSgAwD57bGq23OA4dPL2vtecdG3sC2IObiMkekL5bCiyEQTWUCRDm3BoE+Evo2NRm
-X-Received: by 2002:a25:5388:: with SMTP id h130mr1157137ybb.329.1611257200799;
-        Thu, 21 Jan 2021 11:26:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611257200; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp172940lfb;
+        Thu, 21 Jan 2021 11:27:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJJXRLEgt2tuFzOJGEKQT5z8ngQXEzXiu3r6Ga32VlNz3/DT7zpBmkxZOQ0Eyc9BEAlu4o
+X-Received: by 2002:a25:b4d:: with SMTP id 74mr1132399ybl.189.1611257249212;
+        Thu, 21 Jan 2021 11:27:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611257249; cv=none;
         d=google.com; s=arc-20160816;
-        b=maGbAt1YC1Q04SCe5nTY/ePd+fto/0ejhayAvm6eCsuG59KxOMZh1tO0CJrxKPTXAv
-         NOKQWBAl1gF76oqLOSqi+WaYAIikcsZhc3dEWOu2r0gZLEikkww5BXkw8SC4C2980Ae1
-         VsTEpXBcJvUz7096Kjuj1XiAgGW694zmCWOZYM4guwTP5MrJUlBQHTvtidCAdZHKwNA8
-         qAlOYMir4087ISDPTSnn1oeBoZ/yLxLtK4KbfOK2BlgvWW5s4csxFtZ26zRxr6zeJeDa
-         +ypBIpFr0xN+2Y1QZbOzS3UvBwHRyU7JThPl54vXSUdh1FjJk3QEHrxhYRRc+NgP7XI0
-         a+aQ==
+        b=kSdM2TgM/q4C/lyZb7ZZ3oMZ8+0Rf6wna6IZ1kczs+w7EQ00YkHrGBph8mC11LFjYU
+         fiYnt0DdpB01lm01eY2h4hHtCz+cqBU/988J/nyppMG/jmfIDQWB4qCH+Lwj8uIgqkZJ
+         bK7PFcJtpp7UgbOMZ/e4kj2yKJJlcc4i3G2GDkZWVLDCXvBcJQ5SEudqeV/6kz1txFdA
+         tNPROzeyl3CeUe2F5JigWtnZPDjfBkUwR57/zgQy4QFCYF5ArLo2cXGwAmPczxZs8uWu
+         1lpc+zQQyvkZqknx5imufrkQqYSsDrBM8tCSwoTbEk/qm3sAV7xaX0zxYFrUkxsf04DU
+         PrcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8qYEJ7vFQTOhZhRO/AtRAFtnFxVNIz2T8FPyZBXE8CU=;
-        b=eemZUiVRXu5C+2DTa9eMavAUJ5MrvzAGVoOeQ384EjhTNFP48MSdEWz1fm6u/1gJvM
-         0MaFHqC9QMmVydP21T6GX5IkUqqT7o+tcPlrdqZHjVoHRVF+ZMtUsvtVogSmu2RqSsBs
-         5mNaxNicwlLoyyiq1ZGpMxM+wq/EJfR4+trVFiL8yIgZqGddiqB1JMtJFOqNDGxhNU85
-         Ru6w7Dlx9QXBA0R3YeGc19tXCKLBfe7cExeW6HsQwiW5okL0wXOSU9BIi9DOccfN1lCV
-         1+F368LBXQmP/C3O75fj5US2cHVIKmRCgpuKHh54/X49eSp9opTdlgpEyVjxBX/+bkUA
-         lWPw==
+        bh=YCoEevXZLQxxQgAERiSPZQlFXrrGQIKv0sEF5uZH6HM=;
+        b=HlA/RWfl7trwEEKgSyIWUYXeiOJ4UfnDzTybvbx6XB1uvDYOtZhLmLtnLaGJcmOieH
+         bMDFDj4c+YYjUVnrNsupLLKkXH+UN8N8qvX2wZ4w8gfBxCHOFYyYDuiZ+MiAeZVCZwYW
+         bbPj4GywvkJIYfocZH5jw09VeYpvRloa7F93imJtpluHNE/ImYiL8KalilwBIQnrFuyx
+         IeiaODgjbKnlrjzboXDbrgtb846dx0hmCUf03FEKmJ2FD3ZX2C05kHyMqb4qEtn+Bj3Y
+         VaY9nGzdZ61FXstOJI2FSkfcXgl/yy2yELx5hDNXzvc+5rGZw5y+Fu/fbPhb8F1MsH0v
+         R1uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rq2x7PKz;
+       dkim=fail header.i=@linaro.org header.s=google header.b=h5Wza61K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d1si6263919ybi.151.2021.01.21.11.26.40
+        by mx.google.com with ESMTPS id p134si3169642yba.148.2021.01.21.11.27.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 11:26:40 -0800 (PST)
+        Thu, 21 Jan 2021 11:27:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rq2x7PKz;
+       dkim=fail header.i=@linaro.org header.s=google header.b=h5Wza61K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2fbM-0003aj-4Y
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:26:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55792)
+	id 1l2fc8-0004cD-GV
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:27:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fIN-0002Oy-FV
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:03 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:52013)
+ id 1l2fIX-0002f1-Ju
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:13 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:41149)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fI1-0005od-2Q
- for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:03 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id m2so2404787wmm.1
- for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:35 -0800 (PST)
+ id 1l2fI8-0005x5-T6
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:07:13 -0500
+Received: by mail-wr1-x434.google.com with SMTP id a12so2816945wrv.8
+ for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8qYEJ7vFQTOhZhRO/AtRAFtnFxVNIz2T8FPyZBXE8CU=;
- b=rq2x7PKzCDz83IUDc0edd0kgJTuBpexH0TnVe/OCkjZzPAqY9WrnD4/IuGCGFuVXJE
- Xj7ei0j7aPYJMKijAp9pldq0MvQvokHMWI8GrdgDFXMV+cQCF1bKtMu98QSJ/VrFB0PY
- vnXJBbUHWXpJyryN0xv1Ej896E75b+uR7ZDTov3ZiquH7+ShKwC17jb/+QwG8nrzyALS
- RqtaMlHhx3ka6UieK7Kz27HiTM4zQwA6WL6CzkPoW75K54OBk/QoYAGNz7STL04ux3vi
- blTglX95MhCZGeGQUHs8KSVR1SW+KDK8rWMb58MxpYHe5C8xNy31cAFIbvx4x0MR86Eb
- 26ew==
+ bh=YCoEevXZLQxxQgAERiSPZQlFXrrGQIKv0sEF5uZH6HM=;
+ b=h5Wza61KoGm9iDnKB7703GCM/t5IJ/EW2sCh1Mny+TLUdq8RJBDeH4qn59br2K65oc
+ 3oDNvM3MaQ2kQkxCJI2jFcU3F/e1CxhzU5LA2+wOucxKe3Hshuwm59p2uuVVEDSjts68
+ z+igabGujM/LKnvm8Q8UTL91x04vVJcs7h66N4F24BNuyPS1gqLtaAkrbXyaom7Vw4M8
+ I8NGi+oYYhfWdVrx70u7jumAsLiS1ZV8pZcy/8ALqIIvTec0Z7Cf9UHfNbFzllzBdmBX
+ KxmJ6oGD5c/aMgKb+tCNPNTBRaen7omeeA57TAZ/F5Sti4hT7kxYEL2YNDyVZs+WXTxB
+ iM5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8qYEJ7vFQTOhZhRO/AtRAFtnFxVNIz2T8FPyZBXE8CU=;
- b=PplaooVjK69DE2orvsZTUGGzuZKpWHRkfAhUJnThDkwTJltDG4BgLWTjOttLGd3XOf
- l0Wld2NVrgI8fkwByKJh1FEDGmOkZdmziXbi8I3IaEWXtpQYxPEy2UOtEDe/0dfkmWIF
- wlsxeRA8zC8NTt7SCu6KQ/VMMQQ4r7vbf64voINqtvoe8aL17m2IAXbKtjFcij8HmCTy
- 0nwry3tmziGcMH6+uCnKFCB2PaWTfG8OEJQmkBPClI4LiPGXlY1cru/GEY0DYpPI+5B0
- 3iwZsHnBI5i38UKf1PvW6RYRyVFz0CNavR2fpxHoW0RHD/atLn+vdxOWd+vQduwOfbW2
- RDNw==
-X-Gm-Message-State: AOAM530BIckRIe7vds/OC7KK6jGKqX7FT4CPnQtvFJ2tNqOwwVlIBBkX
- q6BbOTZlI4tuiQpi8ORapnj6gQ==
-X-Received: by 2002:a1c:e902:: with SMTP id q2mr690920wmc.143.1611255995115;
- Thu, 21 Jan 2021 11:06:35 -0800 (PST)
+ bh=YCoEevXZLQxxQgAERiSPZQlFXrrGQIKv0sEF5uZH6HM=;
+ b=RNzoj1W5ZHqWhUJ9S07R9+VNpliKTn1LnlZk5Kaxk6PwnEcbIvDcecgBMAyi0070Mm
+ jNEBvhbLLpypExUwioJ+ySMQzWd44fkpo+a6YtkTQcYYyYSfHZydemaon+7re1MMxMUC
+ 5mBs8BoUM8No7r4hRalP8VySRSkr8n+G9l9iBa6F34jOmhbibOB6ePsOB83kBiVWWN8n
+ lrZ3lQ1mYtjhbbG16W0jabD6cIBosk2ZaZH6IEPp5gxun911BNidj+GRSrEFMhmXkoqe
+ pzuK+8R4/TBabqvVxSVN99SKy5Ll58SqEgTotCrgiQmqkSPB2XV4gtiFxszJlJtGg1CZ
+ SHSA==
+X-Gm-Message-State: AOAM530eIaY1MXK6zPOTrbjeAsMBzgDGNlSGj3s1QwTL9zoUhPIvBXnx
+ jZnu8IGHk8DPjf8EY+fxWysKuQ==
+X-Received: by 2002:adf:d20b:: with SMTP id j11mr890437wrh.318.1611256007320; 
+ Thu, 21 Jan 2021 11:06:47 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.34
+ by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jan 2021 11:06:34 -0800 (PST)
+ Thu, 21 Jan 2021 11:06:46 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 10/25] hw/arm/armsse: Rename "MAINCLK" property to
- "MAINCLK_FRQ"
-Date: Thu, 21 Jan 2021 19:06:07 +0000
-Message-Id: <20210121190622.22000-11-peter.maydell@linaro.org>
+Subject: [PATCH 23/25] arm: Don't set freq properties on CMSDK timer, dualtimer,
+ watchdog, ARMSSE
+Date: Thu, 21 Jan 2021 19:06:20 +0000
+Message-Id: <20210121190622.22000-24-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
 References: <20210121190622.22000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,101 +121,148 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n05I/crr2j4u
+X-TUID: +CbMTQpFXqR3
 
-While we transition the ARMSSE code from integer properties
-specifying clock frequencies to Clock objects, we want to have the
-device provide both at once.  We want the final name of the main
-input Clock to be "MAINCLK", following the hardware name.
-Unfortunately creating an input Clock with a name X creates an
-under-the-hood QOM property X; for "MAINCLK" this clashes with the
-existing UINT32 property of that name.
-
-Rename the UINT32 property to MAINCLK_FRQ so it can coexist with the
-MAINCLK Clock; once the transition is complete MAINCLK_FRQ will be
-deleted.
-
-Commit created with:
- perl -p -i -e 's/MAINCLK/MAINCLK_FRQ/g' hw/arm/{armsse,mps2-tz,musca}.c include/hw/arm/armsse.h
+Remove all the code that sets frequency properties on the CMSDK
+timer, dualtimer and watchdog devices and on the ARMSSE SoC device:
+these properties are unused now that the devices rely on their Clock
+inputs instead.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armsse.h | 2 +-
- hw/arm/armsse.c         | 6 +++---
- hw/arm/mps2-tz.c        | 2 +-
- hw/arm/musca.c          | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ hw/arm/armsse.c    | 7 -------
+ hw/arm/mps2-tz.c   | 1 -
+ hw/arm/mps2.c      | 3 ---
+ hw/arm/musca.c     | 1 -
+ hw/arm/stellaris.c | 3 ---
+ 5 files changed, 15 deletions(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 83f5e28c16e..4860a793f4b 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -39,7 +39,7 @@
-  * QEMU interface:
-  *  + QOM property "memory" is a MemoryRegion containing the devices provided
-  *    by the board model.
-- *  + QOM property "MAINCLK" is the frequency of the main system clock
-+ *  + QOM property "MAINCLK_FRQ" is the frequency of the main system clock
-  *  + QOM property "EXP_NUMIRQ" sets the number of expansion interrupts.
-  *    (In hardware, the SSE-200 permits the number of expansion interrupts
-  *    for the two CPUs to be configured separately, but we restrict it to
 diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index baac027659d..d2ba0459c44 100644
+index 1da0c1be4c7..7494afc630e 100644
 --- a/hw/arm/armsse.c
 +++ b/hw/arm/armsse.c
-@@ -47,7 +47,7 @@ static Property iotkit_properties[] = {
-     DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-     DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
--    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
-+    DEFINE_PROP_UINT32("MAINCLK_FRQ", ARMSSE, mainclk_frq, 0),
-     DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
-     DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
-     DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], true),
-@@ -59,7 +59,7 @@ static Property armsse_properties[] = {
-     DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-     DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
--    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
-+    DEFINE_PROP_UINT32("MAINCLK_FRQ", ARMSSE, mainclk_frq, 0),
-     DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
-     DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
-     DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], false),
-@@ -448,7 +448,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     }
- 
-     if (!s->mainclk_frq) {
--        error_setg(errp, "MAINCLK property was not set");
-+        error_setg(errp, "MAINCLK_FRQ property was not set");
+@@ -726,7 +726,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+      * it to the appropriate PPC port; then we can realize the PPC and
+      * map its upstream ends to the right place in the container.
+      */
+-    qdev_prop_set_uint32(DEVICE(&s->timer0), "pclk-frq", s->mainclk_frq);
+     qdev_connect_clock_in(DEVICE(&s->timer0), "pclk", s->mainclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer0), errp)) {
          return;
-     }
+@@ -737,7 +736,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     object_property_set_link(OBJECT(&s->apb_ppc0), "port[0]", OBJECT(mr),
+                              &error_abort);
  
+-    qdev_prop_set_uint32(DEVICE(&s->timer1), "pclk-frq", s->mainclk_frq);
+     qdev_connect_clock_in(DEVICE(&s->timer1), "pclk", s->mainclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer1), errp)) {
+         return;
+@@ -748,7 +746,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     object_property_set_link(OBJECT(&s->apb_ppc0), "port[1]", OBJECT(mr),
+                              &error_abort);
+ 
+-    qdev_prop_set_uint32(DEVICE(&s->dualtimer), "pclk-frq", s->mainclk_frq);
+     qdev_connect_clock_in(DEVICE(&s->dualtimer), "TIMCLK", s->mainclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->dualtimer), errp)) {
+         return;
+@@ -907,7 +904,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     /* Devices behind APB PPC1:
+      *   0x4002f000: S32K timer
+      */
+-    qdev_prop_set_uint32(DEVICE(&s->s32ktimer), "pclk-frq", S32KCLK);
+     qdev_connect_clock_in(DEVICE(&s->s32ktimer), "pclk", s->s32kclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->s32ktimer), errp)) {
+         return;
+@@ -1001,7 +997,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out(DEVICE(&s->nmi_orgate), 0,
+                           qdev_get_gpio_in_named(DEVICE(&s->armv7m), "NMI", 0));
+ 
+-    qdev_prop_set_uint32(DEVICE(&s->s32kwatchdog), "wdogclk-frq", S32KCLK);
+     qdev_connect_clock_in(DEVICE(&s->s32kwatchdog), "WDOGCLK", s->s32kclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->s32kwatchdog), errp)) {
+         return;
+@@ -1012,7 +1007,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+ 
+     /* 0x40080000 .. 0x4008ffff : ARMSSE second Base peripheral region */
+ 
+-    qdev_prop_set_uint32(DEVICE(&s->nswatchdog), "wdogclk-frq", s->mainclk_frq);
+     qdev_connect_clock_in(DEVICE(&s->nswatchdog), "WDOGCLK", s->mainclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->nswatchdog), errp)) {
+         return;
+@@ -1021,7 +1015,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+                        armsse_get_common_irq_in(s, 1));
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->nswatchdog), 0, 0x40081000);
+ 
+-    qdev_prop_set_uint32(DEVICE(&s->swatchdog), "wdogclk-frq", s->mainclk_frq);
+     qdev_connect_clock_in(DEVICE(&s->swatchdog), "WDOGCLK", s->mainclk);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->swatchdog), errp)) {
+         return;
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 3707876d6d4..6a9eed9022a 100644
+index 7acdf490f28..90caa914934 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -402,7 +402,7 @@ static void mps2tz_common_init(MachineState *machine)
+@@ -413,7 +413,6 @@ static void mps2tz_common_init(MachineState *machine)
      object_property_set_link(OBJECT(&mms->iotkit), "memory",
                               OBJECT(system_memory), &error_abort);
      qdev_prop_set_uint32(iotkitdev, "EXP_NUMIRQ", MPS2TZ_NUMIRQ);
--    qdev_prop_set_uint32(iotkitdev, "MAINCLK", SYSCLK_FRQ);
-+    qdev_prop_set_uint32(iotkitdev, "MAINCLK_FRQ", SYSCLK_FRQ);
+-    qdev_prop_set_uint32(iotkitdev, "MAINCLK_FRQ", SYSCLK_FRQ);
+     qdev_connect_clock_in(iotkitdev, "MAINCLK", mms->sysclk);
+     qdev_connect_clock_in(iotkitdev, "S32KCLK", mms->s32kclk);
      sysbus_realize(SYS_BUS_DEVICE(&mms->iotkit), &error_fatal);
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index cd1c215f941..39add416db5 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -346,7 +346,6 @@ static void mps2_common_init(MachineState *machine)
+         object_initialize_child(OBJECT(mms), name, &mms->timer[i],
+                                 TYPE_CMSDK_APB_TIMER);
+         sbd = SYS_BUS_DEVICE(&mms->timer[i]);
+-        qdev_prop_set_uint32(DEVICE(&mms->timer[i]), "pclk-frq", SYSCLK_FRQ);
+         qdev_connect_clock_in(DEVICE(&mms->timer[i]), "pclk", mms->sysclk);
+         sysbus_realize_and_unref(sbd, &error_fatal);
+         sysbus_mmio_map(sbd, 0, base);
+@@ -355,7 +354,6 @@ static void mps2_common_init(MachineState *machine)
  
-     /*
+     object_initialize_child(OBJECT(mms), "dualtimer", &mms->dualtimer,
+                             TYPE_CMSDK_APB_DUALTIMER);
+-    qdev_prop_set_uint32(DEVICE(&mms->dualtimer), "pclk-frq", SYSCLK_FRQ);
+     qdev_connect_clock_in(DEVICE(&mms->dualtimer), "TIMCLK", mms->sysclk);
+     sysbus_realize(SYS_BUS_DEVICE(&mms->dualtimer), &error_fatal);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&mms->dualtimer), 0,
+@@ -363,7 +361,6 @@ static void mps2_common_init(MachineState *machine)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&mms->dualtimer), 0, 0x40002000);
+     object_initialize_child(OBJECT(mms), "watchdog", &mms->watchdog,
+                             TYPE_CMSDK_APB_WATCHDOG);
+-    qdev_prop_set_uint32(DEVICE(&mms->watchdog), "wdogclk-frq", SYSCLK_FRQ);
+     qdev_connect_clock_in(DEVICE(&mms->watchdog), "WDOGCLK", mms->sysclk);
+     sysbus_realize(SYS_BUS_DEVICE(&mms->watchdog), &error_fatal);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&mms->watchdog), 0,
 diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index b50157f63a6..d82bef11cf2 100644
+index a9292482a06..945643c3cd7 100644
 --- a/hw/arm/musca.c
 +++ b/hw/arm/musca.c
-@@ -375,7 +375,7 @@ static void musca_init(MachineState *machine)
+@@ -385,7 +385,6 @@ static void musca_init(MachineState *machine)
      qdev_prop_set_uint32(ssedev, "EXP_NUMIRQ", mmc->num_irqs);
      qdev_prop_set_uint32(ssedev, "init-svtor", mmc->init_svtor);
      qdev_prop_set_uint32(ssedev, "SRAM_ADDR_WIDTH", mmc->sram_addr_width);
--    qdev_prop_set_uint32(ssedev, "MAINCLK", SYSCLK_FRQ);
-+    qdev_prop_set_uint32(ssedev, "MAINCLK_FRQ", SYSCLK_FRQ);
+-    qdev_prop_set_uint32(ssedev, "MAINCLK_FRQ", SYSCLK_FRQ);
+     qdev_connect_clock_in(ssedev, "MAINCLK", mms->sysclk);
+     qdev_connect_clock_in(ssedev, "S32KCLK", mms->s32kclk);
      /*
-      * Musca-A takes the default SSE-200 FPU/DSP settings (ie no for
-      * CPU0 and yes for CPU1); Musca-B1 explicitly enables them for CPU0.
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 9b67c739ef2..5acb043a07e 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -1415,9 +1415,6 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     if (board->dc1 & (1 << 3)) { /* watchdog present */
+         dev = qdev_new(TYPE_LUMINARY_WATCHDOG);
+ 
+-        /* system_clock_scale is valid now */
+-        uint32_t mainclk = NANOSECONDS_PER_SECOND / system_clock_scale;
+-        qdev_prop_set_uint32(dev, "wdogclk-frq", mainclk);
+         qdev_connect_clock_in(dev, "WDOGCLK",
+                               qdev_get_clock_out(ssys_dev, "SYSCLK"));
+ 
 -- 
 2.20.1
 

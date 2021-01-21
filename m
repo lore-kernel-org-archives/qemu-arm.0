@@ -1,102 +1,100 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp159150lfb;
-        Thu, 21 Jan 2021 11:07:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxlbQ6Z4MBHUnsPZyh6offliQPZ/zttegSMf6qaDlHEUM3Xy2mhXtrzllaF6KD9jeu4nxXO
-X-Received: by 2002:a25:2554:: with SMTP id l81mr1181493ybl.124.1611256059787;
-        Thu, 21 Jan 2021 11:07:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611256059; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp159282lfb;
+        Thu, 21 Jan 2021 11:07:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyg3MI1pq8pvXIjnS/5NBqR9S3dDYMExIB887HYYonmAMMotM7Jj1+oN5c0hzoyE6HD65HL
+X-Received: by 2002:a5b:f08:: with SMTP id x8mr1143752ybr.217.1611256069293;
+        Thu, 21 Jan 2021 11:07:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611256069; cv=none;
         d=google.com; s=arc-20160816;
-        b=VhT3HjT24VspEdYIz03F860KyfqE6NmHNrUeVdxDZEEH+RMWVF8ZH2OwVtHkQUKSMK
-         tk2OCbHAubucs3mNpy+mmX/nTcCs9cp8m3jz1vPbF0ar4lFlrUyf5TFNNRl9n8ze5mlI
-         Zs7rl7AUfDyLq4CXhi0mDdoYvQoV9nwvMiKLm8Eh1vo3oGczxb96upu4yCLOBx1iHanS
-         6GxOEyCOX9stGndHYrDYwkiTH/R2fbxPeLZTgRGxLOy+ERT/pg242GqlFOjZPLlySjlx
-         NOGiKoY13VcIMZc4iysmz2HkwHA73DPqOjWb1JPz8GLkMtkThJiSp4q+6we4Jtbci2et
-         w1Iw==
+        b=D9g3VLaYmVqxbFLdhHL7xnDsorf/Ywvp+qzYsJ+kP31VYtsgVtJwjQO3P9mphadFNc
+         0FQwYVM23FSkYGXcgdyV2Tb4J5NgzH9t/B+vCZOf/EFU1NioZidJkufwBLHOwxfWcDiW
+         /RrReQjE5gx+4vlM+Muv9nnZzUkNXTRodQeYqThPnVLz4G4bT0lJOLUm1TdWDmx9UH++
+         6NDi9lf2xNZ/C3skarZFYjUH/sicwCJeC33qQp6KrUzz3pcEhpdi5KszQSdrFgMFPpYR
+         A2r2efGn74jdxkP6sM2OJ63pEwPpVaZ7BYEO+w/9jiADzRXHA4DGCh7l6YZhgv+pFshs
+         aAuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=CMkjp0id/Ultib0Bf01Fa0R4lEkPZ5/dYQA5kFPJtl0=;
-        b=YWjR+T48f0Z0AGbvBzMR16WgcUBQGpnQOVIVdXTJgsPI4qi/2jTJ+9y8roKwwZFqee
-         jUpcHCDqC9QnyoOJUdaz/VDIZ17JrfCvCTwVHdBR/X7M7gdbBhTkECBL+37WNgQEPn9D
-         bQrbxyjf83KpXXw+LGtJIm9KbaOFGK9zh5qcYoyQXU3OzUe2Cyql0hzFOXqnzBQogjRo
-         HUlmG69O0gvBnGJXvuiXYf8+jOVsZUcBDDK2u4UP+q/BATluU9RMrkWcH/hoe26mbpZQ
-         4+RxuDAyXwRBxTZpzuvCFaAG+NROe7Jl+bkgX6PC6jFmL/sJaS3dugKtH3Z8QkIFYU8z
-         qoVw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=8nqbDtQMOkOBn+f1BN8Oersk3By9xmyRL8fthJDxmjo=;
+        b=s3fmadkRIaGMZk5oLnuYXvSaUr1gdVSpmWwU/0kY4KCU6+lKtJMG9DOX9kOXFjDGMz
+         4MWRgCr2TeV2HSaG/3eAYYMEW6ZxHwW1h2F7ZcFLgR8s1WeTRRPM6wOMQcvjdODGkC81
+         60K9HeM3ts0IXrTBubCTDVF+FZTmMTbEU/dCdq5m6vpeXavmQOGbvHY9Ua1LXroIClb5
+         hSz890Ew63HPmDNkcqeKnmUuuHJBNSQBy0KXTwvHlbQ2g8TsYwE6r7JSHmzjqNvir9di
+         VyM8/yq2xGaQsv1pxj7nvmFPTvVrzRm1c8sSSKFYV/DKOiK/PtT8TlDfXAs7Q2xosdiJ
+         1R4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZzR2c6Lc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=OMYJb446;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x136si5929833ybg.168.2021.01.21.11.07.39
+        by mx.google.com with ESMTPS id i18si3042790ybh.134.2021.01.21.11.07.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Jan 2021 11:07:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Jan 2021 11:07:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZzR2c6Lc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=OMYJb446;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59404 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58006 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2fIx-0002xW-3M
-	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:07:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55478)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l2fJ6-0002B6-JR
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:07:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fI2-0002B3-DH
- for qemu-arm@nongnu.org; Thu, 21 Jan 2021 14:06:42 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:32891)
+ id 1l2fI1-0002AK-8s
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:41 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:43875)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2fHq-0005ka-Nz
- for qemu-arm@nongnu.org; Thu, 21 Jan 2021 14:06:42 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id 7so2830883wrz.0
- for <qemu-arm@nongnu.org>; Thu, 21 Jan 2021 11:06:27 -0800 (PST)
+ id 1l2fHq-0005kB-1m
+ for qemu-devel@nongnu.org; Thu, 21 Jan 2021 14:06:41 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id b5so2801648wrr.10
+ for <qemu-devel@nongnu.org>; Thu, 21 Jan 2021 11:06:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=CMkjp0id/Ultib0Bf01Fa0R4lEkPZ5/dYQA5kFPJtl0=;
- b=ZzR2c6LcIZG+nAvsY8WT9NBeBekCHgIaKMSHtduHxKdS8aEKGaivd62tbC7yz7/7HG
- iZPqSndP3TLv4W0696PeTouTpl9oEoJQ1wpUSeIfSDpsWXPs0myMNMY/xr/NTndZpStA
- E6vT78LnVR21gmhRu2i3X7t/av/rD2jm9l4zoriX1NO8rY/R9p2pxph0znXM1UI95uXk
- BOAm6BqjDjp2kG+RRxI6OPR+dFXgUP9GJRGCEzuzEmHxeIo4InUDkBVkGX9MeTp6wggM
- GEuvtthWVEIFNNsrxWaxH6Uek67sO19X0Fx/g5YH1aT9MtIxGx9Z6mJdpsGIMXbSOqVu
- GFyA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8nqbDtQMOkOBn+f1BN8Oersk3By9xmyRL8fthJDxmjo=;
+ b=OMYJb446YdwVx3Sz8joU7T+kM3g+emdeUmUmwAJmP0vm/vDp7u+KoFvNVdsomURPgQ
+ o8jmaVyH7rXr6AzQFWQ77UrYuipREuLGezUFC7ROY/DxecXDUxBxL4Zi11K+zNoqhgNa
+ Nz4a976Gm6t6oJxYkK4gSIz0CTG9IfrrdmA2KQVF8Jx/VkHZFyquNJupMjbFJPAKtV3D
+ 8OXI0LfmcMymb7WdjBfKkNJ2rvN5tcGiz+CA28H5wRYnKC7QNTTHQZe9d07a3dLQMP5A
+ KqFM4GPPFw+3OnGWvkxqH2JcOFXtCOpCo0ytQcCIQ4oY5t+DMZrSbu4P2L773LvyhjI2
+ M4UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CMkjp0id/Ultib0Bf01Fa0R4lEkPZ5/dYQA5kFPJtl0=;
- b=HP5jJHBKrW4gMPF4pS2537AZd+tAFOST7vY+1G7AmHqIKcWplI8bCaaZNvkuOn1Uy2
- 9hZs5kVvG3tHpTFrhktg0fBXiFipSuGcGi1nWaNyvNiZnDAn3BoSgM1eZJEwx3lSoioX
- l9pq29G1W6g5yofin+gJAN2eC/cWa3h3/nA0Cr+fcBwGhqSpJTaq1/kjL3eqamINIigk
- cZ+sBnrEP12G6HlMKoLhmSaTxzKvfZi8DZLF5DQm9me85p2Mg+FuSZp6pRRDKm7fhl5b
- 2t1fFaAy+96/GgBPHXA96kE8gS0FXXN8kTzwzIOhQ8v9etfxjHAKho0GWdT1P0NdVY52
- bS9w==
-X-Gm-Message-State: AOAM531H1bW2y/bO9tBT9kECaJ9ano5+Q9dzqtFQqXX/pWtLIvWhoAHz
- ng1XGtNqK4QAh7BlQyiH3DUryzfyJp1nlA==
-X-Received: by 2002:a5d:43d2:: with SMTP id v18mr912137wrr.326.1611255986528; 
- Thu, 21 Jan 2021 11:06:26 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8nqbDtQMOkOBn+f1BN8Oersk3By9xmyRL8fthJDxmjo=;
+ b=YhDYxr2EJXKJgr+rzeKjlRhFdrOCCIICzqkLeEKMVt4X7tcauO9QwpGwuDAwRxLPe6
+ g+DGOssqQGApPo477X5bZXlIsLkbmIi/beXjuHUZxgKyy2ycgxtJWI2WsRY42Db+lHvJ
+ 3JYJCQb4e/X9gSmHQYG5rKwC/q0o6mtPPcyp0zyZINZHeEAlfpGZ2hbEQGb0Re5fHkU4
+ N3ytcUp1FnzvPetB/0iishABWY4NzXZZqsr1p5bHFSgiOqNx+93pW/BNmLNSKLWfhmRa
+ kgY+yNLHn30Au5VIDtjheohaIkcG7PK6U/eL6FC/i220KK5qWqqbLwmir+B472W+cQAS
+ pwuQ==
+X-Gm-Message-State: AOAM532nsUpQlOqd5cKnyr2371RUqek64y0iyfX4WkY9ScWV3Rp83h5i
+ dPPg9p9JhFA1Pv/DjN27enEuGQ==
+X-Received: by 2002:adf:f512:: with SMTP id q18mr899200wro.55.1611255985413;
  Thu, 21 Jan 2021 11:06:25 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Jan 2021 11:06:24 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/25] ptimer: Add new ptimer_set_period_from_clock() function
-Date: Thu, 21 Jan 2021 19:05:58 +0000
-Message-Id: <20210121190622.22000-2-peter.maydell@linaro.org>
+Subject: [PATCH 00/25] Convert CMSDK timer, watchdog,
+ dualtimer to Clock framework
+Date: Thu, 21 Jan 2021 19:05:57 +0000
+Message-Id: <20210121190622.22000-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
-References: <20210121190622.22000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,154 +103,139 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: caXLxi8h8jWw
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eSwzSNrFRevv
 
-The ptimer API currently provides two methods for setting the period:
-ptimer_set_period(), which takes a period in nanoseconds, and
-ptimer_set_freq(), which takes a frequency in Hz.  Neither of these
-lines up nicely with the Clock API, because although both the Clock
-and the ptimer track the frequency using a representation of whole
-and fractional nanoseconds, conversion via either period-in-ns or
-frequency-in-Hz will introduce a rounding error.
+This patchset converts the CMSDK timer, watchdog and dualtimer devices
+to use the Clock framework instead of an integer property specifying
+a frequency in Hz. The series is quito a lot of patches but they
+should be mostly small and I hope easy to review.
 
-Add a new function ptimer_set_period_from_clock() which takes the
-Clock object directly to avoid the rounding issues.  This includes a
-facility for the user to specify that there is a frequency divider
-between the Clock proper and the timer, as some timer devices like
-the CMSDK APB dualtimer need this.
+The motivation here is the upcoming Arm SSE-300 model: this has a
+new kind of timer device, which I wanted to write in the modern style
+with a Clock input. That meant the ARMSSE container object needed
+to know about Clocks, so converting the existing devices it used
+to Clocks seemed like a good first step.
 
-To avoid having to drag in clock.h from ptimer.h we add the Clock
-type to typedefs.h.
+The series as a whole is a migration compat break for the machines
+involved: mps2-an385, mps2-an386, mps2-an500, mps2-an511, mps2-an505,
+mps2-an521, musca-a, musca-b1, lm3s811evb, lm3s6965evb.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Side note, I forget why we didn't go for 64.32 fixedpoint for the
-Clock too.  I kinda feel we might run into the "clocks can't handle
-periods greater than 4 seconds" limit some day.  Hopefully we can
-backwards-compatibly expand it if that day ever comes...
-
-The 'divisor' functionality seemed like the simplest way to get
-to what I needed for the dualtimer; perhaps we should think about
-whether we can have generic lightweight support for clock
-frequency divider/multipliers...
----
- include/hw/ptimer.h     | 22 ++++++++++++++++++++++
- include/qemu/typedefs.h |  1 +
- hw/core/ptimer.c        | 34 ++++++++++++++++++++++++++++++++++
- 3 files changed, 57 insertions(+)
-
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index 412763fffb2..c443218475b 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -165,6 +165,28 @@ void ptimer_transaction_commit(ptimer_state *s);
-  */
- void ptimer_set_period(ptimer_state *s, int64_t period);
+Series structure:
+ * patches adding new clock and ptimer API functions
+ * add tests for the devices
+ * add Clock inputs to devices, which do nothing for now
+ * wire up the clocks in the code that uses the devices
+ * make the devices use the clocks and ignore the frq properties
+ * remove the setting of the frq properties in code using the devices
+ * remove the frq properties from the devices
  
-+/**
-+ * ptimer_set_period_from_clock - Set counter increment from a Clock
-+ * @s: ptimer to configure
-+ * @clk: pointer to Clock object to take period from
-+ * @divisor: value to scale the clock frequency down by
-+ *
-+ * If the ptimer is being driven from a Clock, this is the preferred
-+ * way to tell the ptimer about the period, because it avoids any
-+ * possible rounding errors that might happen if the internal
-+ * representation of the Clock period was converted to either a period
-+ * in ns or a frequency in Hz.
-+ *
-+ * If the ptimer should run at the same frequency as the clock,
-+ * pass 1 as the @divisor; if the ptimer should run at half the
-+ * frequency, pass 2, and so on.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block.
-+ */
-+void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clock,
-+                                  unsigned int divisor);
-+
- /**
-  * ptimer_set_freq - Set counter frequency in Hz
-  * @s: ptimer to configure
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index 976b529dfb5..68deb74ef6f 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -34,6 +34,7 @@ typedef struct BlockDriverState BlockDriverState;
- typedef struct BusClass BusClass;
- typedef struct BusState BusState;
- typedef struct Chardev Chardev;
-+typedef struct Clock Clock;
- typedef struct CompatProperty CompatProperty;
- typedef struct CoMutex CoMutex;
- typedef struct CPUAddressSpace CPUAddressSpace;
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index 2aa97cb665c..6ba19fd9658 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -15,6 +15,7 @@
- #include "sysemu/qtest.h"
- #include "block/aio.h"
- #include "sysemu/cpus.h"
-+#include "hw/clock.h"
- 
- #define DELTA_ADJUST     1
- #define DELTA_NO_ADJUST -1
-@@ -348,6 +349,39 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
-     }
- }
- 
-+/* Set counter increment interval from a Clock */
-+void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
-+                                  unsigned int divisor)
-+{
-+    /*
-+     * The raw clock period is a 64-bit value in units of 2^-32 ns;
-+     * put another way it's a 32.32 fixed-point ns value. Our internal
-+     * representation of the period is 64.32 fixed point ns, so
-+     * the conversion is simple.
-+     */
-+    uint64_t raw_period = clock_get(clk);
-+    uint64_t period_frac;
-+
-+    assert(s->in_transaction);
-+    s->delta = ptimer_get_count(s);
-+    s->period = extract64(raw_period, 32, 32);
-+    period_frac = extract64(raw_period, 0, 32);
-+    /*
-+     * divisor specifies a possible frequency divisor between the
-+     * clock and the timer, so it is a multiplier on the period.
-+     * We do the multiply after splitting the raw period out into
-+     * period and frac to avoid having to do a 32*64->96 multiply.
-+     */
-+    s->period *= divisor;
-+    period_frac *= divisor;
-+    s->period += extract64(period_frac, 32, 32);
-+    s->period_frac = (uint32_t)period_frac;
-+
-+    if (s->enabled) {
-+        s->need_reload = true;
-+    }
-+}
-+
- /* Set counter frequency in Hz.  */
- void ptimer_set_freq(ptimer_state *s, uint32_t freq)
- {
+The new ptimer and clock functions are probably the most interesting part:
+ * ptimer_set_period_from_clock(ptimer, clk, divisor)
+   is for setting the period of a ptimer directly from a Clock (possibly
+   accounting for the frequency being divided by some integer first) --
+   this avoids possible rounding errors if we went via ptimer_set_period()
+   or ptimer_set_freq()
+ * clock_has_source()
+   returns true if an input Clock has been connected to an output clock;
+   this is for devices to be able to check in their realize method that
+   a mandatory clock was wired up by the board
+(More detailed info and rationale in patches 1 and 2.)
+
+A couple of bits of food-for-thought as a result of working with the
+relatively-new Clock APIs:
+ * it might be worth thinking about whether we can have a fairly
+   lightweight implementation of a clock-divider or clock-multiplier,
+   because I feel they are pretty common. (For this series I opted
+   just to handle this via the ptimer_set_period_from_clock()
+   divisor argumuent.)
+ * it feels a little awkward that devices with an input Clock need
+   to do ptimer_set_period_from_clock() or similar both in their
+   realize method (to cope with fixed-frequency input clocks, because
+   the clock callback functions are not called when board setup code
+   creates and configures those) and in the clock callback function
+   (to cope with variable-frequency clocks)
+ * I found it odd that ptimer's period representation is 64.32
+   fixedpoint 2^-32 ns units, whereas Clock's is only 32.32
+   (so ptimer can handle much larger periods than Clock can.)
+   I forget why we didn't go for the same representation in Clock
+   as we have for ptimer...
+ * there's no MAINTAINERS entry for the Clock framework
+
+I don't think these need to be blockers on this series, though.
+
+thanks
+-- PMM
+
+Peter Maydell (25):
+  ptimer: Add new ptimer_set_period_from_clock() function
+  clock: Add new clock_has_source() function
+  tests: Add a simple test of the CMSDK APB timer
+  tests: Add a simple test of the CMSDK APB watchdog
+  tests: Add a simple test of the CMSDK APB dual timer
+  hw/timer/cmsdk-apb-timer: Rename CMSDKAPBTIMER struct to CMSDKAPBTimer
+  hw/timer/cmsdk-apb-timer: Add Clock input
+  hw/timer/cmsdk-apb-dualtimer: Add Clock input
+  hw/watchdog/cmsdk-apb-watchdog: Add Clock input
+  hw/arm/armsse: Rename "MAINCLK" property to "MAINCLK_FRQ"
+  hw/arm/armsse: Wire up clocks
+  hw/arm/mps2: Inline CMSDK_APB_TIMER creation
+  hw/arm/mps2: Create and connect SYSCLK Clock
+  hw/arm/mps2-tz: Create and connect ARMSSE Clocks
+  hw/arm/musca: Create and connect ARMSSE Clocks
+  hw/arm/stellaris: Convert SSYS to QOM device
+  hw/arm/stellaris: Create Clock input for watchdog
+  hw/timer/cmsdk-apb-timer: Convert to use Clock input
+  hw/timer/cmsdk-apb-dualtimer: Convert to use Clock input
+  hw/watchdog/cmsdk-apb-watchdog: Convert to use Clock input
+  tests/qtest/cmsdk-apb-watchdog-test: Test clock changes
+  hw/arm/armsse: Use Clock to set system_clock_scale
+  arm: Don't set freq properties on CMSDK timer, dualtimer, watchdog,
+    ARMSSE
+  arm: Remove frq properties on CMSDK timer, dualtimer, watchdog, ARMSSE
+  hw/arm/stellaris: Remove board-creation reset of STELLARIS_SYS
+
+ docs/devel/clocks.rst                    |  16 +++
+ include/hw/arm/armsse.h                  |  14 +-
+ include/hw/clock.h                       |  15 ++
+ include/hw/ptimer.h                      |  22 +++
+ include/hw/timer/cmsdk-apb-dualtimer.h   |   5 +-
+ include/hw/timer/cmsdk-apb-timer.h       |  34 ++---
+ include/hw/watchdog/cmsdk-apb-watchdog.h |   5 +-
+ include/qemu/typedefs.h                  |   1 +
+ hw/arm/armsse.c                          |  47 +++++--
+ hw/arm/mps2-tz.c                         |  14 +-
+ hw/arm/mps2.c                            |  28 +++-
+ hw/arm/musca.c                           |  13 +-
+ hw/arm/stellaris.c                       | 170 +++++++++++++++++------
+ hw/core/ptimer.c                         |  34 +++++
+ hw/timer/cmsdk-apb-dualtimer.c           |  53 +++++--
+ hw/timer/cmsdk-apb-timer.c               |  55 ++++----
+ hw/watchdog/cmsdk-apb-watchdog.c         |  29 ++--
+ tests/qtest/cmsdk-apb-dualtimer-test.c   | 131 +++++++++++++++++
+ tests/qtest/cmsdk-apb-timer-test.c       |  76 ++++++++++
+ tests/qtest/cmsdk-apb-watchdog-test.c    | 132 ++++++++++++++++++
+ MAINTAINERS                              |   3 +
+ tests/qtest/meson.build                  |   3 +
+ 22 files changed, 758 insertions(+), 142 deletions(-)
+ create mode 100644 tests/qtest/cmsdk-apb-dualtimer-test.c
+ create mode 100644 tests/qtest/cmsdk-apb-timer-test.c
+ create mode 100644 tests/qtest/cmsdk-apb-watchdog-test.c
+
 -- 
 2.20.1
 

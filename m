@@ -1,111 +1,109 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp686662lfq;
-        Fri, 15 Jan 2021 15:09:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxq5G7UTIhEoen8v39Z9iJAn1ZJNUSQyMotluFz0wz0BM6GhCAArXgzAqcC13FiMK8RlZeq
-X-Received: by 2002:a25:d805:: with SMTP id p5mr21992066ybg.46.1610752199259;
-        Fri, 15 Jan 2021 15:09:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610752199; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp170266lfb;
+        Thu, 21 Jan 2021 11:23:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwIqQr0mey489MUT0MXYSrlKkV728hu8zQ2uIlG2kzoY6gU03QUSVYr6E8vAeHocDJV/bQb
+X-Received: by 2002:a25:5382:: with SMTP id h124mr1149655ybb.171.1611257016178;
+        Thu, 21 Jan 2021 11:23:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611257016; cv=none;
         d=google.com; s=arc-20160816;
-        b=btGmc2+dQAlqV7uVYnfpE5/aB+YYdLo0nI9+mcOa7WcWDjMGnx6vhPV1v7TV99buL8
-         07a2c/QDIfatke54TkzW5nl5Jih38HL9RctJZ+kvqE2tB7Y3PVsg73qIGXvuHvx+6iCp
-         eNuVxuoA/S2fV20mDR6EaT8Ot/xF0IrukONdXy38yHUZwrKNA2flhyno7g8xdmPnnwDU
-         JAy7WyGQJD5T+7/p22UEvUjyJphoIKFVLUO//skhF8StKnJdbD/RJC3kmvyYnXUeEbzA
-         bt5diUxRuuinc8jY4cLsG0BD2bxQJcBY/lMBXpXNKSwtQBeCTPFnfPaFyFhkrQCNXB+F
-         fA8Q==
+        b=nOoVp5k1yeTbafTJMkemJJqD+/ACSNxNhVr9xTlJQ+DmFl8NdA2u0I01czOxwefEFZ
+         naFpM5U+U7uvd5aQkNf38ewtn6uR5GLPVV1+Sb7NEPerYvBU7/lOP4fyhAy9MUHJ90Rg
+         8xb1wHk77epsrRtL6zw5eJEw35DLLkpTlIB85YpjFuBlTip2jfcWnrcV4ZXm5GxuHu3U
+         OU3oTACF6Z3KHmsd/BppZ4MvY9iwLcGgIDxeq2JvhKraoUXtHjKqnS/suDmf8B5/I1gk
+         YJQzEYHAxoC4GC7AKMKntWxIsuFbVrTUqLw0hqkGlLNOP/fPKgMZ0I0YJAVGUQn3pFSN
+         +ksA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=d+pOvzjLdVYp+MmYo9tDbbGKAe+YDrG7n/EDarHxK9g=;
-        b=CyuaR7ZAa3UZFVBwWRI26nLBs2vgwbS2YacopecwCn0fdaPY6icZMNtvU4ruoa+veh
-         ios15jPr5/4Ve/EDfFRG5UPRdUf64hwjCiy4omhKspT83ij717RW3p7lItAavZQ6Gj4J
-         ebrNDtTjIqdbVwt0PId1+j/KWeqX9IZU6nD2PYtDWV1p/L7MM0/vGH0nDF3EL8/sQyoZ
-         Q+jJh2cv0jd/I6xP/Azr+mzDDR7z/rKiBlUq8nRxXfBrr6EGiq3TgyitYtL7+6CY+u3y
-         eImmgT13QjcVl0UqB3QWxVfOJQcTw3xVFn0GRFrKmV2i6A84fZXrkmrr82O0p6xX9HEL
-         bxGQ==
+        bh=MiFenp3CTLxpN6lolh3gSxciXNqVPXpodSUN7WzBpGQ=;
+        b=MtgIc6vVI1xSOGAwTpcY8X7V/mWMYFTDECBI9K8cO+rptKL1IV/09EYOizS42FevDU
+         JT6JJmQvXSU9nARsOCioXC/s28L0OO1Yo0qr8r3PYlu0NLdxc6nesvCEJx50/ogaHv+0
+         VheA1eiLpM0wcjyGtU+fHg6F2VYITkjp+LrNy2qElV6Y1QxReoEdXhCd2dlez2tqigIq
+         8VjVJrJ/z6ZrNJwDTOiRDOk936F0EGlpbP8EyZ8zImXADrxnmcblW1TMnQNUMIqVxOef
+         1R2iWBUm/HhlD8/FsITukcHUg7xb+66wGgmkbpyH5eCKqw2qlh7IlaUyZh7V+8OWKQIO
+         qImA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=x0XQUAUs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=evqG7XgG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v3si8935645ybe.97.2021.01.15.15.09.59
+        by mx.google.com with ESMTPS id m65si5963259ybc.55.2021.01.21.11.23.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Jan 2021 15:09:59 -0800 (PST)
+        Thu, 21 Jan 2021 11:23:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=x0XQUAUs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=evqG7XgG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43094 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34480 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l0YEA-0007hl-Kt
-	for alex.bennee@linaro.org; Fri, 15 Jan 2021 18:09:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54118)
+	id 1l2fYN-0000gy-IZ
+	for alex.bennee@linaro.org; Thu, 21 Jan 2021 14:23:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55870)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l0XsO-0003xd-Uh
- for qemu-arm@nongnu.org; Fri, 15 Jan 2021 17:47:30 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f]:51233)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l2fIQ-0002Rr-FF
+ for qemu-arm@nongnu.org; Thu, 21 Jan 2021 14:07:06 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:32896)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l0XsF-0005JG-E7
- for qemu-arm@nongnu.org; Fri, 15 Jan 2021 17:47:28 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id y12so5897187pji.1
- for <qemu-arm@nongnu.org>; Fri, 15 Jan 2021 14:47:19 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l2fI2-0005sR-02
+ for qemu-arm@nongnu.org; Thu, 21 Jan 2021 14:07:05 -0500
+Received: by mail-wr1-x430.google.com with SMTP id 7so2831461wrz.0
+ for <qemu-arm@nongnu.org>; Thu, 21 Jan 2021 11:06:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=d+pOvzjLdVYp+MmYo9tDbbGKAe+YDrG7n/EDarHxK9g=;
- b=x0XQUAUsc7bB+vP4BeTYRil5LWXgaCzg/miumn33qYnIpbwR0B06YQ3tHmXqOHdGKv
- EUecuDPif9BQWgX6TNmlmLfRrfR+GDSEjdKJNgUgLKM6mrAg6zhutkLlzqJ206o+8G29
- Q7b4Tq0QPTNei1l1FyuVR/IP9cZdfZanRyfaX9LpCb829mKAtH/H5RmxFbEX+I+Kd8RD
- trTx/5L1rY9vvjRQ36HN5LRVkaLclWbm/3qJt1Afg06vzZoLgMFTqKqsDs3dGtHiq9r6
- PF12XeazIhUAiLlkzVXDTwRFDZX4bg+oFylqc3gi//25pDh0Z7TvqFjErhPyRyk9BvML
- eWcw==
+ bh=MiFenp3CTLxpN6lolh3gSxciXNqVPXpodSUN7WzBpGQ=;
+ b=evqG7XgGnF/4rZ1NIMbnAkakksPu8/fvQlfTIa4gl9JpkueLvfGkvgIOhmPQRUw08q
+ KJWeDYF3uFJ1ftpLoWlBAmhtO+hdvo6BOLElmqNgetWROJ3rYIYV9YR8UGk8TLITEahD
+ Y6dz/HXKH7GXn0p303pjGlQwhSht32yo4OWknsO1nopoSB1INCvT+Q4fvSLkjbGk/t79
+ ChMwrZZnHmUVZ9voDZTYx/wiPXM8bdtJkwl6ZWYgOlpe8nr90XIibOgrUWuLlnrp+wtT
+ DmJMUpUX4dyu0Q1GqJrtBceIp3sPEuTnQ2ZCM5pgijcLYDNPh3cpx2YPlYcsICnZ6aaN
+ qI2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=d+pOvzjLdVYp+MmYo9tDbbGKAe+YDrG7n/EDarHxK9g=;
- b=AQw1Xb0xmd8Z7URo66+nZUu/sPr5o3DktSJgeMuFXEfd1BMBXFxFhPnV24XOOdWEDl
- UDyoCG/FH9Gg+ObmvU1raM+6R4PWcAxfszSdPXw8o6EnHPJK5Prwm6lSuWeWcQs5W+u5
- CcueYPvP4x5OsnTQbqxzzQyu1wd9krRGXcDroaPdrH7GRLcCwhS1FdBLQLmEyxV3YicR
- BfuSQ8OXnqu2FZ7iiKFdkFphLkkhM6WJiRFsV5lgIEqMc/9sWfdhYORqK/E352hFvAnb
- TzSvzFDUXnJlGjj+vCXULcBTWTwi8KAXhGGzDW7uuuKx720AGdZVQvcApnpxGjZ27yz8
- C2uQ==
-X-Gm-Message-State: AOAM5310LPsTxdm+ReUfYPyHLPpaqYmLnHk66MVRqHPnTJo2gK543Vsc
- KZyxJ2ViEvUqQhr5WzbgAGyxMQ==
-X-Received: by 2002:a17:90a:5318:: with SMTP id
- x24mr13186645pjh.226.1610750838077; 
- Fri, 15 Jan 2021 14:47:18 -0800 (PST)
-Received: from localhost.localdomain (rrcs-173-197-107-21.west.biz.rr.com.
- [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id s13sm9521700pfd.99.2021.01.15.14.47.16
+ bh=MiFenp3CTLxpN6lolh3gSxciXNqVPXpodSUN7WzBpGQ=;
+ b=CgQ9WkHNyZBTSWtPUjjBabWYplJVGI2c/Fokc6iVsVDlcF4Ic0xbXbea9boaqMYYgS
+ 62bvyamN5VSqczgTrjeMysE0aBz0Sst5Z8Pe6xs78E81pREcqi3++cHHmObNyP05Pmn9
+ 0y6LWQcKnJADedDYr7vyPb93BDv2uPBNGUZ/clDNj7Tz5LgHWU+toAkaKDOnm4VImCb7
+ ElTe5KFD3KEoonopyzPFdcYFO2dwCJxDmWPmslMVOHlKiBam8zFX74vCViLMKBm1ldOX
+ QUrzgVz8NVMxHGhL9hkyi0fAnppU5in9oKWUuGi+1GyYg+rwcLAzGV/Vf5tCZyQLO7H6
+ Rkpg==
+X-Gm-Message-State: AOAM531eyfno+I67EN5QfXJczOlxwxlM+/LIq4LcEZ/rU6tk5aLWJtYH
+ Ph1PD6xth7HVUqCX8/8Ulgbzvx2amXwPnA==
+X-Received: by 2002:a5d:4987:: with SMTP id r7mr928148wrq.352.1611256000789;
+ Thu, 21 Jan 2021 11:06:40 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id m18sm9820686wrw.43.2021.01.21.11.06.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Jan 2021 14:47:17 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 18/21] linux-user/aarch64: Signal SEGV_MTEAERR for async
- tag check error
-Date: Fri, 15 Jan 2021 12:46:42 -1000
-Message-Id: <20210115224645.1196742-19-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210115224645.1196742-1-richard.henderson@linaro.org>
-References: <20210115224645.1196742-1-richard.henderson@linaro.org>
+ Thu, 21 Jan 2021 11:06:40 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 16/25] hw/arm/stellaris: Convert SSYS to QOM device
+Date: Thu, 21 Jan 2021 19:06:13 +0000
+Message-Id: <20210121190622.22000-17-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210121190622.22000-1-peter.maydell@linaro.org>
+References: <20210121190622.22000-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,110 +116,250 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rIrYq++ACZkp
+X-TUID: sffJx3RqubFC
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Convert the SSYS code in the Stellaris boards (which encapsulates the
+system registers) to a proper QOM device.  This will provide us with
+somewhere to put the output Clock whose frequency depends on the
+setting of the PLL configuration registers.
+
+This is a migration compatibility break for lm3s811evb, lm3s6965evb.
+
+We use 3-phase reset here because the Clock will need to propagate
+its value in the hold phase.
+
+For the moment we reset the device during the board creation so that
+the system_clock_scale global gets set; this will be removed in a
+subsequent commit.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- linux-user/aarch64/target_signal.h |  1 +
- linux-user/aarch64/cpu_loop.c      | 34 +++++++++++++++++++++---------
- target/arm/mte_helper.c            | 10 +++++++++
- 3 files changed, 35 insertions(+), 10 deletions(-)
+ hw/arm/stellaris.c | 132 ++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 107 insertions(+), 25 deletions(-)
 
-diff --git a/linux-user/aarch64/target_signal.h b/linux-user/aarch64/target_signal.h
-index 777fb667fe..18013e1b23 100644
---- a/linux-user/aarch64/target_signal.h
-+++ b/linux-user/aarch64/target_signal.h
-@@ -21,6 +21,7 @@ typedef struct target_sigaltstack {
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 652823195b1..0194ede2fe0 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -357,7 +357,12 @@ static void stellaris_gptm_realize(DeviceState *dev, Error **errp)
  
- #include "../generic/signal.h"
+ /* System controller.  */
  
-+#define TARGET_SEGV_MTEAERR  8  /* Asynchronous ARM MTE error */
- #define TARGET_SEGV_MTESERR  9  /* Synchronous ARM MTE exception */
- 
- #define TARGET_ARCH_HAS_SETUP_FRAME
-diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index 6867f0db2b..6160a401bd 100644
---- a/linux-user/aarch64/cpu_loop.c
-+++ b/linux-user/aarch64/cpu_loop.c
-@@ -72,6 +72,21 @@
-         put_user_u16(__x, (gaddr));                     \
-     })
- 
-+static bool check_mte_async_fault(CPUARMState *env, target_siginfo_t *info)
-+{
-+    if (likely(env->cp15.tfsr_el[0] == 0)) {
-+        return false;
-+    }
+-typedef struct {
++#define TYPE_STELLARIS_SYS "stellaris-sys"
++OBJECT_DECLARE_SIMPLE_TYPE(ssys_state, STELLARIS_SYS)
 +
-+    env->cp15.tfsr_el[0] = 0;
-+    info->si_signo = TARGET_SIGSEGV;
-+    info->si_errno = 0;
-+    info->_sifields._sigfault._addr = 0;
-+    info->si_code = TARGET_SEGV_MTEAERR;
-+    queue_signal(env, info->si_signo, QEMU_SI_FAULT, info);
-+    return true;
++struct ssys_state {
++    SysBusDevice parent_obj;
++
+     MemoryRegion iomem;
+     uint32_t pborctl;
+     uint32_t ldopctl;
+@@ -371,11 +376,18 @@ typedef struct {
+     uint32_t dcgc[3];
+     uint32_t clkvclr;
+     uint32_t ldoarst;
++    qemu_irq irq;
++    /* Properties (all read-only registers) */
+     uint32_t user0;
+     uint32_t user1;
+-    qemu_irq irq;
+-    stellaris_board_info *board;
+-} ssys_state;
++    uint32_t did0;
++    uint32_t did1;
++    uint32_t dc0;
++    uint32_t dc1;
++    uint32_t dc2;
++    uint32_t dc3;
++    uint32_t dc4;
++};
+ 
+ static void ssys_update(ssys_state *s)
+ {
+@@ -430,7 +442,7 @@ static uint32_t pllcfg_fury[16] = {
+ 
+ static int ssys_board_class(const ssys_state *s)
+ {
+-    uint32_t did0 = s->board->did0;
++    uint32_t did0 = s->did0;
+     switch (did0 & DID0_VER_MASK) {
+     case DID0_VER_0:
+         return DID0_CLASS_SANDSTORM;
+@@ -456,19 +468,19 @@ static uint64_t ssys_read(void *opaque, hwaddr offset,
+ 
+     switch (offset) {
+     case 0x000: /* DID0 */
+-        return s->board->did0;
++        return s->did0;
+     case 0x004: /* DID1 */
+-        return s->board->did1;
++        return s->did1;
+     case 0x008: /* DC0 */
+-        return s->board->dc0;
++        return s->dc0;
+     case 0x010: /* DC1 */
+-        return s->board->dc1;
++        return s->dc1;
+     case 0x014: /* DC2 */
+-        return s->board->dc2;
++        return s->dc2;
+     case 0x018: /* DC3 */
+-        return s->board->dc3;
++        return s->dc3;
+     case 0x01c: /* DC4 */
+-        return s->board->dc4;
++        return s->dc4;
+     case 0x030: /* PBORCTL */
+         return s->pborctl;
+     case 0x034: /* LDOPCTL */
+@@ -646,9 +658,9 @@ static const MemoryRegionOps ssys_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+-static void ssys_reset(void *opaque)
++static void stellaris_sys_reset_enter(Object *obj, ResetType type)
+ {
+-    ssys_state *s = (ssys_state *)opaque;
++    ssys_state *s = STELLARIS_SYS(obj);
+ 
+     s->pborctl = 0x7ffd;
+     s->rcc = 0x078e3ac0;
+@@ -661,9 +673,19 @@ static void ssys_reset(void *opaque)
+     s->rcgc[0] = 1;
+     s->scgc[0] = 1;
+     s->dcgc[0] = 1;
 +}
 +
- /* AArch64 main loop */
- void cpu_loop(CPUARMState *env)
++static void stellaris_sys_reset_hold(Object *obj)
++{
++    ssys_state *s = STELLARIS_SYS(obj);
++
+     ssys_calculate_system_clock(s);
+ }
+ 
++static void stellaris_sys_reset_exit(Object *obj)
++{
++}
++
+ static int stellaris_sys_post_load(void *opaque, int version_id)
  {
-@@ -88,15 +103,13 @@ void cpu_loop(CPUARMState *env)
+     ssys_state *s = opaque;
+@@ -695,27 +717,66 @@ static const VMStateDescription vmstate_stellaris_sys = {
+     }
+ };
  
-         switch (trapnr) {
-         case EXCP_SWI:
--            ret = do_syscall(env,
--                             env->xregs[8],
--                             env->xregs[0],
--                             env->xregs[1],
--                             env->xregs[2],
--                             env->xregs[3],
--                             env->xregs[4],
--                             env->xregs[5],
--                             0, 0);
-+            if (check_mte_async_fault(env, &info)) {
-+                ret = -TARGET_ERESTARTSYS;
-+            } else {
-+                ret = do_syscall(env, env->xregs[8], env->xregs[0],
-+                                 env->xregs[1], env->xregs[2], env->xregs[3],
-+                                 env->xregs[4], env->xregs[5], 0, 0);
-+            }
-             if (ret == -TARGET_ERESTARTSYS) {
-                 env->pc -= 4;
-             } else if (ret != -TARGET_QEMU_ESIGRETURN) {
-@@ -104,7 +117,8 @@ void cpu_loop(CPUARMState *env)
-             }
-             break;
-         case EXCP_INTERRUPT:
--            /* just indicate that signals should be handled asap */
-+            /* Just indicate that signals should be handled asap. */
-+            check_mte_async_fault(env, &info);
-             break;
-         case EXCP_UDEF:
-             info.si_signo = TARGET_SIGILL;
-diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index 153bd1e9df..d55f8d1e1e 100644
---- a/target/arm/mte_helper.c
-+++ b/target/arm/mte_helper.c
-@@ -565,6 +565,16 @@ static void mte_check_fail(CPUARMState *env, uint32_t desc,
-             select = 0;
-         }
-         env->cp15.tfsr_el[el] |= 1 << select;
-+#ifdef CONFIG_USER_ONLY
-+        /*
-+         * Stand in for a timer irq, setting _TIF_MTE_ASYNC_FAULT,
-+         * which then sends a SIGSEGV when the thread is next scheduled.
-+         * This cpu will return to the main loop at the end of the TB,
-+         * which is rather sooner than "normal".  But the alternative
-+         * is waiting until the next syscall.
-+         */
-+        qemu_cpu_kick(env_cpu(env));
-+#endif
-         break;
++static Property stellaris_sys_properties[] = {
++    DEFINE_PROP_UINT32("user0", ssys_state, user0, 0),
++    DEFINE_PROP_UINT32("user1", ssys_state, user1, 0),
++    DEFINE_PROP_UINT32("did0", ssys_state, did0, 0),
++    DEFINE_PROP_UINT32("did1", ssys_state, did1, 0),
++    DEFINE_PROP_UINT32("dc0", ssys_state, dc0, 0),
++    DEFINE_PROP_UINT32("dc1", ssys_state, dc1, 0),
++    DEFINE_PROP_UINT32("dc2", ssys_state, dc2, 0),
++    DEFINE_PROP_UINT32("dc3", ssys_state, dc3, 0),
++    DEFINE_PROP_UINT32("dc4", ssys_state, dc4, 0),
++    DEFINE_PROP_END_OF_LIST()
++};
++
++static void stellaris_sys_instance_init(Object *obj)
++{
++    ssys_state *s = STELLARIS_SYS(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(s);
++
++    memory_region_init_io(&s->iomem, obj, &ssys_ops, s, "ssys", 0x00001000);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(sbd, &s->irq);
++}
++
+ static int stellaris_sys_init(uint32_t base, qemu_irq irq,
+                               stellaris_board_info * board,
+                               uint8_t *macaddr)
+ {
+-    ssys_state *s;
++    DeviceState *dev = qdev_new(TYPE_STELLARIS_SYS);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
  
-     default:
+-    s = g_new0(ssys_state, 1);
+-    s->irq = irq;
+-    s->board = board;
+     /* Most devices come preprogrammed with a MAC address in the user data. */
+-    s->user0 = macaddr[0] | (macaddr[1] << 8) | (macaddr[2] << 16);
+-    s->user1 = macaddr[3] | (macaddr[4] << 8) | (macaddr[5] << 16);
++    qdev_prop_set_uint32(dev, "user0",
++                         macaddr[0] | (macaddr[1] << 8) | (macaddr[2] << 16));
++    qdev_prop_set_uint32(dev, "user1",
++                         macaddr[3] | (macaddr[4] << 8) | (macaddr[5] << 16));
++    qdev_prop_set_uint32(dev, "did0", board->did0);
++    qdev_prop_set_uint32(dev, "did1", board->did1);
++    qdev_prop_set_uint32(dev, "dc0", board->dc0);
++    qdev_prop_set_uint32(dev, "dc1", board->dc1);
++    qdev_prop_set_uint32(dev, "dc2", board->dc2);
++    qdev_prop_set_uint32(dev, "dc3", board->dc3);
++    qdev_prop_set_uint32(dev, "dc4", board->dc4);
++
++    sysbus_realize_and_unref(sbd, &error_fatal);
++    sysbus_mmio_map(sbd, 0, base);
++    sysbus_connect_irq(sbd, 0, irq);
++
++    /*
++     * Normally we should not be resetting devices like this during
++     * board creation. For the moment we need to do so, because
++     * system_clock_scale will only get set when the STELLARIS_SYS
++     * device is reset, and we need its initial value to pass to
++     * the watchdog device. This hack can be removed once the
++     * watchdog has been converted to use a Clock input instead.
++     */
++    device_cold_reset(dev);
+ 
+-    memory_region_init_io(&s->iomem, NULL, &ssys_ops, s, "ssys", 0x00001000);
+-    memory_region_add_subregion(get_system_memory(), base, &s->iomem);
+-    ssys_reset(s);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_stellaris_sys, s);
+     return 0;
+ }
+ 
+-
+ /* I2C controller.  */
+ 
+ #define TYPE_STELLARIS_I2C "stellaris-i2c"
+@@ -1553,11 +1614,32 @@ static const TypeInfo stellaris_adc_info = {
+     .class_init    = stellaris_adc_class_init,
+ };
+ 
++static void stellaris_sys_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    dc->vmsd = &vmstate_stellaris_sys;
++    rc->phases.enter = stellaris_sys_reset_enter;
++    rc->phases.hold = stellaris_sys_reset_hold;
++    rc->phases.exit = stellaris_sys_reset_exit;
++    device_class_set_props(dc, stellaris_sys_properties);
++}
++
++static const TypeInfo stellaris_sys_info = {
++    .name = TYPE_STELLARIS_SYS,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(ssys_state),
++    .instance_init = stellaris_sys_instance_init,
++    .class_init = stellaris_sys_class_init,
++};
++
+ static void stellaris_register_types(void)
+ {
+     type_register_static(&stellaris_i2c_info);
+     type_register_static(&stellaris_gptm_info);
+     type_register_static(&stellaris_adc_info);
++    type_register_static(&stellaris_sys_info);
+ }
+ 
+ type_init(stellaris_register_types)
 -- 
-2.25.1
+2.20.1
 

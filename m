@@ -1,104 +1,90 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp878687lfb;
-        Fri, 22 Jan 2021 06:07:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxBY4F1Q7oxGJXChEu66bR5uLK0ZhJpaWbNHplzLS3TnKdXCIEAKF51/DeJWvnCoQVilgZZ
-X-Received: by 2002:ab0:2010:: with SMTP id v16mr847888uak.24.1611324437647;
-        Fri, 22 Jan 2021 06:07:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611324437; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp882551lfb;
+        Fri, 22 Jan 2021 06:11:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzJGWn/dOu6VF0cuiJjQfj1Jc2whCbMl+FOPQTchW1JvttVWMz2jd5YxZE/k3HcJUgq1O2/
+X-Received: by 2002:a67:c10f:: with SMTP id d15mr1471221vsj.14.1611324674846;
+        Fri, 22 Jan 2021 06:11:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611324674; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZQr529BKx2vMCGabDMpBE/Puix690kIB+lA0qcqqO070PNmZv5LynKMCv7ZuxFfr1B
-         nNkHE6c8DPNtz5T6KZW7TfxEMa4TkEbGRIyop6SESQ7TQe4dr6JEQrA1m4bFqFoysm9Z
-         cZBCyhIOTLBKN5+6vDjPs8yWkevXXa5La+bS5CbSFs75SS4vl1IlhZjU7UW6JCQpreIB
-         GtaAVtlEr+A2yHKw0MGxhfRGBrPH2RGk7K9a0tQm4l/0owwnte+InCRXBJv6wWPosV1d
-         BXFnRPerU8OhTFTY123NCnu/faIohFHmvRO9bzIgYu3Dn1TQ8EYejQWUf4ZGTFhjcxrT
-         QRQw==
+        b=eorZ3IEbDNa3bEJsTJQSjLgg1UUKP92D8k59GKIok1dqrU88nI1IMZGrv9Wj13Vy5B
+         MjJaex7gezGV+VVcFKhNsGG6pe1RNnuO37xLeyE8WRcbSWbGDyheVAgbs176cr1lJGhF
+         CARqub6n59SmQpG0I0ot36GX9FsI5I17UaoHraL/zpFoZIHDHkHBq4YZ7eXfFgSyR+WT
+         oqXeWjjJSAL25e7ISZf8w9wdqU2alaXnLU6AE90F9jak98vtEcbhGBTLhQtSlFNV8bto
+         rvORP/qqNlZ+HUc1Y3Kbh7l14BgEJwNH53zZr8gv3Z1x7J4FV0BGYWKQj5K6HRyobao/
+         Thsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7yFrKLdd8zhMzyz4BPJ+zMbVXNOx1ub5XV6ppCJfcLc=;
-        b=o2hTzAWwzt7FKw92WALZMpkAHadANwpN7YSXFbxThxArRM8dmhNq6Sgrm1xxXdCgDp
-         aDXrnvOYKCskIsgcAqLNScE4l8vgB19Fd+Ht9Oo5+jMaf4luzL8z5fjChy8Wy3XZGx2N
-         5ygfAWsGgxkjUKUqf1CunqwvLabNiLEDG7E5Tr+RQcerm4f9NmBIq4bdNh7sVoO2I/5R
-         CSoCxZiqOOMtAJJMMs6MMqeT5Sp5bewGVqilVIqT37DP/6bTF0TABcfTHkLJS/ch0q0y
-         6e5V27Rr0yOprkAY0MD3IxWhq09U5nyg/JV1wPBoEXSiuemg8qvNhl71frx13f7wuRzq
-         a+9Q==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=c9D47Z2ircPJwyM8GEdhkkR3j3y0zUdEBXNz0rVILSA=;
+        b=vOn7Z3mZdHVtDAS1i56K+ZbDuMfEpR1OEoDJrnBLCtxvDoXaWbX7h5/nf3M3iGcCyV
+         6aSbfszpE5yVRn6+GB60zXcxoL3pNm40vIozsmRmU6lc3pdGlSlEfX+s2JDZfcFU81Gy
+         5yVzT37bv6rlra2S+rQiay7v4ezgkSC6l1/Nnvu5Lbf0vsQQwI99VLitxfBVrjPb8iNo
+         jLroHujgk2CZNVP7/AcNN5jt+1PW7ilpw//ZnNr3KJsM7isUf1eqwHhaoH6Th6yR13TQ
+         LhgsIjpIkXRyKx0mFiknlggFesocjOiezQKSGQhVwwg8UTvmEgxGIxtWifjZ2gkaU1Md
+         R8qg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IrZtBrqW;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="fWyRJ/tU";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f23si2038531uap.192.2021.01.22.06.07.17
+        by mx.google.com with ESMTPS id q185si1794052vsd.91.2021.01.22.06.11.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jan 2021 06:07:17 -0800 (PST)
+        Fri, 22 Jan 2021 06:11:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IrZtBrqW;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="fWyRJ/tU";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60178 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:42620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2x5o-00011p-Qy
-	for alex.bennee@linaro.org; Fri, 22 Jan 2021 09:07:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42976)
+	id 1l2x9d-0005T8-TQ
+	for alex.bennee@linaro.org; Fri, 22 Jan 2021 09:11:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43760)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2x4a-00084H-6g
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 09:06:01 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:41665)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2x4R-0003ig-Qp
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 09:05:59 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id g12so7812944ejf.8
- for <qemu-arm@nongnu.org>; Fri, 22 Jan 2021 06:05:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7yFrKLdd8zhMzyz4BPJ+zMbVXNOx1ub5XV6ppCJfcLc=;
- b=IrZtBrqWOB6+zrIAcZm748gbMQqRNpTAw2ZphUDoPRIBGVsYX6ENKwY06JCAddXQWF
- q5M7jh60uWLKN3WZOVAGgsoMU114iIMt/+4OGOxYU3jRo8NuTirhQXq0Go/twg+5/6b2
- zgl5tf0rcZrQ7smZBe5r7DZ9fuEMIFiQ54o0dtNYgZc5KVUfqjBE+l7SM0V44c0kxOjv
- 9bN/8Kwa77SYJC40VAbM0+L9cgVq0VO3IJcp3KHJ2Pqb4ib1z+v0ryythAEaJBXoqJNS
- U7TfIyJ3hrHPQKsOtwAWOSqMIZZxX7oocFX+eLpllqaWjyWaDq+iP/vHHo8OQ+y6WBWZ
- vvYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7yFrKLdd8zhMzyz4BPJ+zMbVXNOx1ub5XV6ppCJfcLc=;
- b=DPAzMuJfz2UxdGFEObccUQwgzYU3qppTIypR93kMbysm+RUGZN2G6/mJdXXWKtxAgd
- /1MYUPa5fo/LmLQuRYlvN2dt/enV/Cfgq97I5l/KUrOCJ8RIMk6nxa95KH9GwJI/q58f
- uN29gPYFVaVQ4CA+lRMY5MhiYdT9FBDWRiIRJ53VIS340HvTmnNbHu75Ms0RMJW3q1Kf
- CW7udvABw1XZJYwEJLU9a+rDlUikoMQ9nfi3lalum93+7DzJSLaSz28Sy41YzEVwFI9r
- rt35+wTe94XwuuPkKqWFFamrAZYX5Mo2NfYJ+4DJo5QRHdh3+35QVrP5P04h6kNoc1Rx
- 6eOw==
-X-Gm-Message-State: AOAM5312kyUCdqLc2R7jdAT8JdaroueZSe7HWbdBNG2wuoecBVlRXkTP
- EbIdQMvJCkyt4AfWT1qqSUyvHtPkll5PpycJU7FZug==
-X-Received: by 2002:a17:906:3d4a:: with SMTP id
- q10mr3089746ejf.85.1611324350392; 
- Fri, 22 Jan 2021 06:05:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l2x79-0002tt-49; Fri, 22 Jan 2021 09:08:39 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:34040)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l2x76-0004ue-Cy; Fri, 22 Jan 2021 09:08:38 -0500
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 9B6ACC602E6;
+ Fri, 22 Jan 2021 15:08:28 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1611324508;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=c9D47Z2ircPJwyM8GEdhkkR3j3y0zUdEBXNz0rVILSA=;
+ b=fWyRJ/tU2+yavzqJAr45HbqU10apqO0LzjD7YLy1TnMVhf1pyQpzqrZ3yL2kKdtYijF8+m
+ 9H5hqdzsN73PxEXm9MjpYEjMBTfEBfV56tD4fwfrc/9wkPMP9KTh02fP2BDMLyzpT9k6Xu
+ aGlqo8+05Ix5le7mvUgnOGSv9hqamxlsJHDs5K7ESrbW8qsdGaKGtWK3U11IFsSzBSvXKK
+ SA/jlnPzK3yfbfUtBJDO5aTxBwQRtDtwB5LTOmGD+60TOeZjcUHFhVaTfjCeuwWy8JmlMD
+ JzcLXtU7GJo4Iiq0NFslO+oGhWtn+bTfOBNuu302yPNsNnkEQ3DbGxnUvzBErw==
+Date: Fri, 22 Jan 2021 15:08:49 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 01/25] ptimer: Add new ptimer_set_period_from_clock()
+ function
+Message-ID: <20210122140849.26kssn6kfh5av6a6@sekoia-pc.home.lmichel.fr>
+References: <20210121190622.22000-1-peter.maydell@linaro.org>
+ <20210121190622.22000-2-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20210115224645.1196742-1-richard.henderson@linaro.org>
- <20210115224645.1196742-20-richard.henderson@linaro.org>
-In-Reply-To: <20210115224645.1196742-20-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Jan 2021 14:05:39 +0000
-Message-ID: <CAFEAcA-6TVj0iZXMGs0N2Km=qvasW_TTGoamFGwkhwP0ED8EKQ@mail.gmail.com>
-Subject: Re: [PATCH v3 19/21] target/arm: Add allocation tag storage for user
- mode
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210121190622.22000-2-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,21 +97,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +SAUAzyPLo08
+X-TUID: VTJK6WWnjS9U
 
-On Fri, 15 Jan 2021 at 22:47, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Use the now-saved PAGE_ANON and PAGE_MTE bits,
-> and the per-page saved data.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 19:05 Thu 21 Jan     , Peter Maydell wrote:
+> The ptimer API currently provides two methods for setting the period:
+> ptimer_set_period(), which takes a period in nanoseconds, and
+> ptimer_set_freq(), which takes a frequency in Hz.  Neither of these
+> lines up nicely with the Clock API, because although both the Clock
+> and the ptimer track the frequency using a representation of whole
+> and fractional nanoseconds, conversion via either period-in-ns or
+> frequency-in-Hz will introduce a rounding error.
+> 
+> Add a new function ptimer_set_period_from_clock() which takes the
+> Clock object directly to avoid the rounding issues.  This includes a
+> facility for the user to specify that there is a frequency divider
+> between the Clock proper and the timer, as some timer devices like
+> the CMSDK APB dualtimer need this.
+> 
+> To avoid having to drag in clock.h from ptimer.h we add the Clock
+> type to typedefs.h.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Luc Michel <luc@lmichel.fr>
+
 > ---
+> Side note, I forget why we didn't go for 64.32 fixedpoint for the
+> Clock too.  I kinda feel we might run into the "clocks can't handle
+> periods greater than 4 seconds" limit some day.  Hopefully we can
+> backwards-compatibly expand it if that day ever comes...
+> 
+> The 'divisor' functionality seemed like the simplest way to get
+> to what I needed for the dualtimer; perhaps we should think about
+> whether we can have generic lightweight support for clock
+> frequency divider/multipliers...
+> ---
+>  include/hw/ptimer.h     | 22 ++++++++++++++++++++++
+>  include/qemu/typedefs.h |  1 +
+>  hw/core/ptimer.c        | 34 ++++++++++++++++++++++++++++++++++
+>  3 files changed, 57 insertions(+)
+> 
+> diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+> index 412763fffb2..c443218475b 100644
+> --- a/include/hw/ptimer.h
+> +++ b/include/hw/ptimer.h
+> @@ -165,6 +165,28 @@ void ptimer_transaction_commit(ptimer_state *s);
+>   */
+>  void ptimer_set_period(ptimer_state *s, int64_t period);
+>  
+> +/**
+> + * ptimer_set_period_from_clock - Set counter increment from a Clock
+> + * @s: ptimer to configure
+> + * @clk: pointer to Clock object to take period from
+> + * @divisor: value to scale the clock frequency down by
+> + *
+> + * If the ptimer is being driven from a Clock, this is the preferred
+> + * way to tell the ptimer about the period, because it avoids any
+> + * possible rounding errors that might happen if the internal
+> + * representation of the Clock period was converted to either a period
+> + * in ns or a frequency in Hz.
+> + *
+> + * If the ptimer should run at the same frequency as the clock,
+> + * pass 1 as the @divisor; if the ptimer should run at half the
+> + * frequency, pass 2, and so on.
+> + *
+> + * This function will assert if it is called outside a
+> + * ptimer_transaction_begin/commit block.
+> + */
+> +void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clock,
+> +                                  unsigned int divisor);
+> +
+>  /**
+>   * ptimer_set_freq - Set counter frequency in Hz
+>   * @s: ptimer to configure
+> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> index 976b529dfb5..68deb74ef6f 100644
+> --- a/include/qemu/typedefs.h
+> +++ b/include/qemu/typedefs.h
+> @@ -34,6 +34,7 @@ typedef struct BlockDriverState BlockDriverState;
+>  typedef struct BusClass BusClass;
+>  typedef struct BusState BusState;
+>  typedef struct Chardev Chardev;
+> +typedef struct Clock Clock;
+>  typedef struct CompatProperty CompatProperty;
+>  typedef struct CoMutex CoMutex;
+>  typedef struct CPUAddressSpace CPUAddressSpace;
+> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+> index 2aa97cb665c..6ba19fd9658 100644
+> --- a/hw/core/ptimer.c
+> +++ b/hw/core/ptimer.c
+> @@ -15,6 +15,7 @@
+>  #include "sysemu/qtest.h"
+>  #include "block/aio.h"
+>  #include "sysemu/cpus.h"
+> +#include "hw/clock.h"
+>  
+>  #define DELTA_ADJUST     1
+>  #define DELTA_NO_ADJUST -1
+> @@ -348,6 +349,39 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
+>      }
+>  }
+>  
+> +/* Set counter increment interval from a Clock */
+> +void ptimer_set_period_from_clock(ptimer_state *s, const Clock *clk,
+> +                                  unsigned int divisor)
+> +{
+> +    /*
+> +     * The raw clock period is a 64-bit value in units of 2^-32 ns;
+> +     * put another way it's a 32.32 fixed-point ns value. Our internal
+> +     * representation of the period is 64.32 fixed point ns, so
+> +     * the conversion is simple.
+> +     */
+> +    uint64_t raw_period = clock_get(clk);
+> +    uint64_t period_frac;
+> +
+> +    assert(s->in_transaction);
+> +    s->delta = ptimer_get_count(s);
+> +    s->period = extract64(raw_period, 32, 32);
+> +    period_frac = extract64(raw_period, 0, 32);
+> +    /*
+> +     * divisor specifies a possible frequency divisor between the
+> +     * clock and the timer, so it is a multiplier on the period.
+> +     * We do the multiply after splitting the raw period out into
+> +     * period and frac to avoid having to do a 32*64->96 multiply.
+> +     */
+> +    s->period *= divisor;
+> +    period_frac *= divisor;
+> +    s->period += extract64(period_frac, 32, 32);
+> +    s->period_frac = (uint32_t)period_frac;
+> +
+> +    if (s->enabled) {
+> +        s->need_reload = true;
+> +    }
+> +}
+> +
+>  /* Set counter frequency in Hz.  */
+>  void ptimer_set_freq(ptimer_state *s, uint32_t freq)
+>  {
+> -- 
+> 2.20.1
+> 
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+-- 

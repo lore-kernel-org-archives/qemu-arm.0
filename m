@@ -1,167 +1,178 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp887640lfb;
-        Fri, 22 Jan 2021 06:16:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy+fNl5lkPnHoP4Vdj3SPewbr6l43lvHCULlxYmSDq4+UOd0GVobcyQFbU/59NIFqYfaFQN
-X-Received: by 2002:ac5:c7d2:: with SMTP id e18mr1615550vkn.20.1611324965846;
-        Fri, 22 Jan 2021 06:16:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611324965; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp888152lfb;
+        Fri, 22 Jan 2021 06:16:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyiox1LhB9AC1LmFXr90qaSO7lV3ij04BecLVSglsglK93cT6zxBbmD7UP9pGsRKdxv5RIr
+X-Received: by 2002:a25:11c2:: with SMTP id 185mr6605799ybr.74.1611324996523;
+        Fri, 22 Jan 2021 06:16:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611324996; cv=none;
         d=google.com; s=arc-20160816;
-        b=p3Z9M2XwUR2MDQbiyWaRYwuFMQCQ2EjvdUO/WXhlF5frcbTI4XriuIf0gKaITyv+sw
-         qi161O0kNLUyu91wfs4UTdaeQQ27O7e6bcjhAi2OaOpHseZgFx8jBss62pNxBdw+9nIJ
-         aC3/qGqlcGLjuu33VTN7+48jf48dlmORdO2avDwIj488Lc0Cd7My53N83olqYXv3TWvG
-         BJrAEejJzZrWrJsoVJeIVeIbc1rb7a9ThE3nHpVc4kKH/rCkKtAfizy+jf1mZkO/FvIV
-         kRECxR7sJp0PP3F1uv+jVZUFGS4/KuklKBsaLhFHHwY41DlVF/xrO8dnVWrMyS4JEXJX
-         Y83g==
+        b=TWmwOBun9cVlzedF8n6hdWU/CsvPY9XkwJ2vMAGhue3hiAG+x9RT1fvzE7CHPWL9cC
+         eD4E140D06jzuiuIUFvRO7nudjjeRbpcgZLdJVrCixKaS0IiVgSKQsJSzFRMpXxn8OWI
+         f7LWmOBZqSL/QfwJfMKMmAiHe0U9ZSkpRo6xy7NYJYoGT78P9IJz76TNrz0a5PnbAGqv
+         Jax+g/4OJjvY3zEmqLnUZ8/PUqH/y+KxxaYZqxYg9hcPS3ho5T+rAWmqUy6SEnrdoA19
+         tS0zMjZ8/4oOjkfL9XP5hrG4pKXzhLoVRaiQs19omHKJ8W8Fs1xEQRoI5yVqYujCO/Xc
+         0svA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=yts383Q/+RypgJ2WWaN857rGSO/qQt0rWIi4lgSBZXY=;
-        b=J03P4qQ/QN0R1W76IHHVpzrmRuY/SGZbs5b4X0ogDuDdkp7XM8/Yzh6hoMGeZ3+SRr
-         k3J1u7Vw05I/lAz7SCcMVW59m/qKXEQ3to+8u48mQzbQoUYEBLte3M+ZjH+qnqADLF7f
-         BYL0npB/cCRGlYED/RX9txYHC432JkXzymnktIgXS//n9u8MSdice7LLHeS2mzbEzc6V
-         NW1hYJV0xt9nTw9KyLiZ66PaRq1Nh9JDOd9N9P+pL8pcfp39bwPj+BqpVtQk+k20hB7o
-         nhSFH/UFNcYZIUX2XRW8Y4K+Rg4yOqUn2LeFgaM2zTgO+RfrYGKFBYXs8BXDObugF1x9
-         8U2Q==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Hj31JtBA8JkF+nolfAcP7G8osTbcEoYpDkFcINBCRDk=;
+        b=S756I0S6ok6T1YQAgHu0uJCKLUMX5kqJJZOIAu/KMycnzPxDdh68oKdCURkRknYUSK
+         0549/2RWqpgTvhCIfKxB0NxCqu0j7E+uy3pdtAW0Dt95YLYcquIdyOg1aTFsqLjuWotP
+         /SUc0i6vOGXkSFyWg+nDtRrM2dTaAiOdHVFPowkkYsrkRrGUVfHZbMypAc0WsqQO9na0
+         cqXsZxsnEh4G8h0aNmnLZBrg5axqO1JCF07JOE/9ql1RdYkMfLnwkygo/r/O7L+yKk/r
+         OhgQRLl2IdjlLeA0YAziyCfMKyMLk+BYPLz7+Jn2Izx28OYw+/7bXqIAKr24kFMNpW04
+         wyew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DB9ULNZ+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=dLq9OhoR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6si1774007vkm.89.2021.01.22.06.16.04
+        by mx.google.com with ESMTPS id x8si9471895ybk.457.2021.01.22.06.16.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jan 2021 06:16:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Jan 2021 06:16:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DB9ULNZ+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53914 helo=lists1p.gnu.org)
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=dLq9OhoR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:58420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2xEJ-0001t1-UG
-	for alex.bennee@linaro.org; Fri, 22 Jan 2021 09:16:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45560)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l2xEo-0003pl-9r
+	for alex.bennee@linaro.org; Fri, 22 Jan 2021 09:16:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2xCW-0000Y5-Nk
- for qemu-devel@nongnu.org; Fri, 22 Jan 2021 09:14:12 -0500
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:41792)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2xCU-0007Ya-Dr
- for qemu-devel@nongnu.org; Fri, 22 Jan 2021 09:14:12 -0500
-Received: by mail-ej1-x62f.google.com with SMTP id g12so7851681ejf.8
- for <qemu-devel@nongnu.org>; Fri, 22 Jan 2021 06:14:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yts383Q/+RypgJ2WWaN857rGSO/qQt0rWIi4lgSBZXY=;
- b=DB9ULNZ+HUVPxQvyhe3q2qQaGg7hfa7Q2Tz2BGvoMeVpAj65WvalyOKyhphh9Uc++c
- agfLNWrATeDwJxAIgqmVu2XtJDSMSHXGuxz6fqEXR7TcMpVnyouPo7aMC2F835mgHIkm
- w3UoyIecwJouRHzZyNfEuwKvgVcuyN/m4X85YdFR9+3wc4cK+GSPDk5XTQQvb+TL84R6
- M+gaaW4zaJVd/3wjVZpwUOfmuhTMaGMDHd0B68kxMdwmqsolUJJUpOk5Q87VXMgJpj+F
- NagPbUITw+E2M4ryRHUmzdmQCTPRrLHrNSZDZh2hUxJh1fpMwjRshMX8oWUPd0mTQKbc
- mJbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yts383Q/+RypgJ2WWaN857rGSO/qQt0rWIi4lgSBZXY=;
- b=VPyLUu6h6uFIxDkRPYvkbJVW3BcgjUiVHzG1ySAdFYWEj8SPTr8/0GkGYpS+7ItXqR
- lwIsC3Vp1Y0eGd7IDLk6oyd1ZDQMEp3ZvgBoWB2qHpUR58x/j05LEz1HrLVf3zgwzeVE
- ddiHJ+W8TGpqh4pITlu/+RXxvwCqlT9muXF7p8ailSJ0MAfDWJJQiKeVDTOpvM7Mm8ck
- PnR/E5D5HBRIi8PgMzaV8vJ8ABiiG6M2p7BHMYzTaJZns1JUd6j40W+Llaoc16ZeWVHH
- 9APseVt3qObnY9puWqdegtcldnX/yKTMJZlY/q2hIYgefGJpKS0E2bjIBCKsZbsL21Bm
- bX5w==
-X-Gm-Message-State: AOAM5309VMXBt3xXIRExI5yAkvVFnkC2tzryLAWeJ0vnSvtd+3GwffWH
- +31SuZ5OLQx9xOPS+di0+OL5m3Vvb8IbGQa1eE6aYw==
-X-Received: by 2002:a17:906:3603:: with SMTP id
- q3mr2989396ejb.382.1611324848796; 
- Fri, 22 Jan 2021 06:14:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l2xDc-0001wo-Ph; Fri, 22 Jan 2021 09:15:20 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:34446)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l2xDa-00081s-23; Fri, 22 Jan 2021 09:15:20 -0500
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 46680C602E6;
+ Fri, 22 Jan 2021 15:15:15 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1611324915;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Hj31JtBA8JkF+nolfAcP7G8osTbcEoYpDkFcINBCRDk=;
+ b=dLq9OhoRb6vHTLjPaSRnZe1f8HuJVO/e+X/E5ksv5UYUXgw4AQrNy7aek9qx6m/8H1A06t
+ zL4IKftqTIwBOZPs2ghrHvly7zt9L5LOcEwCJ5wrdDIrU7lzymV2LLYIGXNEHO3Zs5z8tH
+ GiZAp8uUyHI/2osJo0AgJRp4CAvCeM3mfBcdrfEx4I1a3OAaXCuXw22Y5FBtWz3JlbrBtw
+ PSPoVxlgtmhjb6M1+gpb2c/lLye9XzxsbyxUc5puziW7jpxUh5YStR7/u2mJP/zo/zjzlj
+ bZhatJmuOXeWvZofIeuoDO5a/c24QO5qrTmrdkfUivYzSnn9iHr02V2K1xchhg==
+Date: Fri, 22 Jan 2021 15:15:36 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 02/25] clock: Add new clock_has_source() function
+Message-ID: <20210122141536.n6mplt2z7ckv3izc@sekoia-pc.home.lmichel.fr>
+References: <20210121190622.22000-1-peter.maydell@linaro.org>
+ <20210121190622.22000-3-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20210115224645.1196742-1-richard.henderson@linaro.org>
- <20210115224645.1196742-12-richard.henderson@linaro.org>
-In-Reply-To: <20210115224645.1196742-12-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Jan 2021 14:13:57 +0000
-Message-ID: <CAFEAcA_ALYdVn5YLBTN57D8a2ut3C5kt0bVb9faZEQe_-rxmPQ@mail.gmail.com>
-Subject: Re: [PATCH v3 11/21] exec: Add support for TARGET_TAGGED_ADDRESSES
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62f.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210121190622.22000-3-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8V4Lm7fKvE9y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eENd4ncastYc
 
-On Fri, 15 Jan 2021 at 22:47, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> The AArch64 Linux ABI has always enabled TBI, but has historically
-> required that pointer tags be removed before a syscall.  This has
-> changed in the lead-up to ARMv8.5-MTE, in a way that affects the
-> ABI generically and not specifically to MTE.
->
-> This patch allows the target to indicate that (1) there are tags
-> and (2) whether or not they should be taken into account at the
-> syscall level.
->
-> Adjust g2h, guest_addr_valid, and guest_range_valid to ignore
-> pointer tags, similar to how TIF_TAGGED_ADDR alters __range_ok
-> in the arm64 kernel source.
->
-> The prctl syscall is not not yet updated, so this change by itself
-> has no visible effect.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 19:05 Thu 21 Jan     , Peter Maydell wrote:
+> Add a function for checking whether a clock has a source.  This is
+> useful for devices which have input clocks that must be wired up by
+> the board as it allows them to fail in realize rather than ploughing
+> on with a zero-period clock.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Luc Michel <luc@lmichel.fr>
+
 > ---
->  include/exec/cpu_ldst.h | 20 +++++++++++++++++---
->  1 file changed, 17 insertions(+), 3 deletions(-)
->
-> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-> index e62f4fba00..1df9b93e59 100644
-> --- a/include/exec/cpu_ldst.h
-> +++ b/include/exec/cpu_ldst.h
-> @@ -69,17 +69,31 @@ typedef uint64_t abi_ptr;
->  #define TARGET_ABI_FMT_ptr "%"PRIx64
->  #endif
->
-> +static inline abi_ptr untagged_addr(abi_ptr x)
+>  docs/devel/clocks.rst | 16 ++++++++++++++++
+>  include/hw/clock.h    | 15 +++++++++++++++
+>  2 files changed, 31 insertions(+)
+> 
+> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+> index 2548d842322..c54bbb82409 100644
+> --- a/docs/devel/clocks.rst
+> +++ b/docs/devel/clocks.rst
+> @@ -235,6 +235,22 @@ object during device instance init. For example:
+>      /* set initial value to 10ns / 100MHz */
+>      clock_set_ns(clk, 10);
+>  
+> +To enforce that the clock is wired up by the board code, you can
+> +call ``clock_has_source()`` in your device's realize method:
+> +
+> +.. code-block:: c
+> +
+> +   if (!clock_has_source(s->clk)) {
+> +       error_setg(errp, "MyDevice: clk input must be connected");
+> +       return;
+> +   }
+> +
+> +Note that this only checks that the clock has been wired up; it is
+> +still possible that the output clock connected to it is disabled
+> +or has not yet been configured, in which case the period will be
+> +zero. You should use the clock callback to find out when the clock
+> +period changes.
+> +
+>  Fetching clock frequency/period
+>  -------------------------------
+>  
+> diff --git a/include/hw/clock.h b/include/hw/clock.h
+> index 6382f346569..e5f45e2626d 100644
+> --- a/include/hw/clock.h
+> +++ b/include/hw/clock.h
+> @@ -139,6 +139,21 @@ void clock_clear_callback(Clock *clk);
+>   */
+>  void clock_set_source(Clock *clk, Clock *src);
+>  
+> +/**
+> + * clock_has_source:
+> + * @clk: the clock
+> + *
+> + * Returns true if the clock has a source clock connected to it.
+> + * This is useful for devices which have input clocks which must
+> + * be connected by the board/SoC code which creates them. The
+> + * device code can use this to check in its realize method that
+> + * the clock has been connected.
+> + */
+> +static inline bool clock_has_source(const Clock *clk)
 > +{
-> +#ifdef TARGET_TAGGED_ADDRESSES
-> +    if (current_cpu) {
-> +        return cpu_untagged_addr(current_cpu, x);
-> +    }
-> +#endif
-> +    return x;
+> +    return clk->source != NULL;
 > +}
+> +
+>  /**
+>   * clock_set:
+>   * @clk: the clock to initialize.
+> -- 
+> 2.20.1
+> 
 
-The current_cpu global is a nasty hack and I don't like seeing
-new usages of it. In particular, it's very difficult to
-analyse in what places this will get called when current_cpu is
-NULL and whether it's always OK to not clean the tag in that
-situation.
-
-thanks
--- PMM
+-- 

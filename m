@@ -1,88 +1,103 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp952092lfb;
-        Fri, 22 Jan 2021 07:33:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwGpyYdRUR1H99pM127vWd7ZI3Zg+km0/hC9Hm9WpaywWZyeKubpt3CQW9pgMSFeDp0KsRV
-X-Received: by 2002:a25:45c3:: with SMTP id s186mr7048531yba.435.1611329637747;
-        Fri, 22 Jan 2021 07:33:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611329637; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp700790lfb;
+        Fri, 22 Jan 2021 02:10:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx0rsDdLef1BZS7wLVUXiMyWoEtKcFEDgJZ9AzcQQfvsNP+PabRghAEZGgxfEcJGe8AQqVC
+X-Received: by 2002:a25:b213:: with SMTP id i19mr5320265ybj.8.1611310223412;
+        Fri, 22 Jan 2021 02:10:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611310223; cv=none;
         d=google.com; s=arc-20160816;
-        b=BAxXPrY4fQkUWOX4MOBZV2ZyFiQnfKjevdACtlfHicL82lWEbMONs9+S5euKxviuI7
-         aQVQ3CdvECXKehxHLaudd+XAysXYWIebChIED/TtYV0NlrwmG1v0wsE9zsgJvpPwEKuq
-         QICQzjcM8/QbhOEUAZDxPan3d7EByk4u/uIoisOrtfdf3Czo2NBb1MzB07Gv0SSdRUAH
-         Keh2YnXCNmy0zM1fJmT5TGKI3mlcM/uxsPGU01vB6cIslPNHFfYsrXH8pUEcjJ2ziBDw
-         x6w+ia/M6BCiiaSqTeN1MZ9aHZHYPLP/lfCI02QinafZ4A6an6iIEYXHZB8wZyAaDptU
-         7hBQ==
+        b=QTN0UsftyRGfTxPmmKyAt/+AuVDxVxmxwnuEp0XiT7o+AksxFWCsqI7Rgtyg1kFoCB
+         LiMupc1FbcVpmsPamnuj6PObdIavckCFPgyEw4f+ftgmgO0C64/pWOG/VQ0DlI9A0nZ5
+         Dw2FD/VfyTtBlxECW4efatvhGP4MJwt7lUrxkWKarpXzDcuVVmv0oOWig1vrV6BRiLw4
+         EIVcWcbUvSqCSVYncpLrNQB1PoFFqsCWn/dKPslA2iNjKi63LSxLCQ2jTVpkVnKZUExy
+         TOX1jsPxvJLQ985S9oT1Xq3UHYngRtAQceX4v7efMPySA6zyUr+Q7ptx4Hayx4hhm/Ga
+         0iEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=xeg4i8QeVQjatmW7drF6t6jp9MeDNxVlNliXw5wlWCc=;
-        b=Vmk+0iK5ku5S9xE88yzfCnfj+MDy3WjkYo+AZkhpHfdzZSAWYj8gWzlEZLeBr4ALab
-         fGBLKd5p85iSe466NFODQEFDxNqGg6qKtn2naxkburBMyRFBCprr5mjp6+mbN8UTnwME
-         2VKamiZS0Y1iOPWKNrWiC9nDiYdR9l/xQZddXp2n8/ofUvV5vai5MfC3NQdRf5UO8Rx9
-         CJrVh2KV8ffkVfxl4ZQZvroj7VubmjW0M1y5VIj86lzFL6luqvvk2u7WR4QgWmLnJsWE
-         +6ZoVfVnsEwASwxEj92XaD4DXH3f+3oWUjiUrgiTfqMmxlmP0dWduaG0EcV0+uONsvDY
-         jl2Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=pz2BAK6BIJ0piLML6OEwXDhTyZhnyFCBijcWaayNwTw=;
+        b=SbTROQjtA6vuLOzYUSWN4NE5J6VQ57wD74DI2Ado08UOg+TnMOV0F+J1Y6/H7BAubr
+         WhP23NNn5Re1gamgjGfpRCGvp7lBwcOSJm2h9BWGpJ8wSIk/yxD0er27TyOkZOXc0Pj/
+         K90m9xwnDb++QL/Xq3EnBBE6ZFG00ud40zkbAQv5IaNMvmlMRFx0DKjClu6qN4NZUYer
+         7udHa4T+KUyML5Nnj91uQJLIDiObH/ZmAW3PTYY0VNTm14Ek/olYyygW6n6zm5LXJngz
+         8Tlu5VVJEoNCEzgeZJrR/7BCX3zubL7ZzozKCnC/mysVJSGekybhCM18BgmCC3Nu5XGa
+         i/aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=MgYycpkR;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GDqPPUaG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 83si6386881ybf.111.2021.01.22.07.33.57
+        by mx.google.com with ESMTPS id v19si7587101ybj.479.2021.01.22.02.10.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jan 2021 07:33:57 -0800 (PST)
+        Fri, 22 Jan 2021 02:10:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=MgYycpkR;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GDqPPUaG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:58494 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2yRh-0004mW-5o
-	for alex.bennee@linaro.org; Fri, 22 Jan 2021 10:33:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39724)
+	id 1l2tOY-0001eY-Os
+	for alex.bennee@linaro.org; Fri, 22 Jan 2021 05:10:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l2yRU-0004lt-B7; Fri, 22 Jan 2021 10:33:44 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:38202)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l2yRO-0002Ih-4M; Fri, 22 Jan 2021 10:33:44 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id EFA32C602E6;
- Fri, 22 Jan 2021 16:33:34 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1611329615;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=xeg4i8QeVQjatmW7drF6t6jp9MeDNxVlNliXw5wlWCc=;
- b=MgYycpkRyYvt+Pps7DVFFWLHsGFWqM6Szcr+vhFi7YLUA5SbtPmyz/y1qclYWQ6MnPiFvw
- 68cXxT0k95nfZaF4xH1En6KkxuBnvStHquowX5x+db6Qncp7BNenN5PfwtSWgekxl1Qgba
- N7hUHSEwlYrEZ8HsxsuX9sFFoGflWRL75NBASlKUZQD+A2Z1KV0O/TNRZj7z7hK2AEIww/
- 7Iz+YuGufYqBehIw10OcAxRrGZbF4yIt9u5wOU4ekJmktCg1J392d36CVg5rvP8HGWyzjf
- uByZ5287xkCaiMyqDC1j9n10f1VFT+g4jsXeTMLb0knWQs+EikN+Irvw0nufVg==
-Date: Fri, 22 Jan 2021 16:33:56 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 12/25] hw/arm/mps2: Inline CMSDK_APB_TIMER creation
-Message-ID: <20210122153356.vngi3pmohaxvmb3k@sekoia-pc.home.lmichel.fr>
-References: <20210121190622.22000-1-peter.maydell@linaro.org>
- <20210121190622.22000-13-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l2tO7-0001eE-8K
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 05:09:55 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:42466)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l2tO0-0007Jw-Jy
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 05:09:54 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id g24so5856711edw.9
+ for <qemu-arm@nongnu.org>; Fri, 22 Jan 2021 02:09:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pz2BAK6BIJ0piLML6OEwXDhTyZhnyFCBijcWaayNwTw=;
+ b=GDqPPUaGRBwC+bua0rI+yw+HOo+xic4uGmAJlkVX/61KhXdLo1GNnCARcLFqIrCItV
+ 2huGAxPDXyfoIvHLtIH2gKv4UHIqs30Qg0u7sUSVWf0+rzxyNDSqOhu3Rpl9gCnVcxM3
+ wkCnXMv9KPERY8Y2JUra3/Kbyyj3kqCwt+enj9fUEGHgtB5sudI03fqYX/uduHxr8aKx
+ s054lDY0Fro6e/pJEkssf/mXV7vCVBn4Y0NtTRH4kaL6eGGtTztOtCkaeKaWixdTOWZZ
+ L6RdaabxerBfsF9k0CN/CEZSFzHKSOVJlnuErer+XFQNDnmoMUnDTvwMbGt2pyYRWmL3
+ WIkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pz2BAK6BIJ0piLML6OEwXDhTyZhnyFCBijcWaayNwTw=;
+ b=aQK0ObqF695JoBtfMso5+7DOx5/UWTzcgRE+AugTTYJU4QDh8/gJvJPsFCKOq7zmnk
+ PT5eXOFAIZ25pEPuF0CNQCLXkfqQvC79CcA5qPCvEm7KU2GNqIY8KDNDQxtY/cJ9hbMI
+ KKfp2qhFwM3DeRIRnKDVPWaCmlPsEge2TOKSnVH6C7u3CTkHQPT3SBZ5vCTo0I4Ddm1H
+ 99DIC8KpqrjrWru63kMD8DLqnCrMUbaR9nDhg6t3lOIyjBbsJUl+KyFb1drvqtS79o+b
+ kWKwo5UNt89lBnTrqSfVRnd19UCWoWIchuHQ2/FQnHhQLy+3/nxQKE2FDg/Lbh1AYuYR
+ E99g==
+X-Gm-Message-State: AOAM531lCS7MnoEea6fsP1vyxc6sZ0nNG6baZGZlCZNASF/GGCJRRScc
+ frc4OJ0dqGWaG6pTlxuibdWJnMgsgW8aTFwBAJc+dA==
+X-Received: by 2002:a05:6402:1383:: with SMTP id
+ b3mr2531893edv.100.1611310186544; 
+ Fri, 22 Jan 2021 02:09:46 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210121190622.22000-13-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
+References: <20210120092748.14789-1-maxim.uvarov@linaro.org>
+ <20210120092748.14789-4-maxim.uvarov@linaro.org>
+ <20210122082926.nakttrh53zzt6d2x@kamzik.brq.redhat.com>
+In-Reply-To: <20210122082926.nakttrh53zzt6d2x@kamzik.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 22 Jan 2021 10:09:35 +0000
+Message-ID: <CAFEAcA9Oa7BXPhzK4BytsQiByP-MWEnm6OsdBhc6w9+5y4BnFQ@mail.gmail.com>
+Subject: Re: [PATCHv8 3/3] arm-virt: add secure pl061 for reset/power down
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,103 +111,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Maxim Uvarov <maxim.uvarov@linaro.org>, Jose Marinho <Jose.Marinho@arm.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EyIfvDIjjGXp
+X-TUID: n4ZeW3OL129q
 
-On 19:06 Thu 21 Jan     , Peter Maydell wrote:
-> The old-style convenience function cmsdk_apb_timer_create() for
-> creating CMSDK_APB_TIMER objects is used in only two places in
-> mps2.c.  Most of the rest of the code in that file uses the new
-> "initialize in place" coding style.
-> 
-> We want to connect up a Clock object which should be done between the
-> object creation and realization; rather than adding a Clock* argument
-> to the convenience function, convert the timer creation code in
-> mps2.c to the same style as is used already for the watchdog,
-> dualtimer and other devices, and delete the now-unused convenience
-> function.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Fri, 22 Jan 2021 at 08:29, Andrew Jones <drjones@redhat.com> wrote:
+>
+> On Wed, Jan 20, 2021 at 12:27:48PM +0300, Maxim Uvarov wrote:
+> > Add secure pl061 for reset/power down machine from
+> > the secure world (Arm Trusted Firmware). Connect it
+> > with gpio-pwr driver.
+> >
+> > Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
+> > ---
+> >  hw/arm/Kconfig        |  1 +
+> >  hw/arm/virt.c         | 47 +++++++++++++++++++++++++++++++++++++++++++
+> >  include/hw/arm/virt.h |  2 ++
+> >  3 files changed, 50 insertions(+)
+> >
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index 0a242e4c5d..13cc42dcc8 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -17,6 +17,7 @@ config ARM_VIRT
+> >      select PL011 # UART
+> >      select PL031 # RTC
+> >      select PL061 # GPIO
+> > +    select GPIO_PWR
+> >      select PLATFORM_BUS
+> >      select SMBIOS
+> >      select VIRTIO_MMIO
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index c427ce5f81..060a5f492e 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -153,6 +153,7 @@ static const MemMapEntry base_memmap[] = {
+> >      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+> >      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+> >      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+> > +    [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+> >      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> >      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+> >      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> > @@ -841,6 +842,43 @@ static void create_gpio_keys(const VirtMachineState *vms,
+> >                             "gpios", phandle, 3, 0);
+> >  }
+> >
+> > +#define SECURE_GPIO_POWEROFF 0
+> > +#define SECURE_GPIO_REBOOT   1
+> > +
+> > +static void create_gpio_pwr(const VirtMachineState *vms,
+>
+> This function is specific to the secure view. I think it should have
+> "secure" in its name.
+>
+> > +                            DeviceState *pl061_dev,
+> > +                            uint32_t phandle)
+> > +{
+> > +    DeviceState *gpio_pwr_dev;
+> > +
+> > +    /* gpio-pwr */
+> > +    gpio_pwr_dev = sysbus_create_simple("gpio-pwr", -1, NULL);
+>
+> Should this device be in secure memory?
 
-Reviewed-by: Luc Michel <luc@lmichel.fr>
+It's not in any memory at all -- -1 as the address argument
+to sysbus_create_simple() means "no MMIO regions to map". The
+only way it's connected to the rest of the system is via  the
+secure-only PL061, so the NS world can't get at it.
 
-> ---
->  include/hw/timer/cmsdk-apb-timer.h | 21 ---------------------
->  hw/arm/mps2.c                      | 18 ++++++++++++++++--
->  2 files changed, 16 insertions(+), 23 deletions(-)
-> 
-> diff --git a/include/hw/timer/cmsdk-apb-timer.h b/include/hw/timer/cmsdk-apb-timer.h
-> index fc2aa97acac..54f7ec8c502 100644
-> --- a/include/hw/timer/cmsdk-apb-timer.h
-> +++ b/include/hw/timer/cmsdk-apb-timer.h
-> @@ -45,25 +45,4 @@ struct CMSDKAPBTimer {
->      uint32_t intstatus;
->  };
->  
-> -/**
-> - * cmsdk_apb_timer_create - convenience function to create TYPE_CMSDK_APB_TIMER
-> - * @addr: location in system memory to map registers
-> - * @pclk_frq: frequency in Hz of the PCLK clock (used for calculating baud rate)
-> - */
-> -static inline DeviceState *cmsdk_apb_timer_create(hwaddr addr,
-> -                                                 qemu_irq timerint,
-> -                                                 uint32_t pclk_frq)
-> -{
-> -    DeviceState *dev;
-> -    SysBusDevice *s;
-> -
-> -    dev = qdev_new(TYPE_CMSDK_APB_TIMER);
-> -    s = SYS_BUS_DEVICE(dev);
-> -    qdev_prop_set_uint32(dev, "pclk-frq", pclk_frq);
-> -    sysbus_realize_and_unref(s, &error_fatal);
-> -    sysbus_mmio_map(s, 0, addr);
-> -    sysbus_connect_irq(s, 0, timerint);
-> -    return dev;
-> -}
-> -
->  #endif
-> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index 9a8b23c64ce..f762d1b46af 100644
-> --- a/hw/arm/mps2.c
-> +++ b/hw/arm/mps2.c
-> @@ -83,6 +83,7 @@ struct MPS2MachineState {
->      /* CMSDK APB subsystem */
->      CMSDKAPBDualTimer dualtimer;
->      CMSDKAPBWatchdog watchdog;
-> +    CMSDKAPBTimer timer[2];
->  };
->  
->  #define TYPE_MPS2_MACHINE "mps2"
-> @@ -330,8 +331,21 @@ static void mps2_common_init(MachineState *machine)
->      }
->  
->      /* CMSDK APB subsystem */
-> -    cmsdk_apb_timer_create(0x40000000, qdev_get_gpio_in(armv7m, 8), SYSCLK_FRQ);
-> -    cmsdk_apb_timer_create(0x40001000, qdev_get_gpio_in(armv7m, 9), SYSCLK_FRQ);
-> +    for (i = 0; i < ARRAY_SIZE(mms->timer); i++) {
-> +        g_autofree char *name = g_strdup_printf("timer%d", i);
-> +        hwaddr base = 0x40000000 + i * 0x1000;
-> +        int irqno = 8 + i;
-> +        SysBusDevice *sbd;
-> +
-> +        object_initialize_child(OBJECT(mms), name, &mms->timer[i],
-> +                                TYPE_CMSDK_APB_TIMER);
-> +        sbd = SYS_BUS_DEVICE(&mms->timer[i]);
-> +        qdev_prop_set_uint32(DEVICE(&mms->timer[i]), "pclk-frq", SYSCLK_FRQ);
-> +        sysbus_realize_and_unref(sbd, &error_fatal);
-> +        sysbus_mmio_map(sbd, 0, base);
-> +        sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(armv7m, irqno));
-> +    }
-> +
->      object_initialize_child(OBJECT(mms), "dualtimer", &mms->dualtimer,
->                              TYPE_CMSDK_APB_DUALTIMER);
->      qdev_prop_set_uint32(DEVICE(&mms->dualtimer), "pclk-frq", SYSCLK_FRQ);
-> -- 
-> 2.20.1
-> 
+(sysbus_create_simple("device", -1, NULL) is equivalent to:
+ dev = qdev_new("device");
+ sysbus_realize_and_unref(SYSBUS_DEVICE(dev), &error_fatal);
+)
 
--- 
+thanks
+-- PMM

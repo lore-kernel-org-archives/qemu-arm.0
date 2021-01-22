@@ -1,97 +1,100 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp1212659lfb;
-        Fri, 22 Jan 2021 13:41:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwDNn1GVboUCdp9Lmhz3PqvReEN4qPAKmgAzv8g6PFNDMSkjbAxCpUnWx+KaRcHm2kkExwW
-X-Received: by 2002:a25:6187:: with SMTP id v129mr9134421ybb.318.1611351705625;
-        Fri, 22 Jan 2021 13:41:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611351705; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp1218818lfb;
+        Fri, 22 Jan 2021 13:52:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz27x1Vlamdk4nbuuTu3qkzDJXlnadRPZwNCwJBe8BUSO+gvPWL6nx00AFxDHOzsiwN0g7b
+X-Received: by 2002:a25:9882:: with SMTP id l2mr8755295ybo.425.1611352372203;
+        Fri, 22 Jan 2021 13:52:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611352372; cv=none;
         d=google.com; s=arc-20160816;
-        b=AldnqcjQn7wlViZWlc084uB9NcTi9aw3Pe+acbCKQzxuUK7K5GiABEA2ExqbDpF1Pz
-         4DjTav6ihL44T1PpMYp1WSJMR4FdUyo1BlwioDYLK7oH5Mcd7urB09+fMTW2pJ2l8AVw
-         WVu0Zkh4vgUqWxp54Z1FomecErAiR5zTKfRadlnu+sVOCvWazA5fUcC2P4zkWGEE8Gcr
-         EWzPQRceVcVY/WKK+aPOSYIRsdwBSBYa2OLMPrNV/vQm1ERodk2SV9OZRrX5Emxfx++a
-         ebpYeKGcu+gQPIviB2Uk7KBU8PcCRJHvAFNsdhGHC32NC2k/C84S182ZXvnpWBmbOyxN
-         89UA==
+        b=CHQB1x+Um2dQI25iW96m+qAU0+nTMYIWP8+jx1NU4YwWP6c3cpyLIG2/UjsDxTs5pS
+         Ae7vibv8aXGkdRKS47+M0bajP+Pt9EWgAdhnHUu01Zm+81999k4gp1zxBXI+oMGuXnxb
+         gOZ3j5vnpPLs6SpEEHk8CniXJ/rLB8SLM9aBSjvjvGxnUT4KOj0jNmNhPGk9CWIBpvXX
+         2k2T7alRcBGVCLW6W+W72E8/05YezI7Zn2UN3S3oDI04xKVAYm54yVch4wVpAKw7kFyC
+         nSmnIp8Kwwji9ToM9zEeX4HjQE87mSkAzmyHiRu02dGJ6fOMt9a+vh7b/kvRgfUhi/JM
+         TGUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=k3+Jjj4R0BZKvlqNRp/LxEgdbmXofi2HFjYd51zTn08=;
-        b=VCKdVIaGcexZBbQZv48gO9XkP/7TaDBXmYiuELO7QJ0fM2Dse2ktSwLsPHi9Viyys2
-         QjfFn3w1pO0CxP6mwgwKowqfO7OgMxAXToeL1/m60JQ5kqEG1nfCLN3smkA9skB2JNE2
-         4CWT/bn7jNJ5LeuaBCvB3ILOSt2CB7L57DbOmgAGm4JP62FqMgvGBbXrEgIw6SIAoWBL
-         /ZZp/EgdZHpCP0KiQct07nJFX5bCZKRkAgHG6TRk4pxWkFzvDNx/0HUM6GO/65UDa4Va
-         NDaVUfTvRg8U/KvYux0nlNHzEWOGEZA8Q/xoUPSK3lt5EQM0ZBvyFeF2RfdtjZiob9PH
-         vLxA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=F3NmXY82AVsBjMLhUcX3GeVAxWcAOFNsrsf94y63Cq0=;
+        b=CStSMo/LuL3R2MAfrnOUwiovX3eZ3hDfgTrI+10RNJunZxe2LdtnTpoKi2nJo94Op1
+         H+8W/iksHI4l966NwWzS+Q/dGjQHtfvgfs116xXXTETx2UtU4sdGGCHOf8LCCuOSIRW+
+         9MHIEuauASn23BPa4Vihvl6xQpyKxWUr7R9stBiya/k5GHdwLy4cqdXVBJ5gWGiRKz4W
+         rUIlL26qjaEcC3gs3AQ+OryZb4PxqYs6iObrmE1Ylvw6DR4ipqFvxRB2awxH+nhue+8C
+         CSf0z6k4mctEBU0LlEqNzM3oHMzQP2PowHeOJenUo2ZENz6sPqB5pxDQwZNf7tfoivzJ
+         9OZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZQykBdKm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pRFYWlBC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si11198452ybk.369.2021.01.22.13.41.45
+        by mx.google.com with ESMTPS id c6si3567799ybr.119.2021.01.22.13.52.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jan 2021 13:41:45 -0800 (PST)
+        Fri, 22 Jan 2021 13:52:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZQykBdKm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pRFYWlBC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57614 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39588 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l34Bc-00040w-Uz
-	for alex.bennee@linaro.org; Fri, 22 Jan 2021 16:41:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39162)
+	id 1l34MN-0000Tt-Ky
+	for alex.bennee@linaro.org; Fri, 22 Jan 2021 16:52:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l34BS-00040d-JA
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 16:41:34 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:43129)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1l34M4-0000Sd-Nn
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 16:52:33 -0500
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230]:44316)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l34BQ-0002XT-OX
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 16:41:34 -0500
-Received: by mail-ed1-x531.google.com with SMTP id n6so8176033edt.10
- for <qemu-arm@nongnu.org>; Fri, 22 Jan 2021 13:41:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1l34M2-0007GY-8s
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 16:52:32 -0500
+Received: by mail-lj1-x230.google.com with SMTP id f2so3009011ljp.11
+ for <qemu-arm@nongnu.org>; Fri, 22 Jan 2021 13:52:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=k3+Jjj4R0BZKvlqNRp/LxEgdbmXofi2HFjYd51zTn08=;
- b=ZQykBdKmfo/lHdEUgnxJ24MpZhJiLCblZXkgyo7HyZCa0Jw8wOpcA2HX13WjJJLODV
- RzHzojs3Mw4YNDkMrsBkPX6jRgyXNAyrNJ30Zm4/Rl78AT2GuKf+Y1TuRWasQDcgyp/b
- f4CkPUVD51yiMnqWxZj6ixFGqxRzaozzHAYsHxv6pfnkMkzVxPa7ZVaSvX4IUlXkQQWf
- zdn+WJnc5gnHcZHV4kVzjbDPhi/kevEV8iUAp0UERO7v2PyKxoehuo1C4KqYXf0q4MEM
- VjudsxMTCWR6sDugSZttpoj7i1+bhjnqw0nyQSELo3UICq5+1Je1Z64KBeUoAeW3iavA
- YlHA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=F3NmXY82AVsBjMLhUcX3GeVAxWcAOFNsrsf94y63Cq0=;
+ b=pRFYWlBCZbepop+QMXe9sLJGi2YLCVzJ2inK2+C0xo8fpz5ZEMHKbGgtSK0sN0KUC3
+ WYf5UqV+6HW5fX9RQMnQt+ryXl8zAriZx57RgrXXqy7my92f/CQtx/lVpokQhF+gbfOo
+ FL7ROmgPh+SM48wMuAf+NJwOnyPS7Aj/IeN7apxNmtRR3yGLeoxVD3K9DEUha4QSpsiX
+ aMNVswN5ApqFeAMDppx77/QO7yk02KrEEwU1Cw964dplfy/jCGzCddrbyIWJD+P+r0dH
+ ooXBCAMrevPFUXFGMpHffJ/LetDzUYkoY90hATKU2O3a3bcy6jN9Bhtn6HOryTGtdLY8
+ 32sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=k3+Jjj4R0BZKvlqNRp/LxEgdbmXofi2HFjYd51zTn08=;
- b=uoSqwZ/H7M+U1tIsKm6kIK7YGpPZu0LTgnqfjTfOUK98PZp7D0IKDndoVCjYzhedCI
- hGRSAyHEoU/K4ja5YvIrVXWJA4GZ9Z2oLg75rUGsf/cx41U+n+Is9I+CNVZwgBhGMAMs
- HRnivJGzLPiY8JFtGICUgHQjH8KHWfhDO0U2RciXuEowX3rk+BJnaZN2F+SVdrxyR/1G
- eOqloLiicVM+ox87FUMJ+iTgPYaaS/sq1ByuU7cbuKHq8J+ECE/cZfxuBg+zv/00kRkN
- icUiZEYcpwud/xifx7F4B5uCXjXkMO0rUC5E/Ga8uNQJlT/XaoktP0JgXVGww88zdR7M
- XnFw==
-X-Gm-Message-State: AOAM532k2RDd/4Ih6oCEu0qOQ+tv3Ln5/UpUOkLMBPtWoYXLrLbttsJg
- j/NQMqjtA4kaq075mcXs1bKzqMbDMYeQS6auIkzDqw==
-X-Received: by 2002:aa7:dd12:: with SMTP id i18mr4711369edv.36.1611351689953; 
- Fri, 22 Jan 2021 13:41:29 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=F3NmXY82AVsBjMLhUcX3GeVAxWcAOFNsrsf94y63Cq0=;
+ b=uDIiXPflGoKZk8kANIWjjp2y/h76KB7buL9hnDvk2v73noJdgLZLgFSqq6Z8NprwjG
+ w5U7+Jb/+KxSQrsPoPXPSgJ40q3RJ9nNKnV0zXkpuINCGsslkJm845IMdhzyDStrnWgz
+ Pa79QxoPmH8SIHjPaiPH9ptnDeqvBvV/8OEdYrLqr1TTo+6nYoD4V/F5inJuN/rlDz/8
+ mhb088fm46/l3qWCD1MSGdDca7Jl0iCXS1oCDkCbmCvIsJ73Uh1pkIRdpB2cycBn7hZQ
+ NFw1dt55y7zQWR1RHvlbkUUxlNeIv03xlDti+LmJfnQjKsZ/pUM7eGGcAnobMaWee7jm
+ dEjg==
+X-Gm-Message-State: AOAM531iiMXYTvplQOlXJeHGYXSNk3SF6N27bgM7iSKOoM95TGyZEaoE
+ ZrqxjLy7/WgyMKiIDJpjg1q9K7pN9znM0g==
+X-Received: by 2002:a2e:96d8:: with SMTP id d24mr1586288ljj.62.1611352346168; 
+ Fri, 22 Jan 2021 13:52:26 -0800 (PST)
+Received: from localhost.localdomain ([176.59.42.245])
+ by smtp.gmail.com with ESMTPSA id a11sm1019890lfl.22.2021.01.22.13.52.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Jan 2021 13:52:25 -0800 (PST)
+From: Maxim Uvarov <maxim.uvarov@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCHv9 0/3] arm-virt: add secure pl061 for reset/power down
+Date: Sat, 23 Jan 2021 00:52:19 +0300
+Message-Id: <20210122215222.8320-1-maxim.uvarov@linaro.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-References: <20210121190622.22000-1-peter.maydell@linaro.org>
- <20210121190622.22000-20-peter.maydell@linaro.org>
- <20210122204910.xadaf4zutpbu4qp5@sekoia-pc.home.lmichel.fr>
-In-Reply-To: <20210122204910.xadaf4zutpbu4qp5@sekoia-pc.home.lmichel.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Jan 2021 21:41:18 +0000
-Message-ID: <CAFEAcA8adGg+i65an_2Pser8acSmgz4D1wvmidaKNpeOt6jJKw@mail.gmail.com>
-Subject: Re: [PATCH 19/25] hw/timer/cmsdk-apb-dualtimer: Convert to use Clock
- input
-To: Luc Michel <luc@lmichel.fr>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::230;
+ envelope-from=maxim.uvarov@linaro.org; helo=mail-lj1-x230.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,80 +114,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: peter.maydell@linaro.org, drjones@redhat.com,
+ Maxim Uvarov <maxim.uvarov@linaro.org>, Jose.Marinho@arm.com, f4bug@amsat.org,
+ tf-a@lists.trustedfirmware.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AiMrd7vulZxB
+X-TUID: UR/GVaNwaeuX
 
-On Fri, 22 Jan 2021 at 20:48, Luc Michel <luc@lmichel.fr> wrote:
->
-> On 19:06 Thu 21 Jan     , Peter Maydell wrote:
-> > Switch the CMSDK APB dualtimer device over to using its Clock input;
-> > the pclk-frq property is now ignored.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >  hw/timer/cmsdk-apb-dualtimer.c | 42 ++++++++++++++++++++++++++++++----
-> >  1 file changed, 37 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/hw/timer/cmsdk-apb-dualtimer.c b/hw/timer/cmsdk-apb-dualtimer.c
-> > index 781b496037b..828127b366f 100644
-> > --- a/hw/timer/cmsdk-apb-dualtimer.c
-> > +++ b/hw/timer/cmsdk-apb-dualtimer.c
-> > @@ -106,6 +106,22 @@ static void cmsdk_apb_dualtimer_update(CMSDKAPBDualTimer *s)
-> >      qemu_set_irq(s->timerintc, timintc);
-> >  }
-> >
-> > +static int cmsdk_dualtimermod_divisor(CMSDKAPBDualTimerModule *m)
-> > +{
-> > +    /* Return the divisor set by the current CONTROL.PRESCALE value */
-> > +    switch (FIELD_EX32(m->control, CONTROL, PRESCALE)) {
-> > +    case 0:
-> > +        return 1;
-> > +    case 1:
-> > +        return 16;
-> > +    case 2:
-> > +    case 3: /* UNDEFINED, we treat like 2 (and complained when it was set) */
-> > +        return 256;
-> > +    default:
-> > +        g_assert_not_reached();
-> > +    }
-> > +}
-> > +
-> >  static void cmsdk_dualtimermod_write_control(CMSDKAPBDualTimerModule *m,
-> >                                               uint32_t newctrl)
-> >  {
-> > @@ -146,7 +162,7 @@ static void cmsdk_dualtimermod_write_control(CMSDKAPBDualTimerModule *m,
-> >          default:
-> >              g_assert_not_reached();
-> >          }
-> > -        ptimer_set_freq(m->timer, m->parent->pclk_frq / divisor);
-> > +        ptimer_set_period_from_clock(m->timer, m->parent->timclk, divisor);
->
-> Just a small cosmetic note, maybe you can use your new
-> cmsdk_dualtimermod_divisor function to factor out the switch above?
-> Something like:
->
-> if (changed & R_CONTROL_PRESCALE_MASK) {
->     if (FIELD_EX32(newctrl, CONTROL, PRESCALE) == 3) {
->         qemu_log_mask(LOG_GUEST_ERROR,
->                       "CMSDK APB dual-timer: CONTROL.PRESCALE==0b11"
->                       " is undefined behaviour\n");
->     }
->
->     ptimer_set_period_from_clock(m->timer, m->parent->timclk,
->                                  cmsdk_dualtimermod_divisor(m));
-> }
+ v9: - cosmetic changes (move if from patch2 to patch3, rename function name
+       and define).
+ v8: - use gpio 0 and 1, align dtb with kernel gpio-restart, gpio-poweroff,
+       change define names, trigger on upper front. (Peter Maydell).
+ v7: - same as v6, but resplit patches: patch 2 no function changes and refactor
+	gpio setup for virt platfrom and patch 3 adds secure gpio.
+ v6: - 64k align gpio memory region (Andrew Jones)
+     - adjusted memory region to map this address in the corresponding atf patch
+ v5: - removed vms flag, added fdt  (Andrew Jones)
+     - added patch3 to combine secure and non secure pl061. It has to be
+       more easy to review if this changes are in the separate patch.
+ v4: rework patches accodring to Peter Maydells comments:
+	- split patches on gpio-pwr driver and arm-virt integration.
+	- start secure gpio only from virt-6.0.
+	- rework qemu interface for gpio-pwr to use 2 named gpio.
+	- put secure gpio to secure name space.
+ v3: added missed include qemu/log.h for qemu_log(.. 
+ v2: replace printf with qemu_log (Philippe Mathieu-Daudé)
 
-Nope, because cmsdk_dualtimermod_divisor() uses the current
-m->control value, and at this point in the code we need the
-divisor from the new control value which isn't in m->control yet.
-I liked the slight duplication better than either having to
-pass m->control in in all the other callsites or trying to
-refactor the control write handling so that m->control is
-updated before this point in the code.
+This patch works together with ATF patch:
+	https://github.com/muvarov/arm-trusted-firmware/commit/886965bddb0624bdf85103efb2b39fd4eb73d89b
 
-thanks
--- PMM
+Maxim Uvarov (3):
+  hw: gpio: implement gpio-pwr driver for qemu reset/poweroff
+  arm-virt: refactor gpios creation
+  arm-virt: add secure pl061 for reset/power down
+
+ hw/arm/Kconfig        |   1 +
+ hw/arm/virt.c         | 111 ++++++++++++++++++++++++++++++++++--------
+ hw/gpio/Kconfig       |   3 ++
+ hw/gpio/gpio_pwr.c    |  70 ++++++++++++++++++++++++++
+ hw/gpio/meson.build   |   1 +
+ include/hw/arm/virt.h |   2 +
+ 6 files changed, 167 insertions(+), 21 deletions(-)
+ create mode 100644 hw/gpio/gpio_pwr.c
+
+-- 
+2.17.1
+

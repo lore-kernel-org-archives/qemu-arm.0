@@ -1,88 +1,102 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp952194lfb;
-        Fri, 22 Jan 2021 07:34:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxpr9jwID+viMc0SdtNvQikObTHvZzyYB3JqexQJKrhcOS4WL2zdkbtT+uW6qAPNV4Ut/dh
-X-Received: by 2002:a25:2d4a:: with SMTP id s10mr5512220ybe.277.1611329645959;
-        Fri, 22 Jan 2021 07:34:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611329645; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp962189lfb;
+        Fri, 22 Jan 2021 07:47:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzcOWtSdRoiHGC2pLfNhDXoRAmpTQ/QOmXqXomLehiyNZBJzFoGswZhN4lK1PMYDsWk0yGq
+X-Received: by 2002:a25:b328:: with SMTP id l40mr6744449ybj.15.1611330445608;
+        Fri, 22 Jan 2021 07:47:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611330445; cv=none;
         d=google.com; s=arc-20160816;
-        b=n1QOl8Veg1t6CYCl0B8t2l7tw4WJkD3hPEJEvw6zi7eeu7zyhsroRA1sK1FMEjSUMq
-         z3Oau3C21ePHGQDc52ykqVPtz7AKBWinFniJd2TzTRHN1LPXiyf/6R2jGvNHSNbIg4Oj
-         T+u4yqk5KiB06saiB9bsnQVSAEhV4RoiDHlzkyKbIxJNSrs6Co5xTuCy6l/GeupbX7+0
-         n9gMQ9JguPhvzyDohvLjAOGlT6F7y+qHR2voh4cklf8GeDA3xIOXLoT1cir3SEgPfLZJ
-         rCOfVFs/Pxn6zgoZRJ7RbJA4ZgcOYwbpyryDZbRvEtj3eXbigZuWKdMLzQ9Yz8wzhHjU
-         G6GQ==
+        b=BKGvPP9dMXGYrHzSmJBNwQ+rEMSqWgRcD6DPj0zrcPJ28s+7B0xFYDqpldGe0KuTn8
+         LQwTWDhhpqqiT238vPORJ38W00VI1n8c37lP67Ufo9Yml0QIiMUYfnNQp1k5kT5tPmbh
+         Zs7+wT5C4s7wXVtDQjMBwnLIvJPkNdaL1b4bAOobDom7i/j53LNLXo6jN6rfGJMFte8z
+         Yev67enFmG8lhbnqJobtRX6avg8qH89N6E/vP5Thi2Q7RXoee1pqeJ7BeEmNAkSccOJJ
+         5/gzoyweyaVg3c5P9E+C3FGPD1qRvsQWK0YacuulPN4wd2QJF4370nI/l4ucmyffGk8H
+         osfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=LQI+a1eEM5tuxsSegx9KtrBu9puU3YV07VoG4tvtOqo=;
-        b=ncnUgMAqnEw8K6VPlvWRh/ey98qpFtbIdtbKhgcfHGpkC99wM44aZcJqgSEaR1x5bj
-         hcC31flocmlZMAKpQHzNF/rzO55ZTsurn0eDidvmbo8dWcaEGnAkhUS86ttYXx8rk5+7
-         ORt6gBt8zqrXf2fpZBxuv/a4NdJTqCp9n3CtqHgv6Fjo+GaP/aGkKhyIEMRC0XfvcB92
-         l1+59NJonuKH8vsF4KGT/4J9DUwO6fXTEC6Vb6Hj2gguSoNP9SqDJz+ZCvu5TQcuRtI/
-         Lw9KCE9i0/MMijbUk5SRTl8tX4BZQ2ONFfeXr8CrJghHMKFzlO1kV2kYVWwsxEWX+DUt
-         cl8A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=iFF3oHAnCreyQ8d6nvTVlFjwwJGcXT7kbU6Xy7q2N1k=;
+        b=T3+jBKE3Re3MaKjiOpWX9C0AzsCfsmokjHzfTfEcrZ5CJpbNe1DJjsWM6oEE2kSHti
+         hGkwzJdx1BGt3NgHnynutw7LfAMe6s7BZM4Ei4oHAVvHUn/bvfjutbE5021f2/xb8lMD
+         VG5DR1iDm4zNRsUSa3Mhw4E9vzApTWcW8mQji5V8M/TRGR+n8aWEl/iQVGb5pkG7AaHd
+         eYr0Mo/2FqQh9xfXv2+TD3hQk6fUnrR8EQvy5VmzH/zCkk1lxe7FcmMzhZITXL6SqFSU
+         QfTltFoM8lFA71mgEKIdyS185B1TS+ykMTSs3uYB/r6Zbt8d0iMcAnBBZFbO6hEGrsTB
+         s/2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=PCjNaZMd;
+       dkim=fail header.i=@linaro.org header.s=google header.b="iaD/PIeR";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m65si8862620ybc.55.2021.01.22.07.34.05
+        by mx.google.com with ESMTPS id v201si9258191ybe.88.2021.01.22.07.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jan 2021 07:34:05 -0800 (PST)
+        Fri, 22 Jan 2021 07:47:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=PCjNaZMd;
+       dkim=fail header.i=@linaro.org header.s=google header.b="iaD/PIeR";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:58990 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2yRp-0004zo-BB
-	for alex.bennee@linaro.org; Fri, 22 Jan 2021 10:34:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39788)
+	id 1l2yei-0002p0-Vn
+	for alex.bennee@linaro.org; Fri, 22 Jan 2021 10:47:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l2yRg-0004wb-6t; Fri, 22 Jan 2021 10:33:56 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:38232)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l2yRe-0002QT-8F; Fri, 22 Jan 2021 10:33:55 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 1F63DC602E6;
- Fri, 22 Jan 2021 16:33:52 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1611329632;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=LQI+a1eEM5tuxsSegx9KtrBu9puU3YV07VoG4tvtOqo=;
- b=PCjNaZMdYZcR1Zcy1oXiQFtyQHxCX9ukjSLfIMCqgL/rSLOhS3JUCCbExaxQGCEA/fNSwP
- 4J3RKpkc297gfutrzoXbxWHG06NqqDmHNi3D4hoqSZNbHX1xS07AzG6HXxcp4/mmbHLIPR
- 8YV3qVaYQRW01S/k7QbyuqX/BzFe75gK2rlr06Ydzec1lmAzsw8so+OZ2TwvK3cvyb0pst
- CMBwYe/zgfPbmbxCxnOr9LhyOH6r1ItEMqFBfe9/OLOMlvn3VIVlSQt+R23LeEgMI4goLl
- U9hL6A4Sl8WLiVD4IgPyrCy5v9QZLD63oDXK7enRN/HSr/tO6lbSwd/p8ZmL9A==
-Date: Fri, 22 Jan 2021 16:34:13 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 11/25] hw/arm/armsse: Wire up clocks
-Message-ID: <20210122153413.srcx5vcwnidkb5nb@sekoia-pc.home.lmichel.fr>
-References: <20210121190622.22000-1-peter.maydell@linaro.org>
- <20210121190622.22000-12-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l2yeZ-0002o8-PN
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 10:47:15 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:33417)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l2yeY-0008RX-1B
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 10:47:15 -0500
+Received: by mail-ed1-x535.google.com with SMTP id c6so7101319ede.0
+ for <qemu-arm@nongnu.org>; Fri, 22 Jan 2021 07:47:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iFF3oHAnCreyQ8d6nvTVlFjwwJGcXT7kbU6Xy7q2N1k=;
+ b=iaD/PIeRx0mjTev0L7q1j1sq+0t364ARSWpjD3UcNe+3PyJ4xd+ANFfZOS/mvC8IlQ
+ nbzx8doo/Lumt3SFf6OWogoBs1jL5htnGLoPZlzLNMDoXbrmh9l6qK/bOS6B/o+NIL8s
+ AUMq7VabtL7faSReIJo7s+w77ofb3K+o0s3cLvqanDR5MyigEoxCvBfV7KkqpDoXoOmv
+ ZHpI3sX0c+pI6Z7ygGhecpwsLeh+uQTmMKwD0+THgXs6U5WFOf7sOtGAPLx1GWY0ytLD
+ fYDb0XMvzGKCo92C4RnvKhFld8lE3wykropoNHfV5JTH0HH1AvRiscvsbg4gwR1787Ej
+ IXew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iFF3oHAnCreyQ8d6nvTVlFjwwJGcXT7kbU6Xy7q2N1k=;
+ b=BWwq4UvQLu++yWn9DPCKltrTIbHBBe4uFoSozaUSCQDUm//q5Wm0dB1xeiMULiazu6
+ dDh/zEQ9mEAJiIxp7QYVHrpku1Vaulzi7dJtsdbKALkPlg9YoJwpeclDilk0FeopS18w
+ byXn075h0kiHVXvycnC3SVk5c5n5o9vpnt6H6tAg3PmF2Eb/Bk1QRsfQNrLxKe+9kNUX
+ 9fMx9v+zeZMEK310zYy/E+xIyw1/iL8YhxHretW7jJ1aVDR4bzPe59o9j32YgSt8vdTZ
+ 75amrYQNKhtd/ROKyF3c4JgzyhjQKAuCsg1pT5ilBApDOYH5cnORPZCiy2hcNr0Oa1+g
+ 4eUw==
+X-Gm-Message-State: AOAM531mVGEkb4nV/ue0PDAFbcxMJctIpSvBFnFK6YGg/ueGLIdyKyGJ
+ 5VY6phDAruUjowBo5fOBMNrQ3FlFuYMf4u1xQNnWVQ==
+X-Received: by 2002:a05:6402:1383:: with SMTP id
+ b3mr3582488edv.100.1611330432289; 
+ Fri, 22 Jan 2021 07:47:12 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210121190622.22000-12-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
+References: <20210120092748.14789-1-maxim.uvarov@linaro.org>
+ <20210120092748.14789-4-maxim.uvarov@linaro.org>
+In-Reply-To: <20210120092748.14789-4-maxim.uvarov@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 22 Jan 2021 15:47:01 +0000
+Message-ID: <CAFEAcA8gGHP0eFmkxu=rV6RqR=g65uPQvZf7utWLTGLp-V8A7A@mail.gmail.com>
+Subject: Re: [PATCHv8 3/3] arm-virt: add secure pl061 for reset/power down
+To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,156 +110,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Andrew Jones <drjones@redhat.com>, Jose Marinho <Jose.Marinho@arm.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IWpenTWrw4r/
+X-TUID: AxsjsO39lM9l
 
-On 19:06 Thu 21 Jan     , Peter Maydell wrote:
-> Create two input clocks on the ARMSSE devices, one for the normal
-> MAINCLK, and one for the 32KHz S32KCLK, and wire these up to the
-> appropriate devices.  The old property-based clock frequency setting
-> will remain in place until conversion is complete.
-> 
-> This is a migration compatibility break for machines mps2-an505,
-> mps2-an521, musca-a, musca-b1.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Wed, 20 Jan 2021 at 09:27, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+>
+> Add secure pl061 for reset/power down machine from
+> the secure world (Arm Trusted Firmware). Connect it
+> with gpio-pwr driver.
+>
+> Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
 
-Reviewed-by: Luc Michel <luc@lmichel.fr>
+A nit, which I raise only because you'll need a respin anyway:
 
-> ---
->  include/hw/arm/armsse.h |  6 ++++++
->  hw/arm/armsse.c         | 17 +++++++++++++++--
->  2 files changed, 21 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-> index 4860a793f4b..bfa1e79c4fe 100644
-> --- a/include/hw/arm/armsse.h
-> +++ b/include/hw/arm/armsse.h
-> @@ -37,6 +37,8 @@
->   *  per-CPU identity and control register blocks
->   *
->   * QEMU interface:
-> + *  + Clock input "MAINCLK": clock for CPUs and most peripherals
-> + *  + Clock input "S32KCLK": slow 32KHz clock used for a few peripherals
->   *  + QOM property "memory" is a MemoryRegion containing the devices provided
->   *    by the board model.
->   *  + QOM property "MAINCLK_FRQ" is the frequency of the main system clock
-> @@ -103,6 +105,7 @@
->  #include "hw/misc/armsse-mhu.h"
->  #include "hw/misc/unimp.h"
->  #include "hw/or-irq.h"
-> +#include "hw/clock.h"
->  #include "hw/core/split-irq.h"
->  #include "hw/cpu/cluster.h"
->  #include "qom/object.h"
-> @@ -209,6 +212,9 @@ struct ARMSSE {
->  
->      uint32_t nsccfg;
->  
-> +    Clock *mainclk;
-> +    Clock *s32kclk;
-> +
->      /* Properties */
->      MemoryRegion *board_memory;
->      uint32_t exp_numirq;
-> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-> index d2ba0459c44..4349ce9bfdb 100644
-> --- a/hw/arm/armsse.c
-> +++ b/hw/arm/armsse.c
-> @@ -21,6 +21,7 @@
->  #include "hw/arm/armsse.h"
->  #include "hw/arm/boot.h"
->  #include "hw/irq.h"
-> +#include "hw/qdev-clock.h"
->  
->  /* Format of the System Information block SYS_CONFIG register */
->  typedef enum SysConfigFormat {
-> @@ -241,6 +242,9 @@ static void armsse_init(Object *obj)
->      assert(info->sram_banks <= MAX_SRAM_BANKS);
->      assert(info->num_cpus <= SSE_MAX_CPUS);
->  
-> +    s->mainclk = qdev_init_clock_in(DEVICE(s), "MAINCLK", NULL, NULL);
-> +    s->s32kclk = qdev_init_clock_in(DEVICE(s), "S32KCLK", NULL, NULL);
-> +
->      memory_region_init(&s->container, obj, "armsse-container", UINT64_MAX);
->  
->      for (i = 0; i < info->num_cpus; i++) {
-> @@ -711,6 +715,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->       * map its upstream ends to the right place in the container.
->       */
->      qdev_prop_set_uint32(DEVICE(&s->timer0), "pclk-frq", s->mainclk_frq);
-> +    qdev_connect_clock_in(DEVICE(&s->timer0), "pclk", s->mainclk);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer0), errp)) {
->          return;
->      }
-> @@ -721,6 +726,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->                               &error_abort);
->  
->      qdev_prop_set_uint32(DEVICE(&s->timer1), "pclk-frq", s->mainclk_frq);
-> +    qdev_connect_clock_in(DEVICE(&s->timer1), "pclk", s->mainclk);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer1), errp)) {
->          return;
->      }
-> @@ -731,6 +737,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->                               &error_abort);
->  
->      qdev_prop_set_uint32(DEVICE(&s->dualtimer), "pclk-frq", s->mainclk_frq);
-> +    qdev_connect_clock_in(DEVICE(&s->dualtimer), "TIMCLK", s->mainclk);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->dualtimer), errp)) {
->          return;
->      }
-> @@ -889,6 +896,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->       *   0x4002f000: S32K timer
->       */
->      qdev_prop_set_uint32(DEVICE(&s->s32ktimer), "pclk-frq", S32KCLK);
-> +    qdev_connect_clock_in(DEVICE(&s->s32ktimer), "pclk", s->s32kclk);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->s32ktimer), errp)) {
->          return;
->      }
-> @@ -982,6 +990,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->                            qdev_get_gpio_in_named(DEVICE(&s->armv7m), "NMI", 0));
->  
->      qdev_prop_set_uint32(DEVICE(&s->s32kwatchdog), "wdogclk-frq", S32KCLK);
-> +    qdev_connect_clock_in(DEVICE(&s->s32kwatchdog), "WDOGCLK", s->s32kclk);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->s32kwatchdog), errp)) {
->          return;
->      }
-> @@ -992,6 +1001,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->      /* 0x40080000 .. 0x4008ffff : ARMSSE second Base peripheral region */
->  
->      qdev_prop_set_uint32(DEVICE(&s->nswatchdog), "wdogclk-frq", s->mainclk_frq);
-> +    qdev_connect_clock_in(DEVICE(&s->nswatchdog), "WDOGCLK", s->mainclk);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->nswatchdog), errp)) {
->          return;
->      }
-> @@ -1000,6 +1010,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->nswatchdog), 0, 0x40081000);
->  
->      qdev_prop_set_uint32(DEVICE(&s->swatchdog), "wdogclk-frq", s->mainclk_frq);
-> +    qdev_connect_clock_in(DEVICE(&s->swatchdog), "WDOGCLK", s->mainclk);
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->swatchdog), errp)) {
->          return;
->      }
-> @@ -1127,9 +1138,11 @@ static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
->  
->  static const VMStateDescription armsse_vmstate = {
->      .name = "iotkit",
-> -    .version_id = 1,
-> -    .minimum_version_id = 1,
-> +    .version_id = 2,
-> +    .minimum_version_id = 2,
->      .fields = (VMStateField[]) {
-> +        VMSTATE_CLOCK(mainclk, ARMSSE),
-> +        VMSTATE_CLOCK(s32kclk, ARMSSE),
->          VMSTATE_UINT32(nsccfg, ARMSSE),
->          VMSTATE_END_OF_LIST()
->      }
-> -- 
-> 2.20.1
-> 
 
--- 
+> +    /* connect secure pl061 to gpio-pwr */
+> +    qdev_connect_gpio_out(pl061_dev, SECURE_GPIO_REBOOT,
+> +                          qdev_get_gpio_in_named(gpio_pwr_dev, "reset", 0));
+
+> +    qemu_fdt_add_subnode(vms->fdt, "/gpio-restart");
+
+We have three different names for the same thing here: 'reboot',
+'reset' and 'restart'. If we name the GPIO line SECURE_GPIO_RESET
+we can at least get that down to two.
+
+thanks
+-- PMM

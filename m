@@ -1,105 +1,105 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp630578lfb;
-        Fri, 22 Jan 2021 00:07:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy+aZvpe276g049aR1ixpDc2z/AX0xL/bcLVSMXmVBCASGfN7r9k5ATkobGWSJqIjv4zDbm
-X-Received: by 2002:a25:addf:: with SMTP id d31mr4733853ybe.473.1611302857950;
-        Fri, 22 Jan 2021 00:07:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611302857; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp643071lfb;
+        Fri, 22 Jan 2021 00:29:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz1qBHr96IF2gBcLgoL/L4lJ4mcD47OPuhcOybBzO0uzO39yiVjj9ALQrmzixH6hjJrqUhh
+X-Received: by 2002:a25:5c85:: with SMTP id q127mr5137397ybb.101.1611304191384;
+        Fri, 22 Jan 2021 00:29:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611304191; cv=none;
         d=google.com; s=arc-20160816;
-        b=p5lUHm5KkqKgpntTV1ntr/feQkvW/tV+I69Nu2MUJ6dqomqH5avU9ooeqtlcV+kHhi
-         yC+45zA8UqNMeW3XuWvSfdyf11tgvZ5sMeVzTJxr5dnQQZP2so+/E4hULNL4gRP3mtGu
-         t7cLEnqoaKZOY5plUwmt3yyO9r9nLdQQ5sPt01tg8lS/wzbqynA2aVueSPhK7cBT0y1k
-         WGRiGE0UqC5u3HwpS22IALPl0RaXUAwuL+rTJGRdb/9goa0oUflr7XX73EGcBAMfMe8O
-         Fq2wE08oz28GLb1auuu7ECiLzbWORwinRNC6Rpb0eDtqY9oWdcdSKw7cu3miAdeSYiF8
-         ltAw==
+        b=OvfscIQX0pxhuK6Se+TxSOYWHLf2NqnjRvH3az1kb1kpIoHYE8X8in2xA02ncHCl1S
+         kxyW4oTCkqc0q6oKOWenZCi9ClhUS2Xj/gGWiaka25PaDN7qSfrsRqu7bVQrDVL+9Y8M
+         1J0XY3qQdAzQF3XOby2pONmg+jahgJiOJqe0VLFjoA2hGn1sTrUMknXircEmg7q9tGHS
+         38tT8O0bCEYiBHH3I4Kl5xu3e5octc4z02KD5ukIAokO1hNl2t/5shfBHPFD+DjPfuX2
+         porwRNZm+fhEP8i6r0nJfmALwnVCjv+02Fxl3a59fIHahR5m6Ya02hvFjKFF76lDui7d
+         qvOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=wceigeWi447uFqqOJBTYIF2O1oO/W+rRjQCaPdz1EqM=;
-        b=DLh/lMUUD6Xrbul1bT6D3Mt3u0e0TR68mkFTQU3mFwTFTGzAB570SOzpSm6rPHhllx
-         Ex97D5zlQj4KR8Gz+wJx9MalabDD/EZO2Pqvx+L7DwlMIklK4bzvJUNUIiYUwZPrXgKe
-         ChhpOIbgMkirJPbwGTKMANbXk4WkvW6Oa4PkjBxKRvQ3zz+/i6gwoCLspizJIjp39NQf
-         sTHIL6EpTow20eri1dNj02WDlt4i1XmAefqCbcPm9LVm2c4tA1Iak5I3xhB2iGhGBG+t
-         j3IQg5eQBd3VHURyRdERQoTom2g4ef8tAWJWvryK3RdC0bLuzzBteT53hbHRs56Af+m8
-         WCtg==
+        bh=jDQKeNGS6LZMjDfg6HvGRkM8LLfrV9k35OMY2FEyENM=;
+        b=OE/S8YQfKpBkyhHUBdtlDohRIqgkKy6m9zK/EvFTyoWxlo6Su2vZpkhFXZ+HUoO5xX
+         EgCenZ7dggcQDKFyXKLUDcs21hGkcRT0aEvj9VZQ0nYdty/7qwqxSpHzFafHH1rJIJ90
+         rqT/t2CpOz0PTo4rJVL0ZeuHsuFDPvwKLcziulbLd97QoHTUxc0m6LR/OyNzJgGngG4t
+         aA/JN4FKVMFMzraD8RkxOigUpqLUPtmUYp4LcvxbyGCjxsi+lr8MIBv0XzIXccrBcC2/
+         JnQXQP649x/LgP3kutKD6WSlOwCxkDDraGNuP3iUAPqBa07hPmrCFcDolYUDVlV+eo6J
+         i4ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fW7GrR+6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="iW7BX/cX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h203si6937751ybc.199.2021.01.22.00.07.37
+        by mx.google.com with ESMTPS id n129si7776258ybc.3.2021.01.22.00.29.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jan 2021 00:07:37 -0800 (PST)
+        Fri, 22 Jan 2021 00:29:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fW7GrR+6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="iW7BX/cX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33320 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2rTl-0007kX-Aq
-	for alex.bennee@linaro.org; Fri, 22 Jan 2021 03:07:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49464)
+	id 1l2rpG-000451-Pm
+	for alex.bennee@linaro.org; Fri, 22 Jan 2021 03:29:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l2rTZ-0007kM-SO
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 03:07:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36062)
+ id 1l2rp6-00043d-Gi
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 03:29:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36147)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l2rTX-0001AE-C1
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 03:07:24 -0500
+ id 1l2rp3-0002Wa-Ub
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 03:29:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1611302842;
+ s=mimecast20190719; t=1611304176;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=wceigeWi447uFqqOJBTYIF2O1oO/W+rRjQCaPdz1EqM=;
- b=fW7GrR+6C4YVWeIqdKqCgj55ZujYSUB/+tl640rS8WOwvvOLzRo0R2ZHxUPxbiZZNkBcZS
- 9P67KxMtGm/f1nMQJRyfPM6nnYLfDjJShT91MLrBVUij/EZ9DfQJ9wAXBLOnvLyEqrqjke
- hgywAiHn29dsk6qGIUT9nHmqqvtcL7I=
+ bh=jDQKeNGS6LZMjDfg6HvGRkM8LLfrV9k35OMY2FEyENM=;
+ b=iW7BX/cXdJXVaOAmTY3L5HIYyXmnm7F9npeQ3oXJY3Nezs/RQy4L8YPsVcz+6Hp13mdjQe
+ N4KKamhMSlU3GLseBmnNt9X86T7PmIA/ENdLv8CuLxaSRpK1k3ReD6Js1ryv+dBl5UCSjz
+ 48LgT3Q9FJsGy6y7CpPq0kgSdAZHYxA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-327-pqCwM7fwNsuwkhRTXI3Ppg-1; Fri, 22 Jan 2021 03:07:18 -0500
-X-MC-Unique: pqCwM7fwNsuwkhRTXI3Ppg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-276-hKc6mSqzPQKW8fmtGzvBdA-1; Fri, 22 Jan 2021 03:29:32 -0500
+X-MC-Unique: hKc6mSqzPQKW8fmtGzvBdA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 353AC15725;
- Fri, 22 Jan 2021 08:07:17 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B0CF1005504;
+ Fri, 22 Jan 2021 08:29:31 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.40.192.139])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E430A2C6BF;
- Fri, 22 Jan 2021 08:07:14 +0000 (UTC)
-Date: Fri, 22 Jan 2021 09:07:12 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7386D5D9E8;
+ Fri, 22 Jan 2021 08:29:29 +0000 (UTC)
+Date: Fri, 22 Jan 2021 09:29:26 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Maxim Uvarov <maxim.uvarov@linaro.org>
-Subject: Re: [PATCHv8 2/3] arm-virt: refactor gpios creation
-Message-ID: <20210122080712.bwkjyyanwdv22eqd@kamzik.brq.redhat.com>
+Subject: Re: [PATCHv8 3/3] arm-virt: add secure pl061 for reset/power down
+Message-ID: <20210122082926.nakttrh53zzt6d2x@kamzik.brq.redhat.com>
 References: <20210120092748.14789-1-maxim.uvarov@linaro.org>
- <20210120092748.14789-3-maxim.uvarov@linaro.org>
+ <20210120092748.14789-4-maxim.uvarov@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20210120092748.14789-3-maxim.uvarov@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20210120092748.14789-4-maxim.uvarov@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.168,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,127 +116,152 @@ Cc: peter.maydell@linaro.org, Jose.Marinho@arm.com, qemu-devel@nongnu.org,
  f4bug@amsat.org, tf-a@lists.trustedfirmware.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6+1wqOR4j6Hp
+X-TUID: R9bJGzdHKowS
 
-On Wed, Jan 20, 2021 at 12:27:47PM +0300, Maxim Uvarov wrote:
-> No functional change. Just refactor code to better
-> support secure and normal world gpios.
+On Wed, Jan 20, 2021 at 12:27:48PM +0300, Maxim Uvarov wrote:
+> Add secure pl061 for reset/power down machine from
+> the secure world (Arm Trusted Firmware). Connect it
+> with gpio-pwr driver.
 > 
 > Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
 > ---
->  hw/arm/virt.c | 64 ++++++++++++++++++++++++++++++++++-----------------
->  1 file changed, 43 insertions(+), 21 deletions(-)
+>  hw/arm/Kconfig        |  1 +
+>  hw/arm/virt.c         | 47 +++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h |  2 ++
+>  3 files changed, 50 insertions(+)
 > 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 0a242e4c5d..13cc42dcc8 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -17,6 +17,7 @@ config ARM_VIRT
+>      select PL011 # UART
+>      select PL031 # RTC
+>      select PL061 # GPIO
+> +    select GPIO_PWR
+>      select PLATFORM_BUS
+>      select SMBIOS
+>      select VIRTIO_MMIO
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 96985917d3..c427ce5f81 100644
+> index c427ce5f81..060a5f492e 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -820,17 +820,43 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
->      }
+> @@ -153,6 +153,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+>      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+>      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+> +    [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> @@ -841,6 +842,43 @@ static void create_gpio_keys(const VirtMachineState *vms,
+>                             "gpios", phandle, 3, 0);
 >  }
 >  
-> -static void create_gpio(const VirtMachineState *vms)
-> +static void create_gpio_keys(const VirtMachineState *vms,
-> +                             DeviceState *pl061_dev,
-> +                             uint32_t phandle)
+> +#define SECURE_GPIO_POWEROFF 0
+> +#define SECURE_GPIO_REBOOT   1
+> +
+> +static void create_gpio_pwr(const VirtMachineState *vms,
+
+This function is specific to the secure view. I think it should have
+"secure" in its name.
+
+> +                            DeviceState *pl061_dev,
+> +                            uint32_t phandle)
 > +{
-> +    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> +                                        qdev_get_gpio_in(pl061_dev, 3));
+> +    DeviceState *gpio_pwr_dev;
 > +
-> +    qemu_fdt_add_subnode(vms->fdt, "/gpio-keys");
-> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-keys", "compatible", "gpio-keys");
-> +    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys", "#size-cells", 0);
-> +    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys", "#address-cells", 1);
+> +    /* gpio-pwr */
+> +    gpio_pwr_dev = sysbus_create_simple("gpio-pwr", -1, NULL);
+
+Should this device be in secure memory?
+
 > +
-> +    qemu_fdt_add_subnode(vms->fdt, "/gpio-keys/poweroff");
-> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-keys/poweroff",
-> +                            "label", "GPIO Key Poweroff");
-> +    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys/poweroff", "linux,code",
-> +                          KEY_POWER);
-> +    qemu_fdt_setprop_cells(vms->fdt, "/gpio-keys/poweroff",
-> +                           "gpios", phandle, 3, 0);
+> +    /* connect secure pl061 to gpio-pwr */
+> +    qdev_connect_gpio_out(pl061_dev, SECURE_GPIO_REBOOT,
+> +                          qdev_get_gpio_in_named(gpio_pwr_dev, "reset", 0));
+> +    qdev_connect_gpio_out(pl061_dev, SECURE_GPIO_POWEROFF,
+> +                          qdev_get_gpio_in_named(gpio_pwr_dev, "shutdown", 0));
+> +
+> +    qemu_fdt_add_subnode(vms->fdt, "/gpio-poweroff");
+> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-poweroff", "compatible",
+> +                            "gpio-poweroff");
+> +    qemu_fdt_setprop_cells(vms->fdt, "/gpio-poweroff",
+> +                           "gpios", phandle, SECURE_GPIO_POWEROFF, 0);
+> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-poweroff", "status", "disabled");
+> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-poweroff", "secure-status",
+> +                            "okay");
+> +
+> +    qemu_fdt_add_subnode(vms->fdt, "/gpio-restart");
+> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-restart", "compatible",
+> +                            "gpio-restart");
+> +    qemu_fdt_setprop_cells(vms->fdt, "/gpio-restart",
+> +                           "gpios", phandle, SECURE_GPIO_REBOOT, 0);
+> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-restart", "status", "disabled");
+> +    qemu_fdt_setprop_string(vms->fdt, "/gpio-restart", "secure-status",
+> +                            "okay");
 > +}
 > +
-> +static void create_gpio_devices(const VirtMachineState *vms, int gpio,
-> +                                MemoryRegion *mem)
+>  static void create_gpio_devices(const VirtMachineState *vms, int gpio,
+>                                  MemoryRegion *mem)
 >  {
->      char *nodename;
->      DeviceState *pl061_dev;
-> -    hwaddr base = vms->memmap[VIRT_GPIO].base;
-> -    hwaddr size = vms->memmap[VIRT_GPIO].size;
-> -    int irq = vms->irqmap[VIRT_GPIO];
-> +    hwaddr base = vms->memmap[gpio].base;
-> +    hwaddr size = vms->memmap[gpio].size;
-> +    int irq = vms->irqmap[gpio];
->      const char compat[] = "arm,pl061\0arm,primecell";
-> +    SysBusDevice *s;
->  
-> -    pl061_dev = sysbus_create_simple("pl061", base,
-> -                                     qdev_get_gpio_in(vms->gic, irq));
-> +    pl061_dev = qdev_new("pl061");
-> +    s = SYS_BUS_DEVICE(pl061_dev);
-> +    sysbus_realize_and_unref(s, &error_fatal);
-> +    memory_region_add_subregion(mem, base, sysbus_mmio_get_region(s, 0));
-> +    sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
->  
->      uint32_t phandle = qemu_fdt_alloc_phandle(vms->fdt);
->      nodename = g_strdup_printf("/pl061@%" PRIx64, base);
-> @@ -847,21 +873,17 @@ static void create_gpio(const VirtMachineState *vms)
->      qemu_fdt_setprop_string(vms->fdt, nodename, "clock-names", "apb_pclk");
->      qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", phandle);
->  
-> -    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> -                                        qdev_get_gpio_in(pl061_dev, 3));
-> -    qemu_fdt_add_subnode(vms->fdt, "/gpio-keys");
-> -    qemu_fdt_setprop_string(vms->fdt, "/gpio-keys", "compatible", "gpio-keys");
-> -    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys", "#size-cells", 0);
-> -    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys", "#address-cells", 1);
-> -
-> -    qemu_fdt_add_subnode(vms->fdt, "/gpio-keys/poweroff");
-> -    qemu_fdt_setprop_string(vms->fdt, "/gpio-keys/poweroff",
-> -                            "label", "GPIO Key Poweroff");
-> -    qemu_fdt_setprop_cell(vms->fdt, "/gpio-keys/poweroff", "linux,code",
-> -                          KEY_POWER);
-> -    qemu_fdt_setprop_cells(vms->fdt, "/gpio-keys/poweroff",
-> -                           "gpios", phandle, 3, 0);
-> +    if (gpio != VIRT_GPIO) {
-> +        /* Mark as not usable by the normal world */
-> +        qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
-> +        qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
-> +    }
-
-nit: The above if-block could/should have waited until the next patch to
-be added.
-
->      g_free(nodename);
-> +
-> +    /* Child gpio devices */
-> +    if (gpio == VIRT_GPIO) {
-
-Same nit as above, the next patch is where we should start conditionally
-doing stuff based on the gpio type.
-
-> +        create_gpio_keys(vms, pl061_dev, phandle);
-> +    }
+> @@ -883,6 +921,8 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
+>      /* Child gpio devices */
+>      if (gpio == VIRT_GPIO) {
+>          create_gpio_keys(vms, pl061_dev, phandle);
+> +    } else {
+> +        create_gpio_pwr(vms, pl061_dev, phandle);
+>      }
 >  }
 >  
->  static void create_virtio_devices(const VirtMachineState *vms)
-> @@ -1990,7 +2012,7 @@ static void machvirt_init(MachineState *machine)
->      if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
->          vms->acpi_dev = create_acpi_ged(vms);
->      } else {
-> -        create_gpio(vms);
-> +        create_gpio_devices(vms, VIRT_GPIO, sysmem);
+> @@ -2015,6 +2055,10 @@ static void machvirt_init(MachineState *machine)
+>          create_gpio_devices(vms, VIRT_GPIO, sysmem);
 >      }
 >  
+> +    if (vms->secure && !vmc->no_secure_gpio) {
+> +        create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
+> +    }
+> +
 >       /* connect powerdown request */
+>       vms->powerdown_notifier.notify = virt_powerdown_req;
+>       qemu_register_powerdown_notifier(&vms->powerdown_notifier);
+> @@ -2630,8 +2674,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(6, 0)
+>  
+>  static void virt_machine_5_2_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_6_0_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+> +    vmc->no_secure_gpio = true;
+>  }
+>  DEFINE_VIRT_MACHINE(5, 2)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index abf54fab49..6f6c85ffcf 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -81,6 +81,7 @@ enum {
+>      VIRT_GPIO,
+>      VIRT_SECURE_UART,
+>      VIRT_SECURE_MEM,
+> +    VIRT_SECURE_GPIO,
+>      VIRT_PCDIMM_ACPI,
+>      VIRT_ACPI_GED,
+>      VIRT_NVDIMM_ACPI,
+> @@ -127,6 +128,7 @@ struct VirtMachineClass {
+>      bool kvm_no_adjvtime;
+>      bool no_kvm_steal_time;
+>      bool acpi_expose_flash;
+> +    bool no_secure_gpio;
+>  };
+>  
+>  struct VirtMachineState {
 > -- 
 > 2.17.1
 > 
 >
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
 Thanks,
-drew
+drew 
 

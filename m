@@ -1,93 +1,92 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp870435lfb;
-        Fri, 22 Jan 2021 05:59:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwERKj9mpYEbcHoonnANzWsRLFpzo23M1dgtdiVdiw7vGxT/ae7E9wmep8P4DmcxVLRcA+S
-X-Received: by 2002:a25:6914:: with SMTP id e20mr6742787ybc.321.1611323997738;
-        Fri, 22 Jan 2021 05:59:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611323997; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp874319lfb;
+        Fri, 22 Jan 2021 06:02:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxcZu6U19TY9p7L9Y/Ar7ro34d6Z3oAqhGCpAneBK2IDi7pFGDoxRWNmqXAlSyuuJyqOqPV
+X-Received: by 2002:a25:1389:: with SMTP id 131mr6649286ybt.210.1611324178326;
+        Fri, 22 Jan 2021 06:02:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611324178; cv=none;
         d=google.com; s=arc-20160816;
-        b=HH6kvhXdMNdR0SROk/Uzr/H7KrZN+uByYkeOa/YsbLyRiZAvuC5s57nUQ+RhA6GvmL
-         mLuBpNTLPILl4OEvd1QPHQwNst55eAlKOngybe5+a5pi/tIM/eT5nFaA3GNw86EqAGvT
-         8t8ELomEie3Ea+l+QFwTQF/JPYRevuUBiat5/Trwz9wfxNX6v0io6TIxUrVFJI34jqMu
-         1tlMavoJ2HKO4sjnd8/EXkBNKWjsI7IfwEz0tCavWzV+RLzJJwnCEAH7yYxxOTUhm6zH
-         3BwYTL9JvW9LTWfWlNadWJFmmSAA1hMHsh7BTy8RrBgBRNjx4ajLHCnx+gbq8YtNCGL7
-         hiaA==
+        b=bKIMsf0MoZMWf//vhL6+a3o2CAiYvuN6aS2vX7HslgzoPBupmzyVkD/X0YRsl+/Tmt
+         teNlQz6rUqVluGUQ3Lx9O9pDeSFJDAYAeu25JyLUP50h3pqvrPVgkBkKGU4vqTjaCfUR
+         fFYB7llldn2jt6gPI411t/89zPJz5B7GBdPO7UXFE8E0vWDEe2UQIUknH1HFJJgpKMfi
+         L23DKzJzoVDkHZa8FmOdX2IyrU8h3ZA3DBuyyh+laX8j0jK7UjBzeArWWV8D9bTfJmuB
+         gYAFOP9eQ7NOtMsbfIxqRqDiuyIgw8OOppAqj+0MlHJvE6xt5vliwrj6ifq9jHnBVY38
+         I/ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=avzrptPOJ9pgDyMN2OCjX1Y5GkkZ4pXRJNWy+8IWXbE=;
-        b=Cec6YCC/iFYIYSQBcQPLd8WEatHM2NRhI5UcfGYBefXPN7WuoVSK0pLqbJiSLHqeCz
-         5ApFyid7DhIfFc1yra2KfrltRggQ1Bq+BZ4e9ZIfpuYxO0b4jRGsBu7/OA2/70fG6cRb
-         dNxue9xVJouNJcYgRZnBjmgm9vO7oBde7FrxKnOCe+J54QlIpDPmcQRcFZKucfckNGzC
-         kHhS+DmPZmcV7GAw5hwe1tuLTSSBbe0ENAsOgo2K4k9OnoGI4faGx5wrnmI8wjEk9FFs
-         DXbQcg8krSqSGSyVGhD3IYX09dAEtCDjc9iEbYHkg4V0NtujX18UZ+tlbAzinXjZSx28
-         MUGA==
+        bh=ovmnVInjHZhWRkbSKOjIOLVvM+0ket6BTwAo/sK0J64=;
+        b=eam3dx2wMXK3zxKaNPcmRGkE/BStzCvATurCGKANH8NhSRAlqEXdrivjB5890T0iT0
+         z93yV+jgnu4Sv/BJB06qAAxq90+3/fFBctzyrp4qyi0jhLK07vIASLFcSG41tyANs7Dv
+         HU7Lz+AyLFVFeJqRrFfSuXApb2eJLtwVkVUWTJ/Vu2Cky9FQnp/hiPKQmOPaSZstYgKT
+         8SrSec3+CNt/EW+wqOfxD3NoXy8ZemFiiEUyh9vjx7fhWM3T88Gbe8n+L6m03itp36vp
+         J524PFwjqH6VzIr0vd/4wNqDbQdG6Gwv76/txOOg0s2e6Z13VEf0QYSToErxXfU923SN
+         +dvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dR9lxxpj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bXrXGvao;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 23si5056783ybe.294.2021.01.22.05.59.57
+        by mx.google.com with ESMTPS id q1si8308682ybg.263.2021.01.22.06.02.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jan 2021 05:59:57 -0800 (PST)
+        Fri, 22 Jan 2021 06:02:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dR9lxxpj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bXrXGvao;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50036 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2wyj-0004kZ-4y
-	for alex.bennee@linaro.org; Fri, 22 Jan 2021 08:59:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41006)
+	id 1l2x1d-0006HR-LV
+	for alex.bennee@linaro.org; Fri, 22 Jan 2021 09:02:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2wya-0004jz-RY
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 08:59:48 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:44100)
+ id 1l2x1C-0006H9-Kz
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 09:02:30 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:43881)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l2wyY-0001C1-Rz
- for qemu-arm@nongnu.org; Fri, 22 Jan 2021 08:59:48 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id c2so6386514edr.11
- for <qemu-arm@nongnu.org>; Fri, 22 Jan 2021 05:59:46 -0800 (PST)
+ id 1l2x1A-0002NR-Pq
+ for qemu-arm@nongnu.org; Fri, 22 Jan 2021 09:02:30 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id n6so6647987edt.10
+ for <qemu-arm@nongnu.org>; Fri, 22 Jan 2021 06:02:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=avzrptPOJ9pgDyMN2OCjX1Y5GkkZ4pXRJNWy+8IWXbE=;
- b=dR9lxxpjEsubN6nd4IqwAhNCehatGst/oAI2rtWgvY+AEFstBBC7Ci6ctLIBx7DNIc
- oZVtmsVY/zZnC+dIbmr473dmF6Q6+NEIqsVCIdIjKhXWAau3wFazEhEAN29KAUunQGcl
- o/KQWopwWXniyD8L3gpsTBTWMclojVp8B4OjK+HPuVinxiq8Lql3ml6ieYdhgKdyLcv2
- 7ERXkG1joHYQboxMeEarLKsMAOSrs9I5dQFlJpyzk1poWIsgMuRNj/MhtIkZ/SynHDIh
- 7s6X4y7yyeQ1Fqw2/JHRZskwL9d48qtAjoo12cKZJ40q3+X8w9OGZYHRq50T2LFEZdne
- Q75g==
+ :cc; bh=ovmnVInjHZhWRkbSKOjIOLVvM+0ket6BTwAo/sK0J64=;
+ b=bXrXGvaoN3Pi3F17SavZVCiGj753gq1nvEmqcmOZzIJ1JutIkDlj34nfk57mGNVxQI
+ g6HW0ahIhd40i1O/SQQqoJBTE7TherXs1qN1xUDo+JcI+zpjzYcdbJcFyeFq0B6DRjQ8
+ FUIrMVt/nIIhPk2hG+WcM0tULzrLhfNSTXIlvCgkG2urzvuUeZ/h+cCgM1gyDumR6ZrR
+ VkKl9R/IihPcxMyLDjr4/wgkTvi1vmhIdm/Nqzq7bV4yuGAbNOgMni3OuFB80j8qVSte
+ g8OHTR9bwTCqjcAXh8ASGXASyHpl+bng/EhJYpyrn+Gr+wahDbLhJt4AyJiIMLEO2VfP
+ z3jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=avzrptPOJ9pgDyMN2OCjX1Y5GkkZ4pXRJNWy+8IWXbE=;
- b=CTBXq38HnCjezKqGiwSq8rWmo8Ct6tGpUv5eba8EDxnMdP+otHxnsrqsuxY778X8cJ
- oCKpMyEPW7czAPjUHH5eW5ECV209CV6Z1fPJTrkwlNFhgEBvDomYdE8qO0ZzHLC5gPwI
- WPcasji2ODol4aGZMU25QqWh0ImqaFpcvkbrYsAV/v7SdboXuKcQmpz5mNHLeALuQEKG
- ARGTOcS8N4SGPyKS4cy2i4dndavEsMlf2/+DYa+2i/aNgB7pwEX70D9k+9shQab5NQY4
- R7caDJUHeqdydI/vaX1xgaZTnKkeTo2dlq+ZgArxLeJhAeMTZvfNj42nxXAIZUvvwi5F
- jpjA==
-X-Gm-Message-State: AOAM5327WGPGdbT/e7qUlzY/wPghtihctewZ7BgIfKqBYjdI1iCL8Tqf
- YzKr0CeRmgZ5j07AxOHECHyz5mCIHavBH3YrpmMEhQ==
+ bh=ovmnVInjHZhWRkbSKOjIOLVvM+0ket6BTwAo/sK0J64=;
+ b=CARpwfdqZPoJqFDELJraLIa7ryG2SB0/vq676D9pusmpyllPdurVfrdJPDfr429b3M
+ tnjhukVKNvZJL24DmTAa4GbC/l3LVgbCN+y1wTnxXguqxR/qVGb99QzDKuJWm7pb9jLL
+ fo7+MQmf1qMhsfu5YSrg9ap5kgWulnecr/GZQhwaIEk3Ndh0D5d2lkNWRm453YHAhIMV
+ 3BsZ84fkhcQt8gUIvKANsuTIdwe8BAOao3urkh5VFuSxiTBEw0GAHJAa3YiHbKxNv1Ng
+ HUEFLQm/CdFNLtPt6vUM/12njBaDSIV6HSguYk1bNhQwJCQ/RDrRPWko9J8NhWYZKTJq
+ dcug==
+X-Gm-Message-State: AOAM533bdxv5eEQb5rfT4GBkuPxqFTb38Rh1cAgxtnWed20pE7YeKvX8
+ JZEU43t0sV1P7Fy0gnQpQtTcg6V55S9otERRgPUOqw==
 X-Received: by 2002:a05:6402:31ac:: with SMTP id
- dj12mr3253164edb.44.1611323985331; 
- Fri, 22 Jan 2021 05:59:45 -0800 (PST)
+ dj12mr3264185edb.44.1611324147310; 
+ Fri, 22 Jan 2021 06:02:27 -0800 (PST)
 MIME-Version: 1.0
 References: <20210115224645.1196742-1-richard.henderson@linaro.org>
- <20210115224645.1196742-19-richard.henderson@linaro.org>
-In-Reply-To: <20210115224645.1196742-19-richard.henderson@linaro.org>
+ <20210115224645.1196742-21-richard.henderson@linaro.org>
+In-Reply-To: <20210115224645.1196742-21-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Jan 2021 13:59:33 +0000
-Message-ID: <CAFEAcA8rXQ76AVpqHwum_XGh13u+vwkZw_yOxRKvfyqbV3_GBQ@mail.gmail.com>
-Subject: Re: [PATCH v3 18/21] linux-user/aarch64: Signal SEGV_MTEAERR for
- async tag check error
+Date: Fri, 22 Jan 2021 14:02:16 +0000
+Message-ID: <CAFEAcA-iTzra0m+xNQNuKA7uQ9Yv1=wqSUykYhSG44B4YkxDmw@mail.gmail.com>
+Subject: Re: [PATCH v3 20/21] target/arm: Enable MTE for user-only
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
@@ -114,141 +113,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ax6eI7tOjS2Y
+X-TUID: +sNchvNfnCZk
 
 On Fri, 15 Jan 2021 at 22:47, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-So when does the real kernel report async MTE exceptions to userspace?
-The commit message would be a good place to briefly describe the
-kernel's strategy and where QEMU differs from it (if anywhere)...
-
 > ---
->  linux-user/aarch64/target_signal.h |  1 +
->  linux-user/aarch64/cpu_loop.c      | 34 +++++++++++++++++++++---------
->  target/arm/mte_helper.c            | 10 +++++++++
->  3 files changed, 35 insertions(+), 10 deletions(-)
+>  target/arm/cpu.c | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
 >
-> diff --git a/linux-user/aarch64/target_signal.h b/linux-user/aarch64/target_signal.h
-> index 777fb667fe..18013e1b23 100644
-> --- a/linux-user/aarch64/target_signal.h
-> +++ b/linux-user/aarch64/target_signal.h
-> @@ -21,6 +21,7 @@ typedef struct target_sigaltstack {
->
->  #include "../generic/signal.h"
->
-> +#define TARGET_SEGV_MTEAERR  8  /* Asynchronous ARM MTE error */
->  #define TARGET_SEGV_MTESERR  9  /* Synchronous ARM MTE exception */
->
->  #define TARGET_ARCH_HAS_SETUP_FRAME
-> diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-> index 6867f0db2b..6160a401bd 100644
-> --- a/linux-user/aarch64/cpu_loop.c
-> +++ b/linux-user/aarch64/cpu_loop.c
-> @@ -72,6 +72,21 @@
->          put_user_u16(__x, (gaddr));                     \
->      })
->
-> +static bool check_mte_async_fault(CPUARMState *env, target_siginfo_t *info)
-> +{
-> +    if (likely(env->cp15.tfsr_el[0] == 0)) {
-> +        return false;
-> +    }
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index abc0affd00..5e613a747a 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -208,6 +208,22 @@ static void arm_cpu_reset(DeviceState *dev)
+>           * Do not modify this without other changes.
+>           */
+>          env->cp15.tcr_el[1].raw_tcr = (3ULL << 37);
 > +
-> +    env->cp15.tfsr_el[0] = 0;
-> +    info->si_signo = TARGET_SIGSEGV;
-> +    info->si_errno = 0;
-> +    info->_sifields._sigfault._addr = 0;
-> +    info->si_code = TARGET_SEGV_MTEAERR;
-> +    queue_signal(env, info->si_signo, QEMU_SI_FAULT, info);
-> +    return true;
-> +}
+> +        /* Enable MTE */
+> +        if (cpu_isar_feature(aa64_mte, cpu)) {
+> +            /* Enable tag access, but leave TCF0 as No Effect (0). */
+> +            env->cp15.sctlr_el[1] |= SCTLR_ATA0;
+> +            /*
+> +             * Exclude all tags, so that tag 0 is always used.
+> +             * This corresponds to Linux current->thread.gcr_incl = 0.
+> +             *
+> +             * Set RRND, so that helper_irg() will generate a seed later.
+> +             * Here in cpu_reset(), the crypto subsystem has not yet been
+> +             * initialized.
+> +             */
+> +            env->cp15.gcr_el1 = 0x1ffff;
+> +        }
 > +
->  /* AArch64 main loop */
->  void cpu_loop(CPUARMState *env)
->  {
-> @@ -88,15 +103,13 @@ void cpu_loop(CPUARMState *env)
->
->          switch (trapnr) {
->          case EXCP_SWI:
-> -            ret = do_syscall(env,
-> -                             env->xregs[8],
-> -                             env->xregs[0],
-> -                             env->xregs[1],
-> -                             env->xregs[2],
-> -                             env->xregs[3],
-> -                             env->xregs[4],
-> -                             env->xregs[5],
-> -                             0, 0);
-> +            if (check_mte_async_fault(env, &info)) {
-> +                ret = -TARGET_ERESTARTSYS;
-> +            } else {
-> +                ret = do_syscall(env, env->xregs[8], env->xregs[0],
-> +                                 env->xregs[1], env->xregs[2], env->xregs[3],
-> +                                 env->xregs[4], env->xregs[5], 0, 0);
-> +            }
->              if (ret == -TARGET_ERESTARTSYS) {
->                  env->pc -= 4;
->              } else if (ret != -TARGET_QEMU_ESIGRETURN) {
-> @@ -104,7 +117,8 @@ void cpu_loop(CPUARMState *env)
->              }
->              break;
->          case EXCP_INTERRUPT:
-> -            /* just indicate that signals should be handled asap */
-> +            /* Just indicate that signals should be handled asap. */
-> +            check_mte_async_fault(env, &info);
->              break;
->          case EXCP_UDEF:
->              info.si_signo = TARGET_SIGILL;
+>  # ifdef TARGET_TAGGED_ADDRESSES
+>          env->untagged_addr_mask = -1;
+>  # endif
+> --
 
-So this doesn't guarantee to check the async-fault status on
-every exit from cpu_exec(), which means we might miss things.
-For instance I think this slightly contrived example would not
-ever take the SEGV:
-    STR x0, [x1]   # with a bad tag
-    YIELD
-l:  B l
-
-because the STR and YIELD go into the same TB, the YIELD causes us
-to leave the TB with EXCP_YIELD, we don't check for an async fault
-in that code path, and then we'll go into the infinite loop and
-have nothing to prompt us to come out and look at the async fault flags.
-
-Does it work if we just always queue the SEGV on exit from cpu_exec()
-and let the signal handling machinery prioritize if we also pend
-some other signal because this was an EXCP_UDEF or whatever?
-It would be neater if we could keep the fault-check outside the
-switch (trapnr) somehow.
-
-> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-> index 153bd1e9df..d55f8d1e1e 100644
-> --- a/target/arm/mte_helper.c
-> +++ b/target/arm/mte_helper.c
-> @@ -565,6 +565,16 @@ static void mte_check_fail(CPUARMState *env, uint32_t desc,
->              select = 0;
->          }
->          env->cp15.tfsr_el[el] |= 1 << select;
-> +#ifdef CONFIG_USER_ONLY
-> +        /*
-> +         * Stand in for a timer irq, setting _TIF_MTE_ASYNC_FAULT,
-> +         * which then sends a SIGSEGV when the thread is next scheduled.
-> +         * This cpu will return to the main loop at the end of the TB,
-> +         * which is rather sooner than "normal".  But the alternative
-> +         * is waiting until the next syscall.
-> +         */
-> +        qemu_cpu_kick(env_cpu(env));
-> +#endif
->          break;
-
-This does the right thing, but qemu_cpu_kick() is one of those
-functions that's in a category of "not used much at all in the
-codebase" and which always make me wonder if there's a reason.
-(In particular there's exactly one use in the whole of target/
-right now.) I suppose the case of "helper function wants to cause
-us to leave the TB loop but not to abort the current insn" is
-an unusual one...
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

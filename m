@@ -1,110 +1,88 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3998957lfb;
-        Mon, 16 Nov 2020 11:58:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzOVH3tbiOYzsHhU3DTXXpnHWR1ZlAMaJ52i6hZBdp+1+6EssigCV1sEfEZzCWStVGkv9uY
-X-Received: by 2002:a25:5084:: with SMTP id e126mr25748012ybb.239.1605556715326;
-        Mon, 16 Nov 2020 11:58:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605556715; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp2382503lfb;
+        Sun, 24 Jan 2021 04:51:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyyv0iCIBowClJBrUGe9bqvFvVmveiDEWe8yUy6Tr3TW4FAwjhkl4IPT3MCdRcDtRaZgdUG
+X-Received: by 2002:a25:c544:: with SMTP id v65mr17891887ybe.167.1611492663828;
+        Sun, 24 Jan 2021 04:51:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611492663; cv=none;
         d=google.com; s=arc-20160816;
-        b=tlutVSJV+rv48xTZmeubTIqt5OizOnBDRx4uuqUExxf7Jkm/2jSESdb1ps0ACZWiqI
-         aRjDf0GWrk9BJc5+j1wh3lwUDW7m34a317k3/KHjRf8ImUMVfVELz3bcEPV7iV0Gbij9
-         hS1kxcKwRep0vx+UXH9e7jrIf8CWms8wZb4AlNLizT8hUk143y/N0ssaXU3jLqL2PqHv
-         fepOZakaKxnA9FKKBN47tXeC5Qz73DHi30vSwSOtCfdW5M0hzO78QJ51oP8kFsrayzM9
-         1lAKuLYi62tBfdsPNDYoiO30q4gah5rPO3r6zWBqJ4kwMotRwbMPj5sz6sISanRTbnV0
-         O3Mw==
+        b=k08nZ6fBzcx6xPbWrHE3QOnLXB6vLrdjJOoyQrtb1zwqQWm5o90R8CDPP+8Gso/ZLX
+         y/LTmL7otYxg0Jpa64HNV0Q7g0BafDS3tS1oS+UpYQdqfYHkI6xGzSofTomQ25vYikzc
+         VnjTPfs70Rn6zzK961+MRkx0anylrOHN65prHDK1/gBwvPS7tbWxZwWsidZiwPxmS2cZ
+         D0PcDkXMXdv4GX03e9Aq3Iz9THzs1bfOxFlB9x3xxdo3HyJIKUKrpO70cjkE5fuAlfOH
+         xSGgsKYbiu89jXedyvbDFbS/8/bPqYt00bKVT6p41EL033hGUIo3uB+8KKx+QQCYs3XH
+         7gPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:mime-version:user-agent:date:message-id:to:subject
-         :from:dkim-signature;
-        bh=95YF1DxmKlplDDA5UXKop65ahMRsDSa1DY6KTPS4nLA=;
-        b=v0CddlO+dL5C7DbZGOUnEdbEQvMYtKDYxtePPAJKFSRAK26l+G26Osc6Y1sL7g+K1u
-         N61DUt+iu01tQIGdsdl+lUiWHh1JCbaE7lqimrWTHo6FHX8jBiGwW6QySCeUYbb2Hm/8
-         7dbgiKbfidEL0kKCUXQWKvCIojPacZqnBe32zFYiOfG5rHaPx2axU94V3RNqSUbZkXvn
-         GSe31z9pjAZJKNsOEAsVhh2mpLQOC1s1OTPv38qMheiUbjbwuVDb8ki6vCPE4eiPK6HO
-         wWYZarPgDo42XNA/iVeMeah++iJBHVwkdALiaotIT0IAAhk5FGZ67UXRN/YhuE6r9ty9
-         BwSw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=R3s8A5Yh8OftKPGYZSQKQA6eXhSEdXN+oI0P0Yi0+ew=;
+        b=Oe/VE/U+eYOMK2QOikeBSui3B4JIv2yvLI94ug70pfzbbMykYMzaGD+QeGr6nMJtMG
+         /vSN2slZr8y7KbCpllAqR7zCbC73tGFq3wc12XnzAnthyrE7v22deKvGrHLL3gOCqPfJ
+         ZKizDaoVqCPW4d0OWErQ0RIKJJJxvCloPIc6+d9kwJ9ef1HnzBofZ/quyDiag7h7zpye
+         4HQhTIxylXTDvbnvZB23/hVMbxamDk0/cu8YpmFOdGeIYjwdLAoumzgStv/1jZyce91Q
+         TukD6W8mIUp5MkYftsi5wBRUCWXLUZCaELWtf7nFV0w9KkcJvCHP2RHvDQU4uQOVd4nB
+         msMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hHifFsCK;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="AzdRa/iE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k8si17768424ybh.95.2020.11.16.11.58.35
+        by mx.google.com with ESMTPS id i144si17277113ybg.448.2021.01.24.04.51.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Nov 2020 11:58:35 -0800 (PST)
+        Sun, 24 Jan 2021 04:51:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hHifFsCK;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="AzdRa/iE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42620 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:40146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1keke2-0001iS-M0
-	for alex.bennee@linaro.org; Mon, 16 Nov 2020 14:58:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59768)
+	id 1l3er9-0002fa-7W
+	for alex.bennee@linaro.org; Sun, 24 Jan 2021 07:51:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tpecar95@gmail.com>)
- id 1kekdu-0001i9-If; Mon, 16 Nov 2020 14:58:26 -0500
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:39988)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tpecar95@gmail.com>)
- id 1kekds-000277-7f; Mon, 16 Nov 2020 14:58:26 -0500
-Received: by mail-ej1-x644.google.com with SMTP id oq3so26152052ejb.7;
- Mon, 16 Nov 2020 11:58:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:subject:to:cc:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=95YF1DxmKlplDDA5UXKop65ahMRsDSa1DY6KTPS4nLA=;
- b=hHifFsCKxq2d7jKMptchS/hbtT8nccLATaByuDF8r1VBMDQXQ4xzewn0isWNfckh+9
- Ar7cFSh4JhMoEq1Jh5BnyIDCWq+yaKRoNIl+iGCdfKzC3qOkquw8VzQWVu9nsyvvslZ9
- HgHv376617nIp+nt+kZre96NHAB6aWSOUi7XULMrTXBJIoGnFMDrkNlUh10Ldnn7yEIo
- N2ZbemUHPn+SBATIpsAIcIh1gRnCF/GmcNQte/V0ZvOcjf5dnPmNld9CRhgf7PX9Xg/H
- PTSDtduVr6EHlCHL8ACf8bxLXD4j8HSsEpODzUVjF6I5S9zd+JrjvJyh5zJ18Dr+FY6Y
- PvOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=95YF1DxmKlplDDA5UXKop65ahMRsDSa1DY6KTPS4nLA=;
- b=RjK2FrEobe+uLjvzkD1do//kJ7qxL1N9CGyROqxNNfEQfijFKyqPlDxAOFq/rxuZpa
- QwvCyW14LFNjLNdyFfe+gYBmxRzEPFHRtIxPgYbaTUJgfEIavIoaEPE+MQLl/FgNu4Zk
- ovLhDed6Navf1LDkOwVoA8uOtPi0YIPaFxPFZsm0HORMXaNu5F8i0TVmEQHjHGMr8NWA
- ZxSmK/A4Js2Ipgd9P3R1r8wSmos6p3BMGyx5wOBtarH5302gWhb7ttL6aGcACz97gu3A
- rgsyFPiRpxnrWhMAIhyw/j0m25nUOIROnlYzY8LkyTx1sk3wWhnI4VH5fBDBXuzUon40
- yTug==
-X-Gm-Message-State: AOAM532GuWdP63O7LCPuMxPAxEKkB88YUFfVhcnbzW67bNh+iPX6q9vA
- Byr1DDI4mXm449yr/RWsix8=
-X-Received: by 2002:a17:906:4dd4:: with SMTP id
- f20mr16024952ejw.94.1605556700280; 
- Mon, 16 Nov 2020 11:58:20 -0800 (PST)
-Received: from [192.168.0.16] ([77.73.106.198])
- by smtp.gmail.com with ESMTPSA id cn8sm10948619edb.18.2020.11.16.11.58.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Nov 2020 11:58:19 -0800 (PST)
-From: =?UTF-8?Q?Tadej_Pe=c4=8dar?= <tpecar95@gmail.com>
-Subject: [PATCH v2] hw/char/cmsdk-apb-uart: Fix rx interrupt handling
-To: qemu-devel@nongnu.org
-Message-ID: <107912fb-4570-2e61-c6ff-7b8df1ec5cac@gmail.com>
-Date: Mon, 16 Nov 2020 20:58:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l3eql-0002f9-RM; Sun, 24 Jan 2021 07:50:40 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:54686)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l3eqf-00063Q-Fv; Sun, 24 Jan 2021 07:50:39 -0500
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 0AA47C602E6;
+ Sun, 24 Jan 2021 13:50:29 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1611492629;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=R3s8A5Yh8OftKPGYZSQKQA6eXhSEdXN+oI0P0Yi0+ew=;
+ b=AzdRa/iEsQMW3ynK32YKbLJQ1/WCy7w2Hv9Ccz3giu4A5jx9jkO/YkCgUIg2/Gz/XBk6Ds
+ U2OJf1KTn2ACXaesASn7B9QbsCu1qR7qBzdKEbjeDEn6hJdg4X7uckFR/ySs8PPsxCg1Ba
+ YXAz3E6RoLLJJa3uQBaCFhhRFTkoVa1d+fasPTo8wJRtHa+dGH4LF84sAmaROTuwUmiv8T
+ uSBsAvoS4D9tBwXK8eX5VkeNaUbmrIBCzugz60x5b2f/y++NqYpALAVCynbZUoQxXKiUsM
+ pyX088zzMF4qpOgOHJuldvhhufrw4gtRSzjxgMoLwaGyLNzFz11hh6ProGWSvw==
+Date: Sun, 24 Jan 2021 13:50:51 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 03/25] tests: Add a simple test of the CMSDK APB timer
+Message-ID: <20210124125051.kof2wza52touyxl3@sekoia-pc.home.lmichel.fr>
+References: <20210121190622.22000-1-peter.maydell@linaro.org>
+ <20210121190622.22000-4-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=tpecar95@gmail.com; helo=mail-ej1-x644.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210121190622.22000-4-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,132 +96,136 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com
+Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lw4gxquGY3wR
+X-TUID: EB2AIcvGkqBI
 
-Previously, the RX interrupt got missed if:
-- the character backend provided next character before
-   the RX IRQ Handler managed to clear the currently served interrupt.
-- the character backend provided next character while the RX interrupt
-   was disabled. Enabling the interrupt did not trigger the interrupt
-   even if the RXFULL status bit was set.
+On 19:06 Thu 21 Jan     , Peter Maydell wrote:
+> Add a simple test of the CMSDK APB timer, since we're about to do
+> some refactoring of how it is clocked.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-These bugs become apparent when the terminal emulator buffers the line
-before sending it to qemu stdin (Eclipse IDE console does this).
+Reviewed-by: Luc Michel <luc@lmichel.fr>
 
----
-Patch was tested on the mps2-an500 machine with
-  - a baremetal application using a USART_V2M-MPS2.c driver,
-    sourced from Keil.V2M-MPS2_CMx_BSP.1.7.0.pack
-    (available at https://www.keil.com/dd2/Pack/),
-    which invoked the aforementioned bugs.
+> ---
+>  tests/qtest/cmsdk-apb-timer-test.c | 76 ++++++++++++++++++++++++++++++
+>  MAINTAINERS                        |  1 +
+>  tests/qtest/meson.build            |  1 +
+>  3 files changed, 78 insertions(+)
+>  create mode 100644 tests/qtest/cmsdk-apb-timer-test.c
+> 
+> diff --git a/tests/qtest/cmsdk-apb-timer-test.c b/tests/qtest/cmsdk-apb-timer-test.c
+> new file mode 100644
+> index 00000000000..085005cce99
+> --- /dev/null
+> +++ b/tests/qtest/cmsdk-apb-timer-test.c
+> @@ -0,0 +1,76 @@
+> +/*
+> + * QTest testcase for the CMSDK APB timer device
+> + *
+> + * Copyright (c) 2021 Linaro Limited
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms of the GNU General Public License as published by the
+> + * Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful, but WITHOUT
+> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+> + * for more details.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "libqtest-single.h"
+> +
+> +/* IoTKit/ARMSSE-200 timer0; driven at 25MHz in mps2-an385, so 40ns per tick */
+> +#define TIMER_BASE 0x40000000
+> +
+> +#define CTRL 0
+> +#define VALUE 4
+> +#define RELOAD 8
+> +#define INTSTATUS 0xc
+> +
+> +static void test_timer(void)
+> +{
+> +    g_assert_true(readl(TIMER_BASE + INTSTATUS) == 0);
+> +
+> +    /* Start timer: will fire after 40000 ns */
+> +    writel(TIMER_BASE + RELOAD, 1000);
+> +    writel(TIMER_BASE + CTRL, 9);
+> +
+> +    /* Step to just past the 500th tick and check VALUE */
+> +    clock_step(20001);
+> +    g_assert_cmpuint(readl(TIMER_BASE + INTSTATUS), ==, 0);
+> +    g_assert_cmpuint(readl(TIMER_BASE + VALUE), ==, 500);
+> +
+> +    /* Just past the 1000th tick: timer should have fired */
+> +    clock_step(20000);
+> +    g_assert_cmpuint(readl(TIMER_BASE + INTSTATUS), ==, 1);
+> +    g_assert_cmpuint(readl(TIMER_BASE + VALUE), ==, 0);
+> +
+> +    /* VALUE reloads at the following tick */
+> +    clock_step(40);
+> +    g_assert_cmpuint(readl(TIMER_BASE + VALUE), ==, 1000);
+> +
+> +    /* Check write-1-to-clear behaviour of INTSTATUS */
+> +    writel(TIMER_BASE + INTSTATUS, 0);
+> +    g_assert_cmpuint(readl(TIMER_BASE + INTSTATUS), ==, 1);
+> +    writel(TIMER_BASE + INTSTATUS, 1);
+> +    g_assert_cmpuint(readl(TIMER_BASE + INTSTATUS), ==, 0);
+> +
+> +    /* Turn off the timer */
+> +    writel(TIMER_BASE + CTRL, 0);
+> +}
+> +
+> +int main(int argc, char **argv)
+> +{
+> +    QTestState *s;
+> +    int r;
+> +
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    s = qtest_start("-machine mps2-an385");
+> +
+> +    qtest_add_func("/cmsdk-apb-timer/timer", test_timer);
+> +
+> +    r = g_test_run();
+> +
+> +    qtest_end();
+> +
+> +    return r;
+> +}
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3216387521d..010405b0884 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -581,6 +581,7 @@ F: include/hw/rtc/pl031.h
+>  F: include/hw/arm/primecell.h
+>  F: hw/timer/cmsdk-apb-timer.c
+>  F: include/hw/timer/cmsdk-apb-timer.h
+> +F: tests/qtest/cmsdk-apb-timer-test.c
+>  F: hw/timer/cmsdk-apb-dualtimer.c
+>  F: include/hw/timer/cmsdk-apb-dualtimer.h
+>  F: hw/char/cmsdk-apb-uart.c
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 16d04625b8b..74addd74868 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -141,6 +141,7 @@ qtests_npcm7xx = \
+>     'npcm7xx_timer-test',
+>     'npcm7xx_watchdog_timer-test']
+>  qtests_arm = \
+> +  (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_PFLASH_CFI02') ? ['pflash-cfi02-test'] : []) +         \
+>    (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
+>    ['arm-cpu-features',
+> -- 
+> 2.20.1
+> 
 
-    The following command line was used
-      qemu-system-arm -M mps2-an500 -serial stdio -display none -device loader,file=baremetal-app.elf
-
-  - uClinux system, built with the following instructions
-    https://community.arm.com/developer/tools-software/oss-platforms/w/docs/578/running-uclinux-on-the-arm-mps2-platform
-
-    The linux "mps2-uart" driver works and seems unaffected by this patch.
-
-    The following command line was used
-      qemu-system-arm -M mps2-an500 -serial stdio -display none -kernel boot.axf -device loader,file=linux.axf
-
----
-Changes:
-- original patch -> v2:
-     Removed unnecessary check in uart_write, since this is sufficiently
-     handled in cmsdk_apb_uart_update
-
-     Better formatting, documentation.
-
-
-Signed-off-by: Tadej Pecar <tpecar95@gmail.com>
----
-  hw/char/cmsdk-apb-uart.c | 47 +++++++++++++++++++++++++++-------------
-  hw/char/trace-events     |  1 +
-  2 files changed, 33 insertions(+), 15 deletions(-)
-
-diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
-index 626b68f2ec..d76ca76e01 100644
---- a/hw/char/cmsdk-apb-uart.c
-+++ b/hw/char/cmsdk-apb-uart.c
-@@ -96,19 +96,34 @@ static void uart_update_parameters(CMSDKAPBUART *s)
-  
-  static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
-  {
--    /* update outbound irqs, including handling the way the rxo and txo
--     * interrupt status bits are just logical AND of the overrun bit in
--     * STATE and the overrun interrupt enable bit in CTRL.
-+    /*
-+     * update outbound irqs
-+     * (
-+     *     state     [rxo,  txo,  rxbf, txbf ] at bit [3, 2, 1, 0]
-+     *   | intstatus [rxo,  txo,  rx,   tx   ] at bit [3, 2, 1, 0]
-+     * )
-+     * & ctrl        [rxoe, txoe, rxe,  txe  ] at bit [5, 4, 3, 2]
-+     * = masked_intstatus
-+     *
-+     * state: status register
-+     * intstatus: pending interrupts and is sticky (has to be cleared by sw)
-+     * masked_intstatus: masked (by ctrl) pending interrupts
-+     *
-+     * intstatus [rxo, txo, rx] bits are set here
-+     * intstatus [tx] is managed in uart_transmit
-       */
--    uint32_t omask = (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK);
--    s->intstatus &= ~omask;
--    s->intstatus |= (s->state & (s->ctrl >> 2) & omask);
--
--    qemu_set_irq(s->txint, !!(s->intstatus & R_INTSTATUS_TX_MASK));
--    qemu_set_irq(s->rxint, !!(s->intstatus & R_INTSTATUS_RX_MASK));
--    qemu_set_irq(s->txovrint, !!(s->intstatus & R_INTSTATUS_TXO_MASK));
--    qemu_set_irq(s->rxovrint, !!(s->intstatus & R_INTSTATUS_RXO_MASK));
--    qemu_set_irq(s->uartint, !!(s->intstatus));
-+    s->intstatus |= s->state &
-+        (R_INTSTATUS_RXO_MASK | R_INTSTATUS_TXO_MASK | R_INTSTATUS_RX_MASK);
-+
-+    uint32_t masked_intstatus = s->intstatus & (s->ctrl >> 2);
-+
-+    trace_cmsdk_apb_uart_update(s->state, s->intstatus, masked_intstatus);
-+
-+    qemu_set_irq(s->txint,    !!(masked_intstatus & R_INTSTATUS_TX_MASK));
-+    qemu_set_irq(s->rxint,    !!(masked_intstatus & R_INTSTATUS_RX_MASK));
-+    qemu_set_irq(s->txovrint, !!(masked_intstatus & R_INTSTATUS_TXO_MASK));
-+    qemu_set_irq(s->rxovrint, !!(masked_intstatus & R_INTSTATUS_RXO_MASK));
-+    qemu_set_irq(s->uartint,  !!(masked_intstatus));
-  }
-  
-  static int uart_can_receive(void *opaque)
-@@ -144,9 +159,11 @@ static void uart_receive(void *opaque, const uint8_t *buf, int size)
-  
-      s->rxbuf = *buf;
-      s->state |= R_STATE_RXFULL_MASK;
--    if (s->ctrl & R_CTRL_RX_INTEN_MASK) {
--        s->intstatus |= R_INTSTATUS_RX_MASK;
--    }
-+
-+    /*
-+     * Handled in cmsdk_apb_uart_update, in order to properly handle
-+     * pending rx interrupt when rxen gets enabled
-+     */
-      cmsdk_apb_uart_update(s);
-  }
-  
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 81026f6612..0821c8eb3a 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -68,6 +68,7 @@ pl011_put_fifo_full(void) "FIFO now full, RXFF set"
-  pl011_baudrate_change(unsigned int baudrate, uint64_t clock, uint32_t ibrd, uint32_t fbrd) "new baudrate %u (clk: %" PRIu64 "hz, ibrd: %" PRIu32 ", fbrd: %" PRIu32 ")"
-  
-  # cmsdk-apb-uart.c
-+cmsdk_apb_uart_update(uint32_t state, uint32_t intstatus, uint32_t masked_intstatus) "CMSDK APB UART update: state 0x%x intstatus 0x%x masked_intstatus 0x%x"
-  cmsdk_apb_uart_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-  cmsdk_apb_uart_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-  cmsdk_apb_uart_reset(void) "CMSDK APB UART: reset"
 -- 
-2.29.2
-

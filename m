@@ -1,81 +1,81 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp2394649lfb;
-        Sun, 24 Jan 2021 05:10:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJylrGG7ARR+4fsnb8gtPGrf4Yqx1jZF181mqAwXuqKONFZAxwDyJFqJdNo96tbCVHZKz8NX
-X-Received: by 2002:a25:3056:: with SMTP id w83mr17819607ybw.504.1611493857265;
-        Sun, 24 Jan 2021 05:10:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611493857; cv=none;
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp2402749lfb;
+        Sun, 24 Jan 2021 05:24:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxKXNBeZqHrjkR0GGpn2UBXXH2I9UAmpxryAAVUpiUAi9RfA3og8ByyJMvPDHUGhxC3+WGV
+X-Received: by 2002:a25:d009:: with SMTP id h9mr18569453ybg.465.1611494682533;
+        Sun, 24 Jan 2021 05:24:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611494682; cv=none;
         d=google.com; s=arc-20160816;
-        b=mF38HckylcBojoMlxSUQVirfH2/4km/q62dDpWcdjXhhT51v/42KtqyFrGEh9RJEio
-         JCaT2bsu9RZlJ3q0fOmW82j0BogMrBNQ4eqXW20ywwY+NJmzfwe0Xkl1j1CX9xlooRer
-         ewBdz12RD0OKxh+B79CZLP0ERzMIfjMZvdGEz44Vqkfa8oBgegtapxXk96OFU95z+gJN
-         o8kHIxfePjFGAEci9+a9cXFU3GWXMvsCMNADfX9u09Vd9g6T+xnKE5d4Fx7HqCfRO1w3
-         Fhc8OeeolB06IcaEyh/I2HR1/kfh32Xl+MJQZU81U9oTi/RD3vDzuW5NHyACHu9XJPOm
-         976g==
+        b=rEYY+/OAV5QBpMhugchRjCR5Es4ZlN1Uv0LoiWeRfJpLsNVpazpSzQl179aQNpett6
+         h4cWsUFG36bCvEZgpehzTUPuN5UUcxPYEmY4UxL3UMGfjo7UovpMNi2kkq9BHe+zqwb7
+         arq/7h0po2HE1ZH/Z9O3UM1EYPGKQUwEPPM4WkguPU8MXQ0yCqLLiK6m+seQsCB/GGlX
+         qADvAZZqDyuZpMy8yZjRVKu4AydUUuqaPKO5xHAbeIZdCAU/b8E7rIkI0HTAE/j8U8aE
+         0I4/IvxX+NOUmwV9c32uXnvoUQG8qh8X1Oybw9xfPHpYAnOzX9Bxdah1PllKTj3anNK3
+         k9Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=SJyJcEvUt69BxmSu6MT1J+V50x+xt2q+A8wKVTuROlw=;
-        b=KypDn8JHCCHwj/+9wkFbqL3THZ6gfuXh5tLCu6db+b7aUJxfR9Q3K+3xof0ltSfNip
-         eeQ6FE0OUb2WeeqayUDL+gpWlhdb1p+K+12aU8hYtHiyC7jzb7giq3z8+qinTlnEJWAN
-         iFiE4x8H2lJ4NdBpB8q1PAJ9OfyopFf/WtOX4swRonaem3oyRG75aC372VPIifmmbeR7
-         yQVIGJBzZwv3RXwFtL88lfPJ9GV4Mzo068P9PaTyzKNCSJK+JL2SAIU1eWRCgHUdQGN6
-         qQQ+I+2WIb80WaQt8Rix7LzcZpxxDmNAlz6vgrRTLEo0xSps3AFpaRag3Z4ZTBhU5JzM
-         dYsA==
+        bh=3o34+lAU4XY1/GFF+V3mC8w1b7OeDIpR8jzDQe+IAic=;
+        b=klSEteX3PB6sSOYQLc7xRK7cMrAsThKCH9ocusJepY8sLdpa2VnqcsyAdrxzfFhg2q
+         WNVhWlNMhaRJaz1FatZg3W0YLvlikMg6sSf3lLRRkvH0KvVWVmvlIU6QGyugxYRe8gA7
+         8jzPHCFrwgVa+ol3CW+x3pSK43ZE241ajhay0GbmGaLcqJmkXrjyu9vEwnUReZjDTxB/
+         mlzsaRQWEnwsxDxbUujfg7l/xnea2rZCfNjoX4VT5dW0QHCjAUuSERLRXYfJKGl7APZU
+         XGfcEpD2UqIz33oyHh2FK/dXLA94lXDHfPferWY02pPet9M6GW02yoRM3kb9alaj7CXJ
+         MaTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="YD1EKqg/";
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=GRSEd2wd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6si12973447ybo.336.2021.01.24.05.10.57
+        by mx.google.com with ESMTPS id r10si13832224ybl.240.2021.01.24.05.24.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 Jan 2021 05:10:57 -0800 (PST)
+        Sun, 24 Jan 2021 05:24:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="YD1EKqg/";
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=GRSEd2wd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:48216 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l3fAN-0007pB-BA
-	for alex.bennee@linaro.org; Sun, 24 Jan 2021 08:10:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36834)
+	id 1l3fNh-000289-Ts
+	for alex.bennee@linaro.org; Sun, 24 Jan 2021 08:24:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l3f9m-0007oW-6h; Sun, 24 Jan 2021 08:10:18 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:55530)
+ id 1l3fND-00027A-AT; Sun, 24 Jan 2021 08:24:11 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:56126)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l3f9g-0006Bn-WA; Sun, 24 Jan 2021 08:10:17 -0500
+ id 1l3fN5-0003m5-Qf; Sun, 24 Jan 2021 08:24:10 -0500
 Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 0A361C602E6;
- Sun, 24 Jan 2021 14:10:08 +0100 (CET)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id E63DCC602E6;
+ Sun, 24 Jan 2021 14:23:58 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1611493808;
+ t=1611494638;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=SJyJcEvUt69BxmSu6MT1J+V50x+xt2q+A8wKVTuROlw=;
- b=YD1EKqg/PUdPpjOHlQJOUWZ30hLgP8nBU1AW6sXPOyK0XNoulVcmsbcj0UKfqW22Vif+/C
- xwaRypccpQmLfN5eAsSVlebJ/t6rpemMmQnRYGQ54SdR8X6ZbWFQBxDNzAI2GUNgUTy0Al
- gBeDYuK7+8VNBrb9GTcHdZ3hlh5TFg/UDpqsltml7M34I+DI7d6NNJP3GEzcCGpGEdgObc
- TfG1Rt9PEzVQ3f9zRbjG1XYHr5n+9/VVFJezvf2onl0E70M8gsEkQZkWnRWeGEu9fbSXzj
- G5bchaOlXyiykSzH7+86p9jhiwrh6HZub+SN+UN8C5c4UbDj4+wUy7Q25j+78w==
-Date: Sun, 24 Jan 2021 14:10:30 +0100
+ bh=3o34+lAU4XY1/GFF+V3mC8w1b7OeDIpR8jzDQe+IAic=;
+ b=GRSEd2wd5UbATzP2fHeZGAlLFHDPvWZISkFELmtIJlyyupKWtuyG+gozI5+3fP3wiXBmwE
+ DDy6NOGoCAt6ydF8scS4AnkQ/hcT3dR4ra4ECP0o5FzVtuyf+f8i4EHmwYWNQ/+YbbZpSl
+ dhdV5KxKbDjr1uGJWQpqH+7T+c/nd2EMTMweBvVwVkNHA1K1aV+yMu20Xgosjes6GQXmVa
+ A85KALMgc4sGNZuYbYEWh8BpBypr/ehgvYsjKMygCQ9mWBSfY5bO1kBqVDDF6WH6RhRKLM
+ a5abx+Na/8JewMfjr1EyR3czan8ATnKsHk8jOsqWa9nlhsLNx0Dtm8H/7pflAg==
+Date: Sun, 24 Jan 2021 14:24:21 +0100
 From: Luc Michel <luc@lmichel.fr>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 04/25] tests: Add a simple test of the CMSDK APB watchdog
-Message-ID: <20210124131030.dxvcid4i6j7kmt4r@sekoia-pc.home.lmichel.fr>
+Subject: Re: [PATCH 05/25] tests: Add a simple test of the CMSDK APB dual timer
+Message-ID: <20210124132421.f6k25f2dcjm6cnsb@sekoia-pc.home.lmichel.fr>
 References: <20210121190622.22000-1-peter.maydell@linaro.org>
- <20210121190622.22000-5-peter.maydell@linaro.org>
+ <20210121190622.22000-6-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20210121190622.22000-5-peter.maydell@linaro.org>
+In-Reply-To: <20210121190622.22000-6-peter.maydell@linaro.org>
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
  helo=pharaoh.lmichel.fr
 X-Spam_score_int: -20
@@ -101,31 +101,28 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ImT4XFqaLssB
+X-TUID: zawC5YQpFYDS
 
 On 19:06 Thu 21 Jan     , Peter Maydell wrote:
-> Add a simple test of the CMSDK watchdog, since we're about to do some
-> refactoring of how it is clocked.
+> Add a simple test of the CMSDK dual timer, since we're about to do
+> some refactoring of how it is clocked.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-
 > ---
->  tests/qtest/cmsdk-apb-watchdog-test.c | 80 +++++++++++++++++++++++++++
->  MAINTAINERS                           |  1 +
->  tests/qtest/meson.build               |  1 +
->  3 files changed, 82 insertions(+)
->  create mode 100644 tests/qtest/cmsdk-apb-watchdog-test.c
+>  tests/qtest/cmsdk-apb-dualtimer-test.c | 131 +++++++++++++++++++++++++
+>  MAINTAINERS                            |   1 +
+>  tests/qtest/meson.build                |   1 +
+>  3 files changed, 133 insertions(+)
+>  create mode 100644 tests/qtest/cmsdk-apb-dualtimer-test.c
 > 
-> diff --git a/tests/qtest/cmsdk-apb-watchdog-test.c b/tests/qtest/cmsdk-apb-watchdog-test.c
+> diff --git a/tests/qtest/cmsdk-apb-dualtimer-test.c b/tests/qtest/cmsdk-apb-dualtimer-test.c
 > new file mode 100644
-> index 00000000000..c6add1fee85
+> index 00000000000..5a29d65fd6d
 > --- /dev/null
-> +++ b/tests/qtest/cmsdk-apb-watchdog-test.c
-> @@ -0,0 +1,80 @@
+> +++ b/tests/qtest/cmsdk-apb-dualtimer-test.c
+> @@ -0,0 +1,131 @@
 > +/*
-> + * QTest testcase for the CMSDK APB watchdog device
+> + * QTest testcase for the CMSDK APB dualtimer device
 > + *
 > + * Copyright (c) 2021 Linaro Limited
 > + *
@@ -143,48 +140,101 @@ Reviewed-by: Luc Michel <luc@lmichel.fr>
 > +#include "qemu/osdep.h"
 > +#include "libqtest-single.h"
 > +
-> +/*
-> + * lm3s811evb watchdog; at board startup this runs at 200MHz / 16 == 12.5MHz,
-> + * which is 80ns per tick.
-> + */
-> +#define WDOG_BASE 0x40000000
+> +/* IoTKit/ARMSSE dualtimer; driven at 25MHz in mps2-an385, so 40ns per tick */
+> +#define TIMER_BASE 0x40002000
 > +
-> +#define WDOGLOAD 0
-> +#define WDOGVALUE 4
-> +#define WDOGCONTROL 8
-> +#define WDOGINTCLR 0xc
-> +#define WDOGRIS 0x10
-> +#define WDOGMIS 0x14
-> +#define WDOGLOCK 0xc00
+> +#define TIMER1LOAD 0
+> +#define TIMER1VALUE 4
+> +#define TIMER1CONTROL 8
+> +#define TIMER1INTCLR 0xc
+> +#define TIMER1RIS 0x10
+> +#define TIMER1MIS 0x14
+> +#define TIMER1BGLOAD 0x18
 > +
-> +static void test_watchdog(void)
+> +#define TIMER2LOAD 0x20
+> +#define TIMER2VALUE 0x24
+> +#define TIMER2CONTROL 0x28
+> +#define TIMER2INTCLR 0x2c
+> +#define TIMER2RIS 0x30
+> +#define TIMER2MIS 0x34
+> +#define TIMER2BGLOAD 0x38
+> +
+> +#define CTRL_ENABLE (1 << 7)
+> +#define CTRL_PERIODIC (1 << 6)
+> +#define CTRL_INTEN (1 << 5)
+> +#define CTRL_PRESCALE_1 (0 << 2)
+> +#define CTRL_PRESCALE_16 (1 << 2)
+> +#define CTRL_PRESCALE_256 (2 << 2)
+> +#define CTRL_32BIT (1 << 1)
+> +#define CTRL_ONESHOT (1 << 0)
+> +
+> +static void test_dualtimer(void)
 > +{
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
+> +    g_assert_true(readl(TIMER_BASE + TIMER1RIS) == 0);
 > +
-> +    writel(WDOG_BASE + WDOGCONTROL, 1);
-> +    writel(WDOG_BASE + WDOGLOAD, 1000);
+> +    /* Start timer: will fire after 40000 ns */
+> +    writel(TIMER_BASE + TIMER1LOAD, 1000);
+> +    /* enable in free-running, wrapping, interrupt mode */
+> +    writel(TIMER_BASE + TIMER1CONTROL, CTRL_ENABLE | CTRL_INTEN);
 > +
-> +    /* Step to just past the 500th tick */
-> +    clock_step(500 * 80 + 1);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
+> +    /* Step to just past the 500th tick and check VALUE */
+> +    clock_step(20001);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER1RIS), ==, 0);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER1VALUE), ==, 500);
 > +
 > +    /* Just past the 1000th tick: timer should have fired */
-> +    clock_step(500 * 80);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 0);
+> +    clock_step(20000);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER1RIS), ==, 1);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER1VALUE), ==, 0);
 > +
-> +    /* VALUE reloads at following tick */
-> +    clock_step(80);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
+> +    /*
+> +     * We are in free-running wrapping 16-bit mode, so on the following
+> +     * tick VALUE should have wrapped round to 0xffff.
+> +     */
+> +    clock_step(40);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER1VALUE), ==, 0xffff);
 > +
-> +    /* Writing any value to WDOGINTCLR clears the interrupt and reloads */
-> +    clock_step(500 * 80);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-> +    writel(WDOG_BASE + WDOGINTCLR, 0);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
+> +    /* Check that any write to INTCLR clears interrupt */
+> +    writel(TIMER_BASE + TIMER1INTCLR, 1);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER1RIS), ==, 0);
+> +
+> +    /* Turn off the timer */
+> +    writel(TIMER_BASE + TIMER1CONTROL, 0);
+> +}
+> +
+> +static void test_prescale(void)
+> +{
+> +    g_assert_true(readl(TIMER_BASE + TIMER2RIS) == 0);
+> +
+> +    /* Start timer: will fire after 40 * 256 * 1000 == 1024000 ns */
+> +    writel(TIMER_BASE + TIMER2LOAD, 1000);
+> +    /* enable in periodic, wrapping, interrupt mode, prescale 256 */
+> +    writel(TIMER_BASE + TIMER2CONTROL,
+> +           CTRL_ENABLE | CTRL_INTEN | CTRL_PERIODIC | CTRL_PRESCALE_256);
+> +
+> +    /* Step to just past the 500th tick and check VALUE */
+> +    clock_step(40 * 256 * 501);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER2RIS), ==, 0);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER2VALUE), ==, 500);
+> +
+> +    /* Just past the 1000th tick: timer should have fired */
+> +    clock_step(40 * 256 * 500);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER2RIS), ==, 1);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER2VALUE), ==, 0);
+> +
+> +    /* In periodic mode the tick VALUE now reloads */
+> +    clock_step(256);
+
+Shouldn't it be "clock_step(40 * 256)", i.e. 1 tick?
+
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER2VALUE), ==, 1000);
+> +
+> +    /* Check that any write to INTCLR clears interrupt */
+> +    writel(TIMER_BASE + TIMER2INTCLR, 1);
+> +    g_assert_cmpuint(readl(TIMER_BASE + TIMER2RIS), ==, 0);
+> +
+> +    /* Turn off the timer */
+> +    writel(TIMER_BASE + TIMER2CONTROL, 0);
 > +}
 > +
 > +int main(int argc, char **argv)
@@ -194,9 +244,10 @@ Reviewed-by: Luc Michel <luc@lmichel.fr>
 > +
 > +    g_test_init(&argc, &argv, NULL);
 > +
-> +    s = qtest_start("-machine lm3s811evb");
+> +    s = qtest_start("-machine mps2-an385");
 > +
-> +    qtest_add_func("/cmsdk-apb-watchdog/watchdog", test_watchdog);
+> +    qtest_add_func("/cmsdk-apb-dualtimer/dualtimer", test_dualtimer);
+> +    qtest_add_func("/cmsdk-apb-dualtimer/prescale", test_prescale);
 > +
 > +    r = g_test_run();
 > +
@@ -205,29 +256,29 @@ Reviewed-by: Luc Michel <luc@lmichel.fr>
 > +    return r;
 > +}
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 010405b0884..58956497888 100644
+> index 58956497888..118f70e47fb 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -588,6 +588,7 @@ F: hw/char/cmsdk-apb-uart.c
+> @@ -584,6 +584,7 @@ F: include/hw/timer/cmsdk-apb-timer.h
+>  F: tests/qtest/cmsdk-apb-timer-test.c
+>  F: hw/timer/cmsdk-apb-dualtimer.c
+>  F: include/hw/timer/cmsdk-apb-dualtimer.h
+> +F: tests/qtest/cmsdk-apb-dualtimer-test.c
+>  F: hw/char/cmsdk-apb-uart.c
 >  F: include/hw/char/cmsdk-apb-uart.h
 >  F: hw/watchdog/cmsdk-apb-watchdog.c
->  F: include/hw/watchdog/cmsdk-apb-watchdog.h
-> +F: tests/qtest/cmsdk-apb-watchdog-test.c
->  F: hw/misc/tz-ppc.c
->  F: include/hw/misc/tz-ppc.h
->  F: hw/misc/tz-mpc.c
 > diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 74addd74868..9e2ebc47041 100644
+> index 9e2ebc47041..69dd4a8547c 100644
 > --- a/tests/qtest/meson.build
 > +++ b/tests/qtest/meson.build
-> @@ -142,6 +142,7 @@ qtests_npcm7xx = \
+> @@ -141,6 +141,7 @@ qtests_npcm7xx = \
+>     'npcm7xx_timer-test',
 >     'npcm7xx_watchdog_timer-test']
 >  qtests_arm = \
+> +  (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
 >    (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
-> +  (config_all_devices.has_key('CONFIG_CMSDK_APB_WATCHDOG') ? ['cmsdk-apb-watchdog-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_CMSDK_APB_WATCHDOG') ? ['cmsdk-apb-watchdog-test'] : []) + \
 >    (config_all_devices.has_key('CONFIG_PFLASH_CFI02') ? ['pflash-cfi02-test'] : []) +         \
->    (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
->    ['arm-cpu-features',
 > -- 
 > 2.20.1
 > 

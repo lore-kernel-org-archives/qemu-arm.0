@@ -1,166 +1,197 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp406198lfq;
-        Wed, 20 Jan 2021 15:05:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxVS9FROsJJtHq47R13bK46qpCvzVsyYr6lc0zsp5lzKjRdpLq7kdH80oufSenJwt57qhPj
-X-Received: by 2002:a25:af42:: with SMTP id c2mr12016437ybj.516.1611183907025;
-        Wed, 20 Jan 2021 15:05:07 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp2495743lfb;
+        Sun, 24 Jan 2021 08:08:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwSS6zS+qa51Dw2Azn87ogAgcPjBSy2Y2CVq3ekcANCPtf/iL7YR+C5+MMLRUCGd8R9KPN7
+X-Received: by 2002:a25:8450:: with SMTP id r16mr7861854ybm.37.1611504498961;
+        Sun, 24 Jan 2021 08:08:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611504498; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vAEp1Fs2mXNJyvhjLW7rSYQ0/E55clD9+o6agOZpsFJWfFX34pN19kAXWUff6DG4eg
+         i4uJnOR4mPQzgLn9+aTA9A6v02UpkjkbkvG1sXDsYoYvURzFno2/v0t7RKhDvSHX1Her
+         8zA2diEQkbagSIMJny5MkMGjje2BlKKEgcFm3IuVgC2v6gjwUAbKXfcGxk9w8iTMhs0t
+         RPZp8PBw9ylOxen6798lfHNEQEsZ+t0WNmuz7H1T6cfJV19lZ0rTq4XyKZQoVDDrbVkP
+         LbU52k6VgHTEFTRhGoFUNCwZSM7jm8zY01pTYTBGLv1M+KzRzhPLTYv4mt4fUCIbJ5+G
+         Kepw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=tNu9hFqN2gGcAA7+goDvjENW5QyDLv05V0Gd8G9L/UM=;
+        b=KR84TPNgp0qvt3jUwkYLGuSc6eCNPFuRtKP0orbe+pSfWzQSbNrpGS1gnj2mEUbfqO
+         rcbTURa/L2j58lRa36TCIzhLo/kSSf6HV/OxyEqYGpyJTLYOsR1uyKNglD+b/89wPdTL
+         +l1wLijS5K9+DRx4H7JRiHW2UyxmISlqXvRvBicElIG2yJZHRUX0HQDUD94iJ2vgWeSg
+         rqKgaKGVwvFEamRrL9i4AlR5CsIdLgfeJ6lPNorIbh61UHtUCFMR02tyXajgyMhItt1a
+         da26P+Vqr5PZjfhR254aGR+TFBXHfwJnM8JCRZEJD8aiLeao55A73xCAbrzX/HkPIGP5
+         4zZA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B3rVvUP2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j194si3009933ybg.237.2021.01.20.15.05.06
+        by mx.google.com with ESMTPS id z1si14410129ybj.393.2021.01.24.08.08.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Jan 2021 15:05:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 24 Jan 2021 08:08:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39414 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=B3rVvUP2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l2MXC-0001bP-CG
-	for alex.bennee@linaro.org; Wed, 20 Jan 2021 18:05:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60596)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l3hw2-00008k-AB
+	for alex.bennee@linaro.org; Sun, 24 Jan 2021 11:08:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58890)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l2MWY-0001bD-Iq; Wed, 20 Jan 2021 18:04:26 -0500
-Resent-Date: Wed, 20 Jan 2021 18:04:26 -0500
-Resent-Message-Id: <E1l2MWY-0001bD-Iq@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21363)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l2MWV-0007qp-O9; Wed, 20 Jan 2021 18:04:26 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1611183833; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=k712fe3+K6PmNyNVwPTbYb//rHkXaQ9IDOrseVuc0mNVvxocLibrbGLTpWIRMgQo6wAxE7t4ZD0hWNMJ7pGFhoPa4ZPrBTUnhZnXElQpb4N8xhRv3PyFL79+oCpFSDwlD6OVDMhF23pIPgy258GNUSz8YywK2chNnzvLZqYUmrA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1611183833;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=PYvZ9CeKlSQ9+5AgBGb3KPdH7tAGAZZZPK1zjboabiY=; 
- b=kBmZjnvkMNNNnl+qQwj8B+iJk3QtCZTb1GUK2osD+H5j3/CWRT5aPG0vXMaXzxoFkPOeUlV8t6AOFi4CR2TRFl77U1JwKWR6ZpUH5MCQVjMbFpKSeSldsScBy+OOk+ozzyvrLfCYbycrkqBtbfT/QTs4haTVEnG03FoSy3e89QU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1611183830679628.7727980005652;
- Wed, 20 Jan 2021 15:03:50 -0800 (PST)
-In-Reply-To: <20210120224444.71840-1-agraf@csgraf.de>
-Subject: Re: [PATCH v6 00/11] hvf: Implement Apple Silicon Support
-Message-ID: <161118382885.14124.11919473314001566769@73fb1a5943b8>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l3hvl-000089-Fe
+ for qemu-arm@nongnu.org; Sun, 24 Jan 2021 11:08:04 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:45329)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l3hvg-0002ZI-8z
+ for qemu-arm@nongnu.org; Sun, 24 Jan 2021 11:08:01 -0500
+Received: by mail-ej1-x629.google.com with SMTP id ke15so14458166ejc.12
+ for <qemu-arm@nongnu.org>; Sun, 24 Jan 2021 08:07:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=tNu9hFqN2gGcAA7+goDvjENW5QyDLv05V0Gd8G9L/UM=;
+ b=B3rVvUP2/A5lAd3QaAYa1WO3w0rPFHSXE3KxyRrLcpDzi65WWb0QyGgjVWlWsC5w/F
+ 4z76r1MI8HgCSuErqKm4ogJG7gybB/nFa6Jg5PWBJBOEcFp1j3pmJ4NeBs5QvdC2u8EE
+ wJeeQ8JwV36gJ1kXCjmNj8tNPek7rNPBkIRKhapaKecNfr02u42y2+U85GV1ByHhQJSl
+ YpwihLd96nUoIuIwbZtkhEUFCA0+4+H//eIT1aHcs690QdoDyblvQ8OvHnGn7A+Yq8aD
+ zCWJPX6zJmJ2+BouKSWlltJWGM+lLX0j8UpMPyxQd4ZynZrMwk/d2dV+WhLcWDN3RbO/
+ V0Mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=tNu9hFqN2gGcAA7+goDvjENW5QyDLv05V0Gd8G9L/UM=;
+ b=WwBxkoJKPgMqnRClvCP8gGVS/u46q0uUdtedoWX1zwWiBI9h6EubJ3NKAHz7WVOjLj
+ P7/++1X/DaKZIiu8S4Z+sh8u11VeVgTY6ydZk1rFT9i1jGb2hyR+eIiBpad+2qtevNCQ
+ 5qVzHqKM+A1t4+AAYp+bQMDuMbA8u5U4+KPz5PXEXHR3nMgN0p7RRO4bjv6ppBrXauF+
+ zotCNwr178BR3cA4/+8UsXGnc9fXFZdCWHnhsqGGwwbzF7AqhuK5XOCqa9xpilgkixVM
+ 7tLSpTnNTvsvzNQkjwxHiGcTjSVzP1+cVSootx8goIlWEi1V+K35GJQBvKz20HvqLI2M
+ mfLA==
+X-Gm-Message-State: AOAM530B5z7ubTfMGBfAAS0RqDLq01330rHF0BEV5s4blb+3by2PzLO+
+ FX/9nadTo/EzlGLLfRPJhmwbJJlqq4T2WKsr1b1ipA==
+X-Received: by 2002:a17:906:494c:: with SMTP id
+ f12mr121208ejt.56.1611504474126; 
+ Sun, 24 Jan 2021 08:07:54 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: agraf@csgraf.de
-Date: Wed, 20 Jan 2021 15:03:50 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <994f40e1-2a5b-4b7a-a4aa-23f824881d8a@www.fastmail.com>
+In-Reply-To: <994f40e1-2a5b-4b7a-a4aa-23f824881d8a@www.fastmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 24 Jan 2021 16:07:42 +0000
+Message-ID: <CAFEAcA-pm+k4ukfVQ_zg-Bi5SAj4e2P9LEVHpbCkSK6wR=T-Mw@mail.gmail.com>
+Subject: Re: KVM guests reading/writing guest memory directly and accurately
+To: Berto Furth <bertofurth@sent.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
- qemu-arm@nongnu.org, lfy@google.com, pbonzini@redhat.com, pcc@google.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VQbFN3QTXW/w
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 05fb9skCMlmJ
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDEyMDIyNDQ0NC43MTg0
-MC0xLWFncmFmQGNzZ3JhZi5kZS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
-bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
-bWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMTIwMjI0NDQ0LjcxODQwLTEt
-YWdyYWZAY3NncmFmLmRlClN1YmplY3Q6IFtQQVRDSCB2NiAwMC8xMV0gaHZmOiBJbXBsZW1lbnQg
-QXBwbGUgU2lsaWNvbiBTdXBwb3J0Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9i
-YXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAt
-LWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVz
-IFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3Njcmlw
-dHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09
-PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9t
-IGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogLSBbdGFnIHVwZGF0ZV0g
-ICAgICBwYXRjaGV3LzIwMjAxMTE4MTgwNDMzLjExOTMxLTEtdnNlbWVudHNvdkB2aXJ0dW96em8u
-Y29tIC0+IHBhdGNoZXcvMjAyMDExMTgxODA0MzMuMTE5MzEtMS12c2VtZW50c292QHZpcnR1b3p6
-by5jb20KICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIxMDEyMDIyNDQ0NC43MTg0MC0x
-LWFncmFmQGNzZ3JhZi5kZSAtPiBwYXRjaGV3LzIwMjEwMTIwMjI0NDQ0LjcxODQwLTEtYWdyYWZA
-Y3NncmFmLmRlClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKZDIxMjY3MSBodmY6IGFy
-bTogSW1wbGVtZW50IC1jcHUgaG9zdAo1NDIxZTVmIGh2ZjogYXJtOiBBZGQgc3VwcG9ydCBmb3Ig
-R0lDdjMKNjExZWQ5NSBhcm0vaHZmOiBBZGQgYSBXRkkgaGFuZGxlcgpmMTg2OTIxIGFybTogQWRk
-IEh5cGVydmlzb3IuZnJhbWV3b3JrIGJ1aWxkIHRhcmdldApmMjY1ZDg5IGh2ZjogQWRkIEFwcGxl
-IFNpbGljb24gc3VwcG9ydAo4MjYwODUwIGh2ZjogU2ltcGxpZnkgcG9zdCByZXNldC9pbml0L2xv
-YWR2bSBob29rcwo0NzYxZjNlIGFybTogU2V0IFBTQ0kgdG8gMC4yIGZvciBIVkYKNjYyNmQ3YiBo
-dmY6IEludHJvZHVjZSBodmYgdmNwdSBzdHJ1Y3QKMzkyMDVhYSBodmY6IE1vdmUgY29tbW9uIGNv
-ZGUgb3V0Cjk1MGU2MTggaHZmOiB4ODY6IFJlbW92ZSB1bnVzZWQgZGVmaW5pdGlvbnMKM2ZhMjI5
-NiBodmY6IEFkZCBoeXBlcnZpc29yIGVudGl0bGVtZW50IHRvIG91dHB1dCBiaW5hcmllcwoKPT09
-IE9VVFBVVCBCRUdJTiA9PT0KMS8xMSBDaGVja2luZyBjb21taXQgM2ZhMjI5NjI0MDQzIChodmY6
-IEFkZCBoeXBlcnZpc29yIGVudGl0bGVtZW50IHRvIG91dHB1dCBiaW5hcmllcykKV0FSTklORzog
-YWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVw
-ZGF0aW5nPwojMjM6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdh
-cm5pbmdzLCA2MiBsaW5lcyBjaGVja2VkCgpQYXRjaCAxLzExIGhhcyBzdHlsZSBwcm9ibGVtcywg
-cGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZl
-cyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRB
-SU5FUlMuCjIvMTEgQ2hlY2tpbmcgY29tbWl0IDk1MGU2MThjZmIxNSAoaHZmOiB4ODY6IFJlbW92
-ZSB1bnVzZWQgZGVmaW5pdGlvbnMpCjMvMTEgQ2hlY2tpbmcgY29tbWl0IDM5MjA1YWFlYzFkZCAo
-aHZmOiBNb3ZlIGNvbW1vbiBjb2RlIG91dCkKNC8xMSBDaGVja2luZyBjb21taXQgNjYyNmQ3Yjg0
-NGNhIChodmY6IEludHJvZHVjZSBodmYgdmNwdSBzdHJ1Y3QpCldBUk5JTkc6IGxpbmUgb3ZlciA4
-MCBjaGFyYWN0ZXJzCiMxNTU6IEZJTEU6IHRhcmdldC9pMzg2L2h2Zi9odmYuYzoyMTM6CisgICAg
-d3ZtY3MoY3B1LT5odmYtPmZkLCBWTUNTX0VOVFJZX0NUTFMsIGNhcDJjdHJsKGh2Zl9zdGF0ZS0+
-aHZmX2NhcHMtPnZteF9jYXBfZW50cnksCgpFUlJPUjogIihmb28qKSIgc2hvdWxkIGJlICIoZm9v
-ICopIgojNzYzOiBGSUxFOiB0YXJnZXQvaTM4Ni9odmYveDg2aHZmLmM6ODU6CisgICAgaWYgKGh2
-X3ZjcHVfd3JpdGVfZnBzdGF0ZShjcHVfc3RhdGUtPmh2Zi0+ZmQsICh2b2lkKil4c2F2ZSwgNDA5
-NikpIHsKCkVSUk9SOiAiKGZvbyopIiBzaG91bGQgYmUgIihmb28gKikiCiM4NDQ6IEZJTEU6IHRh
-cmdldC9pMzg2L2h2Zi94ODZodmYuYzoxNjc6CisgICAgaWYgKGh2X3ZjcHVfcmVhZF9mcHN0YXRl
-KGNwdV9zdGF0ZS0+aHZmLT5mZCwgKHZvaWQqKXhzYXZlLCA0MDk2KSkgewoKdG90YWw6IDIgZXJy
-b3JzLCAxIHdhcm5pbmdzLCA5OTYgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNC8xMSBoYXMgc3R5bGUg
-cHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxz
-ZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENI
-IGluIE1BSU5UQUlORVJTLgoKNS8xMSBDaGVja2luZyBjb21taXQgNDc2MWYzZTE1ZDI5IChhcm06
-IFNldCBQU0NJIHRvIDAuMiBmb3IgSFZGKQo2LzExIENoZWNraW5nIGNvbW1pdCA4MjYwODUwNmRl
-ZGEgKGh2ZjogU2ltcGxpZnkgcG9zdCByZXNldC9pbml0L2xvYWR2bSBob29rcykKNy8xMSBDaGVj
-a2luZyBjb21taXQgZjI2NWQ4OTcxNzdmIChodmY6IEFkZCBBcHBsZSBTaWxpY29uIHN1cHBvcnQp
-CldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVk
-CiM1NDogRklMRTogYWNjZWwvaHZmL2h2Zi1jcHVzLmM6NjE6CisjaWZkZWYgX19hYXJjaDY0X18K
-CldBUk5JTkc6IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBkZWZpbmVzIHNob3VsZCBiZSBhdm9pZGVk
-CiM2NTogRklMRTogYWNjZWwvaHZmL2h2Zi1jcHVzLmM6MzM1OgorI2lmZGVmIF9fYWFyY2g2NF9f
-CgpXQVJOSU5HOiBhcmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVmaW5lcyBzaG91bGQgYmUgYXZvaWRl
-ZAojOTc6IEZJTEU6IGluY2x1ZGUvc3lzZW11L2h2Zl9pbnQuaDoxNToKKyNpZmRlZiBfX2FhcmNo
-NjRfXwoKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzU4NTogRklMRTogdGFyZ2V0
-L2FybS9odmYvaHZmLmM6NDU4OgorICAgICAgICBodl92Y3B1X3NldF9wZW5kaW5nX2ludGVycnVw
-dChjcHUtPmh2Zi0+ZmQsIEhWX0lOVEVSUlVQVF9UWVBFX0ZJUSwgdHJ1ZSk7CgpXQVJOSU5HOiBs
-aW5lIG92ZXIgODAgY2hhcmFjdGVycwojNTkwOiBGSUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo0
-NjM6CisgICAgICAgIGh2X3ZjcHVfc2V0X3BlbmRpbmdfaW50ZXJydXB0KGNwdS0+aHZmLT5mZCwg
-SFZfSU5URVJSVVBUX1RZUEVfSVJRLCB0cnVlKTsKCnRvdGFsOiAwIGVycm9ycywgNSB3YXJuaW5n
-cywgNjkxIGxpbmVzIGNoZWNrZWQKClBhdGNoIDcvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVh
-c2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJl
-cG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVS
-Uy4KOC8xMSBDaGVja2luZyBjb21taXQgZjE4NjkyMWNmMGRiIChhcm06IEFkZCBIeXBlcnZpc29y
-LmZyYW1ld29yayBidWlsZCB0YXJnZXQpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVk
-IGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzU0OiAKbmV3IGZpbGUg
-bW9kZSAxMDA2NDQKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMzYgbGluZXMgY2hlY2tl
-ZAoKUGF0Y2ggOC8xMSBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
-b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
-aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgo5LzExIENoZWNraW5nIGNv
-bW1pdCA2MTFlZDk1N2IzZTIgKGFybS9odmY6IEFkZCBhIFdGSSBoYW5kbGVyKQoxMC8xMSBDaGVj
-a2luZyBjb21taXQgNTQyMWU1ZmI3OTNhIChodmY6IGFybTogQWRkIHN1cHBvcnQgZm9yIEdJQ3Yz
-KQoxMS8xMSBDaGVja2luZyBjb21taXQgZDIxMjY3MTQ2MzY5IChodmY6IGFybTogSW1wbGVtZW50
-IC1jcHUgaG9zdCkKPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGgg
-Y29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3Jn
-L2xvZ3MvMjAyMTAxMjAyMjQ0NDQuNzE4NDAtMS1hZ3JhZkBjc2dyYWYuZGUvdGVzdGluZy5jaGVj
-a3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBi
-eSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJh
-Y2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+On Sun, 24 Jan 2021 at 07:22, Berto Furth <bertofurth@sent.com> wrote:
+> Can anyone give me some advice on how a machine or device can read and wr=
+ite kvm guest ram memory and get a guaranteed up to date result? Can someon=
+e point me at an example in the latest QEMU source code? I'm working with a=
+n ARM-32 guest (-cpu host,aarch64=3Doff) running on an ARM-64 host (Cortex =
+A72 - Raspberry Pi4b).
+>
+> I have a problem where if I write directly to my guest RAM, (such as a DM=
+A transfer) then the guest can't see the change straight away. Similarly wh=
+en the host writes memory, the guest doesn't see the change until much late=
+r.
+>
+> If during a KVM_EXIT_MMIO the qemu host changes some values in guest ram =
+memory (via address_space_write() or cpu_physical_memory_rw() etc...) , is =
+there a way to make the guest be able to accurately read that memory as soo=
+n as the exit is complete. Additionally if a guest changes a value in ram j=
+ust before a KVM_EXIT_MMIO, is there a way to ensure that the QEMU host can=
+ then read the up to date newly set values?
+
+With KVM I think this is just normal "multiple threads/CPUs both
+accessing one in-memory data structure" effects, so you need a
+memory barrier to ensure that what one thread has written is
+visible to the other. I think that the idea is that
+the functions in include/sysemu/dma.h provide a dma_barrier() (which is
+just a CPU memory barrier) and some wrapper functions which put in the
+barrier on the right side of a read or write operation. On the guest
+side it should already be using the right barrier insns in order
+to ensure that real hardware DMA sees the right view of RAM...
+
+We're very inconsistent about using these -- I've never liked the way
+we have separate 'dma' operations here rather than having the normal
+functions Just Work. But I haven't ever looked very deeply into what
+the requirements in this area are.
+
+> I understand that the proper thing to do is to set up the memory region i=
+n question as MMIO so that when the guest accesses this memory a KVM_EXIT_M=
+MIO will occur but the memory region in question has to be executable and M=
+MIO memory areas are not executable in QEMU. In addition it's not easily po=
+ssible to predict before hand exactly what memory addresses are going to be=
+ involved in DMA, so I'd prefer to avoid having to dynamically construct li=
+ttle MMIO memory islands inside the main guest ram space as the guest runs.
+
+You only want to mark regions as MMIO if they need to actually come
+out to QEMU for the guest memory access to be handled -- typically
+this is device MMIO-mapped register banks. Normal RAM isn't mapped
+as MMIO.
+
+> I'm assuming that the guest could be modified to disable d-caching (modif=
+y the ARM register SCTLR / p15 ?) and that may help but I'm desperately try=
+ing to avoid that if possible because I'm working with a proprietary "blob"=
+ on the guest that I don't have all the source code for.
+
+With Arm KVM doing this wouldn't help; in fact it would make things
+worse, because then the view of guest RAM that the guest sees has
+the non-cacheable attribute, but the view of guest RAM that QEMU
+has mapped is still cacheable, so the two get hopelessly mismatched
+ideas of what the RAM contents are.
+
+(Side note: if the guest wants to map RAM as non-cacheable, this
+won't work with Arm KVM (unless the host CPU supports FEAT_S2FWB,
+which is an Armv8.4 feature), for the same "QEMU and guest view
+of the same block of RAM disagree about whether it's cached" reason.
+The most commonly encountered case of this is that you can't use a
+normal VGA PCI graphics device model with KVM, because the guest maps
+the graphics RAM on the device non-cacheable.)
+
+> I know it's not very professional of me to make an emotional plea, but I'=
+ve been working on this for weeks and I am desperately hoping someone can p=
+oint to a solution for me. I am not a KVM expert and so I'm hoping I'm just=
+ missing something simple and obvious that one of you can quickly point out=
+ for me.
+
+Nah, this isn't obvious stuff -- a lot of QEMU's internals aren't
+very well documented and often are inconsistent about whether they
+do things correctly or not...
+
+thanks
+-- PMM

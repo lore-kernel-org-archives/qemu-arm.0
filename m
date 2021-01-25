@@ -1,77 +1,99 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp828390lfd;
-        Mon, 25 Jan 2021 13:48:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx2DeV83tExrFQmvneWHDTibtEPWlvD4+qWuhbiZiptn7HPQOYUlLhSORI5c+1i0l572saG
-X-Received: by 2002:a25:8882:: with SMTP id d2mr3725151ybl.7.1611611286419;
-        Mon, 25 Jan 2021 13:48:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611611286; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp569121lfd;
+        Mon, 25 Jan 2021 07:28:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwUdlP6ASkQsKj5xpwgHx5krjz2e4Ah5Tej09YOPn7ApyNNQmo0xcFMAahqVJjG+9o/RO7G
+X-Received: by 2002:a05:6902:6a1:: with SMTP id j1mr1373359ybt.440.1611588491821;
+        Mon, 25 Jan 2021 07:28:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611588491; cv=none;
         d=google.com; s=arc-20160816;
-        b=X9aIKkdrdlWLVyhQSEF+VnWRmGQnyWm8qLoBL8GODRMf567pYdOstnX/tqk5+H55Mk
-         fDem//+6/5xPDZy1/qoXdEwtSrepLw8qpdedqRIluEVkQYkYyvIWSqxwxKYL9F1qShql
-         3NjR1FxCfjBTd5vI/+rfnfxTB0Ydc3mlaOqE5GnGNXcKc859GgxrKifereirjfMRxqws
-         UixUGc+zyZkafh8Nm1+P+ayVoHI+PZp8OpbFAVgO/4MLtYG2/gEvdaHfsFWsvOQkU7mb
-         vFCXGyoGxl4LhkKtfqh4OOBjzQAnCAgWctoR1EnHr/woUemd5nDYLf/EFJUJTr6QpmPv
-         3UIQ==
+        b=zFMpGsLk4/2f7wlpLHJGQWGztJCCf350S83v/G93C1Kc2vC+jktO+LNTAzDxFl/VA+
+         mgs1Apz1ikAO+C7LLBLmXIDGscfJi+gVmyjjCL8miWIpUGdH7LlH+JdxGjBPXscysRHZ
+         Gp3vtGm2mNDQFcOwugz6TYNdmE7Hm8cygM3yqA9IDx33RBmETSOdPIgRVwfeitgiTG7C
+         Dv/ME1Uac3NFnosMxcKNVDhzb3G7F50XW5UOfkV4zv4ip8MWSdnQWHzx/RDvqA834+aV
+         4aa0mW5Nf8Cy2IfZrAgbU2WYlPbz7uESHgR5Kl0kq5ry5NXKi4tREVFNsV0nXxj3gpUH
+         islQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:to;
-        bh=w1V4mj1z/Kz8Bnn6mnDCrIbxMHe+gydXyRmOlgtQvYw=;
-        b=NJyFmadIEtRXZaOlLws0M9T7P5VoE7s+BWmcHyMPJvmJOBBPgVlAo2rpUbnglEIyoj
-         8OU7oHE5azjj5REuvretbuiygISeVZbw0db9vDy0tNORwMFfZUi2h9msSwHhdstkFs67
-         BD9iUmwC7QNDxLPB9+PzDxQa86uDd1LoXtH/s/GJ8fOlVLxbk7meEjHsj4ynOesUpod7
-         tgnxRJpGV1m4QyQBM0cxj39GnuHvao4wVw8gzJTrIHt/+H4dgL65CG0ZuqoIzz2Q55GM
-         JGnPv5xWV4iDOFFxdqqM1l2k1Af6q96ckSzVdOGeIqR/H4CfbrhmHw6XPUcKYl12W39o
-         Dsrw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=GZ6hekqvldG8gMXqvg5p3uquzGRoC6fT/s0PAZ6iU4E=;
+        b=LQTEdq1cOH2UmbHgxTnACiadv2mAx2FJsHzpgJa4Sr7GaNXJBwj29AKY3/I+1SjnIp
+         eUG0P/F6ctDqRTsh5Qs4q6ciDVKkF+Q+Sz2jrXuPcQaxzE8cYB0IRe2JTRLzxFbmn1Na
+         iT5r12ORqXLWjDK5wvNZ1JVTcZYFzBfbXLsWOiSoVDuDqk4kJl4z1SFkrPbH7tjUgf7G
+         WT734lA4E9HoBzefC4RquVjKRe2lOT/t57v0VgIMTv4nUxbEriVSjfot/JXqL1OPFTlU
+         NnOpsXQzY5Y8SRNRyAOK+E3GpNnZD+8I9SIYYpTtnX28D+ydfY6I2x4xAvGAd8QUpt8Q
+         PtGw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cwI7pd2q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z9si19616936ybb.191.2021.01.25.13.48.06
+        by mx.google.com with ESMTPS id r16si7148367ybl.70.2021.01.25.07.28.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jan 2021 13:48:06 -0800 (PST)
+        Mon, 25 Jan 2021 07:28:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cwI7pd2q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:60168 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51672 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l49iP-0008N7-Pv
-	for alex.bennee@linaro.org; Mon, 25 Jan 2021 16:48:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47698)
+	id 1l43ml-0005h4-70
+	for alex.bennee@linaro.org; Mon, 25 Jan 2021 10:28:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52686)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <muellerd@devvm2477.prn0.facebook.com>)
- id 1l49Tp-0004dO-BB
- for qemu-arm@nongnu.org; Mon, 25 Jan 2021 16:33:01 -0500
-Received: from 66-220-144-178.mail-mxout.facebook.com ([66.220.144.178]:37861)
+ (Exim 4.90_1) (envelope-from <po99h6@gmail.com>) id 1l3wnx-0006gB-Az
+ for qemu-arm@nongnu.org; Mon, 25 Jan 2021 03:00:57 -0500
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330]:35195)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <muellerd@devvm2477.prn0.facebook.com>)
- id 1l49Tn-0002zB-S4
- for qemu-arm@nongnu.org; Mon, 25 Jan 2021 16:33:01 -0500
-Received: by devvm2477.prn0.facebook.com (Postfix, from userid 221162)
- id C517B43DB0C7; Mon, 25 Jan 2021 13:08:42 -0800 (PST)
-To: qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Correctly initialize MDCR_EL2.HPMN
-Date: Mon, 25 Jan 2021 13:08:17 -0800
-Message-Id: <20210125210817.2564212-1-muellerd@fb.com>
-X-Mailer: git-send-email 2.24.1
+ (Exim 4.90_1) (envelope-from <po99h6@gmail.com>) id 1l3wnv-0005BY-F2
+ for qemu-arm@nongnu.org; Mon, 25 Jan 2021 03:00:57 -0500
+Received: by mail-ot1-x330.google.com with SMTP id 36so11954561otp.2
+ for <qemu-arm@nongnu.org>; Mon, 25 Jan 2021 00:00:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=GZ6hekqvldG8gMXqvg5p3uquzGRoC6fT/s0PAZ6iU4E=;
+ b=cwI7pd2qxUW2atpX9r4oKTlej4g1m1MY/f56Dv7gygIaH2XhL6fJtA+R52sAgMAym4
+ 3377PjLcytg94stXYz/5+AgyksqN6jJZOj6LCNn9iSOnYavPqdG8G+gN4Sj5Ph3TDHYZ
+ s3Xdp7Gpx4QfY+GV/2PN73qnUnsRGXpd6hxCUwh7/KMGVIX2JBKkJxqCmFGISNIoK7vt
+ hQOUDZi03pTw82UMeJx+HHI6on8f52+T4308Fd8jenS2Vh+0ll8aaQca0uB7UXKAkFYH
+ KJ37UGHJXnXsggiy67L3gsLP69Q6RSI3jw4lgXzVLKEViSQaWCbNIt4OSKgZ6d4kYKCE
+ LHXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=GZ6hekqvldG8gMXqvg5p3uquzGRoC6fT/s0PAZ6iU4E=;
+ b=RmgKpuA2GArBRJrNWqzXle0l4P0q0Y7KHXfJzCoa7aeXXHkPqxAF9qVycf6rCWJe4Z
+ 7t19iTPLyLn0q0W5v498FXZos5vTICzy1vKNPrIslS0zcYGQCkmIaOnWXoViMvhixMur
+ EgtVrIVBdG/Bo47tWuPc0M6awNSL3ughzX53OdpyHQjxDM1ZK+lOOsCGieC1eQrHWsHd
+ AoCvAsw2n7UgLrTtPTakhNmu+QGHAteTsKDwDootGnxk9oCL0FUAS17JLVBOq6JFMBgu
+ RbwsQIywUB5f5UT5JpH34gt2/XgimTKjjJ1ReGZWsFWLV5MGxiCgIaqgYH7aWW5FLuMZ
+ 3XjA==
+X-Gm-Message-State: AOAM532vWP2cunkkVSAenDEg3jpHaioL0pkE29gtyzbglT67/eU86Dzv
+ JTLALI0jIBmDzmjXJNq3WUnzK8k4903Mz/dq/5r79RWJ9tI=
+X-Received: by 2002:a9d:313:: with SMTP id 19mr607405otv.147.1611561649651;
+ Mon, 25 Jan 2021 00:00:49 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: none client-ip=66.220.144.178;
- envelope-from=muellerd@devvm2477.prn0.facebook.com;
- helo=66-220-144-178.mail-mxout.facebook.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, NO_DNS_FOR_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RDNS_DYNAMIC=0.982, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001, TVD_RCVD_IP=0.001 autolearn=no autolearn_force=no
+From: =?UTF-8?B?2KfZhNin2K3Yqtix2KfZgdmK2Kkgw4Y=?= <po99h6@gmail.com>
+Date: Mon, 25 Jan 2021 11:00:36 +0300
+Message-ID: <CAOS2wR_7b5hjr6WSWZ0KqXjEFT=cR_TAEiW6fgAs_a4HnZtz9Q@mail.gmail.com>
+Subject: question about qemu user static
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000af82f305b9b4ef11"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
+ envelope-from=po99h6@gmail.com; helo=mail-ot1-x330.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 25 Jan 2021 16:47:12 -0500
+X-Mailman-Approved-At: Mon, 25 Jan 2021 10:26:47 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,56 +105,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Daniel=20M=C3=BCller?= <muellerd@fb.com>,
- peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  =?UTF-8?q?Daniel=20M=C3=BCller?= <muellerd@fb.com>
-From: muellerd--- via <qemu-arm@nongnu.org>
-X-TUID: DowfYC/U8VDf
+X-TUID: pjqmViYjV287
 
-When working with performance monitoring counters, we look at
-MDCR_EL2.HPMN as part of the check whether a counter is enabled. This
-check fails, because MDCR_EL2.HPMN is reset to 0, meaning that no
-counters are "enabled" for < EL2.
-That's in violation of the Arm specification, which states that
+--000000000000af82f305b9b4ef11
+Content-Type: text/plain; charset="UTF-8"
 
-> On a Warm reset, this field [MDCR_EL2.HPMN] resets to the value in
-> PMCR_EL0.N
+why is qemu-x86_64 user emulation is 64bit only
+like if I wanted to install wine and wine has 32bit libraries
+or if I want to run a program that has 32bit libraries
+so I don't know what's going on with that x86_64 emulator can someone tell
+me?
 
-That's also what a comment in the code acknowledges, but the necessary
-adjustment seems to have been forgotten when support for more counters
-was added.
-This change fixes the issue by setting the reset value to PMCR.N, which
-is four.
+--000000000000af82f305b9b4ef11
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Daniel M=C3=BCller <muellerd@fb.com>
----
- target/arm/helper.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+<div dir=3D"auto"><div dir=3D"auto">why is qemu-x86_64 user emulation is 64=
+bit only</div><div dir=3D"auto">like if I wanted to install wine and wine h=
+as 32bit libraries=C2=A0</div><div dir=3D"auto">or if I want to run a progr=
+am that has 32bit libraries</div><div dir=3D"auto">so I don&#39;t know what=
+&#39;s going on with that x86_64 emulator can someone tell me?</div></div>
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d2ead3fcbd..195db4d378 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5705,13 +5705,11 @@ static const ARMCPRegInfo el2_cp_reginfo[] =3D {
-       .writefn =3D gt_hyp_ctl_write, .raw_writefn =3D raw_write },
- #endif
-     /* The only field of MDCR_EL2 that has a defined architectural reset=
- value
--     * is MDCR_EL2.HPMN which should reset to the value of PMCR_EL0.N; b=
-ut we
--     * don't implement any PMU event counters, so using zero as a reset
--     * value for MDCR_EL2 is okay
-+     * is MDCR_EL2.HPMN which should reset to the value of PMCR_EL0.N.
-      */
-     { .name =3D "MDCR_EL2", .state =3D ARM_CP_STATE_BOTH,
-       .opc0 =3D 3, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 1,
--      .access =3D PL2_RW, .resetvalue =3D 0,
-+      .access =3D PL2_RW, .resetvalue =3D 4,
-       .fieldoffset =3D offsetof(CPUARMState, cp15.mdcr_el2), },
-     { .name =3D "HPFAR", .state =3D ARM_CP_STATE_AA32,
-       .cp =3D 15, .opc1 =3D 4, .crn =3D 6, .crm =3D 0, .opc2 =3D 4,
---=20
-2.24.1
-
+--000000000000af82f305b9b4ef11--

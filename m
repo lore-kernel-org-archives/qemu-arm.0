@@ -1,104 +1,121 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp591215lfd;
-        Mon, 25 Jan 2021 07:59:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz0+HLsn7bkB3PmyECemv3J2WaLb3ci+Ext0ei7lmTaxIgOOqpd3ZNCH1At78c0zroIZc9D
-X-Received: by 2002:a25:ce8e:: with SMTP id x136mr1691382ybe.173.1611590398678;
-        Mon, 25 Jan 2021 07:59:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611590398; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp887677lfd;
+        Mon, 25 Jan 2021 15:32:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwW61wfybx87QQJfD2H59/8XPyCTzzlcjdg7ZDqQraC2mibEhrmmGGnA/Rn2rjGjAj1hcAj
+X-Received: by 2002:a25:2c97:: with SMTP id s145mr4184752ybs.249.1611617574807;
+        Mon, 25 Jan 2021 15:32:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611617574; cv=none;
         d=google.com; s=arc-20160816;
-        b=nzn49wUTlWUjWrhM/Y7IExnEU5EBUJ/WK/l2oWOgnkkLqsW6saUS/a4zCon7pr9tq8
-         qOerdiyO+8LYPRLZDNk70X3D1gLir3sNjzIsqdWf//R8Im+HohSnJLjQL3LKeBhuZY+G
-         mqdK/TPFs+VTYpNU5bqZbOFHAb6v1rgd9BvAb8yOZlGBPbQl3Uvt1T3/9Ualt6F8KLNm
-         xPVBDpge8/lSuT0nUQ6waPw2ptlgJcK8SA0ISNUqvURi59Er3N0vFKy2wxGXcT0J7gA7
-         jc98Q7D1SRQfmtwQzSp+Rr1yGFbp5ncf8kSJszM9k1FNZrNAJcAB/QwdPF/qMhrv9lpg
-         d9Cg==
+        b=crTqpcU2S45yf3sO/qaxGkX9ARjQt2WfQJm4nfu/GeBku6tiJVh1eUamxrE4rpW1ax
+         zE4P8EVjckQzxublOM0p4NYGNKAqppPUnwWfdy3sVelHZAWPSdxvHbjAEO1bkNZnAFg0
+         EDm5al2WCiI3GvcAsIlFlsta7j7z7gDa78AxW3aohE6C+QbtHxhjrJSsRWHy4y2MOogs
+         wWzcywAwL8VmwQSHfCNx69m/+KbJtkqFjAAFtkAjU3SiFm4TTdH3ipIih4Pw4S09mAJT
+         xnBKcgl7PC1cSRO2iGufo+I/N27UKmPqE3hF/CqY188277RdGWeFwvP2CoqaLl50lxkp
+         Ogcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
          :dkim-signature;
-        bh=hB06iBXWfdKSRbIxnh8gRXNg4Z/CV1FQ8+9uIrzX4dY=;
-        b=UHJhDqPalBLyVDPnUKukq1YNiVcuLwCMF7lT8HEVlFlS59ndwAMTjBWvcVNxpQCKw5
-         kMPSBAkXPcU1DATJXJ/9yTOUEm11IZfXSkGnbbc5SsfWLYqj8TyzRklPyFxFfNU7MrOU
-         DCgJ/8b/38Jy2fWNuiWQdCNVYvYlnv6a3KaBPn0hdy/HJ1QB8JipViD16AcBHvI7QMPv
-         ZLT0WS1/vdPabozeFcZgvdNXsG1qDNw2JSqwb5LS2F7pxoK1WvmzoeV5WmyyWzCJd8DK
-         DksSTZUpjkp1npKEPuyJRpKTXKk6nd7z1LWPqaDzgWaJQZ2Ca6FCwgu0DQPJzpG+/CNF
-         ixbA==
+        bh=i/5X3yl8sRh8vdJUUOTx55n0DGyXxxdJPLa1+JpDVtE=;
+        b=sQHqu2ntkivdSbVfsSdWdNXLAS4WkZcI4MZrwBklXOlp6RCQJpDuxkPXePm7+ed30p
+         qCQ6rR1eeOzrTtZ/hDqA+KrRWL0KiBBaN5HZNQBYc/GYAJmqdtHfC+OaZ1BI8ayi3ip4
+         9WsNGs7skL6xReGXohzBtc9sV0ln1KFU+jk5tbR0PpLEJZFPe/6e3/IgGfYx/686LrOn
+         Al07nN8rwokdu55W8Dl0eH/4FnOJVGDTcKg54gfIsxNuNSgVrGP2hoZaYCCuAb/cfmPi
+         OuD76V24NKomnWKm3Zp/xNf6gwzmGn6essc3i4NPN735NPgRBbhhtByHV+rjc+VGnFIZ
+         GXyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="CYcSHC/J";
+       dkim=fail header.i=@sent.com header.s=fm2 header.b=cfvvas5+;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="XC+/L6NG";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sent.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s130si21237927ybc.53.2021.01.25.07.59.58
+        by mx.google.com with ESMTPS id h7si19675620ybh.288.2021.01.25.15.32.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jan 2021 07:59:58 -0800 (PST)
+        Mon, 25 Jan 2021 15:32:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="CYcSHC/J";
+       dkim=fail header.i=@sent.com header.s=fm2 header.b=cfvvas5+;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="XC+/L6NG";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52174 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sent.com
+Received: from localhost ([::1]:41300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l44HW-0002N0-3o
-	for alex.bennee@linaro.org; Mon, 25 Jan 2021 10:59:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34764)
+	id 1l4BLq-0000rF-6b
+	for alex.bennee@linaro.org; Mon, 25 Jan 2021 18:32:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42114)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l44HP-0002Mh-O8
- for qemu-arm@nongnu.org; Mon, 25 Jan 2021 10:59:51 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:37848)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l44HO-0002qE-BL
- for qemu-arm@nongnu.org; Mon, 25 Jan 2021 10:59:51 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id g1so15997599edu.4
- for <qemu-arm@nongnu.org>; Mon, 25 Jan 2021 07:59:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=hB06iBXWfdKSRbIxnh8gRXNg4Z/CV1FQ8+9uIrzX4dY=;
- b=CYcSHC/JoZz5zdvAbJBWtuE7ON2Cfw3W+WN98RdVF/KBLUr1wkI4dZWaRWxHjQbsQK
- msjDBqfm/ULHuxWuscHsXLcsR25GFcpW7vZBBJ7GfGGi+MAPfbK0EvoEjOsT6N8wbXPf
- MSC1EGGVfikOwpeSlN+/iqcMt4Y8+ZqkHXamZTyXmiwnKK9NANaXWsD3+/Az2TW2HDzU
- DYIP+5FDQBU/4twGfkRUn8G+518+KHiTZLA7QdLeROm4wfdzieIRtfzhUckqqrBtEnQk
- vx5tRPYgsErdQDZh8agAbtTRoLuUpk0Gvr0lXxNUS2Hqrywx2iiGNBiK2w9+VKf4ReLU
- 6yCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hB06iBXWfdKSRbIxnh8gRXNg4Z/CV1FQ8+9uIrzX4dY=;
- b=iQcw/jxU+4g+alG08GWjbUSWhIt2y4iYsJrcEWqHeD4g2wxiSu5E4KwuEogyqe8Q6w
- XzJP5L2gfsgqOFccJKYBU1l0ZKqX9YbNB8iLfnBU6+TV41txTlhDm9VWq6GrEV9JXpZM
- IbYOAhU7U1tGzn4d5xcx2rgPgEPm5oRhcmq3HN0CHouRPgChL+wl0vBDrMoh/j5qhg3j
- ZTNWYc7By3Db9MtGZaPVDBiLh0oHl4Nc01pZ0SZIJ5ubYpicm4YrnHsavItefEPatrca
- fZctaUmt14cDb+RvQ/k02vEHwJDFamZunACjWwITYDHWq23Hia7+OJK65sBhlaxVh1V0
- AjPA==
-X-Gm-Message-State: AOAM533w7QbPqfaFkyK7cJYakH2Sa9AyBCxjlF1vMST/zUx9qR2l4Y0K
- Vdm/eQdEK5k3yul3UZzVzuJj/kptznknQxogoFQo/A==
-X-Received: by 2002:aa7:dd12:: with SMTP id i18mr1041374edv.36.1611590388415; 
- Mon, 25 Jan 2021 07:59:48 -0800 (PST)
-MIME-Version: 1.0
-References: <CAOS2wR_7b5hjr6WSWZ0KqXjEFT=cR_TAEiW6fgAs_a4HnZtz9Q@mail.gmail.com>
-In-Reply-To: <CAOS2wR_7b5hjr6WSWZ0KqXjEFT=cR_TAEiW6fgAs_a4HnZtz9Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 25 Jan 2021 15:59:37 +0000
-Message-ID: <CAFEAcA-P4q9FckgcmAXezCqSvW0=yFG6ZnReA_TASXg7tHk9WQ@mail.gmail.com>
-Subject: Re: question about qemu user static
-To: =?UTF-8?B?2KfZhNin2K3Yqtix2KfZgdmK2Kkgw4Y=?= <po99h6@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <bertofurth@sent.com>)
+ id 1l4BLj-0000r3-6r; Mon, 25 Jan 2021 18:32:47 -0500
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:59895)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bertofurth@sent.com>)
+ id 1l4BLh-0001D3-A3; Mon, 25 Jan 2021 18:32:46 -0500
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailout.west.internal (Postfix) with ESMTP id 5D886ED4;
+ Mon, 25 Jan 2021 18:32:43 -0500 (EST)
+Received: from imap1 ([10.202.2.51])
+ by compute6.internal (MEProxy); Mon, 25 Jan 2021 18:32:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sent.com; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type; s=fm2; bh=i/5X3yl8sRh8vdJUUOTx55n0DGyXxxd
+ JPLa1+JpDVtE=; b=cfvvas5+pN39jVAvLkndTLLQTvbLO/84H5LuTpoax7/U/mU
+ 7clXzyJ+Ff/NZ2uKBo4gBkzuZ/2VxRze964BA6mUPxgYcA23cY8VJWDZFfdXRAhq
+ b7/DUTl33awixo8ZtoZyitK8KMVdrHeNBAVrNLRd6+92PFkCHGX6nZKYPVY1gd1T
+ 6akgEV1VzocNXJVNSLpAC/cnD7s7CL6t1b6C4Xjc8/aCeEFSIBZK0Um0U8tHMSU/
+ VvIy31HTe4CRWUNqci+XvUMhiFD1ph/mDXnp6ejL8UZAXopwAF0tgl+fkyQAbuq5
+ wKqieAPq3a/nEs3VcSLXsiNxO954gfFiTOWe6fw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=i/5X3y
+ l8sRh8vdJUUOTx55n0DGyXxxdJPLa1+JpDVtE=; b=XC+/L6NGgVwDbHt/j8IfQp
+ mw2dvoHKQ0R1bNTxb1uveH5PAnQQIWkvlZBRfNvb0lpGdnzvIzXRRZw8MKPnjejT
+ 89yx4DnD30wfHJ1fxZj/rGuKplwBg/QBoUk+MiVf4h4tchAmhZtB7GhH5hiLux4h
+ nuAwQsdvea1WYTtnyDlsFPS12GO4L/F70RFsVUIdSF9KmVinTQfmCdFSvEM8S5di
+ b5Ef8geUvI6+Ps9maYUesWnwnrBduuYIhMAH8xdjldt1Vez9Bd3cojoRhWdKlRe3
+ DxVIKcj2hx31xnLo3Jpv/BEpLOfdA5iQPvwtDbLYRChpoE2ACPSjRKj9mhJv7nKg
+ ==
+X-ME-Sender: <xms:GlUPYMaVpQv7K1Z9_uQ8TCewkTFTlanaLBatNNTGW7XsD_RWjv-bZg>
+ <xme:GlUPYHbFjsj7iTzlEIhVR3J-3ZGfZuNHHqUNdj2WtaRbUhTr3NsSX_1lCUxIxupF1
+ pJ3ze68DLETBLCyL9s>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrvdeggddtlecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedfuegvrhht
+ ohcuhfhurhhthhdfuceosggvrhhtohhfuhhrthhhsehsvghnthdrtghomheqnecuggftrf
+ grthhtvghrnhepkedvffekhedugffhieeffeeujeeuueeifeevtdehfffhvdfhueejleeh
+ tdfhfedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ epsggvrhhtohhfuhhrthhhsehsvghnthdrtghomh
+X-ME-Proxy: <xmx:GlUPYG9vWv7IWA2fcPPH1WnF20uxD0tdskuPmAVGWAlCwr2YLdTgRg>
+ <xmx:GlUPYGqY1s3QaLg2L5u7HI3alerFSDI8wHtuO8DcOM0FKfpMwimwWw>
+ <xmx:GlUPYHrlSRsR9Dw0XF_lyQkBAlQ4V4rQ5xFpulZ-JdsQL3zIXpI7Pg>
+ <xmx:GlUPYGRrNilaOspb0c3I4uG81QmNubBuMoHwn_hQsH_xy-Be5AgUcg>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 73C75130005D; Mon, 25 Jan 2021 18:32:42 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.5.0-alpha0-78-g36b56e88ef-fm-20210120.001-g36b56e88
+Mime-Version: 1.0
+Message-Id: <083767b3-3621-4735-9f05-77153f6894a1@www.fastmail.com>
+In-Reply-To: <CAFEAcA-pm+k4ukfVQ_zg-Bi5SAj4e2P9LEVHpbCkSK6wR=T-Mw@mail.gmail.com>
+References: <994f40e1-2a5b-4b7a-a4aa-23f824881d8a@www.fastmail.com>
+ <CAFEAcA-pm+k4ukfVQ_zg-Bi5SAj4e2P9LEVHpbCkSK6wR=T-Mw@mail.gmail.com>
+Date: Tue, 26 Jan 2021 10:32:21 +1100
+From: "Berto Furth" <bertofurth@sent.com>
+To: "Peter Maydell" <peter.maydell@linaro.org>
+Subject: Re: KVM guests reading/writing guest memory directly and accurately
+Content-Type: text/plain
+Received-SPF: pass client-ip=64.147.123.25; envelope-from=bertofurth@sent.com;
+ helo=wout2-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,30 +128,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tsb/nYUJoIYB
+X-TUID: v8PZZF+rohlw
 
-=E2=80=AAOn Mon, 25 Jan 2021 at 15:28, =E2=80=AB=D8=A7=D9=84=D8=A7=D8=AD=D8=
-=AA=D8=B1=D8=A7=D9=81=D9=8A=D8=A9 =C3=86=E2=80=AC=E2=80=8E <po99h6@gmail.co=
-m> wrote:=E2=80=AC
-> why is qemu-x86_64 user emulation is 64bit only
+Thanks so much for your help and encouragement Peter. I really appreciate it.
 
-Because the user-emulator binaries are specifically
-"implement this kernel ABI", which includes not just
-the general CPU architecture but also whether it is 64
-bit or 32 bit. You can see this also on other architectures
-like qemu-arm and qemu-aarch64. It's also why there are
-lots of mips user-mode emulators: qemu-mips, qemu-mipsel,
-qemu-mipsn32, qemu-mipsn32el, qemu-mips64, etc, etc:
-these all represent different and incompatible ABIs.
+All the best!
 
-> like if I wanted to install wine and wine has 32bit libraries
-> or if I want to run a program that has 32bit libraries
-
-If you want to run a guest program built for the 32-bit
-x86 ABI, use qemu-i386.
-
-thanks
--- PMM
+On Mon, 25 Jan 2021, at 03:07, Peter Maydell wrote:
+> On Sun, 24 Jan 2021 at 07:22, Berto Furth <bertofurth@sent.com> wrote:
+> > Can anyone give me some advice on how a machine or device can read and write kvm guest ram memory and get a guaranteed up to date result? Can someone point me at an example in the latest QEMU source code? I'm working with an ARM-32 guest (-cpu host,aarch64=off) running on an ARM-64 host (Cortex A72 - Raspberry Pi4b).
+> >
+> > I have a problem where if I write directly to my guest RAM, (such as a DMA transfer) then the guest can't see the change straight away. Similarly when the host writes memory, the guest doesn't see the change until much later.
+> >
+> > If during a KVM_EXIT_MMIO the qemu host changes some values in guest ram memory (via address_space_write() or cpu_physical_memory_rw() etc...) , is there a way to make the guest be able to accurately read that memory as soon as the exit is complete. Additionally if a guest changes a value in ram just before a KVM_EXIT_MMIO, is there a way to ensure that the QEMU host can then read the up to date newly set values?
+> 
+> With KVM I think this is just normal "multiple threads/CPUs both
+> accessing one in-memory data structure" effects, so you need a
+> memory barrier to ensure that what one thread has written is
+> visible to the other. I think that the idea is that
+> the functions in include/sysemu/dma.h provide a dma_barrier() (which is
+> just a CPU memory barrier) and some wrapper functions which put in the
+> barrier on the right side of a read or write operation. On the guest
+> side it should already be using the right barrier insns in order
+> to ensure that real hardware DMA sees the right view of RAM...
+> 
+> We're very inconsistent about using these -- I've never liked the way
+> we have separate 'dma' operations here rather than having the normal
+> functions Just Work. But I haven't ever looked very deeply into what
+> the requirements in this area are.
+> 
+> > I understand that the proper thing to do is to set up the memory region in question as MMIO so that when the guest accesses this memory a KVM_EXIT_MMIO will occur but the memory region in question has to be executable and MMIO memory areas are not executable in QEMU. In addition it's not easily possible to predict before hand exactly what memory addresses are going to be involved in DMA, so I'd prefer to avoid having to dynamically construct little MMIO memory islands inside the main guest ram space as the guest runs.
+> 
+> You only want to mark regions as MMIO if they need to actually come
+> out to QEMU for the guest memory access to be handled -- typically
+> this is device MMIO-mapped register banks. Normal RAM isn't mapped
+> as MMIO.
+> 
+> > I'm assuming that the guest could be modified to disable d-caching (modify the ARM register SCTLR / p15 ?) and that may help but I'm desperately trying to avoid that if possible because I'm working with a proprietary "blob" on the guest that I don't have all the source code for.
+> 
+> With Arm KVM doing this wouldn't help; in fact it would make things
+> worse, because then the view of guest RAM that the guest sees has
+> the non-cacheable attribute, but the view of guest RAM that QEMU
+> has mapped is still cacheable, so the two get hopelessly mismatched
+> ideas of what the RAM contents are.
+> 
+> (Side note: if the guest wants to map RAM as non-cacheable, this
+> won't work with Arm KVM (unless the host CPU supports FEAT_S2FWB,
+> which is an Armv8.4 feature), for the same "QEMU and guest view
+> of the same block of RAM disagree about whether it's cached" reason.
+> The most commonly encountered case of this is that you can't use a
+> normal VGA PCI graphics device model with KVM, because the guest maps
+> the graphics RAM on the device non-cacheable.)
+> 
+> > I know it's not very professional of me to make an emotional plea, but I've been working on this for weeks and I am desperately hoping someone can point to a solution for me. I am not a KVM expert and so I'm hoping I'm just missing something simple and obvious that one of you can quickly point out for me.
+> 
+> Nah, this isn't obvious stuff -- a lot of QEMU's internals aren't
+> very well documented and often are inconsistent about whether they
+> do things correctly or not...
+> 
+> thanks
+> -- PMM
+>

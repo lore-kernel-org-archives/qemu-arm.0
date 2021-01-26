@@ -1,164 +1,184 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp896399lfd;
-        Mon, 25 Jan 2021 15:49:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwaUpd/Rc+MAnCpmHy7MjvFb6Fe5HMtYVj4oZcRQ6b3flZ5h1SZE1GGNEpFXULTU2jH02AK
-X-Received: by 2002:a25:d3c3:: with SMTP id e186mr4199340ybf.349.1611618578076;
-        Mon, 25 Jan 2021 15:49:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611618578; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp1111651lfd;
+        Mon, 25 Jan 2021 22:57:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxNBWy8GlBrQCQQr8IFKKJ3/kYA9mN9Qmjapv3hlHegUseqaOmFcZZ2d4sgMhfU0IvTv+dq
+X-Received: by 2002:a25:7641:: with SMTP id r62mr6554895ybc.521.1611644254134;
+        Mon, 25 Jan 2021 22:57:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611644254; cv=none;
         d=google.com; s=arc-20160816;
-        b=iXQHrNfFhx4jqYjDSTukr4ss0pJLK/fGl25MAV2V6zMq7rJ0Tu2IswM6NdqhV0OVVt
-         y7DFvCh30nSYvp4ITxqtXDRsiukB4DmmPi0Vbp6olBqMt8GNZwJLOUf5YGRZqFlTD7CD
-         zzA7mOxLImu497ey7eYHU1L0IR5fFJoiBfIHHNTMIFbCv5Nc69z5kL7xmk0OyNZ64kkd
-         JLMmWpfsXe7rRAD0ExUZQR1JIlHvV5wvwdNTP0AOsjo69hP5JopsUCWAhuUT/1iMDqdA
-         rcWvJ2ah/7dP08LGdXDIFOhWupa7DIBzdtq6Oy1XB8+n13jFd1VS30w5LJeHcDuzqpiY
-         S40A==
+        b=UtybDngXa1SqW1MaM6GgmsUFuw+ILo9gJ3LtCbDAXTDYLzicU0t2isnqM5dZ8RpAH3
+         Du4wEUDsNGjgVt91FRS0vGREyYRL039vL4A9rdc/9YXfWNsKrJQTSSRwufV8GznzLlyd
+         nMM+BDvehJYA8fYlpnWUhdNF/UaQY95TQgKrQ7JTA3mlqMwddhh3/uTwRRevaZHmz10x
+         BdCJvoxSeG/4bL7FnHtMe8bgHdAgOA+YdMIVsJz05y0xdzdj8ncvv060oe9RNLMwQiGx
+         7KaDa/0gB9y9hIb6XaQSlNpEAYwX+HnmdS8QDbBnnAGDJCk6Yvat4JKPANlMtCu4ZUL/
+         dbVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:mime-version:message-id:date:dkim-signature;
-        bh=I+jzqQbXvQgWEuHn+S1cGshEJkxZZv/tRlV4YBUAhVY=;
-        b=joN5TiuLXpdbgYtkSPoK1TnpBqQnpZMRgvA6Fpe8aVE39/85O+U4p4hTltG96UbXcG
-         H76TI0xj+YoQyF24NFY03VB5cZrlEbyQW98k7FPjZN4bNIXpHpwTcFsIFSbR/5sSeCKn
-         E68Ie0EJVFE2SyRgzAxcLJ/tjqUkA8lmbC638C9AQRZVnL+aIinNAvG7UUZlbFHBpMDr
-         bWlep+gaS+B1fu+QCgZHDYqrNCkX08LUKKcx2bbh6i4PmO0CQ/FWONDInfzHpsCpzRul
-         N+miUejwUfuJ0iiZT0pEgTu7Hg/orSG4Uj/LT9zN3FJZ7lG58VX9e3PkVRCZ7guzj8fP
-         OzAg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=32aGueFSV2uVi9yEC9Wg3aow+A/sRmFRH4xj/YR6gpA=;
+        b=zCakRAYDkwovuITN6wanJ1+ajCuPABD5HPkp2xXW/HmHhsQ6EdwnUsy0mj/Vm+HFSJ
+         15dC6wH9GYy4+IcDov90VkASoy/D1oMWJvi8Hw1wuoWAhi+0f6Lxgm6P08ZD8f2uLx6+
+         V5d3eDcMtR0dMhaUjh/BpM/M1ySNpWKBzc8JTF+7U58FcSDBEQ2lohIYptIzZ4q+M2kK
+         NUcV3h2S6YcUsT3Rp7pjvbrK7pIDxUlzrZweCnNs19MoB9x4kF3l/B0PvvytHQ8pQOQm
+         ss77JzzYyeCUBxMN5zycJAQPKe3Ez/6ZlLe9SGnN2zZUvDp/y/r8pngxOnRA7wYtGGAV
+         rN/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=mRCTh8N3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GVN7V7Dr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y14si7324386ybk.29.2021.01.25.15.49.37
+        by mx.google.com with ESMTPS id x13si5690528ybt.404.2021.01.25.22.57.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jan 2021 15:49:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Jan 2021 22:57:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=mRCTh8N3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:52714 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GVN7V7Dr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l4Bc1-0006UT-E8
-	for alex.bennee@linaro.org; Mon, 25 Jan 2021 18:49:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45750)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l4II9-00060n-CO
+	for alex.bennee@linaro.org; Tue, 26 Jan 2021 01:57:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <35lgPYAgKCNsTRE7LQPEDLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--wuhaotsh.bounces.google.com>)
- id 1l4BbS-0006MH-1x
- for qemu-arm@nongnu.org; Mon, 25 Jan 2021 18:49:02 -0500
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549]:42253)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l4IGr-0004xp-7W; Tue, 26 Jan 2021 01:56:13 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:42062)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <35lgPYAgKCNsTRE7LQPEDLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--wuhaotsh.bounces.google.com>)
- id 1l4BbN-00038d-27
- for qemu-arm@nongnu.org; Mon, 25 Jan 2021 18:49:01 -0500
-Received: by mail-pg1-x549.google.com with SMTP id j37so8950769pgb.9
- for <qemu-arm@nongnu.org>; Mon, 25 Jan 2021 15:48:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:message-id:mime-version:subject:from:to:cc;
- bh=I+jzqQbXvQgWEuHn+S1cGshEJkxZZv/tRlV4YBUAhVY=;
- b=mRCTh8N3GYdCOaCaGlFqMFUkJp0rJ0i4BEUeKzpQ9hW1vK8AcNT6ij0J4irEMjEZCJ
- 5OnxJb4TbhFrboNDKEKYjKt9fV9NXN9dXUfEO9nNVGvrQF14SRBaQOby/0GMs1NyZ9Zg
- Njr0zji/DBdO2OlHsbc5ZZm6W6Xx5bjuxsF8f92NjBhPMGoAqxgmqm7ah9UQ0ghxHBH9
- 56S+JOH6KhFVlcvUiFGPT9T9MU+xzYYxDQkgRudf34NRoFy0skXb/CzQhjY6TLPfe+01
- hDsdhJ+mg35SNprl5yqHAS+g2TpEX7IlvJAigpSV+KxlBrfB5P7fTxrjOAt8rZW+FQvB
- MNVw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l4IGp-0003N2-IW; Tue, 26 Jan 2021 01:56:12 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id r12so21455565ejb.9;
+ Mon, 25 Jan 2021 22:56:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=32aGueFSV2uVi9yEC9Wg3aow+A/sRmFRH4xj/YR6gpA=;
+ b=GVN7V7DrjgwXM4VzwvVuI+INA8c/TpTy8XP3jd+5je+AwKZgaW/wEqRY0GqprihO+k
+ 0asLviPRdMjGGe+TdgblyCx9rDbsbOnbRDJNq8s10XDRu59tG+CE+OR4/0HUUtY+KL2U
+ RVVPpuBpdht+ISkeapnzfOgbcR1lKXZH6dWAWvh0D8DhXS4n5TlxPzUDw44KD53DBsmg
+ xKD0tdVSagY+YzqGSJAYH2UAOFl6xJrV2/Rj3pgDXxbdFJUs1ZtE08+MZwhlHIX+RnnJ
+ elKWTEQ9VrjH84NqCjVH1RkJoxKOyT0qinqXdRJ7CuhhW9HAk+wrp/2kE58jTK8x7uby
+ u+/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
- :to:cc;
- bh=I+jzqQbXvQgWEuHn+S1cGshEJkxZZv/tRlV4YBUAhVY=;
- b=RBQlvqyanFlgqjHQR5R3RD6mU3ay1KdsKMHED4P+845zGM/s8q9CBST1IP0QAUffaZ
- NM0y64DIX9oIuWp0R4hVY1uVhibmVfdbC6A8dJaw4CQUYbEQHb8SMBga/1aRwUd28tQX
- GiO/U9wEnZgQ8WhvGy0Gq8b3xUhX4dygmfhzKntgE1J34RWaFcwkkMUjhnzvB+f4yev3
- xsfem/gaqsPVv6NJj1XUBbtNxBfxcoR1TWLdCoezSOBaEsSgoMwizoS+2y5BA2wVrcaN
- VKArT1nivOHyJf1jvrAulPMRbsNyA2ByrM2UDbtiuXCRfujDmYUXUECR0rHY8Jztr+4h
- 8pgw==
-X-Gm-Message-State: AOAM533XsZHp9JFvYE/L1cBTVRoSyGw0rbAcjt6pU6w3bae+lYlRSmyU
- XUZrMbnob2o/Cpgw2SvLTLTZjs4fuQyPqg==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:902:b189:b029:dc:4102:4edf with SMTP
- id s9-20020a170902b189b02900dc41024edfmr3086577plr.80.1611618534131; Mon, 25
- Jan 2021 15:48:54 -0800 (PST)
-Date: Mon, 25 Jan 2021 15:48:36 -0800
-Message-Id: <20210125234836.607233-1-wuhaotsh@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.30.0.280.ga3ce27912f-goog
-Subject: [PATCH] hw/misc: Fix arith overflow in NPCM7XX PWM module
-To: peter.maydell@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=35lgPYAgKCNsTRE7LQPEDLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x549.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=32aGueFSV2uVi9yEC9Wg3aow+A/sRmFRH4xj/YR6gpA=;
+ b=QfgL+ZfbBh0lZf61VUrWMdNa1zB1v+xwqCBpqYnO5mjt4qx3o9+WYN8M2ri0ZCbYAV
+ QeRHxgJ92mFZX32H3V4f9CcOQ96YQt2VrKBm8HHnogzMBrU6O2JBzUx1tPzmOAlewUcJ
+ SwzN/JVKRU5v+I3I5Fw6MbMRIeYb6EZ+W9RKy9Seuv2SABmyMpj8opqevVxnPoTWbSjN
+ LALKenJFq0Z4VHA1hziYWaESYK1KPtvXI3JeThLzmrJc5AzHDbY/9doEyMIVzTsfQdRU
+ C9AhjOF/v7OyjprQhlX8Q8lMeRUN8kzKS62PfCOSvV6+3qoh+2Ev9UgZmu/KIii6DAG2
+ GnZg==
+X-Gm-Message-State: AOAM531rtqUidPkJ995pJocEeSEcNFHYfEa8HGKur6v+UENGhjUDqCGD
+ GewyZ/0DBJM7HWYc27/IhAk=
+X-Received: by 2002:a17:906:f0c3:: with SMTP id
+ dk3mr2529601ejb.540.1611644168883; 
+ Mon, 25 Jan 2021 22:56:08 -0800 (PST)
+Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
+ [83.57.169.13])
+ by smtp.gmail.com with ESMTPSA id y59sm12447442ede.59.2021.01.25.22.56.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Jan 2021 22:56:08 -0800 (PST)
+Subject: Re: [PATCH] hw/misc: Fix arith overflow in NPCM7XX PWM module
+To: Hao Wu <wuhaotsh@google.com>, peter.maydell@linaro.org
+References: <20210125234836.607233-1-wuhaotsh@google.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <52a16c14-820b-762c-d74f-e29fac912beb@amsat.org>
+Date: Tue, 26 Jan 2021 07:56:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
+MIME-Version: 1.0
+In-Reply-To: <20210125234836.607233-1-wuhaotsh@google.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, wuhaotsh@google.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, hskinnemoen@google.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Hao Wu <wuhaotsh@google.com>
-From: wuhaotsh--- via <qemu-arm@nongnu.org>
-X-TUID: A2lKKLuq2flb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ hskinnemoen@google.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qJihRoZxRPI1
 
-There's a potential arith overflow in npcm7xx_pwm_calculate_duty.
-This patch fixes it.
+Hi Hao Wu,
 
-Thanks Peter for finding this out.
+On 1/26/21 12:48 AM, wuhaotsh--- via wrote:
+> There's a potential arith overflow in npcm7xx_pwm_calculate_duty.
 
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
----
- hw/misc/npcm7xx_pwm.c          | 4 ++--
- tests/qtest/npcm7xx_pwm-test.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+> This patch fixes it.
 
-diff --git a/hw/misc/npcm7xx_pwm.c b/hw/misc/npcm7xx_pwm.c
-index e99e3cc7ef..90b4f630a0 100644
---- a/hw/misc/npcm7xx_pwm.c
-+++ b/hw/misc/npcm7xx_pwm.c
-@@ -102,9 +102,9 @@ static uint32_t npcm7xx_pwm_calculate_duty(NPCM7xxPWM *p)
-         if (p->cnr == 0) {
-             duty = 0;
-         } else if (p->cmr >= p->cnr) {
--            duty = NPCM7XX_PWM_MAX_DUTY;
-+            duty = (uint64_t)NPCM7XX_PWM_MAX_DUTY;
-         } else {
--            duty = NPCM7XX_PWM_MAX_DUTY * (p->cmr + 1) / (p->cnr + 1);
-+            duty = (uint64_t)NPCM7XX_PWM_MAX_DUTY * (p->cmr + 1) / (p->cnr + 1);
-         }
-     } else {
-         duty = 0;
-diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
-index 63557d2c06..f55571b31d 100644
---- a/tests/qtest/npcm7xx_pwm-test.c
-+++ b/tests/qtest/npcm7xx_pwm-test.c
-@@ -280,7 +280,7 @@ static uint64_t pwm_compute_duty(uint32_t cnr, uint32_t cmr, bool inverted)
-     } else if (cmr >= cnr) {
-         duty = MAX_DUTY;
-     } else {
--        duty = MAX_DUTY * (cmr + 1) / (cnr + 1);
-+        duty = (uint64_t)MAX_DUTY * (cmr + 1) / (cnr + 1);
-     }
- 
-     if (inverted) {
--- 
-2.30.0.280.ga3ce27912f-goog
+  ^ not very useful information ;)
+
+What about the simplest approach Peter suggested, a 32-bit duty?
+
+> Thanks Peter for finding this out.
+
+Technically Coverity found this out.
+Using QEMU git tags, this is:
+
+Fixes: CID 1442342
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>  hw/misc/npcm7xx_pwm.c          | 4 ++--
+>  tests/qtest/npcm7xx_pwm-test.c | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/misc/npcm7xx_pwm.c b/hw/misc/npcm7xx_pwm.c
+> index e99e3cc7ef..90b4f630a0 100644
+> --- a/hw/misc/npcm7xx_pwm.c
+> +++ b/hw/misc/npcm7xx_pwm.c
+> @@ -102,9 +102,9 @@ static uint32_t npcm7xx_pwm_calculate_duty(NPCM7xxPWM *p)
+>          if (p->cnr == 0) {
+>              duty = 0;
+>          } else if (p->cmr >= p->cnr) {
+> -            duty = NPCM7XX_PWM_MAX_DUTY;
+> +            duty = (uint64_t)NPCM7XX_PWM_MAX_DUTY;
+>          } else {
+> -            duty = NPCM7XX_PWM_MAX_DUTY * (p->cmr + 1) / (p->cnr + 1);
+> +            duty = (uint64_t)NPCM7XX_PWM_MAX_DUTY * (p->cmr + 1) / (p->cnr + 1);
+>          }
+>      } else {
+>          duty = 0;
+> diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
+> index 63557d2c06..f55571b31d 100644
+> --- a/tests/qtest/npcm7xx_pwm-test.c
+> +++ b/tests/qtest/npcm7xx_pwm-test.c
+> @@ -280,7 +280,7 @@ static uint64_t pwm_compute_duty(uint32_t cnr, uint32_t cmr, bool inverted)
+>      } else if (cmr >= cnr) {
+>          duty = MAX_DUTY;
+>      } else {
+> -        duty = MAX_DUTY * (cmr + 1) / (cnr + 1);
+> +        duty = (uint64_t)MAX_DUTY * (cmr + 1) / (cnr + 1);
+>      }
+>  
+>      if (inverted) {
+> 
 

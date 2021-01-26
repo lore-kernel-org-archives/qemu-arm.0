@@ -1,194 +1,186 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp887677lfd;
-        Mon, 25 Jan 2021 15:32:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwW61wfybx87QQJfD2H59/8XPyCTzzlcjdg7ZDqQraC2mibEhrmmGGnA/Rn2rjGjAj1hcAj
-X-Received: by 2002:a25:2c97:: with SMTP id s145mr4184752ybs.249.1611617574807;
-        Mon, 25 Jan 2021 15:32:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611617574; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp1543568lfd;
+        Tue, 26 Jan 2021 09:11:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxSUDzEgN8cAlB6B7ut1RGq4rcSpjP8NKy8prSTgCWSLNQzJwS3xyux4ZHmkpYgTF5bT1vO
+X-Received: by 2002:a25:d84d:: with SMTP id p74mr9156279ybg.135.1611681094590;
+        Tue, 26 Jan 2021 09:11:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611681094; cv=none;
         d=google.com; s=arc-20160816;
-        b=crTqpcU2S45yf3sO/qaxGkX9ARjQt2WfQJm4nfu/GeBku6tiJVh1eUamxrE4rpW1ax
-         zE4P8EVjckQzxublOM0p4NYGNKAqppPUnwWfdy3sVelHZAWPSdxvHbjAEO1bkNZnAFg0
-         EDm5al2WCiI3GvcAsIlFlsta7j7z7gDa78AxW3aohE6C+QbtHxhjrJSsRWHy4y2MOogs
-         wWzcywAwL8VmwQSHfCNx69m/+KbJtkqFjAAFtkAjU3SiFm4TTdH3ipIih4Pw4S09mAJT
-         xnBKcgl7PC1cSRO2iGufo+I/N27UKmPqE3hF/CqY188277RdGWeFwvP2CoqaLl50lxkp
-         Ogcw==
+        b=CpDdDFXXVQGBCsIDWW16YyziwOPle+9XjyAbglgXgWcsJMIBhHc0xE9uayENLpm4vG
+         WGQPAQo/TclWbxLPOaekGdX4VzdqtEJRaBmaGfnwIjQbTN2/+leYTScbwsluJN81qVC9
+         7HGlXDvdfga4HrgWJPtJoexqiAFcOcU3/9Lvc//MRwSGrnOKLT2eRNmTcUWceKaJgh0t
+         RcOf1159JynRfWKqHiwv8qIvbZ/pZ2zZAAX/IusOM64Q2Swhe9wnWiqSdGwHTnQ/bUDe
+         S8yvm+MwAtOkT/eiIXjNFf436Ari05zw5A9qNG8YN0plzzHvjaGaJ7aO6TAlK1PxX0qF
+         LO/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=i/5X3yl8sRh8vdJUUOTx55n0DGyXxxdJPLa1+JpDVtE=;
-        b=sQHqu2ntkivdSbVfsSdWdNXLAS4WkZcI4MZrwBklXOlp6RCQJpDuxkPXePm7+ed30p
-         qCQ6rR1eeOzrTtZ/hDqA+KrRWL0KiBBaN5HZNQBYc/GYAJmqdtHfC+OaZ1BI8ayi3ip4
-         9WsNGs7skL6xReGXohzBtc9sV0ln1KFU+jk5tbR0PpLEJZFPe/6e3/IgGfYx/686LrOn
-         Al07nN8rwokdu55W8Dl0eH/4FnOJVGDTcKg54gfIsxNuNSgVrGP2hoZaYCCuAb/cfmPi
-         OuD76V24NKomnWKm3Zp/xNf6gwzmGn6essc3i4NPN735NPgRBbhhtByHV+rjc+VGnFIZ
-         GXyQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ugh5R04K55nASwcE5f02HiwZDz8uqE+EUVZkb2KWqDQ=;
+        b=JvohclmkAVv/FmtmnU1R2pEGKUFwxYMaE21g1mwmgpvhT9SmpMmccwjpy7EeNi0NNM
+         y8fcbGpC1p0H63aufdxv00ScL0aGnRPiFHszdhBaeIWEa7atnbPf4y7YIh+A2yUr+H9/
+         dulPscESIgHD3h8/GcgQv0BfnKBJ6/AR26cOeVHXpUD4iwbMio6FJ9OrvgY9/NOdo1TV
+         jPZQ5gE9TBb6jPeo258+G9mD65IDj4uAQNzBbzPoFysRimOHzWMyWbu91Ki1wUO8aKQl
+         EZX72iZk8eZjbiYx5pgse3TyObTfhAFg8RWibYwvReq0EGrsNpFUfu7K0yjQIHTBAz12
+         zQlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@sent.com header.s=fm2 header.b=cfvvas5+;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="XC+/L6NG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sent.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=Yl3wA9qP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h7si19675620ybh.288.2021.01.25.15.32.54
+        by mx.google.com with ESMTPS id 188si2615987ybn.390.2021.01.26.09.11.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jan 2021 15:32:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 26 Jan 2021 09:11:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@sent.com header.s=fm2 header.b=cfvvas5+;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="XC+/L6NG";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sent.com
-Received: from localhost ([::1]:41300 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Yl3wA9qP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l4BLq-0000rF-6b
-	for alex.bennee@linaro.org; Mon, 25 Jan 2021 18:32:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42114)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l4RsL-0000QC-L2
+	for alex.bennee@linaro.org; Tue, 26 Jan 2021 12:11:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34542)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bertofurth@sent.com>)
- id 1l4BLj-0000r3-6r; Mon, 25 Jan 2021 18:32:47 -0500
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25]:59895)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bertofurth@sent.com>)
- id 1l4BLh-0001D3-A3; Mon, 25 Jan 2021 18:32:46 -0500
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailout.west.internal (Postfix) with ESMTP id 5D886ED4;
- Mon, 25 Jan 2021 18:32:43 -0500 (EST)
-Received: from imap1 ([10.202.2.51])
- by compute6.internal (MEProxy); Mon, 25 Jan 2021 18:32:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sent.com; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type; s=fm2; bh=i/5X3yl8sRh8vdJUUOTx55n0DGyXxxd
- JPLa1+JpDVtE=; b=cfvvas5+pN39jVAvLkndTLLQTvbLO/84H5LuTpoax7/U/mU
- 7clXzyJ+Ff/NZ2uKBo4gBkzuZ/2VxRze964BA6mUPxgYcA23cY8VJWDZFfdXRAhq
- b7/DUTl33awixo8ZtoZyitK8KMVdrHeNBAVrNLRd6+92PFkCHGX6nZKYPVY1gd1T
- 6akgEV1VzocNXJVNSLpAC/cnD7s7CL6t1b6C4Xjc8/aCeEFSIBZK0Um0U8tHMSU/
- VvIy31HTe4CRWUNqci+XvUMhiFD1ph/mDXnp6ejL8UZAXopwAF0tgl+fkyQAbuq5
- wKqieAPq3a/nEs3VcSLXsiNxO954gfFiTOWe6fw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=i/5X3y
- l8sRh8vdJUUOTx55n0DGyXxxdJPLa1+JpDVtE=; b=XC+/L6NGgVwDbHt/j8IfQp
- mw2dvoHKQ0R1bNTxb1uveH5PAnQQIWkvlZBRfNvb0lpGdnzvIzXRRZw8MKPnjejT
- 89yx4DnD30wfHJ1fxZj/rGuKplwBg/QBoUk+MiVf4h4tchAmhZtB7GhH5hiLux4h
- nuAwQsdvea1WYTtnyDlsFPS12GO4L/F70RFsVUIdSF9KmVinTQfmCdFSvEM8S5di
- b5Ef8geUvI6+Ps9maYUesWnwnrBduuYIhMAH8xdjldt1Vez9Bd3cojoRhWdKlRe3
- DxVIKcj2hx31xnLo3Jpv/BEpLOfdA5iQPvwtDbLYRChpoE2ACPSjRKj9mhJv7nKg
- ==
-X-ME-Sender: <xms:GlUPYMaVpQv7K1Z9_uQ8TCewkTFTlanaLBatNNTGW7XsD_RWjv-bZg>
- <xme:GlUPYHbFjsj7iTzlEIhVR3J-3ZGfZuNHHqUNdj2WtaRbUhTr3NsSX_1lCUxIxupF1
- pJ3ze68DLETBLCyL9s>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrvdeggddtlecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedfuegvrhht
- ohcuhfhurhhthhdfuceosggvrhhtohhfuhhrthhhsehsvghnthdrtghomheqnecuggftrf
- grthhtvghrnhepkedvffekhedugffhieeffeeujeeuueeifeevtdehfffhvdfhueejleeh
- tdfhfedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
- epsggvrhhtohhfuhhrthhhsehsvghnthdrtghomh
-X-ME-Proxy: <xmx:GlUPYG9vWv7IWA2fcPPH1WnF20uxD0tdskuPmAVGWAlCwr2YLdTgRg>
- <xmx:GlUPYGqY1s3QaLg2L5u7HI3alerFSDI8wHtuO8DcOM0FKfpMwimwWw>
- <xmx:GlUPYHrlSRsR9Dw0XF_lyQkBAlQ4V4rQ5xFpulZ-JdsQL3zIXpI7Pg>
- <xmx:GlUPYGRrNilaOspb0c3I4uG81QmNubBuMoHwn_hQsH_xy-Be5AgUcg>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 73C75130005D; Mon, 25 Jan 2021 18:32:42 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.5.0-alpha0-78-g36b56e88ef-fm-20210120.001-g36b56e88
-Mime-Version: 1.0
-Message-Id: <083767b3-3621-4735-9f05-77153f6894a1@www.fastmail.com>
-In-Reply-To: <CAFEAcA-pm+k4ukfVQ_zg-Bi5SAj4e2P9LEVHpbCkSK6wR=T-Mw@mail.gmail.com>
-References: <994f40e1-2a5b-4b7a-a4aa-23f824881d8a@www.fastmail.com>
- <CAFEAcA-pm+k4ukfVQ_zg-Bi5SAj4e2P9LEVHpbCkSK6wR=T-Mw@mail.gmail.com>
-Date: Tue, 26 Jan 2021 10:32:21 +1100
-From: "Berto Furth" <bertofurth@sent.com>
-To: "Peter Maydell" <peter.maydell@linaro.org>
-Subject: Re: KVM guests reading/writing guest memory directly and accurately
-Content-Type: text/plain
-Received-SPF: pass client-ip=64.147.123.25; envelope-from=bertofurth@sent.com;
- helo=wout2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l4Rrl-0000O2-Td
+ for qemu-devel@nongnu.org; Tue, 26 Jan 2021 12:10:57 -0500
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d]:37016)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l4Rrk-00076T-6k
+ for qemu-devel@nongnu.org; Tue, 26 Jan 2021 12:10:57 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id g15so2600137pjd.2
+ for <qemu-devel@nongnu.org>; Tue, 26 Jan 2021 09:10:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ugh5R04K55nASwcE5f02HiwZDz8uqE+EUVZkb2KWqDQ=;
+ b=Yl3wA9qPwapXzt79TxVfRAg5mUSnA3xpLkwPJ0nJEHLxCiBcAnkITbWW9y+jHTfhkC
+ 6cgwhe3lCHxFyz7nS2Q/Q5qUF02AmUtBW2E6CeZtoqqw2DgFa/f/3PP5H2nuueo4Mq4u
+ hSOq64Huna7QS4xJdXyUKTVNeLy4hvu1sOL8AWCA1iHRiGCdfApGSdH74yimcjn+Qw17
+ IPu8EUs3QfWF+kkQGB4c5NMDjghIiTrZKy7cR+iAudACIWD5PcMtPaZufuoSHFdgHRvB
+ eXsIeOazVM8yhxkp2HxeyILLyD+JkSpLTDzKimQtqYyq7j28Cx+Z3Gt/htLH8AkpamHx
+ EA+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ugh5R04K55nASwcE5f02HiwZDz8uqE+EUVZkb2KWqDQ=;
+ b=aZlWxJR8BJmArQEzQtgJpArKAtFdNZ1hUz5HQ4TFxeOZ8ieHSuRsrRLLiJ3Cxz/XpF
+ RKnlwvki52vzchZxoRtJpVW30lEWxcWB/SGEtmJcdjz9OcAam2UHHn8KG4/yCJeusLQi
+ OxAgiU/+qaZPDlSuAeP+d1LUXE2lXaLDjQYvIdwDs034Tc+TxYUTTfnXvhVhbkRgrNgi
+ jUAepcdBkBQcXhdRxS53be3ZTpuZgc2clbVyJ+Efb/xOl7nFdd7ae6UXPpUekHk+JXeR
+ NIyDDypIplIvr3XXGDJwXnkejRFIr3T9rv7GIf43JbYkdvAwjiO6RJt6zbWqp5ri9ENo
+ hYZw==
+X-Gm-Message-State: AOAM531fYiF6ke8q+6kjAkP8KfDNF8CNkxmS3cAbEd2cfzScsYV9uEht
+ HaddOTW9mv1KFluke/d3/gpMBQ==
+X-Received: by 2002:a17:902:b986:b029:df:e5d6:cd71 with SMTP id
+ i6-20020a170902b986b02900dfe5d6cd71mr7214714pls.42.1611681054520; 
+ Tue, 26 Jan 2021 09:10:54 -0800 (PST)
+Received: from [192.168.3.43] (cpe-66-27-222-29.hawaii.res.rr.com.
+ [66.27.222.29])
+ by smtp.gmail.com with ESMTPSA id j5sm2848494pjf.47.2021.01.26.09.10.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 Jan 2021 09:10:53 -0800 (PST)
+Subject: Re: [PATCH v3 11/21] exec: Add support for TARGET_TAGGED_ADDRESSES
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210115224645.1196742-1-richard.henderson@linaro.org>
+ <20210115224645.1196742-12-richard.henderson@linaro.org>
+ <CAFEAcA_ALYdVn5YLBTN57D8a2ut3C5kt0bVb9faZEQe_-rxmPQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <fee363da-f185-7d84-a43a-0983e5ae6c9c@linaro.org>
+Date: Tue, 26 Jan 2021 07:10:50 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_ALYdVn5YLBTN57D8a2ut3C5kt0bVb9faZEQe_-rxmPQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v8PZZF+rohlw
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: R03QqqhFYvJ3
 
-Thanks so much for your help and encouragement Peter. I really appreciate it.
+On 1/22/21 4:13 AM, Peter Maydell wrote:
+> On Fri, 15 Jan 2021 at 22:47, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> The AArch64 Linux ABI has always enabled TBI, but has historically
+>> required that pointer tags be removed before a syscall.  This has
+>> changed in the lead-up to ARMv8.5-MTE, in a way that affects the
+>> ABI generically and not specifically to MTE.
+>>
+>> This patch allows the target to indicate that (1) there are tags
+>> and (2) whether or not they should be taken into account at the
+>> syscall level.
+>>
+>> Adjust g2h, guest_addr_valid, and guest_range_valid to ignore
+>> pointer tags, similar to how TIF_TAGGED_ADDR alters __range_ok
+>> in the arm64 kernel source.
+>>
+>> The prctl syscall is not not yet updated, so this change by itself
+>> has no visible effect.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  include/exec/cpu_ldst.h | 20 +++++++++++++++++---
+>>  1 file changed, 17 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+>> index e62f4fba00..1df9b93e59 100644
+>> --- a/include/exec/cpu_ldst.h
+>> +++ b/include/exec/cpu_ldst.h
+>> @@ -69,17 +69,31 @@ typedef uint64_t abi_ptr;
+>>  #define TARGET_ABI_FMT_ptr "%"PRIx64
+>>  #endif
+>>
+>> +static inline abi_ptr untagged_addr(abi_ptr x)
+>> +{
+>> +#ifdef TARGET_TAGGED_ADDRESSES
+>> +    if (current_cpu) {
+>> +        return cpu_untagged_addr(current_cpu, x);
+>> +    }
+>> +#endif
+>> +    return x;
+>> +}
+> 
+> The current_cpu global is a nasty hack and I don't like seeing
+> new usages of it. In particular, it's very difficult to
+> analyse in what places this will get called when current_cpu is
+> NULL and whether it's always OK to not clean the tag in that
+> situation.
 
-All the best!
+Well, that'll be a really lot of changes to add cpu/env as an argument to
+get_user et al.
 
-On Mon, 25 Jan 2021, at 03:07, Peter Maydell wrote:
-> On Sun, 24 Jan 2021 at 07:22, Berto Furth <bertofurth@sent.com> wrote:
-> > Can anyone give me some advice on how a machine or device can read and write kvm guest ram memory and get a guaranteed up to date result? Can someone point me at an example in the latest QEMU source code? I'm working with an ARM-32 guest (-cpu host,aarch64=off) running on an ARM-64 host (Cortex A72 - Raspberry Pi4b).
-> >
-> > I have a problem where if I write directly to my guest RAM, (such as a DMA transfer) then the guest can't see the change straight away. Similarly when the host writes memory, the guest doesn't see the change until much later.
-> >
-> > If during a KVM_EXIT_MMIO the qemu host changes some values in guest ram memory (via address_space_write() or cpu_physical_memory_rw() etc...) , is there a way to make the guest be able to accurately read that memory as soon as the exit is complete. Additionally if a guest changes a value in ram just before a KVM_EXIT_MMIO, is there a way to ensure that the QEMU host can then read the up to date newly set values?
-> 
-> With KVM I think this is just normal "multiple threads/CPUs both
-> accessing one in-memory data structure" effects, so you need a
-> memory barrier to ensure that what one thread has written is
-> visible to the other. I think that the idea is that
-> the functions in include/sysemu/dma.h provide a dma_barrier() (which is
-> just a CPU memory barrier) and some wrapper functions which put in the
-> barrier on the right side of a read or write operation. On the guest
-> side it should already be using the right barrier insns in order
-> to ensure that real hardware DMA sees the right view of RAM...
-> 
-> We're very inconsistent about using these -- I've never liked the way
-> we have separate 'dma' operations here rather than having the normal
-> functions Just Work. But I haven't ever looked very deeply into what
-> the requirements in this area are.
-> 
-> > I understand that the proper thing to do is to set up the memory region in question as MMIO so that when the guest accesses this memory a KVM_EXIT_MMIO will occur but the memory region in question has to be executable and MMIO memory areas are not executable in QEMU. In addition it's not easily possible to predict before hand exactly what memory addresses are going to be involved in DMA, so I'd prefer to avoid having to dynamically construct little MMIO memory islands inside the main guest ram space as the guest runs.
-> 
-> You only want to mark regions as MMIO if they need to actually come
-> out to QEMU for the guest memory access to be handled -- typically
-> this is device MMIO-mapped register banks. Normal RAM isn't mapped
-> as MMIO.
-> 
-> > I'm assuming that the guest could be modified to disable d-caching (modify the ARM register SCTLR / p15 ?) and that may help but I'm desperately trying to avoid that if possible because I'm working with a proprietary "blob" on the guest that I don't have all the source code for.
-> 
-> With Arm KVM doing this wouldn't help; in fact it would make things
-> worse, because then the view of guest RAM that the guest sees has
-> the non-cacheable attribute, but the view of guest RAM that QEMU
-> has mapped is still cacheable, so the two get hopelessly mismatched
-> ideas of what the RAM contents are.
-> 
-> (Side note: if the guest wants to map RAM as non-cacheable, this
-> won't work with Arm KVM (unless the host CPU supports FEAT_S2FWB,
-> which is an Armv8.4 feature), for the same "QEMU and guest view
-> of the same block of RAM disagree about whether it's cached" reason.
-> The most commonly encountered case of this is that you can't use a
-> normal VGA PCI graphics device model with KVM, because the guest maps
-> the graphics RAM on the device non-cacheable.)
-> 
-> > I know it's not very professional of me to make an emotional plea, but I've been working on this for weeks and I am desperately hoping someone can point to a solution for me. I am not a KVM expert and so I'm hoping I'm just missing something simple and obvious that one of you can quickly point out for me.
-> 
-> Nah, this isn't obvious stuff -- a lot of QEMU's internals aren't
-> very well documented and often are inconsistent about whether they
-> do things correctly or not...
-> 
-> thanks
-> -- PMM
->
+Let's see how easily coccinelle can fix em all up for me...
+
+
+r~

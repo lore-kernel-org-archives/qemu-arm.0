@@ -1,174 +1,133 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1493713lfg;
-        Fri, 12 Mar 2021 10:43:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwZLP/aIXkeFc4KdkLt36d/YHheSDbyO3shRMx1DSCdAZkF97+zGk/LjwJ5BvDTJ/7AVjiQ
-X-Received: by 2002:a92:d981:: with SMTP id r1mr3684688iln.98.1615574632631;
-        Fri, 12 Mar 2021 10:43:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1615574632; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp1091141lfd;
+        Mon, 25 Jan 2021 22:13:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx+bG1Mw+EfDe7AhKXMQypJ/uLljPx1RnKQSc8ylfhT4X3EaYHORoCWU4890QsSfydvXOmo
+X-Received: by 2002:a25:c142:: with SMTP id r63mr6135687ybf.468.1611641614597;
+        Mon, 25 Jan 2021 22:13:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611641614; cv=none;
         d=google.com; s=arc-20160816;
-        b=OKc0DQ95hPL33MpKAo73MWvg0ka8Poc+w2Wuc8IolBaw7M+rv4pe4jEUxzTd4smSWK
-         01h0/QFiBHdnf2fP79bHo7bY93IgAYHyyz9bhAwLI2KxG/vvFQlII/D38ETC46kk+clf
-         jwOY25O3/rTObLR81rCU9S56QN7hBqlY1THElfDzyIV9VipsZIzsAFQjwjR47PGQuq4C
-         isStcuG+7i0Uuh6iQVkjjThj4h8NhGYZZ8+lI0yDU0YVCe3/r0JpkyTzKUcka6Al28v8
-         ER0t9i/jffUsy94QVSnxrmIn1lBU9NaEF9+XG9I2UVIzZpCfV+Wr5OsNuJ2tBpb0QwkA
-         WmmQ==
+        b=blH3TFLIGZOUuN2eNGm9fi0ro/D0GcF/ODJx1/mBBFZh2gotz+X9vbZtN8BQs8vWMS
+         P6E+ZPjXB1CwchrQPvpqT2/5vNvmDzi5aqYmmBoMmhbae1qxKIwWZgyBe07KWnYQKAZv
+         G6+LBVSOdb2z/9pgxTg3Y36m9CEsN6uQAM2qyA6QVu4GywuDorvbCNKfJwOigfGfKq7Y
+         OdLd3Qa7pZ6tmx0uo4ogQ9COXhl49sUUCn3TqHdAjQ3QtU60Rh4d+OQ2hMq6ED4T+mo+
+         I4U7IW6WYWbawcZbQuF0iLU8MWArCWO6HTx9dOr5E+Sth4yHq5nGVZ0cwfRRJP6XPgC8
+         5ONw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=n2+FoxPUsl3ql0sfBkfX+WZgRl9gRX3YL+B1LkTue4Q=;
-        b=QquaRGphOU3RQsXHc912pcv35uo/ourNkiRv7V42TzztyrNCv0nw3eESDIuKpEoWGt
-         lXP78aXp0AqR9yVLmPH3ZlSqM5nnB9396vWOyHwo4/U/PjawckcSvgzK96zkDym4iagG
-         GR4Li28SSrAkynTuwsOvoPeRM+/3K27E4UiYd2PAaui7+As5ygrCCIdtZd6TUEBqSOzE
-         qx6KNR0YmaNYMU6IhYFojjzha6E0pJY4ZOuKh6O5BIoJ0XVdi53Ri+eW8cQSljfvoWAX
-         nuyOphtBb4ULe1L/O/nkt5OJ5WE7CMsTEw/iPQrLNYcMBmjeFk/Ch98JUIoDPhCbXbdt
-         0LPg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=CsvfrXpT9lFrXbb5iKxguc7MjT66Qndg/dGdb8vXonA=;
+        b=NMBYaHFVF8A3P2blfflhnt932gC+iMwJoGq/1b/QrL9eM7rG2gmuCNZ/0drztbdZES
+         1zSay1GRTYPwa7O4pCc1uB3XV9qLDdIWJn2fiklGT/n4c3cjh8/i6xdKOkFa7EIdiGQf
+         k/SZc8k++zSgpb2yXjNyj+spnChak19+nr3frBc5W5KWAxdOC5eX75ooWm6+ft/FTSJs
+         huqJI21MnidD/34SQm2iuj/Fh/4PwKwhwoQ30KHbbxWosfS09VMDvrjVUgwWotf13sds
+         +mKYvbxq/hh0CzK9sCiuWe6Jl/YKF6fmCNwoRQi1vi75+NQrlYNLQ6WcVdHCfS6res1v
+         Ve7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fk+vk82T;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8si5577123jam.14.2021.03.12.10.43.52
+        by mx.google.com with ESMTPS id d1si22616797ybi.151.2021.01.25.22.13.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Mar 2021 10:43:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Jan 2021 22:13:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fk+vk82T;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51642 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lKmlL-0005sq-Qg
-	for alex.bennee@linaro.org; Fri, 12 Mar 2021 13:43:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59816)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l4Hba-00067W-1f
+	for alex.bennee@linaro.org; Tue, 26 Jan 2021 01:13:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42890)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lKlbh-0005Wa-Ly
- for qemu-devel@nongnu.org; Fri, 12 Mar 2021 12:29:49 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:41782)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lKlbd-0002fX-2T
- for qemu-devel@nongnu.org; Fri, 12 Mar 2021 12:29:49 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- t5-20020a1c77050000b029010e62cea9deso15611583wmi.0
- for <qemu-devel@nongnu.org>; Fri, 12 Mar 2021 09:29:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=n2+FoxPUsl3ql0sfBkfX+WZgRl9gRX3YL+B1LkTue4Q=;
- b=fk+vk82TQVMMoImoExwzAFGQk9qrBU+Uu5Axj6WtqT7+bT/1AebGG+OflNucHgdqre
- c2TEntJhJgIL7CnGjXlQ/sD19+gwdRFXY5/B/Pk6YoCuLsHsrprRjDVJ7SRGT6vMy4g+
- 35I0Xw62nba0IyvflR0m33UXARkTkUeVUg0dV5m6tNkGbCKsrf2uT84RSzCJIW10B1oE
- I3aozwKPkBeDuQp+cxmwuG+B2B2MixUmc/UQqg5vNQqn0ML98GRpkmjka0OmzxJxLt2V
- 7R0jXumJ7s5d0EuGM9A7fRPq3RHDRuqSk8iW0ZCNeGW4BhjmgTPf18nG++F19mjmcXwv
- G5vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=n2+FoxPUsl3ql0sfBkfX+WZgRl9gRX3YL+B1LkTue4Q=;
- b=OGAHIGt3CSHroHwXI+fktS8kyfozdfclMjXicX5ubDBKiFQovDOX6LfJ0mPTnHfm+8
- Rys4punstSj6s6U7ZTUf7WLi37zR+z25YlLCOpq4QKkJCYCde7h7miB46L0clyjdFAWu
- FoQW3uH02nrxo8DAJUpriyI2cVpTpqCplSDYDMM08N6Lpi7ThcGTQB8RIEri8vwR7JRM
- b4J2oi1lllfzgpvkLj4/ny2nxujfN9fkz24z841o3a9IwpJ/c1zMP9yRdBuT98SFi7eb
- ogHz3EC5hNW5wJpV81BPLJQ/OFFYUx5ohL3StfLGVLgg+MPQJfxCYfrF+UcJHHX6AMco
- SjgQ==
-X-Gm-Message-State: AOAM532Nn9h4UmOzI7VtAybHqEzlWwgxCKbiQ3c+qH9vDXOE18GgfXRY
- dmUZbSY6AqSGzmliK2HAVTV3UA==
-X-Received: by 2002:a1c:7916:: with SMTP id l22mr13884675wme.86.1615570181495; 
- Fri, 12 Mar 2021 09:29:41 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id m132sm2679001wmf.45.2021.03.12.09.29.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Mar 2021 09:29:41 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-6.0 0/2] arm: Make M-profile VTOR loads on reset handle
- memory aliasing
-Date: Fri, 12 Mar 2021 17:29:37 +0000
-Message-Id: <20210312172939.695-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1l4HSc-0005gO-BA; Tue, 26 Jan 2021 01:04:18 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2596)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1l4HSZ-0002fl-PW; Tue, 26 Jan 2021 01:04:17 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DPx3t1fYbzjCLX;
+ Tue, 26 Jan 2021 14:03:06 +0800 (CST)
+Received: from [10.174.186.182] (10.174.186.182) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 26 Jan 2021 14:03:55 +0800
+Subject: Re: [RFC PATCH v2 0/3] vfio: Some fixes and optimizations for VFIO
+ migration
+To: Alex Williamson <alex.williamson@redhat.com>
+References: <20201209080919.156-1-lushenming@huawei.com>
+From: Shenming Lu <lushenming@huawei.com>
+Message-ID: <76b14984-3574-6093-238a-9b9eb4b2ef2d@huawei.com>
+Date: Tue, 26 Jan 2021 14:03:54 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201209080919.156-1-lushenming@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.186.182]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=lushenming@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Kumar Gala <kumar.gala@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JiwqAyCMsgY0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ mst@redhat.com, Marc Zyngier <maz@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
+ qemu-arm@nongnu.org, yuzenghui@huawei.com, wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8NEpHTfU4FU/
 
-For Arm M-profile CPUs, on reset the CPU must load its initial PC and
-SP from a vector table in guest memory.  Because we can't guarantee
-reset ordering, we have to handle the possibility that the ROM blob
-loader's reset function has not yet run when the CPU resets, in which
-case the data in an ELF file specified by the user won't be in guest
-memory to be read yet.
+On 2020/12/9 16:09, Shenming Lu wrote:
+> This patch set includes two fixes and one optimization for VFIO migration
+> as blew:
+> Patch 1-2:
+> - Fix two ordering problems in migration.
+> 
+> Patch 3:
+> - Optimize the enabling process of the MSI-X vectors in migration.
+> 
 
-We work around the reset ordering problem by checking whether the ROM
-blob loader has any data for the address where the vector table is,
-using rom_ptr().  Unfortunately this does not handle the possibility
-of memory aliasing.  For many M-profile boards, memory can be accessed
-via multiple possible physical addresses; if the board has the vector
-table at address X but the user's ELF file loads data via a different
-address Y which is an alias to the same underlying guest RAM then
-rom_ptr() will not find it.
+Hi,
 
-This series handles the possibility of aliasing by iterating through
-the whole FlatView of the CPU's address space checking for other
-mappings of the MemoryRegion corresponding to the location of the
-vector table.  If we find any aliases we use rom_ptr() to see if the
-ROM blob loader has any data there.
+Friendly ping, is there any further comments on this series (especially
+for patch 1 and 3)?  :-)
 
-I still think that long-term the preferable option is going to be to
-sort out our reset handling so that we can use three-phase-reset
-everywhere and then have the rom blob loader write data in phase 2
-which the CPU reset can read in phase 3. But that doesn't work today
-because CPUs are not on any qbus and so they must be manually reset
-outside the standard "system reset by resetting the qbus tree", using
-qemu_register_reset(). The ROM blob loader also registers its reset
-via qemu_register_reset(). Sadly qemu_register_reset() has no support
-for three-phase-reset currently. That all adds up to "fixing reset
-handling sufficiently for this approach to solve the problem is going
-to take a long time", so for the moment this series is a reasonably
-self-contained way to allow QEMU to run guest images linked to an
-alias of the vector table address.
+Thanks,
+Shenming
 
-thanks
--- PMM
-
-Peter Maydell (2):
-  memory: Add offset_in_region to flatview_cb arguments
-  target/arm: Make M-profile VTOR loads on reset handle memory aliasing
-
- include/exec/memory.h           |  4 +-
- softmmu/memory.c                |  3 +-
- target/arm/cpu.c                | 68 ++++++++++++++++++++++++++++++++-
- tests/qtest/fuzz/generic_fuzz.c |  4 +-
- 4 files changed, 75 insertions(+), 4 deletions(-)
-
--- 
-2.20.1
-
+> 
+> Shenming Lu (3):
+>   vfio: Move the saving of the config space to the right place in VFIO
+>     migration
+>   vfio: Set the priority of the VFIO VM state change handler explicitly
+>   vfio: Avoid disabling and enabling vectors repeatedly in VFIO
+>     migration
+> 
+>  hw/pci/msix.c         | 17 +++++++++++++++++
+>  hw/vfio/migration.c   | 28 +++++++++++++++++-----------
+>  hw/vfio/pci.c         | 10 ++++++++--
+>  include/hw/pci/msix.h |  2 ++
+>  4 files changed, 44 insertions(+), 13 deletions(-)
+> 

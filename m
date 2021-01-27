@@ -1,112 +1,106 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp278367lfd;
-        Wed, 27 Jan 2021 13:43:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwyPRXF+g7CMPfRE33+jvqfRod4MjJga0t5ssf71SYZH4H/Yn0VjWAnOpgVZYRlnasHW6OR
-X-Received: by 2002:a25:8112:: with SMTP id o18mr18953941ybk.208.1611783799588;
-        Wed, 27 Jan 2021 13:43:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611783799; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp284146lfd;
+        Wed, 27 Jan 2021 13:53:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwEmFA2a4FzP9aCfKzjMeaDmAYmMirdQXhN97qAa0DcTxFrAlAjILW5KFV5TsddnPBUNRe+
+X-Received: by 2002:a25:aba4:: with SMTP id v33mr21251320ybi.388.1611784417378;
+        Wed, 27 Jan 2021 13:53:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611784417; cv=none;
         d=google.com; s=arc-20160816;
-        b=MdDVMnY6Z17JrtNc+b3ywCqjQmp9Y5C/yUQZQVA8XbzlVd9wxtyjkOmlWxkVWvYX+e
-         jJ6632YT/ZCYOQMhH9aker/JoaNF/9JEXMv6kHOHiMmpMccvdQYT8koh69EtRTkFYWZ1
-         bfmh3P2X9+BLxT7ZWwX/ohchuYCs1zIbMA4Y6yMrLrcJW5DKY1lmsxsP08y/6d8LOWdS
-         Wh0EFEhXsOMTExhB0KXF6D859OHRJALUgtxs55zptaHxrERxeM/j6TvOwHWH4C9eXH1N
-         /VW+bDz9TCHJkkLAKrCkCL4abKCRwM8s5lCwSkU6LFs0fUgWCvYPTvQuswRSAPzlHU1H
-         ZPkA==
+        b=YVZ7cevAUhWjZ1n/layAeqNflarND68TQOoVtiUsf5EJIcCAe8u0YCDHZSNU8ZX/r1
+         D9GCD3sYc+U57uLbnucRFEYQYPCzR3KupyU37d83gA+86cQsAtSNe52MiWx3acikegEL
+         C+lPP+0tk6w3UXYYz4yAnfASflj8+FLU+izcGgvN9E8nVnkOp5hQxTbDdTBjcf+hE1U+
+         95IZbLUFCvhebF+XW+Bovz5Kg1HMSoL+wBCxy/H+RbuGYB1VoUQzm3KfPkHl9thPfPy9
+         YPmoIDIZgV/QfbJAG2ylZpOur16lQ9m4NHA9ap6akxjhCMtsUAs3VEnGa2e4z6pnFqAR
+         x0aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=l9uG97Z64EKE33FzNhO3mgkm0Nrr9f2/6MCrYDEqKDI=;
-        b=oBE39vussOZ97xc8ci46n64JPrBv++LBcrXkHX29kvT1e4C6/8jwYFLGf4CTM66Xo9
-         VpUc1HVZsGcOhV6nlmf7OrecMbv91PeAwYVgWqB31N7p2J+fBeHqbQiX354+MGmbpdCi
-         8TMhiDJbo+4nHQ1tSOWSnmzWyalR8K9yDfsYyTtZAm3gxEQF/c7dmWesu0Up+kHV1P14
-         bT7hxxSVK1zQ/x+MQG2AolUvXKNfoy6EMbD+oqkb0pYeCZt1PEX6g8Oq7U7+KCzuO11V
-         EYQ1QxsKX6n/iZBDp3XYrKEIv0vBESxDilyIj8hsy0NsXZ3v7p6zWrOBGfTxn0/zkO0r
-         DgLw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:dkim-signature
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject;
+        bh=3fB8raZFnOV40ct2MT96BSTKTS97g8mPuG6zACe83OI=;
+        b=0jdyAykZr5tH2Si2FZ6rtDI8HvkGAiEddnToo75W3v3GU5kBjo74voeSiU3xovozlo
+         +86H8yBlsMwteHAYNB9vDtzeafTBe3LzoGsh5+n1gyqu7Zgof05/3H3Ow9VUKWiYFFqG
+         iAzQq6h+b00O304ChXQFzibzuT0ddsn7Y+bUQ0jCmfkaWa2eQ2NOeSuA/2JnEMdflvDi
+         96PQLlPScSkFxpSy5Rd6bqIq1MpuD/+hcrFi2ABZSxTSWf+I61UN7b/F50AHkCyKEU3e
+         yVYLQj52MMuOXjMFV2KJU+L/sADDSNKsRJdXeNePkzG8uEb4q0wW7+d4uqhL1Dhi7iY0
+         47Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kNLotVVN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@nvidia.com header.s=n1 header.b=bJQ9y4em;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p1si3162064ybe.97.2021.01.27.13.43.19
+        by mx.google.com with ESMTPS id w8si3242738ybl.169.2021.01.27.13.53.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jan 2021 13:43:19 -0800 (PST)
+        Wed, 27 Jan 2021 13:53:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kNLotVVN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45674 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nvidia.com header.s=n1 header.b=bJQ9y4em;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1]:35360 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l4sas-0001XD-Vh
-	for alex.bennee@linaro.org; Wed, 27 Jan 2021 16:43:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46306)
+	id 1l4skq-00012d-Ol
+	for alex.bennee@linaro.org; Wed, 27 Jan 2021 16:53:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1l4saZ-0001Vq-L8; Wed, 27 Jan 2021 16:43:01 -0500
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234]:33869)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1l4saX-0002sL-Pw; Wed, 27 Jan 2021 16:42:59 -0500
-Received: by mail-oi1-x234.google.com with SMTP id h192so3847953oib.1;
- Wed, 27 Jan 2021 13:42:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=l9uG97Z64EKE33FzNhO3mgkm0Nrr9f2/6MCrYDEqKDI=;
- b=kNLotVVNKJN1wULrncXh5FENpaN8WQbFWsy/DJBLjxX0WTQ0UdDXYN3KcQf5OtGjY8
- 9YzI0Qg0S3DCkc6Zt3/SIkMIYbToFMAqmMYwx09zaGp7n0oVH8w8/u0zOr03PGCpV2BT
- 14lbTB/Dxkpxj9iVluDJTXJn0ennUhhRXQ0WQ+z/9QItDB+NkfjkO2GmhKSDnamcsXVB
- IVQJ/Cj78LaYs8RBA8zBBn8ZScFXRvzHWRSfHQH8Elnx14yFUAbREEkVwbw6shP/pwKp
- 1/YbXDgN94YunrK3PwqX9Tmnm/BrvJxCxSUj7ewP5BDr6CVYMlYB3iEF/VcxxVSQg0BR
- p+Kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to;
- bh=l9uG97Z64EKE33FzNhO3mgkm0Nrr9f2/6MCrYDEqKDI=;
- b=Qc8QNewgqHBfnoc+O/LYabIowuikd650NdbfqmYHbB8dm0Q8oo3eg95l7O1thVbq02
- gIzugeC94sdpoTSYA3YPhrXDdaIuLMkww3adK57XxDMYOgnDV+HfQDWazRpVwmF3DXxT
- Hkfae5Ygs/oBBGOlVImt7GErGoChJfrjJdqvkAGZcS+XlbaZCfdvscWSL+cuHIiGLQxD
- VFU0ZmrDzkU2A8vF27sL2QwzUdLCyg5h/sqzbJUQr8Hr0/N9h48uZtrp9/pX0ohM0T59
- dAtAqgw/tNtEuGb3JUvBanfK43Z6mPesZ5IKuooc6HXpWu1LjVjjNjgFFEMkLtosW6z6
- tYrw==
-X-Gm-Message-State: AOAM5326B0PEUl2YAfqAG8zRNlNyOgbTB5k6cYR+yh3ZmFBlYK1xO94s
- PWl3UVlfPdrt9V/EGsgXfA==
-X-Received: by 2002:aca:1901:: with SMTP id l1mr4670839oii.171.1611783774517; 
- Wed, 27 Jan 2021 13:42:54 -0800 (PST)
-Received: from serve.minyard.net ([47.184.170.156])
- by smtp.gmail.com with ESMTPSA id d3sm682676ooi.42.2021.01.27.13.42.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Jan 2021 13:42:53 -0800 (PST)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:84df:dff0:9fb7:e686])
- by serve.minyard.net (Postfix) with ESMTPSA id 8D06818055B;
- Wed, 27 Jan 2021 21:42:52 +0000 (UTC)
-Date: Wed, 27 Jan 2021 15:42:51 -0600
-From: Corey Minyard <minyard@acm.org>
-To: Hao Wu <wuhaotsh@google.com>
-Subject: Re: [PATCH 6/6] hw/i2c: Implement NPCM7XX SMBus Module FIFO Mode
-Message-ID: <20210127214251.GE2057975@minyard.net>
-References: <20210126193237.1534208-1-wuhaotsh@google.com>
- <20210126193237.1534208-7-wuhaotsh@google.com>
- <20210126234724.GC2057975@minyard.net>
- <CAGcCb12nJAMnZ+eaWC6n08hAFAVueCknSWzbEYFPp+GUApoRdg@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <kwankhede@nvidia.com>)
+ id 1l4skO-0000zt-G2; Wed, 27 Jan 2021 16:53:08 -0500
+Received: from hqnvemgate24.nvidia.com ([216.228.121.143]:6821)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwankhede@nvidia.com>)
+ id 1l4skM-0004K3-6f; Wed, 27 Jan 2021 16:53:07 -0500
+Received: from hqmail.nvidia.com (Not Verified[216.228.121.13]) by
+ hqnvemgate24.nvidia.com (using TLS: TLSv1.2, AES256-SHA)
+ id <B6011e0bf0004>; Wed, 27 Jan 2021 13:53:03 -0800
+Received: from [10.40.102.156] (172.20.145.6) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 27 Jan
+ 2021 21:52:50 +0000
+Subject: Re: [RFC PATCH v2 1/3] vfio: Move the saving of the config space to
+ the right place in VFIO migration
+To: Alex Williamson <alex.williamson@redhat.com>, Shenming Lu
+ <lushenming@huawei.com>
+References: <20201209080919.156-1-lushenming@huawei.com>
+ <20201209080919.156-2-lushenming@huawei.com>
+ <20201209132947.3177f130.cohuck@redhat.com>
+ <20201209113431.5b252e93@omen.home>
+ <3f7db9e7-3c98-5022-e907-e6214815fae9@huawei.com>
+ <20210126143602.0dac239f@omen.home.shazbot.org>
+X-Nvconfidentiality: public
+From: Kirti Wankhede <kwankhede@nvidia.com>
+Message-ID: <f11ef511-b0ef-807c-763a-e092684be00e@nvidia.com>
+Date: Thu, 28 Jan 2021 03:22:47 +0530
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAGcCb12nJAMnZ+eaWC6n08hAFAVueCknSWzbEYFPp+GUApoRdg@mail.gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::234;
- envelope-from=tcminyard@gmail.com; helo=mail-oi1-x234.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210126143602.0dac239f@omen.home.shazbot.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [172.20.145.6]
+X-ClientProxiedBy: HQMAIL105.nvidia.com (172.20.187.12) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1611784383; bh=3fB8raZFnOV40ct2MT96BSTKTS97g8mPuG6zACe83OI=;
+ h=Subject:To:CC:References:X-Nvconfidentiality:From:Message-ID:Date:
+ User-Agent:MIME-Version:In-Reply-To:Content-Type:Content-Language:
+ Content-Transfer-Encoding:X-Originating-IP:X-ClientProxiedBy;
+ b=bJQ9y4em+YLwADcav8HG7l05fmna51NfccQ0L4x7cbspCnz881ufv2NqMNsUR7gfN
+ EnMYhvsKjUxLsKAXYdkF5pB9oT8O0CyoXBPwOHahHgD65X8ls8XS8A4+kGv4n3KE1U
+ DgDUHwkNFUYZ4/q6cd99sIquaKobTMuKTeXeOrBDaTI2AKkqfp54v4MnOq1tVWJL57
+ 38FL48w36xKxYmIwZn9OVNA1NTLGOkN97rHsZxuJNDX8dgDsIUnAempn0yTEcLdr49
+ p0EA7tqvgy5Yi2BFNgOjP/uROwR5dco8jAG4a8+i24i5oIQLG8rQoiXwz3SGNzb6Sb
+ iuNA7b/sQe0eA==
+Received-SPF: pass client-ip=216.228.121.143;
+ envelope-from=kwankhede@nvidia.com; helo=hqnvemgate24.nvidia.com
+X-Spam_score_int: -73
+X-Spam_score: -7.4
+X-Spam_bar: -------
+X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.308,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,68 +113,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Patrick Venture <venture@google.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- Doug Evans <dje@google.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ mst@redhat.com, Marc Zyngier <maz@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, yuzenghui@huawei.com,
+ wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uUuvTscNeSAD
+X-TUID: PWRQ3hvymLnT
 
-On Wed, Jan 27, 2021 at 12:37:46PM -0800, wuhaotsh--- via wrote:
-> On Tue, Jan 26, 2021 at 3:47 PM Corey Minyard <minyard@acm.org> wrote:
+
+
+On 1/27/2021 3:06 AM, Alex Williamson wrote:
+> On Thu, 10 Dec 2020 10:21:21 +0800
+> Shenming Lu <lushenming@huawei.com> wrote:
 > 
-> > On Tue, Jan 26, 2021 at 11:32:37AM -0800, wuhaotsh--- via wrote:
-> > > +
-> > > +static void npcm7xx_smbus_read_byte_fifo(NPCM7xxSMBusState *s)
-> > > +{
-> > > +    uint8_t received_bytes = NPCM7XX_SMBRXF_STS_RX_BYTES(s->rxf_sts);
-> > > +
-> > > +    if (received_bytes == 0) {
-> > > +        npcm7xx_smbus_recv_fifo(s);
-> > > +        return;
-> > > +    }
-> > > +
-> > > +    s->sda = s->rx_fifo[s->rx_cur];
-> > > +    s->rx_cur = (s->rx_cur + 1u) % NPCM7XX_SMBUS_FIFO_SIZE;
-> > > +    --s->rxf_sts;
-> >
-> > This open-coded decrement seems a little risky.  Are you sure in every
-> > case that s->rxf_sts > 0?  There's no way what's running in the VM can
-> > game this and cause a buffer overrun?  One caller to this function seems
-> > to protect against this, and another does not.
-> >
-> s->rxf_sts is uint8_t so it's guaranteed to be >=0.
-> In the case s->rxf_sts == 0,  NPCM7XX_SMBRXF_STS_RX_BYTES(s->rxf_sts) is
-> also 0, so it'll take the if-branch and return without running --s->rxf_sts.
-
-That is true if called from the
-NPCM7XX_SMBUS_STATUS_STOPPING_LAST_RECEIVE case.  There is no such check
-in the NPCM7XX_SMBUS_STATUS_RECEIVING case.
-
-> I'll probably add "g_assert(s->rxf_sts > 0)" to clarify.
-
-You never want to do an assert if the hosted system can do something to
-cause it.  If you add the check to the NPCM7XX_SMBUS_STATUS_RECEIVING
-case, it would be ok, but really unnecessary.
-
-If it's fine if s->rxf_sts wraps to 0xff, then this all doesn't matter,
-but you want to add a comment to that effect if so.  These sorts of
-things look dangerous.
-
-There is also the question about who takes these patches in.  I'm the
-I2C maintainer, but there's other code in this series.  Once everything
-is ready, I can ack them if we take it through the ARM tree.  Or I can
-take it through my tree with the proper acks.
-
--corey
-
+>> On 2020/12/10 2:34, Alex Williamson wrote:
+>>> On Wed, 9 Dec 2020 13:29:47 +0100
+>>> Cornelia Huck <cohuck@redhat.com> wrote:
+>>>    
+>>>> On Wed, 9 Dec 2020 16:09:17 +0800
+>>>> Shenming Lu <lushenming@huawei.com> wrote:
+>>>>   
+>>>>> On ARM64 the VFIO SET_IRQS ioctl is dependent on the VM interrupt
+>>>>> setup, if the restoring of the VFIO PCI device config space is
+>>>>> before the VGIC, an error might occur in the kernel.
+>>>>>
+>>>>> So we move the saving of the config space to the non-iterable
+>>>>> process, so that it will be called after the VGIC according to
+>>>>> their priorities.
+>>>>>
+>>>>> As for the possible dependence of the device specific migration
+>>>>> data on it's config space, we can let the vendor driver to
+>>>>> include any config info it needs in its own data stream.
+>>>>> (Should we note this in the header file linux-headers/linux/vfio.h?)
+>>>>
+>>>> Given that the header is our primary source about how this interface
+>>>> should act, we need to properly document expectations about what will
+>>>> be saved/restored when there (well, in the source file in the kernel.)
+>>>> That goes in both directions: what a userspace must implement, and what
+>>>> a vendor driver can rely on.
+>>
+>> Yeah, in order to make the vendor driver and QEMU cooperate better, we might
+>> need to document some expectations about the data section in the migration
+>> region...
+>>>>
+>>>> [Related, but not a todo for you: I think we're still missing proper
+>>>> documentation of the whole migration feature.]
+>>>
+>>> Yes, we never saw anything past v1 of the documentation patch.  Thanks,
+>>>    
+>>
+>> By the way, is there anything unproper with this patch? Wish your suggestion. :-)
 > 
-> >
-> > Other than this, I didn't see any issues with this patch.
-> >
-> > -corey
-> >
+> I'm really hoping for some feedback from Kirti, I understand the NVIDIA
+> vGPU driver to have some dependency on this.  Thanks,
+> 
+
+I need to verify this patch. Spare me a day to verify this.
+
+Thanks,
+Kirti
+
+
+> Alex
+> 
+>>>>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+>>>>> ---
+>>>>>   hw/vfio/migration.c | 25 +++++++++++++++----------
+>>>>>   1 file changed, 15 insertions(+), 10 deletions(-)
+>>>
+>>> .
+>>>    
+>>
+> 

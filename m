@@ -1,108 +1,107 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp294796lfd;
-        Wed, 27 Jan 2021 14:11:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzKxu+OOxXTcwZZNGCcTwGQz9TzRqsCQHJJvpYC1/zyHkWf+b3uMY1t5iwX/ku8wuvZC6t0
-X-Received: by 2002:a25:f54:: with SMTP id 81mr18144754ybp.76.1611785473341;
-        Wed, 27 Jan 2021 14:11:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611785473; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp298971lfd;
+        Wed, 27 Jan 2021 14:17:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzHzTXD3uAIys/5SIxqScRA5fZZvlWT/SlBhOFooE0IAnPxc51IND7zUWgzqZipRJJ9dnkE
+X-Received: by 2002:a25:d790:: with SMTP id o138mr19246236ybg.426.1611785857243;
+        Wed, 27 Jan 2021 14:17:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611785857; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVBkHfB/f+P2FVG4z0KRBURiDJrMs6NYznVF+TNjoxt9AkzSiY8R8EQN0P9ocfvjaj
-         lLQtIVHFL5EM9iMSCaOokdC0Ph6xhJfUCBo5q3vWczSymiAzY/znDZWMjjn231+xgNM7
-         /m1PaW4IMKP1xAL9yZrxYcb9wElmtODkV+/sLZCjak2uvdDYa6arm1hF7NwrEJOvc0B2
-         O/pxTiA5JA2Yx5pcpd3DzqPN0afT3bbOOmo7SZ6bHFqr0YcElY9naCOh9BcbFCIy3Vrp
-         jHZjtWi5/b3xsbbTlXh6AFQsIM02oylLU/uoRMQPvZmHVYQ9dH3yN6W8ICrkYuYAJPB/
-         zIcQ==
+        b=tZw6d1ErZ/H3WPGmLgZgVWjKvL9Vw6Oo1Y1Yl30SYgdSRNHY9E8ka0iVFKM2kCd5Su
+         icQaXonP/e7xO4EcYTtPK0gm+2HeF2mnYicQbDrCmjd8G4vHJdiSbjiZituMyWi85qJG
+         t40oDvNyXaUNgPY6IQ5aU614B+InNZBpTrm/R5dgv/qUA7ZQxvJ8t6r08o9ig5qK4Wb8
+         UHh8pL2ab78TmRpXIosJSg0I2Fdhqv7OUAPhFKxYmOymKHuzWTSLvH+rVowNhq9C/BOC
+         7eqP4wIBfDN9qo0TSruh7SBQfx9rsH3rEa07T1+QfXTp0XW4gNYMnruU7C4mVvVlXhZo
+         P5NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qd/PUZyZLreEzQbUiisMF4yo6oOEpNQQcPsYP3MH6ec=;
-        b=Q/3sbJoMZ4jloFDgVyB27h6VKtWP8qjcPdGIcOr/zBHkT69QPHIAAM4B03nvrplERD
-         1fg0n4KJSYKlLY9tFGRRcWKV06XWWPLevU5z6eV0DVgl14ycLbSB4Azo0HUQWAg6jG0f
-         pPp1BNdTv17wEe3yWastDwx2XL7TJVriCZvMQ2k23HkZF8AWrO3ngcZNglo3Y7gyPkxu
-         eCWO6GwF+NXSmwFlt4Xg72G3x7o76XxtDw4TQXFywDq0AmIaDekW8UYpLLWw7wBnHtub
-         YFOOGBhughUhubKNsaxyPl7NtykytklcYMr+BmgdXvTfW0mrMO64GGNylL6refnCJxZe
-         ajMA==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=OTuEjDC5K6UsCHMjmJcHO+UyZ528TXMXVDTN+oruipQ=;
+        b=zyXmURfTfXsNRAfkweoBMJ/XZL/TRJu2sRvWhAJzGFiReN3FAsGU+9jZ4I30dfJOaI
+         5uj8WJqliW5sZiZlWnvqB6CK5A0ISlUnP7caxSukiXe9YKhQOvXkvvSxYfOYGlQGxG9N
+         UJ0IhfP6f6etPwGIFkhMCYBRLYtdsfI9/770GNIFP8fLOQqra34bFZwNi++XaSktzmu7
+         9nLIaJm6vMdwcTzPsia7aLA0uhqWwCWrxfv1DFpvD7av6cVZOilWV/+uQBZlE5QIhhPZ
+         oefrZw+ldubyxcgsz1gSWFeSGRbV6GGQn1ZyIOlDZ78apy0M52uzsY6UI39ZfXnBS53+
+         bX3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DLVRBTIW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=olL+uqIl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k2si3259574yba.28.2021.01.27.14.11.13
+        by mx.google.com with ESMTPS id x13si3445911ybp.142.2021.01.27.14.17.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jan 2021 14:11:13 -0800 (PST)
+        Wed, 27 Jan 2021 14:17:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DLVRBTIW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=olL+uqIl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60902 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l4t1s-0003zf-N3
-	for alex.bennee@linaro.org; Wed, 27 Jan 2021 17:11:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51626)
+	id 1l4t84-0007m5-C0
+	for alex.bennee@linaro.org; Wed, 27 Jan 2021 17:17:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l4t1h-0003xa-Of; Wed, 27 Jan 2021 17:11:02 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:33478)
+ id 1l4t7T-0007l6-Ae; Wed, 27 Jan 2021 17:17:00 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:37356)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l4t1f-0006SQ-Rv; Wed, 27 Jan 2021 17:11:01 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id 7so3512941wrz.0;
- Wed, 27 Jan 2021 14:10:59 -0800 (PST)
+ id 1l4t7R-0007Fj-4P; Wed, 27 Jan 2021 17:16:58 -0500
+Received: by mail-wr1-x436.google.com with SMTP id v15so3520708wrx.4;
+ Wed, 27 Jan 2021 14:16:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qd/PUZyZLreEzQbUiisMF4yo6oOEpNQQcPsYP3MH6ec=;
- b=DLVRBTIWjKuK+xvNrzpNicEgNfU5RcZIw4s8aLjkJ5LZN7PP59c3Y/Eu0lPEa1/U0P
- Sf0N0+xVZoW1TH/6JM7m5ZQZSJ4z6MYCPytRM1/nR5sdZLPyY4SHVKVhMlCLFCC4+2rg
- iZvuwYVsKBJsOeeFGvPQBsMoAuBCWdg2Znl+kj17A/MCgaEDaiEwfAUp9k+gstegvjnd
- FTlam8zmMv4MDXpRXEXrqOo3rAgphOBe6EjPZ5Te694i923Wkj1r4/KykRNR5HJ0Q2bY
- Wqcux5KRsJ3CTO18Vv99uow24L5/kY4xdGj1h4z3MOnsi6Rmlj4hhDNt3TJkOq6dzOyy
- siCg==
+ bh=OTuEjDC5K6UsCHMjmJcHO+UyZ528TXMXVDTN+oruipQ=;
+ b=olL+uqIlMjicg1X6Clpb/GX0bpsJvAU0r3puKuHh6TsH/jsPKm9Go2hqPV/TofGJIh
+ a7s98nG/4X3BdNAb0oct4Fdthw6M4U88oFdT9bzQ0Ic5KnOVUtQXzxt33JX0OrBRgSfK
+ +oIh/1NWKGUBOI7jeILdzqxDqRjmqLx6YiWasLIugjs9xZER+BC5V7ZKnPun9LDemo5v
+ 2ARCFfSw5oyB2t97ApUQ8t8K4+GmoeouoeFN8UWSp2+zI3TVTDWQDCg9/1dMFSvO4uoN
+ HvULSwuVWgAKa+dhL4uoDpu86FpzPmswDTozHargZjQkGcGwRyxBK6irqnkcTLzqwQYQ
+ 2NHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=qd/PUZyZLreEzQbUiisMF4yo6oOEpNQQcPsYP3MH6ec=;
- b=sSX+Bsnys0YSDrt7Hry2tL5LXarREThYed+Wt6gLQIlwQbkcVWeFq6h0Y/NaZmzSJb
- taRnD/tcgEIjkMQ0mb/+4HmH8PZyLD1OPOG6MEBkOp0C6rgP1P2s5utLtz8q35angGzK
- slGmn3So/UyXvySlgTJ/25ufHUH6cmea5qXnVpS7XfcKNnJUbOBboYtLB35zmjA4d/6u
- LL8MXDfdU0xHMx46+hh1Qo2tfju8i65XeP7THbNI54fDNdGuoHF8bvwBMdQS5FkJ/L7S
- VKxYV35b0dwqPfCK8tUMjboaMZYXxUzzgSvJ61LNatx9vIglhp96bYmTZXMKBpSgb9TV
- wZnQ==
-X-Gm-Message-State: AOAM532gQ0LI2PI8qi0h2cDmCBC73TZ6R6J7onP55Y1AyvY37kp3noBM
- hkPBPwfZWdtu1vfZT6OlrnScqB2SXj0=
-X-Received: by 2002:a05:6000:1788:: with SMTP id
- e8mr13224883wrg.171.1611785458260; 
- Wed, 27 Jan 2021 14:10:58 -0800 (PST)
+ bh=OTuEjDC5K6UsCHMjmJcHO+UyZ528TXMXVDTN+oruipQ=;
+ b=JT68fTc7ldiIU+QT4LZ+rtgWl4nCvUhTR3HPH0dNMDzn3fhvx9E/fTfN3ZzkytdBzE
+ 1hMVLsfobezKuvnFh3oza83xp7woOzbrXnyyqQwHYd7fZ45b5jAl8AXu7WLHfAxM/ztQ
+ xENs0yEFN90uNDfEmC+w9CjJqVg1TCRDF8pLJ0+Qn/SBKR1KeeTNdcImuv8PPTyEZyIy
+ 6QnuzfJAO4vn6qWo4fs9c2y0Q84E5Fmz+PsImo5z52OjCYRw7rqqmpibYh70tnEbtUf/
+ OH6mMPkpDr21uvQBbAIEvmdzQOdVPkNSvbq+L1JB5M6XvRqmSPM5uljIuwG6QZ82+fYR
+ 2cAA==
+X-Gm-Message-State: AOAM53386N3ppewPPP6hRmTD4ZzApuSP1UlevmN2WziJyKF9Fm3ZZ+sD
+ Mm2Sw+jcJ3w+HtXaOB43yWg=
+X-Received: by 2002:adf:eb05:: with SMTP id s5mr13194981wrn.333.1611785814972; 
+ Wed, 27 Jan 2021 14:16:54 -0800 (PST)
 Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
  [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id c11sm4334396wrs.28.2021.01.27.14.10.57
+ by smtp.gmail.com with ESMTPSA id s24sm3747148wmh.22.2021.01.27.14.16.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Jan 2021 14:10:57 -0800 (PST)
-Subject: Re: [PATCH 25/25] hw/arm/stellaris: Remove board-creation reset of
- STELLARIS_SYS
+ Wed, 27 Jan 2021 14:16:54 -0800 (PST)
+Subject: Re: [PATCH 17/25] hw/arm/stellaris: Create Clock input for watchdog
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210121190622.22000-1-peter.maydell@linaro.org>
- <20210121190622.22000-26-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <53675a31-3af0-e4d9-62a8-bd1e4636b8cf@amsat.org>
-Date: Wed, 27 Jan 2021 23:10:56 +0100
+ <20210121190622.22000-18-peter.maydell@linaro.org>
+ <5ee67f0e-fcda-22bb-2001-109e488cd632@amsat.org>
+Message-ID: <83870454-4d8b-bb1e-7449-9edd18618b51@amsat.org>
+Date: Wed, 27 Jan 2021 23:16:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210121190622.22000-26-peter.maydell@linaro.org>
+In-Reply-To: <5ee67f0e-fcda-22bb-2001-109e488cd632@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -126,19 +125,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Damien Hedde <damien.hedde@greensocs.com>, Luc Michel <luc@lmichel.fr>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EwC9CjRF6mm7
+X-TUID: /ls92Q6utzCc
 
-On 1/21/21 8:06 PM, Peter Maydell wrote:
-> Now that the watchdog device uses its Clock input rather than being
-> passed the value of system_clock_scale at creation time, we can
-> remove the hack where we reset the STELLARIS_SYS at board creation
-> time to force it to set system_clock_scale.  Instead it will be reset
-> at the usual point in startup and will inform the watchdog of the
-> clock frequency at that point.
+On 1/21/21 10:59 PM, Philippe Mathieu-Daudé wrote:
+> On 1/21/21 8:06 PM, Peter Maydell wrote:
+>> Create and connect the Clock input for the watchdog device on the
+>> Stellaris boards.  Because the Stellaris boards model the ability to
+>> change the clock rate by programming PLL registers, we have to create
+>> an output Clock on the ssys_state device and wire it up to the
+>> watchdog.
+>>
+>> Note that the old comment on ssys_calculate_system_clock() got the
+>> units wrong -- system_clock_scale is in nanoseconds, not
+>> milliseconds.  Improve the commentary to clarify how we are
+>> calculating the period.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  hw/arm/stellaris.c | 43 +++++++++++++++++++++++++++++++------------
+>>  1 file changed, 31 insertions(+), 12 deletions(-)
+> ...
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/stellaris.c | 10 ----------
->  1 file changed, 10 deletions(-)
+>>  /*
+>> - * Caculate the sys. clock period in ms.
+>> + * Calculate the system clock period. We only want to propagate
+>> + * this change to the rest of the system if we're not being called
+>> + * from migration post-load.
+> 
+> This part was not trivial to understand. I read the Clock API
+> doc again then found:
+> 
+>   Care should be taken not to use ``clock_update[_ns|_hz]()`` or
+>   ``clock_propagate()`` during the whole migration procedure because it
+>   will trigger side effects to other devices in an unknown state.
+> 
+>>   */
+>> -static void ssys_calculate_system_clock(ssys_state *s)
+>> +static void ssys_calculate_system_clock(ssys_state *s, bool propagate_clock)
+>>  {
+>> +    /*
+>> +     * SYSDIV field specifies divisor: 0 == /1, 1 == /2, etc.  Input
+>> +     * clock is 200MHz, which is a period of 5 ns. Dividing the clock
+>> +     * frequency by X is the same as multiplying the period by X.
+>> +     */
+>>      if (ssys_use_rcc2(s)) {
+>>          system_clock_scale = 5 * (((s->rcc2 >> 23) & 0x3f) + 1);
+>>      } else {
+>>          system_clock_scale = 5 * (((s->rcc >> 23) & 0xf) + 1);
+>>      }
+>> +    clock_set_ns(s->sysclk, system_clock_scale);
+>> +    if (propagate_clock) {
+>> +        clock_propagate(s->sysclk);
+>> +    }
+>>  }
+> ...
+>>  static void stellaris_sys_reset_exit(Object *obj)
+>> @@ -690,7 +704,7 @@ static int stellaris_sys_post_load(void *opaque, int version_id)
+>>  {
+>>      ssys_state *s = opaque;
+>>  
+>> -    ssys_calculate_system_clock(s);
+>> +    ssys_calculate_system_clock(s, false);
+> 
+> So this makes sense.
+> 
+> I'll keep reviewing and come back to this patch later.
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

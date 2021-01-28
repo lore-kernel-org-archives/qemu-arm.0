@@ -1,110 +1,86 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp1797549lfd;
-        Tue, 26 Jan 2021 15:47:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy2/wXwyikhvceeoRf4pcio/Jc0CTGmqRFBNnFH7FzD+EharhlcOh9ZOJhjru82bKOXej9x
-X-Received: by 2002:a25:2483:: with SMTP id k125mr11528953ybk.108.1611704866115;
-        Tue, 26 Jan 2021 15:47:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611704866; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp438053lfd;
+        Wed, 27 Jan 2021 18:36:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzoyqGMJX5XlKCPzBH4xEk1Xr7+CQB9UHqDczIho/dskfY4m/yqwSormllCLUJgjPW0YFMd
+X-Received: by 2002:a25:1046:: with SMTP id 67mr20154326ybq.220.1611801409776;
+        Wed, 27 Jan 2021 18:36:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611801409; cv=none;
         d=google.com; s=arc-20160816;
-        b=TqcAPU3OOVLtYRdL1iPC7CCxaicCLb6/JMHd9PqQv7DfnJt0ea8GTCn7x5oAbWC7BW
-         w1Ji9RWdKhn3v5GlBhMusM608ds85YqZbJio5VmI9Wpr+cQTo/P+jowJ6r68WszfKmq+
-         ldI4YasZUiYyhLpoysKZ2l+lwlb9YoFOaPx8y+HX5r3RPSAn/PmVYyi4wdDyrT4KNa5o
-         33Tz7zhwIWvzZ7KROA4dp9/oSQLimpFVy5ybv6gt/XjFoHq3cP+4l6eFHIC0c6BcFk5n
-         xtuM+H4ins1y+Kc9SwpqDTewSVyziyM13C1sZK9+koOJXRHoGBxVVINgN4RleipgzGpJ
-         7EDw==
+        b=jHk5k8dWjlwVvgv9+VXKFm5SmWVCxFuGkT/07Dbu5VoO2CDi9UoGV3l6Iuaelje60m
+         44h4XFGauuj10tDsTEmxURR8ZDLysvDXf0yxc3Nq3/r8iCsRWmSKYVkErPXHvcsPcH8W
+         3UySxEr3VEE9fm39cEidEC+YBquY6ggqDu1Z9FqjV6yywVFwmbVyryo+TmU6ezMTpvSO
+         7aW7gE2PVG6XmO3p1rVQQZ7odX6TJYqXC+TTY9VAzejzcEZz+oyBqj6sBFOjRTBX7LQP
+         k6BTKWULQmHTs1TUE21EEMXm6NfRByU9G5o5jjPBIBnfP/JmqEJNWYyf99hzUMMUJirA
+         WEbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=Z524uCdNJiuexUgo/lddzxbYC+CDUPtG+5QwreV1/oU=;
-        b=JAv5iTa7T9Iq+i+oOE3nwztynHPFSfg9RmXxbRm8jWfIh1nkEAAqu/1KN4fooGsFzx
-         bJKyajS1emgPrhp2sZWmJCc7rcH/IwSjwRwOQ+veqRRakVi5pj4k5rmEMuRyNb3RK3Q+
-         sGjA0CFk2BVv8SBi+ekpGU04SKTMvx0dNEArf9dNswQEDH7byFzjVzp0FAMFWiSZBICc
-         39qww4YQofwX99wypPNp/NR6Cdp3QJMWrkRDJG9pTfmpHE3HM+lqGi6Q993qMCNGI7mZ
-         Gy9n2+7xnXKhX8Hs98cr1kuwMqYffSI1q7Hpu1mrrqqYSu08hnAnvEPOT+MBhOMc2ACv
-         RcKw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=50Tsd5CHgiKXyltbVGbbRnmQ0N4lbKq+ibUw1/2YvpI=;
+        b=MnH2Cm5ivJEPuIq67Na57UWq4etSkzsxpmJADqXiph81hjvxgOa+vkic1Ntnrvjrko
+         VRcI3r43W07s7Zd1TniwOtMwdfCZQC89QxyxsQ/kqI9xVTUw9iPAO0tM2+ltaELHwagS
+         oTbH+e/xHq7JJi1doxqLMnzOJR+iflO4Egu/7yACPcdV+O7hOOk9UHXR/zJyKLyMMP2s
+         16ndf4djmIUb79mxKxOOHqvywRPcddlamCE8PKmD0JszSX5eitGhSUtYiyP9uBnsChWh
+         7OpkQqWZRr3HeCBjOO8E5DhxLkwabrFmmhlPPueF/DAq/rKVeVpLChiW38w7DoWQ+Ky9
+         9UMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="aDz3Kp/1";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s46si86922ybi.461.2021.01.26.15.47.45
+        by mx.google.com with ESMTPS id i195si3583278yba.91.2021.01.27.18.36.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Jan 2021 15:47:46 -0800 (PST)
+        Wed, 27 Jan 2021 18:36:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="aDz3Kp/1";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52290 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48634 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l4Y3l-0003rK-Gb
-	for alex.bennee@linaro.org; Tue, 26 Jan 2021 18:47:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51790)
+	id 1l4xAv-0008LJ-1S
+	for alex.bennee@linaro.org; Wed, 27 Jan 2021 21:36:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1l4Y3X-0003qy-08; Tue, 26 Jan 2021 18:47:31 -0500
-Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29]:40629)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1l4Y3V-0006Zg-Im; Tue, 26 Jan 2021 18:47:30 -0500
-Received: by mail-oo1-xc29.google.com with SMTP id v19so95277ooj.7;
- Tue, 26 Jan 2021 15:47:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=Z524uCdNJiuexUgo/lddzxbYC+CDUPtG+5QwreV1/oU=;
- b=aDz3Kp/1Wu09WRxDHHaCAP/9c60Cc4GD4Td3s9sVSLqg12IttLhytBIdBxSINEv67w
- vsNl0mmss/tcpoR9/Q73AuRyCDHFSCPekN6sCMR+9KUOWJng22f7iyDFI7z5itYRJumU
- DV7UWWjCsSR/DYzZOKV9MkJD0CcRFyHnVH/GzK0uFFIHwr7rhAh8LQNXVVFr1GIX4WAW
- NPkMVqt2UmB8vYAEhTW7IGRnjp8XenWQ0IZavL/hVmcH1GwkmY2r0NKMPn2id979mpPG
- +EPqG69rIX9iZ0AD4OzfJTWPKYEJgtZO43jfoDVZ5MSbKCvPN5E5XhTAffNfJURMWHmk
- epzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to;
- bh=Z524uCdNJiuexUgo/lddzxbYC+CDUPtG+5QwreV1/oU=;
- b=HVuSxmuuH/NCOPyox6yBxiz03B+zTPFIT4eofyq4ptbuGgCqd0Plc4irgbp9sZpkQF
- 0wpKIyXIPv7SO2V8ZrXz77PIfx8AVTvdzraSg+ydn+h6V8N472Zz8QlEs/w22SDjJkgy
- VRPHNPbZeuvVUnRQUw+aoVaizPLMjRGuMQGHJ2voiiK9ovyhJrEx5IC1U+Fh5H2uHRwx
- rpPgzrVQz2j6ry5HCvE9UZyL2Y8pJIBFME368aFiNoxNyYqCyFuoWNaU5+h+Nh4SORCR
- xQFnc6nZrCPz9tpyvQ/XNCsPOOPZ/WZKMbDm3ic6WlVSMsQeOp4zCmhw2ODhkb8q6mY+
- Jy4g==
-X-Gm-Message-State: AOAM5315Ln4MifKiJWDBto/WodhTv0BjV+b/xiFI0iBnn9sXEgsHHxen
- PteywsyGNFNm9vVQ8VltPg==
-X-Received: by 2002:a05:6820:255:: with SMTP id
- b21mr5742153ooe.0.1611704847954; 
- Tue, 26 Jan 2021 15:47:27 -0800 (PST)
-Received: from serve.minyard.net ([47.184.170.156])
- by smtp.gmail.com with ESMTPSA id m9sm94611oih.35.2021.01.26.15.47.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Jan 2021 15:47:26 -0800 (PST)
-Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:2d17:e42b:3add:fd])
- by serve.minyard.net (Postfix) with ESMTPSA id F34401801B2;
- Tue, 26 Jan 2021 23:47:25 +0000 (UTC)
-Date: Tue, 26 Jan 2021 17:47:24 -0600
-From: Corey Minyard <minyard@acm.org>
-To: Hao Wu <wuhaotsh@google.com>
-Subject: Re: [PATCH 6/6] hw/i2c: Implement NPCM7XX SMBus Module FIFO Mode
-Message-ID: <20210126234724.GC2057975@minyard.net>
-References: <20210126193237.1534208-1-wuhaotsh@google.com>
- <20210126193237.1534208-7-wuhaotsh@google.com>
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1l4xAT-0008L9-Jw; Wed, 27 Jan 2021 21:36:21 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2598)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1l4xAQ-0002fP-QM; Wed, 27 Jan 2021 21:36:21 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DR4M43CPSzjCJ4;
+ Thu, 28 Jan 2021 10:35:12 +0800 (CST)
+Received: from [10.174.184.214] (10.174.184.214) by
+ DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server id
+ 14.3.498.0; Thu, 28 Jan 2021 10:36:01 +0800
+Subject: Re: [RFC PATCH v2 2/3] vfio: Set the priority of the VFIO VM state
+ change handler explicitly
+To: Alex Williamson <alex.williamson@redhat.com>
+References: <20201209080919.156-1-lushenming@huawei.com>
+ <20201209080919.156-3-lushenming@huawei.com>
+ <20210126143605.4f9d5b25@omen.home.shazbot.org>
+ <153c36e0-3c7d-cbce-3f37-9ba8c36ce1ca@huawei.com>
+ <20210127072014.6ed9ff04@x1.home.shazbot.org>
+From: Shenming Lu <lushenming@huawei.com>
+Message-ID: <87643ae9-1c4d-a612-61cc-510b8d60a329@huawei.com>
+Date: Thu, 28 Jan 2021 10:35:50 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210126193237.1534208-7-wuhaotsh@google.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c29;
- envelope-from=tcminyard@gmail.com; helo=mail-oo1-xc29.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210127072014.6ed9ff04@x1.home.shazbot.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.184.214]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=lushenming@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,34 +93,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: peter.maydell@linaro.org, venture@google.com, qemu-devel@nongnu.org,
- hskinnemoen@google.com, kfting@nuvoton.com, qemu-arm@nongnu.org,
- Avi.Fishman@nuvoton.com, dje@google.com
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ mst@redhat.com, Marc Zyngier <maz@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ yuzenghui@huawei.com, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: necDFIk8hmLX
+X-TUID: nYE25DD75mhR
 
-On Tue, Jan 26, 2021 at 11:32:37AM -0800, wuhaotsh--- via wrote:
-> +
-> +static void npcm7xx_smbus_read_byte_fifo(NPCM7xxSMBusState *s)
-> +{
-> +    uint8_t received_bytes = NPCM7XX_SMBRXF_STS_RX_BYTES(s->rxf_sts);
-> +
-> +    if (received_bytes == 0) {
-> +        npcm7xx_smbus_recv_fifo(s);
-> +        return;
-> +    }
-> +
-> +    s->sda = s->rx_fifo[s->rx_cur];
-> +    s->rx_cur = (s->rx_cur + 1u) % NPCM7XX_SMBUS_FIFO_SIZE;
-> +    --s->rxf_sts;
+On 2021/1/27 22:20, Alex Williamson wrote:
+> On Wed, 27 Jan 2021 19:20:06 +0800
+> Shenming Lu <lushenming@huawei.com> wrote:
+> 
+>> On 2021/1/27 5:36, Alex Williamson wrote:
+>>> On Wed, 9 Dec 2020 16:09:18 +0800
+>>> Shenming Lu <lushenming@huawei.com> wrote:
+>>>   
+>>>> In the VFIO VM state change handler, VFIO devices are transitioned
+>>>> in the _SAVING state, which should keep them from sending interrupts.  
+>>>
+>>> Is this comment accurate?  It's my expectation that _SAVING has no
+>>> bearing on a device generating interrupts.  Interrupt generation must
+>>> be allowed to continue so long as the device is _RUNNING.  Thanks,
+>>>   
+>>
+>> To be more accurate, the _RUNNING bit in device_state is cleared in the
+>> VFIO VM state change handler when stopping the VM. And if the device continues
+>> to send interrupts after this, how can we save the states of device interrupts
+>> in the stop-and-copy phase?...
+> 
+> Exactly, it's clearing the _RUNNING bit that makes the device stop,
+> including no longer generating interrupts.  Perhaps I incorrectly
+> inferred "_SAVING state" as referring to the _SAVING bit when you
+> actually intended:
+> 
+>    *  +------- _RESUMING
+>    *  |+------ _SAVING
+>    *  ||+----- _RUNNING
+>    *  |||
+>    *  000b => Device Stopped, not saving or resuming
+>    *  001b => Device running, which is the default state
+> -> *  010b => Stop the device & save the device state, stop-and-copy state
+> 
+> ie. the full state when only _SAVING is set.
+> 
+> Could we make the comment more clear to avoid this confusion?  Thanks,
+> 
 
-This open-coded decrement seems a little risky.  Are you sure in every
-case that s->rxf_sts > 0?  There's no way what's running in the VM can
-game this and cause a buffer overrun?  One caller to this function seems
-to protect against this, and another does not.
+OK, sorry for the confusion. I will modify the comment to:
 
-Other than this, I didn't see any issues with this patch.
+In the VFIO VM state change handler when stopping the VM, the _RUNNING bit
+in device_state is cleared which makes the VFIO device stop, including
+no longer generating interrupts.
 
--corey
+Thanks,
+Shenming
+
+> Alex
+> 
+>>>> Then we can save the pending states of all interrupts in the GIC VM
+>>>> state change handler (on ARM).
+>>>>
+>>>> So we have to set the priority of the VFIO VM state change handler
+>>>> explicitly (like virtio devices) to ensure it is called before the
+>>>> GIC's in saving.
+>>>>
+>>>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+>>>> Reviewed-by: Kirti Wankhede <kwankhede@nvidia.com>
+>>>> ---
+>>>>  hw/vfio/migration.c | 3 ++-
+>>>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+>>>> index 3b9de1353a..97ea82b100 100644
+>>>> --- a/hw/vfio/migration.c
+>>>> +++ b/hw/vfio/migration.c
+>>>> @@ -862,7 +862,8 @@ static int vfio_migration_init(VFIODevice *vbasedev,
+>>>>      register_savevm_live(id, VMSTATE_INSTANCE_ID_ANY, 1, &savevm_vfio_handlers,
+>>>>                           vbasedev);
+>>>>  
+>>>> -    migration->vm_state = qemu_add_vm_change_state_handler(vfio_vmstate_change,
+>>>> +    migration->vm_state = qdev_add_vm_change_state_handler(vbasedev->dev,
+>>>> +                                                           vfio_vmstate_change,
+>>>>                                                             vbasedev);
+>>>>      migration->migration_state.notify = vfio_migration_state_notifier;
+>>>>      add_migration_state_change_notifier(&migration->migration_state);  
+>>>
+>>> .
+>>>   
+>>
+> 
+> .
+> 

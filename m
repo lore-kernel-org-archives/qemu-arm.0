@@ -1,110 +1,112 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp144755lfo;
-        Thu, 28 Jan 2021 03:42:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzrb43Rg3amZ2R0hFCL4ykh6u7Cy55K6PnEFD+yZwTfYroamDC48eSg5O2Dh7MpLZf3uUMN
-X-Received: by 2002:a05:6902:706:: with SMTP id k6mr23675879ybt.87.1611834179791;
-        Thu, 28 Jan 2021 03:42:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611834179; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp144928lfo;
+        Thu, 28 Jan 2021 03:43:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxaUrWW1+IngU2UGtj+AgrrFMp1uAitdiJYSvLBgf3mTUNDagRiO6m92s34i1UfypzSSQ06
+X-Received: by 2002:a25:8312:: with SMTP id s18mr25544048ybk.470.1611834196291;
+        Thu, 28 Jan 2021 03:43:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611834196; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yl7WKra6creoqJYhuu8mP9HOBa1PULtl72bE3RU0PrN00F3wUjLfX+qCqNVN/audcB
-         ztjk+6ckDjh6Hy8ZuR/zjdxeCSrmpjdHslYP4jQ9RP8puMC9AIih8H4AKeMfAe2gAUjt
-         942U14qEt+DOc8/HSesh9WZirzIprw+mAJlu/Su2G4ih52qaXhJD41ygzcccZr2poqkJ
-         l//gNnekWTMFQWJnb+8WQyOC5/+Zd4uu77AwN0Idnzq1RxrVGuaNZ7CnfLHy/L73OQyL
-         fWQph1ZhPS49x0SXzORkjLZH5ym3zf9gbiNtNFTX0eEnuUMEprvb7bDB0FihedNIZHfr
-         u6UQ==
+        b=k/JNlL1vcMaHQrsR1OX7jk9tzsal9hkpXkQZ3mBRV0BJXSg7sRa3w0rXVT5Zh8IFg4
+         JknXgMyaObqJRViTDOY3VyWG2qskwTUv8dzgZHrrIsp1TNeDhb+PiAz+5ZWU7ztqEsj2
+         0btKgg3rp9mdHLcKMjM/78ykNgdpgwnhO+K3rMIt1jB7y2Gy220bm+zUwD/DWxwI9qXl
+         oD96fk3BDwhVPmDFbVZlfhDoFslJO7qR5nat7FMgCLU5p6f5+OZWmHMFYAJGOMkZh2ev
+         1J2rsGcXJsApMzydu2vh66dKb7XRrnT7/zaF4wO7RaegCsSt2RwN0U2njMj+bsxLMgef
+         Xv/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xHWq9yH9LoFSUmKAgq76pgTL0JY1lWeKpFcupzRjAI4=;
-        b=S+0recs4+a+vTYkZbeUOThhfpIMx0rIBhTUnT9OLVpNymSqf1tc26/ihS+WwXsutLT
-         1cwvNf7e4zqN76N0N2N5Etpu4JJZ+Eg9WviALr6mEsa9U64outDIOIlsvq20pOJD40F8
-         WDJHdjITHeXYEXB09cE+eFRR+hR6UxoVcXxSCTUkoVSUun2H2t2L9cqhhS1LlEuCsiW6
-         NSJUlq9DaS39GWovjPIhchkRFqgG+Z0km4d/YbyW0vL3vpZMliAq1VPtYpcA0v8jCIDw
-         rdGz7n7GcMhPgO0woCyik4NArDJokFGZB1iYc0Gyc0/kpsw9NnIIaohR9RIJvvyYZ4MG
-         jzoQ==
+        bh=4+oOsbOZCzGymS/pjG8axPSCcjrYv7uWaDnLd5easic=;
+        b=j3+FTH62/kJrnszZb7Ye1jtP/SrCRMcgepBACG7+W1a8RmaZDHkErZc2DDPSAYYdvS
+         degwIkYhDRxgfVQEJjdXj73CCaKgZ2xo9zAHew0HrO81i6ph65k2TjaFhwa/e0kcltk4
+         wrpHCthtGQI1stKfLmtcHEalqfcxS0F8dWErl/o2/gJmEEnfFrl04A2HHf1tuq/n/a0d
+         3eDZ/byN6hx07ABShAZy3ZZq56T0cgG09YoxnXY3l3reBEuLiG3K9VkMh376hJ/oQaKy
+         Lc4c6OhOSwpW9dzD5dqf8o2GNTDAnLTTb6uHoxhvcbvI27xpldY7hcEly1eELIM+Pn3v
+         EI9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wW3X6Rlv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RoogCL2v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9si4634880ybq.348.2021.01.28.03.42.59
+        by mx.google.com with ESMTPS id e22si1694086yba.307.2021.01.28.03.43.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 03:42:59 -0800 (PST)
+        Thu, 28 Jan 2021 03:43:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wW3X6Rlv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RoogCL2v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60912 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33794 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l55hT-0002PK-2r
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 06:42:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33538)
+	id 1l55hj-0002qD-Ja
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 06:43:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l55gW-0001AU-AT
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 06:42:00 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:40919)
+ id 1l55gX-0001D6-93
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 06:42:01 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:35996)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l55gQ-00066M-VN
+ id 1l55gS-00066o-2Z
  for qemu-arm@nongnu.org; Thu, 28 Jan 2021 06:42:00 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id c127so4295934wmf.5
- for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 03:41:53 -0800 (PST)
+Received: by mail-wr1-x42c.google.com with SMTP id 6so5062253wri.3
+ for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 03:41:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xHWq9yH9LoFSUmKAgq76pgTL0JY1lWeKpFcupzRjAI4=;
- b=wW3X6RlvpbSjFvjthZf79H4Yh4JODHixoCCBdBDNa00vko+4W9xDc/ct9G3eV4ffwE
- 293ioufXEOSj8uC1k/kWkK8xPW/OoCto7IoiT/tACM8/24NQDP636WajW5FSe2cWl82A
- 1He1iPeqOFCirC0C2fn8x/Iy39BWTbfsymdZoCtz9reoEivCryCX/BqJN57EH2qhIZZT
- Z2GkS5yCRIqAJREUrPsEPmVoMhq23ztYURerHBK6eGOFYs5UeqsH2C44dNFZRfZ0QQwC
- uqQoV5GqoE7tjp19Tunj2PYLSq4eA9qCT4A6Ty7vXwdACUJjDcFaPPP5DSlaNe0hgx6c
- OguA==
+ bh=4+oOsbOZCzGymS/pjG8axPSCcjrYv7uWaDnLd5easic=;
+ b=RoogCL2v/x29BC0v2NyOztnq84tKwXC7eP9CHyXsYMvelN/RrXCxWNy2sSgtugzp0G
+ 19BSqFE/oKy4CQFlobbXJ2LwoYY/But93FnVH+gEA5Ii7DvzzgBq4m7sblzcVnowNEul
+ X5L638WTTA9FnPTAd4daRLsVUbnVLcVuB4HSDyF4ZO7PnYgU3AuxNqCGrlgJEqqqzmgS
+ 8iybR9dxaFVFHqITjEWOLPoYkfV0cO7UNi8aAl8Uqf/ceXlGJoBk7tySn3SRPrsA/44H
+ 072rB5pcx9bY8c6MpQ2sw2vVlZ2Or4/AwOmg8/SJNaXZ2bqI+1umTELfMiyM+8fee7xB
+ x//g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xHWq9yH9LoFSUmKAgq76pgTL0JY1lWeKpFcupzRjAI4=;
- b=TfTvDX3Oyl0vSSdHRdV3VHqzh1+D7TTFKhqYIAhjpeNjVYCYVa/dtm03rRfxo/CoYg
- 0FD+JkCrEUlaeLs89hfo9yVLiHKa1h4F2T8bwPJ8cJwaDXGHOpyPSTPrJjRFYtsRKg9E
- neyThzZV59jW/0UgLootAymXxMNk6A4cIztJf10uAlA2sqzVB8shF4S0pEkIMnTc+GNf
- SXkkecYAtaPF0STJxRRlMQNLV1WumUx+Kz/+0ErYj50PaohXSwZBdhlBmS727SXCpU4w
- cIOeP/+kQ3fJmIeXhIDu3M/3TKiehdRnmV55RjFXQDq71JYEH48RonnyX5xWN1i+BsTo
- N3bA==
-X-Gm-Message-State: AOAM5314euLVoPREGJe9ys2ipXvOZKDY2zc0UBQSMHFKLbuDdR6oOwWa
- WMuKVij4TcNUeaFGN17p30xN0VWRZX6HPQ==
-X-Received: by 2002:a1c:e1d4:: with SMTP id y203mr8375856wmg.50.1611834112248; 
- Thu, 28 Jan 2021 03:41:52 -0800 (PST)
+ bh=4+oOsbOZCzGymS/pjG8axPSCcjrYv7uWaDnLd5easic=;
+ b=kro+flJySsrTMnYS8z2vXNoQgXaImJm1Q69K/MVEyRCzLFcJ/t+HKykWVcTPBFZvR9
+ o7rwzLj+0uhX605YtGT9R/FyYwqgUToCh01YxLvqKX8Fdqab8bFmvW57d0Uy5pjWkWkF
+ 9qjqrFEGih0mwarGFyWNFUS/We2G2pUt15ReTUwKHBfmXprOyLBx32QIp4gV+euimupB
+ Zcjh7UhwXlEQkZICjU7whLpW8MNKHjrJhMlWINHLJFLtGI0Iy9Loi577XOsNuQwCiP2G
+ cPR6V51pgl40j97s2zbziQmamldl/z3ODKAIsmZ/K7RamHaJ/3tnOHZ8offcUnM+F2gq
+ xyUQ==
+X-Gm-Message-State: AOAM532OpuP9MHhcWggfGRAqfbcQ8ZZlhE2B4bTE7Bvm/MuZV3jIzg9q
+ CN+kecFvXxx38IoTud5wbqNmoOcoMywXuQ==
+X-Received: by 2002:a05:6000:1803:: with SMTP id
+ m3mr15567503wrh.34.1611834114303; 
+ Thu, 28 Jan 2021 03:41:54 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q9sm6431033wme.18.2021.01.28.03.41.51
+ by smtp.gmail.com with ESMTPSA id q9sm6431033wme.18.2021.01.28.03.41.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jan 2021 03:41:51 -0800 (PST)
+ Thu, 28 Jan 2021 03:41:53 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 04/25] tests: Add a simple test of the CMSDK APB watchdog
-Date: Thu, 28 Jan 2021 11:41:24 +0000
-Message-Id: <20210128114145.20536-5-peter.maydell@linaro.org>
+Subject: [PATCH v2 06/25] hw/timer/cmsdk-apb-timer: Rename CMSDKAPBTIMER
+ struct to CMSDKAPBTimer
+Date: Thu, 28 Jan 2021 11:41:26 +0000
+Message-Id: <20210128114145.20536-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210128114145.20536-1-peter.maydell@linaro.org>
 References: <20210128114145.20536-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,134 +123,160 @@ Cc: Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4SBQy8wmFCOr
+X-TUID: wq0piL1utuWH
 
-Add a simple test of the CMSDK watchdog, since we're about to do some
-refactoring of how it is clocked.
+The state struct for the CMSDK APB timer device doesn't follow our
+usual naming convention of camelcase -- "CMSDK" and "APB" are both
+acronyms, but "TIMER" is not so should not be all-uppercase.
+Globally rename the struct to "CMSDKAPBTimer" (bringing it into line
+with CMSDKAPBWatchdog and CMSDKAPBDualTimer; CMSDKAPBUART remains
+as-is because "UART" is an acronym).
+
+Commit created with:
+ perl -p -i -e 's/CMSDKAPBTIMER/CMSDKAPBTimer/g' hw/timer/cmsdk-apb-timer.c include/hw/arm/armsse.h include/hw/timer/cmsdk-apb-timer.h
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-Message-id: 20210121190622.22000-5-peter.maydell@linaro.org
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Luc Michel <luc@lmichel.fr>
+Message-id: 20210121190622.22000-7-peter.maydell@linaro.org
 ---
-v1->v2 changes:
- - remove set-but-not-used QTestState *s variable
----
- tests/qtest/cmsdk-apb-watchdog-test.c | 79 +++++++++++++++++++++++++++
- MAINTAINERS                           |  1 +
- tests/qtest/meson.build               |  1 +
- 3 files changed, 81 insertions(+)
- create mode 100644 tests/qtest/cmsdk-apb-watchdog-test.c
+ include/hw/arm/armsse.h            |  6 +++---
+ include/hw/timer/cmsdk-apb-timer.h |  4 ++--
+ hw/timer/cmsdk-apb-timer.c         | 28 ++++++++++++++--------------
+ 3 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/tests/qtest/cmsdk-apb-watchdog-test.c b/tests/qtest/cmsdk-apb-watchdog-test.c
-new file mode 100644
-index 00000000000..950f64c527b
---- /dev/null
-+++ b/tests/qtest/cmsdk-apb-watchdog-test.c
-@@ -0,0 +1,79 @@
-+/*
-+ * QTest testcase for the CMSDK APB watchdog device
-+ *
-+ * Copyright (c) 2021 Linaro Limited
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest-single.h"
-+
-+/*
-+ * lm3s811evb watchdog; at board startup this runs at 200MHz / 16 == 12.5MHz,
-+ * which is 80ns per tick.
-+ */
-+#define WDOG_BASE 0x40000000
-+
-+#define WDOGLOAD 0
-+#define WDOGVALUE 4
-+#define WDOGCONTROL 8
-+#define WDOGINTCLR 0xc
-+#define WDOGRIS 0x10
-+#define WDOGMIS 0x14
-+#define WDOGLOCK 0xc00
-+
-+static void test_watchdog(void)
-+{
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+
-+    writel(WDOG_BASE + WDOGCONTROL, 1);
-+    writel(WDOG_BASE + WDOGLOAD, 1000);
-+
-+    /* Step to just past the 500th tick */
-+    clock_step(500 * 80 + 1);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-+
-+    /* Just past the 1000th tick: timer should have fired */
-+    clock_step(500 * 80);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 0);
-+
-+    /* VALUE reloads at following tick */
-+    clock_step(80);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-+
-+    /* Writing any value to WDOGINTCLR clears the interrupt and reloads */
-+    clock_step(500 * 80);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-+    writel(WDOG_BASE + WDOGINTCLR, 0);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-+    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int r;
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_start("-machine lm3s811evb");
-+
-+    qtest_add_func("/cmsdk-apb-watchdog/watchdog", test_watchdog);
-+
-+    r = g_test_run();
-+
-+    qtest_end();
-+
-+    return r;
-+}
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6c15f7db317..3729b89f359 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -588,6 +588,7 @@ F: hw/char/cmsdk-apb-uart.c
- F: include/hw/char/cmsdk-apb-uart.h
- F: hw/watchdog/cmsdk-apb-watchdog.c
- F: include/hw/watchdog/cmsdk-apb-watchdog.h
-+F: tests/qtest/cmsdk-apb-watchdog-test.c
- F: hw/misc/tz-ppc.c
- F: include/hw/misc/tz-ppc.h
- F: hw/misc/tz-mpc.c
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 74addd74868..9e2ebc47041 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -142,6 +142,7 @@ qtests_npcm7xx = \
-    'npcm7xx_watchdog_timer-test']
- qtests_arm = \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_CMSDK_APB_WATCHDOG') ? ['cmsdk-apb-watchdog-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_PFLASH_CFI02') ? ['pflash-cfi02-test'] : []) +         \
-   (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
-   ['arm-cpu-features',
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index 77f86771c30..83f5e28c16e 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -153,9 +153,9 @@ struct ARMSSE {
+     TZPPC apb_ppc0;
+     TZPPC apb_ppc1;
+     TZMPC mpc[IOTS_NUM_MPC];
+-    CMSDKAPBTIMER timer0;
+-    CMSDKAPBTIMER timer1;
+-    CMSDKAPBTIMER s32ktimer;
++    CMSDKAPBTimer timer0;
++    CMSDKAPBTimer timer1;
++    CMSDKAPBTimer s32ktimer;
+     qemu_or_irq ppc_irq_orgate;
+     SplitIRQ sec_resp_splitter;
+     SplitIRQ ppc_irq_splitter[NUM_PPCS];
+diff --git a/include/hw/timer/cmsdk-apb-timer.h b/include/hw/timer/cmsdk-apb-timer.h
+index 0d80b2a48cd..baa009bb2da 100644
+--- a/include/hw/timer/cmsdk-apb-timer.h
++++ b/include/hw/timer/cmsdk-apb-timer.h
+@@ -18,9 +18,9 @@
+ #include "qom/object.h"
+ 
+ #define TYPE_CMSDK_APB_TIMER "cmsdk-apb-timer"
+-OBJECT_DECLARE_SIMPLE_TYPE(CMSDKAPBTIMER, CMSDK_APB_TIMER)
++OBJECT_DECLARE_SIMPLE_TYPE(CMSDKAPBTimer, CMSDK_APB_TIMER)
+ 
+-struct CMSDKAPBTIMER {
++struct CMSDKAPBTimer {
+     /*< private >*/
+     SysBusDevice parent_obj;
+ 
+diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
+index f85f1309f37..ae9c5422540 100644
+--- a/hw/timer/cmsdk-apb-timer.c
++++ b/hw/timer/cmsdk-apb-timer.c
+@@ -67,14 +67,14 @@ static const int timer_id[] = {
+     0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
+ };
+ 
+-static void cmsdk_apb_timer_update(CMSDKAPBTIMER *s)
++static void cmsdk_apb_timer_update(CMSDKAPBTimer *s)
+ {
+     qemu_set_irq(s->timerint, !!(s->intstatus & R_INTSTATUS_IRQ_MASK));
+ }
+ 
+ static uint64_t cmsdk_apb_timer_read(void *opaque, hwaddr offset, unsigned size)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
+     uint64_t r;
+ 
+     switch (offset) {
+@@ -106,7 +106,7 @@ static uint64_t cmsdk_apb_timer_read(void *opaque, hwaddr offset, unsigned size)
+ static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
+                                   unsigned size)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
+ 
+     trace_cmsdk_apb_timer_write(offset, value, size);
+ 
+@@ -181,7 +181,7 @@ static const MemoryRegionOps cmsdk_apb_timer_ops = {
+ 
+ static void cmsdk_apb_timer_tick(void *opaque)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(opaque);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
+ 
+     if (s->ctrl & R_CTRL_IRQEN_MASK) {
+         s->intstatus |= R_INTSTATUS_IRQ_MASK;
+@@ -191,7 +191,7 @@ static void cmsdk_apb_timer_tick(void *opaque)
+ 
+ static void cmsdk_apb_timer_reset(DeviceState *dev)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(dev);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(dev);
+ 
+     trace_cmsdk_apb_timer_reset();
+     s->ctrl = 0;
+@@ -206,7 +206,7 @@ static void cmsdk_apb_timer_reset(DeviceState *dev)
+ static void cmsdk_apb_timer_init(Object *obj)
+ {
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(obj);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(obj);
+ 
+     memory_region_init_io(&s->iomem, obj, &cmsdk_apb_timer_ops,
+                           s, "cmsdk-apb-timer", 0x1000);
+@@ -216,7 +216,7 @@ static void cmsdk_apb_timer_init(Object *obj)
+ 
+ static void cmsdk_apb_timer_realize(DeviceState *dev, Error **errp)
+ {
+-    CMSDKAPBTIMER *s = CMSDK_APB_TIMER(dev);
++    CMSDKAPBTimer *s = CMSDK_APB_TIMER(dev);
+ 
+     if (s->pclk_frq == 0) {
+         error_setg(errp, "CMSDK APB timer: pclk-frq property must be set");
+@@ -239,17 +239,17 @@ static const VMStateDescription cmsdk_apb_timer_vmstate = {
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_PTIMER(timer, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(ctrl, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(value, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(reload, CMSDKAPBTIMER),
+-        VMSTATE_UINT32(intstatus, CMSDKAPBTIMER),
++        VMSTATE_PTIMER(timer, CMSDKAPBTimer),
++        VMSTATE_UINT32(ctrl, CMSDKAPBTimer),
++        VMSTATE_UINT32(value, CMSDKAPBTimer),
++        VMSTATE_UINT32(reload, CMSDKAPBTimer),
++        VMSTATE_UINT32(intstatus, CMSDKAPBTimer),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+ 
+ static Property cmsdk_apb_timer_properties[] = {
+-    DEFINE_PROP_UINT32("pclk-frq", CMSDKAPBTIMER, pclk_frq, 0),
++    DEFINE_PROP_UINT32("pclk-frq", CMSDKAPBTimer, pclk_frq, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -266,7 +266,7 @@ static void cmsdk_apb_timer_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo cmsdk_apb_timer_info = {
+     .name = TYPE_CMSDK_APB_TIMER,
+     .parent = TYPE_SYS_BUS_DEVICE,
+-    .instance_size = sizeof(CMSDKAPBTIMER),
++    .instance_size = sizeof(CMSDKAPBTimer),
+     .instance_init = cmsdk_apb_timer_init,
+     .class_init = cmsdk_apb_timer_class_init,
+ };
 -- 
 2.20.1
 

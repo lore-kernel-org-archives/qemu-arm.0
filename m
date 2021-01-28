@@ -1,107 +1,111 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp754559lfq;
-        Fri, 8 Jan 2021 11:17:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxgSQrDI7J+DHeMiU9QSFSJJXbfmUbhMyT5DZmf5TJNC0Xlpc/tRWP82gTTVuhVbb7wLHYB
-X-Received: by 2002:a5b:187:: with SMTP id r7mr7241344ybl.324.1610133429928;
-        Fri, 08 Jan 2021 11:17:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610133429; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp628110lfo;
+        Thu, 28 Jan 2021 14:56:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyp6f/gJ+VlPRVdW9wHW0LOIkaGcmILqYzWpMazsNKFk1+JGcEcSDsfy6qp+kPV+qu624uS
+X-Received: by 2002:a25:888f:: with SMTP id d15mr2407869ybl.12.1611874596448;
+        Thu, 28 Jan 2021 14:56:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611874596; cv=none;
         d=google.com; s=arc-20160816;
-        b=w77sfdd+0gb4OGHAw1QzQbe/c53fKDTLWFPcI3QqXJbs/zQXoTrrJqh/pPCf+VbaP5
-         OHbaMf09bNbQe39+PGTNTcepgvDeA/1DCY430aMjK9QRsspDwlGig1XaeCe1xEPdU5IG
-         wA77ZJhMjeYD9WyATubr4vC8Vs0dPGmkRQ51ngwgYcAnSBeab6yEkrEyY/5YO6jDNTvI
-         fPgMH4/iAxLM7VpZ3kmfmNEjj7Z/dTu3RL57EQux17NVcu9ShDRKBUxh8PDHsVKWto1w
-         QzUDPywB6RG8Pw1+IjGbVwRjOTuIcnKC0x9Ir0peq/J4Ki1bYnlhBJEVEDj9C3lnGmOs
-         4lYw==
+        b=d9Kq7dgT7WrIA4RzCcS0wLyUWCIq2IMnrjDkPPALHUWRRSFTBdaHiaVoJHMrMECzv7
+         gOzkcsGLBdNqrK0I4kLSKNkSGiOQ5KJaP1AvzqV4CY1WpyjWJzb4u6r1nVP8JatAgv8t
+         t6uyS7Ifp/l53B9Yds1f7iywun6V3mXuu1+UpaQ3JbLepe8ibpSon1GYNKvsEKrqmZdZ
+         UiEaAnhfUmQeKWDizZ/XSgZbxXNOaPHGYE/tZnrYm8bQI+vEgOVtaEOuR3LMxhE9VvUh
+         Xxw9sWrsc7XJL3Qo/YDsYuCifY7OBe902Gz2qqD3N9zHolg3ANN8WlvJP0mw1vN/CYoT
+         KTrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:to
-         :subject:references:mime-version:message-id:in-reply-to:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LFMApgmcvcDNCjLnfm4pNHIGZoEohJnPNwpMriHcQFE=;
-        b=PPK9KOoPSHsk/fzdAANNHDOsPXdfHNaiMCbR+Q8j/55DZPhwiJ/EOGffSYSUdc8eTb
-         muVx/TsVDUzaLxWWtv6SfSb+9knLgpTLbC/8OxrpSgvt/KjQtUFSV6ymaoX0sTp6iXrL
-         Ry+KBEhIIvmAr7fNCKkr4fPiooS9/YW2z3vEA3UgkT+nFwU0NMrw5i2xlXL6AnooHNpW
-         7Ww52JOG7kmRSrZw3ZXSNUzE7iNQPtwVUy+kjrIjXsS9ylzjoyHcQPMQlyuyFRCfyWBl
-         b0IlKi3eLvvdJEU6vCorpvrkIPvS1zKDepPlmgSFu4IPLSYLefSmS9C2oF+WNQ+KnRAF
-         JwHw==
+        bh=QgNyelKt2GngvKbsoMDpo4CJhyrMaW41bQD6ElDWNXc=;
+        b=uS0BqYyLzFlmAuas0xAP8kQ+xuXjydOcpUk/75Ot+ZnN5Lb3AOiUUKrnlvl/4nVS6S
+         F+otihIqwX+Alnjb6/kd/tYrWb2CkXR98t5IZ1GR8nJtq+FBo32LqWsXXlFh+ESDFeIO
+         3UEqqmovSIOI9J8Oo1AOZFAhgIoLXEf+XRFDX5d3Rd5afF1DhoMA8HUm0RqPrf7NuY7+
+         Z0UiUKvR4UpwCft+Y415vjB+BDL8W4mYVqnnTBuFGyIJTeEoKwDxVnR2rtPqWx7b9Sie
+         M0o4MXrVK6TfYtipixmXCh7UCwrCbJXZrKjPMPjZ/vVoZQRBniU9zanRm/fX8PsRKMyY
+         JrEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=AEKD5cxx;
+       dkim=fail header.i=@linaro.org header.s=google header.b="IySlJ/+g";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si12079362ybg.311.2021.01.08.11.17.09
+        by mx.google.com with ESMTPS id k2si6734578ybm.218.2021.01.28.14.56.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jan 2021 11:17:09 -0800 (PST)
+        Thu, 28 Jan 2021 14:56:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=AEKD5cxx;
+       dkim=fail header.i=@linaro.org header.s=google header.b="IySlJ/+g";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:51986 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49584 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxxG1-00047x-85
-	for alex.bennee@linaro.org; Fri, 08 Jan 2021 14:17:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40340)
+	id 1l5GDL-0003DZ-SL
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 17:56:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3JK74XwgKCmkdbOHVaZONVVNSL.JVTXLTb-KLcLSUVUNUb.VYN@flex--wuhaotsh.bounces.google.com>)
- id 1kxx9i-00018l-W9
- for qemu-devel@nongnu.org; Fri, 08 Jan 2021 14:10:39 -0500
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049]:55696)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l5Fzf-0005l1-7H
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:27 -0500
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:44512)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3JK74XwgKCmkdbOHVaZONVVNSL.JVTXLTb-KLcLSUVUNUb.VYN@flex--wuhaotsh.bounces.google.com>)
- id 1kxx9d-0007LD-Ul
- for qemu-devel@nongnu.org; Fri, 08 Jan 2021 14:10:38 -0500
-Received: by mail-pj1-x1049.google.com with SMTP id 25so7143935pjb.5
- for <qemu-devel@nongnu.org>; Fri, 08 Jan 2021 11:10:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=LFMApgmcvcDNCjLnfm4pNHIGZoEohJnPNwpMriHcQFE=;
- b=AEKD5cxxfQ0J2L7YBJx0gbOMcsAYU2w3B4iC5LZgl3LV+i7OmDaUBdTrGZ7T9NXqQH
- CWLEfQ/MGC68khXQvO03jTSf5Z1MpreTHvi0p4LA8yQYV6LzHl7LaJggV3NOpha7+Bg7
- BndSakaCk5sZ0FYLg4Cp99GDFTJLTJ0YMJrEr7BDcgPGkh+q0bcnVvP5Di6QQRkJAdeE
- gi7T4iWSrrfhzDjKhbVgw+YpJQf6xZGovlqpK1tZjDGj3I4wfdBvZ9nrO2/dlKxYxVVE
- dUspVay/HrqXiT2d33Nnj6qug0H7yOizYwzagJel/s2FJQRWslWJhiqnjO2iFrOtMuZc
- VAZA==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l5FzP-0008AR-OA
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:26 -0500
+Received: by mail-pf1-x42b.google.com with SMTP id t29so4962225pfg.11
+ for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 14:42:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=QgNyelKt2GngvKbsoMDpo4CJhyrMaW41bQD6ElDWNXc=;
+ b=IySlJ/+gM72ylDP0saKIP+vk9AVwNxn1CW9eAahP6Co3EiWHHZwhDyHM6aJRuIkXL5
+ 8hE7YwhvnJrPXn+dcqgf1uM4qKQE/H/qMQj0DSi7XXw78TLH4KYkQnTKIMgoRFy4xnTC
+ CLBcfyEnhSq2KrltiI9YXpmW+tDWvDgAtyjlcHMsmt7lGnu5drfBb7tWE9SjQmsS28io
+ GjnO17yTW51DAkBkVpxH8Y/UdPE0SYgwlcbJRnkUNCLwg0K2sLlGeztIaa+iYMvTxAu7
+ joPgdA1kAAfyXmvS31fURzoVK4moiWLpoUbWTkPMOojp35DVdlxSy//v6ijuHR/AJV4B
+ vHcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=LFMApgmcvcDNCjLnfm4pNHIGZoEohJnPNwpMriHcQFE=;
- b=a+5auihmPinpKyGgp9on0TxDdu5x0U6Nq34waG785JfO1gZ/VejM2w86QPHRZ/IRgA
- JblINpbKdy8Jg6IpBfSZ9QrxO2uvnQq3uAT/FB7t/EwDHyLbjbGNLSuOJC7IM+kufl7F
- iIQxpxJZ8vzSwb3fadeTsgNs1PI9nYaOCImc062mO/aC8IqTxdBcw54chFnztNFtSNpO
- P0HQCeL3OY87bqCe8FB9HAlKU5P+8Lq9Mm56wF2Mnz7yJLaPEpQaZ37Nk3DXzJ8XY3bn
- 427/6ywhpjuLldXxdlguxt9p8IRwSIpXcoePIJqh8vPxF1jP+oynQZsy6WpeeFeTyATU
- G0ug==
-X-Gm-Message-State: AOAM5330wuIaBr5hWou/jnm/nw8uLfi3TurhJU6nvL6aYWz8W4jHUT85
- HD+XJLP0Rf4EOAK0cDLuCaaxG3QPNAACUw==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a62:7f4c:0:b029:19e:23d1:cf0a with SMTP
- id a73-20020a627f4c0000b029019e23d1cf0amr5039230pfd.67.1610133028157; Fri, 08
- Jan 2021 11:10:28 -0800 (PST)
-Date: Fri,  8 Jan 2021 11:09:42 -0800
-In-Reply-To: <20210108190945.949196-1-wuhaotsh@google.com>
-Message-Id: <20210108190945.949196-4-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20210108190945.949196-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.29.2.729.g45daf8777d-goog
-Subject: [PATCH v5 3/6] hw/adc: Add an ADC module for NPCM7XX
-To: peter.maydell@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3JK74XwgKCmkdbOHVaZONVVNSL.JVTXLTb-KLcLSUVUNUb.VYN@flex--wuhaotsh.bounces.google.com;
- helo=mail-pj1-x1049.google.com
-X-Spam_score_int: -99
-X-Spam_score: -10.0
-X-Spam_bar: ----------
-X-Spam_report: (-10.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.386,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=QgNyelKt2GngvKbsoMDpo4CJhyrMaW41bQD6ElDWNXc=;
+ b=H57QJvYnJYYA4e3C8hep4lzHds4Q8c8DUte55hy0QZd4cqKjPVUb3ktpcDj1BX2HqC
+ R/hVy2pfKZoTxR3vDYVHqW4y7Wr0ijoofZNTmvHh1HxFfg7IMA3ZYZ82TfGMh2gL1DT6
+ FGgr8OcZKUYRmthIldm5uL7PqMkuda9XtlXUCW1fFNNc72J7y0O3JiOokOwgU8jkZUgs
+ j9Dj2w0EoinOc/38h0gh7iRxR7tDkMUOxhWBMFWeoZZMZeT3Cvg124TBDVc4g80dgmK2
+ IxlKrPedUaoDEPdpphrcSRAnfvKxviFUtapDcU3aC9U+mV48dY1WILFB9WBIKj4zZHr1
+ cEug==
+X-Gm-Message-State: AOAM5303Ox5p3BNLd4S5rc5JWNY/k5+lhk480dFQX1t2g00vDInIZTNd
+ GnWuX/FD76A7EXlt/ghbi/iqeNZclEsWEGQ2
+X-Received: by 2002:aa7:9d0c:0:b029:1bd:1e1f:8885 with SMTP id
+ k12-20020aa79d0c0000b02901bd1e1f8885mr1469801pfp.48.1611873727910; 
+ Thu, 28 Jan 2021 14:42:07 -0800 (PST)
+Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
+ [66.27.222.29])
+ by smtp.gmail.com with ESMTPSA id m10sm6042358pjs.25.2021.01.28.14.42.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Jan 2021 14:42:07 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 14/23] target/arm: Use the proper TBI settings for
+ linux-user
+Date: Thu, 28 Jan 2021 12:41:32 -1000
+Message-Id: <20210128224141.638790-15-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210128224141.638790-1-richard.henderson@linaro.org>
+References: <20210128224141.638790-1-richard.henderson@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,967 +118,75 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: minyard@acm.org, venture@google.com, qemu-devel@nongnu.org,
- hskinnemoen@google.com, wuhaotsh@google.com, kfting@nuvoton.com,
- qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, f4bug@amsat.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Hao Wu <wuhaotsh@google.com>
-From: Hao Wu via <qemu-devel@nongnu.org>
-X-TUID: WZGcikvVR/yJ
+X-TUID: APmwsVUEl9rK
 
-The ADC is part of NPCM7XX Module. Its behavior is controled by the
-ADC_CON register. It converts one of the eight analog inputs into a
-digital input and stores it in the ADC_DATA register when enabled.
+We were fudging TBI1 enabled to speed up the generated code.
+Now that we've improved the code generation, remove this.
+Also, tidy the comment to reflect the current code.
 
-Users can alter input value by using qom-set QMP command.
+The pauth test was testing a kernel address (-1) and making
+incorrect assumptions about TBI1; stick to userland addresses.
 
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- docs/system/arm/nuvoton.rst    |   2 +-
- hw/adc/meson.build             |   1 +
- hw/adc/npcm7xx_adc.c           | 301 ++++++++++++++++++++++++++
- hw/adc/trace-events            |   5 +
- hw/arm/npcm7xx.c               |  24 ++-
- include/hw/adc/npcm7xx_adc.h   |  69 ++++++
- include/hw/arm/npcm7xx.h       |   2 +
- meson.build                    |   1 +
- tests/qtest/meson.build        |   3 +-
- tests/qtest/npcm7xx_adc-test.c | 377 +++++++++++++++++++++++++++++++++
- 10 files changed, 782 insertions(+), 3 deletions(-)
- create mode 100644 hw/adc/npcm7xx_adc.c
- create mode 100644 hw/adc/trace-events
- create mode 100644 include/hw/adc/npcm7xx_adc.h
- create mode 100644 tests/qtest/npcm7xx_adc-test.c
+ target/arm/internals.h      |  4 ++--
+ target/arm/cpu.c            | 10 +++-------
+ tests/tcg/aarch64/pauth-2.c |  1 -
+ 3 files changed, 5 insertions(+), 10 deletions(-)
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index b00d405d52..35829f8d0b 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -41,6 +41,7 @@ Supported devices
-  * Random Number Generator (RNG)
-  * USB host (USBH)
-  * GPIO controller
-+ * Analog to Digital Converter (ADC)
- 
- Missing devices
- ---------------
-@@ -58,7 +59,6 @@ Missing devices
-  * USB device (USBD)
-  * SMBus controller (SMBF)
-  * Peripheral SPI controller (PSPI)
-- * Analog to Digital Converter (ADC)
-  * SD/MMC host
-  * PECI interface
-  * Pulse Width Modulation (PWM)
-diff --git a/hw/adc/meson.build b/hw/adc/meson.build
-index 0d62ae96ae..6ddee23813 100644
---- a/hw/adc/meson.build
-+++ b/hw/adc/meson.build
-@@ -1 +1,2 @@
- softmmu_ss.add(when: 'CONFIG_STM32F2XX_ADC', if_true: files('stm32f2xx_adc.c'))
-+softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_adc.c'))
-diff --git a/hw/adc/npcm7xx_adc.c b/hw/adc/npcm7xx_adc.c
-new file mode 100644
-index 0000000000..870a6d50c2
---- /dev/null
-+++ b/hw/adc/npcm7xx_adc.c
-@@ -0,0 +1,301 @@
-+/*
-+ * Nuvoton NPCM7xx ADC Module
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/adc/npcm7xx_adc.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/registerfields.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/timer.h"
-+#include "qemu/units.h"
-+#include "trace.h"
-+
-+REG32(NPCM7XX_ADC_CON, 0x0)
-+REG32(NPCM7XX_ADC_DATA, 0x4)
-+
-+/* Register field definitions. */
-+#define NPCM7XX_ADC_CON_MUX(rv) extract32(rv, 24, 4)
-+#define NPCM7XX_ADC_CON_INT_EN  BIT(21)
-+#define NPCM7XX_ADC_CON_REFSEL  BIT(19)
-+#define NPCM7XX_ADC_CON_INT     BIT(18)
-+#define NPCM7XX_ADC_CON_EN      BIT(17)
-+#define NPCM7XX_ADC_CON_RST     BIT(16)
-+#define NPCM7XX_ADC_CON_CONV    BIT(14)
-+#define NPCM7XX_ADC_CON_DIV(rv) extract32(rv, 1, 8)
-+
-+#define NPCM7XX_ADC_MAX_RESULT      1023
-+#define NPCM7XX_ADC_DEFAULT_IREF    2000000
-+#define NPCM7XX_ADC_CONV_CYCLES     20
-+#define NPCM7XX_ADC_RESET_CYCLES    10
-+#define NPCM7XX_ADC_R0_INPUT        500000
-+#define NPCM7XX_ADC_R1_INPUT        1500000
-+
-+static void npcm7xx_adc_reset(NPCM7xxADCState *s)
-+{
-+    timer_del(&s->conv_timer);
-+    s->con = 0x000c0001;
-+    s->data = 0x00000000;
-+}
-+
-+static uint32_t npcm7xx_adc_convert(uint32_t input, uint32_t ref)
-+{
-+    uint32_t result;
-+
-+    result = input * (NPCM7XX_ADC_MAX_RESULT + 1) / ref;
-+    if (result > NPCM7XX_ADC_MAX_RESULT) {
-+        result = NPCM7XX_ADC_MAX_RESULT;
-+    }
-+
-+    return result;
-+}
-+
-+static uint32_t npcm7xx_adc_prescaler(NPCM7xxADCState *s)
-+{
-+    return 2 * (NPCM7XX_ADC_CON_DIV(s->con) + 1);
-+}
-+
-+static void npcm7xx_adc_start_timer(Clock *clk, QEMUTimer *timer,
-+        uint32_t cycles, uint32_t prescaler)
-+{
-+    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    int64_t ticks = cycles;
-+    int64_t ns;
-+
-+    ticks *= prescaler;
-+    ns = clock_ticks_to_ns(clk, ticks);
-+    ns += now;
-+    timer_mod(timer, ns);
-+}
-+
-+static void npcm7xx_adc_start_convert(NPCM7xxADCState *s)
-+{
-+    uint32_t prescaler = npcm7xx_adc_prescaler(s);
-+
-+    npcm7xx_adc_start_timer(s->clock, &s->conv_timer, NPCM7XX_ADC_CONV_CYCLES,
-+            prescaler);
-+}
-+
-+static void npcm7xx_adc_convert_done(void *opaque)
-+{
-+    NPCM7xxADCState *s = opaque;
-+    uint32_t input = NPCM7XX_ADC_CON_MUX(s->con);
-+    uint32_t ref = (s->con & NPCM7XX_ADC_CON_REFSEL)
-+        ? s->iref : s->vref;
-+
-+    if (input >= NPCM7XX_ADC_NUM_INPUTS) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid input: %u\n",
-+                      __func__, input);
-+        return;
-+    }
-+    s->data = npcm7xx_adc_convert(s->adci[input], ref);
-+    if (s->con & NPCM7XX_ADC_CON_INT_EN) {
-+        s->con |= NPCM7XX_ADC_CON_INT;
-+        qemu_irq_raise(s->irq);
-+    }
-+    s->con &= ~NPCM7XX_ADC_CON_CONV;
-+}
-+
-+static void npcm7xx_adc_calibrate(NPCM7xxADCState *adc)
-+{
-+    adc->calibration_r_values[0] = npcm7xx_adc_convert(NPCM7XX_ADC_R0_INPUT,
-+            adc->iref);
-+    adc->calibration_r_values[1] = npcm7xx_adc_convert(NPCM7XX_ADC_R1_INPUT,
-+            adc->iref);
-+}
-+
-+static void npcm7xx_adc_write_con(NPCM7xxADCState *s, uint32_t new_con)
-+{
-+    uint32_t old_con = s->con;
-+
-+    /* Write ADC_INT to 1 to clear it */
-+    if (new_con & NPCM7XX_ADC_CON_INT) {
-+        new_con &= ~NPCM7XX_ADC_CON_INT;
-+        qemu_irq_lower(s->irq);
-+    } else if (old_con & NPCM7XX_ADC_CON_INT) {
-+        new_con |= NPCM7XX_ADC_CON_INT;
-+    }
-+
-+    s->con = new_con;
-+
-+    if (s->con & NPCM7XX_ADC_CON_RST) {
-+        npcm7xx_adc_reset(s);
-+        return;
-+    }
-+
-+    if ((s->con & NPCM7XX_ADC_CON_EN)) {
-+        if (s->con & NPCM7XX_ADC_CON_CONV) {
-+            if (!(old_con & NPCM7XX_ADC_CON_CONV)) {
-+                npcm7xx_adc_start_convert(s);
-+            }
-+        } else {
-+            timer_del(&s->conv_timer);
-+        }
-+    }
-+}
-+
-+static uint64_t npcm7xx_adc_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    uint64_t value = 0;
-+    NPCM7xxADCState *s = opaque;
-+
-+    switch (offset) {
-+    case A_NPCM7XX_ADC_CON:
-+        value = s->con;
-+        break;
-+
-+    case A_NPCM7XX_ADC_DATA:
-+        value = s->data;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid offset 0x%04" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
-+    }
-+
-+    trace_npcm7xx_adc_read(DEVICE(s)->canonical_path, offset, value);
-+    return value;
-+}
-+
-+static void npcm7xx_adc_write(void *opaque, hwaddr offset, uint64_t v,
-+        unsigned size)
-+{
-+    NPCM7xxADCState *s = opaque;
-+
-+    trace_npcm7xx_adc_write(DEVICE(s)->canonical_path, offset, v);
-+    switch (offset) {
-+    case A_NPCM7XX_ADC_CON:
-+        npcm7xx_adc_write_con(s, v);
-+        break;
-+
-+    case A_NPCM7XX_ADC_DATA:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: register @ 0x%04" HWADDR_PRIx " is read-only\n",
-+                      __func__, offset);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid offset 0x%04" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
-+    }
-+
-+}
-+
-+static const struct MemoryRegionOps npcm7xx_adc_ops = {
-+    .read       = npcm7xx_adc_read,
-+    .write      = npcm7xx_adc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid      = {
-+        .min_access_size        = 4,
-+        .max_access_size        = 4,
-+        .unaligned              = false,
-+    },
-+};
-+
-+static void npcm7xx_adc_enter_reset(Object *obj, ResetType type)
-+{
-+    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
-+
-+    npcm7xx_adc_reset(s);
-+}
-+
-+static void npcm7xx_adc_hold_reset(Object *obj)
-+{
-+    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
-+
-+    qemu_irq_lower(s->irq);
-+}
-+
-+static void npcm7xx_adc_init(Object *obj)
-+{
-+    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    int i;
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    timer_init_ns(&s->conv_timer, QEMU_CLOCK_VIRTUAL,
-+            npcm7xx_adc_convert_done, s);
-+    memory_region_init_io(&s->iomem, obj, &npcm7xx_adc_ops, s,
-+                          TYPE_NPCM7XX_ADC, 4 * KiB);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    s->clock = qdev_init_clock_in(DEVICE(s), "clock", NULL, NULL);
-+
-+    for (i = 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
-+        object_property_add_uint32_ptr(obj, "adci[*]",
-+                &s->adci[i], OBJ_PROP_FLAG_WRITE);
-+    }
-+    object_property_add_uint32_ptr(obj, "vref",
-+            &s->vref, OBJ_PROP_FLAG_WRITE);
-+    npcm7xx_adc_calibrate(s);
-+}
-+
-+static const VMStateDescription vmstate_npcm7xx_adc = {
-+    .name = "npcm7xx-adc",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_TIMER(conv_timer, NPCM7xxADCState),
-+        VMSTATE_UINT32(con, NPCM7xxADCState),
-+        VMSTATE_UINT32(data, NPCM7xxADCState),
-+        VMSTATE_CLOCK(clock, NPCM7xxADCState),
-+        VMSTATE_UINT32_ARRAY(adci, NPCM7xxADCState, NPCM7XX_ADC_NUM_INPUTS),
-+        VMSTATE_UINT32(vref, NPCM7xxADCState),
-+        VMSTATE_UINT32(iref, NPCM7xxADCState),
-+        VMSTATE_UINT16_ARRAY(calibration_r_values, NPCM7xxADCState,
-+                NPCM7XX_ADC_NUM_CALIB),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static Property npcm7xx_timer_properties[] = {
-+    DEFINE_PROP_UINT32("iref", NPCM7xxADCState, iref, NPCM7XX_ADC_DEFAULT_IREF),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void npcm7xx_adc_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "NPCM7xx ADC Module";
-+    dc->vmsd = &vmstate_npcm7xx_adc;
-+    rc->phases.enter = npcm7xx_adc_enter_reset;
-+    rc->phases.hold = npcm7xx_adc_hold_reset;
-+
-+    device_class_set_props(dc, npcm7xx_timer_properties);
-+}
-+
-+static const TypeInfo npcm7xx_adc_info = {
-+    .name               = TYPE_NPCM7XX_ADC,
-+    .parent             = TYPE_SYS_BUS_DEVICE,
-+    .instance_size      = sizeof(NPCM7xxADCState),
-+    .class_init         = npcm7xx_adc_class_init,
-+    .instance_init      = npcm7xx_adc_init,
-+};
-+
-+static void npcm7xx_adc_register_types(void)
-+{
-+    type_register_static(&npcm7xx_adc_info);
-+}
-+
-+type_init(npcm7xx_adc_register_types);
-diff --git a/hw/adc/trace-events b/hw/adc/trace-events
-new file mode 100644
-index 0000000000..4c3279ece2
---- /dev/null
-+++ b/hw/adc/trace-events
-@@ -0,0 +1,5 @@
-+# See docs/devel/tracing.txt for syntax documentation.
-+
-+# npcm7xx_adc.c
-+npcm7xx_adc_read(const char *id, uint64_t offset, uint32_t value) " %s offset: 0x%04" PRIx64 " value 0x%04" PRIx32
-+npcm7xx_adc_write(const char *id, uint64_t offset, uint32_t value) "%s offset: 0x%04" PRIx64 " value 0x%04" PRIx32
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index fabfb1697b..b22a8c966d 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -51,6 +51,9 @@
- #define NPCM7XX_EHCI_BA         (0xf0806000)
- #define NPCM7XX_OHCI_BA         (0xf0807000)
- 
-+/* ADC Module */
-+#define NPCM7XX_ADC_BA          (0xf000c000)
-+
- /* Internal AHB SRAM */
- #define NPCM7XX_RAM3_BA         (0xc0008000)
- #define NPCM7XX_RAM3_SZ         (4 * KiB)
-@@ -61,6 +64,7 @@
- #define NPCM7XX_ROM_BA          (0xffff0000)
- #define NPCM7XX_ROM_SZ          (64 * KiB)
- 
-+
- /* Clock configuration values to be fixed up when bypassing bootloader */
- 
- /* Run PLL1 at 1600 MHz */
-@@ -73,6 +77,7 @@
-  * interrupts.
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 853fa88fd6..6efe0c303e 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1413,9 +1413,9 @@ static inline bool tcma_check(uint32_t desc, int bit55, int ptr_tag)
   */
- enum NPCM7xxInterrupt {
-+    NPCM7XX_ADC_IRQ             = 0,
-     NPCM7XX_UART0_IRQ           = 2,
-     NPCM7XX_UART1_IRQ,
-     NPCM7XX_UART2_IRQ,
-@@ -296,6 +301,14 @@ static void npcm7xx_init_fuses(NPCM7xxState *s)
-                             sizeof(value));
- }
- 
-+static void npcm7xx_write_adc_calibration(NPCM7xxState *s)
-+{
-+    /* Both ADC and the fuse array must have realized. */
-+    QEMU_BUILD_BUG_ON(sizeof(s->adc.calibration_r_values) != 4);
-+    npcm7xx_otp_array_write(&s->fuse_array, s->adc.calibration_r_values,
-+            NPCM7XX_FUSE_ADC_CALIB, sizeof(s->adc.calibration_r_values));
-+}
-+
- static qemu_irq npcm7xx_irq(NPCM7xxState *s, int n)
+ static inline uint64_t useronly_clean_ptr(uint64_t ptr)
  {
-     return qdev_get_gpio_in(DEVICE(&s->a9mpcore), n);
-@@ -322,6 +335,7 @@ static void npcm7xx_init(Object *obj)
-                             TYPE_NPCM7XX_FUSE_ARRAY);
-     object_initialize_child(obj, "mc", &s->mc, TYPE_NPCM7XX_MC);
-     object_initialize_child(obj, "rng", &s->rng, TYPE_NPCM7XX_RNG);
-+    object_initialize_child(obj, "adc", &s->adc, TYPE_NPCM7XX_ADC);
- 
-     for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
-         object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7XX_TIMER);
-@@ -414,6 +428,15 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->mc), &error_abort);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->mc), 0, NPCM7XX_MC_BA);
- 
-+    /* ADC Modules. Cannot fail. */
-+    qdev_connect_clock_in(DEVICE(&s->adc), "clock", qdev_get_clock_out(
-+                          DEVICE(&s->clk), "adc-clock"));
-+    sysbus_realize(SYS_BUS_DEVICE(&s->adc), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->adc), 0, NPCM7XX_ADC_BA);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->adc), 0,
-+            npcm7xx_irq(s, NPCM7XX_ADC_IRQ));
-+    npcm7xx_write_adc_calibration(s);
-+
-     /* Timer Modules (TIM). Cannot fail. */
-     QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_tim_addr) != ARRAY_SIZE(s->tim));
-     for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
-@@ -528,7 +551,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * KiB);
-     create_unimplemented_device("npcm7xx.kcs",          0xf0007000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.adc",          0xf000c000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.gfxi",         0xf000e000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.gpio[0]",      0xf0010000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.gpio[1]",      0xf0011000,   4 * KiB);
-diff --git a/include/hw/adc/npcm7xx_adc.h b/include/hw/adc/npcm7xx_adc.h
-new file mode 100644
-index 0000000000..7d8442107a
---- /dev/null
-+++ b/include/hw/adc/npcm7xx_adc.h
-@@ -0,0 +1,69 @@
-+/*
-+ * Nuvoton NPCM7xx ADC Module
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+#ifndef NPCM7XX_ADC_H
-+#define NPCM7XX_ADC_H
-+
-+#include "hw/clock.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+#include "qemu/timer.h"
-+
-+#define NPCM7XX_ADC_NUM_INPUTS      8
-+/**
-+ * This value should not be changed unless write_adc_calibration function in
-+ * hw/arm/npcm7xx.c is also changed.
-+ */
-+#define NPCM7XX_ADC_NUM_CALIB       2
-+
-+/**
-+ * struct NPCM7xxADCState - Analog to Digital Converter Module device state.
-+ * @parent: System bus device.
-+ * @iomem: Memory region through which registers are accessed.
-+ * @conv_timer: The timer counts down remaining cycles for the conversion.
-+ * @irq: GIC interrupt line to fire on expiration (if enabled).
-+ * @con: The Control Register.
-+ * @data: The Data Buffer.
-+ * @clock: The ADC Clock.
-+ * @adci: The input voltage in units of uV. 1uv = 1e-6V.
-+ * @vref: The external reference voltage.
-+ * @iref: The internal reference voltage, initialized at launch time.
-+ * @rv: The calibrated output values of 0.5V and 1.5V for the ADC.
-+ */
-+typedef struct {
-+    SysBusDevice parent;
-+
-+    MemoryRegion iomem;
-+
-+    QEMUTimer    conv_timer;
-+
-+    qemu_irq     irq;
-+    uint32_t     con;
-+    uint32_t     data;
-+    Clock       *clock;
-+
-+    /* Voltages are in unit of uV. 1V = 1000000uV. */
-+    uint32_t     adci[NPCM7XX_ADC_NUM_INPUTS];
-+    uint32_t     vref;
-+    uint32_t     iref;
-+
-+    uint16_t     calibration_r_values[NPCM7XX_ADC_NUM_CALIB];
-+} NPCM7xxADCState;
-+
-+#define TYPE_NPCM7XX_ADC "npcm7xx-adc"
-+#define NPCM7XX_ADC(obj) \
-+    OBJECT_CHECK(NPCM7xxADCState, (obj), TYPE_NPCM7XX_ADC)
-+
-+#endif /* NPCM7XX_ADC_H */
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 5469247e38..51e1c7620d 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -17,6 +17,7 @@
- #define NPCM7XX_H
- 
- #include "hw/boards.h"
-+#include "hw/adc/npcm7xx_adc.h"
- #include "hw/cpu/a9mpcore.h"
- #include "hw/gpio/npcm7xx_gpio.h"
- #include "hw/mem/npcm7xx_mc.h"
-@@ -76,6 +77,7 @@ typedef struct NPCM7xxState {
-     NPCM7xxGCRState     gcr;
-     NPCM7xxCLKState     clk;
-     NPCM7xxTimerCtrlState tim[3];
-+    NPCM7xxADCState     adc;
-     NPCM7xxOTPState     key_storage;
-     NPCM7xxOTPState     fuse_array;
-     NPCM7xxMCState      mc;
-diff --git a/meson.build b/meson.build
-index 563688d682..88966516a5 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1687,6 +1687,7 @@ if have_system
-     'chardev',
-     'hw/9pfs',
-     'hw/acpi',
-+    'hw/adc',
-     'hw/alpha',
-     'hw/arm',
-     'hw/audio',
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 6a67c538be..955710d1c5 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -134,7 +134,8 @@ qtests_sparc64 = \
-   ['prom-env-test', 'boot-serial-test']
- 
- qtests_npcm7xx = \
--  ['npcm7xx_gpio-test',
-+  ['npcm7xx_adc-test',
-+   'npcm7xx_gpio-test',
-    'npcm7xx_rng-test',
-    'npcm7xx_timer-test',
-    'npcm7xx_watchdog_timer-test']
-diff --git a/tests/qtest/npcm7xx_adc-test.c b/tests/qtest/npcm7xx_adc-test.c
-new file mode 100644
-index 0000000000..f029706945
---- /dev/null
-+++ b/tests/qtest/npcm7xx_adc-test.c
-@@ -0,0 +1,377 @@
-+/*
-+ * QTests for Nuvoton NPCM7xx ADCModules.
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "qemu/timer.h"
-+#include "libqos/libqtest.h"
-+#include "qapi/qmp/qdict.h"
-+
-+#define REF_HZ          (25000000)
-+
-+#define CON_OFFSET      0x0
-+#define DATA_OFFSET     0x4
-+
-+#define NUM_INPUTS      8
-+#define DEFAULT_IREF    2000000
-+#define CONV_CYCLES     20
-+#define RESET_CYCLES    10
-+#define R0_INPUT        500000
-+#define R1_INPUT        1500000
-+#define MAX_RESULT      1023
-+
-+#define DEFAULT_CLKDIV  5
-+
-+#define FUSE_ARRAY_BA   0xf018a000
-+#define FCTL_OFFSET     0x14
-+#define FST_OFFSET      0x0
-+#define FADDR_OFFSET    0x4
-+#define FDATA_OFFSET    0x8
-+#define ADC_CALIB_ADDR  24
-+#define FUSE_READ       0x2
-+
-+/* Register field definitions. */
-+#define CON_MUX(rv) ((rv) << 24)
-+#define CON_INT_EN  BIT(21)
-+#define CON_REFSEL  BIT(19)
-+#define CON_INT     BIT(18)
-+#define CON_EN      BIT(17)
-+#define CON_RST     BIT(16)
-+#define CON_CONV    BIT(14)
-+#define CON_DIV(rv) extract32(rv, 1, 8)
-+
-+#define FST_RDST    BIT(1)
-+#define FDATA_MASK  0xff
-+
-+#define MAX_ERROR   10000
-+#define MIN_CALIB_INPUT 100000
-+#define MAX_CALIB_INPUT 1800000
-+
-+static const uint32_t input_list[] = {
-+    100000,
-+    500000,
-+    1000000,
-+    1500000,
-+    1800000,
-+    2000000,
-+};
-+
-+static const uint32_t vref_list[] = {
-+    2000000,
-+    2200000,
-+    2500000,
-+};
-+
-+static const uint32_t iref_list[] = {
-+    1800000,
-+    1900000,
-+    2000000,
-+    2100000,
-+    2200000,
-+};
-+
-+static const uint32_t div_list[] = {0, 1, 3, 7, 15};
-+
-+typedef struct ADC {
-+    int irq;
-+    uint64_t base_addr;
-+} ADC;
-+
-+ADC adc = {
-+    .irq        = 0,
-+    .base_addr  = 0xf000c000
-+};
-+
-+static uint32_t adc_read_con(QTestState *qts, const ADC *adc)
-+{
-+    return qtest_readl(qts, adc->base_addr + CON_OFFSET);
-+}
-+
-+static void adc_write_con(QTestState *qts, const ADC *adc, uint32_t value)
-+{
-+    qtest_writel(qts, adc->base_addr + CON_OFFSET, value);
-+}
-+
-+static uint32_t adc_read_data(QTestState *qts, const ADC *adc)
-+{
-+    return qtest_readl(qts, adc->base_addr + DATA_OFFSET);
-+}
-+
-+static uint32_t adc_calibrate(uint32_t measured, uint32_t *rv)
-+{
-+    return R0_INPUT + (R1_INPUT - R0_INPUT) * (int32_t)(measured - rv[0])
-+        / (int32_t)(rv[1] - rv[0]);
-+}
-+
-+static void adc_qom_set(QTestState *qts, const ADC *adc,
-+        const char *name, uint32_t value)
-+{
-+    QDict *response;
-+    const char *path = "/machine/soc/adc";
-+
-+    g_test_message("Setting properties %s of %s with value %u",
-+            name, path, value);
-+    response = qtest_qmp(qts, "{ 'execute': 'qom-set',"
-+            " 'arguments': { 'path': %s, 'property': %s, 'value': %u}}",
-+            path, name, value);
-+    /* The qom set message returns successfully. */
-+    g_assert_true(qdict_haskey(response, "return"));
-+}
-+
-+static void adc_write_input(QTestState *qts, const ADC *adc,
-+        uint32_t index, uint32_t value)
-+{
-+    char name[100];
-+
-+    sprintf(name, "adci[%u]", index);
-+    adc_qom_set(qts, adc, name, value);
-+}
-+
-+static void adc_write_vref(QTestState *qts, const ADC *adc, uint32_t value)
-+{
-+    adc_qom_set(qts, adc, "vref", value);
-+}
-+
-+static uint32_t adc_calculate_output(uint32_t input, uint32_t ref)
-+{
-+    uint32_t output;
-+
-+    g_assert_cmpuint(input, <=, ref);
-+    output = (input * (MAX_RESULT + 1)) / ref;
-+    if (output > MAX_RESULT) {
-+        output = MAX_RESULT;
-+    }
-+
-+    return output;
-+}
-+
-+static uint32_t adc_prescaler(QTestState *qts, const ADC *adc)
-+{
-+    uint32_t div = extract32(adc_read_con(qts, adc), 1, 8);
-+
-+    return 2 * (div + 1);
-+}
-+
-+static int64_t adc_calculate_steps(uint32_t cycles, uint32_t prescale,
-+        uint32_t clkdiv)
-+{
-+    return (NANOSECONDS_PER_SECOND / (REF_HZ >> clkdiv)) * cycles * prescale;
-+}
-+
-+static void adc_wait_conv_finished(QTestState *qts, const ADC *adc,
-+        uint32_t clkdiv)
-+{
-+    uint32_t prescaler = adc_prescaler(qts, adc);
-+
-+    /*
-+     * ADC should takes roughly 20 cycles to convert one sample. So we assert it
-+     * should take 10~30 cycles here.
-+     */
-+    qtest_clock_step(qts, adc_calculate_steps(CONV_CYCLES / 2, prescaler,
-+                clkdiv));
-+    /* ADC is still converting. */
-+    g_assert_true(adc_read_con(qts, adc) & CON_CONV);
-+    qtest_clock_step(qts, adc_calculate_steps(CONV_CYCLES, prescaler, clkdiv));
-+    /* ADC has finished conversion. */
-+    g_assert_false(adc_read_con(qts, adc) & CON_CONV);
-+}
-+
-+/* Check ADC can be reset to default value. */
-+static void test_init(gconstpointer adc_p)
-+{
-+    const ADC *adc = adc_p;
-+
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+    adc_write_con(qts, adc, CON_REFSEL | CON_INT);
-+    g_assert_cmphex(adc_read_con(qts, adc), ==, CON_REFSEL);
-+    qtest_quit(qts);
-+}
-+
-+/* Check ADC can convert from an internal reference. */
-+static void test_convert_internal(gconstpointer adc_p)
-+{
-+    const ADC *adc = adc_p;
-+    uint32_t index, input, output, expected_output;
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
-+
-+    for (index = 0; index < NUM_INPUTS; ++index) {
-+        for (size_t i = 0; i < ARRAY_SIZE(input_list); ++i) {
-+            input = input_list[i];
-+            expected_output = adc_calculate_output(input, DEFAULT_IREF);
-+
-+            adc_write_input(qts, adc, index, input);
-+            adc_write_con(qts, adc, CON_MUX(index) | CON_REFSEL | CON_INT |
-+                    CON_EN | CON_CONV);
-+            adc_wait_conv_finished(qts, adc, DEFAULT_CLKDIV);
-+            g_assert_cmphex(adc_read_con(qts, adc), ==, CON_MUX(index) |
-+                    CON_REFSEL | CON_EN);
-+            g_assert_false(qtest_get_irq(qts, adc->irq));
-+            output = adc_read_data(qts, adc);
-+            g_assert_cmpuint(output, ==, expected_output);
-+        }
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+/* Check ADC can convert from an external reference. */
-+static void test_convert_external(gconstpointer adc_p)
-+{
-+    const ADC *adc = adc_p;
-+    uint32_t index, input, vref, output, expected_output;
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
-+
-+    for (index = 0; index < NUM_INPUTS; ++index) {
-+        for (size_t i = 0; i < ARRAY_SIZE(input_list); ++i) {
-+            for (size_t j = 0; j < ARRAY_SIZE(vref_list); ++j) {
-+                input = input_list[i];
-+                vref = vref_list[j];
-+                expected_output = adc_calculate_output(input, vref);
-+
-+                adc_write_input(qts, adc, index, input);
-+                adc_write_vref(qts, adc, vref);
-+                adc_write_con(qts, adc, CON_MUX(index) | CON_INT | CON_EN |
-+                        CON_CONV);
-+                adc_wait_conv_finished(qts, adc, DEFAULT_CLKDIV);
-+                g_assert_cmphex(adc_read_con(qts, adc), ==,
-+                        CON_MUX(index) | CON_EN);
-+                g_assert_false(qtest_get_irq(qts, adc->irq));
-+                output = adc_read_data(qts, adc);
-+                g_assert_cmpuint(output, ==, expected_output);
-+            }
-+        }
-+    }
-+
-+    qtest_quit(qts);
-+}
-+
-+/* Check ADC interrupt files if and only if CON_INT_EN is set. */
-+static void test_interrupt(gconstpointer adc_p)
-+{
-+    const ADC *adc = adc_p;
-+    uint32_t index, input, output, expected_output;
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+
-+    index = 1;
-+    input = input_list[1];
-+    expected_output = adc_calculate_output(input, DEFAULT_IREF);
-+
-+    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
-+    adc_write_input(qts, adc, index, input);
-+    g_assert_false(qtest_get_irq(qts, adc->irq));
-+    adc_write_con(qts, adc, CON_MUX(index) | CON_INT_EN | CON_REFSEL | CON_INT
-+            | CON_EN | CON_CONV);
-+    adc_wait_conv_finished(qts, adc, DEFAULT_CLKDIV);
-+    g_assert_cmphex(adc_read_con(qts, adc), ==, CON_MUX(index) | CON_INT_EN
-+            | CON_REFSEL | CON_INT | CON_EN);
-+    g_assert_true(qtest_get_irq(qts, adc->irq));
-+    output = adc_read_data(qts, adc);
-+    g_assert_cmpuint(output, ==, expected_output);
-+
-+    qtest_quit(qts);
-+}
-+
-+/* Check ADC is reset after setting ADC_RST for 10 ADC cycles. */
-+static void test_reset(gconstpointer adc_p)
-+{
-+    const ADC *adc = adc_p;
-+    QTestState *qts = qtest_init("-machine quanta-gsj");
-+
-+    for (size_t i = 0; i < ARRAY_SIZE(div_list); ++i) {
-+        uint32_t div = div_list[i];
-+
-+        adc_write_con(qts, adc, CON_INT | CON_EN | CON_RST | CON_DIV(div));
-+        qtest_clock_step(qts, adc_calculate_steps(RESET_CYCLES,
-+                    adc_prescaler(qts, adc), DEFAULT_CLKDIV));
-+        g_assert_false(adc_read_con(qts, adc) & CON_EN);
-+    }
-+    qtest_quit(qts);
-+}
-+
-+/* Check ADC Calibration works as desired. */
-+static void test_calibrate(gconstpointer adc_p)
-+{
-+    int i, j;
-+    const ADC *adc = adc_p;
-+
-+    for (j = 0; j < ARRAY_SIZE(iref_list); ++j) {
-+        uint32_t iref = iref_list[j];
-+        uint32_t expected_rv[] = {
-+            adc_calculate_output(R0_INPUT, iref),
-+            adc_calculate_output(R1_INPUT, iref),
-+        };
-+        char buf[100];
-+        QTestState *qts;
-+
-+        sprintf(buf, "-machine quanta-gsj -global npcm7xx-adc.iref=%u", iref);
-+        qts = qtest_init(buf);
-+
-+        /* Check the converted value is correct using the calibration value. */
-+        for (i = 0; i < ARRAY_SIZE(input_list); ++i) {
-+            uint32_t input;
-+            uint32_t output;
-+            uint32_t expected_output;
-+            uint32_t calibrated_voltage;
-+            uint32_t index = 0;
-+
-+            input = input_list[i];
-+            /* Calibration only works for input range 0.1V ~ 1.8V. */
-+            if (input < MIN_CALIB_INPUT || input > MAX_CALIB_INPUT) {
-+                continue;
-+            }
-+            expected_output = adc_calculate_output(input, iref);
-+
-+            adc_write_input(qts, adc, index, input);
-+            adc_write_con(qts, adc, CON_MUX(index) | CON_REFSEL | CON_INT |
-+                    CON_EN | CON_CONV);
-+            adc_wait_conv_finished(qts, adc, DEFAULT_CLKDIV);
-+            g_assert_cmphex(adc_read_con(qts, adc), ==,
-+                    CON_REFSEL | CON_MUX(index) | CON_EN);
-+            output = adc_read_data(qts, adc);
-+            g_assert_cmpuint(output, ==, expected_output);
-+
-+            calibrated_voltage = adc_calibrate(output, expected_rv);
-+            g_assert_cmpuint(calibrated_voltage, >, input - MAX_ERROR);
-+            g_assert_cmpuint(calibrated_voltage, <, input + MAX_ERROR);
-+        }
-+
-+        qtest_quit(qts);
-+    }
-+}
-+
-+static void adc_add_test(const char *name, const ADC* wd,
-+        GTestDataFunc fn)
-+{
-+    g_autofree char *full_name = g_strdup_printf("npcm7xx_adc/%s",  name);
-+    qtest_add_data_func(full_name, wd, fn);
-+}
-+#define add_test(name, td) adc_add_test(#name, td, test_##name)
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    add_test(init, &adc);
-+    add_test(convert_internal, &adc);
-+    add_test(convert_external, &adc);
-+    add_test(interrupt, &adc);
-+    add_test(reset, &adc);
-+    add_test(calibrate, &adc);
-+
-+    return g_test_run();
-+}
+-    /* TBI is known to be enabled. */
+ #ifdef CONFIG_USER_ONLY
+-    ptr = sextract64(ptr, 0, 56);
++    /* TBI0 is known to be enabled, while TBI1 is disabled. */
++    ptr &= sextract64(ptr, 0, 56);
+ #endif
+     return ptr;
+ }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 40142ac141..db81a12418 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -200,14 +200,10 @@ static void arm_cpu_reset(DeviceState *dev)
+             env->vfp.zcr_el[1] = MIN(cpu->sve_max_vq - 1, 3);
+         }
+         /*
+-         * Enable TBI0 and TBI1.  While the real kernel only enables TBI0,
+-         * turning on both here will produce smaller code and otherwise
+-         * make no difference to the user-level emulation.
+-         *
+-         * In sve_probe_page, we assume that this is set.
+-         * Do not modify this without other changes.
++         * Enable TBI0 but not TBI1.
++         * Note that this must match useronly_clean_ptr.
+          */
+-        env->cp15.tcr_el[1].raw_tcr = (3ULL << 37);
++        env->cp15.tcr_el[1].raw_tcr = (1ULL << 37);
+ #else
+         /* Reset into the highest available EL */
+         if (arm_feature(env, ARM_FEATURE_EL3)) {
+diff --git a/tests/tcg/aarch64/pauth-2.c b/tests/tcg/aarch64/pauth-2.c
+index 9bba0beb63..978652ede3 100644
+--- a/tests/tcg/aarch64/pauth-2.c
++++ b/tests/tcg/aarch64/pauth-2.c
+@@ -53,7 +53,6 @@ void do_test(uint64_t value)
+ int main()
+ {
+     do_test(0);
+-    do_test(-1);
+     do_test(0xda004acedeadbeefull);
+     return 0;
+ }
 -- 
-2.29.2.729.g45daf8777d-goog
+2.25.1
 

@@ -1,104 +1,78 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp399845lfo;
-        Thu, 28 Jan 2021 09:12:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwaNw6pOUkUhLX0JzqOD1MUQuU5iC1GtgKz6TVXcH6wWSf5ng7sL1INRp9QKADs76lV1iZP
-X-Received: by 2002:a05:6902:1025:: with SMTP id x5mr195544ybt.21.1611853965424;
-        Thu, 28 Jan 2021 09:12:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611853965; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp405598lfo;
+        Thu, 28 Jan 2021 09:19:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw21j/4haSpDWYZThAIxuOS/tamJ98hbLK9aaldFYkHcLT96+ZgX+yOPHJq5NUUkycrx1MD
+X-Received: by 2002:a25:6ad6:: with SMTP id f205mr225687ybc.41.1611854371119;
+        Thu, 28 Jan 2021 09:19:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611854371; cv=none;
         d=google.com; s=arc-20160816;
-        b=rBkfrhLAiKJCRRiPVAMXdh11p49Go5dElo85ezlPS2JdCIyYC7HqLYSQQpdsuK4RmM
-         P+zkVWxdsHWln9JYbT3F+Nlh6sfj6ic8BACz2yg54mgdHaPZhcDoYjUZ0FVQSnmX+GZ4
-         Y+AA3ANbwV8JHcu69zHzWzFjUUIyPgsCgMPQnkYavMAc9tHG83L60JntpeK40XF2Sgvb
-         C8J0UY/LAsFjUBEn17i6McGxUetaHmB14T8/Iv0Xv0ESBwz1FjuTk8c6quP+urA2tZqY
-         Bik8N8qLf/hcrjtvJUnt655NM/WFlsip+U+8YKXYSHoHbqJ0HcrQYdZYJjfyIZ/ckUMB
-         BH+g==
+        b=MTUzfBee0Hf2yTdvd+TxGjEE8sWq4sT+0oABLBjdlHNnSyNhftQft5THqHTYfcAn54
+         T7AlhoTtFVxDyEBBAZbSTsUaUkSGVVkMBBuM8hGN9UFeppbkW4il9WRMoLD6vM5VYm5W
+         /Z2/WCUXHtQOB8+WBzyvLfYvuIbqt4/cPcSqSgkP0EzbIwUtLOZdRqG2BgG3hiASqC3i
+         X5sM5+4rGu+BVMnJwDlz6da6O/g568BmA+/AirUP+gt9WytkjJnFFID08PDLcQb5+oDZ
+         FNvv8P5Caf6u6c7/DgVKI38nV1WCn7rh3JT9tTzq3/IWUfSptvo5c+EcrC34QItz30HC
+         Iirw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=iwcXmlirSE5ySExWJurjlOw3kDUwhobf3Tf9xJJPZ5U=;
-        b=SUtto4WsZMH0hum/tpMmlvp+svhqO0sNvwGTc+5jCEvy1LGjnW1nvVUPnhdXN5MBC4
-         AeaJb50QoiyJDePxFlGsos/bESr9AQ9oC7gm0E6+Cfx9s38901Ge44uWE2hy/sjOtGhX
-         Rb6XFZvdHhao35kkKDWhcEqiiN4CaPE50QtRvXCvAaoNahv1XZM2dcE5zTpbUTNrVWyH
-         P+ZXJKlPSHb73RS9s4VqTF4UO8p3s4CD4NY0t6IsqdFfNIhP1KU0hlwMPLx13UmqThPd
-         4auJVqCH7LKAzq628hR3gaQe52ImtqLLpj8qns7+3W7BwKnOgRai5ylpuQVdhDTQrXRw
-         3+jQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date;
+        bh=gn/vnZtRY3hswpOEkG5FTVwL9r0KzFeXJPC85EOiiMM=;
+        b=ng+Ru7/J3b2zHcriMLXUXRMvwZS830ojBofiJ37Y1YSUyon4ui6wk6FukqqxRqUQqW
+         XLU3oB85a3rH8zzdpgOFqzbumCA51zPm6fX6ryLaDKY1UksMGyzZKk6kVowdDJ1FkFog
+         smIzWRBxpjM1GffUpHN3lSYlm1Edo5n0zYqURjwFc499M9taz1R5l4Hm5kWouJrAiHn6
+         4rc/EF2WXQ2DDpwUaubemg45u+aq5zjFL/CwIkK7zEjX31j0TTDwHatcszDlSUSLVr4M
+         qfYXo8T3iTBU1FJe090uUVgpbR467gcQyf2RGcu05OBpdLKWLPyTJYPwJoLb6TuksDDP
+         p1FQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=SADyM2cP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5si5771691ybk.260.2021.01.28.09.12.45
+        by mx.google.com with ESMTPS id j8si6066810ybg.196.2021.01.28.09.19.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 09:12:45 -0800 (PST)
+        Thu, 28 Jan 2021 09:19:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=SADyM2cP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
-Received: from localhost ([::1]:59280 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42050 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5Aqa-0007JI-R4
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 12:12:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48806)
+	id 1l5Ax8-00045Y-Do
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 12:19:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1l5AqH-0007Gy-Bx; Thu, 28 Jan 2021 12:12:26 -0500
-Received: from mta-02.yadro.com ([89.207.88.252]:38076 helo=mta-01.yadro.com)
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1l5Aws-00041Z-9H; Thu, 28 Jan 2021 12:19:15 -0500
+Received: from relay68.bu.edu ([128.197.228.73]:52652)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1l5AqC-0005VX-13; Thu, 28 Jan 2021 12:12:25 -0500
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id 5F84641279;
- Thu, 28 Jan 2021 17:12:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- in-reply-to:content-disposition:content-type:content-type
- :mime-version:references:message-id:subject:subject:from:from
- :date:date:received:received:received; s=mta-01; t=1611853935;
- x=1613668336; bh=vqstYAQyEx9Op7OzbbJqBv83k1ndlIG2eEZM76UKHL8=; b=
- SADyM2cPiRJwf9HkD2hjcX1bDBjw0AOBkuMNUTLa7Emg+BEUGhy8DnKebKVbmnLk
- AVk20ln3DEb17EB/UpBk6Kx6M3k2ARIXQue6VPWgCEeiAFFn8bVeMgKg6IhB+8WF
- uqrGr4kXwC/plAr79do8UVPJSazIK9rFtKUxw/GdWIc=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CUx1SYK8zSeC; Thu, 28 Jan 2021 20:12:15 +0300 (MSK)
-Received: from T-EXCH-03.corp.yadro.com (t-exch-03.corp.yadro.com
- [172.17.100.103])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id 2159C4126E;
- Thu, 28 Jan 2021 20:12:15 +0300 (MSK)
-Received: from localhost (172.17.204.212) by T-EXCH-03.corp.yadro.com
- (172.17.100.103) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Thu, 28
- Jan 2021 20:12:15 +0300
-Date: Thu, 28 Jan 2021 20:12:14 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>
-Subject: Re: [PATCH v6 00/11] hvf: Implement Apple Silicon Support
-Message-ID: <YBLwbuXQeHChhg0M@SPB-NB-133.local>
-References: <20210120224444.71840-1-agraf@csgraf.de>
- <CAFEAcA_jAWPO09K_O2SceAmcbNDSaNvL3yp3D_=tsY6QeaKMZw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1l5Awq-00084y-7K; Thu, 28 Jan 2021 12:19:13 -0500
+X-Envelope-From: alxndr@bu.edu
+X-BU-AUTH: mozz.bu.edu [128.197.127.33]
+Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
+ bits=0)
+ by relay68.bu.edu (8.14.3/8.14.3) with ESMTP id 10SHIBY0030640
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
+ Thu, 28 Jan 2021 12:18:14 -0500
+Date: Thu, 28 Jan 2021 12:18:11 -0500
+From: Alexander Bulekov <alxndr@bu.edu>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH] hw/intc/arm_gic: Allow to use QTest without crashing
+Message-ID: <20210128171811.jlnevikw4wgywjks@mozz.bu.edu>
+References: <20210128161417.3726358-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA_jAWPO09K_O2SceAmcbNDSaNvL3yp3D_=tsY6QeaKMZw@mail.gmail.com>
-X-Originating-IP: [172.17.204.212]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-03.corp.yadro.com (172.17.100.103)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20210128161417.3726358-1-philmd@redhat.com>
+Received-SPF: pass client-ip=128.197.228.73; envelope-from=alxndr@bu.edu;
+ helo=relay68.bu.edu
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.001,
+ HK_RANDOM_FROM=0.999, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,44 +85,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Alexander Graf <agraf@csgraf.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
- Peter Collingbourne <pcc@google.com>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NhESBuq1u+d3
+X-TUID: Z2j2J/mj0TMU
 
-On Thu, Jan 28, 2021 at 04:59:47PM +0000, Peter Maydell wrote:
-> On Wed, 20 Jan 2021 at 22:44, Alexander Graf <agraf@csgraf.de> wrote:
-> >
-> > Now that Apple Silicon is widely available, people are obviously excited
-> > to try and run virtualized workloads on them, such as Linux and Windows.
-> >
-> > This patch set implements a fully functional version to get the ball
-> > going on that. With this applied, I can successfully run both Linux and
-> > Windows as guests. I am not aware of any limitations specific to
-> > Hypervisor.framework apart from:
-> >
-> >   - Live migration / savevm
-> >   - gdbstub debugging (SP register)
-> >
+On 210128 1714, Philippe Mathieu-Daudé wrote:
+> Alexander reported an issue in gic_get_current_cpu() using the
+> fuzzer. Yet another "deref current_cpu with QTest" bug, reproducible
+> doing:
 > 
-> I've gone through making code review comments.
+>   $ echo readb 0xf03ff000 | qemu-system-arm -M npcm750-evb,accel=qtest -qtest stdio
+>   [I 1611849440.651452] OPENED
+>   [R +0.242498] readb 0xf03ff000
+>   hw/intc/arm_gic.c:63:29: runtime error: member access within null pointer of type 'CPUState' (aka 'struct CPUState')
+>   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior hw/intc/arm_gic.c:63:29 in
+>   AddressSanitizer:DEADLYSIGNAL
+>   =================================================================
+>   ==3719691==ERROR: AddressSanitizer: SEGV on unknown address 0x0000000082a0 (pc 0x5618790ac882 bp 0x7ffca946f4f0 sp 0x7ffca946f4a0 T0)
+>   ==3719691==The signal is caused by a READ memory access.
+>       #0 0x5618790ac882 in gic_get_current_cpu hw/intc/arm_gic.c:63:29
+>       #1 0x5618790a8901 in gic_dist_readb hw/intc/arm_gic.c:955:11
+>       #2 0x5618790a7489 in gic_dist_read hw/intc/arm_gic.c:1158:17
+>       #3 0x56187adc573b in memory_region_read_with_attrs_accessor softmmu/memory.c:464:9
+>       #4 0x56187ad7903a in access_with_adjusted_size softmmu/memory.c:552:18
+>       #5 0x56187ad766d6 in memory_region_dispatch_read1 softmmu/memory.c:1426:16
+>       #6 0x56187ad758a8 in memory_region_dispatch_read softmmu/memory.c:1449:9
+>       #7 0x56187b09e84c in flatview_read_continue softmmu/physmem.c:2822:23
+>       #8 0x56187b0a0115 in flatview_read softmmu/physmem.c:2862:12
+>       #9 0x56187b09fc9e in address_space_read_full softmmu/physmem.c:2875:18
+>       #10 0x56187aa88633 in address_space_read include/exec/memory.h:2489:18
+>       #11 0x56187aa88633 in qtest_process_command softmmu/qtest.c:558:13
+>       #12 0x56187aa81881 in qtest_process_inbuf softmmu/qtest.c:797:9
+>       #13 0x56187aa80e02 in qtest_read softmmu/qtest.c:809:5
 > 
-> Since patch 1 is also required for Big Sur support on x86 Macs,
-> I'll take that via target-arm.next now (unless anybody would rather
-> it went in via a different route).
+> current_cpu is NULL because QTest accelerator does not use CPU.
 > 
+> Fix by skipping the check and returning the first CPU index when
+> QTest accelerator is used, similarly to commit c781a2cc423
+> ("hw/i386/vmport: Allow QTest use without crashing").
+> 
+> Reported-by: Alexander Bulekov <alxndr@bu.edu>
 
-Hi Peter,
+Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
 
-I wonder if patch 1 and patch 2 should go via Paolo's i386 or misc tree?
-(IMO whatever the fastest way to master works).
+For reference, some older threads about similar issues in the GDB stub
+and monitor:
+https://bugs.launchpad.net/qemu/+bug/1602247
+https://patchew.org/QEMU/20200701182100.26930-1-philmd@redhat.com/
+https://bugs.launchpad.net/qemu/+bug/1878645
 
-Both are reviewed and nobody raised objections to them.
 
-Thanks,
-Roman
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/intc/arm_gic.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index af41e2fb448..c33b1c8c4bc 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -28,6 +28,7 @@
+>  #include "qemu/module.h"
+>  #include "trace.h"
+>  #include "sysemu/kvm.h"
+> +#include "sysemu/qtest.h"
+>  
+>  /* #define DEBUG_GIC */
+>  
+> @@ -57,7 +58,7 @@ static const uint8_t gic_id_gicv2[] = {
+>  
+>  static inline int gic_get_current_cpu(GICState *s)
+>  {
+> -    if (s->num_cpu > 1) {
+> +    if (!qtest_enabled() && s->num_cpu > 1) {
+>          return current_cpu->cpu_index;
+>      }
+>      return 0;
+> -- 
+> 2.26.2
+> 
+> 

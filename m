@@ -1,108 +1,112 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp758231lfa;
-        Fri, 23 Oct 2020 11:36:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyE+EGxrY+MC6BgCxu/MZh16t5yUcDjg1dxVvAu7lA1Qi7FFNydjLfXi8Y5J9fHtN/TdgbK
-X-Received: by 2002:ac8:4d05:: with SMTP id w5mr3604485qtv.25.1603478181263;
-        Fri, 23 Oct 2020 11:36:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603478181; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp293193lfo;
+        Thu, 28 Jan 2021 07:01:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyuERpCw/yoaW6VnJKuXAbFQRsepd0OmnmeUQ3uBuqgMr9h7C8Uv/DeNDJTcFjh4JBsynRI
+X-Received: by 2002:a25:ad41:: with SMTP id l1mr23908832ybe.98.1611846087462;
+        Thu, 28 Jan 2021 07:01:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611846087; cv=none;
         d=google.com; s=arc-20160816;
-        b=pIHEjGne2YV4KG+HGGuqva/4VSzZsdNSwruwO84d0vke+P/OD1rQz0vfKxICXx8hWn
-         PWMZV+cmzTss2WjBZMbZIdHtCchs7sJhfxF/PUv+d/GZWAOBvK6sLtBxMVTr+3WMd1n+
-         YfXi92FTEVLkzW2Jm1cd3NSGq69XyumDVFwk7k7mbRUUtXFcuOHBEW4HEUQCSKuDjNZC
-         V9Tq8W8H8RQwIbnKOqETU9cgSrRquCeUfriLFe/Esg5FyebxPZd/f4VE+CrMLbSQ9aXP
-         1T4g0AkKrICjbTm45tPF3Ar8bHLKxhKegYSbBnfbxhy3MNDJoo0AsSrPfFD2HYK7umiT
-         x5Aw==
+        b=DgPIJXjKx05x9rXFcs0wAkLbPP/OE3kBPvcN/ctPeoP1p+MB2uWMChfaOPD8lkYFdO
+         pubSIQpFIEyiRKcaqAPocGs0BzVjHWMpiVDceOQDSnTzlsICXdFb2yN1xMRip1WO5mJu
+         XDXSNyxhu5G8M+1U2bJ1ggTI9i9xAP6JyJoRRggbu5V3lxpUQ21COSnB6G5hID+A8PuP
+         /Oo2wnZnIEmfnnnDflbSb5LytKXozsNaWzTiBMtgkyHRhASACWNMppklwzCmyvj5CgP1
+         HuKjVccTexrEWe1c/kcE9GFtYjT2ecK+2XnHQHOHcdf9/4fmDVd5WIhipFPnzb5hSsqd
+         YGWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=kumoEuWRBPzRWCvUkMOw8ybS10+CYQtH8g1O1Bupe80=;
-        b=veuuV1w3lmXhsysNoH/OfLSg6NA3vZWj6S5DBm9mCTyrUrDmLwnB6OTMlepPfxmGWp
-         GKrnlUgHDjlYgKdXpSUgTrUp80DyHJk4Px9+JnxikbtrlqhaIN+qGEdT57+xrBi8sOKz
-         mCg3DF5wKzkD30mdqdUIyIly/377Mc/uP0Hk84g5EFFauRKfi56k1f4f7jXb1aPqLdo6
-         TdfOnnNs0IeI5xjC3Dmh8dMT8ZdoCcX3rfXu3bgcG72QUnC4pQVvQ5XXd8Ta8OEtfrC9
-         BfuQKksF56AGCn8QUU23wp2yVNgwBmUC00ox/bvZtgBVroldOxIqx8dHA8qCvxeE6c5/
-         HaNw==
+        bh=2BQSxln3svi2n+JcH2fO7IYmtxAF9oG3oZ57LVMvl9I=;
+        b=JcBDjJuvMGnFix5bVFP4ZyKunJu+AErUYgR9aebAuYmndfYRoaPXkvvfJO8ifast9m
+         c3aIde30ewdCzrMguw5l0JwPC4jTG8V8h3LSzT/ax6JL/Qt8IBkKtsfS0Yv9Wiaof5no
+         mK/WfpG9xdKV2zWcfV55JQb5RQd0adPYxLgVB/IMatXkz+ArtYdh5GGyJ3/9VBkTEm75
+         OFsOafNixqmswdnEMr50yPb6IwxGPR/0iuoDqW6GgkmE34M95Ajfmyfn4gjCIqSOZUP+
+         S1SwotC5IjNiZyTv8fOPzkvNpjOMwGHDTsJs8ikjzVXlUX+ehPYb9fyt0mrcdELxRssi
+         BfNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Fzc+eauH;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="plWmR/5d";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si1061536qtq.227.2020.10.23.11.36.21
+        by mx.google.com with ESMTPS id o13si5533150ybk.139.2021.01.28.07.01.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Oct 2020 11:36:21 -0700 (PDT)
+        Thu, 28 Jan 2021 07:01:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Fzc+eauH;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="plWmR/5d";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47048 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kW1vI-0000De-Od
-	for alex.bennee@linaro.org; Fri, 23 Oct 2020 14:36:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49570)
+	id 1l58nW-0006VG-Qs
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 10:01:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kW1t4-0006hs-Km
- for qemu-arm@nongnu.org; Fri, 23 Oct 2020 14:34:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42691)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kW1t0-000142-18
- for qemu-arm@nongnu.org; Fri, 23 Oct 2020 14:34:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603478036;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kumoEuWRBPzRWCvUkMOw8ybS10+CYQtH8g1O1Bupe80=;
- b=Fzc+eauHpz/H9Pm9bVYJ5JGOz02guWFnhd825FflLPFu84lW+YCoznbOgHghkttRwX2Rxs
- JpsRWIzP6kNsxWlzq0ZIHXWdSSp4m0fVWOqzfrCyH+CvElwF9vTe/zVd5cMnBRUmEHruPI
- l9s5PdleViWZjnO7DXefOBlTNxYnPmo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-447-U6n-wkpsOl6kHmLgXQn5hQ-1; Fri, 23 Oct 2020 14:33:53 -0400
-X-MC-Unique: U6n-wkpsOl6kHmLgXQn5hQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C0CCE1084D97;
- Fri, 23 Oct 2020 18:33:47 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AEC685D9CC;
- Fri, 23 Oct 2020 18:33:45 +0000 (UTC)
-Date: Fri, 23 Oct 2020 20:33:43 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH 16/24] virt: Register "its" as class property
-Message-ID: <20201023203343.14b465c8@redhat.com>
-In-Reply-To: <20200921221045.699690-17-ehabkost@redhat.com>
-References: <20200921221045.699690-1-ehabkost@redhat.com>
- <20200921221045.699690-17-ehabkost@redhat.com>
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1l58mq-0006U0-JD; Thu, 28 Jan 2021 10:00:44 -0500
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:43504)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1l58mj-0005v2-K7; Thu, 28 Jan 2021 10:00:44 -0500
+Received: by mail-yb1-xb2f.google.com with SMTP id y128so5691794ybf.10;
+ Thu, 28 Jan 2021 07:00:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=2BQSxln3svi2n+JcH2fO7IYmtxAF9oG3oZ57LVMvl9I=;
+ b=plWmR/5dKChfrjWAEz/Ubkrb1RRyEgkkqfgcKVas4zgsMh6CMz6oVssSv1L9EAYU5A
+ 0Eb28qWHJt0eGW2+mfiVURugLq823X58V/30ERltrXwfKrgcXPoWr+g+Ed8iQsyNCrTV
+ wowz1qBUU5P8EdDua768qiODiM8D8AsmCGmapp1vj9tPRj77rAJmOKIfuHe+OU9PuMai
+ RZSgnp2PvtX0yaKp0q0E1goC5O7lc9RCyST+v0CwZWkY8VPrg+7CxRoCgaxk4aCH2bXs
+ ka/OtRN3w5QnBprFE8q558uOWz31Esex3iVXIiUWGLRXztaoOKmmmyVezQpDK45qqg6y
+ P4dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2BQSxln3svi2n+JcH2fO7IYmtxAF9oG3oZ57LVMvl9I=;
+ b=jHlMCfY6pk6Xbx3nVPjjKd/gnoYTnjbcbU+vRJq59/AJ1CaQjcCUOtA3gaHVxpuj6L
+ vYcSMs/U5iLIRAGA3m1+EeyQ3RdEfXUwz4gGtmhxoP8Zlw+et1zj7HLkyb495AIvNRfU
+ LAn5/dnqEaW333oMUh0jmMBMbT04kmUpZwYQeookYvJQyB6VlEk//4RuwA5p2Otb0YnL
+ RG48bJV7K7i+C8UHQXKvGdTaAKMU/CgU9sOcmXD/2f7d0yfeTru8qMINgUeiMA0/IqLr
+ avtu9BAoi8YJCv5cmhmaIeGH3OWeVKYGyfBUCN90peqS5+IEWrVrIskRfmvHPWkdOkcl
+ J6rw==
+X-Gm-Message-State: AOAM531125g7rzVo7BNQqh3kuMc4wg8j1LNet2wowjlDlK7P9igvcYfh
+ biZHsxPFRu6jAjEx/NAS3Cj6BO8kKICNEpCD0bk=
+X-Received: by 2002:a25:cc3:: with SMTP id 186mr4089880ybm.306.1611846028388; 
+ Thu, 28 Jan 2021 07:00:28 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 01:44:00
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
+ <1611063546-20278-5-git-send-email-bmeng.cn@gmail.com>
+ <CAFEAcA-SG1nJ3g1dDSvZ99Wgduz+Wd0p483keCvd-oQNb0DO0A@mail.gmail.com>
+ <CAEUhbmVTPnPBO-8qY1UoZ_4HR4d-GcMLcwCf-Hm20rhD9pSi5w@mail.gmail.com>
+ <CAFEAcA_cE=fHmegAjs0Sefk4p1Fhi34ohjFcuxYFQUviBtRszQ@mail.gmail.com>
+ <34c45d74-adec-2734-830b-612b5e2f6083@amsat.org>
+ <CAFEAcA8=t6pxsvSt3FrPbAPXKT6y4t4hqjU8CXfbsw=RbbXK_w@mail.gmail.com>
+ <9a8312d7-d3b3-b896-a669-8ce8efc66bf0@amsat.org>
+ <CAFEAcA9LbKUZPhDfqQjHGfF9s-Se2drWYmKkn6pHY3gQit=BcA@mail.gmail.com>
+ <26b80ae5-f1e0-f438-a1e5-9922686be128@amsat.org>
+In-Reply-To: <26b80ae5-f1e0-f438-a1e5-9922686be128@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Thu, 28 Jan 2021 23:00:16 +0800
+Message-ID: <CAEUhbmX53xMDfYO6oUFJxqVHkZ9Hwr9ypB-Ztq5TcxTCVEEZvw@mail.gmail.com>
+Subject: Re: [PATCH v8 04/10] hw/ssi: imx_spi: Rework imx_spi_reset() to keep
+ CONREG register value
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,65 +119,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GSkggBv/tiZQ
+X-TUID: atGoVf6f3+o1
 
-On Mon, 21 Sep 2020 18:10:37 -0400
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+On Thu, Jan 28, 2021 at 10:49 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+>
+> On 1/28/21 3:41 PM, Peter Maydell wrote:
+> > On Thu, 28 Jan 2021 at 14:32, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org> wrote:
+> >> Oh I totally missed that :S
+> >>
+> >> Bin, I'd correct this as:
+> >>
+> >> - extract imx_spi_soft_reset(IMXSPIState *s) from imx_spi_reset()
+> >> - zero-initialize CONREG in imx_spi_reset().
+> >>
+> >> static void imx_spi_soft_reset(IMXSPIState *s)
+> >> {
+> >>  ...
+> >> }
+> >>
+> >> static void imx_spi_reset(DeviceState *dev)
+> >> {
+> >>     IMXSPIState *s =3D IMX_SPI(dev);
+> >>
+> >>     s->regs[ECSPI_CONREG] =3D 0;
+> >>     imx_spi_soft_reset(s);
+> >> }
+> >>
+> >> What do you think?
+> >
+> > That doesn't give you anywhere to put the imx_spi_update_irq()
+> > call, which must happen only on soft reset and not on DeviceState
+> > reset. You could do one of:
+> >  * have a 'common reset' function that does most of this,
+> >    plus an imx_spi_reset which clears CONREG and calls
+> >    common reset and an imx_spi_soft_reset which calls
+> >    common reset and imx_spi_update_irq()
+> >  * have imx_spi_soft_reset save the old CONREG in a local
+> >    variable before calling imx_spi_reset and then restore it
+> >    to s->regs
+>
+> Long term maintenance I'd prefer the 'common reset' approach
+> (but this is probably subjective to my view on the hardware,
+> since this is software, the 2nd approach is also valid but
+> harder to represent thinking of hardware).
+>
+> Bin, can you send a v9? (using the approach you prefer)
+>
 
-> Class properties make QOM introspection simpler and easier, as
-> they don't require an object to be instantiated.
-> 
-> Note: "its" is currently registered conditionally, but this makes
-> the feature be registered unconditionally.  The only side effect
-> is that it will be now possible to set its=on on virt-2.7 and
-> older.
-> 
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Yes, I will send a v9.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Thanks Peter for the explanation on the QOM device reset scenarios.
 
-> ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  hw/arm/virt.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index d1ab660fa60..986b75a6b89 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2484,6 +2484,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->                                            "Set on/off to enable/disable emulating a "
->                                            "guest CPU which implements the ARM "
->                                            "Memory Tagging Extension");
-> +
-> +    object_class_property_add_bool(oc, "its", virt_get_its,
-> +                                   virt_set_its);
-> +    object_class_property_set_description(oc, "its",
-> +                                          "Set on/off to enable/disable "
-> +                                          "ITS instantiation");
-> +
->  }
->  
->  static void virt_instance_init(Object *obj)
-> @@ -2511,11 +2518,6 @@ static void virt_instance_init(Object *obj)
->      } else {
->          /* Default allows ITS instantiation */
->          vms->its = true;
-> -        object_property_add_bool(obj, "its", virt_get_its,
-> -                                 virt_set_its);
-> -        object_property_set_description(obj, "its",
-> -                                        "Set on/off to enable/disable "
-> -                                        "ITS instantiation");
->      }
->  
->      /* Default disallows iommu instantiation */
-
+Regards,
+Bin

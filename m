@@ -1,156 +1,158 @@
-Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp468371lfd;
-        Wed, 27 Jan 2021 19:37:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzEKfulcUwHOSIEsw+5UsMo931aEefbA4ySrrAftWH2xVrkAx80MvkNHdDgu/nJMs+0Rbt0
-X-Received: by 2002:a25:6602:: with SMTP id a2mr21123672ybc.283.1611805057496;
-        Wed, 27 Jan 2021 19:37:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611805057; cv=none;
+Received: by 2002:a19:87d7:0:0:0:0:0 with SMTP id j206csp526876lfd;
+        Wed, 27 Jan 2021 21:36:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzoFWfpmHLnnqOzHfsq/uHZ4UVrsHqHvie5jlN1BpZnFheu96oGtKYPNdHx2LIIL2AQR4/v
+X-Received: by 2002:a25:b8ca:: with SMTP id g10mr19689723ybm.517.1611812207055;
+        Wed, 27 Jan 2021 21:36:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611812207; cv=none;
         d=google.com; s=arc-20160816;
-        b=FhDaEQpw8jdyiphllkOtYqToi6xI7uJt8OqyBW8ACouR86rR/nhUg6IIBWwRuzPMde
-         Bk05gRuNtf5anP0wLUsB7YgPvUVUpVG3p72Ww0668OtUsQr9rh6qeH0bE60kWbpbFFAB
-         Y44dkUvQUC9Me1eZwgvBv5TeBYw/hDRxujVPdaiWaOVK7orSnjZPLsYUwriKb+Jo5yjz
-         4ddFClM28afN1755oRxlWwMEwxKxPVcS/guKlcXIhpJXWN3CwF6g9xWXXPL/p770Hd+i
-         YQgPNlv4nOuHXY82VE0FsUDZpWF72u/7yF07f6iAwz5UpMfLqUSK+fCrl60iEhoZVcYQ
-         KY6w==
+        b=eNS/RmDFiWcRFa1jDwAvqF3jAT6SIzfEmzdWfIT25Sn3pceTyw+vGsuRV8ydj9MZOB
+         lpSJRk8V+rXAYz7qja2L77zoJ6RbvdILJc0pKMpZ6RnHxk/+2/pNN0E8i9fkYyL3q+Gm
+         CacnHm9P5qKF/XI5e4MSSCe3T3Mgr5tBapUGOiuu/szuIxjgl5WNOuL19iXL+0qcJyZa
+         qSaRFPQ/hzY7jofncNY393rbrH4sM8pZv1dsjzxpx00QWa3rsZhO2agzJvKn9C05ozSz
+         RFcjnPq56fQX1T94sbrP7zisrx8VgJhm3uVPBwVhFkvHlMCEYgoru3A3iDsfV0gO/Ij1
+         y6eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=2TvIvkeqlt7iKDLohob+JM0A4aIwF+QFrj6135CGq/o=;
-        b=Y5qJcWoMxhtIdwhlOJUP5qtcEbRf4+azU7/rLF6F8fsoyLa3Rfh6QhauxX5XJMKsGH
-         ijRG6fZcP9f9JAg2Sl0iXWVZOE7co3Kq/y10PSqLarwbwm/ZRHQLxR7OCxXtrGqhNU/a
-         vQdprM/6hYQ3siMknLYAxjXYJAAbU7EugH9/9kp4AazN8ceVP7El5efrtytgak3q4fE7
-         zNGAl1MT4hIZq9Yh0nqQYZDzHO26RDE8ekvYCqZITBkM62c5HrYW91DIvd8Y7Soni04y
-         fj6CoB0UxU41ljk7G+5r0YDNVg4jpfTGoZlUrf9ziN8NkRV1NRQoch5fKHbiBqYv99fD
-         o77Q==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=aRw96ERqpc5bouPiFb0ZAt+PI6A6RczOQ7As+kjj0s0=;
+        b=CrwCMQJ3SBjQjQ9OG6sOXXRDbxSJwQPTBQnlCmAY/nWotkxY46TMYNbUGcWqbho+Ds
+         2ErUDHq2q98YjLGmbpNINvUk90mmyfsFurUWYJS7+rG076dBJRIetHpcXVTvzqhXsTLZ
+         AcNeqWqohVJPDpHu7Js4uSbyLSYyALPfiQ4lb6mTKBBosLRstNozsCO4WZ8XCDaVbL4C
+         smsJZ2m0tizsyjXzNhp5utrjdUY4vsa2jXnJJkYKL1IQNDVpBLIV/IpFet/l1Mf48FUa
+         yW/Mh2vMqFn9fOOzDVmZ+GetpMdDZYlJDyWCsog5VL5qcy0x9QN6jedcEV1+pWYtXqvp
+         aC2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@modwiz-com.20150623.gappssmtp.com header.s=20150623 header.b=ezFEoVJl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SBOVZ4BV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e65si4813666ybf.296.2021.01.27.19.37.37
+        by mx.google.com with ESMTPS id v11si4200654ybp.35.2021.01.27.21.36.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jan 2021 19:37:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Jan 2021 21:36:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@modwiz-com.20150623.gappssmtp.com header.s=20150623 header.b=ezFEoVJl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51736 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SBOVZ4BV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l4y7k-000087-Ol
-	for alex.bennee@linaro.org; Wed, 27 Jan 2021 22:37:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42072)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l4zz4-0006kc-GB
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 00:36:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58998)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iris@modwiz.com>) id 1l4y7B-00007u-NZ
- for qemu-devel@nongnu.org; Wed, 27 Jan 2021 22:37:01 -0500
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b]:38075)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1l4zyx-0006kS-Bq; Thu, 28 Jan 2021 00:36:39 -0500
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f]:35278)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <iris@modwiz.com>) id 1l4y79-00011z-UM
- for qemu-devel@nongnu.org; Wed, 27 Jan 2021 22:37:01 -0500
-Received: by mail-il1-x12b.google.com with SMTP id a1so3976175ilr.5
- for <qemu-devel@nongnu.org>; Wed, 27 Jan 2021 19:36:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=modwiz-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2TvIvkeqlt7iKDLohob+JM0A4aIwF+QFrj6135CGq/o=;
- b=ezFEoVJlu1HONc/2FSW4Q07HerF6LF49Vt9zLypK7idXSS7Oc7Xu0o4cg/Wt/3+v63
- ic+bI2XVf6nreJfLDJFpXMESncFt+UAYOmHbt9Spxoyj+gj5xVsBQdAKFoSJntvA2UbV
- uY+3zMMFGzkXn4Oz49q6xwSoo8MXhgb3xNwKTkkpavxijm2OJoYI42utYpr3RLJQBBkG
- ligCLFGfPCWBX7VSvSt/2D3jsVfRyMo02UicHdKkiK96oZhMnEhRaI7dtrHOVugx5xlF
- 6gTzf9thiByJzpzV/gRgC5gVjK3f2MAbcU63DVU/RoHGVGyvVuwEqha8GnKo6DQEgZbp
- O2BA==
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1l4zyv-00084D-M0; Thu, 28 Jan 2021 00:36:39 -0500
+Received: by mail-oi1-x22f.google.com with SMTP id w8so4872523oie.2;
+ Wed, 27 Jan 2021 21:36:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:reply-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=aRw96ERqpc5bouPiFb0ZAt+PI6A6RczOQ7As+kjj0s0=;
+ b=SBOVZ4BVgX+Aih5wZczrImzCFPUAoPqjt2ZDBDDFPYUBRQAnyVFMbXhCqIoSbVjw3T
+ p/aIXMQaspFJTrh9qB2K1LrGwR8ih8+w8jv3jpgfL/iAhYslRLsBrCkll/2WyWa/jRmv
+ wBjSS9xdszTooyHso1+s1rEjhj1jirFNy11QIsLaRX6HkdIyoeWgtU6yJHh8bW1xmFT/
+ KsZnv2HdaBU161xwt06DQ/DVzvK7b1Tz8hPDvzxMb5B4wxy0dT4R9KjbBb/tB0Vh41Ro
+ ZNH5v7bzPQON/ZpPDUd1PUlwKpg0TnA27PQWGBrqGLbmQDcW4kx9naszFNjaqM3f9wnv
+ Jfow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2TvIvkeqlt7iKDLohob+JM0A4aIwF+QFrj6135CGq/o=;
- b=pY3wP2hsJRGdw1U4ySykpTvtkeYsmQux7UTY6+9cxaENIIqwll8gu6gfpEI7hI8SCb
- i6W8FP5IW84Ei5Yze4X+Zu7vrb/nrnen/2m32n4LCDwDNwGGbkOJLXGV3Q6kroi58w0t
- LvcM5UCZkhSwCEln6xwXbHoHTvG83M/jWg1qteJsEPJtY0NLZoxeFbk2Yp/MmWcYqY6t
- arBqHoWszWvvTMk4t0qHipo41E54ForMypFstT2TxlhPMSkWrfpe9q8Rtm25TCcKWWdw
- dz9GoTKr8XwMd9VazkLpy/WnpaNhkTpPCqJ/GzRyOBjMPXkRohYVC3YwmKU+FW5zno3T
- ZmnQ==
-X-Gm-Message-State: AOAM533gGzq7qRz/cKrfrEqhASFsxURxXzmieHogTI82AtAGrxQ7QRAa
- QG0svbnVaufukeGh7DKcaUX+pg==
-X-Received: by 2002:a92:bbcb:: with SMTP id x72mr10897395ilk.104.1611805018277; 
- Wed, 27 Jan 2021 19:36:58 -0800 (PST)
-Received: from localhost.localdomain (c-98-223-182-45.hsd1.il.comcast.net.
- [98.223.182.45])
- by smtp.gmail.com with ESMTPSA id y1sm1984027ioj.32.2021.01.27.19.36.57
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :reply-to:references:mime-version:content-disposition:in-reply-to;
+ bh=aRw96ERqpc5bouPiFb0ZAt+PI6A6RczOQ7As+kjj0s0=;
+ b=k2HsRZ1avDfQUVFRwARAv1+nz62lgqnzkrxzRNgrj8QNXQnQPHzGpkYUojY64r/a15
+ jFELCBp0sZb59mw9QSMq38WL8xQ7L8fzTabUDBSZ232a4+l+h5QyW/Q0raRj2uLoalzz
+ vza0OPC8aF9gN2+Gt0PZW4J3lI0XvRIhn3NfzpGlPN5rff1L9S9md1YqqrS8RskY5mBv
+ qAVGE1KiZ8DDwkyVW9OosWeEfk+3/VYouf4MA58IO8HHLqDEh0OLQntf9wu/rHjch2Gb
+ qocnAbzutYoTKw7i0NRBKcIyRaUE6mkYQnzWalCIyGHiKnU8xHZu5+diSJqbLV0NWCca
+ mOrg==
+X-Gm-Message-State: AOAM532ys6gk2llC+9c1hp1DgecwTxn7G2vzJ7+BSI5T34QZbLje8xkQ
+ +aQNmEU6XfS6OlhvGLCAGA==
+X-Received: by 2002:aca:618b:: with SMTP id v133mr5797716oib.98.1611812196187; 
+ Wed, 27 Jan 2021 21:36:36 -0800 (PST)
+Received: from serve.minyard.net ([47.184.170.156])
+ by smtp.gmail.com with ESMTPSA id m7sm815945otq.33.2021.01.27.21.36.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Jan 2021 19:36:57 -0800 (PST)
-From: Iris Johnson <iris@modwiz.com>
-To: Iris Johnson <iris@modwiz.com>
-Subject: [PATCH] hw/char/exynos4210_uart: Fix buffer size reporting with FIFO
- disabled
-Date: Thu, 28 Jan 2021 03:36:55 +0000
-Message-Id: <20210128033655.1029577-1-iris@modwiz.com>
-X-Mailer: git-send-email 2.25.1
+ Wed, 27 Jan 2021 21:36:35 -0800 (PST)
+Received: from minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:d0e0:7e1d:debb:57fe])
+ by serve.minyard.net (Postfix) with ESMTPSA id B817A180042;
+ Thu, 28 Jan 2021 05:36:33 +0000 (UTC)
+Date: Wed, 27 Jan 2021 23:36:32 -0600
+From: Corey Minyard <minyard@acm.org>
+To: Hao Wu <wuhaotsh@google.com>
+Subject: Re: [PATCH 6/6] hw/i2c: Implement NPCM7XX SMBus Module FIFO Mode
+Message-ID: <20210128053632.GG2057975@minyard.net>
+References: <20210126193237.1534208-1-wuhaotsh@google.com>
+ <20210126193237.1534208-7-wuhaotsh@google.com>
+ <20210126234724.GC2057975@minyard.net>
+ <CAGcCb12nJAMnZ+eaWC6n08hAFAVueCknSWzbEYFPp+GUApoRdg@mail.gmail.com>
+ <20210127214251.GE2057975@minyard.net>
+ <CAGcCb13N+0wtmkH4Q4rZowrpPBn_KkOae3GgZokC4B1bGi-emg@mail.gmail.com>
+ <20210127233724.GF2057975@minyard.net>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::12b;
- envelope-from=iris@modwiz.com; helo=mail-il1-x12b.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210127233724.GF2057975@minyard.net>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22f;
+ envelope-from=tcminyard@gmail.com; helo=mail-oi1-x22f.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:Exynos" <qemu-arm@nongnu.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WAXILkzbwDTe
+ Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ Doug Evans <dje@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gkCj2bZzyoRq
 
-Currently the Exynos 4210 UART code always reports available FIFO space
-when the backend checks for buffer space. When the FIFO is disabled this
-is behavior causes the backend chardev code to replace the data before the
-guest can read it.
+On Wed, Jan 27, 2021 at 05:37:25PM -0600, Corey Minyard wrote:
+> On Wed, Jan 27, 2021 at 01:59:07PM -0800, Hao Wu wrote:
+> > >
+> > > There is also the question about who takes these patches in.  I'm the
+> > > I2C maintainer, but there's other code in this series.  Once everything
+> > > is ready, I can ack them if we take it through the ARM tree.  Or I can
+> > > take it through my tree with the proper acks.
+> > >
+> > I think either  way is fine. Previous NPCM7XX patch series were taken in
+> > the ARM tree. But as i2c code taking into your tree is also fine.
+> > 
 
-This patch changes adds the logic to report the capacity properly when the
-FIFO is not being used.
+Let's go through the ARM tree, then.  So you have an:
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1913344
-Signed-off-by: Iris Johnson <iris@modwiz.com>
----
- hw/char/exynos4210_uart.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Acked-by: Corey Minyard <cminyard@mvista.com>
 
-diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
-index 6361df2ad3..9b21d201b3 100644
---- a/hw/char/exynos4210_uart.c
-+++ b/hw/char/exynos4210_uart.c
-@@ -553,7 +553,11 @@ static int exynos4210_uart_can_receive(void *opaque)
- {
-     Exynos4210UartState *s = (Exynos4210UartState *)opaque;
- 
--    return fifo_empty_elements_number(&s->rx);
-+    if (s->reg[I_(UFCON)] & UFCON_FIFO_ENABLE) {
-+        return fifo_empty_elements_number(&s->rx);
-+    } else {
-+        return !(s->reg[I_(UTRSTAT)] & UTRSTAT_Rx_BUFFER_DATA_READY);
-+    }
- }
- 
- static void exynos4210_uart_receive(void *opaque, const uint8_t *buf, int size)
--- 
-2.25.1
+For patches 2 and 6.
 
+Patch 4 still has the issue with the eeprom size.  If you are expecting
+a 32K eeprom to work, it's not going to, you are only going to get 256
+bytes.
+
+-corey

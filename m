@@ -1,199 +1,267 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp76521lfb;
-        Wed, 18 Nov 2020 22:09:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxVjqWwp2qsSFUYlehPXqof4K3uBB4Q+vqMDukefnDybhzf2IbzT9jWTLpf2XsYl9onccHh
-X-Received: by 2002:a25:bb90:: with SMTP id y16mr9195334ybg.9.1605766192164;
-        Wed, 18 Nov 2020 22:09:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605766192; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp373588lfo;
+        Thu, 28 Jan 2021 08:41:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxUYbG/1PfspmZIE+/xrZu2XLxHDOkhjGcYqs6XGrgPb7zd8Nl+ljgwiGjWDomj/8UG2Edg
+X-Received: by 2002:a25:b116:: with SMTP id g22mr3555883ybj.147.1611852074509;
+        Thu, 28 Jan 2021 08:41:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611852074; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGhH3hoyN4QmFFx7LmvOni/9K3K+Q7HiVIVRgNNpa87AVGvEAYZmqNh7kKZgS8k/sq
-         5FBq+yEfzAhgk2tvqW9znORk/lW0DAsz+IHO+E3VzdexBSGL92MFn3sfPrxKsIKb8ASB
-         KD3kXxSYBRuV3+O1bGloz+1B1SldBYiJ8aupsuy/+35DVxtUFo3x/mop4P4a2Bl0M+yk
-         XVKfRkEbpwDJLFhfh2lKyDXJtebfhCfGj0O3fVcQlachqGqzQ7a6A/6GBqj1xNW7lXtC
-         O9dFibUTopDiKZTYpQFVlpMSTsQmlVor+gDGajVhyUXze9f6H/btbRj+PGq8RdiKIri2
-         9aFQ==
+        b=jKVpriY8uuqxul+EgbHe4N+6dDPapzVDswJMVWT2PCoY/l97KtDVy/KzhTnY8PwYG3
+         Hz9KuAS3eczAhrR7b+2xvyZFeBRqmtQrb6lma808pBRQ4tcNl84wGDiiG9xZkBav4m/1
+         fDSyEHZOBqrTVp1v2ov0zdLibOXeOQ9Y+13N5U49tVXL1tT+08+Z1WlZIL0DGq2hpjEQ
+         GK87CfNjMrV/Ov6RdzLeFafZGWt7LmV86kXfl56YTf01oWydMioIMZhK/o1sMBztjO41
+         qCsMLU03l2idGRV4bCMuWuvFQbjvprIQIFBcO4JhlelNeOz7Jh9PhcQoYp3BlGHz37wB
+         QHHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=xauFzA0LStgYC/5r6IhxYU52HnlDeKQw3PBe1otIzB8=;
-        b=YecOZsR1Gd2gSwtMAFV+dnFyGc3gtqF3DWdgq3YxTGwbpL6SIps4GX/RbUr3N8eJF1
-         uiWwtq5vwJYRroxzPwg+rsb645Vms4Wj0ptHEDFpt9oUHuvvkF2w7oeJuZwkDSAlfDMz
-         RI1AOzwqvbQApUEp75BNfpPEkl3Fg4og5Fl/9dSLWn9kP9jGpLhZIrPdoLWlxI+Gebrf
-         +W1JP3U8wKGNEikSbkuVppfDj4eyCUVnJhRe8kaoB8b8gRxhlo/8tcB/+Dyq0f2CSt4O
-         XfKge2SLXlpZ3vrSNTl92mPdBsRXXYjtp2BFd3AFjZoPcqBG9EWWATE8Ejkk8FyZBJ6i
-         +lFg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ovn6qPizh5tNkIfibtG4FOUcKgnh1XKLk+62Fr3jlhM=;
+        b=BXsXe03W681h8blDaBummsUkg9hHtB35oiHkUhz5hV6B0alLL3XC2WRv8HWY4jE8v8
+         RnAU9DOsgr/VegKG4TvaFJ6AR+vPabHvpAI30uuE7vxa+iWHrJF3pNWHE8FmaN505g8w
+         bMpKoL6jZ8O98NhcrlJQISNwq8+ePax0Gs5XduKqCcRk5racpOtBRW4iEtSCNIoxWUDK
+         iXtaP8CNtuJqEBO/cJgKZb88L3Ra2btLuZlzf2dvOj43y/ez6jbsS24kMn774dfokOi5
+         t/4AiVFL+tl55pi3rJxM6ZlBlVqOb8M3UN1OLSo7W3sl/FzQO6rqyDxtrJ4U8eGcrvxz
+         UOJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="PgBRGiQ/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=eeBqyXt+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si16518485ybk.496.2020.11.18.22.09.51
+        by mx.google.com with ESMTPS id b9si5583649ybo.345.2021.01.28.08.41.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Nov 2020 22:09:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Jan 2021 08:41:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="PgBRGiQ/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44606 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=eeBqyXt+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45674 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kfd8h-0002NW-HU
-	for alex.bennee@linaro.org; Thu, 19 Nov 2020 01:09:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46156)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l5AM5-0003m3-P2
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 11:41:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35632)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kfd8I-0002Ls-35
- for qemu-devel@nongnu.org; Thu, 19 Nov 2020 01:09:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45018)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kfd8E-0006CK-Je
- for qemu-devel@nongnu.org; Thu, 19 Nov 2020 01:09:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605766161;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xauFzA0LStgYC/5r6IhxYU52HnlDeKQw3PBe1otIzB8=;
- b=PgBRGiQ/9n+4eHa+UIYfUhr0iaZd6Eaqgw1ZqO9V2UeUidrrPm4O0WGQPGt4B5/bK7kEY7
- ZWqTnODmAJ57ra6mK5JcyqEq5QXtzb8cIgBGKOgBwG3daASoFU9KhwfL0yWARniRGfNDxf
- S7GgPYaBdoAaMGQb6hbi2vwyFrVfl3A=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-521-c3KmEpYPNniIv3WFUyqq7A-1; Thu, 19 Nov 2020 01:09:18 -0500
-X-MC-Unique: c3KmEpYPNniIv3WFUyqq7A-1
-Received: by mail-wm1-f70.google.com with SMTP id o203so2022144wmo.3
- for <qemu-devel@nongnu.org>; Wed, 18 Nov 2020 22:09:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l5ALv-0003hV-8x
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 11:41:03 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:46262)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l5ALs-0002pa-20
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 11:41:03 -0500
+Received: by mail-ej1-x629.google.com with SMTP id rv9so8685747ejb.13
+ for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 08:40:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ovn6qPizh5tNkIfibtG4FOUcKgnh1XKLk+62Fr3jlhM=;
+ b=eeBqyXt+lMUDvqgO2I3s2QvkZpvR/cv/vetrWNdy7i4f2XcjyijRmC5pWc5iE34Rk1
+ TEGKWr0bMnJS0KzbpCvXyBbhxs4ZlMPIEIN4Vps62quNf0ySnK1NDlNisG+b6Aqgr8OR
+ RINcUIho6Gp+kVVLv7JvDzU9bhLEM9Bsy6+BWbYdJpG0lGgrgOIMgLJF0DGCnl3LwuJz
+ FJEe0T/k1srNTOG9mcaONgeod8NKOK2B4KBr9wF5A5vvBWtEa/dEP934A0BYXRoZxrga
+ vyM3uVZkYZ0lRbO9grRcOY7OC+lpcwvK9cL9bkn6p2Eew3oDdOTaIQsK5Lt5dm4Su5Bi
+ RZ1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xauFzA0LStgYC/5r6IhxYU52HnlDeKQw3PBe1otIzB8=;
- b=FhzwiBqbxd8B9vJEXL7YO5t3njvaofaoM0UTciCRWf6O7Wm003SaqNxnOXIE0MgMwv
- uVYrtQBudS31EjF+ieiUpcjOzGVqFlVSbtBM+GNe3MmSlmq1+XH0pNVjq1/HAXRpWnPc
- dGwrl4V8NPtrwySxkolyfK3yeLHhInRXg4Y6ol3O+yoX51OzCeDgl4MmZOx/XLd8Gvsg
- 4iiZcBsgFjMtJKmBtfh1/kkttAlZ9yhijStYDRpWUHkWmqXPeT4uEcKshoIEvjNVmRpH
- jnGxx2NX9/9NK+LvXX3gnncWCHyxci78DN/61ywYy8Vf7kdo4nk7I7atIX93DRpyz0re
- vCyA==
-X-Gm-Message-State: AOAM533faZDczuNHgPNUSecK/Solq9G1gPtq3LCoIqvnapVsx9tEHVlS
- Q1WftS0yXoJ7kC6PmBwID29iHTeGmQptZOKVinhYH22Kz73y4iXawBVbDV1nGx84byoIsMir2Ra
- FUlV7dEhFvBzNEQ4=
-X-Received: by 2002:adf:f00f:: with SMTP id j15mr8279106wro.102.1605766157339; 
- Wed, 18 Nov 2020 22:09:17 -0800 (PST)
-X-Received: by 2002:adf:f00f:: with SMTP id j15mr8279075wro.102.1605766157085; 
- Wed, 18 Nov 2020 22:09:17 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id h2sm8046103wme.45.2020.11.18.22.09.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Nov 2020 22:09:16 -0800 (PST)
-Subject: Re: [RFC PATCH 0/5] ARM: reduce the memory consumed when mapping UEFI
- flash images
-To: Markus Armbruster <armbru@redhat.com>,
- David Edmondson <david.edmondson@oracle.com>
-References: <20201116104216.439650-1-david.edmondson@oracle.com>
- <3da830b6-8200-6df9-9ba3-1f51bf887c4e@redhat.com>
- <87a6vhxvit.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e54fc218-1eae-be1c-b064-049bc1d46793@redhat.com>
-Date: Thu, 19 Nov 2020 07:09:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ovn6qPizh5tNkIfibtG4FOUcKgnh1XKLk+62Fr3jlhM=;
+ b=C1H7bJEfTtRQlCHoNF8Mjz0sdMWU7Bwub6AAPf7mIMJaAtlpNU2Qwke8e59aEXhYsJ
+ 5od1dRfMxoabBF5jleXCTPupNYS1xRgVC6G/g6qfvO7Pxl2VyjdxD8yqLu7IJqGd9V8n
+ LCRZ0aOM0aJX2h1UyIQivSs86kzMH8eeinz0KWesw2l+KpBnv/+cLixYosk4SdYSr1bw
+ lJagkYOAJArSJSm3D0J+IRn6LCPSkxx6MG2Qp69562X0K8DEPLoVS2hfAkjQJxkVgkaq
+ XIgJgSGWA76HfLS7ZZU+lvIUiVi+5la+MqVE7P/9jtL1QEyjA86ZdRPOk27V/zgbS7f7
+ Gjdw==
+X-Gm-Message-State: AOAM532ZAoCYs6TzLPtMH942rNQO9UvucIbBhjFi17o7xHxi/OcrmXpP
+ t48ZG43ygDf2wkKVHT9i4cgfouQVmQ9qtOEWvQYFWg==
+X-Received: by 2002:a17:906:3603:: with SMTP id
+ q3mr236651ejb.382.1611852057147; 
+ Thu, 28 Jan 2021 08:40:57 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <87a6vhxvit.fsf@dusky.pond.sub.org>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/19 01:09:21
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+References: <20210120224444.71840-1-agraf@csgraf.de>
+ <20210120224444.71840-11-agraf@csgraf.de>
+In-Reply-To: <20210120224444.71840-11-agraf@csgraf.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 Jan 2021 16:40:45 +0000
+Message-ID: <CAFEAcA9f+urL1ZnXY4wZMPfbd04afnpo0wKxVo4N=KYGjh0oNA@mail.gmail.com>
+Subject: Re: [PATCH v6 10/11] hvf: arm: Add support for GICv3
+To: Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Xu Yandong <xuyandong2@huawei.com>, qemu-devel@nongnu.org,
- Max Reitz <mreitz@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Zheng Xiang <zhengxiang9@huawei.com>, qemu-arm@nongnu.org,
- =?UTF-8?B?aGFpYmluemhhbmco5byg5rW35paMKQ==?= <haibinzhang@tencent.com>,
- Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LxBoe4wlwQRJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BtYvp+Nq7xht
 
-On 11/16/20 2:48 PM, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
-> 
->> Hi David,
->>
->> On 11/16/20 11:42 AM, David Edmondson wrote:
->>> Currently ARM UEFI images are typically built as 2MB/768kB flash
->>> images for code and variables respectively. These images are both then
->>> padded out to 64MB before being loaded by QEMU.
->>>
->>> Because the images are 64MB each, QEMU allocates 128MB of memory to
->>> read them, and then proceeds to read all 128MB from disk (dirtying the
->>> memory). Of this 128MB less than 3MB is useful - the rest is zero
->>> padding.
->>
->> 2 years ago I commented the same problem, and suggested to access the
->> underlying storage by "block", as this is a "block storage".
->>
->> Back then the response was "do not try to fix something that works".
->> This is why we choose the big hammer "do not accept image size not
->> matching device size" way.
->>
->> While your series seems to help, it only postpone the same
->> implementation problem. If what you want is use the least memory
->> required, I still believe accessing the device by block is the
->> best approach.
-> 
-> "Do not try to fix something that works" is hard to disagree with.
-> However, at least some users seem to disagree with "this works".  Enough
-> to overcome the resistance to change?
+On Wed, 20 Jan 2021 at 22:44, Alexander Graf <agraf@csgraf.de> wrote:
+>
+> We currently only support GICv2 emulation. To also support GICv3, we will
+> need to pass a few system registers into their respective handler functions.
+>
+> This patch adds handling for all of the required system registers, so that
+> we can run with more than 8 vCPUs.
+>
+> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+> Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
 
-Yeah, at least 3 big users so far:
+So, how much of the GICv3 does Hypervisor.framework expect
+userspace to implement ?
 
-- Huawei
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg607292.html
-- Tencent
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg742066.html
-- Oracle
-(this series).
+Currently we have two GICv3 implementations:
+ * hw/intc/arm_gicv3_kvm.c -- which is the stub device that
+   handles the KVM in-kernel GICv3
+ * hw/intc/arm_gicv3.c -- which is the full-emulation device
+   that assumes that it is working with a TCG CPU
 
-Then Huawei tried the MicroVM approach:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg680103.html
+Support for HVF GICv3 needs either another one of these or
+some serious refactoring of the full-emulation device so that
+it doesn't assume that the CPU it's dealing with is a TCG one.
+(I suspect the right design is to bite the bullet and make the
+implementation follow the hardware in having "the GIC device proper"
+and "the GIC CPU interface" separate from each other and communicating
+via an API approximately equivalent to the GIC Stream Protocol
+as described in the GICv3 architecture specification; but that's
+a painful refactor and there might be some other approach less
+invasive but still reasonably clean.)
 
-I simply wanted to save David time by remembering this other approach,
-since Peter already commented on David's one (see Huawei link).
+>  static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
+>  {
+>      ARMCPU *arm_cpu = ARM_CPU(cpu);
+> @@ -431,6 +491,39 @@ static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
+>      case SYSREG_PMCCNTR_EL0:
+>          val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>          break;
+> +    case SYSREG_ICC_AP0R0_EL1:
+> +    case SYSREG_ICC_AP0R1_EL1:
+> +    case SYSREG_ICC_AP0R2_EL1:
+> +    case SYSREG_ICC_AP0R3_EL1:
+> +    case SYSREG_ICC_AP1R0_EL1:
+> +    case SYSREG_ICC_AP1R1_EL1:
+> +    case SYSREG_ICC_AP1R2_EL1:
+> +    case SYSREG_ICC_AP1R3_EL1:
+> +    case SYSREG_ICC_ASGI1R_EL1:
+> +    case SYSREG_ICC_BPR0_EL1:
+> +    case SYSREG_ICC_BPR1_EL1:
+> +    case SYSREG_ICC_DIR_EL1:
+> +    case SYSREG_ICC_EOIR0_EL1:
+> +    case SYSREG_ICC_EOIR1_EL1:
+> +    case SYSREG_ICC_HPPIR0_EL1:
+> +    case SYSREG_ICC_HPPIR1_EL1:
+> +    case SYSREG_ICC_IAR0_EL1:
+> +    case SYSREG_ICC_IAR1_EL1:
+> +    case SYSREG_ICC_IGRPEN0_EL1:
+> +    case SYSREG_ICC_IGRPEN1_EL1:
+> +    case SYSREG_ICC_PMR_EL1:
+> +    case SYSREG_ICC_SGI0R_EL1:
+> +    case SYSREG_ICC_SGI1R_EL1:
+> +    case SYSREG_ICC_SRE_EL1:
+> +        val = hvf_sysreg_read_cp(cpu, reg);
+> +        break;
+> +    case SYSREG_ICC_CTLR_EL1:
+> +        val = hvf_sysreg_read_cp(cpu, reg);
+> +
+> +        /* AP0R registers above 0 don't trap, expose less PRIs to fit */
+> +        val &= ~ICC_CTLR_EL1_PRIBITS_MASK;
+> +        val |= 4 << ICC_CTLR_EL1_PRIBITS_SHIFT;
+> +        break;
 
-Regards,
+Pretty sure you don't want to be trying to squeeze even the
+GICv3 cpuif implementation into this source file...
 
-Phil.
+>      default:
+>          DPRINTF("unhandled sysreg read %08x (op0=%d op1=%d op2=%d "
+>                  "crn=%d crm=%d)", reg, (reg >> 20) & 0x3,
+> @@ -442,6 +535,24 @@ static uint64_t hvf_sysreg_read(CPUState *cpu, uint32_t reg)
+>      return val;
+>  }
+>
+> +static void hvf_sysreg_write_cp(CPUState *cpu, uint32_t reg, uint64_t val)
+> +{
+> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+> +    CPUARMState *env = &arm_cpu->env;
+> +    const ARMCPRegInfo *ri;
+> +
+> +    ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_reg2cp_reg(reg));
+> +
+> +    if (ri) {
+> +        if (ri->writefn) {
+> +            ri->writefn(env, ri, val);
+> +        } else {
+> +            CPREG_FIELD64(env, ri) = val;
+> +        }
+> +        DPRINTF("vgic write to %s [val=%016llx]", ri->name, val);
+> +    }
+> +}
+> +
+>  static void hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+>  {
+>      ARMCPU *arm_cpu = ARM_CPU(cpu);
+> @@ -449,6 +560,36 @@ static void hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+>      switch (reg) {
+>      case SYSREG_CNTPCT_EL0:
+>          break;
+> +    case SYSREG_ICC_AP0R0_EL1:
+> +    case SYSREG_ICC_AP0R1_EL1:
+> +    case SYSREG_ICC_AP0R2_EL1:
+> +    case SYSREG_ICC_AP0R3_EL1:
+> +    case SYSREG_ICC_AP1R0_EL1:
+> +    case SYSREG_ICC_AP1R1_EL1:
+> +    case SYSREG_ICC_AP1R2_EL1:
+> +    case SYSREG_ICC_AP1R3_EL1:
+> +    case SYSREG_ICC_ASGI1R_EL1:
+> +    case SYSREG_ICC_BPR0_EL1:
+> +    case SYSREG_ICC_BPR1_EL1:
+> +    case SYSREG_ICC_CTLR_EL1:
+> +    case SYSREG_ICC_DIR_EL1:
+> +    case SYSREG_ICC_HPPIR0_EL1:
+> +    case SYSREG_ICC_HPPIR1_EL1:
+> +    case SYSREG_ICC_IAR0_EL1:
+> +    case SYSREG_ICC_IAR1_EL1:
+> +    case SYSREG_ICC_IGRPEN0_EL1:
+> +    case SYSREG_ICC_IGRPEN1_EL1:
+> +    case SYSREG_ICC_PMR_EL1:
+> +    case SYSREG_ICC_SGI0R_EL1:
+> +    case SYSREG_ICC_SGI1R_EL1:
+> +    case SYSREG_ICC_SRE_EL1:
+> +        hvf_sysreg_write_cp(cpu, reg, val);
+> +        break;
+> +    case SYSREG_ICC_EOIR0_EL1:
+> +    case SYSREG_ICC_EOIR1_EL1:
+> +        hvf_sysreg_write_cp(cpu, reg, val);
+> +        qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 0);
+> +        hv_vcpu_set_vtimer_mask(cpu->hvf->fd, false);
 
+This definitely looks wrong. Not every interrupt is
+a timer interrupt, and writing to EOIR in the GIC doesn't
+squelch the underlying timer irq, that should happen somewhere
+else.
+
+thanks
+-- PMM

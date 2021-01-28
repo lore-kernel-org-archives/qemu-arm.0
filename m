@@ -1,200 +1,194 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp272307lfo;
-        Thu, 28 Jan 2021 06:33:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzmUFTJGnCkB8phG6keX6CyV1Z29voBuodNV5L4Ks0kJ5K+b3xuF52++4L21JPvxWFtAfck
-X-Received: by 2002:a25:5f02:: with SMTP id t2mr23569106ybb.161.1611844398992;
-        Thu, 28 Jan 2021 06:33:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611844398; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp262729lfo;
+        Thu, 28 Jan 2021 06:21:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwfprsZAXAWsYtnNPEEvLNAM1XLuclBuynBkw5cS0EFPg9rh57L9wXD2eXE0lU8T1/CYoXn
+X-Received: by 2002:a25:aaae:: with SMTP id t43mr24155566ybi.390.1611843677523;
+        Thu, 28 Jan 2021 06:21:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611843677; cv=none;
         d=google.com; s=arc-20160816;
-        b=WzS0JDD/V2Is/5ta4O/ywcNydGmLNLhuXLQ/5Xqb/ry4dX4VNMNWZN6cPGncNnVUtC
-         WKxEIJLhipaWZ6tz5L0MPzMsMY6hyBXatDgjZdxS33hFqdsMwscLLZtiRloBWPV3kHJ1
-         ujDav2dcujbYgnzpyLM9g8puOCU2Wp1Q/7yjeWNJHgMyPc4NblTmCAk2Dji83dEylRZr
-         j4ZBvxEXRbQxjpqvCscOvVfStVgwwrvwMDXD9MpqW0ASjx6KjqSyH4COLXTmAUekuyXF
-         iPQMQm6CwlFPxzj9bpPL49nsMrZcfE4OXle5pPtzTpfsKxAOXs59w/3vSKN25uKW8yeG
-         DuSA==
+        b=THCSjodBX0HDxbU6cFSekfrjbGwTtMIG9KsQQ5NRj63ss9rRKh394fZsz4p05diRat
+         7GtzUgwty8D6VTX6OolwsEtmewxpuOJiwLUY57XMJ9o9/zLGvC16qmofVYvnaCPFFJIh
+         LDkVCWgzugeDRmK4nmE7TYDTwmDTeDV8q0fyto89Y7f2O65YiM7HMpEzELmvkaIz9Gej
+         BxMDegoBWoaStxeG5/b+urZFlT57gBajnlrtkZM2YMCGf7wYi361F1ssNgM+cFKiNgiJ
+         co2I0/xZgmoBJA2OpbrSkNC9HVI5jHSNeE7DVEcp7UYSnMS1bsnXxeer30Jz1e3qzIXX
+         g1aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=6DRo2VevtgZRCIOMvLkYVjMIfduDRPEFsCZj4TkdEHQ=;
-        b=LnXg4YbpEvR4nEr383xHn8YOUj1YlYY960D5oBTjudjD/xGUI+cgdCep0Qx5ydBRJS
-         wSKS49wXH8YQnSZix7odFA2zTKpLVZOwXVpDdts4SNiQCGoAI7z0RzEYvkoEBkqlchCZ
-         2kmQqrquFgrMnHwPY+oA5jw6LYyUthiWnHEUNd1gQ4VJel6zi1dN/9Zm6rzwaGPDoF1t
-         nvwyeWAZzzKhWxXqndslHGJ1padek1pOj+VN1uicL9UBayCa5wuYcONyyp4iuBZ1H1Hj
-         McfnzIjOPoAD75Oy50lmhyYuKAb6gmt+bfw4IxGtrJDqTa0lcZ3v068eTtPyYRa7dZ2j
-         Z3DQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=88zMDvynYl+VCILBwZxGIJSVNOkBVvT44NtQ/W11vZg=;
+        b=0jzM5NmlsecjvXU2d7w5YrDNxuG+xTjCN0+yOd0hv/CPL50tHErKHuPwjGTwN/tKo8
+         IUTa3hxuT7YVWaVvL8qEiQCYyNbYV/5GtSs+JOjxgcZxYvSCLAHlUNuQaeZfy96XEB71
+         OkyhZHss0YjMDlAN6CI8SZbyuovdr/s3ZU3NxuxoW/Iw6prbTccGXNT3GrNnxfbKe5mo
+         uIcXpIhJOK8y2ZYJ7GtrpgfGOcjmO/T0k5210h+H/qA+DDND8roaordX+dLvxxwSfIcm
+         klJ/C36XVCQNlzBwdNeNw0BhF0DjopSW9iGpa4Cdy5hZc/RHPSAqtaom2STlun95/6N3
+         a53g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u1AO+jXQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BpmpiMxC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e3si5893352ybi.121.2021.01.28.06.33.18
+        by mx.google.com with ESMTPS id o193si4215696ybc.53.2021.01.28.06.21.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 06:33:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Jan 2021 06:21:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u1AO+jXQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57424 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BpmpiMxC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35426 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l58MI-00020P-BK
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 09:33:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42508)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l58Ae-0000mP-VN
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 09:21:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l58LU-0001TF-FH; Thu, 28 Jan 2021 09:32:30 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:40280)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1l585A-0002r9-8K; Thu, 28 Jan 2021 09:15:36 -0500
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30]:40691)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l58LL-00048W-Ij; Thu, 28 Jan 2021 09:32:22 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id gx5so8056518ejb.7;
- Thu, 28 Jan 2021 06:32:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1l5858-0006M9-FT; Thu, 28 Jan 2021 09:15:35 -0500
+Received: by mail-yb1-xb30.google.com with SMTP id w24so5575176ybi.7;
+ Thu, 28 Jan 2021 06:15:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=6DRo2VevtgZRCIOMvLkYVjMIfduDRPEFsCZj4TkdEHQ=;
- b=u1AO+jXQpl88AAm8tIxnUUhNsmJin8hGfSeH8pDp7C+Bi78tQuXdo8mIJq6FsjLLIm
- UauQNV0D3P8BXgR3sbIfdMWMZag0tdBTv/i6KWfcegcSLCPx3RT0cgsVY/fPGJ8My057
- jsFpyJ/eC4vQLdbbC3UsJmZy/L0jBgF365rM67X9g1Z/XHo+Xi+0mN+cTEGIH7be1wIA
- B+kVB3hsbkmOFh5iA6CbIbD2Y/K/qzx8G4VSsLzx+M3K9UTOcdESKg6QHSIyug9xJMaK
- c6onmf0yPmZHvG8gKzIxIAXi+cv6RwKTsZN9z0jk83A9l+sCekXoKMl+qicCm7cinipj
- +JMQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=88zMDvynYl+VCILBwZxGIJSVNOkBVvT44NtQ/W11vZg=;
+ b=BpmpiMxCbvnplmXE1xZQBfb6/3INnLepE8WAvNyim44FTm5OStMuFQmHhfrbLXBELh
+ wRZ5m3XUvHMq0/5Xq8XnI7WEsUCk57zynu3SP2mk3Y3rfjf1Ui4dg/7kP+d4CELUjy0d
+ J76DI1aWbnINOHV8upP2mRtJe6hLRSYkQx104AHNdT/9LeUHv9W5RO6/umwpXJf3FUrZ
+ CqfZuMv2QMqxww9q/biKAvplEm9q6yBFHD+NbUREf1hYSlvgcRAHCDP9W1hx1jm7b9NM
+ FutT13wls0ZCdQlS7mJmMp70ONRTldrbPPYWy4c/iYad084+Mk2/YapVa3r67+w+QaJ2
+ 112w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6DRo2VevtgZRCIOMvLkYVjMIfduDRPEFsCZj4TkdEHQ=;
- b=j67FASvI6ziLqCQhzqEh48B+zD5AwPAEPmqSrxfXvKdzc0JHSh21dyQ3XV/kYrqpPu
- p0CSHURiFAvR1TKN6nojBoqW8W+go4aRQ72P6eH7lnickGeJQZ5AWh+PQ85qnoBc9l3Y
- oBgcFZ1QMGrPrgcTxIJ8CYQU4Gf/vcO4IHPvt3i1C4PTJuL1NRWmT7QGWbhfpJYZ30oO
- 0GosC6OSEbeviDcUyw0dyZRqF/jQ0jYTiMpEF9aXpkibUu52VoUcBKTfm5bpcOqgMV3/
- o3MX7W2d4UJeT8k/vnLYtEwPzNy9+GlAp4oxtvTXXMPR2sfLxJGC4bxco381LY8EnLOQ
- M04g==
-X-Gm-Message-State: AOAM532dhS6lMuZ05azB21cdbEBADNkrXsOCakERSRZIojF3j2GLUF7i
- XJfUkkwVenjwwfbBAW/PsQc=
-X-Received: by 2002:a17:906:49c2:: with SMTP id
- w2mr10883323ejv.12.1611844337423; 
- Thu, 28 Jan 2021 06:32:17 -0800 (PST)
-Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id g25sm2337439ejf.15.2021.01.28.06.32.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Jan 2021 06:32:16 -0800 (PST)
-Subject: Re: [PATCH v8 04/10] hw/ssi: imx_spi: Rework imx_spi_reset() to keep
- CONREG register value
-To: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=88zMDvynYl+VCILBwZxGIJSVNOkBVvT44NtQ/W11vZg=;
+ b=JScarw8qQgMdEmFTGWkglPajaEFBOGax3+mJ5rFEqxxVImH58bBZ+zOGcS3CJ3wITr
+ wiPFLGwXNRQUK2b8X4/u+Q8uIMVyvLFJr0DVmDqegx4oTHhav5zJH77nu30auySEsKE7
+ JER2L2Jq8cawRICon9dduCXeFaRGaW+LcR06y61QRYBSW5blF1VX8UU7vf0GyP7u9oZU
+ JYpIxTeHY2wSsHIcdo/dM2F21jPRxVXxnGeJaB82m3/78nwoEYt/zOtrl0/hlcSCvhY2
+ 9Ya8VgLniOG5vcUTfFuMb/cq8bY3RJcVM3MMRYNvxH74QYa3jKXGYSSYWdbMofdhdGgj
+ RUBQ==
+X-Gm-Message-State: AOAM5311y587CJgFrTb0ZxPyGNyA/1ruApEX+Egk1JpYGwnhoxfXJDhk
+ xo0FQXGnpJK8AlxxPt3LdODtS1mr8rQgZNE4G7M=
+X-Received: by 2002:a25:3bc5:: with SMTP id
+ i188mr23867635yba.332.1611843332852; 
+ Thu, 28 Jan 2021 06:15:32 -0800 (PST)
+MIME-Version: 1.0
 References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
  <1611063546-20278-5-git-send-email-bmeng.cn@gmail.com>
  <CAFEAcA-SG1nJ3g1dDSvZ99Wgduz+Wd0p483keCvd-oQNb0DO0A@mail.gmail.com>
  <CAEUhbmVTPnPBO-8qY1UoZ_4HR4d-GcMLcwCf-Hm20rhD9pSi5w@mail.gmail.com>
  <CAFEAcA_cE=fHmegAjs0Sefk4p1Fhi34ohjFcuxYFQUviBtRszQ@mail.gmail.com>
- <34c45d74-adec-2734-830b-612b5e2f6083@amsat.org>
- <CAFEAcA8=t6pxsvSt3FrPbAPXKT6y4t4hqjU8CXfbsw=RbbXK_w@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <9a8312d7-d3b3-b896-a669-8ce8efc66bf0@amsat.org>
-Date: Thu, 28 Jan 2021 15:32:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8=t6pxsvSt3FrPbAPXKT6y4t4hqjU8CXfbsw=RbbXK_w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+In-Reply-To: <CAFEAcA_cE=fHmegAjs0Sefk4p1Fhi34ohjFcuxYFQUviBtRszQ@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Thu, 28 Jan 2021 22:15:18 +0800
+Message-ID: <CAEUhbmVqKxEoPxDBnAEwLb0614Ht7WO6dqeEBLWTNecSy+mYqA@mail.gmail.com>
+Subject: Re: [PATCH v8 04/10] hw/ssi: imx_spi: Rework imx_spi_reset() to keep
+ CONREG register value
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bmeng.cn@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ko7ny7I5EE1e
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G1PWfPUPSCKG
 
-On 1/28/21 3:22 PM, Peter Maydell wrote:
-> On Thu, 28 Jan 2021 at 14:18, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> On 1/28/21 2:54 PM, Peter Maydell wrote:
->>> On Thu, 28 Jan 2021 at 13:47, Bin Meng <bmeng.cn@gmail.com> wrote:
->>>>
->>>> On Thu, Jan 28, 2021 at 9:43 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->>>>> This retains the CONREG register value for both:
->>>>>  * 'soft' reset caused by write to device register to disable
->>>>>    the block
->>>>>    -- this is corrcet as per the datasheet quote
->>>>>  * 'power on' reset via TYPE_DEVICE's reset method
->>>>>    -- but in this case we should reset CONREG, because the Device
->>>>>    reset method is like a complete device powercycle and should
->>>>>    return the device state to what it was when QEMU was first
->>>>>    started.
->>>>
->>>> The POR value of CONREG is zero, which should be the default value, no?
->>>
->>> But you're not setting it to zero here, you're leaving it with
->>> whatever value it had before. (That's correct for soft reset,
->>> but wrong for power-on.)
->>
->> zero value on power-on is what I tried to describe as
->> "It is initialized to zero when the instance is created."
-> 
-> Yes, but QOM device reset does not happen just once at startup and
-> not thereafter. Consider:
-> 
->  * user starts QEMU
->  * QOM devices are created and realized
->  * QOM device reset happens
->      -- CONREG is zero here because QOM structs are zero-initialized
->  * guest runs
->  * guest modifies CONREG from its initial value
->  * system reset is requested (perhaps by user, perhaps by
->    guest writing some register or another)
->  * QOM device reset happens
->      -- CONREG is not zero here, so reset must clear it
+On Thu, Jan 28, 2021 at 9:54 PM Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
+>
+> On Thu, 28 Jan 2021 at 13:47, Bin Meng <bmeng.cn@gmail.com> wrote:
+> >
+> > On Thu, Jan 28, 2021 at 9:43 PM Peter Maydell <peter.maydell@linaro.org=
+> wrote:
+> > >
+> > > On Tue, 19 Jan 2021 at 13:40, Bin Meng <bmeng.cn@gmail.com> wrote:
+> > > >
+> > > > From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > > >
+> > > > When the block is disabled, all registers are reset with the
+> > > > exception of the ECSPI_CONREG. It is initialized to zero
+> > > > when the instance is created.
+> > > >
+> > > > Ref: i.MX 6DQ Applications Processor Reference Manual (IMX6DQRM),
+> > > >      chapter 21.7.3: Control Register (ECSPIx_CONREG)
+> > >
+> > > > diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+> > > > index 8fb3c9b..c952a3d 100644
+> > > > --- a/hw/ssi/imx_spi.c
+> > > > +++ b/hw/ssi/imx_spi.c
+> > > > @@ -231,12 +231,23 @@ static void imx_spi_flush_txfifo(IMXSPIState =
+*s)
+> > > >  static void imx_spi_reset(DeviceState *dev)
+> > > >  {
+> > > >      IMXSPIState *s =3D IMX_SPI(dev);
+> > > > +    int i;
+> > > >
+> > > >      DPRINTF("\n");
+> > > >
+> > > > -    memset(s->regs, 0, sizeof(s->regs));
+> > > > -
+> > > > -    s->regs[ECSPI_STATREG] =3D 0x00000003;
+> > > > +    for (i =3D 0; i < ARRAY_SIZE(s->regs); i++) {
+> > > > +        switch (i) {
+> > > > +        case ECSPI_CONREG:
+> > > > +            /* CONREG is not updated on reset */
+> > > > +            break;
+> > > > +        case ECSPI_STATREG:
+> > > > +            s->regs[i] =3D 0x00000003;
+> > > > +            break;
+> > > > +        default:
+> > > > +            s->regs[i] =3D 0;
+> > > > +            break;
+> > > > +        }
+> > > > +    }
+> > >
+> > > This retains the CONREG register value for both:
+> > >  * 'soft' reset caused by write to device register to disable
+> > >    the block
+> > >    -- this is corrcet as per the datasheet quote
+> > >  * 'power on' reset via TYPE_DEVICE's reset method
+> > >    -- but in this case we should reset CONREG, because the Device
+> > >    reset method is like a complete device powercycle and should
+> > >    return the device state to what it was when QEMU was first
+> > >    started.
+> >
+> > The POR value of CONREG is zero, which should be the default value, no?
+>
+> But you're not setting it to zero here, you're leaving it with
+> whatever value it had before. (That's correct for soft reset,
+> but wrong for power-on.)
 
-Oh I totally missed that :S
+I think that's ensured by object_initialize_with_type().
 
-Bin, I'd correct this as:
-
-- extract imx_spi_soft_reset(IMXSPIState *s) from imx_spi_reset()
-- zero-initialize CONREG in imx_spi_reset().
-
-static void imx_spi_soft_reset(IMXSPIState *s)
-{
- ...
-}
-
-static void imx_spi_reset(DeviceState *dev)
-{
-    IMXSPIState *s = IMX_SPI(dev);
-
-    s->regs[ECSPI_CONREG] = 0;
-    imx_spi_soft_reset(s);
-}
-
-What do you think?
-
-Phil.
+Regards,
+Bin

@@ -1,109 +1,116 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp36772lfo;
-        Thu, 28 Jan 2021 00:39:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwAXi1ACw4URmmmHR8+QJ2IbdQD0fVXxDURPsZ/pVAghScopKBjIPOdOKirkqbjUnWgJK6l
-X-Received: by 2002:a25:d08a:: with SMTP id h132mr21733087ybg.372.1611823198252;
-        Thu, 28 Jan 2021 00:39:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611823198; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp42038lfo;
+        Thu, 28 Jan 2021 00:50:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxw1UryhsVr6i0VG85hsfvRsa1V4/eR7dHM2FgSr4/AW+eMRUqU4I03trz95VRH0g3MHqmn
+X-Received: by 2002:a25:2483:: with SMTP id k125mr22166210ybk.190.1611823815287;
+        Thu, 28 Jan 2021 00:50:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611823815; cv=none;
         d=google.com; s=arc-20160816;
-        b=oYnfTmXsv+pZiYz9Trr+JNGRlJAfmXTfiJgHKMX2Q4fOnlYB9sraYyV1oRW6lYAEKl
-         4qZh0C6CdRrP/aC2On17lq80CbNCLFhJgSZGPlzdjHva5OFiIlTWjKV3IeI9fpad6v56
-         1Z06drF00fsqpwvwGgl7zwhvLw9K6d/39upqi6pBaHGAEE2Xk5clmS1KcwSf44J14R2J
-         iUmKNS+5fehFo7kV2pZzucgVAlsC7N6F3MqIF7ZheLkYX2vKpFq5ELUGsCqjmNR1j5Ul
-         Nt7j7HbGlJ4zCZngfUvD25uDGhAMLxY3Xz0HwUTRvoqDLF/deNATgf145+w+GeGEyc4L
-         H3Zg==
+        b=PDBUEeu331xrcZI4vXdSYZ7godtvxiioNDp3SG2S0A1wjmlRmFGx/e/4WwOxNMuAk8
+         fWxLsvjx4wMnCcv7Ut1It6mmDrcTyh93cqmUa/Ycyiptn9i32ESmIIl6YJ+z6s4zHPJw
+         KeQrOqZ9eA4E5WPivQJZbZGvzkgJeOTu+pP2OZm3XNyU4U7xJHWqAiVU3jvpIwboqV7S
+         VTwumMCbXWnlpwrDB8IEM+YDhGi84bW4Gcn09vXu11q3Yu85FKbGlD2VLbDEzIj91tug
+         bWAm5ICDTMXjCNjvM44YXd08nLP/5KR96zK+RvyEczFGMvgJF4KIywm6s01iqjt9Slx8
+         690A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=d60H5iJE6DqO6YJE0NvquIcUnf8D8LVoXKX3SQW4Pu4=;
-        b=REYbHBUzXqw4VVmR4FdEOGUKluDxna38xRzyq1OQInLqHm9JPnDCdWsDvC8HRNa5Lv
-         Mdd95Gysnu2oKTK3JTUUaniJQPyET7h80if/n7wVZKGxcsuw6T7HD7CZ6VNv/wrjYuhY
-         ldsURoxJDKfA1SmQBg23SHZ7zkwXTNSERQbuxtHQ9TLM6dze5z5OEqxe5c+AnZZYsEoa
-         nAWa/HsdRyHyLw+ymq9gAywCsC2KhoRgFPyOCRFhoRbdpPw6EsUef1/KDsWtnSh3Ux1T
-         vXGcmHrJwlMaAgd7To4t9pWDzyUcVTaCC0obP+z1MgMi6hxkHFKHHd6agXllxXVCX394
-         o5vg==
+        bh=45HKNy8WCWZ85KF+zg6eFv2F4jWYn8ochLvmD9tik2A=;
+        b=cQdBlfcSdZZCyS5KyfVG1ImqlB4Ft6ejfm2OvtRX4w3tt9D3/HdPvpHtw024rM5xHV
+         EqACI0DBlvf3aEwEajU10JwpBvy36OONwyl3KWbMK8AHSAJXM0tXzRftP2D0TXbjq/u1
+         qpNzL6kV337ZPdRhO1ALJRHR7iLoHQoAPYMANrthY4Z9F5FpR1Qq7FXU5Sg42cDstiH1
+         sTB/vfbTvt4PE7YFXJWEcoKvit61zQyUwnLrgIcGL3ODTIh1GD4LKyCVECBMFTpUxpWg
+         bAvbkeHf41agN5AUjTCvDsxUOy+DAmWkrzqf8rh+0ztFcgFjQzhQPS1ILlrToMkkTN6U
+         Ai4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VXUAtpIc;
+       dkim=fail header.i=@linaro.org header.s=google header.b=euVZ3zin;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11si4231856ybs.320.2021.01.28.00.39.58
+        by mx.google.com with ESMTPS id b1si5117292ybh.192.2021.01.28.00.50.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 00:39:58 -0800 (PST)
+        Thu, 28 Jan 2021 00:50:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VXUAtpIc;
+       dkim=fail header.i=@linaro.org header.s=google header.b=euVZ3zin;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41832 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33670 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l52qL-0005wp-I6
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 03:39:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54830)
+	id 1l530I-0006QH-Il
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 03:50:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1l52cY-0007PT-Jg
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 03:25:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38471)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1l52cW-00064F-0Q
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 03:25:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1611822336;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=d60H5iJE6DqO6YJE0NvquIcUnf8D8LVoXKX3SQW4Pu4=;
- b=VXUAtpIcVMhZoEMKVQHTwGrD8Yik2b8nMaD8n/2sGLw+Qm5WXj/7TstlPOBK8cdCe8sTVF
- hw9vglcaZ4WpHrDHtmSB671XVKsR1VzrD+WFQoJaW6zRSaFrLUOEdWUaGpkAjvaWwUfeXN
- 9UHR3QoUIQnKQRxGwQsgfVXHm7WTTUg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-309-c9VQPkRlOv-QgfpVYq1ZKQ-1; Thu, 28 Jan 2021 03:25:35 -0500
-X-MC-Unique: c9VQPkRlOv-QgfpVYq1ZKQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9AB771842140;
- Thu, 28 Jan 2021 08:25:33 +0000 (UTC)
-Received: from [10.36.113.217] (ovpn-113-217.ams2.redhat.com [10.36.113.217])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 347C31992D;
- Thu, 28 Jan 2021 08:25:32 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/smmuv3: Fix addr_mask for range-based invalidation
-To: Zenghui Yu <yuzenghui@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20201225095015.609-1-yuzenghui@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <4e114709-e5c2-1860-c760-c05aa3ed5388@redhat.com>
-Date: Thu, 28 Jan 2021 09:25:30 +0100
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l52zv-0006P2-Jd
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 03:49:51 -0500
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:38457)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1l52zt-0005Pi-FA
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 03:49:51 -0500
+Received: by mail-pg1-x532.google.com with SMTP id o16so3848742pgg.5
+ for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 00:49:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=45HKNy8WCWZ85KF+zg6eFv2F4jWYn8ochLvmD9tik2A=;
+ b=euVZ3zin8JKLNWj9sD3kyR/aaGs+X6STYIqLK6zWJghX91prPrnhNMz/DCLENGjJQ0
+ u2UGDidDdbwJQAFefWYY6YbL8hhduMZaGlAlYCCZCVWIf6KzITs1Q6lm+NYtZKUhYaSg
+ cRa9+abo0qhtdsjHsPmQ9jQskdAhukFOaSLvHRjqJts1DZRL+oNYv/cYm6EaypC/3drE
+ 0KidiI0Q0Bye57+b3Bsvw6cg8WDcf1OjojPIhqm+yGW1Jv6uQV2aHIbhNVgfiPvjPbzI
+ LhBcRH4AbQ2nOKzhqnWuFfzeb00s05ac5wxpkxv36xR4RUMsAh3c8gidCGfLXxMZI2fz
+ bXnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=45HKNy8WCWZ85KF+zg6eFv2F4jWYn8ochLvmD9tik2A=;
+ b=VUqm2o/A6ClxM9Wr1Gr3MmfQ8LNh3w8U/DSM8xE8Gg/kKG4X/NvqPpfht6aBQNvqwO
+ 3X0vykR6RebRwlu2G6bS8VTolsyFsBbY978NWtA/Ci0Cm0gdQfo6Hkz0TFUchF58Esod
+ WSOFJakKF6fakQ5Z8m3yNW/t4fKGpnd5gCxoRboC4Q5r7eumuHYcfRZgTv7Js2mdyeE5
+ ao1BFe9WymyO1LS78zBdMuTc0wMH8/YuPRd9rc4o727crmx63D7w+I+MZ8oB7zy7fZta
+ 3aZzcjIruZOKtKt7NIzipvy9yf4VUj/4z5IbmVoxsnAv9HnRqgyOTnwohaqgqo6cOJZS
+ BF+w==
+X-Gm-Message-State: AOAM532bOyMc8CJu+aWsKx7rD8XIYcNzsz/Qb5e9zazno1YQNBCb4cFm
+ hXW174e6J0YCunIa1Y8fDU/af/DJ22LdL1LJ
+X-Received: by 2002:a05:6a00:15c8:b029:1b7:d521:32e9 with SMTP id
+ o8-20020a056a0015c8b02901b7d52132e9mr14663350pfu.22.1611823787585; 
+ Thu, 28 Jan 2021 00:49:47 -0800 (PST)
+Received: from [192.168.3.43] (cpe-66-27-222-29.hawaii.res.rr.com.
+ [66.27.222.29])
+ by smtp.gmail.com with ESMTPSA id m10sm4326994pjn.53.2021.01.28.00.49.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Jan 2021 00:49:46 -0800 (PST)
+Subject: Re: [PATCH v3 18/21] linux-user/aarch64: Signal SEGV_MTEAERR for
+ async tag check error
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210115224645.1196742-1-richard.henderson@linaro.org>
+ <20210115224645.1196742-19-richard.henderson@linaro.org>
+ <CAFEAcA8rXQ76AVpqHwum_XGh13u+vwkZw_yOxRKvfyqbV3_GBQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <b81f168c-dfe3-5d59-b1a2-1c3df97f7105@linaro.org>
+Date: Wed, 27 Jan 2021 22:49:43 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201225095015.609-1-yuzenghui@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAFEAcA8rXQ76AVpqHwum_XGh13u+vwkZw_yOxRKvfyqbV3_GBQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.308,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,56 +124,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rZtjne5HwWjj
+X-TUID: 2pzNpJuRNSO/
 
-Hi Zenghui,
-
-On 12/25/20 10:50 AM, Zenghui Yu wrote:
-> When performing range-based IOTLB invalidation, we should decode the TG
-> field into the corresponding translation granule size so that we can pass
-> the correct invalidation range to backend. Set @granule to (tg * 2 + 10) to
-> properly emulate the architecture.
+On 1/22/21 3:59 AM, Peter Maydell wrote:
+> On Fri, 15 Jan 2021 at 22:47, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > 
-> Fixes: d52915616c05 ("hw/arm/smmuv3: Get prepared for range invalidation")
-> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+> So when does the real kernel report async MTE exceptions to userspace?
+> The commit message would be a good place to briefly describe the
+> kernel's strategy and where QEMU differs from it (if anywhere)...
 
-Good catch! I tested with older guest kernels though. I wonder how I did
-not face the bug?
+I can add that, sure.
 
-
-> ---
->  hw/arm/smmuv3.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>>          case EXCP_INTERRUPT:
+>> -            /* just indicate that signals should be handled asap */
+>> +            /* Just indicate that signals should be handled asap. */
+>> +            check_mte_async_fault(env, &info);
+>>              break;
+>>          case EXCP_UDEF:
+>>              info.si_signo = TARGET_SIGILL;
 > 
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index bbca0e9f20..65231c7d52 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->  {
->      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
->      IOMMUTLBEvent event;
-> -    uint8_t granule = tg;
-> +    uint8_t granule;
->  
->      if (!tg) {
->          SMMUEventInfo event = {.inval_ste_allowed = true};
-> @@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->              return;
->          }
->          granule = tt->granule_sz;
-> +    } else {
-> +        guanule = tg * 2 + 10;
-maybe just init granule to this value above while fixing the typo.
-
-Thanks
-
-Eric
->      }
->  
->      event.type = IOMMU_NOTIFIER_UNMAP;
+> So this doesn't guarantee to check the async-fault status on
+> every exit from cpu_exec(), which means we might miss things.
+> For instance I think this slightly contrived example would not
+> ever take the SEGV:
+>     STR x0, [x1]   # with a bad tag
+>     YIELD
+> l:  B l
 > 
+> because the STR and YIELD go into the same TB, the YIELD causes us
+> to leave the TB with EXCP_YIELD, we don't check for an async fault
+> in that code path, and then we'll go into the infinite loop and
+> have nothing to prompt us to come out and look at the async fault flags.
 
+I'll add that test case to the smoke test.
+
+> Does it work if we just always queue the SEGV on exit from cpu_exec()
+> and let the signal handling machinery prioritize if we also pend
+> some other signal because this was an EXCP_UDEF or whatever?
+> It would be neater if we could keep the fault-check outside the
+> switch (trapnr) somehow.
+
+I would think so.  I'll try that.
+
+>> +#ifdef CONFIG_USER_ONLY
+>> +        /*
+>> +         * Stand in for a timer irq, setting _TIF_MTE_ASYNC_FAULT,
+>> +         * which then sends a SIGSEGV when the thread is next scheduled.
+>> +         * This cpu will return to the main loop at the end of the TB,
+>> +         * which is rather sooner than "normal".  But the alternative
+>> +         * is waiting until the next syscall.
+>> +         */
+>> +        qemu_cpu_kick(env_cpu(env));
+>> +#endif
+>>          break;
+> 
+> This does the right thing, but qemu_cpu_kick() is one of those
+> functions that's in a category of "not used much at all in the
+> codebase" and which always make me wonder if there's a reason.
+> (In particular there's exactly one use in the whole of target/
+> right now.) I suppose the case of "helper function wants to cause
+> us to leave the TB loop but not to abort the current insn" is
+> an unusual one...
+
+Exactly.
+
+Usually something in target/ calls (via mmio or whatnot) something in hw/ which
+raises an interrupt, which does the kick.
+
+
+r~

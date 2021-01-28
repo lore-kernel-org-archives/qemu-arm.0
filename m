@@ -1,103 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp625010lfo;
-        Thu, 28 Jan 2021 14:50:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw/ioeXsiT46Atng78ppIf5bIAojafFYCCfe34z2ZJy6tshWw9zBqxdt9pR9XMjjODX9pGD
-X-Received: by 2002:a25:4408:: with SMTP id r8mr1941498yba.515.1611874233940;
-        Thu, 28 Jan 2021 14:50:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611874233; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp626153lfo;
+        Thu, 28 Jan 2021 14:52:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxJnE3I0B2kwR9tTVUlGNDec7DaGO9KMQsiCMM37HBftWsivXYaBkqKmA8LkOKCCN50BlK1
+X-Received: by 2002:a25:d3c3:: with SMTP id e186mr2036885ybf.349.1611874366865;
+        Thu, 28 Jan 2021 14:52:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611874366; cv=none;
         d=google.com; s=arc-20160816;
-        b=MxpEZ6I3JY7474Vpp6mlsmTUUJ/3hRxh/z7xe1r2W9qhgwEk2pCm2Tgg/v/HmO9ngr
-         Bj87ePwDA8EBRtH7L8kybNdaHpLaGXJZ5r9jQQqHayvXeb65X7Z63xaLYlejwXZzTdut
-         +P1r3R/9a14OeOU3AMua9Owjlqe3qqTVbK8h4NIFrGRiGZgNeowuraC9dpnv/Ii74UHY
-         +Iv/mS1bwiyb4Uyx2W/V3JSDo5kOqzOtoiYfW8zxwU4hggGmdEQzwbiNj4gFvX0gpMnm
-         Fo5wJF5inwp7iLGKfd5NWCv8O398er1xl0TbWjN306Gsad6iYwJpS2ucHBD0C7bfLzTD
-         BupA==
+        b=EQC3dCaWlNA0r6ApynE19WQ0SiHLwwVfprCbl62SK+W7RhinA9kM7SRVzxRmgL9geS
+         hQKbwNNTrkmfaVAk27P1apqK/Wg689wTvrypgCdTEs4fOaqxhXHmq0UZQvlkL+/JW/5R
+         uakj4WSgOrXtgrD0PAjD7/fsLzfoZEakrj4C8Aa+VJvW3QQw++l5JNPiZktXCURqnIVM
+         MVHlgZvbA3osCsAz0qJ6XV/es7diJ6bXQlumRa1qaNyoVIexijEJDGWvmjDRS2kTIJxk
+         3u0U61BfyUd8r+3BHzQH88cysUqMHKg6pgygbq41kslQrIDPh4+KYnhxLHd4tnpJBu6M
+         vu7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Ed3tfUDy0PesAaobPtQ3BXGUB495/TZW6laQkFKoabs=;
-        b=g83fbcPWQvb32xpxU5+x/AezhRwf5foaergI1uLZTuDq8piRJ9nMSLmFOiNfLo0Rho
-         svwMczIFKBB6CR4A42pmu4Yc5jX8tpiUzBzaGzjeRr3MNAZfSmk8GYGlVbTU+tknoyfR
-         gyTRQ58tRcJYZrG5Q3WbWuTeOoybv8jv0XjinWn7apatDUB9MdbEOuq5HAjLf95vWDXa
-         yEgOGOFOWm+yuL4cW+we9CyKcPKRskuXxD2nQQlPFtXTaTSME3vnOlD0qL6FnqpmKKZn
-         GfDviTSOD7GY+y0/hxEACkCroE1W4vHFWBXQnNswqw6PeIJMG9YDPPg2OYglSx6Nfjlm
-         DyQQ==
+        bh=cekQQRp0i5HZWYUW7TcRhFHir1r8zA6FY8NgWmITL0g=;
+        b=Y+shNivG06X9h2KtzVDPcHoDU4HvTP7DYxV3da+XmSaySJ32TRaGxr2C93kLI3VM/m
+         d+Pj1NBCXK4rCWqEvBECY+ZkyvnP4XvIeY2oLMcT7Q58AokkOooJeE4lRdo4D1dDmfwT
+         l7eh0Hs9+COQE8BKkfaqaLMSqj2HS+sYhbYHQ1e9kQRKRu4ITKB6DMl7K2GfGTUi06FE
+         h9/4Z4xoNHj2u/7Ka+FyxhxUdpWZaU84Iz/WpmIVQBWgXwHftsf9tAM5o3WnYwgJumTA
+         7Qquc/kJy45a2pwcmbJXnm+E7gx5NeXq+7S/D7wm7hszgiWiGFW6huiTGMep6aEN0E0W
+         bLIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="yF/j6ZLf";
+       dkim=fail header.i=@linaro.org header.s=google header.b=P45dcWV3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h188si6744357yba.467.2021.01.28.14.50.33
+        by mx.google.com with ESMTPS id n6si6891540ybm.309.2021.01.28.14.52.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 14:50:33 -0800 (PST)
+        Thu, 28 Jan 2021 14:52:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="yF/j6ZLf";
+       dkim=fail header.i=@linaro.org header.s=google header.b=P45dcWV3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33892 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39190 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5G7P-0004ul-PU
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 17:50:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33286)
+	id 1l5G9e-0007EP-8V
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 17:52:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33138)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5Fzc-0005dV-Ky
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:24 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635]:42119)
+ id 1l5FzS-0005ZD-7k
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:14 -0500
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:42097)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5FzK-00089q-9b
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:24 -0500
-Received: by mail-pl1-x635.google.com with SMTP id s15so4166936plr.9
- for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 14:42:05 -0800 (PST)
+ id 1l5FzD-00087M-6Y
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:13 -0500
+Received: by mail-pf1-x432.google.com with SMTP id w18so4959444pfu.9
+ for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 14:41:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Ed3tfUDy0PesAaobPtQ3BXGUB495/TZW6laQkFKoabs=;
- b=yF/j6ZLfWtPUzR7p8XrSzBl2BK9YTHUQZCxe0KLo1/mQIrw3kv6MpzPbrk6Ad128Tf
- 4LygrIKCrYoBb+kyiAV7Z31dFLJwVfU1t2jdMG1V4RxcBI2xcRxob1dP6T1xauIEgO40
- QwnX9T7arJgp7Pv9FHXOE+Yjf1rwWFOIz4NOOjITazEWJm+uHSwy9xm7X0PRnoRBAfz4
- 96buEfaXSlp2MTiG3xNTzBFw+fadhQgzrZr2CJG4Ug6bYxE/93KWCzwZs1HV7gTDO87V
- szTEE519iyqoajLMsiea2Rk2gwoFyE3jXMECk69zpBYuLJ1ooWojZO/c0Jac4RpscUBr
- 9iqQ==
+ bh=cekQQRp0i5HZWYUW7TcRhFHir1r8zA6FY8NgWmITL0g=;
+ b=P45dcWV36QBYWLPKsh85Wgp3WQ8mod5/LU6UhnVpxZXpLF7P+s96jP2oHihUmevjtd
+ XDYoUccTDJNYUpp/YOO5UERIsz0Ef1HE0+o1LhZiDkrDkjawz2cv4VEPwgs/4zAr9R+G
+ ZvJj3cU3PV039ApCXLD4lao1A2bUseGuCC6lPMBh7Qmi2GF2pq3ZZ2RJtHONPbv0u1Yk
+ 0eRbDgL9KG1bVKeOaEUQcLCpR1Y/zk3bc9JotsKAahf42KqVZIEnwv+EVf8tDG6K47rq
+ NmlLuKObcGatEP00RL1XYZY6qmzV9ddBy289Nkgh4ZTGcQplPlpaLbbTKI4oSRJb0tL6
+ CSsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Ed3tfUDy0PesAaobPtQ3BXGUB495/TZW6laQkFKoabs=;
- b=Sx/i3uAK1ptJWw5iCPBLw0AGMFie3h5XCeILtFdfCL/okTOvCbBED2KQsOdTMgHgYl
- P1wW0x/x2NZF8v0tQ4mAJRaNuR92fulSJQmD32C2U/LvfTNql9p2P0S3gXi6hArgX9Up
- V8Z2xW4Kh1m7F73uZ1qP3LIcr1Gk1uCLZKNcKdj5y5huDABpKKKDA0vFWsWmMUH7Q9Dv
- wG4YLOtpUMYJ35EsFe4tL5iNLPiTCMaQuGykQwoDy1pwq6ZDUKuw36KLgLBrhDOjQkht
- z6+ABSuCUeLWMvv7DBohAYRnAAlSdj99E/Tqux7zAC4ZiebOLcJcuh7W6rfMStNRfWt1
- fLTA==
-X-Gm-Message-State: AOAM533cgD+enP/t+3UwiRlwxywuP/0fksvsqauCHKZ4YqUqJFd53rNM
- lM4sU7tf3ZI5ealkcWX8shVGFO9uSl14/tnU
-X-Received: by 2002:a17:90a:f181:: with SMTP id
- bv1mr1468286pjb.57.1611873724671; 
- Thu, 28 Jan 2021 14:42:04 -0800 (PST)
+ bh=cekQQRp0i5HZWYUW7TcRhFHir1r8zA6FY8NgWmITL0g=;
+ b=MCyfOe0pOMthTjjHvkXdbW2ltsnwgGPnRT1xQ7IPil56j8ABJMG2UlnxeIS4dGYxRI
+ tuK+2RGVhs2T+N+KosCbMTmVGFE64pdgbVMAZAKyUV3RPreEnqyr4KOlqOoq2dAmJqEa
+ NJIQnkbDRjQFp7b9oPX0Xmj+iQZRg+eLOCqHOEcDbnhQAJx+daJ1Ht7LblungVk//vQE
+ KdiMIdQZ7I5Yd0sJgD8nxNc7xxZRZnLW32NGyN80weWIlNIekKiXWHaZs01dLxgWIJRJ
+ s2t2ucp00d42EvD1CtXB+l9sILj6AFSompKTqIBAUQvjOgf+g6dZdkCdmZMKG8yCv1SU
+ +k6Q==
+X-Gm-Message-State: AOAM531UT9fegMO0z+rCWxoPGLJM/TIgmavuvb4SbZZLBO0AJekbiwy9
+ iYiIcEys+3Ou245C4raw6aHA+/s9uIrGM0rS
+X-Received: by 2002:a63:fd10:: with SMTP id d16mr1500415pgh.333.1611873718039; 
+ Thu, 28 Jan 2021 14:41:58 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id m10sm6042358pjs.25.2021.01.28.14.42.02
+ by smtp.gmail.com with ESMTPSA id m10sm6042358pjs.25.2021.01.28.14.41.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jan 2021 14:42:03 -0800 (PST)
+ Thu, 28 Jan 2021 14:41:57 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 12/23] linux-user/aarch64: Implement PR_TAGGED_ADDR_ENABLE
-Date: Thu, 28 Jan 2021 12:41:30 -1000
-Message-Id: <20210128224141.638790-13-richard.henderson@linaro.org>
+Subject: [PATCH v4 08/23] bsd-user: Tidy VERIFY_READ/VERIFY_WRITE
+Date: Thu, 28 Jan 2021 12:41:26 -1000
+Message-Id: <20210128224141.638790-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210128224141.638790-1-richard.henderson@linaro.org>
 References: <20210128224141.638790-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,131 +119,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zZyu0jRQTE2a
+X-TUID: 4ywqYj0xvs47
 
-This is the prctl bit that controls whether syscalls accept tagged
-addresses.  See Documentation/arm64/tagged-address-abi.rst in the
-linux kernel.
+These constants are only ever used with access_ok, and friends.
+Rather than translating them to PAGE_* bits, let them equal
+the PAGE_* bits to begin.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/target_syscall.h |  4 ++++
- target/arm/cpu-param.h              |  3 +++
- target/arm/cpu.h                    | 31 +++++++++++++++++++++++++++++
- linux-user/syscall.c                | 24 ++++++++++++++++++++++
- 4 files changed, 62 insertions(+)
+ bsd-user/qemu.h | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/target_syscall.h
-index 3194e6b009..820601dfcc 100644
---- a/linux-user/aarch64/target_syscall.h
-+++ b/linux-user/aarch64/target_syscall.h
-@@ -30,4 +30,8 @@ struct target_pt_regs {
- # define TARGET_PR_PAC_APDBKEY   (1 << 3)
- # define TARGET_PR_PAC_APGAKEY   (1 << 4)
+diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
+index f8bb1e5459..4076adabd0 100644
+--- a/bsd-user/qemu.h
++++ b/bsd-user/qemu.h
+@@ -218,13 +218,12 @@ extern unsigned long x86_stack_size;
  
-+#define TARGET_PR_SET_TAGGED_ADDR_CTRL 55
-+#define TARGET_PR_GET_TAGGED_ADDR_CTRL 56
-+# define TARGET_PR_TAGGED_ADDR_ENABLE  (1UL << 0)
-+
- #endif /* AARCH64_TARGET_SYSCALL_H */
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index 00e7d9e937..7f38d33b8e 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -20,6 +20,9 @@
+ /* user access */
  
- #ifdef CONFIG_USER_ONLY
- #define TARGET_PAGE_BITS 12
-+# ifdef TARGET_AARCH64
-+#  define TARGET_TAGGED_ADDRESSES
-+# endif
- #else
- /*
-  * ARMv7 and later CPUs have 4K pages minimum, but ARMv5 and v6
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index df0d677833..0db6e65467 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -721,6 +721,11 @@ typedef struct CPUARMState {
-     const struct arm_boot_info *boot_info;
-     /* Store GICv3CPUState to access from this struct */
-     void *gicv3state;
-+
-+#ifdef TARGET_TAGGED_ADDRESSES
-+    /* Linux syscall tagged address support */
-+    bool tagged_addr_enable;
-+#endif
- } CPUARMState;
+-#define VERIFY_READ 0
+-#define VERIFY_WRITE 1 /* implies read access */
++#define VERIFY_READ  PAGE_READ
++#define VERIFY_WRITE (PAGE_READ | PAGE_WRITE)
  
- static inline void set_feature(CPUARMState *env, int feature)
-@@ -3601,6 +3606,32 @@ static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
-  */
- #define PAGE_BTI  PAGE_TARGET_1
+-static inline int access_ok(int type, abi_ulong addr, abi_ulong size)
++static inline bool access_ok(int type, abi_ulong addr, abi_ulong size)
+ {
+-    return page_check_range((target_ulong)addr, size,
+-                            (type == VERIFY_READ) ? PAGE_READ : (PAGE_READ | PAGE_WRITE)) == 0;
++    return page_check_range((target_ulong)addr, size, type) == 0;
+ }
  
-+#ifdef TARGET_TAGGED_ADDRESSES
-+/**
-+ * cpu_untagged_addr:
-+ * @cs: CPU context
-+ * @x: tagged address
-+ *
-+ * Remove any address tag from @x.  This is explicitly related to the
-+ * linux syscall TIF_TAGGED_ADDR setting, not TBI in general.
-+ *
-+ * There should be a better place to put this, but we need this in
-+ * include/exec/cpu_ldst.h, and not some place linux-user specific.
-+ */
-+static inline target_ulong cpu_untagged_addr(CPUState *cs, target_ulong x)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    if (cpu->env.tagged_addr_enable) {
-+        /*
-+         * TBI is enabled for userspace but not kernelspace addresses.
-+         * Only clear the tag if bit 55 is clear.
-+         */
-+        x &= sextract64(x, 0, 56);
-+    }
-+    return x;
-+}
-+#endif
-+
- /*
-  * Naming convention for isar_feature functions:
-  * Functions which test 32-bit ID registers should have _aa32_ in
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 6001022e96..46526f50b0 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -10963,6 +10963,30 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-                 }
-             }
-             return -TARGET_EINVAL;
-+        case TARGET_PR_SET_TAGGED_ADDR_CTRL:
-+            {
-+                abi_ulong valid_mask = TARGET_PR_TAGGED_ADDR_ENABLE;
-+                CPUARMState *env = cpu_env;
-+
-+                if ((arg2 & ~valid_mask) || arg3 || arg4 || arg5) {
-+                    return -TARGET_EINVAL;
-+                }
-+                env->tagged_addr_enable = arg2 & TARGET_PR_TAGGED_ADDR_ENABLE;
-+                return 0;
-+            }
-+        case TARGET_PR_GET_TAGGED_ADDR_CTRL:
-+            {
-+                abi_long ret = 0;
-+                CPUARMState *env = cpu_env;
-+
-+                if (arg2 || arg3 || arg4 || arg5) {
-+                    return -TARGET_EINVAL;
-+                }
-+                if (env->tagged_addr_enable) {
-+                    ret |= TARGET_PR_TAGGED_ADDR_ENABLE;
-+                }
-+                return ret;
-+            }
- #endif /* AARCH64 */
-         case PR_GET_SECCOMP:
-         case PR_SET_SECCOMP:
+ /* NOTE __get_user and __put_user use host pointers and don't check access. */
 -- 
 2.25.1
 

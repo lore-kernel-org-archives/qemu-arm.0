@@ -1,104 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp620305lfo;
-        Thu, 28 Jan 2021 14:42:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz1rYcWSAEkQzT7gQA0+qIGvvRaV/mmdg5ra0g7ELMhqSesXY2MZPpapBuov+8mcgr+hhZ3
-X-Received: by 2002:a25:cf42:: with SMTP id f63mr1954940ybg.363.1611873752520;
-        Thu, 28 Jan 2021 14:42:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611873752; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp620317lfo;
+        Thu, 28 Jan 2021 14:42:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxe3sPhUeiE8Amp/hd/0aW6BOr4NHxZmw9Nh04/4vv+TPGjm+9ZL3gQ66ixytWY9r6mdwqM
+X-Received: by 2002:a25:f54:: with SMTP id 81mr2050040ybp.76.1611873753649;
+        Thu, 28 Jan 2021 14:42:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611873753; cv=none;
         d=google.com; s=arc-20160816;
-        b=zdDsaEymxcwBNd5Mvg+GB2JrOVhdQ/kgia92eKoRvKMAaS+I0VJnvJCt6fOGAJkHUd
-         CV0rqLaT29GvYtAQW+JLQGiU6SfiY2wzwcqnxrJnI10c7/weqa/OV4s1nmpoh/KjTCHr
-         dP01kxLzd1Zf9muEZ4xqtCdg1opDpuB6+RZWkhYVPpwN0K+t0zlmKpMxbLQVDmcNiCjT
-         5Ax2gslw/nNS+AjdaiOANC+ziBvSE0pnZY755j5Qv3+do5OLUef/SDK2KIaEpar5fyh3
-         5T3NgsxDR4VE7MIsKhzFH9N1yaxfXRU1noSa9iUtIY0P060Ztz5si4+RY6Tumr/qZWlr
-         evgA==
+        b=UosIa6KFwb5PRlAGOyXCbzavUDaXb5L8Ok/G7hARsK3aKX43PLsoay1flSEQBFRlQP
+         LBkLPvJLz9ukp7PvIecV3smIp/+Dba85bNwELoT8M1aVO7aO9UY2+TgCuSqHGwpWzqMZ
+         xbt5JTsWnx79w5Bbz6PHZUU4MY3SPX40oillnemKcAW3p6A9iLSdPAtcTavVdHFoBccc
+         Jp2pa/3KpC5VH5LgX7Y3XDhjRt4XijAIRJQYGGPp9CQDcyRRYZeZK0j3YTRyrbwqJ/PY
+         SPk3jDtit4UbAqmVnG2FI7+H8gdHM/Dl25QTw1nb6IH60g4ur0LIWMHS0h5QlTYsFzFR
+         /I5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZqhLaUkTRfcquD/y4HQuI0t3uB4xsGUnAcI/7aPZ9e0=;
-        b=0dy0bpcGzh4sxnZZLxrYO/suCF8kpQp6QJTuLLSLhpnlkH+LN8Vg6YLKybCDAsI6tE
-         P5mgMFeYyeQ5JzvPnLQyqtvsl/aUuq0ygzQcJX4to8hu+i/gntdBAwLSJvubp1AK2bv8
-         hGvq/rtYu6SxSgbBnDegV6DBNLov6QN/1OzVQl2grWiheQhBikIyHD7KtLYIj3DaoHlq
-         wcixvTddtxVBSoUtEZ5tnutFEACgiJ0k4kx5QJ++yeononi7QXscj0DlaZP/sqElSHB0
-         lhKkxPIjsWukLY8Syg0r/Mbt37sb5ISqwNb+8MvUc1ca1SCNHSm5D4AjKeETHBXyJkmU
-         6WFw==
+        bh=ro1QlxJECFSg4T0qJhYTh9dJGKCuHRxnJ3IHfAQq/RM=;
+        b=RsjkDtcFq8H6zWO9Y4VyIYWNMMo+cbnX8PlLia0i5/1SRScf36nfNqTz5RyInCGWiE
+         RKY8NpsV81KwEEYijWKWeQVHZu9hbcjOKxhrKjp9Xj2Kwb9eCI4Y8hh4LWTb8bHzrrBw
+         bNqskww2qdyGh1zF3Nm12PkaGdqTPGbuAbIRUzejDiOjrAzKobJmT664L4Wk4g1Ihvm8
+         U6KDA+SEUmk5PNTCtvdYveoFQHNXhPazhTcY+NapozunZjnVP4L8Uwb6E7K4ESSXUyEs
+         fIzVqMwv2izWwepow7hYZ61hzwBnbRf4hAsW7wezUxXf/m1GytYSPx/t9zW3H4/TuhWS
+         3SLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZeQxkLjM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TYrpS9gA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k11si6340733ybt.484.2021.01.28.14.42.32
+        by mx.google.com with ESMTPS id g32si6343308ybe.426.2021.01.28.14.42.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 14:42:32 -0800 (PST)
+        Thu, 28 Jan 2021 14:42:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZeQxkLjM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TYrpS9gA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43756 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5Fzj-0005Qm-QC
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 17:42:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32816)
+	id 1l5Fzk-0005TF-T2
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 17:42:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5FzC-0005Ov-8e
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 17:41:58 -0500
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:38539)
+ id 1l5FzD-0005Ql-Pa
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 17:41:59 -0500
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e]:38162)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5Fz2-00083s-SX
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 17:41:57 -0500
-Received: by mail-pl1-x62b.google.com with SMTP id d4so4172588plh.5
- for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 14:41:48 -0800 (PST)
+ id 1l5Fz5-00085D-32
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 17:41:59 -0500
+Received: by mail-pf1-x42e.google.com with SMTP id y205so4966045pfc.5
+ for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 14:41:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZqhLaUkTRfcquD/y4HQuI0t3uB4xsGUnAcI/7aPZ9e0=;
- b=ZeQxkLjMjO6WUw8GGKntd95hXAfnoOGDyTZYkpgvzhV5P6yvL97qK8pqJrhsyRM/GC
- HdxSFJ5lttkBVtk1FkFl6TWNBRHlqcu9EXwpTpd0OG5YDBBeHf1V8myu9IPL9rx1IvVZ
- 8Q/Y6I+xIn23w3OZgaETVPJ9RxxaaOqVQ9Q3Bk0puabRvESfR4k+dkXCLME118f6uKFU
- PjwPLfqfrWuOtKxptr+pILKWkC5TsrQKcxRsCa6EXQtw3HKDeTQFqa6sGr0hGhOW0Z7Q
- IQaAqD87AigIhw586SViu0RJuWA705gh7VIVLcZAVyg+KE7fMea1vgHRR1cE7k/ScOIT
- j7Gw==
+ bh=ro1QlxJECFSg4T0qJhYTh9dJGKCuHRxnJ3IHfAQq/RM=;
+ b=TYrpS9gATOUJYsbU8tfz+MqcCiG0GJFuTz18MJvgyG8WoM4iDZo6HeTH14sZr1Sp+O
+ 53JEcBFkWMZ97eAL16azZ6GKpNxy+I61nm9m0XgiJU0vy8rc1SRn32zTmFIszQc0rUW6
+ 3IqkDlCmeLcHH0YKRL5wF+JcQivJjv/tY3hDzkSE3l79LEr+FYRgLQi642xO5b4XYJRm
+ 3h2tX0Vl4wKjw1kis1H3g3OobRZkzo0swpongq+lr06Sr5GXhIXvDgizER4hpXQlLBl8
+ 9fIcEK31i/l9ZQ7uUPzHPr+2to6mvboPxP7IJwGg0AuRP3WJZZNLvVyGik0XsNno+oP/
+ 4q5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZqhLaUkTRfcquD/y4HQuI0t3uB4xsGUnAcI/7aPZ9e0=;
- b=PZPXS46rLYGatjeaaoblG/k1HgG+OSeovU+uvf85wQzen0CtcbeMuIOT7WRALve3GT
- 98JlD6pburPkOWFALa7Awh0k+4CcJZBLrYVaWwMOZTKmbP4+GrH/5jYNCUfg8s+Qff4m
- lbIrWq5sYTWgM7ZXijTa+AWUb6ygewgKqLowtrqV3vahftfPQW0XcGgzaTXMTM0+Dlc6
- by9wWkraeWpKI6IRcbjpa4uOZin1REUirlXLYvqL6d2kygr1hepOV+lUGXQp5t9OBdHW
- zICzLMCCbSwK+BEKMV4I4tlCsZfUbj+Q3FA4lgfooWbZYtkg5fL7Kp8/5mqlN6mXoCb8
- Q5Jw==
-X-Gm-Message-State: AOAM5323x5m/n/AQ/JpMp6BoxQj4XjfspFyhs37vjWh+keAoxfAWibjr
- HrXWFbeA/HI+EXtc885F4TEgsA==
-X-Received: by 2002:a17:90a:890a:: with SMTP id
- u10mr1563207pjn.215.1611873706758; 
- Thu, 28 Jan 2021 14:41:46 -0800 (PST)
+ bh=ro1QlxJECFSg4T0qJhYTh9dJGKCuHRxnJ3IHfAQq/RM=;
+ b=N+pqIOWmyiCgs9G0MEw/F7CW7J0GbN1j4ore6BW/6j/WEecKPFPp2FaSvnZHmFyRZE
+ WvsmUFg9GrlLmLwGE5sIpeBnNo8Dll+AqN7IyZvC1pUJYer/vP1RikMqssoM675cEF7l
+ VAsMhatU34kSNVhp5QzLJzg0ogGAQlrazOm5VRFYWsM2CZEtA4QG8cgZeX/wcl7XQqI/
+ uW3SjHMOx5wa9poxbrygIV1g32IMV9fivFGx5psCaC8tSnxmhOJMWYaeUpwddpNPQ29p
+ rwKJqbq47UfK4MFhTiwlN7MVOx9q7s9kvUv5jfSy00AHvm7WBJm4ujb2H1Ykomc6rAcQ
+ us2g==
+X-Gm-Message-State: AOAM532dyA5rl5KCCJXJW4An6Bq4XU+6HQGwyR0zZCJpszympRgcCKmH
+ D0bPzSQth3yPoKVSdPxZSx/L4FLtZlVaBuIM
+X-Received: by 2002:a63:1f21:: with SMTP id f33mr1639027pgf.31.1611873709819; 
+ Thu, 28 Jan 2021 14:41:49 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id m10sm6042358pjs.25.2021.01.28.14.41.45
+ by smtp.gmail.com with ESMTPSA id m10sm6042358pjs.25.2021.01.28.14.41.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jan 2021 14:41:46 -0800 (PST)
+ Thu, 28 Jan 2021 14:41:49 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 01/23] tcg: Introduce target-specific page data for
- user-only
-Date: Thu, 28 Jan 2021 12:41:19 -1000
-Message-Id: <20210128224141.638790-2-richard.henderson@linaro.org>
+Subject: [PATCH v4 03/23] exec: Use uintptr_t for guest_base
+Date: Thu, 28 Jan 2021 12:41:21 -1000
+Message-Id: <20210128224141.638790-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210128224141.638790-1-richard.henderson@linaro.org>
 References: <20210128224141.638790-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,187 +119,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TnSBOFE+hmtg
+X-TUID: OTSICXc4hJmG
 
-This data can be allocated by page_alloc_target_data() and
-released by page_set_flags(start, end, prot | PAGE_RESET).
-
-This data will be used to hold tag memory for AArch64 MTE.
+This is more descriptive than 'unsigned long'.
+No functional change, since these match on all linux+bsd hosts.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3: Add doc comments; tweak alloc so that the !PAGE_VALID case is clear.
----
- include/exec/cpu-all.h    | 42 +++++++++++++++++++++++++++++++++------
- accel/tcg/translate-all.c | 28 ++++++++++++++++++++++++++
- linux-user/mmap.c         |  4 +++-
- linux-user/syscall.c      |  4 ++--
- 4 files changed, 69 insertions(+), 9 deletions(-)
+ include/exec/cpu-all.h | 2 +-
+ bsd-user/main.c        | 4 ++--
+ linux-user/elfload.c   | 4 ++--
+ linux-user/main.c      | 4 ++--
+ 4 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 4b5408c341..99a09ee137 100644
+index c23c77589b..c52180e8e6 100644
 --- a/include/exec/cpu-all.h
 +++ b/include/exec/cpu-all.h
-@@ -264,15 +264,21 @@ extern intptr_t qemu_host_page_mask;
- #define PAGE_EXEC      0x0004
- #define PAGE_BITS      (PAGE_READ | PAGE_WRITE | PAGE_EXEC)
- #define PAGE_VALID     0x0008
--/* original state of the write flag (used when tracking self-modifying
--   code */
-+/*
-+ * Original state of the write flag (used when tracking self-modifying code)
-+ */
- #define PAGE_WRITE_ORG 0x0010
--/* Invalidate the TLB entry immediately, helpful for s390x
-- * Low-Address-Protection. Used with PAGE_WRITE in tlb_set_page_with_attrs() */
--#define PAGE_WRITE_INV 0x0040
-+/*
-+ * Invalidate the TLB entry immediately, helpful for s390x
-+ * Low-Address-Protection. Used with PAGE_WRITE in tlb_set_page_with_attrs()
-+ */
-+#define PAGE_WRITE_INV 0x0020
-+/* For use with page_set_flags: page is being replaced; target_data cleared. */
-+#define PAGE_RESET     0x0040
-+
- #if defined(CONFIG_BSD) && defined(CONFIG_USER_ONLY)
- /* FIXME: Code that sets/uses this is broken and needs to go away.  */
--#define PAGE_RESERVED  0x0020
-+#define PAGE_RESERVED  0x0100
- #endif
- /* Target-specific bits that will be used via page_get_flags().  */
- #define PAGE_TARGET_1  0x0080
-@@ -287,6 +293,30 @@ int walk_memory_regions(void *, walk_memory_regions_fn);
- int page_get_flags(target_ulong address);
- void page_set_flags(target_ulong start, target_ulong end, int flags);
- int page_check_range(target_ulong start, target_ulong len, int flags);
-+
-+/**
-+ * page_alloc_target_data(address, size)
-+ * @address: guest virtual address
-+ * @size: size of data to allocate
-+ *
-+ * Allocate @size bytes of out-of-band data to associate with the
-+ * guest page at @address.  If the page is not mapped, NULL will
-+ * be returned.  If there is existing data associated with @address,
-+ * no new memory will be allocated.
-+ *
-+ * The memory will be freed when the guest page is deallocated,
-+ * e.g. with the munmap system call.
-+ */
-+void *page_alloc_target_data(target_ulong address, size_t size);
-+
-+/**
-+ * page_get_target_data(address)
-+ * @address: guest virtual address
-+ *
-+ * Return any out-of-bound memory assocated with the guest page
-+ * at @address, as per page_alloc_target_data.
-+ */
-+void *page_get_target_data(target_ulong address);
- #endif
+@@ -158,7 +158,7 @@ static inline void tswap64s(uint64_t *s)
+ /* On some host systems the guest address space is reserved on the host.
+  * This allows the guest address space to be offset to a convenient location.
+  */
+-extern unsigned long guest_base;
++extern uintptr_t guest_base;
+ extern bool have_guest_base;
+ extern unsigned long reserved_va;
  
- CPUArchState *cpu_copy(CPUArchState *env);
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 81d4c83f22..bba9c8e0b3 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -114,6 +114,7 @@ typedef struct PageDesc {
-     unsigned int code_write_count;
- #else
-     unsigned long flags;
-+    void *target_data;
- #endif
- #ifndef CONFIG_USER_ONLY
-     QemuSpin lock;
-@@ -2740,6 +2741,7 @@ int page_get_flags(target_ulong address)
- void page_set_flags(target_ulong start, target_ulong end, int flags)
- {
-     target_ulong addr, len;
-+    bool reset_target_data;
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 65163e1396..c09d74d788 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -41,7 +41,7 @@
  
-     /* This function should never be called with addresses outside the
-        guest address space.  If this assert fires, it probably indicates
-@@ -2754,6 +2756,8 @@ void page_set_flags(target_ulong start, target_ulong end, int flags)
-     if (flags & PAGE_WRITE) {
-         flags |= PAGE_WRITE_ORG;
+ int singlestep;
+ unsigned long mmap_min_addr;
+-unsigned long guest_base;
++uintptr_t guest_base;
+ bool have_guest_base;
+ unsigned long reserved_va;
+ 
+@@ -965,7 +965,7 @@ int main(int argc, char **argv)
+     g_free(target_environ);
+ 
+     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
+-        qemu_log("guest_base  0x%lx\n", guest_base);
++        qemu_log("guest_base  %p\n", (void *)guest_base);
+         log_page_dump("binary load");
+ 
+         qemu_log("start_brk   0x" TARGET_ABI_FMT_lx "\n", info->start_brk);
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index a64050713f..29f07bb234 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2135,9 +2135,9 @@ static void pgb_have_guest_base(const char *image_name, abi_ulong guest_loaddr,
+     void *addr, *test;
+ 
+     if (!QEMU_IS_ALIGNED(guest_base, align)) {
+-        fprintf(stderr, "Requested guest base 0x%lx does not satisfy "
++        fprintf(stderr, "Requested guest base %p does not satisfy "
+                 "host minimum alignment (0x%lx)\n",
+-                guest_base, align);
++                (void *)guest_base, align);
+         exit(EXIT_FAILURE);
      }
-+    reset_target_data = !(flags & PAGE_VALID) || (flags & PAGE_RESET);
-+    flags &= ~PAGE_RESET;
  
-     for (addr = start, len = end - start;
-          len != 0;
-@@ -2767,10 +2771,34 @@ void page_set_flags(target_ulong start, target_ulong end, int flags)
-             p->first_tb) {
-             tb_invalidate_phys_page(addr, 0);
-         }
-+        if (reset_target_data && p->target_data) {
-+            g_free(p->target_data);
-+            p->target_data = NULL;
-+        }
-         p->flags = flags;
-     }
- }
+diff --git a/linux-user/main.c b/linux-user/main.c
+index bb4e55e8fc..55aac56d70 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -58,7 +58,7 @@ static const char *cpu_model;
+ static const char *cpu_type;
+ static const char *seed_optarg;
+ unsigned long mmap_min_addr;
+-unsigned long guest_base;
++uintptr_t guest_base;
+ bool have_guest_base;
  
-+void *page_get_target_data(target_ulong address)
-+{
-+    PageDesc *p = page_find(address >> TARGET_PAGE_BITS);
-+    return p ? p->target_data : NULL;
-+}
-+
-+void *page_alloc_target_data(target_ulong address, size_t size)
-+{
-+    PageDesc *p = page_find(address >> TARGET_PAGE_BITS);
-+    void *ret = NULL;
-+
-+    if (p->flags & PAGE_VALID) {
-+        ret = p->target_data;
-+        if (!ret) {
-+            p->target_data = ret = g_malloc0(size);
-+        }
-+    }
-+    return ret;
-+}
-+
- int page_check_range(target_ulong start, target_ulong len, int flags)
- {
-     PageDesc *p;
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 810653c503..c693505b60 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -599,6 +599,7 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int target_prot,
-         }
-     }
-  the_end1:
-+    page_flags |= PAGE_RESET;
-     page_set_flags(start, start + len, page_flags);
-  the_end:
-     trace_target_mmap_complete(start);
-@@ -792,7 +793,8 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
-         new_addr = h2g(host_addr);
-         prot = page_get_flags(old_addr);
-         page_set_flags(old_addr, old_addr + old_size, 0);
--        page_set_flags(new_addr, new_addr + new_size, prot | PAGE_VALID);
-+        page_set_flags(new_addr, new_addr + new_size,
-+                       prot | PAGE_VALID | PAGE_RESET);
-     }
-     tb_invalidate_phys_range(new_addr, new_addr + new_size);
-     mmap_unlock();
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 34760779c8..6001022e96 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -4632,8 +4632,8 @@ static inline abi_ulong do_shmat(CPUArchState *cpu_env,
-     raddr=h2g((unsigned long)host_raddr);
+ /*
+@@ -819,7 +819,7 @@ int main(int argc, char **argv, char **envp)
+     g_free(target_environ);
  
-     page_set_flags(raddr, raddr + shm_info.shm_segsz,
--                   PAGE_VALID | PAGE_READ |
--                   ((shmflg & SHM_RDONLY)? 0 : PAGE_WRITE));
-+                   PAGE_VALID | PAGE_RESET | PAGE_READ |
-+                   (shmflg & SHM_RDONLY ? 0 : PAGE_WRITE));
+     if (qemu_loglevel_mask(CPU_LOG_PAGE)) {
+-        qemu_log("guest_base  0x%lx\n", guest_base);
++        qemu_log("guest_base  %p\n", (void *)guest_base);
+         log_page_dump("binary load");
  
-     for (i = 0; i < N_SHM_REGIONS; i++) {
-         if (!shm_regions[i].in_use) {
+         qemu_log("start_brk   0x" TARGET_ABI_FMT_lx "\n", info->start_brk);
 -- 
 2.25.1
 

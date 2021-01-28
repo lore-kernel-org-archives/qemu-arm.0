@@ -1,102 +1,104 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1783511lfb;
-        Thu, 26 Nov 2020 13:47:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxQjgmJ/HH9yePL39px0w5jcUCoX/pS31xdxebW7xzTLRstk78+jpuARocEKthEKutcE1ks
-X-Received: by 2002:a25:e74c:: with SMTP id e73mr7470586ybh.308.1606427275846;
-        Thu, 26 Nov 2020 13:47:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606427275; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp224405lfo;
+        Thu, 28 Jan 2021 05:32:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwejLAeN239/+qXaDe3hCbupEzyhxaA445J8WTXIs9Tj5Z8OCySAqdhGDffxkbgTFFtGykx
+X-Received: by 2002:a05:6902:6b0:: with SMTP id j16mr21947350ybt.169.1611840761651;
+        Thu, 28 Jan 2021 05:32:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611840761; cv=none;
         d=google.com; s=arc-20160816;
-        b=lxGnIo2Jt6dsO3v6qzhce+RUv+OyYnOz2cyfK3giMuyecCVILyr3Xpcxzi3SHcAPs3
-         UGAMGhOr+h4n0TMljrRf226Bjl6UWWq/PUyjZEhSgwYQBmTesPYFgNsvAA97dm3O46gC
-         J4RpnPqnvbE7pjrcI+TgL7mws7LOIr+XHUDsdFrQcG3PC3zWe3M9EVmSUc21pJ56bEHv
-         IV8sEBGgzl6Hbx08NB3/RjYZAaSe3Pni1m9zW65K47cz3by7XYO8TewF+uEqYqUbx+Ub
-         gk4WsBDFlwjajYnPkJPc5yJIh3hMXvIxab2X2RUOE96Ld23aC7QegncQFIBuR4yBekSC
-         f83Q==
+        b=c8DutLwtrAfKGqOeQsey8ZFUs+yp5haTTfKQpgY+eJG63cS7TWfO+gAE7BlimuiWy8
+         ahaJsOx/IWh5elGYlNWgDv64NTcg3F0evYuZE73+Ze886IbpLGSHXcf0C0sGpHDN0s8K
+         ++hMMzRJwbZ+CPJbVLdjzwZL333z2s9yaj57ZjecgQ6vMrllwwximOt/ZPk3Lrhj0nhw
+         1LUjG4ZUfZ8fNPt3U95znNu4R1H8S24W6P3ufYdAjSGU6WFRA4khpS5OGOga/xah/BYg
+         M6RgU13SEDNdIsja4LwnRr+9tGuHkVbfH15yKoys62Tt2Zej5vBJvV7rKDjlfyd4aY4o
+         WfRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=DttXur++On+IvHWUrI5foPQFwrfhjzniznKAB6nVKy4=;
-        b=a6CJHitpw+kdMH7i9QwVgHDO9z2K5Q2kUQQvmhIGEN9kE7OQguAxNufo0Ez25A+A7b
-         GO7e2sjBWEn0lixokbJvAm7RyLpJzbo1q6u3qp0LGiRcZPA5nzWRsvynbFVBj54cB9AY
-         D8DK2RJVc1viQ7gvz9CPwJpsMDdaG9LMMXVE0a9nn9BB5ipK5NX8QICSzcnWezNt0dHw
-         tAtRprvU9wkNG+ebQeiCAv4FFt+1zppEKHNjTqDL+7Sw66b8zkeKg+dztIF5hVQj4h4C
-         Z+1UdNFowInjDJH1pIvjPN3/+rsla0Scm919nozJeFKqrp4yhZePWiWqbHJNAvrN/MGh
-         Vptg==
+        bh=VCbuhUgseEdIad8g+kRBzhDOBtgRomK/CWVMXG9z46I=;
+        b=I/EC0jIK3W/qsETvJDsjiQ2frSfRWf+xhLpwuJNZOQFpw6TrgLUaBoOQYHQh1h5d9B
+         9cZNN/O6vMxBnM28CYcz23l0Na/e4jDOA7vLB8I8RnMo1UCrcHlKZ1iZoLC3o8qy7kKb
+         ZhMzCSyLlqsB30LOpm5gBqO8hE9EhJZJ54W4jQyMpk1zNjQWVslWochhzARBmaq+d4AJ
+         ArMzjJW+NuoI0d7coRH/511fbrW23Prh0uykNra3ePzZldElxTou/mg3gqfVhyq6CyJu
+         rBu0Jf19ZF0JjpPWr8lyNgDe5MpKkNBA3yThuUwnEB35LWCy5tR7SPU8ADhlGiGcgniR
+         oZLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iBLH3L8O;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZHCuhA1p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15si6053522ybl.380.2020.11.26.13.47.55
+        by mx.google.com with ESMTPS id e128si934735ybc.362.2021.01.28.05.32.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Nov 2020 13:47:55 -0800 (PST)
+        Thu, 28 Jan 2021 05:32:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iBLH3L8O;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZHCuhA1p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51720 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kiP7L-00082X-9l
-	for alex.bennee@linaro.org; Thu, 26 Nov 2020 16:47:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35732)
+	id 1l57Pd-0008Uw-24
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 08:32:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kiP7D-00082G-Na
- for qemu-arm@nongnu.org; Thu, 26 Nov 2020 16:47:47 -0500
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:37770)
+ id 1l57PK-0008TT-7h
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 08:32:26 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:43357)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kiP7C-0004s2-6A
- for qemu-arm@nongnu.org; Thu, 26 Nov 2020 16:47:47 -0500
-Received: by mail-ed1-x542.google.com with SMTP id n24so1583842edb.4
- for <qemu-arm@nongnu.org>; Thu, 26 Nov 2020 13:47:45 -0800 (PST)
+ id 1l57PH-000139-Cn
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 08:32:22 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id n6so6592661edt.10
+ for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 05:32:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DttXur++On+IvHWUrI5foPQFwrfhjzniznKAB6nVKy4=;
- b=iBLH3L8OmdsivWaan/fYFxVIcih9Pztek54UAeUDwuuIQowhRxCjwLv4wa04sevVbd
- wts+qGJf99SEYpy8SKkmY4MpBMnF8VXhaYJD9RuspQzJaV9tpmyT824c0Wdd8z7NPqwh
- 6N0bWJa1BMyc4g3+UinEdpnT/BvucEQcxiEPn/E51YT7BYoH2UJyK2v6V/nV6VqaALgD
- Ei4x+TukjCdy+drbvNTUg0OKy0zWi1syBkhtEdawEJE6DnNXIPNyBD3KNgIKDmCzBM0X
- kHB8O30tCQ72HYdtmiRlNUVBWKBeDYdpVhqrscyCXsM4+OAEBzjcWMD6xSR3eGBjnwVU
- rvsQ==
+ :cc; bh=VCbuhUgseEdIad8g+kRBzhDOBtgRomK/CWVMXG9z46I=;
+ b=ZHCuhA1pfHPUhmCrOZ8pZbPZJA4a31dvwGvdo+Vp3bXo04SyWV0SW1fIhzkqoICYNN
+ Tk0C7E0nt+dTnzkLLhWUSV0k8yQsIVkDjCc6VgAPT4jBeRyJQVoH+Dppih+s+tN2D+XI
+ FHTifIVbtS6HzEfQZ/iqV7gjfCkDQMvY7ep4TZOzsmOudq6oH3wwpVljRIL7ZKimdLE5
+ 2XsbW9Sr0RVBQL98sVsy0HPHR0iM6Z0Gp6S6e7/n7fxRT1sLaAruBW2RCOmvPbbeo6RI
+ VrJCFjtvPD6GQIsvh7JGoqPV1QRJfrv0aZu3elqFOKLredqLsgmgmfKq6NrlWe6mRjPa
+ w96Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=DttXur++On+IvHWUrI5foPQFwrfhjzniznKAB6nVKy4=;
- b=RPd2KrQmmbU9xprc/A5vIa1cYgGtlucdYVVRYqdt9nJdaK4kkY/onYURUDPcLI+xq6
- 7Ef/BMI4+JVTxPWAOXAxOzulxvhQCntxCXN2BcPhJ9+qmL2UshjLJb/ZPgDDX/6TtPTX
- rD/x5LC6nm0F43ROUrkeBrRKb6bg4FHDo9Gb2llTGCN+Gg2yXpQuvycIpcC5bOAS7Swp
- 0EYKMFwJ3nbRyl1ZJTV2s3xVTGdFmApgZD0wx+IpQSmdJufS79Boy0Yy1fG62eyTyzXH
- VPUVFg36veO+N23AN+2B/r4xSxM3ma5hA0YRj+7lv5OC9NMSKvs0ZoBrUnv7S5rxlcHv
- jn7A==
-X-Gm-Message-State: AOAM5329ll1EU07QkI5pF2byDljNllXuNCeMYP3KSsWXhkxFiEX7SoPZ
- Pv1pXQ3Q3X93NwuzYPCbbgaGf2Sa5/G1wBL/ZhAQRA==
-X-Received: by 2002:a50:fe88:: with SMTP id d8mr4389585edt.36.1606427263662;
- Thu, 26 Nov 2020 13:47:43 -0800 (PST)
+ bh=VCbuhUgseEdIad8g+kRBzhDOBtgRomK/CWVMXG9z46I=;
+ b=Zb35uxKsZDiSq9P5PDUqkmQEC6aR6haXEtcltLbuJwK/9n0LUgbopH4Pem/UY8KoMm
+ WzvNTj9PJ1hLYtLnb44Ms5zy5+skjKI5tV6+33rKIDDHODrNrTE8avkGSBC/wpVAgGTf
+ eWWE0SplkGMkSLhCDFBBBZ1Gm/QQReWMmWg2VIeyXKJXJFeH3j2ZKeJsNIDwuwtKxTHa
+ Fnq/ELyNF2pR0xF6ME9337XaroMH+bM7CLsPfxHXQOMPnDjBPS81UcKzLUb6cRQ1Oac5
+ gTQBlhbvO1eRdHlS2eH8J3gPSXMhbAwkLtgLUYvIgy22XUiRbZguboeFVz8rfKsz5sfO
+ tc8g==
+X-Gm-Message-State: AOAM530k6q5JonD2JwvmBXg7uM6VJzYEhX8hixyokO0EWOHzDOsBihAO
+ BoXZxl3PLpN7Y6hjlxy57lUgrRcrhDCDD7DBbV48Jw==
+X-Received: by 2002:a05:6402:3514:: with SMTP id
+ b20mr13117066edd.100.1611840737400; 
+ Thu, 28 Jan 2021 05:32:17 -0800 (PST)
 MIME-Version: 1.0
-References: <20201126213600.40654-1-agraf@csgraf.de>
- <20201126213600.40654-5-agraf@csgraf.de>
-In-Reply-To: <20201126213600.40654-5-agraf@csgraf.de>
+References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
+ <1611063546-20278-11-git-send-email-bmeng.cn@gmail.com>
+In-Reply-To: <1611063546-20278-11-git-send-email-bmeng.cn@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Nov 2020 21:47:32 +0000
-Message-ID: <CAFEAcA_XZu07Fg3G05VWYDYTJfMSAzOH5yyd=rFLJVa73juDtw@mail.gmail.com>
-Subject: Re: [PATCH 4/8] arm: Synchronize CPU on PSCI on
-To: Alexander Graf <agraf@csgraf.de>
+Date: Thu, 28 Jan 2021 13:32:06 +0000
+Message-ID: <CAFEAcA9Dr5Wkd0KSvieX+smcGg51DNvt+DhBxibnNDGNHSsCtg@mail.gmail.com>
+Subject: Re: [PATCH v8 10/10] hw/ssi: imx_spi: Correct tx and rx fifo
+ endianness
+To: Bin Meng <bmeng.cn@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,60 +111,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HZ4jN6JEe7+A
+X-TUID: b0PG1Abzuv8p
 
-On Thu, 26 Nov 2020 at 21:36, Alexander Graf <agraf@csgraf.de> wrote:
+On Tue, 19 Jan 2021 at 13:40, Bin Meng <bmeng.cn@gmail.com> wrote:
 >
-> We are going to reuse the TCG PSCI code for HVF. This however means that we
-> need to ensure that CPU register state is synchronized properly between the
-> two worlds.
+> From: Bin Meng <bin.meng@windriver.com>
 >
-> So let's make sure that at least on the PSCI on call, the secondary core gets
-> to sync its registers after reset, so that changes also propagate.
+> The endianness of data exchange between tx and rx fifo is incorrect.
+> Earlier bytes are supposed to show up on MSB and later bytes on LSB,
+> ie: in big endian. The manual does not explicitly say this, but the
+> U-Boot and Linux driver codes have a swap on the data transferred
+> to tx fifo and from rx fifo.
 >
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> ---
->  target/arm/arm-powerctl.c | 3 +++
->  1 file changed, 3 insertions(+)
+> With this change, U-Boot read from / write to SPI flash tests pass.
 >
-> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-> index b75f813b40..256f7cfdcd 100644
-> --- a/target/arm/arm-powerctl.c
-> +++ b/target/arm/arm-powerctl.c
-> @@ -15,6 +15,7 @@
->  #include "arm-powerctl.h"
->  #include "qemu/log.h"
->  #include "qemu/main-loop.h"
-> +#include "sysemu/hw_accel.h"
+>   => sf test 1ff000 1000
+>   SPI flash test:
+>   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+>   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+>   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+>   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
+>   Test passed
+>   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+>   1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+>   2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+>   3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
 >
->  #ifndef DEBUG_ARM_POWERCTL
->  #define DEBUG_ARM_POWERCTL 0
-> @@ -66,6 +67,8 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
->      cpu_reset(target_cpu_state);
->      target_cpu_state->halted = 0;
->
-> +    cpu_synchronize_state(target_cpu_state);
-> +
->      if (info->target_aa64) {
->          if ((info->target_el < 3) && arm_feature(&target_cpu->env,
->                                                   ARM_FEATURE_EL3))
+> Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
-This looks weird. The CPU was off, so not running anything.
-Why doesn't the state we set up here get synchronized to
-HVF as part of the normal enter-guest-code process that we
-do when we do whatever HVF's equivalent of KVM_RUN is ?
-
-Also, we change more bits of CPU state later in this function,
-so if we do need to manually sychronize in this function this
-doesn't seem like the right place...
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

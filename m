@@ -1,434 +1,177 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp634862lfo;
-        Thu, 28 Jan 2021 15:06:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxU9lziwODsyFEjWsI2zthDapWD1yM4wL4lEC6PH/S1AXt6u4o0PQr2yxbPF44WpPDtCqnF
-X-Received: by 2002:a25:880a:: with SMTP id c10mr2206824ybl.456.1611875171969;
-        Thu, 28 Jan 2021 15:06:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611875171; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Sii5Da9dqqD17zfKUhoEXskt+k0yDtkxkWJF4hIGLhZ9ihAiBYa/9W/krXfcVhiHPg
-         +lOp4XSqZ1a+uYObk+eXC0a4sNInoMj1bukao0NyNwI/fKk7k57JmssZ0x92KL7YVID0
-         yThGoifKZdpIBGITyglMte1mBDI8Qztuh7WcCnQvvA6OZoVYizxhaYOTlnxnOKVOAvyw
-         huXbBw2I6u6dqqSQZpKgaLkRWQd0+Mxhnfkq0YJsuz+mKzwWNNG1YSsrZ5U71Z7zfjd2
-         goAYEYFmISSzI+qOIDc08qNxb1nyYqj3LhEWe2gkiLPBincX3wCmxt2q+aDvTnC1rVTZ
-         5xVg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HKtHUyeX46/E9EoVvwvRWE1/PXHFC9tVF6JjxX+JLd4=;
-        b=XOdjx6JNvFOSCmOWAL69noVTcz4V8dJ709vEM0Z7F5ivbxiOsUNdUaI1YhiWCU7fer
-         129Q+hg1dKK1szXJwnvIYaE+8XqBARZN87n6Yr8H0RvE44MRgR1mlhlaYKSOMQjKJqTW
-         1RluxF8egEa6C4xnAXb1u3y5DURNMPXcxICs1kC4/CrrBc7EFawFNy0f9nH/NZekFa+0
-         hvE/IxShGd/6re7xsHzXELKNGpBqEZvbaYPQd0s3sHW969QbNEQ5Zprk545aLF/h87JM
-         CSeCVnCtKgmhf9OtX6FZtqUkqKaJStDOYcwgmNkABNnoBr1T232wH5TyMGzfkzPEh9SL
-         wUdQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YYg6OH7Z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp641620lfo;
+        Thu, 28 Jan 2021 15:16:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzYMCBRXmt1+U5SFQGw9cAwuPzidLn5lUj2yU0UbNmNaRWy/r4eqfkSvAZsOuofbR9fqaIP
+X-Received: by 2002:a25:e70f:: with SMTP id e15mr2215212ybh.409.1611875776004;
+        Thu, 28 Jan 2021 15:16:16 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13si7297571ybf.371.2021.01.28.15.06.11
+        by mx.google.com with ESMTPS id n2si6282375ybo.259.2021.01.28.15.16.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 15:06:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Jan 2021 15:16:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YYg6OH7Z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42748 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33126 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5GMd-0003yS-BP
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 18:06:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33516)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l5GWN-0003z6-Bq
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 18:16:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5Fzm-00064x-Hz
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:34 -0500
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429]:40558)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l5Fzc-0008F9-AB
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 17:42:34 -0500
-Received: by mail-pf1-x429.google.com with SMTP id i63so4966029pfg.7
- for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 14:42:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=HKtHUyeX46/E9EoVvwvRWE1/PXHFC9tVF6JjxX+JLd4=;
- b=YYg6OH7Z73IlMQyvPM01NdWvtipolaDlWRVbDrgk6X5tBSWv0iuqTuRzf/3FdrkEgJ
- gCluzxNeI5KRLfUgJiFYzvd6w2LWCFX/LqC3nbhZg5WXfz2ZVT1Vh1J4qovo+RUC6Kys
- NXhEywqrUW5AWYatQk/W9HLgE+WQw0jYB60HK5tBUHzqik2siBYmMDcHwgUNK1b5XcX2
- uveoWvQK54EktXycrMDojnyGWWO6vmE1woE4/5HV87fvQDvJLnV+CBlo+QoiQuAHezNR
- jM538vbv5O8c7BGIWm4KdXctH+fYQVO28b1KOcaRoy0VK5IO2klGGCw37X+LIPlt90V0
- G0fA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=HKtHUyeX46/E9EoVvwvRWE1/PXHFC9tVF6JjxX+JLd4=;
- b=WfnDqc6raOZO5UjueultXYMGt+KrU3Srj36Mu2uoJBinJjHHhZDFBrcnh4NA5Le2JY
- ThZwK3KZi+fHWoUojimu3yPv/9NRyriCw/PB55stqTuEtmgJZSpOrPjO6KhaAl6VuTtw
- RBJqsJywntXvUFaXxiMyI5MrVkrft1szDmbGqXmGLgNF8X/GYqP3Gd/WdnKRb4H/cWYM
- 8w7d3JLWFphud4CroFhyxnU1doj7pcKURFHekkPaIBBxnPYhP3fE/yuPV+kQZoHbLJjs
- Yjakeovtt3LbCRBpheLSvgzOqayhUCpVO0K30SPxVY3hjHDC7uqawoEUCZ7O9LLWTaII
- U0kw==
-X-Gm-Message-State: AOAM532qeE9K0xu+jD88I+iQkmweps4w840J6j7LwmE0L2QFEmB66dOT
- ftOiiPtcmptuSJ04nQAuVIWWiM6vRtGPJYdV
-X-Received: by 2002:a05:6a00:2d5:b029:1b9:67bd:b60f with SMTP id
- b21-20020a056a0002d5b02901b967bdb60fmr1482173pft.10.1611873742378; 
- Thu, 28 Jan 2021 14:42:22 -0800 (PST)
-Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
- [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id m10sm6042358pjs.25.2021.01.28.14.42.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jan 2021 14:42:21 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 23/23] tests/tcg/aarch64: Add mte smoke tests
-Date: Thu, 28 Jan 2021 12:41:41 -1000
-Message-Id: <20210128224141.638790-24-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1l5GW9-0003y1-QZ; Thu, 28 Jan 2021 18:16:01 -0500
+Resent-Date: Thu, 28 Jan 2021 18:16:01 -0500
+Resent-Message-Id: <E1l5GW9-0003y1-QZ@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21385)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1l5GW7-0002fG-A3; Thu, 28 Jan 2021 18:16:01 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1611875752; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=XY5X02W99KMu3YrFAxWS62/A6VDoGtBdSOEl+fDypwEz5SOFf+tNjiyhwyxcM4a2M5JTcEc3/HCZfBi3nbs006aq92I0oVlWyGnhLJhtNUCu/iF/5qOKsA8JM9gt8p+R2U3lCbx9GUVZOGvooZltdQ9/g2F0fDD+y3xldq1D5t8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1611875752;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=m1qk+03XEj5aHx6+c+tPT+lMfwvL+/K28AxQGnb05u0=; 
+ b=DWXb7bWf40qIKZfdRObr7+/WBQihnWyY2WdYPgvk9PI+rmRE7mSujXZ9ATl3UjO9wylvFzmCC2yJUTDaxqE4rRuthkv736fmDC56GhrYXxwOeaA/55w0S6DRHkgHANyH7YV7aOlg+a/Ca8Dz3wAU/aLAZtUiq2DZE7TN89xxzPo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1611875751355858.3459826711689;
+ Thu, 28 Jan 2021 15:15:51 -0800 (PST)
 In-Reply-To: <20210128224141.638790-1-richard.henderson@linaro.org>
-References: <20210128224141.638790-1-richard.henderson@linaro.org>
+Subject: Re: [PATCH v4 00/23] target-arm: Implement ARMv8.5-MemTag, user mode
+Message-ID: <161187575010.13416.16830262547371739592@c667a6b167f6>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: richard.henderson@linaro.org
+Date: Thu, 28 Jan 2021 15:15:51 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c+N0XvBOsA36
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GnqT5eWvKGo8
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- tests/tcg/aarch64/mte.h           | 60 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/mte-1.c         | 28 +++++++++++++++
- tests/tcg/aarch64/mte-2.c         | 45 +++++++++++++++++++++++
- tests/tcg/aarch64/mte-3.c         | 51 ++++++++++++++++++++++++++
- tests/tcg/aarch64/mte-4.c         | 45 +++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  6 ++++
- tests/tcg/configure.sh            |  4 +++
- 7 files changed, 239 insertions(+)
- create mode 100644 tests/tcg/aarch64/mte.h
- create mode 100644 tests/tcg/aarch64/mte-1.c
- create mode 100644 tests/tcg/aarch64/mte-2.c
- create mode 100644 tests/tcg/aarch64/mte-3.c
- create mode 100644 tests/tcg/aarch64/mte-4.c
-
-diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
-new file mode 100644
-index 0000000000..141cef522c
---- /dev/null
-+++ b/tests/tcg/aarch64/mte.h
-@@ -0,0 +1,60 @@
-+/*
-+ * Linux kernel fallback API definitions for MTE and test helpers.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include <assert.h>
-+#include <string.h>
-+#include <stdlib.h>
-+#include <stdio.h>
-+#include <unistd.h>
-+#include <signal.h>
-+#include <sys/mman.h>
-+#include <sys/prctl.h>
-+
-+#ifndef PR_SET_TAGGED_ADDR_CTRL
-+# define PR_SET_TAGGED_ADDR_CTRL  55
-+#endif
-+#ifndef PR_TAGGED_ADDR_ENABLE
-+# define PR_TAGGED_ADDR_ENABLE    (1UL << 0)
-+#endif
-+#ifndef PR_MTE_TCF_SHIFT
-+# define PR_MTE_TCF_SHIFT         1
-+# define PR_MTE_TCF_NONE          (0UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TCF_SYNC          (1UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TCF_ASYNC         (2UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TAG_SHIFT         3
-+#endif
-+
-+#ifndef PROT_MTE
-+# define PROT_MTE 0x20
-+#endif
-+
-+#ifndef SEGV_MTEAERR
-+# define SEGV_MTEAERR    8
-+# define SEGV_MTESERR    9
-+#endif
-+
-+static void enable_mte(int tcf)
-+{
-+    int r = prctl(PR_SET_TAGGED_ADDR_CTRL,
-+                  PR_TAGGED_ADDR_ENABLE | tcf | (0xfffe << PR_MTE_TAG_SHIFT),
-+                  0, 0, 0);
-+    if (r < 0) {
-+        perror("PR_SET_TAGGED_ADDR_CTRL");
-+        exit(2);
-+    }
-+}
-+
-+static void *alloc_mte_mem(size_t size)
-+{
-+    void *p = mmap(NULL, size, PROT_READ | PROT_WRITE | PROT_MTE,
-+                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-+    if (p == MAP_FAILED) {
-+        perror("mmap PROT_MTE");
-+        exit(2);
-+    }
-+    return p;
-+}
-diff --git a/tests/tcg/aarch64/mte-1.c b/tests/tcg/aarch64/mte-1.c
-new file mode 100644
-index 0000000000..88dcd617ad
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-1.c
-@@ -0,0 +1,28 @@
-+/*
-+ * Memory tagging, basic pass cases.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+int main(int ac, char **av)
-+{
-+    int *p0, *p1, *p2;
-+    long c;
-+
-+    enable_mte(PR_MTE_TCF_NONE);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
-+    assert(p1 != p0);
-+    asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
-+    assert(c == 0);
-+
-+    asm("stg %0, [%0]" : : "r"(p1));
-+    asm("ldg %0, [%1]" : "=r"(p2) : "r"(p0), "0"(p0));
-+    assert(p1 == p2);
-+
-+    return 0;
-+}
-diff --git a/tests/tcg/aarch64/mte-2.c b/tests/tcg/aarch64/mte-2.c
-new file mode 100644
-index 0000000000..a62278276a
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-2.c
-@@ -0,0 +1,45 @@
-+/*
-+ * Memory tagging, basic fail cases, synchronous signals.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+void pass(int sig, siginfo_t *info, void *uc)
-+{
-+    assert(info->si_code == SEGV_MTESERR);
-+    exit(0);
-+}
-+
-+int main(int ac, char **av)
-+{
-+    struct sigaction sa;
-+    int *p0, *p1, *p2;
-+    long excl = 1;
-+
-+    enable_mte(PR_MTE_TCF_SYNC);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    /* Create two differently tagged pointers.  */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
-+    assert(excl != 1);
-+    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
-+    assert(p1 != p2);
-+
-+    /* Store the tag from the first pointer.  */
-+    asm("stg %0, [%0]" : : "r"(p1));
-+
-+    *p1 = 0;
-+
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = pass;
-+    sa.sa_flags = SA_SIGINFO;
-+    sigaction(SIGSEGV, &sa, NULL);
-+
-+    *p2 = 0;
-+
-+    abort();
-+}
-diff --git a/tests/tcg/aarch64/mte-3.c b/tests/tcg/aarch64/mte-3.c
-new file mode 100644
-index 0000000000..424ea685c2
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-3.c
-@@ -0,0 +1,51 @@
-+/*
-+ * Memory tagging, basic fail cases, asynchronous signals.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+void pass(int sig, siginfo_t *info, void *uc)
-+{
-+    assert(info->si_code == SEGV_MTEAERR);
-+    exit(0);
-+}
-+
-+int main(int ac, char **av)
-+{
-+    struct sigaction sa;
-+    long *p0, *p1, *p2;
-+    long excl = 1;
-+
-+    enable_mte(PR_MTE_TCF_ASYNC);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    /* Create two differently tagged pointers.  */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
-+    assert(excl != 1);
-+    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
-+    assert(p1 != p2);
-+
-+    /* Store the tag from the first pointer.  */
-+    asm("stg %0, [%0]" : : "r"(p1));
-+
-+    *p1 = 0;
-+
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = pass;
-+    sa.sa_flags = SA_SIGINFO;
-+    sigaction(SIGSEGV, &sa, NULL);
-+
-+    /*
-+     * Signal for async error will happen eventually.
-+     * For a real kernel this should be after the next IRQ (e.g. timer).
-+     * For qemu linux-user, we kick the cpu and exit at the next TB.
-+     * In either case, loop until this happens (or killed by timeout).
-+     * For extra sauce, yield, producing EXCP_YIELD to cpu_loop().
-+     */
-+    asm("str %0, [%0]; yield" : : "r"(p2));
-+    while (1);
-+}
-diff --git a/tests/tcg/aarch64/mte-4.c b/tests/tcg/aarch64/mte-4.c
-new file mode 100644
-index 0000000000..a8cc9f5984
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-4.c
-@@ -0,0 +1,45 @@
-+/*
-+ * Memory tagging, re-reading tag checks.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+void __attribute__((noinline)) tagset(void *p, size_t size)
-+{
-+    size_t i;
-+    for (i = 0; i < size; i += 16) {
-+        asm("stg %0, [%0]" : : "r"(p + i));
-+    }
-+}
-+
-+void __attribute__((noinline)) tagcheck(void *p, size_t size)
-+{
-+    size_t i;
-+    void *c;
-+
-+    for (i = 0; i < size; i += 16) {
-+        asm("ldg %0, [%1]" : "=r"(c) : "r"(p + i), "0"(p));
-+        assert(c == p);
-+    }
-+}
-+
-+int main(int ac, char **av)
-+{
-+    size_t size = getpagesize() * 4;
-+    long excl = 1;
-+    int *p0, *p1;
-+
-+    enable_mte(PR_MTE_TCF_ASYNC);
-+    p0 = alloc_mte_mem(size);
-+
-+    /* Tag the pointer. */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+
-+    tagset(p1, size);
-+    tagcheck(p1, size);
-+
-+    return 0;
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index d7d33e293c..bf53ad0087 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -35,6 +35,12 @@ endif
- # bti-2 tests PROT_BTI, so no special compiler support required.
- AARCH64_TESTS += bti-2
- 
-+# MTE Tests
-+ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_MTE),)
-+AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
-+mte-%: CFLAGS += -march=armv8.5-a+memtag
-+endif
-+
- # Semihosting smoke test for linux-user
- AARCH64_TESTS += semihosting
- run-semihosting: semihosting
-diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
-index e1b70e25f2..ba8ac9a93e 100755
---- a/tests/tcg/configure.sh
-+++ b/tests/tcg/configure.sh
-@@ -244,6 +244,10 @@ for target in $target_list; do
-                -mbranch-protection=standard -o $TMPE $TMPC; then
-                 echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
-             fi
-+            if do_compiler "$target_compiler" $target_compiler_cflags \
-+               -march=armv8.5-a+memtag -o $TMPE $TMPC; then
-+                echo "CROSS_CC_HAS_ARMV8_MTE=y" >> $config_target_mak
-+            fi
-         ;;
-     esac
- 
--- 
-2.25.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDEyODIyNDE0MS42Mzg3
+OTAtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNl
+ZW1zIHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cg
+Zm9yCm1vcmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTAxMjgy
+MjQxNDEuNjM4NzkwLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpTdWJqZWN0OiBbUEFU
+Q0ggdjQgMDAvMjNdIHRhcmdldC1hcm06IEltcGxlbWVudCBBUk12OC41LU1lbVRhZywgdXNlciBt
+b2RlCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2Ug
+YmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1l
+bGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAt
+LWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAt
+LW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1
+YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNv
+bS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjEw
+MTI4MjI0MTQxLjYzODc5MC0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcgLT4gcGF0Y2hl
+dy8yMDIxMDEyODIyNDE0MS42Mzg3OTAtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnClN3
+aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKNmMzNmNmYSB0ZXN0cy90Y2cvYWFyY2g2NDog
+QWRkIG10ZSBzbW9rZSB0ZXN0cwo5Mzg2OGRjIHRhcmdldC9hcm06IEVuYWJsZSBNVEUgZm9yIHVz
+ZXItb25seQo4OWM2N2JiIHRhcmdldC9hcm06IEFkZCBhbGxvY2F0aW9uIHRhZyBzdG9yYWdlIGZv
+ciB1c2VyIG1vZGUKOWU1NWJjZSBsaW51eC11c2VyL2FhcmNoNjQ6IFNpZ25hbCBTRUdWX01URUFF
+UlIgZm9yIGFzeW5jIHRhZyBjaGVjayBlcnJvcgo2NjJmMzA5IGxpbnV4LXVzZXIvYWFyY2g2NDog
+U2lnbmFsIFNFR1ZfTVRFU0VSUiBmb3Igc3luYyB0YWcgY2hlY2sgZmF1bHQKNDA1YzhiYyBsaW51
+eC11c2VyL2FhcmNoNjQ6IFBhc3Mgc3luZHJvbWUgdG8gRVhDXypfQUJPUlQKODUyYzg0NyB0YXJn
+ZXQvYXJtOiBTcGxpdCBvdXQgc3luZHJvbWUuaCBmcm9tIGludGVybmFscy5oCmFhZWEwOTEgbGlu
+dXgtdXNlci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJPVF9NVEUKNDBiNTk4OSBsaW51eC11c2VyL2Fh
+cmNoNjQ6IEltcGxlbWVudCBQUl9NVEVfVENGIGFuZCBQUl9NVEVfVEFHCmZmZTdjOWUgdGFyZ2V0
+L2FybTogVXNlIHRoZSBwcm9wZXIgVEJJIHNldHRpbmdzIGZvciBsaW51eC11c2VyCjc0OWIyMDcg
+dGFyZ2V0L2FybTogSW1wcm92ZSBnZW5fdG9wX2J5dGVfaWdub3JlCjRiMjVmN2YgbGludXgtdXNl
+ci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJfVEFHR0VEX0FERFJfRU5BQkxFCmQ5MDUzMzUgZXhlYzog
+QWRkIHN1cHBvcnQgZm9yIFRBUkdFVF9UQUdHRURfQUREUkVTU0VTCjA3NTdiMTkgbGludXgtdXNl
+cjogRml4IGd1ZXN0X2FkZHJfdmFsaWQgdnMgcmVzZXJ2ZWRfdmEKZjIyOTRjNSBsaW51eC11c2Vy
+OiBEbyBub3QgdXNlIGd1ZXN0X2FkZHJfdmFsaWQgZm9yIGgyZ192YWxpZAo2NzczMGVmIGJzZC11
+c2VyOiBUaWR5IFZFUklGWV9SRUFEL1ZFUklGWV9XUklURQpmNGNkNTRjIGxpbnV4LXVzZXI6IFRp
+ZHkgVkVSSUZZX1JFQUQvVkVSSUZZX1dSSVRFCjZjZjM4MDEgbGludXgtdXNlcjogQ2hlY2sgZm9y
+IG92ZXJmbG93IGluIGFjY2Vzc19vawpjZTQ3OWY2IGV4ZWM6IEltcHJvdmUgdHlwZXMgZm9yIGd1
+ZXN0X2FkZHJfdmFsaWQKOTlhNmM4MyBleGVjOiBVc2UgdWludHB0cl90IGluIGNwdV9sZHN0LmgK
+YjQzNjM5YyBleGVjOiBVc2UgdWludHB0cl90IGZvciBndWVzdF9iYXNlCjJjNzJmZGYgbGludXgt
+dXNlcjogSW50cm9kdWNlIFBBR0VfQU5PTgoyODUwNmY0MSB0Y2c6IEludHJvZHVjZSB0YXJnZXQt
+c3BlY2lmaWMgcGFnZSBkYXRhIGZvciB1c2VyLW9ubHkKCj09PSBPVVRQVVQgQkVHSU4gPT09CjEv
+MjMgQ2hlY2tpbmcgY29tbWl0IDI4NTA2ZjQxOGE0MyAodGNnOiBJbnRyb2R1Y2UgdGFyZ2V0LXNw
+ZWNpZmljIHBhZ2UgZGF0YSBmb3IgdXNlci1vbmx5KQoyLzIzIENoZWNraW5nIGNvbW1pdCAyYzcy
+ZmRmMjhkZTkgKGxpbnV4LXVzZXI6IEludHJvZHVjZSBQQUdFX0FOT04pCjMvMjMgQ2hlY2tpbmcg
+Y29tbWl0IGI0MzYzOWM3YTZmOSAoZXhlYzogVXNlIHVpbnRwdHJfdCBmb3IgZ3Vlc3RfYmFzZSkK
+NC8yMyBDaGVja2luZyBjb21taXQgOTlhNmM4Mzg4NTgzIChleGVjOiBVc2UgdWludHB0cl90IGlu
+IGNwdV9sZHN0LmgpCjUvMjMgQ2hlY2tpbmcgY29tbWl0IGNlNDc5ZjY3M2E2NiAoZXhlYzogSW1w
+cm92ZSB0eXBlcyBmb3IgZ3Vlc3RfYWRkcl92YWxpZCkKNi8yMyBDaGVja2luZyBjb21taXQgNmNm
+MzgwMTZkZTFjIChsaW51eC11c2VyOiBDaGVjayBmb3Igb3ZlcmZsb3cgaW4gYWNjZXNzX29rKQo3
+LzIzIENoZWNraW5nIGNvbW1pdCBmNGNkNTRjZTA2MDYgKGxpbnV4LXVzZXI6IFRpZHkgVkVSSUZZ
+X1JFQUQvVkVSSUZZX1dSSVRFKQo4LzIzIENoZWNraW5nIGNvbW1pdCA2NzczMGVmMDIxNGQgKGJz
+ZC11c2VyOiBUaWR5IFZFUklGWV9SRUFEL1ZFUklGWV9XUklURSkKOS8yMyBDaGVja2luZyBjb21t
+aXQgZjIyOTRjNWFlYjk1IChsaW51eC11c2VyOiBEbyBub3QgdXNlIGd1ZXN0X2FkZHJfdmFsaWQg
+Zm9yIGgyZ192YWxpZCkKMTAvMjMgQ2hlY2tpbmcgY29tbWl0IDA3NTdiMTkwMzZiNyAobGludXgt
+dXNlcjogRml4IGd1ZXN0X2FkZHJfdmFsaWQgdnMgcmVzZXJ2ZWRfdmEpCjExLzIzIENoZWNraW5n
+IGNvbW1pdCBkOTA1MzM1ZmI3YWEgKGV4ZWM6IEFkZCBzdXBwb3J0IGZvciBUQVJHRVRfVEFHR0VE
+X0FERFJFU1NFUykKMTIvMjMgQ2hlY2tpbmcgY29tbWl0IDRiMjVmN2Y0OTllMyAobGludXgtdXNl
+ci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJfVEFHR0VEX0FERFJfRU5BQkxFKQoxMy8yMyBDaGVja2lu
+ZyBjb21taXQgNzQ5YjIwN2E5OGUyICh0YXJnZXQvYXJtOiBJbXByb3ZlIGdlbl90b3BfYnl0ZV9p
+Z25vcmUpCjE0LzIzIENoZWNraW5nIGNvbW1pdCBmZmU3YzllNTkwYzMgKHRhcmdldC9hcm06IFVz
+ZSB0aGUgcHJvcGVyIFRCSSBzZXR0aW5ncyBmb3IgbGludXgtdXNlcikKMTUvMjMgQ2hlY2tpbmcg
+Y29tbWl0IDQwYjU5ODk3MGFjOCAobGludXgtdXNlci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJfTVRF
+X1RDRiBhbmQgUFJfTVRFX1RBRykKMTYvMjMgQ2hlY2tpbmcgY29tbWl0IGFhZWEwOTFjMjM0OSAo
+bGludXgtdXNlci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJPVF9NVEUpCjE3LzIzIENoZWNraW5nIGNv
+bW1pdCA4NTJjODQ3MTQ3OTIgKHRhcmdldC9hcm06IFNwbGl0IG91dCBzeW5kcm9tZS5oIGZyb20g
+aW50ZXJuYWxzLmgpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRv
+ZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzI4MTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0
+Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDUzMCBsaW5lcyBjaGVja2VkCgpQYXRjaCAx
+Ny8yMyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2Ug
+ZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIs
+IHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoxOC8yMyBDaGVja2luZyBjb21taXQgNDA1
+YzhiYzk0MDAyIChsaW51eC11c2VyL2FhcmNoNjQ6IFBhc3Mgc3luZHJvbWUgdG8gRVhDXypfQUJP
+UlQpCjE5LzIzIENoZWNraW5nIGNvbW1pdCA2NjJmMzA5MTViMTcgKGxpbnV4LXVzZXIvYWFyY2g2
+NDogU2lnbmFsIFNFR1ZfTVRFU0VSUiBmb3Igc3luYyB0YWcgY2hlY2sgZmF1bHQpCjIwLzIzIENo
+ZWNraW5nIGNvbW1pdCA5ZTU1YmNlYzUwNjkgKGxpbnV4LXVzZXIvYWFyY2g2NDogU2lnbmFsIFNF
+R1ZfTVRFQUVSUiBmb3IgYXN5bmMgdGFnIGNoZWNrIGVycm9yKQoyMS8yMyBDaGVja2luZyBjb21t
+aXQgODljNjdiYjA2NDNlICh0YXJnZXQvYXJtOiBBZGQgYWxsb2NhdGlvbiB0YWcgc3RvcmFnZSBm
+b3IgdXNlciBtb2RlKQoyMi8yMyBDaGVja2luZyBjb21taXQgOTM4NjhkYzYzMTE0ICh0YXJnZXQv
+YXJtOiBFbmFibGUgTVRFIGZvciB1c2VyLW9ubHkpCjIzLzIzIENoZWNraW5nIGNvbW1pdCA2YzM2
+Y2ZhYmJkOTYgKHRlc3RzL3RjZy9hYXJjaDY0OiBBZGQgbXRlIHNtb2tlIHRlc3RzKQpXQVJOSU5H
+OiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQg
+dXBkYXRpbmc/CiMzNzogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CgpFUlJPUjogdHJhaWxpbmcgc3Rh
+dGVtZW50cyBzaG91bGQgYmUgb24gbmV4dCBsaW5lCiMxNzY6IEZJTEU6IHRlc3RzL3RjZy9hYXJj
+aDY0L210ZS0zLmM6NTA6CisgICAgd2hpbGUgKDEpOwoKRVJST1I6IGJyYWNlcyB7fSBhcmUgbmVj
+ZXNzYXJ5IGZvciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRlbWVudAojMTc2OiBGSUxFOiB0ZXN0cy90
+Y2cvYWFyY2g2NC9tdGUtMy5jOjUwOgorICAgIHdoaWxlICgxKTsKWy4uLl0KCkVSUk9SOiB1c2Ug
+cWVtdV9yZWFsX2hvc3RfcGFnZV9zaXplIGluc3RlYWQgb2YgZ2V0cGFnZXNpemUoKQojMjE0OiBG
+SUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9tdGUtNC5jOjMxOgorICAgIHNpemVfdCBzaXplID0gZ2V0
+cGFnZXNpemUoKSAqIDQ7Cgp0b3RhbDogMyBlcnJvcnMsIDEgd2FybmluZ3MsIDI1MSBsaW5lcyBj
+aGVja2VkCgpQYXRjaCAyMy8yMyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJ
+ZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8g
+dGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBV
+VCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxv
+ZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMTAxMjgyMjQxNDEu
+NjM4NzkwLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy90ZXN0aW5nLmNoZWNrcGF0Y2gv
+P3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNo
+ZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBw
+YXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

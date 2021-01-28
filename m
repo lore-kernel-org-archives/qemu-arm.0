@@ -1,105 +1,103 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp149473lfo;
-        Thu, 28 Jan 2021 03:50:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwCGItYREBui0XvT1DdhGEangakh5SJN9+ZQUx0NkHLOOWbWMD8nLW4B7avimlDVnw58jgW
-X-Received: by 2002:a25:4fd6:: with SMTP id d205mr9143249ybb.145.1611834632704;
-        Thu, 28 Jan 2021 03:50:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611834632; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp149786lfo;
+        Thu, 28 Jan 2021 03:51:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzJ9YM6PPhPPdie4DyRZMTGd/bVufVjogeLWGkV6/jBkfCc7qNI+UZ/E1/1vMEqGlak5IO9
+X-Received: by 2002:a25:c5cf:: with SMTP id v198mr24673342ybe.282.1611834663555;
+        Thu, 28 Jan 2021 03:51:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611834663; cv=none;
         d=google.com; s=arc-20160816;
-        b=LfScbmDktPzoRnGEWy8X17ySPW/YzMFEnOHb3+AhQPoKvSsehf8kr2P0nNt3PIyx5x
-         4L10Bec4mrxzwy7XBmlr+e9EdbZkoAGGJxWdFqaDC33eYADgXzEsPVEjRrZPDznpw4/a
-         ywrqn3/oHKClfKlela1QX6BPb+/dLh6JHcj4hIIZBok+HsutC7MxVTnPEQDNpqmjKTX7
-         sBrAseDKFj0GiNysfHjoe9E4Fdn0qwHXBN3x6HfFM73cAPo/SxMgMg5CJnwkd5UmRPzd
-         0fKO6NRu3ZqhVdC1jwrMZvAGSOYUFqoL6funjHAYv4DMgOwnBcFovOza1EMpmr/EWlZv
-         7SmQ==
+        b=O7IZv5LcoUGdyknTy3MRFh+BWJZI9Vlqos/rfR5TG71wQ7DCF2ZEU4YNk8AX+5tgX2
+         N0sVO2Ohzw64VT9KAAyetQC8qOsq4gwxNUTNaXJoLLlNhTp0V1hl4MXZytWiCdsXjUU6
+         MT5ww0MbMlmxFdzs6jZgYZ4+S/EyJ/veN0AgkDtuvGTtSlcH+zP3pjJJ8ZKMGorikQOg
+         8dhQEqSwhl2uo0cFoBTAZn5NEZwS4XzHQKPfOzUGY/2+6GWNmffWl2NRog5ozdY4w+9L
+         zLG+n5nOLL4yA3cC9w/M0edx+9byxq8ztC11S1p4PREK6TRI0DZCnz7JIM+Iz3LCo/6l
+         tc2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2e1YXz+Q0p/Ws1MZPKR+jaAmbZcN+lIEvqjMORMBP0Q=;
-        b=f35p/BgcZAQaodoaknpVVxz8g7ua/K2z+3GWy86r6BVwdZL+Yt/4UMiczgbn+SdEAe
-         ZjvkAI67JCicx/jRZrq3VSkBdFHaqCWCauJ+hXNARcNaZNapMnWsgqNX9KUm/X8L6eHc
-         tQkd/ZMqe7BJ0zmdrRzOP1bthiof3GTWi5ErsVdwipQ6oBdr02LGOG/wqwu9BNlQfvxI
-         4r7GMq551WrzHkd66e+1ntQFZUvSxV89Ua/L1PWNegc5UZGez/I7ySfZyTNSMvE4RjA0
-         LLE8FN+BIzO5zKl8VjNI8BB8nMKq3Uz/aWt7mKcx5TrnMM28C/Muyn/YZFNj6fcfhZyu
-         Y74Q==
+        bh=xRN3YGEBWk7hWGjfWYQ25vV7dydgRP+ZNx8pvaqAtbo=;
+        b=YabhYa0nnvyr+OSgME55b8X+lpfnK9W/nygQTWclxoMNoHn9EDiImfxe76Fs+blQZO
+         8L2GsZVYwub87x9EKlCAzJn2FX6qHC2qKv6cctBhj13LcKZFXs5dR74fv6HpqNwpsVKN
+         t/OvMIBI9qXZH3+n2IR0iX0+xM/5vr1YtNQ9krvhACCn0mZ9luBelOKxqwIrJi7sjqtk
+         07lkF72xKSES1Io4F5qcyvtk9R0kaCrg+QyT0S2PHOvNX1jpWK6DuXUDvrcUb/sEBUsd
+         8GyvZz5ozraFVPs3GyQIjhan8pxtZJlET/W65yGWTH3hQZ7V4ATorDNURN5tfSUx3DOy
+         eR3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ojOc5ay+;
+       dkim=pass header.i=@linaro.org header.s=google header.b="QLzfGl/g";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h124si5381327ybg.264.2021.01.28.03.50.32
+        by mx.google.com with ESMTPS id l8si5587615ybp.56.2021.01.28.03.51.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 03:50:32 -0800 (PST)
+        Thu, 28 Jan 2021 03:51:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ojOc5ay+;
+       dkim=pass header.i=@linaro.org header.s=google header.b="QLzfGl/g";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58124 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l55ol-0004L2-QP
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 06:50:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33736)
+	id 1l55pG-0005HC-TU
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 06:51:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l55gb-0001Oa-O4
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 06:42:05 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:54488)
+ id 1l55ge-0001Uj-F4
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 06:42:08 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:33203)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l55gV-00068Z-9k
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 06:42:05 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id u14so4042702wml.4
- for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 03:41:58 -0800 (PST)
+ id 1l55gY-00069R-3l
+ for qemu-arm@nongnu.org; Thu, 28 Jan 2021 06:42:08 -0500
+Received: by mail-wr1-x434.google.com with SMTP id 7so5083050wrz.0
+ for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 03:42:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=2e1YXz+Q0p/Ws1MZPKR+jaAmbZcN+lIEvqjMORMBP0Q=;
- b=ojOc5ay+OjcuVNl6T/PWhX8DlCZ+Wmhn5VBAljuFbzDp+5+Us57W+8foaSlIlLqu/w
- XxOL5KBoT1bAbv5oisrpIRVeYCPpOh+7Rryo4dK41jQT7kAJlAXg4hW0VfcE/gIzJcnB
- sf7RwHkfCxvpt2ZBJ0hnbYjMhGnC4RAMb6oqrN97zfffhjqcYLe/298/T9rqnFbWuLdc
- hiSyeRMJeJ6gxFh6YQlZuaNqA1QviPxkEPQgFGy0ddGF2PWv0KRfgZ9N707KilS6gLQY
- tYiaCkFt5MNUJzMUKZPawlmH/HfoTJhehYuaBHHrhVWut7Bco0iMAiqbfE6QaILwsFZa
- VopQ==
+ bh=xRN3YGEBWk7hWGjfWYQ25vV7dydgRP+ZNx8pvaqAtbo=;
+ b=QLzfGl/gsUVWZmRpP9wyWVS3NGPbItHdl8o3M545DlUsBIFJiwyOZd3nbbeBzKmP6q
+ erUFt7BmfdiK9uiHkPtiqoglrHzmr+b4/7VScpVsCdyGNdO/VzcEN9K85f43cLabXd3L
+ fzEBPO3RLszMZ6zPDjbqhQ8WkwKNcL5VsfI+UOzKWnp0mYtPgRpTQx3EnpGSvwqWYk45
+ VQlTFOy33GQakUxTJ+SpLao1Padump7xnQWaBpZDZK7xB5zkKvSzvfxtPMWc8dgN18O/
+ 0b7k7Gmmt+AbjKbpAk6sloEk6ky28zFbUkOSBpSCPWNj2AUSSKiKdfIDYpqpudBGX8LN
+ ScMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2e1YXz+Q0p/Ws1MZPKR+jaAmbZcN+lIEvqjMORMBP0Q=;
- b=YrEH1v3M+NSZKaYMabGmwJ5+l0Jzub3M7d1SAotd9crQnyN7Yzjbrrn5i5bKM4ahGF
- 2H5+Dc39CizU8lztIQW2GldHoBRTZlOAW3+x5ShB1yaaKC4QNrNDk3kcKvs8CGz7J6pI
- S5jRre66OCmSq2DMP2ev9I8qrYWGdtAncuhMFeKlSp49hjGuMugtnLS/oCYNFWBQTA+a
- 9agp2PI/tV82s8jAOgfIVeDTra1BraoIvQ/kH3G/nYFnbkZ4N9v0cReBvEZD5mgcaPmw
- tofkmUWKRVCfUxTZdtG78xaLd5ILU8srGj8ltRAMY5f0mapw1rvRW3a3sp+dcZcWiilI
- HMZg==
-X-Gm-Message-State: AOAM530gy0E1l3l0WHgBf7gsgHh1k79m8Te2HnmiN4BbS0KvIrbprXDY
- sEhwfyr/vm3M51OlfZzlzCpFGtgiJftQcg==
-X-Received: by 2002:a05:600c:22cf:: with SMTP id
- 15mr8170546wmg.19.1611834117966; 
- Thu, 28 Jan 2021 03:41:57 -0800 (PST)
+ bh=xRN3YGEBWk7hWGjfWYQ25vV7dydgRP+ZNx8pvaqAtbo=;
+ b=mtLi3R7gsOOxLrpZ5+T+QB90JiLQ2tblYCQoR3u07lxt7RYxkGYfryUBdBbNHbMKBh
+ GMTTZpCuzkcJ5kes0ETfX4Yjf5AbydKOsd1XCNq25f+ZRn/qDOymeWnN1twLeCuqv1JE
+ mgLgy58dzbiK4kHbQOhGgX35FDufnX5G8qwlKKNrJb7QwsWl9JLLhIyg9oCd3HMzidkX
+ YAMd/9NMvztKKopCnrQFAJaFszXHZQw/9tfdC98Qc6gqwBB7Gszg3GBGhVGr8iYzFUjH
+ KuYqZHHBAdj3l+jwtBWQsEUW3SEioqNqjHcol8UVRrPNQGLuENerxoHDFpTYchf9yf6c
+ ccQw==
+X-Gm-Message-State: AOAM531BvIsPok3svW00kUSJSWcuc4lby0f88E9wQaQ1VpFFDVK0Iidu
+ jGX6EpXAanmbdIV4iYyc7A6pqqmo+gIb8A==
+X-Received: by 2002:adf:ba49:: with SMTP id t9mr15993891wrg.183.1611834120834; 
+ Thu, 28 Jan 2021 03:42:00 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q9sm6431033wme.18.2021.01.28.03.41.57
+ by smtp.gmail.com with ESMTPSA id q9sm6431033wme.18.2021.01.28.03.42.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Jan 2021 03:41:57 -0800 (PST)
+ Thu, 28 Jan 2021 03:42:00 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 10/25] hw/arm/armsse: Rename "MAINCLK" property to
- "MAINCLK_FRQ"
-Date: Thu, 28 Jan 2021 11:41:30 +0000
-Message-Id: <20210128114145.20536-11-peter.maydell@linaro.org>
+Subject: [PATCH v2 13/25] hw/arm/mps2: Create and connect SYSCLK Clock
+Date: Thu, 28 Jan 2021 11:41:33 +0000
+Message-Id: <20210128114145.20536-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210128114145.20536-1-peter.maydell@linaro.org>
 References: <20210128114145.20536-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,104 +121,74 @@ Cc: Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pdPv7r4keNaW
+X-TUID: 8Xv/xEjswfOE
 
-While we transition the ARMSSE code from integer properties
-specifying clock frequencies to Clock objects, we want to have the
-device provide both at once.  We want the final name of the main
-input Clock to be "MAINCLK", following the hardware name.
-Unfortunately creating an input Clock with a name X creates an
-under-the-hood QOM property X; for "MAINCLK" this clashes with the
-existing UINT32 property of that name.
-
-Rename the UINT32 property to MAINCLK_FRQ so it can coexist with the
-MAINCLK Clock; once the transition is complete MAINCLK_FRQ will be
-deleted.
-
-Commit created with:
- perl -p -i -e 's/MAINCLK/MAINCLK_FRQ/g' hw/arm/{armsse,mps2-tz,musca}.c include/hw/arm/armsse.h
+Create a fixed-frequency Clock object to be the SYSCLK, and wire it
+up to the devices that require it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Luc Michel <luc@lmichel.fr>
-Message-id: 20210121190622.22000-11-peter.maydell@linaro.org
+Message-id: 20210121190622.22000-14-peter.maydell@linaro.org
 ---
- include/hw/arm/armsse.h | 2 +-
- hw/arm/armsse.c         | 6 +++---
- hw/arm/mps2-tz.c        | 2 +-
- hw/arm/musca.c          | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ hw/arm/mps2.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 83f5e28c16e..4860a793f4b 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -39,7 +39,7 @@
-  * QEMU interface:
-  *  + QOM property "memory" is a MemoryRegion containing the devices provided
-  *    by the board model.
-- *  + QOM property "MAINCLK" is the frequency of the main system clock
-+ *  + QOM property "MAINCLK_FRQ" is the frequency of the main system clock
-  *  + QOM property "EXP_NUMIRQ" sets the number of expansion interrupts.
-  *    (In hardware, the SSE-200 permits the number of expansion interrupts
-  *    for the two CPUs to be configured separately, but we restrict it to
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index baac027659d..d2ba0459c44 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -47,7 +47,7 @@ static Property iotkit_properties[] = {
-     DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-     DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
--    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
-+    DEFINE_PROP_UINT32("MAINCLK_FRQ", ARMSSE, mainclk_frq, 0),
-     DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
-     DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
-     DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], true),
-@@ -59,7 +59,7 @@ static Property armsse_properties[] = {
-     DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-     DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
--    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
-+    DEFINE_PROP_UINT32("MAINCLK_FRQ", ARMSSE, mainclk_frq, 0),
-     DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
-     DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
-     DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], false),
-@@ -448,7 +448,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index f762d1b46af..cd1c215f941 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -46,6 +46,7 @@
+ #include "hw/net/lan9118.h"
+ #include "net/net.h"
+ #include "hw/watchdog/cmsdk-apb-watchdog.h"
++#include "hw/qdev-clock.h"
+ #include "qom/object.h"
+ 
+ typedef enum MPS2FPGAType {
+@@ -84,6 +85,7 @@ struct MPS2MachineState {
+     CMSDKAPBDualTimer dualtimer;
+     CMSDKAPBWatchdog watchdog;
+     CMSDKAPBTimer timer[2];
++    Clock *sysclk;
+ };
+ 
+ #define TYPE_MPS2_MACHINE "mps2"
+@@ -140,6 +142,10 @@ static void mps2_common_init(MachineState *machine)
+         exit(EXIT_FAILURE);
      }
  
-     if (!s->mainclk_frq) {
--        error_setg(errp, "MAINCLK property was not set");
-+        error_setg(errp, "MAINCLK_FRQ property was not set");
-         return;
-     }
- 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 3707876d6d4..6a9eed9022a 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -402,7 +402,7 @@ static void mps2tz_common_init(MachineState *machine)
-     object_property_set_link(OBJECT(&mms->iotkit), "memory",
-                              OBJECT(system_memory), &error_abort);
-     qdev_prop_set_uint32(iotkitdev, "EXP_NUMIRQ", MPS2TZ_NUMIRQ);
--    qdev_prop_set_uint32(iotkitdev, "MAINCLK", SYSCLK_FRQ);
-+    qdev_prop_set_uint32(iotkitdev, "MAINCLK_FRQ", SYSCLK_FRQ);
-     sysbus_realize(SYS_BUS_DEVICE(&mms->iotkit), &error_fatal);
- 
-     /*
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index b50157f63a6..d82bef11cf2 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -375,7 +375,7 @@ static void musca_init(MachineState *machine)
-     qdev_prop_set_uint32(ssedev, "EXP_NUMIRQ", mmc->num_irqs);
-     qdev_prop_set_uint32(ssedev, "init-svtor", mmc->init_svtor);
-     qdev_prop_set_uint32(ssedev, "SRAM_ADDR_WIDTH", mmc->sram_addr_width);
--    qdev_prop_set_uint32(ssedev, "MAINCLK", SYSCLK_FRQ);
-+    qdev_prop_set_uint32(ssedev, "MAINCLK_FRQ", SYSCLK_FRQ);
-     /*
-      * Musca-A takes the default SSE-200 FPU/DSP settings (ie no for
-      * CPU0 and yes for CPU1); Musca-B1 explicitly enables them for CPU0.
++    /* This clock doesn't need migration because it is fixed-frequency */
++    mms->sysclk = clock_new(OBJECT(machine), "SYSCLK");
++    clock_set_hz(mms->sysclk, SYSCLK_FRQ);
++
+     /* The FPGA images have an odd combination of different RAMs,
+      * because in hardware they are different implementations and
+      * connected to different buses, giving varying performance/size
+@@ -341,6 +347,7 @@ static void mps2_common_init(MachineState *machine)
+                                 TYPE_CMSDK_APB_TIMER);
+         sbd = SYS_BUS_DEVICE(&mms->timer[i]);
+         qdev_prop_set_uint32(DEVICE(&mms->timer[i]), "pclk-frq", SYSCLK_FRQ);
++        qdev_connect_clock_in(DEVICE(&mms->timer[i]), "pclk", mms->sysclk);
+         sysbus_realize_and_unref(sbd, &error_fatal);
+         sysbus_mmio_map(sbd, 0, base);
+         sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(armv7m, irqno));
+@@ -349,6 +356,7 @@ static void mps2_common_init(MachineState *machine)
+     object_initialize_child(OBJECT(mms), "dualtimer", &mms->dualtimer,
+                             TYPE_CMSDK_APB_DUALTIMER);
+     qdev_prop_set_uint32(DEVICE(&mms->dualtimer), "pclk-frq", SYSCLK_FRQ);
++    qdev_connect_clock_in(DEVICE(&mms->dualtimer), "TIMCLK", mms->sysclk);
+     sysbus_realize(SYS_BUS_DEVICE(&mms->dualtimer), &error_fatal);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&mms->dualtimer), 0,
+                        qdev_get_gpio_in(armv7m, 10));
+@@ -356,6 +364,7 @@ static void mps2_common_init(MachineState *machine)
+     object_initialize_child(OBJECT(mms), "watchdog", &mms->watchdog,
+                             TYPE_CMSDK_APB_WATCHDOG);
+     qdev_prop_set_uint32(DEVICE(&mms->watchdog), "wdogclk-frq", SYSCLK_FRQ);
++    qdev_connect_clock_in(DEVICE(&mms->watchdog), "WDOGCLK", mms->sysclk);
+     sysbus_realize(SYS_BUS_DEVICE(&mms->watchdog), &error_fatal);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&mms->watchdog), 0,
+                        qdev_get_gpio_in_named(armv7m, "NMI", 0));
 -- 
 2.20.1
 

@@ -1,96 +1,95 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp419263lfo;
-        Thu, 28 Jan 2021 09:36:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy9pAJvmoZYJyxLVCuT+pU7jTslFIqvvMr/E0fbZrousWdwODj5itlVLEc3yVaSg0M+QRBD
-X-Received: by 2002:a25:c50a:: with SMTP id v10mr843058ybe.276.1611855406261;
-        Thu, 28 Jan 2021 09:36:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611855406; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp420495lfo;
+        Thu, 28 Jan 2021 09:38:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxHnJ4yRqwFmXsg4iy76Kenl/E9G6rgcCBs66AdXGA9ugmTo0cD5K+2eDcHBw2+xVzkHawi
+X-Received: by 2002:a25:4645:: with SMTP id t66mr401306yba.95.1611855508745;
+        Thu, 28 Jan 2021 09:38:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611855508; cv=none;
         d=google.com; s=arc-20160816;
-        b=uCsvud079KeyWXjKNBQakFOTv77egyAlE/XdK/922apr0JrEgkEp2MwPLJslNh+cA+
-         LAC57qqcf/+zyBH3r0pg4bUW3QCkQOZaRY74UhyUMbjCa5KzUlyo5XyQMfP/7mBdT7zD
-         fZXV4SeUGwTYar93WTKKrCj6+hCtZ1H/nngbfLepvfNkTfKwR1o8jgTVN3zFd2g0GtbY
-         MlUQS16vaacOD+XtvsxOmsgafhoGmLkC5AiXq59U3pvy8BM8wDDtiv66NXsbiHjpgGN/
-         cZ+gr6VQMnuMfRZGwCKbbvogTprBdcHNDvLtOoy6zcsK+/9tOK0m/qiAXMLhgMdIUBUE
-         R1gw==
+        b=sjyUiFNi3Q6ZBnIqRyrvOho/pb0XJiCD3JFfZEvRdRYEGrD3pl6RRr3cZkSMtxKl8K
+         v6u2QNQ28f2d/Bd0aCJGjn2KWkNrfwkNYektp73wv3cdSiZlesmLuip3xUMUlaFxKTm9
+         YpnBM6Bckt/61CkeUbBGPGqM/ki7AxSeZGTyIkErVTDn6Lh7bYKWf7orRnj9LV9mxh8V
+         8kn5utYApPssyGi0+U7yKaUCfGnDmSaTvx5SHkXfVaHKl8KZayM27nqVAexxSSX6TZvR
+         HZwbytTHaJ817cCAnkwaPpkYK7YKpLengsq44JFFL/Il31vtiVCYHaSfSU7ldp5U1vtr
+         E0fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=KqTBMNBBEJ1sOhIslJwSqd9Q2bYRZH5ZzE5JPKV85NI=;
-        b=0VCZ+gg3igAehx9yxIHAmUaq8Vj6/i3aOI9XAUfOsYcMDwWrfAi7LpEKpv5VaOkE4+
-         lZae8P7J6FR4UctEXmi5N+ITKuqsJTULesyfaF8uI2l2/4+TZyO+IQ3O8xhNvvwUwtp9
-         d72Q6CIIiuT+oDXvKwPGaz6HeJYYYVgrWY5L/kZr7oTtFsI/S6zrs1Qwf3GBgBl3Mwo0
-         pg5wfiNgH3ssQOdjjk4qBmNm2RZzUJLAhy6r4CuRotJs4vb8TyAUDOHQQzvL/IdNgiwi
-         jEA8fc5gp5Ei1UOdy9UiI/G3W9m1IoDbumQ/EU9eKGSUzi/EvyghQc/e2NryN4bSf7gP
-         HRFQ==
+        bh=peCI9eHyva00w0o1LMwcOBAo1uSTfHW3Ms1naaOzJLY=;
+        b=lTtFDbCx8Ks5455rmOhAp6LP+XAXnOk0rBdcbBSU4ZGKxGxE+PLWxnGxvyw3K6nh6Z
+         YGXWaOPMRqxD1UMe8RT2oErvWeZ2x5W4y/o4cIntRVnLSx52NVY13BS39PcrDYtRQtA/
+         3kl3M+rOtQFZ2keOlEFBYsYle3FrvCuoYHoMg0pQsEXN/ick+tmn5pWapRwRxonyxZvK
+         o5ss9qL8Ga6pmTYB5j1sh1TqaM8oxMOqlMbxvi9KpfX13riLXcneeMLWmprhFpOjeujG
+         htQnYy/R1MGDuiuwovXpEvb603v9aSujc6r5Xn4wZH4ZtIrO3UlTfxY9snT9e5DeSH8N
+         mTcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Dx39f+Xj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AMYszEzN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1si5351124ybm.38.2021.01.28.09.36.46
+        by mx.google.com with ESMTPS id a184si6002541yba.451.2021.01.28.09.38.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 09:36:46 -0800 (PST)
+        Thu, 28 Jan 2021 09:38:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Dx39f+Xj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AMYszEzN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46346 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49038 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5BDp-0002AN-JI
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 12:36:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58114)
+	id 1l5BFU-0003JA-5S
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 12:38:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58446)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l5BA7-0008IU-VI
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 12:32:56 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:46973)
+ id 1l5BAm-0000ZI-6z
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 12:33:36 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:34792)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l5B9x-0004sb-56
- for qemu-devel@nongnu.org; Thu, 28 Jan 2021 12:32:54 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id rv9so8940575ejb.13
- for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 09:32:44 -0800 (PST)
+ id 1l5BAk-00059C-NY
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 12:33:35 -0500
+Received: by mail-ej1-x633.google.com with SMTP id hs11so9016065ejc.1
+ for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 09:33:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KqTBMNBBEJ1sOhIslJwSqd9Q2bYRZH5ZzE5JPKV85NI=;
- b=Dx39f+XjCmmk79lsbVMqT4bJidCbg6iX/8HgTLxrgZy6SGaMuAH0s299HA7kGyKKFO
- Vad/vENRA2x1R45bM3OOspd62NXlLt3I2Wau3nVBQM/0RR5T8JWWHD584tEZ6vHtiTBd
- w+76Wn1AWP7nX0zome3BxZSUUA7H6avUkalQaWnUX1pKGLaR7TXT1D9JxM5bqwvmyKs5
- ibi5lsKIjwXdzRYkjQXEfwxtjH/vGWU+vY4hu2AERbrQzetFSOCRHQCNNh6gVHfFlugA
- Nlnf4g+NEUOptlLpCIYcoIYgN4cS0BY8HhFXSdJ9qG2oD9sgfNqKWYrxpXLsQuxjK8Iv
- b/7g==
+ :cc; bh=peCI9eHyva00w0o1LMwcOBAo1uSTfHW3Ms1naaOzJLY=;
+ b=AMYszEzN04+I/ZpilnWiA0FYENYDEoOOsCwb0UVyEr3LvgW9U2cHyYKdsPv0X9f50N
+ UASkhsBlTmx4Tkgtviyif9eSSgYK8phppoiSuXsV7C75D/Xn4Uss1DdTKg+0mnGcCUMz
+ HqPp9hwySZfHW/eEUjtdgjVjyyG4IxGAf20jCE0pldMzQItOQIUGfD/cWDBcgaOgrZXC
+ Op8Of18z6QhCAaXHp4uxOGC8JTTyzsgJWD2GbXzrnOs6F7A0qpWEJJtCdxod9DTWLOzh
+ CksK92RqesoE9NzJngjfq8vAScoDKhGWNgbSas1+22vIP1e0mUY/p0yk5I8qJyJ25zav
+ KWnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=KqTBMNBBEJ1sOhIslJwSqd9Q2bYRZH5ZzE5JPKV85NI=;
- b=fJAlLBmQuDLn2Slr5e4NxpGk2Oz9LVvYuf5kSxs2nGACb7doKSC7T0DL/Z0UxjDnoW
- ecxeLztoAJ8XDWolV2oaXiRPiOHfZNdanZrZ1uRjIbZfI7saNDJdsMKdm+FWi0rr0E/r
- hVnX03UGG7lxsjkksvhWEkPhLmoXsQ9Uq9uK0dB+KvKG4+zvjYmHiwmtIXk5AduOqFu+
- fTRsHRiosmCdCgbd9kqdrvM1kBjPsf34ygY80pqrPHoXWz3wcJAEYDT8swYwIqe7veNA
- BKCqxCgJiGWznHki0RuowQ2mzevIH3xFksnbJNg8PesXcxFOXdLRaek5PtjO4EfDxGSw
- kjiA==
-X-Gm-Message-State: AOAM533Fths3dlvj5Y8Exvq7Q3QL4uG+pjFmcAkhlcG6/Oot301CIkpG
- /fwptbp7oNklabA9o2iNJy9+DNVoL3RKAMfqlhsfAA==
-X-Received: by 2002:a17:906:494c:: with SMTP id
- f12mr522098ejt.56.1611855163813; 
- Thu, 28 Jan 2021 09:32:43 -0800 (PST)
+ bh=peCI9eHyva00w0o1LMwcOBAo1uSTfHW3Ms1naaOzJLY=;
+ b=gySZ3obw3yGoCgUQvwUDO8LfVW4QHmepMyBIPu9b8/NSQjiJYTmq9x1E70n7gxGWgJ
+ tjJw799PHzfq5O/yrKcMjMThAt9wvlxI1ftnMsiN6nznfymE0kpwF+S9lTbJx4pi1IRq
+ /zjcAe6y+KQzCt6NW7/DI8yJ3S8nqORDpK/awiTlgGkeS0eFYHgKSpTeV2Lk9sZ6hOOh
+ NB6LT+oI/CkOXEBsCRmH69f3qoJA+m1RDsp5lEMhoJhd40RGT7KLWTC1Lm4juxDrA7tn
+ MXCA6DTPJ4lY6c0PiU1M+CqpLP3K/3j1Mk7HXYf9n4K8UuhwcHqhSYwgWbslg0NXJ5wN
+ OZTw==
+X-Gm-Message-State: AOAM533ASKNIwurTXGMvDGVeznDJV6lyhm1gPwtK2Z5ZqtJCIJ+b5Lsg
+ 7G1BNxJrdq4w3UIQTbHIQ36soKyUVybej9TWQux4+w==
+X-Received: by 2002:a17:906:4002:: with SMTP id v2mr473813ejj.85.1611855213351; 
+ Thu, 28 Jan 2021 09:33:33 -0800 (PST)
 MIME-Version: 1.0
 References: <20210126193237.1534208-1-wuhaotsh@google.com>
- <20210126193237.1534208-4-wuhaotsh@google.com>
-In-Reply-To: <20210126193237.1534208-4-wuhaotsh@google.com>
+ <20210126193237.1534208-5-wuhaotsh@google.com>
+In-Reply-To: <20210126193237.1534208-5-wuhaotsh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 Jan 2021 17:32:32 +0000
-Message-ID: <CAFEAcA80eo9X1v180D6msDsgd7bEkLfuSNmxggKPF256jJqLBw@mail.gmail.com>
-Subject: Re: [PATCH 3/6] hw/arm: Add I2C device tree for NPCM750 eval board
+Date: Thu, 28 Jan 2021 17:33:22 +0000
+Message-ID: <CAFEAcA8XRQ4yG6mXVrgMdQ-65Rqn8nBV1LySOU--XLeOUaOJKQ@mail.gmail.com>
+Subject: Re: [PATCH 4/6] hw/arm: Add I2C device tree for Quanta GSJ
 To: Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,68 +116,19 @@ Cc: Patrick Venture <venture@google.com>,
  Doug Evans <dje@google.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nkXMTdioBL0I
+X-TUID: MWaIbxFEoeip
 
 On Tue, 26 Jan 2021 at 19:32, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> Add an I2C device tree for NPCM750 evaluation board.
+> Add an I2C device tree for Quanta GSJ. We only included devices with
+> existing QEMU implementation, including AT24 EEPROM and temperature
+> sensors.
 >
 > Reviewed-by: Doug Evans<dje@google.com>
 > Reviewed-by: Tyrong Ting<kfting@nuvoton.com>
 > Signed-off-by: Hao Wu <wuhaotsh@google.com>
 
-Slightly confusing commit message, because "device tree"
-usually means the data structure describing hardware for Linux
-(https://www.kernel.org/doc/html/latest/devicetree/usage-model.html).
-
-Something like "Create the I2C tmp105 temperature sensor devices"
-would be clearer, I think.
-
-> ---
->  hw/arm/npcm7xx_boards.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
->
-> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> index 3fdd5cab01..2d82f48848 100644
-> --- a/hw/arm/npcm7xx_boards.c
-> +++ b/hw/arm/npcm7xx_boards.c
-> @@ -98,6 +98,20 @@ static NPCM7xxState *npcm7xx_create_soc(MachineState *machine,
->      return NPCM7XX(obj);
->  }
->
-> +static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState *soc, uint32_t num)
-> +{
-> +    g_assert(num < ARRAY_SIZE(soc->smbus));
-> +    return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
-> +}
-> +
-> +static void npcm750_evb_i2c_init(NPCM7xxState *soc)
-> +{
-> +    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 0), "tmp105", 0x48);
-> +    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x48);
-> +    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x48);
-> +    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
-
-I assume these correspond to temperature sensors on the real board.
-Might be worth having a comment saying what their function is
-(I'm guessing they're measuring temperature of different bits of
-the board somehow?)
-
-> +}
-> +
->  static void npcm750_evb_init(MachineState *machine)
->  {
->      NPCM7xxState *soc;
-> @@ -108,6 +122,7 @@ static void npcm750_evb_init(MachineState *machine)
->
->      npcm7xx_load_bootrom(machine, soc);
->      npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
-> +    npcm750_evb_i2c_init(soc);
->      npcm7xx_load_kernel(machine, soc);
->  }
->
-> --
-> 2.30.0.365.g02bc693789-goog
+Same remarks as for patch 3 apply here too.
 
 thanks
 -- PMM

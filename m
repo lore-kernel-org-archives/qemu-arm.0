@@ -1,113 +1,127 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1129596lfo;
-        Fri, 29 Jan 2021 05:33:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzjjONVGwLzDZSmCclwTiSwqtLK+bbE2XvNZRzLUUNumc57XrBhNNAnjqy6t7CQHob196N4
-X-Received: by 2002:a25:8208:: with SMTP id q8mr6344757ybk.159.1611927216228;
-        Fri, 29 Jan 2021 05:33:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611927216; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1130291lfo;
+        Fri, 29 Jan 2021 05:34:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxlvXaP6wEqyeXhyWiEUiT/DGbC/Jj4mUpLPCYsLMAGJISpksz1xloiyMkGBpegCp2Obymz
+X-Received: by 2002:a25:2e4e:: with SMTP id b14mr3735724ybn.135.1611927267712;
+        Fri, 29 Jan 2021 05:34:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611927267; cv=none;
         d=google.com; s=arc-20160816;
-        b=TVoFyLknmy+ahdiNBTouKTuC3TGJ4exmT2Dsg/U1nSsBEUFa7m/+IJOEHLhlI6Brck
-         JZiSkZ5v8ml7zhtPaud+uLeQv1/x+cwBSgFcHHPYEOlQUZ7QS7+NqpZnFr/6MRk372GO
-         FDDjEdJUBhV9lHHH6Fx98MsQbS9u6NQSuTOcw+GxIRLqz/3/iHtrjEy29NePp6ZzOoov
-         2TZgwYrqZ9ozEyu5vd9PCgcLoxGo9mG8tYxhmFjKJoJK2WTlbYFB2FyYsabLPlgsDzex
-         iIdlsNMlhetiDKQuTWGgzu+NsB8wcLgmwRaLbmMjeP3KrE0baVaPpDy4AwqoZBr90/Io
-         O5Zw==
+        b=DdTaCJFXsfDBwgcBeS5Ovl6dHmP9gikkO9n4jpQM1vCAzG2tybH8u3blVLV8aJ/WTC
+         7lDjQ5Qm2GbuBkCnhf0dmK8t6SlkI7pUTO7IP06M1c/oWtCjDVBGCQ4OMESHt9bJt8Bi
+         IN5yxESkpmJk1GwL7DQYg2l8DyoqBJfgYwsrejPFDBgU8AJL92U1vQ8jI1yhwXgHLl6u
+         SpWu4T7q8mAcZE+RQ9kpkn3oDmtPP5UJzgN70HOlI7efJwtgpeHji489EXx83Cz6UZz2
+         LThrKM7WKIAlEAs70LFb82tCtvniXPn7gDnQq1b2LI+6vEbh68UcolD9IwtL81i3WPva
+         2ZVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=CYYrdLg8vwL1EwiAwyU49IXmkoVufUhG59tZxDTUReI=;
-        b=F+U60UQvaX9knI9R/YcFNZwuxBbK4PzYCVTWNGIwp5Hof6CbRweYf2ome3vYd/wA/3
-         u9gvzUR8pYO0/PWJ9Yubo20U/i80rp9FTbLFppqKd78ukF+1HQoqb9kRvLeP7eJmbS7u
-         TSbj/zzoJPNlO7x/cKkWe3+d5kaii2TyFuMv5CpJ3jdEj6uuIrcbMEEZmX0S0prOiTtM
-         Z+CxCLE5ojM228RB8bDtsvWcluUhx76zpj1t1WZ99YvpW8RVxuf4g07sp3YKD5+cFQTz
-         rapqWX2HyhB61Pl/nraIoFzOPP8v5u3XH8YI/pRvkSBVjQ7X+MA7Uhihj1do5ayV+TQb
-         TAyA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=4DTIlqlzKHu/MH0vna3+FLcXFx3UeJ+NZ435qFT+9Cw=;
+        b=SGCIIAggDAeWg3b+bB7Q+Zy0XQv4Sgwaui4y5SrJ2DQN2pHS/xH+jNKkj1iWYtD6y7
+         f+07D3FWzA5SgENFNGlY7reEja0o+Nj98W+u+lEf8ddGmPGKaajK3gBEr8pPm5Nttn/D
+         bGqpbCi5+I4R1cPD6bAbxfvficJ/AhCQl50b6nvs2QU6vRq1rW1Lv9fYB+s623n9UoaQ
+         E/5Zm+d5HYgWl5p88Tkw8o6/6cGL0KL3oKeL/N028qC5pVP7kaoN2lYwGUN02Vioqcal
+         W/SNjfwCnY4M0hMTCYUr8GdsnS+iJZ1DAIHnPFtE/rG+crO9Gx1YuyAG7TKZENt8x4P3
+         ZvUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PMe3wFhD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DkIqsUC7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q206si2462901ybb.122.2021.01.29.05.33.35
+        by mx.google.com with ESMTPS id 66si7845462ybz.51.2021.01.29.05.34.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Jan 2021 05:33:36 -0800 (PST)
+        Fri, 29 Jan 2021 05:34:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PMe3wFhD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DkIqsUC7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42968 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5Tu3-00030N-CD
-	for alex.bennee@linaro.org; Fri, 29 Jan 2021 08:33:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59826)
+	id 1l5Tus-00048L-LB
+	for alex.bennee@linaro.org; Fri, 29 Jan 2021 08:34:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60144)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l5TlM-0004M4-GI; Fri, 29 Jan 2021 08:24:36 -0500
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:39116)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l5TlK-00087N-TP; Fri, 29 Jan 2021 08:24:36 -0500
-Received: by mail-pj1-x102c.google.com with SMTP id d2so349483pjs.4;
- Fri, 29 Jan 2021 05:24:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=CYYrdLg8vwL1EwiAwyU49IXmkoVufUhG59tZxDTUReI=;
- b=PMe3wFhDhgPzoDfad4eKyVep97acC75SIQEExp6Jj+Vc3sqFul7qCtxdbCnfPAq9Ir
- 78AvJJ44Lov7iaoW5cAtW+Ty/NX4VqLxk3XLgIDpVlT0rxF229no3Gkab29cSi00VZPX
- IYnXWbu7L6H4YwN6hQBya5RCUK/mwwUSIzuXTg5s5V+rUqGm/BHC8XD1Gk7f1z8u1F5x
- 0Mt6zWdJ5Bh7c+cKdWw0/0Uo9LwRhHZcPLQl5FhZ/WgL4TerJucN4mJ7hvpqnhY/GPbA
- yjNhMDvAVSG8obxsIetjjoBqkSYQvOLo3fgJ5JfjHEnO/Sa1Ey7gDegpYo2lI3rDncYn
- 5i5g==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1l5Tmz-0005Nh-23
+ for qemu-arm@nongnu.org; Fri, 29 Jan 2021 08:26:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29541)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1l5Tmm-0000OI-6T
+ for qemu-arm@nongnu.org; Fri, 29 Jan 2021 08:26:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1611926762;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4DTIlqlzKHu/MH0vna3+FLcXFx3UeJ+NZ435qFT+9Cw=;
+ b=DkIqsUC7gAnx+QdJ8cpzQK8wt87DA434CXyGFEa4tZxUdCijIE0oyV6IZeU8CQSg5BM85B
+ VeT+JjgDOGsi6xMvlVeUC8BPVgv/M67f4qTP8dXmd3PXfZJ8+LOildckjl72rkGeugN39V
+ TtFuNGYYDYMpkv5vRU64X/PijbZHQzE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-257-oNI1fABRM0eiqQJZg7bkyg-1; Fri, 29 Jan 2021 08:26:01 -0500
+X-MC-Unique: oNI1fABRM0eiqQJZg7bkyg-1
+Received: by mail-wr1-f71.google.com with SMTP id j8so5056533wrx.17
+ for <qemu-arm@nongnu.org>; Fri, 29 Jan 2021 05:26:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CYYrdLg8vwL1EwiAwyU49IXmkoVufUhG59tZxDTUReI=;
- b=ReGpJLfR8ByHwcO+j76RHC2+FKwvWiJYQCLU8SFxyjx+l0jxTBsT00GfUzptWNI3cc
- 8GBtlYwsfX3438xs90BQnzE3yScpSzqQBXAt0SBsxSNUd0I516AFHqfOYkX4XixlUkQD
- Kl4FHAzLlMH3It+r/h/Ltxw0hzs7Ilf4deZR3+rog97hw8NFXTQjgI9L5mwGnbUigJ2Q
- GO3umgv7mlw2/ChqvqAPVZ4VAzcGqT8X6xw5EH1ZqsuykVSl1z5KIDB2IV4NQWc67KTb
- nGZlDPRYZo9dRUIkGABhDu8uBCi6WZX3cd3p+8Atz4mQk+sQ/3kD46wolHZD8azJ5j1W
- m2BA==
-X-Gm-Message-State: AOAM531k9fXaxdBYks0T/txGl/oSMWROYhnsHxIqGxzJ2/lELQxef7vE
- WCgNQq3CX/DXr9XQM/J24bA=
-X-Received: by 2002:a17:90b:350b:: with SMTP id
- ls11mr4558026pjb.166.1611926673237; 
- Fri, 29 Jan 2021 05:24:33 -0800 (PST)
-Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
- [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id j6sm8857259pfg.159.2021.01.29.05.24.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 05:24:32 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH v9 06/10] hw/ssi: imx_spi: Rework imx_spi_write() to handle
- block disabled
-Date: Fri, 29 Jan 2021 21:23:19 +0800
-Message-Id: <20210129132323.30946-7-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210129132323.30946-1-bmeng.cn@gmail.com>
-References: <20210129132323.30946-1-bmeng.cn@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4DTIlqlzKHu/MH0vna3+FLcXFx3UeJ+NZ435qFT+9Cw=;
+ b=JDpHCB8SEgkX/rEl1RufcL9xifGx/Op763PQtYMYWAF2Rgjl7FGRBUA36YPM5Y2Xbe
+ kEmz/qX9hZcxPKmQMtLOs5lVBRVSZtuJhoKCWf34YptN3uSVLNNxJyhu37heAhWW9TUV
+ JVhKMdI/M9XgkV+omovqnMMj3LP/eS+6txUjd5sYxhUJN/pVNoU4SDXahP/luUq0g/by
+ GIolA1VbNo+MtWgTZX28BH+YfuG4dYJGb34W/AT7Vo6FKUthnsr62hSWluY3Toqa6Olc
+ Nv5BwvpacHStKnng8LKYzppiM7bgchgHRHTFrXlsYpNNDQHs2Lq4I2oKiLdLsXjQYjtj
+ 2CpA==
+X-Gm-Message-State: AOAM532POeP9BJCVXAy4m1hL+GyTd8PWcPMH+blw8EnOjSM2gCAfG2E6
+ FVjXMF03L6GDxRHCoFyjQgIYZ6t28OiOM/2XT4l7Xx+QNReMlU7au/xBBBUzRyUQsMG9OagmZf8
+ puZf2czQ5QZoq
+X-Received: by 2002:adf:eacc:: with SMTP id o12mr4541818wrn.202.1611926760041; 
+ Fri, 29 Jan 2021 05:26:00 -0800 (PST)
+X-Received: by 2002:adf:eacc:: with SMTP id o12mr4541778wrn.202.1611926759874; 
+ Fri, 29 Jan 2021 05:25:59 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
+ ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
+ by smtp.gmail.com with ESMTPSA id b11sm12236438wrp.60.2021.01.29.05.25.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Jan 2021 05:25:58 -0800 (PST)
+Subject: Re: [PATCH RFC 0/1] QOM type names and QAPI
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20210129081519.3848145-1-armbru@redhat.com>
+ <CAFEAcA_O=48U_3p_mKeRRY99OsJCRSTJmOefDT1gbHVdyE_C0A@mail.gmail.com>
+ <20210129121752.GJ4001740@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <bacb8bab-2719-ae96-f1de-91e598b98abd@redhat.com>
+Date: Fri, 29 Jan 2021 14:25:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20210129121752.GJ4001740@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.249,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,77 +135,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Qemu-block <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>, John Snow <jsnow@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Jean-Christophe DUBOIS <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SJrxXM5uedW0
+X-TUID: plWrHcyK46gV
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On 29/01/21 13:17, Daniel P. Berrangé wrote:
+>> On this one, my vote would be "no". "Versioned machine names
+>> include the QEMU version number" is pretty well entrenched,
+>> and requiring users to remember that when they want version 4.2
+>> they need to remember some other way of writing it than "4.2"
+>> seems rather unfriendly. And 550 uses of '.' is a lot.
+> We can't make  keyval_parse() accept "/" instead of ".", but can
+> we make it accept "/" in addition to ".", and then encourage "/"  ?
+> 
+> People simply wouldnt be able to use "." as keyval separator if
+> they're using typenames containing "." (or would have to escape
+> the typename.
 
-When the block is disabled, only the ECSPI_CONREG register can
-be modified. Setting the EN bit enabled the device, clearing it
-"disables the block and resets the internal logic with the
-exception of the ECSPI_CONREG" register.
+'.' is much more common than '/', and is shared by about all programming 
+languages that have JSON-ish data structures natively.  So using '/' 
+seems decidedly worse to me.
 
-Ignore all other registers write except ECSPI_CONREG when the
-block is disabled.
-
-Ref: i.MX 6DQ Applications Processor Reference Manual (IMX6DQRM),
-     chapter 21.7.3: Control Register (ECSPIx_CONREG)
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20210115153049.3353008-6-f4bug@amsat.org>
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
----
-
-(no changes since v8)
-
-Changes in v8:
-- keep the controller disable logic in the ECSPI_CONREG case
-  in imx_spi_write()
-
-Changes in v7:
-- remove the RFC tag
-
-Changes in v6:
-- new patch: [RFC] rework imx_spi_write() to handle block disabled
-
- hw/ssi/imx_spi.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 21e2c9dea3..4cfbb73e35 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -332,6 +332,14 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
-     DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx_spi_reg_name(index),
-             (uint32_t)value);
- 
-+    if (!imx_spi_is_enabled(s)) {
-+        /* Block is disabled */
-+        if (index != ECSPI_CONREG) {
-+            /* Ignore access */
-+            return;
-+        }
-+    }
-+
-     change_mask = s->regs[index] ^ value;
- 
-     switch (index) {
-@@ -340,10 +348,7 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
-                       TYPE_IMX_SPI, __func__);
-         break;
-     case ECSPI_TXDATA:
--        if (!imx_spi_is_enabled(s)) {
--            /* Ignore writes if device is disabled */
--            break;
--        } else if (fifo32_is_full(&s->tx_fifo)) {
-+        if (fifo32_is_full(&s->tx_fifo)) {
-             /* Ignore writes if queue is full */
-             break;
-         }
--- 
-2.25.1
+Paolo
 

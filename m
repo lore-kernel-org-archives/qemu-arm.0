@@ -1,106 +1,105 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1128106lfo;
-        Fri, 29 Jan 2021 05:31:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw9rTGx8MW4YgR4kS73O+qn3MIDowA/N0MnXXgsHg2rlbpGSjhddpwCno8wr4YQvKQD34Bu
-X-Received: by 2002:a25:d2d4:: with SMTP id j203mr5835555ybg.132.1611927103387;
-        Fri, 29 Jan 2021 05:31:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611927103; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1129441lfo;
+        Fri, 29 Jan 2021 05:33:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxTCbIiKfQBuoTq8IMbzwvpwCu2qAjRHU2cIu1WyBni/firxVHfuBy89wBMro9pwQhqiZmZ
+X-Received: by 2002:a25:c544:: with SMTP id v65mr5730370ybe.167.1611927202801;
+        Fri, 29 Jan 2021 05:33:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611927202; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZRKcxTruOThwhOw/c5UB4Nd9FG3QJ9tQPkDlxuuR4syLZugNGyGdo+y3JM5dAx1uQU
-         XciXpKcZlwuqvC+lNVJ4lVUn7agj/6EI9ytGurVw0HCwg6ET5hMiQUqjPmOgWTEfqfD5
-         rYID+rKaxwqk+fOmtDevtNI/evySd04a6m3+we5BwLTrVuiJF93RDxWwvmG2bJoAjYoF
-         3qo3Z5t2fpVURILm7Vd3maOWPYIDAi0byg6EPsAkf0ObZVvBKPhiGmn9jGuwOz2N8k0Y
-         CQkdIyhakFG0B17QpG//UOWgljcINCSyR8SXYEM4jnIM2ZTM+MqKSsBVeSJlCMY+KANE
-         Apxw==
+        b=KXpQx8u2ba96csuzJEj900fYvMvx/cOOJavvrjumbh6CZlZpKDIZG1ksht82tyCBdN
+         9j0N6o3PMeYCwzYcg1w3tYAB/YT45fWn+UT9W7elHbLnHyEbLyfz5Q8EAur/fNRGOqBf
+         f79XE5oeIWpy1bmErITygB60bCyhoroJj7pWkEHXnWQT5n8WPCKwRQr/QFk9j3d/bw/4
+         8sBz1beMgUNO/3XhNH2joMSIgfhpb/7oIq15+iE8eLDTqRYLuqN39kyFFxvVB1NA38Oj
+         zwVE+m8sQzR5xowlT3sLzcHHHqnN6hiDDQESw/HaZihCdTBuk1lIDn/M3OIB1Kbd/LM0
+         rLGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LFsuI0BABtR2qo+SroCf7kUB6qpaMqblWl0znWx3WO8=;
-        b=RTnKltS9D7e+jeohIiD8U93FeZlRzc78kEYwI46larnYN3McRRU/aQRgOXA1kfyUj8
-         TYKHu6leTYdlcuAbBugD9IVP8kK26x327yYQZLE+ELc7jNkAdXJC9oP4c5Uwel6XwOEo
-         LfztK4/wpKQEM/F/NEbWYVgIHT8RWwSh5dn3ACQd+sulPUuBncN9POg2UsYCZr5umDeJ
-         kHImF16QjcnYbGz5vYBnGTvfY1orgWQJd9mPgV5h5lRLIgiluE7L1JhIhnHPP9nbc5Yj
-         xa64tyslkqKTzw52iL9wtwWcqCjdxD7IAxeIuNXngHGfqhtyeATlWOHqI9BMsE8rEwMz
-         aihA==
+        bh=m0BdiYb2aO99L/y+s2LkY0AUaYKp2VRWJME7aRkjESk=;
+        b=N1NdkUOoJhCeKq5H+oNFZGNc1Tpig2J7IEerNA8vOicFRP2EG3AkyCuVMUpCi/BX2O
+         TLGFrM7A0HQIk9RDtzo4n0oXmAo55bcFENnvWZHRwOSustlbhNZaJe2y0OkiazHcWNml
+         wEMsiVAjhQ+W6yPFUhnCyw+4EoMU8FhZ8CT4DV8f6gfpM3L91JUeeO/fa4T+mwHYZ7BT
+         z3ucu6poXzr4nlc3oMbWPpnFxmdQcX+qXn/bAul0fgh8/PSuoB8B7h8N7MAS2ekPFU1i
+         YX5Y2Eke4nN56m7tc0c1MVEbz21NjIG7EACyIcBsqIJZsKJfC1HxyQ8Vt9rQDf2zhK+q
+         K1ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KlXJxjm7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ye19j0Hc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b92si9260960ybi.434.2021.01.29.05.31.43
+        by mx.google.com with ESMTPS id s4si5546559ybo.34.2021.01.29.05.33.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Jan 2021 05:31:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 29 Jan 2021 05:33:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KlXJxjm7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ye19j0Hc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37278 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41722 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5TsE-0000Xc-NY
-	for alex.bennee@linaro.org; Fri, 29 Jan 2021 08:31:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59866)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l5Ttq-0002Ul-0h
+	for alex.bennee@linaro.org; Fri, 29 Jan 2021 08:33:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l5Tla-0004vE-92; Fri, 29 Jan 2021 08:24:50 -0500
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:39898)
+ id 1l5Tlq-0004zC-L0; Fri, 29 Jan 2021 08:25:09 -0500
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:39118)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l5TlY-0008EE-Jo; Fri, 29 Jan 2021 08:24:50 -0500
-Received: by mail-pg1-x52a.google.com with SMTP id o63so6649561pgo.6;
- Fri, 29 Jan 2021 05:24:47 -0800 (PST)
+ id 1l5Tlk-0008KT-JL; Fri, 29 Jan 2021 08:25:06 -0500
+Received: by mail-pj1-x102c.google.com with SMTP id d2so350031pjs.4;
+ Fri, 29 Jan 2021 05:24:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LFsuI0BABtR2qo+SroCf7kUB6qpaMqblWl0znWx3WO8=;
- b=KlXJxjm7esUMyRKo6adtW3JPyDDQb0UuMcWWb/KUNRlRNzaxQ10p0IM+Y6MaBZNjrZ
- Ic3e5wmhGrLVSv5BOhDW9z68GTYz3Ttdf//JEZnqSBXjxaMvUIN0u95V0eEwL8N+zZ+e
- huVJWOosgVOqExr6rY7XNnYeu+9u5ogZ8vZWuJSiDX0XqPVsr8jgB3PCK7nGWbwOvxeB
- G6Gr20976+FLPBVDZnUcdw403nD3UNH+GJ6CiX7aRDphPkLbdd9lEhxRPMZl8zz+zhs3
- eYXxVMfEL0X77wgRT3xOu2e3/EwS4BJ6hTiT/kxZYwhuPoUO6UvaswDCNr8pysy5UsZh
- mkDw==
+ bh=m0BdiYb2aO99L/y+s2LkY0AUaYKp2VRWJME7aRkjESk=;
+ b=Ye19j0Hcekw+MArdFXSXZqQ0YaD/Pu6ySTpe1zmcgYsZs949nH3W/fQHgIc8uUEgdI
+ zXk7SJeUn+re+yGURTkWdJTM7OirSioegfaWipkgraR/NpW5fbXtNmr/vSzLzRDYTWxN
+ +po9w8ZLkwVvM4ZDpaDLWKEFVE2OXh1wHx3UPEzXRY0SToc5GAykajZn75HzXNLAlybu
+ 836fQ4bON+dpsF6c3w9y34ZYjGqgJHLk3LqJo83RBuXjffKtYw1UhdxtaKDAUTaLD0dN
+ QZx41Hmy5mv+/VSBnYXAScbdHuMoAHVjaKds6VakFhPCHwPtAtrFy/R1iJtWpjEhiDzo
+ JplQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=LFsuI0BABtR2qo+SroCf7kUB6qpaMqblWl0znWx3WO8=;
- b=GzMJtvrKCY/vcjs3kntBVUU4mbnfee1WQWv5sq0fIbL+g2SKJnhiyavBNz/GcAnk9v
- mViuL9syCkECo+kcM4vGf7Z06VpgScBo18O3X2EdI6YqQCvwjD0PineROfgiqY+8oD9C
- JeskOIp/oFlMWBT/5QBmu5FmxUFVRg9DoeoJJPOSbvTfAsVB7mV/hDG1NaLE5aTbWmrZ
- 1WggfcCuTsLnC6E7EuhOWc+9ryW2UyTtCQoRYeoick+CvG4um3fMwzfeEp5Gq4q17yyM
- 6lsD+aPo2aTpyiw0o6x4ibwCreYUJZ3Ktzcgtu2nseeBQyrZg9sPaNIqdiBKmSaCyHcN
- OG0Q==
-X-Gm-Message-State: AOAM530mTvOoeAMJ2bdGMY92mzbSeeUdw4zkyqs04upXhZJzseFu6Eke
- 5ngWVD5KXrpjWGBw54NpSgMjOy9NgwGV7Q==
-X-Received: by 2002:aa7:99db:0:b029:1ba:5263:63c4 with SMTP id
- v27-20020aa799db0000b02901ba526363c4mr4272972pfi.53.1611926687117; 
- Fri, 29 Jan 2021 05:24:47 -0800 (PST)
+ bh=m0BdiYb2aO99L/y+s2LkY0AUaYKp2VRWJME7aRkjESk=;
+ b=SmSvChea63SizAq34q2Z8db3MYwaYAyRXFpOxXhwWcG3m2YNHyWIXFSuuYG2uzgFtB
+ Nk+Tuz+/Hy4+2ubk456rRii/8vwIUehYSZWys974y9nIVsTbDmBnSsaMsg6RRORFRDf9
+ GyIf3tziY+mw51I/kJ6iXNqhWY+dAgbui1CLpATIRZGfH2WJs0aTY0kp7zTsTdpk2vba
+ ciqbOCKaHlRXEcb9qUdpzFNB6DkKzqFite+H8xaqYltuXjw2OhTBH0+xo0Zh5xsWFvOX
+ 1pIDn6v5f3gQXL9fZO0up1O840/lawT8Rf3OPQA/RbIKNNqGYDc9XKwo2YiffvzQt1kM
+ wvUQ==
+X-Gm-Message-State: AOAM531I0iRUUlUoguAG7s82GUbp1pKhi4q3CT0F+5/5WMZ/YuCkxipf
+ kXwko0pBbULoybjuO1r4QP4=
+X-Received: by 2002:a17:90a:8006:: with SMTP id
+ b6mr4577952pjn.108.1611926699170; 
+ Fri, 29 Jan 2021 05:24:59 -0800 (PST)
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
  [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id j6sm8857259pfg.159.2021.01.29.05.24.41
+ by smtp.gmail.com with ESMTPSA id j6sm8857259pfg.159.2021.01.29.05.24.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 05:24:46 -0800 (PST)
+ Fri, 29 Jan 2021 05:24:58 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Subject: [PATCH v9 08/10] hw/ssi: imx_spi: Round up the burst length to be
- multiple of 8
-Date: Fri, 29 Jan 2021 21:23:21 +0800
-Message-Id: <20210129132323.30946-9-bmeng.cn@gmail.com>
+Subject: [PATCH v9 10/10] hw/ssi: imx_spi: Correct tx and rx fifo endianness
+Date: Fri, 29 Jan 2021 21:23:23 +0800
+Message-Id: <20210129132323.30946-11-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210129132323.30946-1-bmeng.cn@gmail.com>
 References: <20210129132323.30946-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pg1-x52a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,94 +108,94 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Bin Meng <bin.meng@windriver.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uj+n5uyqZT1h
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: it6Aps02Kmpb
 
 From: Bin Meng <bin.meng@windriver.com>
 
-Current implementation of the imx spi controller expects the burst
-length to be multiple of 8, which is the most common use case.
+The endianness of data exchange between tx and rx fifo is incorrect.
+Earlier bytes are supposed to show up on MSB and later bytes on LSB,
+ie: in big endian. The manual does not explicitly say this, but the
+U-Boot and Linux driver codes have a swap on the data transferred
+to tx fifo and from rx fifo.
 
-In case the burst length is not what we expect, log it to give user
-a chance to notice it, and round it up to be multiple of 8.
+With this change, U-Boot read from / write to SPI flash tests pass.
 
+  => sf test 1ff000 1000
+  SPI flash test:
+  0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+  1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+  2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+  3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
+  Test passed
+  0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
+  1 check: 3 ticks, 1333 KiB/s 10.664 Mbps
+  2 write: 235 ticks, 17 KiB/s 0.136 Mbps
+  3 read: 2 ticks, 2000 KiB/s 16.000 Mbps
+
+Fixes: c906a3a01582 ("i.MX: Add the Freescale SPI Controller")
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
 
-Changes in v9:
-- Do the LOG_UNIMP when the unsupported burst length value is written,
-  rather than where it is used.
-- Squash the 2 LOG_UNIMP warnings down into one line
-
-Changes in v5:
-- round up the burst length to be multiple of 8
-
-Changes in v4:
-- s/normal/common/ in the commit message
-- log the burst length value in the log message
+(no changes since v3)
 
 Changes in v3:
-- new patch: log unimplemented burst length
+- Simplify the tx fifo endianness handling
 
- hw/ssi/imx_spi.c | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
+ hw/ssi/imx_spi.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
 diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 2fb65498c3..41fe199c9f 100644
+index a34194c1b0..189423bb3a 100644
 --- a/hw/ssi/imx_spi.c
 +++ b/hw/ssi/imx_spi.c
-@@ -128,7 +128,14 @@ static uint8_t imx_spi_selected_channel(IMXSPIState *s)
+@@ -169,7 +169,6 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
  
- static uint32_t imx_spi_burst_length(IMXSPIState *s)
- {
--    return EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-+    uint32_t burst;
-+
-+    burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-+    if (burst % 8) {
-+        burst = ROUND_UP(burst, 8);
-+    }
-+
-+    return burst;
- }
+     while (!fifo32_is_empty(&s->tx_fifo)) {
+         int tx_burst = 0;
+-        int index = 0;
  
- static bool imx_spi_is_enabled(IMXSPIState *s)
-@@ -328,6 +335,7 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
-     IMXSPIState *s = opaque;
-     uint32_t index = offset >> 2;
-     uint32_t change_mask;
-+    uint32_t burst;
+         if (s->burst_length <= 0) {
+             s->burst_length = imx_spi_burst_length(s);
+@@ -190,7 +189,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+         rx = 0;
  
-     if (index >=  ECSPI_MAX) {
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-@@ -380,6 +388,13 @@ static void imx_spi_write(void *opaque, hwaddr offset, uint64_t value,
-     case ECSPI_CONREG:
-         s->regs[ECSPI_CONREG] = value;
+         while (tx_burst > 0) {
+-            uint8_t byte = tx & 0xff;
++            uint8_t byte = tx >> (tx_burst - 8);
  
-+        burst = EXTRACT(s->regs[ECSPI_CONREG], ECSPI_CONREG_BURST_LENGTH) + 1;
-+        if (burst % 8) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "[%s]%s: burst length %d not supported: rounding up to next multiple of 8\n",
-+                          TYPE_IMX_SPI, __func__, burst);
-+        }
-+
-         if (!imx_spi_is_enabled(s)) {
-             /* device is disabled, so this is a soft reset */
-             imx_spi_soft_reset(s);
+             DPRINTF("writing 0x%02x\n", (uint32_t)byte);
+ 
+@@ -199,13 +198,11 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+ 
+             DPRINTF("0x%02x read\n", (uint32_t)byte);
+ 
+-            tx = tx >> 8;
+-            rx |= (byte << (index * 8));
++            rx = (rx << 8) | byte;
+ 
+             /* Remove 8 bits from the actual burst */
+             tx_burst -= 8;
+             s->burst_length -= 8;
+-            index++;
+         }
+ 
+         DPRINTF("data rx:0x%08x\n", rx);
 -- 
 2.25.1
 

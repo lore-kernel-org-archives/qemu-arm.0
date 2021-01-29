@@ -1,100 +1,99 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp709939lfo;
-        Thu, 28 Jan 2021 17:08:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwf+pdec0qKgujfhLiHUrD9SUUOBHTQ/URj7YG9yNUOttjd45kfkFy9PYyhrB7OFsDFAFbG
-X-Received: by 2002:a25:3c3:: with SMTP id 186mr2852081ybd.250.1611882486026;
-        Thu, 28 Jan 2021 17:08:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611882486; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp710271lfo;
+        Thu, 28 Jan 2021 17:08:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxpxhxKm9OATK1VF0E5LrBkR3DdGqmzMHdTrLcbvvsPhkHlWV+faSqjDWYvSx/NOeLeamuX
+X-Received: by 2002:a25:d2d4:: with SMTP id j203mr2707125ybg.132.1611882517788;
+        Thu, 28 Jan 2021 17:08:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611882517; cv=none;
         d=google.com; s=arc-20160816;
-        b=GxIBJ7wGzGUqpA6LiwzskPOAE2Sl3KopRyKaSI5tC2oH/vwt41T1oDXVmjlL2I0AnU
-         9OFNKDY0qpjj6gXMk3vXuVemtFSxWc22xGWe+NH2x2u5aUj+jrP36xUQ9IanA8Q713LO
-         o9ceRHmoJiy2ujMC3KP3gT3isImh1Yhgimtx2LsPNOjm4tWJ0SMoqAfHGXy4B3SGJlC1
-         xqY0Ec+j03IzNKJkjd1vXcikXIwDgE7MUEkObEow8tLhQLm4Cn5AhnGVpkvDmity43mm
-         pDmu1jXkkpwa3RdCXAqROdh1pNcDBnOAyvD3plebZV1A5MVpqwTRpJMP1bC8uR0hh4Z3
-         Kydw==
+        b=FGuO2qdvnRxAQK0DITSceyOQMPPjGyI4cfDib8Q0r3tFd8XebMTw/MjBiiB7lilpDd
+         zHdDyd1zNLsXa/0KQ3AS+Aa7LMo5NQ6yE8K4DxDZZ1ngHYLFxpEkz6e//lBUkYLlwoi3
+         438+i6pjG6OTQnKpzHkUKIt9+9Hst7Yo5iERnwdYRDIythQRoz8C3+SGmADg6Wa8mwV2
+         27l99yQAQ95X3Lw619za7oXecgNiu3UgOydDRWtOXEgQyr0gTnNylApSmP6HPdzQzRng
+         XBb8j3AkZPvVz88WQDtmDk7Jxi7I4o/NGjRt4yQ7fVSIPcC5FrG5rGs+FI67Ox3MTwFi
+         AnYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:to
          :subject:references:mime-version:message-id:in-reply-to:date
          :dkim-signature;
-        bh=PDVjhBTkNEN6+4rAJ7Cd8nEPSfTjViQIWXCbv9mKhXE=;
-        b=bDZ8wueP+Er5mMNrCsjDnYzNz3NUGMGhMyfsaAZYMcyPOkIkDdUD0fhFib8vKnTd8j
-         bXI+0SLLNHVtnNoiMNJBf35r6n5ZMICOoHgdIKo9jU2FvOXJyD5uD9I6OEwjfokjCjuC
-         6Ig9C/ru6o9K3RlTLAWwlRlKbCPgoq9PS1nJAnRmGblFm2gyn+4ua8lG8iXUs25t64Q7
-         bZwUVkgmXCIh5e/USTWkjmKEGOv6AX2xrN04APMYG1h2qSrGoCcU7++t5yzsYZJSMYM2
-         ZbwZzBWXW9TA+5vtkDmCEvZoQxXiwv2OBf3Mm/gu6lZZUsD8YAHBx/VydUHfdtVkaeH+
-         U0Xg==
+        bh=5L59xU9wVj0tK8cnn1xfmiztIbM883HqzN6NgU/DUus=;
+        b=nZ+LK77wj4mV+Ix2SrX2+wijOqGODfzWacTXWBHx6rDNKWGWZ9q/oCqizeJaH6kj0M
+         cPlsTRO3bAkmHhdKJEvfNv7EHDXEfvSyilJhLUzQhRae+eHBxFKU7zSWe/l0hFTrvB+k
+         PMOAv8YnumbkF7Kn6qQYbCHD7ilZfEX2Q0O5t0+JQ8NPYnHYDX1/wjBhby9H9IboZGjx
+         C5Tpn8PwUraBj6q9wSlNV1Cnd9oDhGfK1BmiFlAc9ghlUZnPCcfdPog2fQxA4FvX02vL
+         g7zAV63608iXY0HhxJwbMO2rHZ7q9c8X8GZXgVvU2s6smDm9dmPtNM1lLPS4xPOPNKWj
+         WdxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=gRHgTttR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@google.com header.s=20161025 header.b=TDvJ+JOv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22si6887651ybl.12.2021.01.28.17.08.05
+        by mx.google.com with ESMTPS id v201si6384246ybv.79.2021.01.28.17.08.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 17:08:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Jan 2021 17:08:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=gRHgTttR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@google.com header.s=20161025 header.b=TDvJ+JOv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:56836 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5IGb-0007UN-DS
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 20:08:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55672)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l5IH7-0007Qc-7F
+	for alex.bennee@linaro.org; Thu, 28 Jan 2021 20:08:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3D18TYAgKCCIUSF8MRQFEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--wuhaotsh.bounces.google.com>)
- id 1l5ICx-0003DM-Ea
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 20:04:19 -0500
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549]:55318)
+ <3DV8TYAgKCiASQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
+ id 1l5ICu-00035y-Ma
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 20:04:16 -0500
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:52862)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3D18TYAgKCCIUSF8MRQFEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--wuhaotsh.bounces.google.com>)
- id 1l5ICv-0004Xk-1q
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 20:04:19 -0500
-Received: by mail-pg1-x549.google.com with SMTP id 18so5108697pgp.22
- for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 17:04:15 -0800 (PST)
+ <3DV8TYAgKCiASQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com>)
+ id 1l5ICs-0004WW-Vp
+ for qemu-devel@nongnu.org; Thu, 28 Jan 2021 20:04:16 -0500
+Received: by mail-pg1-x54a.google.com with SMTP id 18so5106150pgf.19
+ for <qemu-devel@nongnu.org>; Thu, 28 Jan 2021 17:04:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=PDVjhBTkNEN6+4rAJ7Cd8nEPSfTjViQIWXCbv9mKhXE=;
- b=gRHgTttRQIbxp+u8aFItfneBzkAV+Ugco5J8BZwtZ8jpIyid+qx1MUhc9T1Jgl2hcu
- kVgTRHbcz4tXHAeQDx3dI619pgtgCALy2Ys3UilQ79kmUX+fW11CyQZlb4UldL3KB8t7
- xNBXU+V8lv0RDSM0KMBwWt+sYZE4NltZxTWbaUIsvVl107neUMMNBgLcNKOC+0cwY3Ih
- ymcnPjrgf9vkHks0Vkl7ZOGlekS4KNBCBrohmHlisgCI7UZOdVyWk0NeIfhDbGJGHhEM
- CvqWsO0JcVgVGFyL//AcBQmm1Pu6/IHozapM1yVNZ6RfS+sWRk1lbSEymZByVrG7XXQ9
- 5bdw==
+ :from:to:cc; bh=5L59xU9wVj0tK8cnn1xfmiztIbM883HqzN6NgU/DUus=;
+ b=TDvJ+JOvg5KNVqJep2Rs2uPZInicmC0tZ+wrLDjT5u3s3JVeRj9qORVWfV79nxtb19
+ QLr7PuNw0QZEsNZkrs+fezPgIXmMzuSlP6FASzYZKRQfwSMw/hNeBsBCd1+v+cX0dlFT
+ HKCdyb3k1klUffiGk7cGqD8MsihinrMBqmTROUyg1yZsW5uwZHoqEVtoBPnOWWsiHpVU
+ YQiED6l9omBtXrPgonHWpGr9s2hg2mRIw1XHyjbKFms20Ntyamr6iKnQr+pAEPJdD+0w
+ 3jfRWv+fq0b1j48an9FBk3tyrlZ4AdoAoZqpNOGvbS9eUDvZmYUfPFKRP0dPQFpVn2Qf
+ QDpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=PDVjhBTkNEN6+4rAJ7Cd8nEPSfTjViQIWXCbv9mKhXE=;
- b=Ru7jfiouieY+ka/YerxQskiH3hueJG9tGD/Q9r0IalSEH8u3et2YqBJYP4l+JoJNmA
- C5+vptR9m6J5QxoqtuewXA+9PzuiYFGida6m0bbFEWtVoMEEiG/wEe2dL68PByDOXG+z
- DxtSsPfRnIBj1/1QJH/YsGgWjFMBQjqWeccF2YhH0A9Uuf4ZDxoBSiOshbIHajyJlxRp
- 7UIMmqmSh9r9DF8kbmHO71KjrtzThLsCs/aqSenTr5HfwRfalgkfsWe+IwfNN1PG5rbl
- KpPPTEbaMCOIFMYmt3jU3IQB6bchGyH3FNMH6cflKD5CxB7HnkjH7cbgWDORMBAI7AbO
- M1uQ==
-X-Gm-Message-State: AOAM533DgI5lx7cWDGimEZO47crgJn4juI7fgxJ4UJndnA0nytYb0Xro
- tcQ23egqXPMn+gtUiGImMU4ukB/pz9l93Q==
+ bh=5L59xU9wVj0tK8cnn1xfmiztIbM883HqzN6NgU/DUus=;
+ b=lBn2YpZuN87EMw0WdGyEv1MQPJ0bqAL10YDUTsTXyPcg4Jun0XqdFBBgfbkncsPGpg
+ WFXUPztDS68wrk4+18n05LvT2q3Xnpn5UUEUTrrRJsJxYsU4uWhqMj5oJTyqyFYmZ6nE
+ /5rjjVyujH+eCSmdo0qW9SnXzcdeUo/RZrxj0sWTYER0+sS05PPCgXSlOxSVhWlqqtD3
+ fL2Yklx0gQ1AaL8qGm8iKEcFaHeMX4i+DfB6pIWnRz/JYvHqbeU/2tbcwAT8ZheaTHF0
+ FkaAY0EGBCUUkDLyXjtyUzSSQW6GCRUwAtkfLvbLEgmRbU5YQHQmrEvTeLP+g+YAGyqH
+ 7U3g==
+X-Gm-Message-State: AOAM530i5654e8f2bOrjqedb79r5oFdivsF12Lvs3cGyGZyuzC76qY9d
+ aUwmRNts5LkCRx9w8i+CbeDMywMs/MEQag==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:902:be0d:b029:e1:4ab:8fd2 with SMTP
- id r13-20020a170902be0db02900e104ab8fd2mr1837219pls.6.1611882255089; Thu, 28
- Jan 2021 17:04:15 -0800 (PST)
-Date: Thu, 28 Jan 2021 16:58:44 -0800
+ (user=wuhaotsh job=sendgmr) by 2002:a17:90a:d305:: with SMTP id
+ p5mr2059893pju.33.1611882253387; Thu, 28 Jan 2021 17:04:13 -0800 (PST)
+Date: Thu, 28 Jan 2021 16:58:43 -0800
 In-Reply-To: <20210129005845.416272-1-wuhaotsh@google.com>
-Message-Id: <20210129005845.416272-6-wuhaotsh@google.com>
+Message-Id: <20210129005845.416272-5-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20210129005845.416272-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.30.0.365.g02bc693789-goog
-Subject: [PATCH v2 5/6] hw/i2c: Add a QTest for NPCM7XX SMBus Device
+Subject: [PATCH v2 4/6] hw/arm: Add I2C sensors and EEPROM for GSJ machine
 To: peter.maydell@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3D18TYAgKCCIUSF8MRQFEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x549.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
+ envelope-from=3DV8TYAgKCiASQD6KPODCKKCHA.8KIMAIQ-9ARAHJKJCJQ.KNC@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pg1-x54a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -103,409 +102,107 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: cminyard@mvista.com, venture@google.com, hskinnemoen@google.com,
  qemu-devel@nongnu.org, wuhaotsh@google.com, kfting@nuvoton.com,
  qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, dje@google.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Hao Wu <wuhaotsh@google.com>
-From: wuhaotsh--- via <qemu-arm@nongnu.org>
-X-TUID: NPew29lkeh6l
+From: wuhaotsh--- via <qemu-devel@nongnu.org>
+X-TUID: RmTYdowNPHtw
 
-This patch adds a QTest for NPCM7XX SMBus's single byte mode. It sends a
-byte to a device in the evaluation board, and verify the retrieved value
-is equivalent to the sent value.
+Add AT24 EEPROM and temperature sensors for GSJ machine.
 
 Reviewed-by: Doug Evans<dje@google.com>
 Reviewed-by: Tyrong Ting<kfting@nuvoton.com>
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- tests/qtest/meson.build          |   1 +
- tests/qtest/npcm7xx_smbus-test.c | 352 +++++++++++++++++++++++++++++++
- 2 files changed, 353 insertions(+)
- create mode 100644 tests/qtest/npcm7xx_smbus-test.c
+ default-configs/devices/arm-softmmu.mak |  1 +
+ hw/arm/npcm7xx_boards.c                 | 27 +++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 16d04625b8..aa62d59817 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -138,6 +138,7 @@ qtests_npcm7xx = \
-    'npcm7xx_gpio-test',
-    'npcm7xx_pwm-test',
-    'npcm7xx_rng-test',
-+   'npcm7xx_smbus-test',
-    'npcm7xx_timer-test',
-    'npcm7xx_watchdog_timer-test']
- qtests_arm = \
-diff --git a/tests/qtest/npcm7xx_smbus-test.c b/tests/qtest/npcm7xx_smbus-test.c
-new file mode 100644
-index 0000000000..4594b107df
---- /dev/null
-+++ b/tests/qtest/npcm7xx_smbus-test.c
-@@ -0,0 +1,352 @@
-+/*
-+ * QTests for Nuvoton NPCM7xx SMBus Modules.
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "libqos/i2c.h"
-+#include "libqos/libqtest.h"
-+#include "hw/misc/tmp105_regs.h"
-+
-+#define NR_SMBUS_DEVICES    16
-+#define SMBUS_ADDR(x)       (0xf0080000 + 0x1000 * (x))
-+#define SMBUS_IRQ(x)        (64 + (x))
-+
-+#define EVB_DEVICE_ADDR     0x48
-+#define INVALID_DEVICE_ADDR 0x01
-+
-+const int evb_bus_list[] = {0, 1, 2, 6};
-+
-+/* Offsets */
-+enum CommonRegister {
-+    OFFSET_SDA     = 0x0,
-+    OFFSET_ST      = 0x2,
-+    OFFSET_CST     = 0x4,
-+    OFFSET_CTL1    = 0x6,
-+    OFFSET_ADDR1   = 0x8,
-+    OFFSET_CTL2    = 0xa,
-+    OFFSET_ADDR2   = 0xc,
-+    OFFSET_CTL3    = 0xe,
-+    OFFSET_CST2    = 0x18,
-+    OFFSET_CST3    = 0x19,
-+};
-+
-+enum NPCM7xxSMBusBank0Register {
-+    OFFSET_ADDR3   = 0x10,
-+    OFFSET_ADDR7   = 0x11,
-+    OFFSET_ADDR4   = 0x12,
-+    OFFSET_ADDR8   = 0x13,
-+    OFFSET_ADDR5   = 0x14,
-+    OFFSET_ADDR9   = 0x15,
-+    OFFSET_ADDR6   = 0x16,
-+    OFFSET_ADDR10  = 0x17,
-+    OFFSET_CTL4    = 0x1a,
-+    OFFSET_CTL5    = 0x1b,
-+    OFFSET_SCLLT   = 0x1c,
-+    OFFSET_FIF_CTL = 0x1d,
-+    OFFSET_SCLHT   = 0x1e,
-+};
-+
-+enum NPCM7xxSMBusBank1Register {
-+    OFFSET_FIF_CTS  = 0x10,
-+    OFFSET_FAIR_PER = 0x11,
-+    OFFSET_TXF_CTL  = 0x12,
-+    OFFSET_T_OUT    = 0x14,
-+    OFFSET_TXF_STS  = 0x1a,
-+    OFFSET_RXF_STS  = 0x1c,
-+    OFFSET_RXF_CTL  = 0x1e,
-+};
-+
-+/* ST fields */
-+#define ST_STP              BIT(7)
-+#define ST_SDAST            BIT(6)
-+#define ST_BER              BIT(5)
-+#define ST_NEGACK           BIT(4)
-+#define ST_STASTR           BIT(3)
-+#define ST_NMATCH           BIT(2)
-+#define ST_MODE             BIT(1)
-+#define ST_XMIT             BIT(0)
-+
-+/* CST fields */
-+#define CST_ARPMATCH        BIT(7)
-+#define CST_MATCHAF         BIT(6)
-+#define CST_TGSCL           BIT(5)
-+#define CST_TSDA            BIT(4)
-+#define CST_GCMATCH         BIT(3)
-+#define CST_MATCH           BIT(2)
-+#define CST_BB              BIT(1)
-+#define CST_BUSY            BIT(0)
-+
-+/* CST2 fields */
-+#define CST2_INSTTS         BIT(7)
-+#define CST2_MATCH7F        BIT(6)
-+#define CST2_MATCH6F        BIT(5)
-+#define CST2_MATCH5F        BIT(4)
-+#define CST2_MATCH4F        BIT(3)
-+#define CST2_MATCH3F        BIT(2)
-+#define CST2_MATCH2F        BIT(1)
-+#define CST2_MATCH1F        BIT(0)
-+
-+/* CST3 fields */
-+#define CST3_EO_BUSY        BIT(7)
-+#define CST3_MATCH10F       BIT(2)
-+#define CST3_MATCH9F        BIT(1)
-+#define CST3_MATCH8F        BIT(0)
-+
-+/* CTL1 fields */
-+#define CTL1_STASTRE        BIT(7)
-+#define CTL1_NMINTE         BIT(6)
-+#define CTL1_GCMEN          BIT(5)
-+#define CTL1_ACK            BIT(4)
-+#define CTL1_EOBINTE        BIT(3)
-+#define CTL1_INTEN          BIT(2)
-+#define CTL1_STOP           BIT(1)
-+#define CTL1_START          BIT(0)
-+
-+/* CTL2 fields */
-+#define CTL2_SCLFRQ(rv)     extract8((rv), 1, 6)
-+#define CTL2_ENABLE         BIT(0)
-+
-+/* CTL3 fields */
-+#define CTL3_SCL_LVL        BIT(7)
-+#define CTL3_SDA_LVL        BIT(6)
-+#define CTL3_BNK_SEL        BIT(5)
-+#define CTL3_400K_MODE      BIT(4)
-+#define CTL3_IDL_START      BIT(3)
-+#define CTL3_ARPMEN         BIT(2)
-+#define CTL3_SCLFRQ(rv)     extract8((rv), 0, 2)
-+
-+/* ADDR fields */
-+#define ADDR_EN             BIT(7)
-+#define ADDR_A(rv)          extract8((rv), 0, 6)
-+
-+
-+static void check_running(QTestState *qts, uint64_t base_addr)
+diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
+index 0500156a0c..d9805dd539 100644
+--- a/default-configs/devices/arm-softmmu.mak
++++ b/default-configs/devices/arm-softmmu.mak
+@@ -7,6 +7,7 @@ CONFIG_ARM_V7M=y
+ # CONFIG_TEST_DEVICES=n
+ 
+ CONFIG_ARM_VIRT=y
++CONFIG_AT24C=y
+ CONFIG_CUBIEBOARD=y
+ CONFIG_EXYNOS4=y
+ CONFIG_HIGHBANK=y
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 47a215bd01..2d757b4013 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -19,6 +19,7 @@
+ #include "exec/address-spaces.h"
+ #include "hw/arm/npcm7xx.h"
+ #include "hw/core/cpu.h"
++#include "hw/i2c/smbus_eeprom.h"
+ #include "hw/loader.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+@@ -104,6 +105,17 @@ static I2CBus *npcm7xx_i2c_get_bus(NPCM7xxState *soc, uint32_t num)
+     return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
+ }
+ 
++static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
++                              uint32_t rsize)
 +{
-+    g_assert_true(qtest_readb(qts, base_addr + OFFSET_CST) & CST_BUSY);
-+    g_assert_true(qtest_readb(qts, base_addr + OFFSET_CST) & CST_BB);
++    I2CBus *i2c_bus = npcm7xx_i2c_get_bus(soc, bus);
++    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
++    DeviceState *dev = DEVICE(i2c_dev);
++
++    qdev_prop_set_uint32(dev, "rom-size", rsize);
++    i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
 +}
 +
-+static void check_stopped(QTestState *qts, uint64_t base_addr)
+ static void npcm750_evb_i2c_init(NPCM7xxState *soc)
+ {
+     /* lm75 temperature sensor on SVB, tmp105 is compatible */
+@@ -116,6 +128,20 @@ static void npcm750_evb_i2c_init(NPCM7xxState *soc)
+     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
+ }
+ 
++static void quanta_gsj_i2c_init(NPCM7xxState *soc)
 +{
-+    uint8_t cst3;
++    /* GSJ machine have 4 max31725 temperature sensors, tmp105 is compatible. */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), "tmp105", 0x5c);
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 2), "tmp105", 0x5c);
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), "tmp105", 0x5c);
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4), "tmp105", 0x5c);
 +
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_ST), ==, 0);
-+    g_assert_false(qtest_readb(qts, base_addr + OFFSET_CST) & CST_BUSY);
-+    g_assert_false(qtest_readb(qts, base_addr + OFFSET_CST) & CST_BB);
++    at24c_eeprom_init(soc, 9, 0x55, 8192);
++    at24c_eeprom_init(soc, 10, 0x55, 8192);
 +
-+    cst3 = qtest_readb(qts, base_addr + OFFSET_CST3);
-+    g_assert_true(cst3 & CST3_EO_BUSY);
-+    qtest_writeb(qts, base_addr + OFFSET_CST3, cst3);
-+    cst3 = qtest_readb(qts, base_addr + OFFSET_CST3);
-+    g_assert_false(cst3 & CST3_EO_BUSY);
++    /* TODO: Add addtional i2c devices. */
 +}
 +
-+static void enable_bus(QTestState *qts, uint64_t base_addr)
-+{
-+    uint8_t ctl2 = qtest_readb(qts, base_addr + OFFSET_CTL2);
-+
-+    ctl2 |= CTL2_ENABLE;
-+    qtest_writeb(qts, base_addr + OFFSET_CTL2, ctl2);
-+    g_assert_true(qtest_readb(qts, base_addr + OFFSET_CTL2) & CTL2_ENABLE);
-+}
-+
-+static void disable_bus(QTestState *qts, uint64_t base_addr)
-+{
-+    uint8_t ctl2 = qtest_readb(qts, base_addr + OFFSET_CTL2);
-+
-+    ctl2 &= ~CTL2_ENABLE;
-+    qtest_writeb(qts, base_addr + OFFSET_CTL2, ctl2);
-+    g_assert_false(qtest_readb(qts, base_addr + OFFSET_CTL2) & CTL2_ENABLE);
-+}
-+
-+static void start_transfer(QTestState *qts, uint64_t base_addr)
-+{
-+    uint8_t ctl1;
-+
-+    ctl1 = CTL1_START | CTL1_INTEN | CTL1_STASTRE;
-+    qtest_writeb(qts, base_addr + OFFSET_CTL1, ctl1);
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_CTL1), ==,
-+                    CTL1_INTEN | CTL1_STASTRE | CTL1_INTEN);
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_ST), ==,
-+                    ST_MODE | ST_XMIT | ST_SDAST);
-+    check_running(qts, base_addr);
-+}
-+
-+static void stop_transfer(QTestState *qts, uint64_t base_addr)
-+{
-+    uint8_t ctl1 = qtest_readb(qts, base_addr + OFFSET_CTL1);
-+
-+    ctl1 &= ~(CTL1_START | CTL1_ACK);
-+    ctl1 |= CTL1_STOP | CTL1_INTEN | CTL1_EOBINTE;
-+    qtest_writeb(qts, base_addr + OFFSET_CTL1, ctl1);
-+    ctl1 = qtest_readb(qts, base_addr + OFFSET_CTL1);
-+    g_assert_false(ctl1 & CTL1_STOP);
-+}
-+
-+static void send_byte(QTestState *qts, uint64_t base_addr, uint8_t byte)
-+{
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_ST), ==,
-+                    ST_MODE | ST_XMIT | ST_SDAST);
-+    qtest_writeb(qts, base_addr + OFFSET_SDA, byte);
-+}
-+
-+static uint8_t recv_byte(QTestState *qts, uint64_t base_addr)
-+{
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_ST), ==,
-+                    ST_MODE | ST_SDAST);
-+    return qtest_readb(qts, base_addr + OFFSET_SDA);
-+}
-+
-+static void send_address(QTestState *qts, uint64_t base_addr, uint8_t addr,
-+                         bool recv, bool valid)
-+{
-+    uint8_t encoded_addr = (addr << 1) | (recv ? 1 : 0);
-+    uint8_t st;
-+
-+    qtest_writeb(qts, base_addr + OFFSET_SDA, encoded_addr);
-+    st = qtest_readb(qts, base_addr + OFFSET_ST);
-+
-+    if (valid) {
-+        if (recv) {
-+            g_assert_cmphex(st, ==, ST_MODE | ST_SDAST | ST_STASTR);
-+        } else {
-+            g_assert_cmphex(st, ==, ST_MODE | ST_XMIT | ST_SDAST | ST_STASTR);
-+        }
-+
-+        qtest_writeb(qts, base_addr + OFFSET_ST, ST_STASTR);
-+        st = qtest_readb(qts, base_addr + OFFSET_ST);
-+        if (recv) {
-+            g_assert_cmphex(st, ==, ST_MODE | ST_SDAST);
-+        } else {
-+            g_assert_cmphex(st, ==, ST_MODE | ST_XMIT | ST_SDAST);
-+        }
-+    } else {
-+        if (recv) {
-+            g_assert_cmphex(st, ==, ST_MODE | ST_NEGACK);
-+        } else {
-+            g_assert_cmphex(st, ==, ST_MODE | ST_XMIT | ST_NEGACK);
-+        }
-+    }
-+}
-+
-+static void send_nack(QTestState *qts, uint64_t base_addr)
-+{
-+    uint8_t ctl1 = qtest_readb(qts, base_addr + OFFSET_CTL1);
-+
-+    ctl1 &= ~(CTL1_START | CTL1_STOP);
-+    ctl1 |= CTL1_ACK | CTL1_INTEN;
-+    qtest_writeb(qts, base_addr + OFFSET_CTL1, ctl1);
-+}
-+
-+/* Check the SMBus's status is set correctly when disabled. */
-+static void test_disable_bus(gconstpointer data)
-+{
-+    intptr_t index = (intptr_t)data;
-+    uint64_t base_addr = SMBUS_ADDR(index);
-+    QTestState *qts = qtest_init("-machine npcm750-evb");
-+
-+    disable_bus(qts, base_addr);
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_CTL1), ==, 0);
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_ST), ==, 0);
-+    g_assert_false(qtest_readb(qts, base_addr + OFFSET_CST3) & CST3_EO_BUSY);
-+    g_assert_cmphex(qtest_readb(qts, base_addr + OFFSET_CST), ==, 0);
-+    qtest_quit(qts);
-+}
-+
-+/* Check the SMBus returns a NACK for an invalid address. */
-+static void test_invalid_addr(gconstpointer data)
-+{
-+    intptr_t index = (intptr_t)data;
-+    uint64_t base_addr = SMBUS_ADDR(index);
-+    int irq = SMBUS_IRQ(index);
-+    QTestState *qts = qtest_init("-machine npcm750-evb");
-+
-+    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
-+    enable_bus(qts, base_addr);
-+    g_assert_false(qtest_get_irq(qts, irq));
-+    start_transfer(qts, base_addr);
-+    send_address(qts, base_addr, INVALID_DEVICE_ADDR, false, false);
-+    g_assert_true(qtest_get_irq(qts, irq));
-+    stop_transfer(qts, base_addr);
-+    check_running(qts, base_addr);
-+    qtest_writeb(qts, base_addr + OFFSET_ST, ST_NEGACK);
-+    g_assert_false(qtest_readb(qts, base_addr + OFFSET_ST) & ST_NEGACK);
-+    check_stopped(qts, base_addr);
-+    qtest_quit(qts);
-+}
-+
-+/* Check the SMBus can send and receive bytes to a device in single mode. */
-+static void test_single_mode(gconstpointer data)
-+{
-+    intptr_t index = (intptr_t)data;
-+    uint64_t base_addr = SMBUS_ADDR(index);
-+    int irq = SMBUS_IRQ(index);
-+    uint8_t value = 0x60;
-+    QTestState *qts = qtest_init("-machine npcm750-evb");
-+
-+    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
-+    enable_bus(qts, base_addr);
-+
-+    /* Sending */
-+    g_assert_false(qtest_get_irq(qts, irq));
-+    start_transfer(qts, base_addr);
-+    g_assert_true(qtest_get_irq(qts, irq));
-+    send_address(qts, base_addr, EVB_DEVICE_ADDR, false, true);
-+    send_byte(qts, base_addr, TMP105_REG_CONFIG);
-+    send_byte(qts, base_addr, value);
-+    stop_transfer(qts, base_addr);
-+    check_stopped(qts, base_addr);
-+
-+    /* Receiving */
-+    start_transfer(qts, base_addr);
-+    send_address(qts, base_addr, EVB_DEVICE_ADDR, false, true);
-+    send_byte(qts, base_addr, TMP105_REG_CONFIG);
-+    start_transfer(qts, base_addr);
-+    send_address(qts, base_addr, EVB_DEVICE_ADDR, true, true);
-+    send_nack(qts, base_addr);
-+    stop_transfer(qts, base_addr);
-+    check_running(qts, base_addr);
-+    g_assert_cmphex(recv_byte(qts, base_addr), ==, value);
-+    check_stopped(qts, base_addr);
-+    qtest_quit(qts);
-+}
-+
-+static void smbus_add_test(const char *name, int index, GTestDataFunc fn)
-+{
-+    g_autofree char *full_name = g_strdup_printf(
-+            "npcm7xx_smbus[%d]/%s", index, name);
-+    qtest_add_data_func(full_name, (void *)(intptr_t)index, fn);
-+}
-+#define add_test(name, td) smbus_add_test(#name, td, test_##name)
-+
-+int main(int argc, char **argv)
-+{
-+    int i;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+
-+    for (i = 0; i < NR_SMBUS_DEVICES; ++i) {
-+        add_test(disable_bus, i);
-+        add_test(invalid_addr, i);
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(evb_bus_list); ++i) {
-+        add_test(single_mode, evb_bus_list[i]);
-+    }
-+
-+    return g_test_run();
-+}
+ static void npcm750_evb_init(MachineState *machine)
+ {
+     NPCM7xxState *soc;
+@@ -141,6 +167,7 @@ static void quanta_gsj_init(MachineState *machine)
+     npcm7xx_load_bootrom(machine, soc);
+     npcm7xx_connect_flash(&soc->fiu[0], 0, "mx25l25635e",
+                           drive_get(IF_MTD, 0, 0));
++    quanta_gsj_i2c_init(soc);
+     npcm7xx_load_kernel(machine, soc);
+ }
+ 
 -- 
 2.30.0.365.g02bc693789-goog
 

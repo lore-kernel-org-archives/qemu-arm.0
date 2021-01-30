@@ -1,149 +1,92 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2009001lfo;
-        Sat, 30 Jan 2021 06:48:08 -0800 (PST)
-X-Received: by 2002:adf:f307:: with SMTP id i7mr9604162wro.367.1612018088226;
-        Sat, 30 Jan 2021 06:48:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612018088; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2043128lfo;
+        Sat, 30 Jan 2021 07:37:38 -0800 (PST)
+X-Received: by 2002:a05:6402:40c4:: with SMTP id z4mr10461540edb.233.1612021058426;
+        Sat, 30 Jan 2021 07:37:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612021058; cv=none;
         d=google.com; s=arc-20160816;
-        b=JAFY0U8Q2Dqmdr8YbIoYMH+tNTHbZUkT0pOAET54a9oihvWWgi9tvHh+sek5XR1mHq
-         jyQaMuZjC7UiDYZEwS0MqPJv3C4Z3ldX8KqIkw+6T30R2guS76DWSzqbinrnUBIwk6rV
-         WVmVXtlyapss9QyQcta9dsDBRsCpaKjr926Ycn002R+q1GfyArWkQyk05kHVhOiJFNWr
-         GJD6KHGsw7PHg9EILZ+Y+g//WiH3RL5mECHIERFWATCmk2TCtX/h51F5x+jT+c1BxdTK
-         A04i7fC3MSkHfJ/wr1eVVBDvgM0qeVEhJhqJ4qtQvSCCS339h0rXu9J8TQv0v1friVP5
-         /2wA==
+        b=ADoYtMMp/pttvjKbUAE+u3O8Dn/hgVKXs2avCkiZW3grPARi2jKV1u9EVYI9SITukW
+         S9uheWY6e1dGzCKor3XsysaCgoX9dYFzXg28scHR4XOwAESyUMYFQUmNT1NRxaP9Wbsc
+         QTCPnn+UPKaDoUNnjjtjbwJiQmZPz7ZQ4dFCecKceBtkkg8HVuVZECFogDNh0BUtQ/7+
+         Vr2aTPuMdH/+RWLSr1MoXKdyhKpS662SX7Xi01zh1Oo3fAH8AvgwTha526QgEnDw08M7
+         Q6JRpAYzSm8fwgm/5ACpHgGF47EoVMUt9f4FYtqYH9xB33d/JX7UiqwzlHmPkrThE7F9
+         17xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature;
-        bh=GlgDHR3ZqZqWGwjAMNZSIHStR7gOfs1UN1h7d6dVVjA=;
-        b=dh1l/FgiZlg+7ToFAD0D9jQw3AqnhVEkbe6aO9wLq3paRtgl+DHyMYKmxs6DfWQMvs
-         7C/UzEcCGPC2oMRhA3dpq5GsGnJVU89mha3z22mzSk4aFhcWjYS7FEqtFTmHo13gndNt
-         LCfAAPTerUCmMHoOv/hiCjCrB3NbDLfGAPT6VsRwmrNevxv38XBMv5WNUkCJFGuhm6hv
-         D470LKAJYWy7P8n/DDSvib/xjwz7xYOPvU7gSXlSGfVviixhSYDLhsIlti2fXG/EbvEM
-         LEAGb/K6MgAl4m5Ie4R3tDVVEV//qe75dgUzUEbPGzO/wCRFnme2r8olqrzpVAJxHinJ
-         7AnQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=78kOyNsh9PFQ35W6G6J34UFL3WJ0plW3fjCLydvhNGU=;
+        b=eumm9OJMMZL2wCvPeNASvLv8sJ6E74t/F6Zv3VgnYT0Z2om4FLN1G+iNs6MoM+6pJP
+         KDLdDIyEVlp+FJKLiczTF5qD1zvVGFx6Il71G0Papr6R/bcYArGWkUQ01j0ivf+aeX/5
+         jo8cxhE+muhLsPzKhrVV4UBK550Ec9JXOzl7djP8uUSBtrCRNK7oL6rp/9zvjMoNx7C0
+         sZVTHUwN7w/pfzHyeLyVzhONHMWBsEKNg1lx2MqpI989JAuaGXJBUekW8R2EtkA7H2RZ
+         E2LYmky0w6SMpo3ZelMIfE9p2kEK50EzvtW8F7PwnNGM4fDxREclELFtl98K8slX2LbE
+         3u3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WVUeCXW/";
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=evI+JCiN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b15sor6385463wrw.62.2021.01.30.06.48.07
+        by mx.google.com with SMTPS id v10sor7690409ejf.57.2021.01.30.07.37.38
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 30 Jan 2021 06:48:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sat, 30 Jan 2021 07:37:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WVUeCXW/";
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=evI+JCiN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=GlgDHR3ZqZqWGwjAMNZSIHStR7gOfs1UN1h7d6dVVjA=;
-        b=WVUeCXW/DrQyxBNC0dV2M+zXhJprCPvF3rX8dxM6GE61Gd9pjyJPsux/WYUSLPsU3f
-         brfFGowIJbC1H0wT7zBYlscqqF6lAQBoRvVvfAC+FjmXq8RKrtDy7kaW4Jjpn14qEtsm
-         FObrStJiF4166Vpj+I9yzLm8+SMdBorTwUJ3vLxuYg7LriBN0oqmTcAc4rYYkSnRXyXI
-         ScxXum9So4d2fVh8nhyHwgXy1T3AILQPEvikuL/+gIdEEGVL9Gdt237B0/v5l2cVhgb2
-         DqEG+m+c/fqfuQsrg73OlP2VqbvkoYJxa8+SdU/JLnfe38m0hTg97pW/+aizmGTlhMqC
-         C1rw==
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=78kOyNsh9PFQ35W6G6J34UFL3WJ0plW3fjCLydvhNGU=;
+        b=evI+JCiN4q9fC6wQYJuhNtFMDoH0y/ah6iDJRi+XmLvWYdNKZghG075xgvVS6nEH63
+         QdOKU1s/tbYWcdHwDvDugZGRZzCkn/NBqE3cYw+ytxwNgNK7h9d4lF1nfdaX2dqkhC1s
+         m4+eSEQWVVB2kCpgZVbmzfVhV2dfOIYlq6Vn8FQITksyJmROd5NLThrkFBPHH5OqjzTl
+         COIOuFHypRtV5TiZdLH/9lecUqz5sRcjDl+DEHJb6ojwly5a2AJDEb3Bk7F64IO5s7Q0
+         DlGL1cp0xxiiP+UvlIJqJPxke6LXOQduMAUGGia1Z027oaon4bMF7R08U/DuutijOrQs
+         ViAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=GlgDHR3ZqZqWGwjAMNZSIHStR7gOfs1UN1h7d6dVVjA=;
-        b=GsPbG1dTQccXe5sMhNfgLzAXImpXsrWOI/D+MH9x2fUWXCWTHSnG8xXXkz9dKtOsv+
-         2jEiI19txYaK4/Nn0NUS4Ba3NBGWnuPT6Z6xhmtaGbgNXtfS4kqlqryDeqrwVyMxYyBw
-         I8/ZgCnzrVymNd7x/78PmSXZCssuLkf1x/yMf0boGgWBF21lDjYGCppQyOT4Lk72rQ5/
-         Wxo6BNpffbGjRkw06+5qhKWgSGZoEFADKOqF3pu9LhJM2kjyLyg5Y6RI848dbqn1MEWl
-         N0xBbk3bSVeQIa1jX8Yktyt5nwK69O5KiAB/JCgKuDx+a9qspAy09CyXJu7yRGdMWktI
-         CACw==
-X-Gm-Message-State: AOAM533EidPfoG33J2lPS7UiIVoqDuuIqARXAUkI5BO87AwiXWqv7d94
-	MKvf1OWyKfDsIwq5r3hO0l8=
-X-Google-Smtp-Source: ABdhPJyXHSQk9hGaa07ZqC3MAbMC1wI3kpYj4cKTrV66w37uTSTBJ2RNMrzGc4nxVNR1fl9GP0/TVw==
-X-Received: by 2002:adf:ed45:: with SMTP id u5mr9773679wro.358.1612018087373;
-        Sat, 30 Jan 2021 06:48:07 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
-        by smtp.gmail.com with ESMTPSA id a17sm14650465wrx.63.2021.01.30.06.48.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 30 Jan 2021 06:48:06 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v5 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
- Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
-References: <20210130015227.4071332-1-f4bug@amsat.org>
- <20210130015227.4071332-4-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e8502280-5c49-a81a-a1f1-b677adb8d8b3@amsat.org>
-Date: Sat, 30 Jan 2021 15:48:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=78kOyNsh9PFQ35W6G6J34UFL3WJ0plW3fjCLydvhNGU=;
+        b=bcSsv3e7qZ2bsbY8yZ491ORCvsAVbbopXhkuHm27WsdJh3mtfFrRNxis9MwsfbXEjB
+         0LGGTPJ3ppD5hCIWcxdqwCtFPAoE1+XoDNSVlVqSiYEdqS0b+wpoUdcz/KZN/M9MFqEC
+         0oRshXkJ2IGvdZWhjbNGQ7MFUo7IZG2cwwTyqK7orQXsKnlk3Nk045k5zlE1LVEkHl8k
+         CSHdtqSlrJYDfYtLAKSk8W1brWNAdIuwnkoSc8565CdJ0/LO5Vju8kZI56dvgiaMNmQB
+         /SAGsdfqdRp73zt8pWeHr5tX+rfOyXZ+3rUggeRyKC5xSDgjBr+Z4VyRNJIcW5+5QQdg
+         CUDQ==
+X-Gm-Message-State: AOAM532SbIhuD7ObEPwohT3MM9i982rkbnes0Ce/QDBqwKjCbkJhB/N9
+	X6JbRfyJXCTIyTTEPTl6CKc2hTYh3sdIEqRoEkxuNKzd
+X-Google-Smtp-Source: ABdhPJyD++UlciKvmROO24kS3r/XXDVKijRu1H7xIYaJRV48MHyTsJtFtdfA1zpizwOdbfEwhqs6mx4IqJ20F8mkBMc=
+X-Received: by 2002:a17:906:b215:: with SMTP id p21mr9386002ejz.407.1612021058129;
+ Sat, 30 Jan 2021 07:37:38 -0800 (PST)
 MIME-Version: 1.0
+References: <20210130015227.4071332-1-f4bug@amsat.org> <20210130015227.4071332-4-f4bug@amsat.org>
 In-Reply-To: <20210130015227.4071332-4-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: QaYziytUPjVX
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 30 Jan 2021 15:37:26 +0000
+Message-ID: <CAFEAcA8UCFghGDb4oMujek_W_wsyYz+duiQ-d8JyN09NYoff-g@mail.gmail.com>
+Subject: Re: [PATCH v5 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
+	kvm-devel <kvm@vger.kernel.org>, Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: +nb1oNUq9Rjg
 
-On 1/30/21 2:52 AM, Philippe Mathieu-Daudé wrote:
+On Sat, 30 Jan 2021 at 01:52, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
 > KVM requires a cpu based on (at least) the ARMv7 architecture.
-> 
-> Only enable the following ARMv4 CPUs when TCG is available:
-> 
->   - StrongARM (SA1100/1110)
->   - OMAP1510 (TI925T)
-> 
-> The following machines are no more built when TCG is disabled:
-> 
->   - cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
->   - sx1                  Siemens SX1 (OMAP310) V2
->   - sx1-v1               Siemens SX1 (OMAP310) V1
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  default-configs/devices/arm-softmmu.mak | 2 --
->  hw/arm/Kconfig                          | 8 ++++++++
->  2 files changed, 8 insertions(+), 2 deletions(-)
-> 
-> diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-> index 341d439de6f..8a53e637d23 100644
-> --- a/default-configs/devices/arm-softmmu.mak
-> +++ b/default-configs/devices/arm-softmmu.mak
-> @@ -14,8 +14,6 @@ CONFIG_INTEGRATOR=y
->  CONFIG_FSL_IMX31=y
->  CONFIG_MUSICPAL=y
->  CONFIG_MUSCA=y
-> -CONFIG_CHEETAH=y
-> -CONFIG_SX1=y
->  CONFIG_NSERIES=y
->  CONFIG_STELLARIS=y
->  CONFIG_REALVIEW=y
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 223016bb4e8..7126d82f6ce 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -1,3 +1,7 @@
-> +config ARM_V4
-> +    bool
-> +    depends on TCG
-> +
->  config ARM_VIRT
->      bool
->      imply PCI_DEVICES
-> @@ -31,6 +35,8 @@ config ARM_VIRT
->  
->  config CHEETAH
->      bool
-> +    default y if TCG
 
-This doesn't work as being added to all targets...
+These days it requires ARMv8, because we dropped 32-bit host
+support, and all 64-bit host CPUs are v8.
 
-> +    select ARM_V4
->      select OMAP
->      select TSC210X
+thanks
+-- PMM

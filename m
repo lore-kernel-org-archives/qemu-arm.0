@@ -1,153 +1,130 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1626510lfo;
-        Fri, 29 Jan 2021 18:07:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzIDqhUaY3TMHqJ6DCPfJj0KuMxid8Eftly2nRfK5omw6ZtFnnGftf/gm4ekEEj2i8RCeIv
-X-Received: by 2002:a25:b683:: with SMTP id s3mr9687420ybj.442.1611972471113;
-        Fri, 29 Jan 2021 18:07:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611972471; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1688394lfo;
+        Fri, 29 Jan 2021 20:32:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz1yzDLihTgtaP8VH/bw56w1KfunRT/BNiItYc6JkLX3wWGCyZJiJyjVIQVXUaFnyAAa5Xg
+X-Received: by 2002:a25:7c06:: with SMTP id x6mr12865857ybc.445.1611981176323;
+        Fri, 29 Jan 2021 20:32:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611981176; cv=none;
         d=google.com; s=arc-20160816;
-        b=MSD4jQ9FNZ13aj7dlBlTUs8T11fpHOD8UwebaF4SJZYMW2GgY7olJPxK9rnMXqef7K
-         QIZwJiuwcRhKHASUBDR/4VfaTY0ORnfO3fS2J6bf4bUYEgVgJoRaGxYgPMoGU1TdaIkD
-         y0Jp3qZ/mtGuEWm4Clp9QSsS8pbka6JBJ/yHFncC0z7BL0krlvKvyCvQ33gHMX9mag7P
-         Ds4CrWnHDmAkvFY5l/a6pd7jgjXEKL5LZIuMtVkPkcDupl3Dk6DE0ZBshiTz8Q3Za3HV
-         ZxuGw/8hWyMcH/vvMEnipiMVMkC8sH4KeN0QZzvfzPTwxJi/200DQL+gjCirRloVLE3r
-         NC2w==
+        b=YNrFInbY5WDQJMWsVwBbsSJ7CN8EWe+HUTc+T63/OQtiFPg9e7m9jjNo7Ex9+bq3d3
+         TcdW0uC13RkG500BU8yhog/L0hr+7ehvP3DR3zJATfvLAaVIJ8XQN/pG+mCg8fNIfq8q
+         KMe+J/UcjZUZiQ23ne7m7bI5RyIyHJpA6wUM4Zq2GViZO3yOQviFq8HLNGl172JTY7bN
+         5TQ4NqgaTSIvtOsZxK9zOZeFz0oMhsDbj8TjZzigF2rOP8IX//lMKBamIZTGwlCbO1Py
+         k8XICDW2DG8Yq+PodZqVr60fKRVUne86bq8AANdzyXceOzGZ/Qtq1g9cRgh3+E/Q5OLy
+         2v8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
-        b=XioknbTgI3lXAa1S9kDxW3o6uPUaya9RfRiOn/rMbQHEVKdApCTnXPKK+X78vZ7Xuq
-         vb4HNui1VzNUYGDbS5Qfq0DEfqUijOuorq4pc0kzOCzC53BZU2ZPShfxIjDvC7F0sNfx
-         66Yl2Z4Uzfr3/JHGrvyBvU+snCSBJvKzZPKipH0JaUahvVM7gZ5Ngxr8H1tK8g+QdkIg
-         L30Iq92uy7FdYYmbZGy/hOS6XnfqUunJZvzYU/ZZDxPZNqCJWdy/jmmFGLuX+nBqjtgQ
-         gE8g1yM0jvXea9RrR3eetter/x+qFAAotsnnV7s6an2CuwvcTJt3GcisyYcTlBCg1QHe
-         e99g==
+         :mime-version:message-id:date:subject:to:from;
+        bh=bKgshwxF7NR++HCu3eWPGHli1Qnu2NP2MlGOgPsWQg4=;
+        b=OM8barxKr2tlYXa7efFH450A+02OTDk+YLZrJET7wrtY0/BKR8prXPrblbHHlrO1mH
+         odBO46f3yG+0aP4oH8jXdCFOltbl+UD9LygWR/VniaiO2/O5bub5xWzxKzlCcUK6q02C
+         /UHm4QgKP0UGrLq2zYo9CtX7eKsoekkdkDKn81/fGNrhZi7rxWRKzBopoy9/W71gidLj
+         s1raBM/bDmHKpMmlIUfJ5HSnP7TnhjobW3QCwJC+DcdEuNCOonJhIoMf5gQKc/qVJQzV
+         m0svuIxtO3CF9FXbGCLOTzJnYOMX/9fC7CVHxR/LKuFnPyEhTTtwbuNZ5VDnn2RrNEay
+         Qyug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="BZTRcOn/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w3si4355217ybo.470.2021.01.29.18.07.50
+        by mx.google.com with ESMTPS id f1si10134584ybp.62.2021.01.29.20.32.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Jan 2021 18:07:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 29 Jan 2021 20:32:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="BZTRcOn/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46350 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5ffy-0006Y4-HW
-	for alex.bennee@linaro.org; Fri, 29 Jan 2021 21:07:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40904)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l5hwN-0003eH-Mu
+	for alex.bennee@linaro.org; Fri, 29 Jan 2021 23:32:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l5fU2-0002mE-R5; Fri, 29 Jan 2021 20:55:33 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:53399)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l5fU1-0000sX-GF; Fri, 29 Jan 2021 20:55:30 -0500
-Received: by mail-wm1-x329.google.com with SMTP id j18so8146571wmi.3;
- Fri, 29 Jan 2021 17:55:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
- b=BZTRcOn/HJkpWsRhLv0QpZri9dtTj9FhDkxOHuyJAqjGBTJaQzZVNL5WyOC21THEAS
- IzTqxmkDU5ePXyBLSWvji/9MjOkJBxOe8N5616ednCW1h+emp+Xw2NFIogFZS/wiD+Mm
- J8ASjop3aQ3wyVi6hF8VhLhaZG27DBg/t0azC5Dc2HQKG1n2YirYiVVvirb1owUWvJzr
- yscTazLhBVy+1p9ePd+ByVPUJZbAs1J8UTEukJQgoDffUqPvGp0nJF3ZTIE0Ep4E6dXn
- zuJaT3rnVLcWhaTV1kfk/MGweZJlBCPXlnbRZxlf9gq7ZI1sLdAdG4NEDPWLGXcHK797
- 1zIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
- b=aL+teRMArEQ6fvV7QrvXr65h6FQ8X5ni7yeJrEyvHplm0WMOlEq9imBscwod72bw5c
- RlsprdFHEy5tlQiMiPUND7xeGN4IL/QtV+eEs+cyMGztIY86sk/OrNZ30KxO7XuPGlP9
- qPHEJLOefIABS+Tj1YYDtfc8XBbtJqAanyvQ4FC0qL16jU/seLfN3iqo1g42/gykzT+5
- W4Jkwz2VsZYFomXLugRmzOurtAoYCC+oyWDOgPQbjFhJa+W2pMzmdHCQy/MV01PQUMOf
- qovmPbeeDlX8dsrke7QX4e0JvwuSswxzlXfGoli2MnjupH0TWy0dcPe0/XGMeCQvUFI7
- n16Q==
-X-Gm-Message-State: AOAM533cuTXJbedaMWjAzWh+YWzc8+IBrfjmSDlbu6oNy5+BGlnTDUCM
- dl1gOE9F76oGexLgwCL1CbLSttB/53o=
-X-Received: by 2002:a7b:c188:: with SMTP id y8mr5772912wmi.173.1611971727158; 
- Fri, 29 Jan 2021 17:55:27 -0800 (PST)
-Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id d2sm16883840wre.39.2021.01.29.17.55.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Jan 2021 17:55:26 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/3] hw/arm/Kconfig: Add missing dependency STM32F405 -> OR_IRQ
-Date: Sat, 30 Jan 2021 02:55:17 +0100
-Message-Id: <20210130015519.4072469-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210130015519.4072469-1-f4bug@amsat.org>
-References: <20210130015519.4072469-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1l5hwD-0003dr-Uj; Fri, 29 Jan 2021 23:32:45 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:2602)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yuzenghui@huawei.com>)
+ id 1l5hwB-0008Ip-BQ; Fri, 29 Jan 2021 23:32:45 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DSLrP4FBRzjBJ7;
+ Sat, 30 Jan 2021 12:31:33 +0800 (CST)
+Received: from DESKTOP-8RFUVS3.china.huawei.com (10.174.185.179) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.498.0; Sat, 30 Jan 2021 12:32:27 +0800
+From: Zenghui Yu <yuzenghui@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>
+Subject: [PATCH v2] hw/arm/smmuv3: Fix addr_mask for range-based invalidation
+Date: Sat, 30 Jan 2021 12:32:20 +0800
+Message-ID: <20210130043220.1345-1-yuzenghui@huawei.com>
+X-Mailer: git-send-email 2.23.0.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.179]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=yuzenghui@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Antony Pavlov <antonynpavlov@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ECiolZYxc+0s
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XQeo6kNmq2uM
 
-The STM32F405 SoC uses an OR gate on its ADC IRQs.
+When handling guest range-based IOTLB invalidation, we should decode the TG
+field into the corresponding translation granule size so that we can pass
+the correct invalidation range to backend. Set @granule to (tg * 2 + 10) to
+properly emulate the architecture.
 
-Fixes: 529fc5fd3e1 ("hw/arm: Add the STM32F4xx SoC")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Fixes: d52915616c05 ("hw/arm/smmuv3: Get prepared for range invalidation")
+Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
 ---
-Cc: alistair@alistair23.me
----
- hw/arm/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+* From v1:
+  - Fix the compilation error
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 13cc42dcc84..a320a124855 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -336,6 +336,7 @@ config STM32F205_SOC
- config STM32F405_SOC
-     bool
-     select ARM_V7M
-+    select OR_IRQ
-     select STM32F4XX_SYSCFG
-     select STM32F4XX_EXTI
+ hw/arm/smmuv3.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index bbca0e9f20..98b99d4fe8 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+ {
+     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+     IOMMUTLBEvent event;
+-    uint8_t granule = tg;
++    uint8_t granule;
  
+     if (!tg) {
+         SMMUEventInfo event = {.inval_ste_allowed = true};
+@@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+             return;
+         }
+         granule = tt->granule_sz;
++    } else {
++        granule = tg * 2 + 10;
+     }
+ 
+     event.type = IOMMU_NOTIFIER_UNMAP;
 -- 
-2.26.2
+2.19.1
 

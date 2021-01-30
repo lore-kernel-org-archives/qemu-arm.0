@@ -1,162 +1,149 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1618701lfo;
-        Fri, 29 Jan 2021 17:52:31 -0800 (PST)
-X-Received: by 2002:a05:6000:1189:: with SMTP id g9mr7354870wrx.230.1611971551114;
-        Fri, 29 Jan 2021 17:52:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611971551; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2009001lfo;
+        Sat, 30 Jan 2021 06:48:08 -0800 (PST)
+X-Received: by 2002:adf:f307:: with SMTP id i7mr9604162wro.367.1612018088226;
+        Sat, 30 Jan 2021 06:48:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612018088; cv=none;
         d=google.com; s=arc-20160816;
-        b=SHtyqWsV8CuAfbEqhzND3Ba76TWTEXQyS0xbDxT8UWEy8HOdRGtv9x//AKPiC3UpiL
-         74PBJninGabGZpK/6EXGcq/um7TDOc1x9l99GeGYT7k5894vT9sakvMpkebLUaxtdWSP
-         5lqVisjy9uLUWHkNnmOKEQr7KwFgZ5+Ua4GHralGzEJEraZOnIfw8L7zdG17Yx961b3A
-         p+s01J65wtpmjAYlQVpwoxj1/bd17eHkf+JqBfDPnml7SY45o7IAc+m4l/0QZrbR9tdj
-         YqknrX4OgXHyvAGRJqCXTKAts6oE2y1ueOHT09s7tLYt86ctnNWN5wXurqC0dZc6NVOR
-         /cNA==
+        b=JAFY0U8Q2Dqmdr8YbIoYMH+tNTHbZUkT0pOAET54a9oihvWWgi9tvHh+sek5XR1mHq
+         jyQaMuZjC7UiDYZEwS0MqPJv3C4Z3ldX8KqIkw+6T30R2guS76DWSzqbinrnUBIwk6rV
+         WVmVXtlyapss9QyQcta9dsDBRsCpaKjr926Ycn002R+q1GfyArWkQyk05kHVhOiJFNWr
+         GJD6KHGsw7PHg9EILZ+Y+g//WiH3RL5mECHIERFWATCmk2TCtX/h51F5x+jT+c1BxdTK
+         A04i7fC3MSkHfJ/wr1eVVBDvgM0qeVEhJhqJ4qtQvSCCS339h0rXu9J8TQv0v1friVP5
+         /2wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:sender:dkim-signature;
-        bh=adQegksKyg6ypqy8yaNY4IxRFUUd8NlguDdBcG0O0Dc=;
-        b=D3pkWnJ89s8dRJv1SPPeXb4CMfvu95H4i7Q2T1KEft2ZlYenNZ+lmdN2hrGCl0N3jh
-         6y9qeK3Ef6yZf7kB1QLoe0Hi4uwjyQi1E7jjnIaHsRbXffjZslmAAebJVLCPR6e3imw1
-         zlZ1iThL0NNnhNCcGe7uxKoSAVtfNhfQ2+ruLqibjiGFvZwavWqMWbeT1XfIyku0AcOS
-         Ggn8oa1gOGNMeXii5MkNGVyuH/CO5afaIe32GXNOlZjey8oXGMnQdS2rvhNgtEXQvduB
-         l2sx0NuwslPSgpwRjcXjPEhnVhIfqyRmxHWoKYbJkkp/2ONEcrJ0K2Yy8TkDIQrGeak2
-         Q9cQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=GlgDHR3ZqZqWGwjAMNZSIHStR7gOfs1UN1h7d6dVVjA=;
+        b=dh1l/FgiZlg+7ToFAD0D9jQw3AqnhVEkbe6aO9wLq3paRtgl+DHyMYKmxs6DfWQMvs
+         7C/UzEcCGPC2oMRhA3dpq5GsGnJVU89mha3z22mzSk4aFhcWjYS7FEqtFTmHo13gndNt
+         LCfAAPTerUCmMHoOv/hiCjCrB3NbDLfGAPT6VsRwmrNevxv38XBMv5WNUkCJFGuhm6hv
+         D470LKAJYWy7P8n/DDSvib/xjwz7xYOPvU7gSXlSGfVviixhSYDLhsIlti2fXG/EbvEM
+         LEAGb/K6MgAl4m5Ie4R3tDVVEV//qe75dgUzUEbPGzO/wCRFnme2r8olqrzpVAJxHinJ
+         7AnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Jify+HIv;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WVUeCXW/";
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p128sor5460350wmp.2.2021.01.29.17.52.30
+        by mx.google.com with SMTPS id b15sor6385463wrw.62.2021.01.30.06.48.07
         (Google Transport Security);
-        Fri, 29 Jan 2021 17:52:31 -0800 (PST)
+        Sat, 30 Jan 2021 06:48:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Jify+HIv;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="WVUeCXW/";
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=adQegksKyg6ypqy8yaNY4IxRFUUd8NlguDdBcG0O0Dc=;
-        b=Jify+HIvCRI6v2kFDWjTZrLVCkFPKsirwWVmqbOedbFWxEWVegCK8Kfa5vj1pFUxNR
-         uVc5o1KEC4qiu0zDMpLGV/D0/60D4MPbPGua/hCXEYPst1Gv7htKhNx4uEL6eT4mq1+u
-         xrIxvT+4cmFzEtGbbarSXi7wPPUsqpBBh2xGR088evTJQDO5hPAkzcAnHItmWFdxuCtm
-         th5XWIsnQ2N49bSnJC6+lJtaNE46hgI0naP5dMuR0EKp4QP815M06UqGrxn62rOTX72K
-         b4eZU7IMeR8PULGxqjQi4Df8MG49oURxPLIda+TTg4pBpWCFlHieW7lxwh/2o1n0irDR
-         eUhg==
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=GlgDHR3ZqZqWGwjAMNZSIHStR7gOfs1UN1h7d6dVVjA=;
+        b=WVUeCXW/DrQyxBNC0dV2M+zXhJprCPvF3rX8dxM6GE61Gd9pjyJPsux/WYUSLPsU3f
+         brfFGowIJbC1H0wT7zBYlscqqF6lAQBoRvVvfAC+FjmXq8RKrtDy7kaW4Jjpn14qEtsm
+         FObrStJiF4166Vpj+I9yzLm8+SMdBorTwUJ3vLxuYg7LriBN0oqmTcAc4rYYkSnRXyXI
+         ScxXum9So4d2fVh8nhyHwgXy1T3AILQPEvikuL/+gIdEEGVL9Gdt237B0/v5l2cVhgb2
+         DqEG+m+c/fqfuQsrg73OlP2VqbvkoYJxa8+SdU/JLnfe38m0hTg97pW/+aizmGTlhMqC
+         C1rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :mime-version:content-transfer-encoding;
-        bh=adQegksKyg6ypqy8yaNY4IxRFUUd8NlguDdBcG0O0Dc=;
-        b=owIVcF/SkzrKcb0Q/GFvGhwxx9/Z8cCm4njCVaqzx0NTsMKnAoGtJWA5ZmDd/Xl1wY
-         mpJjBJZiOq7npxzsrVm7k414AmfGgFhHePq0/htLmRnzGcVxdUjbtr1mq/Nd4aiQJM2J
-         TQm2bG1G+zjIDKFPWAiJ6/IjMs1IwSK6f6dGhikT+TUsLgHRAw/yMUt7fccdYn+W9eiY
-         WYHxG0oAA5O+EDg1+HD9Ba8V1ngGqkliRne7YkW2xOOYynrE/fMfX7XBwXPF7n2Z7J7j
-         B62n7ezEmbt/7ccABNUsE+XBiAlIsOsdQs7cfACyldEk2dWPRu2W+mmX1jTNiYTiuOSV
-         y0bQ==
-X-Gm-Message-State: AOAM530Ulnuq0Iyaw6YpuT+vuSgFv3szU4z+xcFfrJR7gZ5A8kU40kNi
-	e5cPEvAlfZc/+5X+hft/MFM=
-X-Google-Smtp-Source: ABdhPJzAZ1zraX1+wErsQAoxLg/4/5cge/k+zf+9AXuQRmCgsUUA0TAkV3aDzuzdcsuTqEd2pjPmTg==
-X-Received: by 2002:a1c:b087:: with SMTP id z129mr1504698wme.147.1611971550627;
-        Fri, 29 Jan 2021 17:52:30 -0800 (PST)
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=GlgDHR3ZqZqWGwjAMNZSIHStR7gOfs1UN1h7d6dVVjA=;
+        b=GsPbG1dTQccXe5sMhNfgLzAXImpXsrWOI/D+MH9x2fUWXCWTHSnG8xXXkz9dKtOsv+
+         2jEiI19txYaK4/Nn0NUS4Ba3NBGWnuPT6Z6xhmtaGbgNXtfS4kqlqryDeqrwVyMxYyBw
+         I8/ZgCnzrVymNd7x/78PmSXZCssuLkf1x/yMf0boGgWBF21lDjYGCppQyOT4Lk72rQ5/
+         Wxo6BNpffbGjRkw06+5qhKWgSGZoEFADKOqF3pu9LhJM2kjyLyg5Y6RI848dbqn1MEWl
+         N0xBbk3bSVeQIa1jX8Yktyt5nwK69O5KiAB/JCgKuDx+a9qspAy09CyXJu7yRGdMWktI
+         CACw==
+X-Gm-Message-State: AOAM533EidPfoG33J2lPS7UiIVoqDuuIqARXAUkI5BO87AwiXWqv7d94
+	MKvf1OWyKfDsIwq5r3hO0l8=
+X-Google-Smtp-Source: ABdhPJyXHSQk9hGaa07ZqC3MAbMC1wI3kpYj4cKTrV66w37uTSTBJ2RNMrzGc4nxVNR1fl9GP0/TVw==
+X-Received: by 2002:adf:ed45:: with SMTP id u5mr9773679wro.358.1612018087373;
+        Sat, 30 Jan 2021 06:48:07 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from localhost.localdomain (13.red-83-57-169.dynamicip.rima-tde.net. [83.57.169.13])
-        by smtp.gmail.com with ESMTPSA id e4sm15520107wrw.96.2021.01.29.17.52.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Jan 2021 17:52:29 -0800 (PST)
+Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
+        by smtp.gmail.com with ESMTPSA id a17sm14650465wrx.63.2021.01.30.06.48.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 30 Jan 2021 06:48:06 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	kvm@vger.kernel.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Fam Zheng <fam@euphon.net>,
-	Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Claudio Fontana <cfontana@suse.de>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v5 00/11] Support disabling TCG on ARM (part 2)
-Date: Sat, 30 Jan 2021 02:52:16 +0100
-Message-Id: <20210130015227.4071332-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+Subject: Re: [PATCH v5 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, kvm@vger.kernel.org,
+ Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
+References: <20210130015227.4071332-1-f4bug@amsat.org>
+ <20210130015227.4071332-4-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e8502280-5c49-a81a-a1f1-b677adb8d8b3@amsat.org>
+Date: Sat, 30 Jan 2021 15:48:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: I5KcimzaoJSZ
+In-Reply-To: <20210130015227.4071332-4-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: QaYziytUPjVX
 
-Cover from Samuel Ortiz from (part 1) [1]:=0D
-=0D
-  This patchset allows for building and running ARM targets with TCG=0D
-  disabled. [...]=0D
-=0D
-  The rationale behind this work comes from the NEMU project where we're=0D
-  trying to only support x86 and ARM 64-bit architectures, without=0D
-  including the TCG code base. We can only do so if we can build and run=0D
-  ARM binaries with TCG disabled.=0D
-=0D
-v5:=0D
-- addressed Paolo/Richard/Thomas review comments from v4 [5].=0D
-=0D
-v4 almost 2 years later... [2]:=0D
-- Rebased on Meson=0D
-- Addressed Richard review comments=0D
-- Addressed Claudio review comments=0D
-=0D
-v3 almost 18 months later [3]:=0D
-- Rebased=0D
-- Addressed Thomas review comments=0D
-- Added Travis-CI job to keep building --disable-tcg on ARM=0D
-=0D
-v2 [4]:=0D
-- Addressed review comments from Richard and Thomas from v1 [1]=0D
-=0D
-Regards,=0D
-=0D
-Phil.=0D
-=0D
-[1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html=0D
-[2]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg689168.html=0D
-[3]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg641796.html=0D
-[4]: https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05003.html=0D
-[5]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg746041.html=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (9):=0D
-  exec: Restrict TCG specific headers=0D
-  default-configs: Remove unnecessary SEMIHOSTING selection=0D
-  target/arm: Restrict ARMv4 cpus to TCG accel=0D
-  target/arm: Restrict ARMv5 cpus to TCG accel=0D
-  target/arm: Restrict ARMv6 cpus to TCG accel=0D
-  target/arm: Restrict ARMv7 R-profile cpus to TCG accel=0D
-  target/arm: Restrict ARMv7 M-profile cpus to TCG accel=0D
-  target/arm: Reorder meson.build rules=0D
-  .travis.yml: Add a KVM-only Aarch64 job=0D
-=0D
-Samuel Ortiz (1):=0D
-  target/arm: Do not build TCG objects when TCG is off=0D
-=0D
-Thomas Huth (1):=0D
-  target/arm: Make m_helper.c optional via CONFIG_ARM_V7M=0D
-=0D
- default-configs/devices/aarch64-softmmu.mak |  1 -=0D
- default-configs/devices/arm-softmmu.mak     | 28 --------=0D
- include/exec/helper-proto.h                 |  2 +=0D
- target/arm/cpu.h                            | 12 ----=0D
- hw/arm/realview.c                           |  7 +-=0D
- target/arm/cpu_tcg.c                        |  4 +-=0D
- target/arm/helper.c                         |  7 --=0D
- target/arm/m_helper-stub.c                  | 73 +++++++++++++++++++++=0D
- .travis.yml                                 | 32 +++++++++=0D
- hw/arm/Kconfig                              | 66 +++++++++++++++++--=0D
- target/arm/meson.build                      | 28 +++++---=0D
- 11 files changed, 196 insertions(+), 64 deletions(-)=0D
- create mode 100644 target/arm/m_helper-stub.c=0D
-=0D
--- =0D
-2.26.2=0D
-=0D
+On 1/30/21 2:52 AM, Philippe Mathieu-Daudé wrote:
+> KVM requires a cpu based on (at least) the ARMv7 architecture.
+> 
+> Only enable the following ARMv4 CPUs when TCG is available:
+> 
+>   - StrongARM (SA1100/1110)
+>   - OMAP1510 (TI925T)
+> 
+> The following machines are no more built when TCG is disabled:
+> 
+>   - cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+>   - sx1                  Siemens SX1 (OMAP310) V2
+>   - sx1-v1               Siemens SX1 (OMAP310) V1
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  default-configs/devices/arm-softmmu.mak | 2 --
+>  hw/arm/Kconfig                          | 8 ++++++++
+>  2 files changed, 8 insertions(+), 2 deletions(-)
+> 
+> diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
+> index 341d439de6f..8a53e637d23 100644
+> --- a/default-configs/devices/arm-softmmu.mak
+> +++ b/default-configs/devices/arm-softmmu.mak
+> @@ -14,8 +14,6 @@ CONFIG_INTEGRATOR=y
+>  CONFIG_FSL_IMX31=y
+>  CONFIG_MUSICPAL=y
+>  CONFIG_MUSCA=y
+> -CONFIG_CHEETAH=y
+> -CONFIG_SX1=y
+>  CONFIG_NSERIES=y
+>  CONFIG_STELLARIS=y
+>  CONFIG_REALVIEW=y
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 223016bb4e8..7126d82f6ce 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -1,3 +1,7 @@
+> +config ARM_V4
+> +    bool
+> +    depends on TCG
+> +
+>  config ARM_VIRT
+>      bool
+>      imply PCI_DEVICES
+> @@ -31,6 +35,8 @@ config ARM_VIRT
+>  
+>  config CHEETAH
+>      bool
+> +    default y if TCG
+
+This doesn't work as being added to all targets...
+
+> +    select ARM_V4
+>      select OMAP
+>      select TSC210X

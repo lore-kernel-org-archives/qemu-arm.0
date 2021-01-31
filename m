@@ -1,114 +1,176 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2156780lfo;
-        Sat, 30 Jan 2021 10:54:48 -0800 (PST)
-X-Received: by 2002:aa7:d39a:: with SMTP id x26mr10937407edq.51.1612032888419;
-        Sat, 30 Jan 2021 10:54:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612032888; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2561372lfo;
+        Sun, 31 Jan 2021 02:34:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJww+iMDJN/2xDl+g3T3BNaV9kr2Yoyg2IHXz7e5MbyX5n6iuNzmTP1tbImkEONZ9C3rnGHz
+X-Received: by 2002:a25:c04d:: with SMTP id c74mr1914064ybf.102.1612089272370;
+        Sun, 31 Jan 2021 02:34:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612089272; cv=none;
         d=google.com; s=arc-20160816;
-        b=xN9P5zl2PMBlqjC6AvwVByWWxycaMLMki/9xBNG5jyjQHLSJBFwJuhdd6YDrTmXdts
-         I/XQfUL3gg025uZrrPWL4fSDSh9bvIGrITOqQRnNL52aNCFM0q3Wyy4EoRtf+28qKMF0
-         YhYWUWl+grdmhjKZonvxbJjG7JhSOsRbP0ebDYtnstJQElZpSyysaxRZ8jytqeElxi5+
-         ehHRhZKvYnndfdyaqeIMXzQqW7yNYa2YFea+N3wveRBwfPfWIjt+beyOVLch++cdS5bp
-         qt+sBnKnTDxYt7vWPwPIgiIZQcPVnIC7q0dmp33zPU20Gn1B+odbzEHY6fp4jkIqbQNr
-         9EMA==
+        b=w+z9tpcsMbIa0z8bPF6qJS1RWTwd7ba2UKsO1KjM661EETDvRv8Rji/8QIcAfzipm6
+         xbNMuCXCk4SnCAfFy7nz7QCeSlyzVL1Fk3d/YBZddu6h79NwG95ht3m1jWnmHYLEMHuF
+         KISze8M/P67Fs0lGBD9MJI8zh201ANO+Ku5Aej2h7lvnK01XXPL1NLgVxafOwHToGFal
+         vmHjCPXYa7E5deXv9shhFLQ7bW3AXqiTF09Ol8f/6Bmabtt4ufDbhHoTUDMaf9ksFzaM
+         oam4739EMqsiG0tSktY8XnGjyTPKP00t8wfhSMOF0cYoJkYsuCGRV3bj9/BHlYldGhr6
+         FNxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=oXtPVE2IbtRRYCpvUtiVFQgbW5mh8YjoQMknIuSaeAc=;
-        b=wDh6weAVo7l0jw1U03W+4stwG9RJIpVuDqU3EEmPqTLwJ46J4rPx+7tTxMR7I/J+dE
-         6dfYBK2PzfY4oKDOCyENqe9CqtYhQI7VWIgGRpvvhL7QXXbmVh/jkehVFSuou1q5y/zv
-         bfyZYi50Qp3l7xNHasrVJed+8aDxHHN9TvrjSWya+3VV8CFU0Dy6DfxdybcHG5alPQqV
-         cNwBBL3FExGAbxz89BRLj8nDnKgVWZVPGgwc5dGCWDNNDzA/cgK2L9jqq0tRz+GVdOB4
-         lV7QUFsKeqBF0NNYtcE5vTQF+3QwgrWO9VLWDbv3X0cQSYMXJMAwlV3UJ2vsjvJrpN8n
-         PBLg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=TlmiqcRxjsssX02CFLK39hXDZo97/1WckvKX+iMFcz0=;
+        b=B9toSFHLk0U3tx1GBAkDGJ2rALNH5PlbKTxRKI02craHImG/sqrujXorj41RcFaNiL
+         5ZHqybV/6NVBqge6ReJd6WcmmYNE2ZMN2hL5SaxjlGb+ZyS4o3xjIEsn6euPsMW+7Vfc
+         TfqxaR7tG2RKRnoLYSCtQiTiG9VUHQSl986tYhptlgrEGL0HDzkBJuklYLf0F0UGvPwl
+         12lPlFTf5kjTyzKkolrezM3EU+nabB6V0GkIrKRVeHu74B+cTZaS7kDuD0vXwUiA4U/y
+         zqFR0c67djj0EPOBhSWIp0Knt0G8L1BvdcY+ejdzr55HI/ZZaAm2DPRnQPA4sVQdJvRu
+         7xqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b1rE5reO;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e9sor8199011ejd.46.2021.01.30.10.54.48
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kSTX42T1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e127si14152641ybe.388.2021.01.31.02.34.32
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 30 Jan 2021 10:54:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 31 Jan 2021 02:34:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=b1rE5reO;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=oXtPVE2IbtRRYCpvUtiVFQgbW5mh8YjoQMknIuSaeAc=;
-        b=b1rE5reO+/ylwUvWHDQ6gFBD1ZMLvjmBVj7z6iHZEtOIrt85KafbIsrJiUTFMjgkMv
-         EO239Ch7/2vVc0sITyLPdJw79Y+DCrMrThTp86B/tp4yto0D8J7B2oagD+F+VrSA1ciu
-         I5poKTCsVbT2lrqibfeCp+VtxN5qYq2t6UgtTQzNfWSNTueccgRu9w7NSq60zrXpqF00
-         E+yG6zYuZ31QrSrfccmyDg4uryatxiI+pF7o1OOGRbojYu5vd9czNJSN+4ROCzG5yfv6
-         OGKU/10X2cC0Qells3y39Jm9YWDAtsEjcdG3fj0bTfhFF3WPV5yrPTu2+mgt4gwFPh4s
-         n7BQ==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kSTX42T1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:45356 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6A3r-00069R-Pw
+	for alex.bennee@linaro.org; Sun, 31 Jan 2021 05:34:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55146)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6A3V-00068e-Dt; Sun, 31 Jan 2021 05:34:09 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:42503)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6A3T-0005xO-Or; Sun, 31 Jan 2021 05:34:09 -0500
+Received: by mail-wr1-x429.google.com with SMTP id c4so10680373wru.9;
+ Sun, 31 Jan 2021 02:34:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TlmiqcRxjsssX02CFLK39hXDZo97/1WckvKX+iMFcz0=;
+ b=kSTX42T1U/H9fd10+d/dkvU1dXVdNY0QUyhraMC9ZGsACTJcdhvGup+5c/9cOesDIQ
+ J7FzvWKcXme9bxYM9wL9iQoN+jvqgF9TG1E7+MMPLATDFm1iQLyUK/BbX9h7exHeKIzc
+ FNcRyjVBPnIQDrBKvvpyGrE81WUzN97AwJN5vuAkc1kxd9oxy1PumKycrS+hPh3NHESU
+ AbmZTOynGsCLGX8F4kYiV2fnY0dzsc1Dn4YE5xwwK6rn42CGO/tYVghoGQk+3ql5vOGV
+ 76O1T6vysOemodgGBII/aTeb9RPE7urJUWX7U3d9TtMWgI7DhflvwNCkKI1j+hMDlvAL
+ x28Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=oXtPVE2IbtRRYCpvUtiVFQgbW5mh8YjoQMknIuSaeAc=;
-        b=ZTovAyP0+lvRsafh2WIDWFW7Hx4qJxYg1qQwkZFTp4/sVZSNTSEPoJnY0kwOU1Cgz1
-         KoenKRvRYPqQN7T0jFxzlP9FxcejKf58ANTx64CBgG/Js9H0p3AHXDLJzaDoO7Hpv2f+
-         Pg31S6b+nMCAgL3DHJ97XO8yngnVwd27t2IKJl7iSJvXu5DxC1K+m1Wz0JMcAx4Hsmgx
-         av+PVCXoq2IcHlQsSngXAYm732tQzAN2noLjOv9BnLHy5TI8lv0W2Rm9LVV417t9sWKC
-         UebVavdrX4I9SaYJKiVtk471qK7PHtoHeD2Ks/ipihl/14gpYANJSzW5J6w9neexca4D
-         D3Ow==
-X-Gm-Message-State: AOAM533ZhZu0EgCNkb9vUZ2sJhsS2tjxcHUosjd67Ttrh0dZk2JFY6U8
-	dWdgXPXJI+gCGBeiSzC9YmSQ7cF7ic9K6jTvsUZnyFya
-X-Google-Smtp-Source: ABdhPJwo7gvPhPJtvirAJL3BBx+tVDxaTzL7yXGFz6XeyRrStm+3laD7Nmfgez99qF2/kAXH8/BrkdUPl35U/QOjqxg=
-X-Received: by 2002:a17:906:b215:: with SMTP id p21mr10088000ejz.407.1612032888158;
- Sat, 30 Jan 2021 10:54:48 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=TlmiqcRxjsssX02CFLK39hXDZo97/1WckvKX+iMFcz0=;
+ b=Doyalt7TDdSXKVchXjiUgaugjiXL4dA8+dKb3L1AlNjTfHIZzmdvEEVL5xmVyniLTj
+ XDA1YafwvKL+lVSJrlowtEbilb3C2+VjAYGi/5yezAEtfycsDLQ0FWe9AtHImc/b4kET
+ 7GthT4/0dTZdCs0b4+CltAsv1bxClE87oNXctiuqE6Ij0cvRxNmfd2+uglxisze72ohM
+ 54IGTdbK/ZybjFYrInbcdeMMbK6gGzY6vS9yT+wvJQPnQ5xUzyA8Py7IZrG9qfVAlqOQ
+ d/NAKvJPldczR70+fcueWJkwMUzSHRZd9nYoPHrNv93Ku/LinyR/VQ5vCqtu8585wKr3
+ nB5g==
+X-Gm-Message-State: AOAM531cMf6wYh5ISc3WkSF4MkR011Oyt7bkvd5lZuUVprhqby5FsA2T
+ EK2B/qO1Jv45W9RmvTqStghVxGPoGI0=
+X-Received: by 2002:a5d:4b0b:: with SMTP id v11mr12861857wrq.226.1612089244724; 
+ Sun, 31 Jan 2021 02:34:04 -0800 (PST)
+Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
+ [83.57.171.7])
+ by smtp.gmail.com with ESMTPSA id z185sm19143322wmb.0.2021.01.31.02.34.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 31 Jan 2021 02:34:03 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/intc/arm_gic: Fix interrupt ID in GICD_SGIR register
+Date: Sun, 31 Jan 2021 11:34:01 +0100
+Message-Id: <20210131103401.217160-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20210130015227.4071332-1-f4bug@amsat.org> <20210130015227.4071332-4-f4bug@amsat.org>
- <CAFEAcA8UCFghGDb4oMujek_W_wsyYz+duiQ-d8JyN09NYoff-g@mail.gmail.com> <2871f7db-fe0a-51d6-312d-6d05ffa281a3@amsat.org>
-In-Reply-To: <2871f7db-fe0a-51d6-312d-6d05ffa281a3@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 30 Jan 2021 18:54:37 +0000
-Message-ID: <CAFEAcA-W1tcRREaPTfMw98cNsHs7JHk4gjaJWaJNLpxZoVnKaw@mail.gmail.com>
-Subject: Re: [PATCH v5 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
-	kvm-devel <kvm@vger.kernel.org>, Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: n91PuX8HZyKc
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Alexander Bulekov <alxndr@bu.edu>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, qemu-stable@nongnu.org,
+ Li Qiang <liq3ea@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Prasad J Pandit <ppandit@redhat.com>, Darren Kenny <darren.kenny@oracle.com>,
+ qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1Ynshr6QTgz3
 
-On Sat, 30 Jan 2021 at 18:36, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Hi Peter,
->
-> On 1/30/21 4:37 PM, Peter Maydell wrote:
-> > On Sat, 30 Jan 2021 at 01:52, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
-org> wrote:
-> >>
-> >> KVM requires a cpu based on (at least) the ARMv7 architecture.
-> >
-> > These days it requires ARMv8, because we dropped 32-bit host
-> > support, and all 64-bit host CPUs are v8.
->
-> Oh, this comment is about the target, to justify it is pointless to
-> include pre-v7 target cpus/machines in a KVM-only binary.
->
-> I'll update as:
->
-> "KVM requires the target cpu based on (at least) the ARMv7
-> architecture."
+Per the ARM Generic Interrupt Controller Architecture specification
+(document "ARM IHI 0048B.b (ID072613)"), the SGIINTID field is 4 bit,
+not 10:
 
-KVM requires the target CPU to be at least ARMv8, because
-we only support the "host" cpu type, and all KVM host CPUs
-are v8, which means you can't pass a v7 CPU as the target CPU.
-(This used to not be true when we still supported running
-KVM on a v7 CPU like the Cortex-A15, in which case you could
-pass it to the guest.)
+  - 4.3 Distributor register descriptions
+  - 4.3.15 Software Generated Interrupt Register, GICD_SG
 
-thanks
--- PMM
+    - Table 4-21 GICD_SGIR bit assignments
+
+    The Interrupt ID of the SGI to forward to the specified CPU
+    interfaces. The value of this field is the Interrupt ID, in
+    the range 0-15, for example a value of 0b0011 specifies
+    Interrupt ID 3.
+
+Correct the irq mask to fix an undefined behavior (which eventually
+lead to a heap-buffer-overflow, see [Buglink]):
+
+   $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M virt,accel=qtest -qtest stdio
+   [I 1612088147.116987] OPENED
+  [R +0.278293] writel 0x8000f00 0xff4affb0
+  ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bounds for type 'uint8_t [16][8]'
+  SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/intc/arm_gic.c:1498:13
+
+Cc: qemu-stable@nongnu.org
+Fixes: 9ee6e8bb853 ("ARMv7 support.")
+Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
+Reported-by: Alexander Bulekov <alxndr@bu.edu>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+Isnt it worth a CVE to help distributions track backports?
+---
+ hw/intc/arm_gic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index af41e2fb448..75316329516 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -1476,7 +1476,7 @@ static void gic_dist_writel(void *opaque, hwaddr offset,
+         int target_cpu;
+ 
+         cpu = gic_get_current_cpu(s);
+-        irq = value & 0x3ff;
++        irq = value & 0xf;
+         switch ((value >> 24) & 3) {
+         case 0:
+             mask = (value >> 16) & ALL_CPU_MASK;
+-- 
+2.26.2
+

@@ -1,185 +1,230 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2566167lfo;
-        Sun, 31 Jan 2021 02:43:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzG0go5Alnmy7+1hA4bOUDwqF6YtDeYR562qIQXrjaTLF4QxEi9I5ma7NMK7fh0yGgnNeL9
-X-Received: by 2002:ab0:3310:: with SMTP id r16mr6734685uao.14.1612089809273;
-        Sun, 31 Jan 2021 02:43:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612089809; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2581080lfo;
+        Sun, 31 Jan 2021 03:13:20 -0800 (PST)
+X-Received: by 2002:a7b:c0d8:: with SMTP id s24mr11018177wmh.4.1612091600549;
+        Sun, 31 Jan 2021 03:13:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612091600; cv=none;
         d=google.com; s=arc-20160816;
-        b=kF89mkIeCDM3fgfHEqJw4Ph1QkH6dKcOX3JwOGh/d+36RxvQWLzNVZdtTZBADo+v00
-         NcTt8RlYSpmTQeQx+ZVC6wmtK+332Ntur3jE0hD9f5Mb2J323Dgz9me7FSnPsRo2S+S7
-         0NnZUr43E5iW83O662BVbfYaKyz9fqBKvwfXrOFeYstlIVJL6V/QjKxVZD5K5Aqeb9bq
-         EG2gxI3ennk2OXBKqZExQv+XbLTnhb/aggD5wmLN2L8VNf/1Lwr2wDmdv77MmTJn5pNv
-         QcXbhXJ1NfswaPppAY35ezDUI1GPyspHmKY7Pgx/VWcQE0sQaFgRQ4d7O40wzTtl3Dqq
-         dHXA==
+        b=suTH1TBVsJu37qTVkLNB8U0Zz3vz/7T64Iw80kOHpCQ121UTzBbtAs6v86MF2LRnE4
+         FDn58fIV1LaM3CS0acVaigPqqpKXLYodceMeJrmGS8v/HBsU9MrjkgJ8w3iyvG5hPG15
+         n9yWwoMJ9XwnZ2Yj6yH+MbgTXzQGi5rFbs3YGNmP5hqI/eePntkZwPbv5oBwY8kmIoyH
+         wQ2C2w++4oCg5Yne3PdBhM/4WM+v6+HooO4yy1qIC1m0u0G29J4NoaizAGI0D8tRlOaI
+         fuiQe9MCqNJuVcEiyBiPU+/9cdl0nyoeeCruNWjEO8OegSlQyyfoIQqdfPdApXE0Zin5
+         XNVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=QxB7I+r8+V4xA23p+DNTd+vmCSZ/WgkR+HXPJJCiVFg=;
-        b=JYBPH+vlSrTMAm5SN3EzkZfDnu2akLCyZexJVL1ItCB8hFsgJlco6p7VhbUUEK4+2a
-         eWb+4orxSX+8VOX1wHyON8UIYyBakJBxdGtXSQ02MDSkENVNSqolOjFb25mSVQnw5avv
-         a8onvlel7upvCEVp2lvR4AzPE6ZB0ZjJBykUsoqDtI6I15nHhB364TNZ1zAeI9fKs3fg
-         rW3reoyuRxP7yy3cak3GJ5nM8AsN2fG0/TRhfXLTbiS/LYPlbsRBfJ7p3MlZVQeI8wT4
-         frQ5lDNYuJ5Yhip9IC7PrcxGq79QHCA/2XF9GsmcPEhmcgWkYtYjOi66802KPb09FUit
-         4TUQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:sender:dkim-signature;
+        bh=nu0fflOvwC9lnnocMvnUlxjUoWk9Y1oHXbnM2of1VNw=;
+        b=aUU4T/niFtAqQSZO6Xmgnb68HjyrMesFQbwBGuWKUQBHZpQ0P0HVxj8zYwZBznE7EO
+         fOqC/xbDU0GwjZK+LxbSxUxGEokPrkWSyq+jkrBsnCtaNz39M6YG98X5InfCBzi0ZeMJ
+         bMU2C7M8UJvw3apqqyRbziVY0tNeI2tVyqZgh+UfF70aZNziFv9GySRljhVIxO3WwEti
+         YZpNkzZyua77aKwmkXqBGhX5UwPnkkEW/WXVQEOT2d5PQn0rXnhlCBT8AuTcUzVlHXq7
+         i/t2rgJwaQuxBNlhVwvbd4CYkaaLZFusEMPJK2gtmGLD7nAAjsMroHZojaLMGfzjRejx
+         TFpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kKco8a5x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="GMkP/wCf";
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l19si2148535uae.123.2021.01.31.02.43.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jan 2021 02:43:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x4sor6757590wmc.23.2021.01.31.03.13.20
+        (Google Transport Security);
+        Sun, 31 Jan 2021 03:13:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kKco8a5x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="GMkP/wCf";
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:48458 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6ACW-0008Ul-M6
-	for alex.bennee@linaro.org; Sun, 31 Jan 2021 05:43:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55814)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6ACE-0008UL-FC; Sun, 31 Jan 2021 05:43:10 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:33971)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6ACC-0001Ol-RR; Sun, 31 Jan 2021 05:43:10 -0500
-Received: by mail-wr1-x433.google.com with SMTP id g10so13405512wrx.1;
- Sun, 31 Jan 2021 02:43:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=QxB7I+r8+V4xA23p+DNTd+vmCSZ/WgkR+HXPJJCiVFg=;
- b=kKco8a5xVmIoRQNh4Gaz1exxGF39CTNEQsqic2Z85/xjkyaDO1+41bGtQef0/WCAZC
- 2JCvt0sKU2I/LxtmuHMQuSNnjjFel29+sTL0iHUEqw1RGJxVjokMX0VkfAJySfXKFeKu
- O97iIPqFQcGWzk3myqJnXn5p1iS8ccmqH8aLDxZ/93K5ryPChR6Nk6WRmCvk1pOXzXyW
- cnqq1Oezyce0CGjyCHdt2JfT8yu6r96V9A8FMNKZHbHnN4A4WKqP4fGxEcgouWUAb0sn
- 2g4/013DKuGlonFz1OkBFna7vaIgP8m4kKNP3CgPlLwc9difVZxw0f05PuOQYZ+Z9BcH
- FN1Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=nu0fflOvwC9lnnocMvnUlxjUoWk9Y1oHXbnM2of1VNw=;
+        b=GMkP/wCfwoRMy/FW9sbsBrWn/UnFhGbUstPstPeXtbDB8+Zm7Jy9xM3uckHQcYl6LN
+         js7d+AieoC3plFBxVD7OMMSvrxFWsVOoasWl8xCaArJyZL5YrNhiwJ++BamyXysJA/S5
+         2ts9RpOACFdLkspO7dxfR/tqpldF+PZw9fBRgmq5/QusxuCXuFIfEMqKyMgX5HGt0m7i
+         5pKRAAFlhokVoJgiqWsPqx49QkmY1coTIzDZivTaXj0KBdHNJ0fT+oKuBu7F5LRXjCCa
+         FF9DcOyvgs6ojjt4RwNz3eyXPdA+1JGBXKTyWF1RCYB+hLR9JrVWiijHC+jflrAHGa8d
+         Ji3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=QxB7I+r8+V4xA23p+DNTd+vmCSZ/WgkR+HXPJJCiVFg=;
- b=MkdSwTkkY4qsQnZ68VhVaFa431gdSNKwLeb64CUfA768+Im8Pr/jXRsbMS1JO0mOZs
- 4lz8XNldD4EFWLm6OPZzM79NWp2B78hNc/KmEjxkYA4OYyriAOwDxl5m61vQ1G8P0dAD
- PPXoh9d8XBC7zZ1Wvn9PnKaEbHKCStg93l3qMGgJ/BpchTMJkC4H99fCvJIJosXhUtxk
- FAvV0KAYYs8vUlieJWY4yxPrzQzo3SF4gFQuP1v+Oi8h6JaJPvzFTtoThlRGVohyc3nv
- 8D8WnS5HLnRy5UbnIGntheyHz+HZ6+ztlQc/iZIhtf4oSKG3/31E39Fk6ukqfR0Q3Q2Y
- cRAA==
-X-Gm-Message-State: AOAM530lxXlqDfFjNkFksrgxs3rvFhbo6Q+BU7IE/6Ft4dy8X7xuyop0
- zChe0uUEu/7Kg43xkqKswMs=
-X-Received: by 2002:adf:9523:: with SMTP id 32mr13561898wrs.361.1612089786157; 
- Sun, 31 Jan 2021 02:43:06 -0800 (PST)
-Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
- [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id m12sm17978586wmc.10.2021.01.31.02.43.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 31 Jan 2021 02:43:05 -0800 (PST)
-Subject: Re: [PATCH] hw/intc/arm_gic: Fix interrupt ID in GICD_SGIR register
-To: qemu-devel@nongnu.org
-References: <20210131103401.217160-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
-Date: Sun, 31 Jan 2021 11:43:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+         :mime-version:content-transfer-encoding;
+        bh=nu0fflOvwC9lnnocMvnUlxjUoWk9Y1oHXbnM2of1VNw=;
+        b=KaIm+8hJ6MdnAN6TjzaqX+3Ge4WNLmbEA/n/zBoBcqa5Q8NJ+w/0Rk8CvwJKrztexb
+         qGlHmYe6gxVO8f/LemrdmU1hygi50yZehSdqPxQIfNq6VpXfHSvA9Ks+dJFkTerPQ8KX
+         XYWeqGKmcs8fz+ogNtgQHux9ZCmWFvcwgXZW7+20ph19wJeL2hkaoVJt3NUSy68x75/t
+         vPSwhjFnd5n52+ZnNSeWS1ppWA8fIM6CA0O/7oW8gpDj6Acf3lmq9RBlqhrM+cjSbf3+
+         DbHkfMphKQLtE16pVlvFh2KKYHr/TpRGcKLiaQ2FeO9R6uDggcZE7CQdlPKiBGJinzNC
+         Vfrg==
+X-Gm-Message-State: AOAM531a1xOJzZHBkLuTXedTFIZfHXlWhW0Edg0POgSW4n3L2dzF1xx2
+	2zc2Z5fBQamQvA016MGGx6Y=
+X-Google-Smtp-Source: ABdhPJzIBt7iHlMIteL1B3eYUDHuKMn0E+lTKfVqdSXwgXiLDotBHQmkksvK0moPF44T2gKqd43rPQ==
+X-Received: by 2002:a1c:f417:: with SMTP id z23mr10316640wma.29.1612091600288;
+        Sun, 31 Jan 2021 03:13:20 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
+        by smtp.gmail.com with ESMTPSA id l5sm22224061wrv.44.2021.01.31.03.13.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 31 Jan 2021 03:13:19 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Sarah Harris <S.E.Harris@kent.ac.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	qemu-block@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	qemu-s390x@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Anthony Green <green@moxielogic.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	qemu-riscv@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	qemu-arm@nongnu.org,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Michael Walle <michael@walle.cc>,
+	Greg Kurz <groug@kaod.org>,
+	qemu-ppc@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Stafford Horne <shorne@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Marek Vasut <marex@denx.de>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alistair Francis <Alistair.Francis@wdc.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Subject: [PATCH 00/10] target: Provide target-specific Kconfig
+Date: Sun, 31 Jan 2021 12:13:06 +0100
+Message-Id: <20210131111316.232778-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20210131103401.217160-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Darren Kenny <darren.kenny@oracle.com>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, Li Qiang <liq3ea@gmail.com>,
- qemu-stable@nongnu.org, Prasad J Pandit <ppandit@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1roU2pK1DKow
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: NReiJUCXZJtv
 
-On 1/31/21 11:34 AM, Philippe Mathieu-Daudé wrote:
-> Per the ARM Generic Interrupt Controller Architecture specification
-> (document "ARM IHI 0048B.b (ID072613)"), the SGIINTID field is 4 bit,
-> not 10:
-> 
->   - 4.3 Distributor register descriptions
->   - 4.3.15 Software Generated Interrupt Register, GICD_SG
-> 
->     - Table 4-21 GICD_SGIR bit assignments
-> 
->     The Interrupt ID of the SGI to forward to the specified CPU
->     interfaces. The value of this field is the Interrupt ID, in
->     the range 0-15, for example a value of 0b0011 specifies
->     Interrupt ID 3.
-> 
-> Correct the irq mask to fix an undefined behavior (which eventually
-> lead to a heap-buffer-overflow, see [Buglink]):
-> 
->    $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M virt,accel=qtest -qtest stdio
->    [I 1612088147.116987] OPENED
->   [R +0.278293] writel 0x8000f00 0xff4affb0
->   ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bounds for type 'uint8_t [16][8]'
->   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/intc/arm_gic.c:1498:13
-> 
-> Cc: qemu-stable@nongnu.org
-> Fixes: 9ee6e8bb853 ("ARMv7 support.")
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
-
-Also:
-Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
-
-> Reported-by: Alexander Bulekov <alxndr@bu.edu>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
-> Isnt it worth a CVE to help distributions track backports?
-> ---
->  hw/intc/arm_gic.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index af41e2fb448..75316329516 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -1476,7 +1476,7 @@ static void gic_dist_writel(void *opaque, hwaddr offset,
->          int target_cpu;
->  
->          cpu = gic_get_current_cpu(s);
-> -        irq = value & 0x3ff;
-> +        irq = value & 0xf;
->          switch ((value >> 24) & 3) {
->          case 0:
->              mask = (value >> 16) & ALL_CPU_MASK;
-> 
+Hi,=0D
+=0D
+This series add a Kconfig file to each target, allowing=0D
+to select target-specific features there, instead of from=0D
+the hardware Kconfig.=0D
+=0D
+This simplifies managing multi-arch features such semihosting.=0D
+=0D
+Series organization:=0D
+=0D
+1/ Some targets use the architecture symbol to select boards and=0D
+peripherals (SH4 and LM32), we need to clean that first.=0D
+=0D
+2/ Introduce empty target Kconfig, update meson.=0D
+=0D
+3/ Move architectural features out of hardware:=0D
+   - x86 SEV=0D
+   - ARM v7m=0D
+   - generic semihosting=0D
+=0D
+[following only important to patchew, unrelated to this series]=0D
+Based-on: <20210131105918.228787-1-f4bug@amsat.org>=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (10):=0D
+  hw/sh4/Kconfig: Rename CONFIG_SH4 -> CONFIG_SH4_PERIPHERALS=0D
+  hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for lm32-evr/uclinux boards=0D
+  hw/sh4/Kconfig: Rename CONFIG_LM32 -> CONFIG_LM32_PERIPHERALS=0D
+  hw/lm32/Kconfig: Have MILKYMIST select LM32_PERIPHERALS=0D
+  meson: Introduce target-specific Kconfig=0D
+  target/i386: Move SEV feature to target Kconfig=0D
+  target/arm: Move V7M feature to target Kconfig=0D
+  default-configs: Remove unnecessary SEMIHOSTING selection=0D
+  target: Move ARM_COMPATIBLE_SEMIHOSTING feature to target Kconfig=0D
+  target: Move SEMIHOSTING feature to target Kconfig=0D
+=0D
+ default-configs/devices/arm-softmmu.mak       |  2 --=0D
+ default-configs/devices/lm32-softmmu.mak      |  4 +---=0D
+ default-configs/devices/m68k-softmmu.mak      |  2 --=0D
+ .../devices/mips-softmmu-common.mak           |  3 ---=0D
+ default-configs/devices/nios2-softmmu.mak     |  2 --=0D
+ default-configs/devices/riscv32-softmmu.mak   |  2 --=0D
+ default-configs/devices/riscv64-softmmu.mak   |  2 --=0D
+ default-configs/devices/unicore32-softmmu.mak |  1 -=0D
+ default-configs/devices/xtensa-softmmu.mak    |  2 --=0D
+ meson.build                                   |  3 ++-=0D
+ Kconfig                                       |  1 +=0D
+ hw/arm/Kconfig                                |  4 ----=0D
+ hw/block/meson.build                          |  2 +-=0D
+ hw/char/meson.build                           |  6 ++---=0D
+ hw/i386/Kconfig                               |  4 ----=0D
+ hw/intc/meson.build                           |  4 ++--=0D
+ hw/lm32/Kconfig                               | 10 +++++---=0D
+ hw/lm32/meson.build                           |  2 +-=0D
+ hw/sh4/Kconfig                                |  6 ++---=0D
+ hw/timer/meson.build                          |  4 ++--=0D
+ target/Kconfig                                | 23 +++++++++++++++++++=0D
+ target/alpha/Kconfig                          |  2 ++=0D
+ target/arm/Kconfig                            | 11 +++++++++=0D
+ target/avr/Kconfig                            |  2 ++=0D
+ target/cris/Kconfig                           |  2 ++=0D
+ target/hppa/Kconfig                           |  2 ++=0D
+ target/i386/Kconfig                           |  9 ++++++++=0D
+ target/lm32/Kconfig                           |  3 +++=0D
+ target/m68k/Kconfig                           |  3 +++=0D
+ target/microblaze/Kconfig                     |  2 ++=0D
+ target/mips/Kconfig                           |  7 ++++++=0D
+ target/moxie/Kconfig                          |  2 ++=0D
+ target/nios2/Kconfig                          |  3 +++=0D
+ target/openrisc/Kconfig                       |  2 ++=0D
+ target/ppc/Kconfig                            |  5 ++++=0D
+ target/riscv/Kconfig                          |  7 ++++++=0D
+ target/rx/Kconfig                             |  2 ++=0D
+ target/s390x/Kconfig                          |  2 ++=0D
+ target/sh4/Kconfig                            |  2 ++=0D
+ target/sparc/Kconfig                          |  5 ++++=0D
+ target/tilegx/Kconfig                         |  2 ++=0D
+ target/tricore/Kconfig                        |  2 ++=0D
+ target/unicore32/Kconfig                      |  3 +++=0D
+ target/xtensa/Kconfig                         |  3 +++=0D
+ 44 files changed, 129 insertions(+), 43 deletions(-)=0D
+ create mode 100644 target/Kconfig=0D
+ create mode 100644 target/alpha/Kconfig=0D
+ create mode 100644 target/arm/Kconfig=0D
+ create mode 100644 target/avr/Kconfig=0D
+ create mode 100644 target/cris/Kconfig=0D
+ create mode 100644 target/hppa/Kconfig=0D
+ create mode 100644 target/i386/Kconfig=0D
+ create mode 100644 target/lm32/Kconfig=0D
+ create mode 100644 target/m68k/Kconfig=0D
+ create mode 100644 target/microblaze/Kconfig=0D
+ create mode 100644 target/mips/Kconfig=0D
+ create mode 100644 target/moxie/Kconfig=0D
+ create mode 100644 target/nios2/Kconfig=0D
+ create mode 100644 target/openrisc/Kconfig=0D
+ create mode 100644 target/ppc/Kconfig=0D
+ create mode 100644 target/riscv/Kconfig=0D
+ create mode 100644 target/rx/Kconfig=0D
+ create mode 100644 target/s390x/Kconfig=0D
+ create mode 100644 target/sh4/Kconfig=0D
+ create mode 100644 target/sparc/Kconfig=0D
+ create mode 100644 target/tilegx/Kconfig=0D
+ create mode 100644 target/tricore/Kconfig=0D
+ create mode 100644 target/unicore32/Kconfig=0D
+ create mode 100644 target/xtensa/Kconfig=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D

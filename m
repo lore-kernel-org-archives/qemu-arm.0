@@ -1,71 +1,71 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599588lfo;
-        Sun, 31 Jan 2021 03:50:54 -0800 (PST)
-X-Received: by 2002:adf:ee43:: with SMTP id w3mr13978087wro.200.1612093853995;
-        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612093853; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599627lfo;
+        Sun, 31 Jan 2021 03:50:59 -0800 (PST)
+X-Received: by 2002:a5d:453b:: with SMTP id j27mr13463598wra.92.1612093859127;
+        Sun, 31 Jan 2021 03:50:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612093859; cv=none;
         d=google.com; s=arc-20160816;
-        b=aydc3ky3Po+KtQly7ikNrxWe7jA69A4rTXLwkrIKVReapBFQ7EMb+yGzC3kXPzvFod
-         +UqYNZtOc0Vy6vj+X2rptgtsmaPtxdcw9d/02mbm7UpyemtlFUDtZCBIuhnJMSE1e9iT
-         vTVwL99gzBQtVS6HzIza/w4q8wGfoTajWpjZ8LGhqHo5U6nCEjtIIcLs21NkDBTLduQ9
-         8ThnydszLRZg+vKLDvAlvyI/dCJ7piX6w15/545887LdSGHpNx5pmdveZyzTt6pCIjkD
-         eZlCrQVgS9LVCXaW3UiK3KOeSR2T/mF9Qb04qP7KSbWH8nV03OptrsTcWyPSfx5egYEk
-         kUXg==
+        b=QO4RhHNB+tkCZM+IRCcqBnHjBHneRIsXWi7dVeivS48vxiJMpCnktn7gSeGuwm3DzG
+         QshQYLmG9u+LjMYlcEiRrl5jZoj0clRlwuTXWzp9913qx1HG6Prb4dZx6g3ZrK+GQ+OZ
+         sD3cSBxw5HfPK3nsEBT/f5xujWwn0+X1bA0Js5ewRguAJRc8NJ78VWpIlpvKYdOoSddK
+         IyLlGSCWZC3w1J0K59ccrSstjiz61Q1D225ILv4k7o+3JnjkJkY5cA+aYey6eUlkCstF
+         4yMXzreS6XU9UxwBnuy9jyJraFlnuhzjZJytIjR2qzzr2jcUqskFFOzC+O90DuB1SFvP
+         zMvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=ELWTSu1rl/DhvuIH4cal4USbDecgDqC8O4/05ndhpXE=;
-        b=u/57/0wQp9ZhnctBzZMIz0TzTUkZ29eGFyf4ReiFST32Q/wbRi+3pimr9WlGAqjRci
-         TP3dk7pNMIXg5VKYFYtYFvWvP24X1Ih/TQ13OCWMBdlYDlX5ZjMBxnkRHvJft90+Pi+d
-         KNmYDnMda5Mw61FqSdqswxj1ShGZW34CV5LZ/11AKHCg+29lBhRHeVIUYm8rQwg6T6L6
-         70DLtTek0C2rMWYDxXLIhV6GlsNUeBPFi2m7MdRspsGt96Nf7MWwUySgu4wajCUkgPE6
-         H8Wm37LCIH2yOzNmfFErHIDqej9dFhjZ2su3wAUOLanmmkTqXSXNNc6PS/EKj1C0GKVK
-         ac7A==
+        bh=55M93vKE1ahVgefWyZvIGcKvoJvAwdKqopFIoeHKkkA=;
+        b=QAMbeQ3VKTn307nGQ3WeR0byDqHu/2IfE+jCQ7ZU75qwK1uWwWLPGCffOPrH5Le03r
+         2JvjRWgJsdj4vCUDZYD6Vr1rCgHYnOMNYgmFQnhDI3inuaR5McWlPIGvIV6/EdAiq+l8
+         oDQ3aDS936ddFnS6GPypltqUtTFtDH7XZUiYpKGYAi9uZBB2FMwqXkLb9pMTzzh9bl/y
+         LO8x01eY5tLjOFSUfyusbo+U2p8ys1fjBt6wBp4oTBxBbGIaU4P3EwiRumSXwRcQN+Vy
+         ik67IWTRuGiOef/OQxw3HZSGieLVEem5JmpthKs+1wFZtQKMzVAqihxBbi8iHerKqSu5
+         dFZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="atxpO5/C";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=freBR3tI;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w10sor7217749wru.11.2021.01.31.03.50.53
+        by mx.google.com with SMTPS id g145sor6715756wmg.17.2021.01.31.03.50.59
         (Google Transport Security);
-        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
+        Sun, 31 Jan 2021 03:50:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="atxpO5/C";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=freBR3tI;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=ELWTSu1rl/DhvuIH4cal4USbDecgDqC8O4/05ndhpXE=;
-        b=atxpO5/Camn9p7jABxjl2WTPortxY8V1F0jxEhdR2VF0SBEfPL9LK5Vq47+Eod8YM4
-         aSZuSFtkdwJyK3FzZaGake8jsnv3T1MqlWW+JvnWt/YTtBuI0fzJvdhdooOiQHAYpA8U
-         UVFjEvV4zBNtllHFhkwQzhLAeGmiSs62p2SIMZjyQGGHFYpj8/nWFB0rzW5VU5sTmUgU
-         qArFne3BXB4GxsdEsUtx2RothKht8yJaLcLGwCRcFLJ64xxggBPETOdIxL3w2xWx/eHW
-         kp9nxOa9ngRX8eU7jbkiS5Yj9hDjtee2VaqEn0fy7cAe7jyw4/p9JLsxgkBb5WKz3a/P
-         MdEQ==
+        bh=55M93vKE1ahVgefWyZvIGcKvoJvAwdKqopFIoeHKkkA=;
+        b=freBR3tIPtKMjI2+MuKbji7ZAmhWoqg3OKGAyKpW5xTZpNL67hf8t/x55QZPJTsMKz
+         yEgpK6BA74aoPJ3neWrEuMTCkKXHqYvDm8EEuhQyQq+J9Qdipr6EZ9TB9ia301pTOoz9
+         vv9A7BlPEvFHTRQ3M8w0tWlUePeXhLMgnZjd3JfMdtm30/IKP2UnSGsQS5fQkz5uSsxt
+         ceUquXDjHUU1rTo7hKFajd/mUnA7Mi6K/dt+TtlgJYUl86XLQH7/EFyjqFqD7mwzCzQ0
+         iT9EJe0qFQ90dsHDB1V8YvULyo5X3sBy5qnHmUGWDwe8TzgD3Z9yRx6ltBfOJRZHPZow
+         zY3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=ELWTSu1rl/DhvuIH4cal4USbDecgDqC8O4/05ndhpXE=;
-        b=hvqt+CMmqzsS9NAK85ecqQsz193Rtn+gM3u3gAZNmD9BXtEqP3UlsViKWdAyqxa+Ku
-         hdQBdIuMJrRj/VG8mvO43V1fpNpmps7Qyq+P17Vcum7fBXyoDSy4eHPQ5uHPHvYdYy/n
-         kP742UXLJetlT2vuXvd6UyNKzUKym4ni2XqVizqQw6M7FBe3Vg08wwxaMM67KK9hg3fN
-         g4iwafLj2C5yPIgRIxLnoaDgFx2vdaYK+OSI+jHvWVwS4oilHQs5ib0rBXdKQq+59wT/
-         nTiobN1jMczAoJ8qy5YxDAcjT0NcT6SMTlkFIIOWH/RkWsfVCIA4dTFRuNFdPAQydkAf
-         Ewig==
-X-Gm-Message-State: AOAM530aI26VdPg0N0sNJpIipLWjgvldc1gyvRHEJpDS/jBJxhYDVrET
-	5FFLjLL0OzjaPZIDj7Rak3Q=
-X-Google-Smtp-Source: ABdhPJw052bc5n0sg8qrUOVnPuK+eGRq0Nn6pE/jzM3JbJxgQX3UIdClky2OLAwF4K5l6GeEHLBoOw==
-X-Received: by 2002:adf:9427:: with SMTP id 36mr13393596wrq.271.1612093853746;
-        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
+        bh=55M93vKE1ahVgefWyZvIGcKvoJvAwdKqopFIoeHKkkA=;
+        b=iy5EAZvsg/ikciliPIc/CeYswkmZOOHC8FxANbDdk04iibT6Wyl7ev+4CcC6YtSIHk
+         q+tXLtkqz6uVUp0iahj4vHVVrcPKTqZ8PmN/NDuR748CRya5BqcJijF2oNu8WxniTf7I
+         hxeFbs6WJDoHzQYUpnx742yTVwQQVTTR4vDwuUg1bnv2RfvaQtxotxYMNKRzloqh849T
+         ycT8CTkcbcTXfvgNqr8ZI1fJn8TeUsS+p22CoXPFSQSrWsDqtkXkd5TLVBDvqS6lxH2q
+         32PXagqWxTs6nF/EEmHbmKJ/s1i9+BBUQWfabBwgauNeqmJi8i8vZvGkn/ZMX1lxHwed
+         SMMA==
+X-Gm-Message-State: AOAM531TUHNPDv9OHXRkC2iS8yIliDphXinr5NYDD8P8P12RtPZVmI9B
+	dR6/MUgniD/PH7RRCMxccwo=
+X-Google-Smtp-Source: ABdhPJwJ9hes8lhe7OgVqiDeXshE4pGmaMbjuBMuK73ScXw3dz3Zg0MEOl283XRP7LZaLbEaQLBqZA==
+X-Received: by 2002:a1c:a406:: with SMTP id n6mr10935564wme.53.1612093858925;
+        Sun, 31 Jan 2021 03:50:58 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
-        by smtp.gmail.com with ESMTPSA id w4sm2862428wrt.69.2021.01.31.03.50.52
+        by smtp.gmail.com with ESMTPSA id u5sm18602187wmg.9.2021.01.31.03.50.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
+        Sun, 31 Jan 2021 03:50:58 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -84,132 +84,75 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	John Snow <jsnow@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v6 05/11] target/arm: Restrict ARMv6 cpus to TCG accel
-Date: Sun, 31 Jan 2021 12:50:16 +0100
-Message-Id: <20210131115022.242570-6-f4bug@amsat.org>
+Subject: [PATCH v6 06/11] target/arm: Restrict ARMv7 R-profile cpus to TCG accel
+Date: Sun, 31 Jan 2021 12:50:17 +0100
+Message-Id: <20210131115022.242570-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131115022.242570-1-f4bug@amsat.org>
 References: <20210131115022.242570-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GXPYjzGZsLNL
+X-TUID: l/vbqguHcMfG
 
 KVM requires the target cpu to be at least ARMv8 architecture
 (support on ARMv7 has been dropped in commit 82bf7ae84ce:
 "target/arm: Remove KVM support for 32-bit Arm hosts").
 
-Only enable the following ARMv6 CPUs when TCG is available:
+Beside, KVM only supports A-profile, thus won't be able to run
+R-profile cpus.
 
-  - ARM1136
-  - ARM1176
-  - ARM11MPCore
-  - Cortex-M0
+Only enable the following ARMv7 R-Profile CPUs when TCG is available:
 
-The following machines are no more built when TCG is disabled:
+  - Cortex-R5
+  - Cortex-R5F
 
-  - kzm                  ARM KZM Emulation Baseboard (ARM1136)
-  - microbit             BBC micro:bit (Cortex-M0)
-  - n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
-  - n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
-  - realview-eb-mpcore   ARM RealView Emulation Baseboard (ARM11MPCore)
+The following machine is no more built when TCG is disabled:
+
+  - xlnx-zcu102          Xilinx ZynqMP ZCU102 board with 4xA53s and 2xR5Fs
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- default-configs/devices/arm-softmmu.mak | 2 --
- hw/arm/realview.c                       | 2 +-
- tests/qtest/cdrom-test.c                | 2 +-
- hw/arm/Kconfig                          | 6 ++++++
- target/arm/Kconfig                      | 4 ++++
- 5 files changed, 12 insertions(+), 4 deletions(-)
+ default-configs/devices/aarch64-softmmu.mak | 1 -
+ hw/arm/Kconfig                              | 2 ++
+ target/arm/Kconfig                          | 4 ++++
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-index 0aad35da0c4..175530595ce 100644
---- a/default-configs/devices/arm-softmmu.mak
-+++ b/default-configs/devices/arm-softmmu.mak
-@@ -10,9 +10,7 @@ CONFIG_ARM_VIRT=y
- CONFIG_CUBIEBOARD=y
- CONFIG_EXYNOS4=y
- CONFIG_HIGHBANK=y
--CONFIG_FSL_IMX31=y
- CONFIG_MUSCA=y
--CONFIG_NSERIES=y
- CONFIG_STELLARIS=y
- CONFIG_REALVIEW=y
- CONFIG_VEXPRESS=y
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 2dcf0a4c23e..0606d22da14 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -463,8 +463,8 @@ static void realview_machine_init(void)
- {
-     if (tcg_builtin()) {
-         type_register_static(&realview_eb_type);
-+        type_register_static(&realview_eb_mpcore_type);
-     }
--    type_register_static(&realview_eb_mpcore_type);
-     type_register_static(&realview_pb_a8_type);
-     type_register_static(&realview_pbx_a9_type);
- }
-diff --git a/tests/qtest/cdrom-test.c b/tests/qtest/cdrom-test.c
-index 1f1bc26fa7a..cb0409c5a11 100644
---- a/tests/qtest/cdrom-test.c
-+++ b/tests/qtest/cdrom-test.c
-@@ -224,8 +224,8 @@ int main(int argc, char **argv)
-         const char *armmachines[] = {
- #ifdef CONFIG_TCG
-             "realview-eb",
--#endif /* CONFIG_TCG */
-             "realview-eb-mpcore",
-+#endif /* CONFIG_TCG */
-             "realview-pb-a8",
-             "realview-pbx-a9", "versatileab", "versatilepb", "vexpress-a15",
-             "vexpress-a9", "virt", NULL
+diff --git a/default-configs/devices/aarch64-softmmu.mak b/default-configs/devices/aarch64-softmmu.mak
+index 958b1e08e40..a4202f56817 100644
+--- a/default-configs/devices/aarch64-softmmu.mak
++++ b/default-configs/devices/aarch64-softmmu.mak
+@@ -3,6 +3,5 @@
+ # We support all the 32 bit boards so need all their config
+ include arm-softmmu.mak
+ 
+-CONFIG_XLNX_ZYNQMP_ARM=y
+ CONFIG_XLNX_VERSAL=y
+ CONFIG_SBSA_REF=y
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 560442bfc5c..6c4bce4d637 100644
+index 6c4bce4d637..4baf1f97694 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -123,6 +123,8 @@ config NETDUINOPLUS2
+@@ -360,8 +360,10 @@ config STM32F405_SOC
  
- config NSERIES
+ config XLNX_ZYNQMP_ARM
      bool
 +    default y if TCG && ARM
-+    select ARM_V6
-     select OMAP
-     select TMP105   # tempature sensor
-     select BLIZZARD # LCD/TV controller
-@@ -401,6 +403,8 @@ config FSL_IMX25
- 
- config FSL_IMX31
-     bool
-+    default y if TCG && ARM
-+    select ARM_V6
-     select SERIAL
-     select IMX
-     select IMX_I2C
-@@ -478,11 +482,13 @@ config FSL_IMX6UL
- 
- config MICROBIT
-     bool
-+    default y if TCG && ARM
-     select NRF51_SOC
- 
- config NRF51_SOC
-     bool
-     select I2C
-+    select ARM_V6
-     select ARM_V7M
-     select UNIMP
- 
+     select AHCI
+     select ARM_GIC
++    select ARM_V7R
+     select CADENCE
+     select DDC
+     select DPCD
 diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-index 9b3635617dc..fbb7bba9018 100644
+index fbb7bba9018..4dc96c46520 100644
 --- a/target/arm/Kconfig
 +++ b/target/arm/Kconfig
-@@ -14,6 +14,10 @@ config ARM_V5
+@@ -18,6 +18,10 @@ config ARM_V6
      bool
      depends on TCG && ARM
  
-+config ARM_V6
++config ARM_V7R
 +    bool
 +    depends on TCG && ARM
 +

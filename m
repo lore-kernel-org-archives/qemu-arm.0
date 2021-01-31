@@ -1,71 +1,71 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599460lfo;
-        Sun, 31 Jan 2021 03:50:37 -0800 (PST)
-X-Received: by 2002:a05:6000:1362:: with SMTP id q2mr13190861wrz.341.1612093837144;
-        Sun, 31 Jan 2021 03:50:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612093837; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599497lfo;
+        Sun, 31 Jan 2021 03:50:42 -0800 (PST)
+X-Received: by 2002:a5d:6c66:: with SMTP id r6mr13077509wrz.86.1612093842588;
+        Sun, 31 Jan 2021 03:50:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612093842; cv=none;
         d=google.com; s=arc-20160816;
-        b=FVQkgO6Ui2qgQ7LVt2Ax4xlpVpy/Nho0rdH34KeH7nT66vYefaT0Ym4k2DpPF+aPbI
-         9AlD/uLQSIj7+EAP8qPFLgH07H2QjowFDlhvW2XGC4pZ4Akk6Au22WGxMFuhOLhLx7vo
-         w8SyAP1M2BGBcarqRzFcJVRODGFAJ71qugDz20vxVXTL+7ZQCSKvtdfL2yRT438Kz2ng
-         yVKUGciePNaO9lvkwQ3YsG+uKdj+P9U9iA5VZO6q6W8Htzw2b2YXX9zdhZ5bPhhDlpOw
-         avKpSVTF3TZMpBgUSsYkbZ4OLx0UUdkmrSmR0GG0SneULU6hiQsPFsPHteczfTWUcW+O
-         nQig==
+        b=G7Ot4OfgKIg0Q79rurtUd7cVTlhrN6UUtn/4XLIBXPcgxfP/19adnMOM7ES9VvHQMY
+         zW6Zqt6kFORpx/jeuVeu0CGMqaaJFhEucB1WedT5bdisY4IcQdpZPaihu3eabYVVOaVi
+         nikWyszop+0WBlKMTyE5oxJTEBsvqSbrNUP3dgc6B8W+R890i7URPPWVTMiomznxJd2k
+         0f1C+KXU1/hmlRiTnYBPQ1+2oLnXHPM6b8dzF8dA8unqG3z2KLUvioBnN5ml8is/umfH
+         4bQ3qX4eCEQ9iusTriYZ6gJekycpdNitRiNOA/JvIkmojsQabVQ7reaDif7BCnGwccAg
+         MGHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=VqrmhVxmrVpTinVk4e74EOokFJxAnJGleMWOvxObkGo=;
-        b=cK8UUubukYA2bDfLjgNCxV4JKA0myCycC4NzqsDIemIKSWPRQ3dg4Ug/ndb2ERLT/8
-         NcC3B7JAT4W2nFOEbh8SidjnNrDu/s+JUXexvfN5dW8j7ed6RF0o5oQJJE04iJVOU3Lk
-         yigu3z1cKO0eEwSXNpqccioEhqs/hzSLpIPdm/mi3EYQ/BRr7bVyZnR+t2VmsX/Ms5K+
-         S7xro1NzXzBZUf+uHMnBjQNxRKIfhBO/b2cwQogfCBtKfzkFDg61C1IpSV3hxHnzUD3e
-         lGuXSUF7DIHm240ey0DRDRhKnl1n4z8WnUVF81XIkfcW0RC5LhW3QHkusEqk8ZKAo682
-         NgrQ==
+        bh=fh28JukriQ8n71FXrOcLQmLKpZgUpaavJogE1lG2lKE=;
+        b=OhbUS4+52iW388vLLofgzsXt36N//Prh7LIs9LCG718ZbsvxqkbqD1Y6snkYNoH1v8
+         FqESevTh0e4WHHCuXIhmZvJrfIdTTgDqlZQFVt9iYKQlg2wSK4Y/AtxUd+LKqVI+G3P9
+         LAAa0fKYpzBXyU6iQRa6TZNBVLEyNL8f2MOtmbkMLQjvGj68V4gqX6VcXSNmJ43j2g16
+         i3Zx2Q0EX50raFjKyLJoO8S9lmyoHehbr6ZcjU0gMiozFlhu25JFcIEkGiKl0SaPTgBe
+         kIWUto0yp+/2CQVxg5r7koXhdYg+msPsh+PTNMCtepQms3NieRaOOIUP4AE8SPD/RH3a
+         EA0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lyvsp3J4;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V9jvv1aL;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v66sor6777335wme.2.2021.01.31.03.50.37
+        by mx.google.com with SMTPS id h9sor7474409wrt.8.2021.01.31.03.50.42
         (Google Transport Security);
-        Sun, 31 Jan 2021 03:50:37 -0800 (PST)
+        Sun, 31 Jan 2021 03:50:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lyvsp3J4;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V9jvv1aL;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=VqrmhVxmrVpTinVk4e74EOokFJxAnJGleMWOvxObkGo=;
-        b=lyvsp3J4UkNurQZJVFz9o4JYa1UA1x5dEPXNh3rSqZoz/D+ftmCq5kSipCIzpP4yYJ
-         nSMUwmKcyyFsbqMKa8oxpCNGlXb93gGlqm4bjingFBgZuIWD7AbI0OZpdaMufJDvHG9c
-         qC5+dIBepWCX6LFsUMA77xsp6mvys75KRB+jURkPOHD/pN99OOtyoQ9btbVCGzoyfl6G
-         MxbJzJi5FBOYnndo2ohyVKrRVbQ75AEh0rEWOFzVWJCmjvCGgSofwmaqh36oRozeOnfA
-         jlgBJb1qNwvqao+3AOuUECbxkneAizqC36qIYrHOlMkRF5uKw5qN2ZdR2YCXPAzeFzfO
-         Mz/g==
+        bh=fh28JukriQ8n71FXrOcLQmLKpZgUpaavJogE1lG2lKE=;
+        b=V9jvv1aL3pv839Xy1/0k6WXm66MH9MuJ++7EvsG8qCa8S/wu6yqaRlsHWM/6QNB9nq
+         otF67bI38HB/w9Q6MYBXxVOV5UBCfzchBKzB7qzo23tC+CtVSDEiuDhSZgH2dTnQIoYd
+         6joAcsNUIBk61d62T+9j0tEWV0NdSA6ytJkUxnBG0i3S908YNLWEon8evQ47X9B2sLl4
+         nYV4yaQ2owvFrejRRcFu4R05XEV7WMKV9GrqyrPq04KqW0pgCUzJ6KMZIWHx1H0HXq9X
+         d3lwh952RSMVU6+mG+0RM+tLEOoLrQ673P9FK4aAUMuTDxUGUjXBbhRSvwjSbsfKJ1+J
+         eQvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=VqrmhVxmrVpTinVk4e74EOokFJxAnJGleMWOvxObkGo=;
-        b=s73VIDHIi92Z4cpK4PIa96YJDxK6IFhm+yc7kvYjMK3whjl2kYeLf1lHcOrG/YQHGw
-         eZeAfd5PGT3T5AbazMDuGlC8ERIuwYMs0ODOpPcsA6BSTRlqISF4ElS7pGXlddwBPVXV
-         IXou5X/3/sNDGACGKkkLFPtVIfFAk0PFuV7u4GRAGn9u9bu/NWgHetHrSIPeITMKeUrh
-         a0G21feZ1QK8EyEt8UeFUpy5wwglJHKay6Y7wmRjgln6ipk4vb15vn2AlqA0ITu4GcRw
-         Lh5xCM4Ecu0IsLsojgVrDsRyDGLyvzuBrBdccDazctqjDRne/CbdCJtfbKvSkdokZgLb
-         Afsg==
-X-Gm-Message-State: AOAM531n0yLa2RMw0mBMIOnbj35ql88caoAkWUbSa4fkFbC3qrPIJ1nu
-	jlBPeboNgXcaar7yQ9ud30E=
-X-Google-Smtp-Source: ABdhPJzlUZ0PoftyMhnvPgCuDfPl7bBhNXVdBlytKA4JLNnnwx1y1kPvC5kny0EUlqDJX52wkKjIyA==
-X-Received: by 2002:a7b:c196:: with SMTP id y22mr10912502wmi.91.1612093836938;
-        Sun, 31 Jan 2021 03:50:36 -0800 (PST)
+        bh=fh28JukriQ8n71FXrOcLQmLKpZgUpaavJogE1lG2lKE=;
+        b=KZmLe5MYfkgdJ/aUvzCZX0N7CKRtvrNYJ8RPL2r+Hy2aQLI3irXROaoBBPUvTESUeb
+         7VYPwqPXXcifQSpeWc8dzwnIT4lfBk5zP2nmDxSo358b3/YRU/aw6Z7WwnD0i7FO2ZH0
+         DVNEyrvin0n6cz45kYJczvFNjq/C+9yEZc4rGeC3vCu6emlv/qWiL4ydWo4JDL09jPHp
+         65uQn06xTwjyCgPHMJ0I5O40YR0TabdWms1LPQunhv9ysr1YA1cxjj5AHZH064USMHzG
+         tBtZxjOjzrErCZVCVWIWmSuwA5zyJPSxOa79DWrYjDiUbo5dlFCMkEPXKGGxqy+EVlp8
+         YAuQ==
+X-Gm-Message-State: AOAM532d3j40ofqFOHyBptNWsvDcpVBNIyXEsnPDlPL4r7f6s7Koa+oB
+	lgnr/E7iNr0UJimLOr1Iy5w=
+X-Google-Smtp-Source: ABdhPJzPZYCyk9Lid3tGRWhj4ZiT3g9tiJCZJewZhjiHAEXNm3DGC368mGAO4xLutOTTbFfAQmbXoQ==
+X-Received: by 2002:adf:f303:: with SMTP id i3mr13248696wro.60.1612093842413;
+        Sun, 31 Jan 2021 03:50:42 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
-        by smtp.gmail.com with ESMTPSA id a17sm19517259wrx.63.2021.01.31.03.50.35
+        by smtp.gmail.com with ESMTPSA id c18sm27536097wmk.0.2021.01.31.03.50.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jan 2021 03:50:36 -0800 (PST)
+        Sun, 31 Jan 2021 03:50:41 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -84,43 +84,88 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	John Snow <jsnow@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v6 02/11] exec: Restrict TCG specific headers
-Date: Sun, 31 Jan 2021 12:50:13 +0100
-Message-Id: <20210131115022.242570-3-f4bug@amsat.org>
+Subject: [PATCH v6 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
+Date: Sun, 31 Jan 2021 12:50:14 +0100
+Message-Id: <20210131115022.242570-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131115022.242570-1-f4bug@amsat.org>
 References: <20210131115022.242570-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bKHpzWbDus6g
+X-TUID: WewrW2aFAIGC
 
-Fixes when building with --disable-tcg on ARM:
+KVM requires the target cpu to be at least ARMv8 architecture
+(support on ARMv7 has been dropped in commit 82bf7ae84ce:
+"target/arm: Remove KVM support for 32-bit Arm hosts").
 
-  In file included from target/arm/helper.c:16:
-  include/exec/helper-proto.h:42:10: fatal error: tcg-runtime.h: No such file or directory
-     42 | #include "tcg-runtime.h"
-        |          ^~~~~~~~~~~~~~~
+Only enable the following ARMv4 CPUs when TCG is available:
+
+  - StrongARM (SA1100/1110)
+  - OMAP1510 (TI925T)
+
+The following machines are no more built when TCG is disabled:
+
+  - cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+  - sx1                  Siemens SX1 (OMAP310) V2
+  - sx1-v1               Siemens SX1 (OMAP310) V1
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/exec/helper-proto.h | 2 ++
- 1 file changed, 2 insertions(+)
+ default-configs/devices/arm-softmmu.mak | 2 --
+ hw/arm/Kconfig                          | 4 ++++
+ target/arm/Kconfig                      | 4 ++++
+ 3 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/helper-proto.h b/include/exec/helper-proto.h
-index 659f9298e8f..740bff3bb4d 100644
---- a/include/exec/helper-proto.h
-+++ b/include/exec/helper-proto.h
-@@ -39,8 +39,10 @@ dh_ctype(ret) HELPER(name) (dh_ctype(t1), dh_ctype(t2), dh_ctype(t3), \
+diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
+index 0824e9be795..6ae964c14fd 100644
+--- a/default-configs/devices/arm-softmmu.mak
++++ b/default-configs/devices/arm-softmmu.mak
+@@ -14,8 +14,6 @@ CONFIG_INTEGRATOR=y
+ CONFIG_FSL_IMX31=y
+ CONFIG_MUSICPAL=y
+ CONFIG_MUSCA=y
+-CONFIG_CHEETAH=y
+-CONFIG_SX1=y
+ CONFIG_NSERIES=y
+ CONFIG_STELLARIS=y
+ CONFIG_REALVIEW=y
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f3ecb73a3d8..f2957b33bee 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -31,6 +31,8 @@ config ARM_VIRT
  
- #include "helper.h"
- #include "trace/generated-helpers.h"
-+#ifdef CONFIG_TCG
- #include "tcg-runtime.h"
- #include "plugin-helpers.h"
-+#endif /* CONFIG_TCG */
+ config CHEETAH
+     bool
++    default y if TCG && ARM
++    select ARM_V4
+     select OMAP
+     select TSC210X
  
- #undef IN_HELPER_PROTO
+@@ -249,6 +251,8 @@ config COLLIE
  
+ config SX1
+     bool
++    default y if TCG && ARM
++    select ARM_V4
+     select OMAP
+ 
+ config VERSATILE
+diff --git a/target/arm/Kconfig b/target/arm/Kconfig
+index ae89d05c7e5..811e1e81652 100644
+--- a/target/arm/Kconfig
++++ b/target/arm/Kconfig
+@@ -6,6 +6,10 @@ config AARCH64
+     bool
+     select ARM
+ 
++config ARM_V4
++    bool
++    depends on TCG && ARM
++
+ config ARM_V7M
+     bool
+     select PTIMER
 -- 
 2.26.2

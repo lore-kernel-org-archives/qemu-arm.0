@@ -1,71 +1,71 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599541lfo;
-        Sun, 31 Jan 2021 03:50:48 -0800 (PST)
-X-Received: by 2002:a5d:4a0c:: with SMTP id m12mr13281156wrq.309.1612093848595;
-        Sun, 31 Jan 2021 03:50:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612093848; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599588lfo;
+        Sun, 31 Jan 2021 03:50:54 -0800 (PST)
+X-Received: by 2002:adf:ee43:: with SMTP id w3mr13978087wro.200.1612093853995;
+        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612093853; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xy+aHlAwXDO/zPYiCDTF0q6WDgf/QNqi/H13ViYbziTCpm3W6DBFz2S1l0Cbrkt5PI
-         Y4ztI6MNuAE/4I65tesUgWyrhEYnjR5NE0AQEDx8qH9Vpbd94kYqB7AgSvSwooLtN7Bm
-         avoyPz6d72t8xCzC/5wMP0vuHPh66fYY23znmZJBX59avQXdRzxRUBdX65x1XiEqTRtF
-         I/eCEXmOPTJ/etHuIfG3bPRI9smTKmzJnkg3/e4Sl/6D9N23U9+mHdSUntL/VdhmvUpv
-         t4v8EBZTEY/zCcrT3lYM4ziPJxIGlryiA+bV4Oms3JQ5uuowZNCvk7XVoKoyUehEKa5X
-         eOBQ==
+        b=aydc3ky3Po+KtQly7ikNrxWe7jA69A4rTXLwkrIKVReapBFQ7EMb+yGzC3kXPzvFod
+         +UqYNZtOc0Vy6vj+X2rptgtsmaPtxdcw9d/02mbm7UpyemtlFUDtZCBIuhnJMSE1e9iT
+         vTVwL99gzBQtVS6HzIza/w4q8wGfoTajWpjZ8LGhqHo5U6nCEjtIIcLs21NkDBTLduQ9
+         8ThnydszLRZg+vKLDvAlvyI/dCJ7piX6w15/545887LdSGHpNx5pmdveZyzTt6pCIjkD
+         eZlCrQVgS9LVCXaW3UiK3KOeSR2T/mF9Qb04qP7KSbWH8nV03OptrsTcWyPSfx5egYEk
+         kUXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=jAQNkZyQmguYUbpG6RAooFLTF+LkPeMScVQdPuM6a40=;
-        b=lokEpNtacPVLriu65YH+CB42dDkqZvX4TwVqxOuQ989Rp9V4u8UwnQvtrYKWhq91oT
-         R612etGf7xC6fnbd5fFG+0rJN6allLGGYRpnv5tNQGJXxs5Nuiru+IxFJBCUSMLzG6cl
-         xD7u1cv69QnwF2iIVyyXiHp48r1s88678X3CUDeI4RVHQWluYExoT0ABwU3qqOTP5aDZ
-         Q7ljU4Mr/RXEk5RwrteFaWhCcFMFnVCDhvrTf2tr3lCrMGtqhLmfjXRYDluGRo4DFl2o
-         6ukvfI5IIA9vTMoY/tKyBt+M00+ZkMGbc6zxlya+avpkX1I8d5MurVNWzw/fc1ZxzJBk
-         VKGQ==
+        bh=ELWTSu1rl/DhvuIH4cal4USbDecgDqC8O4/05ndhpXE=;
+        b=u/57/0wQp9ZhnctBzZMIz0TzTUkZ29eGFyf4ReiFST32Q/wbRi+3pimr9WlGAqjRci
+         TP3dk7pNMIXg5VKYFYtYFvWvP24X1Ih/TQ13OCWMBdlYDlX5ZjMBxnkRHvJft90+Pi+d
+         KNmYDnMda5Mw61FqSdqswxj1ShGZW34CV5LZ/11AKHCg+29lBhRHeVIUYm8rQwg6T6L6
+         70DLtTek0C2rMWYDxXLIhV6GlsNUeBPFi2m7MdRspsGt96Nf7MWwUySgu4wajCUkgPE6
+         H8Wm37LCIH2yOzNmfFErHIDqej9dFhjZ2su3wAUOLanmmkTqXSXNNc6PS/EKj1C0GKVK
+         ac7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ixKvjc/E";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="atxpO5/C";
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a7sor7386797wrp.52.2021.01.31.03.50.48
+        by mx.google.com with SMTPS id w10sor7217749wru.11.2021.01.31.03.50.53
         (Google Transport Security);
-        Sun, 31 Jan 2021 03:50:48 -0800 (PST)
+        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ixKvjc/E";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="atxpO5/C";
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=jAQNkZyQmguYUbpG6RAooFLTF+LkPeMScVQdPuM6a40=;
-        b=ixKvjc/EM+COzd/8zxx92XqGNuV3/KESCLzWaBkZIRcantYLmcmpylMmMK1AJx2jFE
-         cuGm88zp9PC+wZ+KY57F2pigz8jKDIGbtvjWcoU8aEM/nGEg27OQm5dGfgVezOdw1Gd0
-         1FkULN2tU2CmTtGU2cbXW4wpUoB9wJt3wC0xkiwOWN4HKbkf7ezFy/qfSmw5qWkNJafh
-         L2NoH+RgS9jT/5Srq/FaVLqx5TFXZSmvu/NPvrbpb/stecX4jUwzkXAxNa8OGss5YV/s
-         TVK2rJKTCYy448KHIZDG1ALx4Y0vk3f1zUClD6O1RYBuCUV4B33Liak3YWHgZxQ6JvxS
-         +UcA==
+        bh=ELWTSu1rl/DhvuIH4cal4USbDecgDqC8O4/05ndhpXE=;
+        b=atxpO5/Camn9p7jABxjl2WTPortxY8V1F0jxEhdR2VF0SBEfPL9LK5Vq47+Eod8YM4
+         aSZuSFtkdwJyK3FzZaGake8jsnv3T1MqlWW+JvnWt/YTtBuI0fzJvdhdooOiQHAYpA8U
+         UVFjEvV4zBNtllHFhkwQzhLAeGmiSs62p2SIMZjyQGGHFYpj8/nWFB0rzW5VU5sTmUgU
+         qArFne3BXB4GxsdEsUtx2RothKht8yJaLcLGwCRcFLJ64xxggBPETOdIxL3w2xWx/eHW
+         kp9nxOa9ngRX8eU7jbkiS5Yj9hDjtee2VaqEn0fy7cAe7jyw4/p9JLsxgkBb5WKz3a/P
+         MdEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=jAQNkZyQmguYUbpG6RAooFLTF+LkPeMScVQdPuM6a40=;
-        b=AljzL4ul6RwSGYmivrg2UFjW/91M+AvGRJ/kGdAKbqIET6HzsbPufUZ5PHk90XwHFx
-         XNdU+MB6iu1VXjfdmRr38udieowqhhqYEIdUw+OeWfMG0hkKX+cbdstnmtudubZ6HWnc
-         A9k60pLhWBl0HrNK+OSM0JK2Ib52g/QzMmLjECjvr+6zZEt37iZqr6jZVj7LSiJQspwf
-         QrF3oNXvs2xmIbPoFH5xqDceyD6AaqvUKPKUk4Ok3cQE63sJw17PGAt5GGyztc2PnmDY
-         xquT4sFT/rjCGfhtvV1IzFUf0XvI9SmAdqhIspgsKXDyJLq6eNvKI0bnJhQ3To8Z311A
-         7DoQ==
-X-Gm-Message-State: AOAM530qa96Caz+PSBFJajBliG03BJPH3bWEF1s8N6Qvgyn2LiKQ5Xz2
-	nzLYoCLmzCnatkRYiRlXZRU=
-X-Google-Smtp-Source: ABdhPJxm51d3yxh6L+XBF7RlyMnDsyEgQnz37oiRF4PWsrAoOK263P8yLKKWDXW81l+tMCZwpYvWfw==
-X-Received: by 2002:a05:6000:1546:: with SMTP id 6mr13099821wry.398.1612093848309;
-        Sun, 31 Jan 2021 03:50:48 -0800 (PST)
+        bh=ELWTSu1rl/DhvuIH4cal4USbDecgDqC8O4/05ndhpXE=;
+        b=hvqt+CMmqzsS9NAK85ecqQsz193Rtn+gM3u3gAZNmD9BXtEqP3UlsViKWdAyqxa+Ku
+         hdQBdIuMJrRj/VG8mvO43V1fpNpmps7Qyq+P17Vcum7fBXyoDSy4eHPQ5uHPHvYdYy/n
+         kP742UXLJetlT2vuXvd6UyNKzUKym4ni2XqVizqQw6M7FBe3Vg08wwxaMM67KK9hg3fN
+         g4iwafLj2C5yPIgRIxLnoaDgFx2vdaYK+OSI+jHvWVwS4oilHQs5ib0rBXdKQq+59wT/
+         nTiobN1jMczAoJ8qy5YxDAcjT0NcT6SMTlkFIIOWH/RkWsfVCIA4dTFRuNFdPAQydkAf
+         Ewig==
+X-Gm-Message-State: AOAM530aI26VdPg0N0sNJpIipLWjgvldc1gyvRHEJpDS/jBJxhYDVrET
+	5FFLjLL0OzjaPZIDj7Rak3Q=
+X-Google-Smtp-Source: ABdhPJw052bc5n0sg8qrUOVnPuK+eGRq0Nn6pE/jzM3JbJxgQX3UIdClky2OLAwF4K5l6GeEHLBoOw==
+X-Received: by 2002:adf:9427:: with SMTP id 36mr13393596wrq.271.1612093853746;
+        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
-        by smtp.gmail.com with ESMTPSA id q19sm6049801wmj.23.2021.01.31.03.50.46
+        by smtp.gmail.com with ESMTPSA id w4sm2862428wrt.69.2021.01.31.03.50.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jan 2021 03:50:47 -0800 (PST)
+        Sun, 31 Jan 2021 03:50:53 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -84,267 +84,132 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	John Snow <jsnow@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v6 04/11] target/arm: Restrict ARMv5 cpus to TCG accel
-Date: Sun, 31 Jan 2021 12:50:15 +0100
-Message-Id: <20210131115022.242570-5-f4bug@amsat.org>
+Subject: [PATCH v6 05/11] target/arm: Restrict ARMv6 cpus to TCG accel
+Date: Sun, 31 Jan 2021 12:50:16 +0100
+Message-Id: <20210131115022.242570-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131115022.242570-1-f4bug@amsat.org>
 References: <20210131115022.242570-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tK4L3tOXUAhd
+X-TUID: GXPYjzGZsLNL
 
 KVM requires the target cpu to be at least ARMv8 architecture
 (support on ARMv7 has been dropped in commit 82bf7ae84ce:
 "target/arm: Remove KVM support for 32-bit Arm hosts").
 
-Only enable the following ARMv5 CPUs when TCG is available:
+Only enable the following ARMv6 CPUs when TCG is available:
 
-  - ARM926
-  - ARM946
-  - ARM1026
-  - XScale (PXA250/255/260/261/262/270)
+  - ARM1136
+  - ARM1176
+  - ARM11MPCore
+  - Cortex-M0
 
 The following machines are no more built when TCG is disabled:
 
-  - akita                Sharp SL-C1000 (Akita) PDA (PXA270)
-  - ast2500-evb          Aspeed AST2500 EVB (ARM1176)
-  - ast2600-evb          Aspeed AST2600 EVB (Cortex A7)
-  - borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
-  - canon-a1100          Canon PowerShot A1100 IS (ARM946)
-  - collie               Sharp SL-5500 (Collie) PDA (SA-1110)
-  - connex               Gumstix Connex (PXA255)
-  - g220a-bmc            Bytedance G220A BMC (ARM1176)
-  - imx25-pdk            ARM i.MX25 PDK board (ARM926)
-  - integratorcp         ARM Integrator/CP (ARM926EJ-S)
-  - mainstone            Mainstone II (PXA27x)
-  - musicpal             Marvell 88w8618 / MusicPal (ARM926EJ-S)
-  - palmetto-bmc         OpenPOWER Palmetto BMC (ARM926EJ-S)
-  - realview-eb          ARM RealView Emulation Baseboard (ARM926EJ-S)
-  - romulus-bmc          OpenPOWER Romulus BMC (ARM1176)
-  - sonorapass-bmc       OCP SonoraPass BMC (ARM1176)
-  - spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
-  - supermicrox11-bmc    Supermicro X11 BMC (ARM926EJ-S)
-  - swift-bmc            OpenPOWER Swift BMC (ARM1176)
-  - tacoma-bmc           OpenPOWER Tacoma BMC (Cortex A7)
-  - terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
-  - tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
-  - verdex               Gumstix Verdex (PXA270)
-  - versatileab          ARM Versatile/AB (ARM926EJ-S)
-  - versatilepb          ARM Versatile/PB (ARM926EJ-S)
-  - witherspoon-bmc      OpenPOWER Witherspoon BMC (ARM1176)
-  - z2                   Zipit Z2 (PXA27x)
+  - kzm                  ARM KZM Emulation Baseboard (ARM1136)
+  - microbit             BBC micro:bit (Cortex-M0)
+  - n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
+  - n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
+  - realview-eb-mpcore   ARM RealView Emulation Baseboard (ARM11MPCore)
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- default-configs/devices/arm-softmmu.mak | 12 ------------
- hw/arm/realview.c                       |  5 ++++-
- tests/qtest/cdrom-test.c                |  6 +++++-
- hw/arm/Kconfig                          | 19 +++++++++++++++++++
- target/arm/Kconfig                      |  4 ++++
- 5 files changed, 32 insertions(+), 14 deletions(-)
+ default-configs/devices/arm-softmmu.mak | 2 --
+ hw/arm/realview.c                       | 2 +-
+ tests/qtest/cdrom-test.c                | 2 +-
+ hw/arm/Kconfig                          | 6 ++++++
+ target/arm/Kconfig                      | 4 ++++
+ 5 files changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-index 6ae964c14fd..0aad35da0c4 100644
+index 0aad35da0c4..175530595ce 100644
 --- a/default-configs/devices/arm-softmmu.mak
 +++ b/default-configs/devices/arm-softmmu.mak
-@@ -10,33 +10,21 @@ CONFIG_ARM_VIRT=y
+@@ -10,9 +10,7 @@ CONFIG_ARM_VIRT=y
  CONFIG_CUBIEBOARD=y
  CONFIG_EXYNOS4=y
  CONFIG_HIGHBANK=y
--CONFIG_INTEGRATOR=y
- CONFIG_FSL_IMX31=y
--CONFIG_MUSICPAL=y
+-CONFIG_FSL_IMX31=y
  CONFIG_MUSCA=y
- CONFIG_NSERIES=y
+-CONFIG_NSERIES=y
  CONFIG_STELLARIS=y
  CONFIG_REALVIEW=y
--CONFIG_VERSATILE=y
  CONFIG_VEXPRESS=y
- CONFIG_ZYNQ=y
--CONFIG_MAINSTONE=y
--CONFIG_GUMSTIX=y
--CONFIG_SPITZ=y
--CONFIG_TOSA=y
--CONFIG_Z2=y
- CONFIG_NPCM7XX=y
--CONFIG_COLLIE=y
--CONFIG_ASPEED_SOC=y
- CONFIG_NETDUINO2=y
- CONFIG_NETDUINOPLUS2=y
- CONFIG_MPS2=y
- CONFIG_RASPI=y
--CONFIG_DIGIC=y
- CONFIG_SABRELITE=y
- CONFIG_EMCRAFT_SF2=y
- CONFIG_MICROBIT=y
--CONFIG_FSL_IMX25=y
- CONFIG_FSL_IMX7=y
- CONFIG_FSL_IMX6UL=y
- CONFIG_ALLWINNER_H3=y
 diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index 0831159d158..2dcf0a4c23e 100644
+index 2dcf0a4c23e..0606d22da14 100644
 --- a/hw/arm/realview.c
 +++ b/hw/arm/realview.c
-@@ -18,6 +18,7 @@
- #include "hw/pci/pci.h"
- #include "net/net.h"
- #include "sysemu/sysemu.h"
-+#include "sysemu/tcg.h"
- #include "hw/boards.h"
- #include "hw/i2c/i2c.h"
- #include "exec/address-spaces.h"
-@@ -460,7 +461,9 @@ static const TypeInfo realview_pbx_a9_type = {
- 
- static void realview_machine_init(void)
+@@ -463,8 +463,8 @@ static void realview_machine_init(void)
  {
--    type_register_static(&realview_eb_type);
-+    if (tcg_builtin()) {
-+        type_register_static(&realview_eb_type);
-+    }
-     type_register_static(&realview_eb_mpcore_type);
+     if (tcg_builtin()) {
+         type_register_static(&realview_eb_type);
++        type_register_static(&realview_eb_mpcore_type);
+     }
+-    type_register_static(&realview_eb_mpcore_type);
      type_register_static(&realview_pb_a8_type);
      type_register_static(&realview_pbx_a9_type);
+ }
 diff --git a/tests/qtest/cdrom-test.c b/tests/qtest/cdrom-test.c
-index 5af944a5fb7..1f1bc26fa7a 100644
+index 1f1bc26fa7a..cb0409c5a11 100644
 --- a/tests/qtest/cdrom-test.c
 +++ b/tests/qtest/cdrom-test.c
-@@ -222,7 +222,11 @@ int main(int argc, char **argv)
-         add_cdrom_param_tests(mips64machines);
-     } else if (g_str_equal(arch, "arm") || g_str_equal(arch, "aarch64")) {
+@@ -224,8 +224,8 @@ int main(int argc, char **argv)
          const char *armmachines[] = {
--            "realview-eb", "realview-eb-mpcore", "realview-pb-a8",
-+#ifdef CONFIG_TCG
-+            "realview-eb",
+ #ifdef CONFIG_TCG
+             "realview-eb",
+-#endif /* CONFIG_TCG */
+             "realview-eb-mpcore",
 +#endif /* CONFIG_TCG */
-+            "realview-eb-mpcore",
-+            "realview-pb-a8",
+             "realview-pb-a8",
              "realview-pbx-a9", "versatileab", "versatilepb", "vexpress-a15",
              "vexpress-a9", "virt", NULL
-         };
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index f2957b33bee..560442bfc5c 100644
+index 560442bfc5c..6c4bce4d637 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -42,6 +42,8 @@ config CUBIEBOARD
+@@ -123,6 +123,8 @@ config NETDUINOPLUS2
  
- config DIGIC
+ config NSERIES
      bool
 +    default y if TCG && ARM
-+    select ARM_V5
-     select PTIMER
-     select PFLASH_CFI02
++    select ARM_V6
+     select OMAP
+     select TMP105   # tempature sensor
+     select BLIZZARD # LCD/TV controller
+@@ -401,6 +403,8 @@ config FSL_IMX25
  
-@@ -72,6 +74,8 @@ config HIGHBANK
- 
- config INTEGRATOR
+ config FSL_IMX31
      bool
 +    default y if TCG && ARM
-+    select ARM_V5
-     select ARM_TIMER
-     select INTEGRATOR_DEBUG
-     select PL011 # UART
-@@ -84,6 +88,7 @@ config INTEGRATOR
- 
- config MAINSTONE
-     bool
-+    default y if TCG && ARM
-     select PXA2XX
-     select PFLASH_CFI01
-     select SMC91C111
-@@ -98,6 +103,8 @@ config MUSCA
- 
- config MUSICPAL
-     bool
-+    default y if TCG && ARM
-+    select ARM_V5
-     select OR_IRQ
-     select BITBANG_I2C
-     select MARVELL_88W8618
-@@ -138,6 +145,7 @@ config OMAP
- 
- config PXA2XX
-     bool
-+    select ARM_V5
-     select FRAMEBUFFER
-     select I2C
++    select ARM_V6
      select SERIAL
-@@ -147,12 +155,14 @@ config PXA2XX
- 
- config GUMSTIX
-     bool
-+    default y if TCG && ARM
-     select PFLASH_CFI01
-     select SMC91C111
-     select PXA2XX
- 
- config TOSA
-     bool
-+    default y if TCG && ARM
-     select ZAURUS  # scoop
-     select MICRODRIVE
-     select PXA2XX
-@@ -160,6 +170,7 @@ config TOSA
- 
- config SPITZ
-     bool
-+    default y if TCG && ARM
-     select ADS7846 # touch-screen controller
-     select MAX111X # A/D converter
-     select WM8750  # audio codec
-@@ -172,6 +183,7 @@ config SPITZ
- 
- config Z2
-     bool
-+    default y if TCG && ARM
-     select PFLASH_CFI01
-     select WM8750
-     select PL011 # UART
-@@ -245,6 +257,7 @@ config STRONGARM
- 
- config COLLIE
-     bool
-+    default y if TCG && ARM
-     select PFLASH_CFI01
-     select ZAURUS  # scoop
-     select STRONGARM
-@@ -257,6 +270,8 @@ config SX1
- 
- config VERSATILE
-     bool
-+    default y if TCG && ARM
-+    select ARM_V5
-     select ARM_TIMER # sp804
-     select PFLASH_CFI01
-     select LSI_SCSI_PCI
-@@ -376,6 +391,8 @@ config NPCM7XX
- 
- config FSL_IMX25
-     bool
-+    default y if TCG && ARM
-+    select ARM_V5
      select IMX
-     select IMX_FEC
      select IMX_I2C
-@@ -402,6 +419,8 @@ config FSL_IMX6
+@@ -478,11 +482,13 @@ config FSL_IMX6UL
  
- config ASPEED_SOC
+ config MICROBIT
      bool
 +    default y if TCG && ARM
-+    select ARM_V5
-     select DS1338
-     select FTGMAC100
+     select NRF51_SOC
+ 
+ config NRF51_SOC
+     bool
      select I2C
++    select ARM_V6
+     select ARM_V7M
+     select UNIMP
+ 
 diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-index 811e1e81652..9b3635617dc 100644
+index 9b3635617dc..fbb7bba9018 100644
 --- a/target/arm/Kconfig
 +++ b/target/arm/Kconfig
-@@ -10,6 +10,10 @@ config ARM_V4
+@@ -14,6 +14,10 @@ config ARM_V5
      bool
      depends on TCG && ARM
  
-+config ARM_V5
++config ARM_V6
 +    bool
 +    depends on TCG && ARM
 +

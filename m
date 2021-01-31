@@ -1,203 +1,132 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2722736lfo;
-        Sun, 31 Jan 2021 07:34:10 -0800 (PST)
-X-Received: by 2002:adf:e381:: with SMTP id e1mr13777631wrm.22.1612107249919;
-        Sun, 31 Jan 2021 07:34:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612107249; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2723749lfo;
+        Sun, 31 Jan 2021 07:36:00 -0800 (PST)
+X-Received: by 2002:a5d:51c8:: with SMTP id n8mr14285655wrv.18.1612107360188;
+        Sun, 31 Jan 2021 07:36:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612107360; cv=none;
         d=google.com; s=arc-20160816;
-        b=DIYNRNMXB7mCN1KbFjplJUpmZ5tRfcjZANDu4Bor1JxSTyCiPGbZo3Oon+UJVb+3FG
-         1xpdCpsogauRhegGbelTYkpywEraxFqRfldOkRRlKc+AKR7cpW+R4dY14cWBvO08s3tg
-         NZuaAIZlh3MiAE1sfRO4BGIbhr0y5sy0L9vYfIBhG/84lMBYqBtbD2qyGuW1VmO/jQSx
-         rElKP9qGqgDdG5zsMFVu0FQUlQK8Th/0SiNMhS0BwzINPpT36W7yctFjtZ91HmyOajwU
-         bx2O0pu++N/p5CH1sOpWNAq4KKMrWGjFi2qX8vfUUHva8cgXVw/jF0BtqkuQCRp/cXhz
-         88ZA==
+        b=kUXk6TWstfPfWueInPtH02bSfQM/Pgc2Mhxmd4yAL2MOS63S8xywYJBP7G62HzeSZG
+         VmTVbMhskpuXATjlOT6fUWJ7RNW8PTMcZtN3tZwkKKi+8JORhj5OoCFDggRv+2rOjYNs
+         nZ699C+2kWM94DzMMAcft8ei6y09d+WoSQxo6dNxhf4CumWTErkOzrtrYtBWSnba9MZe
+         IOs9s6voeOpBhy1+3yZeO26s+OWVmbAT1+EU8EeiszzYWHYrU2R4hJATl+Ja6yx0VbzM
+         vXXqPZwh6FQK4sW1t4CRK6juTnopHdPIa9e5gvp39XT6ET1iC+CVFRrJgGMm3yNsDMx6
+         1bfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:cc:to:from:subject:sender
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
          :dkim-signature;
-        bh=7+lv5nqUTiSVBF2ev6X8VB7oA6fyYxN74cd6tEru69k=;
-        b=tAVdk4x9fP+wNJDAchp0MVd6juIozFijlJ9r+oOZ6pwofitoHukXh3TslTqFVluR/7
-         hRvnxg/1KFvzIoPVmM+/JKLsVvB1KP/H77qmSyZWGIxKkMk0FmV2MWh4G/Jt0ow3OXDb
-         dM7yzRO3C8xr9xiLsCUdz4NbRBnfFacWTtOboTYakXco8u0+acjsXAu2PVbjhtk+t50I
-         rFWD9rzVwvUgkiquQcrVhBinRIF74bk9dLlpGZgFBcP7SJCAbOH/uwLbKfe9Iuwtao0/
-         K38EZ87wYUQyXHPG3I/GGKdnbFUPOHBw1Be5dwGcldxbM1TeMvDBpNfPHV69WXKr/3z2
-         wSlQ==
+        bh=Tj9ynb2vRPFjqtE44EpTjMkFQtoIUjhfjhxMTiCpavE=;
+        b=SoRHyy6ysldb0sJaUsS01NWQ0mrPaDYXSq4uOBRwmOnOdnnPjrukHYgAVm4fC8mmMn
+         FWoQzFNxqTi3OzLPEq1G2RiQjVgwqoz4wJjKrfTK+iEY+T7As1RS3iyBUYX+CZ7qUlS7
+         /fssEQlisMxuUxivcYThD2OaT2tnybR+VVIdnqgpuju//WpQGjUz+EnI2Rf0WEK9wQhM
+         Z7nfKj1fhH/Zj7LQ1x1KgKprzlLytjex8efVSucs8dt0qlaH83hYV7TuqdCIveE9+d8X
+         RvbszAG+SzoH0pj2QZengiJsSXXLEtHr3F5/aEwaQNkIzPs0uCpJLy1xhut/qbIBp3gw
+         B4fQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="cmKy/aHa";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bKISEXIL;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y8sor6824376wmc.21.2021.01.31.07.34.09
+        by mx.google.com with SMTPS id r10sor7818743wrx.6.2021.01.31.07.36.00
         (Google Transport Security);
-        Sun, 31 Jan 2021 07:34:09 -0800 (PST)
+        Sun, 31 Jan 2021 07:36:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="cmKy/aHa";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bKISEXIL;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=sender:subject:from:to:cc:references:message-id:date:user-agent
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=7+lv5nqUTiSVBF2ev6X8VB7oA6fyYxN74cd6tEru69k=;
-        b=cmKy/aHaE9aodYH/b7bSiqfqQheo9E1sIjukxQBc1VgXxJRrY2wSB4YasMdMt2MPxl
-         +vF0HXh+MHaK4FNhldGLbGAsC1oMTohUJ80F39Vc1KNOjo10m8dEpAZhnIjqdLDZxCMO
-         iy5dX7mhDnJV80gMoTnDduUeHy08tYEqDjKy/hGkJm8M8ccBDudffksaRJsz+rPmu7/F
-         gq6Yhygq49vCtxSdKrLVwWcYmn4/Ifo9+uv++uB+rSmYqnnSUCfHrC+pc/otue+4qumz
-         EscINztxRJSl4D7Vw4JZHanxmBc7uVXedMsXCvqou+6iRVMY33VE0wYSfki9Ze2ByEQS
-         Y7wg==
+        bh=Tj9ynb2vRPFjqtE44EpTjMkFQtoIUjhfjhxMTiCpavE=;
+        b=bKISEXILOqbBKSyWxvRZTuqbFnMi0zbFX7AD4hLA5WBrs5OH0WAyfczzJO+CNwqZsH
+         Px6aqJnUVVzUonDQ10/D4g69YH1ddYR09nffJI/ZWFikuSfuVxu3j6deINIQFetTavz5
+         7CB+cq5ySm37Y8rJ8MwxUmhoZdKCfu36fgGzfloOWPaLi22Cp9ygPjj8aGlQIaaQHq8p
+         2IHzfac/aVBfZIQQtBiotSnheZvuijwqcKpFhuI1E5CjikLGMbyONtbX/FkkDI2N54ec
+         G0A6Ytwl9tirRcjmpbOsSElN5Jz/07qnnKLQNXGICM/tyABc8/kd8gkD8S3sorOVk8M9
+         9RCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=7+lv5nqUTiSVBF2ev6X8VB7oA6fyYxN74cd6tEru69k=;
-        b=MA+6tJklWIUS7iVcvNpHStXuPrNxT3lh/VRoNVM9HUrs7k1m5GMMHQrZL4V/7y6FRG
-         9xW1MXnODGO949adVPyWHY3jjjjx5fOPKAxyuxCb+kMzCH/vn4/qCa+93nSFytaFpism
-         FVVn7gS/lo8NpjLZ4NtqCavXTTgCuK3f/J6CKyX/mtcx/Cen+LPqfOY76OBqep/NuoG4
-         QzV6UGCXF7BbD2gf2zbqCP47dzmd9DL5u9w5c5g3s/qfYrkmyOSTtiJl4qbTOYbg6Y13
-         AZrqhZoMZgf7xQL2AeWCsDUfsHY5IrMb2LhEOpaR2Q19ECYlFVNhYHyWbGIWjaumR+mE
-         QI3w==
-X-Gm-Message-State: AOAM532h5lnWeq9A18iDXctygRk44xMtuvZ2JdJyC5Ducy+tYNLoT3oJ
-	ZG4ZHrWlzrJquHJOOMjyQBI=
-X-Google-Smtp-Source: ABdhPJwblFkbqTQrHm/KyELTO/r8GF9dbjXukSaHHEtMp1Ri/kUmGIhs0RsWPhx3OEcLCVNH5fdEkw==
-X-Received: by 2002:a05:600c:4ed3:: with SMTP id g19mr11191688wmq.95.1612107249712;
-        Sun, 31 Jan 2021 07:34:09 -0800 (PST)
+        bh=Tj9ynb2vRPFjqtE44EpTjMkFQtoIUjhfjhxMTiCpavE=;
+        b=DG5PMS22Ch7hM3cfKY/DhZEoh9Y4UxhiMW5Z7pyRFWSHFN+ZqlsY0/GYFRxIcUTbBG
+         7F32t8azRxMTzIlxLYKKNDkj8gCGDHVo/0PWcznR7sk/Zh2i72LE9zeIilNLIKVWtDxe
+         IH9HNmEIGJ7EssMFXaZAf4OrT/CwJotbN/aALwHikXMfa0A8KkvCyqoStJSpDfmcvn4r
+         qMgjTyVPgYXtTXuXN3puVmUwN4PeG9QnMiH2qvgdZb0/kcdvcM8BrqzXJxgaXd0FHddi
+         YxoVI52mTPWfYCN04VY/6HhvZB2uUu82TBD+jbSfWhMra/ojTaiIsBRAjSw9VY1GBdkD
+         tX1g==
+X-Gm-Message-State: AOAM531rUZylN3BS8M48ywrU6SGEtx0DBbv7PdvCyCNuovXpzDwY9Rwb
+	eimVGp+8LCrLk+Ff9soJ9Ak=
+X-Google-Smtp-Source: ABdhPJwxwfwJ1O3wZnQXDc1ZmYatUowqBlUM5eDlN14YoQfKfNZKRQ03jZH9GWmo0RCtIQi/fXcy0A==
+X-Received: by 2002:adf:ecc5:: with SMTP id s5mr13603929wro.423.1612107359885;
+        Sun, 31 Jan 2021 07:35:59 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
-        by smtp.gmail.com with ESMTPSA id q18sm23411770wrr.55.2021.01.31.07.34.07
+        by smtp.gmail.com with ESMTPSA id f4sm23839332wrs.34.2021.01.31.07.35.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 31 Jan 2021 07:34:08 -0800 (PST)
+        Sun, 31 Jan 2021 07:35:59 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 05/10] meson: Introduce target-specific Kconfig
+Subject: Re: [PATCH v5 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ kvm-devel <kvm@vger.kernel.org>, Fam Zheng <fam@euphon.net>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>
+References: <20210130015227.4071332-1-f4bug@amsat.org>
+ <20210130015227.4071332-4-f4bug@amsat.org>
+ <CAFEAcA8UCFghGDb4oMujek_W_wsyYz+duiQ-d8JyN09NYoff-g@mail.gmail.com>
+ <2871f7db-fe0a-51d6-312d-6d05ffa281a3@amsat.org>
+ <CAFEAcA-W1tcRREaPTfMw98cNsHs7JHk4gjaJWaJNLpxZoVnKaw@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
- qemu-block@nongnu.org, David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz
- <groug@kaod.org>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, qemu-ppc@nongnu.org,
- Stafford Horne <shorne@gmail.com>, David Gibson
- <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- qemu-riscv@nongnu.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
- Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>
-References: <20210131111316.232778-1-f4bug@amsat.org>
- <20210131111316.232778-6-f4bug@amsat.org>
- <d4a706cb-11ac-1c79-9641-c061bffea829@amsat.org>
-Message-ID: <4e0131d8-80a4-a0ad-f911-cd3f1f521105@amsat.org>
-Date: Sun, 31 Jan 2021 16:34:06 +0100
+Message-ID: <40ca4720-7adf-8469-2593-6e6689d03fd6@amsat.org>
+Date: Sun, 31 Jan 2021 16:35:57 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <d4a706cb-11ac-1c79-9641-c061bffea829@amsat.org>
+In-Reply-To: <CAFEAcA-W1tcRREaPTfMw98cNsHs7JHk4gjaJWaJNLpxZoVnKaw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: JdN5iwa2hzAO
+X-TUID: DjYtBOYomPkB
 
-On 1/31/21 1:36 PM, Philippe Mathieu-Daudé wrote:
-> On 1/31/21 12:13 PM, Philippe Mathieu-Daudé wrote:
->> Add a target-specific Kconfig.
+On 1/30/21 7:54 PM, Peter Maydell wrote:
+> On Sat, 30 Jan 2021 at 18:36, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
 >>
->> Target foo now has CONFIG_FOO defined.
+>> Hi Peter,
 >>
->> Two architecture have a particularity, ARM and MIPS:
->> their 64-bit version include the 32-bit subset.
+>> On 1/30/21 4:37 PM, Peter Maydell wrote:
+>>> On Sat, 30 Jan 2021 at 01:52, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>>
+>>>> KVM requires a cpu based on (at least) the ARMv7 architecture.
+>>>
+>>> These days it requires ARMv8, because we dropped 32-bit host
+>>> support, and all 64-bit host CPUs are v8.
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
-> ...
+>> Oh, this comment is about the target, to justify it is pointless to
+>> include pre-v7 target cpus/machines in a KVM-only binary.
+>>
+>> I'll update as:
+>>
+>> "KVM requires the target cpu based on (at least) the ARMv7
+>> architecture."
 > 
->> diff --git a/meson.build b/meson.build
->> index f00b7754fd4..a2dda0ce95e 100644
->> --- a/meson.build
->> +++ b/meson.build
->> @@ -1322,7 +1322,8 @@
->>        command: [minikconf,
->>                  get_option('default_devices') ? '--defconfig' : '--allnoconfig',
->>                  config_devices_mak, '@DEPFILE@', '@INPUT@',
->> -                host_kconfig, accel_kconfig])
->> +                host_kconfig, accel_kconfig,
->> +                'CONFIG_' + config_target['TARGET_ARCH'].to_upper() + '=y'])
->>  
->>      config_devices_data = configuration_data()
->>      config_devices = keyval.load(config_devices_mak)
->> diff --git a/Kconfig b/Kconfig
->> index bf694c42afe..c01e261e4e9 100644
->> --- a/Kconfig
->> +++ b/Kconfig
->> @@ -1,4 +1,5 @@
->>  source Kconfig.host
->>  source backends/Kconfig
->>  source accel/Kconfig
->> +source target/Kconfig
->>  source hw/Kconfig
->> diff --git a/target/Kconfig b/target/Kconfig
->> new file mode 100644
->> index 00000000000..a6f719f223a
->> --- /dev/null
->> +++ b/target/Kconfig
->> @@ -0,0 +1,23 @@
->> +source alpha/Kconfig
->> +source arm/Kconfig
->> +source avr/Kconfig
->> +source cris/Kconfig
->> +source hppa/Kconfig
->> +source i386/Kconfig
->> +source lm32/Kconfig
->> +source m68k/Kconfig
->> +source microblaze/Kconfig
->> +source mips/Kconfig
->> +source moxie/Kconfig
->> +source nios2/Kconfig
->> +source openrisc/Kconfig
->> +source ppc/Kconfig
->> +source riscv/Kconfig
->> +source rx/Kconfig
->> +source s390x/Kconfig
->> +source sh4/Kconfig
->> +source sparc/Kconfig
->> +source tilegx/Kconfig
->> +source tricore/Kconfig
->> +source unicore32/Kconfig
->> +source xtensa/Kconfig
->> diff --git a/target/arm/Kconfig b/target/arm/Kconfig
->> new file mode 100644
->> index 00000000000..3f3394a22b2
->> --- /dev/null
->> +++ b/target/arm/Kconfig
->> @@ -0,0 +1,6 @@
->> +config ARM
->> +    bool
->> +
->> +config AARCH64
->> +    bool
->> +    select ARM
-> 
-> This isn't correct yet, as Kconfig is primarly designed for devices,
-> and per docs/devel/kconfig.rst:
-> 
->   "devices are usually ``default y`` if and only if they have at
->    least one ``depends on``;"
-> 
-> So having one machine "depends on AARCH64" selects AARCH64 on ARM :/
-> I'll see if explicit each arch as 'default n' helps...
+> KVM requires the target CPU to be at least ARMv8, because
+> we only support the "host" cpu type, and all KVM host CPUs
+> are v8, which means you can't pass a v7 CPU as the target CPU.
+> (This used to not be true when we still supported running
+> KVM on a v7 CPU like the Cortex-A15, in which case you could
+> pass it to the guest.)
 
-Taking this comment back, the approach works but is fragile, as
-an incorrect dependency can select the wrong arch and it is hard
-to detect.
+Indeed:
+
+$ qemu-system-aarch64 -M xilinx-zynq-a9
+qemu-system-aarch64: KVM is not supported for this guest CPU type
+qemu-system-aarch64: kvm_init_vcpu: kvm_arch_init_vcpu failed (0):
+Invalid argument

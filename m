@@ -1,178 +1,171 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2721301lfo;
-        Sun, 31 Jan 2021 07:31:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwe3e+uMHYqo7kGzv7/LoxE7925vfot5aVpqCVApX86MmqBJHrmOfzKou4ahB9/jsx2bXUM
-X-Received: by 2002:a25:cb08:: with SMTP id b8mr13825484ybg.415.1612107086186;
-        Sun, 31 Jan 2021 07:31:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612107086; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2743736lfo;
+        Sun, 31 Jan 2021 08:13:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxT54hwjnc4dYNkjvofkfm9pC+MHNic2j3fegYIiBSqRgHXiIR4wtDEDhzFrPJNn1GG93cM
+X-Received: by 2002:a25:1984:: with SMTP id 126mr18234137ybz.341.1612109622472;
+        Sun, 31 Jan 2021 08:13:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612109622; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZIJ6pgdJsvGmElt6XNJJuNHF0271iZ7MKTETNsnYv3z+P7ve5iHMr0/HsTCkZ2G1zv
-         qGJi84A0linvLwc5ig691j3zKRVtuetp3mGK9mNReKwxGFN4oFNabkgwVYGsEzYQtPhz
-         MYyGC7kXNkQekZ5zCdPSpVoBErLMYZqWZ5ALpoWlEvu+19PEXXKNiyphzFDG6sbnvxlY
-         YLXSNiR2wvmwaM2HvVQTz58U3unH1Lj3OP8OlV+Zjfgxvkhehfmh2Bep06fpIhxdFRS7
-         W9hUzR3AbNGgJ9zTGJJmW9zoYaDqttObe67r07SRNk17UWXSjmjJ9JW94TQ05KmxDGt9
-         whFg==
+        b=iYDCvmUND2njVd4Tlfy7PXwMjeCE72Rh00kZlvGnbGkDlkvrCG3Z9a20ezKwvB3we3
+         tjaXixLbG6N+ZcZIGVZv3W+vcwV80kRraDDZuVx+DOFmBG+reaiG14MfeaDYkt3Nu0IF
+         rl+VjIWFexZk+vlVJoliei6J6yam2TGkB5/btq1EGucNcMU0EwRZvIl7SS9UrUhbCHPL
+         eac1SqTqlBBG17xE0hJSeUhPI7KMIujM9EHv+MIsgGnRbq1FjYKq0gvy0yaQiOraMgjb
+         MAfhEfie+/DSwQg2ArowWatI2yac66ZA2SqY3H5SFyKHbqFPsFM6ZcosbHRWfdGB+glZ
+         eEvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=WbS215fq3M5FNOsNXG+850EpFpOkfDvezmq6L7LpRAY=;
-        b=EYxW20C7Ba+hvKptqB7qgyoejGTN7Hodv6JufnRJ952LxaW9GW3f7YiSEkmzCscurP
-         bu78LsZDzMWFxM0/397lL4Ybdn97PVFlg0aozF72DS59x/1c7Fxdn5t1b5eiFGh0/9D2
-         reGcIDnZHg2Nkeju3NlkWRS/Q1/nMOADO67Iy/8QVoUI9u7JI/sxfpDpTHGLV33xZzWs
-         CnWUgRmcUyHwjJcW2uscAfrf6EWv5EAnWQpok8pCbC3p5b3JzV9/76Y/lPkk0a+THqXt
-         OV7agpgpBHcWRA22caBkeU7knSFPy4tQm8efi/5JdL0Hmt8g6TiyJBm8wQI4kOWEVvBW
-         lxHg==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=/j+Zjll2kbbDasMODKwZPcNmLazi6q4NpcAEHcCfmtQ=;
+        b=tFWIxpo3uVnivi5Aucy4p/Cvm+x2F6phxG1Fu8fpyD6xSDQQRpVoI2TZ7X3pVwAiTt
+         dZh4nfzwjgPgENi5X7zQH1I8+ixqmuZNTGb/pZNWFAAoKnhyArnORKDgvZtMKFTQKePf
+         h6TjDANBrh9wGHmcXlflafB3yt69r0mJ0Vns4tEV+d01MZFgVjowwz6+crQoWQ4YPjZV
+         pf7LOxjeqeQCETcAvmy5j1sHzjBa2onZKExm+/AJUtMNzz23Qb9HOS1tKMK7GNRMTjiu
+         6lfg+jQcm7j5sYztUpcjq+iVhQUiggs8YcqNK60G6pHSOtAosm3ZFvsSZ2jAnB8EFBAH
+         yTFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YAUM4UZm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xud0Pp5y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b34si16527248ybi.324.2021.01.31.07.31.26
+        by mx.google.com with ESMTPS id v201si15063219ybv.79.2021.01.31.08.13.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jan 2021 07:31:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 31 Jan 2021 08:13:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YAUM4UZm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60804 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xud0Pp5y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33868 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6EhB-0008GC-IJ
-	for alex.bennee@linaro.org; Sun, 31 Jan 2021 10:31:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58634)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6FM5-0007Wa-TS
+	for alex.bennee@linaro.org; Sun, 31 Jan 2021 11:13:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6Eh0-0008Ed-GO; Sun, 31 Jan 2021 10:31:14 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:39758)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6Egy-0006Tr-Pt; Sun, 31 Jan 2021 10:31:14 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id u14so11054985wmq.4;
- Sun, 31 Jan 2021 07:31:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WbS215fq3M5FNOsNXG+850EpFpOkfDvezmq6L7LpRAY=;
- b=YAUM4UZmFHtZGRDkP+q2Z0Bps/Jf6VhDAJBusGF1hc9ZFxKz+qx0wJCjFVzYUpV2DG
- VtsdZXPxLYCkJixB5L9DTTeT7h6RgyqOG1zrjUxprI86StmpprKiD6MWY0m+oBxbu2iU
- vW2uBw4LADj2COpb7IUeZ6Mf5x20BoKCyt/gXyC9u644oXsEp+wB6e2aDtwC2hB9lan8
- FVSRp8LFJwG21o/XH7jYg9q2cYNf5npGMmcY4r8o5gz7LYD/nHXnDq3QKJsNwv1kcoNG
- 0jDz9E+JM06AdqaMqwcNg22dcWNWXlhNSX6/0LvwHoZnda/qpqbE3vQb483lVwfrpUWH
- dYJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WbS215fq3M5FNOsNXG+850EpFpOkfDvezmq6L7LpRAY=;
- b=GbvI6NcQ8mADs7oXrPFjUUQraqw2qLLQbsjn7nb9p3t+LsfUJGtrkXw3Ab/pMtIBts
- 8k0tGtE1S4onTVLMr5zRDIqRGAGa++9lb8FbiJ2EUPwQldzobz+MT7mgvRnojB7GYSDT
- LsaFlxeZYhDvS8Tb5map2uJZ8V/u0//GFP2zetHQqLMNN5PMvepHFhyDWNmYHgGAX5vz
- evvja3tBjibNRNDS/fRszele5dvzFN7CQ1A3EZtpntUoPQFHAcjZ+mDwmkfvCR/cDZ1o
- VDedZaKMFeGdrBck9ZtNXrJCAMcINsPpy1q5iRYvw7mdcUhjYMjguo11j3Q/C3PrxzUL
- 2VNA==
-X-Gm-Message-State: AOAM531liwiOixFNcQDuRr6ARO5BevmuaNLT4fXMnhSrPLor1bjMH8tQ
- mgK/SSHg9Tu55+fwTCp5vCw=
-X-Received: by 2002:a7b:c8cb:: with SMTP id f11mr11393681wml.157.1612107070657; 
- Sun, 31 Jan 2021 07:31:10 -0800 (PST)
-Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
- [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id r15sm23820444wrq.1.2021.01.31.07.31.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 31 Jan 2021 07:31:10 -0800 (PST)
-Subject: Re: [PATCH v2 5/7] hw/arm/sbsa-ref: Restrict SBSA-ref board to 64-bit
- build
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-References: <20210131105918.228787-1-f4bug@amsat.org>
- <20210131105918.228787-6-f4bug@amsat.org>
- <a741601e-8ad5-99ad-decf-14dc007900b8@amsat.org>
-Message-ID: <6a392fbc-edac-5cf6-0a26-c8df2e8c4469@amsat.org>
-Date: Sun, 31 Jan 2021 16:31:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1l6FKw-00072N-H9
+ for qemu-devel@nongnu.org; Sun, 31 Jan 2021 11:12:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30414)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1l6FKt-0007mV-P3
+ for qemu-devel@nongnu.org; Sun, 31 Jan 2021 11:12:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612109545;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/j+Zjll2kbbDasMODKwZPcNmLazi6q4NpcAEHcCfmtQ=;
+ b=Xud0Pp5yHNV6/8Bf5+fTA1wwcpRqZVrRn6/yOOlz1pi2riCHljyCqwOLNRyMHWoIF84Qkh
+ wf63AmfFf1QW/sPjRQRjfsEDEWmWK+trZIu4sCUMcs3bmOBTGcnbQKAtfTFHHYCdlMhQ8A
+ RvcDH1gRy5MmBXBGU7LBFisRN0d2RlY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-218-s84SLo8AODO0VSeRKqRARA-1; Sun, 31 Jan 2021 11:12:23 -0500
+X-MC-Unique: s84SLo8AODO0VSeRKqRARA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E63851005504;
+ Sun, 31 Jan 2021 16:12:21 +0000 (UTC)
+Received: from [10.36.114.62] (ovpn-114-62.ams2.redhat.com [10.36.114.62])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 771342BFEC;
+ Sun, 31 Jan 2021 16:12:19 +0000 (UTC)
+Subject: Re: [PATCH v2] hw/arm/smmuv3: Fix addr_mask for range-based
+ invalidation
+To: Zenghui Yu <yuzenghui@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20210130043220.1345-1-yuzenghui@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <da41fca5-c491-2279-1cbe-9d38add1ed0c@redhat.com>
+Date: Sun, 31 Jan 2021 17:12:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <a741601e-8ad5-99ad-decf-14dc007900b8@amsat.org>
+In-Reply-To: <20210130043220.1345-1-yuzenghui@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.079,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.079, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Niek Linnenbank <nieklinnenbank@gmail.com>,
- qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
- Leif Lindholm <leif@nuviainc.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MSJ8fwspTebY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: wanghaibin.wang@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r1JYHLJQclMG
 
-On 1/31/21 1:31 PM, Philippe Mathieu-Daudé wrote:
-> On 1/31/21 11:59 AM, Philippe Mathieu-Daudé wrote:
->> The SBSA-ref board only use CPUs available in the 64-bit build,
->> it is pointless to have it available in the 32-bit build.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->> Cc: Radoslaw Biernacki <rad@semihalf.com>
->> Cc: Leif Lindholm <leif@nuviainc.com>
->> ---
->>  hw/arm/meson.build | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
->> index be39117b9b6..059ff7382f2 100644
->> --- a/hw/arm/meson.build
->> +++ b/hw/arm/meson.build
->> @@ -22,7 +22,7 @@
->>  arm_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
->>  arm_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
->>  arm_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview.c'))
->> -arm_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
->> +arm_ss.add(when: ['CONFIG_SBSA_REF', 'TARGET_AARCH64'], if_true: files('sbsa-ref.c'))
+Hi Zenghui,
+
+On 1/30/21 5:32 AM, Zenghui Yu wrote:
+> When handling guest range-based IOTLB invalidation, we should decode the TG
+> field into the corresponding translation granule size so that we can pass
+> the correct invalidation range to backend. Set @granule to (tg * 2 + 10) to
+> properly emulate the architecture.
 > 
-> Please disregard this patch, it shows that my other patch
-> "meson: Introduce target-specific Kconfig" is incorrect:
-> https://lists.gnu.org/archive/html/qemu-devel/2021-01/msg07989.html
-> Probably because per docs/devel/kconfig.rst "devices are usually
-> ``default y`` if and only if they have at least one ``depends on``".
+> Fixes: d52915616c05 ("hw/arm/smmuv3: Get prepared for range invalidation")
+> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
+> ---
+> * From v1:
+>   - Fix the compilation error
+> 
+>  hw/arm/smmuv3.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index bbca0e9f20..98b99d4fe8 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>  {
+>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+>      IOMMUTLBEvent event;
+> -    uint8_t granule = tg;
+> +    uint8_t granule;
+>  
+>      if (!tg) {
+>          SMMUEventInfo event = {.inval_ste_allowed = true};
+> @@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>              return;
+>          }
+>          granule = tt->granule_sz;
+> +    } else {
+> +        granule = tg * 2 + 10;
+>      }
+>  
+>      event.type = IOMMU_NOTIFIER_UNMAP;
+> 
+Acked-by: Eric Auger <eric.auger@redhat.com>
 
-The problem is the XLNX_ZYNQMP_ARM was incorrectly selected,
-enabling AARCH64, pulling in CONFIG_SBSA_REF on 32-bit.
-https://lists.gnu.org/archive/html/qemu-devel/2021-01/msg08014.html
+Thanks
 
-With this change there is no problem (and this patch is not necessary):
+Eric
 
- config XLNX_ZYNQMP_ARM
-     bool
--    default y if TCG && ARM
-+    default y if TCG && AARCH64
-
-Regards,
-
-Phil.

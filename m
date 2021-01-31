@@ -1,71 +1,71 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599686lfo;
-        Sun, 31 Jan 2021 03:51:04 -0800 (PST)
-X-Received: by 2002:a5d:6a10:: with SMTP id m16mr13227163wru.220.1612093864615;
-        Sun, 31 Jan 2021 03:51:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612093864; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2599731lfo;
+        Sun, 31 Jan 2021 03:51:10 -0800 (PST)
+X-Received: by 2002:a05:6000:2cf:: with SMTP id o15mr13072522wry.184.1612093870061;
+        Sun, 31 Jan 2021 03:51:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612093870; cv=none;
         d=google.com; s=arc-20160816;
-        b=WVGARDp5Ma3y7sgTT8DHBC9CFSJNHMBOnGgGO2NS8tJEnwn1VXLov4FXqymlr+Cw1q
-         bMq/45yWWgyDTlH+nIDilwdgzxPNAzUBWwozExwfbfN6i/9uDzF2BIEcTLtpPGpm3Gui
-         eNrgE6BWgqHmtBQIlx4BH18/uIt8lDvOnWaL1K9NlJv8icx2EGVLZLbYkJSLG61Zoumb
-         sMwItxHQYAAnXeS0TwI7F0wKDiJHF7IZBInrNBzCgra4N+hDcdWsyRiy+Tp0aLb56Gue
-         g1jjuVkUhMYBKe5FsgVyfVFyekVuAHee4mb4fxUdsem9yXvMTmkTECG+32Tc8krV0E8C
-         aI9A==
+        b=UHGK9yWXlbLLiuMHfdmFGsf0hTo9q6Rkf3d1zFW4CWHC09xqS5B+2ndRa3upmXhHJR
+         ZmXfKDc7IWYeh0fS4kh7gI4XKRdp0SncfaPBv4fnDOz5CL/NKNzKC8mo0RounZAqggfx
+         wMHgPQB/Svu742mLKU7R8CnUdjH6S0tBDnBjJguqxZkWod87ZyoSWsjUq6ArhvP5Th+x
+         UfE/E3veDmxWkwzekPrg0WxzIOfP+4t+fOquOQ0/XUVW8fD8JMj8eoqu0rg5SjskCL5p
+         d66M+sz/nLqRpJdZHP6jx45vatj5eetnGd+gdKZOp4k8c7DBeUb8Jrv7/cT3eWX6cR4b
+         5r+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=7kgwIK0JyvDkmF9iFWkCY48/6oYK9JNsR3MYb3v4QG8=;
-        b=Kgpz8bVn2dEMOkUvbaa7mPw21u0Y4PrNIDG+Ah75VrNbzNm4gw3rhSrqOcnyxsw2Bb
-         NpudJES63J391rAgIAbuJRbRegveldRyjF7Ozy6AzvIiwL7/Wh1skndcuUCcFE6KeIP4
-         eUYkucfi9vuWrYLUNev0n1rSdwoa4AZGoZs0O5x4tY5f7MA/bNSowjXsoDH4QOrt0ru7
-         9Mg6j7ahGYXc68KK+e/FfaIIsyvQhPlYwsM/42KCUonsWzD+qqE6FjLDIHJ3l5ECW0ai
-         UTUfZN715VON7R6e4Yh9FoK6qwQatpbBDtSFNP87uNTErvUVP+dT1pZ42hkiJOebdfaV
-         Fy6w==
+        bh=9aLdl19C96C3GXRdvC9mwI7cbyJbYzl+Xi4/pdqV71I=;
+        b=wre5/GYWTZZBorRVo6T1bmKdYNxWaVk31WdiX8S/l4+/pip890HC04sNy9Zw59BzNI
+         FiGkJNVChchrc4F1pkuWSUGrRp6io0sQBpjWBI0sTVFRVtTHwCS0DkHr9LpWvw4RwWAH
+         WWgXprZisanEqgG4N/2gp2rC7/HzDoIjbm7iVgS4IlrbYCNAuY9nh0RTR3OMUAwUciQA
+         EW3s3tmuQQ0ay/uv0wwuMH6aWH/G2A29jyhQaXnduqXjkzXvaSqdn7oXuQH6J437tcHH
+         RM7qh/Khj7LeMshNywIHmTihtQpGq+sd9gxzsfG6b+2lnYyy14a0e5gl8VT1ijv9UGIb
+         7sLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n9AyWszs;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sRiuwmAL;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f10sor6838498wmq.3.2021.01.31.03.51.04
+        by mx.google.com with SMTPS id w18sor6851841wmk.27.2021.01.31.03.51.09
         (Google Transport Security);
-        Sun, 31 Jan 2021 03:51:04 -0800 (PST)
+        Sun, 31 Jan 2021 03:51:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=n9AyWszs;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sRiuwmAL;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=7kgwIK0JyvDkmF9iFWkCY48/6oYK9JNsR3MYb3v4QG8=;
-        b=n9AyWszsjAaoRnFwXuUuw7rPY7wzSZ+hzO0UZXdKnF4wDfUQB4I9DojR0AhRbjsTLK
-         RErB2otDkUoKNEiWYP7Yrt2aw15d+dA9Y+3SPIUOmfZEwJvOXmWuZDbs9Uev0LzyKGeJ
-         yDVt/DifjreigZ5eStSOamXH4eV9/eir1F4f2l6Fn9Nlx5Z843nIFbYQOvaXPCTWSr/m
-         ImY/2H/l+FJF6NVSjLklW8AsZtX3R2VsCSVDWXo9WA0Q9unws98XkDEzUeay/3mKFLGR
-         S3ffbtd2B9J1qthp8co9d2yLBB0wOHCn1rfSTDfa7bbKiVPnqcucletQRJHJusUlHlUL
-         EDUA==
+        bh=9aLdl19C96C3GXRdvC9mwI7cbyJbYzl+Xi4/pdqV71I=;
+        b=sRiuwmALg9U8wrF+nK7mVUs+HXcy3GG/kZwoT3Ky0fRx9392Xk6PlerBKMECc3uHhq
+         +yEZaCAi2myKtOwXsL10XN5dYu8Q4lK7UBTHJ3cMuwjgLxM9+XSiRL3YrTJPe0l8/a/u
+         h+naApUI8PLoHdg3NlxtwFO6hG3iOnqc8AADrzk3ryeB4Xm5F4S0d8qwaf5oc8cZ5hAR
+         YgxVZapFmkxXd0HX5bwBqbhZkgHKgaJzj/4J7yPtjueODMnIOooBfdV/qgcFB8zCxzv5
+         EUR/LB1cNPPQXtqQGokgkIe/EGWziL1d1OtZbsb2cxJwAnHXJ/H+ySW/Hl2kSIvnb2Es
+         KUZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=7kgwIK0JyvDkmF9iFWkCY48/6oYK9JNsR3MYb3v4QG8=;
-        b=HMds+QTLPQFzAE8q7u3TYAplaBBigi3l65mVu5vsU3Tz+rJ8ROQDsF7D04su8BSe4Y
-         RT5Lna3mNrGD/axwFEV29UTKfVYa1bjQHsw9EA91GdWeNxEp9B8ADx3Zr7E3ebLNqj4b
-         TfZrlJ/ONY+XMrHgENB1JMsoHmoCZc7IMtIc6B3xzK/E2MWM1L4Sxa0PmthYhMhOLcmL
-         kbFSyzmoSimVVd4wOyG+ssEajkcPpoRQr15sIcXOOxtSNg8hYEsNzwxMmrQSBIiUUC8Q
-         CNQQ+bjnTulz4jJdvj/7VtSoFKvcMmFU5dMAlY8/9WQ+Wf384ikxA+Cwc91Ez49e7oUE
-         IPXw==
-X-Gm-Message-State: AOAM532+w46zJ7PFOCJLMOjH4FwVG3aYIxOryW3W0FasfVfuAJfzHQ5c
-	3fdroLq2sL9LS5r6yChXQMpPcAT6E+M=
-X-Google-Smtp-Source: ABdhPJz3tlrMcRRpjd4PUI1yHaP/ipcEQ3/LURnJ6uV5ubC8GeKt0km9ort6jH4+M4qdcEM7EgRM5g==
-X-Received: by 2002:a05:600c:4f07:: with SMTP id l7mr5555519wmq.111.1612093864376;
-        Sun, 31 Jan 2021 03:51:04 -0800 (PST)
+        bh=9aLdl19C96C3GXRdvC9mwI7cbyJbYzl+Xi4/pdqV71I=;
+        b=MHUUim1f+K6CDTicmz6iAPqpZY/faPL7Dmn9gqXsR0OfsYDnmOm0e/BRmGIXRSzYqz
+         zqCL0TIQTNJj6EmaxiaCgtCReP4vHy1wq8TqAVvuXj0seNyin1YNav5MB+p0i8iUY8jF
+         H+MSshC/6nqLRzv5sgAR+2Bcd16t440RO+DNTvhhmFyOvu6r15n7/wx8zZMUy+K3Q7PY
+         gWiCmgYLRxjUG7I1OPIzEbVzplHyhSXpmsviqB/l0egDED+P1YBI7kkirD42wC2EZuLH
+         amvcXDJ4ucby6Mz+/HjPRkw8ot3T0Yw1IhOYutesmCJkXgxLiVaGqxWJQYCANIazv9u1
+         wvag==
+X-Gm-Message-State: AOAM5311bOKb8E+k2SV2EkIrruiBiHaZABU5cSGkihoVH/Y4UeOIfyc5
+	kID9R9PPjGsYBEeQxQipeyM=
+X-Google-Smtp-Source: ABdhPJwEOUHvqTzGHiWAoaq4Jn7Z8VpdizCzuGier0I9RK/FHNRiq3u4Ge8nQolOUjmT1NuInZpoKw==
+X-Received: by 2002:a05:600c:4f48:: with SMTP id m8mr1541406wmq.12.1612093869810;
+        Sun, 31 Jan 2021 03:51:09 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
-        by smtp.gmail.com with ESMTPSA id b3sm19907224wme.32.2021.01.31.03.51.02
+        by smtp.gmail.com with ESMTPSA id c62sm3325143wme.16.2021.01.31.03.51.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jan 2021 03:51:03 -0800 (PST)
+        Sun, 31 Jan 2021 03:51:09 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -84,157 +84,221 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	John Snow <jsnow@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v6 07/11] target/arm: Restrict ARMv7 M-profile cpus to TCG accel
-Date: Sun, 31 Jan 2021 12:50:18 +0100
-Message-Id: <20210131115022.242570-8-f4bug@amsat.org>
+Subject: [PATCH v6 08/11] target/arm: Make m_helper.c optional via CONFIG_ARM_V7M
+Date: Sun, 31 Jan 2021 12:50:19 +0100
+Message-Id: <20210131115022.242570-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131115022.242570-1-f4bug@amsat.org>
 References: <20210131115022.242570-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: v2S3X+vSNFh4
+X-TUID: dB6+VvTkRVJk
 
-KVM requires the target cpu to be at least ARMv8 architecture
-(support on ARMv7 has been dropped in commit 82bf7ae84ce:
-"target/arm: Remove KVM support for 32-bit Arm hosts").
+From: Thomas Huth <thuth@redhat.com>
 
-Beside, KVM only supports A-profile, thus won't be able to run
-M-profile cpus.
+We've already got the CONFIG_ARM_V7M switch, but it currently can
+not be disabled yet. The m_helper.c code should not be compiled
+into the binary if the switch is not enabled. We also have to
+provide some stubs in a separate file to make sure that we still
+can link the other code without CONFIG_ARM_V7M.
 
-Only enable the following ARMv7 M-Profile CPUs when TCG is available:
-
-  - Cortex-M0
-  - Cortex-M3
-  - Cortex-M4
-  - Cortex-M33
-
-The following machines are no more built when TCG is disabled:
-
-  - emcraft-sf2          SmartFusion2 SOM kit from Emcraft (M2S010)
-  - highbank             Calxeda Highbank (ECX-1000)
-  - lm3s6965evb          Stellaris LM3S6965EVB (Cortex-M3)
-  - lm3s811evb           Stellaris LM3S811EVB (Cortex-M3)
-  - midway               Calxeda Midway (ECX-2000)
-  - mps2-an385           ARM MPS2 with AN385 FPGA image for Cortex-M3
-  - mps2-an386           ARM MPS2 with AN386 FPGA image for Cortex-M4
-  - mps2-an500           ARM MPS2 with AN500 FPGA image for Cortex-M7
-  - mps2-an505           ARM MPS2 with AN505 FPGA image for Cortex-M33
-  - mps2-an511           ARM MPS2 with AN511 DesignStart FPGA image for Cortex-M3
-  - mps2-an521           ARM MPS2 with AN521 FPGA image for dual Cortex-M33
-  - musca-a              ARM Musca-A board (dual Cortex-M33)
-  - musca-b1             ARM Musca-B1 board (dual Cortex-M33)
-  - netduino2            Netduino 2 Machine (Cortex-M3)
-  - netduinoplus2        Netduino Plus 2 Machine(Cortex-M4)
-
-We don't need to enforce CONFIG_ARM_V7M in default-configs anymore.
-
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20190903154810.27365-4-thuth@redhat.com>
+[PMD: Keep m_helper-stub.c but extend it, rewrite the rest]
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+Rewrite since v3, therefore removed Richard R-b tag.
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- default-configs/devices/arm-softmmu.mak | 11 -----------
- hw/arm/Kconfig                          |  7 +++++++
- target/arm/Kconfig                      |  1 +
- 3 files changed, 8 insertions(+), 11 deletions(-)
+ target/arm/cpu.h           | 12 -------
+ target/arm/cpu_tcg.c       |  4 ++-
+ target/arm/helper.c        |  7 ----
+ target/arm/m_helper-stub.c | 73 ++++++++++++++++++++++++++++++++++++++
+ target/arm/meson.build     |  4 ++-
+ 5 files changed, 79 insertions(+), 21 deletions(-)
+ create mode 100644 target/arm/m_helper-stub.c
 
-diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-index 175530595ce..0fc80d7d6df 100644
---- a/default-configs/devices/arm-softmmu.mak
-+++ b/default-configs/devices/arm-softmmu.mak
-@@ -1,28 +1,17 @@
- # Default configuration for arm-softmmu
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index d080239863c..0bd0e51e498 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2281,12 +2281,6 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
+ /* Interface between CPU and Interrupt controller.  */
+ #ifndef CONFIG_USER_ONLY
+ bool armv7m_nvic_can_take_pending_exception(void *opaque);
+-#else
+-static inline bool armv7m_nvic_can_take_pending_exception(void *opaque)
+-{
+-    return true;
+-}
+-#endif
+ /**
+  * armv7m_nvic_set_pending: mark the specified exception as pending
+  * @opaque: the NVIC
+@@ -2392,13 +2386,7 @@ int armv7m_nvic_raw_execution_priority(void *opaque);
+  * @secure: the security state to test
+  * This corresponds to the pseudocode IsReqExecPriNeg().
+  */
+-#ifndef CONFIG_USER_ONLY
+ bool armv7m_nvic_neg_prio_requested(void *opaque, bool secure);
+-#else
+-static inline bool armv7m_nvic_neg_prio_requested(void *opaque, bool secure)
+-{
+-    return false;
+-}
+ #endif
  
--# TODO: ARM_V7M is currently always required - make this more flexible!
--CONFIG_ARM_V7M=y
+ /* Interface for defining coprocessor registers.
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index 98544db2df3..3e1c9b40353 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -15,6 +15,7 @@
+ /* CPU models. These are not needed for the AArch64 linux-user build. */
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+ 
++#ifndef CONFIG_USER_ONLY
+ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cs);
+@@ -38,6 +39,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+     }
+     return ret;
+ }
++#endif /* CONFIG_USER_ONLY */
+ 
+ static void arm926_initfn(Object *obj)
+ {
+@@ -666,9 +668,9 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
+     acc->info = data;
+ #ifndef CONFIG_USER_ONLY
+     cc->do_interrupt = arm_v7m_cpu_do_interrupt;
++    cc->cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt;
+ #endif
+ 
+-    cc->cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt;
+     cc->gdb_core_xml_file = "arm-m-profile.xml";
+ }
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 47e266d7e64..fe3d0291f9c 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -12825,13 +12825,6 @@ int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx)
+     }
+ }
+ 
+-#ifndef CONFIG_TCG
+-ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+-{
+-    g_assert_not_reached();
+-}
+-#endif
 -
- # CONFIG_PCI_DEVICES=n
- # CONFIG_TEST_DEVICES=n
+ ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el)
+ {
+     ARMMMUIdx idx;
+diff --git a/target/arm/m_helper-stub.c b/target/arm/m_helper-stub.c
+new file mode 100644
+index 00000000000..6d751424e86
+--- /dev/null
++++ b/target/arm/m_helper-stub.c
+@@ -0,0 +1,73 @@
++/*
++ * ARM V7M related stubs.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "exec/helper-proto.h"
++#include "internals.h"
++
++void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
++{
++    g_assert_not_reached();
++}
++
++void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
++{
++    g_assert_not_reached();
++}
++
++uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
++{
++    g_assert_not_reached();
++}
++
++void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
++{
++    g_assert_not_reached();
++}
++
++uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
++{
++    g_assert_not_reached();
++}
++
++void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
++{
++    g_assert_not_reached();
++}
++
++void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
++{
++    g_assert_not_reached();
++}
++
++void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
++{
++    g_assert_not_reached();
++}
++
++void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
++{
++    g_assert_not_reached();
++}
++
++ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
++{
++    g_assert_not_reached();
++}
++
++#ifndef CONFIG_USER_ONLY
++
++bool armv7m_nvic_can_take_pending_exception(void *opaque)
++{
++    g_assert_not_reached();
++}
++
++void arm_v7m_cpu_do_interrupt(CPUState *cs)
++{
++    g_assert_not_reached();
++}
++
++#endif /* CONFIG_USER_ONLY */
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 15b936c1010..6c6081966cd 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -21,7 +21,6 @@
+   'gdbstub.c',
+   'helper.c',
+   'iwmmxt_helper.c',
+-  'm_helper.c',
+   'neon_helper.c',
+   'op_helper.c',
+   'tlb_helper.c',
+@@ -32,6 +31,9 @@
+ ))
+ arm_ss.add(zlib)
  
- CONFIG_ARM_VIRT=y
- CONFIG_CUBIEBOARD=y
- CONFIG_EXYNOS4=y
--CONFIG_HIGHBANK=y
--CONFIG_MUSCA=y
--CONFIG_STELLARIS=y
- CONFIG_REALVIEW=y
- CONFIG_VEXPRESS=y
- CONFIG_ZYNQ=y
- CONFIG_NPCM7XX=y
--CONFIG_NETDUINO2=y
--CONFIG_NETDUINOPLUS2=y
--CONFIG_MPS2=y
- CONFIG_RASPI=y
- CONFIG_SABRELITE=y
--CONFIG_EMCRAFT_SF2=y
--CONFIG_MICROBIT=y
- CONFIG_FSL_IMX7=y
- CONFIG_FSL_IMX6UL=y
- CONFIG_ALLWINNER_H3=y
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4baf1f97694..62f8b0d24e7 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -60,6 +60,7 @@ config EXYNOS4
++arm_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('m_helper.c'), if_false: files('m_helper-stub.c'))
++arm_ss.add(when: 'CONFIG_TCG', if_false: files('m_helper-stub.c'))
++
+ arm_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c', 'kvm64.c'), if_false: files('kvm-stub.c'))
  
- config HIGHBANK
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select A15MPCORE
-     select AHCI
-@@ -95,6 +96,7 @@ config MAINSTONE
- 
- config MUSCA
-     bool
-+    default y if TCG && ARM
-     select ARMSSE
-     select PL011
-     select PL031
-@@ -115,10 +117,12 @@ config MUSICPAL
- 
- config NETDUINO2
-     bool
-+    default y if TCG && ARM
-     select STM32F205_SOC
- 
- config NETDUINOPLUS2
-     bool
-+    default y if TCG && ARM
-     select STM32F405_SOC
- 
- config NSERIES
-@@ -240,6 +244,7 @@ config SABRELITE
- 
- config STELLARIS
-     bool
-+    default y if TCG && ARM
-     select ARM_V7M
-     select CMSDK_APB_WATCHDOG
-     select I2C
-@@ -443,6 +448,7 @@ config ASPEED_SOC
- 
- config MPS2
-     bool
-+    default y if TCG && ARM
-     select ARMSSE
-     select LAN9118
-     select MPS2_FPGAIO
-@@ -496,6 +502,7 @@ config NRF51_SOC
- 
- config EMCRAFT_SF2
-     bool
-+    default y if TCG && ARM
-     select MSF2
-     select SSI_M25P80
- 
-diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-index 4dc96c46520..07a2fad7a2b 100644
---- a/target/arm/Kconfig
-+++ b/target/arm/Kconfig
-@@ -24,4 +24,5 @@ config ARM_V7R
- 
- config ARM_V7M
-     bool
-+    depends on TCG && ARM
-     select PTIMER
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
 -- 
 2.26.2

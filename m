@@ -1,100 +1,97 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2759475lfo;
-        Sun, 31 Jan 2021 08:44:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw0IQS5Vryu9R7I+Ldy4mkNuNeK7BrxQgKv4OAJzJph2iJptkHIoO/AiVOioyRcpV8/Qw3P
-X-Received: by 2002:a25:cd01:: with SMTP id d1mr3058273ybf.125.1612111498710;
-        Sun, 31 Jan 2021 08:44:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612111498; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2759499lfo;
+        Sun, 31 Jan 2021 08:45:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwnCOR9DORy/JUxjIS+TT0SxuN71yp7WRToo24gVjxFGbqZD1otBJFkGcazBZstfibQy3MD
+X-Received: by 2002:a25:7651:: with SMTP id r78mr20212766ybc.198.1612111503563;
+        Sun, 31 Jan 2021 08:45:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612111503; cv=none;
         d=google.com; s=arc-20160816;
-        b=sryU01csYv9nB58/gYo2QDDD3ZMW3/omDhDbhoho7PfDEJO8LDLLnrxOLOsJhwqRPY
-         mbwtqiJOF8b9tjPLR6cLqHdhhX/4IhKeKrEKyPjbWcyRSp4paYAL+t//Zzs6lyYJHJV9
-         zIrHYldby8gPLItPhSGjDFPi/b7xs97NqXRfM4IcyJ2s3gFGMIkP3RlLWXl2ENrv3fGr
-         zsBTs8gD8iVMKOE6YtGyFJwSOWg+iKiyD81WJc3mhn8eqIe7PvVZeYX7X69O6xBeXUa2
-         GUuqu03lQwm3VdgkKbQGNX8LlmTG+N4IUXbRFkMj/4SD+GRokMiXab44ct/N0JbtJpOJ
-         mBlg==
+        b=Scu3dQRW8sbJ1I5YWG2UVwM8GZ3JfRZ7necZxpHHQcI8vHTl665Nopd1m5oXv4qA19
+         br7OiuyO2N5aBLPM1byKoubpxB8ptyUopzSuV2WO2Czptrley7JMVStof1EG9mazVL8q
+         iS2i1SIDTiAnsUakS+rEWLNcL7XoS1nMXLD8YS9epQwEUdlpKcAkJ+hiFM1H1O8Qcmqp
+         tv3OA6PGgbzaX3hS8DV2Km69sNXQqQb5CBqHibyh7EcfE+YDIq5hebYxlSoeWVYbgAN6
+         ZTpiMXsmvuOGgdXjMU3qiFnyXk6MdQ/IAnzVAkV1wumQkQvZTLp2enwDCy7Cfvyw3iXk
+         0TbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Ti3pGdZyEpwOiFw7/yoi3CPSUbET3rJXN1FI6GYYqTs=;
-        b=IlLJy2swtXoVHMVnJ0mEiwU4A1A6DFhbW1kEk2floTTkDMkb6KJS7TE3PLx0WmCSfD
-         6abAdVQhgDIh09PhrKRFxIKpGHXMWqDyeQMwLEE24AqXkpu/wicdcmRIPWkkbuSqKnmB
-         FM5e7H7iGzoGjBLFngp+whhPfmA2pPvxZ1Hm5Fb9JbI7+O+/FkZ4p/6gO3B7UnkcyeE1
-         ME2fAeVTVWQCy6qDto/3MmRfTLHb860Hr2kKeYYVCofDKIx+aOUOcpZgkdCf6SMbA69P
-         wyUB+iNBMZTFUjhbyUom+VVae3Eay9/Pw5Njcno+7SiZ3fJVoxqIWm7fcArTOB33KVeF
-         qJtA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=qTXl26BhYMMkC6cZxuxgFnk+gqy5Q4bDto7VeuMgqds=;
+        b=OHd/6GNAqABxls4FEgVo6NKPVxlxaovgmoDHnC4Ay/UPZFhmEWLFQdWbs+Wu+y0SuA
+         JqfqCUt8+CRUH1YaNYuCIICaLyBkvqUHBfaLt5vl9ROZjjh7tOYw9/DUGfxkukVIQUrW
+         MeVlyHx6YBCNVxH+XthVGOJEU15syZ+hEA1EEcKhxHBYpf1O7y+OwqV/77Dartn4pFwF
+         ykqmjTt4jNw2tL9ph0lu8aLKOsysPri1APOUmPySWKfbLRJi7ZZIZxAhZz5t4Ql4pAvM
+         PuAEI/a8pzpjxC82My2ElHi7LYN1zEQPZiO7rFwQY/auY3Pcm6zRtlbTZfWU0NyVprZS
+         pFgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WJZAC5oI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jzxLW/69";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18si15919517ybf.261.2021.01.31.08.44.58
+        by mx.google.com with ESMTPS id v201si19219240ybe.103.2021.01.31.08.45.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jan 2021 08:44:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 31 Jan 2021 08:45:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WJZAC5oI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jzxLW/69";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:48346 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6FqM-0008MM-1t
-	for alex.bennee@linaro.org; Sun, 31 Jan 2021 11:44:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39194)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6FqQ-00085N-Ra
+	for alex.bennee@linaro.org; Sun, 31 Jan 2021 11:45:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39168)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6Fpo-0008KI-4g; Sun, 31 Jan 2021 11:44:24 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:44239)
+ id 1l6Fpd-00084v-K0; Sun, 31 Jan 2021 11:44:13 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:39937)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6Fpm-0001Vp-Et; Sun, 31 Jan 2021 11:44:23 -0500
-Received: by mail-wr1-x436.google.com with SMTP id d16so13985392wro.11;
- Sun, 31 Jan 2021 08:44:21 -0800 (PST)
+ id 1l6Fpc-0001PZ-03; Sun, 31 Jan 2021 11:44:13 -0500
+Received: by mail-wr1-x436.google.com with SMTP id c12so14026745wrc.7;
+ Sun, 31 Jan 2021 08:44:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Ti3pGdZyEpwOiFw7/yoi3CPSUbET3rJXN1FI6GYYqTs=;
- b=WJZAC5oI/+0J1i4hjINE/PpdCPxgSq7PhS84z14HABHVkvXxR3dyxfxgnhG9k1VCic
- JOXkt/OvHylX/FFFtyd0WuN8m2gH+o0oaaqYP+TsUAXmujpFrnRf9V7KMKf2I7GE+tHD
- b5v3QIuxJEGs3lGQq7J1Vio0QlDrLgbr3foiv8c3KRrrZtJS80I22PhO6Qp1fJ3UmmQx
- fJEn4LithI/Mgz5y7kjyVQmvgaYk8yuCBOI2WjcjjLBpMryHfONwBK2auaZG1l3XkvtM
- 7sKPUJIYiRwuMkE+jGwI8cTwamVxs6EGugcyKEMgHb++Lz4l7VTxW50VCyd8MvLVZfqh
- MGig==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qTXl26BhYMMkC6cZxuxgFnk+gqy5Q4bDto7VeuMgqds=;
+ b=jzxLW/69ks5l7t/9iBxuGGFkFJ//lIEVx3ozA1fyoN+IRfCpRvwNnvOm3uAe2M9kTD
+ eDdQZWZBeDPOHRFJ4YzPx2g/jeuNXTvOb7njI8dULz1/T6ZRISeflY+RZ0LFoXvek1yu
+ lxCnnywUh3QJQhRWaMceGoyomJuLq6a8ABCRhFHAtYz4ofYl7dUtu/a4K8b7+5Eio4V5
+ HdtPbGQeC9Z/yWdf6/OHCKINZ4/ZEAAYweDT7DH5uJjpvJdJTqLPWkJzTEdvD297pOkm
+ LgmqHK2SweGyoSoW8wdEeoRjJ6f5IUcuMYApatXZ9VUVbChFpeePv2JJQw3U6cQv2mUx
+ s8CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=Ti3pGdZyEpwOiFw7/yoi3CPSUbET3rJXN1FI6GYYqTs=;
- b=dj5IEltChSfF6bIB4vBwKEttYs5S1hRqXlldd/dhI1+99QB3fQK7EB21fAGlfk6W9Q
- wv2NocfbjOtqHXvWUxIzJqXSmuZlZ2vfAxtMmtvNuHLIJe5hSfnJAiZSjO7lVw5kTuX/
- dIolVtUfqPe5tFUB8rPLaEC1ppkPj1SYYah/5YiClaZPvsMWqSLGafKr/HJRpFXmTBSM
- 0YU1DolTIJgPQFrQYdTWsos1auqWcR/4WFiiZC1WS1YZ0w3wGR7NsaeRH7p6a1hYdgcg
- JUUcLdm4ltvUV5dPPIwt/9wddMmbddrIURP3bUkJPFylHKhhh9H3x/FdqkPy7o93VzrJ
- sYfg==
-X-Gm-Message-State: AOAM532EWBUBR7FFKdRskIirog4W7lI8ySi3AYWGAYBsMwVevKNmsnJ/
- QL8b6yoHNjCg+RSarYcdTqV/6sZpBzM=
-X-Received: by 2002:a05:6000:104:: with SMTP id
- o4mr14080822wrx.419.1612111460654; 
- Sun, 31 Jan 2021 08:44:20 -0800 (PST)
+ :mime-version:content-transfer-encoding;
+ bh=qTXl26BhYMMkC6cZxuxgFnk+gqy5Q4bDto7VeuMgqds=;
+ b=Aw3VS3XZk5aglL2+4/KW9J2y2Ld9bvtLJqj290WpbtpNLbirTln42dXIoha4gg8BhT
+ yiQWKUQP+qzd7YT2NANR8KdKdP92m/PIow3tSsy6XcqNb4mxTt2m4T9uHKVK8rNXLzPs
+ 9Sqz1107HAkfLcs8yq5YIfrdIoJJxz0Ami1VZCmgtj/vRVhenhzXnERJf6DtuqYwf6jB
+ xVAccmhRQCNl6nU5mY1HGpWGwme3EvDrYD2W4r7V79uREcxC6UZsC1tRaqREk9rkYAV4
+ UW/d2IpprpxYWCt0/Lve/ta7IpD30bhW6015FS7PpN3g+ZqB5NJ6nTpaVwbTNMohxUbk
+ UvfQ==
+X-Gm-Message-State: AOAM530qa4GlXNCcIuGwyvgCseoV40G3Kx++2PvCElPcXbOwT/kHuO95
+ QZu2NaB+Iqngi/3AZ/Xsg8T+HY8QuI4=
+X-Received: by 2002:a05:6000:143:: with SMTP id
+ r3mr12930181wrx.357.1612111449892; 
+ Sun, 31 Jan 2021 08:44:09 -0800 (PST)
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
  [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id m184sm19779832wmf.12.2021.01.31.08.44.19
+ by smtp.gmail.com with ESMTPSA id a6sm17936335wmj.27.2021.01.31.08.44.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 08:44:20 -0800 (PST)
+ Sun, 31 Jan 2021 08:44:08 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 2/5] hw/arm: Restrict ARMv7 A-profile cpus to TCG accel
-Date: Sun, 31 Jan 2021 17:44:03 +0100
-Message-Id: <20210131164406.349825-3-f4bug@amsat.org>
+Subject: [PATCH 0/5] target/arm: Restrict v7A TCG cpus to TCG accel
+Date: Sun, 31 Jan 2021 17:44:01 +0100
+Message-Id: <20210131164406.349825-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210131164406.349825-1-f4bug@amsat.org>
-References: <20210131164406.349825-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2a00:1450:4864:20::436;
  envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -14
@@ -106,162 +103,48 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HtLQ4yVe8Urq
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BndFWr4nfVCH
 
-KVM requires the target cpu to be at least ARMv8 architecture
-(support on ARMv7 has been dropped in commit 82bf7ae84ce:
-"target/arm: Remove KVM support for 32-bit Arm hosts").
-
-The following machines are no more built when TCG is disabled:
-
-  - cubieboard           cubietech cubieboard (Cortex-A8)
-  - mcimx6ul-evk         Freescale i.MX6UL Evaluation Kit (Cortex A7)
-  - mcimx7d-sabre        Freescale i.MX7 DUAL SABRE (Cortex A7)
-  - npcm750-evb          Nuvoton NPCM750 Evaluation Board (Cortex A9)
-  - nuri                 Samsung NURI board (Exynos4210)
-  - orangepi-pc          Orange Pi PC (Cortex-A7)
-  - quanta-gsj           Quanta GSJ (Cortex A9)
-  - realview-pb-a8       ARM RealView Platform Baseboard for Cortex-A8
-  - realview-pbx-a9      ARM RealView Platform Baseboard Explore for Cortex-A9
-  - sabrelite            Freescale i.MX6 Quad SABRE Lite Board (Cortex A9)
-  - smdkc210             Samsung SMDKC210 board (Exynos4210)
-  - vexpress-a15         ARM Versatile Express for Cortex-A15
-  - vexpress-a9          ARM Versatile Express for Cortex-A9
-  - xilinx-zynq-a9       Xilinx Zynq Platform Baseboard for Cortex-A9
-
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- default-configs/devices/arm-softmmu.mak | 10 ----------
- hw/arm/Kconfig                          | 11 +++++++++++
- 2 files changed, 11 insertions(+), 10 deletions(-)
-
-diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-index 7d55c156bab..1ffa3dbe4bf 100644
---- a/default-configs/devices/arm-softmmu.mak
-+++ b/default-configs/devices/arm-softmmu.mak
-@@ -3,13 +3,3 @@
- # CONFIG_PCI_DEVICES=n
- # CONFIG_TEST_DEVICES=n
- 
--CONFIG_CUBIEBOARD=y
--CONFIG_EXYNOS4=y
--CONFIG_REALVIEW=y
--CONFIG_VEXPRESS=y
--CONFIG_ZYNQ=y
--CONFIG_NPCM7XX=y
--CONFIG_SABRELITE=y
--CONFIG_FSL_IMX7=y
--CONFIG_FSL_IMX6UL=y
--CONFIG_ALLWINNER_H3=y
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 043710be3df..263f22a80c1 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -39,6 +39,7 @@ config CHEETAH
- 
- config CUBIEBOARD
-     bool
-+    default y if TCG && ARM
-     select ALLWINNER_A10
- 
- config DIGIC
-@@ -50,6 +51,7 @@ config DIGIC
- 
- config EXYNOS4
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select I2C
-     select LAN9118
-@@ -198,6 +200,7 @@ config Z2
- 
- config REALVIEW
-     bool
-+    default y if TCG && ARM
-     imply PCI_DEVICES
-     imply PCI_TESTDEV
-     select SMC91C111
-@@ -241,6 +244,7 @@ config SBSA_REF
- 
- config SABRELITE
-     bool
-+    default y if TCG && ARM
-     select FSL_IMX6
-     select SSI_M25P80
- 
-@@ -292,6 +296,7 @@ config VERSATILE
- 
- config VEXPRESS
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select A15MPCORE
-     select ARM_MPTIMER
-@@ -307,6 +312,7 @@ config VEXPRESS
- 
- config ZYNQ
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select CADENCE # UART
-     select PFLASH_CFI02
-@@ -331,6 +337,7 @@ config ALLWINNER_A10
- 
- config ALLWINNER_H3
-     bool
-+    default y if TCG && ARM
-     select ALLWINNER_A10_PIT
-     select ALLWINNER_SUN8I_EMAC
-     select SERIAL
-@@ -395,6 +402,7 @@ config XLNX_VERSAL
- 
- config NPCM7XX
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select ARM_GIC
-     select PL310  # cache controller
-@@ -424,6 +432,7 @@ config FSL_IMX31
- 
- config FSL_IMX6
-     bool
-+    default y if TCG && ARM
-     select A9MPCORE
-     select IMX
-     select IMX_FEC
-@@ -467,6 +476,7 @@ config MPS2
- 
- config FSL_IMX7
-     bool
-+    default y if TCG && ARM
-     imply PCI_DEVICES
-     imply TEST_DEVICES
-     select A15MPCORE
-@@ -484,6 +494,7 @@ config ARM_SMMUV3
- 
- config FSL_IMX6UL
-     bool
-+    default y if TCG && ARM
-     select A15MPCORE
-     select IMX
-     select IMX_FEC
--- 
-2.26.2
-
+KVM requires the target cpu to be at least ARMv8 architecture.=0D
+=0D
+Restrict the last ARMv7 CPUs (A-profile) to TCG.=0D
+=0D
+(This is where I realize no need to split the v7 A/R/M profiles=0D
+anymore... I could have use a single ARM_V7, although it is useful=0D
+to have the M-profile separated).=0D
+=0D
+Based-on: <20210131115022.242570-1-f4bug@amsat.org>=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (5):=0D
+  hw/arm: Use Kconfig 'default y' syntax instead of default-configs=0D
+  hw/arm: Restrict ARMv7 A-profile cpus to TCG accel=0D
+  target/arm: Restrict v8M IDAU to TCG=0D
+  target/arm/cpu: Update coding style to make checkpatch.pl happy=0D
+  target/arm: Restrict v7A TCG cpus to TCG accel=0D
+=0D
+ default-configs/devices/aarch64-softmmu.mak |   3 -=0D
+ default-configs/devices/arm-softmmu.mak     |  12 -=0D
+ target/arm/cpu.c                            | 330 --------------------=0D
+ target/arm/cpu_tcg.c                        | 318 +++++++++++++++++++=0D
+ hw/arm/Kconfig                              |  15 +=0D
+ 5 files changed, 333 insertions(+), 345 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D

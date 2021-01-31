@@ -1,88 +1,190 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2602410lfo;
-        Sun, 31 Jan 2021 03:57:16 -0800 (PST)
-X-Received: by 2002:a9d:67d5:: with SMTP id c21mr8429237otn.247.1612094236230;
-        Sun, 31 Jan 2021 03:57:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612094236; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2609421lfo;
+        Sun, 31 Jan 2021 04:08:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxrLnZXCc+B8qBPWhoRxDNHPpDgEXjCrL22dwj2HEBEwxfqPdvG7xwngDWPLXNdqaVtqEqA
+X-Received: by 2002:a25:cc85:: with SMTP id l127mr19289103ybf.248.1612094897627;
+        Sun, 31 Jan 2021 04:08:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612094897; cv=none;
         d=google.com; s=arc-20160816;
-        b=EL6SFIV283SWEZJtuqHuwNmNKa9Cy5R/TraJNxSFPGD4cvF33nt64/q2Agl5+/t2W/
-         btMAEOrm8oAjbXqwrXta8qrlpVvm9bFiAKwD0GiSb+9WqvruKp7tg1qENGwQV8Y4Szww
-         r7cB47FRmYGVN9+dihBS8fBVXY4duCnafICdHAmTXPc4BExsMFuB3x5NZ/33NmXgNELP
-         upqZtIMnznR2Cs0H1QLLodi9WKIiqJ1wAmINWpMGJyUvLFoVug3gQjSGt8/dJUbdUj2a
-         NQMMZ462XIHDD/TGtmkgA/CS+jp8jQUcZIbZqg+4YyT+r0rqBH/p4s09p25oRC0Bm4ko
-         2hJw==
+        b=q0945BwWNTRckm6I6lcuB9P80ToOEtefUB8fwfqBIN6yMT1GsgPY5ednrbVDhacQoU
+         tHxpOBpX9Bdptnbhbzah37B9Z9N9qu5BpkcLiuoOdrzNFsw6zdZ5KRDkIQEr90JyCHV+
+         nv76A9HWsiGo/RRDwOjThjyIbYruuKAKshViFNeIEiOuksad9UqbG8Tn1/iuD2n74gVU
+         0/e/oQH3SRgyp1ULB78r3mOvk3axPqJC8wJkWuLVndqPUeofeOviu1i4zCpSbRkqJR/n
+         Sk5y8Dy1IqYi7dFAxtAHYFNwOorovy4x0KMaMEYGz0H1LFz5gVbxZ7+CSkL1PbRIWkWM
+         mzxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=YVkInRJxpduhbRvqa9xcBthpuPzf7AjKpZhjK7Cpckg=;
-        b=bO+7hUfiUKUgJtoMyJaUsxjJXC3xG66R01Xbl7D+cpufKKp3+aE4P35DUnTfS4pGhR
-         Fu87PXHuj3mm81Z86TErqfj72NUlHClMA0YoXHZ9P0K3fUx9emNmNO1qnHh20HyaKS87
-         v21twzt9jPBh7YLA6VrpjGHduuHrEjRtWBzqJ+2zH4yevNYE+TH5nOnmDXcjwzGRMzio
-         yFdue1U4aiBXQjtRhaPsOPZGn2u5OnSyGbOKeikSy3RuL6nn6LbLu1ecP0dVsaffql+V
-         Irg9app0miRLinQR4Thse0+KFjTTcZoX66ryUD5ob7+xbhoP83IEBzJK/e8G9FJ/N6gQ
-         EfEg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:to:from:date:dkim-signature;
+        bh=/eB22EK6Sxe6tquaW0oxDejbZSU1tflyFzbU5sPweqk=;
+        b=gsoCsUdNbJqII39kciC1tPcQCiPuakQ+cNrCNOmoOXBV5LUX8uV4myCJrsjLX6MFTe
+         dUUKoRpsT/K/bE7NtpiFxOhOUfQ5+Bkz0DXVRN4KPAxXaHw8wVLc7MvJUJ6+y7J26BMx
+         idP0uKBGqO/r63VWx4q8Y0b7rBM+ojAr+zaEjtY169o8NfDZ934Kr6YlVOZLzdJjgZFd
+         uVCVN10HGAYiXXv54Xik1Aqv3cGvvR4UiYTcVTx+fin65c7dyAxhIOvXcMWmHfZ7HqIr
+         nHYZzFj1YUKLEIOBRAhVanDn4FMQR7CMP9TRyVQfdyljxXBLm63W1H4Vbu1dzfTfMsVA
+         AuuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n1sor3564796oie.86.2021.01.31.03.57.16
-        (Google Transport Security);
-        Sun, 31 Jan 2021 03:57:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ae9yjPMZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t39si14263781ybi.19.2021.01.31.04.08.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 31 Jan 2021 04:08:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=YVkInRJxpduhbRvqa9xcBthpuPzf7AjKpZhjK7Cpckg=;
-        b=fM64sObaBJ+STdi7MLOYGT59LGVrOdlFPiFMi6vSOv0ytE3ux0FNbMq1VZ9KQv7czK
-         +Y5csLuGdZj/6dqlPOOCueIozajaq0UmxrW13tyBh4BD9Js3R1fRGVbqmUz2cxPFZgdt
-         biks3RO3UvVlt04xOWei4bINeazzFunpArP1RWVQMOa45bbYEwo5UEFhexWww/u/0UIx
-         kYU5Zbfk3U3dTzTaXSouwgNseNQRuluWf+jRexQFWcPlWIaVham8WLjU/bEZ3vkua0Oy
-         IKrQD9Jc+gkB5FzCXLwz6xWwB0YnfDIQDHue69PVU/ik6xbZi0RM6ywIxYEzl73vDg17
-         YCwg==
-X-Gm-Message-State: AOAM53175jGVxuXXjvRGxmuHVHqz/USWAzEwQm/SDqeaseQlCu0+mqBM
-	uvTOwlcBUPslJVgtvH4Mq4bbUcLj4ExZotslExE=
-X-Google-Smtp-Source: ABdhPJzTsVYWTiFYHJJoplW61B8aLyILK891rvibXykh/sCNgQ3gvSZtbxkhWSacPEQCBANMrvfh/48uBylcMZS22go=
-X-Received: by 2002:aca:f1d4:: with SMTP id p203mr7974934oih.46.1612094235899;
- Sun, 31 Jan 2021 03:57:15 -0800 (PST)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ae9yjPMZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33786 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6BWb-0007zh-01
+	for alex.bennee@linaro.org; Sun, 31 Jan 2021 07:08:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34878)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ppandit@redhat.com>)
+ id 1l6BMO-000054-KN
+ for qemu-arm@nongnu.org; Sun, 31 Jan 2021 06:57:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37247)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ppandit@redhat.com>)
+ id 1l6BMK-0008AF-7H
+ for qemu-arm@nongnu.org; Sun, 31 Jan 2021 06:57:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612094258;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/eB22EK6Sxe6tquaW0oxDejbZSU1tflyFzbU5sPweqk=;
+ b=ae9yjPMZtRufmN6sgXs7t0NcDYtg+/rdLV5fHnjj6tpjAfpL2kDsnIOYnOi4D/gZOaEZBq
+ LffhVvGaxpoOE5MzFuexyq+0G5Xiy195Eyex8RWhvWsf4ZtPhwIuljR8MqxjBv0knEdPSH
+ vDJkEa197+jTuj5GC6YwfMCd5IjnYFU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-460-B6ZazDrIP5C0GuiN5ReEGw-1; Sun, 31 Jan 2021 06:57:34 -0500
+X-MC-Unique: B6ZazDrIP5C0GuiN5ReEGw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E086F801B16;
+ Sun, 31 Jan 2021 11:57:32 +0000 (UTC)
+Received: from kaapi (ovpn-112-95.phx2.redhat.com [10.3.112.95])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 05D0B5C3E0;
+ Sun, 31 Jan 2021 11:57:26 +0000 (UTC)
+Date: Sun, 31 Jan 2021 17:27:20 +0530 (IST)
+From: P J P <ppandit@redhat.com>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH] hw/intc/arm_gic: Fix interrupt ID in GICD_SGIR
+ register
+In-Reply-To: <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
+Message-ID: <20p82p5p-ns25-n434-37os-n55013s6313@erqung.pbz>
+References: <20210131103401.217160-1-f4bug@amsat.org>
+ <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
 MIME-Version: 1.0
-References: <20210131115022.242570-1-f4bug@amsat.org> <20210131115022.242570-12-f4bug@amsat.org>
-In-Reply-To: <20210131115022.242570-12-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Sun, 31 Jan 2021 12:57:04 +0100
-Message-ID: <CAAdtpL4kPsFE3PuxkdE-Pmc+AqYiXFOEhdBTpvyBckZ1BJMHtQ@mail.gmail.com>
-Subject: Re: [PATCH v6 11/11] .travis.yml: Add a KVM-only Aarch64 job
-To: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, Fam Zheng <fam@euphon.net>, Claudio Fontana <cfontana@suse.de>, 
-	Paolo Bonzini <pbonzini@redhat.com>, "open list:Block layer core" <qemu-block@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	kvm <kvm@vger.kernel.org>, Laurent Vivier <lvivier@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, John Snow <jsnow@redhat.com>, 
-	Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: LC9DRaUSTGDn
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ppandit@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/mixed;
+ boundary="-1463811718-1923904730-1612094251=:1010257"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=ppandit@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Darren Kenny <darren.kenny@oracle.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, Li Qiang <liq3ea@gmail.com>,
+ qemu-stable@nongnu.org, qemu-devel@nongnu.org,
+ Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: p76+Uw4XFTH5
 
-On Sun, Jan 31, 2021 at 12:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->
-> From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> Add a job to build QEMU on Aarch64 with TCG disabled, so
-> this configuration won't bitrot over time.
->
-> We explicitly modify default-configs/aarch64-softmmu.mak to
-> only select the 'virt' and 'SBSA-REF' machines.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> Job ran for 7 min 30 sec
-> https://travis-ci.org/github/philmd/qemu/jobs/731428859
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+---1463811718-1923904730-1612094251=:1010257
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
 
-BTW I added this patch for completeness but I couldn't test it again
-as I don't have anymore Travis-CI credit. I however tested it on a similar
-Ubuntu Aarch64 host.
++-- On Sun, 31 Jan 2021, Philippe Mathieu-Daudé wrote --+
+| On 1/31/21 11:34 AM, Philippe Mathieu-Daudé wrote:
+| > Per the ARM Generic Interrupt Controller Architecture specification
+| > (document "ARM IHI 0048B.b (ID072613)"), the SGIINTID field is 4 bit,
+| > not 10:
+| > 
+| >     - Table 4-21 GICD_SGIR bit assignments
+| > 
+| >     The Interrupt ID of the SGI to forward to the specified CPU
+| >     interfaces. The value of this field is the Interrupt ID, in
+| >     the range 0-15, for example a value of 0b0011 specifies
+| >     Interrupt ID 3.
+| > 
+| > diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+| > index af41e2fb448..75316329516 100644
+| > --- a/hw/intc/arm_gic.c
+| > +++ b/hw/intc/arm_gic.c
+| > @@ -1476,7 +1476,7 @@ static void gic_dist_writel(void *opaque, hwaddr offset,
+| >          int target_cpu;
+| >  
+| >          cpu = gic_get_current_cpu(s);
+| > -        irq = value & 0x3ff;
+| > +        irq = value & 0xf;
+| >          switch ((value >> 24) & 3) {
+| >          case 0:
+| >              mask = (value >> 16) & ALL_CPU_MASK;
+| > 
+
+* Looks okay.
+
+
+| > Correct the irq mask to fix an undefined behavior (which eventually
+| > lead to a heap-buffer-overflow, see [Buglink]):
+| > 
+| >    $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M virt,accel=qtest -qtest stdio
+| >    [I 1612088147.116987] OPENED
+| >   [R +0.278293] writel 0x8000f00 0xff4affb0
+| >   ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bounds for type 'uint8_t [16][8]'
+| >   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/intc/arm_gic.c:1498:13
+| > 
+| > Cc: qemu-stable@nongnu.org
+| > Fixes: 9ee6e8bb853 ("ARMv7 support.")
+| > Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
+| > Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
+| 
+| > ---
+| > Isnt it worth a CVE to help distributions track backports?
+| > ---
+
+* Please send such report(s) to 'qemu-security' list to be triaged as 
+  potential security ones.
+
+
+Thank you.
+--
+Prasad J Pandit / Red Hat Product Security Team
+8685 545E B54C 486B C6EB 271E E285 8B5A F050 DE8D
+---1463811718-1923904730-1612094251=:1010257--
+

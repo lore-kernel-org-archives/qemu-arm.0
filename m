@@ -1,101 +1,101 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2574271lfo;
-        Sun, 31 Jan 2021 03:01:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy8vFLfg6h4XP4Y7MZcf5l9tZNvzxTkge5WZ1w8n3nN0ByjlmVGQEMi3PII3hyiJAKuG90S
-X-Received: by 2002:a25:6cd6:: with SMTP id h205mr5667580ybc.166.1612090915110;
-        Sun, 31 Jan 2021 03:01:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612090915; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2574964lfo;
+        Sun, 31 Jan 2021 03:03:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJykUA6ihNpsVJIMn5XhJKa5jYVpoVFVUJD9ANj52Ak9WpyVZ9SAGRfpWETfLp8ckwJNg0Xn
+X-Received: by 2002:a25:b688:: with SMTP id s8mr16759547ybj.275.1612090982212;
+        Sun, 31 Jan 2021 03:03:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612090982; cv=none;
         d=google.com; s=arc-20160816;
-        b=GUM2C9IFoYRw0u4tlSX9OYxwihHsMyIf52vQYYb06mQmyjNkylmfoXhGyugMwbUfx+
-         O10Ly5cWfryfd10xY5r+q2BsoF/aFMY3hoaotSzJwa3hwMLHQeTcQOUPbw+MNtVTGU9Q
-         sXQfkUAbuMfb2Lxm3dwxJTnjIJyUNVxFRmli9/frfFegM2oLHblP4KM1PJ0uCZpyANCS
-         qCHbBXupQEgbaIggY/maGkxpAOx8/dfgrbVsGPJYThuF2ptaHxHnsDA5TEqIvFlZCBly
-         B88gA88dcvzFPtHnJSzU1QFE8d08t5KQglBZQUzC743cvcxmiJxUMRSHxhixTkZqEPl9
-         Atrw==
+        b=WIq6oyw43cXnjvUWMsGI9Vdzn7ouxfMozqSicCRTqnQ08HLonAE4mwm/4bNBvkzxnr
+         9Yp/xNClRhhJ9oZPmmrQmFqPqUK3ZAXOK+McC02C7/E3nfdyBd+iyycP1plwN+s6RPb0
+         0oi2neSZC/LK70+1SIzVdNzkEnS70rABMka07F3s9ERi85uF4a7cX9/hfRYRLUhT4csA
+         3q4duSVP95n3SehipzbbDQ3Zy9mNWxAcFB0xd2vZRHcFunURDXY2NlKND/RK7gwfLxjx
+         pQHzT36KT4kEHTjS+rDbx9NFBa1RhItZfCuF3pBR8ZKjJkuZkG/tqiQJirdxgzoNkbi2
+         2oeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
-        b=wADzsmMskMBuii+4hcPNOBSp8P3ce73wUX0V7v5jxWUDyDW9TH8orzDlub8WqNm38f
-         vRSAVRz9VK0Y1owmiumZrKfJzZMgqkC73j5nBpKsHr0NLZ2lLs8uTusF1mhkc+Ga+xYP
-         ax2eZKTmXBFLbDFRnX7FVMXaPbt+HlS/iFv1JipuI/FfFXFD1fHk/Lg5p/ejwRCu5gdN
-         vZY/VAuuaadQQA5499Ry5rp4vT23jfePKtZBIEoMCc8OcLtNryoNEIhySOEU3ZjNVp5J
-         Xz/QwxGuCUAith7mjeoKBOV1lT0CWRWLiUR2Pqew8pGxdMj86Ju43f1RxiOaQFN3dRu7
-         9kpA==
+        bh=ZTEQksi03h84QrtUmTk444gEe+iL7OPLaC2gCq3Rbc4=;
+        b=kg5No+1z9TlYP6q5CLm6iioHn6hWzGfZ5LreXFMx5FcS6dtpYKybd8g7h3AdSq+EPc
+         9z+8IxtXe7xedX7O4iw6YkIUwxRLqdiFgfhGuTVjdwiUb8WcFYGsjgJtDjAL0JM3qDFS
+         6yB8G2NY8Uy4qY4znkKLMVI2aVfcp20j6NQdC1z+5RvJk6nwlWvyq5DkxtMOVw1z2Yjf
+         qfpJn6i1h94CfXamcpUw+4EZcrE7d7Ae+LDYM1cD6WjZ+pH5leQN6AVkw1hjbic0VR2z
+         LFaAMKZdInEVTk1uyfxhKFrXejMIPVal/loCLy8AxcyLGFtnXURbp++5JmDfMcHlqXMV
+         VS0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FBl+lcqU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzQnvB+w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128si16017611ybw.176.2021.01.31.03.01.54
+        by mx.google.com with ESMTPS id z6si4325673ybm.208.2021.01.31.03.03.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jan 2021 03:01:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 31 Jan 2021 03:03:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FBl+lcqU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzQnvB+w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34430 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38006 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6AUM-0007Dm-Eq
-	for alex.bennee@linaro.org; Sun, 31 Jan 2021 06:01:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57134)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6AVR-0000Wp-EG
+	for alex.bennee@linaro.org; Sun, 31 Jan 2021 06:03:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6AS4-0006qY-7a; Sun, 31 Jan 2021 05:59:32 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:38078)
+ id 1l6ASZ-0007ZD-2i; Sun, 31 Jan 2021 06:00:06 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45330)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6AS1-0000GF-Ff; Sun, 31 Jan 2021 05:59:30 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id y187so10699677wmd.3;
- Sun, 31 Jan 2021 02:59:28 -0800 (PST)
+ id 1l6ASX-0000Ua-5f; Sun, 31 Jan 2021 06:00:02 -0500
+Received: by mail-wr1-x431.google.com with SMTP id m13so13424601wro.12;
+ Sun, 31 Jan 2021 03:00:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
- b=FBl+lcqUTya8HKBOBUjNAvbvJrnnQb2bBX6sxXCl1at2OWMR//TOqWUCih+ZBTl3Xi
- xTxv4V/T+AiwRAu3GeInds6GetaqebvE1Dd0u5YodgGI48B2/UmPZj2mhIkhOyJH2X8e
- N1DaicF/faZKL84596Vh3b/W1rX9uJn4SnsPssPsl0IkzI3jUqgbzeiD2jl43bhz9Fgk
- A9IXjeD330azawEpzc6mkoUKCn0+6A5KnnZ6zQOzvfxi/Rf5aSskVIbeHcVfajwj7IPq
- yYohMb+h3/M74a3nH5kE2AcoDETax5XPxnkxsYIqvdp9FYWNrsItyXgfApbM2t3WI6jl
- IbsQ==
+ bh=ZTEQksi03h84QrtUmTk444gEe+iL7OPLaC2gCq3Rbc4=;
+ b=CzQnvB+wAGG+ZM98ASAkFFlNd5GPT7S2Vr0TiFcZ9h1nMzE2O3ZNyjO7hWErIt03de
+ fjSp7c3iPq/2WxBlx9/sTwl9uWSpjUMS8Z9R5+KnFlkYDqHVxfEqUkhcCYVpFHFpCZM1
+ EyLsvmW25ZLIKF7VVERw6T5y147X8Rf21Oqsnijpb1ttu6lpZdu65CIdYeNp/l43ebJq
+ RJ7CKc7F4X7q8342OojNpsZNi8u0rAVDJuaCUrkqntY654FYzosO++jtpr8e268GlFTh
+ AyGqp9+70R1Y7OxX4WxOGP24+uK/tA6sDIaiCQa0aAFKIH0+jLBEBLgh6AcSBw5oR9Zo
+ IKbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
- b=kq6OjqxdUTaQjyXFKe3crQdQlSqjWRzzkyFlydvnMIlNGF28E4hCDTH6BG9et7rpq/
- 77Nqv9AfOyEImjSzC7QUkV3htO3sUbszwZdRfWfIJEfziVOlZNN0w3LLtrx6jBK8wb+U
- TJVmgTzHTog0/1V2P3Cw99Wf1FVZXVGm8eCDYSJ41M/EDdTiI2+CCzNyBB9zcq+Zt+e/
- ZVlRKjQ0iZJGsk0SyUYZRzxxhsGWWjChm9PXWtd9rzNOTGk8zkqPei4gRWemug/4y/Fg
- aA7DnDXpTCYOrM0Ub4wq9I69pPTGHHSivFkAbQEjwEe1T8ZV3kleBBatkdyaWM1HXe5F
- uI+w==
-X-Gm-Message-State: AOAM532x6mcEwWgLsxWFjBY1dIGWfRogGHH/v37GER98KyeR32TtFJVW
- kNkvcWsVLCEj3mpCpsQyc01jjZgN8VE=
-X-Received: by 2002:a1c:6402:: with SMTP id y2mr10534889wmb.43.1612090767213; 
- Sun, 31 Jan 2021 02:59:27 -0800 (PST)
+ bh=ZTEQksi03h84QrtUmTk444gEe+iL7OPLaC2gCq3Rbc4=;
+ b=rVSBvL4RML67YWRBJFHOe0+GzprMB3W40ijmMdqjeaZ9KVYg2NzGGfu/QLfOgBI8+B
+ gYer0y8EJb33Wm2x4mxrmUnCU47H484NZpBZpoNrTzVEeshYL1BgM0PkzMRX5yKqHRFT
+ qZo8GPECrCMfqRhBwbpShtdt0r/cHPVOxcDOFWH6UkIll+U0vXdM7kKU55I6IxQNwisz
+ YXR1IxxneBYSlMKOqbxc12g7sRY1D512RHzAKuRPc6H6IGBW4L/75DI4UU/A9gIIKjl5
+ 1u0c+NestB53nCGc+HW3z+WO118ipYT85/ma+rm0kP6cu7lkAI/DImI++I7FMZ3HDuTv
+ HuVw==
+X-Gm-Message-State: AOAM530sk2v686e6jcH/HRg6cG1iPz+c4w7581MhkGJ4vc/AxfO+DmFD
+ cEdhVPsez3DlKvToQi6dpaLWN/vhU2A=
+X-Received: by 2002:adf:f747:: with SMTP id z7mr13068572wrp.384.1612090799066; 
+ Sun, 31 Jan 2021 02:59:59 -0800 (PST)
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
  [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id h18sm22581661wru.65.2021.01.31.02.59.25
+ by smtp.gmail.com with ESMTPSA id e11sm22314803wrx.14.2021.01.31.02.59.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 02:59:26 -0800 (PST)
+ Sun, 31 Jan 2021 02:59:58 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/7] hw/arm/stm32f405_soc: Add missing dependency on OR_IRQ
-Date: Sun, 31 Jan 2021 11:59:12 +0100
-Message-Id: <20210131105918.228787-2-f4bug@amsat.org>
+Subject: [PATCH v2 7/7] hw/arm: Display CPU type in machine description
+Date: Sun, 31 Jan 2021 11:59:18 +0100
+Message-Id: <20210131105918.228787-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131105918.228787-1-f4bug@amsat.org>
 References: <20210131105918.228787-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -105,49 +105,128 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mCTl62oeCADQ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rDBkwNHYHU6M
 
-The STM32F405 SoC uses an OR gate on its ADC IRQs.
+Most of ARM machines display their CPU when QEMU list the available
+machines (-M help). Some machines do not. Fix to unify the help
+output.
 
-Fixes: 529fc5fd3e1 ("hw/arm: Add the STM32F4xx SoC")
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Cc: alistair@alistair23.me
----
- hw/arm/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/digic_boards.c  | 2 +-
+ hw/arm/microbit.c      | 2 +-
+ hw/arm/netduino2.c     | 2 +-
+ hw/arm/netduinoplus2.c | 2 +-
+ hw/arm/orangepi.c      | 2 +-
+ hw/arm/stellaris.c     | 4 ++--
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 13cc42dcc84..a320a124855 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -336,6 +336,7 @@ config STM32F205_SOC
- config STM32F405_SOC
-     bool
-     select ARM_V7M
-+    select OR_IRQ
-     select STM32F4XX_SYSCFG
-     select STM32F4XX_EXTI
+diff --git a/hw/arm/digic_boards.c b/hw/arm/digic_boards.c
+index be12873673b..6cdc1d83fca 100644
+--- a/hw/arm/digic_boards.c
++++ b/hw/arm/digic_boards.c
+@@ -142,7 +142,7 @@ static void canon_a1100_init(MachineState *machine)
  
+ static void canon_a1100_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Canon PowerShot A1100 IS";
++    mc->desc = "Canon PowerShot A1100 IS (ARM946)";
+     mc->init = &canon_a1100_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_ram_size = 64 * MiB;
+diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
+index 0947491cb97..e9494334ce7 100644
+--- a/hw/arm/microbit.c
++++ b/hw/arm/microbit.c
+@@ -64,7 +64,7 @@ static void microbit_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
+-    mc->desc = "BBC micro:bit";
++    mc->desc = "BBC micro:bit (Cortex-M0)";
+     mc->init = microbit_init;
+     mc->max_cpus = 1;
+ }
+diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
+index 8f103341443..1733b71507c 100644
+--- a/hw/arm/netduino2.c
++++ b/hw/arm/netduino2.c
+@@ -54,7 +54,7 @@ static void netduino2_init(MachineState *machine)
+ 
+ static void netduino2_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Netduino 2 Machine";
++    mc->desc = "Netduino 2 Machine (Cortex-M3)";
+     mc->init = netduino2_init;
+     mc->ignore_memory_transaction_failures = true;
+ }
+diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
+index 68abd3ec69d..d3ad7a2b675 100644
+--- a/hw/arm/netduinoplus2.c
++++ b/hw/arm/netduinoplus2.c
+@@ -55,7 +55,7 @@ static void netduinoplus2_init(MachineState *machine)
+ 
+ static void netduinoplus2_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Netduino Plus 2 Machine";
++    mc->desc = "Netduino Plus 2 Machine (Cortex-M4)";
+     mc->init = netduinoplus2_init;
+ }
+ 
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+index d6306dfddae..40cdb5c6d2c 100644
+--- a/hw/arm/orangepi.c
++++ b/hw/arm/orangepi.c
+@@ -113,7 +113,7 @@ static void orangepi_init(MachineState *machine)
+ 
+ static void orangepi_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Orange Pi PC";
++    mc->desc = "Orange Pi PC (Cortex-A7)";
+     mc->init = orangepi_init;
+     mc->block_default_type = IF_SD;
+     mc->units_per_default_bus = 1;
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index ad72c0959f1..27292ec4113 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -1538,7 +1538,7 @@ static void lm3s811evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
+-    mc->desc = "Stellaris LM3S811EVB";
++    mc->desc = "Stellaris LM3S811EVB (Cortex-M3)";
+     mc->init = lm3s811evb_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
+@@ -1554,7 +1554,7 @@ static void lm3s6965evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
+-    mc->desc = "Stellaris LM3S6965EVB";
++    mc->desc = "Stellaris LM3S6965EVB (Cortex-M3)";
+     mc->init = lm3s6965evb_init;
+     mc->ignore_memory_transaction_failures = true;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
 -- 
 2.26.2
 

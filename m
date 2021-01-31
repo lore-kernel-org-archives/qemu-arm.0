@@ -1,41 +1,42 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2686728lfo;
-        Sun, 31 Jan 2021 06:29:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyz1Tl295hqUDwMNMc5WSabJtd3vJD1ty2NvxQKD85/Vo9rUMBO7fKhCAdC1qtcEQmzzAip
-X-Received: by 2002:adf:e511:: with SMTP id j17mr13813091wrm.17.1612103358253;
-        Sun, 31 Jan 2021 06:29:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612103358; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2687041lfo;
+        Sun, 31 Jan 2021 06:29:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxuyYgNtqOBZlNBek/mAUfWuhp/YrK7GilXs/V0fdfdBknXW3fFuj+BelGj0/ls5Xuoofi4
+X-Received: by 2002:a5d:6045:: with SMTP id j5mr13623744wrt.365.1612103393706;
+        Sun, 31 Jan 2021 06:29:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612103393; cv=none;
         d=google.com; s=arc-20160816;
-        b=YR9TU2bocP6Juv9z0tggjzW50OMwmKOLuv2nYBujE21YDcLZLWxcmEFrJiUYPqA7df
-         JPA1NmOy8sgsMVt7Tib/opt+VX0iSMRpmtgo9/gF6EjvNowaR6JX3wkAx60WqmWNiIyE
-         feCL70CCpCUWV2O90fuv8lUQ6ScQAQFmNSqvv19CULs8hIKhWgr6TqmD//5L2ydTqwyg
-         8+qZHn7wTaNpeiTzh4U+Bmql6kkQCERQUvgSSAoO0tK+1LcmkGNQTg+KatzgQ1H1heMQ
-         ++B6wazZNY+XEF2FJkkdhuBu5H+wH1GZ6RWJdaDrywoqEJZCzAsFRjfpj/mgxfQ4GG48
-         wt+Q==
+        b=ZCJPJ1uLvF1jfJBLjASPfhSAf2y9UDtt2yBeHYqydLmj12eDOmtvADS48wxT9XWfRL
+         aYOk5QIeMks7/dIUgY9D53VVKEMcb11JV6HxCgauswuVelqsMXsWzBimm7UfVKl+NVcR
+         AZpaMSH4GZ6eJxY7d+nfD/5KouSik5VSfq2PILJVakiaC8TT7TAvhygYCxwFUm3NsTmY
+         IM2qhXKxMDGKdRFiynB68bYE3ptOuRVEubamym2HVmaED+Bdt6hhQHtF0rfXc1fPPJJk
+         yQfGhsMSl2q59tc3+5xiGiJsIZQ1L472aERWnGbIXxRFyDUIaW8qEOeVCKI21GqjbTCH
+         Q/Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=l+kjS3ohwt/YYd2rozWUpJ7hZr6HzChvx/eSzWb1cV8=;
-        b=m99vGtO3iuSzi3YzgfPeAzK1q6y6fVEvku3+0Mdpe8v54ponIGctlybgrXnDyk0WLl
-         E8QM+p3LuHTAk5bfqCn4BXn+CTAC41XfqfgWfIfL4AnuXe4zQxztZRk0BzwsoSGkxmpw
-         bH5cqFPoebJKw3aIWiYwj/QJCz1hxJ0bdPDd7MczTubZ5PoPErUOsNS4DsPiaO1GuewR
-         CTORxsqV1CBBOCQsOfeXsW17ACsRU/X201gJP6GjpMo5+7HwKNqZuXsxRe7u70C+3wG+
-         qnweKWmO2OmAFqyE+EcOill6emPvOm8s/+AVgOVv+xx1RZ+v4UE6IEi0nQlIXDrjWm4f
-         E5xg==
+        bh=vTLGWMQdlemyeo90FwjoHx6Yb4JC6kUU7xAn4DJpJYs=;
+        b=JwKQWvRTg21VnuDsFpzXUwhSO+9itXGPMieedNf6KLEIQs6c1vEj1PrO6EifvMdFZB
+         8krbG9Efu/CvVY1jfBQ+JhRnxU0thfs6UKRxhkVCHS8w+s8jBsn0j1WXpjdsfvv5m2tX
+         9ylySxW8FmFmI+TYjEj+mZVEJ7z0u0iw2Rk/tsva21OzoPn/a3+urmSKijq24XarL9Wv
+         nOQWqg2nXWKxNri5eAZXSUIfD7Wxg4Bx3T8fvRlxMUSNVw57p/IB3TLDzFRnC8kkBaov
+         jLMl7pSWW9Xx+7uftQBVVK7hNmxGjcH4RQPLUqP78z2sZr6qPMNY2C0WbUzn1hE+mU8R
+         eopQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
 Return-Path: <cfontana@suse.de>
 Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
-        by mx.google.com with ESMTPS id c14si12119447wrn.460.2021.01.31.06.29.18
+        by mx.google.com with ESMTPS id r1si12397046wrs.348.2021.01.31.06.29.53
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 31 Jan 2021 06:29:18 -0800 (PST)
+        Sun, 31 Jan 2021 06:29:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
-	by mx2.suse.de (Postfix) with ESMTP id 86722AD37;
-	Sun, 31 Jan 2021 14:29:17 +0000 (UTC)
-Subject: Re: [PATCH v6 05/11] target/arm: Restrict ARMv6 cpus to TCG accel
+	by mx2.suse.de (Postfix) with ESMTP id 473A1AD29;
+	Sun, 31 Jan 2021 14:29:53 +0000 (UTC)
+Subject: Re: [PATCH v6 06/11] target/arm: Restrict ARMv7 R-profile cpus to TCG
+ accel
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
@@ -45,138 +46,80 @@ Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
  <alex.bennee@linaro.org>, kvm@vger.kernel.org,
  Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
- John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>
+ John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20210131115022.242570-1-f4bug@amsat.org>
- <20210131115022.242570-6-f4bug@amsat.org>
+ <20210131115022.242570-7-f4bug@amsat.org>
 From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <795e5835-bd91-8857-11b5-7d366a0a84df@suse.de>
-Date: Sun, 31 Jan 2021 15:29:16 +0100
+Message-ID: <66aa95e5-8849-ca1f-9413-be17dea61179@suse.de>
+Date: Sun, 31 Jan 2021 15:29:52 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20210131115022.242570-6-f4bug@amsat.org>
+In-Reply-To: <20210131115022.242570-7-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: MakKNa2lUWyb
+X-TUID: 1LcSh83uBWqT
 
 On 1/31/21 12:50 PM, Philippe Mathieu-Daudé wrote:
 > KVM requires the target cpu to be at least ARMv8 architecture
 > (support on ARMv7 has been dropped in commit 82bf7ae84ce:
 > "target/arm: Remove KVM support for 32-bit Arm hosts").
 > 
-> Only enable the following ARMv6 CPUs when TCG is available:
+> Beside, KVM only supports A-profile, thus won't be able to run
+> R-profile cpus.
 > 
->   - ARM1136
->   - ARM1176
->   - ARM11MPCore
->   - Cortex-M0
+> Only enable the following ARMv7 R-Profile CPUs when TCG is available:
 > 
-> The following machines are no more built when TCG is disabled:
+>   - Cortex-R5
+>   - Cortex-R5F
 > 
->   - kzm                  ARM KZM Emulation Baseboard (ARM1136)
->   - microbit             BBC micro:bit (Cortex-M0)
->   - n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
->   - n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
->   - realview-eb-mpcore   ARM RealView Emulation Baseboard (ARM11MPCore)
+> The following machine is no more built when TCG is disabled:
+> 
+>   - xlnx-zcu102          Xilinx ZynqMP ZCU102 board with 4xA53s and 2xR5Fs
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  default-configs/devices/arm-softmmu.mak | 2 --
->  hw/arm/realview.c                       | 2 +-
->  tests/qtest/cdrom-test.c                | 2 +-
->  hw/arm/Kconfig                          | 6 ++++++
->  target/arm/Kconfig                      | 4 ++++
->  5 files changed, 12 insertions(+), 4 deletions(-)
+>  default-configs/devices/aarch64-softmmu.mak | 1 -
+>  hw/arm/Kconfig                              | 2 ++
+>  target/arm/Kconfig                          | 4 ++++
+>  3 files changed, 6 insertions(+), 1 deletion(-)
 > 
-> diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-> index 0aad35da0c4..175530595ce 100644
-> --- a/default-configs/devices/arm-softmmu.mak
-> +++ b/default-configs/devices/arm-softmmu.mak
-> @@ -10,9 +10,7 @@ CONFIG_ARM_VIRT=y
->  CONFIG_CUBIEBOARD=y
->  CONFIG_EXYNOS4=y
->  CONFIG_HIGHBANK=y
-> -CONFIG_FSL_IMX31=y
->  CONFIG_MUSCA=y
-> -CONFIG_NSERIES=y
->  CONFIG_STELLARIS=y
->  CONFIG_REALVIEW=y
->  CONFIG_VEXPRESS=y
-> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-> index 2dcf0a4c23e..0606d22da14 100644
-> --- a/hw/arm/realview.c
-> +++ b/hw/arm/realview.c
-> @@ -463,8 +463,8 @@ static void realview_machine_init(void)
->  {
->      if (tcg_builtin()) {
->          type_register_static(&realview_eb_type);
-> +        type_register_static(&realview_eb_mpcore_type);
->      }
-> -    type_register_static(&realview_eb_mpcore_type);
->      type_register_static(&realview_pb_a8_type);
->      type_register_static(&realview_pbx_a9_type);
->  }
-> diff --git a/tests/qtest/cdrom-test.c b/tests/qtest/cdrom-test.c
-> index 1f1bc26fa7a..cb0409c5a11 100644
-> --- a/tests/qtest/cdrom-test.c
-> +++ b/tests/qtest/cdrom-test.c
-> @@ -224,8 +224,8 @@ int main(int argc, char **argv)
->          const char *armmachines[] = {
->  #ifdef CONFIG_TCG
->              "realview-eb",
-> -#endif /* CONFIG_TCG */
->              "realview-eb-mpcore",
-> +#endif /* CONFIG_TCG */
->              "realview-pb-a8",
->              "realview-pbx-a9", "versatileab", "versatilepb", "vexpress-a15",
->              "vexpress-a9", "virt", NULL
+> diff --git a/default-configs/devices/aarch64-softmmu.mak b/default-configs/devices/aarch64-softmmu.mak
+> index 958b1e08e40..a4202f56817 100644
+> --- a/default-configs/devices/aarch64-softmmu.mak
+> +++ b/default-configs/devices/aarch64-softmmu.mak
+> @@ -3,6 +3,5 @@
+>  # We support all the 32 bit boards so need all their config
+>  include arm-softmmu.mak
+>  
+> -CONFIG_XLNX_ZYNQMP_ARM=y
+>  CONFIG_XLNX_VERSAL=y
+>  CONFIG_SBSA_REF=y
 > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 560442bfc5c..6c4bce4d637 100644
+> index 6c4bce4d637..4baf1f97694 100644
 > --- a/hw/arm/Kconfig
 > +++ b/hw/arm/Kconfig
-> @@ -123,6 +123,8 @@ config NETDUINOPLUS2
+> @@ -360,8 +360,10 @@ config STM32F405_SOC
 >  
->  config NSERIES
+>  config XLNX_ZYNQMP_ARM
 >      bool
 > +    default y if TCG && ARM
-> +    select ARM_V6
->      select OMAP
->      select TMP105   # tempature sensor
->      select BLIZZARD # LCD/TV controller
-> @@ -401,6 +403,8 @@ config FSL_IMX25
->  
->  config FSL_IMX31
->      bool
-> +    default y if TCG && ARM
-> +    select ARM_V6
->      select SERIAL
->      select IMX
->      select IMX_I2C
-> @@ -478,11 +482,13 @@ config FSL_IMX6UL
->  
->  config MICROBIT
->      bool
-> +    default y if TCG && ARM
->      select NRF51_SOC
->  
->  config NRF51_SOC
->      bool
->      select I2C
-> +    select ARM_V6
->      select ARM_V7M
->      select UNIMP
->  
+>      select AHCI
+>      select ARM_GIC
+> +    select ARM_V7R
+>      select CADENCE
+>      select DDC
+>      select DPCD
 > diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-> index 9b3635617dc..fbb7bba9018 100644
+> index fbb7bba9018..4dc96c46520 100644
 > --- a/target/arm/Kconfig
 > +++ b/target/arm/Kconfig
-> @@ -14,6 +14,10 @@ config ARM_V5
+> @@ -18,6 +18,10 @@ config ARM_V6
 >      bool
 >      depends on TCG && ARM
 >  
-> +config ARM_V6
+> +config ARM_V7R
 > +    bool
 > +    depends on TCG && ARM
 > +
@@ -185,18 +128,4 @@ On 1/31/21 12:50 PM, Philippe Mathieu-Daudé wrote:
 >      select PTIMER
 > 
 
-Added Cc: Eduardo,
-
-Looks good to me in general,
-
 Acked-by: Claudio Fontana <cfontana@suse.de>
-
-I am just wondering about that if (tcg_builtin()) / (or _available() as I suggest elsewhere), 
-should we instead use the build system already at this stage, so no such check is necessary?
-
-It could be a successive change, but then tcg_builtin() would be introduced, only to become useless after the proper refactoring is done,
-and the build system is used to select the right modules to compile, which would do the registration.
-
-Ciao,
-
-Claudio

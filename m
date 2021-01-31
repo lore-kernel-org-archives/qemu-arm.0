@@ -1,101 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2576289lfo;
-        Sun, 31 Jan 2021 03:05:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzlj8Oarm7BDSOer3C6djuaXKEqyY0bzQic+PhGkS3lVyoLDeMApz+80hoRQD/+Uyuo/2UV
-X-Received: by 2002:a25:1e42:: with SMTP id e63mr17743010ybe.270.1612091112668;
-        Sun, 31 Jan 2021 03:05:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612091112; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2576728lfo;
+        Sun, 31 Jan 2021 03:05:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzV/tQEijhqAg8y3iDJnlvXi84JmMyDlgxyhWzjYUYRylX11zoOwmtZ45Ps2mx27/1iiRtJ
+X-Received: by 2002:a25:d844:: with SMTP id p65mr7260198ybg.27.1612091156200;
+        Sun, 31 Jan 2021 03:05:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612091156; cv=none;
         d=google.com; s=arc-20160816;
-        b=AhAxVFJZoxTUq10zPqhwsv4yigkWj7EGRnOoObK1SZaH3PHBMl3aS+9FSKWpKTF1sE
-         zYdVRG8/rt6cZ4fMRpJ7bJm1Y2bRBZfPQO1YWLKCFskWv6OujCjzxefs6/ZLQ+3tAl2j
-         3L7QUh9J8dJlKDbPk/fYwQoUuoE1X11o8mxkvE7CFIveuVPK0ln+CJT1ZFqH6Qqrv7pP
-         WSrCPAeC5SyfqqbzZRPQotqUXXEmVV0uQ1kMgyKyl6Xb8RplfCku+DIbE251fkewcFiP
-         S2p8Tfz1XbMKaXEjo2QEH1L/IidQr2WzxxuXJhikbP/soG03nnPdiGlkxdYwLafTQ67V
-         DX4Q==
+        b=03Ikm3UNTTR1Mq2I37RxmhGrt1p0+KO0hOF2Ke9zUHclD1swjBG+xdDOBM+Xn2TpSy
+         5iPeYkaPWjbeBVdPtn1nuge6+vcz2tYbJGwctLvdoPXrmFiAL92iJl9kuZmpguu2eaVu
+         oNgaSloDfU1GtRzfgvgkcd4Y+neOIHlcDsJmEzxumZiWC+Fct2VQeplXuTeDLvVfirud
+         BbCi6F6da9Prpgf23gGzjZzkHG8OHoFRQnwAZkBegQHt9FCg32Htf6qrJnTyVYCLI9gs
+         KZUaqfpU/Psq7wzTzdINzuIrq3doRPmzjpPFe+FAwjE5lXA3rT+nz3aj/QWwKtJfH0Xp
+         xQKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jtbqU34AXRgK7JucvFyMPpEvpdP/cEkbkCwJzoZsw+I=;
-        b=U+pWfHTcviTYHRZt8AZO0wz9XaMEryGiesPNcRkZn7aVwHVhMy/QrFK63J+J2G0sVN
-         preKKP4tsJbtsl7x/cVI//MM8xqnMdLIGf8edQRhavjHt8nyFvY10+EOudnNbeNgYNdd
-         srcWqs95eU7RtE1qpZuyPucjhTZKatVWPjMMT1AJH+3Eq3oF8uAmKBQuN8lTvT36Yn+T
-         R7fP8bLU4bs0j/mmX9a9O8GdpjH0Qs33wJqnf1i50/DqjV1y/x4KW0S7/AKn2zFe9IDM
-         I6BlyIXz5/QOGP6bMsxKSpNkSfKpcqikIsjjHHRT7lTzfXjc0ZLyAm/ui3Y+g828k9a2
-         1RHA==
+        bh=ZQoiucDIT4rSjEAY4ZuvMUxbDYBSZFNnjg1m60zIj8E=;
+        b=xSMTGfufsJnLWKHOSNfPwedBt1R86cFJVu27QN6PDuwiIABk6j9PowaU9sC4TkLBLJ
+         Of16hVS1DJhRkc43MRxgJxoBam94wnZ+pJQEkTAvhskY46UccsoWV1v9EyqLaY6xtepm
+         tELB1uTZeOJpOPSwQ9TifZgz5cWrBhYJfGzvXxwlekGrC2MXBf6SHuDdJCK61CBg6TC+
+         wf/a+stONSu6rbpBeNXTYYHhCW/JZK7n2vN/01v9WfzTHnkywUnZZkKnVAwTQvagx97N
+         PHVN3FdksBRDj1r6gF687btWKgVzxiEtjksVD2v4tpk+SqFPAFhpvQIEJMUlXf58XxmB
+         E0/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vFB1SLLO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZeHl/siO";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s185si14049122ybf.68.2021.01.31.03.05.12
+        by mx.google.com with ESMTPS id e131si1237265ybb.169.2021.01.31.03.05.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jan 2021 03:05:12 -0800 (PST)
+        Sun, 31 Jan 2021 03:05:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vFB1SLLO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZeHl/siO";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41284 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42960 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6AXX-0001vw-MT
-	for alex.bennee@linaro.org; Sun, 31 Jan 2021 06:05:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57148)
+	id 1l6AYF-0002fa-JE
+	for alex.bennee@linaro.org; Sun, 31 Jan 2021 06:05:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57222)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6AS7-0006t1-Sa; Sun, 31 Jan 2021 05:59:36 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:51682)
+ id 1l6ASO-0007Tl-Rh; Sun, 31 Jan 2021 05:59:52 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:38412)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6AS6-0000IW-Hw; Sun, 31 Jan 2021 05:59:35 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id m2so10188410wmm.1;
- Sun, 31 Jan 2021 02:59:33 -0800 (PST)
+ id 1l6ASM-0000RF-H9; Sun, 31 Jan 2021 05:59:51 -0500
+Received: by mail-wr1-x435.google.com with SMTP id s7so10436444wru.5;
+ Sun, 31 Jan 2021 02:59:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=jtbqU34AXRgK7JucvFyMPpEvpdP/cEkbkCwJzoZsw+I=;
- b=vFB1SLLOVA8z1esZfr+efHXGjtpbRDRKqxEr0+XiTMYueGRRO8M/pprq+Ef4/KsxHa
- joocEje6xS3Gk3xC6E30gOMRzrg25mC0cajUE3Oi70BtKoSyMyAgZXUDlF7GBVlNCTq9
- 61Jna5sD+OuCCDAhBOrVn2jnnPRl3UW7giw3RR2JTeKFdDmda3b6dX+IBp/iCXfmzyrh
- qIaHGIih4ZZWSZ6qR98Bt+TagXa1f8hhSldfEor7JpNqQXRrgu+ys/aeMbrXyl9T5AYD
- md2NxvIiSejyxUSLM4Ub1722iSSAsNgCwb7WnJ9kgpk8ed/CM436mCELPCr7/Y9JcS+5
- HzAg==
+ bh=ZQoiucDIT4rSjEAY4ZuvMUxbDYBSZFNnjg1m60zIj8E=;
+ b=ZeHl/siOlsjFxeuZteA5wZuvh/8NM5Q/I2spUpfS0cqhWQBuY9YgwoDKLtaByXCpsv
+ b0l2aiuzFIE3GaVjOEgo5w3uUWtoV2d7riKMBtfaVJ1kcmy1TDVcMviNmkVSc50FUIl8
+ RrgEgL711CCUFwBVMPacRJlikKGRdcdCvhRV9rDU50nyaf9FSdjlo0LKOVx8NE/An6Yu
+ 61dk28LtGZmnuUCSGprEiOQlo0nr4rlbWsq36QoRMDGQxhppeXn1SOKISZh6VVgpMrLE
+ KLvyHAfmSA2gQpgT+pv2cCgdiaymRAn0USUG9JZhRcUFLTvmKSyFbU+nMMvDVbwRc+KV
+ 5j9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jtbqU34AXRgK7JucvFyMPpEvpdP/cEkbkCwJzoZsw+I=;
- b=Ca37G05hRpK3QJotXzcvu/+WSvrHZDDt3O7pvdpBP7ItgZJbaX3x9gt5NKz2T384XK
- 3TY4oWBonS+fOibt2r/eV1bbAfb4Wr4ZHv7SomU3FxW9akv2JaWZhOULSEexeeJiRWLj
- T2kEWNqSjZAOESzoVolUZFmzdZwKNcNg8YtSOaNrWvrnJeylUombvnSH0wk8wRbvdLNs
- vM1YuUcx8ThS6q1ISiLo6Vqc0GQ6hMALxmpYFwXHfQsJgnKBI4waSdyl70M5aa4Iwzs3
- ZML3KCoiWlIf1bqT++TWJ3RPES+QPP9e9buQRFAkAkVjcff7FyVRNkC0wi7NUeonMHI/
- 6J7A==
-X-Gm-Message-State: AOAM530O/7FoC3Zgc+XRusY2/dc1fV1fpBZ2E4vQ5gV+heHy2pkesikD
- lLc678xPUeTDs2cR5QHIoUuKhSOfdcU=
-X-Received: by 2002:a1c:9d08:: with SMTP id g8mr10683440wme.112.1612090772413; 
- Sun, 31 Jan 2021 02:59:32 -0800 (PST)
+ bh=ZQoiucDIT4rSjEAY4ZuvMUxbDYBSZFNnjg1m60zIj8E=;
+ b=eeGpwlW2OHj4k5qAGY5UBjSrVFvZnzEvbNEKkWfjX21z/FQ6xaOKstoyJgpuYdU4HM
+ LxAk+Wem85tX+3N0pr4Gxjv7MLT2p6uSG/5U9G0Cp7Lx2HVahsekdzf2XuzIH+K6K3nD
+ 1pGEv7IszrWP5zNUA5AkI0cMdxierXrx4cAkx4n1K3DbOisafhbxw8ofefSs00rraYNJ
+ IkkR1XrkjnMul+W1vcWLgocrbbFW8mWeQyrenFtM4Kc89Zg9IxeAwCbqIjJdofq5Cm+7
+ ZDjtXpgcCni2+RQXL1xsISlejawbnwIDmHR/Dt74nP6WqsYhaFv54pe2hnko/cqyoSSQ
+ tNmQ==
+X-Gm-Message-State: AOAM532CVrzRTsZNXYi+fRl3zfcR3ZgIfSUby5mOa26GUv+PM/WsxmAF
+ eRfYZJNS38eIuqnxHOOCWrxAOAfV19I=
+X-Received: by 2002:adf:e9cf:: with SMTP id l15mr13003391wrn.317.1612090788500; 
+ Sun, 31 Jan 2021 02:59:48 -0800 (PST)
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
  [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id c18sm27417714wmk.0.2021.01.31.02.59.31
+ by smtp.gmail.com with ESMTPSA id d5sm22464661wrs.21.2021.01.31.02.59.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 02:59:31 -0800 (PST)
+ Sun, 31 Jan 2021 02:59:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 2/7] hw/arm/exynos4210: Add missing dependency on OR_IRQ
-Date: Sun, 31 Jan 2021 11:59:13 +0100
-Message-Id: <20210131105918.228787-3-f4bug@amsat.org>
+Subject: [PATCH v2 5/7] hw/arm/sbsa-ref: Restrict SBSA-ref board to 64-bit
+ build
+Date: Sun, 31 Jan 2021 11:59:16 +0100
+Message-Id: <20210131105918.228787-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131105918.228787-1-f4bug@amsat.org>
 References: <20210131105918.228787-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -116,39 +117,42 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-trivial@nongnu.org,
  Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
+ Antony Pavlov <antonynpavlov@gmail.com>, Leif Lindholm <leif@nuviainc.com>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MYETSJodUXwK
+X-TUID: YSVzolSAC3AE
 
-The Exynos4210 SoC uses an OR gate on the PL330 IRQ lines.
+The SBSA-ref board only use CPUs available in the 64-bit build,
+it is pointless to have it available in the 32-bit build.
 
-Fixes: dab15fbe2ab ("hw/arm/exynos4210: Fix DMA initialization")
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
+Cc: Radoslaw Biernacki <rad@semihalf.com>
+Cc: Leif Lindholm <leif@nuviainc.com>
 ---
- hw/arm/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index a320a124855..223016bb4e8 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -52,6 +52,7 @@ config EXYNOS4
-     select PTIMER
-     select SDHCI
-     select USB_EHCI_SYSBUS
-+    select OR_IRQ
- 
- config HIGHBANK
-     bool
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index be39117b9b6..059ff7382f2 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -22,7 +22,7 @@
+ arm_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
+ arm_ss.add(when: 'CONFIG_Z2', if_true: files('z2.c'))
+ arm_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview.c'))
+-arm_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
++arm_ss.add(when: ['CONFIG_SBSA_REF', 'TARGET_AARCH64'], if_true: files('sbsa-ref.c'))
+ arm_ss.add(when: 'CONFIG_STELLARIS', if_true: files('stellaris.c'))
+ arm_ss.add(when: 'CONFIG_COLLIE', if_true: files('collie.c'))
+ arm_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
 -- 
 2.26.2
 

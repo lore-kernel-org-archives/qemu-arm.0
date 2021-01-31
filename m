@@ -1,71 +1,71 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2581423lfo;
-        Sun, 31 Jan 2021 03:14:00 -0800 (PST)
-X-Received: by 2002:a5d:4a11:: with SMTP id m17mr12934122wrq.39.1612091640151;
-        Sun, 31 Jan 2021 03:14:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612091640; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2581478lfo;
+        Sun, 31 Jan 2021 03:14:06 -0800 (PST)
+X-Received: by 2002:adf:f843:: with SMTP id d3mr13010762wrq.172.1612091646335;
+        Sun, 31 Jan 2021 03:14:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612091646; cv=none;
         d=google.com; s=arc-20160816;
-        b=j3MbHsrp+gE8kqwSF4g/TiyYwzBf7jl3uCnd7CJZGIPjgudDxhJYRcSgqJgHtCyqN9
-         kHt/fEybQfWBNF3ABXFW8+dqkDC+UGbcgPlaJeRuLJ8QAeyffYuwxedAh4+rWBIgMn+h
-         F2RjGMqGxa6StrDgoohzbg/l8+Kkkg/20ikziRcKxalwQ3ZQl6pndMuDhElly7ZpWL2U
-         JBaPYGydqIR70M3OlOLPfN5j5ArVv8i0c/FKqPOrpempNpgKEwRZj1rY0NtGKKbNneJk
-         m//LiFy8dsylZLagKqPJybdyiLnxO+yVvr8/UJ9UacloQjKAa7fR2UJuBOxxwHN0Gm+i
-         Sccw==
+        b=JDl7wmwVlQmyLgdMD+Z8UiyCoPZXFlEU1Ym6UBW3jhyF11e6j3PuPZwwolHYtKXdEV
+         ONhr+qIa4ckl2f3zL4tlcf8qjNUMNPDrGu7CM1uLhOObBJMLC2JSIEX8AjMYz/23B4pZ
+         y5K02NtDd0roKjaoo8tYvIESVNjNORiYhwVTB/7x3WJOJjyAeiEM+nT5BP0koBdj2lwL
+         MG3GdsJZB4HkcTXwrdUPK8fohskEAjOZFw0HZNiEGoP8YKsjR1cMNbwQD9YlvHznkPQ6
+         C3HgUW846M4OTgFJ/9lnI+qm/h4XDlQv5Cy+Hj8t3M3cVyleNIKp51VzejmQgtEG5s9P
+         02cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=UVDP5iZ65cycEwd/7jK5GwJYW+9woRIPB0EI+jBBZJo=;
-        b=psy8ixrQ6j7r6DPoPBY+iGZhPMoLX1ZNmbQdaYN6tTKpei5Wh77ul1p/sIjV5MskKl
-         Pqxf0ojEf7RoKESHmTGnkoDe4PHWT8fx38QBVDel/s44ViS/3l2/a9KB734dgq1SPP17
-         rxXsuSBxOSbY0sICu5sGmeSLS0bXqVVWCwhhJk2Gr9cYDHQh82bgIYbISAN327PbKAL1
-         8+EVRRpLc+aiRBkAdR+YHpwhRRxeQWeFdjqyL/r1l46yZNV6CDJ1R4PmgSzHHqeKSOSs
-         WRHZg8NO4mjLNZjxmIyqWLJwKjiOQiSR/Y9RBrw3gdqKeFROsgxqcGjH63VLwMqc/Lyp
-         jFAg==
+        bh=Eh0nPPe+ccMxW9Cb/jr3NHaD25Nxmw47W22jriJyAa0=;
+        b=yKssSKIDsPFd9Y/dfZXHCUstKHdzCjQChI4HsGNs4BAtIIlXwA/iQlaAYkrmYS6ahd
+         NNkt41b61BLn6UKxhFCv8MuGGF717lzFy2V/1wjJJq3sgOPESqDCOeLM+wJ9n+7bvumu
+         IwrqoDmwnpQwi7Hwezxpu0Gb2MeO5Q4RrTK+ehDOrpruaoAmu3s8ZKkEZ51X0artgrhn
+         INLRt/PxfYFaHtgZZypLYEWeKiXxCYZdSeKWn+GUQ2viT5IForBKgcbm/bqlz3aN3UjO
+         K/F9OEwslkBzIWu2j4hNM/dKqbZtoCOGU4cPXrlAPG7arScfKagDzdVU3x6pCRFRAepe
+         7ZFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="H1VKl/jL";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="qG77/DVN";
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t5sor7217087wrm.19.2021.01.31.03.14.00
+        by mx.google.com with SMTPS id g184sor7031395wma.9.2021.01.31.03.14.06
         (Google Transport Security);
-        Sun, 31 Jan 2021 03:14:00 -0800 (PST)
+        Sun, 31 Jan 2021 03:14:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="H1VKl/jL";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="qG77/DVN";
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=UVDP5iZ65cycEwd/7jK5GwJYW+9woRIPB0EI+jBBZJo=;
-        b=H1VKl/jLoZuALreDrzHs6jlJJtI4s79PnyL65Fvkl559kD9TTO17/wUhjhNnr5kScT
-         QqnnPVAbLkjv+sAPUcEO3jmvccBu7FAqhvC/PefidCgeN43qeMjJhE4UfOfJ+N5ZkUSY
-         iVefVaiXTReTEkXxOt+JPv4rKLBeA5QwprmR22cZugwbQVarE2SdF7/af7EcRv2stro2
-         zNFRLWlS8MFXPRxBSDbeXVwVKUBcC7aNs1LnH47iw42iRmvEuvpDatknxNCuor1qiwLF
-         gQKcDvDFASkjrOgQaHZdRgwAHx6m3Qc3lsKOJ7Et81s8nsly93n4nGXuUKlr8CWszXeP
-         oyPA==
+        bh=Eh0nPPe+ccMxW9Cb/jr3NHaD25Nxmw47W22jriJyAa0=;
+        b=qG77/DVNuWObaYdxvSPXp5aG31DRU/wwuuwJi7XpKzBbIN+GO30SCqSe+Ev8IPFx+J
+         7AOHuOBnnOi2Mu1p26bxIbkAg7mNr8kTMVGj/d1RRoOyYaqlCOwSAECWsxACrs55ND4j
+         XBxBOZ+46U6R2MmtCyyv/rI3TwxL8+lpwzo9N4P0iCRcWIv6FhslDGiBGYJzyyNRJOJM
+         0Fya/lNgbOvAl16FrnWD4NIAPg8hdSNvc03xmCdsePxHZDJIexs3p+Kfa5NsO5eQ1ydy
+         FFXy9x/slDkUf+t14rafYvKY3wcV5qpkcGGfm9UC6tWBQth6w+81RT82O9phB5VVKoFr
+         h6JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=UVDP5iZ65cycEwd/7jK5GwJYW+9woRIPB0EI+jBBZJo=;
-        b=WHvK+SsFxMyBmx+T7mPN1pB7KwQjymhyqjB+kJm4xcVSfFwwbtja4WLX6hnvF0Ks2U
-         0nSvjcHVbR/xPzYbNyM0Y7iAjrVRILeUuWNBr40CYjxmw3S0G8mocmMIRinztU4wFYpd
-         QiVbAG2XKUppuBI0r4WNVWUnwDxZe5DfatI5oL5gLBVvqLl/RtLzq6FuOs/ZaLjOvT4N
-         cR1kOgXjbQGZiqPTxTprAs06WjCOKK3OUsQ1Ah82FD3NbGPspIhWtdYWo+thTRScbuV1
-         iacJf2Nvy2HJfuugHlKGgBuqA6HCfvPIc6Kj7e+n75LM7zogNkRvmxtidCjgKsXf75ki
-         YQxg==
-X-Gm-Message-State: AOAM5320Wps3Kf/fdzYn4Glp3atyBb5J1tY0LHnYGCxc9+6zDm+FMfty
-	bQ/ECVerRhDBfLYbLkguXcE=
-X-Google-Smtp-Source: ABdhPJxkPyi7k+bbTRrGn1kJUzqknXAJNH+OD/SNSOUMw81yzPYOXWCbbKwCfP44+Y2JXFpoeOojDw==
-X-Received: by 2002:adf:9148:: with SMTP id j66mr13801208wrj.28.1612091639958;
-        Sun, 31 Jan 2021 03:13:59 -0800 (PST)
+        bh=Eh0nPPe+ccMxW9Cb/jr3NHaD25Nxmw47W22jriJyAa0=;
+        b=OcGojuWtPvAHRRVH2tk/ch9vNqXSOLrvzJp+TKJqCMOu0AxN+SXxEe1gudFiP19wLG
+         tX9g6ojsPrh3dp6SZHnKBy/GuoSH14Osczc0gIb/D1fy0wQr1lF0jR96LDudXOFDeYU+
+         cOl0tfI7Fp4qAVjEeDyOJA3BXv0QcN8yNa6mRswXbo9CRd0XppX0vB4HKy/VrpGyE0ft
+         Z9YG/xtL19jx+Vr9NnEwvlcEHtZj0l5NySu3TblcAl8hsNhLoyHtc5wFAyE+qDXEzPlB
+         iyXoTMEPWDAt++e/mcRXmzGUFBwo3zS/AzWNYhtHGFTqkiCb4A2gEvPrTZQSgQskE9Lc
+         +80A==
+X-Gm-Message-State: AOAM533Oqni2fohn3OshWRWTDclfjineo6J5sj5ukg+liElejjikvOaq
+	nf/Mwdrxpnor6quBk/G9Upw=
+X-Google-Smtp-Source: ABdhPJz4doJnrW/LDttNtT/C/l19beETvSJdy/mFd/0h+4oo2oFT/uS3U7LQJZd1vVQMdWC5gHeIMw==
+X-Received: by 2002:a1c:4107:: with SMTP id o7mr10703980wma.33.1612091646092;
+        Sun, 31 Jan 2021 03:14:06 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net. [83.57.171.7])
-        by smtp.gmail.com with ESMTPSA id l11sm21775517wrt.23.2021.01.31.03.13.57
+        by smtp.gmail.com with ESMTPSA id p15sm22584734wrt.15.2021.01.31.03.14.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jan 2021 03:13:59 -0800 (PST)
+        Sun, 31 Jan 2021 03:14:05 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
@@ -111,48 +111,51 @@ Cc: Sarah Harris <S.E.Harris@kent.ac.uk>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Alistair Francis <Alistair.Francis@wdc.com>,
 	David Gibson <david@gibson.dropbear.id.au>
-Subject: [PATCH 06/10] target/i386: Move SEV feature to target Kconfig
-Date: Sun, 31 Jan 2021 12:13:12 +0100
-Message-Id: <20210131111316.232778-7-f4bug@amsat.org>
+Subject: [PATCH 07/10] target/arm: Move V7M feature to target Kconfig
+Date: Sun, 31 Jan 2021 12:13:13 +0100
+Message-Id: <20210131111316.232778-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210131111316.232778-1-f4bug@amsat.org>
 References: <20210131111316.232778-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: HN3Zfh2Eyb3A
+X-TUID: cDOTwCYHkxEe
 
-SEV is an architecture feature, move its declaration to target/i386/.
+V7M is an architecture feature, move its declaration to target/arm/.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/i386/Kconfig     | 4 ----
- target/i386/Kconfig | 4 ++++
+ hw/arm/Kconfig     | 4 ----
+ target/arm/Kconfig | 4 ++++
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-index 7f91f30877f..3d67c172dab 100644
---- a/hw/i386/Kconfig
-+++ b/hw/i386/Kconfig
-@@ -1,7 +1,3 @@
--config SEV
--    bool
--    depends on KVM
--
- config PC
-     bool
-     imply APPLESMC
-diff --git a/target/i386/Kconfig b/target/i386/Kconfig
-index ce6968906ee..27c76c554c7 100644
---- a/target/i386/Kconfig
-+++ b/target/i386/Kconfig
-@@ -3,3 +3,7 @@ config I386
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 09298881f2f..f3ecb73a3d8 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -292,10 +292,6 @@ config ZYNQ
+     select XILINX_SPIPS
+     select ZYNQ_DEVCFG
  
- config X86_64
+-config ARM_V7M
+-    bool
+-    select PTIMER
+-
+ config ALLWINNER_A10
      bool
+     select AHCI
+diff --git a/target/arm/Kconfig b/target/arm/Kconfig
+index 3f3394a22b2..1f05de47ca6 100644
+--- a/target/arm/Kconfig
++++ b/target/arm/Kconfig
+@@ -4,3 +4,7 @@ config ARM
+ config AARCH64
+     bool
+     select ARM
 +
-+config SEV
++config ARM_V7M
 +    bool
-+    depends on KVM && I386
++    select PTIMER
 -- 
 2.26.2

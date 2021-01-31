@@ -1,98 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2825963lfo;
-        Sun, 31 Jan 2021 10:45:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwV2O11ALrfPS3IvWe44zfgtBKMSq5MNoRJVGjyhVkQeY0HltLGjZ+xFcRyTbu+gB4ce7Oa
-X-Received: by 2002:a05:6902:1025:: with SMTP id x5mr19741267ybt.96.1612118747141;
-        Sun, 31 Jan 2021 10:45:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612118747; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2826172lfo;
+        Sun, 31 Jan 2021 10:46:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxXWXuBh1VeJGHn33xUlcIOxwctrCT3Piq3liHRUC6f3oKFJue2HvFnpu8r+597PzLPdFaL
+X-Received: by 2002:a25:40e:: with SMTP id 14mr3587648ybe.66.1612118772000;
+        Sun, 31 Jan 2021 10:46:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612118771; cv=none;
         d=google.com; s=arc-20160816;
-        b=rpexlxzTrky4wGX7Fa7g80HSwZTtyhzCkcohsD8sNJoDfeN1yAFEAzZwPGiEJu/7Qb
-         VSQ+ZD/q2Z2bb137IdcW3uN7dAfTmCdz+vAx58m5IoTQsXIjmGbWdik0Z7xh4YGLAg71
-         9Kow42CIbMqwY80BB81CU5NFJjw5BjaZhJLnF9UkuzTxTWl+Jx/D278JyQ7Y6wxPrPfw
-         fokLzTsr9coLr2kebV2E/u6cJm4TdTDX8FrzPGjiUvZ5WxslGf6LfsH3frLA4GxB6ZuN
-         YwdcIPIkFXcB3ajcLXNEb4lRVk3wUk8yR8yxQe9d7yi73LThsX+sntyBcppzZPBpEROT
-         JabA==
+        b=JsNXwuDFR1OSTdGFTpWtER0T4gk52T1YgJd24P2ncl1Z2j4EOSHhNPbEOqXP4qF9Oa
+         X5ONaYH01/Md1hh8y/ZFGrL3/IUHcZVkRWE5cm6X3ILs4MHmLNqpp49QMPb+riqHmjxY
+         iqCO/GWF3wXAbDCtdrvqMfHac52IB6CcsH9QhIVXXez1zVcPYrZ6E2eTLLiY+jYzftA8
+         Q6rX8n2veo9ebpVsF3iOCAlcU2n48fL8oJjTwP1jCmyT15wk2zmXSfOgQzughTEg2KBb
+         iKh1/EehOVMvHZsEC3WHX1vzXWPCYYoms+saoWBYlbJKxnT+POQwRYh8NZ9Zdo2gtqQg
+         ZOdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=uooJJLyBqSH0JLXgEvaOK715zFIDOmfUz5/9bBdSXd0=;
-        b=ZChyK2vA2FXBAgsa45imttf1u2imiOVsJqt+y5fnsSS36hc4hoW6e8joblQ+zuj4mn
-         WxwMPdysd7vJ7e3168avoo+/s6IfQo6WdVz37ZZLIGemoQjKrNjTi000qpX46t1e0W+P
-         VDh7LtCLPXOoPgtqKtSNlG7VMcyZkx/3HXRMnJ5p8BdPPBnaSdNz6ml78TNUieqxk8wu
-         f+btqsWdlDLejxNxSo28FiHRXL0abQsqfKrNjM/JOED38H4qfOxIxYEbFeq+o9/H88q2
-         qR9o+Gj4I2a5a0V1QjVcfkcPrJn61xZ2IvMrC1jNWQ2xrahju7tOD0nHxzGuKWrcfstp
-         tFsg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
+        b=0CJ4pEBe31zexHzH0XFWOYzjri+H/6z2fqcf1BN6GLB7ATSBF9hBR5XXztVdaO7Y7q
+         643KCKUd9iLnMnMsFgI2P52/xB9UMBKrzMqJn7qUBTjg/1e1FlplOygXBzgtmsfBHcA4
+         5/q0f/Tb2o5ornMu1VffUfuzSOWYRjHR74Dj8aoaJu8JIfZMPAkE7LgcQrvTM4Dn4JxP
+         LG+7btkjiWfuhHFVk9zxx2JY7k2b007e39NvqzdOtPm+IzdK6QSGRlkgwa7PO6GTnLcP
+         ljaoZdGRHkQMw1PLyLsYU9JGzBUHGiTH3Ccxi1T4DZSZ/MSH/5QfOThzonY0DQ3lECAb
+         C/sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QqkEqhsO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ar83hyG1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z62si13937242yba.98.2021.01.31.10.45.46
+        by mx.google.com with ESMTPS id 206si14162582ybq.133.2021.01.31.10.46.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jan 2021 10:45:47 -0800 (PST)
+        Sun, 31 Jan 2021 10:46:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QqkEqhsO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ar83hyG1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41602 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6HjE-0001hp-En
-	for alex.bennee@linaro.org; Sun, 31 Jan 2021 13:45:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55172)
+	id 1l6Hjf-0002BB-90
+	for alex.bennee@linaro.org; Sun, 31 Jan 2021 13:46:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55222)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6HiS-0001hT-74; Sun, 31 Jan 2021 13:44:56 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:50949)
+ id 1l6HiX-0001pv-LE; Sun, 31 Jan 2021 13:45:01 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:52985)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6HiQ-0007Te-NH; Sun, 31 Jan 2021 13:44:55 -0500
-Received: by mail-wm1-x336.google.com with SMTP id 190so10801011wmz.0;
- Sun, 31 Jan 2021 10:44:53 -0800 (PST)
+ id 1l6HiW-0007W5-7W; Sun, 31 Jan 2021 13:45:01 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id o5so1145135wmq.2;
+ Sun, 31 Jan 2021 10:44:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uooJJLyBqSH0JLXgEvaOK715zFIDOmfUz5/9bBdSXd0=;
- b=QqkEqhsOTKjkj7hY1wmRpIvOUmd7yCC4n3U4eQW3IazSe4PwpIiDAjaosvX8cwD6TQ
- EjMWdRM7BAnB2eaKBwKBa2fk/Fi6wz4DWXcMyv/cE4R3PYvZaDaRYPkPF1VrNALguIv0
- ctKumlFkv4f802ZsaVWwSOMW6ccXIQevBBlRexmoi7LJEkuNvMG32uoNPixwTxtP6olQ
- Fe8aJuZ7SaoBOQMMl7jh7KcX4rb3mTe5B+b3ggH7MKcl2V/orwXxGi19KIz+Dvax+DWR
- iYNVXzBT8Fyri40exuLdFW753HuXImdCNzoG3/zFF2jqzaE2yxlnlUjfO/sAurxtnydw
- F7Pg==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
+ b=Ar83hyG1wfqk990LmyX56lvWVmRRWSUEpVqyMnuuaaHJmSx9fQuhZTQWz5jZAwbPmj
+ wp3f+NM1Dlntqul213WvJHoGbrHt/JOBCaIwLwd8mMwZqkk/a1WSyVB5yOyhQFj+ucf/
+ VoYH1Lq32TXiBWgiYVXVg4QrCqnGScz9PlJr1izmus4bIu3abO/LdTnzgyReyZVhtGXL
+ 5XVCirWVxwIE7Vkpc5U+OmR/A4JO68UGLAkC0MCOFdIn9ESnH8jitD0Yz/Wu+eKyGuOm
+ n6VosZs4M5Xa8LFs848I0PZUknvG1ILFBOKmmvfdVuhoV1XFpeGvPKKsXdroZHS/feR3
+ 7wMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=uooJJLyBqSH0JLXgEvaOK715zFIDOmfUz5/9bBdSXd0=;
- b=n3JgxDvddrRNaZIYNqJVRePxf+PQOX9KBhbo2BLLxJd3SBovfSgxLr0ip/kmqwQCOk
- /MIzEdtppmHfGy3WgXq80rwSdNrhLwSLN1MfyYLieWqO2fQBiuOgcBkK5FYExpT8mg5/
- B0awCvepivFFK9mClFu6vU6J0tvJR6Ic1qHvK4d7zyI1/SVXcc42oMON4wpA8fWamab/
- RajknstSyjGxcV8+5RWMBtigfT46DqYF9pHiZSNP1uPBi/PjhteCImSojyaqn0AxPNAv
- KvmFX8CUavl1dIf3FSdH++eP2Bt1YABdY0Hss4j1rLzRuwaFyYLcDEnlZOYgGF5xNApD
- /e8A==
-X-Gm-Message-State: AOAM532K0YOWIBIxg+ulXhapgssYjBVaMpY41PrfxfQPMeE4+tZJ4I+J
- m7Lrstsol634W0mtMt1K3LrB5cZ08yg=
-X-Received: by 2002:a1c:f70c:: with SMTP id v12mr11762822wmh.77.1612118692428; 
- Sun, 31 Jan 2021 10:44:52 -0800 (PST)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=KjWr4TKlwB/IJcVo6npcfvEPrPb22EOYTZC5O8IwCfc=;
+ b=k24sDsUaksK01Yo3Mv6hOBuJIGm+m4Af433SRdyOBCVw/6MzR0M99jEv9YQnqK1OZr
+ fscWY9TVU1zONlNUqHDLkLGpb7S7X7hZxIU6wxzyB9OP1yk62kiWoRDDmmy2oIFT+YQQ
+ 7OsDsfLAthn9b7o6peYkxObpyOAs3i2NLsthoA+uXFxj6fROYQYKHtj8iu0ZlX12lFov
+ YBOYig3/IiOEyXxybzm/ZSpQfDRVWzKcfSVzf4JYiDxdp72l7Pzqe7dB41hnhzk+YFIb
+ 32XIpDTOPBAfZigeDrr2UvNtPpPzvLfwBvYBKpLrZlbsNfIP/Zar7oRLYI1m4jQBwdaD
+ R/4A==
+X-Gm-Message-State: AOAM531P6Qf66iQuUzuL1wznTV2DYlXFXoF2VtregBTBMRKm+a8J6sEv
+ 7mTuup8yrYwW2rJxn4TxLzxVH1LsJgM=
+X-Received: by 2002:a05:600c:268b:: with SMTP id
+ 11mr12117657wmt.132.1612118697963; 
+ Sun, 31 Jan 2021 10:44:57 -0800 (PST)
 Received: from localhost.localdomain (7.red-83-57-171.dynamicip.rima-tde.net.
  [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id b4sm24051410wrn.12.2021.01.31.10.44.50
+ by smtp.gmail.com with ESMTPSA id v4sm27450035wrw.42.2021.01.31.10.44.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 Jan 2021 10:44:51 -0800 (PST)
+ Sun, 31 Jan 2021 10:44:57 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 0/6] hw/arm: Misc trivial fixes/cleanups
-Date: Sun, 31 Jan 2021 19:44:43 +0100
-Message-Id: <20210131184449.382425-1-f4bug@amsat.org>
+Subject: [PATCH v3 1/6] hw/arm/stm32f405_soc: Add missing dependency on OR_IRQ
+Date: Sun, 31 Jan 2021 19:44:44 +0100
+Message-Id: <20210131184449.382425-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210131184449.382425-1-f4bug@amsat.org>
+References: <20210131184449.382425-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -121,38 +125,30 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AL9ods3pAUmL
+X-TUID: wP9HqjoSHHoH
 
-Trivial bugfixes and cleanup patches noticed while rebasing=0D
-my "Support disabling TCG on ARM (part 2)" series.=0D
-=0D
-Since v2:=0D
-- removed incorrect patches added in v2 =3D)=0D
-- more fixes for Versal board (CAN, RTC)=0D
-=0D
-Since v1:=0D
-- added patches to remove 64-bit specific features on 32-bit build.=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (6):=0D
-  hw/arm/stm32f405_soc: Add missing dependency on OR_IRQ=0D
-  hw/arm/exynos4210: Add missing dependency on OR_IRQ=0D
-  hw/arm/xlnx-versal: Versal SoC requires ZDMA=0D
-  hw/arm/xlnx-versal: Versal SoC requires ZynqMP peripherals=0D
-  hw/net/can: ZynqMP CAN device requires PTIMER=0D
-  hw/arm: Display CPU type in machine description=0D
-=0D
- hw/arm/digic_boards.c  | 2 +-=0D
- hw/arm/microbit.c      | 2 +-=0D
- hw/arm/netduino2.c     | 2 +-=0D
- hw/arm/netduinoplus2.c | 2 +-=0D
- hw/arm/orangepi.c      | 2 +-=0D
- hw/arm/stellaris.c     | 4 ++--=0D
- hw/Kconfig             | 1 +=0D
- hw/arm/Kconfig         | 5 +++++=0D
- hw/dma/Kconfig         | 3 +++=0D
- hw/dma/meson.build     | 2 +-=0D
- 10 files changed, 17 insertions(+), 8 deletions(-)=0D
-=0D
--- =0D
-2.26.2=0D
-=0D
+The STM32F405 SoC uses an OR gate on its ADC IRQs.
+
+Fixes: 529fc5fd3e1 ("hw/arm: Add the STM32F4xx SoC")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+Cc: alistair@alistair23.me
+---
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 13cc42dcc84..a320a124855 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -336,6 +336,7 @@ config STM32F205_SOC
+ config STM32F405_SOC
+     bool
+     select ARM_V7M
++    select OR_IRQ
+     select STM32F4XX_SYSCFG
+     select STM32F4XX_EXTI
+ 
+-- 
+2.26.2
+

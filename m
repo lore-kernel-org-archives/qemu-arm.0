@@ -1,13 +1,13 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id v25sm21131150wmh.4.2021.02.01.02.28.51
+        by smtp.gmail.com with ESMTPSA id f4sm26791911wrs.34.2021.02.01.02.29.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Feb 2021 02:28:51 -0800 (PST)
+        Mon, 01 Feb 2021 02:29:48 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id AC81D1FF7E;
-	Mon,  1 Feb 2021 10:28:50 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id DF20B1FF7E;
+	Mon,  1 Feb 2021 10:29:47 +0000 (GMT)
 References: <20210131111316.232778-1-f4bug@amsat.org>
- <20210131111316.232778-3-f4bug@amsat.org>
+ <20210131111316.232778-4-f4bug@amsat.org>
 User-agent: mu4e 1.5.7; emacs 28.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -36,24 +36,26 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Sarah Harris
  Michael Rolnik <mrolnik@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
  Alistair Francis <Alistair.Francis@wdc.com>, David Gibson
  <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH 02/10] hw/lm32/Kconfig: Introduce CONFIG_LM32_EVR for
- lm32-evr/uclinux boards
-Date: Mon, 01 Feb 2021 10:28:44 +0000
-In-reply-to: <20210131111316.232778-3-f4bug@amsat.org>
-Message-ID: <87pn1kw07x.fsf@linaro.org>
+Subject: Re: [PATCH 03/10] hw/sh4/Kconfig: Rename CONFIG_LM32 ->
+ CONFIG_LM32_PERIPHERALS
+Date: Mon, 01 Feb 2021 10:29:28 +0000
+In-reply-to: <20210131111316.232778-4-f4bug@amsat.org>
+Message-ID: <87mtwow06c.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 8sa5gFx3ha3K
+X-TUID: +ogcdUYtkUab
 
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
 > We want to be able to use the 'LM32' config for architecture
-> specific features. Introduce CONFIG_LM32_EVR to select the
-> lm32-evr / lm32-uclinux boards.
+> specific features. As CONFIG_LM32 is only used to select
+> peripherals, rename it CONFIG_LM32_PERIPHERALS.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+_DEVICES if you want, either way:
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 

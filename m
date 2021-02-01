@@ -1,13 +1,13 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id v4sm30395438wrw.42.2021.02.01.03.11.58
+        by smtp.gmail.com with ESMTPSA id u3sm28397960wre.54.2021.02.01.03.23.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Feb 2021 03:11:58 -0800 (PST)
+        Mon, 01 Feb 2021 03:23:52 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 13D1C1FF7E;
-	Mon,  1 Feb 2021 11:11:58 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 93CBE1FF7E;
+	Mon,  1 Feb 2021 11:23:51 +0000 (GMT)
 References: <20210131111316.232778-1-f4bug@amsat.org>
- <20210131111316.232778-5-f4bug@amsat.org>
+ <20210131111316.232778-7-f4bug@amsat.org>
 User-agent: mu4e 1.5.7; emacs 28.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -36,47 +36,67 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Sarah Harris
  Michael Rolnik <mrolnik@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
  Alistair Francis <Alistair.Francis@wdc.com>, David Gibson
  <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH 04/10] hw/lm32/Kconfig: Have MILKYMIST select
- LM32_PERIPHERALS
-Date: Mon, 01 Feb 2021 11:11:52 +0000
-In-reply-to: <20210131111316.232778-5-f4bug@amsat.org>
-Message-ID: <87k0rsvy81.fsf@linaro.org>
+Subject: Re: [PATCH 06/10] target/i386: Move SEV feature to target Kconfig
+Date: Mon, 01 Feb 2021 11:20:31 +0000
+In-reply-to: <20210131111316.232778-7-f4bug@amsat.org>
+Message-ID: <87h7mwvxo8.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Vl4KCUDp7g/H
+X-TUID: heTbvXcKWl/L
 
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-> The Milkymist board requires more than the PTIMER. Directly
-> select the LM32_PERIPHERALS. This fixes:
->
->   /usr/bin/ld:
->   libqemu-lm32-softmmu.fa.p/target_lm32_gdbstub.c.o: in function `lm32_cp=
-u_gdb_read_register':
->   target/lm32/gdbstub.c:46: undefined reference to `lm32_pic_get_im'
->   target/lm32/gdbstub.c:48: undefined reference to `lm32_pic_get_ip'
->   libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helpe=
-r_wcsr_im':
->   target/lm32/op_helper.c:107: undefined reference to `lm32_pic_set_im'
->   libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helpe=
-r_wcsr_ip':
->   target/lm32/op_helper.c:114: undefined reference to `lm32_pic_set_ip'
->   libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helpe=
-r_wcsr_jtx':
->   target/lm32/op_helper.c:120: undefined reference to `lm32_juart_set_jtx'
->   libqemu-lm32-softmmu.fa.p/target_lm32_op_helper.c.o: in function `helpe=
-r_wcsr_jrx':
->   target/lm32/op_helper.c:125: undefined reference to `lm32_juart_set_jrx'
->   libqemu-lm32-softmmu.fa.p/target_lm32_translate.c.o: in function `lm32_=
-cpu_dump_state':
->   target/lm32/translate.c:1161: undefined reference to `lm32_pic_get_ip'
->   target/lm32/translate.c:1161: undefined reference to `lm32_pic_get_im'
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> SEV is an architecture feature, move its declaration to target/i386/.
+
+In docs/devel/kconfig.rst we make the distinction between:
+
+  **subsystems**, of which **buses** are a special case
+  **devices**
+  **device groups**
+  **boards**
+  **internal elements**
+
+Are we treating architecture features as internal elements or should we
+add some additional words to the kconfig document before we starting to
+move stuff there. In fact I realise this is better directed at 5/10 so
+for this patch:
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/i386/Kconfig     | 4 ----
+>  target/i386/Kconfig | 4 ++++
+>  2 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+> index 7f91f30877f..3d67c172dab 100644
+> --- a/hw/i386/Kconfig
+> +++ b/hw/i386/Kconfig
+> @@ -1,7 +1,3 @@
+> -config SEV
+> -    bool
+> -    depends on KVM
+> -
+>  config PC
+>      bool
+>      imply APPLESMC
+> diff --git a/target/i386/Kconfig b/target/i386/Kconfig
+> index ce6968906ee..27c76c554c7 100644
+> --- a/target/i386/Kconfig
+> +++ b/target/i386/Kconfig
+> @@ -3,3 +3,7 @@ config I386
+>=20=20
+>  config X86_64
+>      bool
+> +
+> +config SEV
+> +    bool
+> +    depends on KVM && I386
+
 
 --=20
 Alex Benn=C3=A9e

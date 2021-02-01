@@ -1,106 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3755810lfg;
-        Mon, 1 Mar 2021 09:16:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxIsd1Tt23k1wC9AaX7wO8puQlwq4W7XSZd2AYCcHarKkB8IardQGWFmmAA7uobnp85ZmXW
-X-Received: by 2002:a92:2c0e:: with SMTP id t14mr4910370ile.104.1614619018186;
-        Mon, 01 Mar 2021 09:16:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614619018; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3366823lfo;
+        Mon, 1 Feb 2021 04:30:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzIVDYbkC0NFZHbUjJ1Ko+WlXv0Tcs7dC7PS81Fu0XaIQ7SoHMkgwbK5ThI+TFWjnKxyrFy
+X-Received: by 2002:a25:1646:: with SMTP id 67mr24403819ybw.97.1612182641936;
+        Mon, 01 Feb 2021 04:30:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612182641; cv=none;
         d=google.com; s=arc-20160816;
-        b=s2Rq1JtyUFMfNlHPG9fNvxrqQ7x1BXqVizmDvDsy0NSmC/7PVBhu+LAil85687JRYY
-         q0qeShEB7fT50MNtpPYxNqZQuG05EMMSUHN1vxYkfSgU35b0BfwH3kBknVaBZjke/vbq
-         W+5GdFz8ILUUzTDsyVMwEBlVkT5VbfVcd6JzvKspRNkkpiSed7gYm/2cZvPkce20VopW
-         XjzReKkWq7IHHjFAslWjTinku8ppJiDm1PDTQHQ9Ddu5B5Jzcf4wiv+Hc8pJfUD9++Uw
-         VxHhklyPQSf9lI9DmAMPeBRRgSFK2HYtW88G+RfVZ/e/g3RVtSQ0j4lzG6mlM4KSzcN2
-         S4+g==
+        b=TfBQbVuf6vBIrq/Q7iuJVlgSBwNiFX4Vha5IKwsd6g6KvlbRqzvmCEofjB4OSflC25
+         cjQ26MFS/lrPVcLLVNhZpAsRbzpUSGy1is/r6aety6BT1JjgFZQh1rK+bRRJr6jbQ7OW
+         JI5Ru4/qCo4ObUHt0byzhBoFaQoOz8+YNt0jY5NfQViCm7S2aDjCNFK0hGIYLWaSEFqO
+         IfhOt8UFHJqRw8/EHccWzNUVb/h0eN662uWiFxSb/jxaUS+3At2RrHkz5qH0T3e4sf9c
+         m+wwFXaBqtWJ4Xit3TqzBIvKAbgqw9IZFLElqeq6WQ/VOcosJ8yemc4Gs9uDQPeE3j56
+         0pYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=xME7qSSR084Nxx8fzJ5zbfWNXFdKf1Fmd8aMrFFczkI=;
-        b=Jb0dlhZwETAkiiaH1bFo0luvj6bsfPtYF7vPEbRiNAtCHwN1ZhygjTwKRkqFSjwrS2
-         0lzHxzJGIkHG5zdt4UmUFp9oBdrIeBT+eEiKAtAZQt8DqXPZAOidpjIkARNibfPN6ATZ
-         QiMlHcknfx8ofeEGmgTFWIjcKq5ynYHVXb+0Q+K2J8Gm5wsoRNlXSGw0H1LPI9mxRI9E
-         IOcDZ6xDfE7gBAADz92xfgGW3xLFmLmazJxH6NbPJKnyCCPXHTkEU7d87mEvlj41OA/M
-         4S9+E4KaSKyO5m/6Lc+7YNml+zlY5f1yCYhTGMkTiGrihJLyReHD9ka8mHEeh712983I
-         vCeA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=916HlTSKADFRU1RlvZ2Hog+CtRE+d62Lrf0BYSQTo90=;
+        b=QCYW4dcmvkbxM8H7icDVT9/vif6Ky1VIR2gWPYE9gi193Bv4DX7DtK8tVYUfMi+rQf
+         PlHWUE1F0Hh30+4Rq/gIRV9mEVj6PFp7sqVDsisDWYs3ygoyVXKr9b7deIzMOV6RJM2V
+         bu7FN6ihFARp0McOvhXWFiNgeU4MH9amadNLtvul/T8nmKRqy1tA4LtJaAFymt1Y5QGM
+         23bf3Vrs5hpdbgt/2JaPF/QwLJ/uM2qPNS9EQjKbi8I7dRhZZSdG0SRknaHq5ozOzXmE
+         b/QEdIOQwzh4qhUjDh8GPHK682QpKebDx91EkfaU7/HXbxCMctoU8iOeHAUyAFJBVWv2
+         G0uQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=p1kFFNwo;
+       dkim=fail header.i=@linaro.org header.s=google header.b="AF/5DHPw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a16si3019581iow.42.2021.03.01.09.16.58
+        by mx.google.com with ESMTPS id r5si4678564ybl.162.2021.02.01.04.30.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 09:16:58 -0800 (PST)
+        Mon, 01 Feb 2021 04:30:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=p1kFFNwo;
+       dkim=fail header.i=@linaro.org header.s=google header.b="AF/5DHPw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:56048 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGmAD-0007wh-7L
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 12:16:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35236)
+	id 1l6YLp-0004Lq-6E
+	for alex.bennee@linaro.org; Mon, 01 Feb 2021 07:30:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60268)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1lGm9b-0007vm-7D
- for qemu-arm@nongnu.org; Mon, 01 Mar 2021 12:16:20 -0500
-Received: from mail-lf1-f48.google.com ([209.85.167.48]:41092)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6YLZ-0004JP-A0
+ for qemu-arm@nongnu.org; Mon, 01 Feb 2021 07:30:25 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:53128)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1lGm9X-0007kx-O8
- for qemu-arm@nongnu.org; Mon, 01 Mar 2021 12:16:18 -0500
-Received: by mail-lf1-f48.google.com with SMTP id q25so6461160lfc.8
- for <qemu-arm@nongnu.org>; Mon, 01 Mar 2021 09:16:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xME7qSSR084Nxx8fzJ5zbfWNXFdKf1Fmd8aMrFFczkI=;
- b=p1kFFNwo3ufNyN0+JuAg1Cgn9Z0OKOV3ULTtsu/FKPva9fbNW7ZiUkGjpOwvCw8n6F
- 9XMUf76l2bRrr+xXdOf+cne1MNn1rn3zODX2PO44hBIHJwkXb+/p0eF3H2KOg3F4QMn+
- 8LROnN7YInuz/OcPTAzafw6Nvr7wbjXRiIMZsohRnhfKaFp8Ufu7JdpXRQWjGG07WXTx
- +aatzOUtAI+yi+13uCUWX6jLuWpThnle8XI7B3zujoYSqKoOgN/E1/0cCQnp9FAZLjS7
- YWNKWAKRsnatlD6Ka4C3EyjOCL3sUAKT9ekEq++aQHogWN9EESLEN/nDBVz6Lqi1ib2e
- sZsw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6YLT-0003aU-CL
+ for qemu-arm@nongnu.org; Mon, 01 Feb 2021 07:30:23 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id o5so2847256wmq.2
+ for <qemu-arm@nongnu.org>; Mon, 01 Feb 2021 04:30:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=916HlTSKADFRU1RlvZ2Hog+CtRE+d62Lrf0BYSQTo90=;
+ b=AF/5DHPwF1F8hn/N17gU3gnRHCjyrerOY9pBAsgSFxN35cZUBxCNxLnykHgeojVzlM
+ Z42R61dSm6XhMnprVa4wwsWBNO7zp7fLfns1ooAn/m67MSzZXRNy6/xyY9b01q/gKO5s
+ TOclRrAE3E84bQBGpXhqjqttnp6UHjhuxip1zL5c2jipKlgtC1z4Ijr3qcVeAcL1s7be
+ dAq1jJZAW39NeyFY6cCQgT2z+f+LvDd4DubC7RL+027dPJR+0pTGVnilhHpY3mrZ8XHs
+ 0Ru+mu86NlBIsBzwqXeqzN4tvXGfvKYJ0KBIq065G2C4n/IP27nMeIm1gwLYwnj7lWJH
+ XjDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xME7qSSR084Nxx8fzJ5zbfWNXFdKf1Fmd8aMrFFczkI=;
- b=lKqoGvc7j39GNyNyBbC5c6VNKrhcSKLmHFbzbu8EHfPMzReeQhACbDALNdDY+Ey0Sg
- UygbWrehWUXt56pGdqj66fZGZ7vspLzTCFrBQLOMwrr3nNWExLu1e162Q/nVvBO1l8Vq
- cym8eFjpROFG/bhRWByM+CKdBpnkrQGRSswi0fEK5AyYUnuQKjDnI6T9KyQvyZj/K48O
- O5nj0PhvWk/Kwcx9YxlB7pDOFSSx9jAUf4FNuvrTfbpOdV3n4gp7MeNkwTMBMcOzJ+CG
- VsB6Amk7gukYKvL/Yl1kJZj4RZpSTcbiEFRfriVqtvkwU2oXRYsqNzKkHoXqvZLJjvLR
- AtZw==
-X-Gm-Message-State: AOAM533pEGiRgykWVI+CemUcSc9ySq9Lu6pTCMqUXyg5fcjT9KcQmdbD
- vtsM0HQ1mAR6UtAjpJhMVWqOsvGt1NCW+YPfSONm1A==
-X-Received: by 2002:a05:6512:1284:: with SMTP id
- u4mr10374853lfs.175.1614618671428; 
- Mon, 01 Mar 2021 09:11:11 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=916HlTSKADFRU1RlvZ2Hog+CtRE+d62Lrf0BYSQTo90=;
+ b=MrFETottp9wAKMvMd5BbST3tVhz2P5KxaZaZfg+a+Mrx8bCX2qr8DzKaqc/saxX37t
+ /E1GTfH+wRjiLxjacrLhEJw1E5pJMh/UsgZZ4/ngs3w/ACCjtVHe+JzTfzioLLjwfALO
+ eweeYNogCQsabQbgBfuuI9nvlS5g3jULwJKrGs+yBVcutCIrnZLvab3PcjDbtTyy0Sv2
+ bfnykcrjEe6LfREEfLrgfpf5bLHOINXk64jRRlWhnROp0fAhfrLmmg+ZrVkjzZjt1Rzm
+ 5ujSNwoFwdkSgkSifyCsHg7hzVAY9YNXmqk9qwml/tqvjQwZG3UdyPQTwiZSIwzgltgw
+ wDhA==
+X-Gm-Message-State: AOAM533PW29l/V1TzjbyXgzLTZhCJrqOmkmylgZ+Nu6LBC3hJYtDBbWs
+ /glnxETHphYX0QqzSQtgglJM53QqfQVvRA==
+X-Received: by 2002:a1c:105:: with SMTP id 5mr7140365wmb.89.1612182617622;
+ Mon, 01 Feb 2021 04:30:17 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id q6sm20466278wmj.32.2021.02.01.04.30.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Feb 2021 04:30:16 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [RFC 1/4] clock: Add ClockEvent parameter to callbacks
+Date: Mon,  1 Feb 2021 12:30:10 +0000
+Message-Id: <20210201123013.32308-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210201123013.32308-1-peter.maydell@linaro.org>
+References: <20210201123013.32308-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20210228224813.312532-1-f4bug@amsat.org>
-In-Reply-To: <20210228224813.312532-1-f4bug@amsat.org>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Mon, 1 Mar 2021 09:10:59 -0800
-Message-ID: <CAGcCb12NR=bheKp2iGKrKRp1M_A2b_xG_Fc5NhissLRKW86U3w@mail.gmail.com>
-Subject: Re: [PATCH] hw/i2c/npcm7xx_smbus: Simplify npcm7xx_smbus_init()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Tyrone Ting <kfting@nuvoton.com>, 
- qemu-arm <qemu-arm@nongnu.org>, Havard Skinnemoen <hskinnemoen@google.com>
-Content-Type: multipart/alternative; boundary="0000000000005c115c05bc7cb42a"
-Received-SPF: pass client-ip=209.85.167.48; envelope-from=wuhaotsh@google.com;
- helo=mail-lf1-f48.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,87 +116,437 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Luc Michel <luc@lmichel.fr>, Havard Skinnemoen <hskinnemoen@google.com>,
+ Tyrone Ting <kfting@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1/07QIdYGLEn
+X-TUID: tarXZj1bY+Kn
 
---0000000000005c115c05bc7cb42a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The Clock framework allows users to specify a callback which is
+called after the clock's period has been updated.  Some users need to
+also have a callback which is called before the clock period is
+updated.
 
-On Sun, Feb 28, 2021 at 2:50 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g>
-wrote:
+As the first step in adding support for notifying Clock users on
+pre-update events, add an argument to the ClockCallback to specify
+what event is being notified, and make the existing callback
+implementations check this argument and only act if the event is
+ClockUpdate.
 
-> The STATUS register will be reset to IDLE in
-> cnpcm7xx_smbus_enter_reset(), no need to preset
-> it in instance_init().
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
+Note that the documentation update renders correct the previously
+incorrect claim in 'Adding a new clock' that callbacks "will be
+explained in a following section".
 
-> ---
->  hw/i2c/npcm7xx_smbus.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
-> index 6b2f9e1aaad..e7e0ba66fe7 100644
-> --- a/hw/i2c/npcm7xx_smbus.c
-> +++ b/hw/i2c/npcm7xx_smbus.c
-> @@ -1040,7 +1040,6 @@ static void npcm7xx_smbus_init(Object *obj)
->      sysbus_init_mmio(sbd, &s->iomem);
->
->      s->bus =3D i2c_init_bus(DEVICE(s), "i2c-bus");
-> -    s->status =3D NPCM7XX_SMBUS_STATUS_IDLE;
->  }
->
->  static const VMStateDescription vmstate_npcm7xx_smbus =3D {
-> --
-> 2.26.2
->
->
->
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I thought about trying to add support for pre-update callbacks
+in a way that didn't require changes to every current callback
+user, but there aren't *that* many of them and I think this API
+is nicer than having multiple separate callback pointers and
+extra functions for "also set the pre-update callback" and so on.
+---
+ docs/devel/clocks.rst            | 35 ++++++++++++++++++++++++++++++--
+ include/hw/clock.h               | 10 ++++++++-
+ hw/arm/armsse.c                  |  8 ++++++--
+ hw/char/cadence_uart.c           |  5 ++++-
+ hw/char/ibex_uart.c              |  5 ++++-
+ hw/char/pl011.c                  |  5 ++++-
+ hw/core/clock.c                  |  2 +-
+ hw/misc/bcm2835_cprman.c         | 20 ++++++++++++++----
+ hw/misc/npcm7xx_clk.c            | 31 +++++++++++++++++++++++++---
+ hw/misc/zynq_slcr.c              |  6 +++++-
+ hw/timer/cmsdk-apb-dualtimer.c   |  5 ++++-
+ hw/timer/cmsdk-apb-timer.c       |  5 ++++-
+ hw/watchdog/cmsdk-apb-watchdog.c |  5 ++++-
+ 13 files changed, 122 insertions(+), 20 deletions(-)
 
---0000000000005c115c05bc7cb42a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+index c54bbb82409..8d3b456561f 100644
+--- a/docs/devel/clocks.rst
++++ b/docs/devel/clocks.rst
+@@ -113,7 +113,7 @@ output.
+      * callback for the input clock (see "Callback on input clock
+      * change" section below for more information).
+      */
+-    static void clk_in_callback(void *opaque);
++    static void clk_in_callback(void *opaque, ClockEvent event);
+ 
+     /*
+      * static array describing clocks:
+@@ -153,6 +153,34 @@ nothing else to do. This value will be propagated to other clocks when
+ connecting the clocks together and devices will fetch the right value during
+ the first reset.
+ 
++Clock callbacks
++---------------
++
++You can give a clock a callback function in several ways:
++
++ * by passing it as an argument to ``qdev_init_clock_in()``
++ * as an argument to the ``QDEV_CLOCK_IN()`` macro initializing an
++   array to be passed to ``qdev_init_clocks()``
++ * by directly calling the ``clock_set_callback()`` function
++
++The callback function must be of this type:
++
++.. code-block:: c
++
++   typedef void ClockCallback(void *opaque, ClockEvent event);
++
++The ``opaque`` argument is the pointer passed to ``qdev_init_clock_in()``
++or ``clock_set_callback()``; for ``qdev_init_clocks()`` it is the
++``dev`` device pointer.
++
++The ``event`` argument specifies why the callback has been called.
++Callback functions should check this and only do something for
++specific events they need to handle, so that if in future different
++events are added the callback code doesn't need to be updated.
++The events currently supported are:
++
++ * ``ClockUpdate`` : called after the input clock's period has changed
++
+ Retrieving clocks from a device
+ -------------------------------
+ 
+@@ -271,12 +299,15 @@ Here is an example:
+ 
+ .. code-block:: c
+ 
+-    void clock_callback(void *opaque) {
++    void clock_callback(void *opaque, ClockEvent event) {
+         MyDeviceState *s = (MyDeviceState *) opaque;
+         /*
+          * 'opaque' is the argument passed to qdev_init_clock_in();
+          * usually this will be the device state pointer.
+          */
++        if (event != ClockUpdate) {
++            return;
++        }
+ 
+         /* do something with the new period */
+         fprintf(stdout, "device new period is %" PRIu64 "* 2^-32 ns\n",
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+index e5f45e2626d..323f8d49fed 100644
+--- a/include/hw/clock.h
++++ b/include/hw/clock.h
+@@ -22,7 +22,15 @@
+ #define TYPE_CLOCK "clock"
+ OBJECT_DECLARE_SIMPLE_TYPE(Clock, CLOCK)
+ 
+-typedef void ClockCallback(void *opaque);
++/*
++ * Argument to ClockCallback functions indicating why the callback
++ * has been called.
++ */
++typedef enum ClockEvent {
++    ClockUpdate, /* Clock period has just updated */
++} ClockEvent;
++
++typedef void ClockCallback(void *opaque, ClockEvent event);
+ 
+ /*
+  * clock store a value representing the clock's period in 2^-32ns unit.
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 26e1a8c95b6..cf0bd962ea2 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -230,9 +230,13 @@ static void armsse_forward_sec_resp_cfg(ARMSSE *s)
+     qdev_connect_gpio_out(dev_splitter, 2, s->sec_resp_cfg_in);
+ }
+ 
+-static void armsse_mainclk_update(void *opaque)
++static void armsse_mainclk_update(void *opaque, ClockEvent event)
+ {
+     ARMSSE *s = ARM_SSE(opaque);
++
++    if (event != ClockUpdate) {
++        return;
++    }
+     /*
+      * Set system_clock_scale from our Clock input; this is what
+      * controls the tick rate of the CPU SysTick timer.
+@@ -1120,7 +1124,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
+ 
+     /* Set initial system_clock_scale from MAINCLK */
+-    armsse_mainclk_update(s);
++    armsse_mainclk_update(s, ClockUpdate);
+ }
+ 
+ static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
+diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+index c603e14012a..2900688fc24 100644
+--- a/hw/char/cadence_uart.c
++++ b/hw/char/cadence_uart.c
+@@ -519,10 +519,13 @@ static void cadence_uart_realize(DeviceState *dev, Error **errp)
+                              uart_event, NULL, s, NULL, true);
+ }
+ 
+-static void cadence_uart_refclk_update(void *opaque)
++static void cadence_uart_refclk_update(void *opaque, ClockEvent event)
+ {
+     CadenceUARTState *s = opaque;
+ 
++    if (event != ClockUpdate) {
++        return;
++    }
+     /* recompute uart's speed on clock change */
+     uart_parameters_setup(s);
+ }
+diff --git a/hw/char/ibex_uart.c b/hw/char/ibex_uart.c
+index 89f1182c9bf..c90d4d69baf 100644
+--- a/hw/char/ibex_uart.c
++++ b/hw/char/ibex_uart.c
+@@ -396,10 +396,13 @@ static void ibex_uart_write(void *opaque, hwaddr addr,
+     }
+ }
+ 
+-static void ibex_uart_clk_update(void *opaque)
++static void ibex_uart_clk_update(void *opaque, ClockEvent event)
+ {
+     IbexUartState *s = opaque;
+ 
++    if (event != ClockUpdate) {
++        return;
++    }
+     /* recompute uart's speed on clock change */
+     uint64_t baud = ibex_uart_get_baud(s);
+ 
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index ea4a4e52356..d3040c0fab3 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -309,10 +309,13 @@ static void pl011_event(void *opaque, QEMUChrEvent event)
+         pl011_put_fifo(opaque, 0x400);
+ }
+ 
+-static void pl011_clock_update(void *opaque)
++static void pl011_clock_update(void *opaque, ClockEvent event)
+ {
+     PL011State *s = PL011(opaque);
+ 
++    if (event != ClockUpdate) {
++        return;
++    }
+     pl011_trace_baudrate_change(s);
+ }
+ 
+diff --git a/hw/core/clock.c b/hw/core/clock.c
+index 76b5f468b6e..772d03a2eb5 100644
+--- a/hw/core/clock.c
++++ b/hw/core/clock.c
+@@ -73,7 +73,7 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
+                                CLOCK_PERIOD_TO_HZ(clk->period),
+                                call_callbacks);
+             if (call_callbacks && child->callback) {
+-                child->callback(child->callback_opaque);
++                child->callback(child->callback_opaque, ClockUpdate);
+             }
+             clock_propagate_period(child, call_callbacks);
+         }
+diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+index 7e415a017c9..5df4bcdb22d 100644
+--- a/hw/misc/bcm2835_cprman.c
++++ b/hw/misc/bcm2835_cprman.c
+@@ -107,8 +107,11 @@ static void pll_update(CprmanPllState *pll)
+     clock_update_hz(pll->out, freq);
+ }
+ 
+-static void pll_xosc_update(void *opaque)
++static void pll_xosc_update(void *opaque, ClockEvent event)
+ {
++    if (event != ClockUpdate) {
++        return;
++    }
+     pll_update(CPRMAN_PLL(opaque));
+ }
+ 
+@@ -209,8 +212,11 @@ static void pll_update_all_channels(BCM2835CprmanState *s,
+     }
+ }
+ 
+-static void pll_channel_pll_in_update(void *opaque)
++static void pll_channel_pll_in_update(void *opaque, ClockEvent event)
+ {
++    if (event != ClockUpdate) {
++        return;
++    }
+     pll_channel_update(CPRMAN_PLL_CHANNEL(opaque));
+ }
+ 
+@@ -303,12 +309,15 @@ static void clock_mux_update(CprmanClockMuxState *mux)
+     clock_update_hz(mux->out, freq);
+ }
+ 
+-static void clock_mux_src_update(void *opaque)
++static void clock_mux_src_update(void *opaque, ClockEvent event)
+ {
+     CprmanClockMuxState **backref = opaque;
+     CprmanClockMuxState *s = *backref;
+     CprmanClockMuxSource src = backref - s->backref;
+ 
++    if (event != ClockUpdate) {
++        return;
++    }
+     if (FIELD_EX32(*s->reg_ctl, CM_CLOCKx_CTL, SRC) != src) {
+         return;
+     }
+@@ -380,8 +389,11 @@ static void dsi0hsck_mux_update(CprmanDsi0HsckMuxState *s)
+     clock_update(s->out, clock_get(src));
+ }
+ 
+-static void dsi0hsck_mux_in_update(void *opaque)
++static void dsi0hsck_mux_in_update(void *opaque, ClockEvent event)
+ {
++    if (event != ClockUpdate) {
++        return;
++    }
+     dsi0hsck_mux_update(CPRMAN_DSI0HSCK_MUX(opaque));
+ }
+ 
+diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
+index 0bcae9ce957..935184d5482 100644
+--- a/hw/misc/npcm7xx_clk.c
++++ b/hw/misc/npcm7xx_clk.c
+@@ -586,15 +586,31 @@ static const DividerInitInfo divider_init_info_list[] = {
+     },
+ };
+ 
++static void npcm7xx_clk_update_pll_cb(void *opaque, ClockEvent event)
++{
++    if (event != ClockUpdate) {
++        return;
++    }
++    npcm7xx_clk_update_pll(opaque);
++}
++
+ static void npcm7xx_clk_pll_init(Object *obj)
+ {
+     NPCM7xxClockPLLState *pll = NPCM7XX_CLOCK_PLL(obj);
+ 
+     pll->clock_in = qdev_init_clock_in(DEVICE(pll), "clock-in",
+-            npcm7xx_clk_update_pll, pll);
++            npcm7xx_clk_update_pll_cb, pll);
+     pll->clock_out = qdev_init_clock_out(DEVICE(pll), "clock-out");
+ }
+ 
++static void npcm7xx_clk_update_sel_cb(void *opaque, ClockEvent event)
++{
++    if (event != ClockUpdate) {
++        return;
++    }
++    npcm7xx_clk_update_sel(opaque);
++}
++
+ static void npcm7xx_clk_sel_init(Object *obj)
+ {
+     int i;
+@@ -603,16 +619,25 @@ static void npcm7xx_clk_sel_init(Object *obj)
+     for (i = 0; i < NPCM7XX_CLK_SEL_MAX_INPUT; ++i) {
+         sel->clock_in[i] = qdev_init_clock_in(DEVICE(sel),
+                 g_strdup_printf("clock-in[%d]", i),
+-                npcm7xx_clk_update_sel, sel);
++                npcm7xx_clk_update_sel_cb, sel);
+     }
+     sel->clock_out = qdev_init_clock_out(DEVICE(sel), "clock-out");
+ }
++
++static void npcm7xx_clk_update_divider_cb(void *opaque, ClockEvent event)
++{
++    if (event != ClockUpdate) {
++        return;
++    }
++    npcm7xx_clk_update_divider(opaque);
++}
++
+ static void npcm7xx_clk_divider_init(Object *obj)
+ {
+     NPCM7xxClockDividerState *div = NPCM7XX_CLOCK_DIVIDER(obj);
+ 
+     div->clock_in = qdev_init_clock_in(DEVICE(div), "clock-in",
+-            npcm7xx_clk_update_divider, div);
++            npcm7xx_clk_update_divider_cb, div);
+     div->clock_out = qdev_init_clock_out(DEVICE(div), "clock-out");
+ }
+ 
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index 66504a9d3ab..555d93ba50c 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -307,9 +307,13 @@ static void zynq_slcr_propagate_clocks(ZynqSLCRState *s)
+     clock_propagate(s->uart1_ref_clk);
+ }
+ 
+-static void zynq_slcr_ps_clk_callback(void *opaque)
++static void zynq_slcr_ps_clk_callback(void *opaque, ClockEvent event)
+ {
+     ZynqSLCRState *s = (ZynqSLCRState *) opaque;
++
++    if (event != ClockUpdate) {
++        return;
++    }
+     zynq_slcr_compute_clocks(s);
+     zynq_slcr_propagate_clocks(s);
+ }
+diff --git a/hw/timer/cmsdk-apb-dualtimer.c b/hw/timer/cmsdk-apb-dualtimer.c
+index ef49f5852d3..ebbc036dc89 100644
+--- a/hw/timer/cmsdk-apb-dualtimer.c
++++ b/hw/timer/cmsdk-apb-dualtimer.c
+@@ -449,11 +449,14 @@ static void cmsdk_apb_dualtimer_reset(DeviceState *dev)
+     s->timeritop = 0;
+ }
+ 
+-static void cmsdk_apb_dualtimer_clk_update(void *opaque)
++static void cmsdk_apb_dualtimer_clk_update(void *opaque, ClockEvent event)
+ {
+     CMSDKAPBDualTimer *s = CMSDK_APB_DUALTIMER(opaque);
+     int i;
+ 
++    if (event != ClockUpdate) {
++        return;
++    }
+     for (i = 0; i < ARRAY_SIZE(s->timermod); i++) {
+         CMSDKAPBDualTimerModule *m = &s->timermod[i];
+         ptimer_transaction_begin(m->timer);
+diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
+index ee51ce3369c..06264f36d4e 100644
+--- a/hw/timer/cmsdk-apb-timer.c
++++ b/hw/timer/cmsdk-apb-timer.c
+@@ -204,10 +204,13 @@ static void cmsdk_apb_timer_reset(DeviceState *dev)
+     ptimer_transaction_commit(s->timer);
+ }
+ 
+-static void cmsdk_apb_timer_clk_update(void *opaque)
++static void cmsdk_apb_timer_clk_update(void *opaque, ClockEvent event)
+ {
+     CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
+ 
++    if (event != ClockUpdate) {
++        return;
++    }
+     ptimer_transaction_begin(s->timer);
+     ptimer_set_period_from_clock(s->timer, s->pclk, 1);
+     ptimer_transaction_commit(s->timer);
+diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
+index 302f1711738..7564e8b3326 100644
+--- a/hw/watchdog/cmsdk-apb-watchdog.c
++++ b/hw/watchdog/cmsdk-apb-watchdog.c
+@@ -310,10 +310,13 @@ static void cmsdk_apb_watchdog_reset(DeviceState *dev)
+     ptimer_transaction_commit(s->timer);
+ }
+ 
+-static void cmsdk_apb_watchdog_clk_update(void *opaque)
++static void cmsdk_apb_watchdog_clk_update(void *opaque, ClockEvent event)
+ {
+     CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(opaque);
+ 
++    if (event != ClockUpdate) {
++        return;
++    }
+     ptimer_transaction_begin(s->timer);
+     ptimer_set_period_from_clock(s->timer, s->wdogclk, 1);
+     ptimer_transaction_commit(s->timer);
+-- 
+2.20.1
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Sun, Feb 28, 2021 at 2:50 PM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.o=
-rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
-n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">The STATUS register will be reset to IDLE in<br>
-cnpcm7xx_smbus_enter_reset(), no need to preset<br>
-it in instance_init().<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br></blockquote><div>Revie=
-wed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google.c=
-om</a>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
- 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0hw/i2c/npcm7xx_smbus.c | 1 -<br>
-=C2=A01 file changed, 1 deletion(-)<br>
-<br>
-diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c<br>
-index 6b2f9e1aaad..e7e0ba66fe7 100644<br>
---- a/hw/i2c/npcm7xx_smbus.c<br>
-+++ b/hw/i2c/npcm7xx_smbus.c<br>
-@@ -1040,7 +1040,6 @@ static void npcm7xx_smbus_init(Object *obj)<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_init_mmio(sbd, &amp;s-&gt;iomem);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;bus =3D i2c_init_bus(DEVICE(s), &quot;i2c-bus&quo=
-t;);<br>
--=C2=A0 =C2=A0 s-&gt;status =3D NPCM7XX_SMBUS_STATUS_IDLE;<br>
-=C2=A0}<br>
-<br>
-=C2=A0static const VMStateDescription vmstate_npcm7xx_smbus =3D {<br>
--- <br>
-2.26.2<br>
-<br>
-<br>
-</blockquote></div></div>
-
---0000000000005c115c05bc7cb42a--

@@ -1,96 +1,97 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3705145lfo;
-        Mon, 1 Feb 2021 11:56:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy76R9Odw7hEcY40sTIcY0JOMrS2dyMSMiPTKXk6zvZWXUk+qmORi+foL28gD3PNz+tZ4Hu
-X-Received: by 2002:a25:d9c1:: with SMTP id q184mr11742933ybg.115.1612209404347;
-        Mon, 01 Feb 2021 11:56:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612209404; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3705707lfo;
+        Mon, 1 Feb 2021 11:57:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzeUPHU9hfshGI+Bhq5cmIHo2KHj4ZExuJKw/zvs/OL2TdyPMDTVdNBFckAOuiS2/juvwik
+X-Received: by 2002:a25:35d4:: with SMTP id c203mr27801319yba.371.1612209458939;
+        Mon, 01 Feb 2021 11:57:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612209458; cv=none;
         d=google.com; s=arc-20160816;
-        b=ppvum539nDI4q6T7RNj4qqz+InUavKgD4rnnri4lM+Z4RSifWZ5mlSrMCUXgx9AjXC
-         mXz3Cz4gDvcIORTtI3+LfdE5Nl5FqpvNTTgjpw0RF5zlgQCUdnajhIrZOiYXhPoUgCVm
-         d1pK/OKa+45eJNykZGcCPTeMRTnak3tYHBtqanvpZAtQnCBAqEuAMm5ANZfPBy/skU+X
-         DcGB740axLOeWWN7qusVBzE41Vi1IFMqBYv4qvZFjZuAvyzIXg946GhDtjkytbLfLDkW
-         28xzztpUrsvtcZSIjOC5g/ubkIlQ3xgN/W1Rg75YrUvHIqjkgytZcShAYfQErSGE65WN
-         6u/g==
+        b=b1WDsYAnWrL93gMl2uVBXM7rOIwqbkgX3HlnM1KnvlAj21oq8FsO1c2NXB8BJFZiro
+         BnEkbwRFGH29IlgJH7XmVWDzhjSyGBRWbzO97y+53UNm5Fjahis92+e+TpNypQGWfwLM
+         7bJosaBmcM5eLA8MWidn7cHPdin0YrARZfKRCVNcLRWUyzAnb0oBWMhplNc4WLv4JFQf
+         HF6Rpie8Q3iJ0vtpYbapsnVhZN0HbEfgLRL/U3Gd1uOf4RSXNVO+pmbYpQc8qMDolrbt
+         sLxSAwAEI2DM+Lb0GevOWoIBDZng25zXtGq4H4B7eleK5CV5LFu2N2snU8zLLG2j9pAx
+         QHAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=OP2EWmjCbiDpjWViceOA9fmZyxGs7V0VIVK1IMMwVh8=;
-        b=JA8jCD5fgCOv02mZs2Br3cRczc1Ua2eaqE+5dOT0EhR1aYSRCpDP7YthjKX3LoCyZY
-         gE6Ha1z2+n10YwMjnu7epcgfXz7JB7KW1j4DX4QiJybAFm4SjqhKd/NEGVbyClwAWG1/
-         XMMBj/2GGFr5MdFwLBJY4aEK5MJIdTkeKKXbRTZnZZ/AhdZwPaEhZNFXjYGOyu7yHHE+
-         B0bnc044mak9/O9GvF/IyEr+v6BOW3EVZ6lmdtQKtIGUjGOalCCdFyeBC5Qqampals+l
-         vnFhpLBT77KnA19iN8oxA/u/0WmWXBYw2M0EfhnRWn36XPGDvYIg12JQRLUS1+Y20pxY
-         nWFg==
+        bh=MJpC+ZhoVpPrt82JDN2+JYljtbRDmVTcwos129cyrEY=;
+        b=Z75pxIgNLZnGdE3DBWvGe0/FA8nMzgr6v96i7DOfTfA8CusdJZLFJH12VsggIJz5AA
+         5YZ/7i7aK0QvTdSytSuDLAbIRWQ+8cj6YA6icz/7WuVIAtdAgeVzbSIE9gqJf89sTgBw
+         hI9UR4yrpq79xDXH6/8iw0GdbYFXQAjtO/k6O+H2XQj+dGe97voSaML4qErCRORgmBa6
+         hUqe3FUoaMVpD6QuWgzrPcq2DE9kmy7FHC2ksRsZezO9sw6pXWPzm9pAL751+cNuYxgu
+         FiYe+DKiqvhW4tsLqwBHq/jO1IKntJrm6ncnXLYgHwXff7HIowAmyrlQj6eR20K2Khvd
+         2qcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Umbl2I+s;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eXtLoe8a;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e128si17825885ybe.422.2021.02.01.11.56.44
+        by mx.google.com with ESMTPS id k67si12206728ybc.123.2021.02.01.11.57.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Feb 2021 11:56:44 -0800 (PST)
+        Mon, 01 Feb 2021 11:57:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Umbl2I+s;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eXtLoe8a;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46662 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48760 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6fJT-0007n8-OE
-	for alex.bennee@linaro.org; Mon, 01 Feb 2021 14:56:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53612)
+	id 1l6fKM-0000IH-AX
+	for alex.bennee@linaro.org; Mon, 01 Feb 2021 14:57:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6fJ3-0007lZ-E4; Mon, 01 Feb 2021 14:56:17 -0500
-Received: from mail-io1-xd2e.google.com ([2607:f8b0:4864:20::d2e]:35802)
+ id 1l6fJU-0000Em-Km; Mon, 01 Feb 2021 14:56:44 -0500
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:35802)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1l6fJ1-0005FE-4e; Mon, 01 Feb 2021 14:56:17 -0500
-Received: by mail-io1-xd2e.google.com with SMTP id y19so18759666iov.2;
- Mon, 01 Feb 2021 11:56:13 -0800 (PST)
+ id 1l6fJS-0005UL-V5; Mon, 01 Feb 2021 14:56:44 -0500
+Received: by mail-io1-xd2b.google.com with SMTP id y19so18761378iov.2;
+ Mon, 01 Feb 2021 11:56:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=OP2EWmjCbiDpjWViceOA9fmZyxGs7V0VIVK1IMMwVh8=;
- b=Umbl2I+s1X8Nvo7Ss6IBVgTzI3MBCSVs/IUeVU0dpptSNlnHz7E1MHnIiMJU39kjau
- /ZOePKVGckuyRigSWhGzd5ZniRsOOXIGa+olSg3mzvvqqtqefvve6S97DxA46G8VnTFn
- 4mQySrRTF4SnX534MVAYcDXsCmxKuz0iG542uIlyV2Wpaj4RbNDwEbzosj4hGO7nlGoQ
- CNcD/4EHZuOz3JtvYifDg5DNRw7INMN2MC+Sw60I4jxsAh0DppanAYKbipQfRCTi5nO7
- u+eOToMpyl/HBhR8zS80pkOvSFbs2ZaHdzuznsf8Bzc/6gvYu0JDZiP8TAWQP8h/6FYT
- NGIw==
+ bh=MJpC+ZhoVpPrt82JDN2+JYljtbRDmVTcwos129cyrEY=;
+ b=eXtLoe8a8JJSEVA7zc0HC8MGyIpGJodjCwSAA9/YRrCB09CwQQOUBsI+rLl/98mZmf
+ 5v7hiUCA5BQJsIdsiSPWL/ZGpqOAKiP5AVRaVep631lC4Y0b7wnjVk0OYh/1lKwJiQkP
+ Q/mTn2GACqe5uIMNKRsZ74IOsQhrF3PFAD1KmOgj8UM3Ib7F3J/kWemc3a3ImOsOcWM7
+ UNSQ5ABQ49Sa9cWil+lrC/kvvR4Oq3NIR1N4fMqxQSbmpiq55hLpz9L63LRVGruJcVKJ
+ t0/2WD39T2tvjTOUuHKGtL2O42CHhTCy1w/qfT31p0EbasO0MW5KLzpfR+kYx9s+cJGP
+ +5bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=OP2EWmjCbiDpjWViceOA9fmZyxGs7V0VIVK1IMMwVh8=;
- b=H7UzoOAlPkwH3DPY0qK5/JeGvKZqWWapApfdA9YOJwzLKmdFgnOulqehO5XdnX4OR0
- McQpffc2ViRDLmHdfIb54W5cQDf8KoPONdoyFVBpDuakd2D2eGlcwgEfsmPASiU+ZMFQ
- 4kHd93TxLqD6LHUtU7BvyYXvR+0RntCr9O9oBscGwzTWRP3AEn5YVLrSu/WWIYpfnRlq
- TBy8FXfei5kmKHwjc+ChoGH0iOXKNZY8pG7XMuuMcd84J7aOKiJuJi5cnDAZlAgMycYo
- yopGXoT3o6UMVilYp5mSQo4QyLOI7oeLhRv9yUybHV2PVZJ9C7FLTPcI1+jpXuwdtN0B
- D8dw==
-X-Gm-Message-State: AOAM533zY58ENyeQ1bMenPbIbrxOv7gvCPrCo6JVZVriAxh6Czex7Fl7
- gwtYw6Sle8K7E+LLVm4V5Q6NjC5+6HY/RhmDUG8=
-X-Received: by 2002:a6b:7d42:: with SMTP id d2mr14198447ioq.176.1612209372988; 
- Mon, 01 Feb 2021 11:56:12 -0800 (PST)
+ bh=MJpC+ZhoVpPrt82JDN2+JYljtbRDmVTcwos129cyrEY=;
+ b=s8FJrXUEDxrWCBBTMzziEhwLNAFBNc3ujYV7erBrRrQ/GNMqw7T/y0KTn8JmJ3vJRj
+ UYWvAGuXyghFbPwevOERljeJGxzoZdlymi2zNILVgaYzyaK+cLddXfnistz+rrfKnbIg
+ rcWbgl0GhejjhzGDGflQYWjp95WDoCtmhYwWnLeRdJwoyPVmk4AdbrLcFoJSqfcG2Whb
+ jGev+cscW+33BsjcJ46b1HavrZuTpRuD/TP2hVNnRiw2D2dLuNTmwJmilq5EKUrtBrCY
+ ZfImxEXClKA+KqmRyGbywJ9DfCK2K1lLaNihz4AQoyL46ixTLFbjddmOmxicmr2Rj0Co
+ 7X+w==
+X-Gm-Message-State: AOAM532EYqFKwoXDrwIe0L/0v2Bkq8A66M4t2J5L20T0CpVnaM20FDo1
+ kYAn52ctx2FjyO0EBeOJcHQwHSRlyAvtqYpWCPKuRdx/OJ4=
+X-Received: by 2002:a6b:4003:: with SMTP id k3mr13377175ioa.105.1612209401352; 
+ Mon, 01 Feb 2021 11:56:41 -0800 (PST)
 MIME-Version: 1.0
 References: <20210131184449.382425-1-f4bug@amsat.org>
- <20210131184449.382425-6-f4bug@amsat.org>
-In-Reply-To: <20210131184449.382425-6-f4bug@amsat.org>
+ <20210131184449.382425-5-f4bug@amsat.org>
+In-Reply-To: <20210131184449.382425-5-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 1 Feb 2021 11:55:45 -0800
-Message-ID: <CAKmqyKMbC0KhwFhc1dAWRX2ismR7uR1KJeFnqHqP07VUsGAPVg@mail.gmail.com>
-Subject: Re: [PATCH v3 5/6] hw/net/can: ZynqMP CAN device requires PTIMER
+Date: Mon, 1 Feb 2021 11:56:14 -0800
+Message-ID: <CAKmqyKNRGf6jF_T6A_t=LK_kROa3Vg4tZjRo9+qeRXhJGM6Zpg@mail.gmail.com>
+Subject: Re: [PATCH v3 4/6] hw/arm/xlnx-versal: Versal SoC requires ZynqMP
+ peripherals
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2e;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd2e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd2b.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -117,31 +118,22 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Laurent Vivier <laurent@vivier.eu>, Niek Linnenbank <nieklinnenbank@gmail.com>,
  qemu-arm <qemu-arm@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>,
- Joel Stanley <joel@jms.id.au>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fOcqVeOniQMT
+X-TUID: aUvZ47J76SQ8
 
-On Sun, Jan 31, 2021 at 10:49 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+On Sun, Jan 31, 2021 at 10:51 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
 rg> wrote:
 >
-> Add a dependency XLNX_ZYNQMP -> PTIMER to fix:
+> The Versal SoC instantiates the TYPE_XLNX_ZYNQMP_RTC object in
+> versal_create_rtc()(). Select CONFIG_XLNX_ZYNQMP to fix:
 >
->   /usr/bin/ld:
->   libcommon.fa.p/hw_net_can_xlnx-zynqmp-can.c.o: in function `xlnx_zynqmp=
-_can_realize':
->   hw/net/can/xlnx-zynqmp-can.c:1082: undefined reference to `ptimer_init'
->   hw/net/can/xlnx-zynqmp-can.c:1085: undefined reference to `ptimer_trans=
-action_begin'
->   hw/net/can/xlnx-zynqmp-can.c:1087: undefined reference to `ptimer_set_f=
-req'
->   hw/net/can/xlnx-zynqmp-can.c:1088: undefined reference to `ptimer_set_l=
-imit'
->   hw/net/can/xlnx-zynqmp-can.c:1089: undefined reference to `ptimer_run'
->   hw/net/can/xlnx-zynqmp-can.c:1090: undefined reference to `ptimer_trans=
-action_commit'
->   libcommon.fa.p/hw_net_can_xlnx-zynqmp-can.c.o:(.data.rel+0x2c8): undefi=
-ned reference to `vmstate_ptimer'
+>   $ make check-qtest-aarch64
+>   ...
+>   Running test qtest-aarch64/qom-test
+>   qemu-system-aarch64: missing object type 'xlnx-zynmp.rtc'
+>   Broken pipe
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -150,18 +142,24 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/Kconfig | 1 +
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> ---
+>  hw/arm/Kconfig | 1 +
 >  1 file changed, 1 insertion(+)
 >
-> diff --git a/hw/Kconfig b/hw/Kconfig
-> index 5ad3c6b5a4b..d4cec9e476c 100644
-> --- a/hw/Kconfig
-> +++ b/hw/Kconfig
-> @@ -81,3 +81,4 @@ config XLNX_ZYNQMP
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 09298881f2f..be017b997ab 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -364,6 +364,7 @@ config XLNX_VERSAL
+>      select VIRTIO_MMIO
+>      select UNIMP
+>      select XLNX_ZDMA
+> +    select XLNX_ZYNQMP
+>
+>  config NPCM7XX
 >      bool
->      select REGISTER
->      select CAN_BUS
-> +    select PTIMER
 > --
 > 2.26.2
 >

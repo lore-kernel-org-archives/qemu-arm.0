@@ -1,13 +1,13 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id r10sm20236520wmd.15.2021.02.01.03.25.48
+        by smtp.gmail.com with ESMTPSA id c16sm26200893wrx.51.2021.02.01.03.53.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Feb 2021 03:25:48 -0800 (PST)
+        Mon, 01 Feb 2021 03:53:39 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C52BD1FF7E;
-	Mon,  1 Feb 2021 11:25:47 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id E420D1FF7E;
+	Mon,  1 Feb 2021 11:53:38 +0000 (GMT)
 References: <20210131111316.232778-1-f4bug@amsat.org>
- <20210131111316.232778-8-f4bug@amsat.org>
+ <20210131111316.232778-9-f4bug@amsat.org>
 User-agent: mu4e 1.5.7; emacs 28.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -36,24 +36,24 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Sarah Harris
  Michael Rolnik <mrolnik@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
  Alistair Francis <Alistair.Francis@wdc.com>, David Gibson
  <david@gibson.dropbear.id.au>
-Subject: Re: [PATCH 07/10] target/arm: Move V7M feature to target Kconfig
-Date: Mon, 01 Feb 2021 11:25:35 +0000
-In-reply-to: <20210131111316.232778-8-f4bug@amsat.org>
-Message-ID: <87bld4vxl0.fsf@linaro.org>
+Subject: Re: [PATCH 08/10] default-configs: Remove unnecessary SEMIHOSTING
+ selection
+Date: Mon, 01 Feb 2021 11:53:34 +0000
+In-reply-to: <20210131111316.232778-9-f4bug@amsat.org>
+Message-ID: <878s88vwal.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: nathWtpSXR44
+X-TUID: SJoUq+HmPUsM
 
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-> V7M is an architecture feature, move its declaration to target/arm/.
+> Commit 56b5170c87e ("semihosting: Move ARM semihosting code to
+> shared directories") selected ARM_COMPATIBLE_SEMIHOSTING which
+> already selects SEMIHOSTING. No need to select it again.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-
-modulo previous comments:
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 

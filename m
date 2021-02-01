@@ -1,181 +1,54 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3585835lfo;
-        Mon, 1 Feb 2021 09:08:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyLaJQl0AAS49lNV4z1aQO2LxafVRwe4hsfR53L2Mz8wuBuYTviojmfmcK/k3jfKFiZK5rL
-X-Received: by 2002:a25:718b:: with SMTP id m133mr26752251ybc.412.1612199284289;
-        Mon, 01 Feb 2021 09:08:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612199284; cv=none;
-        d=google.com; s=arc-20160816;
-        b=OQPYDif3g476SS6yHbVSTrAvLRIE+AGlZ1XIOl6gtXaF4RET/MpbLZQGO/7PXkigs5
-         RzBBpEpNGm3F88IsFLb95+y9aiWKS3WCudZ5s6cem/13CwRjHRwRf4LatFViHweQbiq/
-         ixjTZyhHSK1JIw1B5xj8Mm9S3rncumMNNMB9OEY64rG3aKiKFk2x0Z1KL6Q06Cof9uxC
-         FhUVRpoJvcHxR9Sdgp257R86ut/jeGCXdPoPhjyeHmpr7oJogqcWmP8IpNBEgEnF+z+q
-         YF+fV2oWzrpUAUTGbqH0G4uZjF2lNC53w+UtQz0PJZRFeBu8XEdS1B33l6CaKppFy/Xy
-         7Keg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=QAW7ifalcqXdWdfDVvXtuF1viTQdpBmOEoOU3hkH4ok=;
-        b=cB7XFITG0D0hVHJYTov/lM7KaQEMqbPQwZA8DqCW/huG3jFJN7Y6G7fTdRn4rcGHmz
-         bGvHPNNbxSgE9CHwGz4s53u5gpbXk2j8dsMPpXnPamNivd2e5CkCvHzLV5b3b49tv5pH
-         josjfvlfsKqh0SQdwQqjmJSpjEpHVsbFQ1zLm1hYjCQM+2jPMnV516yZP95+1x5MtCx2
-         DeSJwEztkOyLP31WyoWTWZXCGaDOcKadpI5ZcB7gcYJJt6QeIVQPaKK7aBISIWm37JQ/
-         JaYKIIsERuK5wHXJWBWnZS4PTYsmYtALDT97N+p7+ctMrygDtseQBzHR7kbeXvwLxibz
-         tXyw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=zmGsj6ml;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o125si2251020ybg.113.2021.02.01.09.08.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Feb 2021 09:08:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=zmGsj6ml;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43676 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6cgF-0007kO-DH
-	for alex.bennee@linaro.org; Mon, 01 Feb 2021 12:08:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60024)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6caG-0002LA-Du
- for qemu-devel@nongnu.org; Mon, 01 Feb 2021 12:01:52 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:43495)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6caD-00010k-QF
- for qemu-devel@nongnu.org; Mon, 01 Feb 2021 12:01:52 -0500
-Received: by mail-ed1-x529.google.com with SMTP id n6so19665940edt.10
- for <qemu-devel@nongnu.org>; Mon, 01 Feb 2021 09:01:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=QAW7ifalcqXdWdfDVvXtuF1viTQdpBmOEoOU3hkH4ok=;
- b=zmGsj6mlj+M/GF0KK5CHF2rpuRKMViKSI1fhGq5796v0YQ358Cj4SPUkAox6qJfplu
- 3LRzQkdIXoAelNJXT02emZZ2kilweBqfNnek6UCp47PFc5yl+SCWxuPQ3rjFeVzvskYB
- AUHBbQQQGPjHCcUZxgHTKabX45GEV8tnULHyjLnl0VryZm86DnxEl0BCiknWyUgbxVUt
- P0E6/UXW8vDulwWiFq4WFgq0CgNVXoyb3gwr/QA9wWBsQbAuAO4s35GtkPpLmuULVsh5
- SOrvg+5K7vSSuCQPPX+uJQOz45kmipRJvDr1u9OEmRRapmzI1mTpPnWRb6CRtgeZjtDR
- nwNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=QAW7ifalcqXdWdfDVvXtuF1viTQdpBmOEoOU3hkH4ok=;
- b=k1G3oxkF2Gx8TP45saidu2AFtQW5YNBRNmxgGlobMvJOHbUvvNtUKc8ur3otEszgbo
- IjXHfvaI0XFsZuvkB+to9DPctr4NIb1JE87OGzxF/UP/EcB3Sac2StJqILJOCR89QJ6v
- HnPZxXaV8wW6niIpCvRsnrz2skAwKux1bcB8utDEqgApXpB4Orrq2mqClXS33lo65fL8
- s41AL6Xcr//xnAqdaqzocwSh2ToixHDHYhHviKdJGXFN34vweoBnDd/2EAYjT9g6SNBv
- Q7bxo/q9SEmd1UtXyNicFLcd7AAOVlyTQC30C6P9+pP5vWg+4nyyUrUL7NqCeFbw0vQC
- Wozg==
-X-Gm-Message-State: AOAM531gXh6kbScUO2U9KHmxw/YE/fV73Vb5fmh69RuaiRUFaUj1bheu
- T7TZJa66pFiUhVJDr6MLOfzBrWK683klk/70VKBVww==
-X-Received: by 2002:a05:6402:3494:: with SMTP id
- v20mr11777378edc.146.1612198907939; 
- Mon, 01 Feb 2021 09:01:47 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id a16sm27138510wrr.89.2021.02.01.09.10.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Feb 2021 09:10:38 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 9B4981FF7E;
+	Mon,  1 Feb 2021 17:10:37 +0000 (GMT)
+References: <20210131115022.242570-1-f4bug@amsat.org>
+ <20210131115022.242570-4-f4bug@amsat.org>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, Richard Henderson
+ <rth@twiddle.net>,
+ Fam Zheng <fam@euphon.net>, Claudio Fontana <cfontana@suse.de>, Paolo
+ Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org, kvm@vger.kernel.org,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org, Richard
+ Henderson <richard.henderson@linaro.org>, John Snow <jsnow@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v6 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
+Date: Mon, 01 Feb 2021 17:10:30 +0000
+In-reply-to: <20210131115022.242570-4-f4bug@amsat.org>
+Message-ID: <87czxjvhma.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20210128161417.3726358-1-philmd@redhat.com>
-In-Reply-To: <20210128161417.3726358-1-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Feb 2021 17:01:36 +0000
-Message-ID: <CAFEAcA9bfmSOPZErogT=z0PURd21K6q2n_67=sAwK+Cdko40kg@mail.gmail.com>
-Subject: Re: [PATCH] hw/intc/arm_gic: Allow to use QTest without crashing
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
- Darren Kenny <darren.kenny@oracle.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SiPZBbwlk2Tn
-
-On Thu, 28 Jan 2021 at 16:14, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> Alexander reported an issue in gic_get_current_cpu() using the
-> fuzzer. Yet another "deref current_cpu with QTest" bug, reproducible
-> doing:
->
->   $ echo readb 0xf03ff000 | qemu-system-arm -M npcm750-evb,accel=3Dqtest =
--qtest stdio
->   [I 1611849440.651452] OPENED
->   [R +0.242498] readb 0xf03ff000
->   hw/intc/arm_gic.c:63:29: runtime error: member access within null point=
-er of type 'CPUState' (aka 'struct CPUState')
->   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior hw/intc/arm_gic=
-.c:63:29 in
->   AddressSanitizer:DEADLYSIGNAL
->   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->   =3D=3D3719691=3D=3DERROR: AddressSanitizer: SEGV on unknown address 0x0=
-000000082a0 (pc 0x5618790ac882 bp 0x7ffca946f4f0 sp 0x7ffca946f4a0 T0)
->   =3D=3D3719691=3D=3DThe signal is caused by a READ memory access.
->       #0 0x5618790ac882 in gic_get_current_cpu hw/intc/arm_gic.c:63:29
->       #1 0x5618790a8901 in gic_dist_readb hw/intc/arm_gic.c:955:11
->       #2 0x5618790a7489 in gic_dist_read hw/intc/arm_gic.c:1158:17
->       #3 0x56187adc573b in memory_region_read_with_attrs_accessor softmmu=
-/memory.c:464:9
->       #4 0x56187ad7903a in access_with_adjusted_size softmmu/memory.c:552=
-:18
->       #5 0x56187ad766d6 in memory_region_dispatch_read1 softmmu/memory.c:=
-1426:16
->       #6 0x56187ad758a8 in memory_region_dispatch_read softmmu/memory.c:1=
-449:9
->       #7 0x56187b09e84c in flatview_read_continue softmmu/physmem.c:2822:=
-23
->       #8 0x56187b0a0115 in flatview_read softmmu/physmem.c:2862:12
->       #9 0x56187b09fc9e in address_space_read_full softmmu/physmem.c:2875=
-:18
->       #10 0x56187aa88633 in address_space_read include/exec/memory.h:2489=
-:18
->       #11 0x56187aa88633 in qtest_process_command softmmu/qtest.c:558:13
->       #12 0x56187aa81881 in qtest_process_inbuf softmmu/qtest.c:797:9
->       #13 0x56187aa80e02 in qtest_read softmmu/qtest.c:809:5
->
-> current_cpu is NULL because QTest accelerator does not use CPU.
->
-> Fix by skipping the check and returning the first CPU index when
-> QTest accelerator is used, similarly to commit c781a2cc423
-> ("hw/i386/vmport: Allow QTest use without crashing").
->
-> Reported-by: Alexander Bulekov <alxndr@bu.edu>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
+X-TUID: l1i7MoWimCJL
 
 
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-Applied to target-arm.next, thanks.
+> KVM requires the target cpu to be at least ARMv8 architecture
+> (support on ARMv7 has been dropped in commit 82bf7ae84ce:
+> "target/arm: Remove KVM support for 32-bit Arm hosts").
+>
+> Only enable the following ARMv4 CPUs when TCG is available:
+>
+>   - StrongARM (SA1100/1110)
+>   - OMAP1510 (TI925T)
+>
+> The following machines are no more built when TCG is disabled:
+>
+>   - cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+>   - sx1                  Siemens SX1 (OMAP310) V2
+>   - sx1-v1               Siemens SX1 (OMAP310) V1
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
--- PMM
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e

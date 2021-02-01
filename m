@@ -1,130 +1,104 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3494612lfo;
-        Mon, 1 Feb 2021 07:15:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxrUiPALI9uLXZbeTlGoTKRWuuJbJeXbKU9/ZMoFh5eNeHRwYjEwwGg9DahcGJ8ESqgAffF
-X-Received: by 2002:a25:ca94:: with SMTP id a142mr26755483ybg.239.1612192547968;
-        Mon, 01 Feb 2021 07:15:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612192547; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3496309lfo;
+        Mon, 1 Feb 2021 07:17:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxw6FvAoMj+ZJciY8DSMfTUjOpx2x5HbISPA4AsrMgAmXuHKm8Dtd8u5vqUB2WWmYhyu9k0
+X-Received: by 2002:a25:384e:: with SMTP id f75mr11719381yba.358.1612192669927;
+        Mon, 01 Feb 2021 07:17:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612192669; cv=none;
         d=google.com; s=arc-20160816;
-        b=zrWqR0O7QzUiYLP1sebNV8Nbm1T5SVA0QzUCbW5hk6RkXvohLJ+uMBm0Y8ySkDeIT0
-         ZCc2HwstKWgQxlaclY988r5P2xWOqD57s4MFnPoM7rGUyyQOlYzW7BOdr5+Gp3rdVlSH
-         swiubPI1g41VnDtMKfpHh8w0buI3rGZNlV/pOuLATXlIWoy245IowE69ctJgkFHekzYn
-         9mIE17j4G1AYpOT2ZHI3aFJn0enlZkUpcr2s/h3bdVrC05OT+4D/BgC5jmeVqqyyQCcP
-         lKLk7h6/qRFG/Lp1GESWcJ0lvycUu35QZt2ExQert5oFOhK5gimf/PR+oGFMjw9Fbq+Y
-         fsNg==
+        b=JHqk9R5x+dK0YZs3zoSxbJXpbS5cJj4aGL3TVLgY9LJk9KLEhn+JtHdeuZnnZCPOrm
+         JjUCe5TREEhT5sFXoRR9EjtkHSEehFoxFB+O4DOIEZ9ewbLAIkG0BlGTn+QcEKIvRLRD
+         IV/EwoH2SLYr9E7A6Uy91GShLE+bYNwxHrnvQWdqOi/MxapnMt6Qhk5/XUbYs8N/8+WK
+         lbsT4h24NM1msenWViFRnVYlvBwjMNVd/oJAnBXi5SpKQsaNyeT1N8GSyDJ1CnLPvC1l
+         axG8U5gDKvOumUYn7+68r/eHsZR5BV0UFUPU5DR5GKAVwvu5KYH/2L9hB6iTNKnBZPFw
+         EAvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ozIpMqdD+iWDcSAqUu8JnyllJwpaDgaHUGFapFVXhs4=;
-        b=tnT2VgIVIW1ROy+phXoWKlDZKQecG70jv+Gt92vNNrrZElnlFrYnwXwzgueSeYNHbq
-         pWcaoy78mLg+cs4cZGmWZ6+tpNYO+kcPkqyEmB0v0Bod6lTgeRkiJJchxL7aSFnSMCvh
-         KBYLO2Dn8F+z809DM1iiVFGvzGbMbThL0B7Scslya1bed29dMtq5Jo+2aqdp+XaZp/Bi
-         BNy2KYzLf8PylLxsjXjO2HvnpuXH8Z32s90067ts/sc+EaqBWISDHOWX/CV5V5s8yWFX
-         WvPAw9P/w+CCGvYT3VofBx2F0p+al0KHX8ltbeCkWw1mzVY7nISu8tukoBxYdQdg2Kxj
-         I+ag==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=gDOUEAMCOcVpC8+Ktm4REQG9jTibaj2y2OtvFFqaoR8=;
+        b=YgG7ixSOAdttIF7esI62vxgsa1rvpWsz6Y9HfP6OEDgKefmYLdLAmbIlIiVAy5DJo1
+         fETQnaarFoFmGRWBDfE4dkRwT6uLzr4sVK987rJm8s22IAgbvXby1n44tdzI2v2S5+yu
+         /xcqeZ1VipAGQe4B2HKvoTIi/ZF7W4v3ThbNDrxeyCapOf7NdOmGHiho8/zxViThxQje
+         foa6Tr/CwgqFX8Y9ZPzgOfQBY24ZZXtyPA9XHBeo82qSMc0MKM9rglWI0xFx3UpCqKYx
+         wXYB+vrYQjTgPqjSpV3q56ei83oeKJ1DpLlIpes8dDqaS+Po5FZ1fwQrXnyF4rhhQ7zJ
+         NVKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FuWzrP2z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vGLCRpkR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t14si1311990ybi.213.2021.02.01.07.15.47
+        by mx.google.com with ESMTPS id 82si18181454ybc.487.2021.02.01.07.17.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Feb 2021 07:15:47 -0800 (PST)
+        Mon, 01 Feb 2021 07:17:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FuWzrP2z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vGLCRpkR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46784 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49978 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6avb-0006Eq-Co
-	for alex.bennee@linaro.org; Mon, 01 Feb 2021 10:15:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35016)
+	id 1l6axZ-0007lI-97
+	for alex.bennee@linaro.org; Mon, 01 Feb 2021 10:17:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l6aus-0005mo-1s
- for qemu-arm@nongnu.org; Mon, 01 Feb 2021 10:15:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:57027)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l6aun-0000mH-No
- for qemu-arm@nongnu.org; Mon, 01 Feb 2021 10:15:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612192493;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ozIpMqdD+iWDcSAqUu8JnyllJwpaDgaHUGFapFVXhs4=;
- b=FuWzrP2zj2OFKtPYrtK6zE+dYh6Ap6wtopKu4aHVXr9DkelRmk92fXOVJh1gVPivp9xfbW
- JRkBg9GV2yjwIvrlKB8pJXkJnHOm7yKhwW/QueQ/W7B5XJIrnDwl/YpsCMdraKms8GF41N
- QwbxYhZ7RTJ4lEecTJ/F8ejvE4iGNY8=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-526-Vvnr5UTbOMe1OOkSqhOvTg-1; Mon, 01 Feb 2021 10:14:51 -0500
-X-MC-Unique: Vvnr5UTbOMe1OOkSqhOvTg-1
-Received: by mail-ed1-f70.google.com with SMTP id f21so8094431edx.23
- for <qemu-arm@nongnu.org>; Mon, 01 Feb 2021 07:14:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1l6axI-0007jd-PK; Mon, 01 Feb 2021 10:17:32 -0500
+Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a]:37697)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1l6axH-0001xr-2z; Mon, 01 Feb 2021 10:17:32 -0500
+Received: by mail-io1-xd2a.google.com with SMTP id d13so17711049ioy.4;
+ Mon, 01 Feb 2021 07:17:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=gDOUEAMCOcVpC8+Ktm4REQG9jTibaj2y2OtvFFqaoR8=;
+ b=vGLCRpkRI2eSE9Auyv/J9729gX4sJPjIiSV7eHDWY3CVBvl095cRaLupAmvY907rnt
+ oPTrR512TdhLLtu8wsyHmzKE91oWLrDGdxDLtoOqi+Nx9awtoZ0zgpun+vCQGTVC0n+Q
+ 7noYLo1OW53WXXzw7RkozppbwJu1p/El/OzDPpmBxa5T3MZS66Zz9DN+JHeinL2OX7/U
+ gqUCzTwoWEs1jVbs1Bzm+YYOonn0vuRWCNifYcGGlZItzaZhMlbZJxrqhrV6vk/Lcm2v
+ KrmOwnYQ+oMhE+2xoy0EU/vr6BrINPKvw8n7VvWPzHXW29zk/0iDsod7RpN1FhMLyLKy
+ FLsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ozIpMqdD+iWDcSAqUu8JnyllJwpaDgaHUGFapFVXhs4=;
- b=hJjMXHC2QxM160lR4U6w8f7phdjfLN0tygP+hYCQo0M2GwJeGzYGjj1nEWA13zlu4h
- LFhHDjQLjebpsSRE1lp0xZlMeJMKBmdiiXxOV7thqCligDFgBNuaFMGuYxLcpVqpE7+3
- qJR3iUUFbQOlwye2wH27mY2IgSSQM8wZDCFIh2eo3GhzxTXUaPJpPx42zDxsR35GTQV7
- T4Q7GJvL+yHbmX1jX8Um/hVZGorNPD70CDUoUtem8EbVJUGbdKq/0RYdKDL5GuyBUVW+
- RvyRb9e4gNRmbeXduPLqKyKMGssIw/U+ZWbQpT4f4+Md+zyd12AIMOIpKu17PQj94HyV
- OtIg==
-X-Gm-Message-State: AOAM532g+yb9+Z9t6SKGZxhvw7ZTvmFN50YD+UwOq61yqG1S7JGL3+Ds
- rO300e1Ctujbw/SCJFezxgroRU6BBWMTPAJaH1txPLxWcNKthF5e87GtvVdU81/me28I+cGPq5X
- lMizOH7SBz5cO
-X-Received: by 2002:a17:906:2b11:: with SMTP id
- a17mr2895262ejg.203.1612192490330; 
- Mon, 01 Feb 2021 07:14:50 -0800 (PST)
-X-Received: by 2002:a17:906:2b11:: with SMTP id
- a17mr2895213ejg.203.1612192489878; 
- Mon, 01 Feb 2021 07:14:49 -0800 (PST)
-Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
- [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id m26sm8014991ejr.54.2021.02.01.07.14.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Feb 2021 07:14:48 -0800 (PST)
-Subject: Re: [PATCH v2 2/2] accel: kvm: Add aligment assert for
- kvm_log_clear_one_slot
-To: Keqian Zhu <zhukeqian1@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Andrew Jones <drjones@redhat.com>, Peter Xu <peterx@redhat.com>
-References: <20201217014941.22872-1-zhukeqian1@huawei.com>
- <20201217014941.22872-3-zhukeqian1@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ef90fe8b-297d-0a57-bad0-ebc6e1d24333@redhat.com>
-Date: Mon, 1 Feb 2021 16:14:46 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=gDOUEAMCOcVpC8+Ktm4REQG9jTibaj2y2OtvFFqaoR8=;
+ b=GYfOJZ1kE9F9j/6F8F70jm0IY8A+anrSfpbWxUZ1aqODF6KzhzJdQfFx2CwQ4LnYE3
+ kjk3hdm26+Be2A9eb6xR+KduQhQ3yB90kPiqTP11+hX0XudvwAbNaa8FLTe8614SG+vD
+ VSDTzYbzDkYnXX1eUKAQ97xGOLEHf1n92YwGxaSjX83iTH+CSxxhKfHi9iCVi9YeejfK
+ y/PHynN3dBMPa1ToyQVKX7pP0prd9TK71hZYFIUKm+2ry8/iGWWVF9V/U07mrxQJPzNL
+ w9vE7Adf5uxzKuFThA5yc5SS20vb1Fsp0yVJIcc0d3tQeM2vUgilmbQXhJy/vpWFzzs7
+ 90Jw==
+X-Gm-Message-State: AOAM531+imsXNm6BVtN+QpbZy8GF2vM1uXaKnsdtVzK5K7F0V6ktwFXp
+ y+/lEbFZdZ7ckLI/YXMfSzW/vh55XqPedN8wiuQ=
+X-Received: by 2002:a02:3b6c:: with SMTP id i44mr15143360jaf.91.1612192648963; 
+ Mon, 01 Feb 2021 07:17:28 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20201217014941.22872-3-zhukeqian1@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20210131105918.228787-1-f4bug@amsat.org>
+ <20210131105918.228787-4-f4bug@amsat.org>
+In-Reply-To: <20210131105918.228787-4-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 1 Feb 2021 07:17:02 -0800
+Message-ID: <CAKmqyKOyoXVJ14i66LmsNoj9OZ69Txv_xssNSuHq+cy6-CysJw@mail.gmail.com>
+Subject: Re: [PATCH v2 3/7] hw/arm/xlnx-versal: Versal SoC requires ZDMA
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2a;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd2a.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -137,57 +111,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
- jiangkunkun@huawei.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Laurent Vivier <laurent@vivier.eu>, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g2ApCwTMyF5D
+X-TUID: mH1y+Dv4NNEb
 
-Hi,
+On Sun, Jan 31, 2021 at 3:08 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> The Versal SoC instantiates the TYPE_XLNX_ZDMA object in
+> versal_create_admas(). Introduce the XLNX_ZDMA configuration
+> and select it to fix:
+>
+>   $ qemu-system-aarch64 -M xlnx-versal-virt ...
+>   qemu-system-aarch64: missing object type 'xlnx.zdma'
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-On 12/17/20 2:49 AM, Keqian Zhu wrote:
-> The parameters start and size are transfered from QEMU memory
-> emulation layer. It can promise that they are TARGET_PAGE_SIZE
-> aligned. However, KVM needs they are qemu_real_page_size aligned.
-> 
-> Though no caller breaks this aligned requirement currently, we'd
-> better add an explicit assert to avoid future breaking.
-> 
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
->  accel/kvm/kvm-all.c | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 > ---
-> v2
->  - Address Andrew's commment (Use assert instead of return err).
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index f6b16a8df8..73b195cc41 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -692,6 +692,10 @@ out:
->  #define KVM_CLEAR_LOG_ALIGN  (qemu_real_host_page_size << KVM_CLEAR_LOG_SHIFT)
->  #define KVM_CLEAR_LOG_MASK   (-KVM_CLEAR_LOG_ALIGN)
->  
-> +/*
-> + * As the granule of kvm dirty log is qemu_real_host_page_size,
-> + * @start and @size are expected and restricted to align to it.
-> + */
->  static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
->                                    uint64_t size)
->  {
-> @@ -701,6 +705,9 @@ static int kvm_log_clear_one_slot(KVMSlot *mem, int as_id, uint64_t start,
->      unsigned long *bmap_clear = NULL, psize = qemu_real_host_page_size;
->      int ret;
->  
-> +    /* Make sure start and size are qemu_real_host_page_size aligned */
-> +    assert(QEMU_IS_ALIGNED(start | size, psize));
-
-Why not return an error instead of aborting the VM?
-
->      /*
->       * We need to extend either the start or the size or both to
->       * satisfy the KVM interface requirement.  Firstly, do the start
-> 
-
+>  hw/arm/Kconfig     | 2 ++
+>  hw/dma/Kconfig     | 3 +++
+>  hw/dma/meson.build | 2 +-
+>  3 files changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 223016bb4e8..09298881f2f 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -354,6 +354,7 @@ config XLNX_ZYNQMP_ARM
+>      select XILINX_AXI
+>      select XILINX_SPIPS
+>      select XLNX_ZYNQMP
+> +    select XLNX_ZDMA
+>
+>  config XLNX_VERSAL
+>      bool
+> @@ -362,6 +363,7 @@ config XLNX_VERSAL
+>      select CADENCE
+>      select VIRTIO_MMIO
+>      select UNIMP
+> +    select XLNX_ZDMA
+>
+>  config NPCM7XX
+>      bool
+> diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
+> index d67492d36c1..5d6be1a7a7a 100644
+> --- a/hw/dma/Kconfig
+> +++ b/hw/dma/Kconfig
+> @@ -18,6 +18,9 @@ config ZYNQ_DEVCFG
+>      bool
+>      select REGISTER
+>
+> +config XLNX_ZDMA
+> +    bool
+> +
+>  config STP2000
+>      bool
+>
+> diff --git a/hw/dma/meson.build b/hw/dma/meson.build
+> index b991d7698c7..47b4a7cb47b 100644
+> --- a/hw/dma/meson.build
+> +++ b/hw/dma/meson.build
+> @@ -9,7 +9,7 @@
+>  softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_dma.c'))
+>  softmmu_ss.add(when: 'CONFIG_STP2000', if_true: files('sparc32_dma.c'))
+>  softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx_dpdm=
+a.c'))
+> -softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zdma=
+.c'))
+> +softmmu_ss.add(when: 'CONFIG_XLNX_ZDMA', if_true: files('xlnx-zdma.c'))
+>  softmmu_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dma.c', 'soc_dm=
+a.c'))
+>  softmmu_ss.add(when: 'CONFIG_PXA2XX', if_true: files('pxa2xx_dma.c'))
+>  softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_dma.c'))
+> --
+> 2.26.2
+>
+>

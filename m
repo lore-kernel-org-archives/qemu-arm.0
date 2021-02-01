@@ -1,180 +1,109 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3545516lfa;
-        Mon, 26 Oct 2020 23:57:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwspw97pI2uxepfk61ZPz0v4axhyZl4UMV0eg3MkMuno7cX9lLWK8H2jrvusZlz/gL5vaJp
-X-Received: by 2002:a25:e54:: with SMTP id 81mr1109698ybo.56.1603781846372;
-        Mon, 26 Oct 2020 23:57:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603781846; cv=none;
-        d=google.com; s=arc-20160816;
-        b=G6F419V3PEBJj/g6dMQZhuF70hj7MeNM3cMknDOSsW8TndQpbhKEsnOgRkYsaBt51n
-         Lt6NivXCQc/S6WP6Yyojjj005lvKZvWs6gdupCrAZozlN7dn4jf5B767MB/uB5BD9TD+
-         PQtefyGlJCFCW2AQK912FXz2qDxJ8H8WPT20JwLy8re1YajIq3bA087rUjuev2kKolHy
-         HSp/idCtxN5yBgOHem56G5SV11GHG8ywU8Q5Z5v5YQWzNPM+Xo2NEIovSpE+vadjB8Ot
-         U8w752ifBFzrRDUKWdWOuLWxGahytFEJK+/iNcCpcRGn98JOy3p7oE7allaJwJ607wmF
-         ju0g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=cjJ+fnfLw0yG27JqRqzoRy45hsKEOPxRf3O0DmrIim4=;
-        b=fARHwLosTHY7xd5bs+Lc0CcT//MSOxCXCifjKrTJyBrs2bj2Z546lBJ1cD1lAyO1+E
-         hODpN74JqVxd7JYPinNDHfAFg/5GiwNsXAquUH4mJW1Wh1TWRfL996NEwlSA3IFHCLGh
-         Xsh1ZFSiKkTF+W9SuhcgJM2oe5XK1bBL9aVj3rwknXqUkFDJB1yfAx5eWZY78VnVZAYQ
-         z+/pp9vZvVqB3jEbdbJ267H8JRI1B3hGXKR/kMSREDjXje1O9g/0UMSGoKoEoCrZO9G6
-         XbNySiq1NF+nQLQAbLFW2GsWFYIMF6dBDsj2mUSmXrSg1ws9sZHkPlDo3QRPWlUCkgEF
-         UVvA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GyGKCnXT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w64si548078yba.356.2020.10.26.23.57.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Oct 2020 23:57:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GyGKCnXT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39494 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kXIv7-0004OG-Nw
-	for alex.bennee@linaro.org; Tue, 27 Oct 2020 02:57:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44284)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kXIuM-0004NU-1T
- for qemu-devel@nongnu.org; Tue, 27 Oct 2020 02:56:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:53287)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kXIuI-0001hG-TA
- for qemu-devel@nongnu.org; Tue, 27 Oct 2020 02:56:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603781792;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=cjJ+fnfLw0yG27JqRqzoRy45hsKEOPxRf3O0DmrIim4=;
- b=GyGKCnXTy+0yyv8BiuVYfUKLyg8YMR5xnVJQURfjl3jLIoAH2zngPiNPp875KX2X0yQDKm
- 0m6zmfc4OHrC0D8ofVXJnjMUjbDWys8RM22MSQf2oN0oOfp5Xh1Q8hJvCQSvNvRCOgtZGV
- WsGcixz7+UFLFCWzfKjGkPHMHszdhl0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-186-b4qFGpgfMM-cwR1dA7NmWw-1; Tue, 27 Oct 2020 02:56:30 -0400
-X-MC-Unique: b4qFGpgfMM-cwR1dA7NmWw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D24D81006CA4;
- Tue, 27 Oct 2020 06:56:28 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-114-66.ams2.redhat.com
- [10.36.114.66])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2EF5E60FC2;
- Tue, 27 Oct 2020 06:56:22 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 50AF39D0D; Tue, 27 Oct 2020 07:56:21 +0100 (CET)
-Date: Tue, 27 Oct 2020 07:56:21 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id v4sm32886653wrw.42.2021.02.01.15.51.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Feb 2021 15:51:50 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id E38941FF7E;
+	Mon,  1 Feb 2021 23:51:49 +0000 (GMT)
+References: <20210128185300.2875-1-alex.bennee@linaro.org>
+ <CAFEAcA_R3phXwOtj-v-6-oCN891SjGSyAGwcx3_zDf+GFPWLqg@mail.gmail.com>
+ <871rdzv9cf.fsf@linaro.org>
+ <CAFEAcA8aLBFG9SjVqeDwbcGRU_chkt2s0E1i9BY+xDdXnrfO6Q@mail.gmail.com>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 0/8] arm/virt: add usb support
-Message-ID: <20201027065621.d7y7g2rtrdu3slyn@sirius.home.kraxel.org>
-References: <20201023071022.24916-1-kraxel@redhat.com>
- <CAFEAcA-gEeHUJtuF9CX4XhXh6dnANNut-TJWz0nM8obAmMa3yA@mail.gmail.com>
- <20201026070117.5ovcm4ep6iohjyfh@sirius.home.kraxel.org>
- <CAFEAcA8vWzGQ3SG8bHzYwitqOat7fx71Kqs8tPQ8ZV6uWLHKXQ@mail.gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Anders Roxell <anders.roxell@linaro.org>
+Subject: Re: [PATCH] docs/system: document an example vexpress-a15 invocation
+Date: Mon, 01 Feb 2021 23:50:04 +0000
+In-reply-to: <CAFEAcA8aLBFG9SjVqeDwbcGRU_chkt2s0E1i9BY+xDdXnrfO6Q@mail.gmail.com>
+Message-ID: <87y2g7tkh6.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8vWzGQ3SG8bHzYwitqOat7fx71Kqs8tPQ8ZV6uWLHKXQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/27 01:06:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l+sfR8OJC3At
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: sQCUoi+baSwv
 
-  Hi,
 
-> > Well, pci seems to come with some extra resource needs (see -M pc vs.
-> > -M q35 memory footprint differences discussed some months ago).  Thats
-> > why microvm started without pci support, and even now with pcie support
-> > added it is optional (and off by default).
-> 
-> I think PCI is too useful to discard.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Discard is out of question of course.  I'd only add the option to
-disable it if not needed.
+> On Mon, 1 Feb 2021 at 20:09, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
+ote:
+>>
+>>
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>> > On Thu, 28 Jan 2021 at 18:53, Alex Benn=C3=A9e <alex.bennee@linaro.org=
+> wrote:
+>> >>
+>> >> The wiki and the web are curiously absent of the right runes to boot a
+>> >> vexpress model so I had to work from first principles to work it out.
+>> >> Use the more modern -drive notation so alternative backends can be
+>> >> used (unlike the hardwired -sd mode).
+>> >>
+>> >> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> >> Cc: Anders Roxell <anders.roxell@linaro.org>
+>> >> ---
+>> >>  docs/system/arm/vexpress.rst | 26 ++++++++++++++++++++++++++
+>> >>  1 file changed, 26 insertions(+)
+>> >>
+>> >> diff --git a/docs/system/arm/vexpress.rst b/docs/system/arm/vexpress.=
+rst
+>> >> index 7f1bcbef07..30b1823b95 100644
+>> >> --- a/docs/system/arm/vexpress.rst
+>> >> +++ b/docs/system/arm/vexpress.rst
+>> >> @@ -58,3 +58,29 @@ Other differences between the hardware and the QEM=
+U model:
+>> >>    ``vexpress-a15``, and have IRQs from 40 upwards. If a dtb is
+>> >>    provided on the command line then QEMU will edit it to include
+>> >>    suitable entries describing these transports for the guest.
+>> >> +
+>> >> +Booting a Linux kernel
+>> >> +----------------------
+>> >> +
+>> >> +Building a current Linux kernel with ``multi_v7_defconfig`` should be
+>> >> +enough to get something running.
+>> >> +
+>> >> +.. code-block:: bash
+>> >> +
+>> >> +  $ export ARCH=3Darm
+>> >> +  $ export CROSS_COMPILE=3Darm-linux-gnueabihf-
+>> >> +  $ make multi_v7_defconfig
+>> >> +  $ make
+>> >
+>> > We probably shouldn't be recommending in-tree kernel builds, or
+>> > polluting the user's environment with random variables. Try:
+>> >
+>> > $ make O=3Dbuilddir ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabihf- mu=
+lti_v7_defconfig
+>> > $ make O=3Dbuilddir ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabihf-
+>
+>> Building a current Linux kernel with ``multi_v7_defconfig`` should be
+>> enough to get something running. Nowadays an out-of-tree build is
+>> recommended (and also useful if you build a lot of different targets).
+>> $SRC points at root of the linux source tree.
+>>
+>> .. code-block:: bash
+>>
+>>   $ mkdir build; cd build
+>>   $ make O=3D$(pwd) -C $SRC ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi=
+hf- multi_v7_defconfig
+>>   $ make O=3D$(pwd) -C $SRC ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi=
+hf-
+>
+> That works, but do you really commonly cd into the build directory?
+> I usually sit in the source tree...
 
-> You can run anything you want (practically) via PCI. If we make it
-> optional then we're going to give ourselves the task of reimplementing
-> memory mapped versions of all the functionality it gives us,
+I have tmux panes, lots of lots of tmux panes. It's more common to live
+in the build directories for QEMU because I have to run the binaries I
+build. For the kernels I usually have one pane in the tip of source tree
+and a bunch of others for build configurations I'm actively messing
+about with and rebuilding.
 
-No.  Well, at least it would not be *my* plan to reach feature parity.
-I'm just trying to make available what we have.
+>
+> thanks
+> -- PMM
 
-The mmio versions of usb host adapters are needed anyway to emulate some
-SoCs.  Describing them in device tree / ACPI is standardized so they
-just work without additional changes on the guest side.  So this is
-really just adding the device to the machine, adding a device tree node,
-adding a acpi dsdt entry (roughly a dozen lines of code each).
 
-Having virtio(-mmio) and usb is enough to cover alot of use cases.
-Especially on arm where virtio-gpu is the only display device option.
-
-> all of which is extra code and all of which adds to the
-> amount of stuff on the guest-to-QEMU security boundary.
-
-usb is off by default so it doesn't add anything unless you
-explicitly ask for it.
-
-Oh, and pci adds some non-trivial stuff to the guest-to-QEMU
-security boundary too ...
-
-> I think to be persuaded that no-PCI was a good idea I'd
-> want to at least see solid figures based on doing this
-> for Arm and on having put a lot of effort into slimming
-> down the PCI handling code/overhead in the guest and still
-> not being able to get near an MMIO setup. That is, try the
-> "improve the guest" approach first.
-
-Ok, fair enough.
-
-take care,
-  Gerd
-
+--=20
+Alex Benn=C3=A9e

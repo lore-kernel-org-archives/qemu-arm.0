@@ -1,86 +1,91 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3069474lfo;
-        Sun, 31 Jan 2021 19:12:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhBeVHvFfJ8bsS/YEJ0zl2jwM0rb/86B6r7IpFBo2sMdO5V+eAabhW3idCtnSNIOo0rpvb
-X-Received: by 2002:a25:7e82:: with SMTP id z124mr21987075ybc.140.1612149167509;
-        Sun, 31 Jan 2021 19:12:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612149167; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3211858lfo;
+        Mon, 1 Feb 2021 00:09:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzMDlu9+UxTlZtiJ1xH1OdF9IXAjjqDbnaixH4hkocHpWaGe9Nqi4sTJcYM3Bi8kokeJXag
+X-Received: by 2002:a25:2186:: with SMTP id h128mr22224645ybh.369.1612166967883;
+        Mon, 01 Feb 2021 00:09:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612166967; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lvpd5vaSY+QwDtD3ZLAo7pgCrpPeJqP5/+p6VYs0lrW6+crLETlgs+qBkEo6t7a8Ce
-         eAXBE8qEfCWmGfaf7ftY6/H0f4MkcNoIH8or1LoCVeWeRcbnngbYGpu4Mn0pUqyPNgiW
-         f0Cv0XN2b8VVLumRJbT/QloMRoy+Ie8DDNAFSg+QmL8Qa9UAp8YLJpEynpZoq7wHuPTl
-         qbPlvpIAR1kTwZGMgLbMeM1pKH7ojasaDvQknp3/a0yT8GdyDAgXybsVhDSNlnqWU79w
-         lTy1qYrDvFC4oA9B/EcjlXo2Int/nW3GA4g7jErBOSSVwHZxpvOdldUM4E+OtgxyI1b6
-         O1sA==
+        b=rhT9xOLPJ66ALf8RUSjRQ6p04rjF4SWNG/g3vQmFLdUVGHNTCgsTAYtCEEGOiTjT2E
+         7ptn1r12aiJW8n1MXAU5t6TDLotz/Ef7siPt6204mMNt//ocCgWkXoTllbHxGOxtihsA
+         k3p/W993Ig3xDBEdCHnE3N90ErJLI4f5r2+U15elGJt8OOKV42wMpsONI0bCTfS2Ja2L
+         1jX0hy+9iBwHIuMdN0Y8sDGpcApd/Zf8/wYXQxk9b31SGjrMrrTMrvQJ7TitiHrzriGT
+         yGHucvQeATjJO8ZbyOacoTHS+I8gArLjfp6YX/Q5DdZH/tvgwMNeYHXsdDe2PUNLVukT
+         dSUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=XVAJ0ubh2a0vDKtXf8RaI8wlW3MPZiizRy/34ku4uGk=;
-        b=ttVu6o+XAoTGQcpVVC/9qwqq1eqW+RyKeMH5z7ZOgmJE9uh1C90QgreQvqD+3X1WgF
-         G40ildfXpnA4UXiV1zda1E/PcbPd3dGKwii1nsV77gZm6iArZufaH041o1kTulha90vX
-         KUZctIeYvuh2IZcAELF94hg0SF6qVIXyx5i4YOW5tf2wRNrsGwTMPMx8Xq7fnjm4+ea2
-         7zjB1UHVFKvvDGqNIKQ6Zn2qz7J0fwecQdtehbfXrz/wKuyMycl1IeO8TIyZNFubNUu8
-         ejYCphkWtuokuNTDtPHpvJps00OWSyiSKFsiKJh7LhaEJcN2xfdE8rlzwOqPALG3L34N
-         kS6g==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=y2mbTAOSW43stHE3WluobYQIt2cFJmUioMvJ34X3NGQ=;
+        b=ZIox4bReJtDeqDXNsjqHMePJEw9xk82Asr3YTV5an/AtWFo9oH+KA6gQ9jbc338ddg
+         ZgR1GHmSa8uzpyRBKQeA49IyRDuh4rgD/klB5OIY7BatsEQH0gI07uDb48SFeYP6NbmS
+         ABQwQtaTmScEpmqLvhaAhzrXLGD8rgCm7Yq2DBf+Z6oCvyD6yWoFI63lclKqOHS5UGKH
+         V1I+Rk2gzLL6ElyTCcNI4qDjuXqfFmfZYQrMGYN31HqcHkHSk7piD/hkM3d169l1t36D
+         IUR4lZjIeu/vs4kR1oBBoDJe4pqGYluaoAb6EctVayjnytdG2o6tXoJqdJcLwK38jRI4
+         9cJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=ROcyJhbz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18si15626061ybk.270.2021.01.31.19.12.47
+        by mx.google.com with ESMTPS id b25si20711695ybj.251.2021.02.01.00.09.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 Jan 2021 19:12:47 -0800 (PST)
+        Mon, 01 Feb 2021 00:09:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38520 helo=lists1p.gnu.org)
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=ROcyJhbz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:58070 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6Pdu-0003Ve-Tg
-	for alex.bennee@linaro.org; Sun, 31 Jan 2021 22:12:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56196)
+	id 1l6UH1-0001Sy-0o
+	for alex.bennee@linaro.org; Mon, 01 Feb 2021 03:09:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1l6Pdm-0003VO-6M; Sun, 31 Jan 2021 22:12:38 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2604)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l6UGs-0001SV-3d; Mon, 01 Feb 2021 03:09:18 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:36804)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1l6Pdi-0007tw-AT; Sun, 31 Jan 2021 22:12:37 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DTXys5L03zjFs6;
- Mon,  1 Feb 2021 11:11:17 +0800 (CST)
-Received: from [10.174.184.214] (10.174.184.214) by
- DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.498.0; Mon, 1 Feb 2021 11:12:12 +0800
-Subject: Re: [RFC PATCH v2 3/3] vfio: Avoid disabling and enabling vectors
- repeatedly in VFIO migration
-To: Alex Williamson <alex.williamson@redhat.com>
-References: <20201209080919.156-1-lushenming@huawei.com>
- <20201209080919.156-4-lushenming@huawei.com>
- <20210126143614.175e271c@omen.home.shazbot.org>
- <7e61e7ae-e351-4228-d250-660251dcb0c0@huawei.com>
- <20210127072131.1c778247@x1.home.shazbot.org>
-From: Shenming Lu <lushenming@huawei.com>
-Message-ID: <2fc2db52-0677-c92e-f3c3-10fe9a77d75c@huawei.com>
-Date: Mon, 1 Feb 2021 11:12:12 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.2.2
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1l6UGp-0001wk-T4; Mon, 01 Feb 2021 03:09:17 -0500
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 51E99C602E6;
+ Mon,  1 Feb 2021 09:09:10 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1612166950;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=y2mbTAOSW43stHE3WluobYQIt2cFJmUioMvJ34X3NGQ=;
+ b=ROcyJhbzqO8pMz2tuSudK9D7F04DhJfx/1fNqLJw4YX+BxfSztUURM5oAG/u9fkdgciaeQ
+ HemU735u08jSJcjVQkj9IgQ7oNFijy7KN9O5voLDHDECwOCWIrnGEI2qCio8C357f+vZLK
+ DiuamlFluYsrcqP6NOcRgKRUJm2fpFd6zpiuz3tL1qa/JbLtx4oO9yjP9j0yIRsI+2mYoy
+ 9U1Xn2p4Il+W4lD/0t33JznjsUXgzffcJoTodaFBV4Nj45zZM2Du5f/8/T7TUJ2PBOnNt6
+ o+hOF6zNVNVa1n6wretDhCbTlCgSmarzO2gmvvp6Ax3VWSsegFbVS44iUWdTYQ==
+Date: Mon, 1 Feb 2021 09:09:36 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [RFC PATCH 1/2] hw/arm/raspi: Trivial code movement
+Message-ID: <20210201080936.wgoxywx6zkjpkeht@sekoia-pc.home.lmichel.fr>
+References: <20210131151410.318649-1-f4bug@amsat.org>
+ <20210131151410.318649-2-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210127072131.1c778247@x1.home.shazbot.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.184.214]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=lushenming@huawei.com;
- helo=szxga06-in.huawei.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.079,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20210131151410.318649-2-f4bug@amsat.org>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,133 +98,124 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
- mst@redhat.com, Marc Zyngier <maz@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- yuzenghui@huawei.com, wanghaibin.wang@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1jmuYBxylflB
+X-TUID: PJHXPIi9qxh/
 
-On 2021/1/27 22:21, Alex Williamson wrote:
-> On Wed, 27 Jan 2021 19:27:35 +0800
-> Shenming Lu <lushenming@huawei.com> wrote:
+On 16:14 Sun 31 Jan     , Philippe Mathieu-Daudé wrote:
+> Move the abstract TYPE_BCM283X and TYPE_RASPI_MACHINE declarations
+> earlier to make the next commit easier to review.
 > 
->> On 2021/1/27 5:36, Alex Williamson wrote:
->>> On Wed, 9 Dec 2020 16:09:19 +0800
->>> Shenming Lu <lushenming@huawei.com> wrote:
->>>   
->>>> Different from the normal situation when the guest starts, we can
->>>> know the max unmasked vetctor (at the beginning) after msix_load()
->>>> in VFIO migration. So in order to avoid ineffectively disabling and  
->>>
->>> s/ineffectively/inefficiently/?  It's "effective" either way I think.  
->>
->> Yeah, I should say "inefficiently". :-)
->>
->>>   
->>>> enabling vectors repeatedly, let's allocate all needed vectors first
->>>> and then enable these unmasked vectors one by one without disabling.
->>>>
->>>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
->>>> ---
->>>>  hw/pci/msix.c         | 17 +++++++++++++++++
->>>>  hw/vfio/pci.c         | 10 ++++++++--
->>>>  include/hw/pci/msix.h |  2 ++
->>>>  3 files changed, 27 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/hw/pci/msix.c b/hw/pci/msix.c
->>>> index 67e34f34d6..bf291d3ff8 100644
->>>> --- a/hw/pci/msix.c
->>>> +++ b/hw/pci/msix.c
->>>> @@ -557,6 +557,23 @@ unsigned int msix_nr_vectors_allocated(const PCIDevice *dev)
->>>>      return dev->msix_entries_nr;
->>>>  }
->>>>  
->>>> +int msix_get_max_unmasked_vector(PCIDevice *dev)
->>>> +{
->>>> +    int max_unmasked_vector = -1;
->>>> +    int vector;
->>>> +
->>>> +    if ((dev->config[dev->msix_cap + MSIX_CONTROL_OFFSET] &
->>>> +        (MSIX_ENABLE_MASK | MSIX_MASKALL_MASK)) == MSIX_ENABLE_MASK) {
->>>> +        for (vector = 0; vector < dev->msix_entries_nr; vector++) {
->>>> +            if (!msix_is_masked(dev, vector)) {
->>>> +                max_unmasked_vector = vector;
->>>> +            }
->>>> +        }
->>>> +    }
->>>> +
->>>> +    return max_unmasked_vector;
->>>> +}  
->>>
->>> Comments from QEMU PCI folks?
->>>   
->>>> +
->>>>  static int msix_set_notifier_for_vector(PCIDevice *dev, unsigned int vector)
->>>>  {
->>>>      MSIMessage msg;
->>>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->>>> index 51dc373695..e755ed2514 100644
->>>> --- a/hw/vfio/pci.c
->>>> +++ b/hw/vfio/pci.c
->>>> @@ -568,6 +568,9 @@ static void vfio_msix_vector_release(PCIDevice *pdev, unsigned int nr)
->>>>  
->>>>  static void vfio_msix_enable(VFIOPCIDevice *vdev)
->>>>  {
->>>> +    int max_unmasked_vector = msix_get_max_unmasked_vector(&vdev->pdev);
->>>> +    unsigned int used_vector = MAX(max_unmasked_vector, 0);
->>>> +  
->>>
->>> The above PCI function could also be done inline here pretty easily too:
->>>
->>> unsigned int nr, max_vec = 0;
->>>
->>> if (!msix_masked(&vdev->pdev))
->>>     for (nr = 0; nr < msix_nr_vectors_allocated(&vdev->pdev); nr++) {
->>>         if (!msix_is_masked(&vdev->pdev, nr)) {
->>>             max_vec = nr;
->>>         }
->>>     }
->>> }
->>>
->>> It's a bit cleaner than the msix utility function, imo.  
->>
->> Yeah, it makes sense.
->>
->>>   
->>>>      vfio_disable_interrupts(vdev);
->>>>  
->>>>      vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
->>>> @@ -586,9 +589,12 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
->>>>       * triggering to userspace, then immediately release the vector, leaving
->>>>       * the physical device with no vectors enabled, but MSI-X enabled, just
->>>>       * like the guest view.
->>>> +     * If there are unmasked vectors (such as in migration) which will be
->>>> +     * enabled soon, we can allocate them here to avoid ineffectively disabling
->>>> +     * and enabling vectors repeatedly later.  
->>>
->>> It just happens that migration triggers this usage model where the
->>> MSI-X enable bit is set with vectors unmasked in the vector table, but
->>> this is not unique to migration, guests can follow this pattern as well.
->>> Has this been tested with a variety of guests?  Logically it seems
->>> correct, but always good to prove so.  Thanks,  
->>
->> I have tested it in migration and normal guest startup (only the latest Linux).
->> And I can try to test with some other kernels, could you be more specific about this?
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+Reviewed-by: Luc Michel <luc@lmichel.fr>
+
+> ---
+>  hw/arm/bcm2836.c | 32 +++++++++++++++++---------------
+>  hw/arm/raspi.c   | 18 ++++++++++--------
+>  2 files changed, 27 insertions(+), 23 deletions(-)
 > 
-> Minimally also Windows, ideally a BSD as well.  Thanks,
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index de7ade2878e..fd16ed87c40 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -219,20 +219,6 @@ static void bcm2837_class_init(ObjectClass *oc, void *data)
+>  
+>  static const TypeInfo bcm283x_types[] = {
+>      {
+> -        .name           = TYPE_BCM2835,
+> -        .parent         = TYPE_BCM283X,
+> -        .class_init     = bcm2835_class_init,
+> -    }, {
+> -        .name           = TYPE_BCM2836,
+> -        .parent         = TYPE_BCM283X,
+> -        .class_init     = bcm2836_class_init,
+> -#ifdef TARGET_AARCH64
+> -    }, {
+> -        .name           = TYPE_BCM2837,
+> -        .parent         = TYPE_BCM283X,
+> -        .class_init     = bcm2837_class_init,
+> -#endif
+> -    }, {
+>          .name           = TYPE_BCM283X,
+>          .parent         = TYPE_DEVICE,
+>          .instance_size  = sizeof(BCM283XState),
+> @@ -240,7 +226,23 @@ static const TypeInfo bcm283x_types[] = {
+>          .class_size     = sizeof(BCM283XClass),
+>          .class_init     = bcm283x_class_init,
+>          .abstract       = true,
+> -    }
+> +    },
+> +    {
+> +        .name           = TYPE_BCM2835,
+> +        .parent         = TYPE_BCM283X,
+> +        .class_init     = bcm2835_class_init,
+> +    }, {
+> +        .name           = TYPE_BCM2836,
+> +        .parent         = TYPE_BCM283X,
+> +        .class_init     = bcm2836_class_init,
+> +    },
+> +#ifdef TARGET_AARCH64
+> +    {
+> +        .name           = TYPE_BCM2837,
+> +        .parent         = TYPE_BCM283X,
+> +        .class_init     = bcm2837_class_init,
+> +    },
+> +#endif
+>  };
+>  
+>  DEFINE_TYPES(bcm283x_types)
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 990509d3852..dce966a4dd8 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -369,6 +369,13 @@ static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
+>  #endif /* TARGET_AARCH64 */
+>  
+>  static const TypeInfo raspi_machine_types[] = {
+> +    {
+> +        .name           = TYPE_RASPI_MACHINE,
+> +        .parent         = TYPE_MACHINE,
+> +        .instance_size  = sizeof(RaspiMachineState),
+> +        .class_size     = sizeof(RaspiMachineClass),
+> +        .abstract       = true,
+> +    },
+>      {
+>          .name           = MACHINE_TYPE_NAME("raspi0"),
+>          .parent         = TYPE_RASPI_MACHINE,
+> @@ -381,8 +388,9 @@ static const TypeInfo raspi_machine_types[] = {
+>          .name           = MACHINE_TYPE_NAME("raspi2b"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi2b_machine_class_init,
+> +    },
+>  #ifdef TARGET_AARCH64
+> -    }, {
+> +    {
+>          .name           = MACHINE_TYPE_NAME("raspi3ap"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi3ap_machine_class_init,
+> @@ -390,14 +398,8 @@ static const TypeInfo raspi_machine_types[] = {
+>          .name           = MACHINE_TYPE_NAME("raspi3b"),
+>          .parent         = TYPE_RASPI_MACHINE,
+>          .class_init     = raspi3b_machine_class_init,
+> +    },
+>  #endif
+> -    }, {
+> -        .name           = TYPE_RASPI_MACHINE,
+> -        .parent         = TYPE_MACHINE,
+> -        .instance_size  = sizeof(RaspiMachineState),
+> -        .class_size     = sizeof(RaspiMachineClass),
+> -        .abstract       = true,
+> -    }
+>  };
+>  
+>  DEFINE_TYPES(raspi_machine_types)
+> -- 
+> 2.26.2
 > 
 
-Hi Alex,
-
-I have tested this patch with a Windows guest (Windows Server 2012 R2 Datacenter, Intel
-X722 Ethernet controller (passthrough)) and nothing went wrong. And I found that it does
-trigger our usage model in the normal guest startup: has all needed vectors already unmasked
-in the vector table when calling vfio_msix_enable()...
-
-Thanks,
-Shenming
+-- 

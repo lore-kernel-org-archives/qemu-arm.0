@@ -1,118 +1,104 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp4158849lfo;
-        Tue, 2 Feb 2021 01:32:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw9STOw5liTVr9U1K1Uara25KtK9JMu4GHPHqGPNEjqU57stgIAL7iPbJek/HE+dtEL8GZB
-X-Received: by 2002:a25:cc4c:: with SMTP id l73mr35765774ybf.395.1612258372818;
-        Tue, 02 Feb 2021 01:32:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612258372; cv=none;
+Received: by 2002:a0c:9e41:0:0:0:0:0 with SMTP id z1csp2297890qve;
+        Tue, 2 Feb 2021 02:27:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJ/rgDbYwY35qY0RmEz6rdure1pE8o98CNlOGBllB/ok7YpBeWRYHddrmd3kHGX3MYVIMu
+X-Received: by 2002:a25:bfd1:: with SMTP id q17mr29722373ybm.2.1612261669995;
+        Tue, 02 Feb 2021 02:27:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612261669; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lb8UsMPY4DBxz/MYcHeO2VokfRF7Pczv6C8lgFoKX+hUNPFtrBmAlsGyyD/MbRPEzw
-         MRMTqjzLseaxoP/mmlEEnTUYsEToXMRF/f7QWsCId9LHNmioMnRTQGaOjKcjWG2wM7HT
-         jf7J+H2O3eTcLmfnZCa69xZsGURlX9OnLuIrGbq3LVZ4PcpCXiWEm5qEtJ4KWaYLtUVK
-         VY9FfehnIVYuS6Ip14fjwNmVhI4wFfp8dBV2K7XUr1Ot5tpEk4brqU1EG8HrcwdL1IlS
-         rthmdGtQY16SXMgsUB6Nh8NVB2ur/fDcCOywKGNRfsIu/EKVzf7Wto0e4YLu4ek6iP78
-         7IRQ==
+        b=N6r+9cFZcCjVMux9r34dJina7+c3VJvpniPi3aJOAmWFCOB2/+dSZkDw8aFm8tA6MH
+         hrfOk/tJq00oNFvTPeCo9iM1G4zlz8Se4xtbs1bcAlvohaOO0srXda+cJBncZErdRweR
+         GU68wNarsxNODgmcvsEyU7v6fzrpabxstEUW4bb5BZYmmARJiwOxMEz/3dznNscnRUEu
+         qjrgVknlXUsDfOwBxYHmbjtQKHfWKC6OduPLY+Ga4kgDiJq33TTvNG0eNkrO3jcnuR7M
+         HgrjmGYCzyrAyOZCdtqtRorlYBIvTFVrleSgPqcdVjALk+MJrAwFzGyNu0wwOZljg2BF
+         mhjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=OLkjZ9nxozjiKK+4NvlXfG6Ydbp1C3frT1S82SDbm/k=;
-        b=1BcDyOKkYP3mjT9qEnSysW3hw4SOYPV4I5BVF8PoBNH5Cu374cRRdekw12KlDoK/Xf
-         cZekZKaws8/2YadGboT9MNlNgs5ypk3LYa7sZ4B4TU8JNZMspk2/BB/0LjoIpQU/dCHt
-         +At2yGRSBedk26sMahYh5sZv+yJqqF2AfNOZqshj0YvM+l66k6hXPfCn52ouBoMFAhk4
-         d1aCjHwY5mVdzjhXzglgTlHm+wwSiJJpIQ+NVRRW5OEBxu+iNEib8oDWjnry1sB1i8f4
-         r2PuAo96YRpPeDRHyo++WvVfu61lXZQeQ1jSVC5sCw7PqMcq5WUOYjq4F+uygcLoZ3L4
-         4Mhg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kDdfEeCYRik4cDZrmRBoM1D0iYOoCJUk5fPHfHXbR4s=;
+        b=SOx9+VE9pkhnCppimi2sDHSLwDpXVnOcHC9PFeB5WNWjbInUsQEZVTdayx4zEH1JN4
+         BLJ9zmK8PITxMEv6ONoTfbXzvzLxbv60IyrLkHJsvAKjqUSKh9kpVi89vXwtfuD4z1PI
+         BW0gvbceoHVoj7qzZTlyMb/u1hnQtAbEBrR0BLUewQsiHzNa/jxCbEqPX8BxGjgiKYHy
+         sxhSfLt3QgKCjkYQ4t7XWH2tjOpbn1FdY1ZCJ/y0IFIgKKj4KCrtE1Q2AnN4ABg+WL64
+         TSgqVCTBdoCSayz6rk0KhLK4+vW2cbKaG7L6elZk86h6H7XGGxZNsEvVlqYLtsWa+Sg2
+         xEzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CGPl04R4;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TKffWAJr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e65si24701672ybf.296.2021.02.02.01.32.52
+        by mx.google.com with ESMTPS id o13si18912787ybp.52.2021.02.02.02.27.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 01:32:52 -0800 (PST)
+        Tue, 02 Feb 2021 02:27:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CGPl04R4;
+       dkim=fail header.i=@linaro.org header.s=google header.b=TKffWAJr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:33652 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41512 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6s3H-0000o7-V9
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 04:32:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39052)
+	id 1l6suT-0002hX-2i
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 05:27:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49592)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6s2n-0000nV-SC; Tue, 02 Feb 2021 04:32:21 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:50364)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6suB-0002gk-3e
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:27:31 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:34209)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l6s2l-000304-38; Tue, 02 Feb 2021 04:32:21 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id 190so1725668wmz.0;
- Tue, 02 Feb 2021 01:32:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OLkjZ9nxozjiKK+4NvlXfG6Ydbp1C3frT1S82SDbm/k=;
- b=CGPl04R42nD9VRH44EIMOaKmwZooboFOlReKsjiroXG6EPqTnEzTg5MSnkj/St6FII
- 7iPAMoeSJvWob9BHx1gg7e1PfnhY7P8s7zfHcITHKZUkgsbuTXS2bBpg9TQsXT+JN2u2
- dkxFvLEB39E5zgo1i1fQVgQEaNup2J+tt8kTKA4I3ryL+VIZODnxsgs6v2YBbRGvoTPP
- rkFa+pS2cdka6XUtIj7UGWRayW+sSzOSt6SpX/EnqqoJ3UPW/X0uO+HBMWS+pDh/lhPm
- NWIeMwmWPQTL1yPEsBrmLOTASVDUawwVeurnqv8mpl3pckpbIJ7uUMtUR8OVnMtESUAX
- mOyA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6su8-0002QU-Hb
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:27:30 -0500
+Received: by mail-ed1-x529.google.com with SMTP id df22so6320946edb.1
+ for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 02:27:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kDdfEeCYRik4cDZrmRBoM1D0iYOoCJUk5fPHfHXbR4s=;
+ b=TKffWAJrX9ftbdpRiEe0SlFPh+SKCqeVMkUitQmiOBNBuQTeJ8Q9MV5ruurE/an062
+ q0HBFfVyQPzGy+XeYj0Yhssjo4bynQuGPXBufvqiEWkQ1lLB570Qc18PrJHkkyGBHM1X
+ OPxCJVBEcf+ceSEU8g/hwd48xwiPDq0gFHyANsmSST8snCpg9IQHxKlCo4tCL6lrNrfp
+ 0EFmx7xNcH2y1jWoshHFjNdUH0VT1QiRnr4O92HzzujqH9k8gbmuoZRaFFnSrKdtJVzv
+ lr7nGQ58F/te3wDERXVkvUiWBBhZRGis8tpp8MA31kazHzXa9NnhaZaB1Df3ZPfN6G97
+ 52lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OLkjZ9nxozjiKK+4NvlXfG6Ydbp1C3frT1S82SDbm/k=;
- b=pYJXWeHa4nCuStd435GAXPIqBC+XSCG5+58kg8/sePdAiMQA5PZgPFqqW12bxecwUu
- +z4JKpS5jS55kugqYfLFyU1gfwaTHHgu8kINbOyKVg1PIepTssdYN97rCU2HPbbh7AWu
- 2nfWnM9ffWb/zePgTigzabXvq/XRQ7NTfuC5MD2HsxY1/K3Xc49fQHS4zUR6AmYX229i
- pS+Jf6VD0eaBt9+I0iZSpnFBcJ7uxxpE6QLt7dhz5bpIGnyy4T94vhRlG/9tHkXbdcYM
- k30vf1AmK7xEGPfWutwNUUXTtmPG2Y8iP33dfAylAAlQDxqimMMQXdwycXmoRBwNSr6o
- owBw==
-X-Gm-Message-State: AOAM533fFgiY3YwtwQFTFoMK7u7JxnoWx++2s487njs973bN9o/SJuQG
- yo+ffCceR+8com7wK623YSo=
-X-Received: by 2002:a1c:1b12:: with SMTP id b18mr2585504wmb.157.1612258336312; 
- Tue, 02 Feb 2021 01:32:16 -0800 (PST)
-Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
- [83.57.171.7])
- by smtp.gmail.com with ESMTPSA id d30sm33164122wrc.92.2021.02.02.01.32.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Feb 2021 01:32:15 -0800 (PST)
-Subject: Re: [QEMU-SECURITY] [PATCH] hw/intc/arm_gic: Fix interrupt ID in
- GICD_SGIR register
-To: P J P <pj.pandit@yahoo.co.in>, P J P <ppandit@redhat.com>,
- QEMU Security <qemu-security@nongnu.org>
-References: <20210131103401.217160-1-f4bug@amsat.org>
- <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
- <20p82p5p-ns25-n434-37os-n55013s6313@erqung.pbz>
- <6d29aa57-2e6e-e81d-831f-803d9aae798f@amsat.org>
- <787280826.1146023.1612246917145@mail.yahoo.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <3bd70da2-39ec-6e6b-d46d-6052f1b8f0b0@amsat.org>
-Date: Tue, 2 Feb 2021 10:32:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kDdfEeCYRik4cDZrmRBoM1D0iYOoCJUk5fPHfHXbR4s=;
+ b=EjAuPNg2ja4MAuAtXeEn0gLER4Rt1fP32oC+ibd5C0zUc5TshsYeQ0rsoZyrpysGjl
+ u1Eb6l/l3YDccNxa2DDTRDodDWwvomkiwLh606YnG6iVjmign4CKIxhe87Q7xZxcqVJU
+ lbm21G4y5qlv6YIA6T3YynJb+bhuHVjyCMguPZzuwIbNWGvEpEKcPKT56leYHR+eCPyw
+ vvoYKaznFXHzerBOZnvvuOvHQzAu24h8LLn8GEyTzbRkRqEtex6efiPYSuLORkoNsLvS
+ UpMQyacReTziMKZPcAl5ih6Vxnsz6mfKO079hjSUUKlScVEvpRzINY9mp75pe14zBPv6
+ L6Pg==
+X-Gm-Message-State: AOAM533VV5FPufSpNMspoTacbYJRzG3649C+J5blRXo3MYqNTRSL5fk7
+ bJV3o6F6aWzZKBLMTgVhdOLwfiCrjjOKBrQPO+G/nw==
+X-Received: by 2002:a05:6402:31ac:: with SMTP id
+ dj12mr22609762edb.44.1612261646734; 
+ Tue, 02 Feb 2021 02:27:26 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <787280826.1146023.1612246917145@mail.yahoo.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+References: <20210124025306.3949-1-leif@nuviainc.com>
+ <20210124025306.3949-3-leif@nuviainc.com>
+In-Reply-To: <20210124025306.3949-3-leif@nuviainc.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Feb 2021 10:27:15 +0000
+Message-ID: <CAFEAcA_bzd26RfYmtV54fe18aFiWsPSc5t644s0V9Ch+nGivHg@mail.gmail.com>
+Subject: Re: [RFC PATCH 2/4] hw/intc: add helper function to determine gicv3
+ redistributor size
+To: Leif Lindholm <leif@nuviainc.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,83 +111,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, Li Qiang <liq3ea@gmail.com>,
- "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Alexander Bulekov <alxndr@bu.edu>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Luc Michel <luc.michel@greensocs.com>
+Cc: Shashi Mallela <shashi.mallela@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ip7pRTc6KXn3
+X-TUID: p4XXOzhsT/T1
 
-On 2/2/21 7:21 AM, P J P wrote:
-> On Sunday, 31 January, 2021, 08:48:26 pm IST, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote: 
->> Forwarding to qemu-security@ to see if this issue is worth a CVE.
->>
->> | On 1/31/21 11:34 AM, Philippe Mathieu-Daudé wrote:
->> | > Per the ARM Generic Interrupt Controller Architecture specification
->> | > (document "ARM IHI 0048B.b (ID072613)"), the SGIINTID field is 4 bit,
->> | > not 10:
->> | > 
->> | >    - Table 4-21 GICD_SGIR bit assignments
->> | > 
->> | >    The Interrupt ID of the SGI to forward to the specified CPU
->> | >    interfaces. The value of this field is the Interrupt ID, in
->> | >    the range 0-15, for example a value of 0b0011 specifies
->> | >    Interrupt ID 3.
->> | > 
->> | > diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
->> | > index af41e2fb448..75316329516 100644
->> | > --- a/hw/intc/arm_gic.c
->> | > +++ b/hw/intc/arm_gic.c
->> | > @@ -1476,7 +1476,7 @@ static void gic_dist_writel(void *opaque, hwaddr offset,
->> | >          int target_cpu;
->> | >  
->> | >          cpu = gic_get_current_cpu(s);
->> | > -        irq = value & 0x3ff;
->> | > +        irq = value & 0xf;
->> | >          switch ((value >> 24) & 3) {
->> | >          case 0:
->> | >              mask = (value >> 16) & ALL_CPU_MASK;
->> | > 
->> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
->> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
-> 
-> * Does above patch address both these bugs? For BZ#1913917 'irq' is derived from 'offset' it seems.
-> 
->         /* Interrupt Configuration.  */                                         
->         irq = (offset - 0xc00) * 4;
+On Sun, 24 Jan 2021 at 02:53, Leif Lindholm <leif@nuviainc.com> wrote:
+>
+> GICv3 sets aside 128K for each redistributor block, whereas GICv4 sets
+> aside 256K. To enable use of the gicv3 model for gicv4, abstract this
+> away as the helper function gicv3_redist_size() and replace the current
+> hardcoded locations with calls to this function.
+>
+> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+> ---
 
-I haven't done a thorough analysis, simply tried to fixed this
-bug ASAP as it is public so many users are exposed.
+We're going to need this at some point and it's nicer than those
+hard-coded 0x20000s.
 
-I had the impression the first call (writel 0x8000f00 0x5affaf)
-break the heap, so the memory is inconsistent when the second
-call (write 0x8000eff 0x1 0x0) is done, but better have developers
-familiar with GIC and security auditing this again.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
->> | > Correct the irq mask to fix an undefined behavior (which eventually
->> | > lead to a heap-buffer-overflow, see [Buglink]):
->> | > 
->> | >    $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M virt,accel=qtest -qtest stdio
->> | >    [I 1612088147.116987] OPENED
->> | >  [R +0.278293] writel 0x8000f00 0xff4affb0
->> | >  ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bounds for type 'uint8_t [16][8]'
->> | >  SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/intc/arm_gic.c:1498:13
->> | > 
->> | > Cc: qemu-stable@nongnu.org
->> | > Fixes: 9ee6e8bb853 ("ARMv7 support.")
->> |
->> | > ---
->> | > Isnt it worth a CVE to help distributions track backports?
->> | > ---
-> 
-> Thank you for reporting this issue. Will process further.
-
-Thank for the quick processing.
-
-Regards,
-
-Phil.
+thanks
+-- PMM

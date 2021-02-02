@@ -1,100 +1,105 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5336714wrg;
-        Wed, 12 Jun 2019 02:09:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzF1mI/45NWA1HN1oR8Q2hKUeFwrehES2Spp0vou42I179Gg58p+T9T7Whe+YKDo+i9/t/P
-X-Received: by 2002:ac8:82a:: with SMTP id u39mr13097392qth.370.1560330554119;
-        Wed, 12 Jun 2019 02:09:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560330554; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp171312lfo;
+        Tue, 2 Feb 2021 06:38:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyamm4hzNM8YVkT+i3WwkdC/jdGtuRmies/zL9ZpXS46huU4vyraHeG6ZMHyhhZzzPgQvjY
+X-Received: by 2002:a25:4e07:: with SMTP id c7mr31144375ybb.288.1612276725596;
+        Tue, 02 Feb 2021 06:38:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612276725; cv=none;
         d=google.com; s=arc-20160816;
-        b=H5lFnW0mG4pgZD6YrM205XAq2NPfcKGW2Gn9f3IPCCyHyYP5bJe6Moi8HAzKWGkXp4
-         HuQzZM+Zq+YCDujoNOTEnS1Smj9jb/oglXSX5qTjY60fLZ2d1M6r8mvPNCRVG6GqiAwo
-         ToK+HQbP/1fBLre445kWtijBX31aPWu26FOnzHC50zB9mmIH373j2zlwxrWlweAkZoye
-         VdwhOP+bwmcilDU+rmzQGGWT9Om91ny8FH9+DGYSnGtiwVzsMTcI71Q5ecRpgrqEg0c3
-         H4fU+qAqeFOgwWQGyLF3jo357SnOg9fVdI1sQyIg3O3rAWD305thY/uyejPr9e9vJYPX
-         r1kQ==
+        b=LgjV5DYvN26TFQanPlrFG87UVPhFzRzl8zt21kjbR3W1ixpPgofCEZpo2gY4sdpZr6
+         U0Xjze/P2uPHNfF8YukvcR27yhxgeyvnSCdcEMQltUDuDzuzoYGVN9iICL4PAJIHBaIu
+         DAwrbrqEPXFfxS9ft0RXhs9V10TpIyac7WqfHr0en/tHmQbah/c6Ufd53r+rnsx0aKmR
+         k7t1wWys1jjojYvovm2F9A0BKvVTsSCajTyLISlovKCOlFh5EO46bzL7hb3CE3n9l0yZ
+         /5HABNM78Ii1CMTLgXGcC43xbyf5bAoxpa9s3VcVdNrHH9k1Yuu2sMY/2GjVGT06hz/q
+         4djg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=zgUbtKkYU09l3Z343qmbN5oUGjT+4e9ZBZHffQ9lbCw=;
-        b=LonaxgglSP10GT4FI3GUubzp5pwF8seicjtgsD9TVYtQQR79MhFtJ7Uhn0S+xBIzuZ
-         /7nvGgvb6lQAFN8vwt43buBMZMBjKHPiv0KbKqolaMkEhKKabwyBTawB7ITQTurUrGw6
-         P1JsMrSCIgXMUSmLm5wUEMcIetZFlrPXxjc8bP1gUjMd10Z+Qj4/khqCjby6GGtBSNBE
-         bfwCvmErE+wr+MSD6usvkDKH7Tcbf8S4VcilLXP2VV0r9f0Rdrp8HIQ5YxNMRRW96mRS
-         Z15VLUOMlApGtosYSu5UCzL7mtmwCBnit+QqBEsbcIAoEsqNpFjZw5x0dAQVp0VVt705
-         rgxg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=3sM1b9rglurvdDr6uApRFjz6YG7nhxkqX/wQy8bfVoA=;
+        b=CGCIoFNur28WIQulUfMOrhmKJ6GkHAsQ84RAnc0KrNOH3dJNMw/cbLhftKnSfmcNGI
+         /MyBPxcYmU1x0moMn0vqYWzGmlRacU7O8q79xRwv/bVCHGw41TwwSsfbdwo7WxEvgAXo
+         jRnsxfapoYGg/8CbPg5m/PIT8j75j6E0X8e8EObR6El5W1RXTJwO0PMAMDJmrHo8ss2j
+         /vUBHRGlSum8AAvG6DT/NEGUqQ0q2h1jxt0JEex9wfW2R7T3rjagi3I4Nl3oytuF1S5t
+         ZLSptjLB3jvsSX5Xceuo3SffDpl5tXuUEtZIaayt5egf5Ujf2OXV2bpB99uA1Iv1q3QQ
+         vlyw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=g5BNMHsE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a51si3861920qta.226.2019.06.12.02.09.13
+        by mx.google.com with ESMTPS id k128si21131857yba.483.2021.02.02.06.38.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2019 02:09:14 -0700 (PDT)
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Feb 2021 06:38:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=g5BNMHsE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57752 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60230 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hazFp-0001VI-Mb
-	for alex.bennee@linaro.org; Wed, 12 Jun 2019 05:09:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39627)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1haz72-0006NE-N7
- for qemu-devel@nongnu.org; Wed, 12 Jun 2019 05:00:12 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1haz70-0006K2-SH
- for qemu-devel@nongnu.org; Wed, 12 Jun 2019 05:00:08 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:35728)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1haz70-00065z-M5
- for qemu-devel@nongnu.org; Wed, 12 Jun 2019 05:00:06 -0400
-Received: by mail-wr1-f65.google.com with SMTP id m3so16017300wrv.2
- for <qemu-devel@nongnu.org>; Wed, 12 Jun 2019 01:59:49 -0700 (PDT)
+	id 1l6wpI-0004uG-Vu
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 09:38:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44670)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6wgT-0003D8-Ls
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 09:29:38 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:35019)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6wgM-0003y4-0G
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 09:29:33 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id a9so11890102ejr.2
+ for <qemu-devel@nongnu.org>; Tue, 02 Feb 2021 06:29:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3sM1b9rglurvdDr6uApRFjz6YG7nhxkqX/wQy8bfVoA=;
+ b=g5BNMHsEet4fWRMQyiPIelAaQclF0iFaqOEvYl8A5n73Es7XA1jlSCmGQuNGlPxZTk
+ jLKIbnyTbJj37vWMlPyrlka9T5uXUDW7Tj705l+y/j7Im/oM5Ow7ObkmgEJ42oRRLelF
+ Z3TIvMnUb6+J8MGqTb1r0sB7UXv/F5drH9tbiSGv8NkCXgYWcmUMboXo4qp5gVff25HP
+ WhK4FHWd8XFOVFqIdQQiWQMNTlMWCAwOa3faNqLXfro7Rkd/kR7+md19kAtLyhIsSHSA
+ ZmLN89tu0m/fQjrRZvq2YGYbm1yuoNT8idZeSMDiC35PcK85RPVWNjlEBu8LDIU4tlDi
+ /2Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zgUbtKkYU09l3Z343qmbN5oUGjT+4e9ZBZHffQ9lbCw=;
- b=DY2MaN4xDxzeIMw3tTfBM3mYsqUglwIkN5pA+1FloSv2Ak+8ELTi9LV3Hqce7W8nLT
- VXLcpK4Qn5FJ8GAIuVXgogHxRotEShylWtMKxubg7CPW9twGda9ahWiBnRZfjkbJ4ZQ5
- rjj+DwaV3cGjbK8TqKogmmEBhGKM9Ylx94T3Zx9p76WkaYlDJTSFJo+fMRzLqQxWXqoi
- GiiQ8YR7I5e/wtnf7KB8jn4i89mXBw46kU8dSPuSm4Bow8J0DTbbmHxmF9Z7b7nto6r0
- 7lOjpI9LI1y/RKd6mCIVKC/gP1578MNlWCsmAQ/0T7Z+Xtrae0HqffcL+eHQMht6VXqt
- vYuQ==
-X-Gm-Message-State: APjAAAW8sxpVO0ay4L768u3pEty18Og5/lbfYh9+Ls8deET5idtM0ifL
- 97T/zZbFKkB6AEmp/O8vMvmgKw==
-X-Received: by 2002:a5d:69ce:: with SMTP id s14mr5909075wrw.135.1560329988417; 
- Wed, 12 Jun 2019 01:59:48 -0700 (PDT)
-Received: from ?IPv6:2a01:e35:2eec:b420:bca5:71b1:6738:c7ee?
- ([2a01:e35:2eec:b420:bca5:71b1:6738:c7ee])
- by smtp.gmail.com with ESMTPSA id a81sm7400399wmh.3.2019.06.12.01.59.47
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Wed, 12 Jun 2019 01:59:47 -0700 (PDT)
-To: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20190611145556.12940-1-rfried.dev@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <eba0a139-d9c6-4e4c-b6cf-5013da84c908@redhat.com>
-Date: Wed, 12 Jun 2019 10:59:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3sM1b9rglurvdDr6uApRFjz6YG7nhxkqX/wQy8bfVoA=;
+ b=GashR3AJUkmCZrCIJgNI/JZfpwRDJRYCWtTRkSN9RV3RrvhB1SbYLFAUO0aCt2NKM5
+ w84rVoZjkt9hzd93t0x7nywsWwvM7XroGqWj34LenK+9+MXkmYrPUPN7AR1H8841o/Vh
+ ETMR5xNs+bqgws/Umo7S3TuDWmsqeAka9XU9ULv91Pd4t3fywTPLBm5cdSt9q3t5sUkk
+ wuSmnwK9UvZDyUdLFcWYrWYlZex46zlW5w0iQlGwkIhFRXDrFSxqKhNgjD9PhKbgBXmH
+ +wKSm7z5j1IwrLODAsJB56jcZG9RJNz4CRrzLIfhNW42gwy75zoNb2/oi9EmHsvN/tnI
+ SJuA==
+X-Gm-Message-State: AOAM530Qs0AUa+0THfEg4Pb9Lt9vIKNWnAzKfcvacJlfRg2Q16TMxR3w
+ ftiC3llYM6Gn9a1axl4VJVAkWkxG6kT5pHIdO76OlA==
+X-Received: by 2002:a17:906:494c:: with SMTP id
+ f12mr22915345ejt.56.1612276167342; 
+ Tue, 02 Feb 2021 06:29:27 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190611145556.12940-1-rfried.dev@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-devel] [PATCH v2] net: cadence_gem: fix compilation error
- when debug is on
+References: <20210128224141.638790-1-richard.henderson@linaro.org>
+ <20210128224141.638790-2-richard.henderson@linaro.org>
+In-Reply-To: <20210128224141.638790-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Feb 2021 14:29:16 +0000
+Message-ID: <CAFEAcA8r5+ciCFb0kPC1bAi-kU53iJBiLf7Jiso-gr2cOBtxeQ@mail.gmail.com>
+Subject: Re: [PATCH v4 01/23] tcg: Introduce target-specific page data for
+ user-only
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,51 +111,34 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LwdPTXg7ygNg
+X-TUID: tkg0liaYZ4+T
 
-On 6/11/19 4:55 PM, Ramon Fried wrote:
-> defining CADENCE_GEM_ERR_DEBUG causes compilation
-> errors, fix that.
-> 
-> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+On Thu, 28 Jan 2021 at 22:41, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This data can be allocated by page_alloc_target_data() and
+> released by page_set_flags(start, end, prot | PAGE_RESET).
+>
+> This data will be used to hold tag memory for AArch64 MTE.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> v2: change %lx to HWADDR_PRIx and %lx to %zdx
-> 
->  hw/net/cadence_gem.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 7f63411430..e9b1b1e2eb 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->              return -1;
->          }
->  
-> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
-> -                rx_desc_get_buffer(s->rx_desc[q]));
-> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n", MIN(bytes_to_copy, rxbufsize),
-> +                rx_desc_get_buffer(s, s->rx_desc[q]));
->  
->          /* Copy packet data to emulated DMA buffer */
->          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
-> @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
->              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
->                                                 (p - tx_packet)) {
->                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
-> -                         "0x%x\n", (unsigned)packet_desc_addr,
-> +                         "0x%zdx\n", (unsigned)packet_desc_addr,
+> v3: Add doc comments; tweak alloc so that the !PAGE_VALID case is clear.
+> ---
+>  include/exec/cpu-all.h    | 42 +++++++++++++++++++++++++++++++++------
+>  accel/tcg/translate-all.c | 28 ++++++++++++++++++++++++++
+>  linux-user/mmap.c         |  4 +++-
+>  linux-user/syscall.c      |  4 ++--
+>  4 files changed, 69 insertions(+), 9 deletions(-)
 
-The format is either "zd" or "zx". I misunderstood how you want to print
-it, if you want hexadecimal, it should be "zx" then.
+I reviewed this (and some of the other patches) in v3, but
+you didn't pick up the tags :-(
 
->                           (unsigned)tx_desc_get_length(desc),
->                           sizeof(tx_packet) - (p - tx_packet));
->                  break;
-> 
+Here it is again:
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

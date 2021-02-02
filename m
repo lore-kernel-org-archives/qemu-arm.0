@@ -1,104 +1,104 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp5575lfo;
-        Tue, 2 Feb 2021 02:37:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx59xuw5Bk3mfdSKe11WgHaJew+ezEHhP8Rtmt7BTbtj5JVHff/r5ILvEiuUk+ZgBPHdGKU
-X-Received: by 2002:a25:9105:: with SMTP id v5mr19973253ybl.249.1612262238006;
-        Tue, 02 Feb 2021 02:37:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612262238; cv=none;
+Received: by 2002:ad4:54c3:0:0:0:0:0 with SMTP id j3csp2251688qvx;
+        Tue, 2 Feb 2021 02:32:05 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwXuQCs+N/0O+w0XXk+SLBqOrlh/OHfxOg87+isee+APZDBheKSrkQyUlu7uKVMpxJp4Fjr
+X-Received: by 2002:a25:ba13:: with SMTP id t19mr32175586ybg.129.1612261925421;
+        Tue, 02 Feb 2021 02:32:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612261925; cv=none;
         d=google.com; s=arc-20160816;
-        b=N6oCRHysfDbotvXpwIwRfH0EsbWvkmPC/Jdt7A+uumGqG0s5Kc2zdCZlO9B2FCwHfu
-         l/kaDZpC/pGqKnBNIoAkEqtZ/rjsW58b8o0ZT0od8CxbWxAosg4RVQpv8C6zkhyMhS5c
-         Grq8096cwTYxoIOWQR8psiY21hpiaA4PxQx48bPLhzdHUkhZRaZrld6pDO5SxPs7+DLa
-         l37VonZVDXN+CqXQPSYQbFRHEhiKki7JdD7KbnLdDJ9EYMwvdH9Hxy5J2G/obz+w68fx
-         8oTXAEwGMg792EGJ88iEqfF6r9KoUdXMlrLzIlWDxIRSZ7NJSnTyCBGG6/QjJ240l8Lr
-         ItEg==
+        b=hr8DCM8oHsUHkZ0d0kpF0BMAIbbaxWgbuQrqebH0hciYDSEFKgQ3NognRwRRaFmfL5
+         SLYqM52MiVwTLsky1uNscRRnSYpsQTEbtaLCNkxpYUyrutWrQ9jdi23xiGCgwAw24XHb
+         PCQWLrxXty7WJkEOmK88sYOwLK31rAHw7TQqX6qDk/w0ordkXs7LLDrSpa13f2thVOiI
+         V2tja7FR/3aNyFSlvD7xGFysMmx0Y/+E7XIR+WzUw8dOqhUNkGHBueq9bPmAFZdcQA+7
+         j09321y1FZnl04s+qAtGpbSH0EUeOMMBdmnq4kM/Rs9vUyP+cyns9yrtI3P6j03y3YXo
+         z4qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=EHgFUnW1wQrVoTK6VJEdmulKhIcN39KNGoL+iGbz+pY=;
-        b=xJBhbk+kzxrehHYnm2UGHU46uMcqMTnZFKSJiusHR9/6awAMzA5OsCe6j+K08dlqly
-         HS+sguJ4wxGJQI2F2aZUJ6Xhi4mw43b9HMzSZdNIvmNsuaQDpdgzXDvVIceig0iD4Pvj
-         AOtlYm2+1B2unR+pidpMPubyAHiwwfa1SqOtOlfSLvYwBdf0dUCfOG9zULpLiPQO8nub
-         AwoxfDs1VZVqqaLhUHJkxcP9cc8veGvXRCPCanj0lysLHBbjnrULyNo3qrRBcwTEFEvQ
-         lJuzSKtTBVvwM5jN7R5Uzw7j7TQB8vGCp+TBtc6SGNcGB7R2v2Vx07gYxa4PgwqKGak9
-         /cmg==
+        bh=Nn73uSUVH5yPYti5eVa0hD1TrkgyKYCxhklx9OwkBLM=;
+        b=YnymzC8S4+se29I9ayyMTx9H74Fs31TpUXtfz677lm7JQxenmz3fRq8s/17DK143p5
+         okq8g5XojXrgSMwZkMr2otOxt+DyeuadIdBewMILdmLWV8Ppp6KSnocdYX1pt22lYlX6
+         dMiAfhT5o+4fFQW4ISjveSnSLOaMfN1POb80ysW0xIyvMM1vLsvzmL4xy3kyVhvakH2R
+         H6kHAZI3CqruQ8SeudPzpSvavY0kFEMw3hpvySQHy91Y4bPeuLUnuupJKY6SxdAq77sS
+         r2dGZ1+NieGyImv6N94GpY9t0Bmdu7qaRYwtHKMMBJvhdXWksBkM4MTZunEbrv9JoKmH
+         rr1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UoyqLA8C;
+       dkim=fail header.i=@linaro.org header.s=google header.b=en+Uk6F8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t123si20919949ybf.107.2021.02.02.02.36.49
+        by mx.google.com with ESMTPS id p82si3501586yba.351.2021.02.02.02.31.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 02:37:17 -0800 (PST)
+        Tue, 02 Feb 2021 02:32:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UoyqLA8C;
+       dkim=fail header.i=@linaro.org header.s=google header.b=en+Uk6F8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52420 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45312 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6t3A-0007Vt-Ks
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 05:36:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50818)
+	id 1l6syC-0004P3-T9
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 05:31:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50214)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6t1Q-00065E-0a
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:35:00 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:32915)
+ id 1l6sy4-0004Oq-3p
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:31:32 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:46810)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6t1L-0005wZ-SL
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:34:59 -0500
-Received: by mail-ej1-x636.google.com with SMTP id sa23so12850532ejb.0
- for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 02:34:54 -0800 (PST)
+ id 1l6sy1-0004K4-Hz
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:31:31 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id rv9so29083342ejb.13
+ for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 02:31:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=EHgFUnW1wQrVoTK6VJEdmulKhIcN39KNGoL+iGbz+pY=;
- b=UoyqLA8CMc96TpllXgKucZSL3t2k6x3bXrfaSzKzNQuP5RWhd40WbUTUOibuz7eu5m
- KuSQafyKFUzXmQKeIq0fyrBJELjbk2RT3zbo6DVWXorX512UTK78QLNuXrw0kFMsJCt1
- ETDAW/fl59v6BmSOr4HIBCLIMxcsZujSGqg6RYaecZ29mkQZLhDQfVE31AjC8hagCc2o
- EHU7wgPlv/TBvJDWQZk58WKpH18+JSI2U6wvHaioFGzhU8zJ6sp+rJGx+kEGAg7448lQ
- KjUKFWbpRwrt5sJ6ukQo4bPlJeRjh1tk+CwfBALlrRMkLiAM2NIszLN6ZOdH2luCzUli
- dpOA==
+ :cc; bh=Nn73uSUVH5yPYti5eVa0hD1TrkgyKYCxhklx9OwkBLM=;
+ b=en+Uk6F81I9FDa10oTKmhrwCJQAi87Vw1pGPK3c4pVl6YmWxXG2r6ij+WAsxwDBvbZ
+ ThY1dNCmLuSTC0SxxqrekuCzPo08QDhOj2Yk5gh0LSi7ER0+nDAAkjiFRB7oCy8HS3er
+ d329DHQV//iUrRfO0nVcX5fJA1NwoZfyeUOx/pjqsVMKvc+LVDrsvg1Y0j/IpPLlVWMy
+ YKGQRaqXQcwgab9DI/ifuui27AAhfDvlSyYzZcG9g5K67tC3NwJzJfppPe0ekx13kUoS
+ cgeOEKr5rIA7AIPtt3hVav+/EMhrI3CDNz+2f+GgDzDVa9ISvaKwVENEpNbFZyh5e5rQ
+ ZCxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=EHgFUnW1wQrVoTK6VJEdmulKhIcN39KNGoL+iGbz+pY=;
- b=BqPs5UPBSyZSiAM6PrtLk97oFEULjDRKMrejJRcRM8mzis2b8oP3YFxdU9kUj8v1hA
- k0jNWsSpEjj0U2NeFLPVUzaucl95reVckAt4BG5VYt8vtt+gSOj66UXYKiONgGktlG1k
- GoCPx93O2CNeBRtHsrDUqb7PLIZdQi+q4LA1vxa2kqC8rqOUHgRStiGXW7oqE/b+i5rt
- eTMKGEs0hV0q11dem1qIpnJZ08HJu8PWl5UHu6nOkGTndeK2JYUP/CM//uYpq1DodDRq
- 93kIvS49+L8MOqg5b1/tI4Z9M5sZqHhLEBj7O3W5NA2tfn2+0ptO8G9F09GWDTwIEdSZ
- x9tg==
-X-Gm-Message-State: AOAM532P3WhNoBq2ZVOOl9viVOOBJb5VrkHapKdDMLzf73CEqddmD5C+
- XSZ8SpkPdcio/YW9aNg5Js2mUn0hOdhQk+nIjMlDyA==
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr22595226ejd.250.1612262093898; 
- Tue, 02 Feb 2021 02:34:53 -0800 (PST)
+ bh=Nn73uSUVH5yPYti5eVa0hD1TrkgyKYCxhklx9OwkBLM=;
+ b=j8cQvcBLpcuN2UO9+AV+NG5x+0e8wqlPP7jeXcM0XsyuhL7w0Xznth3NdyS+ouzVSv
+ +rSdSKJ83LeEkbblinPNKpV/gnUjbcm4tJrysuIOMrAli5Dv2oHoIo7dWrZCBUH8EfdC
+ onp6nFKr3mTC7I+FBC6VFjQK4iA+QTD+50mqczTrLK9MSKcOQVHUPjOuIRX/BIbFomMb
+ UVOcHHg+Ipl7txY44QppD8dMzwW3+x4HcwMyH6e+psnXqPL6597pRmho2QWVcuUzFi8n
+ EwUqQZIOYjJfqP4NpUQfkVsSjDy+VN69zyAeGPKEJiiMbSo4yFDxTdqmTaeQMWCYkPOS
+ anwg==
+X-Gm-Message-State: AOAM533KoxkOixT7ATLH+ZP/P8xa7Vdd2mVsPe5CaoXtKBoJ4T+CDUYX
+ gHbQwOFJTwZBC910gx1pBrDSfOQ96pKolfQPZ9k1Cg==
+X-Received: by 2002:a17:906:494c:: with SMTP id
+ f12mr22057746ejt.56.1612261888209; 
+ Tue, 02 Feb 2021 02:31:28 -0800 (PST)
 MIME-Version: 1.0
 References: <20210124025306.3949-1-leif@nuviainc.com>
- <20210124025306.3949-2-leif@nuviainc.com>
-In-Reply-To: <20210124025306.3949-2-leif@nuviainc.com>
+ <20210124025306.3949-5-leif@nuviainc.com>
+In-Reply-To: <20210124025306.3949-5-leif@nuviainc.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 10:34:42 +0000
-Message-ID: <CAFEAcA-n1oXYkQA0XTVNp+rfgFRZSviao2FTSBvOibfbX24a9w@mail.gmail.com>
-Subject: Re: [RFC PATCH 1/4] hw/intc: don't bail out gicv3 model init for
- revision 4
+Date: Tue, 2 Feb 2021 10:31:16 +0000
+Message-ID: <CAFEAcA-j8TeozQLSTSK1ueVFKZ4J6tTCjMBNJMQTLQCeAnKkpw@mail.gmail.com>
+Subject: Re: [RFC PATCH 4/4] hw/intc: make gicv3_idreg() distinguish between
+ gicv3/gicv4
 To: Leif Lindholm <leif@nuviainc.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,35 +115,47 @@ Cc: Shashi Mallela <shashi.mallela@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jOwSWtHJuUbA
+X-TUID: GjnFBnsbRnMH
 
 On Sun, 24 Jan 2021 at 02:53, Leif Lindholm <leif@nuviainc.com> wrote:
 >
-> As a first step towards GICv4 compatibility, add support for gic revision 4
-> to GICv3 driver (i.e. don't bail out if revision 4 is encountered).
+> Make gicv3_idreg() able to return either gicv3 or gicv4 data.
+> Add a parameter to specify gic version.
 >
 > Signed-off-by: Leif Lindholm <leif@nuviainc.com>
 > ---
->  hw/intc/arm_gicv3_common.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 58ef65f589..7365d24873 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -315,7 +315,7 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
->       * conditions. However, in future it could be used, for example, if we
->       * implement GICv4.
->       */
-> -    if (s->revision != 3) {
-> +    if (s->revision != 3 && s->revision != 4) {
->          error_setg(errp, "unsupported GIC revision %d", s->revision);
->          return;
->      }
+>  hw/intc/arm_gicv3_dist.c   |  2 +-
+>  hw/intc/arm_gicv3_redist.c |  2 +-
+>  hw/intc/gicv3_internal.h   | 12 ++++++++++--
+>  3 files changed, 12 insertions(+), 4 deletions(-)
 
-This change is obviously not-for-upstream; we can't allow the GIC
-to be configured to a revision that we don't actually implement
-correctly.
+> -static inline uint32_t gicv3_idreg(int regoffset)
+> +static inline uint32_t gicv3_idreg(int regoffset, int revision)
+
+I would prefer to pass in the GICv3State* and let the function
+look at s->revision.
+
+>  {
+>      /* Return the value of the CoreSight ID register at the specified
+>       * offset from the first ID register (as found in the distributor
+> @@ -331,7 +331,15 @@ static inline uint32_t gicv3_idreg(int regoffset)
+>      static const uint8_t gicd_ids[] = {
+>          0x44, 0x00, 0x00, 0x00, 0x92, 0xB4, 0x3B, 0x00, 0x0D, 0xF0, 0x05, 0xB1
+>      };
+> -    return gicd_ids[regoffset / 4];
+> +    static const uint8_t gicdv4_ids[] = {
+> +        0x44, 0x00, 0x00, 0x00, 0x92, 0xB4, 0x4B, 0x00, 0x0D, 0xF0, 0x05, 0xB1
+> +    };
+> +
+> +    if (revision == 3) {
+> +        return gicd_ids[regoffset / 4];
+> +    } else {
+> +        return gicdv4_ids[regoffset / 4];
+> +    }
+>  }
+
+Updating the comment "These values indicate an ARM implementation of a GICv3"
+to add a note about what the new values are indicating would be nice.
 
 thanks
 -- PMM

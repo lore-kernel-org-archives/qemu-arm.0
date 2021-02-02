@@ -1,180 +1,196 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp8742297pjq;
-        Tue, 28 May 2019 20:40:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzFjI3l0FUBH5lWSpqe4gyVindPTYfAe4/v8C8aky/6wE3jmB0+HX2BGaVnTmsxcz7tymd5
-X-Received: by 2002:a05:6a00:c9:: with SMTP id e9mr141595pfj.99.1559101224054;
-        Tue, 28 May 2019 20:40:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559101224; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp69208lfo;
+        Tue, 2 Feb 2021 04:22:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxO0sECrY8N/S2b2HTxWIur5+H8QUBvbXEbTJkCXZo2IGdR9ALb8V8hh/KaDtPBRBBUaqGS
+X-Received: by 2002:a25:718b:: with SMTP id m133mr32650082ybc.412.1612268524212;
+        Tue, 02 Feb 2021 04:22:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612268524; cv=none;
         d=google.com; s=arc-20160816;
-        b=d234CiffgyLGvQTgCkmJquF3jK1KW4SGk/iOU/FS2BaquS0g3h/d8URM9jj7oJENci
-         4tY2RQ1GzanStj2kA3CEi83a8PWH0LYK2onuqXfxkB/5aR67YN0IJ4cNoEYcxq+BGQB8
-         aHIInun9YARhPZ0sZ/xlvWeYvONEvRPQwF79JFGmTv3ybZTLsLZ47tqNJ36dNRSmDs+D
-         o2CP/XG8pE3dcXGJOIlCXdzEhBeKMvqDwuTMsWSQwM6was4rkN5WuwYrSbS/R97voJBT
-         85bQ7M8mwjjR0N1ASinZBXVDbhL4e/joF6YIwG2fG1yOGznw5L/CZat0QL3NcCfDS4qS
-         GKOQ==
+        b=iTpnAO44QOQBi3U1Ho/3XG8hqSWRYV7eziQXHAJkzuXra+osnW55aSqzsplLvYVjeR
+         TJmBynhUJtm6FFWifIQmi7xZe+vm/M0m54bPyh25V8TRGrmrU0i6fu3LAgKt1419NWAR
+         Lgy8yuCZUJYAdrODJ1RdbNun8Q6vVnC5GbAvzs6AQH4ll+pyZTDihwLd5zhdTCFEBfSu
+         Ac2JGq3Jp7hIRTC6/srDXac71XMEJXe4ndbskLH+ZG0usacgjTq29j87EFYWbmD7vJuo
+         LYBJP4LFIlEa0PrCM/cZlYQY1Axnnraw6Fvu6PT+SSywVHTebsfpP7EzkFIaLKpIb0mq
+         RkHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date;
-        bh=CA/4dQuaDckNy4AUShkfB3sMJYFzdlrvMh+cMSh6ymk=;
-        b=aNM0fQvSPBR2f8SfucTaB+1tHsK8bTwtge02m/Z+exd3qPqMDS/EWfwA+lQ4lJb7fV
-         v51q8L3Sxjenttby8tkgdh5A0KqFcpSzz3o1C9byo7aA18wNwE+iVkwi0GcySfVeDlbL
-         1E4d+D5tCg/9iGGkrteSkbkdrYe5SamLJf2Ei7DsKK4rR5GMN/VSGLCnvF0nBPhc0HJ8
-         sY3Al+ecmyx66ZejP9PmJCrej3xR9dnyUry2HNoUNnkWubvVbaNwrjdJcpA0TP4yMkdI
-         vGx3js4Wp3/mq6HaSrChwPI/MoSEZJbGufUnvzwNnHe94ndRl6W7vg3xVX0Jq1FPKfzh
-         gLFg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=belE4FoTQ5IDz2AkXxRNs1TgkX/xK+2CldIU2o/On7Y=;
+        b=LPGBSeCrni5buKlHaAMzbsTQnV1jF4U9nE3sDoVGNHIlKPWzls98/k4d39kMWHKe/Z
+         7i6ECXfXyPWshGOrkMrEm7MQLotU8AJaDI3FzyieyFUUAR9VxFFHzNfOT6UmwVyTnWgS
+         Qo8UwzK97XbQbeBKV4GcrUi8J5sGYx/H78drgd9eRH2WPmJ1yXVVDu7EETA+pBAhKDgJ
+         AjCF7nhXga3Ta+EFINAuYoGpfuRxtDlD3GqxLw5ncqQHuWaVtd/Yt0L2BBRpdQvJN4Xk
+         KFJOLI/P4ngJ+0UpfG0cxp+bfxOiS0GbV94gQdJ7EwNZpuRaVGdPojsoEbEAIF09HgG/
+         I0kA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id j3si23927935pgh.445.2019.05.28.20.40.23;
-        Tue, 28 May 2019 20:40:24 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UlxbO+am;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e17si22287137ybp.311.2021.02.02.04.22.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Feb 2021 04:22:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1725936AbfE2DkW (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Tue, 28 May 2019 23:40:22 -0400
-Received: from mail-qt1-f196.google.com ([209.85.160.196]:32829 "EHLO
-        mail-qt1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1725828AbfE2DkW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 28 May 2019 23:40:22 -0400
-Received: by mail-qt1-f196.google.com with SMTP id 14so936750qtf.0
-        for <kvm@vger.kernel.org>; Tue, 28 May 2019 20:40:22 -0700 (PDT)
+       dkim=fail header.i=@linaro.org header.s=google header.b=UlxbO+am;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49070 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6uh1-0005nT-Cu
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 07:22:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42080)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6ugm-0005kC-8B
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 07:21:48 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:46067)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6ugi-0005xu-R0
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 07:21:47 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id t5so1583778eds.12
+ for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 04:21:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=belE4FoTQ5IDz2AkXxRNs1TgkX/xK+2CldIU2o/On7Y=;
+ b=UlxbO+amTvKVNHtmZGHPGxefFQeXcZ89PubzDQQTJ1QP7sM0H6gADz+0mVDwsjOtvk
+ pfmTNnNpfRdfw4QIL4TsoXs+awFOf9fe9lDndVTsBU553apPMlGkEoxf+ksrdsMWTVkY
+ JY1tchrlF+e+0EKeQjgVDAzdh29ck5f3Z+ZZ7P4n/pWPZy/pfHPhX8APSkbVkND9UP66
+ +n8LtLEV3dcI3IWZNB73Hu4C16u6rnjMaZT6nFsNlU+UcAf7dJA93utQKCsxWN8LVSyp
+ 5iotuvKJePatRk4G2pXBDyYDw//bYxeTMSSC2ksNz9DLtuV7+/5kEn3A/eltOur4hD39
+ VB8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=CA/4dQuaDckNy4AUShkfB3sMJYFzdlrvMh+cMSh6ymk=;
-        b=j1Us37almRmLXq9otqDvvBDJ/qDVMFCwJJuo5qUU4MKpYkh0/VKtC2RmyumfumwMjz
-         mMIPBlg3uxBMQvQuld+COWbixQaXUDUQyqsj7l4GtzgEPEII0k+O7Q0vyU60GAtn0QWu
-         +On11VhWzvzBYqtkNL2hcYITTQzk1NhhjPP4871j8TwUr9MbrcWel5nUJO8kYDjoAVrG
-         tOEqdlXkU3r1zsqbFlrVVdmb2mksPh1CR3VR9S5gS60DYAang5ELzrEtbxrSjI6zrE3u
-         vwNc0Xj2kVCvfSw3/6LRT1Gq7lhE96EYzhJ5ToS9+icXJ6PnyslX5tooS16lIv1rUhTi
-         6KzA==
-X-Gm-Message-State: APjAAAWrp2LSsmvfVzSwtDT02dgm4LhcW+0QJVwy5RTnRfLJ5bJMryMD
-        Mf278Jf97a5QMh1mCQAjx/ugdg==
-X-Received: by 2002:ac8:96d:: with SMTP id z42mr90521227qth.24.1559101221644;
-        Tue, 28 May 2019 20:40:21 -0700 (PDT)
-Received: from redhat.com (pool-100-0-197-103.bstnma.fios.verizon.net. [100.0.197.103])
-        by smtp.gmail.com with ESMTPSA id w5sm6288911qtc.50.2019.05.28.20.40.20
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Tue, 28 May 2019 20:40:20 -0700 (PDT)
-Date:   Tue, 28 May 2019 23:40:18 -0400
-From:   "Michael S. Tsirkin" <mst@redhat.com>
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     pbonzini@redhat.com, imammedo@redhat.com, shannon.zhaosl@gmail.com,
-        peter.maydell@linaro.org, lersek@redhat.com, james.morse@arm.com,
-        mtosatti@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
-        zhengxiang9@huawei.com, jonathan.cameron@huawei.com,
-        xuwei5@huawei.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org, linuxarm@huawei.com
-Subject: Re: [PATCH v17 02/10] ACPI: add some GHES structures and macros
- definition
-Message-ID: <20190528233859-mutt-send-email-mst@kernel.org>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
- <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=belE4FoTQ5IDz2AkXxRNs1TgkX/xK+2CldIU2o/On7Y=;
+ b=dxtQvppGv7Opqe69pSje7i8R5W3HQuRDgewL4tFB1vgXhH63+VOaA07T99PO21G0qk
+ IomlzlXwSYJxnLFD9wwLDuSyhhnGcIkLE/XjOojSdVTtvbD8qDt/6RTGoXI4utBV8ycn
+ UnUzLMxqbMyJMWTcQjvujJV6ARxlJxVVPYSRAJXBnxCvkkcQzyDYZqa66SvQWh3wA4hz
+ X+/COVyRIturHfOmWXs01nK6mt78sBb17moMzoMDnBIQLQVNQCrgY/hMCKmHCjDc2+V8
+ 2WniqQly34s1w4r8lAxLFQnpT47ucQvo9vucBEzy2Uf9W3MtfuB8/yKi4kDKfGYE+nw/
+ VMvg==
+X-Gm-Message-State: AOAM532lAuHAjseVKzdXCj867svnwTvL4ys8Jt0/Rj+UF2TfvO5lLrfA
+ RVsTS1mQb+MRfqsieNjkbmI0NxhwVYQOCn6jK9F0aQ==
+X-Received: by 2002:a05:6402:3514:: with SMTP id
+ b20mr22821315edd.100.1612268502667; 
+ Tue, 02 Feb 2021 04:21:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: AtlI84j24mqh
+References: <20210131103401.217160-1-f4bug@amsat.org>
+ <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
+ <20p82p5p-ns25-n434-37os-n55013s6313@erqung.pbz>
+ <6d29aa57-2e6e-e81d-831f-803d9aae798f@amsat.org>
+ <787280826.1146023.1612246917145@mail.yahoo.com>
+ <3bd70da2-39ec-6e6b-d46d-6052f1b8f0b0@amsat.org>
+In-Reply-To: <3bd70da2-39ec-6e6b-d46d-6052f1b8f0b0@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Feb 2021 12:21:31 +0000
+Message-ID: <CAFEAcA-Q8swS84GVd20wo4Pp41UUPdDknxbCMn=pchgi96UgRQ@mail.gmail.com>
+Subject: Re: [QEMU-SECURITY] [PATCH] hw/intc/arm_gic: Fix interrupt ID in
+ GICD_SGIR register
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, Li Qiang <liq3ea@gmail.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ QEMU Security <qemu-security@nongnu.org>, P J P <ppandit@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ P J P <pj.pandit@yahoo.co.in>, Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xEYPhVU9amUF
 
-On Tue, May 14, 2019 at 04:18:15AM -0700, Dongjiu Geng wrote:
-> Add Generic Error Status Block structures and some macros
-> definitions, which is referred to the ACPI 4.0 or ACPI 6.2. The
-> HEST table generation and CPER record will use them.
-> 
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+On Tue, 2 Feb 2021 at 09:32, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+>
+> On 2/2/21 7:21 AM, P J P wrote:
+> > On Sunday, 31 January, 2021, 08:48:26 pm IST, Philippe Mathieu-Daud=C3=
+=A9 <f4bug@amsat.org> wrote:
+> >> Forwarding to qemu-security@ to see if this issue is worth a CVE.
+> >>
+> >> | On 1/31/21 11:34 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> >> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
+> >> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
+> >
+> > * Does above patch address both these bugs? For BZ#1913917 'irq' is der=
+ived from 'offset' it seems.
+> >
+> >         /* Interrupt Configuration.  */
+> >         irq =3D (offset - 0xc00) * 4;
+>
+> I haven't done a thorough analysis, simply tried to fixed this
+> bug ASAP as it is public so many users are exposed.
+>
+> I had the impression the first call (writel 0x8000f00 0x5affaf)
+> break the heap, so the memory is inconsistent when the second
+> call (write 0x8000eff 0x1 0x0) is done, but better have developers
+> familiar with GIC and security auditing this again.
 
-Are these all still used? I'd rather you moved stuff to
-where it's used.
+Philippe is correct here. In both cases the overrun is on the
+first writel to 0x8000f00, but the fuzzer has for some reason not
+reported that but instead blundered on until it happens to trigger
+some other issue that resulted from the memory corruption it induced
+with the first write.
 
+> >> | > Correct the irq mask to fix an undefined behavior (which eventuall=
+y
+> >> | > lead to a heap-buffer-overflow, see [Buglink]):
+> >> | >
+> >> | >    $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M v=
+irt,accel=3Dqtest -qtest stdio
+> >> | >    [I 1612088147.116987] OPENED
+> >> | >  [R +0.278293] writel 0x8000f00 0xff4affb0
+> >> | >  ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bou=
+nds for type 'uint8_t [16][8]'
+> >> | >  SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/int=
+c/arm_gic.c:1498:13
+> >> | >
+> >> | > Cc: qemu-stable@nongnu.org
+> >> | > Fixes: 9ee6e8bb853 ("ARMv7 support.")
+> >> |
+> >> | > ---
+> >> | > Isnt it worth a CVE to help distributions track backports?
+> >> | > ---
+> >
+> > Thank you for reporting this issue. Will process further.
 
+On the CVE:
 
-> ---
->  include/hw/acpi/acpi-defs.h | 52 +++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 52 insertions(+)
-> 
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index f9aa4bd..d1996fb 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -224,6 +224,25 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
->  #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
->  
->  /*
-> + * Values for Hardware Error Notification Type field
-> + */
-> +enum AcpiHestNotifyType {
-> +    ACPI_HEST_NOTIFY_POLLED = 0,
-> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
-> +    ACPI_HEST_NOTIFY_LOCAL = 2,
-> +    ACPI_HEST_NOTIFY_SCI = 3,
-> +    ACPI_HEST_NOTIFY_NMI = 4,
-> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0: 18.3.2.7, Table 18-290 */
-> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0: 18.3.2.7, Table 18-290 */
-> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0: 18.3.2.7, Table 18-332 */
-> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-> +    ACPI_HEST_NOTIFY_SDEI = 11, /* ACPI 6.2: 18.3.2.9, Table 18-383 */
-> +    ACPI_HEST_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
-> +};
-> +
+Since this can affect systems using KVM, this is a security bug for
+us. However, it only affects an uncommon configuration:
+you are only vulnerable if you are using "kernel-irqchip=3Doff"
+(the default is 'on', and turning it off is an odd thing to do).
 
-If there's a single user, the best thing to do
-is just to open-code with a comment that matches
-spec names. It's hard to find stuff like ACPI_HEST_NOTIFY_GSIV
-in a spec.
+I've applied this patch to target-arm.next.
 
-> +/*
->   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
->   */
->  #define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
-> @@ -400,6 +419,39 @@ struct AcpiSystemResourceAffinityTable {
->  } QEMU_PACKED;
->  typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
->  
-> +/*
-> + * Generic Error Status Block
-> + */
-> +struct AcpiGenericErrorStatus {
-> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
-> +    uint32_t block_status;
-> +    uint32_t raw_data_offset;
-> +    uint32_t raw_data_length;
-> +    uint32_t data_length;
-> +    uint32_t error_severity;
-> +} QEMU_PACKED;
-> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
-> +
-> +/*
-> + * Masks for block_status flags above
-> + */
-> +#define ACPI_GEBS_UNCORRECTABLE         1
-> +
-> +/*
-> + * Values for error_severity field above
-> + */
-> +enum AcpiGenericErrorSeverity {
-> +    ACPI_CPER_SEV_RECOVERABLE,
-> +    ACPI_CPER_SEV_FATAL,
-> +    ACPI_CPER_SEV_CORRECTED,
-> +    ACPI_CPER_SEV_NONE,
-> +};
-> +
-> +/*
-> + * Generic Hardware Error Source version 2
-> + */
-> +#define ACPI_HEST_SOURCE_GENERIC_ERROR_V2    10
-> +
->  #define ACPI_SRAT_PROCESSOR_APIC     0
->  #define ACPI_SRAT_MEMORY             1
->  #define ACPI_SRAT_PROCESSOR_x2APIC   2
-> -- 
-> 1.8.3.1
+thanks
+-- PMM

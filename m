@@ -1,255 +1,162 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4275614wrh;
-        Tue, 7 May 2019 18:24:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxaSHu1gsCyqxrhuzbHPBBJAyYoWTyicyfZmzmTeMIP+fAYpmagnOkX0UpBlzVXs2+L2isX
-X-Received: by 2002:adf:f90c:: with SMTP id b12mr24327490wrr.63.1557278665284;
-        Tue, 07 May 2019 18:24:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557278665; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp34199lfo;
+        Tue, 2 Feb 2021 03:32:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzHJ+PMc8lxvKsEX95f+X5nAv9wrnnNFAr/kp4q94ZQlrGPCpnBTrLrVmTVaclvDqiv73oI
+X-Received: by 2002:a25:76ce:: with SMTP id r197mr10790880ybc.11.1612265523198;
+        Tue, 02 Feb 2021 03:32:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612265523; cv=none;
         d=google.com; s=arc-20160816;
-        b=I8bW8faRXo4F4XTrxZdtQNE8bzqfQxJqWZjXzz7wPlpqnmy68dMM3xnOFImnZmo2KO
-         3PkwGhiLlOs5IvzhLhhJVH+wxjZvL0Vw8mH2wSYtmMwL+Xb/LYRz9kd2x8ZzMo06bMiF
-         Wt6SNWkXjmEY2fPrXcarllxBV69REBnhw8Rhf6O1KBXjl+V3k17fgToj7aKu2BOc0hV0
-         9Rj8k10ee+n8HS+UnXXz3d6jO+gn8tqSu+4D0MNc9Yb7pGSGedTuX+qE0Q2ZUXg+C/Jf
-         W81/0ZroIttKdCD+cWryZNtAh/4zQqD67nx7eDRS+dWSy3b+lDOU9M2kfP/0BJSaOoce
-         Ydqg==
+        b=BOU+nVFRJB6jnk5aBRQa9fJjdELPIZCtvDvdtF2fvR195r/3DmYtxvuAu3gRSf3xk5
+         GesPWJ/m/wUol8CtoIxMrl4NrLlinnvZsww229Agnxn1gC4SOZy9knq6xKnbHTRmqVLO
+         Crhj+dFoTfXJsaa+u8DANcyFVsAXrqkfXrqWxky5+nPSk6bdzFEIGtbHQfvn6GtRlaQI
+         zZrE2fOzGLfQzeMUgJUHpBSr08vuq6qMhAuwrVMaYFM3QugKj2OCLQPa831sIRcunssw
+         /95bW19+7iB4po6amzPeWMWM5rwlNPfCqdg1LsTdZWBSk+ChqpEHVcLKBKGIYEXG9W8V
+         k1Bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=eydRl/I27mFSBEwZv3mkKCVuliXUsaUQQTqMwQAXhmg=;
-        b=0Ib5RCx0KL4COytP6cr26v1qRtHFRmH4wjgE41gYtUuHQARXODTJgW3zcP1erXB11h
-         qKteLBmTiOenPrTYyYtgE2wyj52/I4GDoH6lQf8XQ2LhATlqA3CShuN3sz8y/9xvbpHk
-         LSn1cpNezGtbGtEytOcSEx32RdVMnvRa3pa2PhEDBlVZ/3d9TrnmqdIeUpP94zbSiXDQ
-         c/3sZfHg8+YdFa5VFmLeGa/pVIEbLI6UWeVXoeFvX2lBY4K02piXla6YfEiGc8goFD5s
-         ZGK4JK2OPfd4DLWTtPApUrReYsEossmGog8x0r+258pbSmPfClsurXD3QwACvFzWnsaJ
-         tJxg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Bt+dYY2pkiqPZWPFbHC8cz9MZjZKp5MQ/pRCU/SrHOs=;
+        b=W2YTl1Rbf+eyU+5NO70NvPjCdNppY8eT+Rt3WzgC+DpTDBIluKzgz9r15p+h9EenpA
+         ISARvSv4u2Oor41rxfvtxYi6BfdMMLd+X5G8WQjZFXc5nUEe/FOs1x9m8EhWdNrb0rmQ
+         9v/lVE/SyY+j+w9x89RcVc9UJ1LrbMGRvVjaCWC5P3GpmOjWj0w7CfpblO1HxcQrJxDb
+         q0UwjxUTMbHccLzK+t4mxy5eIs/mtwJ4UXet/JuTMcI/rjKGkgKpEFwihWSESKGRpnWR
+         lonZe6q22N19zOZdwFQDQzruNZHhbw6Eh+3PIFzVpZ7XfTihJT0tzXK5DEd4Zvdt5FR0
+         rXjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=XUXLd5H5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=FbQclkpb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x184si445704wmg.6.2019.05.07.18.24.25
+        by mx.google.com with ESMTPS id p82si3638548yba.351.2021.02.02.03.32.03
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 May 2019 18:24:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Feb 2021 03:32:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=XUXLd5H5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:57215 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hOBJo-0006UC-9H
-	for alex.bennee@linaro.org; Tue, 07 May 2019 21:24:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53199)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1hOBJT-0006S0-09
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 21:24:04 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1hOBJR-0001Ff-Lj
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 21:24:02 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:48505)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1hOBJQ-00013T-VF; Tue, 07 May 2019 21:24:01 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 44zJf22K4Zz9s3q; Wed,  8 May 2019 11:23:54 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1557278634;
-	bh=DxLFN7mtgOiWqnrEjlI2GPxmwGRfkp5LAerwEzitFiM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XUXLd5H53SuDik8XVVCvCNjkCzxVWPmk1n7331BeY+fOgM3kv9OMV09rNtqjaaX53
-	/2143aahyaa27r5Ex10Pi0jpc2yUaOrDN5HvzE1m639BDRAUuS+LiqtP7LsEY5gFyg
-	c+4MHiedg/rtrGRt+uZLi9mHD1as82vHbP1Ugd+M=
-Date: Wed, 8 May 2019 11:23:16 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Message-ID: <20190508012316.GM7073@umbus.fritz.box>
-References: <20190507163416.24647-1-philmd@redhat.com>
-	<20190507163416.24647-2-philmd@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=FbQclkpb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57340 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6tuc-0007nR-IB
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 06:32:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33496)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6ttL-0006rU-K6
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 06:30:46 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:38535)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l6ttJ-0007A3-Ad
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 06:30:43 -0500
+Received: by mail-ed1-x530.google.com with SMTP id s11so22511087edd.5
+ for <qemu-devel@nongnu.org>; Tue, 02 Feb 2021 03:30:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Bt+dYY2pkiqPZWPFbHC8cz9MZjZKp5MQ/pRCU/SrHOs=;
+ b=FbQclkpbyhTlruUmwTiRuEC7hTtMoWc/BAdokeOqyz6CSj3upu9Xk/0NIoAZFQutFF
+ GE/9JlvCOEovrTl0qtZXPNoVMxNLzts1JLa0cs7Pmt6HW+glJnSZ6vh6UEPFcKtTQx+x
+ UTsMv6jjPt6ohtDGVM2gsnfiaLFonkzTEnsaIddwtmE0P5j9oMYYQnw6iS2dLMLUs/TJ
+ 8bOazObtYnJSZcwaDmM/3CaYusaM1XOu6CEUidcAwodZ98OiXhlQMM6o2DgK6hf5Mu3q
+ 6/PYI1ztE3OSgQcIFNyuAOoxpwfesWZco2AVfVrk3YAH4uzIEIVL3HkrppkVeelXoFEp
+ AdQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Bt+dYY2pkiqPZWPFbHC8cz9MZjZKp5MQ/pRCU/SrHOs=;
+ b=s71TSyBG73I3iiK1jjatXNP53L6QRT+HLcxn14bovrGrYt7iD4cbkmLg5Kkd5lM23k
+ Ym2DvlDSXUYuYszb1zCEFykvjzqHH8P7yQBP7sHVCurR3prQX7JqGy/nESH7/ZScmg3f
+ YWfEVsJlJCKQgoYGAxL8it9ljKdH5DrCMJwAq/V8fAUYmIxUU9i8NkOlwWq5kCfRkPuV
+ 8qauWt2Z/50aB1Qi9VMz6LklTfbZScBWI8jTy9//ksOOpEv7408b8uG1AEJt0UX7qu/8
+ ZCwb0jjeGmQ+zCqrOOKfbl5FB2dJCdH1rbCHAvrITHxmkDaLqlqt3WX1qSnNkesfJWQL
+ SSTw==
+X-Gm-Message-State: AOAM531LZEYyZYcWao6nwjlzGRfYfB1ZrLo3b/W80+he6+SbQOW96UWE
+ 12PAqYBTJ6709HrHIB+CGr9ewuxLzUEJMN92PLQFvt+hpeM=
+X-Received: by 2002:a05:6402:5107:: with SMTP id
+ m7mr22976255edd.52.1612265440060; 
+ Tue, 02 Feb 2021 03:30:40 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="B9BE8dkJ1pIKavwa"
-Content-Disposition: inline
-In-Reply-To: <20190507163416.24647-2-philmd@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH v2 01/16] hw/ppc/pnv: Use
- object_initialize_child for correct reference counting
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+References: <20210130043220.1345-1-yuzenghui@huawei.com>
+In-Reply-To: <20210130043220.1345-1-yuzenghui@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Feb 2021 11:30:28 +0000
+Message-ID: <CAFEAcA_eKjhj1262WV-cKGC6dN2JSYsVGME05VFjjj21HgL+Nw@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm/smmuv3: Fix addr_mask for range-based
+ invalidation
+To: Zenghui Yu <yuzenghui@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Paul Burton <pburton@wavecomp.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Aleksandar Rikalo <arikalo@wavecomp.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, Joel Stanley <joel@jms.id.au>,
-	Antony Pavlov <antonynpavlov@gmail.com>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eqQ6pVojV8wA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, wanghaibin.wang@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z+lO5Zm4GVty
 
-
---B9BE8dkJ1pIKavwa
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, May 07, 2019 at 06:34:01PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> As explained in commit aff39be0ed97:
->=20
->   Both functions, object_initialize() and object_property_add_child()
->   increase the reference counter of the new object, so one of the
->   references has to be dropped afterwards to get the reference
->   counting right. Otherwise the child object will not be properly
->   cleaned up when the parent gets destroyed.
->   Thus let's use now object_initialize_child() instead to get the
->   reference counting here right.
->=20
-> This patch was generated using the following Coccinelle script
-> (with a bit of manual fix-up for overly long lines):
->=20
->  @use_object_initialize_child@
->  expression parent_obj;
->  expression child_ptr;
->  expression child_name;
->  expression child_type;
->  expression child_size;
->  expression errp;
->  @@
->  (
->  -   object_initialize(child_ptr, child_size, child_type);
->  +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
-ze,
->  +                           child_type, &error_abort, NULL);
->      ... when !=3D parent_obj
->  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
- NULL);
->      ...
-> ?-   object_unref(OBJECT(child_ptr));
->  |
->  -   object_initialize(child_ptr, child_size, child_type);
->  +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
-ze,
->  +                            child_type, errp, NULL);
->      ... when !=3D parent_obj
->  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
- errp);
->      ...
-> ?-   object_unref(OBJECT(child_ptr));
->  )
->=20
-> While the object_initialize() function doesn't take an
-> 'Error *errp' argument, the object_initialize_child() does.
-> Since this code is used when a machine is created (and is not
-> yet running), we deliberately choose to use the &error_abort
-> argument instead of ignoring errors if an object creation failed.
->=20
-> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-> Inspired-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
+On Sat, 30 Jan 2021 at 04:32, Zenghui Yu <yuzenghui@huawei.com> wrote:
+>
+> When handling guest range-based IOTLB invalidation, we should decode the TG
+> field into the corresponding translation granule size so that we can pass
+> the correct invalidation range to backend. Set @granule to (tg * 2 + 10) to
+> properly emulate the architecture.
+>
+> Fixes: d52915616c05 ("hw/arm/smmuv3: Get prepared for range invalidation")
+> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
 > ---
->  hw/ppc/pnv.c | 12 ++++--------
->  1 file changed, 4 insertions(+), 8 deletions(-)
->=20
-> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> index dfb4ea5742c..31aa20ee25d 100644
-> --- a/hw/ppc/pnv.c
-> +++ b/hw/ppc/pnv.c
-> @@ -994,14 +994,12 @@ static void pnv_chip_quad_realize(Pnv9Chip *chip9, =
-Error **errp)
->          PnvCore *pnv_core =3D PNV_CORE(chip->cores + (i * 4) * typesize);
->          int core_id =3D CPU_CORE(pnv_core)->core_id;
-> =20
-> -        object_initialize(eq, sizeof(*eq), TYPE_PNV_QUAD);
->          snprintf(eq_name, sizeof(eq_name), "eq[%d]", core_id);
-> +        object_initialize_child(OBJECT(chip), eq_name, eq, sizeof(*eq),
-> +                                TYPE_PNV_QUAD, &error_fatal, NULL);
-> =20
-> -        object_property_add_child(OBJECT(chip), eq_name, OBJECT(eq),
-> -                                  &error_fatal);
->          object_property_set_int(OBJECT(eq), core_id, "id", &error_fatal);
->          object_property_set_bool(OBJECT(eq), true, "realized", &error_fa=
-tal);
-> -        object_unref(OBJECT(eq));
-> =20
->          pnv_xscom_add_subregion(chip, PNV9_XSCOM_EQ_BASE(eq->id),
->                                  &eq->xscom_regs);
-> @@ -1165,10 +1163,9 @@ static void pnv_chip_core_realize(PnvChip *chip, E=
-rror **errp)
->              continue;
+> * From v1:
+>   - Fix the compilation error
+>
+>  hw/arm/smmuv3.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index bbca0e9f20..98b99d4fe8 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>  {
+>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+>      IOMMUTLBEvent event;
+> -    uint8_t granule = tg;
+> +    uint8_t granule;
+>
+>      if (!tg) {
+>          SMMUEventInfo event = {.inval_ste_allowed = true};
+> @@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>              return;
 >          }
-> =20
-> -        object_initialize(pnv_core, typesize, typename);
->          snprintf(core_name, sizeof(core_name), "core[%d]", core_hwid);
-> -        object_property_add_child(OBJECT(chip), core_name, OBJECT(pnv_co=
-re),
-> -                                  &error_fatal);
-> +        object_initialize_child(OBJECT(chip), core_name, pnv_core, types=
-ize,
-> +                                typename, &error_fatal, NULL);
->          object_property_set_int(OBJECT(pnv_core), smp_threads, "nr-threa=
-ds",
->                                  &error_fatal);
->          object_property_set_int(OBJECT(pnv_core), core_hwid,
-> @@ -1180,7 +1177,6 @@ static void pnv_chip_core_realize(PnvChip *chip, Er=
-ror **errp)
->                                         OBJECT(chip), &error_fatal);
->          object_property_set_bool(OBJECT(pnv_core), true, "realized",
->                                   &error_fatal);
-> -        object_unref(OBJECT(pnv_core));
-> =20
->          /* Each core has an XSCOM MMIO region */
->          if (!pnv_chip_is_power9(chip)) {
+>          granule = tt->granule_sz;
+> +    } else {
+> +        granule = tg * 2 + 10;
+>      }
+>
+>      event.type = IOMMU_NOTIFIER_UNMAP;
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
 
---B9BE8dkJ1pIKavwa
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+Applied to target-arm.next, thanks.
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlzSL4IACgkQbDjKyiDZ
-s5KlIQ/8D+bNy6GErxnEOc5N9C5oPD8yIaHOQPc5zr9TrLedsd6znfqwCX2tHsSs
-gvmCooJsyL5I1eKQZKH1R2Ns0EBm4suOYJXqEOgtnvT2L43hbcF3dEvVbhwzaDSQ
-9KBo5doqXZ9BvztRW3jQL0Mfk0durgDsnuc8iQjT8hNJj9kLguPfGoJdcEeEldoF
-Lqo/9o49VFnASfnwfb07kOFrCyMJ9JphjXl5paDob8/IiaZATZtd7ss1OjQ9LybP
-4vQVJZlkdX93vqyWUKs5J2YPnFWW5i2G7Ba7i5ukbPYIVl90hnrx7iK7zcRMgye2
-aURQtK9Uhta0++e+Du4cyBHACfUdpwGGhm65Zu9ccaHHgqw7i3mMgSLfahSGQQHs
-b6sygusUsHGwRoGw8S9N5gtRwFTQ1yOnVR9dudkg7qOgPvHe9gfl9K8iqEFL8GJw
-IKKIgKtXiVd4xkBSZIQBydKf2BCgFeswKq8Itm/Ijkz0XqXiIKCqhSfktl6/ixs8
-dck8PdS81GmzsYqOLKvwDD1igDIH467IY7lgJkhZw17PWvL28vYlNTl0z/lZB+d6
-PaKVvAkCSoG3B2yIhcae+ckCUz+MKkll3F4ol4ktJChHj9K2O7P8kI0VJlwVo3GN
-7nlaZi6Hru7XEcXEi39yzA9Usw3CnWMIOIH/CPSqFIBvH3t7NBg=
-=2xTF
------END PGP SIGNATURE-----
-
---B9BE8dkJ1pIKavwa--
+-- PMM

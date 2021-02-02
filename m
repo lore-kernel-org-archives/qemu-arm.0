@@ -1,314 +1,207 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b11sm5439488wmh.29.2019.04.30.09.52.34
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Apr 2019 09:52:35 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A3EA91FF90;
-	Tue, 30 Apr 2019 17:52:34 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	mark.cave-ayland@ilande.co.uk,
-	cota@braap.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v5 03/15] tests/tcg/aarch64: add system boot.S
-Date: Tue, 30 Apr 2019 17:52:22 +0100
-Message-Id: <20190430165234.32272-4-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190430165234.32272-1-alex.bennee@linaro.org>
-References: <20190430165234.32272-1-alex.bennee@linaro.org>
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp4158849lfo;
+        Tue, 2 Feb 2021 01:32:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw9STOw5liTVr9U1K1Uara25KtK9JMu4GHPHqGPNEjqU57stgIAL7iPbJek/HE+dtEL8GZB
+X-Received: by 2002:a25:cc4c:: with SMTP id l73mr35765774ybf.395.1612258372818;
+        Tue, 02 Feb 2021 01:32:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612258372; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Lb8UsMPY4DBxz/MYcHeO2VokfRF7Pczv6C8lgFoKX+hUNPFtrBmAlsGyyD/MbRPEzw
+         MRMTqjzLseaxoP/mmlEEnTUYsEToXMRF/f7QWsCId9LHNmioMnRTQGaOjKcjWG2wM7HT
+         jf7J+H2O3eTcLmfnZCa69xZsGURlX9OnLuIrGbq3LVZ4PcpCXiWEm5qEtJ4KWaYLtUVK
+         VY9FfehnIVYuS6Ip14fjwNmVhI4wFfp8dBV2K7XUr1Ot5tpEk4brqU1EG8HrcwdL1IlS
+         rthmdGtQY16SXMgsUB6Nh8NVB2ur/fDcCOywKGNRfsIu/EKVzf7Wto0e4YLu4ek6iP78
+         7IRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=OLkjZ9nxozjiKK+4NvlXfG6Ydbp1C3frT1S82SDbm/k=;
+        b=1BcDyOKkYP3mjT9qEnSysW3hw4SOYPV4I5BVF8PoBNH5Cu374cRRdekw12KlDoK/Xf
+         cZekZKaws8/2YadGboT9MNlNgs5ypk3LYa7sZ4B4TU8JNZMspk2/BB/0LjoIpQU/dCHt
+         +At2yGRSBedk26sMahYh5sZv+yJqqF2AfNOZqshj0YvM+l66k6hXPfCn52ouBoMFAhk4
+         d1aCjHwY5mVdzjhXzglgTlHm+wwSiJJpIQ+NVRRW5OEBxu+iNEib8oDWjnry1sB1i8f4
+         r2PuAo96YRpPeDRHyo++WvVfu61lXZQeQ1jSVC5sCw7PqMcq5WUOYjq4F+uygcLoZ3L4
+         4Mhg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CGPl04R4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e65si24701672ybf.296.2021.02.02.01.32.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Feb 2021 01:32:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CGPl04R4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:33652 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6s3H-0000o7-V9
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 04:32:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39052)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6s2n-0000nV-SC; Tue, 02 Feb 2021 04:32:21 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:50364)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l6s2l-000304-38; Tue, 02 Feb 2021 04:32:21 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id 190so1725668wmz.0;
+ Tue, 02 Feb 2021 01:32:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=OLkjZ9nxozjiKK+4NvlXfG6Ydbp1C3frT1S82SDbm/k=;
+ b=CGPl04R42nD9VRH44EIMOaKmwZooboFOlReKsjiroXG6EPqTnEzTg5MSnkj/St6FII
+ 7iPAMoeSJvWob9BHx1gg7e1PfnhY7P8s7zfHcITHKZUkgsbuTXS2bBpg9TQsXT+JN2u2
+ dkxFvLEB39E5zgo1i1fQVgQEaNup2J+tt8kTKA4I3ryL+VIZODnxsgs6v2YBbRGvoTPP
+ rkFa+pS2cdka6XUtIj7UGWRayW+sSzOSt6SpX/EnqqoJ3UPW/X0uO+HBMWS+pDh/lhPm
+ NWIeMwmWPQTL1yPEsBrmLOTASVDUawwVeurnqv8mpl3pckpbIJ7uUMtUR8OVnMtESUAX
+ mOyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OLkjZ9nxozjiKK+4NvlXfG6Ydbp1C3frT1S82SDbm/k=;
+ b=pYJXWeHa4nCuStd435GAXPIqBC+XSCG5+58kg8/sePdAiMQA5PZgPFqqW12bxecwUu
+ +z4JKpS5jS55kugqYfLFyU1gfwaTHHgu8kINbOyKVg1PIepTssdYN97rCU2HPbbh7AWu
+ 2nfWnM9ffWb/zePgTigzabXvq/XRQ7NTfuC5MD2HsxY1/K3Xc49fQHS4zUR6AmYX229i
+ pS+Jf6VD0eaBt9+I0iZSpnFBcJ7uxxpE6QLt7dhz5bpIGnyy4T94vhRlG/9tHkXbdcYM
+ k30vf1AmK7xEGPfWutwNUUXTtmPG2Y8iP33dfAylAAlQDxqimMMQXdwycXmoRBwNSr6o
+ owBw==
+X-Gm-Message-State: AOAM533fFgiY3YwtwQFTFoMK7u7JxnoWx++2s487njs973bN9o/SJuQG
+ yo+ffCceR+8com7wK623YSo=
+X-Received: by 2002:a1c:1b12:: with SMTP id b18mr2585504wmb.157.1612258336312; 
+ Tue, 02 Feb 2021 01:32:16 -0800 (PST)
+Received: from [192.168.1.36] (7.red-83-57-171.dynamicip.rima-tde.net.
+ [83.57.171.7])
+ by smtp.gmail.com with ESMTPSA id d30sm33164122wrc.92.2021.02.02.01.32.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Feb 2021 01:32:15 -0800 (PST)
+Subject: Re: [QEMU-SECURITY] [PATCH] hw/intc/arm_gic: Fix interrupt ID in
+ GICD_SGIR register
+To: P J P <pj.pandit@yahoo.co.in>, P J P <ppandit@redhat.com>,
+ QEMU Security <qemu-security@nongnu.org>
+References: <20210131103401.217160-1-f4bug@amsat.org>
+ <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
+ <20p82p5p-ns25-n434-37os-n55013s6313@erqung.pbz>
+ <6d29aa57-2e6e-e81d-831f-803d9aae798f@amsat.org>
+ <787280826.1146023.1612246917145@mail.yahoo.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <3bd70da2-39ec-6e6b-d46d-6052f1b8f0b0@amsat.org>
+Date: Tue, 2 Feb 2021 10:32:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <787280826.1146023.1612246917145@mail.yahoo.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 6sHrzxhCFp6g
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, Li Qiang <liq3ea@gmail.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Alexander Bulekov <alxndr@bu.edu>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ip7pRTc6KXn3
 
-This provides the bootstrap and low level helper functions for an
-aarch64 kernel. We use semihosting to handle test output and exiting
-the emulation. semihosting's parameter passing is a little funky so we
-end up using the stack and pointing to that as the parameter block.
+On 2/2/21 7:21 AM, P J P wrote:
+> On Sunday, 31 January, 2021, 08:48:26 pm IST, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote: 
+>> Forwarding to qemu-security@ to see if this issue is worth a CVE.
+>>
+>> | On 1/31/21 11:34 AM, Philippe Mathieu-Daudé wrote:
+>> | > Per the ARM Generic Interrupt Controller Architecture specification
+>> | > (document "ARM IHI 0048B.b (ID072613)"), the SGIINTID field is 4 bit,
+>> | > not 10:
+>> | > 
+>> | >    - Table 4-21 GICD_SGIR bit assignments
+>> | > 
+>> | >    The Interrupt ID of the SGI to forward to the specified CPU
+>> | >    interfaces. The value of this field is the Interrupt ID, in
+>> | >    the range 0-15, for example a value of 0b0011 specifies
+>> | >    Interrupt ID 3.
+>> | > 
+>> | > diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+>> | > index af41e2fb448..75316329516 100644
+>> | > --- a/hw/intc/arm_gic.c
+>> | > +++ b/hw/intc/arm_gic.c
+>> | > @@ -1476,7 +1476,7 @@ static void gic_dist_writel(void *opaque, hwaddr offset,
+>> | >          int target_cpu;
+>> | >  
+>> | >          cpu = gic_get_current_cpu(s);
+>> | > -        irq = value & 0x3ff;
+>> | > +        irq = value & 0xf;
+>> | >          switch ((value >> 24) & 3) {
+>> | >          case 0:
+>> | >              mask = (value >> 16) & ALL_CPU_MASK;
+>> | > 
+>> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
+>> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
+> 
+> * Does above patch address both these bugs? For BZ#1913917 'irq' is derived from 'offset' it seems.
+> 
+>         /* Interrupt Configuration.  */                                         
+>         irq = (offset - 0xc00) * 4;
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/aarch64/Makefile.softmmu-target |  32 ++++
- tests/tcg/aarch64/system/boot.S           | 200 ++++++++++++++++++++++
- tests/tcg/aarch64/system/kernel.ld        |  22 +++
- 3 files changed, 254 insertions(+)
- create mode 100644 tests/tcg/aarch64/Makefile.softmmu-target
- create mode 100644 tests/tcg/aarch64/system/boot.S
- create mode 100644 tests/tcg/aarch64/system/kernel.ld
+I haven't done a thorough analysis, simply tried to fixed this
+bug ASAP as it is public so many users are exposed.
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-new file mode 100644
-index 0000000000..e6aee856c8
---- /dev/null
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -0,0 +1,32 @@
-+#
-+# Aarch64 system tests
-+#
-+
-+AARCH64_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/aarch64/system
-+VPATH+=$(AARCH64_SYSTEM_SRC)
-+
-+# These objects provide the basic boot code and helper functions for all tests
-+CRT_OBJS=boot.o
-+
-+AARCH64_TEST_SRCS=$(wildcard $(AARCH64_SYSTEM_SRC)/*.c)
-+AARCH64_TESTS = $(patsubst $(AARCH64_SYSTEM_SRC)/%.c, %, $(AARCH64_TEST_SRCS))
-+
-+CRT_PATH=$(AARCH64_SYSTEM_SRC)
-+LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
-+LDFLAGS=-Wl,-T$(LINK_SCRIPT)
-+TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
-+CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
-+
-+# building head blobs
-+.PRECIOUS: $(CRT_OBJS)
-+
-+%.o: $(CRT_PATH)/%.S
-+	$(CC) $(CFLAGS) -x assembler-with-cpp -c $< -o $@
-+
-+# Build and link the tests
-+%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
-+	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
-+
-+# Running
-+QEMU_OPTS+=-M virt -cpu max -display none -semihosting -kernel
-diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
-new file mode 100644
-index 0000000000..03d319e07f
---- /dev/null
-+++ b/tests/tcg/aarch64/system/boot.S
-@@ -0,0 +1,200 @@
-+/*
-+ * Minimal AArch64 system boot code.
-+ *
-+ * Copyright Linaro Ltd 2019
-+ *
-+ * Loosely based on the newlib/libgloss setup stubs. Using semihosting
-+ * for serial output and exit functions.
-+ */
-+
-+/*
-+ * Semihosting interface on ARM AArch64
-+ * See "Semihosting for AArch32 and AArch64 Relase 2.0" by ARM
-+ * w0 - semihosting call number
-+ * x1 - semihosting parameter
-+ */
-+#define semihosting_call hlt 0xf000
-+#define SYS_WRITEC      0x03    /* character to debug channel */
-+#define SYS_WRITE0      0x04    /* string to debug channel */
-+#define SYS_EXIT        0x18
-+
-+	.align	12
-+
-+        .macro	ventry	label
-+        .align	7
-+        b	\label
-+        .endm
-+
-+vector_table:
-+	/* Current EL with SP0.  */
-+	ventry	curr_sp0_sync		/* Synchronous  */
-+	ventry	curr_sp0_irq		/* Irq/vIRQ  */
-+	ventry	curr_sp0_fiq		/* Fiq/vFIQ  */
-+	ventry	curr_sp0_serror		/* SError/VSError  */
-+
-+	/* Current EL with SPx.  */
-+	ventry	curr_spx_sync		/* Synchronous  */
-+	ventry	curr_spx_irq		/* IRQ/vIRQ  */
-+	ventry	curr_spx_fiq		/* FIQ/vFIQ  */
-+	ventry	curr_spx_serror		/* SError/VSError  */
-+
-+	/* Lower EL using AArch64.  */
-+	ventry	lower_a64_sync		/* Synchronous  */
-+	ventry	lower_a64_irq		/* IRQ/vIRQ  */
-+	ventry	lower_a64_fiq		/* FIQ/vFIQ  */
-+	ventry	lower_a64_serror	/* SError/VSError  */
-+
-+	/* Lower EL using AArch32.  */
-+	ventry	lower_a32_sync		/* Synchronous  */
-+	ventry	lower_a32_irq		/* IRQ/vIRQ  */
-+	ventry	lower_a32_fiq		/* FIQ/vFIQ  */
-+	ventry	lower_a32_serror	/* SError/VSError  */
-+
-+        .text
-+	.align 4
-+
-+        /* Common vector handling for now */
-+curr_sp0_sync:
-+curr_sp0_irq:
-+curr_sp0_fiq:
-+curr_sp0_serror:
-+curr_spx_sync:
-+curr_spx_irq:
-+curr_spx_fiq:
-+curr_spx_serror:
-+lower_a64_sync:
-+lower_a64_irq:
-+lower_a64_fiq:
-+lower_a64_serror:
-+lower_a32_sync:
-+lower_a32_irq:
-+lower_a32_fiq:
-+lower_a32_serror:
-+	mov	x0, SYS_WRITE0
-+	adr	x1, .error
-+        semihosting_call
-+	mov	x0, SYS_EXIT
-+        mov     x1, 1
-+        semihosting_call
-+        /* never returns */
-+
-+.error:
-+	.string "Terminated by exception.\n"
-+
-+        .align 4
-+        .global __start
-+__start:
-+        /* Installs a table of exception vectors to catch and handle all
-+           exceptions by terminating the process with a diagnostic.  */
-+	adr	x0, vector_table
-+	msr	vbar_el1, x0
-+
-+        /* Page table setup (identity mapping).  */
-+	adrp	x0, ttb
-+	add	x0, x0, :lo12:ttb
-+	msr	ttbr0_el1, x0
-+
-+        /* Create some (big) pages */
-+	adr	x1, .				/* phys address */
-+	bic	x1, x1, #(1 << 30) - 1		/* 1GB block alignment */
-+
-+        add	x2, x0, x1, lsr #(30 - 3)	/* page offset in l1 page table */
-+
-+	mov	x3, #0x401			/* page table attributes (AF, block) */
-+	orr	x1, x1, x3
-+
-+	str	x1, [x2], #8			/* 1st GB */
-+
-+	mov	x3, #(1 << 30)			/* 1GB block */
-+	add	x1, x1, x3
-+
-+        str	x1, [x2]			/* 2nd GB */
-+
-+	/* Setup/enable the MMU.  */
-+
-+	/*
-+         * TCR_EL1 - Translation Control Registers
-+         *
-+         * IPS[34:32] = 40-bit PA, 1TB
-+         * ORGN0[11:10] = Outer: Normal, Outer Write-Back Read-Allocate No Write-Allocate Cacheable
-+         * IRGN0[9:8] = Inner: Normal, Inner Write-Back Read-Allocate No Write-Allocate Cacheable.
-+         * T0SZ[5:0]  = 2^(64 - 25)
-+         */
-+	ldr	x0, = (2 << 32) | 25 | (3 << 10) | (3 << 8)
-+	msr	tcr_el1, x0
-+
-+	mov	x0, #0xee			/* Inner/outer cacheable WB */
-+	msr	mair_el1, x0
-+	isb
-+
-+        /*
-+         * SCTLR_EL1 - System Control Register
-+         *
-+         * WXN[19] = 0 = no effect, Write does not imply XN (execute never)
-+         * I[12] = Instruction cachability control
-+         * SA[3] = SP alignment check
-+         * C[2] = Data cachability control
-+         * M[0] = 1, enable stage 1 address translation for EL0/1
-+         */
-+	mrs	x0, sctlr_el1
-+	ldr	x1, =0x100d			/* bits I(12) SA(3) C(2) M(0) */
-+	bic	x0, x0, #(1 << 1)		/* clear bit A(1) */
-+	bic	x0, x0, #(1 << 19)		/* clear WXN */
-+	orr	x0, x0, x1			/* set bits */
-+
-+	dsb	sy
-+	msr	sctlr_el1, x0
-+	isb
-+
-+        /*
-+         * Enable FP registers. The standard C pre-amble will be
-+	 * saving these and A-profile compilers will use AdvSIMD
-+	 * registers unless we tell it not to.
-+        */
-+        mrs     x0, cpacr_el1
-+        orr     x0, x0, #(3 << 20)
-+        msr     cpacr_el1, x0
-+
-+        /* Setup some stack space and enter the test code.
-+         * Assume everthing except the return value is garbage when we
-+	 * return, we won't need it.
-+         */
-+	adrp	x0, stack
-+	add	x0, x0, :lo12:stack
-+
-+        mov      sp, x0
-+        bl      main
-+
-+        /* pass return value to sys exit */
-+        mov    x1, x0
-+        ldr    x0, =0x20026 /* ADP_Stopped_ApplicationExit */
-+        stp    x0, x1, [sp, #-16]!
-+        mov    x1, sp
-+	mov    x0, SYS_EXIT
-+        semihosting_call
-+        /* never returns */
-+
-+        /*
-+         * Helper Functions
-+         */
-+
-+        /* Output a single character to serial port */
-+        .global __sys_outc
-+__sys_outc:
-+        stp x0, x1, [sp, #-16]!
-+        /* pass address of c on stack */
-+        mov x1, sp
-+        mov x0, SYS_WRITEC
-+        semihosting_call
-+        ldp x0, x1, [sp], #16
-+        ret
-+
-+	.data
-+	.align	12
-+ttb:
-+	.space	4096, 0
-+
-+        .align  12
-+stack:
-+        .space 65536, 0
-+stack_end:
-diff --git a/tests/tcg/aarch64/system/kernel.ld b/tests/tcg/aarch64/system/kernel.ld
-new file mode 100644
-index 0000000000..73d75cae64
---- /dev/null
-+++ b/tests/tcg/aarch64/system/kernel.ld
-@@ -0,0 +1,22 @@
-+ENTRY(__start)
-+
-+SECTIONS
-+{
-+    /* virt machine, RAM starts at 1gb */
-+    . = (1 << 30);
-+    .text : {
-+        *(.text)
-+    }
-+    .data : {
-+        *(.data)
-+    }
-+    .rodata : {
-+        *(.rodata)
-+    }
-+    .bss : {
-+        *(.bss)
-+    }
-+    /DISCARD/ : {
-+        *(.ARM.attributes)
-+    }
-+}
--- 
-2.20.1
+I had the impression the first call (writel 0x8000f00 0x5affaf)
+break the heap, so the memory is inconsistent when the second
+call (write 0x8000eff 0x1 0x0) is done, but better have developers
+familiar with GIC and security auditing this again.
+
+>> | > Correct the irq mask to fix an undefined behavior (which eventually
+>> | > lead to a heap-buffer-overflow, see [Buglink]):
+>> | > 
+>> | >    $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M virt,accel=qtest -qtest stdio
+>> | >    [I 1612088147.116987] OPENED
+>> | >  [R +0.278293] writel 0x8000f00 0xff4affb0
+>> | >  ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bounds for type 'uint8_t [16][8]'
+>> | >  SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/intc/arm_gic.c:1498:13
+>> | > 
+>> | > Cc: qemu-stable@nongnu.org
+>> | > Fixes: 9ee6e8bb853 ("ARMv7 support.")
+>> |
+>> | > ---
+>> | > Isnt it worth a CVE to help distributions track backports?
+>> | > ---
+> 
+> Thank you for reporting this issue. Will process further.
+
+Thank for the quick processing.
+
+Regards,
+
+Phil.

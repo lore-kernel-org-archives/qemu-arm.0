@@ -1,552 +1,172 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp458912lfo;
-        Tue, 2 Feb 2021 13:26:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwAZKPSr/7d08wuvhWqZ+ix+tGbquIRAeWpDAVBvAIOVuVfxelgMC7wglrpU2eoNgF5yiYB
-X-Received: by 2002:a25:ea49:: with SMTP id o9mr33041467ybe.39.1612301206882;
-        Tue, 02 Feb 2021 13:26:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612301206; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp509334lfo;
+        Tue, 2 Feb 2021 14:57:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx2+h6yf9iySqD2wKy6nSH/bMM+uHuievWgPU8K51+SOMgHCSHBcT9+VT8EIpvXsu6SqFG4
+X-Received: by 2002:a25:d186:: with SMTP id i128mr349418ybg.46.1612306652168;
+        Tue, 02 Feb 2021 14:57:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612306652; cv=none;
         d=google.com; s=arc-20160816;
-        b=WwpHIYyDbQf+apsdmWRiMClCZfNJWNhyXQlfMxYRibhqn4DozAcDarN9ai+4cePbpm
-         YPvlwR8b2vioPF3LgcYpyRYuHfe7zJy2nZz7XMR3bkQ4yoY6bcoyIAaR0BCCsi2+Hhkx
-         321TeY67LgUw7UpyLwNOTJIA+oiqZcWGCIafPNSLE/JPGU4LS3vV6C5HsUFYRDPhV4IZ
-         BPC/wXvcaUOVcVoStmHwc3UI6elNDrPOuZ2JZ7LDlAxkNOrD6pmoXUeka3YF2QIe4L6q
-         T0OTdMfLZ0D1lh2BMiwlEa4eoDFU+Otiq+IThJsv4CPrLK9FYJ0XbADERD6xnDOAsWYd
-         9CQQ==
+        b=1B794L94m3FlDEeeu5MaFg7jWj53KCcnAUlG1MkZCzYwYVnbGRmu8kzGZeA0d0TghD
+         leggcOoujgulHI+95kJtsxiXvwMNlMRNmRbG91YSzUpsVPJGyXfAwBS2Yo5JpMYFMQ5s
+         9D++MAqv/Dfgh2UNZz4jHmw7O0HphlPCBDOPeHyC0gEL7A6kdOjre8HCz6haNqiyZR+U
+         ESwODSWT7ZxXw4sVqEzMqGGLQ+e+SdlmabspeXW9F/ZphX56eFFZizIgiTyO/2MQytUb
+         DCGV3JlK5/HbP0GttSgD0avwU3LBhcT3GSUbQOCVTtj2xZGUqoec8oS917GYNWsNkXso
+         zx/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:mime-version:message-id:subject:to:from:date
          :dkim-signature;
-        bh=rl7a1aDIgnv/g6kqPTwrylvdqKRNl/lfJcibBpMi0aM=;
-        b=xxdAEY0UxwQtCT2gxLEzZu/KslcdZ5iswjma1jkAjj1wkI9EH8oKjBqE4Y1mZzcnuU
-         jBkZpJI8wSYqWwK1cwd9J23GatyNPHr043dbX3tLEFLeMd5XLMI3IxQTeHVQbyD2O+hQ
-         gA7WNIzKscQ+lzad5bV5QJj33TpWhzrcc/GdEcS/mK9IIuLCIPM8jQpLvnnCpSzu5YNv
-         lNSBMVWbGE0G7kAFhDE3iARIZE+AztYRPMmfNjJFXivZC2ah1mJ7B+/gBuUWNF4zCXTa
-         Pj9CUgG08ufqL6dy6HPPbZ9uCuiqtUU6Ol/F5VRUVrDgfYMEWLmbnWGQWcEchZw5ZaRu
-         5lPA==
+        bh=T83RMy2Gwje7YdzkCqa1OFUNA3HJsUqBur/2mRKIQ9Y=;
+        b=ChpN0iwR3oWe5VfrWumvnLpEtXx5i6NJt5qT9tPtuQtqjBiNfTv2D6wtYppsmubZVs
+         HKOsWm7L7oaHWvDdmZH7OXIXfjHSFyz1TCxJXv0ulR9qZ8PlILL+jtnoEipivTuo2FNI
+         QMjcRQ+Ktt4rqtclLxMGc5HLCkRf/JgF+b815Kug1O0f5OquhSLrqP8GSwgkuGt0Ic6o
+         6Hy4SxpO5uVdFH40qgF4GTBCEYA3KhcO05pKudx44hwb7hLwFsypQyLeR/gJ5debXsPk
+         2VNTMWSn0doEDEH5IbPA+uIOIBSBK6kzKHmtqIzlC79sJ7SY+27m7dxre5NR5j5EXg0p
+         ZdAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=Qgnm0bm4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BYRlw4Tz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k128si116814yba.483.2021.02.02.13.26.46
+        by mx.google.com with ESMTPS id c141si302283ybf.205.2021.02.02.14.57.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 13:26:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Feb 2021 14:57:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=Qgnm0bm4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:48440 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BYRlw4Tz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49368 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l73CA-0005l5-63
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 16:26:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56428)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l74bz-0005il-HV
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 17:57:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l73Bh-0005kj-Rr; Tue, 02 Feb 2021 16:26:20 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:51552)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l73Bc-0002QB-Sm; Tue, 02 Feb 2021 16:26:17 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 6CA7AC602E6;
- Tue,  2 Feb 2021 22:26:04 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1612301164;
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1l74aW-0004qJ-Tm
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 17:56:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:43433)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1l74aU-0001ue-QR
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 17:56:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612306557;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=rl7a1aDIgnv/g6kqPTwrylvdqKRNl/lfJcibBpMi0aM=;
- b=Qgnm0bm4fhUc5GQQDVghD3yg4bzAy2MsBbOSuIjtiLDHpCmT4CpyaVhIYJ5FLdQspjabFU
- zjtPOI0CbA6K5UcW6rbDgMliqpDAeUrdpYEEPLGRFdhCENs28jUGqsKsWz3LmR3ipfRXFr
- Lrj1aNUUXQI3Zt4M+0CjKF8lc+TcVg7Qy33hXWILey6U1hKEGgziGdple/SfzBlAOziV4l
- s4m5B3mDdzyKbUioCwP7I85iNToBY9Rs1AnlCQczgVkTcAqFlxzIDKpCeLVtQPseQCxYH1
- 2nRHNPVJMPWW4Cs2tj8GGGefUG9Xk3TA0vSZdjUKTHyXJf7oFnm7TLkx8huWZQ==
-Date: Tue, 2 Feb 2021 22:26:27 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC 1/4] clock: Add ClockEvent parameter to callbacks
-Message-ID: <20210202212627.2bd4xr7y5hg4q6gm@sekoia-pc.home.lmichel.fr>
-References: <20210201123013.32308-1-peter.maydell@linaro.org>
- <20210201123013.32308-2-peter.maydell@linaro.org>
+ content-transfer-encoding:content-transfer-encoding;
+ bh=T83RMy2Gwje7YdzkCqa1OFUNA3HJsUqBur/2mRKIQ9Y=;
+ b=BYRlw4TztqHdAW+jSF8ej/8ENCRBS65/HvAwMXLK2ixHlYolsJGDXcK0JH9psvqgLa17YB
+ DstSkM2t+Z5ivWECg3jOEz1N7tH7cMTdIYeDShtVWQTD5W8GfBolEgWBePnnvIkyIg/aJQ
+ BvGDbunPDnwIxOknpYHvn0dK9seZdRo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-438-u70gNYaFOje7ydqaiLEUZw-1; Tue, 02 Feb 2021 17:55:55 -0500
+X-MC-Unique: u70gNYaFOje7ydqaiLEUZw-1
+Received: by mail-wr1-f71.google.com with SMTP id e15so13257786wrm.13
+ for <qemu-devel@nongnu.org>; Tue, 02 Feb 2021 14:55:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:content-transfer-encoding;
+ bh=T83RMy2Gwje7YdzkCqa1OFUNA3HJsUqBur/2mRKIQ9Y=;
+ b=ki81VLBx01ACCaGFUPz5jOg/wtp/jtZns6+Mk3wKvXLdMv2FAsuBfIhp90O72wKIuK
+ qwzKbYb5BfS7xv0m/axaVdxFHMvPmMTOMZQzZO9mYZLXr57PYjsWKwz6JwY8FwHUb+zf
+ aJqPbMOUOP91VhlEW17EZ9TfqUaoq+TA/NxEgUyOHo19Dae/JJzJCparVswLlt9MiN9k
+ mcLgtVLo7SaWVI+Onef+TiO9lzW+IgpzwbgJn1MmaF2m+Yn1xwOKNJ5lSA/gOK1hCRqr
+ dSlcxUXqGPlldAIAZ29WYUMB6V8Q0jjerLj8rx6W2vNZl2acOBvB/iANAKe3Hjc4vuYy
+ QeJw==
+X-Gm-Message-State: AOAM531vkn4/qj/XDSyniV8IpLttH5Quf8xgw+52KA2EfFlg/Ix/RFKq
+ 1+WVvXvENCUT7Y7a4xc9bnFU8nn9lG+3l4bN/voefrLVejwPNDbPj74REch9A4pjZCmBh/hFlOE
+ atKJm/jCgv9cD/OGRd+KOKHvRaB0aUMQNEzAXhbhNsgYeWJq8yKMCnGLWa7SE
+X-Received: by 2002:a5d:6685:: with SMTP id l5mr321608wru.176.1612306554047;
+ Tue, 02 Feb 2021 14:55:54 -0800 (PST)
+X-Received: by 2002:a5d:6685:: with SMTP id l5mr321592wru.176.1612306553847;
+ Tue, 02 Feb 2021 14:55:53 -0800 (PST)
+Received: from redhat.com (bzq-79-177-39-148.red.bezeqint.net. [79.177.39.148])
+ by smtp.gmail.com with ESMTPSA id i7sm111002wru.49.2021.02.02.14.55.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Feb 2021 14:55:53 -0800 (PST)
+Date: Tue, 2 Feb 2021 17:55:51 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] acpi: use constants as strncpy limit
+Message-ID: <20210202225548.1607168-1-mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20210201123013.32308-2-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.386,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- Havard Skinnemoen <hskinnemoen@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZzAAdGw0K6BU
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0XPKcd9TMEik
 
-Hi Peter,
+gcc is not smart enough to figure out length was validated before use as
+strncpy limit, resulting in this warning:
 
-On 12:30 Mon 01 Feb     , Peter Maydell wrote:
-> The Clock framework allows users to specify a callback which is
-> called after the clock's period has been updated.  Some users need to
-> also have a callback which is called before the clock period is
-> updated.
-> 
-> As the first step in adding support for notifying Clock users on
-> pre-update events, add an argument to the ClockCallback to specify
-> what event is being notified, and make the existing callback
-> implementations check this argument and only act if the event is
-> ClockUpdate.
-> 
-> Note that the documentation update renders correct the previously
-> incorrect claim in 'Adding a new clock' that callbacks "will be
-> explained in a following section".
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I thought about trying to add support for pre-update callbacks
-> in a way that didn't require changes to every current callback
-> user, but there aren't *that* many of them and I think this API
-> is nicer than having multiple separate callback pointers and
-> extra functions for "also set the pre-update callback" and so on.
+inlined from ‘virt_set_oem_table_id’ at ../../hw/arm/virt.c:2197:5:
+/usr/include/aarch64-linux-gnu/bits/string_fortified.h:106:10: error:
+‘__builtin_strncpy’ specified bound depends on the length of the
+source argument [-Werror=stringop-overflow=]
 
-Have you considered using a mask to record the events the clock
-user is interested in? This mask would be passed at clock init time.
-This would add a parameter to qdev_init_clock_in (we could even add a
-new function to set this mask) but would avoid the need of those "if" in
-the callbacks.
+Simplify things by using a constant limit instead.
 
-This way if we ever end up adding yet another event, it won't require
-any changes to the users.
+Fixes: 97fc5d507fca ("acpi: Permit OEM ID and OEM table ID fields to be changed")
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/arm/virt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-What do you think?
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ecb0e14816..f538194e32 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2107,7 +2107,7 @@ static void virt_set_oem_id(Object *obj, const char *value, Error **errp)
+         return;
+     }
+ 
+-    strncpy(vms->oem_id, value, len + 1);
++    strncpy(vms->oem_id, value, 6);
+ }
+ 
+ static char *virt_get_oem_table_id(Object *obj, Error **errp)
+@@ -2128,7 +2128,7 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
+                    "User specified oem-table-id value is bigger than 8 bytes in size");
+         return;
+     }
+-    strncpy(vms->oem_table_id, value, len + 1);
++    strncpy(vms->oem_table_id, value, 8);
+ }
+ 
+ 
 -- 
-Luc
+MST
 
-> ---
->  docs/devel/clocks.rst            | 35 ++++++++++++++++++++++++++++++--
->  include/hw/clock.h               | 10 ++++++++-
->  hw/arm/armsse.c                  |  8 ++++++--
->  hw/char/cadence_uart.c           |  5 ++++-
->  hw/char/ibex_uart.c              |  5 ++++-
->  hw/char/pl011.c                  |  5 ++++-
->  hw/core/clock.c                  |  2 +-
->  hw/misc/bcm2835_cprman.c         | 20 ++++++++++++++----
->  hw/misc/npcm7xx_clk.c            | 31 +++++++++++++++++++++++++---
->  hw/misc/zynq_slcr.c              |  6 +++++-
->  hw/timer/cmsdk-apb-dualtimer.c   |  5 ++++-
->  hw/timer/cmsdk-apb-timer.c       |  5 ++++-
->  hw/watchdog/cmsdk-apb-watchdog.c |  5 ++++-
->  13 files changed, 122 insertions(+), 20 deletions(-)
-> 
-> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> index c54bbb82409..8d3b456561f 100644
-> --- a/docs/devel/clocks.rst
-> +++ b/docs/devel/clocks.rst
-> @@ -113,7 +113,7 @@ output.
->       * callback for the input clock (see "Callback on input clock
->       * change" section below for more information).
->       */
-> -    static void clk_in_callback(void *opaque);
-> +    static void clk_in_callback(void *opaque, ClockEvent event);
->  
->      /*
->       * static array describing clocks:
-> @@ -153,6 +153,34 @@ nothing else to do. This value will be propagated to other clocks when
->  connecting the clocks together and devices will fetch the right value during
->  the first reset.
->  
-> +Clock callbacks
-> +---------------
-> +
-> +You can give a clock a callback function in several ways:
-> +
-> + * by passing it as an argument to ``qdev_init_clock_in()``
-> + * as an argument to the ``QDEV_CLOCK_IN()`` macro initializing an
-> +   array to be passed to ``qdev_init_clocks()``
-> + * by directly calling the ``clock_set_callback()`` function
-> +
-> +The callback function must be of this type:
-> +
-> +.. code-block:: c
-> +
-> +   typedef void ClockCallback(void *opaque, ClockEvent event);
-> +
-> +The ``opaque`` argument is the pointer passed to ``qdev_init_clock_in()``
-> +or ``clock_set_callback()``; for ``qdev_init_clocks()`` it is the
-> +``dev`` device pointer.
-> +
-> +The ``event`` argument specifies why the callback has been called.
-> +Callback functions should check this and only do something for
-> +specific events they need to handle, so that if in future different
-> +events are added the callback code doesn't need to be updated.
-> +The events currently supported are:
-> +
-> + * ``ClockUpdate`` : called after the input clock's period has changed
-> +
->  Retrieving clocks from a device
->  -------------------------------
->  
-> @@ -271,12 +299,15 @@ Here is an example:
->  
->  .. code-block:: c
->  
-> -    void clock_callback(void *opaque) {
-> +    void clock_callback(void *opaque, ClockEvent event) {
->          MyDeviceState *s = (MyDeviceState *) opaque;
->          /*
->           * 'opaque' is the argument passed to qdev_init_clock_in();
->           * usually this will be the device state pointer.
->           */
-> +        if (event != ClockUpdate) {
-> +            return;
-> +        }
->  
->          /* do something with the new period */
->          fprintf(stdout, "device new period is %" PRIu64 "* 2^-32 ns\n",
-> diff --git a/include/hw/clock.h b/include/hw/clock.h
-> index e5f45e2626d..323f8d49fed 100644
-> --- a/include/hw/clock.h
-> +++ b/include/hw/clock.h
-> @@ -22,7 +22,15 @@
->  #define TYPE_CLOCK "clock"
->  OBJECT_DECLARE_SIMPLE_TYPE(Clock, CLOCK)
->  
-> -typedef void ClockCallback(void *opaque);
-> +/*
-> + * Argument to ClockCallback functions indicating why the callback
-> + * has been called.
-> + */
-> +typedef enum ClockEvent {
-> +    ClockUpdate, /* Clock period has just updated */
-> +} ClockEvent;
-> +
-> +typedef void ClockCallback(void *opaque, ClockEvent event);
->  
->  /*
->   * clock store a value representing the clock's period in 2^-32ns unit.
-> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-> index 26e1a8c95b6..cf0bd962ea2 100644
-> --- a/hw/arm/armsse.c
-> +++ b/hw/arm/armsse.c
-> @@ -230,9 +230,13 @@ static void armsse_forward_sec_resp_cfg(ARMSSE *s)
->      qdev_connect_gpio_out(dev_splitter, 2, s->sec_resp_cfg_in);
->  }
->  
-> -static void armsse_mainclk_update(void *opaque)
-> +static void armsse_mainclk_update(void *opaque, ClockEvent event)
->  {
->      ARMSSE *s = ARM_SSE(opaque);
-> +
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      /*
->       * Set system_clock_scale from our Clock input; this is what
->       * controls the tick rate of the CPU SysTick timer.
-> @@ -1120,7 +1124,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->      sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
->  
->      /* Set initial system_clock_scale from MAINCLK */
-> -    armsse_mainclk_update(s);
-> +    armsse_mainclk_update(s, ClockUpdate);
->  }
->  
->  static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
-> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-> index c603e14012a..2900688fc24 100644
-> --- a/hw/char/cadence_uart.c
-> +++ b/hw/char/cadence_uart.c
-> @@ -519,10 +519,13 @@ static void cadence_uart_realize(DeviceState *dev, Error **errp)
->                               uart_event, NULL, s, NULL, true);
->  }
->  
-> -static void cadence_uart_refclk_update(void *opaque)
-> +static void cadence_uart_refclk_update(void *opaque, ClockEvent event)
->  {
->      CadenceUARTState *s = opaque;
->  
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      /* recompute uart's speed on clock change */
->      uart_parameters_setup(s);
->  }
-> diff --git a/hw/char/ibex_uart.c b/hw/char/ibex_uart.c
-> index 89f1182c9bf..c90d4d69baf 100644
-> --- a/hw/char/ibex_uart.c
-> +++ b/hw/char/ibex_uart.c
-> @@ -396,10 +396,13 @@ static void ibex_uart_write(void *opaque, hwaddr addr,
->      }
->  }
->  
-> -static void ibex_uart_clk_update(void *opaque)
-> +static void ibex_uart_clk_update(void *opaque, ClockEvent event)
->  {
->      IbexUartState *s = opaque;
->  
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      /* recompute uart's speed on clock change */
->      uint64_t baud = ibex_uart_get_baud(s);
->  
-> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-> index ea4a4e52356..d3040c0fab3 100644
-> --- a/hw/char/pl011.c
-> +++ b/hw/char/pl011.c
-> @@ -309,10 +309,13 @@ static void pl011_event(void *opaque, QEMUChrEvent event)
->          pl011_put_fifo(opaque, 0x400);
->  }
->  
-> -static void pl011_clock_update(void *opaque)
-> +static void pl011_clock_update(void *opaque, ClockEvent event)
->  {
->      PL011State *s = PL011(opaque);
->  
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      pl011_trace_baudrate_change(s);
->  }
->  
-> diff --git a/hw/core/clock.c b/hw/core/clock.c
-> index 76b5f468b6e..772d03a2eb5 100644
-> --- a/hw/core/clock.c
-> +++ b/hw/core/clock.c
-> @@ -73,7 +73,7 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
->                                 CLOCK_PERIOD_TO_HZ(clk->period),
->                                 call_callbacks);
->              if (call_callbacks && child->callback) {
-> -                child->callback(child->callback_opaque);
-> +                child->callback(child->callback_opaque, ClockUpdate);
->              }
->              clock_propagate_period(child, call_callbacks);
->          }
-> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-> index 7e415a017c9..5df4bcdb22d 100644
-> --- a/hw/misc/bcm2835_cprman.c
-> +++ b/hw/misc/bcm2835_cprman.c
-> @@ -107,8 +107,11 @@ static void pll_update(CprmanPllState *pll)
->      clock_update_hz(pll->out, freq);
->  }
->  
-> -static void pll_xosc_update(void *opaque)
-> +static void pll_xosc_update(void *opaque, ClockEvent event)
->  {
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      pll_update(CPRMAN_PLL(opaque));
->  }
->  
-> @@ -209,8 +212,11 @@ static void pll_update_all_channels(BCM2835CprmanState *s,
->      }
->  }
->  
-> -static void pll_channel_pll_in_update(void *opaque)
-> +static void pll_channel_pll_in_update(void *opaque, ClockEvent event)
->  {
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      pll_channel_update(CPRMAN_PLL_CHANNEL(opaque));
->  }
->  
-> @@ -303,12 +309,15 @@ static void clock_mux_update(CprmanClockMuxState *mux)
->      clock_update_hz(mux->out, freq);
->  }
->  
-> -static void clock_mux_src_update(void *opaque)
-> +static void clock_mux_src_update(void *opaque, ClockEvent event)
->  {
->      CprmanClockMuxState **backref = opaque;
->      CprmanClockMuxState *s = *backref;
->      CprmanClockMuxSource src = backref - s->backref;
->  
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      if (FIELD_EX32(*s->reg_ctl, CM_CLOCKx_CTL, SRC) != src) {
->          return;
->      }
-> @@ -380,8 +389,11 @@ static void dsi0hsck_mux_update(CprmanDsi0HsckMuxState *s)
->      clock_update(s->out, clock_get(src));
->  }
->  
-> -static void dsi0hsck_mux_in_update(void *opaque)
-> +static void dsi0hsck_mux_in_update(void *opaque, ClockEvent event)
->  {
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      dsi0hsck_mux_update(CPRMAN_DSI0HSCK_MUX(opaque));
->  }
->  
-> diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
-> index 0bcae9ce957..935184d5482 100644
-> --- a/hw/misc/npcm7xx_clk.c
-> +++ b/hw/misc/npcm7xx_clk.c
-> @@ -586,15 +586,31 @@ static const DividerInitInfo divider_init_info_list[] = {
->      },
->  };
->  
-> +static void npcm7xx_clk_update_pll_cb(void *opaque, ClockEvent event)
-> +{
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
-> +    npcm7xx_clk_update_pll(opaque);
-> +}
-> +
->  static void npcm7xx_clk_pll_init(Object *obj)
->  {
->      NPCM7xxClockPLLState *pll = NPCM7XX_CLOCK_PLL(obj);
->  
->      pll->clock_in = qdev_init_clock_in(DEVICE(pll), "clock-in",
-> -            npcm7xx_clk_update_pll, pll);
-> +            npcm7xx_clk_update_pll_cb, pll);
->      pll->clock_out = qdev_init_clock_out(DEVICE(pll), "clock-out");
->  }
->  
-> +static void npcm7xx_clk_update_sel_cb(void *opaque, ClockEvent event)
-> +{
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
-> +    npcm7xx_clk_update_sel(opaque);
-> +}
-> +
->  static void npcm7xx_clk_sel_init(Object *obj)
->  {
->      int i;
-> @@ -603,16 +619,25 @@ static void npcm7xx_clk_sel_init(Object *obj)
->      for (i = 0; i < NPCM7XX_CLK_SEL_MAX_INPUT; ++i) {
->          sel->clock_in[i] = qdev_init_clock_in(DEVICE(sel),
->                  g_strdup_printf("clock-in[%d]", i),
-> -                npcm7xx_clk_update_sel, sel);
-> +                npcm7xx_clk_update_sel_cb, sel);
->      }
->      sel->clock_out = qdev_init_clock_out(DEVICE(sel), "clock-out");
->  }
-> +
-> +static void npcm7xx_clk_update_divider_cb(void *opaque, ClockEvent event)
-> +{
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
-> +    npcm7xx_clk_update_divider(opaque);
-> +}
-> +
->  static void npcm7xx_clk_divider_init(Object *obj)
->  {
->      NPCM7xxClockDividerState *div = NPCM7XX_CLOCK_DIVIDER(obj);
->  
->      div->clock_in = qdev_init_clock_in(DEVICE(div), "clock-in",
-> -            npcm7xx_clk_update_divider, div);
-> +            npcm7xx_clk_update_divider_cb, div);
->      div->clock_out = qdev_init_clock_out(DEVICE(div), "clock-out");
->  }
->  
-> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-> index 66504a9d3ab..555d93ba50c 100644
-> --- a/hw/misc/zynq_slcr.c
-> +++ b/hw/misc/zynq_slcr.c
-> @@ -307,9 +307,13 @@ static void zynq_slcr_propagate_clocks(ZynqSLCRState *s)
->      clock_propagate(s->uart1_ref_clk);
->  }
->  
-> -static void zynq_slcr_ps_clk_callback(void *opaque)
-> +static void zynq_slcr_ps_clk_callback(void *opaque, ClockEvent event)
->  {
->      ZynqSLCRState *s = (ZynqSLCRState *) opaque;
-> +
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      zynq_slcr_compute_clocks(s);
->      zynq_slcr_propagate_clocks(s);
->  }
-> diff --git a/hw/timer/cmsdk-apb-dualtimer.c b/hw/timer/cmsdk-apb-dualtimer.c
-> index ef49f5852d3..ebbc036dc89 100644
-> --- a/hw/timer/cmsdk-apb-dualtimer.c
-> +++ b/hw/timer/cmsdk-apb-dualtimer.c
-> @@ -449,11 +449,14 @@ static void cmsdk_apb_dualtimer_reset(DeviceState *dev)
->      s->timeritop = 0;
->  }
->  
-> -static void cmsdk_apb_dualtimer_clk_update(void *opaque)
-> +static void cmsdk_apb_dualtimer_clk_update(void *opaque, ClockEvent event)
->  {
->      CMSDKAPBDualTimer *s = CMSDK_APB_DUALTIMER(opaque);
->      int i;
->  
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      for (i = 0; i < ARRAY_SIZE(s->timermod); i++) {
->          CMSDKAPBDualTimerModule *m = &s->timermod[i];
->          ptimer_transaction_begin(m->timer);
-> diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
-> index ee51ce3369c..06264f36d4e 100644
-> --- a/hw/timer/cmsdk-apb-timer.c
-> +++ b/hw/timer/cmsdk-apb-timer.c
-> @@ -204,10 +204,13 @@ static void cmsdk_apb_timer_reset(DeviceState *dev)
->      ptimer_transaction_commit(s->timer);
->  }
->  
-> -static void cmsdk_apb_timer_clk_update(void *opaque)
-> +static void cmsdk_apb_timer_clk_update(void *opaque, ClockEvent event)
->  {
->      CMSDKAPBTimer *s = CMSDK_APB_TIMER(opaque);
->  
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      ptimer_transaction_begin(s->timer);
->      ptimer_set_period_from_clock(s->timer, s->pclk, 1);
->      ptimer_transaction_commit(s->timer);
-> diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
-> index 302f1711738..7564e8b3326 100644
-> --- a/hw/watchdog/cmsdk-apb-watchdog.c
-> +++ b/hw/watchdog/cmsdk-apb-watchdog.c
-> @@ -310,10 +310,13 @@ static void cmsdk_apb_watchdog_reset(DeviceState *dev)
->      ptimer_transaction_commit(s->timer);
->  }
->  
-> -static void cmsdk_apb_watchdog_clk_update(void *opaque)
-> +static void cmsdk_apb_watchdog_clk_update(void *opaque, ClockEvent event)
->  {
->      CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(opaque);
->  
-> +    if (event != ClockUpdate) {
-> +        return;
-> +    }
->      ptimer_transaction_begin(s->timer);
->      ptimer_set_period_from_clock(s->timer, s->wdogclk, 1);
->      ptimer_transaction_commit(s->timer);
-> -- 
-> 2.20.1
-> 
-
--- 

@@ -1,106 +1,106 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp257159lfo;
-        Tue, 2 Feb 2021 08:24:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw5n+mJmD8JBIx0mFIeFXnAzoipuA81V47yb38pgNKB0xoqvPXCh/5DiDJV/gCvkHdeGZTE
-X-Received: by 2002:a25:7c87:: with SMTP id x129mr32600114ybc.461.1612283091355;
-        Tue, 02 Feb 2021 08:24:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612283091; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp257731lfo;
+        Tue, 2 Feb 2021 08:25:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzE4cNiiVRGeUWr7XAx6PRsMQ04how+9Akl5E8tz/0E3k/mALxWlKNQ6GCTDOADrQaRN/5S
+X-Received: by 2002:a25:2f55:: with SMTP id v82mr31362428ybv.481.1612283130932;
+        Tue, 02 Feb 2021 08:25:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612283130; cv=none;
         d=google.com; s=arc-20160816;
-        b=ivK9wB79rmd+HTreL0hFm4wJBDEGLc0VBxhDsDvw7/3owEveYE1EQyU8VT3bUhNY4s
-         L1/LHxbNZqPqa9VX/px46+JnGIP0zl33FfEsd9W5d0eLrSKKOdU8HWcd18D7IzOxqxgq
-         R+g3cNj3bdWHAOiKARUFCbX5U6mmo7xibTgsvPtqjfzho3oF+XudVGJAnJq0gH3LthSt
-         nkE7/HrAn5yvS4Jxlw8fJ+8bpLClUkYIQ4CVlqslItY08u56YTeYP2rmSH+4JOOt1QIJ
-         UjTiIsGWy1JyZXRFF2Iq9h1OLeRw2/tQnxLbq8QU56AZLwBxzO37UosKdgJEDF4OS3RZ
-         FFdw==
+        b=zpF7CbsL4GD/2N15YzBbwOyyBiU2Zdx3A+gYzCXUtvY3ftgzCeGpaDRdkfCvj6D+oA
+         TGQasDjNcDtPy/9TPl9SjVpJRIuWCSTEGLulSnQvbLLyAdcFHjc7ANu6lNe9ajjNUnL+
+         woF1D/rehJCR+MQV/yndfL1jPUik/6h0hAuv7xt3Gb3zNfJMlzSpJj8lUrVVifeCzz7y
+         LfzfaJyZwTDJtJz9Bb3vZGdAICmAu1w8WwyPQJ7ElMtyY06LSWDs0pien1gFIIktu94w
+         6zRACdXyLwNeJOZGoI3z/oNFDbCETOV7qCNnoEjedJmE/pFZO9V2EQ5LtPd5F/ZI2r0G
+         uY8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=3Z35U0jqq7f51s6wUa4I2AgwKVAY0oS+XX6xxqFC5QE=;
-        b=NyqNH6xCnmUiCWLGNNsBUrrDP5gNF08Jeuj7wUOmzV3ncbXZ1Wg7b+ZRmr1ciRwA0a
-         12NyrivxMoIElHMHZ/rGMIKtzKdEtE7DXEr61N0j8nuPEGPj1oU9Vi4Cd7Px9UuahoM+
-         d89Gg1HaMlXESyTRAXG02UrsLyln8vrsDS8oZT4ET+N/6GYHkPKKING0EqEBJL0u13VF
-         d766kPzucAUnbojpYxjUtTjOvv7R5uwofSWa6T13f06eiE1S14J9fAvjQ7fGQOZU4jGs
-         30uohMpiO16err4zCW2S+Z0YuhSNu74c8/7SF9ziRHIrOkvN/rcRUK+Ge3NP8HwedE3m
-         1Jdw==
+        bh=yH8dRR3VCm4mhJ+0POYrTJGSGnzi4HESWi++Hlvr0Zo=;
+        b=eFbb3bLUuqDoS1oDoJwUUVqwPxGiNHD8z118cAEGaORZmMZtlkDHr8v4MisOE7ntAo
+         3RGLB82jjQr4bFJ60nxLS9OapHvE+CShP3kY+lV7QXHvgRwksVMLys8pSDhoWHzfgEV9
+         UCjE+XiJxbIa3lX6BVJJNZZooXtdsiok8XAyMkXys/uhmfciPvilKucQJnGkhIissg2I
+         1Fa60MNtQzeYKT3HQWB/4pnMFNWv6OMHBU+IeHWNQU3wVc1zAOs9uXDxN6d/q/EqLZi9
+         CU9ieKB8glOL34SNLFo9pDpizHodzkV6iV4Y8XfTmIlsHc2gM4a03mTacvQaOhFta0gx
+         gaFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BKn4FjPv;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c5fLv4wW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x205si11940341ybg.160.2021.02.02.08.24.51
+        by mx.google.com with ESMTPS id n7si8784118ybf.437.2021.02.02.08.25.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 08:24:51 -0800 (PST)
+        Tue, 02 Feb 2021 08:25:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BKn4FjPv;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c5fLv4wW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6yTy-00082i-Ml
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 11:24:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47612)
+	id 1l6yUb-0008TT-Nw
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 11:25:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6yIJ-0000Er-LC
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 11:12:47 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:38787)
+ id 1l6yMp-0003Zf-Dm
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 11:17:27 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635]:40341)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6yIH-0001Z8-Oj
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 11:12:47 -0500
-Received: by mail-ed1-x529.google.com with SMTP id s11so23564778edd.5
- for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 08:12:45 -0800 (PST)
+ id 1l6yMi-0003rb-Fx
+ for qemu-arm@nongnu.org; Tue, 02 Feb 2021 11:17:27 -0500
+Received: by mail-ej1-x635.google.com with SMTP id i8so14376494ejc.7
+ for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 08:17:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=3Z35U0jqq7f51s6wUa4I2AgwKVAY0oS+XX6xxqFC5QE=;
- b=BKn4FjPvaLur8I8Z7H1EFeTBMbA2wllJpF6ooAuKqoNVKJ+t7ZVYUMxhJh/baDyK/3
- kna7qChBIiTUJrZQaxPxB6WttIyZ7fGlJpyITWawb+q0XbqctDf1Cneivt6r04SUait0
- UqmpfzU5CVF0S9mUC9pJrVncLLv/TOi0lOmZ8BvOfIQLc3YGxlSeJL59niQ8FkCKnmQQ
- nfhuYtDcJqUxRfn52+7m6DErn4WZsZXLX3z40UaWMtfqBeSlpOgfa4IAzMK3nFhdI5Na
- VDteqbsokUNOTz3GqNuMYSyK/mA3D4nqfMm9hM1ETbY+8UOOSqL7NW4HFyybbuiIN53u
- 047g==
+ bh=yH8dRR3VCm4mhJ+0POYrTJGSGnzi4HESWi++Hlvr0Zo=;
+ b=c5fLv4wWUnTjH7tsgiNQPXlvyp/zxJPEydDvPi/ZXeu0l7zhsWxQIdTe2Ezi1gkU+r
+ nABin2W0QyXKggS04GlhwDuk9HlkmE3Xjx4TtsOODLmMuP2FF40J+QOYu7mbw4+WHLae
+ 7yQj0EsQNPCki3i1vVRqE+pyqcituEX+77zhN9jEEGfxJjfjbhd9NUpsEA2+4xQjB4fF
+ hD+ece70c28OrRH2zeXoXs3R4yT9zJVrdxnOpbYZ7quRMF3vYqkj7B1DN/N7VAtUxo55
+ Qkx9/fYKzqJyAanBTEraJgWOilm/7C9BPqtkjA/pJEJNIccYAtTxsLNQ8GyWyN27O1ox
+ jETA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=3Z35U0jqq7f51s6wUa4I2AgwKVAY0oS+XX6xxqFC5QE=;
- b=LtbGV4ylwZktCiyqysGlAp+58I4GqpPbUsD8ftcO6PXti/QObshE6nnaLvRkZ++rA/
- B+6kLw1Vc9VBmdwnw82ZQbkMEr5kXit4JI3sqNEBHT+IphjpV77cPRJeGWsU7CGH3DhL
- AYpYYSFG4J3CsQEHMU0TY7CmcpjHUfENxBRfSp8ozyvjIXX1Swjaz0cnGyV4aZvwnt0z
- foXZZdW+v20BQ91sM8oPkoga0Ywi520e3ZVmb/1pJKxWPVl2IeVAstIsn3em1wDNtfyw
- f4rzNoNbt/g0mcLGeqV5QKS2MHAL0bA9AA5eaWuueTVqXXHY6R29InvCpnjVXizOnDOS
- M7MQ==
-X-Gm-Message-State: AOAM532pF7Ux1ZXCQ90v7Do+dsBoFONe4XxNSFzrjMq6aycaz04468g4
- 7U+yW3xW17pnKH8VuJTldXHCORtxjNIlIHJklLf5Eg==
-X-Received: by 2002:aa7:c88a:: with SMTP id p10mr24314030eds.204.1612282363875; 
- Tue, 02 Feb 2021 08:12:43 -0800 (PST)
+ bh=yH8dRR3VCm4mhJ+0POYrTJGSGnzi4HESWi++Hlvr0Zo=;
+ b=DUqCIJbx/ivhODV9uYzP1N/Ki5o64FetKa8598SyEK0vmz1sNZi0+yMMUnWBYM6Ei7
+ GjPHUK1irCqQ8TEk9mArYT5HTd3Ug+W0q9ioE/IfXAucwi94EXGaX/dfxTcJN6WV31EJ
+ 6zJpty0KoMZpIt4kr6+7c4rkKllqHwNVP+kmIX3fE7s6ymwkDHbc4EnVClNLZuD69wT9
+ G4qyKj+S+oUJDGZJe1XFsy7EpvzotmFP7NQabIO8fzRzO8PnF1WtFIzzVj4XhKq5fQ8r
+ uImaT2Z6seBI7WHXrkGpukK2U2qw0IQ8j0ErXsbOo67KQREjUs+O+ak8npnGGmkMEz4t
+ 0U8g==
+X-Gm-Message-State: AOAM532I1I/BndDbf9BKvtxYC2h6/41N3Lu93vX8DpPt6k/x0azI8fL/
+ Kc11QbpEtli5cdXpAoBTTlHvctbuj+885IRu1BMmwQ==
+X-Received: by 2002:a17:906:1d51:: with SMTP id
+ o17mr2536670ejh.85.1612282637068; 
+ Tue, 02 Feb 2021 08:17:17 -0800 (PST)
 MIME-Version: 1.0
 References: <20210131164406.349825-1-f4bug@amsat.org>
- <20210131164406.349825-2-f4bug@amsat.org>
-In-Reply-To: <20210131164406.349825-2-f4bug@amsat.org>
+ <20210131164406.349825-6-f4bug@amsat.org>
+In-Reply-To: <20210131164406.349825-6-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 16:12:32 +0000
-Message-ID: <CAFEAcA9TwSMpVq366ZDU9NZDs7enY4RNAWj=PPK48rk-ACnd2g@mail.gmail.com>
-Subject: Re: [PATCH 1/5] hw/arm: Use Kconfig 'default y' syntax instead of
- default-configs
+Date: Tue, 2 Feb 2021 16:17:05 +0000
+Message-ID: <CAFEAcA9x4mS2mtbf-+j34VKELYd_xhExR_0sndjQy64cmNLVkA@mail.gmail.com>
+Subject: Re: [PATCH 5/5] target/arm: Restrict v7A TCG cpus to TCG accel
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,57 +118,23 @@ Cc: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bqc4+R/0ua3r
+X-TUID: znOxyhKN/8Cd
 
 On Sun, 31 Jan 2021 at 16:44, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
  wrote:
 >
-> Machines can be automatically selected using the Kconfig
-> 'default y' syntax. This change allow deselecting these
-> machines without having to modify default-configs/ files.
+> KVM requires the target cpu to be at least ARMv8 architecture
+> (support on ARMv7 has been dropped in commit 82bf7ae84ce:
+> "target/arm: Remove KVM support for 32-bit Arm hosts").
 >
+> A KVM-only build won't be able to run TCG cpus, move the
+> v7A CPU definitions to cpu_tcg.c.
+>
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  default-configs/devices/aarch64-softmmu.mak | 3 ---
->  default-configs/devices/arm-softmmu.mak     | 2 --
->  hw/arm/Kconfig                              | 4 ++++
->  3 files changed, 4 insertions(+), 5 deletions(-)
->
-> diff --git a/default-configs/devices/aarch64-softmmu.mak b/default-config=
-s/devices/aarch64-softmmu.mak
-> index a4202f56817..a94c7786919 100644
-> --- a/default-configs/devices/aarch64-softmmu.mak
-> +++ b/default-configs/devices/aarch64-softmmu.mak
-> @@ -2,6 +2,3 @@
->
->  # We support all the 32 bit boards so need all their config
->  include arm-softmmu.mak
-> -
-> -CONFIG_XLNX_VERSAL=3Dy
-> -CONFIG_SBSA_REF=3Dy
-> diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/de=
-vices/arm-softmmu.mak
-> index 0fc80d7d6df..7d55c156bab 100644
-> --- a/default-configs/devices/arm-softmmu.mak
-> +++ b/default-configs/devices/arm-softmmu.mak
-> @@ -3,14 +3,12 @@
->  # CONFIG_PCI_DEVICES=3Dn
->  # CONFIG_TEST_DEVICES=3Dn
->
-> -CONFIG_ARM_VIRT=3Dy
->  CONFIG_CUBIEBOARD=3Dy
->  CONFIG_EXYNOS4=3Dy
->  CONFIG_REALVIEW=3Dy
->  CONFIG_VEXPRESS=3Dy
->  CONFIG_ZYNQ=3Dy
->  CONFIG_NPCM7XX=3Dy
-> -CONFIG_RASPI=3Dy
->  CONFIG_SABRELITE=3Dy
->  CONFIG_FSL_IMX7=3Dy
->  CONFIG_FSL_IMX6UL=3Dy
 
-Why are the 4 boards xlnx-versal, sbsa-ref, virt, raspi special
-but not the others here ?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

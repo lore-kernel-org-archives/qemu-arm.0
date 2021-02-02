@@ -1,165 +1,181 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp4152618lfo;
-        Tue, 2 Feb 2021 01:22:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy/MZ9jC8TW9mdOJlEKuFMQX5wUoNeQbboxQsJPZFB80Rhwpt2lV+FyMjoZH7031b3jpN8y
-X-Received: by 2002:a25:be4b:: with SMTP id d11mr33733330ybm.16.1612257750940;
-        Tue, 02 Feb 2021 01:22:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612257750; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp4156512lfo;
+        Tue, 2 Feb 2021 01:29:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwoCoClq5kafINB0fCnLgxYoqX0jTSAEJ5ZXfaaAQfaX3Exa9hZkPjXrW5mImx65XsaA4K0
+X-Received: by 2002:a25:bd94:: with SMTP id f20mr30596969ybh.205.1612258175251;
+        Tue, 02 Feb 2021 01:29:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612258175; cv=none;
         d=google.com; s=arc-20160816;
-        b=kRBGyZG98pfjURo2QytgfiRslgXz9YyU43sOdtM2hfO61Co7usrpJJgz/TuJoytld+
-         rnReBQipen8VNFvM4+dKlnphHEYxINjRjBrom0JyJZGuNQMKY7x/0/l9L+tgQVbzgGZV
-         hAsSnIqBev9HliPTr4X67R6weL90IaM/85eyWnSMyCLMl3YFPWa2ILtRkVTjOyF/6AZE
-         G9VmxBvuEfvhCltxBgdcsop/+Qej0rC6n9/X6dLBrcccY/sGZMUeY5JieqSCeNRy/L/a
-         i72DpgMz8D/UMP2pm4JnR39NCCi5lVa13DPFBlRHXnzf+tMa5o4uAVA+06Abxuou/6Fd
-         50Bg==
+        b=q59r3Gp/LEWH5QtxM5rdd9ajEOPpAaYkd4/WsZ+mTcE6tj4XO5hHIKevxSSCqNOeOp
+         mQ8VgmSoMg4sRdJ2Ywkn86/QlyWyiMCc59zK4Qfse1eI7HOMlm+4f+cCDdOKWirN2yAQ
+         gDsk6SIJkD4/RQLqJOJVCxl1tU41QPH7jd9wqDJLnCF8Wpi3vpMS8DO7yUgkvE9YTfMB
+         SWXtaV+pKX4S7TLg8CI6MyLLuJZe8H9CO1RanJptxuu/DmKR1g57J8wqbWuzQ5Z6Mirs
+         JFQli5gJN8+vPsihilEIkyJU9vEJ4pcCzEeCm9P+aTSffdW92CDW/9jex+DH//mGz/kz
+         rt2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
-         :dkim-signature;
-        bh=qK8+nGc44OoBBNc/eOs2+qw6GyzNSQ4Azr5PWUoHAio=;
-        b=uIhgB2fJ7qOjcUoV/ZoA2zuM0xy8g+/XjhBYj68pmHsQ3l5gJkfNkNuklja6xSMG/q
-         uxjYsKUC114sQqPWz46RebGVG1pp1dSVZ1cZAq2njsEjs64arUjCeig9Gb0GJ8aWVcv6
-         a82AOVJrDSN/m/LP/ooFlMkI2Eynl4yk4H7IbJC4L8ClkSCP5LOC2FDmOd4Yqm2gVDTB
-         gblsGy/17i2qq8GJ9yUJr4aU3nbXcuXuERjQQ0rZF/WC3b/n4/+WvFjbu0DMusEEDsJK
-         pj0sgC63ot6TyKwldavSR+PoOl042mrdtSSnjz4djaRtCjGahZhTiMF3sApnURmywm2l
-         nSMA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=PbrhfZ0vnDFZQl/wIwMyV6Rs0bJDoirzCoW312LSTq8=;
+        b=nOmtwvFrPLPiCEH4z0bgyegejQlTgvaEnP6Nl5sqJUw5BFrnvsJb90na410uWaBns7
+         X7UsIiw2npzwpAW2xXMY0UbV5XPlGkRpVaybwkxcTwRmP60Gr2xp9kHZS44id4yldhSV
+         AsLZ4PqvyUmu/w2rk374fsRcIcFQcQyN4AOt/dSKepSm2X2BWdYtfohAOzfMtZNYpjSH
+         ziVZ4AMcsih9VfB8IHYHZkSE7UZWx2Hxu1tI1230NgdFtoJZVrXYnOmyWQ+DM990yHsH
+         o8JI2FsG/g5YuqijgDA3x/eIr9wfbGoORBW3tXx1bbRJsOymkfd/1gZWDTwlZhycXDeR
+         7R7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eCP0Wa2c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="L80KY/wf";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l125si2207891ybl.115.2021.02.02.01.22.30
+        by mx.google.com with ESMTPS id o10si20842801ybe.181.2021.02.02.01.29.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 01:22:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Feb 2021 01:29:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eCP0Wa2c;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="L80KY/wf";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50518 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57280 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6rtG-0003sU-BB
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 04:22:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36854)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6s06-00073B-Lt
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 04:29:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38162)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6rsv-0003Mw-4j
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 04:22:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:29685)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6rzJ-00071J-Rw
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 04:28:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:21947)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6rsr-0006xp-VO
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 04:22:08 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1l6rzG-0001IR-9Z
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 04:28:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612257724;
+ s=mimecast20190719; t=1612258121;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qK8+nGc44OoBBNc/eOs2+qw6GyzNSQ4Azr5PWUoHAio=;
- b=eCP0Wa2cT57J52BLPoNfB/ydrQ7doB8RVPugyMOGmM9wpeTgaWgvF0KAYzzmYoY5zjOPx3
- OZx0o65jCbG+bePqwoGV3p871kRWJptroLHZoZBTgffrDHThVaZSN7o6TeyKpBTbT7Gu0d
- i2a11wqgNOd7nyWbvX+ZKsY73lUbQus=
+ bh=PbrhfZ0vnDFZQl/wIwMyV6Rs0bJDoirzCoW312LSTq8=;
+ b=L80KY/wf3J8X4bNyftKgxVvFq/l7dHJEeSwmvqGAH/y4H9gssvN3SomHOAzCVrCKaH0AgV
+ fh+ZPS7KO44XbKgEXP9pdRLprxFPFZ4fZdoRV4G1vr+Tz5WjMfb5UcXRTYAf5acBiwB+/X
+ iJOfzwGuS8Dl9UA4DnoYNrvbt7JeUso=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-572-YfQSMdozPU2LaCOqlSKAjQ-1; Tue, 02 Feb 2021 04:22:01 -0500
-X-MC-Unique: YfQSMdozPU2LaCOqlSKAjQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-361-7TZDDhk6Mh6uRgEDUFiMXw-1; Tue, 02 Feb 2021 04:28:40 -0500
+X-MC-Unique: 7TZDDhk6Mh6uRgEDUFiMXw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 04B99107ACE3;
- Tue,  2 Feb 2021 09:21:59 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F0893107ACE3;
+ Tue,  2 Feb 2021 09:28:37 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-115-51.ams2.redhat.com
  [10.36.115.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 042385F7D8;
- Tue,  2 Feb 2021 09:21:48 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B392722C0;
+ Tue,  2 Feb 2021 09:28:24 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 6CDBB113865F; Tue,  2 Feb 2021 10:21:47 +0100 (CET)
+ id B1B78113865F; Tue,  2 Feb 2021 10:28:22 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: Re: [PATCH RFC 1/1] hw: Replace anti-social QOM type names
+To: Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [PATCH RFC 0/1] QOM type names and QAPI
 References: <20210129081519.3848145-1-armbru@redhat.com>
- <20210129081519.3848145-2-armbru@redhat.com>
- <c448e0cb-f0c4-57fb-20df-077b65e386c6@ilande.co.uk>
-Date: Tue, 02 Feb 2021 10:21:47 +0100
-In-Reply-To: <c448e0cb-f0c4-57fb-20df-077b65e386c6@ilande.co.uk> (Mark
- Cave-Ayland's message of "Mon, 1 Feb 2021 20:45:40 +0000")
-Message-ID: <875z3ag6z8.fsf@dusky.pond.sub.org>
+ <CAFEAcA_O=48U_3p_mKeRRY99OsJCRSTJmOefDT1gbHVdyE_C0A@mail.gmail.com>
+ <20210129121752.GJ4001740@redhat.com>
+ <bacb8bab-2719-ae96-f1de-91e598b98abd@redhat.com>
+ <20210201213104.GG3872207@habkost.net>
+Date: Tue, 02 Feb 2021 10:28:22 +0100
+In-Reply-To: <20210201213104.GG3872207@habkost.net> (Eduardo Habkost's message
+ of "Mon, 1 Feb 2021 16:31:04 -0500")
+Message-ID: <871rdyg6o9.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, kraxel@redhat.com, jcd@tribudubois.net,
- qemu-block@nongnu.org, quintela@redhat.com, andrew.smirnov@gmail.com,
- marcandre.lureau@redhat.com, atar4qemu@gmail.com, ehabkost@redhat.com,
- alistair@alistair23.me, dgilbert@redhat.com, chouteau@adacore.com,
- qemu-arm@nongnu.org, peter.chubb@nicta.com.au, jsnow@redhat.com,
- kwolf@redhat.com, berrange@redhat.com, mreitz@redhat.com, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZqsW4N4dnq1F
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jean-Christophe DUBOIS <jcd@tribudubois.net>,
+ Qemu-block <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>, John Snow <jsnow@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>,
+ "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pyTg0hYOXms8
 
-Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> writes:
+Eduardo Habkost <ehabkost@redhat.com> writes:
 
-> On 29/01/2021 08:15, Markus Armbruster wrote:
+> On Fri, Jan 29, 2021 at 02:25:56PM +0100, Paolo Bonzini wrote:
+>> On 29/01/21 13:17, Daniel P. Berrang=C3=A9 wrote:
+>> > > On this one, my vote would be "no". "Versioned machine names
+>> > > include the QEMU version number" is pretty well entrenched,
+>> > > and requiring users to remember that when they want version 4.2
+>> > > they need to remember some other way of writing it than "4.2"
+>> > > seems rather unfriendly. And 550 uses of '.' is a lot.
+>> > We can't make  keyval_parse() accept "/" instead of ".", but can
+>> > we make it accept "/" in addition to ".", and then encourage "/"  ?
+>> >=20
+>> > People simply wouldnt be able to use "." as keyval separator if
+>> > they're using typenames containing "." (or would have to escape
+>> > the typename.
+>>=20
+>> '.' is much more common than '/', and is shared by about all programming
+>> languages that have JSON-ish data structures natively.  So using '/' see=
+ms
+>> decidedly worse to me.
 >
->> Several QOM type names contain ',':
->>      ARM,bitband-memory
->>      etraxfs,pic
->>      etraxfs,serial
->>      etraxfs,timer
->>      fsl,imx25
->>      fsl,imx31
->>      fsl,imx6
->>      fsl,imx6ul
->>      fsl,imx7
->>      grlib,ahbpnp
->>      grlib,apbpnp
->>      grlib,apbuart
->>      grlib,gptimer
->>      grlib,irqmp
->>      qemu,register
->>      SUNW,bpp
->>      SUNW,CS4231
->>      SUNW,DBRI
->>      SUNW,DBRI.prom
->>      SUNW,fdtwo
->>      SUNW,sx
->>      SUNW,tcx
+> Worse than what, exactly?
 >
-> My personal preference for the SUNW prefix would be to either drop it
-> completely or change it to "sun-" instead. The reason being that the
-> "SUNW," prefix is the standard way to reference Sun devices/packages,
-> and looking at the replacements which still have a SUNW prefix in
-> captials makes me thing the hyphen is either a typo or my fingers go
-> on autopilot and type a comma anyway...
+> Accepting "/" when "." is ambiguous seems decidedly better than
+> the following alternatives:
+> - renaming machine types to names like "q35-5-0"; or
+> - having to escape "." in the command line.
 
-Works form me.
+Yes.
+
+However, the ambiguity arises only when type names occur as key, as I
+noted in my followup Message-ID: <875z3g2c1f.fsf@dusky.pond.sub.org>.
+
+I figure we could relax the QAPI enum naming rules to permit '.', with
+drawbacks that feel tolerable.  One of them: if we ever manage to put
+QAPI enums in a key position, we're screwed :)
 

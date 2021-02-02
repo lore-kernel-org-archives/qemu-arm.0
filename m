@@ -1,103 +1,85 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp176090lfo;
-        Tue, 2 Feb 2021 06:44:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyM5Ule3tXpnBisC+1mTEK8CXDrXi42E5OJRg46Fg6vOjYg5/jrhfjuYRTZi88yJXv7iTmc
-X-Received: by 2002:a25:9009:: with SMTP id s9mr29173388ybl.394.1612277099216;
-        Tue, 02 Feb 2021 06:44:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612277099; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp201949lfo;
+        Tue, 2 Feb 2021 07:15:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyDCsN1JTDODaPtiee694+dgG7sex5l0As0sq7bv7dXUW2FIfoDzPm/Od/3pAE9BFw01V06
+X-Received: by 2002:a25:2341:: with SMTP id j62mr17425129ybj.217.1612278945670;
+        Tue, 02 Feb 2021 07:15:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612278945; cv=none;
         d=google.com; s=arc-20160816;
-        b=FhcvA6TguME6khyay1JDJVC3JtpUD3CVNghVUvEcXX84NyD4WVZlGP8XaokmAZvPEO
-         uS4Yc8VWiRX1PATSein0FEBgV54C3E8o+tL/n4jT7EwZK0dGaP4DZS7niMRwpfvzF3n+
-         k3qw33sYK8ntxB8M1Ru0c7GGtAaNal2qaAl19d4Z1scrI6dQYxtCehcC06K7pihzrpMJ
-         Qg+CaTFFE9YgXaKXppM7UngpmDhiyVigPh57sdzOrr0/qW+ljRwkCxANKipMkKzvYJaV
-         DL1MwJL61kis2CPiGFgVDHe/NTvgC2aVCMI+2Si0NV+syw/diS8sFSmhN7NQqqA3BbsJ
-         yx3A==
+        b=nccrWLjzkKBjcoDKWl4tQjNhLxleqRCRODH1DGBiyR8OuCa5GYqrzKbT0H7LKeYkPS
+         Bb+rLjQgYKA3CTRwLMSVPj04QFco0LClb3TdZjZV4ZuYIo8h9BGXW2LJu3+l+5D8nnFQ
+         gkwvcegW4TfxKb9zgph3kJ5hmAxZS5nZmPUMsg8mf9wLBi4CemW9aUgVsXuousnVt6dv
+         +csPSViIOr3OzvU0ch8q1GgSTqw4ptrKHKvX8KjMo998rLVkx+P7AMudmZG8xCeAczMr
+         4ZV0jpjnT3dJ89A6eQung8sI7t0o0Cy8dtFF+w0QGOoHnhUnO1v55bbSY22+1cto2A7h
+         5d6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=DCSBYa5OrnpG/GnplPjOrWlWr/fnsKBSmKfgGhp8Fv0=;
-        b=NnSuSRgDWOk/uyBAFR56WAQFDAiKflq+8XHv51SfauN4QA7CvQL4MMdXeVjZuBPTLT
-         WmKwjKzORIBSulSGnvnwYN/vufEE1vTXg9G2eqlNGErAMPrCqGG1FCdTVSWh5RPaB4hZ
-         6OA5y54JOhxQbcqYcg14d9/Y88Oim5Hp+NE/ZUl5DcVLMjokvBxM1C/CAO5ycSagJ21Q
-         IZv6N5892U69FZmSbqDTOyzsGo9dtdZ0oYV/OvibH4mRqmO4jQYzJTKIo4/6Sbt5ed5l
-         ovZPxYH43a0QRO3wlscYtX3rLhGH0mrXblWh1Mu/LnkrbxF9B11qWtmW+Tq7LKeOaK3g
-         i84g==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date;
+        bh=XhVARphsZ8p3fla5YPsxztOfNRHF6Stb6+aQqqYHGJM=;
+        b=dbXTSeC23I23vgEQaXnFrHpt5c8kVWI4PPsPAnGM+LGT/RkK9A1vdm4Okv432hqtq2
+         ljXWjuHRDOcLSYegqR2FPRHhCDp/xsUAB/Fx3dJxV1U0LQ7Wva15t40d9o2AUR68Cn9p
+         TkV+d9Xh9dUpNuw6sYB4hibuqmktncklFXtWWCTZWevADh3iWkwiV5RXRLjRqdTG1yRv
+         zFgS6v3GL2K1EwwRKbCrnGqFLuaqvJJ00Xj6RzhGLzRAgY8ZkByY666w3o46xCaO2PP1
+         siXLBEu+l0vPpYggxSKd9hvbgPjUfe6DgrlBO0F3JuApcpxkgPDbXmsdIijbXisiWIRl
+         RPSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hCLUShty;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si23669431ybh.74.2021.02.02.06.44.59
+        by mx.google.com with ESMTPS id t13si3979323ybl.410.2021.02.02.07.15.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 06:44:59 -0800 (PST)
+        Tue, 02 Feb 2021 07:15:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hCLUShty;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52084 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6wvK-0005Tp-I1
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 09:44:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45026)
+	id 1l6xP6-0001mF-Oa
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 10:15:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6wiR-0005mo-7y
- for qemu-devel@nongnu.org; Tue, 02 Feb 2021 09:31:40 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:33581)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6wiO-0004uI-5d
- for qemu-devel@nongnu.org; Tue, 02 Feb 2021 09:31:39 -0500
-Received: by mail-ej1-x630.google.com with SMTP id sa23so13988342ejb.0
- for <qemu-devel@nongnu.org>; Tue, 02 Feb 2021 06:31:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DCSBYa5OrnpG/GnplPjOrWlWr/fnsKBSmKfgGhp8Fv0=;
- b=hCLUShtyqAIiBwcikRYQsiO2mfXEKwGkBsVSAkx7bF93JRx5VYsnzUmz294WiAlk6F
- SKiyUi2NO5rORLLzAVDXuoGCMjfw/bOE5y0dlKyvp6TrmN8ZeKk8Upv2+0f950aas/8S
- cwIZTYnPZH5G0GJaWgKA4Va+gHXXocflbcgAp8phMEFcV2TJEhzeRucq7fxoUvXESt4s
- jikY7pP3w3KCu5BT0E4Dhx2EZFON1UFG2LC8wnHmFd25e+bP9M5dyqFZ0RiKafrEx+e0
- S+X2uAPpAF+YJKmkfxlYxrslWdUqnYByk3U0NDoKPlFuOnXwtSQ2/WQ8YFDibtyuBDdD
- //dQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=DCSBYa5OrnpG/GnplPjOrWlWr/fnsKBSmKfgGhp8Fv0=;
- b=OSKVedEyvCedOYlKtcUBV9MF4t2LuRBP/4Z4IsjY6DZrNAL9Z4iuFmaVAxAf6pHf27
- WWowqLLECgNgU7cJhXjC/HyKyqky5VbCDf1320QstGxRVdGptbgrb1MxgwBeLzWeMi3o
- WVXcNYPFsLHrXpdFDRSIOcM5PgInlhTnZueGcGiVF4jdL7llaBzBn1o4BebawP033KvT
- Jddwfwb6AjVbdkSb3mcQ6bv+bMIYBYrhAvstqD5hC0wQEwyXBHHDc/Iwmrd2S80dRs0F
- o9yfix5qKoJ5HRNKaDrkXBt3OKSs6PPhvCvpsfXPG8Lo2mF6TS9KuAxHSoiaZjgdqVAn
- dJ0A==
-X-Gm-Message-State: AOAM533SHZK+89TvMqkvSm3JLVpViCw2KkFf0LOiAQbyKZ+zGXgviuQr
- ezwLzlVAjFcrH8smZCbNILgFqkmKXYZoNwNOfS0xUCwpAcI=
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr23478606ejd.250.1612276294207; 
- Tue, 02 Feb 2021 06:31:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1l6xLJ-0006MJ-7y; Tue, 02 Feb 2021 10:11:49 -0500
+Received: from relay64.bu.edu ([128.197.228.104]:49248)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
+ id 1l6xLH-0006GF-3J; Tue, 02 Feb 2021 10:11:48 -0500
+X-Envelope-From: alxndr@bu.edu
+X-BU-AUTH: mozz.bu.edu [128.197.127.33]
+Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
+ bits=0)
+ by relay64.bu.edu (8.14.3/8.14.3) with ESMTP id 112FAcgJ017602
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
+ Tue, 2 Feb 2021 10:10:42 -0500
+Date: Tue, 2 Feb 2021 10:10:38 -0500
+From: Alexander Bulekov <alxndr@bu.edu>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [QEMU-SECURITY] [PATCH] hw/intc/arm_gic: Fix interrupt ID in
+ GICD_SGIR register
+Message-ID: <20210202151038.tk6luxvgashnrpit@mozz.bu.edu>
+References: <20210131103401.217160-1-f4bug@amsat.org>
+ <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
+ <20p82p5p-ns25-n434-37os-n55013s6313@erqung.pbz>
+ <6d29aa57-2e6e-e81d-831f-803d9aae798f@amsat.org>
+ <787280826.1146023.1612246917145@mail.yahoo.com>
+ <3bd70da2-39ec-6e6b-d46d-6052f1b8f0b0@amsat.org>
+ <CAFEAcA-Q8swS84GVd20wo4Pp41UUPdDknxbCMn=pchgi96UgRQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20210128224141.638790-1-richard.henderson@linaro.org>
- <20210128224141.638790-4-richard.henderson@linaro.org>
-In-Reply-To: <20210128224141.638790-4-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 14:31:23 +0000
-Message-ID: <CAFEAcA9_kTEdKqjfTJu3hCBkk7s3Uwme_O18WUstU_5Ki3Ri=w@mail.gmail.com>
-Subject: Re: [PATCH v4 03/23] exec: Use uintptr_t for guest_base
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFEAcA-Q8swS84GVd20wo4Pp41UUPdDknxbCMn=pchgi96UgRQ@mail.gmail.com>
+Received-SPF: pass client-ip=128.197.228.104; envelope-from=alxndr@bu.edu;
+ helo=relay64.bu.edu
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.001,
+ HK_RANDOM_FROM=0.999, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,23 +92,85 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>, Li Qiang <liq3ea@gmail.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ QEMU Security <qemu-security@nongnu.org>, P J P <ppandit@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, P J P <pj.pandit@yahoo.co.in>,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tMe9YeXr/MvV
+X-TUID: oZpvagLNuDTE
 
-On Thu, 28 Jan 2021 at 22:41, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On 210202 1221, Peter Maydell wrote:
+> On Tue, 2 Feb 2021 at 09:32, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+> >
+> > On 2/2/21 7:21 AM, P J P wrote:
+> > > On Sunday, 31 January, 2021, 08:48:26 pm IST, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+> > >> Forwarding to qemu-security@ to see if this issue is worth a CVE.
+> > >>
+> > >> | On 1/31/21 11:34 AM, Philippe Mathieu-Daudé wrote:
+> > >> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
+> > >> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
+> > >
+> > > * Does above patch address both these bugs? For BZ#1913917 'irq' is derived from 'offset' it seems.
+> > >
+> > >         /* Interrupt Configuration.  */
+> > >         irq = (offset - 0xc00) * 4;
+> >
+> > I haven't done a thorough analysis, simply tried to fixed this
+> > bug ASAP as it is public so many users are exposed.
+> >
+> > I had the impression the first call (writel 0x8000f00 0x5affaf)
+> > break the heap, so the memory is inconsistent when the second
+> > call (write 0x8000eff 0x1 0x0) is done, but better have developers
+> > familiar with GIC and security auditing this again.
+> 
+> Philippe is correct here. In both cases the overrun is on the
+> first writel to 0x8000f00, but the fuzzer has for some reason not
+> reported that but instead blundered on until it happens to trigger
+> some other issue that resulted from the memory corruption it induced
+> with the first write.
+> 
+
+It happens in the standalone reproducer build with
+ASAN/--enable-sanitizers, so it seems like an oversight/bug in the
+Sanitizers, rather than the fuzzer. It is strange that UBSan seemed to
+detect an OOB index, but proceeded as normal. I should start paying
+closer attention to those non-fatal UBSan errors.
+
+> > >> | > Correct the irq mask to fix an undefined behavior (which eventually
+> > >> | > lead to a heap-buffer-overflow, see [Buglink]):
+> > >> | >
+> > >> | >    $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M virt,accel=qtest -qtest stdio
+> > >> | >    [I 1612088147.116987] OPENED
+> > >> | >  [R +0.278293] writel 0x8000f00 0xff4affb0
+> > >> | >  ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bounds for type 'uint8_t [16][8]'
+> > >> | >  SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/intc/arm_gic.c:1498:13
+> > >> | >
+> > >> | > Cc: qemu-stable@nongnu.org
+> > >> | > Fixes: 9ee6e8bb853 ("ARMv7 support.")
+> > >> |
+> > >> | > ---
+> > >> | > Isnt it worth a CVE to help distributions track backports?
+> > >> | > ---
+> > >
+> > > Thank you for reporting this issue. Will process further.
+> 
+> On the CVE:
+> 
+> Since this can affect systems using KVM, this is a security bug for
+> us. However, it only affects an uncommon configuration:
+> you are only vulnerable if you are using "kernel-irqchip=off"
+> (the default is 'on', and turning it off is an odd thing to do).
+> 
+> I've applied this patch to target-arm.next.
 >
-> This is more descriptive than 'unsigned long'.
-> No functional change, since these match on all linux+bsd hosts.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-v3->v4 change: also make the places where we print it
-use %p and (void*)guest_base rather than 0x%lx.
+Ah I had a gut feeling there was a GIC in kvm. CVE or no CVE, --n_bugs
+-Alex
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+> thanks
+> -- PMM

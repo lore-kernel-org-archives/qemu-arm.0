@@ -1,230 +1,231 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp333685wrg;
-        Mon, 20 May 2019 08:53:55 -0700 (PDT)
-X-Received: by 2002:a9d:5181:: with SMTP id y1mr128173otg.334.1558367635175;
-        Mon, 20 May 2019 08:53:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558367635; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp4050179lfo;
+        Mon, 1 Feb 2021 22:22:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxmUlQXDTBxXBNENmZRVgx2MCkRhithDP9XqUw1Xx8lzO40VZS5psNkd+E2anAHx5vq1Wub
+X-Received: by 2002:a25:20c2:: with SMTP id g185mr20224783ybg.31.1612246968508;
+        Mon, 01 Feb 2021 22:22:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612246968; cv=none;
         d=google.com; s=arc-20160816;
-        b=l4V5N2r1bulfYO6A/pPTEC+lmiEi455CQSJn3ZsX37yH49gza4wffZBnhV4mC9cofX
-         48HrtgGubT5hbpmf5brvXBmp1TmMoN7I9sJZB+zuq/PDy5QKMVIF7JXBs4hE8mumo9NS
-         WDfJSHYYI98KG3oeZe9BS7wzOq6iW5ch+Yx2q0700cywMlVvSgTzrHOShOrJ8SWY4dHg
-         8vGhvF1dSJeQxrUUEHW0i9N2FuTBUar9DVTcYbk/C8eyskpgQT0oriQi4cmSS6Na4bDc
-         sYIGCRMvbM4+EaEuZfYPBl1osE3P5dXTk454oHFvbZZoFudto3sNjgw0V2wSZXrzO0KA
-         eGOQ==
+        b=hjetXIAMOzj4xrEnNuowEq3jq4ZofmrLhqZ6vTR1YhXFnxSRs3Xu0Yi83uPaKI714M
+         OwFu52OnkqAzchDZSaoJLzV+umaSmwg9h2u1eJbOY0L0swuLcc7bHES5GLriE9CCSrBA
+         ipEpZC+ogtKr/CnVbAyHuEbbSgwOuuv+xID74obiiwWCRbGOmip12ScujHKUKc6H/Qyh
+         Ghi3+RJhf4VLtJ4NemA/2H7mS3kUHeWP03FkHKYN8A31hcBhPP5mewFhYzVVMQYQ8pTj
+         ZoIoeHu10Pd+tRhQdU/GwKL5eOLMjYhTotk9iZFXLl8dPFN6+XiPWRaDz+e2TXtHNJle
+         Chbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=Gs0kl/XKWL4VZt8EyiEa3WDXQNOIJkACfh3axcEU2sI=;
-        b=Y+cEoHNVrA0IrVH4NznXPRh+njzesypzoDNfVvW+9MhuzRiF1DCpD5g2m8fSXoyuLp
-         MfCGd+sNjRhZgM0ND75IacbWFDTA12IlSShtRcXl4NtkolJ/F8X1AMPSASP6T5pygn+A
-         fwXzmfU0CKGEmZwJYnG26GsfSJ3aN4cpr3OROP5TJgpU4ycuHLWeeio0S2ZqgnEO/M+5
-         Z++hFEiLFU+zFwOedY1cZ7w/1WQRKKnY3uZEBUrq/XeXoF48qMDbpY2hiw8Wuy3BldkT
-         t7xBPQwMW3P9aI/iuQyF3LsweBI8cyy0H/DXvgRGzKzne7xzMZl6ng1exrksnitalQuE
-         jgVg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:to:from:date:dkim-signature;
+        bh=4N7AlC5pczwVOPWxuv+EDuxjBJ1WJYk2Q/kXpm1jUyA=;
+        b=GS08jKsk3vad2RsrBgO2qP/rM7dfTxkmEfBR827GIeo4bFZhBIX3I23ZOvoRqUr1ad
+         JRExd51w6XcFK0D2llMLbVGf56qPjjKQuI89WXp+e2BBEcc0eu4YlfQ9V8ukNf9fxrFC
+         E5TgEFVgJfC+U1/zMwY1qw+706gOSfo9TcVR7EZZ8+k7pJSkDBjNqRK1qom1Cje+j9kt
+         MCCwhvfk4tK7Iv0GD3/LqIDV/E/P7SkJEP8WZjqbyB1yH++h2SdywYBhLRPZZeB/3T3M
+         JvSpXKXN4ZC6lX0G1h7SvCxd4mI3cMBVGv5m+ZnrA7GXrbnNFLcBvEcUq967k4SxAUTY
+         DpkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gi1sQ13i;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <aleksandar.m.mail@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q64sor2282844oig.68.2019.05.20.08.53.55
+       dkim=fail header.i=@yahoo.com header.s=s2048 header.b=Uw7q5S3J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fedoraproject.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c83si18930358ybb.204.2021.02.01.22.22.48
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 20 May 2019 08:53:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Feb 2021 22:22:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gi1sQ13i;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=Gs0kl/XKWL4VZt8EyiEa3WDXQNOIJkACfh3axcEU2sI=;
-        b=Gi1sQ13ih83yz1q8MEKPuBZtPez423nvF5SJimXwVOeRuoe2tnlY6WJRuCfebMnUnw
-         RrtM494IOziML/BTZSdoHF+JGPCR/Vrb3IR5fbLHUELEp0rFUPKuo3GdmgWqlHV1htlk
-         qdVPGKQ8GkkwO1gPV3IrEsZdC5WsI/Oylcp3c+VXX8m7drCWLUgBOd2Q9FUTq8HCBJoJ
-         OeUKjjlzjCFvUaO3jLz5HrSpjnFTo64C/1c8v+p3vAFjxqm0J3G3vIrXn3DltZOt0w1d
-         OncVnX3yxdORyAaiASELg1208SRSCKb3YGB0cCYYXuV7oY7TR/aVjU2cQ3skIzUOTa9v
-         Pc/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=Gs0kl/XKWL4VZt8EyiEa3WDXQNOIJkACfh3axcEU2sI=;
-        b=Otx1IOCYy3XsrWNbssS+Gom3KExZjfcrANekkIVRyNiVKVOEA4UCx23G9HKLptR+YB
-         G2vQ83yF09RfzyoswugR75Ld/Z2v/wetKndwszjNc2x3Gw1wTX9JHGQFC9AED7sdhv0B
-         msjF49PbhosIlI+VooPc3CdFv6grSBrz6E9ADdITv7EicpYEAFSIrQfMkJCnKB6yElxT
-         1Yvh/51/A3jB5/ZGSFoMm++Y3DinXPoTQYyw60Ly93vruwutBTalcecQpGZ6TNDycGk+
-         9APmwtCJRWy2dstiVcdjDwfWLmjnbIL8eC1Lmi91r9/lcIpLOMGh6Rhf8sghdS+NXVWg
-         mWvQ==
-X-Gm-Message-State: APjAAAUwjTTxuP70lXgOUCdBiQfdUeWSHPMz0f1RqUPjSOLM+RWBcQbj
-	/Jcg51TdI1GWDLcm587y2JT51aDPqr4jijv7c06Q9w==
-X-Google-Smtp-Source: APXvYqxEZ4TqKx6u3sJUY3Cshh2C+8F4WjycACiUu7EFfseZdhbBYp3J+xz6xY+u0MBDX0mQbJiKVFiLjE7oUSyh9z8=
-X-Received: by 2002:aca:3906:: with SMTP id g6mr16358566oia.106.1558367634670;
- Mon, 20 May 2019 08:53:54 -0700 (PDT)
+       dkim=fail header.i=@yahoo.com header.s=s2048 header.b=Uw7q5S3J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fedoraproject.org
+Received: from localhost ([::1]:55840 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l6p5L-0001jn-PM
+	for alex.bennee@linaro.org; Tue, 02 Feb 2021 01:22:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37094)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pjp@fedoraproject.org>)
+ id 1l6p53-0001jP-Bv
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 01:22:29 -0500
+Received: from sonic309-21.consmr.mail.sg3.yahoo.com ([106.10.244.84]:41695)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pjp@fedoraproject.org>)
+ id 1l6p51-00082l-8B
+ for qemu-devel@nongnu.org; Tue, 02 Feb 2021 01:22:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1612246941; bh=4N7AlC5pczwVOPWxuv+EDuxjBJ1WJYk2Q/kXpm1jUyA=;
+ h=Date:From:Reply-To:To:Cc:In-Reply-To:References:Subject:From:Subject:Reply-To;
+ b=Uw7q5S3JSy/mmaEXrYUSbCa9l+UUJD+gjAfl9pTGr/5FiItA6Ey7lMQ0xIJ0uWwJAEd62Khnr0eqQa+biomIamXtulxflBmrFjqGhZSncCkhFMhJc3lK2CbPeaMFkJEmXZkGgz7PnVJ/RxvVWrYeTzxwX80rlyWJCcA46RT5eu87v6dJLJ01cHJOpn1DYVbloG+U6WdhbqgM1XsQPnYIpLiGBhI+z2y4mWCLcuTyiOxdYwnNzqhEsjhoPcpaqda+9GvUcQO8rP5dhRmPoGAVAk4BpT/6oiMnap4ZMinNHMKZEwv5G5j/ufxT5QN/6kmc9Xv86/JeyoHS9dixEFjSOw==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
+ t=1612246941; bh=tT+71lRFpFlI6XdZ/CDeOQ86m0Z3arqyqtwaqCWbHfe=;
+ h=Date:From:To:Subject:From:Subject:Reply-To;
+ b=KxKfS9llmqx7QNJdYQ2df3hchhcJCmzWmz6T/uU5XKzzSxBhycvvoYvYih8DTnB8oNgp8c8t1dOgEgsH5tYn6NKi5CV/78bt8kvJaBd5nUXy/W5tXUIFEjgivUwIJm84aDSlvf+nln9A42B0HmB8NrgjvYiKdFnlq0SCJfo32tg/zNEAOmAYf4r2h1+Rl/V/2QAo3ivn0QO+7sLbx185CdrY2cx+0ZviJP56tUgyDV/Nv2RyMeiRIYXtK0+zoz2Eeiq7F3jQ7w+8QP2xvZBE38zmszIbK6lbUXi9t/2s8eYAEdUTvqWjiULDOMz10R/BHJDIjr2fSBDT2zpYv++Zjg==
+X-YMail-OSG: k9cn6BoVM1l4IPmTVmHVxXN7qQ4ifvvjr_GvT5ttMKG6CAD41oADtaJolkm2dZP
+ qNhXfvjfWLybGlfbF6CsCavvEb7y8v3MfmmG5ECELxJ0OP1XzyTys_fG3aUSaEme3rwGoIOm_SvH
+ renEJ5wdyAKnTA7xW_uBy1Up4lf85jRmaOwkpUrd7X4VnmQizCivn8dD_Efj0vZLVHGT4DTbJkb_
+ 1sMf8Y2wOGRdN9cVhKgVorbLXwVhkFZWpkl6PugjZsTt5Uo4JLktSDDIdjHe0KsWs44CS5sh.UVm
+ mFEHO53Im1.qd_TG.zXeSvpCTRa.CETfJVFzRtOf7ZXSA2TQfr.4ScefKaLu6SN2gGs99UnlwDmq
+ ZI_2n.1HRcAs0b_lCpVW98EZXkhdlTwZiapctMkD1VaoUCqtwOA2BgMoN1iQmf7rATg8Dk2ZiiyG
+ vfFuVETQTTLsSv5H4bjcNQlSMhf97JPJgDce.2JAcdIwDos0BdIuO5Qcq_fal6fOGZR3F5nm5XFL
+ wrlcbleiMczUZ3xfM7QhsaO25PRTIZaTReTFdfLijay64sguS2OaCKlVDbTN6A8uTqcUggGV28Qb
+ oXinVUxuq2kg7_a3wtNtxiq7cgm7kLnqrvZUjGL.3qlZCJR3tT8_lZsbyImryZQ_bUnyoTx_ui_f
+ K0Ab4IFZVb.mRGA8PUu.u6zi21dO9l3FHGZdny5VdPA98zRNQGA3cenqaO4_yxkCGjJOPv3naBGR
+ nRmwn9DkH5snTrOKQSwLyU6HNq7po6EE_HqrS6OLN2gS9ZJcq.IdzCoIB9boGK2kaEDN2fpaxkUG
+ KbVMpLMQXT7S.gc6NEKrLLFCUNhWqSglo4QeYklTOb6rz.cwS0t6WTe5Xc5AH69K3d8.QAaeZ8Xk
+ B8Q6QxpqaXrqKRXJMh7rJv4cDZOGrC5szIkWSZmzySB0wikvpF2R7NPJQCqh2XvA3JV7u7pfYSj8
+ cB962oj8bISP9iFIV_wy1cspMTwT834HFbt1XdimvyHxzuxZUaZz404Nr5Dpdy1W3QE02emJ.iZ5
+ iq2mG4wgPM7VeO3doAuVnYYS8kTeafNjSdi_VUoexwF8tmsVHj.hg4FquOWFwRJ1kjMXLOKKMtj4
+ kkKXYX9hkQvS52IPbtbQCuCbd.jUsK9dHLQJR16dExVTfrvFfGhC3Sj81cA8voWdDwUOc0Lel4s8
+ .E9X7DgPadiq.vYmnU.okVjDNzTxNTMUYf5Abpahz9GKog4EeG4kv7iP71awde5PWCUv9OqF3.Hu
+ q0sHQqzmPQD3Pnw9EYtPNt90Vxds4H3YyFQFEUem24TSLz..U_z7SXnSqBtqvgnVC.iZ4hhziTle
+ fOTW2lx6PDkT87xAO2gEhKutl1.WNWLRzX3ELtmSq8T4gfp7b0R1.Ru2M6bMaVGo2IEPTEu4HCNV
+ 3tMBY9cT.eGSuWaFOYi.pBzqP5YsVtNp2Re3yi8.mwiW8e1EBOzrR4IZWjqGgqMwz3CSfeS3QRQ8
+ n3MDcRlkQO9GjcxFMkOOVsdXR9PUfRMVhjb3iurN8T7exXf9HsZKqhK9jhzOytjZtmmhg51bnTT5
+ S3EYT9gUwtCrPw0cOzvjt7tGsIFIA71sZq2_JcQaDuiTZcNo6bbZmbQasYZX0zfhpIUldrr3B0cS
+ HsFarpV0DzitK8yPaN4RTqXYOluoYdLZZKuK95DhUIDMQxQ0hQPXpCpPTXrCaZtN3EPdtryMER.S
+ 8XgBqjVq24mNmQfppi_Kzb4tItbrdw_S7iBQjgY66sng4e9x0D6uQWHpVdRW_CCLiN_drFGhN.QC
+ ZCS.Kfscu54LA.rF_bUfliJbrtg4rl21AS0xvTZzHmtqciAzytJ0rnOgxpUsjYGK_DGqZtE3iHar
+ dc3UMNyBpc4UPVPM0zWQK7gBID4UHqfUUXTO5vTOy6SZr2mBr3aYWWNXLowCOPHN2ZDHHj8hXFFn
+ 0SHS1rxz02c8mulgEagIUuOQR4QYAXN1MCpzELX2CQ1h0vNRvMLOlsMKF0q1ko7k8DwoI2lQ4p91
+ TJyPgjUWt23Emq_BANAI.AorGY442G6oKIhfIraksP5tV8lvOjImELHFKs576qL9P8jVAQZaPE3t
+ _eg3XQJZkYzl3t2qTKuz6eGJZNSoQ6fRfD34P2wKapNFf8LMGhkCwlLrLp1xOHA71We5SR.DbBrI
+ Id8jceMi7.26GEyY545erEaOmFi3rApbZSP2E47eTSZB4uXqTWTe0ASbQaltAkCYX5sF7wqSzWJo
+ wk6ZKDtKO_ZgE615.K2n9yxAqiT5z5Tr96SxPrqOwPGxTODBZrjcr759mrOsz1J7TVwYQJyQa.1s
+ HKLcDYYJzzAqHYTG3aqs0if_.9n9j2NTHSZc8P3IKR1.d.kfPycqcy0kmCGDkecmSOWWFT1IRpJA
+ 0E_ZiIDpLBqpqV8Nln5xocsd5PQHiCOvwOByMuVtI.le3NPwe2Nmpqrw2o6EOFw2m.6z9zi5BkAw
+ tA35x5xK91kZeN1cKTXTqDynhKopGTjwEbQl.U72D6kAkGx59vIbet2nqEiBlB71uE0PrjxgmrFL
+ z.JibbshI_wnaa7dyZU9Ea_6Z_vIjBmkp1NGPFYRdbBKH6570o5PDp1svwdbWGKEmIGW71Af3LF1
+ VQF4A7YKFVmfmBtQbwIFqqNIaW9SVsBH61VN3DmOvyA49lnUutPXoG0SmNAzwLBKH5urquAsFA0.
+ QW_6oIOLmZfsRxzrXw.zQkzOfeDeobIF0RfW6lnbUW7MHqWLKWHm_1x4ve3Oeop8LvSShMg9C7rO
+ WSwHsZIppSo44X7NuKs7KgXJ.1bo9EcLi4KdL.wIe4r.2jHgyZIR1p7ZdW7S9M6im7AEh9BCGOfX
+ m8HxDlYtrk9pNxfqXt57yLNAdRhjZc552mPNMsFk5G9poi5ix.i_38a6q.5hrcjmK6fisHVND.Ny
+ wzWTcszKgr7yi_FFBXLFVyU8kxl0Z8aU5j7WwJ5_QNcPbS5RE9BwaloFjq3LFhV2iVKSVdY90USj
+ fgZgHqr890rMlw9BDgHIkOwcTRfqx.1gfc0cPkl2uI9coBGaZ1LKErcqqI5sfZ3bsZPx_bxnvWCl
+ 8n7YD.WqNyk0lDaujZ3swHqzmxRE8s9etSxehT8kwiPa1b_QH03nOVAsG6FYk3FoOcin9NEfmn0s
+ RhpTCX8YB.xJL1hTJ3g--
+Received: from sonic.gate.mail.ne1.yahoo.com by
+ sonic309.consmr.mail.sg3.yahoo.com with HTTP; Tue, 2 Feb 2021 06:22:21 +0000
+Date: Tue, 2 Feb 2021 06:21:57 +0000 (UTC)
+From: P J P <pjp@fedoraproject.org>
+To: P J P <ppandit@redhat.com>, QEMU Security <qemu-security@nongnu.org>, 
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Message-ID: <787280826.1146023.1612246917145@mail.yahoo.com>
+In-Reply-To: <6d29aa57-2e6e-e81d-831f-803d9aae798f@amsat.org>
+References: <20210131103401.217160-1-f4bug@amsat.org>
+ <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
+ <20p82p5p-ns25-n434-37os-n55013s6313@erqung.pbz>
+ <6d29aa57-2e6e-e81d-831f-803d9aae798f@amsat.org>
+Subject: Re: [QEMU-SECURITY] [PATCH] hw/intc/arm_gic: Fix interrupt ID in
+ GICD_SGIR register
 MIME-Version: 1.0
-Received: by 2002:a9d:410f:0:0:0:0:0 with HTTP; Mon, 20 May 2019 08:53:54
- -0700 (PDT)
-Received: by 2002:a9d:410f:0:0:0:0:0 with HTTP; Mon, 20 May 2019 08:53:54
- -0700 (PDT)
-In-Reply-To: <20190514155301.16123-10-alex.bennee@linaro.org>
-References: <20190514155301.16123-1-alex.bennee@linaro.org> <20190514155301.16123-10-alex.bennee@linaro.org>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Mon, 20 May 2019 17:53:54 +0200
-Message-ID: <CAL1e-=iS33qAdeN0uODh7nak55OVuLBs=ftVqgvobn5mdMOmbQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [RFC PATCH 09/11] target/mips: only build mips-semi
- for softmmu
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Aleksandar Markovic <amarkovic@wavecomp.com>, qemu-devel@nongnu.org, 
-	Aleksandar Rikalo <arikalo@wavecomp.com>, Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000004b47f9058953bd0f"
-X-TUID: ScEeLGVFK6uz
-
---0000000000004b47f9058953bd0f
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Mailer: WebService/1.1.17648 YMailNorrin Mozilla/5.0 (X11;
+ Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
+ Chrome/87.0.4280.88 Safari/537.36
+Received-SPF: neutral client-ip=106.10.244.84;
+ envelope-from=pjp@fedoraproject.org;
+ helo=sonic309-21.consmr.mail.sg3.yahoo.com
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ FREEMAIL_FORGED_REPLYTO=2.095, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: P J P <pj.pandit@yahoo.co.in>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, Li Qiang <liq3ea@gmail.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Alexander Bulekov <alxndr@bu.edu>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qVXo7q31spHq
 
-On May 14, 2019 6:04 PM, "Alex Benn=C3=A9e" <alex.bennee@linaro.org> wrote:
+On Sunday, 31 January, 2021, 08:48:26 pm IST, Philippe Mathieu-Daud=C3=A9 <=
+f4bug@amsat.org> wrote:=C2=A0
+>Forwarding to qemu-security@ to see if this issue is worth a CVE.
 >
-> The is_uhi gates all semihosting calls and always returns false for
-> CONFIG_USER_ONLY builds. There is no reason to build and link
-> mips-semi for these builds so lets fix that.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
+> | On 1/31/21 11:34 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> | > Per the ARM Generic Interrupt Controller Architecture specification
+> | > (document "ARM IHI 0048B.b (ID072613)"), the SGIINTID field is 4 bit,
+> | > not 10:
+> | >=C2=A0
+> | >=C2=A0 =C2=A0 - Table 4-21 GICD_SGIR bit assignments
+> | >=C2=A0
+> | >=C2=A0 =C2=A0 The Interrupt ID of the SGI to forward to the specified =
+CPU
+> | >=C2=A0 =C2=A0 interfaces. The value of this field is the Interrupt ID,=
+ in
+> | >=C2=A0 =C2=A0 the range 0-15, for example a value of 0b0011 specifies
+> | >=C2=A0 =C2=A0 Interrupt ID 3.
+> | >=C2=A0
+> | > diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> | > index af41e2fb448..75316329516 100644
+> | > --- a/hw/intc/arm_gic.c
+> | > +++ b/hw/intc/arm_gic.c
+> | > @@ -1476,7 +1476,7 @@ static void gic_dist_writel(void *opaque, hwadd=
+r offset,
+> | >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 int target_cpu;
+> | >=C2=A0=C2=A0
+> | >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu =3D gic_get_current_cpu(s);
+> | > -=C2=A0 =C2=A0 =C2=A0 =C2=A0 irq =3D value & 0x3ff;
+> | > +=C2=A0 =C2=A0 =C2=A0 =C2=A0 irq =3D value & 0xf;
+> | >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 switch ((value >> 24) & 3) {
+> | >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 case 0:
+> | >=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mask =3D (value >> 16=
+) & ALL_CPU_MASK;
+> | >=C2=A0
+> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
+> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
 
-Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+* Does above patch address both these bugs? For BZ#1913917 'irq' is derived=
+ from 'offset' it seems.
 
->  target/mips/Makefile.objs | 3 ++-
->  target/mips/helper.h      | 2 ++
->  target/mips/translate.c   | 8 ++++++++
->  3 files changed, 12 insertions(+), 1 deletion(-)
->
-> diff --git a/target/mips/Makefile.objs b/target/mips/Makefile.objs
-> index 651f36f5176..3448ad5e193 100644
-> --- a/target/mips/Makefile.objs
-> +++ b/target/mips/Makefile.objs
-> @@ -1,4 +1,5 @@
->  obj-y +=3D translate.o dsp_helper.o op_helper.o lmi_helper.o helper.o cp=
-u.o
-> -obj-y +=3D gdbstub.o msa_helper.o mips-semi.o
-> +obj-y +=3D gdbstub.o msa_helper.o
-> +obj-$(CONFIG_SOFTMMU) +=3D mips-semi.o
->  obj-$(CONFIG_SOFTMMU) +=3D machine.o cp0_timer.o
->  obj-$(CONFIG_KVM) +=3D kvm.o
-> diff --git a/target/mips/helper.h b/target/mips/helper.h
-> index a6d687e3405..90ab03b76e3 100644
-> --- a/target/mips/helper.h
-> +++ b/target/mips/helper.h
-> @@ -2,7 +2,9 @@ DEF_HELPER_3(raise_exception_err, noreturn, env, i32, int=
-)
->  DEF_HELPER_2(raise_exception, noreturn, env, i32)
->  DEF_HELPER_1(raise_exception_debug, noreturn, env)
->
-> +#ifndef CONFIG_USER_ONLY
->  DEF_HELPER_1(do_semihosting, void, env)
-> +#endif
->
->  #ifdef TARGET_MIPS64
->  DEF_HELPER_4(sdl, void, env, tl, tl, int)
-> diff --git a/target/mips/translate.c b/target/mips/translate.c
-> index 3cd5b11b16b..fb905c88b57 100644
-> --- a/target/mips/translate.c
-> +++ b/target/mips/translate.c
-> @@ -13726,6 +13726,14 @@ static inline bool is_uhi(int sdbbp_code)
->  #endif
->  }
->
-> +#ifdef CONFIG_USER_ONLY
-> +/* The above should dead-code away any calls to this..*/
-> +static inline void gen_helper_do_semihosting(void *env)
-> +{
-> +    g_assert_not_reached();
-> +}
-> +#endif
-> +
->  static int decode_mips16_opc (CPUMIPSState *env, DisasContext *ctx)
->  {
->      int rx, ry;
-> --
-> 2.20.1
->
->
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Interrupt Configuration.=C2=A0 */=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 irq =3D (offset - 0xc00) * 4;
 
---0000000000004b47f9058953bd0f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<p dir=3D"ltr"><br>
-On May 14, 2019 6:04 PM, &quot;Alex Benn=C3=A9e&quot; &lt;<a href=3D"mailto=
-:alex.bennee@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; The is_uhi gates all semihosting calls and always returns false for<br=
->
-&gt; CONFIG_USER_ONLY builds. There is no reason to build and link<br>
-&gt; mips-semi for these builds so lets fix that.<br>
-&gt;<br>
-&gt; Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@lina=
-ro.org">alex.bennee@linaro.org</a>&gt;<br>
-&gt; ---</p>
-<p dir=3D"ltr">Reviewed-by: Aleksandar Markovic &lt;<a href=3D"mailto:amark=
-ovic@wavecomp.com">amarkovic@wavecomp.com</a>&gt;</p>
-<p dir=3D"ltr">&gt; =C2=A0target/mips/Makefile.objs | 3 ++-<br>
-&gt; =C2=A0target/mips/helper.h=C2=A0 =C2=A0 =C2=A0 | 2 ++<br>
-&gt; =C2=A0target/mips/translate.c=C2=A0 =C2=A0| 8 ++++++++<br>
-&gt; =C2=A03 files changed, 12 insertions(+), 1 deletion(-)<br>
-&gt;<br>
-&gt; diff --git a/target/mips/Makefile.objs b/target/mips/Makefile.objs<br>
-&gt; index 651f36f5176..3448ad5e193 100644<br>
-&gt; --- a/target/mips/Makefile.objs<br>
-&gt; +++ b/target/mips/Makefile.objs<br>
-&gt; @@ -1,4 +1,5 @@<br>
-&gt; =C2=A0obj-y +=3D translate.o dsp_helper.o op_helper.o lmi_helper.o hel=
-per.o cpu.o<br>
-&gt; -obj-y +=3D gdbstub.o msa_helper.o mips-semi.o<br>
-&gt; +obj-y +=3D gdbstub.o msa_helper.o<br>
-&gt; +obj-$(CONFIG_SOFTMMU) +=3D mips-semi.o<br>
-&gt; =C2=A0obj-$(CONFIG_SOFTMMU) +=3D machine.o cp0_timer.o<br>
-&gt; =C2=A0obj-$(CONFIG_KVM) +=3D kvm.o<br>
-&gt; diff --git a/target/mips/helper.h b/target/mips/helper.h<br>
-&gt; index a6d687e3405..90ab03b76e3 100644<br>
-&gt; --- a/target/mips/helper.h<br>
-&gt; +++ b/target/mips/helper.h<br>
-&gt; @@ -2,7 +2,9 @@ DEF_HELPER_3(raise_exception_err, noreturn, env, i32, =
-int)<br>
-&gt; =C2=A0DEF_HELPER_2(raise_exception, noreturn, env, i32)<br>
-&gt; =C2=A0DEF_HELPER_1(raise_exception_debug, noreturn, env)<br>
-&gt;<br>
-&gt; +#ifndef CONFIG_USER_ONLY<br>
-&gt; =C2=A0DEF_HELPER_1(do_semihosting, void, env)<br>
-&gt; +#endif<br>
-&gt;<br>
-&gt; =C2=A0#ifdef TARGET_MIPS64<br>
-&gt; =C2=A0DEF_HELPER_4(sdl, void, env, tl, tl, int)<br>
-&gt; diff --git a/target/mips/translate.c b/target/mips/translate.c<br>
-&gt; index 3cd5b11b16b..fb905c88b57 100644<br>
-&gt; --- a/target/mips/translate.c<br>
-&gt; +++ b/target/mips/translate.c<br>
-&gt; @@ -13726,6 +13726,14 @@ static inline bool is_uhi(int sdbbp_code)<br>
-&gt; =C2=A0#endif<br>
-&gt; =C2=A0}<br>
-&gt;<br>
-&gt; +#ifdef CONFIG_USER_ONLY<br>
-&gt; +/* The above should dead-code away any calls to this..*/<br>
-&gt; +static inline void gen_helper_do_semihosting(void *env)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 g_assert_not_reached();<br>
-&gt; +}<br>
-&gt; +#endif<br>
-&gt; +<br>
-&gt; =C2=A0static int decode_mips16_opc (CPUMIPSState *env, DisasContext *c=
-tx)<br>
-&gt; =C2=A0{<br>
-&gt; =C2=A0 =C2=A0 =C2=A0int rx, ry;<br>
-&gt; -- <br>
-&gt; 2.20.1<br>
-&gt;<br>
-&gt;<br>
-</p>
+> | > Correct the irq mask to fix an undefined behavior (which eventually
+> | > lead to a heap-buffer-overflow, see [Buglink]):
+> | >=C2=A0
+> | >=C2=A0 =C2=A0 $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch=
+64 -M virt,accel=3Dqtest -qtest stdio
+> | >=C2=A0 =C2=A0 [I 1612088147.116987] OPENED
+> | >=C2=A0 [R +0.278293] writel 0x8000f00 0xff4affb0
+> | >=C2=A0 ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of b=
+ounds for type 'uint8_t [16][8]'
+> | >=C2=A0 SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/i=
+ntc/arm_gic.c:1498:13
+> | >=C2=A0
+> | > Cc: qemu-stable@nongnu.org
+> | > Fixes: 9ee6e8bb853 ("ARMv7 support.")
+> |
+> | > ---
+> | > Isnt it worth a CVE to help distributions track backports?
+> | > ---
 
---0000000000004b47f9058953bd0f--
+Thank you for reporting this issue. Will process further.
+
+
+Thank you.
+---
+=C2=A0 -P J P
+http://feedmug.com

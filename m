@@ -1,167 +1,122 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4864666wrh;
-        Wed, 8 May 2019 06:59:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyO/tNhCVD8CViT1MTtInZOB1nU8QQJ+vE/K9IAEmg15SJSGYDH7ofwVqcg9QGt8u/GwLFK
-X-Received: by 2002:a5d:6983:: with SMTP id g3mr10826447wru.89.1557323998328;
-        Wed, 08 May 2019 06:59:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557323998; cv=none;
-        d=google.com; s=arc-20160816;
-        b=oMXn33zGtXW+wQc3AgnEhD70YVjFTxSiXtXYrGPvyyqSsQct9inmpUaW1vhcq0GwYb
-         vTdCzazhQjJDQwBz4RGfGpoejEDheOOv9cvYKTZ1iyiVYfcVmOrTC9LmgHVif52n6mW6
-         gNDEDicQIRyohZdllAzUddPQMmrJnGCEvVDMz5Jux/TMnEfdF4d6OnsSj59gtaJ8ryqn
-         xxm0bNszi0SbsveN72CphKKQf2ArFxGqJ+08T1CQ3266g3KXgezirNfQxYCHUqbOz86+
-         5e8gwcCOleIfL+h909hHDYe6t5puYWwfS+Q3sBeLtM5z+WtnSL0DtymB1RHMr+6+cv+S
-         p6Ww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from;
-        bh=kV6zoDvkT+G/YQ6qO7JsAz5Z1pR//0gUFPmrHUTv5oE=;
-        b=CeDOcea/ptQSoh01LcVDnUg2sso/1saEncHtQzbQU1neHrcqY8A7kLrktlT1X9gzxV
-         rAJvs5F/n5/7FhkQP/mgfKrrwf1As8t1iV0cRipf3Ysl38z7dqJaPJqj7eJMLVtZKpbN
-         vE+1B/gWdA4ipMUsYqtMgn0xk4pV29gypelKR7IjyUCVwknilkDE0q939OgUO26jOKFg
-         NyNd8+CRpOV7VQT5rAs+I36eR8artSywBg7GpEHW1EJ2Lm7JVm/mi5JS63wZvudE6ngg
-         904x4NQaf/MN1fnVxxMYDuTYaDfMpryLWXSRSfgZ6e8KdcUUJfJLg9qZWdUvOW13fJqp
-         zBLw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w5si12347803wrs.74.2019.05.08.06.59.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 May 2019 06:59:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:37709 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hON6z-0005Cn-Gb
-	for alex.bennee@linaro.org; Wed, 08 May 2019 09:59:57 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45242)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hON6n-0005Ce-68
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 09:59:46 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hON6l-0000eB-6F
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 09:59:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44544)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hON6j-0000cY-8S; Wed, 08 May 2019 09:59:42 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5BBD830832E1;
-	Wed,  8 May 2019 13:59:39 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
-	[10.36.116.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0DDA31001E6F;
-	Wed,  8 May 2019 13:59:39 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 840911132B35; Wed,  8 May 2019 15:59:32 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id f6sm2582543wmq.33.2021.02.02.04.13.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Feb 2021 04:13:52 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 5FF831FF7E;
+	Tue,  2 Feb 2021 12:13:51 +0000 (GMT)
+References: <20210129181319.2992-1-alex.bennee@linaro.org>
+ <CAFEAcA9M+J3X1hS6dPrTM-QxGVfLSrP2=VE7cpdJZPovCuzuJg@mail.gmail.com>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1555560291-3415-1-git-send-email-hongbo.zhang@linaro.org>
-	<1555560291-3415-3-git-send-email-hongbo.zhang@linaro.org>
-	<CAFEAcA-poCxPqPtfhx4mUJ5pcOjn1Hz-WNxEt29f=JgpFMi4Kg@mail.gmail.com>
-Date: Wed, 08 May 2019 15:59:32 +0200
-In-Reply-To: <CAFEAcA-poCxPqPtfhx4mUJ5pcOjn1Hz-WNxEt29f=JgpFMi4Kg@mail.gmail.com>
-	(Peter Maydell's message of "Tue, 30 Apr 2019 15:16:59 +0100")
-Message-ID: <87mujxavy3.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Anders Roxell <anders.roxell@linaro.org>, Aurelien Jarno
+ <aurelien@aurel32.net>
+Subject: Re: [PATCH] docs/system: document an example booting the
+ versatilepb machine
+Date: Tue, 02 Feb 2021 12:11:09 +0000
+In-reply-to: <CAFEAcA9M+J3X1hS6dPrTM-QxGVfLSrP2=VE7cpdJZPovCuzuJg@mail.gmail.com>
+Message-ID: <87pn1iu0ow.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Wed, 08 May 2019 13:59:39 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 2/2] hw/arm: Add arm SBSA
- reference machine, devices part
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s7rR6vmk4LRH
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: +2cTiKZp1kP9
+
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> On Thu, 18 Apr 2019 at 05:05, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> On Fri, 29 Jan 2021 at 18:13, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
 >>
->> Following the previous patch, this patch adds peripheral devices to the
->> newly introduced SBSA-ref machine.
+>> There is a bit more out there including Aurelien's excellent write up
+>> and older Debian images here:
 >>
->> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+>>   https://www.aurel32.net/info/debian_arm_qemu.php
+>>   https://people.debian.org/~aurel32/qemu/armel/
+>>
+>> However the web is transitory and git is forever so lets add something
+>> to the fine manual.
+>>
+>> Cc: Anders Roxell <anders.roxell@linaro.org>
+>> Cc: Aurelien Jarno <aurelien@aurel32.net>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 >> ---
->>  hw/arm/sbsa-ref.c | 451 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 451 insertions(+)
->
-> Some fairly minor comments on this one.
->
->> +static void create_flash(const SBSAMachineState *vms,
->> +                         MemoryRegion *sysmem,
->> +                         MemoryRegion *secure_sysmem)
->> +{
->> +    /*
->> +     * Create one secure and nonsecure flash devices to fill SBSA_FLASH
->> +     * space in the memmap, file passed via -bios goes in the first one.
->> +     */
->> +    hwaddr flashsize = vms->memmap[SBSA_FLASH].size / 2;
->> +    hwaddr flashbase = vms->memmap[SBSA_FLASH].base;
+>>  docs/system/arm/versatile.rst | 32 ++++++++++++++++++++++++++++++++
+>>  1 file changed, 32 insertions(+)
+>>
+>> diff --git a/docs/system/arm/versatile.rst b/docs/system/arm/versatile.r=
+st
+>> index 51221c30a4..d16f20ccae 100644
+>> --- a/docs/system/arm/versatile.rst
+>> +++ b/docs/system/arm/versatile.rst
+>> @@ -27,3 +27,35 @@ The Arm Versatile baseboard is emulated with the foll=
+owing devices:
+>>     devices.
+>>
+>>  -  PL181 MultiMedia Card Interface with SD card.
 >> +
->> +    create_one_flash("sbsa-ref.flash0", flashbase, flashsize,
->> +                     bios_name, secure_sysmem);
->> +    create_one_flash("sbsa-ref.flash1", flashbase + flashsize, flashsize,
->> +                     NULL, sysmem);
->> +}
+>> +Booting a Linux kernel
+>> +----------------------
+>> +
+>> +Building a current Linux kernel with ``versatile_defconfig`` should be
+>> +enough to get something running.
+>> +
+>> +.. code-block:: bash
+>> +
+>> +  $ export ARCH=3Darm
+>> +  $ export CROSS_COMPILE=3Darm-linux-gnueabihf-
+>> +  $ make versatile_defconfig
+>> +  $ make
 >
-> I think Markus might have an opinion on the best way to create
-> flash devices on a new board model. Is "just create two flash
-> devices the way the virt board does" the right thing?
+> same remarks as for other patch.
+>
+> Does the 'make' make the right dtb automatically, by the way?
+> (I have some notes where I had to tell the kernel to build the
+> dtb explicitly, but maybe they are out of date.)
 
-Short answer: create flash devices the way the ARM virt board does now,
-after commit e0561e60f17, merged into master today.  Possibly less
-backward compatibility stuff you don't need.  As is, your patch creates
-them the way the ARM virt board did before commit e0561e60f17.  Please
-consider updating.
+I didn't do anything special and it was there in the build directory. Do
+your notes pre-date 2013:
 
-Longer answer:
+commit cc8e9ad88487004372cae87718ff593d0a2fdc3a
+Author: Rob Herring <rob.herring@calxeda.com>
+Date:   Wed Mar 13 21:31:42 2013 -0500
 
-The old way to configure block backends is -drive.
+    ARM: versatile: add versatile dtbs to dtbs target
 
-The newer -blockdev is more flexible.  Libvirt is in the process of
-transitioning from -drive to -blockdev entirely.  Other users with
-similar needs for flexibility may do the same.  We hope to deprecate
--drive eventually.
+    Add the versatile platform dtbs to the dtbs make rule.
 
-The traditional way to configure onboard flash is -drive if=pflash.
-Works, but we need a way to configure with -blockdev for full
-flexibility, and to support libvirt ditching -drive entirely.
+    Signed-off-by: Rob Herring <rob.herring@calxeda.com>
 
-I recently improved the i386 PC machine types (commit ebc29e1beab) and
-the ARM virt machine types (commit e0561e60f17) to support flash
-configuration with -blockdev.
+>
+>> +
+>> +You may want to enable some additional modules if you want to boot
+>> +something from the SCSI interface::
+>> +
+>> +  CONFIG_PCI=3Dy
+>> +  CONFIG_PCI_VERSATILE=3Dy
+>
+> It's a bit daft that these aren't in the defconfig, but hey.
+>
+>> +  CONFIG_SCSI=3Dy
+>> +  CONFIG_SCSI_SYM53C8XX_2=3Dy
+>> +
+>> +You can then boot with a command line like:
+>> +
+>> +.. code-block:: bash
+>> +
+>> +  $ qemu-system-arm -machine type=3Dversatilepb \
+>> +      -serial mon:stdio \
+>> +      -drive if=3Dscsi,driver=3Dfile,filename=3Ddebian-buster-armel-roo=
+tfs.ext4 \
+>> +      -kernel zImage \
+>> +      -dtb versatile-pb.dtb  \
+>> +      -append "console=3DttyAMA0 ro root=3D/dev/sda"
+>
+> thanks
+> -- PMM
 
-I recommend new boards support flash configuration with -blockdev from
-the start.
 
-Questions?
+--=20
+Alex Benn=C3=A9e

@@ -1,157 +1,127 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp293834lfo;
-        Wed, 3 Feb 2021 06:59:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx/n/DrcB8c9FqCogzRkgPWp36dfA/3BYO2+7jHYzMFUzCbV+nRHU8zHKFPggwqlWH2EUrn
-X-Received: by 2002:a25:6b4b:: with SMTP id o11mr5432970ybm.262.1612364385973;
-        Wed, 03 Feb 2021 06:59:45 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1612364385; cv=pass;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp298580lfo;
+        Wed, 3 Feb 2021 07:04:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzkfS432bz/iDg5xySnPaggb+AqMMi32EISDSU1XyBN85ss+lpAyOygNdG8xynHa1DCgvXD
+X-Received: by 2002:a25:e6d5:: with SMTP id d204mr4547005ybh.135.1612364672615;
+        Wed, 03 Feb 2021 07:04:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612364672; cv=none;
         d=google.com; s=arc-20160816;
-        b=qjxuWxsOTsWykcy8gxYjYN2U4/iww5RNC3M/Gvp2p/XFw93JMbEk198B/bi2gJFWTx
-         FSG8zh/colQ6xplCGoYZcqOB9U6wdGy2Cc85AZbrAX85uJ3dfk6xg1H4dtFf8zh0lpyN
-         0yfwRgEeDJdRKuCuklMTwXxfnj30IXn5Y1ahTgerpkYeD6bvJaI07rGOQRYsOJrOR7D3
-         /P6KT9wNuXIfohYI+/0VL2ZnpG93WT/ANBjw4k/oOhbB8p0aAJFqbBsqI1gBaQ1gK+6G
-         Xfmc596srB0R3foYuYwWXULXthCWhWcnVsZldzC8PoLcs6Ers0m0n+40Z+PgEuZSIzoK
-         a2Mw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=vCdKKfJwagGn7A7NkJiUf3LvwRDENxo4XUMFJJCyEgzUToN5+ufp1ayVGuU2w4umUf
+         Iu30vLRxZgrmggpGJAIHmfRgEZMI00FALc7Fc3qRp+99yUTgPSSoSCzy6XkVVOLCLd1U
+         1bLGdLYAw0TlzceysHAuLlA0Ls4ozYI418qYKgn/suL3EYbl38VmbVJWDxL4bzSxnj4j
+         k+Jkj92M7zqZ1YHNEf1RGVIDpV2MQcy/K+agE11Gf/K7w1eCEJz238tnGzW5x6t5/3IA
+         RGDihWqQRuSbekTUdcxQUoZSyeZB0gI3E4QfG3bdS7EdPxeuvKqg4KIGY75Kd3g4S3u3
+         op+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=1sYR12daYVniuTzvVbiAgq16+VkHi2OFZXxLjH6YEmQ=;
-        b=qMQuLZdz6Eu+qyKTdbRPKA8XDZwOIa14jidGHqwCYRP6ho5rjCDoe8MYeYCYrLjpXk
-         qiUKZ9sneUUQzM07u+XvVP1wVEtF3oQXc+TgQqey2rKjPYsB9TBK1//djghu/RNrJZt1
-         6FcDyTEKl4N/6forEudqEjmLN9WdlYmFq5x4T3+Tz7tYQSLJdJwJ/jgXjZEFrTtxayMD
-         RahaFcUrmZHc0lM1xhwU5oCD4VkiocXZ8eGcEqCvTGQJlVudtDpOHCDdg79/iGL9nZYJ
-         Z/mLnQLQdSrQ74Jb/oUo50kVxJN4iXhA8zYYtekrjXMJAtpFXC+CFf2LwjH/oVgn1pzd
-         KyAw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=MUYHOvXZ;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=6JMMRJI5+xvslKllJTsTL6nQ/JLc/gQX1Z2pX/05S2c=;
+        b=F6bgL74hzdcwhU5KWhTchxfzopQFOHe8RH+CvjTwYOS5karbwNdrLB7Y7qAC9k6iXZ
+         u+qJSEIKvMniJy3irdcfRa1OQkL54wk7pj3qjVaP0QNdYupXJ7RrTl6c1ed0se9GFC8A
+         DmwBHfzq67iCEYk3vdnc4yIHBxianHpIAOLpSo1AXjTtGR4x7spWtsY1cue4pbsdK4lG
+         4pUA2qBRw72gaP1IJOB1cWvm7MOYD+QH866IaN9gvKdW/IwEDmL29JgEVCuiAO5ahH92
+         r4QMaTwam0aV8nNOyNeP0HK5rEB5mo/QOdxMRsyG9EhSDVuUpZWGVGGm5SECMyyqDm/7
+         QxpQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a8NYht6r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k23si2500983ybk.343.2021.02.03.06.59.45
+        by mx.google.com with ESMTPS id p7si2498633ybc.75.2021.02.03.07.04.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 06:59:45 -0800 (PST)
+        Wed, 03 Feb 2021 07:04:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=MUYHOvXZ;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a8NYht6r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:46714 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56038 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7JdB-0008CM-B3
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 09:59:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59552)
+	id 1l7Jho-0003zC-21
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:04:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33038)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
- id 1l7Jc2-0007QM-4A; Wed, 03 Feb 2021 09:58:34 -0500
-Received: from mail-mw2nam10on2109.outbound.protection.outlook.com
- ([40.107.94.109]:57312 helo=NAM10-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
- id 1l7Jbz-0007dR-5n; Wed, 03 Feb 2021 09:58:33 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mpfQ59ntr4D1XEfq/CqjhZNeqlHcKgkB08lXHaKzy6IVfWGfWQ147JogElXOs6CntYz6N11OB8jRx08NdFa7ch6ic1tv0gLadomSn/TmR9vVxcupQXPS7Fv5a3Q5Z2wBqhVkIbtzqviMpeLeSVfNpfLLt5xlD1FA+sHr4opUOOpX1J02TlwN4A130Qwd/E9kcNtbtwSXYzeiPZdCSwaTiSdmMBQ1yjoTJ16b3mjS7oHEy5e1hQltg98f084i1I4LXnkC1eeugodc/xl8p/ne5fVL/Ol/SvJ+B21OBAu6SNAZalHoM2AZuYpD+e8cMWCD0pdBUkZViscqnBA0qAxXjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1sYR12daYVniuTzvVbiAgq16+VkHi2OFZXxLjH6YEmQ=;
- b=baFSaEA/dmlCApZy8cLdpyUUs/+dw4s467gdYoXE5VtVIFMldp0PsRIDW/dIKCYvOkqeDrY2FWkCLRoDNRAWpAF5Vpd4JqVXZd7J00R0pBOBRt1b7cIjKavWNgABf7V5B012RBVmra1wlbp6P03JUhM1szhUIzyy8aFNG0LhfPZIB4ozxuBuGXeFeoMg2FhIQZuDeuh+GreI9OSRtRfHy7h40F9wFmDRBZl1U5+ak8Bd2UPvKif0Op2HrRyX4H98Sj/PI1S8SQamMmBITGvpPPuarEMTituWK2nC6yDEYvKgTj5KDAbpYhM75a04BS+y+e6AULAqufuutbD0L2NmVw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1sYR12daYVniuTzvVbiAgq16+VkHi2OFZXxLjH6YEmQ=;
- b=MUYHOvXZloSnZpd9dfgDwTGPSZsgMfuJiu8U9n+3PJgAyYVh0sMNT0n9CKEE5jTFO9xVkxvAGfKiRvyEavwDw6tiqjCFgJd2qrG6k4WcU5T18p8ZPN/AJTVakPvHLLw694TAfoPs572AVNzXxXanT9Q/aeK72FzP0E9sjzM7nVU=
-Authentication-Results: linaro.org; dkim=none (message not signed)
- header.d=none;linaro.org; dmarc=none action=none
- header.from=os.amperecomputing.com;
-Received: from SN6PR01MB4304.prod.exchangelabs.com (2603:10b6:805:a6::23) by
- SN6PR01MB4814.prod.exchangelabs.com (2603:10b6:805:d3::10) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3805.24; Wed, 3 Feb 2021 14:58:27 +0000
-Received: from SN6PR01MB4304.prod.exchangelabs.com
- ([fe80::6caf:7c56:c4de:b5c5]) by SN6PR01MB4304.prod.exchangelabs.com
- ([fe80::6caf:7c56:c4de:b5c5%6]) with mapi id 15.20.3805.027; Wed, 3 Feb 2021
- 14:58:27 +0000
-Date: Wed, 3 Feb 2021 09:58:18 -0500
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l7Jfn-0002fy-8T
+ for qemu-devel@nongnu.org; Wed, 03 Feb 2021 10:02:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51465)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l7Jfl-0001K8-Ch
+ for qemu-devel@nongnu.org; Wed, 03 Feb 2021 10:02:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612364544;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6JMMRJI5+xvslKllJTsTL6nQ/JLc/gQX1Z2pX/05S2c=;
+ b=a8NYht6rbbXA0O63jrJC0fw1OqaRnYjYFxTfvS9nK99PNZ7Fvb1+ODftmWjWQvs9DcUNT5
+ PhB2SDHumqLBl+B4FTe3AvS/Z6POaLTX2zm68YERca+gVmzOUNmiBM4iAmNEQ/ucHczh/p
+ y1SeGAejBjDNVdeZuzY3x61atLwrv/0=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-379-zTeMx7pHPgemhTCZW-9yuQ-1; Wed, 03 Feb 2021 10:02:23 -0500
+X-MC-Unique: zTeMx7pHPgemhTCZW-9yuQ-1
+Received: by mail-ej1-f70.google.com with SMTP id dc21so12183908ejb.19
+ for <qemu-devel@nongnu.org>; Wed, 03 Feb 2021 07:02:23 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=6JMMRJI5+xvslKllJTsTL6nQ/JLc/gQX1Z2pX/05S2c=;
+ b=b3HKMerOgt5VomhzktlNbuDR1140bxMpViA8CMLwJeJ6hc8UkVdZrdlpVxDceDyTOS
+ 5aLdMViPOFt/AZonwQWqNLrEa1JY1l7w/pdkx4hJqiZWoK7jBKL6a0n6F4jSs6/csQ+x
+ drzu34UtuuiudDYM+Fo0WM5hzX8UKKapQi5Ogt1F2N5Z/GUCliB8MNJwUQey9v57h0h0
+ /oHSwKr1Rkq4nNS9/7CdN4mwQZ5rVsHphnK/xL6pP+YBIzQLmMJlzkD9bt2f4a1GzVmS
+ VTfN9Y2hGsbY5wyyiaX6uS5P+cTP0pWM7Qr/dg/NLde2exswVhUB71NGajXXC8axz0Bf
+ HNpQ==
+X-Gm-Message-State: AOAM531wV+iI2jcrxERvaJ6XU3GTV+dajd6Ybg8ijFNiKvVJabEPIYmQ
+ INpWk83slzU41mh2AhRF15CVSwLyR0SBzCr5isrZ579uqtP2ztIFQN0LiwZFxbiE7eAyXylpb9P
+ ZVFcGDgZjLGITPiI=
+X-Received: by 2002:a17:906:8519:: with SMTP id
+ i25mr3750640ejx.106.1612364542313; 
+ Wed, 03 Feb 2021 07:02:22 -0800 (PST)
+X-Received: by 2002:a17:906:8519:: with SMTP id
+ i25mr3750607ejx.106.1612364541989; 
+ Wed, 03 Feb 2021 07:02:21 -0800 (PST)
+Received: from [192.168.1.36] (107.red-83-59-163.dynamicip.rima-tde.net.
+ [83.59.163.107])
+ by smtp.gmail.com with ESMTPSA id lo26sm1099833ejb.106.2021.02.03.07.02.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Feb 2021 07:02:21 -0800 (PST)
 Subject: Re: ARM Snapshots Not Backwards-Compatible
-Message-ID: <YBq6Ct8M6AfMr0Bx@strawberry.localdomain>
+To: Aaron Lindsay <aaron@os.amperecomputing.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
  <CAFEAcA-_N2CiNtjPi3hnk285Xdy3RuL8dY8QFhF0TnCydng6yA@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-_N2CiNtjPi3hnk285Xdy3RuL8dY8QFhF0TnCydng6yA@mail.gmail.com>
-X-Originating-IP: [68.73.113.219]
-X-ClientProxiedBy: BL1PR13CA0264.namprd13.prod.outlook.com
- (2603:10b6:208:2ba::29) To SN6PR01MB4304.prod.exchangelabs.com
- (2603:10b6:805:a6::23)
+ <YBq6Ct8M6AfMr0Bx@strawberry.localdomain>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <2572efa4-8aa3-32e4-7559-f93e6522d284@redhat.com>
+Date: Wed, 3 Feb 2021 16:02:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from strawberry.localdomain (68.73.113.219) by
- BL1PR13CA0264.namprd13.prod.outlook.com (2603:10b6:208:2ba::29) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3825.15 via Frontend
- Transport; Wed, 3 Feb 2021 14:58:26 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 481c4930-1a13-4db3-7854-08d8c8542936
-X-MS-TrafficTypeDiagnostic: SN6PR01MB4814:
-X-Microsoft-Antispam-PRVS: <SN6PR01MB48148FDDE5E5774442215CCF8AB49@SN6PR01MB4814.prod.exchangelabs.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: e3M/A35faFaTTaU2zGBvryiIMEfoz9soU+WOuFfkqMeOvp9ttsLJb+BRdnJtL35kyjCu+psJesD4hry35B5u1ib9+jpMacMlxyQyDq9u6dbPFOEa4cdhxzAR4Zf1eob48UbSrmal1VGzsov8b54GXf5QQBRhATTUOL1y6B6Mjg7hEElVfYQ+a0gczDJFxFg9SPN5c+UQkoig3+7e7RXdLV7+yRBMzR9BYjIDvmyLzhfb9WvIxBDIpl5hbDQylAa3JI/BB8neL24IwJlR/c8IFKj2AbZMjrrFUZRcIYEHOckiMRU2MxQePTviq3mjU+BIJ9/ZU/ZBm41Bz51q4TZJBfnuPF90suFcW7L/sVGmrbpg2tjChy6dZJst76l/0Qc+VkQ+I/0joWFXrpRiuRpr9CD7+cvTXst8fTlJZgPSzobNvTu5s3CM6PSUT1NkeWz16OXWGKcjjoGsTrKXMiFxLEhedoVB3EIqnVIERtPhdBw+z7tP9E3IMmpUas8CDBOLRluts6xYg6y0/TGIjVihEQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR01MB4304.prod.exchangelabs.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(136003)(376002)(346002)(366004)(39850400004)(8936002)(55016002)(6666004)(16526019)(316002)(6506007)(9686003)(83380400001)(26005)(4326008)(6916009)(8676002)(478600001)(956004)(2906002)(186003)(66556008)(66946007)(52116002)(5660300002)(54906003)(66476007)(7696005)(86362001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?+0URDWoePVmkqiWBRub8pilhlqwIQxJsFZm8OxvE+q65NL5Fpc99M1B/wLWK?=
- =?us-ascii?Q?XUcmZVI1EdoApSda7b+2OrLmlSKsm3sBSs4qRImF8tdzq22696D3gZOV12zV?=
- =?us-ascii?Q?kmBfyjmlA/l4ZcG7+7x9SoaiRWKebHLyWvO4W4cOW8jER8DgxmJ8oevgwit0?=
- =?us-ascii?Q?wH0BdyLZ0NXjSSKDg/g2vfBFNinTf0xtaH/0F8a14o1D53LlmzzZ4Nzp7AyF?=
- =?us-ascii?Q?WNbG5KalPnnBOareSp+GX7lneJZZPC0vrYZxEaKmQc9v4/iiL0VsxoMg4RX5?=
- =?us-ascii?Q?gusc05AwEFBtpo5cQf5eC1ruMD41MNmFPk5WZk513INjnRk5pe1siO/5wK8U?=
- =?us-ascii?Q?VQ8GvZCXZEahkpNrq5+iXyKxRlGNc8x91bCn5MV8xb04ak8zrCgHtFg47TxT?=
- =?us-ascii?Q?gO7qmHusIndCRckL6mGQPRmIbCm7wg1nf69Q/YPuzlOA/+iU9IqKCaBNtpAg?=
- =?us-ascii?Q?Ng3J+YKRCLJeGXNtpcUwv4SF5WUQe2FsxvmGIwMNtvgkQrHQB9+KO+zrCSGK?=
- =?us-ascii?Q?ocgxM5AMYIrtuRIOna+lHa9Wzg84MozZDctE97Spof927+mq9pNYybyKScTy?=
- =?us-ascii?Q?7vWCjQ8K7YdnBwW8WJD+80+YImjiox3zfY4ccCmoA9dBs+uyvwtXn3IYA1vU?=
- =?us-ascii?Q?KWiHbASlHjSn6GJlKZ3hf06cIHh+g9azca4hVsMX3IxPQcjezt5SMFNOVls3?=
- =?us-ascii?Q?GfTp/LF4VzzchqHiYz4STe7Qn3L0kTMBikU53Y1/3xM4oJsyfjWZfymRs+Yz?=
- =?us-ascii?Q?oO+bN6r1DUSPyaXpPV7ubkecSl5+tc0XhugqKxNKycPISDe0S/d3Zc4ZtfIp?=
- =?us-ascii?Q?xYrTN42wQrCfIwcYtihOWVxBoqDWceajbwhK1EETgyY4X98cdMaTCrsWLzmu?=
- =?us-ascii?Q?PCw246YoAIR2ZXbUKIuPZt3uxzrMQDbQqcYr69ixYLET9hhIb//VbLYybHia?=
- =?us-ascii?Q?BIV21rwdCQzWC+XRsJsS/YqMrfmgqf7t1FkUEIrxlkdDy4/VBqcvxVTG9als?=
- =?us-ascii?Q?xZEszK/GVIBt4qiUWMXZStyCewXmAB3oC6+n4I26iF6sxJ+WWxBG1nG3yqpy?=
- =?us-ascii?Q?OQOI9jwh?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 481c4930-1a13-4db3-7854-08d8c8542936
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR01MB4304.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2021 14:58:26.9367 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: gaiAALzI15vQOavCtSvom1z9BBt0zIVXcHUpvdhPMOfzJpJhAjb06TEtg/RzwffSHXhucQD9SuJhR1kGFQdwWa18As/M/jXymrJIEjKYqHY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR01MB4814
-Received-SPF: pass client-ip=40.107.94.109;
- envelope-from=aaron@os.amperecomputing.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, MSGID_FROM_MTA_HEADER=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+In-Reply-To: <YBq6Ct8M6AfMr0Bx@strawberry.localdomain>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.539,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.178, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -165,61 +135,42 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Juan Quintela <quintela@redhat.com>,
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
  qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, philmd@redhat.com
+ Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PFVAU3toFv8x
+X-TUID: nJ9IM5NdI+T4
 
-On Feb 03 10:01, Peter Maydell wrote:
-> On Wed, 3 Feb 2021 at 04:01, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
-> > Note that I'm using qemu-system-aarch64 with -loadvm.
+On 2/3/21 3:58 PM, Aaron Lindsay wrote:
+> On Feb 03 10:01, Peter Maydell wrote:
+>>> The third is that meanings of the bits in env->features (as defined by
+>>> `enum arm_features` in target/arm/cpu.h) has shifted. For example,
+>>> ARM_FEATURE_PXN, ARM_FEATURE_CRC, ARM_FEATURE_VFP, ARM_FEATURE_VFP3,
+>>> ARM_FEATURE_VFP4 have all been removed and ARM_FEATURE_V8_1M has been
+>>> added since 4.1.0. Heck, even I have added a field there in the past.
+>>> Unfortunately, these additions/removals mean that when env->features is
+>>> saved on one version and restored on another the bits can mean different
+>>> things. Notably, the removal of the *VFP features means that a snapshot
+>>> of a CPU reporting it supports ARM_FEATURE_VFP3 on 4.1.0 thinks it's now
+>>> ARM_FEATURE_M on 5.2.0!
+>>
+>> Ow. I didn't realize the env->features was in the migration state :-(
+>> There is no reason for it to be, because it's a constant property
+>> of the CPU. The easy fix is to replace
+>>        VMSTATE_UINT64(env.features, ARMCPU),
+>> in target/arm/machine.c with whatever the syntax is for "ignore
+>> 64 bits of data here". Then we'll ignore whatever is coming in
+>> from the source, which we don't need, and we'll stop sending it
+>> out if we're the destination.
 > 
-> You don't say what machine type and command line you're using. Strictly,
-> Strictly speaking, the intended guarantee only covers versioned
-> machines, eg "virt-4.1" on QEMU 4.1 to "virt-4.1" on QEMU 5.2.
+> I'll look into this.
 
-Sorry for the omission, `-M virt` was used to capture the snapshots on
-4.1.0 and I'm using `-M virt-4.1` to restore it on 5.2.0. You get a
-fairly helpful error message about that one if you screw it up:
+I think this is:
 
-"qemu-system-aarch64: Machine type received is 'virt-4.1' and local is 'virt-5.2'"
+  VMSTATE_UNUSED(sizeof(uint64_t))
 
-I'm restoring using the following command-line on 5.2.0. Snapshots were taken
-with the same, except `-M virt` and without `-loadvm` on 4.1.0:
-
-$ qemu-system-aarch64 -smp 1 -M virt-4.1 -cpu max -m 8G -icount 0 -nographic -semihosting -kernel ./Image -append 'console=ttyAMA0 root=/dev/vda3 rw earlycon=smh' -drive if=none,id=image,file=rootfs.qcow2,format=qcow2 -device virtio-blk-pci,drive=image -loadvm "snapshot-name"
-
-I suspect that some of the differences I raised in this section:
-
-> > These hit errors detected in `write_list_to_cpustate` in
-> > target/arm/helper.c.
-
-may be from the fact that I'm running on -max, which understandably may cause
-changes in the ID registers between QEMU versions. I'm less concerned about
-issues related to my usage of -max than I am about the others.
-
-> > The third is that meanings of the bits in env->features (as defined by
-> > `enum arm_features` in target/arm/cpu.h) has shifted. For example,
-> > ARM_FEATURE_PXN, ARM_FEATURE_CRC, ARM_FEATURE_VFP, ARM_FEATURE_VFP3,
-> > ARM_FEATURE_VFP4 have all been removed and ARM_FEATURE_V8_1M has been
-> > added since 4.1.0. Heck, even I have added a field there in the past.
-> > Unfortunately, these additions/removals mean that when env->features is
-> > saved on one version and restored on another the bits can mean different
-> > things. Notably, the removal of the *VFP features means that a snapshot
-> > of a CPU reporting it supports ARM_FEATURE_VFP3 on 4.1.0 thinks it's now
-> > ARM_FEATURE_M on 5.2.0!
 > 
-> Ow. I didn't realize the env->features was in the migration state :-(
-> There is no reason for it to be, because it's a constant property
-> of the CPU. The easy fix is to replace
->        VMSTATE_UINT64(env.features, ARMCPU),
-> in target/arm/machine.c with whatever the syntax is for "ignore
-> 64 bits of data here". Then we'll ignore whatever is coming in
-> from the source, which we don't need, and we'll stop sending it
-> out if we're the destination.
+> -Aaron
+> 
 
-I'll look into this.
-
--Aaron

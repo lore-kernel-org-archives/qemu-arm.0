@@ -1,41 +1,41 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp332112lfo;
-        Wed, 3 Feb 2021 07:44:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzUm/7nSy6ZoC1sfhtNgqWJYO/hAWSOodoa6L+S+zBvLjluJo1UJS86ZE/gxKUtK2qIIMY/
-X-Received: by 2002:a25:d410:: with SMTP id m16mr5195821ybf.419.1612367074537;
-        Wed, 03 Feb 2021 07:44:34 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp333737lfo;
+        Wed, 3 Feb 2021 07:46:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJywFWDjNFZHGOKwNbShy7njs889nCICSNpgm24mDkktu9+s9B4tj3uMPCrHwD5VJxmnF7Yj
+X-Received: by 2002:a25:da47:: with SMTP id n68mr4925859ybf.75.1612367205776;
+        Wed, 03 Feb 2021 07:46:45 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c184si2250684yba.487.2021.02.03.07.44.34
+        by mx.google.com with ESMTPS id t63si2288522ybi.394.2021.02.03.07.46.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 07:44:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Feb 2021 07:46:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@os.amperecomputing.com header.s=selector2 header.b="oYwprf1/";
+       dkim=neutral (body hash did not verify) header.i=@os.amperecomputing.com header.s=selector2 header.b=o9h1v3LL;
        arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40854 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7KKX-0005g8-UN
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:44:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42542)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l7KMe-0006tF-V8
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:46:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
- id 1l7KJ1-0004md-OV; Wed, 03 Feb 2021 10:43:03 -0500
-Received: from mail-dm6nam10on2126.outbound.protection.outlook.com
- ([40.107.93.126]:46912 helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ id 1l7KLx-0006rp-VL; Wed, 03 Feb 2021 10:46:02 -0500
+Received: from mail-dm6nam10on2120.outbound.protection.outlook.com
+ ([40.107.93.120]:1123 helo=NAM10-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
- id 1l7KIz-0003JE-TR; Wed, 03 Feb 2021 10:42:59 -0500
+ id 1l7KLw-0004oL-FM; Wed, 03 Feb 2021 10:46:01 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CmXV3MGjX6GQErf/mvdAMKWRHkbJxp95bL5BZqFXK9tHfhTgPkE9jozkou3TGAlRRhF4DwCqBZYX2rda6VEIyVaH4gGOU25JAYXhurClZK4Y42fcE1QrxESK9YByeLPckqMnUTZjYxkdD8PZOHvSTRh+gKK6Y3AutIWiXJHdvCvANeAXV/l1vzrTngHn7AGAT2bggdfEtSxF1U/8obZqd76hRkydRYbRohTSWwrV5a1YryP3zn+cppcZA8V/ryneuHYHJWeciMQxbm87nOv7xcPIPNlPRNJRhfsX+NBPFH2HAgzCafUvmHex6cAOpphECtyMDGravY+SQzCvApCdNQ==
+ b=QQej/lFaovd9UIpSWt0PKKP4tQyWsQIbRymw0Qgw5smrRNaxjtw0oA8a8gLXfppgpI7JlCyyoYShd4sxC8Dm6c/DHods1zCxVbK2mwwYLl5Do+KGBAEW+Be1OWKjiImtTXrdYNSG6Vo4euSsmDc2p28o6CId3SE/zbClpoMZkj6PW5/SJTc1ouCDDQGDHIYFSDqIldIree1RhG2oBbF50X0Vckn6uxs7LcghPZLxLtQwwgozVP/K4oSbOERctCYXnsUyxW0XNon17w/vQcREM3ledEPznh5xiiUk3gG9UiCPjxIIyqgXeIf+gSoV24wIT7PTAIO8BGKn0MJlwXd0lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=whnssnITFF7jzlHMQ01wkAkBbmpCSBI6eBCOkn1WRYs=;
- b=f8P3OOTT4AhyyAk01J1/+HAMIvVzz/Eu0F21L+kan0HzzJFmgyovHwbiD2D7PdoMl+phC0CaXYQYzVuKzU+07ZTFx4W+uSjQoYJsFhDpzpeQ4ceECqj2DmFiVATPOSGaAXys/wkk3hWiC0EWA1txbHyCryRJi46C4/FtIyPRlKtdKHCZRURo4/jiV8KiK3tvB9HRnwNqLGjIxPNQophu5qdZ2xlCwmmP1e/h/uifQjbx85ZvPKwKYZSBdTcMYPa251w22Eq6eLwO7/NANYncZnaQqEfjWuz1XzgM5xWkuxdx8GXegZceo6HQvQOkJ5/T/Or4eO50FvjMrfpDh+qaBQ==
+ bh=cWC/ARLsXbZGrw1Pb0m7VDGTLclURHdEWF+DNhwaldI=;
+ b=ZdYdccg1RQjVpMlQ337kD9wS4kdLpggsvjitnpwlv8amAKSnfLCeIHtlDLRYrUVlZWzPwob9FCP306AH57cW+GZuIs3Ehlf/LKk+NjMOKedmUwakjS9o+hSfi7QRh294z4mbj1cOTz7rjL/zWbg7ygG0KbKuM9Gy8XYuqpb7W6OYx+0ngMGJohiE5kpitaCASFTlv7YrAaMeXc4UTYER06NAXqezhJcoKRzLQBLIHguWPG+Ef2s8j3uzy/Ixg7byJuezMZdM7WzTPn+reikXzy9KXK2aAYu5h3udGIyYHiNJEzRKA1OMxPOkux3oj9gsRBVBeZQ++3cGO9sNdrddBw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
  header.from=os.amperecomputing.com; dkim=pass
@@ -43,85 +43,86 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=os.amperecomputing.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=whnssnITFF7jzlHMQ01wkAkBbmpCSBI6eBCOkn1WRYs=;
- b=oYwprf1/eUhjmGU3S3MHRLCDncEso4bLk9NdAI8FJbB+1scH9kWsTYWjpB6TVCXwRwvb0GGXeC4i8wZxfYVdm9YX1J25JkG7pa1p7pM06nptpguZa4NJfce4+wVyXQ1Zxfit3uEf0cZsvNQ/44XVhd3xF0uT3nrmqjBpIQ5IUs4=
+ bh=cWC/ARLsXbZGrw1Pb0m7VDGTLclURHdEWF+DNhwaldI=;
+ b=o9h1v3LLmmzRwls0HlhGmAkUb+lTV3tiTY9e0JBQnQePeujJziiybet+naeVV3lHTu/r2OdiV/Dh17J/hdvYy8WajNDilNOjtuVRotbRl/qG635mYqPa/PMAIpfB7MZqGe5QlOaZWiMqdJI057amOY3qMiUSCpoyurFGY52MjeI=
 Authentication-Results: redhat.com; dkim=none (message not signed)
  header.d=none;redhat.com; dmarc=none action=none
  header.from=os.amperecomputing.com;
 Received: from SN6PR01MB4304.prod.exchangelabs.com (2603:10b6:805:a6::23) by
  SA1PR01MB6607.prod.exchangelabs.com (2603:10b6:806:1a4::20) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3805.25; Wed, 3 Feb 2021 15:42:54 +0000
+ 15.20.3805.25; Wed, 3 Feb 2021 15:45:58 +0000
 Received: from SN6PR01MB4304.prod.exchangelabs.com
  ([fe80::6caf:7c56:c4de:b5c5]) by SN6PR01MB4304.prod.exchangelabs.com
  ([fe80::6caf:7c56:c4de:b5c5%6]) with mapi id 15.20.3805.027; Wed, 3 Feb 2021
- 15:42:52 +0000
-Date: Wed, 3 Feb 2021 10:42:44 -0500
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+ 15:45:58 +0000
+Date: Wed, 3 Feb 2021 10:45:47 -0500
+To: Andrew Jones <drjones@redhat.com>
 Subject: Re: ARM Snapshots Not Backwards-Compatible
-Message-ID: <YBrEdOnGqoOMGz4+@strawberry.localdomain>
+Message-ID: <YBrFK2XscG6Y1/Rq@strawberry.localdomain>
 References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
- <CAFEAcA-_N2CiNtjPi3hnk285Xdy3RuL8dY8QFhF0TnCydng6yA@mail.gmail.com>
- <YBq6Ct8M6AfMr0Bx@strawberry.localdomain>
- <2572efa4-8aa3-32e4-7559-f93e6522d284@redhat.com>
- <20210203151053.GK2950@work-vm>
+ <153e5c54-f8bf-d088-502d-502309f5d2a6@redhat.com>
+ <20210203102758.GC2950@work-vm>
+ <CAFEAcA9_mcXHd5m+Z2M1jvk58kGVEcYKF+0kVsLJTjwB9MZcfw@mail.gmail.com>
+ <20210203104920.GE2950@work-vm>
+ <CAFEAcA9DdiBA+-5cQ87NR6fHFFFJAtDVbAEc+AJQNMNo4bVB+A@mail.gmail.com>
+ <20210203124412.xioafvptnovzalle@kamzik.brq.redhat.com>
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20210203151053.GK2950@work-vm>
+In-Reply-To: <20210203124412.xioafvptnovzalle@kamzik.brq.redhat.com>
 X-Originating-IP: [68.73.113.219]
-X-ClientProxiedBy: BL1PR13CA0432.namprd13.prod.outlook.com
- (2603:10b6:208:2c3::17) To SN6PR01MB4304.prod.exchangelabs.com
+X-ClientProxiedBy: BL0PR03CA0011.namprd03.prod.outlook.com
+ (2603:10b6:208:2d::24) To SN6PR01MB4304.prod.exchangelabs.com
  (2603:10b6:805:a6::23)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from strawberry.localdomain (68.73.113.219) by
- BL1PR13CA0432.namprd13.prod.outlook.com (2603:10b6:208:2c3::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3825.16 via Frontend
- Transport; Wed, 3 Feb 2021 15:42:51 +0000
+ BL0PR03CA0011.namprd03.prod.outlook.com (2603:10b6:208:2d::24) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3825.17 via Frontend Transport; Wed, 3 Feb 2021 15:45:57 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f7b3e9d2-6b10-4c01-4e58-08d8c85a5e20
+X-MS-Office365-Filtering-Correlation-Id: b5f77aa4-acab-467e-d2bf-08d8c85accc7
 X-MS-TrafficTypeDiagnostic: SA1PR01MB6607:
-X-Microsoft-Antispam-PRVS: <SA1PR01MB6607F8D6D8F5E246002130AC8AB49@SA1PR01MB6607.prod.exchangelabs.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-Microsoft-Antispam-PRVS: <SA1PR01MB660764D24954E41880D627D18AB49@SA1PR01MB6607.prod.exchangelabs.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Iq5Aj+FdsOJ5nb06SoGzzCe9pZeRpjhhmfNZmU1bP7xG7wdfus7rA7E4UQLOI1FZqpIkuwEJB4fBVE05k8Ty0rOD4VT7tQaEuEpmKuFjUtX+spUt/vKAafzIsWeRK7hhGZbFjCbDJxMWENZXaEAYN4C71Q6J7RN+3I/1SOd9cN4+VhSEd1roxtN6JVgrZ6yFNYPQbfxfgu1D+w2Z7GggIo1kZLyF6pbXX0ggaNrnS3h0wbkI1jRlx9IH0Q9x/L3ww92Uff5r3sjtDUsuw2R1haadfBemD8TwmDCJrl3/UpLpaTuk+dk51IZ37duUGPm26Ru15WnnyHaZ39DMvxvDo/1SNlxGzhOktv3oSnUg5Pogr/CfwhFaxIUCG0sxBgYzfLIDTRSgMiMud1m91LNfUz02fY+5bbP/nrXQMwue639zbknXad9v4OilorXMnnBkJwBzei+j7Iaq16VjFP9SBRxl0obg7K4625BurG8yb1RQaV6EzRazZXY6FT9/zh9Dmi5QkAiSE5RGKRenxNkRiQ==
+X-Microsoft-Antispam-Message-Info: 6zhb0jNk2cQvpt9iLuSp4Bh6Dhn9PBypjbSpqUdE5r+LkL8M9H79k8og8YNfBFHoEpswEJ7Rzz2hk7oyRl0VDUNtoaiHK7qhEoWTs07xt1F0kigTdnAGdUKwdElTdaf471SWhFn9ltoWQNgomP3/XnZHMxMTU7w74e4uXPVhpkpxqIPwr0I6nM0Qd5bQPzYYBQKpNcjdLTa43TLys42dFYfXl3EqGr7PdR58hRdY1n/+OhPN3emq1FHRwCGaHcIXYsDNWiwsyenDT/Nllui/TgeaLqEagko+Tyfg83931yCT531Aqke9Pil93jOZcAPJPRz/g/ofMm5kUwnORyRE5RYL76PGPbGdjVIoI+DGhFoA3fdImg8xQHMk1HB/cu+N4coqqQ1n8/EuN1O3dpO/Ze9KAoI1id2eT7A42FY9yZgrOvBm02LzBc0eMkj/v+TO7UtwRVWvwIaXXl2L6Ixmwx3Ta+tACeSxfg0BFK3sDG+E3uvKwZASnHq/FuQ04i6U1t6I+osp3mak+xc/f+4stg==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SN6PR01MB4304.prod.exchangelabs.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(376002)(396003)(136003)(346002)(39850400004)(83380400001)(956004)(6666004)(53546011)(8936002)(52116002)(6916009)(8676002)(5660300002)(2906002)(55016002)(86362001)(7696005)(186003)(4326008)(9686003)(26005)(478600001)(316002)(16526019)(66476007)(66556008)(6506007)(54906003)(66946007);
+ SFS:(4636009)(366004)(376002)(396003)(136003)(346002)(39850400004)(83380400001)(956004)(6666004)(8936002)(52116002)(6916009)(8676002)(5660300002)(2906002)(55016002)(86362001)(7696005)(186003)(4326008)(9686003)(26005)(478600001)(316002)(16526019)(66476007)(66556008)(6506007)(54906003)(66946007);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: =?iso-8859-1?Q?tj+2lEkrvvBx8E/5xM3gn83DixwzmAUP+dxxndBNqyybTuUGDy01pWtJe4?=
- =?iso-8859-1?Q?Bz4ExxsbkUOkT5YrDlWUT57ENxyxSh5uKXe2LVF7sRHSNBHmMjR0a3qOLb?=
- =?iso-8859-1?Q?bimAi7I9S9an4aUSq21YOJgOMnPhDC8K4JF/9It1fIgWualDpSiZ5IGFsE?=
- =?iso-8859-1?Q?nXW/J9EWAGCcH34Ua4NvIXf5zzUvq9nUiVeoi/72G0EyAkusAkJE8co130?=
- =?iso-8859-1?Q?xWHgD7JWXB8RgqNk9pSkxxlHWrVUzp5CQCk/grMSauXUFxJIlTBZ0ZQFgR?=
- =?iso-8859-1?Q?oj27fo/G22Nrv8BDypURayyPS7MEglID8zKo2TpYxhdbr7c8WmgiLY9Zvz?=
- =?iso-8859-1?Q?ugLVnKg+jyflvYtK2A2MVUKkVycieqmmeg5BL3uD3xSjZR8A1Y+Voqj39K?=
- =?iso-8859-1?Q?R/zA+nAj823cm/dwbexh9ubbDplB2k0SrILDHuD/pBRMIZp+njTLcaul8Z?=
- =?iso-8859-1?Q?Er4y85raWehIuvpz6KxmsE0G5a+J6ontKzJ/tDsuXKwTZlNqW1apAyVE9N?=
- =?iso-8859-1?Q?ssoOu9ZyeOcHMkZCaKhi9u7FWZ7sanFZYnhOUUJqHvqfQQ2bGTS7ACdErf?=
- =?iso-8859-1?Q?z/cQm/kZS7aBF0JXUla1szb6/aKLIiSKKg6hXGpRbNMcxOe6GsSqw09g4X?=
- =?iso-8859-1?Q?U2YZreRQH0Ji2j+g72oo2aZuLQgiBQbX4S4UUTgpO47Xf7zmxO6sKCu+Da?=
- =?iso-8859-1?Q?B79bWkpbkm57poLUdhNAm/PTBgkps7bQwQXwgYrW9Zf9CJ0578jVQ0KVtP?=
- =?iso-8859-1?Q?fM1UXyfT0xrBnhPJMSFsqXs4nXTJkSxTFqyGOXKpurx/rwuvh/MYxwE2yu?=
- =?iso-8859-1?Q?rZ+pxAVS4NJ1CuXFx6yCFseeFwREyRAbqFsSZwHXK3kUt2yWr1h1/aPF9Q?=
- =?iso-8859-1?Q?oVi/4F7xnIVmO7AzuQb7/SdNI25JjFfPSM5cBxoTIz4f4ilxaYuXQMuuwh?=
- =?iso-8859-1?Q?WaNszInSSPWZt+BSE/n2ycApMrPt7FL2e1SoO0gwj+A7SXlTuusXGV+/h3?=
- =?iso-8859-1?Q?N2eWvwMzIMgDfhCCMPj1ny0BG8DoV8jWCGrimp+YhTgR4pCRwXwV5+HFlV?=
- =?iso-8859-1?Q?6YUE8HZY75Tm8grqK4SvefBx19E0D2+IYyROx0jhwrEI?=
+X-MS-Exchange-AntiSpam-MessageData: =?iso-8859-1?Q?2xD37xNCW594LYX4kUfWzbfZbyEBP85YgH35gRBQAXAA9E6rwhdMzZt3XS?=
+ =?iso-8859-1?Q?SB2yH9hFuOne9F9sAJRSITuE9UPTuy8cs2qU1DFqYjbmDvgLJvOCUNcY1G?=
+ =?iso-8859-1?Q?sruZve7Fto2dNLs6xh2fw9JlFk+y+IN6VYNsyTVrWJrGjUDDG7rvYSdtN8?=
+ =?iso-8859-1?Q?SAEE7+VUFvg5sv+2iM1azvMdzAzHs48dXE9S/FUg0iQqF6OSB6oSR51xBv?=
+ =?iso-8859-1?Q?GGQ+EexyHzXF4V123M+FGfmu/VuqnEf+XzDAsSE9ETGtCR0zwHP7oCLerj?=
+ =?iso-8859-1?Q?fK7F188P9bXOY9gArs92j6W/EuV6UREtLBkAVXPpFseuDXouZKoLOBQUyV?=
+ =?iso-8859-1?Q?l8JHSoro4GS7LYp1xf1Htko9OSIxraCvYOeLXZWTFsrgjMPBIATbj5Cqgw?=
+ =?iso-8859-1?Q?ORP3P9Vli/RNxWr1WYYGRZoGhPYrP/J7HXRwBSFu+w/gO93OI6su7KuxmP?=
+ =?iso-8859-1?Q?YqWHTPuzfJ6f9ZozT6GkVSyxWLSIa69EcPGk3E0n2Xh+qZRopv8XDdLn+N?=
+ =?iso-8859-1?Q?Q40h1EhOFtwg7I5U6tp4k4YBTlk22W3113BLhugYLQxk1id17hE5eHIBM6?=
+ =?iso-8859-1?Q?pZv7Jp52xukjifO3JpEC5mpQM94998FYvksMSDS4CV82n68loW31abAgiN?=
+ =?iso-8859-1?Q?Yp6DzvKjHn5lv65cod5B5Vbb+34NxD50V1dc5kxlzbD9nJ346hDCbfPMTg?=
+ =?iso-8859-1?Q?HQOIhwgnws/xw3nmkI/Yyehg4cCW5vEAyhSNT3XQYxrrv4CAmvHSDdQJ03?=
+ =?iso-8859-1?Q?dKvfDQgXSwl70az8eLCGsojBP7Q+BOo7JzPzDF3M3xPOPk0rDk8MQOCzzI?=
+ =?iso-8859-1?Q?3CW4/zapLIlar9e1iiuynQipCmHIEWsqr9qqO0XHAziKRlRhnkZOkvmJzg?=
+ =?iso-8859-1?Q?L0BGUgDGiYfxH6Fj1MkcexC+DqZuxYvncyPz3D3din5w6rvDXsZboBh8Fv?=
+ =?iso-8859-1?Q?Of4Cwt3ws8GVQbIQjGWwR6ankSl95uj9GEsbCCraZ9aK8FcpH+tBKuxxWL?=
+ =?iso-8859-1?Q?8hpfuD0LelskLXKDhdrIZOWHD599SoWT3TRxIZCFF27v/ShXvDTtvufE7W?=
+ =?iso-8859-1?Q?/FaRt/tYnRQ81wB2NCTlxvwHYg4401GhfEWjYwBtfnM2?=
 X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f7b3e9d2-6b10-4c01-4e58-08d8c85a5e20
+X-MS-Exchange-CrossTenant-Network-Message-Id: b5f77aa4-acab-467e-d2bf-08d8c85accc7
 X-MS-Exchange-CrossTenant-AuthSource: SN6PR01MB4304.prod.exchangelabs.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2021 15:42:52.6551 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2021 15:45:58.2344 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +sipEbfoXJgkJ+++27Q+guyM2CP9SyodQMEyUrIaJMumt2p82boG9q8mhrf6tC+oNUQ2nZLXdENmkJYVEUNLSUkgpfKsJwj/MtcOBmz90ik=
+X-MS-Exchange-CrossTenant-UserPrincipalName: tEsF07Vk26EauU2P7f4L+6C+QRtQZGCT1hsAzgFjTiYT1SGNzTPb86m7mFi5PvxNSnX98RmanDSzH+uW1Kez+02ld57edY589BjIh/5wugg=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR01MB6607
-Received-SPF: pass client-ip=40.107.93.126;
+Received-SPF: pass client-ip=40.107.93.120;
  envelope-from=aaron@os.amperecomputing.com;
  helo=NAM10-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -16
@@ -132,82 +133,69 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm <qemu-arm@nongnu.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Juan Quintela <quintela@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Aaron Lindsay <aaron@os.amperecomputing.com>
-From: aaron--- via <qemu-devel@nongnu.org>
-X-TUID: SRWfeO2TMarZ
+From: aaron--- via <qemu-arm@nongnu.org>
+X-TUID: Ig7AcwiCGHJh
 
-On Feb 03 15:10, Dr. David Alan Gilbert wrote:
-> * Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
-> > On 2/3/21 3:58 PM, Aaron Lindsay wrote:
-> > > On Feb 03 10:01, Peter Maydell wrote:
-> > >>> The third is that meanings of the bits in env->features (as defined by
-> > >>> `enum arm_features` in target/arm/cpu.h) has shifted. For example,
-> > >>> ARM_FEATURE_PXN, ARM_FEATURE_CRC, ARM_FEATURE_VFP, ARM_FEATURE_VFP3,
-> > >>> ARM_FEATURE_VFP4 have all been removed and ARM_FEATURE_V8_1M has been
-> > >>> added since 4.1.0. Heck, even I have added a field there in the past.
-> > >>> Unfortunately, these additions/removals mean that when env->features is
-> > >>> saved on one version and restored on another the bits can mean different
-> > >>> things. Notably, the removal of the *VFP features means that a snapshot
-> > >>> of a CPU reporting it supports ARM_FEATURE_VFP3 on 4.1.0 thinks it's now
-> > >>> ARM_FEATURE_M on 5.2.0!
-> > >>
-> > >> Ow. I didn't realize the env->features was in the migration state :-(
-> > >> There is no reason for it to be, because it's a constant property
-> > >> of the CPU. The easy fix is to replace
-> > >>        VMSTATE_UINT64(env.features, ARMCPU),
-> > >> in target/arm/machine.c with whatever the syntax is for "ignore
-> > >> 64 bits of data here". Then we'll ignore whatever is coming in
-> > >> from the source, which we don't need, and we'll stop sending it
-> > >> out if we're the destination.
-> > > 
-> > > I'll look into this.
+On Feb 03 13:44, Andrew Jones wrote:
+> On Wed, Feb 03, 2021 at 10:52:59AM +0000, Peter Maydell wrote:
+> > On Wed, 3 Feb 2021 at 10:49, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+> > >
+> > > * Peter Maydell (peter.maydell@linaro.org) wrote:
+> > > > On Wed, 3 Feb 2021 at 10:28, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+> > > > >
+> > > > > * Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
+> > > > > > Cc'ing migration team and qemu-arm@ list.
+> > > > >
+> > > > > I'll have to leave the detail of that to the ARM peole; but from a
+> > > > > migration point of view I think we do want the 64 bit ARM migrations to
+> > > > > be stable now.  Please tie incompatible changes to machine types.
+> > > >
+> > > > That is the intention, but because there's no upstream testing
+> > > > of migration compat, we never notice if we get it wrong.
+> > > > What is x86 doing to keep cross-version migration working ?
+> > >
+> > > I know there used to be some of our team running Avocado tests for
+> > > compatibility regularly, I'm not sure of the current status.
+> > > It's something we also do regularly around when we do downstream
+> > > releases, so we tend to catch them then, although even on x86 that
+> > > often turns out to be a bit late.
 > > 
-> > I think this is:
-> > 
-> >   VMSTATE_UNUSED(sizeof(uint64_t))
+> > So downstream testing only?
 > 
-> It's interesting that on x86 we've got a longterm request to *add* cpu
-> features to the stream to detect screwups caused by using mismatched
-> CPUs; so it's not necessarily a bad idea to include it once you realise
-> it's there.
+> Not even downstream for the Arm architecture, at least not at Red Hat. The
+> support we have for Arm Virt is still limited to the use cases for which
+> it has been deployed. To this day that hasn't included migration[*].
+> 
+> > I think that unless we either (a) start
+> > doing migration-compat testing consistently upstream or
+> 
+> This is the best choice and it can certainly be an additional approach
+> regardless of what goes on downstream. I can look into this. A pointer
+> to the x86 tests would be a good start. It's pretty simple to do a
+> quick migration test between two versions of QEMU, but we need the
+> whole build two versions of QEMU stuff first, which I hope already
+> exists.
 
-Another approach would be to assign integer values to the members of
-`enum arm_features` in target/arm/cpu.h instead of letting the compiler
-assign them for us. Of course, this only fixes the problem moving
-forward and doesn't allow future QEMU versions to gain the ability to
-load snapshots taken with previous QEMU versions. But seeing as how
-no one else has raised the issue, I'm not sure how many people this
-impacts.
-
-I've tested the `VMSTATE_UNUSED(sizeof(uint64_t))` change and it appears
-to have the same effect as me manually fixing up env.features (which is
-to say: it works).
-
-Maybe we could change it to `VMSTATE_UINT64(env.incoming_features,
-ARMCPU),` instead and add a check in `cpu_post_load` that the
-incoming_features match the expected ones (along with something matching
-in `cpu_pre_save` to populate it)? We could ignore the incoming_features
-field entirely in cpu_post_load for old snapshot versions, but check
-that they match moving forward (perhaps generating a mask from the
-current value of the enum to ignore fields which have been removed)?
-
-I can send a patch for whichever path we settle on.
+Does this mean that this is largely an issue of developing the tests,
+and not a need for a place to host them? Or would additional
+hardware/hosting be required for these tests to be run on?
 
 -Aaron

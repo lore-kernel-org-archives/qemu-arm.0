@@ -1,110 +1,106 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp305727lfo;
-        Wed, 3 Feb 2021 07:11:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxJZuTUy55VQ/N6mJlLlYYs4B8LwJ5iHhiC9U41FBW64c/H825XZojna6ZPgysM5WjQAFYE
-X-Received: by 2002:ab0:6e4:: with SMTP id g91mr2079255uag.20.1612365083451;
-        Wed, 03 Feb 2021 07:11:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612365083; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp318774lfo;
+        Wed, 3 Feb 2021 07:26:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJznu9l1eHXemQEA9iZ63bKA/z5hWylu6nSZTAK3pcGNg1r1HAsPl8hETS6c7hIEprKQMamK
+X-Received: by 2002:a25:8b8b:: with SMTP id j11mr5126304ybl.305.1612365996456;
+        Wed, 03 Feb 2021 07:26:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612365996; cv=none;
         d=google.com; s=arc-20160816;
-        b=F+J6r15CCZ3K2pQpx2vLJ+BZxggAii1Ps8zs6iSv9z21punKe1CUCsTFI95BVVTTzC
-         tYKghQ6RG6re2eee6nFRfS+yoj7YMheRnXxs/uUsg42dpYVWcy8vC+JDE56EaLf/eHmy
-         mnvaV0/HQumtU51FD76chwMvC6LDHey7n5Ta33D9jnjzXCfuSq+mZGdyI9xurUKnIHRZ
-         kk4dPaM4KeIqOUSvP+fk0uHmh1YKLqhReDWt3wqrIJjOzE1gD+55XRSmiGdFK0Ztagm3
-         jeReip59Oen9nhUlzYPHzOOg1/pOOXM/QCPYoL6b1ywEDCMPbgxUDoKlJaoYggTFYmiD
-         WgkA==
+        b=PMj23rJ4MBKcQwOSC2Z4wMtLnq2ASSatMw2ppEuVL8Tib1QA3yOycB26y0JwRvLCE2
+         deXUoPZoDhaORS15h0cdGY9fdcqHZ51ROswrCeEEv2x+25sP5q7Tbq/MKvGtDr13/AvY
+         ssh8qrVw4sPqnkEvO2lGD8cGZXX6oOpSPGtltfzmTcPSBbjB1Mci1qt62gnZSczVNeDF
+         IgizdpErFHYURQbEUZ+/ZaM2ud2asPlMSXjvtCYx6hvqJupFFC8rylT1W0Hey0rCpUwd
+         WooMht/BHPV2xcW7r/5tbEcv05RGsca7iGGLiEHGvYEWwMdLrJSeSTpJRNTOrvOoDmL+
+         p3zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=UVqe9cxC/m6VcfnnUGqLOcKRO5UCgaV+uyZKsrd3sw8=;
-        b=kChflE92Rywiqj8L8U9pStF2gMbHRB8u87u5K6zvhd9z7sL+hUKP8/JOEhRu1yzwEF
-         9A67hcWZEfOcsS5nHzk7PGi1IaPwy1+vbfW0oWrMfJK5Z+cCwI+pbwIhbuTRj2KNq8KQ
-         zashQjX6yiq5dugy0nOe+NMlg/QnsRg609y9swIK084gHZgiTmSKTn4rqCP9f50h7aCD
-         LjeWLna30XjxAeSkWQT/xkj2hDWJWFddPLuFQJDGy/SbDYHXPpgD9eXC3lwYjypweEMa
-         ZBoKvi3PNq0eJ1wTpiigtoci159YnE/WqP2zW7fMWH5VaCOuVmHwkj0cnDnm7fnu0VRX
-         n/Yw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=llwwOIvKhGLRhh4735rAHXtKBgbXi62qgm9FyRRJeOk=;
+        b=Qv0DfaV3zIYsZcSZ63czZ+sFVM6+xfffDmgiOZ+QVkyZEBogzuQdND81AvdY0E7Gas
+         p3H329kA48/39TqR5B0MPOWHFKdVrCHSjdJXg3P++OtEZ9AcIwhIWr+O9uWAAPgySuYA
+         36ylbv4QLy/0OQa14vZlDNF5nRX+0fPhjpP3eKuc06Y7aapriioqgKeMO/E89pSXSL0y
+         jJnPxlhWg2WTg9eKBeqPQDjp1QcG/SEhs5SItXRlO24O7qjP9+iuRH/xXdAQGm51TSQ9
+         4AkDZP3gAYPAzCWhAJ9yVaTNcf0UwLU86I+Ggtkp+cqe8QrUP+crsXSAbKhN1vUXw8Th
+         /xUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LGyIwgV1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pRvCDqWW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s18si259423vsa.162.2021.02.03.07.11.23
+        by mx.google.com with ESMTPS id f4si2294291ybb.77.2021.02.03.07.26.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 07:11:23 -0800 (PST)
+        Wed, 03 Feb 2021 07:26:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LGyIwgV1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pRvCDqWW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37012 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48198 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7JoQ-0008TP-OZ
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:11:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35572)
+	id 1l7K39-0005Rb-OT
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:26:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38822)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l7JoH-0008Qt-Pq
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 10:11:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:60180)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l7JoE-0005Oa-K2
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 10:11:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612365069;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UVqe9cxC/m6VcfnnUGqLOcKRO5UCgaV+uyZKsrd3sw8=;
- b=LGyIwgV1u4bCT67grJyk7rt/DLZXoZxNC0VMJIH1SneytdZt2QqzjYhXnd8DGVio9pQOEM
- qO4RObidR7u8sSYEaQMqEXGeq0QiDbAFaOiWWP5NssTcxGyya6AZt+nUFCXkoMee+A+fUl
- rsSMuUZjJLxh0KI+o5+sFIuryG8vyiA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-513-V-1ekkHsM3-HBNrf21gTFQ-1; Wed, 03 Feb 2021 10:11:05 -0500
-X-MC-Unique: V-1ekkHsM3-HBNrf21gTFQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94B5779ECB;
- Wed,  3 Feb 2021 15:11:02 +0000 (UTC)
-Received: from work-vm (ovpn-115-70.ams2.redhat.com [10.36.115.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 29D786267F;
- Wed,  3 Feb 2021 15:10:56 +0000 (UTC)
-Date: Wed, 3 Feb 2021 15:10:53 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: ARM Snapshots Not Backwards-Compatible
-Message-ID: <20210203151053.GK2950@work-vm>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l7K30-0005R2-83
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 10:26:26 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:35129)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l7K2x-000487-85
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 10:26:26 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id a9so18031801ejr.2
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 07:26:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=llwwOIvKhGLRhh4735rAHXtKBgbXi62qgm9FyRRJeOk=;
+ b=pRvCDqWWwgYrVhUreCVXjnrUaCwVolXS9SEzQm45NJV7rNAXXxg9zad9mor2ANiKd8
+ cMmyJlXeM0Xwq5JcAhBeDqUJuxW23ppOzW6VEbb7FqnGFUy7pqcTXbhkFYNFEqVfOYSN
+ uNCuL0I6+6iBPXeK19kJ3dQO8SQWMakFjcldMMvtngUqM+QBOaIfDo6s3fxVNLmyCzPP
+ f/nUI9uW1z210eYozVP/N7hKfeH8wezd/OzCG/zEfQhWzKx8II4kuhUs4jGmSYKi6Ys0
+ cpVf8W/r2c9GfpexTLn1t+CIYtVPglVzt8SnpzQvrGkYo47Cvm6ajGJvmfanjYdsmllv
+ 0TWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=llwwOIvKhGLRhh4735rAHXtKBgbXi62qgm9FyRRJeOk=;
+ b=kfTJDn3rrGvnvaY34RfBszSPiCun/wzn7bn+P+Vh6lf85GVmxBiy442lj+Xwp9Egmg
+ MztrHQZqiCLiHQEeAR7QrsbHPFZ4cxQJz1mDUnPLqJq0tB0ZnPj0X03uK8npZRikpKSh
+ ESUReu6+QSpNhxE9ztaQ6c+XsEnzK7GgYHkE0n19huZ3ZwkojbETIH5brYgQRCJyNDgF
+ JEycAg5xUGSzRBw30W4WzebYPp8MiahqkNw8UqoXgSGl81mzJimIF5gLDaYl6YBgr9aL
+ M35DkUja1vT9SqixrYuCVKa2Q4RSG7MiTupC0y4OM9U5bmOytPQFMhb9yFJDhLJdkA1y
+ ej3Q==
+X-Gm-Message-State: AOAM530AJJMP+czjjX2TVLyAyE9nN3SlYFtkxtLHx0hekt7KewDFdkIh
+ 7xZcnosouDLzwJH1II+Gv0ydo7wUZzWY+xhcWmChSQ==
+X-Received: by 2002:a17:907:1b10:: with SMTP id
+ mp16mr3757131ejc.482.1612365981711; 
+ Wed, 03 Feb 2021 07:26:21 -0800 (PST)
+MIME-Version: 1.0
 References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
  <CAFEAcA-_N2CiNtjPi3hnk285Xdy3RuL8dY8QFhF0TnCydng6yA@mail.gmail.com>
  <YBq6Ct8M6AfMr0Bx@strawberry.localdomain>
  <2572efa4-8aa3-32e4-7559-f93e6522d284@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <2572efa4-8aa3-32e4-7559-f93e6522d284@redhat.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.539,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <20210203151053.GK2950@work-vm>
+In-Reply-To: <20210203151053.GK2950@work-vm>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 3 Feb 2021 15:26:10 +0000
+Message-ID: <CAFEAcA-qq-Eue+ktR1tNO7FZdtCe428=5vdA5472W-16p=d75A@mail.gmail.com>
+Subject: Re: ARM Snapshots Not Backwards-Compatible
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,53 +113,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
- Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Andrew Jones <drjones@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B5sBiA4jAdmC
+X-TUID: kekRWqjQBxH+
 
-* Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
-> On 2/3/21 3:58 PM, Aaron Lindsay wrote:
-> > On Feb 03 10:01, Peter Maydell wrote:
-> >>> The third is that meanings of the bits in env->features (as defined by
-> >>> `enum arm_features` in target/arm/cpu.h) has shifted. For example,
-> >>> ARM_FEATURE_PXN, ARM_FEATURE_CRC, ARM_FEATURE_VFP, ARM_FEATURE_VFP3,
-> >>> ARM_FEATURE_VFP4 have all been removed and ARM_FEATURE_V8_1M has been
-> >>> added since 4.1.0. Heck, even I have added a field there in the past.
-> >>> Unfortunately, these additions/removals mean that when env->features is
-> >>> saved on one version and restored on another the bits can mean different
-> >>> things. Notably, the removal of the *VFP features means that a snapshot
-> >>> of a CPU reporting it supports ARM_FEATURE_VFP3 on 4.1.0 thinks it's now
-> >>> ARM_FEATURE_M on 5.2.0!
-> >>
-> >> Ow. I didn't realize the env->features was in the migration state :-(
-> >> There is no reason for it to be, because it's a constant property
-> >> of the CPU. The easy fix is to replace
-> >>        VMSTATE_UINT64(env.features, ARMCPU),
-> >> in target/arm/machine.c with whatever the syntax is for "ignore
-> >> 64 bits of data here". Then we'll ignore whatever is coming in
-> >> from the source, which we don't need, and we'll stop sending it
-> >> out if we're the destination.
-> > 
-> > I'll look into this.
-> 
-> I think this is:
-> 
->   VMSTATE_UNUSED(sizeof(uint64_t))
+On Wed, 3 Feb 2021 at 15:11, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+> It's interesting that on x86 we've got a longterm request to *add* cpu
+> features to the stream to detect screwups caused by using mismatched
+> CPUs; so it's not necessarily a bad idea to include it once you realise
+> it's there.
 
-It's interesting that on x86 we've got a longterm request to *add* cpu
-features to the stream to detect screwups caused by using mismatched
-CPUs; so it's not necessarily a bad idea to include it once you realise
-it's there.
+I think we would want to do that by checking the ID registers,
+not the legacy ad-hoc feature-flags word. In fact I think for
+KVM at least we already perform the check on the ID registers,
+in that the kernel will return an error if we pass it a value
+for an ID register and it's not the value it should be.
+I forget whether we try to check this for TCG (the mechanism
+for handling sysreg migration there is different).
 
-Dave
+As a side note I suspect that the first two issues Aaron ran
+into are TCG-only and don't affect KVM.
 
-> > 
-> > -Aaron
-> > 
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
+thanks
+-- PMM

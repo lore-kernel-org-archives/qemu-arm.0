@@ -1,142 +1,213 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp318774lfo;
-        Wed, 3 Feb 2021 07:26:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJznu9l1eHXemQEA9iZ63bKA/z5hWylu6nSZTAK3pcGNg1r1HAsPl8hETS6c7hIEprKQMamK
-X-Received: by 2002:a25:8b8b:: with SMTP id j11mr5126304ybl.305.1612365996456;
-        Wed, 03 Feb 2021 07:26:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612365996; cv=none;
-        d=google.com; s=arc-20160816;
-        b=PMj23rJ4MBKcQwOSC2Z4wMtLnq2ASSatMw2ppEuVL8Tib1QA3yOycB26y0JwRvLCE2
-         deXUoPZoDhaORS15h0cdGY9fdcqHZ51ROswrCeEEv2x+25sP5q7Tbq/MKvGtDr13/AvY
-         ssh8qrVw4sPqnkEvO2lGD8cGZXX6oOpSPGtltfzmTcPSBbjB1Mci1qt62gnZSczVNeDF
-         IgizdpErFHYURQbEUZ+/ZaM2ud2asPlMSXjvtCYx6hvqJupFFC8rylT1W0Hey0rCpUwd
-         WooMht/BHPV2xcW7r/5tbEcv05RGsca7iGGLiEHGvYEWwMdLrJSeSTpJRNTOrvOoDmL+
-         p3zg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=llwwOIvKhGLRhh4735rAHXtKBgbXi62qgm9FyRRJeOk=;
-        b=Qv0DfaV3zIYsZcSZ63czZ+sFVM6+xfffDmgiOZ+QVkyZEBogzuQdND81AvdY0E7Gas
-         p3H329kA48/39TqR5B0MPOWHFKdVrCHSjdJXg3P++OtEZ9AcIwhIWr+O9uWAAPgySuYA
-         36ylbv4QLy/0OQa14vZlDNF5nRX+0fPhjpP3eKuc06Y7aapriioqgKeMO/E89pSXSL0y
-         jJnPxlhWg2WTg9eKBeqPQDjp1QcG/SEhs5SItXRlO24O7qjP9+iuRH/xXdAQGm51TSQ9
-         4AkDZP3gAYPAzCWhAJ9yVaTNcf0UwLU86I+Ggtkp+cqe8QrUP+crsXSAbKhN1vUXw8Th
-         /xUQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pRvCDqWW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp332112lfo;
+        Wed, 3 Feb 2021 07:44:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzUm/7nSy6ZoC1sfhtNgqWJYO/hAWSOodoa6L+S+zBvLjluJo1UJS86ZE/gxKUtK2qIIMY/
+X-Received: by 2002:a25:d410:: with SMTP id m16mr5195821ybf.419.1612367074537;
+        Wed, 03 Feb 2021 07:44:34 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si2294291ybb.77.2021.02.03.07.26.36
+        by mx.google.com with ESMTPS id c184si2250684yba.487.2021.02.03.07.44.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 07:26:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Feb 2021 07:44:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pRvCDqWW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48198 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@os.amperecomputing.com header.s=selector2 header.b="oYwprf1/";
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:38282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7K39-0005Rb-OT
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:26:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38822)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l7KKX-0005g8-UN
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:44:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42542)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l7K30-0005R2-83
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 10:26:26 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:35129)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l7K2x-000487-85
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 10:26:26 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id a9so18031801ejr.2
- for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 07:26:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=llwwOIvKhGLRhh4735rAHXtKBgbXi62qgm9FyRRJeOk=;
- b=pRvCDqWWwgYrVhUreCVXjnrUaCwVolXS9SEzQm45NJV7rNAXXxg9zad9mor2ANiKd8
- cMmyJlXeM0Xwq5JcAhBeDqUJuxW23ppOzW6VEbb7FqnGFUy7pqcTXbhkFYNFEqVfOYSN
- uNCuL0I6+6iBPXeK19kJ3dQO8SQWMakFjcldMMvtngUqM+QBOaIfDo6s3fxVNLmyCzPP
- f/nUI9uW1z210eYozVP/N7hKfeH8wezd/OzCG/zEfQhWzKx8II4kuhUs4jGmSYKi6Ys0
- cpVf8W/r2c9GfpexTLn1t+CIYtVPglVzt8SnpzQvrGkYo47Cvm6ajGJvmfanjYdsmllv
- 0TWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=llwwOIvKhGLRhh4735rAHXtKBgbXi62qgm9FyRRJeOk=;
- b=kfTJDn3rrGvnvaY34RfBszSPiCun/wzn7bn+P+Vh6lf85GVmxBiy442lj+Xwp9Egmg
- MztrHQZqiCLiHQEeAR7QrsbHPFZ4cxQJz1mDUnPLqJq0tB0ZnPj0X03uK8npZRikpKSh
- ESUReu6+QSpNhxE9ztaQ6c+XsEnzK7GgYHkE0n19huZ3ZwkojbETIH5brYgQRCJyNDgF
- JEycAg5xUGSzRBw30W4WzebYPp8MiahqkNw8UqoXgSGl81mzJimIF5gLDaYl6YBgr9aL
- M35DkUja1vT9SqixrYuCVKa2Q4RSG7MiTupC0y4OM9U5bmOytPQFMhb9yFJDhLJdkA1y
- ej3Q==
-X-Gm-Message-State: AOAM530AJJMP+czjjX2TVLyAyE9nN3SlYFtkxtLHx0hekt7KewDFdkIh
- 7xZcnosouDLzwJH1II+Gv0ydo7wUZzWY+xhcWmChSQ==
-X-Received: by 2002:a17:907:1b10:: with SMTP id
- mp16mr3757131ejc.482.1612365981711; 
- Wed, 03 Feb 2021 07:26:21 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
+ id 1l7KJ1-0004md-OV; Wed, 03 Feb 2021 10:43:03 -0500
+Received: from mail-dm6nam10on2126.outbound.protection.outlook.com
+ ([40.107.93.126]:46912 helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
+ id 1l7KIz-0003JE-TR; Wed, 03 Feb 2021 10:42:59 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CmXV3MGjX6GQErf/mvdAMKWRHkbJxp95bL5BZqFXK9tHfhTgPkE9jozkou3TGAlRRhF4DwCqBZYX2rda6VEIyVaH4gGOU25JAYXhurClZK4Y42fcE1QrxESK9YByeLPckqMnUTZjYxkdD8PZOHvSTRh+gKK6Y3AutIWiXJHdvCvANeAXV/l1vzrTngHn7AGAT2bggdfEtSxF1U/8obZqd76hRkydRYbRohTSWwrV5a1YryP3zn+cppcZA8V/ryneuHYHJWeciMQxbm87nOv7xcPIPNlPRNJRhfsX+NBPFH2HAgzCafUvmHex6cAOpphECtyMDGravY+SQzCvApCdNQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=whnssnITFF7jzlHMQ01wkAkBbmpCSBI6eBCOkn1WRYs=;
+ b=f8P3OOTT4AhyyAk01J1/+HAMIvVzz/Eu0F21L+kan0HzzJFmgyovHwbiD2D7PdoMl+phC0CaXYQYzVuKzU+07ZTFx4W+uSjQoYJsFhDpzpeQ4ceECqj2DmFiVATPOSGaAXys/wkk3hWiC0EWA1txbHyCryRJi46C4/FtIyPRlKtdKHCZRURo4/jiV8KiK3tvB9HRnwNqLGjIxPNQophu5qdZ2xlCwmmP1e/h/uifQjbx85ZvPKwKYZSBdTcMYPa251w22Eq6eLwO7/NANYncZnaQqEfjWuz1XzgM5xWkuxdx8GXegZceo6HQvQOkJ5/T/Or4eO50FvjMrfpDh+qaBQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=whnssnITFF7jzlHMQ01wkAkBbmpCSBI6eBCOkn1WRYs=;
+ b=oYwprf1/eUhjmGU3S3MHRLCDncEso4bLk9NdAI8FJbB+1scH9kWsTYWjpB6TVCXwRwvb0GGXeC4i8wZxfYVdm9YX1J25JkG7pa1p7pM06nptpguZa4NJfce4+wVyXQ1Zxfit3uEf0cZsvNQ/44XVhd3xF0uT3nrmqjBpIQ5IUs4=
+Authentication-Results: redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=none action=none
+ header.from=os.amperecomputing.com;
+Received: from SN6PR01MB4304.prod.exchangelabs.com (2603:10b6:805:a6::23) by
+ SA1PR01MB6607.prod.exchangelabs.com (2603:10b6:806:1a4::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3805.25; Wed, 3 Feb 2021 15:42:54 +0000
+Received: from SN6PR01MB4304.prod.exchangelabs.com
+ ([fe80::6caf:7c56:c4de:b5c5]) by SN6PR01MB4304.prod.exchangelabs.com
+ ([fe80::6caf:7c56:c4de:b5c5%6]) with mapi id 15.20.3805.027; Wed, 3 Feb 2021
+ 15:42:52 +0000
+Date: Wed, 3 Feb 2021 10:42:44 -0500
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: Re: ARM Snapshots Not Backwards-Compatible
+Message-ID: <YBrEdOnGqoOMGz4+@strawberry.localdomain>
 References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
  <CAFEAcA-_N2CiNtjPi3hnk285Xdy3RuL8dY8QFhF0TnCydng6yA@mail.gmail.com>
  <YBq6Ct8M6AfMr0Bx@strawberry.localdomain>
  <2572efa4-8aa3-32e4-7559-f93e6522d284@redhat.com>
  <20210203151053.GK2950@work-vm>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 In-Reply-To: <20210203151053.GK2950@work-vm>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 3 Feb 2021 15:26:10 +0000
-Message-ID: <CAFEAcA-qq-Eue+ktR1tNO7FZdtCe428=5vdA5472W-16p=d75A@mail.gmail.com>
-Subject: Re: ARM Snapshots Not Backwards-Compatible
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [68.73.113.219]
+X-ClientProxiedBy: BL1PR13CA0432.namprd13.prod.outlook.com
+ (2603:10b6:208:2c3::17) To SN6PR01MB4304.prod.exchangelabs.com
+ (2603:10b6:805:a6::23)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from strawberry.localdomain (68.73.113.219) by
+ BL1PR13CA0432.namprd13.prod.outlook.com (2603:10b6:208:2c3::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3825.16 via Frontend
+ Transport; Wed, 3 Feb 2021 15:42:51 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f7b3e9d2-6b10-4c01-4e58-08d8c85a5e20
+X-MS-TrafficTypeDiagnostic: SA1PR01MB6607:
+X-Microsoft-Antispam-PRVS: <SA1PR01MB6607F8D6D8F5E246002130AC8AB49@SA1PR01MB6607.prod.exchangelabs.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Iq5Aj+FdsOJ5nb06SoGzzCe9pZeRpjhhmfNZmU1bP7xG7wdfus7rA7E4UQLOI1FZqpIkuwEJB4fBVE05k8Ty0rOD4VT7tQaEuEpmKuFjUtX+spUt/vKAafzIsWeRK7hhGZbFjCbDJxMWENZXaEAYN4C71Q6J7RN+3I/1SOd9cN4+VhSEd1roxtN6JVgrZ6yFNYPQbfxfgu1D+w2Z7GggIo1kZLyF6pbXX0ggaNrnS3h0wbkI1jRlx9IH0Q9x/L3ww92Uff5r3sjtDUsuw2R1haadfBemD8TwmDCJrl3/UpLpaTuk+dk51IZ37duUGPm26Ru15WnnyHaZ39DMvxvDo/1SNlxGzhOktv3oSnUg5Pogr/CfwhFaxIUCG0sxBgYzfLIDTRSgMiMud1m91LNfUz02fY+5bbP/nrXQMwue639zbknXad9v4OilorXMnnBkJwBzei+j7Iaq16VjFP9SBRxl0obg7K4625BurG8yb1RQaV6EzRazZXY6FT9/zh9Dmi5QkAiSE5RGKRenxNkRiQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR01MB4304.prod.exchangelabs.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(376002)(396003)(136003)(346002)(39850400004)(83380400001)(956004)(6666004)(53546011)(8936002)(52116002)(6916009)(8676002)(5660300002)(2906002)(55016002)(86362001)(7696005)(186003)(4326008)(9686003)(26005)(478600001)(316002)(16526019)(66476007)(66556008)(6506007)(54906003)(66946007);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: =?iso-8859-1?Q?tj+2lEkrvvBx8E/5xM3gn83DixwzmAUP+dxxndBNqyybTuUGDy01pWtJe4?=
+ =?iso-8859-1?Q?Bz4ExxsbkUOkT5YrDlWUT57ENxyxSh5uKXe2LVF7sRHSNBHmMjR0a3qOLb?=
+ =?iso-8859-1?Q?bimAi7I9S9an4aUSq21YOJgOMnPhDC8K4JF/9It1fIgWualDpSiZ5IGFsE?=
+ =?iso-8859-1?Q?nXW/J9EWAGCcH34Ua4NvIXf5zzUvq9nUiVeoi/72G0EyAkusAkJE8co130?=
+ =?iso-8859-1?Q?xWHgD7JWXB8RgqNk9pSkxxlHWrVUzp5CQCk/grMSauXUFxJIlTBZ0ZQFgR?=
+ =?iso-8859-1?Q?oj27fo/G22Nrv8BDypURayyPS7MEglID8zKo2TpYxhdbr7c8WmgiLY9Zvz?=
+ =?iso-8859-1?Q?ugLVnKg+jyflvYtK2A2MVUKkVycieqmmeg5BL3uD3xSjZR8A1Y+Voqj39K?=
+ =?iso-8859-1?Q?R/zA+nAj823cm/dwbexh9ubbDplB2k0SrILDHuD/pBRMIZp+njTLcaul8Z?=
+ =?iso-8859-1?Q?Er4y85raWehIuvpz6KxmsE0G5a+J6ontKzJ/tDsuXKwTZlNqW1apAyVE9N?=
+ =?iso-8859-1?Q?ssoOu9ZyeOcHMkZCaKhi9u7FWZ7sanFZYnhOUUJqHvqfQQ2bGTS7ACdErf?=
+ =?iso-8859-1?Q?z/cQm/kZS7aBF0JXUla1szb6/aKLIiSKKg6hXGpRbNMcxOe6GsSqw09g4X?=
+ =?iso-8859-1?Q?U2YZreRQH0Ji2j+g72oo2aZuLQgiBQbX4S4UUTgpO47Xf7zmxO6sKCu+Da?=
+ =?iso-8859-1?Q?B79bWkpbkm57poLUdhNAm/PTBgkps7bQwQXwgYrW9Zf9CJ0578jVQ0KVtP?=
+ =?iso-8859-1?Q?fM1UXyfT0xrBnhPJMSFsqXs4nXTJkSxTFqyGOXKpurx/rwuvh/MYxwE2yu?=
+ =?iso-8859-1?Q?rZ+pxAVS4NJ1CuXFx6yCFseeFwREyRAbqFsSZwHXK3kUt2yWr1h1/aPF9Q?=
+ =?iso-8859-1?Q?oVi/4F7xnIVmO7AzuQb7/SdNI25JjFfPSM5cBxoTIz4f4ilxaYuXQMuuwh?=
+ =?iso-8859-1?Q?WaNszInSSPWZt+BSE/n2ycApMrPt7FL2e1SoO0gwj+A7SXlTuusXGV+/h3?=
+ =?iso-8859-1?Q?N2eWvwMzIMgDfhCCMPj1ny0BG8DoV8jWCGrimp+YhTgR4pCRwXwV5+HFlV?=
+ =?iso-8859-1?Q?6YUE8HZY75Tm8grqK4SvefBx19E0D2+IYyROx0jhwrEI?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f7b3e9d2-6b10-4c01-4e58-08d8c85a5e20
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR01MB4304.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2021 15:42:52.6551 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +sipEbfoXJgkJ+++27Q+guyM2CP9SyodQMEyUrIaJMumt2p82boG9q8mhrf6tC+oNUQ2nZLXdENmkJYVEUNLSUkgpfKsJwj/MtcOBmz90ik=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR01MB6607
+Received-SPF: pass client-ip=40.107.93.126;
+ envelope-from=aaron@os.amperecomputing.com;
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Juan Quintela <quintela@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kekRWqjQBxH+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to:  Aaron Lindsay <aaron@os.amperecomputing.com>
+From: aaron--- via <qemu-devel@nongnu.org>
+X-TUID: SRWfeO2TMarZ
 
-On Wed, 3 Feb 2021 at 15:11, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+On Feb 03 15:10, Dr. David Alan Gilbert wrote:
+> * Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
+> > On 2/3/21 3:58 PM, Aaron Lindsay wrote:
+> > > On Feb 03 10:01, Peter Maydell wrote:
+> > >>> The third is that meanings of the bits in env->features (as defined by
+> > >>> `enum arm_features` in target/arm/cpu.h) has shifted. For example,
+> > >>> ARM_FEATURE_PXN, ARM_FEATURE_CRC, ARM_FEATURE_VFP, ARM_FEATURE_VFP3,
+> > >>> ARM_FEATURE_VFP4 have all been removed and ARM_FEATURE_V8_1M has been
+> > >>> added since 4.1.0. Heck, even I have added a field there in the past.
+> > >>> Unfortunately, these additions/removals mean that when env->features is
+> > >>> saved on one version and restored on another the bits can mean different
+> > >>> things. Notably, the removal of the *VFP features means that a snapshot
+> > >>> of a CPU reporting it supports ARM_FEATURE_VFP3 on 4.1.0 thinks it's now
+> > >>> ARM_FEATURE_M on 5.2.0!
+> > >>
+> > >> Ow. I didn't realize the env->features was in the migration state :-(
+> > >> There is no reason for it to be, because it's a constant property
+> > >> of the CPU. The easy fix is to replace
+> > >>        VMSTATE_UINT64(env.features, ARMCPU),
+> > >> in target/arm/machine.c with whatever the syntax is for "ignore
+> > >> 64 bits of data here". Then we'll ignore whatever is coming in
+> > >> from the source, which we don't need, and we'll stop sending it
+> > >> out if we're the destination.
+> > > 
+> > > I'll look into this.
+> > 
+> > I think this is:
+> > 
+> >   VMSTATE_UNUSED(sizeof(uint64_t))
+> 
 > It's interesting that on x86 we've got a longterm request to *add* cpu
 > features to the stream to detect screwups caused by using mismatched
 > CPUs; so it's not necessarily a bad idea to include it once you realise
 > it's there.
 
-I think we would want to do that by checking the ID registers,
-not the legacy ad-hoc feature-flags word. In fact I think for
-KVM at least we already perform the check on the ID registers,
-in that the kernel will return an error if we pass it a value
-for an ID register and it's not the value it should be.
-I forget whether we try to check this for TCG (the mechanism
-for handling sysreg migration there is different).
+Another approach would be to assign integer values to the members of
+`enum arm_features` in target/arm/cpu.h instead of letting the compiler
+assign them for us. Of course, this only fixes the problem moving
+forward and doesn't allow future QEMU versions to gain the ability to
+load snapshots taken with previous QEMU versions. But seeing as how
+no one else has raised the issue, I'm not sure how many people this
+impacts.
 
-As a side note I suspect that the first two issues Aaron ran
-into are TCG-only and don't affect KVM.
+I've tested the `VMSTATE_UNUSED(sizeof(uint64_t))` change and it appears
+to have the same effect as me manually fixing up env.features (which is
+to say: it works).
 
-thanks
--- PMM
+Maybe we could change it to `VMSTATE_UINT64(env.incoming_features,
+ARMCPU),` instead and add a check in `cpu_post_load` that the
+incoming_features match the expected ones (along with something matching
+in `cpu_pre_save` to populate it)? We could ignore the incoming_features
+field entirely in cpu_post_load for old snapshot versions, but check
+that they match moving forward (perhaps generating a mask from the
+current value of the enum to ignore fields which have been removed)?
+
+I can send a patch for whichever path we settle on.
+
+-Aaron

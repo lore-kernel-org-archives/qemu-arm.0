@@ -1,199 +1,193 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp339810lfo;
-        Wed, 3 Feb 2021 07:55:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw9tyFsEYZA9z82sZGtYu+s7Eh5yHzwOiU4Ni/r+IoO1abLPlNDyo9B2O8ejkrWPd/IIwwS
-X-Received: by 2002:a25:ba08:: with SMTP id t8mr5353891ybg.316.1612367752838;
-        Wed, 03 Feb 2021 07:55:52 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1612367752; cv=pass;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp347914lfo;
+        Wed, 3 Feb 2021 08:05:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy7PJDTZeFwIv9S0kyTgw4HEqRxF9Jy7GI87yhmMhYKldLgAVxnFsT0F19XJwkfNxSSbKzM
+X-Received: by 2002:a05:6102:3205:: with SMTP id r5mr2222961vsf.12.1612368339378;
+        Wed, 03 Feb 2021 08:05:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612368339; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y01u6gigKtEsCyK8wGk4rmp8d/4xd71gH0+Vl4g2uj/arjFx4FTyAY94MHcICRzM9N
-         q7A+GvyK1DDLg6CinWL8+TJKirMPNGFbRLJdx3uyjQGLYD/5yYn6eoUl3ezqa2LyA04l
-         PF7+5xR5ZYI7E1CmwTVSx5AcPk1FHbl3KGjOPwxCdeG0WgK0cUdW6WHPo1fP/HOIVBmu
-         x2hVifvPCtlDUXt9QWCsKTOifYYoJcXdAr2xlUJ0AgXuKyamcsEHv/6UCAHyZnqGX40s
-         ejn4SdFk+Dmu6aRbQold/ltxadd/PAXrDWBrEIi/cYiBiYSpuV93A7bd4LgHN0AbTb91
-         Y5Nw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=qAgtzl2ZrccK5ppL3yvtjNUciWT+rrvv/f1J36T1H7cZLsl+9Oom8ijE8NEjZVo/ci
+         zhBjB9AXwAz2l0loGrCihO+nlBi+vwVAyEnfVaWFMFC6/YV4iUe8qmLr8YMe+RUGLCNk
+         k9DWaa++WH1zKVuTw6Zu74AWVWSiCbm5QvBuZ8jdv4ugbauSgILEJgRFtTqpeId1w0D/
+         LOh/cLEWSayJ2amq+Zqq8lWmIJwmAB7ZySuW3SEVlFG4+V/ZwERH1RGA0xc5mK0rYCk4
+         yA9Fpdv8dD3y6q+l1kYMYv2bHm6Bao9PH+szuMa28NfGJfZ9sHFc09i4RowuYZFLfYoi
+         eLjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=lULb13oaJnswP5DV7jnTadsNfIZ7MhK3Y9VG4MbkV80=;
-        b=WD8cIZ5+gC80Bxm/t70HkojtRzWHvCnXHzwrlf+1Am9bEGmaUwDTG42s4irJ4wYepW
-         l61KZ2WoRW/tL5iekmdB486h7z1Ig5dYpu21JEzqptZFwUpdCUTqu1gmXdH6wNRDBHTH
-         hvg97ujj77nZPkCzvkobtoGHZFMYJ02UO86VWxZHQwr7Ro8KTpufJM8q8gywKQKv3L5W
-         tD07Li5EcSbDjjDJTR1iIGS2OCELX7KC8AfL98vit5Yxv7gwb1QB3sIkyqpGiLnEjgyK
-         RkdJ9jeIvsP0HBEyyNhBKyq204QCHVWXLFxlaQqE/QrpRx+nGqABDRVS7UsdX8n6xMHS
-         7qCQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=JdJK9CI7;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=gmvZNim+xmUC/DnVZ6bCrKui5923MlZbBn0a+dFPYAA=;
+        b=pDYa3mY+t2I1lpO7hDHwFN9pmMMncJuM2gPMfrvGG05Gb9E6tHPE8HOnF4A5xl8VV3
+         PTS7XTAlrgT1dFdr4LruQ8DhIu17ZaB5Juf4n/d4M9K9Nbntu/3TBTlq+zo4HuKt3w8z
+         pvluuHzrjHNcKLz531PHR/Hp9wm0q0M2m5/lyS/LbiC3Zk4mDDhAz/auAzC0HGyTxxI1
+         8wIyeb0LC99o5+sOiPGTVivVNrMj1C3yBw2Ss9BkZFwcaSjd3eoNW+/kKO5DMxxe633t
+         Ah7p0q3DCsV+zAjC/wkqDTnGZ6RJnVaWxdauqkQmts8qC1jG2oH9Ck2B2779UN8ETO6U
+         qliw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ft/qXPDq";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j126si2357190ybb.41.2021.02.03.07.55.52
+        by mx.google.com with ESMTPS id o27si326286uaj.158.2021.02.03.08.05.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 07:55:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Feb 2021 08:05:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=JdJK9CI7;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:53882 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Ft/qXPDq";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43674 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7KVU-0004Mv-5Q
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 10:55:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44834)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l7Kew-0004cL-KO
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 11:05:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47716)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
- id 1l7KUm-0004K4-Ie; Wed, 03 Feb 2021 10:55:09 -0500
-Received: from mail-bn7nam10on2127.outbound.protection.outlook.com
- ([40.107.92.127]:12236 helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aaron@os.amperecomputing.com>)
- id 1l7KUc-0000Sc-4E; Wed, 03 Feb 2021 10:55:03 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YoUJ9wcttccNnpmXTDZTh3nv2eST4rYSkEG+jYnOYLGewTOn2g4mWYFznVLZS79HIzrW/oeW5x7/6WUIj8tibngkAeosJ1d7N0OOBJLVU+fF1vexMCUMkJyvCNo3dMjcEAVJk0Pw28pdSc1yLrpMrp9x3VHX0O+1KsT/P2Rf088hbZc7jrgptz0vd6G3q9smT429ikshnP1vSZPFVTGFFDK9M/FAiFN0Caqaj6tScA0g+TP7ifqGH6imITV6cw22RLrIMmpYjVqcEjIJ9WcXa8pobOyyt7WG/AbAQpO2b3jrO7kxHZHL734OQkfphOQ2oZlaZRGzH3M3oOX1AYxldQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lULb13oaJnswP5DV7jnTadsNfIZ7MhK3Y9VG4MbkV80=;
- b=PyDe93z/GXxqQK8f/oQleOwIPmx8gR+HMzhNd3ruQjU5x5WTvEJqgftaEf7FQef0AFwIclpGYjASYbmkSx+aSqK7ojtA8sKQtAYqA7bySirsL25jKmXzeHRFq7HTcd1RQBo05va+3g5cQxv/zSwvRTHPq8HuKRZeGaklXMY6VzIKyfqnDPR+FB5fKVNRqU9K5whnlHUXTkIhIxa2YcYNiEHclkSL45vZ2QoNAE2GrEGIBbiEvWQ2Wx21WqCZK5YgcVRyA3dv39f8viN0Gb855TUvdHo+0NmTHtkhoh1SJVGQGNtBsL8Wd5LCthbIJ7JZWhFYqtAkZ0jj2S20RW2rGQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lULb13oaJnswP5DV7jnTadsNfIZ7MhK3Y9VG4MbkV80=;
- b=JdJK9CI7+/fxACxdYtviFOWFOY2bkSSE2C7HSV4Auz3MZShKUh1jkBF+1ctsUFBUC9BhPNT2u1zAiwsKgodVkIW/PLowI2mNOYJqjr0eWBFxsN7Gvx5E+YN/zx9Uv2c76kgCClN/vWwqCpZK4T2HWLPR50C26twRPKUfv/OOAs8=
-Authentication-Results: linaro.org; dkim=none (message not signed)
- header.d=none;linaro.org; dmarc=none action=none
- header.from=os.amperecomputing.com;
-Received: from SN6PR01MB4304.prod.exchangelabs.com (2603:10b6:805:a6::23) by
- SN6PR01MB3886.prod.exchangelabs.com (2603:10b6:805:1a::13) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3805.20; Wed, 3 Feb 2021 15:54:50 +0000
-Received: from SN6PR01MB4304.prod.exchangelabs.com
- ([fe80::6caf:7c56:c4de:b5c5]) by SN6PR01MB4304.prod.exchangelabs.com
- ([fe80::6caf:7c56:c4de:b5c5%6]) with mapi id 15.20.3805.027; Wed, 3 Feb 2021
- 15:54:50 +0000
-Date: Wed, 3 Feb 2021 10:54:42 -0500
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l7KeI-0004Ye-J7
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 11:04:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:29099)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l7KeF-0005Tu-Ki
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 11:04:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612368294;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gmvZNim+xmUC/DnVZ6bCrKui5923MlZbBn0a+dFPYAA=;
+ b=Ft/qXPDqbM9O23gssdSE30mBq4v6pTc8S6vA5/J1dxJxRpKCDHX9S9cmLH34/dXA+PzM+e
+ O0lr4ToE7Ej+BFK1u7WmJM4UqsD078jpv75u5omUyUSnrsj51Cz8znyq7AQO5hIgo/9/so
+ Q28u26EFrYjkQB2Pq4tAyJbIWWITAjg=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-516-T4pgO0pFMUyao-YOqZbuyA-1; Wed, 03 Feb 2021 11:04:47 -0500
+X-MC-Unique: T4pgO0pFMUyao-YOqZbuyA-1
+Received: by mail-ed1-f70.google.com with SMTP id u19so74942edr.1
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 08:04:46 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=gmvZNim+xmUC/DnVZ6bCrKui5923MlZbBn0a+dFPYAA=;
+ b=iaeOOLwJgXBBpBvB829C3prIOyjSYMH8pYzMwumvi6xPNHbQeuKKofG5I9pHgv2eWy
+ EVk0cFqBeAQMlI1+P5K0GYAPW5/bKmNPlkDQsvebuK3DFPlh8FUKLnWbJUlAe5dcYlIE
+ Q76aCOXKC9K9AFMLJeyKroBTaT2b2u+N66f94760w+YP4B6aTpj9OuoVQ3Sjp8s063iH
+ mxdoiDREpkqDGZ1E0stqX1dSnzpvJlbUjbQWpdjPomCweBmTwKmaSGfiRLUd5fIEVY87
+ SsZhWX9uPZ9Zq5gmiwXbzyt5NipemWDkIzJEKmCQQRtapb4eS6HcdcrNapn/5ov++jGw
+ sNvg==
+X-Gm-Message-State: AOAM5302ucwUaoy1APhe1LZjOMPAA+jy7C0WFYwlcirud0Vu+jOkijUS
+ KuXs3c31uaAEjh0C6C5U2Tk78hQ+A46GuU9TpqGLTLiHqcWe3y5pTIa06sYv0w/8S5Y+6d/P1c7
+ +aViVVxodppFf
+X-Received: by 2002:a17:906:f2ca:: with SMTP id
+ gz10mr3793935ejb.285.1612368285819; 
+ Wed, 03 Feb 2021 08:04:45 -0800 (PST)
+X-Received: by 2002:a17:906:f2ca:: with SMTP id
+ gz10mr3793893ejb.285.1612368285502; 
+ Wed, 03 Feb 2021 08:04:45 -0800 (PST)
+Received: from [192.168.1.36] (107.red-83-59-163.dynamicip.rima-tde.net.
+ [83.59.163.107])
+ by smtp.gmail.com with ESMTPSA id df15sm993335edb.24.2021.02.03.08.04.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Feb 2021 08:04:44 -0800 (PST)
 Subject: Re: ARM Snapshots Not Backwards-Compatible
-Message-ID: <YBrHQvFHfy36D4No@strawberry.localdomain>
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ avocado-devel <avocado-devel@redhat.com>
 References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
- <CAFEAcA-_N2CiNtjPi3hnk285Xdy3RuL8dY8QFhF0TnCydng6yA@mail.gmail.com>
- <YBq6Ct8M6AfMr0Bx@strawberry.localdomain>
- <2572efa4-8aa3-32e4-7559-f93e6522d284@redhat.com>
- <20210203151053.GK2950@work-vm>
- <CAFEAcA-qq-Eue+ktR1tNO7FZdtCe428=5vdA5472W-16p=d75A@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-qq-Eue+ktR1tNO7FZdtCe428=5vdA5472W-16p=d75A@mail.gmail.com>
-X-Originating-IP: [68.73.113.219]
-X-ClientProxiedBy: MN2PR14CA0016.namprd14.prod.outlook.com
- (2603:10b6:208:23e::21) To SN6PR01MB4304.prod.exchangelabs.com
- (2603:10b6:805:a6::23)
+ <153e5c54-f8bf-d088-502d-502309f5d2a6@redhat.com>
+ <20210203102758.GC2950@work-vm>
+ <CAFEAcA9_mcXHd5m+Z2M1jvk58kGVEcYKF+0kVsLJTjwB9MZcfw@mail.gmail.com>
+ <20210203104920.GE2950@work-vm>
+ <CAFEAcA9DdiBA+-5cQ87NR6fHFFFJAtDVbAEc+AJQNMNo4bVB+A@mail.gmail.com>
+ <20210203105933.GF2950@work-vm>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <d31bcfff-04e3-95e3-a98a-ebe9394366d9@redhat.com>
+Date: Wed, 3 Feb 2021 17:04:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from strawberry.localdomain (68.73.113.219) by
- MN2PR14CA0016.namprd14.prod.outlook.com (2603:10b6:208:23e::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3825.19 via Frontend
- Transport; Wed, 3 Feb 2021 15:54:49 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: fabe246c-738c-4122-2b3c-08d8c85c09f2
-X-MS-TrafficTypeDiagnostic: SN6PR01MB3886:
-X-Microsoft-Antispam-PRVS: <SN6PR01MB3886319B3ADAEA7344687E328AB49@SN6PR01MB3886.prod.exchangelabs.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: /3iet5tGHWCyPNWVtqd+/y//IqcJ3bwW4R/yG4IW7F70f1XWq4S4OwcllZSM51cOvBkawD7nRP67ccwwVox6Ov46IlxqSdKAbAdcX1EYeUHV9UBokwJxZILx+QgY7qsnI0QLBVigdmdMSr7kWNPogaJ3ekF/ioSgIzIV4Z6w4JSPpI+EX6OT7BZbuyNkqvLZSp5DDm0EzUNlzBOxFArmhzTonqx7bmJwQIM+Gjmbo6u9HBfDnk4fOFwxZrEFqOdoH7RH8jY3VBZ6SkK2c2FWPGluTCihvdPG/v0Vb62ntEDysgWEb6A1mZV0f7DWqf0rijlyP5Aw0+c4UnUaQZQV1TJh56b6nCQ9ovkVSW+5RDrmGDkJpC/5+oeUbuh2sdp/Z5RHU2JajPnME6ohVSpjRnZDEWzew+OXAn8gu2H86WAPnPKn9Ukl2GDGQr5XeRlJOmettAYN3XHW73JVmyVDfGqXp/RYoTXDWNEGW6E7/qfs5vpACyrMoodOOnP7F6KeOggf0mIvD1n/X82lln33ng==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR01MB4304.prod.exchangelabs.com; PTR:; CAT:NONE;
- SFS:(4636009)(346002)(376002)(136003)(396003)(366004)(39850400004)(26005)(956004)(8676002)(4744005)(5660300002)(6506007)(186003)(52116002)(86362001)(54906003)(83380400001)(55016002)(316002)(7696005)(16526019)(2906002)(4326008)(9686003)(6666004)(66556008)(8936002)(66476007)(66946007)(478600001)(6916009);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?PbZoNnYfLRXxVef1odCW99Kq7KaMv1EFTVnqlfH77Bq1W5xmOlVYXOBPTKTg?=
- =?us-ascii?Q?4Tm6fEUc58rhkpGSabo3K5UOVNCZbstdHaQp8jkvcKCQepdJddpg4ZwRZQEj?=
- =?us-ascii?Q?Ec5Nnb5BSIFAwlpCq5ebm7RSuZDeshGLMBxZYg/G/UBORdZ67RzMHjyqWqLp?=
- =?us-ascii?Q?OioHb6QSUpW3SWYmxRXrSPQRe200hUqulaMp13ZII3VNgyJ4QWdqlFHkUTu/?=
- =?us-ascii?Q?EQmWYv4/6uAT/GLl7c9YwFe7RfLMPrsM8fClzs1c0iqDstptm8v3oP2yGj24?=
- =?us-ascii?Q?6+qIANIhvsJo5g1XOdBmpwwOm7XqLkjY+7QnQMpHp5iuciud76y/+CEwayZQ?=
- =?us-ascii?Q?KHC3u7eUmlyjq5V7IjN0C43s1OcMPpShkatGhhUTDnak+uk/AGZMVTL2t/7h?=
- =?us-ascii?Q?Q/mrhso1rK8o1gocvrZ84I91YRjpNBrBqqyDtAnw3idb5ORykAZ8bvoxAqYt?=
- =?us-ascii?Q?FdqxulA50ZzOmbcFczsfF9VlkyG7BUjbfCXNhxU7Fffir7cgbthYsFNU24FR?=
- =?us-ascii?Q?jo3LQoCgPSa/j4b/OEg40r5eV7u7fV38rScT4QwlHWbGEeEgWrTjEPrXOLgO?=
- =?us-ascii?Q?PWSyxuK1frbL+5360bvno330Ki54FSKyUd2RNXZIL4wDSuJqN36sNU+tI7RW?=
- =?us-ascii?Q?3Ttc8JScsIHKy9c58qHaPvK/SBfQvrkGeto8+2qZwhnH9lLy851Nmd62ybX9?=
- =?us-ascii?Q?HKAGBYdOuZlK2hy+eOL65J71khPz3Q1sn7ZhU9gvxB7BtvR4vQCA04rd0F4p?=
- =?us-ascii?Q?PR/0zF6MCTTUk3Mwd23JQbQgE7Ai9Ln+fXg1wSR3rvHeOlD1WL2ZfB1O/Cwk?=
- =?us-ascii?Q?0UVcDOZziKwJq6fMSNrogyzFuMFrXRtb2CSqnJdJilTeNy/Tm1MLgwSUD265?=
- =?us-ascii?Q?7dP8QbaorjpjYKxNWHWMSUCk8hw9waEQMpd8JKr2x3JHobN3r32qacXmAv4t?=
- =?us-ascii?Q?3E29xKs8lZ33SGADpSDZn1aS0nd8EQAmiAzEQHFttQQ8BZGO0v4FmKCpzJeo?=
- =?us-ascii?Q?mYU8JTiy0EOFLJA8CqNPA/j8cctTK4n8nKmW/TP+M6rq/KV0urhHkinywuuf?=
- =?us-ascii?Q?AnfSzsEr?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fabe246c-738c-4122-2b3c-08d8c85c09f2
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR01MB4304.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Feb 2021 15:54:50.3276 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mIB0wxueoqJvtv/uqnCYH+A0AQQJGPcmKXzZGodIJgvVsWEdOSqGeGIDuvN7mlde8LIUN2MBbbz2nqCu0bLD1r5srhDg2oe7yy4OmW3GBt8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR01MB3886
-Received-SPF: pass client-ip=40.107.92.127;
- envelope-from=aaron@os.amperecomputing.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, MSGID_FROM_MTA_HEADER=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+In-Reply-To: <20210203105933.GF2950@work-vm>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.539,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.178, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8h1liOhrUKMr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rDDIf+98ygRh
 
-On Feb 03 15:26, Peter Maydell wrote:
-> On Wed, 3 Feb 2021 at 15:11, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
-> > It's interesting that on x86 we've got a longterm request to *add* cpu
-> > features to the stream to detect screwups caused by using mismatched
-> > CPUs; so it's not necessarily a bad idea to include it once you realise
-> > it's there.
+On 2/3/21 11:59 AM, Dr. David Alan Gilbert wrote:
+> * Peter Maydell (peter.maydell@linaro.org) wrote:
+>> On Wed, 3 Feb 2021 at 10:49, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+>>>
+>>> * Peter Maydell (peter.maydell@linaro.org) wrote:
+>>>> On Wed, 3 Feb 2021 at 10:28, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+>>>>>
+>>>>> * Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
+>>>>>> Cc'ing migration team and qemu-arm@ list.
+>>>>>
+>>>>> I'll have to leave the detail of that to the ARM peole; but from a
+>>>>> migration point of view I think we do want the 64 bit ARM migrations to
+>>>>> be stable now.  Please tie incompatible changes to machine types.
+>>>>
+>>>> That is the intention, but because there's no upstream testing
+>>>> of migration compat, we never notice if we get it wrong.
+>>>> What is x86 doing to keep cross-version migration working ?
+>>>
+>>> I know there used to be some of our team running Avocado tests for
+>>> compatibility regularly, I'm not sure of the current status.
+>>> It's something we also do regularly around when we do downstream
+>>> releases, so we tend to catch them then, although even on x86 that
+>>> often turns out to be a bit late.
+>>
+>> So downstream testing only?
 > 
-> I think we would want to do that by checking the ID registers,
-> not the legacy ad-hoc feature-flags word. In fact I think for
-> KVM at least we already perform the check on the ID registers,
-> in that the kernel will return an error if we pass it a value
-> for an ID register and it's not the value it should be.
-> I forget whether we try to check this for TCG (the mechanism
-> for handling sysreg migration there is different).
+> I thought there used to be some regular avocado testing of upstream but
+> I'm not sure if it's all architectures and I'm not sure if it's still
+> happening; I haven't seen any migration issues from it for a while,
+> which makes me think it isn't.
+> 
+>> I think that unless we either (a) start
+>> doing migration-compat testing consistently upstream or (b) RedHat or
+>> some other downstream start testing and reporting compat issues
+>> to us for aarch64 as they do for x86-64, in practice we're just
+>> not going to have working migration compat despite our best
+>> intentions. (None of the issues Aaron raises were deliberate
+>> compat breaks -- they're all "we made a change we didn't think
+>> affected migration but it turns out that it does".)
+> 
+> I'd agree; we still hit this too often on x86 as well.
 
-Ah, I sent my reply where I mentioned attempting to find a way to
-selectively check env.features before I saw this. I'll just send the
-patch for `VMSTATE_UNUSED(sizeof(uint64_t))`.
+Cc'ing avocado-devel, since previously discussed:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg654139.html
 
--Aaron

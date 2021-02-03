@@ -1,112 +1,109 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp121999lfo;
-        Wed, 3 Feb 2021 03:00:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz2yQD76XQp/BOAs2hd+VpT7d69n1u6Anyj3aEp2XHfQaEJ5MtYGcY4N93KlxzZ9Tvxfy4U
-X-Received: by 2002:a25:9241:: with SMTP id e1mr2585144ybo.394.1612350041455;
-        Wed, 03 Feb 2021 03:00:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612350041; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp181333lfo;
+        Wed, 3 Feb 2021 04:26:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxsTqlLN+EknIV6SHKR4EoZL+fSs499GlRI0ZCkPqTkk+G04V70Ram+b7dqo7RQH5H1Mwit
+X-Received: by 2002:a25:69c8:: with SMTP id e191mr2202724ybc.446.1612355183247;
+        Wed, 03 Feb 2021 04:26:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612355183; cv=none;
         d=google.com; s=arc-20160816;
-        b=AzDIJO2K5ph4TL03VX9BuV9YsBypJQj2kzKQdqNh+Dv+VOcuRGAnvxmqO3FjPRYcs+
-         u35xO4vX3OfRvNeRB1gyeSkKzuNsYqRAYniKiT1kEXri5f+H8rEVscyR65Cn475AuItE
-         RbG7AnywgVaYqASic274KVp6FR952KlI3Upsm3++B2PNN12WXCeNJS64cxKNoV8irG0L
-         oAh7vgx9EdXhoBQ7O+1ma8/G0R1smz83JuQoDY6lJ549ALwQfXKVrFEi84BHB9wAP3Bf
-         4POzZjRStDTHmDl31VD1LL6EowlYhizyLuxKh3Y+yn3Pv66P5Z8bvelXGiUYzTLjyfCe
-         F8aA==
+        b=sZvwAPfJi0ASnStshiMNyyQKmI7FXF81vun7cECnuupxhfFbJ7RaDqEXLMoPZpVohV
+         8/IbUzTgS47hvR80F0+1UE/QZTWLUYIpRnDjRjDXp81ZItpYNCndy5xTEdtUwE+NE2c0
+         S7ansrH3hMVpfr5M/eXgKdGtVVGfLcRzNYp+sG9MPlPiatsKwWII87Y4xci/T32xD9de
+         0PFtTwnAEe07PdRiWX1KPVYApnRMa13/MxFwBiy/fCAbTYlnDOl6FVCMcRqbzJsjXOE4
+         cQ2t98xWJPqvv/7rIx6ztC1exwjD2JiPsWGmdgqyMcF10swS55JZP8Nlnn6PIFeYDLh3
+         fBYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=Cberw22i4OyXhCOwhlnp5X3G0td/WRmeYu0FOAInees=;
-        b=zcGWOaod19O3lD+tz076krt73a72TPsj6MOBGHy81/gZb718/TYHrmEQBZs95NtUI+
-         AOKFG1VFQ/G2Y9lWY5Rv5nV563fYxiCs1ZzAPccw03I0pZmEDoS9GtXOCZrcRRV6ud+9
-         fRtfL1Wd3P72KFyUOSwtt13jzwHQxUuEYggY7qbVcS4NRVX/yPZvjZ+UCxfpgfaK/Cpc
-         hfXdt8JWONvMKeb0bmNnB8dsnj0UpsqahYPwSfm1n91HeAg3GTlvJax2c6rVcVvFaQhl
-         KYA6TNwM1aJpY2BIMs3LYEyaLl4ORiq1Zfun5VpAKAHJlRHOMno0SXD5krqat0v0sA1I
-         4E0g==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=oxMfT/7YoIew+n+1+EvavO1Ar4lv9KXNVU58zCZ30XU=;
+        b=VZCNhN9wyWkAbVjcJJEBfQ/HF0684YQW+yQhX8hyNSg/VCPGw5s2x0B6pUtbdzM8ck
+         KD2VXLPabZYdm1BU/7kXYt5tx/yNltZncq63hX1gcIYcteiqwnRihIsQCNEHOXZGyXEr
+         3s9x4gYBpoYz9mvPulMCtMLN4lOSBvZWASHCaIpsEVIoFKe0O/MVjPvX95IxvRwGKRMZ
+         WKb1U343/Ka3hvlyG2rki99hwgLxgv5fQjYn642m171HQ+bqs5b+LFyyZFgPZVynzNn1
+         QNNhzvjbWvQ6fQ6QuzFpVjIqNkjYGXQjIj9AC7HXQ6bVawPCQdCUTbM64I0ZyEPUZl8u
+         CZjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jBgE+C4q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=iUs5imSC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1si2304384ybk.9.2021.02.03.03.00.41
+        by mx.google.com with ESMTPS id r7si2779533ybk.131.2021.02.03.04.26.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 03:00:41 -0800 (PST)
+        Wed, 03 Feb 2021 04:26:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jBgE+C4q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41166 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=iUs5imSC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7Fto-0007H5-Iy
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 06:00:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46936)
+	id 1l7HEk-00089V-Kl
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 07:26:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39210)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l7Fsv-0007Gq-SW
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 05:59:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:31456)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l7Fss-00060n-Ml
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 05:59:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612349980;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Cberw22i4OyXhCOwhlnp5X3G0td/WRmeYu0FOAInees=;
- b=jBgE+C4q7IZo5qqfVXP+8z5oJOLFcoIJV3YVHtZyK0EO9G33FPFW5dU67MUeD+Sirtuc2p
- zuL9XSlkWmgxJCJvRKR00a91bdCTMPs7nV8Eu98BVohVD7j+DhCvlVClF9i6IBjVd1z22s
- 53ueRAqFIJKk8Ag41tCnTdwPDnbDbw0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-382-94kmtrLMNSiqgub7m-jv_A-1; Wed, 03 Feb 2021 05:59:39 -0500
-X-MC-Unique: 94kmtrLMNSiqgub7m-jv_A-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 25374C7402;
- Wed,  3 Feb 2021 10:59:38 +0000 (UTC)
-Received: from work-vm (ovpn-115-70.ams2.redhat.com [10.36.115.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 724DE4D;
- Wed,  3 Feb 2021 10:59:36 +0000 (UTC)
-Date: Wed, 3 Feb 2021 10:59:33 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1l7HEd-00089P-JQ
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 07:26:15 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:32942)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1l7HEb-0004hl-Kv
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 07:26:15 -0500
+Received: by mail-wr1-x434.google.com with SMTP id 7so24056566wrz.0
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 04:26:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=oxMfT/7YoIew+n+1+EvavO1Ar4lv9KXNVU58zCZ30XU=;
+ b=iUs5imSCY6AOEUVvH1NWhKsJAFhuXZYOInbIOVe2QDYITvvKYMxYtQGCx4DA3ZLoRL
+ s0DVDzUeTSOqQ0TVKtLVy2++nPM2CYweCMuJ4iU1TSwvrNbmg3FRbnJ7OGHfyWPN5FW3
+ xP0PnFjcY6vkKa45mZo6+PlJUYOOEJsgbH+8GjwSg5c4G8CTd3njuplKW08aB9Rx/d1s
+ RokVFM3iCzO4QwmO5fke63icUQIa8Q/rQhSTb3rRKw+akaKVh+TiMNL7MJAnQxgfYArX
+ +CPreK2NRwq76TtIlv21uoGDOMnkuGTHg1lj/ac/iRJpSqvhxNhwNLcdZpj+1K6vwbU4
+ 7fzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=oxMfT/7YoIew+n+1+EvavO1Ar4lv9KXNVU58zCZ30XU=;
+ b=D/bZ9d3AONGy7znzUH+Ipr1fAs28zBfpn4tB6v4gQZaKnt4pomLxoWO6ZgXW3Rvsce
+ 6p4GkZLZ/AJRM/lfrk5cL7wN9+htAdwMweUgFcaeIC7HUNtJhiLO62YrqXtn5i1oFcyV
+ U/vxRmmrjENEWbjQD8sPjAPrRz0S4PsRduinI7YcFE5neLQYAqhl1zEFcoiXD+Y68N9T
+ lCMw8kaJwb4WpsZt6trNnQQ+hvt7wEFZ7tezxzsQ4XyF0Ml7BnSNGU2ZWagTBuLqo6T6
+ eYNmjUk0XL3KGx+cb/fHPbG8bk8vBZz7sFHCCLJ7O8+Wuvq38EgL80V/uBBvl8FLezmp
+ ySHA==
+X-Gm-Message-State: AOAM5300qclI5xvIdySuk8tZTJ3P2TdAoSwxqqybvarLZ+VDuW0iM59D
+ 5nfEdPi4gfBaA7apSEhrhf+/Lg==
+X-Received: by 2002:a05:6000:1045:: with SMTP id
+ c5mr3388699wrx.250.1612355172055; 
+ Wed, 03 Feb 2021 04:26:12 -0800 (PST)
+Received: from vanye (cpc1-cmbg19-2-0-cust915.5-4.cable.virginm.net.
+ [82.27.183.148])
+ by smtp.gmail.com with ESMTPSA id r16sm3434064wrt.68.2021.02.03.04.26.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 03 Feb 2021 04:26:11 -0800 (PST)
+Date: Wed, 3 Feb 2021 12:26:09 +0000
+From: Leif Lindholm <leif@nuviainc.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: ARM Snapshots Not Backwards-Compatible
-Message-ID: <20210203105933.GF2950@work-vm>
-References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
- <153e5c54-f8bf-d088-502d-502309f5d2a6@redhat.com>
- <20210203102758.GC2950@work-vm>
- <CAFEAcA9_mcXHd5m+Z2M1jvk58kGVEcYKF+0kVsLJTjwB9MZcfw@mail.gmail.com>
- <20210203104920.GE2950@work-vm>
- <CAFEAcA9DdiBA+-5cQ87NR6fHFFFJAtDVbAEc+AJQNMNo4bVB+A@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/4] hw/intc: enable GICv4 memory layout for GICv3
+ driver
+Message-ID: <20210203122609.GW1664@vanye>
+References: <20210124025306.3949-1-leif@nuviainc.com>
+ <CAFEAcA8M2TcRoAyXph1CvX5gOiMqWusV35ygkxOxZy_H_P5upg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9DdiBA+-5cQ87NR6fHFFFJAtDVbAEc+AJQNMNo4bVB+A@mail.gmail.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.386,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <CAFEAcA8M2TcRoAyXph1CvX5gOiMqWusV35ygkxOxZy_H_P5upg@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,60 +116,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Juan Quintela <quintela@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-arm <qemu-arm@nongnu.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Shashi Mallela <shashi.mallela@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YPO8fFYKQPS4
+X-TUID: 7oE4t+HznSLv
 
-* Peter Maydell (peter.maydell@linaro.org) wrote:
-> On Wed, 3 Feb 2021 at 10:49, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+On Tue, Feb 02, 2021 at 10:39:22 +0000, Peter Maydell wrote:
+> On Sun, 24 Jan 2021 at 02:53, Leif Lindholm <leif@nuviainc.com> wrote:
 > >
-> > * Peter Maydell (peter.maydell@linaro.org) wrote:
-> > > On Wed, 3 Feb 2021 at 10:28, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
-> > > >
-> > > > * Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
-> > > > > Cc'ing migration team and qemu-arm@ list.
-> > > >
-> > > > I'll have to leave the detail of that to the ARM peole; but from a
-> > > > migration point of view I think we do want the 64 bit ARM migrations to
-> > > > be stable now.  Please tie incompatible changes to machine types.
-> > >
-> > > That is the intention, but because there's no upstream testing
-> > > of migration compat, we never notice if we get it wrong.
-> > > What is x86 doing to keep cross-version migration working ?
+> > GICv4 sets aside 256K per redistributor configuration block, whereas GICv3
+> > only uses 128K. However, some codebases (like TF-A, EDK2) will happily use
+> > the GICv3 functionality only.
 > >
-> > I know there used to be some of our team running Avocado tests for
-> > compatibility regularly, I'm not sure of the current status.
-> > It's something we also do regularly around when we do downstream
-> > releases, so we tend to catch them then, although even on x86 that
-> > often turns out to be a bit late.
+> > This set aims at enabling these codebases to run, without actually enabling
+> > full support for GICv4.
+> >
+> > This creates a ... problematic ... system, which will misbehave if you try
+> > to use the virtual LPIs. But it does help with letting me use QEMU for
+> > modelling a platform containing a GICv4, and share firmware images with
+> > other prototyping platforms.
 > 
-> So downstream testing only?
+> So, what's your aim for this series? I think we could reasonably
+> take patches 2 and 4 upstream (they are changes we'll want for eventual
+> v4 emulation support), but I don't really want 1 and 3.
+> That would reduce the delta you're carrying locally, at least.
 
-I thought there used to be some regular avocado testing of upstream but
-I'm not sure if it's all architectures and I'm not sure if it's still
-happening; I haven't seen any migration issues from it for a while,
-which makes me think it isn't.
+That would be much appreciated.
 
-> I think that unless we either (a) start
-> doing migration-compat testing consistently upstream or (b) RedHat or
-> some other downstream start testing and reporting compat issues
-> to us for aarch64 as they do for x86-64, in practice we're just
-> not going to have working migration compat despite our best
-> intentions. (None of the issues Aaron raises were deliberate
-> compat breaks -- they're all "we made a change we didn't think
-> affected migration but it turns out that it does".)
+In a way, I wanted to test the waters a bit with regards to whether
+gicv4 emulation could be introduced gradually, and whether doing so by
+extending the existing gicv3 driver was the way to go.
 
-I'd agree; we still hit this too often on x86 as well.
+Anyway, for now, I'll address your comments and send out a 2-part v2,
+containing 2,4/4.
 
-Dave
+Best Regards,
 
+Leif
+
+> I suppose we should look at what changes QEMU needs for KVM in-kernel GICv4
+> support at some point...
+> 
 > thanks
 > -- PMM
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-

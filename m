@@ -1,103 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp488329lfo;
-        Wed, 3 Feb 2021 11:11:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJysPoh/FLS3xo3ZkOy9sZOJvZKosXNn60kvFJ801M+oqqmbgdk+XKhsfL8AOy6JW17pDX2Q
-X-Received: by 2002:a25:7c87:: with SMTP id x129mr6497414ybc.461.1612379501791;
-        Wed, 03 Feb 2021 11:11:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612379501; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp490037lfo;
+        Wed, 3 Feb 2021 11:13:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzKqRnvXcfJHGGH5iHeAzvtNHKcV0wbVYN9W5SyMsZid0joLZvhPM7NjlfK+lLZsSzNb+lQ
+X-Received: by 2002:a25:f309:: with SMTP id c9mr6314146ybs.379.1612379630459;
+        Wed, 03 Feb 2021 11:13:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612379630; cv=none;
         d=google.com; s=arc-20160816;
-        b=PvONh62Ic1YrJpFMnzHPWVyqmosEectnReXv79jkizldIkfDY+CQvQsBKu/roVbHm8
-         5wB1Ae4OgFFcY5aEeaKywG2qAhYV7wSJSu8fXsizCu6Wf27XCAuf0SouainE5plwEGe3
-         L6qvOlMmiMmIEZmDeFhwuH5lSZBZy+0rJrbqc6e2oSDOTG4ihPDZXQhjEPIMXZwC9q+N
-         AEYIg6chqwXr8BHPI9D4OWPTDn4GX4D1iOmlZ+PC85MqBpYgSmHvb0vvDvobjYOIiMYg
-         3UQZp6r8ibOTUXu97pVInnjJEXVfXIDXDuVxccZ0+s04qnu2N8h1Oo7bB9dK+7BBk+/O
-         duHg==
+        b=tSG/nhP9WFzOxmxY41xKlJg5TP6x2s8Qu7vHdU+F5gxIZjmXBrbnboWuyqgRgdQzpQ
+         ae+2Mlk4hRXm/h990wsVJLJm84ZqALDS5sT7Ig2booev2GMRlfK2unUi8Eak+y6ydTqe
+         91wWIff2vIvCn4QB3b+oYs5x+RVvuOPaZ0jVsmL3LCSdUVjcHxnlfqrID55zdGVd/PZU
+         3IvZF+1qPWOjw1l6Brv1vJwa86G9qKbmd7Qxj1RwQOiFPny/jkltBwjz3lgVNOMDSZzu
+         BX3ekAVluN3Qbqza9guJuBB9pIRyBivQqV5MSK455qBvJSHaInl1ZlBDI4eJ1jMOeQDr
+         IjiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=7hjhE0U9saCfWCVjfPxJo9p8Csb2DErMQl9VR45IGeY=;
-        b=mKJXgtmho01j3rs5Ew6+RixeR3OKIn0clg03UKHAnzhGjs3SEwihWaJT6uxPF7zmK1
-         cJddirRjIrQfjuLvy5uk97T48lz5mZzqXe3ylM9X9mX/vwElm33boIX4R64WycOD5Mbc
-         J1IBhKjGd8gqy5TxgPjfhdGxXVWi2c6Ce7npC9LarCR7ITor19yjMwhXUEP/lnG9hGBB
-         Pi1306BxrT/qjuR54jXR16kbXhTkn3DKE3uMev1Dk86sUeA9XjfO3iGX0d6yMUsBs8ay
-         vs09uNud5mic4XmCHOFlVMgv98xDmCrDJl1OfLJSxfgqIRCjrPG84Ml8zl7Yme2XYCMM
-         kQDA==
+        bh=vzS7YDdAcF7U4pxIlp6JJD53EW8Zqfir+/pxfdOUhEg=;
+        b=SQzrElH3tG7HoegnLEchE5yCxEcrtW8iXJm87C9WM1PD2dETzK13FPLdW1UJVWtseZ
+         AErdeuFNDVGSwCn5B/OK95sjf30E7vE3QtSqrHn6fe4jr3t09kvysR8Rg8/Mj49ngDYk
+         39XgOe5bXJ0s2wODNXeIQNtBCmQS74VWODlVW9yZrvsQFuKkLQhSP46eQCfMQ+cQtpKh
+         qunaQlcZLlqcsKkMudrpLMdso9LfaAY2Q9h278VZ8qFMxsE+bEmPbJuyz0iC8eM4VRid
+         Jzw/PsfQkq+CWItZxzZKjXIOs2uoPf8FZboNxvD6pW788vbdpSSXkaTvPCz3umYvZxp4
+         oqIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Hy+TU37q;
+       dkim=fail header.i=@linaro.org header.s=google header.b=iErAgUEc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i195si2941211yba.91.2021.02.03.11.11.41
+        by mx.google.com with ESMTPS id b142si3200158ybg.16.2021.02.03.11.13.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 11:11:41 -0800 (PST)
+        Wed, 03 Feb 2021 11:13:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Hy+TU37q;
+       dkim=fail header.i=@linaro.org header.s=google header.b=iErAgUEc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42964 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7NYz-000601-4U
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:11:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37944)
+	id 1l7Nb3-0007wO-Rv
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:13:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37822)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOY-0007P6-W2
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:56 -0500
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a]:52234)
+ id 1l7NOU-0007NF-Ex
+ for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:52 -0500
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:33963)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOR-0001fe-E1
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:54 -0500
-Received: by mail-pj1-x102a.google.com with SMTP id q72so230806pjq.2
- for <qemu-devel@nongnu.org>; Wed, 03 Feb 2021 11:00:47 -0800 (PST)
+ id 1l7NOI-0001ZX-Sh
+ for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:49 -0500
+Received: by mail-pf1-x42c.google.com with SMTP id m6so439890pfk.1
+ for <qemu-devel@nongnu.org>; Wed, 03 Feb 2021 11:00:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=7hjhE0U9saCfWCVjfPxJo9p8Csb2DErMQl9VR45IGeY=;
- b=Hy+TU37qMan3zms2o7LXzt2i0rogQImDQtzvsyZr/kOlwo3WpJLe8uxXQyzlkgfu1t
- KukUISrQSNoFxwoeUGre6i8fZZ4NgDV5yRMQcumZKYwbWCTpmMl2tPN9x7nCLuwIRfj6
- MGEVAijNnGS9Hy6twJ93bdrFali/gL30hcPz+gjPKzwHWDXBQBEUAaw1r9novtlF7mTl
- lWtSdsaHL9BKG4kKLKSL5K0m6kc9Q+olyV3V8mmWfl+uWgvMmUIC5qSzPi9Zxl9nUHj/
- wY18SjrO9xmFgONewqfkEagheyijonqxm0rYjfu9tUv1LoNSIaib18lBIYxQ4Nc/+1hp
- NnPA==
+ bh=vzS7YDdAcF7U4pxIlp6JJD53EW8Zqfir+/pxfdOUhEg=;
+ b=iErAgUEcRrsEXkLk+inPBZ0Ai2FNNvfG0tmcoaGVxP+ablTNytzE355JBKsaZzWZkz
+ pb8o5TQxvGUCjK7id9VQQpH+rQ48eDDgsHYeSD5ROvBA8v7dY6Gs+7q7kxLoEz+xO97D
+ QHL5wn5qt6lmiV1wTHN6FtptqJ6lNIaw0C5ZmqRsXzkrHhug1nDrvY9gKNYscDO3NLfG
+ 9Hweor1cPa9eQ1OODpVuyZVPzWQRhoQ67f1MG0zijDWzt5puikkecMUD6RH7dRms26X6
+ QyqqSpwm48JviUrocq0KzrtND17ClHjP47IUNonelEL8Kr3KvHKZli/5HSSb7Wo8kLqd
+ tbRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=7hjhE0U9saCfWCVjfPxJo9p8Csb2DErMQl9VR45IGeY=;
- b=eVOshW7ryLitlAGEm5mqGFF+2m0mQRs3S+3I1XbiB/Uz8yFtqNPNrV4aTISSspHBzG
- EKFJcehUhLQiXlUhibTNSzlSSrg4172diw2ptsWxrYWmwqkKHpf/vvWAQSnALtK87yLA
- xaBmu2cXu41+4lS/i3x2BKlK9ubUFsabprrbEwzi6WQAJvlBhH8grxL6wroHVelcosZZ
- hSVXHQ0R1BNdMI34fS6jaBmXuF7NbAJ9CWof2EgaL/YfpqhzU+OL/9joWCeJhNxbodf6
- c+KNMgIGlV76ppwhRDV+qbivBvQFUQ2DB4rv3aXaknHD4ibWom9z0CcAO1/f877zLP4m
- 7w0g==
-X-Gm-Message-State: AOAM531+A0K29SIlzFN7o3Liimix2HU9/yOJb6dnIPA2mDgzrLzrxz1t
- 3u4wL3Khzg2VFiKKw31B27ri4jZa/DnN30+N
-X-Received: by 2002:a17:90b:124c:: with SMTP id
- gx12mr4298852pjb.21.1612378845094; 
- Wed, 03 Feb 2021 11:00:45 -0800 (PST)
+ bh=vzS7YDdAcF7U4pxIlp6JJD53EW8Zqfir+/pxfdOUhEg=;
+ b=T6vXwcdXMTEz+6A0CkalgdgiLYRODIRRcfGeFykt2TH7zrcuheLMptKmPP2raxYDG2
+ YJ5hNvbP901twXnEiOIuC75podnwYl3k/Rh0KABvzJikqS399gv8QTStAkFYXx2mF7v6
+ J/guI0Gep8chencRVGNW/covlK+gbsStqwhBtudOQWgiTtRJCO0r/HJsLMFBjv3hDQ/K
+ ItdkcSwH4BooWwTIxUSEs9mQXvU/SwzqxvUDDe9DqNPvBt0JAiS+np/BR+433u5E+u2h
+ d2RHlOIFnkc7X/01SoHsLV6gRCS83JASbcRwXHl17m/6e9yiswsPOKM4qaRODGCI8E5I
+ c7Nw==
+X-Gm-Message-State: AOAM532qYYB34pfAoTRYs7qbPcTI69Bm/32e3dLArmTv1y6A6AkbC8f4
+ NpoPshhhAN/oJ46i8W1o0vxyQWlZy2B6sfwx
+X-Received: by 2002:a65:6715:: with SMTP id u21mr1986515pgf.312.1612378837054; 
+ Wed, 03 Feb 2021 11:00:37 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.43
+ by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 11:00:44 -0800 (PST)
+ Wed, 03 Feb 2021 11:00:36 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 15/31] exec: Rename guest_{addr,range}_valid to *_untagged
-Date: Wed,  3 Feb 2021 08:59:54 -1000
-Message-Id: <20210203190010.759771-16-richard.henderson@linaro.org>
+Subject: [PATCH v5 11/31] exec: Introduce cpu_untagged_addr
+Date: Wed,  3 Feb 2021 08:59:50 -1000
+Message-Id: <20210203190010.759771-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210203190010.759771-1-richard.henderson@linaro.org>
 References: <20210203190010.759771-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,154 +119,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 920+/dkPO2mX
+X-TUID: 0fOfy2TE7HB2
 
-The places that use these are better off using untagged
-addresses, so do not provide a tagged versions.  Rename
-to make it clear about the address type.
+Provide an identity fallback for target that do not
+use tagged addresses.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/cpu_ldst.h |  4 ++--
- linux-user/qemu.h       |  4 ++--
- accel/tcg/user-exec.c   |  9 ++++++---
- linux-user/mmap.c       | 12 ++++++------
- linux-user/syscall.c    |  2 +-
- 5 files changed, 17 insertions(+), 14 deletions(-)
+ include/exec/cpu_ldst.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index c54069e3cd..ce6ce82618 100644
+index e62f4fba00..d9dc1de414 100644
 --- a/include/exec/cpu_ldst.h
 +++ b/include/exec/cpu_ldst.h
-@@ -87,12 +87,12 @@ static inline void *g2h(CPUState *cs, abi_ptr x)
-     return g2h_untagged(cpu_untagged_addr(cs, x));
- }
+@@ -69,6 +69,13 @@ typedef uint64_t abi_ptr;
+ #define TARGET_ABI_FMT_ptr "%"PRIx64
+ #endif
  
--static inline bool guest_addr_valid(abi_ulong x)
-+static inline bool guest_addr_valid_untagged(abi_ulong x)
- {
-     return x <= GUEST_ADDR_MAX;
- }
- 
--static inline bool guest_range_valid(abi_ulong start, abi_ulong len)
-+static inline bool guest_range_valid_untagged(abi_ulong start, abi_ulong len)
- {
-     return len - 1 <= GUEST_ADDR_MAX && start <= GUEST_ADDR_MAX - len + 1;
- }
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index ba122a7903..b3ccffbf0f 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -494,8 +494,8 @@ extern unsigned long guest_stack_size;
- static inline bool access_ok(int type, abi_ulong addr, abi_ulong size)
- {
-     if (size == 0
--        ? !guest_addr_valid(addr)
--        : !guest_range_valid(addr, size)) {
-+        ? !guest_addr_valid_untagged(addr)
-+        : !guest_range_valid_untagged(addr, size)) {
-         return false;
-     }
-     return page_check_range((target_ulong)addr, size, type) == 0;
-diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
-index a2a353920c..4963e5cc51 100644
---- a/accel/tcg/user-exec.c
-+++ b/accel/tcg/user-exec.c
-@@ -191,10 +191,11 @@ static inline int handle_cpu_signal(uintptr_t pc, siginfo_t *info,
-     g_assert_not_reached();
- }
- 
--static int probe_access_internal(CPUArchState *env, target_ulong addr,
-+static int probe_access_internal(CPUArchState *env, target_ulong addr_tagged,
-                                  int fault_size, MMUAccessType access_type,
-                                  bool nonfault, uintptr_t ra)
- {
-+    target_ulong addr;
-     int flags;
- 
-     switch (access_type) {
-@@ -211,13 +212,15 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
-         g_assert_not_reached();
-     }
- 
--    if (!guest_addr_valid(addr) || page_check_range(addr, 1, flags) < 0) {
-+    addr = cpu_untagged_addr(env_cpu(env), addr_tagged);
-+    if (!guest_addr_valid_untagged(addr) ||
-+        page_check_range(addr, 1, flags) < 0) {
-         if (nonfault) {
-             return TLB_INVALID_MASK;
-         } else {
-             CPUState *cpu = env_cpu(env);
-             CPUClass *cc = CPU_GET_CLASS(cpu);
--            cc->tlb_fill(cpu, addr, fault_size, access_type,
-+            cc->tlb_fill(cpu, addr_tagged, fault_size, access_type,
-                          MMU_USER_IDX, false, ra);
-             g_assert_not_reached();
-         }
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 088c50592c..6690384752 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -119,7 +119,7 @@ int target_mprotect(abi_ulong start, abi_ulong len, int target_prot)
-     }
-     len = TARGET_PAGE_ALIGN(len);
-     end = start + len;
--    if (!guest_range_valid(start, len)) {
-+    if (!guest_range_valid_untagged(start, len)) {
-         return -TARGET_ENOMEM;
-     }
-     if (len == 0) {
-@@ -528,7 +528,7 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int target_prot,
-          * It can fail only on 64-bit host with 32-bit target.
-          * On any other target/host host mmap() handles this error correctly.
-          */
--        if (end < start || !guest_range_valid(start, len)) {
-+        if (end < start || !guest_range_valid_untagged(start, len)) {
-             errno = ENOMEM;
-             goto fail;
-         }
-@@ -669,7 +669,7 @@ int target_munmap(abi_ulong start, abi_ulong len)
-     if (start & ~TARGET_PAGE_MASK)
-         return -TARGET_EINVAL;
-     len = TARGET_PAGE_ALIGN(len);
--    if (len == 0 || !guest_range_valid(start, len)) {
-+    if (len == 0 || !guest_range_valid_untagged(start, len)) {
-         return -TARGET_EINVAL;
-     }
- 
-@@ -727,9 +727,9 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
-     int prot;
-     void *host_addr;
- 
--    if (!guest_range_valid(old_addr, old_size) ||
-+    if (!guest_range_valid_untagged(old_addr, old_size) ||
-         ((flags & MREMAP_FIXED) &&
--         !guest_range_valid(new_addr, new_size))) {
-+         !guest_range_valid_untagged(new_addr, new_size))) {
-         errno = ENOMEM;
-         return -1;
-     }
-@@ -777,7 +777,7 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
- 
-             if (host_addr != MAP_FAILED) {
-                 /* Check if address fits target address space */
--                if (!guest_range_valid(h2g(host_addr), new_size)) {
-+                if (!guest_range_valid_untagged(h2g(host_addr), new_size)) {
-                     /* Revert mremap() changes */
-                     host_addr = mremap(g2h_untagged(old_addr),
-                                        new_size, old_size, flags);
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 4451f8e4f0..30a5021509 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -4608,7 +4608,7 @@ static inline abi_ulong do_shmat(CPUArchState *cpu_env,
-             return -TARGET_EINVAL;
-         }
-     }
--    if (!guest_range_valid(shmaddr, shm_info.shm_segsz)) {
-+    if (!guest_range_valid_untagged(shmaddr, shm_info.shm_segsz)) {
-         return -TARGET_EINVAL;
-     }
++#ifndef TARGET_TAGGED_ADDRESSES
++static inline abi_ptr cpu_untagged_addr(CPUState *cs, abi_ptr x)
++{
++    return x;
++}
++#endif
++
+ /* All direct uses of g2h and h2g need to go away for usermode softmmu.  */
+ #define g2h(x) ((void *)((uintptr_t)(abi_ptr)(x) + guest_base))
  
 -- 
 2.25.1

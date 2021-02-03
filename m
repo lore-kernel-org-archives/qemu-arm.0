@@ -1,102 +1,104 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp493593lfo;
-        Wed, 3 Feb 2021 11:19:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyuUaDuEAiGPUfpznsZYjsCGeKeHwou4ouQ7vaEnVGaeDAq4g6ZMl6iFYMkMK/+X2elPfZt
-X-Received: by 2002:a25:a088:: with SMTP id y8mr6790508ybh.512.1612379959057;
-        Wed, 03 Feb 2021 11:19:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612379959; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp494975lfo;
+        Wed, 3 Feb 2021 11:21:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxQvY5DVhaeW70201RQiun8bWQ7Ej0t9ofSi4+Iw+FAvWO0v955TH4WGi5Qr3VRXp3JrCwm
+X-Received: by 2002:a25:f40e:: with SMTP id q14mr6723748ybd.230.1612380098769;
+        Wed, 03 Feb 2021 11:21:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612380098; cv=none;
         d=google.com; s=arc-20160816;
-        b=mU1jsHAOza43WRv/UQGrAcgvJ+Bgn3pUbSngJhf1YCLcH9WHI69C3I1AVxRUMhKeXw
-         9RFqvC5pZYHVBTbe0rrjYSzvoRD9cYilE5OvyfNZaTGv6PwJ/oeBl+MzVdL7ZLNNZQVp
-         DvU40x69MGRtlQviItgLUygbq12g1f26rSVLdyGc7LBEwXPdhWwpjgTGHwyTuzc52dM3
-         F4ZWwHBjhwyZ/X3tBSA/F08PCSTpmlYiPgWDyP2egruaWw4YsDorKfQUDKWpt4r6L6qs
-         +Pj/ymKdUYMVvgf4EV1mTc/ccX+37gZUVmTPNTPECndqGzFdD6+V4zy477U2YMF6dFIV
-         VZIA==
+        b=vRbZ0BQKVrcD+4O9nUsoOuFP0fnhqppN7In+Hx5e7FQSp1Gzt2RpdiZOKGInTJH6lN
+         jN3I3+jRb1C0WxvzCZM8WoGHlKdpkrEkaQfBkMzbBPjyXUZMmz6lAwDDc17r0hGXXLes
+         +j4BNgDVJYmnekIYvwkrC6Pq1vHb508tmg4UQjW8rdcVAnr+FH4bvJjkegflWsfTdtrT
+         sxnS7/2TMutNYRCRyXqTBFRT8zEYPaPMBaWquH5u3uiZOBPTK9VjtN29c0W5+U3acDKa
+         NxxvGH0fGd3c3XrIWMAOzQy7Qpe6beUEi0fb06oTtRKTWZRfauIJ9W28nbR53PlNnXl0
+         D+KA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xTo2NylmjqqjFL8fqMUunkk9BsrbQ/4yVzkjDrtoXzY=;
-        b=rOyVqOKAJBYwXPvvc39CBPIWwrAwpjBoQ2ofo3ziUDAgvEMji+iQ7j4ulxWznTBtHZ
-         XtNkpe2vZ7NcwQI7fLfAsLJu9Mz3Q08AhVBE3udb99QQmjfyZtzbWL/uAgx+kFcy2uHB
-         Gtt133+ri59PJrX9pruCafHmlPN2xHjJfE4g+Qj9q0za1I0wxtrqPY4hqfat8COQism0
-         H9GpakJzQsdt5AGKJfX7Sg2SwZpwW2ZNQyt7OMGJSZWLZS5qWyY/yAsq5vWn5Dy2E/3b
-         ipQeYsDkK2AoEnXP80y5NdjD3JRkly5wlcTs9R/ytwFgTsiK6zIP2VP2cLQ7kz2gtrdk
-         P/1g==
+        bh=ec4hlo+gP8szg6yNPIbUNNDP2CtNSFlAatcye+QT23Y=;
+        b=00Q/tWwKGhj3BaC2zw5i/qQHIqCcE1qbiBJ2XczO2X0fgeKITgaemgCO74cWJbgZVY
+         4LS4AXygNUXW8wq2iQ9Hmix+WCPKo4ONXPgV7CtwVdbWfq36ExsMndxdpQXPxU+QyaM9
+         dmsG6duGIuWDS//3ZDe68GIL+EjEPUuyAfkmqp+pzZP1qX+0mu+j3QY8vuJZB2V46dnH
+         xPiQNeg3OnsN0I1MXUj8r6iSBNsTQm7JkDFqsA33DTwA0A8/fDYCs6x0+vJB7gBeafcl
+         nL1t2gxBLz1i9hLGO1GptbTG9CNaWozai0YYjE/VggBoCY+Rz4W3j/nP88S5rAU8lWkH
+         Eq6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hEwG++9e;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZtbjJpXp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u24si3557339ybd.456.2021.02.03.11.19.18
+        by mx.google.com with ESMTPS id r16si2953646ybc.381.2021.02.03.11.21.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 11:19:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Feb 2021 11:21:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hEwG++9e;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZtbjJpXp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56044 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34020 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7NgM-0003BV-DM
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:19:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37992)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l7Nic-0005q0-5p
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:21:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38258)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOb-0007QD-9h
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:57 -0500
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433]:38455)
+ id 1l7NOz-0007av-2T
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:21 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:45390)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOW-0001jj-Ij
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:56 -0500
-Received: by mail-pf1-x433.google.com with SMTP id y205so427916pfc.5
- for <qemu-devel@nongnu.org>; Wed, 03 Feb 2021 11:00:52 -0800 (PST)
+ id 1l7NOr-0001og-IX
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:20 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id b8so363386plh.12
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 11:01:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xTo2NylmjqqjFL8fqMUunkk9BsrbQ/4yVzkjDrtoXzY=;
- b=hEwG++9efnhBtmgzphxK/RTY6KWxU20AMhyj9j6O4WkbT1iULUDpfi+3bfxB4jlHm9
- EldS2kmzaXKz+Pjon7Mbds4y3yuGMjFkwJJdDN8ohUcRQUgF+Hlq91chJ2uZDUwluWyP
- f8itKFr32MJHy+CqPEnggRHvc0Rlp45HnX82KpqhlKQYVwFF8YnvRSIsjgo9r5Og9WzZ
- TAbmPSQRkYZxfq32IRpuGp+4/e+C50ROKxN+pfoiVV7WePFE9neNBDusaGa2UbuyLIlC
- Eg+oBpzIXPiRiTT9+6RQ5IwSZvf/txf7Lo6FIq2roDiIZgRN8xCpdUifVzl/iwp+owkP
- mvZg==
+ bh=ec4hlo+gP8szg6yNPIbUNNDP2CtNSFlAatcye+QT23Y=;
+ b=ZtbjJpXpy57+a65uZ9LnPatVYCxemrZm2Ci9dJNIT9Sn+5ZVzgefWAiCfR2UL37szG
+ vvPbGDT2lJOv5cfqJ9DjFdljVQ7Q9NraHBS8Werf8IwBMZ4dtNcls+ku5RPtal9AMyDL
+ W0OQgnkBzi1IMNa7v6rrBEEdMRbzJcbExy72i5kVVGi0QcMwHIBWy4wR0Ie0KEnyx/2S
+ H0KO04s/kqn3WhDQjvipnVZhCXcdokNcGal/IJY8jZ7VW6pynrIJtiO9VyTg/1RHr21m
+ 5THzf8qr8JGpKstacQQqEBNJCI34CCa46s8UxuWytK7AHVH01eH5I+mlVNHrnX4H6EcF
+ XBDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xTo2NylmjqqjFL8fqMUunkk9BsrbQ/4yVzkjDrtoXzY=;
- b=ivD5qoLBI3petQs5iVjRUhju66UQNbsKAsdu7UjIPJQ7G9h3UraV9dsSsIn3Ct9yCy
- FLNCnyh9vdK58/SdNmnp7QolLYYLYv7ngNaOcy/3/F7H4NGISYQjJSzr9xOLVVIod/12
- mhDmEAFMNcSea4nnUhnLAHTtnPjxofc0tGTl8HRiVxjmqEQ1BFAFUMtbnxAybq0s+JV1
- sp0zL5LFNocqK3vMJ3Hm5HuWgAhfr+4au71CpV6Y4ylZ+UQbgsNxDLtVXIYxGjvXB+LK
- hPukCY4250Ln7sDecZHm5mYzkJ/naJ1Kxti8ERp32U9OJ9ITn4+N2SLzpDLNrQKZ5kJr
- w0bw==
-X-Gm-Message-State: AOAM531PrCfKXzzTF7nfu6BQJix+18ENIypqcEvrmhdhZeziiCBG8OKJ
- RjLK+0g/jyPlhiYxYEFi8fAY2i/uyWtw29GF
-X-Received: by 2002:a63:2001:: with SMTP id g1mr5058808pgg.83.1612378850958;
- Wed, 03 Feb 2021 11:00:50 -0800 (PST)
+ bh=ec4hlo+gP8szg6yNPIbUNNDP2CtNSFlAatcye+QT23Y=;
+ b=S9AkztJImCKyPIiamMxzeVjyc8F8zw4j2Tj8hREImtgEnt1o/apynqKhL254FG02zy
+ NY94biu0Nsi+xrQbVH1dlOnXBTYHVSb/2RXFhsj1AKC66QPpoO/o91LJnlPQU98pyjMP
+ 8VC+7x05bfM6yIhkgkgPkpEu6Vqhlt7fW9JjiJmVP3m9+gbawl+WbpSkofuFujBbHte/
+ AxofTqRduwgEww3gD5juwGN82YgBtSR8GAltaILJuoWmFTr5WYGQLEIgMmBPlVfCFu7Q
+ kjNKXpug9Q1B9RKWnFbBM6Guac3DeTnAGe/7hGISjOMXeslyGFGpCBgJLHH4uUHWe4WR
+ rFTw==
+X-Gm-Message-State: AOAM533MvSB6gbWtDH8yTCFZbtzpDtJ0/JLh8yAFVvgagYoPScgsa+HC
+ 4GrwzvMhzlPDxtH97BUUamllCNuq6taDJw9R
+X-Received: by 2002:a17:90a:7143:: with SMTP id
+ g3mr4574392pjs.196.1612378861314; 
+ Wed, 03 Feb 2021 11:01:01 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.49
+ by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 11:00:50 -0800 (PST)
+ Wed, 03 Feb 2021 11:01:00 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 18/31] linux-user: Fix types in uaccess.c
-Date: Wed,  3 Feb 2021 08:59:57 -1000
-Message-Id: <20210203190010.759771-19-richard.henderson@linaro.org>
+Subject: [PATCH v5 23/31] linux-user/aarch64: Implement PR_MTE_TCF and
+ PR_MTE_TAG
+Date: Wed,  3 Feb 2021 09:00:02 -1000
+Message-Id: <20210203190010.759771-24-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210203190010.759771-1-richard.henderson@linaro.org>
 References: <20210203190010.759771-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,191 +107,122 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XSTU25fecEzf
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Lv2gylU0YNJH
 
-For copy_*_user, only 0 and -TARGET_EFAULT are returned; no need
-to involve abi_long.  Use size_t for lengths.  Use bool for the
-lock_user copy argument.  Use ssize_t for target_strlen, because
-we can't overflow the host memory space.
+These prctl fields are required for the function of MTE.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/qemu.h    | 14 ++++++--------
- linux-user/uaccess.c | 43 ++++++++++++++++++++++---------------------
- 2 files changed, 28 insertions(+), 29 deletions(-)
+ linux-user/aarch64/target_syscall.h |  9 ++++++
+ linux-user/syscall.c                | 43 +++++++++++++++++++++++++++++
+ 2 files changed, 52 insertions(+)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 36b58bd840..d25a5dafc0 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -7,8 +7,6 @@
- #include "exec/cpu_ldst.h"
+diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/target_syscall.h
+index 820601dfcc..76f6c3391d 100644
+--- a/linux-user/aarch64/target_syscall.h
++++ b/linux-user/aarch64/target_syscall.h
+@@ -33,5 +33,14 @@ struct target_pt_regs {
+ #define TARGET_PR_SET_TAGGED_ADDR_CTRL 55
+ #define TARGET_PR_GET_TAGGED_ADDR_CTRL 56
+ # define TARGET_PR_TAGGED_ADDR_ENABLE  (1UL << 0)
++/* MTE tag check fault modes */
++# define TARGET_PR_MTE_TCF_SHIFT       1
++# define TARGET_PR_MTE_TCF_NONE        (0UL << TARGET_PR_MTE_TCF_SHIFT)
++# define TARGET_PR_MTE_TCF_SYNC        (1UL << TARGET_PR_MTE_TCF_SHIFT)
++# define TARGET_PR_MTE_TCF_ASYNC       (2UL << TARGET_PR_MTE_TCF_SHIFT)
++# define TARGET_PR_MTE_TCF_MASK        (3UL << TARGET_PR_MTE_TCF_SHIFT)
++/* MTE tag inclusion mask */
++# define TARGET_PR_MTE_TAG_SHIFT       3
++# define TARGET_PR_MTE_TAG_MASK        (0xffffUL << TARGET_PR_MTE_TAG_SHIFT)
  
- #undef DEBUG_REMAP
--#ifdef DEBUG_REMAP
--#endif /* DEBUG_REMAP */
+ #endif /* AARCH64_TARGET_SYSCALL_H */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index ba4da7f8a6..61bf6148e7 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -10985,17 +10985,53 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+             {
+                 abi_ulong valid_mask = TARGET_PR_TAGGED_ADDR_ENABLE;
+                 CPUARMState *env = cpu_env;
++                ARMCPU *cpu = env_archcpu(env);
++
++                if (cpu_isar_feature(aa64_mte, cpu)) {
++                    valid_mask |= TARGET_PR_MTE_TCF_MASK;
++                    valid_mask |= TARGET_PR_MTE_TAG_MASK;
++                }
  
- #include "exec/user/abitypes.h"
+                 if ((arg2 & ~valid_mask) || arg3 || arg4 || arg5) {
+                     return -TARGET_EINVAL;
+                 }
+                 env->tagged_addr_enable = arg2 & TARGET_PR_TAGGED_ADDR_ENABLE;
++
++                if (cpu_isar_feature(aa64_mte, cpu)) {
++                    switch (arg2 & TARGET_PR_MTE_TCF_MASK) {
++                    case TARGET_PR_MTE_TCF_NONE:
++                    case TARGET_PR_MTE_TCF_SYNC:
++                    case TARGET_PR_MTE_TCF_ASYNC:
++                        break;
++                    default:
++                        return -EINVAL;
++                    }
++
++                    /*
++                     * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
++                     * Note that the syscall values are consistent with hw.
++                     */
++                    env->cp15.sctlr_el[1] =
++                        deposit64(env->cp15.sctlr_el[1], 38, 2,
++                                  arg2 >> TARGET_PR_MTE_TCF_SHIFT);
++
++                    /*
++                     * Write PR_MTE_TAG to GCR_EL1[Exclude].
++                     * Note that the syscall uses an include mask,
++                     * and hardware uses an exclude mask -- invert.
++                     */
++                    env->cp15.gcr_el1 =
++                        deposit64(env->cp15.gcr_el1, 0, 16,
++                                  ~arg2 >> TARGET_PR_MTE_TAG_SHIFT);
++                    arm_rebuild_hflags(env);
++                }
+                 return 0;
+             }
+         case TARGET_PR_GET_TAGGED_ADDR_CTRL:
+             {
+                 abi_long ret = 0;
+                 CPUARMState *env = cpu_env;
++                ARMCPU *cpu = env_archcpu(env);
  
-@@ -629,8 +627,8 @@ static inline bool access_ok(CPUState *cpu, int type,
-  * buffers between the target and host.  These internally perform
-  * locking/unlocking of the memory.
-  */
--abi_long copy_from_user(void *hptr, abi_ulong gaddr, size_t len);
--abi_long copy_to_user(abi_ulong gaddr, void *hptr, size_t len);
-+int copy_from_user(void *hptr, abi_ulong gaddr, size_t len);
-+int copy_to_user(abi_ulong gaddr, void *hptr, size_t len);
- 
- /* Functions for accessing guest memory.  The tget and tput functions
-    read/write single values, byteswapping as necessary.  The lock_user function
-@@ -640,13 +638,13 @@ abi_long copy_to_user(abi_ulong gaddr, void *hptr, size_t len);
- 
- /* Lock an area of guest memory into the host.  If copy is true then the
-    host area will have the same contents as the guest.  */
--void *lock_user(int type, abi_ulong guest_addr, long len, int copy);
-+void *lock_user(int type, abi_ulong guest_addr, size_t len, bool copy);
- 
- /* Unlock an area of guest memory.  The first LEN bytes must be
-    flushed back to guest memory. host_ptr = NULL is explicitly
-    allowed and does nothing. */
--#ifdef DEBUG_REMAP
--static inline void unlock_user(void *host_ptr, abi_ulong guest_addr, long len)
-+#ifndef DEBUG_REMAP
-+static inline void unlock_user(void *host_ptr, abi_ulong guest_addr, size_t len)
- { }
- #else
- void unlock_user(void *host_ptr, abi_ulong guest_addr, long len);
-@@ -654,7 +652,7 @@ void unlock_user(void *host_ptr, abi_ulong guest_addr, long len);
- 
- /* Return the length of a string in target memory or -TARGET_EFAULT if
-    access error. */
--abi_long target_strlen(abi_ulong gaddr);
-+ssize_t target_strlen(abi_ulong gaddr);
- 
- /* Like lock_user but for null terminated strings.  */
- void *lock_user_string(abi_ulong guest_addr);
-diff --git a/linux-user/uaccess.c b/linux-user/uaccess.c
-index bba012ed15..30d01f8b30 100644
---- a/linux-user/uaccess.c
-+++ b/linux-user/uaccess.c
-@@ -4,7 +4,7 @@
- 
- #include "qemu.h"
- 
--void *lock_user(int type, abi_ulong guest_addr, long len, int copy)
-+void *lock_user(int type, abi_ulong guest_addr, size_t len, bool copy)
- {
-     if (!access_ok_untagged(type, guest_addr, len)) {
-         return NULL;
-@@ -26,7 +26,7 @@ void *lock_user(int type, abi_ulong guest_addr, long len, int copy)
- }
- 
- #ifdef DEBUG_REMAP
--void unlock_user(void *host_ptr, abi_ulong guest_addr, long len);
-+void unlock_user(void *host_ptr, abi_ulong guest_addr, size_t len);
- {
-     if (!host_ptr) {
-         return;
-@@ -43,53 +43,53 @@ void unlock_user(void *host_ptr, abi_ulong guest_addr, long len);
- 
- void *lock_user_string(abi_ulong guest_addr)
- {
--    abi_long len = target_strlen(guest_addr);
-+    ssize_t len = target_strlen(guest_addr);
-     if (len < 0) {
-         return NULL;
-     }
--    return lock_user(VERIFY_READ, guest_addr, (long)(len + 1), 1);
-+    return lock_user(VERIFY_READ, guest_addr, (size_t)len + 1, 1);
- }
- 
- /* copy_from_user() and copy_to_user() are usually used to copy data
-  * buffers between the target and host.  These internally perform
-  * locking/unlocking of the memory.
-  */
--abi_long copy_from_user(void *hptr, abi_ulong gaddr, size_t len)
-+int copy_from_user(void *hptr, abi_ulong gaddr, size_t len)
- {
--    abi_long ret = 0;
--    void *ghptr;
-+    int ret = 0;
-+    void *ghptr = lock_user(VERIFY_READ, gaddr, len, 1);
- 
--    if ((ghptr = lock_user(VERIFY_READ, gaddr, len, 1))) {
-+    if (ghptr) {
-         memcpy(hptr, ghptr, len);
-         unlock_user(ghptr, gaddr, 0);
--    } else
-+    } else {
-         ret = -TARGET_EFAULT;
--
-+    }
-     return ret;
- }
- 
--
--abi_long copy_to_user(abi_ulong gaddr, void *hptr, size_t len)
-+int copy_to_user(abi_ulong gaddr, void *hptr, size_t len)
- {
--    abi_long ret = 0;
--    void *ghptr;
-+    int ret = 0;
-+    void *ghptr = lock_user(VERIFY_WRITE, gaddr, len, 0);
- 
--    if ((ghptr = lock_user(VERIFY_WRITE, gaddr, len, 0))) {
-+    if (ghptr) {
-         memcpy(ghptr, hptr, len);
-         unlock_user(ghptr, gaddr, len);
--    } else
-+    } else {
-         ret = -TARGET_EFAULT;
-+    }
- 
-     return ret;
- }
- 
- /* Return the length of a string in target memory or -TARGET_EFAULT if
-    access error  */
--abi_long target_strlen(abi_ulong guest_addr1)
-+ssize_t target_strlen(abi_ulong guest_addr1)
- {
-     uint8_t *ptr;
-     abi_ulong guest_addr;
--    int max_len, len;
-+    size_t max_len, len;
- 
-     guest_addr = guest_addr1;
-     for(;;) {
-@@ -101,11 +101,12 @@ abi_long target_strlen(abi_ulong guest_addr1)
-         unlock_user(ptr, guest_addr, 0);
-         guest_addr += len;
-         /* we don't allow wrapping or integer overflow */
--        if (guest_addr == 0 || 
--            (guest_addr - guest_addr1) > 0x7fffffff)
-+        if (guest_addr == 0 || (guest_addr - guest_addr1) > 0x7fffffff) {
-             return -TARGET_EFAULT;
--        if (len != max_len)
-+        }
-+        if (len != max_len) {
-             break;
-+        }
-     }
-     return guest_addr - guest_addr1;
- }
+                 if (arg2 || arg3 || arg4 || arg5) {
+                     return -TARGET_EINVAL;
+@@ -11003,6 +11039,13 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+                 if (env->tagged_addr_enable) {
+                     ret |= TARGET_PR_TAGGED_ADDR_ENABLE;
+                 }
++                if (cpu_isar_feature(aa64_mte, cpu)) {
++                    /* See above. */
++                    ret |= (extract64(env->cp15.sctlr_el[1], 38, 2)
++                            << TARGET_PR_MTE_TCF_SHIFT);
++                    ret = deposit64(ret, TARGET_PR_MTE_TAG_SHIFT, 16,
++                                    ~env->cp15.gcr_el1);
++                }
+                 return ret;
+             }
+ #endif /* AARCH64 */
 -- 
 2.25.1
 

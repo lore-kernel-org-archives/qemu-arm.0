@@ -1,110 +1,110 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp498931lfo;
-        Wed, 3 Feb 2021 11:28:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyWs5EXtNv+/N9iFKMrdfMxXFYcmAY2gu+aV72TFqyZXVVJO875uu7qo574LyEgOH9VHsOx
-X-Received: by 2002:a25:fc2:: with SMTP id 185mr7074892ybp.385.1612380501404;
-        Wed, 03 Feb 2021 11:28:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612380501; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp498971lfo;
+        Wed, 3 Feb 2021 11:28:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxDeNcm2w0juFIYgtiq1Sl/VCwNb+fbY/3eyeG2hFfbBimyiT02WKOQtnghUpbg/qxMpp4K
+X-Received: by 2002:a25:b813:: with SMTP id v19mr6653039ybj.178.1612380504913;
+        Wed, 03 Feb 2021 11:28:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612380504; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vz69eGjTqlmuHSQTZFGMG1TTP6YNOi6QGTdK2fUQzakjw0G0t27sFVg0C/0MaIcfWE
-         uOIViB2wsUavA5a/evIU5RM4fisAZe4gGmSk/BiLFS83mIy4YDpR/6hSdN3Gep42q1rT
-         sPbKq4sK5KHXhaeZd+aLlLvZ/cjTqdzAspbV9EwgIWRuNH1qP5jRQtaBYd8HzW5uh6OH
-         NOZdh2bgtlPzj2yCOWbFy6r/4jYQywbhd0hWXhx1XRXBTyLQV9ve7lROPi0eTgRJshjM
-         p32DcMOV7d9gg2B3F3IqUetiAfrT6Nmm2i+PEZaLn9pfLATr0OOPUV4YrwoodtWkxtWD
-         onYg==
+        b=qaYtQU8Hud5/uDPxZhpYKroM30caBEPHydfydNa8ARR/p8hcxziiNeKnz2khdQSjKf
+         Dw+fQHrnzxfYYqJwK2CRIuwxzJFsFQl5772bRCOfszrTrcIhg7UkQZYQOIPLGc7Dz9ze
+         z2eNTYt+qsUE87PDWreg8QIQsDHortgOZyeMnJ7mqTA4RbIy7sFIwJ+1d6c7vwIet+/5
+         OOpKhjBnLXux1ZHbzl463A8ogn0YURXmVO8eFc242N3yjxCWsgvWYO++J+kGsKmv/GKw
+         5c8QEt/Fbdbh/fHkwTVFdgaF7g420td1/AJeRwE4Ia6u/2sGA5YtBp3hf9TLAgbiXMkC
+         h7rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=NmqOnFZ3gzFTWfhEXE/IEZcCHdcqEoHvbx2VhkXYfn0=;
-        b=kupJva6N+LvmoCo1mOX22ODFcKb9IU2daJtcRzUTh9B586ity5p/qBM29dW+rziBWY
-         zPs4ay+6Yg5x6xhwnEBPJ7h+6CVBYEUArU60LsBabAOD2BkUF/LMSbbRL7nQ6c0Mf99O
-         v0G0BJEJdd6q6gZjoJvfy0jr/bsw1pe/DL/sHvHeqAmHkX3wrBSEonXzOhU8s4pMcSKa
-         jg1fKiprh+qmyQGOmNKvUtA3MB3xCodCvyamK4xjr/oSNbiins8UuQYUeY/3eJNC5hVj
-         mUfMRWGpCYtesiVze596G9tgOildkK2cQoDMzyjHr061EbzUp+SezFAamsxn/ee5fY0K
-         PZLQ==
+        bh=/s8XFE9gqNZNWpQb6lsvETqFxexdpDzYtAtiO9bn45A=;
+        b=Jc/2bKMlEUQqCPbcCqH0g4J1AKHtimTNEZ+DFqzZNUBIL6jSwme8CHxPJne0JYjxWv
+         UviCznSR+ibxBEBZ64cxoB6nF85FXJ9LTxudrt9ZSWGw68Ja2JQbYHRaM1/iFagqN7Ov
+         tHkrjr7TikWorLKktZxPbQKes5N2S+1OvhW5SqlZCCJtSCYhrG+gwXKgGOQIYWZRhrvZ
+         rGshe6oUe586AwFShHI6LZvPytLc8IWzxyP8OJQfwHCs5R59GcOsWgRIx2HhRSjQuMg7
+         m66YjBWGlhZe3X1NugPaC26LhFmLwLrlEo4EzP0WK9pPsotog0bxRMNzhgu5dE17PMwW
+         Z45g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uECkAftb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hxDAeK17;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9si2290170ybn.373.2021.02.03.11.28.21
+        by mx.google.com with ESMTPS id i4si3004480ybe.341.2021.02.03.11.28.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 11:28:21 -0800 (PST)
+        Wed, 03 Feb 2021 11:28:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uECkAftb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hxDAeK17;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49662 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49804 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7Np6-0003ui-Mn
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:28:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38066)
+	id 1l7NpA-0003yE-9f
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:28:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOr-0007Ti-3C
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:01:13 -0500
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036]:52054)
+ id 1l7NOR-0007Ll-Rt
+ for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:48 -0500
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:34276)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOa-0001mQ-Pq
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:01:06 -0500
-Received: by mail-pj1-x1036.google.com with SMTP id a20so235706pjs.1
- for <qemu-devel@nongnu.org>; Wed, 03 Feb 2021 11:00:56 -0800 (PST)
+ id 1l7NOM-0001bn-Ca
+ for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:47 -0500
+Received: by mail-pg1-x52f.google.com with SMTP id o7so406323pgl.1
+ for <qemu-devel@nongnu.org>; Wed, 03 Feb 2021 11:00:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NmqOnFZ3gzFTWfhEXE/IEZcCHdcqEoHvbx2VhkXYfn0=;
- b=uECkAftbpnvvKJ64aKpKmMwKz/mv6M0YgeqSCqBKJjZZqIz9ljKvh9tLEKwjqBI8Yi
- sGUP8OTVeSBzKQNBkBW+mhiwqOUHq2zPfoj16LvIAPupWSIcBbxTWe7k88rSrhGZOgno
- 8gVecHi1otxt807rvdrbvwrZA0XL9dJ82CmTI+VEsJS7Jyt+l+ZW1dWUR7E3rHdpWN2T
- Pmg7gy36jtySD67SiCN4tupO/DpEsz2qOtn44eNFFZOnSpDrAGWwzwqFmBIKtaPFryhW
- 4IcN5sXZKJ+8AUGRMpAx5akT0/S9iHz18uXtzCvurA3tM4gYzT7nd7o0+4TRWlhdkwbj
- HYyA==
+ bh=/s8XFE9gqNZNWpQb6lsvETqFxexdpDzYtAtiO9bn45A=;
+ b=hxDAeK17mLOOu0eaQLp0OwHC7vJvS6hhi9LGBYVH+DvfPjfz7hEfzZIBjScC5T6PUP
+ yYmo5c21ylBZaih3H+PkhrEZq3Uv0/u53EVLyBUtG02iGc4Cp5oQ1bYzQ9BPZCSabT3Q
+ lQh5/mwS1FGZmmEMxbmrpvDCPCjjiHboFl4IIPkXfkCho1Z6x9kRGcpko6hQgnLMOOC6
+ cH2uYQH/u5giPa6Jz92RjM9CoTvWVPRx3ElQMwppH6qA7Gzs5cC6CWbqxHvKocF80L0t
+ DP2UYYybhmptY2KxVq2YvPuZCpOtI4hypFXe5KeSnXYuFgEiHYqFDWW74uiUISPGHKac
+ gDiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=NmqOnFZ3gzFTWfhEXE/IEZcCHdcqEoHvbx2VhkXYfn0=;
- b=Wzwpgn3arQR5HA0NWEG6AZM84oZeKL+hfOLyxu9VLsm52sDowX4EOTkquZmFz/WRz3
- PSbEJtXP78H5bNAhd6APb6ujxqJtHrwH/U8RKmpANlr04IcpxOrCbq15svuUiVQykNsC
- lIh9uZN/8BwlLbaA0auvMvbyI2rhBaDZR4Srk4al1IacmIB7bec82fCfAGNsnnfePiqb
- OPgoncVzLTq8E1OisMUlIYxJcwM4r4qzyewVibtOZTH9ZyVDkexkmIAIM4W66yqjKTRH
- P1wBl4td+iy+yDKWCFsL234KEjgvoU3aKYIcwDaU157UYlnNrupW63DaefOX0VCiIn87
- U1yw==
-X-Gm-Message-State: AOAM5304dOaIlzGCFc+6N0kSGkOqpNcuMGRPOLtM2OZOlydOInr/TMr1
- Q2MUxJFX5ejRe6Z8EZvpvYJ6xaj5TCGRakG2
-X-Received: by 2002:a17:90a:4611:: with SMTP id
- w17mr4502783pjg.18.1612378855264; 
- Wed, 03 Feb 2021 11:00:55 -0800 (PST)
+ bh=/s8XFE9gqNZNWpQb6lsvETqFxexdpDzYtAtiO9bn45A=;
+ b=AY8HXBfLO1MEmTOEgegkyfIzy+s5cj/+Auz39ybU0a7ZjJFXENbe0S8ZL7flnt2LEo
+ sB5D6AvUsMK/Qk5OZDxV9bhyKfiW+/d89OUYKGS3OZfLBPQJWx+Gf8z5BEzcQRkYSq/5
+ iJ6SeqKkM+KN1BrL/mUkAlxM5s5krF583nDd2cVrC11/jglTdES7+apOWCBw4b9txbGV
+ xFbVziifdw4Ok05jNhyHkG1ml4qWwB1XI2theeRNTzlqneST1t9m1nTPJShGo3LuJLFq
+ OWWWoH5HCaIv63wcl6M1H4LuulAZgmJRw/IEYWjvr8+lxWdntRFckAUraHaSE1CJDpyF
+ DjCA==
+X-Gm-Message-State: AOAM531maLc1t6/EE66/Goohk25cMcScde06qUXiSdurvjz8mysUjG4G
+ CaDxjiMs5JlEij8aN6QqAsR4CsOsQjuFH6ZR
+X-Received: by 2002:a63:c205:: with SMTP id b5mr5114407pgd.281.1612378841023; 
+ Wed, 03 Feb 2021 11:00:41 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.53
+ by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 11:00:54 -0800 (PST)
+ Wed, 03 Feb 2021 11:00:40 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 20/31] linux-user/aarch64: Implement PR_TAGGED_ADDR_ENABLE
-Date: Wed,  3 Feb 2021 08:59:59 -1000
-Message-Id: <20210203190010.759771-21-richard.henderson@linaro.org>
+Subject: [PATCH v5 13/31] linux-user: Explicitly untag memory management
+ syscalls
+Date: Wed,  3 Feb 2021 08:59:52 -1000
+Message-Id: <20210203190010.759771-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210203190010.759771-1-richard.henderson@linaro.org>
 References: <20210203190010.759771-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,132 +120,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pt05iVqJ1erZ
+X-TUID: bSc5aOOqUtIs
 
-This is the prctl bit that controls whether syscalls accept tagged
-addresses.  See Documentation/arm64/tagged-address-abi.rst in the
-linux kernel.
+We define target_mmap et al as untagged, so that they can be
+used from the binary loaders.  Explicitly call cpu_untagged_addr
+for munmap, mprotect, mremap syscall entry points.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Add a few comments for the syscalls that are exempted by the
+kernel's tagged-address-abi.rst.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/target_syscall.h |  4 ++++
- target/arm/cpu-param.h              |  3 +++
- target/arm/cpu.h                    | 31 +++++++++++++++++++++++++++++
- linux-user/syscall.c                | 24 ++++++++++++++++++++++
- 4 files changed, 62 insertions(+)
+ linux-user/syscall.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/target_syscall.h
-index 3194e6b009..820601dfcc 100644
---- a/linux-user/aarch64/target_syscall.h
-+++ b/linux-user/aarch64/target_syscall.h
-@@ -30,4 +30,8 @@ struct target_pt_regs {
- # define TARGET_PR_PAC_APDBKEY   (1 << 3)
- # define TARGET_PR_PAC_APGAKEY   (1 << 4)
- 
-+#define TARGET_PR_SET_TAGGED_ADDR_CTRL 55
-+#define TARGET_PR_GET_TAGGED_ADDR_CTRL 56
-+# define TARGET_PR_TAGGED_ADDR_ENABLE  (1UL << 0)
-+
- #endif /* AARCH64_TARGET_SYSCALL_H */
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index 00e7d9e937..7f38d33b8e 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -20,6 +20,9 @@
- 
- #ifdef CONFIG_USER_ONLY
- #define TARGET_PAGE_BITS 12
-+# ifdef TARGET_AARCH64
-+#  define TARGET_TAGGED_ADDRESSES
-+# endif
- #else
- /*
-  * ARMv7 and later CPUs have 4K pages minimum, but ARMv5 and v6
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d080239863..558ad1466b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -721,6 +721,11 @@ typedef struct CPUARMState {
-     const struct arm_boot_info *boot_info;
-     /* Store GICv3CPUState to access from this struct */
-     void *gicv3state;
-+
-+#ifdef TARGET_TAGGED_ADDRESSES
-+    /* Linux syscall tagged address support */
-+    bool tagged_addr_enable;
-+#endif
- } CPUARMState;
- 
- static inline void set_feature(CPUARMState *env, int feature)
-@@ -3602,6 +3607,32 @@ static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
-  */
- #define PAGE_BTI  PAGE_TARGET_1
- 
-+#ifdef TARGET_TAGGED_ADDRESSES
-+/**
-+ * cpu_untagged_addr:
-+ * @cs: CPU context
-+ * @x: tagged address
-+ *
-+ * Remove any address tag from @x.  This is explicitly related to the
-+ * linux syscall TIF_TAGGED_ADDR setting, not TBI in general.
-+ *
-+ * There should be a better place to put this, but we need this in
-+ * include/exec/cpu_ldst.h, and not some place linux-user specific.
-+ */
-+static inline target_ulong cpu_untagged_addr(CPUState *cs, target_ulong x)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    if (cpu->env.tagged_addr_enable) {
-+        /*
-+         * TBI is enabled for userspace but not kernelspace addresses.
-+         * Only clear the tag if bit 55 is clear.
-+         */
-+        x &= sextract64(x, 0, 56);
-+    }
-+    return x;
-+}
-+#endif
-+
- /*
-  * Naming convention for isar_feature functions:
-  * Functions which test 32-bit ID registers should have _aa32_ in
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 24fc1daf02..ba4da7f8a6 100644
+index 748893904e..4451f8e4f0 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -10981,6 +10981,30 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
-                 }
-             }
-             return -TARGET_EINVAL;
-+        case TARGET_PR_SET_TAGGED_ADDR_CTRL:
-+            {
-+                abi_ulong valid_mask = TARGET_PR_TAGGED_ADDR_ENABLE;
-+                CPUARMState *env = cpu_env;
+@@ -889,6 +889,8 @@ abi_long do_brk(abi_ulong new_brk)
+     abi_long mapped_addr;
+     abi_ulong new_alloc_size;
+ 
++    /* brk pointers are always untagged */
 +
-+                if ((arg2 & ~valid_mask) || arg3 || arg4 || arg5) {
-+                    return -TARGET_EINVAL;
-+                }
-+                env->tagged_addr_enable = arg2 & TARGET_PR_TAGGED_ADDR_ENABLE;
-+                return 0;
-+            }
-+        case TARGET_PR_GET_TAGGED_ADDR_CTRL:
-+            {
-+                abi_long ret = 0;
-+                CPUARMState *env = cpu_env;
+     DEBUGF_BRK("do_brk(" TARGET_ABI_FMT_lx ") -> ", new_brk);
+ 
+     if (!new_brk) {
+@@ -4588,6 +4590,8 @@ static inline abi_ulong do_shmat(CPUArchState *cpu_env,
+     int i,ret;
+     abi_ulong shmlba;
+ 
++    /* shmat pointers are always untagged */
 +
-+                if (arg2 || arg3 || arg4 || arg5) {
-+                    return -TARGET_EINVAL;
-+                }
-+                if (env->tagged_addr_enable) {
-+                    ret |= TARGET_PR_TAGGED_ADDR_ENABLE;
-+                }
-+                return ret;
-+            }
- #endif /* AARCH64 */
-         case PR_GET_SECCOMP:
-         case PR_SET_SECCOMP:
+     /* find out the length of the shared memory segment */
+     ret = get_errno(shmctl(shmid, IPC_STAT, &shm_info));
+     if (is_error(ret)) {
+@@ -4655,6 +4659,8 @@ static inline abi_long do_shmdt(abi_ulong shmaddr)
+     int i;
+     abi_long rv;
+ 
++    /* shmdt pointers are always untagged */
++
+     mmap_lock();
+ 
+     for (i = 0; i < N_SHM_REGIONS; ++i) {
+@@ -9691,6 +9697,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+                                         v5, v6));
+         }
+ #else
++        /* mmap pointers are always untagged */
+         ret = get_errno(target_mmap(arg1, arg2, arg3,
+                                     target_to_host_bitmask(arg4, mmap_flags_tbl),
+                                     arg5,
+@@ -9709,8 +9716,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+         return get_errno(ret);
+ #endif
+     case TARGET_NR_munmap:
++        arg1 = cpu_untagged_addr(cpu, arg1);
+         return get_errno(target_munmap(arg1, arg2));
+     case TARGET_NR_mprotect:
++        arg1 = cpu_untagged_addr(cpu, arg1);
+         {
+             TaskState *ts = cpu->opaque;
+             /* Special hack to detect libc making the stack executable.  */
+@@ -9725,6 +9734,8 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+         return get_errno(target_mprotect(arg1, arg2, arg3));
+ #ifdef TARGET_NR_mremap
+     case TARGET_NR_mremap:
++        arg1 = cpu_untagged_addr(cpu, arg1);
++        /* mremap new_addr (arg5) is always untagged */
+         return get_errno(target_mremap(arg1, arg2, arg3, arg4, arg5));
+ #endif
+         /* ??? msync/mlock/munlock are broken for softmmu.  */
 -- 
 2.25.1
 

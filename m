@@ -1,117 +1,124 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp720343lfo;
-        Tue, 2 Feb 2021 21:49:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzENMN8uOW5EbZAqbiZLdt6Fpx+twuVdfYrqrm0exqy5+jPCDjKrhWJkCfsyMleqYN6u8L8
-X-Received: by 2002:a05:6902:701:: with SMTP id k1mr2178860ybt.342.1612331368586;
-        Tue, 02 Feb 2021 21:49:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612331368; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp31947lfo;
+        Wed, 3 Feb 2021 00:21:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwpUeo1F81yHM/bwgcs9EI5MHzPc5LSG+GgcP2sg23Jym9rBl6B9zqtw8D7u5ZTMxuBR9Ea
+X-Received: by 2002:a25:f8a:: with SMTP id 132mr2798460ybp.228.1612340497104;
+        Wed, 03 Feb 2021 00:21:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612340497; cv=none;
         d=google.com; s=arc-20160816;
-        b=I82XjyVsLdvoRvaHq33LaxAw2L6gR+f5fwJes2BAKxpMzUkIn/mDSHwZmWTyuCq5Ri
-         HCy7OlFWxbx+9cfFVwWBICiV/mr1C6OzTyGf2GlosVF4Ti4jwq06pDGNCrRQlmTybBq+
-         y0B5tAI4jw7YMMniFrUeyK8/ft43jkxRvgGCfVhMEst9v4z5BMU2rvuHFUA/CedbNUjx
-         p82HA2F0j17SFE3cKwDCmFbW/UPvshPYsPkDXLpyvj9YmqywFsemkfjhA1MVys7PxtE3
-         MMHzGnEJ6/BHCWnYyjlXM/QnR9npt46mFqyDBKOMVCuTiJ+wi5606pTMViTjwrvUsakv
-         1UAg==
+        b=HY2/BEfAdVn7xEN34s4AbYuHxXg8n+GWGiLrpG+3yyJp4ZH1RAcIcy8HHRo4lO203Q
+         6/afnCIq3mi+4PXTio+WI7mHTC1BoxA8VWYkxYpsFXr1ROz/UxmHnvtP5+fQWc+k84ye
+         YkCIfZZ3aEAtgayZ6rUAFaQ5+Fi5LqFhqoA3AcR1+JQ+bevRwVsq8MES8JWgkV3Hl9kA
+         boNy8t0ofdD7m8ZvLtnpijN22Nf2f1698jnPrG47RBqfxWYsghosZ9ZgLpeHTkudK1x1
+         l0WsTtbR9PH37Oew1yxBCDYm2qfIG4ZXe7Ay/lC4rreeKR+MHkIAa1t2oZ9OwD3yvQBo
+         ezcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=bgeMERJZbFZAc6USC3fjOyLoKU/bLq3+UFxkbpKL4/c=;
-        b=gO6uxxljqY+Sju9Bl0SVPOMqut+rbv3e4Vzi5KCUzuZDshwmJn6HQF4vl3+54P9xDj
-         ltkWgB8prd0PMd37ldkEKcnebyMdOQLM+NMy9QtvaVgBMyn8jGzMfur4Qh5sM1JxyHPZ
-         bmZKRhkeLn0KwOTVtWxzIH1lSQFQ3HOxEsbLXCfGJWf6YKONY5+yaBAH+JdITIstxKJd
-         33+stD3orvlQ7sZ6BUQ9z4IsOjRrG1H18BK+DEyoBgA93siOCPM2OqYBW8rfqTgC9JMX
-         AARJRfoaTqjRsIY6JYr2PK4Z8UcF2yQjPcBDJKQ6iE9/cg31umfM3thptIy6SG6I1N6a
-         FkzQ==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=0HaMfCeA3mW7tOo+p9WhxttBgAhTD/hBKuTFreACb0Y=;
+        b=imMaWa8GsS/obW3MaSHwk5rsFhwh1975EwodLIKbrOrH4vWU71CbcZXhgGeQMEjqV/
+         82n4n0QjtKkIjpgZ8iEvUm7wpFbR52Ax4SvQyyEkEcow+YvX1vzTFcqw3dUGu8bILi9T
+         3lUXnGSzlbBMtVwPOQZSF89mf8v6ghZMEXL0ZVMkcco2vOAvLaLsdtOR1uVVZ8Li+ZQt
+         Z4tgPVPqP3WGT6le/gj6Jgb7YJDCEtsir0PqTq+xh24NnhdOCCr/tAUr3pXCGRN5+Fez
+         IIBMUuLhsA517T/UQm2HxYZoxWzQT4LbNWLWJA1zldJl+wzIumXld3zWs50wU/l9KSKY
+         uGoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Xpjp5dZ+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PBtGdY70;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16si1424246ybe.248.2021.02.02.21.49.28
+        by mx.google.com with ESMTPS id h2si1746005ybm.186.2021.02.03.00.21.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 21:49:28 -0800 (PST)
+        Wed, 03 Feb 2021 00:21:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Xpjp5dZ+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PBtGdY70;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35240 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54432 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7B2d-00081a-Tw
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 00:49:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44360)
+	id 1l7DPs-0003Mp-Gv
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 03:21:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7B2N-0007zP-46
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 00:49:11 -0500
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530]:36248)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7B2L-0006qj-GR
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 00:49:10 -0500
-Received: by mail-pg1-x530.google.com with SMTP id c132so16571894pga.3
- for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 21:49:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=bgeMERJZbFZAc6USC3fjOyLoKU/bLq3+UFxkbpKL4/c=;
- b=Xpjp5dZ+P0LfHwzKIU8RZnRcTQUVHQ7bMCYevrq0rtYbsA8UwJI7cg7VB6MsERr9I1
- u6KuC7nEbcyEPaqSMfhABJ+oL7RWElKXQGkgxlJTUGMdWerGze2aB1EsP1xORXf9Dpbf
- J9BBBcSWXtLjxRnDtOxt1i/ZRRsv0fa11u5jApARLGQ0gf+2uAciJv7aSFdfq3n1Rszp
- 4jxNYMg8vVeKNpwKQi7P/GEHywldEMDu+JRGPO0Ry5WwSIDVyO0h4bE09+dPLECk31oo
- 1u3b9BuhjhekjgTHhVHKt6WnTw/X5jGbHKaX+4r3SZmavPgdoLDy+QwebFcsP7AxP6Wi
- N0Aw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l7DPj-0003MN-LE
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 03:21:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56444)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1l7DPh-0000Wm-9F
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 03:21:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612340484;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0HaMfCeA3mW7tOo+p9WhxttBgAhTD/hBKuTFreACb0Y=;
+ b=PBtGdY70oJ3oDSQT8a44153CXZ9H3oqR1c0fmsalX1A6VbV+/2IeLLN1PsENprsslF6y0B
+ TLE/sDr3gvjufMOcDcyiIvutfxELr3+XDXNE/3cM8773ht5ofPQIUU0/lrJr/ZyZgZtq7f
+ OZnTINXQsL/kfn6++yP87kPgSY9rZoE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-353-YLlaU4zyMKm9sZDPqtZSGQ-1; Wed, 03 Feb 2021 03:21:21 -0500
+X-MC-Unique: YLlaU4zyMKm9sZDPqtZSGQ-1
+Received: by mail-wr1-f71.google.com with SMTP id p16so13672566wrx.10
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 00:21:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=bgeMERJZbFZAc6USC3fjOyLoKU/bLq3+UFxkbpKL4/c=;
- b=Qiseq0HK7dfo3rzOkZPerEyoqBbeLCMVh37vyy0H+MSkDdSI7BN5CA3dkwX5S9k1b1
- 0ATsAK0fWzSxrcgTyyYTPr26FpEmOrPH9Waz4p11JN926DTvAc3az29F6wAEV8jx/H5Y
- i96L9FMyBPnvF6E3XGlv1GNejHTpUuKchhu/2GzLUG6m/CICOT5tJAukD8Do3d0BSJnq
- oticK/w/klbyReSsE4kJubdDmlsarDOn2KopjeMIz6gk2grnaVs26gOyXULQEbXaK/u+
- axoXxb1amoH7yMRnrOdB+VpFPyor63oibiSWmjPdJ8pqE/Qy8KV1h38/it363toyDQbR
- YABw==
-X-Gm-Message-State: AOAM530UJWvljZ2KU8bJbPjLydHLa80NO5IKqOyGIcjaOFoieMKW9Bmz
- vlpTku9I9RbS8B8v/GMzIRi5hrbeaJeMdEKd
-X-Received: by 2002:a62:e30e:0:b029:1b9:3823:4b3a with SMTP id
- g14-20020a62e30e0000b02901b938234b3amr1574694pfh.15.1612331347982; 
- Tue, 02 Feb 2021 21:49:07 -0800 (PST)
-Received: from [192.168.3.43] (cpe-66-27-222-29.hawaii.res.rr.com.
- [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id b206sm792760pfb.73.2021.02.02.21.49.06
+ bh=0HaMfCeA3mW7tOo+p9WhxttBgAhTD/hBKuTFreACb0Y=;
+ b=lgV3+kLXGlDoSivxyh05VsRTMlS+SWBYUXDSTtmLENFiWbl5PV0WsOK/PhYpOoVI05
+ WqZHFdibwvk3gAOeVVprcL66ai2VYEJGDxdxC52itEKsvFc3CMCt7DOP3ZcaxiFL3qib
+ l7rscJ+NziDX0PhpYuvA7nX2+TW82hg4BZ8EJF43uuEL12YWZtuguBuQY6EIIo2n4jpB
+ Q1IzcQFlOnKJlNAerAY9Fkpa0NveF0V7odHMeKIn5fejNUY8MiZXFwZpuPctb9KV5ZIj
+ 7XnJsBdRbBJR8WaGX76O/wExce2elbY2tqU5+Cp1wBAuuBDiY0U9Iui04EpZ/XmvPw7J
+ sCcA==
+X-Gm-Message-State: AOAM533Vv9Wws/CT68x5hWCh7tI3TPWEfrMgJ7uAVpJ9KTL29RMSV0S+
+ t/dCKEgo3txa6IeOQTnhPRJlnrUxXnfde0KXKuxG7f8u4c5Zxi89k7iHuazjelqB+LoScmwBqC+
+ ZiHpddpbz+0ir
+X-Received: by 2002:a05:600c:35ce:: with SMTP id
+ r14mr1697978wmq.136.1612340480154; 
+ Wed, 03 Feb 2021 00:21:20 -0800 (PST)
+X-Received: by 2002:a05:600c:35ce:: with SMTP id
+ r14mr1697960wmq.136.1612340479881; 
+ Wed, 03 Feb 2021 00:21:19 -0800 (PST)
+Received: from [192.168.1.36] (107.red-83-59-163.dynamicip.rima-tde.net.
+ [83.59.163.107])
+ by smtp.gmail.com with ESMTPSA id i8sm2435645wry.90.2021.02.03.00.21.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Feb 2021 21:49:07 -0800 (PST)
-Subject: Re: [PATCH v4 01/23] tcg: Introduce target-specific page data for
- user-only
-From: Richard Henderson <richard.henderson@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210128224141.638790-1-richard.henderson@linaro.org>
- <20210128224141.638790-2-richard.henderson@linaro.org>
- <CAFEAcA8r5+ciCFb0kPC1bAi-kU53iJBiLf7Jiso-gr2cOBtxeQ@mail.gmail.com>
- <ededd9b5-5836-b1c4-9fc8-e732bf1c2204@linaro.org>
-Message-ID: <2aaedf0e-3594-13a7-7576-8e0566464224@linaro.org>
-Date: Tue, 2 Feb 2021 19:49:04 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Wed, 03 Feb 2021 00:21:19 -0800 (PST)
+Subject: Re: ARM Snapshots Not Backwards-Compatible
+To: Aaron Lindsay <aaron@os.amperecomputing.com>
+References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <153e5c54-f8bf-d088-502d-502309f5d2a6@redhat.com>
+Date: Wed, 3 Feb 2021 09:21:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <ededd9b5-5836-b1c4-9fc8-e732bf1c2204@linaro.org>
+In-Reply-To: <YBogDGJRU5pcDKmi@strawberry.localdomain>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.155,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.386,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.155, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,23 +132,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G0sW5MCTNt6i
+X-TUID: krccVMTMkpz2
 
-On 2/2/21 4:40 PM, Richard Henderson wrote:
-> Well, here's the thing: this appears to be v3, reposted.
+Cc'ing migration team and qemu-arm@ list.
+
+On 2/3/21 5:01 AM, Aaron Lindsay wrote:
+> Hello,
 > 
-> All of the work I did for v4 has gone missing.  I went to go fix the single use
-> of current_cpu, and it wasn't where I expected it to be, and that's when I
-> noticed.  I'm grepping blobs now, but I must have made some horrible git error.
->  :-(
+> I'm attempting to restore an AArch64 snapshot taken on QEMU 4.1.0 on
+> QEMU 5.2.0, using system mode. My previous impression, possibly from
+> https://wiki.qemu.org/Features/Migration/Troubleshooting#Basics was that
+> this ought to work:
+> 
+>> Note that QEMU supports migrating forward between QEMU versions
+> 
+> Note that I'm using qemu-system-aarch64 with -loadvm.
+> 
+> However, I've run into several issues I thought I should report. The
+> first of them was that this commit changed the address of CBAR, which
+> resulted in a mismatch of the register IDs in `cpu_post_load` in
+> target/arm/machine.c:
+> https://patchwork.kernel.org/project/qemu-devel/patch/20190927144249.29999-2-peter.maydell@linaro.org/
+> 
+> The second was that several system registers have changed which bits are
+> allowed to be written in different circumstances, seemingly as a result
+> of a combination of bugfixes and implementation of additional behavior.
+> These hit errors detected in `write_list_to_cpustate` in
+> target/arm/helper.c.
+> 
+> The third is that meanings of the bits in env->features (as defined by
+> `enum arm_features` in target/arm/cpu.h) has shifted. For example,
+> ARM_FEATURE_PXN, ARM_FEATURE_CRC, ARM_FEATURE_VFP, ARM_FEATURE_VFP3,
+> ARM_FEATURE_VFP4 have all been removed and ARM_FEATURE_V8_1M has been
+> added since 4.1.0. Heck, even I have added a field there in the past.
+> Unfortunately, these additions/removals mean that when env->features is
+> saved on one version and restored on another the bits can mean different
+> things. Notably, the removal of the *VFP features means that a snapshot
+> of a CPU reporting it supports ARM_FEATURE_VFP3 on 4.1.0 thinks it's now
+> ARM_FEATURE_M on 5.2.0!
+> 
+> My guess, given the numerous issues and the additional complexity
+> required to properly implement backwards-compatible snapshotting, is
+> that this is not a primary goal. However, if it is a goal, what steps
+> can/should we take to support it more thoroughly?
+> 
+> Thanks!
+> 
+> -Aaron
+> 
+> p.s. Now for an admission: the snapshots I'm testing with were
+> originally taken with `-cpu max`. This was unintentional, and I
+> understand if the response is that I can't expect `-cpu max` checkpoints
+> to work across QEMU versions... but I also don't think that all of these
+> issues can be blamed on that (notably CBAR and env->features).
+> 
 
-It's not quite that bad.  About half of the changes are here.
-But e.g. patch 11 had been split into at least 4, and those are all missing.  I
-presume all of the r-b that I collected before that point got lost at the same
-time.
-
-
-r~

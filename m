@@ -1,103 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp499312lfo;
-        Wed, 3 Feb 2021 11:29:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx8qkorjkOqqf2iaCFdg3kshNGMuh3FL7CNJNDdbRJOKcCQE1zOMzL5vFi1pSRqAH/Fg3Xi
-X-Received: by 2002:a25:f54:: with SMTP id 81mr6362681ybp.103.1612380541545;
-        Wed, 03 Feb 2021 11:29:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612380541; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp499462lfo;
+        Wed, 3 Feb 2021 11:29:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyvZFwO8S0BP1jctNBERCcsdSL4XEKJDvozz0XGlQejhlcHnkB2ElHfBK53L9K7EyeNev6V
+X-Received: by 2002:a25:dfcc:: with SMTP id w195mr6202730ybg.112.1612380556231;
+        Wed, 03 Feb 2021 11:29:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612380556; cv=none;
         d=google.com; s=arc-20160816;
-        b=hK/0q3tBFbkwj2R0JO9i+UXoVc659Qke9G3LJX0ZksYt9z85KsmFrPxV3cg6jQ/DwT
-         Nx4gSTXZTle8e9y0+HLqoqmQB2hV5FV6XTquBF79a+87Joo5gQMNWtgRWlhf5ueuiP6b
-         KtkJjKtcrt6etMlNdnRmRr/Ftp75fXmu8WOK4r1WniE5lZ3MqjBJuOmzFgD8WmvZVYXb
-         oe1P+Rrd9kFo/sAgY5NImX4/6QTIYpAdy1AWSD9MlZzT90i9Tkn8cwcXX9XQFgJTkpRJ
-         mdThJ6agdWAvQWJZbWG1Eh0U91y32h2Z97pQ6qZiMyPzqC8b5nxnKeB4R4PCnpaNModn
-         8Bpw==
+        b=B1ppUlGDP6huwQKnNOQJH1oWR5t2FLkhoDH/ZHFbl/q1iRmMjkrvray7toDvmC6dRj
+         UA/HkGLpeHMRlfqLfZe4P4Jl0viTZ+inOb1AOnsAPt7mxUx/v5GGN0tlNKB6lyOWWr3s
+         4abH4O04SS57WUal/NqpOk3CUn2/FRkARZ25vj+FiiUye2Wqn1l7tWEYmb6BHRVLj2fs
+         acsQnqeDWLv9jzdpg4nBzWo0v8Ap4Nd7qvcw4mLXibAvjHNeLJvQd27btO0CfI+W/70F
+         x3jpn6NhQ8ors6xsZLV3G7oR/6duVsQ4+3sKAkF8q6tMx9wOYA8Zwb/s+x+x6ZUhMuaB
+         ZgmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Lsa43KhLD9F5pbGprd2vnecoG5hphPKA1CxFp2hJ7uE=;
-        b=T7gdirvda1QtJn7OtkQUecBrsUU4Hp7BTmBpSqsxCsXBWAYp1m2Rf9Puu94mA1JbWw
-         7wWpIbR+alNEvfn9BXPfd0elxql5XGcOc8Q8ofQPpeZ9IMhpNGGb6qEgVl402j88fFqq
-         bs0walbhlkoKLPeSjPTsOwJzrK3zvx8JVVgWKAjc5aApsJ+nSd1wg0hnoLwEvhYSdByO
-         Ze5udUglUXHF/CHuMvqAR3T0vJEUiPrEWtWMSGWRQrDXnWH2Hv24d2ArZJCkejkMURJ1
-         XWbyAViouFgVfb4dJZji+E3/Cd4iRFXCqhvKI3iclRuPuxkNJpAs74E2bjWVvFYPuFcw
-         J+Kg==
+        bh=Ytsx3BK2fvJBPpCQnawH3jODSdPjUh55jAri5H8usa0=;
+        b=uaR+yNY+ZEtA36DlUFbdaGJ7HBqXHFl6HAbfu3cqgA1qF/P+DMycGzq/5kpgYujDWG
+         YvZnzaALTUll62NolMJcf0bXO6SoVuNE0q/PQtWt9hrD3F3nd7J537ZhRHWtCqyF3Ia6
+         3ehWJlg4T2DsHX20piLCsw5rIHgwsRgob4/X+N5pqMD5ij8+OSO/B1Ve7w0ikUf7GdNM
+         wMgBqMke21KpJJz3jcb19dwMa9imHdf9S4JNcIGINV04XXDnrky7PkTr0X7NWNIogV7S
+         +8g7L7nCFhoUKBW5KGPSyVL2V9XavwKzIwofFtXx9QgUX6zvV221juTjKfjRbw+9u4FP
+         U9iQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e1u5ubtb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=eNkSdj30;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r123si3318172ybc.347.2021.02.03.11.29.01
+        by mx.google.com with ESMTPS id x16si2719532ybj.21.2021.02.03.11.29.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 11:29:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Feb 2021 11:29:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e1u5ubtb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=eNkSdj30;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51378 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54064 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7Npk-0004dc-Ul
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:29:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37832)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l7Npz-0005kA-IS
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:29:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38416)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOU-0007NH-Ib
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:52 -0500
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d]:43719)
+ id 1l7NP5-0007nR-EZ
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:27 -0500
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:45317)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOO-0001cv-BX
- for qemu-devel@nongnu.org; Wed, 03 Feb 2021 14:00:50 -0500
-Received: by mail-pl1-x62d.google.com with SMTP id 8so367148plc.10
- for <qemu-devel@nongnu.org>; Wed, 03 Feb 2021 11:00:43 -0800 (PST)
+ id 1l7NOy-0001sQ-Jg
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:27 -0500
+Received: by mail-pg1-x536.google.com with SMTP id v19so358896pgj.12
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 11:01:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Lsa43KhLD9F5pbGprd2vnecoG5hphPKA1CxFp2hJ7uE=;
- b=e1u5ubtb7b72Muf7/Sk1uX6dZA7D6Ben8TYrupvU22XojFLr79cna3+Df02Bk8a8QK
- p/+sb0+JxHeX/oiRlSY+qui+XvpsqGBv4VnBLQtaPZZtuYlkSctN/fmAyTsKXj1EAWo1
- JBvflLROsH9sd8d62a/Wu2PJe+e5nCymSNDo5KdLpCapDLOX2besk//pDUCFWL+4Fupj
- Vqzkv6UpJWMfQHQLpr/BXV+lk8or9WJvYevSpZoIEqtJwuSdclxBhSa65buJ/4u/mrr3
- e84tCzSzODk0d0D0M1M6jIws1CcSqc1sTQwRSL+aYqmTmWEFol0pIM05neeKVDpe6wbs
- 9b6w==
+ bh=Ytsx3BK2fvJBPpCQnawH3jODSdPjUh55jAri5H8usa0=;
+ b=eNkSdj30mFn8Xf0kKCnikLNq2ewyS5tO4u3rTPv05950m7VaS1Wa4b5PsPZd/69wRN
+ 6/5KHBzTJ07XVloi5uN8FVZgVR7JJEsfyugTFDoPmkiR5K6XR6i60T6iMqQdalnHEyvR
+ kx0NjcPPnsbJPuHK/8/MsDSVjSzSc+k3hMwRMzus6L6UBUoN7ZZX6DA5Lw+E7aa4eLp3
+ hzmtzblCoVma90vF1CFDbAaofq/U/vc84DTNnRP9osgyN6hXihbDzwXLFW75GZDPfldK
+ F+tOKQeH07Bw7xYTGj9R5o6hG30qtZ94BBi+U3qW3eOkFU95u6TC7plHRjb9HmJnTHoL
+ L4oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Lsa43KhLD9F5pbGprd2vnecoG5hphPKA1CxFp2hJ7uE=;
- b=IDT4V411FMqMFmV5gaQ6OUy4LGo508+tdaUBraR8Cd1HDO+5DzLMBRzWT4EW8kPjF9
- wkfeIyxNZ762znxe1dqCEH1EcSXjIvoaf8y9bDMVthiSI6nrDeMGZtynyb2jfjd2WRTN
- XWSpOYOYklMADO+lmLrVVdOeEowNj73XIeEFiywQTCmEw8yv1SKZZ1HFmefAJ2/uAnqq
- lAu8BNU60Nm1pVasiOLZla88dYiV04AFVJZGShhhgozlCTLZ7wp1Jp5RjWStuqBYgjYO
- f6NcGnnulGbynwb8M5kxzgl/W+l3uAspV+GZcjRJcPrJsRhWBGv27SPwagJ+lRhv0MIb
- q4LQ==
-X-Gm-Message-State: AOAM533GJ7itvujiBoLKtCYNXqs6P1F42b+V/KUg09S6vbozBsYZBErh
- oDR6bSBcXMa7QLJN1+fidCEp6goZ8yRT6pEX
-X-Received: by 2002:a17:902:ed84:b029:e1:1058:d7ca with SMTP id
- e4-20020a170902ed84b02900e11058d7camr4480110plj.85.1612378843071; 
- Wed, 03 Feb 2021 11:00:43 -0800 (PST)
+ bh=Ytsx3BK2fvJBPpCQnawH3jODSdPjUh55jAri5H8usa0=;
+ b=kJzBT9zJdHbXIGt/TQENL3z9XoQ6MnBV4i3Gz5ypgGAkZ5f6TrrW4OVdsMj0Ncn0NH
+ a0++cPhLXUtLhXSRr00zLuS5mNrfHyu5UvQLaMCAO7zl/2OpzxyyseKG6DBnTGFbs6uU
+ OPkw9UIMuDjp0VdYlOhv32bUBOl0p/LsL1Jrurfwbisc53VIIgToyChIzPsURAJzF6jv
+ 7jxowvPB0NM1MMKkD+thwTG8X1xc1L2f4xq3d7glbzYtFVpo3Xq/gazKqnIcBb7fiWQG
+ Lf190AbFZFgcf5P985MM20SHqEuxY22GaR/hg9AP8vRdRVMJ3lCsRvAZPN7n7Emtw9E1
+ ZVtg==
+X-Gm-Message-State: AOAM533RWXOCUNpK3iWAN/YG2YQXbSzM+IT8hwCBlurzBel19bsnXyA1
+ i+Wh7YcoARxAvCzsDR5wcY/Q4g==
+X-Received: by 2002:a63:597:: with SMTP id 145mr5162023pgf.252.1612378876405; 
+ Wed, 03 Feb 2021 11:01:16 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.41
+ by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.01.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 11:00:42 -0800 (PST)
+ Wed, 03 Feb 2021 11:01:15 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 14/31] linux-user: Use guest_range_valid in access_ok
-Date: Wed,  3 Feb 2021 08:59:53 -1000
-Message-Id: <20210203190010.759771-15-richard.henderson@linaro.org>
+Subject: [PATCH v5 31/31] tests/tcg/aarch64: Add mte smoke tests
+Date: Wed,  3 Feb 2021 09:00:10 -1000
+Message-Id: <20210203190010.759771-32-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210203190010.759771-1-richard.henderson@linaro.org>
 References: <20210203190010.759771-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,50 +105,330 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eZU1kBAhA4r5
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MQBkeMWQOXHR
 
-We're currently open-coding the range check in access_ok;
-use guest_range_valid when size != 0.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/qemu.h | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ tests/tcg/aarch64/mte.h           | 60 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/mte-1.c         | 28 +++++++++++++++
+ tests/tcg/aarch64/mte-2.c         | 45 +++++++++++++++++++++++
+ tests/tcg/aarch64/mte-3.c         | 51 ++++++++++++++++++++++++++
+ tests/tcg/aarch64/mte-4.c         | 45 +++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  6 ++++
+ tests/tcg/configure.sh            |  4 +++
+ 7 files changed, 239 insertions(+)
+ create mode 100644 tests/tcg/aarch64/mte.h
+ create mode 100644 tests/tcg/aarch64/mte-1.c
+ create mode 100644 tests/tcg/aarch64/mte-2.c
+ create mode 100644 tests/tcg/aarch64/mte-3.c
+ create mode 100644 tests/tcg/aarch64/mte-4.c
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 9fbc5edc4b..ba122a7903 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -493,12 +493,9 @@ extern unsigned long guest_stack_size;
+diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
+new file mode 100644
+index 0000000000..141cef522c
+--- /dev/null
++++ b/tests/tcg/aarch64/mte.h
+@@ -0,0 +1,60 @@
++/*
++ * Linux kernel fallback API definitions for MTE and test helpers.
++ *
++ * Copyright (c) 2021 Linaro Ltd
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <assert.h>
++#include <string.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <unistd.h>
++#include <signal.h>
++#include <sys/mman.h>
++#include <sys/prctl.h>
++
++#ifndef PR_SET_TAGGED_ADDR_CTRL
++# define PR_SET_TAGGED_ADDR_CTRL  55
++#endif
++#ifndef PR_TAGGED_ADDR_ENABLE
++# define PR_TAGGED_ADDR_ENABLE    (1UL << 0)
++#endif
++#ifndef PR_MTE_TCF_SHIFT
++# define PR_MTE_TCF_SHIFT         1
++# define PR_MTE_TCF_NONE          (0UL << PR_MTE_TCF_SHIFT)
++# define PR_MTE_TCF_SYNC          (1UL << PR_MTE_TCF_SHIFT)
++# define PR_MTE_TCF_ASYNC         (2UL << PR_MTE_TCF_SHIFT)
++# define PR_MTE_TAG_SHIFT         3
++#endif
++
++#ifndef PROT_MTE
++# define PROT_MTE 0x20
++#endif
++
++#ifndef SEGV_MTEAERR
++# define SEGV_MTEAERR    8
++# define SEGV_MTESERR    9
++#endif
++
++static void enable_mte(int tcf)
++{
++    int r = prctl(PR_SET_TAGGED_ADDR_CTRL,
++                  PR_TAGGED_ADDR_ENABLE | tcf | (0xfffe << PR_MTE_TAG_SHIFT),
++                  0, 0, 0);
++    if (r < 0) {
++        perror("PR_SET_TAGGED_ADDR_CTRL");
++        exit(2);
++    }
++}
++
++static void *alloc_mte_mem(size_t size)
++{
++    void *p = mmap(NULL, size, PROT_READ | PROT_WRITE | PROT_MTE,
++                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    if (p == MAP_FAILED) {
++        perror("mmap PROT_MTE");
++        exit(2);
++    }
++    return p;
++}
+diff --git a/tests/tcg/aarch64/mte-1.c b/tests/tcg/aarch64/mte-1.c
+new file mode 100644
+index 0000000000..88dcd617ad
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-1.c
+@@ -0,0 +1,28 @@
++/*
++ * Memory tagging, basic pass cases.
++ *
++ * Copyright (c) 2021 Linaro Ltd
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "mte.h"
++
++int main(int ac, char **av)
++{
++    int *p0, *p1, *p2;
++    long c;
++
++    enable_mte(PR_MTE_TCF_NONE);
++    p0 = alloc_mte_mem(sizeof(*p0));
++
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
++    assert(p1 != p0);
++    asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
++    assert(c == 0);
++
++    asm("stg %0, [%0]" : : "r"(p1));
++    asm("ldg %0, [%1]" : "=r"(p2) : "r"(p0), "0"(p0));
++    assert(p1 == p2);
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/mte-2.c b/tests/tcg/aarch64/mte-2.c
+new file mode 100644
+index 0000000000..a62278276a
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-2.c
+@@ -0,0 +1,45 @@
++/*
++ * Memory tagging, basic fail cases, synchronous signals.
++ *
++ * Copyright (c) 2021 Linaro Ltd
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "mte.h"
++
++void pass(int sig, siginfo_t *info, void *uc)
++{
++    assert(info->si_code == SEGV_MTESERR);
++    exit(0);
++}
++
++int main(int ac, char **av)
++{
++    struct sigaction sa;
++    int *p0, *p1, *p2;
++    long excl = 1;
++
++    enable_mte(PR_MTE_TCF_SYNC);
++    p0 = alloc_mte_mem(sizeof(*p0));
++
++    /* Create two differently tagged pointers.  */
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
++    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
++    assert(excl != 1);
++    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
++    assert(p1 != p2);
++
++    /* Store the tag from the first pointer.  */
++    asm("stg %0, [%0]" : : "r"(p1));
++
++    *p1 = 0;
++
++    memset(&sa, 0, sizeof(sa));
++    sa.sa_sigaction = pass;
++    sa.sa_flags = SA_SIGINFO;
++    sigaction(SIGSEGV, &sa, NULL);
++
++    *p2 = 0;
++
++    abort();
++}
+diff --git a/tests/tcg/aarch64/mte-3.c b/tests/tcg/aarch64/mte-3.c
+new file mode 100644
+index 0000000000..424ea685c2
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-3.c
+@@ -0,0 +1,51 @@
++/*
++ * Memory tagging, basic fail cases, asynchronous signals.
++ *
++ * Copyright (c) 2021 Linaro Ltd
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "mte.h"
++
++void pass(int sig, siginfo_t *info, void *uc)
++{
++    assert(info->si_code == SEGV_MTEAERR);
++    exit(0);
++}
++
++int main(int ac, char **av)
++{
++    struct sigaction sa;
++    long *p0, *p1, *p2;
++    long excl = 1;
++
++    enable_mte(PR_MTE_TCF_ASYNC);
++    p0 = alloc_mte_mem(sizeof(*p0));
++
++    /* Create two differently tagged pointers.  */
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
++    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
++    assert(excl != 1);
++    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
++    assert(p1 != p2);
++
++    /* Store the tag from the first pointer.  */
++    asm("stg %0, [%0]" : : "r"(p1));
++
++    *p1 = 0;
++
++    memset(&sa, 0, sizeof(sa));
++    sa.sa_sigaction = pass;
++    sa.sa_flags = SA_SIGINFO;
++    sigaction(SIGSEGV, &sa, NULL);
++
++    /*
++     * Signal for async error will happen eventually.
++     * For a real kernel this should be after the next IRQ (e.g. timer).
++     * For qemu linux-user, we kick the cpu and exit at the next TB.
++     * In either case, loop until this happens (or killed by timeout).
++     * For extra sauce, yield, producing EXCP_YIELD to cpu_loop().
++     */
++    asm("str %0, [%0]; yield" : : "r"(p2));
++    while (1);
++}
+diff --git a/tests/tcg/aarch64/mte-4.c b/tests/tcg/aarch64/mte-4.c
+new file mode 100644
+index 0000000000..a8cc9f5984
+--- /dev/null
++++ b/tests/tcg/aarch64/mte-4.c
+@@ -0,0 +1,45 @@
++/*
++ * Memory tagging, re-reading tag checks.
++ *
++ * Copyright (c) 2021 Linaro Ltd
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "mte.h"
++
++void __attribute__((noinline)) tagset(void *p, size_t size)
++{
++    size_t i;
++    for (i = 0; i < size; i += 16) {
++        asm("stg %0, [%0]" : : "r"(p + i));
++    }
++}
++
++void __attribute__((noinline)) tagcheck(void *p, size_t size)
++{
++    size_t i;
++    void *c;
++
++    for (i = 0; i < size; i += 16) {
++        asm("ldg %0, [%1]" : "=r"(c) : "r"(p + i), "0"(p));
++        assert(c == p);
++    }
++}
++
++int main(int ac, char **av)
++{
++    size_t size = getpagesize() * 4;
++    long excl = 1;
++    int *p0, *p1;
++
++    enable_mte(PR_MTE_TCF_ASYNC);
++    p0 = alloc_mte_mem(size);
++
++    /* Tag the pointer. */
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
++
++    tagset(p1, size);
++    tagcheck(p1, size);
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index d7d33e293c..bf53ad0087 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -35,6 +35,12 @@ endif
+ # bti-2 tests PROT_BTI, so no special compiler support required.
+ AARCH64_TESTS += bti-2
  
- static inline bool access_ok(int type, abi_ulong addr, abi_ulong size)
- {
--    if (!guest_addr_valid(addr)) {
--        return false;
--    }
--    if (size != 0 &&
--        (addr + size - 1 < addr ||
--         !guest_addr_valid(addr + size - 1))) {
-+    if (size == 0
-+        ? !guest_addr_valid(addr)
-+        : !guest_range_valid(addr, size)) {
-         return false;
-     }
-     return page_check_range((target_ulong)addr, size, type) == 0;
++# MTE Tests
++ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_MTE),)
++AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
++mte-%: CFLAGS += -march=armv8.5-a+memtag
++endif
++
+ # Semihosting smoke test for linux-user
+ AARCH64_TESTS += semihosting
+ run-semihosting: semihosting
+diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
+index e1b70e25f2..ba8ac9a93e 100755
+--- a/tests/tcg/configure.sh
++++ b/tests/tcg/configure.sh
+@@ -244,6 +244,10 @@ for target in $target_list; do
+                -mbranch-protection=standard -o $TMPE $TMPC; then
+                 echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
+             fi
++            if do_compiler "$target_compiler" $target_compiler_cflags \
++               -march=armv8.5-a+memtag -o $TMPE $TMPC; then
++                echo "CROSS_CC_HAS_ARMV8_MTE=y" >> $config_target_mak
++            fi
+         ;;
+     esac
+ 
 -- 
 2.25.1
 

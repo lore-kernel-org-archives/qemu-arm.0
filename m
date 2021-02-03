@@ -1,102 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp499462lfo;
-        Wed, 3 Feb 2021 11:29:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyvZFwO8S0BP1jctNBERCcsdSL4XEKJDvozz0XGlQejhlcHnkB2ElHfBK53L9K7EyeNev6V
-X-Received: by 2002:a25:dfcc:: with SMTP id w195mr6202730ybg.112.1612380556231;
-        Wed, 03 Feb 2021 11:29:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612380556; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp499551lfo;
+        Wed, 3 Feb 2021 11:29:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxcK50vALKNcMCAQqvSWRKY95Dk+a0IC4nobf9PyLIvMB7eCtZA3+iixQmNw+pkxvlKAgtU
+X-Received: by 2002:a25:df8b:: with SMTP id w133mr6739534ybg.212.1612380566456;
+        Wed, 03 Feb 2021 11:29:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612380566; cv=none;
         d=google.com; s=arc-20160816;
-        b=B1ppUlGDP6huwQKnNOQJH1oWR5t2FLkhoDH/ZHFbl/q1iRmMjkrvray7toDvmC6dRj
-         UA/HkGLpeHMRlfqLfZe4P4Jl0viTZ+inOb1AOnsAPt7mxUx/v5GGN0tlNKB6lyOWWr3s
-         4abH4O04SS57WUal/NqpOk3CUn2/FRkARZ25vj+FiiUye2Wqn1l7tWEYmb6BHRVLj2fs
-         acsQnqeDWLv9jzdpg4nBzWo0v8Ap4Nd7qvcw4mLXibAvjHNeLJvQd27btO0CfI+W/70F
-         x3jpn6NhQ8ors6xsZLV3G7oR/6duVsQ4+3sKAkF8q6tMx9wOYA8Zwb/s+x+x6ZUhMuaB
-         ZgmQ==
+        b=S3esLuRmUkJ0PgEZ0E/SMim/CvD7FMke/VGIqzPxG4jUr+WlbX/YOw3jp6cOe3V7bV
+         0nbhiy8065NKO7nN7F0WXbTiH3zJnCQ1d/W4GMh5vyFgV4toU5viuiH59FfWnjK5TW3D
+         vIAQTwNh2yD56MHyMJhni4+SKVJBO4GLhu6nlpy1lf/CM71QgGkPBh5q8+8+bCxucjEB
+         G6XQkiSBva96FpTKmWbnk38o+vIsiOK8STYmXKOKUpcAV34eVmZ1vgNfRETOi4NArmKc
+         2Nyra84Ul6+DOXqUIsXuUAO1WxoRTVQsKTYOMouoFwfE7TmxtXboPppt1mI5M7s1ieku
+         JIUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Ytsx3BK2fvJBPpCQnawH3jODSdPjUh55jAri5H8usa0=;
-        b=uaR+yNY+ZEtA36DlUFbdaGJ7HBqXHFl6HAbfu3cqgA1qF/P+DMycGzq/5kpgYujDWG
-         YvZnzaALTUll62NolMJcf0bXO6SoVuNE0q/PQtWt9hrD3F3nd7J537ZhRHWtCqyF3Ia6
-         3ehWJlg4T2DsHX20piLCsw5rIHgwsRgob4/X+N5pqMD5ij8+OSO/B1Ve7w0ikUf7GdNM
-         wMgBqMke21KpJJz3jcb19dwMa9imHdf9S4JNcIGINV04XXDnrky7PkTr0X7NWNIogV7S
-         +8g7L7nCFhoUKBW5KGPSyVL2V9XavwKzIwofFtXx9QgUX6zvV221juTjKfjRbw+9u4FP
-         U9iQ==
+        bh=+5hZcB3mFjnWG5tCYVBAVH8vDfhhkDYHCqbXJC4msCo=;
+        b=V1e8qSkzyKVSdl5ecAE5LzboAAnBf2cS6gQpGVlbQ2M7jVAo30SbkqkL0GA4QKzXIN
+         mxOpNDauXbvScFcBQHO2cajzl01T0VNoja9I4JtRZDryvcDGDxs7UUm5/xWXOxVhD4uk
+         CA3P7UrYJ5z3Kva3Ga9SVNUDu8Gyy1ZvaW6UVJDotBqc0fIVrcsQu2xdqnwYPtmMsYH1
+         BLXFp2aq6tJTGYxDKhYpj+Ufvg0e5TqpyHl5lRKJdH27SMV8e5o01dSNChUm1HQJI+Uy
+         mxLGvumYPbxe5u4lzeFz4YWAukPxMN4RqmyrwDnFF4ezriP7wEsf75cj/P0lRR2j5cPd
+         /Faw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eNkSdj30;
+       dkim=fail header.i=@linaro.org header.s=google header.b=rSaXeYK0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16si2719532ybj.21.2021.02.03.11.29.16
+        by mx.google.com with ESMTPS id j2si2805220ybb.357.2021.02.03.11.29.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 11:29:16 -0800 (PST)
+        Wed, 03 Feb 2021 11:29:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eNkSdj30;
+       dkim=fail header.i=@linaro.org header.s=google header.b=rSaXeYK0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54064 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7Npz-0005kA-IS
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:29:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38416)
+	id 1l7Nq9-0005x0-Lx
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:29:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38232)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NP5-0007nR-EZ
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:27 -0500
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536]:45317)
+ id 1l7NOu-0007aA-Ov
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:20 -0500
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:39007)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOy-0001sQ-Jg
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:27 -0500
-Received: by mail-pg1-x536.google.com with SMTP id v19so358896pgj.12
- for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 11:01:17 -0800 (PST)
+ id 1l7NOr-0001pK-CM
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:01:16 -0500
+Received: by mail-pf1-x42b.google.com with SMTP id e19so423061pfh.6
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 11:01:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Ytsx3BK2fvJBPpCQnawH3jODSdPjUh55jAri5H8usa0=;
- b=eNkSdj30mFn8Xf0kKCnikLNq2ewyS5tO4u3rTPv05950m7VaS1Wa4b5PsPZd/69wRN
- 6/5KHBzTJ07XVloi5uN8FVZgVR7JJEsfyugTFDoPmkiR5K6XR6i60T6iMqQdalnHEyvR
- kx0NjcPPnsbJPuHK/8/MsDSVjSzSc+k3hMwRMzus6L6UBUoN7ZZX6DA5Lw+E7aa4eLp3
- hzmtzblCoVma90vF1CFDbAaofq/U/vc84DTNnRP9osgyN6hXihbDzwXLFW75GZDPfldK
- F+tOKQeH07Bw7xYTGj9R5o6hG30qtZ94BBi+U3qW3eOkFU95u6TC7plHRjb9HmJnTHoL
- L4oQ==
+ bh=+5hZcB3mFjnWG5tCYVBAVH8vDfhhkDYHCqbXJC4msCo=;
+ b=rSaXeYK0CKweyFIt9SP5Ilx9VcuVeuXC8BLQn7U8cKlqX2+lEPemW/mSSdmHE0ELoK
+ HRcmf/rGfGxzVUXn96kBrALc5zC22mhZyyW3aR+JSu1YLZ2nr23ChK/9ZboDZSa9yxil
+ AaBY/b5xu6FSw2Sx1+utRo4NZBdUYEpx+YZhyVYkn6ICrw6wHPcmelJ49jSn/QdDbamo
+ r8ojg7u8pM6C7NVZiCSZkN/BzIf8iPm7LcBftHt1cK7L/pRKdSowrBBdP9YL97ZZTasH
+ OhsXOTApsAcV+tlOr8bW/1Oj0xolRQEa1H/WuK5QC3kHg/oYhSvMpuPxlB4aCkEXhPYl
+ pAhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Ytsx3BK2fvJBPpCQnawH3jODSdPjUh55jAri5H8usa0=;
- b=kJzBT9zJdHbXIGt/TQENL3z9XoQ6MnBV4i3Gz5ypgGAkZ5f6TrrW4OVdsMj0Ncn0NH
- a0++cPhLXUtLhXSRr00zLuS5mNrfHyu5UvQLaMCAO7zl/2OpzxyyseKG6DBnTGFbs6uU
- OPkw9UIMuDjp0VdYlOhv32bUBOl0p/LsL1Jrurfwbisc53VIIgToyChIzPsURAJzF6jv
- 7jxowvPB0NM1MMKkD+thwTG8X1xc1L2f4xq3d7glbzYtFVpo3Xq/gazKqnIcBb7fiWQG
- Lf190AbFZFgcf5P985MM20SHqEuxY22GaR/hg9AP8vRdRVMJ3lCsRvAZPN7n7Emtw9E1
- ZVtg==
-X-Gm-Message-State: AOAM533RWXOCUNpK3iWAN/YG2YQXbSzM+IT8hwCBlurzBel19bsnXyA1
- i+Wh7YcoARxAvCzsDR5wcY/Q4g==
-X-Received: by 2002:a63:597:: with SMTP id 145mr5162023pgf.252.1612378876405; 
- Wed, 03 Feb 2021 11:01:16 -0800 (PST)
+ bh=+5hZcB3mFjnWG5tCYVBAVH8vDfhhkDYHCqbXJC4msCo=;
+ b=APjp9gko4hEnC4M0KXLgfz5pdKuDNLtkpKJMOgibGTBe1/fa+QxVE8QMdXH24G3XyJ
+ SnVgaKrgxdYaxosR8MWdQqETgPy3bcCLmmgsQSCU5KFhPkh438C72CZCxQrVWTLrDM2G
+ V6sz829KhMSAlkfPryvwkTl+2KeeErfJ5LTeSdhEnoBYoWgXLtbzEtfzSkzPSPVkpIND
+ w3LsvkLT9PkIgKvdF5E0QaeWXKPrC/F0Hq1CZaUK9etoyJye+ZYUabVmOefpaeTQYUEA
+ X3MwZ/IDjWFsHNHuU/7U0Hs8mPBQdESHqPrztt6NojyWnM0gmA59gVdmduQT2GMUXH/l
+ DwOg==
+X-Gm-Message-State: AOAM530zOQF92p39jvzcu8p+AdR132iCQFgh+yaT0yODjSnVoo75lLWM
+ ky1rGCIgHujRgbNkOmxD/zs6fw==
+X-Received: by 2002:a63:b55:: with SMTP id a21mr5134010pgl.409.1612378866677; 
+ Wed, 03 Feb 2021 11:01:06 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.01.14
+ by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.01.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 11:01:15 -0800 (PST)
+ Wed, 03 Feb 2021 11:01:05 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 31/31] tests/tcg/aarch64: Add mte smoke tests
-Date: Wed,  3 Feb 2021 09:00:10 -1000
-Message-Id: <20210203190010.759771-32-richard.henderson@linaro.org>
+Subject: [PATCH v5 26/31] linux-user/aarch64: Pass syndrome to EXC_*_ABORT
+Date: Wed,  3 Feb 2021 09:00:05 -1000
+Message-Id: <20210203190010.759771-27-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210203190010.759771-1-richard.henderson@linaro.org>
 References: <20210203190010.759771-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,316 +119,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MQBkeMWQOXHR
+X-TUID: Qtv+sWz4P+ZA
+
+A proper syndrome is required to fill in the proper si_code.
+Use page_get_flags to determine permission vs translation for user-only.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/aarch64/mte.h           | 60 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/mte-1.c         | 28 +++++++++++++++
- tests/tcg/aarch64/mte-2.c         | 45 +++++++++++++++++++++++
- tests/tcg/aarch64/mte-3.c         | 51 ++++++++++++++++++++++++++
- tests/tcg/aarch64/mte-4.c         | 45 +++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  6 ++++
- tests/tcg/configure.sh            |  4 +++
- 7 files changed, 239 insertions(+)
- create mode 100644 tests/tcg/aarch64/mte.h
- create mode 100644 tests/tcg/aarch64/mte-1.c
- create mode 100644 tests/tcg/aarch64/mte-2.c
- create mode 100644 tests/tcg/aarch64/mte-3.c
- create mode 100644 tests/tcg/aarch64/mte-4.c
+ linux-user/aarch64/cpu_loop.c | 24 +++++++++++++++++++++---
+ target/arm/tlb_helper.c       | 15 +++++++++------
+ 2 files changed, 30 insertions(+), 9 deletions(-)
 
-diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
-new file mode 100644
-index 0000000000..141cef522c
---- /dev/null
-+++ b/tests/tcg/aarch64/mte.h
-@@ -0,0 +1,60 @@
-+/*
-+ * Linux kernel fallback API definitions for MTE and test helpers.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include <assert.h>
-+#include <string.h>
-+#include <stdlib.h>
-+#include <stdio.h>
-+#include <unistd.h>
-+#include <signal.h>
-+#include <sys/mman.h>
-+#include <sys/prctl.h>
-+
-+#ifndef PR_SET_TAGGED_ADDR_CTRL
-+# define PR_SET_TAGGED_ADDR_CTRL  55
-+#endif
-+#ifndef PR_TAGGED_ADDR_ENABLE
-+# define PR_TAGGED_ADDR_ENABLE    (1UL << 0)
-+#endif
-+#ifndef PR_MTE_TCF_SHIFT
-+# define PR_MTE_TCF_SHIFT         1
-+# define PR_MTE_TCF_NONE          (0UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TCF_SYNC          (1UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TCF_ASYNC         (2UL << PR_MTE_TCF_SHIFT)
-+# define PR_MTE_TAG_SHIFT         3
-+#endif
-+
-+#ifndef PROT_MTE
-+# define PROT_MTE 0x20
-+#endif
-+
-+#ifndef SEGV_MTEAERR
-+# define SEGV_MTEAERR    8
-+# define SEGV_MTESERR    9
-+#endif
-+
-+static void enable_mte(int tcf)
-+{
-+    int r = prctl(PR_SET_TAGGED_ADDR_CTRL,
-+                  PR_TAGGED_ADDR_ENABLE | tcf | (0xfffe << PR_MTE_TAG_SHIFT),
-+                  0, 0, 0);
-+    if (r < 0) {
-+        perror("PR_SET_TAGGED_ADDR_CTRL");
-+        exit(2);
-+    }
-+}
-+
-+static void *alloc_mte_mem(size_t size)
-+{
-+    void *p = mmap(NULL, size, PROT_READ | PROT_WRITE | PROT_MTE,
-+                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-+    if (p == MAP_FAILED) {
-+        perror("mmap PROT_MTE");
-+        exit(2);
-+    }
-+    return p;
-+}
-diff --git a/tests/tcg/aarch64/mte-1.c b/tests/tcg/aarch64/mte-1.c
-new file mode 100644
-index 0000000000..88dcd617ad
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-1.c
-@@ -0,0 +1,28 @@
-+/*
-+ * Memory tagging, basic pass cases.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+int main(int ac, char **av)
-+{
-+    int *p0, *p1, *p2;
-+    long c;
-+
-+    enable_mte(PR_MTE_TCF_NONE);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
-+    assert(p1 != p0);
-+    asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
-+    assert(c == 0);
-+
-+    asm("stg %0, [%0]" : : "r"(p1));
-+    asm("ldg %0, [%1]" : "=r"(p2) : "r"(p0), "0"(p0));
-+    assert(p1 == p2);
-+
-+    return 0;
-+}
-diff --git a/tests/tcg/aarch64/mte-2.c b/tests/tcg/aarch64/mte-2.c
-new file mode 100644
-index 0000000000..a62278276a
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-2.c
-@@ -0,0 +1,45 @@
-+/*
-+ * Memory tagging, basic fail cases, synchronous signals.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+void pass(int sig, siginfo_t *info, void *uc)
-+{
-+    assert(info->si_code == SEGV_MTESERR);
-+    exit(0);
-+}
-+
-+int main(int ac, char **av)
-+{
-+    struct sigaction sa;
-+    int *p0, *p1, *p2;
-+    long excl = 1;
-+
-+    enable_mte(PR_MTE_TCF_SYNC);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    /* Create two differently tagged pointers.  */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
-+    assert(excl != 1);
-+    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
-+    assert(p1 != p2);
-+
-+    /* Store the tag from the first pointer.  */
-+    asm("stg %0, [%0]" : : "r"(p1));
-+
-+    *p1 = 0;
-+
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = pass;
-+    sa.sa_flags = SA_SIGINFO;
-+    sigaction(SIGSEGV, &sa, NULL);
-+
-+    *p2 = 0;
-+
-+    abort();
-+}
-diff --git a/tests/tcg/aarch64/mte-3.c b/tests/tcg/aarch64/mte-3.c
-new file mode 100644
-index 0000000000..424ea685c2
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-3.c
-@@ -0,0 +1,51 @@
-+/*
-+ * Memory tagging, basic fail cases, asynchronous signals.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+void pass(int sig, siginfo_t *info, void *uc)
-+{
-+    assert(info->si_code == SEGV_MTEAERR);
-+    exit(0);
-+}
-+
-+int main(int ac, char **av)
-+{
-+    struct sigaction sa;
-+    long *p0, *p1, *p2;
-+    long excl = 1;
-+
-+    enable_mte(PR_MTE_TCF_ASYNC);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    /* Create two differently tagged pointers.  */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
-+    assert(excl != 1);
-+    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
-+    assert(p1 != p2);
-+
-+    /* Store the tag from the first pointer.  */
-+    asm("stg %0, [%0]" : : "r"(p1));
-+
-+    *p1 = 0;
-+
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = pass;
-+    sa.sa_flags = SA_SIGINFO;
-+    sigaction(SIGSEGV, &sa, NULL);
-+
-+    /*
-+     * Signal for async error will happen eventually.
-+     * For a real kernel this should be after the next IRQ (e.g. timer).
-+     * For qemu linux-user, we kick the cpu and exit at the next TB.
-+     * In either case, loop until this happens (or killed by timeout).
-+     * For extra sauce, yield, producing EXCP_YIELD to cpu_loop().
-+     */
-+    asm("str %0, [%0]; yield" : : "r"(p2));
-+    while (1);
-+}
-diff --git a/tests/tcg/aarch64/mte-4.c b/tests/tcg/aarch64/mte-4.c
-new file mode 100644
-index 0000000000..a8cc9f5984
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-4.c
-@@ -0,0 +1,45 @@
-+/*
-+ * Memory tagging, re-reading tag checks.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+void __attribute__((noinline)) tagset(void *p, size_t size)
-+{
-+    size_t i;
-+    for (i = 0; i < size; i += 16) {
-+        asm("stg %0, [%0]" : : "r"(p + i));
-+    }
-+}
-+
-+void __attribute__((noinline)) tagcheck(void *p, size_t size)
-+{
-+    size_t i;
-+    void *c;
-+
-+    for (i = 0; i < size; i += 16) {
-+        asm("ldg %0, [%1]" : "=r"(c) : "r"(p + i), "0"(p));
-+        assert(c == p);
-+    }
-+}
-+
-+int main(int ac, char **av)
-+{
-+    size_t size = getpagesize() * 4;
-+    long excl = 1;
-+    int *p0, *p1;
-+
-+    enable_mte(PR_MTE_TCF_ASYNC);
-+    p0 = alloc_mte_mem(size);
-+
-+    /* Tag the pointer. */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+
-+    tagset(p1, size);
-+    tagcheck(p1, size);
-+
-+    return 0;
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index d7d33e293c..bf53ad0087 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -35,6 +35,12 @@ endif
- # bti-2 tests PROT_BTI, so no special compiler support required.
- AARCH64_TESTS += bti-2
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index 42b9c15f53..4e43906e66 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -23,6 +23,7 @@
+ #include "cpu_loop-common.h"
+ #include "qemu/guest-random.h"
+ #include "hw/semihosting/common-semi.h"
++#include "target/arm/syndrome.h"
  
-+# MTE Tests
-+ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_MTE),)
-+AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4
-+mte-%: CFLAGS += -march=armv8.5-a+memtag
-+endif
-+
- # Semihosting smoke test for linux-user
- AARCH64_TESTS += semihosting
- run-semihosting: semihosting
-diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
-index e1b70e25f2..ba8ac9a93e 100755
---- a/tests/tcg/configure.sh
-+++ b/tests/tcg/configure.sh
-@@ -244,6 +244,10 @@ for target in $target_list; do
-                -mbranch-protection=standard -o $TMPE $TMPC; then
-                 echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
-             fi
-+            if do_compiler "$target_compiler" $target_compiler_cflags \
-+               -march=armv8.5-a+memtag -o $TMPE $TMPC; then
-+                echo "CROSS_CC_HAS_ARMV8_MTE=y" >> $config_target_mak
-+            fi
-         ;;
-     esac
+ #define get_user_code_u32(x, gaddr, env)                \
+     ({ abi_long __r = get_user_u32((x), (gaddr));       \
+@@ -76,7 +77,7 @@
+ void cpu_loop(CPUARMState *env)
+ {
+     CPUState *cs = env_cpu(env);
+-    int trapnr;
++    int trapnr, ec, fsc;
+     abi_long ret;
+     target_siginfo_t info;
  
+@@ -117,9 +118,26 @@ void cpu_loop(CPUARMState *env)
+         case EXCP_DATA_ABORT:
+             info.si_signo = TARGET_SIGSEGV;
+             info.si_errno = 0;
+-            /* XXX: check env->error_code */
+-            info.si_code = TARGET_SEGV_MAPERR;
+             info._sifields._sigfault._addr = env->exception.vaddress;
++
++            /* We should only arrive here with EC in {DATAABORT, INSNABORT}. */
++            ec = syn_get_ec(env->exception.syndrome);
++            assert(ec == EC_DATAABORT || ec == EC_INSNABORT);
++
++            /* Both EC have the same format for FSC, or close enough. */
++            fsc = extract32(env->exception.syndrome, 0, 6);
++            switch (fsc) {
++            case 0x04 ... 0x07: /* Translation fault, level {0-3} */
++                info.si_code = TARGET_SEGV_MAPERR;
++                break;
++            case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
++            case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
++                info.si_code = TARGET_SEGV_ACCERR;
++                break;
++            default:
++                g_assert_not_reached();
++            }
++
+             queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+             break;
+         case EXCP_DEBUG:
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index df85079d9f..9609333cbd 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -154,21 +154,24 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+                       bool probe, uintptr_t retaddr)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
++    ARMMMUFaultInfo fi = {};
+ 
+ #ifdef CONFIG_USER_ONLY
+-    cpu->env.exception.vaddress = address;
+-    if (access_type == MMU_INST_FETCH) {
+-        cs->exception_index = EXCP_PREFETCH_ABORT;
++    int flags = page_get_flags(useronly_clean_ptr(address));
++    if (flags & PAGE_VALID) {
++        fi.type = ARMFault_Permission;
+     } else {
+-        cs->exception_index = EXCP_DATA_ABORT;
++        fi.type = ARMFault_Translation;
+     }
+-    cpu_loop_exit_restore(cs, retaddr);
++
++    /* now we have a real cpu fault */
++    cpu_restore_state(cs, retaddr, true);
++    arm_deliver_fault(cpu, address, access_type, mmu_idx, &fi);
+ #else
+     hwaddr phys_addr;
+     target_ulong page_size;
+     int prot, ret;
+     MemTxAttrs attrs = {};
+-    ARMMMUFaultInfo fi = {};
+     ARMCacheAttrs cacheattrs = {};
+ 
+     /*
 -- 
 2.25.1
 

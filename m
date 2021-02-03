@@ -1,187 +1,57 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp193301lfo;
-        Wed, 3 Feb 2021 04:44:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxUafEoRzCKFDVLlEckT30p/bku4ewDHI00QTFvE6Q+4WmPlJ/ncwr+V7sbZT3NX+8GYvTv
-X-Received: by 2002:a25:c607:: with SMTP id k7mr4127873ybf.285.1612356286765;
-        Wed, 03 Feb 2021 04:44:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612356286; cv=none;
-        d=google.com; s=arc-20160816;
-        b=XzpEGaD7G1AKWFFJ4uWOwYs1b09dEpEDzRzYZyVCSxqfnZD4hlQNB5fnVlwFIIWKTe
-         hKVacOszgoHzuPCM8VG5JsQ8CAy0Rhgh4EJo9MT/jNez2cyJbXzqXvLnos0HeFjRb8YR
-         iCZj/ajhUNgbIx+Pow+vls3q1Goh9AmFYSbl7Jyi9D2hegQ05jalqg8k+Ir1yAjUvTEB
-         /cF+NyEMM9xDBNrHhxhZ+hO3vUlK0IsnRDIVtX6D0OC/WxoIGnv83Gsra3u0GjBrAuqI
-         3FbcFHgqMfsNC/+nOxiNVkrEJXrvLTFe7jHnXX/hw9FN0QaGCETAC/5XEULt0hND1Pvm
-         9+Dw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=AoJskb5KZHOPgYw60QJDxGb0zrejjWtc7p1KFWztZmU=;
-        b=dgTXyQ4iVEi8csjWg/SkZtznjbavq/UvKSdz0W7chIHVsbMcz+B2n7jai2O4e/fl4v
-         yM5dXi4tWmS1RRTHMI4oQlFYHcH6HlYYon1JH7JFAKVy9aO0IIKbWyZZkQvZlJGI7pE1
-         N3p5jf2jdqyVcUp7fLB9k6UgEEADSorjLlsbYXvL1ospThD2qXLwg9qVzndqZbgG65e1
-         Rc5lwwLIsB6esw91soLj+W2eyz+aUraowsaZYNwk3CdKsCYV3gZfABGG98n7qFJ5PUzm
-         FaUYT5MFyW/N4807YaLGKSpF7iLBSexCZv2hd0hYJPvjnyS3H41zDHL5uvJ8U8mIUwsG
-         DT0A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XzzlbUGh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i185si2057503ybc.372.2021.02.03.04.44.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 04:44:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XzzlbUGh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38872 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7HWY-0006MB-6L
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 07:44:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43814)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l7HWJ-0006Lj-6j
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 07:44:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30950)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l7HWG-0004jD-4I
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 07:44:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612356261;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AoJskb5KZHOPgYw60QJDxGb0zrejjWtc7p1KFWztZmU=;
- b=XzzlbUGhFUR5rqttbqk5SZXq9M8lmFe/w/d220ADS8rAriRbkf7mCxw4VLG72clTT0ywqW
- Cf9LfKz3R1xad9jhJei3JzbIA0FgEUkR1EEGvwIOrHPKoLQHDmtwnRAhmuWj0rXPB5+vo8
- cWyOpqpBJWPYmIjC/QiMOdMwL7mp5ao=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-343-0IhTu-m9MYSDtjKDOyGoBg-1; Wed, 03 Feb 2021 07:44:20 -0500
-X-MC-Unique: 0IhTu-m9MYSDtjKDOyGoBg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CA942107ACE4;
- Wed,  3 Feb 2021 12:44:18 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.148])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C3B935C6B8;
- Wed,  3 Feb 2021 12:44:14 +0000 (UTC)
-Date: Wed, 3 Feb 2021 13:44:12 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: ARM Snapshots Not Backwards-Compatible
-Message-ID: <20210203124412.xioafvptnovzalle@kamzik.brq.redhat.com>
-References: <YBogDGJRU5pcDKmi@strawberry.localdomain>
- <153e5c54-f8bf-d088-502d-502309f5d2a6@redhat.com>
- <20210203102758.GC2950@work-vm>
- <CAFEAcA9_mcXHd5m+Z2M1jvk58kGVEcYKF+0kVsLJTjwB9MZcfw@mail.gmail.com>
- <20210203104920.GE2950@work-vm>
- <CAFEAcA9DdiBA+-5cQ87NR6fHFFFJAtDVbAEc+AJQNMNo4bVB+A@mail.gmail.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id u6sm4528041wro.75.2021.02.03.07.34.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 Feb 2021 07:34:51 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 513EE1FF7E;
+	Wed,  3 Feb 2021 15:34:50 +0000 (GMT)
+References: <20210128224141.638790-1-richard.henderson@linaro.org>
+ <20210128224141.638790-2-richard.henderson@linaro.org>
+ <CAFEAcA8r5+ciCFb0kPC1bAi-kU53iJBiLf7Jiso-gr2cOBtxeQ@mail.gmail.com>
+ <ededd9b5-5836-b1c4-9fc8-e732bf1c2204@linaro.org>
+ <2aaedf0e-3594-13a7-7576-8e0566464224@linaro.org>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, QEMU Developers
+ <qemu-devel@nongnu.org>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v4 01/23] tcg: Introduce target-specific page data for
+ user-only
+Date: Wed, 03 Feb 2021 15:33:12 +0000
+In-reply-to: <2aaedf0e-3594-13a7-7576-8e0566464224@linaro.org>
+Message-ID: <87bld1rwpx.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9DdiBA+-5cQ87NR6fHFFFJAtDVbAEc+AJQNMNo4bVB+A@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.539,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-arm <qemu-arm@nongnu.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GJwiS0pyrdub
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: QC1DEtI1dZ10
 
-On Wed, Feb 03, 2021 at 10:52:59AM +0000, Peter Maydell wrote:
-> On Wed, 3 Feb 2021 at 10:49, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
-> >
-> > * Peter Maydell (peter.maydell@linaro.org) wrote:
-> > > On Wed, 3 Feb 2021 at 10:28, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
-> > > >
-> > > > * Philippe Mathieu-Daudé (philmd@redhat.com) wrote:
-> > > > > Cc'ing migration team and qemu-arm@ list.
-> > > >
-> > > > I'll have to leave the detail of that to the ARM peole; but from a
-> > > > migration point of view I think we do want the 64 bit ARM migrations to
-> > > > be stable now.  Please tie incompatible changes to machine types.
-> > >
-> > > That is the intention, but because there's no upstream testing
-> > > of migration compat, we never notice if we get it wrong.
-> > > What is x86 doing to keep cross-version migration working ?
-> >
-> > I know there used to be some of our team running Avocado tests for
-> > compatibility regularly, I'm not sure of the current status.
-> > It's something we also do regularly around when we do downstream
-> > releases, so we tend to catch them then, although even on x86 that
-> > often turns out to be a bit late.
-> 
-> So downstream testing only?
 
-Not even downstream for the Arm architecture, at least not at Red Hat. The
-support we have for Arm Virt is still limited to the use cases for which
-it has been deployed. To this day that hasn't included migration[*].
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-> I think that unless we either (a) start
-> doing migration-compat testing consistently upstream or
+> On 2/2/21 4:40 PM, Richard Henderson wrote:
+>> Well, here's the thing: this appears to be v3, reposted.
+>>=20
+>> All of the work I did for v4 has gone missing.  I went to go fix the sin=
+gle use
+>> of current_cpu, and it wasn't where I expected it to be, and that's when=
+ I
+>> noticed.  I'm grepping blobs now, but I must have made some horrible git=
+ error.
+>>  :-(
+>
+> It's not quite that bad.  About half of the changes are here.
+> But e.g. patch 11 had been split into at least 4, and those are all missi=
+ng.  I
+> presume all of the r-b that I collected before that point got lost at the=
+ same
+> time.
 
-This is the best choice and it can certainly be an additional approach
-regardless of what goes on downstream. I can look into this. A pointer
-to the x86 tests would be a good start. It's pretty simple to do a
-quick migration test between two versions of QEMU, but we need the
-whole build two versions of QEMU stuff first, which I hope already
-exists.
+b4 is a great tool for finding tags from the archive automatically. You
+can either use it to build your next branch iteration or use something
+like the tooling I recently posted for emacs to pull the tags and apply
+to the commit. This only works if you track the message-ids from your
+last post.
 
-> (b) RedHat or
-> some other downstream start testing and reporting compat issues
-> to us for aarch64 as they do for x86-64,
-
-Red Hat isn't currently allocating resources to this type of testing
-for AArch64. And, even if it were to start, it would likely focus on
-compat testing of RHEL arm-virt machine types, which aren't exactly the
-same thing as the upstream arm-virt machine types. In fact, currently,
-there are only two (virt-rhel8.2.0 and virt-rhel8.3.0).
-
-Thanks,
-drew
-
-[*] Migration support hasn't been a real high priority for AArch64 KVM,
-    because it currently requires identical host CPU types and identical
-    host kernels to work. It'd be nice if the destination host kernel
-    could at least be a later version, but not even that is guaranteed
-    to work at this time.
-
+--=20
+Alex Benn=C3=A9e

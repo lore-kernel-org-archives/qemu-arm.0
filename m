@@ -1,103 +1,103 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp483854lfo;
-        Wed, 3 Feb 2021 11:05:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzUG4y7HB8gVctkKQlglWTqLav2peS+4bn8OZq5UEBODBELoVxICJO3pLpt1TB+N8nvRlhM
-X-Received: by 2002:a25:350b:: with SMTP id c11mr3854184yba.95.1612379134070;
-        Wed, 03 Feb 2021 11:05:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612379134; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp484488lfo;
+        Wed, 3 Feb 2021 11:06:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxQ1hpU7J3wCHORpNvGhLFku1PlMp9i9Ts02CVkCXY+7GhxVLF2BATwnuZwl0k1BBLJXEbl
+X-Received: by 2002:a25:f20b:: with SMTP id i11mr6744144ybe.273.1612379185723;
+        Wed, 03 Feb 2021 11:06:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612379185; cv=none;
         d=google.com; s=arc-20160816;
-        b=z8IZZSr6B4mknNEoefPVskI+dJAg2ytGEVxCVgjMzUg6fAYUHv2bYhOy9zvS8DUq9P
-         u4yY6bFPNAS2c35jLixYQsZ0km9Pqw64eBu7civxOnqzGQLFOgGmpSq5N1dTaPI3fCoD
-         +Cp5Ry3ZldD4s+lYNy38hx6qD5+XK5pzroCr5pQKyL4d1VpJJoyUZk6H2m4Sgi57FQfO
-         iHzCvB66e8+DGZJGjLmdG8SNru1y0MfVTHPzStKtxLl277pYUyvjMAQEhlvNokRUbpWD
-         2JONXOozS5hBjgwX9AoMxc+kdXw6T7FyU+HSy/go3frCoywJot3k/U607j4nZpjK/mqa
-         4wfQ==
+        b=YVGNxAzBLVjnFgZ4Mt9rLqFB9P/ZP/uvrZnqEn4lOEY1flLuP3p1DH4Bgk5lUyeZ05
+         kccxTiAOSvBXvrDlUCKOxfC75gEn0tjqKY2fbfppnlSy9QF66rgfLZR+xFnMS2uckxDy
+         kywH43lMlBCBKRhrWqUTxz876t0KWEps9SHjoKm6ws/a58TWUtiamGRanWI2IqCLoG/R
+         9ctiHizMZnqubZJo5Y0rID2fmzk9pkbqM2i8wzGTuuZXHTVh+nke8+h5NyWe+MvRVWwk
+         UBgtpPdVBoIRh6iQsq5H0MFEXG4slfydWipFKhRmvW/xRCgSGh7rvsGjYANWGAyq1hF9
+         eHgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=yAOD8rB2c9GoNvNcKMZwjdplIAr1RvdqOJ4SbnIjxU0=;
-        b=bJyYYHlu3oIyb1bn65b7PLZhshPdFrc7uIsJEu0OL/sfwAm8+BP7jeoUdRypMG8dM9
-         T0WDpCkjn+eer2HA3WopVEb0el3BZTI8yFs3JqogizRj4jn+BnHAs/A2sRRDjzcdR0A0
-         Myad9oqG0uMfjO3a58Im/qLFD+Aid3bjrYomgRDBPDlLOEzQGJUdAVShTg7z1nr/UFY4
-         skSrIcj16jNIebMt0hBBX2NfazeYwogwnFegmoPMEraekblxKsorwg29eUKcd5c8v8L4
-         rvYwyyGFRtyBxgnIDp59+2FCgYrNzW0dxwI/GHTiw7qflCcaVfilsB7qnMUITiHw2nwE
-         Rqag==
+        bh=bAoMyMlDDlghVnqeNID447NiBs2PzgjWNFYjdCi+4Lo=;
+        b=vCLyxhayixaxbP42tOdiZ4ZeUFYNdO7pRfScxqH22rxIR7j8EXE/o0J+c0aiIdYlR/
+         j65hbKPRtx7YB67xXSVYai6BA3X+A2Ea90MjbuYXH6p+ud5GaazFxd8NK6IbST9wGIZt
+         p0KZOfF2dscF4l+fQevmkGL69VbDroUAU9isQKPV/0JWcQJZHVnjYdgxvgO3xcv8vKS/
+         VRMTwBWzbltG/Saf/te5ablGnQNS5ey8gqid8NhvohLIbYHX7uoDiJlTUEB0wvvls4Qa
+         hyCcWoSpZ1skOIqx+Y3WJtq+GvuXLQ/myMR9gXFxSwDS1FKX0DgPUwXuwLqfq0sDIPx7
+         GHvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XqG6wHWX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=v9GoRtut;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n5si3243603ybo.226.2021.02.03.11.05.33
+        by mx.google.com with ESMTPS id z95si3637730ybh.58.2021.02.03.11.06.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Feb 2021 11:05:34 -0800 (PST)
+        Wed, 03 Feb 2021 11:06:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XqG6wHWX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=v9GoRtut;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33260 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34346 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l7NT3-0001tF-7P
-	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:05:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37634)
+	id 1l7NTt-0002T9-4R
+	for alex.bennee@linaro.org; Wed, 03 Feb 2021 14:06:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NOL-0007GG-JG
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:00:41 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:40957)
+ id 1l7NON-0007Jc-Ud
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:00:43 -0500
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:52243)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1l7NO8-0001YA-Pw
- for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:00:41 -0500
-Received: by mail-pl1-x631.google.com with SMTP id y10so378105plk.7
- for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 11:00:27 -0800 (PST)
+ id 1l7NOF-0001Z2-2b
+ for qemu-arm@nongnu.org; Wed, 03 Feb 2021 14:00:43 -0500
+Received: by mail-pj1-x1035.google.com with SMTP id q72so230376pjq.2
+ for <qemu-arm@nongnu.org>; Wed, 03 Feb 2021 11:00:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yAOD8rB2c9GoNvNcKMZwjdplIAr1RvdqOJ4SbnIjxU0=;
- b=XqG6wHWXj2zbXFyi07GXn8kljDPIB7SODWlzuojWV2tkEsNqUnOCNcwbv05skV0ORh
- kHLKA1xYnBBeDfFoNNkVW1iivJpGgHbUx6aD16A+17fw21y7/2QzMHN+iClSd2L/Ol+J
- c472h8YWr7GX7ishxIanPD8baEQ7JDUdIMenmBE94dZmAz1qRj4jAE2U+x46dzgK91Hx
- mAPUICY5Ydh4g/VLxBi6KV8zqdrJDK8rPX2QS830RBql4gvZS4Z8IVGioheYxDCk+ICl
- bQcizvgypCXD8WI9LI6rz87vT1z8ekCj2dgxTAYRuU2okPi1t+OabsqpiCDgbBackg9J
- Qoyg==
+ bh=bAoMyMlDDlghVnqeNID447NiBs2PzgjWNFYjdCi+4Lo=;
+ b=v9GoRtutR3idBBXtfxTizd1A4cp0GGn00gTm2PA31jYYWTUZgAfwlPmtI9VD2jFGTC
+ s2kp7kkjbYvTWeljhoQduJ+r+Kbbos+BLNjft6lIYWYrZmAfpthfrhsJn5Vnq1eEcr2W
+ tsHRqJM5D2sLgAZp5AQr7dsFf2JebIvaA0FbtEDHn38R1fUQhe2gEEf/uTWh1UAs/67Y
+ lI5dW6cRUGqPrH0zfydeALs8a/JnLC30bsP9nPjCdQHC035DZtaUMoUdtHogzEIVKdv5
+ fZr1suxFvQ86+1LM8GHX8KawmriRIrEKEu4NTiVBWTAmfq3ORyl6K7ZSSp8TdMdYN5OV
+ hupg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=yAOD8rB2c9GoNvNcKMZwjdplIAr1RvdqOJ4SbnIjxU0=;
- b=S0xH6ZvFN5l4MyoHrEbr9WsOx+JnZS9O8YyprjAMkf869eA+aUO2uLVjPwnltXXa+z
- fz4/z7TxpS4yoHv8Ct1qgdskfbX2vEzzGcHnaYkxPv7rNdm6OwS0jnJ2YGqWItyhsxi9
- bxA+jnFshGndG6VAYVwUTOQnIKNYvHMrNqiHJqKOTr/7iX3NKztfFIq04LWOYmHNyO2z
- e6tzl50NpSpJjqSwRoaqcbF4FFa030yZ03hHzuz1YALg9+0pz9JwNJa+9EQRSnCn7Fwt
- 4TenpAbCT4cun2HhtKHQu3vXoFy1lqQlWg0YcnT7Mb/9v2x9wgFWgCnUey7Ue5SkxdMd
- ToCA==
-X-Gm-Message-State: AOAM5320LXskmGLu0SmAe6bsBquTH+8iwALIjYlKLJDaFzqyDrPOPSxp
- fmmLIo4KyZmrMWvwtlwOOBt7OQ==
-X-Received: by 2002:a17:90a:fe11:: with SMTP id
- ck17mr4401886pjb.152.1612378826771; 
- Wed, 03 Feb 2021 11:00:26 -0800 (PST)
+ bh=bAoMyMlDDlghVnqeNID447NiBs2PzgjWNFYjdCi+4Lo=;
+ b=ezMpMnu2pnjHze9Tg4yLbm+M5NVAn+XkIQBK3XVOF4aF5068z+JGCZEDyKztmkZ07y
+ rJ5iCukECxO55H8TcczPIjuzeS2xq3mNTV4Z4ShfFY8lnmJHjv27jdhFA/EhoVqjAM3K
+ E0KTwA369Q4+xwX3+2pD+ViYkLtrUhfQFgtkAau9Ap8urfaXMWMgmmythDst8HZeItsi
+ yUc+bEkDz/UJaFY2P81oBhmMCoNDRBBJ7KENGPNhuQym8GOVtc8VZLYxFJJP1ePHVfjc
+ cMajtiK7/2xPTirHjv35ETX+y3ZjhNiUCgUIvSOkzkcuO00CxKoOB0/FE+kgZb3YeM7w
+ gd/A==
+X-Gm-Message-State: AOAM533sZgllw1dKh5cUnPH3QC5seMC0w+61htpS9+vx/Zc2NAe/VPI7
+ W1P7QYvCPpyQcqyiyIewH+RhUTSpyPAqebhx
+X-Received: by 2002:a17:90a:5601:: with SMTP id
+ r1mr4390757pjf.236.1612378833161; 
+ Wed, 03 Feb 2021 11:00:33 -0800 (PST)
 Received: from localhost.localdomain (cpe-66-27-222-29.hawaii.res.rr.com.
  [66.27.222.29])
- by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.24
+ by smtp.gmail.com with ESMTPSA id l2sm2906666pju.25.2021.02.03.11.00.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Feb 2021 11:00:25 -0800 (PST)
+ Wed, 03 Feb 2021 11:00:32 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 06/31] linux-user: Check for overflow in access_ok
-Date: Wed,  3 Feb 2021 08:59:45 -1000
-Message-Id: <20210203190010.759771-7-richard.henderson@linaro.org>
+Subject: [PATCH v5 09/31] linux-user: Do not use guest_addr_valid for h2g_valid
+Date: Wed,  3 Feb 2021 08:59:48 -1000
+Message-Id: <20210203190010.759771-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210203190010.759771-1-richard.henderson@linaro.org>
 References: <20210203190010.759771-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,45 +120,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wwcj8gaWYYjL
+X-TUID: pRGzRhLX8509
 
-Verify that addr + size - 1 does not wrap around.
+This is the only use of guest_addr_valid that does not begin
+with a guest address, but a host address being transformed to
+a guest address.
+
+We will shortly adjust guest_addr_valid to handle guest memory
+tags, and the host address should not be subjected to that.
+
+Move h2g_valid adjacent to the other h2g macros.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/qemu.h | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+ include/exec/cpu_ldst.h | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 17aa992165..441ba6a78b 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -491,12 +491,19 @@ extern unsigned long guest_stack_size;
- #define VERIFY_READ 0
- #define VERIFY_WRITE 1 /* implies read access */
+diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+index 5e8878ee9b..4e6ef3d542 100644
+--- a/include/exec/cpu_ldst.h
++++ b/include/exec/cpu_ldst.h
+@@ -77,13 +77,16 @@ typedef uint64_t abi_ptr;
+ #else
+ #define guest_addr_valid(x) ((x) <= GUEST_ADDR_MAX)
+ #endif
+-#define h2g_valid(x) guest_addr_valid((uintptr_t)(x) - guest_base)
  
--static inline int access_ok(int type, abi_ulong addr, abi_ulong size)
-+static inline bool access_ok(int type, abi_ulong addr, abi_ulong size)
+ static inline bool guest_range_valid(abi_ulong start, abi_ulong len)
  {
--    return guest_addr_valid(addr) &&
--           (size == 0 || guest_addr_valid(addr + size - 1)) &&
--           page_check_range((target_ulong)addr, size,
--                            (type == VERIFY_READ) ? PAGE_READ : (PAGE_READ | PAGE_WRITE)) == 0;
-+    if (!guest_addr_valid(addr)) {
-+        return false;
-+    }
-+    if (size != 0 &&
-+        (addr + size - 1 < addr ||
-+         !guest_addr_valid(addr + size - 1))) {
-+        return false;
-+    }
-+    return page_check_range((target_ulong)addr, size,
-+                            (type == VERIFY_READ) ? PAGE_READ :
-+                            (PAGE_READ | PAGE_WRITE)) == 0;
+     return len - 1 <= GUEST_ADDR_MAX && start <= GUEST_ADDR_MAX - len + 1;
  }
  
- /* NOTE __get_user and __put_user use host pointers and don't check access.
++#define h2g_valid(x) \
++    (HOST_LONG_BITS <= TARGET_VIRT_ADDR_SPACE_BITS || \
++     (uintptr_t)(x) - guest_base <= GUEST_ADDR_MAX)
++
+ #define h2g_nocheck(x) ({ \
+     uintptr_t __ret = (uintptr_t)(x) - guest_base; \
+     (abi_ptr)__ret; \
 -- 
 2.25.1
 

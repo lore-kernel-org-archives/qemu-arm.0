@@ -1,106 +1,107 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2245239lfo;
-        Fri, 5 Feb 2021 10:27:14 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyvOENAX7jy9OOWBIPasdYlt++ELUE8sTW8atXnU75A0x69EPUSPFAnPcT2PYrhfGwv8YmC
-X-Received: by 2002:a25:d24b:: with SMTP id j72mr7971003ybg.475.1612549634806;
-        Fri, 05 Feb 2021 10:27:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612549634; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2249072lfo;
+        Fri, 5 Feb 2021 10:32:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxualbHj+SHOEBElEr0hzgFMos52cPKoQXixIAMprM1274sFTqrsGryJ2q+BqdIir4z1YW1
+X-Received: by 2002:a25:af13:: with SMTP id a19mr4514285ybh.496.1612549954731;
+        Fri, 05 Feb 2021 10:32:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612549954; cv=none;
         d=google.com; s=arc-20160816;
-        b=lUv24RKEKTSlRNtA+Wt3F35cCigFU0Nq8iPbPXgymyZ1mqI6pgnrmmnq2KflEFDD0p
-         ZFBywEOVaxsQAd1BXQU0IZVxf7S88elAjd0F3zAIYwjucahNC4PYJTIxxc3N+dNtZB2B
-         UEYpMv1YxCf0OwCYen+M1cH77tXzLnZpakRsbAtsjIQHmTZ6qG1yfeJ3cGx8BmsE0OiY
-         qUpzXfWuXuBwE6/y9oy6nGscjeoJszwPBXZjIwi4l4+psJ44zRj22p60B/OwMqmt78H6
-         YDtAbhxQkAJxrSh9t2GEv2E2quyiSJD59KoR65Sl+mVRS0czshxGDSeeJ0tYQ8NDPgFZ
-         v6kA==
+        b=b+hEN0c/SOGCGDgBCD9IFC7drf6NQQOTn380Ng96Kzh9Uq5/5atTV5QEBSORfzL0ug
+         WdJOj4CT1qDX4qACVDHKTK5GbSH0XbJpQ5XJq/uNwLotZPe9TqLFAFGplVWWo0RNyP1g
+         rcOF1KyXAAqytoUHbE/bBOY6b2FfiN3Rvf/QejSL90nAVCSg/KqGuNC0Oh4h0KTHaH33
+         UM959q/T3NWq3DkVaJODk8DYhJw7ArCpXsCCtZlcxed716ZMDO1LhwtMGrinJ0CS6eSG
+         vqiFzq6y0Um5I1K2//QSQRhmRiX+skCaR/5S1JO3ojgVC8Xu1aIQn4SJ+CdkyyPk+58i
+         RPHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=ujuqgyRNPFX8hPnv3zv6sUfuu8CdlXQi5HCBTCzwr44=;
-        b=F6P68OxdHb/yejDc0xVPkPz5zfvYGHl6DwI/pFf9jRxN3RelYcj/kqWmW87m+civav
-         BijrlNGPGxmdms+ttoelXj/cPCqVI0t6mfu/yvxguwSr+b7K1jFjocMnkEXt0LgUFwV0
-         yntasDnLtJBLcMPMKCCBgS/vHbMNQQZTVA5Ibde58+p79aXbvZ2fDT9PekM7QOR8P+nz
-         nmzILw2/gud83O8gyI2Ez+cmB23OdcXsSYU+uAkfYzAyDXrznVnvSnyfzsWhA2wWn55u
-         FVLlsXtGvuFpLBLpuYv/DCxhiEvswxbcg2s5xjkn7VHv9SFShqWIOmT8WclyEEPpkfB4
-         bxrg==
+        bh=0uAL/k14b/WZWPBqirQ/ABYbQDQ0+uaME3FgePiiukI=;
+        b=ZuSZe03cFKODVKTzOoA7LsdrdC1N+iY3AY45vQwkq01M47y6rIuN3U2UmzapG26UMG
+         X/upHKFstPKHmC/GY0NU8C5W/F/CgwwV7910/n5BmBb87grfLSKZCIxaUJ0iqRwGzYMZ
+         RfHYNLsb0uhrGCWspVOwmfQ6kgVqF+jxM2gW+ksHpX5LjA8aQ7rxLt2BLD9fhHdOX9t1
+         3VDJW0bOpywSJTa59sXNrjmI5iZ8Hs6Q1aRREaIh6YsyzlKAcl94zI0fuqC+BeUKR2Ne
+         uVdQkQkm/NCuJ9TxuYys7MvZZJ+ewCv0Z9EFutwcGZ0+qK5ThPiabuP9q3hQXJd9O4s9
+         ADDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qVULq0FO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gEMZb+Kz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si10358597ybk.95.2021.02.05.10.27.14
+        by mx.google.com with ESMTPS id r141si10696558ybc.469.2021.02.05.10.32.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 10:27:14 -0800 (PST)
+        Fri, 05 Feb 2021 10:32:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qVULq0FO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gEMZb+Kz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56486 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l85p4-0001iO-4b
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:27:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60382)
+	id 1l85uE-00074C-1y
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:32:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l85Vw-0006M4-QK; Fri, 05 Feb 2021 13:07:29 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:45473)
+ id 1l85bT-0004cM-W4; Fri, 05 Feb 2021 13:13:12 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:33487)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l85Vt-0006qW-M4; Fri, 05 Feb 2021 13:07:28 -0500
-Received: by mail-ed1-x534.google.com with SMTP id t5so9781501eds.12;
- Fri, 05 Feb 2021 10:07:24 -0800 (PST)
+ id 1l85bN-0000ZJ-9J; Fri, 05 Feb 2021 13:13:11 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id sa23so13378469ejb.0;
+ Fri, 05 Feb 2021 10:13:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ujuqgyRNPFX8hPnv3zv6sUfuu8CdlXQi5HCBTCzwr44=;
- b=qVULq0FOwctjdWr5WV5echVUDFzPn4CR7GKPIJPMnePxzK6m+RBjkKeB7uc2Xkv6Q5
- QPtqYbNU9Iixagy9iWIIoSHtSwLDTI5TMWA8cOol7lKMBE9wESd+5pRhSAa2vS6oE4u3
- nWxZ+ThQkGnlv5NCGzMW6kPTx4YGjYQDNqFAEhkdKDoWG5/I5sarf4TAxibrakRtb3G7
- smSZo3fKXtBILyOSUAcZGRSyQQbLAjiiwvT3ewCClLsvPQToHnUvhztwroI1tZhRoHF+
- vsAhfw8xQn/bRtItnPPkY256NsJaCSJui4TNEzWPa6+1Q33BFGENQYkmi83PnU18bTpK
- AnUQ==
+ bh=0uAL/k14b/WZWPBqirQ/ABYbQDQ0+uaME3FgePiiukI=;
+ b=gEMZb+KzrfBaxmZYiNfnc6jKSz/TWQaCPqEBPg2pCeArWA143sTMVG8OLyudMJ41iq
+ f4msaRfTDA0CVro9BmLB/yQkCLWlrPZ5vycllFX78oy7RoL6FdWP8ldXFc4gHIC+5gjj
+ XAgWm9xJxB44ivIkIn4KQoAvCDSv6UUoi9Drzvy/rnl5Ox2yw5J53vJQi59hQ/GkgxOn
+ 2alWnieiXyi2oYxgrHtgbKviEx9+mx6gpYISmL6Ywfqytb4kQCrA/MsqquqwhjTCHytj
+ AuPzRXrwo2g9N5pz92DB8FS++3dBhN83q8iIBpeeB+jvVSRNHZywrYCofoHFhvS8phpN
+ M5EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=ujuqgyRNPFX8hPnv3zv6sUfuu8CdlXQi5HCBTCzwr44=;
- b=mhHGGUDO6I/6o5IoF3tGRqCRE882maqEqOeafyN9KLXniu9Pfh7MfBJFfi/yNwh+Zx
- Whp3vUum43EOg6otemWKSZg1LxsxEfdLWx4TDcbtCe3HoesoQutlC3Li4DC1lAJ3jxb0
- Xnwr/CuQCr2rMZhCSU1seqGkiEvnpox0cIoxdqqItgP9TKKT3jRJ/KFFtkr38zS+qrSF
- B42xHeYcSgO3fVtZWRHWiGZA/WQ4S2yCYB9ZLJBUSZCK0R3rfriJLbJR5Xj8EWhdgNYR
- mOTMdoyeUmRd777NOzyG4L1/541n+BQqdu/jI2B3S/0zEcYuuDU+P+EuJk9OGuT1vLtl
- jmhw==
-X-Gm-Message-State: AOAM531WqQbV8wr9m4jB8+IrRty0xqegCKJC0LKRRIwqL+U/5cbOzamB
- 1IJVvl088tXux2M9YgXT2pPCaDpC4LE=
-X-Received: by 2002:a05:6402:1c0f:: with SMTP id
- ck15mr3539558edb.16.1612548443017; 
- Fri, 05 Feb 2021 10:07:23 -0800 (PST)
+ bh=0uAL/k14b/WZWPBqirQ/ABYbQDQ0+uaME3FgePiiukI=;
+ b=W6ts5nzwFIaQzeJZKysBYFRChWmTMfkS6UEJthCjxzDcXh+6Nm3eCkgDS2IfDLZb6z
+ ZNHVk5HFdPD5h1WwbypVzWftKxIH4Pr9FLvmWF2Qhz8kBPpfkKdIDjHwXa9kdPJbgmy+
+ aNLMl5n7y2yxcqKWtO10FIa0TxaCQLHyuEaQ3RL3j5U/9MwaOpAhADQRzkoycg6I4yZi
+ yvGfU/z552zP02CryI///yG0mDrDhX887+SASkCQSQvisZbbl5t//zl1Wz/1vH65s21C
+ pL+2l20HLR/WeeJtPORjtKDm0IUr5X6ePbbICTCj15YrzguXwtYH3rBo5MPrkGLXdpqO
+ Aesw==
+X-Gm-Message-State: AOAM530yM5QvaH1xLulWMM8UBbVuI9KlwxsiL7P5BmQwHPDw1YZ58Sk6
+ UMPd+MPtcCqFcInxlSi8DUov9OPvOYo=
+X-Received: by 2002:a17:906:e15:: with SMTP id
+ l21mr5125242eji.376.1612548782790; 
+ Fri, 05 Feb 2021 10:13:02 -0800 (PST)
 Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id k2sm4224335ejp.6.2021.02.05.10.07.21
+ by smtp.gmail.com with ESMTPSA id y8sm4179265eje.37.2021.02.05.10.13.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Feb 2021 10:07:22 -0800 (PST)
-Subject: Re: [PATCH] arm: Update infocenter.arm.com URLs
+ Fri, 05 Feb 2021 10:13:02 -0800 (PST)
+Subject: Re: [PATCH 01/24] hw/arm/mps2-tz: Make SYSCLK frequency board-specific
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20210205171456.19939-1-peter.maydell@linaro.org>
+References: <20210205170019.25319-1-peter.maydell@linaro.org>
+ <20210205170019.25319-2-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <0ddf77dc-35c6-6955-9433-abd3898c3ee7@amsat.org>
-Date: Fri, 5 Feb 2021 19:07:21 +0100
+Message-ID: <fcf487c0-8c2d-2e69-2d98-0ec41589bf96@amsat.org>
+Date: Fri, 5 Feb 2021 19:13:00 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210205171456.19939-1-peter.maydell@linaro.org>
+In-Reply-To: <20210205170019.25319-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -123,44 +124,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J04PlTpEk6u2
+X-TUID: 1ojWUGoixm4p
 
-On 2/5/21 6:14 PM, Peter Maydell wrote:
-> Update infocenter.arm.com URLs for various pieces of Arm
-> documentation to the new developer.arm.com equivalents.  (There is a
-> redirection in place from the old URLs, but we might as well update
-> our comments in case the redirect ever disappears in future.)
-> 
-> This patch covers all the URLs which are not MPS2/SSE-200/IoTKit
-> related (those are dealt with in a different patch).
+On 2/5/21 5:59 PM, Peter Maydell wrote:
+> The AN524 has a different SYSCLK frequency from the AN505 and AN521;
+> make the SYSCLK frequency a field in the MPS2TZMachineClass rather
+> than a compile-time constant so we can support the AN524.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  include/hw/dma/pl080.h                 | 7 ++++---
->  include/hw/misc/arm_integrator_debug.h | 2 +-
->  include/hw/ssi/pl022.h                 | 5 +++--
->  hw/arm/aspeed_ast2600.c                | 2 +-
->  hw/arm/musca.c                         | 4 ++--
->  hw/misc/arm_integrator_debug.c         | 2 +-
->  hw/timer/arm_timer.c                   | 7 ++++---
->  7 files changed, 16 insertions(+), 13 deletions(-)
+>  hw/arm/mps2-tz.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
 > 
-> diff --git a/include/hw/dma/pl080.h b/include/hw/dma/pl080.h
-> index 1883f042701..3c9659e4381 100644
-> --- a/include/hw/dma/pl080.h
-> +++ b/include/hw/dma/pl080.h
-> @@ -10,11 +10,12 @@
->   * (at your option) any later version.
->   */
->  
-> -/* This is a model of the Arm PrimeCell PL080/PL081 DMA controller:
-> +/*
-> + * This is a model of the Arm PrimeCell PL080/PL081 DMA controller:
->   * The PL080 TRM is:
-> - * http://infocenter.arm.com/help/topic/com.arm.doc.ddi0196g/DDI0196.pdf
-> + * https://developer.arm.com/documentation/ddi0196/latest
+> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+> index 90caa914934..82ce6262817 100644
+> --- a/hw/arm/mps2-tz.c
+> +++ b/hw/arm/mps2-tz.c
+> @@ -76,6 +76,7 @@ struct MPS2TZMachineClass {
+>      MachineClass parent;
+>      MPS2TZFPGAType fpga_type;
+>      uint32_t scc_id;
+> +    uint32_t sysclk_frq; /* Main SYSCLK frequency in Hz */
 
-Oh, /latest :)
+This is what I meant in my Stellaris read-only dc[] registers
+comment here:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg776770.html
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

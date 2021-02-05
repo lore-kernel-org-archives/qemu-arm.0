@@ -1,103 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2219378lfo;
-        Fri, 5 Feb 2021 09:52:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJynt6yiGuNAq70ezfa9trLmnlGk/TsuI3siVnq+8wLSyFE6vqKzeXnSokW+9oRlh6m98TXb
-X-Received: by 2002:a25:ac94:: with SMTP id x20mr7245457ybi.411.1612547573224;
-        Fri, 05 Feb 2021 09:52:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612547573; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2221146lfo;
+        Fri, 5 Feb 2021 09:55:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxO8pHDkQM0pPqINjfim6Erax7NNQ1E9bWWA4WDsnH/4nCDO0aPFROAGR5cKiPo5gZeFNHL
+X-Received: by 2002:a25:9012:: with SMTP id s18mr7672866ybl.443.1612547752609;
+        Fri, 05 Feb 2021 09:55:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612547752; cv=none;
         d=google.com; s=arc-20160816;
-        b=WKnBja8Y+qQ4HbqR32A1+vyujMk4lRo34886JZyvmAghoRHE5dyfV+a6WluHh28VMC
-         YuGdiu82ohDyjCt+Nc2VCs4A1a6PPyB7dYsjn/uzM4C5q+Wd6K6b9VTj7WI5mjujsemc
-         xfYbnCW/fRYaqh4tnUmzBHK6aTGlE6f9bgWMsZH2LS29o/vmkVMf0ziqa6Xma1I3s8i/
-         cmaSf9y+lc0rN0/fd/A79TlKqKF9i65awrs+JFlV7jJDxLSW4gBH+9JtApMOKq/YfGzR
-         YRNc5szgch8vwo04TGmZyINDRcg7Uj20ynbDJxS/PiFa7yDBd+GPAPPCyjnGxN7xmHL1
-         5xyw==
+        b=C69/E1oQ1psN0YiacWRhcs/rxQY11I/6REhAHAupyypr9i3yNvazn4DoFixhlE/5tK
+         BRi57VuNUsphxFp4ogQOimdl53u1rBFC6Haprz/go/V0x4jIQENFts0oA6tsH2zk1bOp
+         qYAHk8vGvv/jG0ZFi7RZWJaMScp9IMIBDK3NmZ3pcK0PCF5bXlBzSvnJjCU0bTT52qcO
+         /C1tT1MnhDEan3D7jcyBhy4wy3tRO5odf+M8037+eKDNRDinJbxwFT8qjyhEm8eLZBsq
+         /h0P62X4LpOzbBP5Sm1gsLG3ESdM5bFbcDBT/jcnFp741T162xtQTkLT0NE5urr2c8g3
+         baWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=vPha70CdlIz8Ft1BgdKuRx55ClhohOzaXUUXYhoxm5M=;
-        b=FouIWSWY5zSjfJGE1fs8yqERt4Y9e3L7xCJ1w6ZWc3Vyp5Li5APyCzcr8nVCtYAH6/
-         ltbmBvyl74nTZjYmRFV7GiRP9ED6hu5TXsQC+txrmb3sf8u117gdrgPNBntUWJJe+ODo
-         oiJ7ORDtOYUl2qV7uYEpqesHae+WvpmO/UZSDQ6UkUwUYbp8e58SNS9ritTVLTKf/Gdw
-         J103k1M3IbOLTHA3Rhat6Z9EH3TGXQPzbZpmraMS5skvEN4A4a7dxbUqF7R3aYPa+DSX
-         BJVRKhehjZA5eg6I216pNA8pJRtQiZRsGffYji532DOaIaKs6xgYhFDQj8pTFhf30BY6
-         a1CQ==
+        bh=gSDR8Mqc+foRqFOzXhqtEOdNoxWnrjbPBnz7VqeXzgo=;
+        b=Ob1RmMh/tqc9dSDc6NeIFMIkR0Ta9LVAAf+uDUcIUaTay3bPChfYJnhHtD6oodcBf0
+         HW7Uf/q7cnKMcbvYcJKneZOCFjVeQMms94g4rEwHMJMh0Mbm0oRPDWaoMN7Moct+Efsl
+         HDg/rf6xh3LhcgQFrcn3jSLLeaaOc3ZVxN4R59sotlQhPV2c1PrcKgvVxcDRi4h7qhti
+         oso46+n1xBvSbzJE6qZqdjp7C69aDX45si+ICAloWqy8BLME1cIgrAh93o7nJsN+LdVU
+         4kAUH6Nn5VQahcF9xrSRVKedKbugp6WvSK38KXaoLqVuegb4GOUyB5ZVEBA5en1NplkK
+         2Keg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="g/8Lv/PC";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uqJjaZGF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l204si9960528ybc.266.2021.02.05.09.52.53
+        by mx.google.com with ESMTPS id q135si9893828ybq.175.2021.02.05.09.55.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 09:52:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Feb 2021 09:55:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="g/8Lv/PC";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uqJjaZGF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60370 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l85Ho-000732-Il
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:52:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46156)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l85Kh-0000t4-T4
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:55:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46454)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84Ta-0006kv-VM
- for qemu-arm@nongnu.org; Fri, 05 Feb 2021 12:00:59 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:37077)
+ id 1l84Tr-0006zp-BD
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:15 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:33527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84T8-00042Q-MZ
- for qemu-arm@nongnu.org; Fri, 05 Feb 2021 12:00:57 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id v15so8464994wrx.4
- for <qemu-arm@nongnu.org>; Fri, 05 Feb 2021 09:00:26 -0800 (PST)
+ id 1l84TQ-000468-UR
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:15 -0500
+Received: by mail-wr1-x431.google.com with SMTP id 7so8520617wrz.0
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=vPha70CdlIz8Ft1BgdKuRx55ClhohOzaXUUXYhoxm5M=;
- b=g/8Lv/PCmVVItNdnAT1VaNzH6B+1ScitB/EWkMXo76JuspwX8JbLRsHlLlLee0nDvW
- EWrJJV7170rDPEvm6/JvvOJBv0R5dHiecIISaq3C2j3KWh17zKwfN3NdhUeJ3+45Khl/
- 0PUmeCACBhuD54Axrp3YkMofMjoHhcl7FGs8tpxROV9vCM1rNuBr7uW/nhAA03wxZ+pr
- ETdjw0M7A1WllSLuIK+X+MyFkaOGuWko4akScpG6ZOlP3wwxQoi6DKEdIAamjTCsqFs6
- mPskzGVRO6jR/oCWmQ0Pd9st2x1d40Id4RF4M0Pr+4s2BKDDdmu/OjRI5hZVMUHrl1Ax
- t0LQ==
+ bh=gSDR8Mqc+foRqFOzXhqtEOdNoxWnrjbPBnz7VqeXzgo=;
+ b=uqJjaZGFuapQ3fys4wH5iO9bLP77I9ssMg4zHAePNfgpji1dX6CPZRUGuh1p9iaG3Z
+ UlSFVCfmdqQwksOjAQFZvFHLddaWFXr3N12IYoztFyDblOn7Ai6rZRmQ+E98VR3avi7M
+ kbBRRk9N276Ha2dugGVkY2gBE/c3PLusA046wSVAHpYAMDmwTeWqyiKnEAEjyH37Y8IB
+ 94SIHE8k1XGKo2ZHizJAIuSpCeD0dH7qTSq4spxyswVLMRovAE5tRpPldOT+4L3odBNE
+ CUo9+kP9Oa0wKxvP67IdlYkYFf0A2tnHyrh3Ym3eC7asRa9buodTqNjxuH1SpdOCqiy3
+ ye6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vPha70CdlIz8Ft1BgdKuRx55ClhohOzaXUUXYhoxm5M=;
- b=hxlo0Yi5MURHS/8KGLj93duU048RJJkLicyZB2Q8c6uMD4j45dTC28m779YFMG4Rvp
- 8AI2hOLlahUbVkw1cVKzfku9GpY93l+tIBhN2jTMKHQF2zab9k51iJzxt8ptk8IK6lRR
- V7+dBl8YQH2fb+ibWF9o3XSxVRBiTIcFKAuM/xpz9lC8GQcs5IgUFlzKzn80MzmPBs54
- WfDd/lLMiRSPWMgfC61qYOfb/qMJIIcpIPMzWy/O88tGonOtwGfDcKlfb983VRoA+oqe
- Z7jcdAdy8NhIONgiH3RYdnh+KG9J55L3dTh1kd2nDPHVJYDFCOiLQXJJtCDuySzXxw2r
- qflQ==
-X-Gm-Message-State: AOAM531Q9WdagyUD6xSxTQQJHLR6qngcy9DzHR0f7914vYoWYkepuMDR
- 1aO7ATrYfpryfcnshha+2I8oLfuk52HcGw==
-X-Received: by 2002:a5d:6712:: with SMTP id o18mr5862736wru.375.1612544425859; 
- Fri, 05 Feb 2021 09:00:25 -0800 (PST)
+ bh=gSDR8Mqc+foRqFOzXhqtEOdNoxWnrjbPBnz7VqeXzgo=;
+ b=XkDRKYKS/OlefqJdxAG1oCk6pimXDOhLP0VN0L9hE/paxp7qSRJNuPCejUnPZGdCdn
+ TndvRCiKSRIXSb5oDBk6E5o1XJ1CLhYZo80rvKu6sxmqaxpVwnVceDRzqs591HMIPHOo
+ YUw759mnOFwd7U+r3OFcVP+MOlZR05ZP/mhaPwhrlcwCOaISN4/Oh9c50ZuWL4B23xgu
+ rEjK8BfzKpV2L+tUU7Dtwe++Uwl2WemdoSzNpLUazrCdliLzqCyUjgagZ+UKuNoG22MG
+ da4hYZVWPBztZQ5Db+9Vbn4y4Ni6/7tvjYlyy8hRDqHMOks75T8kCas8PzzDhq2O6P4K
+ sTqg==
+X-Gm-Message-State: AOAM533fyjeAVgT2ahS2FO39/nhgeme6vZaut/hAgaWaoQFI08aRu+l9
+ mHsDdeS0vcgUB9QcjsN04JTS/g==
+X-Received: by 2002:adf:f182:: with SMTP id h2mr5998497wro.355.1612544438794; 
+ Fri, 05 Feb 2021 09:00:38 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.25
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:25 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:38 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 05/24] hw/misc/mps2-fpgaio: Make number of LEDs configurable
- by board
-Date: Fri,  5 Feb 2021 17:00:00 +0000
-Message-Id: <20210205170019.25319-6-peter.maydell@linaro.org>
+Subject: [PATCH 21/24] hw/arm/mps2-tz: Stub out USB controller for mps3-an524
+Date: Fri,  5 Feb 2021 17:00:16 +0000
+Message-Id: <20210205170019.25319-22-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,118 +105,115 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /J7RhUh2ia1d
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zTZribh6I2BL
 
-The MPS2 board has 2 LEDs, but the MPS3 board has 10 LEDs.  The
-FPGAIO device is similar on both sets of boards, but the LED0
-register has correspondingly more bits that have an effect.  Add a
-device property for number of LEDs.
+The AN524 has a USB controller (an ISP1763); we don't have a model of
+it but we should provide a stub "unimplemented-device" for it.  This
+is slightly complicated because the USB controller shares a PPC port
+with the ethernet controller.
+
+Implement a make_* function which provides creates a container
+MemoryRegion with both the ethernet controller and an
+unimplemented-device stub for the USB controller.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/misc/mps2-fpgaio.h |  5 ++++-
- hw/misc/mps2-fpgaio.c         | 31 +++++++++++++++++++++++--------
- 2 files changed, 27 insertions(+), 9 deletions(-)
+ hw/arm/mps2-tz.c | 48 +++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 47 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/misc/mps2-fpgaio.h b/include/hw/misc/mps2-fpgaio.h
-index a010fdb2b6d..bfe73134e78 100644
---- a/include/hw/misc/mps2-fpgaio.h
-+++ b/include/hw/misc/mps2-fpgaio.h
-@@ -28,13 +28,16 @@
- #define TYPE_MPS2_FPGAIO "mps2-fpgaio"
- OBJECT_DECLARE_SIMPLE_TYPE(MPS2FPGAIO, MPS2_FPGAIO)
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index aa57c4b2596..db1afa4bd22 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -119,6 +119,8 @@ struct MPS2TZMachineState {
  
-+#define MPS2FPGAIO_MAX_LEDS 32
+     ARMSSE iotkit;
+     MemoryRegion ram[MPS2TZ_RAM_MAX];
++    MemoryRegion eth_usb_container;
 +
- struct MPS2FPGAIO {
-     /*< private >*/
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
-     MemoryRegion iomem;
--    LEDState *led[2];
-+    LEDState *led[MPS2FPGAIO_MAX_LEDS];
-+    uint32_t num_leds;
- 
-     uint32_t led0;
-     uint32_t prescale;
-diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
-index 6af0e8f837a..b28a1be22cc 100644
---- a/hw/misc/mps2-fpgaio.c
-+++ b/hw/misc/mps2-fpgaio.c
-@@ -177,9 +177,14 @@ static void mps2_fpgaio_write(void *opaque, hwaddr offset, uint64_t value,
- 
-     switch (offset) {
-     case A_LED0:
--        s->led0 = value & 0x3;
--        led_set_state(s->led[0], value & 0x01);
--        led_set_state(s->led[1], value & 0x02);
-+        if (s->num_leds != 0) {
-+            int i;
-+
-+            s->led0 = value & MAKE_64BIT_MASK(0, s->num_leds);
-+            for (i = 0; i < s->num_leds; i++) {
-+                led_set_state(s->led[i], value & (1 << i));
-+            }
-+        }
-         break;
-     case A_PRESCALE:
-         resync_counter(s);
-@@ -238,7 +243,7 @@ static void mps2_fpgaio_reset(DeviceState *dev)
-     s->pscntr = 0;
-     s->pscntr_sync_ticks = now;
- 
--    for (size_t i = 0; i < ARRAY_SIZE(s->led); i++) {
-+    for (size_t i = 0; i < s->num_leds; i++) {
-         device_cold_reset(DEVICE(s->led[i]));
-     }
- }
-@@ -256,11 +261,19 @@ static void mps2_fpgaio_init(Object *obj)
- static void mps2_fpgaio_realize(DeviceState *dev, Error **errp)
- {
-     MPS2FPGAIO *s = MPS2_FPGAIO(dev);
-+    int i;
- 
--    s->led[0] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
--                                  LED_COLOR_GREEN, "USERLED0");
--    s->led[1] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
--                                  LED_COLOR_GREEN, "USERLED1");
-+    if (s->num_leds > MPS2FPGAIO_MAX_LEDS) {
-+        error_setg(errp, "num-leds cannot be greater than %d",
-+                   MPS2FPGAIO_MAX_LEDS);
-+        return;
-+    }
-+
-+    for (i = 0; i < s->num_leds; i++) {
-+        g_autofree char *ledname = g_strdup_printf("USERLED%d", i);
-+        s->led[i] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
-+                                      LED_COLOR_GREEN, ledname);
-+    }
+     MPS2SCC scc;
+     MPS2FPGAIO fpgaio;
+     TZPPC ppc[5];
+@@ -130,6 +132,7 @@ struct MPS2TZMachineState {
+     UnimplementedDeviceState gfx;
+     UnimplementedDeviceState cldc;
+     UnimplementedDeviceState rtc;
++    UnimplementedDeviceState usb;
+     PL080State dma[4];
+     TZMSC msc[4];
+     CMSDKAPBUART uart[6];
+@@ -431,6 +434,49 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
+     return sysbus_mmio_get_region(s, 0);
  }
  
- static bool mps2_fpgaio_counters_needed(void *opaque)
-@@ -303,6 +316,8 @@ static const VMStateDescription mps2_fpgaio_vmstate = {
- static Property mps2_fpgaio_properties[] = {
-     /* Frequency of the prescale counter */
-     DEFINE_PROP_UINT32("prescale-clk", MPS2FPGAIO, prescale_clk, 20000000),
-+    /* Number of LEDs controlled by LED0 register */
-+    DEFINE_PROP_UINT32("num-leds", MPS2FPGAIO, num_leds, 2),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
++static MemoryRegion *make_eth_usb(MPS2TZMachineState *mms, void *opaque,
++                                  const char *name, hwaddr size,
++                                  const int *irqs)
++{
++    /*
++     * The AN524 makes the ethernet and USB share a PPC port.
++     * irqs[] is the ethernet IRQ.
++     */
++    SysBusDevice *s;
++    NICInfo *nd = &nd_table[0];
++
++    memory_region_init(&mms->eth_usb_container, OBJECT(mms),
++                       "mps2-tz-eth-usb-container", 0x200000);
++
++    /*
++     * In hardware this is a LAN9220; the LAN9118 is software compatible
++     * except that it doesn't support the checksum-offload feature.
++     */
++    qemu_check_nic_model(nd, "lan9118");
++    mms->lan9118 = qdev_new(TYPE_LAN9118);
++    qdev_set_nic_properties(mms->lan9118, nd);
++
++    s = SYS_BUS_DEVICE(mms->lan9118);
++    sysbus_realize_and_unref(s, &error_fatal);
++    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
++
++    memory_region_add_subregion(&mms->eth_usb_container,
++                                0, sysbus_mmio_get_region(s, 0));
++
++    /* The USB OTG controller is an ISP1763; we don't have a model of it. */
++    object_initialize_child(OBJECT(mms), "usb-otg",
++                            &mms->usb, TYPE_UNIMPLEMENTED_DEVICE);
++    qdev_prop_set_string(DEVICE(&mms->usb), "name", "usb-otg");
++    qdev_prop_set_uint64(DEVICE(&mms->usb), "size", 0x100000);
++    s = SYS_BUS_DEVICE(&mms->usb);
++    sysbus_realize(s, &error_fatal);
++
++    memory_region_add_subregion(&mms->eth_usb_container,
++                                0x100000, sysbus_mmio_get_region(s, 0));
++
++    return &mms->eth_usb_container;
++}
++
+ static MemoryRegion *make_mpc(MPS2TZMachineState *mms, void *opaque,
+                               const char *name, hwaddr size,
+                               const int *irqs)
+@@ -808,7 +854,7 @@ static void mps2tz_common_init(MachineState *machine)
+                 { "gpio1", make_unimp_dev, &mms->gpio[1], 0x41101000, 0x1000 },
+                 { "gpio2", make_unimp_dev, &mms->gpio[2], 0x41102000, 0x1000 },
+                 { "gpio3", make_unimp_dev, &mms->gpio[3], 0x41103000, 0x1000 },
+-                { "eth", make_eth_dev, NULL, 0x41400000, 0x100000, { 48 } },
++                { "eth-usb", make_eth_usb, NULL, 0x41400000, 0x200000, { 48 } },
+             },
+         },
+     };
 -- 
 2.20.1
 

@@ -1,102 +1,103 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2208854lfo;
-        Fri, 5 Feb 2021 09:38:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJycg/jIIEoAuy0lQXHTQFjoBmWRaKdWWKeGUavovMPqtTnceWtbnpPdkIaefG3KWyvVSJmt
-X-Received: by 2002:a25:3bc4:: with SMTP id i187mr7663558yba.146.1612546689206;
-        Fri, 05 Feb 2021 09:38:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612546689; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2210817lfo;
+        Fri, 5 Feb 2021 09:40:40 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw+MHQfQ0kc13jkA0oMa+OL9hf3eH7lsMbxes4H8bwl3pws38ZHZo2q8CO1aqOx/vOPgaRY
+X-Received: by 2002:a25:49c5:: with SMTP id w188mr7688002yba.367.1612546840201;
+        Fri, 05 Feb 2021 09:40:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612546840; cv=none;
         d=google.com; s=arc-20160816;
-        b=GN/dpGC4xFi3Z3h0eQl2B7SBWGhWLGeAyBn0w9VeogJv8JUQGtITf9aznb1sC6aTLQ
-         VheFqIZTijh8rYMfsJoqm5cJ8CfOq2YBLWDxVJ8pW8sORNsHgNMuRU6IhI9c687Kwo3x
-         EW/JOiSGwOKjNtsE24ZxdznaFmRzPbvGrezGz6DpfBRkAk5T1m+x3YYwljX8l++S/+QF
-         WOkCoBxWrUJpwuLU+tdF7MFStzY0Vjj/DFmoDtJECxJBe0ki9A9LgjgBQwSFuQSgBH1u
-         lNzSvI6ZGH23Esl7F9pTf8Qpl6E1cfQtBc4Nafw2kNS6mGpDLyne7X8AUXNWNra482WS
-         ewjQ==
+        b=PPQuMg41D6I3lak23mRZMqvzOM1FHUOMdlLqslMEWDtmfQ8MZai96nexBqzhOPZ6we
+         YiDGlb12wxd+0/Ocfz6vjf5N0u2jMsyiofp9sPlYJKRC6kWQoFRbYRFs8hGGeVwI2sw3
+         HBjhw9bq1A84AFicBQQvysDOLCOYB4eHfX4oDLopJr3nJviBjK57eVUbOBnUSINVxLuG
+         Jah/DWNCAEGo4UrRMpxPncVH7V6B7p+rBnvLsFpL6k8M1tP5UTht/DdVJPRlKEjTea5h
+         /vYubJ3HNR9nNbwHNnI4VNj22RMrGXiRbfYQTMehWh5BGxw8Kq2hWX/lPg+yGzxF8SUf
+         /S3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bR3iCRZSQtsiL/0YanNf64ks34qWLJ5kgt2Osppz8EY=;
-        b=o6cHhI48aR5HRxCrvBLt/bA9bZFi3Zz0slamlInHwYqww4XjWHddlZaTg18gT7cyu7
-         td/qbFWEngWWMOUbpbyHyAOWSyG1zOKcweXn15wQmPoZMywpCdFhCRGBgcd1lLmm3rGz
-         t9032ZHB3kbiOQaa0v0I9b60Sul0KkU4rC6sUSxPhcgPfCQ0WUrnEzH9TQbFUQN16nMV
-         l0Kot51R6KiERh+dcVlzhd6vGicVaQlsOZLlg9jamC+lWRblaulKg6hTeriJhI/WML2S
-         HiM3JPuZFMhwq85G2UEaYQv0iQaKuRIl5F7S+ZzJpkWPexqrSpuZyopZOGnspv9Pz73G
-         7TZg==
+        bh=RMlSEt6PiH0qMk4plcisXlg9m+5b90Bk6CfkYCOT5n0=;
+        b=ZTtYz/Lw0CwzUjjS5nByC8Y2C3tBqDC3m+1Ij+Hj/EsSm8ZPdeVpBPsp6ShV6MekDw
+         /Z6dfW202ec95aL7W+AXPttzuDayRbpDDCaP4eT9qsEYBKEK90IJbaPbmxmUHmmjh7ku
+         4wcIYGnmeq7PUHKDjplPTMpSYyp2EjIHr3f8ryiB8osyYOT+n1d9MV71SHh1ZNzTlg/h
+         6uA84Ku+cLRCTBxC3irahO87/iQ11Ih8oCk9kpIFaRPx8CMmsCK3w23/d2S8Z6sD0d8R
+         cni4GfJWScKFaLyb4Km6UhcQIqcUvlt+Ubw6/OQ5nlFXp5AZJC/YlzJAhGqXZQUtWrZ6
+         3nsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s1UguYTa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vbfFqhNM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v201si9336009ybv.79.2021.02.05.09.38.08
+        by mx.google.com with ESMTPS id w4si10531119ybe.162.2021.02.05.09.40.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 09:38:09 -0800 (PST)
+        Fri, 05 Feb 2021 09:40:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s1UguYTa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vbfFqhNM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57070 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l853Y-0001I9-EQ
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:38:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46320)
+	id 1l855z-0003RR-Jh
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:40:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84Tj-0006r5-De
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:09 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:37080)
+ id 1l84Td-0006m0-G1
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:02 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:35379)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84TG-00044M-Hq
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:07 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id v15so8465473wrx.4
- for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:33 -0800 (PST)
+ id 1l84T8-000439-OP
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:01 -0500
+Received: by mail-wr1-x433.google.com with SMTP id l12so8485577wry.2
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=bR3iCRZSQtsiL/0YanNf64ks34qWLJ5kgt2Osppz8EY=;
- b=s1UguYTa03aWaHgLSvHXJdyKdN4ZML9BystZ+BkSLCscJL4XZPhXxmfAVwRbW2+iio
- Z2ffNjAz++Bk23K8g9sQzy5TZJV5GlsKoAI3kchYYSky0BU6+EFn4VDAGpAvwaIbYt+j
- x1WZVzeZtTU/R3vVYNLVGX7G2ZzjL4Q9Yfp98LqLInKTEc0d/3PHB+kGHq4TARYXIrU/
- 89ChX6SrDVf7Yfmc89Z2hKkg0ZO2dBMn9oeAsYtnJGGfYgWlRzRBKkOZVV0fc9wQ9SdK
- BgTUCchVOBnpj0mzWjFrVb+NxE6KOUoXPiT7Luq/ubh16hJvNPXdgnfk154PzgmG1FuP
- nr8Q==
+ bh=RMlSEt6PiH0qMk4plcisXlg9m+5b90Bk6CfkYCOT5n0=;
+ b=vbfFqhNMDID3Tq4WnXtj/B2iEi46MaVQecWXaH7uv2XJgxqARyIf5WxSSqr0B7ztvN
+ 5RrNU0VUzhQoONZoL1y/nlsbqoa6wk2WPggrN3M54QuThfzix8HxJK+0WkVRFIOqqVWS
+ rgqT0ajJASPdK38jXZyCgGB0NIdycmNQ0IFV6vz8SKl13Uq2wtC4W/dq9aJGUpkCJTWd
+ JaNmGSX30keRBld/wiL5BRKlCndatLB7U/BVtT6ac7EALdMrvf5rsP7cZ+YTi78JhbGD
+ w3v3tjo1r84jOn0IWYNhzffncSoqfFrJAJIorGwUCk/bREBPwClANSjaxYnPf8yv9lTF
+ OgJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bR3iCRZSQtsiL/0YanNf64ks34qWLJ5kgt2Osppz8EY=;
- b=Xg+dkJM3y6K/key7U+JCY4iRTcsK4M2/ua8O5ft1V9Ww2/uGvBlieNic2flfBJnVoZ
- nVNlknleX4QUbGpNmcuPzHJrzRVbC47wKNiQGnJT/FXsTjcR0PTSiMvxlA7BgceurCYH
- vvGPmq4YE1oOL9O8V4oQmQcoZR4fdugcu1JHeO3ARdp+AadDUWQkXpgVHW+6l8a1s2qv
- JzGsBZ7pEb6pFYh25eVufDpjiyAByxJWB+A6FG9H/DC1VcNAQbQez5dz8r9+Pzc02ewa
- 4PAKg3w0wqFYUgyxe4+0I6BzwaESlPkf6dJRxSnDZb8BbWtH5sLIIb5wuJyKYPuY8Ak0
- OnGg==
-X-Gm-Message-State: AOAM530pkQH/EDEi7Famm+/w+EgOBEC0xKBx/njzUGyCUWBYY215+KFF
- sOLaT96xvhQPFF4fS1S6/mQiB1MoUpA6Vw==
-X-Received: by 2002:a5d:6a8f:: with SMTP id s15mr6098511wru.252.1612544432527; 
- Fri, 05 Feb 2021 09:00:32 -0800 (PST)
+ bh=RMlSEt6PiH0qMk4plcisXlg9m+5b90Bk6CfkYCOT5n0=;
+ b=KxWJE1z0oO3bpXzqeqqBEpmptzUuNl3RjYPKbtpLUmcm84PUOI6rQNoLL240CTPGFu
+ N4WLwgd32e+MDtyjTepOC37pOd669pjxF+QpJWpvuGc8RYii6rqtVHk8h0qbRvKNFIkE
+ w0oSLxyO8jRc9yv82HUXLjNfo+EuuSS/W0OsvMOnutMJC4ceRwmwo3ineJCsz+1Vx9aD
+ O36STaQEuXx9ymCblbPBqvzasQ44f/ffPt17jfIf8/oMQC2OVdLDVg8u2LNic7aGKgGU
+ 7wfwH3NpvMef8uf+DwGW3TAxqn57JoJVtH8UthzTQeptNgV03SdsiiN7XojGofV/C8jt
+ QATQ==
+X-Gm-Message-State: AOAM530ElhbHOhk5qY9e09rj2k4ci4gdcxK9+BKLhrT1wLxDXTeEMWbp
+ JgWEA493apQLdVwfNl286N4v876Xm4j4DA==
+X-Received: by 2002:a5d:50d2:: with SMTP id f18mr6334526wrt.338.1612544427436; 
+ Fri, 05 Feb 2021 09:00:27 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.31
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:32 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:27 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 13/24] hw/arm/mps2-tz: Move device IRQ info to data structures
-Date: Fri,  5 Feb 2021 17:00:08 +0000
-Message-Id: <20210205170019.25319-14-peter.maydell@linaro.org>
+Subject: [PATCH 07/24] hw/arm/mps2-tz: Make FPGAIO switch and LED config
+ per-board
+Date: Fri,  5 Feb 2021 17:00:02 +0000
+Message-Id: <20210205170019.25319-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,144 +119,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vhzr6VisGxW5
+X-TUID: wdcW3UpuoOIo
 
-Move the specification of the IRQ information for the uart, ethernet,
-dma and spi devices to the data structures.  (The other devices
-handled by the PPCPortInfo structures don't have any interrupt lines
-we need to wire up.)
+Set the FPGAIO num-leds and have-switches properties explicitly
+per-board, rather than relying on the defaults.  The AN505 and AN521
+both have the same settings as the default values, but the AN524 will
+be different.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps2-tz.c | 52 +++++++++++++++++++++++-------------------------
- 1 file changed, 25 insertions(+), 27 deletions(-)
+ hw/arm/mps2-tz.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 0c75b2230ed..07694413005 100644
+index 9add1453cc2..94618ae54d2 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -208,12 +208,10 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
-                                const char *name, hwaddr size,
-                                const int *irqs)
+@@ -79,6 +79,8 @@ struct MPS2TZMachineClass {
+     uint32_t sysclk_frq; /* Main SYSCLK frequency in Hz */
+     uint32_t len_oscclk;
+     const uint32_t *oscclk;
++    uint32_t fpgaio_num_leds; /* Number of LEDs in FPGAIO LED0 register */
++    bool fpgaio_switches; /* Does FPGAIO have SWITCH register? */
+     const char *armsse_type;
+ };
+ 
+@@ -241,8 +243,11 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
+                                  const char *name, hwaddr size)
  {
-+    /* The irq[] array is tx, rx, combined, in that order */
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-     CMSDKAPBUART *uart = opaque;
-     int i = uart - &mms->uart[0];
--    int rxirqno = i * 2 + 32;
--    int txirqno = i * 2 + 33;
--    int combirqno = i + 42;
-     SysBusDevice *s;
-     DeviceState *orgate_dev = DEVICE(&mms->uart_irq_orgate);
+     MPS2FPGAIO *fpgaio = opaque;
++    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
  
-@@ -222,11 +220,11 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
-     qdev_prop_set_uint32(DEVICE(uart), "pclk-frq", mmc->sysclk_frq);
-     sysbus_realize(SYS_BUS_DEVICE(uart), &error_fatal);
-     s = SYS_BUS_DEVICE(uart);
--    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, txirqno));
--    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, rxirqno));
-+    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
-+    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, irqs[1]));
-     sysbus_connect_irq(s, 2, qdev_get_gpio_in(orgate_dev, i * 2));
-     sysbus_connect_irq(s, 3, qdev_get_gpio_in(orgate_dev, i * 2 + 1));
--    sysbus_connect_irq(s, 4, get_sse_irq_in(mms, combirqno));
-+    sysbus_connect_irq(s, 4, get_sse_irq_in(mms, irqs[2]));
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(uart), 0);
+     object_initialize_child(OBJECT(mms), "fpgaio", fpgaio, TYPE_MPS2_FPGAIO);
++    qdev_prop_set_uint32(DEVICE(fpgaio), "num-leds", mmc->fpgaio_num_leds);
++    qdev_prop_set_bit(DEVICE(fpgaio), "have-switches", mmc->fpgaio_switches);
+     sysbus_realize(SYS_BUS_DEVICE(fpgaio), &error_fatal);
+     return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
+ }
+@@ -687,6 +692,8 @@ static void mps2tz_an505_class_init(ObjectClass *oc, void *data)
+     mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
+     mmc->oscclk = an505_oscclk;
+     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
++    mmc->fpgaio_num_leds = 2;
++    mmc->fpgaio_switches = false;
+     mmc->armsse_type = TYPE_IOTKIT;
  }
  
-@@ -283,7 +281,7 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
- 
-     s = SYS_BUS_DEVICE(mms->lan9118);
-     sysbus_realize_and_unref(s, &error_fatal);
--    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 48));
-+    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
-     return sysbus_mmio_get_region(s, 0);
+@@ -705,6 +712,8 @@ static void mps2tz_an521_class_init(ObjectClass *oc, void *data)
+     mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
+     mmc->oscclk = an505_oscclk; /* AN521 is the same as AN505 here */
+     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
++    mmc->fpgaio_num_leds = 2;
++    mmc->fpgaio_switches = false;
+     mmc->armsse_type = TYPE_SSE200;
  }
  
-@@ -329,6 +327,7 @@ static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
-                               const char *name, hwaddr size,
-                               const int *irqs)
- {
-+    /* The irq[] array is DMACINTR, DMACINTERR, DMACINTTC, in that order */
-     PL080State *dma = opaque;
-     int i = dma - &mms->dma[0];
-     SysBusDevice *s;
-@@ -373,9 +372,9 @@ static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
- 
-     s = SYS_BUS_DEVICE(dma);
-     /* Wire up DMACINTR, DMACINTERR, DMACINTTC */
--    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 58 + i * 3));
--    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, 56 + i * 3));
--    sysbus_connect_irq(s, 2, get_sse_irq_in(mms, 57 + i * 3));
-+    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
-+    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, irqs[1]));
-+    sysbus_connect_irq(s, 2, get_sse_irq_in(mms, irqs[2]));
- 
-     g_free(mscname);
-     return sysbus_mmio_get_region(s, 0);
-@@ -394,13 +393,12 @@ static MemoryRegion *make_spi(MPS2TZMachineState *mms, void *opaque,
-      * lines are set via the "MISC" register in the MPS2 FPGAIO device.
-      */
-     PL022State *spi = opaque;
--    int i = spi - &mms->spi[0];
-     SysBusDevice *s;
- 
-     object_initialize_child(OBJECT(mms), name, spi, TYPE_PL022);
-     sysbus_realize(SYS_BUS_DEVICE(spi), &error_fatal);
-     s = SYS_BUS_DEVICE(spi);
--    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 51 + i));
-+    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
-     return sysbus_mmio_get_region(s, 0);
- }
- 
-@@ -551,16 +549,16 @@ static void mps2tz_common_init(MachineState *machine)
-         }, {
-             .name = "apb_ppcexp1",
-             .ports = {
--                { "spi0", make_spi, &mms->spi[0], 0x40205000, 0x1000 },
--                { "spi1", make_spi, &mms->spi[1], 0x40206000, 0x1000 },
--                { "spi2", make_spi, &mms->spi[2], 0x40209000, 0x1000 },
--                { "spi3", make_spi, &mms->spi[3], 0x4020a000, 0x1000 },
--                { "spi4", make_spi, &mms->spi[4], 0x4020b000, 0x1000 },
--                { "uart0", make_uart, &mms->uart[0], 0x40200000, 0x1000 },
--                { "uart1", make_uart, &mms->uart[1], 0x40201000, 0x1000 },
--                { "uart2", make_uart, &mms->uart[2], 0x40202000, 0x1000 },
--                { "uart3", make_uart, &mms->uart[3], 0x40203000, 0x1000 },
--                { "uart4", make_uart, &mms->uart[4], 0x40204000, 0x1000 },
-+                { "spi0", make_spi, &mms->spi[0], 0x40205000, 0x1000, { 51 } },
-+                { "spi1", make_spi, &mms->spi[1], 0x40206000, 0x1000, { 52 } },
-+                { "spi2", make_spi, &mms->spi[2], 0x40209000, 0x1000, { 53 } },
-+                { "spi3", make_spi, &mms->spi[3], 0x4020a000, 0x1000, { 54 } },
-+                { "spi4", make_spi, &mms->spi[4], 0x4020b000, 0x1000, { 55 } },
-+                { "uart0", make_uart, &mms->uart[0], 0x40200000, 0x1000, { 32, 33, 42 } },
-+                { "uart1", make_uart, &mms->uart[1], 0x40201000, 0x1000, { 34, 35, 43 } },
-+                { "uart2", make_uart, &mms->uart[2], 0x40202000, 0x1000, { 36, 37, 44 } },
-+                { "uart3", make_uart, &mms->uart[3], 0x40203000, 0x1000, { 38, 39, 45 } },
-+                { "uart4", make_uart, &mms->uart[4], 0x40204000, 0x1000, { 40, 41, 46 } },
-                 { "i2c0", make_i2c, &mms->i2c[0], 0x40207000, 0x1000 },
-                 { "i2c1", make_i2c, &mms->i2c[1], 0x40208000, 0x1000 },
-                 { "i2c2", make_i2c, &mms->i2c[2], 0x4020c000, 0x1000 },
-@@ -582,15 +580,15 @@ static void mps2tz_common_init(MachineState *machine)
-                 { "gpio1", make_unimp_dev, &mms->gpio[1], 0x40101000, 0x1000 },
-                 { "gpio2", make_unimp_dev, &mms->gpio[2], 0x40102000, 0x1000 },
-                 { "gpio3", make_unimp_dev, &mms->gpio[3], 0x40103000, 0x1000 },
--                { "eth", make_eth_dev, NULL, 0x42000000, 0x100000 },
-+                { "eth", make_eth_dev, NULL, 0x42000000, 0x100000, { 48 } },
-             },
-         }, {
-             .name = "ahb_ppcexp1",
-             .ports = {
--                { "dma0", make_dma, &mms->dma[0], 0x40110000, 0x1000 },
--                { "dma1", make_dma, &mms->dma[1], 0x40111000, 0x1000 },
--                { "dma2", make_dma, &mms->dma[2], 0x40112000, 0x1000 },
--                { "dma3", make_dma, &mms->dma[3], 0x40113000, 0x1000 },
-+                { "dma0", make_dma, &mms->dma[0], 0x40110000, 0x1000, { 58, 56, 57 } },
-+                { "dma1", make_dma, &mms->dma[1], 0x40111000, 0x1000, { 61, 59, 60 } },
-+                { "dma2", make_dma, &mms->dma[2], 0x40112000, 0x1000, { 64, 62, 63 } },
-+                { "dma3", make_dma, &mms->dma[3], 0x40113000, 0x1000, { 67, 65, 66 } },
-             },
-         },
-     };
 -- 
 2.20.1
 

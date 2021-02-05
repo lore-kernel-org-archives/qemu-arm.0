@@ -1,110 +1,109 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2210817lfo;
-        Fri, 5 Feb 2021 09:40:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw+MHQfQ0kc13jkA0oMa+OL9hf3eH7lsMbxes4H8bwl3pws38ZHZo2q8CO1aqOx/vOPgaRY
-X-Received: by 2002:a25:49c5:: with SMTP id w188mr7688002yba.367.1612546840201;
-        Fri, 05 Feb 2021 09:40:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612546840; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2212965lfo;
+        Fri, 5 Feb 2021 09:43:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxJaYFE3jfCy0c/XvjoWvj5cNl3mPBQoqS8eJ1s/yjK47waOc2DYKvDp600I/cYlP2ftJ/6
+X-Received: by 2002:a25:581:: with SMTP id 123mr7853814ybf.186.1612547005162;
+        Fri, 05 Feb 2021 09:43:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612547005; cv=none;
         d=google.com; s=arc-20160816;
-        b=PPQuMg41D6I3lak23mRZMqvzOM1FHUOMdlLqslMEWDtmfQ8MZai96nexBqzhOPZ6we
-         YiDGlb12wxd+0/Ocfz6vjf5N0u2jMsyiofp9sPlYJKRC6kWQoFRbYRFs8hGGeVwI2sw3
-         HBjhw9bq1A84AFicBQQvysDOLCOYB4eHfX4oDLopJr3nJviBjK57eVUbOBnUSINVxLuG
-         Jah/DWNCAEGo4UrRMpxPncVH7V6B7p+rBnvLsFpL6k8M1tP5UTht/DdVJPRlKEjTea5h
-         /vYubJ3HNR9nNbwHNnI4VNj22RMrGXiRbfYQTMehWh5BGxw8Kq2hWX/lPg+yGzxF8SUf
-         /S3Q==
+        b=Ks1ueU44txe/85A4NM4RD/K3Ur4KPOYYQiUR+uD0wWU+EiiMPYGW4rtOZc2OOgI7LR
+         6R51pwa7AEzGT993SNK8I6HiAvk7MM9SCHR79GdxbfVjcUDdmzod/pyBk7b57oCvbddI
+         WI/NKthKWw+HRdlkXRes5IeJgNp0JtkxxqaP22BOB/1oIEcDWsZ9+JHWIaYkliVpF8Fk
+         2W3QGlvoNNLuPsbFERLjovYzvnlXaq5XynbtKyKBaBYcvUfR97cyPxgVrGUJB51imaj9
+         MO7VkB8mGDhLYBhPzSypHdiWei0Tyx3kVMZqu2eZoLaxszykggJdsHTbqgknGjF6zFZ9
+         2ECw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=RMlSEt6PiH0qMk4plcisXlg9m+5b90Bk6CfkYCOT5n0=;
-        b=ZTtYz/Lw0CwzUjjS5nByC8Y2C3tBqDC3m+1Ij+Hj/EsSm8ZPdeVpBPsp6ShV6MekDw
-         /Z6dfW202ec95aL7W+AXPttzuDayRbpDDCaP4eT9qsEYBKEK90IJbaPbmxmUHmmjh7ku
-         4wcIYGnmeq7PUHKDjplPTMpSYyp2EjIHr3f8ryiB8osyYOT+n1d9MV71SHh1ZNzTlg/h
-         6uA84Ku+cLRCTBxC3irahO87/iQ11Ih8oCk9kpIFaRPx8CMmsCK3w23/d2S8Z6sD0d8R
-         cni4GfJWScKFaLyb4Km6UhcQIqcUvlt+Ubw6/OQ5nlFXp5AZJC/YlzJAhGqXZQUtWrZ6
-         3nsw==
+        bh=Lp/PXJ/Lg+jhfej9/mPuXMN8i+zU7pqYIRVDjsjSQS8=;
+        b=CM+SFdacmCVE9eX1YkKBCU+dl7NFx4h2UwezPOm1Rh1y1jEm+kaGzPcq89j9XGkSA/
+         noWJEsClLMKIIirLkdcboL9TXTKl/DnI5yIeoK+lUcVrDJBCY8ISTklpfzQX5qgHn/fq
+         3pBoVPLrOsVQn0/+O2k8PcQ8L2hVMQ16dhVz0xeUXzF4UmstB8DJGl8C1WTQL1kt41Sv
+         EUfHVdY92eOFicEyGawIzKJ43/6Ag4KhGw1pxeJD8NE3nUcizVDYwcXvz5Z124rqWFqy
+         sXgAVnXH1RrsgJJFLfyqzqUMaHUaoTYw3uRXIXM3THGdnL+X8Py9fD6a55yZqcikXAS4
+         zL5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vbfFqhNM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yW1fULBK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w4si10531119ybe.162.2021.02.05.09.40.40
+        by mx.google.com with ESMTPS id f95si10949025ybi.236.2021.02.05.09.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 09:40:40 -0800 (PST)
+        Fri, 05 Feb 2021 09:43:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vbfFqhNM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yW1fULBK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33258 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39058 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l855z-0003RR-Jh
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:40:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46174)
+	id 1l858e-0006N6-Dt
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:43:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46396)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84Td-0006m0-G1
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:02 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:35379)
+ id 1l84Tn-0006wk-Qc
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:11 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:38215)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84T8-000439-OP
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:01 -0500
-Received: by mail-wr1-x433.google.com with SMTP id l12so8485577wry.2
- for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:28 -0800 (PST)
+ id 1l84TO-00045L-JD
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:11 -0500
+Received: by mail-wr1-x429.google.com with SMTP id b3so8451270wrj.5
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=RMlSEt6PiH0qMk4plcisXlg9m+5b90Bk6CfkYCOT5n0=;
- b=vbfFqhNMDID3Tq4WnXtj/B2iEi46MaVQecWXaH7uv2XJgxqARyIf5WxSSqr0B7ztvN
- 5RrNU0VUzhQoONZoL1y/nlsbqoa6wk2WPggrN3M54QuThfzix8HxJK+0WkVRFIOqqVWS
- rgqT0ajJASPdK38jXZyCgGB0NIdycmNQ0IFV6vz8SKl13Uq2wtC4W/dq9aJGUpkCJTWd
- JaNmGSX30keRBld/wiL5BRKlCndatLB7U/BVtT6ac7EALdMrvf5rsP7cZ+YTi78JhbGD
- w3v3tjo1r84jOn0IWYNhzffncSoqfFrJAJIorGwUCk/bREBPwClANSjaxYnPf8yv9lTF
- OgJw==
+ bh=Lp/PXJ/Lg+jhfej9/mPuXMN8i+zU7pqYIRVDjsjSQS8=;
+ b=yW1fULBK2cOdQTC7E/RkebMVAZvJry9y1rMYHeYfcGPOZgajhWqHA7pbFakRKXdsGh
+ Ni/tZog01acku1CI7ADzAdlZX2xrL6m15HVD7t3f2z/bwTvwnCcn16UnB75tWk22hjfE
+ Thb7Bij1e97u/jUv3+eN4Ex85DpD9le0P5Sth8Y8ET8cyQqgy17VKd+BbtDq+hQjwXPn
+ 4t4e1frVviAiTeXtPM7A6eJaE6dPNyhrDhFKy9QC9UmAJ0g8VCRl85GxS2i62Ek0WCsX
+ UwrdNSd/13pJ3rNVc5F3LmUmB5q/qBilitE3HmodEfigdbMznQnK3AkEfC2bKwavNhcf
+ HH2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RMlSEt6PiH0qMk4plcisXlg9m+5b90Bk6CfkYCOT5n0=;
- b=KxWJE1z0oO3bpXzqeqqBEpmptzUuNl3RjYPKbtpLUmcm84PUOI6rQNoLL240CTPGFu
- N4WLwgd32e+MDtyjTepOC37pOd669pjxF+QpJWpvuGc8RYii6rqtVHk8h0qbRvKNFIkE
- w0oSLxyO8jRc9yv82HUXLjNfo+EuuSS/W0OsvMOnutMJC4ceRwmwo3ineJCsz+1Vx9aD
- O36STaQEuXx9ymCblbPBqvzasQ44f/ffPt17jfIf8/oMQC2OVdLDVg8u2LNic7aGKgGU
- 7wfwH3NpvMef8uf+DwGW3TAxqn57JoJVtH8UthzTQeptNgV03SdsiiN7XojGofV/C8jt
- QATQ==
-X-Gm-Message-State: AOAM530ElhbHOhk5qY9e09rj2k4ci4gdcxK9+BKLhrT1wLxDXTeEMWbp
- JgWEA493apQLdVwfNl286N4v876Xm4j4DA==
-X-Received: by 2002:a5d:50d2:: with SMTP id f18mr6334526wrt.338.1612544427436; 
- Fri, 05 Feb 2021 09:00:27 -0800 (PST)
+ bh=Lp/PXJ/Lg+jhfej9/mPuXMN8i+zU7pqYIRVDjsjSQS8=;
+ b=K0ILzi2KlokA1DPpmkS4Q1M32i0cq8HUcGYaSOcgVCdcDDdKRwa4MgnjTNr0vXNYrP
+ 5UWtIrJNq2tBcKc9oV67atmo5vJqFdsgMPH2JrGcGqPp3bGCYswpXBqrH+ZwBeH1UpB3
+ ADpb2i8DrYiWEMUxlASa15gEpqrCu5Og9I07fLeh4gb+sU1vZgykx39UbDq5+6novOmk
+ llgrYU3YlY6+y7XYSTTU+boMEzEpMvy1MgExDaU9z00AI30pBdpz62zYmM+6d6weUJXV
+ S7U9sFqZw8o3DSYWlyNutoJ1skdij5Lpmusnk5MjfcTYiPvbna7/Vax8C02bU1RBmRAY
+ YZ2A==
+X-Gm-Message-State: AOAM530cwGcRJtzvwo3V1HBadgMODfr2Ps9cDrizQe+CiIwEJMgh/y3l
+ f1OHHgKhGgpQrsxJeMxXFFinFQ==
+X-Received: by 2002:adf:80e7:: with SMTP id 94mr5129031wrl.5.1612544441264;
+ Fri, 05 Feb 2021 09:00:41 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.26
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:27 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:40 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 07/24] hw/arm/mps2-tz: Make FPGAIO switch and LED config
- per-board
-Date: Fri,  5 Feb 2021 17:00:02 +0000
-Message-Id: <20210205170019.25319-8-peter.maydell@linaro.org>
+Subject: [PATCH 24/24] hw/arm/mps2: Update old infocenter.arm.com URLs
+Date: Fri,  5 Feb 2021 17:00:19 +0000
+Message-Id: <20210205170019.25319-25-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,60 +118,239 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wdcW3UpuoOIo
+X-TUID: 2cMNyJVI2WT8
 
-Set the FPGAIO num-leds and have-switches properties explicitly
-per-board, rather than relying on the defaults.  The AN505 and AN521
-both have the same settings as the default values, but the AN524 will
-be different.
+Update old infocenter.arm.com URLs to the equivalent developer.arm.com
+ones (the old URLs should redirect, but we might as well avoid the
+redirection notice, and the new URLs are pleasantly shorter).
+
+This commit covers the links to the MPS2 board TRM, the various
+Application Notes, the IoTKit and SSE-200 documents.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps2-tz.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+There are some other infocenter URLs in the codebase; we should
+probably update those too, but they don't really fit in with this
+patchset, so I'll do them separately later.
+---
+ include/hw/arm/armsse.h          |  4 ++--
+ include/hw/misc/armsse-cpuid.h   |  2 +-
+ include/hw/misc/armsse-mhu.h     |  2 +-
+ include/hw/misc/iotkit-secctl.h  |  2 +-
+ include/hw/misc/iotkit-sysctl.h  |  2 +-
+ include/hw/misc/iotkit-sysinfo.h |  2 +-
+ include/hw/misc/mps2-fpgaio.h    |  2 +-
+ hw/arm/mps2-tz.c                 | 11 +++++------
+ hw/misc/armsse-cpuid.c           |  2 +-
+ hw/misc/armsse-mhu.c             |  2 +-
+ hw/misc/iotkit-sysctl.c          |  2 +-
+ hw/misc/iotkit-sysinfo.c         |  2 +-
+ hw/misc/mps2-fpgaio.c            |  2 +-
+ hw/misc/mps2-scc.c               |  2 +-
+ 14 files changed, 19 insertions(+), 20 deletions(-)
 
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index 676cd4f36b0..09284ca75cf 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -14,9 +14,9 @@
+  * hardware, which include the IoT Kit and the SSE-050, SSE-100 and
+  * SSE-200. Currently we model:
+  *  - the Arm IoT Kit which is documented in
+- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ *    https://developer.arm.com/documentation/ecm0601256/latest
+  *  - the SSE-200 which is documented in
+- * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
++ *    https://developer.arm.com/documentation/101104/latest/
+  *
+  * The IoTKit contains:
+  *  a Cortex-M33
+diff --git a/include/hw/misc/armsse-cpuid.h b/include/hw/misc/armsse-cpuid.h
+index a61355e5161..9c0926322cb 100644
+--- a/include/hw/misc/armsse-cpuid.h
++++ b/include/hw/misc/armsse-cpuid.h
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the "CPU_IDENTITY" register block which is part of the
+  * Arm SSE-200 and documented in
+- * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
++ * https://developer.arm.com/documentation/101104/latest/
+  *
+  * QEMU interface:
+  *  + QOM property "CPUID": the value to use for the CPUID register
+diff --git a/include/hw/misc/armsse-mhu.h b/include/hw/misc/armsse-mhu.h
+index 2671b5b978b..41925ded89b 100644
+--- a/include/hw/misc/armsse-mhu.h
++++ b/include/hw/misc/armsse-mhu.h
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the Message Handling Unit (MHU) which is part of the
+  * Arm SSE-200 and documented in
+- * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
++ * https://developer.arm.com/documentation/101104/latest/
+  *
+  * QEMU interface:
+  *  + sysbus MMIO region 0: the system information register bank
+diff --git a/include/hw/misc/iotkit-secctl.h b/include/hw/misc/iotkit-secctl.h
+index 54c212b515c..227d44abe49 100644
+--- a/include/hw/misc/iotkit-secctl.h
++++ b/include/hw/misc/iotkit-secctl.h
+@@ -11,7 +11,7 @@
+ 
+ /* This is a model of the security controller which is part of the
+  * Arm IoT Kit and documented in
+- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ * https://developer.arm.com/documentation/ecm0601256/latest
+  *
+  * QEMU interface:
+  *  + sysbus MMIO region 0 is the "secure privilege control block" registers
+diff --git a/include/hw/misc/iotkit-sysctl.h b/include/hw/misc/iotkit-sysctl.h
+index 2b5636b218c..2bc391138db 100644
+--- a/include/hw/misc/iotkit-sysctl.h
++++ b/include/hw/misc/iotkit-sysctl.h
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the "system control element" which is part of the
+  * Arm IoTKit and documented in
+- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ * https://developer.arm.com/documentation/ecm0601256/latest
+  * Specifically, it implements the "system information block" and
+  * "system control register" blocks.
+  *
+diff --git a/include/hw/misc/iotkit-sysinfo.h b/include/hw/misc/iotkit-sysinfo.h
+index 7e620e2eafe..055771d2098 100644
+--- a/include/hw/misc/iotkit-sysinfo.h
++++ b/include/hw/misc/iotkit-sysinfo.h
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the "system information block" which is part of the
+  * Arm IoTKit and documented in
+- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ * https://developer.arm.com/documentation/ecm0601256/latest
+  * QEMU interface:
+  *  + QOM property "SYS_VERSION": value to use for SYS_VERSION register
+  *  + QOM property "SYS_CONFIG": value to use for SYS_CONFIG register
+diff --git a/include/hw/misc/mps2-fpgaio.h b/include/hw/misc/mps2-fpgaio.h
+index 83c6e18a4ee..7f622bae536 100644
+--- a/include/hw/misc/mps2-fpgaio.h
++++ b/include/hw/misc/mps2-fpgaio.h
+@@ -12,7 +12,7 @@
+ /* This is a model of the FPGAIO register block in the AN505
+  * FPGA image for the MPS2 dev board; it is documented in the
+  * application note:
+- * http://infocenter.arm.com/help/topic/com.arm.doc.dai0505b/index.html
++ * https://developer.arm.com/documentation/dai0505/latest/
+  *
+  * QEMU interface:
+  *  + sysbus MMIO region 0: the register bank
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 9add1453cc2..94618ae54d2 100644
+index 27feb36616e..944f44f4a31 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -79,6 +79,8 @@ struct MPS2TZMachineClass {
-     uint32_t sysclk_frq; /* Main SYSCLK frequency in Hz */
-     uint32_t len_oscclk;
-     const uint32_t *oscclk;
-+    uint32_t fpgaio_num_leds; /* Number of LEDs in FPGAIO LED0 register */
-+    bool fpgaio_switches; /* Does FPGAIO have SWITCH register? */
-     const char *armsse_type;
- };
+@@ -22,21 +22,20 @@
+  * https://developer.arm.com/products/system-design/development-boards/fpga-prototyping-boards/mps2
+  *
+  * Board TRM:
+- * http://infocenter.arm.com/help/topic/com.arm.doc.100112_0200_06_en/versatile_express_cortex_m_prototyping_systems_v2m_mps2_and_v2m_mps2plus_technical_reference_100112_0200_06_en.pdf
++ * https://developer.arm.com/documentation/100112/latest/
+  * Application Note AN505:
+- * http://infocenter.arm.com/help/topic/com.arm.doc.dai0505b/index.html
++ * https://developer.arm.com/documentation/dai0505/latest/
+  * Application Note AN521:
+- * http://infocenter.arm.com/help/topic/com.arm.doc.dai0521c/index.html
++ * https://developer.arm.com/documentation/dai0521/latest/
+  * Application Note AN524:
+  * https://developer.arm.com/documentation/dai0524/latest/
+  *
+  * The AN505 defers to the Cortex-M33 processor ARMv8M IoT Kit FVP User Guide
+  * (ARM ECM0601256) for the details of some of the device layout:
+- *   http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ *  https://developer.arm.com/documentation/ecm0601256/latest
+  * Similarly, the AN521 and AN524 use the SSE-200, and the SSE-200 TRM defines
+  * most of the device layout:
+- *  http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
+- *
++ *  https://developer.arm.com/documentation/101104/latest/
+  */
  
-@@ -241,8 +243,11 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
-                                  const char *name, hwaddr size)
- {
-     MPS2FPGAIO *fpgaio = opaque;
-+    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
+ #include "qemu/osdep.h"
+diff --git a/hw/misc/armsse-cpuid.c b/hw/misc/armsse-cpuid.c
+index d58138dc28c..e785a090519 100644
+--- a/hw/misc/armsse-cpuid.c
++++ b/hw/misc/armsse-cpuid.c
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the "CPU_IDENTITY" register block which is part of the
+  * Arm SSE-200 and documented in
+- * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
++ * https://developer.arm.com/documentation/101104/latest/
+  *
+  * It consists of one read-only CPUID register (set by QOM property), plus the
+  * usual ID registers.
+diff --git a/hw/misc/armsse-mhu.c b/hw/misc/armsse-mhu.c
+index a45d97fada8..0be7f0fc874 100644
+--- a/hw/misc/armsse-mhu.c
++++ b/hw/misc/armsse-mhu.c
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the Message Handling Unit (MHU) which is part of the
+  * Arm SSE-200 and documented in
+- * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
++ * https://developer.arm.com/documentation/101104/latest/
+  */
  
-     object_initialize_child(OBJECT(mms), "fpgaio", fpgaio, TYPE_MPS2_FPGAIO);
-+    qdev_prop_set_uint32(DEVICE(fpgaio), "num-leds", mmc->fpgaio_num_leds);
-+    qdev_prop_set_bit(DEVICE(fpgaio), "have-switches", mmc->fpgaio_switches);
-     sysbus_realize(SYS_BUS_DEVICE(fpgaio), &error_fatal);
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
- }
-@@ -687,6 +692,8 @@ static void mps2tz_an505_class_init(ObjectClass *oc, void *data)
-     mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
-     mmc->oscclk = an505_oscclk;
-     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
-+    mmc->fpgaio_num_leds = 2;
-+    mmc->fpgaio_switches = false;
-     mmc->armsse_type = TYPE_IOTKIT;
- }
+ #include "qemu/osdep.h"
+diff --git a/hw/misc/iotkit-sysctl.c b/hw/misc/iotkit-sysctl.c
+index 964b48c74d9..222511c4b04 100644
+--- a/hw/misc/iotkit-sysctl.c
++++ b/hw/misc/iotkit-sysctl.c
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the "system control element" which is part of the
+  * Arm IoTKit and documented in
+- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ * https://developer.arm.com/documentation/ecm0601256/latest
+  * Specifically, it implements the "system control register" blocks.
+  */
  
-@@ -705,6 +712,8 @@ static void mps2tz_an521_class_init(ObjectClass *oc, void *data)
-     mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
-     mmc->oscclk = an505_oscclk; /* AN521 is the same as AN505 here */
-     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
-+    mmc->fpgaio_num_leds = 2;
-+    mmc->fpgaio_switches = false;
-     mmc->armsse_type = TYPE_SSE200;
- }
+diff --git a/hw/misc/iotkit-sysinfo.c b/hw/misc/iotkit-sysinfo.c
+index b2dcfc4376c..52e70053df7 100644
+--- a/hw/misc/iotkit-sysinfo.c
++++ b/hw/misc/iotkit-sysinfo.c
+@@ -12,7 +12,7 @@
+ /*
+  * This is a model of the "system information block" which is part of the
+  * Arm IoTKit and documented in
+- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
++ * https://developer.arm.com/documentation/ecm0601256/latest
+  * It consists of 2 read-only version/config registers, plus the
+  * usual ID registers.
+  */
+diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
+index b54657a4f07..64a383e063b 100644
+--- a/hw/misc/mps2-fpgaio.c
++++ b/hw/misc/mps2-fpgaio.c
+@@ -12,7 +12,7 @@
+ /* This is a model of the "FPGA system control and I/O" block found
+  * in the AN505 FPGA image for the MPS2 devboard.
+  * It is documented in AN505:
+- * http://infocenter.arm.com/help/topic/com.arm.doc.dai0505b/index.html
++ * https://developer.arm.com/documentation/dai0505/latest/
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
+index 562ace06a58..140a4b9ceba 100644
+--- a/hw/misc/mps2-scc.c
++++ b/hw/misc/mps2-scc.c
+@@ -13,7 +13,7 @@
+  * found in the FPGA images of MPS2 development boards.
+  *
+  * Documentation of it can be found in the MPS2 TRM:
+- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.100112_0100_03_en/index.html
++ * https://developer.arm.com/documentation/100112/latest/
+  * and also in the Application Notes documenting individual FPGA images.
+  */
  
 -- 
 2.20.1

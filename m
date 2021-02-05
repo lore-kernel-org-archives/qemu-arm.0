@@ -1,109 +1,109 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2228122lfo;
-        Fri, 5 Feb 2021 10:05:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzPSGYmmI+Uw4vq2ncAXQSY+CVvMluJtj2SH8Q9XmC8S6mlNNUr0J3Ie0EKWiG1V55DgcSv
-X-Received: by 2002:a05:6122:1213:: with SMTP id v19mr4051145vkc.9.1612548308373;
-        Fri, 05 Feb 2021 10:05:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612548308; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2229861lfo;
+        Fri, 5 Feb 2021 10:07:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxNuN6CIcE6A6D1mwbzf1dCpLk7RSfS57qmtdy+w1Ll8LmR0ugcUCkt5Xa4RJlbLb98cuPK
+X-Received: by 2002:a25:610e:: with SMTP id v14mr8729254ybb.344.1612548433318;
+        Fri, 05 Feb 2021 10:07:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612548433; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Py911pc4GzBYO4y9mEVbKnkl01oO8n6UwEo0BgdL40n9P3DBfnpIBBrIDCxgkjwSy
-         AKjsIRHOl5GKoXlOJdz3NFjl7jPzAvbwkjB7qHY4sCocPyIb4nD7hMAAFljFDsDDvHt8
-         wsfwaBVV3dgdcQlYjevt4fwJWUQM2BIgBFQGS5ZPGdT5HC+OiXdPwpTEbeqP8MMOAP7n
-         H1XWSjALTlJwzPB4aILXUkhUa+J4KAEY1DuxuAi5p15MjjEcQ+2jUlbdtUzSztWRJqkb
-         h8SqrCAkpGlznbhCUvpKD/Xgm5wRyRdM8FfXoO4PxAqBpTNSM9rlBMs7taJdNFQrxgfu
-         BYZA==
+        b=Ss1ByUcLGPD4bk3YLNJZO7jEaLqpzqcqIOm1/VijlzdIdl/FKoGbFB4cW0gRgR6zDI
+         J2o9Vzsm/s1NN+QCZ2zzdGG0kbpySs8YMfNsKwE2+hxBdYEXBtQ5p4I3eRGGJ2MA3kTI
+         vvEP+Z6+qlfJZ2vqKw4jOGc02Rn8bsV47C//m4QfI8KeDyr5SB2M5LhqtmKUzt69oUeT
+         CLu1+P29LDnJt4WErZ7rRbmAzzaImTaAmRIFhxKnwc++Oxty9GYPicHPWYz7nUXJUdpb
+         /Fr4/9MY6nJHRJLUWZs8NBiuvFlR3MMm4sMzMZBoOoW0P1PgCqtJvKKMtVSh7D34SvWy
+         7VGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=M0p8lPGYTACYbzRLtR7fBRTYLnsV3hqqOQcj+ku4dlo=;
-        b=k8LsB3R/53kdZgcomT6KFeCOJgj2kklS6eiQmL1nH38utF4hKelqgg59EXmNmMa2e1
-         WVUsjEgm6TtUrqXZgz3s7Cpl6B4llwtKWSXOMSn3GQ6MAsit8fmV04K6tmRxfm3S0kpI
-         /Jam7RdQd3kk67iNqf/HbZ72VPQIpFvqtEpkvlEX84zWHPz2muHGBYeW7J7yzpxXd7SU
-         7AXLfvETqxjhk/Di01xQZfiUMf/lzOGtkLt3rty70a/jWtySgFbqxaLPBPkng+iaGmZ/
-         +cbkBCNo+a/NeahZFLAcLx7f1zvJzJ1tSqxikTpkegb9DJ1ueqod6dt7nP7hHFd5KhE4
-         edrA==
+        bh=WtrfuXabVXGeTIyTEVS5d0lsWCXmLnI61ZuEmNjOGlM=;
+        b=awKyNcu5mmFCe3O6Klktk24uG/WmS53yto2DRH32oubU1GyapWpoBxd2oER6K9ZQXs
+         DgLwoeFpa98JufhUFxdGaadlF7bJ1Vh+sMqK82uUe+CuDQB+9F7akm0KoKx1cilPkLxk
+         Dv7MAV1VyfVYURpIxl2ZlZszFOzt67t03xpOa9xLXW1Me5il6yF6BwA5pHgnaWe87Txa
+         VqQ3cwXCIIuAxyBwfHwGASW8q38Uq2Ap7N/z81HvF6W8xdxJc/gyWvfwY7zZHh1LNIcB
+         0WrAy3Y6CPTzlhPjHWqERSFnNxJSU+NbcMe+m2xy7SsMcxpv+n8EUQvJn4exkcK7TnTW
+         EETw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pY+t6REU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DDtqw24M;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14si1923456uah.74.2021.02.05.10.05.08
+        by mx.google.com with ESMTPS id l9si1121399ybo.497.2021.02.05.10.07.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 10:05:08 -0800 (PST)
+        Fri, 05 Feb 2021 10:07:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pY+t6REU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DDtqw24M;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59974 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36804 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l85Tf-00025A-Kw
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:05:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46596)
+	id 1l85Vg-0004PJ-NM
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:07:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46150)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84U0-0007Ae-2O
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:24 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:46089)
+ id 1l84Ta-0006kL-Uz
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:00:59 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:35371)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84TZ-00048Q-LA
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:23 -0500
-Received: by mail-wr1-x432.google.com with SMTP id q7so8393054wre.13
- for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:52 -0800 (PST)
+ id 1l84T8-00043W-N7
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:00:56 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id l12so8485702wry.2
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=M0p8lPGYTACYbzRLtR7fBRTYLnsV3hqqOQcj+ku4dlo=;
- b=pY+t6REUnChKux8CNuu2SL+CRK0Itagle1XrT50PNB3claeRbxT/M/N0hz29P7yYRo
- 6tVFbzK1ACPm3Dn1bVIrHn5TumAuXXjS/hQwBDhhuE8xvW31PxriJ49Mph48IE6JYOLg
- ju6rb7l9QhV4LIF9xKnFvGT0gceyOgNZvz4Fu59ZmgUjIE7O5OmvDKY6siKHAKbvDmyS
- fPDLO2ycNPVyUmUl46EaJjeG5YK0iMKRl08afnOiZhQ/CdsxaX7xNZjRdGue0DgBEmrT
- pGRorGH3TUEyUzSJp07nL/qjepY4UD4A3HqcEP6zdRGvqOJ58zQAef87/6ych5e5tPIt
- Vhhw==
+ bh=WtrfuXabVXGeTIyTEVS5d0lsWCXmLnI61ZuEmNjOGlM=;
+ b=DDtqw24MGTthrvTCDmCVUhvyNywQQ3ySB1PCZmmdqA69MvBPLN8u+GuH550lICpKTM
+ /2Ur1N+ajMBksskb/5L85bcM0JId2ij6HExRnzFXFAyyQI2m4hCMGJRJYVuHNmeGNN3F
+ zsX+EspckPaQQftqV2kqKbLrT2u4/JSCWPyWOCG2JpOAeev7VVgyIhQijjSeZ8LSEiGc
+ kxeOdU7UilnarRePQ0M2zVlXuT94V52X55+xXMh/LN8HIy3xIt3qZQOKZt0hmJSY+B+O
+ /xkdf0icRQFKPVF/Tcg1aOOP2u49grsQlKA5VCDHhwYy2NB+eIvTXmtc/urONqgoq7fR
+ ZUvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=M0p8lPGYTACYbzRLtR7fBRTYLnsV3hqqOQcj+ku4dlo=;
- b=R4M2UU8WuBnky3IIBApwNXWx9NCGuutRXp7BCLyKBY1EVB/nRLlShbOfOXQFzM4Buj
- hR4jtzqm+1x0aVcm+ejZe2CzrpaxMPudoM/cvoWGY9mQqrf7PAV+DEv2FYwCEE5RtyGc
- xKeg7M//N3TTBdbSzrimOZDqeJRmcWxW6tCYqYJbUT3jKbBh385LCi93S9jIBbG/H1g5
- mwMeTdPsIjUQ8k8kI4cfpTekVJuVQ595B5zh2pVXiwrE+hJAJZiQpgXUzLsVyofA7Yd5
- enl8ismGD3GNOiN9iOvYxHNjjUeraUW3F6sRh9XHAbMUYac2+p+ApJUAxQ91zy912rEm
- qhAg==
-X-Gm-Message-State: AOAM5326I7jiiMY7a0eK4EaNT8FqbY+8naTZgLxhcNUj0KCRGx6y3cD5
- aGQrbq5GEZOE9OVeLbSWhbww+A==
-X-Received: by 2002:a5d:50d2:: with SMTP id f18mr6335347wrt.338.1612544436251; 
- Fri, 05 Feb 2021 09:00:36 -0800 (PST)
+ bh=WtrfuXabVXGeTIyTEVS5d0lsWCXmLnI61ZuEmNjOGlM=;
+ b=dRJ+l6XpRgVZ4SGm3xqscbkeyawISNoJSWJ3FxgknsAFO/xjg5Ff6wufSXhHrrrcMS
+ v3LIa7arEbiXbP7hcEPl02/UDS/fnvMd0V1C609WcTQtmVEWzE+Ruw2+3EdOQsrnNENF
+ AVALFX74p6jdtytOa9FAdI5AZBMQ6T0I5bx2UKjFvqJT+4FEirmiFyEBMWdpyZp9yAFG
+ dI+8spb2Zz583vd+qCOdyx7eqdrS7R2N0EoDhtjjBTcbmEZgq0vK3Kh/3j15LqjHPcmX
+ KeICJHFC0kRcZCbb1dSHHEIj8cN0YDtwkz/oD+Lu3gJjFrCZbMm+56TQQXVMaecSzCGc
+ Ekeg==
+X-Gm-Message-State: AOAM533KGPl1sg8eDBpx25G28gkyFmsIFPEGZFr9ilEk9E8NzR9ee5tC
+ Zopxw+5Ta3kF12hqbpiBh4aUanivt2Dbkg==
+X-Received: by 2002:adf:f182:: with SMTP id h2mr5997610wro.355.1612544429075; 
+ Fri, 05 Feb 2021 09:00:29 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.35
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:35 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:28 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 18/24] hw/arm/mps2-tz: Support ROMs as well as RAMs
-Date: Fri,  5 Feb 2021 17:00:13 +0000
-Message-Id: <20210205170019.25319-19-peter.maydell@linaro.org>
+Subject: [PATCH 09/24] hw/arm/mps2-tz: Make number of IRQs board-specific
+Date: Fri,  5 Feb 2021 17:00:04 +0000
+Message-Id: <20210205170019.25319-10-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,47 +118,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K5CrPCjxOkmA
+X-TUID: Gw6gHlC3znG7
 
-The AN505 and AN521 don't have any read-only memory, but the AN524
-does; add a flag to ROMInfo to mark a region as ROM.
+The AN524 has more interrupt lines than the AN505 and AN521; make
+numirq board-specific rather than a compile-time constant.
+
+Since the difference is small (92 on the current boards and 95 on the
+new one) we don't dynamically allocate the cpu_irq_splitter[] array
+but leave it as a fixed length array whose size is the maximum needed
+for any of the boards.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps2-tz.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/arm/mps2-tz.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index b46b32746e0..ce5e804c734 100644
+index 4d8e42fa6b6..0f021676854 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -92,8 +92,10 @@ typedef struct RAMInfo {
-  * Flag values:
-  *  IS_ALIAS: this RAM area is an alias to the upstream end of the
-  *    MPC specified by its .mpc value
-+ *  IS_ROM: this RAM area is read-only
-  */
- #define IS_ALIAS 1
-+#define IS_ROM 2
+@@ -65,7 +65,7 @@
+ #include "hw/qdev-clock.h"
+ #include "qom/object.h"
  
- struct MPS2TZMachineClass {
-     MachineClass parent;
-@@ -209,6 +211,7 @@ static MemoryRegion *mr_for_raminfo(MPS2TZMachineState *mms,
-     if (raminfo->mrindex < 0) {
-         /* Means this RAMInfo is for QEMU's "system memory" */
-         MachineState *machine = MACHINE(mms);
-+        assert(!(raminfo->flags & IS_ROM));
-         return machine->ram;
-     }
+-#define MPS2TZ_NUMIRQ 92
++#define MPS2TZ_NUMIRQ_MAX 92
  
-@@ -217,6 +220,9 @@ static MemoryRegion *mr_for_raminfo(MPS2TZMachineState *mms,
+ typedef enum MPS2TZFPGAType {
+     FPGA_AN505,
+@@ -81,6 +81,7 @@ struct MPS2TZMachineClass {
+     const uint32_t *oscclk;
+     uint32_t fpgaio_num_leds; /* Number of LEDs in FPGAIO LED0 register */
+     bool fpgaio_switches; /* Does FPGAIO have SWITCH register? */
++    int numirq; /* Number of external interrupts */
+     const char *armsse_type;
+ };
  
-     memory_region_init_ram(ram, NULL, raminfo->name,
-                            raminfo->size, &error_fatal);
-+    if (raminfo->flags & IS_ROM) {
-+        memory_region_set_readonly(ram, true);
-+    }
-     return ram;
+@@ -105,7 +106,7 @@ struct MPS2TZMachineState {
+     SplitIRQ sec_resp_splitter;
+     qemu_or_irq uart_irq_orgate;
+     DeviceState *lan9118;
+-    SplitIRQ cpu_irq_splitter[MPS2TZ_NUMIRQ];
++    SplitIRQ cpu_irq_splitter[MPS2TZ_NUMIRQ_MAX];
+     Clock *sysclk;
+     Clock *s32kclk;
+ };
+@@ -140,8 +141,9 @@ static qemu_irq get_sse_irq_in(MPS2TZMachineState *mms, int irqno)
+ {
+     /* Return a qemu_irq which will signal IRQ n to all CPUs in the SSE. */
+     MachineClass *mc = MACHINE_GET_CLASS(mms);
++    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
+ 
+-    assert(irqno < MPS2TZ_NUMIRQ);
++    assert(irqno < mmc->numirq);
+ 
+     if (mc->max_cpus > 1) {
+         return qdev_get_gpio_in(DEVICE(&mms->cpu_irq_splitter[irqno]), 0);
+@@ -428,7 +430,7 @@ static void mps2tz_common_init(MachineState *machine)
+     iotkitdev = DEVICE(&mms->iotkit);
+     object_property_set_link(OBJECT(&mms->iotkit), "memory",
+                              OBJECT(system_memory), &error_abort);
+-    qdev_prop_set_uint32(iotkitdev, "EXP_NUMIRQ", MPS2TZ_NUMIRQ);
++    qdev_prop_set_uint32(iotkitdev, "EXP_NUMIRQ", mmc->numirq);
+     qdev_connect_clock_in(iotkitdev, "MAINCLK", mms->sysclk);
+     qdev_connect_clock_in(iotkitdev, "S32KCLK", mms->s32kclk);
+     sysbus_realize(SYS_BUS_DEVICE(&mms->iotkit), &error_fatal);
+@@ -439,8 +441,9 @@ static void mps2tz_common_init(MachineState *machine)
+      * board. If there is only one CPU, we can just wire the device IRQ
+      * directly to the SSE's IRQ input.
+      */
++    assert(mmc->numirq <= MPS2TZ_NUMIRQ_MAX);
+     if (mc->max_cpus > 1) {
+-        for (i = 0; i < MPS2TZ_NUMIRQ; i++) {
++        for (i = 0; i < mmc->numirq; i++) {
+             char *name = g_strdup_printf("mps2-irq-splitter%d", i);
+             SplitIRQ *splitter = &mms->cpu_irq_splitter[i];
+ 
+@@ -693,6 +696,7 @@ static void mps2tz_an505_class_init(ObjectClass *oc, void *data)
+     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
+     mmc->fpgaio_num_leds = 2;
+     mmc->fpgaio_switches = false;
++    mmc->numirq = 92;
+     mmc->armsse_type = TYPE_IOTKIT;
+ }
+ 
+@@ -713,6 +717,7 @@ static void mps2tz_an521_class_init(ObjectClass *oc, void *data)
+     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
+     mmc->fpgaio_num_leds = 2;
+     mmc->fpgaio_switches = false;
++    mmc->numirq = 92;
+     mmc->armsse_type = TYPE_SSE200;
  }
  
 -- 

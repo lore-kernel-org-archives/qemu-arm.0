@@ -1,110 +1,110 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2217874lfo;
-        Fri, 5 Feb 2021 09:50:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyUARM2inplT/9vlW3seoOjMhL+2BFiHBuHdvlbovuqZqt4St5tiN5lduYi9yyes/ojQSWC
-X-Received: by 2002:a25:3bc4:: with SMTP id i187mr7738303yba.146.1612547423463;
-        Fri, 05 Feb 2021 09:50:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612547423; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2219008lfo;
+        Fri, 5 Feb 2021 09:52:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJylnBxypefwO7jj76urug56g5utwNYj4dW7zbGyE00gse12TdC3KOYO27mmETbuOXPMNGD9
+X-Received: by 2002:a25:5754:: with SMTP id l81mr7183091ybb.126.1612547534435;
+        Fri, 05 Feb 2021 09:52:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612547534; cv=none;
         d=google.com; s=arc-20160816;
-        b=wohMHaXCXrRzbJtk1EERO90pokaKqL9D74iTWgs07R4ZJaodA/og6omj0I97srQou3
-         9ZupUVvEPx1O0RrjqkqGWPHk/zEvGB7vf0UrfD9YlWM3u+Nrl0D41pIycVq4ylGnY5Gu
-         y286+iakQ/y6LLCx/3dV1Q0BzCDsr5QmhxX+5/HdwetOphFy5L0WdEilRsndk3fdtXNr
-         f8JGuXcVW90LeXM4D2VTXpQCfXr6GdA1YwZyTaOVn0pj2JH/DCrtOQLKhNWpjFRoGjNV
-         3bsRnTdavMaxowlUaBweIkEb2vmkxA6Cto1e+jIxdbjogUWCbQcb1vdVPs2kBZqbhwgi
-         wfuQ==
+        b=usz8VH3A6GYslciT5X5KYPbmE2SI+M1MU97/dZbBWKe37R9XAt/GKLMrIq/VzqWtQq
+         zyND5UF1W7VAxC91DYD5S750xUcXY7x2riZ2UUKqMpysqTCdSoP7AzyxFbt7eYmH1PqA
+         EzzACMhwX9EjqXYj6+g/yTODRbw95KCe8cVg9KGzNqCViPC437X/n2yDXsuvQxIj7a6b
+         D/+5lCaLYmB4lvKcCpumRvji/Nh6ctcTdIXyTaJE6uAMNpCYL0j8vnio7uIpNdj4wP70
+         5Lm7fAOrWViK9wtrwLZKxreoKqHJE6CkcZ1dYUhj6hf9RO0KMJNa/cZiZDjVMByacNq6
+         VAbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jBPg420nC8pQh3qALQMd4OOROzhv7e66E6mvu1AgKfg=;
-        b=g+fVjTbQmEGgmCXR7A37VPgUJSt8Xaxie3u/ICBbrKQheR1aVCUYw3hpembwtoVxkh
-         w2K8jrUcycpfSBlB+TsswDe8SkFe9L+MQTnUgnc2ffETRSVrulrvNgaMNka7QyprNRgB
-         5PDnjIhl55JDW/Sj4clb2+CrpIxgZfhQiWNV9Ant42mvKh3Aq2m4/uGWcPtbABOw4aaz
-         lLmrkXH/CVjoPOeXnUdvS1W50CrmPsfH2pC27AnjWg8EFDG++rFfAfYEFxYtwPhH0M8Z
-         Tw4Ihpm3BCL9yxWAzRWpor9P8cB2xdln6O3c6aT0cmy9YJpdqAiU+ropPlz7/wc2MhCI
-         6V8w==
+        bh=VpEyWn0wqUXodQwTIXDgKgRTk0zKQyW4b0d+sVm3VCI=;
+        b=HJnpTDp22Ka90SN5nfhZtYXqq8roxI5ZAVRXvhELzeZVeC46fg8UdZBARo3GW5Ok8P
+         piX6stS6GOSsoNMXnNPk/KCO2eBn0tnxrB218EI92OXInvzi0WriDPkmVG1POdJnueCI
+         nNJ7KFsRAeKOeCTspSyQU7EodCVv55CRLc7FG//6d+5MJB+zp9/FXEmovOd2DVmgrAKH
+         xyn5IjtBPSFZMDpgTj3QGj+4ZN9Jw5vYFTDA3OETkqRinia4I/8rgznqJwrZn74Fnapg
+         K/nnvu1f3Y2c2r3RiKuYmqU3SC/KEIiEKKI0WuYXRANE3VvJzU8+ix7V+rKc6KgA+5+M
+         RpJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aMO9rVa9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BIWjCI6j;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m139si9416967ybm.411.2021.02.05.09.50.23
+        by mx.google.com with ESMTPS id g184si8644082ybf.177.2021.02.05.09.52.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 09:50:23 -0800 (PST)
+        Fri, 05 Feb 2021 09:52:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aMO9rVa9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BIWjCI6j;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52130 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l85FO-0003d0-NZ
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:50:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46370)
+	id 1l85HA-0005Bl-BB
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:52:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46590)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84Tl-0006t0-K6
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:09 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:45620)
+ id 1l84Tz-0007AH-Ry
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:23 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:46081)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84TO-00045G-Io
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:09 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id m13so8408654wro.12
- for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:44 -0800 (PST)
+ id 1l84TZ-00047s-Kn
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:23 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id q7so8392874wre.13
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=jBPg420nC8pQh3qALQMd4OOROzhv7e66E6mvu1AgKfg=;
- b=aMO9rVa9eBZJ7k5HnfJuACbVQZpsAuYiABnsXFmGortX5AI9bs82hCReJ0hhSOAdRx
- srhrMiEcByg14dQdRlXIzSx1j40I0sYlNuhski9P+/3rfOraUEY3R7UWhyRxhhYs1usT
- Fm3j1cDH9WueZwN0FSNHp6mfQNTV1SWogaWyg0QQaIBInMo0osQrI3SPqoVcKhsYYUd3
- JFiwVicvLvDSdzVczd/zWEfXCKJ547wUDgcFFL9yzNXU53IFh7FiX1a/vxfnaY1EaVfm
- ZWMl7tQK/b/6cmPBqJw0URU+d7FfFNQ0Ujy4llfPx5OLRH/L8QDHiWzh8hd3C9DZqctp
- +XGw==
+ bh=VpEyWn0wqUXodQwTIXDgKgRTk0zKQyW4b0d+sVm3VCI=;
+ b=BIWjCI6jjc9x3sWh6SqmHD9A8PEP7h0E2sRv2/o8FaPShO94KenudQn1oWedpfXuiM
+ uS+57m9l++0oKZy2vc1bETlm2d5JJLSQKD5lbWzqVgKcWys/Y20kaayvFudBhYejesMi
+ m1RBVzWcRINj6B0LDwpU0XNFMoVW/e0j4uUpb4VMb+jDwMEorzudgdZKA9uDjitWRTzm
+ NaTLEEriRVT0Zep+K3aPv9hdiD+rV6U+XJVAExN0sdng3LyM/nIX/FLs7QTY70C4PmwS
+ NIIWYfPGKHvKMvIxFD2conrnpQi+5pRwJgWXyu+J4cRxHG+i2zLjUpv9MG1yL1LHqKLv
+ lHug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=jBPg420nC8pQh3qALQMd4OOROzhv7e66E6mvu1AgKfg=;
- b=Fo7ZnpyGmJe6nSrYs5FfYNgTgTkWevfTBpm6OvE3h3nrzs0zssjxfm0YN0yaXW9ITY
- bHk4m3VIjylUpEYxLNB7VeST1jBrKN4U5n7zQkTla3SU8d0mxHab/IBxZ0mFr/q0xPvO
- GijEI5Re47QO+PwBhudJxmbmKfln+GhEkVCT56lF0BIJMedmWFYCPyfX6Cbt1z340yuq
- KjZNMk3was8pZe60FRfT1qsTU+Nm1qqfWGpOJxeQjqI2Y2yL7bJ9CFYK+3sAM93UM100
- vQPKkyMwIacocy/f1MGHYy8XzWMmDBBwv3LErLml7NzmUdMuCSDulQEGYcZ+hZ6FjGDl
- ms9w==
-X-Gm-Message-State: AOAM531JLioNWUzGgMKuElbEE0jgXpVTpG6LCxl2jGXQrbJLEONESnQo
- FxQL8I8bKGkod2BlOebvc+Usu419kkp+Uw==
-X-Received: by 2002:a5d:6842:: with SMTP id o2mr6221786wrw.310.1612544437055; 
- Fri, 05 Feb 2021 09:00:37 -0800 (PST)
+ bh=VpEyWn0wqUXodQwTIXDgKgRTk0zKQyW4b0d+sVm3VCI=;
+ b=o3ymgmDUrWMG0Q1qQ+/LZbL6ZGqIXM4WBMIX9tVvpOxnoIRp6wIKj7EWUfX39Hw8g+
+ YnE7XCNQ1zqI81tLfxMWUzCSxeFfKNhA183jdFiOpMyjavI3rATjqa2nHTFCLkrj04N5
+ /9MNhm2x5Oo1mhF/7pNwTfVo2iBEgeXykNCRJo5O9vkB378AbIMY1hBLuVnIKn3EksL/
+ Rr07/yYPXjvnSlkYJfm81gDmHAnGV8sraUZ+TDsuhCNAE3Lj3QBliWo1xT8KUK6FQ20p
+ gHJs5it4Q//hdqJ7hmrC9dxPuFiMusEaEQaGPJ20LT49EIRfsLRF0O3pGITDF0+Kr/2c
+ Fw2Q==
+X-Gm-Message-State: AOAM533KvlddLMCuvDII7UM2vsBoiOupSdpXQAWHIRzMnWmNmGoVIFlu
+ yKYvzuRXAjkjW5tbZAUk6j5u+w==
+X-Received: by 2002:a5d:6712:: with SMTP id o18mr5863434wru.375.1612544433926; 
+ Fri, 05 Feb 2021 09:00:33 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.36
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:36 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:33 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 19/24] hw/arm/mps2-tz: Get armv7m_load_kernel() size argument
- from RAMInfo
-Date: Fri,  5 Feb 2021 17:00:14 +0000
-Message-Id: <20210205170019.25319-20-peter.maydell@linaro.org>
+Subject: [PATCH 15/24] hw/arm/mps2-tz: Allow boards to have different PPCInfo
+ data
+Date: Fri,  5 Feb 2021 17:00:10 +0000
+Message-Id: <20210205170019.25319-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,56 +119,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OchNNbVYFUDm
+X-TUID: Odrtsvkn/NdE
 
-The armv7m_load_kernel() function takes a mem_size argument which it
-expects to be the size of the memory region at guest address 0.  (It
-uses this argument only as a limit on how large a raw image file it
-can load at address zero).
-
-Instead of hardcoding this value, find the RAMInfo corresponding to
-the 0 address and extract its size.
+The AN505 and AN521 have the same device layout, but the AN524 is
+somewhat different.  Allow for more than one PPCInfo array, which can
+be selected based on the board type.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps2-tz.c | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
+We can't just put the arrays at file-scope and set up pointers
+to them in the MPS2TZMachineClass struct, because the array
+members include entries like "&mms->uart[0]" which is only valid
+inside the mps2tz_common_init() function.
+---
+ hw/arm/mps2-tz.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index ce5e804c734..17173057af2 100644
+index 87993516816..721ac444920 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -525,6 +525,20 @@ static void create_non_mpc_ram(MPS2TZMachineState *mms)
-     }
- }
+@@ -423,6 +423,8 @@ static void mps2tz_common_init(MachineState *machine)
+     MemoryRegion *system_memory = get_system_memory();
+     DeviceState *iotkitdev;
+     DeviceState *dev_splitter;
++    const PPCInfo *ppcs;
++    int num_ppcs;
+     int i;
  
-+static uint32_t boot_ram_size(MPS2TZMachineState *mms)
-+{
-+    /* Return the size of the RAM block at guest address zero */
-+    const RAMInfo *p;
-+    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-+
-+    for (p = mmc->raminfo; p->name; p++) {
-+        if (p->base == 0) {
-+            return p->size;
-+        }
+     if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
+@@ -544,7 +546,7 @@ static void mps2tz_common_init(MachineState *machine)
+      *  + wire up the PPC's control lines to the IoTKit object
+      */
+ 
+-    const PPCInfo ppcs[] = { {
++    const PPCInfo an505_ppcs[] = { {
+             .name = "apb_ppcexp0",
+             .ports = {
+                 { "ssram-0", make_mpc, &mms->ssram_mpc[0], 0x58007000, 0x1000 },
+@@ -598,7 +600,17 @@ static void mps2tz_common_init(MachineState *machine)
+         },
+     };
+ 
+-    for (i = 0; i < ARRAY_SIZE(ppcs); i++) {
++    switch (mmc->fpga_type) {
++    case FPGA_AN505:
++    case FPGA_AN521:
++        ppcs = an505_ppcs;
++        num_ppcs = ARRAY_SIZE(an505_ppcs);
++        break;
++    default:
++        g_assert_not_reached();
 +    }
-+    g_assert_not_reached();
-+}
 +
- static void mps2tz_common_init(MachineState *machine)
- {
-     MPS2TZMachineState *mms = MPS2TZ_MACHINE(machine);
-@@ -789,7 +803,8 @@ static void mps2tz_common_init(MachineState *machine)
- 
-     create_non_mpc_ram(mms);
- 
--    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0x400000);
-+    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+                       boot_ram_size(mms));
- }
- 
- static void mps2_tz_idau_check(IDAUInterface *ii, uint32_t address,
++    for (i = 0; i < num_ppcs; i++) {
+         const PPCInfo *ppcinfo = &ppcs[i];
+         TZPPC *ppc = &mms->ppc[i];
+         DeviceState *ppcdev;
 -- 
 2.20.1
 

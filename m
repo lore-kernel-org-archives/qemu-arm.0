@@ -1,224 +1,143 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2111336lfo;
-        Fri, 5 Feb 2021 07:34:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxfVVSMTAPKm3ThqO48TVjzyCBbL97qgeQ7+AyBVkuFNxf+OhdJn2kK3SkeCG11dMGnGyoO
-X-Received: by 2002:a25:1086:: with SMTP id 128mr7053886ybq.375.1612539292470;
-        Fri, 05 Feb 2021 07:34:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612539292; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2112284lfo;
+        Fri, 5 Feb 2021 07:36:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxKGXEC4YjfFjIDmkGH64gxEb5UEfWtmw82nIk9dN44KBWOljReuQ18Cy6K4kDzwMMwbzTw
+X-Received: by 2002:a25:cc8f:: with SMTP id l137mr7040945ybf.144.1612539366350;
+        Fri, 05 Feb 2021 07:36:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612539366; cv=none;
         d=google.com; s=arc-20160816;
-        b=oG12CW4c130k/rJ2ejMp7hwfRjlZyMh5A8+Vjh+LLBR+MatyEv6TBzfn6pblBJ7oqe
-         MawPjiMbgldms+H11K8J187ei2W5Mk5gdE5Xi2DcuRoBMQMjRxRy2SsI+RAIe+ZzRZgB
-         y0an82jfMy1gsdj98XTgzQslqaP89qOsfS4A80k3f7W6jNZvwXmPJKzFW4Joe85qGpUT
-         doMxR6ySZt3sd0ZmQSro3MIJ02COgx5cNzObCFRg9HgnGUFN2n5EdN6lTrNl1tHwN8fJ
-         taclPT5wbwHOA0HKAK9If2RG2gb2xduqqL2IPBbBVL4V1fCgfL7q3V2TFpf7BGrEoOld
-         NKzA==
+        b=E3tIwwibjJZkBH69MdWkZkgOLc7dIrHtV5YUDsrz1T5Oi8dJVOqkkBSh9VOLf0/O48
+         PqaaePelYxWmMVDZcDf3wwmotfOdgOY2ZHMcGKlr40k+HX0GhrB1pFbPOSIhC/Gc69RI
+         Hwu7sPSrRIfoWBZbmsBUvG1EtfDSn5RgXwg4EvacqAzAYvZ4g5l5QdYTb4nTZM2L6NGc
+         k7tZF5n34d26BEVqyGQZCjC4zu8Kut0jX7SwuR+hFif9kC+onhRwWrcS+QjoUQTCM7z/
+         etb1ntAKbRzjkTKLDaaC20rSWfBzg8wu8NiHKF3j9srpzoy/GNvhQSQnYPipCL02aK5i
+         HDsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=o1GX7JoM5Djv8HsAufPe8DVWNddfRP9gsP5SmQ8FBJ8=;
-        b=LaG58PDmWwKx/dfpwV7AcEyxKuJLCr7mYNb4k9g+tIs0a5xo4txLfTD1jzZ2GnCEt8
-         PvB06ROdFjqIcLP+grUw+FBIZOo4qM+vn8R1hoNU7eLvQfKU9kwAYL4yPpUR7RbqSkrN
-         vItGt/jxf4Uvc+BTxe/lmJH93ZaWNhLsMF6XIB/HzQXHByoPIers7HdzhBqTtLBL94gd
-         5VmBvKsmS6+HRGs2ZWqyIVD6dbawbuEI6qm+x8y4pzAxfcnpE7eQmiG0o85u3mzxVABJ
-         4Q7glVgvfJH9cHc3ZeFrtX2h7aSBJQhPVGuIYIzA1eeJfiDWBicZHhKhveeapFDwI7P1
-         H86w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=iUVYEIlA1bqVS71WNET9HtQCMJkoNw+Aa1G94lPofQY=;
+        b=sCGtk1PzRL5I+ncwH8AHLbwWMUyfUzMthGZw4V0OMoGAtND/JS973gq+SFZX7Jcx8l
+         Moig4mFz7mSptwipS9Wsnp8vSFL7h9zI5WgW4jLaJ+fG94Gxmr93HaMhANL10rVmDqhD
+         0A7MsZ/3Igqn9ZtOYIePKX/nQAf62W+Vwyr5i5O9T23ME3eb3FVoNZKyB/Kpg1LasumJ
+         4y4nbgJVz7DRroIv+W5VXXsovJIx9bFvlbv/tGPKDai6KD0gLDml6wn2j3VZC6NHfLMl
+         AqsKlpTXLAX3lwYoY3moI7uXK/7c6qKLi/2kdrlp2APkn8diIKSzkpAEdg6Mh0SYh1Uf
+         tQXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PU2bSyw8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=in2L8+26;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13si566637ybj.475.2021.02.05.07.34.52
+        by mx.google.com with ESMTPS id h11si10312245ybj.321.2021.02.05.07.36.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 07:34:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Feb 2021 07:36:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PU2bSyw8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33520 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=in2L8+26;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:36790 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l838F-0005DL-PU
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 10:34:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54716)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l839R-0006b1-NH
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 10:36:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l837a-0004yQ-Fe
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 10:34:10 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:57051)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l837X-00072i-NN
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 10:34:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612539246;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=o1GX7JoM5Djv8HsAufPe8DVWNddfRP9gsP5SmQ8FBJ8=;
- b=PU2bSyw8+HM0DA7C68SgsoluI47x5yd6ctuX5JzV3txfR1ni3VrmcADr92IJ00nX2cA4Y2
- HsQS67LRyBes9PB9AHjvANlaM2NtjF1WYRYwwjWKbwmuYhI24Nkfa3AGCM5NyZX83SDws3
- I8tEwWu43cyqFgczXOitFcjvbcn+D+s=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-167--9Q05ikNOEOjoRF5IiOKSA-1; Fri, 05 Feb 2021 10:34:04 -0500
-X-MC-Unique: -9Q05ikNOEOjoRF5IiOKSA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 589B181470A;
- Fri,  5 Feb 2021 15:34:03 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.195.147])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0326F100AE2B;
- Fri,  5 Feb 2021 15:34:00 +0000 (UTC)
-Date: Fri, 5 Feb 2021 16:33:57 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 1/9] tests/qtest/arm-cpu-features: Remove Cortex-A15 check
-Message-ID: <20210205153357.q73y2xo6oazheyma@kamzik.brq.redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l835N-0003Oy-KM; Fri, 05 Feb 2021 10:31:53 -0500
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632]:33407)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l835L-0006ET-OJ; Fri, 05 Feb 2021 10:31:53 -0500
+Received: by mail-ej1-x632.google.com with SMTP id sa23so12623726ejb.0;
+ Fri, 05 Feb 2021 07:31:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=iUVYEIlA1bqVS71WNET9HtQCMJkoNw+Aa1G94lPofQY=;
+ b=in2L8+26rfgMvP8kDg/O/zmDGuZBbheXxJFK/oknJ39yq+W4D4LG01Ze4Arg2xJ0km
+ AKf2CUc+zrxFruAyy+raAfiMvShVR3Rs0BsXArSjEDxy8IeBZ4Civmf9mExlzHYE9nv9
+ 2IhFqRXZBV1Ek7i82Hr+EpNneuy+pLeNLRqKlpQgLGFJnhhR8SxA0N4lTgLoEpqnoPu3
+ 1WEs+hQiKnUnxXfZERhalAW5wx829VDand7j8ZZ+TwDmxCEHwTwsAvQ4fv6R46zPSVO1
+ KlIXxAs3Mgxq/LDjAyDasAeIW0K/YKADWlDyH/3G4VCfCYnCuFlFTpbNTaUHJMm5q9+y
+ xZHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=iUVYEIlA1bqVS71WNET9HtQCMJkoNw+Aa1G94lPofQY=;
+ b=Hqp1CIqv5+xwGJ+bYdJgPbAzNtf9VKf9v+b4kq/LmCZ5B7gHTvg9q8M7NVIF6b42+j
+ oLCM62Z3p4z6CC/VNMX4GXDW71+PhYc8P+HaUhX8SLREps9HWqYtm30kSugVLx7DMl/D
+ Rv6bE34qySIMRW4ub+YAPpsVKxlppkAkA9CPsBK1qBM+0tipwy7+fbBtHKPnmE1DsYD6
+ +Z1KmfG5EB5wvCoA5E5lxxr78HxakFDxR8yHi3KDnpSu4SCaIbDz0Zm8B7AhMlJGaM8M
+ u1be8tRcWmaNNpV4tV4yoLu1pKJ7RQ8a+bd25SCrP7P8kXeDgajzrhL1YZvCCJdL+T14
+ ee5Q==
+X-Gm-Message-State: AOAM533v25nQFjmuZM6z8GIyPoHylBuKYmP79h916siaL0L67hGneaov
+ wtCLOXYS6Ny2x5NDwrOCxri1Qm72LlA=
+X-Received: by 2002:a17:906:7f83:: with SMTP id
+ f3mr4468083ejr.282.1612539104551; 
+ Fri, 05 Feb 2021 07:31:44 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id ov9sm4073023ejb.53.2021.02.05.07.31.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Feb 2021 07:31:43 -0800 (PST)
+Subject: Re: [PATCH 0/9] hw/arm/virt: Improve CPU help and fix testing under
+ KVM
+To: qemu-devel@nongnu.org
 References: <20210205144345.2068758-1-f4bug@amsat.org>
- <20210205144345.2068758-2-f4bug@amsat.org>
- <20210205145938.dvjk7jsfatgm56cy@kamzik.brq.redhat.com>
- <83662416-8eb6-eab9-fe90-c70daad29e44@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <cdc32a38-a079-9f30-74a6-6ab7858734b4@amsat.org>
+Date: Fri, 5 Feb 2021 16:31:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <83662416-8eb6-eab9-fe90-c70daad29e44@amsat.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20210205144345.2068758-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.352,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x632.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.33,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UiZj3Oxv1m/+
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AR4xs9d+pSEw
 
-On Fri, Feb 05, 2021 at 04:15:45PM +0100, Philippe Mathieu-Daudé wrote:
-> Hi Drew,
+On 2/5/21 3:43 PM, Philippe Mathieu-DaudÃ© wrote:
+> Yet again bugfixes and cleanup patches noticed while
+> rebasing my "Support disabling TCG on ARM (part 2)" series.
 > 
-> On 2/5/21 3:59 PM, Andrew Jones wrote:
-> > On Fri, Feb 05, 2021 at 03:43:37PM +0100, Philippe Mathieu-Daudé wrote:
-> >> Support for ARMv7 has been dropped in commit 82bf7ae84ce
-> >> ("target/arm: Remove KVM support for 32-bit Arm hosts"),
-> >> no need to check for Cortex A15 host cpu anymore.
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> >> ---
-> >>  tests/qtest/arm-cpu-features.c | 4 ----
-> >>  1 file changed, 4 deletions(-)
-> >>
-> >> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-> >> index 8252b85bb85..c59c3cb002b 100644
-> >> --- a/tests/qtest/arm-cpu-features.c
-> >> +++ b/tests/qtest/arm-cpu-features.c
-> >> @@ -515,10 +515,6 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-> >>          QDict *resp;
-> >>          char *error;
-> >>  
-> >> -        assert_error(qts, "cortex-a15",
-> >> -            "We cannot guarantee the CPU type 'cortex-a15' works "
-> >> -            "with KVM on this host", NULL);
-> >> -
-> > 
-> > This isn't testing anything regarding 32-bit KVM host support. It's
-> > testing that an error is returned when a given cpu type that can't
-> > be known to work with KVM is used. We know that the cortex-a15 can't
-> > be known to work. If we were to use a 64-bit cpu type here then there's
-> > a chance that it would work, failing the test that an error be returned.
-> 
-> This was my first understanding, but then why does it fail?
-> 
-> PASS 1 qtest-aarch64/arm-cpu-features /aarch64/arm/query-cpu-model-expansion
-> **
-> ERROR:../../tests/qtest/arm-cpu-features.c:543:test_query_cpu_model_expansion_kvm:
-> assertion failed: (g_str_equal(_error, "We cannot guarantee the CPU type
-> 'cortex-a15' works " "with KVM on this host"))
-> ERROR qtest-aarch64/arm-cpu-features - Bail out!
-> ERROR:../../tests/qtest/arm-cpu-features.c:543:test_query_cpu_model_expansion_kvm:
-> assertion failed: (g_str_equal(_error, "We cannot guarantee the CPU type
-> 'cortex-a15' works " "with KVM on this host"))
-> make: *** [Makefile.mtest:905: run-test-111] Error 1
-> 
-> FWIW when tracing (cavium thunderX1 host, dmesg reports 0x431f0a11):
-> kvm_vcpu_ioctl cpu_index 0, type 0x4020aeae, arg 0xffff9b7f9b18
+> Sending them independently as they aren't directly dependent
+> of it so don't have to be delayed by other unanswered questions.
 
-Hmm... I don't know. It works for me
+Proven wrong 45min later, not trivial and not ready yet =)
 
-$ QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/arm-cpu-features
-/aarch64/arm/query-cpu-model-expansion: OK
-/aarch64/arm/kvm/query-cpu-model-expansion: OK
-/aarch64/arm/kvm/query-cpu-model-expansion/sve-off: OK
-/aarch64/arm/max/query-cpu-model-expansion/sve-max-vq-8: OK
-/aarch64/arm/max/query-cpu-model-expansion/sve-off: OK
-
-$ lscpu
-Architecture:        aarch64
-Byte Order:          Little Endian
-CPU(s):              48
-On-line CPU(s) list: 0-47
-Thread(s) per core:  1
-Core(s) per cluster: 16
-Socket(s):           -
-Cluster(s):          3
-NUMA node(s):        1
-Vendor ID:           Cavium
-Model:               1
-Model name:          ThunderX 88XX
-Stepping:            0x1
-BogoMIPS:            200.00
-NUMA node0 CPU(s):   0-47
-Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
-
+> Please review,
 > 
-> > 
-> >>          assert_has_feature_enabled(qts, "host", "aarch64");
-> >>  
-> >>          /* Enabling and disabling pmu should always work. */
-> >> -- 
-> >> 2.26.2
-> >>
-> >>
-> > 
-> > This file could use a cleanup patch regarding the dropping of 32-bit KVM
-> > support though. At least the comment in main(), "For now we only run KVM
-> > specific tests..." could be reworded. It was written that way when we
-> > planned to try testing on 32-bit KVM too eventually, but we never did,
-> > and now we'll never need to.
-> > 
-> > Thanks,
-> > drew
-> > 
-> > 
-> 
-
+> Phil.

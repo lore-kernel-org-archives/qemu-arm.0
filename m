@@ -1,213 +1,186 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2205442lfo;
-        Fri, 5 Feb 2021 09:34:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzy6Q+tjK6EbOjdG0mp+djw9p2aDtZp7SDHLzi93e2RbsJWIX0ruTkqmJQ8AC1+yTJPZJrS
-X-Received: by 2002:a25:c407:: with SMTP id u7mr7436639ybf.449.1612546457002;
-        Fri, 05 Feb 2021 09:34:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612546456; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2206858lfo;
+        Fri, 5 Feb 2021 09:35:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy5MByI7c87oEKRc4v9n0pYAo5dEsD0JjlqSXfJ48K5iynsM/nIIXn1GLkj0CK8YnOTuE++
+X-Received: by 2002:a25:5f49:: with SMTP id h9mr7913802ybm.213.1612546548184;
+        Fri, 05 Feb 2021 09:35:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612546548; cv=none;
         d=google.com; s=arc-20160816;
-        b=T1d6+fSrNMNxeWxB6t9Ofmk3Kn1za2RkqEYEUcJbsI1+U8/rUKjgBmyFnPmIQpoZtH
-         B824l5gd1Y/P+WmnmGl5pt2xsFWLZmnE6rKiCR9VYOk+pAz5LIMFHUcXbTFgNXRytXRf
-         uq4m++ZF8jKoVYs37aakWnjm6OZzNLjjGI/POP2x4i4YrdYqjAcnyHBsOIhXNG/Ggcrr
-         FKsSuMzRs5uDlF28tru7U5iBM+xX7gFyp9TF8DQe2UwNHIZ9PrmN8DcnwSHAt+0v1tiM
-         oPk8ShvPy0CsbEYHADkigGlBMheMrLR46QvCKtSrOI9m2WrMayl8dgKaGFewtffOAqCy
-         3tFQ==
+        b=uzFbY9t1A3deXKz0JGF+on2zu7SM6P2rJ8fB3KV6M+Frqd54XNm3xsLd5sL9Vjgur1
+         hjMU2blMtdpxW+4O5cSNRBUz9o29LGx2r74AeEdQZuQMP0vm1XSkY/aeSY2oARtOlSN7
+         j6elku00+OLEheAUzg+5ZnYgB0wcflbqCKUBVvowYqmhVyRbKHXkAZvRWpCa98bnHuaE
+         gRpa3umGe8a5pyLFmSfY4fixmsRTbTuNv2600OVh9vxq5TYjdCBMQj4dUGBVf09Wj0E/
+         9fO1iaoS+5xxfZ/tL1FrD5w4l+rRa+W5aIM6FEZCH7ISl+IpVFrKln4zcmZrR5cox7zF
+         jKRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=z2Vyh+lBTQMBhsM4yGTc2A7bMPBGx/fyuKp+EIKhHX0=;
-        b=0IMtl/a+J/9VjQlcJQXobO9i1pD8AJ3t83SeeXaPReOKWgm7DLw68OB8Ux+8wgTEqK
-         wJkx1F2kic/O5ZT4jcAxSkOcwq1ylwSNdciHcCvsIDNRt/59aFbvYDP5NRdrbVVG2i5X
-         5GZnJ9tRjjwvz2IsIQnhpoMhAjguinSBbh8NKGjTq/SzBWxW4fet/OYxoAkSEV1L/bkz
-         KCy5otxbwXBichR+elP/4e0Mq992o9/Ag+838rtQQlV+RPXQ6dXp8//dYx07/W8VEKuY
-         A5iijDu12zM+VDNHHTGYYOzCPGA19XPPfsSlKbIuknVQkuJA8sSSCkrg1Ti9A6amMKQE
-         M+nQ==
+        bh=va0A81ClB5F8EaAWROYYvDbctjGQ9fM8K2ZTOurTkG4=;
+        b=twBom/HeDBUdJibCAhNz0mgTS+5EOJCa01qDhV0adtSF9niz9vplbGwhzcNh8aSQzO
+         LDcSPw42xCHI99xzeNJRZ8JlYbzbsw7DgVwZxWnaIGa7HSE/3unpT9sPeR+xjicbzAXI
+         8mN6O3dBhmS5PCDg/hJeOA4cji+/ofbjQxXLkIqE5iApFo+THQGm/YHpmXuVSrxrxOUZ
+         wzlxtaKkMgDTU3ZMzDe6sZRmpy+Uy11GFPZEm58pSnQP60ouVhYzQJTfEhdGae3UgIht
+         mwntTKiZcWsUkiy0XjirFQWP8Cddd6GWpMLfnHI+hXECQzs3JjMjVrMwDwC9Cqh1+vhc
+         YSeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eJHfa3q+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TTcdLbMw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1si8819234ybj.426.2021.02.05.09.34.16
+        by mx.google.com with ESMTPS id p12si9901582ybl.295.2021.02.05.09.35.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 09:34:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Feb 2021 09:35:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eJHfa3q+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TTcdLbMw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51900 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l84zo-0007JI-8g
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:34:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46328)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l851H-0007pM-I5
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:35:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84Tj-0006rO-J7
- for qemu-arm@nongnu.org; Fri, 05 Feb 2021 12:01:09 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:45622)
+ id 1l84Tb-0006lN-Nd
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:01 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:40921)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84TG-000441-I2
- for qemu-arm@nongnu.org; Fri, 05 Feb 2021 12:01:07 -0500
-Received: by mail-wr1-x431.google.com with SMTP id m13so8408213wro.12
- for <qemu-arm@nongnu.org>; Fri, 05 Feb 2021 09:00:31 -0800 (PST)
+ id 1l84T8-00043L-NT
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:00:59 -0500
+Received: by mail-wm1-x330.google.com with SMTP id c127so6433852wmf.5
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=z2Vyh+lBTQMBhsM4yGTc2A7bMPBGx/fyuKp+EIKhHX0=;
- b=eJHfa3q+jWJ5y5NK0pUi3jsKKRsfq4GBkqvwHJDraKeU1GgSeoKXlPdutpu0gPXnD9
- HCQPe/nOiD8f2aG8Ean57IQEe1wpku3pdUOuY01e/CqUG3iq0XYivuU0135RKSn+cA0R
- qnKCAmQ+/ucwHIMsI4C7aj0DGAdteZaCiz07W76/a1604S71rXw1oLUNPP7NRATnoRMd
- /t0iRI5VT8F/0tBGqmTtTxi4hJArjuf+40ftr4TnE5u7Yv3rrU7/qJaZ8dF0L0x63p6K
- fysz/OE3qQXkJ8nVl1WzppYqbHA6m3bmyOZ/QqqzympfXhwro48KlDvkZYxb61+OsJ6s
- ruSg==
+ bh=va0A81ClB5F8EaAWROYYvDbctjGQ9fM8K2ZTOurTkG4=;
+ b=TTcdLbMweCBfuBARQyE3SgXm8z7P6eT37kQBiei0xUACTJXkaefHx3E5pE8m9lc71t
+ 2T8BQNDcp2OpDguWB2iaeHOxH30YxoEXkk9idN6qxtysEJAJek3ybHj1edxmj6B43Aub
+ wdmjEKQPc5n5ukAII2R7JmS/vTa7KxzZIW1osvEx3hhX5REPjdr6JBrMI+0XYTo5zYlc
+ 8fvOtA8YjG8KSVjwok5BVqdDN0UwwciHxved2zwOnoTVkYytqNGp1Z55Y+q8u9nsEFGD
+ jHMrWMi/yBdpV12koric9YsSL4UI6QmTSqai9hj4HDJaNJYQwq0wgxAHBjAFY4N90eoy
+ N6wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=z2Vyh+lBTQMBhsM4yGTc2A7bMPBGx/fyuKp+EIKhHX0=;
- b=fEQIegPofF00SFKlwGWA8Le5GMfp4zmGjDaADzz0zdw/7mT+6eVgonWmKoBcFuNI3y
- 9hvLIwEBH5VX52BbFvaKFjwzty4rt4slkKToMtjVNPoDewZRrBMMA/sZ0RiYYGUiVBkK
- YAbEEoqy0GXhQcHJHNwf5cCzPf/JGvMHMGRPjGp2FxYOlI2rDdRn0aLBPasPcVtG1Yca
- SaZsry2xh+M6hFCdFU7DS2CsnQNyn7yo5Y88eQFSlgvEYK/hiJr8aKYDZB1wbZTdok9O
- AtIM1u0IT5MmJqIBXMgzP/GyDSAP4Nn2q9Qjj9ptOPvxabQhdowDFRgjtQ7c86xyIDlN
- S5oQ==
-X-Gm-Message-State: AOAM531rX78YlcAwbvIoUpnPIX8h+hPdWKk3FWgpcHHIAuUwsbNXK+NT
- d1HDKNq0cCZU1xczUl1jtdVnKWPvcoktgA==
-X-Received: by 2002:a05:6000:1045:: with SMTP id
- c5mr6274932wrx.250.1612544430834; 
- Fri, 05 Feb 2021 09:00:30 -0800 (PST)
+ bh=va0A81ClB5F8EaAWROYYvDbctjGQ9fM8K2ZTOurTkG4=;
+ b=K9caKbvW1hpMwBU75sCk1CxvpqyHK+6qPFpdwrcr+fq34mnHJK29EuSx/2+7BvrgEv
+ dMIyhGH5EB1GH5vMK9ugXVjAvKlpKdiCN7Q6VPzq8cF4UuhZKY34kyoY1KEnUDxQtlD2
+ Itgm0bYBzZsDzWFCuO6W2FNjpphO5w2WpV9EmfYJJArlGW+l+ofpzfuvV+hszC4TzR3j
+ o+/8WrrtpCOsAU7VV1AQZsrdzwb1bqEN2m+9tRSfZiM335yH/WQnw8jEyPkyZYNosie4
+ L5F/hPFSURD7r3BB1QRvs2zSweUVnqf7sByJC7v8imRO1sJtJavbjToay0z5cTkouw1s
+ bSHg==
+X-Gm-Message-State: AOAM533a79IYqrRrjw0oSB/CtqL9kiJVJpYQt9cUENZ8o+1RmT6keeqe
+ lBalr2zT0nPza3pm6/qSeFC2vw7kKpveIw==
+X-Received: by 2002:a1c:a9d7:: with SMTP id s206mr4469059wme.42.1612544428262; 
+ Fri, 05 Feb 2021 09:00:28 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.30
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:30 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:27 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 11/24] hw/arm/mps2-tz: Correct wrong interrupt numbers for DMA
- and SPI
-Date: Fri,  5 Feb 2021 17:00:06 +0000
-Message-Id: <20210205170019.25319-12-peter.maydell@linaro.org>
+Subject: [PATCH 08/24] hw/arm/mps2-tz: Condition IRQ splitting on number of
+ CPUs, not board type
+Date: Fri,  5 Feb 2021 17:00:03 +0000
+Message-Id: <20210205170019.25319-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LOOExXYTFzh3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kmCXOgYxjUZw
 
-On the MPS2 boards, the first 32 interrupt lines are entirely
-internal to the SSE; interrupt lines for devices outside the SSE
-start at 32.  In the application notes that document each FPGA image,
-the interrupt wiring is documented from the point of view of the CPU,
-so '0' is the first of the SSE's interrupts and the devices in the
-FPGA image itself are '32' and up: so the UART 0 Receive interrupt is
-32, the SPI #0 interrupt is 51, and so on.
+In the mps2-tz board code, we handle devices whose interrupt lines
+must be wired to all CPUs by creating IRQ splitter devices for the
+AN521, because it has 2 CPUs, but wiring the device IRQ directly to
+the SSE/IoTKit input for the AN505, which has only 1 CPU.
 
-Within our implementation, because the external interrupts must be
-connected to the EXP_IRQ[0...n] lines of the SSE object, we made the
-get_sse_irq_in() function take an irqno whose values start at 0 for
-the first FPGA device interrupt.  In this numbering scheme the UART 0
-Receive interrupt is 0, the SPI #0 interrupt is 19, and so on.
-
-The result of these two different numbering schemes has been that
-half of the devices were wired up to the wrong IRQs: the UART IRQs
-are wired up correctly, but the DMA and SPI devices were passing
-start-at-32 values to get_sse_irq_in() and so being mis-connected.
-
-Fix the bug by making get_sse_irq_in() take values specified with the
-same scheme that the hardware manuals use, to avoid confusion.
+We can avoid making an explicit check on the board type constant by
+instead creating and using the IRQ splitters for any board with more
+than 1 CPU.  This avoids having to add extra cases to the
+conditionals every time we add new boards.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps2-tz.c | 24 +++++++++++++++++-------
- 1 file changed, 17 insertions(+), 7 deletions(-)
+This removes the only current user of mmc->fpga_type, but we're
+going to want it again later in the series.
+---
+ hw/arm/mps2-tz.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
 
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 0f021676854..844092f4fd5 100644
+index 94618ae54d2..4d8e42fa6b6 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -139,11 +139,21 @@ static void make_ram_alias(MemoryRegion *mr, const char *name,
- 
+@@ -139,17 +139,14 @@ static void make_ram_alias(MemoryRegion *mr, const char *name,
  static qemu_irq get_sse_irq_in(MPS2TZMachineState *mms, int irqno)
  {
--    /* Return a qemu_irq which will signal IRQ n to all CPUs in the SSE. */
-+    /*
-+     * Return a qemu_irq which will signal IRQ n to all CPUs in the
-+     * SSE.  The irqno should be as the CPU sees it, so the first
-+     * external-to-the-SSE interrupt is 32.
-+     */
-     MachineClass *mc = MACHINE_GET_CLASS(mms);
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
+     /* Return a qemu_irq which will signal IRQ n to all CPUs in the SSE. */
+-    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
++    MachineClass *mc = MACHINE_GET_CLASS(mms);
  
--    assert(irqno < mmc->numirq);
-+    assert(irqno >= 32 && irqno < (mmc->numirq + 32));
-+
-+    /*
-+     * Convert from "CPU irq number" (as listed in the FPGA image
-+     * documentation) to the SSE external-interrupt number.
-+     */
-+    irqno -= 32;
+     assert(irqno < MPS2TZ_NUMIRQ);
  
-     if (mc->max_cpus > 1) {
+-    switch (mmc->fpga_type) {
+-    case FPGA_AN505:
+-        return qdev_get_gpio_in_named(DEVICE(&mms->iotkit), "EXP_IRQ", irqno);
+-    case FPGA_AN521:
++    if (mc->max_cpus > 1) {
          return qdev_get_gpio_in(DEVICE(&mms->cpu_irq_splitter[irqno]), 0);
-@@ -197,9 +207,9 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-     CMSDKAPBUART *uart = opaque;
-     int i = uart - &mms->uart[0];
--    int rxirqno = i * 2;
--    int txirqno = i * 2 + 1;
--    int combirqno = i + 10;
-+    int rxirqno = i * 2 + 32;
-+    int txirqno = i * 2 + 33;
-+    int combirqno = i + 42;
-     SysBusDevice *s;
-     DeviceState *orgate_dev = DEVICE(&mms->uart_irq_orgate);
- 
-@@ -266,7 +276,7 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
- 
-     s = SYS_BUS_DEVICE(mms->lan9118);
-     sysbus_realize_and_unref(s, &error_fatal);
--    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 16));
-+    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 48));
-     return sysbus_mmio_get_region(s, 0);
+-    default:
+-        g_assert_not_reached();
++    } else {
++        return qdev_get_gpio_in_named(DEVICE(&mms->iotkit), "EXP_IRQ", irqno);
+     }
  }
  
-@@ -507,7 +517,7 @@ static void mps2tz_common_init(MachineState *machine)
-                             &error_fatal);
-     qdev_realize(DEVICE(&mms->uart_irq_orgate), NULL, &error_fatal);
-     qdev_connect_gpio_out(DEVICE(&mms->uart_irq_orgate), 0,
--                          get_sse_irq_in(mms, 15));
-+                          get_sse_irq_in(mms, 47));
+@@ -437,10 +434,12 @@ static void mps2tz_common_init(MachineState *machine)
+     sysbus_realize(SYS_BUS_DEVICE(&mms->iotkit), &error_fatal);
  
-     /* Most of the devices in the FPGA are behind Peripheral Protection
-      * Controllers. The required order for initializing things is:
+     /*
+-     * The AN521 needs us to create splitters to feed the IRQ inputs
+-     * for each CPU in the SSE-200 from each device in the board.
++     * If this board has more than one CPU, then we need to create splitters
++     * to feed the IRQ inputs for each CPU in the SSE from each device in the
++     * board. If there is only one CPU, we can just wire the device IRQ
++     * directly to the SSE's IRQ input.
+      */
+-    if (mmc->fpga_type == FPGA_AN521) {
++    if (mc->max_cpus > 1) {
+         for (i = 0; i < MPS2TZ_NUMIRQ; i++) {
+             char *name = g_strdup_printf("mps2-irq-splitter%d", i);
+             SplitIRQ *splitter = &mms->cpu_irq_splitter[i];
 -- 
 2.20.1
 

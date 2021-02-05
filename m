@@ -1,107 +1,116 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2103450lfo;
-        Fri, 5 Feb 2021 07:24:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyTs1mAq495G7XW8dql/SyZJ1FCbINQNXQsiewvU3ULe8MZ6gnTRzSLpd5AFNHbpCkiTMvG
-X-Received: by 2002:a25:6a86:: with SMTP id f128mr7100556ybc.114.1612538678849;
-        Fri, 05 Feb 2021 07:24:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612538678; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2105788lfo;
+        Fri, 5 Feb 2021 07:27:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJymS0mJuKIeKzwPIEi7c1qLjekVfzo2TOIWy30cqVinAoZRf3ZOxZaTnJGF66UmQcMZLRIb
+X-Received: by 2002:a25:7658:: with SMTP id r85mr6929529ybc.271.1612538870264;
+        Fri, 05 Feb 2021 07:27:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612538870; cv=none;
         d=google.com; s=arc-20160816;
-        b=cL06Ua2pgTAspaGCNZBiIoWF2SI2sWaQGLF+4ffR/N1OVOtJAvPdx7zHEYwqRXKgQx
-         pZAv603rlWZDoX/8tHHKXUttp9+d2Q/uBhwf72YT6Eo6aky2aiTZHP4WQ0wDqbS3bKmn
-         U7CiPrhv9WrdgEUUNqSLACm0UhGwGjRqyhGqoNChXFlTCBIuNubpKm/+t2YWauvT0dJ0
-         Tfcs2lslVOueZFuYHfWs+JaOEjJT2NI/5gpzWtL03ZSw0bKrqG1prWaI0kx5wpxJbwSK
-         IoVha3vFsUhn+x6AobtjvFjapFuYPFMDMSIeXgzVraxMQwTohxCvIPGWnsW/1ANpf984
-         G/+Q==
+        b=El259djEWoU+zdi1G2XgF0cT/SNkUWPZk03Nwu3NWG2Heb45qRovTKf9h6mhwStye9
+         Yi+coDyE97FNWqN91b0723+UdIHozywtCOKzstItSdJeidwAceyd6Lkk8wq+7u4d1Anc
+         cbygb32PUxeghtMU7LFhYd/80B6A31gfzp83FtEo9aBaZ7pjqAICNzcKVI6vEC/6bdY+
+         Cm0m9YZVI9NXzqpHYMaYBGmethnE0w9w5mysECn8quxYVGYedbhDErHKUKvjn+NAw7Pl
+         QcUa0H0BAVDKAu2ZIz3V3u1GU8XKGceuwN+xqnDFajGAuaDEwdHKToerFAl7dy6vXGek
+         Q1CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=iqTAOZK9CE1PPCXsSwtDn6iyqomK+bZghLCsoaPe4GY=;
-        b=z3jJ4Ig1IGHDnis6VqL/k1aSGYTTU8Y5zQEeS+/fcZAu9gx99+XEoNkElIlmY01P9V
-         sczo68tFALnsrmxz9AKNF1MJ8oXulh1GgaodQzN8Gtozhkuh8U3bmJGTGSy+5JLHbRo6
-         AUCJ6uqjmURGMpW4yqhhlia6YtTHsJP0AVfAaCh4+HWgvWO4vxq9Kn3PVhxM3dW4giQs
-         IpYuSipCq0wk2GKFckW+c7s4JPLD+jec6hmbls7aVCUfLkYpToQ2CIojMF9QuynxKxd6
-         37exV+SfK88lvxFb0dmBlJwPjSApikHVJaNH/U6sJ/aA9yf2EspRMRgO2VyMgIlmHyYU
-         db7A==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=vCaykSI1IjYUZSSyIvN1gKJYu5xKWRUlbNnQ0sJ3+lY=;
+        b=ch0alCchX19ee8rF2u+OxtJQPDygm9zIoo4tJU1WBPlmJ5l3qAD+6Ublg09EyixbUo
+         zmznnzAp2f5owSzbhnAR1CEjZAWmwdpSdBxQHLFDdBkyy+f3wf4TA2oas9iPeqXtQIje
+         fx4s5ccjaIzcvvu6B3wRIKcBCgGgfFqgnGscrJbh8LTtDecnZJb4YxhnB+Blwfeyms2x
+         iEy0FEjUXpbqgNmZzqnAXuWCEGgbz4BBQcwrfBiQhFcT8tQ1TOY7SSrKEkPub1ZxM5Ib
+         7PEfBH9Rj0mI+NMfmRKm1B1MYboYzRn87+3GzFFCybwFzoePWuEP6Babk1GD/JWEODOU
+         zm4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ce1eEf/3";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GSznvwHa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5si8531473ybi.241.2021.02.05.07.24.38
+        by mx.google.com with ESMTPS id t123si8983882ybf.107.2021.02.05.07.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 07:24:38 -0800 (PST)
+        Fri, 05 Feb 2021 07:27:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ce1eEf/3";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GSznvwHa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41950 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:50078 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l82yM-0004wO-88
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 10:24:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51738)
+	id 1l831P-0008WA-O5
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 10:27:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l82tE-0005w8-9X
- for qemu-arm@nongnu.org; Fri, 05 Feb 2021 10:19:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:24079)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1l82t7-0000tW-LZ
- for qemu-arm@nongnu.org; Fri, 05 Feb 2021 10:19:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612538350;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=iqTAOZK9CE1PPCXsSwtDn6iyqomK+bZghLCsoaPe4GY=;
- b=ce1eEf/3R/Ns3iSeAqi6iZ8TvAsbHOAQLJpwYc1XOyu6Fzz+cdeTzUPmmVt39RMH2a75tR
- R9XoqctnKBJBaV7Z7F2SExJxZl2uUONHUDVnG6uxdvGbEPwcOSkBCsgVfNNcqmxQybB1Xp
- sPJUgOtFW6i/N1QV8DTgjIeQR5T9sOA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-mRrzRsjhPtaIPrTZP-vPsA-1; Fri, 05 Feb 2021 10:19:07 -0500
-X-MC-Unique: mRrzRsjhPtaIPrTZP-vPsA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DFE24100A8EC;
- Fri,  5 Feb 2021 15:19:05 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.195.147])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 694C219C47;
- Fri,  5 Feb 2021 15:19:03 +0000 (UTC)
-Date: Fri, 5 Feb 2021 16:19:00 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 8/9] hw/arm/virt: Restrict 32-bit CPUs to TCG
-Message-ID: <20210205151900.7rqsv6evey6erfqh@kamzik.brq.redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l8313-0008EX-7p; Fri, 05 Feb 2021 10:27:25 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:34025)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1l830y-0004M9-QS; Fri, 05 Feb 2021 10:27:25 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id hs11so12597057ejc.1;
+ Fri, 05 Feb 2021 07:27:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=vCaykSI1IjYUZSSyIvN1gKJYu5xKWRUlbNnQ0sJ3+lY=;
+ b=GSznvwHag1HZmYje1Z93su523lHtcTQp1lV/zwRwT1beRRdv+5hd/XqdqJ5qps3LPC
+ CbZJKSVFabqWbmxstuRxL2Ux0IOH5pqbsZGq2bVgm2K+VrM2UrMbW482UAkCThcIYUud
+ w0qNU9M1Oo64MsetGY3ZLDjA5KpFyU3WeSkYli5LA5QzTVyk4Kp/rI/1dUDgs37MDqB6
+ 6zt/Cue7RxZyymdaQcycFqaO0J3CxFJOCuRoAPYX34EeGI9vtUKdgh13zVOgfhmh21TB
+ 5re/dW9m3qC4q6lAQrX4uHavDbw5CgBjIRB4vTDnEH2BXEskmiGVUhXtwkhDsPfARm4E
+ 2R2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=vCaykSI1IjYUZSSyIvN1gKJYu5xKWRUlbNnQ0sJ3+lY=;
+ b=inhq5c3D+hgvccNiV9WNXiDCtjdsyyJghnsG1pIWWjxPSg1MAy8JHaYiSE6boALu6G
+ KQmTIsVXKKW7qMtfLWaM0Llh8Z4Eb7jegGHh4vxW8VUqHRtRID8hv4Jq6Hg+l9rB+c22
+ wEVPlFtXCl7B120yo4HjqL8fui8LBTr1ELdEc9jW0qKmFa2Y9zl2pJLdwcJ35lUT/KWD
+ YR20L/g9hdmRY9QfyW/IZRM/SEYj3bTq1HM2/FWR20rwHKZ/AXrOhWVnoZC7F5y/NvPz
+ /nsmaCeYtzVxf1llQM/tOaJrTeQ1/ft310kcSocjTE4mfa9EMnq9h3NwbRAu6ajQaXf2
+ iHfQ==
+X-Gm-Message-State: AOAM5312iHSJs+eLfQFrJSy7fczjo7dWaHmcyQiee5ohubYVFkIQkMVi
+ i3WyCosAZXSacJc4oSpEyr0=
+X-Received: by 2002:a17:906:39c6:: with SMTP id
+ i6mr4646580eje.433.1612538838670; 
+ Fri, 05 Feb 2021 07:27:18 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id x25sm4110996edv.65.2021.02.05.07.27.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Feb 2021 07:27:17 -0800 (PST)
+Subject: Re: [PATCH 6/9] hw/arm/virt: Display list of valid CPUs for the Virt
+ machine
+To: Andrew Jones <drjones@redhat.com>
 References: <20210205144345.2068758-1-f4bug@amsat.org>
- <20210205144345.2068758-9-f4bug@amsat.org>
+ <20210205144345.2068758-7-f4bug@amsat.org>
+ <20210205151229.ro6atrqa5bdwuj57@kamzik.brq.redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <9534eea3-d0e0-f6a3-5e5f-465fabf7e6fa@amsat.org>
+Date: Fri, 5 Feb 2021 16:27:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210205144345.2068758-9-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20210205151229.ro6atrqa5bdwuj57@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.352,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.33,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,45 +129,55 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aIbCQlmrd95a
+X-TUID: W1ub11HBgUId
 
-On Fri, Feb 05, 2021 at 03:43:44PM +0100, Philippe Mathieu-Daudé wrote:
-> Support for ARMv7 has been dropped in commit 82bf7ae84ce
-> ("target/arm: Remove KVM support for 32-bit Arm hosts").
-> Restrict the 32-bit CPUs to --enable-tcg builds.
+On 2/5/21 4:12 PM, Andrew Jones wrote:
+> On Fri, Feb 05, 2021 at 03:43:42PM +0100, Philippe Mathieu-DaudÃ© wrote:
+>> The Virt machine is restricted to a subset of the CPU provided
+>> by QEMU. Instead of having the user run '--cpu help' and try
+>> each CPUs until finding a match, display the list from start:
+>>
+>>   $ qemu-system-aarch64 -M virt -cpu cortex-a8
+>>   qemu-system-aarch64: mach-virt: CPU type cortex-a8 not supported
+>>   qemu-system-aarch64: mach-virt: Please select one of the following CPU types:  cortex-a7, cortex-a15, cortex-a53, cortex-a57, cortex-a72, host, max
+>>
+>> Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+>> ---
+>>  hw/arm/virt.c | 11 +++++++++++
+>>  1 file changed, 11 insertions(+)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 7802d3a66e8..6ffe091804f 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1830,9 +1830,20 @@ static void machvirt_init(MachineState *machine)
+>>  
+>>      if (!cpu_type_valid(machine->cpu_type)) {
+>>          int len = strlen(machine->cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
+>> +        g_autoptr(GString) s = g_string_new(NULL);
+>>  
+>>          error_report("mach-virt: CPU type %.*s not supported",
+>>                       len, machine->cpu_type);
+>> +
+>> +        for (n = 0; n < ARRAY_SIZE(valid_cpus); n++) {
+>> +            len = strlen(valid_cpus[n]) - strlen(ARM_CPU_TYPE_SUFFIX);
+>> +            g_string_append_printf(s, " %.*s", len, valid_cpus[n]);
+>> +            if (n + 1 < ARRAY_SIZE(valid_cpus)) {
+>> +                g_string_append_c(s, ',');
+>> +            }
+>> +        }
+>> +        error_report("mach-virt: Please select one of the following CPU types: %s",
+>> +                     g_string_free(s, FALSE));
+>>          exit(1);
+>>      }
+>>  
+>> -- 
+>> 2.26.2
+>>
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/arm/virt.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index f5e4a6ec914..ab6300650f9 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -197,8 +197,10 @@ static const int a15irqmap[] = {
->  };
->  
->  static const char *valid_cpus[] = {
-> +#ifdef CONFIG_TCG
->      ARM_CPU_TYPE_NAME("cortex-a7"),
->      ARM_CPU_TYPE_NAME("cortex-a15"),
-> +#endif /* CONFIG_TCG */
->  #ifdef TARGET_AARCH64
->      ARM_CPU_TYPE_NAME("cortex-a53"),
->      ARM_CPU_TYPE_NAME("cortex-a57"),
-> -- 
-> 2.26.2
->
+> It'd be nice if './qemu-system-aarch64 -M virt -cpu \?' would only output
+> the CPUs that the virt machine type supports. Then this error message
+> could suggest running that in order to get the list.
 
-So this filters the cpus out of KVM only builds, which seems
-reasonable to do. Of course, if the build is for both KVM and
-TCG, then the cpus won't be filtered out and we'll have to rely
-on the runtime checks to error out if one where to try a 32-bit
-cpu with KVM. But that's fine too, so
-
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
-Thanks,
-drew
-
++1 very nice =) But not how the command line options processing
+works. Maybe later after John Snow command line rework is merged?

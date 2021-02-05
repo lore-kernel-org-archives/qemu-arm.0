@@ -1,102 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2074196lfo;
-        Fri, 5 Feb 2021 06:48:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxb3Ye5n8dZCS+qVmNCPHCoRJLE2igjP+wCLgeVFXbweRoHGhsU++5bse11nKSnKrya+rbH
-X-Received: by 2002:a05:6902:102a:: with SMTP id x10mr6932550ybt.70.1612536526823;
-        Fri, 05 Feb 2021 06:48:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612536526; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2075981lfo;
+        Fri, 5 Feb 2021 06:51:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyC3E91rRVO2cX7FKcGuLumHkfXOP5i6W0LyvPpRhshc4uvMXIFfEKMDh4aQh/tCHW1/hQN
+X-Received: by 2002:a25:ada2:: with SMTP id z34mr6982885ybi.335.1612536677604;
+        Fri, 05 Feb 2021 06:51:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612536677; cv=none;
         d=google.com; s=arc-20160816;
-        b=POSPxQ8lPFMJC5RilDSAl2aEWnvvmjwkvV96olfETeHQolhxfJkdOIdfW8vrD/vqih
-         7WTdnamEakeExpohh7dMCmf/+yJZNxpPhzKQ+ZJOGsOFtIoEarAbidYm522o+P47z5Xa
-         rXBlJ6JiyNk+98TRo9zwSEW1byE6vbU9AMkYygKZHP0f0dWvQZ8rbZx8BWjOZYH8mncR
-         J5eXBCClZZgxJGmqqdqEPfnHA0OGc2fTy6SxDqQ/wr7CeYmWwq7HTdVKou0ODdg4sK+U
-         jJrWRpEI3Ni0ei3ULzK2qrgG4K9YopxZUKBDphAEudUBTzj1mgwxFQ0ClU215a1KQ/8/
-         bafQ==
+        b=U9gOy9PLwcm4UDQ4tkFFI9dmddDSUJiyxA3guT0n7RjdJlvwDPoqedPFhgrIwrtYv/
+         2vDnPxMurde7fTAn5fqqYuBvEsZT2wL1edJOhOVZS+kgBrNOMhyylGo8xLaSrwDPnv/8
+         f4QcGrymH0JmTqIT/aveCdnsRiq48w4VG2Fxi+XbO4TR16yyzoZaYW7GwwW9J5uhjwV0
+         FKVaKNMQg6xtskl2ZC535X8xwTgwsyqSOZsTN2qXOyWRxyL9sHmvOf7pSzYqWlPsBezQ
+         d9fmVZ8ZzyPIsIbOMulksod18lJyxgVNl/A3bNCfgp3bCN4wkO7xhTEyLkipubSDSXyq
+         mNEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=gjWjrkoo9fwMU9Sch1mUKkw5VscVbA8NCnnTZX/2IUQ=;
-        b=kJVWDmgYeai1gfyQkbR/FqKlIxqsiyt9V1VYQCHtNWfXkIISJ4rNc+K8meP/KRQ1lJ
-         k5cUTi4OVvie2u1olord1sio6gsxF0Hto2BYZUy+ok9pUhMJ7bvUMdUarnCKuZ2556Bk
-         16wv7MKYVbRFQVKktkWjeTTcjZfwsB5i8cqfv+ru+0uEn1VmcnkLN+Pn3Mverynbwz8/
-         yPatzCTFObw/SJnIqfSNhsKimRHHAVhq1MzmWyxSAQPXYP7+PmphFYHDyHMhpIaoH+KE
-         rsfPwguotqnE1eSbQ6GHW/32iN3/brssBlKrm/zmNRZj2y0VWaM7V8+4mhOGaVSkW1Vy
-         U1Yw==
+        bh=Xkg/zu6AKq/Ee23oMpv0PA3XN//XoILVWe2S9GBryeE=;
+        b=UQ/3kn1Sit/tEUjKkuazbeHYULqbxmlqkYQZJMJ4ZKY2P+cd5BHjRXKplA6Dqg6Sng
+         9yFBx2kS5CbelBOmN3YzXVJ3VnrzsfIsyGv2BV2nTV6tHV63OC/TPnUy640LriXozXQb
+         EUtv5IK8M6TeVTxtbIJs/H7N1Lv+1awA6x8tt9KmOIwmrj02/Tx+FXNTuc3uzBLUsj0c
+         +TThnOie6ShpzS0aqE9IosFuDY3IOMIGhK5JBSkzuihrSBjoPoHRKDZiLNvynt/ooDCL
+         lraJbtpbv61pYu5QYp52mlsKWpgeF96wIpNPARWyw2iWU76VtS9VR6PXqhjS5u8TvWw3
+         LtRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YfbL3wd7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DUzbQda1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7si8570226ybw.316.2021.02.05.06.48.46
+        by mx.google.com with ESMTPS id q7si7990512ybm.102.2021.02.05.06.51.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 06:48:46 -0800 (PST)
+        Fri, 05 Feb 2021 06:51:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YfbL3wd7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DUzbQda1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34402 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l82Pc-00077p-Ok
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 09:48:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42726)
+	id 1l82S4-0001OI-S5
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 09:51:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l82Lj-0003Ia-Cs; Fri, 05 Feb 2021 09:44:43 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:32938)
+ id 1l82LR-0002j0-IX; Fri, 05 Feb 2021 09:44:26 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:33718)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l82Lg-0002bB-NP; Fri, 05 Feb 2021 09:44:43 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id c6so9109472ede.0;
- Fri, 05 Feb 2021 06:44:39 -0800 (PST)
+ id 1l82LN-0002Qy-Ab; Fri, 05 Feb 2021 09:44:22 -0500
+Received: by mail-ej1-x636.google.com with SMTP id sa23so12381565ejb.0;
+ Fri, 05 Feb 2021 06:44:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=gjWjrkoo9fwMU9Sch1mUKkw5VscVbA8NCnnTZX/2IUQ=;
- b=YfbL3wd7WIFvDX66J6x/emlBwMT1vunccIADjGH5sA4zJ/cFFH+CrHhF7uOUJBg664
- JZMOaMoGEKYIXEX6q6Dv3gnJCQwTdw98g/8Uh4Zf9GdgGTPkDZz0KPypUwra1LHb2608
- nvejPdqhCSGmvdDxA2ZSwlOtqiuorJgOM1Ia2etQUCTLYQIU+vUKfGCTXAsTHKm80/62
- X1mrFC7nqOdzl1YEpve4azx4vA/4JKMHno6PCGoUzxFl2KK8n7lJwAPqG3QNOmgm5fl6
- 2Hxls14icc2CsOCssTn0V1furNTPQIOa0nVvbO+prPo9EQudmofNp9WJXUAV246yKH9c
- iEEA==
+ bh=Xkg/zu6AKq/Ee23oMpv0PA3XN//XoILVWe2S9GBryeE=;
+ b=DUzbQda1m4bnqAFLyLB6eIM8vYj/X4I0dEM5/Ae7NndZhZNO++wYpb/GsrkM9G2fdb
+ ZdeE4zBDjXvdz2m8akGj5Yn4O3blQpeegw8s7cKFkwW2dxZCe1yEEF0ZHFmFNwE4WiTh
+ FYRsGfxNqFIjlDK7mJH5yPmKclBvvtlGUbMpmjW7jJ95L0i50SUz6FPktQzwc5M2QUwW
+ hRlosIUrdwj5wu8eRpSOBgh1/Zvhvt94LHhBxDhkbdaCRuPF9vE6OcJmZAocZpM0Q2Cb
+ LQqFcH1zXbw2ipZoLIq+thGyDXa/6A2DHUSbkSQC73XfLGutXgdH6fl1jwQ0QMczt3Ow
+ LQhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=gjWjrkoo9fwMU9Sch1mUKkw5VscVbA8NCnnTZX/2IUQ=;
- b=l78Ovalr6my6hWGs/Vq2PlRdZVnkvfpz0BaVmJZsJiU4IVSu/LjoHklNtj83i2+HLA
- QV2f41cpc1d2DQ5FHR10zznSJgJcAzYEO8jVrP3+dyJ2lteFw1RXIWZAhJTh3rbO8E5G
- Wn2VZG//QYIfv2vYeS81pdndOnpbh7VH74hDpkdXY3nzeq5YBE3DouP5eRSBZBWpMtVy
- qMpfj9/vEuJtBB3nlg41Ya9SSNGmM48ABwbvAqgoNBHuNQ4UAoNuv4QewBiQwpGQj3WJ
- 9aLrRWP8GOmTS3w++lY+reT7eajBmQRhzekDATGjtZogMclI6kIRoAfCc9eMQISVeHXf
- kFcg==
-X-Gm-Message-State: AOAM530Zjhk1S7HO/x7aGod11k3ayAu912sEsvau9r+7KeFtT3rbrESy
- okJgzbtewejGyODOfwngNqw5vcmF8Vw=
-X-Received: by 2002:a05:6402:524f:: with SMTP id
- t15mr3755462edd.158.1612536278411; 
- Fri, 05 Feb 2021 06:44:38 -0800 (PST)
+ bh=Xkg/zu6AKq/Ee23oMpv0PA3XN//XoILVWe2S9GBryeE=;
+ b=JM/4Kz7U18FXQDRjYPALPYTQx4aLMtvtTNbEqx9cwBhg2pQUJErPEKoYGLwCf8I5XK
+ 5e1iO6ThNedoJvYn49S/Mz42otvfBfwUBJj9RTHXxqRc54/KqTb8t3L7gu2JzqN5IuX7
+ EEfri/7kxDEu6FilAA0btwkLepKE991OVkNGSwOZwdAzK7CwBWRgaUrSHsgQSpP1KQr2
+ XGC6DuYw7KZpWcIA0/CFS+E81KCeS8zJMCWrmS9x5dOl4U9wyrLLn5jyRM9OWXqiWf4u
+ 4IIRyajvl89Hz3mFGu1UHWjsBN1WgjNZOluzC+JP15We0KfcvnAsZ6qfmU9NwYPFXAOB
+ rkYg==
+X-Gm-Message-State: AOAM533EVEL/vprCDyLsDyQ9+qV8klrpfFULEoqMZgezA62fBnp0I3el
+ Kpqn5x1eCgq1s3x/m3oQwwPi9xiNA3U=
+X-Received: by 2002:a17:907:3f13:: with SMTP id
+ hq19mr4391142ejc.142.1612536256133; 
+ Fri, 05 Feb 2021 06:44:16 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id hr3sm3883275ejc.41.2021.02.05.06.44.36
+ by smtp.gmail.com with ESMTPSA id u2sm3982732ejb.65.2021.02.05.06.44.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 06:44:37 -0800 (PST)
+ Fri, 05 Feb 2021 06:44:15 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 9/9] tests/qtest/arm-cpu-features: Restrict TCG-only tests
-Date: Fri,  5 Feb 2021 15:43:45 +0100
-Message-Id: <20210205144345.2068758-10-f4bug@amsat.org>
+Subject: [PATCH 5/9] hw/arm/virt: Improve CPU name in help message
+Date: Fri,  5 Feb 2021 15:43:41 +0100
+Message-Id: <20210205144345.2068758-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210205144345.2068758-1-f4bug@amsat.org>
 References: <20210205144345.2068758-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -121,102 +121,45 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  qemu-block@nongnu.org, Andrew Jones <drjones@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  John Snow <jsnow@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DWccwix0nE5X
+X-TUID: VvDGZFCWwHxJ
 
-Some tests explicitly request the TCG accelerator. As these
-tests will obviously fails if TCG is not present, disable
-them in such case.
+When selecting an incorrect CPU, there is a mismatch between the
+CPU name provided and the one displayed (which is some QEMU internal
+name):
+
+  $ qemu-system-aarch64 -M virt -cpu cortex-a8
+  qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
+
+Strip the suffix to display the correct CPU name:
+
+  $ qemu-system-aarch64 -M virt -cpu cortex-a8
+  qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Cc: Roman Bolshakov <r.bolshakov@yadro.com>
-Cc: Claudio Fontana <cfontana@suse.de>
+ hw/arm/virt.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-RFC because of the TODO.
-
-Roman posted a series to have a QMP command to query enabled
-accelerators.
----
- tests/qtest/arm-cpu-features.c | 33 +++++++++++++++++++++++++++++----
- 1 file changed, 29 insertions(+), 4 deletions(-)
-
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index c59c3cb002b..c6e86282b66 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -20,7 +20,7 @@
-  */
- #define SVE_MAX_VQ 16
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 399da734548..7802d3a66e8 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1829,7 +1829,10 @@ static void machvirt_init(MachineState *machine)
+     finalize_gic_version(vms);
  
--#define MACHINE     "-machine virt,gic-version=max -accel tcg "
-+#define MACHINE_TCG "-machine virt,gic-version=max -accel tcg "
- #define MACHINE_KVM "-machine virt,gic-version=max -accel kvm -accel tcg "
- #define QUERY_HEAD  "{ 'execute': 'query-cpu-model-expansion', " \
-                     "  'arguments': { 'type': 'full', "
-@@ -41,6 +41,16 @@ static bool kvm_enabled(QTestState *qts)
-     return enabled;
- }
- 
-+static bool tcg_enabled(QTestState *qts)
-+{
-+    /* TODO: Implement QMP query-accel? */
-+#ifdef CONFIG_TCG
-+    return true;
-+#else
-+    return false;
-+#endif /* CONFIG_TCG */
-+}
+     if (!cpu_type_valid(machine->cpu_type)) {
+-        error_report("mach-virt: CPU type %s not supported", machine->cpu_type);
++        int len = strlen(machine->cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
 +
- static QDict *do_query_no_props(QTestState *qts, const char *cpu_type)
- {
-     return qtest_qmp(qts, QUERY_HEAD "'model': { 'name': %s }"
-@@ -352,7 +362,12 @@ static void sve_tests_sve_max_vq_8(const void *data)
- {
-     QTestState *qts;
++        error_report("mach-virt: CPU type %.*s not supported",
++                     len, machine->cpu_type);
+         exit(1);
+     }
  
--    qts = qtest_init(MACHINE "-cpu max,sve-max-vq=8");
-+    qts = qtest_init(MACHINE_TCG "-cpu max,sve-max-vq=8");
-+
-+    if (!tcg_enabled(qts)) {
-+        qtest_quit(qts);
-+        return;
-+    }
- 
-     assert_sve_vls(qts, "max", BIT_ULL(8) - 1, NULL);
- 
-@@ -387,7 +402,12 @@ static void sve_tests_sve_off(const void *data)
- {
-     QTestState *qts;
- 
--    qts = qtest_init(MACHINE "-cpu max,sve=off");
-+    qts = qtest_init(MACHINE_TCG "-cpu max,sve=off");
-+
-+    if (!tcg_enabled(qts)) {
-+        qtest_quit(qts);
-+        return;
-+    }
- 
-     /* SVE is off, so the map should be empty. */
-     assert_sve_vls(qts, "max", 0, NULL);
-@@ -443,7 +463,12 @@ static void test_query_cpu_model_expansion(const void *data)
- {
-     QTestState *qts;
- 
--    qts = qtest_init(MACHINE "-cpu max");
-+    qts = qtest_init(MACHINE_TCG "-cpu max");
-+
-+    if (!tcg_enabled(qts)) {
-+        qtest_quit(qts);
-+        return;
-+    }
- 
-     /* Test common query-cpu-model-expansion input validation */
-     assert_type_full(qts);
 -- 
 2.26.2
 

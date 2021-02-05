@@ -1,107 +1,109 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2225601lfo;
-        Fri, 5 Feb 2021 10:02:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyGWAHvKJXRiPp4fhM5AfDs1xEHHYU3g8P5+2ZhUWu9j7FC7xUyajW5IzrH3KVmby73E1Lg
-X-Received: by 2002:a25:d750:: with SMTP id o77mr8187794ybg.194.1612548130752;
-        Fri, 05 Feb 2021 10:02:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612548130; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2228122lfo;
+        Fri, 5 Feb 2021 10:05:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzPSGYmmI+Uw4vq2ncAXQSY+CVvMluJtj2SH8Q9XmC8S6mlNNUr0J3Ie0EKWiG1V55DgcSv
+X-Received: by 2002:a05:6122:1213:: with SMTP id v19mr4051145vkc.9.1612548308373;
+        Fri, 05 Feb 2021 10:05:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612548308; cv=none;
         d=google.com; s=arc-20160816;
-        b=lIJFIsHy7+3C8jPYRzNGPNvnN/s42sR1KbESVlLctIy8JBRcWlrIfs+IsfBOyO94BD
-         giz7Hi+lVWEv/IRFvraZ2WB71GQesoPQFrcbZU3ID/lIg2flv4w7la40zwOHJgLJE0wz
-         BdnIpP6SDMGJFmA5qXn6YRYUqiiC2s497ExZcHM4uaH0FT0UFsaRl8BjXZKadcwkACEn
-         Kr3r0TgQvOmnsYuziMQNeEj1njxjgdGI8WYZku5R3//FC6gnYbKXZZPtedrM9i5+MITh
-         lq/G3pMKOp272qpPYtA+U1f3JVw12lDA2jflmRE2huFsjpipzIup3TrDQiYUG2uHO9Pg
-         NFNw==
+        b=0Py911pc4GzBYO4y9mEVbKnkl01oO8n6UwEo0BgdL40n9P3DBfnpIBBrIDCxgkjwSy
+         AKjsIRHOl5GKoXlOJdz3NFjl7jPzAvbwkjB7qHY4sCocPyIb4nD7hMAAFljFDsDDvHt8
+         wsfwaBVV3dgdcQlYjevt4fwJWUQM2BIgBFQGS5ZPGdT5HC+OiXdPwpTEbeqP8MMOAP7n
+         H1XWSjALTlJwzPB4aILXUkhUa+J4KAEY1DuxuAi5p15MjjEcQ+2jUlbdtUzSztWRJqkb
+         h8SqrCAkpGlznbhCUvpKD/Xgm5wRyRdM8FfXoO4PxAqBpTNSM9rlBMs7taJdNFQrxgfu
+         BYZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=VExqa+lpIqLqPOLyo4g6/fWlW+zXneTP5pLyMzsvn58=;
-        b=1IyZpMeIEEavG1dmIWDA4Jb0e6AsW8z07A5NcOgT1jIGbFZH24ltZyn+EystJAMxOv
-         UCF+4uDG+venUpZIHE2u8uKMXRSXlYmLPAk2pWO7VXRIIHkebb7GhOfuHh8ogQqxXK3o
-         3YXQJnycXx6jDqCP+d98KzT8mtOhf83u2W9L3vYfbfBYwaDQMXG3926/XO79CN7T97GR
-         tyVy4Cgb5Zx1qdXgeTQJb5V7cQ1AYVn+CMoLXvmE8uZT2YqJ+L6Gple6Kj1sSiHrIyoi
-         AgL7GtQHcLmNzFsQYmxmuNae9YRgY5d5b+hIQFkNOQTVZWSbLeL4EQ066qSvSGS6muUL
-         9/Ww==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=M0p8lPGYTACYbzRLtR7fBRTYLnsV3hqqOQcj+ku4dlo=;
+        b=k8LsB3R/53kdZgcomT6KFeCOJgj2kklS6eiQmL1nH38utF4hKelqgg59EXmNmMa2e1
+         WVUsjEgm6TtUrqXZgz3s7Cpl6B4llwtKWSXOMSn3GQ6MAsit8fmV04K6tmRxfm3S0kpI
+         /Jam7RdQd3kk67iNqf/HbZ72VPQIpFvqtEpkvlEX84zWHPz2muHGBYeW7J7yzpxXd7SU
+         7AXLfvETqxjhk/Di01xQZfiUMf/lzOGtkLt3rty70a/jWtySgFbqxaLPBPkng+iaGmZ/
+         +cbkBCNo+a/NeahZFLAcLx7f1zvJzJ1tSqxikTpkegb9DJ1ueqod6dt7nP7hHFd5KhE4
+         edrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nAY7BipY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pY+t6REU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h7si8890392ybh.288.2021.02.05.10.02.10
+        by mx.google.com with ESMTPS id m14si1923456uah.74.2021.02.05.10.05.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 10:02:10 -0800 (PST)
+        Fri, 05 Feb 2021 10:05:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nAY7BipY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pY+t6REU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53886 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59974 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l85Qo-0007hG-3K
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:02:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50134)
+	id 1l85Tf-00025A-Kw
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:05:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84hE-0007Tu-BK
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:15:04 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:37213)
+ id 1l84U0-0007Ae-2O
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:24 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:46089)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84hB-0001zc-2L
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:15:04 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id v15so8518237wrx.4
- for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:15:00 -0800 (PST)
+ id 1l84TZ-00048Q-LA
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:23 -0500
+Received: by mail-wr1-x432.google.com with SMTP id q7so8393054wre.13
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=VExqa+lpIqLqPOLyo4g6/fWlW+zXneTP5pLyMzsvn58=;
- b=nAY7BipYixZPLxu6I/91/qCUWebSsNUvTkU8kZ4sy4eT7VfKmeUGEqy+275D0ZIwWe
- QxXgPd6NCLCU/1g9YOxlASkytDybTbMA2OUFbyuG04AdQODqcl/aSwqRh0j+usPNrGw2
- nd521EYlzNIs68n7U4OgMwk1xmwZSfG3hA++lG+uPDZ7D8vsN0rTHaR3fm4mmmOfBv28
- 34RTheQOg4ECQk7g6eX91SnJgkDWPKaXIpb8wq/hLX37Swpr4/Fd3hvhvwx2Y9F2EfUo
- 47E5rGetlUjcJ7rFPZ5rp6qBo11CYVnL8aJjUCskrmOkdhwsoCeJpi2BJEXM/shX3JYd
- HPZQ==
+ bh=M0p8lPGYTACYbzRLtR7fBRTYLnsV3hqqOQcj+ku4dlo=;
+ b=pY+t6REUnChKux8CNuu2SL+CRK0Itagle1XrT50PNB3claeRbxT/M/N0hz29P7yYRo
+ 6tVFbzK1ACPm3Dn1bVIrHn5TumAuXXjS/hQwBDhhuE8xvW31PxriJ49Mph48IE6JYOLg
+ ju6rb7l9QhV4LIF9xKnFvGT0gceyOgNZvz4Fu59ZmgUjIE7O5OmvDKY6siKHAKbvDmyS
+ fPDLO2ycNPVyUmUl46EaJjeG5YK0iMKRl08afnOiZhQ/CdsxaX7xNZjRdGue0DgBEmrT
+ pGRorGH3TUEyUzSJp07nL/qjepY4UD4A3HqcEP6zdRGvqOJ58zQAef87/6ych5e5tPIt
+ Vhhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VExqa+lpIqLqPOLyo4g6/fWlW+zXneTP5pLyMzsvn58=;
- b=QgswhlA0crfij46xnkef0b2p5C7XUA7L9LFqjjgUc3QMwZpjrNmAzNCJ8KET1cJLPZ
- GHgsaPPQk8wSxBHwrEJx3lYrH2NBfiodVGBOXSVSqpPGBc+fsPGc0d5PzNBhJFCrChz9
- gSUQo8PD8PI+nWO/e/eCII1gKLrEAGpT91OWpsWz29C5dPDP+SXdm1NiFeUBGCLEWHXG
- meOhQgqKhDqfF4PxSVuTQo2KEq2zFTKN98g5tzZGeQkOCrY4G1k39rtlOnHHD6XwFomx
- zUQuJcJwI/WaTufUA8ibLvh2OjFuzJ7znLcCdM76ZFzxv6M63vozxkWNzMIRuw6+J/MH
- wqpQ==
-X-Gm-Message-State: AOAM532NnhSS58tQxgt4G7bDwLyV2M9alEXKbcjm6060B4scOBIQTDbb
- h1/pME18Xru5f4fKqdyRMckYh3bDWlEyqA==
-X-Received: by 2002:adf:e68e:: with SMTP id r14mr6345493wrm.242.1612545299307; 
- Fri, 05 Feb 2021 09:14:59 -0800 (PST)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=M0p8lPGYTACYbzRLtR7fBRTYLnsV3hqqOQcj+ku4dlo=;
+ b=R4M2UU8WuBnky3IIBApwNXWx9NCGuutRXp7BCLyKBY1EVB/nRLlShbOfOXQFzM4Buj
+ hR4jtzqm+1x0aVcm+ejZe2CzrpaxMPudoM/cvoWGY9mQqrf7PAV+DEv2FYwCEE5RtyGc
+ xKeg7M//N3TTBdbSzrimOZDqeJRmcWxW6tCYqYJbUT3jKbBh385LCi93S9jIBbG/H1g5
+ mwMeTdPsIjUQ8k8kI4cfpTekVJuVQ595B5zh2pVXiwrE+hJAJZiQpgXUzLsVyofA7Yd5
+ enl8ismGD3GNOiN9iOvYxHNjjUeraUW3F6sRh9XHAbMUYac2+p+ApJUAxQ91zy912rEm
+ qhAg==
+X-Gm-Message-State: AOAM5326I7jiiMY7a0eK4EaNT8FqbY+8naTZgLxhcNUj0KCRGx6y3cD5
+ aGQrbq5GEZOE9OVeLbSWhbww+A==
+X-Received: by 2002:a5d:50d2:: with SMTP id f18mr6335347wrt.338.1612544436251; 
+ Fri, 05 Feb 2021 09:00:36 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id c62sm9044531wme.16.2021.02.05.09.14.58
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:14:58 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:35 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH] arm: Update infocenter.arm.com URLs
-Date: Fri,  5 Feb 2021 17:14:56 +0000
-Message-Id: <20210205171456.19939-1-peter.maydell@linaro.org>
+Subject: [PATCH 18/24] hw/arm/mps2-tz: Support ROMs as well as RAMs
+Date: Fri,  5 Feb 2021 17:00:13 +0000
+Message-Id: <20210205170019.25319-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
+References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,137 +118,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UI3ZRjEpSs3g
+X-TUID: K5CrPCjxOkmA
 
-Update infocenter.arm.com URLs for various pieces of Arm
-documentation to the new developer.arm.com equivalents.  (There is a
-redirection in place from the old URLs, but we might as well update
-our comments in case the redirect ever disappears in future.)
-
-This patch covers all the URLs which are not MPS2/SSE-200/IoTKit
-related (those are dealt with in a different patch).
+The AN505 and AN521 don't have any read-only memory, but the AN524
+does; add a flag to ROMInfo to mark a region as ROM.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/dma/pl080.h                 | 7 ++++---
- include/hw/misc/arm_integrator_debug.h | 2 +-
- include/hw/ssi/pl022.h                 | 5 +++--
- hw/arm/aspeed_ast2600.c                | 2 +-
- hw/arm/musca.c                         | 4 ++--
- hw/misc/arm_integrator_debug.c         | 2 +-
- hw/timer/arm_timer.c                   | 7 ++++---
- 7 files changed, 16 insertions(+), 13 deletions(-)
+ hw/arm/mps2-tz.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/include/hw/dma/pl080.h b/include/hw/dma/pl080.h
-index 1883f042701..3c9659e4381 100644
---- a/include/hw/dma/pl080.h
-+++ b/include/hw/dma/pl080.h
-@@ -10,11 +10,12 @@
-  * (at your option) any later version.
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index b46b32746e0..ce5e804c734 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -92,8 +92,10 @@ typedef struct RAMInfo {
+  * Flag values:
+  *  IS_ALIAS: this RAM area is an alias to the upstream end of the
+  *    MPC specified by its .mpc value
++ *  IS_ROM: this RAM area is read-only
   */
+ #define IS_ALIAS 1
++#define IS_ROM 2
  
--/* This is a model of the Arm PrimeCell PL080/PL081 DMA controller:
-+/*
-+ * This is a model of the Arm PrimeCell PL080/PL081 DMA controller:
-  * The PL080 TRM is:
-- * http://infocenter.arm.com/help/topic/com.arm.doc.ddi0196g/DDI0196.pdf
-+ * https://developer.arm.com/documentation/ddi0196/latest
-  * and the PL081 TRM is:
-- * http://infocenter.arm.com/help/topic/com.arm.doc.ddi0218e/DDI0218.pdf
-+ * https://developer.arm.com/documentation/ddi0218/latest
-  *
-  * QEMU interface:
-  * + sysbus IRQ 0: DMACINTR combined interrupt line
-diff --git a/include/hw/misc/arm_integrator_debug.h b/include/hw/misc/arm_integrator_debug.h
-index 0077dacb44d..798b0821646 100644
---- a/include/hw/misc/arm_integrator_debug.h
-+++ b/include/hw/misc/arm_integrator_debug.h
-@@ -3,7 +3,7 @@
-  *
-  * Browse the data sheet:
-  *
-- *    http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0159b/Babbfijf.html
-+ *  https://developer.arm.com/documentation/dui0159/b/peripherals-and-interfaces/debug-leds-and-dip-switch-interface
-  *
-  * Copyright (c) 2013 Alex Bennée <alex@bennee.com>
-  *
-diff --git a/include/hw/ssi/pl022.h b/include/hw/ssi/pl022.h
-index 545b52689c1..25d58db5f32 100644
---- a/include/hw/ssi/pl022.h
-+++ b/include/hw/ssi/pl022.h
-@@ -9,9 +9,10 @@
-  * (at your option) any later version.
-  */
+ struct MPS2TZMachineClass {
+     MachineClass parent;
+@@ -209,6 +211,7 @@ static MemoryRegion *mr_for_raminfo(MPS2TZMachineState *mms,
+     if (raminfo->mrindex < 0) {
+         /* Means this RAMInfo is for QEMU's "system memory" */
+         MachineState *machine = MACHINE(mms);
++        assert(!(raminfo->flags & IS_ROM));
+         return machine->ram;
+     }
  
--/* This is a model of the Arm PrimeCell PL022 synchronous serial port.
-+/*
-+ * This is a model of the Arm PrimeCell PL022 synchronous serial port.
-  * The PL022 TRM is:
-- * http://infocenter.arm.com/help/topic/com.arm.doc.ddi0194h/DDI0194H_ssp_pl022_trm.pdf
-+ * https://developer.arm.com/documentation/ddi0194/latest
-  *
-  * QEMU interface:
-  * + sysbus IRQ: SSPINTR combined interrupt line
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 12e4a16d376..bf31ca351fe 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -216,7 +216,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
- /*
-  * ASPEED ast2600 has 0xf as cluster ID
-  *
-- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0388e/CIHEBGFG.html
-+ * https://developer.arm.com/documentation/ddi0388/e/the-system-control-coprocessors/summary-of-system-control-coprocessor-registers/multiprocessor-affinity-register
-  */
- static uint64_t aspeed_calc_affinity(int cpu)
- {
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index 945643c3cd7..7a83f7dda7d 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -15,8 +15,8 @@
-  * https://developer.arm.com/products/system-design/development-boards/iot-test-chips-and-boards/musca-a-test-chip-board
-  * https://developer.arm.com/products/system-design/development-boards/iot-test-chips-and-boards/musca-b-test-chip-board
-  * We model the A and B1 variants of this board, as described in the TRMs:
-- * http://infocenter.arm.com/help/topic/com.arm.doc.101107_0000_00_en/index.html
-- * http://infocenter.arm.com/help/topic/com.arm.doc.101312_0000_00_en/index.html
-+ * https://developer.arm.com/documentation/101107/latest/
-+ * https://developer.arm.com/documentation/101312/latest/
-  */
+@@ -217,6 +220,9 @@ static MemoryRegion *mr_for_raminfo(MPS2TZMachineState *mms,
  
- #include "qemu/osdep.h"
-diff --git a/hw/misc/arm_integrator_debug.c b/hw/misc/arm_integrator_debug.c
-index ec0d4b90d3d..9a197278290 100644
---- a/hw/misc/arm_integrator_debug.c
-+++ b/hw/misc/arm_integrator_debug.c
-@@ -6,7 +6,7 @@
-  * to this area.
-  *
-  * The real h/w is described at:
-- *  http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0159b/Babbfijf.html
-+ *  https://developer.arm.com/documentation/dui0159/b/peripherals-and-interfaces/debug-leds-and-dip-switch-interface
-  *
-  * Copyright (c) 2013 Alex Bennée <alex@bennee.com>
-  *
-diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-index 98e70b2d262..15caff0e41c 100644
---- a/hw/timer/arm_timer.c
-+++ b/hw/timer/arm_timer.c
-@@ -185,10 +185,11 @@ static arm_timer_state *arm_timer_init(uint32_t freq)
-     return s;
+     memory_region_init_ram(ram, NULL, raminfo->name,
+                            raminfo->size, &error_fatal);
++    if (raminfo->flags & IS_ROM) {
++        memory_region_set_readonly(ram, true);
++    }
+     return ram;
  }
  
--/* ARM PrimeCell SP804 dual timer module.
-+/*
-+ * ARM PrimeCell SP804 dual timer module.
-  * Docs at
-- * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0271d/index.html
--*/
-+ * https://developer.arm.com/documentation/ddi0271/latest/
-+ */
- 
- #define TYPE_SP804 "sp804"
- OBJECT_DECLARE_SIMPLE_TYPE(SP804State, SP804)
 -- 
 2.20.1
 

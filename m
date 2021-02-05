@@ -1,102 +1,102 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2231151lfo;
-        Fri, 5 Feb 2021 10:08:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyRcuHayeyvEeij6DY9XxeU0GB4s4uMN0ZK73YXgD/YkQ0dz/RaVUQkne+b/g8zrqArI7Yv
-X-Received: by 2002:a25:7d03:: with SMTP id y3mr8183519ybc.444.1612548523473;
-        Fri, 05 Feb 2021 10:08:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612548523; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2238119lfo;
+        Fri, 5 Feb 2021 10:17:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyXm6l5ef8mmGyacX7VTx8hlMXxdN7QkrEGlCRz3ZVBLtEu7HDkDhzatfuoac7ASRoR2/q7
+X-Received: by 2002:a25:ba13:: with SMTP id t19mr8295675ybg.129.1612549068335;
+        Fri, 05 Feb 2021 10:17:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612549068; cv=none;
         d=google.com; s=arc-20160816;
-        b=wdmAj9/IskV3ZtqZkeFJHo60OZY08kvOeCj1iA7BuFn4WzAi389OWGaeqK2EI7Cn8+
-         giYtTixC9A7RoOWTUIjIOKNL3NMf2TpAuGcrYXlFing1RsIBUygcU9jTjKDwNXzICQzZ
-         z7gtLD2gjInzfspxriNC5SoIhndJPK20TMBJyrB68WIfkqaRKNw/9IwWMIIfHXwdR3l+
-         8kHz6cIVendAI6R+8xJCu4EtbPtwtBJ0xjWXy5qtY6aLB2i3dda5FG9tnKMgjvPVd5OZ
-         +uRWE+fBRUD84QKmsNVp4/r7KRKfpcCtqMLyxBZiy+XKySwjQl2FYjaxhjcjaGZPTclA
-         gJdw==
+        b=W7ZfgaNMvwe+G3lwvb7UvVQ2ZKqaq5ux+6VgjIAZsPtHrL6b86TZ+dFMZ8R2szhtiA
+         nYYKvtFXhVkVJKpfl5vrXx6CqzDGUoffDkTtPj7NHCkg/VfB75tGcLbWri8YJOivdDE0
+         7ELVisQhmPN2EUPUyKLzmkU4/XniO35xi3VSqKp2Asi803azAYWEgawXVfH4UCn2oze5
+         VA1PByMMubASPgSrribB+RPGd3vVnUZ5Z0FK5K6MyFflueCOnsBuYDfWreNNhJ8hBcoL
+         QPu+0miXt2vYdhY0qPZgN2mp8tFfZQPx/rRVbbKOkQYcvDFa0DxQwrE/ouoK7qlvJ097
+         8R6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xP6Xb4op7arwmIlS9Ob8QiEZZSJzfIan0T/eBfhQnhQ=;
-        b=JIVIpqcfKaXFJTGpet9wch1K2aBbT5lYnopo3VAn8cebpNk6fkMxoXr1VFapMZWk85
-         1jAZa/TCS/oNJbEEqDtuzRNN4A3dTo6nbDXhV1pZETPxEnSTd4qVACEtjZ6df9VGfKKS
-         5b3Df6YjeMgTVJbPEvlCMJ57lkiKclfCW8+4s8C5XXzYLLxP8oIZRqgcejKmHUqqflo2
-         wgXbQxG/ej7LOtrSTMqBheGY1GRfkxl62pRoIOme1qjgc7wFQjgZr/+Nswrhi9iw7is/
-         XdKtCSKdcILdF0zd+vcepF3EYBjlcnWUcbWDoflIsn12IkKrvXjZFD5nWT9evEac2wzO
-         QXTw==
+        bh=fbSQXUXJEDGMaGC9KOnv4xEcH7gCV3geuE6p5sgHfh8=;
+        b=O1NRxL4OforDefUIl9fzZ8570xPKNqJdBco1FZuyG4eC5d+a5GGEie7qWzN008D1J4
+         fQ5/XI+6T+h3dzgqw/qmactB4Un7uz/bVjn/R/VmeDz2MNc+aROvPHBHF8/IDUet0R8T
+         wHo7txvioOT5ywtr3wuTc/t4stlx9XKEBaqhNULmy7pG3NSK4BjSFUwaiyREkpr3eJVk
+         +oODHQBt+BCZYjNTpNmXeycf6gCiSE+ca7TSPMkWb2Z4GTDKYZ7ybi6TjwNffjuFLIXL
+         LW+anVFf5Wwfw1inBQGSBIqGhlniaSZNwPhP/S6XOjvROePA9KzvjJ4YsaTLEDKtCByz
+         YwgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LhrF5ece;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Hte+Patv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 141si8811365ybe.473.2021.02.05.10.08.43
+        by mx.google.com with ESMTPS id c6si9227439ybk.322.2021.02.05.10.17.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 10:08:43 -0800 (PST)
+        Fri, 05 Feb 2021 10:17:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LhrF5ece;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Hte+Patv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39610 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l85X8-00063x-Qy
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:08:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46656)
+	id 1l85fv-0007pH-IZ
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 13:17:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46426)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84U2-0007FJ-Af
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:26 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333]:36785)
+ id 1l84Tp-0006y2-Rf
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:13 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:35871)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84TZ-00048B-Km
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:26 -0500
-Received: by mail-wm1-x333.google.com with SMTP id i9so6452248wmq.1
- for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:51 -0800 (PST)
+ id 1l84TQ-00046f-UU
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:13 -0500
+Received: by mail-wr1-x433.google.com with SMTP id u14so8485423wri.3
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=xP6Xb4op7arwmIlS9Ob8QiEZZSJzfIan0T/eBfhQnhQ=;
- b=LhrF5eceqZZUKhRR/oSEPR4mezCVB4OkoI2BT/rn26LdzJdflqcLVDll6OP2fnuW6D
- SdfQLeoBQqsyd2eyNShyrmFnvrnEO9lJg6Q6ibzqYL+uUmUIYG7YP1Ii0uvSdvLJKJmI
- o9BpHFloXmIGx9yIDui+Z/kVODffvJBA9I5gY8FwR3xLrd5UGK6mpS4YDzZrcoqWIjrB
- 0d061P8FI9EbduSVV8Atj/e0lE4g1IB8bgqWQjDSDrmTpNqZ2SmrJ7CEtUxK8J4LLebm
- SNGlstchEZUqpTWqOOREvYgI/cIQMu25k6pxzENzr2vk8YTNEPMMHPJbc3/yJFhhFAen
- EoCA==
+ bh=fbSQXUXJEDGMaGC9KOnv4xEcH7gCV3geuE6p5sgHfh8=;
+ b=Hte+PatvB/wD6GEvkwc2+vBLqw6TWp5P6EGpVjHY6DYpftiUEYd0/TXuSJQqbe/smp
+ fTwC12Hb6g84oP52inUgUXsuH8iVW/pXtLL3wD9D/3OHS4Q++PCN7rmuuxURTQhMGKvB
+ omEv/5PVMGLYfnlOkdEtdQaFTdvfVIHzNWoMHlqJCv44zysIBrap5SbArmG0sLRpuaa2
+ YxENM/axDVe+q64TGSmU0e/qoyGPiEdJkvMNdKHqVSXVDVVUYEoGYu3AlPg6O69UpV/a
+ YFpusFTYkXTQOT//ERABnLC+O1Za485byjNDPX5F9mn8Yi+SrMkKd/2ZessTcJsihNUW
+ RENg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xP6Xb4op7arwmIlS9Ob8QiEZZSJzfIan0T/eBfhQnhQ=;
- b=DDyWAUxlax0X6mdHRmh+CX4nOislZsKIzpS7QsJPpLVhsuRDJWilG7yMNM4UbAAiTU
- LGEp8W229OfMDKzqKLFtyeQsSgjrJmEiEOnPt7124LC2chIi4w3IMM9z0yGsflijR4CD
- 3sgRKdyLltW8KHoIsQFYm13h+Wn8B022yeRdyJ/es7R5FaC4uiVkw6Dq/T9N5Npg0t0S
- tqPlPNfAbtoWIFjpYrVP3geZaj5kzTKg5phzdGl0eZjJGsD4GZKLseGoI8rwH6qLbbik
- ExhwDwDBkFivLn5b7yn8lJ+Txo2rDC6uMToP35DnhnQ5pXE2QnAXhcR+qet03wSFXy27
- Kv0w==
-X-Gm-Message-State: AOAM530QT9M9REXfHexQf5hfKL/DAL2i/d4fJ7ndO2s23GZH/MFPrDNt
- xpmoPsNOh3o6x8ql94/MXDU3PZHiV6JcQg==
-X-Received: by 2002:a1c:9c01:: with SMTP id f1mr4226913wme.159.1612544434740; 
- Fri, 05 Feb 2021 09:00:34 -0800 (PST)
+ bh=fbSQXUXJEDGMaGC9KOnv4xEcH7gCV3geuE6p5sgHfh8=;
+ b=O83OFBWqeGEUU5oeRknF6ydg/IO4gWvswureK/2TrCpB+lUKH0nfIHop49gsAbwctR
+ U4/60KyupUGRo+OgHJNa8kykZh4SUwebfFXBltlmOIaPOFKY8UmKTF8C0yvPRb9EjwVw
+ nJImpBITv2WtNfzH90jhp5pVNy7cPpsTL0cHI4kmpGZjzDZjYjCTpAMLYdXoYlKA/TJV
+ RI68JemrhaGabzPQhapGn8SmzksWvlFsHHxmMRtlN/i/MIgDCTAzlOjZj+DUo9zhUi2F
+ wVUqJ+M2KWXaEbW9ShejlyGCsxzrU9XGiiHgGrpXXn3qAUPEza0q4c5YoclFZl7omk2q
+ 5h5w==
+X-Gm-Message-State: AOAM531/IoJT8P/V8HQ8npXN4gflDw0WTgcQ5YCPJv79Puc1TzOnG2N9
+ gKcHb2e8iqiu5vCK+HOvg7KqRw==
+X-Received: by 2002:a5d:458a:: with SMTP id p10mr6085659wrq.168.1612544439505; 
+ Fri, 05 Feb 2021 09:00:39 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.33
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:34 -0800 (PST)
+ Fri, 05 Feb 2021 09:00:39 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 16/24] hw/arm/mps2-tz: Make RAM arrangement board-specific
-Date: Fri,  5 Feb 2021 17:00:11 +0000
-Message-Id: <20210205170019.25319-17-peter.maydell@linaro.org>
+Subject: [PATCH 22/24] hw/arm/mps2-tz: Provide PL031 RTC on mps3-an524
+Date: Fri,  5 Feb 2021 17:00:17 +0000
+Message-Id: <20210205170019.25319-23-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,298 +118,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XEH259kAm8i1
+X-TUID: 9A5xsaDgVRpX
 
-The AN505 and AN521 have the same layout of RAM; the AN524 does not.
-Replace the current hard-coding of where the RAM is and which parts
-of it are behind which MPCs with a data-driven approach.
+The AN524 has a PL031 RTC, which we have a model of; provide it
+rather than an unimplemented-device stub.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/mps2-tz.c | 175 +++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 138 insertions(+), 37 deletions(-)
+ hw/arm/mps2-tz.c | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
 
 diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 721ac444920..1e8dde768c2 100644
+index db1afa4bd22..27feb36616e 100644
 --- a/hw/arm/mps2-tz.c
 +++ b/hw/arm/mps2-tz.c
-@@ -66,12 +66,35 @@
- #include "qom/object.h"
- 
- #define MPS2TZ_NUMIRQ_MAX 92
-+#define MPS2TZ_RAM_MAX 4
- 
- typedef enum MPS2TZFPGAType {
-     FPGA_AN505,
-     FPGA_AN521,
- } MPS2TZFPGAType;
- 
-+/*
-+ * Define the layout of RAM in a board, including which parts are
-+ * behind which MPCs.
-+ * mrindex specifies the index into mms->ram[] to use for the backing RAM;
-+ * -1 means "use the system RAM".
-+ */
-+typedef struct RAMInfo {
-+    const char *name;
-+    uint32_t base;
-+    uint32_t size;
-+    int mpc; /* MPC number, -1 for "not behind an MPC" */
-+    int mrindex;
-+    int flags;
-+} RAMInfo;
-+
-+/*
-+ * Flag values:
-+ *  IS_ALIAS: this RAM area is an alias to the upstream end of the
-+ *    MPC specified by its .mpc value
-+ */
-+#define IS_ALIAS 1
-+
- struct MPS2TZMachineClass {
-     MachineClass parent;
-     MPS2TZFPGAType fpga_type;
-@@ -82,6 +105,7 @@ struct MPS2TZMachineClass {
-     uint32_t fpgaio_num_leds; /* Number of LEDs in FPGAIO LED0 register */
-     bool fpgaio_switches; /* Does FPGAIO have SWITCH register? */
-     int numirq; /* Number of external interrupts */
-+    const RAMInfo *raminfo;
-     const char *armsse_type;
- };
- 
-@@ -89,12 +113,11 @@ struct MPS2TZMachineState {
-     MachineState parent;
- 
-     ARMSSE iotkit;
--    MemoryRegion ssram[3];
--    MemoryRegion ssram1_m;
-+    MemoryRegion ram[MPS2TZ_RAM_MAX];
-     MPS2SCC scc;
-     MPS2FPGAIO fpgaio;
-     TZPPC ppc[5];
--    TZMPC ssram_mpc[3];
-+    TZMPC mpc[3];
-     PL022State spi[5];
-     ArmSbconI2CState i2c[4];
-     UnimplementedDeviceState i2s_audio;
-@@ -126,6 +149,77 @@ static const uint32_t an505_oscclk[] = {
-     25000000,
- };
- 
-+static const RAMInfo an505_raminfo[] = { {
-+        .name = "ssram-0",
-+        .base = 0x00000000,
-+        .size = 0x00400000,
-+        .mpc = 0,
-+        .mrindex = 0,
-+    }, {
-+        .name = "ssram-1",
-+        .base = 0x28000000,
-+        .size = 0x00200000,
-+        .mpc = 1,
-+        .mrindex = 1,
-+    }, {
-+        .name = "ssram-2",
-+        .base = 0x28200000,
-+        .size = 0x00200000,
-+        .mpc = 2,
-+        .mrindex = 2,
-+    }, {
-+        .name = "ssram-0-alias",
-+        .base = 0x00400000,
-+        .size = 0x00400000,
-+        .mpc = 0,
-+        .mrindex = 3,
-+        .flags = IS_ALIAS,
-+    }, {
-+        /* Use the largest bit of contiguous RAM as our "system memory" */
-+        .name = "mps.ram",
-+        .base = 0x80000000,
-+        .size = 16 * MiB,
-+        .mpc = -1,
-+        .mrindex = -1,
-+    }, {
-+        .name = NULL,
-+    },
-+};
-+
-+static const RAMInfo *find_raminfo_for_mpc(MPS2TZMachineState *mms, int mpc)
-+{
-+    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-+    const RAMInfo *p;
-+
-+    for (p = mmc->raminfo; p->name; p++) {
-+        if (p->mpc == mpc && !(p->flags & IS_ALIAS)) {
-+            return p;
-+        }
-+    }
-+    /* if raminfo array doesn't have an entry for each MPC this is a bug */
-+    g_assert_not_reached();
-+}
-+
-+static MemoryRegion *mr_for_raminfo(MPS2TZMachineState *mms,
-+                                    const RAMInfo *raminfo)
-+{
-+    /* Return an initialized MemoryRegion for the RAMInfo. */
-+    MemoryRegion *ram;
-+
-+    if (raminfo->mrindex < 0) {
-+        /* Means this RAMInfo is for QEMU's "system memory" */
-+        MachineState *machine = MACHINE(mms);
-+        return machine->ram;
-+    }
-+
-+    assert(raminfo->mrindex < MPS2TZ_RAM_MAX);
-+    ram = &mms->ram[raminfo->mrindex];
-+
-+    memory_region_init_ram(ram, NULL, raminfo->name,
-+                           raminfo->size, &error_fatal);
-+    return ram;
-+}
-+
- /* Create an alias of an entire original MemoryRegion @orig
-  * located at @base in the memory map.
-  */
-@@ -290,35 +384,23 @@ static MemoryRegion *make_mpc(MPS2TZMachineState *mms, void *opaque,
-                               const int *irqs)
- {
-     TZMPC *mpc = opaque;
--    int i = mpc - &mms->ssram_mpc[0];
--    MemoryRegion *ssram = &mms->ssram[i];
-+    int i = mpc - &mms->mpc[0];
-     MemoryRegion *upstream;
--    char *mpcname = g_strdup_printf("%s-mpc", name);
--    static uint32_t ramsize[] = { 0x00400000, 0x00200000, 0x00200000 };
--    static uint32_t rambase[] = { 0x00000000, 0x28000000, 0x28200000 };
-+    const RAMInfo *raminfo = find_raminfo_for_mpc(mms, i);
-+    MemoryRegion *ram = mr_for_raminfo(mms, raminfo);
- 
--    memory_region_init_ram(ssram, NULL, name, ramsize[i], &error_fatal);
--
--    object_initialize_child(OBJECT(mms), mpcname, mpc, TYPE_TZ_MPC);
--    object_property_set_link(OBJECT(mpc), "downstream", OBJECT(ssram),
-+    object_initialize_child(OBJECT(mms), name, mpc, TYPE_TZ_MPC);
-+    object_property_set_link(OBJECT(mpc), "downstream", OBJECT(ram),
-                              &error_fatal);
-     sysbus_realize(SYS_BUS_DEVICE(mpc), &error_fatal);
-     /* Map the upstream end of the MPC into system memory */
-     upstream = sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 1);
--    memory_region_add_subregion(get_system_memory(), rambase[i], upstream);
-+    memory_region_add_subregion(get_system_memory(), raminfo->base, upstream);
-     /* and connect its interrupt to the IoTKit */
-     qdev_connect_gpio_out_named(DEVICE(mpc), "irq", 0,
-                                 qdev_get_gpio_in_named(DEVICE(&mms->iotkit),
-                                                        "mpcexp_status", i));
- 
--    /* The first SSRAM is a special case as it has an alias; accesses to
--     * the alias region at 0x00400000 must also go to the MPC upstream.
--     */
--    if (i == 0) {
--        make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", upstream, 0x00400000);
--    }
--
--    g_free(mpcname);
-     /* Return the register interface MR for our caller to map behind the PPC */
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 0);
- }
-@@ -415,6 +497,28 @@ static MemoryRegion *make_i2c(MPS2TZMachineState *mms, void *opaque,
+@@ -59,6 +59,7 @@
+ #include "hw/misc/tz-msc.h"
+ #include "hw/arm/armsse.h"
+ #include "hw/dma/pl080.h"
++#include "hw/rtc/pl031.h"
+ #include "hw/ssi/pl022.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
+ #include "hw/net/lan9118.h"
+@@ -131,8 +132,8 @@ struct MPS2TZMachineState {
+     UnimplementedDeviceState gpio[4];
+     UnimplementedDeviceState gfx;
+     UnimplementedDeviceState cldc;
+-    UnimplementedDeviceState rtc;
+     UnimplementedDeviceState usb;
++    PL031State rtc;
+     PL080State dma[4];
+     TZMSC msc[4];
+     CMSDKAPBUART uart[6];
+@@ -595,6 +596,23 @@ static MemoryRegion *make_i2c(MPS2TZMachineState *mms, void *opaque,
      return sysbus_mmio_get_region(s, 0);
  }
  
-+static void create_non_mpc_ram(MPS2TZMachineState *mms)
++static MemoryRegion *make_rtc(MPS2TZMachineState *mms, void *opaque,
++                              const char *name, hwaddr size,
++                              const int *irqs)
 +{
-+    /*
-+     * Handle the RAMs which are either not behind MPCs or which are
-+     * aliases to another MPC.
-+     */
-+    const RAMInfo *p;
-+    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
++    PL031State *pl031 = opaque;
++    SysBusDevice *s;
 +
-+    for (p = mmc->raminfo; p->name; p++) {
-+        if (p->flags & IS_ALIAS) {
-+            SysBusDevice *mpc_sbd = SYS_BUS_DEVICE(&mms->mpc[p->mpc]);
-+            MemoryRegion *upstream = sysbus_mmio_get_region(mpc_sbd, 1);
-+            make_ram_alias(&mms->ram[p->mrindex], p->name, upstream, p->base);
-+        } else if (p->mpc == -1) {
-+            /* RAM not behind an MPC */
-+            MemoryRegion *mr = mr_for_raminfo(mms, p);
-+            memory_region_add_subregion(get_system_memory(), p->base, mr);
-+        }
-+    }
++    object_initialize_child(OBJECT(mms), name, pl031, TYPE_PL031);
++    s = SYS_BUS_DEVICE(pl031);
++    sysbus_realize(s, &error_fatal);
++    /*
++     * The board docs don't give an IRQ number for the PL031, so
++     * presumably it is not connected.
++     */
++    return sysbus_mmio_get_region(s, 0);
 +}
 +
- static void mps2tz_common_init(MachineState *machine)
+ static void create_non_mpc_ram(MPS2TZMachineState *mms)
  {
-     MPS2TZMachineState *mms = MPS2TZ_MACHINE(machine);
-@@ -499,24 +603,17 @@ static void mps2tz_common_init(MachineState *machine)
-     qdev_connect_gpio_out_named(iotkitdev, "sec_resp_cfg", 0,
-                                 qdev_get_gpio_in(dev_splitter, 0));
- 
--    /* The IoTKit sets up much of the memory layout, including
-+    /*
-+     * The IoTKit sets up much of the memory layout, including
-      * the aliases between secure and non-secure regions in the
--     * address space. The FPGA itself contains:
--     *
--     * 0x00000000..0x003fffff  SSRAM1
--     * 0x00400000..0x007fffff  alias of SSRAM1
--     * 0x28000000..0x283fffff  4MB SSRAM2 + SSRAM3
--     * 0x40100000..0x4fffffff  AHB Master Expansion 1 interface devices
--     * 0x80000000..0x80ffffff  16MB PSRAM
--     */
--
--    /* The FPGA images have an odd combination of different RAMs,
-+     * address space, and also most of the devices in the system.
-+     * The FPGA itself contains various RAMs and some additional devices.
-+     * The FPGA images have an odd combination of different RAMs,
-      * because in hardware they are different implementations and
-      * connected to different buses, giving varying performance/size
-      * tradeoffs. For QEMU they're all just RAM, though. We arbitrarily
--     * call the 16MB our "system memory", as it's the largest lump.
-+     * call the largest lump our "system memory".
-      */
--    memory_region_add_subregion(system_memory, 0x80000000, machine->ram);
- 
      /*
-      * The overflow IRQs for all UARTs are ORed together.
-@@ -549,9 +646,9 @@ static void mps2tz_common_init(MachineState *machine)
-     const PPCInfo an505_ppcs[] = { {
-             .name = "apb_ppcexp0",
-             .ports = {
--                { "ssram-0", make_mpc, &mms->ssram_mpc[0], 0x58007000, 0x1000 },
--                { "ssram-1", make_mpc, &mms->ssram_mpc[1], 0x58008000, 0x1000 },
--                { "ssram-2", make_mpc, &mms->ssram_mpc[2], 0x58009000, 0x1000 },
-+                { "ssram-0-mpc", make_mpc, &mms->mpc[0], 0x58007000, 0x1000 },
-+                { "ssram-1-mpc", make_mpc, &mms->mpc[1], 0x58008000, 0x1000 },
-+                { "ssram-2-mpc", make_mpc, &mms->mpc[2], 0x58009000, 0x1000 },
+@@ -845,7 +863,7 @@ static void mps2tz_common_init(MachineState *machine)
+ 
+                 { /* port 9 reserved */ },
+                 { "clcd", make_unimp_dev, &mms->cldc, 0x4130a000, 0x1000 },
+-                { "rtc", make_unimp_dev, &mms->rtc, 0x4130b000, 0x1000 },
++                { "rtc", make_rtc, &mms->rtc, 0x4130b000, 0x1000 },
              },
          }, {
-             .name = "apb_ppcexp1",
-@@ -684,6 +781,8 @@ static void mps2tz_common_init(MachineState *machine)
- 
-     create_unimplemented_device("FPGA NS PC", 0x48007000, 0x1000);
- 
-+    create_non_mpc_ram(mms);
-+
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0x400000);
- }
- 
-@@ -734,6 +833,7 @@ static void mps2tz_an505_class_init(ObjectClass *oc, void *data)
-     mmc->fpgaio_num_leds = 2;
-     mmc->fpgaio_switches = false;
-     mmc->numirq = 92;
-+    mmc->raminfo = an505_raminfo;
-     mmc->armsse_type = TYPE_IOTKIT;
- }
- 
-@@ -755,6 +855,7 @@ static void mps2tz_an521_class_init(ObjectClass *oc, void *data)
-     mmc->fpgaio_num_leds = 2;
-     mmc->fpgaio_switches = false;
-     mmc->numirq = 92;
-+    mmc->raminfo = an505_raminfo; /* AN521 is the same as AN505 here */
-     mmc->armsse_type = TYPE_SSE200;
- }
- 
+             .name = "ahb_ppcexp0",
 -- 
 2.20.1
 

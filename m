@@ -1,135 +1,261 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1903627lfa;
-        Fri, 16 Oct 2020 14:42:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTUqoDNWEpKFGoe4n308dZtme+QUKvVL8hFnODvnuMNZ/54cfXiX1r2kQ21XxqYtMw5jNM
-X-Received: by 2002:a25:bac7:: with SMTP id a7mr7695698ybk.286.1602884533174;
-        Fri, 16 Oct 2020 14:42:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602884533; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2208854lfo;
+        Fri, 5 Feb 2021 09:38:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJycg/jIIEoAuy0lQXHTQFjoBmWRaKdWWKeGUavovMPqtTnceWtbnpPdkIaefG3KWyvVSJmt
+X-Received: by 2002:a25:3bc4:: with SMTP id i187mr7663558yba.146.1612546689206;
+        Fri, 05 Feb 2021 09:38:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612546689; cv=none;
         d=google.com; s=arc-20160816;
-        b=fEz+1/43yH4bmhAWNg1VBN0GcM5DpQMUX3AkE/2j1SiN8js5xVDr+dKKLHkuuUcd/S
-         cnj0gC2IhhjjNcinCRHVi7PX6nks6bIGyWshKuanZ/6jjE9UhT/IsCYSZ6jYFL3vatsP
-         kAfUpcJvD58+K62YDOLLegSOjQOT6SruJyGD4Yl2gx470RJhW+UFUM6kT7GDOApE98JH
-         8nX09oOF/mkVvsmI9PYDtHPzG1WkH5NcVpRNnPmR0Fiblu3/8s08B1hzKmdP/Zrs0bS/
-         gToNczxYszliWxJDLpNdIjYsXFBSk+iI+x6cE8AsyqMDnlfFsH/liB7wemOPfAvUITom
-         xDng==
+        b=GN/dpGC4xFi3Z3h0eQl2B7SBWGhWLGeAyBn0w9VeogJv8JUQGtITf9aznb1sC6aTLQ
+         VheFqIZTijh8rYMfsJoqm5cJ8CfOq2YBLWDxVJ8pW8sORNsHgNMuRU6IhI9c687Kwo3x
+         EW/JOiSGwOKjNtsE24ZxdznaFmRzPbvGrezGz6DpfBRkAk5T1m+x3YYwljX8l++S/+QF
+         WOkCoBxWrUJpwuLU+tdF7MFStzY0Vjj/DFmoDtJECxJBe0ki9A9LgjgBQwSFuQSgBH1u
+         lNzSvI6ZGH23Esl7F9pTf8Qpl6E1cfQtBc4Nafw2kNS6mGpDLyne7X8AUXNWNra482WS
+         ewjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=YCjcoHVYUkf4IvCRj3QowSd+8EwEZCgHUEg+0SnmO9k=;
-        b=KujhUy0iAglNmBY2mzfGr7VIyYoV4sJDHpT8qr1ebMvwFTqhDkpCja56l9SazLj1k0
-         LiFT+ljvePgAVHbkQqGgl06991FPAS8pPC54Pha82g4w6EkzfLVE2Yp4GTNDbvXIebzk
-         kfT2muAwUVIVLK3kRvI40RifcB4niSv+xldzgsc+E/uabZ/DcYWnxAUDoxAqtSHunGfM
-         NLwX5YwYqpjv3Xr6TSmzK5lRtcDjAqdiEEWiGOG01V/b5YJK7C5hDkTY1XJ2qjtRhm9x
-         CfJdXHb9x+rCNRexlIH9MnJQCkudWzQQuNs0jgJ8HgWNTeCYa8aOzAPP15UdvtBBYpSl
-         Y6Pw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=bR3iCRZSQtsiL/0YanNf64ks34qWLJ5kgt2Osppz8EY=;
+        b=o6cHhI48aR5HRxCrvBLt/bA9bZFi3Zz0slamlInHwYqww4XjWHddlZaTg18gT7cyu7
+         td/qbFWEngWWMOUbpbyHyAOWSyG1zOKcweXn15wQmPoZMywpCdFhCRGBgcd1lLmm3rGz
+         t9032ZHB3kbiOQaa0v0I9b60Sul0KkU4rC6sUSxPhcgPfCQ0WUrnEzH9TQbFUQN16nMV
+         l0Kot51R6KiERh+dcVlzhd6vGicVaQlsOZLlg9jamC+lWRblaulKg6hTeriJhI/WML2S
+         HiM3JPuZFMhwq85G2UEaYQv0iQaKuRIl5F7S+ZzJpkWPexqrSpuZyopZOGnspv9Pz73G
+         7TZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XQ+1J66v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=s1UguYTa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7si3762679ybp.213.2020.10.16.14.42.13
+        by mx.google.com with ESMTPS id v201si9336009ybv.79.2021.02.05.09.38.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Oct 2020 14:42:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Feb 2021 09:38:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XQ+1J66v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38994 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=s1UguYTa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57070 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kTXUK-0003RH-I7
-	for alex.bennee@linaro.org; Fri, 16 Oct 2020 17:42:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42548)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l853Y-0001I9-EQ
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:38:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kTXT0-00038Y-5k
- for qemu-arm@nongnu.org; Fri, 16 Oct 2020 17:40:50 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:37476)
+ id 1l84Tj-0006r5-De
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:09 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:37080)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kTXSx-0000BQ-3B
- for qemu-arm@nongnu.org; Fri, 16 Oct 2020 17:40:49 -0400
-Received: by mail-ed1-x544.google.com with SMTP id o18so4016227edq.4
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2020 14:40:45 -0700 (PDT)
+ id 1l84TG-00044M-Hq
+ for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:07 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id v15so8465473wrx.4
+ for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YCjcoHVYUkf4IvCRj3QowSd+8EwEZCgHUEg+0SnmO9k=;
- b=XQ+1J66vo7DkE5MgBz74FIsMPBG+eUIi7ciO/xh3t1d3NReBIub6PcAJ8/T8xc2csT
- vh2UdkvgvaKzQnO5N1d5PQgVSpDQDYfK6ar0jEEFtbpKgURuOPsJzP0ggF1y3T/YLUFY
- rmS3RwUzJtdULVuJvaKNpxaBySLXds0w+PY3cz3ILFRaedD+eXrnTeuJ8AnhbCfRCitu
- /GlW34S0RxnTZO+sHLbKCZ5dGBHN77ObUvZccenA55lEyvDk+/BqmH2GSVvj8GyJcV/L
- uzLJhfjzS8Ke+8kVqpRgFw/i/tADya0GGOygS2/2iQshB1fhtfrMa1FSFSGkmtzxUSDl
- 4F4g==
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=bR3iCRZSQtsiL/0YanNf64ks34qWLJ5kgt2Osppz8EY=;
+ b=s1UguYTa03aWaHgLSvHXJdyKdN4ZML9BystZ+BkSLCscJL4XZPhXxmfAVwRbW2+iio
+ Z2ffNjAz++Bk23K8g9sQzy5TZJV5GlsKoAI3kchYYSky0BU6+EFn4VDAGpAvwaIbYt+j
+ x1WZVzeZtTU/R3vVYNLVGX7G2ZzjL4Q9Yfp98LqLInKTEc0d/3PHB+kGHq4TARYXIrU/
+ 89ChX6SrDVf7Yfmc89Z2hKkg0ZO2dBMn9oeAsYtnJGGfYgWlRzRBKkOZVV0fc9wQ9SdK
+ BgTUCchVOBnpj0mzWjFrVb+NxE6KOUoXPiT7Luq/ubh16hJvNPXdgnfk154PzgmG1FuP
+ nr8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YCjcoHVYUkf4IvCRj3QowSd+8EwEZCgHUEg+0SnmO9k=;
- b=bL2IQbSsRFrX4az/Pq4seCE0GS/YyXatgecKomcij+UANwMZ8UaCI+QtWOL85aLiog
- z390kBSr+TrZ1+bENbDVy50yHfuDeonSJ4VW779y/96sysr2cLmAfGPOhtpkZ4zqQZzy
- EEMHqtG1wlfUtFxhhfO+uX4CyKnrALyBNiKB2ATbiEyCisy/WKRn/Rc/NY6EYpzxvEZQ
- krdoJfInoObeQ/QtHneLBfmyY/++QJMwzSTZTm/i545cQ8nNKdLr2wTf7qLFpgqGxORu
- Autb9jxAmQagOL/USAv7TTpHDkQIYOe7zhR8CdUoUowRetjDW7VF9W1639tvXiM/1/1D
- 1Cxg==
-X-Gm-Message-State: AOAM530dn5DhgOkIU2buPFZm1yDRnfFCHktvkuAXl8+YkbVcuwH01SDb
- mSOeGKSe0C/OKGw73oi2S8n1QQZGVs088ScnEN0Cgw==
-X-Received: by 2002:a50:9ea6:: with SMTP id a35mr6578110edf.52.1602884443639; 
- Fri, 16 Oct 2020 14:40:43 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201016210754.818257-1-richard.henderson@linaro.org>
- <20201016210754.818257-2-richard.henderson@linaro.org>
-In-Reply-To: <20201016210754.818257-2-richard.henderson@linaro.org>
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=bR3iCRZSQtsiL/0YanNf64ks34qWLJ5kgt2Osppz8EY=;
+ b=Xg+dkJM3y6K/key7U+JCY4iRTcsK4M2/ua8O5ft1V9Ww2/uGvBlieNic2flfBJnVoZ
+ nVNlknleX4QUbGpNmcuPzHJrzRVbC47wKNiQGnJT/FXsTjcR0PTSiMvxlA7BgceurCYH
+ vvGPmq4YE1oOL9O8V4oQmQcoZR4fdugcu1JHeO3ARdp+AadDUWQkXpgVHW+6l8a1s2qv
+ JzGsBZ7pEb6pFYh25eVufDpjiyAByxJWB+A6FG9H/DC1VcNAQbQez5dz8r9+Pzc02ewa
+ 4PAKg3w0wqFYUgyxe4+0I6BzwaESlPkf6dJRxSnDZb8BbWtH5sLIIb5wuJyKYPuY8Ak0
+ OnGg==
+X-Gm-Message-State: AOAM530pkQH/EDEi7Famm+/w+EgOBEC0xKBx/njzUGyCUWBYY215+KFF
+ sOLaT96xvhQPFF4fS1S6/mQiB1MoUpA6Vw==
+X-Received: by 2002:a5d:6a8f:: with SMTP id s15mr6098511wru.252.1612544432527; 
+ Fri, 05 Feb 2021 09:00:32 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Feb 2021 09:00:32 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Oct 2020 22:40:32 +0100
-Message-ID: <CAFEAcA9AWL3oC000ws8gikr=teGNs=kz6x382K8kS68JWkdATw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] accel/tcg: Add tlb_flush_page_bits_by_mmuidx*
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::544;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x544.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 13/24] hw/arm/mps2-tz: Move device IRQ info to data structures
+Date: Fri,  5 Feb 2021 17:00:08 +0000
+Message-Id: <20210205170019.25319-14-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
+References: <20210205170019.25319-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: epDEoAw/GDWp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Vhzr6VisGxW5
 
-On Fri, 16 Oct 2020 at 22:07, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On ARM, the Top Byte Ignore feature means that only 56 bits of
-> the address are significant in the virtual address.  We are
-> required to give the entire 64-bit address to FAR_ELx on fault,
-> which means that we do not "clean" the top byte early in TCG.
->
-> This new interface allows us to flush all 256 possible aliases
-> for a given page, currently missed by tlb_flush_page*.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Move the specification of the IRQ information for the uart, ethernet,
+dma and spi devices to the data structures.  (The other devices
+handled by the PPCPortInfo structures don't have any interrupt lines
+we need to wire up.)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/mps2-tz.c | 52 +++++++++++++++++++++++-------------------------
+ 1 file changed, 25 insertions(+), 27 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index 0c75b2230ed..07694413005 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -208,12 +208,10 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
+                                const char *name, hwaddr size,
+                                const int *irqs)
+ {
++    /* The irq[] array is tx, rx, combined, in that order */
+     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
+     CMSDKAPBUART *uart = opaque;
+     int i = uart - &mms->uart[0];
+-    int rxirqno = i * 2 + 32;
+-    int txirqno = i * 2 + 33;
+-    int combirqno = i + 42;
+     SysBusDevice *s;
+     DeviceState *orgate_dev = DEVICE(&mms->uart_irq_orgate);
+ 
+@@ -222,11 +220,11 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
+     qdev_prop_set_uint32(DEVICE(uart), "pclk-frq", mmc->sysclk_frq);
+     sysbus_realize(SYS_BUS_DEVICE(uart), &error_fatal);
+     s = SYS_BUS_DEVICE(uart);
+-    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, txirqno));
+-    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, rxirqno));
++    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
++    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, irqs[1]));
+     sysbus_connect_irq(s, 2, qdev_get_gpio_in(orgate_dev, i * 2));
+     sysbus_connect_irq(s, 3, qdev_get_gpio_in(orgate_dev, i * 2 + 1));
+-    sysbus_connect_irq(s, 4, get_sse_irq_in(mms, combirqno));
++    sysbus_connect_irq(s, 4, get_sse_irq_in(mms, irqs[2]));
+     return sysbus_mmio_get_region(SYS_BUS_DEVICE(uart), 0);
+ }
+ 
+@@ -283,7 +281,7 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
+ 
+     s = SYS_BUS_DEVICE(mms->lan9118);
+     sysbus_realize_and_unref(s, &error_fatal);
+-    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 48));
++    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
+     return sysbus_mmio_get_region(s, 0);
+ }
+ 
+@@ -329,6 +327,7 @@ static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
+                               const char *name, hwaddr size,
+                               const int *irqs)
+ {
++    /* The irq[] array is DMACINTR, DMACINTERR, DMACINTTC, in that order */
+     PL080State *dma = opaque;
+     int i = dma - &mms->dma[0];
+     SysBusDevice *s;
+@@ -373,9 +372,9 @@ static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
+ 
+     s = SYS_BUS_DEVICE(dma);
+     /* Wire up DMACINTR, DMACINTERR, DMACINTTC */
+-    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 58 + i * 3));
+-    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, 56 + i * 3));
+-    sysbus_connect_irq(s, 2, get_sse_irq_in(mms, 57 + i * 3));
++    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
++    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, irqs[1]));
++    sysbus_connect_irq(s, 2, get_sse_irq_in(mms, irqs[2]));
+ 
+     g_free(mscname);
+     return sysbus_mmio_get_region(s, 0);
+@@ -394,13 +393,12 @@ static MemoryRegion *make_spi(MPS2TZMachineState *mms, void *opaque,
+      * lines are set via the "MISC" register in the MPS2 FPGAIO device.
+      */
+     PL022State *spi = opaque;
+-    int i = spi - &mms->spi[0];
+     SysBusDevice *s;
+ 
+     object_initialize_child(OBJECT(mms), name, spi, TYPE_PL022);
+     sysbus_realize(SYS_BUS_DEVICE(spi), &error_fatal);
+     s = SYS_BUS_DEVICE(spi);
+-    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 51 + i));
++    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
+     return sysbus_mmio_get_region(s, 0);
+ }
+ 
+@@ -551,16 +549,16 @@ static void mps2tz_common_init(MachineState *machine)
+         }, {
+             .name = "apb_ppcexp1",
+             .ports = {
+-                { "spi0", make_spi, &mms->spi[0], 0x40205000, 0x1000 },
+-                { "spi1", make_spi, &mms->spi[1], 0x40206000, 0x1000 },
+-                { "spi2", make_spi, &mms->spi[2], 0x40209000, 0x1000 },
+-                { "spi3", make_spi, &mms->spi[3], 0x4020a000, 0x1000 },
+-                { "spi4", make_spi, &mms->spi[4], 0x4020b000, 0x1000 },
+-                { "uart0", make_uart, &mms->uart[0], 0x40200000, 0x1000 },
+-                { "uart1", make_uart, &mms->uart[1], 0x40201000, 0x1000 },
+-                { "uart2", make_uart, &mms->uart[2], 0x40202000, 0x1000 },
+-                { "uart3", make_uart, &mms->uart[3], 0x40203000, 0x1000 },
+-                { "uart4", make_uart, &mms->uart[4], 0x40204000, 0x1000 },
++                { "spi0", make_spi, &mms->spi[0], 0x40205000, 0x1000, { 51 } },
++                { "spi1", make_spi, &mms->spi[1], 0x40206000, 0x1000, { 52 } },
++                { "spi2", make_spi, &mms->spi[2], 0x40209000, 0x1000, { 53 } },
++                { "spi3", make_spi, &mms->spi[3], 0x4020a000, 0x1000, { 54 } },
++                { "spi4", make_spi, &mms->spi[4], 0x4020b000, 0x1000, { 55 } },
++                { "uart0", make_uart, &mms->uart[0], 0x40200000, 0x1000, { 32, 33, 42 } },
++                { "uart1", make_uart, &mms->uart[1], 0x40201000, 0x1000, { 34, 35, 43 } },
++                { "uart2", make_uart, &mms->uart[2], 0x40202000, 0x1000, { 36, 37, 44 } },
++                { "uart3", make_uart, &mms->uart[3], 0x40203000, 0x1000, { 38, 39, 45 } },
++                { "uart4", make_uart, &mms->uart[4], 0x40204000, 0x1000, { 40, 41, 46 } },
+                 { "i2c0", make_i2c, &mms->i2c[0], 0x40207000, 0x1000 },
+                 { "i2c1", make_i2c, &mms->i2c[1], 0x40208000, 0x1000 },
+                 { "i2c2", make_i2c, &mms->i2c[2], 0x4020c000, 0x1000 },
+@@ -582,15 +580,15 @@ static void mps2tz_common_init(MachineState *machine)
+                 { "gpio1", make_unimp_dev, &mms->gpio[1], 0x40101000, 0x1000 },
+                 { "gpio2", make_unimp_dev, &mms->gpio[2], 0x40102000, 0x1000 },
+                 { "gpio3", make_unimp_dev, &mms->gpio[3], 0x40103000, 0x1000 },
+-                { "eth", make_eth_dev, NULL, 0x42000000, 0x100000 },
++                { "eth", make_eth_dev, NULL, 0x42000000, 0x100000, { 48 } },
+             },
+         }, {
+             .name = "ahb_ppcexp1",
+             .ports = {
+-                { "dma0", make_dma, &mms->dma[0], 0x40110000, 0x1000 },
+-                { "dma1", make_dma, &mms->dma[1], 0x40111000, 0x1000 },
+-                { "dma2", make_dma, &mms->dma[2], 0x40112000, 0x1000 },
+-                { "dma3", make_dma, &mms->dma[3], 0x40113000, 0x1000 },
++                { "dma0", make_dma, &mms->dma[0], 0x40110000, 0x1000, { 58, 56, 57 } },
++                { "dma1", make_dma, &mms->dma[1], 0x40111000, 0x1000, { 61, 59, 60 } },
++                { "dma2", make_dma, &mms->dma[2], 0x40112000, 0x1000, { 64, 62, 63 } },
++                { "dma3", make_dma, &mms->dma[3], 0x40113000, 0x1000, { 67, 65, 66 } },
+             },
+         },
+     };
+-- 
+2.20.1
+

@@ -1,107 +1,107 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2101080lfo;
-        Fri, 5 Feb 2021 07:21:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxLkyBRd9B1QPrQZZFLFpTGS9WN6LDwgKaPvfTd8BD7formszo4Mb2FlYAY8PN3CBETDJS4
-X-Received: by 2002:a25:cc4c:: with SMTP id l73mr7115123ybf.395.1612538503724;
-        Fri, 05 Feb 2021 07:21:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612538503; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2101314lfo;
+        Fri, 5 Feb 2021 07:22:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx3QQsWRK4NGzN5zo+IfFFDR30TgZw04Y/dFRHkVvCDzuHuY1PPTfIQ9z61AshBiNd5Pc6u
+X-Received: by 2002:a25:33d5:: with SMTP id z204mr6959798ybz.78.1612538522176;
+        Fri, 05 Feb 2021 07:22:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612538522; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bl893hB0MUKZvDFtsSiMFHJQZcFX06hd3j8PFsP9DREaBNkcimhY63uYAK3mtzuRTo
-         LBnyn4ry7T/CygEikf8lJprsAjYDmHiZz9xoKOpmYXbACNpL6mx8Z7IjAUyaXay5vx6W
-         SgMyhiCjQ6RF/o+3Psu2xs0HpDdKlWpOldGxLQ5efRemXU7ODQCU18z2pcJIT+gLRvmC
-         Wc/+1WpgH13LQetrk8YquB4sg3h+Uey0wNqHke6Mwl3BmMLLmmiN8Pqc1ZqQwAgT0Bw/
-         /NJKLhx+YUisqSsgBxdI3VCuzwnRkcTti3qLGNz2PFohm6mR0MLRfnZDDoknCQTdVwQ5
-         cKiw==
+        b=kMAmRlaFqhg0xRf6x9MMUG+5f01O+eQi4SJXutgKUpdOcuxIfoHZfH+JgGMHFJ2nIE
+         RiDTLFsCKPPrWtM3pFjs3Ngyij431v1vEEGpzBeL0IYnZAzwN+pK3qdmi1qOb4j/FWTq
+         25ZaMtCQ84ykIqMNqCkPjOTWDXi0dJkX1XfE+qZtDVf9KEpLAwNnn0kGkGxb9CxC1R1H
+         pi4nEGBI99gOD7h8PJyEDV/eOBSolHLMGTA6Jt6v8vejpha55ldL2yEgOyQtWMimKF8X
+         8okjmyLl0hqEvH/Ot/CkY5dm16gO93Mv2/7zjkVUn4gj5ngQRQpE5ic3SDMTdQ1WiRjm
+         jTLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=r6OrfmsXvRp8qjnXlPAo1idyDSFLBLJyAmI+Tvv42fA=;
-        b=h9jMxR/GnIthYc0uYqymBIJIgYrgMsuZtXcg/mJVpFAvFjdJIuD9ga+tNHPcy5WOxe
-         4u0l7lBHRjhvJh5U/+wZu7N4R1n/tEk/9BQT0L2C2yJ+QFw7gxYOEqVrZOmcGPRtqLiY
-         xV6Q1WOkJVgg36lqLMwjX3laJxXN6b432RXTNOL6R/WMcMvyPHdDPaq8Kcsy1OrhaUzk
-         v/ZllSxSgiCh5lMFmFuLkdqrXPD+l5z90OYxiZ/IQYQn8XEasbrbHGpWVGnhWO2tWpBg
-         8zElSRwwGmKM2zaU02HJPgc1yw3/5CO7YWRZoiqmeNr4FigQuJkjaj6UjkeoweuS2N8j
-         /w0g==
+        bh=xs/h5pwcWBfMfXCSsJxrtS4LW+NHIjyZFcqK0jtcVIk=;
+        b=TR7OTNSxvkw4KavLgOxAOGpptVpULa36HyKS6otkpJSnuP7qjxfp9SiM7Dr+y3cqKr
+         o1lXDqqVuzgcqSITHnPtfLRCtnPa8MPGe3BsekY2xE0lvcqx83Ap6n+EfTuBK7NrryLZ
+         dFKDS1GhMbdC6jA/2/V8URjrsOPwCasfkSlnSB9AakPUX3ak8J18cgU9N2icbCvg7xXH
+         6Fy1m0J0heSTiw93oSR3Vchv/02Si9+fHyo5N4aI3rzzE5lDx8sYpegG4jcOlAzl+LTf
+         KXkEUAcemDT7j7HZNuvVNoPWBtTt909AvruLwuweKL6CwB9fBrzpX1vXCgx9U5pFClRO
+         UScw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YByeI9wD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="CyjGoyZ/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s127si9524991ybc.335.2021.02.05.07.21.43
+        by mx.google.com with ESMTPS id y67si9125580ybf.165.2021.02.05.07.22.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 07:21:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Feb 2021 07:22:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YByeI9wD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="CyjGoyZ/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59842 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34868 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l82vX-0000Xr-31
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 10:21:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50920)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l82vp-0001un-Cj
+	for alex.bennee@linaro.org; Fri, 05 Feb 2021 10:22:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51776)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l82pr-0001Xu-MH; Fri, 05 Feb 2021 10:15:52 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:46087)
+ id 1l82tK-00069x-Fr; Fri, 05 Feb 2021 10:19:26 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:35791)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l82pp-0007k4-J7; Fri, 05 Feb 2021 10:15:51 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id w2so12392752ejk.13;
- Fri, 05 Feb 2021 07:15:48 -0800 (PST)
+ id 1l82tI-0000uQ-Lr; Fri, 05 Feb 2021 10:19:26 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id g10so9238801eds.2;
+ Fri, 05 Feb 2021 07:19:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=r6OrfmsXvRp8qjnXlPAo1idyDSFLBLJyAmI+Tvv42fA=;
- b=YByeI9wD/bPApYWQLmcVnSWee3i5olpO/48Oe2bPaele+4OabVXIiX0VSat8JhDnkP
- +ZLQAksyAulIs+f+3r8zU2ypsmXuv+YVPsrPvHTA82l6LG/krUKxSG7ukANYM5N/zpYI
- Jg2wDfPGg46Z13N7q+i4E85u+HR9U8m4adwbQPY+gJoLp+aOouXfck5OZMzk+tGIl/UI
- maPKdt6CHiY8wGM4F6zOpHD4t89vZRVnt99NXHR9psH2v1cc0RDpzYX45Ye5ZAyCr+vf
- k9fWCHQaBB55xQVOOb2xup1d9HvrqI4yxKCNGIpg7plFQ+ryux7QPhVYwJkuYoRox7CI
- oP3w==
+ bh=xs/h5pwcWBfMfXCSsJxrtS4LW+NHIjyZFcqK0jtcVIk=;
+ b=CyjGoyZ/RW6ORzJF/8kfOqu2W54R+Q6T7YAozjVUhXeA3Tshxhx355EacdIARXbIkj
+ tlcryGB9mBH7WpNl+yw6a9utlx7T5fdyMqdJaP7htOQt6ittyAw4/UFN2YFgEp+9JBOP
+ 9aDelGdWeludaldjKk5RoUcw627SnSGB18gEgwsdtFRu7wYqDvDaesVE6FyN/uzHN1iv
+ HXmejbN+NusbR6uQ6KqoXN6Zu6xZqitcy60lAHm0shhJcGZYJ+THw0Max3TKURKC4K9F
+ gVy9AjwT0puwLI+K/+iExRVKW+dVt8z9yDQC9EJ0U+9XSY/4Y3Qy7KjprcFJG1OWj5Lr
+ UM6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=r6OrfmsXvRp8qjnXlPAo1idyDSFLBLJyAmI+Tvv42fA=;
- b=AkCD2B6D88qkobG8z0gSs5EXmR2NB35WhBPCmkH4WI4zJmuXjg2j1jBhyWEtCBV1/+
- BAWZd6wXr1GAOBk8AD5fzN6SGCBjoK2gwoLx7q9czGmTryP2i0hJNQoJZYhOfMhk/qmB
- glTqEihTaUH5G3DxKbdnFlcjUemY+PLpl6/eJiAoQayVmwvCfeD8r3YOWBvzEjiqJJo8
- vZzHcGsV7w0kItoBF+RLg234viJNnakwgG2KoPUDsGhwVw49Z8OzMeTj3lwHXA+fGdnF
- 6AKvExvsnMbSxMiTo/WAsqaEE8T623ZQE3Tpm4aOTFlBbKIMyWjvtOAb5gaBn0ZebQNS
- lRgw==
-X-Gm-Message-State: AOAM533zLkL1a7kGQj0b0uY6/5uULeltGX2SgXCEqXmJsOa0elYu+esO
- 4MXJnGlMT9vvOEu7E3nY6PM=
-X-Received: by 2002:a17:906:19cf:: with SMTP id
- h15mr4515608ejd.167.1612538147578; 
- Fri, 05 Feb 2021 07:15:47 -0800 (PST)
+ bh=xs/h5pwcWBfMfXCSsJxrtS4LW+NHIjyZFcqK0jtcVIk=;
+ b=aEWBX2HkWvpaVMvqvvBiEterJPUmVcudRxAut0cyD+KuJ56aCJlOS6FPhL9FHepwOF
+ /F5zCVqmvAGsDitlejfY4u54QFchc52IMzYGJ5VTgxgU9Mx7d5Z4kfvmKXXOlCGfOzc8
+ cbtZjzBCwgJB17Yc4cT5f8YEO/W/13nYjhyfDtf7xo50CcEuH4JYiC4kCtVc8wy127dc
+ V1R6DM8ocrR0Bnv+kDb5v2OLro3pYJPQPJFkKh0fcey9voIoXVoqvcBVlymSll0RWUGv
+ gQKFDjht6sdSLXvaE1rTCyjaINHQBFUUJt5mHvN604tT5kqrF0RkBFHSeLFbHb9Z4vq6
+ gxMA==
+X-Gm-Message-State: AOAM530EJ/aAAaMUzLcP7s0yE6ar32oHFIQ+9p5WSAwSn5coTfiDt19S
+ 9w6HHPwBAzFCC65mm04a9v9IGVjx1Rw=
+X-Received: by 2002:aa7:d696:: with SMTP id d22mr3907185edr.361.1612538362528; 
+ Fri, 05 Feb 2021 07:19:22 -0800 (PST)
 Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id bm9sm4067167ejb.14.2021.02.05.07.15.46
+ by smtp.gmail.com with ESMTPSA id z13sm4181575edc.73.2021.02.05.07.19.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Feb 2021 07:15:46 -0800 (PST)
-Subject: Re: [PATCH 1/9] tests/qtest/arm-cpu-features: Remove Cortex-A15 check
-To: Andrew Jones <drjones@redhat.com>
+ Fri, 05 Feb 2021 07:19:21 -0800 (PST)
+Subject: Re: [PATCH 4/9] tests/qtest/cdrom-test: Only allow the Virt machine
+ under KVM
+To: Andrew Jones <drjones@redhat.com>, Thomas Huth <thuth@redhat.com>
 References: <20210205144345.2068758-1-f4bug@amsat.org>
- <20210205144345.2068758-2-f4bug@amsat.org>
- <20210205145938.dvjk7jsfatgm56cy@kamzik.brq.redhat.com>
+ <20210205144345.2068758-5-f4bug@amsat.org>
+ <20210205150810.feuywlyy7xav56di@kamzik.brq.redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <83662416-8eb6-eab9-fe90-c70daad29e44@amsat.org>
-Date: Fri, 5 Feb 2021 16:15:45 +0100
+Message-ID: <ed098234-3de6-9e25-e912-cfd64a1c9c5c@amsat.org>
+Date: Fri, 5 Feb 2021 16:19:20 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210205145938.dvjk7jsfatgm56cy@kamzik.brq.redhat.com>
+In-Reply-To: <20210205150810.feuywlyy7xav56di@kamzik.brq.redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -111,89 +111,62 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5vprnZuuaNO7
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /qHfNCsSQA7r
 
-Hi Drew,
-
-On 2/5/21 3:59 PM, Andrew Jones wrote:
-> On Fri, Feb 05, 2021 at 03:43:37PM +0100, Philippe Mathieu-Daudé wrote:
->> Support for ARMv7 has been dropped in commit 82bf7ae84ce
->> ("target/arm: Remove KVM support for 32-bit Arm hosts"),
->> no need to check for Cortex A15 host cpu anymore.
+On 2/5/21 4:08 PM, Andrew Jones wrote:
+> On Fri, Feb 05, 2021 at 03:43:40PM +0100, Philippe Mathieu-Daudé wrote:
+>> Only the Virt and Versal machines are supported under KVM.
+>> Restrict the other ones to TCG.
 >>
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  tests/qtest/arm-cpu-features.c | 4 ----
->>  1 file changed, 4 deletions(-)
+>>  tests/qtest/cdrom-test.c | 5 ++++-
+>>  1 file changed, 4 insertions(+), 1 deletion(-)
 >>
->> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
->> index 8252b85bb85..c59c3cb002b 100644
->> --- a/tests/qtest/arm-cpu-features.c
->> +++ b/tests/qtest/arm-cpu-features.c
->> @@ -515,10 +515,6 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>          QDict *resp;
->>          char *error;
->>  
->> -        assert_error(qts, "cortex-a15",
->> -            "We cannot guarantee the CPU type 'cortex-a15' works "
->> -            "with KVM on this host", NULL);
->> -
-> 
-> This isn't testing anything regarding 32-bit KVM host support. It's
-> testing that an error is returned when a given cpu type that can't
-> be known to work with KVM is used. We know that the cortex-a15 can't
-> be known to work. If we were to use a 64-bit cpu type here then there's
-> a chance that it would work, failing the test that an error be returned.
-
-This was my first understanding, but then why does it fail?
-
-PASS 1 qtest-aarch64/arm-cpu-features /aarch64/arm/query-cpu-model-expansion
-**
-ERROR:../../tests/qtest/arm-cpu-features.c:543:test_query_cpu_model_expansion_kvm:
-assertion failed: (g_str_equal(_error, "We cannot guarantee the CPU type
-'cortex-a15' works " "with KVM on this host"))
-ERROR qtest-aarch64/arm-cpu-features - Bail out!
-ERROR:../../tests/qtest/arm-cpu-features.c:543:test_query_cpu_model_expansion_kvm:
-assertion failed: (g_str_equal(_error, "We cannot guarantee the CPU type
-'cortex-a15' works " "with KVM on this host"))
-make: *** [Makefile.mtest:905: run-test-111] Error 1
-
-FWIW when tracing (cavium thunderX1 host, dmesg reports 0x431f0a11):
-kvm_vcpu_ioctl cpu_index 0, type 0x4020aeae, arg 0xffff9b7f9b18
-
-> 
->>          assert_has_feature_enabled(qts, "host", "aarch64");
->>  
->>          /* Enabling and disabling pmu should always work. */
+>> diff --git a/tests/qtest/cdrom-test.c b/tests/qtest/cdrom-test.c
+>> index 5af944a5fb7..ac02f2bb4f1 100644
+>> --- a/tests/qtest/cdrom-test.c
+>> +++ b/tests/qtest/cdrom-test.c
+>> @@ -222,9 +222,12 @@ int main(int argc, char **argv)
+>>          add_cdrom_param_tests(mips64machines);
+>>      } else if (g_str_equal(arch, "arm") || g_str_equal(arch, "aarch64")) {
+>>          const char *armmachines[] = {
+>> +#ifdef CONFIG_TCG
+>>              "realview-eb", "realview-eb-mpcore", "realview-pb-a8",
+>>              "realview-pbx-a9", "versatileab", "versatilepb", "vexpress-a15",
+>> -            "vexpress-a9", "virt", NULL
+>> +            "vexpress-a9",
+>> +#endif /* CONFIG_TCG */
+>> +            "virt", NULL
+>>          };
+>>          add_cdrom_param_tests(armmachines);
+>>      } else {
 >> -- 
 >> 2.26.2
 >>
->>
 > 
-> This file could use a cleanup patch regarding the dropping of 32-bit KVM
-> support though. At least the comment in main(), "For now we only run KVM
-> specific tests..." could be reworded. It was written that way when we
-> planned to try testing on 32-bit KVM too eventually, but we never did,
-> and now we'll never need to.
-> 
-> Thanks,
-> drew
-> 
-> 
+> Don't we need to use a runtime check for this? I'd guess we can
+> build a QEMU that supports both KVM and TCG and then attempt to
+> run this test with KVM, which would still try all these other
+> machine types.
+
+Yes, I followed commit c51a5a23d87 fix ("qtest: unbreak non-TCG
+builds in bios-tables-test").
+We need that QMP 'query-accelerators' command then.

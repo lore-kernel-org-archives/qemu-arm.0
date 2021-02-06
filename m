@@ -1,107 +1,104 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2910388lfo;
-        Sat, 6 Feb 2021 06:41:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxZ5h7x8CfjWEUoFLicjh0/mJv/uMG5B4xpiGOiY0OdozIPIcQ36Mc9hMO6Qxql7ImCBPGa
-X-Received: by 2002:a25:8882:: with SMTP id d2mr13168312ybl.7.1612622465285;
-        Sat, 06 Feb 2021 06:41:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612622465; cv=none;
+Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2934743lfo;
+        Sat, 6 Feb 2021 07:19:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxY02IgAnI08P3iU6C7fPJxBEnKG/ngngOTWHYcIcxhtclmLWmD3XwHhmRoa7kLcx+9d9we
+X-Received: by 2002:a25:bbc3:: with SMTP id c3mr13637947ybk.345.1612624745952;
+        Sat, 06 Feb 2021 07:19:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612624745; cv=none;
         d=google.com; s=arc-20160816;
-        b=HpAPM4VDL66fAd48nRBVdj4hXwtA3e87kqW48Ge4h+/SmW8iwN8I5TOG4QAuJeZ2CY
-         KM1REB1GaNHr0cA7r/JC6Hl7SqoBg7bgP5u8QVUSSmUwkvsd9hYexHbmcvrn79hwq34T
-         RWDrjn688/C4sqDk9blGhoCL+4ImeZKSJ3hqAdDuTku8/YeUk9wVGmL1jyfpIMYG1RKh
-         t5TWN3tVYifdwevAH7bq9DSappmCG9BOzNwU9H6JieWsplJPRhoEdLyvdMslinIwFQCk
-         kPoFUo/1aFH5HWFkUjv+OPmVqolVcKpbcGOJAaq9Q5RiY4WSNlj6aMxrXz2lBfamQgQq
-         9p/w==
+        b=OIKNz9z+tX5X0aYBtmJt2p3dZCMhARVOOZefgGtgmOQnbQ9NMjhRggRlJBeZ/r1pVh
+         bPRGo0Rkyix2ay11ggvj8H3QaCMEb24eG5mKVtOlE1ZUPtL6BauOwTXWSXELCC3BV45h
+         dEokYY5dwKzjYZ+fX5punl6NXjkTwe/IJ18RQHf4w2msYtXwa5j3xWgQN/zDOCM8njh4
+         KzKblMfuiFwwO1wz15RaQn4+8EvyXCreaY5LOOkBpadCv4B1EfeehvVu1wGFP12lJYAx
+         bmLZe+btuvZzcgbzNnm+ZzopVSrZ8C63tw27CwypnumtprFmFjags672llgMX/yYVQDG
+         XQ2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=5nWfp1MvPZNDxou8htABUKGWG0b4CT3wGAY1PMDBpnM=;
-        b=T+pxlD1H5wn8Kow0h6M1I/DXSAL1h2nHFl/wbvdqc6PMdWVzLPgTMp57/NRhPxJmp+
-         ooktv/FdmOxFS/K4HImB89z2f7SDEEXCYxgHWiEEHWze6CvHt1J+tqgKG2b8iASWllDI
-         bTyU0ERIVJuc+p5T/k5jRE0fg8xvl1o82C5qATf+FHrRnTR8yHhQ+haVHd9j11G4wIgJ
-         2krR/Pgyg8g6sT7JbzdhISn+6NPuO0hCW1RVpJCMKv65GoLAz9DbpKjE1ibvs7TkfL8y
-         mrV3+rjiaDpPzlc2UKzrpBpu6py+nM/8iTkAAfCNp/SZLDTV8VrPu5ZbB4nSaPdUH+oU
-         sFhA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=4vJ1lQKX1v6SenhEmlnLttWdjwQawhaMDzpMNlaY7xU=;
+        b=0z72sEkBwkBWwCF0RxORwBVXgytxrIljID9zevG+G0gVI55Akes5TbM5+crknRHxcd
+         di4CqvtkZ3fa/2kotYXYe5w4EcdbN1mLBYSdfYnjhZEVaw878xtLbvULnUhQQ/FXz8ff
+         XqUKgTscgym4IdFNiB2RRvmHclNtYfnfmo/O/0NbXCCXqYnE2BGPne+BbWh/HHbPVDwE
+         V6kLR9fOVGBGjV+mrgrT4vXXxeOP+pOQyR8Ez8niqayyxyT6BqvYWX/l/Q9FQHhSXSPL
+         puIHPPh9Awo9C2jpCk2vMS74dneYXkmjNmNeq5OObdAnQ3r5Ov0ze/Smzn1tXTlGvhQL
+         WmUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GyIHWA3H;
+       dkim=fail header.i=@linaro.org header.s=google header.b="AFmAkW/x";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13si11574508ybh.229.2021.02.06.06.41.05
+        by mx.google.com with ESMTPS id m62si11925920ybm.453.2021.02.06.07.19.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 06 Feb 2021 06:41:05 -0800 (PST)
+        Sat, 06 Feb 2021 07:19:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GyIHWA3H;
+       dkim=fail header.i=@linaro.org header.s=google header.b="AFmAkW/x";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33370 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l8Olk-0005ft-ND
-	for alex.bennee@linaro.org; Sat, 06 Feb 2021 09:41:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44770)
+	id 1l8PMX-0001JE-6J
+	for alex.bennee@linaro.org; Sat, 06 Feb 2021 10:19:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l8OjZ-0003bA-Sf; Sat, 06 Feb 2021 09:38:50 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:44542)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l8PMQ-0001Ix-2L
+ for qemu-arm@nongnu.org; Sat, 06 Feb 2021 10:18:58 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:46522)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l8OjX-0006fB-VY; Sat, 06 Feb 2021 09:38:49 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id w1so17536929ejf.11;
- Sat, 06 Feb 2021 06:38:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=5nWfp1MvPZNDxou8htABUKGWG0b4CT3wGAY1PMDBpnM=;
- b=GyIHWA3HdhoNqxQ2qhAyMPkSVnQel7kTYuS681PuJKRA/X34AV/akgAhWd6fy+aAhZ
- iSVCn398KuQ3RNezBJNyqlRLfAVSXS547Ly1flPeFnT4hm+269QLxfdwcNNdpt8asGV/
- TnWx+VupVHKkTtjDNnUchp8cKQIKGd3ME6gFxMzjeG+RVzRg0xrf2Y1TyBg2YPZTGvHm
- 7yFg6/QYFrZk1A0XJF1T6kFyTFMPPf9wCS9SoyxR/Kc7dEdEB8x0hlaDuc4A1m1aGhe9
- JLWzCWp4DXk2+aOqbnTc0ln5HsF+tNaGZ7FnSTQi+pXUoRIPYQMWm/4NWqhr57GcMBd2
- srsw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l8PMO-0007wE-9f
+ for qemu-arm@nongnu.org; Sat, 06 Feb 2021 10:18:57 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id w2so17641310ejk.13
+ for <qemu-arm@nongnu.org>; Sat, 06 Feb 2021 07:18:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4vJ1lQKX1v6SenhEmlnLttWdjwQawhaMDzpMNlaY7xU=;
+ b=AFmAkW/x14HQWXxOAC+CNMGFvGYXymMkdzhRSpvKTCoLcWUNTAdq1SWPbPUCvaX4V8
+ qXhEvHQc7lIyOCA2q0ykmdtIP/xURaep4WnCF/92QDn2y1gv5u7MwFEBI/FFf4H74VXc
+ VkoqsQRL9YcQzM+izwg6mDoccRrWqCxBW7Tpg15kGbtKuyYbfO0qnxariyMSQYz97wmy
+ lUTBTTUva5YmJ9W3gyGS/rr3IBVLTbGpv3HI2qSe/dnh4KXACRNHPRyhAalXe426QpcM
+ eCMmkFSCifS0hlSk2bQmAroH6UBqt2I3LWCRcUZXbD6fB551rxpon4pOzCfJb69CVAo6
+ kHpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=5nWfp1MvPZNDxou8htABUKGWG0b4CT3wGAY1PMDBpnM=;
- b=mhjif94FFYCodEnsmSy8RlBzxizJZgm3k0G19kLVU6tWBRXjouvWFl0xfeduDE2RMP
- iOfpDur6exFToUYzo2SdGVsavmcqj47h3yZ3Fxj16vED4xfUHsNG23G4ycXwjNoMqMD9
- 3Nk8yWYAukUFnr3kLV/jCapeviVFONYJT3l+KXnVGZ12guVbty+pIQDe6gTtvnI481+2
- 1ULusAitTUzXJF6TWZSZMliQLVrgCHa86c33QwRBFXFGKHo0LrFTjWAUA+nYHQmqTftU
- Neht1HeLy61w/vB2xiXklf5ZsABl0CAOOWyhaI7qCnY/i+RXUailydRZXMmyOTD1e4ZI
- PTNQ==
-X-Gm-Message-State: AOAM530/xbPPvCm7yMf7jdddIgzLyFDmPjFBO6yP3Y6XA9+w5C88vazZ
- /ET47Lw3rMd0UJa6/o7LLL4=
-X-Received: by 2002:a17:907:28c9:: with SMTP id
- en9mr9209253ejc.314.1612622326147; 
- Sat, 06 Feb 2021 06:38:46 -0800 (PST)
-Received: from pek-vx-bsp2.wrs.com
- (ec2-44-242-66-180.us-west-2.compute.amazonaws.com. [44.242.66.180])
- by smtp.gmail.com with ESMTPSA id g22sm5394513ejw.31.2021.02.06.06.38.41
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 06 Feb 2021 06:38:45 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH 2/2] hw/ssi: xilinx_spips: Implement basic QSPI DMA support
-Date: Sat,  6 Feb 2021 22:38:14 +0800
-Message-Id: <1612622294-37297-3-git-send-email-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1612622294-37297-1-git-send-email-bmeng.cn@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4vJ1lQKX1v6SenhEmlnLttWdjwQawhaMDzpMNlaY7xU=;
+ b=aCtQnFT3qpGNQz1iTJkDccKGufzQcQ9CafD36216zt6mPshtMhk41XECBSor558YpP
+ dBypARKlhyxcbMioeEtlqgqg0xySLHfl2MY6NXvrXfrriIJFbcLJMCIceZqCyFtHfbMn
+ FHGMRixWRCDQD5Z5/6YXO/o4ZsduUEA6fqtrR1rfkuaBF0IVJRpOQ+2j2SucA7eeZaPf
+ aaz6RLohPoQCU+x++Y5ctOVQOVPWL2cUFjpl2ZU+4uToy0kbdYgl5cV4qRSOwuDtTuH4
+ HG36K+gJCmczmUfvqX/wA9vbxXvrxYFgpRKQ815jqsT48eFMgbrFdw+fhbg+8hOvNNTv
+ CAyQ==
+X-Gm-Message-State: AOAM533WeekHVYS/rbkVr90JxtTDR5vqcMQP+dTVrcg7qd6dPYLGHJR9
+ sK09Td4b0OHJAqAQOPdUjYzzNiy1/EfXSKazC/cNnQ==
+X-Received: by 2002:a17:907:98c3:: with SMTP id
+ kd3mr9348517ejc.482.1612624734138; 
+ Sat, 06 Feb 2021 07:18:54 -0800 (PST)
+MIME-Version: 1.0
 References: <1612622294-37297-1-git-send-email-bmeng.cn@gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=bmeng.cn@gmail.com; helo=mail-ej1-x62c.google.com
+ <1612622294-37297-2-git-send-email-bmeng.cn@gmail.com>
+In-Reply-To: <1612622294-37297-2-git-send-email-bmeng.cn@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 6 Feb 2021 15:18:42 +0000
+Message-ID: <CAFEAcA8dAU+kT1WDFfdeCJsicpoFu6tZ-GTRcWuv+oVR-OL28w@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/ssi: xilinx_spips: Clean up coding convention
+ issues
+To: Bin Meng <bmeng.cn@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,282 +112,28 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
- Bin Meng <bin.meng@windriver.com>
+ Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kM/MKDxDnt83
+X-TUID: mWgLi73mvx/I
 
-From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+On Sat, 6 Feb 2021 at 14:38, Bin Meng <bmeng.cn@gmail.com> wrote:
+>
+> From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+>
+> There are some coding convention warnings in xilinx_spips.c,
+> as reported by:
+>
+>   $ ./scripts/checkpatch.pl hw/ssi/xilinx_spips.c
+>
+> Let's clean them up.
+>
+> Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> ---
 
-ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
-is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
-crash. This is observed when testing VxWorks 7.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Add a basic implementation of QSPI DMA functionality.
-
-Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-
----
-
- hw/ssi/xilinx_spips.c | 188 +++++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 169 insertions(+), 19 deletions(-)
-
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index 8a0cc22..57ab9a3 100644
---- a/hw/ssi/xilinx_spips.c
-+++ b/hw/ssi/xilinx_spips.c
-@@ -195,12 +195,72 @@
- #define R_GQSPI_MOD_ID        (0x1fc / 4)
- #define R_GQSPI_MOD_ID_RESET  (0x10a0000)
- 
--#define R_QSPIDMA_DST_CTRL         (0x80c / 4)
--#define R_QSPIDMA_DST_CTRL_RESET   (0x803ffa00)
--#define R_QSPIDMA_DST_I_MASK       (0x820 / 4)
--#define R_QSPIDMA_DST_I_MASK_RESET (0xfe)
--#define R_QSPIDMA_DST_CTRL2        (0x824 / 4)
--#define R_QSPIDMA_DST_CTRL2_RESET  (0x081bfff8)
-+#define GQSPI_CNFG_MODE_EN_IO  (0)
-+#define GQSPI_CNFG_MODE_EN_DMA (2)
-+
-+/*
-+ * Ref: UG1087 (v1.7) February 8, 2019
-+ * https://www.xilinx.com/html_docs/registers/ug1087/ug1087-zynq-ultrascale-registers.html
-+ */
-+REG32(GQSPI_DMA_ADDR, 0x800)
-+    FIELD(GQSPI_DMA_ADDR,   ADDR, 2, 30)
-+REG32(GQSPI_DMA_SIZE, 0x804)
-+    FIELD(GQSPI_DMA_SIZE,   SIZE, 2, 27)
-+REG32(GQSPI_DMA_STS, 0x808)
-+    FIELD(GQSPI_DMA_STS, DONE_CNT, 13, 3)
-+    FIELD(GQSPI_DMA_STS, BUSY, 0, 1)
-+REG32(GQSPI_DMA_CTRL, 0x80c)
-+    FIELD(GQSPI_DMA_CTRL,   FIFO_LVL_HIT_THRESH, 25, 7)
-+    FIELD(GQSPI_DMA_CTRL,   APB_ERR_RESP, 24, 1)
-+    FIELD(GQSPI_DMA_CTRL,   ENDIANNESS, 23, 1)
-+    FIELD(GQSPI_DMA_CTRL,   AXI_BRST_TYPE, 22, 1)
-+    FIELD(GQSPI_DMA_CTRL,   TIMEOUT_VAL, 10, 12)
-+    FIELD(GQSPI_DMA_CTRL,   FIFO_THRESH, 2, 8)
-+    FIELD(GQSPI_DMA_CTRL,   PAUSE_STRM, 1, 1)
-+    FIELD(GQSPI_DMA_CTRL,   PAUSE_MEM, 0, 1)
-+REG32(GQSPI_DMA_I_STS, 0x814)
-+    FIELD(GQSPI_DMA_I_STS, FIFO_OVERFLOW, 7, 1)
-+    FIELD(GQSPI_DMA_I_STS, INVALID_APB, 6, 1)
-+    FIELD(GQSPI_DMA_I_STS, THRESH_HIT, 5, 1)
-+    FIELD(GQSPI_DMA_I_STS, TIMEOUT_MEM, 4, 1)
-+    FIELD(GQSPI_DMA_I_STS, TIMEOUT_STRM, 3, 1)
-+    FIELD(GQSPI_DMA_I_STS, AXI_BRESP_ERR, 2, 1)
-+    FIELD(GQSPI_DMA_I_STS, DONE, 1, 1)
-+REG32(GQSPI_DMA_I_EN, 0x818)
-+    FIELD(GQSPI_DMA_I_EN, FIFO_OVERFLOW, 7, 1)
-+    FIELD(GQSPI_DMA_I_EN, INVALID_APB, 6, 1)
-+    FIELD(GQSPI_DMA_I_EN, THRESH_HIT, 5, 1)
-+    FIELD(GQSPI_DMA_I_EN, TIMEOUT_MEM, 4, 1)
-+    FIELD(GQSPI_DMA_I_EN, TIMEOUT_STRM, 3, 1)
-+    FIELD(GQSPI_DMA_I_EN, AXI_BRESP_ERR, 2, 1)
-+    FIELD(GQSPI_DMA_I_EN, DONE, 1, 1)
-+REG32(GQSPI_DMA_I_DIS, 0x81c)
-+    FIELD(GQSPI_DMA_I_DIS, FIFO_OVERFLOW, 7, 1)
-+    FIELD(GQSPI_DMA_I_DIS, INVALID_APB, 6, 1)
-+    FIELD(GQSPI_DMA_I_DIS, THRESH_HIT, 5, 1)
-+    FIELD(GQSPI_DMA_I_DIS, TIMEOUT_MEM, 4, 1)
-+    FIELD(GQSPI_DMA_I_DIS, TIMEOUT_STRM, 3, 1)
-+    FIELD(GQSPI_DMA_I_DIS, AXI_BRESP_ERR, 2, 1)
-+    FIELD(GQSPI_DMA_I_DIS, DONE, 1, 1)
-+REG32(GQSPI_DMA_I_MASK, 0x820)
-+    FIELD(GQSPI_DMA_I_MASK, FIFO_OVERFLOW, 7, 1)
-+    FIELD(GQSPI_DMA_I_MASK, INVALID_APB, 6, 1)
-+    FIELD(GQSPI_DMA_I_MASK, THRESH_HIT, 5, 1)
-+    FIELD(GQSPI_DMA_I_MASK, TIMEOUT_MEM, 4, 1)
-+    FIELD(GQSPI_DMA_I_MASK, TIMEOUT_STRM, 3, 1)
-+    FIELD(GQSPI_DMA_I_MASK, AXI_BRESP_ERR, 2, 1)
-+    FIELD(GQSPI_DMA_I_MASK, DONE, 1, 1)
-+REG32(GQSPI_DMA_CTRL2, 0x824)
-+    FIELD(GQSPI_DMA_CTRL2, ARCACHE, 24, 3)
-+    FIELD(GQSPI_DMA_CTRL2, TIMEOUT_EN, 22, 1)
-+    FIELD(GQSPI_DMA_CTRL2, TIMEOUT_PRE, 4, 12)
-+    FIELD(GQSPI_DMA_CTRL2, MAX_OUTS_CMDS, 0, 4)
-+REG32(GQSPI_DMA_ADDR_MSB, 0x828)
-+    FIELD(GQSPI_DMA_ADDR_MSB, ADDR_MSB, 0, 12)
-+
-+#define R_GQSPI_DMA_CTRL_RESET    (0x803ffa00)
-+#define R_GQSPI_DMA_INT_MASK      (0xfe)
-+#define R_GQSPI_DMA_CTRL2_RESET   (0x081bfff8)
- 
- /* size of TXRX FIFOs */
- #define RXFF_A          (128)
-@@ -341,6 +401,7 @@ static void xilinx_spips_update_ixr(XilinxSPIPS *s)
- static void xlnx_zynqmp_qspips_update_ixr(XlnxZynqMPQSPIPS *s)
- {
-     uint32_t gqspi_int;
-+    uint32_t mode;
-     int new_irqline;
- 
-     s->regs[R_GQSPI_ISR] &= ~IXR_SELF_CLEAR;
-@@ -359,13 +420,20 @@ static void xlnx_zynqmp_qspips_update_ixr(XlnxZynqMPQSPIPS *s)
-                                     IXR_TX_FIFO_NOT_FULL : 0);
- 
-     /* GQSPI Interrupt Trigger Status */
--    gqspi_int = (~s->regs[R_GQSPI_IMR]) & s->regs[R_GQSPI_ISR] & GQSPI_IXR_MASK;
--    new_irqline = !!(gqspi_int & IXR_ALL);
--
--    /* drive external interrupt pin */
--    if (new_irqline != s->gqspi_irqline) {
--        s->gqspi_irqline = new_irqline;
--        qemu_set_irq(XILINX_SPIPS(s)->irq, s->gqspi_irqline);
-+    mode = ARRAY_FIELD_EX32(s->regs, GQSPI_CNFG, MODE_EN);
-+    if (mode == GQSPI_CNFG_MODE_EN_IO) {
-+        gqspi_int = (~s->regs[R_GQSPI_IMR]) & s->regs[R_GQSPI_ISR] \
-+                                            & GQSPI_IXR_MASK;
-+        new_irqline = !!(gqspi_int & IXR_ALL);
-+
-+        /* drive external interrupt pin */
-+        if (new_irqline != s->gqspi_irqline) {
-+            s->gqspi_irqline = new_irqline;
-+            qemu_set_irq(XILINX_SPIPS(s)->irq, s->gqspi_irqline);
-+        }
-+    } else if (mode == GQSPI_CNFG_MODE_EN_DMA) {
-+        new_irqline = s->regs[R_GQSPI_DMA_I_STS] & ~s->regs[R_GQSPI_DMA_I_MASK];
-+        qemu_set_irq(XILINX_SPIPS(s)->irq, !!new_irqline);
-     }
- }
- 
-@@ -417,9 +485,9 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)
-     s->regs[R_GQSPI_GPIO] = 1;
-     s->regs[R_GQSPI_LPBK_DLY_ADJ] = R_GQSPI_LPBK_DLY_ADJ_RESET;
-     s->regs[R_GQSPI_MOD_ID] = R_GQSPI_MOD_ID_RESET;
--    s->regs[R_QSPIDMA_DST_CTRL] = R_QSPIDMA_DST_CTRL_RESET;
--    s->regs[R_QSPIDMA_DST_I_MASK] = R_QSPIDMA_DST_I_MASK_RESET;
--    s->regs[R_QSPIDMA_DST_CTRL2] = R_QSPIDMA_DST_CTRL2_RESET;
-+    s->regs[R_GQSPI_DMA_CTRL] = R_GQSPI_DMA_CTRL_RESET;
-+    s->regs[R_GQSPI_DMA_I_MASK] = R_GQSPI_DMA_INT_MASK;
-+    s->regs[R_GQSPI_DMA_CTRL2] = R_GQSPI_DMA_CTRL2_RESET;
-     s->man_start_com_g = false;
-     s->gqspi_irqline = 0;
-     xlnx_zynqmp_qspips_update_ixr(s);
-@@ -843,6 +911,62 @@ static const void *pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *num)
-     return ret;
- }
- 
-+static void xlnx_zynqmp_gspips_dma_done(XlnxZynqMPQSPIPS *s)
-+{
-+    int cnt;
-+
-+    s->regs[R_GQSPI_DMA_STS] &= ~R_GQSPI_DMA_STS_BUSY_MASK;
-+    s->regs[R_GQSPI_DMA_I_STS] |= R_GQSPI_DMA_I_STS_DONE_MASK;
-+
-+    cnt = ARRAY_FIELD_EX32(s->regs, GQSPI_DMA_STS, DONE_CNT) + 1;
-+    ARRAY_FIELD_DP32(s->regs, GQSPI_DMA_STS, DONE_CNT, cnt);
-+
-+}
-+
-+static uint32_t xlnx_zynqmp_gspips_dma_advance(XlnxZynqMPQSPIPS *s,
-+                                               uint32_t len, hwaddr dst)
-+{
-+    uint32_t size = s->regs[R_GQSPI_DMA_SIZE];
-+
-+    size -= len;
-+    size &= R_GQSPI_DMA_SIZE_SIZE_MASK;
-+    dst += len;
-+
-+    s->regs[R_GQSPI_DMA_SIZE] = size;
-+    s->regs[R_GQSPI_DMA_ADDR] = (uint32_t) dst;
-+    s->regs[R_GQSPI_DMA_ADDR_MSB] = dst >> 32;
-+
-+    return size;
-+}
-+
-+static size_t xlnx_zynqmp_gspips_dma_push(XlnxZynqMPQSPIPS *s,
-+                                          uint8_t *buf, size_t len, bool eop)
-+{
-+    hwaddr dst = (hwaddr)s->regs[R_GQSPI_DMA_ADDR_MSB] << 32
-+                 | s->regs[R_GQSPI_DMA_ADDR];
-+    uint32_t size = s->regs[R_GQSPI_DMA_SIZE];
-+    uint32_t mlen = MIN(size, len) & (~3); /* Size is word aligned */
-+
-+    if (size == 0 || len <= 0) {
-+        return 0;
-+    }
-+
-+    cpu_physical_memory_write(dst, buf, mlen);
-+    size = xlnx_zynqmp_gspips_dma_advance(s, mlen, dst);
-+
-+    if (size == 0) {
-+        xlnx_zynqmp_gspips_dma_done(s);
-+        xlnx_zynqmp_qspips_update_ixr(s);
-+    }
-+
-+   return mlen;
-+}
-+
-+static bool xlnx_zynqmp_gspips_dma_can_push(XlnxZynqMPQSPIPS *s)
-+{
-+    return s->regs[R_GQSPI_DMA_SIZE] ? true : false;
-+}
-+
- static void xlnx_zynqmp_qspips_notify(void *opaque)
- {
-     XlnxZynqMPQSPIPS *rq = XLNX_ZYNQMP_QSPIPS(opaque);
-@@ -850,7 +974,8 @@ static void xlnx_zynqmp_qspips_notify(void *opaque)
-     Fifo8 *recv_fifo;
- 
-     if (ARRAY_FIELD_EX32(rq->regs, GQSPI_SELECT, GENERIC_QSPI_EN)) {
--        if (!(ARRAY_FIELD_EX32(rq->regs, GQSPI_CNFG, MODE_EN) == 2)) {
-+        if (ARRAY_FIELD_EX32(rq->regs, GQSPI_CNFG, MODE_EN)
-+            != GQSPI_CNFG_MODE_EN_DMA) {
-             return;
-         }
-         recv_fifo = &rq->rx_fifo_g;
-@@ -861,7 +986,7 @@ static void xlnx_zynqmp_qspips_notify(void *opaque)
-         recv_fifo = &s->rx_fifo;
-     }
-     while (recv_fifo->num >= 4
--           && stream_can_push(rq->dma, xlnx_zynqmp_qspips_notify, rq))
-+           && xlnx_zynqmp_gspips_dma_can_push(rq))
-     {
-         size_t ret;
-         uint32_t num;
-@@ -874,7 +999,7 @@ static void xlnx_zynqmp_qspips_notify(void *opaque)
- 
-         memcpy(rq->dma_buf, rxd, num);
- 
--        ret = stream_push(rq->dma, rq->dma_buf, num, false);
-+        ret = xlnx_zynqmp_gspips_dma_push(rq, rq->dma_buf, num, false);
-         assert(ret == num);
-         xlnx_zynqmp_qspips_check_flush(rq);
-     }
-@@ -1127,6 +1252,31 @@ static void xlnx_zynqmp_qspips_write(void *opaque, hwaddr addr,
-         case R_GQSPI_GF_SNAPSHOT:
-         case R_GQSPI_MOD_ID:
-             break;
-+        case R_GQSPI_DMA_ADDR:
-+            s->regs[R_GQSPI_DMA_ADDR] = value & R_GQSPI_DMA_ADDR_ADDR_MASK;
-+            break;
-+        case R_GQSPI_DMA_SIZE:
-+            s->regs[R_GQSPI_DMA_SIZE] = value & R_GQSPI_DMA_SIZE_SIZE_MASK;
-+            break;
-+        case R_GQSPI_DMA_STS:
-+            s->regs[R_GQSPI_DMA_STS] &= ~(value &
-+                                          R_GQSPI_DMA_STS_DONE_CNT_MASK);
-+            break;
-+        case R_GQSPI_DMA_I_EN:
-+            s->regs[R_GQSPI_DMA_I_EN]    = value & R_GQSPI_DMA_INT_MASK;
-+            s->regs[R_GQSPI_DMA_I_MASK] &= ~s->regs[R_GQSPI_DMA_I_EN];
-+            s->regs[R_GQSPI_DMA_I_DIS]  &= ~s->regs[R_GQSPI_DMA_I_EN];
-+            break;
-+        case R_GQSPI_DMA_I_DIS:
-+            s->regs[R_GQSPI_DMA_I_DIS]  |= value & R_GQSPI_DMA_INT_MASK;
-+            s->regs[R_GQSPI_DMA_I_MASK] |= s->regs[R_GQSPI_DMA_I_DIS];
-+            s->regs[R_GQSPI_DMA_I_EN]   &= ~s->regs[R_GQSPI_DMA_I_DIS];
-+            s->regs[R_GQSPI_DMA_STS] &= 0;
-+            break;
-+        case R_GQSPI_DMA_ADDR_MSB:
-+            s->regs[R_GQSPI_DMA_ADDR_MSB] = value &
-+                                            R_GQSPI_DMA_ADDR_MSB_ADDR_MSB_MASK;
-+            break;
-         default:
-             s->regs[reg] = value;
-             break;
--- 
-2.7.4
-
+thanks
+-- PMM

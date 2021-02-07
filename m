@@ -1,112 +1,107 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp717119lfc;
-        Sun, 7 Feb 2021 15:21:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzO4s597nJciQ2DPYtMU1yRgPvmB6N3mTg+dP2AwRAXxwCS7dCHAaFMf41Gci851g2GCIpE
-X-Received: by 2002:a25:3104:: with SMTP id x4mr21941541ybx.141.1612740072013;
-        Sun, 07 Feb 2021 15:21:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612740072; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp718509lfc;
+        Sun, 7 Feb 2021 15:24:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzcKGqQ6oyYARmPT+W/JgWA0gV8PaQ44jo+Xu6GHCa7CZk9t2uGlnBp3rdp4OvBZlXl1vWW
+X-Received: by 2002:a05:6902:706:: with SMTP id k6mr21274355ybt.52.1612740251031;
+        Sun, 07 Feb 2021 15:24:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612740251; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ytjlpkxdy6KG5XafDoYVx0CPneWMkQ0xBMRsJPtocvHJTSycQYuYaq4HTN1ziA+g1g
-         +1gJKiBcV9gISdZ9EyhmgOVHNJh7voyjqwvzb2bQIQB/Qv2EUSqiN9SWk3BcKx/srxge
-         G0dRyABmVEAEowAscfTE6e3tqPT1XfyREY+yKj5WlczalOtPrsVyVY6a/yxNyRCJnLMh
-         pNMSfuJ8rp6GzOkrR8/6+Z4hBy2axPpzQpPpTLrpSA+3m4XCebyrkI5g7WJEi2LySAHy
-         FOI9q1EZitU1WeC8+wiSvQ2bQVXydmOOZ8t2QfsfZ1iTeomGd4Zqn3l4TBkrqG17R54X
-         PTJA==
+        b=D054Jrln0pll2yv5M+RBvj09C9rzyCo2G4f5NeFJ4Dm4xhmroECgmYzEKzmoYtt8jS
+         oD/V9RgoTRB/O7Vh90bcIAIm0PJLLRlRtLZXrBZp+EK7NGKJqZJ/G1wYOMn8gJSIWU2v
+         apXjRWH33VYx+DNpzjf0YNMMowmptmROohk+aN94fsoysGVc1vxnfgi/ZQxEzAl29W4r
+         dyny7ZBO7g2bHGIz7bK5mB+vyZHnEFD6jYjE8ls8z5BT97hWl1/sBt/wCs0Y9SDZ+Yqf
+         pL2ZUUfgXARKTPG8z/C/aEFukrxP5vPOehFOh2dOtXJEHoZwuBuXlqAUaw3Vv5imKEce
+         Gj5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=WgV+kHH/S/YA1VmTAwZu8b/S8Cw7rfFLiBYVcrQauLU=;
-        b=fb9cHjgPC6/0oCOaFn39l+x2PEe+XxOMFWGprIijuN2pbFcIyExCFkcTzVZ/4qU9YR
-         gXSLedYiYGdIDVLwq/hN2fKjXIbm+W08ao+90uKfKHC4DRuk061qEqa+tCwk4GmdaEVY
-         InaR/daKwEqS+DYZEt83vZaEFymzN/Kyzt6L4uo/PE3iDiJjrE9AYddNPNeMRW9VWA7o
-         mKbzGNObGS3+V8bJeMX8BEHoExZ3iM0DzaW3ZcctgyA8j46i9sgis+6S9VOxreWB8mi7
-         A43hqdqbfwlJVkegPeez2YO1BK1crGB+bHEYGjZPx9zTDPvnP7W1KnMf9omoR+z4KsZR
-         PBjQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=H7DdpVZKuaTFU+QINWMbbbomeFKhPW3S4eDxwf+nJCo=;
+        b=CDHb4zyZg5f1oaSdIup1r8c0QB5VbW2tZ+DH1UN6z5QF9xN4SrCjFmGwAsZS2/FGir
+         ArlL2koN5quAPDaQ7+lK+wxzQvyjNrxQjM/F3u6fMLNh6rXi+YMMXX0igucUyH3cte7N
+         MXAXmUeRPm8tCMeiX1g/V639bs1HDEQ+QeRHUh+bMzuh+kgbuTx/rwWN4JF6FUOy5730
+         pAHNkc48C9EaKMKEJFf2LKlLbeRfbhVUT60PlY1hjeiwW8kAjrEKYyIz3spYGeP+9GnZ
+         oLLWBzKTcijVboh0nNM33tUIPp3Mk3CX8p4gLFV/+SADzzbEiYo+vXA8UpuWTuAozW2o
+         wjcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zd3n9uSw;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Cbe0/5Qw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q202si16194541ybg.286.2021.02.07.15.21.11
+        by mx.google.com with ESMTPS id x13si16335358ybp.142.2021.02.07.15.24.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Feb 2021 15:21:12 -0800 (PST)
+        Sun, 07 Feb 2021 15:24:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zd3n9uSw;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Cbe0/5Qw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44580 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49244 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l8tMd-0006El-Eb
-	for alex.bennee@linaro.org; Sun, 07 Feb 2021 18:21:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54568)
+	id 1l8tPW-0008ML-CP
+	for alex.bennee@linaro.org; Sun, 07 Feb 2021 18:24:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55432)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l8tMI-0006BF-GD; Sun, 07 Feb 2021 18:20:51 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:33396)
+ id 1l8tP0-0007o6-AZ; Sun, 07 Feb 2021 18:23:38 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:44665)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l8tMG-0000EQ-Ri; Sun, 07 Feb 2021 18:20:50 -0500
-Received: by mail-wr1-x433.google.com with SMTP id 7so15189883wrz.0;
- Sun, 07 Feb 2021 15:20:47 -0800 (PST)
+ id 1l8tOn-00018J-Vg; Sun, 07 Feb 2021 18:23:38 -0500
+Received: by mail-wr1-x434.google.com with SMTP id g6so2132025wrs.11;
+ Sun, 07 Feb 2021 15:23:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WgV+kHH/S/YA1VmTAwZu8b/S8Cw7rfFLiBYVcrQauLU=;
- b=Zd3n9uSwTd9grh/58L8h/xT1ItavP71+S0AroHITHVVcy7NvYkDjgWJnlhjYW6qGCo
- oeqqNwm5HoIitnsk69hn7f78miH2NQZID9eBo9yhAmcL/wDmm0duZRPnunq7G5h52g5v
- MtnOfPAWrJsIbqvaVqB9J7wMFVilSV2jmL08DFfBXWDOsgg5xEP9W8b6PupMuo5WIV2+
- 8ChQ+014aPWeF7++rGKj7+NPSOLT2ip/BmLfJIj7AysKLOyEPJO+WmHmCuXBtxmesGar
- OeMVPHaT+NTFGzZMKklswl8jPqMLBjEenD+UARjkxzFE/tomNafJCWTuvoBeGiLbb431
- +/zw==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=H7DdpVZKuaTFU+QINWMbbbomeFKhPW3S4eDxwf+nJCo=;
+ b=Cbe0/5QwUe4ZyDD3MCWKIRYwfN9+3L6rNnWC2TOjH7OXHTThDg2a1ZbJVNQ3Kzf3st
+ En6PUVBxAp4PxuocUpThjh2BUbXwmj4TsUAq7zyP/wF/zcmEyBp7UsQy6xsrBppchqPb
+ xaKn+OA362o9B5Pfn+32MFxsnEaxvQmoexp0yQS5CrniIOSwJ9UVILT4OQ0YV+l4a8zb
+ UIDtHmQtVDPxPhHTOfcOKsjj00ADyCFI+YiUb6EKu47ho7vr5MjQQly8zmSOk2hxHeGo
+ q0CgRJRIbHzG8ADxnWIbKDypHAzL8Wkz7WT/WiLYiSMgUGkKHqucN8bPsg5DIZX6MVT3
+ KL2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WgV+kHH/S/YA1VmTAwZu8b/S8Cw7rfFLiBYVcrQauLU=;
- b=AbHHUB0B7CXffvVxkL5xE0WGzAOKIRgrVyIWOgEgYcYSfhcmF902BzqFJPWRwx2qII
- Q93rnaxU4SweZYDqbrvjYYtx5iPzI36ZeL1gR/yaChlYNB68bx4RocJh/BmgQfp2/3hz
- KzbzZSG4jONhb5WKoarUelgR5vhGqDlEgKhKsVZo05y4rPXIA0mN8RSH8vP6xfEGg6PO
- AK3xsf9lZr4c9mprEu3p/WHFwDxpCDG8PSo9FxG7pJm0C0zaZ4VNG3VtrgT4Wmp49CZK
- brzdOvAUWKhvaYk10/VpZCVnMy7urJuOuDE0Dsa8NFIHoN9nXbCAPudqgkfRtVgImkm5
- 8oHg==
-X-Gm-Message-State: AOAM530J0mDSJacIYx4mzSqDRRkh478kt8iCkOJWyghjJGcxCiGdjhOL
- 04AINKQZ0YNvpqlR/aabx5g=
-X-Received: by 2002:adf:e490:: with SMTP id i16mr4513097wrm.87.1612740046616; 
- Sun, 07 Feb 2021 15:20:46 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=H7DdpVZKuaTFU+QINWMbbbomeFKhPW3S4eDxwf+nJCo=;
+ b=TXLaBtazlv7gk1LKmfgk0aEeTq0I85n+i246bo30W1tcbqw/aT93yodk3JHPmsON4R
+ KNm07i/lVfAvmD+yAETYilkSEmsKODk+XcVbShmv5NGg1R3v7k+oZ5BJEJTCA1rPGepu
+ ZSfOOFs5Mk06JzMIYuA5lVvJh74yRzv6n3YvlQ0hVdwcJxNQ6yosTPgS9vk5ICax6rcK
+ UfSD3GdCH2bddODEtfrtk7EOIVycg8RgfICSe1MydWMCwJCAyA2wNfLLVURq2+DLdqKY
+ bD4aJuJ+HCjK/bL7f1wEIwWkPn5IuaCnKWcaPAL/zyD0HITS0+1yuMAIXa1W0+hDV4oX
+ CVIw==
+X-Gm-Message-State: AOAM531yXW718cgq7dGg4/E/KGw4w9lpfEL7e0clA4K/yrVlHYHBDiRQ
+ pbjBVc+a56hLrifgCAO7V08SvulzR+Q=
+X-Received: by 2002:a5d:5283:: with SMTP id c3mr16559778wrv.319.1612740203868; 
+ Sun, 07 Feb 2021 15:23:23 -0800 (PST)
+Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id i10sm411272wrp.0.2021.02.07.15.20.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 07 Feb 2021 15:20:45 -0800 (PST)
-Subject: Re: [PATCH 6/6] exec/cpu_ldst: Move tlb* declarations to
- "exec/exec-all.h"
+ by smtp.gmail.com with ESMTPSA id l1sm25605825wrp.40.2021.02.07.15.23.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 07 Feb 2021 15:23:23 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-References: <20210207225738.2482987-1-f4bug@amsat.org>
- <20210207225738.2482987-7-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <280b19a4-44d6-9005-58a8-fb033bf958d6@amsat.org>
-Date: Mon, 8 Feb 2021 00:20:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+Subject: [PATCH v2 2/6] target/m68k: Include missing "tcg/tcg.h" header
+Date: Mon,  8 Feb 2021 00:23:06 +0100
+Message-Id: <20210207232310.2505283-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210207232310.2505283-1-f4bug@amsat.org>
+References: <20210207232310.2505283-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20210207225738.2482987-7-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -122,58 +117,60 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-riscv@nongnu.org,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Alistair Francis <Alistair.Francis@wdc.com>, qemu-riscv@nongnu.org,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Claudio Fontana <cfontana@suse.de>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7cxGH0pKXDDr
+X-TUID: 307Nso8qlBbY
 
-On 2/7/21 11:57 PM, Philippe Mathieu-Daudé wrote:
-> Keep MMU functions in "exec/cpu_ldst.h", and move TLB functions
-> to "exec/exec-all.h". As tlb_addr_write() is only called in
-> accel/tcg/cputlb.c, make move it there as a static function.
-> 
-> Doing so we removed the "tcg/tcg.h" dependency on "exec/cpu_ldst.h".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/exec/cpu_ldst.h | 52 -----------------------------------------
->  include/exec/exec-all.h | 38 ++++++++++++++++++++++++++++++
->  accel/tcg/cputlb.c      |  9 +++++++
->  3 files changed, 47 insertions(+), 52 deletions(-)
+Commit 14f944063af ("target-m68k: add cas/cas2 ops") introduced
+use of typedef/prototypes declared in "tcg/tcg.h" without including
+it. This was not a problem because "tcg/tcg.h" is pulled in by
+"exec/cpu_ldst.h". To be able to remove this header there, we
+first need to include it here in op_helper.c, else we get:
 
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index c5e8e355b7f..5024b9abd4a 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -297,6 +297,38 @@ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
->                    hwaddr paddr, int prot,
->                    int mmu_idx, target_ulong size);
->  
-> +/**
-> + * tlb_vaddr_to_host:
-> + * @env: CPUArchState
-> + * @addr: guest virtual address to look up
-> + * @access_type: 0 for read, 1 for write, 2 for execute
-> + * @mmu_idx: MMU index to use for lookup
-> + *
-> + * Look up the specified guest virtual index in the TCG softmmu TLB.
-> + * If we can translate a host virtual address suitable for direct RAM
-> + * access, without causing a guest exception, then return it.
-> + * Otherwise (TLB entry is for an I/O access, guest software
-> + * TLB fill required, etc) return NULL.
-> + */
-> +void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
-> +                        MMUAccessType access_type, int mmu_idx);
+  [953/1018] Compiling C object libqemu-m68k-softmmu.fa.p/target_m68k_op_helper.c.o
+  target/m68k/op_helper.c: In function ‘do_cas2l’:
+  target/m68k/op_helper.c:774:5: error: unknown type name ‘TCGMemOpIdx’
+    774 |     TCGMemOpIdx oi;
+        |     ^~~~~~~~~~~
+  target/m68k/op_helper.c:787:18: error: implicit declaration of function ‘make_memop_idx’ [-Werror=implicit-function-declaration]
+    787 |             oi = make_memop_idx(MO_BEQ, mmu_idx);
+        |                  ^~~~~~~~~~~~~~
+  target/m68k/op_helper.c:787:18: error: nested extern declaration of ‘make_memop_idx’ [-Werror=nested-externs]
+  target/m68k/op_helper.c:788:17: error: implicit declaration of function ‘helper_atomic_cmpxchgq_be_mmu’; did you mean ‘helper_atomic_cmpxchgq_be’? [-Werror=implicit-function-declaration]
+    788 |             l = helper_atomic_cmpxchgq_be_mmu(env, a1, c, u, oi, ra);
+        |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        |                 helper_atomic_cmpxchgq_be
+  target/m68k/op_helper.c:788:17: error: nested extern declaration of ‘helper_atomic_cmpxchgq_be_mmu’ [-Werror=nested-externs]
+  cc1: all warnings being treated as errors
 
-Non-TCG build failure because abi_ptr is defined in "exec/cpu_ldst.h":
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/m68k/op_helper.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-  typedef target_ulong abi_ptr;
+diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
+index 202498deb51..36b68fd318f 100644
+--- a/target/m68k/op_helper.c
++++ b/target/m68k/op_helper.c
+@@ -18,6 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "cpu.h"
++#include "tcg/tcg.h"
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
+-- 
+2.26.2
+

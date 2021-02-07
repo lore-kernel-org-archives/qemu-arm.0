@@ -1,101 +1,102 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp704613lfc;
-        Sun, 7 Feb 2021 14:58:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw/pu3qTHbSHodUL4WXqjcl4XfACuONrRQ77cANRr0qD5164SWTLn/g8wNfMsXNtNJfTT6H
-X-Received: by 2002:a25:b94a:: with SMTP id s10mr20853109ybm.374.1612738700008;
-        Sun, 07 Feb 2021 14:58:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612738700; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp704791lfc;
+        Sun, 7 Feb 2021 14:58:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx5lhbf8v3FUSnlvtVDCnuu0hvZFJ4lP3959FWyYZIMFuI6z7ww9AYAbzLuHmDbCpVqKjEo
+X-Received: by 2002:a25:adc7:: with SMTP id d7mr21395526ybe.349.1612738730262;
+        Sun, 07 Feb 2021 14:58:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612738730; cv=none;
         d=google.com; s=arc-20160816;
-        b=S0l5rYuvo02gVqoPtbHgOXSE4w60z4FaLkKR64muCrvKwqcVNaFkSV95fkL8WxSuao
-         /6NbClWnJTSChWkNqXf2ryJXKX4brmbCeeFQehSYhF0aNnAkYxkSUVXX6JT0gG9mLZmO
-         n2yqFWTnBhiUsvMB0WcrXbrsu9V1QuePCGSIkwGNQjpL3lkRK1bkTeMJvAYZJ98MAJul
-         pY7IjgfefoF6wGPeMAdzmDO9OLM/GJBCgcS8nYoyuaV1H1xzUvbLfdB8FpD0uKtTUsV2
-         fkO6k2KUKD1n3q51uLYf3Mr3XImhK8GSHbwsOQpd1PM9KJIms/gp4Aj/kNFhq6qi8Hyb
-         0yTQ==
+        b=CNLL/Zsr7RCDEBQNs30l50hVLE9xXEVSpwmsU/Q670pRrhf4i0RVAZi1VZCXjg7uxe
+         yi1w7VMgpoVV4flq402wMQsmV141HGpkU3MrWVt0tjQGytlFL2HbisKa7iKabivTeK2c
+         DYoFP6hj3ypu5qNauX1+ZwBZWJ9mbPLnECXQkvR9qGLUjin85kA5MENhLk9kIPsQM0/s
+         w/+MdNfimcXQnX9ivff1J41+b90pBryaCi0xYD+Pu8sjZR8KmBjEg7DcUUX2zEZE/Hsz
+         7HWtG5Y+ylsTH2gQauf14+d/Tl9yaeGjzC6IpEOtNAiUHmy7wguaGesTuLhZbvrrwZsO
+         TyrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=NB0PxeiyUnyh7a2jT9hNZ8p231d4tVFomh4sbxGsRA8=;
-        b=i8IpbhXThLxUzAB+xX4cfK2hO2VVBc+8NxFXSJ6oH8yGNIYq7mKBnSlZhx2SQ6y/zf
-         d9v8OjEuSFS6PGiXb/1magWGCytxndGDLoVo5rSU3CyzV4y/Dun9bikXvTTOjxAAo98r
-         DkiSZDOlq8KlvcrJtEBUVeFz1plDdzbvVXdyJo+nFe1n7XrWt4rbf5o0kq8D8X3jpaw+
-         Cy3o98HkUUN7K4SOJT/7YjEIzoaCN/GLx579tmJKGPqyv6JJkseJ/kmQeV3G4M8hDULW
-         gHqHCc56pSGbbF3s+zIOLlKg7fhwPvtSVb+O415ZKDkvMYlGU56H1rdZWhMlGWFlRYfu
-         B9kA==
+        bh=imFQGKJBgIE298lnVAuxYDCszjx31PWDfQloLbhmsMQ=;
+        b=b+zyaLcfCqre34vt540atl0iXpEqWc4FmFSpzL79lqy88gEL6nLmoGJW9G2al5Fugs
+         plViMdVXTQxpVjg4TjCkD9UdX6oWxWDTkZQerygKryVOQRFNfhJhTRHP+s5M8401ziMW
+         F60AIK816oP9X6UwFIwG4TtBzfzOcq3v+b7IpNYGyImV98fWUGo+lyQLSOwUOhAWbrtI
+         OSW1OeR3KNhh6tWO/X6YuYqFyAqApbmGs+XhaGRE6gm5mNgjZeKcPQEXHm58h6cAIzxH
+         Q6uUdkZueT/w6SupF2cQ/qOhNVzvFkgRIT1vSkXkKuTxidkVDSjObdQquI3Xgu3lGFC0
+         zVxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=slRltlSu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ccqfoVFW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 189si15169273ybp.480.2021.02.07.14.58.19
+        by mx.google.com with ESMTPS id q82si15644767ybb.349.2021.02.07.14.58.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Feb 2021 14:58:19 -0800 (PST)
+        Sun, 07 Feb 2021 14:58:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=slRltlSu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ccqfoVFW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47788 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l8t0V-0002V9-B3
-	for alex.bennee@linaro.org; Sun, 07 Feb 2021 17:58:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50714)
+	id 1l8t0z-0003ee-HR
+	for alex.bennee@linaro.org; Sun, 07 Feb 2021 17:58:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50810)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l8t0C-00029p-Pe; Sun, 07 Feb 2021 17:58:00 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:41106)
+ id 1l8t0N-0002by-Qf; Sun, 07 Feb 2021 17:58:11 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:55103)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l8t0B-00016I-9u; Sun, 07 Feb 2021 17:58:00 -0500
-Received: by mail-wr1-x430.google.com with SMTP id n6so2267274wrv.8;
- Sun, 07 Feb 2021 14:57:58 -0800 (PST)
+ id 1l8t0M-0001Ai-69; Sun, 07 Feb 2021 17:58:11 -0500
+Received: by mail-wm1-x336.google.com with SMTP id w4so11130313wmi.4;
+ Sun, 07 Feb 2021 14:58:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NB0PxeiyUnyh7a2jT9hNZ8p231d4tVFomh4sbxGsRA8=;
- b=slRltlSuqvMFAGDBp3viXRI6JthnwFNxMwx6RyJ4j3hm6GV/kR9+8aqbOR6+A3BzxM
- 0gtAC2rKPePsftfbo2XRRqavnfHOHTTxZenueD1DBEgcyFvQOWS+b1CAFlPgNuIcf2S6
- Ub1CbWlMaUNAY2o2E745DxA/eCYW2hPoYn2eeziOfZuk1dKP+bavqtGruhPoSODD1Li7
- HcHGRTZPvnMhyio06yyhs0bIZiJJTDHJ0OiqQ4Wqq+hYWmXbiFlQbr59xigi+VYUCHS8
- J6++DG236usVcnz+B7fXf4m4ssOQcjrHqq5+b5KzQETJUVxdEL6UiXPvpSV2R6qrDNyC
- Hf9A==
+ bh=imFQGKJBgIE298lnVAuxYDCszjx31PWDfQloLbhmsMQ=;
+ b=ccqfoVFWKhdwHfQk7EbK+L+WxFtzyD2lU54qDn3jgzJBdMirDaUQk7vEegZZYvh5pJ
+ RprOm+NyNZeYKPsmdBydtNPkZQfQycmxtC1V+7juepQlohVEx/0KEdKVTYlLplACS3WE
+ km9oxVD3WQZNG68qlnfzSJb1QsaEeDNZJT/PGaq8s75GNyq9pM/Er94AKuRLeXjp1tlj
+ pVaEdHgsyHt1K1gIVFnXc4Wv0Taq+HupGxWlkDkCpR/q2mhxWcuN4uYpiPUKl8XZ2DKV
+ 5zcV1t79HCt1Yg3Xcj3IkC3HFx082SYlE59JYxbdXDM0o82JuN1Ks2XWWqMhcM90icRI
+ KPtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=NB0PxeiyUnyh7a2jT9hNZ8p231d4tVFomh4sbxGsRA8=;
- b=D80Qj1vx6Y1njZNmQg72xAhhCtEezWtd2H0UnlgJkRYQpSPqL8Vqcr8EgjAQA/jYXZ
- frQIqAMESKy7JXIMZG2Nu/TKs1874fkrxR5LNHyODmxIK+TISK2CLJqIK/igzMcWN3ul
- cagiE6bpQIR6LZ5bQclxkeozrAKIgdttTZ1WLVHVH2YslY9DzOqcWPwzz9epthJHZT8z
- ZPGkSh/svn74n3miWKXYxSLLNyC0HHrOxKJWwTVYx15GgoyRh4+WGDjUa4u9m1zPuoKw
- Y60gNujVPcNPk5n+2UgVsS8BcYM0y5R9IeFbdBJAx25wIo8LAWH4k9frKAxcXVdptRxL
- yVqg==
-X-Gm-Message-State: AOAM531Fuod802BwpLMxoLSGCrv9utZOJh4xgeTVKMatiPUZ+qMGlmXh
- oEwDWbfbWFCb+25hIoFnU2bXZ5vqfso=
-X-Received: by 2002:a5d:4646:: with SMTP id j6mr17052829wrs.38.1612738677165; 
- Sun, 07 Feb 2021 14:57:57 -0800 (PST)
+ bh=imFQGKJBgIE298lnVAuxYDCszjx31PWDfQloLbhmsMQ=;
+ b=hKeoD2bdCxj9nxYYvT5gVD/JuTVh42tXZRgCylnO8LbUBlPvRuJP2zScLeRhETlmpI
+ iqOt+5jdHWkLFyScKeK6SLvRRZVl51DDS68wDvkYgI3W56r0fr31IeZgOL92QU3zBYC1
+ 8HoQyPxGTutCoYDjV4HUO54Vsb/oIuKzGykgOwXeJ9IaG3/yf5P3IqZJWUhZGy7Qmh2r
+ Uk7ioC5jGwqqhN7AKSiAXkn8xIBQeyU1M34wh6hWiTwyuNa0BntnGTDUv4UHUtBSMHsa
+ ZqX23sqRR51DUKk8FilUd9+YtqZSEh1/ZnsRjyfmKIGq3zyC/T4O8Ct7Ci/Jjrl0vT07
+ IPjg==
+X-Gm-Message-State: AOAM533w/JaW0udmlXNGTna8C/c6pOStb0hzsqJExl4cWIi+9sIg8PaC
+ Q8eZwl3r8JV09vVrxsSu09GMXFVo+OA=
+X-Received: by 2002:a7b:cb4f:: with SMTP id v15mr12379534wmj.162.1612738687873; 
+ Sun, 07 Feb 2021 14:58:07 -0800 (PST)
 Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id x22sm11914204wmc.25.2021.02.07.14.57.55
+ by smtp.gmail.com with ESMTPSA id z6sm6300217wmi.39.2021.02.07.14.58.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Feb 2021 14:57:56 -0800 (PST)
+ Sun, 07 Feb 2021 14:58:07 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 3/6] target/mips: Include missing "tcg/tcg.h" header
-Date: Sun,  7 Feb 2021 23:57:35 +0100
-Message-Id: <20210207225738.2482987-4-f4bug@amsat.org>
+Subject: [RFC PATCH 5/6] accel/tcg: Refactor debugging
+ tlb_assert_iotlb_entry_for_ptr_present()
+Date: Sun,  7 Feb 2021 23:57:37 +0100
+Message-Id: <20210207225738.2482987-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210207225738.2482987-1-f4bug@amsat.org>
 References: <20210207225738.2482987-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -130,47 +131,110 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eh7kHQ+yuY+v
+X-TUID: W+HGQqfH4vb+
 
-Commit 83be6b54123 ("Fix MSA instructions LD.<B|H|W|D> on big endian
-host") introduced use of typedef/prototypes declared in "tcg/tcg.h"
-without including it. This was not a problem because "tcg/tcg.h" is
-pulled in by "exec/cpu_ldst.h". To be able to remove this header
-there, we first need to include it here in op_helper.c, else we get:
-
-  [222/337] Compiling C object libqemu-mips-softmmu.fa.p/target_mips_msa_helper.c.o
-  target/mips/msa_helper.c: In function ‘helper_msa_ld_b’:
-  target/mips/msa_helper.c:8214:9: error: unknown type name ‘TCGMemOpIdx’
-   8214 |         TCGMemOpIdx oi = make_memop_idx(MO_TE | DF | MO_UNALN,  \
-        |         ^~~~~~~~~~~
-  target/mips/msa_helper.c:8224:5: note: in expansion of macro ‘MEMOP_IDX’
-   8224 |     MEMOP_IDX(DF_BYTE)
-        |     ^~~~~~~~~
-  target/mips/msa_helper.c:8214:26: error: implicit declaration of function ‘make_memop_idx’ [-Werror=implicit-function-declaration]
-   8214 |         TCGMemOpIdx oi = make_memop_idx(MO_TE | DF | MO_UNALN,  \
-        |                          ^~~~~~~~~~~~~~
-  target/mips/msa_helper.c:8227:18: error: implicit declaration of function ‘helper_ret_ldub_mmu’ [-Werror=implicit-function-declaration]
-   8227 |     pwd->b[0]  = helper_ret_ldub_mmu(env, addr + (0  << DF_BYTE), oi, GETPC());
-        |                  ^~~~~~~~~~~~~~~~~~~
-  cc1: all warnings being treated as errors
+Refactor debug code as tlb_assert_iotlb_entry_for_ptr_present() helper.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/mips/msa_helper.c | 1 +
- 1 file changed, 1 insertion(+)
+What this code does is out of my league, but refactoring it allow
+keeping tlb_addr_write() local to accel/tcg/cputlb.c in the next
+patch.
+---
+ include/exec/exec-all.h |  9 +++++++++
+ accel/tcg/cputlb.c      | 14 ++++++++++++++
+ target/arm/mte_helper.c | 11 ++---------
+ target/arm/sve_helper.c | 10 ++--------
+ 4 files changed, 27 insertions(+), 17 deletions(-)
 
-diff --git a/target/mips/msa_helper.c b/target/mips/msa_helper.c
-index 1298a1917ce..4caefe29ad7 100644
---- a/target/mips/msa_helper.c
-+++ b/target/mips/msa_helper.c
-@@ -20,6 +20,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "internal.h"
-+#include "tcg/tcg.h"
- #include "exec/exec-all.h"
- #include "exec/helper-proto.h"
- #include "exec/memop.h"
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index f933c74c446..c5e8e355b7f 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -296,6 +296,15 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+                   hwaddr paddr, int prot,
+                   int mmu_idx, target_ulong size);
++
++/*
++ * Find the iotlbentry for ptr.  This *must* be present in the TLB
++ * because we just found the mapping.
++ */
++void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_mmu_idx,
++                                            uint64_t ptr,
++                                            MMUAccessType ptr_access,
++                                            uintptr_t index);
+ #else
+ static inline void tlb_init(CPUState *cpu)
+ {
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 8a7b779270a..a6247da34a0 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -429,6 +429,20 @@ void tlb_flush_all_cpus_synced(CPUState *src_cpu)
+     tlb_flush_by_mmuidx_all_cpus_synced(src_cpu, ALL_MMUIDX_BITS);
+ }
+ 
++void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_mmu_idx,
++                                            uint64_t ptr,
++                                            MMUAccessType ptr_access,
++                                            uintptr_t index)
++{
++#ifdef CONFIG_DEBUG_TCG
++    CPUTLBEntry *entry = tlb_entry(env, ptr_mmu_idx, ptr);
++    target_ulong comparator = (ptr_access == MMU_DATA_LOAD
++                               ? entry->addr_read
++                               : tlb_addr_write(entry));
++    g_assert(tlb_hit(comparator, ptr));
++#endif
++}
++
+ static bool tlb_hit_page_mask_anyprot(CPUTLBEntry *tlb_entry,
+                                       target_ulong page, target_ulong mask)
+ {
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index 6cea9d1b506..f47d3b4570e 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -111,15 +111,8 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+      * matching tlb entry + iotlb entry.
+      */
+     index = tlb_index(env, ptr_mmu_idx, ptr);
+-# ifdef CONFIG_DEBUG_TCG
+-    {
+-        CPUTLBEntry *entry = tlb_entry(env, ptr_mmu_idx, ptr);
+-        target_ulong comparator = (ptr_access == MMU_DATA_LOAD
+-                                   ? entry->addr_read
+-                                   : tlb_addr_write(entry));
+-        g_assert(tlb_hit(comparator, ptr));
+-    }
+-# endif
++    tlb_assert_iotlb_entry_for_ptr_present(env, ptr_mmu_idx, ptr,
++                                           ptr_access, index);
+     iotlbentry = &env_tlb(env)->d[ptr_mmu_idx].iotlb[index];
+ 
+     /* If the virtual page MemAttr != Tagged, access unchecked. */
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index c8cdf7618eb..a5708da0f2f 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -4089,14 +4089,8 @@ static bool sve_probe_page(SVEHostPage *info, bool nofault,
+     {
+         uintptr_t index = tlb_index(env, mmu_idx, addr);
+ 
+-# ifdef CONFIG_DEBUG_TCG
+-        CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+-        target_ulong comparator = (access_type == MMU_DATA_LOAD
+-                                   ? entry->addr_read
+-                                   : tlb_addr_write(entry));
+-        g_assert(tlb_hit(comparator, addr));
+-# endif
+-
++        tlb_assert_iotlb_entry_for_ptr_present(env, mmu_idx, addr,
++                                               access_type, index);
+         CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
+         info->attrs = iotlbentry->attrs;
+     }
 -- 
 2.26.2
 

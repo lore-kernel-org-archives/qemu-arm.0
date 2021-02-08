@@ -1,103 +1,105 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1512977lfc;
-        Mon, 8 Feb 2021 13:29:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxWJkMaThzsam1jV8bk5rKIZXRHH/P1BXJsCdQs0yh+b+LtqFQdZP6UhjGJzT0Mv7om1ajo
-X-Received: by 2002:a25:8112:: with SMTP id o18mr28275257ybk.208.1612819788503;
-        Mon, 08 Feb 2021 13:29:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612819788; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1453792lfc;
+        Mon, 8 Feb 2021 11:56:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwdvAw4nsElOsIwEGQ26nge/LcNv64Tri77uGaF2tn2BJowS0p7rgUO8xuBZmLDa8gTeNoP
+X-Received: by 2002:a25:e654:: with SMTP id d81mr11250777ybh.207.1612814212563;
+        Mon, 08 Feb 2021 11:56:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612814212; cv=none;
         d=google.com; s=arc-20160816;
-        b=FMBFoaPXLoji0/V9ujoJ+X9BEYTRSkr+GvM2P57AiJ7bCymD6dyJgZupY2EgJb0sek
-         DALEBoy8XGbfbcXT5W6WSj8HLpR1k2PndwO76JsuiLDTKIvsS4Ca0quT0Lyrfo+QgqLG
-         /VTOIwOkLYJp4eRIlYyP0882NpkvZqAog55btKwS/wdoe6Le8he4qwxXU5guiHxNd844
-         xoQ8fSxb1ZKJ9+W5zkaZc7yQqiyUNHRthJSprl+K5RCKFj7JMQWnR+F3PizECB3VMKGj
-         I7pienwJpT+86SgnlWYyEyXrHOMFwTD/Uhxvh6siGkYJEGnWLj+7hPbz/VNryzf1jOeM
-         yrzw==
+        b=yNeteilBqSWGFTgdfT4eoTufmpvaG+vkwCd+qZzUC3OUgTtlJj9I4VqOTr05OHdzXH
+         VWBkhosTzK7yUYeUawvoEMrDNgEiu5PlxWs1zf2aIo6C7KfN8EMJ2fMI+cXzfi3LZPMl
+         j3O3w2cSdlF3ovVhpxNdJjySBTTmtZQM0lImohmdrAlp0ws8tjAzDdgnToyn/3zIiqam
+         w+pTp7IsyJoGWBPbdUdGysLWe9J2+gfgiwxOdcZkDPi9uZedksiGK+Fa8sYKuqaBAfF1
+         0G5nyIIgNYS5DeICVj+ZydGcRM6BElGCC3kJMehvUqsQ1EAJgS6YlE1DiItLCrApgg02
+         pryA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=7lrcl0AGTHCZpOqWVGnqUjlPHsFDdL9A6NivSCkJQ5o=;
-        b=S3217n5URIEKpMTUjykNmpbskqMcjOU0tND8gDXM2ZPY1ydWdFrCTM0dNQnswmKBH9
-         iqup4bjVa+mOTuZVmOBAJLOQf//NE4jJEw11Ejk/0MmXK7shdllbTr7bLnefTIpiCFMm
-         XxVu6/CZ5Ew6wutboMwt/EZpHHMSCBmp8tzzEAt22u9nLNjTvxuoVK6vPH6VTtZnR4WN
-         iwCWqUcd3yqfvQUuI//WpR4PxXM4fSZ/xpUuVq/9JExqgXAPCC3tANvxnJ52Fy9uS/0X
-         dyHh2pnVSzsPNjWPVvmohY0L9iUz7mDhXotXuhdOy7jGBcCgh1C+2f9Hpr9+yKBf0Eah
-         Mt/Q==
+        bh=w7voTdSrdIvUZbkDbt8ve6u7eVgmZyr3khG4QbJpEGo=;
+        b=vxeWkT86O3FEXOXl1zMLcAY3ENERmXkueetygDSidpa/Aw1W4wyGN9q1uMxBn/9mDv
+         Pt7aMeRGmbEuMYWuQ+tzNhZW3Hf9UOR3+KbO4olUoCHkAS7kCGpgWbQHI2TJZk7u5HN1
+         HWxzYqUpjly5QSDIPOk8AnBpZmlWxk3+rWTaBJrO1zkG4Myih8htTfwUyNlmRSnNgLX+
+         vv8k7+rg75WDD3PdVD8Ts3cEDrJ3LP77rVkD9kVYncDEvh7vzxP2005QuI04WTyRIioZ
+         AqoDtJt1W4Yk6UGE2WzR0HtZUyJWX9dBbxUYoeg93YXDc9ae4UGi0dfZz/GdAiDTZfts
+         t/pQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xlPnt9T6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b0Iooh59;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x11si19124676ybx.178.2021.02.08.13.29.48
+        by mx.google.com with ESMTPS id x13si17869554ybt.404.2021.02.08.11.56.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Feb 2021 13:29:48 -0800 (PST)
+        Mon, 08 Feb 2021 11:56:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xlPnt9T6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b0Iooh59;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56484 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41470 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9E6N-00038r-RB
-	for alex.bennee@linaro.org; Mon, 08 Feb 2021 16:29:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34264)
+	id 1l9CeR-00020v-T6
+	for alex.bennee@linaro.org; Mon, 08 Feb 2021 14:56:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l9A7M-0005dp-Fy
- for qemu-devel@nongnu.org; Mon, 08 Feb 2021 12:14:32 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:33985)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1l98Ie-0006Ks-TY; Mon, 08 Feb 2021 10:18:06 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:45217)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l99sf-0001mm-Sp
- for qemu-devel@nongnu.org; Mon, 08 Feb 2021 11:59:24 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id hs11so26069266ejc.1
- for <qemu-devel@nongnu.org>; Mon, 08 Feb 2021 08:59:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1l98IZ-00009h-59; Mon, 08 Feb 2021 10:18:04 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id t5so18519839eds.12;
+ Mon, 08 Feb 2021 07:17:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7lrcl0AGTHCZpOqWVGnqUjlPHsFDdL9A6NivSCkJQ5o=;
- b=xlPnt9T6YXChNdFuhdi6LWM6RsfHp2EhmFIUazAj4avI5tjbj7Oz3VMmrThLFxxXUc
- bO5GKmIE+JMcBYjyLoanSKKnaY8ql8lKgjoU8oZga3ZxtFbK3VbzCkM+FYaqtcKxurrN
- 9B5F2+ggjAaIW3uGWYkLmt0XadxGq7OINvmX4L+kmjzEyPeIv+5AngyXBn7Ba5a9E8a8
- bc07lnqBKINgA0ahGnQ30J+8SUXujKpdgYR1TIa9pyqdDh/kpZKp+MG4fNzO3l06kWgg
- 97AsP5DlmGzSehEjklhnV5a1FIv7XOmtbLUyLxIBcsKeFtFJdqQl34DTI17jFvfkoRCC
- Kv9g==
+ :cc; bh=w7voTdSrdIvUZbkDbt8ve6u7eVgmZyr3khG4QbJpEGo=;
+ b=b0Iooh595bziyS8Ro2/egRtiB2gudwhJlpS2xDv6w6w3R9pzuPUVZmLRTUaGk40tn5
+ fLQye+AaemQ5vKTgQg39etzvrq703HD06XeebtyMXhstqdp8NpdvhNifwkPpnyFchLUl
+ Asbp+6yl9Me9YZyRjulDEcKU9ZuVh2ycv4AJh4PtQNgwyFxBByUCOJh2bMu9qk9fcFuh
+ F93qoGufljkqEtV4ZO3feEqNIOHAAeUZs8scrfp+dV7pSsgTDNEogKCCV8DgCdbZL9pN
+ xGsTwo3IewlYtXvgteCN84PgajjV1IQcKZuSXqbrL/UxdUJ0Apljc+98j52CUIH0Tki1
+ 0Q1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=7lrcl0AGTHCZpOqWVGnqUjlPHsFDdL9A6NivSCkJQ5o=;
- b=iAwId7sNYnRdWykIm3WuJnFNdzHPDZLjFHQedH/WX2uOTxIBLw2ezx0lQIQxXi7BwV
- g1w68rjiBKoMDHm/iBGhgA77JWAbvp3LerDL0VxGa9gioj+1Dy4efPqu2XcjTS4tg53h
- uSCV3HtFE0ZsMCzu7GbAYfqCJP05yfVOUxIhMOSD1mDCOQs+QUqwubhVrxzshO86ZOSe
- TGzTqTO4BOG9o46UmdCJnj/0GyVRfvg987eqSZbAL2MELJpwOJZqGsxQSwLeHo9jBQ0W
- 9Vy1lGkqbXDguwQFkbGqjcfpJrPqBu6o73qEJznJUUPE16nOXxoz2aY4vlgKAu3VEazP
- Km5w==
-X-Gm-Message-State: AOAM532mbGE+1Pupj/WxbgyNF40bLH0GsYM3vb96cpPrfFAg8Km7lJzz
- +zup3uWhdTshkTY2bFilQWLCwRZ4C4lJoFBEa/V/Fg==
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr18434619ejd.250.1612803557895; 
- Mon, 08 Feb 2021 08:59:17 -0800 (PST)
+ bh=w7voTdSrdIvUZbkDbt8ve6u7eVgmZyr3khG4QbJpEGo=;
+ b=IaQLXwef8lvNAoDYRvVN0xI9UZO8tjDnfZnEdJTzgS0LrfigDruvitKFZLv+v+SeY6
+ HB4cUM316sN6MWVVzfJzY1v4OUY0kDJJdg4dsZKbwO3y6TezEHoD1YAf5N/PaEx2XcYa
+ YXHhf/fqIv00d05p+G4QJ4BN59NWkHEbxdW85Sx+V9oh8V2c/YsRTrITJBsxXgfV8GXT
+ lPvG8GcSYDjMtP56CSRIlV+HgGLh2MM/XlTzH6t354x9FJYchbLVO8kKblEaFiuVlS0G
+ BKUZNQCC5/GFnMPedn70U6MLnk2oLrNC8vk+VkDIJUf1tONDiDu5aArR4QyVa9IFWmFk
+ Ou4g==
+X-Gm-Message-State: AOAM533u2nUvwmWG2KXmXKuCpAj27Ub7vnJpRNRrdy+ESiPTtkFqaOc/
+ 6jKuWLOCTjBf/lMlWRWXrHJSyjQekwJbDA+c8Kk=
+X-Received: by 2002:aa7:cb8f:: with SMTP id r15mr17787819edt.130.1612797477438; 
+ Mon, 08 Feb 2021 07:17:57 -0800 (PST)
 MIME-Version: 1.0
-References: <20210129005845.416272-1-wuhaotsh@google.com>
- <20210129005845.416272-7-wuhaotsh@google.com>
-In-Reply-To: <20210129005845.416272-7-wuhaotsh@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Feb 2021 16:59:06 +0000
-Message-ID: <CAFEAcA-8q2DZpdbeiMhrxtAMkzx1_1BqcGTk8HfxX_6F_FOUfQ@mail.gmail.com>
-Subject: Re: [PATCH v2 6/6] hw/i2c: Implement NPCM7XX SMBus Module FIFO Mode
-To: Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+References: <1612761924-68000-1-git-send-email-bmeng.cn@gmail.com>
+ <1612761924-68000-3-git-send-email-bmeng.cn@gmail.com>
+ <20210208124425.GI477672@toto>
+ <CAEUhbmV=QLCuk5_bymrVNPO_vEU=R1A3urAaqhnNAgSGpiTsGw@mail.gmail.com>
+ <CAJy5ezooJ21SAFhR2Pf=1aAwBkPEUivbCawZy-geCx+g36EP2Q@mail.gmail.com>
+ <CAEUhbmVZr0pAW86kYjiXryN3cOaPc2LmrH9=fqLQUUdJrKX4Cw@mail.gmail.com>
+In-Reply-To: <CAEUhbmVZr0pAW86kYjiXryN3cOaPc2LmrH9=fqLQUUdJrKX4Cw@mail.gmail.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Mon, 8 Feb 2021 16:17:46 +0100
+Message-ID: <CAJy5ezqPC365CAjzMmAfSyKw9uL+ur48bD4=WmMQWHA+_fCE=A@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] hw/ssi: xilinx_spips: Implement basic QSPI DMA
+ support
+To: Bin Meng <bmeng.cn@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000bcca0c05bad4ac01"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,80 +112,179 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, Patrick Venture <venture@google.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- Doug Evans <dje@google.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Francisco Iglesias <francisco.iglesias@xilinx.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OJ3ARyBOOqba
+X-TUID: 9UBfAo61Fr3G
 
-On Fri, 29 Jan 2021 at 01:04, Hao Wu <wuhaotsh@google.com> wrote:
+--000000000000bcca0c05bad4ac01
+Content-Type: text/plain; charset="UTF-8"
+
+On Mon, Feb 8, 2021 at 3:45 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+
+> Hi Edgar,
 >
-> This patch implements the FIFO mode of the SMBus module. In FIFO, the
-> user transmits or receives at most 16 bytes at a time. The FIFO mode
-> allows the module to transmit large amount of data faster than single
-> byte mode.
+> On Mon, Feb 8, 2021 at 10:34 PM Edgar E. Iglesias
+> <edgar.iglesias@gmail.com> wrote:
+> >
+> >
+> >
+> > On Mon, 8 Feb 2021, 15:10 Bin Meng, <bmeng.cn@gmail.com> wrote:
+> >>
+> >> Hi Edgar,
+> >>
+> >> On Mon, Feb 8, 2021 at 8:44 PM Edgar E. Iglesias
+> >> <edgar.iglesias@gmail.com> wrote:
+> >> >
+> >> > On Mon, Feb 08, 2021 at 01:25:24PM +0800, Bin Meng wrote:
+> >> > > From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+> >> > >
+> >> > > ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
+> >> > > is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
+> >> > > crash. This is observed when testing VxWorks 7.
+> >> > >
+> >> > > Add a basic implementation of QSPI DMA functionality.
+> >> > >
+> >> > > Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+> >> > > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> >> >
+> >> > + Francisco
+> >> >
+> >> > Hi,
+> >> >
+> >> > Like Peter commented on the previous version, the DMA unit is actully
+> separate.
+> >>
+> >> Is it really separate? In the Xilinx ZynqMP datasheet, it's an
+> >> integrated DMA unit dedicated for QSPI usage. IIUC, other modules on
+> >> the ZynqMP SoC cannot use it to do any DMA transfer. To me this is no
+> >> different like a DMA engine in a ethernet controller.
+> >
+> >
+> > Yes, it's a separate module.
+> >
+> >>
+> >> > This module is better modelled by pushing data through the Stream
+> framework
+> >> > into the DMA. The DMA model is not upstream but can be found here:
+> >> > https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c
+> >> >
+> >>
+> >> What's the benefit of modeling it using the stream framework?
+> >
+> >
+> >
+> > Because it matches real hw and this particular dma exists in various
+> instances, not only in qspi. We don't want duplicate implementations of the
+> same dma.
+> >
 >
-> Reviewed-by: Doug Evans<dje@google.com>
-> Reviewed-by: Tyrong Ting<kfting@nuvoton.com>
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
-> Reviewed-by: Corey Minyard <cminyard@mvista.com>
-> Ack-by: Corey Minyard <cminyard@mvista.com>
-> ---
->  hw/i2c/npcm7xx_smbus.c           | 342 +++++++++++++++++++++++++++++--
->  hw/i2c/trace-events              |   1 +
->  include/hw/i2c/npcm7xx_smbus.h   |  25 +++
->  tests/qtest/npcm7xx_smbus-test.c | 149 +++++++++++++-
->  4 files changed, 501 insertions(+), 16 deletions(-)
+> Would you please share more details, like what other peripherals are
+> using this same DMA model?
 >
-> diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
-> index c72b6e446f..be3253d251 100644
-> --- a/hw/i2c/npcm7xx_smbus.c
-> +++ b/hw/i2c/npcm7xx_smbus.c
-> @@ -27,7 +27,7 @@
->  #include "trace.h"
 >
->  #define NPCM7XX_SMBUS_VERSION 1
-> -#define NPCM7XX_SMBUS_FIFO_EN 0
-> +#define NPCM7XX_SMBUS_FIFO_EN 1
+It's used by the Crypto blocks (SHA, AES) and by the bitstream programming
+blocks on the ZynqMP.
+In Versal there's the same plus some additional uses of this DMA...
 
-Why has this define changed ?
+Best regards,
+Edgar
 
->  #define NPCM7XX_SMBUS_ENABLED(s)    ((s)->ctl2 & NPCM7XX_SMBCTL2_ENABLE)
-> +#define NPCM7XX_SMBUS_FIFO_ENABLED(s) (NPCM7XX_SMBUS_FIFO_EN && \
-> +        (s)->fif_ctl & NPCM7XX_SMBFIF_CTL_FIFO_EN)
+--000000000000bcca0c05bad4ac01
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-...and why are we testing something that's always 1 ?
-Is NPCM7XX_SMBUS_FIFO_EN supposed to be a debug "turn this feature off"
-switch for QEMU developers? If, so it would be helpful to give it a name
-that doesn't look like it's defining a bit value for the hardware
-and adding a comment saying what it does.
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 8, 2021 at 3:45 PM Bin Me=
+ng &lt;<a href=3D"mailto:bmeng.cn@gmail.com">bmeng.cn@gmail.com</a>&gt; wro=
+te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hi Edgar,<br=
+>
+<br>
+On Mon, Feb 8, 2021 at 10:34 PM Edgar E. Iglesias<br>
+&lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">edgar.igl=
+esias@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; On Mon, 8 Feb 2021, 15:10 Bin Meng, &lt;<a href=3D"mailto:bmeng.cn@gma=
+il.com" target=3D"_blank">bmeng.cn@gmail.com</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; Hi Edgar,<br>
+&gt;&gt;<br>
+&gt;&gt; On Mon, Feb 8, 2021 at 8:44 PM Edgar E. Iglesias<br>
+&gt;&gt; &lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">=
+edgar.iglesias@gmail.com</a>&gt; wrote:<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; On Mon, Feb 08, 2021 at 01:25:24PM +0800, Bin Meng wrote:<br>
+&gt;&gt; &gt; &gt; From: Xuzhou Cheng &lt;<a href=3D"mailto:xuzhou.cheng@wi=
+ndriver.com" target=3D"_blank">xuzhou.cheng@windriver.com</a>&gt;<br>
+&gt;&gt; &gt; &gt;<br>
+&gt;&gt; &gt; &gt; ZynqMP QSPI supports SPI transfer using DMA mode, but cu=
+rrently this<br>
+&gt;&gt; &gt; &gt; is unimplemented. When QSPI is programmed to use DMA mod=
+e, QEMU will<br>
+&gt;&gt; &gt; &gt; crash. This is observed when testing VxWorks 7.<br>
+&gt;&gt; &gt; &gt;<br>
+&gt;&gt; &gt; &gt; Add a basic implementation of QSPI DMA functionality.<br=
+>
+&gt;&gt; &gt; &gt;<br>
+&gt;&gt; &gt; &gt; Signed-off-by: Xuzhou Cheng &lt;<a href=3D"mailto:xuzhou=
+.cheng@windriver.com" target=3D"_blank">xuzhou.cheng@windriver.com</a>&gt;<=
+br>
+&gt;&gt; &gt; &gt; Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@w=
+indriver.com" target=3D"_blank">bin.meng@windriver.com</a>&gt;<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; + Francisco<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; Hi,<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; Like Peter commented on the previous version, the DMA unit is=
+ actully separate.<br>
+&gt;&gt;<br>
+&gt;&gt; Is it really separate? In the Xilinx ZynqMP datasheet, it&#39;s an=
+<br>
+&gt;&gt; integrated DMA unit dedicated for QSPI usage. IIUC, other modules =
+on<br>
+&gt;&gt; the ZynqMP SoC cannot use it to do any DMA transfer. To me this is=
+ no<br>
+&gt;&gt; different like a DMA engine in a ethernet controller.<br>
+&gt;<br>
+&gt;<br>
+&gt; Yes, it&#39;s a separate module.<br>
+&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; This module is better modelled by pushing data through the St=
+ream framework<br>
+&gt;&gt; &gt; into the DMA. The DMA model is not upstream but can be found =
+here:<br>
+&gt;&gt; &gt; <a href=3D"https://github.com/Xilinx/qemu/blob/master/hw/dma/=
+csu_stream_dma.c" rel=3D"noreferrer" target=3D"_blank">https://github.com/X=
+ilinx/qemu/blob/master/hw/dma/csu_stream_dma.c</a><br>
+&gt;&gt; &gt;<br>
+&gt;&gt;<br>
+&gt;&gt; What&#39;s the benefit of modeling it using the stream framework?<=
+br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; Because it matches real hw and this particular dma exists in various i=
+nstances, not only in qspi. We don&#39;t want duplicate implementations of =
+the same dma.<br>
+&gt;<br>
+<br>
+Would you please share more details, like what other peripherals are<br>
+using this same DMA model?<br>
+<br></blockquote></div><div class=3D"gmail_quote"><br></div><div class=3D"g=
+mail_quote">It&#39;s used by the Crypto blocks (SHA, AES) and by the bitstr=
+eam programming blocks on the ZynqMP.</div><div class=3D"gmail_quote">In Ve=
+rsal there&#39;s the same plus some additional uses of this DMA...</div><di=
+v class=3D"gmail_quote"><br></div><div class=3D"gmail_quote">Best regards,<=
+/div><div class=3D"gmail_quote">Edgar<br></div><div class=3D"gmail_quote"><=
+br></div></div>
 
-> @@ -754,6 +1059,17 @@ static const VMStateDescription vmstate_npcm7xx_smbus = {
->          VMSTATE_UINT8_ARRAY(addr, NPCM7xxSMBusState, NPCM7XX_SMBUS_NR_ADDRS),
->          VMSTATE_UINT8(scllt, NPCM7xxSMBusState),
->          VMSTATE_UINT8(sclht, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(fif_ctl, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(fif_cts, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(fair_per, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(txf_ctl, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(t_out, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(txf_sts, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(rxf_sts, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8(rxf_ctl, NPCM7xxSMBusState),
-> +        VMSTATE_UINT8_ARRAY(rx_fifo, NPCM7xxSMBusState,
-> +                            NPCM7XX_SMBUS_FIFO_SIZE),
-> +        VMSTATE_UINT8(rx_cur, NPCM7xxSMBusState),
->          VMSTATE_END_OF_LIST(),
->      },
->  };
-
-It's OK to add fields to the vmstate without bumping the version
-number in this special case, because we only just added the device
-a few commits earlier in the series, but it's worth specifically
-saying that in the commit message.
-
-thanks
--- PMM
+--000000000000bcca0c05bad4ac01--

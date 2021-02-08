@@ -1,114 +1,331 @@
-Received: by 2002:a0c:aac5:0:0:0:0:0 with SMTP id g5csp587500qvb;
-        Fri, 5 Feb 2021 11:34:55 -0800 (PST)
-X-Received: by 2002:a17:906:3805:: with SMTP id v5mr5290560ejc.508.1612553695735;
-        Fri, 05 Feb 2021 11:34:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612553695; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp836386lfc;
+        Sun, 7 Feb 2021 19:46:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJybbf8VtjGo16vyWaUGWx7nrUnOwpbyW+XpWiv9nZ8OZtEExmG8n+QrVy8xzhftcNhPAJmF
+X-Received: by 2002:a25:1188:: with SMTP id 130mr22468143ybr.138.1612755974136;
+        Sun, 07 Feb 2021 19:46:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612755974; cv=none;
         d=google.com; s=arc-20160816;
-        b=GkgU72+NuDIwHPdls0KvSuz1IyIX/eeUhHWvZZlCwYK84h0evoIOAzZgH0e7WhbAlt
-         6BYU3gE3FR9WI7pwEPDVriMseqCkW3OCVfltEN1CiKDx+yKA1j2Fzh3nHOvgvoc9NXKa
-         u+0ruonw93nHZDjDEzCya+jv1Xu974UpD7tNsSeW/PjfM/vdc+gbwaI/LglmMmi0OkID
-         DUsqF/cPemm6WIG1FKXL6Wrp+xoTe9WS0OL66Je6QjUTFQJhxHtdtR6VRShgIIORaQBD
-         iF8zJw57qgEtUUJX9o5EV5Ro0ujhbhj1bIMHfWNFHmkYt6WImeG/jmu4WdOh405HAUHz
-         lFcQ==
+        b=x107AaRTPnbaTTDHHe5fXeg6Pl8aF/D5YON+MPqJz5j5TQ+P1z0v1siCsZauEPP1ZP
+         VfmfdEqc1SlbIjc6qzQdqVqrSPq4KUzJQk8vTytsY7d5ToQNzTtElljPE+jDFxTJkJG+
+         2psANKKTgmV3YMiouBGB2pvoBK0JjP59HI0gqTYywHIGcZj940SMGDWMsdwp86X5klAp
+         fPrlNNYK9JRm2kimfsmZANObsacxLHACxomKy5+3Jc3/EAnWhK7neI/8Xr50gMTsyw67
+         hJdIP8UdpOf0bDvL2mTZ7W6DSfnTsRSVnI1Oyb/4sO8Nbj4IvYsTVDqUd+jzH28G4HIn
+         x8CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=dCxr8zy1x0m9bDA9JbC6bPiaGbp4UMX+EfGqQQhAQJo=;
-        b=EQog/pwY9b1ablcaOmn8fXR/NQh5HtsSqI8ddKeB60HjJyYtsIGbA44ToKxr0sbw5a
-         IMk1UQzwU1RkKcp41ZELLM2yg2Cgt990Iv/tHMWxecKrh/6AiTVeR6GdD9M3ArW0IM9y
-         nEjs4Ot8DbEt9VSoZZg5RYqNulrooyO4+JT4Vx2IhRt/xCbl4FyivbkAJ6fDknaz6rzd
-         MtPWoqKGEdOKdSURS2TxRLBfXeV8Tk6YM7bNKqpQbMurFA3Gmhzl/NnVbDfg9UNNTjZy
-         OqSC8R2p8vE5QJnwlRcobx1a9LxZqpsHG3MGPzub+UuXGNyWlHhlgTemeRHDJ+2X89p3
-         a7ag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=E8zwyqjjxJulzipec2YkM3SoTdlEFmhkzHgrzxKzdEs=;
+        b=QzXFgnzNG3CoAXl/2u1BczAViik09eGIXa28723ytr2g8lJi5pt+cbgzPIYY1aotOw
+         Nm+CXuVzom9NGsga9BiF4FG8IT7DjboL4iO1Qm8mDcLyRrip8AEuCSy5OrOnaYeXDB0e
+         3t8Io7Mi0sVW+CNHvwDFVycdyEDrhDOaPtMdA12gCuzdcBv7MP2pQhq5PgMavKfzZ6qY
+         0PGIIbJZj+VySF5qxljDr4f3S7owkKKOu7t53HpAFTDAz+E5fv7Znq+faHW6SQnIPfB0
+         XVHjHZxi/t8n3MkNa9mw9HZxpG5XoWUshGDtNE+8PWe2peS7K4NQ0XxNNdu1JpC+nuOE
+         Lj8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I+Ewhcy3;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e1sor2117835edj.10.2021.02.05.11.34.55
+       dkim=fail header.i=@linaro.org header.s=google header.b=SkGZIlbM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v201si16471182ybv.79.2021.02.07.19.46.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 05 Feb 2021 11:34:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 07 Feb 2021 19:46:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I+Ewhcy3;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=dCxr8zy1x0m9bDA9JbC6bPiaGbp4UMX+EfGqQQhAQJo=;
-        b=I+Ewhcy3lybe1ahdXG/gXKB1+E0Jv8JTP7Adp7yUKERlw2r/P0zNwOa61W5hrSxvkL
-         0NbP5PzCYQSDW/0Z4b77p589H8c6g1Mw8f8sxh2FAPeo6lEAX/LPuR1qPKmCClApdu6g
-         CbBCoDxVq9t7JJ7PCKOWzopTog6xC7EAbu91Tfe6Jaff7iZO7WLPsukDDgu7fFGHq1B6
-         ovOZQsYxxJIZBaphqygdwMNPGDy4C1RFN/YGn2G6O3co038XCQm1KJol560qsZwl1Ida
-         4u0Q8StH4M0zHjK5Nr38M19lwIV1kH6Piu/iBrFos6r/7t3ZolT6FaH/oUZl2t/RfqC9
-         8tQA==
+       dkim=fail header.i=@linaro.org header.s=google header.b=SkGZIlbM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48114 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l8xV7-0006Ux-GI
+	for alex.bennee@linaro.org; Sun, 07 Feb 2021 22:46:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35654)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1l8x6I-0007jw-KH
+ for qemu-devel@nongnu.org; Sun, 07 Feb 2021 22:20:34 -0500
+Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131]:39894)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1l8x6E-0001jm-De
+ for qemu-devel@nongnu.org; Sun, 07 Feb 2021 22:20:34 -0500
+Received: by mail-il1-x131.google.com with SMTP id d6so11465893ilo.6
+ for <qemu-devel@nongnu.org>; Sun, 07 Feb 2021 19:20:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=E8zwyqjjxJulzipec2YkM3SoTdlEFmhkzHgrzxKzdEs=;
+ b=SkGZIlbMN8tKuqjTMYzRNgWDk5au8iErybhksXcW6HIw435lJC6WGXh61mnsqHcHnk
+ t/D99BOROAHQmP8qKk6myuXP87CHJ8uLsZYXTuns/ylEB3c0g/lAvRmxy237V7zcnRAf
+ 3py60I1t68fFs7wsuV74s284hLUHOe5ZSw8YJ88BkZZlpPGO2H/Wbx86spEvQanXxVAy
+ dMDAnx9QiwmU2tU2pN1pwOLHNsrfvhwek8sD20W3XvuJIqFQtDoeBQQzz/WnH4JJ9nY2
+ LUQ45WBcbbqyu+0iBBFjcpz/VKoJDsCCvqVGyvxNlGSwZSSTozNcyX38srOhcutquj7Y
+ jNHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=dCxr8zy1x0m9bDA9JbC6bPiaGbp4UMX+EfGqQQhAQJo=;
-        b=qHv/QREOAcnQZxMKRnr+XElFU+7rRkD2p6AWxzcSzsE96KuCM83pa/ZzDBCrdf7daU
-         c5905adbbOw6s3y0p6OzdvWCITtqZjkYXSrvwCOF2qOU3n9cI3A84FQVi5Kicyp+hCzI
-         LHL6ND461M2VKylqNw2c3+y4EdjItYjp9IkhKUwRY5k0t0DK4KTIUkg8eOvdPi7Jnl8M
-         VC76J8ooNQDdwcKHBTHfJycHRgpPjQB+EqIqIzXwGL/z+z0hA4tjXUqIxv0IYo+Kh8BG
-         H9X294yhulnn412ltrMEeDwbbzs36EISsv3L/egKlWzXplnuGp16y8K+LHiB0NjXZmzw
-         S6RQ==
-X-Gm-Message-State: AOAM530h4609Y1RxNayph5ieheAO/StB+DhNPpYTlprEwSvjYWXtzxeQ
-	zJr9vqU3S46GNKVJjYZVCGjVYb9PyznSx2gQzJf+5oQNEks+pw==
-X-Google-Smtp-Source: ABdhPJw7jIES3smr2MdokpF4AnJ2wHzhNHTJeYXfUgJSdlMfcr/nH+4fI5ryc4b1Txao1AbjWE+UM40+UYg+zahU+Zw=
-X-Received: by 2002:a05:6402:5107:: with SMTP id m7mr5109713edd.52.1612553695346;
- Fri, 05 Feb 2021 11:34:55 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=E8zwyqjjxJulzipec2YkM3SoTdlEFmhkzHgrzxKzdEs=;
+ b=k1h+D7tH82R0PtBZ+lId43Oc59vJH9mbfBwcEmyFBfK/0aaHy2KH0spy5HJjyfMFCR
+ EvXy0agU6R06BPz34n3HYeC4p+xNnSUUOcGt1kYzoBMNlCgAiIMzadkO96rcVGLQAcye
+ Pw8YGR4897NHq7DCYwSebDjk6O6c9qsh+a+WQh4oA7vXDsoskLT+2eJKuKTmbybmvf//
+ EwxSl/jxja/X/uCnNKfNZqyl9cvW+dHg2NskN+M4TfCO/XNMxNtTppAQrSJmZDF/XCOi
+ ZXneuRme2wLxhjweOlchm2s4nzSyxWdj3wYdmNxcWWonAA1iBrWF/AaaB13VHQem1Swo
+ BxVQ==
+X-Gm-Message-State: AOAM53054Pi4JR/da+jy1gH5JZJrxOOkYszwZhomnUonTPRo/w5kZpYp
+ VmtTtuJrSJKIAzCRnta3UauDdaerOnPSHrQ=
+X-Received: by 2002:a05:6e02:1608:: with SMTP id
+ t8mr13992323ilu.79.1612754429418; 
+ Sun, 07 Feb 2021 19:20:29 -0800 (PST)
+Received: from localhost.localdomain ([147.75.106.138])
+ by smtp.gmail.com with ESMTPSA id o8sm8022965ilu.55.2021.02.07.19.20.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 07 Feb 2021 19:20:29 -0800 (PST)
+From: Haibo Xu <haibo.xu@linaro.org>
+To: drjones@redhat.com,
+	richard.henderson@linaro.org
+Subject: [RFC PATCH 4/5] Add migration support for KVM guest with MTE
+Date: Mon,  8 Feb 2021 03:20:05 +0000
+Message-Id: <25a922038d256e47f3eb99683c5e3bd9c34753ac.1612747873.git.haibo.xu@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1612747873.git.haibo.xu@linaro.org>
+References: <cover.1612747873.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
-References: <20210205170019.25319-1-peter.maydell@linaro.org>
- <7d4db6f0-1e11-afb1-2b58-2e115a0a2dd0@amsat.org> <CAFEAcA_qZ-k7jZQ7NUxQ+BXQ5LtLC1ogorKaE1iwz2Mm00Xwcw@mail.gmail.com>
- <CAAdtpL5Aq_1nQhXPPEinosdoD6sUV20d-kDWTZcKhiQZtr94Fw@mail.gmail.com>
-In-Reply-To: <CAAdtpL5Aq_1nQhXPPEinosdoD6sUV20d-kDWTZcKhiQZtr94Fw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Feb 2021 19:34:44 +0000
-Message-ID: <CAFEAcA9vvfC_DOnrzSxftXPydfUnucqN6VQtRcpP7LEm+Wy+qA@mail.gmail.com>
-Subject: Re: [PATCH 00/24] hw/arm: New board model mps3-an524
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"Daniel P . Berrange" <berrange@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: +SGD9BH+LbGP
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::131;
+ envelope-from=haibo.xu@linaro.org; helo=mail-il1-x131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+ qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GneGxQlCNF27
 
-On Fri, 5 Feb 2021 at 19:31, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> On Fri, Feb 5, 2021 at 8:21 PM Peter Maydell <peter.maydell@linaro.org> w=
-rote:
-> > On Fri, 5 Feb 2021 at 18:05, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> > > On 2/5/21 5:59 PM, Peter Maydell wrote:
-> > > > (The selftest is part of the AN524
-> > > > download so it's behind a EULA click-through and we can't put it
-> > > > into an acceptance test. We might be able to get something
-> > > > based on Zephyr or Arm TFM.)
-> > >
-> > > Wondering about that... If anyone can go/click/accepts the EULA and
-> > > download artifacts, then I'd like these tests to be committed to the
-> > > repository, with a comment containing the download link, and the test
-> > > can use the skipUntil(BLOB_PATH && BLOB_HASH) syntax to assert the
-> > > binary I downloaded is the same you used for your test.
-> >
-> > I would rather not get into that. The selftest doesn't actually
-> > exercise as much of the emulation as you might think anyway.
->
-> This was clear from the previous paragraph, I was asking about the possib=
-ility
-> to have developers/maintainers individually accept EULA to download artif=
-acts
-> for integration testing.
+To make it easier to keep the page tags sync with
+the page data, tags for one page are appended to
+the data during ram save iteration.
 
-Yes, and that is the thing I would rather we didn't get into.
-We should just have suitably redistributable acceptance tests
-where we can.
+This patch only add the pre-copy migration support.
+Post-copy and compress as well as zero page saving
+are not supported yet.
 
--- PMM
+Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+---
+ include/hw/arm/virt.h    |  2 +
+ include/migration/misc.h |  1 +
+ migration/ram.c          | 86 +++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 88 insertions(+), 1 deletion(-)
+
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 36fcb29641..6182b3e1d1 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -165,6 +165,8 @@ struct VirtMachineState {
+     DeviceState *acpi_dev;
+     Notifier powerdown_notifier;
+     PCIBus *bus;
++    /* migrate memory tags */
++    NotifierWithReturn precopy_notifier;
+ };
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+diff --git a/include/migration/misc.h b/include/migration/misc.h
+index bccc1b6b44..005133f471 100644
+--- a/include/migration/misc.h
++++ b/include/migration/misc.h
+@@ -38,6 +38,7 @@ void precopy_add_notifier(NotifierWithReturn *n);
+ void precopy_remove_notifier(NotifierWithReturn *n);
+ int precopy_notify(PrecopyNotifyReason reason, Error **errp);
+ void precopy_enable_free_page_optimization(void);
++void precopy_enable_metadata_migration(void);
+ 
+ void ram_mig_init(void);
+ void qemu_guest_free_page_hint(void *addr, size_t len);
+diff --git a/migration/ram.c b/migration/ram.c
+index 7811cde643..32f764680d 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -53,9 +53,11 @@
+ #include "block.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/cpu-throttle.h"
++#include "sysemu/kvm.h"
+ #include "savevm.h"
+ #include "qemu/iov.h"
+ #include "multifd.h"
++#include "kvm_arm.h"
+ 
+ /***********************************************************/
+ /* ram save/restore */
+@@ -75,6 +77,9 @@
+ #define RAM_SAVE_FLAG_XBZRLE   0x40
+ /* 0x80 is reserved in migration.h start with 0x100 next */
+ #define RAM_SAVE_FLAG_COMPRESS_PAGE    0x100
++#define RAM_SAVE_FLAG_MTE              0x200
++
++#define MTE_GRANULE_SIZE   (16)
+ 
+ static inline bool is_zero_range(uint8_t *p, uint64_t size)
+ {
+@@ -310,6 +315,8 @@ struct RAMState {
+     bool ram_bulk_stage;
+     /* The free page optimization is enabled */
+     bool fpo_enabled;
++    /* The RAM meta data(e.t memory tag) is enabled */
++    bool metadata_enabled;
+     /* How many times we have dirty too many pages */
+     int dirty_rate_high_cnt;
+     /* these variables are used for bitmap sync */
+@@ -387,6 +394,15 @@ void precopy_enable_free_page_optimization(void)
+     ram_state->fpo_enabled = true;
+ }
+ 
++void precopy_enable_metadata_migration(void)
++{
++    if (!ram_state) {
++        return;
++    }
++
++    ram_state->metadata_enabled = true;
++}
++
+ uint64_t ram_bytes_remaining(void)
+ {
+     return ram_state ? (ram_state->migration_dirty_pages * TARGET_PAGE_SIZE) :
+@@ -1127,6 +1143,61 @@ static bool control_save_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+     return true;
+ }
+ 
++static int save_normal_page_mte_tags(QEMUFile *f, uint8_t *addr)
++{
++    uint8_t *tag_buf = NULL;
++    uint64_t ipa;
++    int size = TARGET_PAGE_SIZE / MTE_GRANULE_SIZE;
++
++    if (kvm_physical_memory_addr_from_host(kvm_state, addr, &ipa)) {
++        /* Buffer for the page tags(one byte per tag) */
++        tag_buf = g_try_malloc0(size);
++        if (!tag_buf) {
++            error_report("%s: Error allocating MTE tag_buf", __func__);
++            return 0;
++        }
++
++        if (kvm_arm_mte_get_tags(ipa, TARGET_PAGE_SIZE, tag_buf) < 0) {
++            error_report("%s: Can't get MTE tags from guest", __func__);
++            g_free(tag_buf);
++            return 0;
++        }
++
++        qemu_put_buffer(f, tag_buf, size);
++
++        g_free(tag_buf);
++
++        return size;
++    }
++
++    return 0;
++}
++
++static void load_normal_page_mte_tags(QEMUFile *f, uint8_t *addr)
++{
++    uint8_t *tag_buf = NULL;
++    uint64_t ipa;
++    int size = TARGET_PAGE_SIZE / MTE_GRANULE_SIZE;
++
++    if (kvm_physical_memory_addr_from_host(kvm_state, addr, &ipa)) {
++        /* Buffer for the page tags(one byte per tag) */
++        tag_buf = g_try_malloc0(size);
++        if (!tag_buf) {
++            error_report("%s: Error allocating MTE tag_buf", __func__);
++            return;
++        }
++
++        qemu_get_buffer(f, tag_buf, size);
++        if (kvm_arm_mte_set_tags(ipa, TARGET_PAGE_SIZE, tag_buf) < 0) {
++            error_report("%s: Can't set MTE tags to guest", __func__);
++        }
++
++        g_free(tag_buf);
++    }
++
++    return;
++}
++
+ /*
+  * directly send the page to the stream
+  *
+@@ -1141,6 +1212,10 @@ static bool control_save_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+ static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+                             uint8_t *buf, bool async)
+ {
++    if (rs->metadata_enabled) {
++        offset |= RAM_SAVE_FLAG_MTE;
++    }
++
+     ram_counters.transferred += save_page_header(rs, rs->f, block,
+                                                  offset | RAM_SAVE_FLAG_PAGE);
+     if (async) {
+@@ -1152,6 +1227,11 @@ static int save_normal_page(RAMState *rs, RAMBlock *block, ram_addr_t offset,
+     }
+     ram_counters.transferred += TARGET_PAGE_SIZE;
+     ram_counters.normal++;
++
++    if (rs->metadata_enabled) {
++        ram_counters.transferred += save_normal_page_mte_tags(rs->f, buf);
++    }
++
+     return 1;
+ }
+ 
+@@ -1905,6 +1985,7 @@ static void ram_state_reset(RAMState *rs)
+     rs->last_version = ram_list.version;
+     rs->ram_bulk_stage = true;
+     rs->fpo_enabled = false;
++    rs->metadata_enabled = false;
+ }
+ 
+ #define MAX_WAIT 50 /* ms, half buffered_file limit */
+@@ -3492,7 +3573,7 @@ static int ram_load_precopy(QEMUFile *f)
+             trace_ram_load_loop(block->idstr, (uint64_t)addr, flags, host);
+         }
+ 
+-        switch (flags & ~RAM_SAVE_FLAG_CONTINUE) {
++        switch (flags & ~(RAM_SAVE_FLAG_CONTINUE | RAM_SAVE_FLAG_MTE)) {
+         case RAM_SAVE_FLAG_MEM_SIZE:
+             /* Synchronize RAM block list */
+             total_ram_bytes = addr;
+@@ -3562,6 +3643,9 @@ static int ram_load_precopy(QEMUFile *f)
+ 
+         case RAM_SAVE_FLAG_PAGE:
+             qemu_get_buffer(f, host, TARGET_PAGE_SIZE);
++            if (flags & RAM_SAVE_FLAG_MTE) {
++                load_normal_page_mte_tags(f, host);
++            }
+             break;
+ 
+         case RAM_SAVE_FLAG_COMPRESS_PAGE:
+-- 
+2.17.1
+

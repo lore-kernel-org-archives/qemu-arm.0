@@ -1,117 +1,106 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2998651lfo;
-        Sat, 6 Feb 2021 09:11:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzIg0tXwiVzuX5/xzbFjVfzfnESHIyirZQHK7aMKgkAV6b9VuPZQgptByd9I2xKd2rRcyO/
-X-Received: by 2002:a25:2d24:: with SMTP id t36mr14877657ybt.521.1612631514158;
-        Sat, 06 Feb 2021 09:11:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612631514; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp838545lfc;
+        Sun, 7 Feb 2021 19:51:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzwdAnpcNb74YXqpA83PEazVsn7BYi74zpMOEoVMWzLPVF4fXIhIjDqfz2kwF3oPzCESfS5
+X-Received: by 2002:a25:60c5:: with SMTP id u188mr22455522ybb.80.1612756297359;
+        Sun, 07 Feb 2021 19:51:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612756297; cv=none;
         d=google.com; s=arc-20160816;
-        b=zsww1+qDSQmgARNG7Dl3BC6RzABGKItqCw0XJuNh+DZ92XvVIAql7TNpSWM9P/S8L+
-         KMSUr0LcI8Yx3Lv5MNNBNt6N4kD+SK0nVcDl46C3tWDpPw0Se0l6ucmoiK3K/q/yJjHh
-         sN8joqvJvXqwF3qx/uXThP7IX3sPxAFQA6ZXPGskktWMSz4Ypgi8MuGma/ldp3m8UVTu
-         Q2YUjUqunV8YytPO+75D2C43q4S+1KEWeaT2lSqU1lZmHNvd5mdzbsEnZz9zWjZp9Ovv
-         j7peWuPj6Ja/WOuaV8xmbk/sGBPjN4ycOg1WGqxcg9O5ygzBA3ndObVOJOmn0LffvPiq
-         F0Zg==
+        b=S+nfut5cd3PyYqHvCnE5P+8mBBqyuGNsqQLVsahJw87aGbGmeu55jdld3rZ0HQBiUp
+         wY2N7E+GVMOWNvrl/IovSS6orVIuGjq9wz57+qe3+a8Llc7zVH1usHOq6nIUjwd9pNFh
+         a5g2fx24vRGu008fDRoX9iDeErn0JBQtlaUX9gmdfeItYkHrf58EnmMqxtlAzX2MygBM
+         sT0cr+m+Y3tMw2c7+W43CzdffpejUgQofPWJ856mHHOLj7gf/pY+Ng5npe8V6Z8JQxlG
+         853/XqlqjBZPRDXy+0ibFnOAMWOiY6V+OfZ/2vZEigWJHnTZeCkytRFomipW16GHfjrQ
+         upbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=0lpGD6wejSq4zYPSzmNY/1BW6iDgPGbj876Gcih74dM=;
-        b=XY5Uij/KWqX85K1P3Zf8XGsWUeVcAPlP0z48RCektWQKKwxbtH2RMqrqYpEdBcq7Mz
-         t6XtNeM27t9pDQRAVX0lbruX9WDj5t3Ivwsi59jlox7FHC0CauLXNJBtSBz852p0aJvA
-         AKGKsrP3OBbsKIVck0HniFlewE9xcOiCtMBu2KL9Qpk+Vw/fqWsjJ8XUVMLL2DYLpJaq
-         TFEa9rUr4oXrFp9E0HXxtc2Dwq5gmlTZrE5KDSvPknW+y0oVgaWSYJaotmykEXX3tbI7
-         OCRwmQ9c2gNZ9BCpWw2dtCpqLQCyN3fqdU3sLPZK6mFBb1F//vgy9wdfLrF361rh/9pA
-         83Vg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=fvfAQQXnsiwqJK5LFbqAh21CyVvT8aHohHzKppo64d4=;
+        b=IZL7rGk0pFG2xoOP/7ASIk1pm1cWfFQxtUFEf5epEls9qkG74rBRr9Pp+eecJCxjce
+         Doj5hDyQWvJQF8G7/8YC/RlBDrctZ0jzyPLsxRh615PciIH6IFmaVxpKK64aqSLuF04Z
+         6bYUAGt611gxA4o22K242P5ZqYQa04ha/RHWUOwbeEjcqgXaKrdxOuhzouHRldqbF+KA
+         k+5JqSaVpi8ONC8kfE8Og0lhORKsyrzL4Ke88AIIAKBhcxyrCEpwuHHh+YlH0/3SIR/y
+         MPolY251lHOdZ/FvBCCy7jMKMvaNZDTjef8BQTwCB57NwZvhunvUFpdYNeRnFQhCEIHA
+         76EQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=as+bVFLO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ddbnMrAr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n62si12913161ybg.59.2021.02.06.09.11.53
+        by mx.google.com with ESMTPS id e130si16541106ybf.196.2021.02.07.19.51.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 06 Feb 2021 09:11:54 -0800 (PST)
+        Sun, 07 Feb 2021 19:51:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=as+bVFLO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ddbnMrAr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37526 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l8R7h-0006NE-IZ
-	for alex.bennee@linaro.org; Sat, 06 Feb 2021 12:11:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39794)
+	id 1l8xaK-0005z1-N8
+	for alex.bennee@linaro.org; Sun, 07 Feb 2021 22:51:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l8QxY-00081l-SC; Sat, 06 Feb 2021 12:01:26 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:34904)
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1l8x6E-0007dW-Gv
+ for qemu-devel@nongnu.org; Sun, 07 Feb 2021 22:20:30 -0500
+Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135]:35407)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l8QxV-0005Et-1j; Sat, 06 Feb 2021 12:01:23 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id l12so11550092wry.2;
- Sat, 06 Feb 2021 09:01:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=0lpGD6wejSq4zYPSzmNY/1BW6iDgPGbj876Gcih74dM=;
- b=as+bVFLOVT59AGVj6kDV3LlpgraziWmmM6RRQJg6rA3vvKk/USwZdElYo3seAnXkS+
- LX5FeZhRg0sTZbUaRrGe6ynzECbvbCr/+W1ks2nbN9I/oZByWiNvxi5XFA5oEE6OOd6m
- kjBDPNLecRkwH9hichQvG0jft8QfqL4cEwCRtK4GIO3IcXmObAp23FtT4mpvkxrIdlB9
- Dz7OhECr/nIRcsL17W1w+ygoRlsmOvItKvTdp7pv2lf0JKsk4GWOnfdgsB8HtNfyCzPq
- DML8y0w4Scep+jID4MsULRrvHK/Y/EFMJ+3PqIQLOglpOSaCY3673Jp654PjuTpYHFf6
- OSwg==
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1l8x6C-0001iQ-Gn
+ for qemu-devel@nongnu.org; Sun, 07 Feb 2021 22:20:30 -0500
+Received: by mail-il1-x135.google.com with SMTP id o7so6946167ils.2
+ for <qemu-devel@nongnu.org>; Sun, 07 Feb 2021 19:20:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=fvfAQQXnsiwqJK5LFbqAh21CyVvT8aHohHzKppo64d4=;
+ b=ddbnMrArKkjV64mlk9BjDzgOuuUlQhlYF3iWtrzK4YtaBRnKL0Nf5LFqce2MgrvEtx
+ wm8Lt7IF38t5YxyQdVjqEAeqppCIQWD80tPdnyTQgh+3nDHNdmRcmzHUYtGMxrw8Zie1
+ 5M+xzhclU7cH3eOfkuuiwIJh65nNpkAZ75aXhChTjcEYHOK/eX+mRZQhq3oi46r39Whq
+ lTFZUd4454PGScAKT8Z/TfF2jNPuGvBdb0l6Bomxb2pRcR1p3uOtEUpmg1cNMjSAXJE1
+ J7InRtYOh6yo01IW1b4gI9sS8faH2i7ElX/SBLWC1bvkjg3XUOCJ85Z6cT6gDdNiDDsI
+ xmWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=0lpGD6wejSq4zYPSzmNY/1BW6iDgPGbj876Gcih74dM=;
- b=GgxRyaoo/bpIiADQPRx8PHyty8qW8qWl6xYsjnv2jIRQLvxYQG2oqdTGul+m5S6eIx
- er9QEa0N5lE+CMTkO75rSkN0JuFYEDFDqoGqfYFHw5qqFkuwdDpU7JwKK7yQp7ftcBaP
- pFOydUkqNfEpf1GiegxGBE6e2NxaAHGgJK/H+pbRjnJVOO/6o2fKSn1yGFC7fmqY1n7D
- HiLTF2gny/i+pkfVmrBUHmnJGyQhLdBGwuSCImQ0AIZSfZnedpxD9A+SimBxBokA3QD4
- 8uSL3Hl9MXdqzokBYHpxkKPppbEvuOtUaHvvqgJTqqa2Nwszok5RIKNl1NeWqglsUl3h
- 2hiQ==
-X-Gm-Message-State: AOAM532SYEbX6r0YFY02MBrX03zkL53ugZLV68VY/S7Q27w90cFv1Dre
- bcpvWEPjmyotur2DjwxHK+Q=
-X-Received: by 2002:adf:e3c2:: with SMTP id k2mr11002661wrm.337.1612630879095; 
- Sat, 06 Feb 2021 09:01:19 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id q20sm11883601wmc.14.2021.02.06.09.01.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 06 Feb 2021 09:01:18 -0800 (PST)
-Subject: Re: [PATCH 1/2] hw/ssi: xilinx_spips: Clean up coding convention
- issues
-To: Bin Meng <bmeng.cn@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <1612622294-37297-1-git-send-email-bmeng.cn@gmail.com>
- <1612622294-37297-2-git-send-email-bmeng.cn@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <daee5ad3-1c56-e538-40d5-628f91bca14f@amsat.org>
-Date: Sat, 6 Feb 2021 18:01:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ bh=fvfAQQXnsiwqJK5LFbqAh21CyVvT8aHohHzKppo64d4=;
+ b=LPAWeVghJy22WWxOT3Zed1TAIcuqHRe6dzuD95RtgaY2XJIhFH4M795/C9y5+3iNDB
+ Fum6h78VZM+6Inv8aGy0+d/wmvk1H5OebFd2Kpnsa+pG3rnMMwTJrVILksjYGzVfpZYt
+ fugpn2fyzXV2reIvUho3zUIaAAzWXQAt5MGTEeaX5dpsG7ft/T3IRdns0Q/Tmvr+ZvAa
+ Pj7knsRcL4EpuK8rsRjxZREg88Xy8ejfjeaXL8JSn9oaYVy34iKHdiHRrQ61lw+d9/o1
+ LX2F6ag+BSbj9BveajXKO423jiHvFMIx7QosK8l5OE9gocRGQBxtr6l/Q8djRYDaHeGD
+ Xo3g==
+X-Gm-Message-State: AOAM53054U8UJ2HHjCgydsJCbU11o0lzP5TZrkoAUPV91oXQu4q76e0R
+ TaqYlp799raAkLjNwYx+Eejp
+X-Received: by 2002:a92:b514:: with SMTP id f20mr14013571ile.253.1612754426158; 
+ Sun, 07 Feb 2021 19:20:26 -0800 (PST)
+Received: from localhost.localdomain ([147.75.106.138])
+ by smtp.gmail.com with ESMTPSA id o8sm8022965ilu.55.2021.02.07.19.20.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 07 Feb 2021 19:20:25 -0800 (PST)
+From: Haibo Xu <haibo.xu@linaro.org>
+To: drjones@redhat.com,
+	richard.henderson@linaro.org
+Subject: [RFC PATCH 0/5] target/arm: Add MTE support to KVM guest
+Date: Mon,  8 Feb 2021 03:20:01 +0000
+Message-Id: <cover.1612747873.git.haibo.xu@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <1612622294-37297-2-git-send-email-bmeng.cn@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.105,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::135;
+ envelope-from=haibo.xu@linaro.org; helo=mail-il1-x135.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,27 +113,56 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
- Bin Meng <bin.meng@windriver.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+ qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ia8sP5vBbYc6
+X-TUID: 8wUjlFv0DQUk
 
-On 2/6/21 3:38 PM, Bin Meng wrote:
-> From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> 
-> There are some coding convention warnings in xilinx_spips.c,
-> as reported by:
-> 
->   $ ./scripts/checkpatch.pl hw/ssi/xilinx_spips.c
-> 
-> Let's clean them up.
-> 
-> Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> ---
-> 
->  hw/ssi/xilinx_spips.c | 23 ++++++++++++++---------
->  1 file changed, 14 insertions(+), 9 deletions(-)
+This series add support for MTE(Memory Tagging Extension)[1]
+in KVM guest. It's based on Steven Price's kernel KVM patches
+V7[2], and has been tested to ensure that test case[3] can be
+passed in a KVM guest. Basic pre-copy migration test also passed
+between two MTE enabled kvm guest. 
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+This is a RFC patch series becuase:
+(1) Need to add some arm MTE specific codes to the ram migration
+    loop. There may be better way to do that in a more abstract way.
+(2) Only pre-copy migration is supported and tested currently,
+    post-copy as well as compress/zero page migration are still WIP.
+    
+All kinds of feedbacks are very welcomed, especially for the migration
+support. 
+
+Note:
+(1) To support MTE migration, tags for one page are appended to  
+    the page data during ram save iteration which make it easier
+    to sync the page data and tags.
+
+[1] https://community.arm.com/developer/ip-products/processors/b/
+    processors-ip-blog/posts/enhancing-memory-safety
+[2] https://lwn.net/Articles/842827/
+[3] https://elixir.bootlin.com/linux/latest/source/Documentation/
+    arm64/memory-tagging-extension.rst
+
+Haibo Xu (5):
+  Update Linux headers with new MTE support
+  Add basic MTE support to KVM guest
+  Add APIs to get/set MTE tags
+  Add migration support for KVM guest with MTE
+  Enable the MTE support for KVM guest
+
+ hw/arm/virt.c             | 44 +++++++++++++-------
+ include/hw/arm/virt.h     |  2 +
+ include/migration/misc.h  |  1 +
+ linux-headers/linux/kvm.h | 15 +++++++
+ migration/ram.c           | 86 ++++++++++++++++++++++++++++++++++++++-
+ target/arm/cpu.c          |  2 +-
+ target/arm/kvm.c          |  9 ++++
+ target/arm/kvm64.c        | 31 ++++++++++++++
+ target/arm/kvm_arm.h      |  2 +
+ 9 files changed, 176 insertions(+), 16 deletions(-)
+
+-- 
+2.17.1
+

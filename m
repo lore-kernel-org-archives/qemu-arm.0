@@ -1,301 +1,134 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1487939lfc;
-        Mon, 8 Feb 2021 12:49:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwOOHJyywWWbDTqHAl6xbWe4XPYjIxkN8QrtEio4R9doLx+XlleYhIJ5UAQ2hMpnnWJhhtM
-X-Received: by 2002:a67:99c6:: with SMTP id b189mr11606905vse.58.1612817381800;
-        Mon, 08 Feb 2021 12:49:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612817381; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1488906lfc;
+        Mon, 8 Feb 2021 12:51:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzQTl79nTF/4bHF9NVYkMLPqE08kN4Ze8tkDta3BXB+eBX7N3QuDQ/HWI/Pkc+KwittNgzO
+X-Received: by 2002:a05:6902:6a2:: with SMTP id j2mr11094639ybt.48.1612817464105;
+        Mon, 08 Feb 2021 12:51:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612817464; cv=none;
         d=google.com; s=arc-20160816;
-        b=D60TJDyW82wMESzuKAVC7Enmm7DVjAtnI+4lPTE/dI256eO8BwRp1r88zSNfgzzz21
-         RLFFmHXoG/DmzfkbMnNGwNnpWakKgQwVFJplJui1UdBrVyoFhewoj61vU6/a+jiIYCma
-         Lbu6FiEXy6H69RMou9haSazyLj9H750e3ACXIuP+Fodv29p4H3hu5A+hptkk+dNLATz7
-         rCnrtcDXGdcaz4f6+lugCGaY2iw+CFMXaJChyu665lGbq0UrqzyET3OgtxbnMRx6/Mmk
-         OnQtDQoXArSuXokEl/BpWnuSoRBy+w9oBsokH8wPxylDpJYpsMIEoVXmL6kvjzbeLY7a
-         lvfg==
+        b=YjYFJii/ttkoQyjPBno0Lew+0sJ/hSLART/J4mPgMS7O66sFucAtpnFUi+UotfRAsW
+         ax79GNPFUlx3trZUz/hm5HfDHfAEeq53eP8A+Z2GweBPcG16pQpRvVK/jX50SUGdlXao
+         0O9WyVorlBnf9wcfJtN22k17/E1+oH3rADzUHHgaj2AoJfhrgmYr7InWXBVlHUwn3Fpd
+         +uvFeIqOZJ8UkSCYxZopQ/lA3FJD3dzgLyCeP8ohMtRt2Up8D9ke41m+/tQDImS+n5eT
+         pZ7SLBpTjRGiEml57A0p2WXBdGDfS+XMahWW4MQVWF+8bQUpEmFxKNrACq8tNT0unRfj
+         9E8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ml0YDQs56tKj5scJg+obSM9rxRigcfMgWYL0EMd/6L8=;
-        b=od27xJuROzjRHtdiDPQ+O4xGByoUJYzAJ7EGBcm38CwhGwCULYLgUa8+DiwgTslrIO
-         CBNgTs4/YZxCzCWvFlxxjSvymvI+5O96yRfbl3h+ExrI8YifmEHYoQ8zJ2gMVhAtPG3A
-         wvVxjtY4NohPIQmBY1siubRIQVBjQyn0G122oKt9z5VQd7WC/ArS2QtfeZp8M/Nj104s
-         BWDORbI+FhUU0kbRVjx60agAhWLszFdE0+uen5Skom/QOIyhwfc82nR/Ma3hE+rMQVl6
-         AWQEJZP1W2KdwQNRclXG8+63sTVGw86lQBQEaNR1zyarpU9pu94vtNpSXuuuSe/OUKW1
-         O73g==
+        bh=gH+tlT7ntK/krzP31qbwxm9FnsbagvS8jMw39i5JdlQ=;
+        b=RShxwBfbnpByrtEn8j1doxiEInWakPM1OgXhbk81uzqB3V0zwj0lHFMOnbemZ6sUL+
+         cfxkJbPnod0WS/COwvJtddheKWXxcQr4DRx5WjsTPa+VdBYGi6k4RVOD1U82H0iDqD2q
+         IW3gGku2V2MPkU07HD2KVSoK9wPu44iOqycg/XD4FyJ53n1b+sldCBmAWKnguLsEVlx2
+         JmH1ZSMk6bAralDg1KZCNKtOhWcfaqGEStByz378KZk+rBqUmkuqkXtIs76X4F/CbFHB
+         YP2rMtZ0UQO/+klZNRTiyr7Ail5cobHNmEDKhM5U3P68T8YmGTjnhZPiXrkQeimTG86T
+         84sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s71P9FvW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZzvokyOq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13si3061621vsr.137.2021.02.08.12.49.41
+        by mx.google.com with ESMTPS id l6si18142562ybt.281.2021.02.08.12.51.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Feb 2021 12:49:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Feb 2021 12:51:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s71P9FvW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35248 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZzvokyOq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37960 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9DTX-0007dX-9N
-	for alex.bennee@linaro.org; Mon, 08 Feb 2021 15:49:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58822)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9DUt-0000LE-8m
+	for alex.bennee@linaro.org; Mon, 08 Feb 2021 15:51:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58238)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1l97cd-0003RM-Pg; Mon, 08 Feb 2021 09:34:46 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c]:45751)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l99ln-00031I-C0
+ for qemu-devel@nongnu.org; Mon, 08 Feb 2021 11:52:25 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532]:42395)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1l97cV-0002VH-2U; Mon, 08 Feb 2021 09:34:39 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id t5so18295366eds.12;
- Mon, 08 Feb 2021 06:34:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l99lj-00084A-Hz
+ for qemu-devel@nongnu.org; Mon, 08 Feb 2021 11:52:15 -0500
+Received: by mail-ed1-x532.google.com with SMTP id z22so19080930edb.9
+ for <qemu-devel@nongnu.org>; Mon, 08 Feb 2021 08:52:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ml0YDQs56tKj5scJg+obSM9rxRigcfMgWYL0EMd/6L8=;
- b=s71P9FvWdXO6bwowgAbJCg7+OOycmxOL6n5cdZT51yJ9b4qZaeLN9jp1e4/GOa83Vn
- LkRHwRIzc+NuRLvyGmBcY3/atFUdNAdo/45KUi8CoE2//ia1a7AbFeRnUAwA3v+OaGyG
- LnI2cbFxteehoNp+foVjg4PgFM2jLGk024usVSBSHcgBUT0f9k/OhRK5fKT22xyXfbdj
- XaxJbPBF1Fqn80dUjgeUE8c8+zEzRYyA/0GSrj1FGIIKn3df8S96V67ypEl0GjxB2zdm
- sv30RPav9LkR9jUdaZgESYq6eHX3Udj+olqGjo7pE/kRH4BvkxlP/HsgCZXbTeWWEhj9
- g/jw==
+ :cc; bh=gH+tlT7ntK/krzP31qbwxm9FnsbagvS8jMw39i5JdlQ=;
+ b=ZzvokyOqQ4YfxAhgpYAERpyvqZ1RlBDlCK/HnhxyhsqZos93TOscEN5a0zqFJWpJOp
+ lrVXGh9M6CXHva42z+DHNVWMDeFRRT8XLViTDyN6IfGHNus5DRrKiPmQ0xH29qPtTVIM
+ YK6bWwSN8HtX/zL5FCWwr2G3wKaZi7hamDKSDfNABmGqegOm6iTLrsPNnYDkB33P2x6e
+ ouTRIpJ8xZsOV5jwQnLgsQuKGOByOQMVmSYucouDwJZZ/Xb9yFS1O4a9d5RI4ROlkvXf
+ F3PvEzm/WfmUZGR3Wuc0RvaHe/tpw7bfirhl6S/mJzy3gi1si9KXYWxU8ZB0tCGAswkH
+ 7Nwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ml0YDQs56tKj5scJg+obSM9rxRigcfMgWYL0EMd/6L8=;
- b=mv6yqpmdNrmLgxu93C2xT5dpPxPIQBP7axOfkCWziP3mxJkHHAR1SziEwkwJ34yQGZ
- DHfKg/0PH4qgP5+IgZdW3cKJQkqRThIpLPjU3FFawwK8gxbjtXejjQeQN0fxJVBR9LPD
- tuW/d6Rtnc6OemgmAeqzf1/jLSTgf2pRZ+cPnp5oWvNudZGUAYQmoPB4A2bXuDVpELBF
- IP/S0VOU825+vD5Aywqk3eLs8LXmm03oRY8o+iSz4eSlfl/6oVqgERKGH//ANlZOZQU9
- lpN9iumutnVwsRlHHG787dDKwV9jjHUmuIFEUzxJOlwth9dUYOGt1mFNYvTUvThP6pmN
- 6weA==
-X-Gm-Message-State: AOAM5331OYFYS0OS6tHvZIoiJx4cNuQwohoYVS3AsGdrRSJSFfpjo/mK
- zWDlZUvEIwuAhfeefP0LuUyEqkgLWQKiOmSxNO8=
-X-Received: by 2002:a50:9dc9:: with SMTP id l9mr17349328edk.377.1612794864223; 
- Mon, 08 Feb 2021 06:34:24 -0800 (PST)
+ bh=gH+tlT7ntK/krzP31qbwxm9FnsbagvS8jMw39i5JdlQ=;
+ b=NRSrZRat03LxqYqPS1UJ61EFQt+JS8Q+5U4ghS/SPgjtOlrGbrNLFgf2ezJ/j5caHc
+ FH/AV+wAwyVcfx/+ksBdpbD+R5plwj1sCPWCASJA/ZlG213zggyUcOOf3wzGaqEZ79nS
+ A3WrFvKCV2XbaBAACi1xyLZpkF3gdQiTXF4L6n7y0No/PlG9WsHBFHSvrDj16pE0RNWv
+ /alGXAEj6+grXkJt9+H1sa+bfaRMcRP/eCgQqyLbq7LHhRsfLiFxSCIaK6axQcDyIJmy
+ sUwwU6WUPNPWsQA0stFd4D/cf2x88W9HsIBxFqmbHquK/igUwdFYecBXYNpDEE4N7eGv
+ mzsg==
+X-Gm-Message-State: AOAM530LZuxuKP5oe0tIVITc/HHDUhUJ9xCcWCW+wblx+eHvRsLLQG5x
+ 5tr4krnHX77bnkEs4kKu/KXTJ+J6QHF5n5dJswHCxA==
+X-Received: by 2002:a50:d307:: with SMTP id g7mr17078522edh.204.1612803126885; 
+ Mon, 08 Feb 2021 08:52:06 -0800 (PST)
 MIME-Version: 1.0
-References: <1612761924-68000-1-git-send-email-bmeng.cn@gmail.com>
- <1612761924-68000-3-git-send-email-bmeng.cn@gmail.com>
- <20210208124425.GI477672@toto>
- <CAEUhbmV=QLCuk5_bymrVNPO_vEU=R1A3urAaqhnNAgSGpiTsGw@mail.gmail.com>
-In-Reply-To: <CAEUhbmV=QLCuk5_bymrVNPO_vEU=R1A3urAaqhnNAgSGpiTsGw@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Mon, 8 Feb 2021 15:34:13 +0100
-Message-ID: <CAJy5ezooJ21SAFhR2Pf=1aAwBkPEUivbCawZy-geCx+g36EP2Q@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] hw/ssi: xilinx_spips: Implement basic QSPI DMA
- support
-To: Bin Meng <bmeng.cn@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000fa48b605bad41087"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x52c.google.com
+References: <20210129005845.416272-1-wuhaotsh@google.com>
+ <20210129005845.416272-6-wuhaotsh@google.com>
+In-Reply-To: <20210129005845.416272-6-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Feb 2021 16:51:55 +0000
+Message-ID: <CAFEAcA9jfSaYiF_BYNo3Eh3dZvbvZy+gWDDHSLa+woBtFST+Xg@mail.gmail.com>
+Subject: Re: [PATCH v2 5/6] hw/i2c: Add a QTest for NPCM7XX SMBus Device
+To: Hao Wu <wuhaotsh@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- francisco.iglesias@xilinx.com, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sQQiS0COUQ4p
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>, Patrick Venture <venture@google.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ Doug Evans <dje@google.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hcPA8yIXOT6C
 
---000000000000fa48b605bad41087
-Content-Type: text/plain; charset="UTF-8"
-
-On Mon, 8 Feb 2021, 15:10 Bin Meng, <bmeng.cn@gmail.com> wrote:
-
-> Hi Edgar,
+On Fri, 29 Jan 2021 at 01:04, Hao Wu <wuhaotsh@google.com> wrote:
 >
-> On Mon, Feb 8, 2021 at 8:44 PM Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
-> >
-> > On Mon, Feb 08, 2021 at 01:25:24PM +0800, Bin Meng wrote:
-> > > From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> > >
-> > > ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
-> > > is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
-> > > crash. This is observed when testing VxWorks 7.
-> > >
-> > > Add a basic implementation of QSPI DMA functionality.
-> > >
-> > > Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> > > Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> >
-> > + Francisco
-> >
-> > Hi,
-> >
-> > Like Peter commented on the previous version, the DMA unit is actully
-> separate.
+> This patch adds a QTest for NPCM7XX SMBus's single byte mode. It sends a
+> byte to a device in the evaluation board, and verify the retrieved value
+> is equivalent to the sent value.
 >
-> Is it really separate? In the Xilinx ZynqMP datasheet, it's an
-> integrated DMA unit dedicated for QSPI usage. IIUC, other modules on
-> the ZynqMP SoC cannot use it to do any DMA transfer. To me this is no
-> different like a DMA engine in a ethernet controller.
->
+> Reviewed-by: Doug Evans<dje@google.com>
+> Reviewed-by: Tyrong Ting<kfting@nuvoton.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
 
-Yes, it's a separate module.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-
-> > This module is better modelled by pushing data through the Stream
-> framework
-> > into the DMA. The DMA model is not upstream but can be found here:
-> > https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c
-> >
->
-> What's the benefit of modeling it using the stream framework?
->
-
-
-Because it matches real hw and this particular dma exists in various
-instances, not only in qspi. We don't want duplicate implementations of the
-same dma.
-
-Cheers,
-Edgar
-
-
-> > Feel free to send a patch to upstream with that model (perhaps changing
-> > the filename to something more suitable, e.g xlnx-csu-stream-dma.c).
-> > You can use --author="Edgar E. Iglesias <edgar.iglesias@xilinx.com>".
-> >
->
-> Please, upstream all work Xilinx has done on QEMU. If you think the
-> DMA support should really be using the Xilinx one, please do the
-> upstream work as we are not familiar with that implementation.
->
-> Currently we are having a hard time testing the upstream QEMU Xilinx
-> QSPI model with either U-Boot or Linux. We cannot boot anything with
-> upstream QEMU with the Xilinx ZynqMP model with the limited
-> information from the internet. Instructions are needed. I also
-> suggested to Francisco in another thread that the QEMU target guide
-> for ZynqMP should be added to provide such information.
->
-> > The DMA should be mapped to 0xFF0F0800 and IRQ 15.
-> >
-> > CC:d Francisco, he's going to publish some smoke-tests for this.
-> >
->
-> Regards,
-> Bin
->
-
---000000000000fa48b605bad41087
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Mon, 8 Feb 2021, 15:10 Bin Meng, &lt;<a href=3D"mai=
-lto:bmeng.cn@gmail.com" target=3D"_blank" rel=3D"noreferrer">bmeng.cn@gmail=
-.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hi Edgar,<br>
-<br>
-On Mon, Feb 8, 2021 at 8:44 PM Edgar E. Iglesias<br>
-&lt;<a href=3D"mailto:edgar.iglesias@gmail.com" rel=3D"noreferrer noreferre=
-r" target=3D"_blank">edgar.iglesias@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On Mon, Feb 08, 2021 at 01:25:24PM +0800, Bin Meng wrote:<br>
-&gt; &gt; From: Xuzhou Cheng &lt;<a href=3D"mailto:xuzhou.cheng@windriver.c=
-om" rel=3D"noreferrer noreferrer" target=3D"_blank">xuzhou.cheng@windriver.=
-com</a>&gt;<br>
-&gt; &gt;<br>
-&gt; &gt; ZynqMP QSPI supports SPI transfer using DMA mode, but currently t=
-his<br>
-&gt; &gt; is unimplemented. When QSPI is programmed to use DMA mode, QEMU w=
-ill<br>
-&gt; &gt; crash. This is observed when testing VxWorks 7.<br>
-&gt; &gt;<br>
-&gt; &gt; Add a basic implementation of QSPI DMA functionality.<br>
-&gt; &gt;<br>
-&gt; &gt; Signed-off-by: Xuzhou Cheng &lt;<a href=3D"mailto:xuzhou.cheng@wi=
-ndriver.com" rel=3D"noreferrer noreferrer" target=3D"_blank">xuzhou.cheng@w=
-indriver.com</a>&gt;<br>
-&gt; &gt; Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@windriver.=
-com" rel=3D"noreferrer noreferrer" target=3D"_blank">bin.meng@windriver.com=
-</a>&gt;<br>
-&gt;<br>
-&gt; + Francisco<br>
-&gt;<br>
-&gt; Hi,<br>
-&gt;<br>
-&gt; Like Peter commented on the previous version, the DMA unit is actully =
-separate.<br>
-<br>
-Is it really separate? In the Xilinx ZynqMP datasheet, it&#39;s an<br>
-integrated DMA unit dedicated for QSPI usage. IIUC, other modules on<br>
-the ZynqMP SoC cannot use it to do any DMA transfer. To me this is no<br>
-different like a DMA engine in a ethernet controller.<br></blockquote></div=
-></div><div dir=3D"auto"><br></div><div dir=3D"auto">Yes, it&#39;s a separa=
-te module.</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D=
-"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;=
-border-left:1px #ccc solid;padding-left:1ex">
-<br>
-&gt; This module is better modelled by pushing data through the Stream fram=
-ework<br>
-&gt; into the DMA. The DMA model is not upstream but can be found here:<br>
-&gt; <a href=3D"https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_strea=
-m_dma.c" rel=3D"noreferrer noreferrer noreferrer" target=3D"_blank">https:/=
-/github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c</a><br>
-&gt;<br>
-<br>
-What&#39;s the benefit of modeling it using the stream framework?<br></bloc=
-kquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div>=
-<div dir=3D"auto">Because it matches real hw and this particular dma exists=
- in various instances, not only in qspi. We don&#39;t want duplicate implem=
-entations of the same dma.=C2=A0</div><div dir=3D"auto"><br></div><div dir=
-=3D"auto">Cheers,=C2=A0</div><div dir=3D"auto">Edgar</div><div dir=3D"auto"=
-><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">
-<br>
-&gt; Feel free to send a patch to upstream with that model (perhaps changin=
-g<br>
-&gt; the filename to something more suitable, e.g xlnx-csu-stream-dma.c).<b=
-r>
-&gt; You can use --author=3D&quot;Edgar E. Iglesias &lt;<a href=3D"mailto:e=
-dgar.iglesias@xilinx.com" rel=3D"noreferrer noreferrer" target=3D"_blank">e=
-dgar.iglesias@xilinx.com</a>&gt;&quot;.<br>
-&gt;<br>
-<br>
-Please, upstream all work Xilinx has done on QEMU. If you think the<br>
-DMA support should really be using the Xilinx one, please do the<br>
-upstream work as we are not familiar with that implementation.<br>
-<br>
-Currently we are having a hard time testing the upstream QEMU Xilinx<br>
-QSPI model with either U-Boot or Linux. We cannot boot anything with<br>
-upstream QEMU with the Xilinx ZynqMP model with the limited<br>
-information from the internet. Instructions are needed. I also<br>
-suggested to Francisco in another thread that the QEMU target guide<br>
-for ZynqMP should be added to provide such information.<br>
-<br>
-&gt; The DMA should be mapped to 0xFF0F0800 and IRQ 15.<br>
-&gt;<br>
-&gt; CC:d Francisco, he&#39;s going to publish some smoke-tests for this.<b=
-r>
-&gt;<br>
-<br>
-Regards,<br>
-Bin<br>
-</blockquote></div></div></div>
-
---000000000000fa48b605bad41087--
+thanks
+-- PMM

@@ -1,85 +1,83 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1414293lfc;
-        Mon, 8 Feb 2021 10:57:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJya4KkFyjnrTVY7amcYfivvN6lhRALreN92Q6huzPcOZbzfhjPWW5Nwv3H8v4rLw6oB764F
-X-Received: by 2002:a25:1457:: with SMTP id 84mr28064467ybu.74.1612810653752;
-        Mon, 08 Feb 2021 10:57:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612810653; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1342466lfc;
+        Mon, 8 Feb 2021 09:17:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx4YRx6eC73g6Bs1fbZGYaDHe/J9XL66egeRZJDcmqLVAh+BtkhL0cTy051ORMMZvOS6tz0
+X-Received: by 2002:a25:d654:: with SMTP id n81mr19745571ybg.6.1612804656369;
+        Mon, 08 Feb 2021 09:17:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612804656; cv=none;
         d=google.com; s=arc-20160816;
-        b=KCgk4kG0p5zrvr61ZcmAtTcdmIl5YrGKPJDFpVLENv5fGkgonm9XaTRARZjASTRQch
-         DYQhM+Q1driDx30WdrPoeufmQQ9LzS5ElPDA9eCHFmgRH9di2+Fx9elgJuXM78Zq4Y4P
-         ZGpcJLveT/7RDUKxaRyEs6bnzPr0PLAISW/BsD0jSFFLItmskouUUF6b9r82fS6H0ba7
-         MbkoEBea59CzO+MjREmkRy5JVZsEogjpvf1NVJmN7lqgdS6aaIbmCq9pd1v2wNx3ZDWB
-         DouUqV+Jz13SbpZ9GEFYftmA7VMthmUYQ5pILfPvW74qScrmo1JylCotDOA2XRajnGpG
-         T/Rw==
+        b=nO9WDkcPkF65JHMDxn2QREUbrJ2D261ZrL6ictbGfnldjgvGTDVhMPrwGe5zoSZ5f0
+         4dBpzr0R6NWU4lLDYkqRNCS9qeu0nIaA7liKipLpfw/BziNzu/oI0elY9BslnwTtl1Nw
+         elz5Pvvx4AH6xt2BPmP2KYwfAg6O7r5MhfFXQSkDv7LJcrIB0+dlcIbSlXNyUnhG0cFT
+         Zcks0GE4hbidEG0JBTDExVKUrjeQodEu1NkJEeU4WXRnWVdwDpL9Sn6/0Q4r+2a6UNCB
+         9oLU8dHqIfCbshp/INIeQ4+oM7v8bCc0zKS5fMzIYsjyQQ0L1vwLtWUoHHJyO1dF+0ir
+         ZQ8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=VXstIEEQ61Cn4wtGdWUEpZXJMxNohWtfh/1DgCQY5os=;
-        b=dcdvkXbinFXRFPtkOiRFlSHviMclN+qympHGpscqUomIlCCIu0yGW7IDRmRtOZPOJ9
-         ezPqCYJDdHBkN9UsPEg+fU4MqvQ3rRj19W4tquYz6HkmQcKc+FppY2nit4fzQ3GreK1d
-         6/RdviuVy0afQs7Jfmp8wALDRulaF8U6vJ0R5NrIOkMYeCECQ7hdbqrt32AmXvkD9uX4
-         kIgNKHfshuWj219vZr6q+huF4keW26ZG0OPPUWaxRzh7WNQf0yccnfgyCK2pwIx7SiNu
-         oV8FWwR06L7eUCp5PK5Uf6QPjPjb4V/nb54arZEzCO1UUYYRiiNDAY5LRHTF+/R59HgC
-         c/xA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:date:message-id:from
+         :references:to:subject:dkim-signature;
+        bh=q2pWzfseJRquDy4rW7GeecjJjagJh83SCfxyXK1dkIQ=;
+        b=hAV8jFI2m6jfcCBwI2yAY44T5NQYR+ms0KhuJwqsgOxeD9n+6DgY2yEvp89ZraFguG
+         8nNqczFdzOZXSB3Dl/ePmafK6l+4JzIJy/rpqtlk/zr/HiLkvLBRdSvWFKRDStQdaC7L
+         msXT0W8r0FStLirglt2E25hWy8482fuWeTRq8z4DKDYr9R0fzC66Y4jww/GscVX4Bs/f
+         zFvVoKvN6vL1//k14wGO4clI6+QVIsgKW5JsD2C9DwSLWCetY/np6BjNuRpsPI32uyfv
+         DxTuY5hTQVIgB5KMCRCS3NMNm9bz5Ao3urwRZOHmcL4Z0fV2yupSe+DG97WGJkOBFt1V
+         Oa3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vKJK8D4K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LI8XT8Dh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6si20378529ybn.230.2021.02.08.10.57.33
+        by mx.google.com with ESMTPS id u3si19302417ybg.40.2021.02.08.09.17.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Feb 2021 10:57:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Feb 2021 09:17:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vKJK8D4K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55268 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LI8XT8Dh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9Bj2-00089p-2E
-	for alex.bennee@linaro.org; Mon, 08 Feb 2021 13:57:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37962)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9AAJ-0005RA-OO
+	for alex.bennee@linaro.org; Mon, 08 Feb 2021 12:17:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l969M-0006id-2T
- for qemu-arm@nongnu.org; Mon, 08 Feb 2021 08:00:29 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:45719)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l9690-00054M-2J
- for qemu-arm@nongnu.org; Mon, 08 Feb 2021 08:00:14 -0500
-Received: by mail-ed1-x530.google.com with SMTP id t5so17900667eds.12
- for <qemu-arm@nongnu.org>; Mon, 08 Feb 2021 04:59:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VXstIEEQ61Cn4wtGdWUEpZXJMxNohWtfh/1DgCQY5os=;
- b=vKJK8D4KGRf+al1dK10oFdV13lGK/l/b0qIc+JXR0G4DCV989gmnXDg2jx1/EpHxvK
- Ex6zs5iPbFE//jx3TpeeWRkkcypU9wYdutqzGoCDjtfENY0I004aa3Uw5+iSaOfFQIp5
- iCglpJx9+geiLz83Idl7AR33RO25fiHUeUiWZqCN0rv2mAAjkPUzinc/lYXYvTq3n81c
- lMZEsXpIXUc/rah5AVyiVqFs4VoDCtGmeGYQpkBneUCvDKUlAXZHgoz5oM9XuJmf3cxZ
- vm1eCUhAX7nMbg3Wdtcl0y1wX/wTfh2lNRLL8xXY9nUuYpiHk+LqfIlIArptO+TF2+SB
- v/sA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VXstIEEQ61Cn4wtGdWUEpZXJMxNohWtfh/1DgCQY5os=;
- b=dZzGFmLFGrB57uqId58+Xrl4Gq/UGh9CyJ67K7B8Tk0MsQogmv9n2ewltvi7zohgxV
- niLylsMXdOsiIXBg7AF3lmTT65a485rI80tiViAQ64tKuSGo4TPJTKwjfy0EyDEgLcTw
- cj+sA+lpOk2BKsIbyQ5PUOBmrQvfPpM0C+etIiBLTMgaVxYwgyPswzFAOwnPOzNcCk6V
- yQQVLarp1NsfacBuorXxdT8m2Bq5Opp4lFJ5wA5iHek24CjEt9lqaaR210CpG3Z8WZBH
- LZQ4bQXR16HGfj+dgBWTCv2NHYGpeUIngkweUifxFr993bR7/6L2ArmOA7XhNj5GBPW6
- uGxQ==
-X-Gm-Message-State: AOAM5330L8RhGhEpHIpOWK+FOleWUlYX/Aubri4V9BWtMXaNahtAbeE+
- SOxy3tnFeYXdaJLEdIRbZoCZwtrN4OZzhotxZLLijA==
-X-Received: by 2002:a05:6402:5107:: with SMTP id
- m7mr16916654edd.52.1612789196531; 
- Mon, 08 Feb 2021 04:59:56 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1l95AS-0008KC-LX
+ for qemu-devel@nongnu.org; Mon, 08 Feb 2021 06:57:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:31772)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1l95AK-0004Cm-GY
+ for qemu-devel@nongnu.org; Mon, 08 Feb 2021 06:57:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1612785434;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=q2pWzfseJRquDy4rW7GeecjJjagJh83SCfxyXK1dkIQ=;
+ b=LI8XT8DhBsSw8vt+hRbH/xDQ5LPSWgyZDAi8SYyq+R3p6NsW4FiMP1HpaCljOWo4niQus5
+ +MO3PYQS1+VNsZ+JfocCKKl8Xh0uUOZYMpng7eo8Kt2bEleMXB/iLPsbjuuoFfCKB4Cd9w
+ 3szubrtwxJlGLTsw7rGna3HSkUFPeaM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-91--lsmoK8KOeeFxXTMLHrRMA-1; Mon, 08 Feb 2021 06:57:10 -0500
+X-MC-Unique: -lsmoK8KOeeFxXTMLHrRMA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0579E192D785;
+ Mon,  8 Feb 2021 11:57:09 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-115-172.ams2.redhat.com
+ [10.36.115.172])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D239110016FE;
+ Mon,  8 Feb 2021 11:57:06 +0000 (UTC)
+Subject: Re: [PATCH] arm: xlnx-versal: fix virtio-mmio base address assignment
+To: schspa <schspa@gmail.com>, "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <3362132240927a23ecca7b9d8cfd6e4130509eea.camel@gmail.com>
  <dbcfce3c-3140-01b7-06ca-497cf7fdace7@amsat.org>
  <6f6a803af5941346050d84e77fcaa52e0175a8a7.camel@gmail.com>
@@ -88,65 +86,93 @@ References: <3362132240927a23ecca7b9d8cfd6e4130509eea.camel@gmail.com>
  <aa8ccb78-c977-20fa-a814-4223b678d9c4@amsat.org>
  <CAFEAcA-+dS5r5LvW5DTEH2vBrm1S2rs7sjjh2V7zjtD6ut0wBw@mail.gmail.com>
  <20210205140807.GH477672@toto>
-In-Reply-To: <20210205140807.GH477672@toto>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Feb 2021 12:59:45 +0000
-Message-ID: <CAFEAcA_W0AhNYs7+9hn1H6B2DL+UnSdhrj2JsBS4vCZ6fEd_pw@mail.gmail.com>
-Subject: Re: [PATCH] arm: xlnx-versal: fix virtio-mmio base address assignment
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <0b4b2fcdb148bf35cbffbd9cd40ce1b88f883f0c.camel@gmail.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <8a477640-0dc3-2995-c893-b3834607383a@redhat.com>
+Date: Mon, 8 Feb 2021 12:57:05 +0100
+MIME-Version: 1.0
+In-Reply-To: <0b4b2fcdb148bf35cbffbd9cd40ce1b88f883f0c.camel@gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.57,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, schspa <schspa@gmail.com>,
- Kevin Zhao <kevin.zhao@linaro.org>, Alistair Francis <alistair@alistair23.me>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Kevin Zhao <kevin.zhao@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
  QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-arm <qemu-arm@nongnu.org>, Markus Armbruster <armbru@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AYff/i8m8Obl
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kLaYMcM3Bly9
 
-On Fri, 5 Feb 2021 at 14:08, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> I wonder if virtio_mmio_bus_get_dev_path() really should be peeking into
-> Sysbus internals mmio[].addr?
+On 02/08/21 06:34, schspa wrote:
+> On Fri, 2021-02-05 at 15:08 +0100, Edgar E. Iglesias wrote:
+>> Thanks, that matches how I thought things should work.
+>>
+>> I wonder if virtio_mmio_bus_get_dev_path() really should be peeking
+>> into
+>> Sysbus internals mmio[].addr?
+>>
+> I think mmio[].addr needs to be given a meaningful value even if we
+> don't use it.
+> 
+>> Sysbus mmio[].addr looks like a candidate for removal if we ever get
+>> rid
+>> of the default system_memory...
+>>
+>> I don't have any good suggestions how to fix this. I guess we could
+>> wrap
+>> memory_region_add_subregion() with a sysbus version of it that sets
+>> mmio[].addr but that seems like a step backwards to me.
+>> Perhaps there's a way fix this in virtio_mmio_bus_get_dev_path()?
+> 
+> I think we can change virtio_mmio_bus_get_dev_path() with the following
+> methods.
+> 
+> 1. modify TYPE_VIRTIO_MMIO:
+>    add a prop to specify a unique device_path for virtio_mmio TypeInfo.
+> 2. modify TYPE_VIRTIO_MMIO_BUS
+>    add a global static instance count to generate a unique device path.
+> 
 
-Nope, it should not.
+Please don't CC me out of the blue mid-thread, without at least a hint
+as to why the thread could be relevant to me.
 
-> Sysbus mmio[].addr looks like a candidate for removal if we ever get rid
-> of the default system_memory...
->
-> I don't have any good suggestions how to fix this. I guess we could wrap
-> memory_region_add_subregion() with a sysbus version of it that sets
-> mmio[].addr but that seems like a step backwards to me.
-> Perhaps there's a way fix this in virtio_mmio_bus_get_dev_path()?
+If you are CC'ing me because I authored f58b39d2d5b6 ("virtio-mmio:
+format transport base address in BusClass.get_dev_path", 2016-07-14),
+for <https://bugs.launchpad.net/qemu/+bug/1594239>, *and* now this patch
+is deemed incorrect or obsolete, then:
 
-I just suggested something on another thread: call memory_region_find()
-and then look at the offset_within_address_space field of the returned
-MemoryRegionSection. I think that should get you the offset of the
-transport within the system address space regardless of how much
-use of containers and other oddball mappings are involved. (If the
-transport is not mapped into the system address space at all then
-you'll get its offset within whatever that other address space is,
-but I think we can reasonably ignore that unlikely corner case.)
+Feel free to do whatever you want with those functions, as long as
 
-thanks
--- PMM
+(a) the entries in the "bootorder" fw_cfg file remain intact,
+(b) LP#1594239 remains fixed.
+
+Thanks
+Laszlo
+

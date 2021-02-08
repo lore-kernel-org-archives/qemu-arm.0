@@ -1,165 +1,161 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp883447lfc;
-        Sun, 7 Feb 2021 21:34:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJynrG9ENQEVqwTQqJaac+Nft1NnnwVgZRMnSDCefEYBYhmciEJycdpP6FBHlNz+PMh3IZIW
-X-Received: by 2002:a25:c586:: with SMTP id v128mr24192747ybe.159.1612762461209;
-        Sun, 07 Feb 2021 21:34:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612762461; cv=none;
-        d=google.com; s=arc-20160816;
-        b=xQr0IhYuAd8mRlTrQgIvvRzCDxYFG1GryaYn1gi9CXrNBljroJodTNtrlatjU127Lc
-         vgphTzwL9QCKcIy9p/kPSdWihdGbPabq91R+LXFfQ2gDMnDhhMkCU7w+a5WiBAU4bYsI
-         +P/Eh04HUWunHeHITA+XPvrv09bft3oOad712p0tYK/SgwsteDj2AkLgBqzdiGz2q1qE
-         tmdwlVc7/naSjViN/oRtQOZgMDcyN8CtBix7TapObQjd3fMdOPYiBKb51T4/8qyRF0c/
-         p3f/+bswcPNuekQqieKqJCpKP1oOF9oSnHuRpLQXCfF65HUPwPxp3BQSwrtLAFZbFj/4
-         /00g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
-         :message-id:dkim-signature;
-        bh=0Zp9BGGGXruyxeRvmMHs7JPbCXW8UY65W1DhaFEhqdc=;
-        b=ytqgtw8W5jvfdFw45/yiDY3hA63y2dZkgl8Ji+va7uNVQ5mserXE0DN45gzMkcxMZX
-         8LUL6NmRY76mctUTxC8BJg2MVNtnZfBzXF9LonIvdcjBAhGAQPjMtaxlrt4BoO5e45kP
-         ufGXQFZ288eR+VFrmUrsEEBZyvQ/sMAjGDG0GN6l1qhMiT5m1nicloSPuZUAm0/RRUyA
-         yrLczuSh6H4y3wEmJTREXXbe3mS2VZhYLrZI7dCtSD751ZttZfZE0t+6wq4ioLgK1Tpy
-         V63MGK/uY1SHMaZ1UWSJMsuFBaKC7aA2WPXVj3y+pmbzQJyiMwHrm1RT6QSkACKHSDWu
-         ilQg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ItlMcX4W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l204si17222861ybc.266.2021.02.07.21.34.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Feb 2021 21:34:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ItlMcX4W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58448 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l8zBk-0004Hr-LU
-	for alex.bennee@linaro.org; Mon, 08 Feb 2021 00:34:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54350)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
- id 1l8zBc-0004HS-OA; Mon, 08 Feb 2021 00:34:12 -0500
-Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d]:34267)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
- id 1l8zBb-0000Ue-3d; Mon, 08 Feb 2021 00:34:12 -0500
-Received: by mail-io1-xd2d.google.com with SMTP id f67so11952147ioa.1;
- Sun, 07 Feb 2021 21:34:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=0Zp9BGGGXruyxeRvmMHs7JPbCXW8UY65W1DhaFEhqdc=;
- b=ItlMcX4WIK6IOZi7GelENDDJ+2AARxDid+F+WYHrWOLjQ5ZC3uO6le13GJmQNgZ0a8
- tqCrz0hhZWf1X4VMVMIJ7HDy/rkLlXL8kuDNwBrTeKn2dvczCzOyW3qnLknpfhOeI4Hx
- DTjGeT4YCKdeoX5TDnpjZ24jV1mIho4tpggDWiQvopnugW7kGlfLevXGp5zBy0j/5Q7D
- y/aDdUA59bp3bNVzN1w0tr7iFPp6GRPHzaXqMyN3PT72UEBlc7zpeblhs+zxdQxBGoBY
- CmcUVc7nNPgM2haVt5FbUaiWLbQWiCPBEbHJFitXSOFwY1lwKjQPEYJ7htgTU5m6IAHn
- IRAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=0Zp9BGGGXruyxeRvmMHs7JPbCXW8UY65W1DhaFEhqdc=;
- b=g2H8FnIb5zgfl5F+t5hGPIFchMtWG03WVotlAJJtsmONPn79vQ6tEBqeYOLvYTQSqS
- /xzxpDaSbjlHFjgDva+JHUzgzgwJy9WHxHTIF4mWllSAONOL7PF4Tc68fw7lMe/vtWit
- XG9Hk9LEtqq2mLB0oIKHcguUN/cKtVTjoAcJTKySKdbbmkMdq4/NTEpXo/pzh0LgjpdY
- pq03S6217KqP6Keqw/afMQFBZrHkEAJ0X8XCzDWhNGqX/8kvaQZgNL5+QgV3wporUa9N
- x5bt+5m5Mbd1LEkJdk8T/QQXhtTi5dQr7WRrQ7of4JaI2216XgaSC491CIO8yN5p+nZP
- DwZQ==
-X-Gm-Message-State: AOAM532js+vdGAJ4HVvBCc51xEwZzv4vtWwzuzOsYOIhENRfXkBhwKbo
- pFabIaGFyJTEzrTYttjS9Lc=
-X-Received: by 2002:a5d:8e06:: with SMTP id e6mr14249853iod.210.1612762449319; 
- Sun, 07 Feb 2021 21:34:09 -0800 (PST)
-Received: from [127.0.0.1] (ec2-3-14-82-192.us-east-2.compute.amazonaws.com.
- [3.14.82.192])
- by smtp.gmail.com with ESMTPSA id b1sm1939234iob.42.2021.02.07.21.34.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Feb 2021 21:34:08 -0800 (PST)
-Message-ID: <0b4b2fcdb148bf35cbffbd9cd40ce1b88f883f0c.camel@gmail.com>
-Subject: Re: [PATCH] arm: xlnx-versal: fix virtio-mmio base address assignment
-From: schspa <schspa@gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Peter Maydell
- <peter.maydell@linaro.org>, Laszlo Ersek <lersek@redhat.com>
-Date: Mon, 08 Feb 2021 13:34:02 +0800
-In-Reply-To: <20210205140807.GH477672@toto>
-References: <3362132240927a23ecca7b9d8cfd6e4130509eea.camel@gmail.com>
- <dbcfce3c-3140-01b7-06ca-497cf7fdace7@amsat.org>
- <6f6a803af5941346050d84e77fcaa52e0175a8a7.camel@gmail.com>
- <f4862169-28cc-82a9-32fb-da56b000cf54@amsat.org>
- <CAFEAcA9JkTEOhmoFjWYfR5d7ANhKnc9URk89Xe36q7qMVxkMmg@mail.gmail.com>
- <aa8ccb78-c977-20fa-a814-4223b678d9c4@amsat.org>
- <CAFEAcA-+dS5r5LvW5DTEH2vBrm1S2rs7sjjh2V7zjtD6ut0wBw@mail.gmail.com>
- <20210205140807.GH477672@toto>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.38.3 
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id e4sm27559080wrw.96.2021.02.08.00.48.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Feb 2021 00:48:22 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id BE51B1FF7E;
+	Mon,  8 Feb 2021 08:48:21 +0000 (GMT)
+References: <20210207232310.2505283-1-f4bug@amsat.org>
+ <20210207232310.2505283-6-f4bug@amsat.org>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>, qemu-riscv@nongnu.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Sagar Karandikar
+ <sagark@eecs.berkeley.edu>, Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>, Richard Henderson
+ <richard.henderson@linaro.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Aurelien Jarno
+ <aurelien@aurel32.net>, qemu-arm@nongnu.org
+Subject: Re: [RFC PATCH v2 5/6] accel/tcg: Refactor debugging
+ tlb_assert_iotlb_entry_for_ptr_present()
+Date: Mon, 08 Feb 2021 08:42:57 +0000
+In-reply-to: <20210207232310.2505283-6-f4bug@amsat.org>
+Message-ID: <87im73aqsq.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2d;
- envelope-from=schspa@gmail.com; helo=mail-io1-xd2d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Kevin Zhao <kevin.zhao@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Markus Armbruster <armbru@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 14VHiXFzPwiv
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: BOWe3rmDNUOx
 
-On Fri, 2021-02-05 at 15:08 +0100, Edgar E. Iglesias wrote:
-> Thanks, that matches how I thought things should work.
-> 
-> I wonder if virtio_mmio_bus_get_dev_path() really should be peeking
-> into
-> Sysbus internals mmio[].addr?
-> 
-I think mmio[].addr needs to be given a meaningful value even if we
-don't use it.
 
-> Sysbus mmio[].addr looks like a candidate for removal if we ever get
-> rid
-> of the default system_memory...
-> 
-> I don't have any good suggestions how to fix this. I guess we could
-> wrap
-> memory_region_add_subregion() with a sysbus version of it that sets
-> mmio[].addr but that seems like a step backwards to me.
-> Perhaps there's a way fix this in virtio_mmio_bus_get_dev_path()?
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-I think we can change virtio_mmio_bus_get_dev_path() with the following
-methods.
+> Refactor debug code as tlb_assert_iotlb_entry_for_ptr_present() helper.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> What this code does is out of my league, but refactoring it allow
+> keeping tlb_addr_write() local to accel/tcg/cputlb.c in the next
+> patch.
 
-1. modify TYPE_VIRTIO_MMIO:
-   add a prop to specify a unique device_path for virtio_mmio TypeInfo.
-2. modify TYPE_VIRTIO_MMIO_BUS
-   add a global static instance count to generate a unique device path.
+The assertion that the table entry is current is just a simple
+housekeeping one. The details of how the MTE implementation uses
+(abuses?) the iotlb entries requires a closer reading of the code.
 
--- 
-schspa <schspa@gmail.com>
+> ---
+>  include/exec/exec-all.h |  9 +++++++++
+>  accel/tcg/cputlb.c      | 14 ++++++++++++++
+>  target/arm/mte_helper.c | 11 ++---------
+>  target/arm/sve_helper.c | 10 ++--------
+>  4 files changed, 27 insertions(+), 17 deletions(-)
+>
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index f933c74c446..c5e8e355b7f 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -296,6 +296,15 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_u=
+long vaddr,
+>  void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+>                    hwaddr paddr, int prot,
+>                    int mmu_idx, target_ulong size);
+> +
+> +/*
+> + * Find the iotlbentry for ptr.  This *must* be present in the TLB
+> + * because we just found the mapping.
+> + */
+> +void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_m=
+mu_idx,
+> +                                            uint64_t ptr,
+> +                                            MMUAccessType ptr_access,
+> +                                            uintptr_t index);
 
+Probably worth making this an empty inline for the non CONFIG_DEBUG_TCG
+case so we can eliminate the call to an empty function.
+
+>  #else
+>  static inline void tlb_init(CPUState *cpu)
+>  {
+> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+> index 8a7b779270a..a6247da34a0 100644
+> --- a/accel/tcg/cputlb.c
+> +++ b/accel/tcg/cputlb.c
+> @@ -429,6 +429,20 @@ void tlb_flush_all_cpus_synced(CPUState *src_cpu)
+>      tlb_flush_by_mmuidx_all_cpus_synced(src_cpu, ALL_MMUIDX_BITS);
+>  }
+>=20=20
+> +void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_m=
+mu_idx,
+> +                                            uint64_t ptr,
+> +                                            MMUAccessType ptr_access,
+> +                                            uintptr_t index)
+> +{
+> +#ifdef CONFIG_DEBUG_TCG
+> +    CPUTLBEntry *entry =3D tlb_entry(env, ptr_mmu_idx, ptr);
+> +    target_ulong comparator =3D (ptr_access =3D=3D MMU_DATA_LOAD
+> +                               ? entry->addr_read
+> +                               : tlb_addr_write(entry));
+> +    g_assert(tlb_hit(comparator, ptr));
+> +#endif
+> +}
+> +
+>  static bool tlb_hit_page_mask_anyprot(CPUTLBEntry *tlb_entry,
+>                                        target_ulong page, target_ulong ma=
+sk)
+>  {
+> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+> index 6cea9d1b506..f47d3b4570e 100644
+> --- a/target/arm/mte_helper.c
+> +++ b/target/arm/mte_helper.c
+> @@ -111,15 +111,8 @@ static uint8_t *allocation_tag_mem(CPUARMState *env,=
+ int ptr_mmu_idx,
+>       * matching tlb entry + iotlb entry.
+>       */
+>      index =3D tlb_index(env, ptr_mmu_idx, ptr);
+> -# ifdef CONFIG_DEBUG_TCG
+> -    {
+> -        CPUTLBEntry *entry =3D tlb_entry(env, ptr_mmu_idx, ptr);
+> -        target_ulong comparator =3D (ptr_access =3D=3D MMU_DATA_LOAD
+> -                                   ? entry->addr_read
+> -                                   : tlb_addr_write(entry));
+> -        g_assert(tlb_hit(comparator, ptr));
+> -    }
+> -# endif
+> +    tlb_assert_iotlb_entry_for_ptr_present(env, ptr_mmu_idx, ptr,
+> +                                           ptr_access, index);
+>      iotlbentry =3D &env_tlb(env)->d[ptr_mmu_idx].iotlb[index];
+>=20=20
+>      /* If the virtual page MemAttr !=3D Tagged, access unchecked. */
+> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+> index c8cdf7618eb..a5708da0f2f 100644
+> --- a/target/arm/sve_helper.c
+> +++ b/target/arm/sve_helper.c
+> @@ -4089,14 +4089,8 @@ static bool sve_probe_page(SVEHostPage *info, bool=
+ nofault,
+>      {
+>          uintptr_t index =3D tlb_index(env, mmu_idx, addr);
+>=20=20
+> -# ifdef CONFIG_DEBUG_TCG
+> -        CPUTLBEntry *entry =3D tlb_entry(env, mmu_idx, addr);
+> -        target_ulong comparator =3D (access_type =3D=3D MMU_DATA_LOAD
+> -                                   ? entry->addr_read
+> -                                   : tlb_addr_write(entry));
+> -        g_assert(tlb_hit(comparator, addr));
+> -# endif
+> -
+> +        tlb_assert_iotlb_entry_for_ptr_present(env, mmu_idx, addr,
+> +                                               access_type, index);
+>          CPUIOTLBEntry *iotlbentry =3D &env_tlb(env)->d[mmu_idx].iotlb[in=
+dex];
+>          info->attrs =3D iotlbentry->attrs;
+>      }
+
+with the inline fix:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e

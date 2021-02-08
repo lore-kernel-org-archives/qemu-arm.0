@@ -1,154 +1,84 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id c9sm32743661wrw.76.2021.02.08.06.45.53
+        by smtp.gmail.com with ESMTPSA id x15sm11738456wro.66.2021.02.08.04.44.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Feb 2021 06:45:53 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 055BB1FF7E;
-	Mon,  8 Feb 2021 14:45:53 +0000 (GMT)
-References: <20210207232310.2505283-1-f4bug@amsat.org>
- <20210207232310.2505283-7-f4bug@amsat.org>
-User-agent: mu4e 1.5.7; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Alistair Francis
- <Alistair.Francis@wdc.com>, qemu-riscv@nongnu.org, Yoshinori Sato
- <ysato@users.sourceforge.jp>, Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Richard Henderson
- <richard.henderson@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
- qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, Claudio Fontana
- <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v2 6/6] exec/cpu_ldst: Move tlb* declarations to
- "exec/exec-all.h"
-Date: Mon, 08 Feb 2021 14:40:41 +0000
-In-reply-to: <20210207232310.2505283-7-f4bug@amsat.org>
-Message-ID: <874kimbotb.fsf@linaro.org>
+        Mon, 08 Feb 2021 04:44:50 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 3C2DA1FF9F;
+	Mon,  8 Feb 2021 12:38:23 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Anders Roxell <anders.roxell@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	qemu-arm@nongnu.org (open list:Versatile PB)
+Subject: [PULL 16/16] docs/system: document an example booting the versatilepb machine
+Date: Mon,  8 Feb 2021 12:38:21 +0000
+Message-Id: <20210208123821.19818-17-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210208123821.19818-1-alex.bennee@linaro.org>
+References: <20210208123821.19818-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: a/spCK1O3IWz
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: SJJPvcEbu9he
 
+There is a bit more out there including Aurelien's excellent write up
+and older Debian images here:
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+  https://www.aurel32.net/info/debian_arm_qemu.php
+  https://people.debian.org/~aurel32/qemu/armel/
 
-> Keep MMU functions in "exec/cpu_ldst.h", and move TLB functions
-> to "exec/exec-all.h". As tlb_addr_write() is only called in
-> accel/tcg/cputlb.c, make move it there as a static function.
->
-> Doing so we removed the "tcg/tcg.h" dependency on "exec/cpu_ldst.h".
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  include/exec/cpu_ldst.h | 28 ----------------------------
->  include/exec/exec-all.h | 16 ++++++++++++++++
->  accel/tcg/cputlb.c      |  9 +++++++++
->  3 files changed, 25 insertions(+), 28 deletions(-)
->
-> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-> index ef54cb7e1f8..c1753a64dfd 100644
-> --- a/include/exec/cpu_ldst.h
-> +++ b/include/exec/cpu_ldst.h
-> @@ -291,34 +291,6 @@ static inline void cpu_stq_le_mmuidx_ra(CPUArchState=
- *env, abi_ptr addr,
->=20=20
->  #else
->=20=20
-> -/* Needed for TCG_OVERSIZED_GUEST */
-> -#include "tcg/tcg.h"
-> -
-> -static inline target_ulong tlb_addr_write(const CPUTLBEntry *entry)
-> -{
-> -#if TCG_OVERSIZED_GUEST
-> -    return entry->addr_write;
-> -#else
-> -    return qatomic_read(&entry->addr_write);
-> -#endif
-> -}
-> -
-> -/* Find the TLB index corresponding to the mmu_idx + address pair.  */
-> -static inline uintptr_t tlb_index(CPUArchState *env, uintptr_t mmu_idx,
-> -                                  target_ulong addr)
-> -{
-> -    uintptr_t size_mask =3D env_tlb(env)->f[mmu_idx].mask >> CPU_TLB_ENT=
-RY_BITS;
-> -
-> -    return (addr >> TARGET_PAGE_BITS) & size_mask;
-> -}
-> -
-> -/* Find the TLB entry corresponding to the mmu_idx + address pair.  */
-> -static inline CPUTLBEntry *tlb_entry(CPUArchState *env, uintptr_t mmu_id=
-x,
-> -                                     target_ulong addr)
-> -{
-> -    return &env_tlb(env)->f[mmu_idx].table[tlb_index(env, mmu_idx, addr)=
-];
-> -}
-> -
->  uint32_t cpu_ldub_mmuidx_ra(CPUArchState *env, abi_ptr addr,
->                              int mmu_idx, uintptr_t ra);
->  int cpu_ldsb_mmuidx_ra(CPUArchState *env, abi_ptr addr,
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index c5e8e355b7f..8e54b537189 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -297,6 +297,22 @@ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
->                    hwaddr paddr, int prot,
->                    int mmu_idx, target_ulong size);
->=20=20
-> +/* Find the TLB index corresponding to the mmu_idx + address pair.  */
-> +static inline uintptr_t tlb_index(CPUArchState *env, uintptr_t mmu_idx,
-> +                                  target_ulong addr)
-> +{
-> +    uintptr_t size_mask =3D env_tlb(env)->f[mmu_idx].mask >> CPU_TLB_ENT=
-RY_BITS;
-> +
-> +    return (addr >> TARGET_PAGE_BITS) & size_mask;
-> +}
-> +
-> +/* Find the TLB entry corresponding to the mmu_idx + address pair.  */
-> +static inline CPUTLBEntry *tlb_entry(CPUArchState *env, uintptr_t mmu_id=
-x,
-> +                                     target_ulong addr)
-> +{
-> +    return &env_tlb(env)->f[mmu_idx].table[tlb_index(env, mmu_idx, addr)=
-];
-> +}
-> +
+However the web is transitory and git is forever so lets add something
+to the fine manual.
 
-I wonder if throwing these into exec-all is worth it, could we not use
-the cputlb.h so we avoid too much kitchen sink for a header (after all
-we are trying to avoid recompilations and not everything needs detailed
-access to the tlb structures).
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Anders Roxell <anders.roxell@linaro.org>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Message-Id: <20210202134001.25738-16-alex.bennee@linaro.org>
 
->  /*
->   * Find the iotlbentry for ptr.  This *must* be present in the TLB
->   * because we just found the mapping.
-> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-> index a6247da34a0..084d19b52d7 100644
-> --- a/accel/tcg/cputlb.c
-> +++ b/accel/tcg/cputlb.c
-> @@ -429,6 +429,15 @@ void tlb_flush_all_cpus_synced(CPUState *src_cpu)
->      tlb_flush_by_mmuidx_all_cpus_synced(src_cpu, ALL_MMUIDX_BITS);
->  }
->=20=20
-> +static inline target_ulong tlb_addr_write(const CPUTLBEntry *entry)
-> +{
-> +#if TCG_OVERSIZED_GUEST
-> +    return entry->addr_write;
-> +#else
-> +    return qatomic_read(&entry->addr_write);
-> +#endif
-> +}
-
-You can drop the inline, compiler should know best what to do in this case.
-
->  void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_m=
-mu_idx,
->                                              uint64_t ptr,
->                                              MMUAccessType ptr_access,
-
-
---=20
-Alex Benn=C3=A9e
+diff --git a/docs/system/arm/versatile.rst b/docs/system/arm/versatile.rst
+index 51221c30a4..2ae792bac3 100644
+--- a/docs/system/arm/versatile.rst
++++ b/docs/system/arm/versatile.rst
+@@ -27,3 +27,37 @@ The Arm Versatile baseboard is emulated with the following devices:
+    devices.
+ 
+ -  PL181 MultiMedia Card Interface with SD card.
++
++Booting a Linux kernel
++----------------------
++
++Building a current Linux kernel with ``versatile_defconfig`` should be
++enough to get something running. Nowadays an out-of-tree build is
++recommended (and also useful if you build a lot of different targets).
++In the following example $BLD points to the build directory and $SRC
++points to the root of the Linux source tree. You can drop $SRC if you
++are running from there.
++
++.. code-block:: bash
++
++  $ make O=$BLD -C $SRC ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- versatile_defconfig
++  $ make O=$BLD -C $SRC ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
++
++You may want to enable some additional modules if you want to boot
++something from the SCSI interface::
++
++  CONFIG_PCI=y
++  CONFIG_PCI_VERSATILE=y
++  CONFIG_SCSI=y
++  CONFIG_SCSI_SYM53C8XX_2=y
++
++You can then boot with a command line like:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -machine type=versatilepb \
++      -serial mon:stdio \
++      -drive if=scsi,driver=file,filename=debian-buster-armel-rootfs.ext4 \
++      -kernel zImage \
++      -dtb versatile-pb.dtb  \
++      -append "console=ttyAMA0 ro root=/dev/sda"
+-- 
+2.20.1

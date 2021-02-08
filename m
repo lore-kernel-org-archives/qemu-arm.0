@@ -1,211 +1,154 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1262326lfg;
-        Fri, 26 Feb 2021 05:14:12 -0800 (PST)
-X-Received: by 2002:a5d:6602:: with SMTP id n2mr3259145wru.262.1614345252525;
-        Fri, 26 Feb 2021 05:14:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614345252; cv=none;
-        d=google.com; s=arc-20160816;
-        b=G2Jrv+XKncM7Oxp5yqxHXFdmXY2QTDZSig1QSwvq8F7V1qoxtmhixZ9kk8eayFOih4
-         nEdJ/3v0srRSLf124is5yz6iEGd5nK2iSD3L4UQrz7O1yCp+8T5Eb+AhXQlkEuFGAykI
-         31+ZT12BylrUFYGPmVGihHKTpkATprqaIzooRjUE5phxvnRx+V+Hti4P/MfYXmmryrU7
-         bd2g7BnEIjY/mcuXwHnLluO0mQIpq2Sa5z5+M+0sGHtHIC7SbeH60ZHH25jVh0ETuM7+
-         1+WvKRJe5UZF7L0OeOfuv56nlUOZdV6RD2TKNreMUby2sTWDW6QUoMzfJrVXAGAAP4ot
-         Enzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=lcg6YHwY0vi6q4edqMH5mvI18L4U1/uEX7m4g24yUqA=;
-        b=HIgN09J1UiFKeulVjnBXjdh5l7kmoYAlYUC9PspooGbYRLR4BWEjm8dakXziTJ9vz8
-         fF3qR6T7q8sscqNoppee/7le7YbrKlokrU10cm9vLte20zKtpalKmRIqwA4PCvg7AObw
-         Rs5FrvaDqm26gAZUPOe7ETvftM6zzgpgeVxzgpBNSCdsdqhxW0/g3D9FAtWBrcdH63m4
-         4pvqzVJc/cb9djj96DVCBaD15qLpyHjsBW+xTw7bdXA14qEU/h/9adqz60t0o7qNuu+/
-         tM4EM0w7HarpATpm7iXM4MCtWl6axfdqPhyOVPIJ0ZTOqdJei4qgtJYDNKvtEe6VDKQU
-         oeWQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L6XZeUD+;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d18sor4316628wrw.38.2021.02.26.05.14.12
-        (Google Transport Security);
-        Fri, 26 Feb 2021 05:14:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L6XZeUD+;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=lcg6YHwY0vi6q4edqMH5mvI18L4U1/uEX7m4g24yUqA=;
-        b=L6XZeUD+9gq0CbemQtXHmUvxXAj4CBcSyZpy42YXDROpxxHipr7eWhFjzKMCHY6onZ
-         7TM2iW737x1/of+MZCNZtLHjNT+PqLJQLW9lilFp14PmwwrVg4RJOJkq8ciIKO6MiP1x
-         6zyVsPFP8XyUCPRvmIvuZlaHy3df/ri5vIBYXhzfJjAer6SqBM6Xj79GIBgbvMbu8YMO
-         1LoCnX2ak1im6BQw+4nYoNZchFiaDA/dWNOQGZUcPIGVMDJoRe2F0YmDSb/jsPbpeHrD
-         02Xj3BffIJlLmC/+JbP/phVBFZnC7IYU77jeAZU1IQDgtbps4i3XLFD0IP9yIDVNsGzk
-         H3hQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=lcg6YHwY0vi6q4edqMH5mvI18L4U1/uEX7m4g24yUqA=;
-        b=Yv7uhSoSL3s+n7LNkGoD/b/nWA3jOrJWOBcfnB7cOGfd5BGJqEOk94dQWmzMKLNrek
-         A0cfr/Dt9xiXQ7Rap4mpku1Teppjyq2GZBy9CQLDy94cDSg8QfrLpa/up3yR3ZccXvB+
-         s24iwy1uGDjE26qS65WqdixBpUgFbd/W82Zqsx535hbrffDoeaBNNtu70uZj3zVa0NQu
-         FpYZW9WBlwDWzFLURjJfZW+zQdCcFW5PpScSzT4NxX0XthDjM+vTbgwVsYKaFNsf+xB3
-         NRYySx//1y0Db1bGK+0O+nsAWCQMwrZCnWBtoXxN9HPnc9Gu5ByQmKJmiMgLHh3svIz2
-         Uv4w==
-X-Gm-Message-State: AOAM533eDj98g5KJ60MblGzUvBNXVm1Ty+Pbq/0ndmY/U/+D63zlc/Bl
-	6SNB7fgAhAw+7rJ3p/ssiNU=
-X-Google-Smtp-Source: ABdhPJxw/BJLl+x3UpKw1D9kKs2dLZ4Z9AiT8ccG+kJ5jBw8weY+eYw3/J8cAuxzGoD2Hdtkz8LB0g==
-X-Received: by 2002:adf:e444:: with SMTP id t4mr3302152wrm.97.1614345252281;
-        Fri, 26 Feb 2021 05:14:12 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id f2sm10140322wrq.34.2021.02.26.05.14.10
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id c9sm32743661wrw.76.2021.02.08.06.45.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Feb 2021 05:14:11 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Alistair Francis <Alistair.Francis@wdc.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Chris Wulff <crwulff@gmail.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	qemu-riscv@nongnu.org,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Walle <michael@walle.cc>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 2/2] semihosting: Move hw/semihosting/ -> semihosting/
-Date: Fri, 26 Feb 2021 14:13:56 +0100
-Message-Id: <20210226131356.3964782-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210226131356.3964782-1-f4bug@amsat.org>
-References: <20210226131356.3964782-1-f4bug@amsat.org>
+        Mon, 08 Feb 2021 06:45:53 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 055BB1FF7E;
+	Mon,  8 Feb 2021 14:45:53 +0000 (GMT)
+References: <20210207232310.2505283-1-f4bug@amsat.org>
+ <20210207232310.2505283-7-f4bug@amsat.org>
+User-agent: mu4e 1.5.7; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Alistair Francis
+ <Alistair.Francis@wdc.com>, qemu-riscv@nongnu.org, Yoshinori Sato
+ <ysato@users.sourceforge.jp>, Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Richard Henderson
+ <richard.henderson@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, Claudio Fontana
+ <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v2 6/6] exec/cpu_ldst: Move tlb* declarations to
+ "exec/exec-all.h"
+Date: Mon, 08 Feb 2021 14:40:41 +0000
+In-reply-to: <20210207232310.2505283-7-f4bug@amsat.org>
+Message-ID: <874kimbotb.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: dMLuLoU6Cal1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: a/spCK1O3IWz
 
-With the exception of hw/core/, the hw/ directory only contains
-device models used in system emulation. Semihosting is also used
-by user emulation. As a generic feature, move it out of hw/ directory.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- meson.build                                       | 1 +
- {hw/semihosting => semihosting}/common-semi.h     | 0
- {hw/semihosting => semihosting}/arm-compat-semi.c | 0
- {hw/semihosting => semihosting}/config.c          | 0
- {hw/semihosting => semihosting}/console.c         | 0
- Kconfig                                           | 1 +
- MAINTAINERS                                       | 2 +-
- hw/Kconfig                                        | 1 -
- hw/meson.build                                    | 1 -
- {hw/semihosting => semihosting}/Kconfig           | 0
- {hw/semihosting => semihosting}/meson.build       | 0
- 11 files changed, 3 insertions(+), 3 deletions(-)
- rename {hw/semihosting => semihosting}/common-semi.h (100%)
- rename {hw/semihosting => semihosting}/arm-compat-semi.c (100%)
- rename {hw/semihosting => semihosting}/config.c (100%)
- rename {hw/semihosting => semihosting}/console.c (100%)
- rename {hw/semihosting => semihosting}/Kconfig (100%)
- rename {hw/semihosting => semihosting}/meson.build (100%)
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-diff --git a/meson.build b/meson.build
-index 05a67c20d93..f2f9bb92520 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1934,6 +1934,7 @@
- subdir('monitor')
- subdir('net')
- subdir('replay')
-+subdir('semihosting')
- subdir('hw')
- subdir('accel')
- subdir('plugins')
-diff --git a/hw/semihosting/common-semi.h b/semihosting/common-semi.h
-similarity index 100%
-rename from hw/semihosting/common-semi.h
-rename to semihosting/common-semi.h
-diff --git a/hw/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-similarity index 100%
-rename from hw/semihosting/arm-compat-semi.c
-rename to semihosting/arm-compat-semi.c
-diff --git a/hw/semihosting/config.c b/semihosting/config.c
-similarity index 100%
-rename from hw/semihosting/config.c
-rename to semihosting/config.c
-diff --git a/hw/semihosting/console.c b/semihosting/console.c
-similarity index 100%
-rename from hw/semihosting/console.c
-rename to semihosting/console.c
-diff --git a/Kconfig b/Kconfig
-index bf694c42afe..d52ebd839b3 100644
---- a/Kconfig
-+++ b/Kconfig
-@@ -2,3 +2,4 @@ source Kconfig.host
- source backends/Kconfig
- source accel/Kconfig
- source hw/Kconfig
-+source semihosting/Kconfig
-diff --git a/MAINTAINERS b/MAINTAINERS
-index aacd4408125..9046b54cb2e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3224,7 +3224,7 @@ F: qapi/rdma.json
- Semihosting
- M: Alex Bennée <alex.bennee@linaro.org>
- S: Maintained
--F: hw/semihosting/
-+F: semihosting/
- F: include/semihosting/
- 
- Multi-process QEMU
-diff --git a/hw/Kconfig b/hw/Kconfig
-index 8ea26479c48..ff40bd3f7bb 100644
---- a/hw/Kconfig
-+++ b/hw/Kconfig
-@@ -31,7 +31,6 @@ source remote/Kconfig
- source rtc/Kconfig
- source scsi/Kconfig
- source sd/Kconfig
--source semihosting/Kconfig
- source smbios/Kconfig
- source ssi/Kconfig
- source timer/Kconfig
-diff --git a/hw/meson.build b/hw/meson.build
-index e615d72d4df..8ba79b1a528 100644
---- a/hw/meson.build
-+++ b/hw/meson.build
-@@ -30,7 +30,6 @@
- subdir('rtc')
- subdir('scsi')
- subdir('sd')
--subdir('semihosting')
- subdir('smbios')
- subdir('ssi')
- subdir('timer')
-diff --git a/hw/semihosting/Kconfig b/semihosting/Kconfig
-similarity index 100%
-rename from hw/semihosting/Kconfig
-rename to semihosting/Kconfig
-diff --git a/hw/semihosting/meson.build b/semihosting/meson.build
-similarity index 100%
-rename from hw/semihosting/meson.build
-rename to semihosting/meson.build
--- 
-2.26.2
+> Keep MMU functions in "exec/cpu_ldst.h", and move TLB functions
+> to "exec/exec-all.h". As tlb_addr_write() is only called in
+> accel/tcg/cputlb.c, make move it there as a static function.
+>
+> Doing so we removed the "tcg/tcg.h" dependency on "exec/cpu_ldst.h".
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  include/exec/cpu_ldst.h | 28 ----------------------------
+>  include/exec/exec-all.h | 16 ++++++++++++++++
+>  accel/tcg/cputlb.c      |  9 +++++++++
+>  3 files changed, 25 insertions(+), 28 deletions(-)
+>
+> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+> index ef54cb7e1f8..c1753a64dfd 100644
+> --- a/include/exec/cpu_ldst.h
+> +++ b/include/exec/cpu_ldst.h
+> @@ -291,34 +291,6 @@ static inline void cpu_stq_le_mmuidx_ra(CPUArchState=
+ *env, abi_ptr addr,
+>=20=20
+>  #else
+>=20=20
+> -/* Needed for TCG_OVERSIZED_GUEST */
+> -#include "tcg/tcg.h"
+> -
+> -static inline target_ulong tlb_addr_write(const CPUTLBEntry *entry)
+> -{
+> -#if TCG_OVERSIZED_GUEST
+> -    return entry->addr_write;
+> -#else
+> -    return qatomic_read(&entry->addr_write);
+> -#endif
+> -}
+> -
+> -/* Find the TLB index corresponding to the mmu_idx + address pair.  */
+> -static inline uintptr_t tlb_index(CPUArchState *env, uintptr_t mmu_idx,
+> -                                  target_ulong addr)
+> -{
+> -    uintptr_t size_mask =3D env_tlb(env)->f[mmu_idx].mask >> CPU_TLB_ENT=
+RY_BITS;
+> -
+> -    return (addr >> TARGET_PAGE_BITS) & size_mask;
+> -}
+> -
+> -/* Find the TLB entry corresponding to the mmu_idx + address pair.  */
+> -static inline CPUTLBEntry *tlb_entry(CPUArchState *env, uintptr_t mmu_id=
+x,
+> -                                     target_ulong addr)
+> -{
+> -    return &env_tlb(env)->f[mmu_idx].table[tlb_index(env, mmu_idx, addr)=
+];
+> -}
+> -
+>  uint32_t cpu_ldub_mmuidx_ra(CPUArchState *env, abi_ptr addr,
+>                              int mmu_idx, uintptr_t ra);
+>  int cpu_ldsb_mmuidx_ra(CPUArchState *env, abi_ptr addr,
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index c5e8e355b7f..8e54b537189 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -297,6 +297,22 @@ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+>                    hwaddr paddr, int prot,
+>                    int mmu_idx, target_ulong size);
+>=20=20
+> +/* Find the TLB index corresponding to the mmu_idx + address pair.  */
+> +static inline uintptr_t tlb_index(CPUArchState *env, uintptr_t mmu_idx,
+> +                                  target_ulong addr)
+> +{
+> +    uintptr_t size_mask =3D env_tlb(env)->f[mmu_idx].mask >> CPU_TLB_ENT=
+RY_BITS;
+> +
+> +    return (addr >> TARGET_PAGE_BITS) & size_mask;
+> +}
+> +
+> +/* Find the TLB entry corresponding to the mmu_idx + address pair.  */
+> +static inline CPUTLBEntry *tlb_entry(CPUArchState *env, uintptr_t mmu_id=
+x,
+> +                                     target_ulong addr)
+> +{
+> +    return &env_tlb(env)->f[mmu_idx].table[tlb_index(env, mmu_idx, addr)=
+];
+> +}
+> +
+
+I wonder if throwing these into exec-all is worth it, could we not use
+the cputlb.h so we avoid too much kitchen sink for a header (after all
+we are trying to avoid recompilations and not everything needs detailed
+access to the tlb structures).
+
+>  /*
+>   * Find the iotlbentry for ptr.  This *must* be present in the TLB
+>   * because we just found the mapping.
+> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+> index a6247da34a0..084d19b52d7 100644
+> --- a/accel/tcg/cputlb.c
+> +++ b/accel/tcg/cputlb.c
+> @@ -429,6 +429,15 @@ void tlb_flush_all_cpus_synced(CPUState *src_cpu)
+>      tlb_flush_by_mmuidx_all_cpus_synced(src_cpu, ALL_MMUIDX_BITS);
+>  }
+>=20=20
+> +static inline target_ulong tlb_addr_write(const CPUTLBEntry *entry)
+> +{
+> +#if TCG_OVERSIZED_GUEST
+> +    return entry->addr_write;
+> +#else
+> +    return qatomic_read(&entry->addr_write);
+> +#endif
+> +}
+
+You can drop the inline, compiler should know best what to do in this case.
+
+>  void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_m=
+mu_idx,
+>                                              uint64_t ptr,
+>                                              MMUAccessType ptr_access,
+
+
+--=20
+Alex Benn=C3=A9e

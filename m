@@ -1,108 +1,114 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp851419lfc;
-        Sun, 7 Feb 2021 20:20:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz4kn5XT371y7CjM7px6c9sM8vLSmCkvvyqgDnqIR1iphiggskcqsVZiDiybklEVrAaCGHo
-X-Received: by 2002:a25:af0b:: with SMTP id a11mr16331064ybh.228.1612758033393;
-        Sun, 07 Feb 2021 20:20:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612758033; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp883447lfc;
+        Sun, 7 Feb 2021 21:34:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJynrG9ENQEVqwTQqJaac+Nft1NnnwVgZRMnSDCefEYBYhmciEJycdpP6FBHlNz+PMh3IZIW
+X-Received: by 2002:a25:c586:: with SMTP id v128mr24192747ybe.159.1612762461209;
+        Sun, 07 Feb 2021 21:34:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612762461; cv=none;
         d=google.com; s=arc-20160816;
-        b=dNjZWnSB8WZb9EJX5yl4/W/nxulGK70tg5mZ1b0NKPibazt1evSNVgn1hQxgqdhx32
-         iaUyJbgGjRNIIXE78EmIwJ09XaxpK+y7+Xqi8bod40SQGCenxZRuwrRSOpJIRwLAkcH/
-         GzG/2eYj+RbEQNVlASV+45gFHuu+5K0C6ihSSnh2wSFKtJOl7CNb3EL++deQi5Hc3pU+
-         2hP+sa8Acpa2bywUC2p0NvHKV7ondFDDH5gV1j67RKxPo3yyvW3IFkmknLauJf5l/AIg
-         aYzZeCtDEvjHvsrwy4rWE+syulO5lUrMW4sdjMBuwhMIowoiAzJlO/7NRIvX/icQK7S0
-         nqPA==
+        b=xQr0IhYuAd8mRlTrQgIvvRzCDxYFG1GryaYn1gi9CXrNBljroJodTNtrlatjU127Lc
+         vgphTzwL9QCKcIy9p/kPSdWihdGbPabq91R+LXFfQ2gDMnDhhMkCU7w+a5WiBAU4bYsI
+         +P/Eh04HUWunHeHITA+XPvrv09bft3oOad712p0tYK/SgwsteDj2AkLgBqzdiGz2q1qE
+         tmdwlVc7/naSjViN/oRtQOZgMDcyN8CtBix7TapObQjd3fMdOPYiBKb51T4/8qyRF0c/
+         p3f/+bswcPNuekQqieKqJCpKP1oOF9oSnHuRpLQXCfF65HUPwPxp3BQSwrtLAFZbFj/4
+         /00g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Wfrxe2AEinW34K0GuFsTKfhMgJ70NeWcmQ/m1I/W4tU=;
-        b=PJoKrm91yzjvEp4YnDszo8FdSMyvBuCgm7RiLff58lA+bhnABOe/GAREPfDHFvNSVQ
-         VJHHVm+DI9cR5CbLDn9bHzLXeaPYwf5b+6e1A3+cfULE7D9LYpcRFCCMd45gUMmBI0VH
-         wpjL/yO1my4KzNCFCJmcwEOUQGItnLKY0OOFbWm0ld6bRMDu9nsjwT9uZGjubMOrwvjM
-         soiDOYY0KG6j3Lr5Xe/NUX3yKnCP3mtsMH+wGM1f8zROQDfbcRqoE442mAB1wka7w9zk
-         MoWrEr8lxDSki1PN5//LMTjKFL75jnw21tw7qbOG8RN+sQcOGHVZXaAJ4YPtvz+40QdZ
-         RABw==
+         :mime-version:user-agent:references:in-reply-to:date:to:from:subject
+         :message-id:dkim-signature;
+        bh=0Zp9BGGGXruyxeRvmMHs7JPbCXW8UY65W1DhaFEhqdc=;
+        b=ytqgtw8W5jvfdFw45/yiDY3hA63y2dZkgl8Ji+va7uNVQ5mserXE0DN45gzMkcxMZX
+         8LUL6NmRY76mctUTxC8BJg2MVNtnZfBzXF9LonIvdcjBAhGAQPjMtaxlrt4BoO5e45kP
+         ufGXQFZ288eR+VFrmUrsEEBZyvQ/sMAjGDG0GN6l1qhMiT5m1nicloSPuZUAm0/RRUyA
+         yrLczuSh6H4y3wEmJTREXXbe3mS2VZhYLrZI7dCtSD751ZttZfZE0t+6wq4ioLgK1Tpy
+         V63MGK/uY1SHMaZ1UWSJMsuFBaKC7aA2WPXVj3y+pmbzQJyiMwHrm1RT6QSkACKHSDWu
+         ilQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MGOteG1t;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ItlMcX4W;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l22si19130799ybj.81.2021.02.07.20.20.33
+        by mx.google.com with ESMTPS id l204si17222861ybc.266.2021.02.07.21.34.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Feb 2021 20:20:33 -0800 (PST)
+        Sun, 07 Feb 2021 21:34:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MGOteG1t;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ItlMcX4W;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33722 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:58448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l8y2K-0003yL-Qr
-	for alex.bennee@linaro.org; Sun, 07 Feb 2021 23:20:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35660)
+	id 1l8zBk-0004Hr-LU
+	for alex.bennee@linaro.org; Mon, 08 Feb 2021 00:34:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1l8x6J-0007kg-5g
- for qemu-arm@nongnu.org; Sun, 07 Feb 2021 22:20:35 -0500
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d]:40926)
+ (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
+ id 1l8zBc-0004HS-OA; Mon, 08 Feb 2021 00:34:12 -0500
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d]:34267)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1l8x6F-0001k3-5w
- for qemu-arm@nongnu.org; Sun, 07 Feb 2021 22:20:34 -0500
-Received: by mail-il1-x12d.google.com with SMTP id e7so11434477ile.7
- for <qemu-arm@nongnu.org>; Sun, 07 Feb 2021 19:20:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Wfrxe2AEinW34K0GuFsTKfhMgJ70NeWcmQ/m1I/W4tU=;
- b=MGOteG1tAXL7clmx6mozj3kJm8zN1mKOSl5adIZe31SqVf5ZePTq0s33hjMzU/e/Ar
- rUcGCuHuHTAhLi6iKxJ95AkX9jQBcn/7Bd4pfuyTq2oxisbMtm0FJJbz4yCshAlFuKja
- br1sGPCmsGZ85cjxUrTpFddoKDdd2pQKVdEwCawU4RZintNzMJhMIaQZQMwEzKxEKMXg
- HXMUu9Sj0qRzitTZ//7L6A6h+5RJmnO/gzDxfPUYcfAAyagDQ0/2vQ/NZTnzbLtogeEW
- MmeKuFtOlpfGZ4nKLVyrFo6QaiKFjv7EiH33KkD8CK4V97M7JkHpo3ojBhJBMRqVM64+
- 1kUw==
+ (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
+ id 1l8zBb-0000Ue-3d; Mon, 08 Feb 2021 00:34:12 -0500
+Received: by mail-io1-xd2d.google.com with SMTP id f67so11952147ioa.1;
+ Sun, 07 Feb 2021 21:34:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=0Zp9BGGGXruyxeRvmMHs7JPbCXW8UY65W1DhaFEhqdc=;
+ b=ItlMcX4WIK6IOZi7GelENDDJ+2AARxDid+F+WYHrWOLjQ5ZC3uO6le13GJmQNgZ0a8
+ tqCrz0hhZWf1X4VMVMIJ7HDy/rkLlXL8kuDNwBrTeKn2dvczCzOyW3qnLknpfhOeI4Hx
+ DTjGeT4YCKdeoX5TDnpjZ24jV1mIho4tpggDWiQvopnugW7kGlfLevXGp5zBy0j/5Q7D
+ y/aDdUA59bp3bNVzN1w0tr7iFPp6GRPHzaXqMyN3PT72UEBlc7zpeblhs+zxdQxBGoBY
+ CmcUVc7nNPgM2haVt5FbUaiWLbQWiCPBEbHJFitXSOFwY1lwKjQPEYJ7htgTU5m6IAHn
+ IRAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Wfrxe2AEinW34K0GuFsTKfhMgJ70NeWcmQ/m1I/W4tU=;
- b=COmY2N6wFhuO+UK9J1VUt++GfRbG5jHoBPPhwfu/QtegPzIrPjo9CLT+e5J9JCTfvx
- 7IzlWsLj5fuxygQs2V83rajBuG0NZMmiyrcNPBaAJ96rxrQVtQIMKBlj/hgcHt95zJPM
- lfZzeVQMvMG/pP1snkOCw9IawMWcWHbZ+u1m5eHIVVX9W49Tq5JteVoYP+5hBc5FEJVS
- pOo9mb1JD2br5V81tCz8OzKVE2miGZRoh1O6OaUYnaUWyqN95EDivaYDAEt9wMqsQeEU
- X1AfNT76jQT2USsZFBIO+I7Uikk8HnRHj5BMPcZv9UtvHFjOlcAE1KFyiTHTdRn5rSfO
- UyAQ==
-X-Gm-Message-State: AOAM533fAZ9C758UUvG/7Xo+msAgGlcdtnB+7YEL1D/74Jo5CPkoNm+6
- 7w/ZYyEaAHdLGhkVwYqcTfRg
-X-Received: by 2002:a05:6e02:e51:: with SMTP id
- l17mr12795315ilk.199.1612754430274; 
- Sun, 07 Feb 2021 19:20:30 -0800 (PST)
-Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id o8sm8022965ilu.55.2021.02.07.19.20.29
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=0Zp9BGGGXruyxeRvmMHs7JPbCXW8UY65W1DhaFEhqdc=;
+ b=g2H8FnIb5zgfl5F+t5hGPIFchMtWG03WVotlAJJtsmONPn79vQ6tEBqeYOLvYTQSqS
+ /xzxpDaSbjlHFjgDva+JHUzgzgwJy9WHxHTIF4mWllSAONOL7PF4Tc68fw7lMe/vtWit
+ XG9Hk9LEtqq2mLB0oIKHcguUN/cKtVTjoAcJTKySKdbbmkMdq4/NTEpXo/pzh0LgjpdY
+ pq03S6217KqP6Keqw/afMQFBZrHkEAJ0X8XCzDWhNGqX/8kvaQZgNL5+QgV3wporUa9N
+ x5bt+5m5Mbd1LEkJdk8T/QQXhtTi5dQr7WRrQ7of4JaI2216XgaSC491CIO8yN5p+nZP
+ DwZQ==
+X-Gm-Message-State: AOAM532js+vdGAJ4HVvBCc51xEwZzv4vtWwzuzOsYOIhENRfXkBhwKbo
+ pFabIaGFyJTEzrTYttjS9Lc=
+X-Received: by 2002:a5d:8e06:: with SMTP id e6mr14249853iod.210.1612762449319; 
+ Sun, 07 Feb 2021 21:34:09 -0800 (PST)
+Received: from [127.0.0.1] (ec2-3-14-82-192.us-east-2.compute.amazonaws.com.
+ [3.14.82.192])
+ by smtp.gmail.com with ESMTPSA id b1sm1939234iob.42.2021.02.07.21.34.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Feb 2021 19:20:29 -0800 (PST)
-From: Haibo Xu <haibo.xu@linaro.org>
-To: drjones@redhat.com,
-	richard.henderson@linaro.org
-Subject: [RFC PATCH 5/5] Enable the MTE support for KVM guest
-Date: Mon,  8 Feb 2021 03:20:06 +0000
-Message-Id: <a42721fa503d6d26995f451a8ca6d59ae7f3b138.1612747873.git.haibo.xu@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1612747873.git.haibo.xu@linaro.org>
-References: <cover.1612747873.git.haibo.xu@linaro.org>
+ Sun, 07 Feb 2021 21:34:08 -0800 (PST)
+Message-ID: <0b4b2fcdb148bf35cbffbd9cd40ce1b88f883f0c.camel@gmail.com>
+Subject: Re: [PATCH] arm: xlnx-versal: fix virtio-mmio base address assignment
+From: schspa <schspa@gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Laszlo Ersek <lersek@redhat.com>
+Date: Mon, 08 Feb 2021 13:34:02 +0800
+In-Reply-To: <20210205140807.GH477672@toto>
+References: <3362132240927a23ecca7b9d8cfd6e4130509eea.camel@gmail.com>
+ <dbcfce3c-3140-01b7-06ca-497cf7fdace7@amsat.org>
+ <6f6a803af5941346050d84e77fcaa52e0175a8a7.camel@gmail.com>
+ <f4862169-28cc-82a9-32fb-da56b000cf54@amsat.org>
+ <CAFEAcA9JkTEOhmoFjWYfR5d7ANhKnc9URk89Xe36q7qMVxkMmg@mail.gmail.com>
+ <aa8ccb78-c977-20fa-a814-4223b678d9c4@amsat.org>
+ <CAFEAcA-+dS5r5LvW5DTEH2vBrm1S2rs7sjjh2V7zjtD6ut0wBw@mail.gmail.com>
+ <20210205140807.GH477672@toto>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.38.3 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12d;
- envelope-from=haibo.xu@linaro.org; helo=mail-il1-x12d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2d;
+ envelope-from=schspa@gmail.com; helo=mail-io1-xd2d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -117,64 +123,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
- qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Kevin Zhao <kevin.zhao@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R41lomC/uzyK
+X-TUID: 14VHiXFzPwiv
 
-Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
----
- hw/arm/virt.c | 22 +++++++++++++++++++---
- 1 file changed, 19 insertions(+), 3 deletions(-)
+On Fri, 2021-02-05 at 15:08 +0100, Edgar E. Iglesias wrote:
+> Thanks, that matches how I thought things should work.
+> 
+> I wonder if virtio_mmio_bus_get_dev_path() really should be peeking
+> into
+> Sysbus internals mmio[].addr?
+> 
+I think mmio[].addr needs to be given a meaningful value even if we
+don't use it.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 623d5e9397..c2358cf4c5 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -79,6 +79,7 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-+#include "migration/misc.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -821,6 +822,21 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
-     }
- }
- 
-+static int virt_precopy_notify(NotifierWithReturn *n, void *data)
-+{
-+    PrecopyNotifyData *pnd = data;
-+
-+    switch (pnd->reason) {
-+    case PRECOPY_NOTIFY_SETUP:
-+        precopy_enable_metadata_migration();
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
- static void create_gpio_keys(const VirtMachineState *vms,
-                              DeviceState *pl061_dev,
-                              uint32_t phandle)
-@@ -1898,9 +1914,9 @@ static void machvirt_init(MachineState *machine)
-     }
- 
-     if (vms->mte && kvm_enabled()) {
--        error_report("mach-virt: KVM does not support providing "
--                     "MTE to the guest CPU");
--        exit(1);
-+        /* connect migration precopy request */
-+        vms->precopy_notifier.notify = virt_precopy_notify;
-+        precopy_add_notifier(&vms->precopy_notifier);
-     }
- 
-     create_fdt(vms);
+> Sysbus mmio[].addr looks like a candidate for removal if we ever get
+> rid
+> of the default system_memory...
+> 
+> I don't have any good suggestions how to fix this. I guess we could
+> wrap
+> memory_region_add_subregion() with a sysbus version of it that sets
+> mmio[].addr but that seems like a step backwards to me.
+> Perhaps there's a way fix this in virtio_mmio_bus_get_dev_path()?
+
+I think we can change virtio_mmio_bus_get_dev_path() with the following
+methods.
+
+1. modify TYPE_VIRTIO_MMIO:
+   add a prop to specify a unique device_path for virtio_mmio TypeInfo.
+2. modify TYPE_VIRTIO_MMIO_BUS
+   add a global static instance count to generate a unique device path.
+
 -- 
-2.17.1
+schspa <schspa@gmail.com>
 

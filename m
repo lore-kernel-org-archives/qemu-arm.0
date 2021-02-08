@@ -1,95 +1,96 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp838215lfc;
-        Sun, 7 Feb 2021 19:50:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyjR7LvLrJysYH7n09Kk0yx6NGcLs22Hvc64TiUAWa1IM8CfQyrGMNiRYk+CXo8dbQWccQY
-X-Received: by 2002:a25:7145:: with SMTP id m66mr10869003ybc.283.1612756254664;
-        Sun, 07 Feb 2021 19:50:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612756254; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp851419lfc;
+        Sun, 7 Feb 2021 20:20:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz4kn5XT371y7CjM7px6c9sM8vLSmCkvvyqgDnqIR1iphiggskcqsVZiDiybklEVrAaCGHo
+X-Received: by 2002:a25:af0b:: with SMTP id a11mr16331064ybh.228.1612758033393;
+        Sun, 07 Feb 2021 20:20:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612758033; cv=none;
         d=google.com; s=arc-20160816;
-        b=YMomTImfE3EC2QVyx0/PrOfgFK4nGF1YWWaPEX72db0nHVxpkTCeVLaBTImBg9LTlu
-         S0tHwIam6N3/oO/T8wl+vnniAxWHnKCBZowxJxMKgXNbXSQ15YO4N5z7PH/ixHU/AtTK
-         piZbkCZFzPm0F8BYwR7hNJ5mt8FqcrVXU47yA7gSSwFVCF6z1utqPzlgwYhog+ptM5b5
-         Axw4eZyoHWbrpXLcgCUfcsXpvd51ZqdypclQTvu0liFswMzMCb6R30Fo6QtXIB4YK7Ax
-         xhAt+9OasJ0Bc6LbJAeLt6dQtKb1RcT76L66xoSYLmnJRKlKx3Kx40tk1YsemsykheQw
-         ZBwA==
+        b=dNjZWnSB8WZb9EJX5yl4/W/nxulGK70tg5mZ1b0NKPibazt1evSNVgn1hQxgqdhx32
+         iaUyJbgGjRNIIXE78EmIwJ09XaxpK+y7+Xqi8bod40SQGCenxZRuwrRSOpJIRwLAkcH/
+         GzG/2eYj+RbEQNVlASV+45gFHuu+5K0C6ihSSnh2wSFKtJOl7CNb3EL++deQi5Hc3pU+
+         2hP+sa8Acpa2bywUC2p0NvHKV7ondFDDH5gV1j67RKxPo3yyvW3IFkmknLauJf5l/AIg
+         aYzZeCtDEvjHvsrwy4rWE+syulO5lUrMW4sdjMBuwhMIowoiAzJlO/7NRIvX/icQK7S0
+         nqPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=o0Vd6bwYd4gneYtpxWheq/+EF/MLp77aqunUp/r0WeM=;
-        b=jTvlHadyq1680K4qxOeuk9x+KcTdZ5iJ2p7sX8fvCUIZdJdZwGxBpCTR8GIbxvFfak
-         WsjRZiArdmssYeiLs8ZGXNKz60n6Qb8iOIS9ah5hJtlcghbnlbxCh8NyRZJqgEB9ei0l
-         3s+kfBSK3tjKwzr30SfOB6FfZbuphzV103+mg3AjNwcO21f8WHcCG+MHu2v4py+V/l5d
-         qae4sw5V8hMyCygroCke5QHNdAG/GlXevIHeuq0EpIVsPJNYp3wOW7ciAX7Y37P+zW0G
-         gtM/7pPs0VndTKk3mrH82Z+VOlTeeZBPk00mwO0ancDNo2hr2VvVYqdKjSkAtm0HXQji
-         sp0g==
+        bh=Wfrxe2AEinW34K0GuFsTKfhMgJ70NeWcmQ/m1I/W4tU=;
+        b=PJoKrm91yzjvEp4YnDszo8FdSMyvBuCgm7RiLff58lA+bhnABOe/GAREPfDHFvNSVQ
+         VJHHVm+DI9cR5CbLDn9bHzLXeaPYwf5b+6e1A3+cfULE7D9LYpcRFCCMd45gUMmBI0VH
+         wpjL/yO1my4KzNCFCJmcwEOUQGItnLKY0OOFbWm0ld6bRMDu9nsjwT9uZGjubMOrwvjM
+         soiDOYY0KG6j3Lr5Xe/NUX3yKnCP3mtsMH+wGM1f8zROQDfbcRqoE442mAB1wka7w9zk
+         MoWrEr8lxDSki1PN5//LMTjKFL75jnw21tw7qbOG8RN+sQcOGHVZXaAJ4YPtvz+40QdZ
+         RABw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WJPJFFmC;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MGOteG1t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w10si16969569ybt.235.2021.02.07.19.50.54
+        by mx.google.com with ESMTPS id l22si19130799ybj.81.2021.02.07.20.20.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Feb 2021 19:50:54 -0800 (PST)
+        Sun, 07 Feb 2021 20:20:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WJPJFFmC;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MGOteG1t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36514 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33722 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l8xZd-0005CL-Th
-	for alex.bennee@linaro.org; Sun, 07 Feb 2021 22:50:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35644)
+	id 1l8y2K-0003yL-Qr
+	for alex.bennee@linaro.org; Sun, 07 Feb 2021 23:20:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1l8x6I-0007iz-AB
- for qemu-arm@nongnu.org; Sun, 07 Feb 2021 22:20:34 -0500
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d]:46559)
+ id 1l8x6J-0007kg-5g
+ for qemu-arm@nongnu.org; Sun, 07 Feb 2021 22:20:35 -0500
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d]:40926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1l8x6D-0001it-EY
+ id 1l8x6F-0001k3-5w
  for qemu-arm@nongnu.org; Sun, 07 Feb 2021 22:20:34 -0500
-Received: by mail-il1-x12d.google.com with SMTP id m20so11450528ilj.13
- for <qemu-arm@nongnu.org>; Sun, 07 Feb 2021 19:20:29 -0800 (PST)
+Received: by mail-il1-x12d.google.com with SMTP id e7so11434477ile.7
+ for <qemu-arm@nongnu.org>; Sun, 07 Feb 2021 19:20:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=o0Vd6bwYd4gneYtpxWheq/+EF/MLp77aqunUp/r0WeM=;
- b=WJPJFFmCjI7Cy+8Li3azAORG2h7v0NTSoYCGKPU0wxeofQMYxpx+oM+NkkFfA6t9H1
- sTcxABNPNNcNgOqIUIRIO4yH3MsbYh42UCft2AG13RQAC3n3MlvLGbqYAJzDEJWQFfGp
- 6eppHMUpKu9KkA9ywJw+WltsQd1qLNRrpTchv1U3NkhIDJWJEPUyM+WzI0Fv4UwffVMt
- +0hyZCn6iJtzxaR/R1EAwFBA+UJWfyeSW+H0b+i7ZUYxG8wSdbbs/Pag0kRIR23wOHbK
- b+OU8mEl2PoV2nQE0l4v1GR88mqAUFBjVAyqbPyjszq8dlpGCYwt1uKTGQPaI9gKgxh2
- 5zGQ==
+ bh=Wfrxe2AEinW34K0GuFsTKfhMgJ70NeWcmQ/m1I/W4tU=;
+ b=MGOteG1tAXL7clmx6mozj3kJm8zN1mKOSl5adIZe31SqVf5ZePTq0s33hjMzU/e/Ar
+ rUcGCuHuHTAhLi6iKxJ95AkX9jQBcn/7Bd4pfuyTq2oxisbMtm0FJJbz4yCshAlFuKja
+ br1sGPCmsGZ85cjxUrTpFddoKDdd2pQKVdEwCawU4RZintNzMJhMIaQZQMwEzKxEKMXg
+ HXMUu9Sj0qRzitTZ//7L6A6h+5RJmnO/gzDxfPUYcfAAyagDQ0/2vQ/NZTnzbLtogeEW
+ MmeKuFtOlpfGZ4nKLVyrFo6QaiKFjv7EiH33KkD8CK4V97M7JkHpo3ojBhJBMRqVM64+
+ 1kUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=o0Vd6bwYd4gneYtpxWheq/+EF/MLp77aqunUp/r0WeM=;
- b=oXffbI0CS5Bmo96kpyh60VRx2HoeYUD22mvkA2fUV5O6AnMcAN7ZkolEYwkm2eD1Fx
- 06/X6xPmPrfJbLboPlwCv1J8QH5OeBrnBGJIdTE0vYjxUVgzujUz40OpiYH4KT7pNp3Q
- KbvnL7NmWnDYuC6/mCtB9ZLZKCy8aGB2v8yvJ7f+HWP3T+9LYZDPQMrkvhTUK19npH7D
- 6OSkQCWlogDFF3B5+ZVJUUt6aSS8piClk4gq99yBXj7DhalhPLaPRkFs0+VBc9Mqovb1
- y3EE8wWX6T+HR/Rs5QioRkz6RyqUZhfhre4GLsy/T03YZoyxphz/l69ndO/kGQAw5fjF
- V7Yg==
-X-Gm-Message-State: AOAM530QXDxtryQLPBHuLXo6NZcYpvTMFckjAL+xg1W4D/jqCXgbpeqU
- FJuCuANs3NIN/YqF6a4iUo8S
-X-Received: by 2002:a92:d485:: with SMTP id p5mr12873827ilg.114.1612754428532; 
- Sun, 07 Feb 2021 19:20:28 -0800 (PST)
+ bh=Wfrxe2AEinW34K0GuFsTKfhMgJ70NeWcmQ/m1I/W4tU=;
+ b=COmY2N6wFhuO+UK9J1VUt++GfRbG5jHoBPPhwfu/QtegPzIrPjo9CLT+e5J9JCTfvx
+ 7IzlWsLj5fuxygQs2V83rajBuG0NZMmiyrcNPBaAJ96rxrQVtQIMKBlj/hgcHt95zJPM
+ lfZzeVQMvMG/pP1snkOCw9IawMWcWHbZ+u1m5eHIVVX9W49Tq5JteVoYP+5hBc5FEJVS
+ pOo9mb1JD2br5V81tCz8OzKVE2miGZRoh1O6OaUYnaUWyqN95EDivaYDAEt9wMqsQeEU
+ X1AfNT76jQT2USsZFBIO+I7Uikk8HnRHj5BMPcZv9UtvHFjOlcAE1KFyiTHTdRn5rSfO
+ UyAQ==
+X-Gm-Message-State: AOAM533fAZ9C758UUvG/7Xo+msAgGlcdtnB+7YEL1D/74Jo5CPkoNm+6
+ 7w/ZYyEaAHdLGhkVwYqcTfRg
+X-Received: by 2002:a05:6e02:e51:: with SMTP id
+ l17mr12795315ilk.199.1612754430274; 
+ Sun, 07 Feb 2021 19:20:30 -0800 (PST)
 Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id o8sm8022965ilu.55.2021.02.07.19.20.27
+ by smtp.gmail.com with ESMTPSA id o8sm8022965ilu.55.2021.02.07.19.20.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Feb 2021 19:20:28 -0800 (PST)
+ Sun, 07 Feb 2021 19:20:29 -0800 (PST)
 From: Haibo Xu <haibo.xu@linaro.org>
 To: drjones@redhat.com,
 	richard.henderson@linaro.org
-Subject: [RFC PATCH 3/5] Add APIs to get/set MTE tags
-Date: Mon,  8 Feb 2021 03:20:04 +0000
-Message-Id: <ae69254130370fff4c9a38673deb1e3a27609e9c.1612747873.git.haibo.xu@linaro.org>
+Subject: [RFC PATCH 5/5] Enable the MTE support for KVM guest
+Date: Mon,  8 Feb 2021 03:20:06 +0000
+Message-Id: <a42721fa503d6d26995f451a8ca6d59ae7f3b138.1612747873.git.haibo.xu@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1612747873.git.haibo.xu@linaro.org>
 References: <cover.1612747873.git.haibo.xu@linaro.org>
@@ -103,7 +104,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,69 +121,60 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
  qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ubVhe4NXjXBj
-
-MTE spec provide instructions to retrieve the memory tags:
-(1) LDG, at 16 bytes granularity, and available in both user
-    and kernel space;
-(2) LDGM, at 256 bytes granularity in maximum, and only
-    available in kernel space
-
-To improve the performance, KVM has exposed the LDGM capability
-to user space by providing a new APIs. This patch is just a
-wrapper for the KVM APIs.
+X-TUID: R41lomC/uzyK
 
 Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 ---
- target/arm/kvm64.c   | 24 ++++++++++++++++++++++++
- target/arm/kvm_arm.h |  2 ++
- 2 files changed, 26 insertions(+)
+ hw/arm/virt.c | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 23f34034db..4a6790d53b 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -1608,3 +1608,27 @@ bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 623d5e9397..c2358cf4c5 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -79,6 +79,7 @@
+ #include "hw/virtio/virtio-iommu.h"
+ #include "hw/char/pl011.h"
+ #include "qemu/guest-random.h"
++#include "migration/misc.h"
+ 
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -821,6 +822,21 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
      }
-     return false;
  }
-+
-+int kvm_arm_mte_get_tags(uint64_t ipa, uint64_t len, uint8_t *buf)
+ 
++static int virt_precopy_notify(NotifierWithReturn *n, void *data)
 +{
-+    struct kvm_arm_copy_mte_tags args = {
-+        .guest_ipa = ipa,
-+        .length = len,
-+        .addr = buf,
-+        .flags = KVM_ARM_TAGS_FROM_GUEST,
-+    };
++    PrecopyNotifyData *pnd = data;
 +
-+    return kvm_vm_ioctl(kvm_state, KVM_ARM_MTE_COPY_TAGS, &args);
++    switch (pnd->reason) {
++    case PRECOPY_NOTIFY_SETUP:
++        precopy_enable_metadata_migration();
++        break;
++    default:
++        break;
++    }
++
++    return 0;
 +}
 +
-+int kvm_arm_mte_set_tags(uint64_t ipa, uint64_t len, uint8_t *buf)
-+{
-+    struct kvm_arm_copy_mte_tags args = {
-+        .guest_ipa = ipa,
-+        .length = len,
-+        .addr = buf,
-+        .flags = KVM_ARM_TAGS_TO_GUEST,
-+    };
-+
-+    return kvm_vm_ioctl(kvm_state, KVM_ARM_MTE_COPY_TAGS, &args);
-+}
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index eb81b7059e..1b94dbe7c8 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -358,6 +358,8 @@ int kvm_arm_vgic_probe(void);
+ static void create_gpio_keys(const VirtMachineState *vms,
+                              DeviceState *pl061_dev,
+                              uint32_t phandle)
+@@ -1898,9 +1914,9 @@ static void machvirt_init(MachineState *machine)
+     }
  
- void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
- void kvm_arm_pmu_init(CPUState *cs);
-+int kvm_arm_mte_get_tags(uint64_t ipa, uint64_t len, uint8_t *buf);
-+int kvm_arm_mte_set_tags(uint64_t ipa, uint64_t len, uint8_t *buf);
+     if (vms->mte && kvm_enabled()) {
+-        error_report("mach-virt: KVM does not support providing "
+-                     "MTE to the guest CPU");
+-        exit(1);
++        /* connect migration precopy request */
++        vms->precopy_notifier.notify = virt_precopy_notify;
++        precopy_add_notifier(&vms->precopy_notifier);
+     }
  
- /**
-  * kvm_arm_pvtime_init:
+     create_fdt(vms);
 -- 
 2.17.1
 

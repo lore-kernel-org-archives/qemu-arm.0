@@ -1,102 +1,104 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1466642lfc;
-        Mon, 8 Feb 2021 12:14:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxMEeBNJ6CWxnbSUijzN960NQ6ZGW4EOt/WyfrfEshTkkxawj19eHyBzix1NWMW104KY75s
-X-Received: by 2002:a25:a527:: with SMTP id h36mr27740016ybi.400.1612815285951;
-        Mon, 08 Feb 2021 12:14:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612815285; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1482517lfc;
+        Mon, 8 Feb 2021 12:40:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwapYAYVJ8IOxqjnF7zhsqI6oD1M7xH6eSW4FFp+95U0F5BQBuC2axvSHiB6dblzwCYwRY9
+X-Received: by 2002:a5b:410:: with SMTP id m16mr29492438ybp.451.1612816806110;
+        Mon, 08 Feb 2021 12:40:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612816806; cv=none;
         d=google.com; s=arc-20160816;
-        b=YGF8gRyT2lRKnGaA5wFNiiPi5XYht6JBKMId6MhC0kAWV/V5mGuqzhbuRzSWg3jFjP
-         hBIrtz/Ux4OXHSkBZI7q2+4M8jR1xlNWq30HL8PsvMbCojFEnybZHhV09n7kn6p2I2Fu
-         KkSJtpILYnal1qUORHna8ynzCRNrIG5P8wNOh4cHL4yBCyzs3qwre60a+qOJb3oDJUKE
-         tTC0HMHI8lvUPvvYi/wMx8rai0SYUJp0SeDmDe51UcoEML7lB0wEJVg83Gqg0uGLnhmH
-         75AcLhZyL5XVj2LMPv07h7KNFwHw6jb3ILGG3aqp5MNVgoyrZNXZiIpKNnEIREwPbZDk
-         DjZw==
+        b=DP5j9DKb0aiMkaB5fhWT26WeWF9444p7IGNgpHFphV1zEcZgu/x1+KFSSj5dXSBeaJ
+         RNZhwLcZ4weithlJab8vPIOBaAs/3VKe96m0n96fB47C6EiRG1pntPQp0uqR4++Kxr6p
+         pL9vZac0nDywTuy2aTiAfXK21alX+X4u1ytVTZEsV+Go2eDWi+fzufDMRSi6uW6Fna9q
+         re5N25PIUo9/5qfaKUkLElyzS1DQJsrGBv3V/PJTFbFzHTrs8KkoRLrcBk5WK0+Cgs5P
+         FdEcTMx+uwP/RcNQbDphEDgOFjPiiDsVitVytYHFtxo4DA9Yf48dSJPxjBPYQVkXVtLm
+         J4tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=iVDqkMFjX3DZafZntChvxhRXcB2jgfScmAOqtURtVjY=;
-        b=ZvF+3Q0YTdT2OmeGcEb+5qBjreq0aJ1eSWrnIvw1YeHkYMKTkkp4wbHKe1ZGDVZ8+7
-         AIDJ3xXOkNXtg6q6KPbCc1gmyHgu4IfXdmFI8Hbbj6+WDPo/kQi9YhGZXWc88EarEQdv
-         BP6qZKYv4pW81Iavz1IyRnWDiRmIFA609SguXklMs85OBQEVhPUl1elC54AEWq386x20
-         QqPEYTO7I8H73Ku+juwbvW4p91KQDbskJGpLJpgAxK2N4PPiAlCwxwub1hlBUGp/O/wb
-         AVRilrjyq5T3U+IX9Kj/jNnMh8maITvVt8ntTP/PD9tNjr6MIXBEsp76a3rr1rz2giA1
-         0rXQ==
+        bh=BGMfX5s+eekSCdZSIfStc4cDqIiR0iYU30+c+3poORQ=;
+        b=sSUBPSiWfcmDMKyKOs/1q6ggKg5h6ckYfST4xBVnexKNf3/DFggkYR3h9KnYKNU2v0
+         68IC5CcMVpj7A3YH1G4fGdUYUFOfWnrwwjR7wR6McLraNPGP0dAHntCfXxVdNcpoKJ0+
+         VNGIiyGEtlmg+NhELSkHH6Qr1AmlIq0GNQH+BYeK1AlmRRoxXo3yEUV+K8cgScQNPnXl
+         dSbbQvWk+hgefXWkxYxHnjD5+z0DkOHSZUEaNqvx7cf0NV29CwVCfhaveOJtbET/i0XO
+         gScqwC1rhFm8gkpgIJHtG3zawTpjDykDEl8ukGfwIDx70G1g7dqvS5lUlGSZNSNzy0Yw
+         fQAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dAGzjaAs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hs8+Ltd8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i185si17143279ybc.372.2021.02.08.12.14.45
+        by mx.google.com with ESMTPS id m62si18606401ybm.453.2021.02.08.12.40.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Feb 2021 12:14:45 -0800 (PST)
+        Mon, 08 Feb 2021 12:40:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dAGzjaAs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hs8+Ltd8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52134 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39456 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9Cvl-0002OI-9I
-	for alex.bennee@linaro.org; Mon, 08 Feb 2021 15:14:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50146)
+	id 1l9DKH-0005E1-CU
+	for alex.bennee@linaro.org; Mon, 08 Feb 2021 15:40:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54118)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l96wk-0004hw-OQ
- for qemu-devel@nongnu.org; Mon, 08 Feb 2021 08:51:23 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e]:34078)
+ id 1l97Fu-0007Jj-Qa
+ for qemu-devel@nongnu.org; Mon, 08 Feb 2021 09:11:10 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:34415)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l96wO-0008Ji-Bq
- for qemu-devel@nongnu.org; Mon, 08 Feb 2021 08:51:13 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id df22so18190785edb.1
- for <qemu-devel@nongnu.org>; Mon, 08 Feb 2021 05:50:53 -0800 (PST)
+ id 1l97FY-0004Q6-TD
+ for qemu-devel@nongnu.org; Mon, 08 Feb 2021 09:11:01 -0500
+Received: by mail-ej1-x636.google.com with SMTP id hs11so24963804ejc.1
+ for <qemu-devel@nongnu.org>; Mon, 08 Feb 2021 06:10:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iVDqkMFjX3DZafZntChvxhRXcB2jgfScmAOqtURtVjY=;
- b=dAGzjaAsDVfpoa7PhS6UsOB6/nge5p3BrLs/e+hKCjyb30nH1SGhVZNbqkzXAJr7nx
- 4ZgxeCUuvTOfO5Pajhuk0mnsvxvY3iEC3NgMgNPXzpRtDWQRYHLqYgoRo1C/foe/KCp/
- Ak7m+RsP37c7JDkguuQMal4ZikTv14FRJPcwcadFF60hUR+N94AiYJovtwlogVbMqWwz
- byFkYzDqBP2DmV+KBSYaTea5SkHOnfaUh7H/IMukxPQPH6UUxzEZbR12K8SBJfb/ju+a
- mya4OSVHinpBvjOBdImCscE9eHOOMGv8LTVajggHib52ab+KzBZcpyxSrKZ8eKOogasW
- YjOA==
+ :cc; bh=BGMfX5s+eekSCdZSIfStc4cDqIiR0iYU30+c+3poORQ=;
+ b=hs8+Ltd8EaEcSU/AFN77+ajrBMcxVlyskN5FAGfSXnKe4x/5oEqWJd79XTSTzZItco
+ eS3eWFs+8/DmoQLLEqMJ23apybIaq06EONr1ov6icZYXXj8Edb6/b8pdXyDKdQTOgo9t
+ ohshBf1mNyFlRlzDeU5ErpufPVFHrVmdP6Ydo1Qw+St2gyeAeLbC7bY/Zy1nEun2r2IP
+ ueb/UMPwX7bc86RJY8u3gI66XcenvAY/DBJLso5sH0NQPOO+w0nv35WCpLJaCzFEnA3c
+ T540zaE0qOCetvdAOwysOGvGs5ZDUlzdivk0aLzR3hBbcerxmdg4TwpluOuNi/PdSaJd
+ O6Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=iVDqkMFjX3DZafZntChvxhRXcB2jgfScmAOqtURtVjY=;
- b=GuhaxKgvERNgJdR8saGTeHF6u4EZU9OGdZcDnIMEXX2egU+epVTF0Rd5MTIJB3bAyQ
- 2JxnoZov3d/J69TMX3whxJwkIoumvFmRJYdcnY3fvN4k+UZuTsequKOZ0+Qm5PrOnr6g
- Ug3yMrLvbKzVclmkb1oeBPumVU21nHMNimaAe+2XoXjjhzdIW5Sf5qe3JNWC01RKeJE+
- U8WFG4pm8MJpy7N2tVwCv9mUNPubmVDxjAAbtNt7JzwCrAdhP5Qc0wYH6oI0eySJSQ3v
- 8DcGTCj0V2nHlVPs0PymiduXDHvt19X2FBBbKJ5q6DdR2TzoGPb2tjz+r8BAK+VPEf4w
- 9tLQ==
-X-Gm-Message-State: AOAM533QTSbF/ujq8v1jbaQ+1u0fBZCQVnGzvB3jI7NtGtXbgDz8pFFU
- YljEU0ir60E/pxuap4l5qVSFgfKbnYCFNXc72HukNw==
-X-Received: by 2002:a50:e80d:: with SMTP id e13mr16907978edn.251.1612792252304; 
- Mon, 08 Feb 2021 05:50:52 -0800 (PST)
+ bh=BGMfX5s+eekSCdZSIfStc4cDqIiR0iYU30+c+3poORQ=;
+ b=Gr6zGeCK0NZAJ1hQ1182AI6FgPsQl22ciNs50WBIDXrZ77PXwdWbvrimlWLBmrVOY7
+ yb9Dx3wRA7z4vgmnwpauZi6zRvBOlpbSrTkTVKFmyepgQr13s1phmKZhqq7YzdPgMPzi
+ UUQM4YVZXQKpdRMuE3uHP7C1A7YdowBdgQBs7Sv4CvWza8yhLw6s3VJMqyQpGIvZodm5
+ EiuyGRUvTuAmBzTu/Z+Q3quQqsOFt7YAp++1P4VULXLhe/YMq2wr4Glx5FygtWAx2B+R
+ /q593XlMYktJqNYQiezL4A13bspFGJRVKyijb/s5CXZxl8DDx5pfLp5RjK75ak6rXPvN
+ ncBw==
+X-Gm-Message-State: AOAM5331xhgY+hP9mqBWx/g5W+vG+QR4QoyLb4jk0P52RtYz7UyHE1eU
+ sipxoH4PqLj/qRA0hWtbHMukwImrjPXiZJKS3u7ZrQ==
+X-Received: by 2002:a17:906:2e4f:: with SMTP id
+ r15mr17168073eji.407.1612793440678; 
+ Mon, 08 Feb 2021 06:10:40 -0800 (PST)
 MIME-Version: 1.0
 References: <20210203190010.759771-1-richard.henderson@linaro.org>
- <20210203190010.759771-18-richard.henderson@linaro.org>
-In-Reply-To: <20210203190010.759771-18-richard.henderson@linaro.org>
+ <20210203190010.759771-14-richard.henderson@linaro.org>
+In-Reply-To: <20210203190010.759771-14-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Feb 2021 13:50:41 +0000
-Message-ID: <CAFEAcA-gjcEqLBw0UuOb9Q8Z=0nJHsWxTgHRYbYND4DueiiDvA@mail.gmail.com>
-Subject: Re: [PATCH v5 17/31] linux-user: Move lock_user et al out of line
+Date: Mon, 8 Feb 2021 14:10:29 +0000
+Message-ID: <CAFEAcA9JC=j4iwr9kuT262s=QonM=y9uTmcJ3Xq3mkM_nrgj2g@mail.gmail.com>
+Subject: Re: [PATCH v5 13/31] linux-user: Explicitly untag memory management
+ syscalls
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,17 +114,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OEljkNSmpOg/
+X-TUID: 7GR+NVEY+bw5
 
 On Wed, 3 Feb 2021 at 19:00, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> These functions are not small, except for unlock_user
-> without debugging enabled.  Move them out of line, and
-> add missing braces on the way.
+> We define target_mmap et al as untagged, so that they can be
+> used from the binary loaders.  Explicitly call cpu_untagged_addr
+> for munmap, mprotect, mremap syscall entry points.
 >
+> Add a few comments for the syscalls that are exempted by the
+> kernel's tagged-address-abi.rst.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  linux-user/syscall.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+>
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 748893904e..4451f8e4f0 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -889,6 +889,8 @@ abi_long do_brk(abi_ulong new_brk)
+>      abi_long mapped_addr;
+>      abi_ulong new_alloc_size;
+>
+> +    /* brk pointers are always untagged */
+> +
+>      DEBUGF_BRK("do_brk(" TARGET_ABI_FMT_lx ") -> ", new_brk);
+>
+>      if (!new_brk) {
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+It's not clear to me from
+https://www.kernel.org/doc/Documentation/arm64/tagged-address-abi.rst
+whether brk() pointers are "always untagged", or only "always untagged
+when at stage 1 of relaxation"... Unlike shmat and shmdt pointers,
+they aren't listed in the section 3 "must be untagged regardless
+of the ABI relaxation" part of the doc. I've asked the kernel folks
+for clarification.
+
+Same applies to mmap() and mremap() new_address.
 
 thanks
 -- PMM

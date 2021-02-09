@@ -1,95 +1,98 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp354093lfc;
-        Tue, 9 Feb 2021 05:22:02 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwJAY6yTnqd33GaQmAYjBtnlKw5RRTm/Dhym4nP55Mc82l3H6amIFK1hy6q1wUw6F0KJyDm
-X-Received: by 2002:a5b:491:: with SMTP id n17mr22876767ybp.484.1612876922663;
-        Tue, 09 Feb 2021 05:22:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612876922; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp354910lfc;
+        Tue, 9 Feb 2021 05:23:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxFGOsNoor9Jr+lvztA+mpvm2ZWSLPxcwuqSua6z7qgaMxJf2Mo3WRz/evYqDxjr0Zd0VVy
+X-Received: by 2002:a25:6110:: with SMTP id v16mr8458172ybb.435.1612876990107;
+        Tue, 09 Feb 2021 05:23:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612876990; cv=none;
         d=google.com; s=arc-20160816;
-        b=a1fyTuMhXX1gss+JTRmw6FXS0fKiJHMQRXDm1xt8W6vMw1yUs9ENBmgnhcFvKqbJ67
-         sWlIZZjvoumupsnJmch/UAr9PDZqpWs7XkGA2DP3fr6cyhtlnFBfuv+Iat7duYKdL9ms
-         4BzC5+5cJ2ubJya6ebWT3PyjmP1tjdwA61EBovZrvzj5ajHQpUPDptAu9VY6qXQD0TCA
-         RpCmGoVKZqi3DDGXfRxZDlu1M6tnSSpGMt3gu1XhqoYurcG4LWAnqQrX6qA6vhz9WyTW
-         +GHuJeEWdo2KoWbC8Kr99PQEYwuGsP4gHJzXRhaDOwV0lMuKCXt1PNmiEG69ppVwi2Hs
-         0Wpw==
+        b=qZfC29w22SGl2bx4xkcAPi9sQFM3JKgb+DVd+Drd1iuNl3xzV/JSHaC+DpF1bm+vpY
+         67bcm+RVqBvw18jrP9x6Jhm7xRx/lXftmZdRVVXnOg2mzurcGzcBX3tYd6LKqlkYbxqT
+         4K4BABLpOnPFhAdPiB9lJ0I0Kghh82YEW0HPwkxAQm9og/OK4IJOy/OFWyPPamphhgAR
+         34tA8uYvhzTYnlpSD288Tv9fAOXDyLAxlNHCfehiEDP2zKFehMC2LO6NJ4KauXxsqq5P
+         oz0NwHyxu+IlGXsbZRhWUIiXJLaqJuXg9wf31hms7sG3eJyZiqPE5UOUBmo6j5/l3Ubi
+         YKUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=d86tePBRdT/Wa66ZnpeoY9R7MMLota3OwO1BIOPVBhg=;
-        b=kWiEWrOVYLeaI8uWamKBRhIHuvZpaltC2/DfrxtAM+ssXp/RaMTF4yO2CL2ICAeXip
-         RQKPBCL+ETjTfpO3HbZQUGpEEYK7HerLuAeGawmB7D4QD7mMbBa2NOg3rhbvOrBat6JJ
-         tIwJVAJOIpPluqrrA3bSSkpgjIYjNwSnV1LIrJkPgEmTrUTyNEg+afa1qpDwG2Yrs7Pv
-         YCXmL/OgJtkFI2Q/7siDKG/b2IhZfPjOBFdNpUFJA6U7y6jf318WSUK56YEoFZKxduF3
-         bzQJ2IjyX0l3+goNUkfKa0qCM54pGZSU9M0FYd/UhSzrPWHAO16lyevwkgl+3JmrJiLg
-         HCXw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Rxyrp77KmAHOUvHPnjORQdoPirQElENHA7YXjs2ljS4=;
+        b=C64Nx6UU7O4mKn7CC0RxFGL6j+XV9YblKvtvbEH3MEPwUQpC/4ssLeiAjiFLVFHdr3
+         i48fcrGplJXvLyCqtNMQFWHZ08HGA8lN/ZJljz+aejDl6fArwgiYVZO+S0P08Z+sqo/u
+         frRAOzrOhGbrG83P0CcHkAqi6lhJQjeTcTzYf77ENJKT7QlwRynguLguLdr6gXtBplL7
+         OecKcM854ajmOEwxaL85Rl2QcGfXazmAUjukiBXqqkunsqpy5mNjpGvDCSzLdMhopLml
+         tOhxbT01EjDB4wZH/HJ6bP0QzJrDYnZXSNCuw2O6dDHOLWCOc8oNmy4/EBY5CQ/kAVxc
+         Dnrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hWKpRV7F;
+       dkim=fail header.i=@linaro.org header.s=google header.b="ITaT59/2";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m65si21806195yba.269.2021.02.09.05.22.02
+        by mx.google.com with ESMTPS id k13si19671899ybm.220.2021.02.09.05.23.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Feb 2021 05:22:02 -0800 (PST)
+        Tue, 09 Feb 2021 05:23:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hWKpRV7F;
+       dkim=fail header.i=@linaro.org header.s=google header.b="ITaT59/2";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47362 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9Sxu-0002kS-1p
-	for alex.bennee@linaro.org; Tue, 09 Feb 2021 08:22:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33814)
+	id 1l9Syz-0003iy-Ga
+	for alex.bennee@linaro.org; Tue, 09 Feb 2021 08:23:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l9Swl-0002kE-Ql
- for qemu-devel@nongnu.org; Tue, 09 Feb 2021 08:20:51 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:46005)
+ id 1l9Swt-0002ua-Qi
+ for qemu-devel@nongnu.org; Tue, 09 Feb 2021 08:20:59 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:34911)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l9Swf-0000gt-Ie
- for qemu-devel@nongnu.org; Tue, 09 Feb 2021 08:20:51 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id m13so21650287wro.12
- for <qemu-devel@nongnu.org>; Tue, 09 Feb 2021 05:20:44 -0800 (PST)
+ id 1l9Swj-0000kw-Cc
+ for qemu-devel@nongnu.org; Tue, 09 Feb 2021 08:20:59 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id l12so21740745wry.2
+ for <qemu-devel@nongnu.org>; Tue, 09 Feb 2021 05:20:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=d86tePBRdT/Wa66ZnpeoY9R7MMLota3OwO1BIOPVBhg=;
- b=hWKpRV7F4fEO7pN+Ux32P9blPOhoeQWp5DYWryg166oFUR3+tZpcQ1uOeuC1M+nlUv
- R3dU3KuurRi1fJkdJLnB9/f5DFs/QRNPn5YKIPzyoXgejCHLHkue8f2WfXnhnXW6Qs/2
- CgBQyz1/l7h+QiX1mt6Hp6O3OIuHse9tM4ec+Fsha3orLQdicepUTG/R+VwHuZc3kbhR
- OJMU7gGNEj0sAWtEgVwmGz1sMPwrjbgfVt6W0gr6mwGqsbKxhaaLMBz12dzxz1H3epbB
- dcT3S06ptlSsaju39JXUOUTUdZcKgtGfBpIQntKDxbeAOjTgoCpHaAn5yI2Q7abN7eT2
- 2K4w==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Rxyrp77KmAHOUvHPnjORQdoPirQElENHA7YXjs2ljS4=;
+ b=ITaT59/2Agi28mJA6dajnkYezkweLT7DZBvipjA0e7HR2jgTChVcL1ruovowKjK9FM
+ ir3iyPy0Ipwg0/KDLnE+2vH0lcqGPhMxzA7mISAMMwTn++03zahxcGcA6RzGrEVMOuUs
+ FhkcnZSgMm/YFjYiCJI9HS42SWaF0nPpLvcojt3qstmCp1y6n7HKrqAg63KCycWy9Jnj
+ anOO09XWlKhGK/eMPvl8eOGe0EptGjtmw6/5LNLv4IqBXWCUrySmjPmF5BDqNC+wbjU4
+ kodHZr0pcr0ZVmqQyAn3n5D0bDgzf+5Mv6R/ppElDsOr7uu4P8ulPfc9hX/1O4qkTRzI
+ CssA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=d86tePBRdT/Wa66ZnpeoY9R7MMLota3OwO1BIOPVBhg=;
- b=CHMuZjXz/hLzkDPv4B1GXIlFu0wTRcKkBBrzet9xtmFdkz98p27el5emOVYBovA5GB
- NecQu3sEWj/g+Vb773bjXWW7bDLYGOaU775o5M5kWMaBw/Du/gR+0gPX0q3Zo3WTVaRt
- 37PkoYdnzgFal82FHUdUmyhQXL5i7TCRJ8zgjy9eRymCoLL1PZnkMu1cUAERRVBeho8U
- A6sv5094mi2BielXcY+90EgsObhYyiLIRP+m1TIgMaSxH7cp0Dp1VK3HufEDUY2/5dcz
- 6rQ6w7ZquBChLyDLPFGBJ7SAhdClw6yBzqd2WbQAsJ99xa2nxyJ4fO/CRBmV1dIfx8R2
- Tk5w==
-X-Gm-Message-State: AOAM532tXsYPcFwOuw8h6AsBRn1AoIUCWgXs/JxqJuAFFUc/VVkGUCKC
- Yazv73kdW7kwN0OHBhKwXI6JDw==
-X-Received: by 2002:adf:f549:: with SMTP id j9mr15987994wrp.347.1612876842933; 
- Tue, 09 Feb 2021 05:20:42 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Rxyrp77KmAHOUvHPnjORQdoPirQElENHA7YXjs2ljS4=;
+ b=lPIBzFUmtMVL1E+uys6mcka2gMK0FnQOgcVkfZbaREX1dBOJ7fjO/iqXGaE5JA4zLr
+ QSzBE5ky23PFWD331gnG/W79aA/3PvCwWpoQL9Exkh3K9Rd+vjb5AX4Ch4ovEX3SVB2V
+ byXAuLUa3jf5SrPfy3wfYKxctMihoJdi3TVYqlvjvrvyfKOeO6wYeKFLPp7CTEYqKChP
+ oBg21LVc9+3arwhZT9VW5CwIUu3hA9CropERqu3G9/rcYnRjUyoEC48e+VegOkB9WRoe
+ rdg+mVPkvgIymHt/nsL9/oftl7XJiw3uGfzqpryoFMw/vhEDkBoHtISw9jk6jEmGxVgJ
+ rJAA==
+X-Gm-Message-State: AOAM532QKB5hGfevUtSRZ81Rz6q2lrmfzof1BlM5pGKzX7DMkV2asjEw
+ 5Q6EHMRhmoDVR1vR6nttucMrDw==
+X-Received: by 2002:adf:f647:: with SMTP id x7mr24739995wrp.160.1612876846608; 
+ Tue, 09 Feb 2021 05:20:46 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y11sm34752472wrh.16.2021.02.09.05.20.41
+ by smtp.gmail.com with ESMTPSA id y11sm34752472wrh.16.2021.02.09.05.20.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Feb 2021 05:20:42 -0800 (PST)
+ Tue, 09 Feb 2021 05:20:46 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 0/4] New APIs for the Clock framework
-Date: Tue,  9 Feb 2021 13:20:36 +0000
-Message-Id: <20210209132040.5091-1-peter.maydell@linaro.org>
+Subject: [PATCH v2 3/4] clock: Add clock_ns_to_ticks() function
+Date: Tue,  9 Feb 2021 13:20:39 +0000
+Message-Id: <20210209132040.5091-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210209132040.5091-1-peter.maydell@linaro.org>
+References: <20210209132040.5091-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
@@ -99,8 +102,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,104 +122,98 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o1voMoTCAi7l
+X-TUID: kT/0cSchmEUV
 
-Hi; this patchset proposes a couple of new APIs for Clock, which I
-found I needed/wanted for a work-in-progress patchset.
+Add a clock_ns_to_ticks() function which does the opposite of
+clock_ticks_to_ns(): given a duration in nanoseconds, it returns the
+number of clock ticks that would happen in that time.  This is useful
+for devices that have a free running counter register whose value can
+be calculated when it is read.
 
-In this v2, the only change from the RFC series is that as Luc
-suggested I have made the clock-callback registration mechanisms
-all take a new parameter specifying the mask of events which
-the callback should be invoked for. (This is instead of calling
-all callbacks on all events and requiring them to look at their
-'events' argument to see if they should ignore the call.)
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I have made the overflow behaviour here be "wrap", with justification
+as per the comment; but I'm not 100% set on this.
+---
+ docs/devel/clocks.rst | 12 ++++++++++++
+ include/hw/clock.h    | 41 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 53 insertions(+)
 
-If people prefer I can keep hold of these patches until I have
-the board-support series that makes use of them ready to post;
-but I think if we're happy with the new APIs we could reasonably
-put them in to the tree sooner (especially since patch 1 means
-updates to all input Clock users).
-
-
-The problem the first two patches are trying to solve is that I found
-that I wanted the old value of the Clock's period when my device got a
-notification about a frequency/period change. The current
-ClockCallback API calls you after the period has changed, so the Clock
-is already using the new period. I wanted this because my timer device
-has a register that's basically a free-running up-counter; the value
-of that counter can be calculated with:
-
-  s->ticks_then + clock_ns_to_ticks(s->clk, now - s->ns_then);
-
-where (ns_then, ticks_then) are a tuple of a QEMU_CLOCK_VIRTUAL time
-and the tick count at that point. Whenever the clock frequency changes
-we calculate a new (ns_then, ticks_then) to use as the baseline for
-future counter value reads, but in order to do that we must calculate
-ticks_then using the *old* clock period.
-
-My solution to this is to add a ClockEvent argument to the callback
-function, which is an enum:
-
-  ClockPreUpdate : callback called before period change
-  ClockUpdate : callback called after period change
-
-When a callback function is registered a mask of event values tells
-the framework which events the callback should be called for.
-
-The problem the third patch addresses is that we don't have a function
-for "tell me how many times this clock would tick in this length of
-time". clock_ns_to_ticks() does the inverse of the clock_ticks_to_ns()
-that we already have. Two points in particular where comment would be
-useful:
-
- * I chose to make the overflow case (where a clock has a very short
-   period and the specified length of time is very long, so the clock
-   would tick more than UINT64_MAX times) just let the value wrap
-   around, on the basis that usually this is being used to calculate a
-   guest register value that's in a 64 bit or 32 bit register, and so
-   wrap-around is the right behaviour.  But I'm not 100% set on this
-   if somebody has a better idea.
-
- * The calculation needs to do a 96-bit / 64 bit => 64 bit division,
-   for which the best thing we have is divu128(). This is particularly
-   painful on 32-bit hosts. I don't suppose there's anything clever we
-   can do to make this better ?
-
-Patch 4 just uses clock_ns_to_ticks() in the one place in the
-current codebase where we're currently using clock_ticks_to_ns()
-and manual calculation.
-
-thanks
--- PMM
-
-Peter Maydell (4):
-  clock: Add ClockEvent parameter to callbacks
-  clock: Add ClockPreUpdate callback event type
-  clock: Add clock_ns_to_ticks() function
-  hw/timer/npcm7xx_timer: Use new clock_ns_to_ticks()
-
- docs/devel/clocks.rst            | 71 ++++++++++++++++++++++++++++----
- include/hw/clock.h               | 63 +++++++++++++++++++++++++++-
- include/hw/qdev-clock.h          | 17 +++++---
- hw/adc/npcm7xx_adc.c             |  2 +-
- hw/arm/armsse.c                  |  9 ++--
- hw/char/cadence_uart.c           |  4 +-
- hw/char/ibex_uart.c              |  4 +-
- hw/char/pl011.c                  |  5 ++-
- hw/core/clock.c                  | 23 +++++++++--
- hw/core/qdev-clock.c             |  8 ++--
- hw/mips/cps.c                    |  2 +-
- hw/misc/bcm2835_cprman.c         | 23 +++++++----
- hw/misc/npcm7xx_clk.c            | 26 ++++++++++--
- hw/misc/npcm7xx_pwm.c            |  2 +-
- hw/misc/zynq_slcr.c              |  5 ++-
- hw/timer/cmsdk-apb-dualtimer.c   |  5 ++-
- hw/timer/cmsdk-apb-timer.c       |  4 +-
- hw/timer/npcm7xx_timer.c         |  6 +--
- hw/watchdog/cmsdk-apb-watchdog.c |  5 ++-
- target/mips/cpu.c                |  2 +-
- 20 files changed, 226 insertions(+), 60 deletions(-)
-
+diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+index f0391e76b4f..956bd147ea0 100644
+--- a/docs/devel/clocks.rst
++++ b/docs/devel/clocks.rst
+@@ -360,6 +360,18 @@ rather than simply passing it to a QEMUTimer function like
+ ``timer_mod_ns()`` then you should be careful to avoid overflow
+ in those calculations, of course.)
+ 
++Obtaining tick counts
++---------------------
++
++For calculations where you need to know the number of ticks in
++a given duration, use ``clock_ns_to_ticks()``. This function handles
++possible non-whole-number-of-nanoseconds periods and avoids
++potential rounding errors. It will return '0' if the clock is stopped
++(i.e. it has period zero). If the inputs imply a tick count that
++overflows a 64-bit value (a very long duration for a clock with a
++very short period) the output value is truncated, so effectively
++the 64-bit output wraps around.
++
+ Changing a clock period
+ -----------------------
+ 
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+index d7a6673c29e..79c3b7ebe40 100644
+--- a/include/hw/clock.h
++++ b/include/hw/clock.h
+@@ -286,6 +286,47 @@ static inline uint64_t clock_ticks_to_ns(const Clock *clk, uint64_t ticks)
+     return ns_low >> 32 | ns_high << 32;
+ }
+ 
++/**
++ * clock_ns_to_ticks:
++ * @clk: the clock to query
++ * @ns: duration in nanoseconds
++ *
++ * Returns the number of ticks this clock would make in the given
++ * number of nanoseconds. Because a clock can have a period which
++ * is not a whole number of nanoseconds, it is important to use this
++ * function rather than attempting to obtain a "period in nanoseconds"
++ * value and then dividing the duration by that value.
++ *
++ * If the clock is stopped (ie it has period zero), returns 0.
++ *
++ * For some inputs the result could overflow a 64-bit value (because
++ * the clock's period is short and the duration is long). In these
++ * cases we truncate the result to a 64-bit value. This is on the
++ * assumption that generally the result is going to be used to report
++ * a 32-bit or 64-bit guest register value, so wrapping either cannot
++ * happen or is the desired behaviour.
++ */
++static inline uint64_t clock_ns_to_ticks(const Clock *clk, uint64_t ns)
++{
++    /*
++     * ticks = duration_in_ns / period_in_ns
++     *       = ns / (period / 2^32)
++     *       = (ns * 2^32) / period
++     * The hi, lo inputs to divu128() are (ns << 32) as a 128 bit value.
++     */
++    uint64_t lo = ns << 32;
++    uint64_t hi = ns >> 32;
++    if (clk->period == 0) {
++        return 0;
++    }
++    /*
++     * Ignore divu128() return value as we've caught div-by-zero and don't
++     * need different behaviour for overflow.
++     */
++    divu128(&lo, &hi, clk->period);
++    return lo;
++}
++
+ /**
+  * clock_is_enabled:
+  * @clk: a clock
 -- 
 2.20.1
 

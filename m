@@ -1,151 +1,222 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp353879lfc;
-        Tue, 9 Feb 2021 05:21:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwCrYe3foOBNk994AH5T6qEiCnyC6ifqHsW/a3xYixLfavDV7pHuFPqNPRcVaKHtqpTNs11
-X-Received: by 2002:a5b:488:: with SMTP id n8mr13592010ybp.224.1612876900658;
-        Tue, 09 Feb 2021 05:21:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612876900; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp354093lfc;
+        Tue, 9 Feb 2021 05:22:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJAY6yTnqd33GaQmAYjBtnlKw5RRTm/Dhym4nP55Mc82l3H6amIFK1hy6q1wUw6F0KJyDm
+X-Received: by 2002:a5b:491:: with SMTP id n17mr22876767ybp.484.1612876922663;
+        Tue, 09 Feb 2021 05:22:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612876922; cv=none;
         d=google.com; s=arc-20160816;
-        b=b4vgZX95R/Cny/QYwNjfdtzuj1rZQc7deXkQiZO59g2qMLQJRseCUup2cgLD6NLPSf
-         rDy1jpSV/W7j3PxumbL/Spk29sxqlx/mFRDJJ5mRpzYfgROwCFwKByBw9CB8X4xL8Tt8
-         hnhz8u9LlJm889u2u5sBSG/F0zZzASUmqgH/ixd5FxV83TbdQrA25+85qj9ZaMguquc7
-         nW8aj9JX6eb9gPGeCuAOlKG/TbrZxGdeV4YwLekgPJKxitv+BOYfNI4z2PBzxKl/zdtX
-         oP2oFZFgwBmzOitmvrDaNjqTCo6hdZo4vanQcF5EziKBLwL2GgdhfTNPSeOQOOluXtAp
-         eZfQ==
+        b=a1fyTuMhXX1gss+JTRmw6FXS0fKiJHMQRXDm1xt8W6vMw1yUs9ENBmgnhcFvKqbJ67
+         sWlIZZjvoumupsnJmch/UAr9PDZqpWs7XkGA2DP3fr6cyhtlnFBfuv+Iat7duYKdL9ms
+         4BzC5+5cJ2ubJya6ebWT3PyjmP1tjdwA61EBovZrvzj5ajHQpUPDptAu9VY6qXQD0TCA
+         RpCmGoVKZqi3DDGXfRxZDlu1M6tnSSpGMt3gu1XhqoYurcG4LWAnqQrX6qA6vhz9WyTW
+         +GHuJeEWdo2KoWbC8Kr99PQEYwuGsP4gHJzXRhaDOwV0lMuKCXt1PNmiEG69ppVwi2Hs
+         0Wpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=RQnHSU5URki5Eoi1GvfEMafAg4qrSv6IwWbelkI4His=;
-        b=rSKfIBQaSYT7FEcZkZUf/qFN+RrzCBT+SwnUcp22HUB8t1LgdPGkv+2uTm23mnsasS
-         BGa43Hb1RSL9Io5anr6nVMbSng1hYU9ZGkqydHXiTtSeFyM/rBYOp+pRAxwUo2xWZvB0
-         agElD/m3ADzQ2W9JMtOSDVL51GVP2IUvDat/vBlBLC72U8YBctzqAFdw4tjf403DJSUA
-         FlDgjuchoEM7uDRXyR9SpxqP5mrru3DFaJphBSm1LDLf1Ewux0kKxVxc27PQqZdlJXBT
-         J15t5amKQr5mkeYSdcGAA+RsjuHnpWCPjpzfgUAiNN9WvjIWf1r6flQnQmLDymji6YYo
-         G6pA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=d86tePBRdT/Wa66ZnpeoY9R7MMLota3OwO1BIOPVBhg=;
+        b=kWiEWrOVYLeaI8uWamKBRhIHuvZpaltC2/DfrxtAM+ssXp/RaMTF4yO2CL2ICAeXip
+         RQKPBCL+ETjTfpO3HbZQUGpEEYK7HerLuAeGawmB7D4QD7mMbBa2NOg3rhbvOrBat6JJ
+         tIwJVAJOIpPluqrrA3bSSkpgjIYjNwSnV1LIrJkPgEmTrUTyNEg+afa1qpDwG2Yrs7Pv
+         YCXmL/OgJtkFI2Q/7siDKG/b2IhZfPjOBFdNpUFJA6U7y6jf318WSUK56YEoFZKxduF3
+         bzQJ2IjyX0l3+goNUkfKa0qCM54pGZSU9M0FYd/UhSzrPWHAO16lyevwkgl+3JmrJiLg
+         HCXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eekVPp/C";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=hWKpRV7F;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p127si19074037ybc.19.2021.02.09.05.21.40
+        by mx.google.com with ESMTPS id m65si21806195yba.269.2021.02.09.05.22.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Feb 2021 05:21:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Feb 2021 05:22:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eekVPp/C";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=hWKpRV7F;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9SxY-0003IH-1i
-	for alex.bennee@linaro.org; Tue, 09 Feb 2021 08:21:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33914)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9Sxu-0002kS-1p
+	for alex.bennee@linaro.org; Tue, 09 Feb 2021 08:22:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l9Swr-0002oo-JY
- for qemu-arm@nongnu.org; Tue, 09 Feb 2021 08:20:57 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:52605)
+ id 1l9Swl-0002kE-Ql
+ for qemu-devel@nongnu.org; Tue, 09 Feb 2021 08:20:51 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:46005)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l9Swj-0000m0-Gd
- for qemu-arm@nongnu.org; Tue, 09 Feb 2021 08:20:57 -0500
-Received: by mail-wm1-x329.google.com with SMTP id i5so3105773wmq.2
- for <qemu-arm@nongnu.org>; Tue, 09 Feb 2021 05:20:49 -0800 (PST)
+ id 1l9Swf-0000gt-Ie
+ for qemu-devel@nongnu.org; Tue, 09 Feb 2021 08:20:51 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id m13so21650287wro.12
+ for <qemu-devel@nongnu.org>; Tue, 09 Feb 2021 05:20:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=RQnHSU5URki5Eoi1GvfEMafAg4qrSv6IwWbelkI4His=;
- b=eekVPp/C9p6r8Vv1bvidh5JjtT5UYSt+vsgApr3nfh84RAaSvnD/6OKfx3K+tcCuCR
- riuYCYES6FN+KlUeWd83JvS/tlphQg1PkS38P3epX/v/0GBcxhHKxwfMtsiigjF6aq2+
- lbSRL4Pe8v+tiAopoakCQKbNveVHmaSx6Uj5rUXIcxIucOJyBzbFWh3adDJnHWRXHqNM
- 1Up7NyRhMsMXmPewbucxS7K0Uuac2p5i1ttMOFqpqBWPTlHKI0SAvEq8iF/97cHi+h+c
- WTwWof2XitOZhCetL6ccuau3YcbooBsqPDMTmD/f6T/sbHbs+OwmNnNCHxSeXchVcOJq
- G2Yw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=d86tePBRdT/Wa66ZnpeoY9R7MMLota3OwO1BIOPVBhg=;
+ b=hWKpRV7F4fEO7pN+Ux32P9blPOhoeQWp5DYWryg166oFUR3+tZpcQ1uOeuC1M+nlUv
+ R3dU3KuurRi1fJkdJLnB9/f5DFs/QRNPn5YKIPzyoXgejCHLHkue8f2WfXnhnXW6Qs/2
+ CgBQyz1/l7h+QiX1mt6Hp6O3OIuHse9tM4ec+Fsha3orLQdicepUTG/R+VwHuZc3kbhR
+ OJMU7gGNEj0sAWtEgVwmGz1sMPwrjbgfVt6W0gr6mwGqsbKxhaaLMBz12dzxz1H3epbB
+ dcT3S06ptlSsaju39JXUOUTUdZcKgtGfBpIQntKDxbeAOjTgoCpHaAn5yI2Q7abN7eT2
+ 2K4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=RQnHSU5URki5Eoi1GvfEMafAg4qrSv6IwWbelkI4His=;
- b=VPI8A90bIMjYfgaqz3oKWdHxpFEvfNKeef5HpquG5qnzDYRCIOx8XscxyU7uTdssvE
- d7UN6I53oKF7NCDVhKP0P1dp0HY9xlVMqAYfaI3mWTthdhzT9NuVtsjmhOpqo9BQSMoa
- 2buRf4gVImWwlfNVBuykE08N8PT6I8Vzk+VreAmd6BtINp6MR0v8w5lEwR8IfHVp4hw9
- xHqzbuYdStRbepeZMUjv8THyaODlLrdWMXtA9Vd7GH7H2eFXmDLOJ6+qLB3qK4te6Cce
- Hvx2QJSVKtTGgLT2hzr+k2hWe5A9zBVyBL+dIFCT1YOlYOAumlr4PkSHK91JCN0KzIWs
- WKJw==
-X-Gm-Message-State: AOAM5328/le6cxKGQIVcGtZRANc8Xm0cBdm9mBqIdL7U00CohUb7l5/1
- u4jpx6colBuFkW9gga3K5qoMTl9LH6kxIw==
-X-Received: by 2002:a1c:1d8b:: with SMTP id d133mr3431989wmd.172.1612876847751; 
- Tue, 09 Feb 2021 05:20:47 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=d86tePBRdT/Wa66ZnpeoY9R7MMLota3OwO1BIOPVBhg=;
+ b=CHMuZjXz/hLzkDPv4B1GXIlFu0wTRcKkBBrzet9xtmFdkz98p27el5emOVYBovA5GB
+ NecQu3sEWj/g+Vb773bjXWW7bDLYGOaU775o5M5kWMaBw/Du/gR+0gPX0q3Zo3WTVaRt
+ 37PkoYdnzgFal82FHUdUmyhQXL5i7TCRJ8zgjy9eRymCoLL1PZnkMu1cUAERRVBeho8U
+ A6sv5094mi2BielXcY+90EgsObhYyiLIRP+m1TIgMaSxH7cp0Dp1VK3HufEDUY2/5dcz
+ 6rQ6w7ZquBChLyDLPFGBJ7SAhdClw6yBzqd2WbQAsJ99xa2nxyJ4fO/CRBmV1dIfx8R2
+ Tk5w==
+X-Gm-Message-State: AOAM532tXsYPcFwOuw8h6AsBRn1AoIUCWgXs/JxqJuAFFUc/VVkGUCKC
+ Yazv73kdW7kwN0OHBhKwXI6JDw==
+X-Received: by 2002:adf:f549:: with SMTP id j9mr15987994wrp.347.1612876842933; 
+ Tue, 09 Feb 2021 05:20:42 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y11sm34752472wrh.16.2021.02.09.05.20.46
+ by smtp.gmail.com with ESMTPSA id y11sm34752472wrh.16.2021.02.09.05.20.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Feb 2021 05:20:47 -0800 (PST)
+ Tue, 09 Feb 2021 05:20:42 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 4/4] hw/timer/npcm7xx_timer: Use new clock_ns_to_ticks()
-Date: Tue,  9 Feb 2021 13:20:40 +0000
-Message-Id: <20210209132040.5091-5-peter.maydell@linaro.org>
+Subject: [PATCH v2 0/4] New APIs for the Clock framework
+Date: Tue,  9 Feb 2021 13:20:36 +0000
+Message-Id: <20210209132040.5091-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210209132040.5091-1-peter.maydell@linaro.org>
-References: <20210209132040.5091-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Tyrone Ting <kfting@nuvoton.com>, Luc Michel <luc@lmichel.fr>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Havard Skinnemoen <hskinnemoen@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mwS+P7Sbdl85
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: o1voMoTCAi7l
 
-Use the new clock_ns_to_ticks() function in npcm7xx_timer where
-appropriate.
+Hi; this patchset proposes a couple of new APIs for Clock, which I
+found I needed/wanted for a work-in-progress patchset.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/timer/npcm7xx_timer.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+In this v2, the only change from the RFC series is that as Luc
+suggested I have made the clock-callback registration mechanisms
+all take a new parameter specifying the mask of events which
+the callback should be invoked for. (This is instead of calling
+all callbacks on all events and requiring them to look at their
+'events' argument to see if they should ignore the call.)
 
-diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c
-index 4efdf135b82..32f5e021f85 100644
---- a/hw/timer/npcm7xx_timer.c
-+++ b/hw/timer/npcm7xx_timer.c
-@@ -138,8 +138,8 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer *t, uint32_t count)
- /* Convert a time interval in nanoseconds to a timer cycle count. */
- static uint32_t npcm7xx_timer_ns_to_count(NPCM7xxTimer *t, int64_t ns)
- {
--    return ns / clock_ticks_to_ns(t->ctrl->clock,
--                                  npcm7xx_tcsr_prescaler(t->tcsr));
-+    return clock_ns_to_ticks(t->ctrl->clock, ns) /
-+        npcm7xx_tcsr_prescaler(t->tcsr);
- }
- 
- static uint32_t npcm7xx_watchdog_timer_prescaler(const NPCM7xxWatchdogTimer *t)
+If people prefer I can keep hold of these patches until I have
+the board-support series that makes use of them ready to post;
+but I think if we're happy with the new APIs we could reasonably
+put them in to the tree sooner (especially since patch 1 means
+updates to all input Clock users).
+
+
+The problem the first two patches are trying to solve is that I found
+that I wanted the old value of the Clock's period when my device got a
+notification about a frequency/period change. The current
+ClockCallback API calls you after the period has changed, so the Clock
+is already using the new period. I wanted this because my timer device
+has a register that's basically a free-running up-counter; the value
+of that counter can be calculated with:
+
+  s->ticks_then + clock_ns_to_ticks(s->clk, now - s->ns_then);
+
+where (ns_then, ticks_then) are a tuple of a QEMU_CLOCK_VIRTUAL time
+and the tick count at that point. Whenever the clock frequency changes
+we calculate a new (ns_then, ticks_then) to use as the baseline for
+future counter value reads, but in order to do that we must calculate
+ticks_then using the *old* clock period.
+
+My solution to this is to add a ClockEvent argument to the callback
+function, which is an enum:
+
+  ClockPreUpdate : callback called before period change
+  ClockUpdate : callback called after period change
+
+When a callback function is registered a mask of event values tells
+the framework which events the callback should be called for.
+
+The problem the third patch addresses is that we don't have a function
+for "tell me how many times this clock would tick in this length of
+time". clock_ns_to_ticks() does the inverse of the clock_ticks_to_ns()
+that we already have. Two points in particular where comment would be
+useful:
+
+ * I chose to make the overflow case (where a clock has a very short
+   period and the specified length of time is very long, so the clock
+   would tick more than UINT64_MAX times) just let the value wrap
+   around, on the basis that usually this is being used to calculate a
+   guest register value that's in a 64 bit or 32 bit register, and so
+   wrap-around is the right behaviour.  But I'm not 100% set on this
+   if somebody has a better idea.
+
+ * The calculation needs to do a 96-bit / 64 bit => 64 bit division,
+   for which the best thing we have is divu128(). This is particularly
+   painful on 32-bit hosts. I don't suppose there's anything clever we
+   can do to make this better ?
+
+Patch 4 just uses clock_ns_to_ticks() in the one place in the
+current codebase where we're currently using clock_ticks_to_ns()
+and manual calculation.
+
+thanks
+-- PMM
+
+Peter Maydell (4):
+  clock: Add ClockEvent parameter to callbacks
+  clock: Add ClockPreUpdate callback event type
+  clock: Add clock_ns_to_ticks() function
+  hw/timer/npcm7xx_timer: Use new clock_ns_to_ticks()
+
+ docs/devel/clocks.rst            | 71 ++++++++++++++++++++++++++++----
+ include/hw/clock.h               | 63 +++++++++++++++++++++++++++-
+ include/hw/qdev-clock.h          | 17 +++++---
+ hw/adc/npcm7xx_adc.c             |  2 +-
+ hw/arm/armsse.c                  |  9 ++--
+ hw/char/cadence_uart.c           |  4 +-
+ hw/char/ibex_uart.c              |  4 +-
+ hw/char/pl011.c                  |  5 ++-
+ hw/core/clock.c                  | 23 +++++++++--
+ hw/core/qdev-clock.c             |  8 ++--
+ hw/mips/cps.c                    |  2 +-
+ hw/misc/bcm2835_cprman.c         | 23 +++++++----
+ hw/misc/npcm7xx_clk.c            | 26 ++++++++++--
+ hw/misc/npcm7xx_pwm.c            |  2 +-
+ hw/misc/zynq_slcr.c              |  5 ++-
+ hw/timer/cmsdk-apb-dualtimer.c   |  5 ++-
+ hw/timer/cmsdk-apb-timer.c       |  4 +-
+ hw/timer/npcm7xx_timer.c         |  6 +--
+ hw/watchdog/cmsdk-apb-watchdog.c |  5 ++-
+ target/mips/cpu.c                |  2 +-
+ 20 files changed, 226 insertions(+), 60 deletions(-)
+
 -- 
 2.20.1
 

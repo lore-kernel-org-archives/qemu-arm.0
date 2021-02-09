@@ -1,104 +1,107 @@
-Received: by 2002:a05:6512:1055:0:0:0:0 with SMTP id c21csp1027lfb;
-        Mon, 8 Feb 2021 18:31:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxmM+j2yRG/lYJk58m1Gu9pHa3JG6ZH8Nhk+rqiHZvo7Oiez5tvf50txw8ZfiblCCa5+e3d
-X-Received: by 2002:a5b:98a:: with SMTP id c10mr30159698ybq.406.1612837910347;
-        Mon, 08 Feb 2021 18:31:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612837910; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp353653lfc;
+        Tue, 9 Feb 2021 05:21:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyL3zlpxuMLvp2WG0ExZFJbfuUzny+8j4u62uVXnvCKsR9teU9OrUPurO6AWJg/O4sEGrWw
+X-Received: by 2002:a05:6902:1001:: with SMTP id w1mr33138400ybt.176.1612876882684;
+        Tue, 09 Feb 2021 05:21:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612876882; cv=none;
         d=google.com; s=arc-20160816;
-        b=ti5ZQAeqzWjo3TfoaMnBPDOo++mxquwm2vmQq4/B7U+UzUbW+NBVfFjUuqm6Pv83Lz
-         gStQKOV8MZyW6wG4rvWVy271lbZ+fuVncSTOgSwIdAibyjFiCGAUjcSwFmajm8B6ITQC
-         w0pYcUqmZUUVcLe08DmEKKd7UJaB6MmPyN4aD1BY69XoO3nh9dG8K+TEo4VGxoISFPVu
-         LANQ2kCjmBvG1PHLpQPZ1YP2EV6zdipb5h61bcuLNU3UY/fBbKDEdivO9+tWOPdPQ+oj
-         TYKFYjrnjvk6G6ciWeLayPWp+kaL6WO0CCFwj/7WBP2ygk13hK6QDTh1aN9YCChu4tHg
-         k9LQ==
+        b=McW2cnXpv0rzE5lRdQ6NkA93Pq15+LT1IxsIxY17GszZciZfC9XMiQz8AQOdTwtTOy
+         D8XDDMWbqaezgH5NncVXBMX4Up+FOG1oJk3kaDf0Xwbv8OHVLheabct0UPSYhl8FG8Sc
+         z85RjieT79bisDHsHLJMUwSxa43Or3joqrlmKyYvE+L2eay+Kxa2o0f8tvH3ckLrmS0t
+         cfHSbdaiPmlVXBlO9hQJ6NkoRhZ4BqTO1GAe39x2MhLv75ceYhST/cE1UmhKbNVxYWOE
+         6qYxodE1+Dhh9I6NhkqZqHSGSFOyhkoRCYHMQpaV0DC+cNcMOTTbefx6Dz3mTKwUxUCA
+         Ta1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=whUhywCRSO8xmFomhniK907UoqTw68Kowc8+zndhjtI=;
-        b=YqzqT5wXIPdNA1v/rpfNdC2vZgBuCBafHnGGu1Eb2EFRLN0i351lGqk1Z+HW1vZ4pn
-         aN1FsGB5mla3iUNJpVbSVjuxfVbyKUFUE9Dma2Q3PLzfpJAmSeWPA2zwm+FapUOQideH
-         kWPovVByXHRY0EtBfjk0rRLKP04wX94nIDZE/ScpMxT6vD/dEJCF1LgmFMqsW5TMpf4V
-         gGPMck4b0Z+Xqfo0t9b0QXAnIhiXzrPaaA6qI+BZu7N5Gl7dA3Vg/ViHoxPaHEYdMygb
-         KDH6RXBvURO1AaCoWIwNXdp60tvddQiIaGv1hR/41bX7qb16wCSLGp8/cI4WQQEy5HBm
-         4tdA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=v42h+/gUC/c3GqgbqA5jD8JSk9/EEyzsdB3W6E1Nn8k=;
+        b=olZnfxP/TFls+S8LJ9kXBgn7mtccSvpv+f1C7iDjKVQ5PTR/hM8KvgtkrCgoq6brGu
+         FfA8GjHqaTBII3DSmzeFFriC0OCorC6XbuoK7vIAF1kZfxKTJUmUJwL6qXoUoKGzaa5m
+         mbNAXpPJ+SjnipjgD763eUWICvXrhdY4d3zakd6kGovBhI83fZbi8P0M0L0rox4g92xA
+         Q53UM5DfBABEKZr9QjN1REYk+ocjP9feM/bLzmqH4GV7VZW4RZqNLYVbCmtHqdUUJoFP
+         YhfUJOBI/7t7GQ9PKK7a2w8JaOF2V5Uw2lQvdQdS80RRa4qExELn8dHCs3M+C+hPZfk4
+         TkZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aWHhwo+t;
+       dkim=fail header.i=@linaro.org header.s=google header.b="N8uu5k/v";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x61si9726947ybh.408.2021.02.08.18.31.31
+        by mx.google.com with ESMTPS id y8si21803458ybo.338.2021.02.09.05.21.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Feb 2021 18:31:50 -0800 (PST)
+        Tue, 09 Feb 2021 05:21:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aWHhwo+t;
+       dkim=fail header.i=@linaro.org header.s=google header.b="N8uu5k/v";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60404 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47438 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9IoN-0003Gd-4T
-	for alex.bennee@linaro.org; Mon, 08 Feb 2021 21:31:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55632)
+	id 1l9SxG-0002n9-1M
+	for alex.bennee@linaro.org; Tue, 09 Feb 2021 08:21:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l9Inj-0003AB-BB; Mon, 08 Feb 2021 21:30:51 -0500
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29]:42672)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l9Swo-0002lV-Fp
+ for qemu-arm@nongnu.org; Tue, 09 Feb 2021 08:20:54 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:54271)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l9Inh-0004ZO-Ji; Mon, 08 Feb 2021 21:30:51 -0500
-Received: by mail-yb1-xb29.google.com with SMTP id b187so16663035ybg.9;
- Mon, 08 Feb 2021 18:30:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=whUhywCRSO8xmFomhniK907UoqTw68Kowc8+zndhjtI=;
- b=aWHhwo+tAWSTpnV2DjGhbpazopm/bc/GhmPdd3njquGunhcehnBMDwvF6CEbWeOs4c
- a7gmJfU8yU45DecSX7c9HS6YOSegeNwTF1qQuTyPIdweDBR49/6RGuQywdin9+pfRdwh
- kZ4HFnecMBGZ1e0g6zK9hgzgMoR7JLfdvT4gmtcOPcCNU2nRmUYd52uN+zoTX6cxzqQP
- XxlytZu+QYK+t33z4i9HZytwys1vlEDg4w06i6OpeWeHRtNf0WAvKjX0U6JoIcTVxFYl
- W2W8ovKXxebcqHBEx75Dlq5n+4wpgfbbAV6c62HfnpuwdIFGrz72364a6EAfTIGXBNwu
- ynlA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l9Swj-0000ji-Bb
+ for qemu-arm@nongnu.org; Tue, 09 Feb 2021 08:20:54 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id j11so3090025wmi.3
+ for <qemu-arm@nongnu.org>; Tue, 09 Feb 2021 05:20:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=v42h+/gUC/c3GqgbqA5jD8JSk9/EEyzsdB3W6E1Nn8k=;
+ b=N8uu5k/v3/P+C0n1YKAMNItFrfsWkQHVBcmxzp0jIMagS+1Ldk2l5vQrjXZ5juGb5s
+ juhn+lJOY0mOZBT2+Mytw1WwDwSEIXD+vYnpnshe6ZogN12lUegyWXmmg5vwN3zOChuy
+ SGzcJGgcoa/ZUMmk5Nr9duXR2/CDGH7d2E/3eRxosIMCOrgxLHS3DR0O6o+U0E1aZ+iY
+ pWIcaXay9gxukfzB5v9EatN7+H4rlfpd6efjfRk+FmLyJBekOWlXMN2G7i0qnlorrfmj
+ XPmSWQKHVLPuNO7o4bidNx10hbYsp9de/v7aZ6V7HVkyFIwEa1ngyJACv94tmsPQC9Jo
+ 0oLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=whUhywCRSO8xmFomhniK907UoqTw68Kowc8+zndhjtI=;
- b=EOrVBLb8khYszTPR4an4ea0RpcHaWFg9OR1yvv7eA6ZpcVRSnRL1wn8uEc6WFXzbgw
- yONstgPba+Mbc48el7a0X+RU3fl6yRbkP3vlTGyBS62qH46lcviseeLaGBG9TEneX/pG
- DyVqeFocycvl8daYOG7zv+OGHbYH6zaUSdJ8d45bcZhhSNIfg1wuKh1eOUWhVzmnuM/T
- 90G0KdwIUkOXi4pU7aVey0FGjJfeS1o7xYF42xJb5iTWp8lFGhCKQL7rNwPbbcvc8l4R
- jur4ZaRtNCsp0+AfVK6IeXecW7K6STBGNbEJtx/r3HFQWuB+c5j0O2NENDmujTJGhW+e
- 7hlQ==
-X-Gm-Message-State: AOAM53195NjrxH7kvy0AGEz3AHUXTLEBvRq8lGrz27Dvj0SCFAQwe1nL
- QlcQibekPQSFJSgf03WhlB6lnXcBP6Wuxengpkc=
-X-Received: by 2002:a5b:5ce:: with SMTP id w14mr28711179ybp.314.1612837848016; 
- Mon, 08 Feb 2021 18:30:48 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=v42h+/gUC/c3GqgbqA5jD8JSk9/EEyzsdB3W6E1Nn8k=;
+ b=ITBqX3Y5MxXfZoGpUsC4Lq7M4dPc7I6/ul8fE+SMqZBEaG91FzhdfiITiwwRLjtAzL
+ l6YQJ8XeZuCTW714i7MSQceKlQ0a+XKmYtVTlmMmFspvaGN8WxvYTAK42UHi008mEkKE
+ F6Htnnfhc6m0zZbW0aBpsqJStj3M2pXEoGx36j3nl9QwUmD6mdtj5aDEFEdL4f+Dx9u8
+ M7pLgQaB1heYR84P0s9Cft2pUQzknWfb/KVlSN0Ng+1utbAmJ7wfb1fVOmBYQwO/8B83
+ oawnq8gkDMgHz3MTniT1VaGG+RmhPwBqNF5dj/bKW0pK4y/7Jaf4enb7OJGCyxU4WcYQ
+ uO3g==
+X-Gm-Message-State: AOAM531rQGjc4hBT4+23M5F3l0aW2dnGZIPX2NzPS63AMoKj2I6Ee5rp
+ y7Rccfvv1kYdCG8NUIUgc0uvRKbZ0JqLgA==
+X-Received: by 2002:a1c:c6:: with SMTP id 189mr3498907wma.128.1612876845507;
+ Tue, 09 Feb 2021 05:20:45 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id y11sm34752472wrh.16.2021.02.09.05.20.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Feb 2021 05:20:45 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v2 2/4] clock: Add ClockPreUpdate callback event type
+Date: Tue,  9 Feb 2021 13:20:38 +0000
+Message-Id: <20210209132040.5091-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210209132040.5091-1-peter.maydell@linaro.org>
+References: <20210209132040.5091-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <1612761924-68000-1-git-send-email-bmeng.cn@gmail.com>
- <1612761924-68000-3-git-send-email-bmeng.cn@gmail.com>
- <20210208124425.GI477672@toto>
- <CAEUhbmV=QLCuk5_bymrVNPO_vEU=R1A3urAaqhnNAgSGpiTsGw@mail.gmail.com>
- <CAJy5ezooJ21SAFhR2Pf=1aAwBkPEUivbCawZy-geCx+g36EP2Q@mail.gmail.com>
- <CAEUhbmVZr0pAW86kYjiXryN3cOaPc2LmrH9=fqLQUUdJrKX4Cw@mail.gmail.com>
- <CAJy5ezqPC365CAjzMmAfSyKw9uL+ur48bD4=WmMQWHA+_fCE=A@mail.gmail.com>
-In-Reply-To: <CAJy5ezqPC365CAjzMmAfSyKw9uL+ur48bD4=WmMQWHA+_fCE=A@mail.gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Tue, 9 Feb 2021 10:30:36 +0800
-Message-ID: <CAEUhbmUfwOwkcLhW9X0R46rAX3R7ygu2osgCqmuY0cne706MtQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] hw/ssi: xilinx_spips: Implement basic QSPI DMA
- support
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb29.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -113,90 +116,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
+Cc: Tyrone Ting <kfting@nuvoton.com>, Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MU25zaqryaAO
+X-TUID: O8VJ4gwbSMty
 
-Hi Edgar,
+Add a new callback event type ClockPreUpdate, which is called on
+period changes before the period is updated.
 
-On Mon, Feb 8, 2021 at 11:17 PM Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
->
->
->
-> On Mon, Feb 8, 2021 at 3:45 PM Bin Meng <bmeng.cn@gmail.com> wrote:
->>
->> Hi Edgar,
->>
->> On Mon, Feb 8, 2021 at 10:34 PM Edgar E. Iglesias
->> <edgar.iglesias@gmail.com> wrote:
->> >
->> >
->> >
->> > On Mon, 8 Feb 2021, 15:10 Bin Meng, <bmeng.cn@gmail.com> wrote:
->> >>
->> >> Hi Edgar,
->> >>
->> >> On Mon, Feb 8, 2021 at 8:44 PM Edgar E. Iglesias
->> >> <edgar.iglesias@gmail.com> wrote:
->> >> >
->> >> > On Mon, Feb 08, 2021 at 01:25:24PM +0800, Bin Meng wrote:
->> >> > > From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
->> >> > >
->> >> > > ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
->> >> > > is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
->> >> > > crash. This is observed when testing VxWorks 7.
->> >> > >
->> >> > > Add a basic implementation of QSPI DMA functionality.
->> >> > >
->> >> > > Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
->> >> > > Signed-off-by: Bin Meng <bin.meng@windriver.com>
->> >> >
->> >> > + Francisco
->> >> >
->> >> > Hi,
->> >> >
->> >> > Like Peter commented on the previous version, the DMA unit is actully separate.
->> >>
->> >> Is it really separate? In the Xilinx ZynqMP datasheet, it's an
->> >> integrated DMA unit dedicated for QSPI usage. IIUC, other modules on
->> >> the ZynqMP SoC cannot use it to do any DMA transfer. To me this is no
->> >> different like a DMA engine in a ethernet controller.
->> >
->> >
->> > Yes, it's a separate module.
->> >
->> >>
->> >> > This module is better modelled by pushing data through the Stream framework
->> >> > into the DMA. The DMA model is not upstream but can be found here:
->> >> > https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c
->> >> >
->> >>
->> >> What's the benefit of modeling it using the stream framework?
->> >
->> >
->> >
->> > Because it matches real hw and this particular dma exists in various instances, not only in qspi. We don't want duplicate implementations of the same dma.
->> >
->>
->> Would you please share more details, like what other peripherals are
->> using this same DMA model?
->>
->
-> It's used by the Crypto blocks (SHA, AES) and by the bitstream programming blocks on the ZynqMP.
-> In Versal there's the same plus some additional uses of this DMA...
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ docs/devel/clocks.rst | 9 ++++++++-
+ include/hw/clock.h    | 1 +
+ hw/core/clock.c       | 3 +++
+ 3 files changed, 12 insertions(+), 1 deletion(-)
 
-Sigh, it's not obvious from the ZynqMP datasheet. Indeed the crypto
-blocks seem to be using the same IP that QSPI uses for its DMA mode.
-With that additional information, I agree modeling the DMA as a
-separate model makes sense.
+diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+index cd344e3fe5d..f0391e76b4f 100644
+--- a/docs/devel/clocks.rst
++++ b/docs/devel/clocks.rst
+@@ -181,7 +181,14 @@ events.
+ 
+ The events currently supported are:
+ 
+- * ``ClockUpdate`` : called after the input clock's period has changed
++ * ``ClockPreUpdate`` : called when the input clock's period is about to
++   update. This is useful if the device needs to do some action for
++   which it needs to know the old value of the clock period. During
++   this callback, Clock API functions like ``clock_get()`` or
++   ``clock_ticks_to_ns()`` will use the old period.
++ * ``ClockUpdate`` : called after the input clock's period has changed.
++   During this callback, Clock API functions like ``clock_ticks_to_ns()``
++   will use the new period.
+ 
+ Note that a clock only has one callback: it is not possible to register
+ different functions for different events. You must register a single
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+index 5c73b4e7ae9..d7a6673c29e 100644
+--- a/include/hw/clock.h
++++ b/include/hw/clock.h
+@@ -30,6 +30,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Clock, CLOCK)
+  */
+ typedef enum ClockEvent {
+     ClockUpdate = 1, /* Clock period has just updated */
++    ClockPreUpdate = 2, /* Clock period is about to update */
+ } ClockEvent;
+ 
+ typedef void ClockCallback(void *opaque, ClockEvent event);
+diff --git a/hw/core/clock.c b/hw/core/clock.c
+index 71dc1f4de65..2c86091d8a3 100644
+--- a/hw/core/clock.c
++++ b/hw/core/clock.c
+@@ -80,6 +80,9 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
+ 
+     QLIST_FOREACH(child, &clk->children, sibling) {
+         if (child->period != clk->period) {
++            if (call_callbacks) {
++                clock_call_callback(child, ClockPreUpdate);
++            }
+             child->period = clk->period;
+             trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
+                                CLOCK_PERIOD_TO_HZ(clk->period),
+-- 
+2.20.1
 
-Will investigate the Xilinx fork, and report back.
-
-Regards,
-Bin

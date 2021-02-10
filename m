@@ -1,101 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1212772lfc;
-        Wed, 10 Feb 2021 03:55:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzmQpXQdNMJC3yR1M2c6ysLYEuJGn/gin2g83wGNPYAdLrJlFGZcIFPWbC8AA5qFyixQqqO
-X-Received: by 2002:a25:888f:: with SMTP id d15mr3925606ybl.12.1612958115424;
-        Wed, 10 Feb 2021 03:55:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612958115; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1341820lfc;
+        Wed, 10 Feb 2021 06:32:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwW4TOFnxVOv+kUAbeGPXYCqyShVsxpk09LgY2Rc1LyYMitIOn2VGBrLm5yb0tWp+7XqIeF
+X-Received: by 2002:a25:6d8a:: with SMTP id i132mr4710635ybc.337.1612967576100;
+        Wed, 10 Feb 2021 06:32:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612967576; cv=none;
         d=google.com; s=arc-20160816;
-        b=m69FdEVCAAjMnlsppFSohTDbpgP1Pn9VU9p86RUZYf5FFnLpevmsawtZfXxjUCWYTL
-         5ugyBdglaa6+p4cPs8MxH/TFE+GZs5zwlyMGGY7Q+Oal9lG7Zt03aMd9qiG3lgZD41rU
-         /HYZyRr2gvPd+hHW1zkOSxhN+xKWSS83DYziGWBPxxlsAbf3RDQHN7E43xoPZBNHkK6r
-         jLFULldXJVPqj3c3O4spGS0iKXnfZgM7acFP+CNX66qG9h6R3EBCHpwS70gSFc9v9oVP
-         LOgvt7dTfbKU1csiibDO03nE5AONAJOpBuUf6wn7oG8IqGDbNARQHV9jEILkEquZGiF3
-         8C+Q==
+        b=PehYfYNSzEcdK9Ljisar0ijBSHMrU0lIh3+gJiC+Sn3tTIN/iqJK+FyXZrv9bJDqLy
+         0oQKcdkKALa9zUXlN5VNODPrHRyf85eF+c7SEIVnnSjWzK41L1wAwp0uHF8R4bmdeN8E
+         uVi9uaf7bmU3gQ35UQsNpwC91NBOIuxx9SntVAJPeW8C5EsEbHbcbRyXtr3IyRkAfEoc
+         BGXdJN3ZpKoJ3hHDGh2MA+uIPqdEWgbW40sQgtprXldnY1fjIDyiMC/0r4PqRwHKSE4j
+         8KXCdJIFg6vFJqCela8bajfiAsfWcaw6GEcTwOgAHyamaMzbQ+TSfpmYUmQYmZiO+tCp
+         a/nQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=QIzABhLDJ5Q0Ngs3M8y9FymRO6TSDU6K0+h95jO2/Fk=;
-        b=YYCpV8NIGiIkC7aYAY8MsJvhxzzQv+Hqr02oiX/ZC03uzAzuuWM4+LnsqntvpWQtdZ
-         cg6lbuiydJvVMz/z+M6tqTSWznFg8+ZvaFP7evr03ek/R4AIa9kFsvGzN8EfSUNvpUa/
-         0+/MHW3KZmASTGwjFZUDIewIEOhSrwkGMfhGgfBFfpBSRzrdWT4mmsyocnfLs4uRYcjt
-         MADq7Fo95vbv00O+Wycq3MMojxj/FsYfOs82v71w0cVaMhzz8qIrjMu0uQwD9OueIVjb
-         3JbDu9KHve98gM9nGp70ZpNDyNXHG/MRt1WruDTNpVYYLtkhh4HlhSNW4u0ZA3fNetVP
-         VoCg==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=l6LZ6aM2GsCm8qIVLfFuDOqLW3QUaWdw+Cv85kJu8CQ=;
+        b=FQtAkbuKU2FJRaK1DwwNXhSmYg6nMKXG4nhIP2+jHQxcSn0EbETzd+FoRrok7Hc/9x
+         IqK759AFKKrvaGKyL1pdXuK6+kYLJZk2pAo1/R7FU+gTjxNP3Lia46W7s9wuBJ1WrfSp
+         8rPcdE+S7xrOCaxEiwwF0LUDN3VDjxJR6JFxbonC4vgt6VM9ryiAPfjThwhBzbaBOFXB
+         5DTvjYqQ4TPo2JbwrjJTEGToQjgAOVH+qFnNGc5Q+CLQkIzF1awKBH1/QpQHTEdKIz1D
+         c2EM0T7Rwgt4S69AjW0LoPXNQfD+hhnK2kxBGpVxGjcxwwsp4OJQgDbwpeVbh9ZlEPVq
+         II3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="bdmKM/rH";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kYsMsGHK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e126si1628054yba.452.2021.02.10.03.55.15
+        by mx.google.com with ESMTPS id k3si2051125ybp.64.2021.02.10.06.32.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 03:55:15 -0800 (PST)
+        Wed, 10 Feb 2021 06:32:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="bdmKM/rH";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kYsMsGHK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33188 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9o5S-0006hM-R5
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 06:55:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34156)
+	id 1l9qY3-00034D-GE
+	for alex.bennee@linaro.org; Wed, 10 Feb 2021 09:32:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1l9o5G-0006gG-2P; Wed, 10 Feb 2021 06:55:02 -0500
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133]:42680)
+ (Exim 4.90_1) (envelope-from <berardi.dav@gmail.com>)
+ id 1l9qXc-00031x-NH; Wed, 10 Feb 2021 09:32:28 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:35475)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1l9o5E-0004nZ-9o; Wed, 10 Feb 2021 06:55:01 -0500
-Received: by mail-lf1-x133.google.com with SMTP id f23so2355401lfk.9;
- Wed, 10 Feb 2021 03:54:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <berardi.dav@gmail.com>)
+ id 1l9qXa-00024O-St; Wed, 10 Feb 2021 09:32:28 -0500
+Received: by mail-wm1-x332.google.com with SMTP id n10so148496wmq.0;
+ Wed, 10 Feb 2021 06:32:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=QIzABhLDJ5Q0Ngs3M8y9FymRO6TSDU6K0+h95jO2/Fk=;
- b=bdmKM/rHjNurSB4QyBJIQFRRufejPNJxWd34uwnD8kc3DLG6AZnGOT5oa/eB58tRQD
- uWdSdcE+lKyyhtSH/UfO8QhtsNw0HW0RgnR7VO3BvpAYb1f/9h+cJJenZ75Yh6VY3jG9
- ImfQXKdfybHmNRjNSV3sr8gtizBm1n0VBfI9XktF9mBaaV4sp6snDRb0V5vhIqUF7Hn7
- MpottabbJtZ63VO4z4NYkhkLRHPhf3KIV/sucxtV5wW4xiF4yMCHCtDjBMBRwiL1/6VX
- nI3BsB6nv4aDt4RoqGRMiJdtw0jnuqASUUEmsIzm2sS+QeOqIl5l7Gemb2zaxAwiRyuR
- jnbA==
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=l6LZ6aM2GsCm8qIVLfFuDOqLW3QUaWdw+Cv85kJu8CQ=;
+ b=kYsMsGHK8gzNzQ1rBBtV4LhrUsEeb4NFd7QB9BB2LRuUgGyXBb7pu1u0DYqF0EQOjk
+ 0kOsfLqU5zlN4RF6xlO/v0P/FP0dptazzLUgRC6+Aqnb+rjOLMC8vigJG26btC4fNsyF
+ 1Mw2XN+Hv2GkBtkgQTsdsSPZZAISqOTxTqypteuSc77oePI76s1mHsQJ2wT+rwSo/8Pt
+ c615IoVJ7anQN/KtYXCl7aSbKCtz1iIeQlOAcW1krM2pUD4DDUt0dYGgd5wsgckYeeSJ
+ 2e/h59WBW8CSV9b9GKDInaohWhZIPEsJrfL8Xm0jFI9Pkel49ndo2HYDqBnzTZVlND+c
+ W93Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=QIzABhLDJ5Q0Ngs3M8y9FymRO6TSDU6K0+h95jO2/Fk=;
- b=qUkYstGPuN3Kf8rUCw4YVayJVcYZZm0Fl71icJeRLyAsARTzZynvGeNUMlIun6q/eW
- jiYDLB97nxZuO3lP86fWwQ7N10yH5pyP+jQQ1y+M1PbUsVpTLkXSnszyRN++Q+Jrz8sD
- nzWGllZ5BXSqhYNkn9Py6sLIT4ObKFGPjgkIR3kMGR49YKJftgHm+cxdI5HQvlrRZ2d7
- 4u7uLsvoNtVqY21Hvm7oLEeJWSqYyi/be6zC8RQnpKYBA2ym//HhYt7pvGrgcMGKtO0J
- TwD7x4Pxb0I2QQxclZjgy7Bh7QFGj00cRGuI7ZjauaGn/Z5RqRrPjhPX2XnAP8FEqf2j
- uM3w==
-X-Gm-Message-State: AOAM5309zqFf8cg9Cyhvoufnldju4DTCavhzcwF8pJkf3zAOxQnBGhMJ
- C20YqBn8ylhJ+O5+rjlL6p0=
-X-Received: by 2002:ac2:539b:: with SMTP id g27mr1556105lfh.580.1612958098351; 
- Wed, 10 Feb 2021 03:54:58 -0800 (PST)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id r26sm293246lfi.295.2021.02.10.03.54.57
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=l6LZ6aM2GsCm8qIVLfFuDOqLW3QUaWdw+Cv85kJu8CQ=;
+ b=izDJZoNXMKXt+A148VutZRHvMAgClTfaY/cjdoFkY3HJRHRbW76euA9VkLHE3v5vMW
+ oR1OkQLFnsU0zb5blhqVI/mJzzmoPhDCmamVCUj6iZSH04edJiAUQof/DNtOgxMHCTeh
+ SZCz5ly7S0PM0y7zXCcM6rw7LGm+WXxVA8kMA5/uXQyxgUJjEv3+meI0JRJsROpJv2io
+ vwozY9cCyGrYS4pyU2ascdTiaxTSc5uyEJrPc/2XlRk2P/ZcPY+IHlBbfXFm3sKOq9eP
+ URsUFJTifJxg1MNxarl0LzNiD8h9xG0umWw6MJ14Mg8vWRq7Gu+ebsKj3ZDLHxi8DwgA
+ BTRA==
+X-Gm-Message-State: AOAM532F5YOn0EMn2KPn+DH/iersnoeOxxmNznOgJn825MnyJPiKLGy4
+ b/Z64YSKYtw9C9aXt768TH0=
+X-Received: by 2002:a05:600c:d9:: with SMTP id
+ u25mr3261931wmm.49.1612967544230; 
+ Wed, 10 Feb 2021 06:32:24 -0800 (PST)
+Received: from localhost ([37.162.14.172])
+ by smtp.gmail.com with ESMTPSA id 64sm4117249wrc.50.2021.02.10.06.32.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 03:54:58 -0800 (PST)
-Date: Wed, 10 Feb 2021 12:54:57 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH v3 2/5] hw/arm: xlnx-zynqmp: Clean up coding convention
- issues
-Message-ID: <20210210115457.GO477672@toto>
-References: <1612951813-50542-1-git-send-email-bmeng.cn@gmail.com>
- <1612951813-50542-3-git-send-email-bmeng.cn@gmail.com>
+ Wed, 10 Feb 2021 06:32:23 -0800 (PST)
+Date: Wed, 10 Feb 2021 15:32:19 +0100
+From: Davide Berardi <berardi.dav@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH] Raspberry PI GPIO interrupt support
+Message-ID: <20210210143219.GA95384@carpenter.lan>
+References: <20210209110252.GA14409@carpenter.lan>
+ <355f1271-09c9-715a-a909-c0f05060dfe5@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1; format=flowed
 Content-Disposition: inline
-In-Reply-To: <1612951813-50542-3-git-send-email-bmeng.cn@gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x133.google.com
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <355f1271-09c9-715a-a909-c0f05060dfe5@amsat.org>
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=berardi.dav@gmail.com; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,96 +117,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-devel@nongnu.org, Francisco Iglesias <francisco.iglesias@xilinx.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y4x5XY71a+S2
+X-TUID: 88FtjPsM3D7W
 
-On Wed, Feb 10, 2021 at 06:10:10PM +0800, Bin Meng wrote:
-> From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> 
-> There are some coding convention warnings in xlnx-zynqmp.c and
-> xlnx-zynqmp.h, as reported by:
-> 
->   $ ./scripts/checkpatch.pl include/hw/arm/xlnx-zynqmp.h
->   $ ./scripts/checkpatch.pl hw/arm/xlnx-zynqmp.c
-> 
-> Let's clean them up.
-> 
-> Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-> Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> 
-> ---
-> 
-> Changes in v3:
-> - new patch: xlnx-zynqmp: Clean up coding convention issues
-> 
->  include/hw/arm/xlnx-zynqmp.h |  3 ++-
->  hw/arm/xlnx-zynqmp.c         | 11 +++++++----
->  2 files changed, 9 insertions(+), 5 deletions(-)
-> 
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index 6f45387..be15cc8 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -60,7 +60,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
->  
->  #define XLNX_ZYNQMP_GIC_REGIONS 6
->  
-> -/* ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
-> +/*
-> + * ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
->   * and under-decodes the 64k region. This mirrors the 4k regions to every 4k
->   * aligned address in the 64k region. To implement each GIC region needs a
->   * number of memory region aliases.
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 8818472..76b94a5 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -301,11 +301,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->  
->      ram_size = memory_region_size(s->ddr_ram);
->  
-> -    /* Create the DDR Memory Regions. User friendly checks should happen at
-> +    /*
-> +     * Create the DDR Memory Regions. User friendly checks should happen at
->       * the board level
->       */
->      if (ram_size > XLNX_ZYNQMP_MAX_LOW_RAM_SIZE) {
-> -        /* The RAM size is above the maximum available for the low DDR.
-> +        /*
-> +         * The RAM size is above the maximum available for the low DDR.
->           * Create the high DDR memory region as well.
->           */
->          assert(ram_size <= XLNX_ZYNQMP_MAX_RAM_SIZE);
-> @@ -351,7 +353,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->  
->      qdev_realize(DEVICE(&s->apu_cluster), NULL, &error_fatal);
->  
-> -    /* Realize APUs before realizing the GIC. KVM requires this.  */
-> +    /* Realize APUs before realizing the GIC. KVM requires this. */
+Dear Philippe, thank you for your kind response.
 
-This doesn't look like a checkpatch fix...
+I will send a new version for the patch with the modifications you've
+highlighted, but first I've some question on the best way to implement
+them.
 
+On Tue, Feb 09, 2021 at 12:30:32PM +0100, Philippe Mathieu-Daud=E9 wrote:
+>Hi Davide,
+>On 2/9/21 12:02 PM, Davide Berardi wrote:
+>> The bcm2835 GPIOs now generate interrupts.
+>> This modification enables QTEST clients to trigger interrupt-based
+>> interfaces.
+>
+>Thanks for your patch!
+>
+>Can you provide QTEST client example? Even better would be a qtest!
+>
+The minimal client I've developed can be found at
+https://github.com/berdav/qemu-rpi-gpio
 
+As I have introduced, I'm building a qtest but I've found a problem: In
+my test, I want to check if the IRQs of the named GPIOs
+/machine/soc/peripherals/ic/gpu-irq are correctly handled by the
+controller.  I was thinking to use irq_intercept_in to get the status of
+the IRQ lines using something similar to the following:
 
+qtest_irq_intercept_in(s, "/machine/soc/peripherals/ic");
 
->      for (i = 0; i < num_apus; i++) {
->          const char *name;
->  
-> @@ -526,7 +528,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->          SysBusDevice *sbd = SYS_BUS_DEVICE(&s->sdhci[i]);
->          Object *sdhci = OBJECT(&s->sdhci[i]);
->  
-> -        /* Compatible with:
-> +        /*
-> +         * Compatible with:
->           * - SD Host Controller Specification Version 3.00
->           * - SDIO Specification Version 3.0
->           * - eMMC Specification Version 4.51
-> -- 
-> 2.7.4
-> 
+And then check it using
+
+qtest_get_irq(s, 49 + irqline);
+
+But it isn't triggering.
+
+Looking in the source of qtest I've found this check in the
+qtest_irq_intercept_in function:
+
+          QLIST_FOREACH(ngl, &dev->gpios, node) {
+              /* We don't support intercept of named GPIOs yet */
+              if (ngl->name) {
+                  continue;
+              }
+
+I've removed the if and the qtests seems to work just fine.
+Is there particular caveats or details to implement this part of the
+framework?
+
+I can send separated patches if you have some details on the desiderata
+of the support, or maybe start a new thread with this question.
+
+Otherwise, I can remove the part of my qtest to not check the
+IRQs, but I don't know if it would be the best choice.
+
+>
+>I wonder how you generated your patch, it doesn't apply:
+>
+>Applying: Raspberry PI GPIO interrupt support
+>error: patch failed: hw/arm/bcm2835_peripherals.c:114
+>error: hw/arm/bcm2835_peripherals.c: patch does not apply
+>error: patch failed: hw/gpio/bcm2835_gpio.c:7
+>error: hw/gpio/bcm2835_gpio.c: patch does not apply
+>error: patch failed: hw/intc/bcm2835_ic.c:57
+>error: hw/intc/bcm2835_ic.c: patch does not apply
+>error: patch failed: include/hw/gpio/bcm2835_gpio.h:7
+>error: include/hw/gpio/bcm2835_gpio.h: patch does not apply
+>Patch failed at 0001 Raspberry PI GPIO interrupt support
+>
+>You can find the guidelines here:
+>https://wiki.qemu.org/Contribute/SubmitAPatch#Submitting_your_Patches
+>
+I have just created the patch using git format patch -s , it does not
+give me any error applying it over the master branch on
+https://github.com/qemu/QEMU . I will take more care and apply it on the
+master branch of https://git.qemu.org/git/qemu.git/ , thank you.
+
+> [... cut ...]
+>
+>Regards,
+>
+>Phil.
+I'm adapting the patch using the Coding style script now.
+I've also introduced a new costant for the number of GPIOs.
+
+Thank you for your time,
+D.

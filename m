@@ -1,107 +1,107 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp402773lfg;
-        Thu, 25 Feb 2021 06:33:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwVJd1f1sHuwfqb1KgIfv1hEcIqGETsEmqAlF2ok5pi6TZcg4n2PxTdO9PvZr8z8vKtG3R4
-X-Received: by 2002:a05:6e02:1ca8:: with SMTP id x8mr2575731ill.139.1614263602317;
-        Thu, 25 Feb 2021 06:33:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614263602; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1644934lfc;
+        Wed, 10 Feb 2021 12:57:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzU5ifbJD+gKDSiX9CDsaTNmtNtCTxBV2Y+tIwLYqOoPoz7SivgsU4XtsSZgoR/i25lZtAM
+X-Received: by 2002:a25:8b87:: with SMTP id j7mr7532646ybl.63.1612990670611;
+        Wed, 10 Feb 2021 12:57:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612990670; cv=none;
         d=google.com; s=arc-20160816;
-        b=HrjwWQhLJKXgt3CgS5Qb2pffQ+dRRaDtB1tADpfiKJzEnxII1oiGNeOYYeHtk/WAX7
-         sw6pma4zsohIELAut8+tqTYrHrrhOGnXuml+886uHnVtOEHeJTcfEc6QYCJJyHJ6A9KU
-         WCCOawpaHsF9AYp+JnUVPeQUQW5Bz0ddqhjrJK5cM6SJd4WmkyvK+u/Lyldfdkex848r
-         cxvGeTCVWRZtYDMiQGsVAnCFHqd6vla5lfbO0u5Pc0VivJoKEURa8FICI2j63ReRInjx
-         PWQlCdt35XqpX6TETO7q0v47DcCu2d6Yo4EutJWXll+Hz4mZljJrUhug4Ecge7JSmM1a
-         brcw==
+        b=QWF3VEpC7jUFQwIFd6Qgv539OsRPRbYqVufgiL0jN2u+R8V/wpwjFe9UHPzdJ2Q+s9
+         G46cqgVl1NXuLZcN+WNZNnT3HXV7y2ixvUPbUOiVbP+17O7KmCzLZVCaf0kD+h6L+Wtb
+         7HCtjL3kQE9Nppj/4D8XLnBiTu3eMZouUlbgUhPhK+W21taBKQu4phvwVqq9L8bpUPMu
+         ihxdeeCleQVrdtI7LHG7Zt3aAYXUq1Q9ofkP+yg9SxfwPt9OAYlAMJSs2Xrq7k9XajPf
+         FMhjHADRkvVgUEPro1YELcZlO1RowFKg4HIR9A5yj1RjloLFOt6LPbi0Vm0C7rKMVuNz
+         NDpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=EuUiffr8mGqXR3rC5xkY3vR8T7E5RPaHPuB/slS5uW4=;
-        b=fRr4wYgZbkkOmfvBVRK25W2s/GNtUzNMztE2C9PL8WRCHwI6Wwa85xHPzfOX253yNg
-         WXzeu/okpIQzRHBl2EVHnxHZmlCKsLgzezEUqZHEpLd2mIbTt/4tRg6U0ViqMTuiITkL
-         bLOylBJ4nwPiFg7EGjLbqtPxfqgPk7Eqnbmo4n9aPLNf93nFJA6id9PrnsF3YFQnaoNJ
-         1jZOqecyMJmEG2LbUIWvV6/JU2btv16d8oUgAFdBzGVQmenwGBmYlnBrCMCEEx1p3dQu
-         jQFwowXmYpp2lDXgk4roCBUHn25XWzh6c4uYbLnSq6wRZf6G2pVBUXEffPFaunU8VNkM
-         TM/w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=s1lGjsNfUq9Ohq2/mS4GFN1kqv3VrP0aJyYgwP7pWSk=;
+        b=Q6pBLuVLz3xBWnTY+c5jUxCqqXfS+QozsegMWp/RAg+UTAFqVKurib5pZZ1OSk3r67
+         YtonuNsqrwgf9TQAt4k9zxLlalKomoBbueas/tOGo02Dccdl0w1D10TGJ0yPxy0Llk7t
+         gh1/uh2gQjcfMCJV585HCN7oOtb8c1rXXsZHOR7+TRl4CH2D1Qsat8akNS+r5EgKcFa1
+         lQe+Ieg2tsl4B5IcIsi4aOkCG4QmbJRB5lsJlKwU0Rqgoi+iZHWSwuGafk75TdpribSC
+         +fi0j9/5EspB2IF6FM6MSfeCE6pvYYZM1vAMa6llOrsNNNJ8W8HCTrKMDYZX3DEPxrvk
+         je1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7kkHeKl;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=HiUqUQI3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1si4944457ilu.29.2021.02.25.06.33.22
+        by mx.google.com with ESMTPS id 66si2956815ybo.149.2021.02.10.12.57.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 06:33:22 -0800 (PST)
+        Wed, 10 Feb 2021 12:57:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7kkHeKl;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=HiUqUQI3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38786 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:35514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFHhh-0004w7-KS
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 09:33:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34476)
+	id 1l9wYX-0004wG-Vp
+	for alex.bennee@linaro.org; Wed, 10 Feb 2021 15:57:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lFHfe-0003uu-Uz
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 09:31:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54478)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lFHfb-0004Yk-7J
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 09:31:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614263470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=EuUiffr8mGqXR3rC5xkY3vR8T7E5RPaHPuB/slS5uW4=;
- b=i7kkHeKlMwsQzVuqeLFI1sqZQ1lZj//1xGYiP2M5ALeubut58MD26KLtkZ0aMGkFnZZGyP
- 3y+llUraGUi8OkpBk3F2BazQRSlmX2bXF/emXtdKglEjSmfmcGYu0BN776Klkor2hf++m1
- cnrfzdo66JaXNBm2VEufmKS1GLrSFAw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-19-NKx7XvBJMaSaOL9doyRmEw-1; Thu, 25 Feb 2021 09:31:04 -0500
-X-MC-Unique: NKx7XvBJMaSaOL9doyRmEw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3BE60845EEB;
- Thu, 25 Feb 2021 14:30:47 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.194.200])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 37F961346D;
- Thu, 25 Feb 2021 14:30:39 +0000 (UTC)
-Date: Thu, 25 Feb 2021 15:30:37 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [RFC PATCH 2/5] hw/arm/virt: Add cpu-map to device tree
-Message-ID: <20210225143037.ey6dosjbvv2aigzz@kamzik.brq.redhat.com>
-References: <20210225085627.2263-1-fangying1@huawei.com>
- <20210225085627.2263-3-fangying1@huawei.com>
- <20210225111610.mejof5pe2y5fe5xr@kamzik.brq.redhat.com>
- <5fc765dd-52fa-2936-f298-d2635c863eb3@huawei.com>
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1l9wWe-0003zX-OF
+ for qemu-devel@nongnu.org; Wed, 10 Feb 2021 15:55:52 -0500
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:45632)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1l9wWY-00068w-OF
+ for qemu-devel@nongnu.org; Wed, 10 Feb 2021 15:55:50 -0500
+Received: by mail-lj1-x22c.google.com with SMTP id e18so4665645lja.12
+ for <qemu-devel@nongnu.org>; Wed, 10 Feb 2021 12:55:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=s1lGjsNfUq9Ohq2/mS4GFN1kqv3VrP0aJyYgwP7pWSk=;
+ b=HiUqUQI3451kc+mpETpUuESRGvp2Qe+106bk1NN0X2w44+y3t+a2z4bI88orjoA2hV
+ BhqZ7n20kyl2jFtjAMjHUGMgVjOWdzHZeI50kTvf/zAUP4JUkBIvrrG2UwElfE0Md6i/
+ YxdAu3vDxppeuRy7lkugNYaN+6nOtXXRO9v/yl7uH3LSgvzgYvT/MEOqKLa8wOVAh23+
+ jgno2w6EOFXC5NDAOdoRyAsbPdA7BLbz5uGAJPV6wCzNH78oI1+RP1KckN1tpX9BtfDu
+ B/8Q6xlwy/fe3XVcibHN1c90WGccRXJcHZku9d23/WdOkIcgx1cO1PGb/5VLvzOBCtCO
+ lTcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=s1lGjsNfUq9Ohq2/mS4GFN1kqv3VrP0aJyYgwP7pWSk=;
+ b=nAsj5mT4QOzmgNeqZaM2qRIRADeUEXQizaOSqQprPy08i5w+Dn0Prih8yOPunnVElf
+ zLbgY8amKTQ5+0vZqbwhY9Mpc7IorQvXvCzfQyOeCNPG9sv18OPxtzgpaJO9Vknr11U0
+ 7PM5iPzCNxf+JjG3yIGU17P/6lSFA8N6f2TKI11+UsibqMr4I4YG1Idgg4hrQuqeFy5e
+ 5x/SVSOLtK4h7isNHfzKasYpDnNqMh2YBs4IOzGoYI3/eqJ3L0cm5IwmqBYnlLUsNHqj
+ EsmidyCMlhjotdYabX3e/DUHvb1r5/9GE5xJAuVsgJ7SZIdHxQDlgS9mRVEsv58yWfbn
+ 9JjQ==
+X-Gm-Message-State: AOAM533PoDPrzGh65HpPqcgPTHiGQzOxv7kl6u9Rb3S2HP+mmM6qP3Dj
+ W6OZ+kR1/T3or1z9Xmt3UzvH15+YUQ8yVTabL84q6A==
+X-Received: by 2002:a2e:b605:: with SMTP id r5mr2890285ljn.367.1612990544755; 
+ Wed, 10 Feb 2021 12:55:44 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <5fc765dd-52fa-2936-f298-d2635c863eb3@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+References: <20210209132040.5091-1-peter.maydell@linaro.org>
+ <20210209132040.5091-3-peter.maydell@linaro.org>
+In-Reply-To: <20210209132040.5091-3-peter.maydell@linaro.org>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Wed, 10 Feb 2021 12:55:32 -0800
+Message-ID: <CAGcCb11DCYZHsWCubfr6iRD85h-h4bZJvN3h4tFgUOa1S66MVA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/4] clock: Add ClockPreUpdate callback event type
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ Tyrone Ting <kfting@nuvoton.com>, Luc Michel <luc@lmichel.fr>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Havard Skinnemoen <hskinnemoen@google.com>
+Content-Type: multipart/alternative; boundary="000000000000727b1a05bb01a0db"
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=wuhaotsh@google.com; helo=mail-lj1-x22c.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,185 +114,175 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
- zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
- shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
- imammedo@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7iogw2LyOV+/
+X-TUID: xHfoOf1cnmWj
 
-On Thu, Feb 25, 2021 at 09:18:22PM +0800, Ying Fang wrote:
-> 
-> 
-> On 2/25/2021 7:16 PM, Andrew Jones wrote:
-> > Hi Ying Fang,
-> > 
-> > The only difference between this and what I have in my tree[*]
-> > is the removal of the socket node (which has been in the Linux
-> > docs since June 2019). Any reason why you removed that node? In
-> > any case, I think I deserve a bit more credit for this patch.
-> 
-> Sorry, you surely deserve it. I forget to add it here.
-> Should I have a SOB of you here ?
-> 
-> The latest linux kernel use a four level cpu topology defined in
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/cpu/cpu-topology.txt?h=v5.11
-> 
-> ie. socket node, cluster node, core node, thread node.
+--000000000000727b1a05bb01a0db
+Content-Type: text/plain; charset="UTF-8"
 
-Yes, this is why the code I wrote uses the 'socket' node.
+On Tue, Feb 9, 2021 at 5:21 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-> 
-> The linux kernel 4.19 LTS use a three level cpu topology defined in
-> Documentation/devicetree/bindings/arm/topology.txt
+> Add a new callback event type ClockPreUpdate, which is called on
+> period changes before the period is updated.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 
-I don't think we want to target that guest kernel with this
-new QEMU feature. If we must support that guest kernel, then
-I would do it under a machine property, like compat_cpumap
-or something.
+> ---
+>  docs/devel/clocks.rst | 9 ++++++++-
+>  include/hw/clock.h    | 1 +
+>  hw/core/clock.c       | 3 +++
+>  3 files changed, 12 insertions(+), 1 deletion(-)
+>
+> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+> index cd344e3fe5d..f0391e76b4f 100644
+> --- a/docs/devel/clocks.rst
+> +++ b/docs/devel/clocks.rst
+> @@ -181,7 +181,14 @@ events.
+>
+>  The events currently supported are:
+>
+> - * ``ClockUpdate`` : called after the input clock's period has changed
+> + * ``ClockPreUpdate`` : called when the input clock's period is about to
+> +   update. This is useful if the device needs to do some action for
+> +   which it needs to know the old value of the clock period. During
+> +   this callback, Clock API functions like ``clock_get()`` or
+> +   ``clock_ticks_to_ns()`` will use the old period.
+> + * ``ClockUpdate`` : called after the input clock's period has changed.
+> +   During this callback, Clock API functions like ``clock_ticks_to_ns()``
+> +   will use the new period.
+>
+>  Note that a clock only has one callback: it is not possible to register
+>  different functions for different events. You must register a single
+> diff --git a/include/hw/clock.h b/include/hw/clock.h
+> index 5c73b4e7ae9..d7a6673c29e 100644
+> --- a/include/hw/clock.h
+> +++ b/include/hw/clock.h
+> @@ -30,6 +30,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Clock, CLOCK)
+>   */
+>  typedef enum ClockEvent {
+>      ClockUpdate = 1, /* Clock period has just updated */
+> +    ClockPreUpdate = 2, /* Clock period is about to update */
+>  } ClockEvent;
+>
+>  typedef void ClockCallback(void *opaque, ClockEvent event);
+> diff --git a/hw/core/clock.c b/hw/core/clock.c
+> index 71dc1f4de65..2c86091d8a3 100644
+> --- a/hw/core/clock.c
+> +++ b/hw/core/clock.c
+> @@ -80,6 +80,9 @@ static void clock_propagate_period(Clock *clk, bool
+> call_callbacks)
+>
+>      QLIST_FOREACH(child, &clk->children, sibling) {
+>          if (child->period != clk->period) {
+> +            if (call_callbacks) {
+> +                clock_call_callback(child, ClockPreUpdate);
+> +            }
+>              child->period = clk->period;
+>              trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
+>                                 CLOCK_PERIOD_TO_HZ(clk->period),
+> --
+> 2.20.1
+>
+>
+>
 
-> 
-> ie. cluster node, core node, thread node.
-> 
-> Currently Qemu x86 has 4 level of cpu topology as: socket, die, core,
-> thread. Should arm64 active like it here ?
+--000000000000727b1a05bb01a0db
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Does the arm64 guest kernel support the concept of 'die'? (I don't
-think so) Anyway, there's no such concept in the current cpu-map
-definition. So, if the guest kernel does support die, then what
-does it map that to from DT and ACPI?
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 9, 2021 at 5:21 AM Peter =
+Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linar=
+o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">Add a new callback event type ClockPreUpdate, which is called on<br>
+period changes before the period is updated.<br>
+<br>
+Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
+" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br></blockquote><div>R=
+eviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@goog=
+le.com</a>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+>
+---<br>
+=C2=A0docs/devel/clocks.rst | 9 ++++++++-<br>
+=C2=A0include/hw/clock.h=C2=A0 =C2=A0 | 1 +<br>
+=C2=A0hw/core/clock.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 3 +++<br>
+=C2=A03 files changed, 12 insertions(+), 1 deletion(-)<br>
+<br>
+diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst<br>
+index cd344e3fe5d..f0391e76b4f 100644<br>
+--- a/docs/devel/clocks.rst<br>
++++ b/docs/devel/clocks.rst<br>
+@@ -181,7 +181,14 @@ events.<br>
+<br>
+=C2=A0The events currently supported are:<br>
+<br>
+- * ``ClockUpdate`` : called after the input clock&#39;s period has changed=
+<br>
++ * ``ClockPreUpdate`` : called when the input clock&#39;s period is about =
+to<br>
++=C2=A0 =C2=A0update. This is useful if the device needs to do some action =
+for<br>
++=C2=A0 =C2=A0which it needs to know the old value of the clock period. Dur=
+ing<br>
++=C2=A0 =C2=A0this callback, Clock API functions like ``clock_get()`` or<br=
+>
++=C2=A0 =C2=A0``clock_ticks_to_ns()`` will use the old period.<br>
++ * ``ClockUpdate`` : called after the input clock&#39;s period has changed=
+.<br>
++=C2=A0 =C2=A0During this callback, Clock API functions like ``clock_ticks_=
+to_ns()``<br>
++=C2=A0 =C2=A0will use the new period.<br>
+<br>
+=C2=A0Note that a clock only has one callback: it is not possible to regist=
+er<br>
+=C2=A0different functions for different events. You must register a single<=
+br>
+diff --git a/include/hw/clock.h b/include/hw/clock.h<br>
+index 5c73b4e7ae9..d7a6673c29e 100644<br>
+--- a/include/hw/clock.h<br>
++++ b/include/hw/clock.h<br>
+@@ -30,6 +30,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Clock, CLOCK)<br>
+=C2=A0 */<br>
+=C2=A0typedef enum ClockEvent {<br>
+=C2=A0 =C2=A0 =C2=A0ClockUpdate =3D 1, /* Clock period has just updated */<=
+br>
++=C2=A0 =C2=A0 ClockPreUpdate =3D 2, /* Clock period is about to update */<=
+br>
+=C2=A0} ClockEvent;<br>
+<br>
+=C2=A0typedef void ClockCallback(void *opaque, ClockEvent event);<br>
+diff --git a/hw/core/clock.c b/hw/core/clock.c<br>
+index 71dc1f4de65..2c86091d8a3 100644<br>
+--- a/hw/core/clock.c<br>
++++ b/hw/core/clock.c<br>
+@@ -80,6 +80,9 @@ static void clock_propagate_period(Clock *clk, bool call_=
+callbacks)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0QLIST_FOREACH(child, &amp;clk-&gt;children, sibling) {<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (child-&gt;period !=3D clk-&gt;period)=
+ {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (call_callbacks) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 clock_call_callbac=
+k(child, ClockPreUpdate);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0child-&gt;period =3D clk-&g=
+t;period;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0trace_clock_update(CLOCK_PA=
+TH(child), CLOCK_PATH(clk),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 CLOCK_PERIOD_TO_HZ(clk-&gt;period),<=
+br>
+-- <br>
+2.20.1<br>
+<br>
+<br>
+</blockquote></div></div>
 
-> 
-> Further more, latest linux kernel define the cpu topology struct as.
-> So maybe it only cares about the socket, core, thread topology levels.
-> 
-> struct cpu_topology {
-> 
->     int thread_id;
-> 
->     int core_id;
-> 
->     int package_id;
-> 
->     int llc_id;
-> 
->     cpumask_t thread_sibling;
-> 
->     cpumask_t core_sibling;
-> 
->     cpumask_t llc_sibling;
-> 
-> };
-> 
-> > 
-> > [*] https://github.com/rhdrjones/qemu/commit/35feecdd43475608c8f55973a0c159eac4aafefd
-> > 
-> > Thanks,
-> > drew
-> > 
-> > On Thu, Feb 25, 2021 at 04:56:24PM +0800, Ying Fang wrote:
-> > > Support device tree CPU topology descriptions.
-> > > 
-> > > Signed-off-by: Ying Fang <fangying1@huawei.com>
-> > > ---
-> > >   hw/arm/virt.c         | 38 +++++++++++++++++++++++++++++++++++++-
-> > >   include/hw/arm/virt.h |  1 +
-> > >   2 files changed, 38 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > index 371147f3ae..c133b342b8 100644
-> > > --- a/hw/arm/virt.c
-> > > +++ b/hw/arm/virt.c
-> > > @@ -351,10 +351,11 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-> > >       int cpu;
-> > >       int addr_cells = 1;
-> > >       const MachineState *ms = MACHINE(vms);
-> > > +    const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> > >       int smp_cpus = ms->smp.cpus;
-> > >       /*
-> > > -     * From Documentation/devicetree/bindings/arm/cpus.txt
-> > > +     * See Linux Documentation/devicetree/bindings/arm/cpus.yaml
-> > >        *  On ARM v8 64-bit systems value should be set to 2,
-> > >        *  that corresponds to the MPIDR_EL1 register size.
-> > >        *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
-> > > @@ -407,8 +408,42 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-> > >                   ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
-> > >           }
-> > > +        if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
-> > > +            qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-> > > +                                  qemu_fdt_alloc_phandle(vms->fdt));
-> > > +        }
-> > > +
-> > >           g_free(nodename);
-> > >       }
-> > > +
-> > > +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
-> > > +        /*
-> > > +         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
-> > > +         */
-> > > +        qemu_fdt_add_subnode(vms->fdt, "/cpus/cpu-map");
-> > > +
-> > > +        for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
-> > > +            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
-> > > +            char *map_path;
-> > > +
-> > > +            if (ms->smp.threads > 1) {
-> > > +                map_path = g_strdup_printf(
-> > > +                            "/cpus/cpu-map/%s%d/%s%d/%s%d",
-> > > +                            "cluster", cpu / (ms->smp.cores * ms->smp.threads),
-> 
-> a cluster node may be replaced by socket to keep accord with the latest
-> kernel.
-
-Right, in which case this patch would be identical to the one in my
-branch.
-
-Thanks,
-drew
-
-> 
-> > > +                            "core", (cpu / ms->smp.threads) % ms->smp.cores,
-> > > +                            "thread", cpu % ms->smp.threads);
-> > > +            } else {
-> > > +                map_path = g_strdup_printf(
-> > > +                            "/cpus/cpu-map/%s%d/%s%d",
-> > > +                            "cluster", cpu / ms->smp.cores,
-> > > +                            "core", cpu % ms->smp.cores);
-> > > +            }
-> > > +            qemu_fdt_add_path(vms->fdt, map_path);
-> > > +            qemu_fdt_setprop_phandle(vms->fdt, map_path, "cpu", cpu_path);
-> > > +            g_free(map_path);
-> > > +            g_free(cpu_path);
-> > > +        }
-> > > +    }
-> > >   }
-> > >   static void fdt_add_its_gic_node(VirtMachineState *vms)
-> > > @@ -2742,6 +2777,7 @@ static void virt_machine_5_2_options(MachineClass *mc)
-> > >       virt_machine_6_0_options(mc);
-> > >       compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
-> > >       vmc->no_secure_gpio = true;
-> > > +    vmc->no_cpu_topology = true;
-> > >   }
-> > >   DEFINE_VIRT_MACHINE(5, 2)
-> > > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> > > index ee9a93101e..7ef6d08ac3 100644
-> > > --- a/include/hw/arm/virt.h
-> > > +++ b/include/hw/arm/virt.h
-> > > @@ -129,6 +129,7 @@ struct VirtMachineClass {
-> > >       bool no_kvm_steal_time;
-> > >       bool acpi_expose_flash;
-> > >       bool no_secure_gpio;
-> > > +    bool no_cpu_topology;
-> > >   };
-> > >   struct VirtMachineState {
-> > > -- 
-> > > 2.23.0
-> > > 
-> > > 
-> > 
-> > .
-> > 
-> 
-
+--000000000000727b1a05bb01a0db--

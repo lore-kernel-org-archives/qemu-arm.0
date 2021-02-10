@@ -1,480 +1,324 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5587064lfg;
-        Wed, 3 Mar 2021 10:37:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy81MtEXrcF98/EKLFsZKDu5Mmejo0Hje1DIOmYkpUYRA+NYCGeuqcd+iyCTQYxZ38ihMKp
-X-Received: by 2002:a05:6e02:1888:: with SMTP id o8mr606903ilu.154.1614796632247;
-        Wed, 03 Mar 2021 10:37:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614796632; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1676950lfc;
+        Wed, 10 Feb 2021 13:43:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyi7MNUL1kMl2Hjj8gKZKT307oTj0DhaLFDa9VoBaIHi/HJGBbUsxhYnHv5X0Q7Ey+v9EpS
+X-Received: by 2002:a25:cbcb:: with SMTP id b194mr5246048ybg.174.1612993427204;
+        Wed, 10 Feb 2021 13:43:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612993427; cv=none;
         d=google.com; s=arc-20160816;
-        b=SlH+lZVBl1m+8T7y1yq0xMdqXO1js8HdVbuM2EKih1i3OHyvw+301ezCZN+MMvqWM7
-         1EhLYncbTN7x+UYWVC/eh6e2MSHMYlF3QbznzqUGMGb5jnMU8p3cVNjstsNQ8cebxKr+
-         QjfZShqf3t2MF5euwpwTBaDtK2Okb6HbFAcjHPPBCrHwK5tkYca4znQXO6pudJPm0i2p
-         uVk8yY/Io8PqEm9uNWsMMVzvGkRoEj6TlyOnbFRgeI9c7h6SD8fojvEhawFmRQSKTeRG
-         Pe6f2eFnv6yZ18FQNdzl8aWkZlX5u4pJe/0Lt7EYBKzBmEtiqOLaAduV+28X20+rYhP1
-         SBLw==
+        b=mmxCbNAWKm8lLBTZsOm/clq5yPgZZJyJ7VRDj31um+OuhNA/ezCEdUMXTEPCgmZekB
+         p5iZrDwGQW0WLlpsfZt/Z/GCu7SOAsgNM8x50CGbQjsVYKIVTiCYg87QP3ZFDi9TiAGQ
+         9FfA4w3WFK7/NVb7wUMTwY5gt5NmR96rSX1wAeaQGq1Cu5kB742rADoHtZ9U/57OJw0C
+         OcBtVfAMjOYM83Lo3VCFi4jV+/5li0fn3mQIfhHqgi2qYvFQxKEPIAlXfZTjG7nwgKge
+         mrAhSJcrSFJWr0B6GURtaWyIKbKb30QYk6sFk348R83g60L65mKtc12YlpYr1ZDCPtN9
+         11zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=EXx5h3VcKt3jyYHreeQ9XypRywwHhdUIoUdDoXKimZQ=;
-        b=WZx7ZO8GGDBUj4ZgtgDrPsYnDhTqoTQhq84LMBo8UWlXEF/MnoAeLu1W7T9n4jUE2M
-         HYjGhrx32Kt3HX5teR8WJYopQiNXbEnlcWtnBCbfZw7QcQ4LTfW4CIePjL+zzw/eO0Pq
-         qKC33UuysTywoQHwlHRtLIZ9ZOUoC8F6gpWV3M54TMPMFhXlcH0kj8o0+ryuiRPnPjel
-         I56xWi7bLL6wqAZgD2qsPvsaqBpwbyAgXCVOZA2uOcsYm2q6YftuuF1Fh6mvUPO4/DnF
-         huBJjFJP7Cly7wXaWpDVvCzxy0RNLGrFlbQYHl+rALwNOO0a8oV34qLxQ4dnb9WXanoi
-         Fk3A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=7nYflSMoo9DnwPN1lqWQ3ALCy17uCyJwHAJ9XPjBQN8=;
+        b=kArulCl4l9L7GZ6t4u0n4vykox3KUMH4jVehU59iRQgzbLtoS3m9m5fVCIiaR1NGsO
+         IwHIlUoL9yG0MmemQY4GsSyzgzgMVMZhzo4NojZtINU8M9X7zBFHCV6Sgl5kEE7B/oxw
+         eDvQ1ltlPJX72R1LeNptvDMnljFYjEukmdHuW+bOUoSljSe3Jbo/mxHQkl5bsRRrb1Y7
+         YTmgIlbXQMZu74Zd8Sja13pb9w0x1GXT2QaKTWJL9xmo8QyG7D4xdGLLpgv3LZqW5J9J
+         Gc6N28PZddb4C27meVjCikoBnNpxqlH6Y8ybjZzRCntMDtsi4L8vFyMxmGw72lA6TwOq
+         tiBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VWV63ZSp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b="N7zYwzC/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si27910741ilm.45.2021.03.03.10.37.12
+        by mx.google.com with ESMTPS id y17si3147786ybk.250.2021.02.10.13.43.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Mar 2021 10:37:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Feb 2021 13:43:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VWV63ZSp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43974 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b="N7zYwzC/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:47448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHWMx-0001ue-HC
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 13:37:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56440)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9xH0-0000Td-Fp
+	for alex.bennee@linaro.org; Wed, 10 Feb 2021 16:43:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWA3-00075b-7h
- for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:23:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36999)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWA0-0000pQ-5F
- for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:23:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614795827;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EXx5h3VcKt3jyYHreeQ9XypRywwHhdUIoUdDoXKimZQ=;
- b=VWV63ZSp7Pr7EFFipXpuj0OYEk9KinntWhuKB/DuW1DiRdV6T1Jop6mFxJEhHrF3ki09s8
- Lrzeaa0RqIngMVoohuXvhYkZnQAQkHs5A1j7/Y8irOMV6+BJhY9XjqvhgDO6AbW8NJtAjn
- zickyxf2aMs5qLnt1+5gE0SZnmqonAE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-350-cwuluIR7MXa8rWrzDaqbZw-1; Wed, 03 Mar 2021 13:23:46 -0500
-X-MC-Unique: cwuluIR7MXa8rWrzDaqbZw-1
-Received: by mail-wr1-f70.google.com with SMTP id h30so13182861wrh.10
- for <qemu-devel@nongnu.org>; Wed, 03 Mar 2021 10:23:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1l9xGU-0000SH-FL
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 16:43:18 -0500
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129]:38093)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1l9xGL-0000qR-ND
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 16:43:14 -0500
+Received: by mail-lf1-x129.google.com with SMTP id m22so5160739lfg.5
+ for <qemu-arm@nongnu.org>; Wed, 10 Feb 2021 13:43:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7nYflSMoo9DnwPN1lqWQ3ALCy17uCyJwHAJ9XPjBQN8=;
+ b=N7zYwzC/YXTD1uTYnDX5MuXz2n6MuWnQY692tnpqcr9wWznffvWxfQNG6tATMEs+zH
+ dR99kz9ndbY09L5AGGUzq84AWVidiJE8ZowPvz7FMMWfmAswnTp6537CRYqE7fNqnyCz
+ SAcLdguj28+8fkgY5atXydP1rAh9trgjwoHbWPINN3cTU+g5AZ0eb+Fr2+wG29hADcBf
+ MU3MbTqd/LHuQy9OPl9F+qEXI6dSRCsbjnGzyFqJT2NnJCT9YwagRVmsd+kFQXsx69xJ
+ DNOZN/b+rIpr+ogupcvhDMu3LvNavuNphlZXX3BDQUvxIWRwMtZkt+f4uqW4tsUuwfJ9
+ B/SA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=EXx5h3VcKt3jyYHreeQ9XypRywwHhdUIoUdDoXKimZQ=;
- b=SOwiZtPUPnskySzX+xWnor1N1xR/4xBBqliDfO//FIr0/U5Z/qg4n0X18SUquduOrN
- PXcx/na+F/So2ArjqQ86lHmJrmunKcbjM8t2ZIWf6zSjrojhc7fa6BvpRjuwDkq4qEMr
- ClwehxiDW3IxdteSlHZDzoOOGGEwKX3hdz+iiQThW0jnHExOBvwoedu6QhETHCtyZc+j
- jak4FkSg/z5XYfva9by3hcLaqHTByXjzw0fhR8DVDZAVyrsiIG+NOmzMznJQz1cdlY5l
- bfFVI7cu24HKfvB8JL9OxI3zqMnpSgEFUclzp5XDr/hPv42hWc0c8lDECJaeqddmq5it
- 4FZw==
-X-Gm-Message-State: AOAM531CvO17NkNB7nouHHLE7A3+vqczunJG5vhe8P87v6CabnbroNMg
- VdpFKfyI8zXS1hVJhEU6HoY1WxOedlkh/QaPo7+FLomdVFlKzqXtPDpTFiwnVnIuSiLeMjSTnKr
- IBM0Q7237lp98/mGRZe1T5lpeIXWdAH/7zSJmQZssPOspYVyiNGyNOkU1ivnio4jM
-X-Received: by 2002:a5d:4e8d:: with SMTP id e13mr11323862wru.251.1614795824534; 
- Wed, 03 Mar 2021 10:23:44 -0800 (PST)
-X-Received: by 2002:a5d:4e8d:: with SMTP id e13mr11323824wru.251.1614795824304; 
- Wed, 03 Mar 2021 10:23:44 -0800 (PST)
-Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id s11sm6902297wme.22.2021.03.03.10.23.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Mar 2021 10:23:43 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 12/19] accel/kvm: Use kvm_vcpu_state() when possible
-Date: Wed,  3 Mar 2021 19:22:12 +0100
-Message-Id: <20210303182219.1631042-13-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210303182219.1631042-1-philmd@redhat.com>
-References: <20210303182219.1631042-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7nYflSMoo9DnwPN1lqWQ3ALCy17uCyJwHAJ9XPjBQN8=;
+ b=gbPimZU3WNgq9Uw/7a1INc8MhqoNWi8t2dVd9WX4iY1DMecNQ5goOjuJiIXs9qYZOA
+ JSplXPbUwrM7e6DCoHu0M0sVwWODGdE0dSyvsWHAwZ9w7QmeaA4LBbL1m77VcS6NK+97
+ jYEdY4vWi7u1QxdfqfDVvEKLC1VsSxmLkWZBAlZG6+Xmk0QLFtuCOuWkHzJUqjfzzXqt
+ yOfVNbys3nrv5SUsKti/OSrj4utTJqpsw+wSMAYATykpYsCJOHnY5EJykPiBdCZiIZVF
+ 3FjxoaDMcMHg5p8VXMtDeiXAIVLWHgWEVYY43GgsWK8gkhvGIfawp0DPQMvfuiv+DgfO
+ uPNA==
+X-Gm-Message-State: AOAM531bAnAaOGzleK50/qWjRmuPiLd417qIuDCeNmqSTfjdNK9k1nNs
+ 4TIRabPXzi3JqDpWYMJbaZa+E/vfqtABtW0DY0n9zA==
+X-Received: by 2002:a05:6512:1284:: with SMTP id
+ u4mr2700957lfs.175.1612993380937; 
+ Wed, 10 Feb 2021 13:43:00 -0800 (PST)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+References: <20210129005845.416272-1-wuhaotsh@google.com>
+ <20210129005845.416272-7-wuhaotsh@google.com>
+ <CAFEAcA-8q2DZpdbeiMhrxtAMkzx1_1BqcGTk8HfxX_6F_FOUfQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-8q2DZpdbeiMhrxtAMkzx1_1BqcGTk8HfxX_6F_FOUfQ@mail.gmail.com>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Wed, 10 Feb 2021 13:42:48 -0800
+Message-ID: <CAGcCb11eUrZhRZy4aT=t9078RF81kBSLTROF9gk8-me0nL4euw@mail.gmail.com>
+Subject: Re: [PATCH v2 6/6] hw/i2c: Implement NPCM7XX SMBus Module FIFO Mode
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ CS20 KFTing <kfting@nuvoton.com>, 
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Patrick Venture <venture@google.com>, Doug Evans <dje@google.com>, 
+ Corey Minyard <cminyard@mvista.com>
+Content-Type: multipart/alternative; boundary="0000000000007f6ddb05bb024943"
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x129.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
- kvm@vger.kernel.org, David Hildenbrand <david@redhat.com>, haxm-team@intel.com,
- Colin Xu <colin.xu@intel.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Claudio Fontana <cfontana@suse.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-arm@nongnu.org, Sunil Muthuswamy <sunilmut@microsoft.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Marcelo Tosatti <mtosatti@redhat.com>, qemu-s390x@nongnu.org,
- qemu-ppc@nongnu.org, Wenchao Wang <wenchao.wang@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LZ4n7+OpadOg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8Mz2RsloqFV5
 
-In preparation to move the kvm_state field out of CPUState in few
-commits, replace the CPUState->kvm_state dereference by a call to
-kvm_vcpu_state().
+--0000000000007f6ddb05bb024943
+Content-Type: text/plain; charset="UTF-8"
 
-Patch created mechanically using:
+On Mon, Feb 8, 2021 at 8:59 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-  $ sed -i 's/cpu->kvm_state/kvm_vcpu_state(cpu)/' \
-        -i 's/cs->kvm_state/kvm_vcpu_state(cs)/' \
-        -i 's/c->kvm_state/kvm_vcpu_state(c)/' $(git grep -l kvm_state)
+> On Fri, 29 Jan 2021 at 01:04, Hao Wu <wuhaotsh@google.com> wrote:
+> >
+> > This patch implements the FIFO mode of the SMBus module. In FIFO, the
+> > user transmits or receives at most 16 bytes at a time. The FIFO mode
+> > allows the module to transmit large amount of data faster than single
+> > byte mode.
+> >
+> > Reviewed-by: Doug Evans<dje@google.com>
+> > Reviewed-by: Tyrong Ting<kfting@nuvoton.com>
+> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> > Reviewed-by: Corey Minyard <cminyard@mvista.com>
+> > Ack-by: Corey Minyard <cminyard@mvista.com>
+> > ---
+> >  hw/i2c/npcm7xx_smbus.c           | 342 +++++++++++++++++++++++++++++--
+> >  hw/i2c/trace-events              |   1 +
+> >  include/hw/i2c/npcm7xx_smbus.h   |  25 +++
+> >  tests/qtest/npcm7xx_smbus-test.c | 149 +++++++++++++-
+> >  4 files changed, 501 insertions(+), 16 deletions(-)
+> >
+> > diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
+> > index c72b6e446f..be3253d251 100644
+> > --- a/hw/i2c/npcm7xx_smbus.c
+> > +++ b/hw/i2c/npcm7xx_smbus.c
+> > @@ -27,7 +27,7 @@
+> >  #include "trace.h"
+> >
+> >  #define NPCM7XX_SMBUS_VERSION 1
+> > -#define NPCM7XX_SMBUS_FIFO_EN 0
+> > +#define NPCM7XX_SMBUS_FIFO_EN 1
+>
+> Why has this define changed ?
+>
+> >  #define NPCM7XX_SMBUS_ENABLED(s)    ((s)->ctl2 & NPCM7XX_SMBCTL2_ENABLE)
+> > +#define NPCM7XX_SMBUS_FIFO_ENABLED(s) (NPCM7XX_SMBUS_FIFO_EN && \
+> > +        (s)->fif_ctl & NPCM7XX_SMBFIF_CTL_FIFO_EN)
+>
+> ...and why are we testing something that's always 1 ?
+> Is NPCM7XX_SMBUS_FIFO_EN supposed to be a debug "turn this feature off"
+> switch for QEMU developers? If, so it would be helpful to give it a name
+> that doesn't look like it's defining a bit value for the hardware
+> and adding a comment saying what it does.
+>
+No, it's a specific bit in the NPCM7XX SMBus module's version reg that
+indicates whether this module
+supports FIFO mode. I'll rename it so it's more clear to the reader.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- accel/kvm/kvm-all.c   | 10 +++++-----
- target/arm/kvm.c      |  2 +-
- target/arm/kvm64.c    | 12 ++++++------
- target/i386/kvm/kvm.c | 34 +++++++++++++++++-----------------
- target/ppc/kvm.c      | 16 ++++++++--------
- 5 files changed, 37 insertions(+), 37 deletions(-)
+>
+> > @@ -754,6 +1059,17 @@ static const VMStateDescription
+> vmstate_npcm7xx_smbus = {
+> >          VMSTATE_UINT8_ARRAY(addr, NPCM7xxSMBusState,
+> NPCM7XX_SMBUS_NR_ADDRS),
+> >          VMSTATE_UINT8(scllt, NPCM7xxSMBusState),
+> >          VMSTATE_UINT8(sclht, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(fif_ctl, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(fif_cts, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(fair_per, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(txf_ctl, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(t_out, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(txf_sts, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(rxf_sts, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8(rxf_ctl, NPCM7xxSMBusState),
+> > +        VMSTATE_UINT8_ARRAY(rx_fifo, NPCM7xxSMBusState,
+> > +                            NPCM7XX_SMBUS_FIFO_SIZE),
+> > +        VMSTATE_UINT8(rx_cur, NPCM7xxSMBusState),
+> >          VMSTATE_END_OF_LIST(),
+> >      },
+> >  };
+>
+> It's OK to add fields to the vmstate without bumping the version
+> number in this special case, because we only just added the device
+> a few commits earlier in the series, but it's worth specifically
+> saying that in the commit message.
+>
+> thanks
+> -- PMM
+>
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index b787d590a9a..8259e89bbaf 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2760,7 +2760,7 @@ struct kvm_sw_breakpoint *kvm_find_sw_breakpoint(CPUState *cpu,
- {
-     struct kvm_sw_breakpoint *bp;
- 
--    QTAILQ_FOREACH(bp, &cpu->kvm_state->kvm_sw_breakpoints, entry) {
-+    QTAILQ_FOREACH(bp, &kvm_vcpu_state(cpu)->kvm_sw_breakpoints, entry) {
-         if (bp->pc == pc) {
-             return bp;
-         }
-@@ -2770,7 +2770,7 @@ struct kvm_sw_breakpoint *kvm_find_sw_breakpoint(CPUState *cpu,
- 
- int kvm_sw_breakpoints_active(CPUState *cpu)
- {
--    return !QTAILQ_EMPTY(&cpu->kvm_state->kvm_sw_breakpoints);
-+    return !QTAILQ_EMPTY(&kvm_vcpu_state(cpu)->kvm_sw_breakpoints);
- }
- 
- struct kvm_set_guest_debug_data {
-@@ -2825,7 +2825,7 @@ int kvm_insert_breakpoint(CPUState *cpu, target_ulong addr,
-             return err;
-         }
- 
--        QTAILQ_INSERT_HEAD(&cpu->kvm_state->kvm_sw_breakpoints, bp, entry);
-+        QTAILQ_INSERT_HEAD(&kvm_vcpu_state(cpu)->kvm_sw_breakpoints, bp, entry);
-     } else {
-         err = kvm_arch_insert_hw_breakpoint(addr, len, type);
-         if (err) {
-@@ -2864,7 +2864,7 @@ int kvm_remove_breakpoint(CPUState *cpu, target_ulong addr,
-             return err;
-         }
- 
--        QTAILQ_REMOVE(&cpu->kvm_state->kvm_sw_breakpoints, bp, entry);
-+        QTAILQ_REMOVE(&kvm_vcpu_state(cpu)->kvm_sw_breakpoints, bp, entry);
-         g_free(bp);
-     } else {
-         err = kvm_arch_remove_hw_breakpoint(addr, len, type);
-@@ -2885,7 +2885,7 @@ int kvm_remove_breakpoint(CPUState *cpu, target_ulong addr,
- void kvm_remove_all_breakpoints(CPUState *cpu)
- {
-     struct kvm_sw_breakpoint *bp, *next;
--    KVMState *s = cpu->kvm_state;
-+    KVMState *s = kvm_vcpu_state(cpu);
-     CPUState *tmpcpu;
- 
-     QTAILQ_FOREACH_SAFE(bp, &s->kvm_sw_breakpoints, entry, next) {
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 00e124c8123..ed7c4e4815c 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -61,7 +61,7 @@ int kvm_arm_vcpu_finalize(CPUState *cs, int feature)
- 
- void kvm_arm_init_serror_injection(CPUState *cs)
- {
--    cap_has_inject_serror_esr = kvm_check_extension(cs->kvm_state,
-+    cap_has_inject_serror_esr = kvm_check_extension(kvm_vcpu_state(cs),
-                                     KVM_CAP_ARM_INJECT_SERROR_ESR);
- }
- 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index dff85f6db94..c15df0cb1b7 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -85,14 +85,14 @@ GArray *hw_breakpoints, *hw_watchpoints;
-  */
- static void kvm_arm_init_debug(CPUState *cs)
- {
--    have_guest_debug = kvm_check_extension(cs->kvm_state,
-+    have_guest_debug = kvm_check_extension(kvm_vcpu_state(cs),
-                                            KVM_CAP_SET_GUEST_DEBUG);
- 
--    max_hw_wps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_WPS);
-+    max_hw_wps = kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_GUEST_DEBUG_HW_WPS);
-     hw_watchpoints = g_array_sized_new(true, true,
-                                        sizeof(HWWatchpoint), max_hw_wps);
- 
--    max_hw_bps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_BPS);
-+    max_hw_bps = kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_GUEST_DEBUG_HW_BPS);
-     hw_breakpoints = g_array_sized_new(true, true,
-                                        sizeof(HWBreakpoint), max_hw_bps);
-     return;
-@@ -837,14 +837,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     if (cs->start_powered_off) {
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
-     }
--    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
-+    if (kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_ARM_PSCI_0_2)) {
-         cpu->psci_version = 2;
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PSCI_0_2;
-     }
-     if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
-     }
--    if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-+    if (!kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_ARM_PMU_V3)) {
-         cpu->has_pmu = false;
-     }
-     if (cpu->has_pmu) {
-@@ -1411,7 +1411,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-             object_property_get_bool(obj, "ras", NULL)) {
-         ram_addr = qemu_ram_addr_from_host(addr);
-         if (ram_addr != RAM_ADDR_INVALID &&
--            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-+            kvm_physical_memory_addr_from_host(kvm_vcpu_state(c), addr, &paddr)) {
-             kvm_hwpoison_page_add(ram_addr);
-             /*
-              * If this is a BUS_MCEERR_AR, we know we have been called
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 0b5755e42b8..b2facf4f7c1 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -583,7 +583,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-     if ((env->mcg_cap & MCG_SER_P) && addr) {
-         ram_addr = qemu_ram_addr_from_host(addr);
-         if (ram_addr != RAM_ADDR_INVALID &&
--            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-+            kvm_physical_memory_addr_from_host(kvm_vcpu_state(c), addr, &paddr)) {
-             kvm_hwpoison_page_add(ram_addr);
-             kvm_mce_inject(cpu, paddr, code);
- 
-@@ -715,7 +715,7 @@ unsigned long kvm_arch_vcpu_id(CPUState *cs)
- static bool hyperv_enabled(X86CPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
--    return kvm_check_extension(cs->kvm_state, KVM_CAP_HYPERV) > 0 &&
-+    return kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_HYPERV) > 0 &&
-         ((cpu->hyperv_spinlock_attempts != HYPERV_SPINLOCK_NEVER_NOTIFY) ||
-          cpu->hyperv_features || cpu->hyperv_passthrough);
- }
-@@ -747,13 +747,13 @@ static int kvm_arch_set_tsc_khz(CPUState *cs)
-         return 0;
-     }
- 
--    cur_freq = kvm_check_extension(cs->kvm_state, KVM_CAP_GET_TSC_KHZ) ?
-+    cur_freq = kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_GET_TSC_KHZ) ?
-                kvm_vcpu_ioctl(cs, KVM_GET_TSC_KHZ) : -ENOTSUP;
- 
-     /*
-      * If TSC scaling is supported, attempt to set TSC frequency.
-      */
--    if (kvm_check_extension(cs->kvm_state, KVM_CAP_TSC_CONTROL)) {
-+    if (kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_TSC_CONTROL)) {
-         set_ioctl = true;
-     }
- 
-@@ -773,9 +773,9 @@ static int kvm_arch_set_tsc_khz(CPUState *cs)
-         /* When KVM_SET_TSC_KHZ fails, it's an error only if the current
-          * TSC frequency doesn't match the one we want.
-          */
--        cur_freq = kvm_check_extension(cs->kvm_state, KVM_CAP_GET_TSC_KHZ) ?
--                   kvm_vcpu_ioctl(cs, KVM_GET_TSC_KHZ) :
--                   -ENOTSUP;
-+        cur_freq = kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_GET_TSC_KHZ)
-+                   ? kvm_vcpu_ioctl(cs, KVM_GET_TSC_KHZ)
-+                   : -ENOTSUP;
-         if (cur_freq <= 0 || cur_freq != env->tsc_khz) {
-             warn_report("TSC frequency mismatch between "
-                         "VM (%" PRId64 " kHz) and host (%d kHz), "
-@@ -994,7 +994,7 @@ static struct kvm_cpuid2 *get_supported_hv_cpuid_legacy(CPUState *cs)
-     entry_recomm->function = HV_CPUID_ENLIGHTMENT_INFO;
-     entry_recomm->ebx = cpu->hyperv_spinlock_attempts;
- 
--    if (kvm_check_extension(cs->kvm_state, KVM_CAP_HYPERV) > 0) {
-+    if (kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_HYPERV) > 0) {
-         entry_feat->eax |= HV_HYPERCALL_AVAILABLE;
-         entry_feat->eax |= HV_APIC_ACCESS_AVAILABLE;
-         entry_feat->edx |= HV_CPU_DYNAMIC_PARTITIONING_AVAILABLE;
-@@ -1002,7 +1002,7 @@ static struct kvm_cpuid2 *get_supported_hv_cpuid_legacy(CPUState *cs)
-         entry_recomm->eax |= HV_APIC_ACCESS_RECOMMENDED;
-     }
- 
--    if (kvm_check_extension(cs->kvm_state, KVM_CAP_HYPERV_TIME) > 0) {
-+    if (kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_HYPERV_TIME) > 0) {
-         entry_feat->eax |= HV_TIME_REF_COUNT_AVAILABLE;
-         entry_feat->eax |= HV_REFERENCE_TSC_AVAILABLE;
-     }
-@@ -1036,7 +1036,7 @@ static struct kvm_cpuid2 *get_supported_hv_cpuid_legacy(CPUState *cs)
-         unsigned int cap = cpu->hyperv_synic_kvm_only ?
-             KVM_CAP_HYPERV_SYNIC : KVM_CAP_HYPERV_SYNIC2;
- 
--        if (kvm_check_extension(cs->kvm_state, cap) > 0) {
-+        if (kvm_check_extension(kvm_vcpu_state(cs), cap) > 0) {
-             entry_feat->eax |= HV_SYNIC_AVAILABLE;
-         }
-     }
-@@ -1045,18 +1045,18 @@ static struct kvm_cpuid2 *get_supported_hv_cpuid_legacy(CPUState *cs)
-         entry_feat->eax |= HV_SYNTIMERS_AVAILABLE;
-     }
- 
--    if (kvm_check_extension(cs->kvm_state,
-+    if (kvm_check_extension(kvm_vcpu_state(cs),
-                             KVM_CAP_HYPERV_TLBFLUSH) > 0) {
-         entry_recomm->eax |= HV_REMOTE_TLB_FLUSH_RECOMMENDED;
-         entry_recomm->eax |= HV_EX_PROCESSOR_MASKS_RECOMMENDED;
-     }
- 
--    if (kvm_check_extension(cs->kvm_state,
-+    if (kvm_check_extension(kvm_vcpu_state(cs),
-                             KVM_CAP_HYPERV_ENLIGHTENED_VMCS) > 0) {
-         entry_recomm->eax |= HV_ENLIGHTENED_VMCS_RECOMMENDED;
-     }
- 
--    if (kvm_check_extension(cs->kvm_state,
-+    if (kvm_check_extension(kvm_vcpu_state(cs),
-                             KVM_CAP_HYPERV_SEND_IPI) > 0) {
-         entry_recomm->eax |= HV_CLUSTER_IPI_RECOMMENDED;
-         entry_recomm->eax |= HV_EX_PROCESSOR_MASKS_RECOMMENDED;
-@@ -1200,7 +1200,7 @@ static int hyperv_handle_properties(CPUState *cs,
-         }
-     }
- 
--    if (kvm_check_extension(cs->kvm_state, KVM_CAP_HYPERV_CPUID) > 0) {
-+    if (kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_HYPERV_CPUID) > 0) {
-         cpuid = get_supported_hv_cpuid(cs);
-     } else {
-         cpuid = get_supported_hv_cpuid_legacy(cs);
-@@ -1504,7 +1504,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
-      * so that vcpu's TSC frequency can be migrated later via this field.
-      */
-     if (!env->tsc_khz) {
--        r = kvm_check_extension(cs->kvm_state, KVM_CAP_GET_TSC_KHZ) ?
-+        r = kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_GET_TSC_KHZ) ?
-             kvm_vcpu_ioctl(cs, KVM_GET_TSC_KHZ) :
-             -ENOTSUP;
-         if (r > 0) {
-@@ -1746,12 +1746,12 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     if (((env->cpuid_version >> 8)&0xF) >= 6
-         && (env->features[FEAT_1_EDX] & (CPUID_MCE | CPUID_MCA)) ==
-            (CPUID_MCE | CPUID_MCA)
--        && kvm_check_extension(cs->kvm_state, KVM_CAP_MCE) > 0) {
-+        && kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_MCE) > 0) {
-         uint64_t mcg_cap, unsupported_caps;
-         int banks;
-         int ret;
- 
--        ret = kvm_get_mce_cap_supported(cs->kvm_state, &mcg_cap, &banks);
-+        ret = kvm_get_mce_cap_supported(kvm_vcpu_state(cs), &mcg_cap, &banks);
-         if (ret < 0) {
-             fprintf(stderr, "kvm_get_mce_cap_supported: %s", strerror(-ret));
-             return ret;
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index 298c1f882c6..d9a8f019a74 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -205,7 +205,7 @@ static int kvm_booke206_tlb_init(PowerPCCPU *cpu)
-     int ret, i;
- 
-     if (!kvm_enabled() ||
--        !kvm_check_extension(cs->kvm_state, KVM_CAP_SW_TLB)) {
-+        !kvm_check_extension(kvm_vcpu_state(cs), KVM_CAP_SW_TLB)) {
-         return 0;
-     }
- 
-@@ -303,7 +303,7 @@ target_ulong kvmppc_configure_v3_mmu(PowerPCCPU *cpu,
-         flags |= KVM_PPC_MMUV3_GTSE;
-     }
-     cfg.flags = flags;
--    ret = kvm_vm_ioctl(cs->kvm_state, KVM_PPC_CONFIGURE_V3_MMU, &cfg);
-+    ret = kvm_vm_ioctl(kvm_vcpu_state(cs), KVM_PPC_CONFIGURE_V3_MMU, &cfg);
-     switch (ret) {
-     case 0:
-         return H_SUCCESS;
-@@ -483,7 +483,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         ret = kvm_booke206_tlb_init(cpu);
-         break;
-     case POWERPC_MMU_2_07:
--        if (!cap_htm && !kvmppc_is_pr(cs->kvm_state)) {
-+        if (!cap_htm && !kvmppc_is_pr(kvm_vcpu_state(cs))) {
-             /*
-              * KVM-HV has transactional memory on POWER8 also without
-              * the KVM_CAP_PPC_HTM extension, so enable it here
-@@ -1947,8 +1947,8 @@ static int kvmppc_get_pvinfo(CPUPPCState *env, struct kvm_ppc_pvinfo *pvinfo)
- {
-     CPUState *cs = env_cpu(env);
- 
--    if (kvm_vm_check_extension(cs->kvm_state, KVM_CAP_PPC_GET_PVINFO) &&
--        !kvm_vm_ioctl(cs->kvm_state, KVM_PPC_GET_PVINFO, pvinfo)) {
-+    if (kvm_vm_check_extension(kvm_vcpu_state(cs), KVM_CAP_PPC_GET_PVINFO) &&
-+        !kvm_vm_ioctl(kvm_vcpu_state(cs), KVM_PPC_GET_PVINFO, pvinfo)) {
-         return 0;
-     }
- 
-@@ -2864,7 +2864,7 @@ int kvmppc_resize_hpt_prepare(PowerPCCPU *cpu, target_ulong flags, int shift)
-         return -ENOSYS;
-     }
- 
--    return kvm_vm_ioctl(cs->kvm_state, KVM_PPC_RESIZE_HPT_PREPARE, &rhpt);
-+    return kvm_vm_ioctl(kvm_vcpu_state(cs), KVM_PPC_RESIZE_HPT_PREPARE, &rhpt);
- }
- 
- int kvmppc_resize_hpt_commit(PowerPCCPU *cpu, target_ulong flags, int shift)
-@@ -2879,7 +2879,7 @@ int kvmppc_resize_hpt_commit(PowerPCCPU *cpu, target_ulong flags, int shift)
-         return -ENOSYS;
-     }
- 
--    return kvm_vm_ioctl(cs->kvm_state, KVM_PPC_RESIZE_HPT_COMMIT, &rhpt);
-+    return kvm_vm_ioctl(kvm_vcpu_state(cs), KVM_PPC_RESIZE_HPT_COMMIT, &rhpt);
- }
- 
- /*
-@@ -2909,7 +2909,7 @@ bool kvmppc_pvr_workaround_required(PowerPCCPU *cpu)
-         return false;
-     }
- 
--    return !kvmppc_is_pr(cs->kvm_state);
-+    return !kvmppc_is_pr(kvm_vcpu_state(cs));
- }
- 
- void kvmppc_set_reg_ppc_online(PowerPCCPU *cpu, unsigned int online)
--- 
-2.26.2
+--0000000000007f6ddb05bb024943
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Feb 8, 2021 at 8:59 AM Peter =
+Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linar=
+o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">On Fri, 29 Jan 2021 at 01:04, Hao Wu &lt;<a href=3D"mailto:wuhaotsh@go=
+ogle.com" target=3D"_blank">wuhaotsh@google.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; This patch implements the FIFO mode of the SMBus module. In FIFO, the<=
+br>
+&gt; user transmits or receives at most 16 bytes at a time. The FIFO mode<b=
+r>
+&gt; allows the module to transmit large amount of data faster than single<=
+br>
+&gt; byte mode.<br>
+&gt;<br>
+&gt; Reviewed-by: Doug Evans&lt;<a href=3D"mailto:dje@google.com" target=3D=
+"_blank">dje@google.com</a>&gt;<br>
+&gt; Reviewed-by: Tyrong Ting&lt;<a href=3D"mailto:kfting@nuvoton.com" targ=
+et=3D"_blank">kfting@nuvoton.com</a>&gt;<br>
+&gt; Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" targe=
+t=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
+&gt; Reviewed-by: Corey Minyard &lt;<a href=3D"mailto:cminyard@mvista.com" =
+target=3D"_blank">cminyard@mvista.com</a>&gt;<br>
+&gt; Ack-by: Corey Minyard &lt;<a href=3D"mailto:cminyard@mvista.com" targe=
+t=3D"_blank">cminyard@mvista.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 hw/i2c/npcm7xx_smbus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+ 342 +++++++++++++++++++++++++++++--<br>
+&gt;=C2=A0 hw/i2c/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 =C2=A01 +<br>
+&gt;=C2=A0 include/hw/i2c/npcm7xx_smbus.h=C2=A0 =C2=A0|=C2=A0 25 +++<br>
+&gt;=C2=A0 tests/qtest/npcm7xx_smbus-test.c | 149 +++++++++++++-<br>
+&gt;=C2=A0 4 files changed, 501 insertions(+), 16 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c<br>
+&gt; index c72b6e446f..be3253d251 100644<br>
+&gt; --- a/hw/i2c/npcm7xx_smbus.c<br>
+&gt; +++ b/hw/i2c/npcm7xx_smbus.c<br>
+&gt; @@ -27,7 +27,7 @@<br>
+&gt;=C2=A0 #include &quot;trace.h&quot;<br>
+&gt;<br>
+&gt;=C2=A0 #define NPCM7XX_SMBUS_VERSION 1<br>
+&gt; -#define NPCM7XX_SMBUS_FIFO_EN 0<br>
+&gt; +#define NPCM7XX_SMBUS_FIFO_EN 1<br>
+<br>
+Why has this define changed ?<br>
+<br>
+&gt;=C2=A0 #define NPCM7XX_SMBUS_ENABLED(s)=C2=A0 =C2=A0 ((s)-&gt;ctl2 &amp=
+; NPCM7XX_SMBCTL2_ENABLE)<br>
+&gt; +#define NPCM7XX_SMBUS_FIFO_ENABLED(s) (NPCM7XX_SMBUS_FIFO_EN &amp;&am=
+p; \<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (s)-&gt;fif_ctl &amp; NPCM7XX_SMBFIF_CTL_=
+FIFO_EN)<br>
+<br>
+...and why are we testing something that&#39;s always 1 ?<br>
+Is NPCM7XX_SMBUS_FIFO_EN supposed to be a debug &quot;turn this feature off=
+&quot;<br>
+switch for QEMU developers? If, so it would be helpful to give it a name<br=
+>
+that doesn&#39;t look like it&#39;s defining a bit value for the hardware<b=
+r>
+and adding a comment saying what it does.<br></blockquote><div>No, it&#39;s=
+ a specific bit in the NPCM7XX SMBus module&#39;s=C2=A0version reg that ind=
+icates whether this module</div><div>supports FIFO mode. I&#39;ll rename it=
+ so it&#39;s more clear to the reader.=C2=A0</div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">
+<br>
+&gt; @@ -754,6 +1059,17 @@ static const VMStateDescription vmstate_npcm7xx_=
+smbus =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8_ARRAY(addr, NPCM7xxSMB=
+usState, NPCM7XX_SMBUS_NR_ADDRS),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(scllt, NPCM7xxSMBusSta=
+te),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(sclht, NPCM7xxSMBusSta=
+te),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(fif_ctl, NPCM7xxSMBusState)=
+,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(fif_cts, NPCM7xxSMBusState)=
+,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(fair_per, NPCM7xxSMBusState=
+),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(txf_ctl, NPCM7xxSMBusState)=
+,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(t_out, NPCM7xxSMBusState),<=
+br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(txf_sts, NPCM7xxSMBusState)=
+,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(rxf_sts, NPCM7xxSMBusState)=
+,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(rxf_ctl, NPCM7xxSMBusState)=
+,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8_ARRAY(rx_fifo, NPCM7xxSMBus=
+State,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 NPCM7XX_SMBUS_FIFO_SIZE),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_UINT8(rx_cur, NPCM7xxSMBusState),=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 VMSTATE_END_OF_LIST(),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 },<br>
+&gt;=C2=A0 };<br>
+<br>
+It&#39;s OK to add fields to the vmstate without bumping the version<br>
+number in this special case, because we only just added the device<br>
+a few commits earlier in the series, but it&#39;s worth specifically<br>
+saying that in the commit message.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+
+--0000000000007f6ddb05bb024943--

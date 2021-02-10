@@ -1,109 +1,83 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1140107lfc;
-        Wed, 10 Feb 2021 02:11:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxnJJ4QTgMSPnBomTr7O7MFtZWj/2NXU5/FTyKS+32SRz6TgxY/j6vDd7AbGds6dXH54ORW
-X-Received: by 2002:a25:e7d7:: with SMTP id e206mr3120474ybh.110.1612951861488;
-        Wed, 10 Feb 2021 02:11:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612951861; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp845081lfc;
+        Tue, 9 Feb 2021 17:17:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwlSP93JoZV6S4bxPjZ+AOpvwysGpjj6/Xgsa1s+H6wy8D/Vjlif2mv0wPhg976NQpByJBA
+X-Received: by 2002:a25:42c1:: with SMTP id p184mr926042yba.66.1612919835537;
+        Tue, 09 Feb 2021 17:17:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612919835; cv=none;
         d=google.com; s=arc-20160816;
-        b=f7YGdxWm4+Q+rOPhBalm7xMv5nKBtg1FT1xhp1bZz7TgPwuZDnNXZEMLNu0wm6ayH/
-         51WVffT4XTkvhJijIB/q+mqB9nMYJQZsfov7ULuBHWn8BMIbXsTv4rNujO2rfqbtFeIe
-         VyTafv8gyr4xPQ643MLbuE74/6ZrJhUvmHMgKWC3E3hiHfjRw/jWiWeOnkuJZeIea+cU
-         1VfslTRb6rSN7awqgpubcxNV0YOwYC7HE5rWVrGUKMbK0Pl8bYY4e5PRMnm5j5eTgu7T
-         JHsiHufjNWBvAJv5sweBUioVHB8ZTPpyFxFgeS/b+2/6CYyD86MQKwXhZTJanycBp+hn
-         Xpsw==
+        b=fSl7QMXA7u/7FTkSKqlThhHb2qk3BTLFLA3g9qa73M9rp3nFEnrt3hSjr9jSl2DpQR
+         0wHRPYBd9oce63k8JInm7OfR/uYN+n3h+dhnl7m9J2ZBxvt4hICrlF+fg2an21p3/aNQ
+         T2OkK3RmU3uMLd9p5/SJt27UIFWOFH2WLemtr2XHNXLipK8P/t7numeHz4VBnYMK1fIo
+         4b3bDneWLACr3MzjL4Wuf6ms8UCvV8xsI0tw3d0VkTKv+iSlDCWyQvb+gbQcfUu7k6ud
+         Kjp3hXj+F4Qb1URNYcKxMpBr6pp1R1EFXZoz5VJo+cgGvnSw/0n+b7wuNpuO6FPHquYy
+         60Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=ZtKdh8VZbLR/0yCVGno7ItAhU6fDoFuGP3xBsxj0cBo=;
-        b=DS8IjjWleac42NA/Js34Ga6FKBxgUGPOnAc2YwImZcqT7f5+4WJenA5l/uoOm3xz9i
-         FRAiODyXN6XSqB12gkaW8Xjma/ylngkesIRc+ULtk6wFHk1JtpHXlAN/THrnHIk6Q3Qa
-         Fj/2XydoCIm2Lect0Kxm2ia09AE8grC1zZDpyLU85UDXvGK9lpdyJgwiaNQdKG9Ikx+H
-         pLvc1b6Q0R0F8I+mYDR9Mj0UufrZP0Y62R6YijIdcCzo2SxixbO99rORDhAHC438JtLz
-         cZFk0HDm1EFOExOm+iJY/8aJiilI+MLSX0YyeFAXgkeA/kpPAXvxImIvVKh0ZMYtvdau
-         hh6A==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=CUd32qz+Ilj/RHs9dWEpOdMdV/8FcyalTml3NdJyV1s=;
+        b=w5NAQMdoFwZQKCjBI9wm1u2cQlJuS2kdmLWVVy5+LyqPCdGBlSEBqN7kHMMjHCMtrd
+         QCgKLeQGxs7Cp0YVbqvsUeMDGGaijwY7D5Pq/8D89C9CS4go40JkBiFHfua/ZAG7UEBF
+         lfTYkJ4Hre7Vxe84p6XHDvbMwbmLxGWqdSq3b4dNtjDdLPKOG21J67zV0FjGT/TtePrM
+         k3RVtIblh2CbidBBZsV1reu5D8P6tzl0qhJmGfF02frsw2RikmziQbHBDr9ogjzTru5v
+         KoSyWoKl7MPnSJ/wXLWEZmV6dpVjFgjvuI+5xP14MFliu31W2pqcCcmi8QRNigELA3cC
+         tm8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aDRklWFO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Sdqw9gGh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t59si1965085ybi.182.2021.02.10.02.11.01
+        by mx.google.com with ESMTPS id r207si391487ybc.179.2021.02.09.17.17.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 02:11:01 -0800 (PST)
+        Tue, 09 Feb 2021 17:17:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aDRklWFO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44498 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Sdqw9gGh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9mSa-0008V1-RA
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 05:11:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37140)
+	id 1l9e82-0007gZ-Uo
+	for alex.bennee@linaro.org; Tue, 09 Feb 2021 20:17:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l9mS2-0008Um-3O; Wed, 10 Feb 2021 05:10:26 -0500
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:46128)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l9mRz-0002vp-Nj; Wed, 10 Feb 2021 05:10:25 -0500
-Received: by mail-ej1-x62f.google.com with SMTP id w2so3000010ejk.13;
- Wed, 10 Feb 2021 02:10:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZtKdh8VZbLR/0yCVGno7ItAhU6fDoFuGP3xBsxj0cBo=;
- b=aDRklWFOhA8uo7zfmLdtDhqB+Q36yrZjbcpMebcGmQ9ECdRBTttBdqrYjWNP0RqBOX
- 4bFWVLP3f2kTBRBYRxz44wBqj0BJO9OMlgAdWUFHTFfEekAgZOxsi9enZ7SdzghBCi3q
- 6j0wP/SU3vYxKlBMt24MpsS/aNxRF/DcQSU75FzQqRlJ+m+UvA71dywur5zt3pIa/qxD
- W3w7NvcPK5cKHC6S27zmEuulEEGp3TxwoRbplVxWYWMJDkrbjyeMEIHQmItrhmwZDAh1
- 32nr0raSVMJjhpY+FHkl2y5q4+lsQtO79dVg/eTGLfwwWfdegqeAmf3iloGAcFKJEkEO
- 2Zpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZtKdh8VZbLR/0yCVGno7ItAhU6fDoFuGP3xBsxj0cBo=;
- b=TwHGLNeFQ6GEV8A5UXhl+108vhU/vSD0OInhN5GQAVYNxAPJeNean8iq65tAe0VC8U
- VKBA04PhJu8P5J/C7JfRQnjja04oIgAhPs/oAWsq111zdKR7+3Ep3/Y8lSiIyUtjttGz
- Ols9A+d7L6OYyqxmDZcrqU/Y0hvsXhqQlHkWD6KvhkyxK+dGOuD2Z6471X3Cu+Objybd
- YhpPFtGfBBcIj1M/OdqoKkrlOjGdPqzN6HVGNvPBSatDRpA/oL2+6WEfFmW8JC4Kuy/L
- J+CwEabygGqQxxYUwlsiaY2qgkpcAvKz/x0gDhH5PIo3Npm7ktg9r1ZUEvGRdVUWzwu1
- hEXw==
-X-Gm-Message-State: AOAM5316pfxQNoKLoErEVE/vUnW1bGxR+q/JbTKWEGad3vs9ABw5mZnC
- 2lwXYNxK2P5CL3A3ypganTA=
-X-Received: by 2002:a17:906:cc5d:: with SMTP id
- mm29mr2242158ejb.183.1612951821890; 
- Wed, 10 Feb 2021 02:10:21 -0800 (PST)
-Received: from pek-vx-bsp2.wrs.com
- (ec2-44-242-66-180.us-west-2.compute.amazonaws.com. [44.242.66.180])
- by smtp.gmail.com with ESMTPSA id y11sm785418ejd.72.2021.02.10.02.10.18
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 10 Feb 2021 02:10:21 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 0/5] hw/arm: zynqmp: Implement a CSU DMA model and connect
- it with GQSPI
-Date: Wed, 10 Feb 2021 18:10:08 +0800
-Message-Id: <1612951813-50542-1-git-send-email-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1l9e7q-0007fu-FU; Tue, 09 Feb 2021 20:17:02 -0500
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:42283 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1l9e7m-0000Ze-6u; Tue, 09 Feb 2021 20:17:02 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4Db20V1MH8z9sVF; Wed, 10 Feb 2021 12:16:42 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1612919802;
+ bh=IP8mMo4SIBPh0jDbVLUSwlACt+lMWVrDvVK53Cx7kS8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Sdqw9gGh1EX9QXd2E2La47CYsbnoZA2DCVhvLoeCemuULh/G7lgn5+/dyak4yvYlV
+ za7nVlItZtfGOsLFjFY+ErK3yiisqDv1sMAEJBM9uDvRUmktnc5NOzKRWUkAJlmJjc
+ lIUapoYtFwucTULj9J9yRuFFcOBrBI9txu9i7WKQ=
+Date: Wed, 10 Feb 2021 11:05:13 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH 2/2] spapr_iommu: Fix vhost integration regression
+Message-ID: <20210210000513.GA4450@yekko.fritz.box>
+References: <20210209213233.40985-1-eric.auger@redhat.com>
+ <20210209213233.40985-3-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=bmeng.cn@gmail.com; helo=mail-ej1-x62f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="IJpNTDwzlM2Ie8A6"
+Content-Disposition: inline
+In-Reply-To: <20210209213233.40985-3-eric.auger@redhat.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,65 +90,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, mst@redhat.com, jasowang@redhat.com,
+ qemu-devel@nongnu.org, peterx@redhat.com, groug@kaod.org, eperezma@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, jean-philippe@linaro.org,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KEqNJR5ULxSN
+X-TUID: LdFY/FGKpbqp
 
-From: Bin Meng <bin.meng@windriver.com>
 
-ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
-is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
-crash. This is observed when testing VxWorks 7.
+--IJpNTDwzlM2Ie8A6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-We added a basic CSU DMA model and the implementation is based on
-https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c
+On Tue, Feb 09, 2021 at 10:32:33PM +0100, Eric Auger wrote:
+> Previous work on dev-iotlb message broke spapr_iommu/vhost integration
+> as it did for SMMU and virtio-iommu. The spapr_iommu currently
+> only sends IOMMU_NOTIFIER_UNMAP notifications. Since commit
+> 958ec334bca3 ("vhost: Unbreak SMMU and virtio-iommu on dev-iotlb support"=
+),
+> VHOST first tries to register IOMMU_NOTIFIER_DEVIOTLB_UNMAP notifier
+> and if it fails, falls back to legacy IOMMU_NOTIFIER_UNMAP. So
+> spapr_iommu must fail on the IOMMU_NOTIFIER_DEVIOTLB_UNMAP
+> registration.
+>=20
+> Reported-by: Peter Xu <peterx@redhat.com>
+> Fixes: b68ba1ca57677acf870d5ab10579e6105c1f5338
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Unfortunately the Xilinx fork of QEMU does not boot VxWorks. It looks
-like the fork has quite a lot of difference from the upstream QEMU.
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-The CSU DMA model in the Xilinx fork seems to be quite complicated
-and has lots of functionalities. However right now our goal is to
-implement a minimum model that could be used to work with the GQSPI
-model to make the QSPI DMA functionality work.
+> ---
+>  hw/ppc/spapr_iommu.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+>=20
+> diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+> index 30352df00e..24537ffcbd 100644
+> --- a/hw/ppc/spapr_iommu.c
+> +++ b/hw/ppc/spapr_iommu.c
+> @@ -212,6 +212,11 @@ static int spapr_tce_notify_flag_changed(IOMMUMemory=
+Region *iommu,
+>  {
+>      struct SpaprTceTable *tbl =3D container_of(iommu, SpaprTceTable, iom=
+mu);
+> =20
+> +    if (new & IOMMU_NOTIFIER_DEVIOTLB_UNMAP) {
+> +        error_setg(errp, "spart_tce does not support dev-iotlb yet");
+> +        return -EINVAL;
+> +    }
+> +
+>      if (old =3D=3D IOMMU_NOTIFIER_NONE && new !=3D IOMMU_NOTIFIER_NONE) {
+>          spapr_tce_set_need_vfio(tbl, true);
+>      } else if (old !=3D IOMMU_NOTIFIER_NONE && new =3D=3D IOMMU_NOTIFIER=
+_NONE) {
 
-The model implements only the basic DMA transfer function of the DST
-part, verified along with ZynqMP GQSPI model. Other advanced features
-are not implemented.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Changes in v3:
-- Implement DMA as a separate CSU DMA model
-- new patch: xlnx-zynqmp: Clean up coding convention issues
-- new patch: xlnx-zynqmp: Add XLNX CSU DMA module
-- new patch: xilinx_spips: Remove DMA related code from zynqmp_qspips
+--IJpNTDwzlM2Ie8A6
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Changes in v2:
-- Remove unconnected TYPE_STREAM_SINK link property
-- Add a TYPE_MEMORY_REGION link property, to allow board codes to tell
-  the device what its view of the world that it is doing DMA to is
-- Replace cpu_physical_memory_write() with address_space_write()
+-----BEGIN PGP SIGNATURE-----
 
-Xuzhou Cheng (5):
-  hw/dma: xlnx_csu_dma: Implement a basic XLNX CSU DMA model
-  hw/arm: xlnx-zynqmp: Clean up coding convention issues
-  hw/arm: xlnx-zynqmp: Add XLNX CSU DMA module
-  hw/ssi: xilinx_spips: Clean up coding convention issues
-  hw/ssi: xilinx_spips: Remove DMA related code from zynqmp_qspips
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmAjIzcACgkQbDjKyiDZ
+s5LGtg//bzh8C6Krz0m+Q0uYq8Yf5opN+pXTZ7B3TBkhoRxLjURvUkbTdF0FE+oW
+SP+G2Ssll7d+d5fz9o+cxij42QeCkySmSEoIUKKYhJAgXGQZwdz796wrE70JMbsm
+57N6CTC+WuFCGLR1JrfDwqCIGlkmpWc5N6tE+zq2EeHCXp9C9FEMfooYlOkd25TL
+UJuJaDpXV057wh6veRx1pTZ3XY79+dAUNC9d8KznC1sFmNluBmTRlHfyPG+a6lir
+3OjNS48yvFfFmhuiIDpZvqyMKTF2CytFRoBynTSaF+9zVdCFp9swtPUXbVStD05s
+OBZc9GcPUfs+UdoJh19eo33JyqUD6XhDDn3k8zfKl7hHSizGNxhMkEXiyyMv3DQR
+SAsKauA6S2fpbJh/rd0frs7Xh5qeGYDoT1NgGxUPojVOZiwTNRPrVE3iG3gTuv6i
+OwdY8zFEd0he9SSlWEbV7h7jaPQLmtqFdG9CD3NgBMmG+hMkRepAG5r2TymogY6Q
+R5niIzWiNgsGEJAW7L9lwCOESQhOw7UGcuT0pT1VV48vY53/Yi/ihB+bprKgpIKK
+mWwBkS7dnq1DuK3w7mmKdrsD1u6uVCsTzDW/sg2ckYYeMBcbbQIbDKvWs8pyovmX
+uO9LD5nMRqCqKsB96Lk0ng1O7ZrT8SBYj/kVEXPhjFXg/F1/Hr4=
+=9igK
+-----END PGP SIGNATURE-----
 
- include/hw/arm/xlnx-zynqmp.h  |   5 +-
- include/hw/dma/xlnx_csu_dma.h |  39 ++++
- hw/arm/xlnx-zynqmp.c          |  25 ++-
- hw/dma/xlnx_csu_dma.c         | 444 ++++++++++++++++++++++++++++++++++++++++++
- hw/ssi/xilinx_spips.c         |  33 ++--
- hw/arm/Kconfig                |   1 +
- hw/dma/Kconfig                |   4 +
- hw/dma/meson.build            |   1 +
- 8 files changed, 528 insertions(+), 24 deletions(-)
- create mode 100644 include/hw/dma/xlnx_csu_dma.h
- create mode 100644 hw/dma/xlnx_csu_dma.c
-
--- 
-2.7.4
-
+--IJpNTDwzlM2Ie8A6--

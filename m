@@ -1,132 +1,113 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1072275lfc;
-        Wed, 10 Feb 2021 00:14:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJya9gmU2kfETdwsM6E7uwR4AZymhXeuzWvm5GzhMCQFnwxquptSR2coF7HWbTsEdDmngc10
-X-Received: by 2002:a25:e016:: with SMTP id x22mr2742107ybg.92.1612944871549;
-        Wed, 10 Feb 2021 00:14:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612944871; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1075255lfc;
+        Wed, 10 Feb 2021 00:19:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxailORKWXcq0w4Jil6n5a6CIFb0lOoClM4Xi7O+Q9RmCil1c9fDOiValk2/AQ1iZ7MT5Xp
+X-Received: by 2002:a25:aa6d:: with SMTP id s100mr2882521ybi.523.1612945169673;
+        Wed, 10 Feb 2021 00:19:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612945169; cv=none;
         d=google.com; s=arc-20160816;
-        b=lvwQQ9fao66qNmPV2jHNbONeY96OKP58OyARueqwneF/WheHhFm6UvOU4wiFX2MCQ5
-         pZQs6+fQRjva/zVxmJk/6U0V7krmgx+hRUs66UVQGIZFtiTcwFG/ys9tCDdNaq7S+ly8
-         TGOclamNOYT6dv+jpGA2V1b0QkbFyFbh3Q0KBubwnaUmgjAtTCKZaw6UIr1kh56TdLCT
-         lm5jHCFR+jW/f08L4sNnsNGdeMRe37c+zvI8zPipEC5mm9orFJZx7Z5hlBfD1RH1IO9Q
-         SScKUIX8mgGj5MjUhYPmH91yj3WkzCKZFt4E8WdWPub1W5AOQVgF/Qf1sIv4fUGNWeRj
-         SPUg==
+        b=KSBWFcJtHpMq0i/mZvN6agSx3fjh0c/OD7QrGHvCrHKcSGzryNaU5stKkwV6kgt5px
+         1UzLDOLGVNwxrM+HHcKM1EOGEZgvFqLpl2nJq5C2Xa9Mc4XzgDB4QO80T0zYyCzrDsEc
+         +lCuz4AeD2NnhJTxg8Se9WF1Jdn/9YT1y68SUVci5g2DaNGvzNi8oSqtmRQvNmuFrNjF
+         WuSR/3Z/TgFXZsTdNetpaSo5u/zNmtFOHx5t7ZysHIU6YGerdgmfCSFyhPyO2WXiVMFv
+         zhmc70l8xvSIHw4K+nceHd2ul5760bennA/vXECxdrGJ8KrovnxG/Rp5naNX09C05MIP
+         ZbMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=sLRLNSpUF/elkGraWlbQz/zxrO+y7lT4d5gYdR0Wm2k=;
-        b=MoLbgCRkIDldcCy2jZAdg57alxqpHAxzZsxZagR9aT+gGTYuZIWRVTfCu+aGYYrwtd
-         Olac7PUrOVgnLAgiIuUYyfoX3C9XrWNOXxRkpmYWIgJbYMmEGpujNBZsNkBFRDItXYRe
-         YJhtGWmoOap2bfgPUrVov5yCkQUWxynZmg59Z2fsx52AxNicMGoaFunaN2AbIiHCpgFm
-         Xg4h05T7vjxXgY1xOpWx03sqA9YcVjYyrj7B+cvj5aARz3d3ZM1HKZClYYpnu57WIGNl
-         4LTpB8vt1UwnfAKD3IulP2cgFmRt7tlXXyE8tH46HlcWzZZCDW9E6CTh7UuM5t6vzkEo
-         82Vg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
+        bh=HXwZYNuiLcuplBdQMLTVU5vXdxJ+odNddL8BW8oPskc=;
+        b=SsOs/0gGSV8Oua7/CEjvlj3HN5R/6LzCddl/qNlDS0Jo8Ftj5WhLutGo4jYSbmBi7J
+         MBHjcvWUg+I2QE7Y5phSGVa9eU4dIzcp17ErxmDPIGKldqncZBarNOYVGttpJP6ItTbg
+         Zc7xTDj23B0bTlU/pi4E0HfSlj0R4yOAP7M4UAP4JOk9BS0IZQZTpm2oocCERRsR5wTx
+         XReWzOBmlCJLvsh5vrKuCEwAqvEuFL7sZskCn7dbunbBYZgloBoPAf9TtGFTHU4jGOPV
+         6IRsArgLxNBCnzSc/46QdxLTLv5OtWon8ea8YKXiABlG7Ch16fcWzJx1Z9CwUKI1Gawm
+         x5tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aqw2Axer;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j126si1210650ybb.41.2021.02.10.00.14.31
+        by mx.google.com with ESMTPS id a18si1291817ybk.425.2021.02.10.00.19.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 00:14:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Feb 2021 00:19:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aqw2Axer;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41632 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9kdq-0002us-W0
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 03:14:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39864)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9kif-0004vm-3v
+	for alex.bennee@linaro.org; Wed, 10 Feb 2021 03:19:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43320)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1l9kbs-0001lo-3Q
- for qemu-devel@nongnu.org; Wed, 10 Feb 2021 03:12:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50722)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1l9kbX-00061P-Pl
- for qemu-devel@nongnu.org; Wed, 10 Feb 2021 03:12:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612944726;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sLRLNSpUF/elkGraWlbQz/zxrO+y7lT4d5gYdR0Wm2k=;
- b=aqw2AxerZzFHpn1EcxnEfq+zQSLiXx40pEaSofAmGSK4YwjUua3lLlhc5j+SkljwaS5+bU
- GXP6sTE/+lrLcB/oGHZ8U2YQwWa0d+Xwthgr4NWfKBleC7qad/fwtrEq+EZt7JGdxtI6gF
- 6iwawcHIkslYnMRZQyHh5Wd6iiE1NbA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-566-NyQrV421P8m3oglkxSKiEg-1; Wed, 10 Feb 2021 03:12:04 -0500
-X-MC-Unique: NyQrV421P8m3oglkxSKiEg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B9CE91275;
- Wed, 10 Feb 2021 08:12:03 +0000 (UTC)
-Received: from [10.72.12.223] (ovpn-12-223.pek2.redhat.com [10.72.12.223])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 09B9362691;
- Wed, 10 Feb 2021 08:11:39 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1l9kiX-0004vQ-Tn
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 03:19:21 -0500
+Received: from 8.mo52.mail-out.ovh.net ([46.105.37.156]:43016)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1l9kiV-0001br-Vx
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 03:19:21 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.42])
+ by mo52.mail-out.ovh.net (Postfix) with ESMTPS id D25F323D715;
+ Wed, 10 Feb 2021 09:19:14 +0100 (CET)
+Received: from kaod.org (37.59.142.106) by DAG8EX1.mxp5.local (172.16.2.71)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Wed, 10 Feb
+ 2021 09:19:14 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R0063e77de5e-0d06-48db-922a-fabcd627fd6a,
+ CA44D9D1C99DDC6070F74A114A21469C6A1097AD) smtp.auth=groug@kaod.org
+X-OVh-ClientIp: 78.197.208.248
+Date: Wed, 10 Feb 2021 09:19:12 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Eric Auger <eric.auger@redhat.com>
 Subject: Re: [PATCH 2/2] spapr_iommu: Fix vhost integration regression
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, alex.williamson@redhat.com, eperezma@redhat.com,
- jean-philippe@linaro.org, david@gibson.dropbear.id.au, groug@kaod.org
+Message-ID: <20210210091912.3ea5159d@bahia.lan>
+In-Reply-To: <20210209213233.40985-3-eric.auger@redhat.com>
 References: <20210209213233.40985-1-eric.auger@redhat.com>
  <20210209213233.40985-3-eric.auger@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <c5b50bba-5928-104f-d8be-5ac07369ea1b@redhat.com>
-Date: Wed, 10 Feb 2021 16:11:37 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20210209213233.40985-3-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=jasowang@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=jasowang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.57,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.265, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG8EX1.mxp5.local
+ (172.16.2.71)
+X-Ovh-Tracer-GUID: bdeef48c-a0f2-48d1-a996-25cc4f54da2f
+X-Ovh-Tracer-Id: 10881259653352692216
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrheeigdduvddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfhisehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefuddtieejjeevheekieeltefgleetkeetheettdeifeffvefhffelffdtfeeljeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepphgvthgvrhigsehrvgguhhgrthdrtghomh
+Received-SPF: pass client-ip=46.105.37.156; envelope-from=groug@kaod.org;
+ helo=8.mo52.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peterx@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZeETludhlIxr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mst@redhat.com, jasowang@redhat.com,
+ qemu-devel@nongnu.org, peterx@redhat.com, eperezma@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, jean-philippe@linaro.org,
+ david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: olxgpur31xum
 
+On Tue,  9 Feb 2021 22:32:33 +0100
+Eric Auger <eric.auger@redhat.com> wrote:
 
-On 2021/2/10 上午5:32, Eric Auger wrote:
 > Previous work on dev-iotlb message broke spapr_iommu/vhost integration
 > as it did for SMMU and virtio-iommu. The spapr_iommu currently
 > only sends IOMMU_NOTIFIER_UNMAP notifications. Since commit
@@ -135,33 +116,31 @@ On 2021/2/10 上午5:32, Eric Auger wrote:
 > and if it fails, falls back to legacy IOMMU_NOTIFIER_UNMAP. So
 > spapr_iommu must fail on the IOMMU_NOTIFIER_DEVIOTLB_UNMAP
 > registration.
->
+> 
 > Reported-by: Peter Xu <peterx@redhat.com>
 > Fixes: b68ba1ca57677acf870d5ab10579e6105c1f5338
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
 
+Reviewed-by: Greg Kurz <groug@kaod.org>
 
-Acked-by: Jason Wang <jasowang@redhat.com>
-
-
->   hw/ppc/spapr_iommu.c | 5 +++++
->   1 file changed, 5 insertions(+)
->
+>  hw/ppc/spapr_iommu.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
 > diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
 > index 30352df00e..24537ffcbd 100644
 > --- a/hw/ppc/spapr_iommu.c
 > +++ b/hw/ppc/spapr_iommu.c
 > @@ -212,6 +212,11 @@ static int spapr_tce_notify_flag_changed(IOMMUMemoryRegion *iommu,
->   {
->       struct SpaprTceTable *tbl = container_of(iommu, SpaprTceTable, iommu);
->   
+>  {
+>      struct SpaprTceTable *tbl = container_of(iommu, SpaprTceTable, iommu);
+>  
 > +    if (new & IOMMU_NOTIFIER_DEVIOTLB_UNMAP) {
 > +        error_setg(errp, "spart_tce does not support dev-iotlb yet");
 > +        return -EINVAL;
 > +    }
 > +
->       if (old == IOMMU_NOTIFIER_NONE && new != IOMMU_NOTIFIER_NONE) {
->           spapr_tce_set_need_vfio(tbl, true);
->       } else if (old != IOMMU_NOTIFIER_NONE && new == IOMMU_NOTIFIER_NONE) {
+>      if (old == IOMMU_NOTIFIER_NONE && new != IOMMU_NOTIFIER_NONE) {
+>          spapr_tce_set_need_vfio(tbl, true);
+>      } else if (old != IOMMU_NOTIFIER_NONE && new == IOMMU_NOTIFIER_NONE) {
 

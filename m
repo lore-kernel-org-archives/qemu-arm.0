@@ -1,104 +1,98 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1140583lfc;
-        Wed, 10 Feb 2021 02:11:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw38/cDzgdRy1Tt/3u+YHv4mJfKQTnsDwfiiesjlBWSD43sSmrGnLOoW96lQERpTJyAaApY
-X-Received: by 2002:a25:ab6a:: with SMTP id u97mr3061157ybi.288.1612951907084;
-        Wed, 10 Feb 2021 02:11:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612951907; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1140898lfc;
+        Wed, 10 Feb 2021 02:12:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzpxdNyKjCLawC51YwdKMjvIvWbwurVgby9HHDQMX6LAbXo6/oBzO3ijWU9eBg6SmhzXGu/
+X-Received: by 2002:a25:61cf:: with SMTP id v198mr3276424ybb.381.1612951934682;
+        Wed, 10 Feb 2021 02:12:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612951934; cv=none;
         d=google.com; s=arc-20160816;
-        b=yV5L7eF0SlgAUIEMsUNalmsPmOqQma1euj+F5Dz9V4vLBJds4zIMTTIZzha6xhssZj
-         RWS66gLYmjbw7AaFyPy/zCeyVjErRfgvFAmXLL+0gQwWt57ucsnQIevkcXRcuB2WXVfU
-         GgIG928B21vEpyy835594n2ZfNZOyZBP7sT+tEdplvvIn2XF84TZkeDyDvBUthKBNc6f
-         8zV8ymmhGA8tSeEvA5liAa9FK33PDXU9ynji9+GWZ0X60J5VvT4wI5ywo0duUJ6JbZNu
-         YG1bNwrWgmYwdrmwkgb1GiGl94R/Q6WkyqXXNmc8wSbsoA3M6NIDUNur+8ls+12qIasL
-         DLhg==
+        b=AAnWv086wrs4rrP4jBhph5pMEnt3kkpsM/7/BQSYKTfeZTmNMcspr/ZHQiafYc+cl4
+         Zhhq/bkIUL4DSM6zv/IIRAxfhOObyvv7ijQuxZ3O1W4mpAAuBeCRFCiWuUQIy9pi9Vqf
+         h/WhUkUK9iU437DSlzkdAa+MRsskR604J1KP0OX/ip79YlxBi7TuG0qCpIePlUGAm6lW
+         u63ZyUNfkR6azOSAhwbnjABpPVK3c7RFstZQQk2/ESNVMrfKb9ZZJ8F1XgxHbGGdsluf
+         unshR+d7YPlrzScdiDSKJFdqEKx4i8PnqmiLntn/H10xNe/ytGP4FddCR/fnS+b8U25J
+         korg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=vlegheEyqXl7+NwMvyJSahCC2mYTto9ZEvw05hdEWZ4=;
-        b=lkBXoTJlEeOAYgkBBrtgvSLKFVZ67DafPS4VnHONB8MTFjBomG56i7Hs9tuDt0tnFT
-         6t00ls+HH8RivxeXFo1OvCj1yS/U7Z73C3HTMiatrtdP8Ps9nSUokIc3A00EDmGrONFM
-         LVh3xqGObX/EIy7JQ2G7PK7kHcICZGn18OCmPYQ/6Ie7mPYwnIwUXOECbQSyd44vjkwe
-         oMAjVk/iZ9tvnG4bx/PDEM/rVorvELR8Xtom/vC3AOWefxVQPBSK8r54yIO3hY6z6i8F
-         XdVkrfiIIMhNHvuo8KSpcoii3ITCg93QB9YfzVzSzHDYnlh68+t123YVW0pXm4TBVJ9E
-         O28A==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=JBkF+md++JxbgPCPBt1zkTEigdVgs8bJYJpVeVVJpDc=;
+        b=OZQTK8NwobRiZ95dV4BqZiNNpiH4qfX5g4ZmiBe2QXo+mjTahn5ClCaWdJhMwNMRY9
+         EtsOBPkuln7iGgZUBmdkx1iI1Y7qQQz0ZtRD7EHLO131xwSSCSEVHQ+2RCi2FhAT74RZ
+         V6SbGMIZ1+XmIV1WSw9rVAxTxJK/UQbKccIfTOo9ENVGAT58i8/DkSd5TfTQRj5Aepcr
+         Tm6Ad8T22GTFttx0lkQ2z1M4VywE+p6y/++OWaMpsQKDZ4CybrzKQLu7GzWa8BD9/EeD
+         Jt0J/Dn3x0QR8EOTXtftERn1lk+iDbFFZEPA2Z2FbbeQ7bjwQQ5D+lYdW/5JEXb9ZFUs
+         QA9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Osik7mT9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XizO0uMz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 66si1413335ybz.51.2021.02.10.02.11.46
+        by mx.google.com with ESMTPS id t59si1967785ybi.182.2021.02.10.02.12.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 02:11:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Feb 2021 02:12:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Osik7mT9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XizO0uMz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46722 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9mTK-00014Z-Ed
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 05:11:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37230)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9mTm-0000jG-3c
+	for alex.bennee@linaro.org; Wed, 10 Feb 2021 05:12:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37204)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l9mSL-0000Gu-UE; Wed, 10 Feb 2021 05:10:47 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:42592)
+ id 1l9mSI-0000CX-Fr; Wed, 10 Feb 2021 05:10:42 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:42200)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1l9mSJ-00034K-Sh; Wed, 10 Feb 2021 05:10:45 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id l25so3045834eja.9;
- Wed, 10 Feb 2021 02:10:43 -0800 (PST)
+ id 1l9mSF-00032i-NZ; Wed, 10 Feb 2021 05:10:42 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id z22so2201153edb.9;
+ Wed, 10 Feb 2021 02:10:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=vlegheEyqXl7+NwMvyJSahCC2mYTto9ZEvw05hdEWZ4=;
- b=Osik7mT9ZKNDairkQpWfkPh6La1CZhGlRtjEk7qRjQ+mzdGOhGLVsi5RT4U3gFSgEb
- LjdQrDEM0oPhNli7T0IgzNYf6uIG5vbi5vjIsaR/99+mTzubSKPlQnwLdkUllsVd9nNo
- 8QKHtliU4dJJ4o5VLoQ1rDo2lYnApf+vBDf9KLIPwep8FXZXg5Ugpf0MMin/hNX3x/6S
- vhgF2caiPpB0jT4fel6QraVnTv/Wd3xypYXGhV4Og157h12CYbiWartIzy8wVji0yTzz
- BK1Bk8kp9TrBhg7s8l4TgZeNrgHtbERb+hbsukIpmXkrmul/EBJ21gU7eUwazSekijH4
- erWg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=JBkF+md++JxbgPCPBt1zkTEigdVgs8bJYJpVeVVJpDc=;
+ b=XizO0uMzp/iTYlFC8nNYf1EB7jc30Apjz22j2XoxK7QYDvT3tjH+iqhN2153Vv7mzL
+ GeWCB5nURKf3CRNTcKFyf5cJjlLIX377idS8LOTfR47hX5V4+3LedVUiTC65xMK1EOjY
+ Mz+TLWz+DmbJwnKYg5SxA8PEv5RYvv0iO5B/00UmFN3LAfPQU1rWrMeYgNvbLERcGLle
+ 0XGuOj1lD7FyvMgmjVWJr/0RBXDSyn0EnaPJ4xxS87Afjh7JrtG3Zfz6AWnYeBH39g3y
+ eu6BaiLqdP7AsQsY+k+odF3cyvV092sQrLObcpghczeGQR1gePIiMzZ/w02iLdkeiFow
+ kJqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=vlegheEyqXl7+NwMvyJSahCC2mYTto9ZEvw05hdEWZ4=;
- b=DIKilaMeEyiTfWjODvH1KAHvg1WZ1CPw36PMe/cQC9Bx1Bed5AVY16M/WvGDg9cpIX
- FTLTK+Y8GnS3zrLuvEwGSntyYu53hz+DuQXQVgA9eAyc9h0zgi1hUB+gq1iQRR/hnjok
- 9xuTEShHx4ZlRRAwlYBwJJ+WkeZXjNq9MDj5MgC04wfcjtRBE1ZQoxAj+7CYGvOn6HTE
- wR2lvlS+9fx07gJGA9rvqVXY7ri9HRxRZWsmI3QPkj1MlN29huZLOk0SN81eC1jATZd9
- sZdTNRJVh7v3r9tEILqpXcCuKA6dGz8BiVPsMStkLGDNNUrv886ftn3cDXWLr5lYi5Nd
- MfZQ==
-X-Gm-Message-State: AOAM5305ewUqlCeZLtAn8zq0S5U9nflIccOaosblL81EoDGTsp7jLtl9
- npoDLUf1lYEP/Lr1DXBlhlE=
-X-Received: by 2002:a17:906:2993:: with SMTP id
- x19mr2079622eje.409.1612951842226; 
- Wed, 10 Feb 2021 02:10:42 -0800 (PST)
+ :references;
+ bh=JBkF+md++JxbgPCPBt1zkTEigdVgs8bJYJpVeVVJpDc=;
+ b=E/hL5ehBrvvZhaMobBXspj7dpIGVBHveu58b7207Zd4BzXhTxvoYMuHRd7cT27G8me
+ 3iNmb5dvSS6vpYYdHeGoyBOsdqBFdPBjuexapkzS/2j0rpwmwYY0sOfYoH0p5QBfX9JB
+ S62WdFIoXZeCpKpyBf1tC/O75q3pYirsjECYf9Mp0yh9LIWPqo060jrVbkuLIPjYf950
+ mgoObO7W9IjD5Hjc2cKsvJJ4sNdqONMlgDhdfispZnkGMYZ2y2TZ8w67htZhBLrikGI2
+ 8d4tTpsgITNHfgBtg+6VIVqNyNegCifOB/N5Fc2dGhXEtRwGHKTouq5YZbMl1Ss0ERg7
+ A/ug==
+X-Gm-Message-State: AOAM530NF3vop06qOY5G+EkaFOuSGN5bZ9iTSLE1bgMMPGn7Wx8htBC1
+ f1Vvt9q/WcYBkKsyEtTQC8k=
+X-Received: by 2002:aa7:c58e:: with SMTP id g14mr2485028edq.318.1612951837110; 
+ Wed, 10 Feb 2021 02:10:37 -0800 (PST)
 Received: from pek-vx-bsp2.wrs.com
  (ec2-44-242-66-180.us-west-2.compute.amazonaws.com. [44.242.66.180])
- by smtp.gmail.com with ESMTPSA id y11sm785418ejd.72.2021.02.10.02.10.37
+ by smtp.gmail.com with ESMTPSA id y11sm785418ejd.72.2021.02.10.02.10.32
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 10 Feb 2021 02:10:41 -0800 (PST)
+ Wed, 10 Feb 2021 02:10:36 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Alistair Francis <alistair.francis@wdc.com>,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 4/5] hw/ssi: xilinx_spips: Clean up coding convention issues
-Date: Wed, 10 Feb 2021 18:10:12 +0800
-Message-Id: <1612951813-50542-5-git-send-email-bmeng.cn@gmail.com>
+Subject: [PATCH v3 3/5] hw/arm: xlnx-zynqmp: Add XLNX CSU DMA module
+Date: Wed, 10 Feb 2021 18:10:11 +0800
+Message-Id: <1612951813-50542-4-git-send-email-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1612951813-50542-1-git-send-email-bmeng.cn@gmail.com>
 References: <1612951813-50542-1-git-send-email-bmeng.cn@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=bmeng.cn@gmail.com; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,120 +101,113 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Bin Meng <bin.meng@windriver.com>,
  Francisco Iglesias <francisco.iglesias@xilinx.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dgOr+M+2fB0h
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MlYCKvSOGwee
 
 From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 
-There are some coding convention warnings in xilinx_spips.c,
-as reported by:
-
-  $ ./scripts/checkpatch.pl hw/ssi/xilinx_spips.c
-
-Let's clean them up.
+Insert XLNX CSU DMA module to ZynqMP SoC, and connent the stream
+link of GQSPI to CSU DMA.
 
 Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
 ---
 
-(no changes since v1)
+Changes in v3:
+- new patch: xlnx-zynqmp: Add XLNX CSU DMA module
 
- hw/ssi/xilinx_spips.c | 23 ++++++++++++++---------
- 1 file changed, 14 insertions(+), 9 deletions(-)
+ include/hw/arm/xlnx-zynqmp.h |  2 ++
+ hw/arm/xlnx-zynqmp.c         | 14 ++++++++++++++
+ hw/arm/Kconfig               |  1 +
+ 3 files changed, 17 insertions(+)
 
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index a897034..8a0cc22 100644
---- a/hw/ssi/xilinx_spips.c
-+++ b/hw/ssi/xilinx_spips.c
-@@ -176,7 +176,8 @@
-     FIELD(GQSPI_FIFO_CTRL, GENERIC_FIFO_RESET, 0, 1)
- #define R_GQSPI_GFIFO_THRESH    (0x150 / 4)
- #define R_GQSPI_DATA_STS (0x15c / 4)
--/* We use the snapshot register to hold the core state for the currently
-+/*
-+ * We use the snapshot register to hold the core state for the currently
-  * or most recently executed command. So the generic fifo format is defined
-  * for the snapshot register
-  */
-@@ -424,7 +425,8 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)
-     xlnx_zynqmp_qspips_update_ixr(s);
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index be15cc8..d387c85 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -35,6 +35,7 @@
+ #include "target/arm/cpu.h"
+ #include "qom/object.h"
+ #include "net/can_emu.h"
++#include "hw/dma/xlnx_csu_dma.h"
+ 
+ #define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
+ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+@@ -108,6 +109,7 @@ struct XlnxZynqMPState {
+     XlnxZynqMPRTC rtc;
+     XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
+     XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
++    XlnxCSUDMA csu_dma;
+ 
+     char *boot_cpu;
+     ARMCPU *boot_cpu_ptr;
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 76b94a5..ed34692 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -63,6 +63,9 @@
+ #define RTC_ADDR            0xffa60000
+ #define RTC_IRQ             26
+ 
++#define CSU_DMA_ADDR        0xff0f0800
++#define CSU_DMA_IRQ         15
++
+ #define SDHCI_CAPABILITIES  0x280737ec6481 /* Datasheet: UG1085 (v1.7) */
+ 
+ static const uint64_t gem_addr[XLNX_ZYNQMP_NUM_GEMS] = {
+@@ -284,6 +287,8 @@ static void xlnx_zynqmp_init(Object *obj)
+     for (i = 0; i < XLNX_ZYNQMP_NUM_ADMA_CH; i++) {
+         object_initialize_child(obj, "adma[*]", &s->adma[i], TYPE_XLNX_ZDMA);
+     }
++
++    object_initialize_child(obj, "csu-dma", &s->csu_dma, TYPE_XLNX_CSU_DMA);
  }
  
--/* N way (num) in place bit striper. Lay out row wise bits (MSB to LSB)
-+/*
-+ * N way (num) in place bit striper. Lay out row wise bits (MSB to LSB)
-  * column wise (from element 0 to N-1). num is the length of x, and dir
-  * reverses the direction of the transform. Best illustrated by example:
-  * Each digit in the below array is a single bit (num == 3):
-@@ -637,8 +639,10 @@ static void xilinx_spips_flush_txfifo(XilinxSPIPS *s)
-                 tx_rx[i] = tx;
-             }
-         } else {
--            /* Extract a dummy byte and generate dummy cycles according to the
--             * link state */
-+            /*
-+             * Extract a dummy byte and generate dummy cycles according to the
-+             * link state
-+             */
-             tx = fifo8_pop(&s->tx_fifo);
-             dummy_cycles = 8 / s->link_state;
-         }
-@@ -721,8 +725,9 @@ static void xilinx_spips_flush_txfifo(XilinxSPIPS *s)
-             }
-             break;
-         case (SNOOP_ADDR):
--            /* Address has been transmitted, transmit dummy cycles now if
--             * needed */
-+            /*
-+             * Address has been transmitted, transmit dummy cycles now if needed
-+             */
-             if (s->cmd_dummies < 0) {
-                 s->snoop_state = SNOOP_NONE;
-             } else {
-@@ -876,7 +881,7 @@ static void xlnx_zynqmp_qspips_notify(void *opaque)
+ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+@@ -643,6 +648,15 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->adma[i]), 0,
+                            gic_spi[adma_ch_intr[i]]);
+     }
++
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->csu_dma), errp)) {
++        return;
++    }
++
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->csu_dma), 0, CSU_DMA_ADDR);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->csu_dma), 0, gic_spi[CSU_DMA_IRQ]);
++    object_property_set_link(OBJECT(&s->qspi), "stream-connected-dma",
++                             OBJECT(&s->csu_dma), errp);
  }
  
- static uint64_t xilinx_spips_read(void *opaque, hwaddr addr,
--                                                        unsigned size)
-+                                  unsigned size)
- {
-     XilinxSPIPS *s = opaque;
-     uint32_t mask = ~0;
-@@ -970,7 +975,7 @@ static uint64_t xlnx_zynqmp_qspips_read(void *opaque,
- }
+ static Property xlnx_zynqmp_props[] = {
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index be017b9..0c0384c 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -353,6 +353,7 @@ config XLNX_ZYNQMP_ARM
+     select SSI_M25P80
+     select XILINX_AXI
+     select XILINX_SPIPS
++    select XLNX_CSU_DMA
+     select XLNX_ZYNQMP
+     select XLNX_ZDMA
  
- static void xilinx_spips_write(void *opaque, hwaddr addr,
--                                        uint64_t value, unsigned size)
-+                               uint64_t value, unsigned size)
- {
-     int mask = ~0;
-     XilinxSPIPS *s = opaque;
-@@ -1072,7 +1077,7 @@ static void xilinx_qspips_write(void *opaque, hwaddr addr,
- }
- 
- static void xlnx_zynqmp_qspips_write(void *opaque, hwaddr addr,
--                                        uint64_t value, unsigned size)
-+                                     uint64_t value, unsigned size)
- {
-     XlnxZynqMPQSPIPS *s = XLNX_ZYNQMP_QSPIPS(opaque);
-     uint32_t reg = addr / 4;
 -- 
 2.7.4
 

@@ -1,192 +1,154 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1030717lfb;
-        Wed, 2 Dec 2020 02:56:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzXpeKY4Pnk1ls0LTdB3OwF/82O0qjBGgSwkYt5z0VoqlQXNz6dVjhgT/wH4rgtCSucJZax
-X-Received: by 2002:a25:2fcd:: with SMTP id v196mr2400648ybv.47.1606906601587;
-        Wed, 02 Dec 2020 02:56:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606906601; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1711363lfc;
+        Wed, 10 Feb 2021 14:36:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJygjL/7JPTsya8yx+IA4RC/HEjx9HMeMaHr/5OQRGd3JyM25UVedzxf2TBchbxjsTScjBE/
+X-Received: by 2002:a25:4408:: with SMTP id r8mr7288516yba.515.1612996578502;
+        Wed, 10 Feb 2021 14:36:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612996578; cv=none;
         d=google.com; s=arc-20160816;
-        b=GUOzKW6zmF/2jwY75Fu1mrilyiks49RooN3/pXkmBUBIqFk/KAHNVf/RIXbbuphgkT
-         hUt7/Ni9mocmJJF4IBpDVEQWao0NumEHb75VZEv9zRYAIQtmgiVTpb5QJsWSeUtFxa5t
-         YRwg03i6WSaOYQ3QfqPcK+Ww1k2FZ7kY8xWRCn+c2WI1+wEQJ6Ih5xnUdPpv6MIhW47S
-         3f8HOliOKJdnYVxB0WtFFjQiT+oy6u62gr+6zj2UXCbdAfuS36SanKLhLGt0sEmXMQqp
-         RMOeS+o8wmf96nX2KM9B/aEYDKsni0Rj44b43pz5P4bRCV5d/pSgbMgde3XRN/9Bdj5H
-         Gyjg==
+        b=rG6z3kx6aGahUb9DlZUwQ+aGgdFlGqQqT34auWO4qRQ5odQZuQDnMBog7AqsMkdd93
+         e3GRK11yga21z1WcfSluMayeM7j/h4O3rKV1rzX6NCUej+5TrWBa32bC1ZMmPs7fnM2C
+         VFqtj6V4YQ7fh9ji9byxGL17TlcEp4iM9gXdDuUGEGn6I+7Q1hhv1gIx7m/7OJG5EQCv
+         6/9qeh9RmMuc6wSgSkHVZcpU9FAYzJO0iRqlC5KsFhQM5utpsBiQv0Q9nrkVynqBbxk9
+         gd/o+jvNjV/tD5z2qJylfxCzypzXg/zoZRmk75bVENpOxmwLv1ci/nncMudqZHiO+9FA
+         IfLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=wwQ2Z99fbK0pJUe2OXB8+CpZer7mpev4TFTQTlhxWWM=;
-        b=eEFpiGFYMHWqfA3RXkdPqE6Gp+AuBNTdsxixVVdbFz/7yJWPBZ15vJyh0ylqTlzoUW
-         m+3jutnlAd82xG3stv7Obh5PStLQJqfYPZ9eBhYvTvHqq4BOtWuy8BqCla6lJ1KAAkoZ
-         fS9U1tl6fvRh/3jP21w3G4XLqy/Rq9IGtwlI5zHwKkNEjpVvwtGPrbEBnefIbTDxokHV
-         HQcHo7PRyZu4NMnCMICPe9k412xXOUCJWoLiV+IEHhGgpuEQUe5bK9adyCTL7RN+ahaK
-         AmAFXKShILN3xOHuNFaaVPIbtmZOvPlm0Hp9Y1jYfd6aOZABkkSukTvRoxjc3v0LlzMM
-         Fupg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=/8re+nLzeAe9plhqUGOee0qJAMbzRcxGYHdwPlK01gM=;
+        b=whpUrHbMzmIpbWGa75VAqJUmRE/1eBrScPPGsaJOUNz+eumd2YQZElFgr03XfWC9KB
+         ww/k3LZdod1pQnCZfy7jBPOujl7URbDisVYcm7+BVZisKt4OqJbB03SOdY08OGj0evBq
+         l1+s1Mu1SJDnnHZLGRjNjTfpLO6WI2YGMiKvntGdnLopw2eC2BjgTcsS5vxAeEKBW0WO
+         OfILoXeH64AZU0fkW+9yHK4/2bybH8WPgNxsBrFtFR1E+BunShn5eULskyCWlFg+i/rl
+         ZXudfRIbZLGfznqxwHDkYwMR5pDpNX0CZcfQEVX65zGjFWjMKy0yJcRaVOBTW5IIA8Kz
+         G/cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RH3tO937;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=UPG6ZFVQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x37si1837412ybd.196.2020.12.02.02.56.41
+        by mx.google.com with ESMTPS id j16si2899919ybp.412.2021.02.10.14.36.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 02:56:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Feb 2021 14:36:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RH3tO937;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35062 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=UPG6ZFVQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkPoO-0004AN-VR
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 05:56:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34502)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9y5p-0004Em-RT
+	for alex.bennee@linaro.org; Wed, 10 Feb 2021 17:36:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kkPn7-00048R-F3
- for qemu-devel@nongnu.org; Wed, 02 Dec 2020 05:55:22 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:22291)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1kkPn4-0008Nf-N0
- for qemu-devel@nongnu.org; Wed, 02 Dec 2020 05:55:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1606906517;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=wwQ2Z99fbK0pJUe2OXB8+CpZer7mpev4TFTQTlhxWWM=;
- b=RH3tO9379ZhgfXkrbsWLNVRAkp+19QZqSl+mXmkd/jIApkIdgCFId1aIN8NXgYLKk8XiLA
- TutJ1ESen6KaUO+H6Ve25J2uTfWpmHv2KPgDLks/w2ki0l53WP9bkFElqOU9L1k7FZfkBl
- eaHXdL6YMr0qd25a8MnGo3JOT2agOC8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-24-UW0m6CzxPxO7tk8qFs4sOw-1; Wed, 02 Dec 2020 05:55:15 -0500
-X-MC-Unique: UW0m6CzxPxO7tk8qFs4sOw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 22A6F8030DC;
- Wed,  2 Dec 2020 10:55:14 +0000 (UTC)
-Received: from work-vm (ovpn-115-3.ams2.redhat.com [10.36.115.3])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ED57C19D80;
- Wed,  2 Dec 2020 10:55:04 +0000 (UTC)
-Date: Wed, 2 Dec 2020 10:55:02 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Shenming Lu <lushenming@huawei.com>
-Subject: Re: [PATCH RFC] vfio: Move the saving of the config space to the
- right place in VFIO migration
-Message-ID: <20201202105502.GB3226@work-vm>
-References: <20201114091731.157-1-lushenming@huawei.com>
- <860bd707-8862-2584-6e12-67c86f092dba@nvidia.com>
- <20201119104127.5e243efa@w520.home>
- <a7be9306-f800-0323-293e-217e2e9f6015@huawei.com>
- <20201120150146.5e5693e9@w520.home>
- <09549a98-85a0-fe4e-59fc-fdb636a4a5cd@huawei.com>
- <20201123193336.GA32690@nvidia.com>
- <20201123144622.75a18812@w520.home>
- <ed6c0920-8a26-fafe-01a6-3021c5a92adb@huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l9xo6-0003wF-MQ
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 17:17:59 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:43821)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1l9xo2-0005zJ-PI
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 17:17:58 -0500
+Received: by mail-ej1-x636.google.com with SMTP id y9so6868131ejp.10
+ for <qemu-arm@nongnu.org>; Wed, 10 Feb 2021 14:17:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/8re+nLzeAe9plhqUGOee0qJAMbzRcxGYHdwPlK01gM=;
+ b=UPG6ZFVQlVgZ0B8tF0LjmHNK3+cdx1r8DCpCjhxsOIQmJ+bCjGvM1Sh9JtU73NvpI/
+ Zi6JCjPu4fcvIqnm04yidWDa9TXqqbnWF+AS3Zd5NHr5MW/CG/bLar58Ej8yhunPc9iP
+ wLkAyTm4kuH5GcytTzUkoH4YvEAiTsi3wTJNEehoQ5Z8fY+KT/bAjgaFAU/XABZKWO5T
+ xeCM+dvy4dtnwBDvqQUcrb0tB/Z5d93zQn9CJ04Xdc9JuQVXosb7OrOaajzCX/iifAp7
+ 6Kq/KnC5tPTxhOmJqlDT99t+9GFNy4FqDCKISn9Sx6iO50uDduve6cuXyPJu7vqc+FoQ
+ Mv7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/8re+nLzeAe9plhqUGOee0qJAMbzRcxGYHdwPlK01gM=;
+ b=m5fZUE0CKdXRwHjWiyl5TKZY1iDkg3EvDZBJ7a5rirkqxzPdo0zkp3uKEW8JC8vfaH
+ ZsZa3sxncMMkD/9/CG0Ah253G0/SFk3WlO6ou0MsC+kTf5ZNoSG0jDdJdjRd4MPg28Y+
+ Wckps04phxn163Eenau9fasjaD1hu2Lwz+ZbOXMFIsLybNSva91fXW2Jv/qoPbfq1W8d
+ b0S3PWjN8SmZBZ2o6LvMof3gyA0ub1+B9ughBMbXoEr+F8wuf8Oe+R2FJEBFPCUz7nQt
+ bpvLqsYbLevqPt1/YHNeESKgRxz7okpCtBqcgfdPtkviKaiBfKyQlJenwmAJQNxyxvKs
+ d2cw==
+X-Gm-Message-State: AOAM530yg8UQhvDd6ovKKmgTbgIDcuoacV121C1Yhbk0Oifks8gpC8br
+ Wr1ZTm5mGGMuNEIwumv9zPwJAz3ch4isUflK9nx5Hw==
+X-Received: by 2002:a17:906:2e4f:: with SMTP id
+ r15mr5143050eji.407.1612995471903; 
+ Wed, 10 Feb 2021 14:17:51 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <ed6c0920-8a26-fafe-01a6-3021c5a92adb@huawei.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.497,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20210120224444.71840-1-agraf@csgraf.de>
+ <20210120224444.71840-10-agraf@csgraf.de>
+ <CAFEAcA_KFzEERYJ9d8YbPjhCv1rt9O9w567xP=ECqixLie5nmQ@mail.gmail.com>
+ <CAMn1gO4p4CDH7qVhNnTpOeo_q98iYBHgS2LLSe26q-3SQJX1Xg@mail.gmail.com>
+In-Reply-To: <CAMn1gO4p4CDH7qVhNnTpOeo_q98iYBHgS2LLSe26q-3SQJX1Xg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 10 Feb 2021 22:17:40 +0000
+Message-ID: <CAFEAcA_zNdgAO-1eif_TO7cBD1uB09pbGnbjEhUz+RDX+k9vVA@mail.gmail.com>
+Subject: Re: [PATCH v6 09/11] arm/hvf: Add a WFI handler
+To: Peter Collingbourne <pcc@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Neo Jia <cjia@nvidia.com>, Marc Zyngier <maz@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>,
- qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- yuzenghui@huawei.com, wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6uiUpLtoQKeS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm <qemu-arm@nongnu.org>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X0Fn4ATC6Ur7
 
-* Shenming Lu (lushenming@huawei.com) wrote:
-> Hi,
-> 
-> After reading everyone's opinions, we have a rough idea for this issue.
-> 
-> One key point is whether it is necessary to setup the config space before
-> the device can accept further migration data. I think it is decided by
-> the vendor driver, so we can simply ask the vendor driver about it in
-> .save_setup, which could avoid a lot of unnecessary copies and settings.
-> Once we have known the need, we can iterate the config space (before)
-> along with the device migration data in .save_live_iterate and
-> .save_live_complete_precopy, and if not needed, we can only migrate the
-> config space in .save_state.
-> 
-> Another key point is that the interrupt enabling should be after the
-> restoring of the interrupt controller (might not only interrupts).
-> My solution is to add a subflag at the beginning of the config data
-> (right after VFIO_MIG_FLAG_DEV_CONFIG_STATE) to indicate the triggered
-> actions on the dst (such as whether to enable interrupts).
-> 
-> Below is it's workflow.
-> 
-> On the save path:
-> 	In vfio_save_setup():
-> 	Ask the vendor driver if it needs the config space setup before it
-> 	can accept further migration data.
+On Wed, 10 Feb 2021 at 20:25, Peter Collingbourne <pcc@google.com> wrote:
+>
+> On Thu, Jan 28, 2021 at 8:25 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Wed, 20 Jan 2021 at 22:44, Alexander Graf <agraf@csgraf.de> wrote:
+> > > +                if (!seconds && nanos < 2000000) {
+> > > +                    break;
+> > > +                }
+> > > +
+> > > +                struct timespec ts = { seconds, nanos };
+> > > +                hvf_wait_for_ipi(cpu, &ts);
+> > > +            }
+> >
+> > Why doesn't the timer timeout manifest as an IPI ? (Put another way,
+> > why is the timer interrupt special?)
+>
+> Timer timeouts result in an IPI (via HV_EXIT_REASON_VTIMER_ACTIVATED)
+> if they become due while in hv_vcpu_run(). But at this point we are
+> not in hv_vcpu_run() (due to the aforementioned difference in wait
+> behavior between x86 and ARM) so we need to "manually" wait for the
+> timer to become due, re-enter the guest, let it exit with
+> HV_EXIT_REASON_VTIMER_ACTIVATED and then trigger the IPI.
 
-You could argue that you could always send an initial copy of the config
-data at the start; and then send new versions at the end anyway.
-But is this just about interrupts? Is the dst going to interpret the
-received migration data differently depending on the config data?  That
-would seem dangerous if the config data was to change during the
-migration.
+But WFI doesn't just wait for a timer interrupt, it waits for
+any interrupt. So it doesn't seem right that the timer interrupt
+in particular is being handled specially here.
 
-Dave
-
-> 		|
-> 	In vfio_save_iterate() (pre-copy):
-> 	If *needed*, save the config space which would be setup on the dst
-> 	before the migration data, but send with a subflag to instruct not
-> 	to (such as) enable interrupts.
-> 		|
-> 	In vfio_save_complete_precopy() (stop-and-copy, iterable process):
-> 	The same as that in vfio_save_iterate().
-> 		|
-> 	In .save_state (stop-and-copy, non-iterable process):
-> 	If *needed*, only send a subflag to instruct to enable interrupts.
-> 	If *not needed*, save the config space and setup everything on the dst.
-> 
-> Besides the above idea, we might be able to choose to let the vendor driver do
-> more: qemu just sends and writes the config data (before) along with the device
-> migration data every time, and it's up to the vendor driver to filter out/buffer
-> the received data or reorder the settings...
-> 
-> Thanks,
-> Shenming
-> 
--- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-
+thanks
+-- PMM

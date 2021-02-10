@@ -1,350 +1,224 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1657008lfc;
-        Wed, 10 Feb 2021 13:13:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzplJQVX+h6aIuf5dLhdIQ6drfQRQ1Crw+pjo9Wu4rFqZfG+2A2ZkK8agSGv1jO+cFBxrMx
-X-Received: by 2002:a25:6603:: with SMTP id a3mr6637295ybc.302.1612991620463;
-        Wed, 10 Feb 2021 13:13:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612991620; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1666339lfc;
+        Wed, 10 Feb 2021 13:27:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJ9hEfGjTA2coDKFV3+UDID3IzMco36evWQ8MqO3Q5O172cA2HM46WzIAvs4XAjXBzn/K+
+X-Received: by 2002:a25:d54:: with SMTP id 81mr7000387ybn.401.1612992439091;
+        Wed, 10 Feb 2021 13:27:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612992439; cv=none;
         d=google.com; s=arc-20160816;
-        b=YITp1GV+z3s3b7bVPyNXW8gb78vM0qYGFKEO7w/D32uJpYSkQKELKwK6SjGM5Bl3in
-         JA7rNLVZcrDhaCSWaIrd9Pg+peXbOqIik8epeczlgEWzyeiocaEIMBtij5Gx/RPIdCZk
-         HczETCRurDYpCzFl9vT7/wNNOPHi0fcaTYpVZOtOvoPQdG92gXs6Fnln5KPRXV8avflh
-         WjSY9HMF9RfnOGeRT5JdfvpgEWQNxuz1YXUvzoF24X4bxbLycsbVmMZW2rfq+IoPk30M
-         fL2FwYgiaQO2pDqOcjA9kmGv9qi9fWX49wxpJqmJZKsb6L0NPi+buuL+vbvyG0Ar9ZLE
-         F+Kg==
+        b=0PZBK+CkRni7Aj0Irb0ldGxHk+7et7eGlN2BLLL49+9VzR5/Au8eVbNxks1BTwCcb2
+         +zSCAz+YkC+R9B+ARMWdJhwU+ojm7wXIJCMQNcuQmVgXFDYcJmp+0ZadgV0weY1BX5xe
+         tClMVWVXpcRRnWGXQ4Pld1taQnb3vTmaAIO2O/YTMM+vC07Q3/q/8DcIwxINXvXyQ+Qf
+         z1TMOgnt8K5TMQrt0gBhCi4uzvf6VFLEMsyjUhoG91B246EIBTN06dxXoskALF/8Ee02
+         aPYdXItzNMbKiGV5UywGHZgVpIhylhKVLANpGajt9KYeaWnrbBiyIkYYTPEBWp/T0rIY
+         xINw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=tEQIrzp5YhSl1KFmaOZHJDORB+39XuCtY2rYFYt8XnA=;
-        b=DB1pfccEh2faoDDFTxJ8h4EcdIxoIL9q7OoE8mJj9yJEcIYa3tsvPey/Ds5KFIvPkG
-         s/quUby0+mmXSR0juUe4NxaFuXYh5/OAOVEsSQi27KVzXOKvdFqf0nmf0byBhlWw0s6Z
-         F+XNcurKLrwRxZBnY/5d/k4YTyW62SlDF9o7F0UnoXqBtbN8fB5T7S2PKXLqmLStRibw
-         CWrFDIJ/9Bt8Tljae5Qrb56EZlltb8qisOmK8fduc/YkDq5PFAt0nCxdKSbylr3GjJIN
-         XKN6ytOOludpSnMlKpq1SqXdooo4Z5C2aRtr/L6+b2ojkAopi9ltsx9FnWdNJOlNnyNA
-         yFjQ==
+        bh=Sh50T1QuedbGY4H8ZOzSyzN00UpGyabuAQfLOyx8PYM=;
+        b=Xvh4/XlhReMj4odz6PtOcZutm8LcSdfPc1S4FW6mrnCZVgD7yCjstbp94WnvptG3ZJ
+         yEfLfbsgRzZ4VesJtKwK7QRNi7qmSkuCqUTZFTw1kxNvBzI8v/7kGmv/AkF7CII2qOWa
+         LfXAVHB/yV+FJVROwvEpDLF2/XooSoX+hWND+ROLUV5IuEbMOK0+Y/8i76ATXb1+88YB
+         OfHJLIXtKx4urQNuCbS9bsCVLdcsjeO4gSz25Zj+GIUaA+kHiiIKIP+bOyEnVobn2kNW
+         gMWVhrmjw9YrQoLjGmxum21WZ7vfNmx89ssG8rJsCxjqfGNKpqeu70HslEvQcoQFpebZ
+         gH0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=qjVjw2dj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=nPKD+OV2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x18si2510575ybj.403.2021.02.10.13.13.40
+        by mx.google.com with ESMTPS id k3si2889531ybp.64.2021.02.10.13.27.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 13:13:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Feb 2021 13:27:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=qjVjw2dj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=nPKD+OV2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:56740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37666 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9wnr-0006pH-SG
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 16:13:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42150)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1l9x14-0002xJ-Cw
+	for alex.bennee@linaro.org; Wed, 10 Feb 2021 16:27:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46522)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1l9wbZ-000772-1B
- for qemu-devel@nongnu.org; Wed, 10 Feb 2021 16:00:57 -0500
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e]:46678)
+ id 1l9x0m-0002wt-6a
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 16:27:00 -0500
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232]:38990)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1l9wbP-00082a-M0
- for qemu-devel@nongnu.org; Wed, 10 Feb 2021 16:00:56 -0500
-Received: by mail-lf1-x12e.google.com with SMTP id v5so4905334lft.13
- for <qemu-devel@nongnu.org>; Wed, 10 Feb 2021 13:00:45 -0800 (PST)
+ id 1l9x0W-0002Q4-T2
+ for qemu-arm@nongnu.org; Wed, 10 Feb 2021 16:26:58 -0500
+Received: by mail-lj1-x232.google.com with SMTP id u4so4817876ljh.6
+ for <qemu-arm@nongnu.org>; Wed, 10 Feb 2021 13:26:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tEQIrzp5YhSl1KFmaOZHJDORB+39XuCtY2rYFYt8XnA=;
- b=qjVjw2djgslg4lsCNbwCPBfiKP5Xymxz0aHz+jwCpy/IbHPSBK1AGCZaz6+yQy/oHA
- V5+USZ0cEyjyoRwGWAm+XRFOTTpEi8NhkGoXy+NyAJcPqny4KrNXHF286Wwp82T9AMdZ
- UpQ+BCIU4mQsY/n+hmRAEVqp5yHBnAqxE62rou2DqnOy8SXXvKTg9ltTEiew0G85hxDI
- PbgjeOpKs1WSvfR4z88rl90lRVYfLLJcyXWbiE3a82dMmdiWCMOvzhJ+DqGnvXgi6J3e
- yRaD+7wof1wW+EqBzCjexiNyobe4OerFpwnebccjj/UoRaZjF5UyongKuA8Uw8iAvZf8
- Z1AQ==
+ :cc; bh=Sh50T1QuedbGY4H8ZOzSyzN00UpGyabuAQfLOyx8PYM=;
+ b=nPKD+OV253uEPNUAN13t6FPcHHEDKvgu0IWEAw3S0xQUOKOAm2F6l+tNoC9btIE6iO
+ 3gTNgRMpZFfcHI684c9S9vyo30LXR78MJGwG0YL40WgyR733UP4eCmLtQh24l/EmK5Gd
+ jjyaqPY5yJH1EFtbZ+IOl89EiXBMys1RJ6GcpeYMdS+VO+waFQMvIoDj7uPrZw650v/E
+ LKB2+C5d5+gMJc291tpa18FbcIBaEIyaTYkfvdtN3r8esRnW1nF0bWutVKtVGhGP41t5
+ JF7CfgkFbyfvm5GjTe2PWIku/COLdp63MDd9nV74Gx7/di4WpycXseJVhPgf5C5oWzvc
+ fmXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=tEQIrzp5YhSl1KFmaOZHJDORB+39XuCtY2rYFYt8XnA=;
- b=TCZMNCZ9k15fjbngHnZIgYRL8Eb++SgNpVZTSlMQB9aZ5bRTL97AwLZj+iUuyQHd97
- t8iUHKgnjbKcc1EJWz1+P2NJiEtpiDVzttWZTBmM3s8UctVNbo4/gG2lgaBWRKVQus79
- pveZeHywb9+N6/oNgfTMZf+n5BFAAltjGefHouupEBex+IYwl8LvbGwNXR/l6eg+ewb2
- gMyxFRprMZlob0Zd8pBrt9kSvFPoaIbLh1QEA3AIDMEX+eBkx6GaoDSfNPLbX5IgH5uf
- TJCh79/RU3BV7YEqJRXaH4Op7St5+RUWr8KfCds0oQm48BEJo5FUTzQtXedG1RA9RyoY
- KwDw==
-X-Gm-Message-State: AOAM532MLw9M2iPp7SDByWqceJuQX2FzfPzc+BoIgq/DQbpTNScMBozl
- cVkeFG92Nbs32Ee81IOEgN4WMMbw0BJbk5UwP4MViA==
-X-Received: by 2002:a19:ed19:: with SMTP id y25mr1846938lfy.337.1612990844288; 
- Wed, 10 Feb 2021 13:00:44 -0800 (PST)
+ bh=Sh50T1QuedbGY4H8ZOzSyzN00UpGyabuAQfLOyx8PYM=;
+ b=RTBkx6scQgKEQjKDduiUqqI500/Ys30opRWG95uSeEBOS5uBHb84392y0LgXXqPhKf
+ yST1ZQQMFQTOvQHAIdDD4b2A43t+mIy+3XURupvxtpzct8h4bNvKqp0ppREc8NSlPQcc
+ fqfGgiOcQOd2EjzoTL99Tj/YygJ3EayWa1mHGXDNIUs95naVr9f+Jxfq4kwQ/v2WYFBF
+ c9ZyuQULGS5RPPRnW5toPMjyNceaMhXrZwbARS8Kj8+4S7SssCa6Z4hlfL5R4MwAiWTs
+ l7AnAb2b5N5f/HYEDq2CHzNRQm2hB1rBCw9+XJnm8Wg8CTnZW4X/T1/8veqpnrRUUEjO
+ /s2g==
+X-Gm-Message-State: AOAM53277FL7xoJrD1gDsfL3iqqh+P3a01ydrkNh7yapER2m2BHr7Kfw
+ ZKTQBnhdM+2t8am2Ka92SvOeCMDaE32ybmzoyrZ/nw==
+X-Received: by 2002:a2e:5805:: with SMTP id m5mr117060ljb.77.1612992402709;
+ Wed, 10 Feb 2021 13:26:42 -0800 (PST)
 MIME-Version: 1.0
-References: <20210209132040.5091-1-peter.maydell@linaro.org>
- <20210209132040.5091-4-peter.maydell@linaro.org>
-In-Reply-To: <20210209132040.5091-4-peter.maydell@linaro.org>
+References: <20210129005845.416272-1-wuhaotsh@google.com>
+ <CAFEAcA-nx02EKVZLRxDYyY6uY4jyZ5ag3uk_Cak8zZqTuF32tg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-nx02EKVZLRxDYyY6uY4jyZ5ag3uk_Cak8zZqTuF32tg@mail.gmail.com>
 From: Hao Wu <wuhaotsh@google.com>
-Date: Wed, 10 Feb 2021 13:00:31 -0800
-Message-ID: <CAGcCb12LZHa31V31HszJd2k_QNCw2cM+xA+m+_xSn+QnOLO=Ug@mail.gmail.com>
-Subject: Re: [PATCH v2 3/4] clock: Add clock_ns_to_ticks() function
+Date: Wed, 10 Feb 2021 13:26:30 -0800
+Message-ID: <CAGcCb101mQGaGw3h2e8t=+uYfb8fw+gUezSi55nnr1-8886=eg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/6] hw/i2c: Add NPCM7XX SMBus Device
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- Tyrone Ting <kfting@nuvoton.com>, Luc Michel <luc@lmichel.fr>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- Havard Skinnemoen <hskinnemoen@google.com>
-Content-Type: multipart/alternative; boundary="0000000000004d3e9605bb01b2f6"
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=wuhaotsh@google.com; helo=mail-lf1-x12e.google.com
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ CS20 KFTing <kfting@nuvoton.com>, 
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Patrick Venture <venture@google.com>, Doug Evans <dje@google.com>, 
+ Corey Minyard <cminyard@mvista.com>
+Content-Type: multipart/alternative; boundary="00000000000030bf9005bb020f63"
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=wuhaotsh@google.com; helo=mail-lj1-x232.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
 X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01, USER_IN_DEF_DKIM_WL=-7.5,
  USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y6OzjYh+y422
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SFZWGa4nXnz4
 
---0000000000004d3e9605bb01b2f6
+--00000000000030bf9005bb020f63
 Content-Type: text/plain; charset="UTF-8"
 
-On Tue, Feb 9, 2021 at 5:27 AM Peter Maydell <peter.maydell@linaro.org>
+Thanks. I'll take patch 1 out of the next version.
+
+On Mon, Feb 8, 2021 at 9:01 AM Peter Maydell <peter.maydell@linaro.org>
 wrote:
 
-> Add a clock_ns_to_ticks() function which does the opposite of
-> clock_ticks_to_ns(): given a duration in nanoseconds, it returns the
-> number of clock ticks that would happen in that time.  This is useful
-> for devices that have a free running counter register whose value can
-> be calculated when it is read.
+> On Fri, 29 Jan 2021 at 01:04, Hao Wu <wuhaotsh@google.com> wrote:
+> >
+> > This patch set implements the System manager bus (SMBus) module in
+> NPCM7XX
+> > SoC. Basically, it emulates the data transactions of the module, not the
+> > SDA/SCL levels. We have also added a QTest which contains read and write
+> > operations for both single-byte and FIFO mode, and added basic I2C
+> devices
+> > for npcm750-evb and quanta-gsj boards.
+> >
+> > We also cleaned up the unimplemented GPIO devices in npcm7xx.c since they
+> > are already implemented.
+> >
+> > Changes since v1:
+> > - Fix errors for i2c device addresses for temperature sensors in GSJ
+> machine
+> > - Use at24c device to emulate GSJ EEPROM. It supports more than 256
+> bytes.
+> > - Fill in VMState in npcm7xx_smbus.c
+> > - Change commit message in patch 3 and 4
+> > - Fix order in npcm7xx.c IRQ list
+> > - Add a few extra comments to make things clearer
+> >
+> > Hao Wu (6):
+> >   hw/arm: Remove GPIO from unimplemented NPCM7XX
+> >   hw/i2c: Implement NPCM7XX SMBus Module Single Mode
+> >   hw/arm: Add I2C sensors for NPCM750 eval board
+> >   hw/arm: Add I2C sensors and EEPROM for GSJ machine
+> >   hw/i2c: Add a QTest for NPCM7XX SMBus Device
+> >   hw/i2c: Implement NPCM7XX SMBus Module FIFO Mode
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Hi; I'm going to apply patch 1 to target-arm.next because it's not
+> really related to the others in the series. For the rest, I left
+> a couple of review comments but they're pretty minor.
 >
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-
-> ---
-> I have made the overflow behaviour here be "wrap", with justification
-> as per the comment; but I'm not 100% set on this.
-> ---
->  docs/devel/clocks.rst | 12 ++++++++++++
->  include/hw/clock.h    | 41 +++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 53 insertions(+)
->
-> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> index f0391e76b4f..956bd147ea0 100644
-> --- a/docs/devel/clocks.rst
-> +++ b/docs/devel/clocks.rst
-> @@ -360,6 +360,18 @@ rather than simply passing it to a QEMUTimer function
-> like
->  ``timer_mod_ns()`` then you should be careful to avoid overflow
->  in those calculations, of course.)
->
-> +Obtaining tick counts
-> +---------------------
-> +
-> +For calculations where you need to know the number of ticks in
-> +a given duration, use ``clock_ns_to_ticks()``. This function handles
-> +possible non-whole-number-of-nanoseconds periods and avoids
-> +potential rounding errors. It will return '0' if the clock is stopped
-> +(i.e. it has period zero). If the inputs imply a tick count that
-> +overflows a 64-bit value (a very long duration for a clock with a
-> +very short period) the output value is truncated, so effectively
-> +the 64-bit output wraps around.
-> +
->  Changing a clock period
->  -----------------------
->
-> diff --git a/include/hw/clock.h b/include/hw/clock.h
-> index d7a6673c29e..79c3b7ebe40 100644
-> --- a/include/hw/clock.h
-> +++ b/include/hw/clock.h
-> @@ -286,6 +286,47 @@ static inline uint64_t clock_ticks_to_ns(const Clock
-> *clk, uint64_t ticks)
->      return ns_low >> 32 | ns_high << 32;
->  }
->
-> +/**
-> + * clock_ns_to_ticks:
-> + * @clk: the clock to query
-> + * @ns: duration in nanoseconds
-> + *
-> + * Returns the number of ticks this clock would make in the given
-> + * number of nanoseconds. Because a clock can have a period which
-> + * is not a whole number of nanoseconds, it is important to use this
-> + * function rather than attempting to obtain a "period in nanoseconds"
-> + * value and then dividing the duration by that value.
-> + *
-> + * If the clock is stopped (ie it has period zero), returns 0.
-> + *
-> + * For some inputs the result could overflow a 64-bit value (because
-> + * the clock's period is short and the duration is long). In these
-> + * cases we truncate the result to a 64-bit value. This is on the
-> + * assumption that generally the result is going to be used to report
-> + * a 32-bit or 64-bit guest register value, so wrapping either cannot
-> + * happen or is the desired behaviour.
-> + */
-> +static inline uint64_t clock_ns_to_ticks(const Clock *clk, uint64_t ns)
-> +{
-> +    /*
-> +     * ticks = duration_in_ns / period_in_ns
-> +     *       = ns / (period / 2^32)
-> +     *       = (ns * 2^32) / period
-> +     * The hi, lo inputs to divu128() are (ns << 32) as a 128 bit value.
-> +     */
-> +    uint64_t lo = ns << 32;
-> +    uint64_t hi = ns >> 32;
-> +    if (clk->period == 0) {
-> +        return 0;
-> +    }
-> +    /*
-> +     * Ignore divu128() return value as we've caught div-by-zero and don't
-> +     * need different behaviour for overflow.
-> +     */
-> +    divu128(&lo, &hi, clk->period);
-> +    return lo;
-> +}
-> +
->  /**
->   * clock_is_enabled:
->   * @clk: a clock
-> --
-> 2.20.1
->
->
+> thanks
+> -- PMM
 >
 
---0000000000004d3e9605bb01b2f6
+--00000000000030bf9005bb020f63
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 9, 2021 at 5:27 AM Peter =
-Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linar=
-o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
-1ex">Add a clock_ns_to_ticks() function which does the opposite of<br>
-clock_ticks_to_ns(): given a duration in nanoseconds, it returns the<br>
-number of clock ticks that would happen in that time.=C2=A0 This is useful<=
+<div dir=3D"ltr">Thanks. I&#39;ll take patch 1 out of the next version.</di=
+v><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On M=
+on, Feb 8, 2021 at 9:01 AM Peter Maydell &lt;<a href=3D"mailto:peter.maydel=
+l@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">On Fri, 29 Jan 2021 at 01:04, Hao Wu =
+&lt;<a href=3D"mailto:wuhaotsh@google.com" target=3D"_blank">wuhaotsh@googl=
+e.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; This patch set implements the System manager bus (SMBus) module in NPC=
+M7XX<br>
+&gt; SoC. Basically, it emulates the data transactions of the module, not t=
+he<br>
+&gt; SDA/SCL levels. We have also added a QTest which contains read and wri=
+te<br>
+&gt; operations for both single-byte and FIFO mode, and added basic I2C dev=
+ices<br>
+&gt; for npcm750-evb and quanta-gsj boards.<br>
+&gt;<br>
+&gt; We also cleaned up the unimplemented GPIO devices in npcm7xx.c since t=
+hey<br>
+&gt; are already implemented.<br>
+&gt;<br>
+&gt; Changes since v1:<br>
+&gt; - Fix errors for i2c device addresses for temperature sensors in GSJ m=
+achine<br>
+&gt; - Use at24c device to emulate GSJ EEPROM. It supports more than 256 by=
+tes.<br>
+&gt; - Fill in VMState in npcm7xx_smbus.c<br>
+&gt; - Change commit message in patch 3 and 4<br>
+&gt; - Fix order in npcm7xx.c IRQ list<br>
+&gt; - Add a few extra comments to make things clearer<br>
+&gt;<br>
+&gt; Hao Wu (6):<br>
+&gt;=C2=A0 =C2=A0hw/arm: Remove GPIO from unimplemented NPCM7XX<br>
+&gt;=C2=A0 =C2=A0hw/i2c: Implement NPCM7XX SMBus Module Single Mode<br>
+&gt;=C2=A0 =C2=A0hw/arm: Add I2C sensors for NPCM750 eval board<br>
+&gt;=C2=A0 =C2=A0hw/arm: Add I2C sensors and EEPROM for GSJ machine<br>
+&gt;=C2=A0 =C2=A0hw/i2c: Add a QTest for NPCM7XX SMBus Device<br>
+&gt;=C2=A0 =C2=A0hw/i2c: Implement NPCM7XX SMBus Module FIFO Mode<br>
+<br>
+Hi; I&#39;m going to apply patch 1 to target-arm.next because it&#39;s not<=
 br>
-for devices that have a free running counter register whose value can<br>
-be calculated when it is read.<br>
+really related to the others in the series. For the rest, I left<br>
+a couple of review comments but they&#39;re pretty minor.<br>
 <br>
-Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
-" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br></blockquote><div>R=
-eviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@goog=
-le.com</a>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->
----<br>
-I have made the overflow behaviour here be &quot;wrap&quot;, with justifica=
-tion<br>
-as per the comment; but I&#39;m not 100% set on this.<br>
----<br>
-=C2=A0docs/devel/clocks.rst | 12 ++++++++++++<br>
-=C2=A0include/hw/clock.h=C2=A0 =C2=A0 | 41 ++++++++++++++++++++++++++++++++=
-+++++++++<br>
-=C2=A02 files changed, 53 insertions(+)<br>
-<br>
-diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst<br>
-index f0391e76b4f..956bd147ea0 100644<br>
---- a/docs/devel/clocks.rst<br>
-+++ b/docs/devel/clocks.rst<br>
-@@ -360,6 +360,18 @@ rather than simply passing it to a QEMUTimer function =
-like<br>
-=C2=A0``timer_mod_ns()`` then you should be careful to avoid overflow<br>
-=C2=A0in those calculations, of course.)<br>
-<br>
-+Obtaining tick counts<br>
-+---------------------<br>
-+<br>
-+For calculations where you need to know the number of ticks in<br>
-+a given duration, use ``clock_ns_to_ticks()``. This function handles<br>
-+possible non-whole-number-of-nanoseconds periods and avoids<br>
-+potential rounding errors. It will return &#39;0&#39; if the clock is stop=
-ped<br>
-+(i.e. it has period zero). If the inputs imply a tick count that<br>
-+overflows a 64-bit value (a very long duration for a clock with a<br>
-+very short period) the output value is truncated, so effectively<br>
-+the 64-bit output wraps around.<br>
-+<br>
-=C2=A0Changing a clock period<br>
-=C2=A0-----------------------<br>
-<br>
-diff --git a/include/hw/clock.h b/include/hw/clock.h<br>
-index d7a6673c29e..79c3b7ebe40 100644<br>
---- a/include/hw/clock.h<br>
-+++ b/include/hw/clock.h<br>
-@@ -286,6 +286,47 @@ static inline uint64_t clock_ticks_to_ns(const Clock *=
-clk, uint64_t ticks)<br>
-=C2=A0 =C2=A0 =C2=A0return ns_low &gt;&gt; 32 | ns_high &lt;&lt; 32;<br>
-=C2=A0}<br>
-<br>
-+/**<br>
-+ * clock_ns_to_ticks:<br>
-+ * @clk: the clock to query<br>
-+ * @ns: duration in nanoseconds<br>
-+ *<br>
-+ * Returns the number of ticks this clock would make in the given<br>
-+ * number of nanoseconds. Because a clock can have a period which<br>
-+ * is not a whole number of nanoseconds, it is important to use this<br>
-+ * function rather than attempting to obtain a &quot;period in nanoseconds=
-&quot;<br>
-+ * value and then dividing the duration by that value.<br>
-+ *<br>
-+ * If the clock is stopped (ie it has period zero), returns 0.<br>
-+ *<br>
-+ * For some inputs the result could overflow a 64-bit value (because<br>
-+ * the clock&#39;s period is short and the duration is long). In these<br>
-+ * cases we truncate the result to a 64-bit value. This is on the<br>
-+ * assumption that generally the result is going to be used to report<br>
-+ * a 32-bit or 64-bit guest register value, so wrapping either cannot<br>
-+ * happen or is the desired behaviour.<br>
-+ */<br>
-+static inline uint64_t clock_ns_to_ticks(const Clock *clk, uint64_t ns)<br=
->
-+{<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* ticks =3D duration_in_ns / period_in_ns<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D ns / (period / 2^32)<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D (ns * 2^32) / period<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0* The hi, lo inputs to divu128() are (ns &lt;&lt; 32) =
-as a 128 bit value.<br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 uint64_t lo =3D ns &lt;&lt; 32;<br>
-+=C2=A0 =C2=A0 uint64_t hi =3D ns &gt;&gt; 32;<br>
-+=C2=A0 =C2=A0 if (clk-&gt;period =3D=3D 0) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
-+=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* Ignore divu128() return value as we&#39;ve caught di=
-v-by-zero and don&#39;t<br>
-+=C2=A0 =C2=A0 =C2=A0* need different behaviour for overflow.<br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 divu128(&amp;lo, &amp;hi, clk-&gt;period);<br>
-+=C2=A0 =C2=A0 return lo;<br>
-+}<br>
-+<br>
-=C2=A0/**<br>
-=C2=A0 * clock_is_enabled:<br>
-=C2=A0 * @clk: a clock<br>
--- <br>
-2.20.1<br>
-<br>
-<br>
-</blockquote></div></div>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
 
---0000000000004d3e9605bb01b2f6--
+--00000000000030bf9005bb020f63--

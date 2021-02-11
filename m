@@ -1,139 +1,128 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2058347lfc;
-        Thu, 11 Feb 2021 00:25:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwlgsLCyY+qCgteCZzbK3iO1Z/7qQAW5RBhEhYEVKCkBwgnnguMsnh21+tzNlfyyqmklyWh
-X-Received: by 2002:a5b:781:: with SMTP id b1mr9630064ybq.309.1613031954695;
-        Thu, 11 Feb 2021 00:25:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613031954; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2125288lfc;
+        Thu, 11 Feb 2021 02:14:29 -0800 (PST)
+X-Received: by 2002:a17:907:3f29:: with SMTP id hq41mr7793927ejc.227.1613038469389;
+        Thu, 11 Feb 2021 02:14:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613038469; cv=none;
         d=google.com; s=arc-20160816;
-        b=x2mNVZHiyqkmcIpKccaOFicktKEXSNFFf5mgCtEl+Rt82KaDD3hvv+JP7ll2wIdYXd
-         jF9USvCA2ciNl8Pzg+aVHvlaY7+6Ip5Jmsjcm4ltPyNDWkrpRXSbiuL1cnDojE67+eam
-         ogkaci28DCqG9joxd+VpebR1Rm9MqVkSAEf2i9YA9ZejrnJq3tsJ5ce4d6aT1lZm4blW
-         jb7KEkGMWtQyAUG642uuKp1bh7IzK413DL/0YoQ6hpHA+5mHhvCVR0Xt/2g1OneTzOOL
-         G3bz/0g6Plp63sU8W4yLE42yEIsqw1pRIy/agL1rXObzGQ643uBTH/hsqhxiLEn9/UPU
-         wzLQ==
+        b=SLjzmIRIM+hbeZrPR4aKeZjhBuxAJt52wxCqzcbpVWTxEgIma8penVzJSbxF6lBvS5
+         TMFUENOuR1Elx/7+EyTCdkbmFxb+wcL98pCZBK/5+p/aSqzvM7IImzEVwjWY1jRSQYoY
+         Mwx0jlVneyTWj7pL/4d8UrL4fGh61cJW7Iz/95Mb13Tt+2dVJtfSgKUUeLUY1Ylt5clB
+         471f7tUip5xfXFpLAh5/2nTGKeZkaAtykq2go07Q6GhTYXCguQKeeXKgcbTL4hb6pJop
+         erjloHinK1JFMSmFGVaoMKt8EOG2AER43HN4FcLs1CRSmAJ+eRSqBWiPGbgjRAlqQRQX
+         mPkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=vvgTWfNoPK0f8vjhzwUgtdHrpBO85iPgkl6dsyu939A=;
-        b=HfJF9ySKCpqO1pTfpZs2vMZCMTpM1kMdOHVcGTX8Bp+1iYz/NNpOqeZQ0rtBCoYyCA
-         680svvKfkBR7gI8D5FAB5ndsXwQmNQm1+afgQbLT0w9U3rcdZ61YxSDxK/c9pQ8n0uyH
-         IQvyj1LeJTmDtkg3eGLdsRzOh95VfUxq6PBUpHQ5VI8NuhQF6XWvqgqEYkWWodGygLpY
-         /obIbczIL4VYqes5T3QY6qwYFvuKDCcDV68q/4gRVZQDEYIERLDqQp5XK2UaHFFIEbaa
-         echIYuCuStSNR0bmSJ2jXF0rCYmN3M1voy8hz9QLFgc8orIbPFGbcisSsxd4nSXyYsHu
-         jBxg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=+2PHMDkSqQyHmTkq0AhIiIBdn8pX/hMU5s527CBYpFc=;
+        b=EHWqkZpvrxkxhvosFoL3vygEnSV2phoeLuGDrsVyQXLXc+iStz3SPgnGT9B73PrLV7
+         y7Ys60O9HR2j8fdWXNfnN8OR8hkaSnFK2kG585pc6ci44fgjcx7hEpHqTSSWkUGbCEma
+         MPPe9qSEMubuz4xQPjsLP6srpXYKbk/AHH8Hg4Jpa1yR96wqbhEhWCimFF+xEHuYnVMw
+         cIju/1AZAc0lPo7arY+6ED75G1M2VIOv51TfY+QQiae6nXXqizQhVWkJqjU6SJDPYnKE
+         hdziRnEiOrWlobH8atNGLnWkGPE/XthIexpAp0D/qb+t+RuyZWctg6CbbrUB/+30ZXXq
+         t3gQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=4WQcciSQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t12si4643564ybc.276.2021.02.11.00.25.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 00:25:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g507dUF0;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ot25sor3392213ejb.91.2021.02.11.02.14.29
+        (Google Transport Security);
+        Thu, 11 Feb 2021 02:14:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=4WQcciSQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58612 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lA7IP-0004EP-UV
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 03:25:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34040)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1lA7Fq-0004Bx-S0; Thu, 11 Feb 2021 03:23:15 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:51828)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1lA7Fo-0000eA-Ok; Thu, 11 Feb 2021 03:23:14 -0500
-Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 4B76621C36;
- Thu, 11 Feb 2021 08:23:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1613031788;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vvgTWfNoPK0f8vjhzwUgtdHrpBO85iPgkl6dsyu939A=;
- b=4WQcciSQCeJN9GxOnuZwxtIvG7sfLDxVTdJ+IioHKf0NcO/ajRP1BwzkW/lB65ckNl8k3Z
- 1GADTSIm2UWDaYOKrRiQ9W/OCJLIhI7I8FQa+fYVJGDLswgZBzeUI/8yiCLq3ic1P378qx
- JQfwzoLP7tvHmEeb/oVspcwzZCxujOE=
-Subject: Re: [PATCH v1 1/1] hw/arm: versal: Use nr_apu_cpus in favor of hard
- coding 2
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-References: <20210210142048.3125878-1-edgar.iglesias@gmail.com>
- <20210210142048.3125878-2-edgar.iglesias@gmail.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <efd5d4ba-dbd9-8f87-1dd7-f0543e3e4e62@greensocs.com>
-Date: Thu, 11 Feb 2021 09:23:07 +0100
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=g507dUF0;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=+2PHMDkSqQyHmTkq0AhIiIBdn8pX/hMU5s527CBYpFc=;
+        b=g507dUF0zIV15G6zmNKUB0846xIqF6bAXCtO+q9FlFOJeK3BWpCQE65Ixd+CAvBEdQ
+         XKI404chFA4ewkti5APT5Jevy1om5JO0sxprZHf05br7xmAxluoG+INxt9fVaxJpf87X
+         8CxqjeeUAvgbShbywVYoUdXrdLZ5qTIWgUKC8rzokg1n2YTf8emBzFv1HaAW0uBSZmkq
+         trERfZ99AZQ1GjeoLa0QSdXlJt1iILkJDUMILNy5DgiOoKmI0blom9pWpRipr4iZ3GVU
+         ws0mdDEki/T1wmRIz5+CABNGFvlUVTvIOAMc1h9BRlu19FRRFGWqxmRBYNV9jVmHdVD4
+         LsZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=+2PHMDkSqQyHmTkq0AhIiIBdn8pX/hMU5s527CBYpFc=;
+        b=VqTO2sgobGSXa+KXnH1leUS68YN4MlTZg1lr1FtreT7E3nuubrCmL6VVZDIqOHa8MX
+         NWCdYmkQmAO9lwgqMiT853aXF6bKKKhExNVDTQ8esdSS+gLBOLw8pwlc3rLM6ccPg3tt
+         HrypEJtnq3PrfSW5DViSXKt2TSMjBYxwJDfwi22jBdnxVh4E4E/TXg/2dHiVXM+JJLdc
+         bdflHevMY8EDwBC+mEkvyQcW2WD5zCBj/RElItU4Y3BAr072dSdldfxwO8+3NaB7PJZb
+         9Tm87wtEKzry0+3owMr9d6CTRojjFjXKpaI7NTy3fgzJmGKP0TV/oVyP5nPgEiLEN2qV
+         HS0w==
+X-Gm-Message-State: AOAM530Z+N3002K8GLEFmXg6xdHrE3kSNKnlBpmn8hfYbk3m7Tnsd+6N
+	IljFuC6tPsRytTi5LXwSYZw=
+X-Google-Smtp-Source: ABdhPJyaRE306YymBg7bDimEUVJnsGuUuOGQhO7rrOftOBj51E40hUBOyxLfjkbdU1FdlBzBzDjOkg==
+X-Received: by 2002:a17:907:210d:: with SMTP id qn13mr7614050ejb.377.1613038469149;
+        Thu, 11 Feb 2021 02:14:29 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id cf25sm3780839ejb.71.2021.02.11.02.14.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 11 Feb 2021 02:14:28 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 10/21] exec: Move TranslationBlock typedef to
+ qemu/typedefs.h
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michael Walle <michael@walle.cc>, robhenry@microsoft.com,
+ mahmoudabdalghany@outlook.com, aaron@os.amperecomputing.com, cota@braap.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, kuhn.chenqun@huawei.com,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20210210221053.18050-1-alex.bennee@linaro.org>
+ <20210210221053.18050-11-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <975bb94d-390a-c8d8-8880-313184664e3f@amsat.org>
+Date: Thu, 11 Feb 2021 11:14:27 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <20210210142048.3125878-2-edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=5.135.226.135;
- envelope-from=luc.michel@greensocs.com; helo=beetle.greensocs.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.211,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- komlodi@xilinx.com, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HAdnBHubavXD
+In-Reply-To: <20210210221053.18050-11-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: X0aRxkLvAsN9
 
-On 2/10/21 3:20 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 2/10/21 11:10 PM, Alex Bennée wrote:
+> From: Richard Henderson <richard.henderson@linaro.org>
 > 
-> Use nr_apu_cpus in favor of hard coding 2.
+> This also means we don't need an extra declaration of
+> the structure in hw/core/cpu.h.
 > 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20210208233906.479571-2-richard.henderson@linaro.org>
 
-Reviewed-by: Luc Michel <luc@lmichel.fr>
+I'd say this one matters ^,
+
+> Message-Id: <20210209182749.31323-2-alex.bennee@linaro.org>
+
+but this one less.
 
 > ---
->   hw/arm/xlnx-versal.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index b0777166e8..628e77ef66 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -67,10 +67,10 @@ static void versal_create_apu_gic(Versal *s, qemu_irq *pic)
->       gicbusdev = SYS_BUS_DEVICE(&s->fpd.apu.gic);
->       gicdev = DEVICE(&s->fpd.apu.gic);
->       qdev_prop_set_uint32(gicdev, "revision", 3);
-> -    qdev_prop_set_uint32(gicdev, "num-cpu", 2);
-> +    qdev_prop_set_uint32(gicdev, "num-cpu", nr_apu_cpus);
->       qdev_prop_set_uint32(gicdev, "num-irq", XLNX_VERSAL_NR_IRQS + 32);
->       qdev_prop_set_uint32(gicdev, "len-redist-region-count", 1);
-> -    qdev_prop_set_uint32(gicdev, "redist-region-count[0]", 2);
-> +    qdev_prop_set_uint32(gicdev, "redist-region-count[0]", nr_apu_cpus);
->       qdev_prop_set_bit(gicdev, "has-security-extensions", true);
->   
->       sysbus_realize(SYS_BUS_DEVICE(&s->fpd.apu.gic), &error_fatal);
-> 
+>  include/exec/tb-context.h     | 1 -
+>  include/hw/core/cpu.h         | 4 +---
+>  include/hw/core/tcg-cpu-ops.h | 3 +--
+>  include/qemu/typedefs.h       | 1 +
+>  target/arm/internals.h        | 3 +--
+>  target/cris/translate.c       | 2 +-
+>  target/lm32/translate.c       | 2 +-
+>  target/moxie/translate.c      | 2 +-
+>  target/unicore32/translate.c  | 2 +-
+>  9 files changed, 8 insertions(+), 12 deletions(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

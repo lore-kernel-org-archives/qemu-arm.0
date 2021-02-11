@@ -1,66 +1,88 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2164149lfc;
-        Thu, 11 Feb 2021 03:14:27 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx/0hZVfVLRfOOYtultTB4q+0EIwO/GvOCOBAENGCk5sFAxU/+w/0V0fkWhvO+tgKR9CE+e
-X-Received: by 2002:a25:850f:: with SMTP id w15mr11068477ybk.487.1613042067099;
-        Thu, 11 Feb 2021 03:14:27 -0800 (PST)
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2123034lfc;
+        Thu, 11 Feb 2021 02:11:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyUigQlzsYbl+WxVVl6U45ZRz5A4U+ULfDjHGyLpPxvJ28Zg4NPvFtZUzzDso9JdBFN+OvT
+X-Received: by 2002:a5b:690:: with SMTP id j16mr10932849ybq.251.1613038260517;
+        Thu, 11 Feb 2021 02:11:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613038260; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LMCERBYu0BWBXb73R6fHCIBqKAGb7fgf96QnebMqOGZJaU8KbvfRlj+xktGgvLG/sP
+         0TE26NC3uw5ynDbQyBHPeXDqCcfdF9V56NiBlZOo01F9aFEQZQRYvB3xPN40PunFUbiM
+         r5CUWUVBLUdjNof3SOno8RmHQqz+Vqs/IsspZTYV6rR1XTzbooH4ds5rr+O86wwwXMKR
+         7AG5icxnT+BqIrkzNQrx+1Q4tgNoNb8Uze/HgRxzjf9Gvsj3qKoMNLCL4fN71znzjrPJ
+         1kdvIQ0cjMfOYzUz8ux47duWWaVEl67eUhbeaAlUVgE5fXkFGK6UnbrmgLUORUc2LdAd
+         M6yQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=XBdFX38jptpi0BIEJ1yRhy9PuJYL9HLek6XR7hMRUW4=;
+        b=094SZJS+tZzaxtdSgwPU03SaDkSzfJXsJtz//l3mBORWPgzR7lMqgoytVtegh7vnwZ
+         1zNEsLzUk27nER32lwrgaIh4mxsdtbdqdIQpAO95O4VF8yI4uMxpKlYk18cqW5F0mCDs
+         F7jRid6u8mCMDf6pdNfM22nOwds/F8EYZrffwFO2zj39ECs3WMZ15lXFbUrBNL2LxlSi
+         iHci32Kw3JBZrY0VeGaIsCKS5M+OLkwRqsdWaE6cT1wp01evM9uz94Wrhsb8cc1S6GeT
+         ttn3sUUVUpgcw6hWjKbCt5rk2ZgZlrQuXP7GiVuKJiRNmasxSR5vHuNPYmRgBLmi+5w5
+         YK+w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=iJxuED8M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y131si3468189ybe.467.2021.02.11.03.14.26
+        by mx.google.com with ESMTPS id u4si4900511ybc.292.2021.02.11.02.11.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 03:14:27 -0800 (PST)
+        Thu, 11 Feb 2021 02:11:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41288 helo=lists1p.gnu.org)
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=iJxuED8M;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:59720 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lA9vW-0002KO-HG
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 06:14:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39972)
+	id 1lA8w7-0000I5-TP
+	for alex.bennee@linaro.org; Thu, 11 Feb 2021 05:10:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lA9vE-0002Gx-QW; Thu, 11 Feb 2021 06:14:10 -0500
-Resent-Date: Thu, 11 Feb 2021 06:14:08 -0500
-Resent-Message-Id: <E1lA9vE-0002Gx-QW@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21386)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1lA8vp-0000G4-Bj; Thu, 11 Feb 2021 05:10:44 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:34712)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1lA9v8-00069G-VV; Thu, 11 Feb 2021 06:14:08 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1613042039; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=D9Qc0H0JXb6p5Ksru48rCttUnpAyQGW15J/ho02R9hI0LRCmtxJRvb2r7U9mRCc3OTcZI/mmMZuBijmB1qqgKrqBBF61EUyC67/y8o9E/vocX8zO9y4yyXTggrQ1rbFttfMna/4hI6JJxuMnZEpxTDMMyPophXnUdAVNoEpW0lo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1613042039;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=RS7PA54cMhdQWC3xV4TbQPoWVf403VhPOkykRUyqjO0=; 
- b=Jfv+y0356knS3rR9Aeb1Rn6NiUvoMdUas+yRx8fGZCdCl5pMpxt7oOamt7oi3WyJRD2TDvGQC+7q74MrUpzGaj+lzlU9xXfLgeRY69solpt4KkZlL55luK5jXPnDfY+gWPNVgs4W5uFFMkT9UZdfIdbTcqt2jsHD7+YLpLhwMOc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1613042036579491.40689524186075;
- Thu, 11 Feb 2021 03:13:56 -0800 (PST)
-In-Reply-To: <20210210174122.410690-1-muellerd@fb.com>
-Subject: Re: [PATCH v2] target/arm: Correctly initialize MDCR_EL2.HPMN
-Message-ID: <161304203545.26113.632198214959924515@c667a6b167f6>
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1lA8vm-0004u0-QA; Thu, 11 Feb 2021 05:10:41 -0500
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id DA894C602E6;
+ Thu, 11 Feb 2021 11:10:34 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1613038234;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=XBdFX38jptpi0BIEJ1yRhy9PuJYL9HLek6XR7hMRUW4=;
+ b=iJxuED8MJ4azTSXo2rSrMZWCFL+MHglfISNdL/yr5G7Y1XF+fyVvzuLcUSN65bn2Kfrpl8
+ tKDK3wI5jy6baxdwHOLQ40CsryU+4PZlWIFrJjTSfZ725KPC/+XQGww/v6djZdmUg5DvJO
+ HGnTJ+5tvS79bikjv37Rx88uk7bc/7tzxcZpF8eGK4hwTlVNHW0iEe9OvOebXRsa9KWf0D
+ GiUHnSeuUfdg//lULoY2/D3uYq3mBnWsnQkGMne/jaG63eaW0aryTe7WGBLmNkyZYk9sdS
+ aJS96mkoferP0/Jr7s1eE7rsYSwJzm5jJWLQHrD+fjv2jk7lvXnOTpYJ15zvBA==
+Date: Thu, 11 Feb 2021 11:11:06 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v2 2/4] clock: Add ClockPreUpdate callback event type
+Message-ID: <20210211101106.t7y67bw4ecz4uk6a@sekoia-pc.home.lmichel.fr>
+References: <20210209132040.5091-1-peter.maydell@linaro.org>
+ <20210209132040.5091-3-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: qemu-devel@nongnu.org
-Date: Thu, 11 Feb 2021 03:13:56 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210209132040.5091-3-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,34 +96,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: muellerd@fb.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: Havard Skinnemoen <hskinnemoen@google.com>, qemu-devel@nongnu.org,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qw5OxtKYAoiy
+X-TUID: z8Ov69TdsFRE
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDIxMDE3NDEyMi40MTA2
-OTAtMS1tdWVsbGVyZEBmYi5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
-b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
-cm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIxMDIxMDE3NDEyMi40MTA2OTAt
-MS1tdWVsbGVyZEBmYi5jb20KU3ViamVjdDogW1BBVENIIHYyXSB0YXJnZXQvYXJtOiBDb3JyZWN0
-bHkgaW5pdGlhbGl6ZSBNRENSX0VMMi5IUE1OCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMh
-L2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNv
-bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5y
-ZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQou
-L3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQg
-RU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4
-NApTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjAxNmE0OWUgdGFyZ2V0L2FybTogQ29y
-cmVjdGx5IGluaXRpYWxpemUgTURDUl9FTDIuSFBNTgoKPT09IE9VVFBVVCBCRUdJTiA9PT0KRVJS
-T1I6IE1pc3NpbmcgU2lnbmVkLW9mZi1ieTogbGluZShzKQoKdG90YWw6IDEgZXJyb3JzLCAwIHdh
-cm5pbmdzLCAzMCBsaW5lcyBjaGVja2VkCgpDb21taXQgMDE2YTQ5ZWEyYjc5ICh0YXJnZXQvYXJt
-OiBDb3JyZWN0bHkgaW5pdGlhbGl6ZSBNRENSX0VMMi5IUE1OKSBoYXMgc3R5bGUgcHJvYmxlbXMs
-IHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2
-ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5U
-QUlORVJTLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2Rl
-OiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9n
-cy8yMDIxMDIxMDE3NDEyMi40MTA2OTAtMS1tdWVsbGVyZEBmYi5jb20vdGVzdGluZy5jaGVja3Bh
-dGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQ
-YXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sg
-dG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+On 13:20 Tue 09 Feb     , Peter Maydell wrote:
+> Add a new callback event type ClockPreUpdate, which is called on
+> period changes before the period is updated.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Luc Michel <luc@lmichel.fr>
+
+> ---
+>  docs/devel/clocks.rst | 9 ++++++++-
+>  include/hw/clock.h    | 1 +
+>  hw/core/clock.c       | 3 +++
+>  3 files changed, 12 insertions(+), 1 deletion(-)
+> 
+> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+> index cd344e3fe5d..f0391e76b4f 100644
+> --- a/docs/devel/clocks.rst
+> +++ b/docs/devel/clocks.rst
+> @@ -181,7 +181,14 @@ events.
+>  
+>  The events currently supported are:
+>  
+> - * ``ClockUpdate`` : called after the input clock's period has changed
+> + * ``ClockPreUpdate`` : called when the input clock's period is about to
+> +   update. This is useful if the device needs to do some action for
+> +   which it needs to know the old value of the clock period. During
+> +   this callback, Clock API functions like ``clock_get()`` or
+> +   ``clock_ticks_to_ns()`` will use the old period.
+> + * ``ClockUpdate`` : called after the input clock's period has changed.
+> +   During this callback, Clock API functions like ``clock_ticks_to_ns()``
+> +   will use the new period.
+>  
+>  Note that a clock only has one callback: it is not possible to register
+>  different functions for different events. You must register a single
+> diff --git a/include/hw/clock.h b/include/hw/clock.h
+> index 5c73b4e7ae9..d7a6673c29e 100644
+> --- a/include/hw/clock.h
+> +++ b/include/hw/clock.h
+> @@ -30,6 +30,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Clock, CLOCK)
+>   */
+>  typedef enum ClockEvent {
+>      ClockUpdate = 1, /* Clock period has just updated */
+> +    ClockPreUpdate = 2, /* Clock period is about to update */
+>  } ClockEvent;
+>  
+>  typedef void ClockCallback(void *opaque, ClockEvent event);
+> diff --git a/hw/core/clock.c b/hw/core/clock.c
+> index 71dc1f4de65..2c86091d8a3 100644
+> --- a/hw/core/clock.c
+> +++ b/hw/core/clock.c
+> @@ -80,6 +80,9 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
+>  
+>      QLIST_FOREACH(child, &clk->children, sibling) {
+>          if (child->period != clk->period) {
+> +            if (call_callbacks) {
+> +                clock_call_callback(child, ClockPreUpdate);
+> +            }
+>              child->period = clk->period;
+>              trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
+>                                 CLOCK_PERIOD_TO_HZ(clk->period),
+> -- 
+> 2.20.1
+> 
+
+-- 

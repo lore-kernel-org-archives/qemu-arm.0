@@ -1,80 +1,79 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2227521lfc;
-        Thu, 11 Feb 2021 04:43:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwlWq/QlmRrI3gPHUygKoQRhClKgVOHMhE0AlCx3huZTfOuKg1NprssGJom7Pp1CWJDHtTY
-X-Received: by 2002:a25:324b:: with SMTP id y72mr9981198yby.233.1613047438190;
-        Thu, 11 Feb 2021 04:43:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613047438; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2272104lfc;
+        Thu, 11 Feb 2021 05:43:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw11QV4azvvx3q86bHyAbFtRbT8tT8OFAU96ga0NQTB56crI0IgZWwpwtjjqm8VkVnwj8z3
+X-Received: by 2002:a25:c901:: with SMTP id z1mr2570262ybf.386.1613050981618;
+        Thu, 11 Feb 2021 05:43:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613050981; cv=none;
         d=google.com; s=arc-20160816;
-        b=cgyUbJ0lmgMoEosnBJWIVco45g2BhsxLkz1PVX8BcY6qXoD0v1XjGlIIhrHoeFZVOE
-         IixL+IgD2O1pV6J7i+20pQ576Yg9VDULZx8n5Er1rdS0LQEa/UGSsPqEvjBSQ21CWfv1
-         mLdawexEgDX6AHcoIkZxGBhT0KdQ4SkyaECJk8DA6BCB0btWu/HXGHUceUTnwRp5K7P6
-         kx2M3o2pCDh3GSBl0ckBu7459LVtFavi3khWWFC1t7RfqYv+VH711O5T4yi3OuwWrfJW
-         AfOT2q/gD0rOObIX2omjsNjjDQ+AyW/ErXJ6tqQ52MJgQrvBjs1g3h6Ba0+PykCKLCwZ
-         CUWg==
+        b=exiaH+BFIbBErhx3pNIC5XSuVH/c+11NIi6JWzSS+LAiVfSlpav7jnf7woeGXCRJgA
+         gJre4jtJI7w64F53fiCrjbAj3PPnIciaJ5m4Rh7uOQhnt2xUEqt21TQZXpqXEp9YVgsW
+         msvZkgDVa14i1p6f9TKLPhAhgQ9BnSULj/FdXVknFQ6nfStM8EZqkVQyaXOV8jxnSwoq
+         9tpwYtziI+NcmMosKcxpksoqaXcnIpBxmXmNafxe3QGrvebbCf3nlRDNWdtcSb86amnR
+         veg4ik6Rv+V3KA59VRjPCJST75h8eL75BMwWCsfCAAgXMZJnagiBaoLDEgjc/j2wxajq
+         FrLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=9wJY5jYF3f5w3AxB9/NBTbaqqDz5tmuNC04Oa18k9Qc=;
-        b=lEXee04kyXhv5tKaGvD1TGIUro2f/zI8odqeM4HNkHPLh3UC18SZ9nErhRLA2l4AV2
-         Tn941eANHD/+lAgUfB62H0lBMTqLaHLtpivUrGgu9x6oDxZtnZ3mhN1+OGyapLjvCMcu
-         T7sP1P2y3Lqn4dhzu8q158AfKC0zqFJBDevqrUHzgiIaNK5rk/hydrlPGQ3LcGL2eZ8s
-         bfhd5sJzE9Xdgpg4B/16F6FAu6HaPeHBUYAWf1L9HL1LdmUUQpmuJIXinmJMK5bzgMUl
-         TRJMLxpdjUsKbOjbUOjS/YWb52jwdZJRN2Kdqk4+oLBmZGnozLPvJnqe9U8uWSgjc/CP
-         igRQ==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=kV/WF5qn0kMO8hjbcp2cRjasRWJgVGaR99KFulB7j5w=;
+        b=c+5yNIAEB6guTg4WVbcxwT82+3tqoPxu1QS1I1gMJnSS40i3uT2QDHGIgRGkfZQWQb
+         xe+1fh9rAHKCvGU/cKb10broi/PygRwtGb9LTEz/L7ATWxjWneuTETLGtQvkQZXR9lUB
+         7uzNrmVBbKPykLtgEgeTGFWZcKTA6jHFfjiFE7RzlREVELo0IOEHtIfA7v8BdHemZCYu
+         wmNV4a37hv4uJ4VGJnh3aIIjiw6ppvQrB4pFZSU46GBPeDid2Fi4Edg9QCgMLahexA8P
+         Ymw5AYaDW6T5uFWPfaUbsqdMgAzjsmcPaP8pO0sn2xAOmOXpTFRyvqBDSF3omNN/JX1b
+         ovww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t14si5087907ybi.213.2021.02.11.04.43.58
+        by mx.google.com with ESMTPS id b64si5198979ybh.32.2021.02.11.05.43.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 04:43:58 -0800 (PST)
+        Thu, 11 Feb 2021 05:43:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58550 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46752 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lABK9-00038Y-Jj
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 07:43:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56306)
+	id 1lACFJ-0002kY-0T
+	for alex.bennee@linaro.org; Thu, 11 Feb 2021 08:43:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1lABDM-0005KZ-D7; Thu, 11 Feb 2021 07:36:56 -0500
-Received: from muminek.juszkiewicz.com.pl ([2001:41d0:1:43dd::1]:38590)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1lABDH-0007aB-9f; Thu, 11 Feb 2021 07:36:56 -0500
-Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 7B79326026A;
- Thu, 11 Feb 2021 13:36:48 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yVlK5AhssGWo; Thu, 11 Feb 2021 13:36:45 +0100 (CET)
-Received: from puchatek.lan (89-67-26-161.dynamic.chello.pl [89.67.26.161])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id C5E7E2600B6;
- Thu, 11 Feb 2021 13:36:44 +0100 (CET)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-To: qemu-arm@nongnu.org
-Subject: [PATCH 1/2] sbsa-ref: remove cortex-a53 from list of supported cpus
-Date: Thu, 11 Feb 2021 13:36:37 +0100
-Message-Id: <20210211123638.1820482-1-marcin.juszkiewicz@linaro.org>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210211122022.1811362-1-marcin.juszkiewicz@linaro.org>
-References: <20210211122022.1811362-1-marcin.juszkiewicz@linaro.org>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1lABg1-0006Ws-Lr; Thu, 11 Feb 2021 08:06:35 -0500
+Received: from mail.csgraf.de ([85.25.223.15]:41118 helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1lABfz-00038J-2g; Thu, 11 Feb 2021 08:06:33 -0500
+Received: from Alexanders-Mac-mini.local (unknown [188.138.100.120])
+ by csgraf.de (Postfix) with UTF8SMTPSA id 6F4066080F87;
+ Thu, 11 Feb 2021 14:06:27 +0100 (CET)
+Message-ID: <37018444-82a8-96c0-b5ce-da056646a1b8@csgraf.de>
+Date: Thu, 11 Feb 2021 14:06:23 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: softfail client-ip=2001:41d0:1:43dd::1;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_SOFTFAIL=0.665,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.16; rv:86.0)
+ Gecko/20100101 Thunderbird/86.0
+Subject: Re: [PATCH v6 07/11] hvf: Add Apple Silicon support
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20210120224444.71840-1-agraf@csgraf.de>
+ <20210120224444.71840-8-agraf@csgraf.de>
+ <CAFEAcA_-4GYk_+jdczWE720-VH1CLcS+1jVB2LzG=bBBJc8w-g@mail.gmail.com>
+ <298dcf49-1a99-9406-275f-b05c8befd13b@csgraf.de>
+ <CAFEAcA_ze+J7geayqgaV274anQubqiv56qan7wo8EkxZ14Nydw@mail.gmail.com>
+From: Alexander Graf <agraf@csgraf.de>
+In-Reply-To: <CAFEAcA_ze+J7geayqgaV274anQubqiv56qan7wo8EkxZ14Nydw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.119,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,34 +86,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Leif Lindholm <leif@nuviainc.com>,
- =?UTF-8?q?Rados=C5=82aw=20Biernacki?= <rad@semihalf.com>,
- qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Frank Yang <lfy@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aaZOIhgRaYEX
+X-TUID: i3W10xvtGwVZ
 
-Cortex-A53 supports 40bits of address space. sbsa-ref's memory starts
-above this limit.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
- hw/arm/sbsa-ref.c | 1 -
- 1 file changed, 1 deletion(-)
+On 10.02.21 23:39, Peter Maydell wrote:
+> On Wed, 10 Feb 2021 at 22:21, Alexander Graf <agraf@csgraf.de> wrote:
+>>
+>> On 28.01.21 16:52, Peter Maydell wrote:
+>>> On Wed, 20 Jan 2021 at 22:44, Alexander Graf <agraf@csgraf.de> wrote:
+>>>> +            break;
+>>>> +        case EC_AA64_SMC:
+>>>> +            cpu_synchronize_state(cpu);
+>>>> +            if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
+>>>> +                arm_handle_psci_call(arm_cpu);
+>>> Have you checked that all the PSCI code really can cope
+>>> with being called from a non-TCG accelerator? (As an example
+>>> the CPU_SUSPEND implementation calls the TCG wfi helper...)
+>>
+>> I have not explicitly tried it, but I don't see why the TCG
+>> implementation of wfi should in principle break with hvf.
+> Because the TCG implementation of wfi is "set some state fields
+> and then longjump out to the TCG exec_cpu code-execution loop",
+> and hvf doesn't use that loop.
 
-diff --git hw/arm/sbsa-ref.c hw/arm/sbsa-ref.c
-index 9f70735153..276243d122 100644
---- hw/arm/sbsa-ref.c
-+++ hw/arm/sbsa-ref.c
-@@ -145,7 +145,6 @@ static const int sbsa_ref_irqmap[] = {
- };
- 
- static const char * const valid_cpus[] = {
--    ARM_CPU_TYPE_NAME("cortex-a53"),
-     ARM_CPU_TYPE_NAME("cortex-a57"),
-     ARM_CPU_TYPE_NAME("cortex-a72"),
- };
--- 
-2.29.2
+
+I can confirm that it breaks, but are you really sure about the longjmp 
+not working?
+
+What would you prefer instead? Duplicate the PSCI implementation for HVF?
+
+
+>
+>>>> +            } else {
+>>>> +                DPRINTF("unknown SMC! %016llx", env->xregs[0]);
+>>>> +                env->xregs[0] = -1;
+>>> This should inject an UNDEF exception into the guest. (Compare
+>>> the pre_smc helper in target/arm/op_helper.c for TCG.)
+>>
+>> That would break Windows, which is one of the main use cases for hvf
+>> support in QEMU.
+> Why is Windows making bogus SMC calls ?
+
+
+Let me have a quick at my crystal ball ... mmmmmmhhhh ... it's a bit 
+blurry unfortunately.
+
+I really don't think I'm the right person to answer that question :). 
+But the Windows loader does invoke weird SMC calls on boot:
+
+
+BdsDxe: starting Boot0002 "UEFI QEMU NVMe Ctrl 1234 1" from 
+PciRoot(0x0)/Pci(0x1,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)
+ConvertPages: failed to find range 102000 - 102FFF
+ConvertPages: range BCCE4000 - BCD05FFF covers multiple entries
+ConvertPages: range BCCE0000 - BCCEAFFF covers multiple entries
+hvf_unknown_smc unknown SMC! 00000000c3000001
+SetUefiImageMemoryAttributes - 0x00000000BF500000 - 0x0000000000040000 
+(0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000BC190000 - 0x0000000000040000 
+(0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000BC140000 - 0x0000000000040000 
+(0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000BF4C0000 - 0x0000000000030000 
+(0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000BC0F0000 - 0x0000000000040000 
+(0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000BBCB0000 - 0x0000000000040000 
+(0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000BBB00000 - 0x0000000000030000 
+(0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000BBAC0000 - 0x0000000000030000 
+(0x0000000000000008)
+hvf_unknown_smc unknown SMC! 0000000084000000
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+hvf_unknown_smc unknown SMC! 000000008400000a
+
+
+Alex
 

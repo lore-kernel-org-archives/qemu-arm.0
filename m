@@ -1,110 +1,109 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1598034lfb;
-        Wed, 2 Dec 2020 15:26:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJze6wwYXe33zmcIhRuks890px/6SHlCJGaiKaTvKDQiq5T6bpAz/s+YwEJIDM3i/Wia4WIE
-X-Received: by 2002:a25:1143:: with SMTP id 64mr672317ybr.391.1606951590297;
-        Wed, 02 Dec 2020 15:26:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606951590; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2303016lfc;
+        Thu, 11 Feb 2021 06:19:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwMvaP9dVr3sdJeS8xZJTeWiCKjwdxYOs1g6let9mA3S6vGA+Cvb5Ufz23eehYUArEkd9pa
+X-Received: by 2002:a25:7902:: with SMTP id u2mr11934203ybc.482.1613053144249;
+        Thu, 11 Feb 2021 06:19:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613053144; cv=none;
         d=google.com; s=arc-20160816;
-        b=edNGMGvyVUivdFTrOj+8yZVFW1xdz3XiMpGOxm3wpWpJv2vHn3/bxAmdVWL92c+MSJ
-         mLAWEJTRdAO6Zsu8/9aYx2oCQPW85DhDUtgPGZOtSS1jvC5tOvFXG6/ckKGrUOMv9kRr
-         R6kYzSiQ/CiV/UCfbdS5pm8xqLBrnFnWLobRKMEt03KcbxvbCqa3WxTAaPYmBm0oIqDv
-         jxuSGrq0x2P/Hz85GZ0ndUw/V1nGLEti3eO0KytqteWCAJGFcMiGeYXxJVzMW9xplWNx
-         6wlkQ3EE1hIg8nneCbubuPjeOe6FYnXdrq/yoBrkEXsVbhtpGUc2t2/Q0PE5dkNdxw0E
-         J1zQ==
+        b=GMehlu47mihvTd1wg3l99/vmXWYEcE+Q3ms7IxPj4opxY5OKdtUQFwpQ8sXPfnHgU1
+         k+MlE4ViraIgRt4DzNGgxQT8qHoMl1QNw76OApgU2ixFiqJdVF2g503RLpNOZFQkycx7
+         mihfwGSUJW3jnctFjEHtVn4DWqy0/Mw1iwBPrIfroZjcGPT3VrlFnilUTFC27FDUaCp7
+         +mszaxYLXFp/JlDODvtpD/NixiNVg/KUHt9LXDBOHVx25Qk0GBcJ/02gwDmEd/M+RU+r
+         Qc0hYPdkIUoxQIa+bqlBNVCfVvJPdd/2npLV/mZlAL3xz5bIyOEkBtpCkVkoJAESYyLZ
+         uhsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=kQ85AzkbzRMJnUXKvhA437h4F/Rsa3DaDIx8KCNIi0E=;
-        b=xDjtfjU9F3BXx7hcsO+R05ErFk/u/RQgQCRelQlGC2UrIE8OwgIFRVQ3qRbpiyPwxJ
-         ZPjWD7vcBc8l2JrPHLQYOpI+FgPUhscvSHyjMmkPCkUhF/+x+JVIChXPgR9GXpaAqnbp
-         WNm8n6mN3AK9fwtWq2U/F6QDhy5Cya0EDzc1eR4PpqsybsksK+sJiSHJWAW0F0u7vVEf
-         Rs8vMTJs/EjuOq4g0utvQtyqWMRpEmk+Wm5+AQNmM6ag2EIciyA66Mj7eitn8wTMEgfz
-         DX9gkx8mV8RNwAVT4XUNJqCpnGrTcXpgKhAucK2LvL7rLz1r8F2OHbKuTaK8K82K8Lam
-         FHoA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=og9KQQdUmxD32yR3FyUcwq5x901q0uWSRIkM9UH1rUs=;
+        b=Uxp60w5MKTLyec50Vv5/uK2joQds8sxN5iDkHI4EjGi/GEPtRwfzYP8blvGx/VWiau
+         +85UYu4VlKJUExDdkVaD9L1Duh0yTWaLNgmvJqL6oJlbusolGDu3YdkqJPyFZ95OPWhI
+         Et2NogRylQWa01ZgWzmSqcQ1//QLnw6K4/DeCUkkFdHGRGdq1b6fR7vphquDuoTf2oFO
+         JBvv3CU1PI+HbZW27OdukZVz32TKwUU/dTXyF5xP6KstmD+xrcE/FzCFXaIFcPwu6Ysu
+         nxXwFGPMvoQPMcDY+chAvrHNuCBCVNoeHluXA7aXMVRSwaAPwYd51nxIJINfYpRR5rUP
+         QSvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=v3f+wtqC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wL2Ok7XK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r188si89209ybr.410.2020.12.02.15.26.30
+        by mx.google.com with ESMTPS id f130si5021285ybg.79.2021.02.11.06.19.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Dec 2020 15:26:30 -0800 (PST)
+        Thu, 11 Feb 2021 06:19:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=v3f+wtqC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wL2Ok7XK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:59962 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kkbW0-0000TU-Vb
-	for alex.bennee@linaro.org; Wed, 02 Dec 2020 18:26:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36582)
+	id 1lACoB-0002M4-H5
+	for alex.bennee@linaro.org; Thu, 11 Feb 2021 09:19:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55616)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lfy@google.com>) id 1kkbVh-0000T1-3J
- for qemu-arm@nongnu.org; Wed, 02 Dec 2020 18:26:09 -0500
-Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:34504)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lACl0-0006Xw-Ax
+ for qemu-arm@nongnu.org; Thu, 11 Feb 2021 09:15:48 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:54366)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lfy@google.com>) id 1kkbVc-0005Ai-Jj
- for qemu-arm@nongnu.org; Wed, 02 Dec 2020 18:26:08 -0500
-Received: by mail-yb1-xb42.google.com with SMTP id e81so314219ybc.1
- for <qemu-arm@nongnu.org>; Wed, 02 Dec 2020 15:26:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kQ85AzkbzRMJnUXKvhA437h4F/Rsa3DaDIx8KCNIi0E=;
- b=v3f+wtqC/pJOXAPgZpvCB2F62AWVsFa9E4f0s5nG9yyfm9Wsy29r6Ob7D3CAwv58or
- Xm3KvuH8utBAad07DoMrunfEgx3TEnGn0jwJ64e3uykBAWKWTQt2rD5Lkp1A/BykIPIv
- 2XVBZ4RuCiT6ngNfQkb9u60DQm5QfvdrSlqkTSCQ/7BcEbAeJzcKrvdNt09/WbiDYMbc
- Eb9eHlVn4dhtKZ2AjtsyJl0Ed4iOdBzESqWXaLFxN/66YE4eyHmQ11dlBQ8XUDt88XMw
- xbjWOQSmq6+MNNUrpPuSafKZgaGYB3FCwCnavYX41oOFCKTOACNnfaDdzhXyWuwldKtf
- g5lw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lACkc-00074X-WD
+ for qemu-arm@nongnu.org; Thu, 11 Feb 2021 09:15:44 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id w4so5693861wmi.4
+ for <qemu-arm@nongnu.org>; Thu, 11 Feb 2021 06:15:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=og9KQQdUmxD32yR3FyUcwq5x901q0uWSRIkM9UH1rUs=;
+ b=wL2Ok7XK8W1C9rWKvBjT9g1uX0m45O/j/RvQ3WD5ySc3MEUZz9XSjO8UTIdXE2l65K
+ QMWwvHfWTWAFCKI8O0+j/9I8qrCwgrxDhj2XBbc5EoxND6oodxcloAAl24soB7aP3Zi4
+ m4XDGfEQBCQ/MG4KEQji4/iy4Cn3XdKCbElP6jlAl+dZcJFTofN+nK5l14mMMZzpAmXr
+ XecpoTDgfrksoRE9j8BAJIKOmNC83X8EtyNTeGkYgFLKgUc8TEGniX3A/goJHiYzgivf
+ HVxRxuS2hbNmssV+dPFdvLL1BWiPA/gSXEHeu583Qt4d/Iu26j8r4HoD83wyfUpLnpyF
+ RWBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kQ85AzkbzRMJnUXKvhA437h4F/Rsa3DaDIx8KCNIi0E=;
- b=eI/wi9vTiDUQL/tU8eTTwbYc6tqizGk/EmL6fBKbqs6dh/g2qCWxcaPuBQHONl5RRv
- 97KN6+Tl56o47q0gL6+sA3y5mUxvkWgSefMKD5XAPgqfHxt0lMw78sa/3tSefdTWnK38
- i8KUsTFJuCz9vnqZuljM36ZhimY6gqoXlH5G3bgI2Ar2bDF4GZzjiGk/Pap3mTpgqOUV
- mUYLmgySrbFUNj78BdNQiYmltIULhhCCyZDHZZBN15CsYO7rtMrGr6mJRAGa4AFSczcR
- jcYdTksbQoqWIRWGW5yH30iHFslB8zXxTDc5uPIvGagBfhVv8hnekmO1wak165QnfL+E
- t0vg==
-X-Gm-Message-State: AOAM530ioLegHNIuwChdMmcNrJKzL+xf/0WG33G7b9tFlHlexT0K54OJ
- YtAB9V21E6Vd2EtUttLomocqZNphNxmxFMWnvt2rKg==
-X-Received: by 2002:a25:6191:: with SMTP id v139mr870945ybb.76.1606951563245; 
- Wed, 02 Dec 2020 15:26:03 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=og9KQQdUmxD32yR3FyUcwq5x901q0uWSRIkM9UH1rUs=;
+ b=XE8UOaHmxarcnHVRyc3CiO3MmijGVb48bX48kuHpYTiOzhtsySm7nEYP+z2guKpc/C
+ VUmYl6Svh2DXfKQUmvwycHyqCjKPgDjvPWfFM2PxbmpuPOo+HAV/GX4FlkZok/v0ru1A
+ 3t8JY67Ex0FUB8DYO0SnCIECFYN9MFoQYyeP6Jr3OXJG640Mtjnai/+9yg8wsoaVES2S
+ Kgn550iswCjADsfDjxkvxKccrbYbQIX7Pen0AxI5+RiqVd5Na2bO8pirkG5Pi/h+Qu49
+ 7b8UHn1pzm05QmSyt888E4bCHgxJchJ2LNF2Kq23vZLSPi91hSXuMpfHSHi6pscszKmy
+ 83wQ==
+X-Gm-Message-State: AOAM531MlwVqJjirjoGuceaZk6KNJuMMYUW/5tlWcVjFc2h2t+dIdjfY
+ oE++3LJvmzCNI9fqcjJHkGftB0I5KC//SQ==
+X-Received: by 2002:a1c:c903:: with SMTP id f3mr5334787wmb.69.1613052920013;
+ Thu, 11 Feb 2021 06:15:20 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id h13sm5223291wrv.20.2021.02.11.06.15.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Feb 2021 06:15:19 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 3/9] hw/display/pl110: Remove use of BITS from pl110_template.h
+Date: Thu, 11 Feb 2021 14:15:09 +0000
+Message-Id: <20210211141515.8755-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210211141515.8755-1-peter.maydell@linaro.org>
+References: <20210211141515.8755-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <CAEkmjvXGccGs2QhaiLFupTDWcnp4O+qez-uj8QdbRG13UfCy2Q@mail.gmail.com>
- <2dc974cc-abe2-d034-1720-d5a2651a9042@csgraf.de>
- <CAEkmjvV-XPmBCGsOnBhZ20t6D+vbp+7pOUpDeMJL3dKAjZvErQ@mail.gmail.com>
- <658b1719-4635-edab-f3e2-6a9ac0bc01a1@csgraf.de>
-In-Reply-To: <658b1719-4635-edab-f3e2-6a9ac0bc01a1@csgraf.de>
-From: Frank Yang <lfy@google.com>
-Date: Wed, 2 Dec 2020 15:25:52 -0800
-Message-ID: <CAEkmjvVYhmWY683Y2Q+Ei-_r-1avjbuyScPSf7dWvJTUH+=sJg@mail.gmail.com>
-Subject: Re: [PATCH v1 1/1] hvf: arm: Properly sync guest time on migration
-To: Alexander Graf <agraf@csgraf.de>
-Cc: Peter Collingbourne <pcc@google.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>, 
- Cameron Esfahani <dirty@apple.com>, qemu-arm <qemu-arm@nongnu.org>, 
- Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000197f9405b58391b7"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b42;
- envelope-from=lfy@google.com; helo=mail-yb1-xb42.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,224 +116,240 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ajsrdGkR1jMH
+X-TUID: TEMyRDAyKDam
 
---000000000000197f9405b58391b7
-Content-Type: text/plain; charset="UTF-8"
+BITS is always 32, so remove all uses of it from the template header,
+by dropping the trailing '32' from the draw function names and
+not constructing the name of rgb_to_pixel32() via the glue() macro.
 
-On Wed, Dec 2, 2020 at 2:57 PM Alexander Graf <agraf@csgraf.de> wrote:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/display/pl110_template.h |  20 +++----
+ hw/display/pl110.c          | 113 ++++++++++++++++++------------------
+ 2 files changed, 65 insertions(+), 68 deletions(-)
 
->
-> On 02.12.20 23:46, Frank Yang wrote:
->
->
->
-> On Wed, Dec 2, 2020 at 2:28 PM Alexander Graf <agraf@csgraf.de> wrote:
->
->>
->> On 02.12.20 23:19, Frank Yang wrote:
->>
->>
->> From downstream:
->> https://android-review.googlesource.com/c/platform/external/qemu/+/1515002
->>
->> Based on v3 of Alexander Graf's patches
->>
->> https://patchew.org/QEMU/20201202190408.2041-1-agraf@csgraf.de
->>
->> We need to adjust CNTVOFF_EL2 so that time doesnt warp.  Even though we
->> can set separate CNTVOFF_EL2 values per vCPU, it just is not worth the
->> require effort to do that accurately---with individual values, even if
->> they are a tiny bit off it can result in a lockup due to inconsistent
->> time differences between vCPUs. So just use a global approximate value
->> for now.
->>
->> Not tested in upstream yet, but Android emulator snapshots work without
->> time warp now.
->>
->> Signed-off-by: Lingfeng Yang <lfy@google.com>
->>
->>
->> If we just always make CNTV start at the same 0 as QEMU_CLOCK_VIRTUAL, we
->> should be able to just recover the offset after migration by looking at
->> QEMU_CLOCK_VIRTUAL to set CNTVOFF, right?
->>
->> That would end up much easier than this patch I hope.
->>
->>
->>
-> The virtual clock interfaces/implementations in QEMU seem complex to me
-> relative to the fix needed here and they don't seem to compute ticks with
-> mach_absolute_time() (which in this case we want since we want to compute
-> in timer ticks instead of having to mess with ns / cycle conversions). I do
-> agree this patch does seem more complicated on the surface though versus
-> "just" setting cntvoff directly to some value. Maybe we should simplify the
-> QEMU_CLOCK_VIRTUAL implementation first to maintain CNTVOFF_EL2/CNTV using
-> mach_absolute_time() first?
->
->
-> So QEMU_CLOCK_VIRTUAL calls cpu_get_clock() which just adds an offset to
-> gettimeofday(). This offset is already part of the live migration
-> stream[1]. So if you just configure CNTVOFF_EL2 based on QEMU_CLOCK_VIRTUAL
-> adjusted by the clock frequency on vcpu init, you should have everything
-> you need. You can do that on every CPU init even, as the virtual clock will
-> just be 0 on start.
->
-> The only thing we need to change then is to move the WFI from a direct
-> call to mach_absolute_time() to also check the virtual clock instead. I
-> would hope that gettimeofday() calls mach_absolute_time() in the background
-> too to speed it up.
->
-> Sounds plausible, but I noticed that we also have cpu_ticks_offset as part
-of the migration stream, and I prefer mach_absolute_time() (ticks) instead
-of seconds in WFI as well as it makes the calculation more accurate (ticks
-against ticks instead of conversion between ns and ticks).
+diff --git a/hw/display/pl110_template.h b/hw/display/pl110_template.h
+index 0d8471db636..877419aa817 100644
+--- a/hw/display/pl110_template.h
++++ b/hw/display/pl110_template.h
+@@ -14,18 +14,18 @@
+ #endif
+ 
+ #if ORDER == 0
+-#define NAME glue(glue(lblp_, BORDER), BITS)
++#define NAME glue(lblp_, BORDER)
+ #ifdef HOST_WORDS_BIGENDIAN
+ #define SWAP_WORDS 1
+ #endif
+ #elif ORDER == 1
+-#define NAME glue(glue(bbbp_, BORDER), BITS)
++#define NAME glue(bbbp_, BORDER)
+ #ifndef HOST_WORDS_BIGENDIAN
+ #define SWAP_WORDS 1
+ #endif
+ #else
+ #define SWAP_PIXELS 1
+-#define NAME glue(glue(lbbp_, BORDER), BITS)
++#define NAME glue(lbbp_, BORDER)
+ #ifdef HOST_WORDS_BIGENDIAN
+ #define SWAP_WORDS 1
+ #endif
+@@ -174,14 +174,14 @@ static void glue(pl110_draw_line16_,NAME)(void *opaque, uint8_t *d, const uint8_
+         MSB = (data & 0x1f) << 3;
+         data >>= 5;
+ #endif
+-        COPY_PIXEL(d, glue(rgb_to_pixel,BITS)(r, g, b));
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
+         LSB = (data & 0x1f) << 3;
+         data >>= 5;
+         g = (data & 0x3f) << 2;
+         data >>= 6;
+         MSB = (data & 0x1f) << 3;
+         data >>= 5;
+-        COPY_PIXEL(d, glue(rgb_to_pixel,BITS)(r, g, b));
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
+ #undef MSB
+ #undef LSB
+         width -= 2;
+@@ -211,7 +211,7 @@ static void glue(pl110_draw_line32_,NAME)(void *opaque, uint8_t *d, const uint8_
+         g = (data >> 16) & 0xff;
+         MSB = (data >> 8) & 0xff;
+ #endif
+-        COPY_PIXEL(d, glue(rgb_to_pixel,BITS)(r, g, b));
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
+ #undef MSB
+ #undef LSB
+         width--;
+@@ -242,14 +242,14 @@ static void glue(pl110_draw_line16_555_,NAME)(void *opaque, uint8_t *d, const ui
+         data >>= 5;
+         MSB = (data & 0x1f) << 3;
+         data >>= 5;
+-        COPY_PIXEL(d, glue(rgb_to_pixel,BITS)(r, g, b));
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
+         LSB = (data & 0x1f) << 3;
+         data >>= 5;
+         g = (data & 0x1f) << 3;
+         data >>= 5;
+         MSB = (data & 0x1f) << 3;
+         data >>= 6;
+-        COPY_PIXEL(d, glue(rgb_to_pixel,BITS)(r, g, b));
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
+ #undef MSB
+ #undef LSB
+         width -= 2;
+@@ -280,14 +280,14 @@ static void glue(pl110_draw_line12_,NAME)(void *opaque, uint8_t *d, const uint8_
+         data >>= 4;
+         MSB = (data & 0xf) << 4;
+         data >>= 8;
+-        COPY_PIXEL(d, glue(rgb_to_pixel,BITS)(r, g, b));
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
+         LSB = (data & 0xf) << 4;
+         data >>= 4;
+         g = (data & 0xf) << 4;
+         data >>= 4;
+         MSB = (data & 0xf) << 4;
+         data >>= 8;
+-        COPY_PIXEL(d, glue(rgb_to_pixel,BITS)(r, g, b));
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
+ #undef MSB
+ #undef LSB
+         width -= 2;
+diff --git a/hw/display/pl110.c b/hw/display/pl110.c
+index ce300662e8b..4bf15c1da51 100644
+--- a/hw/display/pl110.c
++++ b/hw/display/pl110.c
+@@ -123,7 +123,6 @@ static const unsigned char *idregs[] = {
+     pl111_id
+ };
+ 
+-#define BITS 32
+ #define COPY_PIXEL(to, from) do { *(uint32_t *)to = from; to += 4; } while (0)
+ 
+ #undef RGB
+@@ -145,65 +144,63 @@ static const unsigned char *idregs[] = {
+ #include "pl110_template.h"
+ #undef BORDER
+ 
+-static drawfn pl110_draw_fn_32[48] = {
+-    pl110_draw_line1_lblp_bgr32,
+-    pl110_draw_line2_lblp_bgr32,
+-    pl110_draw_line4_lblp_bgr32,
+-    pl110_draw_line8_lblp_bgr32,
+-    pl110_draw_line16_555_lblp_bgr32,
+-    pl110_draw_line32_lblp_bgr32,
+-    pl110_draw_line16_lblp_bgr32,
+-    pl110_draw_line12_lblp_bgr32,
+-
+-    pl110_draw_line1_bbbp_bgr32,
+-    pl110_draw_line2_bbbp_bgr32,
+-    pl110_draw_line4_bbbp_bgr32,
+-    pl110_draw_line8_bbbp_bgr32,
+-    pl110_draw_line16_555_bbbp_bgr32,
+-    pl110_draw_line32_bbbp_bgr32,
+-    pl110_draw_line16_bbbp_bgr32,
+-    pl110_draw_line12_bbbp_bgr32,
+-
+-    pl110_draw_line1_lbbp_bgr32,
+-    pl110_draw_line2_lbbp_bgr32,
+-    pl110_draw_line4_lbbp_bgr32,
+-    pl110_draw_line8_lbbp_bgr32,
+-    pl110_draw_line16_555_lbbp_bgr32,
+-    pl110_draw_line32_lbbp_bgr32,
+-    pl110_draw_line16_lbbp_bgr32,
+-    pl110_draw_line12_lbbp_bgr32,
+-
+-    pl110_draw_line1_lblp_rgb32,
+-    pl110_draw_line2_lblp_rgb32,
+-    pl110_draw_line4_lblp_rgb32,
+-    pl110_draw_line8_lblp_rgb32,
+-    pl110_draw_line16_555_lblp_rgb32,
+-    pl110_draw_line32_lblp_rgb32,
+-    pl110_draw_line16_lblp_rgb32,
+-    pl110_draw_line12_lblp_rgb32,
+-
+-    pl110_draw_line1_bbbp_rgb32,
+-    pl110_draw_line2_bbbp_rgb32,
+-    pl110_draw_line4_bbbp_rgb32,
+-    pl110_draw_line8_bbbp_rgb32,
+-    pl110_draw_line16_555_bbbp_rgb32,
+-    pl110_draw_line32_bbbp_rgb32,
+-    pl110_draw_line16_bbbp_rgb32,
+-    pl110_draw_line12_bbbp_rgb32,
+-
+-    pl110_draw_line1_lbbp_rgb32,
+-    pl110_draw_line2_lbbp_rgb32,
+-    pl110_draw_line4_lbbp_rgb32,
+-    pl110_draw_line8_lbbp_rgb32,
+-    pl110_draw_line16_555_lbbp_rgb32,
+-    pl110_draw_line32_lbbp_rgb32,
+-    pl110_draw_line16_lbbp_rgb32,
+-    pl110_draw_line12_lbbp_rgb32,
+-};
+-
+-#undef BITS
+ #undef COPY_PIXEL
+ 
++static drawfn pl110_draw_fn_32[48] = {
++    pl110_draw_line1_lblp_bgr,
++    pl110_draw_line2_lblp_bgr,
++    pl110_draw_line4_lblp_bgr,
++    pl110_draw_line8_lblp_bgr,
++    pl110_draw_line16_555_lblp_bgr,
++    pl110_draw_line32_lblp_bgr,
++    pl110_draw_line16_lblp_bgr,
++    pl110_draw_line12_lblp_bgr,
++
++    pl110_draw_line1_bbbp_bgr,
++    pl110_draw_line2_bbbp_bgr,
++    pl110_draw_line4_bbbp_bgr,
++    pl110_draw_line8_bbbp_bgr,
++    pl110_draw_line16_555_bbbp_bgr,
++    pl110_draw_line32_bbbp_bgr,
++    pl110_draw_line16_bbbp_bgr,
++    pl110_draw_line12_bbbp_bgr,
++
++    pl110_draw_line1_lbbp_bgr,
++    pl110_draw_line2_lbbp_bgr,
++    pl110_draw_line4_lbbp_bgr,
++    pl110_draw_line8_lbbp_bgr,
++    pl110_draw_line16_555_lbbp_bgr,
++    pl110_draw_line32_lbbp_bgr,
++    pl110_draw_line16_lbbp_bgr,
++    pl110_draw_line12_lbbp_bgr,
++
++    pl110_draw_line1_lblp_rgb,
++    pl110_draw_line2_lblp_rgb,
++    pl110_draw_line4_lblp_rgb,
++    pl110_draw_line8_lblp_rgb,
++    pl110_draw_line16_555_lblp_rgb,
++    pl110_draw_line32_lblp_rgb,
++    pl110_draw_line16_lblp_rgb,
++    pl110_draw_line12_lblp_rgb,
++
++    pl110_draw_line1_bbbp_rgb,
++    pl110_draw_line2_bbbp_rgb,
++    pl110_draw_line4_bbbp_rgb,
++    pl110_draw_line8_bbbp_rgb,
++    pl110_draw_line16_555_bbbp_rgb,
++    pl110_draw_line32_bbbp_rgb,
++    pl110_draw_line16_bbbp_rgb,
++    pl110_draw_line12_bbbp_rgb,
++
++    pl110_draw_line1_lbbp_rgb,
++    pl110_draw_line2_lbbp_rgb,
++    pl110_draw_line4_lbbp_rgb,
++    pl110_draw_line8_lbbp_rgb,
++    pl110_draw_line16_555_lbbp_rgb,
++    pl110_draw_line32_lbbp_rgb,
++    pl110_draw_line16_lbbp_rgb,
++    pl110_draw_line12_lbbp_rgb,
++};
+ 
+ static int pl110_enabled(PL110State *s)
+ {
+-- 
+2.20.1
 
-Should we look at integrating this with cpu_ticks_offset instead?
-
-
-
->
-> Alex
->
->
-> [1]
-> https://git.qemu.org/?p=qemu.git;a=blob;f=softmmu/cpu-timers.c;h=1eb7c675c18bda7773d4a9c549f0157c6e978a83;hb=HEAD#l229
->
-
---000000000000197f9405b58391b7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Dec 2, 2020 at 2:57 PM Alexan=
-der Graf &lt;<a href=3D"mailto:agraf@csgraf.de">agraf@csgraf.de</a>&gt; wro=
-te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
-0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
- =20
-   =20
- =20
-  <div>
-    <p><br>
-    </p>
-    <div>On 02.12.20 23:46, Frank Yang wrote:<br>
-    </div>
-    <blockquote type=3D"cite">
-     =20
-      <div dir=3D"ltr">
-        <div dir=3D"ltr"><br>
-        </div>
-        <br>
-        <div class=3D"gmail_quote">
-          <div dir=3D"ltr" class=3D"gmail_attr">On Wed, Dec 2, 2020 at 2:28
-            PM Alexander Graf &lt;<a href=3D"mailto:agraf@csgraf.de" target=
-=3D"_blank">agraf@csgraf.de</a>&gt; wrote:<br>
-          </div>
-          <blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
-ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-            <div>
-              <p><br>
-              </p>
-              <div>On 02.12.20 23:19, Frank Yang wrote:<br>
-              </div>
-              <blockquote type=3D"cite">
-                <div dir=3D"ltr"><br>
-                  <div>From downstream: <a href=3D"https://android-review.g=
-ooglesource.com/c/platform/external/qemu/+/1515002" target=3D"_blank">https=
-://android-review.googlesource.com/c/platform/external/qemu/+/1515002</a><b=
-r>
-                    <br>
-                    Based on v3 of Alexander Graf&#39;s patches<br>
-                    <br>
-                    <a href=3D"https://patchew.org/QEMU/20201202190408.2041=
--1-agraf@csgraf.de" target=3D"_blank">https://patchew.org/QEMU/202012021904=
-08.2041-1-agraf@csgraf.de</a><br>
-                    <br>
-                    We need to adjust CNTVOFF_EL2 so that time doesnt
-                    warp.=C2=A0 Even though we<br>
-                    can set separate CNTVOFF_EL2 values per vCPU, it
-                    just is not worth the<br>
-                    require effort to do that accurately---with
-                    individual values, even if<br>
-                    they are a tiny bit off it can result in a lockup
-                    due to inconsistent<br>
-                    time differences between vCPUs. So just use a global
-                    approximate value<br>
-                    for now.<br>
-                    <br>
-                    Not tested in upstream yet, but Android emulator
-                    snapshots work without<br>
-                    time warp now.<br>
-                    <br>
-                    Signed-off-by: Lingfeng Yang &lt;<a href=3D"mailto:lfy@=
-google.com" target=3D"_blank">lfy@google.com</a>&gt;<br>
-                  </div>
-                </div>
-              </blockquote>
-              <p><br>
-              </p>
-              <p>If we just always make CNTV start at the same 0 as
-                QEMU_CLOCK_VIRTUAL, we should be able to just recover
-                the offset after migration by looking at
-                QEMU_CLOCK_VIRTUAL to set CNTVOFF, right?<br>
-                <br>
-                That would end up much easier than this patch I hope.<br>
-                <br>
-                <br>
-              </p>
-            </div>
-          </blockquote>
-          <div><br>
-          </div>
-          <div>The virtual clock interfaces/implementations in QEMU seem
-            complex to me relative to the fix needed here and they don&#39;=
-t
-            seem to compute ticks with mach_absolute_time() (which in
-            this case we want since we want to compute in timer ticks
-            instead of having to mess with ns / cycle conversions). I do
-            agree this patch does seem more complicated on the surface
-            though versus &quot;just&quot; setting cntvoff=C2=A0directly to=
- some value.
-            Maybe we should simplify the QEMU_CLOCK_VIRTUAL
-            implementation first to maintain CNTVOFF_EL2/CNTV using
-            mach_absolute_time() first?</div>
-        </div>
-      </div>
-    </blockquote>
-    <p><br>
-    </p>
-    <p>So QEMU_CLOCK_VIRTUAL calls cpu_get_clock() which just adds an
-      offset to gettimeofday(). This offset is already part of the live
-      migration stream[1]. So if you just configure CNTVOFF_EL2 based on
-      QEMU_CLOCK_VIRTUAL adjusted by the clock frequency on vcpu init,
-      you should have everything you need. You can do that on every CPU
-      init even, as the virtual clock will just be 0 on start.<br>
-      <br>
-      The only thing we need to change then is to move the WFI from a
-      direct call to mach_absolute_time() to also check the virtual
-      clock instead. I would hope that gettimeofday() calls
-      mach_absolute_time() in the background too to speed it up.<br>
-      <br></p></div></blockquote><div>Sounds plausible, but I noticed that =
-we also have cpu_ticks_offset as part of the migration stream, and I prefer=
- mach_absolute_time() (ticks) instead of seconds in WFI as well as it makes=
- the calculation more accurate (ticks against ticks instead of conversion b=
-etween ns and ticks).</div><div><br></div><div>Should we look at integratin=
-g this with cpu_ticks_offset instead?</div><div><br>=C2=A0<br></div><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
-x solid rgb(204,204,204);padding-left:1ex"><div><p>
-      <br>
-      Alex</p>
-    <p><br>
-      [1]
-<a href=3D"https://git.qemu.org/?p=3Dqemu.git;a=3Dblob;f=3Dsoftmmu/cpu-time=
-rs.c;h=3D1eb7c675c18bda7773d4a9c549f0157c6e978a83;hb=3DHEAD#l229" target=3D=
-"_blank">https://git.qemu.org/?p=3Dqemu.git;a=3Dblob;f=3Dsoftmmu/cpu-timers=
-.c;h=3D1eb7c675c18bda7773d4a9c549f0157c6e978a83;hb=3DHEAD#l229</a><br>
-    </p>
-  </div>
-
-</blockquote></div></div>
-
---000000000000197f9405b58391b7--

@@ -1,88 +1,66 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2135771lfc;
-        Thu, 11 Feb 2021 02:31:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxtr7Hb2g0RL+TLVwM5of4k28RBZhoBeXz/fPfQ9URbtvlvtahHs+7VbT/QBXLcq8BptHyU
-X-Received: by 2002:a25:6d8a:: with SMTP id i132mr10819402ybc.337.1613039498693;
-        Thu, 11 Feb 2021 02:31:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613039498; cv=none;
-        d=google.com; s=arc-20160816;
-        b=L1JDqHYxSS31EJG7IPAZggSEGpYZkd1B6MFp8ZyJm5Jd1dscWegCRjn3GMZONH7mMq
-         xkzteg+BoW7f3DuyKNQcFjMVndBkOhZ++itETwILYpMB821hpYURNmuxx6SaPRSXTSgc
-         JPkcaAG4anrsxnChJkAbzfKkUQBsg9muUB3IiS6c5/CLoWKXrMIqceel7P4uoQ37+ecC
-         iDOssMD0Mepv5ZhbECME3ecqSBZ9Pg/nqAoUO/gicQ3M/KAp3zvY2n7KBl5wB/p0cnwy
-         VOhJdZt1wE+yCqjj9r5bo9E/QFNGhKDFFgcJtUuXz0iCEp4j4wjkuwyY3b839N5dRgss
-         /Qtw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=/+1LIYa66GV43D0NX2RnPyZrNdxTrt7YgSnMFP9A2Uc=;
-        b=Qp5X974iC6OelR8eXK24MFcuCsTSDapCSS04KYoeAv3fVf69zY7KfXavH0ZuRS5RxA
-         lnzByW+bPLEmO3NUCREJzAJShZ0Uz3bYdJmt6iDbgmMhToC0NIY04Vljv0rNjyfq8ssg
-         QlZYh4pTUs4/0bllsXL+XdA2d61AULs/ub0rcbDBv5o8ujhW40ik90uK3Sf8Hm3ikejX
-         MFDTf4nvG3M9vxKtNLJM1yUeSgTlHAyc6NZD8j7j7pxm7+CnTnQjFVWs7gydzAmT8NKr
-         ZXu/GNxDxAHOnkeJ51Tq/Kr5NVb2DGk/Bf6HW62iLXercpVCk4Io/E2fEgSee+GpPJWt
-         oUQQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=S7hP70FJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2164149lfc;
+        Thu, 11 Feb 2021 03:14:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx/0hZVfVLRfOOYtultTB4q+0EIwO/GvOCOBAENGCk5sFAxU/+w/0V0fkWhvO+tgKR9CE+e
+X-Received: by 2002:a25:850f:: with SMTP id w15mr11068477ybk.487.1613042067099;
+        Thu, 11 Feb 2021 03:14:27 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e67si4584545yba.11.2021.02.11.02.31.38
+        by mx.google.com with ESMTPS id y131si3468189ybe.467.2021.02.11.03.14.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 02:31:38 -0800 (PST)
+        Thu, 11 Feb 2021 03:14:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=S7hP70FJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:50100 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41288 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lA9G6-00049c-2b
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 05:31:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55912)
+	id 1lA9vW-0002KO-HG
+	for alex.bennee@linaro.org; Thu, 11 Feb 2021 06:14:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1lA8yS-0002nT-AO; Thu, 11 Feb 2021 05:13:24 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:34856)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lA9vE-0002Gx-QW; Thu, 11 Feb 2021 06:14:10 -0500
+Resent-Date: Thu, 11 Feb 2021 06:14:08 -0500
+Resent-Message-Id: <E1lA9vE-0002Gx-QW@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21386)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1lA8yQ-00062H-LT; Thu, 11 Feb 2021 05:13:24 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 739AAC602E6;
- Thu, 11 Feb 2021 11:13:20 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1613038400;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/+1LIYa66GV43D0NX2RnPyZrNdxTrt7YgSnMFP9A2Uc=;
- b=S7hP70FJGvccBjsebFX9A4PZoBsY/NkzBVmI5Wnggpv6X3j1mXrxYG6WVYHqUHEnSeN8YY
- LH7b6YOGHV6loYAi4VuA0maCnRxsS/ZadvvH388+Xsu+xjgyplhFYrGelgN71k2vIRIzlA
- LOSd67pkKF9GqEuUtwIebX6hgdLF5qm+pcwsNG3qmKgOIyeOTpT92YlIhwHVwTisr0SReM
- MTVYMJBQ6XTZGtQyqLyWGc5kcvnb1Gbb3iqczo7lVD5yrkqD88Z+CK5wZxCidLGlm+Wx0J
- vP2Ldmkyf0PpRPNBtQ0+nAzBxacESurGYS5fXqiRSvbgZfjpO6OrhtjRAmsaGg==
-Date: Thu, 11 Feb 2021 11:13:51 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 4/4] hw/timer/npcm7xx_timer: Use new clock_ns_to_ticks()
-Message-ID: <20210211101351.jxdtlzu6uharvkt4@sekoia-pc.home.lmichel.fr>
-References: <20210209132040.5091-1-peter.maydell@linaro.org>
- <20210209132040.5091-5-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lA9v8-00069G-VV; Thu, 11 Feb 2021 06:14:08 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1613042039; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=D9Qc0H0JXb6p5Ksru48rCttUnpAyQGW15J/ho02R9hI0LRCmtxJRvb2r7U9mRCc3OTcZI/mmMZuBijmB1qqgKrqBBF61EUyC67/y8o9E/vocX8zO9y4yyXTggrQ1rbFttfMna/4hI6JJxuMnZEpxTDMMyPophXnUdAVNoEpW0lo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1613042039;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=RS7PA54cMhdQWC3xV4TbQPoWVf403VhPOkykRUyqjO0=; 
+ b=Jfv+y0356knS3rR9Aeb1Rn6NiUvoMdUas+yRx8fGZCdCl5pMpxt7oOamt7oi3WyJRD2TDvGQC+7q74MrUpzGaj+lzlU9xXfLgeRY69solpt4KkZlL55luK5jXPnDfY+gWPNVgs4W5uFFMkT9UZdfIdbTcqt2jsHD7+YLpLhwMOc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1613042036579491.40689524186075;
+ Thu, 11 Feb 2021 03:13:56 -0800 (PST)
+In-Reply-To: <20210210174122.410690-1-muellerd@fb.com>
+Subject: Re: [PATCH v2] target/arm: Correctly initialize MDCR_EL2.HPMN
+Message-ID: <161304203545.26113.632198214959924515@c667a6b167f6>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210209132040.5091-5-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: qemu-devel@nongnu.org
+Date: Thu, 11 Feb 2021 03:13:56 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,42 +74,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Havard Skinnemoen <hskinnemoen@google.com>, qemu-devel@nongnu.org,
- Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Reply-To: qemu-devel@nongnu.org
+Cc: muellerd@fb.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zN1q6QQBArX+
+X-TUID: qw5OxtKYAoiy
 
-On 13:20 Tue 09 Feb     , Peter Maydell wrote:
-> Use the new clock_ns_to_ticks() function in npcm7xx_timer where
-> appropriate.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-
-> ---
->  hw/timer/npcm7xx_timer.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/timer/npcm7xx_timer.c b/hw/timer/npcm7xx_timer.c
-> index 4efdf135b82..32f5e021f85 100644
-> --- a/hw/timer/npcm7xx_timer.c
-> +++ b/hw/timer/npcm7xx_timer.c
-> @@ -138,8 +138,8 @@ static int64_t npcm7xx_timer_count_to_ns(NPCM7xxTimer *t, uint32_t count)
->  /* Convert a time interval in nanoseconds to a timer cycle count. */
->  static uint32_t npcm7xx_timer_ns_to_count(NPCM7xxTimer *t, int64_t ns)
->  {
-> -    return ns / clock_ticks_to_ns(t->ctrl->clock,
-> -                                  npcm7xx_tcsr_prescaler(t->tcsr));
-> +    return clock_ns_to_ticks(t->ctrl->clock, ns) /
-> +        npcm7xx_tcsr_prescaler(t->tcsr);
->  }
->  
->  static uint32_t npcm7xx_watchdog_timer_prescaler(const NPCM7xxWatchdogTimer *t)
-> -- 
-> 2.20.1
-> 
-
--- 
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDIxMDE3NDEyMi40MTA2
+OTAtMS1tdWVsbGVyZEBmYi5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
+b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
+cm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIxMDIxMDE3NDEyMi40MTA2OTAt
+MS1tdWVsbGVyZEBmYi5jb20KU3ViamVjdDogW1BBVENIIHYyXSB0YXJnZXQvYXJtOiBDb3JyZWN0
+bHkgaW5pdGlhbGl6ZSBNRENSX0VMMi5IUE1OCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMh
+L2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNv
+bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5y
+ZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQou
+L3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQg
+RU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4
+NApTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjAxNmE0OWUgdGFyZ2V0L2FybTogQ29y
+cmVjdGx5IGluaXRpYWxpemUgTURDUl9FTDIuSFBNTgoKPT09IE9VVFBVVCBCRUdJTiA9PT0KRVJS
+T1I6IE1pc3NpbmcgU2lnbmVkLW9mZi1ieTogbGluZShzKQoKdG90YWw6IDEgZXJyb3JzLCAwIHdh
+cm5pbmdzLCAzMCBsaW5lcyBjaGVja2VkCgpDb21taXQgMDE2YTQ5ZWEyYjc5ICh0YXJnZXQvYXJt
+OiBDb3JyZWN0bHkgaW5pdGlhbGl6ZSBNRENSX0VMMi5IUE1OKSBoYXMgc3R5bGUgcHJvYmxlbXMs
+IHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2
+ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5U
+QUlORVJTLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2Rl
+OiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9n
+cy8yMDIxMDIxMDE3NDEyMi40MTA2OTAtMS1tdWVsbGVyZEBmYi5jb20vdGVzdGluZy5jaGVja3Bh
+dGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQ
+YXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sg
+dG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t

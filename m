@@ -1,102 +1,102 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2653954lfc;
-        Thu, 11 Feb 2021 14:03:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwoBWMwmmF77m6mLGO0SvZbxya4h19qWeT8a/zcErvbHCxDuUwjJUxXflKjSgD7X/k1uFHD
-X-Received: by 2002:a25:412:: with SMTP id 18mr15414577ybe.366.1613080988778;
-        Thu, 11 Feb 2021 14:03:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613080988; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2656732lfc;
+        Thu, 11 Feb 2021 14:06:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyDyPBN+owPuwUTP7JEVXybRMEId0js/dFC5EEl+K6RaOuyWxsYuzxlB96f2kgV5DzuWN6z
+X-Received: by 2002:a25:7cc2:: with SMTP id x185mr14769950ybc.422.1613081215263;
+        Thu, 11 Feb 2021 14:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613081215; cv=none;
         d=google.com; s=arc-20160816;
-        b=ziDkza0U1mPPAewyHYXHixmSTszWHqNxq2Tk4RJhMxHcex3sJSn3vcRkgO3h6/dnrn
-         dNR9F4Yh0W7nWcXE2izBd39/2I1B1IfB3k5756VLiWH8X0b4+0Y0u33NMirw8gnZfdTB
-         yE/hx9DHX2YecRWqbBJaPS8l6m5rkE2Btzq/UqZsqlu66Cpq6Jlrken6o8sSMI7ay/sN
-         VDcOSYDJZnUOmGMQIWbsbYFzIOKnPgQLBtJzFYd07RAF/eUDkSfu0wv4JH4vXxY7A7/V
-         OSQJFoPGb0T+c4/G2kZDj0+cP0TAqtrKch+aPe3ybxDxrZORHXqEqZvW+NdlTMPIa7Iv
-         7x9w==
+        b=JEbmrNmR/JDrF5hlYRC0K1zrV9fwKanNqCzOZ89WS6BuAiqjq1756DdIN2H1st/umN
+         OWzx12K6LG8MfSZ+hajLWR8Sb8HeCr8ZEw69Lo4xYqTSPp0dGGiIu1C6QzBHCna+Ptd0
+         776oumF3OLsZNaOwMsu6fFY1S97S3moksuiLAt7pCKM9zimLxxLXIvYa7XzkDUbaSKW0
+         H6GNT7hYYwKgcLj6fB/2lSexfTXCLnD7lUsUGkvCRN8v6mI72V42aFKrJntJMTxFdhHz
+         ItbtEss7cY3KlUPttthApd/98TWwP0bzE0g9dWM20cmKfcoBvOH+x4ibiUfAiPAHEGyq
+         q+Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=kREa/WLvCSnwORBa58MC0Qb48ehGXAj/cQQKJfewFlE=;
-        b=D7pX5Zfgkrmv18dKwhVB/1JDRYZX+UFnXzD+48gtV4Rhm/MhZ18EJC/V8PFDsoPuNK
-         9WW5iksZ3qkVEC72WsFKKA9HY7tEeA3acw9PT9ZJerlDTqWbAlDl6N1LLJ4L8MdEtx6x
-         fT7tNLsPtSc1LsbeRqedM/pxRs2Em8Umyj3vCmObQ73k4Xp8W6OKaJLxYL3EAGz/dmBT
-         6uBuEizJ/dxAYJb0C4QLfsZKM09M70i2nHjeSTv3x4EqQWr1EJnPHZKzcRQNhLwc5Vjy
-         jUfAPiieu4LMG0L1DYPbaeq4rgwLmrJHEsqaPqNI4IuTS8nMlyuMuINAEjGVF69C0hrm
-         UZcw==
+        bh=+FQMSIl9woNvdhE3inl1RbzGTLvbpRo0AswFQKNxG38=;
+        b=ZODbaJPae2yDKWoVTwHZ26H2H1mUFg+U+TV5VGCH5GmqjP23JnAnYaWXRNLrNcQag4
+         jxutTKtXAnOUY+EmaMX4XvONmzIo7q0v4u4xX6U5Oej8fKle5Av37KVcnnG4oW1kViBK
+         qHzNy+90Lag957QvMpdQ2/6sY23d5I4DvP3WXyLFzGbD0zcnPK19bgYoby5JCyKc5dRU
+         0hn2K0ESpnMatwIu6QAP30VAkRqUeHp7y0D+EvboCbTjHnMP3Npbc68cUpoN0DLso3ai
+         5M+M9uC0Mhpcq8Y/5rQAw5mV9lztA2GXRamDP3bF51stCgr/n0J90y4ggiSEEYABv4il
+         a1dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X7WsLVb7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZOL6LHI8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h85si5881921ybg.271.2021.02.11.14.03.08
+        by mx.google.com with ESMTPS id s11si6051821ybp.477.2021.02.11.14.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 14:03:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Feb 2021 14:06:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X7WsLVb7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZOL6LHI8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45412 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAK3I-0000HJ-0F
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 17:03:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59314)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lAK6w-00048f-H9
+	for alex.bennee@linaro.org; Thu, 11 Feb 2021 17:06:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59326)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lAK2D-0000Es-2B; Thu, 11 Feb 2021 17:02:01 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:45933)
+ id 1lAK2D-0000Fs-FG; Thu, 11 Feb 2021 17:02:01 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:44971)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lAK2A-0005oy-Dy; Thu, 11 Feb 2021 17:02:00 -0500
-Received: by mail-ed1-x535.google.com with SMTP id t5so8537065eds.12;
+ id 1lAK2A-0005oW-M4; Thu, 11 Feb 2021 17:02:01 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id w1so12344583ejf.11;
  Thu, 11 Feb 2021 14:01:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kREa/WLvCSnwORBa58MC0Qb48ehGXAj/cQQKJfewFlE=;
- b=X7WsLVb7O/CO7df9YHZaoF8qUSwrfLo+ZqKuFKRrkIY/1T3LhHnObZo7S9yDHGrngO
- 74vzAFsJAETY7xhEhYNb1/nmtqhDJHvDwUbQpJ1OX9yg2q+sddlw0e0B7U7Ot0CNQ8yU
- 75Jd3GqHZAcfzYt1aMvCzV4VntMSRixmvVzsB6EagcsJlJT0W/eO/hYjpibKOlF5bveQ
- GVSWhlChADCqtDgXSvjUyg6Wxmv0iEbE/kNy6noZFGvpGmhdQWCxokxIMzTnirgYz9AA
- 0zKg5HD0X6O80msHYwnq7/s1ro1T3M+CRMZIzVfV+nPXtf+WaIzdkK7ZWDrs/FINKTXj
- SjqQ==
+ bh=+FQMSIl9woNvdhE3inl1RbzGTLvbpRo0AswFQKNxG38=;
+ b=ZOL6LHI8s99KB7iZiNUm4FPWM8JlCI0Y9TGfraHP02y0fyAUCgQgNaRPl24CJy1ngU
+ 1ZRXy+X6p8yhhxtxxn/3tigajAQyw6ZGYmeab6E1QgDmzPImBmIaFoXPC4nR8DeWpahY
+ 55bs1w/USdboAq940/FpKY2CfClZhLeYW9oBN95j8s75k1Kn0WKmn+5xAo2Ntoc5lx+w
+ cijENl6jWeZUjRSMPkqYi3iKSOkE8VTNwmc0DC8JhFt3Se+bVkMD0aXfnj+XUwslfXo5
+ h2hQz3ZFqAuOXGJddrfef8dm2ZpR7LgZJn217AIZTMH3tRIPfIrTZqs21/AHI+RNZHam
+ bftQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=kREa/WLvCSnwORBa58MC0Qb48ehGXAj/cQQKJfewFlE=;
- b=l0QStO8h8GzViKs5umkrJOuCEE7Xtcoor11/n3ygtAosRd8bHvArWemx4ZFCjT0MnF
- AWF2XfTGwTYfbMm1NZid7x5w6ZDeUUWLda/JDfqD2WoStj0AXMOpmvYF/5pJ0OTqgzbW
- myJDKNT9Xo7tfBzYMV1/Y65dVLNZkbeYDyEkrPjS7/0cWi0Kyd7/Iepegue7/DzkXuPK
- ZHKeiQHhW/OBxmXRt6QXvTqiSl84ZKXnvoEniDS2TulfcZS+b9oUxf/VM21BrK7VVwbt
- 6FB724lgh98hglgnCLValyyoQ8sSU35YYixo9zCZuV32Gx2DK/fKjoYkKeN/HRwR+Mdp
- X7lg==
-X-Gm-Message-State: AOAM530KwWlqq54t4o6FpIly5icfoLx8i3HNH5saff2lD7OVyfpOFwnh
- 4ynnWc4C+WPX/J+nEAfHzN/jwFJRMVU=
-X-Received: by 2002:a05:6402:31a3:: with SMTP id
- dj3mr229412edb.172.1613080916639; 
- Thu, 11 Feb 2021 14:01:56 -0800 (PST)
+ bh=+FQMSIl9woNvdhE3inl1RbzGTLvbpRo0AswFQKNxG38=;
+ b=DTinLhS6G319XRFsaJi/zybMlJ25Qig0AmDLjGl84YLEQUTQBPsUvCjHozh3QwC6Nl
+ Oo2u988+pBfpkQng+vQw689yp6AH71ydaoGND7WPPsAUZtiV4TYT5UvQ/XH6SW3kaxDh
+ 7F61zJZjNI8p5ZbSbvAlLg19uazDGCIIFEj+t+77mHoiNH41pJQAgKhOVEf6WpAeIbs6
+ Ed/XvwPqt7/2HYZj117AbQuiNNmAOrvNe6p1Yp0hVL/RhmTI5OWDJEoh9dVZAG7WWz6C
+ gQrOd5xWNQQWHbxevf8t7SXQkTCP/4RFaQrkhUJ66lSMJMUQu5vdJFtkynyQ1YIFIn05
+ JY1Q==
+X-Gm-Message-State: AOAM5320aGQXL24mCsYFSycR/Dbb2g0seRRGoYbaPpHvIjni1zRlIV6i
+ 2qOTF1VSM+Jfm07l9TEWYBXzrBHk4fs=
+X-Received: by 2002:a17:906:eb87:: with SMTP id
+ mh7mr10770800ejb.10.1613080915953; 
+ Thu, 11 Feb 2021 14:01:55 -0800 (PST)
 Received: from tuf.home (2a02-a456-6be8-1-df14-48c0-797d-7ff1.fixed6.kpn.net.
  [2a02:a456:6be8:1:df14:48c0:797d:7ff1])
- by smtp.gmail.com with ESMTPSA id n16sm5496588ejy.23.2021.02.11.14.01.56
+ by smtp.gmail.com with ESMTPSA id n16sm5496588ejy.23.2021.02.11.14.01.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Feb 2021 14:01:56 -0800 (PST)
+ Thu, 11 Feb 2021 14:01:55 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 2/2] hw/net/allwinner-sun8i-emac: traverse transmit queue
- using TX_CUR_DESC register value
-Date: Thu, 11 Feb 2021 23:00:55 +0100
-Message-Id: <20210211220055.19047-3-nieklinnenbank@gmail.com>
+Subject: [PATCH 1/2] tests/acceptance: replace unstable apt.armbian.com URLs
+ for orangepi-pc, cubieboard
+Date: Thu, 11 Feb 2021 23:00:54 +0100
+Message-Id: <20210211220055.19047-2-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210211220055.19047-1-nieklinnenbank@gmail.com>
 References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,159 +105,212 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, f4bug@amsat.org, b.galvani@gmail.com,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Pavel.Dovgaluk@ispras.ru, crosa@redhat.com, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1tYj/e5SHr1K
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: l3TAHeAEYye5
 
-Currently the emulated EMAC for sun8i always traverses the transmit queue
-from the head when transferring packets. It searches for a list of consecutive
-descriptors whichs are flagged as ready for processing and transmits their payloads
-accordingly. The controller stops processing once it finds a descriptor that is not
-marked ready.
+Currently the automated acceptance tests for the Orange Pi PC and cubieboard
+machines are disabled by default. The tests for both machines require artifacts
+that are stored on the apt.armbian.com domain. Unfortunately, some of these artifacts
+have been removed from apt.armbian.com and it is uncertain whether more will be removed.
 
-While the above behaviour works in most situations, it is not the same as the actual
-EMAC in hardware. Actual hardware uses the TX_CUR_DESC register value to keep track
-of the last position in the transmit queue and continues processing from that position
-when software triggers the start of DMA processing. The currently emulated behaviour can
-lead to packet loss on transmit when software fills the transmit queue with ready
-descriptors that overlap the tail of the circular list.
-
-This commit modifies the emulated EMAC for sun8i such that it processes
-the transmit queue using the TX_CUR_DESC register in the same way as hardware.
+This commit moves the artifacts previously stored on apt.armbian.com to a different
+domain that is maintainted by me and retrieves them using the path: '/pub/qemu/<machine>/<artifact>'.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 ---
- hw/net/allwinner-sun8i-emac.c | 58 +++++++++++++++++++----------------
- 1 file changed, 32 insertions(+), 26 deletions(-)
+ tests/acceptance/boot_linux_console.py | 46 +++++++++-----------------
+ tests/acceptance/replay_kernel.py      |  6 ++--
+ 2 files changed, 18 insertions(+), 34 deletions(-)
 
-diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
-index 042768922c..e586c147e5 100644
---- a/hw/net/allwinner-sun8i-emac.c
-+++ b/hw/net/allwinner-sun8i-emac.c
-@@ -339,35 +339,40 @@ static void allwinner_sun8i_emac_update_irq(AwSun8iEmacState *s)
-     qemu_set_irq(s->irq, (s->int_sta & s->int_en) != 0);
- }
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index eb01286799..12fccbdb37 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -507,15 +507,13 @@ class BootLinuxConsole(LinuxKernelTest):
+         self.wait_for_console_pattern('Boot successful.')
+         # TODO user command, for now the uart is stuck
  
--static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
--                                               FrameDescriptor *desc,
--                                               size_t min_size)
-+static bool allwinner_sun8i_emac_desc_owned(FrameDescriptor *desc,
-+                                            size_t min_buf_size)
- {
--    uint32_t paddr = desc->next;
-+    return (desc->status & DESC_STATUS_CTL) && (min_buf_size == 0 ||
-+           (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_buf_size);
-+}
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_cubieboard_initrd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:cubieboard
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('http://www.freenos.org/pub/qemu/cubieboard/'
++                   'linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -549,15 +547,13 @@ class BootLinuxConsole(LinuxKernelTest):
+                                                 'system-control@1c00000')
+         # cubieboard's reboot is not functioning; omit reboot test.
  
--    dma_memory_read(&s->dma_as, paddr, desc, sizeof(*desc));
-+static void allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
-+                                          FrameDescriptor *desc,
-+                                          uint32_t phys_addr)
-+{
-+    dma_memory_read(&s->dma_as, phys_addr, desc, sizeof(*desc));
-+}
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_cubieboard_sata(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:cubieboard
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('http://www.freenos.org/pub/qemu/cubieboard/'
++                   'linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -678,15 +674,13 @@ class BootLinuxConsole(LinuxKernelTest):
+         self.wait_for_console_pattern(
+                 'Give root password for system maintenance')
  
--    if ((desc->status & DESC_STATUS_CTL) &&
--        (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
--        return paddr;
--    } else {
--        return 0;
--    }
-+static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
-+                                               FrameDescriptor *desc)
-+{
-+    const uint32_t nxt = desc->next;
-+    allwinner_sun8i_emac_get_desc(s, desc, nxt);
-+    return nxt;
- }
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_orangepi(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:orangepi-pc
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('http://www.freenos.org/pub/qemu/orangepi-pc/'
++                   'linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -705,15 +699,13 @@ class BootLinuxConsole(LinuxKernelTest):
+         console_pattern = 'Kernel command line: %s' % kernel_command_line
+         self.wait_for_console_pattern(console_pattern)
  
--static uint32_t allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
--                                              FrameDescriptor *desc,
--                                              uint32_t start_addr,
--                                              size_t min_size)
-+static uint32_t allwinner_sun8i_emac_find_desc(AwSun8iEmacState *s,
-+                                               FrameDescriptor *desc,
-+                                               uint32_t start_addr,
-+                                               size_t min_size)
- {
-     uint32_t desc_addr = start_addr;
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_orangepi_initrd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:orangepi-pc
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('http://www.freenos.org/pub/qemu/orangepi-pc/'
++                   'linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -749,24 +741,23 @@ class BootLinuxConsole(LinuxKernelTest):
+         # Wait for VM to shut down gracefully
+         self.vm.wait()
  
-     /* Note that the list is a cycle. Last entry points back to the head. */
-     while (desc_addr != 0) {
--        dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
-+        allwinner_sun8i_emac_get_desc(s, desc, desc_addr);
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_orangepi_sd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:orangepi-pc
+         :avocado: tags=device:sd
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('http://www.freenos.org/pub/qemu/orangepi-pc/'
++                   'linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+                                             '/boot/vmlinuz-4.20.7-sunxi')
+         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
+-        rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
+-                      'kci-2019.02/armel/base/rootfs.ext2.xz')
++        # Rootfs is based on buildroot 2019.02 from kernelci.org
++        rootfs_url = ('http://www.freenos.org/pub/qemu/orangepi-pc/'
++                      'rootfs.ext2.xz')
+         rootfs_hash = '692510cb625efda31640d1de0a8d60e26040f061'
+         rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
+         rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
+@@ -828,8 +819,6 @@ class BootLinuxConsole(LinuxKernelTest):
+                                       'to <orangepipc>')
+         self.wait_for_console_pattern('Starting Load Kernel Modules...')
  
--        if ((desc->status & DESC_STATUS_CTL) &&
--            (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-+        if (allwinner_sun8i_emac_desc_owned(desc, min_size)) {
-             return desc_addr;
-         } else if (desc->next == start_addr) {
-             break;
-@@ -383,14 +388,14 @@ static uint32_t allwinner_sun8i_emac_rx_desc(AwSun8iEmacState *s,
-                                              FrameDescriptor *desc,
-                                              size_t min_size)
- {
--    return allwinner_sun8i_emac_get_desc(s, desc, s->rx_desc_curr, min_size);
-+    return allwinner_sun8i_emac_find_desc(s, desc, s->rx_desc_curr, min_size);
- }
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
+     @skipUnless(P7ZIP_AVAILABLE, '7z not installed')
+     def test_arm_orangepi_bionic_19_11(self):
+@@ -840,7 +829,7 @@ class BootLinuxConsole(LinuxKernelTest):
+         """
  
- static uint32_t allwinner_sun8i_emac_tx_desc(AwSun8iEmacState *s,
--                                             FrameDescriptor *desc,
--                                             size_t min_size)
-+                                             FrameDescriptor *desc)
- {
--    return allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_head, min_size);
-+    allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_curr);
-+    return s->tx_desc_curr;
- }
+         # This test download a 196MB compressed image and expand it to 1GB
+-        image_url = ('https://dl.armbian.com/orangepipc/archive/'
++        image_url = ('http://www.freenos.org/pub/qemu/orangepi-pc/'
+                      'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.7z')
+         image_hash = '196a8ffb72b0123d92cea4a070894813d305c71e'
+         image_path_7z = self.fetch_asset(image_url, asset_hash=image_hash)
+@@ -851,8 +840,6 @@ class BootLinuxConsole(LinuxKernelTest):
  
- static void allwinner_sun8i_emac_flush_desc(AwSun8iEmacState *s,
-@@ -470,7 +475,8 @@ static ssize_t allwinner_sun8i_emac_receive(NetClientState *nc,
-         bytes_left -= desc_bytes;
+         self.do_test_arm_orangepi_uboot_armbian(image_path)
  
-         /* Move to the next descriptor */
--        s->rx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 64);
-+        s->rx_desc_curr = allwinner_sun8i_emac_find_desc(s, &desc, desc.next,
-+                                                         AW_SUN8I_EMAC_MIN_PKT_SZ);
-         if (!s->rx_desc_curr) {
-             /* Not enough buffer space available */
-             s->int_sta |= INT_STA_RX_BUF_UA;
-@@ -495,10 +501,10 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
-     size_t transmitted = 0;
-     static uint8_t packet_buf[2048];
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
+     def test_arm_orangepi_bionic_20_08(self):
+         """
+@@ -865,7 +852,7 @@ class BootLinuxConsole(LinuxKernelTest):
+         # to 1036 MiB, but the underlying filesystem is 1552 MiB...
+         # As we expand it to 2 GiB we are safe.
  
--    s->tx_desc_curr = allwinner_sun8i_emac_tx_desc(s, &desc, 0);
-+    s->tx_desc_curr = allwinner_sun8i_emac_tx_desc(s, &desc);
+-        image_url = ('https://dl.armbian.com/orangepipc/archive/'
++        image_url = ('http://www.freenos.org/pub/qemu/orangepi-pc/'
+                      'Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz')
+         image_hash = ('b4d6775f5673486329e45a0586bf06b6'
+                       'dbe792199fd182ac6b9c7bb6c7d3e6dd')
+@@ -884,8 +871,7 @@ class BootLinuxConsole(LinuxKernelTest):
+         :avocado: tags=device:sd
+         """
+         # This test download a 304MB compressed image and expand it to 2GB
+-        deb_url = ('http://snapshot.debian.org/archive/debian/'
+-                   '20200108T145233Z/pool/main/u/u-boot/'
++        deb_url = ('http://www.freenos.org/pub/qemu/orangepi-pc/'
+                    'u-boot-sunxi_2020.01%2Bdfsg-1_armhf.deb')
+         deb_hash = 'f67f404a80753ca3d1258f13e38f2b060e13db99'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+diff --git a/tests/acceptance/replay_kernel.py b/tests/acceptance/replay_kernel.py
+index c1cb862468..6021b7427d 100644
+--- a/tests/acceptance/replay_kernel.py
++++ b/tests/acceptance/replay_kernel.py
+@@ -177,15 +177,13 @@ class ReplayKernelNormal(ReplayKernelBase):
+         self.run_rr(kernel_path, kernel_command_line, console_pattern, shift=1)
  
-     /* Read all transmit descriptors */
--    while (s->tx_desc_curr != 0) {
-+    while (allwinner_sun8i_emac_desc_owned(&desc, 0)) {
- 
-         /* Read from physical memory into packet buffer */
-         bytes = desc.status2 & DESC_STATUS2_BUF_SIZE_MASK;
-@@ -524,7 +530,7 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
-             packet_bytes = 0;
-             transmitted++;
-         }
--        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 0);
-+        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc);
-     }
- 
-     /* Raise transmit completed interrupt */
+     @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_cubieboard_initrd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:cubieboard
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('http://www.freenos.org/pub/qemu/cubieboard/'
++                   'linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
 -- 
 2.25.1
 

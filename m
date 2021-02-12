@@ -1,84 +1,116 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3550861lfq;
-        Tue, 12 Jan 2021 05:27:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw6N3NsVyzx80Acdn5dh8pFgryWYeR9CG3pbIs1qXHbn2K5NJ2j8epp2PlDdGKj6XJ1BmVs
-X-Received: by 2002:a25:5015:: with SMTP id e21mr2827815ybb.14.1610458057717;
-        Tue, 12 Jan 2021 05:27:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610458057; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3217681lfc;
+        Fri, 12 Feb 2021 05:52:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwVQL77sq26bm36zXj1Ugq9rpMMotfVUGV5YXZLFL/48gGaQrJDuM1gTO1ZkCbSDLxSKu4T
+X-Received: by 2002:a25:324b:: with SMTP id y72mr4095098yby.233.1613137942440;
+        Fri, 12 Feb 2021 05:52:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613137942; cv=none;
         d=google.com; s=arc-20160816;
-        b=1EGJ1AQHDfnuHc1U2uNT9s0cWRjpb6nsv8JEe7ZGE4VeK84m8w4pmYasgjKcwqdj5j
-         sLxSdtcV7ZNNYu1ZAj9Vz9wlVkM7/AvyHXe1pyRnbIpt98YBzo2ghEIX3PJBeljNHNb+
-         kHSxjZOXOobz4gn0TZ8+mIvUD+q/4K4MzTwll06MgiOVVc1uIr0ZIQ/CmtpZWuByf6q+
-         wx8dJQBRD5rzG4TxSOI6Ftn7BHXiDG7Z/wGTHP/wwGx19gxKeNO/gtr9cIxQMtNUatAq
-         ClMCQAxSn6w/DbTDZ3dN9W88LxgOwEK11eDtxBklXlD6sEGb+HFuL+KaplCASQvMroh4
-         nVPg==
+        b=ha1T8KQichD6Suat6+Db72whoTYFI7FV6rlt+mOpLI143CyF4wYeAgDEpGmLrPtN9A
+         kMtALLVD+yQe4P/MrgktMi2Ae5t+LM9eE50InPUUvVs+pj3ZA2GM5JKhn/A1A/FwadoT
+         fWb6oh1uKhR76KyFn9DNfQ2RFcH0d7otqr+GWczLDRasAMJR1FkKVj1W5/ypQ47HcSUH
+         MVJ7q279yJZ9O4raOEwB/BlGxh/BjjSrnWQmcHz7Y+z88HZ7wqfjUO7LDhx7JacXJqPp
+         gdCwy6+P6E0yMycpJHg3kiLI61bvba9veSrhoGyl55/M07i+c1s5XPpSC+9OxfSXpLIS
+         aE0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=YrJJNCO7Xuc20nOJZx9QC2M4P5D6EQpX8fzbvB3tPmc=;
-        b=GMtu81xkyCcsep45jkUh6OvrHjIgOY0oJJATMS6lWKzbWPrgBZwkx2eHbmKrgcW+p9
-         1wmnmEvGvMnY09+xeAfhXI6UUtw6/q3p+KUAHUIm6QDaffeVfFfvdOctIhebEvdyusKu
-         byGA/HC5SkXoWSyQmxBMAICDp1z2oK2cnL8bfGlZPoyo6cq9s4Q9hsCooEZjuY3Jdsod
-         lRE1QsjqAKchOfFID2+dp9dhBZk3MqwPqFzFUGbxt7fJH7y8wpzECS79bloMdmDghrti
-         uMEuk2OE9Uy0Wp3+a3CrbtHZiS9zLF2+DV1J08fsBWzbiQoRjz5Kd8jLFyv+pMh9BVcr
-         HCcQ==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=0Kmra64lKoBS5SJaJIMJTD6sCYCL8C1qmklYShzUm5s=;
+        b=RZ7d+lj/jTwhpVwiTc+TB28mDnCEpn+fYH/46/zI+inxIjvj7kjw+yGiyg6uvBw0mK
+         IHSHkWB9qy2z3npVIckgFoENmdbFlg4yrmsZbcjP51IdJt90Rn/7izEHLI1rXlZ/+LqW
+         huexgnjHlxZSWV3uV/Hk5x+iVAHLwtA4PFAl1dsqVEqItoWIM4aFxKC8F28hwEIXtx1n
+         SbZU5rEwxn8YPdS0R/QL7FH05azVWuYzfF+CL87q3BlYPgLSygZBaroikoclDZa+mv4e
+         LBn7aiQwbD/KuAGb5YO1RIfXexHTgQuxbcJJOqV42nhm5oytJENg5NRblKl5VqbCwZHh
+         1nkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hddCpJ3w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4si2551654ybc.387.2021.01.12.05.27.37
+        by mx.google.com with ESMTPS id t14si8227945ybi.213.2021.02.12.05.52.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Jan 2021 05:27:37 -0800 (PST)
+        Fri, 12 Feb 2021 05:52:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54070 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hddCpJ3w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:47016 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzJhx-0005mB-4I
-	for alex.bennee@linaro.org; Tue, 12 Jan 2021 08:27:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36208)
+	id 1lAYrt-0002hk-Qu
+	for alex.bennee@linaro.org; Fri, 12 Feb 2021 08:52:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49860)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kzJhj-0005ke-Kp; Tue, 12 Jan 2021 08:27:23 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2914)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kzJgu-0007dj-07; Tue, 12 Jan 2021 08:27:23 -0500
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DFWXH2sT5z15s2h;
- Tue, 12 Jan 2021 21:25:03 +0800 (CST)
-Received: from [10.174.186.67] (10.174.186.67) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 12 Jan 2021 21:25:56 +0800
-Subject: Re: [RFC PATCH v3 10/13] target/arm/cpu: Add cpu cache description
- for arm
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20201109030452.2197-1-fangying1@huawei.com>
- <20201109030452.2197-11-fangying1@huawei.com>
- <CAFEAcA-CuagYtA_9c7KrkvoBJqKnUNnT7M=C_MN1EnU4k1kAxQ@mail.gmail.com>
-From: Ying Fang <fangying1@huawei.com>
-Message-ID: <41e9d848-c478-8873-769b-e1cc85253db7@huawei.com>
-Date: Tue, 12 Jan 2021 21:25:56 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lAYrS-0002gk-92; Fri, 12 Feb 2021 08:51:54 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:39213)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lAYrO-0005q0-Ra; Fri, 12 Feb 2021 08:51:54 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id u14so1061651wmq.4;
+ Fri, 12 Feb 2021 05:51:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=0Kmra64lKoBS5SJaJIMJTD6sCYCL8C1qmklYShzUm5s=;
+ b=hddCpJ3w1XHV3ZmyMsK1mVstlKc2f13m0XVsZl+5oZYh+hWIvjgUUH2fNBa1oKjNGP
+ Xp0ndhfdn2Kul6Tf9g2WFg2nBXl4wee3jCsHB/4zI3BMhdbbOsBe7otXwjSM3eRSy/oZ
+ 5d5pcg2LJVef/cCAtN1o5I/e27Rb01kgGb/nz+Fclw2ZoFyVZdB1yuZOriasA0ZK0eFS
+ YZxcl9nsGdfwldC8/Z0DhaBvlcZwtorxLZsa1bGg/hQTewWxbq3u3zu87omstOTw69Lc
+ Yuoa5dYARiuhJKQSGFAp2XaWqM7EOcFbqZOTqlXQgV7oG6wAxHFTDUu6oNPSSQ/mUQ/z
+ FCQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=0Kmra64lKoBS5SJaJIMJTD6sCYCL8C1qmklYShzUm5s=;
+ b=cS+Nq1ricE4+Y7jNB5/G9O6xQukGLg4zEw9ORN+e3FRT+wpX0Ejmk/67MRZOdHMyCi
+ w2FU+dVoH5BtscvPB7Vys0X7qWgxe8SvSHHRvi3AFdg9RcZdw4aSaw1XBhrZW2nyWTrs
+ DkVaiTV1YFfm0IDj02vfvEtoZaK9iN6/GzgJKCnXSf3JeTCY7iqL7c6Szuf7ml98zK6b
+ hRKo7348lezfruRmp/BbYRJhB0o7ocVe2pK1BxamqcMnzCdSGbMkpzBRnMOumHf+C4zc
+ hUguvAityUaUlowiYW3QvJC80eKPYdMRrwAG5+d5bwOUHHIrlJrzRipAy1gdyBHvZ9x5
+ nIdg==
+X-Gm-Message-State: AOAM533Hs/3e0eXR2rP/EG/xI2+SVYBeEe5MrftV/ipKoX8vZ+RG/9lb
+ EHluYRkpbYMyfQ3H7DKqP3cDzcRR1tA=
+X-Received: by 2002:a05:600c:2056:: with SMTP id
+ p22mr2883922wmg.12.1613137908324; 
+ Fri, 12 Feb 2021 05:51:48 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id g136sm86121wme.10.2021.02.12.05.51.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 12 Feb 2021 05:51:47 -0800 (PST)
+Subject: Re: [PATCH 06/24] hw/misc/mps2-fpgaio: Support SWITCH register
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>
+References: <20210205170019.25319-1-peter.maydell@linaro.org>
+ <20210205170019.25319-7-peter.maydell@linaro.org>
+ <CAFEAcA-YqMQATkQXFZHQNy0-JeO2cFvmuHdnhF1+TWAHgf+tcQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c4d9df9a-21f5-524e-abfa-dea2ea1ec16f@amsat.org>
+Date: Fri, 12 Feb 2021 14:51:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-CuagYtA_9c7KrkvoBJqKnUNnT7M=C_MN1EnU4k1kAxQ@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <CAFEAcA-YqMQATkQXFZHQNy0-JeO2cFvmuHdnhF1+TWAHgf+tcQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.67]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
- helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.119,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,75 +123,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- Igor Mammedov <imammedo@redhat.com>, salil.mehta@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5d6ftWUkRh2O
+X-TUID: kQVOP3cfmmrg
 
-
-
-On 11/30/2020 9:00 PM, Peter Maydell wrote:
-> On Mon, 9 Nov 2020 at 03:05, Ying Fang <fangying1@huawei.com> wrote:
+On 2/12/21 2:45 PM, Peter Maydell wrote:
+> On Fri, 5 Feb 2021 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
 >>
->> Add the CPUCacheInfo structure to hold cpu cache information for ARM cpus.
->> A classic three level cache topology is used here. The default cache
->> capacity is given and userspace can overwrite these values.
+>> MPS3 boards have an extra SWITCH register in the FPGAIO block which
+>> reports the value of some switches.  Implement this, governed by a
+>> property the board code can use to specify whether whether it exists.
 >>
->> Signed-off-by: Ying Fang <fangying1@huawei.com>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >> ---
->>   target/arm/cpu.c | 42 ++++++++++++++++++++++++++++++++++++++++++
->>   target/arm/cpu.h | 27 +++++++++++++++++++++++++++
->>   2 files changed, 69 insertions(+)
->>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 056319859f..f1bac7452c 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -27,6 +27,7 @@
->>   #include "qapi/visitor.h"
->>   #include "cpu.h"
->>   #include "internals.h"
->> +#include "qemu/units.h"
->>   #include "exec/exec-all.h"
->>   #include "hw/qdev-properties.h"
->>   #if !defined(CONFIG_USER_ONLY)
->> @@ -997,6 +998,45 @@ uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz)
->>       return (Aff1 << ARM_AFF1_SHIFT) | Aff0;
->>   }
->>
->> +static CPUCaches default_cache_info = {
->> +    .l1d_cache = &(CPUCacheInfo) {
->> +    .type = DATA_CACHE,
->> +        .level = 1,
->> +        .size = 64 * KiB,
->> +        .line_size = 64,
->> +        .associativity = 4,
->> +        .sets = 256,
->> +        .attributes = 0x02,
->> +    },
+>>  include/hw/misc/mps2-fpgaio.h |  1 +
+>>  hw/misc/mps2-fpgaio.c         | 10 ++++++++++
+>>  2 files changed, 11 insertions(+)
 > 
-> Would it be possible to populate this structure from the
-> CLIDR/CCSIDR ID register values, rather than having to
-> specify the same thing in two places?
+> I changed my mind about the property/struct field name here, I think
+> "has" is what we tend to use rather than "have". Trivial change
+> to squash into this patch:
 
-Sorry I missed this reply.
+What about "use-switches"?
 
-I had tried to fetch CLIDR/CCSID ID register values of host cpu
-from KVM, however I did not get the value expected. May I made
-some mistakes in KVM side.
+use-x: 12 occurences
+has-x: 9.
 
-Thanks for your guide, I'll try to populate them again.
+Is there a difference in the meaning? Maybe have refers to
+something internal, while use to something external?
 
-> 
-> thanks
-> -- PMM
-> .
-> 
+$ git grep -F 'DEFINE_PROP_BOOL("use-'
+hw/audio/hda-codec.c:848:    DEFINE_PROP_BOOL("use-timer",
+HDAAudioState, use_timer,  true),
+hw/block/nvme.c:4556:    DEFINE_PROP_BOOL("use-intel-id", NvmeCtrl,
+params.use_intel_id, false),
+hw/intc/ppc-uic.c:278:    DEFINE_PROP_BOOL("use-vectors", PPCUIC,
+use_vectors, true),
+hw/ppc/spapr_rng.c:135:    DEFINE_PROP_BOOL("use-kvm", SpaprRngState,
+use_kvm, false),
+hw/virtio/virtio.c:3722:    DEFINE_PROP_BOOL("use-started",
+VirtIODevice, use_started, true),
+hw/virtio/virtio.c:3723:    DEFINE_PROP_BOOL("use-disabled-flag",
+VirtIODevice, use_disabled_flag, true),
+target/microblaze/cpu.c:292:    DEFINE_PROP_BOOL("use-stack-protection",
+MicroBlazeCPU, cfg.stackprot,
+target/microblaze/cpu.c:311:    DEFINE_PROP_BOOL("use-barrel",
+MicroBlazeCPU, cfg.use_barrel, true),
+target/microblaze/cpu.c:312:    DEFINE_PROP_BOOL("use-div",
+MicroBlazeCPU, cfg.use_div, true),
+target/microblaze/cpu.c:313:    DEFINE_PROP_BOOL("use-msr-instr",
+MicroBlazeCPU, cfg.use_msr_instr, true),
+target/microblaze/cpu.c:314:    DEFINE_PROP_BOOL("use-pcmp-instr",
+MicroBlazeCPU, cfg.use_pcmp_instr, true),
+target/microblaze/cpu.c:315:    DEFINE_PROP_BOOL("use-mmu",
+MicroBlazeCPU, cfg.use_mmu, true),
 
-Thanks.
-Ying.
+$ git grep -F 'DEFINE_PROP_BOOL("has-'
+hw/gpio/imx_gpio.c:295:    DEFINE_PROP_BOOL("has-edge-sel",
+IMXGPIOState, has_edge_sel, true),
+hw/gpio/imx_gpio.c:296:    DEFINE_PROP_BOOL("has-upper-pin-irq",
+IMXGPIOState, has_upper_pin_irq,
+hw/intc/arm_gic_common.c:357:
+DEFINE_PROP_BOOL("has-security-extensions", GICState, security_extn, 0),
+hw/intc/arm_gic_common.c:359:
+DEFINE_PROP_BOOL("has-virtualization-extensions", GICState, virt_extn, 0),
+hw/intc/arm_gicv3_common.c:497:
+DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
+hw/misc/macio/macio.c:430:    DEFINE_PROP_BOOL("has-pmu",
+NewWorldMacIOState, has_pmu, false),
+hw/misc/macio/macio.c:431:    DEFINE_PROP_BOOL("has-adb",
+NewWorldMacIOState, has_adb, false),
+hw/misc/macio/pmu.c:782:    DEFINE_PROP_BOOL("has-adb", PMUState,
+has_adb, true),
+target/arm/cpu.c:1110:            DEFINE_PROP_BOOL("has-mpu", ARMCPU,
+has_mpu, true);

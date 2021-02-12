@@ -1,144 +1,168 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3232486lfc;
-        Fri, 12 Feb 2021 06:10:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzec+3Uuow6S1mO3LJUL4yFopCYDxmGCZh9rJLQ2YIpyADmR9RSxEoabi4oR0R1I/ggv2dT
-X-Received: by 2002:a05:6512:344a:: with SMTP id j10mr1697185lfr.317.1613139008407;
-        Fri, 12 Feb 2021 06:10:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613139008; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3267734lfc;
+        Fri, 12 Feb 2021 06:52:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw2KZzE/wvgrNt7VEAnGBy/zpWoZEndvQGXs3iaKkpKqj/M4rqLkaGAx45RD+armZabBIVC
+X-Received: by 2002:a25:888f:: with SMTP id d15mr4650644ybl.12.1613141575476;
+        Fri, 12 Feb 2021 06:52:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613141575; cv=none;
         d=google.com; s=arc-20160816;
-        b=qil3PMwDAa6u3iNQSzGeqnnx12lkdpV3A1qPS/tSbPIcYZqYlXXXowJM3ktVfSu5cR
-         kzSjApl8s93LT75IJvXs10pIsVbwcwYpW8zek6ZRREAaoi4de7gYB2gCoq7CMsCrLJzw
-         AuR31LfCY9zRaEUvRPC3jZUelz9eKl+oOQkeYs7t+POb6YufOXm5rimmZ8l/YDYNCbHM
-         0YfJBlYVP4qgFeRPsZ/8R6rZ74+rBsfuQjLkeCOfHyb0nTHbB6h2tiuDUZmRQHedn3eb
-         zsomazIrYi8z7n744hferv09XZ4p3wT53EIZjakBCVKfrVgvL/FUrOyn878m51cCDoM0
-         qEfg==
+        b=R5pQ+GsgS0IvVObks9jKBNQCb6gAXYTc0+3vh7a5EcSNNOeoRr5AtuGJgnBGDlmwXl
+         RXwMwsLws3fPFtG6szSd9CbDvqf8MDTAz1g0mUIRWXMDxq/yfpDByACxXaxcHNOTZ4fV
+         DYnF5GK++tp82L1dO7fpo/+x6vQuoYW9ndH/mtfQNQMQfsTgullK9pMc5vXwJkCspWY4
+         AN6yq17u5+KD/pbWj+4qZxG+kFoBNR+3cUFgstyTdhAN6O6ZscoF/cdfcQ2VdlEE6fLt
+         CXIuqQ3yG5VQfT+6bx34l1+89yq04kvqKGYCkQIfrcBQ4fOyNUq5qh/5wAurxKiNh9/1
+         dQhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=FeYD/uMkY8Vy50VNvhIs85koJS7aCNVPV48SG1SCId4=;
-        b=pND15Np1fTGAtfSwfFpeRmmXSll/ool/SIInScR9IrXPZFni52+DbN209Mzey0NWvb
-         wKnUC1HbWbR8jZ+HT5OWm0hReGscOQZzFKQWXXkjwx+IMJ5lKPDho4eV/vk1pmc7mu1i
-         M5Dn/mvFp/CcAxCqbWnPKzhYh/irC7cbf50yyx9RuHHlj0dBsOZF74baeM8rVLtwEL2v
-         sd7RXCN2aPEphqq3Nj0HXtDF/4SlJ8MhYEgESChXO4rPjexMyk0ESaFEssC6T9g4BqjT
-         4nXdH8ETUQJJokZqU9AoTFKukZuGTm4Bkl6GkGPLpIJupdPeAT+t2sARPwi7+R30LK8a
-         Pm0Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=qbP3yM0YcO4nZFTX7Qs/Q7+TlKZBoEjilcf3Xsl+S2s=;
+        b=oqGCrtJ7c/TO39D7QbQ+45fQAzqv6u5xkbR78gdAeqtXj/Hk1PsVgQtqMA+mqXcogK
+         Ku45zm0UeXgmpQbSm67TRNZNNv+FwZKw+Bu6RFMDOQ5jXcSw0M7uFYk4HpuPbFbXfefn
+         BibGkWS0/sn91zabNWlxreS/J6x93EgefvYdTip+dkcFTh76lKCml1zxb6EKJkQY9AUi
+         4iI3JzcwktoZ2Yl1Jk1jHE7QLF1iMeskUNy17BYX3H36SzKPY9NEFu8FlvMEJ5q3i9bR
+         VR/Ka3fZJtbAUPlPj2B0Fdgl3r1wsKZ6pDi/wY7muUlzoF5U/oIvbmRWzeHSpScon+1G
+         lyMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoWWmvGo;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id w21si6133189edx.264.2021.02.12.06.10.08
+       dkim=pass header.i=@linaro.org header.s=google header.b=KhmBIVuN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m17si8236722ybk.194.2021.02.12.06.52.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2021 06:10:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 12 Feb 2021 06:52:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoWWmvGo;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1613139007;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FeYD/uMkY8Vy50VNvhIs85koJS7aCNVPV48SG1SCId4=;
-	b=MoWWmvGoOg53ByiNF+oy5PQtl/bJw1JVO03xrUPbz2msjihoK3pmt8CGAJORcIX7qG4fwJ
-	2qbvw3bUS10h5xGfYT9h0X4CYgey30exkVhGPBJ/2XbTxLqNxiM6xRyLsTV8MPUescOn3a
-	Af7Hjf1GzNQdjsACVVZqnfz3OfDlhHc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-408-5GKE0sLROiGC1xFcbKyfCA-1; Fri, 12 Feb 2021 09:10:04 -0500
-X-MC-Unique: 5GKE0sLROiGC1xFcbKyfCA-1
-Received: by mail-wm1-f71.google.com with SMTP id o18so516308wmq.2
-        for <alex.bennee@linaro.org>; Fri, 12 Feb 2021 06:10:04 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=KhmBIVuN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47466 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lAZoU-0001xz-TK
+	for alex.bennee@linaro.org; Fri, 12 Feb 2021 09:52:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37480)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lAZnp-0001xG-FQ
+ for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:52:14 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:40854)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lAZnn-0007DU-1k
+ for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:52:13 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id i8so16077573ejc.7
+ for <qemu-arm@nongnu.org>; Fri, 12 Feb 2021 06:52:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=qbP3yM0YcO4nZFTX7Qs/Q7+TlKZBoEjilcf3Xsl+S2s=;
+ b=KhmBIVuNJ5B8eFtgQrPzdUIl8gp1ykocEfsml59cVOn4KvKquGbLQ9UZIFmn8qN14j
+ XrjfRVZi0fFDb64H+78L67JYBFCf5A5E65i6usS5D/qNdjgrOLk3qVfPq9VSj00dXyPB
+ H9gPrwqiDBykdiuQ+fD8hvZTBRgZ+LkOTw3bbPuZNDjeL5paxqIQuJIvfxqKFdRGlvLo
+ +9j4SR1yAz6Z0ier7bXcZ/rC7lIKrW4zRtsvt2mCcdqc4OiLFBBrI34RJs5rdxihbsaP
+ qprIxxG3Gb0BXfdyuV0IeYZa37AqXCtNEEmIIfIBZyBZKShS/E5SwV376lo0qeggqJUX
+ 20ZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=FeYD/uMkY8Vy50VNvhIs85koJS7aCNVPV48SG1SCId4=;
-        b=aUPpvL3NJ9dCeJgiWoexQbUMnP5HA/GCS3sEAkpslN3wButLpjQ6C88T5UTKpEe/pT
-         w5o5LSrBok46THJNnt2Xb0pOe9auLy1d7Fk7kpNsTmeTaHKiIWhuUL3+kor99CJH/xM7
-         uhpU5MRezw6fJqacx6HShUwhvqKliLRWbmNHTPmDmwiNplu+B4P0cq+T4cr+QVCVtDCD
-         VEvnx660GYj+M2jDw/FmYyTds12BJVLxzEbxv+GMG8F8No6Wmoyc25MWy5XqNDLNjZ4m
-         Vf1/2IPgXXQk+Lsvg9AVdRFteapuaYoALXlU/T+/CHiroZZLq71ML8Dgs1W2XPvAZ+Y8
-         ePSw==
-X-Gm-Message-State: AOAM531LSbWgUI9Zc/IwNSXjGadG+qzmj05c4TUj6XU439UYsIlkXozs
-	mwrEhtbsz1KrkptK0eRl+SH/ihsCLJglTCMj5f9KjZ93LA69D/dhuTmMGwpkGRPCBMzVAqYpCDZ
-	naHXYvzZiwBIZW01/
-X-Received: by 2002:a1c:7910:: with SMTP id l16mr2898373wme.34.1613139003718;
-        Fri, 12 Feb 2021 06:10:03 -0800 (PST)
-X-Received: by 2002:a1c:7910:: with SMTP id l16mr2898260wme.34.1613139002702;
-        Fri, 12 Feb 2021 06:10:02 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id t30sm6755745wra.56.2021.02.12.06.10.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Feb 2021 06:10:02 -0800 (PST)
-Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
-To: Niek Linnenbank <nieklinnenbank@gmail.com>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
- f4bug@amsat.org, crosa@redhat.com, Pavel.Dovgaluk@ispras.ru,
- b.galvani@gmail.com, Markus Armbruster <armbru@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
-Date: Fri, 12 Feb 2021 15:10:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=qbP3yM0YcO4nZFTX7Qs/Q7+TlKZBoEjilcf3Xsl+S2s=;
+ b=Hw+0xWH/EWsIdK7CmKwCeTPet7IAbguMnMQMu/ajEAO6KJB2y0U3GZHQzAw5HEBK7+
+ 7OklfRtWH9Iw0+7g+xI8ccYC58NWABIKIiUsiOcB/BGf62g3gHRm8DRomw99KSMkS/gO
+ z34ve3Y6WxxOcn+Dxsy+eEi7DOV1FhrbvwyW5bVdJc5aZe7ftw4JLsVzxzRBmsSg4q6n
+ Do8CIm9C1Vbkg9UWSqtH155kwqK0z3Knl9IFUyLmXe8ahe6tfOjbql8zbi4IKb+QU3nD
+ e3raE7EX5erCEQeFaVS1nfzBuFRumAd8MYGq137ducJWN9lQOPk/Z3V8rhtsLQnsS3WS
+ c64A==
+X-Gm-Message-State: AOAM5321PTOIESMJn297IoHG8UKdD0Q7MNky8gKntOa+40FkB0cMQK+V
+ UFodTERvqqjhUjNi0qksRb1r5FezjzvKQNZ8t9wCH7NAGn1F9A==
+X-Received: by 2002:a17:906:2747:: with SMTP id
+ a7mr3523127ejd.250.1613141528287; 
+ Fri, 12 Feb 2021 06:52:08 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210211220055.19047-1-nieklinnenbank@gmail.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: ejWnBth1ardK
+References: <20210205170019.25319-1-peter.maydell@linaro.org>
+ <20210205170019.25319-21-peter.maydell@linaro.org>
+In-Reply-To: <20210205170019.25319-21-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Feb 2021 14:51:57 +0000
+Message-ID: <CAFEAcA-JdkHbobhVy6sPVs+juDS=dHrA4=WmSrD0KxkayM361Q@mail.gmail.com>
+Subject: Re: [PATCH 20/24] hw/arm/mps2-tz: Add new mps3-an524 board
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JFiS8MhZsdFl
 
-Hi Niek and QEMU community,
+On Fri, 5 Feb 2021 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Add support for the mps3-an524 board; this is an SSE-200 based FPGA
+> image, like the existing mps2-an521.  It has a usefully larger amount
+> of RAM, and a PL031 RTC, as well as some more minor differences.
+>
+> In real hardware this image runs on a newer generation of the FPGA
+> board, the MPS3 rather than the older MPS2.  Architecturally the two
+> boards are similar, so we implement the MPS3 boards in the mps2-tz.c
+> file as variations of the existing MPS2 boards.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-On 2/11/21 11:00 PM, Niek Linnenbank wrote:
-> The following are maintenance patches for the Allwinner H3. The first patch
-> is a proposal to relocate the binary artifacts of the acceptance tests away
-> from the apt.armbian.com domain. In the past we had problems with artifacts being
-> removed, and now the recently added Armbian 20.08.1 image has been removed as well:
-> 
-> $ wget https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz
-> Connecting to dl.armbian.com (dl.armbian.com)|2605:7900:20::5|:443... connected.
-> ...
-> HTTP request sent, awaiting response... 404 Not Found
-> 2021-02-11 22:34:45 ERROR 404: Not Found.
-> 
-> I've now added the artifacts to a server maintained by me. The machine has a stable
-> uptime of several years, ~100Mbit bandwidth and plenty of available storage.
-> Also for other artifacts if needed. I'm open to discuss if there is a proposal
-> for a better location for these artifacts or a more generic qemu location.
+> +static void mps3tz_an524_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_CLASS(oc);
+> +
+> +    mc->desc = "ARM MPS3 with AN524 FPGA image for dual Cortex-M33";
+> +    mc->default_cpus = 2;
+> +    mc->min_cpus = mc->default_cpus;
+> +    mc->max_cpus = mc->default_cpus;
+> +    mmc->fpga_type = FPGA_AN524;
+> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
+> +    mmc->scc_id = 0x41045240;
+> +    mmc->sysclk_frq = 32 * 1000 * 1000; /* 32MHz */
+> +    mmc->oscclk = an524_oscclk;
+> +    mmc->len_oscclk = ARRAY_SIZE(an524_oscclk);
+> +    mmc->numirq = 95;
+> +    mmc->raminfo = an524_raminfo;
+> +    mmc->armsse_type = TYPE_SSE200;
+> +    mps2tz_set_default_ram_info(mmc);
+> +}
 
-Thanks for trying to fix this long standing problem.
+Oops, this is missing a couple of initialisations for
+the FPGAIO config:
 
-While this works in your case, this doesn't scale to the community,
-as not all contributors have access to such hardware and bandwidth /
-storage.
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -1016,6 +1016,8 @@ static void mps3tz_an524_class_init(ObjectClass
+*oc, void *data)
+     mmc->sysclk_frq = 32 * 1000 * 1000; /* 32MHz */
+     mmc->oscclk = an524_oscclk;
+     mmc->len_oscclk = ARRAY_SIZE(an524_oscclk);
++    mmc->fpgaio_num_leds = 10;
++    mmc->fpgaio_has_switches = true;
+     mmc->numirq = 95;
+     mmc->raminfo = an524_raminfo;
+     mmc->armsse_type = TYPE_SSE200;
 
-While your first patch is useful in showing where the artifacts are
-stored doesn't matter - as long as we use cryptographic hashes - I
-think it is a step in the wrong direction, so I am not keen on
-accepting it.
-
-My personal view is that any contributor should have the same
-possibilities to add tests to the project. Now I am also open to
-discuss with the others :) I might be proven wrong, and it could
-be better to rely on good willing contributors rather than having
-nothing useful at all.
-
-Regards,
-
-Phil.
+thanks
+-- PMM

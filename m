@@ -1,156 +1,144 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3226777lfc;
-        Fri, 12 Feb 2021 06:04:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzUOZiwVTIPn3ycYmYD2flxG/Pa0FLPyx2LOYzoq5UKbXrl88B1b9AFDtSA0d/8M/6nLYrz
-X-Received: by 2002:a25:a241:: with SMTP id b59mr4395886ybi.289.1613138656541;
-        Fri, 12 Feb 2021 06:04:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613138656; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3232486lfc;
+        Fri, 12 Feb 2021 06:10:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzec+3Uuow6S1mO3LJUL4yFopCYDxmGCZh9rJLQ2YIpyADmR9RSxEoabi4oR0R1I/ggv2dT
+X-Received: by 2002:a05:6512:344a:: with SMTP id j10mr1697185lfr.317.1613139008407;
+        Fri, 12 Feb 2021 06:10:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613139008; cv=none;
         d=google.com; s=arc-20160816;
-        b=e1TNtWPy4EqSeXFIjaN5pk/Da7a7DmaXN/6nWmSrzKGF10BIpbUDbUHiFh0Uho8/Jm
-         8Bdb9c3F2z15Kh8glie/fhKPfVRV1cqF18AmRCpuC+wej0RFXSZk/POYfHxUBY5Z6814
-         UKF1xW/8Q8J3m8ue0ShYcBW3oVGyNoS+Fk6VnBRZz25SpOJ9lFMsqVd/TEdm3+GRiDFA
-         O4UCH6OxnEMP3AOQtpWpRVgC9mH2DUYJ6BqmqYp1osY6B45xXuOlXTgoOeP/YMtm6bfF
-         kqfLfYvZ2/qcbMLZBhsATXqlgAxUYAYULUEuBONshvDMsIaUokjQ/irgw8PlOFNHQZKV
-         zCDg==
+        b=qil3PMwDAa6u3iNQSzGeqnnx12lkdpV3A1qPS/tSbPIcYZqYlXXXowJM3ktVfSu5cR
+         kzSjApl8s93LT75IJvXs10pIsVbwcwYpW8zek6ZRREAaoi4de7gYB2gCoq7CMsCrLJzw
+         AuR31LfCY9zRaEUvRPC3jZUelz9eKl+oOQkeYs7t+POb6YufOXm5rimmZ8l/YDYNCbHM
+         0YfJBlYVP4qgFeRPsZ/8R6rZ74+rBsfuQjLkeCOfHyb0nTHbB6h2tiuDUZmRQHedn3eb
+         zsomazIrYi8z7n744hferv09XZ4p3wT53EIZjakBCVKfrVgvL/FUrOyn878m51cCDoM0
+         qEfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=fF2W9d5LCIknpBvbcOHR3rE5jcx8+dqxytYCzruss0c=;
-        b=UbMkqen/Lgb8yxE0iWg5FGroY0VaorWrywN8g5Yp1RprDwM/OLBs0lGpl0TUB76HA7
-         yTT039bo9dfIpLmLywLHCXHvM8YtVjKwuPcTDi/04P47HHG/duFxBd/mCJAZbxASybB+
-         cG/oynqhMj1y+gYBJ59X7zz/b7q175RTeKd5TxSpFSUxqhQtpriY7FPHP91cilunMXqA
-         nmf/r0IqdB54N/MrFtW+DIQ9bVA7DgxQBDoK/0lhxBtRxW92QhUSD8LF/SuMFFib4dEI
-         XygjkFwpUHf//TwZ9cMizXH8L6CXuv17NqpXEDkgzUtSyfDWuKAYF60CwokOA0hZDLjs
-         8vEw==
+        bh=FeYD/uMkY8Vy50VNvhIs85koJS7aCNVPV48SG1SCId4=;
+        b=pND15Np1fTGAtfSwfFpeRmmXSll/ool/SIInScR9IrXPZFni52+DbN209Mzey0NWvb
+         wKnUC1HbWbR8jZ+HT5OWm0hReGscOQZzFKQWXXkjwx+IMJ5lKPDho4eV/vk1pmc7mu1i
+         M5Dn/mvFp/CcAxCqbWnPKzhYh/irC7cbf50yyx9RuHHlj0dBsOZF74baeM8rVLtwEL2v
+         sd7RXCN2aPEphqq3Nj0HXtDF/4SlJ8MhYEgESChXO4rPjexMyk0ESaFEssC6T9g4BqjT
+         4nXdH8ETUQJJokZqU9AoTFKukZuGTm4Bkl6GkGPLpIJupdPeAT+t2sARPwi7+R30LK8a
+         Pm0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dDhsn7zw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u4si8468560ybc.292.2021.02.12.06.04.16
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoWWmvGo;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id w21si6133189edx.264.2021.02.12.06.10.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Feb 2021 06:04:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Feb 2021 06:10:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dDhsn7zw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49908 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAZ3P-0007sw-Ut
-	for alex.bennee@linaro.org; Fri, 12 Feb 2021 09:04:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53636)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAZ3F-0007qU-81
- for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:04:05 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:46816)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAZ3D-0002ZS-Ek
- for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:04:04 -0500
-Received: by mail-ed1-x530.google.com with SMTP id y18so10936482edw.13
- for <qemu-arm@nongnu.org>; Fri, 12 Feb 2021 06:04:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=fF2W9d5LCIknpBvbcOHR3rE5jcx8+dqxytYCzruss0c=;
- b=dDhsn7zwR07rShUkifY0jCaVqUEgnUwNXN2puZJzDfXWNRPpiQDBVU4DQNvX3KfoPe
- YuYySITX3bI1HUp3O8JasOBzxErDQsUixK73Bn9ecVsJoI8gMr2pZwts4ElmJpgZukI2
- B79VvJZnd5lPAuewzhbHHookBncoXbVD33FhUpNmWDhSjWFgt+ySrRUZ6SD/vlNLzlEe
- ulsglcxEaYIGLOxK2qF8XTkszpa0LNgVZyGxCLp1odkRQUOeXcu1L5xbG5Kr4ia2FrkR
- ciJF3xxUhvEFYp9wje5jyyoBZQSJJQUiNUNpjMkj81ohc4/k8gOOx6sPGwE5bDXaQTkg
- 6NRw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoWWmvGo;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1613139007;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FeYD/uMkY8Vy50VNvhIs85koJS7aCNVPV48SG1SCId4=;
+	b=MoWWmvGoOg53ByiNF+oy5PQtl/bJw1JVO03xrUPbz2msjihoK3pmt8CGAJORcIX7qG4fwJ
+	2qbvw3bUS10h5xGfYT9h0X4CYgey30exkVhGPBJ/2XbTxLqNxiM6xRyLsTV8MPUescOn3a
+	Af7Hjf1GzNQdjsACVVZqnfz3OfDlhHc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-408-5GKE0sLROiGC1xFcbKyfCA-1; Fri, 12 Feb 2021 09:10:04 -0500
+X-MC-Unique: 5GKE0sLROiGC1xFcbKyfCA-1
+Received: by mail-wm1-f71.google.com with SMTP id o18so516308wmq.2
+        for <alex.bennee@linaro.org>; Fri, 12 Feb 2021 06:10:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=fF2W9d5LCIknpBvbcOHR3rE5jcx8+dqxytYCzruss0c=;
- b=VGXlGTq7eTlXREYwwt4MxiplMVBbR5fEAv+Dot+7+/AZP5KJJgipwtc3PrQNSdnc3D
- jj1OnBMurkE9AD/viVtELNTJdCrN07bGo+Wtntm15QVriaTtp8iaJHlogZXm139sq9SR
- rkH6/zk3yLp0WgNYo/uRsF2WWPtlk3KeeH0mgTlLDKjc6kvnepouisWHJHPbJLf3+BzL
- 1eqFC+RRjq7tBRWQm15pHbpi+PUtMDLMsqHMtkR4o9C5F+yw4aqS7Mkj9gwhrxC/h7mQ
- 7CFrJMpD9thKfUJumxZPmoMbn3KVUVnJrDKk1dlu3qJazOMN86S5IZ4BhbLcrodLplzu
- /Lvg==
-X-Gm-Message-State: AOAM532BDJFmtEbWeLeP0diN5J2m0nDq7BAsVpqJiath9QraFBoxuMut
- mmdjwcTOf637ifNrCx2HIU7SOLTgIHWRZU+venHxPQ==
-X-Received: by 2002:a50:e80d:: with SMTP id e13mr3451195edn.251.1613138641806; 
- Fri, 12 Feb 2021 06:04:01 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=FeYD/uMkY8Vy50VNvhIs85koJS7aCNVPV48SG1SCId4=;
+        b=aUPpvL3NJ9dCeJgiWoexQbUMnP5HA/GCS3sEAkpslN3wButLpjQ6C88T5UTKpEe/pT
+         w5o5LSrBok46THJNnt2Xb0pOe9auLy1d7Fk7kpNsTmeTaHKiIWhuUL3+kor99CJH/xM7
+         uhpU5MRezw6fJqacx6HShUwhvqKliLRWbmNHTPmDmwiNplu+B4P0cq+T4cr+QVCVtDCD
+         VEvnx660GYj+M2jDw/FmYyTds12BJVLxzEbxv+GMG8F8No6Wmoyc25MWy5XqNDLNjZ4m
+         Vf1/2IPgXXQk+Lsvg9AVdRFteapuaYoALXlU/T+/CHiroZZLq71ML8Dgs1W2XPvAZ+Y8
+         ePSw==
+X-Gm-Message-State: AOAM531LSbWgUI9Zc/IwNSXjGadG+qzmj05c4TUj6XU439UYsIlkXozs
+	mwrEhtbsz1KrkptK0eRl+SH/ihsCLJglTCMj5f9KjZ93LA69D/dhuTmMGwpkGRPCBMzVAqYpCDZ
+	naHXYvzZiwBIZW01/
+X-Received: by 2002:a1c:7910:: with SMTP id l16mr2898373wme.34.1613139003718;
+        Fri, 12 Feb 2021 06:10:03 -0800 (PST)
+X-Received: by 2002:a1c:7910:: with SMTP id l16mr2898260wme.34.1613139002702;
+        Fri, 12 Feb 2021 06:10:02 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id t30sm6755745wra.56.2021.02.12.06.10.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 Feb 2021 06:10:02 -0800 (PST)
+Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
+To: Niek Linnenbank <nieklinnenbank@gmail.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ f4bug@amsat.org, crosa@redhat.com, Pavel.Dovgaluk@ispras.ru,
+ b.galvani@gmail.com, Markus Armbruster <armbru@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
+Date: Fri, 12 Feb 2021 15:10:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-References: <20210205170019.25319-1-peter.maydell@linaro.org>
- <20210205170019.25319-7-peter.maydell@linaro.org>
- <CAFEAcA-YqMQATkQXFZHQNy0-JeO2cFvmuHdnhF1+TWAHgf+tcQ@mail.gmail.com>
- <c4d9df9a-21f5-524e-abfa-dea2ea1ec16f@amsat.org>
-In-Reply-To: <c4d9df9a-21f5-524e-abfa-dea2ea1ec16f@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Feb 2021 14:03:49 +0000
-Message-ID: <CAFEAcA8YFX+F6LwLAzQh1r=hAzn62h2xxv4FjfNdyn6hgwiH=w@mail.gmail.com>
-Subject: Re: [PATCH 06/24] hw/misc/mps2-fpgaio: Support SWITCH register
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UVZzs5l2qMYt
+In-Reply-To: <20210211220055.19047-1-nieklinnenbank@gmail.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: ejWnBth1ardK
 
-On Fri, 12 Feb 2021 at 13:51, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> On 2/12/21 2:45 PM, Peter Maydell wrote:
-> > On Fri, 5 Feb 2021 at 17:00, Peter Maydell <peter.maydell@linaro.org> w=
-rote:
-> >>
-> >> MPS3 boards have an extra SWITCH register in the FPGAIO block which
-> >> reports the value of some switches.  Implement this, governed by a
-> >> property the board code can use to specify whether whether it exists.
-> >>
-> >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> >> ---
-> >>  include/hw/misc/mps2-fpgaio.h |  1 +
-> >>  hw/misc/mps2-fpgaio.c         | 10 ++++++++++
-> >>  2 files changed, 11 insertions(+)
-> >
-> > I changed my mind about the property/struct field name here, I think
-> > "has" is what we tend to use rather than "have". Trivial change
-> > to squash into this patch:
->
-> What about "use-switches"?
->
-> use-x: 12 occurences
-> has-x: 9.
->
-> Is there a difference in the meaning? Maybe have refers to
-> something internal, while use to something external?
+Hi Niek and QEMU community,
 
-Generally 'has' (or 'have') means "configure the object to
-possess this thing", whereas "use" means "the object has
-this thing; configure it to actually make use of it".
+On 2/11/21 11:00 PM, Niek Linnenbank wrote:
+> The following are maintenance patches for the Allwinner H3. The first patch
+> is a proposal to relocate the binary artifacts of the acceptance tests away
+> from the apt.armbian.com domain. In the past we had problems with artifacts being
+> removed, and now the recently added Armbian 20.08.1 image has been removed as well:
+> 
+> $ wget https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz
+> Connecting to dl.armbian.com (dl.armbian.com)|2605:7900:20::5|:443... connected.
+> ...
+> HTTP request sent, awaiting response... 404 Not Found
+> 2021-02-11 22:34:45 ERROR 404: Not Found.
+> 
+> I've now added the artifacts to a server maintained by me. The machine has a stable
+> uptime of several years, ~100Mbit bandwidth and plenty of available storage.
+> Also for other artifacts if needed. I'm open to discuss if there is a proposal
+> for a better location for these artifacts or a more generic qemu location.
 
-thanks
--- PMM
+Thanks for trying to fix this long standing problem.
+
+While this works in your case, this doesn't scale to the community,
+as not all contributors have access to such hardware and bandwidth /
+storage.
+
+While your first patch is useful in showing where the artifacts are
+stored doesn't matter - as long as we use cryptographic hashes - I
+think it is a step in the wrong direction, so I am not keen on
+accepting it.
+
+My personal view is that any contributor should have the same
+possibilities to add tests to the project. Now I am also open to
+discuss with the others :) I might be proven wrong, and it could
+be better to rely on good willing contributors rather than having
+nothing useful at all.
+
+Regards,
+
+Phil.

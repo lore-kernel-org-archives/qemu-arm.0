@@ -1,723 +1,122 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp366881lfq;
-        Wed, 13 Jan 2021 03:57:15 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwHmhwvksBXKx+HdlNEa15VupUWJziVBcl9uInkm7Z9dFPGth220tOHPu69Tezi8hjq5waU
-X-Received: by 2002:a25:4d83:: with SMTP id a125mr2691603ybb.371.1610539035022;
-        Wed, 13 Jan 2021 03:57:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610539035; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3449734lfc;
+        Fri, 12 Feb 2021 10:38:08 -0800 (PST)
+X-Received: by 2002:a5d:47ae:: with SMTP id 14mr4884754wrb.378.1613155088541;
+        Fri, 12 Feb 2021 10:38:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613155088; cv=none;
         d=google.com; s=arc-20160816;
-        b=IUOGhrKwCecp2nGnD5Equh+7ITMMjvOnsENxIvMfaj+hTtD6l6fNNnssDM+r7AN9VN
-         QNBr0PoOwz8iiPX3/JUWn/bhlNxGjMtSVuPNTY0+3qiz2oEHNKKFfKt5QeQaWTEuAEg/
-         HzKhIEQYP2+Xh11WKi8vUZhRTGD4OUHXKZ+6WmgNJ5RgJ6t4EJnDN0sBkD7uYT94Vk4m
-         C3Kjtmn7bg3Sk7WLT+UOa6T4oZ+JRifh7pRzlslyPcLY6mM4PXW4rskKOG3D4KnEWisz
-         XwDnHBxzRtSnzEOqlQPX/iCK9BOFvLJ6dmSgQG5BIKmQY5WiBEVH1ZTG5BDfcW7CHcn1
-         4XYQ==
+        b=cV+hOFz0BZ2+CEPFdmvDNwCqwtv5iJ6gQK0XV/bBfSpmxrJQYtBr6rKYUd1/cZj8Ea
+         LNVDqrl98JJY4v4W5KUhHdby10myVafE4uF8+mYI4edpKQvnHS5qFEDmzuHzoco/58Tg
+         GCZgEUpzKiGhwCdq/K8ltLezIICB6cWKQx51dq9oY0Csz6so9XRbCAoyU1Zs7PRE2NUH
+         ZO8YJ4sZi7Vt68SznTW12cXaWqJk7OG5FxU/Zjc6oNehCJ5AkZdd82YuVazewRBoYEL+
+         s7XihiAIX5EdmiopAkujZWd2qLyhCioOPpDCAoDL9SFLmDsbg1L/KH59uk4ng0KgrpXm
+         23ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=L0RvnvH2KViIeOa6XMFVti+qF1Pl86CY47En+Mt8Veo=;
-        b=obg+MAfaPUGGfzyRdtnE1ySB3G+Y2F/uuTlQHkOuE+Itktl4RkcVVkMwwrHAzVqT14
-         SIfO4bOPbPZWJW+HFj3vZF0+dNMLbqZ2kdDYaePuQlPuqoqhQRDp7MVX29cyQnnoMgGI
-         akUOBXbGodyNfiOGnHQIJTpbzF+e92ypuZGqNIwZBXlXpfjRpI2iq5hYsi/WQymAy4Op
-         8+MOouflS8bJOHS4k9MD+vg+wSt64eTbHz+O9n3qO73zDaRV7BRFHZVh5m5YrD50yY4W
-         Y0rWVaLTDeWCOWhBn+L0DAMR9tDhi2jO2PRMX7z0wHmZpK936b7m+I8DQJlK5btI9q6N
-         uk7A==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=FFIi3TXvMYzhbt4jBTGb8g8HO7wJ0jCnBq/XPrkq11Y=;
+        b=VFfUmSCjss0pzGC3hzKp7MUY1GoGUwyLEZLTmz3IRiGnbO1538w5BRILOUPPlOHMTx
+         nkXlUrXvpQsUUd67IdPEpwwratWpKTgmjgh/zQc/n4HNGWiclge/jkrpCb7xs2dvNJ4U
+         v91u76sj/JGhkISTxENJ0CGVIRjjnE50KfO8/skAxhTNaF+hnBRSz+Syg+pJTidTmmGW
+         cms6tpVAzz4Qwl1QH3Sj/4ITVw2AEuYE3ThrVvTICEBt3ioicQG0OAkdRzwXMPlNVt9e
+         kavEUmDF3ErlH/crqSrz1Cr6Q+4xCfuPqaqaiITrKhidfsiq1xfQy0gbj/V1LNsul2TJ
+         PsYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LC+ZrxwM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2si2234070ybe.400.2021.01.13.03.57.14
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 03:57:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JG2KnB4K;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y16sor5240129wmo.17.2021.02.12.10.38.08
+        (Google Transport Security);
+        Fri, 12 Feb 2021 10:38:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LC+ZrxwM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35488 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzem2-00085C-BX
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 06:57:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45220)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
- id 1kzels-00084c-Ac
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 06:57:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:40788)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
- id 1kzeln-00056S-90
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 06:57:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610539018;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=L0RvnvH2KViIeOa6XMFVti+qF1Pl86CY47En+Mt8Veo=;
- b=LC+ZrxwMwdlL05Sxhn5410BCj3TYxhxigHXntgDWxEIBePlusiIvca2tjEoryOURY4ciMd
- KVWNdZ7c4yFVMMCyk4u7EXtAoX9ntcfIOmBGFdsk3TpR1Bgzdf9ogf3shUy6zkNQD2wT9h
- P6Fghe+mFM0iMWvKqxgFg66HXCQ6V70=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-250-hqBf9LccMj-FX2BFHyGHZg-1; Wed, 13 Jan 2021 06:56:54 -0500
-X-MC-Unique: hqBf9LccMj-FX2BFHyGHZg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 91D9ABBEE1;
- Wed, 13 Jan 2021 11:56:52 +0000 (UTC)
-Received: from lws.brq.redhat.com (unknown [10.40.195.31])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DD40F60CE0;
- Wed, 13 Jan 2021 11:56:47 +0000 (UTC)
-Date: Wed, 13 Jan 2021 12:56:44 +0100
-From: Miroslav Rezanina <mrezanin@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 3/5] tcg/s390: Hoist common argument loads in tcg_out_op()
-Message-ID: <20210113115644.bemac6oxc5243t4f@lws.brq.redhat.com>
-References: <20210111150114.1415930-1-f4bug@amsat.org>
- <20210111150114.1415930-4-f4bug@amsat.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=JG2KnB4K;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=FFIi3TXvMYzhbt4jBTGb8g8HO7wJ0jCnBq/XPrkq11Y=;
+        b=JG2KnB4K3cGEUqbKsrKB3SP+uoTNeagqpJW2vOJVRBEgMoAu+0fCHAdNJTO86wGP5Y
+         rfpgvhAw18v2NU9iE4hlATT7wuuTGtvVjHZJ9n02PUc71VSOgL+FaLMqMODmt//cm7D+
+         rb7678KUSe70sDDVvY0FwdnGKZbMMHIlwSSaG9b8PSQA5xZ0K5pE4aP/EPxK2OWxWJW6
+         my4le/1nmzCkzqM19XTYk0bKvtqwXC9s5qNGGteS5O0Ip7klB2EAk65sGt7f7rWP6tZr
+         yMB3aOazDrTko/v/AqXHVnbHzjNciFVeyg4IEi5xvEbEFwNP0+Sb+ceevSpHNUdfjI5A
+         +F8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=FFIi3TXvMYzhbt4jBTGb8g8HO7wJ0jCnBq/XPrkq11Y=;
+        b=B5HhPZ75vhj1lgxRaOmRCDSZunemfNsfJYlnZ1uoonmiqzPRys9oaxQV56Eskgcdyc
+         e6sXUtTdM7CgaSpdN9RHKzfrll7Am7hxKknxNfK2LCAuwl5fcuL6+S+ZalNqXJdCpMdl
+         LXdl95NgCQzQvL+eDwfSNDA8iGteG7K5uoC0EFHc6yHZrbur6M3e6U6zeMrjjdNWxJVE
+         cOhpVpYGYKa3A3Qidnt4FtfLnPnejiVcYR2kiC1lW+dTb7M0eVKBkpXuI/Wq4ZDbgyFT
+         hPjIXut8KT8fGI9kbWkfCHgXsmIvyvcS3JsYCU3IX5AByTF1cIcOIBH+Rthg98EVD1E/
+         ENfQ==
+X-Gm-Message-State: AOAM530zPXOPFlN6eYTJ4cg6ISzjCuZ3J43F5il6NHy8rB61LfJBz8V3
+	Vck33FoLWn1b06nX3Dk7oB0=
+X-Google-Smtp-Source: ABdhPJzT9cDjFafhPtUm/g7cE6GCsCnTTbMO5zu0+kiqgsSZWLjUPM+rZGlvnKECyRk0CvWsrYYSBQ==
+X-Received: by 2002:a7b:cf19:: with SMTP id l25mr3802092wmg.85.1613155088340;
+        Fri, 12 Feb 2021 10:38:08 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id u14sm12117300wro.10.2021.02.12.10.38.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 Feb 2021 10:38:07 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 00/24] hw/arm: New board model mps3-an524
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Daniel P . Berrange" <berrange@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>
+References: <20210205170019.25319-1-peter.maydell@linaro.org>
+ <7d4db6f0-1e11-afb1-2b58-2e115a0a2dd0@amsat.org>
+ <CAFEAcA_qZ-k7jZQ7NUxQ+BXQ5LtLC1ogorKaE1iwz2Mm00Xwcw@mail.gmail.com>
+ <CAAdtpL5Aq_1nQhXPPEinosdoD6sUV20d-kDWTZcKhiQZtr94Fw@mail.gmail.com>
+ <CAFEAcA9vvfC_DOnrzSxftXPydfUnucqN6VQtRcpP7LEm+Wy+qA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <edd96a95-f484-96d0-1b1b-7481a13e8d88@amsat.org>
+Date: Fri, 12 Feb 2021 19:38:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210111150114.1415930-4-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mrezanin@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <CAFEAcA9vvfC_DOnrzSxftXPydfUnucqN6VQtRcpP7LEm+Wy+qA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=mrezanin@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.251,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Huacai Chen <chenhuacai@kernel.org>, qemu-riscv@nongnu.org,
- Stefan Weil <sw@weilnetz.de>, Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>, Thomas Huth <thuth@redhat.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zfb7arh+9pOH
+X-TUID: dQH++ZH+x8WX
 
-On Mon, Jan 11, 2021 at 04:01:12PM +0100, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  tcg/s390/tcg-target.c.inc | 252 ++++++++++++++++++--------------------
->  1 file changed, 122 insertions(+), 130 deletions(-)
+On 2/5/21 8:34 PM, Peter Maydell wrote:
+> On Fri, 5 Feb 2021 at 19:31, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> On Fri, Feb 5, 2021 at 8:21 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> On Fri, 5 Feb 2021 at 18:05, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>> On 2/5/21 5:59 PM, Peter Maydell wrote:
+>>>>> (The selftest is part of the AN524
+>>>>> download so it's behind a EULA click-through and we can't put it
+>>>>> into an acceptance test. We might be able to get something
+>>>>> based on Zephyr or Arm TFM.)
+>>>>
+>>>> Wondering about that... If anyone can go/click/accepts the EULA and
+>>>> download artifacts, then I'd like these tests to be committed to the
+>>>> repository, with a comment containing the download link, and the test
+>>>> can use the skipUntil(BLOB_PATH && BLOB_HASH) syntax to assert the
+>>>> binary I downloaded is the same you used for your test.
+>>>
+>>> I would rather not get into that. The selftest doesn't actually
+>>> exercise as much of the emulation as you might think anyway.
+>>
+>> This was clear from the previous paragraph, I was asking about the possibility
+>> to have developers/maintainers individually accept EULA to download artifacts
+>> for integration testing.
 > 
-> diff --git a/tcg/s390/tcg-target.c.inc b/tcg/s390/tcg-target.c.inc
-> index d7ef0790556..74b2314c78a 100644
-> --- a/tcg/s390/tcg-target.c.inc
-> +++ b/tcg/s390/tcg-target.c.inc
-> @@ -1732,15 +1732,23 @@ static void tcg_out_qemu_st(TCGContext* s, TCGReg data_reg, TCGReg addr_reg,
->          case glue(glue(INDEX_op_,x),_i64)
->  
->  static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-> -                const TCGArg *args, const int *const_args)
-> +                              const TCGArg args[TCG_MAX_OP_ARGS],
-> +                              const int const_args[TCG_MAX_OP_ARGS])
->  {
->      S390Opcode op, op2;
->      TCGArg a0, a1, a2;
-> +    int c2, c3, c4;
-> +
-> +    a0 = args[0];
-> +    a1 = args[1];
-> +    a2 = args[2];
-> +    c2 = const_args[2];
-> +    c3 = const_args[3];
-> +    c4 = const_args[4];
->  
+> Yes, and that is the thing I would rather we didn't get into.
+> We should just have suitably redistributable acceptance tests
+> where we can.
 
-Hi Philippe,
-
-why isn't c1 declared? You are using it in the code?
-
-
->      switch (opc) {
->      case INDEX_op_exit_tb:
->          /* Reuse the zeroing that exists for goto_ptr.  */
-> -        a0 = args[0];
->          if (a0 == 0) {
->              tgen_gotoi(s, S390_CC_ALWAYS, tcg_code_gen_epilogue);
->          } else {
-> @@ -1750,7 +1758,6 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          break;
->  
->      case INDEX_op_goto_tb:
-> -        a0 = args[0];
->          if (s->tb_jmp_insn_offset) {
->              /*
->               * branch displacement must be aligned for atomic patching;
-> @@ -1784,7 +1791,6 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          break;
->  
->      case INDEX_op_goto_ptr:
-> -        a0 = args[0];
->          if (USE_REG_TB) {
->              tcg_out_mov(s, TCG_TYPE_PTR, TCG_REG_TB, a0);
->          }
-> @@ -1794,45 +1800,43 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->      OP_32_64(ld8u):
->          /* ??? LLC (RXY format) is only present with the extended-immediate
->             facility, whereas LLGC is always present.  */
-> -        tcg_out_mem(s, 0, RXY_LLGC, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, 0, RXY_LLGC, a0, a1, TCG_REG_NONE, a2);
->          break;
->  
->      OP_32_64(ld8s):
->          /* ??? LB is no smaller than LGB, so no point to using it.  */
-> -        tcg_out_mem(s, 0, RXY_LGB, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, 0, RXY_LGB, a0, a1, TCG_REG_NONE, a2);
->          break;
->  
->      OP_32_64(ld16u):
->          /* ??? LLH (RXY format) is only present with the extended-immediate
->             facility, whereas LLGH is always present.  */
-> -        tcg_out_mem(s, 0, RXY_LLGH, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, 0, RXY_LLGH, a0, a1, TCG_REG_NONE, a2);
->          break;
->  
->      case INDEX_op_ld16s_i32:
-> -        tcg_out_mem(s, RX_LH, RXY_LHY, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, RX_LH, RXY_LHY, a0, a1, TCG_REG_NONE, a2);
->          break;
->  
->      case INDEX_op_ld_i32:
-> -        tcg_out_ld(s, TCG_TYPE_I32, args[0], args[1], args[2]);
-> +        tcg_out_ld(s, TCG_TYPE_I32, a0, a1, a2);
->          break;
->  
->      OP_32_64(st8):
-> -        tcg_out_mem(s, RX_STC, RXY_STCY, args[0], args[1],
-> -                    TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, RX_STC, RXY_STCY, a0, a1, TCG_REG_NONE, a2);
->          break;
->  
->      OP_32_64(st16):
-> -        tcg_out_mem(s, RX_STH, RXY_STHY, args[0], args[1],
-> -                    TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, RX_STH, RXY_STHY, a0, a1, TCG_REG_NONE, a2);
->          break;
->  
->      case INDEX_op_st_i32:
-> -        tcg_out_st(s, TCG_TYPE_I32, args[0], args[1], args[2]);
-> +        tcg_out_st(s, TCG_TYPE_I32, a0, a1, a2);
->          break;
->  
->      case INDEX_op_add_i32:
-> -        a0 = args[0], a1 = args[1], a2 = (int32_t)args[2];
-> -        if (const_args[2]) {
-> +        a2 = (int32_t)a2;
-> +        if (c2) {
->          do_addi_32:
->              if (a0 == a1) {
->                  if (a2 == (int16_t)a2) {
-> @@ -1852,8 +1856,8 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          }
->          break;
->      case INDEX_op_sub_i32:
-> -        a0 = args[0], a1 = args[1], a2 = (int32_t)args[2];
-> -        if (const_args[2]) {
-> +        a2 = (int32_t)a2;
-> +        if (c2) {
->              a2 = -a2;
->              goto do_addi_32;
->          } else if (a0 == a1) {
-> @@ -1864,8 +1868,8 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          break;
->  
->      case INDEX_op_and_i32:
-> -        a0 = args[0], a1 = args[1], a2 = (uint32_t)args[2];
-> -        if (const_args[2]) {
-> +        a2 = (uint32_t)a2;
-> +        if (c2) {
->              tcg_out_mov(s, TCG_TYPE_I32, a0, a1);
->              tgen_andi(s, TCG_TYPE_I32, a0, a2);
->          } else if (a0 == a1) {
-> @@ -1875,8 +1879,8 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          }
->          break;
->      case INDEX_op_or_i32:
-> -        a0 = args[0], a1 = args[1], a2 = (uint32_t)args[2];
-> -        if (const_args[2]) {
-> +        a2 = (uint32_t)a2;
-> +        if (c2) {
->              tcg_out_mov(s, TCG_TYPE_I32, a0, a1);
->              tgen_ori(s, TCG_TYPE_I32, a0, a2);
->          } else if (a0 == a1) {
-> @@ -1886,30 +1890,30 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          }
->          break;
->      case INDEX_op_xor_i32:
-> -        a0 = args[0], a1 = args[1], a2 = (uint32_t)args[2];
-> -        if (const_args[2]) {
-> +        a2 = (uint32_t)a2;
-> +        if (c2) {
->              tcg_out_mov(s, TCG_TYPE_I32, a0, a1);
->              tgen_xori(s, TCG_TYPE_I32, a0, a2);
->          } else if (a0 == a1) {
-> -            tcg_out_insn(s, RR, XR, args[0], args[2]);
-> +            tcg_out_insn(s, RR, XR, a0, a2);
->          } else {
->              tcg_out_insn(s, RRF, XRK, a0, a1, a2);
->          }
->          break;
->  
->      case INDEX_op_neg_i32:
-> -        tcg_out_insn(s, RR, LCR, args[0], args[1]);
-> +        tcg_out_insn(s, RR, LCR, a0, a1);
->          break;
->  
->      case INDEX_op_mul_i32:
-> -        if (const_args[2]) {
-> -            if ((int32_t)args[2] == (int16_t)args[2]) {
-> -                tcg_out_insn(s, RI, MHI, args[0], args[2]);
-> +        if (c2) {
-> +            if ((int32_t)a2 == (int16_t)a2) {
-> +                tcg_out_insn(s, RI, MHI, a0, a2);
->              } else {
-> -                tcg_out_insn(s, RIL, MSFI, args[0], args[2]);
-> +                tcg_out_insn(s, RIL, MSFI, a0, a2);
->              }
->          } else {
-> -            tcg_out_insn(s, RRE, MSR, args[0], args[2]);
-> +            tcg_out_insn(s, RRE, MSR, a0, a2);
->          }
->          break;
->  
-> @@ -1924,16 +1928,16 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          op = RS_SLL;
->          op2 = RSY_SLLK;
->      do_shift32:
-> -        a0 = args[0], a1 = args[1], a2 = (int32_t)args[2];
-> +        a2 = (int32_t)a2;
->          if (a0 == a1) {
-> -            if (const_args[2]) {
-> +            if (c2) {
->                  tcg_out_sh32(s, op, a0, TCG_REG_NONE, a2);
->              } else {
->                  tcg_out_sh32(s, op, a0, a2, 0);
->              }
->          } else {
->              /* Using tcg_out_sh64 here for the format; it is a 32-bit shift.  */
-> -            if (const_args[2]) {
-> +            if (c2) {
->                  tcg_out_sh64(s, op2, a0, a1, TCG_REG_NONE, a2);
->              } else {
->                  tcg_out_sh64(s, op2, a0, a1, a2, 0);
-> @@ -1951,112 +1955,108 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->  
->      case INDEX_op_rotl_i32:
->          /* ??? Using tcg_out_sh64 here for the format; it is a 32-bit rol.  */
-> -        if (const_args[2]) {
-> -            tcg_out_sh64(s, RSY_RLL, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        if (c2) {
-> +            tcg_out_sh64(s, RSY_RLL, a0, a1, TCG_REG_NONE, a2);
->          } else {
-> -            tcg_out_sh64(s, RSY_RLL, args[0], args[1], args[2], 0);
-> +            tcg_out_sh64(s, RSY_RLL, a0, a1, a2, 0);
->          }
->          break;
->      case INDEX_op_rotr_i32:
-> -        if (const_args[2]) {
-> -            tcg_out_sh64(s, RSY_RLL, args[0], args[1],
-> -                         TCG_REG_NONE, (32 - args[2]) & 31);
-> +        if (c2) {
-> +            tcg_out_sh64(s, RSY_RLL, a0, a1,
-> +                         TCG_REG_NONE, (32 - a2) & 31);
->          } else {
-> -            tcg_out_insn(s, RR, LCR, TCG_TMP0, args[2]);
-> -            tcg_out_sh64(s, RSY_RLL, args[0], args[1], TCG_TMP0, 0);
-> +            tcg_out_insn(s, RR, LCR, TCG_TMP0, a2);
-> +            tcg_out_sh64(s, RSY_RLL, a0, a1, TCG_TMP0, 0);
->          }
->          break;
->  
->      case INDEX_op_ext8s_i32:
-> -        tgen_ext8s(s, TCG_TYPE_I32, args[0], args[1]);
-> +        tgen_ext8s(s, TCG_TYPE_I32, a0, a1);
->          break;
->      case INDEX_op_ext16s_i32:
-> -        tgen_ext16s(s, TCG_TYPE_I32, args[0], args[1]);
-> +        tgen_ext16s(s, TCG_TYPE_I32, a0, a1);
->          break;
->      case INDEX_op_ext8u_i32:
-> -        tgen_ext8u(s, TCG_TYPE_I32, args[0], args[1]);
-> +        tgen_ext8u(s, TCG_TYPE_I32, a0, a1);
->          break;
->      case INDEX_op_ext16u_i32:
-> -        tgen_ext16u(s, TCG_TYPE_I32, args[0], args[1]);
-> +        tgen_ext16u(s, TCG_TYPE_I32, a0, a1);
->          break;
->  
->      OP_32_64(bswap16):
->          /* The TCG bswap definition requires bits 0-47 already be zero.
->             Thus we don't need the G-type insns to implement bswap16_i64.  */
-> -        tcg_out_insn(s, RRE, LRVR, args[0], args[1]);
-> -        tcg_out_sh32(s, RS_SRL, args[0], TCG_REG_NONE, 16);
-> +        tcg_out_insn(s, RRE, LRVR, a0, a1);
-> +        tcg_out_sh32(s, RS_SRL, a0, TCG_REG_NONE, 16);
->          break;
->      OP_32_64(bswap32):
-> -        tcg_out_insn(s, RRE, LRVR, args[0], args[1]);
-> +        tcg_out_insn(s, RRE, LRVR, a0, a1);
->          break;
->  
->      case INDEX_op_add2_i32:
-> -        if (const_args[4]) {
-> -            tcg_out_insn(s, RIL, ALFI, args[0], args[4]);
-> +        if (c4) {
-> +            tcg_out_insn(s, RIL, ALFI, a0, args[4]);
->          } else {
-> -            tcg_out_insn(s, RR, ALR, args[0], args[4]);
-> +            tcg_out_insn(s, RR, ALR, a0, args[4]);
->          }
-> -        tcg_out_insn(s, RRE, ALCR, args[1], args[5]);
-> +        tcg_out_insn(s, RRE, ALCR, a1, args[5]);
->          break;
->      case INDEX_op_sub2_i32:
-> -        if (const_args[4]) {
-> -            tcg_out_insn(s, RIL, SLFI, args[0], args[4]);
-> +        if (c4) {
-> +            tcg_out_insn(s, RIL, SLFI, a0, args[4]);
->          } else {
-> -            tcg_out_insn(s, RR, SLR, args[0], args[4]);
-> +            tcg_out_insn(s, RR, SLR, a0, args[4]);
->          }
-> -        tcg_out_insn(s, RRE, SLBR, args[1], args[5]);
-> +        tcg_out_insn(s, RRE, SLBR, a1, args[5]);
->          break;
->  
->      case INDEX_op_br:
-> -        tgen_branch(s, S390_CC_ALWAYS, arg_label(args[0]));
-> +        tgen_branch(s, S390_CC_ALWAYS, arg_label(a0));
->          break;
->  
->      case INDEX_op_brcond_i32:
-> -        tgen_brcond(s, TCG_TYPE_I32, args[2], args[0],
-> -                    args[1], const_args[1], arg_label(args[3]));
-> +        tgen_brcond(s, TCG_TYPE_I32, a2, a0, a1, c1, arg_label(args[3]));
-
-This is the place os usage c1 - not defined before.
-
-
->          break;
->      case INDEX_op_setcond_i32:
-> -        tgen_setcond(s, TCG_TYPE_I32, args[3], args[0], args[1],
-> -                     args[2], const_args[2]);
-> +        tgen_setcond(s, TCG_TYPE_I32, args[3], a0, a1, a2, c2);
->          break;
->      case INDEX_op_movcond_i32:
-> -        tgen_movcond(s, TCG_TYPE_I32, args[5], args[0], args[1],
-> -                     args[2], const_args[2], args[3], const_args[3]);
-> +        tgen_movcond(s, TCG_TYPE_I32, args[5], a0, a1, a2, c2, args[3], c3);
->          break;
->  
->      case INDEX_op_qemu_ld_i32:
->          /* ??? Technically we can use a non-extending instruction.  */
->      case INDEX_op_qemu_ld_i64:
-> -        tcg_out_qemu_ld(s, args[0], args[1], args[2]);
-> +        tcg_out_qemu_ld(s, a0, a1, a2);
->          break;
->      case INDEX_op_qemu_st_i32:
->      case INDEX_op_qemu_st_i64:
-> -        tcg_out_qemu_st(s, args[0], args[1], args[2]);
-> +        tcg_out_qemu_st(s, a0, a1, a2);
->          break;
->  
->      case INDEX_op_ld16s_i64:
-> -        tcg_out_mem(s, 0, RXY_LGH, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, 0, RXY_LGH, a0, a1, TCG_REG_NONE, a2);
->          break;
->      case INDEX_op_ld32u_i64:
-> -        tcg_out_mem(s, 0, RXY_LLGF, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, 0, RXY_LLGF, a0, a1, TCG_REG_NONE, a2);
->          break;
->      case INDEX_op_ld32s_i64:
-> -        tcg_out_mem(s, 0, RXY_LGF, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        tcg_out_mem(s, 0, RXY_LGF, a0, a1, TCG_REG_NONE, a2);
->          break;
->      case INDEX_op_ld_i64:
-> -        tcg_out_ld(s, TCG_TYPE_I64, args[0], args[1], args[2]);
-> +        tcg_out_ld(s, TCG_TYPE_I64, a0, a1, a2);
->          break;
->  
->      case INDEX_op_st32_i64:
-> -        tcg_out_st(s, TCG_TYPE_I32, args[0], args[1], args[2]);
-> +        tcg_out_st(s, TCG_TYPE_I32, a0, a1, a2);
->          break;
->      case INDEX_op_st_i64:
-> -        tcg_out_st(s, TCG_TYPE_I64, args[0], args[1], args[2]);
-> +        tcg_out_st(s, TCG_TYPE_I64, a0, a1, a2);
->          break;
->  
->      case INDEX_op_add_i64:
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
-> -        if (const_args[2]) {
-> +        if (c2) {
->          do_addi_64:
->              if (a0 == a1) {
->                  if (a2 == (int16_t)a2) {
-> @@ -2084,8 +2084,7 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          }
->          break;
->      case INDEX_op_sub_i64:
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
-> -        if (const_args[2]) {
-> +        if (c2) {
->              a2 = -a2;
->              goto do_addi_64;
->          } else if (a0 == a1) {
-> @@ -2096,19 +2095,17 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          break;
->  
->      case INDEX_op_and_i64:
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
-> -        if (const_args[2]) {
-> +        if (c2) {
->              tcg_out_mov(s, TCG_TYPE_I64, a0, a1);
-> -            tgen_andi(s, TCG_TYPE_I64, args[0], args[2]);
-> +            tgen_andi(s, TCG_TYPE_I64, a0, a2);
->          } else if (a0 == a1) {
-> -            tcg_out_insn(s, RRE, NGR, args[0], args[2]);
-> +            tcg_out_insn(s, RRE, NGR, a0, a2);
->          } else {
->              tcg_out_insn(s, RRF, NGRK, a0, a1, a2);
->          }
->          break;
->      case INDEX_op_or_i64:
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
-> -        if (const_args[2]) {
-> +        if (c2) {
->              tcg_out_mov(s, TCG_TYPE_I64, a0, a1);
->              tgen_ori(s, TCG_TYPE_I64, a0, a2);
->          } else if (a0 == a1) {
-> @@ -2118,8 +2115,7 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          }
->          break;
->      case INDEX_op_xor_i64:
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
-> -        if (const_args[2]) {
-> +        if (c2) {
->              tcg_out_mov(s, TCG_TYPE_I64, a0, a1);
->              tgen_xori(s, TCG_TYPE_I64, a0, a2);
->          } else if (a0 == a1) {
-> @@ -2130,21 +2126,21 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          break;
->  
->      case INDEX_op_neg_i64:
-> -        tcg_out_insn(s, RRE, LCGR, args[0], args[1]);
-> +        tcg_out_insn(s, RRE, LCGR, a0, a1);
->          break;
->      case INDEX_op_bswap64_i64:
-> -        tcg_out_insn(s, RRE, LRVGR, args[0], args[1]);
-> +        tcg_out_insn(s, RRE, LRVGR, a0, a1);
->          break;
->  
->      case INDEX_op_mul_i64:
-> -        if (const_args[2]) {
-> -            if (args[2] == (int16_t)args[2]) {
-> -                tcg_out_insn(s, RI, MGHI, args[0], args[2]);
-> +        if (c2) {
-> +            if (a2 == (int16_t)a2) {
-> +                tcg_out_insn(s, RI, MGHI, a0, a2);
->              } else {
-> -                tcg_out_insn(s, RIL, MSGFI, args[0], args[2]);
-> +                tcg_out_insn(s, RIL, MSGFI, a0, a2);
->              }
->          } else {
-> -            tcg_out_insn(s, RRE, MSGR, args[0], args[2]);
-> +            tcg_out_insn(s, RRE, MSGR, a0, a2);
->          }
->          break;
->  
-> @@ -2165,10 +2161,10 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->      case INDEX_op_shl_i64:
->          op = RSY_SLLG;
->      do_shift64:
-> -        if (const_args[2]) {
-> -            tcg_out_sh64(s, op, args[0], args[1], TCG_REG_NONE, args[2]);
-> +        if (c2) {
-> +            tcg_out_sh64(s, op, a0, a1, TCG_REG_NONE, a2);
->          } else {
-> -            tcg_out_sh64(s, op, args[0], args[1], args[2], 0);
-> +            tcg_out_sh64(s, op, a0, a1, a2, 0);
->          }
->          break;
->      case INDEX_op_shr_i64:
-> @@ -2179,87 +2175,83 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          goto do_shift64;
->  
->      case INDEX_op_rotl_i64:
-> -        if (const_args[2]) {
-> -            tcg_out_sh64(s, RSY_RLLG, args[0], args[1],
-> -                         TCG_REG_NONE, args[2]);
-> +        if (c2) {
-> +            tcg_out_sh64(s, RSY_RLLG, a0, a1,
-> +                         TCG_REG_NONE, a2);
->          } else {
-> -            tcg_out_sh64(s, RSY_RLLG, args[0], args[1], args[2], 0);
-> +            tcg_out_sh64(s, RSY_RLLG, a0, a1, a2, 0);
->          }
->          break;
->      case INDEX_op_rotr_i64:
-> -        if (const_args[2]) {
-> -            tcg_out_sh64(s, RSY_RLLG, args[0], args[1],
-> -                         TCG_REG_NONE, (64 - args[2]) & 63);
-> +        if (c2) {
-> +            tcg_out_sh64(s, RSY_RLLG, a0, a1,
-> +                         TCG_REG_NONE, (64 - a2) & 63);
->          } else {
->              /* We can use the smaller 32-bit negate because only the
->                 low 6 bits are examined for the rotate.  */
-> -            tcg_out_insn(s, RR, LCR, TCG_TMP0, args[2]);
-> -            tcg_out_sh64(s, RSY_RLLG, args[0], args[1], TCG_TMP0, 0);
-> +            tcg_out_insn(s, RR, LCR, TCG_TMP0, a2);
-> +            tcg_out_sh64(s, RSY_RLLG, a0, a1, TCG_TMP0, 0);
->          }
->          break;
->  
->      case INDEX_op_ext8s_i64:
-> -        tgen_ext8s(s, TCG_TYPE_I64, args[0], args[1]);
-> +        tgen_ext8s(s, TCG_TYPE_I64, a0, a1);
->          break;
->      case INDEX_op_ext16s_i64:
-> -        tgen_ext16s(s, TCG_TYPE_I64, args[0], args[1]);
-> +        tgen_ext16s(s, TCG_TYPE_I64, a0, a1);
->          break;
->      case INDEX_op_ext_i32_i64:
->      case INDEX_op_ext32s_i64:
-> -        tgen_ext32s(s, args[0], args[1]);
-> +        tgen_ext32s(s, a0, a1);
->          break;
->      case INDEX_op_ext8u_i64:
-> -        tgen_ext8u(s, TCG_TYPE_I64, args[0], args[1]);
-> +        tgen_ext8u(s, TCG_TYPE_I64, a0, a1);
->          break;
->      case INDEX_op_ext16u_i64:
-> -        tgen_ext16u(s, TCG_TYPE_I64, args[0], args[1]);
-> +        tgen_ext16u(s, TCG_TYPE_I64, a0, a1);
->          break;
->      case INDEX_op_extu_i32_i64:
->      case INDEX_op_ext32u_i64:
-> -        tgen_ext32u(s, args[0], args[1]);
-> +        tgen_ext32u(s, a0, a1);
->          break;
->  
->      case INDEX_op_add2_i64:
-> -        if (const_args[4]) {
-> +        if (c4) {
->              if ((int64_t)args[4] >= 0) {
-> -                tcg_out_insn(s, RIL, ALGFI, args[0], args[4]);
-> +                tcg_out_insn(s, RIL, ALGFI, a0, args[4]);
->              } else {
-> -                tcg_out_insn(s, RIL, SLGFI, args[0], -args[4]);
-> +                tcg_out_insn(s, RIL, SLGFI, a0, -args[4]);
->              }
->          } else {
-> -            tcg_out_insn(s, RRE, ALGR, args[0], args[4]);
-> +            tcg_out_insn(s, RRE, ALGR, a0, args[4]);
->          }
-> -        tcg_out_insn(s, RRE, ALCGR, args[1], args[5]);
-> +        tcg_out_insn(s, RRE, ALCGR, a1, args[5]);
->          break;
->      case INDEX_op_sub2_i64:
-> -        if (const_args[4]) {
-> +        if (c4) {
->              if ((int64_t)args[4] >= 0) {
-> -                tcg_out_insn(s, RIL, SLGFI, args[0], args[4]);
-> +                tcg_out_insn(s, RIL, SLGFI, a0, args[4]);
->              } else {
-> -                tcg_out_insn(s, RIL, ALGFI, args[0], -args[4]);
-> +                tcg_out_insn(s, RIL, ALGFI, a0, -args[4]);
->              }
->          } else {
-> -            tcg_out_insn(s, RRE, SLGR, args[0], args[4]);
-> +            tcg_out_insn(s, RRE, SLGR, a0, args[4]);
->          }
-> -        tcg_out_insn(s, RRE, SLBGR, args[1], args[5]);
-> +        tcg_out_insn(s, RRE, SLBGR, a1, args[5]);
->          break;
->  
->      case INDEX_op_brcond_i64:
-> -        tgen_brcond(s, TCG_TYPE_I64, args[2], args[0],
-> -                    args[1], const_args[1], arg_label(args[3]));
-> +        tgen_brcond(s, TCG_TYPE_I64, a2, a0, a1, c1, arg_label(args[3]));
-
-Another c1 usage.
-
->          break;
->      case INDEX_op_setcond_i64:
-> -        tgen_setcond(s, TCG_TYPE_I64, args[3], args[0], args[1],
-> -                     args[2], const_args[2]);
-> +        tgen_setcond(s, TCG_TYPE_I64, args[3], a0, a1, a2, c2);
->          break;
->      case INDEX_op_movcond_i64:
-> -        tgen_movcond(s, TCG_TYPE_I64, args[5], args[0], args[1],
-> -                     args[2], const_args[2], args[3], const_args[3]);
-> +        tgen_movcond(s, TCG_TYPE_I64, args[5], a0, a1, a2, c2, args[3], c3);
->          break;
->  
->      OP_32_64(deposit):
-> -        a0 = args[0], a1 = args[1], a2 = args[2];
-> -        if (const_args[1]) {
-> +        if (c1) {
-
-Another c1 usage.
-
->              tgen_deposit(s, a0, a2, args[3], args[4], 1);
->          } else {
->              /* Since we can't support "0Z" as a constraint, we allow a1 in
-> @@ -2277,17 +2269,17 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
->          break;
->  
->      OP_32_64(extract):
-> -        tgen_extract(s, args[0], args[1], args[2], args[3]);
-> +        tgen_extract(s, a0, a1, a2, args[3]);
->          break;
->  
->      case INDEX_op_clz_i64:
-> -        tgen_clz(s, args[0], args[1], args[2], const_args[2]);
-> +        tgen_clz(s, a0, a1, a2, c2);
->          break;
->  
->      case INDEX_op_mb:
->          /* The host memory model is quite strong, we simply need to
->             serialize the instruction stream.  */
-> -        if (args[0] & TCG_MO_ST_LD) {
-> +        if (a0 & TCG_MO_ST_LD) {
->              tcg_out_insn(s, RR, BCR,
->                           s390_facilities & FACILITY_FAST_BCR_SER ? 14 : 15, 0);
->          }
-> -- 
-> 2.26.2
-> 
-> 
-
+OK, understood.

@@ -1,153 +1,169 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3528590lfc;
-        Fri, 12 Feb 2021 12:29:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxFdySRUt7NH8OdCqlTWA2cnJKw5/beL1LV33xjXREAMb2rS8P26+B0jY7+H10xSIG6UaiQ
-X-Received: by 2002:a25:105:: with SMTP id 5mr6159936ybb.133.1613161773876;
-        Fri, 12 Feb 2021 12:29:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613161773; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3108738lfc;
+        Fri, 12 Feb 2021 03:20:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxrZtgDj974u3SGtS7/Kz2Nyg7PGE9YcxSU58Jy30KEekl7JderbChNJTMmGRFu9HVde9GX
+X-Received: by 2002:a25:1842:: with SMTP id 63mr3179727yby.238.1613128829376;
+        Fri, 12 Feb 2021 03:20:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613128829; cv=none;
         d=google.com; s=arc-20160816;
-        b=pbgzwnZSgu3hgM2a4QQmprJTIOzQrDfqiuYmBt8a8NT/7WuFFZNz0JmKCP9uLnKg3C
-         ZGcj6IuXx1/JzjHiEJytFZeVUjaIZJ5T6GJobWEdwnsFwMWzOhclvnOMSO6QJlnHU/s9
-         O8Em9WBCyRyyGRCLuixw/+lizECWfrkhKAn34jMpytadhgfAISo6Lv8BzrCNl9/LRtuf
-         w1MbH8IJs2fQMVofkUtvcLi7KqKyxmj93AYKtN4gdcNhRdnkdScbwAU8ZD9kVMrvij6U
-         jXgtNAD7Q8CwLDqLw9oT4i5DybiC6flmZSyD125OQH+engPGw5KQF7C3o9Cbo6/R6W6d
-         oP2A==
+        b=hVajO6mDYMfgKe6hi5MwGfmhUlFMZCdg2YPLTURjo2lCTxD3YWmxt0d6J3n5soWFZN
+         7XreaprT+vd184nY1FQQBS30IQyYRtRUHsnWWdye6GP5oXq3tjZQuCSpSrOpWXNaTwfQ
+         cCOgn9e4hs/evOOwTQsRFwrgeUJ4sRk9RRkwJUZJ6B4XN/+UIDrlNXYiuK/mCZglL5kF
+         GdfM1nfj3hzgMYOeewd4YUn7xxTzLV5QFOBqb0bppSMbzmLwro3E41RRRhp9gKpJq7Ei
+         kDgAf6hv5lTxjtk/uK2njZKF0j7wZoIS1BLvKwS4FXqgxfTQbQSjQtIQ9OFYPpLX2Hcj
+         a85A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=gt59kqaEZ7xfhGCp5840Gc6/5TeZEEpPdfjQNFQnsNQ=;
-        b=rhAJWgPOCUNaaXWslC99s8GeTyqwMy55vhdmRlxTvBciMqDtgl1oIO4T4BcfBBmC5A
-         qRwBSNLAQJSxvY8jstEo3w2bINV55XMJO9GJi0m/8I0AqJGfGpViWOZERYAHrpjsly9k
-         LRI3CsXEgxyHudpgYz478kXio+HJsnvLiD5nbig0GB/TGi78j1MRdYq46OCbmVCC615j
-         lPeOuJubF+AgeM/KmGggV2vmmxw2q8Bte97vUOu8G8auvwtKFCGqRPUtZUPTKA/ZmHYh
-         QtlHTSX9G2KHqmuVBYn1g5tWAEj0aV6sJgomwWfbyCSRuePJa660On1fo3zLBaqXwcNw
-         J9bg==
+        bh=Lve7dpICVmMuYk/dTxbhJ3NggBKtPwRUvp7xp/DvJMw=;
+        b=FRLW2OPAiVvvKq5yZS3ZLK/eZT8VTlaAeA0ZW7zi69D5Bu5b1dt3k3yYOGwgKQOhVn
+         ZxcU/jQBwGLZH5amEoruzn7pfAo0iJTZID2mVM4/16xbaaHn5SuRFhwNbPBIjxIxyatL
+         nkpDVJBh4Bxq8InaOgAu3Bmcgv54X2vc0OHgUPObOIoU/VBerOmXd2tjAiR5c/y0q/di
+         qnBTyZ6GUesLjSvOHceq6zFscWHaKw6sumJ0tl8kZbsqScwqlM9363ydxIYrMcprMwvB
+         TFWpvLGfoNn56PwgDaLXTxtvzUhqc7l8UDZLIuqpsUtP4VVDp+p6YHBfdWgdXVzSPUGs
+         eIqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FcsMSIyX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=VRdz6LL4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a15si9158905ybp.156.2021.02.12.12.29.33
+        by mx.google.com with ESMTPS id x13si7628179ybt.404.2021.02.12.03.20.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Feb 2021 12:29:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 12 Feb 2021 03:20:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FcsMSIyX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48810 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=VRdz6LL4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAf4H-0002ua-4L
-	for alex.bennee@linaro.org; Fri, 12 Feb 2021 15:29:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59046)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lAWUu-00041h-Py
+	for alex.bennee@linaro.org; Fri, 12 Feb 2021 06:20:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1lAevB-0000bj-SY
- for qemu-devel@nongnu.org; Fri, 12 Feb 2021 15:20:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23419)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
- id 1lAevA-0005O5-6t
- for qemu-devel@nongnu.org; Fri, 12 Feb 2021 15:20:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613161207;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=gt59kqaEZ7xfhGCp5840Gc6/5TeZEEpPdfjQNFQnsNQ=;
- b=FcsMSIyXNeaLdwUOLHr7RrI9lZPous5eHyd39gM6X2tEOEfNCalbGIwKqErRBjDptbAEoR
- uAFEqPlYTzvBki/YxAzkzLdF3ugMcgCuNUHb6Hk4UimTbbnptZ+dgXdPAGVRr/pY/s56J3
- rBKuOPtvSLCwyc3LsSGf+dJQeRsbQMY=
-Received: from mail-ua1-f71.google.com (mail-ua1-f71.google.com
- [209.85.222.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-54-ysL3x6riM6qXzBPqlVlCzw-1; Fri, 12 Feb 2021 15:20:04 -0500
-X-MC-Unique: ysL3x6riM6qXzBPqlVlCzw-1
-Received: by mail-ua1-f71.google.com with SMTP id s21so227583uap.11
- for <qemu-devel@nongnu.org>; Fri, 12 Feb 2021 12:20:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lAWUV-0003yj-3K
+ for qemu-arm@nongnu.org; Fri, 12 Feb 2021 06:20:03 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:38222)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1lAWUT-0006EU-51
+ for qemu-arm@nongnu.org; Fri, 12 Feb 2021 06:20:02 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id bl23so14898857ejb.5
+ for <qemu-arm@nongnu.org>; Fri, 12 Feb 2021 03:20:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=Lve7dpICVmMuYk/dTxbhJ3NggBKtPwRUvp7xp/DvJMw=;
+ b=VRdz6LL4WoCEjSoLL0UMVKUhKqC0gP4U99SyO5JuUub0OPFrCyaM6HSHIep4tIbMfj
+ vb/Opa3l0L/vm29Kt003/q29miFU/YvN798x8CGUqFgq8keFaEMoe4jt+qRjDjPwM2Jj
+ YFtKGVpnYMFAsi+iDmxE5dl4G89WlAVLZ1GDGULVF5CEMdFQMplDc+cDqeGaeVEZxHzO
+ yTHPaQrvlcZs6QKitd1ADs9ViTgrza4oDStXR5cGU5Kv1tpJCxm96zGzBxbi9R0aoBNS
+ l3DSk6XOOk7YdHV8TO8qYvqfSGB4CsxbjRuLvSWGmllZTClmVi8qovBh05COxWr1hzAP
+ Sf+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gt59kqaEZ7xfhGCp5840Gc6/5TeZEEpPdfjQNFQnsNQ=;
- b=M5H4SegK97LcWNHG0luMSMkdq6Q+OKQCwWxN+thRZDnPfGE++iezv+O6sXgd5nGuQt
- DwTedSV62R6sprIM9fya7w7I7Ibh0/ycvKbwcvf2gZqGaO3BnmidXdIvFycpmGL11UEY
- VA5bd18xmt4+PRDN9E2SWPmOUGFIbFwUu8yAlsFFuqu0NMJisJG5GKcoIj0xeOkJ+3Mg
- 1qR1OVp9u+mNIipgjGDibj7yVtgDhYSioHCkoFaHUgSm8PGEkDud/jRAy2nTRLHqIoCb
- 2K0mLeKyiyBfMTMB4NNdfhR7tdVtzdaLfd9fYSHpkVigrwI9CM0DbY4l9p8YXaOtTpG6
- xPZg==
-X-Gm-Message-State: AOAM531lJluMWTGUf+y4Lxvu6nEOK/owWTJL+EjQRWWBMSMmNyv0v5lX
- FSicF1GmJ4nHCi322oWRNv2vNuXaUQsR8k48HRLOU+5iv+ZlDk3DHSvbLSYl8qk2A9Acl16Jaz6
- JjXuX6LzLsUpTM1qFMRZucNYKjJVNwcE=
-X-Received: by 2002:ab0:23c3:: with SMTP id c3mr3380784uan.133.1613161204179; 
- Fri, 12 Feb 2021 12:20:04 -0800 (PST)
-X-Received: by 2002:ab0:23c3:: with SMTP id c3mr3380763uan.133.1613161204004; 
- Fri, 12 Feb 2021 12:20:04 -0800 (PST)
+ :message-id:subject:to;
+ bh=Lve7dpICVmMuYk/dTxbhJ3NggBKtPwRUvp7xp/DvJMw=;
+ b=OmHovNAn+GDRbN7xuhGCIWD09XfdRc97qXk6u3mDxVq1kWZxWeXIg1YRiTNgK11930
+ s2C2DQwxKyagGMEM6nnWUYm/cr88jKjdcbWi1RfbGupypBQj+kJIH23yZBvy1yPElQRh
+ 0C7v+NewBTFXfb0QvYV27k07BtamGOG92BSQATmLrbTP6lX8rgtM9SZyBdi+JniLL/xM
+ T34XPACx/NL+HxPi0KXcfz9ftufqrjB5tXb1GlUnnySmFY8teBR9MpWmfw2KgcrU20Ik
+ Yw2ayGkmvk5y/pRAQuE3Zb88iaHJWAEgLqhXiVR5coUtUBHbV88p6A/exlmXxQh7phzU
+ ZiGQ==
+X-Gm-Message-State: AOAM532IIS6H1DnBSLOat395diQ/yruB3mQlemb7EhaQVwoslAKiwzTN
+ K2KKXp2zb4UamU/djRNmwuC6+lkoPvw/YKx8m839YlHm5hvR5w==
+X-Received: by 2002:a17:906:184e:: with SMTP id
+ w14mr2573056eje.56.1613128799477; 
+ Fri, 12 Feb 2021 03:19:59 -0800 (PST)
 MIME-Version: 1.0
-References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
- <20210211220055.19047-2-nieklinnenbank@gmail.com>
-In-Reply-To: <20210211220055.19047-2-nieklinnenbank@gmail.com>
-From: Willian Rampazzo <wrampazz@redhat.com>
-Date: Fri, 12 Feb 2021 17:19:38 -0300
-Message-ID: <CAKJDGDZViLxw4DvKSca5V=fWcMuu+HVXpMxNWqWg9sgbCg_yZA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] tests/acceptance: replace unstable apt.armbian.com
- URLs for orangepi-pc, cubieboard
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+References: <20210205170019.25319-1-peter.maydell@linaro.org>
+ <20210205170019.25319-21-peter.maydell@linaro.org>
+In-Reply-To: <20210205170019.25319-21-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Feb 2021 11:19:48 +0000
+Message-ID: <CAFEAcA-zM5iQQwbKpAwRKuv5upDguxRthzmhJVzaJ7sn4jmp2Q@mail.gmail.com>
+Subject: Re: [PATCH 20/24] hw/arm/mps2-tz: Add new mps3-an524 board
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=wrampazz@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.569,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- qemu-devel <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- b.galvani@gmail.com, qemu-arm@nongnu.org,
- Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>,
- Cleber Rosa Junior <crosa@redhat.com>,
- Philippe Mathieu Daude <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ucdXXrj+cuum
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Svg6fRpSiCVE
 
-On Thu, Feb 11, 2021 at 7:09 PM Niek Linnenbank
-<nieklinnenbank@gmail.com> wrote:
+On Fri, 5 Feb 2021 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Currently the automated acceptance tests for the Orange Pi PC and cubieboard
-> machines are disabled by default. The tests for both machines require artifacts
-> that are stored on the apt.armbian.com domain. Unfortunately, some of these artifacts
-> have been removed from apt.armbian.com and it is uncertain whether more will be removed.
+> Add support for the mps3-an524 board; this is an SSE-200 based FPGA
+> image, like the existing mps2-an521.  It has a usefully larger amount
+> of RAM, and a PL031 RTC, as well as some more minor differences.
 >
-> This commit moves the artifacts previously stored on apt.armbian.com to a different
-> domain that is maintainted by me and retrieves them using the path: '/pub/qemu/<machine>/<artifact>'.
+> In real hardware this image runs on a newer generation of the FPGA
+> board, the MPS3 rather than the older MPS2.  Architecturally the two
+> boards are similar, so we implement the MPS3 boards in the mps2-tz.c
+> file as variations of the existing MPS2 boards.
 >
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  tests/acceptance/boot_linux_console.py | 46 +++++++++-----------------
->  tests/acceptance/replay_kernel.py      |  6 ++--
->  2 files changed, 18 insertions(+), 34 deletions(-)
+>  hw/arm/mps2-tz.c | 136 +++++++++++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 132 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+> index 17173057af2..aa57c4b2596 100644
+> --- a/hw/arm/mps2-tz.c
+> +++ b/hw/arm/mps2-tz.c
+> @@ -27,11 +27,13 @@
+>   * http://infocenter.arm.com/help/topic/com.arm.doc.dai0505b/index.html
+>   * Application Note AN521:
+>   * http://infocenter.arm.com/help/topic/com.arm.doc.dai0521c/index.html
+> + * Application Note AN524:
+> + * https://developer.arm.com/documentation/dai0524/latest/
+>   *
+>   * The AN505 defers to the Cortex-M33 processor ARMv8M IoT Kit FVP User Guide
+>   * (ARM ECM0601256) for the details of some of the device layout:
+>   *   http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
+> - * Similarly, the AN521 uses the SSE-200, and the SSE-200 TRM defines
+> + * Similarly, the AN521 and AN524 use the SSE-200, and the SSE-200 TRM defines
+>   * most of the device layout:
+>   *  http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
+>   *
 
-Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+Just noticed that I forgot one place in this header comment that needs
+updating; this trivial fragment also should be squashed in:
 
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -16,6 +16,7 @@
+  * This source file covers the following FPGA images, for TrustZone cores:
+  *  "mps2-an505" -- Cortex-M33 as documented in ARM Application Note AN505
+  *  "mps2-an521" -- Dual Cortex-M33 as documented in Application Note AN521
++ *  "mps2-an524" -- Dual Cortex-M33 as documented in Application Note AN524
+  *
+  * Links to the TRM for the board itself and to the various Application
+  * Notes which document the FPGA images can be found here:
+
+
+thanks
+-- PMM

@@ -1,97 +1,100 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3218153lfc;
-        Fri, 12 Feb 2021 05:53:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwG7tM0zGQxdLY14cbtB9jqnkEFBbLxrUnMs7mSQ5uOaaK5uEsBSevoQo/xEZJ+Exms6w8V
-X-Received: by 2002:a25:af13:: with SMTP id a19mr4145986ybh.496.1613137983019;
-        Fri, 12 Feb 2021 05:53:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613137983; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3226777lfc;
+        Fri, 12 Feb 2021 06:04:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzUOZiwVTIPn3ycYmYD2flxG/Pa0FLPyx2LOYzoq5UKbXrl88B1b9AFDtSA0d/8M/6nLYrz
+X-Received: by 2002:a25:a241:: with SMTP id b59mr4395886ybi.289.1613138656541;
+        Fri, 12 Feb 2021 06:04:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613138656; cv=none;
         d=google.com; s=arc-20160816;
-        b=oiUNST8G7b06eZACPDrZDK1PzkG9zlxD7f01v70986iKIHqEee56GtKSbYFFmErxeI
-         gVLoTBnYWniURc7LQjsJCNj5qzwyjzqcv/RMrvAvJnOzJjc4CoR6xJvxVbyZN+ZrsWx/
-         LDMZinJkisJ15iCq/74V1LWEPAyuLQtD7VC/wIYd0dvXtz3v981WqnCfTqmZG6nseEfO
-         rTZGMRzFV60O5nRlJ7erseJSwCQL2duMwElvkoOcwiysAax+5WHYmrG6jwVE3jlGZgmK
-         ypLPU7xwOTQw0urEP1Shrbt6d/NllXiliAPMivTA/iXtuaCcr+6KDbtXU+OAS9Q7llTm
-         wwfg==
+        b=e1TNtWPy4EqSeXFIjaN5pk/Da7a7DmaXN/6nWmSrzKGF10BIpbUDbUHiFh0Uho8/Jm
+         8Bdb9c3F2z15Kh8glie/fhKPfVRV1cqF18AmRCpuC+wej0RFXSZk/POYfHxUBY5Z6814
+         UKF1xW/8Q8J3m8ue0ShYcBW3oVGyNoS+Fk6VnBRZz25SpOJ9lFMsqVd/TEdm3+GRiDFA
+         O4UCH6OxnEMP3AOQtpWpRVgC9mH2DUYJ6BqmqYp1osY6B45xXuOlXTgoOeP/YMtm6bfF
+         kqfLfYvZ2/qcbMLZBhsATXqlgAxUYAYULUEuBONshvDMsIaUokjQ/irgw8PlOFNHQZKV
+         zCDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=WqCiZKf/bOd743/BAXPwMMt1kMi3GtNVDcGv11sQawY=;
-        b=TMlEnr4hFeg0KuXeWOM1581p/p5Q8UpHHKC136c2PmrAHyl7/ju1lHB1/gM5a7o1m0
-         2+CXX9SV/jCszv21pGiRIRkk6TMJ6OB1J/+kLfEsBrf/gr8XbC0kDBTBaDfDewWpq2HZ
-         CQYWo1CfXEAsvUdQ5tws9duRvrAXa3WEGy/Jgca5GkBcqb+UmAFOcMyuTFe1w6TvkXYu
-         cf836zIYJzn8Y5Yj0VjGCsFn4z2m46/8yLUGetH15Ug7TBoCNiPE9sfBfTYGxgbldnBn
-         u5t1h0Eggf0a2+aLjckR5KDyB+vXjM8yHcCWagJGvTzGz9+082k8QstYJQzvA3wD6Qh/
-         nOyA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=fF2W9d5LCIknpBvbcOHR3rE5jcx8+dqxytYCzruss0c=;
+        b=UbMkqen/Lgb8yxE0iWg5FGroY0VaorWrywN8g5Yp1RprDwM/OLBs0lGpl0TUB76HA7
+         yTT039bo9dfIpLmLywLHCXHvM8YtVjKwuPcTDi/04P47HHG/duFxBd/mCJAZbxASybB+
+         cG/oynqhMj1y+gYBJ59X7zz/b7q175RTeKd5TxSpFSUxqhQtpriY7FPHP91cilunMXqA
+         nmf/r0IqdB54N/MrFtW+DIQ9bVA7DgxQBDoK/0lhxBtRxW92QhUSD8LF/SuMFFib4dEI
+         XygjkFwpUHf//TwZ9cMizXH8L6CXuv17NqpXEDkgzUtSyfDWuKAYF60CwokOA0hZDLjs
+         8vEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n8J29OrX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dDhsn7zw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x26si4341315ybd.215.2021.02.12.05.53.02
+        by mx.google.com with ESMTPS id u4si8468560ybc.292.2021.02.12.06.04.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Feb 2021 05:53:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 12 Feb 2021 06:04:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n8J29OrX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dDhsn7zw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47678 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAYsY-00032w-Dy
-	for alex.bennee@linaro.org; Fri, 12 Feb 2021 08:53:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49922)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lAZ3P-0007sw-Ut
+	for alex.bennee@linaro.org; Fri, 12 Feb 2021 09:04:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53636)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAYrY-0002lQ-5V
- for qemu-devel@nongnu.org; Fri, 12 Feb 2021 08:52:01 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:43195)
+ id 1lAZ3F-0007qU-81
+ for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:04:05 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:46816)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAYrW-0005wN-2F
- for qemu-devel@nongnu.org; Fri, 12 Feb 2021 08:51:59 -0500
-Received: by mail-ed1-x535.google.com with SMTP id v7so10884119eds.10
- for <qemu-devel@nongnu.org>; Fri, 12 Feb 2021 05:51:56 -0800 (PST)
+ id 1lAZ3D-0002ZS-Ek
+ for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:04:04 -0500
+Received: by mail-ed1-x530.google.com with SMTP id y18so10936482edw.13
+ for <qemu-arm@nongnu.org>; Fri, 12 Feb 2021 06:04:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=WqCiZKf/bOd743/BAXPwMMt1kMi3GtNVDcGv11sQawY=;
- b=n8J29OrXolZflrfy2iZUoY3YoeJrFi6k0d34vfGicQN2P42oefyNhoNO+6szMJODEX
- m9zZTzHrjBrUpnJfSfKPjmGG/vWtEXiXN76G3c1Tu4GkktQQuYGUMyMg81/kDC+qQEPo
- Ma+NuXiCK8VKYuailRdx1T5dDP8WVUMQf9RWUMsajgq5d9jIJgVPbcAVVo8toqS1pfQU
- cNMWOgb7g7KRg+rzRi10kFIzdgTDb12Mdduh4tO1BRdYtZWtS5tOFevdUxvW+6bDRb62
- bMDNi2B720OUeRxG+NYxeMT3ve5WswdC52oGWiRkbidzn92aT+On5frHdxdTuzDiQ6YU
- GzaA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=fF2W9d5LCIknpBvbcOHR3rE5jcx8+dqxytYCzruss0c=;
+ b=dDhsn7zwR07rShUkifY0jCaVqUEgnUwNXN2puZJzDfXWNRPpiQDBVU4DQNvX3KfoPe
+ YuYySITX3bI1HUp3O8JasOBzxErDQsUixK73Bn9ecVsJoI8gMr2pZwts4ElmJpgZukI2
+ B79VvJZnd5lPAuewzhbHHookBncoXbVD33FhUpNmWDhSjWFgt+ySrRUZ6SD/vlNLzlEe
+ ulsglcxEaYIGLOxK2qF8XTkszpa0LNgVZyGxCLp1odkRQUOeXcu1L5xbG5Kr4ia2FrkR
+ ciJF3xxUhvEFYp9wje5jyyoBZQSJJQUiNUNpjMkj81ohc4/k8gOOx6sPGwE5bDXaQTkg
+ 6NRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=WqCiZKf/bOd743/BAXPwMMt1kMi3GtNVDcGv11sQawY=;
- b=StT1sRbaiMNU+Twk/fckwzasZ+Tmn3XeTtUj3i+d8igE+ywSRKyesv6I8xHRDtypJe
- lZ+tlQ6KcgmMneTgK2o80lqFxCekCHUKxlBIQqEntiAVjbfZ9LJW2B9F48CRMjT/QTso
- H0av/qk0FH9hYD9O420TCh2FrMsxY7T9YornGPVVqn1OUf9VyPh2yYbZvlZy/HIxv57Q
- ng4PXZjFA22RyKuHPkmxx1rY5Bd+Nr84XpU70q5x91LEaUDwq7zDIs1OIFyuncRkWDIA
- 73b6WnR53yPzChs+qsJt4gfIEh6MK7t9IDwhnsIUds4wR5ZJJTSy2ZWvq+9rMJgYszVZ
- qbPA==
-X-Gm-Message-State: AOAM530X3QsU+4eunClEZ/PpGXFQuJtwtT6w6/4iNsi6ApZuFqE2Q4Bl
- ywJLxaYEjk5EAKoXRXxorlPmTCMuU2FKf4MlfMrl+A==
-X-Received: by 2002:a05:6402:3494:: with SMTP id
- v20mr3589598edc.146.1613137915610; 
- Fri, 12 Feb 2021 05:51:55 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=fF2W9d5LCIknpBvbcOHR3rE5jcx8+dqxytYCzruss0c=;
+ b=VGXlGTq7eTlXREYwwt4MxiplMVBbR5fEAv+Dot+7+/AZP5KJJgipwtc3PrQNSdnc3D
+ jj1OnBMurkE9AD/viVtELNTJdCrN07bGo+Wtntm15QVriaTtp8iaJHlogZXm139sq9SR
+ rkH6/zk3yLp0WgNYo/uRsF2WWPtlk3KeeH0mgTlLDKjc6kvnepouisWHJHPbJLf3+BzL
+ 1eqFC+RRjq7tBRWQm15pHbpi+PUtMDLMsqHMtkR4o9C5F+yw4aqS7Mkj9gwhrxC/h7mQ
+ 7CFrJMpD9thKfUJumxZPmoMbn3KVUVnJrDKk1dlu3qJazOMN86S5IZ4BhbLcrodLplzu
+ /Lvg==
+X-Gm-Message-State: AOAM532BDJFmtEbWeLeP0diN5J2m0nDq7BAsVpqJiath9QraFBoxuMut
+ mmdjwcTOf637ifNrCx2HIU7SOLTgIHWRZU+venHxPQ==
+X-Received: by 2002:a50:e80d:: with SMTP id e13mr3451195edn.251.1613138641806; 
+ Fri, 12 Feb 2021 06:04:01 -0800 (PST)
 MIME-Version: 1.0
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
- <20210205170019.25319-8-peter.maydell@linaro.org>
-In-Reply-To: <20210205170019.25319-8-peter.maydell@linaro.org>
+ <20210205170019.25319-7-peter.maydell@linaro.org>
+ <CAFEAcA-YqMQATkQXFZHQNy0-JeO2cFvmuHdnhF1+TWAHgf+tcQ@mail.gmail.com>
+ <c4d9df9a-21f5-524e-abfa-dea2ea1ec16f@amsat.org>
+In-Reply-To: <c4d9df9a-21f5-524e-abfa-dea2ea1ec16f@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Feb 2021 13:51:44 +0000
-Message-ID: <CAFEAcA-pDBHjZqswjEo4S9sLOao3vnOM05HdjRhJOGY4Q-GkiQ@mail.gmail.com>
-Subject: Re: [PATCH 07/24] hw/arm/mps2-tz: Make FPGAIO switch and LED config
- per-board
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Date: Fri, 12 Feb 2021 14:03:49 +0000
+Message-ID: <CAFEAcA8YFX+F6LwLAzQh1r=hAzn62h2xxv4FjfNdyn6hgwiH=w@mail.gmail.com>
+Subject: Re: [PATCH 06/24] hw/misc/mps2-fpgaio: Support SWITCH register
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,76 +103,54 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o6DNkSVMA5d/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UVZzs5l2qMYt
 
-On Fri, 5 Feb 2021 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Fri, 12 Feb 2021 at 13:51, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> Set the FPGAIO num-leds and have-switches properties explicitly
-> per-board, rather than relying on the defaults.  The AN505 and AN521
-> both have the same settings as the default values, but the AN524 will
-> be different.
+> On 2/12/21 2:45 PM, Peter Maydell wrote:
+> > On Fri, 5 Feb 2021 at 17:00, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> >>
+> >> MPS3 boards have an extra SWITCH register in the FPGAIO block which
+> >> reports the value of some switches.  Implement this, governed by a
+> >> property the board code can use to specify whether whether it exists.
+> >>
+> >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> >> ---
+> >>  include/hw/misc/mps2-fpgaio.h |  1 +
+> >>  hw/misc/mps2-fpgaio.c         | 10 ++++++++++
+> >>  2 files changed, 11 insertions(+)
+> >
+> > I changed my mind about the property/struct field name here, I think
+> > "has" is what we tend to use rather than "have". Trivial change
+> > to squash into this patch:
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> What about "use-switches"?
+>
+> use-x: 12 occurences
+> has-x: 9.
+>
+> Is there a difference in the meaning? Maybe have refers to
+> something internal, while use to something external?
 
-Followon from the update to the previous patch, trivial rename
-to squash in:
-
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 94618ae54d2..6e345cf1f09 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -80,7 +80,7 @@ struct MPS2TZMachineClass {
-     uint32_t len_oscclk;
-     const uint32_t *oscclk;
-     uint32_t fpgaio_num_leds; /* Number of LEDs in FPGAIO LED0 register */
--    bool fpgaio_switches; /* Does FPGAIO have SWITCH register? */
-+    bool fpgaio_has_switches; /* Does FPGAIO have SWITCH register? */
-     const char *armsse_type;
- };
-
-@@ -247,7 +247,7 @@ static MemoryRegion
-*make_fpgaio(MPS2TZMachineState *mms, void *opaque,
-
-     object_initialize_child(OBJECT(mms), "fpgaio", fpgaio, TYPE_MPS2_FPGAIO);
-     qdev_prop_set_uint32(DEVICE(fpgaio), "num-leds", mmc->fpgaio_num_leds);
--    qdev_prop_set_bit(DEVICE(fpgaio), "have-switches", mmc->fpgaio_switches);
-+    qdev_prop_set_bit(DEVICE(fpgaio), "has-switches",
-mmc->fpgaio_has_switches);
-     sysbus_realize(SYS_BUS_DEVICE(fpgaio), &error_fatal);
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
- }
-@@ -693,7 +693,7 @@ static void mps2tz_an505_class_init(ObjectClass
-*oc, void *data)
-     mmc->oscclk = an505_oscclk;
-     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
-     mmc->fpgaio_num_leds = 2;
--    mmc->fpgaio_switches = false;
-+    mmc->fpgaio_has_switches = false;
-     mmc->armsse_type = TYPE_IOTKIT;
- }
-
-@@ -713,7 +713,7 @@ static void mps2tz_an521_class_init(ObjectClass
-*oc, void *data)
-     mmc->oscclk = an505_oscclk; /* AN521 is the same as AN505 here */
-     mmc->len_oscclk = ARRAY_SIZE(an505_oscclk);
-     mmc->fpgaio_num_leds = 2;
--    mmc->fpgaio_switches = false;
-+    mmc->fpgaio_has_switches = false;
-     mmc->armsse_type = TYPE_SSE200;
- }
+Generally 'has' (or 'have') means "configure the object to
+possess this thing", whereas "use" means "the object has
+this thing; configure it to actually make use of it".
 
 thanks
 -- PMM

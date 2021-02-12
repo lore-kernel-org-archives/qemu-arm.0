@@ -1,68 +1,106 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp2106693lfb;
-        Sat, 23 Jan 2021 19:01:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzXB4tSTtQ3cgbNjoo6ZbgLAnsCtRl9p2o1k6QwLoTFGhD+HHtgLgdg0hcczMtivMlTE9jX
-X-Received: by 2002:a25:bd4a:: with SMTP id p10mr16131386ybm.79.1611457295180;
-        Sat, 23 Jan 2021 19:01:35 -0800 (PST)
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2768669lfc;
+        Thu, 11 Feb 2021 17:16:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy0CiSfN3JVgqe6oT+AX8Tt9TIXIvrchYfRVyz8E4nPQ2EW43Bz6rw1bLCe2D7Nc2Mo1MHA
+X-Received: by 2002:a25:1b05:: with SMTP id b5mr915820ybb.298.1613092595023;
+        Thu, 11 Feb 2021 17:16:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613092595; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GHi2gsHxwQ19AthmN/5lMUZtkFKQgYbJ0CQUDTd0kXjt0IGAwZrQEFiHDE2q3UIiA7
+         1rBaR8H8sSYb6VlRJQrCTm8sl26OnDCU0p1kOHEJI3/F4ehY52AP4l4VtOfoJyOyymEP
+         bP5hF6xehgjExMUwj/ALAAWn4tWjnhymjluSmPa0FGdPNYf89q5g0RFcUP7DWv+ad+2b
+         f1kdMn9h/gPZrTId0l15t7ueWHYsu9Ump1FB9KTMf9fsThOX6LuKGsj1yJUAqQ6dLYVH
+         I4XxN6NKmZ7n8tbWjPeLx+kHppZURpzWU+AdLwpvnmkVcH5EBJf2gvaxSUlInG8posnJ
+         bTeA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=zhbkOOo8e+tlbudqL5zYEO8FDBFU/M/AjCSDXdUNQys=;
+        b=Mh4A6TSmTwRpC0enveZikBd2vxz7l30WdWRtCQErpzfOSDYzZ74WqLK8zPxgR7wjXU
+         9M0UwyGPImGwWfpTHanLO8DrFbaOLni1odLNZWhMjiunex6ssYUB3YfFnbQjBwdSeXZc
+         BB4n1s26UBFEkiVFP17nGrJYbrcskmJ41G/RIivshE1/aZuo43aim3piUKAJW6U54EBF
+         aupI5IOvktBNdTmpqZ1n/BUrjLcXf7I9cr82Vb+peD6iF4VmSKvUY1oam+U2dUPb+n2V
+         fzWjDUesDWVbTSOoh2a3rtsbSbog0ZoEqJFnt2qva2oXF6jkUWCgXVPtan4EZm99dQBT
+         cGxQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AwZZ2pxf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si13725876ybh.74.2021.01.23.19.01.35
+        by mx.google.com with ESMTPS id t4si6532199ybc.118.2021.02.11.17.16.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 23 Jan 2021 19:01:35 -0800 (PST)
+        Thu, 11 Feb 2021 17:16:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33552 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AwZZ2pxf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53166 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l3Veg-0007HV-EW
-	for alex.bennee@linaro.org; Sat, 23 Jan 2021 22:01:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56024)
+	id 1lAN4U-0002LH-Cf
+	for alex.bennee@linaro.org; Thu, 11 Feb 2021 20:16:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38092)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l3Ve7-0007F5-G3; Sat, 23 Jan 2021 22:00:59 -0500
-Resent-Date: Sat, 23 Jan 2021 22:00:59 -0500
-Resent-Message-Id: <E1l3Ve7-0007F5-G3@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21308)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l3Ve4-0005Kc-0Q; Sat, 23 Jan 2021 22:00:59 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1611457249; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=N9WI0oUSAf8a7jw4nKduJjnVm92pRCcDOfAlu6vAVVNp21XcTuOHbJU9E5r3dMuq1dFz0ai75ffjbgVOVP2vWX13Z7rxWzd8eEWgvo/0ZDu4mOrixKCwQlUKjf8mJVZSkg77Yua6p3h1cWOtrNKuE7Sa42EiI8Ygy1SgO92sKwg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1611457249;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=2GiHNECfFj+HKkBNFj/jdjO1ErByujCTvqDAtnJgzqo=; 
- b=J6X3cYuvyEim4tl/h76QXH+dfKEfmhgd1EkKy5jzO3nX6IfTqw6jeoHx/E1O33V18caqqMCcsqJyuJZJ3MjaX/t99ewUfgOyhkAN1fbvR9xFHjQcXt7et5Gg6rpDFEN9Hejok36V3wn49GDQv0ThgJPZ+x1GU52/bbQA866VOi8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1611457245641472.34127391598815;
- Sat, 23 Jan 2021 19:00:45 -0800 (PST)
-In-Reply-To: <20210124025306.3949-1-leif@nuviainc.com>
-Subject: Re: [RFC PATCH 0/4] hw/intc: enable GICv4 memory layout for GICv3
- driver
-Message-ID: <161145724424.19173.13045858546874721941@c667a6b167f6>
+ (Exim 4.90_1) (envelope-from <crosa@redhat.com>) id 1lAN3g-0002IA-Kz
+ for qemu-arm@nongnu.org; Thu, 11 Feb 2021 20:15:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42815)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <crosa@redhat.com>) id 1lAN3a-0006TV-Tz
+ for qemu-arm@nongnu.org; Thu, 11 Feb 2021 20:15:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1613092537;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zhbkOOo8e+tlbudqL5zYEO8FDBFU/M/AjCSDXdUNQys=;
+ b=AwZZ2pxf02v1vs7TaF3gxOLGM2v3at321a69oRwlayT5uOulbCHNEuZoqNL+U5TLz1TnE4
+ c4YlCyV073wSVCk3uRK13M+H/JVUUWtCir+4gwuwr5fNFcKL8AeZZhPxeHH3+fE4e8Mymy
+ 46b/2oRzReKNXIR7/g+4n7O5VJQaFuQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-581-nj2j0xCeMoOcFpOKF0aoGw-1; Thu, 11 Feb 2021 20:15:32 -0500
+X-MC-Unique: nj2j0xCeMoOcFpOKF0aoGw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 95E33192CC40;
+ Fri, 12 Feb 2021 01:15:30 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-112-63.rdu2.redhat.com
+ [10.10.112.63])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7522160657;
+ Fri, 12 Feb 2021 01:15:29 +0000 (UTC)
+Date: Thu, 11 Feb 2021 20:15:27 -0500
+From: Cleber Rosa <crosa@redhat.com>
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Subject: Re: [PATCH 1/2] tests/acceptance: replace unstable apt.armbian.com
+ URLs for orangepi-pc, cubieboard
+Message-ID: <YCXWr40cF3sGiUah@localhost.localdomain>
+References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
+ <20210211220055.19047-2-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: leif@nuviainc.com
-Date: Sat, 23 Jan 2021 19:00:45 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -2
-X-Spam_score: -0.3
-X-Spam_bar: /
-X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_SBL=1.623 autolearn=no autolearn_force=no
+In-Reply-To: <20210211220055.19047-2-nieklinnenbank@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="5hBjFQtvqantboxP"
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=crosa@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.569,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -75,50 +113,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, shashi.mallela@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, f4bug@amsat.org,
+ b.galvani@gmail.com, qemu-arm@nongnu.org, Pavel.Dovgaluk@ispras.ru,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B9uQL6VjAhkS
+X-TUID: LVBZQinKgdlG
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDEyNDAyNTMwNi4zOTQ5
-LTEtbGVpZkBudXZpYWluYy5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
-b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
-cm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIxMDEyNDAyNTMwNi4zOTQ5LTEt
-bGVpZkBudXZpYWluYy5jb20KU3ViamVjdDogW1JGQyBQQVRDSCAwLzRdIGh3L2ludGM6IGVuYWJs
-ZSBHSUN2NCBtZW1vcnkgbGF5b3V0IGZvciBHSUN2MyBkcml2ZXIKCj09PSBURVNUIFNDUklQVCBC
-RUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4
-aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1s
-b2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0g
-aGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBU
-RVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0
-NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11
-CiAtIFt0YWcgdXBkYXRlXSAgICAgIHBhdGNoZXcvMjAyMTAxMjMyMzAxMDUuMjA3NjI3MC0xLXJp
-Y2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcgLT4gcGF0Y2hldy8yMDIxMDEyMzIzMDEwNS4yMDc2
-MjcwLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwogKiBbbmV3IHRhZ10gICAgICAgICBw
-YXRjaGV3LzIwMjEwMTI0MDI1MzA2LjM5NDktMS1sZWlmQG51dmlhaW5jLmNvbSAtPiBwYXRjaGV3
-LzIwMjEwMTI0MDI1MzA2LjM5NDktMS1sZWlmQG51dmlhaW5jLmNvbQpTd2l0Y2hlZCB0byBhIG5l
-dyBicmFuY2ggJ3Rlc3QnCjIyY2UzZWIgaHcvaW50YzogbWFrZSBnaWN2M19pZHJlZygpIGRpc3Rp
-bmd1aXNoIGJldHdlZW4gZ2ljdjMvZ2ljdjQKNGQyNDAwYyBody9pbnRjOiBzZXQgR0lDRF9UWVBF
-Ui5EVklTIGZvciBHSUN2NApiYWI5MjA4IGh3L2ludGM6IGFkZCBoZWxwZXIgZnVuY3Rpb24gdG8g
-ZGV0ZXJtaW5lIGdpY3YzIHJlZGlzdHJpYnV0b3Igc2l6ZQo3MWZhNDhmIGh3L2ludGM6IGRvbid0
-IGJhaWwgb3V0IGdpY3YzIG1vZGVsIGluaXQgZm9yIHJldmlzaW9uIDQKCj09PSBPVVRQVVQgQkVH
-SU4gPT09CjEvNCBDaGVja2luZyBjb21taXQgNzFmYTQ4ZmExNjI0IChody9pbnRjOiBkb24ndCBi
-YWlsIG91dCBnaWN2MyBtb2RlbCBpbml0IGZvciByZXZpc2lvbiA0KQoyLzQgQ2hlY2tpbmcgY29t
-bWl0IGJhYjkyMDg1NWZiZSAoaHcvaW50YzogYWRkIGhlbHBlciBmdW5jdGlvbiB0byBkZXRlcm1p
-bmUgZ2ljdjMgcmVkaXN0cmlidXRvciBzaXplKQozLzQgQ2hlY2tpbmcgY29tbWl0IDRkMjQwMGNk
-YTA3YiAoaHcvaW50Yzogc2V0IEdJQ0RfVFlQRVIuRFZJUyBmb3IgR0lDdjQpCkVSUk9SOiBzdXBl
-cmZsdW91cyB0cmFpbGluZyBzZW1pY29sb24KIzI1OiBGSUxFOiBody9pbnRjL2FybV9naWN2M19k
-aXN0LmM6MzkxOgorICAgICAgICAgICAgKmRhdGEgfD0gKDEgPDwgMTgpOzsKCnRvdGFsOiAxIGVy
-cm9ycywgMCB3YXJuaW5ncywgOSBsaW5lcyBjaGVja2VkCgpQYXRjaCAzLzQgaGFzIHN0eWxlIHBy
-b2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2Ug
-cG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBp
-biBNQUlOVEFJTkVSUy4KCjQvNCBDaGVja2luZyBjb21taXQgMjJjZTNlYjZmOTBhIChody9pbnRj
-OiBtYWtlIGdpY3YzX2lkcmVnKCkgZGlzdGluZ3Vpc2ggYmV0d2VlbiBnaWN2My9naWN2NCkKPT09
-IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBm
-dWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMTAxMjQw
-MjUzMDYuMzk0OS0xLWxlaWZAbnV2aWFpbmMuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1t
-ZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
-cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXct
-ZGV2ZWxAcmVkaGF0LmNvbQ==
+--5hBjFQtvqantboxP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Feb 11, 2021 at 11:00:54PM +0100, Niek Linnenbank wrote:
+> Currently the automated acceptance tests for the Orange Pi PC and cubiebo=
+ard
+> machines are disabled by default. The tests for both machines require art=
+ifacts
+> that are stored on the apt.armbian.com domain. Unfortunately, some of the=
+se artifacts
+> have been removed from apt.armbian.com and it is uncertain whether more w=
+ill be removed.
+>=20
+> This commit moves the artifacts previously stored on apt.armbian.com to a=
+ different
+> domain that is maintainted by me and retrieves them using the path: '/pub=
+/qemu/<machine>/<artifact>'.
+>=20
+> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> ---
+>  tests/acceptance/boot_linux_console.py | 46 +++++++++-----------------
+>  tests/acceptance/replay_kernel.py      |  6 ++--
+>  2 files changed, 18 insertions(+), 34 deletions(-)
+
+Tested with:
+
+  $ export AVOCADO_ALLOW_LARGE_STORAGE=3D1
+  $ ./tests/venv/bin/avocado run \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_cubieb=
+oard_initrd \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_cubieb=
+oard_sata \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orange=
+pi\$ \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orange=
+pi_initrd \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orange=
+pi_sd \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orange=
+pi_bionic_19_11 \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orange=
+pi_bionic_20_08 \
+    tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orange=
+pi_uboot_netbsd9 \
+    tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_arm_cubieboar=
+d_initrd
+
+Resulting in:
+
+   JOB ID     : f767a43482aa90545e740120a44cba64ab07dd3a
+   JOB LOG    : /home/cleber/avocado/job-results/job-2021-02-11T20.07-f767a=
+43/job.log
+    (1/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+cubieboard_initrd: PASS (23.49 s)
+    (2/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+cubieboard_sata: PASS (21.98 s)
+    (3/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+orangepi: PASS (12.37 s)
+    (4/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+orangepi_initrd: PASS (33.78 s)
+    (5/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+orangepi_sd: PASS (45.47 s)
+    (6/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+orangepi_bionic_19_11: PASS (69.69 s)
+    (7/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+orangepi_bionic_20_08: PASS (89.06 s)
+    (8/9) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+orangepi_uboot_netbsd9: PASS (40.82 s)
+    (9/9) tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_arm_cub=
+ieboard_initrd: PASS (61.19 s)
+   RESULTS    : PASS 9 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |=
+ CANCEL 0
+   JOB TIME   : 398.87 s
+
+Both "test_arm_orangepi_bionic_19_11" and
+"test_arm_orangepi_bionic_20_08" barely made within the 90 seconds
+timeout.  I realize that the system I used is quite limited, so I'll
+let others reason about the increase of the timeout.
+
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
+Tested-by: Cleber Rosa <crosa@redhat.com>
+
+--5hBjFQtvqantboxP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAmAl1qwACgkQZX6NM6Xy
+CfNVFBAAxogKf8dllq9I35UW1azxsLqS4SJmrUfsLx6QHhJLizesq4Dou+RtAGNZ
+pYp0KiT/47FbsobiRfyOATrRiOqcAbTTehkKS/puHMHhtdFyTYyRGhfOZDLlmzH6
+e3JKIAbYQJhUENEOQG63U1CmUYuxcJ61qwKm/8I9qrCf96Y7usSeJRG1Yj/NfhlT
+xKSb5Rd5k6cpBO9oVehXE72vn9qxPMTSJo7fEr1vU3/bILKeI7FNNGc3LYB/ed9J
+/a+bggEV50uwM718FdJjGAqt+P0HiUv2KloNrVbHHQ6/dP82+6yb7Aoc4fmtxBCR
+pDusIZtEuOTtM8dg/RUcKGP/AcK+leKG7GL1p+Qkxd3XB4SdH9MHdsx/kprHaujW
+wKMHqx3d7nmmXkP5YSZwPMpBCLtUrSs0VyS3jsDj1FYuJmDxjZUn2OoWSc97Gjar
+70DZWSKU2nshi9CrXwWCdNvLpmkPMEXOej1MZKKg8vK08qBeIFX6YnMS8ZL2ptPr
+cbaGOE6IUsV2TmNYPjZFSLnIAGjiCOvoQHf9p3v6M92nAM9qDuwppsOjY4DWkwon
+3gSZ6VuTPUunZ3ZiGOtZJRfy0ULke7l6igXXbqQRV2xDMdHwRPCjeXI2Qg7PLi1Q
+5b54qTog0RMEltgYxf2h0WFhcrmjWV/OiscsAvT4BY5edRTUVzc=
+=zrNM
+-----END PGP SIGNATURE-----
+
+--5hBjFQtvqantboxP--
+

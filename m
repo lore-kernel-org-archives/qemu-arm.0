@@ -1,103 +1,115 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3267734lfc;
-        Fri, 12 Feb 2021 06:52:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw2KZzE/wvgrNt7VEAnGBy/zpWoZEndvQGXs3iaKkpKqj/M4rqLkaGAx45RD+armZabBIVC
-X-Received: by 2002:a25:888f:: with SMTP id d15mr4650644ybl.12.1613141575476;
-        Fri, 12 Feb 2021 06:52:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613141575; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3429152lfc;
+        Fri, 12 Feb 2021 10:12:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyMed6PfHkNn747/oS8n4Z0QJtLEM2Ufvn+BGzJ7lzLI4WSr8Ei+9skMRd7hCmBq1fpDDKx
+X-Received: by 2002:a1f:1d4a:: with SMTP id d71mr2757717vkd.12.1613153523971;
+        Fri, 12 Feb 2021 10:12:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613153523; cv=none;
         d=google.com; s=arc-20160816;
-        b=R5pQ+GsgS0IvVObks9jKBNQCb6gAXYTc0+3vh7a5EcSNNOeoRr5AtuGJgnBGDlmwXl
-         RXwMwsLws3fPFtG6szSd9CbDvqf8MDTAz1g0mUIRWXMDxq/yfpDByACxXaxcHNOTZ4fV
-         DYnF5GK++tp82L1dO7fpo/+x6vQuoYW9ndH/mtfQNQMQfsTgullK9pMc5vXwJkCspWY4
-         AN6yq17u5+KD/pbWj+4qZxG+kFoBNR+3cUFgstyTdhAN6O6ZscoF/cdfcQ2VdlEE6fLt
-         CXIuqQ3yG5VQfT+6bx34l1+89yq04kvqKGYCkQIfrcBQ4fOyNUq5qh/5wAurxKiNh9/1
-         dQhg==
+        b=AnJGDRKD6aGoH6ahKSFOlXUIzEXYQiMyJAcJqjTCf18es4NkonwsEmYenUnw8Md30S
+         4z7hB3rzkSQrtPX2VXMu2i6QkQSaQvJkbuPBb0af7QTR49ztWSqPFJ7ZzjSaQWnlCD25
+         5BqhASdyKGMKU7Y1Ki4EaZ/MiPz2o+FQ5DJ7X8+KVP791tnw5YNzf729rnmnupiSi7g7
+         Bwgg4S6nkn60bv6Ge5En4YvgNWYhv7XMBLp8qK4za6qpNjPqneoswpx8Vnyps819Znak
+         tVDpRd+sG1uyUScJUXWMQmJEUdt708Sxs8eFO4OSd1fHV5NWDaSnSYV0/pgFuVjpnftR
+         frdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=qbP3yM0YcO4nZFTX7Qs/Q7+TlKZBoEjilcf3Xsl+S2s=;
-        b=oqGCrtJ7c/TO39D7QbQ+45fQAzqv6u5xkbR78gdAeqtXj/Hk1PsVgQtqMA+mqXcogK
-         Ku45zm0UeXgmpQbSm67TRNZNNv+FwZKw+Bu6RFMDOQ5jXcSw0M7uFYk4HpuPbFbXfefn
-         BibGkWS0/sn91zabNWlxreS/J6x93EgefvYdTip+dkcFTh76lKCml1zxb6EKJkQY9AUi
-         4iI3JzcwktoZ2Yl1Jk1jHE7QLF1iMeskUNy17BYX3H36SzKPY9NEFu8FlvMEJ5q3i9bR
-         VR/Ka3fZJtbAUPlPj2B0Fdgl3r1wsKZ6pDi/wY7muUlzoF5U/oIvbmRWzeHSpScon+1G
-         lyMA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=lZ9Hh7Z92B/pLvoC2lyRIqAJR+dMlMcZoV5i6TTAjKg=;
+        b=EjzMIVxe7cmgooVXPVz/ZldNMEegXptSeAo7MXRVTAnExWjn7/Bu/Z+/NzMqAPDuY+
+         JnKO2grUfMMBaefoPUWoNUk/hCWlDYLXHBZoxpU0yyqXGvjSGZsvCL35uLP2E+iW6QJ2
+         /K3hEVJOvkVWCTiep9sr/rzMX4YbpDYt2EQmqVkSz3fp6I9VxElffCIRmpsRTM0oa/6Z
+         X6vaLpeSuf8xdfMaI8g+ctyYQm639YOpPjnKN9CZdFOEycXo47T18Sw+18Quy6mxtiPm
+         0ScX4Tt+EfHU/BRyyjvNa/qguVEBtD7xVgNG7CAtEKvNtHOB5pVA6imyq0uc+ZO687Sl
+         njjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KhmBIVuN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LK4qK4gK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17si8236722ybk.194.2021.02.12.06.52.55
+        by mx.google.com with ESMTPS id l6si1697300uan.132.2021.02.12.10.12.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Feb 2021 06:52:55 -0800 (PST)
+        Fri, 12 Feb 2021 10:12:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KhmBIVuN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LK4qK4gK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47466 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:55646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAZoU-0001xz-TK
-	for alex.bennee@linaro.org; Fri, 12 Feb 2021 09:52:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37480)
+	id 1lAcvD-0000B3-8Y
+	for alex.bennee@linaro.org; Fri, 12 Feb 2021 13:12:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAZnp-0001xG-FQ
- for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:52:14 -0500
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:40854)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lAcun-00008k-Ep; Fri, 12 Feb 2021 13:11:37 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:51930)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAZnn-0007DU-1k
- for qemu-arm@nongnu.org; Fri, 12 Feb 2021 09:52:13 -0500
-Received: by mail-ej1-x62d.google.com with SMTP id i8so16077573ejc.7
- for <qemu-arm@nongnu.org>; Fri, 12 Feb 2021 06:52:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=qbP3yM0YcO4nZFTX7Qs/Q7+TlKZBoEjilcf3Xsl+S2s=;
- b=KhmBIVuNJ5B8eFtgQrPzdUIl8gp1ykocEfsml59cVOn4KvKquGbLQ9UZIFmn8qN14j
- XrjfRVZi0fFDb64H+78L67JYBFCf5A5E65i6usS5D/qNdjgrOLk3qVfPq9VSj00dXyPB
- H9gPrwqiDBykdiuQ+fD8hvZTBRgZ+LkOTw3bbPuZNDjeL5paxqIQuJIvfxqKFdRGlvLo
- +9j4SR1yAz6Z0ier7bXcZ/rC7lIKrW4zRtsvt2mCcdqc4OiLFBBrI34RJs5rdxihbsaP
- qprIxxG3Gb0BXfdyuV0IeYZa37AqXCtNEEmIIfIBZyBZKShS/E5SwV376lo0qeggqJUX
- 20ZA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lAcul-0000My-Ol; Fri, 12 Feb 2021 13:11:37 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id u16so454101wmq.1;
+ Fri, 12 Feb 2021 10:11:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=lZ9Hh7Z92B/pLvoC2lyRIqAJR+dMlMcZoV5i6TTAjKg=;
+ b=LK4qK4gKzALi9ChGoeeNngxigsZakWYQ8QV7uKb1kMrCCujEeWDP9JrrjfrYf2Wwuj
+ 9ir9DmmTZlQvK5bC3iNWq26gtRIFV+PvdgHEUUsrTRiQLUZjBj0aD5svXEn6wBgV91Hr
+ bJBQfoeCtKScRf0C6V6YIf0BQKIqcH+ClFwaedaO4Qrox+du+6PR3wA2/AR81fToz8HV
+ pkT31WRxW+cNTEIKpUh2/CnBO0ANj0X5U7TmagDBwLW/YdaJBN4k5nk4wlF7mesvQzAj
+ boE+1acs5XsH/zTETeMmrVUct3C4JASOn9gv1qkBhgEuoESA21cUd0QXKVSfLsr59tPv
+ 5Bog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=qbP3yM0YcO4nZFTX7Qs/Q7+TlKZBoEjilcf3Xsl+S2s=;
- b=Hw+0xWH/EWsIdK7CmKwCeTPet7IAbguMnMQMu/ajEAO6KJB2y0U3GZHQzAw5HEBK7+
- 7OklfRtWH9Iw0+7g+xI8ccYC58NWABIKIiUsiOcB/BGf62g3gHRm8DRomw99KSMkS/gO
- z34ve3Y6WxxOcn+Dxsy+eEi7DOV1FhrbvwyW5bVdJc5aZe7ftw4JLsVzxzRBmsSg4q6n
- Do8CIm9C1Vbkg9UWSqtH155kwqK0z3Knl9IFUyLmXe8ahe6tfOjbql8zbi4IKb+QU3nD
- e3raE7EX5erCEQeFaVS1nfzBuFRumAd8MYGq137ducJWN9lQOPk/Z3V8rhtsLQnsS3WS
- c64A==
-X-Gm-Message-State: AOAM5321PTOIESMJn297IoHG8UKdD0Q7MNky8gKntOa+40FkB0cMQK+V
- UFodTERvqqjhUjNi0qksRb1r5FezjzvKQNZ8t9wCH7NAGn1F9A==
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr3523127ejd.250.1613141528287; 
- Fri, 12 Feb 2021 06:52:08 -0800 (PST)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=lZ9Hh7Z92B/pLvoC2lyRIqAJR+dMlMcZoV5i6TTAjKg=;
+ b=HU13v3Z7f8WuOFnHyI9Yw/RecMdy/1R26Xm8N5+3eDEeMjvIhqOrdYbnkfAnY/O2ju
+ YxclfoSaKievRWoSnpkaFf3U95TmfcCEissDz5SsD/Pd7ZM90spUuAqBNIzdfltip+4Q
+ WWURuu88Ohe8CKAkfnpmNFUUkydrkz4xEA7hq6wnWYu0nA+wVayb8C+N2vrzlR4Exb9i
+ D7q54FUr7BXjWjsmtBkl+nWrEMOzA/NfBnChbAaQzQouHiXkKJ/puv6juB+bcQ06zPsC
+ ltZGQm6v80T6AIjCSzo6BIRp6i5mPul/ug1gx5hdIcxaaxuFIGHeTGdlii5LS7nxQmok
+ X+MA==
+X-Gm-Message-State: AOAM531S6VL1ZGYRc7uXDaPkDQqYVmCgXE3le8VlXt+xhbL40DRtjZ/r
+ QJB/WUmW5ffleBQNpWYO9YAS0fQZ+d0=
+X-Received: by 2002:a1c:28c1:: with SMTP id o184mr3685771wmo.183.1613153493668; 
+ Fri, 12 Feb 2021 10:11:33 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id l1sm13851580wmi.48.2021.02.12.10.11.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 12 Feb 2021 10:11:33 -0800 (PST)
+Subject: Re: [PATCH 02/24] hw/misc/mps2-scc: Support configurable number of
+ OSCCLK values
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20210205170019.25319-1-peter.maydell@linaro.org>
- <20210205170019.25319-21-peter.maydell@linaro.org>
-In-Reply-To: <20210205170019.25319-21-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Feb 2021 14:51:57 +0000
-Message-ID: <CAFEAcA-JdkHbobhVy6sPVs+juDS=dHrA4=WmSrD0KxkayM361Q@mail.gmail.com>
-Subject: Re: [PATCH 20/24] hw/arm/mps2-tz: Add new mps3-an524 board
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ <20210205170019.25319-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <21c387e9-a6e7-2c99-28e5-d4ad3e717e1c@amsat.org>
+Date: Fri, 12 Feb 2021 19:11:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
+MIME-Version: 1.0
+In-Reply-To: <20210205170019.25319-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.119,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,57 +124,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JFiS8MhZsdFl
+X-TUID: uVC64wxONbzW
 
-On Fri, 5 Feb 2021 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Add support for the mps3-an524 board; this is an SSE-200 based FPGA
-> image, like the existing mps2-an521.  It has a usefully larger amount
-> of RAM, and a PL031 RTC, as well as some more minor differences.
->
-> In real hardware this image runs on a newer generation of the FPGA
-> board, the MPS3 rather than the older MPS2.  Architecturally the two
-> boards are similar, so we implement the MPS3 boards in the mps2-tz.c
-> file as variations of the existing MPS2 boards.
->
+On 2/5/21 5:59 PM, Peter Maydell wrote:
+> Currently the MPS2 SCC device implements a fixed number of OSCCLK
+> values (3).  The variant of this device in the MPS3 AN524 board has 6
+> OSCCLK values.  Switch to using a PROP_ARRAY, which allows board code
+> to specify how large the OSCCLK array should be as well as its
+> values.
+> 
+> With a variable-length property array, the SCC no longer specifies
+> default values for the OSCCLKs, so we must set them explicitly in the
+> board code.  This defaults are actually incorrect for the an521 and
+> an505; we will correct this bug in a following patch.
+> 
+> This is a migration compatibility break for all the mps boards.
+> 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> It would be possible to avoid the compat break, but we've already
+> broken compat for the mps boards this release cycle (eg in commit
+> eeae0b2bf4e69de2) when we added Clock support to the armsse code, so
+> there's no point in trying to keep compat for this change.
+> ---
+>  include/hw/misc/mps2-scc.h |  7 +++----
+>  hw/arm/mps2-tz.c           |  5 +++++
+>  hw/arm/mps2.c              |  5 +++++
+>  hw/misc/mps2-scc.c         | 24 +++++++++++++-----------
+>  4 files changed, 26 insertions(+), 15 deletions(-)
 
-> +static void mps3tz_an524_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_CLASS(oc);
-> +
-> +    mc->desc = "ARM MPS3 with AN524 FPGA image for dual Cortex-M33";
-> +    mc->default_cpus = 2;
-> +    mc->min_cpus = mc->default_cpus;
-> +    mc->max_cpus = mc->default_cpus;
-> +    mmc->fpga_type = FPGA_AN524;
-> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
-> +    mmc->scc_id = 0x41045240;
-> +    mmc->sysclk_frq = 32 * 1000 * 1000; /* 32MHz */
-> +    mmc->oscclk = an524_oscclk;
-> +    mmc->len_oscclk = ARRAY_SIZE(an524_oscclk);
-> +    mmc->numirq = 95;
-> +    mmc->raminfo = an524_raminfo;
-> +    mmc->armsse_type = TYPE_SSE200;
-> +    mps2tz_set_default_ram_info(mmc);
-> +}
+TIL DEFINE_PROP_ARRAY(), thanks.
 
-Oops, this is missing a couple of initialisations for
-the FPGAIO config:
-
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -1016,6 +1016,8 @@ static void mps3tz_an524_class_init(ObjectClass
-*oc, void *data)
-     mmc->sysclk_frq = 32 * 1000 * 1000; /* 32MHz */
-     mmc->oscclk = an524_oscclk;
-     mmc->len_oscclk = ARRAY_SIZE(an524_oscclk);
-+    mmc->fpgaio_num_leds = 10;
-+    mmc->fpgaio_has_switches = true;
-     mmc->numirq = 95;
-     mmc->raminfo = an524_raminfo;
-     mmc->armsse_type = TYPE_SSE200;
-
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

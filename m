@@ -1,117 +1,107 @@
-Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp1504819qvb;
-        Thu, 7 Jan 2021 14:02:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwo8T0NLijOJiZPTc7XRbshRApnUo0SmFnrb2GLfgFMYYRBABZbmIPU4ZPG0T3iv5FRRMOU
-X-Received: by 2002:a25:d2c3:: with SMTP id j186mr1337193ybg.386.1610056965922;
-        Thu, 07 Jan 2021 14:02:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610056965; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5063447lfc;
+        Sun, 14 Feb 2021 11:46:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwbBQfWU2PQ4pio9QATNlxvk5q998iMvVc14dORYcdKV7ysDPs7ixF0QutW5e1Qs8RUyPd6
+X-Received: by 2002:a25:1654:: with SMTP id 81mr17017949ybw.508.1613331971705;
+        Sun, 14 Feb 2021 11:46:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613331971; cv=none;
         d=google.com; s=arc-20160816;
-        b=xlnhxiWNdp+dUmIWujDp8uBowA5SLCCj97wSWgrFZvEfhcOsxhhQl34i3EYGdEPCWZ
-         Dit7F/4MUYondYEO65HuihBW0kxfrkX5iWEz7gy4xYTNpIH3RwVrbALxHxgZV9RhF9b4
-         uufgOmaC8vobbRpTnWsDA25IBivr3xRsXGeQ8AOtOG5w2pvLU91eOR8qa9YKeT+/3zI0
-         4a8hE/r/+DUaFG+Jle8vVrffeP2m7yq5+4xP9k49MjZmY9LdmLhXiL7Tkg3qOoD9XZA8
-         Gbq/4ge6Y/T5Ki5+gYudic+FpY6wdvBKNRd5i3RR6Yav4bzW3Yl0HqAJd+5Rmc9M0E5g
-         t2fg==
+        b=NxB5QpyaKSyBSflxva1K2h/zXFuBUc19OFbz6zerIzykcKGOI7N0G0bbaDRVLh7ugx
+         KMmgC5E6Ja3dT3z3gL9qUcLvOX2ZW0PptyL4l363EFe6uMV3UgotBrrR212NONFBixkk
+         YdfiJg65MHrMWttajdVynA8QLLKRsX9R+Q1lsj5XpMqcP+Kg4JPFTPDS4RaSDXftAP/r
+         MaMCSQ5yz+qkIELRkDzCBlxIlpoiSvlVOefp0N62TA2Iy9vN86va4HOTzxVuz9lbp9rw
+         EAlp/TjOZsLVw/t2/3UgvI6tChR1e6PtKwrHjsnRae9PFw0eVHVbTZiUe+g0eGLe//Gf
+         PRCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wIrYqelWQrLF7t7DOjYcFcQd5x0pSDtWI74x1YUH7vU=;
-        b=sHZ1evdjHm/Meoz4pBdd4gOjgAVNtCA3RilrT5YA17vxmWvzwZGYXDPua1fDGc0Esr
-         olcEov/kjVcygxOeJP92nAJaVH3dNqKTrqrUTk7e80XwxUSMYUYag9UJEcncmD4KYlxQ
-         JccBEAdbapswdG7MIILZYB8yxle8JldEz/w2MVF9Xh3W2K3cCaTFOnYXEaRU2Mv8XoLN
-         rLjB/L8NJysDuHDH119kEjxDnuJhtOP9ffYg39EQIa5oTJm3ssoiRwkuKjycRmhv+lym
-         43woDfwOpiefzgFh9C1ExQly+7vab2VwxRfybCiUYPNyBdPKVg1Ikw8HD4apUSD/QtVY
-         BHSA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=jJRdV1ZLz9Wc3UruihO3ipliHXOgtCfriX4mx0iNut0=;
+        b=GfCqIa764Y4+GaFWPONry3gr9VrntOd7A4UfwKh5J4FgK6PxLRjnk88ODbmFMvAxV6
+         NYkAMf1wVKnhCrCMDveeZ0Ak5MlhskOSb2yW2DgqeTupeAhLQC6EJBzBGdMfOtm6rqPC
+         +U/hXv6gBCK+ajH9J69WhY6nCOYFKAw+oKQWdmDL5ReePhO/Wv3zRmRfGcflT+QTj4sN
+         hvhA3Zv75YJ5tGpc0H/WdWYP19ZMWaXCF/SPYU2GGA3btWwrKfL4XokEtgJVzGSSIxsN
+         apz/hD/57kAsJ9gZY5qjd9CNra4kzecPc2e7tncymRwOPs/Kt5beYrD6tAIVjtZWpkMk
+         KTBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bp06FwBE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="M4dkOy/V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si6789716ybg.47.2021.01.07.14.02.45
+        by mx.google.com with ESMTPS id f4si15862934ybr.481.2021.02.14.11.46.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Jan 2021 14:02:45 -0800 (PST)
+        Sun, 14 Feb 2021 11:46:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bp06FwBE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="M4dkOy/V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33596 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kxdMj-0000Bp-F4
-	for alex.bennee@linaro.org; Thu, 07 Jan 2021 17:02:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41938)
+	id 1lBNLP-0000jI-2q
+	for alex.bennee@linaro.org; Sun, 14 Feb 2021 14:46:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kxdMT-0000Ba-9e
- for qemu-arm@nongnu.org; Thu, 07 Jan 2021 17:02:29 -0500
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:40235)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lBNKn-0000iC-Sj; Sun, 14 Feb 2021 14:45:33 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:35675)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kxdMR-0005Kf-FA
- for qemu-arm@nongnu.org; Thu, 07 Jan 2021 17:02:29 -0500
-Received: by mail-pf1-x42b.google.com with SMTP id x126so4889520pfc.7
- for <qemu-arm@nongnu.org>; Thu, 07 Jan 2021 14:02:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=wIrYqelWQrLF7t7DOjYcFcQd5x0pSDtWI74x1YUH7vU=;
- b=bp06FwBEyhu+gPAoNzPGfdGXUet9fejNyoQ/sZKBPKsf9HfN5xcwb5fS6UoMGqsTaA
- ohube+8/boY1JYepgr1f2m/1BZAKnm/E/6cQDF+gXR56WVrH2Pznp9kjySK1K9+0gPUk
- 5uAgqdQHYpNm/KbZmje9L6ZR501CgTFwmCT9W//azkMsAFkMabXBjzsLxYAfPL1Aa3vE
- xGkWT4YCYdisrkLns8in1mkRXml2uFlo+nAVbmAn9HtDiatkri5pQOdAJLU0t/2SQlxF
- pI4ikh8tRf1qK3W9kF0aUaxDRFp4gGlngota3iZe2IX0lD44vT0thlMhJvpk7Yd69lHl
- 21mw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lBNKm-0005X1-0C; Sun, 14 Feb 2021 14:45:33 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id n10so6040477wmq.0;
+ Sun, 14 Feb 2021 11:45:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jJRdV1ZLz9Wc3UruihO3ipliHXOgtCfriX4mx0iNut0=;
+ b=M4dkOy/Vk2vtelSOG7LuO7nQ1Uuk09qnnbcPbyJcmDF7UZO/xZvknn/b+g2VZwE8et
+ LksrBUjNFXdpHK1BTKd7IGLXRC2wt4JmqZfYwhjHrbiZzwQsqBhaUKr0Dv3PUHr0TibH
+ es6hSOb1kF1CmF5PXmCypFrx18vaNoiB13hIXMMbV0W4rcL68k7cPK8rpd1JzLFraDPY
+ A28+X31olZ/yRtDxaGjxcLdqdk1gBEhBoHfUdhHyml8z+9zar5IEJnS4Qju/Y3zpyvWz
+ BJECL7hUIG0TtPupgzJf5As8P4DG0AvtfSa+rbrRF6dC1ciknGiF3akQFzPBBy5M3hcH
+ Hkuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wIrYqelWQrLF7t7DOjYcFcQd5x0pSDtWI74x1YUH7vU=;
- b=BHaEJvfaaxNfIqxLzL98wyFVpMnGxfrCXrzfuKSdJ62Fwsayt5zvHgSG4JACLIcmSg
- 44CPvb+z7IgAt0r0M6jTZ6JkbWijPPyCbN50a9wTxgy8iQiiuRXr1OFfy0fZabE0R+hu
- lxkTHbQ4+1lkcAkART9ddKgKohnz7jQR0WepSvrGeVJyvJX3OCJxqQh1+QwkHdEuVlyj
- 7AJ1xp7FLoB1hlyLJP0W+iIsxbSm5VS73WrX9nGKWzdjRIA1Z7cjUgPj31GFyHsvxmQg
- MpgFb1gOb0WjQpxlU9SUJWn/u5qc2zEcwPHn4gOlB6NZLpwatdUB0GEU22bAAHmvC5vP
- KZZw==
-X-Gm-Message-State: AOAM531g7PORC3fYodPW5m8SlK2eYTzra9A8D51DOtxCxD/kVFczANcs
- AvIjj6DiGJev1/slEUiEy4dUKhBZB7cqkQ==
-X-Received: by 2002:a62:7858:0:b029:19d:c011:1cfe with SMTP id
- t85-20020a6278580000b029019dc0111cfemr547178pfc.47.1610056945802; 
- Thu, 07 Jan 2021 14:02:25 -0800 (PST)
-Received: from [10.25.18.38] (rrcs-173-197-107-21.west.biz.rr.com.
- [173.197.107.21])
- by smtp.gmail.com with ESMTPSA id a4sm7972298pgn.40.2021.01.07.14.02.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Jan 2021 14:02:25 -0800 (PST)
-Subject: Re: [PATCH v2 24/24] target/arm: Enforce alignment for sve
- unpredicated LDR/STR
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20201208180118.157911-1-richard.henderson@linaro.org>
- <20201208180118.157911-25-richard.henderson@linaro.org>
- <CAFEAcA97CfTvAJkSHEYtEKrg9jZjCLTbra-KFxfYZVuCH7MMkA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <6ff3c7b0-9254-2e36-89e0-e9eb59fd6e7f@linaro.org>
-Date: Thu, 7 Jan 2021 12:02:21 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=jJRdV1ZLz9Wc3UruihO3ipliHXOgtCfriX4mx0iNut0=;
+ b=gMKmWlB9fFVMpNdkvg6OF2sLl4k59lBzGtGyX6ntFtocG2pcYLYW8PkmF8ts/V+x9q
+ snaDN3LCvXJ/gb8w2G9lGgBjMrwP0rR52p7a8QofmBz7sbgW3C15iR+2tJ9d+40h2fH/
+ 56w91NsuonDtZ9Fcv0BkD5dL/h7iGCnRaCCcd+e00+izx8hqAqvPrJMkTB1/m937dULn
+ HlKrR4GuAVEYKSrGcF0TeqLa5kNJUBYC/W6vZYEBlLdb8FFvsSWee21VjnuplHc7HsQE
+ CJgtTY+VnGXSPIpprGvNILgnUgW5K+oKDGZRC0Q08ubKj1WV4lew4NnJ/YogYJEhc14c
+ vJ9g==
+X-Gm-Message-State: AOAM532u3Cn1R6sYfSOWNolE3CI7IZKhQaEzvhO8/mF/LFSws3i1rZbf
+ 3/dMHk+qS8xrAvP7wN1s5tknDfxajQQ=
+X-Received: by 2002:a05:600c:1552:: with SMTP id
+ f18mr11411321wmg.149.1613331927791; 
+ Sun, 14 Feb 2021 11:45:27 -0800 (PST)
+Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id a17sm25907907wrx.63.2021.02.14.11.45.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 14 Feb 2021 11:45:27 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2] tests/acceptance: Add bFLT loader linux-user test
+Date: Sun, 14 Feb 2021 20:45:24 +0100
+Message-Id: <20210214194524.768660-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA97CfTvAJkSHEYtEKrg9jZjCLTbra-KFxfYZVuCH7MMkA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.267,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,34 +114,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Willian Rampazzo <willianr@redhat.com>,
+ qemu-arm@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y0LBbzIhF/Ft
+X-TUID: KXDf0+rIH4zH
 
-On 1/7/21 7:39 AM, Peter Maydell wrote:
->> +        if (align > MO_ALIGN_8) {
->> +            t0 = tcg_temp_new_i64();
->> +            tcg_gen_qemu_ld_i64(t0, clean_addr, midx, MO_LEQ | align);
->> +            tcg_gen_addi_i64(clean_addr, clean_addr, 8);
->> +            tcg_gen_addi_ptr(i, i, 8);
->> +            tcg_gen_st_i64(t0, cpu_env, vofs);
->> +            tcg_temp_free_i64(t0);
->> +            align = 0;
->> +        }
->> +
-> 
-> Why do we need to do this (and the similar thing in do_str()) ?
-> Most of the rest of the patch is fairly clear in that it is just
-> passing the alignment requirement through to the load/store fns,
-> but this is a bit more opaque to me...
+Add a very quick test that runs a busybox binary in bFLT format:
 
-What follows this context is a single memory access within a tcg loop.
+  $ avocado --show=app run -t linux_user tests/acceptance/load_bflt.py
+  JOB ID     : db94d5960ce564c50904d666a7e259148c27e88f
+  JOB LOG    : ~/avocado/job-results/job-2019-06-25T10.52-db94d59/job.log
+   (1/1) tests/acceptance/load_bflt.py:LoadBFLT.test_stm32: PASS (0.15 s)
+  RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
+  JOB TIME   : 0.54 s
 
-When align is <= the size of the access, every access can use the same
-alignment mop.  But for MO_ALIGN_16, since we're emitting 8-byte accesses, the
-second access will not be 16-byte aligned.  So I peel off one loop iteration at
-the beginning to perform the alignment check.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+Based-on: <20210214175912.732946-1-f4bug@amsat.org>
+  tests/acceptance: Extract QemuBaseTest from Test
+  tests/acceptance: Make pick_default_qemu_bin() more generic
+  tests/acceptance: Introduce QemuUserTest base class
+---
+ tests/acceptance/load_bflt.py | 51 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+ create mode 100644 tests/acceptance/load_bflt.py
 
+diff --git a/tests/acceptance/load_bflt.py b/tests/acceptance/load_bflt.py
+new file mode 100644
+index 00000000000..4b7796d0775
+--- /dev/null
++++ b/tests/acceptance/load_bflt.py
+@@ -0,0 +1,51 @@
++# Test the bFLT format
++#
++# Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++import bz2
++import subprocess
++
++from avocado_qemu import QemuUserTest
++
++
++class LoadBFLT(QemuUserTest):
++
++    def extract_cpio(self, cpio_path):
++        """
++        Extracts a cpio archive into the test workdir
++
++        :param cpio_path: path to the cpio archive
++        """
++        cwd = os.getcwd()
++        os.chdir(self.workdir)
++        with bz2.open(cpio_path, 'rb') as archive_cpio:
++            subprocess.run(['cpio', '-i'], input=archive_cpio.read(),
++                           stderr=subprocess.DEVNULL)
++        os.chdir(cwd)
++
++    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
++    def test_stm32(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=linux_user
++        :avocado: tags=quick
++        """
++        # See https://elinux.org/STM32#User_Space
++        rootfs_url = ('https://elinux.org/images/5/51/'
++                      'Stm32_mini_rootfs.cpio.bz2')
++        rootfs_hash = '9f065e6ba40cce7411ba757f924f30fcc57951e6'
++        rootfs_path_bz2 = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
++        busybox_path = self.workdir + "/bin/busybox"
++
++        self.extract_cpio(rootfs_path_bz2)
++
++        res = self.run(busybox_path)
++        ver = 'BusyBox v1.24.0.git (2015-02-03 22:17:13 CET) multi-call binary.'
++        self.assertIn(ver, res.stdout_text)
++
++        res = self.run(busybox_path, ['uname', '-a'])
++        unm = 'armv7l GNU/Linux'
++        self.assertIn(unm, res.stdout_text)
+-- 
+2.26.2
 
-r~

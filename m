@@ -1,103 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5553880lfc;
-        Mon, 15 Feb 2021 03:55:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxZEzkYJrM2Nj7/6ioWk+wSvo5t93NUtzL6G7TR7vH9kdmhxCsRr5ZTS74Nz76lVvyCW313
-X-Received: by 2002:a25:fa02:: with SMTP id b2mr20545190ybe.382.1613390144997;
-        Mon, 15 Feb 2021 03:55:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613390144; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5554078lfc;
+        Mon, 15 Feb 2021 03:56:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx4WX9AAc9OxZonlIuYr8PPbAVR8qTikZlCtGS46GtqoXh+ZD5BVLTLZFESRB5zY8oPSCHK
+X-Received: by 2002:a25:15c4:: with SMTP id 187mr22235787ybv.505.1613390163776;
+        Mon, 15 Feb 2021 03:56:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613390163; cv=none;
         d=google.com; s=arc-20160816;
-        b=JCBtshNnIsD8/dfg7Sgpy/qxHcs3spOXMW9+wzEt2jX0zMkLslzLzdyDVCS0P/7kLt
-         NG5l/h9ntO63HoMOHwovQhSWhc7TEwzFqEUqGeIDq9toiDYqVO2vHSjMNooEK+6R8P5W
-         I+Td+kCrj57bOnKLcQIABRCSQpgo7YJtLygycSIrj6g4EU3AaLbv2M6YVokmvJ8a2B3y
-         +STuQp8Ckpn96zGLzxWdNr23lxvW/WEoeHnoO2PZlykuMzvYb/cR2FMmtf+GI491MViv
-         rapHvtAF6cFDOiPb7nRfuJrPc0y21xXPyynOdjFhGawtRze+9TKOeq/mEEP8bowUJeha
-         qyxA==
+        b=aDx+RddExkKrZBodSkuAx6R1Val8PDO4s2w1TCWP6x6p56qSs48tcFJxRGs1AVupoh
+         eQXw96KfiDXbB+ieBulQq1RHsIoQc4E36wY3N/CtBOTa+QZKN7Fu0MkgVCFd5r3MnpKc
+         lSsArGYZdeR3Ojp0RKT5pzTECl9o9cTyc3WGFn/3X1JaL8CWSUJKqr+YktTsT2KSXj8V
+         Ky4kzogHQVQT28ICfORwAwZ3trAHCbli+W0/yHJTC25A8ruvFjRzBQnQiV8HHjzhRTuk
+         SFO5kWW+lxTuQhL7aINOfVk/Hk01/Abq9Abd63aIOy1rUI0HvP+WmJzBpz2ukYPaZL3A
+         mmGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=DWcDLedvIdrpO/Dyf18yelSJMFxD3oqKzuBHwfEwOy0=;
-        b=LgG8aDLef+hpuRRV9uU2r106WKF5USbosPhiiggFk4U0wsPEu0RK8zTd6vykGJgYK2
-         pOG+R9wJnLuQUilDXxuidJANTfW3XP3WVp9JN0dGNoLaICx0Ua0vHvnNSU0KhxAAijA+
-         muKfemytOl6GtMC3Pr0oSPRFD4Re+QxyRFiNTJ3h+2C8vK8Fb6SSvhM/i6Ehavzfpcrw
-         Jn0lt3U87qi6Lp+cgoo5YlgaEAjEanKKV9zBlhu1I0XE26+HgdAFF5Q9i+sGsSmVLWKl
-         AM9baHuoCskezyqMEsAQcGUHU+QIz64b8mZVQIKM8v5vCZtr+ccoOFfhZRvxBp3tqUex
-         0eHQ==
+        bh=4jVa3xe/kMi+C9vLk6K1uU55ZtyS+eyTIRH5FY6nhOc=;
+        b=fOF3Mh9GlvfIpyhXvUzGRR0TlAN9IBbZpG2tnWii9cTb88pdDLZJEP68L0BoQzkKcS
+         juV+h2B8RZGnWB5YtQaXNsqOHnQHMBj6a1L0GwhJM2GzgV3Rl/YiLZp4mrOXPC3T8v6Z
+         KlVbiqqSC9A+QFWJRbD87F9P+I0HImz6I+/bTxHaUjZZ4Ph9KXbhPesB19TitZDLrQal
+         Y3Av0LwhiK2USnfRdH6vhyZmocZMZb8UWTktL7DvLx7kRMQy8/3cfmAQM7WgMPXkQ8H1
+         HsIwgxLnjAkiTCAXZKzDigTGWcHgQMctbQChg5BRrJqS4TwZjVDP3iQ5erDn9LAjSHxj
+         eZuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lxKioMnI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EJyJbHan;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w14si5273701ybl.418.2021.02.15.03.55.44
+        by mx.google.com with ESMTPS id v199si126219ybe.259.2021.02.15.03.56.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Feb 2021 03:55:44 -0800 (PST)
+        Mon, 15 Feb 2021 03:56:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lxKioMnI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EJyJbHan;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42468 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBcTc-0003Er-MS
-	for alex.bennee@linaro.org; Mon, 15 Feb 2021 06:55:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39354)
+	id 1lBcTz-0003bH-4j
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 06:56:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38988)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBcQV-0007aQ-Sj
- for qemu-devel@nongnu.org; Mon, 15 Feb 2021 06:52:27 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:38154)
+ id 1lBcQ4-0006hh-A8
+ for qemu-devel@nongnu.org; Mon, 15 Feb 2021 06:52:01 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:39113)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBcQU-0003zs-2y
- for qemu-devel@nongnu.org; Mon, 15 Feb 2021 06:52:27 -0500
-Received: by mail-wm1-x336.google.com with SMTP id x4so9060860wmi.3
- for <qemu-devel@nongnu.org>; Mon, 15 Feb 2021 03:52:25 -0800 (PST)
+ id 1lBcQ1-0003mJ-3T
+ for qemu-devel@nongnu.org; Mon, 15 Feb 2021 06:52:00 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id v1so8500039wrd.6
+ for <qemu-devel@nongnu.org>; Mon, 15 Feb 2021 03:51:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=DWcDLedvIdrpO/Dyf18yelSJMFxD3oqKzuBHwfEwOy0=;
- b=lxKioMnIiYfAs3AIWfKk9BlDEfzhv6Hqmg8rBE0k06s8Ijyj7/qjl/TSmWMR0+zD9e
- 2VI8w1YoxpnjwGu0dANvqK0zPDB6k4Jt0QdxUhVGEA0eA3UBJhKmboH7rVUFj1sn+uRb
- 3cza+JFR0/wKYi6EE2P6JXyvBlQxio1yDFht0TNjx/erdcAWEcBIDR6I63TLgCGW3Px+
- jMyFtxB2asENtZHagCgmIo6r1qGlrW8kBIG/z4i9uYERw5hdPggM1wOruEwD+cNPIVj+
- lFHnWMY33hTTsu3Vsd1664HdYQwet6gNsNtDoDh4ZTmc6ucIl02BLLItRtzzWCU9qA7C
- njtg==
+ bh=4jVa3xe/kMi+C9vLk6K1uU55ZtyS+eyTIRH5FY6nhOc=;
+ b=EJyJbHanGn5ZHrQvGMNFGCH/jR86jTMdJZRO08nuBk2ZqRG1BvS2ZH18f9zdxNyWg8
+ jD2jw3l0PgxuOQgi+SiO0KpXwYK5gt1C5lAQ+KFzP+GlpiXEiJ9X42vZf/Cq5UIInOvp
+ GM6idh78MFt0yvNXwiV+iIwEMrI0uMPXKSy1wh37Ep7vkqPw/zx1Vu82Niq9YKp0jmK5
+ ULM9FoAQtzCIXi46+BQVyuPMaLEdo2qFtDgFwl9q+Qx9l7oDx/7GeJONTVRDCB8S/BH8
+ ZPh+Revu877iZLLcW38ijp+bUpLNg5MWwjemiYtPTH2FOn3rIfHKleQMaPhTuDB0aJRo
+ B90Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=DWcDLedvIdrpO/Dyf18yelSJMFxD3oqKzuBHwfEwOy0=;
- b=K5JifrQybJwfP03MWOUZNeYiYRRPS77Qo/Pr9RwJSb50vg0mIL9kYrOqkEqDqLq1jA
- w/NqONqMw3+mzMIg605wcvQF99vah6P/Dftt5DkGo7UwW9frOKDh+IsxljDm89QQ+ta9
- UuIgFSRovRHhYqIXPtZ8fN7VOIjrTWOBdLxtUhfpk7RAibPP44YIlO8aw4EkGBT+hB9X
- JNaYQToI0b6m1mFknCk0Z+CD4zRJLqkL8KnnKO5hartbTxMpqNwIc3dxoyf3uP320T9Z
- W3E6FoiLTRhpTnHuKNqalff/ehxSdMFS96fp9N4fCZuUchyktRGnAyoTihqVFycK9mwH
- P1EQ==
-X-Gm-Message-State: AOAM531HpP7/4iROGbsZe5QIPDTEKOuzaSkjp1hi96JrDAzBDzyATq1G
- xJ0T8FMs26xQSBP/yzJXanLb4Q==
-X-Received: by 2002:a1c:2403:: with SMTP id k3mr14258325wmk.130.1613389944836; 
- Mon, 15 Feb 2021 03:52:24 -0800 (PST)
+ bh=4jVa3xe/kMi+C9vLk6K1uU55ZtyS+eyTIRH5FY6nhOc=;
+ b=BTYaSpA7tgu8LJwvHBMAGYh4ijNie0UUX1QH9v/X9dLWk0L5L4kNkPiKj6WBwMQhvy
+ 3Xtvq9NvtZm+1KV1c9NX9kZWDtScFvgxTZBLx+wjt9AL/EvLWzSFra634zfrdIEri4Lx
+ jwKM5bkbcz/t2ndh/fD0F7HgVHDaObbi892skESPQc2NP7fxTeQsNFvBoK5NZo90UiQn
+ NKJ5RW6ruAhyXeLsLUjMihNc0qrYPh8mTUrA33IgwqxIJnkbmLCdsZFwsymcGwdICz6I
+ RHQXF4WycaSqxQcJye5U4/86MHSG2tkRQsA20l3UhGoAU/+9MluZzd5Ife+qU+9D2mUM
+ L0mQ==
+X-Gm-Message-State: AOAM530cnesm7ZghfuRX69rGFKQSRCFZQybgT/Gerg/2f7xwamzauCxV
+ QVB8l7NZ3toZxux53pQmmJehCEBfDwsiVQ==
+X-Received: by 2002:a5d:62ce:: with SMTP id o14mr12036703wrv.174.1613389914687; 
+ Mon, 15 Feb 2021 03:51:54 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l83sm25574812wmf.4.2021.02.15.03.52.21
+ by smtp.gmail.com with ESMTPSA id l83sm25574812wmf.4.2021.02.15.03.51.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 03:52:24 -0800 (PST)
+ Mon, 15 Feb 2021 03:51:54 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 10/24] hw/misc/mps2-scc: Implement CFG_REG5 and CFG_REG6
- for MPS3 AN524
-Date: Mon, 15 Feb 2021 11:51:24 +0000
-Message-Id: <20210215115138.20465-11-peter.maydell@linaro.org>
+Subject: [PATCH v2 01/24] hw/arm/mps2-tz: Make SYSCLK frequency board-specific
+Date: Mon, 15 Feb 2021 11:51:15 +0000
+Message-Id: <20210215115138.20465-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210215115138.20465-1-peter.maydell@linaro.org>
 References: <20210215115138.20465-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,189 +120,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ILF5z4Jz5Pk6
+X-TUID: IbT6iNE/96LN
 
-The AN524 version of the SCC interface has different behaviour for
-some of the CFG registers; implement it.
-
-Each board in this family can have minor differences in the meaning
-of the CFG registers, so rather than trying to specify all the
-possible semantics via individual device properties, we make the
-behaviour conditional on the part-number field of the SCC_ID register
-which the board code already passes us.
-
-For the AN524, the differences are:
- * CFG3 is reserved rather than being board switches
- * CFG5 is a new register ("ACLK Frequency in Hz")
- * CFG6 is a new register ("Clock divider for BRAM")
-
-We implement both of the new registers as reads-as-written.
+The AN524 has a different SYSCLK frequency from the AN505 and AN521;
+make the SYSCLK frequency a field in the MPS2TZMachineClass rather
+than a compile-time constant so we can support the AN524.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/mps2-scc.h |  3 ++
- hw/misc/mps2-scc.c         | 71 ++++++++++++++++++++++++++++++++++++--
- 2 files changed, 72 insertions(+), 2 deletions(-)
+ hw/arm/mps2-tz.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/misc/mps2-scc.h b/include/hw/misc/mps2-scc.h
-index 514da49f69e..49d070616aa 100644
---- a/include/hw/misc/mps2-scc.h
-+++ b/include/hw/misc/mps2-scc.h
-@@ -29,7 +29,10 @@ struct MPS2SCC {
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index 90caa914934..82ce6262817 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -76,6 +76,7 @@ struct MPS2TZMachineClass {
+     MachineClass parent;
+     MPS2TZFPGAType fpga_type;
+     uint32_t scc_id;
++    uint32_t sysclk_frq; /* Main SYSCLK frequency in Hz */
+     const char *armsse_type;
+ };
  
-     uint32_t cfg0;
-     uint32_t cfg1;
-+    uint32_t cfg2;
-     uint32_t cfg4;
-+    uint32_t cfg5;
-+    uint32_t cfg6;
-     uint32_t cfgdata_rtn;
-     uint32_t cfgdata_out;
-     uint32_t cfgctrl;
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index 52a4e183b71..562ace06a58 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -31,8 +31,11 @@
+@@ -111,8 +112,6 @@ struct MPS2TZMachineState {
  
- REG32(CFG0, 0)
- REG32(CFG1, 4)
-+REG32(CFG2, 8)
- REG32(CFG3, 0xc)
- REG32(CFG4, 0x10)
-+REG32(CFG5, 0x14)
-+REG32(CFG6, 0x18)
- REG32(CFGDATA_RTN, 0xa0)
- REG32(CFGDATA_OUT, 0xa4)
- REG32(CFGCTRL, 0xa8)
-@@ -49,6 +52,12 @@ REG32(DLL, 0x100)
- REG32(AID, 0xFF8)
- REG32(ID, 0xFFC)
+ OBJECT_DECLARE_TYPE(MPS2TZMachineState, MPS2TZMachineClass, MPS2TZ_MACHINE)
  
-+static int scc_partno(MPS2SCC *s)
-+{
-+    /* Return the partno field of the SCC_ID (0x524, 0x511, etc) */
-+    return extract32(s->id, 4, 8);
-+}
-+
- /* Handle a write via the SYS_CFG channel to the specified function/device.
-  * Return false on error (reported to guest via SYS_CFGCTRL ERROR bit).
-  */
-@@ -100,7 +109,18 @@ static uint64_t mps2_scc_read(void *opaque, hwaddr offset, unsigned size)
-     case A_CFG1:
-         r = s->cfg1;
-         break;
-+    case A_CFG2:
-+        if (scc_partno(s) != 0x524) {
-+            /* CFG2 reserved on other boards */
-+            goto bad_offset;
-+        }
-+        r = s->cfg2;
-+        break;
-     case A_CFG3:
-+        if (scc_partno(s) == 0x524) {
-+            /* CFG3 reserved on AN524 */
-+            goto bad_offset;
-+        }
-         /* These are user-settable DIP switches on the board. We don't
-          * model that, so just return zeroes.
-          */
-@@ -109,6 +129,20 @@ static uint64_t mps2_scc_read(void *opaque, hwaddr offset, unsigned size)
-     case A_CFG4:
-         r = s->cfg4;
-         break;
-+    case A_CFG5:
-+        if (scc_partno(s) != 0x524) {
-+            /* CFG5 reserved on other boards */
-+            goto bad_offset;
-+        }
-+        r = s->cfg5;
-+        break;
-+    case A_CFG6:
-+        if (scc_partno(s) != 0x524) {
-+            /* CFG6 reserved on other boards */
-+            goto bad_offset;
-+        }
-+        r = s->cfg6;
-+        break;
-     case A_CFGDATA_RTN:
-         r = s->cfgdata_rtn;
-         break;
-@@ -131,6 +165,7 @@ static uint64_t mps2_scc_read(void *opaque, hwaddr offset, unsigned size)
-         r = s->id;
-         break;
-     default:
-+    bad_offset:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "MPS2 SCC read: bad offset %x\n", (int) offset);
-         r = 0;
-@@ -159,6 +194,30 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
-             led_set_state(s->led[i], extract32(value, i, 1));
-         }
-         break;
-+    case A_CFG2:
-+        if (scc_partno(s) != 0x524) {
-+            /* CFG2 reserved on other boards */
-+            goto bad_offset;
-+        }
-+        /* AN524: QSPI Select signal */
-+        s->cfg2 = value;
-+        break;
-+    case A_CFG5:
-+        if (scc_partno(s) != 0x524) {
-+            /* CFG5 reserved on other boards */
-+            goto bad_offset;
-+        }
-+        /* AN524: ACLK frequency in Hz */
-+        s->cfg5 = value;
-+        break;
-+    case A_CFG6:
-+        if (scc_partno(s) != 0x524) {
-+            /* CFG6 reserved on other boards */
-+            goto bad_offset;
-+        }
-+        /* AN524: Clock divider for BRAM */
-+        s->cfg6 = value;
-+        break;
-     case A_CFGDATA_OUT:
-         s->cfgdata_out = value;
-         break;
-@@ -202,6 +261,7 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
-         s->dll = deposit32(s->dll, 24, 8, extract32(value, 24, 8));
-         break;
-     default:
-+    bad_offset:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "MPS2 SCC write: bad offset 0x%x\n", (int) offset);
-         break;
-@@ -222,6 +282,9 @@ static void mps2_scc_reset(DeviceState *dev)
-     trace_mps2_scc_reset();
-     s->cfg0 = 0;
-     s->cfg1 = 0;
-+    s->cfg2 = 0;
-+    s->cfg5 = 0;
-+    s->cfg6 = 0;
-     s->cfgdata_rtn = 0;
-     s->cfgdata_out = 0;
-     s->cfgctrl = 0x100000;
-@@ -260,11 +323,15 @@ static void mps2_scc_realize(DeviceState *dev, Error **errp)
+-/* Main SYSCLK frequency in Hz */
+-#define SYSCLK_FRQ 20000000
+ /* Slow 32Khz S32KCLK frequency in Hz */
+ #define S32KCLK_FRQ (32 * 1000)
  
- static const VMStateDescription mps2_scc_vmstate = {
-     .name = "mps2-scc",
--    .version_id = 2,
--    .minimum_version_id = 2,
-+    .version_id = 3,
-+    .minimum_version_id = 3,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32(cfg0, MPS2SCC),
-         VMSTATE_UINT32(cfg1, MPS2SCC),
-+        VMSTATE_UINT32(cfg2, MPS2SCC),
-+        /* cfg3, cfg4 are read-only so need not be migrated */
-+        VMSTATE_UINT32(cfg5, MPS2SCC),
-+        VMSTATE_UINT32(cfg6, MPS2SCC),
-         VMSTATE_UINT32(cfgdata_rtn, MPS2SCC),
-         VMSTATE_UINT32(cfgdata_out, MPS2SCC),
-         VMSTATE_UINT32(cfgctrl, MPS2SCC),
+@@ -186,6 +185,7 @@ static MemoryRegion *make_unimp_dev(MPS2TZMachineState *mms,
+ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
+                                const char *name, hwaddr size)
+ {
++    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
+     CMSDKAPBUART *uart = opaque;
+     int i = uart - &mms->uart[0];
+     int rxirqno = i * 2;
+@@ -196,7 +196,7 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
+ 
+     object_initialize_child(OBJECT(mms), name, uart, TYPE_CMSDK_APB_UART);
+     qdev_prop_set_chr(DEVICE(uart), "chardev", serial_hd(i));
+-    qdev_prop_set_uint32(DEVICE(uart), "pclk-frq", SYSCLK_FRQ);
++    qdev_prop_set_uint32(DEVICE(uart), "pclk-frq", mmc->sysclk_frq);
+     sysbus_realize(SYS_BUS_DEVICE(uart), &error_fatal);
+     s = SYS_BUS_DEVICE(uart);
+     sysbus_connect_irq(s, 0, get_sse_irq_in(mms, txirqno));
+@@ -403,7 +403,7 @@ static void mps2tz_common_init(MachineState *machine)
+ 
+     /* These clocks don't need migration because they are fixed-frequency */
+     mms->sysclk = clock_new(OBJECT(machine), "SYSCLK");
+-    clock_set_hz(mms->sysclk, SYSCLK_FRQ);
++    clock_set_hz(mms->sysclk, mmc->sysclk_frq);
+     mms->s32kclk = clock_new(OBJECT(machine), "S32KCLK");
+     clock_set_hz(mms->s32kclk, S32KCLK_FRQ);
+ 
+@@ -670,6 +670,7 @@ static void mps2tz_an505_class_init(ObjectClass *oc, void *data)
+     mmc->fpga_type = FPGA_AN505;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
+     mmc->scc_id = 0x41045050;
++    mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
+     mmc->armsse_type = TYPE_IOTKIT;
+ }
+ 
+@@ -685,6 +686,7 @@ static void mps2tz_an521_class_init(ObjectClass *oc, void *data)
+     mmc->fpga_type = FPGA_AN521;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m33");
+     mmc->scc_id = 0x41045210;
++    mmc->sysclk_frq = 20 * 1000 * 1000; /* 20MHz */
+     mmc->armsse_type = TYPE_SSE200;
+ }
+ 
 -- 
 2.20.1
 

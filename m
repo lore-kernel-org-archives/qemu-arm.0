@@ -1,166 +1,146 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5506213lfc;
-        Mon, 15 Feb 2021 02:40:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyr+xtQHEXzCi0//RDzLa8kYdizu/+1crleRACxQXpllRc2JIkt14x37jVvZ0NI+GYmCPeX
-X-Received: by 2002:a25:d214:: with SMTP id j20mr21355608ybg.147.1613385643675;
-        Mon, 15 Feb 2021 02:40:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613385643; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5515653lfc;
+        Mon, 15 Feb 2021 02:57:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxF7yUyhcRjRKZkyrGoS1J7dBpwsw7icdvkdCTBg+bWeZHNFAU1ffvxboj80Z34hbtfSJJl
+X-Received: by 2002:a25:3184:: with SMTP id x126mr21859483ybx.9.1613386647635;
+        Mon, 15 Feb 2021 02:57:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613386647; cv=none;
         d=google.com; s=arc-20160816;
-        b=knPT9TJSl3IHWLuM7BaFt2od2JTCgYIpg/l83DbVipd3CRLdkwAMJFLS9rt0MRf9HL
-         SDxYHvt5/hH1lQbMZPEiZgKx2E9fRXoJ4NGCzY/WaF1d5pl9KH6tOU2hihxbF4zTNEmR
-         19rdavtK8HaaCnkQJayH6jip/Voq/cxafPOS5lj6r/iQjcBTm7FhLrWjCjaJQyqvQV7J
-         hJBAhOUNjuusefph1IbqjBANcpdJXBFhaLdcKOk8c6S46+n2zgskL76ApATIEq96rdRS
-         42aC/agp7+3+IwJE2l14h/jfmKsw2zvKt/+hq8u9hOARHNsmC929M9pboCw0H0N1b5yU
-         aQJQ==
+        b=r4FLcfyWxCDyTKAGPibvp5CWYuN3vPuZy6FSEEGeVjAFSt5KeHJeU1Cnet3cnq0e4s
+         39mpS7FSMRF2vVCMrUhKQMnJACNuL3tVEmn1u16geAp28EzeOllfyColqT587gJQGUSQ
+         1M3xdoaIvkIJ1fNg4HQjkP462IjJ5/iiADiyEQnWUdQvmR9W2CBrKoDosW+UrgQuk0w7
+         8Q+DVdgn6ZNj7As5+9H7WsgAgPxx9wfvUK1rMkUIZtpzLOUAELNPmJ7lgQI6cKR4VUsX
+         VhQFWDsjwfLvcIJTwzEXG9fAJIKhXhfRrk1LjHi8URKvGJ/1Ad2LfcAeyIbS8/hno/RD
+         FEUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=kTAUyENAZSmntGrsJs6kE2c/p5aLv9Krgur9nleNNPg=;
-        b=NCDBs+tNdFD4jDKQrNWlS9TWRQmyhb6gEvT0Og/j938/bqaF59R5v2OkAAPhCfDNsY
-         vThMkL6oaPDtU+CAXhm4QVMw1wrayjpTzziVVSGM3GTmEJJDiNo9DEOjutVDKKAN+EoU
-         2Clh33et+ECWxJtPKUJ0NZT2qVh4nxTZTAx8JdWdUGJs4+ngfTWIrfHNlN6pn+ikCGDG
-         XYwN0AAG3AO69dsbSGtUedJFsH04MXDoZvCrHNN44fWotIpYs4WPdFzFGCt3Real4eKS
-         X6oZvwI0GGCqpBI3Pl2xHHiEZ91EUquu6T2/0qYZTc8VMsVRnobELVuc40cxd5wXTxrN
-         tbcQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=/ddFKPEtA+bqBplywm4Eu0wtttSsmgjNCeWOYYFfoc0=;
+        b=L2A1tHhAH5PJT1Ux9lO48pZAjA8D32BFMybMdL0KVMfdi+XkE+IZd4QcpAZwpcMK99
+         fljbcZDclLnx2gOALO4vjf/6HbkfLYSAWlI+KWrfcqRevkLKxy2QYVWSJOeYmELtBBkd
+         TuyEVGLeFxmNDLSzhEl7wbNZxkNhK/GoadRpmKeJDvnZeMbPuV5k4aokBTiOhYkmw9ks
+         9Rd/J8J2uA0A0bOM+Zgyw/fa29KJ7fKQ7JPeBnlYDoj0tUIcVr95riCILgKuP1NtIVRa
+         tVINeCz/Am1YEtTPt5DJVmGXtOmjK1/NBuQgi2dbzT5h8PDpzSaMS7fc6YL36h2pkHBb
+         dqlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bzavho7h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="W4E1gI6/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w5si16316447ybk.0.2021.02.15.02.40.43
+        by mx.google.com with ESMTPS id x13si4508375ybk.63.2021.02.15.02.57.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Feb 2021 02:40:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Feb 2021 02:57:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bzavho7h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52112 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="W4E1gI6/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49650 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBbJ5-00066Z-0y
-	for alex.bennee@linaro.org; Mon, 15 Feb 2021 05:40:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50190)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lBbZH-0000si-2I
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 05:57:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBbB9-0004RE-42
- for qemu-devel@nongnu.org; Mon, 15 Feb 2021 05:32:31 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:39393)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lBbYj-0000aL-AO; Mon, 15 Feb 2021 05:56:56 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:33994)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBbB2-0001if-SI
- for qemu-devel@nongnu.org; Mon, 15 Feb 2021 05:32:30 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id v1so8243639wrd.6
- for <qemu-devel@nongnu.org>; Mon, 15 Feb 2021 02:32:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=kTAUyENAZSmntGrsJs6kE2c/p5aLv9Krgur9nleNNPg=;
- b=Bzavho7h2B5sLcd9jZsmIHvxTsNEDzcTMs5HrOC4QSSqri9931kvmKQG2ci85jie8L
- /xeYtF6HfVqQo/YqtwDfgyTx+83bijFR9DpxAmzy8pQ1GJ0JLR42iPg4OEopgjkakCwy
- 43BECxpHJqww2kCCcqb6bSthJ+D6tYqivF++HKwSeUE/HULyJVSle/w2ZpurxZ9n3fbc
- zBOXLbiZMoVQL2F7C4KtMkDzWUh5HkjpdCov/GfH5MYdnBM+MyEV/wUwtLm7Gbk4p75p
- o7UeHQgjiwf5DuIy+4wBIoF7eeepDXTrokjnO1+MHL/MUKfzpHt1Ab7OWgbT4DZdG9jA
- wLcg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lBbYf-0003ck-RX; Mon, 15 Feb 2021 05:56:52 -0500
+Received: by mail-wr1-x434.google.com with SMTP id n4so5347588wrx.1;
+ Mon, 15 Feb 2021 02:56:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=/ddFKPEtA+bqBplywm4Eu0wtttSsmgjNCeWOYYFfoc0=;
+ b=W4E1gI6/AnGQflTxYw+v+5WDi4u+6NJAZpyKggJzw7N4KuJq4O3u5z8MTYiClp6rB3
+ l+pDixuZCfv0I13j5C44TsSAyYidPXSRNY7ymMD9aa3sw0pB25WPmmKhAoxEjd0DW38B
+ rpu9PF6mwt8T/ohGlFrWxgi9yulVWBBMEaAa2md2OL4TrnzkuGlaVjUWVTxMFsgXULDU
+ TL+oxzjVSnHE4OzCJOW5oqyM8isZg9YqaXecXR7yBT+DHCfDv05WsYWyRqFJZAMJQrsb
+ g0jagjIGEB2p8XVj3uE26yDC9grMOiMDykZzuNyvPq/1OE7d7d0rPKhRY13wf5qPtoOx
+ YDLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=kTAUyENAZSmntGrsJs6kE2c/p5aLv9Krgur9nleNNPg=;
- b=qNNrAVhxeDOi0qoCNOlKoESQoTArfVjQaQO7J2/sMI8nzX50Rwmw1X5vmu05ciKNPX
- KhyPkcuqGDzLaxx2ubxepbarUGBoG/iBsdUsiQhZ0xPfXLDxEMfuiANshdcqARjfU7Nm
- JRK0oGedPCkhXfImynsot3UmcMWwahphAcCv7+Za79x5N6UuocCi77krTgqZvjcCefYw
- MSdmS3KIAg5/VFz5yiJVy8ZQtRUtmSrNs/xhwJc/cx5tihhWbPRJgr1VPPpffQzvdUUM
- We0151g5elQdhIZpuoa7nYUVJusfgC91yCa5nPBa4+2aNGleIFF3CGL6OpT+edgUibID
- D6rQ==
-X-Gm-Message-State: AOAM532CFoekN1LcLNG2FWfj3C2nTK1GvbPakJuco1hjtI5aAO4IznG9
- kHTQLoJdGx6cWOUwF7JCisjfeY5KEQ+pTA==
-X-Received: by 2002:adf:ce91:: with SMTP id r17mr17791324wrn.219.1613385142954; 
- Mon, 15 Feb 2021 02:32:22 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id 36sm25196300wrj.97.2021.02.15.02.32.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 02:32:22 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 7/9] hw/display/omap_lcdc: Fix coding style issues in template
- header
-Date: Mon, 15 Feb 2021 10:32:13 +0000
-Message-Id: <20210215103215.4944-8-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210215103215.4944-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=/ddFKPEtA+bqBplywm4Eu0wtttSsmgjNCeWOYYFfoc0=;
+ b=hfGmTPA2/P3vtfoFcTJZVq8TwyhBSjcLGmTP5LswZWhYdcssMFe4PvKylqSxiP15PY
+ +p2y7GClOxptpFaGcPkf5TQ/C+WEIa8370SXI3GY3Fv+v842q5l/hQmP8+89ys+oSwhn
+ g2Xc/+c4LfDQqK5baf40izhfTVr5wgkV9CH9CwBVw6jEIJCcLwARQMVIEEc4xXivHf9m
+ +BCR9NU+goCcDP3AuXgb1l5bGnYYel+GbXAI7V5Di9Pyf7lRVB1j6FBtCIOljMDovU4f
+ 2oPMxTH/apPKXszFpjAnbahM2mfwQ4D4aQnlmVbqLVRyr0eyDYeJchtZnPFQ/A/ans9V
+ BXyA==
+X-Gm-Message-State: AOAM533c4JqI5e9nUviWrgWQyMEcNAxBnb5LAlriMkualykLGCb+X+Ad
+ CKhaNdwjQRp6NG04GnfmaOo=
+X-Received: by 2002:a05:6000:10c5:: with SMTP id
+ b5mr18526029wrx.284.1613386607926; 
+ Mon, 15 Feb 2021 02:56:47 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id g15sm23330215wrx.1.2021.02.15.02.56.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Feb 2021 02:56:47 -0800 (PST)
+Subject: Re: [PATCH 4/9] hw/display/tc6393xb: Inline tc6393xb_draw_graphic32()
+ at its callsite
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20210215103215.4944-1-peter.maydell@linaro.org>
+ <20210215103215.4944-5-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a4619fc8-0d6f-bcae-e938-fc1f63bdce9e@amsat.org>
+Date: Mon, 15 Feb 2021 11:56:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
+In-Reply-To: <20210215103215.4944-5-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QPgEcelS68TL
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4JNz+kho4HUL
 
-Fix some minor coding style issues in the template header,
-so checkpatch doesn't complain when we move the code.
+On 2/15/21 11:32 AM, Peter Maydell wrote:
+> The function tc6393xb_draw_graphic32() is called in exactly one place,
+> so just inline the function body at its callsite. This allows us to
+> drop the template header entirely.
+> 
+> The code move includes a single added space after 'for' to fix
+> the coding style.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/display/tc6393xb_template.h | 45 ----------------------------------
+>  hw/display/tc6393xb.c          | 23 ++++++++++++++---
+>  2 files changed, 19 insertions(+), 49 deletions(-)
+>  delete mode 100644 hw/display/tc6393xb_template.h
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/display/omap_lcd_template.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/hw/display/omap_lcd_template.h b/hw/display/omap_lcd_template.h
-index 22e51d9bffb..a2f86eee3c8 100644
---- a/hw/display/omap_lcd_template.h
-+++ b/hw/display/omap_lcd_template.h
-@@ -61,7 +61,7 @@ static void draw_line2_32(void *opaque, uint8_t *d, const uint8_t *s,
-         b = (pal[v & 3] << 4) & 0xf0;
-         ((uint32_t *) d)[0] = rgb_to_pixel32(r, g, b);
-         d += 4;
--        s ++;
-+        s++;
-         width -= 4;
-     } while (width > 0);
- }
-@@ -88,7 +88,7 @@ static void draw_line4_32(void *opaque, uint8_t *d, const uint8_t *s,
-         b = (pal[v & 0xf] << 4) & 0xf0;
-         ((uint32_t *) d)[0] = rgb_to_pixel32(r, g, b);
-         d += 4;
--        s ++;
-+        s++;
-         width -= 2;
-     } while (width > 0);
- }
-@@ -108,7 +108,7 @@ static void draw_line8_32(void *opaque, uint8_t *d, const uint8_t *s,
-         g = pal[v] & 0xf0;
-         b = (pal[v] << 4) & 0xf0;
-         ((uint32_t *) d)[0] = rgb_to_pixel32(r, g, b);
--        s ++;
-+        s++;
-         d += 4;
-     } while (-- width != 0);
- }
--- 
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

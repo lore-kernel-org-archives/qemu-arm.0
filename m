@@ -1,232 +1,148 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5914701lfc;
-        Mon, 15 Feb 2021 12:31:04 -0800 (PST)
-X-Received: by 2002:a02:660b:: with SMTP id k11mr17237212jac.120.1613421064347;
-        Mon, 15 Feb 2021 12:31:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613421064; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5961649lfc;
+        Mon, 15 Feb 2021 13:59:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx7OQoMX3U/FpjwZ3WTVz+OmUezHwobi8iNr1wgf5Y+9tqIVNCY5tpgBbl5PMqd5hW4XR9D
+X-Received: by 2002:a25:1e42:: with SMTP id e63mr25409619ybe.270.1613426341793;
+        Mon, 15 Feb 2021 13:59:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613426341; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZJiT3sTQxSH1Ay+D1DC/39mTs56gbVdyVzAyRkcXQ0UJTDN+gnFd6wPmAy4y8D552K
-         S864GphVRFeOfigs87jHLB8NefwL/idEMsaU5mj+lqkhqZZvlS3D3UUZpdlu1f2vkEM2
-         CghQrj4lBBrl5ibDbDSfnn5Azvb7hmEh4BXOQZskC3RviELL1eLkvb0ucihlbie6rcwt
-         qzUK2VGIrhCGThh/EQZwXKx51yHjLjbui6tdFoxkQoSHyuX7ainsRlPj53MdZcETpx2P
-         w6pS8LomhvydvL4Y0J2omex0Kfmj4ReYZv9adq40YyXAhmGqzwTCMJrZKd2P2XeGN2mU
-         zE0w==
+        b=jy3s0GEC/PbVrMjtoEZMrhLF8VO33nBb0MOaWlNrGrQywpn0aTqktteXl50lItf6eL
+         tvQUmy1mBZZdDBNn/w83vMRVZ8D4wv8yE9D/QCWD8lPZa2XUx8Xyk0J+SPXtl00BFw5H
+         t6OEGrBcMMwlBw2Vs9enbYGYQ158QN0UVVDvMfakaUiXjSjiFUNaCyVj/IYuvdi04GTC
+         3ZraZWLzoAASZHNIt7MDHawqS67U75aI4NlSE+eE8t87xOgixhdxGqqFiqQs3pFZwkV0
+         dj5uG37ZSsOpCrorL5xYFQnmQAJF+aWLvGuUw7EN7t1dWjwmkAdNnKWt1Z6WYvCS9/R/
+         ALGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=78fwAa+Rsw01RxG2wWugKvlSZtpYHUe6+3hnhVfYDCw=;
-        b=joGdGECWJXLeEjNKlsywOwGMqb+gKtTnLpFqQl9o/o9YsBmD6mdafbOz9EbkoymjMe
-         3n8FCRje4KJ5e8ScOXWGIr8YVIu1njY84NurLP3bMi3Jdp96opzqMxB8opOs8xrtnNMA
-         u7nPZyLGE2qMfqIOnAkxB8i1nMloi2myjjfvtAb30XdqUPA4dfnvbh44P/fNV7xS9rB0
-         kKhPWZpOPQG2BsRB9sfmz/FmwhonjrsXekYFRZq8s+2T4WG8C/QwUmb4X1FyZQAlPl7z
-         MzNGdj3bGbJ2VAEl5EVpq8hqM4IgV+G9DRGNepfBMs+8DdfaD9kGsdjesvkaMcOA8YMj
-         oGQg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=AY0JUC3KB08rT1AI068cSkWI8i34wh3yvaVkhXHWL8Y=;
+        b=T3H3INBKyaBJPLBCXELf8g+4HZzDktgw3xJw4FhwLgl064i4yL4CtSL65OnP8KIwU8
+         9BqQH9uLiUiYf05TdyAmDwzdqs8OXo7BV1gJDL+1ZBhLTA2cx9b+0dQgvs6Po36ufEOL
+         q665dBp0AzqwbwstkuirVBPPwrudfoy7flJ98WxJrjBTGU6oRjL/x4eCcfJvKcfFidtZ
+         eNqJqswIxFXs6B53kXAWhdu6SLFNfUA9CkGMG2GXJOtAVuxGJrsZYP8eQAi9IhHFzKnL
+         dy3CTbDuLZuj5l9HPhEqtc7e4z771GALuV1yGJAs5ZkJDEM20dv9QTcrd5mpZUZpZoFh
+         odDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dBmHsztu;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nieklinnenbank@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z18sor491119ilp.70.2021.02.15.12.31.04
-        (Google Transport Security);
-        Mon, 15 Feb 2021 12:31:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=SkVw2XH3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x13si18136774ybt.404.2021.02.15.13.59.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 15 Feb 2021 13:59:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dBmHsztu;
-       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=SkVw2XH3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35318 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lBltV-00070F-64
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 16:59:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57678)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1lBlt9-0006Ow-6Z
+ for qemu-arm@nongnu.org; Mon, 15 Feb 2021 16:58:39 -0500
+Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:47040)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
+ id 1lBlt7-0007pQ-BI
+ for qemu-arm@nongnu.org; Mon, 15 Feb 2021 16:58:38 -0500
+Received: by mail-io1-xd30.google.com with SMTP id u8so8173622ior.13
+ for <qemu-arm@nongnu.org>; Mon, 15 Feb 2021 13:58:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=78fwAa+Rsw01RxG2wWugKvlSZtpYHUe6+3hnhVfYDCw=;
-        b=dBmHsztun12FVOFpF17R10e1VYCMWEoXBvlw8Z8j0AN0FJfejEV32fZT+Z2JR5zqVN
-         mrDmFCBmq9sneXUbG4nb/opxppy2C59ct0e/b4XfdDuL8qYZUdSi4QN65vNIyUMTaBlR
-         O1HjeBVukFmRisuWTxMtWl1QOozRgO9MCf+PDhUgg65mfeZm1V9HZ+S4q+LNjmdNG6De
-         Kno5bokmRLKtqgltOmF99L5tQ4bhjcckC+QiD8zb4oR0XmbaA0xGKxW4cze3azYrnAGO
-         sjn3A2TN7UX7DcRdoMvbKnoroFEIxMu9y7s8cxpevHK5Y94plmrIG7+8MaHsnF8Vn9JG
-         KeMQ==
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=AY0JUC3KB08rT1AI068cSkWI8i34wh3yvaVkhXHWL8Y=;
+ b=SkVw2XH31K6ikyCvmF1DNjGgisZlZkiZC0mXlauRtKs/w1ONH96w0+LL4wff9QMz+V
+ cvg/Qmk1/K37GYxVY/LtNpOh4x+6OWOIa7be1v+xaHTBK9ogo9SaQj1h6noNzjOzR4OM
+ qV+QhvgYGRdxuYMbwyDOCB6UcguCidjS54kp5bp4Qa9WPTuPY6aOcHcpWY1KipaKdVd6
+ JrFXumtNPc8ntijlNs6+TcTRC71VzfJBoxwUxJoV4+Dnhh/Oeuur+uozBpEgugUdI+OF
+ XYMR2IJkHiZQAzXGOpSmAL65fuzxx0pn5WbY2703Kc20XEHWdAscW5qV2ThMtiXQDiKb
+ oi6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=78fwAa+Rsw01RxG2wWugKvlSZtpYHUe6+3hnhVfYDCw=;
-        b=DstSONgTZsAz3ZM79JC4eezhnNviZ//+aCE8jmID7wlqU58r0v1qP/ghGWRPmcQ4tQ
-         VVF56syvB5LDxC07/rT2Ptq2L8tzVfFXfAoOmTy8dgcW8ID1Haq7pPac3PcMe4XWRStG
-         vJeSBJTllJNh89pFm2gTk0Tvo8wJHObDKsZYIm2l55GVU2Lluc6cbu5U4X1dB2Rfiudn
-         Tj4A2GWty1eqgB3mYShmqqMha5LabUl9ffz9zgIYBf3+ANyo0w/nUr7o/XzQ9/V/DwCu
-         jqHfyr8sa2+Tdn1+T9aIj+9iv+jngOwOIps1/UMJDGzso2T4Woov4PB40ktCYGp1TuwD
-         k3Zg==
-X-Gm-Message-State: AOAM530US+xpHKyp6oZl3dVxmCNWETf9mMRXyCaKKWSLehp3jjntWarJ
-	ACGbHCDYzkIL4fSX2Oq+x+fPM88vQtfn0S5ck6Q=
-X-Google-Smtp-Source: ABdhPJwzVKUpmn3bDjEe/zsrPx9tWHxoe/D3cCpjlQGJFjzzpriQX7+HxtVGjMrL7gmr93UBHC9N3nJWhz6lb7ovhZ4=
-X-Received: by 2002:a92:cc03:: with SMTP id s3mr13278062ilp.45.1613421064003;
- Mon, 15 Feb 2021 12:31:04 -0800 (PST)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AY0JUC3KB08rT1AI068cSkWI8i34wh3yvaVkhXHWL8Y=;
+ b=gpytGlMsj83FjYMm+jWl7NUlkE08QV6PAzgEbuODoSHNnY0gC/DuAacD22xPIU5cpI
+ /ZaLeWxPJh90EqycJnAhKRXBN2Ls0VS9+S8ro2aafpNx/rydr7YKXbMr+0x2ZKwQ0+zx
+ GMmKMOJPkLeHg1uvDWpRNlLRZmYhsFljXSVHeCpOUT7WzgFdBGiWrATv64qFn7hqh4hX
+ qeLtMkmr3M+FTVdRNGLCH0vHG+PWrU47CuyJhgbpvJ7i+XL0mksevESiFZWg5m7Cg5j9
+ ops24Yc0QKQur8vGpUnvtLt6MgM9Naq8w7V3m0jlXOFrM/U4D2jHbM5nLzFHIwi1UuvC
+ EYbg==
+X-Gm-Message-State: AOAM5325wk2cyU4RwlWT7areB6jX9Y2oD3UvGJBWa0k4NQXf1/2USShs
+ Wuymn5J2QLWHax4vJ2KYwcjMOQ2xCJVl8LshP+x7wT9xfSi/qhu4WsaPqG3mkKT0UuYSbhdfhwO
+ w/Wz5v42sv6/CbTJtffCXMYmc8pl3PrF/O/QLsaLyCvQNTt8AC3Wpqo6pFFp6to/inKVC
+X-Received: by 2002:a6b:d207:: with SMTP id q7mr14444206iob.42.1613426316126; 
+ Mon, 15 Feb 2021 13:58:36 -0800 (PST)
+Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
+ [174.52.16.57])
+ by smtp.gmail.com with ESMTPSA id j12sm9812254ila.75.2021.02.15.13.58.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Feb 2021 13:58:35 -0800 (PST)
+From: Rebecca Cran <rebecca@nuviainc.com>
+To: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 3/3] target/arm: Set ID_PFR2.SSBS to 1 for "max" 32-bit CPU
+Date: Mon, 15 Feb 2021 14:58:19 -0700
+Message-Id: <20210215215819.1142-4-rebecca@nuviainc.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210215215819.1142-1-rebecca@nuviainc.com>
+References: <20210215215819.1142-1-rebecca@nuviainc.com>
 MIME-Version: 1.0
-References: <20210211220055.19047-1-nieklinnenbank@gmail.com> <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
-In-Reply-To: <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 15 Feb 2021 21:30:52 +0100
-Message-ID: <CAPan3WqGAzWE+gCqo0Rggu70GpQAbWYyA2thH6LX=oTxhnvRfQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: "Daniel P . Berrange" <berrange@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org, peter.maydell@linaro.org, 
-	qemu-devel@nongnu.org, f4bug@amsat.org, crosa@redhat.com, 
-	Pavel.Dovgaluk@ispras.ru, b.galvani@gmail.com, 
-	Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000064a2cb05bb65ddfe"
-X-TUID: Pyla6un6nv+h
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d30;
+ envelope-from=rebecca@nuviainc.com; helo=mail-io1-xd30.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NT644VUJ+fpp
 
---00000000000064a2cb05bb65ddfe
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Enable FEAT_SSBS for the "max" 32-bit CPU.
 
-Op vr 12 feb. 2021 15:10 schreef Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>:
+Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+---
+ target/arm/cpu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> Hi Niek and QEMU community,
->
-> On 2/11/21 11:00 PM, Niek Linnenbank wrote:
-> > The following are maintenance patches for the Allwinner H3. The first
-> patch
-> > is a proposal to relocate the binary artifacts of the acceptance tests
-> away
-> > from the apt.armbian.com domain. In the past we had problems with
-> artifacts being
-> > removed, and now the recently added Armbian 20.08.1 image has been
-> removed as well:
-> >
-> > $ wget
-> https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bion=
-ic_current_5.8.5.img.xz
-> > Connecting to dl.armbian.com (dl.armbian.com)|2605:7900:20::5|:443...
-> connected.
-> > ...
-> > HTTP request sent, awaiting response... 404 Not Found
-> > 2021-02-11 22:34:45 ERROR 404: Not Found.
-> >
-> > I've now added the artifacts to a server maintained by me. The machine
-> has a stable
-> > uptime of several years, ~100Mbit bandwidth and plenty of available
-> storage.
-> > Also for other artifacts if needed. I'm open to discuss if there is a
-> proposal
-> > for a better location for these artifacts or a more generic qemu
-> location.
->
-> Thanks for trying to fix this long standing problem.
->
-> While this works in your case, this doesn't scale to the community,
-> as not all contributors have access to such hardware and bandwidth /
-> storage.
->
-> While your first patch is useful in showing where the artifacts are
-> stored doesn't matter - as long as we use cryptographic hashes - I
-> think it is a step in the wrong direction, so I am not keen on
-> accepting it.
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5cf6c056c50f..88a6b183d325 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2206,6 +2206,10 @@ static void arm_max_initfn(Object *obj)
+         t = cpu->isar.id_pfr0;
+         t = FIELD_DP32(t, ID_PFR0, DIT, 1);
+         cpu->isar.id_pfr0 = t;
++
++        t = cpu->isar.id_pfr2;
++        t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
++        cpu->isar.id_mfr2 = t;
+     }
+ #endif
+ }
+-- 
+2.26.2
 
-
-> My personal view is that any contributor should have the same
-> possibilities to add tests to the project.
-
-
-Hi Philippe,
-
-I see your point. How about I simply upload the artifacts to github
-instead? There are already multiple tests right now that use artifacts
-stored on github. And github is available to everyone. For me that would
-work fine. If you agree, I can respin the patch.
-
-Regards
-Niek
-
-Now I am also open to
-> discuss with the others :) I might be proven wrong, and it could
-> be better to rely on good willing contributors rather than having
-> nothing useful at all.
-
-
-> Regards,
->
-> Phil.
->
->
-
---00000000000064a2cb05bb65ddfe
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">Op vr 12 feb. 2021 15:10 schreef Philippe Mathieu-Daud=
-=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt;:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;borde=
-r-left:1px #ccc solid;padding-left:1ex">Hi Niek and QEMU community,<br>
-<br>
-On 2/11/21 11:00 PM, Niek Linnenbank wrote:<br>
-&gt; The following are maintenance patches for the Allwinner H3. The first =
-patch<br>
-&gt; is a proposal to relocate the binary artifacts of the acceptance tests=
- away<br>
-&gt; from the <a href=3D"http://apt.armbian.com" rel=3D"noreferrer noreferr=
-er" target=3D"_blank">apt.armbian.com</a> domain. In the past we had proble=
-ms with artifacts being<br>
-&gt; removed, and now the recently added Armbian 20.08.1 image has been rem=
-oved as well:<br>
-&gt; <br>
-&gt; $ wget <a href=3D"https://dl.armbian.com/orangepipc/archive/Armbian_20=
-.08.1_Orangepipc_bionic_current_5.8.5.img.xz" rel=3D"noreferrer noreferrer"=
- target=3D"_blank">https://dl.armbian.com/orangepipc/archive/Armbian_20.08.=
-1_Orangepipc_bionic_current_5.8.5.img.xz</a><br>
-&gt; Connecting to <a href=3D"http://dl.armbian.com" rel=3D"noreferrer nore=
-ferrer" target=3D"_blank">dl.armbian.com</a> (<a href=3D"http://dl.armbian.=
-com" rel=3D"noreferrer noreferrer" target=3D"_blank">dl.armbian.com</a>)|26=
-05:7900:20::5|:443... connected.<br>
-&gt; ...<br>
-&gt; HTTP request sent, awaiting response... 404 Not Found<br>
-&gt; 2021-02-11 22:34:45 ERROR 404: Not Found.<br>
-&gt; <br>
-&gt; I&#39;ve now added the artifacts to a server maintained by me. The mac=
-hine has a stable<br>
-&gt; uptime of several years, ~100Mbit bandwidth and plenty of available st=
-orage.<br>
-&gt; Also for other artifacts if needed. I&#39;m open to discuss if there i=
-s a proposal<br>
-&gt; for a better location for these artifacts or a more generic qemu locat=
-ion.<br>
-<br>
-Thanks for trying to fix this long standing problem.<br>
-<br>
-While this works in your case, this doesn&#39;t scale to the community,<br>
-as not all contributors have access to such hardware and bandwidth /<br>
-storage.<br>
-<br>
-While your first patch is useful in showing where the artifacts are<br>
-stored doesn&#39;t matter - as long as we use cryptographic hashes - I<br>
-think it is a step in the wrong direction, so I am not keen on<br>
-accepting it.</blockquote></div></div><div dir=3D"auto"><div class=3D"gmail=
-_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
--left:1px #ccc solid;padding-left:1ex"><br>
-My personal view is that any contributor should have the same<br>
-possibilities to add tests to the project. </blockquote></div></div><div di=
-r=3D"auto"><br></div><div dir=3D"auto">Hi Philippe,</div><div dir=3D"auto">=
-<br></div><div dir=3D"auto">I see your point. How about I simply upload the=
- artifacts to github instead? There are already multiple tests right now th=
-at use artifacts stored on github. And github is available to everyone. For=
- me that would work fine. If you agree, I can respin the patch.</div><div d=
-ir=3D"auto"><br></div><div dir=3D"auto">Regards</div><div dir=3D"auto">Niek=
-</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quo=
-te"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-lef=
-t:1px #ccc solid;padding-left:1ex">Now I am also open to<br>
-discuss with the others :) I might be proven wrong, and it could<br>
-be better to rely on good willing contributors rather than having<br>
-nothing useful at all.</blockquote></div></div><div dir=3D"auto"><div class=
-=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
-ex;border-left:1px #ccc solid;padding-left:1ex">
-<br>
-Regards,<br>
-<br>
-Phil.<br>
-<br>
-</blockquote></div></div></div>
-
---00000000000064a2cb05bb65ddfe--

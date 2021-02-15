@@ -1,111 +1,114 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5564753lfc;
-        Mon, 15 Feb 2021 04:10:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw4qpS6RO6gAS+gjNSZc7CxIqeT3ybJO3onwaOBi5tO7n54ip/zLV5+3PXLasrT+Ua2doHS
-X-Received: by 2002:a25:442:: with SMTP id 63mr23137377ybe.131.1613391008913;
-        Mon, 15 Feb 2021 04:10:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613391008; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5564858lfc;
+        Mon, 15 Feb 2021 04:10:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyAI0SBv4OejepI+g/+sEFmSKhBtTxa4Ss3wTstkvMJ0us5dISnL0hpJj7HZ98Po66BHqRo
+X-Received: by 2002:a25:b46:: with SMTP id 67mr23581391ybl.50.1613391018039;
+        Mon, 15 Feb 2021 04:10:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613391018; cv=none;
         d=google.com; s=arc-20160816;
-        b=BwelN/lcdZTfmRS0hzpcOEroMWcwq502hYDgdpn9ElBYn3h3GuSqhZScKTupX2Eg9l
-         VbthkaiQRWRmCrdyNH/L+LAhh/0nUjrz3kkGupIzGgl/YPe1NYukK2GFnBZSrR6FjjuX
-         i+WgRS6xwKREEMiHwjRwglJJuA3gX9U7kKEulzP9QFTRozLs6TpyVMJE5NPbYEUonogx
-         IzpOY8Zq3fE1r55X44I9dYOVstVmHifb9VnYM3ZYRp7Ni7x7hmBfSAsBOmXLggxpNfDJ
-         a6InI/yV2yczBIP8oG9wk20rWJpConQA8jd5bIWoSvZXis+IprLcyck0ROw0LlYf9Qbt
-         f7cw==
+        b=KXkQugC+Cm9L+itr/DeDRPs7DOImOxUdvpY4zUB8s/Efg05SfgHZBNstxxUSGSu2MP
+         3QvBRzvEnFbe8IxvbtS2thozBtj+f76vLK9YxL6dGHJ/dyFKTDdhcy53AGH+SkXyVYVi
+         MnYE0n54zFlBLdHUGcbawpZkhQtWtkyQAlXqYe8zhCuTm1qT55nl9A0nCfK7oUClxZeZ
+         zmRGfhBcIn+bKKYtlczrD5Oe65+zlA2pRWqS0S+hSjezZ7qRXJG84p9AHsS1R9Dtza+5
+         ja9ZtH09ZCbl2RCxD7y6JXNrZtga1jRpOzZUaV2gVNv/1OhbixIu2GQ7anEtuWDwc4Yu
+         Y51g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Ok51mWFe/EHn9mJ70RUpKX9SuyFsEZZOYsJcbxrhCtM=;
-        b=FsMBF3Zbc8sSBirzDv79n3XgPM8VGGOxL+D4wyDqVtyy4zXtzdVnE81kcvAtHsYV3C
-         5YKgkSwsagtntueU0SVNo5k5YCgJoYA0hwdsJLU4kJjtX3YTwfBv3CNDWnRfoLHwRKUO
-         YJxvQZ//DBGTsojolw4jazo+G3ZMPKDrp71G7mLyvLh9xUP1Qic+np8iO1nDsEJNTVST
-         joiEkNCcI8ey52ud1z/+2aXVa8arOzYS+yfgxc0EJCDd97weCnx7z0P9pqXXCWtyg4QJ
-         7feIz05JL6Y7ZtSNwhAimJC+iQ3ONdjCGlVVRIGJFflVuX1Wuq+pzu9xdM5NUe5n7RD4
-         zH8Q==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=BJhumdusHtFHBzsbOG/jymVEW3RVs2aWMPqbq1gytTg=;
+        b=TI7YEmqW4i6JZ8MzXB/uNHnLdUIkwlKPR1vP285SaecpHxyQUiJnMbnPgrsSPJTzDf
+         Iz/KYM1LNbxxT9e/BRAOK8XuZVxE5/e3tfVsjKDbxlighU4dC8kqFbQpZZZp59fxlMFT
+         +3BFvBQAA6FAyEGThubRaCZHCCuaZ1tQh4WalFTv915UJ2Q/EBCcBW5dEnmqf1L/SxV0
+         rbAALV7ZmxSTtq7OZDwrZVugKgZY4BvXZPC7CEReUwB/mxD0WnH+TOo4dxPyLJW6+3OF
+         2BFbNt+VN0xCgiwGikQarPcfE/gyL4goxMChKHKMHoAwhOyEu2QSP7TMtMWY9i+1G1K0
+         oYUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MWrc0Adm;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W953dX4h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j133si17060323ybb.145.2021.02.15.04.10.08
+        by mx.google.com with ESMTPS id i81si5371227ybg.83.2021.02.15.04.10.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Feb 2021 04:10:08 -0800 (PST)
+        Mon, 15 Feb 2021 04:10:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MWrc0Adm;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W953dX4h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55514 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:56304 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBchc-0003hW-9A
-	for alex.bennee@linaro.org; Mon, 15 Feb 2021 07:10:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39384)
+	id 1lBchl-00041I-DC
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 07:10:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBcQY-0007hc-R2
- for qemu-devel@nongnu.org; Mon, 15 Feb 2021 06:52:30 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:45505)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lBcRY-0000sQ-GT; Mon, 15 Feb 2021 06:53:32 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:34516)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBcQX-000415-3D
- for qemu-devel@nongnu.org; Mon, 15 Feb 2021 06:52:30 -0500
-Received: by mail-wr1-x430.google.com with SMTP id v7so8455379wrr.12
- for <qemu-devel@nongnu.org>; Mon, 15 Feb 2021 03:52:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Ok51mWFe/EHn9mJ70RUpKX9SuyFsEZZOYsJcbxrhCtM=;
- b=MWrc0AdmkdABWEbP2TLy1p4KVEBQRu5S9EoM5KOj7yuStRi8WBRv1lHgVE6nZYdGDW
- 0KoycWMpLjOBd2lF0aVPyOau+OlVaeKi+U7RlcRbDGFrFRQgvUCD8zHYhx9xxFsLpLwc
- TIRXQsLc0R5CNfOAEbJbjJsIJwlU/litP9jK26CNJyumaVviN6SkxFmV/9bDmaRSq5Tp
- aoI6Y1p5Smum6V3tw30EU2O7Z2+ZiIRHJ3u+WuUB/n99JVMWrckYJsl3cVSxQbGbLdm2
- 6ZgyyULFAFst2U+kG/QQ6MkPG9N1gPWyOH9eUA/LjduSpzjjKzVN6Cdcv/K20wKqnbDn
- +Urg==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lBcRW-0004RF-RB; Mon, 15 Feb 2021 06:53:32 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id n4so5530200wrx.1;
+ Mon, 15 Feb 2021 03:53:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=BJhumdusHtFHBzsbOG/jymVEW3RVs2aWMPqbq1gytTg=;
+ b=W953dX4hXxjrdJnxJ5cPi6CrVl8VwRnlpzv4+KOCOe5kirQkFwIWloUyJ3RtCIDoik
+ LWgQyPtaMf82BaJX8sycxIrzTiGYEoIn+eiSG25mgr1L9P9gAOv8T8Fh27iPyJDtf9uC
+ hJvSQXePlFV1C+voTnxN+SxAl6L6FdPCpBx+F1jng4p+Bna41heqsO6sX39+Gr7RngkO
+ 52+r4P+AAUJKe5tQGaE2FiYUwXcBD3wz7JL+vIEJGYc1OEYURB8O3QV9dPfYS1lW/hNY
+ nf0/qBFk+Ixt84s5T8/GR8tUU/P++W/f7NWS2Vs1ig46/CUGMe5uWmYneFZmzoXANatK
+ Yocw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Ok51mWFe/EHn9mJ70RUpKX9SuyFsEZZOYsJcbxrhCtM=;
- b=FpAomon8pwjASRrWAY+1goKajSop7EK/v1ID5aKEHKct9kiL2SSsj48caTAx8ghZy8
- b4b9nJp8jrQLtRJ+ox5vxjfBKDMK+V04/QywDL3tY+WVN/9WaEAYxE6YK8dLeuOHQ+GD
- ujt0pU9ehaXdIoc8w81OqpbGMKixbW9Ox798U/J+us50tlj5QjgzEJYBrOKyvzhCzD5I
- RHAWuDASRicdIDoSdawm8Ku+9VeQ5nOSEVO9LtfGE/RUswvWEHVuX2W3oMK+0bt3bK2L
- ME+DWpnRuds6lXbOibc05/bny50Kmo7/CVqoHRsXOpgBN7uMWPC5iAz8SlppdQg4hJUt
- HUqA==
-X-Gm-Message-State: AOAM530OWllDFbmL0+drHaFkcGasThHertJcojE4+SdojfD93yj84omD
- i0dSPAVx0DO+PTnpvTdnyPO3mQ==
-X-Received: by 2002:a05:6000:1cc:: with SMTP id
- t12mr17719201wrx.142.1613389947866; 
- Mon, 15 Feb 2021 03:52:27 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l83sm25574812wmf.4.2021.02.15.03.52.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 03:52:27 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 11/24] hw/arm/mps2-tz: Correct wrong interrupt numbers for
- DMA and SPI
-Date: Mon, 15 Feb 2021 11:51:25 +0000
-Message-Id: <20210215115138.20465-12-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210215115138.20465-1-peter.maydell@linaro.org>
-References: <20210215115138.20465-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BJhumdusHtFHBzsbOG/jymVEW3RVs2aWMPqbq1gytTg=;
+ b=na2GKTGSMFRStPHKhtN0er21/K8CeqotlX6tSbbjfpbZL2IWl7NlbKJCtqOCeEXf5z
+ N3q2MelxTxS0Vmp0egReGNi8+BVHEV4ZYghcQx6ayEPwAJf2ijo+bAW7AyNOe+WF1RR1
+ dL7Kf5cT7GxN9LMkGxtc8OsP7GTFRVA9m6a1xMlfT+lEI9gejyzdlZ/hqx5O6LTbblt3
+ jiA1ONacdEuxXMOSxsPNrAk5KgQtr56NY8VmLebcpi70bJe1JzCUzhCNjHklhSL2HvCR
+ 9KUcuXsq1pwIz0LOm/NPM0/y5beXUdUdMlDdhJb+fupnNQQRPei838Yvy2GtEPJtecTI
+ Wp4w==
+X-Gm-Message-State: AOAM530/214bFu8aAzEBFm+h4uNnZElSwwnqYe7Ts+qGMP5DIgj2eULw
+ 08cNjhGqYt1Zwecfa6Hb6ejcW3KTjYY=
+X-Received: by 2002:adf:ea48:: with SMTP id j8mr18416632wrn.197.1613390008663; 
+ Mon, 15 Feb 2021 03:53:28 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id 64sm27620857wrc.50.2021.02.15.03.53.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Feb 2021 03:53:28 -0800 (PST)
+Subject: Re: [PATCH v2 11/12] spitz: put some Spitz-family devices into the
+ correct category
+To: Gan Qixin <ganqixin@huawei.com>, qemu-devel@nongnu.org
+References: <20201130083630.2520597-1-ganqixin@huawei.com>
+ <20201130083630.2520597-12-ganqixin@huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <1b09bc1a-7765-150c-1568-a9f3b2eb5c78@amsat.org>
+Date: Mon, 15 Feb 2021 12:53:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20201130083630.2520597-12-ganqixin@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,97 +121,55 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, thuth@redhat.com,
+ zhang.zhanghailiang@huawei.com, qemu-trivial@nongnu.org,
+ qemu-arm <qemu-arm@nongnu.org>, kuhn.chenqun@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lh5N2xCkpCky
+X-TUID: b+U73R6OV9Dq
 
-On the MPS2 boards, the first 32 interrupt lines are entirely
-internal to the SSE; interrupt lines for devices outside the SSE
-start at 32.  In the application notes that document each FPGA image,
-the interrupt wiring is documented from the point of view of the CPU,
-so '0' is the first of the SSE's interrupts and the devices in the
-FPGA image itself are '32' and up: so the UART 0 Receive interrupt is
-32, the SPI #0 interrupt is 51, and so on.
+Hi,
 
-Within our implementation, because the external interrupts must be
-connected to the EXP_IRQ[0...n] lines of the SSE object, we made the
-get_sse_irq_in() function take an irqno whose values start at 0 for
-the first FPGA device interrupt.  In this numbering scheme the UART 0
-Receive interrupt is 0, the SPI #0 interrupt is 19, and so on.
+On 11/30/20 9:36 AM, Gan Qixin wrote:
+> Some Spitz-family devices have no category, put them into the correct category.
+> 
+> Signed-off-by: Gan Qixin <ganqixin@huawei.com>
+> ---
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/spitz.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+> index 32bdeacfd3..0e5e8a4634 100644
+> --- a/hw/arm/spitz.c
+> +++ b/hw/arm/spitz.c
+> @@ -1218,6 +1218,7 @@ static void corgi_ssp_class_init(ObjectClass *klass, void *data)
+>      k->realize = corgi_ssp_realize;
+>      k->transfer = corgi_ssp_transfer;
+>      dc->vmsd = &vmstate_corgi_ssp_regs;
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
 
-The result of these two different numbering schemes has been that
-half of the devices were wired up to the wrong IRQs: the UART IRQs
-are wired up correctly, but the DMA and SPI devices were passing
-start-at-32 values to get_sse_irq_in() and so being mis-connected.
+OK.
 
-Fix the bug by making get_sse_irq_in() take values specified with the
-same scheme that the hardware manuals use, to avoid confusion.
+>  }
+>  
+>  static const TypeInfo corgi_ssp_info = {
+> @@ -1247,6 +1248,7 @@ static void spitz_lcdtg_class_init(ObjectClass *klass, void *data)
+>      k->realize = spitz_lcdtg_realize;
+>      k->transfer = spitz_lcdtg_transfer;
+>      dc->vmsd = &vmstate_spitz_lcdtg_regs;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/mps2-tz.c | 24 +++++++++++++++++-------
- 1 file changed, 17 insertions(+), 7 deletions(-)
+This is not a display device, but a regulator to
+control the display backlight. DEVICE_CATEGORY_MISC
+seems more appropriate.
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 6362652e617..ff8b7e5f1ae 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -139,11 +139,21 @@ static void make_ram_alias(MemoryRegion *mr, const char *name,
- 
- static qemu_irq get_sse_irq_in(MPS2TZMachineState *mms, int irqno)
- {
--    /* Return a qemu_irq which will signal IRQ n to all CPUs in the SSE. */
-+    /*
-+     * Return a qemu_irq which will signal IRQ n to all CPUs in the
-+     * SSE.  The irqno should be as the CPU sees it, so the first
-+     * external-to-the-SSE interrupt is 32.
-+     */
-     MachineClass *mc = MACHINE_GET_CLASS(mms);
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
- 
--    assert(irqno < mmc->numirq);
-+    assert(irqno >= 32 && irqno < (mmc->numirq + 32));
-+
-+    /*
-+     * Convert from "CPU irq number" (as listed in the FPGA image
-+     * documentation) to the SSE external-interrupt number.
-+     */
-+    irqno -= 32;
- 
-     if (mc->max_cpus > 1) {
-         return qdev_get_gpio_in(DEVICE(&mms->cpu_irq_splitter[irqno]), 0);
-@@ -197,9 +207,9 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
-     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-     CMSDKAPBUART *uart = opaque;
-     int i = uart - &mms->uart[0];
--    int rxirqno = i * 2;
--    int txirqno = i * 2 + 1;
--    int combirqno = i + 10;
-+    int rxirqno = i * 2 + 32;
-+    int txirqno = i * 2 + 33;
-+    int combirqno = i + 42;
-     SysBusDevice *s;
-     DeviceState *orgate_dev = DEVICE(&mms->uart_irq_orgate);
- 
-@@ -266,7 +276,7 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState *mms, void *opaque,
- 
-     s = SYS_BUS_DEVICE(mms->lan9118);
-     sysbus_realize_and_unref(s, &error_fatal);
--    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 16));
-+    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, 48));
-     return sysbus_mmio_get_region(s, 0);
- }
- 
-@@ -507,7 +517,7 @@ static void mps2tz_common_init(MachineState *machine)
-                             &error_fatal);
-     qdev_realize(DEVICE(&mms->uart_irq_orgate), NULL, &error_fatal);
-     qdev_connect_gpio_out(DEVICE(&mms->uart_irq_orgate), 0,
--                          get_sse_irq_in(mms, 15));
-+                          get_sse_irq_in(mms, 47));
- 
-     /* Most of the devices in the FPGA are behind Peripheral Protection
-      * Controllers. The required order for initializing things is:
--- 
-2.20.1
+>  }
+>  
+>  static const TypeInfo spitz_lcdtg_info = {
+> 
 
+Regards,
+
+Phil.

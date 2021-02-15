@@ -1,127 +1,232 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5844498lfc;
-        Mon, 15 Feb 2021 10:32:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJypr8WGEhHprIgjjZbf2vIgv1Nmk+E6yq66++6Ec4/VjLz1MlYfbYrRG37PX4G+ejbtU++M
-X-Received: by 2002:a25:4e05:: with SMTP id c5mr5223856ybb.193.1613413957092;
-        Mon, 15 Feb 2021 10:32:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613413957; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5914701lfc;
+        Mon, 15 Feb 2021 12:31:04 -0800 (PST)
+X-Received: by 2002:a02:660b:: with SMTP id k11mr17237212jac.120.1613421064347;
+        Mon, 15 Feb 2021 12:31:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613421064; cv=none;
         d=google.com; s=arc-20160816;
-        b=hJ+3E7LBr8MipUhb+wHy8LGEvp04TGKQVqMXncWLSO+ZWgbQZN/L8RqtDvNJ08Eacl
-         DaGIKm6CZTqAlvtxmByIV/A4FmUYSQ9hK/UozPF2JFHb2NoBpL8DnyjGNMg/iuUCOgUt
-         Iq/RfQjclriTaF0tkIj5nFuHq5wp5MYu4XZEtFW01oL71JcM63q1uO/a33n+rJyb+yQi
-         CTaocxry/n0OoBZsu/IgMRxo831NcDUUxCd6q8p5zncWdUTIVXJpTAfcRaqJew+p3s/b
-         KJl0mdrWyLdJLyOJJUc7UozKZcyww0TCHWQF30Igyt8bwtW+4zkXrsti3u8e5OucqvFZ
-         lqLA==
+        b=ZJiT3sTQxSH1Ay+D1DC/39mTs56gbVdyVzAyRkcXQ0UJTDN+gnFd6wPmAy4y8D552K
+         S864GphVRFeOfigs87jHLB8NefwL/idEMsaU5mj+lqkhqZZvlS3D3UUZpdlu1f2vkEM2
+         CghQrj4lBBrl5ibDbDSfnn5Azvb7hmEh4BXOQZskC3RviELL1eLkvb0ucihlbie6rcwt
+         qzUK2VGIrhCGThh/EQZwXKx51yHjLjbui6tdFoxkQoSHyuX7ainsRlPj53MdZcETpx2P
+         w6pS8LomhvydvL4Y0J2omex0Kfmj4ReYZv9adq40YyXAhmGqzwTCMJrZKd2P2XeGN2mU
+         zE0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:to:from:dkim-signature;
-        bh=bOGSw2KfQysx9MPvNPzIC9mHGdtkmTxSgDe7SV/7s2c=;
-        b=HmvhHYtsuqtV/9vAa7QnrS4oEUAg4Fv9cA4iB5bNh3Nck2v6mtwb/mARaAtmnqw2Jv
-         bDlHaZm/gRnj5666mvLRU5gUWbS0voDm48mwFgfH0z+lVRHro1n1DNEIJG9VZg1x45yp
-         ZAnSGx7IBVqSSkkAxc+x/XklF7SMvZAu7XB9uE1vbJB1B39vw7fnNBs8HxLB+qIJcR3X
-         470BvBIa31dx/V9nxH1MU8f8gXvOkE8g5WYPEWja0HrQICw0kR+KneBDYLAoFNGF94bb
-         h7iWYCnauc3ANyVTFECQzL0Ct3AHa4SONVjMxtmSkxGKQeRY82byxj4BhpHxTThomCbI
-         fh5A==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=78fwAa+Rsw01RxG2wWugKvlSZtpYHUe6+3hnhVfYDCw=;
+        b=joGdGECWJXLeEjNKlsywOwGMqb+gKtTnLpFqQl9o/o9YsBmD6mdafbOz9EbkoymjMe
+         3n8FCRje4KJ5e8ScOXWGIr8YVIu1njY84NurLP3bMi3Jdp96opzqMxB8opOs8xrtnNMA
+         u7nPZyLGE2qMfqIOnAkxB8i1nMloi2myjjfvtAb30XdqUPA4dfnvbh44P/fNV7xS9rB0
+         kKhPWZpOPQG2BsRB9sfmz/FmwhonjrsXekYFRZq8s+2T4WG8C/QwUmb4X1FyZQAlPl7z
+         MzNGdj3bGbJ2VAEl5EVpq8hqM4IgV+G9DRGNepfBMs+8DdfaD9kGsdjesvkaMcOA8YMj
+         oGQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@mutex.one header.s=default header.b=KRyqROT0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si17032536ybm.453.2021.02.15.10.32.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Feb 2021 10:32:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dBmHsztu;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id z18sor491119ilp.70.2021.02.15.12.31.04
+        (Google Transport Security);
+        Mon, 15 Feb 2021 12:31:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@mutex.one header.s=default header.b=KRyqROT0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55120 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBifk-0007j9-I4
-	for alex.bennee@linaro.org; Mon, 15 Feb 2021 13:32:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48970)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <posteuca@mutex.one>)
- id 1lBict-0005b3-6o; Mon, 15 Feb 2021 13:29:40 -0500
-Received: from mail.mutex.one ([62.77.152.124]:42214)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <posteuca@mutex.one>)
- id 1lBico-0005qg-95; Mon, 15 Feb 2021 13:29:37 -0500
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.mutex.one (Postfix) with ESMTP id 2E96CBF44177;
- Mon, 15 Feb 2021 20:29:30 +0200 (EET)
-X-Virus-Scanned: Debian amavisd-new at mail.mutex.one
-Received: from mail.mutex.one ([127.0.0.1])
- by localhost (mail.mutex.one [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7qC6xwkswqYb; Mon, 15 Feb 2021 20:29:29 +0200 (EET)
-Received: [127.0.0.1] (localhost [127.0.0.1])nknown [109.103.89.101])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.mutex.one (Postfix) with ESMTPSA id 228C3BF44165;
- Mon, 15 Feb 2021 20:29:29 +0200 (EET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mutex.one; s=default;
- t=1613413769; bh=bOGSw2KfQysx9MPvNPzIC9mHGdtkmTxSgDe7SV/7s2c=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=KRyqROT0v5AgpmfCBeSkrhRaS8TJVDkTQPBSOWySes02toHkXjoj3yHDos8QQSYFc
- OOyDDwOVzsopbwEb0WLLMBMEZknj7JZKf+mUHIJvNYuoGZQGO2b5REzAQK/cBRYyzM
- Q5dVDQrdb+Vav7Ke4jFCMRHbObrlrBh8YEPAD0BE=
-From: Marian Postevca <posteuca@mutex.one>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH] acpi: Remove duplicated code handling OEM ID and OEM
- table ID fields
-In-Reply-To: <20210215184404.7e342872@redhat.com>
-References: <20210213102233.11428-1-posteuca@mutex.one>
- <20210215184404.7e342872@redhat.com>
-Date: Mon, 15 Feb 2021 20:26:10 +0200
-Message-ID: <877dn9w5kt.fsf@mutex.one>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dBmHsztu;
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=78fwAa+Rsw01RxG2wWugKvlSZtpYHUe6+3hnhVfYDCw=;
+        b=dBmHsztun12FVOFpF17R10e1VYCMWEoXBvlw8Z8j0AN0FJfejEV32fZT+Z2JR5zqVN
+         mrDmFCBmq9sneXUbG4nb/opxppy2C59ct0e/b4XfdDuL8qYZUdSi4QN65vNIyUMTaBlR
+         O1HjeBVukFmRisuWTxMtWl1QOozRgO9MCf+PDhUgg65mfeZm1V9HZ+S4q+LNjmdNG6De
+         Kno5bokmRLKtqgltOmF99L5tQ4bhjcckC+QiD8zb4oR0XmbaA0xGKxW4cze3azYrnAGO
+         sjn3A2TN7UX7DcRdoMvbKnoroFEIxMu9y7s8cxpevHK5Y94plmrIG7+8MaHsnF8Vn9JG
+         KeMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=78fwAa+Rsw01RxG2wWugKvlSZtpYHUe6+3hnhVfYDCw=;
+        b=DstSONgTZsAz3ZM79JC4eezhnNviZ//+aCE8jmID7wlqU58r0v1qP/ghGWRPmcQ4tQ
+         VVF56syvB5LDxC07/rT2Ptq2L8tzVfFXfAoOmTy8dgcW8ID1Haq7pPac3PcMe4XWRStG
+         vJeSBJTllJNh89pFm2gTk0Tvo8wJHObDKsZYIm2l55GVU2Lluc6cbu5U4X1dB2Rfiudn
+         Tj4A2GWty1eqgB3mYShmqqMha5LabUl9ffz9zgIYBf3+ANyo0w/nUr7o/XzQ9/V/DwCu
+         jqHfyr8sa2+Tdn1+T9aIj+9iv+jngOwOIps1/UMJDGzso2T4Woov4PB40ktCYGp1TuwD
+         k3Zg==
+X-Gm-Message-State: AOAM530US+xpHKyp6oZl3dVxmCNWETf9mMRXyCaKKWSLehp3jjntWarJ
+	ACGbHCDYzkIL4fSX2Oq+x+fPM88vQtfn0S5ck6Q=
+X-Google-Smtp-Source: ABdhPJwzVKUpmn3bDjEe/zsrPx9tWHxoe/D3cCpjlQGJFjzzpriQX7+HxtVGjMrL7gmr93UBHC9N3nJWhz6lb7ovhZ4=
+X-Received: by 2002:a92:cc03:: with SMTP id s3mr13278062ilp.45.1613421064003;
+ Mon, 15 Feb 2021 12:31:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-Received-SPF: pass client-ip=62.77.152.124; envelope-from=posteuca@mutex.one;
- helo=mail.mutex.one
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Xiang Zheng <zhengxiang9@huawei.com>,
- "open list:ACPI/HEST/GHES" <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oaXRNBplCokj
+References: <20210211220055.19047-1-nieklinnenbank@gmail.com> <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
+In-Reply-To: <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Mon, 15 Feb 2021 21:30:52 +0100
+Message-ID: <CAPan3WqGAzWE+gCqo0Rggu70GpQAbWYyA2thH6LX=oTxhnvRfQ@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: "Daniel P . Berrange" <berrange@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org, peter.maydell@linaro.org, 
+	qemu-devel@nongnu.org, f4bug@amsat.org, crosa@redhat.com, 
+	Pavel.Dovgaluk@ispras.ru, b.galvani@gmail.com, 
+	Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000064a2cb05bb65ddfe"
+X-TUID: Pyla6un6nv+h
 
-Igor Mammedov <imammedo@redhat.com> writes:
+--00000000000064a2cb05bb65ddfe
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> hmm, looks like adding instead of removing
+Op vr 12 feb. 2021 15:10 schreef Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
+.com>:
+
+> Hi Niek and QEMU community,
 >
-Do you mean that the commit message does not describe the change
-correctly, or that my refactoring is too extreme?
-
-If it is the latter, I think I tried to simplify things, by creating
-macros to be used in multiple places where this structure is created.
-And passing the structure around instead of two parameters seemed simpler.
-
-> have you considered, putting this field into X86MachineState?
-> (that way you will be able to handle both PC and microvm in one place,
-> without duplication io init/property setters)
+> On 2/11/21 11:00 PM, Niek Linnenbank wrote:
+> > The following are maintenance patches for the Allwinner H3. The first
+> patch
+> > is a proposal to relocate the binary artifacts of the acceptance tests
+> away
+> > from the apt.armbian.com domain. In the past we had problems with
+> artifacts being
+> > removed, and now the recently added Armbian 20.08.1 image has been
+> removed as well:
+> >
+> > $ wget
+> https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bion=
+ic_current_5.8.5.img.xz
+> > Connecting to dl.armbian.com (dl.armbian.com)|2605:7900:20::5|:443...
+> connected.
+> > ...
+> > HTTP request sent, awaiting response... 404 Not Found
+> > 2021-02-11 22:34:45 ERROR 404: Not Found.
+> >
+> > I've now added the artifacts to a server maintained by me. The machine
+> has a stable
+> > uptime of several years, ~100Mbit bandwidth and plenty of available
+> storage.
+> > Also for other artifacts if needed. I'm open to discuss if there is a
+> proposal
+> > for a better location for these artifacts or a more generic qemu
+> location.
 >
-I did not, will try this approach.
+> Thanks for trying to fix this long standing problem.
+>
+> While this works in your case, this doesn't scale to the community,
+> as not all contributors have access to such hardware and bandwidth /
+> storage.
+>
+> While your first patch is useful in showing where the artifacts are
+> stored doesn't matter - as long as we use cryptographic hashes - I
+> think it is a step in the wrong direction, so I am not keen on
+> accepting it.
+
+
+> My personal view is that any contributor should have the same
+> possibilities to add tests to the project.
+
+
+Hi Philippe,
+
+I see your point. How about I simply upload the artifacts to github
+instead? There are already multiple tests right now that use artifacts
+stored on github. And github is available to everyone. For me that would
+work fine. If you agree, I can respin the patch.
+
+Regards
+Niek
+
+Now I am also open to
+> discuss with the others :) I might be proven wrong, and it could
+> be better to rely on good willing contributors rather than having
+> nothing useful at all.
+
+
+> Regards,
+>
+> Phil.
+>
+>
+
+--00000000000064a2cb05bb65ddfe
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">Op vr 12 feb. 2021 15:10 schreef Philippe Mathieu-Daud=
+=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt;:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;borde=
+r-left:1px #ccc solid;padding-left:1ex">Hi Niek and QEMU community,<br>
+<br>
+On 2/11/21 11:00 PM, Niek Linnenbank wrote:<br>
+&gt; The following are maintenance patches for the Allwinner H3. The first =
+patch<br>
+&gt; is a proposal to relocate the binary artifacts of the acceptance tests=
+ away<br>
+&gt; from the <a href=3D"http://apt.armbian.com" rel=3D"noreferrer noreferr=
+er" target=3D"_blank">apt.armbian.com</a> domain. In the past we had proble=
+ms with artifacts being<br>
+&gt; removed, and now the recently added Armbian 20.08.1 image has been rem=
+oved as well:<br>
+&gt; <br>
+&gt; $ wget <a href=3D"https://dl.armbian.com/orangepipc/archive/Armbian_20=
+.08.1_Orangepipc_bionic_current_5.8.5.img.xz" rel=3D"noreferrer noreferrer"=
+ target=3D"_blank">https://dl.armbian.com/orangepipc/archive/Armbian_20.08.=
+1_Orangepipc_bionic_current_5.8.5.img.xz</a><br>
+&gt; Connecting to <a href=3D"http://dl.armbian.com" rel=3D"noreferrer nore=
+ferrer" target=3D"_blank">dl.armbian.com</a> (<a href=3D"http://dl.armbian.=
+com" rel=3D"noreferrer noreferrer" target=3D"_blank">dl.armbian.com</a>)|26=
+05:7900:20::5|:443... connected.<br>
+&gt; ...<br>
+&gt; HTTP request sent, awaiting response... 404 Not Found<br>
+&gt; 2021-02-11 22:34:45 ERROR 404: Not Found.<br>
+&gt; <br>
+&gt; I&#39;ve now added the artifacts to a server maintained by me. The mac=
+hine has a stable<br>
+&gt; uptime of several years, ~100Mbit bandwidth and plenty of available st=
+orage.<br>
+&gt; Also for other artifacts if needed. I&#39;m open to discuss if there i=
+s a proposal<br>
+&gt; for a better location for these artifacts or a more generic qemu locat=
+ion.<br>
+<br>
+Thanks for trying to fix this long standing problem.<br>
+<br>
+While this works in your case, this doesn&#39;t scale to the community,<br>
+as not all contributors have access to such hardware and bandwidth /<br>
+storage.<br>
+<br>
+While your first patch is useful in showing where the artifacts are<br>
+stored doesn&#39;t matter - as long as we use cryptographic hashes - I<br>
+think it is a step in the wrong direction, so I am not keen on<br>
+accepting it.</blockquote></div></div><div dir=3D"auto"><div class=3D"gmail=
+_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
+-left:1px #ccc solid;padding-left:1ex"><br>
+My personal view is that any contributor should have the same<br>
+possibilities to add tests to the project. </blockquote></div></div><div di=
+r=3D"auto"><br></div><div dir=3D"auto">Hi Philippe,</div><div dir=3D"auto">=
+<br></div><div dir=3D"auto">I see your point. How about I simply upload the=
+ artifacts to github instead? There are already multiple tests right now th=
+at use artifacts stored on github. And github is available to everyone. For=
+ me that would work fine. If you agree, I can respin the patch.</div><div d=
+ir=3D"auto"><br></div><div dir=3D"auto">Regards</div><div dir=3D"auto">Niek=
+</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quo=
+te"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-lef=
+t:1px #ccc solid;padding-left:1ex">Now I am also open to<br>
+discuss with the others :) I might be proven wrong, and it could<br>
+be better to rely on good willing contributors rather than having<br>
+nothing useful at all.</blockquote></div></div><div dir=3D"auto"><div class=
+=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
+ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+Regards,<br>
+<br>
+Phil.<br>
+<br>
+</blockquote></div></div></div>
+
+--00000000000064a2cb05bb65ddfe--

@@ -1,104 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5501731lfc;
-        Mon, 15 Feb 2021 02:33:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwtezS1CycHeVLJZZWrraW5HQ0utLqPpSgQmvJEEzR6JNssrk0zb1gbzW9s9PbGbDGZCNar
-X-Received: by 2002:a25:9b88:: with SMTP id v8mr22723913ybo.338.1613385206587;
-        Mon, 15 Feb 2021 02:33:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613385206; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5502575lfc;
+        Mon, 15 Feb 2021 02:34:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxHXmoEwExUodrUea6G4qgg9zAANBmxu0WKOiL+RIn48FtACE3GpcD1qPObR4wEsN2BOnVy
+X-Received: by 2002:a25:a08f:: with SMTP id y15mr21776216ybh.349.1613385296046;
+        Mon, 15 Feb 2021 02:34:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613385296; cv=none;
         d=google.com; s=arc-20160816;
-        b=CZ4Nw2+MzoVJcIiEh1jf8ygIP2qiM53iv/3szpiBA4GAnYk1thjZ5drMSUZdHJOKfw
-         Kuyer1+CeHV0MLxQSBAyoypfOhrIp5lEZl2hMyhaUSBmz7cX+zDsD16d0U1Ez/CEUnIM
-         bpRyGdgRO5Fevj5k4O07VXGCXSj2DCv3MRlzlk43d92IgVLBpZEFl19mibzWbOKBWrFv
-         b9T6D+F+xUk7OkCWTvhUr5ZRUe8sRyWwwftvWCAGgvJ6Oop9NoUxQBKf8T/dUX+tZAr6
-         yEloIRDkEK2syPmwrhWi35NJCbNq5W+7aVECXPR02PNXCCvF2QTm/IWHjUo5v2TLqf0A
-         AdKw==
+        b=zgtzMG9zzapT+k8quxTYHNSCaS/0SxBbZqgJ11/XaEByI4BhqBIE8wxtoTTUYVD32I
+         nw8TVNpSTDlNScP+YbaP8Ny/6zikg4PLGoE/Vq6iYAXf4QUODKsYI8GxsgBX1m5YwpXf
+         mbTNQRlKp913luoKcK+Kdmrq3MMyHYmA41WDqwoxMi4Y6QBOigVMB/U++zQq2UdfJf96
+         QvghZC9DBrQFJCsk/2azSK75j2Rheka3KUGDu6bIoqtVhQ0RsDIeojG9I40vRp3cZs54
+         YdUasox/NFXcSRX7/hUJrqKtW7Ma5SsftE6/fnmbscHAearZM41dVWLHmd6CJRhof7aO
+         Q+YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=TCNOlx/VgRYG2pmzepRt+R1HLAN6RNJ7AMXnp5nQA0Y=;
-        b=xdotsvjMxQeztZ1vZU07pxLwvC3QlxNx7yAqDdm2Mkb/7ZM/MfityUo1s5kLZ8XQac
-         285kjgFIIc7HJcpio6AJejvcCuFDVAy1GMlUZEeT0PJgW+Hhg+s/ERmp8LVSKr4NPQDl
-         KE9BL8PGPHZIbMLagmxWHN1nEZ+FZMcgD7hlMcLuB1lnsrtQU2JCHAVOA+h+B0WKpXfK
-         SE2tkolHMG0oiiCDffSKj8RYoVAZI7Idf3Skc9CMfaUHS36CbpAlNN4qdLe1Fm/q0kvS
-         lFbK+cfZPJ+LBwsmxVaGGoYD5/tnhGkNXmB9aw3KM7XOYEldDucHr6FI7YF6DQTEAeFr
-         NxSA==
+        bh=a/+Lp00ImdUdFCYzgiMMi+eXXtTKdO25fqdcbshDHFk=;
+        b=rV0qlkbaoxJOCOn366kjDZH2rqP+uvYiodTx6Tp1l2slM4Wb5qQIVn3B5kjQ7Sp6BN
+         AtI/UBm5VdPvTjXIHmYFGihYhCRT85a1m8wgBvz041q8/70j/SjrxZhNVcjIx7NEjIQW
+         YLLoNCS0K3wbfJY3OmrWFE6AYlodG/JzVuK3Fuj614kBlQ7GXHHlJ5inuoDjP1cRj+bo
+         m+vMdaBmUYc3pzJxp4Yy25bpAZPFk3QkDOeqamjTkK3760Li/xyQbfS9tqbFhgn0PIA/
+         SI7SYFa2i2t5je+0i4XmVLDDqnv4hu2yvS1KoItR/tYqSvbT6SDPKp2XsHGpnwJjtF0w
+         cMDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KzejVWJ5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wzf5lP4M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h66si16227872ybh.54.2021.02.15.02.33.26
+        by mx.google.com with ESMTPS id m14si13285988ybt.184.2021.02.15.02.34.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Feb 2021 02:33:26 -0800 (PST)
+        Mon, 15 Feb 2021 02:34:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KzejVWJ5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wzf5lP4M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34150 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBbC1-00053f-V2
-	for alex.bennee@linaro.org; Mon, 15 Feb 2021 05:33:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50152)
+	id 1lBbDT-0006j5-Ca
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 05:34:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50156)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBbB7-0004Oi-VK
- for qemu-arm@nongnu.org; Mon, 15 Feb 2021 05:32:29 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:33343)
+ id 1lBbB8-0004P4-7H
+ for qemu-arm@nongnu.org; Mon, 15 Feb 2021 05:32:30 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:41933)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lBbB1-0001iE-Lg
+ id 1lBbB1-0001iS-Ly
  for qemu-arm@nongnu.org; Mon, 15 Feb 2021 05:32:29 -0500
-Received: by mail-wr1-x431.google.com with SMTP id 7so8304648wrz.0
- for <qemu-arm@nongnu.org>; Mon, 15 Feb 2021 02:32:21 -0800 (PST)
+Received: by mail-wr1-x434.google.com with SMTP id n6so8223167wrv.8
+ for <qemu-arm@nongnu.org>; Mon, 15 Feb 2021 02:32:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TCNOlx/VgRYG2pmzepRt+R1HLAN6RNJ7AMXnp5nQA0Y=;
- b=KzejVWJ5nFWECl9y+CN8pOyBHoYIuEmd5Q7Cst5grbyQ6FZTQUkbtCSlszURG8xzSZ
- uJ89CVyvb2XVMfJlraKu10l1ycbYbF9nk+BKZhvGBpd+st4CXjvOJIIYcTNaSwGthP6N
- rEgB/D7o5NIZS2eWiQ5hIBmIYFmo5pr+UFVfxwehqxqxS1qTi0jQB7fP+bhIwLfxKAap
- lLK89hs3+WISPawvfdkW7k+QYeYnM9zNqFGU5ArPQtjmavf7sJVMnkWrwMGn0SHeKkV6
- ssBRRplXosj2gbzUiLshWxkS24YdlkiFqdEMUnWt1AHhShbBaz6ZAwJn1kXmRtmMKpEK
- FDOg==
+ bh=a/+Lp00ImdUdFCYzgiMMi+eXXtTKdO25fqdcbshDHFk=;
+ b=wzf5lP4M2v8m9ufOOVGz9/4OfRXiTCbT/YdMpZzPmTEHLBbSeSPxU03oJVjPe9Icsf
+ Q+fM+Ryg4bHNT4uFq36lNp8gBxljAyAIb1gAeT7Ty8QKCxJHrLq1RgiD4MQYJp32h9zt
+ bG0cBz79TUDL2xyAawmsOjtjI0a1MRB3o1D7Oaw8lrOkMMOb5GMJ1Ibp8J2w4VCb9uNd
+ XE7EIp74tstX+p+P1hlY0iqbh6WR5MwOMQlPZZWQFpC6u3DitZGeB/ZucKiJuaP85AaI
+ ZiUsYhY+i/BsysJ04t6br3VLxMC2dsbbqwPN2d9wZaHVs0ZtVV8mOEptTZiOw6uPk1mI
+ feHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TCNOlx/VgRYG2pmzepRt+R1HLAN6RNJ7AMXnp5nQA0Y=;
- b=TS5xKN3mDGEi+Dkb6eO1pvbO2eVY1Jxx6cej1UcVJ+oOqpCZTArCTu+EpmgDQTZOOq
- bAcIcqdGtvDcBhsA6f8yhkNk1QqJcEKhkMl5CMvgwckNhHlX1fDuVxHsH5eUhN1RZBqQ
- GovG+4bJoWZnBS+jh7SCEksFE0MY/5XHH6fqA5Dn2oJLrU3zU6HDfbj37WGMqRumbAQP
- SSgnpSV4VYyBpdoN7ZwBbBL23U1C6VXCS5I4EcoQEd08uDPvPi003aduki/xuNAzQKKs
- fuTJ7/3hk9tI4xbQ1cm2+4ZRMzFBvbd/H5mHPKxwn6ILj5Q+mzCthEcy1ZRz8FsKgRKC
- fYMA==
-X-Gm-Message-State: AOAM532cUL8D1kD/a65SpeqTbjjQytqVbBRrQNa5ouKogc3LdVybB98v
- vbF8pQcUL5FJSVIyimLhi5Og+6srJ2sLAw==
-X-Received: by 2002:adf:8544:: with SMTP id 62mr18592437wrh.336.1613385140789; 
- Mon, 15 Feb 2021 02:32:20 -0800 (PST)
+ bh=a/+Lp00ImdUdFCYzgiMMi+eXXtTKdO25fqdcbshDHFk=;
+ b=FNryc2Y+nWGd4IXeGo4C2ByFf6UEB9eZfubek47FUM0iy32tsU24dILzMfQ6h7p1FE
+ r6T0Ugb2CGPMoctFTGuXvTvzSPErG85zOCy48LRR6l+X5/F90/i5EUIKKewby1kdlPXS
+ HeDrcQWL5BCPOPRW9UBsaymJ+icB2wcESqvfKIzcqGqhSXH6XVW/M//kczjdYLdOmnhF
+ opuNeatfSruLobBEp8XjNPHe1Nxw0RSIkXHD96mPcPdvMPd18KLs3yDl9pT0B9IOcdOl
+ KTNGs8k1VDp+dso/T5oPYWNUDk/2OLNi+f57rMhnx0TnxRyNa+SCZV+NR58tizP0kIvI
+ nJ7A==
+X-Gm-Message-State: AOAM532gYLxGdCWgbsvj6iv7aw6PRbBtT5T3f9IlLzrjqf4j66EPygah
+ QSOsuky3tr2PoZfxBTAO57JbAovc8bpgCA==
+X-Received: by 2002:a05:6000:152:: with SMTP id
+ r18mr17790825wrx.226.1613385142286; 
+ Mon, 15 Feb 2021 02:32:22 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id 36sm25196300wrj.97.2021.02.15.02.32.20
+ by smtp.gmail.com with ESMTPSA id 36sm25196300wrj.97.2021.02.15.02.32.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 02:32:20 -0800 (PST)
+ Mon, 15 Feb 2021 02:32:21 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 4/9] hw/display/tc6393xb: Inline tc6393xb_draw_graphic32() at
- its callsite
-Date: Mon, 15 Feb 2021 10:32:10 +0000
-Message-Id: <20210215103215.4944-5-peter.maydell@linaro.org>
+Subject: [PATCH 6/9] hw/display/omap_lcdc: Drop broken bigendian ifdef
+Date: Mon, 15 Feb 2021 10:32:12 +0000
+Message-Id: <20210215103215.4944-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210215103215.4944-1-peter.maydell@linaro.org>
 References: <20210215103215.4944-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,109 +120,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UJNcHIlzIY+c
+X-TUID: pr2aHKr+fyEO
 
-The function tc6393xb_draw_graphic32() is called in exactly one place,
-so just inline the function body at its callsite. This allows us to
-drop the template header entirely.
+The draw_line16_32() function in the omap_lcdc template header
+includes an ifdef for the case where HOST_WORDS_BIGENDIAN matches
+TARGET_WORDS_BIGENDIAN.  This is trying to optimise for "source
+bitmap and destination bitmap format match", but it is broken,
+because in this function the formats don't match: the source is
+16-bit colour and the destination is 32-bit colour, so a memcpy()
+will produce corrupted graphics output.  Drop the bogus ifdef.
 
-The code move includes a single added space after 'for' to fix
-the coding style.
+This bug was introduced in commit ea644cf343129, when we dropped
+support for DEPTH values other than 32 from the template header.
+The old #if line was
+  #if DEPTH == 16 && defined(HOST_WORDS_BIGENDIAN) == defined(TARGET_WORDS_BIGENDIAN)
+and this was mistakenly changed to
+  #if defined(HOST_WORDS_BIGENDIAN) == defined(TARGET_WORDS_BIGENDIAN)
+rather than deleting the #if as now having an always-false condition.
 
+Fixes: ea644cf343129
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/display/tc6393xb_template.h | 45 ----------------------------------
- hw/display/tc6393xb.c          | 23 ++++++++++++++---
- 2 files changed, 19 insertions(+), 49 deletions(-)
- delete mode 100644 hw/display/tc6393xb_template.h
+ hw/display/omap_lcd_template.h | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/hw/display/tc6393xb_template.h b/hw/display/tc6393xb_template.h
-deleted file mode 100644
-index 7789ffc4399..00000000000
---- a/hw/display/tc6393xb_template.h
-+++ /dev/null
-@@ -1,45 +0,0 @@
--/*
-- * Toshiba TC6393XB I/O Controller.
-- * Found in Sharp Zaurus SL-6000 (tosa) or some
-- * Toshiba e-Series PDAs.
-- *
-- * FB support code. Based on G364 fb emulator
-- *
-- * Copyright (c) 2007 Hervé Poussineau
-- *
-- * This program is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU General Public License as
-- * published by the Free Software Foundation; either version 2 of
-- * the License, or (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License along
-- * with this program; if not, see <http://www.gnu.org/licenses/>.
-- */
--
--static void tc6393xb_draw_graphic32(TC6393xbState *s)
--{
--    DisplaySurface *surface = qemu_console_surface(s->con);
--    int i;
--    uint16_t *data_buffer;
--    uint8_t *data_display;
--
--    data_buffer = s->vram_ptr;
--    data_display = surface_data(surface);
--    for(i = 0; i < s->scr_height; i++) {
--        int j;
--        for (j = 0; j < s->scr_width; j++, data_display += 4, data_buffer++) {
--            uint16_t color = *data_buffer;
--            uint32_t dest_color = rgb_to_pixel32(
--                           ((color & 0xf800) * 0x108) >> 11,
--                           ((color & 0x7e0) * 0x41) >> 9,
--                           ((color & 0x1f) * 0x21) >> 2
--                           );
--            *(uint32_t *)data_display = dest_color;
--        }
--    }
--}
-diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
-index 4cddb1a99ad..1f28223c7be 100644
---- a/hw/display/tc6393xb.c
-+++ b/hw/display/tc6393xb.c
-@@ -410,12 +410,27 @@ static void tc6393xb_nand_writeb(TC6393xbState *s, hwaddr addr, uint32_t value)
-                                         (uint32_t) addr, value & 0xff);
- }
- 
--#define BITS 32
--#include "tc6393xb_template.h"
--
- static void tc6393xb_draw_graphic(TC6393xbState *s, int full_update)
+diff --git a/hw/display/omap_lcd_template.h b/hw/display/omap_lcd_template.h
+index c7c5025fb04..22e51d9bffb 100644
+--- a/hw/display/omap_lcd_template.h
++++ b/hw/display/omap_lcd_template.h
+@@ -139,9 +139,6 @@ static void draw_line12_32(void *opaque, uint8_t *d, const uint8_t *s,
+ static void draw_line16_32(void *opaque, uint8_t *d, const uint8_t *s,
+                            int width, int deststep)
  {
--    tc6393xb_draw_graphic32(s);
-+    DisplaySurface *surface = qemu_console_surface(s->con);
-+    int i;
-+    uint16_t *data_buffer;
-+    uint8_t *data_display;
-+
-+    data_buffer = s->vram_ptr;
-+    data_display = surface_data(surface);
-+    for (i = 0; i < s->scr_height; i++) {
-+        int j;
-+        for (j = 0; j < s->scr_width; j++, data_display += 4, data_buffer++) {
-+            uint16_t color = *data_buffer;
-+            uint32_t dest_color = rgb_to_pixel32(
-+                           ((color & 0xf800) * 0x108) >> 11,
-+                           ((color & 0x7e0) * 0x41) >> 9,
-+                           ((color & 0x1f) * 0x21) >> 2
-+                           );
-+            *(uint32_t *)data_display = dest_color;
-+        }
-+    }
-     dpy_gfx_update_full(s->con);
- }
+-#if defined(HOST_WORDS_BIGENDIAN) == defined(TARGET_WORDS_BIGENDIAN)
+-    memcpy(d, s, width * 2);
+-#else
+     uint16_t v;
+     uint8_t r, g, b;
  
+@@ -154,5 +151,4 @@ static void draw_line16_32(void *opaque, uint8_t *d, const uint8_t *s,
+         s += 2;
+         d += 4;
+     } while (-- width != 0);
+-#endif
+ }
 -- 
 2.20.1
 

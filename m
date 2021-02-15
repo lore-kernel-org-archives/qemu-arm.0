@@ -1,190 +1,126 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp3425961lfq;
-        Tue, 12 Jan 2021 02:30:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyjitcvQeAGhgW8dCcQjJX2C8y5i8bjr25aAvX8qwDHtp0gCtB3XjDcSFx8bdWpWT5XRrke
-X-Received: by 2002:a05:6402:1597:: with SMTP id c23mr2871954edv.212.1610447438160;
-        Tue, 12 Jan 2021 02:30:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610447438; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5697796lfc;
+        Mon, 15 Feb 2021 07:12:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxTWmF0qi/eiKWJt5jxfmVFFBUGOY+ZfC398fxTn2XsQyUFdeeY5kTgepxpuIPOqgqX/sLr
+X-Received: by 2002:a25:774b:: with SMTP id s72mr24077900ybc.512.1613401950030;
+        Mon, 15 Feb 2021 07:12:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613401950; cv=none;
         d=google.com; s=arc-20160816;
-        b=bHWdFRzsMXeqXe1UNRUUt42euGS9+eP3FGpju2kBHFofgDU+mU52ddteBKfRJCkzLN
-         37B/N/RkjLmDKbvIp5B/oc0ikTW8EundA04qsVjN5CvhDH03rV0tNlgGG5sKRP/qlyq7
-         kZ1oT7SqN8Rzp+1sKGYEvF8z7N/czqxxeS7K6L1+KAxZJfPLHJcm4OR8AGjdGhvAJP/X
-         lVKkNfkWdCm82ghKoFhLgDs3B/JN18KXLlqmH6Cm1WXZgmWGqqQcfarx+LT/zjQFLwgS
-         1HcV942yzTL+EYx9lZmWlghrVGFRnAp7Y/AkxyoXKlALLOdtABrwWojw7NB7HwKHUOja
-         vjVw==
+        b=R+Oep88ABB0LsWX+xD7859DSosRS9qp3pxYiV8AAseu058z0hI/XWkv2ioqpx2w+VA
+         9JE+1layHEeEqPHFhlvx+I70KVdBXSX/emWHhxX9rN+E2VtpaWxqfmCZLugJRnKjQiiM
+         tHhR6P1ilV88zl2vLQu1+SLAqV+wfOkqnBDviXJs0bSh6OnBh876naczmRZaYMXv68qM
+         8Jd9IZc0jlI3IEdBYjYRy52xod+CanpzDa6Cw8BivwPU6/S7uB+lFBALzpY8xrhsZw0Z
+         FCpi7uTIp6C4h2i5azOV5ZzI9D9fL3cKPQ8LPF/ej0S0iuCJLBd4AoNO4eiueeH6rcN5
+         o4PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=YtAVZx/m5M42/sCrHG4e0vHzuv3Z13YDXpEzXvGlnvs=;
-        b=YeO9TpdWNOEEyL5bC6W+kjHd7mCCdA0f/LKCqDUtXuwhfFQ2XowCk5K84++kijfMn3
-         bcNd1fFUmb8wcdEAY6q3oXWrfiKwA/bUqnDur1Q7mATAKo3C3N8Y4MvRYU2r1lnmtlYL
-         961PDpsuKlyIpEcKh0ZFmKYrJZj5t0Ar3MXBZu+QUQ3Z/3XCKTM/srp51m+uORRXmDx6
-         x/5e9rcvfBdrvZ0bjvbJDHmpiHPmqmtogVRhe0TLIf0yYp3ZMmTHNCWy7RqWdMDkELqL
-         ZQm470O9iKt0ykjEaEKDuzZWLQvi8tqZlh900EU0MSFeYQYgU3LcKxcNEMTqKszzxZZX
-         WqNw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject;
+        bh=SFdlpHRANWf2vw/0FkIGtLrE9WhLqw72qbtlwcg+9lU=;
+        b=KOjzeCe0rvNbig1YA/CjE9chytcwiQe6KTQP8CpDhFi08lPlVmwmjXCzLzih2FEgF1
+         W/2X5P2eyuBZdYFNp8QjyKRUMH0jXCQFzVV7oLbpv3e7yaDzzZAoBCH1vcQYAAeX/wmH
+         8bLo3khVa8hE89iydmZIHu0lDm1qI6eeP+2K5rR9FS6SnZ4aR9hHpeYHB97UoN4PowSf
+         bsbOyTgBuGhAQ6r5xgeg1eMCbfUePlOoCtI0NxoyqvezZqRE7R1ileUe6wjL8G2qTsA6
+         Q8/spmHxP9p01oy3seIgaunfDHJv0BMpT6afHeloeW8nosIKIiEuR64d3oWL4IiKfpWH
+         5Kiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jRiELDgz;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <stefanha@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id w13si957842ejn.15.2021.01.12.02.30.37
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j16si16886884ybp.412.2021.02.15.07.12.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Jan 2021 02:30:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 15 Feb 2021 07:12:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jRiELDgz;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1610447437;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YtAVZx/m5M42/sCrHG4e0vHzuv3Z13YDXpEzXvGlnvs=;
-	b=jRiELDgzUPgx77ZvhaPrniVKa8CVAN7DAGJbL02XY7sEpJO5UxcRElk/Bva0rfwr6QMRoV
-	AU+Z+Yz5rw24j5EozOR7/CpH0mFSAVkQR8PcJj9oyPJPbkM4R+l3EqzI523lbuBUuEEVPh
-	X9ZaBGlx/BBrwSAlShCvZi6+a+/vPxE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-361-yZM83J6cMXCpTgcubcTk1A-1; Tue, 12 Jan 2021 05:30:33 -0500
-X-MC-Unique: yZM83J6cMXCpTgcubcTk1A-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 07D87AFA81;
-	Tue, 12 Jan 2021 10:30:29 +0000 (UTC)
-Received: from localhost (ovpn-115-99.ams2.redhat.com [10.36.115.99])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 978DF10023B5;
-	Tue, 12 Jan 2021 10:30:15 +0000 (UTC)
-Date: Tue, 12 Jan 2021 10:30:14 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Huacai Chen <chenhuacai@kernel.org>,
-	Greg Kurz <groug@kaod.org>, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-trivial@nongnu.org, Amit Shah <amit@kernel.org>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>, qemu-arm@nongnu.org,
-	John Snow <jsnow@redhat.com>, qemu-s390x@nongnu.org,
-	Paul Durrant <paul@xen.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Max Reitz <mreitz@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Halil Pasic <pasic@linux.ibm.com>, Fam Zheng <fam@euphon.net>,
-	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	kvm@vger.kernel.org, Stefano Stabellini <sstabellini@kernel.org>,
-	xen-devel@lists.xenproject.org, Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>, qemu-block@nongnu.org,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: Re: [PATCH 0/2] sysemu: Let VMChangeStateHandler take boolean
- 'running' argument
-Message-ID: <20210112103014.GB194658@stefanha-x1.localdomain>
-References: <20210111152020.1422021-1-philmd@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34282 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lBfY5-0000JV-Dm
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 10:12:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57656)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
+ id 1lBfVF-00051E-Bx
+ for qemu-arm@nongnu.org; Mon, 15 Feb 2021 10:09:33 -0500
+Received: from mailex.trusted-objects.com ([149.202.244.204]:10136)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
+ id 1lBfVD-0003wy-IG
+ for qemu-arm@nongnu.org; Mon, 15 Feb 2021 10:09:33 -0500
+Received: from [192.170.0.219] (88.127.245.42) by S76918.EX76918.lan
+ (2001:41d0:117:dd00::95ca:f4cc) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521) id 15.1.2176.2; Mon, 15
+ Feb 2021 16:09:27 +0100
+Subject: Malfunctionning qemu-system-arm ?
+From: vincent Dupaquis <v.dupaquis@trusted-objects.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20210211141515.8755-1-peter.maydell@linaro.org>
+ <14af0670-caaf-caf1-0b90-fb10c7db13b0@trusted-objects.com>
+Message-ID: <e00943e0-b9a7-1688-b169-3650e8e4290e@trusted-objects.com>
+Date: Mon, 15 Feb 2021 16:09:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210111152020.1422021-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="b5gNqxB1S1yM7hjW"
-Content-Disposition: inline
-X-TUID: NHDoQs5Il5sS
+In-Reply-To: <14af0670-caaf-caf1-0b90-fb10c7db13b0@trusted-objects.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Content-Language: fr-FR
+X-Originating-IP: [88.127.245.42]
+X-ClientProxiedBy: S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc) To
+ S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc)
+Received-SPF: none client-ip=149.202.244.204;
+ envelope-from=v.dupaquis@trusted-objects.com; helo=mailex.trusted-objects.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NgSz/HiJQYWJ
 
---b5gNqxB1S1yM7hjW
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+    Hello,
 
-On Mon, Jan 11, 2021 at 04:20:18PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Trivial prototype change to clarify the use of the 'running'
-> argument of VMChangeStateHandler.
->=20
-> Green CI:
-> https://gitlab.com/philmd/qemu/-/pipelines/239497352
->=20
-> Philippe Mathieu-Daud=E9 (2):
->   sysemu/runstate: Let runstate_is_running() return bool
->   sysemu: Let VMChangeStateHandler take boolean 'running' argument
->=20
->  include/sysemu/runstate.h   | 12 +++++++++---
->  target/arm/kvm_arm.h        |  2 +-
->  target/ppc/cpu-qom.h        |  2 +-
->  accel/xen/xen-all.c         |  2 +-
->  audio/audio.c               |  2 +-
->  block/block-backend.c       |  2 +-
->  gdbstub.c                   |  2 +-
->  hw/block/pflash_cfi01.c     |  2 +-
->  hw/block/virtio-blk.c       |  2 +-
->  hw/display/qxl.c            |  2 +-
->  hw/i386/kvm/clock.c         |  2 +-
->  hw/i386/kvm/i8254.c         |  2 +-
->  hw/i386/kvmvapic.c          |  2 +-
->  hw/i386/xen/xen-hvm.c       |  2 +-
->  hw/ide/core.c               |  2 +-
->  hw/intc/arm_gicv3_its_kvm.c |  2 +-
->  hw/intc/arm_gicv3_kvm.c     |  2 +-
->  hw/intc/spapr_xive_kvm.c    |  2 +-
->  hw/misc/mac_via.c           |  2 +-
->  hw/net/e1000e_core.c        |  2 +-
->  hw/nvram/spapr_nvram.c      |  2 +-
->  hw/ppc/ppc.c                |  2 +-
->  hw/ppc/ppc_booke.c          |  2 +-
->  hw/s390x/tod-kvm.c          |  2 +-
->  hw/scsi/scsi-bus.c          |  2 +-
->  hw/usb/hcd-ehci.c           |  2 +-
->  hw/usb/host-libusb.c        |  2 +-
->  hw/usb/redirect.c           |  2 +-
->  hw/vfio/migration.c         |  2 +-
->  hw/virtio/virtio-rng.c      |  2 +-
->  hw/virtio/virtio.c          |  2 +-
->  net/net.c                   |  2 +-
->  softmmu/memory.c            |  2 +-
->  softmmu/runstate.c          |  4 ++--
->  target/arm/kvm.c            |  2 +-
->  target/i386/kvm/kvm.c       |  2 +-
->  target/i386/sev.c           |  2 +-
->  target/i386/whpx/whpx-all.c |  2 +-
->  target/mips/kvm.c           |  4 ++--
->  ui/gtk.c                    |  2 +-
->  ui/spice-core.c             |  2 +-
->  41 files changed, 51 insertions(+), 45 deletions(-)
->=20
-> --=20
-> 2.26.2
->=20
->=20
+    I am using qemu-system-arm with a netduino2 target, supposingly
+integrating a STM32F2xx chip.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+    I tested using the STM HAL in order to make a simple program run,
+and I just failed to have it running correctly, it satyed stuck on the
+starting HAL_init() call.
 
---b5gNqxB1S1yM7hjW
-Content-Type: application/pgp-signature; name="signature.asc"
+    Debugging the code, it appeared that stepping-in was making the code
+work while when running it it failed (stayed stuck in an infinite loop,
+but no obvious arm violations).
 
------BEGIN PGP SIGNATURE-----
+    Has anyone any idea of what could be the cause for this ? I am using
+the latest STM32 HAL, with a qemu version 5.1.0 on a Ubuntu 20.04
+machine. What is the level of support this type of target is supposed to
+have, and posibly which limitations should I take into account ?
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl/9ejYACgkQnKSrs4Gr
-c8idIAf/Yau6DdIvJYo0z1xlPWikqBBVOuHPdp3bLO0cxM4ShsmyJBcHVcXht/F5
-2dJf4d3ieWtl1MiBHI7VlWPtxfZXjcKLN8TT6wS7IUQOKMUTj7U+kZeplVOeHdJ5
-FaBCr4SCux3oJdDYz0V0oYxyZotxXpgV6QcnecOQ8z+3syVSKdPf5ZIDIEEJm9g8
-1ZI/HkBoJ6k2glUM83ohVS2K8gQ/eJqANxgKCFqGX2AFcIuQfD2ESotgaq263A0m
-WvGwEXcLV6ALMAANVoYBDIPACb3dJFGK4Z9HZnUoV5Cqq14MmTjsIaDCRI7ekmtl
-iifLGCKlWmb5Y8rX5WFdfJfWQf/ufg==
-=R44D
------END PGP SIGNATURE-----
+    Best regards,
+        Vincent.
 
---b5gNqxB1S1yM7hjW--
+
+-- 
+
+*Vincent Dupaquis*
+Software security & Cryptography expert
+06 24 58 17 05
+/Europarc de Pichaury Bâtiment B8 1330 rue Guillibert Gautier de la
+Lauzière 13290 Aix-en-Provence/
+
+www.trusted-objects.com <http://www.trusted-objects.com>

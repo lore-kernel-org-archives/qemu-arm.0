@@ -1,137 +1,127 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3453954lfc;
-        Fri, 12 Feb 2021 10:43:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxXkNV6YUJMAYAN5ux2rek1clBoGxSfduD5chzoWqhNy5w6H/jcOo7vvxQaUJ8o4C1e4JjQ
-X-Received: by 2002:a25:5014:: with SMTP id e20mr5741608ybb.396.1613155401994;
-        Fri, 12 Feb 2021 10:43:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613155401; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5844498lfc;
+        Mon, 15 Feb 2021 10:32:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJypr8WGEhHprIgjjZbf2vIgv1Nmk+E6yq66++6Ec4/VjLz1MlYfbYrRG37PX4G+ejbtU++M
+X-Received: by 2002:a25:4e05:: with SMTP id c5mr5223856ybb.193.1613413957092;
+        Mon, 15 Feb 2021 10:32:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613413957; cv=none;
         d=google.com; s=arc-20160816;
-        b=dTkLXh5X9Wk01hBAj8y5MiaiQQbphLM+euwo3rKqNY7F0yonebk/CzxXCXH4pmPl4C
-         Ey9kJXuMcLzDXiUKWTA+e+CQ9GFMKrkRlj5UKgfASRU3qAx0YeOy+0Wewz29gA72HNQr
-         RPeHOioFaZ6dxSv3eNAxB77E1FMenJZR+U6zP1mFZXSXuflNyOVGMvCrhNbuKJ1xSzi3
-         NsqMYA6OgpFBMvSaFofOpmgeSYsp9lYgJX5ysW3srhp9mzSXi7F+GJdW/zNGmJ9jCnPf
-         Jj/yZNcUbMLY3bpuODGn4QOAQ1Vs1dSBrZXkZ5AOOTuQJyKhd8Tb36gEVYfP07d74zU8
-         upmg==
+        b=hJ+3E7LBr8MipUhb+wHy8LGEvp04TGKQVqMXncWLSO+ZWgbQZN/L8RqtDvNJ08Eacl
+         DaGIKm6CZTqAlvtxmByIV/A4FmUYSQ9hK/UozPF2JFHb2NoBpL8DnyjGNMg/iuUCOgUt
+         Iq/RfQjclriTaF0tkIj5nFuHq5wp5MYu4XZEtFW01oL71JcM63q1uO/a33n+rJyb+yQi
+         CTaocxry/n0OoBZsu/IgMRxo831NcDUUxCd6q8p5zncWdUTIVXJpTAfcRaqJew+p3s/b
+         KJl0mdrWyLdJLyOJJUc7UozKZcyww0TCHWQF30Igyt8bwtW+4zkXrsti3u8e5OucqvFZ
+         lqLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=yJWuqeu0wF0I/l8nntKgnMOOjcdOuX2jD3WstrhprB0=;
-        b=QUgP0nmFM2rUFeGAowVN96nZEidRudOesplkTMkF1IRnmSRas75dyXvJIqZ4TnfIYy
-         Oyaaaj1cBtXExFugZ7qFZ8rbHXFjOz4XmeiwADYmbS+S4UV/xLtK1fYExOIjCq7tmmk3
-         WRi2zCO4ItSC+0FEuSmG2SB3yCRx9+BkwfP29UoDXfR1iqvGbWOFpSG7hw2KKnGkTQ9W
-         eVJWQy0xfEPBamfkrD/QLg1+F08pk2jp2IG+E03Xqpm31GWVCiEyOOksdI7ZeRtNeFUT
-         EQFLTBuUgWM4mggs98XsVsgBdeOoOzsWwmO2dmJUeT6uEP+8FteaDxI+gPm8xWOi7BJj
-         bIdw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:to:from:dkim-signature;
+        bh=bOGSw2KfQysx9MPvNPzIC9mHGdtkmTxSgDe7SV/7s2c=;
+        b=HmvhHYtsuqtV/9vAa7QnrS4oEUAg4Fv9cA4iB5bNh3Nck2v6mtwb/mARaAtmnqw2Jv
+         bDlHaZm/gRnj5666mvLRU5gUWbS0voDm48mwFgfH0z+lVRHro1n1DNEIJG9VZg1x45yp
+         ZAnSGx7IBVqSSkkAxc+x/XklF7SMvZAu7XB9uE1vbJB1B39vw7fnNBs8HxLB+qIJcR3X
+         470BvBIa31dx/V9nxH1MU8f8gXvOkE8g5WYPEWja0HrQICw0kR+KneBDYLAoFNGF94bb
+         h7iWYCnauc3ANyVTFECQzL0Ct3AHa4SONVjMxtmSkxGKQeRY82byxj4BhpHxTThomCbI
+         fh5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Au7jKZdH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@mutex.one header.s=default header.b=KRyqROT0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7si9432851ybi.4.2021.02.12.10.43.21
+        by mx.google.com with ESMTPS id s5si17032536ybm.453.2021.02.15.10.32.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Feb 2021 10:43:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Feb 2021 10:32:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Au7jKZdH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55570 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mutex.one header.s=default header.b=KRyqROT0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55120 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAdPU-00033I-LM
-	for alex.bennee@linaro.org; Fri, 12 Feb 2021 13:43:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36752)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lBifk-0007j9-I4
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 13:32:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lAdJC-0006CP-3P; Fri, 12 Feb 2021 13:36:50 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433]:33817)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lAdJA-0002Q5-N2; Fri, 12 Feb 2021 13:36:49 -0500
-Received: by mail-wr1-x433.google.com with SMTP id g10so385804wrx.1;
- Fri, 12 Feb 2021 10:36:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=yJWuqeu0wF0I/l8nntKgnMOOjcdOuX2jD3WstrhprB0=;
- b=Au7jKZdHU/PaQsNHmbSOMxj94CVFOWLkLV4GZ6/y4lub72fG5D4H5Y9mAiSXjp6vXa
- 1TVII51bCtyGFxYEcteF/wbYw9NNs5wGimT7acchqVv9B8F3/CKNmHhoE2Tip6bVurjR
- TtQLblOhlyaxOTlFRLCiAgSGFJNAxObDi+skLr/sSmRWKikYeYj86z5mGViJj1jrSF34
- qlk90EhvRCKQ2CjtakGMdgAD07usOm1FpI13VoVugeejWqdiw3lFHafQY4cJzWBg6NnT
- 0iNEVN68jHrXPkcx+myN/wOq2gax/RHjkWY2XZj+cgAT4WhbVAd2kWciVFkFaBfy25KH
- 4roA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=yJWuqeu0wF0I/l8nntKgnMOOjcdOuX2jD3WstrhprB0=;
- b=UIspbt9ra0War5gSmkE6WA1TuuUZCV5rUr39z5LqfltG1M7xZt417w9966nonAGCtT
- vGRt/BvPQpoYPYRM8oRqcOHITzNYqaepTIE89alo0fUOStICjmnncJOJNp+NrJUL1hCO
- OHpDM/zlWGbhfN4lXKvqUXAKhZ6CBtSN+cCkyolFU9CpJcEfr5gXjXWee49Wja6DuABC
- c9Hh/DDIKw1lYMXOryygzZejDFOzCCxa9q0QqxxiOQkQ+4rLRgQS33T/vBOToZB5u228
- 5yMrGkAmKvJTRxmmbg8GneKi8gUGBaudVAb0dPoqzyhi4p6eA2bbqYgffAWFR5TVc4+H
- ac2Q==
-X-Gm-Message-State: AOAM532LeoXlke3t3H4cfiYW0M5FC9H4/48z1kO9GZVcmRaTscqN5LHY
- Xxj1XPvgmJfB/Jl6RgEUqca1ipEu66w=
-X-Received: by 2002:adf:db41:: with SMTP id f1mr5077648wrj.123.1613155004596; 
- Fri, 12 Feb 2021 10:36:44 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id a21sm16388860wmb.5.2021.02.12.10.36.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Feb 2021 10:36:43 -0800 (PST)
-Subject: Re: [PATCH 23/24] docs/system/arm/mps2.rst: Document the new
- mps3-an524 board
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210205170019.25319-1-peter.maydell@linaro.org>
- <20210205170019.25319-24-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <3fac284a-0681-c6e2-b76d-486b04bfea4b@amsat.org>
-Date: Fri, 12 Feb 2021 19:36:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <posteuca@mutex.one>)
+ id 1lBict-0005b3-6o; Mon, 15 Feb 2021 13:29:40 -0500
+Received: from mail.mutex.one ([62.77.152.124]:42214)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <posteuca@mutex.one>)
+ id 1lBico-0005qg-95; Mon, 15 Feb 2021 13:29:37 -0500
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.mutex.one (Postfix) with ESMTP id 2E96CBF44177;
+ Mon, 15 Feb 2021 20:29:30 +0200 (EET)
+X-Virus-Scanned: Debian amavisd-new at mail.mutex.one
+Received: from mail.mutex.one ([127.0.0.1])
+ by localhost (mail.mutex.one [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7qC6xwkswqYb; Mon, 15 Feb 2021 20:29:29 +0200 (EET)
+Received: [127.0.0.1] (localhost [127.0.0.1])nknown [109.103.89.101])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.mutex.one (Postfix) with ESMTPSA id 228C3BF44165;
+ Mon, 15 Feb 2021 20:29:29 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mutex.one; s=default;
+ t=1613413769; bh=bOGSw2KfQysx9MPvNPzIC9mHGdtkmTxSgDe7SV/7s2c=;
+ h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+ b=KRyqROT0v5AgpmfCBeSkrhRaS8TJVDkTQPBSOWySes02toHkXjoj3yHDos8QQSYFc
+ OOyDDwOVzsopbwEb0WLLMBMEZknj7JZKf+mUHIJvNYuoGZQGO2b5REzAQK/cBRYyzM
+ Q5dVDQrdb+Vav7Ke4jFCMRHbObrlrBh8YEPAD0BE=
+From: Marian Postevca <posteuca@mutex.one>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: Re: [PATCH] acpi: Remove duplicated code handling OEM ID and OEM
+ table ID fields
+In-Reply-To: <20210215184404.7e342872@redhat.com>
+References: <20210213102233.11428-1-posteuca@mutex.one>
+ <20210215184404.7e342872@redhat.com>
+Date: Mon, 15 Feb 2021 20:26:10 +0200
+Message-ID: <877dn9w5kt.fsf@mutex.one>
 MIME-Version: 1.0
-In-Reply-To: <20210205170019.25319-24-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.119,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=62.77.152.124; envelope-from=posteuca@mutex.one;
+ helo=mail.mutex.one
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HtzxSIWqU/Yz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>,
+ "open list:ACPI/HEST/GHES" <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oaXRNBplCokj
 
-On 2/5/21 6:00 PM, Peter Maydell wrote:
-> Add brief documentation of the new mps3-an524 board.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  docs/system/arm/mps2.rst | 24 ++++++++++++++++++------
->  1 file changed, 18 insertions(+), 6 deletions(-)
+Igor Mammedov <imammedo@redhat.com> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> hmm, looks like adding instead of removing
+>
+Do you mean that the commit message does not describe the change
+correctly, or that my refactoring is too extreme?
+
+If it is the latter, I think I tried to simplify things, by creating
+macros to be used in multiple places where this structure is created.
+And passing the structure around instead of two parameters seemed simpler.
+
+> have you considered, putting this field into X86MachineState?
+> (that way you will be able to handle both PC and microvm in one place,
+> without duplication io init/property setters)
+>
+I did not, will try this approach.

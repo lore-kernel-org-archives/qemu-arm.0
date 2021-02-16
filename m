@@ -1,180 +1,155 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp3439997lfc;
-        Fri, 12 Feb 2021 10:25:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxwUxmQ3qt4ENuhE7JqwGZ8c+ZQDuELL7Ghsd6/nAlZ12lQdaun0u9yFnkY5zNCwe40eHLg
-X-Received: by 2002:a25:3805:: with SMTP id f5mr5414624yba.27.1613154316321;
-        Fri, 12 Feb 2021 10:25:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613154316; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6814461lfc;
+        Tue, 16 Feb 2021 14:12:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwUcmgGVtydTgqs5i/4/U+sA/wuMbmn394LpNavrIL6hLYfptsROexnyKiRJikb4sKcPX0Q
+X-Received: by 2002:a25:2842:: with SMTP id o63mr32499279ybo.265.1613513530056;
+        Tue, 16 Feb 2021 14:12:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613513530; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCwnMOI/xXTcnXi7vFVp3EHzxzH/RzC8YtCYTNj5JmWNKI8sPmhYFHWTEKrr/LF8b9
-         mdrnJ+NDN1re/ruaH5YYfbz7HkCncQDLN1MeTYj/P0vFFT0vPRpbMecylH8r3p1UgI9U
-         if7wwQJxZ/cU9v7pe+lEUrvClHPTZpmTnz3nyCyhQq2eD41tGZoVpXsoqtqdck+948bp
-         aue2p3zm/4mk000jfuHDxLDLf+SI03WOUYZZLOsxryvP19+fHmWWkHOZ1nY+9lWGBURP
-         kxhFU84rZRqPByzrv4W0ZatF9IL2Cv13CPL9PQRNpsT+uhi+KR2PHEJ0xcfQl6IYz2qp
-         96dw==
+        b=BVHG2Txp4pJ4gMXlPpqPHs5YtjnBdaaU26FS+nbYHvmbGgSy0fWA+9fUv7ssCh50S6
+         Ozcd35UJNwTFOE31wJaUi6lNuyCIBWKOU3medzWWR4x6/U+S2R1UUfo1ABYRC2P9q/qP
+         D5v0OwawNR4ac0N8QeWO5ZivR+Sfw6CeRdIupG1vCuocxftJFdP1sFrtTcL7P/FWjqdy
+         ee5p+VMPhmEAMwBMQn5YrLDdtd0nbLaENP+9H9930ep3Ykr1V0fLsRcbAYgcwScwVrGf
+         rVIofc0uskYa8k3BfRQOmyZln0E2uOYYJEsD8x6SVakys/BxDtytqySpi/8x71MoAFAy
+         m+DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=r8jDfU1A271qAkCNTylGfZD28f7uwED6qI4esrnggmw=;
-        b=cNCQi6EUB/uWTEbz0rH3g2tDb8T27bqlCJWPZMDY7BRMKGJwPJkiTMTUHLOs/3Uho8
-         O5XsTVtupijzHQi9moToxLzUrLnLwzf7cgJkBCo8yg9L9laKmwjvEQzNEGYKnpv1j0qN
-         VzSDbuoF0GQh+eB84UmQ6cIVxYSVzO10t2Fb0h4A7r87ihEagAV7DMVM8Qs86/kaoz/s
-         lh+wZDPiDzWYtXZaSoKfcQQG4iYtqZHQxpK2Llo1hd1KtZWkWTdLxhnKnZ4yNMjFk9UQ
-         mNV2sfzcVeCSC6PROXPuyPT2zlobqiAz00l10t1Ybyf65MhEBmiPPijnCEEqaGoqgU+z
-         qWwA==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=KTfUB3D1HUlsFs9iM4MYuhC8R/aZTGmZCdd3SJ+pivA=;
+        b=08bvYaW/uG1UcMV3RKRJleyG/vswDIqIkE6V8/sVGTh3sfm/NBEgUWlzK2BzJt5Onb
+         I7HpRtnUqfQ1Y6H3p5ouxeJSSeCvHO20KPddbgV2Dm/RB4Lbq4lwKiMWeQUWrqkcNbyh
+         xMMJiKknhjoWPJwVA0h0/QzI/y8u0GSLh//kSOt0VhKHBB8eEePefHm2LHOW/0M04qf7
+         9N1gNtfUN04rl4N6XeMzX/SvAdikOnckchqOl4eQEX9CSU1VnnSYWwxT3YpgNEZFnTBm
+         6qu38S6nguJsxCYSevRtu1DkKRPls5VUESr8p0k9GGQQI4RCL5Vnq5HD4GJSg4mAfJiv
+         Y+/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Re4C2uth;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F5Dn5zsT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2si5947673ybt.169.2021.02.12.10.25.16
+        by mx.google.com with ESMTPS id 128si245895ybw.176.2021.02.16.14.12.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Feb 2021 10:25:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Feb 2021 14:12:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Re4C2uth;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50512 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F5Dn5zsT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAd7z-0004hR-Kk
-	for alex.bennee@linaro.org; Fri, 12 Feb 2021 13:25:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33868)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lC8Zl-0000S7-GJ
+	for alex.bennee@linaro.org; Tue, 16 Feb 2021 17:12:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lAd6A-0003LM-C6; Fri, 12 Feb 2021 13:23:22 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:40251)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lAd68-0005Hx-Q3; Fri, 12 Feb 2021 13:23:22 -0500
-Received: by mail-wm1-x332.google.com with SMTP id o24so470021wmh.5;
- Fri, 12 Feb 2021 10:23:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=r8jDfU1A271qAkCNTylGfZD28f7uwED6qI4esrnggmw=;
- b=Re4C2uthhdXsv4NojT7SjItQoj9VU5f/Z0frZsUiV1S6pAV9nmTPn43wap7i/RnVJK
- PiUEiVra2vv5Dk/9+w51POoeiGW2+3CFGwLT60FQUpncn6RFiZV8iDUbGkMkJu7PgVrA
- BEOkG2qkjVOvLzQKZNg7ixVaymZzN73go7EyyNBXh0frRMTm9LjesTdRx+mOYeTk76EN
- mvL0T3N6wMhs4RntEYzSGN5zwcZyoG33b0gJxIepi5MXNbnshLXuw44hm3kruMH6HL/o
- dIBxvLxDNy+hp5uauS2d/cJkesctsSLNQBGdRt3VyW/ezROfgEp/HnoPIZ4ObScbK0ml
- dbGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=r8jDfU1A271qAkCNTylGfZD28f7uwED6qI4esrnggmw=;
- b=E5aQSjUiaPxCaewFyFtVnvx6GUWndxufjoZaibpgtBZhCp0+iTvUgVRaTgyB+7Mv9f
- CrB6JVk9nGFfS2GS6VY4F5zX5JvWBsi2YmsMRWhYD3NhzQ3hY+1nyIVZjwBLnYAtDHGp
- CtoJuacUUPmHddTkGHrku9HBJPiu3KOBMv6a5zAWK362YnboD9ihj/auH9ztVHrWvn7k
- rsgzdMMWMcahQFvn+zasJYaUnYRFDQieuyi15mMSNJDwqN1DiOnFdJH20fBH2t8VHHrX
- WoX8P8RtK3XhqxIWfEM7uWy3E+DXGAndOpowsbE8At0tkQq91S2yPFdWguIRWIhryBXO
- xfug==
-X-Gm-Message-State: AOAM533IgPxLk7Dkvi4hFklo0xLEaT2KiXaTNjVqmdND9p9oTCBh4KUl
- B+dzaw+b1Bw9TPccmKbrrUrCijF1+UE=
-X-Received: by 2002:a7b:ca57:: with SMTP id m23mr3879836wml.116.1613154198527; 
- Fri, 12 Feb 2021 10:23:18 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id d15sm7503880wru.80.2021.02.12.10.23.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Feb 2021 10:23:18 -0800 (PST)
-Subject: Re: [PATCH 06/24] hw/misc/mps2-fpgaio: Support SWITCH register
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20210205170019.25319-1-peter.maydell@linaro.org>
- <20210205170019.25319-7-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4f8bfa76-159a-bbee-6774-b5e55c8d9b67@amsat.org>
-Date: Fri, 12 Feb 2021 19:23:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lC8Zd-0000RW-Ht
+ for qemu-arm@nongnu.org; Tue, 16 Feb 2021 17:12:01 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23586)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lC8Za-0000xZ-Bm
+ for qemu-arm@nongnu.org; Tue, 16 Feb 2021 17:12:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1613513516;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KTfUB3D1HUlsFs9iM4MYuhC8R/aZTGmZCdd3SJ+pivA=;
+ b=F5Dn5zsT+zftlvhx9rM3L+fsq7v3D6yJ+ONT+yco9DtfionxACR57f2div+aXk5Fd2W3yT
+ 0ulZn37kwRT9OOdySj0M+8585Ge0zXO2FjlnzDCZvc+BpHJP3SVLCHku12+k3IOI4ttWh8
+ hygixDCMNy4pNj76Xb0l1d/4ELk2qmM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-494-hVkuB2sEP1a3yTlwghKyMg-1; Tue, 16 Feb 2021 17:11:54 -0500
+X-MC-Unique: hVkuB2sEP1a3yTlwghKyMg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 508CD6EE24;
+ Tue, 16 Feb 2021 22:11:53 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.60])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 216AF5D9D3;
+ Tue, 16 Feb 2021 22:11:42 +0000 (UTC)
+Date: Tue, 16 Feb 2021 23:11:40 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Marian Postevca <posteuca@mutex.one>
+Subject: Re: [PATCH] acpi: Remove duplicated code handling OEM ID and OEM
+ table ID fields
+Message-ID: <20210216231140.2743b89d@redhat.com>
+In-Reply-To: <877dn9w5kt.fsf@mutex.one>
+References: <20210213102233.11428-1-posteuca@mutex.one>
+ <20210215184404.7e342872@redhat.com> <877dn9w5kt.fsf@mutex.one>
 MIME-Version: 1.0
-In-Reply-To: <20210205170019.25319-7-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.119,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s/Jn5RXD4X87
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>,
+ "open list:ACPI/HEST/GHES" <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vo2cv3GHm1Ua
 
-On 2/5/21 6:00 PM, Peter Maydell wrote:
-> MPS3 boards have an extra SWITCH register in the FPGAIO block which
-> reports the value of some switches.  Implement this, governed by a
-> property the board code can use to specify whether whether it exists.
+On Mon, 15 Feb 2021 20:26:10 +0200
+Marian Postevca <posteuca@mutex.one> wrote:
+
+> Igor Mammedov <imammedo@redhat.com> writes:
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/hw/misc/mps2-fpgaio.h |  1 +
->  hw/misc/mps2-fpgaio.c         | 10 ++++++++++
->  2 files changed, 11 insertions(+)
+> > hmm, looks like adding instead of removing
+> >  
+> Do you mean that the commit message does not describe the change
+> correctly, or that my refactoring is too extreme?
+I've meant that diff-stat shows that patch adds more lines than it removes
+so I'm not sure it removes duplication.
+Maybe rephrase commit message a little.
+
+
+> If it is the latter, I think I tried to simplify things, by creating
+> macros to be used in multiple places where this structure is created.
+> And passing the structure around instead of two parameters seemed simpler.
 > 
-> diff --git a/include/hw/misc/mps2-fpgaio.h b/include/hw/misc/mps2-fpgaio.h
-> index bfe73134e78..83c6e18a4ee 100644
-> --- a/include/hw/misc/mps2-fpgaio.h
-> +++ b/include/hw/misc/mps2-fpgaio.h
-> @@ -38,6 +38,7 @@ struct MPS2FPGAIO {
->      MemoryRegion iomem;
->      LEDState *led[MPS2FPGAIO_MAX_LEDS];
->      uint32_t num_leds;
-> +    bool have_switches;
->  
->      uint32_t led0;
->      uint32_t prescale;
-> diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
-> index b28a1be22cc..b54657a4f07 100644
-> --- a/hw/misc/mps2-fpgaio.c
-> +++ b/hw/misc/mps2-fpgaio.c
-> @@ -35,6 +35,7 @@ REG32(CLK100HZ, 0x14)
->  REG32(COUNTER, 0x18)
->  REG32(PRESCALE, 0x1c)
->  REG32(PSCNTR, 0x20)
-> +REG32(SWITCH, 0x28)
->  REG32(MISC, 0x4c)
->  
->  static uint32_t counter_from_tickoff(int64_t now, int64_t tick_offset, int frq)
-> @@ -156,7 +157,15 @@ static uint64_t mps2_fpgaio_read(void *opaque, hwaddr offset, unsigned size)
->          resync_counter(s);
->          r = s->pscntr;
->          break;
-> +    case A_SWITCH:
-> +        if (!s->have_switches) {
-> +            goto bad_offset;
-> +        }
-> +        /* User-togglable board switches. We don't model that, so report 0. */
+> > have you considered, putting this field into X86MachineState?
+> > (that way you will be able to handle both PC and microvm in one place,
+> > without duplication io init/property setters)
+> >  
+> I did not, will try this approach.
+this would be pure deduplication, and simpler if you do it as separate patch
+and then re-factoring to static fields on top of that.
+(i.e. don't mix re-factoring and deduplication)
 
-We should and probably will at some point... This is a feature
-I'm thinking about and which could be implemented the same way
-as the TempSensor series. My latest problem is to have QOM names
-(full path) consistent. That way we can toggle a switch at
-runtime via (at least) a QMP command.
-
-Anyway to your patch (including change squashed):
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

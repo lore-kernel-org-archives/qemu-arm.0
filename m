@@ -1,100 +1,102 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6831722lfc;
-        Tue, 16 Feb 2021 14:46:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzNGUCewj2krclx9UfqKf0g2a7LJqqOwkM27BBvRvWDrGJGcaNYR7wq2x9CeB0jy4pzM5vJ
-X-Received: by 2002:a25:8006:: with SMTP id m6mr32898570ybk.336.1613515586675;
-        Tue, 16 Feb 2021 14:46:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613515586; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6832709lfc;
+        Tue, 16 Feb 2021 14:48:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzT+KAdDEoI/mnkpt+1N/g7H2zn1JDjhyjYlR1pT94du7lFiZ5+Icf7SC5LdpdAD5jKUT4Z
+X-Received: by 2002:a25:5754:: with SMTP id l81mr29823625ybb.126.1613515710682;
+        Tue, 16 Feb 2021 14:48:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613515710; cv=none;
         d=google.com; s=arc-20160816;
-        b=qy4XF10S96jQVZSDoeew22e5p8GMDllq/dbiu2h9Bd2VPf2Lh1Ji1rqtvyex0b0PcX
-         4Wkw2cKTmJjbtmRDuqbJ/tFoUcl1IrWs84IyqWfoiGuUQuSDB5aGflpq59hoL816x8/X
-         2BZ2RfAQVBKUXxgLDVEsDbxAG+gjVYZyCxvkXks44BC3RqKOgumAXDWzetDxHNBCUX0H
-         T0dMN1WbdbyL5l3Fubow0kOP+wckILxZxOfZQGUC0duQxGPeDdTJOm1iXmXCkUAp4koR
-         ib5AwH5DQXTgY4ENPJK7z6DJ0E86RWTaljJ7RpqWzVkz5dVyGHvNx7SViHzJBpEqNd3B
-         fagg==
+        b=ZjFM6Uj9l/3vNF+L0RJ537BcWqM8O1zJWrGC4OCoM1mASs3/p6Cyg6JUVe4sSpeCuI
+         45iIU90HRlfl28B2hlnv/HVQA0PNW+e78D6l4HudEVyQ7L6AU3GdSaK4VsXz0VaglZi4
+         siFL1u5oXUa4mtN3eWg9txSTpmANOViYmePG+V1PSFUf01VxfXSSQnk2hs+XZFCEl4UE
+         aSVCOBVzulVWJIBi0xW7J7J6n+5RcJr8oaItO4jPEOh/WStG0U9x1kv0RUJLvXuRE0FW
+         GZMbpNfH85JsZ+/McfItSCCHLSceA/ycygkanh8zrSr7/TkBLEr2SKH9ULHqUeAMuwFO
+         IGkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=hrJrCx4IupfkxEsF5d43g+ctOQybqXDlHjJYCDnVPX4=;
-        b=W1QOHx70nZf1q3HFZHP+7hGNCAHxhE1gRoGBMKXjKILc8llDo/bmHsDjmnwcUcQxdY
-         1L16b+ymP9+NS/SxkZ6/F60Z87WONuvdhGJgvvbrMoIrW6f9DBLfbZE6AFcHmcBtUfKr
-         PBmaRU5j3NjHZnAQjgGqbY6T+0xcXO0S29bULhIc/uURT+GwwRmw3NmwkxuxHI/VGYsS
-         ZGdlHIcFgOmVFbjHqJgJhf+oN/9KMgcAgqfYFF1SeompLx+Chmv0YOQEp8a0h95kZ+t4
-         xPIr1uCIAj0taUEFsvKHP4BWqmJdL+7zkVRTGWdpEUG2qUns/1ySzsKx6C4zEqO+4Ese
-         wezA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=4ZPSLm3yrNAClwWOzT7/VZpNZh4ixX7KNguZeQ0+66w=;
+        b=n0S5CzbkiQ0PJQUARcHMbVancehxskcKToDIIfOeK0tANEtv8/ufBMCJdLawfTVA+E
+         OaYmsPIiMVbIh/91pu/+Pwld36T0o+8f6X1mIxEJc5UxZhnoqdHS3scnGJh9oBSp+i96
+         JjH4OuiSX5c/vd6VWynsPvri9ipJ+7OK13j0SlWs3jf9PQU1LF9SCOKXhpl/m5LCI8cO
+         QFDVy8doaMyY09gseVcbVi9ot4xaIae6NWeCm+ms9Zx5OErDjGj03bSjZ63vqIADyjkg
+         BAczOVln4PaUd3NsJCiJwCmJBCk7JUzlW5s9F3ak3rHGDFl5aigOo9cwFGKEnbLB3HAd
+         muLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=kuVMuxFJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=nfOSWq5X;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r80si383543ybc.88.2021.02.16.14.46.26
+        by mx.google.com with ESMTPS id n193si323794yba.369.2021.02.16.14.48.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Feb 2021 14:46:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Feb 2021 14:48:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=kuVMuxFJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52058 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=nfOSWq5X;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lC96v-0000rQ-Vw
-	for alex.bennee@linaro.org; Tue, 16 Feb 2021 17:46:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39856)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lC98w-0002x4-1d
+	for alex.bennee@linaro.org; Tue, 16 Feb 2021 17:48:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39942)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lC96P-0000qO-FT
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 17:45:53 -0500
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e]:46507)
+ id 1lC96W-0000sf-Ff
+ for qemu-devel@nongnu.org; Tue, 16 Feb 2021 17:46:01 -0500
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e]:42780)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lC96N-0004sD-Nc
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 17:45:53 -0500
-Received: by mail-oi1-x22e.google.com with SMTP id f3so12894752oiw.13
- for <qemu-arm@nongnu.org>; Tue, 16 Feb 2021 14:45:51 -0800 (PST)
+ id 1lC96T-0004sq-3T
+ for qemu-devel@nongnu.org; Tue, 16 Feb 2021 17:46:00 -0500
+Received: by mail-ot1-x32e.google.com with SMTP id q4so10419499otm.9
+ for <qemu-devel@nongnu.org>; Tue, 16 Feb 2021 14:45:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hrJrCx4IupfkxEsF5d43g+ctOQybqXDlHjJYCDnVPX4=;
- b=kuVMuxFJKSdcZ8S9+jzEIT/s2KsIGJ+KI2Lf0pxe1osmHZHiWu/pfTjWUp42JVmCU6
- qOZ3IpmL1Qq7B9AN3OaGZHiSS1/F2GVZzcV71sb1qDadMTEdIPkvbvUbM3O0ny28r+QI
- AR1F9zKJxJYXxrpbbRIW33p6rHugjOdgythG9R2SYFZDHLasr6FNQsoxE6Z4tbZ/oW8E
- h3k7rKig+bEGLSp/jmketsHJ2ZYja9c8KelVM7sZ5ulG1TBmVjoL/E+PTefpkGq/QU2E
- veL2EyrL1MIJki6Moe0MApUZcKR40Cekn8ycMsSyJ+TpvKhlzs2afXGY2S9QvdWuhlhb
- jVTg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=4ZPSLm3yrNAClwWOzT7/VZpNZh4ixX7KNguZeQ0+66w=;
+ b=nfOSWq5Xkj4tBIKxivwikGdBpW5vU8aqHCg1EloTco9y5Iw2XrGVoY/s6cOJa7aklH
+ unLIHOWXiaLXqBJUZ4mb4etI2UJ7Hw0sNqEFRY2rvzYBQAHl57gFE/hioWbEulO6XtnU
+ yxebmgW26qOfmzJSMvJXmSj/xllQUasi8rKRqQfo82OrKtz9i7KLnun2neR5OOkHEieE
+ YhBNVostm/nGYhlRf1ron/mqH7Vw3GI2DwRHDtILVLUTVfDG0Fr3azpAtkdmrISh/Ltv
+ AYgsZhtGmAcxVUcqA3T44RoSIYKkOW0tig2o5WJyNzEPzTfcWims37s1ERLUW9BbAdQs
+ TRJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hrJrCx4IupfkxEsF5d43g+ctOQybqXDlHjJYCDnVPX4=;
- b=CgbbRTAcCqHa+BqSkdkqUjhpffL+vYoW7ZOIGMJMQxQ/CHceejqlTV/VmuAlBhZbpa
- GOV36EcsVx7NLf5VgG8vR3pjet+eROiQuWnqvqv5NYxC9FWas9PHsddQ40TH0jEw5c5i
- wlxm4r/FFvWg6MR37N5NlCmLNFc7d0H2rIJEkP+ZCQ0811lya0KDJCbmq6iOvyDU0dYy
- SoWoHLJa4NzoMlvWQOBmuGIBLRKknrPEVPrYs74TGIo+QmbVKqGXStLL4I/McjM2vH85
- sMaBxNMkdYJEjb5zgJTrmlvXAMdHZnOf//uclS+47Irm2+LJ1JzoY6UJs9/J1aRZ3obm
- v+Ag==
-X-Gm-Message-State: AOAM53271kaiqPo+0/wp/GfEqKl/Smqu1W3X0BkYGGZAlIN8foLdQt2h
- x4UkuvJBfvVCA3GxNiPZ9jHHn906HAfY7ECE6EbD+G3TmEF8FRVS9uBckbGR3Uu3zjVtM2Iprzj
- 5h5T4AqrmwO8gSbfnMSfbYdNiQy5F4EqT3LKZuXd/sF2MpdlTiF0kWEn+TzeM/oYstvXR
-X-Received: by 2002:aca:eb13:: with SMTP id j19mr4074829oih.10.1613515549906; 
- Tue, 16 Feb 2021 14:45:49 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=4ZPSLm3yrNAClwWOzT7/VZpNZh4ixX7KNguZeQ0+66w=;
+ b=gBk8PM3KDUS8tShVJdTLv0m9/s7Z2xMcr16+bl/rA3QNrLMGY6FlBjPuY0xfkVbd76
+ mUNK6Jd+o1OYJrEFuE3dtUEUbbP+Ps4eiZ9i2IGGPcrz9s9w9e+sPGCmXVo/4xhsVSj9
+ XMCtz4W/l2LnNfhWTi7QaXXDyCtGyTb4IHT/tb/22vhg2JlTSJYZ70G6MyRD6rGKuI3e
+ +EXKU60sa0Wr1JJmdx4XOlmNnGXvHUNP+9I/SoXfBBU6NPQMIoqddGdR5f5JEMuh3ol2
+ O9v/PKgj8ZuZdSqJUCnLz4H8yRwboowNV4ukh4/Lh/NNCSH2/8dDb56Z8qzRZ/IXeah9
+ x/lQ==
+X-Gm-Message-State: AOAM531VvbADP1ZXwG/b3GnixQ6kUOYRoCI8ixYs6XnVIwZbF+ixzSbG
+ qHs5dKp4quxBZbmYdkKXUSmnPQ==
+X-Received: by 2002:a9d:861:: with SMTP id 88mr16612524oty.27.1613515556196;
+ Tue, 16 Feb 2021 14:45:56 -0800 (PST)
 Received: from cube.nuviainc.com (c-174-52-16-57.hsd1.ut.comcast.net.
  [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id b12sm32909oti.65.2021.02.16.14.45.48
+ by smtp.gmail.com with ESMTPSA id b12sm32909oti.65.2021.02.16.14.45.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Feb 2021 14:45:49 -0800 (PST)
+ Tue, 16 Feb 2021 14:45:55 -0800 (PST)
 From: Rebecca Cran <rebecca@nuviainc.com>
 To: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 0/3] target/arm: Add support for FEAT_SSBS
-Date: Tue, 16 Feb 2021 15:45:40 -0700
-Message-Id: <20210216224543.16142-1-rebecca@nuviainc.com>
+Subject: [PATCH v2 3/3] target/arm: Set ID_PFR2.SSBS to 1 for "max" 32-bit CPU
+Date: Tue, 16 Feb 2021 15:45:43 -0700
+Message-Id: <20210216224543.16142-4-rebecca@nuviainc.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210216224543.16142-1-rebecca@nuviainc.com>
+References: <20210216224543.16142-1-rebecca@nuviainc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22e;
- envelope-from=rebecca@nuviainc.com; helo=mail-oi1-x22e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32e;
+ envelope-from=rebecca@nuviainc.com; helo=mail-ot1-x32e.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -102,46 +104,46 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mqOJlCEbhAD4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Rebecca Cran <rebecca@nuviainc.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rfe9QsQpDRHY
 
+Enable FEAT_SSBS for the "max" 32-bit CPU.
 
-Add support for FEAT_SSBS, Speculative Store Bypass Safe. SSBS is an
-optional feature in ARMv8.0 and is mandatory in ARMv8.5.
+Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Changes from v1 to v2:
-
-o Removed changes to cpsr_write_from_spsr_elx and cpsr_read_for_spsr_elx.
-o Moved the SSBS case in translate-a64.c above DIT to keep the numbers in
-  order.
-o Moved the check for SCTLR_DSSBS_32 in take_aarch32_exception.
-
-Rebecca Cran (3):
-  target/arm: Add support for FEAT_SSBS, Speculative Store Bypass Safe
-  target/arm: Enable FEAT_SSBS for "max" AARCH64 CPU
-  target/arm: Set ID_PFR2.SSBS to 1 for "max" 32-bit CPU
-
- target/arm/cpu.c           |  4 +++
- target/arm/cpu.h           | 15 +++++++-
- target/arm/cpu64.c         |  5 +++
- target/arm/helper.c        | 37 ++++++++++++++++++++
- target/arm/internals.h     |  6 ++++
- target/arm/translate-a64.c | 12 +++++++
- 6 files changed, 78 insertions(+), 1 deletion(-)
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5cf6c056c50f..88a6b183d325 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2206,6 +2206,10 @@ static void arm_max_initfn(Object *obj)
+         t = cpu->isar.id_pfr0;
+         t = FIELD_DP32(t, ID_PFR0, DIT, 1);
+         cpu->isar.id_pfr0 = t;
++
++        t = cpu->isar.id_pfr2;
++        t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
++        cpu->isar.id_mfr2 = t;
+     }
+ #endif
+ }
 -- 
 2.26.2
 

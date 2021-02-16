@@ -1,151 +1,173 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6104430lfc;
-        Mon, 15 Feb 2021 18:26:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxkTxOaHwWbBpdwARE3G2AHtiemYUR9BNeGgIapSW6/AfqWUWBzXHtJ6aQecwv8BLdEjKI3
-X-Received: by 2002:a25:7009:: with SMTP id l9mr28643957ybc.118.1613442415703;
-        Mon, 15 Feb 2021 18:26:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613442415; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6325107lfc;
+        Tue, 16 Feb 2021 01:49:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy2jsqA2ViWITPIoWcnOY/POA9NuXIU7D/eZrF6IM9TV5leeE0VgiEHtYjrjzmbVoSEQ1xv
+X-Received: by 2002:a17:906:4349:: with SMTP id z9mr19827633ejm.471.1613468954482;
+        Tue, 16 Feb 2021 01:49:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613468954; cv=none;
         d=google.com; s=arc-20160816;
-        b=q22LFf/416YN4jVGJb5xJK/O4lg8r+QUwB/oTY/ad0GRzQ6Ay5k4UnrqVUL3JqKt8l
-         457QonJpOnJj2vrxeTd406GOw4IKJQKMa9TAKNsCQGXDGc0IHZ5UwgnprCNU5uwtAp6H
-         vKVmm4p54Ws0p/jdecgh+QUMm2TMyYRlPTVUV6RUZNlxPAuMGaZcu7wYnYxbR/m7f77t
-         hF+5XVwQYaY+LHud3bBxFcVQuOB0sB4gZsCrNv22F1PLVAHXxmdkrDnuGlLdRxeLAq6r
-         17QJj1NMIshrNJf2P0izlsy5Y7NGxrMss+Lr62y2EwmqWZFT5fWcyQfZ7IpsGYdAwNsO
-         MyFQ==
+        b=Ju/GJShP8fZSrdDCimpxdaBm04F2Zsk7jJhk6wtAl0fp05NMf01wB5ZWsMWgWfCfkl
+         FZz2hlQM7vWzrUyGll8zryWQF90C+jDjtLwjl80LxiKuNbrBQApTh5kaigfxvf/KCb8W
+         S0NhBgofHYaGPXHtuzEfQLOcHPT+u5Hp88uGxnhsmbp6DGgGQpitpMkaliBw1Q+Rmhhy
+         fUwafTIuS6tsLP9kxpdOp808Vc/BVxZJ7tuUqRAnRGXggT2/eeW4eGvY80OsJiRe0f8L
+         dydGKpVDxlJ++DfBNE+Ahn1CO4ASYoZToxB211Q3khQq7T3eF8T4ffiSr6pjtt8pg2ql
+         QSrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ww9zTOnQxN5wOduZ4fPjbuGe+rSzce/iLXZI9QuWjOw=;
-        b=XZ/Awt140KClMr7RZR5drEZc6fkhcnWfsAJ737qDmVZ6PXTuOcd6V8i+cTGLN4zIYk
-         jFEI9FE/gR62xrVtzE69ysOsTUoYkKdXjZWP7Ji2Ozq1RangNe+/huRRWrn9MWHrWOfy
-         j6lcryESupCjWnOJMr38bzMFLwe58UzRt7Wyiddhvs/qcVJzIMBpSA214Rs1iXOh0GLu
-         BdXi71XLDxQZIQ3HBMH0d/rUJYfAYnbiFIYmkHTSDksKEfmcTyABxViYeEkOMTHfGaqt
-         eIWdCSWjjUPBjJpFBVVZgPej/k6SzKw48ppzkAKr0HOea7zuDzLUEqWUT+RsnMEBu1GQ
-         UA4Q==
+        h=content-transfer-encoding:content-disposition:user-agent
+         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=mcR9Mti49PeXpEpnpVBZELAkSXzOZmOCDvhppOFGuD0=;
+        b=qsdTXhclL5LonH/RzKumapfgZnagXEKoqCrpWjKFE2MLdwAuqERNOmoTe1bgbcST9m
+         E0OSJASPOIZDSSC+jdbRv2V6xXYa+S+V+haPcz2SEcuebiCvck6jA/EHrx9Ok7OqgjkZ
+         mXFOHu1wGt7PomzI4DS1e+mrRwDcOVZjglUVBw0yw97nnu0KgpB1SKfzN5iCchm/6zq8
+         H3g2q+ym/0W6lay9lMF+q52U28JUJVFWAd/yGR+makYarvpIfyKFyyMJYiIUAj3kH3TD
+         iI4TaPLPiijnOfWkN/6XYesHlDihYtbpMuFrMc8uTuWK2S2mdwXvWD68FcWtYTE2LKMq
+         UsYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=ulm8X1ah;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si19585631ybp.441.2021.02.15.18.26.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O1jmxHCo;
+       spf=pass (google.com: domain of berrange@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id jl7si14087960ejc.746.2021.02.16.01.49.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Feb 2021 18:26:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 16 Feb 2021 01:49:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=ulm8X1ah;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38028 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBq4l-0004uY-3w
-	for alex.bennee@linaro.org; Mon, 15 Feb 2021 21:26:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46370)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lBpuD-0006me-Ev
- for qemu-arm@nongnu.org; Mon, 15 Feb 2021 21:16:03 -0500
-Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36]:39779)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lBpu8-00021b-Lz
- for qemu-arm@nongnu.org; Mon, 15 Feb 2021 21:16:00 -0500
-Received: by mail-oo1-xc36.google.com with SMTP id z36so1970372ooi.6
- for <qemu-arm@nongnu.org>; Mon, 15 Feb 2021 18:15:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ww9zTOnQxN5wOduZ4fPjbuGe+rSzce/iLXZI9QuWjOw=;
- b=ulm8X1ahX+ezaIvaJ9pnPtrZR55GIW7JPDlMJd4Jf/PRqO1p5RYcSXlxlAvWqWhOmV
- SVLTlEhcqQ3bPdPUB3hN1w8RpQg5Was+eWG7MS6PI8lYsneJbQcwZpdFUcIa3o06S0f4
- +V4uzBR4blnyNcgb9FOfmRfyAmEpSn9eBuJn4hKl5njAb87WVhoXesCIuF+P6sIIOSbB
- nhnwokRAIk3ZxiPyNcOMBA0HGykxOGFdLWPVluLteU62ZAF99kFP64+SKZTNn/Fn2PrH
- Kqw6NUrUSE7/hU9xuYEGg8y3qwhIaSFDyb4lOydbe/4a8KNVdMpK8+ICavD3US8+jnpX
- kVUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ww9zTOnQxN5wOduZ4fPjbuGe+rSzce/iLXZI9QuWjOw=;
- b=OLNEbvN2nLdPfIIxWqkEBp74CsVAmPyywBbUZBtTAKtIX1mW3hgyZgXHOuM3qG1YGJ
- epWPICcIvz6np7EH78JuIIuO/AK/LLQbe/XWgcpWoiN57nl3sWwBQJsyInHCuEegS9Q2
- iotwkAyIxilkQxZnxti0tVUUv0Ei+037GnCCgZSNAci9n4RdZpL02BcjaE8nOzmtMRrz
- 44dIS9xyzGRLHClT8kMFuBo71ZnM/QNKvbMX3LUxDPTBEndVQVaxASPmxOICzU1C+Eib
- Nsqu3cNkyGsJJrGBpBQfqIp0zLSzUQOFCrksmaICWu8kyEqOG5Azo9g+TmyK68XmLSY7
- VkGw==
-X-Gm-Message-State: AOAM5330RBjyEo6zsCkt7OWfIJ65BocZstuWPTIDXJWJS/jG+5lzcTTB
- Wl/TY6o83kNQPJG+rVxx1LwAdg==
-X-Received: by 2002:a4a:858c:: with SMTP id t12mr12804136ooh.20.1613441755296; 
- Mon, 15 Feb 2021 18:15:55 -0800 (PST)
-Received: from [10.0.10.142] (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id g13sm3850623otl.60.2021.02.15.18.15.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Feb 2021 18:15:54 -0800 (PST)
-Subject: Re: [PATCH 1/3] target/arm: Add support for FEAT_SSBS, Speculative
- Store Bypass Safe
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20210215215819.1142-1-rebecca@nuviainc.com>
- <20210215215819.1142-2-rebecca@nuviainc.com>
- <e4233ca8-72a2-5213-1832-b326db071b49@linaro.org>
-From: Rebecca Cran <rebecca@nuviainc.com>
-Message-ID: <a66d581c-680c-63a9-08b1-59ed176c4fa2@nuviainc.com>
-Date: Mon, 15 Feb 2021 19:15:53 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O1jmxHCo;
+       spf=pass (google.com: domain of berrange@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1613468953;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mcR9Mti49PeXpEpnpVBZELAkSXzOZmOCDvhppOFGuD0=;
+	b=O1jmxHCob5vdZa2a37H/0poRIuRH3LzFBym1xMctMpyv45A22jx7aV+41+ELoeAidl0xB9
+	cGBkJIhzQZLNdvR5wOe+KHOYXHL7SOMT4vhgXX32QFnq37HyGEJRtZJNyOLFtdhdqlbgMa
+	8iwk4wvzD5prMFPBI0m4mR1cZCQxo+0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-144-pn55FUsRNVSlla8r1mWksw-1; Tue, 16 Feb 2021 04:49:10 -0500
+X-MC-Unique: pn55FUsRNVSlla8r1mWksw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CA9E7107ACE3;
+	Tue, 16 Feb 2021 09:49:08 +0000 (UTC)
+Received: from redhat.com (ovpn-112-215.ams2.redhat.com [10.36.112.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9D6315C6AB;
+	Tue, 16 Feb 2021 09:49:02 +0000 (UTC)
+Date: Tue, 16 Feb 2021 09:48:59 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Niek Linnenbank <nieklinnenbank@gmail.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, peter.maydell@linaro.org,
+	Thomas Huth <thuth@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+	f4bug@amsat.org, b.galvani@gmail.com, qemu-arm@nongnu.org,
+	Pavel.Dovgaluk@ispras.ru, crosa@redhat.com
+Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
+Message-ID: <YCuVC4T+TFjuskhF@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
+ <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <e4233ca8-72a2-5213-1832-b326db071b49@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c36;
- envelope-from=rebecca@nuviainc.com; helo=mail-oo1-xc36.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0+2ov4qMXGBt
+In-Reply-To: <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com>
+User-Agent: Mutt/2.0.5 (2021-01-21)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-TUID: bnDdsQOC7u4o
 
-On 2/15/21 5:19 PM, Richard Henderson wrote:
-> On 2/15/21 1:58 PM, Rebecca Cran wrote:
->> @@ -960,6 +960,12 @@ static void cpsr_write_from_spsr_elx(CPUARMState *env,
->>           val |= CPSR_DIT;
->>       }
->>   
->> +    /* Move SSBS to the correct location for CPSR */
->> +    if (val & PSTATE_SSBS) {
->> +        val &= ~PSTATE_SSBS;
->> +        val |= CPSR_SSBS;
->> +    }
+On Fri, Feb 12, 2021 at 03:10:00PM +0100, Philippe Mathieu-Daudé wrote:
+> Hi Niek and QEMU community,
 > 
-> Incorrect.  SPSR_ELx leaves this at the same position as CPSR: bit 23.
+> On 2/11/21 11:00 PM, Niek Linnenbank wrote:
+> > The following are maintenance patches for the Allwinner H3. The first patch
+> > is a proposal to relocate the binary artifacts of the acceptance tests away
+> > from the apt.armbian.com domain. In the past we had problems with artifacts being
+> > removed, and now the recently added Armbian 20.08.1 image has been removed as well:
+> > 
+> > $ wget https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz
+> > Connecting to dl.armbian.com (dl.armbian.com)|2605:7900:20::5|:443... connected.
+> > ...
+> > HTTP request sent, awaiting response... 404 Not Found
+> > 2021-02-11 22:34:45 ERROR 404: Not Found.
+> > 
+> > I've now added the artifacts to a server maintained by me. The machine has a stable
+> > uptime of several years, ~100Mbit bandwidth and plenty of available storage.
+> > Also for other artifacts if needed. I'm open to discuss if there is a proposal
+> > for a better location for these artifacts or a more generic qemu location.
+> 
+> Thanks for trying to fix this long standing problem.
+> 
+> While this works in your case, this doesn't scale to the community,
+> as not all contributors have access to such hardware and bandwidth /
+> storage.
+> 
+> While your first patch is useful in showing where the artifacts are
+> stored doesn't matter - as long as we use cryptographic hashes - I
+> think it is a step in the wrong direction, so I am not keen on
+> accepting it.
+> 
+> My personal view is that any contributor should have the same
+> possibilities to add tests to the project. Now I am also open to
+> discuss with the others :) I might be proven wrong, and it could
+> be better to rely on good willing contributors rather than having
+> nothing useful at all.
 
-Okay, I see where I'm going wrong now - SPSR_ELx has different formats 
-for exceptions taken from aarch32 and aarch64 states, which I hadn't 
-fully understood. I'll fix it.
+There aren't many options here
 
+ 1. Rely on a vendor to provide stable download URLs for images
+
+ 2. QEMU host all images we use in testing
+
+ 3. Contributor finds some site to upload images to
+
+
+For the armbian images we rely on (1), but the URLs didn't turn out to be
+stable. In fact no OS vendor seems to have guaranteed stable URLs forever,
+regardless of distro, though most eventually do have an archive site that
+has good life. Armbian was an exception in this respect IIUC.
+
+(2) would solve the long term stability problem as QEMU would be in full
+control, and could open it up for any images we need. The big challenge
+there is that QEMU now owns the license compliance problem. Merely uploading
+binary images/packages without the corresponding source is generally a license
+violation. QEMU could provide hosting, but we need to be clear about the fact
+that we now own the license compliance problem ourselves. Many sites hosting
+images simply ignore this problem, but that doesn't make it right.
+
+
+This series is proposing (3), with a site the contributor happens to control
+themselves, but using a free 3rd party hosting site is no different really.
+Again there is a the same need for license compliance, but it is now the
+responsibility of the user, not QEMU project.
+
+In this http://www.freenos.org/pub/qemu/cubieboard/ site I can't even see a
+directory listing, so even if corresponding source does exist in this server,
+I can't find it. 
+
+The isn't really a problem for QEMU CI to consume the images, but as a free
+software developer I don't like encouraging practices that are not compliant
+with licensing reuqirement.
+
+It is an open question whether the (3) is really better than (1) in terms
+of URL stability long term, especially if running off a user's personal
+server.
+
+Regards,
+Daniel
 -- 
-Rebecca Cran
-
-
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

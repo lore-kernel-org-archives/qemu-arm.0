@@ -1,91 +1,94 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6502262lfc;
-        Tue, 16 Feb 2021 06:16:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyyxeVUKkwWXrmtgNvIO/JF7CzUPB45p0tYzjCgUelAkxt/OX8wQGgLwpAGXe9W+Gyu/NA1
-X-Received: by 2002:a25:9887:: with SMTP id l7mr31204701ybo.319.1613484997260;
-        Tue, 16 Feb 2021 06:16:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613484997; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6507894lfc;
+        Tue, 16 Feb 2021 06:23:50 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy3j97Vr+vE1U312hwRQIUrB/7hwAZHyg5+c7de+jOw6GFb0U4ZdTaxPF2XNZRp8s/0wPCv
+X-Received: by 2002:a25:e54:: with SMTP id 81mr29860513ybo.404.1613485429997;
+        Tue, 16 Feb 2021 06:23:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613485429; cv=none;
         d=google.com; s=arc-20160816;
-        b=TJQzfZbuOgH7kOQ2YwlikE9/L37BTZmb/E/rP5J9x1YLRZ7oBkXXVs3DnDWYq8SZPk
-         qqGO5zRPxu9SCaR5CECj2M5KL/sXgnFWUxqhq/mdP2PaDYwVozWn56nbjVHrTifWii0/
-         WrqCItjJYpYUNd4/q38LELXDgABQhgMKG1uQpingp8L2FzpTuzEjSOgnSTpw96XBtBiI
-         i7bRPQNb+gNUS9lsO43Wwg6a8XgUlHiPx3yl0uwI5PcnjwsRpToH1n2XBuWX9s5GPiq/
-         5Zcen95Z/Gb8WMzCDt5kEhZoSS9Noz0i9Y8RDceJFQJp4hO6CarNu8SEcF7BqOPtMWHv
-         lwZw==
+        b=n48XEYhsfOZlRpnqet5SBhXnLLH5ZvkQ7y0XeAlEw2qt+5fMsgZXB6vp1wDJtzxG3V
+         ZjTuQr2MKfz1GUU700N7lZ+PGbLV1BMLR7O4u39Hv25tKc3pssyo8mUDTbpQxMhmgYGF
+         TxDzrX1ewxWIV08daFbdc14emc1BzEsYS1nBOb7wIm/9a9x0Dyk4uipSuq7YxVgAC6nf
+         gNtpDMMRqK8tNxa7gsFY+yG3DFtEetD1kp4OAQ3RCuP0RqQEWDRv2RzUcLnIO6ABXj9b
+         YdMk5+mTDnrVFRcWpOu9xzcF6eaPEjNVNUfJJdATYZ3wNlpqcoJm+nRczMMszwtkROCh
+         DJ6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=yj1oFFEoFpZlmKl9lKMBKEoc5H9KYa/mzAusSDfjrv8=;
-        b=adUjHfHiMBFtGG0wlcYuwORXnlgRLC0CKt7e2pfXRKPB9csFY1XRk0tfMACG+SAWZf
-         c+MML+MpeU2d9JLk7wq8DNlbeNyvvfyhQ0+gTmAmk6oC6gVYPiwgd6TCMKoQx/N+wvnW
-         wIvecOld3U1lf+R/kN+j2I65ldpfypJGQDmDP6/He7nJII35wn05ri8ng6F65++JFLWN
-         kG21wd6QHGU1Hv0FI+HfqzOp/rJ83wz2AlbRMVznh5w6mDdrqQFEXhA8SAeAevy/S1nj
-         ZFCyUR3q6g/Ny4TizmDX7TNsEr97H4dGDANBYeAoYuO74uGzZIEEQigq/BTDGJGtB7Iy
-         703Q==
+        bh=2xXW8vZICAdcaeO7FqLvJ/bL7E0JJoDe05nJEyOiIcE=;
+        b=P1uCwu+ojfpbRNq7VXpXvq+KiC9dUD3OdsZjSZpR4NaxWuSxtDac6vDvWST3I04qyE
+         57n0pq8WDWQNN+o3mhYX22iyW17NEfRrKKOHkjNKthRBMGTEF35+avGJjTzEeFnGLhtv
+         w0vhe11OngIh9sztmqvrBZJtXACYQ5rwKoF/IrWKH3Y3WkIHwUZegUna+muWiEiJeOzP
+         qXLqtQFp9bNSJsolOPQDKyy416Mk4ilwhHneoMWNi4BXrSA85UGmbSp0+fmLgUg6SN/S
+         QYQIsv8+iyv44v3dhML4ozXtUJXWV3LLCxmGHD8nP7acs5WpJwOrJ4wyyTFd9MeLUJe5
+         FgTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Tapsl4/Z";
+       dkim=fail header.i=@linaro.org header.s=google header.b=yE5yLI7S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j10si15494904ybh.220.2021.02.16.06.16.37
+        by mx.google.com with ESMTPS id v16si6453146ybm.296.2021.02.16.06.23.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Feb 2021 06:16:37 -0800 (PST)
+        Tue, 16 Feb 2021 06:23:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Tapsl4/Z";
+       dkim=fail header.i=@linaro.org header.s=google header.b=yE5yLI7S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37644 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48100 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lC19Y-0005wX-Lb
-	for alex.bennee@linaro.org; Tue, 16 Feb 2021 09:16:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58792)
+	id 1lC1GV-00028b-Gs
+	for alex.bennee@linaro.org; Tue, 16 Feb 2021 09:23:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60588)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lC198-0005vY-Jj
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 09:16:11 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:41941)
+ id 1lC1GN-00027u-U8
+ for qemu-arm@nongnu.org; Tue, 16 Feb 2021 09:23:39 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:33120)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lC197-0000rR-5n
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 09:16:10 -0500
-Received: by mail-ed1-x529.google.com with SMTP id v9so7946049edw.8
- for <qemu-arm@nongnu.org>; Tue, 16 Feb 2021 06:16:08 -0800 (PST)
+ id 1lC1GL-0001er-2A
+ for qemu-arm@nongnu.org; Tue, 16 Feb 2021 09:23:39 -0500
+Received: by mail-ed1-x529.google.com with SMTP id c6so12420081ede.0
+ for <qemu-arm@nongnu.org>; Tue, 16 Feb 2021 06:23:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yj1oFFEoFpZlmKl9lKMBKEoc5H9KYa/mzAusSDfjrv8=;
- b=Tapsl4/Zbr3W4jxXvXh7fTcIKdxU2O8+HgH9k3qU1fOFa+GLOYZiunALlbmCvP0ryg
- N+1WRKqApqIF48/VaTLQFPuNy4BXb10wulAE8yDENEKnLLz/yF3CgYsRS/2cLl5ELoUi
- N/F4SUL1feTfikjBUyGS7q7LrXdafQK/KnbAOyyjf+V8J9ytyf+kNtQTexXWUEgyTNtY
- 7zvQl6YnmZm3+XqKPRcmiqwxiRz3XUOvnR8oAVZKzHbwVaWIOCdBWXwR97kmjcJXpEm6
- 1MvLqzlC+GB2SZEL1JrTPmjE3m3O1xIqS9IVvXJuC4r45HTkCaOZ8oLUJNzRTXRFNR4S
- o3TQ==
+ :cc; bh=2xXW8vZICAdcaeO7FqLvJ/bL7E0JJoDe05nJEyOiIcE=;
+ b=yE5yLI7Sj+G8qLP6IIMVZdztcYhOEpx6/TypWSlhws7Vs6LFp4OAQQ+zmuhrLHBvP4
+ nvc1GoxOob5ZTZ8VQG1nI2HGxb2HJwplP4PfS9EErLFtBjeOUGXfjojJ186hsZ0/MRMR
+ KXXMXUbWZDcVBJvoo/pipCVumOXN9YSLGVqRiQz+W7Wmi5ytwXA7YR2pRBvmYGCvja1L
+ L+8Sj9tcY2GLAf0PZBtrLgOSoHeiIaulhLPsGiDbnda9/25/fov+e0CAc7e6kxUZnzKl
+ xmoBBCTocoHFuFLFwK4KKGXG2b8RLKH87CyRqgV2+OISsOBat4ybzqY19jGKoJebGVvN
+ JpXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yj1oFFEoFpZlmKl9lKMBKEoc5H9KYa/mzAusSDfjrv8=;
- b=OoHvMwXjUtL8S+l662gSq6mmkbhMhpEzPIyFsMCNMmYuCNyHQfNF+718gcjNlC4Tf+
- OwQIbjRRInBLIu8AENc9KmY03RrfGFYI1KlEN3rd9dHg+ghaf0dcQtisGV6NVZrb9MMg
- f7pS/OgRLbMYjuyHCLKU/3UVtvN+Dij712xzGM62YaIFlqceHkEgQveQJeItn10RBWfb
- SM/S/j9IE+T9UIOh41Wvyl8cgyqtktl5eJMbIKxSlDjb3m6fiiY+/HcZbuG5xLuHk0Cm
- 76n5ezH7FmBT98sTelG1g9r9FLWU3qig1X46IGqowjJr8rQdozjc5Wr4hEeM9CqOegP1
- Xdkw==
-X-Gm-Message-State: AOAM530ZjX5GuDYeZjxkvKJFGJ/Oj6cGsuedmsEYQa+zd9tSbOEJyvVu
- FbTj62xwawbjtQ/o1GM1m6SF00aumKbiOF7mf/hTiw==
-X-Received: by 2002:a50:9e01:: with SMTP id z1mr20960198ede.44.1613484967608; 
- Tue, 16 Feb 2021 06:16:07 -0800 (PST)
+ bh=2xXW8vZICAdcaeO7FqLvJ/bL7E0JJoDe05nJEyOiIcE=;
+ b=HxlisSu2Czznm3TTZQgQYySmoniKmNKUgamMawgDfloJc49+S0WdjJrTIMacqZVX/E
+ hQLGqTDjsh780MyevoZ1M4v4g5NeMwWmprW8p+Oqd/zuEdamqqbEbPeXx2/MVNRsfRku
+ lsCc8Q3eXpLFNjUHeC3vNJ00OITXS63EC/v0ur6asIoskVKAhn8zCo6jzY5dMlyBhW8q
+ v7L1vQby0VNqOuZnaXF7M7GnZBTqQ8pF5aI7BDYAi2+abHbUn7NDauOi8X9GXfqa0ZGP
+ xgScmnweqrpJU4/Cu5Fq4P/02w0rFkLd9id5iLSLgdSn2jjljUM/Y8Kra4I6QQNH/+7v
+ Vt1w==
+X-Gm-Message-State: AOAM532bYIR8rOJNRDTN/1c+nI/bHguuEsi9RTZDMbu4evDTCtktOZlG
+ tVQy+z4VKZtkEa142PM/RyF1gQbMSY1QKiRI+TLOnw==
+X-Received: by 2002:a05:6402:3514:: with SMTP id
+ b20mr20682751edd.100.1613485415498; 
+ Tue, 16 Feb 2021 06:23:35 -0800 (PST)
 MIME-Version: 1.0
-References: <20210210220426.3577804-1-wuhaotsh@google.com>
-In-Reply-To: <20210210220426.3577804-1-wuhaotsh@google.com>
+References: <20210211122022.1811362-1-marcin.juszkiewicz@linaro.org>
+ <20210211123638.1820482-1-marcin.juszkiewicz@linaro.org>
+In-Reply-To: <20210211123638.1820482-1-marcin.juszkiewicz@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Feb 2021 14:15:56 +0000
-Message-ID: <CAFEAcA935ddobJrxRkNtxdBv6-Mm3THwTLd8Vfcg8hEwjpr0xA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] hw/i2c: Add NPCM7XX SMBus Device
-To: Hao Wu <wuhaotsh@google.com>
+Date: Tue, 16 Feb 2021 14:23:24 +0000
+Message-ID: <CAFEAcA8JqjSg=spRdQUonORghEL2HP+q9ZjB=JwL1c2Laco8DA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] sbsa-ref: remove cortex-a53 from list of supported
+ cpus
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2a00:1450:4864:20::529;
  envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
@@ -95,7 +98,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -108,25 +111,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, Patrick Venture <venture@google.com>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- Doug Evans <dje@google.com>
+Cc: Leif Lindholm <leif@nuviainc.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Rados=C5=82aw_Biernacki?= <rad@semihalf.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3mxH7zXIYCL1
+X-TUID: iQ3XJRBiVlS8
 
-On Wed, 10 Feb 2021 at 22:04, Hao Wu <wuhaotsh@google.com> wrote:
+On Thu, 11 Feb 2021 at 12:36, Marcin Juszkiewicz
+<marcin.juszkiewicz@linaro.org> wrote:
 >
-> This patch set implements the System manager bus (SMBus) module in NPCM7XX
-> SoC. Basically, it emulates the data transactions of the module, not the
-> SDA/SCL levels. We have also added a QTest which contains read and write
-> operations for both single-byte and FIFO mode, and added basic I2C devices
-> for npcm750-evb and quanta-gsj boards.
+> Cortex-A53 supports 40bits of address space. sbsa-ref's memory starts
+> above this limit.
+>
+> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
+Hi; could you resend your patches in the right format, please?
+ * with a cover letter if it's a multi-patch series
+ * with the cover letter not a reply-to or follow-up to any
+   existing email
+ * with each patch in the series being a follow-up to its cover letter
+ * with a suitable '[PATCH v3]' in the subject if this is v3 of
+   a patch(series), etc
+ * with any accumulated reviewed-by, acked-by, etc tags
 
+Otherwise it's pretty confusing to try to fish the right version
+out of the mailing list; in particular the automated patch handling
+tools and scripts have got confused by your patches here.
 
-Applied to target-arm.next, thanks.
+https://wiki.qemu.org/Contribute/SubmitAPatch has some notes.
 
+thanks
 -- PMM

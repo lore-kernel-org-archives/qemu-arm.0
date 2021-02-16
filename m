@@ -1,104 +1,81 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6507894lfc;
-        Tue, 16 Feb 2021 06:23:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy3j97Vr+vE1U312hwRQIUrB/7hwAZHyg5+c7de+jOw6GFb0U4ZdTaxPF2XNZRp8s/0wPCv
-X-Received: by 2002:a25:e54:: with SMTP id 81mr29860513ybo.404.1613485429997;
-        Tue, 16 Feb 2021 06:23:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613485429; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6535975lfc;
+        Tue, 16 Feb 2021 07:02:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw8vi2f82SgnbeykzW7KW48zrN/Uyb7BN+TQ1sMvozDd8AKWSRnAN5Vq+5fh4Oaa8ZDmuA1
+X-Received: by 2002:a25:6c45:: with SMTP id h66mr29559022ybc.490.1613487731827;
+        Tue, 16 Feb 2021 07:02:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613487731; cv=none;
         d=google.com; s=arc-20160816;
-        b=n48XEYhsfOZlRpnqet5SBhXnLLH5ZvkQ7y0XeAlEw2qt+5fMsgZXB6vp1wDJtzxG3V
-         ZjTuQr2MKfz1GUU700N7lZ+PGbLV1BMLR7O4u39Hv25tKc3pssyo8mUDTbpQxMhmgYGF
-         TxDzrX1ewxWIV08daFbdc14emc1BzEsYS1nBOb7wIm/9a9x0Dyk4uipSuq7YxVgAC6nf
-         gNtpDMMRqK8tNxa7gsFY+yG3DFtEetD1kp4OAQ3RCuP0RqQEWDRv2RzUcLnIO6ABXj9b
-         YdMk5+mTDnrVFRcWpOu9xzcF6eaPEjNVNUfJJdATYZ3wNlpqcoJm+nRczMMszwtkROCh
-         DJ6w==
+        b=sRJ8u8Lzo5BWhTnpLQ9EkISX/T6RNIOYyLMM/e0CsduMKzUJyG7/0d3BfOl03S9uIa
+         +kIHmse97V33ZM/QBAQnjJdGydCHzbnK0wjJPurQ2qNes9sfoh8jF4ZkSzOaqFS4RBS/
+         iOgyetT+74xqETvf3s0eeLq92Y/6MZlTlCM8sA5j8aH71Rq0YNOvkG1bCxxj6jMYbE+s
+         CO7EBQNYxsmF+ZvY6pePzUL3DgjsCiHHMVTItO/BhrmprWELdguinvQBfCsGQuNo27Tu
+         SQjgPnigMAPbeVsqHHFacbXy0tv33r0dETXc1vdVImjX5JNJwareVyWgFH0Pm2WkAsSy
+         eoBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2xXW8vZICAdcaeO7FqLvJ/bL7E0JJoDe05nJEyOiIcE=;
-        b=P1uCwu+ojfpbRNq7VXpXvq+KiC9dUD3OdsZjSZpR4NaxWuSxtDac6vDvWST3I04qyE
-         57n0pq8WDWQNN+o3mhYX22iyW17NEfRrKKOHkjNKthRBMGTEF35+avGJjTzEeFnGLhtv
-         w0vhe11OngIh9sztmqvrBZJtXACYQ5rwKoF/IrWKH3Y3WkIHwUZegUna+muWiEiJeOzP
-         qXLqtQFp9bNSJsolOPQDKyy416Mk4ilwhHneoMWNi4BXrSA85UGmbSp0+fmLgUg6SN/S
-         QYQIsv8+iyv44v3dhML4ozXtUJXWV3LLCxmGHD8nP7acs5WpJwOrJ4wyyTFd9MeLUJe5
-         FgTg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=KBp5cZw+wKuRdrhC3K/p0LzltUJSsam+qrLyCuVTvKM=;
+        b=IJeCGG/uuAJL2y22njAJjMnEVRs/PFviNpxZX7QqkAWX/q+++SHgLlmos9VFD1eib8
+         N5vpU736BZTcjzi3GJuHvrIU0pLmF4qpxP+YM6hru0w0aqZWQPZzIbxIdk0XiE8gIsjs
+         ydSsXSQ+Qz56tQM4i6aafHWizCRA0DtxhAsW9SOGwOEXbUazWWI/VE08C8DlsRVPqX9v
+         CCuJXrCmZZ/3PhJqqRO0Eg0xdd5OboxNwm63gvl3pznnQzcvDIfqA6Ht4Wxap5Z8CjDz
+         v7AmyrwS+NLOKLFNfSLEIm9mtkPd3K40I3TIClWBRIZ7paQA0cVv1pzQYAz0peXlK8gL
+         PCnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yE5yLI7S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16si6453146ybm.296.2021.02.16.06.23.47
+        by mx.google.com with ESMTPS id f4si22292817ybr.481.2021.02.16.07.02.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Feb 2021 06:23:49 -0800 (PST)
+        Tue, 16 Feb 2021 07:02:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yE5yLI7S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48100 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lC1GV-00028b-Gs
-	for alex.bennee@linaro.org; Tue, 16 Feb 2021 09:23:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60588)
+	id 1lC1rf-00036t-16
+	for alex.bennee@linaro.org; Tue, 16 Feb 2021 10:02:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41584)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lC1GN-00027u-U8
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 09:23:39 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:33120)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lC1GL-0001er-2A
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 09:23:39 -0500
-Received: by mail-ed1-x529.google.com with SMTP id c6so12420081ede.0
- for <qemu-arm@nongnu.org>; Tue, 16 Feb 2021 06:23:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2xXW8vZICAdcaeO7FqLvJ/bL7E0JJoDe05nJEyOiIcE=;
- b=yE5yLI7Sj+G8qLP6IIMVZdztcYhOEpx6/TypWSlhws7Vs6LFp4OAQQ+zmuhrLHBvP4
- nvc1GoxOob5ZTZ8VQG1nI2HGxb2HJwplP4PfS9EErLFtBjeOUGXfjojJ186hsZ0/MRMR
- KXXMXUbWZDcVBJvoo/pipCVumOXN9YSLGVqRiQz+W7Wmi5ytwXA7YR2pRBvmYGCvja1L
- L+8Sj9tcY2GLAf0PZBtrLgOSoHeiIaulhLPsGiDbnda9/25/fov+e0CAc7e6kxUZnzKl
- xmoBBCTocoHFuFLFwK4KKGXG2b8RLKH87CyRqgV2+OISsOBat4ybzqY19jGKoJebGVvN
- JpXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2xXW8vZICAdcaeO7FqLvJ/bL7E0JJoDe05nJEyOiIcE=;
- b=HxlisSu2Czznm3TTZQgQYySmoniKmNKUgamMawgDfloJc49+S0WdjJrTIMacqZVX/E
- hQLGqTDjsh780MyevoZ1M4v4g5NeMwWmprW8p+Oqd/zuEdamqqbEbPeXx2/MVNRsfRku
- lsCc8Q3eXpLFNjUHeC3vNJ00OITXS63EC/v0ur6asIoskVKAhn8zCo6jzY5dMlyBhW8q
- v7L1vQby0VNqOuZnaXF7M7GnZBTqQ8pF5aI7BDYAi2+abHbUn7NDauOi8X9GXfqa0ZGP
- xgScmnweqrpJU4/Cu5Fq4P/02w0rFkLd9id5iLSLgdSn2jjljUM/Y8Kra4I6QQNH/+7v
- Vt1w==
-X-Gm-Message-State: AOAM532bYIR8rOJNRDTN/1c+nI/bHguuEsi9RTZDMbu4evDTCtktOZlG
- tVQy+z4VKZtkEa142PM/RyF1gQbMSY1QKiRI+TLOnw==
-X-Received: by 2002:a05:6402:3514:: with SMTP id
- b20mr20682751edd.100.1613485415498; 
- Tue, 16 Feb 2021 06:23:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1lC1rI-0002f3-Ry; Tue, 16 Feb 2021 10:01:48 -0500
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221]:53082)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1lC1rG-00069U-6z; Tue, 16 Feb 2021 10:01:48 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 107DA26074B;
+ Tue, 16 Feb 2021 16:01:44 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CHThkAHAMDju; Tue, 16 Feb 2021 16:01:41 +0100 (CET)
+Received: from puchatek.com (89-67-26-161.dynamic.chello.pl [89.67.26.161])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 15786260131;
+ Tue, 16 Feb 2021 16:01:41 +0100 (CET)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-arm@nongnu.org
+Subject: [PATCH v3 1/2] sbsa-ref: remove cortex-a53 from list of supported cpus
+Date: Tue, 16 Feb 2021 16:01:21 +0100
+Message-Id: <20210216150122.3830863-2-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210216150122.3830863-1-marcin.juszkiewicz@linaro.org>
+References: <20210216150122.3830863-1-marcin.juszkiewicz@linaro.org>
 MIME-Version: 1.0
-References: <20210211122022.1811362-1-marcin.juszkiewicz@linaro.org>
- <20210211123638.1820482-1-marcin.juszkiewicz@linaro.org>
-In-Reply-To: <20210211123638.1820482-1-marcin.juszkiewicz@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Feb 2021 14:23:24 +0000
-Message-ID: <CAFEAcA8JqjSg=spRdQUonORghEL2HP+q9ZjB=JwL1c2Laco8DA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] sbsa-ref: remove cortex-a53 from list of supported
- cpus
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,35 +88,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Rados=C5=82aw_Biernacki?= <rad@semihalf.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Rados=C5=82aw=20Biernacki?= <rad@semihalf.com>,
+ qemu-devel@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Leif Lindholm <leif@nuviainc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iQ3XJRBiVlS8
+X-TUID: jOhSClvXETsq
 
-On Thu, 11 Feb 2021 at 12:36, Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
->
-> Cortex-A53 supports 40bits of address space. sbsa-ref's memory starts
-> above this limit.
->
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cortex-A53 supports 40bits of address space. sbsa-ref's memory starts
+above this limit.
 
-Hi; could you resend your patches in the right format, please?
- * with a cover letter if it's a multi-patch series
- * with the cover letter not a reply-to or follow-up to any
-   existing email
- * with each patch in the series being a follow-up to its cover letter
- * with a suitable '[PATCH v3]' in the subject if this is v3 of
-   a patch(series), etc
- * with any accumulated reviewed-by, acked-by, etc tags
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Leif Lindholm <leif@nuviainc.com>
+---
+ hw/arm/sbsa-ref.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Otherwise it's pretty confusing to try to fish the right version
-out of the mailing list; in particular the automated patch handling
-tools and scripts have got confused by your patches here.
+diff --git hw/arm/sbsa-ref.c hw/arm/sbsa-ref.c
+index 9f70735153..276243d122 100644
+--- hw/arm/sbsa-ref.c
++++ hw/arm/sbsa-ref.c
+@@ -145,7 +145,6 @@ static const int sbsa_ref_irqmap[] = {
+ };
+ 
+ static const char * const valid_cpus[] = {
+-    ARM_CPU_TYPE_NAME("cortex-a53"),
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+ };
+-- 
+2.29.2
 
-https://wiki.qemu.org/Contribute/SubmitAPatch has some notes.
-
-thanks
--- PMM

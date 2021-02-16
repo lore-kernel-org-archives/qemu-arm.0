@@ -1,108 +1,114 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5961649lfc;
-        Mon, 15 Feb 2021 13:59:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx7OQoMX3U/FpjwZ3WTVz+OmUezHwobi8iNr1wgf5Y+9tqIVNCY5tpgBbl5PMqd5hW4XR9D
-X-Received: by 2002:a25:1e42:: with SMTP id e63mr25409619ybe.270.1613426341793;
-        Mon, 15 Feb 2021 13:59:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613426341; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6039007lfc;
+        Mon, 15 Feb 2021 16:21:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyl0pMCsoeflbJZuKfG6zXPZoCFh3AgEhNLobChl8vAhDXkWztISyaplo+9NEKgGtsQHaAw
+X-Received: by 2002:a25:4902:: with SMTP id w2mr25248370yba.516.1613434862337;
+        Mon, 15 Feb 2021 16:21:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613434862; cv=none;
         d=google.com; s=arc-20160816;
-        b=jy3s0GEC/PbVrMjtoEZMrhLF8VO33nBb0MOaWlNrGrQywpn0aTqktteXl50lItf6eL
-         tvQUmy1mBZZdDBNn/w83vMRVZ8D4wv8yE9D/QCWD8lPZa2XUx8Xyk0J+SPXtl00BFw5H
-         t6OEGrBcMMwlBw2Vs9enbYGYQ158QN0UVVDvMfakaUiXjSjiFUNaCyVj/IYuvdi04GTC
-         3ZraZWLzoAASZHNIt7MDHawqS67U75aI4NlSE+eE8t87xOgixhdxGqqFiqQs3pFZwkV0
-         dj5uG37ZSsOpCrorL5xYFQnmQAJF+aWLvGuUw7EN7t1dWjwmkAdNnKWt1Z6WYvCS9/R/
-         ALGw==
+        b=QFw91lN0RDU472qE7f3AjDM8fRXZ2/k6LT25AHkyCg5tk+YqAvqQc2JGyKJAz2gN/u
+         JxQ9w4UpuFdiXPmxnxOoJs3J1zk1VGVn0Eo6MWeWzx/sQATS+7FmTlY+aV7RT8ibdOXg
+         gDQgheNbVSkq+kF6Ap1cj8K6Ys1jE3qzzpsvDenRoPpVk+OQTlNHxG32O1N17EgTwBxh
+         ibKeDMYKSI5jRF94Ld3Exv9J9FImK8X6LrqfhiiGBJTOwEJnREdRwplmc8J26lI1fuGz
+         gWtgCMNHKtRw2fDgw0g6a09ohfgNVhAQTMOuLkXhtEVtwzEOnpc3fNtuigyXMYr4olAq
+         qA2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=AY0JUC3KB08rT1AI068cSkWI8i34wh3yvaVkhXHWL8Y=;
-        b=T3H3INBKyaBJPLBCXELf8g+4HZzDktgw3xJw4FhwLgl064i4yL4CtSL65OnP8KIwU8
-         9BqQH9uLiUiYf05TdyAmDwzdqs8OXo7BV1gJDL+1ZBhLTA2cx9b+0dQgvs6Po36ufEOL
-         q665dBp0AzqwbwstkuirVBPPwrudfoy7flJ98WxJrjBTGU6oRjL/x4eCcfJvKcfFidtZ
-         eNqJqswIxFXs6B53kXAWhdu6SLFNfUA9CkGMG2GXJOtAVuxGJrsZYP8eQAi9IhHFzKnL
-         dy3CTbDuLZuj5l9HPhEqtc7e4z771GALuV1yGJAs5ZkJDEM20dv9QTcrd5mpZUZpZoFh
-         odDg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=5pcAr97YiLV/9IyrI9j1/5CtMoVN2KluZ+rMrwDq4J4=;
+        b=Wne8NyCuUUknhJgqVda5fpdNmT5TAGQWSyXwFGKwemBOIAPHY5LMTkUx+DKm0Yj0zx
+         zs+V5VuqjbHoc9R4TLnxhe6+Lp6+KuIy/QXvwdPIjX5RnwmfGXyaandHVZis2v3Z7L6b
+         jl9eJ9u1sTdKU6bRiVRGOgoIxIzpMyAYhi7P8dZRb6PuAnDABv1xp13UOUmg5dsKGD/D
+         Sjub1OjbfU4rXZgNpETgymoAGPI7ufiROm83/jw+uPysbxOxejFjewiTSZ7IDK7HjTeJ
+         PfiN1m75gwPmL8cQ+m6Cp4yfGkcz3n9gX0v+hXS06LUcTKhu7a8Zebc/lHTuRMURNfOe
+         S+4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=SkVw2XH3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=unwm0rIw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si18136774ybt.404.2021.02.15.13.59.01
+        by mx.google.com with ESMTPS id x63si20718743ybc.14.2021.02.15.16.21.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Feb 2021 13:59:01 -0800 (PST)
+        Mon, 15 Feb 2021 16:21:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=SkVw2XH3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35318 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=unwm0rIw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57618 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBltV-00070F-64
-	for alex.bennee@linaro.org; Mon, 15 Feb 2021 16:59:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57678)
+	id 1lBo6v-0008Vk-NY
+	for alex.bennee@linaro.org; Mon, 15 Feb 2021 19:21:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lBlt9-0006Ow-6Z
- for qemu-arm@nongnu.org; Mon, 15 Feb 2021 16:58:39 -0500
-Received: from mail-io1-xd30.google.com ([2607:f8b0:4864:20::d30]:47040)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lBo6j-0008UZ-Sz
+ for qemu-arm@nongnu.org; Mon, 15 Feb 2021 19:20:49 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:41845)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lBlt7-0007pQ-BI
- for qemu-arm@nongnu.org; Mon, 15 Feb 2021 16:58:38 -0500
-Received: by mail-io1-xd30.google.com with SMTP id u8so8173622ior.13
- for <qemu-arm@nongnu.org>; Mon, 15 Feb 2021 13:58:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=AY0JUC3KB08rT1AI068cSkWI8i34wh3yvaVkhXHWL8Y=;
- b=SkVw2XH31K6ikyCvmF1DNjGgisZlZkiZC0mXlauRtKs/w1ONH96w0+LL4wff9QMz+V
- cvg/Qmk1/K37GYxVY/LtNpOh4x+6OWOIa7be1v+xaHTBK9ogo9SaQj1h6noNzjOzR4OM
- qV+QhvgYGRdxuYMbwyDOCB6UcguCidjS54kp5bp4Qa9WPTuPY6aOcHcpWY1KipaKdVd6
- JrFXumtNPc8ntijlNs6+TcTRC71VzfJBoxwUxJoV4+Dnhh/Oeuur+uozBpEgugUdI+OF
- XYMR2IJkHiZQAzXGOpSmAL65fuzxx0pn5WbY2703Kc20XEHWdAscW5qV2ThMtiXQDiKb
- oi6w==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lBo6h-0000YX-Pa
+ for qemu-arm@nongnu.org; Mon, 15 Feb 2021 19:20:49 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id a9so2447651plh.8
+ for <qemu-arm@nongnu.org>; Mon, 15 Feb 2021 16:20:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=5pcAr97YiLV/9IyrI9j1/5CtMoVN2KluZ+rMrwDq4J4=;
+ b=unwm0rIwBrW5m6ecgs1sMda6mGnGR9xMO8RWDScYd5PZ32nuu1mtEXhLLQ2cTjNevd
+ gAbBBz8PAWcByeLqHKgAqwYqbXX1u8fsit9rJvMb1IzpYQ2qi1iYd3XT2XPLULx7saBO
+ 0O+YwYODBsoKeJYa2cas9qfkvJ/DBj/VoZD6LDWZJj7reLtyv9dRPMqDBps55cMamvtW
+ YMIpXUmSfQS4cLqlqMfkZCdma1ZCMvs5Keaw33ISbGkdC/lVxzC91zsr2Igzg6EXvavS
+ uy0GYgJvm16rp7ON2b7epcfr3ZKgxujHhNsafQA+e9wtXhX3ea9zRTkTJRX6k1i7ikP8
+ vnww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=AY0JUC3KB08rT1AI068cSkWI8i34wh3yvaVkhXHWL8Y=;
- b=gpytGlMsj83FjYMm+jWl7NUlkE08QV6PAzgEbuODoSHNnY0gC/DuAacD22xPIU5cpI
- /ZaLeWxPJh90EqycJnAhKRXBN2Ls0VS9+S8ro2aafpNx/rydr7YKXbMr+0x2ZKwQ0+zx
- GMmKMOJPkLeHg1uvDWpRNlLRZmYhsFljXSVHeCpOUT7WzgFdBGiWrATv64qFn7hqh4hX
- qeLtMkmr3M+FTVdRNGLCH0vHG+PWrU47CuyJhgbpvJ7i+XL0mksevESiFZWg5m7Cg5j9
- ops24Yc0QKQur8vGpUnvtLt6MgM9Naq8w7V3m0jlXOFrM/U4D2jHbM5nLzFHIwi1UuvC
- EYbg==
-X-Gm-Message-State: AOAM5325wk2cyU4RwlWT7areB6jX9Y2oD3UvGJBWa0k4NQXf1/2USShs
- Wuymn5J2QLWHax4vJ2KYwcjMOQ2xCJVl8LshP+x7wT9xfSi/qhu4WsaPqG3mkKT0UuYSbhdfhwO
- w/Wz5v42sv6/CbTJtffCXMYmc8pl3PrF/O/QLsaLyCvQNTt8AC3Wpqo6pFFp6to/inKVC
-X-Received: by 2002:a6b:d207:: with SMTP id q7mr14444206iob.42.1613426316126; 
- Mon, 15 Feb 2021 13:58:36 -0800 (PST)
-Received: from cube.int.bluestop.org (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id j12sm9812254ila.75.2021.02.15.13.58.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Feb 2021 13:58:35 -0800 (PST)
-From: Rebecca Cran <rebecca@nuviainc.com>
-To: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 3/3] target/arm: Set ID_PFR2.SSBS to 1 for "max" 32-bit CPU
-Date: Mon, 15 Feb 2021 14:58:19 -0700
-Message-Id: <20210215215819.1142-4-rebecca@nuviainc.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210215215819.1142-1-rebecca@nuviainc.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=5pcAr97YiLV/9IyrI9j1/5CtMoVN2KluZ+rMrwDq4J4=;
+ b=V0HlaGOglLk8ou3LYr3Q8LhsMtPgCFeaCXIuRCXnSnEWneDXVQK0EhSYO8mlkePgQL
+ xYNCdGH3jFq6AhjdQtY2iDTEY8cdr47+FHr1kR5TgMVkNjAHiVLtBpdV09NZgNRwyWwO
+ JcpwJdWYBBXmAj6EoDimk9vK+CaeAuC8179ByKwqddVHw7WAQQBS0ai919/wmnbEi9B1
+ GYO/TjrYCTqWzKx2p7mWC8qua66TB4sUqVWdikhW3oIIpMWnG5RVJfcbUAfQE5xFWQ05
+ DalZbj0c5AHViZ+N7DzmdDwLosfRR/omEU/oz74Eiwy4RK1e67+NiaqcOk1ecbcr7aeS
+ oxSA==
+X-Gm-Message-State: AOAM531bsuLyxly+DJU9rPtYhC8+2kSWzlpO0TQhvPrwd5PoaGucTf0S
+ 0m+gGWqiQykfLMDlNCkQ/dKcPw==
+X-Received: by 2002:a17:90a:4287:: with SMTP id
+ p7mr1360032pjg.226.1613434846250; 
+ Mon, 15 Feb 2021 16:20:46 -0800 (PST)
+Received: from [192.168.1.11] (174-21-84-25.tukw.qwest.net. [174.21.84.25])
+ by smtp.gmail.com with ESMTPSA id u17sm20784716pgh.72.2021.02.15.16.20.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Feb 2021 16:20:45 -0800 (PST)
+Subject: Re: [PATCH 3/3] target/arm: Set ID_PFR2.SSBS to 1 for "max" 32-bit CPU
+To: Rebecca Cran <rebecca@nuviainc.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20210215215819.1142-1-rebecca@nuviainc.com>
+ <20210215215819.1142-4-rebecca@nuviainc.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ba93d58d-c835-7301-057f-89789a2fc682@linaro.org>
+Date: Mon, 15 Feb 2021 16:20:43 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d30;
- envelope-from=rebecca@nuviainc.com; helo=mail-io1-xd30.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20210215215819.1142-4-rebecca@nuviainc.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,33 +122,20 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rebecca Cran <rebecca@nuviainc.com>, qemu-devel@nongnu.org
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NT644VUJ+fpp
+X-TUID: SZEEPGI9hj2A
 
-Enable FEAT_SSBS for the "max" 32-bit CPU.
+On 2/15/21 1:58 PM, Rebecca Cran wrote:
+> Enable FEAT_SSBS for the "max" 32-bit CPU.
+> 
+> Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
+> ---
+>  target/arm/cpu.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
----
- target/arm/cpu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5cf6c056c50f..88a6b183d325 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2206,6 +2206,10 @@ static void arm_max_initfn(Object *obj)
-         t = cpu->isar.id_pfr0;
-         t = FIELD_DP32(t, ID_PFR0, DIT, 1);
-         cpu->isar.id_pfr0 = t;
-+
-+        t = cpu->isar.id_pfr2;
-+        t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
-+        cpu->isar.id_mfr2 = t;
-     }
- #endif
- }
--- 
-2.26.2
+r~
 

@@ -1,309 +1,380 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1623928lfc;
-        Wed, 10 Feb 2021 12:27:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwbK0KFiz5oww+ajX16rF6/efHo9XNNX/DEl0tvchm0ivO/vwENRBPJHuA3yMby0rs2fV4w
-X-Received: by 2002:a25:d60f:: with SMTP id n15mr6769078ybg.220.1612988824263;
-        Wed, 10 Feb 2021 12:27:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612988824; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp7622968lfc;
+        Wed, 17 Feb 2021 12:57:12 -0800 (PST)
+X-Received: by 2002:a92:6b11:: with SMTP id g17mr786999ilc.163.1613595431938;
+        Wed, 17 Feb 2021 12:57:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613595431; cv=none;
         d=google.com; s=arc-20160816;
-        b=EUW6gv8fSbM3xRrx0xf2czPAjzxpy0AAFLtt7SdNZkZrcq3vVkLAvwibJNIgtzIv8p
-         +SC3bJUVjMSAiMOSDnvn3gp9/Wg/ipgbukPi4WYKe6XmTejpVa6QpTEhyhDuCQiVu30g
-         AyAAA2cQnLCXVAwwIvRBNTh4snFffj4Jq6ASbLn0t0XchLEe6+ZX0TXmTy2y/29QXPvz
-         dbssHy5MWn7Ap9Y3KgTUa43jFLzsfV6rbS6HzxNuBRUvQKkO1I3Ybpr9VDnOydihg9nX
-         v6EyUu8GFn8cmBOXTdEJjoh6J8JTPHWw+dVqpaAr8gj9HoxyywGOWlMnBoY8M0MBk7K0
-         0AFw==
+        b=0Q4ZQcJld9fFxQ2EOJ9/I7/EGyqrVeThgeR0ZJA8FwfWMbTbZUwPZxirBLZFGmHX4Z
+         K51eTyjIBCPq23nJvSyFLLzaSZkT4ASD0wZYHB4VvN3LPXSwddpVtd5vqolgjEAB18De
+         hSmZzvbZxn2Vf7SrKzUw54XdcM8UoHSqohlmo0581AFbgAWY2vffRnLpyP869swCf67X
+         uHFi4KNhqPvsQzgLpHNkJBMNbhmEOnvmoXLG0m5gqaXlifbKux3gk7X3EdzLwm3x2lR/
+         VErt8pU73dbAYJjl69ss8NdLck8Qrlu9sAyZ8fqJlRauKy8bPq8Q9jDXLLLFxXSuuzJC
+         NIIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=V28eZbJ8yy9Fc+52BiN8k3moE8pllQE8dv3HilwKYI4=;
-        b=UUm8qM+fvv6Y/d4RGs9+s6ikIZvUHkpy/a98xTeXrsF2cwJGoaQsDafHuGCD3B9iSC
-         bKYBGS4CZoWBmMtjh/MuPQn529Q/NwAw91X8eEnuG53MlVuYleeQXQ19Ag5/kx7Qqqyk
-         OQLDa75S+riePbkP8iKa0jCl+goHEKCRaBlYwCxSyMbILgs+goFLuxDJiW2epV2tUytR
-         mVGFTJKGaDzriX8tNwyshpl7y8N9C6u85sVUp6ORjp9mA6gmIe2GXMLogEnA7qvQWvQX
-         JxOyHyMwdEXoZxmTee8kYRTj+VH4CPVRcTDgcFZswwlhC57kiiLZeG6cCtbQYh8S8lp5
-         OExA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=x6b99QgLhF1+Xc4LPO8MubJMGCwTcVTdFVRwq42T1D4=;
+        b=vsJa/zvRKG7Qady/m+x1g3yOFfwLBlswIQDuWK8kL71kTabcsPdEPi+76v40CadOYQ
+         vzoKWML/bza0oj50sLf6g/J1Z0f1Vt5O/LPEbX8DVyGOSFogLHhwZpMx7y6L6Am9dbcY
+         WpNoRqW3qgiKl2tBa+s7aaXv65PmOcJ4Oa2FKofdDE1CdcdA58xPdrcND1RkB8fX1b5Q
+         XryoHbJBuvT/E//Wfa6Q7JO9xP84uTevO3joByjmIrPsE9dC25PMzarWIFKR3NMENa0U
+         MuOu9CsmvMCU0Wjj7qiXSmgiAGaAqqcXaY2iVCXksDUSqpLVIxzoyYVIxPyCLFga7c4I
+         mQDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=iKX6x0k4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15si2650666ybg.443.2021.02.10.12.27.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 12:27:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="D7VO/wBt";
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x13sor1416855ilv.27.2021.02.17.12.57.11
+        (Google Transport Security);
+        Wed, 17 Feb 2021 12:57:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=iKX6x0k4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:38344 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9w4l-0008BW-Lv
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 15:27:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35492)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1l9w39-0007Yf-IE
- for qemu-devel@nongnu.org; Wed, 10 Feb 2021 15:25:24 -0500
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:44409)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1l9w37-0002NU-Bt
- for qemu-devel@nongnu.org; Wed, 10 Feb 2021 15:25:23 -0500
-Received: by mail-io1-xd34.google.com with SMTP id p132so3308769iod.11
- for <qemu-devel@nongnu.org>; Wed, 10 Feb 2021 12:25:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=V28eZbJ8yy9Fc+52BiN8k3moE8pllQE8dv3HilwKYI4=;
- b=iKX6x0k4PuP6daxyCCCI/wsO1v8Way8oxZLZNrivB0R66x7VGCRuGwhb0hJ8wZqGUZ
- VIZhl6QRR6nipYCqapkMdP8b+wsbTCp8WKtDoKma5aN3F2qrN/i3DDnchyocLwn+RVvZ
- f17P3EK+MEaM0D7ELmOOp0k+WTH8PnauGjpIDJ9ImRcujwTy4QUP0juHvgLWtLkvPfZk
- BX1FvbWG/N3sZp0GWNIdX7BMM9c/xc2WXjF1X2cjHbTLdNqibFJrtGllq+qo44RbrFWM
- W2VbvgqYvU9zG6SmK4kvMfr/jSHLCeL2U3TozXD3q+1g+tp2ISnXSjrKZRWvBnggEojD
- H6UQ==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="D7VO/wBt";
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=x6b99QgLhF1+Xc4LPO8MubJMGCwTcVTdFVRwq42T1D4=;
+        b=D7VO/wBtkTlv0wky+Gsxks6niQAhrc21amx9clr09eoAwGK2wGGb7Xkc2bZl13RK4t
+         2ocRsasXwL4U+iz2CAEY14mpwHna9hJMhAVj2EXK15aUPb4/kl/k2RLiPwA1clMyxbBd
+         9TJaQzMn0ir6LJcaAPj/KxOy3zXVFcZaroZVvWh6Mw+O7QZKvHZUtQDWYSB0jpiuzldB
+         7pYC3Y/P+biBQe/fSuEpAF9Iw2m/fC73C9fQqd1yBj8PibgZpfKE2yn4fRTR+3UyTrRs
+         1mI2KmJkicxciRmnshcfo9Qc5vpTJj57vVoA0tzleVv7fAXgO0srlxTiEVNzfZgupcdl
+         nWnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=V28eZbJ8yy9Fc+52BiN8k3moE8pllQE8dv3HilwKYI4=;
- b=X+I3fiBlLSkT8JDWwLqhaSqdxfNLA9XKiMRQoYeRdHDBAWD1TBqlxfmXhwDsAX35Od
- gSczKAFFa+g5vwXFxTqyxdSgjElgyi6ooqdBeKDI7dCWxM+AqSyC1iZHbpjo4CIxM2B+
- wOB7qglyGNNskHU549DOm6ToazGqyrtsqyLf8LQOh1PjeJ7xZDGFRx/nM8uTDDdFdDhT
- R637DVwfSSOOxNLlW+7BX1VAuOQ+w9GI7Vs+GAu6Z26xVrnNEs6qqAxlnSQqGC6RZlMg
- BnSilj/E+9OD1VaicAnjVbNWz2V7LgoEbkwFDxZsd7TQdHqN0XyLJVHbkiX1xSSZHjT6
- L9XA==
-X-Gm-Message-State: AOAM531PlIyGmnWyu9Aj/f55mf7dQDObaOF7IH2Rj5uLl4b+w69Hfu9B
- /BXlBrCw+WTUJlN9vKw3lVPQJozGj6Gr8Avag8kHKg==
-X-Received: by 2002:a02:708a:: with SMTP id f132mr5293359jac.62.1612988718699; 
- Wed, 10 Feb 2021 12:25:18 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=x6b99QgLhF1+Xc4LPO8MubJMGCwTcVTdFVRwq42T1D4=;
+        b=U3AMiuJjF602E7aenzYjhYsSwutk4Xu2bucbx8GRplwe5u3WYe5JeZV0Dxjkb7rmB7
+         KEAHT2M2MlllU1g5CKswgiPcMhoVmzJNnj+Sa5dIe7fS16dcboX0UQMSTKXSkaPWUDM5
+         rEL7qALKEPmr05emqVyH1jTmW0ncXlDn9sF6FQizW2fBm6IPFAsXS7nmvT01LoDTIS48
+         0d47OeEbDcpu9WzP978lWlnkfjhkiuLe87B3AyRBcZWUiHk1noliTbFlcQdPvPrsCAIB
+         UeewA/KeGoFY3+IKwuEXzcsTj/6l59iMSPqaOMEglw6fFceXq53ohDjJUlMYjuwNwp55
+         BLxg==
+X-Gm-Message-State: AOAM533ztyQCRn3AjD2EqkKtjAfYyfBiGGWMPXPoCbjS5X6RPfkh+Y+n
+	Gn5QHUu/XmvhQFDR0W8LDYjJeMYCLT6Mglz4PHc=
+X-Google-Smtp-Source: ABdhPJyQ/Wv28MwIdZkWVyFnWY/PiKFoymJYMixZ4HagA0xLx/47wc3bCymJK2xi4tHxy2doQHJUXhMY32vb5z7Oje8=
+X-Received: by 2002:a05:6e02:1544:: with SMTP id j4mr784590ilu.67.1613595431570;
+ Wed, 17 Feb 2021 12:57:11 -0800 (PST)
 MIME-Version: 1.0
-References: <20210120224444.71840-1-agraf@csgraf.de>
- <20210120224444.71840-10-agraf@csgraf.de>
- <CAFEAcA_KFzEERYJ9d8YbPjhCv1rt9O9w567xP=ECqixLie5nmQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_KFzEERYJ9d8YbPjhCv1rt9O9w567xP=ECqixLie5nmQ@mail.gmail.com>
-From: Peter Collingbourne <pcc@google.com>
-Date: Wed, 10 Feb 2021 12:25:07 -0800
-Message-ID: <CAMn1gO4p4CDH7qVhNnTpOeo_q98iYBHgS2LLSe26q-3SQJX1Xg@mail.gmail.com>
-Subject: Re: [PATCH v6 09/11] arm/hvf: Add a WFI handler
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Alexander Graf <agraf@csgraf.de>, QEMU Developers <qemu-devel@nongnu.org>, 
- qemu-arm <qemu-arm@nongnu.org>, Cameron Esfahani <dirty@apple.com>, 
- Roman Bolshakov <r.bolshakov@yadro.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, Frank Yang <lfy@google.com>
+References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
+ <e2b0052c-7dd3-36a2-64b7-3d56c23d0a2d@redhat.com> <YCuVC4T+TFjuskhF@redhat.com>
+In-Reply-To: <YCuVC4T+TFjuskhF@redhat.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 17 Feb 2021 21:57:00 +0100
+Message-ID: <CAPan3Wo+c+4F82cM+UDQu+JH9eQdqL2gjnikXmg3PZKTXCP_jg@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Allwinner H3 fixes for EMAC and acceptance tests
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, peter.maydell@linaro.org, 
+	Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org, 
+	f4bug@amsat.org, b.galvani@gmail.com, qemu-arm@nongnu.org, 
+	Pavel.Dovgaluk@ispras.ru, crosa@redhat.com
+Content-Type: multipart/alternative; boundary="00000000000082934305bb8e7692"
+X-TUID: grwrUva29Zzq
+
+--00000000000082934305bb8e7692
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
- envelope-from=pcc@google.com; helo=mail-io1-xd34.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IMVcpMzHhert
+Content-Transfer-Encoding: quoted-printable
 
-On Thu, Jan 28, 2021 at 8:25 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+Hi Daniel, Philippe,
+
+
+
+
+Op di 16 feb. 2021 10:49 schreef Daniel P. Berrang=C3=A9 <berrange@redhat.c=
+om>:
+
+> On Fri, Feb 12, 2021 at 03:10:00PM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > Hi Niek and QEMU community,
+> >
+> > On 2/11/21 11:00 PM, Niek Linnenbank wrote:
+> > > The following are maintenance patches for the Allwinner H3. The first
+> patch
+> > > is a proposal to relocate the binary artifacts of the acceptance test=
+s
+> away
+> > > from the apt.armbian.com domain. In the past we had problems with
+> artifacts being
+> > > removed, and now the recently added Armbian 20.08.1 image has been
+> removed as well:
+> > >
+> > > $ wget
+> https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bion=
+ic_current_5.8.5.img.xz
+> > > Connecting to dl.armbian.com (dl.armbian.com)|2605:7900:20::5|:443...
+> connected.
+> > > ...
+> > > HTTP request sent, awaiting response... 404 Not Found
+> > > 2021-02-11 22:34:45 ERROR 404: Not Found.
+> > >
+> > > I've now added the artifacts to a server maintained by me. The machin=
+e
+> has a stable
+> > > uptime of several years, ~100Mbit bandwidth and plenty of available
+> storage.
+> > > Also for other artifacts if needed. I'm open to discuss if there is a
+> proposal
+> > > for a better location for these artifacts or a more generic qemu
+> location.
+> >
+> > Thanks for trying to fix this long standing problem.
+> >
+> > While this works in your case, this doesn't scale to the community,
+> > as not all contributors have access to such hardware and bandwidth /
+> > storage.
+> >
+> > While your first patch is useful in showing where the artifacts are
+> > stored doesn't matter - as long as we use cryptographic hashes - I
+> > think it is a step in the wrong direction, so I am not keen on
+> > accepting it.
+> >
+> > My personal view is that any contributor should have the same
+> > possibilities to add tests to the project. Now I am also open to
+> > discuss with the others :) I might be proven wrong, and it could
+> > be better to rely on good willing contributors rather than having
+> > nothing useful at all.
 >
-> On Wed, 20 Jan 2021 at 22:44, Alexander Graf <agraf@csgraf.de> wrote:
-> >
-> > From: Peter Collingbourne <pcc@google.com>
-> >
-> > Sleep on WFI until the VTIMER is due but allow ourselves to be woken
-> > up on IPI.
-> >
-> > In this implementation IPI is blocked on the CPU thread at startup and
-> > pselect() is used to atomically unblock the signal and begin sleeping.
-> > The signal is sent unconditionally so there's no need to worry about
-> > races between actually sleeping and the "we think we're sleeping"
-> > state. It may lead to an extra wakeup but that's better than missing
-> > it entirely.
-> >
-> > Signed-off-by: Peter Collingbourne <pcc@google.com>
-> > [agraf: Remove unused 'set' variable, always advance PC on WFX trap]
-> > Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> > Acked-by: Roman Bolshakov <r.bolshakov@yadro.com>
-> > ---
-> >  accel/hvf/hvf-cpus.c     |  5 ++--
-> >  include/sysemu/hvf_int.h |  1 +
-> >  target/arm/hvf/hvf.c     | 56 ++++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 59 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/accel/hvf/hvf-cpus.c b/accel/hvf/hvf-cpus.c
-> > index 6d70ee742e..abef6a58f7 100644
-> > --- a/accel/hvf/hvf-cpus.c
-> > +++ b/accel/hvf/hvf-cpus.c
-> > @@ -322,15 +322,14 @@ static int hvf_init_vcpu(CPUState *cpu)
-> >      cpu->hvf = g_malloc0(sizeof(*cpu->hvf));
-> >
-> >      /* init cpu signals */
-> > -    sigset_t set;
-> >      struct sigaction sigact;
-> >
-> >      memset(&sigact, 0, sizeof(sigact));
-> >      sigact.sa_handler = dummy_signal;
-> >      sigaction(SIG_IPI, &sigact, NULL);
-> >
-> > -    pthread_sigmask(SIG_BLOCK, NULL, &set);
-> > -    sigdelset(&set, SIG_IPI);
-> > +    pthread_sigmask(SIG_BLOCK, NULL, &cpu->hvf->unblock_ipi_mask);
-> > +    sigdelset(&cpu->hvf->unblock_ipi_mask, SIG_IPI);
-> >
-> >  #ifdef __aarch64__
-> >      r = hv_vcpu_create(&cpu->hvf->fd, (hv_vcpu_exit_t **)&cpu->hvf->exit, NULL);
-> > diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-> > index c2ac6c8f97..7a397fe85a 100644
-> > --- a/include/sysemu/hvf_int.h
-> > +++ b/include/sysemu/hvf_int.h
-> > @@ -51,6 +51,7 @@ extern HVFState *hvf_state;
-> >  struct hvf_vcpu_state {
-> >      uint64_t fd;
-> >      void *exit;
-> > +    sigset_t unblock_ipi_mask;
-> >  };
-> >
-> >  void assert_hvf_ok(hv_return_t ret);
-> > diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> > index 8f18efe856..f0850ab14a 100644
-> > --- a/target/arm/hvf/hvf.c
-> > +++ b/target/arm/hvf/hvf.c
-> > @@ -2,6 +2,7 @@
-> >   * QEMU Hypervisor.framework support for Apple Silicon
-> >
-> >   * Copyright 2020 Alexander Graf <agraf@csgraf.de>
-> > + * Copyright 2020 Google LLC
-> >   *
-> >   * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> >   * See the COPYING file in the top-level directory.
-> > @@ -17,6 +18,8 @@
-> >  #include "sysemu/hvf_int.h"
-> >  #include "sysemu/hw_accel.h"
-> >
-> > +#include <mach/mach_time.h>
-> > +
-> >  #include "exec/address-spaces.h"
-> >  #include "hw/irq.h"
-> >  #include "qemu/main-loop.h"
-> > @@ -411,6 +414,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-> >
-> >  void hvf_kick_vcpu_thread(CPUState *cpu)
-> >  {
-> > +    cpus_kick_thread(cpu);
-> >      hv_vcpus_exit(&cpu->hvf->fd, 1);
-> >  }
-> >
-> > @@ -466,6 +470,18 @@ static int hvf_inject_interrupts(CPUState *cpu)
-> >      return 0;
-> >  }
-> >
-> > +static void hvf_wait_for_ipi(CPUState *cpu, struct timespec *ts)
-> > +{
-> > +    /*
-> > +     * Use pselect to sleep so that other threads can IPI us while we're
-> > +     * sleeping.
-> > +     */
-> > +    qatomic_mb_set(&cpu->thread_kicked, false);
-> > +    qemu_mutex_unlock_iothread();
-> > +    pselect(0, 0, 0, 0, ts, &cpu->hvf->unblock_ipi_mask);
-> > +    qemu_mutex_lock_iothread();
-> > +}
+> There aren't many options here
 >
-> It seems a bit odd that this is specific to Arm hvf.
-> Doesn't x86 hvf need "pause until interrupt" functionality ?
-
-I'm not very familiar with x86 HVF (and I don't have an x86 Mac to
-test with), but my reading of the x86 HVF code is that there appear to
-be no exits that put the system to sleep (not even MWAIT which I think
-is the x86 equivalent of WFI -- the code just appears to busy loop). I
-think that implies that either we actually busy loop on x86 (seems
-unlikely to me since I guess someone would have noticed by now) or
-MWAIT does not actually result in a VM exit, and HVF itself goes to
-sleep inside hv_vcpu_run(), unlike ARM HVF where WFI results in an
-exit (and immediate re-entering would otherwise busy loop).
-
-> > +
-> >  int hvf_vcpu_exec(CPUState *cpu)
-> >  {
-> >      ARMCPU *arm_cpu = ARM_CPU(cpu);
-> > @@ -577,6 +593,46 @@ int hvf_vcpu_exec(CPUState *cpu)
-> >          }
-> >          case EC_WFX_TRAP:
-> >              advance_pc = true;
-> > +            if (!(syndrome & WFX_IS_WFE) && !(cpu->interrupt_request &
-> > +                (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ))) {
-> > +
-> > +                uint64_t ctl;
-> > +                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CTL_EL0,
-> > +                                        &ctl);
-> > +                assert_hvf_ok(r);
-> > +
-> > +                if (!(ctl & 1) || (ctl & 2)) {
-> > +                    /* Timer disabled or masked, just wait for an IPI. */
-> > +                    hvf_wait_for_ipi(cpu, NULL);
-> > +                    break;
-> > +                }
-> > +
-> > +                uint64_t cval;
-> > +                r = hv_vcpu_get_sys_reg(cpu->hvf->fd, HV_SYS_REG_CNTV_CVAL_EL0,
-> > +                                        &cval);
-> > +                assert_hvf_ok(r);
-> > +
-> > +                int64_t ticks_to_sleep = cval - mach_absolute_time();
-> > +                if (ticks_to_sleep < 0) {
-> > +                    break;
-> > +                }
-> > +
-> > +                uint64_t seconds = ticks_to_sleep / arm_cpu->gt_cntfrq_hz;
-> > +                uint64_t nanos =
-> > +                    (ticks_to_sleep - arm_cpu->gt_cntfrq_hz * seconds) *
-> > +                    1000000000 / arm_cpu->gt_cntfrq_hz;
-> > +
-> > +                /*
-> > +                 * Don't sleep for less than 2ms. This is believed to improve
-> > +                 * latency of message passing workloads.
-> > +                 */
+>  1. Rely on a vendor to provide stable download URLs for images
 >
-> Believed by who ?
-
-Alexander asked me to add this [1], so I'll defer to him. As I
-mentioned on the thread I personally would prefer not to have this
-logic without data specifically collected on the M1, but I don't have
-a strong opinion.
-
-> > +                if (!seconds && nanos < 2000000) {
-> > +                    break;
-> > +                }
-> > +
-> > +                struct timespec ts = { seconds, nanos };
-> > +                hvf_wait_for_ipi(cpu, &ts);
-> > +            }
+>  2. QEMU host all images we use in testing
 >
-> Why doesn't the timer timeout manifest as an IPI ? (Put another way,
-> why is the timer interrupt special?)
+>  3. Contributor finds some site to upload images to
+>
+>
+> For the armbian images we rely on (1), but the URLs didn't turn out to be
+> stable. In fact no OS vendor seems to have guaranteed stable URLs forever=
+,
+> regardless of distro, though most eventually do have an archive site that
+> has good life. Armbian was an exception in this respect IIUC.
+>
+> (2) would solve the long term stability problem as QEMU would be in full
+> control, and could open it up for any images we need. The big challenge
+> there is that QEMU now owns the license compliance problem. Merely
+> uploading
+> binary images/packages without the corresponding source is generally a
+> license
+> violation. QEMU could provide hosting, but we need to be clear about the
+> fact
+> that we now own the license compliance problem ourselves. Many sites
+> hosting
+> images simply ignore this problem, but that doesn't make it right.
+>
+>
+> This series is proposing (3), with a site the contributor happens to
+> control
+> themselves, but using a free 3rd party hosting site is no different reall=
+y.
+> Again there is a the same need for license compliance, but it is now the
+> responsibility of the user, not QEMU project.
+>
+> In this http://www.freenos.org/pub/qemu/cubieboard/ site I can't even see
+> a
+> directory listing, so even if corresponding source does exist in this
+> server,
+> I can't find it.
+>
+> The isn't really a problem for QEMU CI to consume the images, but as a fr=
+ee
+> software developer I don't like encouraging practices that are not
+> compliant
+> with licensing reuqirement.
+>
+> It is an open question whether the (3) is really better than (1) in terms
+> of URL stability long term, especially if running off a user's personal
+> server.
+>
 
-Timer timeouts result in an IPI (via HV_EXIT_REASON_VTIMER_ACTIVATED)
-if they become due while in hv_vcpu_run(). But at this point we are
-not in hv_vcpu_run() (due to the aforementioned difference in wait
-behavior between x86 and ARM) so we need to "manually" wait for the
-timer to become due, re-enter the guest, let it exit with
-HV_EXIT_REASON_VTIMER_ACTIVATED and then trigger the IPI.
+I understand your concerns. My goal here was to be able to re-activate the
+orangepi tests, so we can capture bugs early on. So what I can do instead
+is:
 
-Peter
+  - update the patch to use github to store the artifacts, and their
+licenses (other tests also use github)
+  - or change the patch to use updated armbian links that work (for now)
 
-[1] https://lists.gnu.org/archive/html/qemu-arm/2020-12/msg00056.html
+If we can agree on either of these solutions, so the orangepi tests can be
+re-activated, that would be great.
+
+Kind regards,
+Niek
+
+
+
+> Regards,
+> Daniel
+> --
+> |: https://berrange.com      -o-
+> https://www.flickr.com/photos/dberrange :|
+> |: https://libvirt.org         -o-
+> https://fstop138.berrange.com :|
+> |: https://entangle-photo.org    -o-
+> https://www.instagram.com/dberrange :|
+>
+>
+
+--00000000000082934305bb8e7692
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div>Hi Daniel, Philippe,<div dir=3D"auto"><br></div><div=
+ dir=3D"auto"><br></div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
+ class=3D"gmail_attr">Op di 16 feb. 2021 10:49 schreef Daniel P. Berrang=C3=
+=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redhat.com</a>&gt;:=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
+er-left:1px #ccc solid;padding-left:1ex">On Fri, Feb 12, 2021 at 03:10:00PM=
+ +0100, Philippe Mathieu-Daud=C3=A9 wrote:<br>
+&gt; Hi Niek and QEMU community,<br>
+&gt; <br>
+&gt; On 2/11/21 11:00 PM, Niek Linnenbank wrote:<br>
+&gt; &gt; The following are maintenance patches for the Allwinner H3. The f=
+irst patch<br>
+&gt; &gt; is a proposal to relocate the binary artifacts of the acceptance =
+tests away<br>
+&gt; &gt; from the <a href=3D"http://apt.armbian.com" rel=3D"noreferrer nor=
+eferrer" target=3D"_blank">apt.armbian.com</a> domain. In the past we had p=
+roblems with artifacts being<br>
+&gt; &gt; removed, and now the recently added Armbian 20.08.1 image has bee=
+n removed as well:<br>
+&gt; &gt; <br>
+&gt; &gt; $ wget <a href=3D"https://dl.armbian.com/orangepipc/archive/Armbi=
+an_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz" rel=3D"noreferrer norefe=
+rrer" target=3D"_blank">https://dl.armbian.com/orangepipc/archive/Armbian_2=
+0.08.1_Orangepipc_bionic_current_5.8.5.img.xz</a><br>
+&gt; &gt; Connecting to <a href=3D"http://dl.armbian.com" rel=3D"noreferrer=
+ noreferrer" target=3D"_blank">dl.armbian.com</a> (<a href=3D"http://dl.arm=
+bian.com" rel=3D"noreferrer noreferrer" target=3D"_blank">dl.armbian.com</a=
+>)|2605:7900:20::5|:443... connected.<br>
+&gt; &gt; ...<br>
+&gt; &gt; HTTP request sent, awaiting response... 404 Not Found<br>
+&gt; &gt; 2021-02-11 22:34:45 ERROR 404: Not Found.<br>
+&gt; &gt; <br>
+&gt; &gt; I&#39;ve now added the artifacts to a server maintained by me. Th=
+e machine has a stable<br>
+&gt; &gt; uptime of several years, ~100Mbit bandwidth and plenty of availab=
+le storage.<br>
+&gt; &gt; Also for other artifacts if needed. I&#39;m open to discuss if th=
+ere is a proposal<br>
+&gt; &gt; for a better location for these artifacts or a more generic qemu =
+location.<br>
+&gt; <br>
+&gt; Thanks for trying to fix this long standing problem.<br>
+&gt; <br>
+&gt; While this works in your case, this doesn&#39;t scale to the community=
+,<br>
+&gt; as not all contributors have access to such hardware and bandwidth /<b=
+r>
+&gt; storage.<br>
+&gt; <br>
+&gt; While your first patch is useful in showing where the artifacts are<br=
+>
+&gt; stored doesn&#39;t matter - as long as we use cryptographic hashes - I=
+<br>
+&gt; think it is a step in the wrong direction, so I am not keen on<br>
+&gt; accepting it.<br>
+&gt; <br>
+&gt; My personal view is that any contributor should have the same<br>
+&gt; possibilities to add tests to the project. Now I am also open to<br>
+&gt; discuss with the others :) I might be proven wrong, and it could<br>
+&gt; be better to rely on good willing contributors rather than having<br>
+&gt; nothing useful at all.<br>
+<br>
+There aren&#39;t many options here<br>
+<br>
+=C2=A01. Rely on a vendor to provide stable download URLs for images<br>
+<br>
+=C2=A02. QEMU host all images we use in testing<br>
+<br>
+=C2=A03. Contributor finds some site to upload images to<br>
+<br>
+<br>
+For the armbian images we rely on (1), but the URLs didn&#39;t turn out to =
+be<br>
+stable. In fact no OS vendor seems to have guaranteed stable URLs forever,<=
+br>
+regardless of distro, though most eventually do have an archive site that<b=
+r>
+has good life. Armbian was an exception in this respect IIUC.<br>
+<br>
+(2) would solve the long term stability problem as QEMU would be in full<br=
+>
+control, and could open it up for any images we need. The big challenge<br>
+there is that QEMU now owns the license compliance problem. Merely uploadin=
+g<br>
+binary images/packages without the corresponding source is generally a lice=
+nse<br>
+violation. QEMU could provide hosting, but we need to be clear about the fa=
+ct<br>
+that we now own the license compliance problem ourselves. Many sites hostin=
+g<br>
+images simply ignore this problem, but that doesn&#39;t make it right.<br>
+<br>
+<br>
+This series is proposing (3), with a site the contributor happens to contro=
+l<br>
+themselves, but using a free 3rd party hosting site is no different really.=
+<br>
+Again there is a the same need for license compliance, but it is now the<br=
+>
+responsibility of the user, not QEMU project.<br>
+<br>
+In this <a href=3D"http://www.freenos.org/pub/qemu/cubieboard/" rel=3D"nore=
+ferrer noreferrer" target=3D"_blank">http://www.freenos.org/pub/qemu/cubieb=
+oard/</a> site I can&#39;t even see a<br>
+directory listing, so even if corresponding source does exist in this serve=
+r,<br>
+I can&#39;t find it. <br>
+<br>
+The isn&#39;t really a problem for QEMU CI to consume the images, but as a =
+free<br>
+software developer I don&#39;t like encouraging practices that are not comp=
+liant<br>
+with licensing reuqirement.<br>
+<br>
+It is an open question whether the (3) is really better than (1) in terms<b=
+r>
+of URL stability long term, especially if running off a user&#39;s personal=
+<br>
+server.<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D=
+"auto">I understand your concerns. My goal here was to be able to re-activa=
+te the orangepi tests, so we can capture bugs early on. So what I can do in=
+stead is:</div><div dir=3D"auto"><br></div><div dir=3D"auto">=C2=A0 - updat=
+e the patch to use github to store the artifacts, and their licenses (other=
+ tests also use github)</div><div dir=3D"auto">=C2=A0 - or change the patch=
+ to use updated armbian links that work (for now)</div><div dir=3D"auto"><b=
+r></div><div dir=3D"auto">If we can agree on either of these solutions, so =
+the orangepi tests can be re-activated, that would be great.=C2=A0</div><di=
+v dir=3D"auto"><br></div><div dir=3D"auto">Kind regards,</div><div dir=3D"a=
+uto">Niek</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div=
+ dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" =
+style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+Regards,<br>
+Daniel<br>
+-- <br>
+|: <a href=3D"https://berrange.com" rel=3D"noreferrer noreferrer" target=3D=
+"_blank">https://berrange.com</a>=C2=A0 =C2=A0 =C2=A0 -o-=C2=A0 =C2=A0 <a h=
+ref=3D"https://www.flickr.com/photos/dberrange" rel=3D"noreferrer noreferre=
+r" target=3D"_blank">https://www.flickr.com/photos/dberrange</a> :|<br>
+|: <a href=3D"https://libvirt.org" rel=3D"noreferrer noreferrer" target=3D"=
+_blank">https://libvirt.org</a>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-o-=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://fstop138.berrange.com=
+" rel=3D"noreferrer noreferrer" target=3D"_blank">https://fstop138.berrange=
+.com</a> :|<br>
+|: <a href=3D"https://entangle-photo.org" rel=3D"noreferrer noreferrer" tar=
+get=3D"_blank">https://entangle-photo.org</a>=C2=A0 =C2=A0 -o-=C2=A0 =C2=A0=
+ <a href=3D"https://www.instagram.com/dberrange" rel=3D"noreferrer noreferr=
+er" target=3D"_blank">https://www.instagram.com/dberrange</a> :|<br>
+<br>
+</blockquote></div></div></div>
+
+--00000000000082934305bb8e7692--

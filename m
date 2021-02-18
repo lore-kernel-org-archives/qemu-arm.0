@@ -1,88 +1,88 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8183623lfc;
-        Thu, 18 Feb 2021 06:05:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwCSyPWaJK9ZduOlhqp03yMd5Tvo7zk5PFoCS+DBsYheV2stgub5qoVNu+f1GZC8AzpC64w
-X-Received: by 2002:a25:3b92:: with SMTP id i140mr7000656yba.187.1613657138203;
-        Thu, 18 Feb 2021 06:05:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613657138; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8187039lfc;
+        Thu, 18 Feb 2021 06:09:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz2kdzPl4WxrmCuB0EFHZI7bwA1dCF5G3XkLoRtI285O+PWEeQrTUr29I22px5IxND+xAMY
+X-Received: by 2002:a37:9e57:: with SMTP id h84mr4348869qke.463.1613657358303;
+        Thu, 18 Feb 2021 06:09:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613657358; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yz8hCNWjnLqLmK8+TcBCZ7NKFuxj8w10ZZzqpkWoF03uyqjqmpyS+fYIKSKNoQ7ZNa
-         a9f+gcLbhAlUaI+oW78A95EYF7hhGoQ8wnh7xHa0qXRIEPvm9eZeBGkPrXshHkRxXcZX
-         /oIyqFi25PwaIAjAhim+VVfsBLopGBSuhl8wMUlRsqmDmWUlrAwruNEtxcgK+y4zowCT
-         N6x4HbdfkC3d+alls8F8iOtjpoJPmuiA+HQODMiwTIImA0sHb91YIaQSzwOOumSZWNv+
-         6TfjhzzGBVnfwvM3gSE43iX/QUE3DH5N4SI4uljOL9aumgFFRcf0Ilu2osb6+q6cEKnm
-         bBrw==
+        b=f7MwB7i6q/cPPyu1YCaMJCoYonny3SQaX2h7Vu5HpNnInhn+yvklGH1cDIbOgi+S+C
+         1zmPYE89/UoboDe1BSqWfvlHgF847w3kD6WtCDvtxSqAB1ElAWKXNU5bG2KDpRTioTMV
+         7VCxtTJR4m2GTR+bFi+uN5AjbQnkPXLzxB+HMOw3tR9q9Rnlhp8PbziRVKPcUDq3p0kA
+         CiQDBUCCy/b9bsbHaKG3vKHh+y9jBj0RtYOxdKOooFVu7tjgrp4gT33hINV9bCjNySH2
+         syN2s48OyrsqAwF1zwrHQyEB0JUXDfkveipOjnOeKhshkz50vHdYm8SdrDjCIKyrKCa7
+         0TaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LZhPdSpI9pZBAjT391xPT8LF7YI/+bKc9jvHVBXIyb8=;
-        b=ewKLqyWE8wAZbmpAjMGaDSlbIaIkLTMWe9wttGNvKHTRckgocNenPItrj23s93cTR9
-         GHSRoIPEC9lf7nnZL437BS6fFDETe9YUxW1CRUWDkNJFOrywMyZ3pjdL1gz3odNWWBbS
-         h+YIhaiCVpAatIaLcxpASiyQ3JKjBMCRjuHV+2dfLSF1AYWoTaSE+JMX8iDE8ZEjnYOH
-         yOpli4+U40q6fPwNzeuMFuWC+ZZDZau6cjVb89EIe/mMiF9eC+IOpVjr3qbe1nfsHLZh
-         RL0SPrvffmI3nRmooLRKzWpg3qYRHpo1CzTIoUVHbE3gjTDXIjX0wIYCVufv8lmzHTIi
-         AF9Q==
+        bh=14p+j/CpjB0GM1QQbxolieRgFGzs9w3/Zsqc0TRnMgI=;
+        b=K8OCR4Vox7PUToiErTUNcad/ipl4iN9NL4GpVbh1xIgmF4kbpkZvAyFILEa0nZqEXR
+         IgKzYyKI8neavBkZ29kd91QlfAA9zlXwZ2Qfa/DZuCuIPj+NmZXUG5KKibXzBaaTGC2+
+         75VSdDhnpLhDw5/U4WP58geShmGWdPwopilWhVDOnw6vYYprXT/bh0qS0a9Qx22TVmDu
+         b6K/AcUnjcpE6pqvuf85UvJXje/5w8IzfpvJOsStZdpVFUDgRdUx33ovs/6Lu7JYmmSD
+         wjpXYGLvMx1RcvSihzkv3BmcT5tSnRDBfqnKtIMXjPtcfZ7nMvWFppBoB7kw6VD8RxsL
+         a6jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dEwqySTl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx09lqDY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f23si6998433ybg.356.2021.02.18.06.05.38
+        by mx.google.com with ESMTPS id p5si887546vsg.299.2021.02.18.06.09.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Feb 2021 06:05:38 -0800 (PST)
+        Thu, 18 Feb 2021 06:09:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dEwqySTl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx09lqDY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35264 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44074 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lCjw1-0003OV-Jn
-	for alex.bennee@linaro.org; Thu, 18 Feb 2021 09:05:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52182)
+	id 1lCjzZ-0007gc-FO
+	for alex.bennee@linaro.org; Thu, 18 Feb 2021 09:09:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lCjtF-0001BJ-0j
- for qemu-arm@nongnu.org; Thu, 18 Feb 2021 09:02:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53403)
+ id 1lCjtI-0001JJ-Mk
+ for qemu-arm@nongnu.org; Thu, 18 Feb 2021 09:02:53 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23144)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lCjtB-0002jB-Hr
- for qemu-arm@nongnu.org; Thu, 18 Feb 2021 09:02:44 -0500
+ id 1lCjtB-0002j0-HO
+ for qemu-arm@nongnu.org; Thu, 18 Feb 2021 09:02:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613656960;
+ s=mimecast20190719; t=1613656958;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LZhPdSpI9pZBAjT391xPT8LF7YI/+bKc9jvHVBXIyb8=;
- b=dEwqySTl4FitJ48XM03TmcLWaV3X/NhpYeEOYOR2vG6YL0m3pip2BOdKdlaSzkE49fOELJ
- C3Qp1S5846WwpEwRyrKavPEEvUXqMQsaX7opu6nKjIHIS0HrUzKrurd9lG4MEIu3pdEjBu
- z5VVH7SWCA6ccQqSQiURyoWjhe2LfIM=
+ bh=14p+j/CpjB0GM1QQbxolieRgFGzs9w3/Zsqc0TRnMgI=;
+ b=Vx09lqDYoawkumYjh3e/oHrIqGRYey8yAi+3hGs2n/jMvNqWQZS3t7iMZs7pCBA1UM5OL4
+ C/yZnzckY9c7/SLhDCnHehYi9QMhHb71G+Jxrk4UbHlDsynJo5Nx8JUT/rMOy54C5fbkgO
+ lLzPzzFTriwqLk1kuVl2FKXLskHiRZU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-509-_IYHxDpkNe2jG7U7J_WzIw-1; Thu, 18 Feb 2021 09:02:38 -0500
-X-MC-Unique: _IYHxDpkNe2jG7U7J_WzIw-1
+ us-mta-248-fnfrNYH9NfyFGdYfVw8oLA-1; Thu, 18 Feb 2021 09:02:36 -0500
+X-MC-Unique: fnfrNYH9NfyFGdYfVw8oLA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 751AB803F78;
- Thu, 18 Feb 2021 14:02:37 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-34.ams2.redhat.com [10.36.114.34])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1AB335D9C6;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B8E16801995;
  Thu, 18 Feb 2021 14:02:34 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-34.ams2.redhat.com [10.36.114.34])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 002B05D9C6;
+ Thu, 18 Feb 2021 14:02:29 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH 2/3] hw/arm/smmuv3: Enforce invalidation on a power of two
- range
-Date: Thu, 18 Feb 2021 15:02:18 +0100
-Message-Id: <20210218140219.423983-3-eric.auger@redhat.com>
+Subject: [PATCH 1/3] hw/arm/smmu-common: Fix smmu_iotlb_inv_iova when asid is
+ not set
+Date: Thu, 18 Feb 2021 15:02:17 +0100
+Message-Id: <20210218140219.423983-2-eric.auger@redhat.com>
 In-Reply-To: <20210218140219.423983-1-eric.auger@redhat.com>
 References: <20210218140219.423983-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -93,15 +93,15 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,112 +118,31 @@ Cc: jasowang@redhat.com, jiangkunkun@huawei.com, peterx@redhat.com,
  shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zlkg7gaRAeWh
+X-TUID: F7uUgVblm1+H
 
-As of today, the driver can invalide a number of pages that is
-not a power of 2. However IOTLB unmap notifications and internal
-IOTLB invalidations work with masks leading to erroneous
-invalidations.
+If the asid is not set, do not attempt to locate the key directly
+as all inserted keys have a valid asid.
 
-In case the range is not a power of 2, split invalidations into
-power of 2 invalidations.
-
-When looking for a single page entry in the vSMMU internal IOTLB,
-let's make sure that if the entry is not found using a
-g_hash_table_remove() we iterate over all the entries to find a
-potential range that overlaps it.
+Use g_hash_table_foreach_remove instead.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/arm/smmu-common.c | 30 ++++++++++++++++++------------
- hw/arm/smmuv3.c      | 22 ++++++++++++++++++----
- 2 files changed, 36 insertions(+), 16 deletions(-)
+ hw/arm/smmu-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index e9ca3aebb2..84d2c62c26 100644
+index 405d5c5325..e9ca3aebb2 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -151,22 +151,28 @@ inline void
+@@ -151,7 +151,7 @@ inline void
  smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
                      uint8_t tg, uint64_t num_pages, uint8_t ttl)
  {
-+    /* if tg is not set we use 4KB range invalidation */
-+    uint8_t granule = tg ? tg * 2 + 10 : 12;
-+
-     if (ttl && (num_pages == 1) && (asid >= 0)) {
+-    if (ttl && (num_pages == 1)) {
++    if (ttl && (num_pages == 1) && (asid >= 0)) {
          SMMUIOTLBKey key = smmu_get_iotlb_key(asid, iova, tg, ttl);
  
--        g_hash_table_remove(s->iotlb, &key);
--    } else {
--        /* if tg is not set we use 4KB range invalidation */
--        uint8_t granule = tg ? tg * 2 + 10 : 12;
--
--        SMMUIOTLBPageInvInfo info = {
--            .asid = asid, .iova = iova,
--            .mask = (num_pages * 1 << granule) - 1};
--
--        g_hash_table_foreach_remove(s->iotlb,
--                                    smmu_hash_remove_by_asid_iova,
--                                    &info);
-+        if (g_hash_table_remove(s->iotlb, &key)) {
-+            return;
-+        }
-+        /*
-+         * if the entry is not found, let's see if it does not
-+         * belong to a larger IOTLB entry
-+         */
-     }
-+
-+    SMMUIOTLBPageInvInfo info = {
-+        .asid = asid, .iova = iova,
-+        .mask = (num_pages * 1 << granule) - 1};
-+
-+    g_hash_table_foreach_remove(s->iotlb,
-+                                smmu_hash_remove_by_asid_iova,
-+                                &info);
- }
- 
- inline void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index bd1f97000d..0bb8065b16 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -861,7 +861,7 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
-     uint16_t vmid = CMD_VMID(cmd);
-     bool leaf = CMD_LEAF(cmd);
-     uint8_t tg = CMD_TG(cmd);
--    hwaddr num_pages = 1;
-+    uint64_t num_pages = 1;
-     int asid = -1;
- 
-     if (tg) {
-@@ -874,9 +874,23 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
-     if (type == SMMU_CMD_TLBI_NH_VA) {
-         asid = CMD_ASID(cmd);
-     }
--    trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
--    smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
--    smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
-+
-+    /* Split invalidations into ^2 range invalidations */
-+    while (num_pages) {
-+        uint8_t granule = tg * 2 + 10;
-+        uint8_t highest_bit;
-+        uint64_t pow2pages;
-+
-+        highest_bit = 64 - clz64(num_pages) - 1;
-+        pow2pages =  BIT_ULL(highest_bit);
-+
-+        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, pow2pages, ttl, leaf);
-+        smmuv3_inv_notifiers_iova(s, asid, addr, tg, pow2pages);
-+        smmu_iotlb_inv_iova(s, asid, addr, tg, pow2pages, ttl);
-+
-+        num_pages &= ~pow2pages;
-+        addr += pow2pages * BIT_ULL(granule);
-+    }
- }
- 
- static int smmuv3_cmdq_consume(SMMUv3State *s)
+         g_hash_table_remove(s->iotlb, &key);
 -- 
 2.26.2
 

@@ -1,107 +1,102 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp5063447lfc;
-        Sun, 14 Feb 2021 11:46:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwbBQfWU2PQ4pio9QATNlxvk5q998iMvVc14dORYcdKV7ysDPs7ixF0QutW5e1Qs8RUyPd6
-X-Received: by 2002:a25:1654:: with SMTP id 81mr17017949ybw.508.1613331971705;
-        Sun, 14 Feb 2021 11:46:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613331971; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8181836lfc;
+        Thu, 18 Feb 2021 06:03:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyNydfrQeZpkegl1cjL/pI1RfbvLACbQ+pwQmAGfU9jpsxhksCNNX3jTq9YHdXdnHRZ5KFh
+X-Received: by 2002:a25:8b8b:: with SMTP id j11mr7044797ybl.305.1613657023882;
+        Thu, 18 Feb 2021 06:03:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613657023; cv=none;
         d=google.com; s=arc-20160816;
-        b=NxB5QpyaKSyBSflxva1K2h/zXFuBUc19OFbz6zerIzykcKGOI7N0G0bbaDRVLh7ugx
-         KMmgC5E6Ja3dT3z3gL9qUcLvOX2ZW0PptyL4l363EFe6uMV3UgotBrrR212NONFBixkk
-         YdfiJg65MHrMWttajdVynA8QLLKRsX9R+Q1lsj5XpMqcP+Kg4JPFTPDS4RaSDXftAP/r
-         MaMCSQ5yz+qkIELRkDzCBlxIlpoiSvlVOefp0N62TA2Iy9vN86va4HOTzxVuz9lbp9rw
-         EAlp/TjOZsLVw/t2/3UgvI6tChR1e6PtKwrHjsnRae9PFw0eVHVbTZiUe+g0eGLe//Gf
-         PRCw==
+        b=pxr71q2htYaNAJargU9dOOIEb2Dop4CHqsqndrYJA2ELV4Ap/Cf1HeccE5Z9RgycRp
+         1U3ziMWHFB1YeVu1g0XOoUwGN2AdJB8a5zyJMTNUhwXniHzcmwTgZXzgJnB946zKzo4o
+         yI1POQJln6GJVibTTR9QzpID3W7AoakZssdR8my5jGYdaLThJgc68SALXNdFiEYutHj3
+         9zJY0lErFv4NlzmaNN/z1VzmEgzlN1UY7ojsd4mRe5NiBHvquy6/zjnV5Pum6sgy9TQM
+         9Gj9exaquKT5TuZ+5ezenqar6HCUJA59oYRBgXjQLHKY5rqlN5vDMwtjYlLXe1Plu3uN
+         fcYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=jJRdV1ZLz9Wc3UruihO3ipliHXOgtCfriX4mx0iNut0=;
-        b=GfCqIa764Y4+GaFWPONry3gr9VrntOd7A4UfwKh5J4FgK6PxLRjnk88ODbmFMvAxV6
-         NYkAMf1wVKnhCrCMDveeZ0Ak5MlhskOSb2yW2DgqeTupeAhLQC6EJBzBGdMfOtm6rqPC
-         +U/hXv6gBCK+ajH9J69WhY6nCOYFKAw+oKQWdmDL5ReePhO/Wv3zRmRfGcflT+QTj4sN
-         hvhA3Zv75YJ5tGpc0H/WdWYP19ZMWaXCF/SPYU2GGA3btWwrKfL4XokEtgJVzGSSIxsN
-         apz/hD/57kAsJ9gZY5qjd9CNra4kzecPc2e7tncymRwOPs/Kt5beYrD6tAIVjtZWpkMk
-         KTBQ==
+        bh=eQoB4JdCWE/58if4YAWhxug8mHFFCdyMbcJG5hlQA4w=;
+        b=g7xszn0rJ+cZlY88w8r1KwxkHEKK47FwfB8aAyeMRP/96QFFB5r9/thhJthjGG8X0N
+         PsE9YLIkrBXaKirlFO0NVBTGup3HJ1HZd2PsieR698bdj+FOWsBx3CYrTO5T46IBKdxJ
+         gsWctXkeKDLQ0X3qdGgJKDCAaR9RVuoCuciTS5i8qXgziy+rBaSE3NSFU/74klUGtKxA
+         SqdBGlJQUpr6g8IyY8KPfhLOqgs4ZIJYcNEMMQP1qLP5dIYQheGzIGKANqQ3MqXOIsW1
+         5DNewaxoj8eWLoeIiE35B6/nN5wrz3Wqep/vr1/wRBxMiBHthUp+Rg+20YGroxLXs3/z
+         1gvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="M4dkOy/V";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CiZtixdh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4si15862934ybr.481.2021.02.14.11.46.11
+        by mx.google.com with ESMTPS id d14si5367278ybn.431.2021.02.18.06.03.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Feb 2021 11:46:11 -0800 (PST)
+        Thu, 18 Feb 2021 06:03:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="M4dkOy/V";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CiZtixdh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49202 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59112 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lBNLP-0000jI-2q
-	for alex.bennee@linaro.org; Sun, 14 Feb 2021 14:46:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56452)
+	id 1lCjuA-0001Bv-PQ
+	for alex.bennee@linaro.org; Thu, 18 Feb 2021 09:03:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lBNKn-0000iC-Sj; Sun, 14 Feb 2021 14:45:33 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:35675)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lBNKm-0005X1-0C; Sun, 14 Feb 2021 14:45:33 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id n10so6040477wmq.0;
- Sun, 14 Feb 2021 11:45:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jJRdV1ZLz9Wc3UruihO3ipliHXOgtCfriX4mx0iNut0=;
- b=M4dkOy/Vk2vtelSOG7LuO7nQ1Uuk09qnnbcPbyJcmDF7UZO/xZvknn/b+g2VZwE8et
- LksrBUjNFXdpHK1BTKd7IGLXRC2wt4JmqZfYwhjHrbiZzwQsqBhaUKr0Dv3PUHr0TibH
- es6hSOb1kF1CmF5PXmCypFrx18vaNoiB13hIXMMbV0W4rcL68k7cPK8rpd1JzLFraDPY
- A28+X31olZ/yRtDxaGjxcLdqdk1gBEhBoHfUdhHyml8z+9zar5IEJnS4Qju/Y3zpyvWz
- BJECL7hUIG0TtPupgzJf5As8P4DG0AvtfSa+rbrRF6dC1ciknGiF3akQFzPBBy5M3hcH
- Hkuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=jJRdV1ZLz9Wc3UruihO3ipliHXOgtCfriX4mx0iNut0=;
- b=gMKmWlB9fFVMpNdkvg6OF2sLl4k59lBzGtGyX6ntFtocG2pcYLYW8PkmF8ts/V+x9q
- snaDN3LCvXJ/gb8w2G9lGgBjMrwP0rR52p7a8QofmBz7sbgW3C15iR+2tJ9d+40h2fH/
- 56w91NsuonDtZ9Fcv0BkD5dL/h7iGCnRaCCcd+e00+izx8hqAqvPrJMkTB1/m937dULn
- HlKrR4GuAVEYKSrGcF0TeqLa5kNJUBYC/W6vZYEBlLdb8FFvsSWee21VjnuplHc7HsQE
- CJgtTY+VnGXSPIpprGvNILgnUgW5K+oKDGZRC0Q08ubKj1WV4lew4NnJ/YogYJEhc14c
- vJ9g==
-X-Gm-Message-State: AOAM532u3Cn1R6sYfSOWNolE3CI7IZKhQaEzvhO8/mF/LFSws3i1rZbf
- 3/dMHk+qS8xrAvP7wN1s5tknDfxajQQ=
-X-Received: by 2002:a05:600c:1552:: with SMTP id
- f18mr11411321wmg.149.1613331927791; 
- Sun, 14 Feb 2021 11:45:27 -0800 (PST)
-Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id a17sm25907907wrx.63.2021.02.14.11.45.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 14 Feb 2021 11:45:27 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2] tests/acceptance: Add bFLT loader linux-user test
-Date: Sun, 14 Feb 2021 20:45:24 +0100
-Message-Id: <20210214194524.768660-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lCjtC-00017y-JO
+ for qemu-arm@nongnu.org; Thu, 18 Feb 2021 09:02:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36753)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lCjt4-0002hy-B7
+ for qemu-arm@nongnu.org; Thu, 18 Feb 2021 09:02:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1613656952;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=eQoB4JdCWE/58if4YAWhxug8mHFFCdyMbcJG5hlQA4w=;
+ b=CiZtixdhx3lPNaipWax7r1PQGbwpkJeG8Y95rnbzzqaOw4YHwwPUOVefKwP2e9mVFxXAvJ
+ nyboGz2OksFXCTq/K/QdrkWBrO7LjBpKxe13Adj6ZmcoNpDDr2MpdEmH8pMqaRxSiGe6u2
+ rGUZAm/U7GK0SdR5Ap/zrEkB4P/rx7k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-182-FdSk9Sq6N2OzSxtye8U3Ag-1; Thu, 18 Feb 2021 09:02:30 -0500
+X-MC-Unique: FdSk9Sq6N2OzSxtye8U3Ag-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9D7AA801979;
+ Thu, 18 Feb 2021 14:02:29 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-34.ams2.redhat.com [10.36.114.34])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5EEF25D9C6;
+ Thu, 18 Feb 2021 14:02:21 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: [PATCH 0/3] Some SMMUv3 bug fixes
+Date: Thu, 18 Feb 2021 15:02:16 +0100
+Message-Id: <20210218140219.423983-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,92 +109,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Willian Rampazzo <willianr@redhat.com>,
- qemu-arm@nongnu.org, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: jasowang@redhat.com, jiangkunkun@huawei.com, peterx@redhat.com,
+ shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KXDf0+rIH4zH
+X-TUID: bpxmCzyrd1eG
 
-Add a very quick test that runs a busybox binary in bFLT format:
+Hi,
 
-  $ avocado --show=app run -t linux_user tests/acceptance/load_bflt.py
-  JOB ID     : db94d5960ce564c50904d666a7e259148c27e88f
-  JOB LOG    : ~/avocado/job-results/job-2019-06-25T10.52-db94d59/job.log
-   (1/1) tests/acceptance/load_bflt.py:LoadBFLT.test_stm32: PASS (0.15 s)
-  RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
-  JOB TIME   : 0.54 s
+This series fixes three issues:
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Based-on: <20210214175912.732946-1-f4bug@amsat.org>
-  tests/acceptance: Extract QemuBaseTest from Test
-  tests/acceptance: Make pick_default_qemu_bin() more generic
-  tests/acceptance: Introduce QemuUserTest base class
----
- tests/acceptance/load_bflt.py | 51 +++++++++++++++++++++++++++++++++++
- 1 file changed, 51 insertions(+)
- create mode 100644 tests/acceptance/load_bflt.py
+- top SID computation overflow when handling SMMU_CMD_CFGI_ALL
+- internal IOTLB handling (changes related to range invalidation)
+  - smmu_iotlb_inv_iova with asid = -1
+  - non power of 2 invalidation range handling.
 
-diff --git a/tests/acceptance/load_bflt.py b/tests/acceptance/load_bflt.py
-new file mode 100644
-index 00000000000..4b7796d0775
---- /dev/null
-+++ b/tests/acceptance/load_bflt.py
-@@ -0,0 +1,51 @@
-+# Test the bFLT format
-+#
-+# Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import os
-+import bz2
-+import subprocess
-+
-+from avocado_qemu import QemuUserTest
-+
-+
-+class LoadBFLT(QemuUserTest):
-+
-+    def extract_cpio(self, cpio_path):
-+        """
-+        Extracts a cpio archive into the test workdir
-+
-+        :param cpio_path: path to the cpio archive
-+        """
-+        cwd = os.getcwd()
-+        os.chdir(self.workdir)
-+        with bz2.open(cpio_path, 'rb') as archive_cpio:
-+            subprocess.run(['cpio', '-i'], input=archive_cpio.read(),
-+                           stderr=subprocess.DEVNULL)
-+        os.chdir(cwd)
-+
-+    @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
-+    def test_stm32(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=linux_user
-+        :avocado: tags=quick
-+        """
-+        # See https://elinux.org/STM32#User_Space
-+        rootfs_url = ('https://elinux.org/images/5/51/'
-+                      'Stm32_mini_rootfs.cpio.bz2')
-+        rootfs_hash = '9f065e6ba40cce7411ba757f924f30fcc57951e6'
-+        rootfs_path_bz2 = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
-+        busybox_path = self.workdir + "/bin/busybox"
-+
-+        self.extract_cpio(rootfs_path_bz2)
-+
-+        res = self.run(busybox_path)
-+        ver = 'BusyBox v1.24.0.git (2015-02-03 22:17:13 CET) multi-call binary.'
-+        self.assertIn(ver, res.stdout_text)
-+
-+        res = self.run(busybox_path, ['uname', '-a'])
-+        unm = 'armv7l GNU/Linux'
-+        self.assertIn(unm, res.stdout_text)
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/viommu_fixes_for_6
+
+
+Eric Auger (3):
+  hw/arm/smmu-common: Fix smmu_iotlb_inv_iova when asid is not set
+  hw/arm/smmuv3: Enforce invalidation on a power of two range
+  hw/arm/smmuv3: Fix SMMU_CMD_CFGI_STE_RANGE handling
+
+ hw/arm/smmu-common.c   | 32 ++++++++++++++----------
+ hw/arm/smmu-internal.h |  5 ++++
+ hw/arm/smmuv3.c        | 56 ++++++++++++++++++++++++++++--------------
+ 3 files changed, 62 insertions(+), 31 deletions(-)
+
 -- 
 2.26.2
 

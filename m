@@ -1,107 +1,118 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp6814461lfc;
-        Tue, 16 Feb 2021 14:12:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwUcmgGVtydTgqs5i/4/U+sA/wuMbmn394LpNavrIL6hLYfptsROexnyKiRJikb4sKcPX0Q
-X-Received: by 2002:a25:2842:: with SMTP id o63mr32499279ybo.265.1613513530056;
-        Tue, 16 Feb 2021 14:12:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613513530; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8161110lfc;
+        Thu, 18 Feb 2021 05:33:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz+YdBnMK7xF3HG/KMwsw6Oid/PF7tGaZzOVp7jfUqegV/oJJq2Bttkpq8ctLyAn8fznkMg
+X-Received: by 2002:a25:7e82:: with SMTP id z124mr6815527ybc.140.1613655213887;
+        Thu, 18 Feb 2021 05:33:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613655213; cv=none;
         d=google.com; s=arc-20160816;
-        b=BVHG2Txp4pJ4gMXlPpqPHs5YtjnBdaaU26FS+nbYHvmbGgSy0fWA+9fUv7ssCh50S6
-         Ozcd35UJNwTFOE31wJaUi6lNuyCIBWKOU3medzWWR4x6/U+S2R1UUfo1ABYRC2P9q/qP
-         D5v0OwawNR4ac0N8QeWO5ZivR+Sfw6CeRdIupG1vCuocxftJFdP1sFrtTcL7P/FWjqdy
-         ee5p+VMPhmEAMwBMQn5YrLDdtd0nbLaENP+9H9930ep3Ykr1V0fLsRcbAYgcwScwVrGf
-         rVIofc0uskYa8k3BfRQOmyZln0E2uOYYJEsD8x6SVakys/BxDtytqySpi/8x71MoAFAy
-         m+DA==
+        b=j+NKSL+EgvjDA3lqjFu6Jfv3E1HOsbAUsb/G3b/q8jIKguw1VCYaNsY/P0y7KvUkSn
+         iHIdmerGRM0LGk77Uf52qCYcmwHKFg3hFZIQpqWvDnMwRxKhPh13l1GctRvHhLLWm0wz
+         yhJfI9LX39lIuzCFM6+fonz6xtl9mJCvGhMDWw8AZDTyr6o7zSEAZ51Is2+fXN0qXGhb
+         UMsFdeuFRm3tlOk/FO3X355ypgGwXP4UZBHdDy0l1IqqShBWUc6FHdaE1KCpKgC92/w7
+         oFWFVxPLNW19rfq9228ZkuqayYFu6hv9eCZwOoyxZQWqmHFICqS6e5rdv7ww1zbL66bO
+         DACQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=KTfUB3D1HUlsFs9iM4MYuhC8R/aZTGmZCdd3SJ+pivA=;
-        b=08bvYaW/uG1UcMV3RKRJleyG/vswDIqIkE6V8/sVGTh3sfm/NBEgUWlzK2BzJt5Onb
-         I7HpRtnUqfQ1Y6H3p5ouxeJSSeCvHO20KPddbgV2Dm/RB4Lbq4lwKiMWeQUWrqkcNbyh
-         xMMJiKknhjoWPJwVA0h0/QzI/y8u0GSLh//kSOt0VhKHBB8eEePefHm2LHOW/0M04qf7
-         9N1gNtfUN04rl4N6XeMzX/SvAdikOnckchqOl4eQEX9CSU1VnnSYWwxT3YpgNEZFnTBm
-         6qu38S6nguJsxCYSevRtu1DkKRPls5VUESr8p0k9GGQQI4RCL5Vnq5HD4GJSg4mAfJiv
-         Y+/g==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=oIqM+1Y3C+7K/AyI2+LtiRPKxNzed9FDsMA4LcbKJaM=;
+        b=TAHfssSzoJ9DSeTbW0N1gKweOWbSVWs0U5zXK4/cTJhnoROuSZm9lqE1etooiFXohC
+         UPcG+sJDD1yAVm5YOAFQmcpS1kuYP5Uq04dO/Nc6VN3+OTny8ffxx/r878ZUw0EbiN3J
+         ch2X+tlnKI0xzDjAjPLHf5wAxCljXx8USEXc0WJ+f5MmYwxPY8IA3w3CyGRRdTtTquR1
+         uZnfXLxtub2d5vlFgNou8Ng7JV0dxj4sO+IuCs82+6EYIyiSz94b69S0+2L5tAd7ATph
+         q+OrcTCszgBCylIVc4nX/NvzAZjp3ZqUA0Wc/73zSV+t3XB2s9xkecigH3VCwjUWufiy
+         8bYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F5Dn5zsT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b5Kak7Q8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128si245895ybw.176.2021.02.16.14.12.09
+        by mx.google.com with ESMTPS id f16si6712015ybp.225.2021.02.18.05.33.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Feb 2021 14:12:10 -0800 (PST)
+        Thu, 18 Feb 2021 05:33:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F5Dn5zsT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b5Kak7Q8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43196 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60162 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lC8Zl-0000S7-GJ
-	for alex.bennee@linaro.org; Tue, 16 Feb 2021 17:12:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33264)
+	id 1lCjQz-0004Te-8i
+	for alex.bennee@linaro.org; Thu, 18 Feb 2021 08:33:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1lC8Zd-0000RW-Ht
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 17:12:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23586)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lCjQd-0004TN-UG
+ for qemu-arm@nongnu.org; Thu, 18 Feb 2021 08:33:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:33396)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1lC8Za-0000xZ-Bm
- for qemu-arm@nongnu.org; Tue, 16 Feb 2021 17:12:00 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lCjQa-0006ZG-C7
+ for qemu-arm@nongnu.org; Thu, 18 Feb 2021 08:33:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613513516;
+ s=mimecast20190719; t=1613655187;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KTfUB3D1HUlsFs9iM4MYuhC8R/aZTGmZCdd3SJ+pivA=;
- b=F5Dn5zsT+zftlvhx9rM3L+fsq7v3D6yJ+ONT+yco9DtfionxACR57f2div+aXk5Fd2W3yT
- 0ulZn37kwRT9OOdySj0M+8585Ge0zXO2FjlnzDCZvc+BpHJP3SVLCHku12+k3IOI4ttWh8
- hygixDCMNy4pNj76Xb0l1d/4ELk2qmM=
+ bh=oIqM+1Y3C+7K/AyI2+LtiRPKxNzed9FDsMA4LcbKJaM=;
+ b=b5Kak7Q8uOJpg9kU15tTaFMzFSwSrji1WUIspLDLGurauAlGDCcK3nVo6uYp+MExs2BWoV
+ /eyEkvrsdVCXh2lDl+MccAD6nP6WjMXkZt4PMocJ0F3bYu9fftT2K4ORn8a978lM4pgln2
+ X/Ijz+XFRvU+tDVjFC5yiEOmgoleZ40=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-494-hVkuB2sEP1a3yTlwghKyMg-1; Tue, 16 Feb 2021 17:11:54 -0500
-X-MC-Unique: hVkuB2sEP1a3yTlwghKyMg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-572-whpZ8bfuPa6lhQZLqWkg4A-1; Thu, 18 Feb 2021 08:33:03 -0500
+X-MC-Unique: whpZ8bfuPa6lhQZLqWkg4A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 508CD6EE24;
- Tue, 16 Feb 2021 22:11:53 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.60])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 216AF5D9D3;
- Tue, 16 Feb 2021 22:11:42 +0000 (UTC)
-Date: Tue, 16 Feb 2021 23:11:40 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Marian Postevca <posteuca@mutex.one>
-Subject: Re: [PATCH] acpi: Remove duplicated code handling OEM ID and OEM
- table ID fields
-Message-ID: <20210216231140.2743b89d@redhat.com>
-In-Reply-To: <877dn9w5kt.fsf@mutex.one>
-References: <20210213102233.11428-1-posteuca@mutex.one>
- <20210215184404.7e342872@redhat.com> <877dn9w5kt.fsf@mutex.one>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A9F21020C20;
+ Thu, 18 Feb 2021 13:33:01 +0000 (UTC)
+Received: from [10.36.114.34] (ovpn-114-34.ams2.redhat.com [10.36.114.34])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3EFFD67CC0;
+ Thu, 18 Feb 2021 13:32:50 +0000 (UTC)
+Subject: Re: [RFC v7 26/26] vfio/pci: Implement return_page_response page
+ response callback
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>
+References: <20201116181349.11908-1-eric.auger@redhat.com>
+ <20201116181349.11908-27-eric.auger@redhat.com>
+ <494e4bdf5ecd4b528a016d4545d45f71@huawei.com>
+ <f11ef533-da64-3d6a-24f5-79d5e7a205da@redhat.com>
+ <5f85d8999c0c40a29c32ac63b8730fa8@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <679c5696-c73f-517d-f555-90ec2c767fbb@redhat.com>
+Date: Thu, 18 Feb 2021 14:32:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <5f85d8999c0c40a29c32ac63b8730fa8@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,42 +125,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Xiang Zheng <zhengxiang9@huawei.com>,
- "open list:ACPI/HEST/GHES" <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "tn@semihalf.com" <tn@semihalf.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "nicoleotsuka@gmail.com" <nicoleotsuka@gmail.com>,
+ "vivek.gautam@arm.com" <vivek.gautam@arm.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ "zhangfei.gao@gmail.com" <zhangfei.gao@gmail.com>,
+ yuzenghui <yuzenghui@huawei.com>, qubingbing <qubingbing@hisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vo2cv3GHm1Ua
+X-TUID: jyhBN8DloLEG
 
-On Mon, 15 Feb 2021 20:26:10 +0200
-Marian Postevca <posteuca@mutex.one> wrote:
+Hi Shameer,
 
-> Igor Mammedov <imammedo@redhat.com> writes:
+On 2/18/21 12:46 PM, Shameerali Kolothum Thodi wrote:
 > 
-> > hmm, looks like adding instead of removing
-> >  
-> Do you mean that the commit message does not describe the change
-> correctly, or that my refactoring is too extreme?
-I've meant that diff-stat shows that patch adds more lines than it removes
-so I'm not sure it removes duplication.
-Maybe rephrase commit message a little.
-
-
-> If it is the latter, I think I tried to simplify things, by creating
-> macros to be used in multiple places where this structure is created.
-> And passing the structure around instead of two parameters seemed simpler.
+> Hi Eric,
 > 
-> > have you considered, putting this field into X86MachineState?
-> > (that way you will be able to handle both PC and microvm in one place,
-> > without duplication io init/property setters)
-> >  
-> I did not, will try this approach.
-this would be pure deduplication, and simpler if you do it as separate patch
-and then re-factoring to static fields on top of that.
-(i.e. don't mix re-factoring and deduplication)
+>> -----Original Message-----
+>> From: Auger Eric [mailto:eric.auger@redhat.com]
+>> Sent: 18 February 2021 10:42
+>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+>> eric.auger.pro@gmail.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+>> alex.williamson@redhat.com
+>> Cc: peter.maydell@linaro.org; jacob.jun.pan@linux.intel.com; Zengtao (B)
+>> <prime.zeng@hisilicon.com>; jean-philippe@linaro.org; tn@semihalf.com;
+>> peterx@redhat.com; nicoleotsuka@gmail.com; vivek.gautam@arm.com;
+>> yi.l.liu@intel.com; zhangfei.gao@gmail.com; yuzenghui
+>> <yuzenghui@huawei.com>; qubingbing <qubingbing@hisilicon.com>
+>> Subject: Re: [RFC v7 26/26] vfio/pci: Implement return_page_response page
+>> response callback
+>>
+> [...]
+> 
+>>> Also, I just noted that this patch breaks the dev hot add/del functionality.
+>>> device_add works fine but device_del is not removing the dev cleanly.Thank
+>> you for reporting this!
+>>
+>> The test matrix becomes bigger and bigger :-( I Need to write some
+>> avocado-vt tests or alike.
+>>
+>> I am currently working on the respin. At the moment I investigate the
+>> DPDK issue that you reported and I was able to reproduce.
+> 
+> Ok. Good to know that it is reproducible.
+> 
+>> I intend to rebase on top of Jean-Philippe's
+>> [PATCH v12 00/10] iommu: I/O page faults for SMMUv3
+>>
+>> Is that good enough for your SVA integration or do you want I prepare a
+>> rebase on some extended code?
+> 
+> Could you please try to base it on https://jpbrucker.net/git/linux/log/?h=sva/current
+
+OK. At least I will provide a branch.
+
+Eric
+> 
+> I think that has the latest from Jean-Philippe and will be easy to add
+> uacce/zip specific patches to test SVA/vSVA.
+> 
+> Thanks,
+> Shameer
+> 
+>  
+>> Thanks
+>>
+>> Eric
+>>>
+>>> The below one fixes it. Please check.
+>>>
+>>> Thanks,
+>>> Shameer
+>>>
+>>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+>>> index 797acd9c73..92c1d48316 100644
+>>> --- a/hw/vfio/pci.c
+>>> +++ b/hw/vfio/pci.c
+>>> @@ -3470,6 +3470,7 @@ static void vfio_instance_finalize(Object *obj)
+>>>      vfio_display_finalize(vdev);
+>>>      vfio_bars_finalize(vdev);
+>>>      vfio_region_finalize(&vdev->dma_fault_region);
+>>> +    vfio_region_finalize(&vdev->dma_fault_response_region);
+>>>      g_free(vdev->emulated_config_bits);
+>>>      g_free(vdev->rom);
+>>>      /*
+>>> @@ -3491,6 +3492,7 @@ static void vfio_exitfn(PCIDevice *pdev)
+>>>      vfio_unregister_err_notifier(vdev);
+>>>      vfio_unregister_ext_irq_notifiers(vdev);
+>>>      vfio_region_exit(&vdev->dma_fault_region);
+>>> +    vfio_region_exit(&vdev->dma_fault_response_region);
+>>>      pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
+>>>      if (vdev->irqchip_change_notifier.notify) {
+>>>
+>> kvm_irqchip_remove_change_notifier(&vdev->irqchip_change_not
+>>>
+>>>
+>>>
+> 
 

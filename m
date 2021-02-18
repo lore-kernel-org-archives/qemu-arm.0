@@ -1,116 +1,100 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8051765lfc;
-        Thu, 18 Feb 2021 02:42:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzWPh++g0GM3cmspU+Mtx8vBeJ8zZD6c42wPZy6g6yxgy2oV6JSrBypsOpEhpyMOakbiBKp
-X-Received: by 2002:a25:af50:: with SMTP id c16mr5356574ybj.10.1613644949377;
-        Thu, 18 Feb 2021 02:42:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613644949; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8091218lfc;
+        Thu, 18 Feb 2021 03:47:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyaTetuLDZrbIEOHJZk9em2LgM5CzOT8XtYpRQ98j4nZZZ6SRIJSBybiJ3XeDHDu2Z6pVsY
+X-Received: by 2002:a25:7585:: with SMTP id q127mr5931206ybc.216.1613648843456;
+        Thu, 18 Feb 2021 03:47:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613648843; cv=none;
         d=google.com; s=arc-20160816;
-        b=ETO1pyKI6qYjE55ul0Y7zrjjCN1ferp9YWE4u0W/ysYpGqREV3lvQXx10Lc6fmZyL3
-         Mo6XxwL7v7nrQv2lSv9bBuDVWfGqtWsUspUBC8JAB+h1H94sgS+PlXhtYEXTBgoIlz4w
-         wL9wABUKJOqr2v2VthdgiX5umN1IelUjKgIH1N1YEP4/6ld3P3F6VRkzRy680CX5/5Vm
-         R5Tx2RcUsi7/eV1X8Q8a47m/d4CPLHtqw6LP/dJdxuQ0fECmF8TBdcdcg4wz4qr9tLra
-         Wy/Ma9e/KVKWl6K0IK/gJHxrJ3Oh5EK4FEj/NDmcl0ZkwltBKRWS3najVs6Qh2qCH7pT
-         9sxQ==
+        b=JCB+wvLc6iynVmv5CXHRj5BkUICgmynQP8velhzbgN4xj+YbuAy4FVkklLrtLp+nvU
+         fDQOECfoA09GwEMHTzQy2vBrZsRFvLHELNAWmXwMIT8vtmixRacSrLqimWWORlBD+PfI
+         Z+44xCkqkmScXMg9z/SljdHEKvr0JfALzJNq2EGaDkai8bN//usOBeLYA2M84A+Vbn1/
+         BTT3Q1AZxQ69++FKZLleCVC/+YePHGi39LQWgYOqY3pPRHm1KvgOFYI/dGN0Wy4B1KfQ
+         AnBbMX/76liKm0EzSGKbNoObHj4qOr8ppzGOy2wWqOImCupe3EWIPKsla9FGok4cHYZG
+         R2cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=lw5nI2YYkzixxyPiTOdtX0qBSRimPY8Nhyb6Tao+aew=;
-        b=mwM926rs0n8x9zWo+KjcDnDLdHd7FgfNYBTjiShAxxLPUxnPSBoPYZjKu9zViFLQCo
-         retqpyxTB43/KZFtEmS52szpCZa5I7u+LdWLDziv26ZtD+PlyMZZLMXrIhqQqUkODixd
-         H+KuP06IcvZvAGjobOtVFwzZmDiaUO5Me0INTmsVXRn9+uM0IOb+mxv65jfdKRRCIHF3
-         EHiftByIxXEmfDHCN2rLvi59DrXpYBgUUPdKCtALe2L++eojDOAENNcKF6N/aj9xhr1j
-         RWjbavD1pYwEM//htj2Hjw586US6j2aAaDPDU+EsjkgIwZOIkGzl93IDpR+ytAQnTrhs
-         1Cdg==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=WMVXU411VO2+NfMh58u6BvXjL1Nv5a7lGsu6VGmCgaM=;
+        b=fsupVLCeZbFmoGlmK2wE7AIyv02HoxMzzsUEJDElkCtqfZDLHfgxRkckGA8dDiZKzo
+         RYZ6J7/3mzXn0ddngOWvIjEg6QdBs+3upZS1nZL8Rlvb3MySYaBJP9Yh3aDt1Z87sp6d
+         K59kqsttcmN8B3dIhRBhjCC+FjkEEi43EFSi4eexEOhrnQiicnKFSSv0nGynVlq7jnZ8
+         CpKeYLYQ62YOgFMwyKWnz6iDFIaN2Ooh9sLuao+wfO+1XztoPh85FVcCt8sdRgU53/tp
+         G5Dq48z5CCb4uocE9hpaVAj/WPjMbtDgVuw0B3WYRgdJ3wZai7aafLn0eMFhsHE2pL7M
+         xXYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Gg4jHN/5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l62si5749424ybc.87.2021.02.18.02.42.29
+        by mx.google.com with ESMTPS id w3si5284143ybs.173.2021.02.18.03.47.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Feb 2021 02:42:29 -0800 (PST)
+        Thu, 18 Feb 2021 03:47:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Gg4jHN/5";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43818 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55012 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lCglQ-0008Bt-Oy
-	for alex.bennee@linaro.org; Thu, 18 Feb 2021 05:42:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40476)
+	id 1lChmE-0004E6-RR
+	for alex.bennee@linaro.org; Thu, 18 Feb 2021 06:47:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lCglH-0008B5-Dp
- for qemu-arm@nongnu.org; Thu, 18 Feb 2021 05:42:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:40759)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lCglB-00077R-GG
- for qemu-arm@nongnu.org; Thu, 18 Feb 2021 05:42:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613644929;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lw5nI2YYkzixxyPiTOdtX0qBSRimPY8Nhyb6Tao+aew=;
- b=Gg4jHN/5erpPegg/k7Zq7Z5YNK8j1vEcnNGFRQ1qPhMUdy7STMshF8pfYy8d34FVENmj7u
- jiJddaZbgo06XhjABgFyYv59EcAJohE5RSzpZFUKa69/RuT+9zE3MOSTCpe0xZsc4YEgdN
- uvvNzJbKGNbjk4lL9weNIggkfduWecY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-564-SiGbLEuUN6OAz-0Tu7MZAA-1; Thu, 18 Feb 2021 05:42:07 -0500
-X-MC-Unique: SiGbLEuUN6OAz-0Tu7MZAA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 922671005501;
- Thu, 18 Feb 2021 10:42:03 +0000 (UTC)
-Received: from [10.36.114.34] (ovpn-114-34.ams2.redhat.com [10.36.114.34])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8CA6F6267A;
- Thu, 18 Feb 2021 10:41:52 +0000 (UTC)
-Subject: Re: [RFC v7 26/26] vfio/pci: Implement return_page_response page
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1lChlt-0004BZ-Rg; Thu, 18 Feb 2021 06:47:01 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2967)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1lChln-0002bm-UK; Thu, 18 Feb 2021 06:47:00 -0500
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.54])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4DhCZB61wdzY9Ch;
+ Thu, 18 Feb 2021 19:45:22 +0800 (CST)
+Received: from dggpemm500010.china.huawei.com (7.185.36.134) by
+ DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
+ id 14.3.498.0; Thu, 18 Feb 2021 19:46:44 +0800
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ dggpemm500010.china.huawei.com (7.185.36.134) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2106.2; Thu, 18 Feb 2021 19:46:44 +0800
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.2106.006; Thu, 18 Feb 2021 11:46:42 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Auger Eric <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+ <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>
+Subject: RE: [RFC v7 26/26] vfio/pci: Implement return_page_response page
  response callback
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>
+Thread-Topic: [RFC v7 26/26] vfio/pci: Implement return_page_response page
+ response callback
+Thread-Index: AQHWvEUTUiE9WTe+7E+ovBX+zyeIRqpeRGbwgAAIYwCAAA9WoA==
+Date: Thu, 18 Feb 2021 11:46:42 +0000
+Message-ID: <5f85d8999c0c40a29c32ac63b8730fa8@huawei.com>
 References: <20201116181349.11908-1-eric.auger@redhat.com>
  <20201116181349.11908-27-eric.auger@redhat.com>
  <494e4bdf5ecd4b528a016d4545d45f71@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <f11ef533-da64-3d6a-24f5-79d5e7a205da@redhat.com>
-Date: Thu, 18 Feb 2021 11:41:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
-MIME-Version: 1.0
-In-Reply-To: <494e4bdf5ecd4b528a016d4545d45f71@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+ <f11ef533-da64-3d6a-24f5-79d5e7a205da@redhat.com>
+In-Reply-To: <f11ef533-da64-3d6a-24f5-79d5e7a205da@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.95.60]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=shameerali.kolothum.thodi@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,270 +114,59 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "tn@semihalf.com" <tn@semihalf.com>, "peterx@redhat.com" <peterx@redhat.com>,
  "nicoleotsuka@gmail.com" <nicoleotsuka@gmail.com>,
  "vivek.gautam@arm.com" <vivek.gautam@arm.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- "Zengtao \(B\)" <prime.zeng@hisilicon.com>, yuzenghui <yuzenghui@huawei.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>, "Zengtao
+ \(B\)" <prime.zeng@hisilicon.com>, yuzenghui <yuzenghui@huawei.com>,
  qubingbing <qubingbing@hisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r3jX/w7T36b2
+X-TUID: /LCuBqULO4FY
 
-Hi Shameer,
-
-On 2/18/21 11:19 AM, Shameerali Kolothum Thodi wrote:
-> Hi Eric,
-> 
->> -----Original Message-----
->> From: Eric Auger [mailto:eric.auger@redhat.com]
->> Sent: 16 November 2020 18:14
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
->> qemu-devel@nongnu.org; qemu-arm@nongnu.org;
->> alex.williamson@redhat.com
->> Cc: peter.maydell@linaro.org; jean-philippe@linaro.org; peterx@redhat.com;
->> jacob.jun.pan@linux.intel.com; yi.l.liu@intel.com; Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; tn@semihalf.com;
->> nicoleotsuka@gmail.com; yuzenghui <yuzenghui@huawei.com>;
->> zhangfei.gao@gmail.com; vivek.gautam@arm.com
->> Subject: [RFC v7 26/26] vfio/pci: Implement return_page_response page
->> response callback
->>
->> This patch implements the page response path. The
->> response s written into the page response ring buffer and then
->> update header's head index is updated. This path is not used
->> by this series. It is introduced here as a POC for vSVA/ARM
->> integration.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/vfio/pci.h |   2 +
->>  hw/vfio/pci.c | 121
->> ++++++++++++++++++++++++++++++++++++++++++++++++++
->>  2 files changed, 123 insertions(+)
->>
->> diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
->> index 350e9e9005..ce0472611e 100644
->> --- a/hw/vfio/pci.h
->> +++ b/hw/vfio/pci.h
->> @@ -147,6 +147,8 @@ struct VFIOPCIDevice {
->>      VFIOPCIExtIRQ *ext_irqs;
->>      VFIORegion dma_fault_region;
->>      uint32_t fault_tail_index;
->> +    VFIORegion dma_fault_response_region;
->> +    uint32_t fault_response_head_index;
->>      int (*resetfn)(struct VFIOPCIDevice *);
->>      uint32_t vendor_id;
->>      uint32_t device_id;
->> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->> index 4e3495bb60..797acd9c73 100644
->> --- a/hw/vfio/pci.c
->> +++ b/hw/vfio/pci.c
->> @@ -2631,6 +2631,61 @@ out:
->>      g_free(fault_region_info);
->>  }
->>
->> +static void vfio_init_fault_response_regions(VFIOPCIDevice *vdev, Error
->> **errp)
->> +{
->> +    struct vfio_region_info *fault_region_info = NULL;
->> +    struct vfio_region_info_cap_fault *cap_fault;
->> +    VFIODevice *vbasedev = &vdev->vbasedev;
->> +    struct vfio_info_cap_header *hdr;
->> +    char *fault_region_name;
->> +    int ret;
->> +
->> +    ret = vfio_get_dev_region_info(&vdev->vbasedev,
->> +                                   VFIO_REGION_TYPE_NESTED,
->> +
->> VFIO_REGION_SUBTYPE_NESTED_DMA_FAULT_RESPONSE,
->> +                                   &fault_region_info);
->> +    if (ret) {
->> +        goto out;
->> +    }
->> +
->> +    hdr = vfio_get_region_info_cap(fault_region_info,
->> +
->> VFIO_REGION_INFO_CAP_DMA_FAULT);
-> 
-> VFIO_REGION_INFO_CAP_DMA_FAULT_RESPONSE ? 
-yes!
-> 
->> +    if (!hdr) {
->> +        error_setg(errp, "failed to retrieve DMA FAULT RESPONSE
->> capability");
->> +        goto out;
->> +    }
->> +    cap_fault = container_of(hdr, struct vfio_region_info_cap_fault,
->> +                             header);
->> +    if (cap_fault->version != 1) {
->> +        error_setg(errp, "Unsupported DMA FAULT RESPONSE API
->> version %d",
->> +                   cap_fault->version);
->> +        goto out;
->> +    }
->> +
->> +    fault_region_name = g_strdup_printf("%s DMA FAULT RESPONSE %d",
->> +                                        vbasedev->name,
->> +                                        fault_region_info->index);
->> +
->> +    ret = vfio_region_setup(OBJECT(vdev), vbasedev,
->> +                            &vdev->dma_fault_response_region,
->> +                            fault_region_info->index,
->> +                            fault_region_name);
->> +    g_free(fault_region_name);
->> +    if (ret) {
->> +        error_setg_errno(errp, -ret,
->> +                         "failed to set up the DMA FAULT RESPONSE
->> region %d",
->> +                         fault_region_info->index);
->> +        goto out;
->> +    }
->> +
->> +    ret = vfio_region_mmap(&vdev->dma_fault_response_region);
->> +    if (ret) {
->> +        error_setg_errno(errp, -ret, "Failed to mmap the DMA FAULT
->> RESPONSE queue");
->> +    }
->> +out:
->> +    g_free(fault_region_info);
->> +}
->> +
->>  static void vfio_populate_device(VFIOPCIDevice *vdev, Error **errp)
->>  {
->>      VFIODevice *vbasedev = &vdev->vbasedev;
->> @@ -2706,6 +2761,12 @@ static void vfio_populate_device(VFIOPCIDevice
->> *vdev, Error **errp)
->>          return;
->>      }
->>
->> +    vfio_init_fault_response_regions(vdev, &err);
->> +    if (err) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->> +
->>      irq_info.index = VFIO_PCI_ERR_IRQ_INDEX;
->>
->>      ret = ioctl(vdev->vbasedev.fd, VFIO_DEVICE_GET_IRQ_INFO, &irq_info);
->> @@ -2884,8 +2945,68 @@ static int vfio_iommu_set_pasid_table(PCIBus
->> *bus, int32_t devfn,
->>      return ioctl(container->fd, VFIO_IOMMU_SET_PASID_TABLE, &info);
->>  }
->>
->> +static int vfio_iommu_return_page_response(PCIBus *bus, int32_t devfn,
->> +                                           IOMMUPageResponse
->> *resp)
->> +{
->> +    PCIDevice *pdev = bus->devices[devfn];
->> +    VFIOPCIDevice *vdev = DO_UPCAST(VFIOPCIDevice, pdev, pdev);
->> +    struct iommu_page_response *response = &resp->resp;
->> +    struct vfio_region_dma_fault_response header;
->> +    struct iommu_page_response *queue;
->> +    char *queue_buffer = NULL;
->> +    ssize_t bytes;
->> +
->> +    if (!vdev->dma_fault_response_region.mem) {
->> +        return -EINVAL;
->> +    }
->> +
->> +    /* read the header */
->> +    bytes = pread(vdev->vbasedev.fd, &header, sizeof(header),
->> +                  vdev->dma_fault_response_region.fd_offset);
->> +    if (bytes != sizeof(header)) {
->> +        error_report("%s unable to read the fault region header (0x%lx)",
->> +                     __func__, bytes);
->> +        return -1;
->> +    }
->> +
->> +    /* Normally the fault queue is mmapped */
->> +    queue = (struct iommu_page_response
->> *)vdev->dma_fault_response_region.mmaps[0].mmap;
->> +    if (!queue) {
->> +        size_t queue_size = header.nb_entries * header.entry_size;
->> +
->> +        error_report("%s: fault queue not mmapped: slower fault handling",
->> +                     vdev->vbasedev.name);
->> +
->> +        queue_buffer = g_malloc(queue_size);
->> +        bytes = pread(vdev->vbasedev.fd, queue_buffer, queue_size,
->> +                      vdev->dma_fault_response_region.fd_offset +
->> header.offset);
->> +        if (bytes != queue_size) {
->> +            error_report("%s unable to read the fault queue (0x%lx)",
->> +                         __func__, bytes);
->> +            return -1;
->> +        }
->> +
->> +        queue = (struct iommu_page_response *)queue_buffer;
->> +    }
->> +    /* deposit the new response in the queue and increment the head */
->> +    memcpy(queue + header.head, response, header.entry_size);
->> +
->> +    vdev->fault_response_head_index =
->> +        (vdev->fault_response_head_index + 1) % header.nb_entries;
->> +    bytes = pwrite(vdev->vbasedev.fd, &vdev->fault_response_head_index,
->> 4,
->> +                   vdev->dma_fault_response_region.fd_offset);
->> +    if (bytes != 4) {
->> +        error_report("%s unable to write the fault response region head
->> index (0x%lx)",
->> +                     __func__, bytes);
->> +    }
->> +    g_free(queue_buffer);
->> +
->> +    return 0;
->> +}
->> +
->>  static PCIPASIDOps vfio_pci_pasid_ops = {
->>      .set_pasid_table = vfio_iommu_set_pasid_table,
->> +    .return_page_response = vfio_iommu_return_page_response,
->>  };
->>
->>  static void vfio_dma_fault_notifier_handler(void *opaque)
-> 
-> Also, I just noted that this patch breaks the dev hot add/del functionality.
-> device_add works fine but device_del is not removing the dev cleanly.Thank you for reporting this!
-
-The test matrix becomes bigger and bigger :-( I Need to write some
-avocado-vt tests or alike.
-
-I am currently working on the respin. At the moment I investigate the
-DPDK issue that you reported and I was able to reproduce.
-
-I intend to rebase on top of Jean-Philippe's
-[PATCH v12 00/10] iommu: I/O page faults for SMMUv3
-
-Is that good enough for your SVA integration or do you want I prepare a
-rebase on some extended code?
-
-Thanks
-
-Eric
-> 
-> The below one fixes it. Please check.
-> 
-> Thanks,
-> Shameer
-> 
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 797acd9c73..92c1d48316 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -3470,6 +3470,7 @@ static void vfio_instance_finalize(Object *obj)
->      vfio_display_finalize(vdev);
->      vfio_bars_finalize(vdev);
->      vfio_region_finalize(&vdev->dma_fault_region);
-> +    vfio_region_finalize(&vdev->dma_fault_response_region);
->      g_free(vdev->emulated_config_bits);
->      g_free(vdev->rom);
->      /*
-> @@ -3491,6 +3492,7 @@ static void vfio_exitfn(PCIDevice *pdev)
->      vfio_unregister_err_notifier(vdev);
->      vfio_unregister_ext_irq_notifiers(vdev);
->      vfio_region_exit(&vdev->dma_fault_region);
-> +    vfio_region_exit(&vdev->dma_fault_response_region);
->      pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
->      if (vdev->irqchip_change_notifier.notify) {
->          kvm_irqchip_remove_change_notifier(&vdev->irqchip_change_not
-> 
-> 
-> 
-
+DQpIaSBFcmljLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IEF1Z2Vy
+IEVyaWMgW21haWx0bzplcmljLmF1Z2VyQHJlZGhhdC5jb21dDQo+IFNlbnQ6IDE4IEZlYnJ1YXJ5
+IDIwMjEgMTA6NDINCj4gVG86IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkgPHNoYW1lZXJhbGku
+a29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT47DQo+IGVyaWMuYXVnZXIucHJvQGdtYWlsLmNvbTsg
+cWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LWFybUBub25nbnUub3JnOw0KPiBhbGV4LndpbGxp
+YW1zb25AcmVkaGF0LmNvbQ0KPiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBqYWNvYi5q
+dW4ucGFuQGxpbnV4LmludGVsLmNvbTsgWmVuZ3RhbyAoQikNCj4gPHByaW1lLnplbmdAaGlzaWxp
+Y29uLmNvbT47IGplYW4tcGhpbGlwcGVAbGluYXJvLm9yZzsgdG5Ac2VtaWhhbGYuY29tOw0KPiBw
+ZXRlcnhAcmVkaGF0LmNvbTsgbmljb2xlb3RzdWthQGdtYWlsLmNvbTsgdml2ZWsuZ2F1dGFtQGFy
+bS5jb207DQo+IHlpLmwubGl1QGludGVsLmNvbTsgemhhbmdmZWkuZ2FvQGdtYWlsLmNvbTsgeXV6
+ZW5naHVpDQo+IDx5dXplbmdodWlAaHVhd2VpLmNvbT47IHF1YmluZ2JpbmcgPHF1YmluZ2JpbmdA
+aGlzaWxpY29uLmNvbT4NCj4gU3ViamVjdDogUmU6IFtSRkMgdjcgMjYvMjZdIHZmaW8vcGNpOiBJ
+bXBsZW1lbnQgcmV0dXJuX3BhZ2VfcmVzcG9uc2UgcGFnZQ0KPiByZXNwb25zZSBjYWxsYmFjaw0K
+PiANClsuLi5dDQoNCj4gPiBBbHNvLCBJIGp1c3Qgbm90ZWQgdGhhdCB0aGlzIHBhdGNoIGJyZWFr
+cyB0aGUgZGV2IGhvdCBhZGQvZGVsIGZ1bmN0aW9uYWxpdHkuDQo+ID4gZGV2aWNlX2FkZCB3b3Jr
+cyBmaW5lIGJ1dCBkZXZpY2VfZGVsIGlzIG5vdCByZW1vdmluZyB0aGUgZGV2IGNsZWFubHkuVGhh
+bmsNCj4geW91IGZvciByZXBvcnRpbmcgdGhpcyENCj4gDQo+IFRoZSB0ZXN0IG1hdHJpeCBiZWNv
+bWVzIGJpZ2dlciBhbmQgYmlnZ2VyIDotKCBJIE5lZWQgdG8gd3JpdGUgc29tZQ0KPiBhdm9jYWRv
+LXZ0IHRlc3RzIG9yIGFsaWtlLg0KPiANCj4gSSBhbSBjdXJyZW50bHkgd29ya2luZyBvbiB0aGUg
+cmVzcGluLiBBdCB0aGUgbW9tZW50IEkgaW52ZXN0aWdhdGUgdGhlDQo+IERQREsgaXNzdWUgdGhh
+dCB5b3UgcmVwb3J0ZWQgYW5kIEkgd2FzIGFibGUgdG8gcmVwcm9kdWNlLg0KDQpPay4gR29vZCB0
+byBrbm93IHRoYXQgaXQgaXMgcmVwcm9kdWNpYmxlLg0KDQo+IEkgaW50ZW5kIHRvIHJlYmFzZSBv
+biB0b3Agb2YgSmVhbi1QaGlsaXBwZSdzDQo+IFtQQVRDSCB2MTIgMDAvMTBdIGlvbW11OiBJL08g
+cGFnZSBmYXVsdHMgZm9yIFNNTVV2Mw0KPiANCj4gSXMgdGhhdCBnb29kIGVub3VnaCBmb3IgeW91
+ciBTVkEgaW50ZWdyYXRpb24gb3IgZG8geW91IHdhbnQgSSBwcmVwYXJlIGENCj4gcmViYXNlIG9u
+IHNvbWUgZXh0ZW5kZWQgY29kZT8NCg0KQ291bGQgeW91IHBsZWFzZSB0cnkgdG8gYmFzZSBpdCBv
+biBodHRwczovL2pwYnJ1Y2tlci5uZXQvZ2l0L2xpbnV4L2xvZy8/aD1zdmEvY3VycmVudA0KDQpJ
+IHRoaW5rIHRoYXQgaGFzIHRoZSBsYXRlc3QgZnJvbSBKZWFuLVBoaWxpcHBlIGFuZCB3aWxsIGJl
+IGVhc3kgdG8gYWRkDQp1YWNjZS96aXAgc3BlY2lmaWMgcGF0Y2hlcyB0byB0ZXN0IFNWQS92U1ZB
+Lg0KDQpUaGFua3MsDQpTaGFtZWVyDQoNCiANCj4gVGhhbmtzDQo+IA0KPiBFcmljDQo+ID4NCj4g
+PiBUaGUgYmVsb3cgb25lIGZpeGVzIGl0LiBQbGVhc2UgY2hlY2suDQo+ID4NCj4gPiBUaGFua3Ms
+DQo+ID4gU2hhbWVlcg0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L3ZmaW8vcGNpLmMgYi9ody92
+ZmlvL3BjaS5jDQo+ID4gaW5kZXggNzk3YWNkOWM3My4uOTJjMWQ0ODMxNiAxMDA2NDQNCj4gPiAt
+LS0gYS9ody92ZmlvL3BjaS5jDQo+ID4gKysrIGIvaHcvdmZpby9wY2kuYw0KPiA+IEBAIC0zNDcw
+LDYgKzM0NzAsNyBAQCBzdGF0aWMgdm9pZCB2ZmlvX2luc3RhbmNlX2ZpbmFsaXplKE9iamVjdCAq
+b2JqKQ0KPiA+ICAgICAgdmZpb19kaXNwbGF5X2ZpbmFsaXplKHZkZXYpOw0KPiA+ICAgICAgdmZp
+b19iYXJzX2ZpbmFsaXplKHZkZXYpOw0KPiA+ICAgICAgdmZpb19yZWdpb25fZmluYWxpemUoJnZk
+ZXYtPmRtYV9mYXVsdF9yZWdpb24pOw0KPiA+ICsgICAgdmZpb19yZWdpb25fZmluYWxpemUoJnZk
+ZXYtPmRtYV9mYXVsdF9yZXNwb25zZV9yZWdpb24pOw0KPiA+ICAgICAgZ19mcmVlKHZkZXYtPmVt
+dWxhdGVkX2NvbmZpZ19iaXRzKTsNCj4gPiAgICAgIGdfZnJlZSh2ZGV2LT5yb20pOw0KPiA+ICAg
+ICAgLyoNCj4gPiBAQCAtMzQ5MSw2ICszNDkyLDcgQEAgc3RhdGljIHZvaWQgdmZpb19leGl0Zm4o
+UENJRGV2aWNlICpwZGV2KQ0KPiA+ICAgICAgdmZpb191bnJlZ2lzdGVyX2Vycl9ub3RpZmllcih2
+ZGV2KTsNCj4gPiAgICAgIHZmaW9fdW5yZWdpc3Rlcl9leHRfaXJxX25vdGlmaWVycyh2ZGV2KTsN
+Cj4gPiAgICAgIHZmaW9fcmVnaW9uX2V4aXQoJnZkZXYtPmRtYV9mYXVsdF9yZWdpb24pOw0KPiA+
+ICsgICAgdmZpb19yZWdpb25fZXhpdCgmdmRldi0+ZG1hX2ZhdWx0X3Jlc3BvbnNlX3JlZ2lvbik7
+DQo+ID4gICAgICBwY2lfZGV2aWNlX3NldF9pbnR4X3JvdXRpbmdfbm90aWZpZXIoJnZkZXYtPnBk
+ZXYsIE5VTEwpOw0KPiA+ICAgICAgaWYgKHZkZXYtPmlycWNoaXBfY2hhbmdlX25vdGlmaWVyLm5v
+dGlmeSkgew0KPiA+DQo+IGt2bV9pcnFjaGlwX3JlbW92ZV9jaGFuZ2Vfbm90aWZpZXIoJnZkZXYt
+PmlycWNoaXBfY2hhbmdlX25vdA0KPiA+DQo+ID4NCj4gPg0KDQo=

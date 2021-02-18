@@ -1,229 +1,175 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8161110lfc;
-        Thu, 18 Feb 2021 05:33:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz+YdBnMK7xF3HG/KMwsw6Oid/PF7tGaZzOVp7jfUqegV/oJJq2Bttkpq8ctLyAn8fznkMg
-X-Received: by 2002:a25:7e82:: with SMTP id z124mr6815527ybc.140.1613655213887;
-        Thu, 18 Feb 2021 05:33:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613655213; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8196805lfc;
+        Thu, 18 Feb 2021 06:21:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxJZPnB3fypHvGU+ODDHiMlqrL54hOv0EuxVgPPVcEY+3C+lvUO5zmyD8+1yq3rubPPScN+
+X-Received: by 2002:a25:190b:: with SMTP id 11mr6562597ybz.236.1613658064663;
+        Thu, 18 Feb 2021 06:21:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613658064; cv=none;
         d=google.com; s=arc-20160816;
-        b=j+NKSL+EgvjDA3lqjFu6Jfv3E1HOsbAUsb/G3b/q8jIKguw1VCYaNsY/P0y7KvUkSn
-         iHIdmerGRM0LGk77Uf52qCYcmwHKFg3hFZIQpqWvDnMwRxKhPh13l1GctRvHhLLWm0wz
-         yhJfI9LX39lIuzCFM6+fonz6xtl9mJCvGhMDWw8AZDTyr6o7zSEAZ51Is2+fXN0qXGhb
-         UMsFdeuFRm3tlOk/FO3X355ypgGwXP4UZBHdDy0l1IqqShBWUc6FHdaE1KCpKgC92/w7
-         oFWFVxPLNW19rfq9228ZkuqayYFu6hv9eCZwOoyxZQWqmHFICqS6e5rdv7ww1zbL66bO
-         DACQ==
+        b=u/mMbB10xKFE2p0zYzmsyF1lcHjhmNa57Gc2UgcV3uc0mGGrIdLu3IvgWdS/F+VKIQ
+         BCeMDOimm0oAn95X0m5OAZ9Mu8dmZtIiBOOJ2YQiOMAVa42D/FxQIsHEcGTOAd+NmrDx
+         euhnlKyJDYOhJgDUFyPm033cE/WlStg4zP7PjgeDDw51BipXg6zmFvedphC2gDVyEx1D
+         iGZS+0WNVJaW/r0hwbevWCLyzilnXy/qst6KphG6ID0Gu1W49YQZ936gzyQIg2jqrwaT
+         HF04RZMmGEBgSHr2dUhk/ehjI4GhBn7KbIOSIsGslm3HAlU0KZmAcK+PyvyAe32p+HfE
+         ZqNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=oIqM+1Y3C+7K/AyI2+LtiRPKxNzed9FDsMA4LcbKJaM=;
-        b=TAHfssSzoJ9DSeTbW0N1gKweOWbSVWs0U5zXK4/cTJhnoROuSZm9lqE1etooiFXohC
-         UPcG+sJDD1yAVm5YOAFQmcpS1kuYP5Uq04dO/Nc6VN3+OTny8ffxx/r878ZUw0EbiN3J
-         ch2X+tlnKI0xzDjAjPLHf5wAxCljXx8USEXc0WJ+f5MmYwxPY8IA3w3CyGRRdTtTquR1
-         uZnfXLxtub2d5vlFgNou8Ng7JV0dxj4sO+IuCs82+6EYIyiSz94b69S0+2L5tAd7ATph
-         q+OrcTCszgBCylIVc4nX/NvzAZjp3ZqUA0Wc/73zSV+t3XB2s9xkecigH3VCwjUWufiy
-         8bYA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=I43ZM4cmUAiPsrUU0yp3A0Q8uJQAPleQknNBrew+ckQ=;
+        b=VS58/z12SdktGuw3IBM8WO2iSD8CgxUtgmmW+8FIGCi7etMmrx55GmfllEBSEtq/fs
+         kc4Tqa1K7pYWGKyyHwhHwYNSW0FT9X7l/T7/AreHcX+4p6Y6ZY0XB/eWYeYjWi36uP66
+         KFzA76/NGjPjg4wWphA51kmNxA4v5J0f9K+yyCX7XoTJeStYhZ7fUkuUrmEEnkFukFEm
+         +bKG0DkvpAV4wLzHJzVa0DGZaUfvoo28N4ecMBbhwhFSKuMJ30Rxbuad6HZLDrfWmBWo
+         akduLzMc6Xtiv2vYEmsqhy5p4sxShIbc12du6KJOEROyMkehfSM5DzqQFihc2QnITv3p
+         SDXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b5Kak7Q8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PlQCKAqK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f16si6712015ybp.225.2021.02.18.05.33.33
+        by mx.google.com with ESMTPS id w191si4144247ybe.183.2021.02.18.06.21.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Feb 2021 05:33:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 Feb 2021 06:21:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b5Kak7Q8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PlQCKAqK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60162 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35580 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lCjQz-0004Te-8i
-	for alex.bennee@linaro.org; Thu, 18 Feb 2021 08:33:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45940)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lCkAx-0008DG-US
+	for alex.bennee@linaro.org; Thu, 18 Feb 2021 09:21:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55450)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lCjQd-0004TN-UG
- for qemu-arm@nongnu.org; Thu, 18 Feb 2021 08:33:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:33396)
+ id 1lCk7p-0006Ui-9s
+ for qemu-devel@nongnu.org; Thu, 18 Feb 2021 09:17:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39116)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lCjQa-0006ZG-C7
- for qemu-arm@nongnu.org; Thu, 18 Feb 2021 08:33:11 -0500
+ id 1lCk7i-00009V-R3
+ for qemu-devel@nongnu.org; Thu, 18 Feb 2021 09:17:46 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613655187;
+ s=mimecast20190719; t=1613657861;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oIqM+1Y3C+7K/AyI2+LtiRPKxNzed9FDsMA4LcbKJaM=;
- b=b5Kak7Q8uOJpg9kU15tTaFMzFSwSrji1WUIspLDLGurauAlGDCcK3nVo6uYp+MExs2BWoV
- /eyEkvrsdVCXh2lDl+MccAD6nP6WjMXkZt4PMocJ0F3bYu9fftT2K4ORn8a978lM4pgln2
- X/Ijz+XFRvU+tDVjFC5yiEOmgoleZ40=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=I43ZM4cmUAiPsrUU0yp3A0Q8uJQAPleQknNBrew+ckQ=;
+ b=PlQCKAqKkC5sQC9GJ8qLDxI1kix7blyZjdMO53BfWPRBLoOPRfsIZs1avUagUA3+69f6rk
+ 8CDQlUzwqSKAY4xFmcR7O7LuIBnedQN18lYJpFUKcyZWEFEaJOkc4bXvTairtMZzPDIZo9
+ uM+2i3LwU3N8/e++GQ0+zbg8qsPoenk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-572-whpZ8bfuPa6lhQZLqWkg4A-1; Thu, 18 Feb 2021 08:33:03 -0500
-X-MC-Unique: whpZ8bfuPa6lhQZLqWkg4A-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-129-qtpQNj5HO4K7EhNF_if_LA-1; Thu, 18 Feb 2021 09:17:38 -0500
+X-MC-Unique: qtpQNj5HO4K7EhNF_if_LA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0A9F21020C20;
- Thu, 18 Feb 2021 13:33:01 +0000 (UTC)
-Received: from [10.36.114.34] (ovpn-114-34.ams2.redhat.com [10.36.114.34])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3EFFD67CC0;
- Thu, 18 Feb 2021 13:32:50 +0000 (UTC)
-Subject: Re: [RFC v7 26/26] vfio/pci: Implement return_page_response page
- response callback
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>
-References: <20201116181349.11908-1-eric.auger@redhat.com>
- <20201116181349.11908-27-eric.auger@redhat.com>
- <494e4bdf5ecd4b528a016d4545d45f71@huawei.com>
- <f11ef533-da64-3d6a-24f5-79d5e7a205da@redhat.com>
- <5f85d8999c0c40a29c32ac63b8730fa8@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <679c5696-c73f-517d-f555-90ec2c767fbb@redhat.com>
-Date: Thu, 18 Feb 2021 14:32:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 98F301934107;
+ Thu, 18 Feb 2021 14:17:36 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-34.ams2.redhat.com [10.36.114.34])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 590425B6A4;
+ Thu, 18 Feb 2021 14:16:53 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org
+Subject: [PATCH] virtio-iommu: Handle non power of 2 range invalidations
+Date: Thu, 18 Feb 2021 15:16:50 +0100
+Message-Id: <20210218141650.424967-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <5f85d8999c0c40a29c32ac63b8730fa8@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>,
- "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "tn@semihalf.com" <tn@semihalf.com>, "peterx@redhat.com" <peterx@redhat.com>,
- "nicoleotsuka@gmail.com" <nicoleotsuka@gmail.com>,
- "vivek.gautam@arm.com" <vivek.gautam@arm.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- "zhangfei.gao@gmail.com" <zhangfei.gao@gmail.com>,
- yuzenghui <yuzenghui@huawei.com>, qubingbing <qubingbing@hisilicon.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jyhBN8DloLEG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: vivek.gautam@arm.com, jasowang@redhat.com, peterx@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: H2DuE4q92ahL
 
-Hi Shameer,
+Unmap notifiers work with an address mask assuming an
+invalidation range of a power of 2. Nothing mandates this
+in the VIRTIO-IOMMU spec.
 
-On 2/18/21 12:46 PM, Shameerali Kolothum Thodi wrote:
-> 
-> Hi Eric,
-> 
->> -----Original Message-----
->> From: Auger Eric [mailto:eric.auger@redhat.com]
->> Sent: 18 February 2021 10:42
->> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
->> eric.auger.pro@gmail.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org;
->> alex.williamson@redhat.com
->> Cc: peter.maydell@linaro.org; jacob.jun.pan@linux.intel.com; Zengtao (B)
->> <prime.zeng@hisilicon.com>; jean-philippe@linaro.org; tn@semihalf.com;
->> peterx@redhat.com; nicoleotsuka@gmail.com; vivek.gautam@arm.com;
->> yi.l.liu@intel.com; zhangfei.gao@gmail.com; yuzenghui
->> <yuzenghui@huawei.com>; qubingbing <qubingbing@hisilicon.com>
->> Subject: Re: [RFC v7 26/26] vfio/pci: Implement return_page_response page
->> response callback
->>
-> [...]
-> 
->>> Also, I just noted that this patch breaks the dev hot add/del functionality.
->>> device_add works fine but device_del is not removing the dev cleanly.Thank
->> you for reporting this!
->>
->> The test matrix becomes bigger and bigger :-( I Need to write some
->> avocado-vt tests or alike.
->>
->> I am currently working on the respin. At the moment I investigate the
->> DPDK issue that you reported and I was able to reproduce.
-> 
-> Ok. Good to know that it is reproducible.
-> 
->> I intend to rebase on top of Jean-Philippe's
->> [PATCH v12 00/10] iommu: I/O page faults for SMMUv3
->>
->> Is that good enough for your SVA integration or do you want I prepare a
->> rebase on some extended code?
-> 
-> Could you please try to base it on https://jpbrucker.net/git/linux/log/?h=sva/current
+So in case the range is not a power of 2, split it into
+several invalidations.
 
-OK. At least I will provide a branch.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/virtio/virtio-iommu.c | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
 
-Eric
-> 
-> I think that has the latest from Jean-Philippe and will be easy to add
-> uacce/zip specific patches to test SVA/vSVA.
-> 
-> Thanks,
-> Shameer
-> 
->  
->> Thanks
->>
->> Eric
->>>
->>> The below one fixes it. Please check.
->>>
->>> Thanks,
->>> Shameer
->>>
->>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->>> index 797acd9c73..92c1d48316 100644
->>> --- a/hw/vfio/pci.c
->>> +++ b/hw/vfio/pci.c
->>> @@ -3470,6 +3470,7 @@ static void vfio_instance_finalize(Object *obj)
->>>      vfio_display_finalize(vdev);
->>>      vfio_bars_finalize(vdev);
->>>      vfio_region_finalize(&vdev->dma_fault_region);
->>> +    vfio_region_finalize(&vdev->dma_fault_response_region);
->>>      g_free(vdev->emulated_config_bits);
->>>      g_free(vdev->rom);
->>>      /*
->>> @@ -3491,6 +3492,7 @@ static void vfio_exitfn(PCIDevice *pdev)
->>>      vfio_unregister_err_notifier(vdev);
->>>      vfio_unregister_ext_irq_notifiers(vdev);
->>>      vfio_region_exit(&vdev->dma_fault_region);
->>> +    vfio_region_exit(&vdev->dma_fault_response_region);
->>>      pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
->>>      if (vdev->irqchip_change_notifier.notify) {
->>>
->> kvm_irqchip_remove_change_notifier(&vdev->irqchip_change_not
->>>
->>>
->>>
-> 
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index c2883a2f6c..a4104c99ad 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -155,6 +155,8 @@ static void virtio_iommu_notify_unmap(IOMMUMemoryRegion *mr, hwaddr virt_start,
+                                       hwaddr virt_end)
+ {
+     IOMMUTLBEvent event;
++    uint64_t mask = virt_end - virt_start;
++    uint64_t size;
+ 
+     if (!(mr->iommu_notify_flags & IOMMU_NOTIFIER_UNMAP)) {
+         return;
+@@ -164,12 +166,27 @@ static void virtio_iommu_notify_unmap(IOMMUMemoryRegion *mr, hwaddr virt_start,
+ 
+     event.type = IOMMU_NOTIFIER_UNMAP;
+     event.entry.target_as = &address_space_memory;
+-    event.entry.addr_mask = virt_end - virt_start;
+-    event.entry.iova = virt_start;
+     event.entry.perm = IOMMU_NONE;
+     event.entry.translated_addr = 0;
++    event.entry.addr_mask = mask;
++    event.entry.iova = virt_start;
+ 
+-    memory_region_notify_iommu(mr, 0, event);
++    if (mask == UINT64_MAX) {
++        memory_region_notify_iommu(mr, 0, event);
++    }
++
++    size = mask + 1;
++
++    while (size) {
++        uint8_t highest_bit = 64 - clz64(size) - 1;
++        uint64_t pow2size = BIT_ULL(highest_bit);
++
++        event.entry.addr_mask = pow2size - 1;
++        event.entry.iova = virt_start;
++        memory_region_notify_iommu(mr, 0, event);
++        size &= ~pow2size;
++        virt_start += pow2size;
++    }
+ }
+ 
+ static gboolean virtio_iommu_notify_unmap_cb(gpointer key, gpointer value,
+-- 
+2.26.2
 

@@ -1,102 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9096766lfc;
-        Fri, 19 Feb 2021 07:12:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxCy3XV6JlsU9xL5Wwsldb6NsZE0OYVTQhYfP8J3Hr9bR1oJgFT4NHEYuIVD3hG3/ALRJt7
-X-Received: by 2002:a25:d296:: with SMTP id j144mr14567404ybg.33.1613747550284;
-        Fri, 19 Feb 2021 07:12:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613747550; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9097112lfc;
+        Fri, 19 Feb 2021 07:12:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwaXKJXluJoImUmG7lVgs0lO+as9lZEe3vlTdA4UHrxv1Pl/Kc+0mzjSC+r3CRFiKoxTXVQ
+X-Received: by 2002:a25:f40e:: with SMTP id q14mr13678315ybd.230.1613747573285;
+        Fri, 19 Feb 2021 07:12:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613747573; cv=none;
         d=google.com; s=arc-20160816;
-        b=rCcjsyVq3OBQtOn2ymmTQISLCCWSPeLZlmjjvvxIuNiq8cmeTNtS/osVMqxFqZL78x
-         lHGssbKQAWoCGzZDym3DQm7K8U0cCyESFOzsQLF3tm6/9gcV2pRidPynmDR7m/E1lqps
-         +NWjS7u09LzzZmkzSxaU+VYR+GvBIKtdNr5Gqhq2GPTnmOFyGCWqQE4dmVYAr09kZMLa
-         Be/OCyneA6UcciFt1pIl2zlBx6wdBUcKSMS6SEp5RnrvYkd6QFjlxnzKlhN0pQTFUMAG
-         2HlpoW6U/G/yy6q3sgTmBp9damAzK2R03USyaGdE2rtA9dDlPeUKSkod4cCWCwUkRYKz
-         DUyQ==
+        b=ZENMDMQiRjjqgc82kSudjmZ8WtxgeCv4TrljEUuVqTGROIK+cnv6K2XjGhk5lXUHex
+         ZQ7ap3TtFFIL9OjS8fhc64AhASypKREseLhO7JZZUbFXuPfNR9M4JWjjlbI+oaOOUa82
+         q+dIONWdpaCw72FHQSB55YElk/iYJoSlZfGFlBKY7C1+CXdcZhSLUZIcwt4GLwspOluK
+         CHISyP7M2R7xdTRecqCEYfnHrKyVReuf95OkCrSNpVqxgBf6T5hiq+yYgBrYAOMp0JmJ
+         yFXpg7Mnqb/jgc30j2O/pITbFOKtOR4ac723WoPSfqh0u52i7zhoMvhMQ7IllXWoyfAm
+         zllA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=zKYWvcFtzDPV4Ks85TZ4B/LPAikGy0iTqTLoenNGpWQ=;
-        b=GPSZAHXTB80hsQ6CoukqbZK6G92ALEmQlaFqfa9lRLKej7a/lNtRrdODm55xQ1cJfV
-         nS2Wf3Zb4KIjTa6MCY5DE0nTPdWNCh4XM3DRmF6ZTeDRSCAdEAwityIwf7gR8LmXDQek
-         TIlQ3fNi2flwmcxde6gRNTY1xH45MAVXt9EXcZcYjT/DPGgZdIbjXuMwpwTsIMjGN6Pi
-         7ojHhtLRTRUJ4jLVStxWTqVCkiIqkO+Xn3AwyfHjlOaal8tfkoO9O7WfUW/DeiNATdTP
-         rpizhbT7I35vKaAc8W+Yc4SOegCaOIHnIvV+Ir7cYoE9iOUDavptAV1oGuwSlbRewjoP
-         L1jQ==
+        bh=QkE/LCPztd/fooCg8iFxYM64YiAVSgQbEacYkK19vlo=;
+        b=IQ5X6325xI/UkkoVAYpFZ1QwPZyKhOTQ0ry7ON23jMe3Xe48sa7Lb+wg5OczVgHN9S
+         6bYveM4b+mtazhp4bv+M2tCR8Pm1H38NblauSFt1nSwTaCW2QzLEKBgSNXnoN7U7Vr09
+         569IK59kGxiHrgAz61xqcOcva5SQb0KMzRgFXaCPV/5c2Vtzy6GmNuYo/rWnugRqsuoh
+         5wUyncP/u9TR+xIrDyjSIwzWsbB4KXLeWGyeYXsML7i9ZxT09vG+MKfSP4bSyb5msEXO
+         1L3cTk1I10wnObUkRQvZO02TpBALP0fRSApeobLepeSUF/HfT4dQYWRBF7IhOOkJGt8U
+         Q9cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LnSyDFfr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JTrPe5Rz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y123si8229916ybc.263.2021.02.19.07.12.30
+        by mx.google.com with ESMTPS id r80si10047571ybc.88.2021.02.19.07.12.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 07:12:30 -0800 (PST)
+        Fri, 19 Feb 2021 07:12:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LnSyDFfr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JTrPe5Rz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45050 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46246 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7SH-0000tr-KF
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:12:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34362)
+	id 1lD7Se-0001OX-HR
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:12:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34064)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73u-0002nk-OS
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:18 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:36958)
+ id 1lD73f-0002Uo-2x
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:03 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:40717)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73S-0003f9-Hx
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:18 -0500
-Received: by mail-wr1-x432.google.com with SMTP id v15so8902609wrx.4
- for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:50 -0800 (PST)
+ id 1lD73H-0003Yj-Rq
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:02 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id v14so8881255wro.7
+ for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=zKYWvcFtzDPV4Ks85TZ4B/LPAikGy0iTqTLoenNGpWQ=;
- b=LnSyDFfrmunbU0hI1erWmjP714qjEU9EnpBFLSDkWqWs65rA/R/0LEgElqBdpxwVHU
- ZdLx6NZTN3mDfBWsaJMQP8hp0TqP8sFkFfed8a02qnb0n845MZOAhY+FtIZn4VQverEs
- kohVDGqTO37qp4bOFJ1j27ouzOcSgX2qKFVMeEaKIlym9mzLjTjiUfXLdUA4Y+HJl2v9
- aXPiXRZ9I49qrSALK4UPbf/gDrqbrsTyszuK1apaUK0SG0rQkfYeUMNa87Wzy8UpZu1j
- 3YL+vspCgSEFCLZEq41a9kuCCr5SN/X21zB4M/+p/F/cwb9p5mZgg+Oo5y/Bv2upEFmG
- 33cA==
+ bh=QkE/LCPztd/fooCg8iFxYM64YiAVSgQbEacYkK19vlo=;
+ b=JTrPe5Rzhf6K1cS3Ld+lwMBTyH5JUVWBN5nU675gtdDsjlVcsaVnFs0yNwa/XNt9cE
+ OhI1cktUN+0WCno2LQdcX7cnD6BRQ2enMA+AAP0hO3CYcAyRKLn/rZ015lqAEW5SIE7k
+ R696/FR54wH9OPsHzPJbdi5/hwFjvU5ezw01egGC3GmVmuj6OpU0Okk5HUjWztXzVcqW
+ oIpMYRgecyiQIMWRpOGe4MB9ySpeaLm1EVx1mpFaqcmtqpu0prOwGp5O6vtVtqJEN9nV
+ Zg5Kl0lvJtxR8X8HrMzAwG80gfywP//fMZePN6mUq+hxgiWDOimuqH3VWr2e3h7iq9t8
+ 1TXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=zKYWvcFtzDPV4Ks85TZ4B/LPAikGy0iTqTLoenNGpWQ=;
- b=sf26ODiDi9Sk7T8f2Dhgx6Vv0E7pxJiE9fKxbgyIvMdklxt/YOJZ/OQVUFBb1Z2pIn
- 7gW4nhX1OiHw8lmwMJCpaY0jilPoVer6jMsUsDg+PmHzQa8yOi4c6p3RxrsOF5T6MN1V
- D9NXsuk3hFo32e8pOdtjsixC/74z57gHjhljg0vHSHIZCgolw/ONRDbG3hkc17nHH3Sz
- O6JRo4ZCQ8ScuKqTyBVGnKT0NH7ZrZ3HlJcnfHC1KS8SIz9Nhvc85FNKVre1x+qWLd9u
- E9jq7RcPXm3JMjhrgSH3m5hfHuKTxx/GWf+wuGsMkS9JIHKbi8UKFgDRXq5mgxzqv/2I
- q69A==
-X-Gm-Message-State: AOAM533gDaEpMs/vk6vnXDVA3m6KL2rNwDQk7He4O/coxvGy9K38DKvI
- VWhF/LmOjbIOfwV05pkF0BhwvJ+Gy3P6bw==
-X-Received: by 2002:adf:b60e:: with SMTP id f14mr9588342wre.99.1613746009194; 
- Fri, 19 Feb 2021 06:46:49 -0800 (PST)
+ bh=QkE/LCPztd/fooCg8iFxYM64YiAVSgQbEacYkK19vlo=;
+ b=QsDixWzJ3IYcV/j+i2Oj0QSBLRb8bTl4qzG5be3qqcaNoFAiiDwCZXxK5qZ7hkO1Ue
+ c3vnqHfXjHnDPQ9JCzq8LLTDN4A4ht7QVxG32ppWUsg6tQrlzHh3bmz5P4e2rUkkzzUB
+ eT8RVMjGuZEoy3+LyuqMMCmzMOkI77jmSFyhXZ3SN1xsU6EoojqAmXT6YiWszSJ53bAv
+ 3Hn+QqYX8B2dhuZcif/0DsSaekBzC1169qEm3lDlSVq197o5x+15ACXem0QukTyIdjls
+ yq12Iho+7dDF2ydfsJUn6JVFXdnKvaEtUVLufGverAkUtz4ZCkGec3i07x7ONLu6rnof
+ tvUQ==
+X-Gm-Message-State: AOAM532QifcIn38KKSWSiW9Q7t6lAgxb97RJG46GelGfGO6upXtJgnXl
+ aNNC5v35mo7m56QfVyuSDSF9kg==
+X-Received: by 2002:adf:fb51:: with SMTP id c17mr9774198wrs.145.1613745998361; 
+ Fri, 19 Feb 2021 06:46:38 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.48
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:48 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:38 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 39/44] hw/misc/mps2-scc: Implement changes for AN547
-Date: Fri, 19 Feb 2021 14:46:12 +0000
-Message-Id: <20210219144617.4782-40-peter.maydell@linaro.org>
+Subject: [PATCH 24/44] hw/arm/armsse: Move dual-timer device into data-driven
+ framework
+Date: Fri, 19 Feb 2021 14:45:57 +0000
+Message-Id: <20210219144617.4782-25-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,79 +119,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sJhBst9RyNui
+X-TUID: 8uN9dL82R2yi
 
-Implement the minor changes required to the SCC block for AN547 images:
- * CFG2 and CFG5 exist (like AN524)
- * CFG3 is reserved (like AN524)
- * CFG0 bit 1 is CPU_WAIT; we don't implement it, but note this
-   in the TODO comment
+Move the CMSDK dualtimer device handling into the data-driven
+device placement framework.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/mps2-scc.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ hw/arm/armsse.c | 35 +++++++++++++++++++++--------------
+ 1 file changed, 21 insertions(+), 14 deletions(-)
 
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index 140a4b9ceba..c56aca86ad5 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -110,14 +110,14 @@ static uint64_t mps2_scc_read(void *opaque, hwaddr offset, unsigned size)
-         r = s->cfg1;
-         break;
-     case A_CFG2:
--        if (scc_partno(s) != 0x524) {
-+        if (scc_partno(s) != 0x524 && scc_partno(s) != 0x547) {
-             /* CFG2 reserved on other boards */
-             goto bad_offset;
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 22dd437a4ba..f8da7fb00f9 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -105,6 +105,15 @@ static const ARMSSEDeviceInfo sse200_devices[] = {
+         .ppc_port = 1,
+         .irq = 4,
+     },
++    {
++        .name = "dualtimer",
++        .type = TYPE_CMSDK_APB_DUALTIMER,
++        .index = 0,
++        .addr = 0x40002000,
++        .ppc = 0,
++        .ppc_port = 2,
++        .irq = 5,
++    },
+     {
+         .name = NULL,
+     }
+@@ -346,6 +355,10 @@ static void armsse_init(Object *obj)
+             object_initialize_child(obj, devinfo->name,
+                                     &s->timer[devinfo->index],
+                                     TYPE_CMSDK_APB_TIMER);
++        } else if (!strcmp(devinfo->type, TYPE_CMSDK_APB_DUALTIMER)) {
++            assert(devinfo->index == 0);
++            object_initialize_child(obj, devinfo->name, &s->dualtimer,
++                                    TYPE_CMSDK_APB_DUALTIMER);
+         } else {
+             g_assert_not_reached();
          }
-         r = s->cfg2;
-         break;
-     case A_CFG3:
--        if (scc_partno(s) == 0x524) {
-+        if (scc_partno(s) == 0x524 && scc_partno(s) == 0x547) {
-             /* CFG3 reserved on AN524 */
-             goto bad_offset;
+@@ -375,8 +388,6 @@ static void armsse_init(Object *obj)
+     }
+     object_initialize_child(obj, "s32ktimer", &s->s32ktimer,
+                             TYPE_CMSDK_APB_TIMER);
+-    object_initialize_child(obj, "dualtimer", &s->dualtimer,
+-                            TYPE_CMSDK_APB_DUALTIMER);
+     object_initialize_child(obj, "s32kwatchdog", &s->s32kwatchdog,
+                             TYPE_CMSDK_APB_WATCHDOG);
+     object_initialize_child(obj, "nswatchdog", &s->nswatchdog,
+@@ -808,6 +819,14 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+                 return;
+             }
+             mr = sysbus_mmio_get_region(sbd, 0);
++        } else if (!strcmp(devinfo->type, TYPE_CMSDK_APB_DUALTIMER)) {
++            sbd = SYS_BUS_DEVICE(&s->dualtimer);
++
++            qdev_connect_clock_in(DEVICE(sbd), "TIMCLK", s->mainclk);
++            if (!sysbus_realize(sbd, errp)) {
++                return;
++            }
++            mr = sysbus_mmio_get_region(sbd, 0);
+         } else {
+             g_assert_not_reached();
          }
-@@ -130,7 +130,7 @@ static uint64_t mps2_scc_read(void *opaque, hwaddr offset, unsigned size)
-         r = s->cfg4;
-         break;
-     case A_CFG5:
--        if (scc_partno(s) != 0x524) {
-+        if (scc_partno(s) != 0x524 && scc_partno(s) != 0x547) {
-             /* CFG5 reserved on other boards */
-             goto bad_offset;
+@@ -844,16 +863,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
          }
-@@ -185,7 +185,10 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
+     }
  
-     switch (offset) {
-     case A_CFG0:
--        /* TODO on some boards bit 0 controls RAM remapping */
-+        /*
-+         * TODO on some boards bit 0 controls RAM remapping;
-+         * on others bit 1 is CPU_WAIT.
-+         */
-         s->cfg0 = value;
-         break;
-     case A_CFG1:
-@@ -195,7 +198,7 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
-         }
-         break;
-     case A_CFG2:
--        if (scc_partno(s) != 0x524) {
-+        if (scc_partno(s) != 0x524 && scc_partno(s) != 0x547) {
-             /* CFG2 reserved on other boards */
-             goto bad_offset;
-         }
-@@ -203,7 +206,7 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
-         s->cfg2 = value;
-         break;
-     case A_CFG5:
--        if (scc_partno(s) != 0x524) {
-+        if (scc_partno(s) != 0x524 && scc_partno(s) != 0x547) {
-             /* CFG5 reserved on other boards */
-             goto bad_offset;
-         }
+-    qdev_connect_clock_in(DEVICE(&s->dualtimer), "TIMCLK", s->mainclk);
+-    if (!sysbus_realize(SYS_BUS_DEVICE(&s->dualtimer), errp)) {
+-        return;
+-    }
+-    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dualtimer), 0,
+-                       armsse_get_common_irq_in(s, 5));
+-    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dualtimer), 0);
+-    object_property_set_link(OBJECT(&s->apb_ppc[0]), "port[2]", OBJECT(mr),
+-                             &error_abort);
+-
+     if (info->has_mhus) {
+         /*
+          * An SSE-200 with only one CPU should have only one MHU created,
+@@ -901,8 +910,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     sbd_apb_ppc0 = SYS_BUS_DEVICE(&s->apb_ppc[0]);
+     dev_apb_ppc0 = DEVICE(&s->apb_ppc[0]);
+ 
+-    mr = sysbus_mmio_get_region(sbd_apb_ppc0, 2);
+-    memory_region_add_subregion(&s->container, 0x40002000, mr);
+     if (info->has_mhus) {
+         mr = sysbus_mmio_get_region(sbd_apb_ppc0, 3);
+         memory_region_add_subregion(&s->container, 0x40003000, mr);
 -- 
 2.20.1
 

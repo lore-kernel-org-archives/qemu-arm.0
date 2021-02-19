@@ -1,744 +1,182 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9084260lfc;
-        Fri, 19 Feb 2021 06:59:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyXgbU4trcnuMDYyZ3HVvWnX+b8fiQHncOLtZw8/glPEhBYP8kpC85P2epqrj+ZjecsTSHk
-X-Received: by 2002:a25:4a84:: with SMTP id x126mr14160806yba.408.1613746746053;
-        Fri, 19 Feb 2021 06:59:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613746746; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9084428lfc;
+        Fri, 19 Feb 2021 06:59:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw2297UkP7Xb5LvheWJiGgRFlJajH/8ZG6OZaSko0+yqvJWVWaZM+IsgM/r2cs4k6LqC68D
+X-Received: by 2002:a25:aa43:: with SMTP id s61mr15452033ybi.32.1613746763056;
+        Fri, 19 Feb 2021 06:59:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613746763; cv=none;
         d=google.com; s=arc-20160816;
-        b=LJL3tDF8ne008KxvjHLmsRjJ1jBmPQWbPrObZ5SEAjVE6M8ocih8JFrHYNfq0jMngV
-         Ifzi0YYco3fiN9CZ7kmMQ4Orx6shUCMxckONke1fLhyJqBGbfv1v8XaTSyhYaxJnQV7U
-         hdZ2TH9fxB/A4pqJZyd5rOLIUsAN6zevj0t8A/C5uX3+J558PxDvcuDJihwFUtNmr+eg
-         WX1ehe0ojfxq+YCOqlMdnDF6WsEYFSHRPeuLAK/6Kdx2AoyJJWKKk2PuvYLzGRM1NikA
-         xa8n1Q7swKCxX/i9pOB0RA5rA69icvvnpG8+YMD66bROZKszGJa9w8ElMXopodDEXy3d
-         uApQ==
+        b=kOzyzEC30KOU++yiI4rzmTS4kq552ZZ8ZYFOu5S65Q8S973E36SpK1yxnmR8ChKvsI
+         fGjjtsCyBNT14BDVShkwxdp0I2jEiur7BHu2SVCCDxlaf9S7l79BbYXj2wr7CVjZ9Udi
+         lgnCUf8mDiEOpqHeAfG2Svt2SXz/SuHGagHqIVWmN0Fmsa7/7OEZ4t/68HUD/B7hdXv+
+         O01uhm2RquLGtGOF6p3EhwQQpsNiTySPN2Z4nhvL5gFQ6ju4aV91fakuHtDG+HV9rKjA
+         A7ZOlrKWTRUnYO2WuRosBdcSjxO3yq2zXUwdjCBVE2DRoCaJB5FJq6fixmPcA8q6MHfA
+         r63g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=e/AKBMpHceDwU1Co+FrJQpPI3HzQZjvhRAO2x8uFtWI=;
-        b=E8Qj13NJLM89aSNo05Qvfc2iN17G9yoh0BJg3Ef9DBkSHBWt36tk5qtq2tR5sBr/TA
-         Ls/OIXznGM4oK2JlPUrIIXikmGYxlhRPtezSLYpJvRuhCdzLN3cFYP4n4/trLoR1FXsm
-         WUiTxLmcxSLcOlv6w8E0IR9OPIEzW16paQd5UQiLsBS6IRRDNHNv/YxrIVXnjlKTjQHN
-         Dim1VMIkxW7WwqOm3X/zCBHA7W/2B+Lwiqqx0ueiG4l1ZfN6STsTcEf5kOtgx/OeC0Ho
-         w07AcW6KLgqXL7wMxGxXLn0cjU/hT+Wx7pOpgbpArHkd2dsRr2M2YH7O5BFqb4HM4kxC
-         O5/A==
+        bh=B93kEzuBtL1t+F0ap6ZkJU+6zXhaZkvFeOMgU9Fv5ag=;
+        b=DEhXq6nGMXwTbAwo4V4o5r4NUGivtzESP5acdEYug9yMR0oBxwo0ezKdhtTpDsftFT
+         dLGS3wtcPIqRSqcXNxh17eISDKI4iIptlLNIIeGEEdQQoHagtuF6qHpJqG75ULKmRRcq
+         v1B36M+rPnhkxKORUxgdWFBlr4wq2CoFVb8S1eVaN+Zok/aGK0hrIhHUqHcr+2fqPKww
+         dWqZ1ZnY2VRlcmrRhiRwxi+2Pp5Th5Bl01oPLKKQZqHzOEMBF7kAW0SaetXC9rdz1Sao
+         egV/H+ZEAiow7VOf8Rd+jIK7yrCxbtzre7hJho4OLtIUGqTJY+FCJbfqReLv5fD0hxLF
+         AsWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dk4kjBKM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xb5RXO32;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 63si8768580ybr.66.2021.02.19.06.59.05
+        by mx.google.com with ESMTPS id s11si7964336ybk.167.2021.02.19.06.59.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 06:59:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Feb 2021 06:59:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dk4kjBKM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xb5RXO32;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7FJ-0001BD-A2
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:59:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33662)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lD7Fa-00016E-DL
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:59:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73N-0002B1-Et
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:46:45 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:38710)
+ id 1lD73c-0002Ss-Pq
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:01 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:38704)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD739-0003S2-H3
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:46:45 -0500
-Received: by mail-wm1-x334.google.com with SMTP id x4so7881551wmi.3
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 06:46:30 -0800 (PST)
+ id 1lD73G-0003Xh-Ay
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:00 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id x4so7881888wmi.3
+ for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=e/AKBMpHceDwU1Co+FrJQpPI3HzQZjvhRAO2x8uFtWI=;
- b=Dk4kjBKM1NgZvK2jWzjNutik0BlkJzDHGsgo3xi+BVsQ5cEnPctzGa2Et1ocWNTR2k
- lT+lZy7BYZPQFsDC3l2ZvxpEthD7PFdKA01YDpWtrbgZUfDSAa2f7+KqZrx0ZJOG9DSX
- xY2WMArLBXcwLuPxGRSMkrgw/FHqfSnMfseXUB6X4A+p4aUm1ixP7UXIfNqRHxGbpr3c
- N3wwyjGv8REjuNZnS+x+qR78Uiy/ogRXRq7q8ExAttV9tP3pe3IAhoRixPENE1qoKNo+
- EUiYnac4Gl/c8hEDGVCReBNpUjexdJyOEh8TGMkATJ0jRRefY/e37KRuaL+tyzLk9hF2
- Yppg==
+ bh=B93kEzuBtL1t+F0ap6ZkJU+6zXhaZkvFeOMgU9Fv5ag=;
+ b=xb5RXO32LLtcLp2ZEaEbv/H84UjoXc+9YGP8Wg4Boe7sysDABcpWkBcaxFxavQNHa8
+ 9W/z+Cx8krcm+CYAlkw3kCBKw/P08a3gMipD2IP2rHG/ryHIwJZm3gXlJN4KXKYMMKjm
+ 7G9SURptTyPW70FgZrRZIuHyDcg0zQ6AUuK4gikR1V1ileJfGMdvkrUtEaYP3SMadS8o
+ KAFeEM367pKOJJRfSXAb96HbSQyem9sl7xr6EE1+b24OjRJgdAwlZ6awGPVImVqL0ehV
+ VoHUPB6hYEC0SCsYIhDD5J0Ar1YrFHHS2DOLZpBbdrNabJ6MQc/YlUWVCMKvFzko8wZy
+ Bn6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=e/AKBMpHceDwU1Co+FrJQpPI3HzQZjvhRAO2x8uFtWI=;
- b=XXYlMLPWCnvzWqpPtgPv/uMMQFZ/EDhzAo6ib5AMRFHAmqk6UgiCCl77BtpQDD5hFw
- CRj4nAE67E29Fc4ldZdz2nRVGGi4rBsn8MAv8XQ+FXYQzvA3ywx4rUzpdjMClkSG2Drm
- FNmt2JzRJ3XcQC4a9L/yvTP/6mFv1Ki/fEcbY8eHJ9Kf1GJbYuO69PWysQ5XlW77MnjV
- lHNjejvguKk/Z1UVhGPTDLrBFONi0nTtuH2qACjps/YVStpelJhYCAsCGBPefZZ3q4bp
- T1+sx5U1Qpeb/kddR+LH3xPz8DsQ0QdIbWq1y7Lj10KFO6YS+jmZ+rl0AGRcBBIzhzXO
- XuCA==
-X-Gm-Message-State: AOAM533IwfPMqsrMAswZJ8Bb0FU7KMwf//dwyB/Z8e7twTYJ0KosBDXD
- oU/AH22cttgjmE9XsRiC8e5I131vCLKB6Q==
-X-Received: by 2002:a05:600c:430b:: with SMTP id
- p11mr8630105wme.29.1613745989692; 
- Fri, 19 Feb 2021 06:46:29 -0800 (PST)
+ bh=B93kEzuBtL1t+F0ap6ZkJU+6zXhaZkvFeOMgU9Fv5ag=;
+ b=gku88wyzSk4bD/3fYYyRT46JvmIdDRr0hg9zbAvL0gAR12a2rHaf1cFtpnlOq9vyfc
+ xWqfzfLDQVQCNZ2RhwDaSIUvph5YXld3pOGQMGpNyTu9PGA0CRpqwbb6paL36buI1MDx
+ oJnvQlRbOmERD38Dehs4YdUA7tQpv0Zi77vmFQjzeuH8yragUpNfJXmfBg6IoBUoC7oD
+ p7C+h2RasZUu5kdd6gxegubezEj/g7ss7NqLcb9MJ+pzHaOmx0XqIIb5OgIbGERyI36t
+ WnThJdfvQUnLzSqtmKUISDNiw3ga7hpkytkuIzrxAnqlmtK5xGT82Tfr4ZC+DrRAiHRB
+ 7Hdw==
+X-Gm-Message-State: AOAM532tnVToYeowsdTzYP6gevXjpisXlCFm41euOPM8gQTECdqHtjU5
+ 9ExtEZzA8sFHX4N+5Lvbat5agg==
+X-Received: by 2002:a1c:41d6:: with SMTP id o205mr8230867wma.80.1613745996892; 
+ Fri, 19 Feb 2021 06:46:36 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.28
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:29 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:36 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 12/44] hw/timer/sse-timer: Model the SSE Subsystem System Timer
-Date: Fri, 19 Feb 2021 14:45:45 +0000
-Message-Id: <20210219144617.4782-13-peter.maydell@linaro.org>
+Subject: [PATCH 22/44] hw/arm/armsse: Add a define for number of IRQs used by
+ the SSE itself
+Date: Fri, 19 Feb 2021 14:45:55 +0000
+Message-Id: <20210219144617.4782-23-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NZN8Icy9weFe
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Qbek+CLz0DBe
 
-The SSE-300 includes some timers which are a different kind to
-those in the SSE-200. Model them.
-
-These timers are documented in the SSE-123 Example Subsystem
-Technical Reference Manual:
- https://developer.arm.com/documentation/101370/latest/
+The SSE uses 32 interrupts for its own devices, and then passes through
+its expansion IRQ inputs to the CPU's interrupts 33 and upward.
+Add a define for the number of IRQs the SSE uses for itself, instead
+of hardcoding 32.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/timer/sse-timer.h |  53 ++++
- hw/timer/sse-timer.c         | 470 +++++++++++++++++++++++++++++++++++
- MAINTAINERS                  |   2 +
- hw/arm/Kconfig               |   1 +
- hw/timer/Kconfig             |   3 +
- hw/timer/meson.build         |   1 +
- hw/timer/trace-events        |   5 +
- 7 files changed, 535 insertions(+)
- create mode 100644 include/hw/timer/sse-timer.h
- create mode 100644 hw/timer/sse-timer.c
+ include/hw/arm/armsse.h | 5 ++++-
+ hw/arm/armsse.c         | 4 ++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/timer/sse-timer.h b/include/hw/timer/sse-timer.h
-new file mode 100644
-index 00000000000..b4ee8e7f6c4
---- /dev/null
-+++ b/include/hw/timer/sse-timer.h
-@@ -0,0 +1,53 @@
-+/*
-+ * Arm SSE Subsystem System Timer
-+ *
-+ * Copyright (c) 2020 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 or
-+ * (at your option) any later version.
-+ */
-+
-+/*
-+ * This is a model of the "System timer" which is documented in
-+ * the Arm SSE-123 Example Subsystem Technical Reference Manual:
-+ * https://developer.arm.com/documentation/101370/latest/
-+ *
-+ * QEMU interface:
-+ *  + QOM property "counter": link property to be set to the
-+ *    TYPE_SSE_COUNTER timestamp counter device this timer runs off
-+ *  + sysbus MMIO region 0: the register bank
-+ *  + sysbus IRQ 0: timer interrupt
-+ */
-+
-+#ifndef SSE_TIMER_H
-+#define SSE_TIMER_H
-+
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
-+#include "hw/timer/sse-counter.h"
-+
-+#define TYPE_SSE_TIMER "sse-timer"
-+OBJECT_DECLARE_SIMPLE_TYPE(SSETimer, SSE_TIMER)
-+
-+struct SSETimer {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+    SSECounter *counter;
-+    QEMUTimer timer;
-+    Notifier counter_notifier;
-+
-+    uint32_t cntfrq;
-+    uint32_t cntp_ctl;
-+    uint64_t cntp_cval;
-+    uint64_t cntp_aival;
-+    uint32_t cntp_aival_ctl;
-+    uint32_t cntp_aival_reload;
-+};
-+
-+#endif
-diff --git a/hw/timer/sse-timer.c b/hw/timer/sse-timer.c
-new file mode 100644
-index 00000000000..8dbe6ac651e
---- /dev/null
-+++ b/hw/timer/sse-timer.c
-@@ -0,0 +1,470 @@
-+/*
-+ * Arm SSE Subsystem System Timer
-+ *
-+ * Copyright (c) 2020 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 or
-+ * (at your option) any later version.
-+ */
-+
-+/*
-+ * This is a model of the "System timer" which is documented in
-+ * the Arm SSE-123 Example Subsystem Technical Reference Manual:
-+ * https://developer.arm.com/documentation/101370/latest/
-+ *
-+ * The timer is based around a simple 64-bit incrementing counter
-+ * (readable from CNTPCT_HI/LO). The timer fires when
-+ *  Counter - CompareValue >= 0.
-+ * The CompareValue is guest-writable, via CNTP_CVAL_HI/LO.
-+ * CNTP_TVAL is an alternative view of the CompareValue defined by
-+ *  TimerValue = CompareValue[31:0] - Counter[31:0]
-+ * which can be both read and written.
-+ * This part is similar to the generic timer in an Arm A-class CPU.
-+ *
-+ * The timer also has a separate auto-increment timer. When this
-+ * timer is enabled, then the AutoIncrValue is set to:
-+ *  AutoIncrValue = Reload + Counter
-+ * and this timer fires when
-+ *  Counter - AutoIncrValue >= 0
-+ * at which point, an interrupt is generated and the new AutoIncrValue
-+ * is calculated.
-+ * When the auto-increment timer is enabled, interrupt generation
-+ * via the compare/timervalue registers is disabled.
-+ */
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/timer.h"
-+#include "qapi/error.h"
-+#include "trace.h"
-+#include "hw/timer/sse-timer.h"
-+#include "hw/timer/sse-counter.h"
-+#include "hw/sysbus.h"
-+#include "hw/irq.h"
-+#include "hw/registerfields.h"
-+#include "hw/clock.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/qdev-properties.h"
-+#include "migration/vmstate.h"
-+
-+REG32(CNTPCT_LO, 0x0)
-+REG32(CNTPCT_HI, 0x4)
-+REG32(CNTFRQ, 0x10)
-+REG32(CNTP_CVAL_LO, 0x20)
-+REG32(CNTP_CVAL_HI, 0x24)
-+REG32(CNTP_TVAL, 0x28)
-+REG32(CNTP_CTL, 0x2c)
-+    FIELD(CNTP_CTL, ENABLE, 0, 1)
-+    FIELD(CNTP_CTL, IMASK, 1, 1)
-+    FIELD(CNTP_CTL, ISTATUS, 2, 1)
-+REG32(CNTP_AIVAL_LO, 0x40)
-+REG32(CNTP_AIVAL_HI, 0x44)
-+REG32(CNTP_AIVAL_RELOAD, 0x48)
-+REG32(CNTP_AIVAL_CTL, 0x4c)
-+    FIELD(CNTP_AIVAL_CTL, EN, 0, 1)
-+    FIELD(CNTP_AIVAL_CTL, CLR, 1, 1)
-+REG32(CNTP_CFG, 0x50)
-+    FIELD(CNTP_CFG, AIVAL, 0, 4)
-+#define R_CNTP_CFG_AIVAL_IMPLEMENTED 1
-+REG32(PID4, 0xFD0)
-+REG32(PID5, 0xFD4)
-+REG32(PID6, 0xFD8)
-+REG32(PID7, 0xFDC)
-+REG32(PID0, 0xFE0)
-+REG32(PID1, 0xFE4)
-+REG32(PID2, 0xFE8)
-+REG32(PID3, 0xFEC)
-+REG32(CID0, 0xFF0)
-+REG32(CID1, 0xFF4)
-+REG32(CID2, 0xFF8)
-+REG32(CID3, 0xFFC)
-+
-+/* PID/CID values */
-+static const int timer_id[] = {
-+    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-+    0xb7, 0xb0, 0x0b, 0x00, /* PID0..PID3 */
-+    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-+};
-+
-+static bool sse_is_autoinc(SSETimer *s)
-+{
-+    return (s->cntp_aival_ctl & R_CNTP_AIVAL_CTL_EN_MASK) != 0;
-+}
-+
-+static bool sse_enabled(SSETimer *s)
-+{
-+    return (s->cntp_ctl & R_CNTP_CTL_ENABLE_MASK) != 0;
-+}
-+
-+static uint64_t sse_cntpct(SSETimer *s)
-+{
-+    /* Return the CNTPCT value for the current time */
-+    return sse_counter_for_timestamp(s->counter,
-+                                     qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-+}
-+
-+static bool sse_timer_status(SSETimer *s)
-+{
-+    /*
-+     * Return true if timer condition is met. This is used for both
-+     * the CNTP_CTL.ISTATUS bit and for whether (unless masked) we
-+     * assert our IRQ.
-+     * The documentation is unclear about the behaviour of ISTATUS when
-+     * in autoincrement mode; we assume that it follows CNTP_AIVAL_CTL.CLR
-+     * (ie whether the autoincrement timer is asserting the interrupt).
-+     */
-+    if (!sse_enabled(s)) {
-+        return false;
-+    }
-+
-+    if (sse_is_autoinc(s)) {
-+        return s->cntp_aival_ctl & R_CNTP_AIVAL_CTL_CLR_MASK;
-+    } else {
-+        return sse_cntpct(s) >= s->cntp_cval;
-+    }
-+}
-+
-+static void sse_update_irq(SSETimer *s)
-+{
-+    bool irqstate = (!(s->cntp_ctl & R_CNTP_CTL_IMASK_MASK) &&
-+                     sse_timer_status(s));
-+
-+    qemu_set_irq(s->irq, irqstate);
-+}
-+
-+static void sse_set_timer(SSETimer *s, uint64_t nexttick)
-+{
-+    /* Set the timer to expire at nexttick */
-+    uint64_t expiry = sse_counter_tick_to_time(s->counter, nexttick);
-+
-+    if (expiry <= INT64_MAX) {
-+        timer_mod_ns(&s->timer, expiry);
-+    } else {
-+        /*
-+         * nexttick is so far in the future that it would overflow the
-+         * signed 64-bit range of a QEMUTimer. Since timer_mod_ns()
-+         * expiry times are absolute, not relative, we are never going
-+         * to be able to set the timer to this value, so we must just
-+         * assume that guest execution can never run so long that it
-+         * reaches the theoretical point when the timer fires.
-+         * This is also the code path for "counter is not running",
-+         * which is signalled by expiry == UINT64_MAX.
-+         */
-+        timer_del(&s->timer);
-+    }
-+}
-+
-+static void sse_recalc_timer(SSETimer *s)
-+{
-+    /* Recalculate the normal timer */
-+    uint64_t count, nexttick;
-+
-+    if (sse_is_autoinc(s)) {
-+        return;
-+    }
-+
-+    if (!sse_enabled(s)) {
-+        timer_del(&s->timer);
-+        return;
-+    }
-+
-+    count = sse_cntpct(s);
-+
-+    if (count >= s->cntp_cval) {
-+        /*
-+         * Timer condition already met. In theory we have a transition when
-+         * the count rolls back over to 0, but that is so far in the future
-+         * that it is not representable as a timer_mod() expiry, so in
-+         * fact sse_set_timer() will always just delete the timer.
-+         */
-+        nexttick = UINT64_MAX;
-+    } else {
-+        /* Next transition is when count hits cval */
-+        nexttick = s->cntp_cval;
-+    }
-+    sse_set_timer(s, nexttick);
-+    sse_update_irq(s);
-+}
-+
-+static void sse_autoinc(SSETimer *s)
-+{
-+    /* Auto-increment the AIVAL, and set the timer accordingly */
-+    s->cntp_aival = sse_cntpct(s) + s->cntp_aival_reload;
-+    sse_set_timer(s, s->cntp_aival);
-+}
-+
-+static void sse_timer_cb(void *opaque)
-+{
-+    SSETimer *s = SSE_TIMER(opaque);
-+
-+    if (sse_is_autoinc(s)) {
-+        uint64_t count = sse_cntpct(s);
-+
-+        if (count >= s->cntp_aival) {
-+            /* Timer condition met, set CLR and do another autoinc */
-+            s->cntp_aival_ctl |= R_CNTP_AIVAL_CTL_CLR_MASK;
-+            s->cntp_aival = count + s->cntp_aival_reload;
-+        }
-+        sse_set_timer(s, s->cntp_aival);
-+        sse_update_irq(s);
-+    } else {
-+        sse_recalc_timer(s);
-+    }
-+}
-+
-+static uint64_t sse_timer_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    SSETimer *s = SSE_TIMER(opaque);
-+    uint64_t r;
-+
-+    switch (offset) {
-+    case A_CNTPCT_LO:
-+        r = extract64(sse_cntpct(s), 0, 32);
-+        break;
-+    case A_CNTPCT_HI:
-+        r = extract64(sse_cntpct(s), 32, 32);
-+        break;
-+    case A_CNTFRQ:
-+        r = s->cntfrq;
-+        break;
-+    case A_CNTP_CVAL_LO:
-+        r = extract64(s->cntp_cval, 0, 32);
-+        break;
-+    case A_CNTP_CVAL_HI:
-+        r = extract64(s->cntp_cval, 32, 32);
-+        break;
-+    case A_CNTP_TVAL:
-+        r = extract64(s->cntp_cval - sse_cntpct(s), 0, 32);
-+        break;
-+    case A_CNTP_CTL:
-+        r = s->cntp_ctl;
-+        if (sse_timer_status(s)) {
-+            r |= R_CNTP_CTL_ISTATUS_MASK;
-+        }
-+        break;
-+    case A_CNTP_AIVAL_LO:
-+        r = extract64(s->cntp_aival, 0, 32);
-+        break;
-+    case A_CNTP_AIVAL_HI:
-+        r = extract64(s->cntp_aival, 32, 32);
-+        break;
-+    case A_CNTP_AIVAL_RELOAD:
-+        r = s->cntp_aival_reload;
-+        break;
-+    case A_CNTP_AIVAL_CTL:
-+        /*
-+         * All the bits of AIVAL_CTL are documented as WO, but this is probably
-+         * a documentation error. We implement them as readable.
-+         */
-+        r = s->cntp_aival_ctl;
-+        break;
-+    case A_CNTP_CFG:
-+        r = R_CNTP_CFG_AIVAL_IMPLEMENTED << R_CNTP_CFG_AIVAL_SHIFT;
-+        break;
-+    case A_PID4 ... A_CID3:
-+        r = timer_id[(offset - A_PID4) / 4];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "SSE System Timer read: bad offset 0x%x",
-+                      (unsigned) offset);
-+        r = 0;
-+        break;
-+    }
-+
-+    trace_sse_timer_read(offset, r, size);
-+    return r;
-+}
-+
-+static void sse_timer_write(void *opaque, hwaddr offset, uint64_t value,
-+                            unsigned size)
-+{
-+    SSETimer *s = SSE_TIMER(opaque);
-+
-+    trace_sse_timer_write(offset, value, size);
-+
-+    switch (offset) {
-+    case A_CNTFRQ:
-+        s->cntfrq = value;
-+        break;
-+    case A_CNTP_CVAL_LO:
-+        s->cntp_cval = deposit64(s->cntp_cval, 0, 32, value);
-+        sse_recalc_timer(s);
-+        break;
-+    case A_CNTP_CVAL_HI:
-+        s->cntp_cval = deposit64(s->cntp_cval, 32, 32, value);
-+        sse_recalc_timer(s);
-+        break;
-+    case A_CNTP_TVAL:
-+        s->cntp_cval = sse_cntpct(s) + sextract64(value, 0, 32);
-+        sse_recalc_timer(s);
-+        break;
-+    case A_CNTP_CTL:
-+    {
-+        uint32_t old_ctl = s->cntp_ctl;
-+        value &= R_CNTP_CTL_ENABLE_MASK | R_CNTP_CTL_IMASK_MASK;
-+        s->cntp_ctl = value;
-+        if ((old_ctl ^ s->cntp_ctl) & R_CNTP_CTL_ENABLE_MASK) {
-+            if (sse_enabled(s)) {
-+                if (sse_is_autoinc(s)) {
-+                    sse_autoinc(s);
-+                } else {
-+                    sse_recalc_timer(s);
-+                }
-+            }
-+        }
-+        sse_update_irq(s);
-+        break;
-+    }
-+    case A_CNTP_AIVAL_RELOAD:
-+        s->cntp_aival_reload = value;
-+        break;
-+    case A_CNTP_AIVAL_CTL:
-+    {
-+        uint32_t old_ctl = s->cntp_aival_ctl;
-+
-+        /* EN bit is writeable; CLR bit is write-0-to-clear, write-1-ignored */
-+        s->cntp_aival_ctl &= ~R_CNTP_AIVAL_CTL_EN_MASK;
-+        s->cntp_aival_ctl |= value & R_CNTP_AIVAL_CTL_EN_MASK;
-+        if (!(value & R_CNTP_AIVAL_CTL_CLR_MASK)) {
-+            s->cntp_aival_ctl &= ~R_CNTP_AIVAL_CTL_CLR_MASK;
-+        }
-+        if ((old_ctl ^ s->cntp_aival_ctl) & R_CNTP_AIVAL_CTL_EN_MASK) {
-+            /* Auto-increment toggled on/off */
-+            if (sse_enabled(s)) {
-+                if (sse_is_autoinc(s)) {
-+                    sse_autoinc(s);
-+                } else {
-+                    sse_recalc_timer(s);
-+                }
-+            }
-+        }
-+        sse_update_irq(s);
-+        break;
-+    }
-+    case A_CNTPCT_LO:
-+    case A_CNTPCT_HI:
-+    case A_CNTP_CFG:
-+    case A_CNTP_AIVAL_LO:
-+    case A_CNTP_AIVAL_HI:
-+    case A_PID4 ... A_CID3:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "SSE System Timer write: write to RO offset 0x%x\n",
-+                      (unsigned)offset);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "SSE System Timer write: bad offset 0x%x\n",
-+                      (unsigned)offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps sse_timer_ops = {
-+    .read = sse_timer_read,
-+    .write = sse_timer_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void sse_timer_reset(DeviceState *dev)
-+{
-+    SSETimer *s = SSE_TIMER(dev);
-+
-+    trace_sse_timer_reset();
-+
-+    timer_del(&s->timer);
-+    s->cntfrq = 0;
-+    s->cntp_ctl = 0;
-+    s->cntp_cval = 0;
-+    s->cntp_aival = 0;
-+    s->cntp_aival_ctl = 0;
-+    s->cntp_aival_reload = 0;
-+}
-+
-+static void sse_timer_counter_callback(Notifier *notifier, void *data)
-+{
-+    SSETimer *s = container_of(notifier, SSETimer, counter_notifier);
-+
-+    /* System counter told us we need to recalculate */
-+    if (sse_enabled(s)) {
-+        if (sse_is_autoinc(s)) {
-+            sse_set_timer(s, s->cntp_aival);
-+        } else {
-+            sse_recalc_timer(s);
-+        }
-+    }
-+}
-+
-+static void sse_timer_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    SSETimer *s = SSE_TIMER(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &sse_timer_ops,
-+                          s, "sse-timer", 0x1000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+}
-+
-+static void sse_timer_realize(DeviceState *dev, Error **errp)
-+{
-+    SSETimer *s = SSE_TIMER(dev);
-+
-+    if (!s->counter) {
-+        error_setg(errp, "counter property was not set");
-+    }
-+
-+    s->counter_notifier.notify = sse_timer_counter_callback;
-+    sse_counter_register_consumer(s->counter, &s->counter_notifier);
-+
-+    timer_init_ns(&s->timer, QEMU_CLOCK_VIRTUAL, sse_timer_cb, s);
-+}
-+
-+static const VMStateDescription sse_timer_vmstate = {
-+    .name = "sse-timer",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_TIMER(timer, SSETimer),
-+        VMSTATE_UINT32(cntfrq, SSETimer),
-+        VMSTATE_UINT32(cntp_ctl, SSETimer),
-+        VMSTATE_UINT64(cntp_cval, SSETimer),
-+        VMSTATE_UINT64(cntp_aival, SSETimer),
-+        VMSTATE_UINT32(cntp_aival_ctl, SSETimer),
-+        VMSTATE_UINT32(cntp_aival_reload, SSETimer),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static Property sse_timer_properties[] = {
-+    DEFINE_PROP_LINK("counter", SSETimer, counter, TYPE_SSE_COUNTER, SSECounter *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void sse_timer_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = sse_timer_realize;
-+    dc->vmsd = &sse_timer_vmstate;
-+    dc->reset = sse_timer_reset;
-+    device_class_set_props(dc, sse_timer_properties);
-+}
-+
-+static const TypeInfo sse_timer_info = {
-+    .name = TYPE_SSE_TIMER,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(SSETimer),
-+    .instance_init = sse_timer_init,
-+    .class_init = sse_timer_class_init,
-+};
-+
-+static void sse_timer_register_types(void)
-+{
-+    type_register_static(&sse_timer_info);
-+}
-+
-+type_init(sse_timer_register_types);
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 1c9b2f446ef..df0eddc7170 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -744,6 +744,8 @@ F: hw/misc/armsse-mhu.c
- F: include/hw/misc/armsse-mhu.h
- F: hw/timer/sse-counter.c
- F: include/hw/timer/sse-counter.h
-+F: hw/timer/sse-timer.c
-+F: include/hw/timer/sse-timer.h
- F: docs/system/arm/mps2.rst
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index 771150b0a94..e34263fed8b 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -145,6 +145,9 @@ OBJECT_DECLARE_TYPE(ARMSSE, ARMSSEClass,
+ #define RAM3_PPU 6
+ #define NUM_PPUS 7
  
- Musca
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 3081efce20b..ed007267a91 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -520,6 +520,7 @@ config ARMSSE
-     select TZ_PPC
-     select UNIMP
-     select SSE_COUNTER
-+    select SSE_TIMER
- 
- config ARMSSE_CPUID
-     bool
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index e103c8872ab..726be4f82ca 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -45,5 +45,8 @@ config RENESAS_CMT
- config SSE_COUNTER
-     bool
- 
-+config SSE_TIMER
-+    bool
++/* Number of CPU IRQs used by the SSE itself */
++#define NUM_SSE_IRQS 32
 +
- config AVR_TIMER16
-     bool
-diff --git a/hw/timer/meson.build b/hw/timer/meson.build
-index 79a3012349d..91ab2aa803f 100644
---- a/hw/timer/meson.build
-+++ b/hw/timer/meson.build
-@@ -33,6 +33,7 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_systmr.c'))
- softmmu_ss.add(when: 'CONFIG_SH4', if_true: files('sh_timer.c'))
- softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_timer.c'))
- softmmu_ss.add(when: 'CONFIG_SSE_COUNTER', if_true: files('sse-counter.c'))
-+softmmu_ss.add(when: 'CONFIG_SSE_TIMER', if_true: files('sse-timer.c'))
- softmmu_ss.add(when: 'CONFIG_STM32F2XX_TIMER', if_true: files('stm32f2xx_timer.c'))
- softmmu_ss.add(when: 'CONFIG_XILINX', if_true: files('xilinx_timer.c'))
+ struct ARMSSE {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -165,7 +168,7 @@ struct ARMSSE {
+     qemu_or_irq mpc_irq_orgate;
+     qemu_or_irq nmi_orgate;
  
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index bb9c1000878..f8b9db25c27 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -100,3 +100,8 @@ sse_counter_control_write(uint64_t offset, uint64_t data, unsigned size) "SSE sy
- sse_counter_status_read(uint64_t offset, uint64_t data, unsigned size) "SSE system counter status frame read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- sse_counter_status_write(uint64_t offset, uint64_t data, unsigned size) "SSE system counter status frame write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- sse_counter_reset(void) "SSE system counter: reset"
-+
-+# sse_timer.c
-+sse_timer_read(uint64_t offset, uint64_t data, unsigned size) "SSE system timer read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+sse_timer_write(uint64_t offset, uint64_t data, unsigned size) "SSE system timer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+sse_timer_reset(void) "SSE system timer: reset"
+-    SplitIRQ cpu_irq_splitter[32];
++    SplitIRQ cpu_irq_splitter[NUM_SSE_IRQS];
+ 
+     CMSDKAPBDualTimer dualtimer;
+ 
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 2b25fca1ca2..5ae6ce344ee 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -531,7 +531,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+         int j;
+         char *gpioname;
+ 
+-        qdev_prop_set_uint32(cpudev, "num-irq", s->exp_numirq + 32);
++        qdev_prop_set_uint32(cpudev, "num-irq", s->exp_numirq + NUM_SSE_IRQS);
+         /*
+          * In real hardware the initial Secure VTOR is set from the INITSVTOR*
+          * registers in the IoT Kit System Control Register block. In QEMU
+@@ -602,7 +602,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+         /* Connect EXP_IRQ/EXP_CPUn_IRQ GPIOs to the NVIC's lines 32 and up */
+         s->exp_irqs[i] = g_new(qemu_irq, s->exp_numirq);
+         for (j = 0; j < s->exp_numirq; j++) {
+-            s->exp_irqs[i][j] = qdev_get_gpio_in(cpudev, j + 32);
++            s->exp_irqs[i][j] = qdev_get_gpio_in(cpudev, j + NUM_SSE_IRQS);
+         }
+         if (i == 0) {
+             gpioname = g_strdup("EXP_IRQ");
 -- 
 2.20.1
 

@@ -1,105 +1,107 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8955120lfc;
-        Fri, 19 Feb 2021 03:56:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwcWOqt71oVgXDRsvzHXyaekVtTFJMsciJD7T88MllkrD9V2yVzNjhdzOdcl2m4AOk0BBtC
-X-Received: by 2002:a25:b74c:: with SMTP id e12mr14536290ybm.20.1613735780427;
-        Fri, 19 Feb 2021 03:56:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613735780; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8956322lfc;
+        Fri, 19 Feb 2021 03:58:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy9UfYkJiaZJ7WYKmhRDe/8l3unZQ1obcbz9766wWMtR9TxyVgIYx80jWZZ0vkej8t8K9JS
+X-Received: by 2002:a25:5ac2:: with SMTP id o185mr14251798ybb.252.1613735915917;
+        Fri, 19 Feb 2021 03:58:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613735915; cv=none;
         d=google.com; s=arc-20160816;
-        b=cNC8qV/zOcH3iRs/lZCAjh5N9epEjurCPH/Yaf8The+ANWH/H6Kgm6skrcN8/BuZwY
-         CyFj7Xnzhe4uVfpJIBcPgx6yLJka+96A6TZuQ+lul2nDvS6cnKWTRbts0UXG6BI01H04
-         V6aXWMX28nzbhgt4A0sa2ybGGLwQ6q08bKzQp2np+bMsw9mr48Kfkw49RIH1+DyCLeNq
-         R2Kxqyrd+rvY/ZTQ2PVLJQYrSMGLJOK97FdH4oo0CtOTbDYDd4iTGFalzupoA4GY1nSi
-         O4xdbtdIPa7lgLNOjNkuCH4/r0scy/XGAn6+TkyB2G1QsMx51BqZAIFyR00KYTQ3bVVi
-         ubwA==
+        b=j2Jwis/i3VwzuWSJ+2snqDIdMGf5y03gfEKG3WzuDscSL/nRxxCQHqEmKOuDtb9yaH
+         OvNEF0H0oLbwBTd849wpNJKgIJ9jCDaMWwoK8RmEOCSXC4ULtDyK13QsCdsJBu3+wkmX
+         xgg2Iu87rnK0tjPGhxQ5XGXOoZOb6ggS755lL/5cwBjw4MebydYFhrYaYDB/g9J/NnXk
+         7dI4O4M/zBGjseJ4T5vlmYFnpeS7tfmjeZLpUt/8ywOohZrRpeIVMT1Z4qqjKxglF0wq
+         0r7ux4qqfATuShSCuDQVG5CMRYeoDbuYRpbwnpG2l1Viob8e35G5WP6Oe3I3ADE2OsMo
+         mOmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=RCReoUqVm5VrIgFdBYFHKJpOABQVppR771o1a5NHp3Q=;
-        b=vDR0azw4DCWFPOCQLmdonXymPbsjXhbLvuuMbhJDh7T+MO9pCoDZGjJsWZGBQPSnTx
-         lm6ZuTziRk2pFW7GAMTy2n3sloADMF7NNbxcnLk+380igUtAOCVK/XbXCRm4ooxzAcKw
-         JhHeSKSuBUzj4erfBjoay6iF3YKUuGo0iVAPedZEgnny/LXRfDaJxtkZVzR90UKbiowD
-         UrCdMJd7f/mMczfvaOX7LmKlphfBGc58J9sHk5soao77pECAGdSf8fU7LFk0ZWYk65Cc
-         JKeWAD94fOqAZqvhNZ4qOFJDzqYWBgOTJu4l4hO2Nvwd5GwnuL1ebr4uEce/CpEE8aND
-         H7gg==
+        bh=0Oat3ESJK0nJqOq3w4Qti1Q4yrZeJ9Lqn+lQdEnc1XI=;
+        b=xQS3Su6A7TYUA5FLzeLWGZ6Kax+PviS1RE37Q3JAo2HpSAm94Wk6mKTm/JJAOL22xo
+         UZPdYNyagR8qznX1TfKOmUOuB3R5p5i98owNdeKcn/IplVzJInzjz4EUCUtA0RKTgSNI
+         6R6lh3lzJjdKEBVX4nPcWyp4s3oRJsRM4huv1B2w/qXUFxo7TJeOPMEUSqGh+BQyV5f6
+         68SO/YXaYdwRJanuSX0SKrKIg/e4n8twmcS5Z+P73KPnz1T+WzBLlskcPhClEkdjqwQw
+         EDBL6aTqNcUA4w32YF0JMb4lvkWoBXxsRUJQq5BEG6AJcbxnZj3/DzweqQgBF8aFCxT8
+         dcsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kHxpJna0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZFsCDtKF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w17si8198512ybq.190.2021.02.19.03.56.20
+        by mx.google.com with ESMTPS id p188si9468485ybp.399.2021.02.19.03.58.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 03:56:20 -0800 (PST)
+        Fri, 19 Feb 2021 03:58:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kHxpJna0;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZFsCDtKF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35882 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD4OR-0006dj-RT
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 06:56:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50718)
+	id 1lD4Qd-0008TE-97
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 06:58:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD4OJ-0006dF-99
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:56:11 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:43260)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD4OH-0007In-05
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:56:11 -0500
-Received: by mail-ej1-x629.google.com with SMTP id k13so10700395ejs.10
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 03:56:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=RCReoUqVm5VrIgFdBYFHKJpOABQVppR771o1a5NHp3Q=;
- b=kHxpJna0WvF58KRzQ5LVezQqDSSRhYFCs3R6UJBRT/lnCHOijMmxgTr+ixjrGlUkll
- szoQSEibrREs9z3uKY1Cs6Bqmvgmh3wezUHb855L6UUMcWQaGbO3nIX+nuPUMWutzoue
- ldW+OYxruT3+nGWoHMbpZxPnJqt4i0sMnhARPUwsHutuXB/JJrDxUOc4ILfCXOWS2whN
- tX2sD61BzJ3GXUCXE8jaG/3v3H6V/4KSz0qUIMlM6nmjMWWGK2Ytrrn7zaTS0QHNGoSw
- FuGMcs1P/7o2ne313C3mHEfx5Cmuz4Y6GUV95tW3a5/OvYlRvrcSwu0dXYmeR0oCJXmC
- RT6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=RCReoUqVm5VrIgFdBYFHKJpOABQVppR771o1a5NHp3Q=;
- b=ai359jkIOrDmd6GQj3a50LFtt7rL+7I/0KbEjbdgg0Afc8nU3VTsNEO2aZPRv4tvzE
- fA34lGO13bLHzIIc2Djb9tpsK+H5dzqQBXIvSDiA7VdA9IGxO3ZXeud8seQARYvk0Uiv
- cKV+TCB+Yp6foQ404cMVovvz2GH5ED0Dry/F4RdED27v4SWcHqqWt/vcHON3ynIdvjjK
- QBAnBJxoCnkjG497l7APUvaUBPxxmuD6irMTZQ+n5ppb2dwAm3lCZR9ZaIHAqvA1By9u
- cS4pxQdWtscm/fmhkhKAylZ718IFKGC/gxKBp3LeKTE3Icy3dHOwDkArec9QLo1FcFbi
- ZHzA==
-X-Gm-Message-State: AOAM532RyX0gGgubA+N313EiXbCVCAb+9ozEAQFuRnefdQGeLkq46Tqe
- RDnDMbiMwj9XdZQLE1idW5uDVk97820irVsY8BnZpA==
-X-Received: by 2002:a17:906:5357:: with SMTP id
- j23mr8276999ejo.407.1613735767468; 
- Fri, 19 Feb 2021 03:56:07 -0800 (PST)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lD4QR-0008Q3-L6
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:58:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58159)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lD4QN-00087c-74
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:58:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1613735897;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0Oat3ESJK0nJqOq3w4Qti1Q4yrZeJ9Lqn+lQdEnc1XI=;
+ b=ZFsCDtKFcMf3IX74CHLMrcUhLnBjGIw8XKuqRBe8HLvONNe62tADNr43C7L4bw3tKvKiLz
+ 4eZT1HQfZsBdvVE5erUv/6zHx1O+ft7VxHh50RHGzpmqGrfVjHnFBRjk9HGaIA9OCLlDMx
+ iqE9vWHtco7qmk+eJA5BpHFsoEgSqao=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-388-Rbk-XNaZOBKnFnbM5wF23Q-1; Fri, 19 Feb 2021 06:58:14 -0500
+X-MC-Unique: Rbk-XNaZOBKnFnbM5wF23Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3B0F107ACC7;
+ Fri, 19 Feb 2021 11:58:10 +0000 (UTC)
+Received: from redhat.com (ovpn-113-184.ams2.redhat.com [10.36.113.184])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 508F56086F;
+ Fri, 19 Feb 2021 11:58:00 +0000 (UTC)
+Date: Fri, 19 Feb 2021 11:57:57 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH 2/7] hw/boards: Introduce 'kvm_supported' field to
+ MachineClass
+Message-ID: <YC+nxWnB+eaiq736@redhat.com>
 References: <20210219114428.1936109-1-philmd@redhat.com>
-In-Reply-To: <20210219114428.1936109-1-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Feb 2021 11:55:56 +0000
-Message-ID: <CAFEAcA_66DuWfrftpaodqBZwBhS-VOD9uH=KwvGYC_VcksVFAA@mail.gmail.com>
-Subject: Re: [PATCH 0/7] hw/kvm: Exit gracefully when KVM is not supported
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20210219114428.1936109-3-philmd@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20210219114428.1936109-3-philmd@redhat.com>
+User-Agent: Mutt/2.0.5 (2021-01-21)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,50 +114,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Radoslaw Biernacki <rad@semihalf.com>, kvm-devel <kvm@vger.kernel.org>,
- David Hildenbrand <david@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Huacai Chen <chenhuacai@kernel.org>,
- Halil Pasic <pasic@linux.ibm.com>,
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+ kvm@vger.kernel.org, David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Huacai Chen <chenhuacai@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Leif Lindholm <leif@nuviainc.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ Leif Lindholm <leif@nuviainc.com>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>, Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j3KRivpUofUg
+X-TUID: gKVhebBWSTfb
 
-On Fri, 19 Feb 2021 at 11:44, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
-> This series aims to improve user experience by providing
-> a better error message when the user tries to enable KVM
-> on machines not supporting it.
+On Fri, Feb 19, 2021 at 12:44:23PM +0100, Philippe Mathieu-Daudé wrote:
+> Introduce the 'kvm_supported' field to express whether
+> a machine supports KVM acceleration or not.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  include/hw/boards.h | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 68d3d10f6b0..0959aa743ee 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -129,6 +129,8 @@ typedef struct {
+>   *    Return the type of KVM corresponding to the kvm-type string option or
+>   *    computed based on other criteria such as the host kernel capabilities
+>   *    (which can't be negative), or -1 on error.
+> + * @kvm_supported:
+> + *    true if '-enable-kvm' option is supported and false otherwise.
 
-Thanks for having a look at this; fixing the ugly assertion
-failure if you try to enable KVM for the raspi boards has
-been vaguely on my todo list but never made it up to the top...
+Is the behaviour reported really related to KVM specifically, as opposed
+to all hardware based virt backends ?
 
-> Philippe Mathieu-Daud=C3=A9 (7):
->   accel/kvm: Check MachineClass kvm_type() return value
->   hw/boards: Introduce 'kvm_supported' field to MachineClass
->   hw/arm: Set kvm_supported for KVM-compatible machines
->   hw/mips: Set kvm_supported for KVM-compatible machines
->   hw/ppc: Set kvm_supported for KVM-compatible machines
->   hw/s390x: Set kvm_supported to s390-ccw-virtio machines
->   accel/kvm: Exit gracefully when KVM is not supported
+eg is it actually a case of some machine types being  "tcg_only" ?
 
-Don't we also need to set kvm_supported for the relevant
-machine types in hw/i386 ?
 
-thanks
--- PMM
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

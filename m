@@ -1,105 +1,105 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8956359lfc;
-        Fri, 19 Feb 2021 03:58:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwR2S07R5KilOL862DJATgIOLjvfZkxVrWAPy6l9AO/8ebsLyVw2ttUOlXlwQ0oJiIjLwmj
-X-Received: by 2002:a25:3345:: with SMTP id z66mr13328026ybz.466.1613735920231;
-        Fri, 19 Feb 2021 03:58:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613735920; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8958573lfc;
+        Fri, 19 Feb 2021 04:01:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxrnUANm15HkwW16mg6UC4t37gTZQZ99gZLQ4EKfJd1N+F/NcIYbrXWJdHguGxK6WP4f7nA
+X-Received: by 2002:a25:c6cb:: with SMTP id k194mr13005360ybf.27.1613736098685;
+        Fri, 19 Feb 2021 04:01:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613736098; cv=none;
         d=google.com; s=arc-20160816;
-        b=aKVSDbyffxfAbH9iqWa252Nps5SAQK6HL/le9Z+/ZZyt7ZmRV84pCaBZs3Mk5NBSOC
-         jPnUua+dEJK/DxSImIdK4alxUVhSO4MVfqlnTKjBDKzGdy25yuwHyDMAzPpn8UnerNka
-         vy3Uf1kUHn9ZWkvlvp49l+XquOdq6ZZu44NGF6hByKUWJbM7ghsFqjWwiBOBbcLkPYCo
-         63mS4CkxxureEZbnVg3+/5DE4AK1muWWSnNSDM2V8S1yX40u3+WbQWyqupKT6rFclxUp
-         pbB6FYYnp2VQALOL/SEdsNHJ9bJiGzYqlBAi+Ng5hjwCI+HPmXDIuFoN9vfZ8W/R2E0e
-         JIww==
+        b=bV962v4I36D+HTNtRlT0ZrCve/5dWzmzQP5IK38McqunBV6ZM8TO6ZC5sH2Q0eEJTG
+         RyrOMxmHCE+U7L6HCk8e/J2Y9jjq8cC7xJUMVNBUDE0FbtobAu49/P/nJgSndJherzpE
+         1Td5P2x2lyrh6EZdMav7+ICQvfitDNXwIuEcu0AdbE/Fpfs3NMHkVAWVW0BpeBSQ7wE0
+         oFnmfO6/ulwUYncRWQoNY87/2MNMCaErVVVyKhRKl2q6SnB2Z1ONGVJ/I5QR/M1mHU3f
+         WN2/ch3DWxm68ZX6yyWqRPkM21JpXl6KfSOB7oDkUrxgLl1lqm9Favn+AX33pqtnk3Bi
+         gYYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=xHaDW7wT168LocZWMMhdbYT9YI6SMJn2It6tA9XuCxA=;
-        b=uGZ/u4DofPmqCRrx19ARsDjyr4BIySzlyZORmPPgT7seYMCUfPSLalQLz+iavyY/GK
-         KW2VUP0U6BVuWlb1/cyjjCkmABtUVb4XSVkoUiAgPN1R/DHMHT2axkJqbMXUIvUgElqX
-         IshnE1X0zRCiFkH50edN68vhIsF3Go+RiYhtie57kcje7PBOPD/FT+zQVgVl8S/T1hfO
-         6+O+yP91hoRHFKwE2DPdk1Xp666zspJw5MLklRWNwhwy7E/SyTr0p42vgcQ80xcPxy47
-         LPI5XPVG1e6n1MLugB1dMOiK6rhUNseAXRuIYY8xUmJ7cT+23883QJy4VCHiXTqMwZP6
-         fOEw==
+        bh=fWLnHPiFIN233EMx/9zN13PG+fjuD+081yp+85rEGDg=;
+        b=FRNWWvjrVhW53dIEtE25E3NeQo7Aap2qFYYFIKAbFp0yGsUUDw2u3b8Sxqs1pxecl4
+         +1DCmuBW7tTwX9Yb63rP5YTtMWFE7grWnlAOb5ULWNbaPYfJxzH2j5Q30PRMLddEMSzF
+         D+heQekhIeHPQ4NGzBMMGxfzWEu8sXl77XC/E2fQuesFkCS3NfyUoDAPx47IB/pg79El
+         HdnnaEvZ4mlfo1p5F/y4vJTomlOZt6dcHsB+chSUt2GsEiRP0hRLq6W3qvhh8CcMtRFi
+         3nCX6BiUDQFCrJHUPVfSV9GqL/EW0heJ0cg1YOcE8ByDGzReyyNjFs7I8rU0fIMQt5Ca
+         J6tQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=z52qYzaC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MBQGfBGK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15si8521483ybg.443.2021.02.19.03.58.40
+        by mx.google.com with ESMTPS id d16si8906767ybn.137.2021.02.19.04.01.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 03:58:40 -0800 (PST)
+        Fri, 19 Feb 2021 04:01:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=z52qYzaC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MBQGfBGK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40152 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD4Qh-0000F8-IO
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 06:58:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51186)
+	id 1lD4TZ-00048N-UG
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 07:01:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51862)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD4QV-00006v-UJ
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:58:27 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:43879)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD4QT-0008AC-0F
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:58:27 -0500
-Received: by mail-ed1-x529.google.com with SMTP id d2so9408732edq.10
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 03:58:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=xHaDW7wT168LocZWMMhdbYT9YI6SMJn2It6tA9XuCxA=;
- b=z52qYzaCUFH/xrItP18F+r1k8sC1CpGa7/ZwFw1TD742qzvBahNB/nyyobJenrN3bZ
- GMoCxkwJUZc6nXEjydfusV3CctVpBzlpa5O8P08p4gQmNbdABCM5Jy0d3t+0lnWTx4Pg
- 975ai7PbaXvoscM3YoCe8dwUeOV5e9Uj/RYYFqNu/JEzwomS2iyccQJ7S3EDdK7ZWlLP
- az6QsHEASTUBXxw10aLrezlSG+VWjRXYrkEwR0CtFTIyRjs1UkGQNJlAtrQqYhydoLP4
- UAW8enZiNAozktdmHKM6aE7fdl+XZqWbavJB204xM/vZDe7zbTQkgZTXhwpt+/uf/h/r
- T7LA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=xHaDW7wT168LocZWMMhdbYT9YI6SMJn2It6tA9XuCxA=;
- b=GIjnIw8gwGoL9kgmjKa3DBL/w3sjflovfu/sb+e2y4hDyEXlgKnXNIf8ueVeu8hc1k
- a6xz1y5eEhSsNnWljzmipTrdmhNfq2q5WNep4EJxKMzEw/iD727ViO+C4BIsUNE68ckW
- gueg1h5b6GZWZIR25yK0QtHJmVtxmNS5n4EYK4ompCAilPARrZbZrbiMEdUnc9Wbk+Ob
- ucdTQx9f/JH52tCv/w3sk8JlJwE/Vi5uJhccbuAWo98ZpOt9BpyNamvSYbKtiB2F7loB
- KbmrfHZuSvVqozLhDfS797dVpOakIl3qqD+ICpSDwaJa04cfyihx9SXXckW0fq9qF3Yk
- MOeA==
-X-Gm-Message-State: AOAM531JszmxBXAmu7VaM2FAhCADkBa2qqgIBAKdOHaciv4QCY8uRY++
- Be15bZfYMbe0+4VUMSBCXLy4vv3oxdjFJQ4yxROP1A==
-X-Received: by 2002:a05:6402:3514:: with SMTP id
- b20mr8586919edd.100.1613735903486; 
- Fri, 19 Feb 2021 03:58:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lD4TJ-00045D-UR
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 07:01:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:31334)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1lD4TH-0000uw-SH
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 07:01:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1613736079;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fWLnHPiFIN233EMx/9zN13PG+fjuD+081yp+85rEGDg=;
+ b=MBQGfBGKhTKMYeVEFz8MFN3fDkLLHUjwm62zdOQZXjCYIqdl7a0JpZ5W/+FUBpSXZQpnhg
+ YKQi87uu8hnDla06ZdaPN39XA2fsVGQK7Xr2M0QU/SYoEh7/FFPOA47X/krqaPQCu3cxni
+ 5yUKclrGDY7CXJcXI0l/ZW+42XFotbc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-68-9adYdHpkOCaGhZODEykq9g-1; Fri, 19 Feb 2021 07:01:16 -0500
+X-MC-Unique: 9adYdHpkOCaGhZODEykq9g-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A3CE5846208;
+ Fri, 19 Feb 2021 12:00:52 +0000 (UTC)
+Received: from redhat.com (ovpn-113-184.ams2.redhat.com [10.36.113.184])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FCEA19C71;
+ Fri, 19 Feb 2021 12:00:46 +0000 (UTC)
+Date: Fri, 19 Feb 2021 12:00:43 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH 0/7] hw/kvm: Exit gracefully when KVM is not supported
+Message-ID: <YC+oZWDs3PnWHPQo@redhat.com>
+References: <20210219114428.1936109-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20210219115123.1938686-1-f4bug@amsat.org>
-In-Reply-To: <20210219115123.1938686-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Feb 2021 11:58:12 +0000
-Message-ID: <CAFEAcA_9nuCvVrhDZo=RQoFngpY=ZrJCOw9NQx9A9GF_BmgN+w@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/xlnx-zynqmp: Remove obsolete 'has_rpu' property
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20210219114428.1936109-1-philmd@redhat.com>
+User-Agent: Mutt/2.0.5 (2021-01-21)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,30 +112,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+ kvm@vger.kernel.org, David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Huacai Chen <chenhuacai@kernel.org>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ Leif Lindholm <leif@nuviainc.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O+2wjP0XVo5p
+X-TUID: XiqEKrEX2p1S
 
-On Fri, 19 Feb 2021 at 11:51, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> We hint the 'has_rpu' property is no longer required since commit
-> 6908ec448b4 ("xlnx-zynqmp: Properly support the smp command line
-> option") which was released in QEMU v2.11.0.
->
-> 3 years later we feel safe enough to remove it without using the
-> usual deprecation policy.
+On Fri, Feb 19, 2021 at 12:44:21PM +0100, Philippe Mathieu-Daudé wrote:
+> Hi,
+> 
+> This series aims to improve user experience by providing
+> a better error message when the user tries to enable KVM
+> on machines not supporting it.
 
-This device is marked user_creatable =3D false, so the only thing
-that could be setting the property is the board code that creates
-the device. So the property is not user-facing and we can remove it
-without going through the deprecation process.
+Improved error message is good, but it is better if the mgmt apps knows
+not to try this in the first place.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-(maybe noting the above in the commit message).
+IOW, I think we want "query-machines" to filter out machines
+which are not available with the currently configured accelerator.
 
-thanks
--- PMM
+libvirt will probe separately with both TCG and KVM enabled, so if
+query-machines can give the right answer in these cases, libvirt
+will probably "just work" and not offer to even start such a VM.
+
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

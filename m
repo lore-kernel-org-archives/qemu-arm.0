@@ -1,103 +1,100 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9076221lfc;
-        Fri, 19 Feb 2021 06:46:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzRVW1U1glSJLm3ib79VSBZpxbiwtQqTxgHcLxagsUBtFVcOSe5y0TWKaCnbYqpO0QB23n7
-X-Received: by 2002:a25:cbcb:: with SMTP id b194mr14694879ybg.174.1613746014473;
-        Fri, 19 Feb 2021 06:46:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613746014; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9077332lfc;
+        Fri, 19 Feb 2021 06:48:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwvoTfi5XNNU2SazYmXrgP6/GiK8ar2flxK+wNCzKZd1jTLhSLpaFR/TxzxpSu1t4lJ9OGA
+X-Received: by 2002:a25:d012:: with SMTP id h18mr14616709ybg.329.1613746106931;
+        Fri, 19 Feb 2021 06:48:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613746106; cv=none;
         d=google.com; s=arc-20160816;
-        b=SQoqPt5VtH6uggXI8YgJKgqRmOXEOdI12qB59v4NS+FoS0DRXgV7+0idZNsOYVRFvL
-         UJGj6WWnb/EVmJ2KMXLVapcBBGipxFvath1TYZTail5pLDUTTSL9z5Jnlsa8fNyQu2bH
-         1PnE9MMVBCKGgdv28KNIoZHxjAj0hABtNkijh41NsxGTc3AsuzQOrmyx9YNux5BIHtQ1
-         +xqA4CqQBD0/0myhs/4YUQGi3z/qEz3BtmtXHrR2+rfzAJyftObWVVrz5whttKbLTT+0
-         NGFmlazezkZzW+K0BfjNH5icmSb6L9uSRnlPNc9Qezf0noqPpMf/bBhtjJgqHTsjh6kg
-         R0Vg==
+        b=vqf9SW70u5QVl7cczK9mj85Jjn/lBSn6hk1wIDa5SG3RUTQdVRT5QZCmQQF85BCdZ9
+         jP5IpGkCWfb1Z8ZLKxaQhdpV4VbWn3CUcfvJ2KYSne9c/PLS3xN5DXldHypTPGWKeRFX
+         9dvfu1/bb1PaJs8YPJNifD5ebk9VBYF/W44h2mlJyS4i46MQh/EQ0rdo3yTTkR3iMMdl
+         kWatIGOcrQ4MRvyD4XmS41AexkJjZalSZ6lKf7I2IEkPxXDU0DJlD7Ffn4ncHkaRnTuo
+         ZFuu+9d/g2YD6doUSwyPpp57LzMik1bqBm++RC+uiTc1Uyc1Fq7caq6w3nk3WsslRiAL
+         x2RQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=X3f+n7+0c+b3Y+gX92OT7kIrAKPQDQz8ayoCWLv3PMg=;
-        b=c0SZfmuESGg5hsQ+9YbWEEmT1dPCh1wJd036Xx4HYK2I1MG+ZgUFqRz5eTbqTMImIs
-         iX0G/GH/8/SNza3146jI/oX3oQ6eFhLcAWnsBzzf7cTxUvJtx4c2Hi/FqYfh2gyIqm0R
-         lNpFY93HOt4y92NQGOp2XMDv+ZuySJFqRHN9W9XLc+qqdnUgOSUGjVTqZqN4Wc90Niok
-         xm5AkbrSczNpF5PZYnujP8HHqpsEncN+RpDZZImPk0St9e8X7G33rCS4WBf35osrhep6
-         ObL2UvrgPE0aFWwUYTNRlZB8MviGaNrfORWVeLmF9X2RKC3UgUob94jR+iCHYBB2Sx9A
-         hDhQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=lREToQQJQDyBKGGsfEif0MuYXiYU9SpghUojeNK6xSg=;
+        b=GQdiB8xi+4VRHxYjXWkrWlMGP5KP/FHcnwgF1vq46ETOVFHg8iSays+akfowgSE4z+
+         P1XNNAcD6GRzO9giIMQxCjS+ar9Yi6oXPBrBNqdQcK88yk8XpVT7JG9vEFGp05HrEV7z
+         nzK7FL9wuCK2P87FmFs49GoLgQ/y8YmLWw34t8vmtLOFgByrApXBNsutIaMq4PTAJl7R
+         8TpD991xDBjvCI1SRdj/edoZoXU3qRSt6X4znCYu9t6hsk9ylfSmc3Mamm+fed2j9Xqs
+         N3h9F5BQtZPLLJQD/kxjC5cHD8CNd7ODI8l09TbY9TcNj0+utHtleDdF/BJ0R1Fs8dMl
+         u6EA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="VWB/DUuy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zJUOPu6c;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 69si8732129ybc.31.2021.02.19.06.46.54
+        by mx.google.com with ESMTPS id t6si10187664ybl.360.2021.02.19.06.48.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 06:46:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Feb 2021 06:48:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="VWB/DUuy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zJUOPu6c;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57064 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57050 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD73V-0001wy-Qs
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:46:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33300)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lD750-0001wd-7n
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:48:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD739-0001vr-R2
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:46:31 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:53763)
+ id 1lD735-0001vE-0w
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:27 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:40323)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD731-0003M5-SE
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:46:31 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id x16so7274657wmk.3
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 06:46:23 -0800 (PST)
+ id 1lD730-0003LI-4c
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:26 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id o24so7861341wmh.5
+ for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ h=from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=X3f+n7+0c+b3Y+gX92OT7kIrAKPQDQz8ayoCWLv3PMg=;
- b=VWB/DUuyb0tBp9brES9dBytt3JuUlkTTvflMsghe8zbXYK/KDWXG/5dcW9ZLni+d6J
- p1+7liCbj+lUPfEYHczHGfDPeEUydDqzjtBd4Ysmdaj/hkeaVR5eZSbyuBWMeqsd9OMA
- Wu8HT4/8xfejbdong1R7gmLS/crm8EsjQwwYwulI2akcdZdQ/bFh+UtygqV2vt8CrKjP
- 9R1zoCOpuavFzGrCxwNEz2vDLJuwnJnrekTE/pyOrBjQ2AxiTxwOSvq9xVP9I/cqjXcq
- IIKYgYm3MezguXA90cLT1Dxbps0tbAQMh3621omaiFtQJX1MHb1jukkNKvEfvrkWEJdQ
- DEqg==
+ bh=lREToQQJQDyBKGGsfEif0MuYXiYU9SpghUojeNK6xSg=;
+ b=zJUOPu6cw0cJfCofRDJdz20V+ZOTNMvP1/ZyLpFJtLdFZlyrxOa+8yLp6a57LIwm0M
+ 318BmrvV9IHnK/TzZ70X8vtNwB1P359cOPf3qR+z8hmx4YXWXHiiKHrqpCqfn0G44OAb
+ oCSCfh1aT4v4M1Jr1e/Bn1Su83cHYfKkcdRW9zRSqSKVhnDem5EOqSebQtzHp/6iAgCW
+ h/OfX73X168+Vc+zc4wEQxnwIM94wTRxPQ9av3MoXI1k4sTg42Y0kgGEGajE9yBr4Ssr
+ 9VZzn4d8rWn9j+qvcgUq27xtO3GlkdrFEC6SvNhTKmCLd4k2UK/ctbGm83zEJu5JYVF6
+ YGLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=X3f+n7+0c+b3Y+gX92OT7kIrAKPQDQz8ayoCWLv3PMg=;
- b=AapppNiopyi+Wil7oxL9fnsQU/bDiOpOr8bv5a5F1M62hWg4AwJcUfUNTTo7rDT4za
- uQDn1RUCp4PsVJABd2FsjkRppDa6OWlQN5ipOs4NzpwjYK0uz7C3865O+obZ8raFnZZv
- X7nJC6h9n2C4oYUDDDxK/7e92METUtWCQSE5Pu/8c414KcOGVyk9mkSNT3/obWk/WyTP
- s0AFSoE37+fPmD9ihIa0L6NG5yCIFwQZwo0fhTW3uSRKD/4W4yWi7oGnDwruuZAnHguU
- 7VKa3dIEtfRO2B5WTOo+WNytgr6YqedXyCuyzul6QXk65lSGFR55/xCf1+5+R9ub0gWX
- CH0A==
-X-Gm-Message-State: AOAM532I7NYn2wGzjIQtZkT1zQavMWdIXx+EB3D1KSTRfs7dzDlMciB8
- nyeN0C7VtZPesppE+rA94xbLh3rCVBrueA==
-X-Received: by 2002:a7b:c842:: with SMTP id c2mr8582384wml.100.1613745982137; 
- Fri, 19 Feb 2021 06:46:22 -0800 (PST)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lREToQQJQDyBKGGsfEif0MuYXiYU9SpghUojeNK6xSg=;
+ b=qt8yd45JceTqnz/nPr4PRmExfJlmva+PInHHMQACVjy8BTvu3DsMNfQ+RO/LKHjuN2
+ M8+AzgGZtFwO95G5EzgcgbCeAtzAMBKB9ulHiThY7lO+FpZQveq/3i+2SMcRacJ3f0Zx
+ u9N7XdDNA4mlHHQftP0notsFswEGWsiawJdvx1tnPN8uQIN3c/aBK6Ra0v39xtxEXiFn
+ JkmcB0hsDvZKjbegE50Gy0xQRzIuGJPf9A10EMen2/5VsdO3y61VUePELR3zGHctBBNn
+ wZKpzbuLVhJbjPoeSvCNNmpFFagiipos6D/XKKRn8bEMj/R1aT9tTpt6GlXsr8mjjVvE
+ BSkg==
+X-Gm-Message-State: AOAM530aNHYB+jgtDMfW2yWkrJjWH8tFuPMI8hFWX5i/elh9NcXZM+HP
+ OCyZ3bubz6t1k3287FxlA47Iwj6agR0tWw==
+X-Received: by 2002:a1c:1f4d:: with SMTP id f74mr8926042wmf.12.1613745980205; 
+ Fri, 19 Feb 2021 06:46:20 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.21
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:21 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:19 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 02/44] clock: Add ClockPreUpdate callback event type
-Date: Fri, 19 Feb 2021 14:45:35 +0000
-Message-Id: <20210219144617.4782-3-peter.maydell@linaro.org>
+Subject: [PATCH 00/44] hw/arm: New board model mps3-an547
+Date: Fri, 19 Feb 2021 14:45:33 +0000
+Message-Id: <20210219144617.4782-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
-References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,80 +103,168 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IiWDpapLnXNZ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZtB2EX2giRn6
 
-Add a new callback event type ClockPreUpdate, which is called on
-period changes before the period is updated.
+This patchseries implements a model of the AN547 FPGA image for the
+MPS3 board.  The main benefit of this new board is that it uses the
+Cortex-M55 CPU and so it allows running guests which use a v8.1M CPU.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- docs/devel/clocks.rst | 9 ++++++++-
- include/hw/clock.h    | 1 +
- hw/core/clock.c       | 3 +++
- 3 files changed, 12 insertions(+), 1 deletion(-)
+This FPGA image is based on the SSE-300, so most of the series is
+really implementing the SSE-300 model.  The differences between the
+SSE-200 and SSE-300 are mostly not very exciting, but there's a lot
+of minor tweaking of things like ID register values.  We also need to
+support the way the SSE-300 has rearranged the address map, so the
+middle part of the series adds a framework for making the config of
+the devices behind the PPUs data-driven.
 
-diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-index cd344e3fe5d..f0391e76b4f 100644
---- a/docs/devel/clocks.rst
-+++ b/docs/devel/clocks.rst
-@@ -181,7 +181,14 @@ events.
- 
- The events currently supported are:
- 
-- * ``ClockUpdate`` : called after the input clock's period has changed
-+ * ``ClockPreUpdate`` : called when the input clock's period is about to
-+   update. This is useful if the device needs to do some action for
-+   which it needs to know the old value of the clock period. During
-+   this callback, Clock API functions like ``clock_get()`` or
-+   ``clock_ticks_to_ns()`` will use the old period.
-+ * ``ClockUpdate`` : called after the input clock's period has changed.
-+   During this callback, Clock API functions like ``clock_ticks_to_ns()``
-+   will use the new period.
- 
- Note that a clock only has one callback: it is not possible to register
- different functions for different events. You must register a single
-diff --git a/include/hw/clock.h b/include/hw/clock.h
-index 282a37f7c5a..2ba44e14424 100644
---- a/include/hw/clock.h
-+++ b/include/hw/clock.h
-@@ -30,6 +30,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Clock, CLOCK)
-  */
- typedef enum ClockEvent {
-     ClockUpdate = 1, /* Clock period has just updated */
-+    ClockPreUpdate = 2, /* Clock period is about to update */
- } ClockEvent;
- 
- typedef void ClockCallback(void *opaque, ClockEvent event);
-diff --git a/hw/core/clock.c b/hw/core/clock.c
-index 4479eff145b..fc5a99683f8 100644
---- a/hw/core/clock.c
-+++ b/hw/core/clock.c
-@@ -81,6 +81,9 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
- 
-     QLIST_FOREACH(child, &clk->children, sibling) {
-         if (child->period != clk->period) {
-+            if (call_callbacks) {
-+                clock_call_callback(child, ClockPreUpdate);
-+            }
-             child->period = clk->period;
-             trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
-                                CLOCK_PERIOD_TO_HZ(clk->period),
+The SSE-300 also has new counter and timer devices, so the series
+includes models of those and tests for them.  The interesting feature
+of these devices is that the SSE system counter device provides a
+64-bit count to other timer devices in the system; those timer
+devices do not run off a direct clock, but only off the count value. 
+(In hardware, there is a 64-bit count value that's connected from the
+counter to all the timers.) For QEMU I have implemented this by
+giving the timers a QOM link property so they can be passed the
+counter device they are connected to, plus some public functions
+for the counter device for things like "get the count value"
+and "tell me when the count will hit this value". The SSE-300
+also has a system watchdog device which works off the counter in
+the same way, but in this series I have not modelled the watchdog.
+
+The first four patches in the series are the Clock API patches I put
+out for review earlier.
+
+Based-on: 20210215115138.20465-1-peter.maydell@linaro.org
+("[PATCH v2 00/24] hw/arm: New board model mps3-an524")
+which added most of the flexibility to the mps2-tz.c code
+to support these new boards.
+
+thanks
+-- PMM
+
+Peter Maydell (44):
+  clock: Add ClockEvent parameter to callbacks
+  clock: Add ClockPreUpdate callback event type
+  clock: Add clock_ns_to_ticks() function
+  hw/timer/npcm7xx_timer: Use new clock_ns_to_ticks()
+  hw/arm/armsse: Introduce SSE subsystem version property
+  hw/misc/iotkit-sysctl: Remove is_sse200 flag
+  hw/misc/iotkit-secctl.c: Implement SSE-300 PID register values
+  hw/misc/iotkit-sysinfo.c: Implement SSE-300 PID register values
+  hw/arm/armsse.c: Use correct SYS_CONFIG0 register value for SSE-300
+  hw/misc/iotkit-sysinfo.c: Implement SYS_CONFIG1 and IIDR
+  hw/timer/sse-counter: Model the SSE Subsystem System Counter
+  hw/timer/sse-timer: Model the SSE Subsystem System Timer
+  hw/misc/iotkit-sysctl: Add SSE-300 cases which match SSE-200 behaviour
+  hw/misc/iotkit-sysctl: Handle CPU_WAIT, NMI_ENABLE for SSE-300
+  hw/misc/iotkit-sysctl: Handle INITSVTOR* for SSE-300
+  hw/misc/iotkit-sysctl: Implement dummy version of SSE-300 PWRCTRL
+    register
+  hw/misc/iotkit-sysctl: Handle SSE-300 changes to PDCM_PD_*_SENSE
+    registers
+  hw/misc/iotkit-sysctl: Implement SSE-200 and SSE-300 PID register
+    values
+  hw/arm/Kconfig: Move ARMSSE_CPUID and ARMSSE_MHU stanzas to hw/misc
+  hw/misc/sse-cpu-pwrctrl: Implement SSE-300 CPU<N>_PWRCTRL register
+    block
+  hw/arm/armsse: Use an array for apb_ppc fields in the state structure
+  hw/arm/armsse: Add a define for number of IRQs used by the SSE itself
+  hw/arm/armsse: Add framework for data-driven device placement
+  hw/arm/armsse: Move dual-timer device into data-driven framework
+  hw/arm/armsse: Move watchdogs into data-driven framework
+  hw/arm/armsse: Move s32ktimer into data-driven framework
+  hw/arm/armsse: Move sysinfo register block into data-driven framework
+  hw/arm/armsse: Move sysctl register block into data-driven framework
+  hw/arm/armsse: Move PPUs into data-driven framework
+  hw/arm/armsse: Add missing SSE-200 SYS_PPU
+  hw/arm/armsse: Indirect irq_is_common[] through ARMSSEInfo
+  hw/arm/armsse: Add support for SSE variants with a system counter
+  hw/arm/armsse: Add support for TYPE_SSE_TIMER in ARMSSEDeviceInfo
+  hw/arm/armsse: Support variants with ARMSSE_CPU_PWRCTRL block
+  hw/arm/armsse: Add SSE-300 support
+  hw/arm/mps2-tz: Make UART overflow IRQ board-specific
+  hw/misc/mps2-fpgaio: Fold counters subsection into main vmstate
+  hw/misc/mps2-fpgaio: Support AN547 DBGCTRL register
+  hw/misc/mps2-scc: Implement changes for AN547
+  hw/arm/mps2-tz: Support running APB peripherals on different clock
+  hw/arm/mps2-tz: Make initsvtor0 setting board-specific
+  hw/arm/mps2-tz: Add new mps3-an547 board
+  docs/system/arm/mps2.rst: Document the new mps3-an547 board
+  tests/qtest/sse-timer-test: Add simple tests of the SSE timer and
+    counter
+
+ docs/devel/clocks.rst                |   71 +-
+ docs/system/arm/mps2.rst             |    6 +-
+ include/hw/arm/armsse-version.h      |   42 ++
+ include/hw/arm/armsse.h              |   40 +-
+ include/hw/clock.h                   |   63 +-
+ include/hw/misc/armsse-cpu-pwrctrl.h |   40 +
+ include/hw/misc/iotkit-secctl.h      |    2 +
+ include/hw/misc/iotkit-sysctl.h      |   13 +-
+ include/hw/misc/iotkit-sysinfo.h     |    2 +
+ include/hw/misc/mps2-fpgaio.h        |    2 +
+ include/hw/qdev-clock.h              |   17 +-
+ include/hw/timer/sse-counter.h       |  105 +++
+ include/hw/timer/sse-timer.h         |   53 ++
+ hw/adc/npcm7xx_adc.c                 |    2 +-
+ hw/arm/armsse.c                      | 1008 +++++++++++++++++++-------
+ hw/arm/mps2-tz.c                     |  168 ++++-
+ hw/char/cadence_uart.c               |    4 +-
+ hw/char/ibex_uart.c                  |    4 +-
+ hw/char/pl011.c                      |    5 +-
+ hw/core/clock.c                      |   24 +-
+ hw/core/qdev-clock.c                 |    8 +-
+ hw/mips/cps.c                        |    2 +-
+ hw/misc/armsse-cpu-pwrctrl.c         |  149 ++++
+ hw/misc/bcm2835_cprman.c             |   23 +-
+ hw/misc/iotkit-secctl.c              |   50 +-
+ hw/misc/iotkit-sysctl.c              |  521 ++++++++++---
+ hw/misc/iotkit-sysinfo.c             |   51 +-
+ hw/misc/mps2-fpgaio.c                |   52 +-
+ hw/misc/mps2-scc.c                   |   15 +-
+ hw/misc/npcm7xx_clk.c                |   26 +-
+ hw/misc/npcm7xx_pwm.c                |    2 +-
+ hw/misc/zynq_slcr.c                  |    5 +-
+ hw/timer/cmsdk-apb-dualtimer.c       |    5 +-
+ hw/timer/cmsdk-apb-timer.c           |    4 +-
+ hw/timer/npcm7xx_timer.c             |    6 +-
+ hw/timer/sse-counter.c               |  474 ++++++++++++
+ hw/timer/sse-timer.c                 |  470 ++++++++++++
+ hw/watchdog/cmsdk-apb-watchdog.c     |    5 +-
+ target/mips/cpu.c                    |    2 +-
+ tests/qtest/sse-timer-test.c         |  240 ++++++
+ MAINTAINERS                          |    7 +
+ hw/arm/Kconfig                       |    9 +-
+ hw/misc/Kconfig                      |    9 +
+ hw/misc/meson.build                  |    1 +
+ hw/misc/trace-events                 |    4 +
+ hw/timer/Kconfig                     |    6 +
+ hw/timer/meson.build                 |    2 +
+ hw/timer/trace-events                |   12 +
+ tests/qtest/meson.build              |    1 +
+ 49 files changed, 3356 insertions(+), 476 deletions(-)
+ create mode 100644 include/hw/arm/armsse-version.h
+ create mode 100644 include/hw/misc/armsse-cpu-pwrctrl.h
+ create mode 100644 include/hw/timer/sse-counter.h
+ create mode 100644 include/hw/timer/sse-timer.h
+ create mode 100644 hw/misc/armsse-cpu-pwrctrl.c
+ create mode 100644 hw/timer/sse-counter.c
+ create mode 100644 hw/timer/sse-timer.c
+ create mode 100644 tests/qtest/sse-timer-test.c
+
 -- 
 2.20.1
 

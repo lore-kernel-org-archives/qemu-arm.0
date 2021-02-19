@@ -1,72 +1,72 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9207464lfc;
-        Fri, 19 Feb 2021 09:40:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyyCun+SQZAL1RzxEgN5BQ8/0oSqx54jVjpfKnJ2s3VDtURPWEr8Z+OuZO/7iGby5NjSls8
-X-Received: by 2002:a05:6808:4e:: with SMTP id v14mr7331278oic.37.1613756452106;
-        Fri, 19 Feb 2021 09:40:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613756452; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9207518lfc;
+        Fri, 19 Feb 2021 09:40:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxi2B9sqJTb8/luuSSviiojYcVDWYBwsir0xqs0hRFMpk31pJkwvCM+u2n5rcD/oksX+kuD
+X-Received: by 2002:a05:6808:d46:: with SMTP id w6mr7364091oik.47.1613756456644;
+        Fri, 19 Feb 2021 09:40:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613756456; cv=none;
         d=google.com; s=arc-20160816;
-        b=h8pCNL0upJP6fF+OwtD/4xvdC2z05Qb+z4cIjGthc5bGBu1oBzI61TgQtUgNuMG+Qd
-         iGFRJSuK1TX1S5q+MOWuZ5I/4POMVIQuCqhWo0o57+g1mE0fae3N1cwzGApaAOlqG4eF
-         Fwr0rTpro4ljvCXEgX8JXH7aPXrofkLSTP7EubsHMzz7GAFCBUdR3DqDPQ6rMiHrVp8p
-         2tjd0FCR5uupKrqsvGG1//EJseJzgjQe6pBBznf4E+A/sqK5M779fM6AxLLnFKgz8s6g
-         OfBR0D9GqXq04LG8bQ686Cq5XMH2SiHxyWsYFRqOfCzwdV45aD8n43XVXzNZFcHCQ32f
-         XbWw==
+        b=Z/wlFdO7kPQmv5ZP3WkWv1PmmkYatr83+7THtldt5nzQ2PgkRpjbfI42wXqlhtCUjq
+         fWbdGAf1EJqUyn+LEt0H0syFeNXIw1PAJ3mQn5rgEYv0twrMX/kd9jRvcOR4lkRTx6fT
+         6hxf0GPGxovr/lZ2cJlrCk4PClrOyfrOCk2QGb4rNTHqqmREbec8UpMWwsOBRh6QMpHG
+         lB1hPgu1Xfe4/EESVRV8NavTI3tE53LRhbY63WNaxsPQq1kOPrIIQEA6Fo2nOZic/A7I
+         g8ioWx+Hj/jO3xsJUtE5uGbI4fEsG2B+J0ns+CpphlCPvF5O9Hw7MEEyjF00SbQIzhX7
+         BcmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
          :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
          :list-id;
-        bh=m89dmrSplgkgoyBA9XFoMMYsKZX69TbxEanq9oDkcW0=;
-        b=yGBRLOmWVlZUL3rNZ6ZeJOgyfRtdL/RjRE1xfPe1vCjToiHTl2IkJ/d6R+XfUbbl4M
-         54m379hC3v3Iyn0Ow3gYGEXx76xEAk7clgF1el4/Xc/QLsQk4/avnoT0jtoEsQehYBKb
-         JAzB7avxQewLhjZUqt7ztu0qJJtV87GuMzut7pJLXbFhIPg+i3FUXnRPN0PUhMaGXh4G
-         MTuoa3660vTjzmE6gHpvLyPmWjlsmGutgSo8RtK32dmNooucfpEE1Ya7PU4eMBiBZuw5
-         AInkhAAtQLnLv2Rdmxbq+dUwkocVOtFvJ49aZAL7x8bslEL0jX2M1lMp+Ri0CMQrfDAK
-         buKQ==
+        bh=Ueqj+n2dHsbjBHuZ0Hoy+mZlGObPSK9klpKLOoZpu4Y=;
+        b=hq8IiksPMENUfLSovntbAjo8C7R6zFH5EHVepBBrUv0xgTS3ZYmpLYQDUcIxcDcgtG
+         z4m2X4rTD0ZwwpEug2HIabHqio9gXQ/PzyBtCQWRcBopucjsdWqVB9W63QZnz149qEFQ
+         B0reDaVTV+XyVjMGnf81fqa6fBTzEghWXKK3qgHyG3XH7cKAgg1aLP7qc3uZLzE7vpbx
+         XILf5aY5O7ySqgSyBilKnQYEVIVtlj315ASrZclFvXtdG7hxaX6BSdpQumM3n1dAgAc3
+         7uRbUw6ZAqfNMR06UDCClesN5l+PFZ+TPz0tHfWWG0id5P7WV1WdVsmAnOXxO8Zd8Ehc
+         Rc+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DXjY4RQV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMF33b6N;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id p30si4277993otf.105.2021.02.19.09.40.51
+        by mx.google.com with ESMTPS id j61si5646285otc.97.2021.02.19.09.40.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Feb 2021 09:40:52 -0800 (PST)
+        Fri, 19 Feb 2021 09:40:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DXjY4RQV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMF33b6N;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.87039.164032 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.87034.164020 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lD9kt-0001Iy-Nu; Fri, 19 Feb 2021 17:39:51 +0000
+	id 1lD9kg-00018U-8U; Fri, 19 Feb 2021 17:39:38 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 87039.164032; Fri, 19 Feb 2021 17:39:51 +0000
+Received: by outflank-mailman (output) from mailman id 87034.164020; Fri, 19 Feb 2021 17:39:38 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lD9kt-0001Iq-Jr; Fri, 19 Feb 2021 17:39:51 +0000
-Received: by outflank-mailman (input) for mailman id 87039;
- Fri, 19 Feb 2021 17:39:50 +0000
+	id 1lD9kg-00018L-3w; Fri, 19 Feb 2021 17:39:38 +0000
+Received: by outflank-mailman (input) for mailman id 87034;
+ Fri, 19 Feb 2021 17:39:36 +0000
 Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
  by lists.xenproject.org with esmtp (Exim 4.92)
  (envelope-from <SRS0=ml8x=HV=redhat.com=philmd@srs-us1.protection.inumbo.net>)
- id 1lD9kr-0001FU-WF
- for xen-devel@lists.xenproject.org; Fri, 19 Feb 2021 17:39:50 +0000
-Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
+ id 1lD9ke-00015B-HZ
+ for xen-devel@lists.xenproject.org; Fri, 19 Feb 2021 17:39:36 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [216.205.24.124])
  by us1-rack-iad1.inumbo.com (Halon) with ESMTP
- id d9a537ac-eb31-4856-9d00-58a73a5b2635;
- Fri, 19 Feb 2021 17:39:47 +0000 (UTC)
+ id 5d3d0e88-38f6-4dbb-b21f-040f82cc7201;
+ Fri, 19 Feb 2021 17:39:35 +0000 (UTC)
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-120-ZN5_YoBkMcSIkws2sM-PQA-1; Fri, 19 Feb 2021 12:39:43 -0500
-Received: by mail-wr1-f69.google.com with SMTP id e11so2715711wro.19
- for <xen-devel@lists.xenproject.org>; Fri, 19 Feb 2021 09:39:43 -0800 (PST)
+ us-mta-463-bvpW0CxdNBuwgHTvOAM7jw-1; Fri, 19 Feb 2021 12:39:31 -0500
+Received: by mail-wr1-f69.google.com with SMTP id l10so2764903wry.16
+ for <xen-devel@lists.xenproject.org>; Fri, 19 Feb 2021 09:39:31 -0800 (PST)
 Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id b72sm13082236wmd.4.2021.02.19.09.39.40
+ by smtp.gmail.com with ESMTPSA id r12sm3052972wrt.69.2021.02.19.09.39.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 09:39:41 -0800 (PST)
+ Fri, 19 Feb 2021 09:39:30 -0800 (PST)
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -78,36 +78,36 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
 Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: d9a537ac-eb31-4856-9d00-58a73a5b2635
+X-Inumbo-ID: 5d3d0e88-38f6-4dbb-b21f-040f82cc7201
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1613756387;
+	s=mimecast20190719; t=1613756375;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=m89dmrSplgkgoyBA9XFoMMYsKZX69TbxEanq9oDkcW0=;
-	b=DXjY4RQV0itR6RsRPvdf9Coo8i0V0+IoVp9d/6gRb7bfQePt3Yzm6637eeXjUGmuNAlYBA
-	EqZzWirw3ji/ywUXv9kvQgAd2BQEu3qmBXjcKGpoid3831Ls92EMrq3JyxCQlu3e6GQuu5
-	XYBiTOgCp0JRk6zwPItYpnh87nwQMMQ=
-X-MC-Unique: ZN5_YoBkMcSIkws2sM-PQA-1
+	bh=Ueqj+n2dHsbjBHuZ0Hoy+mZlGObPSK9klpKLOoZpu4Y=;
+	b=MMF33b6NnBdSSOiWvC0VxRqETouFen+FQ7chlscpyNGwpGoPnOVyXD0KOSt6ZNjzrcGLlx
+	e7K3+LMK21YQac6V7nxO0KMpjaaqcNB7cndfaLMYUwlu9nlt+FCYDeVH2LS/Y8rF/bjZu1
+	N7OsP/RVseweu135mRvasXNezJWyqF4=
+X-MC-Unique: bvpW0CxdNBuwgHTvOAM7jw-1
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=m89dmrSplgkgoyBA9XFoMMYsKZX69TbxEanq9oDkcW0=;
-        b=aZuifwT8xzpDif3bTSgPxNV+2XmG3ykdqtuUJQxBsPpbsngkH/r8z3owwkr5gE4vSa
-         hcp1+nVvHeQzpD+8F3FQvmiqs/48ftEvQjtToR8Tx+bjpL93irK+RJwCYRwOArUdv83b
-         GPBZS1ySGR3sZOI8iSOYaRk2sxNzBRu0V1cGMfMUEgVxeq9gKbleogCwJUSdJrtMi/d3
-         ovIgwV3vp6jwQHOn+nY+81VubN01kI/tJsek3GYwn1qxId560dbZ3C9sRIKbYMTwatsv
-         5fdorqUjIWelfMyyHg7xTDu8Zl5/kXjQ97j2ig0hedQzsWNmd029xjkbQE8lhG2p00b5
-         k+JA==
-X-Gm-Message-State: AOAM532xYGn1WMTSfbbibGlt+EtFqaCJrnquirjG6TFdR7NuULw7vTLZ
-	NvZiYbaRxuhe1Uvg+mSOC7nB1+GKZGsI5Dqaf1bfh1S8/85n2V+uWd5uxrmxADTPwIX/iZv/7CH
-	779u0L7r0Vl0Q49j9DqiZJXLy0RI=
-X-Received: by 2002:a1c:c6:: with SMTP id 189mr9272330wma.128.1613756382375;
-        Fri, 19 Feb 2021 09:39:42 -0800 (PST)
-X-Received: by 2002:a1c:c6:: with SMTP id 189mr9272291wma.128.1613756382214;
-        Fri, 19 Feb 2021 09:39:42 -0800 (PST)
+        bh=Ueqj+n2dHsbjBHuZ0Hoy+mZlGObPSK9klpKLOoZpu4Y=;
+        b=gvUjCHKHU0o7U/QuNaPovTACBBYo2wXSv5/NdFyA2U0hbNUtt0iIevYBFGzk1kF38l
+         vPyaYsrCRZj/NkV6lec4bsPX1AdEXVWBvcjaU6LKOcI8m07P7ADqpSam6kLMPLBN4LrX
+         FUrfjpePBKkEHrmeXlqqvHpWRdZsJfOm1cy1stSSfLRWhXprQPEBaZMWoH5yywKkDprr
+         PIjX75HTMCStYq2cDziQfKTb7C74uV6KiqxrYrSI+/WnFGnIdsT9+OOJNTwWlAmHPKg1
+         ZRmlN0RpWHmWM+4pryZNoezVCklvGvWwV+Yxr+tZvVDLdIyD4sVpGHwMoiUpRqZyIdpX
+         wlxA==
+X-Gm-Message-State: AOAM533Q0ZrM0dkvk6wLFwGYJKk3gDdOg3id8yhifDmb1Vs+WvVRRySv
+	InPqEPmZbZ4dVWr1PXhu2+2lkHJQVfVR3bDCXioBSDkfyU13MoTcg4zerTzUl+ZZd20VCatr9XN
+	JA2dxka/wpfZsFE1ZNiaeTD3sL0I=
+X-Received: by 2002:a1c:c90c:: with SMTP id f12mr9312000wmb.98.1613756370707;
+        Fri, 19 Feb 2021 09:39:30 -0800 (PST)
+X-Received: by 2002:a1c:c90c:: with SMTP id f12mr9311979wmb.98.1613756370490;
+        Fri, 19 Feb 2021 09:39:30 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -144,9 +144,9 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
 	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 09/11] hw/xenpv: Restrict Xen Para-virtualized machine to Xen accelerator
-Date: Fri, 19 Feb 2021 18:38:45 +0100
-Message-Id: <20210219173847.2054123-10-philmd@redhat.com>
+Subject: [PATCH v2 07/11] hw/s390x: Explicit the s390-ccw-virtio machines support TCG and KVM
+Date: Fri, 19 Feb 2021 18:38:43 +0100
+Message-Id: <20210219173847.2054123-8-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210219173847.2054123-1-philmd@redhat.com>
 References: <20210219173847.2054123-1-philmd@redhat.com>
@@ -157,47 +157,38 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SGoVvKywJ4Cf
+X-TUID: XqC4Q9kA9f/M
 
-When started with other accelerator than Xen, the XenPV machine
-fails with a criptic message:
-
-  $ qemu-system-x86_64 -M xenpv,accel=kvm
-  xen be core: can't connect to xenstored
-  qemu-system-x86_64: xen_init_pv: xen backend core setup failed
-
-By restricting it to Xen, we display a clearer error message:
-
-  $ qemu-system-x86_64 -M xenpv,accel=kvm
-  qemu-system-x86_64: invalid accelerator 'kvm' for machine xenpv
+All s390-ccw-virtio machines support TCG and KVM.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/xenpv/xen_machine_pv.c | 5 +++++
+ hw/s390x/s390-virtio-ccw.c | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/hw/xenpv/xen_machine_pv.c b/hw/xenpv/xen_machine_pv.c
-index 8df575a457c..d7747bcec98 100644
---- a/hw/xenpv/xen_machine_pv.c
-+++ b/hw/xenpv/xen_machine_pv.c
-@@ -86,12 +86,17 @@ static void xen_init_pv(MachineState *machine)
-     atexit(xen_config_cleanup);
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index 2972b607f36..1f168485066 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -586,6 +586,10 @@ static ram_addr_t s390_fixup_ram_size(ram_addr_t sz)
+     return newsz;
  }
  
-+static const char *valid_accels[] = {
-+    "xen", NULL
++static const char *const valid_accels[] = {
++    "tcg", "kvm", NULL
 +};
 +
- static void xenpv_machine_init(MachineClass *mc)
+ static void ccw_machine_class_init(ObjectClass *oc, void *data)
  {
-     mc->desc = "Xen Para-virtualized PC";
-     mc->init = xen_init_pv;
-     mc->max_cpus = 1;
-     mc->default_machine_opts = "accel=xen";
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -612,6 +616,7 @@ static void ccw_machine_class_init(ObjectClass *oc, void *data)
+     mc->possible_cpu_arch_ids = s390_possible_cpu_arch_ids;
+     /* it is overridden with 'host' cpu *in kvm_arch_init* */
+     mc->default_cpu_type = S390_CPU_TYPE_NAME("qemu");
 +    mc->valid_accelerators = valid_accels;
- }
- 
- DEFINE_MACHINE("xenpv", xenpv_machine_init)
+     hc->plug = s390_machine_device_plug;
+     hc->unplug_request = s390_machine_device_unplug_request;
+     nc->nmi_monitor_handler = s390_nmi;
 -- 
 2.26.2
 

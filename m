@@ -1,103 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9097112lfc;
-        Fri, 19 Feb 2021 07:12:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwaXKJXluJoImUmG7lVgs0lO+as9lZEe3vlTdA4UHrxv1Pl/Kc+0mzjSC+r3CRFiKoxTXVQ
-X-Received: by 2002:a25:f40e:: with SMTP id q14mr13678315ybd.230.1613747573285;
-        Fri, 19 Feb 2021 07:12:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613747573; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9097312lfc;
+        Fri, 19 Feb 2021 07:13:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyir2E4cPgINppwqzlypn3heS6ScB7z+EnWVzTZwqEH+ENlRKFdAN8WpqShMWRLGWxuEVlL
+X-Received: by 2002:a25:bfc1:: with SMTP id q1mr13825604ybm.89.1613747589091;
+        Fri, 19 Feb 2021 07:13:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613747589; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZENMDMQiRjjqgc82kSudjmZ8WtxgeCv4TrljEUuVqTGROIK+cnv6K2XjGhk5lXUHex
-         ZQ7ap3TtFFIL9OjS8fhc64AhASypKREseLhO7JZZUbFXuPfNR9M4JWjjlbI+oaOOUa82
-         q+dIONWdpaCw72FHQSB55YElk/iYJoSlZfGFlBKY7C1+CXdcZhSLUZIcwt4GLwspOluK
-         CHISyP7M2R7xdTRecqCEYfnHrKyVReuf95OkCrSNpVqxgBf6T5hiq+yYgBrYAOMp0JmJ
-         yFXpg7Mnqb/jgc30j2O/pITbFOKtOR4ac723WoPSfqh0u52i7zhoMvhMQ7IllXWoyfAm
-         zllA==
+        b=G//xQzgAYQltWQyZRRELMnAxxVJUbZkhBqAkW0vuKV2FeSzb7AdKLDCfvm6dVZsXax
+         9mvUfPWeMnXtg3t6PzU4QCwCkNlKAAclGL1f6R8QQ/YnEEM5zQ25hol3EHYQP0nSfWxm
+         hpmnL0Z39NyZzYBUIm/0jsGYVpnZS144FcGxdnslQFzA4MD7VkWV50DU40RNtQavW9jx
+         lv+19jnIEOk0r6irWEvRYziPNSkglxekKV6InX59dvzABjRoPBAOGyWjuqgaRp3oVgfq
+         gIT3EbccFfIdEy0rMdqcCiiNGjZeSDZ4FXb1zEUCq1n5im+g3OHRGaJ31sBZdC3mJEKt
+         MylA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QkE/LCPztd/fooCg8iFxYM64YiAVSgQbEacYkK19vlo=;
-        b=IQ5X6325xI/UkkoVAYpFZ1QwPZyKhOTQ0ry7ON23jMe3Xe48sa7Lb+wg5OczVgHN9S
-         6bYveM4b+mtazhp4bv+M2tCR8Pm1H38NblauSFt1nSwTaCW2QzLEKBgSNXnoN7U7Vr09
-         569IK59kGxiHrgAz61xqcOcva5SQb0KMzRgFXaCPV/5c2Vtzy6GmNuYo/rWnugRqsuoh
-         5wUyncP/u9TR+xIrDyjSIwzWsbB4KXLeWGyeYXsML7i9ZxT09vG+MKfSP4bSyb5msEXO
-         1L3cTk1I10wnObUkRQvZO02TpBALP0fRSApeobLepeSUF/HfT4dQYWRBF7IhOOkJGt8U
-         Q9cg==
+        bh=HCUP9aHI+eQ+pUUZGOO1dNsG+dvoHvU/fP6me+Xsa6A=;
+        b=IBz7EUqS4moxtZkZy9hIbOSJHHhEmv+ju1UuIefR0/RDrhIuGDxYZz5dUntqaHHOJd
+         0R5iKH6FwwYp9AGn6Fk+X90jBt/P+tzEU7+NC6oxgGLm+RbabokMDrnipX1v0dHZOCm5
+         bP2DtcYtCDd/pabSbKR9u9vmrZLGSoOip3xgM5ITlBYmpP3D4U3wJlLd1zxzKn2w+Bdo
+         YV1lUp9GFykZiL6+Rqc4ySWbMYS34i0MrVJsynMWtd2JgfocJi6FR+11Pd+IH46agBbP
+         bOFCCYiLlgsFD5hr6hUWT0JpzxTE78wXHnyn0un5x+IJZkm3P5RhvkOyoqeSw5BWc94G
+         nlcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JTrPe5Rz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Hrsv3BiF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r80si10047571ybc.88.2021.02.19.07.12.53
+        by mx.google.com with ESMTPS id b126si9834613ybg.69.2021.02.19.07.13.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 07:12:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Feb 2021 07:13:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JTrPe5Rz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Hrsv3BiF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46246 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49546 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7Se-0001OX-HR
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:12:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34064)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lD7Su-0002jy-Aw
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:13:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73f-0002Uo-2x
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:03 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:40717)
+ id 1lD747-0002yG-Eg
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:35 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:37291)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73H-0003Yj-Rq
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:02 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id v14so8881255wro.7
- for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:39 -0800 (PST)
+ id 1lD73V-0003hD-Fl
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:31 -0500
+Received: by mail-wm1-x335.google.com with SMTP id m1so7890271wml.2
+ for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 06:46:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=QkE/LCPztd/fooCg8iFxYM64YiAVSgQbEacYkK19vlo=;
- b=JTrPe5Rzhf6K1cS3Ld+lwMBTyH5JUVWBN5nU675gtdDsjlVcsaVnFs0yNwa/XNt9cE
- OhI1cktUN+0WCno2LQdcX7cnD6BRQ2enMA+AAP0hO3CYcAyRKLn/rZ015lqAEW5SIE7k
- R696/FR54wH9OPsHzPJbdi5/hwFjvU5ezw01egGC3GmVmuj6OpU0Okk5HUjWztXzVcqW
- oIpMYRgecyiQIMWRpOGe4MB9ySpeaLm1EVx1mpFaqcmtqpu0prOwGp5O6vtVtqJEN9nV
- Zg5Kl0lvJtxR8X8HrMzAwG80gfywP//fMZePN6mUq+hxgiWDOimuqH3VWr2e3h7iq9t8
- 1TXA==
+ bh=HCUP9aHI+eQ+pUUZGOO1dNsG+dvoHvU/fP6me+Xsa6A=;
+ b=Hrsv3BiFoTZ+BiUKC5Hm/vCDuCK9HBxhaS+Sv4qAxP2d39CkY3gPB1mfYr/o/TtNAS
+ HziB0W9yYocJDO16Esiv/HJYp+ZEwLQQvq5m25gJk93Txy8X+InsveqMJHT4nQ4+w0K5
+ dq3VC+CE0MmwQxqzvI1DaN+7C7dRgKkKWcnuJLV1dPPYbWVR3SgMD2IZDGUhLFrVQdo4
+ BFm8zfAA0PMzmuMQMfbyFMDsvjeXQS5pAAbQDYOexkxtnuD8APlghkFBobkdLe0knz66
+ IomdlT6Y1SDDeCGyHhxXKrDTM1Nfw6uzfXLdNfxqOshD+sgbKEH4wZPhyvkavEEkR2cl
+ wSzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=QkE/LCPztd/fooCg8iFxYM64YiAVSgQbEacYkK19vlo=;
- b=QsDixWzJ3IYcV/j+i2Oj0QSBLRb8bTl4qzG5be3qqcaNoFAiiDwCZXxK5qZ7hkO1Ue
- c3vnqHfXjHnDPQ9JCzq8LLTDN4A4ht7QVxG32ppWUsg6tQrlzHh3bmz5P4e2rUkkzzUB
- eT8RVMjGuZEoy3+LyuqMMCmzMOkI77jmSFyhXZ3SN1xsU6EoojqAmXT6YiWszSJ53bAv
- 3Hn+QqYX8B2dhuZcif/0DsSaekBzC1169qEm3lDlSVq197o5x+15ACXem0QukTyIdjls
- yq12Iho+7dDF2ydfsJUn6JVFXdnKvaEtUVLufGverAkUtz4ZCkGec3i07x7ONLu6rnof
- tvUQ==
-X-Gm-Message-State: AOAM532QifcIn38KKSWSiW9Q7t6lAgxb97RJG46GelGfGO6upXtJgnXl
- aNNC5v35mo7m56QfVyuSDSF9kg==
-X-Received: by 2002:adf:fb51:: with SMTP id c17mr9774198wrs.145.1613745998361; 
- Fri, 19 Feb 2021 06:46:38 -0800 (PST)
+ bh=HCUP9aHI+eQ+pUUZGOO1dNsG+dvoHvU/fP6me+Xsa6A=;
+ b=n6/m0CHYqhRuIsI1qXpi1RdTQ4S8xYHb/scaTjEjQQ14z+57Ri6l4hb8QkGjgHB7WI
+ h/yNJG9PqUqM15WY/vXlNZSeuNMn3E9s77tiDaQVuKcCV6ngAnYGbZmSkUwF9seKX4Eb
+ 1i3WxB2DMFLkEcH595Pi3Hg9uQ3vsLg2lVEbnn/JPB04dvFWUVQTgms/+qyPeeXx9jrF
+ 0Le1fPcJzE+tFROG2j83b1hp/tGgiqeuFbuZmmojUPowInHssyg1Q+Oo/C608iQi3Mgh
+ p2g50SnQ5JDX3NS2lAwl8RjpxkZmyZ2ib5uEnU6JdOBdaQYokFAwEWi+0PaKlA4AJkRV
+ 1n7Q==
+X-Gm-Message-State: AOAM533h4s9X1aUQJ+wW2lW2Y+Y/fq/BTZhLqkVBudgJpqXb8I4beQD3
+ 7AazOvWNte6czHSiaXlMxeKCpWbMm/PopQ==
+X-Received: by 2002:a7b:c341:: with SMTP id l1mr8345714wmj.182.1613746012193; 
+ Fri, 19 Feb 2021 06:46:52 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.37
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:38 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:51 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 24/44] hw/arm/armsse: Move dual-timer device into data-driven
- framework
-Date: Fri, 19 Feb 2021 14:45:57 +0000
-Message-Id: <20210219144617.4782-25-peter.maydell@linaro.org>
+Subject: [PATCH 43/44] docs/system/arm/mps2.rst: Document the new mps3-an547
+ board
+Date: Fri, 19 Feb 2021 14:46:16 +0000
+Message-Id: <20210219144617.4782-44-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,110 +106,49 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8uN9dL82R2yi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hUbhG0uHZ5Dk
 
-Move the CMSDK dualtimer device handling into the data-driven
-device placement framework.
+Add brief documentation of the new mps3-an547 board.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/armsse.c | 35 +++++++++++++++++++++--------------
- 1 file changed, 21 insertions(+), 14 deletions(-)
+ docs/system/arm/mps2.rst | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 22dd437a4ba..f8da7fb00f9 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -105,6 +105,15 @@ static const ARMSSEDeviceInfo sse200_devices[] = {
-         .ppc_port = 1,
-         .irq = 4,
-     },
-+    {
-+        .name = "dualtimer",
-+        .type = TYPE_CMSDK_APB_DUALTIMER,
-+        .index = 0,
-+        .addr = 0x40002000,
-+        .ppc = 0,
-+        .ppc_port = 2,
-+        .irq = 5,
-+    },
-     {
-         .name = NULL,
-     }
-@@ -346,6 +355,10 @@ static void armsse_init(Object *obj)
-             object_initialize_child(obj, devinfo->name,
-                                     &s->timer[devinfo->index],
-                                     TYPE_CMSDK_APB_TIMER);
-+        } else if (!strcmp(devinfo->type, TYPE_CMSDK_APB_DUALTIMER)) {
-+            assert(devinfo->index == 0);
-+            object_initialize_child(obj, devinfo->name, &s->dualtimer,
-+                                    TYPE_CMSDK_APB_DUALTIMER);
-         } else {
-             g_assert_not_reached();
-         }
-@@ -375,8 +388,6 @@ static void armsse_init(Object *obj)
-     }
-     object_initialize_child(obj, "s32ktimer", &s->s32ktimer,
-                             TYPE_CMSDK_APB_TIMER);
--    object_initialize_child(obj, "dualtimer", &s->dualtimer,
--                            TYPE_CMSDK_APB_DUALTIMER);
-     object_initialize_child(obj, "s32kwatchdog", &s->s32kwatchdog,
-                             TYPE_CMSDK_APB_WATCHDOG);
-     object_initialize_child(obj, "nswatchdog", &s->nswatchdog,
-@@ -808,6 +819,14 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                 return;
-             }
-             mr = sysbus_mmio_get_region(sbd, 0);
-+        } else if (!strcmp(devinfo->type, TYPE_CMSDK_APB_DUALTIMER)) {
-+            sbd = SYS_BUS_DEVICE(&s->dualtimer);
-+
-+            qdev_connect_clock_in(DEVICE(sbd), "TIMCLK", s->mainclk);
-+            if (!sysbus_realize(sbd, errp)) {
-+                return;
-+            }
-+            mr = sysbus_mmio_get_region(sbd, 0);
-         } else {
-             g_assert_not_reached();
-         }
-@@ -844,16 +863,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         }
-     }
+diff --git a/docs/system/arm/mps2.rst b/docs/system/arm/mps2.rst
+index 601ccea15cb..f83b1517871 100644
+--- a/docs/system/arm/mps2.rst
++++ b/docs/system/arm/mps2.rst
+@@ -1,5 +1,5 @@
+-Arm MPS2 and MPS3 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an500``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``, ``mps3-an524``)
+-=========================================================================================================================================
++Arm MPS2 and MPS3 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an500``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``, ``mps3-an524``, ``mps3-an547``)
++=========================================================================================================================================================
  
--    qdev_connect_clock_in(DEVICE(&s->dualtimer), "TIMCLK", s->mainclk);
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->dualtimer), errp)) {
--        return;
--    }
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dualtimer), 0,
--                       armsse_get_common_irq_in(s, 5));
--    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dualtimer), 0);
--    object_property_set_link(OBJECT(&s->apb_ppc[0]), "port[2]", OBJECT(mr),
--                             &error_abort);
--
-     if (info->has_mhus) {
-         /*
-          * An SSE-200 with only one CPU should have only one MHU created,
-@@ -901,8 +910,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     sbd_apb_ppc0 = SYS_BUS_DEVICE(&s->apb_ppc[0]);
-     dev_apb_ppc0 = DEVICE(&s->apb_ppc[0]);
+ These board models all use Arm M-profile CPUs.
  
--    mr = sysbus_mmio_get_region(sbd_apb_ppc0, 2);
--    memory_region_add_subregion(&s->container, 0x40002000, mr);
-     if (info->has_mhus) {
-         mr = sysbus_mmio_get_region(sbd_apb_ppc0, 3);
-         memory_region_add_subregion(&s->container, 0x40003000, mr);
+@@ -27,6 +27,8 @@ QEMU models the following FPGA images:
+   Dual Cortex-M33 as documented in Arm Application Note AN521
+ ``mps3-an524``
+   Dual Cortex-M33 on an MPS3, as documented in Arm Application Note AN524
++``mps3-an547``
++  Cortex-M55 on an MPS3, as documented in Arm Application Note AN547
+ 
+ Differences between QEMU and real hardware:
+ 
 -- 
 2.20.1
 

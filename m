@@ -1,110 +1,110 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9104087lfc;
-        Fri, 19 Feb 2021 07:21:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzwwhoCPS1rj548sX5SrmT6W5hJi0UbmTN96EyDh6xOmCSYxtAzHV5Ieph2WRu7bkjSY0i2
-X-Received: by 2002:a25:778d:: with SMTP id s135mr13398991ybc.126.1613748072483;
-        Fri, 19 Feb 2021 07:21:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613748072; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9104134lfc;
+        Fri, 19 Feb 2021 07:21:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxhgCLxfc5baKIGx6eg1kzKZmvVr1AjyUAcMTtIWUjuTIkwYD4ouXELBfVvny7G5rlKomH5
+X-Received: by 2002:a25:b0b:: with SMTP id 11mr14744114ybl.116.1613748075684;
+        Fri, 19 Feb 2021 07:21:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613748075; cv=none;
         d=google.com; s=arc-20160816;
-        b=IF77ApauVcbuQbuWsvn4PVdAwf2P+FBgB47cktc5OwKzLZWOBDOirp2G4IE44xx+fB
-         /m5aL/8JAo7av7965eI6di3HBjd5ZuCp61VuUkV8bjqcb35TD6hahoo2Sh4IlJ+AhERu
-         yYpNxXLMnxaCbDvtkS5V3ByUyWWQO8gPC1xjBkBzD3V0fi1wuEJf5wIk8Jnv06ksTGJW
-         IRHdjuthJiKFmXHO63IRyLfom0xYh7CwKlaIU0IU327WMjRa9gGxMiTYMDkJ5BO923Z2
-         e1FyIzRH3QsqGg+hD1COgcMON+KyiOJz464QkvUJtIQCcHgbg5aBFB1S6wHhz/ovDzeg
-         7sQg==
+        b=Ko3sPr80+EnMsNIrjl6TbIPSvyq8GamMYT8vCafkSueEP515LPD3u6//BTRbN1fymG
+         bU/NgfO366x90susqmE6OxdZguVlmsC2EgLHnATWOZmD1w4qWQniDl+th6kESCbyFOHZ
+         CD7OWSGaX5DU2FRNYNawuPkPq7ApUVr/hucD9qEtVtvLj39pI3+bhMhEp8R8NHgED4tn
+         aQ7Foie98KPy4IvyWmgRHP7cKFvyFZMuPG/NXikWsz6O7O4dn+sK1Qg1r6rkI+h3SoN3
+         PK0BE+dzV2MQZTAcZvt8F75RPgm99I+1WTmQKyD8blIyRHqNMgsfjLo93EoWjJ63G8x4
+         A/zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6R2H7Db1FqG+TCsnIWopGNIyqmv4t5RlxdvA/d2HL4A=;
-        b=qKAIg/zolspRittA68m7qQbN1unvZBSbEfvEqLF1O0q1un/xjnEG0p5QOW/ytscTcE
-         Kw+l3p+bPOT8jjPJBFtWsYZ1uUi/mT2F6IzsdYqce0E6Glk5JiVe+v77icTGugD26TfW
-         N21gskdlaWvOutPyy92Z3KscQa3di5XZxyfBPuwT2DLAxEN6RocetgndYkH6RnFePE4W
-         xio43JYXgMNqIGzI35r1IR0+4AvcGXkhwk7mJzL+du8eS5Tk/y27dQuWmsWrS1tFHHhm
-         Y/crZ7bbD91348r6d2bp/eZ8WqMv0efD7RQAeXruNdPbSFBESgrkxLuLwB8P9hdEm0FV
-         HKNA==
+        bh=cLMZo6jufPdvkgmcFJXx7AYUcA7XP1lsTzcJqm42xg4=;
+        b=Zo6m2XmiduXrHvMq0T5++bfCCaLfbsderd2Wo0qRSNlTFwzSyB+qv2YC+Mzb2sC6Dj
+         crZEge+MKS8xR+kBETuw1VdDbWeYKf4sJB4hFwtMqA40a0dOF0zyknKuY7oDOxSwOG32
+         t5FkgyhXbSXvIbYzz0p31yWvQGU/5ASs+IncT/R6C1NhRCWzo2tku4R+Ckg7iCmIS0ER
+         1Z9W4BQHa3uTJdLBRHsuAbsr2eQ0MRk2AwWF8YCquOaJWm5t7ZYlaEU498zXv4G8yL+w
+         NA+97gKx7O+jGVyJZ4mP//CHcFdB9g9Nge1VeF/ds4pCSMeQubbwocAsIX3VoAcNK5R4
+         cUpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nTqc9Afg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XBO+MWbQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n22si9436060ybg.348.2021.02.19.07.21.12
+        by mx.google.com with ESMTPS id s9si9464594ybk.106.2021.02.19.07.21.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 07:21:12 -0800 (PST)
+        Fri, 19 Feb 2021 07:21:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nTqc9Afg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XBO+MWbQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48940 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49256 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7ah-00060g-Ql
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:21:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34310)
+	id 1lD7al-0006As-0b
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:21:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73s-0002mF-TO
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:16 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:45679)
+ id 1lD747-0002xa-5s
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:31 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:54995)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73R-0003ei-1P
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:16 -0500
-Received: by mail-wr1-x436.google.com with SMTP id f7so7727486wrt.12
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 06:46:48 -0800 (PST)
+ id 1lD73U-0003gz-Rj
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:30 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id w4so7290055wmi.4
+ for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 06:46:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=6R2H7Db1FqG+TCsnIWopGNIyqmv4t5RlxdvA/d2HL4A=;
- b=nTqc9AfgNxxUsn9fG5s84VIFprLWXCgd7o8kxyNuo+ptpRLrwHJLo5OaLBBB1PUBde
- l/94HMAeMzm//VJsiPR00g5S4vBk6sw9Yjmz1x6el7oqtlNpA/otZDNm49BcDx4DnQZo
- CTmbWFOBddFOb0tQpXhBGhXOe0ZrcSCQ7jDRUaQQpENuYxpDzeFZ9RJyO+DfmztpoJ0x
- cTrW0sBifEW2wSUaDt3xwyPRAPs/qIj+5sHmaTFa2lQT+4vqppwEFc8PgSdqPJWZudcg
- ALsJpEUsSLBH9AbM2OSvz7GJsRM91M6ZoG0SiLXy75Zd9bK1LeevqURusthd2WEZtrFA
- bs1g==
+ bh=cLMZo6jufPdvkgmcFJXx7AYUcA7XP1lsTzcJqm42xg4=;
+ b=XBO+MWbQ243Bfa4AHVjedLMF53Bkvn/dKcAVB48kXkmSGDZdQZIHzT5FPRaKhvMi02
+ BgovK9WJkxVvNa1n303PLM6+RIp+D399VLbOIqi3NlqC6vIQ9UxmKc8gJxv7fQ7Kxhsb
+ OtyPkbc86xdjYLu2IuuW4JX4UKM7oV7Hgxk2fXqDuHWhe/B4iz6zjoWb2SVEVOTP20G7
+ R2PV7Hv+cRM7BqhRudhDZObbdX8Gsj8a2DXHC5hLT3Ml+rQ5j8gn0OOJLz+0jIEdIQiU
+ 8OKxLjGxaA0eCVueZK9wqL9JkOxQHzgBAX8MYmx1q9ZzUoKBQPxzMhsW8UMuXPOkc2zT
+ yxtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6R2H7Db1FqG+TCsnIWopGNIyqmv4t5RlxdvA/d2HL4A=;
- b=iKupWdhhbb1i4IOXVGrnX3SW2qlR4Et3PCD1D3iPMJQO+ltxhunsBv5heCNunqmwZj
- tHZjVMlOzgE04TjVISbP5J0ighFm2cxM0DX/Bho9YAzzg6CTRjVe5pg2N0vmfU+le6mu
- fmMiSNSvwOvg4bCYdmWSQ0LJSowZZNfzn/dtDf+/Hgik4d6MfVatQoCmWM/TZWOcFLxX
- lshXC66iGfm96HTkK2KKmiz5elMLzBowJB0Beb0HhVsLi1D7SpTbq1Sm3D5V5Dy11JmC
- Htv17dPVFxDbP/yBKriI588pZCt28dN9Z9d7+c12Ty6M9iIktPj8bQzn3UsfOokSfe/g
- qQ4Q==
-X-Gm-Message-State: AOAM5306KNodbfgVIEcEWHs8dfrPyuNSSMZqqmGryFI4rSvN+++neQh7
- DbwVDqsrvg5PSb/puz4Cxwu5kMBBCdnIZA==
-X-Received: by 2002:adf:82b3:: with SMTP id 48mr9255686wrc.22.1613746007635;
- Fri, 19 Feb 2021 06:46:47 -0800 (PST)
+ bh=cLMZo6jufPdvkgmcFJXx7AYUcA7XP1lsTzcJqm42xg4=;
+ b=omv9td/OMPJI2LvpvrwfyiEI4ll6fVt1COa0XPf1iYO5J9WNygogLGXS6eBG8JBnhR
+ IyIX92CCD3bcW4pSMfqsLH7wmTc+xWpjZyg7nx6w8r1yguC/oWV9RyCbDcJTTk1WqsmI
+ wgdTOus2n1q4Vm49oy24khAzI+jN6LC1iEiM410t/lgAhizE+94mp1vGViTSjusi51AH
+ o2g+TpBbOtOeC1smvtvxPJJbZdO5Fwv/Nd1zaoVfDuJ80R3UGIdeI/bpZqIBrXk+w9PY
+ TPhQ2OimXYw1Gl7qv6LwZEQ+e/7z9ffRr/Xc/nrv6FzoafH2uRi9dQOVWcz7Tw+7AlA0
+ lvRA==
+X-Gm-Message-State: AOAM532LYYZcHg7Up0J0pT/byk9aicDSFaH4LeZxClQZ4vdzo+6RDRPq
+ Q7z6Zj8XBs/k+6544zYYaEyKG+SVZQtAMw==
+X-Received: by 2002:a05:600c:4fd0:: with SMTP id
+ o16mr7671589wmq.77.1613746011437; 
+ Fri, 19 Feb 2021 06:46:51 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.47
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:47 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:51 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 37/44] hw/misc/mps2-fpgaio: Fold counters subsection into main
- vmstate
-Date: Fri, 19 Feb 2021 14:46:10 +0000
-Message-Id: <20210219144617.4782-38-peter.maydell@linaro.org>
+Subject: [PATCH 42/44] hw/arm/mps2-tz: Add new mps3-an547 board
+Date: Fri, 19 Feb 2021 14:46:15 +0000
+Message-Id: <20210219144617.4782-43-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,69 +119,254 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ILl6t1/1YtZ0
+X-TUID: rx1BxRswshtv
 
-We've already broken migration compatibility for all the MPS
-boards, so we might as well take advantage of this to simplify
-the vmstate for the FPGAIO device by folding the counters
-subsection into the main vmstate description.
+Add support for the mps3-an547 board; this is an SSE-300 based
+FPGA image that runs on the MPS3.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/mps2-fpgaio.c | 30 +++++-------------------------
- 1 file changed, 5 insertions(+), 25 deletions(-)
+ hw/arm/mps2-tz.c | 146 ++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 144 insertions(+), 2 deletions(-)
 
-diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
-index 76308543fcb..e3fabd58b7b 100644
---- a/hw/misc/mps2-fpgaio.c
-+++ b/hw/misc/mps2-fpgaio.c
-@@ -285,41 +285,21 @@ static void mps2_fpgaio_realize(DeviceState *dev, Error **errp)
-     }
- }
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index bb72f78fb55..a1f43555013 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -17,6 +17,7 @@
+  *  "mps2-an505" -- Cortex-M33 as documented in ARM Application Note AN505
+  *  "mps2-an521" -- Dual Cortex-M33 as documented in Application Note AN521
+  *  "mps2-an524" -- Dual Cortex-M33 as documented in Application Note AN524
++ *  "mps2-an547" -- Single Cortex-M55 as documented in Application Note AN547
+  *
+  * Links to the TRM for the board itself and to the various Application
+  * Notes which document the FPGA images can be found here:
+@@ -30,6 +31,8 @@
+  * https://developer.arm.com/documentation/dai0521/latest/
+  * Application Note AN524:
+  * https://developer.arm.com/documentation/dai0524/latest/
++ * Application Note AN547:
++ * https://developer.arm.com/-/media/Arm%20Developer%20Community/PDF/DAI0547B_SSE300_PLUS_U55_FPGA_for_mps3.pdf
+  *
+  * The AN505 defers to the Cortex-M33 processor ARMv8M IoT Kit FVP User Guide
+  * (ARM ECM0601256) for the details of some of the device layout:
+@@ -37,6 +40,8 @@
+  * Similarly, the AN521 and AN524 use the SSE-200, and the SSE-200 TRM defines
+  * most of the device layout:
+  *  https://developer.arm.com/documentation/101104/latest/
++ * and the AN547 uses the SSE-300, whose layout is in the SSE-300 TRM:
++ *  https://developer.arm.com/documentation/101773/latest/
+  */
  
--static bool mps2_fpgaio_counters_needed(void *opaque)
--{
--    /* Currently vmstate.c insists all subsections have a 'needed' function */
--    return true;
--}
--
--static const VMStateDescription mps2_fpgaio_counters_vmstate = {
--    .name = "mps2-fpgaio/counters",
-+static const VMStateDescription mps2_fpgaio_vmstate = {
-+    .name = "mps2-fpgaio",
-     .version_id = 2,
-     .minimum_version_id = 2,
--    .needed = mps2_fpgaio_counters_needed,
-     .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(led0, MPS2FPGAIO),
-+        VMSTATE_UINT32(prescale, MPS2FPGAIO),
-+        VMSTATE_UINT32(misc, MPS2FPGAIO),
-         VMSTATE_INT64(clk1hz_tick_offset, MPS2FPGAIO),
-         VMSTATE_INT64(clk100hz_tick_offset, MPS2FPGAIO),
-         VMSTATE_UINT32(counter, MPS2FPGAIO),
-         VMSTATE_UINT32(pscntr, MPS2FPGAIO),
-         VMSTATE_INT64(pscntr_sync_ticks, MPS2FPGAIO),
-         VMSTATE_END_OF_LIST()
--    }
--};
--
--static const VMStateDescription mps2_fpgaio_vmstate = {
--    .name = "mps2-fpgaio",
--    .version_id = 1,
--    .minimum_version_id = 1,
--    .fields = (VMStateField[]) {
--        VMSTATE_UINT32(led0, MPS2FPGAIO),
--        VMSTATE_UINT32(prescale, MPS2FPGAIO),
--        VMSTATE_UINT32(misc, MPS2FPGAIO),
--        VMSTATE_END_OF_LIST()
+ #include "qemu/osdep.h"
+@@ -68,13 +73,14 @@
+ #include "hw/qdev-clock.h"
+ #include "qom/object.h"
+ 
+-#define MPS2TZ_NUMIRQ_MAX 95
+-#define MPS2TZ_RAM_MAX 4
++#define MPS2TZ_NUMIRQ_MAX 96
++#define MPS2TZ_RAM_MAX 5
+ 
+ typedef enum MPS2TZFPGAType {
+     FPGA_AN505,
+     FPGA_AN521,
+     FPGA_AN524,
++    FPGA_AN547,
+ } MPS2TZFPGAType;
+ 
+ /*
+@@ -153,6 +159,7 @@ struct MPS2TZMachineState {
+ #define TYPE_MPS2TZ_AN505_MACHINE MACHINE_TYPE_NAME("mps2-an505")
+ #define TYPE_MPS2TZ_AN521_MACHINE MACHINE_TYPE_NAME("mps2-an521")
+ #define TYPE_MPS3TZ_AN524_MACHINE MACHINE_TYPE_NAME("mps3-an524")
++#define TYPE_MPS3TZ_AN547_MACHINE MACHINE_TYPE_NAME("mps3-an547")
+ 
+ OBJECT_DECLARE_TYPE(MPS2TZMachineState, MPS2TZMachineClass, MPS2TZ_MACHINE)
+ 
+@@ -242,6 +249,49 @@ static const RAMInfo an524_raminfo[] = { {
      },
--    .subsections = (const VMStateDescription*[]) {
--        &mps2_fpgaio_counters_vmstate,
--        NULL
--    }
  };
  
- static Property mps2_fpgaio_properties[] = {
++static const RAMInfo an547_raminfo[] = { {
++        .name = "itcm",
++        .base = 0x00000000,
++        .size = 512 * KiB,
++        .mpc = -1,
++        .mrindex = 0,
++    }, {
++        .name = "sram",
++        .base = 0x01000000,
++        .size = 2 * MiB,
++        .mpc = 0,
++        .mrindex = 1,
++    }, {
++        .name = "dtcm",
++        .base = 0x20000000,
++        .size = 4 * 128 * KiB,
++        .mpc = -1,
++        .mrindex = 2,
++    }, {
++        .name = "sram 2",
++        .base = 0x21000000,
++        .size = 4 * MiB,
++        .mpc = -1,
++        .mrindex = 3,
++    }, {
++        /* We don't model QSPI flash yet; for now expose it as simple ROM */
++        .name = "QSPI",
++        .base = 0x28000000,
++        .size = 8 * MiB,
++        .mpc = 1,
++        .mrindex = 4,
++        .flags = IS_ROM,
++    }, {
++        .name = "DDR",
++        .base = 0x60000000,
++        .size = 2 * GiB,
++        .mpc = 2,
++        .mrindex = -1,
++    }, {
++        .name = NULL,
++    },
++};
++
+ static const RAMInfo *find_raminfo_for_mpc(MPS2TZMachineState *mms, int mpc)
+ {
+     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
+@@ -883,6 +933,55 @@ static void mps2tz_common_init(MachineState *machine)
+         },
+     };
+ 
++    const PPCInfo an547_ppcs[] = { {
++            .name = "apb_ppcexp0",
++            .ports = {
++                { "ssram-mpc", make_mpc, &mms->mpc[0], 0x57000000, 0x1000 },
++                { "qspi-mpc", make_mpc, &mms->mpc[1], 0x57001000, 0x1000 },
++                { "ddr-mpc", make_mpc, &mms->mpc[2], 0x57002000, 0x1000 },
++            },
++        }, {
++            .name = "apb_ppcexp1",
++            .ports = {
++                { "i2c0", make_i2c, &mms->i2c[0], 0x49200000, 0x1000 },
++                { "i2c1", make_i2c, &mms->i2c[1], 0x49201000, 0x1000 },
++                { "spi0", make_spi, &mms->spi[0], 0x49202000, 0x1000, { 53 } },
++                { "spi1", make_spi, &mms->spi[1], 0x49203000, 0x1000, { 54 } },
++                { "spi2", make_spi, &mms->spi[2], 0x49204000, 0x1000, { 55 } },
++                { "i2c2", make_i2c, &mms->i2c[2], 0x49205000, 0x1000 },
++                { "i2c3", make_i2c, &mms->i2c[3], 0x49206000, 0x1000 },
++                { /* port 7 reserved */ },
++                { "i2c4", make_i2c, &mms->i2c[4], 0x49208000, 0x1000 },
++            },
++        }, {
++            .name = "apb_ppcexp2",
++            .ports = {
++                { "scc", make_scc, &mms->scc, 0x49300000, 0x1000 },
++                { "i2s-audio", make_unimp_dev, &mms->i2s_audio, 0x49301000, 0x1000 },
++                { "fpgaio", make_fpgaio, &mms->fpgaio, 0x49302000, 0x1000 },
++                { "uart0", make_uart, &mms->uart[0], 0x49303000, 0x1000, { 33, 34, 43 } },
++                { "uart1", make_uart, &mms->uart[1], 0x49304000, 0x1000, { 35, 36, 44 } },
++                { "uart2", make_uart, &mms->uart[2], 0x49305000, 0x1000, { 37, 38, 45 } },
++                { "uart3", make_uart, &mms->uart[3], 0x49306000, 0x1000, { 39, 40, 46 } },
++                { "uart4", make_uart, &mms->uart[4], 0x49307000, 0x1000, { 41, 42, 47 } },
++                { "uart5", make_uart, &mms->uart[5], 0x49308000, 0x1000, { 125, 126, 127 } },
++
++                { /* port 9 reserved */ },
++                { "clcd", make_unimp_dev, &mms->cldc, 0x4930a000, 0x1000 },
++                { "rtc", make_rtc, &mms->rtc, 0x4930b000, 0x1000 },
++            },
++        }, {
++            .name = "ahb_ppcexp0",
++            .ports = {
++                { "gpio0", make_unimp_dev, &mms->gpio[0], 0x41100000, 0x1000 },
++                { "gpio1", make_unimp_dev, &mms->gpio[1], 0x41101000, 0x1000 },
++                { "gpio2", make_unimp_dev, &mms->gpio[2], 0x41102000, 0x1000 },
++                { "gpio3", make_unimp_dev, &mms->gpio[3], 0x41103000, 0x1000 },
++                { "eth-usb", make_eth_usb, NULL, 0x41400000, 0x200000, { 49 } },
++            },
++        },
++    };
++
+     switch (mmc->fpga_type) {
+     case FPGA_AN505:
+     case FPGA_AN521:
+@@ -893,6 +992,10 @@ static void mps2tz_common_init(MachineState *machine)
+         ppcs = an524_ppcs;
+         num_ppcs = ARRAY_SIZE(an524_ppcs);
+         break;
++    case FPGA_AN547:
++        ppcs = an547_ppcs;
++        num_ppcs = ARRAY_SIZE(an547_ppcs);
++        break;
+     default:
+         g_assert_not_reached();
+     }
+@@ -971,6 +1074,11 @@ static void mps2tz_common_init(MachineState *machine)
+ 
+     create_unimplemented_device("FPGA NS PC", 0x48007000, 0x1000);
+ 
++    if (mmc->fpga_type == FPGA_AN547) {
++        create_unimplemented_device("U55 timing adapter 0", 0x48102000, 0x1000);
++        create_unimplemented_device("U55 timing adapter 1", 0x48103000, 0x1000);
++    }
++
+     create_non_mpc_ram(mms);
+ 
+     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+@@ -1105,6 +1213,33 @@ static void mps3tz_an524_class_init(ObjectClass *oc, void *data)
+     mps2tz_set_default_ram_info(mmc);
+ }
+ 
++static void mps3tz_an547_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_CLASS(oc);
++
++    mc->desc = "ARM MPS3 with AN547 FPGA image for Cortex-M55";
++    mc->default_cpus = 1;
++    mc->min_cpus = mc->default_cpus;
++    mc->max_cpus = mc->default_cpus;
++    mmc->fpga_type = FPGA_AN547;
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m55");
++    mmc->scc_id = 0x41055470;
++    mmc->sysclk_frq = 32 * 1000 * 1000; /* 32MHz */
++    mmc->apb_periph_frq = 25 * 1000 * 1000; /* 25MHz */
++    mmc->oscclk = an524_oscclk; /* same as AN524 */
++    mmc->len_oscclk = ARRAY_SIZE(an524_oscclk);
++    mmc->fpgaio_num_leds = 10;
++    mmc->fpgaio_has_switches = true;
++    mmc->fpgaio_has_dbgctrl = true;
++    mmc->numirq = 96;
++    mmc->uart_overflow_irq = 48;
++    mmc->init_svtor = 0x00000000;
++    mmc->raminfo = an547_raminfo;
++    mmc->armsse_type = TYPE_SSE300;
++    mps2tz_set_default_ram_info(mmc);
++}
++
+ static const TypeInfo mps2tz_info = {
+     .name = TYPE_MPS2TZ_MACHINE,
+     .parent = TYPE_MACHINE,
+@@ -1136,12 +1271,19 @@ static const TypeInfo mps3tz_an524_info = {
+     .class_init = mps3tz_an524_class_init,
+ };
+ 
++static const TypeInfo mps3tz_an547_info = {
++    .name = TYPE_MPS3TZ_AN547_MACHINE,
++    .parent = TYPE_MPS2TZ_MACHINE,
++    .class_init = mps3tz_an547_class_init,
++};
++
+ static void mps2tz_machine_init(void)
+ {
+     type_register_static(&mps2tz_info);
+     type_register_static(&mps2tz_an505_info);
+     type_register_static(&mps2tz_an521_info);
+     type_register_static(&mps3tz_an524_info);
++    type_register_static(&mps3tz_an547_info);
+ }
+ 
+ type_init(mps2tz_machine_init);
 -- 
 2.20.1
 

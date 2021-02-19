@@ -1,103 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9083061lfc;
-        Fri, 19 Feb 2021 06:57:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwo9Ds9vWTnHSpTv1Ywdg7eF9B1MKCgGaavUnjF5VnAsmj5AO35leQ3k29Gnp2cP99qKzhW
-X-Received: by 2002:a25:cfc5:: with SMTP id f188mr14313800ybg.485.1613746628813;
-        Fri, 19 Feb 2021 06:57:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613746628; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9083134lfc;
+        Fri, 19 Feb 2021 06:57:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxxfGleI+e5gvCfFfwC5XkP3B7+PO9E8kIAsnXlLNO//zUcFSgh5+F+4w+WY//+ahKiRiL/
+X-Received: by 2002:a25:1457:: with SMTP id 84mr14789012ybu.74.1613746636101;
+        Fri, 19 Feb 2021 06:57:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613746636; cv=none;
         d=google.com; s=arc-20160816;
-        b=xLzpCrEGo0rFdxgq3f3FPYS15LUFHqKJ14YZ1MwcgzR/yfNy049d0iUrlc2GoUY2St
-         S44+gQZbtFpDc/M9DqovFhRDPqEv4p/Y6rn5hWQ3edILANb5JJqqwV1llbFPOLmxJIt+
-         Uy8oIdvdF45WUnJITPdHMVv1W1+v/rYTBnw6tj0SUflX/rwGou68BvRGQTc2RsB8C4S0
-         /izAFPgOOvW0iZRjdJS+hkBO8JI3RXwUc1i//TbzLBV14z7kWexFAmOzgRLcfJAcL/jl
-         i/j2bGzRym2PHTSkG2ycpYhfKO+iLLj8sXq3opiUxEjAqifn+kTtaLWP5SrFIxCrVVhT
-         cw9g==
+        b=REiD78CT+Jsg20OvO/Tn4K62AZe2XDbF1jlNJyZAx3Lz9DG5oUAu97Lp0XHZqTbZsl
+         mLRQFhRrHwtCPqsAMUPrPGIxoSrDkBMJJYB49O+BzQhf9Y35T/AvzNpdQXfKVoFll0MY
+         6YVkN0UMCE4MrPLJ4HjHE7SBD8O4JA5IF8Q52ZEwiBYpcD5ro3Fpbrz/hcfXnWBxTd5T
+         G0/851YWPhr2d8AtctfMXrBMWtlyWOgqE2qXupZMq/yJ5hquoPUSMbOaq/Np62sSgN59
+         DQFQ08krXMKKNDzVj/63jdxjTC10kQpotig4Zy9Fh3sF48dI7q9t3MP2juyc8Oa2uxAL
+         LgpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UqO/lCJ8eIrVtKEmioMtB5Osx/5IZ7fMTosSEvFKa2s=;
-        b=Ss5urZ9qEs6KZNIAiDsCZClbjX7EIeRVIWp1l5oBs8Hyq49adLeOwhMJw6yUTszYWw
-         6o4ppUE34o9+TEYCRicSw5G/Px/n5q1YEPhWc4DvjfG/fwFYrZzwMZjhIqEOHnBqAshD
-         QH7GA+5qOS3wfCFbv5f8aoH+ybzgUIAtjXPxpx0f+S7yjn5aonY8Zr92zK7rVnSEuJSb
-         r3v/vXda4t3tIDXpirK7ry5l96ZxhLdz/bmpsRAnGH7UphejkO7cKPMpZD1KFG+oOVXS
-         OTptZQxsw9NMcLYLBx3MN3yMcwFG3Xw8q1Bw2rLuRTxjxLl0YRxXAfi7sbKLbZeaw1MG
-         l4iQ==
+        bh=Vhghzb1KxboqZ+GwFa0MaTa9cSu8tLM6q3ZGrvP0/yI=;
+        b=ioty+fWzdSrF0J9BkfSCF78/3oxGQ4dGebBKoYtYprsnfXWcRkLIswWCnhpmWO2YDa
+         90kgkn3p9Y04bhvila7o9+lTqJjzAwDGY4yoHhqjeIMF4qHkQYHxPaOQXOof2h1+Ik/H
+         9oWOxbFoxE9rktSmyWRknjYs6vxbZb0YyahJUNc2pN8Fwzypv3mpq1JUioNxYQ1LYuIS
+         KEWJbkfnnzAtomq17Be12wjGvI+5cmtmT61ioVP5/vNBNw3RFouns5xV5ciCe3LigZ9P
+         azxeNkIUC7M05VZF6fy4yB/3PFoq2nnio0OPgfXPuKnJQEOIaR6gvp3ku8zbJvdYQzSl
+         47bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sGejhG3v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zWt7xen9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m66si8948134ybb.375.2021.02.19.06.57.08
+        by mx.google.com with ESMTPS id l62si9831325ybc.87.2021.02.19.06.57.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 06:57:08 -0800 (PST)
+        Fri, 19 Feb 2021 06:57:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sGejhG3v;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zWt7xen9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7DQ-0005Uw-6E
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:57:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33550)
+	id 1lD7DX-0005nV-DF
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:57:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33774)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73J-0002AD-9v
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:45 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:34479)
+ id 1lD73R-0002JU-0V
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:49 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:38712)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD739-0003Oe-BB
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:40 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id n4so8911184wrx.1
- for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:27 -0800 (PST)
+ id 1lD73A-0003SU-CY
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:48 -0500
+Received: by mail-wm1-x336.google.com with SMTP id x4so7881610wmi.3
+ for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=UqO/lCJ8eIrVtKEmioMtB5Osx/5IZ7fMTosSEvFKa2s=;
- b=sGejhG3vhk4P8BJd6CLWw1Xb8Gn+hsy572HwLRsrqfnrvMAHjbzb9neDtKI4oo2qg3
- 9EsciE7lHNJbB7YNgLjHDAsyiZHX5vXRB4lUGF8z3yb4jmRitxsH5OG4sD2FZ/D6kG8K
- t8asFRwtFzyw8fYiMXVwQa1dlm1y//nYQzeiPYB+ufdK7Nwz06lhfNty5APMYs/JhUMl
- M64XuPeCuRO26AI1csSiUPOlbcvorGbmjCHLapjaNY8i/pS9K0Zf7ddeulnAyVLDxSgA
- 809bCAB3SIWr2QwGMDJfReE32CRerEyDUB5Y+//9WVfjXnghqB2X8iz0v44A4AmDzK0D
- GNVA==
+ bh=Vhghzb1KxboqZ+GwFa0MaTa9cSu8tLM6q3ZGrvP0/yI=;
+ b=zWt7xen9sIh++ZpFy7HZ/9gg1zpkaopEVGu/BOzrszGvPGtUhsTmezigIYtERRYv92
+ t7qKY1JGTNKXiF6Df845qvtEiYQpWV9nZPiyyWgBbZLe3l3cJ57OY8QEl0ErBQ626Xv4
+ 42fWt0FlK0UwwViMwfbPULTmwWsmTcQIJI13gPciRdX2AsYPSzD9TVleu7ErpbXZ5Kgi
+ kx8PC6C5WsjG0xAt9QKEmeAO507z8s0Vm+qYRPmiFSyg/IWy7LsNJ2RTRDFhoZAUIESp
+ liuZ4IgUXUGnfIH0UKlFr5emA+8UlB/Q24MWL1GXJXerVX9tJlM6vF/yROrWFSKfhtuo
+ 0AdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UqO/lCJ8eIrVtKEmioMtB5Osx/5IZ7fMTosSEvFKa2s=;
- b=dk1gOwzKOgR7tjANrhM0XpbBKTfBN9xKkvrzEdtxaEBM/b8g7ENeB7Vfr0l7CI1nhw
- kfxe3iYX9R5mQ1KIknHPCePMYqhvmnP0s1Qei43/FUJwypdGS7tVFiiyayk8wPH5EtsM
- tk0faSqZu52hevUUhAvD4DZTqK1M6M5GF1LQELjIOCyJajr5z6WCpCoB/zjxym8Q2XQB
- kymdYc6Ssb/8e5lFrIFrGKuCenjEWkglRYScIbaxKY5dZUA9JTzs5KEyZqJMkVSD/O4d
- 78Klj/XhENU/V1NLeskyzWLIdcZEZE8pGt49peDEKjAaII3g0Fji2puO0ha+wasGAATV
- FQnw==
-X-Gm-Message-State: AOAM530dzXIQa7eW3U3XPCjpQq4DEqQhfv9pSXyW4VA+86rYbxIEOgM1
- 1cvm5ZYBrvr1NcwdKwqgEk61zw==
-X-Received: by 2002:adf:82b3:: with SMTP id 48mr9254434wrc.22.1613745986396;
- Fri, 19 Feb 2021 06:46:26 -0800 (PST)
+ bh=Vhghzb1KxboqZ+GwFa0MaTa9cSu8tLM6q3ZGrvP0/yI=;
+ b=hT04TjnhHG9zaKyIUGFEKzRV1rD3HHAJagnly3En6SOI9JlBo+PRRNTauDv9s6Rb9I
+ whETWWS+2fID4Qsxa8Z8L+NlURWlKMjV2aNBuNRn9ob5SJwW4IKNeCv/VXtzF13f6lvp
+ zYzwS0KvwFZqoyHlVRymMGVOQetbMKu0f5OyLNulRrPcZ2S8PwPkypMXXHmJz0vcmQsV
+ siL56FwjoyGAtkUOzDdEW28GMmXyiM6eMNDnoCGQ/pJcz4yjLT5x5X+4S3G+H7DkqZy9
+ ncBzAaSShluW3QQ57nvj4kLJf551aM4s+fA8ENHBSKRt94LMv8fkO6EIDmjfQXyU8JZw
+ +wUQ==
+X-Gm-Message-State: AOAM530IiqHJ05objx9soPVuExUv1x1INaqOkExpyT+5Kz3V7+7lHxUf
+ 0GpTit4goLWJTV6ch0SlrxdeHw==
+X-Received: by 2002:a1c:e309:: with SMTP id a9mr8484824wmh.99.1613745991111;
+ Fri, 19 Feb 2021 06:46:31 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.25
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:26 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:30 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 08/44] hw/misc/iotkit-sysinfo.c: Implement SSE-300 PID
- register values
-Date: Fri, 19 Feb 2021 14:45:41 +0000
-Message-Id: <20210219144617.4782-9-peter.maydell@linaro.org>
+Subject: [PATCH 14/44] hw/misc/iotkit-sysctl: Handle CPU_WAIT,
+ NMI_ENABLE for SSE-300
+Date: Fri, 19 Feb 2021 14:45:47 +0000
+Message-Id: <20210219144617.4782-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,120 +119,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X23qAkrjCvhj
+X-TUID: YoYfVezvwLrf
 
-The version of the SYSINFO Register Block in the SSE-300 has
-different CIDR/PIDR register values to the SSE-200; pass in
-the sse-version property and use it to select the correct
-ID register values.
+In the SSE-300 the CPU_WAIT and NMI_ENABLE registers have
+moved offsets, so they are now where the SSE-200's WICCTRL
+and EWCTRL were. The SSE-300 does not have WICCTLR or EWCTRL
+at all, and the old offsets are reserved:
+
+ Offset    SSE-200      SSE-300
+-----------------------------------
+ 0x118     CPUWAIT      reserved
+ 0x118     NMI_ENABLE   reserved
+ 0x120     WICCTRL      CPUWAIT
+ 0x124     EWCTRL       NMI_ENABLE
+
+Handle this reshuffle, and the fact that SSE-300 has only
+one CPU and so only one active bit in CPUWAIT.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/misc/iotkit-sysinfo.h |  1 +
- hw/arm/armsse.c                  |  2 ++
- hw/misc/iotkit-sysinfo.c         | 29 +++++++++++++++++++++++++++--
- 3 files changed, 30 insertions(+), 2 deletions(-)
+ hw/misc/iotkit-sysctl.c | 88 +++++++++++++++++++++++++++++++++++------
+ 1 file changed, 76 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/misc/iotkit-sysinfo.h b/include/hw/misc/iotkit-sysinfo.h
-index 055771d2098..91bd14bdbff 100644
---- a/include/hw/misc/iotkit-sysinfo.h
-+++ b/include/hw/misc/iotkit-sysinfo.h
-@@ -38,6 +38,7 @@ struct IoTKitSysInfo {
-     /* Properties */
-     uint32_t sys_version;
-     uint32_t sys_config;
-+    uint32_t sse_version;
- };
- 
- #endif
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 9632c287351..67fa4ffe34a 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -951,6 +951,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                                  armsse_sys_config_value(s, info), errp)) {
-         return;
-     }
-+    object_property_set_int(OBJECT(&s->sysinfo), "sse-version",
-+                            info->sse_version, &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sysinfo), errp)) {
-         return;
-     }
-diff --git a/hw/misc/iotkit-sysinfo.c b/hw/misc/iotkit-sysinfo.c
-index 52e70053df7..4bd3fd4c8f3 100644
---- a/hw/misc/iotkit-sysinfo.c
-+++ b/hw/misc/iotkit-sysinfo.c
-@@ -26,6 +26,7 @@
- #include "hw/registerfields.h"
- #include "hw/misc/iotkit-sysinfo.h"
- #include "hw/qdev-properties.h"
-+#include "hw/arm/armsse-version.h"
- 
- REG32(SYS_VERSION, 0x0)
- REG32(SYS_CONFIG, 0x4)
-@@ -49,6 +50,12 @@ static const int sysinfo_id[] = {
-     0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
- };
- 
-+static const int sysinfo_sse300_id[] = {
-+    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-+    0x58, 0xb8, 0x1b, 0x00, /* PID0..PID3 */
-+    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-+};
-+
- static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
-                                     unsigned size)
- {
-@@ -64,7 +71,14 @@ static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
-         r = s->sys_config;
+diff --git a/hw/misc/iotkit-sysctl.c b/hw/misc/iotkit-sysctl.c
+index 7f8608c814c..54004bebcbf 100644
+--- a/hw/misc/iotkit-sysctl.c
++++ b/hw/misc/iotkit-sysctl.c
+@@ -172,7 +172,17 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
+         }
          break;
-     case A_PID4 ... A_CID3:
--        r = sysinfo_id[(offset - A_PID4) / 4];
+     case A_CPUWAIT:
+-        r = s->cpuwait;
 +        switch (s->sse_version) {
++        case ARMSSE_IOTKIT:
++        case ARMSSE_SSE200:
++            r = s->cpuwait;
++            break;
 +        case ARMSSE_SSE300:
-+            r = sysinfo_sse300_id[(offset - A_PID4) / 4];
-+            break;
++            /* In SSE300 this is reserved (for INITSVTOR2) */
++            goto bad_offset;
 +        default:
-+            r = sysinfo_id[(offset - A_PID4) / 4];
-+            break;
++            g_assert_not_reached();
 +        }
          break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -99,6 +113,7 @@ static const MemoryRegionOps iotkit_sysinfo_ops = {
- static Property iotkit_sysinfo_props[] = {
-     DEFINE_PROP_UINT32("SYS_VERSION", IoTKitSysInfo, sys_version, 0),
-     DEFINE_PROP_UINT32("SYS_CONFIG", IoTKitSysInfo, sys_config, 0),
-+    DEFINE_PROP_UINT32("sse-version", IoTKitSysInfo, sse_version, 0),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
-@@ -112,6 +127,16 @@ static void iotkit_sysinfo_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->iomem);
+     case A_NMI_ENABLE:
+         switch (s->sse_version) {
+@@ -183,12 +193,26 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
+         case ARMSSE_SSE200:
+             r = s->nmi_enable;
+             break;
++        case ARMSSE_SSE300:
++            /* In SSE300 this is reserved (for INITSVTOR3) */
++            goto bad_offset;
+         default:
+             g_assert_not_reached();
+         }
+         break;
+     case A_WICCTRL:
+-        r = s->wicctrl;
++        switch (s->sse_version) {
++        case ARMSSE_IOTKIT:
++        case ARMSSE_SSE200:
++            r = s->wicctrl;
++            break;
++        case ARMSSE_SSE300:
++            /* In SSE300 this offset is CPUWAIT */
++            r = s->cpuwait;
++            break;
++        default:
++            g_assert_not_reached();
++        }
+         break;
+     case A_EWCTRL:
+         switch (s->sse_version) {
+@@ -197,6 +221,10 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
+         case ARMSSE_SSE200:
+             r = s->ewctrl;
+             break;
++        case ARMSSE_SSE300:
++            /* In SSE300 this offset is is NMI_ENABLE */
++            r = s->nmi_enable;
++            break;
+         default:
+             g_assert_not_reached();
+         }
+@@ -279,6 +307,21 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
+     return r;
  }
  
-+static void iotkit_sysinfo_realize(DeviceState *dev, Error **errp)
++static void cpuwait_write(IoTKitSysCtl *s, uint32_t value)
 +{
-+    IoTKitSysInfo *s = IOTKIT_SYSINFO(dev);
++    int num_cpus = (s->sse_version == ARMSSE_SSE300) ? 1 : 2;
++    int i;
 +
-+    if (!armsse_version_valid(s->sse_version)) {
-+        error_setg(errp, "invalid sse-version value %d", s->sse_version);
-+        return;
++    for (i = 0; i < num_cpus; i++) {
++        uint32_t mask = 1 << i;
++        if ((s->cpuwait & mask) && !(value & mask)) {
++            /* Powering up CPU 0 */
++            arm_set_cpu_on_and_reset(i);
++        }
 +    }
++    s->cpuwait = value;
 +}
 +
- static void iotkit_sysinfo_class_init(ObjectClass *klass, void *data)
+ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
+                                  uint64_t value, unsigned size)
  {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -120,7 +145,7 @@ static void iotkit_sysinfo_class_init(ObjectClass *klass, void *data)
-      * This device has no guest-modifiable state and so it
-      * does not need a reset function or VMState.
-      */
--
-+    dc->realize = iotkit_sysinfo_realize;
-     device_class_set_props(dc, iotkit_sysinfo_props);
- }
- 
+@@ -319,19 +362,32 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
+         set_init_vtor(0, s->initsvtor0);
+         break;
+     case A_CPUWAIT:
+-        if ((s->cpuwait & 1) && !(value & 1)) {
+-            /* Powering up CPU 0 */
+-            arm_set_cpu_on_and_reset(0);
++        switch (s->sse_version) {
++        case ARMSSE_IOTKIT:
++        case ARMSSE_SSE200:
++            cpuwait_write(s, value);
++            break;
++        case ARMSSE_SSE300:
++            /* In SSE300 this is reserved (for INITSVTOR2) */
++            goto bad_offset;
++        default:
++            g_assert_not_reached();
+         }
+-        if ((s->cpuwait & 2) && !(value & 2)) {
+-            /* Powering up CPU 1 */
+-            arm_set_cpu_on_and_reset(1);
+-        }
+-        s->cpuwait = value;
+         break;
+     case A_WICCTRL:
+-        qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl WICCTRL unimplemented\n");
+-        s->wicctrl = value;
++        switch (s->sse_version) {
++        case ARMSSE_IOTKIT:
++        case ARMSSE_SSE200:
++            qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl WICCTRL unimplemented\n");
++            s->wicctrl = value;
++            break;
++        case ARMSSE_SSE300:
++            /* In SSE300 this offset is CPUWAIT */
++            cpuwait_write(s, value);
++            break;
++        default:
++            g_assert_not_reached();
++        }
+         break;
+     case A_SECDBGSET:
+         /* write-1-to-set */
+@@ -420,6 +476,11 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
+             qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl EWCTRL unimplemented\n");
+             s->ewctrl = value;
+             break;
++        case ARMSSE_SSE300:
++            /* In SSE300 this offset is is NMI_ENABLE */
++            qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl NMI_ENABLE unimplemented\n");
++            s->nmi_enable = value;
++            break;
+         default:
+             g_assert_not_reached();
+         }
+@@ -499,6 +560,9 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
+             qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl NMI_ENABLE unimplemented\n");
+             s->nmi_enable = value;
+             break;
++        case ARMSSE_SSE300:
++            /* In SSE300 this is reserved (for INITSVTOR3) */
++            goto bad_offset;
+         default:
+             g_assert_not_reached();
+         }
 -- 
 2.20.1
 

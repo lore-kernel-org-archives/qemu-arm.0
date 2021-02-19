@@ -1,198 +1,262 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9206856lfc;
-        Fri, 19 Feb 2021 09:40:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJySiNkwYPxgwkD2K4yFuImr/oq3LAgUrGqZv8H6FcXzeVpEykw4ZQr1GSBaWyUU6eEl7NBR
-X-Received: by 2002:a25:8143:: with SMTP id j3mr15031135ybm.237.1613756400531;
-        Fri, 19 Feb 2021 09:40:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613756400; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9206903lfc;
+        Fri, 19 Feb 2021 09:40:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJww3m0daBgmaO3w/sTFInUjqe9jg3ejG6s5nTIEWT2UWjJjOe3gV4jo46nKPK/ytWoa8rS4
+X-Received: by 2002:a05:6808:a07:: with SMTP id n7mr7206243oij.137.1613756406234;
+        Fri, 19 Feb 2021 09:40:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613756406; cv=none;
         d=google.com; s=arc-20160816;
-        b=S6rV+aYXqZ3J/0GeURFvZebp03Ynjx14SJYkcQrbVTum2layB0Zg2x7xhyi8yqsMWF
-         kxZ344inRM4NxyjBELFnHBtTnwL1tD919D+BAW0c4jf99MBFAk5h454llbyTFZShBxeX
-         wE/8aL7aydEzOYlT4WlsaFsW/4vxxDhmmeojT69HxrxexQ7ohUxyChO2Hq724BvGMWlm
-         HhwFpTArFIlOK6DhENdOzzTYcTBRFpaj3LNN6kWBHybeosQdT3jSURBHMmfCw2rGH/gw
-         6m+i1D09GXaeyd6qM+gtG4s13mLHNT/F89a7FCMBqk1jLsZWYXEJxLi01oE4Otil9y4C
-         peVg==
+        b=ouAaukIOwoNugF5QhuA74zhfCNInrPm3EyJ3jpWyAa3+DjBY54RNkIAg20vHbf+xD5
+         iDP9Czu1b0/7/3a3a1K07D2c6+rGfIduHGuQBu9CqkLj/kCOEXgBbg7NrTIXlqlJLFDk
+         Xevh5RCC8L7YWFSft1ZQ+/jsSRuxiLsYAaU1CUXGyyNF+ZRe/j4drq7sf5CxKv7lK6kx
+         uwNEdEGIV7PEUft1IeCWyPYPVr0KGBKc03CUkil5f+AT1pctBl9EV9tquQvMikdxC84C
+         /1JDkBR4Q88eSLScW9WSllb4eWZOu9XBtW0v01Rod1Ee7mVgr3CISIAbjBYtP8T3xvAw
+         3M6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=98X4DsBNdk1BN09KWcHx0mE3/gzzTZdKxOLSGajyIeI=;
-        b=tpno8ZRvymGg9CPfnyI/NEdvPR8bJe/O5eSVE81D/uTTVuLf5sNVAv4e8qUjH0pHV+
-         nVh+pt2tRLXgvJhRwLHjSM0hOhJWn8lpuNLAD2nzRUsWKDE0dHb6D92O0KoimTJWahPR
-         bmRNC2vJeaXCoIAco1V3uAjRjtgNpMXhcqo79JUphyiBQzfhapZGw6UrBrISmnEQLdgn
-         gQ3vEyDDb+28YbN/8GpqiLgwnyWyiZ90TpiRP6QbV8SjznfwfSN9Nx1nQh9k0+2+/rY4
-         cR407mxkIrD3tq9A/Zce05pzmAuaMjseFYLXPrJKCVxOMOtZaCittWmbEWPLx9u43rAE
-         LUUQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
+         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
+         :list-id;
+        bh=cia92nKBjrGhWlmymfB9YbxEpc3m+J7hFEI/efRN2yM=;
+        b=lLZR7WBjdABfN2VxCX5ROy/9+QpIO2Pa8BYCeHM4GGSTnt1xzdJYXL7zfquAGg+U1x
+         5NKILDanJh/RoFDSUFtNBIIElmuAun7LWN5H3ZPbghYAk93oTNBWs3ny16NE2tmr0Gwe
+         vM6QPHtNGPZ9BoNze7UubKRgS/ozIwa0jzTb2yqRekbgvXCI4kwje9I4hHye0ixrNbmO
+         npki4EU+G8WNBIJl+47VtlS66Q1HWlh3Qa8EMDTouXpxJDOqoTsKdAThVIAnMitjtn0g
+         o+gaBYfqbCnPVwgmr+sQM0gQsW3VEzL2kq3Tfp7xcW15Y0eQWEa8y/277XsvHjOvVJ70
+         slNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Q9/iEHjD";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9si10359443ybm.402.2021.02.19.09.40.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 09:40:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B4hXWITd;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id z13si5928794otj.288.2021.02.19.09.40.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Feb 2021 09:40:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Q9/iEHjD";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36490 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD9l1-0002wr-OS
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 12:39:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49060)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lD9k5-0002DP-U4
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 12:39:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43201)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lD9k4-0005PH-2K
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 12:39:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1613756339;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=98X4DsBNdk1BN09KWcHx0mE3/gzzTZdKxOLSGajyIeI=;
- b=Q9/iEHjDqTF80Mo33cOYrt6p2Mpt3KYt2U3Ws869lT0OTof6ZPlwvl5CIILLX0q5dD0TsJ
- GREqXguURm4OuiYckfiL8llnByBBclUng2Ga0xYg7sctKg9dbGPCq2yoHwHUfwCC5Ta4Ih
- L4BjB9lWVIOwISa+z4fduSomV3HSW/o=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-81-D0_YtylHPhyk79a7Lgmg1g-1; Fri, 19 Feb 2021 12:38:57 -0500
-X-MC-Unique: D0_YtylHPhyk79a7Lgmg1g-1
-Received: by mail-wm1-f72.google.com with SMTP id b201so2768983wmb.9
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 09:38:57 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=98X4DsBNdk1BN09KWcHx0mE3/gzzTZdKxOLSGajyIeI=;
- b=B4BWNDVJUpN1fPj2vYKRiuE9hhOtau9AfKl4uouWM0FHM21o+UNs+IZmOQBe+R/HD4
- n3WCleYgWoxn63kBGsSKJfG06xsz6OUDODUqE8BeXMFv3j/DIDvKlukOvQxPHDPS1r6s
- demmFc0QYVcMqPVyZSx2sTnlu4dZuAbDboMT5szAOthBoaqJ7K5Y1JTH5dz7BMeQjXcP
- AZFmyEukAoeXBXGg7UvBtwN9UgwT7cs9BdMVQt/dNB+1ntruxuO8v9adbTTuJWCdjx8B
- 0xcHjiL1gjN+okpldUsb2K6mLOq3KM0v5WKmtSo4mmtCHLNXFYnwp8iYVCxR0u1xT/u7
- pcqA==
-X-Gm-Message-State: AOAM533NHKe6EqHFZSuEXBzjyIRRkxA8Jfwronf5imr9Sx2ZGJubTi9q
- 7KMbKcS7GegkEWK0wev/pBocgDTI3EIMTXvh2HrZkpbJJtab/6vD9Ulahr916HIdgW2F44JdAhQ
- g+yvSVJn+R0jf
-X-Received: by 2002:adf:b60f:: with SMTP id f15mr10395972wre.83.1613756336823; 
- Fri, 19 Feb 2021 09:38:56 -0800 (PST)
-X-Received: by 2002:adf:b60f:: with SMTP id f15mr10395942wre.83.1613756336683; 
- Fri, 19 Feb 2021 09:38:56 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B4hXWITd;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from list by lists.xenproject.org with outflank-mailman.87025.163960 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1lD9kC-0000eN-CA; Fri, 19 Feb 2021 17:39:08 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 87025.163960; Fri, 19 Feb 2021 17:39:08 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1lD9kC-0000eF-8Z; Fri, 19 Feb 2021 17:39:08 +0000
+Received: by outflank-mailman (input) for mailman id 87025;
+ Fri, 19 Feb 2021 17:39:06 +0000
+Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
+ helo=us1-amaz-eas2.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=ml8x=HV=redhat.com=philmd@srs-us1.protection.inumbo.net>)
+ id 1lD9kA-0000XE-EA
+ for xen-devel@lists.xenproject.org; Fri, 19 Feb 2021 17:39:06 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
+ by us1-amaz-eas2.inumbo.com (Halon) with ESMTP
+ id 257d245b-316b-4a44-8beb-86ed9a86aa32;
+ Fri, 19 Feb 2021 17:39:05 +0000 (UTC)
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-190-3Q6zqInTO2egoMIp4B7lXQ-1; Fri, 19 Feb 2021 12:39:03 -0500
+Received: by mail-wr1-f71.google.com with SMTP id o10so2762328wru.11
+ for <xen-devel@lists.xenproject.org>; Fri, 19 Feb 2021 09:39:03 -0800 (PST)
 Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id i7sm23525949wmq.2.2021.02.19.09.38.54
+ by smtp.gmail.com with ESMTPSA id u7sm13826375wrt.67.2021.02.19.09.39.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 09:38:56 -0800 (PST)
+ Fri, 19 Feb 2021 09:39:01 -0800 (PST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
+Precedence: list
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 257d245b-316b-4a44-8beb-86ed9a86aa32
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1613756345;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cia92nKBjrGhWlmymfB9YbxEpc3m+J7hFEI/efRN2yM=;
+	b=B4hXWITd3MjdLXlv+hDENzBkDbtF1k/RhVVeqq0EQHFIg5KW6/GDY7YCXxmHMWtp0LfMbF
+	37i31N10OEciZT/BSHw4ryts9n6RJRCAi66FBgyRndsVPHMJn0/5AaHxX+6IfWkwqNv0Ql
+	i3PmLrBdebVcPlgX+3xBrlzsZ65Gpcs=
+X-MC-Unique: 3Q6zqInTO2egoMIp4B7lXQ-1
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=cia92nKBjrGhWlmymfB9YbxEpc3m+J7hFEI/efRN2yM=;
+        b=kJ9e1etS4jlgapkwjeohMP6j1h5L+amFT1yjMqDGbITuXw+Pw9UtFhy4n9Ea4S8z+Y
+         3bI2q7xOmnkZOFryqSNxSXpC8PkQAq7VKMbiqmTomm/rm1tEtklVxNUMhT8fIfBViFi/
+         h0oT+nAmaojLQF/H/9WaNEAWOFSX7AZbpREMIb/eAsRZeV6A9/jdUKhklrzieRWHAGDZ
+         IG6ao7j4Hkxg/zlIm/nGWeLiZncj8pKRTZGYL+lPdPL6AnowJoOTrcW8Qg7jwP2L7dG1
+         JaHFvDtjRpmZsCAqs9HlJrOkAsE2gcupzwBJHAS6+9R/20UoZV/jdIQcNFvA0dEJZCG+
+         2kwQ==
+X-Gm-Message-State: AOAM5329OC0huu/KEBfc+jqpyX2evKD5HlirFZRQFre2xAV2WYLs1MUJ
+	ic8y4x4nfWyajj1N7C3j41teQe9CrIlMEJSGz/KR/Mvh8DJEiBepctPWrOHBJJuay50jyBPYX1G
+	kXRQAlFQ53rGcA97cttcr2ACH/CA=
+X-Received: by 2002:a1c:dd09:: with SMTP id u9mr7417310wmg.183.1613756342444;
+        Fri, 19 Feb 2021 09:39:02 -0800 (PST)
+X-Received: by 2002:a1c:dd09:: with SMTP id u9mr7417287wmg.183.1613756342265;
+        Fri, 19 Feb 2021 09:39:02 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 01/11] accel/kvm: Check MachineClass kvm_type() return value
-Date: Fri, 19 Feb 2021 18:38:37 +0100
-Message-Id: <20210219173847.2054123-2-philmd@redhat.com>
+Cc: Aurelien Jarno <aurelien@aurel32.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	qemu-ppc@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	xen-devel@lists.xenproject.org,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	qemu-arm@nongnu.org,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	kvm@vger.kernel.org,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	Leif Lindholm <leif@nuviainc.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Paul Durrant <paul@xen.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Greg Kurz <groug@kaod.org>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	David Hildenbrand <david@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v2 02/11] hw/boards: Introduce machine_class_valid_for_accelerator()
+Date: Fri, 19 Feb 2021 18:38:38 +0100
+Message-Id: <20210219173847.2054123-3-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210219173847.2054123-1-philmd@redhat.com>
 References: <20210219173847.2054123-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Huacai Chen <chenhuacai@kernel.org>, kvm@vger.kernel.org,
- Paul Durrant <paul@xen.org>, David Hildenbrand <david@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Leif Lindholm <leif@nuviainc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- Radoslaw Biernacki <rad@semihalf.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iFYn36unHZXk
+X-TUID: /wk1nrQNpGSd
 
-MachineClass::kvm_type() can return -1 on failure.
-Document it, and add a check in kvm_init().
+Introduce the valid_accelerators[] field to express the list
+of valid accelators a machine can use, and add the
+machine_class_valid_for_current_accelerator() and
+machine_class_valid_for_accelerator() methods.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/hw/boards.h | 3 ++-
- accel/kvm/kvm-all.c | 6 ++++++
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ include/hw/boards.h | 24 ++++++++++++++++++++++++
+ hw/core/machine.c   | 26 ++++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+)
 
 diff --git a/include/hw/boards.h b/include/hw/boards.h
-index a46dfe5d1a6..68d3d10f6b0 100644
+index 68d3d10f6b0..4d08bc12093 100644
 --- a/include/hw/boards.h
 +++ b/include/hw/boards.h
-@@ -127,7 +127,8 @@ typedef struct {
+@@ -36,6 +36,24 @@ void machine_set_cpu_numa_node(MachineState *machine,
+                                const CpuInstanceProperties *props,
+                                Error **errp);
+ 
++/**
++ * machine_class_valid_for_accelerator:
++ * @mc: the machine class
++ * @acc_name: accelerator name
++ *
++ * Returns %true if the accelerator is valid for the machine, %false
++ * otherwise. See #MachineClass.valid_accelerators.
++ */
++bool machine_class_valid_for_accelerator(MachineClass *mc, const char *acc_name);
++/**
++ * machine_class_valid_for_current_accelerator:
++ * @mc: the machine class
++ *
++ * Returns %true if the accelerator is valid for the current machine,
++ * %false otherwise. See #MachineClass.valid_accelerators.
++ */
++bool machine_class_valid_for_current_accelerator(MachineClass *mc);
++
+ void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
+ /*
+  * Checks that backend isn't used, preps it for exclusive usage and
+@@ -125,6 +143,11 @@ typedef struct {
+  *    should instead use "unimplemented-device" for all memory ranges where
+  *    the guest will attempt to probe for a device that QEMU doesn't
   *    implement and a stub device is required.
++ * @valid_accelerators:
++ *    If this machine supports a specific set of virtualization accelerators,
++ *    this contains a NULL-terminated list of the accelerators that can be
++ *    used. If this field is not set, any accelerator is valid. The QTest
++ *    accelerator is always valid.
   * @kvm_type:
   *    Return the type of KVM corresponding to the kvm-type string option or
-- *    computed based on other criteria such as the host kernel capabilities.
-+ *    computed based on other criteria such as the host kernel capabilities
-+ *    (which can't be negative), or -1 on error.
-  * @numa_mem_supported:
-  *    true if '--numa node.mem' option is supported and false otherwise
-  * @smp_parse:
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 84c943fcdb2..b069938d881 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2057,6 +2057,12 @@ static int kvm_init(MachineState *ms)
-                                                             "kvm-type",
-                                                             &error_abort);
-         type = mc->kvm_type(ms, kvm_type);
-+        if (type < 0) {
-+            ret = -EINVAL;
-+            fprintf(stderr, "Failed to detect kvm-type for machine '%s'\n",
-+                    mc->name);
-+            goto err;
-+        }
-     }
+  *    computed based on other criteria such as the host kernel capabilities
+@@ -166,6 +189,7 @@ struct MachineClass {
+     const char *alias;
+     const char *desc;
+     const char *deprecation_reason;
++    const char *const *valid_accelerators;
  
-     do {
+     void (*init)(MachineState *state);
+     void (*reset)(MachineState *state);
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 970046f4388..c42d8e382b1 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -518,6 +518,32 @@ static void machine_set_nvdimm_persistence(Object *obj, const char *value,
+     nvdimms_state->persistence_string = g_strdup(value);
+ }
+ 
++bool machine_class_valid_for_accelerator(MachineClass *mc, const char *acc_name)
++{
++    const char *const *name = mc->valid_accelerators;
++
++    if (!name) {
++        return true;
++    }
++    if (strcmp(acc_name, "qtest") == 0) {
++        return true;
++    }
++
++    for (unsigned i = 0; name[i]; i++) {
++        if (strcasecmp(acc_name, name[i]) == 0) {
++            return true;
++        }
++    }
++    return false;
++}
++
++bool machine_class_valid_for_current_accelerator(MachineClass *mc)
++{
++    AccelClass *ac = ACCEL_GET_CLASS(current_accel());
++
++    return machine_class_valid_for_accelerator(mc, ac->name);
++}
++
+ void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
+ {
+     QAPI_LIST_PREPEND(mc->allowed_dynamic_sysbus_devices, g_strdup(type));
 -- 
 2.26.2
 

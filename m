@@ -1,103 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9093599lfc;
-        Fri, 19 Feb 2021 07:09:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx936ZUY05Qdc0spdD0OH4bNemh1WngFVUxeH0LKh7NLEWtuJxHzWYau/B8hDEdTr/kua/d
-X-Received: by 2002:a25:730b:: with SMTP id o11mr14441897ybc.415.1613747345758;
-        Fri, 19 Feb 2021 07:09:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613747345; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9093631lfc;
+        Fri, 19 Feb 2021 07:09:07 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxm/G8W0Ne7hUYNbgwwvZI8V/iaku6mdqXcZ9XpRRg3SHysUu6qI2ELKqiug+BfABqPoxrR
+X-Received: by 2002:a5b:84f:: with SMTP id v15mr13626133ybq.79.1613747347188;
+        Fri, 19 Feb 2021 07:09:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613747347; cv=none;
         d=google.com; s=arc-20160816;
-        b=G3i6SwDf/fIK6Fgn3CG3HK5s7BGyn6XM1n91SNqF9spEaNatOjFt2TnIYMtOVWVc3T
-         9EV23+zOyh3WnGw2z0bRGpyN7ldq8Ghin51DgbEcexNPztck7NBFQT9bOx0U+WcIGm+0
-         UXp8Aax4NsB5x8QEipGNn/0jjlsb0IDaGpNhkXiGQS/JFnuNheP9uF70jxGiJN/MqOIg
-         B+6r+jnLHj0iy1gaWOu1y6RFk3ub6Mvz3DuIfTwOxSQfE494/T8NlV3ksDpo6/vMe7jD
-         dC+zXGQVaTz8cT8vw/4rt1qsOp5htVf0E1LxpPKcnKIDUniOUEvxFJadYrFbh5uG+iIi
-         5J+w==
+        b=jACsesMDGLIHAsUVDHcSntzx+9K0zkbMwNbaSMPofHb4GfBEIc/28QUphODqLVWL6O
+         74sQM3DEsafAIxSRydtlKgz3hEZHVJYDpoc0lnQV74bPgjRKe4rRfWhSIHx3QNvuGGeQ
+         GarEBzhnMmEqJdOt3p4r+c/7M7vKVXEcerj3AjMO1o37A5kuxhsSrZJ1rhfQeHjQnBeG
+         Zn9KqogUlISs9fmOso/1fTgjyhub0ythXaSRGFPtzGXATtvGbgzM/ucI5Ka9h6oRcXps
+         kOF0svA0rSkeCaQoz+SLWgZP028E690WBdqTa6+U57yTnuvAlu8pAYGdr3DEGsbnw1cZ
+         endA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cUkpFgY7tiqXLrCF1eGUleIZNQUHBO/cDgm27ZFyGB4=;
-        b=A28vRzj23IyjEPKUExW250K/YJMBqp5AbgGHRCGWP+ca6g3e9V2LwoDwXMnMevAq/a
-         XFXoM1KmlktBL9KXLBL5vYPFhSiwupxL8hbmGXoc5hpQLV2RyPZ+faS15JdFYWQfwM7s
-         gM4Eo5zAQwlUHoTNYJ8xUEod36XYPvla6+NCbnsweW0G/PqqkHXIo2ypQUgzvksCu/xu
-         NjPWupiKeQl7QmxDDs8iQCD5R+La3u95/1o/smDAzNnlP08pUeAEs2WpEvkATdBPtr3m
-         D/4D1oOoV3yerzYqMYuW+I1r71P6pbY3hUOdIvvoaFgNEmOcnvRCJU56ZCNtx93eoOdP
-         3i5A==
+        bh=ZJZFHHRnw+bIexNpw6ym+fjTBPuLscNy2u0S4pBqSr0=;
+        b=gAzOtjPq+ksz9k7T419UKLCpA8S04FNtgMYnfSrKsY4Sg7EVr9MfogSYIH2ebzAffI
+         jlAD6hLZiQHd9fmjXYipTgwjvCLT3Lw/9rNhA3pSQvQJjsWoCNS6g8AkCzOeEtbbu9zL
+         5kbk+Ch/GDivYayj94Dkv5WhX9rHYQYRA7Mi2dZsVep738Bf50D3dExCNfjDoe5sLC8u
+         z+MHxERXiOwLFiv0roeWqD3lit1swGa4Eo8lLdFjuDd157L/hy26CCYRA23eJJr1Xm1W
+         1uX2CZDqI+QElobEQturF3+/aYu/OR+ElZ9SaAFDOhqA1D+38j5sw3TSzumIS2OAPp5B
+         w/MQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vEUATXAB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NTMsojNW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j14si9612572ybp.285.2021.02.19.07.09.05
+        by mx.google.com with ESMTPS id m65si9445271yba.269.2021.02.19.07.09.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 07:09:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Feb 2021 07:09:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vEUATXAB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NTMsojNW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36186 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7Oz-0004yC-24
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:09:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34116)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lD7P0-00046k-I6
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:09:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34236)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73i-0002WX-1C
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:10 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:53769)
+ id 1lD73p-0002fN-NL
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:13 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46760)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73J-0003aJ-VG
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:05 -0500
-Received: by mail-wm1-x330.google.com with SMTP id x16so7275546wmk.3
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 06:46:41 -0800 (PST)
+ id 1lD73N-0003cT-9N
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:13 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id t15so8823981wrx.13
+ for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=cUkpFgY7tiqXLrCF1eGUleIZNQUHBO/cDgm27ZFyGB4=;
- b=vEUATXAB9XP69ZbOGOISK88L6OX8Vz+hBAyyyL2ImLN3+JDaMb1B4DoC62G+9jnJsf
- +wFuLZGM7jqivaNM63tzBK1TrAIxOdZIR7Ezqm0zujGX2RhXLiVr2Km5UptnK86wgGfH
- SfTHC61zOWAgl/nfg5STV2LZ/e5/+6it5nlTlS1T4NbFlHfQaXGnBAI/iC1/ksY8U153
- cOYtuWBFkYojLZkqFG8lk/xmXtPBigpy7vbuB1hrPU4z5rdTZNVK+MPFe2rw1C04ehZ9
- L4cMNXX+3OyGdi6QtwztpcJpDIDxwc4FMXR+FfDSzZik/kQXKhtir96Ry0VxvDdVOiIs
- V5HQ==
+ bh=ZJZFHHRnw+bIexNpw6ym+fjTBPuLscNy2u0S4pBqSr0=;
+ b=NTMsojNWO++Z1h/0Jg4GPljy1CAJQSlt9ggWk1MIBvQY4mzxnXsbiNNRFFjeUfTp00
+ qgrkQiy0rlpgkziaZMshbe7ZGm64jhuCEfiWrwY8GDKLJnCreGj3kR2LwEuTW/3/VjYX
+ YvSSTEWUXLFPpzeG35ENF2BqILTQZThELvIbHqLUKdhcEq2SzYPwf3qGLQMzl/7kVO/K
+ O6D1pPbbI+YD7PH2hQ2aYa4nNDkfqO7vgEgzO/DeO6aKOkLLRiTxQdhldaohSVgBN818
+ CD+6BAlJ6F5FZ54MAnSuWyfAaR5KM1RekQoFJiBbf8OrysPSUsy1DbEEg0A1Z5/5VAoC
+ iYwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cUkpFgY7tiqXLrCF1eGUleIZNQUHBO/cDgm27ZFyGB4=;
- b=oVQtEGw7f3aGdeiTL0zF8rpu/Y9SZlAvSdBgkzZYi1zYzRKpiCbgHEVlTaoWOUsNTu
- kPJTYdeGQLX80NrwrrGRBKZFE4ES7iqYHVjxP5kalT5TAYRBF08b6Ovbsrmd0qTJe0wq
- /auJoIg3XB0JjTWLRJfQjTL2JgO1hGyBHKzqfCRbuiyPq47NxuDBuuMSxzYdSnKUbj/T
- etj89kwQIc6FGKMoLTmNyK4mdOUsY7UoSivz1Vcoj819v+jaLFqONr2fz4cdhzXtc4LQ
- FkNE6jNUo+dLvbWP/qbxG8YpvhxdXY5rndZIQ/VMOXRLjOWQbiPUefKVRpA324+ZwliD
- yNzQ==
-X-Gm-Message-State: AOAM533Pd6VEHvQKZdLQSn8cqEbSkAD0mn2o5tnuwW5UPhGyd5rLoiJr
- JkXy9+1FrTEqPR7+0yVNJdenPFj2r1ibDw==
-X-Received: by 2002:a1c:7e85:: with SMTP id z127mr8571215wmc.131.1613746000691; 
- Fri, 19 Feb 2021 06:46:40 -0800 (PST)
+ bh=ZJZFHHRnw+bIexNpw6ym+fjTBPuLscNy2u0S4pBqSr0=;
+ b=TJy4RbFx34DREXSDasVAnZZOYpsh0/3zP3oT0dDv/i06vamA6/wAQ2zr9EakLaWJRd
+ cNIsQIfuTL7UsmMY+dVonIIqSYcRRXrWmb5lsPF4ks1gOW8A0bGGPC7mu90L5a3nQz7p
+ gX/1bPO7j9SXng8N5+NEAkGD6Xs8WPkiZWrUkGi6zpvOwO3b1OLW6UQkKzmE+fmkPdY2
+ /hO7c+2lqQBDQMkepw5/+dZ8bZX9pGFo1pCKohp9kmAVCIXVg4lSsqRh3/TODZUID5WX
+ G09iaSP4EI3gTVQzpsdCde7WiBbjcsmouGB08L/b9bMypJPmk++iXLGKGSQU2gvGhf/N
+ nQMg==
+X-Gm-Message-State: AOAM532NchKbY1hGTeFQC92t8ljJWe5gLwxIdBeOAuIvQbd+68LVFn5M
+ LmoimZcyEOzJX/GNMgRSTT3Og+Gabj0Duw==
+X-Received: by 2002:a5d:5109:: with SMTP id s9mr8160882wrt.325.1613746004089; 
+ Fri, 19 Feb 2021 06:46:44 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.40
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:40 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:43 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 27/44] hw/arm/armsse: Move sysinfo register block into
- data-driven framework
-Date: Fri, 19 Feb 2021 14:46:00 +0000
-Message-Id: <20210219144617.4782-28-peter.maydell@linaro.org>
+Subject: [PATCH 32/44] hw/arm/armsse: Add support for SSE variants with a
+ system counter
+Date: Fri, 19 Feb 2021 14:46:05 +0000
+Message-Id: <20210219144617.4782-33-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,119 +106,122 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a5kLJQRNYr4k
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ulBK11dq8nGc
 
-Move the sysinfo register block into the data-driven framework.
+The SSE-300 has a system counter device; add support for SSE
+variants having this device.
 
-While we are moving the code for configuring this device around,
-regularize on using &error_abortw when setting the integer
-properties: they are all simple DEFINE_PROP_UINT32 properties so the
-setting can never fail.
+As with the existing devices like the cache control block, CPUID
+block, etc, we don't try to make the MMIO addresses configurable.  We
+can do that if and when we need to model a future SSE variant which
+has the counter in a different location.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/armsse.c | 47 ++++++++++++++++++++++++++++-------------------
- 1 file changed, 28 insertions(+), 19 deletions(-)
+ include/hw/arm/armsse.h |  3 +++
+ hw/arm/armsse.c         | 27 +++++++++++++++++++++++++++
+ 2 files changed, 30 insertions(+)
 
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index 104ba8d26ec..149f17dfc88 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -97,6 +97,7 @@
+ #include "hw/misc/tz-mpc.h"
+ #include "hw/timer/cmsdk-apb-timer.h"
+ #include "hw/timer/cmsdk-apb-dualtimer.h"
++#include "hw/timer/sse-counter.h"
+ #include "hw/watchdog/cmsdk-apb-watchdog.h"
+ #include "hw/misc/iotkit-sysctl.h"
+ #include "hw/misc/iotkit-sysinfo.h"
+@@ -164,6 +165,8 @@ struct ARMSSE {
+ 
+     CMSDKAPBWatchdog cmsdk_watchdog[3];
+ 
++    SSECounter sse_counter;
++
+     IoTKitSysCtl sysctl;
+     IoTKitSysCtl sysinfo;
+ 
 diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 3270362d599..91f30b1fdc4 100644
+index b316fe69571..4387e98376c 100644
 --- a/hw/arm/armsse.c
 +++ b/hw/arm/armsse.c
-@@ -157,6 +157,14 @@ static const ARMSSEDeviceInfo sse200_devices[] = {
-         .ppc = NO_PPC,
-         .irq = NMI_1,
-     },
-+    {
-+        .name = "armsse-sysinfo",
-+        .type = TYPE_IOTKIT_SYSINFO,
-+        .index = 0,
-+        .addr = 0x40020000,
-+        .ppc = NO_PPC,
-+        .irq = NO_IRQ,
-+    },
-     {
-         .name = NULL,
-     }
-@@ -407,6 +415,10 @@ static void armsse_init(Object *obj)
-             object_initialize_child(obj, devinfo->name,
-                                     &s->cmsdk_watchdog[devinfo->index],
-                                     TYPE_CMSDK_APB_WATCHDOG);
-+        } else if (!strcmp(devinfo->type, TYPE_IOTKIT_SYSINFO)) {
-+            assert(devinfo->index == 0);
-+            object_initialize_child(obj, devinfo->name, &s->sysinfo,
-+                                    TYPE_IOTKIT_SYSINFO);
-         } else {
-             g_assert_not_reached();
+@@ -66,6 +66,7 @@ struct ARMSSEInfo {
+     bool has_cachectrl;
+     bool has_cpusecctrl;
+     bool has_cpuid;
++    bool has_sse_counter;
+     Property *props;
+     const ARMSSEDeviceInfo *devinfo;
+     const bool *irq_is_common;
+@@ -363,6 +364,7 @@ static const ARMSSEInfo armsse_variants[] = {
+         .has_cachectrl = false,
+         .has_cpusecctrl = false,
+         .has_cpuid = false,
++        .has_sse_counter = false,
+         .props = iotkit_properties,
+         .devinfo = iotkit_devices,
+         .irq_is_common = sse200_irq_is_common,
+@@ -379,6 +381,7 @@ static const ARMSSEInfo armsse_variants[] = {
+         .has_cachectrl = true,
+         .has_cpusecctrl = true,
+         .has_cpuid = true,
++        .has_sse_counter = false,
+         .props = armsse_properties,
+         .devinfo = sse200_devices,
+         .irq_is_common = sse200_irq_is_common,
+@@ -652,6 +655,11 @@ static void armsse_init(Object *obj)
+             g_free(name);
          }
-@@ -437,8 +449,6 @@ static void armsse_init(Object *obj)
- 
-     object_initialize_child(obj, "armsse-sysctl", &s->sysctl,
-                             TYPE_IOTKIT_SYSCTL);
--    object_initialize_child(obj, "armsse-sysinfo", &s->sysinfo,
--                            TYPE_IOTKIT_SYSINFO);
-     if (info->has_mhus) {
-         object_initialize_child(obj, "mhu0", &s->mhu[0], TYPE_ARMSSE_MHU);
-         object_initialize_child(obj, "mhu1", &s->mhu[1], TYPE_ARMSSE_MHU);
-@@ -889,6 +899,22 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                 return;
-             }
-             mr = sysbus_mmio_get_region(sbd, 0);
-+        } else if (!strcmp(devinfo->type, TYPE_IOTKIT_SYSINFO)) {
-+            sbd = SYS_BUS_DEVICE(&s->sysinfo);
+     }
++    if (info->has_sse_counter) {
++        object_initialize_child(obj, "sse-counter", &s->sse_counter,
++                                TYPE_SSE_COUNTER);
++    }
 +
-+            object_property_set_int(OBJECT(&s->sysinfo), "SYS_VERSION",
-+                                    info->sys_version, &error_abort);
-+            object_property_set_int(OBJECT(&s->sysinfo), "SYS_CONFIG",
-+                                    armsse_sys_config_value(s, info),
-+                                    &error_abort);
-+            object_property_set_int(OBJECT(&s->sysinfo), "sse-version",
-+                                    info->sse_version, &error_abort);
-+            object_property_set_int(OBJECT(&s->sysinfo), "IIDR",
-+                                    info->iidr, &error_abort);
-+            if (!sysbus_realize(sbd, errp)) {
-+                return;
-+            }
-+            mr = sysbus_mmio_get_region(sbd, 0);
-         } else {
-             g_assert_not_reached();
-         }
-@@ -1106,23 +1132,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         memory_region_add_subregion(&s->container, devinfo->addr, mr);
-     }
+     object_initialize_child(obj, "nmi-orgate", &s->nmi_orgate, TYPE_OR_IRQ);
+     object_initialize_child(obj, "ppc-irq-orgate", &s->ppc_irq_orgate,
+                             TYPE_OR_IRQ);
+@@ -1000,6 +1008,25 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out(DEVICE(&s->nmi_orgate), 0,
+                           qdev_get_gpio_in_named(DEVICE(&s->armv7m), "NMI", 0));
  
--    if (!object_property_set_int(OBJECT(&s->sysinfo), "SYS_VERSION",
--                                 info->sys_version, errp)) {
--        return;
--    }
--    if (!object_property_set_int(OBJECT(&s->sysinfo), "SYS_CONFIG",
--                                 armsse_sys_config_value(s, info), errp)) {
--        return;
--    }
--    object_property_set_int(OBJECT(&s->sysinfo), "sse-version",
--                            info->sse_version, &error_abort);
--    object_property_set_int(OBJECT(&s->sysinfo), "IIDR",
--                            info->iidr, &error_abort);
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sysinfo), errp)) {
--        return;
--    }
--    /* System information registers */
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysinfo), 0, 0x40020000);
-     /* System control registers */
-     object_property_set_int(OBJECT(&s->sysctl), "sse-version",
-                             info->sse_version, &error_abort);
++    /* The SSE-300 has a System Counter / System Timestamp Generator */
++    if (info->has_sse_counter) {
++        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->sse_counter);
++
++        qdev_connect_clock_in(DEVICE(sbd), "CLK", s->mainclk);
++        if (!sysbus_realize(sbd, errp)) {
++            return;
++        }
++        /*
++         * The control frame is only in the Secure region;
++         * the status frame is in the NS region (and visible in the
++         * S region via the alias mapping).
++         */
++        memory_region_add_subregion(&s->container, 0x58100000,
++                                    sysbus_mmio_get_region(sbd, 0));
++        memory_region_add_subregion(&s->container, 0x48101000,
++                                    sysbus_mmio_get_region(sbd, 1));
++    }
++
+     /* Devices behind APB PPC0:
+      *   0x40000000: timer0
+      *   0x40001000: timer1
 -- 
 2.20.1
 

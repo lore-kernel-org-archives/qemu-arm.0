@@ -1,108 +1,81 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp881641lfb;
-        Fri, 4 Dec 2020 10:24:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzcXO7AmxgQTP0dKuoyF4UbK5SWuiWxdWpuRdQg86mT7nwhqk8E9HyGBmXQsIQLVVQ8Dnh6
-X-Received: by 2002:a25:be89:: with SMTP id i9mr7237743ybk.35.1607106299151;
-        Fri, 04 Dec 2020 10:24:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607106299; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8874946lfc;
+        Fri, 19 Feb 2021 01:44:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwcknm054z7f5WSmRqELF0tMdqQ2vz4quN86Mp8ET5vqWNawZ2JgEZJbJPKfq9kEFRtTtmV
+X-Received: by 2002:a25:dec2:: with SMTP id v185mr11970528ybg.145.1613727865029;
+        Fri, 19 Feb 2021 01:44:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613727865; cv=none;
         d=google.com; s=arc-20160816;
-        b=xmkOECIzKS26g6nUrY+qMskBAgIPnKiNvVHE6gLvtr5uLm3Yi552F1R9TRtgfIF9Ui
-         hSTkWvaYvaENX0MWuLA8sY5uS0QQscVA9DHVBFK+2PVh73R82Sk/w73Ep2uaC6ClgifH
-         S2dobB4NdgIg5HWqoVpgoiL/UojBxiImOI0pwJYqAk5MDOoHiGAJzKJFgUalzql/g9h9
-         4LvK7jegPdaCtrjpEu5w7FYfZViSZX5x9sR85vafN6i4fnvrTs5sd4WgV9nUKcuvCzvi
-         bBTwyoipQelhR2qC0VNnohsIDJbY4kLuHwFINCGYuJwDzN9hUv1FvOeRxOi1mKFkgf0y
-         Bl5A==
+        b=UN1wiN6yoHR/80/Krok8FaA0yNJaGGjxCLWo+aHrG3xWGpxCiob6Om1esUc0PebzTL
+         10M7yZpfLPdQimguy1US9asqeyyGYC+S/lHQ3qwFRLezLoyWTvqUQDoMHtrXfDEqQj8+
+         Nm21XzZ3EZcernYO/GzogKjbuxozZvPnu5DyLWrB485PMjOS28iGySjBDIksPkhUbfbR
+         oys3h93tqkhTbk4Esh6ueUWvXocDQ7odbDM9d1ITH4wlXAEH9nEZTpU4QrL9BfUY4aCg
+         FdJLH6TPZykVGv5Buax+wT3TFUZyz+4LfO6a0bhcbQ+HcLbpY5LxDLRoNtmTkNtEdjr6
+         laSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=x21ViHKE8gzgFzcgovKz4qGIY6AqAc/2iDUN+mzcJws=;
-        b=yX6Ws4hNaXdpBLcoXmKfd9Vv7yR+PVpygmJ9GUbHOXdZQZIxK0mskN1bCMsf7ZYVx8
-         MDvPdlvcpwUUvJ74nPM2cHhkbAfK7mdg6ZevBJqipq0xL4/KgVAkxH3U5XEzzdi2084J
-         1APoj+HhODnL2Xz8FeDNFV1Wu8j3LRHlYX58rl/faAjBdfNEnTUm33gAugy4gXiobsP/
-         wFaddXRICuwO7X7/EYeiXZSxmOXcmVorrdne4XukF1ZEMIPa5iIQjHJeR0Ztq6i1T6Cg
-         jZBKipWR6ZULDaqTrb65ERKy3gzc4AxswM6ke4N2s2BJUiLdPE7YohHsupd+8WQsCz0a
-         cFUw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=Edqe9ZnW3DVTj8Eub5reroCfukexcRMjO9kEeLsxbuc=;
+        b=w22KfLpLIRIWVzkhOu/O5fAspqDSvlhRmUvXGVBnKsyzKMec1tLGPWzIPUnBuHaojW
+         NDC5CWXunxs9fKLTx59rNZ0ZsFv2xelIFPXW1VFl/sP32lYCJL+xcYm+kkxQGVXEfIfh
+         +EVxuqq7/ENxGUwgzm9XGnZWkI2UX7rR7wAYGI9av/iTnyTqu/PhyX/JfDlac49N/4TZ
+         p084n2RiFcwirHSxK5kYH3NfrPiNR2wXTEoVZJmi8sYtpRX3ZXpNwtWcJslsYaaCakj0
+         h8Td8m8bEglwG2PN7skXyuBwUkIHKf6LQdVpyeueRE5ffA7inYY8T0hnpEqAayl0P3+1
+         DPKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DrBXTq9i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x15si2049928ybj.303.2020.12.04.10.24.58
+        by mx.google.com with ESMTPS id b16si8408877ybg.473.2021.02.19.01.44.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Dec 2020 10:24:59 -0800 (PST)
+        Fri, 19 Feb 2021 01:44:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DrBXTq9i;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58410 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1klFlK-0002uE-Ey
-	for alex.bennee@linaro.org; Fri, 04 Dec 2020 13:24:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57552)
+	id 1lD2Km-0000xB-Cm
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 04:44:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44638)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1klESn-0004uA-Fy
- for qemu-arm@nongnu.org; Fri, 04 Dec 2020 12:01:45 -0500
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:37972)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1klES2-0003Np-T4
- for qemu-arm@nongnu.org; Fri, 04 Dec 2020 12:01:43 -0500
-Received: by mail-ej1-x644.google.com with SMTP id a16so9697278ejj.5
- for <qemu-arm@nongnu.org>; Fri, 04 Dec 2020 09:00:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=x21ViHKE8gzgFzcgovKz4qGIY6AqAc/2iDUN+mzcJws=;
- b=DrBXTq9iwPhBhcNIaejzmU86137Wg4cLvB/g9whh+Z/PphkZKx7QGLap0poB2ujEpa
- 6C172x1qUWqPj/se9kOxjbMUGQDbR7yal3wGrdBSwsgL0xVMtY5X4FqNtHGYHixbAeNh
- A+a1zb24pTsg8pq5lKXIW5jaeQ5npqz5HZdyls24sSr7JTt3sQ74jddBXJfYow9sgQKr
- 2iukEVyhHNvoClATLLR0ujPfCUy0rPdiBhDS/jjytj1VJoCRS0ieeymvpA9eOP5V9uKD
- 7MH/Dg8C7mARrz42Dx7hyfft+tCZRFlsvprbzQr6Slu4yZU4S28jqGTSYy4HtbpQIWDB
- xz9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=x21ViHKE8gzgFzcgovKz4qGIY6AqAc/2iDUN+mzcJws=;
- b=aP9rU7Sv2aUTRqbe2ke3E9hQD/s7DPKyXWIL/dE+tjmOXtsZep7F3R9+48tcbsoSkA
- 7BCJ9UMVqcvCX0nFIwexlgtGbloFygvToLVp8E/vSglZKdcBKC4RYaaCWlrxokJTLabO
- 8CHnonm7+UQFd2inxP+4ZGmYJ1u2Lu/81LJyGs6EzxfDSUWg5xJGy94UCC6fmEWtcERy
- nYCdv2DsiOTEiAZFPHAsB1K6KHtiLlj8/3YgYYI8wvFaeG1rqkDz39IUKhtBjzHqNu5u
- QfhdeN+qNT9Csv8keDz/Mk0g75BU0JAYW//5fqxn+rd/zr/X7OADkzTWBHP6rqTlpN99
- ClDg==
-X-Gm-Message-State: AOAM5330RetsOZaeFs/3oae1vHW8QR/H10ZNndVo/J1HEOJZFZ53gpCX
- DnvaUsaMrR7CtvfeVPv6pVDCArdF+MGIkJn74T9su765AFg=
-X-Received: by 2002:aa7:cdc3:: with SMTP id h3mr2146422edw.52.1607099783375;
- Fri, 04 Dec 2020 08:36:23 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lD2KP-0000v6-Sk; Fri, 19 Feb 2021 04:44:02 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:3045)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lD2K8-0006Yc-UU; Fri, 19 Feb 2021 04:44:01 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Dhmnf0H0DzjNqR;
+ Fri, 19 Feb 2021 17:42:14 +0800 (CST)
+Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 19 Feb 2021 17:43:21 +0800
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
+ "open list:ARM SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Subject: [RFC PATCH 3/3] hw/arm/smmuv3: Post-load stage 1 configurations to
+ the host
+Date: Fri, 19 Feb 2021 17:42:30 +0800
+Message-ID: <20210219094230.231-4-jiangkunkun@huawei.com>
+X-Mailer: git-send-email 2.26.2.windows.1
+In-Reply-To: <20210219094230.231-1-jiangkunkun@huawei.com>
+References: <20210219094230.231-1-jiangkunkun@huawei.com>
 MIME-Version: 1.0
-References: <20201125040642.2339476-1-richard.henderson@linaro.org>
- <CAFEAcA9XFGbyYfcpoOVhtV_wySi9=DyMGe84C4uwYG14Z6bD6Q@mail.gmail.com>
- <56701347-e0a0-ae47-8bba-f5cdff253475@redhat.com>
- <3d6d46d8-04bc-7ad8-d71e-4ce15a6e7e47@ispras.ru>
- <CAFEAcA_ATUZ+v8VE8q34mmi3pLhg3qFDHgi7mQB-JJKDEZuzaw@mail.gmail.com>
- <3ab6b7fb-51cf-0ec4-2c70-e86bb01dcc3f@ispras.ru>
-In-Reply-To: <3ab6b7fb-51cf-0ec4-2c70-e86bb01dcc3f@ispras.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Dec 2020 16:36:12 +0000
-Message-ID: <CAFEAcA9wBVjurjNLoRw9UbWnp-N1=oNVP0en90_QU7h+rZ0MeA@mail.gmail.com>
-Subject: Re: [PATCH for-6.0 00/11] target/arm: enforce alignment
-To: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.210]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,69 +89,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
+ Keqian Zhu <zhukeqian1@huawei.com>, shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pxScUWOcF7qi
+X-TUID: pnKcLD3KC7ek
 
-On Fri, 4 Dec 2020 at 06:17, Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru> wr=
-ote:
->
-> On 03.12.2020 19:14, Peter Maydell wrote:
-> > On Thu, 3 Dec 2020 at 16:10, Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru=
-> wrote:
-> >>
-> >> On 03.12.2020 15:30, Philippe Mathieu-Daud=C3=A9 wrote:
-> >>> Cc'ing Pavel
-> >>>
-> >>> On 12/1/20 4:55 PM, Peter Maydell wrote:
-> >>>> On Wed, 25 Nov 2020 at 04:06, Richard Henderson
-> >>>> <richard.henderson@linaro.org> wrote:
-> >>>>>
-> >>>>> As reported in https://bugs.launchpad.net/bugs/1905356
-> >>>>>
-> >>>>> Not implementing SCTLR.A, but all of the other required
-> >>>>> alignment for SCTLR.A=3D0 in Table A3-1.
-> >>>>
-> >>>> Something in this series breaks the 'make check-acceptance'
-> >>>> record-and-replay test:
-> >>>>
-> >>>>    (30/40) tests/acceptance/replay_kernel.py:ReplayKernelNormal.test=
-_aarch64_virt:
-> >>>> PASS (9.14 s)
-> >>>>    (31/40) tests/acceptance/replay_kernel.py:ReplayKernelNormal.test=
-_arm_virt:
-> >>>> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
-> >>>> Timeout reached\nOriginal status: ERROR\n{'name':
-> >>>> '31-tests/acceptance/replay_kernel.py:ReplayKernelNormal.test_arm_vi=
-rt',
-> >>>> 'logdir': '/home/petmay01/linaro/qemu-from-laptop/qemu/build/arm-cla=
-ng/tests/result...
-> >>>> (90.19 s)
-> >>>>
-> >>>> The log shows the "recording execution" apparently hanging,
-> >>>> with the last output from the guest
-> >>>> [    3.183662] Registering SWP/SWPB emulation handler
-> >>
-> >> I looked through the patches and it does not seem that they can break
-> >> anything.
-> >> Could it be the same avocado/chardev socket glitch as in some previous
-> >> failures?
-> >> What happens when re-running this test?
-> >
-> > I ran it a couple of times with the patchset and it failed the same
-> > way each time. Without is fine.
->
-> I applied the patches and got no failures on my local machine.
->
-> Do you have any ideas on debugging this bug?
-> What does "arm-clang" means? Is the host compiler is clang?
+In nested mode, we call the set_pasid_table() callback on each STE
+update to pass the guest stage 1 configuration to the host and
+apply it at physical level.
 
-Yes, it's a clang build (with the sanitizers enabled, though I didn't
-see any output from the sanitizers in the logfile).
+In the case of live migration, we need to manual call the
+set_pasid_table() to load the guest stage 1 configurations to the
+host. If this operation is fail, the migration is fail.
 
-thanks
--- PMM
+Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
+---
+ hw/arm/smmuv3.c     | 60 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/trace-events |  1 +
+ 2 files changed, 61 insertions(+)
+
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 6c6ed84e78..94ca15375c 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1473,6 +1473,65 @@ static void smmu_realize(DeviceState *d, Error **errp)
+     smmu_init_irq(s, dev);
+ }
+ 
++static int smmuv3_manual_set_pci_device_pasid_table(SMMUDevice *sdev)
++{
++#ifdef __linux__
++    IOMMUMemoryRegion *mr = &(sdev->iommu);
++    int sid = smmu_get_sid(sdev);
++    SMMUEventInfo event = {.type = SMMU_EVT_NONE, .sid = sid,
++                           .inval_ste_allowed = true};
++    IOMMUConfig iommu_config = {};
++    SMMUTransCfg *cfg;
++    int ret = -1;
++
++    cfg = smmuv3_get_config(sdev, &event);
++    if (!cfg) {
++        return ret;
++    }
++
++    iommu_config.pasid_cfg.argsz = sizeof(struct iommu_pasid_table_config);
++    iommu_config.pasid_cfg.version = PASID_TABLE_CFG_VERSION_1;
++    iommu_config.pasid_cfg.format = IOMMU_PASID_FORMAT_SMMUV3;
++    iommu_config.pasid_cfg.base_ptr = cfg->s1ctxptr;
++    iommu_config.pasid_cfg.pasid_bits = 0;
++    iommu_config.pasid_cfg.vendor_data.smmuv3.version = PASID_TABLE_SMMUV3_CFG_VERSION_1;
++
++    if (cfg->disabled || cfg->bypassed) {
++        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_BYPASS;
++    } else if (cfg->aborted) {
++        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_ABORT;
++    } else {
++        iommu_config.pasid_cfg.config = IOMMU_PASID_CONFIG_TRANSLATE;
++    }
++
++    ret = pci_device_set_pasid_table(sdev->bus, sdev->devfn, &iommu_config);
++    if (ret) {
++        error_report("Failed to pass PASID table to host for iommu mr %s (%m)",
++                     mr->parent_obj.name);
++    }
++
++    return ret;
++#endif
++}
++
++static int smmuv3_post_load(void *opaque, int version_id)
++{
++    SMMUv3State *s3 = opaque;
++    SMMUState *s = &(s3->smmu_state);
++    SMMUDevice *sdev;
++    int ret = 0;
++
++    QLIST_FOREACH(sdev, &s->devices_with_notifiers, next) {
++        trace_smmuv3_post_load_sdev(sdev->devfn, sdev->iommu.parent_obj.name);
++        ret = smmuv3_manual_set_pci_device_pasid_table(sdev);
++        if (ret) {
++            break;
++        }
++    }
++
++    return ret;
++}
++
+ static const VMStateDescription vmstate_smmuv3_queue = {
+     .name = "smmuv3_queue",
+     .version_id = 1,
+@@ -1491,6 +1550,7 @@ static const VMStateDescription vmstate_smmuv3 = {
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .priority = MIG_PRI_IOMMU,
++    .post_load = smmuv3_post_load,
+     .fields = (VMStateField[]) {
+         VMSTATE_UINT32(features, SMMUv3State),
+         VMSTATE_UINT8(sid_size, SMMUv3State),
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index 35e562ab74..caa864dd72 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -53,4 +53,5 @@ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s
+ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
+ smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=%s asid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64
+ smmuv3_notify_config_change(const char *name, uint8_t config, uint64_t s1ctxptr) "iommu mr=%s config=%d s1ctxptr=0x%"PRIx64
++smmuv3_post_load_sdev(int devfn, const char *name) "sdev devfn=%d iommu mr=%s"PRIx64
+ 
+-- 
+2.23.0
+

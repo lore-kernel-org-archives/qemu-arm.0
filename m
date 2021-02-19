@@ -1,81 +1,79 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8875101lfc;
-        Fri, 19 Feb 2021 01:44:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy1BJ0xZiNgD3vUNj/3boW6uQgvwfTMyCpzt0I48CWSG8BFMq43nlGY4nc4EQx0CF42v+QO
-X-Received: by 2002:a25:f07:: with SMTP id 7mr12877829ybp.399.1613727876179;
-        Fri, 19 Feb 2021 01:44:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613727876; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8876959lfc;
+        Fri, 19 Feb 2021 01:46:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzjgrZYhl0g32AfCw1g6PVfFBw+C0TGzRerATD+xyOX17/IdUAQwePVoojjDpfpmsNJG0Gh
+X-Received: by 2002:a25:ca88:: with SMTP id a130mr12770997ybg.414.1613728014363;
+        Fri, 19 Feb 2021 01:46:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613728014; cv=none;
         d=google.com; s=arc-20160816;
-        b=RBnJTxRlrmvCO6PO0ObFv4z/H2VvuLRYjYk7MmnVIXKcVFphzyvNozPDU1+NxzyZ6j
-         ae1gtNV76kbjuiN4f7mSGsEZYTZ5DoiSTIwUQBisaZJo0MC73DPJSpYaiYr3RiG4AB8s
-         JaXVJMFwK7HeDtuTQ2vv2MIyn+ahR5puafQiUjXY7C1xzUNMuZl/s8fv8ftzoAJFrvZ7
-         gfXQYOzM9pYlUuaRIUl75+x4H6bvAZ+bKAtio4BISMInUPUoWahjCfPYFpBXYJRvXLOK
-         7jSWdMTk0oeqLuECffYVTXQEvX7o//39ltHHsTwlUVasCNAJLs1td1KxseaGA4T80Y+P
-         nIfQ==
+        b=L+b4TD1CbPYRBjrWFv2dNrc+cyOfzcMzUmlRqtZRrCkoKWcb43t8wYdw7GEIDDGfU3
+         48hmAqESQs3K4nFCVy/1dN+oORw6EGIECwP9dUWSLiOukI3IeVkSCwJOathJxaCD5pV0
+         Y2nCJxgTPGmPVRhJcMwQSh+IDwD/wlrED6wLwK4wsRiLxtB9jUpzgZTP6GAyu5vwFTGw
+         zd6icg7KupWmD0Y8xEo2KYOEVaYC+6sIF9/iu8cEc73c65OqC0NpiaVCy+7XC7Sqe1MX
+         XoIEZA+oKcVbpUrxGoHeXyrLnf/ucX8GoUPNJzdfcWSMImaFY7wslXxWDkZZu82pM1ue
+         jOSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=TQCuuYdQy4rpWkqO4zaBNt8NLgpiAbymS1MpbawJr74=;
-        b=kiLOFZpNHjR4sFuwDysy2t23YcYPeYnELYcwzlwob6ep/nNIKUTUBI4cSj/17laqiI
-         6ReEl4nVio6ZRq6V/xcot0Ox49919qmrrfboJSWdZZ/+FzwCgGpf86pJLTP656yKJ1zU
-         EcZBrHaOcyc/k5w6ETdFR/epX/l+ZZmBmNPMtG4Vt1gCnOOCP/E3v4eyck/HPtihzixg
-         qnov5TwjBDTWPJIzEEjqj1n+LPqteGfV/1EW5MKmFK2o9LdeqViRviHBu8Su+2Eht0/P
-         ZAkMk/KIA1M498TRPodf7VLYxF9wrPkvXQ1Jkb1Rf87dO0vxzZs9LPdFg+ECqOjmKeEN
-         0HqA==
+         :mime-version:message-id:date:subject:to:from;
+        bh=ZO1FJhDWxGt94kOLg6rZWvcTkMTXVF8XMrq5h5yphmo=;
+        b=bSIXMghjXrZgKaUf+z2X3mpo4z64ELTBVY/zlcdsqHX3/YzbJkkGcCE7hJNc/Kx5i/
+         DiiX0M39GFuxWF9SNTuugGmo+twEZ+edrMk+SVVscILxxfvaagGNfhtEu9j+TnOYX4/A
+         8Z635ay2ltb4Rry7Mud3Yfk5B91fJtJmR0vG7tDfVbtQK+Xkt8vjqAirYce02ZRjY2sS
+         EVSdbyz87N4X/q7ZhJ2iQ6OOd4TRSF3EEzSEjkYRkMHNltgw+uDG7iuQVHXK+lobecYK
+         W10zx8F3+mLZ5DrwW91W8e6v+9fRKAkhX83YoPPckYEHMEuRbuCJ4YDwy8bjafhsEIgu
+         tcRw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q9si8052679ybp.309.2021.02.19.01.44.36
+        by mx.google.com with ESMTPS id q12si8974790ybm.8.2021.02.19.01.46.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 01:44:36 -0800 (PST)
+        Fri, 19 Feb 2021 01:46:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56170 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD2Kx-0001Mv-If
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 04:44:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44678)
+	id 1lD2NB-0003Ob-NH
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 04:46:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lD2KR-0000vc-DX; Fri, 19 Feb 2021 04:44:03 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:3044)
+ id 1lD2KQ-0000vE-Ra; Fri, 19 Feb 2021 04:44:03 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3482)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lD2K8-0006Yb-UW; Fri, 19 Feb 2021 04:44:03 -0500
+ id 1lD2K8-0006XQ-Tp; Fri, 19 Feb 2021 04:44:02 -0500
 Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4Dhmnd72y3zjNpd;
- Fri, 19 Feb 2021 17:42:13 +0800 (CST)
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DhmnC5HLCzjPyN;
+ Fri, 19 Feb 2021 17:41:51 +0800 (CST)
 Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
  DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 19 Feb 2021 17:43:19 +0800
+ 14.3.498.0; Fri, 19 Feb 2021 17:43:13 +0800
 From: Kunkun Jiang <jiangkunkun@huawei.com>
 To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
  "open list:ARM SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 2/3] vfio: Add vfio_prereg_listener_log_sync in nested
- stage
-Date: Fri, 19 Feb 2021 17:42:29 +0800
-Message-ID: <20210219094230.231-3-jiangkunkun@huawei.com>
+Subject: [RFC PATCH 0/3] Add migration support for VFIO PCI devices in SMMUv3
+ nested stage mode
+Date: Fri, 19 Feb 2021 17:42:27 +0800
+Message-ID: <20210219094230.231-1-jiangkunkun@huawei.com>
 X-Mailer: git-send-email 2.26.2.windows.1
-In-Reply-To: <20210219094230.231-1-jiangkunkun@huawei.com>
-References: <20210219094230.231-1-jiangkunkun@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.185.210]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=jiangkunkun@huawei.com; helo=szxga06-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga05-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,71 +91,57 @@ Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
  Keqian Zhu <zhukeqian1@huawei.com>, shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wZ6niO/dA/aB
+X-TUID: 3A7P6s8dkojE
 
-On Intel, the DMA mapped through the host single stage. Instead
-we set up the stage 2 and stage 1 separately in nested mode as there
-is no "Caching Mode".
+Hi all,
 
-Legacy vfio_listener_log_sync cannot be used in nested stage as we
-don't need to pay close attention to stage 1 mapping. This patch adds
-vfio_prereg_listener_log_sync to mark dirty pages in nested mode.
+Since the SMMUv3's nested translation stages[1] has been introduced by Eric, we
+need to pay attention to the migration of VFIO PCI devices in SMMUv3 nested stage
+mode. At present, it is not yet supported in QEMU. There are two problems in the
+existing framework.
 
-Signed-off-by: Kunkun Jiang <jiangkunkun@huawei.com>
----
- hw/vfio/common.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+First, the current way to get dirty pages is not applicable to nested stage mode.
+Because of the "Caching Mode", VTD can map the RAM through the host single stage
+(giova->hpa). "vfio_listener_log_sync" gets dirty pages by transferring "giova"
+to the kernel for the RAM block section of mapped MMIO region. In nested stage
+mode, we setup the stage 2 (gpa->hpa) and the stage 1(giova->gpa) separately. So
+it is inapplicable to get dirty pages by the current way in nested stage mode.
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 7c50905856..af333e0dee 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -1216,6 +1216,22 @@ static int vfio_dma_sync_ram_section_dirty_bitmap(VFIOContainer *container,
-                        int128_get64(section->size), ram_addr);
- }
- 
-+static void vfio_prereg_listener_log_sync(MemoryListener *listener,
-+                                          MemoryRegionSection *section)
-+{
-+    VFIOContainer *container =
-+        container_of(listener, VFIOContainer, prereg_listener);
-+
-+    if (!memory_region_is_ram(section->mr) ||
-+        !container->dirty_pages_supported) {
-+        return;
-+    }
-+
-+    if (vfio_devices_all_saving(container)) {
-+        vfio_dma_sync_ram_section_dirty_bitmap(container, section);
-+    }
-+}
-+
- typedef struct {
-     IOMMUNotifier n;
-     VFIOGuestIOMMU *giommu;
-@@ -1260,6 +1276,14 @@ static int vfio_sync_dirty_bitmap(VFIOContainer *container,
-     if (memory_region_is_iommu(section->mr)) {
-         VFIOGuestIOMMU *giommu;
- 
-+        /*
-+         * In nested mode, stage 2 and stage 1 are set up separately. We
-+         * only need to focus on stage 2 mapping when marking dirty pages.
-+         */
-+        if (container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
-+            return 0;
-+        }
-+
-         QLIST_FOREACH(giommu, &container->giommu_list, giommu_next) {
-             if (MEMORY_REGION(giommu->iommu) == section->mr &&
-                 giommu->n.start == section->offset_within_region) {
-@@ -1312,6 +1336,7 @@ static const MemoryListener vfio_memory_listener = {
- static MemoryListener vfio_memory_prereg_listener = {
-     .region_add = vfio_prereg_listener_region_add,
-     .region_del = vfio_prereg_listener_region_del,
-+    .log_sync = vfio_prereg_listener_log_sync,
- };
- 
- static void vfio_listener_release(VFIOContainer *container)
+Second, it also need to pass stage 1 configurations to the destination host after
+the migration. In Eric's patch, it passes the stage 1 configuration to the host on
+each STE update for the devices set the PASID PciOps. The configuration will be
+applied at physical level. But the data of physical level will not be sent to the
+destination host. So we have to pass stage 1 configurations to the destination
+host after the migration.
+
+This Patch set includes patches as below:
+Patch 1-2:
+- Refactor the vfio_listener_log_sync and added a new function to get dirty pages
+in nested stage mode.
+
+Patch 3:
+- Added the post_load function to vmstate_smmuv3 for passing stage 1 configuration
+to the destination host after the migration.
+
+@Eric, Could you please add this Patch set to your future version of
+"vSMMUv3/pSMMUv3 2 stage VFIO integration", if you think this Patch set makes sense? :)
+
+Best Regards
+Kunkun Jiang
+
+[1] [RFC,v7,00/26] vSMMUv3/pSMMUv3 2 stage VFIO integration
+http://patchwork.ozlabs.org/project/qemu-devel/cover/20201116181349.11908-1-eric.auger@redhat.com/
+
+Kunkun Jiang (3):
+  vfio: Introduce helpers to mark dirty pages of a RAM section
+  vfio: Add vfio_prereg_listener_log_sync in nested stage
+  hw/arm/smmuv3: Post-load stage 1 configurations to the host
+
+ hw/arm/smmuv3.c     | 60 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/trace-events |  1 +
+ hw/vfio/common.c    | 47 +++++++++++++++++++++++++++++------
+ 3 files changed, 100 insertions(+), 8 deletions(-)
+
 -- 
 2.23.0
 

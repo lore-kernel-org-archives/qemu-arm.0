@@ -1,110 +1,110 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9084428lfc;
-        Fri, 19 Feb 2021 06:59:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw2297UkP7Xb5LvheWJiGgRFlJajH/8ZG6OZaSko0+yqvJWVWaZM+IsgM/r2cs4k6LqC68D
-X-Received: by 2002:a25:aa43:: with SMTP id s61mr15452033ybi.32.1613746763056;
-        Fri, 19 Feb 2021 06:59:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613746763; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9084659lfc;
+        Fri, 19 Feb 2021 06:59:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwFuCJVRuKONmdb5g2r/E/deamFCIJ3jtrepl9oaQ19lY0tqWTNtfZpK1ZwLQbsmZWzQO+j
+X-Received: by 2002:a25:d94b:: with SMTP id q72mr13416989ybg.135.1613746783328;
+        Fri, 19 Feb 2021 06:59:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613746783; cv=none;
         d=google.com; s=arc-20160816;
-        b=kOzyzEC30KOU++yiI4rzmTS4kq552ZZ8ZYFOu5S65Q8S973E36SpK1yxnmR8ChKvsI
-         fGjjtsCyBNT14BDVShkwxdp0I2jEiur7BHu2SVCCDxlaf9S7l79BbYXj2wr7CVjZ9Udi
-         lgnCUf8mDiEOpqHeAfG2Svt2SXz/SuHGagHqIVWmN0Fmsa7/7OEZ4t/68HUD/B7hdXv+
-         O01uhm2RquLGtGOF6p3EhwQQpsNiTySPN2Z4nhvL5gFQ6ju4aV91fakuHtDG+HV9rKjA
-         A7ZOlrKWTRUnYO2WuRosBdcSjxO3yq2zXUwdjCBVE2DRoCaJB5FJq6fixmPcA8q6MHfA
-         r63g==
+        b=nmjKp6eoGOPtgBQYttDVqsZUbhyIIP64DBsrP0bPi9VkaipNVodBTLgtP6SAQ9iyQC
+         Uuu47Cj5AUfe163FXhsADU60q1qiAK0uC31XSyHcwo50Ei6vQnEkrZ+iGOpjJ6qoEcvN
+         249uVLbjqWr9kgRCALMee0sEvMsKRPZjceuEBZmTtDhAhlIftthVVHP7fIz8FXUyMnex
+         W2duTqwCNXIYidSYBuIvewBK13hI1ocH7+jPyxPXS0qbMfLcDpEamw9a7NDMS9rZBQTv
+         LEVVj+AMG2F3NEAzp3mQ/4AZrjilNONOz+bYfOy9QY6QiB3lssPIyTTUsdS451FpOzia
+         4csA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=B93kEzuBtL1t+F0ap6ZkJU+6zXhaZkvFeOMgU9Fv5ag=;
-        b=DEhXq6nGMXwTbAwo4V4o5r4NUGivtzESP5acdEYug9yMR0oBxwo0ezKdhtTpDsftFT
-         dLGS3wtcPIqRSqcXNxh17eISDKI4iIptlLNIIeGEEdQQoHagtuF6qHpJqG75ULKmRRcq
-         v1B36M+rPnhkxKORUxgdWFBlr4wq2CoFVb8S1eVaN+Zok/aGK0hrIhHUqHcr+2fqPKww
-         dWqZ1ZnY2VRlcmrRhiRwxi+2Pp5Th5Bl01oPLKKQZqHzOEMBF7kAW0SaetXC9rdz1Sao
-         egV/H+ZEAiow7VOf8Rd+jIK7yrCxbtzre7hJho4OLtIUGqTJY+FCJbfqReLv5fD0hxLF
-         AsWg==
+        bh=x3QvCng870R2M1an25U0lcsqU4U17wJtXVQiS6BwppM=;
+        b=So/6VR6q/W7aYU1be8lyAhD3/oltxIWjDZZKh+LqbbSXQzQ5jqTu79okUcF3Xv6VYq
+         udo5o34FFOgB33OIg5KaYoVvlYBaLA6u6W62+q0gDHFxQqs/WNThi3aHkQHsSWiHemvI
+         8Q8vIIbPoMUKf4dqAvcmjpGAu3pTmgB2sXr2DCHWf71eE1JShTD0+rHZXaZ2A8HTl9Iq
+         oeszGURi2AaZkxwWG9uFxcQgmyS3GvJ4Ys/0c6yilyri+Ll7vJtTfwe/4iGdlrINTcVy
+         CKxEwjViNmOul4GtGCcXjROZavy67zJL0QLDdJ99AWCKkLYvp4Ex0f6QyQEGHNnuQYTn
+         LWVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xb5RXO32;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vBhO5lyB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11si7964336ybk.167.2021.02.19.06.59.22
+        by mx.google.com with ESMTPS id j9si8451497ybt.357.2021.02.19.06.59.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 06:59:23 -0800 (PST)
+        Fri, 19 Feb 2021 06:59:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xb5RXO32;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vBhO5lyB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37514 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38408 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7Fa-00016E-DL
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:59:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34000)
+	id 1lD7Fu-0001UD-NR
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 09:59:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73c-0002Ss-Pq
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:01 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:38704)
+ id 1lD73V-0002QR-N9
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:53 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:38706)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73G-0003Xh-Ay
- for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:00 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id x4so7881888wmi.3
- for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:37 -0800 (PST)
+ id 1lD73D-0003WM-J4
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:46:53 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id x4so7881760wmi.3
+ for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=B93kEzuBtL1t+F0ap6ZkJU+6zXhaZkvFeOMgU9Fv5ag=;
- b=xb5RXO32LLtcLp2ZEaEbv/H84UjoXc+9YGP8Wg4Boe7sysDABcpWkBcaxFxavQNHa8
- 9W/z+Cx8krcm+CYAlkw3kCBKw/P08a3gMipD2IP2rHG/ryHIwJZm3gXlJN4KXKYMMKjm
- 7G9SURptTyPW70FgZrRZIuHyDcg0zQ6AUuK4gikR1V1ileJfGMdvkrUtEaYP3SMadS8o
- KAFeEM367pKOJJRfSXAb96HbSQyem9sl7xr6EE1+b24OjRJgdAwlZ6awGPVImVqL0ehV
- VoHUPB6hYEC0SCsYIhDD5J0Ar1YrFHHS2DOLZpBbdrNabJ6MQc/YlUWVCMKvFzko8wZy
- Bn6g==
+ bh=x3QvCng870R2M1an25U0lcsqU4U17wJtXVQiS6BwppM=;
+ b=vBhO5lyBNpcCE87gGkko+ZNIF+1sjB0gHhXKhgSn5LTNk+Ihz/ohrw5KHq5vu2iTMf
+ fOCcJ5jVHVtJV47skJ2C8rQbb8AOu/a0ulSbF9ArxGh3LQJmbUYrO5yl5jtyi/GMSEX4
+ SZ6o6ZZWBoOOYmBmqv21TsyVn4PJLEMUT0GR2YHpqDMldfFTbJfKclsFs7ZvCjEwphoG
+ n8NagR1+t3IzOqWqwSh5wiG844tEybXlZxAvDmtVvr3lVJx52uLWKsf/+MyLcHjM289k
+ i/2ZkTDgWBOPcPmxpiLT5abolop36Anx7ZnZCYaDSEcCSHCZQMWEZGNGPxpkOFqhbTzb
+ OxTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=B93kEzuBtL1t+F0ap6ZkJU+6zXhaZkvFeOMgU9Fv5ag=;
- b=gku88wyzSk4bD/3fYYyRT46JvmIdDRr0hg9zbAvL0gAR12a2rHaf1cFtpnlOq9vyfc
- xWqfzfLDQVQCNZ2RhwDaSIUvph5YXld3pOGQMGpNyTu9PGA0CRpqwbb6paL36buI1MDx
- oJnvQlRbOmERD38Dehs4YdUA7tQpv0Zi77vmFQjzeuH8yragUpNfJXmfBg6IoBUoC7oD
- p7C+h2RasZUu5kdd6gxegubezEj/g7ss7NqLcb9MJ+pzHaOmx0XqIIb5OgIbGERyI36t
- WnThJdfvQUnLzSqtmKUISDNiw3ga7hpkytkuIzrxAnqlmtK5xGT82Tfr4ZC+DrRAiHRB
- 7Hdw==
-X-Gm-Message-State: AOAM532tnVToYeowsdTzYP6gevXjpisXlCFm41euOPM8gQTECdqHtjU5
- 9ExtEZzA8sFHX4N+5Lvbat5agg==
-X-Received: by 2002:a1c:41d6:: with SMTP id o205mr8230867wma.80.1613745996892; 
- Fri, 19 Feb 2021 06:46:36 -0800 (PST)
+ bh=x3QvCng870R2M1an25U0lcsqU4U17wJtXVQiS6BwppM=;
+ b=ikTcBnm2V57TQjU/tYmgBI+rEKn/JGi9Ikbom3SP3upeewaixGMB37UNKcRoZa5MSV
+ B3+q7+dfQQ9XADlEKGvS4LBRNrIej8sHMA9532Cmo/Yz+YVChMADQ4myAbNhsqeBCEyf
+ IFKMToL4UiCHax+YGG9T3xHxEPYUdnjm/aePCf17RGeJUGj0g/uWBPkQq50WMX3s3mLG
+ XkGjjVXxHe3Yb/7jITqd2VwPX0LYwzuOAUpyin3ItCyVChYiRw7x2hNqPcuCSlks19vZ
+ aw0OhCx1P7XkgN7S7Tb8RlqzGQqisjlkvIM8v7bXP5rpnF6+BJoFpOzq+9SFAS8uiLhj
+ AQFQ==
+X-Gm-Message-State: AOAM531/QgtaQ/w/gHOFAqVoQ4kCkNHUgN4A/4RgrjG3eXtDCBFg64Vo
+ 5sZ64yHq3we3gNhS6+efG4WILhjuPLiUAg==
+X-Received: by 2002:a1c:7e4e:: with SMTP id z75mr8597480wmc.168.1613745994121; 
+ Fri, 19 Feb 2021 06:46:34 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.36
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:36 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:33 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 22/44] hw/arm/armsse: Add a define for number of IRQs used by
- the SSE itself
-Date: Fri, 19 Feb 2021 14:45:55 +0000
-Message-Id: <20210219144617.4782-23-peter.maydell@linaro.org>
+Subject: [PATCH 18/44] hw/misc/iotkit-sysctl: Implement SSE-200 and SSE-300
+ PID register values
+Date: Fri, 19 Feb 2021 14:45:51 +0000
+Message-Id: <20210219144617.4782-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,64 +119,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qbek+CLz0DBe
+X-TUID: AjdKzoAxGawK
 
-The SSE uses 32 interrupts for its own devices, and then passes through
-its expansion IRQ inputs to the CPU's interrupts 33 and upward.
-Add a define for the number of IRQs the SSE uses for itself, instead
-of hardcoding 32.
+The SSE-200 and SSE-300 have different PID register values from the
+IoTKit for the sysctl register block.  We incorrectly implemented the
+SSE-200 with the same PID values as IoTKit.  Fix the SSE-200 bug and
+report these register values for SSE-300.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armsse.h | 5 ++++-
- hw/arm/armsse.c         | 4 ++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ hw/misc/iotkit-sysctl.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 771150b0a94..e34263fed8b 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -145,6 +145,9 @@ OBJECT_DECLARE_TYPE(ARMSSE, ARMSSEClass,
- #define RAM3_PPU 6
- #define NUM_PPUS 7
+diff --git a/hw/misc/iotkit-sysctl.c b/hw/misc/iotkit-sysctl.c
+index a80f68b7995..54d6b6c165c 100644
+--- a/hw/misc/iotkit-sysctl.c
++++ b/hw/misc/iotkit-sysctl.c
+@@ -74,12 +74,19 @@ REG32(CID2, 0xff8)
+ REG32(CID3, 0xffc)
  
-+/* Number of CPU IRQs used by the SSE itself */
-+#define NUM_SSE_IRQS 32
+ /* PID/CID values */
+-static const int sysctl_id[] = {
++static const int iotkit_sysctl_id[] = {
+     0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
+     0x54, 0xb8, 0x0b, 0x00, /* PID0..PID3 */
+     0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
+ };
+ 
++/* Also used by the SSE300 */
++static const int sse200_sysctl_id[] = {
++    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
++    0x54, 0xb8, 0x1b, 0x00, /* PID0..PID3 */
++    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
++};
 +
- struct ARMSSE {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -165,7 +168,7 @@ struct ARMSSE {
-     qemu_or_irq mpc_irq_orgate;
-     qemu_or_irq nmi_orgate;
- 
--    SplitIRQ cpu_irq_splitter[32];
-+    SplitIRQ cpu_irq_splitter[NUM_SSE_IRQS];
- 
-     CMSDKAPBDualTimer dualtimer;
- 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 2b25fca1ca2..5ae6ce344ee 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -531,7 +531,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         int j;
-         char *gpioname;
- 
--        qdev_prop_set_uint32(cpudev, "num-irq", s->exp_numirq + 32);
-+        qdev_prop_set_uint32(cpudev, "num-irq", s->exp_numirq + NUM_SSE_IRQS);
-         /*
-          * In real hardware the initial Secure VTOR is set from the INITSVTOR*
-          * registers in the IoT Kit System Control Register block. In QEMU
-@@ -602,7 +602,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         /* Connect EXP_IRQ/EXP_CPUn_IRQ GPIOs to the NVIC's lines 32 and up */
-         s->exp_irqs[i] = g_new(qemu_irq, s->exp_numirq);
-         for (j = 0; j < s->exp_numirq; j++) {
--            s->exp_irqs[i][j] = qdev_get_gpio_in(cpudev, j + 32);
-+            s->exp_irqs[i][j] = qdev_get_gpio_in(cpudev, j + NUM_SSE_IRQS);
+ /*
+  * Set the initial secure vector table offset address for the core.
+  * This will take effect when the CPU next resets.
+@@ -327,7 +334,17 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
          }
-         if (i == 0) {
-             gpioname = g_strdup("EXP_IRQ");
+         break;
+     case A_PID4 ... A_CID3:
+-        r = sysctl_id[(offset - A_PID4) / 4];
++        switch (s->sse_version) {
++        case ARMSSE_IOTKIT:
++            r = iotkit_sysctl_id[(offset - A_PID4) / 4];
++            break;
++        case ARMSSE_SSE200:
++        case ARMSSE_SSE300:
++            r = sse200_sysctl_id[(offset - A_PID4) / 4];
++            break;
++        default:
++            g_assert_not_reached();
++        }
+         break;
+     case A_SECDBGSET:
+     case A_SECDBGCLR:
 -- 
 2.20.1
 

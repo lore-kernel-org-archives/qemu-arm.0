@@ -1,73 +1,72 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9207154lfc;
-        Fri, 19 Feb 2021 09:40:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyLZeSDuc7glXgv9FjMJ29DDZPb0nOnlp9CMDm7268fkxl5zT/LJgpHU+aJNyQr7ge+ACIw
-X-Received: by 2002:a05:6830:1416:: with SMTP id v22mr7853908otp.157.1613756425534;
-        Fri, 19 Feb 2021 09:40:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613756425; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9207464lfc;
+        Fri, 19 Feb 2021 09:40:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyyCun+SQZAL1RzxEgN5BQ8/0oSqx54jVjpfKnJ2s3VDtURPWEr8Z+OuZO/7iGby5NjSls8
+X-Received: by 2002:a05:6808:4e:: with SMTP id v14mr7331278oic.37.1613756452106;
+        Fri, 19 Feb 2021 09:40:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613756452; cv=none;
         d=google.com; s=arc-20160816;
-        b=QiQq8I8bYElz5LVonNUF1gFDpIkfubZ65B4lLB5ZJQQ58y8k/GH85Ivgsx5YgAWMzc
-         pH+SlKgaUyFIHotbG6pUi9Pl3cnn4GAtWShLHCoeqtQ7JrFVTZFYg176+0GCZ33YEbmA
-         1hh0X2VNFNMu39SvNMNhj/DDnF2P8d+XuAePDoCKdxT6xRAb1ThrlvBaAypex1W1VOUB
-         hEUqz9wkJZrYpIgWK1gx5sSCb8ioC1nZE8TO/h6rAv7ALeukHGGYqVptsGTYws2QXwlk
-         4rEQLgpOcjYAZnwdq2YVFr63a/d3R9T2HbW+UqpmkvIM55IEDZ3cyD3bNGKIaRyWCysp
-         FZMA==
+        b=h8pCNL0upJP6fF+OwtD/4xvdC2z05Qb+z4cIjGthc5bGBu1oBzI61TgQtUgNuMG+Qd
+         iGFRJSuK1TX1S5q+MOWuZ5I/4POMVIQuCqhWo0o57+g1mE0fae3N1cwzGApaAOlqG4eF
+         Fwr0rTpro4ljvCXEgX8JXH7aPXrofkLSTP7EubsHMzz7GAFCBUdR3DqDPQ6rMiHrVp8p
+         2tjd0FCR5uupKrqsvGG1//EJseJzgjQe6pBBznf4E+A/sqK5M779fM6AxLLnFKgz8s6g
+         OfBR0D9GqXq04LG8bQ686Cq5XMH2SiHxyWsYFRqOfCzwdV45aD8n43XVXzNZFcHCQ32f
+         XbWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
          :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
          :list-id;
-        bh=ltjnESlJDd3H5QR2j8eiWOyKx9h8jJk2C0jWkjeNUew=;
-        b=jDPrHgO5sXMlZd73BcP14S+aNgsaJmUfKLP+8K63zfXm7NFa8X/0YY8s9qPJo1ozuj
-         k7xcCxvyIiueTU2pLRUvuRwKGtzvk+pqqX65qhQ83WTHluf5HCsjedRmtIyMDNZD9CJm
-         Akc4bBxorxZkjRDHFgJVJ9sP+ptaDlgRz0H4un1MGAZwJneaVAssS6KQnUYLwbQPGUdQ
-         YqqUL4XO91Rpcwi7F7tK1KrvxU9psLungyDERP10ZtJtrUcP5v2WHFOYooiTcYfwWujM
-         Y0/RWijKDQCvbbacz1puGrqEBbnmBM1uSp4R9Ovi9u63NJNh+EGgtRIDDq6I8nftmzb3
-         Bgvw==
+        bh=m89dmrSplgkgoyBA9XFoMMYsKZX69TbxEanq9oDkcW0=;
+        b=yGBRLOmWVlZUL3rNZ6ZeJOgyfRtdL/RjRE1xfPe1vCjToiHTl2IkJ/d6R+XfUbbl4M
+         54m379hC3v3Iyn0Ow3gYGEXx76xEAk7clgF1el4/Xc/QLsQk4/avnoT0jtoEsQehYBKb
+         JAzB7avxQewLhjZUqt7ztu0qJJtV87GuMzut7pJLXbFhIPg+i3FUXnRPN0PUhMaGXh4G
+         MTuoa3660vTjzmE6gHpvLyPmWjlsmGutgSo8RtK32dmNooucfpEE1Ya7PU4eMBiBZuw5
+         AInkhAAtQLnLv2Rdmxbq+dUwkocVOtFvJ49aZAL7x8bslEL0jX2M1lMp+Ri0CMQrfDAK
+         buKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fh9LIVlA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DXjY4RQV;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id t11si3474028otp.170.2021.02.19.09.40.25
+        by mx.google.com with ESMTPS id p30si4277993otf.105.2021.02.19.09.40.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Feb 2021 09:40:25 -0800 (PST)
+        Fri, 19 Feb 2021 09:40:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fh9LIVlA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DXjY4RQV;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.87029.163996 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.87039.164032 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lD9kS-0000u5-HT; Fri, 19 Feb 2021 17:39:24 +0000
+	id 1lD9kt-0001Iy-Nu; Fri, 19 Feb 2021 17:39:51 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 87029.163996; Fri, 19 Feb 2021 17:39:24 +0000
+Received: by outflank-mailman (output) from mailman id 87039.164032; Fri, 19 Feb 2021 17:39:51 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lD9kS-0000tx-Ck; Fri, 19 Feb 2021 17:39:24 +0000
-Received: by outflank-mailman (input) for mailman id 87029;
- Fri, 19 Feb 2021 17:39:23 +0000
-Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
- helo=us1-amaz-eas2.inumbo.com)
+	id 1lD9kt-0001Iq-Jr; Fri, 19 Feb 2021 17:39:51 +0000
+Received: by outflank-mailman (input) for mailman id 87039;
+ Fri, 19 Feb 2021 17:39:50 +0000
+Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
  by lists.xenproject.org with esmtp (Exim 4.92)
  (envelope-from <SRS0=ml8x=HV=redhat.com=philmd@srs-us1.protection.inumbo.net>)
- id 1lD9kR-0000on-C1
- for xen-devel@lists.xenproject.org; Fri, 19 Feb 2021 17:39:23 +0000
+ id 1lD9kr-0001FU-WF
+ for xen-devel@lists.xenproject.org; Fri, 19 Feb 2021 17:39:50 +0000
 Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
- by us1-amaz-eas2.inumbo.com (Halon) with ESMTP
- id ea10117a-8f96-4a8d-9c72-aed11805b978;
- Fri, 19 Feb 2021 17:39:22 +0000 (UTC)
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-378-qcXp7kdzPcWsoqxwdjqA5A-1; Fri, 19 Feb 2021 12:39:20 -0500
-Received: by mail-wr1-f70.google.com with SMTP id o10so2762608wru.11
- for <xen-devel@lists.xenproject.org>; Fri, 19 Feb 2021 09:39:20 -0800 (PST)
+ by us1-rack-iad1.inumbo.com (Halon) with ESMTP
+ id d9a537ac-eb31-4856-9d00-58a73a5b2635;
+ Fri, 19 Feb 2021 17:39:47 +0000 (UTC)
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-120-ZN5_YoBkMcSIkws2sM-PQA-1; Fri, 19 Feb 2021 12:39:43 -0500
+Received: by mail-wr1-f69.google.com with SMTP id e11so2715711wro.19
+ for <xen-devel@lists.xenproject.org>; Fri, 19 Feb 2021 09:39:43 -0800 (PST)
 Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id f7sm14534967wre.78.2021.02.19.09.39.17
+ by smtp.gmail.com with ESMTPSA id b72sm13082236wmd.4.2021.02.19.09.39.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 09:39:18 -0800 (PST)
+ Fri, 19 Feb 2021 09:39:41 -0800 (PST)
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -79,36 +78,36 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
 Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: ea10117a-8f96-4a8d-9c72-aed11805b978
+X-Inumbo-ID: d9a537ac-eb31-4856-9d00-58a73a5b2635
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1613756362;
+	s=mimecast20190719; t=1613756387;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ltjnESlJDd3H5QR2j8eiWOyKx9h8jJk2C0jWkjeNUew=;
-	b=Fh9LIVlARdJYfeUwUHUZLMXi8rJsunU93ahUTuZOupqHRamCCnV+eYrVyBIf7NGp1FgDvJ
-	pJrgTl8kTZZKh4pKKPrc5TE/bk+0jD/PI2v10roER5nSde0DAWdQXB8Q3cbPxUW8PxXEBQ
-	BIHbAJK2gXKEE7wgSyxVanPSLZfb0sA=
-X-MC-Unique: qcXp7kdzPcWsoqxwdjqA5A-1
+	bh=m89dmrSplgkgoyBA9XFoMMYsKZX69TbxEanq9oDkcW0=;
+	b=DXjY4RQV0itR6RsRPvdf9Coo8i0V0+IoVp9d/6gRb7bfQePt3Yzm6637eeXjUGmuNAlYBA
+	EqZzWirw3ji/ywUXv9kvQgAd2BQEu3qmBXjcKGpoid3831Ls92EMrq3JyxCQlu3e6GQuu5
+	XYBiTOgCp0JRk6zwPItYpnh87nwQMMQ=
+X-MC-Unique: ZN5_YoBkMcSIkws2sM-PQA-1
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=ltjnESlJDd3H5QR2j8eiWOyKx9h8jJk2C0jWkjeNUew=;
-        b=fIdlgrpRDVPIMPFMa4WX4fO34hOnWqf2QDxtsTMorNR0/dRSywiqO1HIJJAaTCA2lp
-         bH3a1z1wa0HqMUfsh9WpWxyBiwKBpQyiyd6+2W6fYdOv2tAFb7EEJfzqg8NCml3/bTCK
-         uMUKNTzUkK5eg2ZefeY4cf+gHxVx5z1UA8lSj3z+wAoQnV/wCt69qRoMPujreRzZiIK2
-         fML9T5X6JP0k6mI5yCXxCfJ1KAW/lcj4SL98PiETSas3kHBHWYr23Gx6SoDBLuI0BMCA
-         NS9dbqewqQGbKf5H7D6/f25sr/UmW8kBvhpxF/ryIhPBvdTBhDrWl5wYRM2mRDmLXsXv
-         jRNQ==
-X-Gm-Message-State: AOAM530CPq7nar3XxRiWaX6y35sDvlBXA3i4osP6Uv1deSk/c2yislQP
-	Mj4Kh1qS/6Ij4JlULpAfwtrFXBIAPV7sOPa/B72ANVqpfCp5q4juGrqlX12imBGypeJ83H1Fmww
-	VwPrsUTYi/gGo5CJ9Ba3gR9JKnOs=
-X-Received: by 2002:a5d:558b:: with SMTP id i11mr10341323wrv.125.1613756359007;
-        Fri, 19 Feb 2021 09:39:19 -0800 (PST)
-X-Received: by 2002:a5d:558b:: with SMTP id i11mr10341310wrv.125.1613756358861;
-        Fri, 19 Feb 2021 09:39:18 -0800 (PST)
+        bh=m89dmrSplgkgoyBA9XFoMMYsKZX69TbxEanq9oDkcW0=;
+        b=aZuifwT8xzpDif3bTSgPxNV+2XmG3ykdqtuUJQxBsPpbsngkH/r8z3owwkr5gE4vSa
+         hcp1+nVvHeQzpD+8F3FQvmiqs/48ftEvQjtToR8Tx+bjpL93irK+RJwCYRwOArUdv83b
+         GPBZS1ySGR3sZOI8iSOYaRk2sxNzBRu0V1cGMfMUEgVxeq9gKbleogCwJUSdJrtMi/d3
+         ovIgwV3vp6jwQHOn+nY+81VubN01kI/tJsek3GYwn1qxId560dbZ3C9sRIKbYMTwatsv
+         5fdorqUjIWelfMyyHg7xTDu8Zl5/kXjQ97j2ig0hedQzsWNmd029xjkbQE8lhG2p00b5
+         k+JA==
+X-Gm-Message-State: AOAM532xYGn1WMTSfbbibGlt+EtFqaCJrnquirjG6TFdR7NuULw7vTLZ
+	NvZiYbaRxuhe1Uvg+mSOC7nB1+GKZGsI5Dqaf1bfh1S8/85n2V+uWd5uxrmxADTPwIX/iZv/7CH
+	779u0L7r0Vl0Q49j9DqiZJXLy0RI=
+X-Received: by 2002:a1c:c6:: with SMTP id 189mr9272330wma.128.1613756382375;
+        Fri, 19 Feb 2021 09:39:42 -0800 (PST)
+X-Received: by 2002:a1c:c6:: with SMTP id 189mr9272291wma.128.1613756382214;
+        Fri, 19 Feb 2021 09:39:42 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -145,9 +144,9 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
 	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 05/11] hw/mips: Restrict KVM to the malta & virt machines
-Date: Fri, 19 Feb 2021 18:38:41 +0100
-Message-Id: <20210219173847.2054123-6-philmd@redhat.com>
+Subject: [PATCH v2 09/11] hw/xenpv: Restrict Xen Para-virtualized machine to Xen accelerator
+Date: Fri, 19 Feb 2021 18:38:45 +0100
+Message-Id: <20210219173847.2054123-10-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210219173847.2054123-1-philmd@redhat.com>
 References: <20210219173847.2054123-1-philmd@redhat.com>
@@ -158,64 +157,47 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GLm9Q3itM/dk
+X-TUID: SGoVvKywJ4Cf
 
-Restrit KVM to the following MIPS machines:
-- malta
-- loongson3-virt
+When started with other accelerator than Xen, the XenPV machine
+fails with a criptic message:
+
+  $ qemu-system-x86_64 -M xenpv,accel=kvm
+  xen be core: can't connect to xenstored
+  qemu-system-x86_64: xen_init_pv: xen backend core setup failed
+
+By restricting it to Xen, we display a clearer error message:
+
+  $ qemu-system-x86_64 -M xenpv,accel=kvm
+  qemu-system-x86_64: invalid accelerator 'kvm' for machine xenpv
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/mips/loongson3_virt.c | 5 +++++
- hw/mips/malta.c          | 5 +++++
- 2 files changed, 10 insertions(+)
+ hw/xenpv/xen_machine_pv.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
-index d4a82fa5367..c3679dff043 100644
---- a/hw/mips/loongson3_virt.c
-+++ b/hw/mips/loongson3_virt.c
-@@ -612,6 +612,10 @@ static void mips_loongson3_virt_init(MachineState *machine)
-     loongson3_virt_devices_init(machine, liointc);
+diff --git a/hw/xenpv/xen_machine_pv.c b/hw/xenpv/xen_machine_pv.c
+index 8df575a457c..d7747bcec98 100644
+--- a/hw/xenpv/xen_machine_pv.c
++++ b/hw/xenpv/xen_machine_pv.c
+@@ -86,12 +86,17 @@ static void xen_init_pv(MachineState *machine)
+     atexit(xen_config_cleanup);
  }
  
-+static const char *const valid_accels[] = {
-+    "tcg", "kvm", NULL
++static const char *valid_accels[] = {
++    "xen", NULL
 +};
 +
- static void loongson3v_machine_class_init(ObjectClass *oc, void *data)
+ static void xenpv_machine_init(MachineClass *mc)
  {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -622,6 +626,7 @@ static void loongson3v_machine_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = LOONGSON_MAX_VCPUS;
-     mc->default_ram_id = "loongson3.highram";
-     mc->default_ram_size = 1600 * MiB;
-+    mc->valid_accelerators = valid_accels;
-     mc->kvm_type = mips_kvm_type;
-     mc->minimum_page_bits = 14;
- }
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 9afc0b427bf..0212048dc63 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -1443,6 +1443,10 @@ static const TypeInfo mips_malta_device = {
-     .instance_init = mips_malta_instance_init,
- };
- 
-+static const char *const valid_accels[] = {
-+    "tcg", "kvm", NULL
-+};
-+
- static void mips_malta_machine_init(MachineClass *mc)
- {
-     mc->desc = "MIPS Malta Core LV";
-@@ -1456,6 +1460,7 @@ static void mips_malta_machine_init(MachineClass *mc)
-     mc->default_cpu_type = MIPS_CPU_TYPE_NAME("24Kf");
- #endif
-     mc->default_ram_id = "mips_malta.ram";
+     mc->desc = "Xen Para-virtualized PC";
+     mc->init = xen_init_pv;
+     mc->max_cpus = 1;
+     mc->default_machine_opts = "accel=xen";
 +    mc->valid_accelerators = valid_accels;
  }
  
- DEFINE_MACHINE("malta", mips_malta_machine_init)
+ DEFINE_MACHINE("xenpv", xenpv_machine_init)
 -- 
 2.26.2
 

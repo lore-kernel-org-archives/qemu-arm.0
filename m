@@ -1,159 +1,196 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9006972lfc;
-        Fri, 19 Feb 2021 05:11:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhgfBFm2GJvoavPdYbWllP+ySz7h5n5y7Rt9MWVgVzOzMtmAD0h8tD6GO9o4hLRrsfNRem
-X-Received: by 2002:a17:907:b08:: with SMTP id h8mr8740077ejl.165.1613740308865;
-        Fri, 19 Feb 2021 05:11:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613740308; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8948531lfc;
+        Fri, 19 Feb 2021 03:45:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx9FElh8+9UD5mt45YKXa7FwKtngliHyAarNgM6ZzGipDo2+ZnWioVG68FANOtTI0iWXcZ3
+X-Received: by 2002:a25:20c2:: with SMTP id g185mr14085991ybg.31.1613735112006;
+        Fri, 19 Feb 2021 03:45:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613735112; cv=none;
         d=google.com; s=arc-20160816;
-        b=kOc2pGXakyXBlNR5sAuqmiF8puvLMXTuVy3WqIB55X5Ym1FIXple+v82Qb6Pf0hxGe
-         lThYCKp26YOFUPfKnKdfwgmyl9rHzbEt3UKatLk/7Xtze6eQ4Qbq7mKrAgLQNkONIz/v
-         iNhENJX/do8WwXdzcNggaOw5RUmvyn64kEGl4s1lDTzi11Td0kzcwXxiU81y9qMTDjsw
-         1nFagOXA/ed0Y2QnnoQd0p5S3tmaQpVlDr31kkHdIYEodzsWbh+kEhiCxKs1H3ctk0E8
-         OxmgX6B30mTlODJdMui8NzEY3kh10n6npWfwPwGYTZii4nzcqTn2NfnxoysTZ41I9xFL
-         4aPw==
+        b=rdWcgjYMSgG7N8VivBN8Tq8hJvbaT66nsv6Xr7WLKMd8ZOIaBO7D/b6ksLNNULHbSm
+         cUubIQtMba487FUwpgeDAOQzPdhj3KNCBC4mguIsU/n1K8Yo6siUWKLR5P0ewJTO+1Gk
+         k5OF99kGB0CiP3q6voHH1gzpBVOQBiRBlCaAmPvNSyb+rFM2B6f/bmvI0n2ah5CBPVWX
+         X2Se8uwUY6xA9gVfxmTWUR7v+9P1drGMLdiumxk+J8nMA451ckd+m1wPy57BFlQpmBcY
+         Pg3vRMAaPm/YnX90kkqgLJEJ34drJSS8qjx5JJ6B/Hrw3eKsz2K+xEyDIXauJNtkWCLU
+         k8yA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=6jGcGI7NMghM+yk1S+/9TaFdhXOwNXb9bOpWsAjCScw=;
-        b=h0/lnaw/3Lui/e5v4EOAmxl95OTdKqKR4+oeXKkygqvMMA4EQIOsFATcZQQN3SxcrQ
-         ymnVSDLsZZX8VrP3OisqW4lFscR12pPWqsGJsqY5tIXOvCfhyq52FirGL0rJsMsL4y11
-         bQukb3yZvrdQUt3RCIvTXIZvBU9D6ce1oNa+BVMnScxfeuPmtSodruL9MsKivPlFSX6P
-         n4ZfEsJ4ZAPT+Aes7hFuL31LG3G5gMQRbeWVzq5e71vWSKyANYK8n/2mZ8JNc/PvKYGC
-         tNZsIR69xjSqSm6sLuB2vGuS2XwL1Sag+dkkbKAFJOXjPOFEBSWtt2sdhZx9B54C94bD
-         Lc7g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=98X4DsBNdk1BN09KWcHx0mE3/gzzTZdKxOLSGajyIeI=;
+        b=aJKKdoni5yPJdNBZuqw4W6CeAPdvlFKpG4Pw++SOgbza6lXJ0F7792n/+OG+UNgRhE
+         JvWkeFC6mXZei871q7uo0vZt9oR7yRvi1z9juXQwmKnoKIAIPYqBZLTNOV32mkHPpa6O
+         Ihl9/wUBthlRThfjuJoMbVLJ/B5VTulBA2YRx8HijdDL6u0ltJreTPDflHlzhaFajm2z
+         lWDjhpAt5/wFEiSNxWJdbHgHuWBpX/QMXfTJNKEzXGGidCaPfwL4XbDnvDm0EGLdgWgG
+         OnVDy2KsRtWkoVCFx5WkpCc8CKhsRx3R/KdVLm7gIkmafdRIeyLyk1lCXgmFZbj2BDKr
+         dPAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cx42WunM;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id a17si5595642edn.146.2021.02.19.05.11.48;
-        Fri, 19 Feb 2021 05:11:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NtMesX1+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v2si8713183ybp.204.2021.02.19.03.45.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Feb 2021 03:45:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cx42WunM;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229967AbhBSNLl (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 19 Feb 2021 08:11:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52750 "EHLO
-        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S229808AbhBSNLl (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Fri, 19 Feb 2021 08:11:41 -0500
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NtMesX1+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34328 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lD4Df-0002Zp-9S
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 06:45:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48448)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lD4DC-0002Xn-OI
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:44:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40398)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lD4DA-0001v2-VD
+ for qemu-arm@nongnu.org; Fri, 19 Feb 2021 06:44:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1613740214;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=6jGcGI7NMghM+yk1S+/9TaFdhXOwNXb9bOpWsAjCScw=;
-        b=cx42WunMQpxM3c70bI7a8hK5znIiSQP5Jf16fQl7F2h1q0P1WCEcNUZAaFptv/fHHGmtJU
-        z/CnjO1/MPTPPUgHXKlyu0taeUvhupJruyP9gyHxbcRrO2HvQxwnR5C1TmZMJ7UuxTrsa5
-        TRTWINTp8qklVZL8/hjmlOuiJFptxNE=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-97-Df7ju6juNxyYhYetFjaDAQ-1; Fri, 19 Feb 2021 08:10:13 -0500
-X-MC-Unique: Df7ju6juNxyYhYetFjaDAQ-1
-Received: by mail-wr1-f72.google.com with SMTP id o16so2460169wrn.1
-        for <kvm@vger.kernel.org>; Fri, 19 Feb 2021 05:10:12 -0800 (PST)
+ s=mimecast20190719; t=1613735080;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=98X4DsBNdk1BN09KWcHx0mE3/gzzTZdKxOLSGajyIeI=;
+ b=NtMesX1+Zeqvpm9/jZNRgi1h4EN5bIYdcec9PvD9MpsI067OC7+Ra5jscK2053LG5ADn02
+ ekJcpy94Oj5PTsbjMqUN8nO2Z96s9GddyUWYUK98lpmDGPq69H171LQ6jT+YtPC1Z8K52z
+ 4GSvGFKhHf+SvH375bFUqbRhSelBBow=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-247-adID8lJnMH-Onlj6xJZvlA-1; Fri, 19 Feb 2021 06:44:38 -0500
+X-MC-Unique: adID8lJnMH-Onlj6xJZvlA-1
+Received: by mail-wr1-f69.google.com with SMTP id f5so2347101wro.7
+ for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 03:44:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=6jGcGI7NMghM+yk1S+/9TaFdhXOwNXb9bOpWsAjCScw=;
-        b=P3qC4J4dQsiZxISJb6TcbnkuXYeJ6bONrS27TQaLsPuP8l/1AY+MBuuDjNuAM/395D
-         u7jANqiBHTnCdoBDVA98nnzPLB6tbmPs0l4A/ULuNn+sx03MbJ5lWGfmh/p5WzhF3Ju0
-         2iCDNoVA7j3ZEc7w6WewJSWGJ5wUFGPUZHbvrK9eoGQ4Ild0dA4bGOIahMW7nz52wSsr
-         E0myYqsZ9TY+/xpvkQF9b/s0WPR4nq17Sz+JhNPlmJO9nN7DN0V21eCyQVzY58T9DEN6
-         4UEWHjRJEcG17hGWpMjQt7wGn/y8b38SNkP1JKeU6Vz/e/Lm94J57q64HRg8HlE0QHTe
-         GPHQ==
-X-Gm-Message-State: AOAM531dvDBJIzlrqt7OBhrX1nVsyGVSMNbW2hMsnfVfAvpdCnedIL1O
-        oJomOW2+TSxY8mEcfU2i8jK+DCyjDawW87obMgP9kbD56TWooLoqqOvHAhyRCdUgrUo+T6iU5yg
-        BkbwuR8IfFP+l
-X-Received: by 2002:a1c:6285:: with SMTP id w127mr8350352wmb.73.1613740211379;
-        Fri, 19 Feb 2021 05:10:11 -0800 (PST)
-X-Received: by 2002:a1c:6285:: with SMTP id w127mr8350322wmb.73.1613740211223;
-        Fri, 19 Feb 2021 05:10:11 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id c6sm12723259wrt.26.2021.02.19.05.10.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Feb 2021 05:10:10 -0800 (PST)
-Subject: Re: [PATCH 0/7] hw/kvm: Exit gracefully when KVM is not supported
-To:     =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Radoslaw Biernacki <rad@semihalf.com>, kvm@vger.kernel.org,
-        David Hildenbrand <david@redhat.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Thomas Huth <thuth@redhat.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Huacai Chen <chenhuacai@kernel.org>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-        Leif Lindholm <leif@nuviainc.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Alistair Francis <alistair@alistair23.me>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Greg Kurz <groug@kaod.org>, qemu-s390x@nongnu.org,
-        qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
-        Cornelia Huck <cohuck@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-        qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-        Aurelien Jarno <aurelien@aurel32.net>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=98X4DsBNdk1BN09KWcHx0mE3/gzzTZdKxOLSGajyIeI=;
+ b=jdrS48MC8tfPhztKq7BM4fAm9zATxLbVunHAChMtrQA9Zawr4LxFw0wbiffKlcWU/5
+ pqjCPHX49ngEqX4jY6X7kje9fwaDjBmlXflk/dttcTS9DXIGtkICZCqyg5aHMVtslegj
+ AXJuvAF0LOg/QzOfEg3u078tXsmk0JlU3cDEQl8f007M/tlXLqdEGaI/61r8VQRv8L0W
+ 4cDlYFgol1hm4Y5hvO2UlFj7Zt+11RauGjvUdEPeAH4UhWCh+Z4WrBBGdlghjiW0iXcc
+ ciDnFV7rseCEqIM+68dQBkbu40fXTN5yTQYT3I5oRECJBMIuPvH+GZBj62hvd2INe3js
+ 8AIA==
+X-Gm-Message-State: AOAM532NRWzyMsinT5XGUNR+f8xwTsxYz3h2vBS9/sHnRb8WK0FwkKvH
+ U5zyT3naNUYqTPskTUXymfiIh4OoptFejU/ysO/l/XaaSA04HzQdJut2vzu3eTjce1EnHYyX6a/
+ f3HENUGOELQXc
+X-Received: by 2002:adf:b357:: with SMTP id k23mr8694391wrd.354.1613735077466; 
+ Fri, 19 Feb 2021 03:44:37 -0800 (PST)
+X-Received: by 2002:adf:b357:: with SMTP id k23mr8694350wrd.354.1613735077292; 
+ Fri, 19 Feb 2021 03:44:37 -0800 (PST)
+Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id w81sm11424135wmb.3.2021.02.19.03.44.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Feb 2021 03:44:36 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 1/7] accel/kvm: Check MachineClass kvm_type() return value
+Date: Fri, 19 Feb 2021 12:44:22 +0100
+Message-Id: <20210219114428.1936109-2-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210219114428.1936109-1-philmd@redhat.com>
 References: <20210219114428.1936109-1-philmd@redhat.com>
- <YC+oZWDs3PnWHPQo@redhat.com>
- <9540912b-1a81-1fd2-4710-2b81d5e69c5f@redhat.com>
- <YC+sgaN1EyKeyyOQ@redhat.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a1bc4d09-804d-66a5-a3ef-6feea8606d2c@redhat.com>
-Date:   Fri, 19 Feb 2021 14:10:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <YC+sgaN1EyKeyyOQ@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: aigP5KdCXQU2
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, kvm@vger.kernel.org,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Huacai Chen <chenhuacai@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>, Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e7kqAA5uFI8l
 
-On 2/19/21 1:18 PM, Daniel P. Berrangé wrote:
-> On Fri, Feb 19, 2021 at 01:15:25PM +0100, Philippe Mathieu-Daudé wrote:
->> On 2/19/21 1:00 PM, Daniel P. Berrangé wrote:
->>> On Fri, Feb 19, 2021 at 12:44:21PM +0100, Philippe Mathieu-Daudé wrote:
->>>> Hi,
->>>>
->>>> This series aims to improve user experience by providing
->>>> a better error message when the user tries to enable KVM
->>>> on machines not supporting it.
->>>
->>> Improved error message is good, but it is better if the mgmt apps knows
->>> not to try this in the first place.
->>
->> I am not sure this is the same problem. This series addresses
->> users from the command line (without mgmt app).
-> 
-> Users of mgmt apps can launch the same problematic raspbi + KVM config
-> as people who  don't use a mgmt app.
-> 
->>> IOW, I think we want "query-machines" to filter out machines
->>> which are not available with the currently configured accelerator.
->>>
->>> libvirt will probe separately with both TCG and KVM enabled, so if
->>> query-machines can give the right answer in these cases, libvirt
->>> will probably "just work" and not offer to even start such a VM.
->>
->> Yes, agreed. There are other discussions about 'query-machines'
->> and an eventual 'query-accels'. This series doesn't aim to fix
->> the mgmt app problems.
-> 
-> I think this should be fixing query-machines right now. It shouldn't
-> be much harder than a single if (...) test in the code.
+MachineClass::kvm_type() can return -1 on failure.
+Document it, and add a check in kvm_init().
 
-OK I misunderstood you at first, now I got it. Will include that in v2.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ include/hw/boards.h | 3 ++-
+ accel/kvm/kvm-all.c | 6 ++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index a46dfe5d1a6..68d3d10f6b0 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -127,7 +127,8 @@ typedef struct {
+  *    implement and a stub device is required.
+  * @kvm_type:
+  *    Return the type of KVM corresponding to the kvm-type string option or
+- *    computed based on other criteria such as the host kernel capabilities.
++ *    computed based on other criteria such as the host kernel capabilities
++ *    (which can't be negative), or -1 on error.
+  * @numa_mem_supported:
+  *    true if '--numa node.mem' option is supported and false otherwise
+  * @smp_parse:
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 84c943fcdb2..b069938d881 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2057,6 +2057,12 @@ static int kvm_init(MachineState *ms)
+                                                             "kvm-type",
+                                                             &error_abort);
+         type = mc->kvm_type(ms, kvm_type);
++        if (type < 0) {
++            ret = -EINVAL;
++            fprintf(stderr, "Failed to detect kvm-type for machine '%s'\n",
++                    mc->name);
++            goto err;
++        }
+     }
+ 
+     do {
+-- 
+2.26.2
+

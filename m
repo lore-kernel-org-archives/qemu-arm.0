@@ -1,80 +1,85 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8876959lfc;
-        Fri, 19 Feb 2021 01:46:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzjgrZYhl0g32AfCw1g6PVfFBw+C0TGzRerATD+xyOX17/IdUAQwePVoojjDpfpmsNJG0Gh
-X-Received: by 2002:a25:ca88:: with SMTP id a130mr12770997ybg.414.1613728014363;
-        Fri, 19 Feb 2021 01:46:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613728014; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8903597lfc;
+        Fri, 19 Feb 2021 02:33:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwcoyHWiXzhSEDUxbgvAEMY0PUDOl/ila+PAbq0J2r9Q++qT3PqN35zv4uuo4lndYvjOHh6
+X-Received: by 2002:a25:58c4:: with SMTP id m187mr12294857ybb.300.1613730834762;
+        Fri, 19 Feb 2021 02:33:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613730834; cv=none;
         d=google.com; s=arc-20160816;
-        b=L+b4TD1CbPYRBjrWFv2dNrc+cyOfzcMzUmlRqtZRrCkoKWcb43t8wYdw7GEIDDGfU3
-         48hmAqESQs3K4nFCVy/1dN+oORw6EGIECwP9dUWSLiOukI3IeVkSCwJOathJxaCD5pV0
-         Y2nCJxgTPGmPVRhJcMwQSh+IDwD/wlrED6wLwK4wsRiLxtB9jUpzgZTP6GAyu5vwFTGw
-         zd6icg7KupWmD0Y8xEo2KYOEVaYC+6sIF9/iu8cEc73c65OqC0NpiaVCy+7XC7Sqe1MX
-         XoIEZA+oKcVbpUrxGoHeXyrLnf/ucX8GoUPNJzdfcWSMImaFY7wslXxWDkZZu82pM1ue
-         jOSw==
+        b=ZRUxli/1luS8u1iZhKK0dXp1xhezaPMLIqF2nADCw7BsFx93IelzqqtPeiJMAm848Q
+         Uf1fBwDC27gZ3luzdSNFujK37xnun9mu8t1W3pDPEKQ4nd0OW5+DZGOOonIQ2t8Dhk7I
+         hBcbhSJfSghC5WdKVUkCREYjrfGdiErpFgvFDxKmAYMsUv1jDtw93HdnnM+oTSLhqhiB
+         6FXYHG1E/C7zffMHBDxgWkTCOtMXjEIGLZXtNlIMR/QVFWbaCA01nvuefc+dTAoID1sn
+         bSoeDgoWxpXlof8oV3LW0FuvIwiYTSCVbdKQ+C6inLJz8LFt7WHUqujGDKWVZS+mUnj9
+         WJ7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=ZO1FJhDWxGt94kOLg6rZWvcTkMTXVF8XMrq5h5yphmo=;
-        b=bSIXMghjXrZgKaUf+z2X3mpo4z64ELTBVY/zlcdsqHX3/YzbJkkGcCE7hJNc/Kx5i/
-         DiiX0M39GFuxWF9SNTuugGmo+twEZ+edrMk+SVVscILxxfvaagGNfhtEu9j+TnOYX4/A
-         8Z635ay2ltb4Rry7Mud3Yfk5B91fJtJmR0vG7tDfVbtQK+Xkt8vjqAirYce02ZRjY2sS
-         EVSdbyz87N4X/q7ZhJ2iQ6OOd4TRSF3EEzSEjkYRkMHNltgw+uDG7iuQVHXK+lobecYK
-         W10zx8F3+mLZ5DrwW91W8e6v+9fRKAkhX83YoPPckYEHMEuRbuCJ4YDwy8bjafhsEIgu
-         tcRw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=dTPOBg+eFFaj7HvaGy8RKJMl91GNri2I2UQ3Ua1x20s=;
+        b=tXpmBmtZIcJap2zMxLQHhYm0y+u9qr6+V0DCRn21tXNMACkFuhqiXfwEJW7tc4RuuV
+         FmBLfXXFITpsIYHnFDCyea8FbaurliYAr386vhSfdpGR7cBQ3LMeu3+FbTUKmVzpymIv
+         wYYI8MI85Auq2QHAqG7Du11tP1GH0HcO7LtiJWb+6xEwCdxLKB0UFMMmHB2hTIJP/4+/
+         Wv0RUa8aeGXrRR6tUHR+CdJ1ueNJDPJyHxbGFAYDNi6LmUkOn+zpl+NaIF+roEksHRry
+         2rt3hopPCDxB/PbNAWu2X7O+IT4uFovI5XL7uui6c+QutTMBmNlsVVxj/6HEIMo800Au
+         cyFw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si8974790ybm.8.2021.02.19.01.46.54
+        by mx.google.com with ESMTPS id n205si7911311ybc.462.2021.02.19.02.33.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 01:46:54 -0800 (PST)
+        Fri, 19 Feb 2021 02:33:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60910 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD2NB-0003Ob-NH
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 04:46:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44652)
+	id 1lD36g-0005eQ-34
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 05:33:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lD2KQ-0000vE-Ra; Fri, 19 Feb 2021 04:44:03 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3482)
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1lD36O-0005cp-DI; Fri, 19 Feb 2021 05:33:36 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3311)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lD2K8-0006XQ-Tp; Fri, 19 Feb 2021 04:44:02 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DhmnC5HLCzjPyN;
- Fri, 19 Feb 2021 17:41:51 +0800 (CST)
-Received: from DESKTOP-6NKE0BC.china.huawei.com (10.174.185.210) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 19 Feb 2021 17:43:13 +0800
-From: Kunkun Jiang <jiangkunkun@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
- "open list:ARM SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 0/3] Add migration support for VFIO PCI devices in SMMUv3
- nested stage mode
-Date: Fri, 19 Feb 2021 17:42:27 +0800
-Message-ID: <20210219094230.231-1-jiangkunkun@huawei.com>
-X-Mailer: git-send-email 2.26.2.windows.1
+ (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
+ id 1lD36L-0003n8-DN; Fri, 19 Feb 2021 05:33:36 -0500
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DhntP4Cv8zlMkd;
+ Fri, 19 Feb 2021 18:31:25 +0800 (CST)
+Received: from [10.174.184.135] (10.174.184.135) by
+ DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 19 Feb 2021 18:33:14 +0800
+Subject: Re: [RFC PATCH v2 1/3] vfio: Move the saving of the config space to
+ the right place in VFIO migration
+To: Kirti Wankhede <kwankhede@nvidia.com>, Alex Williamson
+ <alex.williamson@redhat.com>
+References: <20201209080919.156-1-lushenming@huawei.com>
+ <20201209080919.156-2-lushenming@huawei.com>
+ <b51b7282-ad47-01d1-7b83-834aead08d76@nvidia.com>
+From: Shenming Lu <lushenming@huawei.com>
+Message-ID: <e7c3c94d-82ef-a6d4-e6ba-13e67bf125dd@huawei.com>
+Date: Fri, 19 Feb 2021 18:33:03 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
+In-Reply-To: <b51b7282-ad47-01d1-7b83-834aead08d76@nvidia.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.174.185.210]
+X-Originating-IP: [10.174.184.135]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=jiangkunkun@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=lushenming@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,61 +92,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
- Keqian Zhu <zhukeqian1@huawei.com>, shameerali.kolothum.thodi@huawei.com
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ mst@redhat.com, Marc Zyngier <maz@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, yuzenghui@huawei.com,
+ wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3A7P6s8dkojE
+X-TUID: jBSDoGywKZIH
 
-Hi all,
+On 2021/2/18 22:42, Kirti Wankhede wrote:
+> 
+> 
+> On 12/9/2020 1:39 PM, Shenming Lu wrote:
+>> On ARM64 the VFIO SET_IRQS ioctl is dependent on the VM interrupt
+>> setup, if the restoring of the VFIO PCI device config space is
+>> before the VGIC, an error might occur in the kernel.
+>>
+>> So we move the saving of the config space to the non-iterable
+>> process, so that it will be called after the VGIC according to
+>> their priorities.
+>>
+>> As for the possible dependence of the device specific migration
+>> data on it's config space, we can let the vendor driver to
+>> include any config info it needs in its own data stream.
+>> (Should we note this in the header file linux-headers/linux/vfio.h?)
+>>
+>> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+>> ---
+>>   hw/vfio/migration.c | 25 +++++++++++++++----------
+>>   1 file changed, 15 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+>> index 00daa50ed8..3b9de1353a 100644
+>> --- a/hw/vfio/migration.c
+>> +++ b/hw/vfio/migration.c
+>> @@ -575,11 +575,6 @@ static int vfio_save_complete_precopy(QEMUFile *f, void *opaque)
+>>           return ret;
+>>       }
+>>   -    ret = vfio_save_device_config_state(f, opaque);
+>> -    if (ret) {
+>> -        return ret;
+>> -    }
+>> -
+>>       ret = vfio_update_pending(vbasedev);
+>>       if (ret) {
+>>           return ret;
+>> @@ -620,6 +615,19 @@ static int vfio_save_complete_precopy(QEMUFile *f, void *opaque)
+>>       return ret;
+>>   }
+>>   +static void vfio_save_state(QEMUFile *f, void *opaque)
+>> +{
+>> +    VFIODevice *vbasedev = opaque;
+>> +    int ret;
+>> +
+>> +    /* The device specific data is migrated in the iterable process. */
+>> +    ret = vfio_save_device_config_state(f, opaque);
+>> +    if (ret) {
+>> +        error_report("%s: Failed to save device config space",
+>> +                     vbasedev->name);
+>> +    }
+>> +}
+>> +
+> 
+> Since error is not propagated, set error in migration stream for migration to fail, use qemu_file_set_error() on error.
 
-Since the SMMUv3's nested translation stages[1] has been introduced by Eric, we
-need to pay attention to the migration of VFIO PCI devices in SMMUv3 nested stage
-mode. At present, it is not yet supported in QEMU. There are two problems in the
-existing framework.
+Makes sense. I will send a v3 soon.	Thanks,
 
-First, the current way to get dirty pages is not applicable to nested stage mode.
-Because of the "Caching Mode", VTD can map the RAM through the host single stage
-(giova->hpa). "vfio_listener_log_sync" gets dirty pages by transferring "giova"
-to the kernel for the RAM block section of mapped MMIO region. In nested stage
-mode, we setup the stage 2 (gpa->hpa) and the stage 1(giova->gpa) separately. So
-it is inapplicable to get dirty pages by the current way in nested stage mode.
+Shenming
 
-Second, it also need to pass stage 1 configurations to the destination host after
-the migration. In Eric's patch, it passes the stage 1 configuration to the host on
-each STE update for the devices set the PASID PciOps. The configuration will be
-applied at physical level. But the data of physical level will not be sent to the
-destination host. So we have to pass stage 1 configurations to the destination
-host after the migration.
-
-This Patch set includes patches as below:
-Patch 1-2:
-- Refactor the vfio_listener_log_sync and added a new function to get dirty pages
-in nested stage mode.
-
-Patch 3:
-- Added the post_load function to vmstate_smmuv3 for passing stage 1 configuration
-to the destination host after the migration.
-
-@Eric, Could you please add this Patch set to your future version of
-"vSMMUv3/pSMMUv3 2 stage VFIO integration", if you think this Patch set makes sense? :)
-
-Best Regards
-Kunkun Jiang
-
-[1] [RFC,v7,00/26] vSMMUv3/pSMMUv3 2 stage VFIO integration
-http://patchwork.ozlabs.org/project/qemu-devel/cover/20201116181349.11908-1-eric.auger@redhat.com/
-
-Kunkun Jiang (3):
-  vfio: Introduce helpers to mark dirty pages of a RAM section
-  vfio: Add vfio_prereg_listener_log_sync in nested stage
-  hw/arm/smmuv3: Post-load stage 1 configurations to the host
-
- hw/arm/smmuv3.c     | 60 +++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events |  1 +
- hw/vfio/common.c    | 47 +++++++++++++++++++++++++++++------
- 3 files changed, 100 insertions(+), 8 deletions(-)
-
--- 
-2.23.0
-
+> 
+> Thanks,
+> Kirti
+> 
+>>   static int vfio_load_setup(QEMUFile *f, void *opaque)
+>>   {
+>>       VFIODevice *vbasedev = opaque;
+>> @@ -670,11 +678,7 @@ static int vfio_load_state(QEMUFile *f, void *opaque, int version_id)
+>>           switch (data) {
+>>           case VFIO_MIG_FLAG_DEV_CONFIG_STATE:
+>>           {
+>> -            ret = vfio_load_device_config_state(f, opaque);
+>> -            if (ret) {
+>> -                return ret;
+>> -            }
+>> -            break;
+>> +            return vfio_load_device_config_state(f, opaque);
+>>           }
+>>           case VFIO_MIG_FLAG_DEV_SETUP_STATE:
+>>           {
+>> @@ -720,6 +724,7 @@ static SaveVMHandlers savevm_vfio_handlers = {
+>>       .save_live_pending = vfio_save_pending,
+>>       .save_live_iterate = vfio_save_iterate,
+>>       .save_live_complete_precopy = vfio_save_complete_precopy,
+>> +    .save_state = vfio_save_state,
+>>       .load_setup = vfio_load_setup,
+>>       .load_cleanup = vfio_load_cleanup,
+>>       .load_state = vfio_load_state,
+>>
+> .

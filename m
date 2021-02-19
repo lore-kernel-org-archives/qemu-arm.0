@@ -1,104 +1,103 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9090894lfc;
-        Fri, 19 Feb 2021 07:06:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyPgPkYDKUvUoIhdS9cRLdddX/bQxjlQqonJVurzsB4IFSOnLC6arIXR7EjtH8eDvRf8yc6
-X-Received: by 2002:a25:1e89:: with SMTP id e131mr14753460ybe.459.1613747184306;
-        Fri, 19 Feb 2021 07:06:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613747184; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp9090962lfc;
+        Fri, 19 Feb 2021 07:06:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxuumLFRGnCb3JOpT1fnPEowbLPkJySq6vVnPfcjuG95phRy0eQcPEKYDx8kcaacEV80kkl
+X-Received: by 2002:a25:b906:: with SMTP id x6mr13638107ybj.504.1613747188765;
+        Fri, 19 Feb 2021 07:06:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613747188; cv=none;
         d=google.com; s=arc-20160816;
-        b=HTIpKAqbd1KfEgav7WcyqbhlSVs1pTfelLh0nEcJvPlkTNG9Z6doKWteTCXgXd/Fnu
-         8MowcbHnZlqUhA57CqareAQ6Td8TX1eIIdoGMTEDIzpq5unddfK1pX7ln8xOYjyjY4de
-         pyc3uF5H3K0rn+zZtkSbGf2O2kg+Fc4Dj6Qso8qbz5tT1LGkxB7mPFvCHyOucivwOgcQ
-         kDx84VBpQNHSl1g910TuiBz3G8l0UcVHIimkoBZ8rsBanLdks0eJpKBD4cUbCg22GDSy
-         uuOkYiqYssTZ+5Ln988+IscSsD9FaPHuTQgUifYVLr2LffqskuDQ67ZWEkAr5MKFi08g
-         wGtQ==
+        b=1BiZlq1hkQhVCDOFccCg4OPnlCFPynmFA9ybUGrW4llixuQ3ifxT3RFpTgtQ5QXI5/
+         MkryhXj64MR13He5b/3XI9ygMZlA+Ktu/JwUuGIIPGri9jf8T8renyJaG3SBQy1pC3vv
+         OGI4Kop1jWSIzR/n9C8kZlIHVHy96pp7gigfy3fNCk1NdterhuklJTG95/NiTEktZVlM
+         Be9HX15ZHsfL1pJyww2h8TlYlw+UHOHQ5adiqZAhZwYDgbsrTQe4YlFxr3bMVUNuYqHs
+         aZvxgZ7uYwl/3ZCiVmS+X2yHFPja2O3uhtkupwrqkW4Gly5PbHl+tmmLJO3eLeiw5pZF
+         +qvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=f+OLBFi/yKY6WGo+QIfxChYXGrVkJ8IkV/uSAJg9oV0=;
-        b=sq+yt60P4hTmrR5/Jn8jtKWsipjKaLzAivwYydPNidmP3qD+5Wwq+E4ownoH7sBp7V
-         1jEQqQ8R9aVjwX6QGBgpnaRY+md6R0AtuM29ADsEJOFyJw58H/uejDLNcZ3erN+7c9mS
-         86IADtkXHNAGw02lsC3vwSWeKu0LuzVoxlFb8MG52GsDUaKZe/PkCjCrdxfMUqnPQTsM
-         yKPAIkZaOEsCYzmdVrn90RTgYWN1k9uJwDBYvkLGIz2cv6Dlx0//cjGjlxACgf6v1NTB
-         rWwdxZ9JWbjQSMg/BGaQymc80RbQjsK6t0uobHN1zKMC3zsMnnnArLIVO3bCpGU4LNf3
-         z0mA==
+        bh=8JlFA4L9+WCjTt1Xqh1hA9XGzoAG7iZsCgd7Bz2ga0Q=;
+        b=t+UIAzDRzACLZSdol4BDyNkKO6pEtmnbLOIan+4Ax4lM7GEfLXopE1+ERijHKgZqcB
+         YywnIvY1FGAMRyJ7b//n2h1eplJW7dyG94iRqWY7hmUxwhRjxZtw2A1OsL2FejPgFMEv
+         j83djqumcBv7O0HoNsbbb14gSjoaP+X2pSkLQr3nKpSQ7lVzWRyvSdEQglivoYoDCCjw
+         hkSToUJM5FOSc6TTLF3NBNVAYHwwR+5YRc1VOsHHLuk8QvsBIOddKB9jqh/yjnmoJ0jy
+         JeBP5hfDsvEUJb9h/rNRneqOlblhJDfHhJf2g4uYvpqWcu5ENr9BglMRMu2xc8Z48Dod
+         24Wg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Egjf6rn6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JzJqq7Zh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e82si9407144yba.177.2021.02.19.07.06.24
+        by mx.google.com with ESMTPS id q76si9717138ybg.111.2021.02.19.07.06.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Feb 2021 07:06:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Feb 2021 07:06:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Egjf6rn6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JzJqq7Zh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54718 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lD7MN-0000hm-8K
-	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:06:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34050)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lD7MS-0008WS-30
+	for alex.bennee@linaro.org; Fri, 19 Feb 2021 10:06:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34160)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73e-0002Ul-Jo
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:03 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:35729)
+ id 1lD73m-0002Y6-MZ
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:10 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:39830)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lD73G-0003Xt-V7
- for qemu-arm@nongnu.org; Fri, 19 Feb 2021 09:47:02 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id l12so8904816wry.2
- for <qemu-arm@nongnu.org>; Fri, 19 Feb 2021 06:46:38 -0800 (PST)
+ id 1lD73N-0003cK-2R
+ for qemu-devel@nongnu.org; Fri, 19 Feb 2021 09:47:10 -0500
+Received: by mail-wm1-x334.google.com with SMTP id v62so7870011wmg.4
+ for <qemu-devel@nongnu.org>; Fri, 19 Feb 2021 06:46:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=f+OLBFi/yKY6WGo+QIfxChYXGrVkJ8IkV/uSAJg9oV0=;
- b=Egjf6rn6YZZnIhWCBOANcxSwCnIp5/iwDkWtP1Mo4P04N3rpVpYpUBxPnaoUmXap8D
- 5zT8YDVwL6HoVjegWeMjG3NmZT1s3DYBKsWzcvnnhLXU0yOg+3x4KGXvGM3bkoR3F98e
- liX49+a9FvoQg/7Ot5zLxQk7MR2aQGFi2cdQBYOCtR01BuPnrWqPBI8blN/2JCQAc50Q
- XkLFAvlOLVLW+rupJnsqcvLtGYZogMgoukzmC4VlDitoLtzjnQo9AWdXAanW4HKyaAwW
- 5NlyHUkuAcdH9TpE32OhXDj6Z4GIqKCNFyz8N+M7O8Y0XFvZJkNH+TbdNVd4UUVRgohq
- g7nA==
+ bh=8JlFA4L9+WCjTt1Xqh1hA9XGzoAG7iZsCgd7Bz2ga0Q=;
+ b=JzJqq7ZhHJs9jmyAQ2Ga8rYBwSr8v1qgCPtzT4jIBvILNBFuDU/fvXHE8aiAfqcEAK
+ w1LFPD05ceA0DftPBf9cxt3iOeGJAs70JLa59KUPY8RXMg5Z7xAtX0YNqNGsdr+04L5C
+ /MbCTJpId0EmSpQqWyNnbEM+jFQnDLGonvW6JCp0EIz38KUIKvSFpLl29OF9mBjB5XHj
+ iIdGJf4RB1+F1McgZF1B7F4Q90kYbXE2Kopxc3QT6EGITx58l+gZiu5THjTvl6c0pmRn
+ T+DSsUjJwtnROl8yIjpTozWOBWma+uPGJXcH68XaD3tbUVTHTjr/Bbgvb0awSz1DDvaD
+ XZzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=f+OLBFi/yKY6WGo+QIfxChYXGrVkJ8IkV/uSAJg9oV0=;
- b=aAO1IApoHKD5oMd7AHrlWLlwT8fu/Du2sta4wk5BF3MR8EaZqwxiBBV4b01J4zNIA3
- mGXnaYiNJDtkV87JC0sha58+O/4BVeyvd6c9X7QX+E/YyFrsSKt3+9+TyNUuoFm6SZtm
- leDJm1Y2vD2MSNKBt84C8+XWdX/+AUpM8rKJTEIZFWX1wndpHEYZOiz2NGRz7QTahRs7
- L/8lUFEyXAjwJkLiVtOvw16jPRDHv2UwzeOW64OPW66/G8NuvNDYLFkbjdrg7E0R8QCl
- p+z20kAHGlQj/AK/PpuCWtjNN1BtBybmBgpOceqNHEob3wATKJoXcEvCB4mf0VWf3HBk
- DJVQ==
-X-Gm-Message-State: AOAM532ulqaSUk4QXpKufuQyj3LduxffSV4saZQzrM4ChFx2m1BArpPm
- AqUiE+arMaYnzhUsuAkeJqTEfJgz110ljw==
-X-Received: by 2002:a05:6000:1546:: with SMTP id
- 6mr9485506wry.398.1613745997670; 
- Fri, 19 Feb 2021 06:46:37 -0800 (PST)
+ bh=8JlFA4L9+WCjTt1Xqh1hA9XGzoAG7iZsCgd7Bz2ga0Q=;
+ b=lsqf1yF5m4H4WR4qCE7DwKIrKnLVUnN4avXbSXMhjO06d23p7/gxvnFIIlV+rV9h2n
+ bDOlv8sUOyPkUiNnP0E5Vk0Rgif4WHg4bolRAd5/wnO0yrHHi5C7hBKaFRKaYzASeCgr
+ As+U1zoq5cbBKFragddj4F7aGyXU74oOw8VM2xycKCnqgsdqrbQc7/lAprxd4sZvcWxq
+ O2Q1puonAb9wp/tAHHvjmP4Xhab0wYyUjncXxYHcp2YSfCQwr0UqxxDO0AQpWmGuN642
+ H0XKbNuxPlq7GYaUkNPtXCI9Lcb59qiguqIiB0fVhOCfJ7S98Nh7Jdt7D/nfxE694Lgr
+ CNhw==
+X-Gm-Message-State: AOAM533c7/dpo8Mlk/wh5FR95zBKT8R8NsSX3kVAL1HhXnX9l09f9BOU
+ UgjlZXvZRbAqrCHO/c1g7u0FluNPxSO0qQ==
+X-Received: by 2002:a1c:80c6:: with SMTP id b189mr8658115wmd.21.1613746003394; 
+ Fri, 19 Feb 2021 06:46:43 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.37
+ by smtp.gmail.com with ESMTPSA id q18sm2263628wrw.91.2021.02.19.06.46.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Feb 2021 06:46:37 -0800 (PST)
+ Fri, 19 Feb 2021 06:46:43 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 23/44] hw/arm/armsse: Add framework for data-driven device
- placement
-Date: Fri, 19 Feb 2021 14:45:56 +0000
-Message-Id: <20210219144617.4782-24-peter.maydell@linaro.org>
+Subject: [PATCH 31/44] hw/arm/armsse: Indirect irq_is_common[] through
+ ARMSSEInfo
+Date: Fri, 19 Feb 2021 14:46:04 +0000
+Message-Id: <20210219144617.4782-32-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,288 +106,128 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nOP3Up9Jg997
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2PyCbDV67T+3
 
-The SSE-300 is mostly the same as the SSE-200, but it has moved some
-of the devices in the memory map and uses different device types in
-some cases.  To accommodate this, add a framework where the placement
-and wiring of some devices can be specified in a data table.
-
-This commit adds the framework for this data-driven device placement,
-and makes the CMSDK APB timer devices use it.  Subsequent commits
-will convert the other devices which differ between SSE-200 and
-SSE-300.
+The SSE-300 has a slightly different set of shared-per-CPU interrupts,
+allow the irq_is_common[] array to be different per SSE variant.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armsse.h |   3 +-
- hw/arm/armsse.c         | 147 +++++++++++++++++++++++++++++++++-------
- 2 files changed, 125 insertions(+), 25 deletions(-)
+ hw/arm/armsse.c | 39 +++++++++++++++++++++------------------
+ 1 file changed, 21 insertions(+), 18 deletions(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index e34263fed8b..c1f4df295a4 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -158,8 +158,7 @@ struct ARMSSE {
-     IoTKitSecCtl secctl;
-     TZPPC apb_ppc[NUM_INTERNAL_PPCS];
-     TZMPC mpc[IOTS_NUM_MPC];
--    CMSDKAPBTimer timer0;
--    CMSDKAPBTimer timer1;
-+    CMSDKAPBTimer timer[2];
-     CMSDKAPBTimer s32ktimer;
-     qemu_or_irq ppc_irq_orgate;
-     SplitIRQ sec_resp_splitter;
 diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 5ae6ce344ee..22dd437a4ba 100644
+index f43f0524e28..b316fe69571 100644
 --- a/hw/arm/armsse.c
 +++ b/hw/arm/armsse.c
-@@ -24,6 +24,27 @@
- #include "hw/irq.h"
- #include "hw/qdev-clock.h"
- 
-+/*
-+ * The SSE-300 puts some devices in different places to the
-+ * SSE-200 (and original IoTKit). We use an array of these structs
-+ * to define how each variant lays out these devices. (Parts of the
-+ * SoC that are the same for all variants aren't handled via these
-+ * data structures.)
-+ */
-+
-+#define NO_IRQ -1
-+#define NO_PPC -1
-+
-+typedef struct ARMSSEDeviceInfo {
-+    const char *name; /* name to use for the QOM object; NULL terminates list */
-+    const char *type; /* QOM type name */
-+    unsigned int index; /* Which of the N devices of this type is this ? */
-+    hwaddr addr;
-+    int ppc; /* Index of APB PPC this device is wired up to, or NO_PPC */
-+    int ppc_port; /* Port number of this device on the PPC */
-+    int irq; /* NO_IRQ, or 0..NUM_SSE_IRQS-1 */
-+} ARMSSEDeviceInfo;
-+
- struct ARMSSEInfo {
-     const char *name;
-     uint32_t sse_version;
-@@ -38,6 +59,7 @@ struct ARMSSEInfo {
-     bool has_cpusecctrl;
+@@ -68,6 +68,7 @@ struct ARMSSEInfo {
      bool has_cpuid;
      Property *props;
-+    const ARMSSEDeviceInfo *devinfo;
+     const ARMSSEDeviceInfo *devinfo;
++    const bool *irq_is_common;
  };
  
  static Property iotkit_properties[] = {
-@@ -64,6 +86,30 @@ static Property armsse_properties[] = {
-     DEFINE_PROP_END_OF_LIST()
+@@ -334,6 +335,21 @@ static const ARMSSEDeviceInfo sse200_devices[] = {
+     }
  };
  
-+static const ARMSSEDeviceInfo sse200_devices[] = {
-+    {
-+        .name = "timer0",
-+        .type = TYPE_CMSDK_APB_TIMER,
-+        .index = 0,
-+        .addr = 0x40000000,
-+        .ppc = 0,
-+        .ppc_port = 0,
-+        .irq = 3,
-+    },
-+    {
-+        .name = "timer1",
-+        .type = TYPE_CMSDK_APB_TIMER,
-+        .index = 1,
-+        .addr = 0x40001000,
-+        .ppc = 0,
-+        .ppc_port = 1,
-+        .irq = 4,
-+    },
-+    {
-+        .name = NULL,
-+    }
++/* Is internal IRQ n shared between CPUs in a multi-core SSE ? */
++static const bool sse200_irq_is_common[32] = {
++    [0 ... 5] = true,
++    /* 6, 7: per-CPU MHU interrupts */
++    [8 ... 12] = true,
++    /* 13: per-CPU icache interrupt */
++    /* 14: reserved */
++    [15 ... 20] = true,
++    /* 21: reserved */
++    [22 ... 26] = true,
++    /* 27: reserved */
++    /* 28, 29: per-CPU CTI interrupts */
++    /* 30, 31: reserved */
 +};
 +
  static const ARMSSEInfo armsse_variants[] = {
      {
          .name = TYPE_IOTKIT,
-@@ -79,6 +125,7 @@ static const ARMSSEInfo armsse_variants[] = {
-         .has_cpusecctrl = false,
+@@ -349,6 +365,7 @@ static const ARMSSEInfo armsse_variants[] = {
          .has_cpuid = false,
          .props = iotkit_properties,
-+        .devinfo = sse200_devices,
+         .devinfo = iotkit_devices,
++        .irq_is_common = sse200_irq_is_common,
      },
      {
          .name = TYPE_SSE200,
-@@ -94,6 +141,7 @@ static const ARMSSEInfo armsse_variants[] = {
-         .has_cpusecctrl = true,
+@@ -364,6 +381,7 @@ static const ARMSSEInfo armsse_variants[] = {
          .has_cpuid = true,
          .props = armsse_properties,
-+        .devinfo = sse200_devices,
+         .devinfo = sse200_devices,
++        .irq_is_common = sse200_irq_is_common,
      },
  };
  
-@@ -250,6 +298,7 @@ static void armsse_init(Object *obj)
-     ARMSSE *s = ARM_SSE(obj);
-     ARMSSEClass *asc = ARM_SSE_GET_CLASS(obj);
+@@ -404,21 +422,6 @@ static uint32_t armsse_sys_config_value(ARMSSE *s, const ARMSSEInfo *info)
+ /* Clock frequency in HZ of the 32KHz "slow clock" */
+ #define S32KCLK (32 * 1000)
+ 
+-/* Is internal IRQ n shared between CPUs in a multi-core SSE ? */
+-static bool irq_is_common[32] = {
+-    [0 ... 5] = true,
+-    /* 6, 7: per-CPU MHU interrupts */
+-    [8 ... 12] = true,
+-    /* 13: per-CPU icache interrupt */
+-    /* 14: reserved */
+-    [15 ... 20] = true,
+-    /* 21: reserved */
+-    [22 ... 26] = true,
+-    /* 27: reserved */
+-    /* 28, 29: per-CPU CTI interrupts */
+-    /* 30, 31: reserved */
+-};
+-
+ /*
+  * Create an alias region in @container of @size bytes starting at @base
+  * which mirrors the memory starting at @orig.
+@@ -663,7 +666,7 @@ static void armsse_init(Object *obj)
+     }
+     if (info->num_cpus > 1) {
+         for (i = 0; i < ARRAY_SIZE(s->cpu_irq_splitter); i++) {
+-            if (irq_is_common[i]) {
++            if (info->irq_is_common[i]) {
+                 char *name = g_strdup_printf("cpu-irq-splitter%d", i);
+                 SplitIRQ *splitter = &s->cpu_irq_splitter[i];
+ 
+@@ -696,7 +699,7 @@ static qemu_irq armsse_get_common_irq_in(ARMSSE *s, int irqno)
+     ARMSSEClass *asc = ARM_SSE_GET_CLASS(s);
      const ARMSSEInfo *info = asc->info;
-+    const ARMSSEDeviceInfo *devinfo;
-     int i;
  
-     assert(info->sram_banks <= MAX_SRAM_BANKS);
-@@ -290,6 +339,18 @@ static void armsse_init(Object *obj)
-         }
-     }
+-    assert(irq_is_common[irqno]);
++    assert(info->irq_is_common[irqno]);
  
-+    for (devinfo = info->devinfo; devinfo->name; devinfo++) {
-+        assert(devinfo->ppc == NO_PPC || devinfo->ppc < ARRAY_SIZE(s->apb_ppc));
-+        if (!strcmp(devinfo->type, TYPE_CMSDK_APB_TIMER)) {
-+            assert(devinfo->index < ARRAY_SIZE(s->timer));
-+            object_initialize_child(obj, devinfo->name,
-+                                    &s->timer[devinfo->index],
-+                                    TYPE_CMSDK_APB_TIMER);
-+        } else {
-+            g_assert_not_reached();
-+        }
-+    }
-+
-     object_initialize_child(obj, "secctl", &s->secctl, TYPE_IOTKIT_SECCTL);
- 
-     for (i = 0; i < ARRAY_SIZE(s->apb_ppc); i++) {
-@@ -312,8 +373,6 @@ static void armsse_init(Object *obj)
-         object_initialize_child(obj, name, splitter, TYPE_SPLIT_IRQ);
-         g_free(name);
-     }
--    object_initialize_child(obj, "timer0", &s->timer0, TYPE_CMSDK_APB_TIMER);
--    object_initialize_child(obj, "timer1", &s->timer1, TYPE_CMSDK_APB_TIMER);
-     object_initialize_child(obj, "s32ktimer", &s->s32ktimer,
-                             TYPE_CMSDK_APB_TIMER);
-     object_initialize_child(obj, "dualtimer", &s->dualtimer,
-@@ -453,6 +512,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     ARMSSE *s = ARM_SSE(dev);
-     ARMSSEClass *asc = ARM_SSE_GET_CLASS(dev);
-     const ARMSSEInfo *info = asc->info;
-+    const ARMSSEDeviceInfo *devinfo;
-     int i;
-     MemoryRegion *mr;
-     Error *err = NULL;
-@@ -736,25 +796,53 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-      * it to the appropriate PPC port; then we can realize the PPC and
-      * map its upstream ends to the right place in the container.
-      */
--    qdev_connect_clock_in(DEVICE(&s->timer0), "pclk", s->mainclk);
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer0), errp)) {
--        return;
--    }
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer0), 0,
--                       armsse_get_common_irq_in(s, 3));
--    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer0), 0);
--    object_property_set_link(OBJECT(&s->apb_ppc[0]), "port[0]", OBJECT(mr),
--                             &error_abort);
-+    for (devinfo = info->devinfo; devinfo->name; devinfo++) {
-+        SysBusDevice *sbd;
-+        qemu_irq irq;
- 
--    qdev_connect_clock_in(DEVICE(&s->timer1), "pclk", s->mainclk);
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer1), errp)) {
--        return;
-+        if (!strcmp(devinfo->type, TYPE_CMSDK_APB_TIMER)) {
-+            sbd = SYS_BUS_DEVICE(&s->timer[devinfo->index]);
-+
-+            qdev_connect_clock_in(DEVICE(sbd), "pclk", s->mainclk);
-+            if (!sysbus_realize(sbd, errp)) {
-+                return;
-+            }
-+            mr = sysbus_mmio_get_region(sbd, 0);
-+        } else {
-+            g_assert_not_reached();
-+        }
-+
-+        switch (devinfo->irq) {
-+        case NO_IRQ:
-+            irq = NULL;
-+            break;
-+        case 0 ... NUM_SSE_IRQS - 1:
-+            irq = armsse_get_common_irq_in(s, devinfo->irq);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+
-+        if (irq) {
-+            sysbus_connect_irq(sbd, 0, irq);
-+        }
-+
-+        /*
-+         * Devices connected to a PPC are connected to the port here;
-+         * we will map the upstream end of that port to the right address
-+         * in the container later after the PPC has been realized.
-+         * Devices not connected to a PPC can be mapped immediately.
-+         */
-+        if (devinfo->ppc != NO_PPC) {
-+            TZPPC *ppc = &s->apb_ppc[devinfo->ppc];
-+            g_autofree char *portname = g_strdup_printf("port[%d]",
-+                                                        devinfo->ppc_port);
-+            object_property_set_link(OBJECT(ppc), portname, OBJECT(mr),
-+                                     &error_abort);
-+        } else {
-+            memory_region_add_subregion(&s->container, devinfo->addr, mr);
-+        }
-     }
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer1), 0,
--                       armsse_get_common_irq_in(s, 4));
--    mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer1), 0);
--    object_property_set_link(OBJECT(&s->apb_ppc[0]), "port[1]", OBJECT(mr),
--                             &error_abort);
- 
-     qdev_connect_clock_in(DEVICE(&s->dualtimer), "TIMCLK", s->mainclk);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->dualtimer), errp)) {
-@@ -813,10 +901,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     sbd_apb_ppc0 = SYS_BUS_DEVICE(&s->apb_ppc[0]);
-     dev_apb_ppc0 = DEVICE(&s->apb_ppc[0]);
- 
--    mr = sysbus_mmio_get_region(sbd_apb_ppc0, 0);
--    memory_region_add_subregion(&s->container, 0x40000000, mr);
--    mr = sysbus_mmio_get_region(sbd_apb_ppc0, 1);
--    memory_region_add_subregion(&s->container, 0x40001000, mr);
-     mr = sysbus_mmio_get_region(sbd_apb_ppc0, 2);
-     memory_region_add_subregion(&s->container, 0x40002000, mr);
-     if (info->has_mhus) {
-@@ -947,6 +1031,23 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                           qdev_get_gpio_in_named(dev_apb_ppc1,
-                                                  "cfg_sec_resp", 0));
- 
-+    /*
-+     * Now both PPCs are realized we can map the upstream ends of
-+     * ports which correspond to entries in the devinfo array.
-+     * The ports which are connected to non-devinfo devices have
-+     * already been mapped.
-+     */
-+    for (devinfo = info->devinfo; devinfo->name; devinfo++) {
-+        SysBusDevice *ppc_sbd;
-+
-+        if (devinfo->ppc == NO_PPC) {
-+            continue;
-+        }
-+        ppc_sbd = SYS_BUS_DEVICE(&s->apb_ppc[devinfo->ppc]);
-+        mr = sysbus_mmio_get_region(ppc_sbd, devinfo->ppc_port);
-+        memory_region_add_subregion(&s->container, devinfo->addr, mr);
-+    }
-+
-     if (!object_property_set_int(OBJECT(&s->sysinfo), "SYS_VERSION",
-                                  info->sys_version, errp)) {
-         return;
+     if (info->num_cpus == 1) {
+         /* Only one CPU -- just connect directly to it */
+@@ -878,7 +881,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     /* Wire up the splitters that connect common IRQs to all CPUs */
+     if (info->num_cpus > 1) {
+         for (i = 0; i < ARRAY_SIZE(s->cpu_irq_splitter); i++) {
+-            if (irq_is_common[i]) {
++            if (info->irq_is_common[i]) {
+                 Object *splitter = OBJECT(&s->cpu_irq_splitter[i]);
+                 DeviceState *devs = DEVICE(splitter);
+                 int cpunum;
 -- 
 2.20.1
 

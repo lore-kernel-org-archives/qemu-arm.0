@@ -1,77 +1,90 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8967359lfc;
-        Fri, 19 Feb 2021 04:12:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxRg/XUYmVTy7p0zzFIImwY5g64Ck0TL0Z2Iw4Anl/sENhw4gow3mVHvOPJ6Bo5W1AgOq47
-X-Received: by 2002:a17:906:32d1:: with SMTP id k17mr8511900ejk.141.1613736753190;
-        Fri, 19 Feb 2021 04:12:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613736753; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp8970540lfc;
+        Fri, 19 Feb 2021 04:17:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz3kZaT9ye9ZVERWcav/x325Nma2GXhBZbYsHyGf3CidSfrHgDTdMo6UlFViOL0oK+Q3xvN
+X-Received: by 2002:a50:ef0f:: with SMTP id m15mr9261924eds.175.1613737021793;
+        Fri, 19 Feb 2021 04:17:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613737021; cv=none;
         d=google.com; s=arc-20160816;
-        b=HsVbP3Bu4EAhzDZ2I6DTyje15CKaIlQ8YWbNaZvhyWgW4j5+wMkuV5Vc7+HmX4FsHP
-         FnXjtTxHc+BYr0SwiCeo9rz1DWwjnSSTe6r2VjyD5p2d+UBcnOJNajawnrSNJFA+nPQB
-         m10+Xk1G3t7RNK5HYicIxbiUlgIQeMqM0EJu6SV/MJ3np84Ndkj8p9/SRyzvQAM76ogA
-         GRsOmE5vya8rDf1B6ajst1cV3L7kLZgjufUJ8xvujmL9oje67Gi9KwOrShKI4plgxFXk
-         1Vmea/A8rUzNa4VWTc/3GcEjcLuiu+5QX2xVqoQp9eF4Ajq/o4Kkh41jCMe++UiTUk2E
-         SbuA==
+        b=ycKOISyj/sPRYW+u5ew06J3Rd4d8yTO+/AXUew+rYVBXb4GQEnipDMTaVo/xVs9Ixg
+         ZAiVA8FzGpp8zlOUK2D5DK0ZQrJJ+BipAEf12GjmQQ50n6+9Ugdw1N+mHg1mTrqOsktH
+         NPb92v41K8Tw5ZmvhQj4Bh7u0yi5GCxForzZBucc9r7fpcM7Sf58UKEi50xIf5M5fTQZ
+         Y9DQOLuteok91mR7QozFtzpXknFymyT8X4724g5orZbY6Qf7xchxlfvDbFUR7SR6Apqe
+         b4U3UianowoLYWdSej5/UjwnccBMduxbgWj6cby8Z2uMUAkKEDLtuCfN9/wbCye0X9FD
+         wOuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=45Dm/mZfrJbWzizoN9wLVx4pShqBQ+9iMXBHgbG5TR0=;
-        b=E5e9M9I0M/TPFOiBlVM7mRlPVtPz3HvbYSrMN1aVzPlvG+sBjku4KNFWZouKUHuidK
-         yh+H4j7BROWwuaOCVaxt2sBUZcThiX55z6jn4UWyWjewE7cWjaUQmrbyoT0l1GkunMav
-         25TT4zjqhNFd+vytK2yIMXor/C9U38fGxcpLOQmXTUDaSGzTCbqPC6+SVscnZeXZDLf5
-         LGI4PHVeIqWNAoa/ucI0xyxssyG79H+lwiMtUCHI+YaNUoaxnN2aF0IOkISnXx0Rt8lA
-         7581YzmhgkTnjtWEYyfB31iq/fyprHrgzKloIXtXZFuL3wP2Uz47GsP4It8fUp06Yi0H
-         NuqQ==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=k7UkzvW7YzAkDU1Z3fCAUqBMPy3CC83kWNUoEw+T4Xs=;
+        b=NMS0UPHjtToIVdEIpP4QGhiWpKzR9O1jgipyCXZ6PM8TdvKYxN4gP4bZZfX3fcRG8w
+         C09ymBM8+w/ylFRLKvsDg2USXUT0DRhfPqXEacAZ4Gkm0kiyM59shgs6VIABxveCgCBv
+         6yuDBp5bfLTQCJdEg0P0zALdZNTjZj/UglB9yjmGdq4RPestn91aglVpz+YBzkt+px04
+         xEAFgXRMtroxYjxU9KXl7gl+eMYuNf57Lij6K0mUlj+W/nRCjcdxT8WMJgTaSfvLbXKa
+         laVu+JNjVyxDK1hJn+k+wheRcO2blxiLaDf9vGYqoJ0rdgVPEXUvExBsrsJQUnkzjzju
+         +hjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VIcFCYww;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A7pJfdAk;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id a24si4595110ejy.54.2021.02.19.04.12.33;
-        Fri, 19 Feb 2021 04:12:33 -0800 (PST)
+        by mx.google.com with ESMTP id cy25si5080024edb.414.2021.02.19.04.17.01;
+        Fri, 19 Feb 2021 04:17:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VIcFCYww;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A7pJfdAk;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229879AbhBSMMb (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 19 Feb 2021 07:12:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33558 "EHLO
+        id S230186AbhBSMRA (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 19 Feb 2021 07:17:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:23963 "EHLO
         us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S229524AbhBSMM0 (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Fri, 19 Feb 2021 07:12:26 -0500
+        by vger.kernel.org with ESMTP id S229681AbhBSMQ5 (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Fri, 19 Feb 2021 07:16:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1613736659;
-        h=from:from:reply-to:reply-to:subject:subject:date:date:
-         message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-         content-type:content-type:
+        s=mimecast20190719; t=1613736930;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=45Dm/mZfrJbWzizoN9wLVx4pShqBQ+9iMXBHgbG5TR0=;
-        b=VIcFCYwwxZkaEh9FI7T3JH5HW0ogcVtMvS+Wvssi+66HaS5X2mizXEwZV/tQUMLi+YSNql
-        fO24TCnW+MG1GPHHSW/G7cPjtW0awyoyfgsENRgbU08yQBXihWkUBOQp0Ck9kesZsXcUaI
-        yNBJQ8Jb+oFqz3zQPWLTIfyBBafK4gI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-175-AFE5aQfpPteMhmzp8Pa9qA-1; Fri, 19 Feb 2021 07:10:43 -0500
-X-MC-Unique: AFE5aQfpPteMhmzp8Pa9qA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BDEB1100A8E9;
-        Fri, 19 Feb 2021 12:10:40 +0000 (UTC)
-Received: from redhat.com (ovpn-113-184.ams2.redhat.com [10.36.113.184])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 653155C1BB;
-        Fri, 19 Feb 2021 12:10:30 +0000 (UTC)
-Date:   Fri, 19 Feb 2021 12:10:27 +0000
-From:   Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To:     Peter Maydell <peter.maydell@linaro.org>
-Cc:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        Radoslaw Biernacki <rad@semihalf.com>,
-        kvm-devel <kvm@vger.kernel.org>,
+        bh=k7UkzvW7YzAkDU1Z3fCAUqBMPy3CC83kWNUoEw+T4Xs=;
+        b=A7pJfdAkDNk8Tfnqcf9iBYPkRbGFsOTnAmaPJp205sE/qju8eyzFw5aak7/XHHvgjOr06D
+        yYbc8QOuVqfvwkRcfXhGw7vU92RgdQjUxVf828KFloVwOKKKZddSGPp3/ji8v7uSn/dnkh
+        415fWJ9sMoF/I16/vkW2m8roJhnqu68=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-251-6PwhzhUbMHSsNYp-5GsOFA-1; Fri, 19 Feb 2021 07:15:29 -0500
+X-MC-Unique: 6PwhzhUbMHSsNYp-5GsOFA-1
+Received: by mail-wr1-f69.google.com with SMTP id x14so1771137wrr.13
+        for <kvm@vger.kernel.org>; Fri, 19 Feb 2021 04:15:28 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=k7UkzvW7YzAkDU1Z3fCAUqBMPy3CC83kWNUoEw+T4Xs=;
+        b=AR1Bqb3wVZOEKPKCPOKPjbZIGWRY4FGuYPPO8SNhqekp/OiitMntUuVhz4ERZMb3J0
+         gSOiv1eZPNQ2a0HXKvAjZl3TYvDggcLj1mW1gTdqOcJeqSP8uHup8BZDqttnoVBKjzjh
+         gjTbLsjL4UZiQexm3H3klDp6Q4hqacwl6wj1/XcQMuzmDp0IZYZPhJs/NEj0IG+fUibX
+         5e+gZhF0pDGR08iTpPC9QG75tj3+jv81bmAzF/lgKV2Tf40bJhrB1j3ZJ7JaPh++SzsQ
+         zAl5AtaLpfRMBF6CF29b1gvSFzCK3///71rwVoAGz7j4CmkyzJIO2mbWxGxzL+paiuwu
+         xoBw==
+X-Gm-Message-State: AOAM531tF3eyjoAG8NZYZSo9H6NE9/b8sGNi/YCA1Lz9AvNMNzMZGb0v
+        y6hY/4LZ91lk6f4wZamaeIYt5HEilOpzBAkjvmJG42biCMOG7Kh3niBEnrfwj0MtVJaXyAm2wx1
+        hIQ8dM9IgMqT5
+X-Received: by 2002:a5d:6d0c:: with SMTP id e12mr8682300wrq.136.1613736928111;
+        Fri, 19 Feb 2021 04:15:28 -0800 (PST)
+X-Received: by 2002:a5d:6d0c:: with SMTP id e12mr8682284wrq.136.1613736927988;
+        Fri, 19 Feb 2021 04:15:27 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id d15sm13126267wru.80.2021.02.19.04.15.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 19 Feb 2021 04:15:27 -0800 (PST)
+Subject: Re: [PATCH 0/7] hw/kvm: Exit gracefully when KVM is not supported
+To:     =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+        Radoslaw Biernacki <rad@semihalf.com>, kvm@vger.kernel.org,
         David Hildenbrand <david@redhat.com>,
         Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
         Thomas Huth <thuth@redhat.com>,
@@ -79,86 +92,56 @@ Cc:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
         Huacai Chen <chenhuacai@kernel.org>,
         Halil Pasic <pasic@linux.ibm.com>,
         Christian Borntraeger <borntraeger@de.ibm.com>,
-        =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+        =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
         Leif Lindholm <leif@nuviainc.com>,
         Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
         Eduardo Habkost <ehabkost@redhat.com>,
         Alistair Francis <alistair@alistair23.me>,
         Richard Henderson <richard.henderson@linaro.org>,
-        Greg Kurz <groug@kaod.org>, qemu-s390x <qemu-s390x@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        David Gibson <david@gibson.dropbear.id.au>,
+        Greg Kurz <groug@kaod.org>, qemu-s390x@nongnu.org,
+        qemu-arm@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
         Cornelia Huck <cohuck@redhat.com>,
-        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-        qemu-ppc <qemu-ppc@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+        qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
         Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [PATCH 2/7] hw/boards: Introduce 'kvm_supported' field to
- MachineClass
-Message-ID: <YC+qs7R140qAWnJY@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20210219114428.1936109-1-philmd@redhat.com>
- <20210219114428.1936109-3-philmd@redhat.com>
- <YC+nxWnB+eaiq736@redhat.com>
- <CAFEAcA-A=TG43w2yNfrDwCgYYNZBEa25cM_yYgREfQyKa=PZEQ@mail.gmail.com>
+ <YC+oZWDs3PnWHPQo@redhat.com>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <9540912b-1a81-1fd2-4710-2b81d5e69c5f@redhat.com>
+Date:   Fri, 19 Feb 2021 13:15:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
+In-Reply-To: <YC+oZWDs3PnWHPQo@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA-A=TG43w2yNfrDwCgYYNZBEa25cM_yYgREfQyKa=PZEQ@mail.gmail.com>
-User-Agent: Mutt/2.0.5 (2021-01-21)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: sLNkuwesgWrd
+X-TUID: MbKIwD6ZCmcS
 
-On Fri, Feb 19, 2021 at 12:08:05PM +0000, Peter Maydell wrote:
-> On Fri, 19 Feb 2021 at 11:58, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> > Is the behaviour reported really related to KVM specifically, as opposed
-> > to all hardware based virt backends ?
-> >
-> > eg is it actually a case of some machine types being  "tcg_only" ?
+On 2/19/21 1:00 PM, Daniel P. Berrangé wrote:
+> On Fri, Feb 19, 2021 at 12:44:21PM +0100, Philippe Mathieu-Daudé wrote:
+>> Hi,
+>>
+>> This series aims to improve user experience by providing
+>> a better error message when the user tries to enable KVM
+>> on machines not supporting it.
 > 
-> Interesting question. At least for Arm the major items are:
->  * does the accelerator support emulation of EL3/TrustZone?
->    (KVM doesn't; this is the proximate cause of the assertion
->    failure if you try to enable KVM for the raspi boards.)
->  * does the board type require a particular CPU type which
->    KVM doesn't/can't support?
-> Non-KVM accelerators could at least in theory have different answers
-> to those questions, though in practice I think they do not.
+> Improved error message is good, but it is better if the mgmt apps knows
+> not to try this in the first place.
+
+I am not sure this is the same problem. This series addresses
+users from the command line (without mgmt app).
+
+> IOW, I think we want "query-machines" to filter out machines
+> which are not available with the currently configured accelerator.
 > 
-> I think my take is that we probably should mark the boards
-> as 'tcg-only' vs 'not-tcg-only', because in practice that's
-> the interesting distinction. Specifically, our security policy
-> https://qemu.readthedocs.io/en/latest/system/security.html
-> draws a boundary between "virtualization use case" and
-> "emulated", so it's really helpful to be able to say clearly
-> "this board model does not support virtualization, and therefore
-> any bugs in it or its devices are simply outside the realm of
-> being security issues" when doing analysis of the codebase or
-> when writing or reviewing new code.
+> libvirt will probe separately with both TCG and KVM enabled, so if
+> query-machines can give the right answer in these cases, libvirt
+> will probably "just work" and not offer to even start such a VM.
 
-Oh, yes, that is useful to correlate with.
-
-> If we ever have support for some new accelerator type where there's
-> a board type distinction between KVM and that new accelerator and
-> it makes sense to try to say "this board is supported by the new
-> thing even though it won't work with KVM", the folks interested in
-> adding that new accelerator will have the motivation to look
-> into exactly which boards they want to enable support for and
-> can add a funky_accelerator_supported flag or whatever at that time.
-> 
-> Summary: we should name this machine class field
-> "virtualization_supported" and check it in all the virtualization
-> accelerators (kvm, hvf, whpx, xen).
-
-Agreed.
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Yes, agreed. There are other discussions about 'query-machines'
+and an eventual 'query-accels'. This series doesn't aim to fix
+the mgmt app problems.

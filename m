@@ -1,212 +1,203 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp882509lfg;
-        Thu, 25 Feb 2021 18:27:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw6JH7KOmO/U7e8xPrZejyo+npD9VwWCGeLsaISPBv7iNpxESaaNM5twqD6UrGX2Lic9BUP
-X-Received: by 2002:a05:6602:24c4:: with SMTP id h4mr945577ioe.7.1614306437411;
-        Thu, 25 Feb 2021 18:27:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614306437; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp122807lfc;
+        Fri, 19 Feb 2021 22:03:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwMNALhkpjBD/KTadx89lL9iT7d5F5YidYGYcT6QpVrWusmAkoU2vE1Az/JMj621v18ixjz
+X-Received: by 2002:a25:ae14:: with SMTP id a20mr19413868ybj.129.1613800992459;
+        Fri, 19 Feb 2021 22:03:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613800992; cv=none;
         d=google.com; s=arc-20160816;
-        b=jRsMkWNwWKAxSOygvSMustGQ0CxmDBovcH/sbEtfPgkDJX57y+zHCjIfEV/iXe4Cp6
-         pJAaTaT6jPERHi8xKwwAzzT9il+I3pwmTehPcfQQEbkq1J/rsr45c80MEYjtk1E6iX0J
-         2wxRd0D3Kd/NPS4wushRHMCuITXg6Vtinb4K7iY/OyPnN+Ls/p3mNpigu+X+48l8vuBt
-         qKpir/7ZZMsluczyPtj+R+B+ZK2B7h6HyRhGBFr1teRtTZuEBwy7FS8Y9UxBD7E8a/3U
-         iWQv680T3VuDmrZafuMqWKND6NJMiWRqCZaSKkv8+JjhDjiXlTCE15fctgsoQHOnveW5
-         tZgA==
+        b=uSvvmdObaV48W06CTqXunR2HwoKjtkj63EywNv8sIHsxHy1eaPcdG2xnr8XcCC5D4j
+         9nz6PBJpWz479Ha07rVnzNQpXg4Oso14RMIkHBI6iNEvGfMwJtYVvmDHTbxXCm+gIkwZ
+         SgH8Y+ws+eP7asaiCRQHeAUZRZiIP1OgUHMW/xjwX5YoeCbbdv9FrUDApk9j9dBFqG/P
+         PdyqTiDfxPMNuJyxJgea9/wOA88etQCiE88Du9dfiMYCIezQ3IdTj075JmWRTv0sNfgM
+         R6oQCpMJPfmc4yEW7jKzBeB5uU/gfz4jKgh7l+LKu66ZSZeKGyMTdfKNahmOg0wX9iJ3
+         Do3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=CZNSaa50IDnFsykjSflosFfHnr0Wt8Dd9X6/oQ4laxY=;
-        b=wnF/bJq5tMWJQ26yglIPNCPBfymyR2b77LU8xQF9DU0Lm43Ozk4fAu606t9dsGIG7t
-         TDcngs3Q5xljqdoocLe/HbgQ/v2/VyBFGQa4VR0jSMxlXKDp9vAKx1LQnTFTNhPb189i
-         3p7EG3/slYlF8akMcTZJtnLjL26I+ln/5xWMnQpGymizT2diWkYJBxJAoUHZjzYba75V
-         5FIqUuTrq0eDg8p1tURwnwhYyJWFhdbwpf+RnasRXUwhKx5opeii5aRYavZiDWddwX6R
-         Ns1e862F3l6LcrGQ+5E5lU0/Xttmn+sVL362QtPlEmsZYpbNI9KjAX8jTdiDO9zpU3QU
-         GmDA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=JBL7IjR2/50kVUvtZ1o5ZQ0ZZAtIdlBAq7Jr7Vz2siw=;
+        b=doG8y94hsGrxPt0Cf5t8pLYmUarMjcgWLoUv9rEMBUDKKqD9ZY4RM2el+mKhCvkRfo
+         j1RqkfxNz18WEuAQTAZFioqYQZzpn2e4ZDMLQGfIUbgztA96GYZUHRGNyPSMPQA+6dNy
+         1ZEz/g9Oz9+sWuB4Oob4uP/Msu2C8pGR4+kPnOneV6b60nOimcHCBrAGE+gOVI2s3FKQ
+         p6X+3lmOArf7zjplmPDIhEjKteanJ65mnX/zZ+TGyqTLS4RVeGUxBxJyIxccy0qkhXah
+         uiL31kCM/f/9gS7VfkhwzzQQVoSMAWISh4+9ZyewXeeA4iSMDFvX319yVAAzLwxVVTfH
+         8nVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b=YSQAOBZj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l12si7111086ilh.9.2021.02.25.18.27.17
+        by mx.google.com with ESMTPS id o8si11588063ybq.95.2021.02.19.22.03.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 18:27:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Feb 2021 22:03:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32852 helo=lists1p.gnu.org)
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b=YSQAOBZj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:44514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFSqa-0006Ip-P8
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 21:27:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53142)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lDLMF-0000yw-UD
+	for alex.bennee@linaro.org; Sat, 20 Feb 2021 01:03:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1lFSqR-0006Gi-HU; Thu, 25 Feb 2021 21:27:07 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3492)
+ (Exim 4.90_1) (envelope-from <chenhuacai@kernel.org>)
+ id 1lDLLY-0000yb-L0; Sat, 20 Feb 2021 01:02:28 -0500
+Received: from mail.kernel.org ([198.145.29.99]:38162)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1lFSqL-00028Z-CV; Thu, 25 Feb 2021 21:27:07 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DmtmH3BYtzjS7M;
- Fri, 26 Feb 2021 10:25:19 +0800 (CST)
-Received: from [10.174.186.67] (10.174.186.67) by
- DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 26 Feb 2021 10:26:49 +0800
-Subject: Re: [RFC PATCH 5/5] hw/arm/virt-acpi-build: add PPTT table
-To: Andrew Jones <drjones@redhat.com>
-References: <20210225085627.2263-1-fangying1@huawei.com>
- <20210225085627.2263-6-fangying1@huawei.com>
- <20210225113817.xdctmgp3icrhjhrf@kamzik.brq.redhat.com>
-From: Ying Fang <fangying1@huawei.com>
-Message-ID: <8ff55a13-e072-9e90-d689-6fb26383e1f2@huawei.com>
-Date: Fri, 26 Feb 2021 10:26:49 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <chenhuacai@kernel.org>)
+ id 1lDLLW-0001p4-Ej; Sat, 20 Feb 2021 01:02:28 -0500
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C83B864EE4;
+ Sat, 20 Feb 2021 06:02:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1613800941;
+ bh=ShcGVisZXSeMg1DM1Ug/ltlAeszRZetvwkkEgFVlNas=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=YSQAOBZjx77Ns4trHoOsngxkQa38xVjltXBABkfbX425KuGX5umsxwyesIcw3M9m0
+ E1CBeP+KT/7ktq3qJsK+8ztsAyUo1Y+szBDMXVBUy0LssKWNWODnxjYIHb7kwI0p/U
+ OMtv1pX83FzJa09GTTmNeee7rrVKV5Rx57K2tgRQUkoBozsoihRJj5tAd3g/guoNFq
+ 6dYliAq0igKoimsq0gG8LbZNbMgmQ/dhvUaUHgPv0ypgHnSvTgIePgQyXuaLXydf1z
+ grZ/lAFZ3Vje1rb1fjKjkE0NPbbhKxxJZc4dBaGoIP5s/mLVrydINYb/OD9SVtUKPj
+ TNTNGsBRQIZHA==
+Received: by mail-il1-f180.google.com with SMTP id m20so6341516ilj.13;
+ Fri, 19 Feb 2021 22:02:21 -0800 (PST)
+X-Gm-Message-State: AOAM531A/qujD8gDWX6GxDv9qF8ALPBvfuH+RMsv04QZmEKb3e3VMwAh
+ 3xVZ8v497OWumrstV6xKrM/nHkKoPqKhEf2v9hY=
+X-Received: by 2002:a92:6907:: with SMTP id e7mr6713495ilc.134.1613800941002; 
+ Fri, 19 Feb 2021 22:02:21 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20210225113817.xdctmgp3icrhjhrf@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.67]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=fangying1@huawei.com;
- helo=szxga05-in.huawei.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.435,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+References: <20210219173847.2054123-1-philmd@redhat.com>
+ <20210219173847.2054123-6-philmd@redhat.com>
+ <31a32613-2a61-7cd2-582a-4e6d10949436@flygoat.com>
+In-Reply-To: <31a32613-2a61-7cd2-582a-4e6d10949436@flygoat.com>
+From: Huacai Chen <chenhuacai@kernel.org>
+Date: Sat, 20 Feb 2021 14:02:08 +0800
+X-Gmail-Original-Message-ID: <CAAhV-H6TJyP8diBUu4EsSWSNrVP7YxxPaMNnm2uuZJfdGY40Jg@mail.gmail.com>
+Message-ID: <CAAhV-H6TJyP8diBUu4EsSWSNrVP7YxxPaMNnm2uuZJfdGY40Jg@mail.gmail.com>
+Subject: Re: [PATCH v2 05/11] hw/mips: Restrict KVM to the malta & virt
+ machines
+To: Jiaxun Yang <jiaxun.yang@flygoat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=198.145.29.99; envelope-from=chenhuacai@kernel.org;
+ helo=mail.kernel.org
+X-Spam_score_int: -70
+X-Spam_score: -7.1
+X-Spam_bar: -------
+X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
- zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
- shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
- imammedo@redhat.com, Jiajie Li <lijiajie11@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tIuRpqISRPAu
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+ kvm <kvm@vger.kernel.org>, Paul Durrant <paul@xen.org>,
+ David Hildenbrand <david@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2R5dTP1cY6PS
 
+Reviewed-by: Huacai Chen <chenhuacai@kernel.org>
 
-
-On 2/25/2021 7:38 PM, Andrew Jones wrote:
-> 
-> This is just [*] with some minor code changes
-> 
-> [*] https://github.com/rhdrjones/qemu/commit/439b38d67ca1f2cbfa5b9892a822b651ebd05c11
-> 
-> so it's disappointing that my name is nowhere to be found on it.
-> 
-> Also, the explanation of the DT and ACPI differences has been
-> dropped from the commit message of [*]. I'm not sure why.
-> 
-
-Will fix that. I will add SOB of you then you can help to comment on it.
-
-> Thanks,
-> drew
-> 
-> On Thu, Feb 25, 2021 at 04:56:27PM +0800, Ying Fang wrote:
->> Add the Processor Properties Topology Table (PPTT) to present
->> CPU topology information to the guest. A three-level cpu
->> topology is built in accord with the linux kernel currently does.
->>
->> Tested-by: Jiajie Li <lijiajie11@huawei.com>
->> Signed-off-by: Ying Fang <fangying1@huawei.com>
->> ---
->>   hw/arm/virt-acpi-build.c | 50 ++++++++++++++++++++++++++++++++++++++++
->>   1 file changed, 50 insertions(+)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index bb91152fe2..38d50ce66c 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -436,6 +436,50 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>                    vms->oem_table_id);
->>   }
->>   
->> +static void
->> +build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->> +{
->> +    int pptt_start = table_data->len;
->> +    int uid = 0, cpus = 0, socket = 0;
->> +    MachineState *ms = MACHINE(vms);
->> +    unsigned int smp_cores = ms->smp.cores;
->> +    unsigned int smp_threads = ms->smp.threads;
->> +
->> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
->> +
->> +    for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
->> +        uint32_t socket_offset = table_data->len - pptt_start;
->> +        int core;
->> +
->> +        build_socket_hierarchy(table_data, 0, socket);
->> +
->> +        for (core = 0; core < smp_cores; core++) {
->> +            uint32_t core_offset = table_data->len - pptt_start;
->> +            int thread;
->> +
->> +            if (smp_threads <= 1) {
->> +                build_processor_hierarchy(table_data,
->> +                                          ACPI_PPTT_ACPI_PROCESSOR_ID_VALID |
->> +                                          ACPI_PPTT_ACPI_LEAF_NODE,
->> +                                          socket_offset, uid++);
->> +             } else {
->> +                build_processor_hierarchy(table_data,
->> +                                          ACPI_PPTT_ACPI_PROCESSOR_ID_VALID,
->> +                                          socket_offset, core);
->> +                for (thread = 0; thread < smp_threads; thread++) {
->> +                    build_thread_hierarchy(table_data, core_offset, uid++);
->> +                }
->> +             }
->> +        }
->> +        cpus += smp_cores * smp_threads;
->> +    }
->> +
->> +    build_header(linker, table_data,
->> +                 (void *)(table_data->data + pptt_start), "PPTT",
->> +                 table_data->len - pptt_start, 2,
->> +                 vms->oem_id, vms->oem_table_id);
->> +}
->> +
->>   /* GTDT */
->>   static void
->>   build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->> @@ -688,6 +732,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>       unsigned dsdt, xsdt;
->>       GArray *tables_blob = tables->table_data;
->>       MachineState *ms = MACHINE(vms);
->> +    bool cpu_topology_enabled = !vmc->no_cpu_topology;
->>   
->>       table_offsets = g_array_new(false, true /* clear */,
->>                                           sizeof(uint32_t));
->> @@ -707,6 +752,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>       acpi_add_table(table_offsets, tables_blob);
->>       build_madt(tables_blob, tables->linker, vms);
->>   
->> +    if (ms->smp.cpus > 1 && cpu_topology_enabled) {
->> +        acpi_add_table(table_offsets, tables_blob);
->> +        build_pptt(tables_blob, tables->linker, vms);
->> +    }
->> +
->>       acpi_add_table(table_offsets, tables_blob);
->>       build_gtdt(tables_blob, tables->linker, vms);
->>   
->> -- 
->> 2.23.0
->>
->>
-> 
-> .
-> 
+On Sat, Feb 20, 2021 at 12:56 PM Jiaxun Yang <jiaxun.yang@flygoat.com> wrot=
+e:
+>
+> =E5=9C=A8 2021/2/20 =E4=B8=8A=E5=8D=881:38, Philippe Mathieu-Daud=C3=A9 =
+=E5=86=99=E9=81=93:
+> > Restrit KVM to the following MIPS machines:
+> > - malta
+> > - loongson3-virt
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>
+> Reviewed-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+>
+> > ---
+> >   hw/mips/loongson3_virt.c | 5 +++++
+> >   hw/mips/malta.c          | 5 +++++
+> >   2 files changed, 10 insertions(+)
+> >
+> > diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+> > index d4a82fa5367..c3679dff043 100644
+> > --- a/hw/mips/loongson3_virt.c
+> > +++ b/hw/mips/loongson3_virt.c
+> > @@ -612,6 +612,10 @@ static void mips_loongson3_virt_init(MachineState =
+*machine)
+> >       loongson3_virt_devices_init(machine, liointc);
+> >   }
+> >
+> > +static const char *const valid_accels[] =3D {
+> > +    "tcg", "kvm", NULL
+> > +};
+> > +
+> >   static void loongson3v_machine_class_init(ObjectClass *oc, void *data=
+)
+> >   {
+> >       MachineClass *mc =3D MACHINE_CLASS(oc);
+> > @@ -622,6 +626,7 @@ static void loongson3v_machine_class_init(ObjectCla=
+ss *oc, void *data)
+> >       mc->max_cpus =3D LOONGSON_MAX_VCPUS;
+> >       mc->default_ram_id =3D "loongson3.highram";
+> >       mc->default_ram_size =3D 1600 * MiB;
+> > +    mc->valid_accelerators =3D valid_accels;
+> >       mc->kvm_type =3D mips_kvm_type;
+> >       mc->minimum_page_bits =3D 14;
+> >   }
+> > diff --git a/hw/mips/malta.c b/hw/mips/malta.c
+> > index 9afc0b427bf..0212048dc63 100644
+> > --- a/hw/mips/malta.c
+> > +++ b/hw/mips/malta.c
+> > @@ -1443,6 +1443,10 @@ static const TypeInfo mips_malta_device =3D {
+> >       .instance_init =3D mips_malta_instance_init,
+> >   };
+> >
+> > +static const char *const valid_accels[] =3D {
+> > +    "tcg", "kvm", NULL
+> > +};
+> > +
+> >   static void mips_malta_machine_init(MachineClass *mc)
+> >   {
+> >       mc->desc =3D "MIPS Malta Core LV";
+> > @@ -1456,6 +1460,7 @@ static void mips_malta_machine_init(MachineClass =
+*mc)
+> >       mc->default_cpu_type =3D MIPS_CPU_TYPE_NAME("24Kf");
+> >   #endif
+> >       mc->default_ram_id =3D "mips_malta.ram";
+> > +    mc->valid_accelerators =3D valid_accels;
+> >   }
+> >
+> >   DEFINE_MACHINE("malta", mips_malta_machine_init)
+>

@@ -1,223 +1,228 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1940302lfc;
-        Mon, 22 Feb 2021 10:00:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJykipvipqEAgdSS1nQSrpgKuOmoRl8N8rTCdWMtt9JlOSDt+iKWUNWUVSNIcaAjRwl+JZYp
-X-Received: by 2002:a6b:b304:: with SMTP id c4mr7039727iof.139.1614016821881;
-        Mon, 22 Feb 2021 10:00:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614016821; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1945373lfc;
+        Mon, 22 Feb 2021 10:06:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy86Ga+UG34FxTtj6sgg7wSCjwZ/+IVI4RhYEjh2vqAreKLbWqVoeIqXDAQlV7eRcGUGwbo
+X-Received: by 2002:aca:de46:: with SMTP id v67mr17196304oig.126.1614017173864;
+        Mon, 22 Feb 2021 10:06:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614017173; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCH5nFKIzGLY+J+ycHMFNy7umcbps9mQubWRPeL/IEozae2L7mZ93gek8SsSdwWoKl
-         ywMPy/4OxuFJ091si1Tbi9TZEYK0vfAgaCLqYJ36Bpy7JZHDbRkNl+SPzVo4Glu/ciHc
-         y1TdK3wk5OodXkba0DXyfiESOb9xzRxzSlU2qKIQcUYm6qxTNzsJqIujt8/hqGX3X12y
-         i1qjkPa8huAp65PCxrfj9lK7uCKaLtvVqaI/YtBJ8jD03uWWzx5s2F2TBJ2XpPi36RuX
-         dbJXhxltF2ZD5WOvLyf2XwLJiiIOc7KbRhB+KulRZpYIyYDsWjOogPZ4xN3pUVvWenbT
-         ImTA==
+        b=Fhbrrv30naDeLCixFuv8sAoEEO3ezDhL5QPCZix/tMXx70YYCWgCpQQvC3cdQyOaDk
+         KFgDpVbFd3yQLug4+3egKSCR1c6FuA8VLK2jVRD9aW8MFzHd9WTeArUCUHoVY8CQ7FvL
+         Wov2vrNYIR7ni27DTi8symHKGv8IJrUmX0O3d5RubeZB2+uhjhi0raqL57P+uBbWdwv2
+         QpDfv0X7dx0A02bvOGBi09RFdIyhkTdKWus5fsfKoP6PA/VbHkmJ0qhlE5TSe0lLiBKW
+         4TZOoXtloorEJ+kUTWAJfGRLL6zcfIfJfK8Ir40IjiqmWQPv7+tRhxQ/VS3NADhJArQy
+         oAWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=g0daaZIiL7zB1dNQnlGOdmrK5Ct4nJWAQKVeDV4S+9U=;
-        b=b4sHB5bLnJiY/Qh6L2GIbqFnMPCyjX3emtNFEFFc6j9AGIhj+XBhYqg309PS+eIX39
-         1XVxPiYaCsE4OrH7oq9hwEhFBhcowYYWsnuQwyGiaW8Dm2Pz9/a9qew/dMWNj1Gpr52f
-         W4jeCzt7P40eB5AgHRDoX5FCaWZeMHQSAkDwuhTOJvLptLYgQNPqZksqTg2t6fhyribN
-         5JgCdjaAY5WPUN3TgH8E05oomBsvG5SOX4ObZd8rFO1PnPKZ9w0YiXbXs0SOtlY/x2kf
-         3xYtcmCtR7UUQ101mtREvVSzDGKjr5v/Au56WiGwNSooChE/2vQTpwcZ41qNF57+s6Y7
-         VRvg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature:sender:precedence:errors-to:list-subscribe:list-help
+         :list-post:list-unsubscribe:list-id;
+        bh=SSsnX5SjnKwxu3rr90T4nBZzi1MZ/dtXAKPK6GY/CHA=;
+        b=poiGdWm5Gs8u0DtNCuX9bU6g91JZzH1VbFvPY598/PkXoq2ub6jlMASjlhgvXhgpy3
+         GOLEZc1buTfmrfc7yywd+dplPPoQHBdrqPxYUsxkd84YjVH+Qa3QzwGzNGak4+8q0lnS
+         bM8118c0cPnqjG/uHO72WUVBaih9mH4PbGglTXzIgAJXU7xzG5G522jB1XjgP/8p4HDt
+         YBM/INfYiPDdMhQMdPs+NbGtzqGKO/PvdWO98QsISAaI1JiEuF3X5oiRfngwr+qw39hz
+         alYT0kRogO1zpMmjvZ7gxVubunr0O30rKS/SIQb6PB9ZYejWOEs/31m+A2bScz2oWx0a
+         S8GA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SxAvLQEg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 19si17234821jac.78.2021.02.22.10.00.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Feb 2021 10:00:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JYQXspFD;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id n6si10894817otq.236.2021.02.22.10.06.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Feb 2021 10:06:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SxAvLQEg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34034 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEFVN-0004hY-7n
-	for alex.bennee@linaro.org; Mon, 22 Feb 2021 13:00:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57784)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lEFV9-0004en-9u
- for qemu-arm@nongnu.org; Mon, 22 Feb 2021 13:00:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25499)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1lEFV6-0003fH-Ub
- for qemu-arm@nongnu.org; Mon, 22 Feb 2021 13:00:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614016804;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=g0daaZIiL7zB1dNQnlGOdmrK5Ct4nJWAQKVeDV4S+9U=;
- b=SxAvLQEgIQg4AF43XkIExc4cZPw1W0kFjn25idJ41GmCzCFGeNIKelKJtCCKHnHXT8l8fM
- raDcsdZXnT3ihpQ+y0m5xdVmdGqpQdxpf9vv8yJHoKnd52CjRlog/vOomjy6wOoOdpqTEZ
- C7C2mLthoiCOD1Ddm9yxOwe2VJTujzY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-113-x6AyWPnMMK6ocNz1yohAhA-1; Mon, 22 Feb 2021 13:00:02 -0500
-X-MC-Unique: x6AyWPnMMK6ocNz1yohAhA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CAB31192CC57;
- Mon, 22 Feb 2021 17:59:56 +0000 (UTC)
-Received: from gondolin (ovpn-113-115.ams2.redhat.com [10.36.113.115])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 90F5F60DA0;
- Mon, 22 Feb 2021 17:59:33 +0000 (UTC)
-Date: Mon, 22 Feb 2021 18:59:30 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 02/11] hw/boards: Introduce
- machine_class_valid_for_accelerator()
-Message-ID: <20210222185930.4c08cb69.cohuck@redhat.com>
-In-Reply-To: <6ceff55c-6da4-e773-7809-de3be2f566ab@redhat.com>
-References: <20210219173847.2054123-1-philmd@redhat.com>
- <20210219173847.2054123-3-philmd@redhat.com>
- <20210222183400.0c151d46.cohuck@redhat.com>
- <6ceff55c-6da4-e773-7809-de3be2f566ab@redhat.com>
-Organization: Red Hat GmbH
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JYQXspFD;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from list by lists.xenproject.org with outflank-mailman.88334.166023 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1lEFZa-0001XH-Gv; Mon, 22 Feb 2021 18:04:42 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 88334.166023; Mon, 22 Feb 2021 18:04:42 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1lEFZa-0001XA-Dz; Mon, 22 Feb 2021 18:04:42 +0000
+Received: by outflank-mailman (input) for mailman id 88334;
+ Mon, 22 Feb 2021 18:04:42 +0000
+Received: from us1-rack-iad1.inumbo.com ([172.99.69.81])
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=V+0I=HY=redhat.com=philmd@srs-us1.protection.inumbo.net>)
+ id 1lEFZZ-0001X5-UN
+ for xen-devel@lists.xenproject.org; Mon, 22 Feb 2021 18:04:41 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
+ by us1-rack-iad1.inumbo.com (Halon) with ESMTP
+ id 2dcd7357-e522-4cae-b78d-1df92cad2614;
+ Mon, 22 Feb 2021 18:04:40 +0000 (UTC)
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-108-az0L5RqbNS6dy3SwhF9Kng-1; Mon, 22 Feb 2021 13:04:37 -0500
+Received: by mail-ed1-f72.google.com with SMTP id g20so4874722edy.7
+ for <xen-devel@lists.xenproject.org>; Mon, 22 Feb 2021 10:04:37 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id b27sm7825403eja.64.2021.02.22.10.04.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Feb 2021 10:04:35 -0800 (PST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- Paul Durrant <paul@xen.org>, David Hildenbrand <david@redhat.com>,
- qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 2dcd7357-e522-4cae-b78d-1df92cad2614
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1614017080;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SSsnX5SjnKwxu3rr90T4nBZzi1MZ/dtXAKPK6GY/CHA=;
+	b=JYQXspFD0XNylrg8ANJu0NJ9V/mNSHFBXTZuEEA6VnMco8/dKpvb0jREOo7vXGeEVfkDCB
+	ZsifBcfUwnq8TVyaKkhOeW3GC3H2AMxlW2vMHLoL+nqGxdex99ATP7Q6RW+1ntOEIyG3wV
+	nEcF6SeVNbcZGaE8D2wXd0s3IU2gkvg=
+X-MC-Unique: az0L5RqbNS6dy3SwhF9Kng-1
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=SSsnX5SjnKwxu3rr90T4nBZzi1MZ/dtXAKPK6GY/CHA=;
+        b=mbmIpU48MGd/1pAIl4CODRFPKe+SjVzzaC+yjf0tyXZKriZUP6nWwEOBNa7w2z3eDI
+         z3CeWxP/6GDr8OP+r3Ziz2AA6AT9nmmrwiNF89ltINzfxV0b+vEfVQAuY94zXoxYZQ5g
+         9k1ZDUG+aLgJ9NsOPSY6Vdt21dnN5YKl0X8MI7RyZ1YBH3gvdxXUT7th9HFPeUeSSsuP
+         qaROsowGq+MQmRVnJtK6H5pqhjqfZR+N61mrdfhYRZnQ3DISLodr6weO8k9NfGbRbLuv
+         j3c26+M8jEIW5aXDV+dFxtj+8SkLN1Yrvg+P+01tufCE09x46EUgAFGpXyq3tREjKuWK
+         +V/g==
+X-Gm-Message-State: AOAM532AndEranoKInmATOsc5kAhIts/Hx8WAtRFxiUtx9vC3xRkKbF0
+	o2BK+FTSRyqFsAgn20qjQCthpWAlI4LXaWwoiISA9uacrG9scyv7McoMy/IdfMbT3y0+G9zMPNj
+	DAACBv74hAyx+TQB6Sd8nvM7Ak3k=
+X-Received: by 2002:a17:906:7e42:: with SMTP id z2mr21995947ejr.177.1614017076008;
+        Mon, 22 Feb 2021 10:04:36 -0800 (PST)
+X-Received: by 2002:a17:906:7e42:: with SMTP id z2mr21995909ejr.177.1614017075776;
+        Mon, 22 Feb 2021 10:04:35 -0800 (PST)
+Subject: Re: [PATCH v2 01/11] accel/kvm: Check MachineClass kvm_type() return
+ value
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anthony Perard <anthony.perard@citrix.com>, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Huacai Chen <chenhuacai@kernel.org>, xen-devel@lists.xenproject.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Leif Lindholm <leif@nuviainc.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ BALATON Zoltan <balaton@eik.bme.hu>, Leif Lindholm <leif@nuviainc.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
  Radoslaw Biernacki <rad@semihalf.com>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Greg Kurz <groug@kaod.org>, Christian Borntraeger <borntraeger@de.ibm.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mMndsjnenlp1
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20210219173847.2054123-1-philmd@redhat.com>
+ <20210219173847.2054123-2-philmd@redhat.com>
+ <20210222182405.3e6e9a6f.cohuck@redhat.com>
+ <bc37276d-74cc-22f0-fcc0-4ee5e62cf1df@redhat.com>
+ <20210222185044.23fccecc.cohuck@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <0f2a252e-34d8-6714-d1fd-d4e3764feef7@redhat.com>
+Date: Mon, 22 Feb 2021 19:04:32 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
+MIME-Version: 1.0
+In-Reply-To: <20210222185044.23fccecc.cohuck@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: j/+EzyMb2iLj
 
-On Mon, 22 Feb 2021 18:46:15 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On 2/22/21 6:50 PM, Cornelia Huck wrote:
+> On Mon, 22 Feb 2021 18:41:07 +0100
+> Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+> 
+>> On 2/22/21 6:24 PM, Cornelia Huck wrote:
+>>> On Fri, 19 Feb 2021 18:38:37 +0100
+>>> Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>>   
+>>>> MachineClass::kvm_type() can return -1 on failure.
+>>>> Document it, and add a check in kvm_init().
+>>>>
+>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>>>> ---
+>>>>  include/hw/boards.h | 3 ++-
+>>>>  accel/kvm/kvm-all.c | 6 ++++++
+>>>>  2 files changed, 8 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/include/hw/boards.h b/include/hw/boards.h
+>>>> index a46dfe5d1a6..68d3d10f6b0 100644
+>>>> --- a/include/hw/boards.h
+>>>> +++ b/include/hw/boards.h
+>>>> @@ -127,7 +127,8 @@ typedef struct {
+>>>>   *    implement and a stub device is required.
+>>>>   * @kvm_type:
+>>>>   *    Return the type of KVM corresponding to the kvm-type string option or
+>>>> - *    computed based on other criteria such as the host kernel capabilities.
+>>>> + *    computed based on other criteria such as the host kernel capabilities
+>>>> + *    (which can't be negative), or -1 on error.
+>>>>   * @numa_mem_supported:
+>>>>   *    true if '--numa node.mem' option is supported and false otherwise
+>>>>   * @smp_parse:
+>>>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+>>>> index 84c943fcdb2..b069938d881 100644
+>>>> --- a/accel/kvm/kvm-all.c
+>>>> +++ b/accel/kvm/kvm-all.c
+>>>> @@ -2057,6 +2057,12 @@ static int kvm_init(MachineState *ms)
+>>>>                                                              "kvm-type",
+>>>>                                                              &error_abort);
+>>>>          type = mc->kvm_type(ms, kvm_type);
+>>>> +        if (type < 0) {
+>>>> +            ret = -EINVAL;
+>>>> +            fprintf(stderr, "Failed to detect kvm-type for machine '%s'\n",
+>>>> +                    mc->name);
+>>>> +            goto err;
+>>>> +        }
+>>>>      }
+>>>>  
+>>>>      do {  
+>>>
+>>> No objection to this patch; but I'm wondering why some non-pseries
+>>> machines implement the kvm_type callback, when I see the kvm-type
+>>> property only for pseries? Am I holding my git grep wrong?  
+>>
+>> Can it be what David commented here?
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg784508.html
+>>
+> 
+> Ok, I might be confused about the other ppc machines; but I'm wondering
+> about the kvm_type callback for mips and arm/virt. Maybe I'm just
+> confused by the whole mechanism?
 
-> On 2/22/21 6:34 PM, Cornelia Huck wrote:
-> > On Fri, 19 Feb 2021 18:38:38 +0100
-> > Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
-> >  =20
-> >> Introduce the valid_accelerators[] field to express the list
-> >> of valid accelators a machine can use, and add the
-> >> machine_class_valid_for_current_accelerator() and
-> >> machine_class_valid_for_accelerator() methods.
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >> ---
-> >>  include/hw/boards.h | 24 ++++++++++++++++++++++++
-> >>  hw/core/machine.c   | 26 ++++++++++++++++++++++++++
-> >>  2 files changed, 50 insertions(+)
-> >>
-> >> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> >> index 68d3d10f6b0..4d08bc12093 100644
-> >> --- a/include/hw/boards.h
-> >> +++ b/include/hw/boards.h
-> >> @@ -36,6 +36,24 @@ void machine_set_cpu_numa_node(MachineState *machin=
-e,
-> >>                                 const CpuInstanceProperties *props,
-> >>                                 Error **errp);
-> >> =20
-> >> +/**
-> >> + * machine_class_valid_for_accelerator:
-> >> + * @mc: the machine class
-> >> + * @acc_name: accelerator name
-> >> + *
-> >> + * Returns %true if the accelerator is valid for the machine, %false
-> >> + * otherwise. See #MachineClass.valid_accelerators. =20
-> >=20
-> > Naming confusion: is the machine class valid for the accelerator, or
-> > the accelerator valid for the machine class? Or either? :) =20
->=20
-> "the accelerator valid for the machine class".
->=20
-> Is this clearer?
->=20
-> "Returns %true if the current accelerator is valid for the
->  selected machine, %false otherwise.
->=20
-> Or...
->=20
-> "Returns %true if the selected accelerator is valid for the
->  current machine, %false otherwise.
+For MIPS see https://www.linux-kvm.org/images/f/f2/01x08a-MIPS.pdf
+and Jiaxun comment here:
+https://lore.kernel.org/linux-mips/a2a2cfe3-5618-43b1-a6a4-cc768fc1b9fb@www.fastmail.com/
 
-Maybe that one, given how it ends up being called? Or "specified
-machine"?
->=20
-> How would look "either"?
->=20
-> The machine is already selected, and the accelerator too...
+TE KVM: Trap-and-Emul guest kernel
+VZ KVM: HW Virtualized
 
-Yes, so this is basically testing the (machine,accelerator) tuple,
-which is what I meant with 'either'.
-
->=20
-> >  =20
-> >> + */
-> >> +bool machine_class_valid_for_accelerator(MachineClass *mc, const char=
- *acc_name);
-> >> +/**
-> >> + * machine_class_valid_for_current_accelerator:
-> >> + * @mc: the machine class
-> >> + *
-> >> + * Returns %true if the accelerator is valid for the current machine,
-> >> + * %false otherwise. See #MachineClass.valid_accelerators. =20
-> >=20
-> > Same here: current accelerator vs. current machine.
-
-So maybe
-
-"Returns %true if the current accelerator is valid for the specified
-machine class..." ?
-
-> >  =20
-> >> + */
-> >> +bool machine_class_valid_for_current_accelerator(MachineClass *mc);
+For "the whole mechanism" I'll defer to Paolo =)
 

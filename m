@@ -1,66 +1,108 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp641620lfo;
-        Thu, 28 Jan 2021 15:16:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzYMCBRXmt1+U5SFQGw9cAwuPzidLn5lUj2yU0UbNmNaRWy/r4eqfkSvAZsOuofbR9fqaIP
-X-Received: by 2002:a25:e70f:: with SMTP id e15mr2215212ybh.409.1611875776004;
-        Thu, 28 Jan 2021 15:16:16 -0800 (PST)
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1718064lfc;
+        Mon, 22 Feb 2021 05:05:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwhDGym+z4xGeHeQrgSMenVIDWIJQS7aMmbFVIxJpd9C2TJq8RSkx4iqnuI7fTH4w1QU9SA
+X-Received: by 2002:a67:581:: with SMTP id 123mr7023242vsf.14.1613999141441;
+        Mon, 22 Feb 2021 05:05:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613999141; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ia5BaVq8DvLOp3Xub/vQQsOEIf4GlKWejo4+8GfnPYRDG+Wu1fjhmGoBkx/hPBLJD3
+         cMVoSz+CQS1617h1sQoFO/xquOym6eX6/ZRMgS9mHjWgNh+onxgyR2Sh7VFUnjGNTyJS
+         bLbBG0UsvgC7Pur3i1OTr43hfB9BCsLXnkJ4C0SNJ1cBejNqMU0mzs/FdFAq/Cdk+Ggp
+         R4zbQSuFfjE+HTxCFgKGe7Ag2CpK2Kx31+GNEZzmvS5BwlVJ62F5OajsAfkkp+uGjAH5
+         s8wS9OALgnaf6/x/C1qzM4LmFql0DTRWncIJpqF5hPe8ekhbVPdkXtrtpgeIHBkI/KUK
+         vXwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=DnNGWABZCAAbsEvsjfx7EeGaFKqK66Vb507BqlIKgsI=;
+        b=Y7b4gQdAbuQRoiMiP8sV515smAupZ4GFBo6GwV+hTeRspyOryicah9sCszY2HxGYDQ
+         8e6560iUJUl2ztywmo5DXStFGM1pD3R4vJkPUPrqak41TFyivrI++N4Wznox3lSxxKvJ
+         Me1QuYBoLMSzZ3PktqIEYTuh2YRDRV0Obze4709GSnOg0HYo9I/TnyUURD8rFnTz6ekW
+         Hm8Utf++i1xNfDXT3PLayAmeNaMAY/GmeL4eOImmBcBNdAqJJVcWVOVtBXufafMOJnyD
+         UJ0cTOEpqApHC262M8ANnker3QtSaJP8qTV2GGpVeAeZI5LsndF2OO8/GWvcYgm9E88T
+         Dd4Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CHLL9t1u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n2si6282375ybo.259.2021.01.28.15.16.15
+        by mx.google.com with ESMTPS id f3si3218305vkg.10.2021.02.22.05.05.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 15:16:15 -0800 (PST)
+        Mon, 22 Feb 2021 05:05:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33126 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CHLL9t1u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:40746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5GWN-0003z6-Bq
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 18:16:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39680)
+	id 1lEAuC-00059f-0w
+	for alex.bennee@linaro.org; Mon, 22 Feb 2021 08:05:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56200)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l5GW9-0003y1-QZ; Thu, 28 Jan 2021 18:16:01 -0500
-Resent-Date: Thu, 28 Jan 2021 18:16:01 -0500
-Resent-Message-Id: <E1l5GW9-0003y1-QZ@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21385)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1l5GW7-0002fG-A3; Thu, 28 Jan 2021 18:16:01 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1611875752; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=XY5X02W99KMu3YrFAxWS62/A6VDoGtBdSOEl+fDypwEz5SOFf+tNjiyhwyxcM4a2M5JTcEc3/HCZfBi3nbs006aq92I0oVlWyGnhLJhtNUCu/iF/5qOKsA8JM9gt8p+R2U3lCbx9GUVZOGvooZltdQ9/g2F0fDD+y3xldq1D5t8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1611875752;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=m1qk+03XEj5aHx6+c+tPT+lMfwvL+/K28AxQGnb05u0=; 
- b=DWXb7bWf40qIKZfdRObr7+/WBQihnWyY2WdYPgvk9PI+rmRE7mSujXZ9ATl3UjO9wylvFzmCC2yJUTDaxqE4rRuthkv736fmDC56GhrYXxwOeaA/55w0S6DRHkgHANyH7YV7aOlg+a/Ca8Dz3wAU/aLAZtUiq2DZE7TN89xxzPo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1611875751355858.3459826711689;
- Thu, 28 Jan 2021 15:15:51 -0800 (PST)
-In-Reply-To: <20210128224141.638790-1-richard.henderson@linaro.org>
-Subject: Re: [PATCH v4 00/23] target-arm: Implement ARMv8.5-MemTag, user mode
-Message-ID: <161187575010.13416.16830262547371739592@c667a6b167f6>
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lEAu1-00059U-Us; Mon, 22 Feb 2021 08:05:29 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:55133)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lEAtz-0004s5-Ho; Mon, 22 Feb 2021 08:05:29 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id cx11so6364154pjb.4;
+ Mon, 22 Feb 2021 05:05:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DnNGWABZCAAbsEvsjfx7EeGaFKqK66Vb507BqlIKgsI=;
+ b=CHLL9t1uXzZZuIWZMXjSnSBPjw07D55meRoxqBPF0cYF+Wo4CpbU72qaoyF9AVcCq7
+ KRohYk6UPY5/fFu0BgLDXYWuOlnFHGhAzGbNcEaF/1IeqdO6cLw+0eiZw98FYV+2707d
+ 3ytyX+NFx3giQX60tpMYTfqlIHOO40m76HD5eJoOi+LG7zvM8VN3CreNE4rN4WL0gTC2
+ qcdfWUu7WQV0uzcUWnytRD9sEqrELd27/FzYDdm8VST7Dy+fP4vmikmy0po2lTIIIjVG
+ d95WWHeRxs2SjGaHTGnAepniKMEjC6p1yjiZIDQRQtn0daxoL+glSWUwoS4zh1p+/v6j
+ THIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DnNGWABZCAAbsEvsjfx7EeGaFKqK66Vb507BqlIKgsI=;
+ b=AwdL/k/qm3bLd+FFSULyDPXXPb1mIToVzauBUUGisoJEpheLJnK8a2rGFimKf2ckGs
+ G115VN9+HUGPU7kHuDGPfLBU2wiVykPNoqZvZouozE4T3W6j06wQsOLXLO3bxT3ykr26
+ MO4Q8PC/T9R/wRVkmSik83fXYuYXbW2URgeap19nCM8DCMUC1ohR8M+HhgaQRvOLgb+Z
+ CfGGK46byOJsTjW/IR6ftOkpBFRHJ4OxntQdtRbh6HiFXz7xAYvkF4sa11Z8A5MsVaji
+ cwyWlpuw/3P/TSIF4m8PgqxV8tOcKc+1kN9nUhDhGQoUCwrjb+gM/CdXy4hYvIoPBkRq
+ U49g==
+X-Gm-Message-State: AOAM531CS7HitsVtYRnV+EUK4WKSp3mGbByWdUr1Ujx6aZyEGONPwkDG
+ hzGFW77l08KqoWbBLS8EHd4=
+X-Received: by 2002:a17:90a:8906:: with SMTP id
+ u6mr23593119pjn.223.1613999125353; 
+ Mon, 22 Feb 2021 05:05:25 -0800 (PST)
+Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
+ [144.168.56.201])
+ by smtp.gmail.com with ESMTPSA id q126sm19170171pfb.111.2021.02.22.05.05.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Feb 2021 05:05:24 -0800 (PST)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v4 0/5] hw/arm: zynqmp: Implement a CSU DMA model and connect
+ it with GQSPI
+Date: Mon, 22 Feb 2021 21:05:09 +0800
+Message-Id: <20210222130514.2167-1-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Date: Thu, 28 Jan 2021 15:15:51 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1030.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,104 +116,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Bin Meng <bin.meng@windriver.com>,
+ Francisco Iglesias <francisco.iglesias@xilinx.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GnqT5eWvKGo8
+X-TUID: jC27r2t1bbOq
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDEyODIyNDE0MS42Mzg3
-OTAtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNl
-ZW1zIHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cg
-Zm9yCm1vcmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMTAxMjgy
-MjQxNDEuNjM4NzkwLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpTdWJqZWN0OiBbUEFU
-Q0ggdjQgMDAvMjNdIHRhcmdldC1hcm06IEltcGxlbWVudCBBUk12OC41LU1lbVRhZywgdXNlciBt
-b2RlCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2Ug
-YmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1l
-bGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAt
-LWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAt
-LW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1
-YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNv
-bS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjEw
-MTI4MjI0MTQxLjYzODc5MC0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcgLT4gcGF0Y2hl
-dy8yMDIxMDEyODIyNDE0MS42Mzg3OTAtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnClN3
-aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKNmMzNmNmYSB0ZXN0cy90Y2cvYWFyY2g2NDog
-QWRkIG10ZSBzbW9rZSB0ZXN0cwo5Mzg2OGRjIHRhcmdldC9hcm06IEVuYWJsZSBNVEUgZm9yIHVz
-ZXItb25seQo4OWM2N2JiIHRhcmdldC9hcm06IEFkZCBhbGxvY2F0aW9uIHRhZyBzdG9yYWdlIGZv
-ciB1c2VyIG1vZGUKOWU1NWJjZSBsaW51eC11c2VyL2FhcmNoNjQ6IFNpZ25hbCBTRUdWX01URUFF
-UlIgZm9yIGFzeW5jIHRhZyBjaGVjayBlcnJvcgo2NjJmMzA5IGxpbnV4LXVzZXIvYWFyY2g2NDog
-U2lnbmFsIFNFR1ZfTVRFU0VSUiBmb3Igc3luYyB0YWcgY2hlY2sgZmF1bHQKNDA1YzhiYyBsaW51
-eC11c2VyL2FhcmNoNjQ6IFBhc3Mgc3luZHJvbWUgdG8gRVhDXypfQUJPUlQKODUyYzg0NyB0YXJn
-ZXQvYXJtOiBTcGxpdCBvdXQgc3luZHJvbWUuaCBmcm9tIGludGVybmFscy5oCmFhZWEwOTEgbGlu
-dXgtdXNlci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJPVF9NVEUKNDBiNTk4OSBsaW51eC11c2VyL2Fh
-cmNoNjQ6IEltcGxlbWVudCBQUl9NVEVfVENGIGFuZCBQUl9NVEVfVEFHCmZmZTdjOWUgdGFyZ2V0
-L2FybTogVXNlIHRoZSBwcm9wZXIgVEJJIHNldHRpbmdzIGZvciBsaW51eC11c2VyCjc0OWIyMDcg
-dGFyZ2V0L2FybTogSW1wcm92ZSBnZW5fdG9wX2J5dGVfaWdub3JlCjRiMjVmN2YgbGludXgtdXNl
-ci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJfVEFHR0VEX0FERFJfRU5BQkxFCmQ5MDUzMzUgZXhlYzog
-QWRkIHN1cHBvcnQgZm9yIFRBUkdFVF9UQUdHRURfQUREUkVTU0VTCjA3NTdiMTkgbGludXgtdXNl
-cjogRml4IGd1ZXN0X2FkZHJfdmFsaWQgdnMgcmVzZXJ2ZWRfdmEKZjIyOTRjNSBsaW51eC11c2Vy
-OiBEbyBub3QgdXNlIGd1ZXN0X2FkZHJfdmFsaWQgZm9yIGgyZ192YWxpZAo2NzczMGVmIGJzZC11
-c2VyOiBUaWR5IFZFUklGWV9SRUFEL1ZFUklGWV9XUklURQpmNGNkNTRjIGxpbnV4LXVzZXI6IFRp
-ZHkgVkVSSUZZX1JFQUQvVkVSSUZZX1dSSVRFCjZjZjM4MDEgbGludXgtdXNlcjogQ2hlY2sgZm9y
-IG92ZXJmbG93IGluIGFjY2Vzc19vawpjZTQ3OWY2IGV4ZWM6IEltcHJvdmUgdHlwZXMgZm9yIGd1
-ZXN0X2FkZHJfdmFsaWQKOTlhNmM4MyBleGVjOiBVc2UgdWludHB0cl90IGluIGNwdV9sZHN0LmgK
-YjQzNjM5YyBleGVjOiBVc2UgdWludHB0cl90IGZvciBndWVzdF9iYXNlCjJjNzJmZGYgbGludXgt
-dXNlcjogSW50cm9kdWNlIFBBR0VfQU5PTgoyODUwNmY0MSB0Y2c6IEludHJvZHVjZSB0YXJnZXQt
-c3BlY2lmaWMgcGFnZSBkYXRhIGZvciB1c2VyLW9ubHkKCj09PSBPVVRQVVQgQkVHSU4gPT09CjEv
-MjMgQ2hlY2tpbmcgY29tbWl0IDI4NTA2ZjQxOGE0MyAodGNnOiBJbnRyb2R1Y2UgdGFyZ2V0LXNw
-ZWNpZmljIHBhZ2UgZGF0YSBmb3IgdXNlci1vbmx5KQoyLzIzIENoZWNraW5nIGNvbW1pdCAyYzcy
-ZmRmMjhkZTkgKGxpbnV4LXVzZXI6IEludHJvZHVjZSBQQUdFX0FOT04pCjMvMjMgQ2hlY2tpbmcg
-Y29tbWl0IGI0MzYzOWM3YTZmOSAoZXhlYzogVXNlIHVpbnRwdHJfdCBmb3IgZ3Vlc3RfYmFzZSkK
-NC8yMyBDaGVja2luZyBjb21taXQgOTlhNmM4Mzg4NTgzIChleGVjOiBVc2UgdWludHB0cl90IGlu
-IGNwdV9sZHN0LmgpCjUvMjMgQ2hlY2tpbmcgY29tbWl0IGNlNDc5ZjY3M2E2NiAoZXhlYzogSW1w
-cm92ZSB0eXBlcyBmb3IgZ3Vlc3RfYWRkcl92YWxpZCkKNi8yMyBDaGVja2luZyBjb21taXQgNmNm
-MzgwMTZkZTFjIChsaW51eC11c2VyOiBDaGVjayBmb3Igb3ZlcmZsb3cgaW4gYWNjZXNzX29rKQo3
-LzIzIENoZWNraW5nIGNvbW1pdCBmNGNkNTRjZTA2MDYgKGxpbnV4LXVzZXI6IFRpZHkgVkVSSUZZ
-X1JFQUQvVkVSSUZZX1dSSVRFKQo4LzIzIENoZWNraW5nIGNvbW1pdCA2NzczMGVmMDIxNGQgKGJz
-ZC11c2VyOiBUaWR5IFZFUklGWV9SRUFEL1ZFUklGWV9XUklURSkKOS8yMyBDaGVja2luZyBjb21t
-aXQgZjIyOTRjNWFlYjk1IChsaW51eC11c2VyOiBEbyBub3QgdXNlIGd1ZXN0X2FkZHJfdmFsaWQg
-Zm9yIGgyZ192YWxpZCkKMTAvMjMgQ2hlY2tpbmcgY29tbWl0IDA3NTdiMTkwMzZiNyAobGludXgt
-dXNlcjogRml4IGd1ZXN0X2FkZHJfdmFsaWQgdnMgcmVzZXJ2ZWRfdmEpCjExLzIzIENoZWNraW5n
-IGNvbW1pdCBkOTA1MzM1ZmI3YWEgKGV4ZWM6IEFkZCBzdXBwb3J0IGZvciBUQVJHRVRfVEFHR0VE
-X0FERFJFU1NFUykKMTIvMjMgQ2hlY2tpbmcgY29tbWl0IDRiMjVmN2Y0OTllMyAobGludXgtdXNl
-ci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJfVEFHR0VEX0FERFJfRU5BQkxFKQoxMy8yMyBDaGVja2lu
-ZyBjb21taXQgNzQ5YjIwN2E5OGUyICh0YXJnZXQvYXJtOiBJbXByb3ZlIGdlbl90b3BfYnl0ZV9p
-Z25vcmUpCjE0LzIzIENoZWNraW5nIGNvbW1pdCBmZmU3YzllNTkwYzMgKHRhcmdldC9hcm06IFVz
-ZSB0aGUgcHJvcGVyIFRCSSBzZXR0aW5ncyBmb3IgbGludXgtdXNlcikKMTUvMjMgQ2hlY2tpbmcg
-Y29tbWl0IDQwYjU5ODk3MGFjOCAobGludXgtdXNlci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJfTVRF
-X1RDRiBhbmQgUFJfTVRFX1RBRykKMTYvMjMgQ2hlY2tpbmcgY29tbWl0IGFhZWEwOTFjMjM0OSAo
-bGludXgtdXNlci9hYXJjaDY0OiBJbXBsZW1lbnQgUFJPVF9NVEUpCjE3LzIzIENoZWNraW5nIGNv
-bW1pdCA4NTJjODQ3MTQ3OTIgKHRhcmdldC9hcm06IFNwbGl0IG91dCBzeW5kcm9tZS5oIGZyb20g
-aW50ZXJuYWxzLmgpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRv
-ZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzI4MTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0
-Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDUzMCBsaW5lcyBjaGVja2VkCgpQYXRjaCAx
-Ny8yMyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2Ug
-ZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIs
-IHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoxOC8yMyBDaGVja2luZyBjb21taXQgNDA1
-YzhiYzk0MDAyIChsaW51eC11c2VyL2FhcmNoNjQ6IFBhc3Mgc3luZHJvbWUgdG8gRVhDXypfQUJP
-UlQpCjE5LzIzIENoZWNraW5nIGNvbW1pdCA2NjJmMzA5MTViMTcgKGxpbnV4LXVzZXIvYWFyY2g2
-NDogU2lnbmFsIFNFR1ZfTVRFU0VSUiBmb3Igc3luYyB0YWcgY2hlY2sgZmF1bHQpCjIwLzIzIENo
-ZWNraW5nIGNvbW1pdCA5ZTU1YmNlYzUwNjkgKGxpbnV4LXVzZXIvYWFyY2g2NDogU2lnbmFsIFNF
-R1ZfTVRFQUVSUiBmb3IgYXN5bmMgdGFnIGNoZWNrIGVycm9yKQoyMS8yMyBDaGVja2luZyBjb21t
-aXQgODljNjdiYjA2NDNlICh0YXJnZXQvYXJtOiBBZGQgYWxsb2NhdGlvbiB0YWcgc3RvcmFnZSBm
-b3IgdXNlciBtb2RlKQoyMi8yMyBDaGVja2luZyBjb21taXQgOTM4NjhkYzYzMTE0ICh0YXJnZXQv
-YXJtOiBFbmFibGUgTVRFIGZvciB1c2VyLW9ubHkpCjIzLzIzIENoZWNraW5nIGNvbW1pdCA2YzM2
-Y2ZhYmJkOTYgKHRlc3RzL3RjZy9hYXJjaDY0OiBBZGQgbXRlIHNtb2tlIHRlc3RzKQpXQVJOSU5H
-OiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQg
-dXBkYXRpbmc/CiMzNzogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CgpFUlJPUjogdHJhaWxpbmcgc3Rh
-dGVtZW50cyBzaG91bGQgYmUgb24gbmV4dCBsaW5lCiMxNzY6IEZJTEU6IHRlc3RzL3RjZy9hYXJj
-aDY0L210ZS0zLmM6NTA6CisgICAgd2hpbGUgKDEpOwoKRVJST1I6IGJyYWNlcyB7fSBhcmUgbmVj
-ZXNzYXJ5IGZvciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRlbWVudAojMTc2OiBGSUxFOiB0ZXN0cy90
-Y2cvYWFyY2g2NC9tdGUtMy5jOjUwOgorICAgIHdoaWxlICgxKTsKWy4uLl0KCkVSUk9SOiB1c2Ug
-cWVtdV9yZWFsX2hvc3RfcGFnZV9zaXplIGluc3RlYWQgb2YgZ2V0cGFnZXNpemUoKQojMjE0OiBG
-SUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9tdGUtNC5jOjMxOgorICAgIHNpemVfdCBzaXplID0gZ2V0
-cGFnZXNpemUoKSAqIDQ7Cgp0b3RhbDogMyBlcnJvcnMsIDEgd2FybmluZ3MsIDI1MSBsaW5lcyBj
-aGVja2VkCgpQYXRjaCAyMy8yMyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJ
-ZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8g
-dGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBV
-VCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxv
-ZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMTAxMjgyMjQxNDEu
-NjM4NzkwLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy90ZXN0aW5nLmNoZWNrcGF0Y2gv
-P3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNo
-ZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBw
-YXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+From: Bin Meng <bin.meng@windriver.com>
+
+ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
+is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
+crash. This is observed when testing VxWorks 7.
+
+We added a Xilinx CSU DMA model and the implementation is based on
+https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c
+and the one in Edgar's branch.
+
+Differences with Edgar's branch:
+1. Match the registers' FIELD to UG1807.
+2. Remove "byte-align" property. Per UG1807, SIZE and ADDR registers
+   must be word aligned.
+3. Make the values of int_enable and int_disable mutually exclusive
+   otherwise IRQ cannot be delivered.
+4. Clear int_status after int_disable is set.
+5. Coding convention issues clean-up
+
+The DST part of the model is verified along with ZynqMP GQSPI model.
+
+Changes in v4:
+- Add complete CSU DMA model based on Edgar's branch
+- Differences with Edgar's branch:
+  1. Match the registers' FIELD to UG1807.
+  2. Remove "byte-align" property. Per UG1807, SIZE and ADDR registers
+     must be word aligned.
+  3. Make the values of int_enable and int_disable mutually exclusive
+     otherwise IRQ cannot be delivered.
+  4. Clear int_status after int_disable is set.
+  5. Coding convention issues clean-up
+- remove one change that is not a checkpatch warning
+- Rename "csu_dma" to "qspi_dma"
+- Modify XLNX_ZYNQMP_SPIPS_R_MAX
+
+Changes in v3:
+- Implement DMA as a separate CSU DMA model
+- new patch: xlnx-zynqmp: Add XLNX CSU DMA module
+- new patch: xilinx_spips: Remove DMA related code from zynqmp_qspips
+
+Changes in v2:
+- Remove unconnected TYPE_STREAM_SINK link property
+- Add a TYPE_MEMORY_REGION link property, to allow board codes to tell
+  the device what its view of the world that it is doing DMA to is
+- Replace cpu_physical_memory_write() with address_space_write()
+
+Xuzhou Cheng (5):
+  hw/dma: xlnx_csu_dma: Implement a Xilinx CSU DMA model
+  hw/arm: xlnx-zynqmp: Clean up coding convention issues
+  hw/arm: xlnx-zynqmp: Connect a Xilinx CSU DMA module for QSPI
+  hw/ssi: xilinx_spips: Clean up coding convention issues
+  hw/ssi: xilinx_spips: Remove DMA related dead codes from zynqmp_spips
+
+ include/hw/arm/xlnx-zynqmp.h  |   5 +-
+ include/hw/dma/xlnx_csu_dma.h |  52 +++
+ include/hw/ssi/xilinx_spips.h |   2 +-
+ hw/arm/xlnx-zynqmp.c          |  23 +-
+ hw/dma/xlnx_csu_dma.c         | 747 ++++++++++++++++++++++++++++++++++
+ hw/ssi/xilinx_spips.c         |  33 +-
+ hw/arm/Kconfig                |   1 +
+ hw/dma/Kconfig                |   4 +
+ hw/dma/meson.build            |   1 +
+ 9 files changed, 844 insertions(+), 24 deletions(-)
+ create mode 100644 include/hw/dma/xlnx_csu_dma.h
+ create mode 100644 hw/dma/xlnx_csu_dma.c
+
+-- 
+2.25.1
+

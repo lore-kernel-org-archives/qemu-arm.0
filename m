@@ -1,180 +1,154 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1786851lfc;
-        Mon, 22 Feb 2021 06:35:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxOBp2Cf1vOSyDnL2JkveZlKOS9Z7vtM3hebHPGg6AUqtK7AE+tJGvfdn06Jh+3tKdNsRYU
-X-Received: by 2002:a17:906:c7c5:: with SMTP id dc5mr13067852ejb.470.1614004508269;
-        Mon, 22 Feb 2021 06:35:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614004508; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1835889lfc;
+        Mon, 22 Feb 2021 07:37:43 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJIYiBBD6QH4ESrcq7ij+WJ/DSxmnQQroeI8RINfuq11fpeL2wRzie+H5XkpSUcIVPRbFx
+X-Received: by 2002:a02:714f:: with SMTP id n15mr21234963jaf.6.1614008262922;
+        Mon, 22 Feb 2021 07:37:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614008262; cv=none;
         d=google.com; s=arc-20160816;
-        b=SwM57yLGbPfJmIWsYGf/WrBedg95uuTHkoY7wuBCicNVp3lTBrb43/k4CWxaQE0Dyj
-         4t22JT2ACK4tZ49CcHFEiwqz85X1MfIR9tfi5rsbgl0Bq0crf3Pz3KnoRe2T3bOLZ33C
-         Cv6yJQKLPEhOgBV7n4+lJuEWXBdNcj+pEO6mqdIq5XJBeHEa5B/8ryN8GK4OXsWE4EOo
-         xNB0rJokzUSPvfcTAycaFPecYhGHscQfdGNhp5nRF702D4k6jc73z1MRMch2hjdPFvc6
-         wnqYUGaTbPHHi1pj3aqqobVPVdr71MBYS4ZnQvSfigK6vpmuEsYw13jZhacN5LU0sx3w
-         vtqw==
+        b=qHQpxKx4B7w9fyplhr2tU1w8JdGZT4ErLg6wDCIh8snFcW313QWQ0Ropl1RJ0FqXbQ
+         HjaqqC9cx/FvOxmxcmh4+AgLSchf8+FlyzwyIMO+e5SVgL1hJo/c9gLOhSCd43LhA56Z
+         hehd5+FKBMGgrARikQqF4Nl7IrI6ITgY/oq9fduZ2KKMYhwsi9l8gUple81YCG/IJUTW
+         rCMYBSD65LbH8gND0fGnxLPLSmkdau3TdOjyhrHqkEELPawT1Q9pJZcirOvvFu6yzsV0
+         UrgotJDR8pUaTNQWmLP7wpr9tIjslVFlE+lZX+JZ+6mby+EoaicumoXvQ5YxsHhkjXTP
+         5fuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=ROXc4pPESl2hnVPAmTj87jG8Y89YLot+XFk/YVIBdHE=;
-        b=Ju263zVuIz/aI9pujHNxfYqUZo+bDi82Zxmjdzmp4KPZagHF5j9AlEz7PokX7/1sqs
-         hq17HnZx4X7/qRZ6NwZKo3jysy2XPwWTBGBRrqxjJYE5AymIbBg7mIxvp4wNkw8ixMvx
-         vesKS4f+cq2JLiTNqR7PCGF6eYx1QRyRMiaeX8UeZoNm62dVA1xjvNhz7rnM8LrjcvAo
-         2RM/wpielq8irvQ+F0O6SNmuU7xDoUHhLtHqj9+JZDEHE5znPP9/gSSENtQpLTDmZOyE
-         q9xhr6AHq2L70crBBlC0VFoTXwxdHd2Ru7xpWg5cUI9IMv66ez85w6EmbaPB/naIgHeu
-         qvoA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=wyBas48ZELzJVZiXTdRF/v2cojCIAy9JbUfyh8ucTAY=;
+        b=pgmWmtxI5jgpreaUVsg9cuTwLTS96yWkuP7hOqJ1/J7+0b5xwBG4YTXm4RGdNubHxL
+         bg9m3HabxMsPeykH6gfuYK/kBL1vjSPK87wW07wSi1x1dm5ke/MlY+Isn41w0xFG8UkH
+         ACulm1fkOh0sMJSTESCVLbIXTKbEMAzCaFNjk3galU83fyijICPrsUtWiE7/q+AZfLqv
+         FrHT07+P7ZBiMD+BFnizwgSzHWVxXTa1hq9uF9aBtF73QHWx05PEZedi+eoStBmuzCnD
+         wCezEWolUEk0DQbEMwd9o0BaLgBcUNr29qoZX+BuED8+Tn4npZIGmDvXu0+pGCjZaG68
+         ZLRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Jt/qkbBE";
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id n5si1257790ejb.640.2021.02.22.06.35.07
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RKvLX3DW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w24si15936526jah.69.2021.02.22.07.37.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Feb 2021 06:35:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Feb 2021 07:37:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Jt/qkbBE";
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1614004507;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ROXc4pPESl2hnVPAmTj87jG8Y89YLot+XFk/YVIBdHE=;
-	b=Jt/qkbBEPmMixjX8Cxmjpq12XhW8YqfqzH4LeJZ4Jz/LKMaiCBixxwVJPaSdSPFbCFv1mQ
-	WH9g8IyAs+SzBrH6xpMoYXuA7YmAWy2Q3xBFYKWhQMR33ANBkifNATxUHG5x1LS5Q369UL
-	q7W23asOTJq3K5jwts0i5kia39LnG/Y=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-592-D5AI-G5YODiYB2H-30P_yA-1; Mon, 22 Feb 2021 09:35:05 -0500
-X-MC-Unique: D5AI-G5YODiYB2H-30P_yA-1
-Received: by mail-ed1-f70.google.com with SMTP id dk21so7070951edb.10
-        for <alex.bennee@linaro.org>; Mon, 22 Feb 2021 06:35:04 -0800 (PST)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RKvLX3DW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:54256 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lEDHK-0004A9-7m
+	for alex.bennee@linaro.org; Mon, 22 Feb 2021 10:37:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37460)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lEDEs-0003QD-FS; Mon, 22 Feb 2021 10:35:12 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b]:34626)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lEDEo-0002Xy-T3; Mon, 22 Feb 2021 10:35:09 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id hs11so30145524ejc.1;
+ Mon, 22 Feb 2021 07:35:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wyBas48ZELzJVZiXTdRF/v2cojCIAy9JbUfyh8ucTAY=;
+ b=RKvLX3DWqFvwnhGOOmzlzuTpF4Blyh9XtnlYQ/6h09/Q9zCqvRb9Ec1KeCnl7Et+AZ
+ Z+uMJUz42MeXyiuqeJ4STXOQMjtM2xPLmtrFwSSwoVP/1rwULRivAWoMKw/q/OGnT/G3
+ vPn8npH2AHYLND5NUyMxIm+68VZoJCDoBy0cLf+E7fWSW4XqCjI9KIe7N0a+88y6uk0D
+ pn+vX0aYVvxnbqN3Im12kWVhnwyD/eYxySx5/8MMPDdlGICHBdmBOFc0OJK/DUF6vCIS
+ gt3PYNoSTC8PVvE68R3mAuYPQtJhN9yyoHD1b9vqi7N1upMvwFw45P5uVewUiWxz2qLH
+ 2EOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=ROXc4pPESl2hnVPAmTj87jG8Y89YLot+XFk/YVIBdHE=;
-        b=ZZnN9V/eDVcSsaA1UcaU/1GKlKEOzadCIFv3+QUvcEqfcCisBPB2LUQDfcEUmWo9Z8
-         TXuL0gFIMBvyV77zfZ7g5V4kE0adCWwpldF2+6PW7hoA0rIPdxsoJ1v2jRxMXzqx9fcr
-         vdilRaPprAre5tw7Rq5Kjuje7WrhD9DhLPKZZGmjCkFOJZgmY6mYNHbqxkGwwJt+R7xV
-         qkobydzZ3w+YkK/DqnDTvGlxvho9JDHG6LRAwB9x7bLqls4ridhoo+xivnjg4769HAXz
-         6cHxRIqIMkZ3Lp3LyRNRiGxniQgfcoZfeynY1AsllvfT2uVdioRnHRg3WWdz8FYiyxIM
-         lblA==
-X-Gm-Message-State: AOAM533NwJG/cgTNQpUDWJBDZNQHh9XSidC0+sDe7VOgJHJVi+NKst1c
-	MnjyHG7vh1sdb3MdCqurHC0eQNye3NsHLmmDrOA18/T94+pryoqUaxTRNkAL4LjrWBEdH9MXaaO
-	23xk+FMP2OUcfrDaq
-X-Received: by 2002:a50:9dc9:: with SMTP id l9mr22865692edk.377.1614004503648;
-        Mon, 22 Feb 2021 06:35:03 -0800 (PST)
-X-Received: by 2002:a50:9dc9:: with SMTP id l9mr22865651edk.377.1614004503527;
-        Mon, 22 Feb 2021 06:35:03 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id s14sm10457606ejf.47.2021.02.22.06.35.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Feb 2021 06:35:02 -0800 (PST)
-Subject: Re: [PATCH 0/2] sysemu: Let VMChangeStateHandler take boolean
- 'running' argument
-To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc: Huacai Chen <chenhuacai@kernel.org>, Greg Kurz <groug@kaod.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Amit Shah <amit@kernel.org>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- qemu-arm@nongnu.org, John Snow <jsnow@redhat.com>, qemu-s390x@nongnu.org,
- Paul Durrant <paul@xen.org>, Anthony Perard <anthony.perard@citrix.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Halil Pasic <pasic@linux.ibm.com>, Fam Zheng <fam@euphon.net>,
- qemu-ppc@nongnu.org, kvm@vger.kernel.org,
- Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org,
- Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
- qemu-block@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>
-References: <20210111152020.1422021-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <84048681-32d3-7217-e94c-461501cf550b@redhat.com>
-Date: Mon, 22 Feb 2021 15:34:59 +0100
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wyBas48ZELzJVZiXTdRF/v2cojCIAy9JbUfyh8ucTAY=;
+ b=kcgsv/ITlry6cABTVO90vnj8IXfOsVACQ1wm6bUrOzMc2YSAA1aQ1eJGkMsgxVJEll
+ wUUqbHKGLjXJe0dWJnJoviBkjOnO4GKvSegedzk0NCxfTMPkcOiIRy/mKFmZCvVJ7y76
+ BnVN2y+8AaoVbLTCfs8jRC99rcwe34ML993iZZvPX4M3Qmy/pi6qjb2K/9HrVzg+x0pX
+ Dr6dYuPYKZbn0ikKNw4btdcvF2wyEBEaUQDK0kPIwcfR3/89Y8aLtH7taa7XCHFmPQsv
+ AnHPL758UkYXzhhvzkzExFnURbkGQI64Bdb4fVcnzLYsEKFIW0qCIboyr1qRApcUQg24
+ 3CzA==
+X-Gm-Message-State: AOAM530c/E/zT51kTOBuoSaAhZmUrxeJhqMdLp++XOk0qymmYz3ciQrk
+ hy9655jp0MmZqpdETCAEzwBOKUx+rHo=
+X-Received: by 2002:a17:907:7667:: with SMTP id
+ kk7mr9538172ejc.92.1614008102862; 
+ Mon, 22 Feb 2021 07:35:02 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id ga5sm10801504ejb.114.2021.02.22.07.35.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Feb 2021 07:35:02 -0800 (PST)
+Subject: Re: tests: n810 arm failing
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <cef2f119-3612-65a0-d828-b480179dc3a9@amsat.org>
+Message-ID: <cbf28177-bf94-2452-1c66-2f99a8f3dbf0@amsat.org>
+Date: Mon, 22 Feb 2021 16:35:00 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210111152020.1422021-1-philmd@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <cef2f119-3612-65a0-d828-b480179dc3a9@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: FUUKfFm76XZS
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4cavc7JuIWyD
 
-Paolo, this series is fully reviewed, can it go via your
-misc tree?
+On 2/21/21 6:26 PM, Philippe Mathieu-Daudé wrote:
+> Hi,
+> 
+> The n810 arm test failed on latest master:
+> 
+> https://gitlab.com/qemu-project/qemu/-/jobs/1045015424/artifacts/browse/build/tests/results/latest/test-results/26-tests_acceptance_machine_arm_n8x0.py_N8x0Machine.test_n810/
+...
+>     raise RuntimeError("Test interrupted by SIGTERM")
+> 16:03:49 ERROR| RuntimeError: Test interrupted by SIGTERM
+> 16:03:49 ERROR| ERROR
+> 26-tests/acceptance/machine_arm_n8x0.py:N8x0Machine.test_n810 ->
+> RuntimeError: Test interrupted by SIGTERM
+> 16:03:49 INFO |
+> Runner error occurred: Timeout reached
 
-On 1/11/21 4:20 PM, Philippe Mathieu-Daudé wrote:
-> Trivial prototype change to clarify the use of the 'running'
-> argument of VMChangeStateHandler.
-> 
-> Green CI:
-> https://gitlab.com/philmd/qemu/-/pipelines/239497352
-> 
-> Philippe Mathieu-Daudé (2):
->   sysemu/runstate: Let runstate_is_running() return bool
->   sysemu: Let VMChangeStateHandler take boolean 'running' argument
-> 
->  include/sysemu/runstate.h   | 12 +++++++++---
->  target/arm/kvm_arm.h        |  2 +-
->  target/ppc/cpu-qom.h        |  2 +-
->  accel/xen/xen-all.c         |  2 +-
->  audio/audio.c               |  2 +-
->  block/block-backend.c       |  2 +-
->  gdbstub.c                   |  2 +-
->  hw/block/pflash_cfi01.c     |  2 +-
->  hw/block/virtio-blk.c       |  2 +-
->  hw/display/qxl.c            |  2 +-
->  hw/i386/kvm/clock.c         |  2 +-
->  hw/i386/kvm/i8254.c         |  2 +-
->  hw/i386/kvmvapic.c          |  2 +-
->  hw/i386/xen/xen-hvm.c       |  2 +-
->  hw/ide/core.c               |  2 +-
->  hw/intc/arm_gicv3_its_kvm.c |  2 +-
->  hw/intc/arm_gicv3_kvm.c     |  2 +-
->  hw/intc/spapr_xive_kvm.c    |  2 +-
->  hw/misc/mac_via.c           |  2 +-
->  hw/net/e1000e_core.c        |  2 +-
->  hw/nvram/spapr_nvram.c      |  2 +-
->  hw/ppc/ppc.c                |  2 +-
->  hw/ppc/ppc_booke.c          |  2 +-
->  hw/s390x/tod-kvm.c          |  2 +-
->  hw/scsi/scsi-bus.c          |  2 +-
->  hw/usb/hcd-ehci.c           |  2 +-
->  hw/usb/host-libusb.c        |  2 +-
->  hw/usb/redirect.c           |  2 +-
->  hw/vfio/migration.c         |  2 +-
->  hw/virtio/virtio-rng.c      |  2 +-
->  hw/virtio/virtio.c          |  2 +-
->  net/net.c                   |  2 +-
->  softmmu/memory.c            |  2 +-
->  softmmu/runstate.c          |  4 ++--
->  target/arm/kvm.c            |  2 +-
->  target/i386/kvm/kvm.c       |  2 +-
->  target/i386/sev.c           |  2 +-
->  target/i386/whpx/whpx-all.c |  2 +-
->  target/mips/kvm.c           |  4 ++--
->  ui/gtk.c                    |  2 +-
->  ui/spice-core.c             |  2 +-
->  41 files changed, 51 insertions(+), 45 deletions(-)
-> 
+What we are missing here is we got a timeout ^
+but return an error, so the debug.log is not shown:
+
+> Original status: ERROR
+
+...
+> "tests/venv/lib/python3.7/site-packages/avocado/plugins/runner.py", line
+> 77, in sigterm_handler\n    raise RuntimeError("Test interrupted by
+> SIGTERM")\nRuntimeError: Test interrupted by SIGTERM\n', 'timeout': 90,
+> 'whiteboard': '', 'phase': 'FINISHED', 'class_name': 'N8x0Machine',
+> 'job_logdir': 'tests/results/job-2021-02-21T16.00-e662b93',
+> 'job_unique_id': 'e662b936b3c04ad082359ee970534ac7ae7ec3bc', 'params': []}

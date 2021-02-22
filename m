@@ -1,102 +1,104 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1718064lfc;
-        Mon, 22 Feb 2021 05:05:47 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwhDGym+z4xGeHeQrgSMenVIDWIJQS7aMmbFVIxJpd9C2TJq8RSkx4iqnuI7fTH4w1QU9SA
-X-Received: by 2002:a67:581:: with SMTP id 123mr7023242vsf.14.1613999141441;
-        Mon, 22 Feb 2021 05:05:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613999141; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1718452lfc;
+        Mon, 22 Feb 2021 05:06:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz7/hsvaqkXPdbYMiTvo9R4uNe9uMFAHc6k03rzGk2Cl94dsxh2UpF4CT2owtKjFqvuHstK
+X-Received: by 2002:a67:f706:: with SMTP id m6mr3068448vso.42.1613999175645;
+        Mon, 22 Feb 2021 05:06:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613999175; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ia5BaVq8DvLOp3Xub/vQQsOEIf4GlKWejo4+8GfnPYRDG+Wu1fjhmGoBkx/hPBLJD3
-         cMVoSz+CQS1617h1sQoFO/xquOym6eX6/ZRMgS9mHjWgNh+onxgyR2Sh7VFUnjGNTyJS
-         bLbBG0UsvgC7Pur3i1OTr43hfB9BCsLXnkJ4C0SNJ1cBejNqMU0mzs/FdFAq/Cdk+Ggp
-         R4zbQSuFfjE+HTxCFgKGe7Ag2CpK2Kx31+GNEZzmvS5BwlVJ62F5OajsAfkkp+uGjAH5
-         s8wS9OALgnaf6/x/C1qzM4LmFql0DTRWncIJpqF5hPe8ekhbVPdkXtrtpgeIHBkI/KUK
-         vXwA==
+        b=VzWCiMyIyKKSYzrdU/xlxVwGlzhtv4hTgI3XnMOFINOxexAJvHh9K+SeyOtl7Umv1T
+         l6oMa2qP7xzxKoww7/4Zflu//2GGIfFo0AfuUSaxb7u2Dkh6mQxTBYfYoO2IYF01YpkB
+         jtDCTcxVZy8oC2qkV33noBfCCT5MgTBpyKPyF27IRNQ7Es9HgoaaTJ6wJ4oTvLX28FJ9
+         pG1pmkIk36NnKG/3Ia82B2KEs2iqzMlr0qQ0do4rmsH/DtHEz3Dyei6YO0/Y/OO+qSOd
+         L+sCuZFlCOeEqEfkQoJjAW3inqH7du18qQOy7DyJXsyPW+B4Ta/U4CF7RWV3w05vSX9u
+         NARg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=DnNGWABZCAAbsEvsjfx7EeGaFKqK66Vb507BqlIKgsI=;
-        b=Y7b4gQdAbuQRoiMiP8sV515smAupZ4GFBo6GwV+hTeRspyOryicah9sCszY2HxGYDQ
-         8e6560iUJUl2ztywmo5DXStFGM1pD3R4vJkPUPrqak41TFyivrI++N4Wznox3lSxxKvJ
-         Me1QuYBoLMSzZ3PktqIEYTuh2YRDRV0Obze4709GSnOg0HYo9I/TnyUURD8rFnTz6ekW
-         Hm8Utf++i1xNfDXT3PLayAmeNaMAY/GmeL4eOImmBcBNdAqJJVcWVOVtBXufafMOJnyD
-         UJ0cTOEpqApHC262M8ANnker3QtSaJP8qTV2GGpVeAeZI5LsndF2OO8/GWvcYgm9E88T
-         Dd4Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Kwg26IYLswqhkAaLNyAvGqcoNwZFW+tZAzkQ6dBJ5rU=;
+        b=KGprY/lhBYWpMtrttzHivBnB1z2+KnvywhLw2JOwsUymozxqImot8rinH7V9+MYr2O
+         a5pULDOfaYmBbd9/Letrt0BpCanbywws4jVgod16hkwhb5XGUT9PBYZ+QCDz5r/qYJXI
+         ZuKplH/5W1998LBX44QKwMFTEiqe5sHaHLQ9toj7DC5VDWkeQiAr08owLZejMHYVJ/uJ
+         3m+ph4+Cf6kwP+HTI4pue5YLDxTk4LPlMOWb3UHZJhoRp7hk15RWQW2tte5LiWIaZepu
+         xiHsbJ4h1NMiBZ5+pZmTuS6e5HdpdnkrO359rL8/p0I7bg/u5PHqjyrmmaYIAUvCCqnM
+         HcXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CHLL9t1u;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=miPRyhip;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f3si3218305vkg.10.2021.02.22.05.05.41
+        by mx.google.com with ESMTPS id p10si598381uaq.33.2021.02.22.05.06.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Feb 2021 05:05:41 -0800 (PST)
+        Mon, 22 Feb 2021 05:06:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CHLL9t1u;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=miPRyhip;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40746 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41222 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEAuC-00059f-0w
-	for alex.bennee@linaro.org; Mon, 22 Feb 2021 08:05:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56200)
+	id 1lEAuk-0005OL-W0
+	for alex.bennee@linaro.org; Mon, 22 Feb 2021 08:06:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lEAu1-00059U-Us; Mon, 22 Feb 2021 08:05:29 -0500
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030]:55133)
+ id 1lEAuH-0005NG-9e; Mon, 22 Feb 2021 08:05:46 -0500
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:42692)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lEAtz-0004s5-Ho; Mon, 22 Feb 2021 08:05:29 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id cx11so6364154pjb.4;
- Mon, 22 Feb 2021 05:05:26 -0800 (PST)
+ id 1lEAuE-00054o-RM; Mon, 22 Feb 2021 08:05:45 -0500
+Received: by mail-pg1-x533.google.com with SMTP id o38so10166881pgm.9;
+ Mon, 22 Feb 2021 05:05:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DnNGWABZCAAbsEvsjfx7EeGaFKqK66Vb507BqlIKgsI=;
- b=CHLL9t1uXzZZuIWZMXjSnSBPjw07D55meRoxqBPF0cYF+Wo4CpbU72qaoyF9AVcCq7
- KRohYk6UPY5/fFu0BgLDXYWuOlnFHGhAzGbNcEaF/1IeqdO6cLw+0eiZw98FYV+2707d
- 3ytyX+NFx3giQX60tpMYTfqlIHOO40m76HD5eJoOi+LG7zvM8VN3CreNE4rN4WL0gTC2
- qcdfWUu7WQV0uzcUWnytRD9sEqrELd27/FzYDdm8VST7Dy+fP4vmikmy0po2lTIIIjVG
- d95WWHeRxs2SjGaHTGnAepniKMEjC6p1yjiZIDQRQtn0daxoL+glSWUwoS4zh1p+/v6j
- THIg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Kwg26IYLswqhkAaLNyAvGqcoNwZFW+tZAzkQ6dBJ5rU=;
+ b=miPRyhipQ6UTMoO39zLO69JmxZH7KgkqBlLStdKQKxo5B4MxtTH5IuZs8kifXJ/xwH
+ G8Q2dT3VlXwK7cBlOj+0sojHNz7Cm8ah1yi3k8QOUYlCGtlWW+xziCu8oo2zwUk8WX6b
+ E9gwoyr8yLVpFhjzmgX+VqhZNEjHg4Xs9MklHzDtuvm/sOWiFJpcJXNsY6rhO8Bqmqfr
+ 0bJX7VPbuBC4OjY/tbKz+FtCz+NcLMk3zpibuagro73Oy3R4RMioRbtd1xYCTIms/N+V
+ IieaTNVrmLbaST4Yu0HsqpobyzFfI9dx1gW3ISXqe1Iu5FDoo1VFCAVoC84gb/h+F194
+ ZrVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DnNGWABZCAAbsEvsjfx7EeGaFKqK66Vb507BqlIKgsI=;
- b=AwdL/k/qm3bLd+FFSULyDPXXPb1mIToVzauBUUGisoJEpheLJnK8a2rGFimKf2ckGs
- G115VN9+HUGPU7kHuDGPfLBU2wiVykPNoqZvZouozE4T3W6j06wQsOLXLO3bxT3ykr26
- MO4Q8PC/T9R/wRVkmSik83fXYuYXbW2URgeap19nCM8DCMUC1ohR8M+HhgaQRvOLgb+Z
- CfGGK46byOJsTjW/IR6ftOkpBFRHJ4OxntQdtRbh6HiFXz7xAYvkF4sa11Z8A5MsVaji
- cwyWlpuw/3P/TSIF4m8PgqxV8tOcKc+1kN9nUhDhGQoUCwrjb+gM/CdXy4hYvIoPBkRq
- U49g==
-X-Gm-Message-State: AOAM531CS7HitsVtYRnV+EUK4WKSp3mGbByWdUr1Ujx6aZyEGONPwkDG
- hzGFW77l08KqoWbBLS8EHd4=
-X-Received: by 2002:a17:90a:8906:: with SMTP id
- u6mr23593119pjn.223.1613999125353; 
- Mon, 22 Feb 2021 05:05:25 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Kwg26IYLswqhkAaLNyAvGqcoNwZFW+tZAzkQ6dBJ5rU=;
+ b=tlhz8XcfFRwicCq193iLYq/M3KxaYQaqLV8cqS+yS+gYZk69ixtMXzvVDj1y8PPPec
+ M+oXAUzEFAIRHK0XDRLPs9H6CygRfcFHTig2mRdWxLZr4U6uZczXbiMcKomxqr0Iq6xm
+ nSZvNoZccMO/qQhBgX+xok/oCn9jY1USKuxK/bT4MBv82AcfSSO7X6lmuQ9VJh5fZKwU
+ o0FB5330DXcZcOoFhpjWNo28F09vX69lpDrkcqTYW2NCKLJFqIuZ0wN+sLxHl+VE5kLJ
+ BJYcC1lTrN9NQWZB62oA1pFDDaKnwILRhuqUDJsrgCohGB4YcEivvQS6fhmJ3cqbmvO3
+ Gr0A==
+X-Gm-Message-State: AOAM532q0Hj970F6AyiKVFpk1R7/FhxA/uIwAM3o7D81GiFtq3jHdfEP
+ Y8xNKGKMCGYKVoEboTslWjzNCb67m0A=
+X-Received: by 2002:aa7:9e90:0:b029:1dd:3cd6:9dde with SMTP id
+ p16-20020aa79e900000b02901dd3cd69ddemr21423060pfq.57.1613999139984; 
+ Mon, 22 Feb 2021 05:05:39 -0800 (PST)
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
  [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id q126sm19170171pfb.111.2021.02.22.05.05.20
+ by smtp.gmail.com with ESMTPSA id q126sm19170171pfb.111.2021.02.22.05.05.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Feb 2021 05:05:24 -0800 (PST)
+ Mon, 22 Feb 2021 05:05:39 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Alistair Francis <alistair.francis@wdc.com>,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 0/5] hw/arm: zynqmp: Implement a CSU DMA model and connect
- it with GQSPI
-Date: Mon, 22 Feb 2021 21:05:09 +0800
-Message-Id: <20210222130514.2167-1-bmeng.cn@gmail.com>
+Subject: [PATCH v4 3/5] hw/arm: xlnx-zynqmp: Connect a Xilinx CSU DMA module
+ for QSPI
+Date: Mon, 22 Feb 2021 21:05:12 +0800
+Message-Id: <20210222130514.2167-4-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210222130514.2167-1-bmeng.cn@gmail.com>
+References: <20210222130514.2167-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1030.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,77 +120,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Bin Meng <bin.meng@windriver.com>,
  Francisco Iglesias <francisco.iglesias@xilinx.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+ qemu-devel@nongnu.org, Xuzhou Cheng <xuzhou.cheng@windriver.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jC27r2t1bbOq
+X-TUID: ZEKbW2zWzOJ0
 
-From: Bin Meng <bin.meng@windriver.com>
+From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 
-ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
-is unimplemented. When QSPI is programmed to use DMA mode, QEMU will
-crash. This is observed when testing VxWorks 7.
+Add a Xilinx CSU DMA module to ZynqMP SoC, and connent the stream
+link of GQSPI to CSU DMA.
 
-We added a Xilinx CSU DMA model and the implementation is based on
-https://github.com/Xilinx/qemu/blob/master/hw/dma/csu_stream_dma.c
-and the one in Edgar's branch.
+Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
-Differences with Edgar's branch:
-1. Match the registers' FIELD to UG1807.
-2. Remove "byte-align" property. Per UG1807, SIZE and ADDR registers
-   must be word aligned.
-3. Make the values of int_enable and int_disable mutually exclusive
-   otherwise IRQ cannot be delivered.
-4. Clear int_status after int_disable is set.
-5. Coding convention issues clean-up
-
-The DST part of the model is verified along with ZynqMP GQSPI model.
+---
 
 Changes in v4:
-- Add complete CSU DMA model based on Edgar's branch
-- Differences with Edgar's branch:
-  1. Match the registers' FIELD to UG1807.
-  2. Remove "byte-align" property. Per UG1807, SIZE and ADDR registers
-     must be word aligned.
-  3. Make the values of int_enable and int_disable mutually exclusive
-     otherwise IRQ cannot be delivered.
-  4. Clear int_status after int_disable is set.
-  5. Coding convention issues clean-up
-- remove one change that is not a checkpatch warning
 - Rename "csu_dma" to "qspi_dma"
-- Modify XLNX_ZYNQMP_SPIPS_R_MAX
 
 Changes in v3:
-- Implement DMA as a separate CSU DMA model
 - new patch: xlnx-zynqmp: Add XLNX CSU DMA module
-- new patch: xilinx_spips: Remove DMA related code from zynqmp_qspips
 
-Changes in v2:
-- Remove unconnected TYPE_STREAM_SINK link property
-- Add a TYPE_MEMORY_REGION link property, to allow board codes to tell
-  the device what its view of the world that it is doing DMA to is
-- Replace cpu_physical_memory_write() with address_space_write()
+ include/hw/arm/xlnx-zynqmp.h |  2 ++
+ hw/arm/xlnx-zynqmp.c         | 14 ++++++++++++++
+ hw/arm/Kconfig               |  1 +
+ 3 files changed, 17 insertions(+)
 
-Xuzhou Cheng (5):
-  hw/dma: xlnx_csu_dma: Implement a Xilinx CSU DMA model
-  hw/arm: xlnx-zynqmp: Clean up coding convention issues
-  hw/arm: xlnx-zynqmp: Connect a Xilinx CSU DMA module for QSPI
-  hw/ssi: xilinx_spips: Clean up coding convention issues
-  hw/ssi: xilinx_spips: Remove DMA related dead codes from zynqmp_spips
-
- include/hw/arm/xlnx-zynqmp.h  |   5 +-
- include/hw/dma/xlnx_csu_dma.h |  52 +++
- include/hw/ssi/xilinx_spips.h |   2 +-
- hw/arm/xlnx-zynqmp.c          |  23 +-
- hw/dma/xlnx_csu_dma.c         | 747 ++++++++++++++++++++++++++++++++++
- hw/ssi/xilinx_spips.c         |  33 +-
- hw/arm/Kconfig                |   1 +
- hw/dma/Kconfig                |   4 +
- hw/dma/meson.build            |   1 +
- 9 files changed, 844 insertions(+), 24 deletions(-)
- create mode 100644 include/hw/dma/xlnx_csu_dma.h
- create mode 100644 hw/dma/xlnx_csu_dma.c
-
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index be15cc8814..2edeed911c 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -35,6 +35,7 @@
+ #include "target/arm/cpu.h"
+ #include "qom/object.h"
+ #include "net/can_emu.h"
++#include "hw/dma/xlnx_csu_dma.h"
+ 
+ #define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
+ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+@@ -108,6 +109,7 @@ struct XlnxZynqMPState {
+     XlnxZynqMPRTC rtc;
+     XlnxZDMA gdma[XLNX_ZYNQMP_NUM_GDMA_CH];
+     XlnxZDMA adma[XLNX_ZYNQMP_NUM_ADMA_CH];
++    XlnxCSUDMA qspi_dma;
+ 
+     char *boot_cpu;
+     ARMCPU *boot_cpu_ptr;
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 49465a2794..30f43dfda2 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -50,6 +50,7 @@
+ #define QSPI_ADDR           0xff0f0000
+ #define LQSPI_ADDR          0xc0000000
+ #define QSPI_IRQ            15
++#define QSPI_DMA_ADDR       0xff0f0800
+ 
+ #define DP_ADDR             0xfd4a0000
+ #define DP_IRQ              113
+@@ -63,6 +64,8 @@
+ #define RTC_ADDR            0xffa60000
+ #define RTC_IRQ             26
+ 
++
++
+ #define SDHCI_CAPABILITIES  0x280737ec6481 /* Datasheet: UG1085 (v1.7) */
+ 
+ static const uint64_t gem_addr[XLNX_ZYNQMP_NUM_GEMS] = {
+@@ -284,6 +287,8 @@ static void xlnx_zynqmp_init(Object *obj)
+     for (i = 0; i < XLNX_ZYNQMP_NUM_ADMA_CH; i++) {
+         object_initialize_child(obj, "adma[*]", &s->adma[i], TYPE_XLNX_ZDMA);
+     }
++
++    object_initialize_child(obj, "qspi-dma", &s->qspi_dma, TYPE_XLNX_CSU_DMA);
+ }
+ 
+ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+@@ -643,6 +648,15 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->adma[i]), 0,
+                            gic_spi[adma_ch_intr[i]]);
+     }
++
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->qspi_dma), errp)) {
++        return;
++    }
++
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->qspi_dma), 0, QSPI_DMA_ADDR);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->qspi_dma), 0, gic_spi[QSPI_IRQ]);
++    object_property_set_link(OBJECT(&s->qspi), "stream-connected-dma",
++                             OBJECT(&s->qspi_dma), errp);
+ }
+ 
+ static Property xlnx_zynqmp_props[] = {
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 4e6f4ffe90..27ec10f89b 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -353,6 +353,7 @@ config XLNX_ZYNQMP_ARM
+     select SSI_M25P80
+     select XILINX_AXI
+     select XILINX_SPIPS
++    select XLNX_CSU_DMA
+     select XLNX_ZYNQMP
+     select XLNX_ZDMA
+ 
 -- 
 2.25.1
 

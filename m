@@ -1,195 +1,230 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1730861lfc;
-        Mon, 22 Feb 2021 05:21:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw03e/0TGASo4dUZBOiqNPHoDzTyXvkHH3610e5pgjWC0jblfi2EYw0ykFX3UOr8/U3q/qj
-X-Received: by 2002:a9d:4e12:: with SMTP id p18mr15500702otf.201.1614000071506;
-        Mon, 22 Feb 2021 05:21:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614000071; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1732106lfc;
+        Mon, 22 Feb 2021 05:22:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzyMs815d2uiZzM4jAwE2A1cQyDduAc5zMVxC/1ksXyrKHBv0gZ4ocRZzfgpxU4aSWI31FB
+X-Received: by 2002:a05:6e02:1b8b:: with SMTP id h11mr15013368ili.32.1614000174138;
+        Mon, 22 Feb 2021 05:22:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614000174; cv=none;
         d=google.com; s=arc-20160816;
-        b=P3Qyb460NO3wmKaumWtmCwTm/vBqvJch1QrFGfdGiU6BVsKS3/DCqZ3J17iU1y5hhp
-         6dsaWNFiOx1QVnacWTabgJ2/wjFvhH/TCYGtp2Mr+SjAU+REYa7weFgUSNAVqbXwruyy
-         dJj8YifiHVGtCWIC4Iz0r8MxlXqOhfVXPi81MxDUTBRR0kF6aU2uUlVQtlnxGOMEsBBG
-         kRB9rACBxCTngxkHRC3gk8TWNDBKUcEwNPkIHCXTZRuRz9/NELSUhJRXcDf4MQPqZA1V
-         0WV6csHf9ziPHWdQ1zEG2pxBBaClECfRU63CdFlq2z6yivDdDJTtNlz/UNUo10TId0Wy
-         rBlA==
+        b=Z2nxNrbM5vyC5CvwsY86r+YtVtqN+EMQZAbDgu/s0X29Bx11vUNwsMBO/Jv8OU4OBJ
+         msA/JrFQSNf/tAw24S+0K76z0mTnGKpvU+Bh3UY8oQ6OkdnKJiDNJSE3NkRzCXstUdb3
+         81TM/K4I7MckSM+UWImOYpZusqq1x1H39FlzstDOvCXnGgsoqTcQTtBRx4WW7bGb8xJL
+         pPpyoAjtkM97k1ofvpNADC9Oe9E7IIE4gzzcAk0G3JKF6zDJ1Lnou/nrGf+nkLqtu8mo
+         +Kzl3BZwb5RiUznocj+euoWh1Fbo9kTUN4WpfO5RJrApfxrkMwFdL4j3ws0SRMuHNttH
+         bchA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:sender:precedence:errors-to:list-subscribe:list-help
-         :list-post:list-unsubscribe:list-id;
-        bh=Qug2RTu/T1uSQ745n8lC2c0QqoReD0ieGgc66jNB2QI=;
-        b=YnUUn3RJJNWRVy9BIkSXXVw0ztNCludn4u9GIBNBT1s+IDssqZ5KQWlJdwYrtOamHL
-         7KEtwJrJbMztnvtx0q3wh9yQp8NFIWHSZ24XdRjHZXta70i/pPEyojh+52MQaupyIoBU
-         Dxv68sYlSaR+qRPXSTZgupU55KWFUCfAX+lRKPFdt0TW2zvMCbHLoWyom3bh/wd/8cH6
-         fo37K202/S06Uijf5xH3IDoyYRZ0L90wrrld7o94Zp4FwFkxAv4/N80qppOEDQH48c+O
-         cVnXrJbNogwA3pCbRrqmbBb9DI3FqbMViCUCwjQ4ecl9hBK9uIcgQEtP7xhScY8tNkjw
-         DkpQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=+UzSdyjSd904zCeIE0aTyBCjawmbJBRlBQ1EDG6ABek=;
+        b=F1uhlx8ujDhfh9gADgKdt2HYgYful1jBq79MsuJnRAyQJrnZS6WN5QIs4X9v38H7vC
+         TgculVApV0Ra0CZPUNDvRUVXIma77fNrrJ4W8q7TWV/ZRFRXvL8oZMz2MjIEvXAJebw4
+         uAptgooObDw1kBFA+RBnSVFk5xyLbtyAXPoaycOy1bNsR4SQLE8JHbHk7X56xolFQkiJ
+         LVSxkSigUyjGvNZlYY/MkHwj6v3rK/1Vm7tGtgy0/IXKB2eJlv7ZJUJqZBY/RtbeeSh8
+         Jp2v/GvFqfmZoYhsRz8/C7lo56Lj9qY+gYk9dGyj9vZZt/qkrx20m27HOCqbT9BFFL3Q
+         Ubog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DP5MsoxP;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id q20si10122831otf.3.2021.02.22.05.21.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Feb 2021 05:21:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="H/vU+GcD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q18si19001582jat.57.2021.02.22.05.22.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Feb 2021 05:22:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DP5MsoxP;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.88046.165391 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lEB7T-0002DZ-2B; Mon, 22 Feb 2021 13:19:23 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 88046.165391; Mon, 22 Feb 2021 13:19:23 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lEB7S-0002DS-VH; Mon, 22 Feb 2021 13:19:22 +0000
-Received: by outflank-mailman (input) for mailman id 88046;
- Mon, 22 Feb 2021 13:19:21 +0000
-Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
- helo=us1-amaz-eas2.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=V+0I=HY=redhat.com=philmd@srs-us1.protection.inumbo.net>)
- id 1lEB7R-0002DN-8r
- for xen-devel@lists.xenproject.org; Mon, 22 Feb 2021 13:19:21 +0000
-Received: from us-smtp-delivery-124.mimecast.com (unknown [216.205.24.124])
- by us1-amaz-eas2.inumbo.com (Halon) with ESMTP
- id 247dde78-34ac-4b7a-85a6-69aaca5549ff;
- Mon, 22 Feb 2021 13:19:20 +0000 (UTC)
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-261-7SJOOPFgMHu-GualZedBhQ-1; Mon, 22 Feb 2021 08:19:17 -0500
-Received: by mail-ej1-f72.google.com with SMTP id yh28so3985705ejb.11
- for <xen-devel@lists.xenproject.org>; Mon, 22 Feb 2021 05:19:17 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id kd13sm6734645ejc.106.2021.02.22.05.19.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Feb 2021 05:19:15 -0800 (PST)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 247dde78-34ac-4b7a-85a6-69aaca5549ff
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1613999959;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Qug2RTu/T1uSQ745n8lC2c0QqoReD0ieGgc66jNB2QI=;
-	b=DP5MsoxPqZr6RjnVFpMb5qSgPTT6REsm0tdYzTax3iVGEq4Zg4xCcDtXb8Z0+YfMHgQJYn
-	OOKkgW92WwYuoPy0vaIbPn59IZT9PgMdwF+rohSJgqZlU8W0GwXvWeYtkZbu8EoPH4aIww
-	Cwh77KpCGW8WNcxi7aNwmYcCW/pU16I=
-X-MC-Unique: 7SJOOPFgMHu-GualZedBhQ-1
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="H/vU+GcD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46080 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lEBAr-0004yt-Dz
+	for alex.bennee@linaro.org; Mon, 22 Feb 2021 08:22:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59138)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lEB3x-0005uC-Kr; Mon, 22 Feb 2021 08:15:45 -0500
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d]:41554)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lEB3o-00016M-Eg; Mon, 22 Feb 2021 08:15:45 -0500
+Received: by mail-pf1-x42d.google.com with SMTP id q20so6557181pfu.8;
+ Mon, 22 Feb 2021 05:15:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+UzSdyjSd904zCeIE0aTyBCjawmbJBRlBQ1EDG6ABek=;
+ b=H/vU+GcDF+rNYkcu4oMkbTRtvLcpM1uQ5Phuclloz9JjJfT//68zj6gUmkhK//vWBu
+ NXiYx1WKHllQJ3AQU7WGUIcYECyEWS9erFs0t7Yv4cBN3d0i8IwH1LvlP3wDUK6wn/5e
+ BVRbUfy9majf/6ZtnqE7lch16JosinS6Om1xEq7o5Q3yfbCa6xvlzchEE7Tn2BwS7li+
+ FRjsm0n6hqvofDgmg37MGQ+twVoRZ0OtiOYIj+mTod/rRhTtCHTJ/JrTa3VN2QzlC388
+ 8oNmOxLAPxRjJ/lrahZakIIigxbeI9TJVMKXCvzeHTkMLfCNEeu6c1J0GtF3DffJRGcI
+ DDfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Qug2RTu/T1uSQ745n8lC2c0QqoReD0ieGgc66jNB2QI=;
-        b=d8xUNjHWwdEpFzNoD3YY+rWrWRkQry9JuDashrhYkop8bz+e7ue4mr9RjeXCUsm9nj
-         Wyok9dvdmOP4/SuPTFT6WAHINN8BpZovDUP/AoxfC8+3mObYMrfGIsNDGmHRE88ifag0
-         shTImiEWArFAhUsA3oqSM9O9xO3bcLkvK5oFsmynUrlviSz0IQv+/B+SwC4E0K5v8n5j
-         gEONyFgBD7oefqaJis8UozXQyFk0vatzPCpNaK5oHxI8PcJDQ+FlYCP30qYsniN5mIAt
-         3FRe1Y4b0TKHeYhaPjnoYt569d0IEIn92S03BKxt/S++gwTEMtbMGfU1M5D9GtfvVG/l
-         d7fw==
-X-Gm-Message-State: AOAM531dd0QThIxub6WUAbqR90FrW3JFjrQA1af8euDYLc9gzhdY7b7f
-	aESwfm4ld2H4CpBJguYdT77WAQ9R5LM+CiC8MmUg3Xv5OSV2i3gMIR5hUFzJ4yd8X3y0d9MrUuR
-	Dol7Mo/nwjIoWLV/g99IPHP/VFaU=
-X-Received: by 2002:a17:906:cf8f:: with SMTP id um15mr5937389ejb.455.1613999956676;
-        Mon, 22 Feb 2021 05:19:16 -0800 (PST)
-X-Received: by 2002:a17:906:cf8f:: with SMTP id um15mr5937362ejb.455.1613999956555;
-        Mon, 22 Feb 2021 05:19:16 -0800 (PST)
-Subject: Re: [RFC PATCH v2 06/11] hw/ppc: Restrict KVM to various PPC machines
-To: David Gibson <david@gibson.dropbear.id.au>
-Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Anthony Perard <anthony.perard@citrix.com>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Huacai Chen <chenhuacai@kernel.org>, xen-devel@lists.xenproject.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- Stefano Stabellini <sstabellini@kernel.org>,
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- BALATON Zoltan <balaton@eik.bme.hu>, Leif Lindholm <leif@nuviainc.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>,
- Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Greg Kurz <groug@kaod.org>, Christian Borntraeger <borntraeger@de.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20210219173847.2054123-1-philmd@redhat.com>
- <20210219173847.2054123-7-philmd@redhat.com>
- <YDNIQiHG0nfKXNR8@yekko.fritz.box>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e28dc7fe-3a78-6b24-0034-830909f71f8e@redhat.com>
-Date: Mon, 22 Feb 2021 14:19:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=+UzSdyjSd904zCeIE0aTyBCjawmbJBRlBQ1EDG6ABek=;
+ b=CK/RKb5kl1Q0r7uRuCr85FndgJ9v6SFTikoN5xqk3NtbvL/cQHM78i6SLvHjHbLYI3
+ 2165gxExhrtUbsAw6FWEHkAhWUg66CMgNalCgnuu8Wm2ShchGPOLytdTWtAPD3mj4yDr
+ Sa05YxuJBvVDkwt6zu/vOfA8NyP5isWTS1v2/1fAuVTtru8cD3ozxVd7jlLc/OqOvIPJ
+ fLfS46vLIn0OvbsEq4ZirfrRtbMyNt5vJkMz6udqdUxgKHClKjmWwpvKXvDT35lwsF/m
+ dA8LJqjQEAp38F4BzHLMwq6V1HgVLuDIRp83o3l9iupWmdrvwuWF3J+vk6b7rDkF+MXY
+ Y+Tg==
+X-Gm-Message-State: AOAM532sEexjr5ni+sR4WPAZV2agltsa2Jgirn1BaP1bl8e69xW87lNR
+ FmEQS6ejc4yfwxUfjxd6t1g=
+X-Received: by 2002:aa7:9182:0:b029:1de:e96f:a866 with SMTP id
+ x2-20020aa791820000b02901dee96fa866mr13986091pfa.67.1613999734882; 
+ Mon, 22 Feb 2021 05:15:34 -0800 (PST)
+Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
+ [144.168.56.201])
+ by smtp.gmail.com with ESMTPSA id p8sm17473190pgi.21.2021.02.22.05.15.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Feb 2021 05:15:34 -0800 (PST)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [RESEND PATCH v4 4/5] hw/ssi: xilinx_spips: Clean up coding
+ convention issues
+Date: Mon, 22 Feb 2021 21:15:01 +0800
+Message-Id: <20210222131502.3098-5-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210222131502.3098-1-bmeng.cn@gmail.com>
+References: <20210222131502.3098-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <YDNIQiHG0nfKXNR8@yekko.fritz.box>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ddog49u4KnLi
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pf1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Francisco Iglesias <francisco.iglesias@xilinx.com>,
+ qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /gwLm5UE8FCR
 
-On 2/22/21 6:59 AM, David Gibson wrote:
-> On Fri, Feb 19, 2021 at 06:38:42PM +0100, Philippe Mathieu-DaudÈ wrote:
->> Restrit KVM to the following PPC machines:
->> - 40p
->> - bamboo
->> - g3beige
->> - mac99
->> - mpc8544ds
->> - ppce500
->> - pseries
->> - sam460ex
->> - virtex-ml507
-> 
-> Hrm.
-> 
-> The reason this list is kind of surprising is because there are 3
-> different "flavours" of KVM on ppc: KVM HV ("pseries" only), KVM PR
-> (almost any combination, theoretically, but kind of buggy in
-> practice), and the Book E specific KVM (Book-E systems with HV
-> extensions only).
-> 
-> But basically, qemu explicitly managing what accelerators are
-> available for each machine seems the wrong way around to me.  The
-> approach we've generally taken is that qemu requests the specific
-> features it needs of KVM, and KVM tells us whether it can supply those
-> or not (which may involve selecting between one of the several
-> flavours).
-> 
-> That way we can extend KVM to cover more situations without needing
-> corresponding changes in qemu every time.
+From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 
-OK thanks for the information. I'll wait the other patches
-get reviewed (in particular the most important ones, 2 and
-10) before respining including this information.
+There are some coding convention warnings in xilinx_spips.c,
+as reported by:
 
-Regards,
+  $ ./scripts/checkpatch.pl hw/ssi/xilinx_spips.c
 
-Phil.
+Let's clean them up.
+
+Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+Signed-off-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Philippe Mathieu-Daud√© <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+
+(no changes since v1)
+
+ hw/ssi/xilinx_spips.c | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
+
+diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+index a897034601..8a0cc22d42 100644
+--- a/hw/ssi/xilinx_spips.c
++++ b/hw/ssi/xilinx_spips.c
+@@ -176,7 +176,8 @@
+     FIELD(GQSPI_FIFO_CTRL, GENERIC_FIFO_RESET, 0, 1)
+ #define R_GQSPI_GFIFO_THRESH    (0x150 / 4)
+ #define R_GQSPI_DATA_STS (0x15c / 4)
+-/* We use the snapshot register to hold the core state for the currently
++/*
++ * We use the snapshot register to hold the core state for the currently
+  * or most recently executed command. So the generic fifo format is defined
+  * for the snapshot register
+  */
+@@ -424,7 +425,8 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)
+     xlnx_zynqmp_qspips_update_ixr(s);
+ }
+ 
+-/* N way (num) in place bit striper. Lay out row wise bits (MSB to LSB)
++/*
++ * N way (num) in place bit striper. Lay out row wise bits (MSB to LSB)
+  * column wise (from element 0 to N-1). num is the length of x, and dir
+  * reverses the direction of the transform. Best illustrated by example:
+  * Each digit in the below array is a single bit (num == 3):
+@@ -637,8 +639,10 @@ static void xilinx_spips_flush_txfifo(XilinxSPIPS *s)
+                 tx_rx[i] = tx;
+             }
+         } else {
+-            /* Extract a dummy byte and generate dummy cycles according to the
+-             * link state */
++            /*
++             * Extract a dummy byte and generate dummy cycles according to the
++             * link state
++             */
+             tx = fifo8_pop(&s->tx_fifo);
+             dummy_cycles = 8 / s->link_state;
+         }
+@@ -721,8 +725,9 @@ static void xilinx_spips_flush_txfifo(XilinxSPIPS *s)
+             }
+             break;
+         case (SNOOP_ADDR):
+-            /* Address has been transmitted, transmit dummy cycles now if
+-             * needed */
++            /*
++             * Address has been transmitted, transmit dummy cycles now if needed
++             */
+             if (s->cmd_dummies < 0) {
+                 s->snoop_state = SNOOP_NONE;
+             } else {
+@@ -876,7 +881,7 @@ static void xlnx_zynqmp_qspips_notify(void *opaque)
+ }
+ 
+ static uint64_t xilinx_spips_read(void *opaque, hwaddr addr,
+-                                                        unsigned size)
++                                  unsigned size)
+ {
+     XilinxSPIPS *s = opaque;
+     uint32_t mask = ~0;
+@@ -970,7 +975,7 @@ static uint64_t xlnx_zynqmp_qspips_read(void *opaque,
+ }
+ 
+ static void xilinx_spips_write(void *opaque, hwaddr addr,
+-                                        uint64_t value, unsigned size)
++                               uint64_t value, unsigned size)
+ {
+     int mask = ~0;
+     XilinxSPIPS *s = opaque;
+@@ -1072,7 +1077,7 @@ static void xilinx_qspips_write(void *opaque, hwaddr addr,
+ }
+ 
+ static void xlnx_zynqmp_qspips_write(void *opaque, hwaddr addr,
+-                                        uint64_t value, unsigned size)
++                                     uint64_t value, unsigned size)
+ {
+     XlnxZynqMPQSPIPS *s = XLNX_ZYNQMP_QSPIPS(opaque);
+     uint32_t reg = addr / 4;
+-- 
+2.25.1
 

@@ -1,75 +1,75 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1924351lfc;
-        Mon, 22 Feb 2021 09:36:17 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzakRFMUXXD1I5f5Xrz+kA+DLu0/iWshMEHQ4pfoF9qRdAPnM3jFHx23gcS56kwDb6xK8wR
-X-Received: by 2002:a05:6e02:d0f:: with SMTP id g15mr8560808ilj.88.1614015377854;
-        Mon, 22 Feb 2021 09:36:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614015377; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1926304lfc;
+        Mon, 22 Feb 2021 09:39:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxK4ff2sM7PhHd43qKJ1kvmHspRVqA2e86xw5Aucv7WmPM9LMkMv89FULGCKq9gDE9DaEDG
+X-Received: by 2002:a05:6602:200e:: with SMTP id y14mr10720126iod.94.1614015559482;
+        Mon, 22 Feb 2021 09:39:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614015559; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZrDc7Id8LgQvZ5Ym86o+zfo9NTmbcEdYuA06W7hInmODxxRnINPGU6P4zfzBt1DS39
-         +gNRo2P0mRroehctr+Qw+dJLWtfta8FU0l9SCFvZejaarMezkuGXympmFDJFcJxkjPYy
-         C+U+A9yv3x+p1HzUaeNZeGbZzwZ1fcQv4OxYt+HFQpEgADi2/fsHEKWGjsV6YGf5QpnC
-         8PfBk/kwyB7tsVN0orgdhQLZ2Jl1XAF3/GEwnl66ymXz3Xmp1TGC6JvzwU00det/rVcT
-         GzfpgscXBz0VO4jBTE8hmd7yh2AnGDl1w6QIRIo2zWrE06znxHNp8eRFIBG8/ViF1wGs
-         EIYw==
+        b=yKdnU8zhitiK/v0kASpwESfbqW8+xX49zOaLkMAu/4Fnom11FzN2NDmapQ7UL1Si6C
+         M79wK24tv+VrNJUU+cKoB04JWYjXyNw56SdExbJ1SK9Awl2Y+JcHrcUY+U9QxIz93/Qm
+         g+V9JZuxpnAYiOTmOLFcPXZ0JKMsN3SZtm54GiRKYZUAYxNYvEFl72BdB3yggYwuCjrX
+         yRVOmoUvSuDONewwrJsKskDySCtRLrdI4G6mLUNLU/bau7HaxkWGJCd2oq6aL5e3ttsl
+         gENBydaLpYfPh1lsZEJDv0Q0CFudIAJ+deYValVmR2nvrYhSGo5SQR3NlVihkLpdDmVZ
+         BCJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature
          :sender:precedence:errors-to:list-subscribe:list-help:list-post
          :list-unsubscribe:list-id;
-        bh=XWsN624cEMx0QkfAoPhColDm3XkV4SngFq4vEfyfRY4=;
-        b=bXYgdRiuxG2u6r9o5vxZ7UFiEmiV73csFou3gpBxxxGaqs9Y89sNuBAMDkhn51oCfn
-         lsliRovxPhf2NfRe6G8zj6KLk8vOnOyjxA1xG53ZjXKajFNX5ESHlvBmjXhEs5mU650J
-         JNA74sXfzuIIX8Jr5m8ubsKhdPz2jUa19U1BVtnjyXNI6nUo6Jr9glDWa/m/mh2WtDuf
-         G9Ev0x0+g9etZuYpb5LL5W0aJrUCG4S1sXMpOGEEbWXp/5eRLu5mxTSaxqh/xxvhhIxi
-         KudRMXPCgZNk8ONRywIFAwSLLt6SiuqPiVLoPBq4uAc12dAk/FMQJ9HrIa7D5QuEc9EJ
-         t4mA==
+        bh=4lA4izgL6BmBHFfoBO0go7fPCtxFMbj7pq95MLNGllc=;
+        b=PL3T4ShBC4iC7eAk6bUM1IAlGjilIf4nMYWoBVP2d2T4l6UnA6ehA0x6VUyz7mbT+D
+         QybxtNeLlE74fQvd2n5xjaILn3J+h4/P/9VNrsa2UxU7Xy8GEzDyvUffG0nkdskIJm6n
+         pJb/hO1L5QeXIhpVHDVDKZQQEyqoxhq88sDcnAKyOe4u5Vl/LZjwKJXHE9KpqoBZ+3Ym
+         LO8IAb2MJ8fbiIz88ET3y2pvb+SyQ75stS/IHVDZDt7eq1Rd7o0w6u9cg3fdF6o48AbN
+         XHDsVZzUq8eOTzAcsQI/hSJjErBeeIYDfs1snrNGs7KH+PZov8ojtwGoTU03bpGj/WeQ
+         +Vew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MRd/l2kJ";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LnFc6ewX;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <xen-devel-bounces@lists.xenproject.org>
 Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id e8si16770894iot.12.2021.02.22.09.36.17
+        by mx.google.com with ESMTPS id h5si7129311ilh.109.2021.02.22.09.39.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Feb 2021 09:36:17 -0800 (PST)
+        Mon, 22 Feb 2021 09:39:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MRd/l2kJ";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LnFc6ewX;
        spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from list by lists.xenproject.org with outflank-mailman.88299.165917 (Exim 4.92)
+Received: from list by lists.xenproject.org with outflank-mailman.88302.165929 (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lEF6W-0006D0-6g; Mon, 22 Feb 2021 17:34:40 +0000
+	id 1lEFA1-0006Mf-NX; Mon, 22 Feb 2021 17:38:17 +0000
 X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 88299.165917; Mon, 22 Feb 2021 17:34:40 +0000
+Received: by outflank-mailman (output) from mailman id 88302.165929; Mon, 22 Feb 2021 17:38:17 +0000
 Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
 	by lists.xenproject.org with esmtp (Exim 4.92)
 	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1lEF6W-0006Ct-3E; Mon, 22 Feb 2021 17:34:40 +0000
-Received: by outflank-mailman (input) for mailman id 88299;
- Mon, 22 Feb 2021 17:34:39 +0000
+	id 1lEFA1-0006MY-KE; Mon, 22 Feb 2021 17:38:17 +0000
+Received: by outflank-mailman (input) for mailman id 88302;
+ Mon, 22 Feb 2021 17:38:16 +0000
 Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
  helo=us1-amaz-eas2.inumbo.com)
  by lists.xenproject.org with esmtp (Exim 4.92)
  (envelope-from <SRS0=cC4D=HY=redhat.com=cohuck@srs-us1.protection.inumbo.net>)
- id 1lEF6V-0006Co-13
- for xen-devel@lists.xenproject.org; Mon, 22 Feb 2021 17:34:39 +0000
-Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
+ id 1lEFA0-0006MT-1g
+ for xen-devel@lists.xenproject.org; Mon, 22 Feb 2021 17:38:16 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [216.205.24.124])
  by us1-amaz-eas2.inumbo.com (Halon) with ESMTP
- id 7f8e8e55-6765-41c4-90ae-d4664e6b01b0;
- Mon, 22 Feb 2021 17:34:38 +0000 (UTC)
+ id d88c079e-5b5f-4c27-af19-e6b89c5bcf92;
+ Mon, 22 Feb 2021 17:38:15 +0000 (UTC)
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-454-vQd1LyseM5qTcpsZxvKmjQ-1; Mon, 22 Feb 2021 12:34:33 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-287-011n0yg1NUOpvcUU3B4QYw-1; Mon, 22 Feb 2021 12:38:10 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E7AB1850233;
- Mon, 22 Feb 2021 17:34:10 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92829195D560;
+ Mon, 22 Feb 2021 17:38:06 +0000 (UTC)
 Received: from gondolin (ovpn-113-115.ams2.redhat.com [10.36.113.115])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 30F26E2CE;
- Mon, 22 Feb 2021 17:34:03 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 11BEF5C1BD;
+ Mon, 22 Feb 2021 17:37:53 +0000 (UTC)
 X-BeenThere: xen-devel@lists.xenproject.org
 List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
 List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
@@ -81,19 +81,19 @@ List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
 Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
 Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 7f8e8e55-6765-41c4-90ae-d4664e6b01b0
+X-Inumbo-ID: d88c079e-5b5f-4c27-af19-e6b89c5bcf92
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1614015278;
+	s=mimecast20190719; t=1614015495;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=XWsN624cEMx0QkfAoPhColDm3XkV4SngFq4vEfyfRY4=;
-	b=MRd/l2kJEH2fk0oqWs5VEoOg+Z8kLRs1I7qlcUCSvaXMdmRnmoZcsvxbPyu8jDe1i59nge
-	syWoEWc+f+3nTsafBDe+iqHmv0wnC+eH4PaCg70ElYHY4qsljt0Eba4IyGuzkCj8dDd3nI
-	b/NEFHCqkJHTjwjbE3V51LGUYnERWWg=
-X-MC-Unique: vQd1LyseM5qTcpsZxvKmjQ-1
-Date: Mon, 22 Feb 2021 18:34:00 +0100
+	bh=4lA4izgL6BmBHFfoBO0go7fPCtxFMbj7pq95MLNGllc=;
+	b=LnFc6ewXYM4QD9GMDLV9UCERGgaDu5QETE3r3gLZ4aaK1JFNJqKlYdzUURtKeFq9Hatv+T
+	L4qz7jClJmYYDyfgmlrdqruyINFRGll7k5pkm+pBJGSp47K960S6J9buQHB6dWnnDEUz5q
+	GdW6wRyh4rGPv6MvZX/u6nIcTr9tjM8=
+X-MC-Unique: 011n0yg1NUOpvcUU3B4QYw-1
+Date: Mon, 22 Feb 2021 18:37:51 +0100
 From: Cornelia Huck <cohuck@redhat.com>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
 Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, Peter
@@ -116,139 +116,56 @@ Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, Peter
  <mark.cave-ayland@ilande.co.uk>, Aleksandar Rikalo
  <aleksandar.rikalo@syrmia.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
  <f4bug@amsat.org>
-Subject: Re: [PATCH v2 02/11] hw/boards: Introduce
- machine_class_valid_for_accelerator()
-Message-ID: <20210222183400.0c151d46.cohuck@redhat.com>
-In-Reply-To: <20210219173847.2054123-3-philmd@redhat.com>
+Subject: Re: [PATCH v2 07/11] hw/s390x: Explicit the s390-ccw-virtio
+ machines support TCG and KVM
+Message-ID: <20210222183751.0a8f2d2d.cohuck@redhat.com>
+In-Reply-To: <20210219173847.2054123-8-philmd@redhat.com>
 References: <20210219173847.2054123-1-philmd@redhat.com>
-	<20210219173847.2054123-3-philmd@redhat.com>
+	<20210219173847.2054123-8-philmd@redhat.com>
 Organization: Red Hat GmbH
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-TUID: zuUQNwI7aXYp
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-TUID: 441nm6FdlO30
 
-On Fri, 19 Feb 2021 18:38:38 +0100
+On Fri, 19 Feb 2021 18:38:43 +0100
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-> Introduce the valid_accelerators[] field to express the list
-> of valid accelators a machine can use, and add the
-> machine_class_valid_for_current_accelerator() and
-> machine_class_valid_for_accelerator() methods.
+I'd lose the 'Explicit' in $SUBJECT.
+
+
+> All s390-ccw-virtio machines support TCG and KVM.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  include/hw/boards.h | 24 ++++++++++++++++++++++++
->  hw/core/machine.c   | 26 ++++++++++++++++++++++++++
->  2 files changed, 50 insertions(+)
+>  hw/s390x/s390-virtio-ccw.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 >=20
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 68d3d10f6b0..4d08bc12093 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -36,6 +36,24 @@ void machine_set_cpu_numa_node(MachineState *machine,
->                                 const CpuInstanceProperties *props,
->                                 Error **errp);
-> =20
-> +/**
-> + * machine_class_valid_for_accelerator:
-> + * @mc: the machine class
-> + * @acc_name: accelerator name
-> + *
-> + * Returns %true if the accelerator is valid for the machine, %false
-> + * otherwise. See #MachineClass.valid_accelerators.
-
-Naming confusion: is the machine class valid for the accelerator, or
-the accelerator valid for the machine class? Or either? :)
-
-> + */
-> +bool machine_class_valid_for_accelerator(MachineClass *mc, const char *a=
-cc_name);
-> +/**
-> + * machine_class_valid_for_current_accelerator:
-> + * @mc: the machine class
-> + *
-> + * Returns %true if the accelerator is valid for the current machine,
-> + * %false otherwise. See #MachineClass.valid_accelerators.
-
-Same here: current accelerator vs. current machine.
-
-> + */
-> +bool machine_class_valid_for_current_accelerator(MachineClass *mc);
-> +
->  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char=
- *type);
->  /*
->   * Checks that backend isn't used, preps it for exclusive usage and
-> @@ -125,6 +143,11 @@ typedef struct {
->   *    should instead use "unimplemented-device" for all memory ranges wh=
-ere
->   *    the guest will attempt to probe for a device that QEMU doesn't
->   *    implement and a stub device is required.
-> + * @valid_accelerators:
-> + *    If this machine supports a specific set of virtualization accelera=
-tors,
-> + *    this contains a NULL-terminated list of the accelerators that can =
-be
-> + *    used. If this field is not set, any accelerator is valid. The QTest
-> + *    accelerator is always valid.
->   * @kvm_type:
->   *    Return the type of KVM corresponding to the kvm-type string option=
- or
->   *    computed based on other criteria such as the host kernel capabilit=
-ies
-> @@ -166,6 +189,7 @@ struct MachineClass {
->      const char *alias;
->      const char *desc;
->      const char *deprecation_reason;
-> +    const char *const *valid_accelerators;
-> =20
->      void (*init)(MachineState *state);
->      void (*reset)(MachineState *state);
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 970046f4388..c42d8e382b1 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -518,6 +518,32 @@ static void machine_set_nvdimm_persistence(Object *o=
-bj, const char *value,
->      nvdimms_state->persistence_string =3D g_strdup(value);
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 2972b607f36..1f168485066 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -586,6 +586,10 @@ static ram_addr_t s390_fixup_ram_size(ram_addr_t sz)
+>      return newsz;
 >  }
 > =20
-> +bool machine_class_valid_for_accelerator(MachineClass *mc, const char *a=
-cc_name)
-> +{
-> +    const char *const *name =3D mc->valid_accelerators;
+> +static const char *const valid_accels[] =3D {
+> +    "tcg", "kvm", NULL
+> +};
 > +
-> +    if (!name) {
-> +        return true;
-> +    }
-> +    if (strcmp(acc_name, "qtest") =3D=3D 0) {
-> +        return true;
-> +    }
-> +
-> +    for (unsigned i =3D 0; name[i]; i++) {
-> +        if (strcasecmp(acc_name, name[i]) =3D=3D 0) {
-> +            return true;
-> +        }
-> +    }
-> +    return false;
-> +}
-> +
-> +bool machine_class_valid_for_current_accelerator(MachineClass *mc)
-> +{
-> +    AccelClass *ac =3D ACCEL_GET_CLASS(current_accel());
-> +
-> +    return machine_class_valid_for_accelerator(mc, ac->name);
-> +}
-
-The implementation of the function tests for the current accelerator,
-so I think you need to tweak the description above?
-
-> +
->  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char=
- *type)
+>  static void ccw_machine_class_init(ObjectClass *oc, void *data)
 >  {
->      QAPI_LIST_PREPEND(mc->allowed_dynamic_sysbus_devices, g_strdup(type)=
-);
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> @@ -612,6 +616,7 @@ static void ccw_machine_class_init(ObjectClass *oc, v=
+oid *data)
+>      mc->possible_cpu_arch_ids =3D s390_possible_cpu_arch_ids;
+>      /* it is overridden with 'host' cpu *in kvm_arch_init* */
+>      mc->default_cpu_type =3D S390_CPU_TYPE_NAME("qemu");
+> +    mc->valid_accelerators =3D valid_accels;
+>      hc->plug =3D s390_machine_device_plug;
+>      hc->unplug_request =3D s390_machine_device_unplug_request;
+>      nc->nmi_monitor_handler =3D s390_nmi;
+
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 

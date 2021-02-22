@@ -1,449 +1,107 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1020495lfg;
-        Thu, 25 Feb 2021 23:01:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxKsJ4ZW7Lzr97Y5CMezD1I08ya261HAW2h3jxaqFyD65HKbr4NlNgEkTH48Iv6Yhu6N7TX
-X-Received: by 2002:a9d:b85:: with SMTP id 5mr1253246oth.281.1614322915524;
-        Thu, 25 Feb 2021 23:01:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614322915; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1494420lfc;
+        Sun, 21 Feb 2021 22:25:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyMWbe1QnjESQ1yLQ+Jc71qXSWVq52uwD0HA1Our3l2C6FU9e26j9zBcy2vql3D/OvAIzJp
+X-Received: by 2002:a17:907:20bb:: with SMTP id pw27mr19682339ejb.71.1613975116950;
+        Sun, 21 Feb 2021 22:25:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613975116; cv=none;
         d=google.com; s=arc-20160816;
-        b=twvP3wBClJiYF/VgVCSnlXQD4cYTy7aaG61SO8jB5o8lq69whsxe68yhypXmpamodX
-         90R1zsfQBHN+JDpuVnZGMbibayzUc2zSocdIoqkrDdUE8KBBL+ASKphJbjNN/3pCxlIp
-         O1AFrjk+pOOwakrzhEB0/irLZoMHiTIq1hSwXISDLHPTKAYW3aWTI+HkFmIYNOauDcjS
-         JX2qmh9IoM37ULJ01C4UV/Mow8GJ6xbMnLp8JnKJnp1csUCfnH4eEAolve3aj/tUQSma
-         vTcdb9cSfNrwCKpJ2DIwffIwzQT+j24hDHZuCsamtaXa6UEo/oLQIfFJk2kwDETEKB+N
-         Smaw==
+        b=IIgEMioJSyXXXYMmYXZhCm1cUzbr8yxIqvAz/MhOKKghw+iq9LKBBNCZ9AGpXP+NKk
+         OdNmZLnQ9PGSaPBlDWv+BLeEvhiG5epiDaSXNnFzpxYCSyhouBdbNjyYoqPvKS+Upq8Q
+         XJvjsbEFvPFpUJxmlQGyR58a8iy0y85jfJqTtqMtNsyl6sXXtT+rTpfFT4tXDSVDfI6R
+         cMmLCbW8oYbWqzzWdS2DHyRerANLcuQCPzPIOEEKsKNL+YcUW0Ga8UAdXUTzraThBNd+
+         7qYOsqiN/UYOcTgYEwzKXsifbSJmrY/WFJBKIV/svwbd/5sKMp6785p3cJXciDv/7wjk
+         umYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=KwJBBslf2zOLUMqyaHaRM8+84tY20zzliw+rNqTdBHk=;
-        b=fbLJhvcmGJFWZgXaLz606X7As6MwDznvit76+jvJCXtoCJVnyjBtrVHTWPJU7WtMdv
-         J35SMrwPpEc74MvUX9f+sQPuGVJk0aniOD9k7rUBYSc+p2AB8MvjdQteeXu35bPDXXiS
-         M46F/FZsXCgWyjt4Q14rOjJopAappJF1tt38fFAtaox6Bgr0M/ORt8U/3s1AIwtTeAws
-         nG16VbQYyaYLoEK0/8oKwzlYs7f+s52u3o96W6KUakx2XieTBIMUduTrH9x0NnwzUuVY
-         B4L/oDNaXIQ6+0hykerhHmJTXJO4wbJvPGnrJuuniUCoWhNOw/OEDT/MFIRTUmFwtnMc
-         3eJQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:subject:from:references:cc:to
+         :dkim-signature;
+        bh=FrP/kX3ijmfe55YfoTdgXXt4u7STZMnDlito9XvcNpc=;
+        b=ouYoKp9DpyWGTWP9bsryPwdIDarcUV07QacI0MWWXfnoia8yBaD8wjX5nbsLn4hyQA
+         ASDBgjbU4EiBSLtIJ9Dp0kZRlSnKsrOIVacuK0t+NVXlo/7ziJ5Oi9QtIaXh6hx7PUhg
+         dZYZjT3x/kPu/G/NHfIAuuD6DgEMjbaw4HsgyGPsBRpRelugo9mI4Ub6/FrcTvbPmDDA
+         RvwLnbTvao29qfEi/awnscTrndT4gWAcPSEvO333a3OX5uvStkrbPiBOBCaf2pm7qTMj
+         fsxHW6pbwOkZb+ScHoaI9E762AY7s/CpHvVWCAVisGiAwsupYUagAf6orzL+UOWP6iMN
+         EeNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=BvrMktu6;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=ird+1cjI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1si5506402otj.257.2021.02.25.23.01.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IalWu5Qd;
+       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id c14si4820615edn.428.2021.02.21.22.25.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 23:01:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 21 Feb 2021 22:25:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=BvrMktu6;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=ird+1cjI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50190 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFX8M-0007ef-PG
-	for alex.bennee@linaro.org; Fri, 26 Feb 2021 02:01:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56982)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lFX53-0004bc-9J; Fri, 26 Feb 2021 01:58:29 -0500
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:56931)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lFX51-0007iU-01; Fri, 26 Feb 2021 01:58:28 -0500
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 3A03A5C0110;
- Fri, 26 Feb 2021 01:58:26 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Fri, 26 Feb 2021 01:58:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
- :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-type:content-transfer-encoding; s=fm2; bh=
- KwJBBslf2zOLUMqyaHaRM8+84tY20zzliw+rNqTdBHk=; b=BvrMktu64hB9hyWO
- WPPVEGks9RXy9YBV6VP6FbpkaNLcf6YPjD6+sVRq/EFHHQ2gbpMSm1xWsOabJkYj
- CIynNGk8sruREzOt4rWgmoGFBrZzCNISKo2v5nLaH6nCD30pgjW0J+Mzz6mHjzmV
- GVwnDptOoNAreRG/FPECeoi0RfkaDzuWslNABeaAf3cNbOnIkdMDGUCSvA7xEPtX
- uGhyVTAromJdlTkzSIv77rVLa7dkqJfKwpACuql6q+X5cN2v6VkDCDbspuMfiDxG
- lsf8jBveSyXdhGf2UdGZZCgjUGClLtXzJcbGg3qJ7N2bzNpPPSWU0g6/gCh9QQcT
- UcXBgg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; bh=KwJBBslf2zOLUMqyaHaRM8+84tY20zzliw+rNqTdB
- Hk=; b=ird+1cjIvDeOWlvoWBUF96VZFdOdkr2pFvZvXHPvCtkv3HqySEejJ1VJz
- hw8RxKSsZhAkIfys5SrRSgS06qaHU0MGcoa6oWbVRnKd+e+SqyB0ZqCrxV0bV7Oj
- zn9IZfrN9OY3CVNbHzIzxWodFJtNgOcRBHosUL1ONv7Q48+onXK2h1bYI08rNzgb
- gl/O2cNAfRCrVngXS7BWRW3oCxDqzhAUkEt4/mkxDGj/e7JvwPY3ZbFMW56ch9p6
- wGdmzP0CRhMAO1ugpEIfQMcIlHKYmpTVc9EwNUuFXT/XWk7/bKy6b/+ghpQwLMqX
- uqZ2Rvj8foFCso0yR8BXP2pyFo3rA==
-X-ME-Sender: <xms:Epw4YCqxQy92ED5Rt8A1QVUo7w7tLiN-WrDiluibCnZEdaEXftMPug>
- <xme:Epw4YApHrPcz_ZijFrjfzkk8j3BGZBRU6WtnEIO2t1TIf2cMxD8DIUDWJvUVEfU_t
- pQs2w22PEtuW0DXBw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrledtgddutdefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgjfhggtgfgsehtke
- ertdertdejnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfies
- rghjrdhiugdrrghuqeenucggtffrrghtthgvrhhnpeethfdvteehtdfggfevffetvdekle
- dvhfdvtdejueekvedvkeejgfdtieeflefggeenucfkphepudegrddvrdeluddrfeejnecu
- vehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvg
- ifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:Epw4YHOTxVyW4A663uYrwOt331b4nK7z9D1wuig4wW5utuldAA-kzw>
- <xmx:Epw4YB6GgO-zA_7S9x6VINRJ3-D1lv3wh7IoiPQlvGqsy1Yl69HkrA>
- <xmx:Epw4YB7TI1a_tizhfcQxy40JeW0tP2lt3lTjFg-bRKTG5FRpixJMew>
- <xmx:Epw4YE0YyYrOy6gFRfR78h2VUjFjjktCuyqB9SYiXOxvtZAohGiuGQ>
-Received: from localhost.localdomain
- (ppp14-2-91-37.adl-apt-pir-bras31.tpg.internode.on.net [14.2.91.37])
- by mail.messagingengine.com (Postfix) with ESMTPA id 023B724005E;
- Fri, 26 Feb 2021 01:58:21 -0500 (EST)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-arm@nongnu.org
-Subject: [PATCH 3/4] hw/misc: Add a basic Aspeed LPC controller model
-Date: Fri, 26 Feb 2021 17:27:57 +1030
-Message-Id: <20210226065758.547824-4-andrew@aj.id.au>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210226065758.547824-1-andrew@aj.id.au>
-References: <20210226065758.547824-1-andrew@aj.id.au>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IalWu5Qd;
+       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1613975115;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FrP/kX3ijmfe55YfoTdgXXt4u7STZMnDlito9XvcNpc=;
+	b=IalWu5Qd3Cx0mFnIsy1Cjj60EHIBnIr3pa2dolwwBV4V0Qu1SWOcnoilgKdxRLVZV3rXQj
+	sHdEzk9jUShGxFb7VLvN7EjdwgI8yP35a+YpOk619SkuFYabrT9jJ6mcld4bImaVJnB5O2
+	GThdzmFLioSDk47HBeSpvIxv49d1/T8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-477-99PIHTAMNZCVhMy7uqfdsg-1; Mon, 22 Feb 2021 01:25:13 -0500
+X-MC-Unique: 99PIHTAMNZCVhMy7uqfdsg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 02C53107ACE8;
+	Mon, 22 Feb 2021 06:25:12 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-97.ams2.redhat.com [10.36.112.97])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B55B87095B;
+	Mon, 22 Feb 2021 06:25:10 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, qemu-devel <qemu-devel@nongnu.org>
+References: <cef2f119-3612-65a0-d828-b480179dc3a9@amsat.org>
+ <CAFEAcA-yLQNLVUPZPRnTTNupkUrgcTRHVR=SW1Yb6KEUeQjkoQ@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: tests: n810 arm failing
+Message-ID: <85acde21-88ac-1925-b6f8-ce12c649556b@redhat.com>
+Date: Mon, 22 Feb 2021 07:25:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA-yLQNLVUPZPRnTTNupkUrgcTRHVR=SW1Yb6KEUeQjkoQ@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=66.111.4.25; envelope-from=andrew@aj.id.au;
- helo=out1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com, minyard@acm.org,
- qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- joel@jms.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 84AaG/1h3Lhe
+X-TUID: eMdGXJUceMgY
 
-From: Cédric Le Goater <clg@kaod.org>
+On 21/02/2021 20.33, Peter Maydell wrote:
+> On Sun, 21 Feb 2021 at 17:26, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> Hi,
+>>
+>> The n810 arm test failed on latest master:
+>>
+>> https://gitlab.com/qemu-project/qemu/-/jobs/1045015424/artifacts/browse/build/tests/results/latest/test-results/26-tests_acceptance_machine_arm_n8x0.py_N8x0Machine.test_n810/
+> 
+> It passed on the gitlab CI run on the exact same commit hash
+> as 'staging' before I pushed the merge, though...
 
-This is a very minimal framework to access registers which are used to
-configure the AHB memory mapping of the flash chips on the LPC HC
-Firmware address space.
+Looking at the following run, it failed with some timeouts as well:
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
- docs/system/arm/aspeed.rst   |   2 +-
- hw/arm/aspeed_ast2600.c      |  10 +++
- hw/arm/aspeed_soc.c          |  10 +++
- hw/misc/aspeed_lpc.c         | 131 +++++++++++++++++++++++++++++++++++
- hw/misc/meson.build          |   7 +-
- include/hw/arm/aspeed_soc.h  |   2 +
- include/hw/misc/aspeed_lpc.h |  32 +++++++++
- 7 files changed, 192 insertions(+), 2 deletions(-)
- create mode 100644 hw/misc/aspeed_lpc.c
- create mode 100644 include/hw/misc/aspeed_lpc.h
+  https://gitlab.com/qemu-project/qemu/-/pipelines/259425956
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 690bada7842b..2f6fa8938d02 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -48,6 +48,7 @@ Supported devices
-  * UART
-  * Ethernet controllers
-  * Front LEDs (PCA9552 on I2C bus)
-+ * LPC Peripheral Controller (a subset of subdevices are supported)
- 
- 
- Missing devices
-@@ -56,7 +57,6 @@ Missing devices
-  * Coprocessor support
-  * ADC (out of tree implementation)
-  * PWM and Fan Controller
-- * LPC Bus Controller
-  * Slave GPIO Controller
-  * Super I/O Controller
-  * Hash/Crypto Engine
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 2125a96ef317..60152de001e6 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -211,6 +211,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
- 
-     object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots[0],
-                             TYPE_SYSBUS_SDHCI);
-+
-+    object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
- }
- 
- /*
-@@ -469,6 +471,14 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->emmc), 0, sc->memmap[ASPEED_DEV_EMMC]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_EMMC));
-+
-+    /* LPC */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
- }
- 
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 7eefd54ac07a..4f098da437ac 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -211,6 +211,8 @@ static void aspeed_soc_init(Object *obj)
-         object_initialize_child(obj, "sdhci[*]", &s->sdhci.slots[i],
-                                 TYPE_SYSBUS_SDHCI);
-     }
-+
-+    object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
- }
- 
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-@@ -393,6 +395,14 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-                     sc->memmap[ASPEED_DEV_SDHCI]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_SDHCI));
-+
-+    /* LPC */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
- }
- static Property aspeed_soc_properties[] = {
-     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
-diff --git a/hw/misc/aspeed_lpc.c b/hw/misc/aspeed_lpc.c
-new file mode 100644
-index 000000000000..e668e985ff04
---- /dev/null
-+++ b/hw/misc/aspeed_lpc.c
-@@ -0,0 +1,131 @@
-+/*
-+ *  ASPEED LPC Controller
-+ *
-+ *  Copyright (C) 2017-2018 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "hw/misc/aspeed_lpc.h"
-+#include "qapi/error.h"
-+#include "hw/qdev-properties.h"
-+#include "migration/vmstate.h"
-+
-+#define TO_REG(offset) ((offset) >> 2)
-+
-+#define HICR0                TO_REG(0x00)
-+#define HICR1                TO_REG(0x04)
-+#define HICR2                TO_REG(0x08)
-+#define HICR3                TO_REG(0x0C)
-+#define HICR4                TO_REG(0x10)
-+#define HICR5                TO_REG(0x80)
-+#define HICR6                TO_REG(0x84)
-+#define HICR7                TO_REG(0x88)
-+#define HICR8                TO_REG(0x8C)
-+
-+static uint64_t aspeed_lpc_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedLPCState *s = ASPEED_LPC(opaque);
-+    int reg = TO_REG(offset);
-+
-+    if (reg >= ARRAY_SIZE(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        return 0;
-+    }
-+
-+    return s->regs[reg];
-+}
-+
-+static void aspeed_lpc_write(void *opaque, hwaddr offset, uint64_t data,
-+                             unsigned int size)
-+{
-+    AspeedLPCState *s = ASPEED_LPC(opaque);
-+    int reg = TO_REG(offset);
-+
-+    if (reg >= ARRAY_SIZE(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        return;
-+    }
-+
-+    s->regs[reg] = data;
-+}
-+
-+static const MemoryRegionOps aspeed_lpc_ops = {
-+    .read = aspeed_lpc_read,
-+    .write = aspeed_lpc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void aspeed_lpc_reset(DeviceState *dev)
-+{
-+    struct AspeedLPCState *s = ASPEED_LPC(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+
-+    s->regs[HICR7] = s->hicr7;
-+}
-+
-+static void aspeed_lpc_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedLPCState *s = ASPEED_LPC(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_lpc_ops, s,
-+            TYPE_ASPEED_LPC, 0x1000);
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_aspeed_lpc = {
-+    .name = TYPE_ASPEED_LPC,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AspeedLPCState, ASPEED_LPC_NR_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static Property aspeed_lpc_properties[] = {
-+    DEFINE_PROP_UINT32("hicr7", AspeedLPCState, hicr7, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void aspeed_lpc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = aspeed_lpc_realize;
-+    dc->reset = aspeed_lpc_reset;
-+    dc->desc = "Aspeed LPC Controller",
-+    dc->vmsd = &vmstate_aspeed_lpc;
-+    device_class_set_props(dc, aspeed_lpc_properties);
-+}
-+
-+static const TypeInfo aspeed_lpc_info = {
-+    .name = TYPE_ASPEED_LPC,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedLPCState),
-+    .class_init = aspeed_lpc_class_init,
-+};
-+
-+static void aspeed_lpc_register_types(void)
-+{
-+    type_register_static(&aspeed_lpc_info);
-+}
-+
-+type_init(aspeed_lpc_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 629283957fcc..e3263383cd59 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -102,7 +102,12 @@ softmmu_ss.add(when: 'CONFIG_ARMSSE_MHU', if_true: files('armsse-mhu.c'))
- softmmu_ss.add(when: 'CONFIG_PVPANIC_ISA', if_true: files('pvpanic-isa.c'))
- softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
- softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
--softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_scu.c', 'aspeed_sdmc.c', 'aspeed_xdma.c'))
-+softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-+  'aspeed_lpc.c',
-+  'aspeed_scu.c',
-+  'aspeed_sdmc.c',
-+  'aspeed_xdma.c'))
-+
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
- 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 11cfe6e3585b..42c64bd28ba2 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -28,6 +28,7 @@
- #include "hw/sd/aspeed_sdhci.h"
- #include "hw/usb/hcd-ehci.h"
- #include "qom/object.h"
-+#include "hw/misc/aspeed_lpc.h"
- 
- #define ASPEED_SPIS_NUM  2
- #define ASPEED_EHCIS_NUM 2
-@@ -61,6 +62,7 @@ struct AspeedSoCState {
-     AspeedGPIOState gpio_1_8v;
-     AspeedSDHCIState sdhci;
-     AspeedSDHCIState emmc;
-+    AspeedLPCState lpc;
- };
- 
- #define TYPE_ASPEED_SOC "aspeed-soc"
-diff --git a/include/hw/misc/aspeed_lpc.h b/include/hw/misc/aspeed_lpc.h
-new file mode 100644
-index 000000000000..0fbb7f68bed2
---- /dev/null
-+++ b/include/hw/misc/aspeed_lpc.h
-@@ -0,0 +1,32 @@
-+/*
-+ *  ASPEED LPC Controller
-+ *
-+ *  Copyright (C) 2017-2018 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef ASPEED_LPC_H
-+#define ASPEED_LPC_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ASPEED_LPC "aspeed.lpc"
-+#define ASPEED_LPC(obj) OBJECT_CHECK(AspeedLPCState, (obj), TYPE_ASPEED_LPC)
-+
-+#define ASPEED_LPC_NR_REGS (0x260 >> 2)
-+
-+typedef struct AspeedLPCState {
-+    /* <private> */
-+    SysBusDevice parent;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t regs[ASPEED_LPC_NR_REGS];
-+    uint32_t hicr7;
-+} AspeedLPCState;
-+
-+#endif /* _ASPEED_LPC_H_ */
--- 
-2.27.0
+... but in completely different spots. So maybe it was "just" a global 
+slow-down in the CI farm? (Which sounds somewhat worrisome, too ... I hope 
+gitlab-CI is not going down the same road as travis-ci.org did during the 
+past year)
 
+  Thomas

@@ -1,193 +1,184 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1732476lfc;
-        Mon, 22 Feb 2021 05:23:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyaCvRb7e67tqnlNFGXj24GQ/oBrGH0ZqNvqgg0mWgHwtKrqVnqoZMUIpShtHM73ngQyNub
-X-Received: by 2002:a05:6e02:13a5:: with SMTP id h5mr14836692ilo.263.1614000201186;
-        Mon, 22 Feb 2021 05:23:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614000201; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1916490lfc;
+        Mon, 22 Feb 2021 09:26:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx5LEPqf7Rmemcb7aEN2GXFrfpfNXdls8flVPZA6TUWlv6VZhr2itroD+TG6zje6rUyOCvI
+X-Received: by 2002:a92:1302:: with SMTP id 2mr16693084ilt.121.1614014768329;
+        Mon, 22 Feb 2021 09:26:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614014768; cv=none;
         d=google.com; s=arc-20160816;
-        b=KXrw7UJ/hD2Vb+jHocB5DnlH5b9PwkJCYbYokfWsSTGDI1C56e4vi15YlR1jrgdKQm
-         WwDxE4PQ+fAReLj9nFUip+kJZrjcAJaXIzmeLu818O8QGE9EsTdV6LAbNHBoMUNtBYJt
-         YdTQ7x7ulnLzbBwN7K6lSaM5acrvmLVrU76VfXqae3IW0CnukNmg3eYQPmjxSv3hVSh1
-         waD4Z9/EVywh/AaULsRcrzz0BZOm2hp5ZSkpoPwlMcRnxGER39BpgAO5Z8IBwhDxdKxB
-         rtUaA5Z/QEAE2Varu0dpVYg0tEmZXoN1twSSFQH/eqoy0zNczGjp3MMMjnehwunKz6gZ
-         IKUA==
+        b=xVbuT+XhMPlf/y6+bAHOLcbLg8j5TwDMMG0TivqnuwYydgcSqKW3Zy1utoBUgnM/uf
+         34DPZKPo+IYFX99ZQwymUgYGqkebmAURChiY3D01Cj/PiTpGXk6mjbkZ45wlp5l8DWbb
+         SxgJsFZrgn0ipNbrCnnhA8ZB6qBStwv8zTFkFYuVOuPN3IZ4CkUgUpUZ2rUkTVbYnx8Q
+         2H5WAuatJumafI3QORbN/sGMsltpwm58b6DpwCHYXrMWTsdWGceXXyLQZXx1AuCHnpC3
+         2aG6G+fNamnB6W4D5B/9yYypbFlEEEq9l+C3+GUkNCniyKxXTrS35HcLRwzsQKbUiUpL
+         tRnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=9KqCJQXFtWkC0eQevcf4n4m7wle4LjbIfUJE3rQ7DfE=;
-        b=Z9wAHeOK/C84R6TZxXJO6p1aG4bMft39/34MMM9Qn5DSaF9XcHYvkLLz/ZCzaILGyn
-         kfINOLM6mqC8eHPP6Fq6DLAzFpAYqeaPSw3AO9Af5hnGxmQVuVcUzuWR4rhvMiSWTpaK
-         v2Xu/u08j0oBk+NAFP+W0qFGdicTJaQmXHOkN9B8J7XJsM8p9CUce90NcNn+4ZlBPNoZ
-         cNlGnuY6HlwVMKwGxTaJGoGiRUtLS2iWzpDWXASAaHrFIW9zR4mH9m390uivZyXGy2lr
-         WoBS7nZwwjnHY+fN595zWPL3ETFDsVTmCgBvkKkxqoj/6M32S+mqObOzuUH8hPcRWbgv
-         4DkA==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature
+         :sender:precedence:errors-to:list-subscribe:list-help:list-post
+         :list-unsubscribe:list-id;
+        bh=H5mrm3DZDcM5fraUv4fndEkj6st2YNZQP0B5Q36J9Uo=;
+        b=wuQQ52aA5e8V7da/ZxL6XmBKPb5AUBEoVypP4Z+xnNNqwOTnZUSC6MrCCgq8a2LqRB
+         va+cz7/YJ+SWKQn6gX9cKxdo5QXc+m/IwYKNNddPpnA7nWVKOhqJBldngwmvvpjUjjAm
+         jftsVmMaEAFoGU1i7FO21kuH400NqKdjZzgjTEz2ogIy4jgm1heIuYyvODF21/hzrwwp
+         s2QZP5CTME89O1xgiuGXWTRgpFEeTH8tyftS44XgO67MnYQF471+kT8QOt3eAmBb6Ler
+         QhuKjzbJLt3JmpsyTHkg2gl5WMs5HD7JfYkJf6PLfXVy6/6VrtW2XyQAgOe0S1CBc5Tf
+         kGBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=njbNcqqk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si17461120jat.3.2021.02.22.05.23.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Feb 2021 05:23:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eA2hPWtN;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id y12si17046354ilv.132.2021.02.22.09.26.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Feb 2021 09:26:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=njbNcqqk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47636 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEBBI-0005eA-Ev
-	for alex.bennee@linaro.org; Mon, 22 Feb 2021 08:23:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59160)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lEB3z-0005xh-ED; Mon, 22 Feb 2021 08:15:47 -0500
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:46046)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lEB3x-00018F-KV; Mon, 22 Feb 2021 08:15:47 -0500
-Received: by mail-pf1-x42c.google.com with SMTP id j12so6551796pfj.12;
- Mon, 22 Feb 2021 05:15:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=9KqCJQXFtWkC0eQevcf4n4m7wle4LjbIfUJE3rQ7DfE=;
- b=njbNcqqkNvLz1+K41BSyl5vwLnNZARb//O13w44NmOSqcSPBVSZpS+pvpcAHqyJmy6
- BtTelLex8kXDQ9yMM0B5G47+bp6C1Vq34fL9bgTKRSrMEeVgBrFe5rytTOtDhfpWzwET
- oDF6bWjvX8AFVg/92VZvYKsorRAtfUaUdv6djLj9c6uIYaDLjXxwJWoL7ALFNlza/u2j
- pV7OW/4nhFvxZJ2yfoySun7tmeKFSGAi2kADlSTNS6ioaTv2v6qiyyfltd7OV7pzvLIz
- 2cCm1SQc/GkE+AQqlnjwlgMfYCAn0VTy1Vo4dHIvjmQMO5p4O0kJAhZ6HwtxhcqDRcJN
- QtPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=9KqCJQXFtWkC0eQevcf4n4m7wle4LjbIfUJE3rQ7DfE=;
- b=P4QCxtA7s8HBwe8xIV5Mbzcnf/BlyCyMjsIi5xreqWYklxlVceSqs+txdTCpOxoaJ4
- uxlPoPUIZvQz51UTwqqApMCxHV4CBxDT1I0a9nDXUw5A2q4QU6vDnspBfKxokQQ+rSov
- bOPX159fN2ogYGNz6waT/OVhNeCZp8bG0OixHhjws7lA46zJcP1x5+m54K9DDV+fKr0+
- 8X03yReDRKsrqasK85HPgQyKgXBNq6a2eiuCuWT7OsgCsHXBg44Bq3a49NOcrtE1tN4R
- 3dJZkMV3s72J60wYJEmF33ZqOxMcA3XY4SRWdTRLFUlFZkAuvB/C9GNt/vtwV3lLMVer
- JIBg==
-X-Gm-Message-State: AOAM5327Zee4dXW1g+iYhs/bl2MzKqStEUWmhNCflloZKiRKrst2vKZ4
- u+X2aPcfTgcr0LajX9em78Q=
-X-Received: by 2002:aa7:9505:0:b029:1ed:98ad:81fb with SMTP id
- b5-20020aa795050000b02901ed98ad81fbmr6147140pfp.52.1613999739134; 
- Mon, 22 Feb 2021 05:15:39 -0800 (PST)
-Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
- [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id p8sm17473190pgi.21.2021.02.22.05.15.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Feb 2021 05:15:38 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [RESEND PATCH v4 5/5] hw/ssi: xilinx_spips: Remove DMA related dead
- codes from zynqmp_spips
-Date: Mon, 22 Feb 2021 21:15:02 +0800
-Message-Id: <20210222131502.3098-6-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210222131502.3098-1-bmeng.cn@gmail.com>
-References: <20210222131502.3098-1-bmeng.cn@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pf1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eA2hPWtN;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from list by lists.xenproject.org with outflank-mailman.88293.165904 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1lEEwm-00057g-4H; Mon, 22 Feb 2021 17:24:36 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 88293.165904; Mon, 22 Feb 2021 17:24:36 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1lEEwm-00057Z-1B; Mon, 22 Feb 2021 17:24:36 +0000
+Received: by outflank-mailman (input) for mailman id 88293;
+ Mon, 22 Feb 2021 17:24:35 +0000
+Received: from all-amaz-eas1.inumbo.com ([34.197.232.57]
+ helo=us1-amaz-eas2.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=cC4D=HY=redhat.com=cohuck@srs-us1.protection.inumbo.net>)
+ id 1lEEwk-00057U-R9
+ for xen-devel@lists.xenproject.org; Mon, 22 Feb 2021 17:24:35 +0000
+Received: from us-smtp-delivery-124.mimecast.com (unknown [63.128.21.124])
+ by us1-amaz-eas2.inumbo.com (Halon) with ESMTP
+ id a1baa6dd-cac0-4b3a-a573-358b91181ca3;
+ Mon, 22 Feb 2021 17:24:32 +0000 (UTC)
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-234-1b80s02bMCOR2lkI1fzehA-1; Mon, 22 Feb 2021 12:24:29 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 498CB1936B68;
+ Mon, 22 Feb 2021 17:24:26 +0000 (UTC)
+Received: from gondolin (ovpn-113-115.ams2.redhat.com [10.36.113.115])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F1AD85D9D3;
+ Mon, 22 Feb 2021 17:24:07 +0000 (UTC)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Snrj3PdWfvUb
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: a1baa6dd-cac0-4b3a-a573-358b91181ca3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1614014672;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=H5mrm3DZDcM5fraUv4fndEkj6st2YNZQP0B5Q36J9Uo=;
+	b=eA2hPWtNFSBChFkO1/svU5YW0B/7ijE61JlzagtOiKJapbOMVXecxssihddYHsR2e0XcVo
+	ufgAUMf6r3XFMvfHYKa3zY2CkQSi0rSX7jDp56bXut8qoOGt43K1w4WzGp42MTaXV71poE
+	6oMYOqYqgZRuPm22tG1Fwa5NrqWF4Es=
+X-MC-Unique: 1b80s02bMCOR2lkI1fzehA-1
+Date: Mon, 22 Feb 2021 18:24:05 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, Peter
+ Maydell <peter.maydell@linaro.org>, Anthony Perard
+ <anthony.perard@citrix.com>, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ Halil Pasic <pasic@linux.ibm.com>, Huacai Chen <chenhuacai@kernel.org>,
+ xen-devel@lists.xenproject.org, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>, Paolo
+ Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org, BALATON Zoltan
+ <balaton@eik.bme.hu>, Leif Lindholm <leif@nuviainc.com>, Richard Henderson
+ <richard.henderson@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>,
+ Alistair Francis <alistair@alistair23.me>, Paul Durrant <paul@xen.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Thomas Huth <thuth@redhat.com>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, =?UTF-8?B?SGVydsOp?= Poussineau
+ <hpoussin@reactos.org>, Greg Kurz <groug@kaod.org>, Christian Borntraeger
+ <borntraeger@de.ibm.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Hildenbrand <david@redhat.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+ <f4bug@amsat.org>
+Subject: Re: [PATCH v2 01/11] accel/kvm: Check MachineClass kvm_type()
+ return value
+Message-ID: <20210222182405.3e6e9a6f.cohuck@redhat.com>
+In-Reply-To: <20210219173847.2054123-2-philmd@redhat.com>
+References: <20210219173847.2054123-1-philmd@redhat.com>
+	<20210219173847.2054123-2-philmd@redhat.com>
+Organization: Red Hat GmbH
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-TUID: P3dmKIVm2RFa
 
-From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+On Fri, 19 Feb 2021 18:38:37 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-Now that the Xilinx CSU DMA model is implemented, the existing
-DMA related dead codes in the ZynqMP QSPI are useless and should
-be removed. The maximum register number is also updated to only
-include the QSPI registers.
+> MachineClass::kvm_type() can return -1 on failure.
+> Document it, and add a check in kvm_init().
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  include/hw/boards.h | 3 ++-
+>  accel/kvm/kvm-all.c | 6 ++++++
+>  2 files changed, 8 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index a46dfe5d1a6..68d3d10f6b0 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -127,7 +127,8 @@ typedef struct {
+>   *    implement and a stub device is required.
+>   * @kvm_type:
+>   *    Return the type of KVM corresponding to the kvm-type string option=
+ or
+> - *    computed based on other criteria such as the host kernel capabilit=
+ies.
+> + *    computed based on other criteria such as the host kernel capabilit=
+ies
+> + *    (which can't be negative), or -1 on error.
+>   * @numa_mem_supported:
+>   *    true if '--numa node.mem' option is supported and false otherwise
+>   * @smp_parse:
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 84c943fcdb2..b069938d881 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -2057,6 +2057,12 @@ static int kvm_init(MachineState *ms)
+>                                                              "kvm-type",
+>                                                              &error_abort=
+);
+>          type =3D mc->kvm_type(ms, kvm_type);
+> +        if (type < 0) {
+> +            ret =3D -EINVAL;
+> +            fprintf(stderr, "Failed to detect kvm-type for machine '%s'\=
+n",
+> +                    mc->name);
+> +            goto err;
+> +        }
+>      }
+> =20
+>      do {
 
-Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-
----
-
-Changes in v4:
-- Modify XLNX_ZYNQMP_SPIPS_R_MAX
-
-Changes in v3:
-- new patch: xilinx_spips: Remove DMA related code from zynqmp_qspips
-
- include/hw/ssi/xilinx_spips.h |  2 +-
- hw/ssi/xilinx_spips.c         | 10 ----------
- 2 files changed, 1 insertion(+), 11 deletions(-)
-
-diff --git a/include/hw/ssi/xilinx_spips.h b/include/hw/ssi/xilinx_spips.h
-index 3eae73480e..06bfd18312 100644
---- a/include/hw/ssi/xilinx_spips.h
-+++ b/include/hw/ssi/xilinx_spips.h
-@@ -34,7 +34,7 @@
- typedef struct XilinxSPIPS XilinxSPIPS;
- 
- #define XLNX_SPIPS_R_MAX        (0x100 / 4)
--#define XLNX_ZYNQMP_SPIPS_R_MAX (0x830 / 4)
-+#define XLNX_ZYNQMP_SPIPS_R_MAX (0x200 / 4)
- 
- /* Bite off 4k chunks at a time */
- #define LQSPI_CACHE_SIZE 1024
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index 8a0cc22d42..1e9dba2039 100644
---- a/hw/ssi/xilinx_spips.c
-+++ b/hw/ssi/xilinx_spips.c
-@@ -195,13 +195,6 @@
- #define R_GQSPI_MOD_ID        (0x1fc / 4)
- #define R_GQSPI_MOD_ID_RESET  (0x10a0000)
- 
--#define R_QSPIDMA_DST_CTRL         (0x80c / 4)
--#define R_QSPIDMA_DST_CTRL_RESET   (0x803ffa00)
--#define R_QSPIDMA_DST_I_MASK       (0x820 / 4)
--#define R_QSPIDMA_DST_I_MASK_RESET (0xfe)
--#define R_QSPIDMA_DST_CTRL2        (0x824 / 4)
--#define R_QSPIDMA_DST_CTRL2_RESET  (0x081bfff8)
--
- /* size of TXRX FIFOs */
- #define RXFF_A          (128)
- #define TXFF_A          (128)
-@@ -417,9 +410,6 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)
-     s->regs[R_GQSPI_GPIO] = 1;
-     s->regs[R_GQSPI_LPBK_DLY_ADJ] = R_GQSPI_LPBK_DLY_ADJ_RESET;
-     s->regs[R_GQSPI_MOD_ID] = R_GQSPI_MOD_ID_RESET;
--    s->regs[R_QSPIDMA_DST_CTRL] = R_QSPIDMA_DST_CTRL_RESET;
--    s->regs[R_QSPIDMA_DST_I_MASK] = R_QSPIDMA_DST_I_MASK_RESET;
--    s->regs[R_QSPIDMA_DST_CTRL2] = R_QSPIDMA_DST_CTRL2_RESET;
-     s->man_start_com_g = false;
-     s->gqspi_irqline = 0;
-     xlnx_zynqmp_qspips_update_ixr(s);
--- 
-2.25.1
+No objection to this patch; but I'm wondering why some non-pseries
+machines implement the kvm_type callback, when I see the kvm-type
+property only for pseries? Am I holding my git grep wrong?
 

@@ -1,89 +1,109 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2268733lfc;
-        Mon, 22 Feb 2021 19:08:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzE7xMjbfUUSzW88oyvfKCuRRy9GPKLwYB2v4E8iubgavePr4HfADV9osE87PIz/rlJFaUs
-X-Received: by 2002:a02:2a01:: with SMTP id w1mr25448519jaw.19.1614049711562;
-        Mon, 22 Feb 2021 19:08:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614049711; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp117254lfg;
+        Tue, 23 Feb 2021 00:59:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyfIPxOTShCfEe6ya54fDpHi4Zk94CfD6COGUADFHwI9BS5VL44wmVq9atAyDlAUq7T6qvi
+X-Received: by 2002:a05:6e02:8ab:: with SMTP id a11mr18106720ilt.137.1614070752922;
+        Tue, 23 Feb 2021 00:59:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614070752; cv=none;
         d=google.com; s=arc-20160816;
-        b=IFimvhy5rqF+oKU/nSU6+lQGglHQdmsbNEHuCgrU95oSeMr6YuyIyJ5wkrMrcat95G
-         JMGYuTbSA/BgOlJyNJK9yuoC9xZL65ttUJF6kXv0Eu3sIR0fgConUn7vX9PWRLey9wSi
-         4uouBARYYiLCo3cfwMvQ3g/BVR5KyeU1Gq6GXrcfMlM5LK9GpS+3rd9PtfX5xDLQuq59
-         YmuXPt53VnOm0rIj3vNofRJf1fPPSAPOzmllzDmjvKW7iNfNhFx9zsf+y8n3LkXME7Wf
-         hPa8shlaOJknhfopm8gG++nlpm7szYQNvZorQmhK7tLszrFwgBixUjIrssXgIkH8JVnW
-         N23g==
+        b=hywee+xg8g15TWNTtUxN6qfJCkfe7Yjl8ZvZnETYk/NDch2Qq25/146akVuVQuTYdq
+         zU6chPcFLdtYl0A3r/hAboS1OjWTd53HloLL4cFbqUItMA1djtPK8vTdsXxuaILBaRBY
+         hM1bk/QhfgbUIuOM0gB6IXVDAKr54WQkC4/1xSKkwIOThmsoWzuqWPt0nlX49UfmGxta
+         0u1IvLMf8Qyb8zWrlaEzWehfBjRQOnOrVLoMwe+3xJIyCHUSe5kAVQ8Qw3YkG+Rhn+BM
+         xE518eXtD9cPS8XJT4DigIf8LyHGwAs6WoTUfGM/gNLG7rnv8YTCE636/Nhx/5mVQ7zB
+         enkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=CYXQW/TfhVgW5IgJpTO6eB9y5FUNn+x7nvlYdhRUiks=;
-        b=yUffPRQ9nS4BNSs22Ot7LniKFZGm5fhoLaY3g1V2YCGm2DRwvev7fJAUATjUjCW0xA
-         K2UGWF5mRbnfTNTSj/Cj7uBrr9PzeJWbnhQs1OoB8gfM2SpFcp9pErBt5BbZD3ogI/cV
-         svfygTUDp0Xm8Yjo2tU5ddYmLTAaIUa2CC+FOaUYfeOHjTpydMpaUfu2RE1+VgmZTNLV
-         3RpIkFKsEtrqLUNGpZpieH4F8rP1HE8WhCkZE9z9nfSAP/xItDxGkPBxcfYW1L2AkcXQ
-         LAKZwCMVsjRGbFqbpFbJtZBsi7hrtOevPpH2Ln4kWJsLpT9+yAUB3yeWKm/57nJU7+SM
-         eziA==
+        bh=mIP8UMSL/CqxQ2Gk1slC+3UAzXN5xQrY/w+fjMii7zU=;
+        b=gjf46eb0EXLmYPL/JcrFvw4wQSTbDDoc/yZJViQjZp+HrvoEn5uspUJg9h9a0STC0q
+         LQTSyOT7f7VHiMhgG57Hkof8BWmxKqLvo9B5iR+sucpjYTfnmP6ETeKi7/Ydjlpp/oGo
+         n7Qu7N0pduZH2bnKvGkuZXNefrd5K9do1gfUAwinMfjeLxQ7ThGCb6Sy3o3hP3qSIyJ+
+         45ug5FFptKI5eHJgM6PYa3NDF+66EP6OoXbydhIy3a44oZhgM6WdAnjLXn/F8rJcNDhE
+         GmYF1faGxPS+3SNVrm4J2AfVCL7V0OmzCDulPIg9uugJdHuCqnEJjd0qqNyjzsJ6R3KR
+         TazA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=KFOWhcID;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QRC6jXKc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si20508110ilm.11.2021.02.22.19.08.31
+        by mx.google.com with ESMTPS id l17si24439197ios.104.2021.02.23.00.59.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Feb 2021 19:08:31 -0800 (PST)
+        Tue, 23 Feb 2021 00:59:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=KFOWhcID;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42458 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QRC6jXKc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41884 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEO3q-0007Bh-QZ
-	for alex.bennee@linaro.org; Mon, 22 Feb 2021 22:08:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58666)
+	id 1lETXE-00026m-7R
+	for alex.bennee@linaro.org; Tue, 23 Feb 2021 03:59:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42210)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lEO38-0006EX-7p; Mon, 22 Feb 2021 22:07:46 -0500
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:38667 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1lEO35-0003Da-UI; Mon, 22 Feb 2021 22:07:45 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4Dl3rS5NJnz9sTD; Tue, 23 Feb 2021 14:07:36 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1614049656;
- bh=lB2qhVhVvCNwKnLEP9cyVRt4kgQq0RQXnIPlpk7dq2g=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KFOWhcID0dtdiNAomEpDaPts1jSJ82Ytxndpt+d2goQHThz6ePo193JIsAGJiwYUo
- P86LbDcu1xNkh2QLXqPt/+rGLma2RlyYfZGg3c2dZ4Rw4FNWTs8HtM/WMOo8D/0hW2
- WkZKKs7NJTNCZUbJTm/cdhZcKb3yIEEd5MCTIJEI=
-Date: Tue, 23 Feb 2021 10:37:01 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH v2 01/11] accel/kvm: Check MachineClass kvm_type() return
- value
-Message-ID: <YDRAHW1ds1eh0Lav@yekko.fritz.box>
-References: <20210219173847.2054123-1-philmd@redhat.com>
- <20210219173847.2054123-2-philmd@redhat.com>
- <20210222182405.3e6e9a6f.cohuck@redhat.com>
- <bc37276d-74cc-22f0-fcc0-4ee5e62cf1df@redhat.com>
- <20210222185044.23fccecc.cohuck@redhat.com>
- <YDQ/Y1KozPSyNGjo@yekko.fritz.box>
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1lETX5-00026L-K2; Tue, 23 Feb 2021 03:59:03 -0500
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232]:42184)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1lETX3-0005q7-Oe; Tue, 23 Feb 2021 03:59:03 -0500
+Received: by mail-lj1-x232.google.com with SMTP id v17so1062933ljj.9;
+ Tue, 23 Feb 2021 00:59:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=mIP8UMSL/CqxQ2Gk1slC+3UAzXN5xQrY/w+fjMii7zU=;
+ b=QRC6jXKcQ1rKUnHbRbVvtIXYUF2tb0IG/tJnJtreFKBBQsn472eawq6vO35SxbF2/w
+ XoHhUftADxyniu0CDFfwD+d9fi/BQ3NTC0tvCyPq7UFR9WaFdl5iiFcSb1tzDaNSOSCa
+ DMB8eGbMItqtX6/3qRtEg/kT2ZRWcyRdpjRvQClOU9dBEe2mpfjV2CghixpxcUpnlnhF
+ /TkNA3lazN7reb5AkPwNiqJzGZ7c2LMXHtrJckMNUeEGZAcvO6mOAsIWWLO9IimuFZe9
+ BESlO+vTm1zf/Vj1yjJJtcQfbjxYI66YkN3VYUAKmYV6kKIGeuVnhas2WFsxel8ZwSfF
+ LpyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=mIP8UMSL/CqxQ2Gk1slC+3UAzXN5xQrY/w+fjMii7zU=;
+ b=dyS4oGPbv0s9t4gCQb+MWRLao8jth2TrnkncQG1lG79/ud32uya8xqTvnrcN0EB9aQ
+ 1S+9m5D1f/T7tnCV6tPbM4M8yrRJYyOqxK2shBwEr40DMO7jjGW3oQ6FaFf68jHawrUE
+ 9J9afdeJeOjJPq8069zjN/VABZPyei6tHAvo9oXGdoECZht8BGykXO9+PJWtFVQW5CtP
+ 5he6NQABs6cTmLQ1Y5oayE2uPR892r/RiEXcx42zjoEY9OSuX8OJrm2Tm6T0SiZs3x94
+ Zh7zQvLzRgFNA4ofI0PU503MgLmG9fP9Q6DrXM/kGkUM7H7gfbLjfILMVd3iwmgo915U
+ Z2LA==
+X-Gm-Message-State: AOAM532OgPPUkp/lI7l0g6x3/BYhsnOPQjWFss8ApFQOdEKNCzWJqcEM
+ mgPR8igYGC6Qgm2MccOtbAc=
+X-Received: by 2002:a05:651c:548:: with SMTP id
+ q8mr16098203ljp.256.1614070738664; 
+ Tue, 23 Feb 2021 00:58:58 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id u23sm2721526ljd.28.2021.02.23.00.58.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Feb 2021 00:58:58 -0800 (PST)
+Date: Tue, 23 Feb 2021 09:58:57 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Bin Meng <bmeng.cn@gmail.com>
+Subject: Re: [PATCH v4 2/5] hw/arm: xlnx-zynqmp: Clean up coding convention
+ issues
+Message-ID: <20210223085857.GR477672@toto>
+References: <20210222130514.2167-1-bmeng.cn@gmail.com>
+ <20210222130514.2167-3-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="iHciYgIJJ+RNzZ6R"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <YDQ/Y1KozPSyNGjo@yekko.fritz.box>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20210222130514.2167-3-bmeng.cn@gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x232.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,145 +116,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- Paul Durrant <paul@xen.org>, David Hildenbrand <david@redhat.com>,
- qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Leif Lindholm <leif@nuviainc.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Radoslaw Biernacki <rad@semihalf.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
+ qemu-devel@nongnu.org, Francisco Iglesias <francisco.iglesias@xilinx.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QXRsz1Pe34dU
+X-TUID: GFulK4ZgJ6xS
+
+On Mon, Feb 22, 2021 at 09:05:11PM +0800, Bin Meng wrote:
+> From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+> 
+> There are some coding convention warnings in xlnx-zynqmp.c and
+> xlnx-zynqmp.h, as reported by:
+> 
+>   $ ./scripts/checkpatch.pl include/hw/arm/xlnx-zynqmp.h
+>   $ ./scripts/checkpatch.pl hw/arm/xlnx-zynqmp.c
+> 
+> Let's clean them up.
+> 
+> Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
---iHciYgIJJ+RNzZ6R
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Tue, Feb 23, 2021 at 10:33:55AM +1100, David Gibson wrote:
-> On Mon, Feb 22, 2021 at 06:50:44PM +0100, Cornelia Huck wrote:
-> > On Mon, 22 Feb 2021 18:41:07 +0100
-> > Philippe Mathieu-Daud=E9 <philmd@redhat.com> wrote:
-> >=20
-> > > On 2/22/21 6:24 PM, Cornelia Huck wrote:
-> > > > On Fri, 19 Feb 2021 18:38:37 +0100
-> > > > Philippe Mathieu-Daud=E9 <philmd@redhat.com> wrote:
-> > > >  =20
-> > > >> MachineClass::kvm_type() can return -1 on failure.
-> > > >> Document it, and add a check in kvm_init().
-> > > >>
-> > > >> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> > > >> ---
-> > > >>  include/hw/boards.h | 3 ++-
-> > > >>  accel/kvm/kvm-all.c | 6 ++++++
-> > > >>  2 files changed, 8 insertions(+), 1 deletion(-)
-> > > >>
-> > > >> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > > >> index a46dfe5d1a6..68d3d10f6b0 100644
-> > > >> --- a/include/hw/boards.h
-> > > >> +++ b/include/hw/boards.h
-> > > >> @@ -127,7 +127,8 @@ typedef struct {
-> > > >>   *    implement and a stub device is required.
-> > > >>   * @kvm_type:
-> > > >>   *    Return the type of KVM corresponding to the kvm-type string=
- option or
-> > > >> - *    computed based on other criteria such as the host kernel ca=
-pabilities.
-> > > >> + *    computed based on other criteria such as the host kernel ca=
-pabilities
-> > > >> + *    (which can't be negative), or -1 on error.
-> > > >>   * @numa_mem_supported:
-> > > >>   *    true if '--numa node.mem' option is supported and false oth=
-erwise
-> > > >>   * @smp_parse:
-> > > >> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> > > >> index 84c943fcdb2..b069938d881 100644
-> > > >> --- a/accel/kvm/kvm-all.c
-> > > >> +++ b/accel/kvm/kvm-all.c
-> > > >> @@ -2057,6 +2057,12 @@ static int kvm_init(MachineState *ms)
-> > > >>                                                              "kvm-=
-type",
-> > > >>                                                              &erro=
-r_abort);
-> > > >>          type =3D mc->kvm_type(ms, kvm_type);
-> > > >> +        if (type < 0) {
-> > > >> +            ret =3D -EINVAL;
-> > > >> +            fprintf(stderr, "Failed to detect kvm-type for machin=
-e '%s'\n",
-> > > >> +                    mc->name);
-> > > >> +            goto err;
-> > > >> +        }
-> > > >>      }
-> > > >> =20
-> > > >>      do { =20
-> > > >=20
-> > > > No objection to this patch; but I'm wondering why some non-pseries
-> > > > machines implement the kvm_type callback, when I see the kvm-type
-> > > > property only for pseries? Am I holding my git grep wrong? =20
-> > >=20
-> > > Can it be what David commented here?
-> > > https://www.mail-archive.com/qemu-devel@nongnu.org/msg784508.html
-> > >=20
-> >=20
-> > Ok, I might be confused about the other ppc machines; but I'm wondering
-> > about the kvm_type callback for mips and arm/virt. Maybe I'm just
-> > confused by the whole mechanism?
->=20
-> For ppc at least, not sure about in general, pseries is the only
-> machine type that can possibly work under more than one KVM flavour
-> (HV or PR).  So, it's the only one where it's actually useful to be
-> able to configure this.
-
-Wait... I'm not sure that's true.  At least theoretically, some of the
-Book3E platforms could work with either PR or the Book3E specific
-KVM.  Not sure if KVM PR supports all the BookE instructions it would
-need to in practice.
-
-Possibly pseries is just the platform where there's been enough people
-interested in setting the KVM flavour so far.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---iHciYgIJJ+RNzZ6R
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmA0QB0ACgkQbDjKyiDZ
-s5JQqBAA2HMmkpdhk4iK7XRStsDCbxBXZysxhFDBM0qLWfKEbOKqcRzv9BiIFbRb
-Ioh4AG1Vvt/cxatFBRkKOOIML8ICtAm/hhBBo3A/6gwi5ogzlRO54Jkr+GIWiRSH
-0iY9VKPGnsjTaf6SrE7GKxdYiPdGTR+6+2snq/f0EUjcz15LsWujsrB2Vyr/F/Oe
-KEYH+S+Pwot39s3mGSOIR0QYHsfN4+oYLPajZXdmcrGjBsTNM6s7+fDGb6oAC7Yg
-7cvOCbL6EAOJ1P3wmYySwu1rVM/vU6IFW7LUfZcP33JynhPYWWh7J84zCTBwNgJF
-IQvlIEQU3Qta+SieLJma+ZTwALAiYSDKSJ1n4vIEWQ21FoQLSbzP4oxqDMiTZha+
-LW5mzqPTQuF/MZg+B+dZtpCKWiLhkG7SWVB7Gb8hq7wat+AZONUJU/BaqQq2QVdN
-a7YiR95k/6rsUFyN0I8NYsrIIMbR6IlI+ivVCukvurwo3iP9m+4/UyM/gM3XRBNc
-ekYjyglLGj9pztFIC0JVBPodTG/8OSkAuvVDh2fVaefjfj0nckXJ9oxJDc1D6LH2
-vocCjxis9Dv2YgQgzem8pUAQ//Z1WGIiiyWD1gPDt/A3EDbvjxHPZK0w7ZOxKLYR
-cagHb4ijSlK6htqbMaqOJ3zM7FOgPwHvc0xLzUttBEolVXQia1E=
-=kPBL
------END PGP SIGNATURE-----
-
---iHciYgIJJ+RNzZ6R--
+> 
+> ---
+> 
+> Changes in v4:
+> - remove one change that is not a checkpatch warning
+> 
+>  include/hw/arm/xlnx-zynqmp.h | 3 ++-
+>  hw/arm/xlnx-zynqmp.c         | 9 ++++++---
+>  2 files changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+> index 6f45387a17..be15cc8814 100644
+> --- a/include/hw/arm/xlnx-zynqmp.h
+> +++ b/include/hw/arm/xlnx-zynqmp.h
+> @@ -60,7 +60,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+>  
+>  #define XLNX_ZYNQMP_GIC_REGIONS 6
+>  
+> -/* ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
+> +/*
+> + * ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
+>   * and under-decodes the 64k region. This mirrors the 4k regions to every 4k
+>   * aligned address in the 64k region. To implement each GIC region needs a
+>   * number of memory region aliases.
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 881847255b..49465a2794 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -301,11 +301,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>  
+>      ram_size = memory_region_size(s->ddr_ram);
+>  
+> -    /* Create the DDR Memory Regions. User friendly checks should happen at
+> +    /*
+> +     * Create the DDR Memory Regions. User friendly checks should happen at
+>       * the board level
+>       */
+>      if (ram_size > XLNX_ZYNQMP_MAX_LOW_RAM_SIZE) {
+> -        /* The RAM size is above the maximum available for the low DDR.
+> +        /*
+> +         * The RAM size is above the maximum available for the low DDR.
+>           * Create the high DDR memory region as well.
+>           */
+>          assert(ram_size <= XLNX_ZYNQMP_MAX_RAM_SIZE);
+> @@ -526,7 +528,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>          SysBusDevice *sbd = SYS_BUS_DEVICE(&s->sdhci[i]);
+>          Object *sdhci = OBJECT(&s->sdhci[i]);
+>  
+> -        /* Compatible with:
+> +        /*
+> +         * Compatible with:
+>           * - SD Host Controller Specification Version 3.00
+>           * - SDIO Specification Version 3.0
+>           * - eMMC Specification Version 4.51
+> -- 
+> 2.25.1
+> 

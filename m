@@ -1,65 +1,68 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2247370lfc;
-        Mon, 22 Feb 2021 18:23:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxwc4OMQCnLTZuFlRCSzwNnDoFG3+/O6aJrTnOKNUCpDQ24olIyCuELD2AzbXSYwImiBX69
-X-Received: by 2002:a02:781f:: with SMTP id p31mr25888125jac.14.1614047021020;
-        Mon, 22 Feb 2021 18:23:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614047021; cv=none;
+Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2247446lfc;
+        Mon, 22 Feb 2021 18:23:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyL4Ly7UJdN8Qi4tatm0KDUNsDPm9eyVO4eeeGGZvKrw7nzyD4lmdjetI46s0JVyvBBQ8Cf
+X-Received: by 2002:a05:6e02:1564:: with SMTP id k4mr17900364ilu.282.1614047032003;
+        Mon, 22 Feb 2021 18:23:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614047031; cv=none;
         d=google.com; s=arc-20160816;
-        b=UBdjEZxIGfWIFYJJ9ynFAonyLFAgR+/2SdsWxyvA++Vljz+WlgUWu3ZamQTb7oHOjm
-         Bu2Hb7SGJEWi/OcRJCtEj6YfpEe9Z4qNljcgB60Dsnh/HHlz6xoIsn9GjpiTZASrU7Ax
-         9bSoVsIXldZgZIM1PeV3oLaffe0CwSVbAFoZFhd8P6WcJSKa0OhhH4mMiMT28PHW6SAI
-         ARRPHTIFMIiav8v9kgC8On2qFx6f20hZ7HkNJZfEpVk8F4bwRSeJFMt78jNuBqEb9mQK
-         A/X/YOs86V92fdNfkYRAG2wKtjWMs+RV/Z3YjZdyek4FkLW4p8oyGNF68UY4l3UJeVCO
-         /dVg==
+        b=toKF8PKL5kmIC8wvWkEGBLThYr8pdd12vU8y5mKARJFBDKtK7l4+gNwyj4JEBEj0zD
+         5lKAAw1MWmp958/tsYQH6DcdHnLSNt5+CaRuMufUmX1Tkl5iAEPIWwMZ4M+/uxri7fIS
+         GqoQMQnPHMMiREnkJENNPSBIngSK+WQYFTj2PMy+ga6FWWRsjM/f1JZhq6q0oL80FzS1
+         SxrZKFlFbKVEbWeJxKn68nsrA7jveGW6mQJK62M41OYJ6ms2eIoIYswItiZszkjsKSa3
+         1wBF3LmgAzKoGz8Mg9bCSAdauJw90nOgeHwCmfdfeJd0NoZgJMXZNzW6aGYF5ItafBYM
+         1I/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=/LfLi0bm/zsycj/pSrD9FUg8nuone8nFqEbPvbo033E=;
-        b=wB3yEq2+TmeQrXxa8gIn3efrLwZQiKregMOSA4hOweZCHA0mEEIp6rCx5TbcAvka14
-         +uWF1ltaRLm/bYvw5TeYMwB8JSTx23An6bDKOLJW5Tus1R9ulGtIBmUScIbjgGJrX0vM
-         4Sw0j7gugqteflFuXs09zCPi6bzHkZxnomAxJv6u7jp9tJfIRjcTdoeF4v4LcZftRgVY
-         ULacQLLHdtHseCiCh0GMOXq/FFlBuKpQRDfzJ91q9rPW5HzWgwfEQANYqXnmUQQylXNz
-         doYFHxZUJwoRbP1r3QQ/bnoLXFIab+O/vpPW7jYtVuxYujY2FGhLpNJWYQF0UgKYMUCV
-         B4pA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=8CBAJkRMxtrCg7KxrhvykHCG2p+lXF1jwDt162j1T2c=;
+        b=Bwyb/boAMR+6AUOCcylhkkGVLwmV935wbOSK69bZlgH24rX4CKrElnMFb5D10B+dX0
+         i5iZH8jWqYNt3kGQ837Lvg4W6EGXF18SoZNEqJNJze618jQ6Zu+0H/+F1a8DNLzsOhXX
+         YBFDAoAIejpP/6OsFt0v2MlXuElgBcUsxcGG6li8y5PAHDYEOmW8cu020NCTqyLMwG6r
+         ndi57vTOJOsUgDnpib8rKSOf/9YfO6gyG7KmMJ0NvX8/jO4VJRMdOGnJRj7cgQIGbDzJ
+         jNoiEi372Kq2FCPzu5Q71Nb9O1rqMjTfPrtCZAsGPnQ3jKZDAa2Mq2A3Ox47F0C3nuYR
+         dk/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si18716604ilu.30.2021.02.22.18.23.40
+        by mx.google.com with ESMTPS id e30si10036578iov.72.2021.02.22.18.23.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Feb 2021 18:23:41 -0800 (PST)
+        Mon, 22 Feb 2021 18:23:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55574 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lENMS-0006MK-AZ
-	for alex.bennee@linaro.org; Mon, 22 Feb 2021 21:23:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52640)
+	id 1lENMd-0006rZ-8e
+	for alex.bennee@linaro.org; Mon, 22 Feb 2021 21:23:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52644)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1lENLy-00068O-OM; Mon, 22 Feb 2021 21:23:10 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3485)
+ id 1lENM0-00069E-7e; Mon, 22 Feb 2021 21:23:12 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3487)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1lENLq-0000H0-71; Mon, 22 Feb 2021 21:23:10 -0500
+ id 1lENLq-0000IS-7K; Mon, 22 Feb 2021 21:23:11 -0500
 Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Dl2q313FNzjR1N;
- Tue, 23 Feb 2021 10:21:19 +0800 (CST)
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Dl2q82RPczjRSt;
+ Tue, 23 Feb 2021 10:21:24 +0800 (CST)
 Received: from DESKTOP-7FEPK9S.china.huawei.com (10.174.184.135) by
  DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 23 Feb 2021 10:22:46 +0800
+ 14.3.498.0; Tue, 23 Feb 2021 10:22:53 +0800
 From: Shenming Lu <lushenming@huawei.com>
 To: Alex Williamson <alex.williamson@redhat.com>, Kirti Wankhede
  <kwankhede@nvidia.com>, Cornelia Huck <cohuck@redhat.com>,
  <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH v3 0/3] vfio: Some fixes and optimizations for VFIO migration
-Date: Tue, 23 Feb 2021 10:22:22 +0800
-Message-ID: <20210223022225.50-1-lushenming@huawei.com>
+Subject: [PATCH v3 3/3] vfio: Avoid disabling and enabling vectors repeatedly
+ in VFIO migration
+Date: Tue, 23 Feb 2021 10:22:25 +0800
+Message-ID: <20210223022225.50-4-lushenming@huawei.com>
 X-Mailer: git-send-email 2.27.0.windows.1
+In-Reply-To: <20210223022225.50-1-lushenming@huawei.com>
+References: <20210223022225.50-1-lushenming@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -92,41 +95,87 @@ Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
  lushenming@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l1GvNwUbdctZ
+X-TUID: 1nmDRrn1502c
 
-This patch set includes two fixes and one optimization for VFIO migration
-as blew:
+In VFIO migration resume phase and some guest startups, there are
+already unmasked vectors in the vector table when calling
+vfio_msix_enable(). So in order to avoid inefficiently disabling
+and enabling vectors repeatedly, let's allocate all needed vectors
+first and then enable these unmasked vectors one by one without
+disabling.
 
-Patch 1-2:
-- Fix two ordering problems in migration.
-
-Patch 3:
-- Optimize the enabling process of the MSI-X vectors in migration.
-
-History:
-
-v2 -> v3:
-- Nit fixes.
-- Set error in migration stream for migration to fail in Patch 1.
-- Tested Patch 3 with a Windows guest.
-
-Thanks,
-Shenming
-
-
-Shenming Lu (3):
-  vfio: Move the saving of the config space to the right place in VFIO
-    migration
-  vfio: Set the priority of the VFIO VM state change handler explicitly
-  vfio: Avoid disabling and enabling vectors repeatedly in VFIO
-    migration
-
+Signed-off-by: Shenming Lu <lushenming@huawei.com>
+---
  hw/pci/msix.c         |  2 +-
- hw/vfio/migration.c   | 28 +++++++++++++++++-----------
  hw/vfio/pci.c         | 20 +++++++++++++++++---
  include/hw/pci/msix.h |  1 +
- 4 files changed, 36 insertions(+), 15 deletions(-)
+ 3 files changed, 19 insertions(+), 4 deletions(-)
 
+diff --git a/hw/pci/msix.c b/hw/pci/msix.c
+index ae9331cd0b..e057958fcd 100644
+--- a/hw/pci/msix.c
++++ b/hw/pci/msix.c
+@@ -131,7 +131,7 @@ static void msix_handle_mask_update(PCIDevice *dev, int vector, bool was_masked)
+     }
+ }
+ 
+-static bool msix_masked(PCIDevice *dev)
++bool msix_masked(PCIDevice *dev)
+ {
+     return dev->config[dev->msix_cap + MSIX_CONTROL_OFFSET] & MSIX_MASKALL_MASK;
+ }
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index f74be78209..088fd41926 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -569,6 +569,9 @@ static void vfio_msix_vector_release(PCIDevice *pdev, unsigned int nr)
+ 
+ static void vfio_msix_enable(VFIOPCIDevice *vdev)
+ {
++    PCIDevice *pdev = &vdev->pdev;
++    unsigned int nr, max_vec = 0;
++
+     vfio_disable_interrupts(vdev);
+ 
+     vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
+@@ -587,11 +590,22 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
+      * triggering to userspace, then immediately release the vector, leaving
+      * the physical device with no vectors enabled, but MSI-X enabled, just
+      * like the guest view.
++     * If there are already unmasked vectors (in migration resume phase and
++     * some guest startups) which will be enabled soon, we can allocate all
++     * of them here to avoid inefficiently disabling and enabling vectors
++     * repeatedly later.
+      */
+-    vfio_msix_vector_do_use(&vdev->pdev, 0, NULL, NULL);
+-    vfio_msix_vector_release(&vdev->pdev, 0);
++    if (!msix_masked(pdev)) {
++        for (nr = 0; nr < msix_nr_vectors_allocated(pdev); nr++) {
++            if (!msix_is_masked(pdev, nr)) {
++                max_vec = nr;
++            }
++        }
++    }
++    vfio_msix_vector_do_use(pdev, max_vec, NULL, NULL);
++    vfio_msix_vector_release(pdev, max_vec);
+ 
+-    if (msix_set_vector_notifiers(&vdev->pdev, vfio_msix_vector_use,
++    if (msix_set_vector_notifiers(pdev, vfio_msix_vector_use,
+                                   vfio_msix_vector_release, NULL)) {
+         error_report("vfio: msix_set_vector_notifiers failed");
+     }
+diff --git a/include/hw/pci/msix.h b/include/hw/pci/msix.h
+index 4c4a60c739..b3cd88e262 100644
+--- a/include/hw/pci/msix.h
++++ b/include/hw/pci/msix.h
+@@ -28,6 +28,7 @@ void msix_load(PCIDevice *dev, QEMUFile *f);
+ 
+ int msix_enabled(PCIDevice *dev);
+ int msix_present(PCIDevice *dev);
++bool msix_masked(PCIDevice *dev);
+ 
+ bool msix_is_masked(PCIDevice *dev, unsigned vector);
+ void msix_set_pending(PCIDevice *dev, unsigned vector);
 -- 
 2.19.1
 

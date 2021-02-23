@@ -1,66 +1,109 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp388622lfq;
-        Fri, 11 Dec 2020 11:35:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyWXY3vFnOmYB2G4uBIjK+wSYsmhJJYLVw9r9Gj0MPz/MIgAWLMG+m6zwlTjlmHhO+mgZL3
-X-Received: by 2002:a25:4106:: with SMTP id o6mr20967235yba.60.1607715336221;
-        Fri, 11 Dec 2020 11:35:36 -0800 (PST)
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp47814lfg;
+        Tue, 23 Feb 2021 14:54:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJywYjd/sZ5AUxG1pVRp+sg+sG+77+zT9OQtH4sy7gSNezWlYzO8kBGEgUfuLJpZTiB26uQ5
+X-Received: by 2002:a6b:3bc7:: with SMTP id i190mr12955ioa.163.1614120871851;
+        Tue, 23 Feb 2021 14:54:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614120871; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eaJzVoyHW/qTAp77SMrVm2OZlLlBzCl+pViHyVW72rDVcmMvDp31JoAVqDuLDD8hH9
+         57VoIaSdArrMN1VReRZzJmZ6zCABzh9ZFagN8N7blWCUHg74NqCUDHSk74NIrksvcnKq
+         z824rfM0HRqls0w5RtdPWfUt3mXPbqrghcYTNl79cqJn6qB2dlRD4bpQKjggGKp4cYP1
+         8mP0FkugDhCQF1qqzo5JH9exep2KMowJ3P6QRx/lS1BRpqrnGIH+7G976k8GY3eiGFG4
+         +pKa4UIhB/bOrKSju5gAyAtGu8PFcHnAlg5wmrBbssb0GX7kdoblw5uPxwGHZJeCG/Sh
+         O00Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=X8WaP4W7cXz+9hJN4RigR0J/h1gkWz375q6Lq0YgScc=;
+        b=F58zZdrzlregkgZBaEiakcG+lAk9Xela4bOECwxqzh8tiQz6PH5Z9qTfchFN2xT1S4
+         5d/mXxrznA9M/hEesBhqpDE9hiv81KHRkyJFLBfoMXUtaSp7fkKILUSXiAO8U4NncPql
+         ovaX1F22kgbFWtwL9Z2SxVkrJisTrtaumAAlkxuXjsfdOFQDj/WEMWiKY3LpCLzSecET
+         W6w1k8hZn7NUMrXFL+Zux17dDkN9g/t+uSsmIj0TBQQZJRKcsA5OR3tXgTF4wXAUFGFA
+         PLOjABoYVltqjLyXQ8j1a+bmKOlHmq0YuZ+F0IpaWjz7tspp2oPNkIQThMoW2MAERv28
+         3Vyg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XAhsuoHG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u3si8499477ybk.381.2020.12.11.11.35.36
+        by mx.google.com with ESMTPS id t20si1121105jaj.96.2021.02.23.14.54.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Dec 2020 11:35:36 -0800 (PST)
+        Tue, 23 Feb 2021 14:54:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58464 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XAhsuoHG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37818 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1knoCV-00005j-Hc
-	for alex.bennee@linaro.org; Fri, 11 Dec 2020 14:35:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46968)
+	id 1lEgZb-0002e9-36
+	for alex.bennee@linaro.org; Tue, 23 Feb 2021 17:54:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48060)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1knnZY-00020Q-9U; Fri, 11 Dec 2020 13:55:24 -0500
-Resent-Date: Fri, 11 Dec 2020 13:55:20 -0500
-Resent-Message-Id: <E1knnZY-00020Q-9U@lists.gnu.org>
-Received: from sender4-of-o56.zoho.com ([136.143.188.56]:21660)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1knnZR-0004Hn-RM; Fri, 11 Dec 2020 13:55:20 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1607712890; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=WKdEmCj6hwSp/dO06EuJXBLKsQMNsVCTelDgX6XLNxt/hOm1zc96Xq7RDCQrSqpd23gU8hjN6mZNasd3yf5c89RDYUdmAvTL/neIYuivWwFUYFwbnUEFMSB5lVWPmaA6YnKibbvocuUCkt6t4c8b3uUPDkBY67Ujhn1a/v/+E7Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1607712890;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=3J9q8gJxU2KaSdbL6VfAQb0r1aQGPIQ+kOI4YLp3Wfg=; 
- b=oEu59Je8pDqzBFoaX3uSYjNBKJGeMdn8fpNWqytEPMfFRgPQx+yDxTyioAs5KJO91fmVHgu64bRWgfMrIrEvRTENkXTSgId0+Nj1jc6kA6z5djoNxGqL16fla316Zsl/DoST2sQGyswrov5rd23BjHUk73Kce8vDoxSA/r9q0cU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1607712887736597.9266720252848;
- Fri, 11 Dec 2020 10:54:47 -0800 (PST)
-In-Reply-To: <20201211151300.85322-1-agraf@csgraf.de>
-Subject: Re: [PATCH v5 00/11] hvf: Implement Apple Silicon Support
-Message-ID: <160771288604.24901.7645002973009425225@600e7e483b3a>
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1lEgZ9-0002An-SH; Tue, 23 Feb 2021 17:54:03 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:33910)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1lEgZ4-000229-AK; Tue, 23 Feb 2021 17:54:03 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id hs11so91487ejc.1;
+ Tue, 23 Feb 2021 14:53:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=X8WaP4W7cXz+9hJN4RigR0J/h1gkWz375q6Lq0YgScc=;
+ b=XAhsuoHGugsSXtpNGT5IWmBKTB15WyHQ/jh08tr5uru+1CJpmIzNwKhSzsJ42SxBaD
+ Nj8pWikkCx81MVAZrbUw2dxeJtmnQ/ajEFnyV92eMgZloS33pEwp3KBty4VmCgo5T+Hx
+ 4YJticZOjq201WG/DhWYnNzKyyBJrzYMylXJ32vDQN0gt2Vlmyj2QAxI6yqg4dG7NPLs
+ lSlb+LTbTExKL6gEpNGI5KXHxCUvPcn+a1V9CsL3klZGVqfpj5tNn5it75G4zjGtXtAn
+ OQyBXD5109FBH5/1xIbNT73lQlXmfTPRzP5kFetmG6DID7IhqI1PempUdfTGSW8NXi6I
+ xsfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=X8WaP4W7cXz+9hJN4RigR0J/h1gkWz375q6Lq0YgScc=;
+ b=hqk8JGXQu3JuhMYSRsvhfCve4LY99MSoEBss66YIXG95AMD41Fap7fLFpkZBl7k5Tq
+ n52JWxbqeYffw4i2BIKe3DosjRzZ2PGalACDWPsO0BexqFwSzBhMzZ5lPeoVI46rJH4R
+ hQTGoC86egOsM7CLJvRDKIwB0vxFRVE6JqVeeWLnRaKuJr63x4ueeeMY7R3tAgYKnVb9
+ AaxH9OHppc8J1cRlUzn9cWYI6OvWZGulvMAbz8HUi/6PGUz6ll75bSSNc9BkIin8soSk
+ 8tt0wfRDKcXqDXqIfnl1dgSsdR9pB4evxZhmVohnR4Et+mCri5zpsiXiQH5SO0XR7RcP
+ Xi8g==
+X-Gm-Message-State: AOAM531ZgR+60K1rCxNqBjgPIuABo2F7qeamZ/VZgY+dW7J4UVc6RGG/
+ zxcgQIzonTkEJcXUyYAHRLrBHkvZScA=
+X-Received: by 2002:a17:906:7f14:: with SMTP id
+ d20mr28102936ejr.322.1614120836385; 
+ Tue, 23 Feb 2021 14:53:56 -0800 (PST)
+Received: from localhost.localdomain
+ (2a02-a456-6be8-1-9f7b-4035-6320-cb66.fixed6.kpn.net.
+ [2a02:a456:6be8:1:9f7b:4035:6320:cb66])
+ by smtp.gmail.com with ESMTPSA id u15sm55752ejy.48.2021.02.23.14.53.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Feb 2021 14:53:55 -0800 (PST)
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 1/2] tests/acceptance: replace unstable apt.armbian.com
+ URLs for orangepi-pc, cubieboard
+Date: Tue, 23 Feb 2021 23:53:26 +0100
+Message-Id: <20210223225327.26700-2-nieklinnenbank@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210223225327.26700-1-nieklinnenbank@gmail.com>
+References: <20210223225327.26700-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: agraf@csgraf.de
-Date: Fri, 11 Dec 2020 10:54:47 -0800 (PST)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.56; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o56.zoho.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,102 +117,208 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, dirty@apple.com, r.bolshakov@yadro.com,
- qemu-arm@nongnu.org, lfy@google.com, pbonzini@redhat.com, pcc@google.com
+Cc: peter.maydell@linaro.org, f4bug@amsat.org, b.galvani@gmail.com,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Pavel.Dovgaluk@ispras.ru, crosa@redhat.com,
+ Willian Rampazzo <willianr@redhat.com>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6eZkHjo6OZuw
+X-TUID: RWmezkS+egFZ
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTIxMTE1MTMwMC44NTMy
-Mi0xLWFncmFmQGNzZ3JhZi5kZS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNv
-bWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9y
-bWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAxMjExMTUxMzAwLjg1MzIyLTEt
-YWdyYWZAY3NncmFmLmRlClN1YmplY3Q6IFtQQVRDSCB2NSAwMC8xMV0gaHZmOiBJbXBsZW1lbnQg
-QXBwbGUgU2lsaWNvbiBTdXBwb3J0Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9i
-YXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAt
-LWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVz
-IFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3Njcmlw
-dHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09
-PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9t
-IGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogLSBbdGFnIHVwZGF0ZV0g
-ICAgICBwYXRjaGV3LzIwMjAxMjEwMjAzNTQ5LjM3OS0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9y
-ZyAtPiBwYXRjaGV3LzIwMjAxMjEwMjAzNTQ5LjM3OS0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9y
-ZwogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjAxMjExMTUxMzAwLjg1MzIyLTEtYWdy
-YWZAY3NncmFmLmRlIC0+IHBhdGNoZXcvMjAyMDEyMTExNTEzMDAuODUzMjItMS1hZ3JhZkBjc2dy
-YWYuZGUKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIwMTIxMTE1MjQyNi4zNTA5NjYt
-MS10aHV0aEByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAyMDEyMTExNTI0MjYuMzUwOTY2LTEtdGh1
-dGhAcmVkaGF0LmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjU2ZjRjNmIgaHZm
-OiBhcm06IEltcGxlbWVudCAtY3B1IGhvc3QKYjVjNGRiMSBodmY6IGFybTogQWRkIHN1cHBvcnQg
-Zm9yIEdJQ3YzCjZjMDI4MGMgYXJtL2h2ZjogQWRkIGEgV0ZJIGhhbmRsZXIKMjZiMTcwZSBhcm06
-IEFkZCBIeXBlcnZpc29yLmZyYW1ld29yayBidWlsZCB0YXJnZXQKYTg4MjBiZCBodmY6IEFkZCBB
-cHBsZSBTaWxpY29uIHN1cHBvcnQKZDBiNWMzOCBodmY6IFNpbXBsaWZ5IHBvc3QgcmVzZXQvaW5p
-dC9sb2Fkdm0gaG9va3MKZDNjNjhhYiBhcm06IFNldCBQU0NJIHRvIDAuMiBmb3IgSFZGCjM2MGY0
-OGUgaHZmOiBJbnRyb2R1Y2UgaHZmIHZjcHUgc3RydWN0Cjg3YTA5ZTggaHZmOiBNb3ZlIGNvbW1v
-biBjb2RlIG91dAphYzkyNWYwIGh2ZjogeDg2OiBSZW1vdmUgdW51c2VkIGRlZmluaXRpb25zCmM3
-N2NlMTYgaHZmOiBBZGQgaHlwZXJ2aXNvciBlbnRpdGxlbWVudCB0byBvdXRwdXQgYmluYXJpZXMK
-Cj09PSBPVVRQVVQgQkVHSU4gPT09CjEvMTEgQ2hlY2tpbmcgY29tbWl0IGM3N2NlMTY4MzJmYiAo
-aHZmOiBBZGQgaHlwZXJ2aXNvciBlbnRpdGxlbWVudCB0byBvdXRwdXQgYmluYXJpZXMpCldBUk5J
-Tkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVl
-ZCB1cGRhdGluZz8KIzE4OiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQKCnRvdGFsOiAwIGVycm9ycywg
-MSB3YXJuaW5ncywgNjIgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMS8xMSBoYXMgc3R5bGUgcHJvYmxl
-bXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3Np
-dGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1B
-SU5UQUlORVJTLgoyLzExIENoZWNraW5nIGNvbW1pdCBhYzkyNWYwYWFmMTggKGh2ZjogeDg2OiBS
-ZW1vdmUgdW51c2VkIGRlZmluaXRpb25zKQozLzExIENoZWNraW5nIGNvbW1pdCA4N2EwOWU4MWY5
-MjUgKGh2ZjogTW92ZSBjb21tb24gY29kZSBvdXQpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBk
-ZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzQxOiAKbmV3
-IGZpbGUgbW9kZSAxMDA2NDQKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMTA1NCBsaW5l
-cyBjaGVja2VkCgpQYXRjaCAzLzExIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4g
-IElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0
-byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjQvMTEgQ2hl
-Y2tpbmcgY29tbWl0IDM2MGY0OGViODM5ZiAoaHZmOiBJbnRyb2R1Y2UgaHZmIHZjcHUgc3RydWN0
-KQpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojMTQyOiBGSUxFOiB0YXJnZXQvaTM4
-Ni9odmYvaHZmLmM6MjEzOgorICAgIHd2bWNzKGNwdS0+aHZmLT5mZCwgVk1DU19FTlRSWV9DVExT
-LCBjYXAyY3RybChodmZfc3RhdGUtPmh2Zl9jYXBzLT52bXhfY2FwX2VudHJ5LAoKRVJST1I6ICIo
-Zm9vKikiIHNob3VsZCBiZSAiKGZvbyAqKSIKIzc1MDogRklMRTogdGFyZ2V0L2kzODYvaHZmL3g4
-Nmh2Zi5jOjg1OgorICAgIGlmIChodl92Y3B1X3dyaXRlX2Zwc3RhdGUoY3B1X3N0YXRlLT5odmYt
-PmZkLCAodm9pZCopeHNhdmUsIDQwOTYpKSB7CgpFUlJPUjogIihmb28qKSIgc2hvdWxkIGJlICIo
-Zm9vICopIgojODMxOiBGSUxFOiB0YXJnZXQvaTM4Ni9odmYveDg2aHZmLmM6MTY3OgorICAgIGlm
-IChodl92Y3B1X3JlYWRfZnBzdGF0ZShjcHVfc3RhdGUtPmh2Zi0+ZmQsICh2b2lkKil4c2F2ZSwg
-NDA5NikpIHsKCnRvdGFsOiAyIGVycm9ycywgMSB3YXJuaW5ncywgOTk2IGxpbmVzIGNoZWNrZWQK
-ClBhdGNoIDQvMTEgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9m
-IHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWlu
-dGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjUvMTEgQ2hlY2tpbmcgY29t
-bWl0IGQzYzY4YWI3ZmE5NiAoYXJtOiBTZXQgUFNDSSB0byAwLjIgZm9yIEhWRikKNi8xMSBDaGVj
-a2luZyBjb21taXQgZDBiNWMzODY1MWQ1IChodmY6IFNpbXBsaWZ5IHBvc3QgcmVzZXQvaW5pdC9s
-b2Fkdm0gaG9va3MpCjcvMTEgQ2hlY2tpbmcgY29tbWl0IGE4ODIwYmQ2MGY2YSAoaHZmOiBBZGQg
-QXBwbGUgU2lsaWNvbiBzdXBwb3J0KQpXQVJOSU5HOiBhcmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVm
-aW5lcyBzaG91bGQgYmUgYXZvaWRlZAojNDg6IEZJTEU6IGFjY2VsL2h2Zi9odmYtY3B1cy5jOjYx
-OgorI2lmZGVmIF9fYWFyY2g2NF9fCgpXQVJOSU5HOiBhcmNoaXRlY3R1cmUgc3BlY2lmaWMgZGVm
-aW5lcyBzaG91bGQgYmUgYXZvaWRlZAojNTk6IEZJTEU6IGFjY2VsL2h2Zi9odmYtY3B1cy5jOjMz
-NToKKyNpZmRlZiBfX2FhcmNoNjRfXwoKV0FSTklORzogYXJjaGl0ZWN0dXJlIHNwZWNpZmljIGRl
-ZmluZXMgc2hvdWxkIGJlIGF2b2lkZWQKIzkxOiBGSUxFOiBpbmNsdWRlL3N5c2VtdS9odmZfaW50
-Lmg6MTU6CisjaWZkZWYgX19hYXJjaDY0X18KCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxl
-dGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzExNzogCm5ldyBm
-aWxlIG1vZGUgMTAwNjQ0CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNTc5OiBG
-SUxFOiB0YXJnZXQvYXJtL2h2Zi9odmYuYzo0NTg6CisgICAgICAgIGh2X3ZjcHVfc2V0X3BlbmRp
-bmdfaW50ZXJydXB0KGNwdS0+aHZmLT5mZCwgSFZfSU5URVJSVVBUX1RZUEVfRklRLCB0cnVlKTsK
-CldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM1ODQ6IEZJTEU6IHRhcmdldC9hcm0v
-aHZmL2h2Zi5jOjQ2MzoKKyAgICAgICAgaHZfdmNwdV9zZXRfcGVuZGluZ19pbnRlcnJ1cHQoY3B1
-LT5odmYtPmZkLCBIVl9JTlRFUlJVUFRfVFlQRV9JUlEsIHRydWUpOwoKdG90YWw6IDAgZXJyb3Jz
-LCA2IHdhcm5pbmdzLCA2OTEgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNy8xMSBoYXMgc3R5bGUgcHJv
-YmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBw
-b3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGlu
-IE1BSU5UQUlORVJTLgo4LzExIENoZWNraW5nIGNvbW1pdCAyNmIxNzBlZTYxOGEgKGFybTogQWRk
-IEh5cGVydmlzb3IuZnJhbWV3b3JrIGJ1aWxkIHRhcmdldCkKV0FSTklORzogYWRkZWQsIG1vdmVk
-IG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojNDk6
-IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCAzNiBs
-aW5lcyBjaGVja2VkCgpQYXRjaCA4LzExIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmll
-dy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhl
-bSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjkvMTEg
-Q2hlY2tpbmcgY29tbWl0IDZjMDI4MGM4YjY0OSAoYXJtL2h2ZjogQWRkIGEgV0ZJIGhhbmRsZXIp
-CjEwLzExIENoZWNraW5nIGNvbW1pdCBiNWM0ZGIxMDkwNWUgKGh2ZjogYXJtOiBBZGQgc3VwcG9y
-dCBmb3IgR0lDdjMpCjExLzExIENoZWNraW5nIGNvbW1pdCA1NmY0YzZiN2ZmODQgKGh2ZjogYXJt
-OiBJbXBsZW1lbnQgLWNwdSBob3N0KQo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBl
-eGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8v
-cGF0Y2hldy5vcmcvbG9ncy8yMDIwMTIxMTE1MTMwMC44NTMyMi0xLWFncmFmQGNzZ3JhZi5kZS90
-ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
-bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQg
-eW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+Currently the automated acceptance tests for the Orange Pi PC and cubieboard
+machines are disabled by default. The tests for both machines require artifacts
+that are stored on the apt.armbian.com domain. Unfortunately, some of these artifacts
+have been removed from apt.armbian.com and it is uncertain whether more will be removed.
+
+This commit moves the artifacts previously stored on apt.armbian.com to github
+and retrieves them using the path: '/<machine>/<artifact>'.
+
+Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Reviewed-by: Willian Rampazzo <willianr@redhat.com>
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
+Tested-by: Cleber Rosa <crosa@redhat.com>
+---
+ tests/acceptance/boot_linux_console.py | 49 ++++++++++----------------
+ tests/acceptance/replay_kernel.py      |  6 ++--
+ 2 files changed, 21 insertions(+), 34 deletions(-)
+
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index eb01286799..0f8a824c61 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -507,15 +507,13 @@ def test_arm_exynos4210_initrd(self):
+         self.wait_for_console_pattern('Boot successful.')
+         # TODO user command, for now the uart is stuck
+ 
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_cubieboard_initrd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:cubieboard
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                   'master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -549,15 +547,13 @@ def test_arm_cubieboard_initrd(self):
+                                                 'system-control@1c00000')
+         # cubieboard's reboot is not functioning; omit reboot test.
+ 
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_cubieboard_sata(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:cubieboard
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                   'master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -678,15 +674,13 @@ def test_arm_quanta_gsj_initrd(self):
+         self.wait_for_console_pattern(
+                 'Give root password for system maintenance')
+ 
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_orangepi(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:orangepi-pc
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                   'master/orangepi-pc/linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -705,15 +699,13 @@ def test_arm_orangepi(self):
+         console_pattern = 'Kernel command line: %s' % kernel_command_line
+         self.wait_for_console_pattern(console_pattern)
+ 
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_orangepi_initrd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:orangepi-pc
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                   'master/orangepi-pc/linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -749,24 +741,23 @@ def test_arm_orangepi_initrd(self):
+         # Wait for VM to shut down gracefully
+         self.vm.wait()
+ 
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_orangepi_sd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:orangepi-pc
+         :avocado: tags=device:sd
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                   'master/orangepi-pc/linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+                                             '/boot/vmlinuz-4.20.7-sunxi')
+         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
+-        rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
+-                      'kci-2019.02/armel/base/rootfs.ext2.xz')
++        # Rootfs is based on buildroot 2019.02 from kernelci.org
++        rootfs_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                      'master/orangepi-pc/rootfs.ext2.xz')
+         rootfs_hash = '692510cb625efda31640d1de0a8d60e26040f061'
+         rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
+         rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
+@@ -828,8 +819,6 @@ def do_test_arm_orangepi_uboot_armbian(self, image_path):
+                                       'to <orangepipc>')
+         self.wait_for_console_pattern('Starting Load Kernel Modules...')
+ 
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
+     @skipUnless(P7ZIP_AVAILABLE, '7z not installed')
+     def test_arm_orangepi_bionic_19_11(self):
+@@ -840,7 +829,8 @@ def test_arm_orangepi_bionic_19_11(self):
+         """
+ 
+         # This test download a 196MB compressed image and expand it to 1GB
+-        image_url = ('https://dl.armbian.com/orangepipc/archive/'
++        image_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                     'master/orangepi-pc/'
+                      'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.7z')
+         image_hash = '196a8ffb72b0123d92cea4a070894813d305c71e'
+         image_path_7z = self.fetch_asset(image_url, asset_hash=image_hash)
+@@ -851,8 +841,6 @@ def test_arm_orangepi_bionic_19_11(self):
+ 
+         self.do_test_arm_orangepi_uboot_armbian(image_path)
+ 
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
+     def test_arm_orangepi_bionic_20_08(self):
+         """
+@@ -865,7 +853,8 @@ def test_arm_orangepi_bionic_20_08(self):
+         # to 1036 MiB, but the underlying filesystem is 1552 MiB...
+         # As we expand it to 2 GiB we are safe.
+ 
+-        image_url = ('https://dl.armbian.com/orangepipc/archive/'
++        image_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                     'master/orangepi-pc/'
+                      'Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz')
+         image_hash = ('b4d6775f5673486329e45a0586bf06b6'
+                       'dbe792199fd182ac6b9c7bb6c7d3e6dd')
+@@ -884,8 +873,8 @@ def test_arm_orangepi_uboot_netbsd9(self):
+         :avocado: tags=device:sd
+         """
+         # This test download a 304MB compressed image and expand it to 2GB
+-        deb_url = ('http://snapshot.debian.org/archive/debian/'
+-                   '20200108T145233Z/pool/main/u/u-boot/'
++        deb_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                   'master/orangepi-pc/'
+                    'u-boot-sunxi_2020.01%2Bdfsg-1_armhf.deb')
+         deb_hash = 'f67f404a80753ca3d1258f13e38f2b060e13db99'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+diff --git a/tests/acceptance/replay_kernel.py b/tests/acceptance/replay_kernel.py
+index c1cb862468..ca5670fa76 100644
+--- a/tests/acceptance/replay_kernel.py
++++ b/tests/acceptance/replay_kernel.py
+@@ -177,15 +177,13 @@ def test_arm_virt(self):
+         self.run_rr(kernel_path, kernel_command_line, console_pattern, shift=1)
+ 
+     @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
+-    @skipUnless(os.getenv('ARMBIAN_ARTIFACTS_CACHED'),
+-                'Test artifacts fetched from unreliable apt.armbian.com')
+     def test_arm_cubieboard_initrd(self):
+         """
+         :avocado: tags=arch:arm
+         :avocado: tags=machine:cubieboard
+         """
+-        deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
++        deb_url = ('https://github.com/nieklinnenbank/QemuArtifacts/raw/'
++                   'master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb')
+         deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+-- 
+2.25.1
+

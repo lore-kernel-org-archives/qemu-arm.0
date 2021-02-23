@@ -1,259 +1,170 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp224342lfg;
-        Tue, 23 Feb 2021 03:57:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy6le7dzMZfbLAmQU5ON/zQoJ7V6L6tpBX9ZPAiNN3m9kbYr3vmvnnFy4riIkW/fFxhN2e0
-X-Received: by 2002:a92:d11:: with SMTP id 17mr20573549iln.57.1614081470637;
-        Tue, 23 Feb 2021 03:57:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614081470; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp371630lfg;
+        Tue, 23 Feb 2021 07:08:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzN2shZhMKUSEYxPizvfsEGYJLGm3HByWFeWEVbVl4+0PnTAG/i4vHCNVOIDJ+XmjYBUPpQ
+X-Received: by 2002:a5e:8507:: with SMTP id i7mr16013103ioj.9.1614092898682;
+        Tue, 23 Feb 2021 07:08:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614092898; cv=none;
         d=google.com; s=arc-20160816;
-        b=zre/66ZmIxasrj8CpSUBRZfOmtpB7rZ+aJf4OtG76daPZUS38Oc6KX/sagRh+RtGPd
-         w5Bcuj7RVfXf4Oj+NIs1OoeVIuu155s5tuczq8pZ2kuD4cpvqCrRCUW37MIW74phejOw
-         sqwlcIw63VCLu01BekuSqbrADd5EBPVtRx6C+peB1Fu7inaF15BXs793wHvzVej5Qc9R
-         IzjiBsDJ/2VoHdDMinewjAAA+68p9U00y/TzwQQf8duOjFNiSyYoWaPhzhxq4ALZt1Nx
-         L0waqm4fLmiiOPGOv/g5gUtlykFjGrkHA5pDLolVEApoF2/Dn3CyNR8j8YQjRbysuQit
-         iKyg==
+        b=crsDjAqEk4ztlfho4+aUW5NYGUfhh2Q7Sj58/wl5qyJy81qFA5gy0ftndiH3lDnCO5
+         Fks+G69Ue3GgYjQ1Wl1xMb2VSlamM4X1+e1dPa2M6p13axEWjTvTmNvzxR2M3mXs+DOE
+         CllR5i0TQ3Vm6V58f6ufuonFyl/jZ7niSSg3PUv2OPlfWJsMnXjh9IhFL7vsKk0zpLXD
+         +f5MWu+3vSTT/IjVyKssMcPAApqqYEUOISxMrtTtRyAlbz4XGxA7Ms0uN5mZrHTok3eI
+         jbxCtjR9vAHHKslV2PN0UIX1AuWECZxUqyEP72l1nTVXvRP2tNEifwn7pWshUu7uX1Lt
+         uz1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=PXFyo0fuv8jnsWZ01bGHl1Ugcs8Arvd+rz+qu2RPvEM=;
-        b=HeRgqThF/4sw2nJ6tHKK9B9tFFJpcdHOo6rwn22j60Kz5+f5Tt3SgTjWRTyLvCwXfC
-         WZWVmmp0OXeJOcmvYKmro8SNQ3LxBGYErk3+eNpbt3dljgmhysT4KbkhSa4yYmLO0hxJ
-         Ep2QhG9NPVr4iRsUtrIDG4XOY2vKjaDQEmdI+rABpYyeRzS9G7Ar31k7E+C/hq2fvRDx
-         R/WHntSgN6nzx8A5gSq9VlyKi8yFEJq0M2pDnPYsZ+SuOKNwtjWpeZcixEJZ7A0N6wgo
-         qmraO9FHpmHNBNu7foH1FUTekkkO0Mf0CYP9JNcriXYH28uo1iYZ4ZD65hhiPf8ivuXW
-         2nqQ==
+        bh=tUnt08oW2dZ1VVfk6tmBCSpZHR5vCmYTJ2TPBcdTils=;
+        b=zYvgIiNn25EWo5cVwNlIkRQsyn5l0A+/xQG3Xr664VJ1n0OeP9Cd79yuP3HXHO8+r1
+         gFR7gYzkzJpkigbpAVB8RQA3T/4joDY3OvPfeup1zwAwa/0u5CEaHWzulBBjK1ba4PUs
+         33sc05j0MEmp0xARspso7UzqD02CXwod5gpApgMcePlHgjMFO2GNueT8W6t3jbZcSEE/
+         99/lLEoN4vE39b0faClRjH9DceDPbStdcB/CQITcph/qDT3S3aA5N0BXZl3+bFRqFY6c
+         LRBYs9EoUz+niilFDeaWDv2o5O0Y4hHVbxU+/ZQ+F1Vb739xyQFwEIoQQLIuwZvVVMPq
+         oiiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U4LFMjR8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WzTt/5rr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2si19627707ilr.104.2021.02.23.03.57.50
+        by mx.google.com with ESMTPS id h11si20183836ild.98.2021.02.23.07.08.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Feb 2021 03:57:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Feb 2021 07:08:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=U4LFMjR8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55954 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="WzTt/5rr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46888 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEWK4-0002qS-Ew
-	for alex.bennee@linaro.org; Tue, 23 Feb 2021 06:57:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59778)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lEZIQ-00026i-1i
+	for alex.bennee@linaro.org; Tue, 23 Feb 2021 10:08:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
- id 1lEWIs-0002Fu-Ag; Tue, 23 Feb 2021 06:56:34 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:41649)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@gmail.com>)
- id 1lEWIo-0001Ld-UY; Tue, 23 Feb 2021 06:56:34 -0500
-Received: by mail-pl1-x631.google.com with SMTP id d11so4724261plo.8;
- Tue, 23 Feb 2021 03:56:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PXFyo0fuv8jnsWZ01bGHl1Ugcs8Arvd+rz+qu2RPvEM=;
- b=U4LFMjR8y4mbb058lAaEBxy+7FoQZsS/RRL6p56ZkRtOpACd+OiBbbwT1SZ3loU7Mf
- dJjP1BMtveDZMIhMUqYcZJaidMcOoUhPwLLfIiSLyfyVJ7aM+Z660x+1x4mkyLzakZfF
- Dn8QFe7Skk3sOuYXmvP/mX8JADJXavKIdLeTjv/GXRc9tWn0N0ooRWxGIX8om2g5lELl
- pMH/AUHGTXzPecfUI7NvqZ02sODJc994zm88O5Iq6x7NwRFuBhz5wwXOXA4YTfPJqm3X
- NXmwrifpxtMxx2YLkRgRNxul8PgLSNEmDSxDKuYTWgaz3cOiY5nTqG5tWCU8GvOwtcmo
- sR8Q==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1lEZHz-00024Z-7W
+ for qemu-arm@nongnu.org; Tue, 23 Feb 2021 10:07:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58333)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1lEZHx-0002ig-Ar
+ for qemu-arm@nongnu.org; Tue, 23 Feb 2021 10:07:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614092868;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tUnt08oW2dZ1VVfk6tmBCSpZHR5vCmYTJ2TPBcdTils=;
+ b=WzTt/5rrKbanqSsDMfy73wXUoLRVu0nqWv5f3g4utWcuW6f2hMgw1DDHR5JeIkm07eziLL
+ GCoqgOnGZAgPNqrxntYz9oh5TMgK2s12TgISZ6UOV3Tdr3bCnY4vAeoKJUghLXL9YZTBz/
+ pEy867/CUdko3qQssRdz5LjArV32j+U=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-410-SswROmt5Or-o4NQiuNkydg-1; Tue, 23 Feb 2021 10:07:39 -0500
+X-MC-Unique: SswROmt5Or-o4NQiuNkydg-1
+Received: by mail-wm1-f71.google.com with SMTP id p8so1306000wmq.7
+ for <qemu-arm@nongnu.org>; Tue, 23 Feb 2021 07:07:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=PXFyo0fuv8jnsWZ01bGHl1Ugcs8Arvd+rz+qu2RPvEM=;
- b=bkmuig50oLbSsH7I3Yo7nCyeJVRX4r35sNGZFgtwywckdBQaEM6VgsYEMIkyj7aK4s
- MCOUUod4jbkYVsVc2DnYbxzv0CPkkL99sfkCyUDjBrVB0nQ0HEEqdasHpHnH8atPKoTF
- 0GKcKhhihlzuLgsy7Nz5NwCkrSnDlN1NsjZvETTH/C2ZOfuTLLJas9rnTI/3eHsha4Cg
- X2dwUDGNs+LFsrPvpEzitSxGp0PN6w+30FG3u1+0XYgxHvbcTz4rDNYquXP/EfHEQOx8
- jIi2rIIpWQQ+GVmrPNXiF5ZYMx16/UergXcJofjUCwQA8LjDwRB93YDoXL0j6rEiuM+6
- DedA==
-X-Gm-Message-State: AOAM531zX2iEOfn9J0uJPk5xeLEwproqIdEum19bbZDnYEaZv2Zvkxe3
- Yv54hsQfH5anX3KbRwQC7HE=
-X-Received: by 2002:a17:90b:3892:: with SMTP id
- mu18mr28696287pjb.143.1614081389156; 
- Tue, 23 Feb 2021 03:56:29 -0800 (PST)
-Received: from [10.0.2.15] (p912131-ipoe.ipoe.ocn.ne.jp. [153.243.13.130])
- by smtp.gmail.com with ESMTPSA id j3sm21312811pgk.24.2021.02.23.03.56.26
+ bh=tUnt08oW2dZ1VVfk6tmBCSpZHR5vCmYTJ2TPBcdTils=;
+ b=qatb1Jt6cGbHiJBhhMUNKOcLZZYngX9mUYWJEqpzO6BPxBcpUEK9x92gQj0wDgxTsj
+ ufqG6P+Va1gvXZNUgpet3SfErBC8tyaJ5CwH73+YT3clKqZ4YtT4IxBWtgcdZF4H2mGx
+ ER7RsExG97KCIaXDhELGkwWl/jQCn5ozZhVGQWimJWzT/PhSCi2+O8ayX2hYG57Y2aL2
+ Ejh/+L3VhjjisiW+7UBSe7RVVpQUOfGpxGC5kGlrS1HYkf5HHkIUE3H7DellyT4ZSB5d
+ oldHaJFbEVlwTqTNPhKrXLGou2JS951AJwAzDKv0MQ3Wj9by7O/rkxJr52AJvrDQWJfv
+ HqMA==
+X-Gm-Message-State: AOAM532QbWki/j2l6uRgHT2bQCnA9cxOjJAeE8kGck1/zcOSXZPmCpCo
+ CoY+Gudxx/euSkrc1i0swwhT7MMTKPRskeBSGG3gorvLjflEfXwOsZhCdBS9hf/4f0oCZl2/SWI
+ uU2Jbdir/oiNz
+X-Received: by 2002:a05:600c:203:: with SMTP id
+ 3mr26080557wmi.187.1614092858650; 
+ Tue, 23 Feb 2021 07:07:38 -0800 (PST)
+X-Received: by 2002:a05:600c:203:: with SMTP id
+ 3mr26080521wmi.187.1614092858485; 
+ Tue, 23 Feb 2021 07:07:38 -0800 (PST)
+Received: from ?IPv6:2001:b07:add:ec09:c399:bc87:7b6c:fb2a?
+ ([2001:b07:add:ec09:c399:bc87:7b6c:fb2a])
+ by smtp.gmail.com with ESMTPSA id z5sm33629613wrn.8.2021.02.23.07.07.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Feb 2021 03:56:28 -0800 (PST)
+ Tue, 23 Feb 2021 07:07:37 -0800 (PST)
 Subject: Re: [PATCH v6 01/11] hvf: Add hypervisor entitlement to output
  binaries
-To: Alexander Graf <agraf@csgraf.de>, qemu-devel@nongnu.org
+To: Akihiko Odaki <akihiko.odaki@gmail.com>, Alexander Graf
+ <agraf@csgraf.de>, qemu-devel@nongnu.org
 References: <20210120224444.71840-1-agraf@csgraf.de>
  <20210120224444.71840-2-agraf@csgraf.de>
-From: Akihiko Odaki <akihiko.odaki@gmail.com>
-Message-ID: <a41a39e5-951f-c178-d50e-6041eec63cbe@gmail.com>
-Date: Tue, 23 Feb 2021 20:56:24 +0900
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ <a41a39e5-951f-c178-d50e-6041eec63cbe@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <419dbb9c-badd-25d8-1755-00978a592671@redhat.com>
+Date: Tue, 23 Feb 2021 16:07:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210120224444.71840-2-agraf@csgraf.de>
+In-Reply-To: <a41a39e5-951f-c178-d50e-6041eec63cbe@gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=akihiko.odaki@gmail.com; helo=mail-pl1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
  qemu-arm@nongnu.org, Frank Yang <lfy@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Collingbourne <pcc@google.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w+safrsfJXlV
+ Peter Collingbourne <pcc@google.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5klE09TmC/wX
 
-Hi,
+On 23/02/21 12:56, Akihiko Odaki wrote:
+> 
+> I noticed that the installation process corrupts the code signature 
+> because meson modifies the file to fix dynamic shared library install 
+> names. Also, stripping apparently does not work because the signed file 
+> is not considered as "executable" by meson. Here is some change I wrote 
+> for my own use, just for reference:
+> https://github.com/akihikodaki/qemu/commit/6a9b5d7e4ea03b1e757be1eedf256871bb6a5bdd 
+> 
 
-I use your patches when running QEMU on M1 MacBook Air.
+That seems like a feasible way to do it.  We could also have a single 
+script with --build and --install as the first argument.
 
-I noticed that the installation process corrupts the code signature 
-because meson modifies the file to fix dynamic shared library install 
-names. Also, stripping apparently does not work because the signed file 
-is not considered as "executable" by meson. Here is some change I wrote 
-for my own use, just for reference:
-https://github.com/akihikodaki/qemu/commit/6a9b5d7e4ea03b1e757be1eedf256871bb6a5bdd
+Since entitlement support is already part of the upstream tree, would 
+you like to submit the patch and Cc me so that I can include it?
 
-Also, the patch series do no longer apply to master. Here is my merge 
-with conflict resolution (It is not a rebase and was done for my own 
-purpose. Just for reference.):
-https://github.com/akihikodaki/qemu/commit/b7885e4370a2fe426e80d32afe6eb5d01a71640d
+Thanks,
 
-Regards,
-Akihiko Odaki
+Paolo
 
-On 2021/01/21 7:44, Alexander Graf wrote:
-> In macOS 11, QEMU only gets access to Hypervisor.framework if it has the
-> respective entitlement. Add an entitlement template and automatically self
-> sign and apply the entitlement in the build.
-> 
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
-> Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
-> Tested-by: Roman Bolshakov <r.bolshakov@yadro.com>
-> 
-> ---
-> 
-> v1 -> v2:
-> 
->    - Make safe to ctrl-C
-> 
-> v3 -> v4:
-> 
->    - Remove unused exe_full variable
->    - Reuse exe_name variable
-> ---
->   accel/hvf/entitlements.plist |  8 ++++++++
->   meson.build                  | 29 +++++++++++++++++++++++++----
->   scripts/entitlement.sh       | 13 +++++++++++++
->   3 files changed, 46 insertions(+), 4 deletions(-)
->   create mode 100644 accel/hvf/entitlements.plist
->   create mode 100755 scripts/entitlement.sh
-> 
-> diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.plist
-> new file mode 100644
-> index 0000000000..154f3308ef
-> --- /dev/null
-> +++ b/accel/hvf/entitlements.plist
-> @@ -0,0 +1,8 @@
-> +<?xml version="1.0" encoding="UTF-8"?>
-> +<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-> +<plist version="1.0">
-> +<dict>
-> +    <key>com.apple.security.hypervisor</key>
-> +    <true/>
-> +</dict>
-> +</plist>
-> diff --git a/meson.build b/meson.build
-> index 3d889857a0..c667d64498 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -2146,9 +2146,14 @@ foreach target : target_dirs
->       }]
->     endif
->     foreach exe: execs
-> -    emulators += {exe['name']:
-> -         executable(exe['name'], exe['sources'],
-> -               install: true,
-> +    exe_name = exe['name']
-> +    exe_sign = 'CONFIG_HVF' in config_target
-> +    if exe_sign
-> +      exe_name += '-unsigned'
-> +    endif
-> +
-> +    emulator = executable(exe_name, exe['sources'],
-> +               install: not exe_sign,
->                  c_args: c_args,
->                  dependencies: arch_deps + deps + exe['dependencies'],
->                  objects: lib.extract_all_objects(recursive: true),
-> @@ -2156,7 +2161,23 @@ foreach target : target_dirs
->                  link_depends: [block_syms, qemu_syms] + exe.get('link_depends', []),
->                  link_args: link_args,
->                  gui_app: exe['gui'])
-> -    }
-> +
-> +    if exe_sign
-> +      emulators += {exe['name'] : custom_target(exe['name'],
-> +                   install: true,
-> +                   install_dir: get_option('bindir'),
-> +                   depends: emulator,
-> +                   output: exe['name'],
-> +                   command: [
-> +                     meson.current_source_dir() / 'scripts/entitlement.sh',
-> +                     meson.current_build_dir() / exe_name,
-> +                     meson.current_build_dir() / exe['name'],
-> +                     meson.current_source_dir() / 'accel/hvf/entitlements.plist'
-> +                   ])
-> +      }
-> +    else
-> +      emulators += {exe['name']: emulator}
-> +    endif
->   
->       if 'CONFIG_TRACE_SYSTEMTAP' in config_host
->         foreach stp: [
-> diff --git a/scripts/entitlement.sh b/scripts/entitlement.sh
-> new file mode 100755
-> index 0000000000..c540fa6435
-> --- /dev/null
-> +++ b/scripts/entitlement.sh
-> @@ -0,0 +1,13 @@
-> +#!/bin/sh -e
-> +#
-> +# Helper script for the build process to apply entitlements
-> +
-> +SRC="$1"
-> +DST="$2"
-> +ENTITLEMENT="$3"
-> +
-> +trap 'rm "$DST.tmp"' exit
-> +cp -af "$SRC" "$DST.tmp"
-> +codesign --entitlements "$ENTITLEMENT" --force -s - "$DST.tmp"
-> +mv "$DST.tmp" "$DST"
-> +trap '' exit
-> 

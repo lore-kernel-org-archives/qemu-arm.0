@@ -1,111 +1,119 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp534978lfg;
-        Wed, 24 Feb 2021 04:54:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJznxC2NJPyhaujSdKXswCGJW7kpDB3hqE9DfowjsD7X6PdbE/m+dZJUmgqbEG4rQp/PLHfy
-X-Received: by 2002:a6b:8dcc:: with SMTP id p195mr23742791iod.74.1614171288644;
-        Wed, 24 Feb 2021 04:54:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614171288; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp617949lfg;
+        Wed, 24 Feb 2021 06:41:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzRzucmygFg9UJHnzXcKP7LIDWHlU6APS3ldrdWzKsB1MV2ic/h8JH9Ze+dsqUCtqzAjnIT
+X-Received: by 2002:aca:4a0d:: with SMTP id x13mr2855706oia.111.1614177682453;
+        Wed, 24 Feb 2021 06:41:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614177682; cv=none;
         d=google.com; s=arc-20160816;
-        b=uAMH2ERFyguzOC8QOePvLtcTy/Npl6LmML9tskTH3FyLNg4xt8Z6XwpwgieRtbTr1o
-         GMUNYV31wk22eUfuCPZadpmjQi39I0Yt4HtXgaVXcVHsC+VCxjXeuGxdISlzg1TFtwSB
-         wRP/9WRDSngC4zvVe210gWqNSEb12dt5OXrpLvdD/RLn9HoUEWE1eCL5lRxksVlIJJHk
-         eImkI0WI14ZDLonAEeqoH2Xm1GAXg1Y0AqYTna0ROIQGPd1zTjCop7UFx9dCtRNHdq1n
-         X13xLevz5zTZcsDR0hxORSPYAlBWILbNMI03dy429isHUD7NJXU5DN7dH4HdBfLuyZER
-         pQIg==
+        b=zztjF8HpF8dnlJsS5gVdfIGFUq78ZGoW5mgz1o7+e3VZiMm4ni47ygmqZzR0dG70iv
+         tK9vqyxgEpWsbr13ROW8CvwrvYJRlAGm3wSsj1vNKUwkS+q70orCGqV+zEQOB/CMlimF
+         YHttzRmyuDmRdAoNzOS6+cw0UubOztvF/i4xWc6ZNSYO7rR2DpSjr45e73broBvf3gca
+         wg0RXNJRBufTsyRVbmOG3Uyp13stYRIolCH+8rohDGCqQFKgjiQKbx3eQ5fVDgNJMpWK
+         f+wm2TEhAEiCFPgszTLHyRsgWd+pt6HBC8Sp1RxsUzftmHp5Bn7jV4hcIZ1HJh3hreOV
+         YWJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=AvmXxELlSPq/Cqpu0ZFOXyo28njZpHc7YVv+Gg5cBAE=;
-        b=qjOh5fWdReasLzIDaOEt2dNx6GgQSskZ3zN00m/57njjmUJWpKeSZdagF9C/rldnum
-         tpwmkK0sMPDalSeTSJZsG234MYdtlPOyXpUkvFavyBIEHq5X2Zbzie4LLGweAdfV0dCB
-         4PU1g94yA/oOI/2/yt7LXaqQ+zjKZPgIUrca4qITI8IspaAGhCBluFOq9VxQhHhUmHOb
-         19wIj24pZRHdu8wqOhTxpYogpcTSFdJUGIyHAYyOMKiHQxYppR3ANhRZ1d0LSsJtOPUs
-         v5fIXpEpdGa4zY7R4u8a+dx9beVgaaARbV+/58Yeh9B+ZaWmB/zz0f5zOsaldeKwEknu
-         7X1Q==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Ylr7UQTkFZQiYHni4UTaJMQZA/gj+wKWtICi8/+6cYI=;
+        b=ELc6k+Gr2u4Vn0jnH9VDDhKYdm/7Ilhr43l9MJsWi1bx8QzPLLQyjGclme1e/kRHjo
+         S76sm86A+nEtTeH+0IV8wuMUOhfKOlCdlb07fTlI03OSTO5yiX+GXDiJnOIlzEK9xES9
+         MFuaYXWYxG/DS5dZsKn/sPTfO4PW0gwRfFC7BF4cv1GziYPzbpyry1sb1Q60qklwoZZo
+         ++nUB74NMOR+S5gpE+q5eeOHiSrc15h3jg+wN2IUCxgOH8iZQL9YlTiF5xNGn0WNdnCv
+         Ec9yZiTE07lz3zqfcXoYemQ1LJdrcwxR8FaMxlUC45jMN1FsQeTUYXtQdD5qXE6JmBrQ
+         bWpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gkYj8qM2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ApgWwrsG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h3si1584584iol.61.2021.02.24.04.54.48
+        by mx.google.com with ESMTPS id p203si1662085oig.46.2021.02.24.06.41.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Feb 2021 04:54:48 -0800 (PST)
+        Wed, 24 Feb 2021 06:41:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gkYj8qM2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ApgWwrsG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55818 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42444 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEtgl-00010B-VV
-	for alex.bennee@linaro.org; Wed, 24 Feb 2021 07:54:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42600)
+	id 1lEvLt-0004n5-Dt
+	for alex.bennee@linaro.org; Wed, 24 Feb 2021 09:41:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44792)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lEtdA-0004la-Q3; Wed, 24 Feb 2021 07:51:04 -0500
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029]:33101)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lEtd6-0003rs-IS; Wed, 24 Feb 2021 07:51:04 -0500
-Received: by mail-pj1-x1029.google.com with SMTP id t5so3307328pjd.0;
- Wed, 24 Feb 2021 04:50:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=AvmXxELlSPq/Cqpu0ZFOXyo28njZpHc7YVv+Gg5cBAE=;
- b=gkYj8qM2fAjqbeJiHuSV3vyfrKXuH07b5vB95t17S68GOSK3aEHRdREEqB89OmNIkB
- 1r2kZ1wIsvcLeLwhxOGHiCZLH5ng5UYJ1j5Q5ev+U8YBFWlfIPLDHG05vSUe6wvgQ4NY
- YXwBcibyFIaivtKqYaAqw0aqkBxXiNnKcJdZJn4naXI1H4RwuUwnhlQR42eAkmt+cE07
- iYmEdg+2E74jtPcHAOQ8vtBDbaTbQc1aWVLnzeHM/mslu+S9JYmAj8KdO8BmhOC3OoAi
- KVGuHIGKlp1/dBpZAImSy2uZWsIH2vWcptl69pkQ6nX+86pBEn5tpkxxc4GK1LDFc11U
- Ircg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=AvmXxELlSPq/Cqpu0ZFOXyo28njZpHc7YVv+Gg5cBAE=;
- b=Z6fTkL1t14d71hbQVJDN/FyfuPPFLKbFGKpnxocWyDf0u2gh326slSrQK4PMsMsx4w
- zrNDQ4F6AzvKcrX0fiN/h6ruP7hIvqDj2ZOH/jUlboWwcZXNJ/fPifusYYbZ3UZ8892p
- IBsoCxQJHB7KE45yPUeQqgTukphaO+7gnZFRQLHCPrlKCmZWeWHLOQuhrRqEOtrjCKX4
- elUpllKuYP5x6eo6LVxd9JVFakjr7VIf5zEtruMsGOh+K3Ah2UybyiiM01wzvEnPSYja
- pv927elcwrnno17Vq3Ew5FRN7fLME1UCRTnKtyhpp4LQzTPXWyt8x7OnNNZ8yh7HGc1D
- 6FyQ==
-X-Gm-Message-State: AOAM532GdgvAIvBpRpTS74iHGsQ9kFEHmlzbfMtdr38sNNO8zAsSm98u
- P7YBaYjHsmBvTSBDETv9+/Q=
-X-Received: by 2002:a17:90b:1650:: with SMTP id
- il16mr4163950pjb.97.1614171058940; 
- Wed, 24 Feb 2021 04:50:58 -0800 (PST)
-Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
- [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id e12sm2795661pjj.23.2021.02.24.04.50.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Feb 2021 04:50:58 -0800 (PST)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v5 5/5] hw/ssi: xilinx_spips: Remove DMA related dead codes
- from zynqmp_spips
-Date: Wed, 24 Feb 2021 20:50:24 +0800
-Message-Id: <20210224125024.4160-6-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210224125024.4160-1-bmeng.cn@gmail.com>
-References: <20210224125024.4160-1-bmeng.cn@gmail.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lEvLW-0004Pr-9c
+ for qemu-arm@nongnu.org; Wed, 24 Feb 2021 09:40:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39622)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1lEvLL-0000rV-8S
+ for qemu-arm@nongnu.org; Wed, 24 Feb 2021 09:40:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614177645;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ylr7UQTkFZQiYHni4UTaJMQZA/gj+wKWtICi8/+6cYI=;
+ b=ApgWwrsGKkI2iuaq1xqBpQn7HiOr3Lwwpv5at8hfSEgLWCiY/IUGAhXlEXR5IFsiy2bk49
+ hLPJASxI5Vi97BzxuVp1t0JCNSrX3WJhWO+JfSPZ1wDl1MrKHsfxQDsvgmhLs6O80pCXUi
+ LqBiEDBDwMDKl3G1aKa173KykwwVZME=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-545-CTmCNTn9PZGIL2NvVtFpJw-1; Wed, 24 Feb 2021 09:39:59 -0500
+X-MC-Unique: CTmCNTn9PZGIL2NvVtFpJw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1AC91907276;
+ Wed, 24 Feb 2021 13:44:00 +0000 (UTC)
+Received: from [10.36.114.34] (ovpn-114-34.ams2.redhat.com [10.36.114.34])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7561160C5F;
+ Wed, 24 Feb 2021 13:43:47 +0000 (UTC)
+Subject: Re: [RFC v7 26/26] vfio/pci: Implement return_page_response page
+ response callback
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>
+References: <20201116181349.11908-1-eric.auger@redhat.com>
+ <20201116181349.11908-27-eric.auger@redhat.com>
+ <494e4bdf5ecd4b528a016d4545d45f71@huawei.com>
+ <f11ef533-da64-3d6a-24f5-79d5e7a205da@redhat.com>
+ <5f85d8999c0c40a29c32ac63b8730fa8@huawei.com>
+ <679c5696-c73f-517d-f555-90ec2c767fbb@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <41b9d3a2-1199-5dad-876b-10efa51638bb@redhat.com>
+Date: Wed, 24 Feb 2021 14:43:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1029.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <679c5696-c73f-517d-f555-90ec2c767fbb@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,80 +126,123 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-devel@nongnu.org, Francisco Iglesias <francisco.iglesias@xilinx.com>,
- qemu-arm@nongnu.org
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jacob.jun.pan@linux.intel.com" <jacob.jun.pan@linux.intel.com>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "tn@semihalf.com" <tn@semihalf.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "nicoleotsuka@gmail.com" <nicoleotsuka@gmail.com>,
+ "vivek.gautam@arm.com" <vivek.gautam@arm.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ "zhangfei.gao@gmail.com" <zhangfei.gao@gmail.com>,
+ yuzenghui <yuzenghui@huawei.com>, qubingbing <qubingbing@hisilicon.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ECGniybsHMmM
+X-TUID: SDAXBC20dUtE
 
-From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+Hi Shameer,
 
-Now that the Xilinx CSU DMA model is implemented, the existing
-DMA related dead codes in the ZynqMP QSPI are useless and should
-be removed. The maximum register number is also updated to only
-include the QSPI registers.
+On 2/18/21 2:32 PM, Auger Eric wrote:
+> Hi Shameer,
+> 
+> On 2/18/21 12:46 PM, Shameerali Kolothum Thodi wrote:
+>>
+>> Hi Eric,
+>>
+>>> -----Original Message-----
+>>> From: Auger Eric [mailto:eric.auger@redhat.com]
+>>> Sent: 18 February 2021 10:42
+>>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+>>> eric.auger.pro@gmail.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+>>> alex.williamson@redhat.com
+>>> Cc: peter.maydell@linaro.org; jacob.jun.pan@linux.intel.com; Zengtao (B)
+>>> <prime.zeng@hisilicon.com>; jean-philippe@linaro.org; tn@semihalf.com;
+>>> peterx@redhat.com; nicoleotsuka@gmail.com; vivek.gautam@arm.com;
+>>> yi.l.liu@intel.com; zhangfei.gao@gmail.com; yuzenghui
+>>> <yuzenghui@huawei.com>; qubingbing <qubingbing@hisilicon.com>
+>>> Subject: Re: [RFC v7 26/26] vfio/pci: Implement return_page_response page
+>>> response callback
+>>>
+>> [...]
+>>
+>>>> Also, I just noted that this patch breaks the dev hot add/del functionality.
+>>>> device_add works fine but device_del is not removing the dev cleanly.Thank
+>>> you for reporting this!
+>>>
+>>> The test matrix becomes bigger and bigger :-( I Need to write some
+>>> avocado-vt tests or alike.
+>>>
+>>> I am currently working on the respin. At the moment I investigate the
+>>> DPDK issue that you reported and I was able to reproduce.
+>>
+>> Ok. Good to know that it is reproducible.
+>>
+>>> I intend to rebase on top of Jean-Philippe's
+>>> [PATCH v12 00/10] iommu: I/O page faults for SMMUv3
+>>>
+>>> Is that good enough for your SVA integration or do you want I prepare a
+>>> rebase on some extended code?
+>>
+>> Could you please try to base it on https://jpbrucker.net/git/linux/log/?h=sva/current
+> 
+> OK. At least I will provide a branch.
 
-Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+I sent the respin on top of master branch + Jean-Philippe's
+[PATCH v12 00/10] iommu: I/O page faults for SMMUv3.
+because I thought it makes more sense to post on master + some nearly
+"ready to go" stuff.
 
----
+Nevertheless I will do my best to prepare asap a branch based on Jean's
+sva/current branch (based on 5.11-rc5)
 
-(no changes since v4)
+Thanks
 
-Changes in v4:
-- Modify XLNX_ZYNQMP_SPIPS_R_MAX
+Eric
 
-Changes in v3:
-- new patch: xilinx_spips: Remove DMA related code from zynqmp_qspips
 
- include/hw/ssi/xilinx_spips.h |  2 +-
- hw/ssi/xilinx_spips.c         | 10 ----------
- 2 files changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/include/hw/ssi/xilinx_spips.h b/include/hw/ssi/xilinx_spips.h
-index 3eae73480e..06bfd18312 100644
---- a/include/hw/ssi/xilinx_spips.h
-+++ b/include/hw/ssi/xilinx_spips.h
-@@ -34,7 +34,7 @@
- typedef struct XilinxSPIPS XilinxSPIPS;
- 
- #define XLNX_SPIPS_R_MAX        (0x100 / 4)
--#define XLNX_ZYNQMP_SPIPS_R_MAX (0x830 / 4)
-+#define XLNX_ZYNQMP_SPIPS_R_MAX (0x200 / 4)
- 
- /* Bite off 4k chunks at a time */
- #define LQSPI_CACHE_SIZE 1024
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index 8a0cc22d42..1e9dba2039 100644
---- a/hw/ssi/xilinx_spips.c
-+++ b/hw/ssi/xilinx_spips.c
-@@ -195,13 +195,6 @@
- #define R_GQSPI_MOD_ID        (0x1fc / 4)
- #define R_GQSPI_MOD_ID_RESET  (0x10a0000)
- 
--#define R_QSPIDMA_DST_CTRL         (0x80c / 4)
--#define R_QSPIDMA_DST_CTRL_RESET   (0x803ffa00)
--#define R_QSPIDMA_DST_I_MASK       (0x820 / 4)
--#define R_QSPIDMA_DST_I_MASK_RESET (0xfe)
--#define R_QSPIDMA_DST_CTRL2        (0x824 / 4)
--#define R_QSPIDMA_DST_CTRL2_RESET  (0x081bfff8)
--
- /* size of TXRX FIFOs */
- #define RXFF_A          (128)
- #define TXFF_A          (128)
-@@ -417,9 +410,6 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)
-     s->regs[R_GQSPI_GPIO] = 1;
-     s->regs[R_GQSPI_LPBK_DLY_ADJ] = R_GQSPI_LPBK_DLY_ADJ_RESET;
-     s->regs[R_GQSPI_MOD_ID] = R_GQSPI_MOD_ID_RESET;
--    s->regs[R_QSPIDMA_DST_CTRL] = R_QSPIDMA_DST_CTRL_RESET;
--    s->regs[R_QSPIDMA_DST_I_MASK] = R_QSPIDMA_DST_I_MASK_RESET;
--    s->regs[R_QSPIDMA_DST_CTRL2] = R_QSPIDMA_DST_CTRL2_RESET;
-     s->man_start_com_g = false;
-     s->gqspi_irqline = 0;
-     xlnx_zynqmp_qspips_update_ixr(s);
--- 
-2.25.1
+> 
+> Eric
+>>
+>> I think that has the latest from Jean-Philippe and will be easy to add
+>> uacce/zip specific patches to test SVA/vSVA.
+>>
+>> Thanks,
+>> Shameer
+>>
+>>  
+>>> Thanks
+>>>
+>>> Eric
+>>>>
+>>>> The below one fixes it. Please check.
+>>>>
+>>>> Thanks,
+>>>> Shameer
+>>>>
+>>>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+>>>> index 797acd9c73..92c1d48316 100644
+>>>> --- a/hw/vfio/pci.c
+>>>> +++ b/hw/vfio/pci.c
+>>>> @@ -3470,6 +3470,7 @@ static void vfio_instance_finalize(Object *obj)
+>>>>      vfio_display_finalize(vdev);
+>>>>      vfio_bars_finalize(vdev);
+>>>>      vfio_region_finalize(&vdev->dma_fault_region);
+>>>> +    vfio_region_finalize(&vdev->dma_fault_response_region);
+>>>>      g_free(vdev->emulated_config_bits);
+>>>>      g_free(vdev->rom);
+>>>>      /*
+>>>> @@ -3491,6 +3492,7 @@ static void vfio_exitfn(PCIDevice *pdev)
+>>>>      vfio_unregister_err_notifier(vdev);
+>>>>      vfio_unregister_ext_irq_notifiers(vdev);
+>>>>      vfio_region_exit(&vdev->dma_fault_region);
+>>>> +    vfio_region_exit(&vdev->dma_fault_response_region);
+>>>>      pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
+>>>>      if (vdev->irqchip_change_notifier.notify) {
+>>>>
+>>> kvm_irqchip_remove_change_notifier(&vdev->irqchip_change_not
+>>>>
+>>>>
+>>>>
+>>
 

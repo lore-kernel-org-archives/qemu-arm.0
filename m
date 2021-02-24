@@ -1,83 +1,83 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp958592lfg;
-        Wed, 24 Feb 2021 14:45:01 -0800 (PST)
-X-Received: by 2002:a17:902:aa42:b029:e3:492a:7b37 with SMTP id c2-20020a170902aa42b02900e3492a7b37mr98641plr.6.1614206701214;
-        Wed, 24 Feb 2021 14:45:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614206701; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp969506lfg;
+        Wed, 24 Feb 2021 15:05:35 -0800 (PST)
+X-Received: by 2002:a17:902:68:b029:e3:c8ea:a562 with SMTP id 95-20020a1709020068b02900e3c8eaa562mr345615pla.23.1614207935090;
+        Wed, 24 Feb 2021 15:05:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614207935; cv=none;
         d=google.com; s=arc-20160816;
-        b=cBfX1r6KMJvQbznUk11OxPLZ5K+j3737M/tWBqbSQg1i1eXLxEH5wL/pLT6o5r4tVt
-         nJFbadqwsfcQyYh1OBxKv2GrdNtCUYa/Hu/01jwq4qJvVfsLsmgtKyMYOIxaxQu1OGHw
-         RZ5KQRA9BjncU0Ql03wK8RfMBiwlwCFQ0+MWLabWgdnBRCvL198/TJ2hFxiW4GNs/1zn
-         lzsEE+jJ++byUh4LRFjri6N9IcECfdPU351493sMLDKt2vqMa1PToQ4XAHwc5COFa9WN
-         5do9mcqVWuXE2OGF78zDTl/xUrSAvDH8pXc3f4eI4ASA4VgQkXxXQKVTpoK4Q45quR8Y
-         Gxuw==
+        b=VqhcQG/58zdEr0xqrHODCLrqPvEHoVv+CBp9H1FqK7w2t9KVu86q8h9nl3Vh9c6Wua
+         33eTrCwcs3dnzOHCREjL6j1pRm8S7y3QkcZkrXpCoXPTe9ZDMVRSvW/zblcVB5WZHQ6m
+         EDlV/1k/hwJZ1wwnB0tXAbG2psi9l3h+MWRv6QVzHPEz1JiC+tAEG6JI3Jm/Ruulck26
+         nK4Cv2DpgdEUdDr93YDBiXd2WNxUpqE15mWUVAmfkL+dReaW4wnj22pRM5E2ZjlK3aE7
+         7o9jSU2Oji8ZnBFPOaKIV7HmyPQjpMvgrzGqx21BBUNj1bx/bkIRX8GVmCk/sRsyIQyN
+         68uA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:dkim-signature;
-        bh=e4N02zj3YFZE2M+Kfu45GmILXr0bvEkLIwGTRVEMeJo=;
-        b=XvetjRYxxOz2dhwMI97wcMvKzoB9tOs11KYNRCy1KyZ8sUbdt7+8e9dTEPxrGspwSe
-         UA1Mk25vax5fcxjqb/gaKk8IaF24yHsvRb/Jf1Jj/PQr+nWivDJgLVyrxdJuapnDEeqL
-         JEE85+4J9C9K6fBKtoxwnpoeKrMF3/B7IvD/U1ywNeD1vKpOogWN7UNuQ+TZqpEH1PmZ
-         lQV9snBwnMmdDAdAkZrQg/VYaGVdttxalJCiojqtGMtswAxKX4cyFnmQjv0hRBJ+3RXL
-         2OdxUExhCwDu2UO2bKD6XFmy/vlrbEscBVsTMwMltnm5Qe+EMY/2xP0HBSQRDQ5VsdjR
-         xFtQ==
+        bh=G+U3+xyXvuvb5HIYJD9KrdFuXROyDlUGX9LLmbyMuXE=;
+        b=GE24bt90mne3g0QkVNTYrqzRQd5FZyDythCYEKNMIabBzsTJx/Fi0Gs17/38pHHyN8
+         8veGR2JTLhyJOTGm9oFmM5Lbd1bifXmdReJt7wvQD0LdHJd3QCQ1tvRHSE+1Fm1O2Go2
+         gquvru2CrPSI8snSPJ8Qw7/czkF93XEiA9DXazhPcLDvI6RaijKQ+eiYTbtFKA79DWzC
+         mG/SJK+z/jRlgE++MikCZmR4iLm6dDfndB+ywAQbiSWu5mR6Eman8KPc2p/1zFuUhShR
+         stIXoWnTobCZp0QaFPSjsP3tvoO3GF8VkUwFJ7xsTAzKmaLol2IwI+S2+9oSzOalTZat
+         9YGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kku6n1DK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PVI7kmdK;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n136sor1754777pfd.70.2021.02.24.14.45.00
+        by mx.google.com with SMTPS id a7sor1774070pfd.38.2021.02.24.15.05.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 24 Feb 2021 14:45:01 -0800 (PST)
+        Wed, 24 Feb 2021 15:05:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kku6n1DK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PVI7kmdK;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=e4N02zj3YFZE2M+Kfu45GmILXr0bvEkLIwGTRVEMeJo=;
-        b=kku6n1DKCeZxfZl99t/WdDIEJD+3dEek9FLrNK1xeM8nSFVjiCtTDMX2k9ojRlg8gl
-         hNUcgiX/WXjcDTkzy8Rb8aQlyycYJhnP98cchvQE8Dnt7GghMe3D0IeIyMcBaFpnBkNE
-         jkvvpeZ61TDxY6XG/X7rst67F6BbEDO4ZLwGxmqNoKwk2oGDgM2uJbzfxVEHGpOoLvl/
-         AeY1faHhO//Dm+R3cabHCEhS81Pehm+5hr14q6etcAHzcizANAjCRsad57PgFT+b+urs
-         yQeyyd1uDMTFaCAZ4J2Vl3RjbwM4/SrN63FOprJJ9B1G5dy26W+hcMtHpQA5PNtISRHF
-         6lDA==
+        bh=G+U3+xyXvuvb5HIYJD9KrdFuXROyDlUGX9LLmbyMuXE=;
+        b=PVI7kmdKLDhwHu/jacyw6BeHLmyLTvZd43sYih5AV7r1b9AWdJrgkX9k/nlgIc8VCt
+         3gA1xHQZZA6dAlHoNKQ41ckiHvCXgCYg+y6Mg6p1JiZQbep4tL0dRkNt7wEWQc3Xs4Kr
+         jZV8lFVInh5jGw2qpfYF1MmqrS0HjvOp9o3QJ33sdd8JjxwJPDFRpZmKyO0Tgh5eoTVn
+         z+4d/7QgZ3NAoHL3Jsm/VCvoVnXda9TPCWzKGMxiAVpz4rfpOzujGmivzaRzqk4gHNuy
+         ujh1ZarLxH/lqHeOGBrT/46nchTVXMQkbhwzFILUDLWjgLc2iio81dA6fMfucKitwnGG
+         ci4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=e4N02zj3YFZE2M+Kfu45GmILXr0bvEkLIwGTRVEMeJo=;
-        b=LYsdPLtiftt/ZqHgvYS48GZj1rWM4GhD0FQbbPLT+X3zF7K3PgdXZth6ld+8vRZeAn
-         84BVJSd4u3hIz76LWAbfsTjbWLHpOGo/Pm/GJ8mHHgvz/y8kZLEX8z479BBOLCD1qtJH
-         g1JAOJQW3gU+PBbCaiNIEc/zXh6hU3S6ZFOS1cj4cgFXIGR4agPdsOicFtptTByMxiST
-         aAR3gyP4o6H3YPgbBo8fpaSDKqiHaLWGtPYT8UQ1CBNo7X7tCJ7yOg5oL0EDcVGrXRHG
-         pgLqUcipAONRF7gmcMHbCxTEnuRIR6mnqAQnW5dEfNp2ZJwmrKZ6xJ4T2//My2T432rY
-         nb6g==
-X-Gm-Message-State: AOAM532RSBwMFXPlxtiWYlsDgpn3ETEpwMfAQqBlAfLtsTC21IPlTOWs
-	xgh1Lc7gUXc7VDZB48FrqVlA+c2wNkYOZHWr
-X-Google-Smtp-Source: ABdhPJxgyu8LNe/xsPDNweAThPs2N4OqD18sQJ4e/OKouyE9WoGK+HC9EgKY/Oz9f00w5v0XW2FH5g==
-X-Received: by 2002:aa7:8a46:0:b029:1ed:cefd:7f7 with SMTP id n6-20020aa78a460000b02901edcefd07f7mr244968pfa.46.1614206700553;
-        Wed, 24 Feb 2021 14:45:00 -0800 (PST)
+        bh=G+U3+xyXvuvb5HIYJD9KrdFuXROyDlUGX9LLmbyMuXE=;
+        b=i4ohZ9q27XxxtunNWUgNyYwRTWlDFhuffzuwfO8a3plfbKUQ6qA7Qobk9Rl42AhHHT
+         9DtIzV1iXZtLQuEEZnVWHYO+decZdxtvIFNK1FVxdd0qh1EM0sMTV/jmyBjYGBfGMm5e
+         XCANZYt5AczpirCyUyZJzP/EeLBg4I31cGCEr0CTn81dptRl58fFW5SEQT4lG1nQrLMs
+         G1Wwupe0EADiajGNPrznCpKk04KsPHrCHR6fwc5LYj9STEO1NJqxQR6n6nH6ZS3YAhsw
+         8UqinlcXfaUyYwna3PMZXEPmMT4e8pUKmpeoL2QjFZLHwwRLEL7yQhT2d3I4FjaSQp/2
+         xo8g==
+X-Gm-Message-State: AOAM533uTejeujxbPXf0jdxqC19hLULLFCDSLXGRJu8MKyYmVv8B7fWK
+	1jRAsRGGRHbi/FcNNsYX8EBPEe20nazFwAOp
+X-Google-Smtp-Source: ABdhPJzKEIaTwtQgtr/bJBcMdnRVAvrQtjJgl22X0d80OZ0GavxbQTjz2AacjjkJmGRh8lynXTnnpQ==
+X-Received: by 2002:a62:8051:0:b029:1ed:d704:1f11 with SMTP id j78-20020a6280510000b02901edd7041f11mr285309pfd.41.1614207934396;
+        Wed, 24 Feb 2021 15:05:34 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (174-21-84-25.tukw.qwest.net. [174.21.84.25])
-        by smtp.gmail.com with ESMTPSA id 14sm3941934pfo.141.2021.02.24.14.44.59
+        by smtp.gmail.com with ESMTPSA id j125sm4145231pfd.27.2021.02.24.15.05.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Feb 2021 14:45:00 -0800 (PST)
+        Wed, 24 Feb 2021 15:05:33 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH] target/arm: Speed up aarch64 TBL/TBX
-Date: Wed, 24 Feb 2021 14:44:59 -0800
-Message-Id: <20210224224459.275146-1-richard.henderson@linaro.org>
+Subject: [PATCH v2] target/arm: Speed up aarch64 TBL/TBX
+Date: Wed, 24 Feb 2021 15:05:32 -0800
+Message-Id: <20210224230532.276878-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 5M0nvgT9ZFMk
+X-TUID: nvUuiP/kRurd
 
 Always perform one call instead of two for 16-byte operands.
 Use byte loads/stores directly into the vector register file
@@ -95,14 +95,18 @@ implementation.  Would you run this through whatever benchmark
 you were experimenting with today?  This is unmeasureable in RISU
 (exactly one perf hit in the helper through the entire run).
 
+And for version 2, use memcpy/memset, which get turned into host
+vector instructions with gcc-9, and is perhaps slightly clearer.
+
+
 r~
 
 ---
  target/arm/helper-a64.h    |  2 +-
  target/arm/helper-a64.c    | 32 ---------------------
  target/arm/translate-a64.c | 58 +++++---------------------------------
- target/arm/vec_helper.c    | 52 ++++++++++++++++++++++++++++++++++
- 4 files changed, 60 insertions(+), 84 deletions(-)
+ target/arm/vec_helper.c    | 48 +++++++++++++++++++++++++++++++
+ 4 files changed, 56 insertions(+), 84 deletions(-)
 
 diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
 index 7bd6aed659..c139fa81f9 100644
@@ -237,10 +241,10 @@ index b23a8975d5..496e14688a 100644
  
  /* ZIP/UZP/TRN
 diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
-index 7174030377..d164273f20 100644
+index 7174030377..3fbeae87cb 100644
 --- a/target/arm/vec_helper.c
 +++ b/target/arm/vec_helper.c
-@@ -1937,3 +1937,55 @@ DO_VRINT_RMODE(gvec_vrint_rm_h, helper_rinth, uint16_t)
+@@ -1937,3 +1937,51 @@ DO_VRINT_RMODE(gvec_vrint_rm_h, helper_rinth, uint16_t)
  DO_VRINT_RMODE(gvec_vrint_rm_s, helper_rints, uint32_t)
  
  #undef DO_VRINT_RMODE
@@ -248,7 +252,6 @@ index 7174030377..d164273f20 100644
 +#ifdef TARGET_AARCH64
 +void HELPER(simd_tblx)(void *vd, void *vm, void *venv, uint32_t desc)
 +{
-+    uint64_t *d = vd;
 +    const uint8_t *indices = vm;
 +    CPUARMState *env = venv;
 +    size_t oprsz = simd_oprsz(desc);
@@ -263,16 +266,14 @@ index 7174030377..d164273f20 100644
 +    /*
 +     * We must construct the final result in a temp, lest the output
 +     * overlaps the input table.  For TBL, begin with zero; for TBX,
-+     * begin with the original register contents.  Note that for
-+     * oprsz == 8, we always clear the balance of the register.
++     * begin with the original register contents.  Note that we always
++     * copy 16 bytes here to avoid an extra branch; clearing the high
++     * bits of the register for oprsz == 8 is handled below.
 +     */
 +    if (is_tbx) {
-+        uint64_t d1 = d[1];
-+        result.d[0] = d[0];
-+        result.d[1] = oprsz == 8 ? 0 : d1;
++        memcpy(&result, vd, 16);
 +    } else {
-+        result.d[0] = 0;
-+        result.d[1] = 0;
++        memset(&result, 0, 16);
 +    }
 +
 +    for (size_t i = 0; i < oprsz; ++i) {
@@ -291,9 +292,8 @@ index 7174030377..d164273f20 100644
 +        }
 +    }
 +
-+    d[0] = result.d[0];
-+    d[1] = result.d[1];
-+    clear_tail(d, 16, simd_maxsz(desc));
++    memcpy(vd, &result, 16);
++    clear_tail(vd, oprsz, simd_maxsz(desc));
 +}
 +#endif
 -- 

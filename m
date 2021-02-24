@@ -1,347 +1,300 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp860178lfg;
-        Wed, 24 Feb 2021 12:03:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJytKhuPLuWqlyf2U+vmITqcUhVWu0Npc8Qg14kQQbmvCXZrgAtFhBtr33OUqC3MUkGj21nI
-X-Received: by 2002:a6b:2c95:: with SMTP id s143mr1078021ios.112.1614196998525;
-        Wed, 24 Feb 2021 12:03:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614196998; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp958592lfg;
+        Wed, 24 Feb 2021 14:45:01 -0800 (PST)
+X-Received: by 2002:a17:902:aa42:b029:e3:492a:7b37 with SMTP id c2-20020a170902aa42b02900e3492a7b37mr98641plr.6.1614206701214;
+        Wed, 24 Feb 2021 14:45:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614206701; cv=none;
         d=google.com; s=arc-20160816;
-        b=oSSX05YxMRmuIqHSvF3oc1Fz5M3ikV+pbbtO8cslbf6GPpxsZg36yqchFkCt0oFvT8
-         OwdWn7yTA7WP1QXom2DnSztNnxGOs9GdJHbmH09jsMe6hBgjTa0jeLHetFM+JQfQ1sLM
-         CyEb4qhwki/EY7Evmbl/IEKlR0/ow4saObT6n2banWlmNzArcHKhAjLob2MkNmWD4DFQ
-         /WPAXgp2FohthAdmGedW5hMAWk5/SR1IR5YXdFFUK9fk8ZXV7wX0oc3mZthwQrlmNY91
-         Zrac9pbmu9CRNClPBPNw3MnoeRUSgDkeo7AbLccr5I5VA5K2C3cTssl42A8ePtstOuql
-         cJrA==
+        b=cBfX1r6KMJvQbznUk11OxPLZ5K+j3737M/tWBqbSQg1i1eXLxEH5wL/pLT6o5r4tVt
+         nJFbadqwsfcQyYh1OBxKv2GrdNtCUYa/Hu/01jwq4qJvVfsLsmgtKyMYOIxaxQu1OGHw
+         RZ5KQRA9BjncU0Ql03wK8RfMBiwlwCFQ0+MWLabWgdnBRCvL198/TJ2hFxiW4GNs/1zn
+         lzsEE+jJ++byUh4LRFjri6N9IcECfdPU351493sMLDKt2vqMa1PToQ4XAHwc5COFa9WN
+         5do9mcqVWuXE2OGF78zDTl/xUrSAvDH8pXc3f4eI4ASA4VgQkXxXQKVTpoK4Q45quR8Y
+         Gxuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=CVSIvFlDusvg2c26u9csSyazTAKiUKkemREoEpivFgQ=;
-        b=eASQ7ZuA8zq3QFGjo7+lEgUfvrGCJliRMLTjSyskOcX90DE9Mb45Td/riMc1jimPhM
-         ukcztOUU15p0MXoMX4stTG7Dxj69rRevRgtIknY3tV2Dxvve9aENmw6+UOxf2b+wFWj8
-         e6np0+oxQ4AwXDhHIj+1O+DxIASl+RKXWzovtQXGZGgJ23kbiyDgUj1w7JvLoph0efic
-         YwgIx0aD4TfAArqyy5ceKQR1rAtNwrEp6BPXdJqVSIAJ/Al1OH3c40AJBb6N2A7lmNvL
-         ld/nXLZgDqCWd+u28XIP09QscQQV+ay6+NJrUcNzGppnAUPxP5bOvTkCQ4AAkV3+SFkF
-         SPew==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=e4N02zj3YFZE2M+Kfu45GmILXr0bvEkLIwGTRVEMeJo=;
+        b=XvetjRYxxOz2dhwMI97wcMvKzoB9tOs11KYNRCy1KyZ8sUbdt7+8e9dTEPxrGspwSe
+         UA1Mk25vax5fcxjqb/gaKk8IaF24yHsvRb/Jf1Jj/PQr+nWivDJgLVyrxdJuapnDEeqL
+         JEE85+4J9C9K6fBKtoxwnpoeKrMF3/B7IvD/U1ywNeD1vKpOogWN7UNuQ+TZqpEH1PmZ
+         lQV9snBwnMmdDAdAkZrQg/VYaGVdttxalJCiojqtGMtswAxKX4cyFnmQjv0hRBJ+3RXL
+         2OdxUExhCwDu2UO2bKD6XFmy/vlrbEscBVsTMwMltnm5Qe+EMY/2xP0HBSQRDQ5VsdjR
+         xFtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J7xvfI23;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si2891128ilv.132.2021.02.24.12.03.18
+       dkim=pass header.i=@linaro.org header.s=google header.b=kku6n1DK;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id n136sor1754777pfd.70.2021.02.24.14.45.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Feb 2021 12:03:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 24 Feb 2021 14:45:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J7xvfI23;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48812 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lF0NR-0001hV-NS
-	for alex.bennee@linaro.org; Wed, 24 Feb 2021 15:03:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34638)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lF0NG-0001h6-FV; Wed, 24 Feb 2021 15:03:06 -0500
-Received: from mail-il1-x12c.google.com ([2607:f8b0:4864:20::12c]:35495)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lF0ND-0006S5-Uw; Wed, 24 Feb 2021 15:03:06 -0500
-Received: by mail-il1-x12c.google.com with SMTP id h18so2857721ils.2;
- Wed, 24 Feb 2021 12:03:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CVSIvFlDusvg2c26u9csSyazTAKiUKkemREoEpivFgQ=;
- b=J7xvfI23FLHqSOHxa6Ar5HNOj/OSEm54GEEe+jae1I+8MiA1noAcXDLSAf3gwyMTHL
- 5H1a5zNMEeiy5qtcSQ1gOMMiyIZnM1yLxSZ1hvGCBysmhX7y2UQZlC4ovvBRdXe6MMFK
- zTJz9QzDBz4CamX0sF5ZwgbcTFMTGupH776jvix8T0XyyVblkT3ZfWgsKtauTBmjRZGp
- 22EdM2Ho8VHAxfHWYaK1jqtHRI+7dVFyTn4yYarOn0PB3UI78vVLWwvRyTE2MOO57ck2
- twAsK8YqJpW4i5XPLA4Dk3VarNasHFyZ+7rDx59CBHge1uaPuGv8ILOzIMbjvfAWTc2k
- iIvQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b=kku6n1DK;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=e4N02zj3YFZE2M+Kfu45GmILXr0bvEkLIwGTRVEMeJo=;
+        b=kku6n1DKCeZxfZl99t/WdDIEJD+3dEek9FLrNK1xeM8nSFVjiCtTDMX2k9ojRlg8gl
+         hNUcgiX/WXjcDTkzy8Rb8aQlyycYJhnP98cchvQE8Dnt7GghMe3D0IeIyMcBaFpnBkNE
+         jkvvpeZ61TDxY6XG/X7rst67F6BbEDO4ZLwGxmqNoKwk2oGDgM2uJbzfxVEHGpOoLvl/
+         AeY1faHhO//Dm+R3cabHCEhS81Pehm+5hr14q6etcAHzcizANAjCRsad57PgFT+b+urs
+         yQeyyd1uDMTFaCAZ4J2Vl3RjbwM4/SrN63FOprJJ9B1G5dy26W+hcMtHpQA5PNtISRHF
+         6lDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CVSIvFlDusvg2c26u9csSyazTAKiUKkemREoEpivFgQ=;
- b=aYoFvYaBMdTKfEW9X5n/FMMIpB06miBtwk18u67Ik5y9Ff5bOM/LSSnWphBZ891vq2
- DvIEmlOawHYhT60jD0ARSAvsd9Eu/fcPMGpQ0j0fHXpGxsYw9igNtlrVW2A0Mho5LNeP
- uCwT2Pcx++YGqEeSwofyujP8iZO5Yq8JhO2J3anXvrCCQVrDHcCn73+PtQDBLfjY5Z3z
- DIeQYqNTGSLM1P/ZZCvQcTNGbb/OD/H17C3E2QZi92eUEn0gv8zV6ehg4mGpE0DhG+az
- acqlO+jkyFy/QDkrzimWiok/7Szh41FtyfeG3JmBgauK6XzrhkKeJj8FVtzByOiHAL6y
- hRbQ==
-X-Gm-Message-State: AOAM5307oifffyh4Ie99B0IgnPeu3grPOGFPYLORE9AJGAZ/EmnVAX4s
- 0T5qBuHn77zxdO94AUkay9VZ/hI2vHXws5n20TM=
-X-Received: by 2002:a92:6b04:: with SMTP id g4mr7116240ilc.223.1614196982468; 
- Wed, 24 Feb 2021 12:03:02 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=e4N02zj3YFZE2M+Kfu45GmILXr0bvEkLIwGTRVEMeJo=;
+        b=LYsdPLtiftt/ZqHgvYS48GZj1rWM4GhD0FQbbPLT+X3zF7K3PgdXZth6ld+8vRZeAn
+         84BVJSd4u3hIz76LWAbfsTjbWLHpOGo/Pm/GJ8mHHgvz/y8kZLEX8z479BBOLCD1qtJH
+         g1JAOJQW3gU+PBbCaiNIEc/zXh6hU3S6ZFOS1cj4cgFXIGR4agPdsOicFtptTByMxiST
+         aAR3gyP4o6H3YPgbBo8fpaSDKqiHaLWGtPYT8UQ1CBNo7X7tCJ7yOg5oL0EDcVGrXRHG
+         pgLqUcipAONRF7gmcMHbCxTEnuRIR6mnqAQnW5dEfNp2ZJwmrKZ6xJ4T2//My2T432rY
+         nb6g==
+X-Gm-Message-State: AOAM532RSBwMFXPlxtiWYlsDgpn3ETEpwMfAQqBlAfLtsTC21IPlTOWs
+	xgh1Lc7gUXc7VDZB48FrqVlA+c2wNkYOZHWr
+X-Google-Smtp-Source: ABdhPJxgyu8LNe/xsPDNweAThPs2N4OqD18sQJ4e/OKouyE9WoGK+HC9EgKY/Oz9f00w5v0XW2FH5g==
+X-Received: by 2002:aa7:8a46:0:b029:1ed:cefd:7f7 with SMTP id n6-20020aa78a460000b02901edcefd07f7mr244968pfa.46.1614206700553;
+        Wed, 24 Feb 2021 14:45:00 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain (174-21-84-25.tukw.qwest.net. [174.21.84.25])
+        by smtp.gmail.com with ESMTPSA id 14sm3941934pfo.141.2021.02.24.14.44.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 Feb 2021 14:45:00 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org
+Subject: [PATCH] target/arm: Speed up aarch64 TBL/TBX
+Date: Wed, 24 Feb 2021 14:44:59 -0800
+Message-Id: <20210224224459.275146-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20210223225327.26700-1-nieklinnenbank@gmail.com>
- <20210223225327.26700-2-nieklinnenbank@gmail.com>
- <5556626c-0b4f-0de3-9cb8-d174cd210b5c@amsat.org>
- <20210224191341.GC1074102@amachine.somewhere>
-In-Reply-To: <20210224191341.GC1074102@amachine.somewhere>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 24 Feb 2021 21:02:51 +0100
-Message-ID: <CAPan3WqXre=Rau4-jOSE2u=GGRO8hSKzuuWFSN4xP3wbpvQ-Dg@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] tests/acceptance: replace unstable apt.armbian.com
- URLs for orangepi-pc, cubieboard
-To: Cleber Rosa <crosa@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000bcd59505bc1a85e7"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12c;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-il1-x12c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Pavel.Dovgaluk@ispras.ru, Willian Rampazzo <willianr@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rH8Ziu4fWQht
+Content-Transfer-Encoding: 8bit
+X-TUID: 5M0nvgT9ZFMk
 
---000000000000bcd59505bc1a85e7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Always perform one call instead of two for 16-byte operands.
+Use byte loads/stores directly into the vector register file
+instead of extractions and deposits to a 64-bit local variable.
 
-Hi Philippe, Cleber,
+In order to easily receive pointers into the vector register file,
+convert the helper to the gvec out-of-line signature.  Move the
+helper into vec_helper.c, where it can make use of H1 and clear_tail.
 
-On Wed, Feb 24, 2021 at 8:14 PM Cleber Rosa <crosa@redhat.com> wrote:
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
 
-> On Wed, Feb 24, 2021 at 10:12:10AM +0100, Philippe Mathieu-Daud=C3=A9 wro=
-te:
-> > Hi Niek,
-> >
-> > On 2/23/21 11:53 PM, Niek Linnenbank wrote:
-> > > Currently the automated acceptance tests for the Orange Pi PC and
-> cubieboard
-> > > machines are disabled by default. The tests for both machines require
-> artifacts
-> > > that are stored on the apt.armbian.com domain. Unfortunately, some of
-> these artifacts
-> > > have been removed from apt.armbian.com and it is uncertain whether
-> more will be removed.
-> > >
-> > > This commit moves the artifacts previously stored on apt.armbian.com
-> to github
-> > > and retrieves them using the path: '/<machine>/<artifact>'.
-> > >
-> > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > > Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-> > > Reviewed-by: Cleber Rosa <crosa@redhat.com>
-> >
-> > > Tested-by: Cleber Rosa <crosa@redhat.com>
-> >
-> > Did Cleber test this new version?
-> >
->
+Alex, as briefly discussed on IRC today, streamline the TBL/TBX
+implementation.  Would you run this through whatever benchmark
+you were experimenting with today?  This is unmeasureable in RISU
+(exactly one perf hit in the helper through the entire run).
 
-You're right, it was the previous version (v1) that Cleber tested using my
-own machine URL's.
+r~
 
-I was actually not sure whether I should or should not have added the
-Tested-by/Reviewed-by tags in such scenario.
-The content had to be changed due to the outcome of our discussion but also
-I thought I don't want to silently drop
-the tags since Cleber invested his time into it too.
+---
+ target/arm/helper-a64.h    |  2 +-
+ target/arm/helper-a64.c    | 32 ---------------------
+ target/arm/translate-a64.c | 58 +++++---------------------------------
+ target/arm/vec_helper.c    | 52 ++++++++++++++++++++++++++++++++++
+ 4 files changed, 60 insertions(+), 84 deletions(-)
 
-What should I do here, next time?
-
-
-
->
-> Nope, and I'm having issues with those URLs.  For instance:
->
->    $ curl -L
-> https://github.com/nieklinnenbank/QemuArtifacts/raw/master/cubieboard/lin=
-ux-image-dev-sunxi_5.75_armhf.deb
->    version https://git-lfs.github.com/spec/v1
->    oid
-> sha256:a4b765c851de76592f55023b1ff4104f7fd29bf90937e6054e0a64fdda56380b
->    size 20331524
->
-> Looks like it has to do with GitHub's behavior wrt quota.
->
-
-Indeed. Just this morning I received an e-mail from github with the
-following text:
-
-"[GitHub] Git LFS disabled for nieklinnenbank
-
-Git LFS has been disabled on your personal account nieklinnenbank because
-you=E2=80=99ve exceeded your data plan by at least 150%.
-Please purchase additional data packs to cover your bandwidth and storage
-usage:
-
-  https://github.com/account/billing/data/upgrade
-
-Current usage as of 24 Feb 2021 09:49AM UTC:
-
-  Bandwidth: 1.55 GB / 1 GB (155%)
-  Storage: 0.48 GB / 1 GB (48%)"
-
-I wasn't aware of it but it appears that Github has these quota's for the
-Large File Storage (LFS). I uploaded the files in the git LFS
-because single files are also limited to 100MiB each on the regular Git
-repositories.
-
-With those strict limits, in my opinion Github isn't really a solution
-since the bandwidth limit will be reached very quickly. At least for the
-LFS part that is. I don't know yet if there is any limit for regular access=
-.
-
-My current ideas:
-  - we can try to splitup the larger files into sizes < 100MiB in order to
-use github regular storage. and then download each part to combine into the
-final image.
-    im not really in favour of this but it can work, if github doesnt have
-any other limit/quota. the cost is that we have to add more complexity to
-the acceptance test code.
-  - we can try to just update the URLs to armbian that are working now
-(with the risk of breaking again in the near future). Ive also found this
-link, which may be more stable:
-     https://archive.armbian.com/orangepipc/archive/
-  - or use the server that im hosting - and i don't mind to add the license
-files on it if needed (should be GPLv2 right?)
-
-I'd be interested to hear your opinion and suggestions.
-
-Kind regards,
-Niek
-
-
->
-> Regards,
-> - Cleber.
->
-
-
---=20
-Niek Linnenbank
-
---000000000000bcd59505bc1a85e7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div>Hi Philippe, Cleber,</div><div><br><=
-/div></div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr"=
->On Wed, Feb 24, 2021 at 8:14 PM Cleber Rosa &lt;<a href=3D"mailto:crosa@re=
-dhat.com">crosa@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gma=
-il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
-04,204);padding-left:1ex">On Wed, Feb 24, 2021 at 10:12:10AM +0100, Philipp=
-e Mathieu-Daud=C3=A9 wrote:<br>
-&gt; Hi Niek,<br>
-&gt; <br>
-&gt; On 2/23/21 11:53 PM, Niek Linnenbank wrote:<br>
-&gt; &gt; Currently the automated acceptance tests for the Orange Pi PC and=
- cubieboard<br>
-&gt; &gt; machines are disabled by default. The tests for both machines req=
-uire artifacts<br>
-&gt; &gt; that are stored on the <a href=3D"http://apt.armbian.com" rel=3D"=
-noreferrer" target=3D"_blank">apt.armbian.com</a> domain. Unfortunately, so=
-me of these artifacts<br>
-&gt; &gt; have been removed from <a href=3D"http://apt.armbian.com" rel=3D"=
-noreferrer" target=3D"_blank">apt.armbian.com</a> and it is uncertain wheth=
-er more will be removed.<br>
-&gt; &gt; <br>
-&gt; &gt; This commit moves the artifacts previously stored on <a href=3D"h=
-ttp://apt.armbian.com" rel=3D"noreferrer" target=3D"_blank">apt.armbian.com=
-</a> to github<br>
-&gt; &gt; and retrieves them using the path: &#39;/&lt;machine&gt;/&lt;arti=
-fact&gt;&#39;.<br>
-&gt; &gt; <br>
-&gt; &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenba=
-nk@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
-&gt; &gt; Reviewed-by: Willian Rampazzo &lt;<a href=3D"mailto:willianr@redh=
-at.com" target=3D"_blank">willianr@redhat.com</a>&gt;<br>
-&gt; &gt; Reviewed-by: Cleber Rosa &lt;<a href=3D"mailto:crosa@redhat.com" =
-target=3D"_blank">crosa@redhat.com</a>&gt;<br>
-&gt; <br>
-&gt; &gt; Tested-by: Cleber Rosa &lt;<a href=3D"mailto:crosa@redhat.com" ta=
-rget=3D"_blank">crosa@redhat.com</a>&gt;<br>
-&gt; <br>
-&gt; Did Cleber test this new version?<br>
-&gt;<br></blockquote><div><br></div><div>You&#39;re right, it was the previ=
-ous version (v1) that Cleber tested using my own machine URL&#39;s.</div><d=
-iv><br></div><div>I was actually not sure whether I should or should not ha=
-ve added the Tested-by/Reviewed-by tags in such scenario.</div><div>The con=
-tent had to be changed due to the outcome of our discussion but also I thou=
-ght I don&#39;t want to silently drop</div><div>the tags since Cleber inves=
-ted his time into it too.<br></div><div><br></div><div>What should I do her=
-e, next time? <br></div><div><br></div><div>=C2=A0</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-<br>
-Nope, and I&#39;m having issues with those URLs.=C2=A0 For instance:<br>
-<br>
-=C2=A0 =C2=A0$ curl -L <a href=3D"https://github.com/nieklinnenbank/QemuArt=
-ifacts/raw/master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb" rel=3D"n=
-oreferrer" target=3D"_blank">https://github.com/nieklinnenbank/QemuArtifact=
-s/raw/master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb</a><br>
-=C2=A0 =C2=A0version <a href=3D"https://git-lfs.github.com/spec/v1" rel=3D"=
-noreferrer" target=3D"_blank">https://git-lfs.github.com/spec/v1</a><br>
-=C2=A0 =C2=A0oid sha256:a4b765c851de76592f55023b1ff4104f7fd29bf90937e6054e0=
-a64fdda56380b<br>
-=C2=A0 =C2=A0size 20331524<br>
-<br>
-Looks like it has to do with GitHub&#39;s behavior wrt quota.<br></blockquo=
-te><div><br></div><div>Indeed. Just this morning I received an e-mail from =
-github with the following text:</div><div><br></div><div>&quot;[GitHub] Git=
- LFS disabled for nieklinnenbank<br><br>Git LFS has been disabled on your p=
-ersonal account nieklinnenbank because you=E2=80=99ve exceeded your data pl=
-an by at least 150%. <br>Please purchase additional data packs to cover you=
-r bandwidth and storage usage:<br><br>=C2=A0 <a href=3D"https://github.com/=
-account/billing/data/upgrade">https://github.com/account/billing/data/upgra=
-de</a><br><br>Current usage as of 24 Feb 2021 09:49AM UTC:<br><br>=C2=A0 Ba=
-ndwidth: 1.55 GB / 1 GB (155%)<br>=C2=A0 Storage: 0.48 GB / 1 GB (48%)&quot=
-; <br>=C2=A0</div><div>I wasn&#39;t aware of it but it appears that Github =
-has these quota&#39;s for the Large File Storage (LFS). I uploaded the file=
-s in the git LFS</div><div>because single files are also limited to 100MiB =
-each on the regular Git repositories.</div><div><br></div><div>With those s=
-trict limits, in my opinion Github isn&#39;t really a solution since the ba=
-ndwidth limit will be reached very quickly. At least for the</div><div>LFS =
-part that is. I don&#39;t know yet if there is any limit for regular access=
-.</div><div><br></div><div>My current ideas:</div><div>=C2=A0 - we can try =
-to splitup the larger files into sizes &lt; 100MiB in order to use github r=
-egular storage. and then download each part to combine into the final image=
-.</div><div>=C2=A0=C2=A0=C2=A0 im not really in favour of this but it can w=
-ork, if github doesnt have any other limit/quota. the cost is that we have =
-to add more complexity to the acceptance test code.</div><div>=C2=A0 - we c=
-an try to just update the URLs to armbian that are working now (with the ri=
-sk of breaking again in the near future). Ive also found this link, which m=
-ay be more stable:</div><div>=C2=A0=C2=A0=C2=A0=C2=A0 <a href=3D"https://ar=
-chive.armbian.com/orangepipc/archive/">https://archive.armbian.com/orangepi=
-pc/archive/</a></div><div>=C2=A0 - or use the server that im hosting - and =
-i don&#39;t mind to add the license files on it if needed (should be GPLv2 =
-right?)</div><div><br></div><div>I&#39;d be interested to hear your opinion=
- and suggestions.<br></div><div><br></div><div>Kind regards,</div><div>Niek=
-<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margi=
-n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">
-<br>
-Regards,<br>
-- Cleber.<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
-
---000000000000bcd59505bc1a85e7--
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 7bd6aed659..c139fa81f9 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -28,7 +28,7 @@ DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
+ DEF_HELPER_3(vfp_cmpes_a64, i64, f32, f32, ptr)
+ DEF_HELPER_3(vfp_cmpd_a64, i64, f64, f64, ptr)
+ DEF_HELPER_3(vfp_cmped_a64, i64, f64, f64, ptr)
+-DEF_HELPER_FLAGS_5(simd_tbl, TCG_CALL_NO_RWG_SE, i64, env, i64, i64, i32, i32)
++DEF_HELPER_FLAGS_4(simd_tblx, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(vfp_mulxs, TCG_CALL_NO_RWG, f32, f32, f32, ptr)
+ DEF_HELPER_FLAGS_3(vfp_mulxd, TCG_CALL_NO_RWG, f64, f64, f64, ptr)
+ DEF_HELPER_FLAGS_3(neon_ceq_f64, TCG_CALL_NO_RWG, i64, i64, i64, ptr)
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 7f56c78fa6..061c8ff846 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -179,38 +179,6 @@ float64 HELPER(vfp_mulxd)(float64 a, float64 b, void *fpstp)
+     return float64_mul(a, b, fpst);
+ }
+ 
+-uint64_t HELPER(simd_tbl)(CPUARMState *env, uint64_t result, uint64_t indices,
+-                          uint32_t rn, uint32_t numregs)
+-{
+-    /* Helper function for SIMD TBL and TBX. We have to do the table
+-     * lookup part for the 64 bits worth of indices we're passed in.
+-     * result is the initial results vector (either zeroes for TBL
+-     * or some guest values for TBX), rn the register number where
+-     * the table starts, and numregs the number of registers in the table.
+-     * We return the results of the lookups.
+-     */
+-    int shift;
+-
+-    for (shift = 0; shift < 64; shift += 8) {
+-        int index = extract64(indices, shift, 8);
+-        if (index < 16 * numregs) {
+-            /* Convert index (a byte offset into the virtual table
+-             * which is a series of 128-bit vectors concatenated)
+-             * into the correct register element plus a bit offset
+-             * into that element, bearing in mind that the table
+-             * can wrap around from V31 to V0.
+-             */
+-            int elt = (rn * 2 + (index >> 3)) % 64;
+-            int bitidx = (index & 7) * 8;
+-            uint64_t *q = aa64_vfp_qreg(env, elt >> 1);
+-            uint64_t val = extract64(q[elt & 1], bitidx, 8);
+-
+-            result = deposit64(result, shift, 8, val);
+-        }
+-    }
+-    return result;
+-}
+-
+ /* 64bit/double versions of the neon float compare functions */
+ uint64_t HELPER(neon_ceq_f64)(float64 a, float64 b, void *fpstp)
+ {
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index b23a8975d5..496e14688a 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -7520,10 +7520,8 @@ static void disas_simd_tb(DisasContext *s, uint32_t insn)
+     int rm = extract32(insn, 16, 5);
+     int rn = extract32(insn, 5, 5);
+     int rd = extract32(insn, 0, 5);
+-    int is_tblx = extract32(insn, 12, 1);
+-    int len = extract32(insn, 13, 2);
+-    TCGv_i64 tcg_resl, tcg_resh, tcg_idx;
+-    TCGv_i32 tcg_regno, tcg_numregs;
++    int is_tbx = extract32(insn, 12, 1);
++    int len = (extract32(insn, 13, 2) + 1) * 16;
+ 
+     if (op2 != 0) {
+         unallocated_encoding(s);
+@@ -7534,53 +7532,11 @@ static void disas_simd_tb(DisasContext *s, uint32_t insn)
+         return;
+     }
+ 
+-    /* This does a table lookup: for every byte element in the input
+-     * we index into a table formed from up to four vector registers,
+-     * and then the output is the result of the lookups. Our helper
+-     * function does the lookup operation for a single 64 bit part of
+-     * the input.
+-     */
+-    tcg_resl = tcg_temp_new_i64();
+-    tcg_resh = NULL;
+-
+-    if (is_tblx) {
+-        read_vec_element(s, tcg_resl, rd, 0, MO_64);
+-    } else {
+-        tcg_gen_movi_i64(tcg_resl, 0);
+-    }
+-
+-    if (is_q) {
+-        tcg_resh = tcg_temp_new_i64();
+-        if (is_tblx) {
+-            read_vec_element(s, tcg_resh, rd, 1, MO_64);
+-        } else {
+-            tcg_gen_movi_i64(tcg_resh, 0);
+-        }
+-    }
+-
+-    tcg_idx = tcg_temp_new_i64();
+-    tcg_regno = tcg_const_i32(rn);
+-    tcg_numregs = tcg_const_i32(len + 1);
+-    read_vec_element(s, tcg_idx, rm, 0, MO_64);
+-    gen_helper_simd_tbl(tcg_resl, cpu_env, tcg_resl, tcg_idx,
+-                        tcg_regno, tcg_numregs);
+-    if (is_q) {
+-        read_vec_element(s, tcg_idx, rm, 1, MO_64);
+-        gen_helper_simd_tbl(tcg_resh, cpu_env, tcg_resh, tcg_idx,
+-                            tcg_regno, tcg_numregs);
+-    }
+-    tcg_temp_free_i64(tcg_idx);
+-    tcg_temp_free_i32(tcg_regno);
+-    tcg_temp_free_i32(tcg_numregs);
+-
+-    write_vec_element(s, tcg_resl, rd, 0, MO_64);
+-    tcg_temp_free_i64(tcg_resl);
+-
+-    if (is_q) {
+-        write_vec_element(s, tcg_resh, rd, 1, MO_64);
+-        tcg_temp_free_i64(tcg_resh);
+-    }
+-    clear_vec_high(s, is_q, rd);
++    tcg_gen_gvec_2_ptr(vec_full_reg_offset(s, rd),
++                       vec_full_reg_offset(s, rm), cpu_env,
++                       is_q ? 16 : 8, vec_full_reg_size(s),
++                       (len << 6) | (is_tbx << 5) | rn,
++                       gen_helper_simd_tblx);
+ }
+ 
+ /* ZIP/UZP/TRN
+diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+index 7174030377..d164273f20 100644
+--- a/target/arm/vec_helper.c
++++ b/target/arm/vec_helper.c
+@@ -1937,3 +1937,55 @@ DO_VRINT_RMODE(gvec_vrint_rm_h, helper_rinth, uint16_t)
+ DO_VRINT_RMODE(gvec_vrint_rm_s, helper_rints, uint32_t)
+ 
+ #undef DO_VRINT_RMODE
++
++#ifdef TARGET_AARCH64
++void HELPER(simd_tblx)(void *vd, void *vm, void *venv, uint32_t desc)
++{
++    uint64_t *d = vd;
++    const uint8_t *indices = vm;
++    CPUARMState *env = venv;
++    size_t oprsz = simd_oprsz(desc);
++    uint32_t rn = extract32(desc, SIMD_DATA_SHIFT, 5);
++    bool is_tbx = extract32(desc, SIMD_DATA_SHIFT + 5, 1);
++    uint32_t table_len = desc >> (SIMD_DATA_SHIFT + 6);
++    union {
++        uint8_t b[16];
++        uint64_t d[2];
++    } result;
++
++    /*
++     * We must construct the final result in a temp, lest the output
++     * overlaps the input table.  For TBL, begin with zero; for TBX,
++     * begin with the original register contents.  Note that for
++     * oprsz == 8, we always clear the balance of the register.
++     */
++    if (is_tbx) {
++        uint64_t d1 = d[1];
++        result.d[0] = d[0];
++        result.d[1] = oprsz == 8 ? 0 : d1;
++    } else {
++        result.d[0] = 0;
++        result.d[1] = 0;
++    }
++
++    for (size_t i = 0; i < oprsz; ++i) {
++        uint32_t index = indices[H1(i)];
++
++        if (index < table_len) {
++            /*
++             * Convert index (a byte offset into the virtual table
++             * which is a series of 128-bit vectors concatenated)
++             * into the correct register element, bearing in mind
++             * that the table can wrap around from V31 to V0.
++             */
++            const uint8_t *table = (const uint8_t *)
++                aa64_vfp_qreg(env, (rn + (index >> 4)) % 32);
++            result.b[H1(i)] = table[H1(index % 16)];
++        }
++    }
++
++    d[0] = result.d[0];
++    d[1] = result.d[1];
++    clear_tail(d, 16, simd_maxsz(desc));
++}
++#endif
+-- 
+2.25.1

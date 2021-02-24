@@ -1,300 +1,211 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp969506lfg;
-        Wed, 24 Feb 2021 15:05:35 -0800 (PST)
-X-Received: by 2002:a17:902:68:b029:e3:c8ea:a562 with SMTP id 95-20020a1709020068b02900e3c8eaa562mr345615pla.23.1614207935090;
-        Wed, 24 Feb 2021 15:05:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614207935; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp972695lfg;
+        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
+X-Received: by 2002:adf:8104:: with SMTP id 4mr319010wrm.265.1614208223740;
+        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614208223; cv=none;
         d=google.com; s=arc-20160816;
-        b=VqhcQG/58zdEr0xqrHODCLrqPvEHoVv+CBp9H1FqK7w2t9KVu86q8h9nl3Vh9c6Wua
-         33eTrCwcs3dnzOHCREjL6j1pRm8S7y3QkcZkrXpCoXPTe9ZDMVRSvW/zblcVB5WZHQ6m
-         EDlV/1k/hwJZ1wwnB0tXAbG2psi9l3h+MWRv6QVzHPEz1JiC+tAEG6JI3Jm/Ruulck26
-         nK4Cv2DpgdEUdDr93YDBiXd2WNxUpqE15mWUVAmfkL+dReaW4wnj22pRM5E2ZjlK3aE7
-         7o9jSU2Oji8ZnBFPOaKIV7HmyPQjpMvgrzGqx21BBUNj1bx/bkIRX8GVmCk/sRsyIQyN
-         68uA==
+        b=wOsiTRjzT6s+ccV2oZJ4/kpxq6KG/XsoNFIclc0ifU76tgwlNS61g5SVCTI25+h+NK
+         HFCZzz7FcSaaWqXoYrGMw0zF6zxxioJzesM9pzvq4dh8GqIQ/20IJzrPrkVGh+IDmXhA
+         ton88n6iqL4wlwRi9CgKj3J0MJBaEFxU+MFohey+xPgSbZ/eMKjZy68wbCi5v385J7P9
+         Jz7nXX4wJWWKN/JOvD2vxIJhrFQtVyDp/ih6HWZB7sAmvGjcZo5RGL7v9XQ3JQxB1RZU
+         KLXS2esCjouRalwHLW/XKQxyU/tmIwY84qJs1f0dw+70TV++M/MFZmJMWx3ttTixMH8m
+         GoRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=G+U3+xyXvuvb5HIYJD9KrdFuXROyDlUGX9LLmbyMuXE=;
-        b=GE24bt90mne3g0QkVNTYrqzRQd5FZyDythCYEKNMIabBzsTJx/Fi0Gs17/38pHHyN8
-         8veGR2JTLhyJOTGm9oFmM5Lbd1bifXmdReJt7wvQD0LdHJd3QCQ1tvRHSE+1Fm1O2Go2
-         gquvru2CrPSI8snSPJ8Qw7/czkF93XEiA9DXazhPcLDvI6RaijKQ+eiYTbtFKA79DWzC
-         mG/SJK+z/jRlgE++MikCZmR4iLm6dDfndB+ywAQbiSWu5mR6Eman8KPc2p/1zFuUhShR
-         stIXoWnTobCZp0QaFPSjsP3tvoO3GF8VkUwFJ7xsTAzKmaLol2IwI+S2+9oSzOalTZat
-         9YGA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=cKYk1BlXdXmONJSW0juNzIv8A0kBbLqwqifbrnnfbjI=;
+        b=HU9UZAy9UgPqcL6PoM2MQ2BlAPyTG9espeYoPpWlvIzNsBZNg4Tctj00ZhMwXtpT4v
+         nJvuSWLKzZGLej1FMOTk8aqGP8fZ8HUR8aPXci0IyaxDUQ6lC6RuYLnWlBtv1HWRhccF
+         cBmSDVCcoWeV6aPXv6aFy6i6nV9K1w6aoV7a3vJ7Myb5G1H/YoxrZ5ZY6Jbe0wPhNEPp
+         qpBTbURlkraK6aSwfqI2vAvg6kh+wpaz+dQ/U85QXGWVaZsgxz7iRE8SzK909FHdhFpP
+         gE0QqTSMbe3TrMUezaUpoPtptTnMRSq939Xf0jaXQQR2Dyth2yQeLw1fI9hVG+q+5MXh
+         EQ0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PVI7kmdK;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DL1lP3nV;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a7sor1774070pfd.38.2021.02.24.15.05.34
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id o83sor1923545wma.29.2021.02.24.15.10.23
         (Google Transport Security);
-        Wed, 24 Feb 2021 15:05:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PVI7kmdK;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DL1lP3nV;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=G+U3+xyXvuvb5HIYJD9KrdFuXROyDlUGX9LLmbyMuXE=;
-        b=PVI7kmdKLDhwHu/jacyw6BeHLmyLTvZd43sYih5AV7r1b9AWdJrgkX9k/nlgIc8VCt
-         3gA1xHQZZA6dAlHoNKQ41ckiHvCXgCYg+y6Mg6p1JiZQbep4tL0dRkNt7wEWQc3Xs4Kr
-         jZV8lFVInh5jGw2qpfYF1MmqrS0HjvOp9o3QJ33sdd8JjxwJPDFRpZmKyO0Tgh5eoTVn
-         z+4d/7QgZ3NAoHL3Jsm/VCvoVnXda9TPCWzKGMxiAVpz4rfpOzujGmivzaRzqk4gHNuy
-         ujh1ZarLxH/lqHeOGBrT/46nchTVXMQkbhwzFILUDLWjgLc2iio81dA6fMfucKitwnGG
-         ci4Q==
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=cKYk1BlXdXmONJSW0juNzIv8A0kBbLqwqifbrnnfbjI=;
+        b=DL1lP3nVRGCWTZNm/8OIYpSMH3qwQYZ5+OavUiHMwsGhPufcPrB3bgNMtV35o6UYgW
+         Ir/ARPCnSrV3etM2NCA+xryQDzUrnEDkfr8CZBm+MbTNXW2rMvcfHkmhr1h1RNXQE9cg
+         Ix7foQksCQ1XO9rhYS4ffsLRoNnL4scNTzyAzFpeFPXnPuBChGIlcmA6vTdBX70hYwkd
+         m9DKYDPiJoihDgHpoMoN/qaTWvPDxLpstxJSzQ1UtNSJRf09ft84oJpkeCqKpkQsgRe9
+         SFXIXyD3IMbDyarG/BceRBoMzA9xt1u9WbfNpcjLX0KJ15fnCzYfJ1bS6NiMT5im3OF6
+         qdrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=G+U3+xyXvuvb5HIYJD9KrdFuXROyDlUGX9LLmbyMuXE=;
-        b=i4ohZ9q27XxxtunNWUgNyYwRTWlDFhuffzuwfO8a3plfbKUQ6qA7Qobk9Rl42AhHHT
-         9DtIzV1iXZtLQuEEZnVWHYO+decZdxtvIFNK1FVxdd0qh1EM0sMTV/jmyBjYGBfGMm5e
-         XCANZYt5AczpirCyUyZJzP/EeLBg4I31cGCEr0CTn81dptRl58fFW5SEQT4lG1nQrLMs
-         G1Wwupe0EADiajGNPrznCpKk04KsPHrCHR6fwc5LYj9STEO1NJqxQR6n6nH6ZS3YAhsw
-         8UqinlcXfaUyYwna3PMZXEPmMT4e8pUKmpeoL2QjFZLHwwRLEL7yQhT2d3I4FjaSQp/2
-         xo8g==
-X-Gm-Message-State: AOAM533uTejeujxbPXf0jdxqC19hLULLFCDSLXGRJu8MKyYmVv8B7fWK
-	1jRAsRGGRHbi/FcNNsYX8EBPEe20nazFwAOp
-X-Google-Smtp-Source: ABdhPJzKEIaTwtQgtr/bJBcMdnRVAvrQtjJgl22X0d80OZ0GavxbQTjz2AacjjkJmGRh8lynXTnnpQ==
-X-Received: by 2002:a62:8051:0:b029:1ed:d704:1f11 with SMTP id j78-20020a6280510000b02901edd7041f11mr285309pfd.41.1614207934396;
-        Wed, 24 Feb 2021 15:05:34 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (174-21-84-25.tukw.qwest.net. [174.21.84.25])
-        by smtp.gmail.com with ESMTPSA id j125sm4145231pfd.27.2021.02.24.15.05.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Feb 2021 15:05:33 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org
-Subject: [PATCH v2] target/arm: Speed up aarch64 TBL/TBX
-Date: Wed, 24 Feb 2021 15:05:32 -0800
-Message-Id: <20210224230532.276878-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+        bh=cKYk1BlXdXmONJSW0juNzIv8A0kBbLqwqifbrnnfbjI=;
+        b=o138dUDLuXaLSdRa58da8g4JEZNodKx3hC90WsjMDRywlXEmAyCtZnR8FCJXoMTkqM
+         WSMcmiNrCl6oj7Fom15w/PPcrfF+Cq9J7cwrrRILz93mL0SBQrj0VbrS8wIWvYm+lMfu
+         jo7sQ9+ukt19B8LSS6FfrW3BZdSV8OZjgrscR4DUUe6AJWC5sl8pkiMlBeXSSUwhAp1S
+         nXavcnClCon7ztpmucwR7hU8gd68bXQ5hj9lA8zrnZjPnPUVzt5LOW2enEtqg1MHGEXZ
+         QLZDYIiz0+ICXkdXf8Wpcii2yrw9Y/Ll6+r5DDy4xELGybXEWT49cHBcifxb84J7ZLF9
+         ADRw==
+X-Gm-Message-State: AOAM532/+0y5Lb55gWxsaRdXc4TfQWC+6qAVYwyJ4rM7PMqS8Q7QrjOo
+	HgE0uhVxSsIKC3TjwunqBMQ=
+X-Google-Smtp-Source: ABdhPJyaMjgCMJ7BemwaBD6vGDaigJ0mKqS5hl0H5it7LgWcu9Neua1ur0uX5iErtzMgZQy5KZ4W5Q==
+X-Received: by 2002:a1c:2846:: with SMTP id o67mr330302wmo.188.1614208223407;
+        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id i3sm6257477wra.66.2021.02.24.15.10.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 24 Feb 2021 15:10:22 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v2 1/2] tests/acceptance: replace unstable apt.armbian.com
+ URLs for orangepi-pc, cubieboard
+To: Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Pavel.Dovgaluk@ispras.ru, Willian Rampazzo <willianr@redhat.com>
+References: <20210223225327.26700-1-nieklinnenbank@gmail.com>
+ <20210223225327.26700-2-nieklinnenbank@gmail.com>
+ <5556626c-0b4f-0de3-9cb8-d174cd210b5c@amsat.org>
+ <20210224191341.GC1074102@amachine.somewhere>
+ <CAPan3WqXre=Rau4-jOSE2u=GGRO8hSKzuuWFSN4xP3wbpvQ-Dg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6309e75e-2aa4-5bc1-66be-0b29f408f179@amsat.org>
+Date: Thu, 25 Feb 2021 00:10:21 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
+In-Reply-To: <CAPan3WqXre=Rau4-jOSE2u=GGRO8hSKzuuWFSN4xP3wbpvQ-Dg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: nvUuiP/kRurd
+X-TUID: n8yYyLw1u3ER
 
-Always perform one call instead of two for 16-byte operands.
-Use byte loads/stores directly into the vector register file
-instead of extractions and deposits to a 64-bit local variable.
++Thomas/Daniel/Alex/Peter/Paolo/Stefan/Markus
 
-In order to easily receive pointers into the vector register file,
-convert the helper to the gvec out-of-line signature.  Move the
-helper into vec_helper.c, where it can make use of H1 and clear_tail.
+On 2/24/21 9:02 PM, Niek Linnenbank wrote:
+> Hi Philippe, Cleber,
+> 
+> On Wed, Feb 24, 2021 at 8:14 PM Cleber Rosa <crosa@redhat.com
+> <mailto:crosa@redhat.com>> wrote:
+> 
+>     On Wed, Feb 24, 2021 at 10:12:10AM +0100, Philippe Mathieu-Daudé wrote:
+>     > Hi Niek,
+>     >
+>     > On 2/23/21 11:53 PM, Niek Linnenbank wrote:
+>     > > Currently the automated acceptance tests for the Orange Pi PC
+>     and cubieboard
+>     > > machines are disabled by default. The tests for both machines
+>     require artifacts
+>     > > that are stored on the apt.armbian.com <http://apt.armbian.com>
+>     domain. Unfortunately, some of these artifacts
+>     > > have been removed from apt.armbian.com <http://apt.armbian.com>
+>     and it is uncertain whether more will be removed.
+>     > >
+>     > > This commit moves the artifacts previously stored on
+>     apt.armbian.com <http://apt.armbian.com> to github
+>     > > and retrieves them using the path: '/<machine>/<artifact>'.
+>     > >
+>     > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
+>     <mailto:nieklinnenbank@gmail.com>>
+>     > > Reviewed-by: Willian Rampazzo <willianr@redhat.com
+>     <mailto:willianr@redhat.com>>
+>     > > Reviewed-by: Cleber Rosa <crosa@redhat.com
+>     <mailto:crosa@redhat.com>>
+...
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
+>     Nope, and I'm having issues with those URLs.  For instance:
+> 
+>        $ curl -L
+>     https://github.com/nieklinnenbank/QemuArtifacts/raw/master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb
+>     <https://github.com/nieklinnenbank/QemuArtifacts/raw/master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb>
+>        version https://git-lfs.github.com/spec/v1
+>     <https://git-lfs.github.com/spec/v1>
+>        oid
+>     sha256:a4b765c851de76592f55023b1ff4104f7fd29bf90937e6054e0a64fdda56380b
+>        size 20331524
+> 
+>     Looks like it has to do with GitHub's behavior wrt quota.
+> 
+> 
+> Indeed. Just this morning I received an e-mail from github with the
+> following text:
+> 
+> "[GitHub] Git LFS disabled for nieklinnenbank
+> 
+> Git LFS has been disabled on your personal account nieklinnenbank
+> because you’ve exceeded your data plan by at least 150%.
+> Please purchase additional data packs to cover your bandwidth and
+> storage usage:
+> 
+>   https://github.com/account/billing/data/upgrade
+> <https://github.com/account/billing/data/upgrade>
+> 
+> Current usage as of 24 Feb 2021 09:49AM UTC:
+> 
+>   Bandwidth: 1.55 GB / 1 GB (155%)
+>   Storage: 0.48 GB / 1 GB (48%)"
+>  
+> I wasn't aware of it but it appears that Github has these quota's for
+> the Large File Storage (LFS). I uploaded the files in the git LFS
+> because single files are also limited to 100MiB each on the regular Git
+> repositories.
+> 
+> With those strict limits, in my opinion Github isn't really a solution
+> since the bandwidth limit will be reached very quickly. At least for the
+> LFS part that is. I don't know yet if there is any limit for regular access.
+> 
+> My current ideas:
+>   - we can try to splitup the larger files into sizes < 100MiB in order
+> to use github regular storage. and then download each part to combine
+> into the final image.
+>     im not really in favour of this but it can work, if github doesnt
+> have any other limit/quota. the cost is that we have to add more
+> complexity to the acceptance test code.
+>   - we can try to just update the URLs to armbian that are working now
+> (with the risk of breaking again in the near future). Ive also found
+> this link, which may be more stable:
+>      https://archive.armbian.com/orangepipc/archive/
+> <https://archive.armbian.com/orangepipc/archive/>
+>   - or use the server that im hosting - and i don't mind to add the
+> license files on it if needed (should be GPLv2 right?)
+> 
+> I'd be interested to hear your opinion and suggestions.
+> 
+> Kind regards,
+> Niek
 
-Alex, as briefly discussed on IRC today, streamline the TBL/TBX
-implementation.  Would you run this through whatever benchmark
-you were experimenting with today?  This is unmeasureable in RISU
-(exactly one perf hit in the helper through the entire run).
+Some of the unpractical options I can think of...:
 
-And for version 2, use memcpy/memset, which get turned into host
-vector instructions with gcc-9, and is perhaps slightly clearer.
+- do not contribute tests using binary blob
+- do not allow test image >100 MiB
+- contribute tests with sha1 of (big) image but say "if you want
+  the test image contact me off-list" then when the contributor
+  stop responding we remove the test
+- have anyone setup its servers with tests source and images,
+  without committing anything to the repository. Interested
+  maintainers/testers are on their own.
+- testing done behind the scene
 
+TBH I'm a bit hopeless.
 
-r~
+Regards,
 
----
- target/arm/helper-a64.h    |  2 +-
- target/arm/helper-a64.c    | 32 ---------------------
- target/arm/translate-a64.c | 58 +++++---------------------------------
- target/arm/vec_helper.c    | 48 +++++++++++++++++++++++++++++++
- 4 files changed, 56 insertions(+), 84 deletions(-)
-
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 7bd6aed659..c139fa81f9 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -28,7 +28,7 @@ DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
- DEF_HELPER_3(vfp_cmpes_a64, i64, f32, f32, ptr)
- DEF_HELPER_3(vfp_cmpd_a64, i64, f64, f64, ptr)
- DEF_HELPER_3(vfp_cmped_a64, i64, f64, f64, ptr)
--DEF_HELPER_FLAGS_5(simd_tbl, TCG_CALL_NO_RWG_SE, i64, env, i64, i64, i32, i32)
-+DEF_HELPER_FLAGS_4(simd_tblx, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(vfp_mulxs, TCG_CALL_NO_RWG, f32, f32, f32, ptr)
- DEF_HELPER_FLAGS_3(vfp_mulxd, TCG_CALL_NO_RWG, f64, f64, f64, ptr)
- DEF_HELPER_FLAGS_3(neon_ceq_f64, TCG_CALL_NO_RWG, i64, i64, i64, ptr)
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 7f56c78fa6..061c8ff846 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -179,38 +179,6 @@ float64 HELPER(vfp_mulxd)(float64 a, float64 b, void *fpstp)
-     return float64_mul(a, b, fpst);
- }
- 
--uint64_t HELPER(simd_tbl)(CPUARMState *env, uint64_t result, uint64_t indices,
--                          uint32_t rn, uint32_t numregs)
--{
--    /* Helper function for SIMD TBL and TBX. We have to do the table
--     * lookup part for the 64 bits worth of indices we're passed in.
--     * result is the initial results vector (either zeroes for TBL
--     * or some guest values for TBX), rn the register number where
--     * the table starts, and numregs the number of registers in the table.
--     * We return the results of the lookups.
--     */
--    int shift;
--
--    for (shift = 0; shift < 64; shift += 8) {
--        int index = extract64(indices, shift, 8);
--        if (index < 16 * numregs) {
--            /* Convert index (a byte offset into the virtual table
--             * which is a series of 128-bit vectors concatenated)
--             * into the correct register element plus a bit offset
--             * into that element, bearing in mind that the table
--             * can wrap around from V31 to V0.
--             */
--            int elt = (rn * 2 + (index >> 3)) % 64;
--            int bitidx = (index & 7) * 8;
--            uint64_t *q = aa64_vfp_qreg(env, elt >> 1);
--            uint64_t val = extract64(q[elt & 1], bitidx, 8);
--
--            result = deposit64(result, shift, 8, val);
--        }
--    }
--    return result;
--}
--
- /* 64bit/double versions of the neon float compare functions */
- uint64_t HELPER(neon_ceq_f64)(float64 a, float64 b, void *fpstp)
- {
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index b23a8975d5..496e14688a 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -7520,10 +7520,8 @@ static void disas_simd_tb(DisasContext *s, uint32_t insn)
-     int rm = extract32(insn, 16, 5);
-     int rn = extract32(insn, 5, 5);
-     int rd = extract32(insn, 0, 5);
--    int is_tblx = extract32(insn, 12, 1);
--    int len = extract32(insn, 13, 2);
--    TCGv_i64 tcg_resl, tcg_resh, tcg_idx;
--    TCGv_i32 tcg_regno, tcg_numregs;
-+    int is_tbx = extract32(insn, 12, 1);
-+    int len = (extract32(insn, 13, 2) + 1) * 16;
- 
-     if (op2 != 0) {
-         unallocated_encoding(s);
-@@ -7534,53 +7532,11 @@ static void disas_simd_tb(DisasContext *s, uint32_t insn)
-         return;
-     }
- 
--    /* This does a table lookup: for every byte element in the input
--     * we index into a table formed from up to four vector registers,
--     * and then the output is the result of the lookups. Our helper
--     * function does the lookup operation for a single 64 bit part of
--     * the input.
--     */
--    tcg_resl = tcg_temp_new_i64();
--    tcg_resh = NULL;
--
--    if (is_tblx) {
--        read_vec_element(s, tcg_resl, rd, 0, MO_64);
--    } else {
--        tcg_gen_movi_i64(tcg_resl, 0);
--    }
--
--    if (is_q) {
--        tcg_resh = tcg_temp_new_i64();
--        if (is_tblx) {
--            read_vec_element(s, tcg_resh, rd, 1, MO_64);
--        } else {
--            tcg_gen_movi_i64(tcg_resh, 0);
--        }
--    }
--
--    tcg_idx = tcg_temp_new_i64();
--    tcg_regno = tcg_const_i32(rn);
--    tcg_numregs = tcg_const_i32(len + 1);
--    read_vec_element(s, tcg_idx, rm, 0, MO_64);
--    gen_helper_simd_tbl(tcg_resl, cpu_env, tcg_resl, tcg_idx,
--                        tcg_regno, tcg_numregs);
--    if (is_q) {
--        read_vec_element(s, tcg_idx, rm, 1, MO_64);
--        gen_helper_simd_tbl(tcg_resh, cpu_env, tcg_resh, tcg_idx,
--                            tcg_regno, tcg_numregs);
--    }
--    tcg_temp_free_i64(tcg_idx);
--    tcg_temp_free_i32(tcg_regno);
--    tcg_temp_free_i32(tcg_numregs);
--
--    write_vec_element(s, tcg_resl, rd, 0, MO_64);
--    tcg_temp_free_i64(tcg_resl);
--
--    if (is_q) {
--        write_vec_element(s, tcg_resh, rd, 1, MO_64);
--        tcg_temp_free_i64(tcg_resh);
--    }
--    clear_vec_high(s, is_q, rd);
-+    tcg_gen_gvec_2_ptr(vec_full_reg_offset(s, rd),
-+                       vec_full_reg_offset(s, rm), cpu_env,
-+                       is_q ? 16 : 8, vec_full_reg_size(s),
-+                       (len << 6) | (is_tbx << 5) | rn,
-+                       gen_helper_simd_tblx);
- }
- 
- /* ZIP/UZP/TRN
-diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
-index 7174030377..3fbeae87cb 100644
---- a/target/arm/vec_helper.c
-+++ b/target/arm/vec_helper.c
-@@ -1937,3 +1937,51 @@ DO_VRINT_RMODE(gvec_vrint_rm_h, helper_rinth, uint16_t)
- DO_VRINT_RMODE(gvec_vrint_rm_s, helper_rints, uint32_t)
- 
- #undef DO_VRINT_RMODE
-+
-+#ifdef TARGET_AARCH64
-+void HELPER(simd_tblx)(void *vd, void *vm, void *venv, uint32_t desc)
-+{
-+    const uint8_t *indices = vm;
-+    CPUARMState *env = venv;
-+    size_t oprsz = simd_oprsz(desc);
-+    uint32_t rn = extract32(desc, SIMD_DATA_SHIFT, 5);
-+    bool is_tbx = extract32(desc, SIMD_DATA_SHIFT + 5, 1);
-+    uint32_t table_len = desc >> (SIMD_DATA_SHIFT + 6);
-+    union {
-+        uint8_t b[16];
-+        uint64_t d[2];
-+    } result;
-+
-+    /*
-+     * We must construct the final result in a temp, lest the output
-+     * overlaps the input table.  For TBL, begin with zero; for TBX,
-+     * begin with the original register contents.  Note that we always
-+     * copy 16 bytes here to avoid an extra branch; clearing the high
-+     * bits of the register for oprsz == 8 is handled below.
-+     */
-+    if (is_tbx) {
-+        memcpy(&result, vd, 16);
-+    } else {
-+        memset(&result, 0, 16);
-+    }
-+
-+    for (size_t i = 0; i < oprsz; ++i) {
-+        uint32_t index = indices[H1(i)];
-+
-+        if (index < table_len) {
-+            /*
-+             * Convert index (a byte offset into the virtual table
-+             * which is a series of 128-bit vectors concatenated)
-+             * into the correct register element, bearing in mind
-+             * that the table can wrap around from V31 to V0.
-+             */
-+            const uint8_t *table = (const uint8_t *)
-+                aa64_vfp_qreg(env, (rn + (index >> 4)) % 32);
-+            result.b[H1(i)] = table[H1(index % 16)];
-+        }
-+    }
-+
-+    memcpy(vd, &result, 16);
-+    clear_tail(vd, oprsz, simd_maxsz(desc));
-+}
-+#endif
--- 
-2.25.1
+Phil.

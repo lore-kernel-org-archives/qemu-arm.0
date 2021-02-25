@@ -1,89 +1,89 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp249399lfg;
-        Thu, 25 Feb 2021 03:09:29 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwCJAxbDW3ty4dH7d9Q/RFPT1BFdZ3hYwE/ji+ZCf/+3dy264icG2DM93GTXFly5/1Ox1l0
-X-Received: by 2002:a6b:c997:: with SMTP id z145mr2182111iof.36.1614251369324;
-        Thu, 25 Feb 2021 03:09:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614251369; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp249483lfg;
+        Thu, 25 Feb 2021 03:09:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyvF+fx8gMMa4f4W67W3pDhdthThSI2xwHBirdqw/OftkIFLbSlrw0FU0eoPpvytmmjgSrf
+X-Received: by 2002:a6b:ea04:: with SMTP id m4mr2157567ioc.160.1614251377915;
+        Thu, 25 Feb 2021 03:09:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614251377; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nb5kR7qbkwBH/yeB0mygmySLsUjxLsFqhL0K5sgUW96p0nhpq5O13xPYCN2rlaK9Zp
-         D9kUs5Fi8snq6MjpCnovnU+F2oguM776x++X+7PwI0JvFzqTAeVWnRPCmvJuH6W+5vkH
-         ar4m0/8djjhZqpFW2vDIcfKs7SFL+jVCwFdg0dNmWeGGKfd6KRddC618jMTkeRE5uTzG
-         OgRKXtmV+N+KkDLkjYR68DMmmW+4fi07lcYTxaJnFuC76jquYZVLqKKLCRRYjVyp+HCD
-         mjKtsPrb4OM0agCpKoUx9KhqFauDqb0XFRN1XX7u3m2ZUQJ+Y2s0iwEiMFJEErn6Mjoy
-         ZjEg==
+        b=lIY8yA0+3AReyA76g5wYz15GxczAh5n/rW+Rttt1Zv1WeZjPaxk0XwJtQ+CV6qJnFx
+         sZtfPjdZhWziZ7u8+U/kc/DDWnDXy6PaQATteXCdBCy3jcJwm3KZBZobu6+TGuPtxgfp
+         dIfPU8R290wXIWOhsUI3J+LiwUwn+yhK9MXoz/HQ65d8BUmeukGnXOqUFnt/fIBrmDkw
+         E9ciY1P7ep2CdmghQlhd/0cMBkMB+u7jH18vZN3YSFIVBqqtqgxpMdBZ48z0N/8PIKjp
+         zIVxURLHU3npdiDq2GFNDYZd4GE5UAO/Itulse4N1YFjl8p52d0mag2UUR4lNdD6p/fy
+         w2mQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=PI/H2lV6bb09C81tWdfgp+CTkXAgWag50xZZFzSVd48=;
-        b=SH04wEay4qRjAqK1csJIPMexySplghlRHMQiO2D8YusDYrNy/ehIizfhRjtmWe+xlU
-         +C1ZFLph57Cb2RFRVsORpWf1TDhrApLksNhw9RoKF1nV/aSoVumUXHEDsb+cpDLJE7ki
-         z1204FX2buVwBa6AB4f/K6DkY7DTZkA7c9vfDGF9v5/eYDas4WhoPSEXQ+ehMS5vMouH
-         aPRQD2CWYLJu54nP+DtLu0OB07BrQbYUZ/nGI/T3BIOkw4paNiE939grxV7W45oxqWzW
-         Af72gZBYk8uofY2SDkn8+2nsXUwGVksLB+17aa7WqBHOxd/dgIfMwIT9qF9G0r2ofHER
-         6iwg==
+        bh=kdUlRYKn8QtCf9o06jS8ggImvedVgOHZP3O9+rhuWtU=;
+        b=Qw4G5rqN86Ndk7g+ddlFj91XAOq5VyJjlooHy2pBdQ+jt8TXE0RZYpRbq1uWeq1nmW
+         JKntBfZNvWIAX039CCm67GL/YTxlQdykh/tg++zVMyxQDDtsJoTJvynj4W5L0j1Q793H
+         L6ue2zLhrQu7Udw8SdqDROo39lbkmB2zxbLI/HHMKwvxJBDW5x4bFnPxhLyHYcTPgnZW
+         XwodUgg11vEmbIFEAjX0E24dbqdKFTux7n19Rwo08wEdCp/fvv/U/0zdlijMRUBy5P7W
+         ZgxcQ/w7njGDC+EdbLtxvBSKg9eBfpxHW0Gv8j8kxXf2xYd94QPIkUacenJ87GKwEzq8
+         njRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d39Shzx+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S1Mx1UQb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i7si4836954ilu.26.2021.02.25.03.09.29
+        by mx.google.com with ESMTPS id z10si4667568ior.84.2021.02.25.03.09.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 03:09:29 -0800 (PST)
+        Thu, 25 Feb 2021 03:09:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d39Shzx+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S1Mx1UQb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53198 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFEWO-0003il-Ke
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:09:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55030)
+	id 1lFEWX-000431-8T
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:09:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55684)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEI2-00075I-3w
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:54:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23096)
+ id 1lFEK0-0001f5-1S
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:56:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47721)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEI0-0005Ly-HI
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:54:37 -0500
+ id 1lFEJy-0006Lj-Ef
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:56:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614250475;
+ s=mimecast20190719; t=1614250597;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=PI/H2lV6bb09C81tWdfgp+CTkXAgWag50xZZFzSVd48=;
- b=d39Shzx+xdVcj3+8NfjEVisSG0dNeSIhjBZKFQ6RJh3SafPt+G83VKhEZ4pIhuZAsMA0P4
- KcLfvEaCXRYFdJ4OhwJpGDgNemfOS132ssAVRB4WXmuzK0yeg1+HQ7/k49fEJ2yajUqzNZ
- Ju6jj23401uXITQgf7Zcyyhdz3g4rsI=
+ bh=kdUlRYKn8QtCf9o06jS8ggImvedVgOHZP3O9+rhuWtU=;
+ b=S1Mx1UQbX7RvlGRpmuLI7BSn+cR6Nu2tV028DoNJ9PzSQlvTNWI9FUFoKJVq0SivsL5g+S
+ KOGicxXRtVU9QUJvFKingA9A0ed5E6rWGC9HJYg/GhLbgWzcXvBsg4HZzu5Sr+p+DQXG5z
+ cjQYu7YJ+lIw/amSFZw1br+mnBxk1XM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-238-Ot5u8t7tPLyzx-sc7mKbuw-1; Thu, 25 Feb 2021 05:54:34 -0500
-X-MC-Unique: Ot5u8t7tPLyzx-sc7mKbuw-1
+ us-mta-388-n0PJlCpbPYOrkS4dAZBMIg-1; Thu, 25 Feb 2021 05:56:35 -0500
+X-MC-Unique: n0PJlCpbPYOrkS4dAZBMIg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 281B018B6141;
- Thu, 25 Feb 2021 10:54:32 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CA60D18B613D;
+ Thu, 25 Feb 2021 10:56:33 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-150.ams2.redhat.com [10.36.112.150])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9C5EF5D9D7;
- Thu, 25 Feb 2021 10:54:15 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8BC945D9D7;
+ Thu, 25 Feb 2021 10:56:28 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v8 08/28] memory: Introduce IOMMU Memory Region inject_faults API
-Date: Thu, 25 Feb 2021 11:52:13 +0100
-Message-Id: <20210225105233.650545-9-eric.auger@redhat.com>
+Subject: [RFC v8 19/28] vfio/pci: Implement the DMA fault handler
+Date: Thu, 25 Feb 2021 11:52:24 +0100
+Message-Id: <20210225105233.650545-20-eric.auger@redhat.com>
 In-Reply-To: <20210225105233.650545-1-eric.auger@redhat.com>
 References: <20210225105233.650545-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -121,87 +121,95 @@ Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  zhangfei.gao@linaro.org, will@kernel.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mg9Xgp7g5nnq
+X-TUID: vXQGn+EgXAph
 
-This new API allows to inject @count iommu_faults into
-the IOMMU memory region.
+Whenever the eventfd is triggered, we retrieve the DMA fault(s)
+from the mmapped fault region and inject them in the iommu
+memory region.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/exec/memory.h | 24 ++++++++++++++++++++++++
- softmmu/memory.c      | 10 ++++++++++
- 2 files changed, 34 insertions(+)
+ hw/vfio/pci.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/vfio/pci.h |  1 +
+ 2 files changed, 51 insertions(+)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index ad6c807262..0c4389c383 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -65,6 +65,8 @@ struct ReservedRegion {
-     unsigned type;
- };
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 9fbbf88673..cb46288512 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -2915,10 +2915,60 @@ static PCIPASIDOps vfio_pci_pasid_ops = {
+ static void vfio_dma_fault_notifier_handler(void *opaque)
+ {
+     VFIOPCIExtIRQ *ext_irq = opaque;
++    VFIOPCIDevice *vdev = ext_irq->vdev;
++    PCIDevice *pdev = &vdev->pdev;
++    AddressSpace *as = pci_device_iommu_address_space(pdev);
++    IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(as->root);
++    struct vfio_region_dma_fault header;
++    struct iommu_fault *queue;
++    char *queue_buffer = NULL;
++    ssize_t bytes;
  
-+struct iommu_fault;
+     if (!event_notifier_test_and_clear(&ext_irq->notifier)) {
+         return;
+     }
 +
- typedef struct IOMMUTLBEntry IOMMUTLBEntry;
- 
- /* See address_space_translate: bit 0 is read, bit 1 is write.  */
-@@ -475,6 +477,19 @@ struct IOMMUMemoryRegionClass {
-      int (*iommu_set_page_size_mask)(IOMMUMemoryRegion *iommu,
-                                      uint64_t page_size_mask,
-                                      Error **errp);
++    bytes = pread(vdev->vbasedev.fd, &header, sizeof(header),
++                  vdev->dma_fault_region.fd_offset);
++    if (bytes != sizeof(header)) {
++        error_report("%s unable to read the fault region header (0x%lx)",
++                     __func__, bytes);
++        return;
++    }
 +
-+    /*
-+     * Inject @count faults into the IOMMU memory region
-+     *
-+     * Optional method: if this method is not provided, then
-+     * memory_region_injection_faults() will return -ENOENT
-+     *
-+     * @iommu: the IOMMU memory region to inject the faults in
-+     * @count: number of faults to inject
-+     * @buf: fault buffer
-+     */
-+    int (*inject_faults)(IOMMUMemoryRegion *iommu, int count,
-+                         struct iommu_fault *buf);
- };
- 
- typedef struct CoalescedMemoryRange CoalescedMemoryRange;
-@@ -1496,6 +1511,15 @@ int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr);
- int memory_region_iommu_set_page_size_mask(IOMMUMemoryRegion *iommu_mr,
-                                            uint64_t page_size_mask,
-                                            Error **errp);
-+/**
-+ * memory_region_inject_faults : inject @count faults stored in @buf
-+ *
-+ * @iommu_mr: the IOMMU memory region
-+ * @count: number of faults to be injected
-+ * @buf: buffer containing the faults
-+ */
-+int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
-+                                struct iommu_fault *buf);
- 
- /**
-  * memory_region_name: get a memory region's name
-diff --git a/softmmu/memory.c b/softmmu/memory.c
-index 874a8fccde..c3f2c562f7 100644
---- a/softmmu/memory.c
-+++ b/softmmu/memory.c
-@@ -2029,6 +2029,16 @@ int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr)
-     return imrc->num_indexes(iommu_mr);
++    /* Normally the fault queue is mmapped */
++    queue = (struct iommu_fault *)vdev->dma_fault_region.mmaps[0].mmap;
++    if (!queue) {
++        size_t queue_size = header.nb_entries * header.entry_size;
++
++        error_report("%s: fault queue not mmapped: slower fault handling",
++                     vdev->vbasedev.name);
++
++        queue_buffer = g_malloc(queue_size);
++        bytes =  pread(vdev->vbasedev.fd, queue_buffer, queue_size,
++                       vdev->dma_fault_region.fd_offset + header.offset);
++        if (bytes != queue_size) {
++            error_report("%s unable to read the fault queue (0x%lx)",
++                         __func__, bytes);
++            return;
++        }
++
++        queue = (struct iommu_fault *)queue_buffer;
++    }
++
++    while (vdev->fault_tail_index != header.head) {
++        memory_region_inject_faults(iommu_mr, 1,
++                                    &queue[vdev->fault_tail_index]);
++        vdev->fault_tail_index =
++            (vdev->fault_tail_index + 1) % header.nb_entries;
++    }
++    bytes = pwrite(vdev->vbasedev.fd, &vdev->fault_tail_index, 4,
++                   vdev->dma_fault_region.fd_offset);
++    if (bytes != 4) {
++        error_report("%s unable to write the fault region tail index (0x%lx)",
++                     __func__, bytes);
++    }
++    g_free(queue_buffer);
  }
  
-+int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
-+                                struct iommu_fault *buf)
-+{
-+    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
-+    if (!imrc->inject_faults) {
-+        return -ENOENT;
-+    }
-+    return imrc->inject_faults(iommu_mr, count, buf);
-+}
-+
- void memory_region_set_log(MemoryRegion *mr, bool log, unsigned client)
- {
-     uint8_t mask = 1 << client;
+ static int vfio_register_ext_irq_handler(VFIOPCIDevice *vdev,
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index d6cc689f5e..350e9e9005 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -146,6 +146,7 @@ struct VFIOPCIDevice {
+     EventNotifier req_notifier;
+     VFIOPCIExtIRQ *ext_irqs;
+     VFIORegion dma_fault_region;
++    uint32_t fault_tail_index;
+     int (*resetfn)(struct VFIOPCIDevice *);
+     uint32_t vendor_id;
+     uint32_t device_id;
 -- 
 2.26.2
 

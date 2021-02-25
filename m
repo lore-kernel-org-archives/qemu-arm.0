@@ -1,89 +1,90 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp243877lfg;
-        Thu, 25 Feb 2021 03:02:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzE11XnHnE8cik0Mlw/Gx6nlnTrZ6GynMO6LuPJGrLa8Wmcg739g49NsNHyoHNllHxRV77u
-X-Received: by 2002:a9d:3642:: with SMTP id w60mr1799971otb.18.1614250948719;
-        Thu, 25 Feb 2021 03:02:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614250948; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp245632lfg;
+        Thu, 25 Feb 2021 03:04:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJybrE1VX5pIMUsyHEJ2rzcYD+Iu86xwCFWNylT7BtrmPaRqgoqMyFGt0tLzv+kpfJ6zoMwl
+X-Received: by 2002:a92:1e12:: with SMTP id e18mr1997165ile.270.1614251076214;
+        Thu, 25 Feb 2021 03:04:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614251076; cv=none;
         d=google.com; s=arc-20160816;
-        b=HctC9qXcDciJEqvWb4JkLjXKSBTSOg8DdaseYZgs89j4dSE8eag4alKx3GzDYyKCbc
-         pA4OUVh+nRv0Meo8BKwQNDtYhyMeOPTSrSGNqBgNEzUVZ+0dl2BkEKZm7NeobBoEgDTp
-         6ic0h2xNn+amcyIMMppbPTdb/lXzuAZ5YXN+6nVU718ccfdnpnF63wvtC9un2exz1aIZ
-         yJWwj38EJTCRLDm4O1zeYxwfXzBMiEJ8N8NHsjAdi0wUMYJM0xR5dxP62LLJu+Y5ky2T
-         fQn6Hlc45T2/tt0YK3GSPrhF6yPi8bZP0LaNxtkwHRxZGcfzVet3gf1/+a66GJvMX3cd
-         yKTg==
+        b=UlzwbvV3mQv5an/wU5v/bBGVq8/KZcKdTARGVB3WXZ9fqZORJ9nvv6kSN1eYhpDpqt
+         vM3zvLv3yl4py6NVOUCd6md0MgTb3G1g4Rq15WQjF6XYIsy2FOIWS4LAbUhyoJOKRTMw
+         znr30VQ5wUhSAmTnMCnPtGiXveD4P7orKIgNo9UODj9QYgT4pUIS2plQnnjyL4htXki8
+         grGmoLRGbnE1UL7eDfpMLmblWxZpa/R7URgrQcH/AgqSpXq0sHHcvaPZgkZzkvO1UQCw
+         66pkUdY5pgPyYGDZEMxt2+zy5TVKu6Il4DoBvlltoYx/S4/iJxWnEcJdGKgOc4QAg7IT
+         uSZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=oh/DLQIDoWFtgySbd5st3PJogM+1Ev2tcCnxNy5aiFU=;
-        b=FNSQ0tvicY02Z1sKKS2e/NG9t+AlpNVonT0eWzU3F9XKWk5+YhKS2XYtiEaIEHjqA1
-         /VO2/it7FttxVENDowuWeNfKs318RmHYP7J9EKpmVuItGs4HpNK5Dh5mNG1fjFk9thuZ
-         apSReprdEIrW8pOKdNPDve++hsA6U76iEYUui70Bfw7jEiru9TY7R4Iaw8BtEYAoLoWX
-         6nUMjUVUd6WNqp9D8n0hOe0gKSsRVMPll3byGiq8iDoFdDjW9JD0jUpGUSqCANE2M/gm
-         jXCJTCcGPgavDreIPkngt6IzWpfCRZ29+QrxtyzIboS0JDgzUK3MfDN92c7bIulqhU2y
-         oioA==
+        bh=pvA/A2wYylAa++h5VaUFmpDd5c4RYLx5logkW0nFD80=;
+        b=o8DeI0jAeelZFNH8v7GIkXLgrWtenMYdFzNgroJ3CizEoZmXUqAL7sxBUT65sx+jQg
+         nzvlRRaRcEmPXUPoRIR6ZcIJ4SsnwveLnk02dsA17J5xEmLzY4Pd9GiuEZuEZzZUEnMc
+         ODbCv05sktPb02Wr+xy4jteWf3Vv/aoOFmSpprSlPJOJh9Q3VEW7wvwz6am7TZEdzrZ0
+         svJAIDAas3plSanUsXvhSPRAjYCaUrRW1YkPao6Qy99ATkrvJvPv4aA2Vd3SRk+/fPvo
+         5+767UWo+6QTxeOgvwN+72W28APKpt84oGppkPxXjkJMaR1P65N8rshRQ30hWIB9LApQ
+         vBrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YkiF/ZOe";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Lr0rqN4z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n12si3584933otf.23.2021.02.25.03.02.28
+        by mx.google.com with ESMTPS id q10si4376538ilo.6.2021.02.25.03.04.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 03:02:28 -0800 (PST)
+        Thu, 25 Feb 2021 03:04:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="YkiF/ZOe";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Lr0rqN4z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52020 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFEPb-0000aM-Pq
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:02:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55074)
+	id 1lFERf-0003is-Ee
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:04:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54938)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEIB-0007Lv-W4
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:54:48 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:22303)
+ id 1lFEHi-0006WK-9V
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:54:18 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40200)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEI9-0005Pj-Cw
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:54:47 -0500
+ id 1lFEHg-0005E7-Nr
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:54:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614250484;
+ s=mimecast20190719; t=1614250455;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oh/DLQIDoWFtgySbd5st3PJogM+1Ev2tcCnxNy5aiFU=;
- b=YkiF/ZOebE5tJ7Hxg6ruK91KwAlVTLXehX4lg11Zl8eKosJSm9rtFlIz2HR6WSfgPpmSS1
- ZZhGZBRrCXbPKQ5oU2Wg1cXloMBZfs10TBZQ4ylOXwp5okILIzcr+2Tu56J6brxDBkO5LU
- sHaWNe/i1BVZv2HU8ySvUjj7x0vimAE=
+ bh=pvA/A2wYylAa++h5VaUFmpDd5c4RYLx5logkW0nFD80=;
+ b=Lr0rqN4zXPRVBfENXLSkl60rVwPVr/KGmqMFgD9+oOhh9ROW5jrC7UR3CDnd3EUVaZJoNW
+ iPaZYPEH7IkddD7Eqo6/k1Qpm/rRr9rgRJrvEBnC/Cd3UXDnLdIhcM2YrFduk5n7Ym9AZC
+ 4+G0hZFKRRsBPiMTalCtMdzNnr2TIoc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-280-O950GwWiOIeY_DcOPkoLyQ-1; Thu, 25 Feb 2021 05:54:41 -0500
-X-MC-Unique: O950GwWiOIeY_DcOPkoLyQ-1
+ us-mta-523-6n5F7ukVP6uMyD5fmOGn3A-1; Thu, 25 Feb 2021 05:54:13 -0500
+X-MC-Unique: 6n5F7ukVP6uMyD5fmOGn3A-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AC4A080402C;
- Thu, 25 Feb 2021 10:54:38 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75423107ACE4;
+ Thu, 25 Feb 2021 10:54:09 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-150.ams2.redhat.com [10.36.112.150])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A0ED85D9D7;
- Thu, 25 Feb 2021 10:54:32 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7A3B25D9D7;
+ Thu, 25 Feb 2021 10:53:52 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v8 09/28] iommu: Introduce generic header
-Date: Thu, 25 Feb 2021 11:52:14 +0100
-Message-Id: <20210225105233.650545-10-eric.auger@redhat.com>
+Subject: [RFC v8 06/28] memory: Add IOMMU_ATTR_VFIO_NESTED IOMMU memory region
+ attribute
+Date: Thu, 25 Feb 2021 11:52:11 +0100
+Message-Id: <20210225105233.650545-7-eric.auger@redhat.com>
 In-Reply-To: <20210225105233.650545-1-eric.auger@redhat.com>
 References: <20210225105233.650545-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -94,15 +95,15 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,52 +122,70 @@ Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  zhangfei.gao@linaro.org, will@kernel.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DjjChlOeNM8M
+X-TUID: gV+QhsPqvQ5L
 
-This header is meant to exposes data types used by
-several IOMMU devices such as struct for SVA and
-nested stage configuration.
+We introduce a new IOMMU Memory Region attribute,
+IOMMU_ATTR_VFIO_NESTED that tells whether the virtual IOMMU
+requires HW nested paging for VFIO integration.
+
+Current Intel virtual IOMMU device supports "Caching
+Mode" and does not require 2 stages at physical level to be
+integrated with VFIO. However SMMUv3 does not implement such
+"caching mode" and requires to use HW nested paging.
+
+As such SMMUv3 is the first IOMMU device to advertise this
+attribute.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/iommu/iommu.h | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
- create mode 100644 include/hw/iommu/iommu.h
+ hw/arm/smmuv3.c       | 12 ++++++++++++
+ include/exec/memory.h |  3 ++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/iommu/iommu.h b/include/hw/iommu/iommu.h
-new file mode 100644
-index 0000000000..12092bda7b
---- /dev/null
-+++ b/include/hw/iommu/iommu.h
-@@ -0,0 +1,28 @@
-+/*
-+ * common header for iommu devices
-+ *
-+ * Copyright Red Hat, Inc. 2019
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2.  See
-+ * the COPYING file in the top-level directory.
-+ */
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 8dffb1bcc3..6172a62b8e 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1580,6 +1580,17 @@ static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+     return 0;
+ }
+ 
++static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
++                           enum IOMMUMemoryRegionAttr attr,
++                           void *data)
++{
++    if (attr == IOMMU_ATTR_VFIO_NESTED) {
++        *(bool *) data = true;
++        return 0;
++    }
++    return -EINVAL;
++}
 +
-+#ifndef QEMU_HW_IOMMU_IOMMU_H
-+#define QEMU_HW_IOMMU_IOMMU_H
-+#ifdef __linux__
-+#include <linux/iommu.h>
-+#endif
-+
-+typedef struct IOMMUConfig {
-+    union {
-+#ifdef __linux__
-+        struct iommu_pasid_table_config pasid_cfg;
-+#endif
-+          };
-+} IOMMUConfig;
-+
-+
-+#endif /* QEMU_HW_IOMMU_IOMMU_H */
+ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+                                                   void *data)
+ {
+@@ -1587,6 +1598,7 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+ 
+     imrc->translate = smmuv3_translate;
+     imrc->notify_flag_changed = smmuv3_notify_flag_changed;
++    imrc->get_attr = smmuv3_get_attr;
+ }
+ 
+ static const TypeInfo smmuv3_type_info = {
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index f2c9bd5fcc..04c75f13c2 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -273,7 +273,8 @@ typedef struct MemoryRegionClass {
+ 
+ 
+ enum IOMMUMemoryRegionAttr {
+-    IOMMU_ATTR_SPAPR_TCE_FD
++    IOMMU_ATTR_SPAPR_TCE_FD,
++    IOMMU_ATTR_VFIO_NESTED,
+ };
+ 
+ /*
 -- 
 2.26.2
 

@@ -1,89 +1,89 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp250830lfg;
-        Thu, 25 Feb 2021 03:11:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx9/70RHLwo7dTO8F6ZN74Ba5MgIC/meT+K9gQQpFf4SR/dGKr7yypcBCJNL/pDxlrXpFHZ
-X-Received: by 2002:a05:6808:3a5:: with SMTP id n5mr1579377oie.154.1614251496570;
-        Thu, 25 Feb 2021 03:11:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614251496; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp250950lfg;
+        Thu, 25 Feb 2021 03:11:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzHWJeLCPh9duZRmQREBsOAfWvXbeQTGd0+gkujyGoDWv2V3YkN1SAWNbtuA3PYDb25grgK
+X-Received: by 2002:a9d:1b2a:: with SMTP id l39mr1788245otl.142.1614251508278;
+        Thu, 25 Feb 2021 03:11:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614251508; cv=none;
         d=google.com; s=arc-20160816;
-        b=UMynCpFXTKXfx5N4ou6J37eZy5k9IX1bM/KbDlMAsyb3zvrwZTD1irYzw9/GCfkez2
-         xdaq/nOkuAqtcJO14Hk+3y1vvZVKBCTkEcO66pb09hayFXfaZEsBJbNEhbwms4XfQqxZ
-         MbVc5lcAr4eGv/R5ESu5IqAX13pBjhgJSD8QpyQ+roHkQDuJTYC0Wnsu8b70fuEKMb+8
-         uAaHz5OTAdN/4/etyXluwn0f0sFaAGxdmnxRmSri07qcs25/MuAsrrMTw6+GQUCUWsuB
-         Prv3vY3s+isOekwR78cx93eQN/zvyTMJ9DlItbLUz8MKoCxCsXLBKRfCZxKLo6JYEUHs
-         /04w==
+        b=i9LmrrTa3tfQzxUXtA72BECeAewHqxmTMWnra+ZFuVuzaChJWVCNNoWuwmeEolWeSZ
+         89nhhTeI3DjJEpk5GJvmYrRwef9CLz2GPVqYBMyk32HfhPFmh9QdrMeXE73uXyEPBGtI
+         qIDiiyK7As0sz7hci6Wlj7N+DIa1aq5OgHrbq1hr/fYENfNO0TFPeORXCcn/euEKpWUY
+         uJkXRyGT94Mb0onDIhwNFEUjx1Q50ViQNAk8buMPDPC5kvz1lAYyevh9FCpctoiv8Qj1
+         xT/1LMUcg3vP9EaIWXjHW3chctiutUa8iCLIFZE7PlZxg5KCrmFRhJV35FFcD+jYMMCI
+         d3+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bWEN9W3CSh/fuwVHUFsScmrUiqJMJE6m9Ra8jyjW+gw=;
-        b=e9rEEBDgZ5QkvsQfGbZXTHwZrJqlNTBsUpkzCSVk3RKMOFBz35QNnJfxrzBiqdqLwJ
-         Cs6aRHUPFDNuIrV/hKCLwJAAd8KNVQqP7LccrUCRtYoaFBo/fG6G9wxUqS25GAInD7Yn
-         bmJ7WyIR4KFqFtKBDJYai8RZwAE56iZcymvmlifO156CgU5Nozgyet/9XuG8Oi1TtALC
-         wa3Tc/buye49lCzTFviZIWMsxfffYzZV8e3MYWnwpPu6uUzsLuj9QT3Dfw9O5dMjLS6z
-         pQDKTs5AqCVsgHxp5Do4dawf78H4Jy5JA+dCIhL096lrN1rm+6gjikCtnpXiu9mYkaWl
-         S1xw==
+        bh=lUBZzkWDykKBjWgfFJUd/iE74sH8LuuC3fN/8YEg73E=;
+        b=hhMw3RizoiaW7ABC0G3XtgjxyonclEij2l5jq9/JMIEU/q3Aram/Cwja+6qWx+dV59
+         Fxrpddb4L/rVWhzWEKzZJPoIUox0XNeH+hEylLL7jjLTKPvEqCZj4qn3XNob8Cpng56F
+         UwraLdUC2wtw9CSDS1k0oLiDUAvml+Ny42kxNQgayCJahpNxWft6FMV8Qy6HCDaI0W20
+         cFBBVI4kMptqcc+TLaatxTr0dhvXUaxPtn2DJZpTFmlKWQ3C1KpaPQZTv+1C0rPJrVg0
+         WrPGIeQZCfFz6j3okfUj6bV0j0vxHF2/nfqtIK7x7PznTaqKtbC9MT0ExAI+ysSN07PS
+         68bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GnkPeg6v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kge45Eld;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8si3446329oti.151.2021.02.25.03.11.36
+        by mx.google.com with ESMTPS id f12si3716347otp.66.2021.02.25.03.11.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 03:11:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Feb 2021 03:11:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GnkPeg6v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Kge45Eld;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34184 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33088 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFEYR-0007pZ-T9
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:11:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56104)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lFEYd-0007OW-G9
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:11:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFELC-00047T-LO
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:57:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:40177)
+ id 1lFEIt-0000H5-Cd
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:55:31 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53345)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEL9-0006qX-Pq
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:57:54 -0500
+ id 1lFEIr-0005i4-75
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:55:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614250671;
+ s=mimecast20190719; t=1614250528;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bWEN9W3CSh/fuwVHUFsScmrUiqJMJE6m9Ra8jyjW+gw=;
- b=GnkPeg6v66lqANgSExVqiBNHUFW2Ho1mp9p810iSstK/V3OyjayVb5VjkXj6/trkZ8n6ds
- VRoU6FoNl/ClJTo2u0EgvizMYyD32pu89fd9QGZA2uBGO9nrYe/vd+svKiWZ+KwjyzrN5u
- rzNDZb1syoqXMNJO2zTSJg5pTxoQDoE=
+ bh=lUBZzkWDykKBjWgfFJUd/iE74sH8LuuC3fN/8YEg73E=;
+ b=Kge45EldNlamWDyeUh77e5GZ+s1p51lYWgHraIdwoi/lx02Zg2XfCKLZ4zwWGi3QVEykZV
+ f3bl5x/VeO0oy78vLc1jyqWI0BB5TYoXa5eYIhe7IbAr9Kz8kX4ZU8a+uyyggswcadumzC
+ 9Fm+O2MrnH+RmHv3C9LgU5QdzeRO8aw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-512-DiHAwfLwMxe4YW1zpsxH2g-1; Thu, 25 Feb 2021 05:57:47 -0500
-X-MC-Unique: DiHAwfLwMxe4YW1zpsxH2g-1
+ us-mta-207-47np4wKDO2SYHk_rZpw4lQ-1; Thu, 25 Feb 2021 05:55:26 -0500
+X-MC-Unique: 47np4wKDO2SYHk_rZpw4lQ-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0FD09804036;
- Thu, 25 Feb 2021 10:57:45 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8F0DB18B614C;
+ Thu, 25 Feb 2021 10:55:24 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-150.ams2.redhat.com [10.36.112.150])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2F2085D9D7;
- Thu, 25 Feb 2021 10:57:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 03A055D9D7;
+ Thu, 25 Feb 2021 10:55:18 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v8 25/28] hw/arm/smmuv3: Implement fault injection
-Date: Thu, 25 Feb 2021 11:52:30 +0100
-Message-Id: <20210225105233.650545-26-eric.auger@redhat.com>
+Subject: [RFC v8 13/28] vfio: Introduce helpers to DMA map/unmap a RAM section
+Date: Thu, 25 Feb 2021 11:52:18 +0100
+Message-Id: <20210225105233.650545-14-eric.auger@redhat.com>
 In-Reply-To: <20210225105233.650545-1-eric.auger@redhat.com>
 References: <20210225105233.650545-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -94,140 +94,304 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  jiangkunkun@huawei.com, zhangfei.gao@foxmail.com, peterx@redhat.com,
  shameerali.kolothum.thodi@huawei.com, yuzenghui@huawei.com,
  zhangfei.gao@linaro.org, will@kernel.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: esNjdvGy7i0U
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vmYrFg88fwGw
 
-We convert iommu_fault structs received from the kernel
-into the data struct used by the emulation code and record
-the evnts into the virtual event queue.
+Let's introduce two helpers that allow to DMA map/unmap a RAM
+section. Those helpers will be called for nested stage setup in
+another call site. Also the vfio_listener_region_add/del()
+structure may be clearer.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-v3 -> v4:
-- fix compil issue on mingw
-
-Exhaustive mapping remains to be done
+v5 -> v6:
+- add Error **
 ---
- hw/arm/smmuv3.c | 71 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 71 insertions(+)
+ hw/vfio/common.c     | 199 +++++++++++++++++++++++++------------------
+ hw/vfio/trace-events |   4 +-
+ 2 files changed, 119 insertions(+), 84 deletions(-)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 03cc299710..a61c1129d9 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1650,6 +1650,76 @@ static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
-     return -EINVAL;
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 7d3c35a0ed..e02fb2a3ef 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -667,13 +667,126 @@ hostwin_from_range(VFIOContainer *container, hwaddr iova, hwaddr end)
+     return NULL;
  }
  
-+struct iommu_fault;
-+
-+static inline int
-+smmuv3_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
-+                     struct iommu_fault *buf)
++static int vfio_dma_map_ram_section(VFIOContainer *container,
++                                    MemoryRegionSection *section, Error **err)
 +{
-+#ifdef __linux__
-+    SMMUDevice *sdev = container_of(iommu_mr, SMMUDevice, iommu);
-+    SMMUv3State *s3 = sdev->smmu;
-+    uint32_t sid = smmu_get_sid(sdev);
-+    int i;
++    VFIOHostDMAWindow *hostwin;
++    Int128 llend, llsize;
++    hwaddr iova, end;
++    void *vaddr;
++    int ret;
 +
-+    for (i = 0; i < count; i++) {
-+        SMMUEventInfo info = {};
-+        struct iommu_fault_unrecoverable *record;
++    assert(memory_region_is_ram(section->mr));
 +
-+        if (buf[i].type != IOMMU_FAULT_DMA_UNRECOV) {
-+            continue;
++    iova = TARGET_PAGE_ALIGN(section->offset_within_address_space);
++    llend = int128_make64(section->offset_within_address_space);
++    llend = int128_add(llend, section->size);
++    llend = int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
++    end = int128_get64(int128_sub(llend, int128_one()));
++
++    vaddr = memory_region_get_ram_ptr(section->mr) +
++            section->offset_within_region +
++            (iova - section->offset_within_address_space);
++
++    hostwin = hostwin_from_range(container, iova, end);
++    if (!hostwin) {
++        error_setg(err, "Container %p can't map guest IOVA region"
++                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
++        return -EFAULT;
++    }
++
++    trace_vfio_dma_map_ram(iova, end, vaddr);
++
++    llsize = int128_sub(llend, int128_make64(iova));
++
++    if (memory_region_is_ram_device(section->mr)) {
++        hwaddr pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
++
++        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
++            trace_vfio_listener_region_add_no_dma_map(
++                memory_region_name(section->mr),
++                section->offset_within_address_space,
++                int128_getlo(section->size),
++                pgmask + 1);
++            return 0;
 +        }
++    }
 +
-+        info.sid = sid;
-+        record = &buf[i].event;
-+
-+        switch (record->reason) {
-+        case IOMMU_FAULT_REASON_PASID_INVALID:
-+            info.type = SMMU_EVT_C_BAD_SUBSTREAMID;
-+            /* TODO further fill info.u.c_bad_substream */
-+            break;
-+        case IOMMU_FAULT_REASON_PASID_FETCH:
-+            info.type = SMMU_EVT_F_CD_FETCH;
-+            break;
-+        case IOMMU_FAULT_REASON_BAD_PASID_ENTRY:
-+            info.type = SMMU_EVT_C_BAD_CD;
-+            /* TODO further fill info.u.c_bad_cd */
-+            break;
-+        case IOMMU_FAULT_REASON_WALK_EABT:
-+            info.type = SMMU_EVT_F_WALK_EABT;
-+            info.u.f_walk_eabt.addr = record->addr;
-+            info.u.f_walk_eabt.addr2 = record->fetch_addr;
-+            break;
-+        case IOMMU_FAULT_REASON_PTE_FETCH:
-+            info.type = SMMU_EVT_F_TRANSLATION;
-+            info.u.f_translation.addr = record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_OOR_ADDRESS:
-+            info.type = SMMU_EVT_F_ADDR_SIZE;
-+            info.u.f_addr_size.addr = record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_ACCESS:
-+            info.type = SMMU_EVT_F_ACCESS;
-+            info.u.f_access.addr = record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_PERMISSION:
-+            info.type = SMMU_EVT_F_PERMISSION;
-+            info.u.f_permission.addr = record->addr;
-+            break;
-+        default:
-+            warn_report("%s Unexpected fault reason received from host: %d",
-+                        __func__, record->reason);
-+            continue;
++    ret = vfio_dma_map(container, iova, int128_get64(llsize),
++                       vaddr, section->readonly);
++    if (ret) {
++        error_setg(err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
++                   "0x%"HWADDR_PRIx", %p) = %d (%m)",
++                   container, iova, int128_get64(llsize), vaddr, ret);
++        if (memory_region_is_ram_device(section->mr)) {
++            /* Allow unexpected mappings not to be fatal for RAM devices */
++            error_report_err(*err);
++            return 0;
 +        }
-+
-+        smmuv3_record_event(s3, &info);
++        return ret;
 +    }
 +    return 0;
-+#else
-+    return -1;
-+#endif
 +}
 +
- static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
-                                                   void *data)
++static void vfio_dma_unmap_ram_section(VFIOContainer *container,
++                                       MemoryRegionSection *section)
++{
++    Int128 llend, llsize;
++    hwaddr iova, end;
++    bool try_unmap = true;
++    int ret;
++
++    iova = TARGET_PAGE_ALIGN(section->offset_within_address_space);
++    llend = int128_make64(section->offset_within_address_space);
++    llend = int128_add(llend, section->size);
++    llend = int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
++
++    if (int128_ge(int128_make64(iova), llend)) {
++        return;
++    }
++    end = int128_get64(int128_sub(llend, int128_one()));
++
++    llsize = int128_sub(llend, int128_make64(iova));
++
++    trace_vfio_dma_unmap_ram(iova, end);
++
++    if (memory_region_is_ram_device(section->mr)) {
++        hwaddr pgmask;
++        VFIOHostDMAWindow *hostwin = hostwin_from_range(container, iova, end);
++
++        assert(hostwin); /* or region_add() would have failed */
++
++        pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
++        try_unmap = !((iova & pgmask) || (int128_get64(llsize) & pgmask));
++    }
++
++    if (try_unmap) {
++        if (int128_eq(llsize, int128_2_64())) {
++            /* The unmap ioctl doesn't accept a full 64-bit span. */
++            llsize = int128_rshift(llsize, 1);
++            ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
++            if (ret) {
++                error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
++                             "0x%"HWADDR_PRIx") = %d (%m)",
++                             container, iova, int128_get64(llsize), ret);
++            }
++            iova += int128_get64(llsize);
++        }
++        ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
++        if (ret) {
++            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
++                         "0x%"HWADDR_PRIx") = %d (%m)",
++                         container, iova, int128_get64(llsize), ret);
++        }
++    }
++}
++
+ static void vfio_listener_region_add(MemoryListener *listener,
+                                      MemoryRegionSection *section)
  {
-@@ -1658,6 +1728,7 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
-     imrc->translate = smmuv3_translate;
-     imrc->notify_flag_changed = smmuv3_notify_flag_changed;
-     imrc->get_attr = smmuv3_get_attr;
-+    imrc->inject_faults = smmuv3_inject_faults;
- }
+     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+     hwaddr iova, end;
+-    Int128 llend, llsize;
+-    void *vaddr;
++    Int128 llend;
+     int ret;
+     VFIOHostDMAWindow *hostwin;
+     Error *err = NULL;
+@@ -818,39 +931,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+     }
  
- static const TypeInfo smmuv3_type_info = {
+     /* Here we assume that memory_region_is_ram(section->mr)==true */
+-
+-    vaddr = memory_region_get_ram_ptr(section->mr) +
+-            section->offset_within_region +
+-            (iova - section->offset_within_address_space);
+-
+-    trace_vfio_listener_region_add_ram(iova, end, vaddr);
+-
+-    llsize = int128_sub(llend, int128_make64(iova));
+-
+-    if (memory_region_is_ram_device(section->mr)) {
+-        hwaddr pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+-
+-        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
+-            trace_vfio_listener_region_add_no_dma_map(
+-                memory_region_name(section->mr),
+-                section->offset_within_address_space,
+-                int128_getlo(section->size),
+-                pgmask + 1);
+-            return;
+-        }
+-    }
+-
+-    ret = vfio_dma_map(container, iova, int128_get64(llsize),
+-                       vaddr, section->readonly);
+-    if (ret) {
+-        error_setg(&err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+-                   "0x%"HWADDR_PRIx", %p) = %d (%m)",
+-                   container, iova, int128_get64(llsize), vaddr, ret);
+-        if (memory_region_is_ram_device(section->mr)) {
+-            /* Allow unexpected mappings not to be fatal for RAM devices */
+-            error_report_err(err);
+-            return;
+-        }
++    if (vfio_dma_map_ram_section(container, section, &err)) {
+         goto fail;
+     }
+ 
+@@ -884,10 +965,6 @@ static void vfio_listener_region_del(MemoryListener *listener,
+                                      MemoryRegionSection *section)
+ {
+     VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+-    hwaddr iova, end;
+-    Int128 llend, llsize;
+-    int ret;
+-    bool try_unmap = true;
+ 
+     if (vfio_listener_skipped_section(section)) {
+         trace_vfio_listener_region_del_skip(
+@@ -926,49 +1003,7 @@ static void vfio_listener_region_del(MemoryListener *listener,
+          */
+     }
+ 
+-    iova = TARGET_PAGE_ALIGN(section->offset_within_address_space);
+-    llend = int128_make64(section->offset_within_address_space);
+-    llend = int128_add(llend, section->size);
+-    llend = int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
+-
+-    if (int128_ge(int128_make64(iova), llend)) {
+-        return;
+-    }
+-    end = int128_get64(int128_sub(llend, int128_one()));
+-
+-    llsize = int128_sub(llend, int128_make64(iova));
+-
+-    trace_vfio_listener_region_del(iova, end);
+-
+-    if (memory_region_is_ram_device(section->mr)) {
+-        hwaddr pgmask;
+-        VFIOHostDMAWindow *hostwin = hostwin_from_range(container, iova, end);
+-
+-        assert(hostwin); /* or region_add() would have failed */
+-
+-        pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+-        try_unmap = !((iova & pgmask) || (int128_get64(llsize) & pgmask));
+-    }
+-
+-    if (try_unmap) {
+-        if (int128_eq(llsize, int128_2_64())) {
+-            /* The unmap ioctl doesn't accept a full 64-bit span. */
+-            llsize = int128_rshift(llsize, 1);
+-            ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+-            if (ret) {
+-                error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+-                             "0x%"HWADDR_PRIx") = %d (%m)",
+-                             container, iova, int128_get64(llsize), ret);
+-            }
+-            iova += int128_get64(llsize);
+-        }
+-        ret = vfio_dma_unmap(container, iova, int128_get64(llsize), NULL);
+-        if (ret) {
+-            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+-                         "0x%"HWADDR_PRIx") = %d (%m)",
+-                         container, iova, int128_get64(llsize), ret);
+-        }
+-    }
++    vfio_dma_unmap_ram_section(container, section);
+ 
+     memory_region_unref(section->mr);
+ 
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index c17ad82aa4..304c1d8b19 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -99,10 +99,10 @@ vfio_iommu_map_notify(const char *op, uint64_t iova_start, uint64_t iova_end) "i
+ vfio_listener_region_add_skip(uint64_t start, uint64_t end) "SKIPPING region_add 0x%"PRIx64" - 0x%"PRIx64
+ vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d to liobn fd %d"
+ vfio_listener_region_add_iommu(uint64_t start, uint64_t end) "region_add [iommu] 0x%"PRIx64" - 0x%"PRIx64
+-vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
++vfio_dma_map_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+ vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
+ vfio_listener_region_del_skip(uint64_t start, uint64_t end) "SKIPPING region_del 0x%"PRIx64" - 0x%"PRIx64
+-vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
++vfio_dma_unmap_ram(uint64_t start, uint64_t end) "region_del 0x%"PRIx64" - 0x%"PRIx64
+ vfio_disconnect_container(int fd) "close container->fd=%d"
+ vfio_connect_existing_container(int groupid, int container_fd) "group=%d existing container fd=%d"
+ vfio_connect_new_container(int groupid, int container_fd) "group=%d new container fd=%d"
 -- 
 2.26.2
 

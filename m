@@ -1,109 +1,78 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp2770372lfq;
-        Mon, 18 Jan 2021 12:11:25 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzo2GIE08YtTz6gqxNttIjUI0zuxZdzvl8gOl0N8Gzwl04sEJJmvQjVBtTTB4e1dhaK4D8O
-X-Received: by 2002:a25:7491:: with SMTP id p139mr1087463ybc.346.1611000685115;
-        Mon, 18 Jan 2021 12:11:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611000685; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp174252lfg;
+        Thu, 25 Feb 2021 00:57:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxPmKeC2M84oN2zF6FHDvKI65XC+9N7oIzSY0Bg3kGdu+0su9gq7X+pbclrV4gA71o0/okd
+X-Received: by 2002:a05:6e02:1ca8:: with SMTP id x8mr1556461ill.139.1614243443220;
+        Thu, 25 Feb 2021 00:57:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614243443; cv=none;
         d=google.com; s=arc-20160816;
-        b=J2L25wkNP6FVPOM9ciG8qgEJgcI1JIxuy0GotYMR1Q3JDxUSi0D0MFQJkIbFEywhKr
-         OM51R2QYpFAILO+sgXedBjE1FBjEvtY80lYruJjuUjFl5CgSQKSZgfPlzoh9DyifnI5c
-         dkQV63APjL2PtA04XbkeQk8Le0eXFprE5tRaFOkiLe33tHwEb6/OrfjGRT30RKjkzj/g
-         8eT7fZgPoH4DrVum+We4YMd3c+jo9Zg4gc2bIG6qxZ4BbNIji9cCqDYBsQTFA8pnpByu
-         ujHRhXf7zaL57BvgDym2kZOAcckp2wQ3Cjymssb0fmN1RBfGJe11l2/aD4fN/XvD46J/
-         YcGg==
+        b=A/rIk+i28CsqcJnSuhHvuPpigX1a6A2wV5vySbeBtBITkI8yeZplCQi8EL5lwfqZvl
+         +iBgtExYF9M34oY0FZ+Ad+KzRhz57g0mfQe93reIoh7950jaHsqJOYNM8/ikKkasoYDn
+         1KuH63wedQgonw4/B3zcUb2GN9+XLdoDHCI9kRXJ4eBmiRL05GUUscV0p2vDFnxE7ZDm
+         PBSKOyXBoTnqEdrraXkUfWi0SBriSoG8v+F9bPmbY3Z2/EVX4ow+kwWH46+9kldTI0wZ
+         pr7QZvYhbFtlibnUs/0+o6Lm9DDfVyUA4OZAhYOfparl4lvbT11NVUZMmkzqes78kuAc
+         KPbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:user-agent:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=WUVVBo6Ajtsp1p1cl9vt8il5Uqeysu/ud/O2QfPozL8=;
-        b=t9jKZCh1zK8MDwxqZk6qRVa76LOQ1S9qsFPjabPB/Zz0lwJvUfeDSg8L6l/MyWRt40
-         t839JQtxKzp2djYlp57sSf59E8Tw1DIBNq/w5irMn4u4Dqb0HvJIavMUyG4Qxl8vjsi6
-         oN5Gke9XGYlo7XMhcmCz9ndHSMc11PZBnOK3V0f+MitIeB54lLxQjWooiWzW83AJ2tsd
-         nlDmtzhIfIdVDDHZD2i7henkfQI7lqBzcJKdH/8yR1KP0ODjOCNFX4nVu3UbJBY6bOi9
-         /HX3G6u7nOpryCea5wC6csfHBfWvEU84fGOw7CfPk7FMASwTpSWG/sX0ptgIxKKNQ1QJ
-         grmw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=ad1xNhF40BhhaRvNPqvUtzejb1IodUFz3YNbOw9MugI=;
+        b=ZPEBeafgMoXR9bZ2DOjLOwIbO9eOVqHlm1ivnKY9D0/JvqkTXqnHCKRoIdBkCwpuwi
+         lsQaVjIkvOUdgBPunAElnnTud1fQs1/Rhs+DlYNkceuUFVBoryspJdBLg7wOEZEEAPIc
+         TzAmOQc95tEe9w60qdhxiiCrlc3btysZF23YycjmaU2kHr96pHRW4m2K9lUH7oVYpJTR
+         OfnajwhSuKWpxceAqS2knBHKs8+RUaqLADqBHO03pk6iaLvWlomTE0+YmQD9sK9cLDCl
+         nPA7RpdVOrN6zBaR6PQHNhlpwY9g5iSiRi9J394tpRyVYlZlgd0CkpqLUI4igPmnbuLB
+         HhKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CpkRA0Uo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k66si9136289ybf.34.2021.01.18.12.11.24
+        by mx.google.com with ESMTPS id f11si3818074jam.89.2021.02.25.00.57.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Jan 2021 12:11:25 -0800 (PST)
+        Thu, 25 Feb 2021 00:57:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CpkRA0Uo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49666 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1as0-0002g6-GJ
-	for alex.bennee@linaro.org; Mon, 18 Jan 2021 15:11:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57376)
+	id 1lFCSY-0007fB-EL
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 03:57:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l1arl-0002fP-6y
- for qemu-arm@nongnu.org; Mon, 18 Jan 2021 15:11:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:57228)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1l1arg-000132-5m
- for qemu-arm@nongnu.org; Mon, 18 Jan 2021 15:11:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1611000661;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WUVVBo6Ajtsp1p1cl9vt8il5Uqeysu/ud/O2QfPozL8=;
- b=CpkRA0UoG2T42432G5Zk3Yc3vDG90e8ku6CiE8eLb/j2C1kmuvR75XnsWRiF/ukugm/jHW
- 4RqkxITZ+y7s51n9Jl8qwhIXOlh5RfhT/unmOcq8BR6HgPeEYxzDaXPNHTtIZdJXxqX9dX
- 6fXQFkztwib7drjMgwcssO9X0s2ZbvI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-492-_5-D_X5wMBS0cETqTD7Ozg-1; Mon, 18 Jan 2021 15:10:58 -0500
-X-MC-Unique: _5-D_X5wMBS0cETqTD7Ozg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8A459192FDA3;
- Mon, 18 Jan 2021 20:10:56 +0000 (UTC)
-Received: from work-vm (ovpn-115-197.ams2.redhat.com [10.36.115.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BB2DE1002388;
- Mon, 18 Jan 2021 20:10:47 +0000 (UTC)
-Date: Mon, 18 Jan 2021 20:10:45 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v2 10/20] hw/usb/hcd-ohci: Mark the device with no
- migratable fields
-Message-ID: <20210118201045.GI9899@work-vm>
-References: <20210117192446.23753-1-f4bug@amsat.org>
- <20210117192446.23753-11-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1lFCSG-0007Z8-8q; Thu, 25 Feb 2021 03:57:04 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:3051)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1lFCSB-0003vu-RD; Thu, 25 Feb 2021 03:57:04 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DmRT56R5vzjRGQ;
+ Thu, 25 Feb 2021 16:55:37 +0800 (CST)
+Received: from localhost (10.174.186.67) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.498.0; Thu, 25 Feb 2021
+ 16:56:46 +0800
+From: Ying Fang <fangying1@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [RFC PATCH 5/5] hw/arm/virt-acpi-build: add PPTT table
+Date: Thu, 25 Feb 2021 16:56:27 +0800
+Message-ID: <20210225085627.2263-6-fangying1@huawei.com>
+X-Mailer: git-send-email 2.28.0.windows.1
+In-Reply-To: <20210225085627.2263-1-fangying1@huawei.com>
+References: <20210225085627.2263-1-fangying1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210117192446.23753-11-f4bug@amsat.org>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.175,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.174.186.67]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
+ helo=szxga06-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,74 +85,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>
+Cc: peter.maydell@linaro.org, drjones@redhat.com,
+ zhang.zhanghailiang@huawei.com, mst@redhat.com, salil.mehta@huawei.com,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
+ Ying Fang <fangying1@huawei.com>, imammedo@redhat.com,
+ Jiajie Li <lijiajie11@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zd7e3EmtR2G2
+X-TUID: XowLRQ2RVNEb
 
-* Philippe Mathieu-Daudé (f4bug@amsat.org) wrote:
-> This device doesn't have fields to migrate. Be explicit
-> by using vmstate_qdev_no_state_to_migrate.
-> 
-> Add a more descriptive comment to keep a clear separation
-> between static property vs runtime changeable.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Add the Processor Properties Topology Table (PPTT) to present
+CPU topology information to the guest. A three-level cpu
+topology is built in accord with the linux kernel currently does.
 
-OK,
+Tested-by: Jiajie Li <lijiajie11@huawei.com>
+Signed-off-by: Ying Fang <fangying1@huawei.com>
+---
+ hw/arm/virt-acpi-build.c | 50 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
-
-although I think it's quite interesting; I think we have
-a base class which has data to migrate which expects any
-child classes to migrate it's data; so marking it as
-not actually having any state is not quite right.
-
-> ---
->  hw/usb/hcd-ohci.h | 2 ++
->  hw/usb/hcd-ohci.c | 1 +
->  2 files changed, 3 insertions(+)
-> 
-> diff --git a/hw/usb/hcd-ohci.h b/hw/usb/hcd-ohci.h
-> index 11ac57058d1..fd4842a352f 100644
-> --- a/hw/usb/hcd-ohci.h
-> +++ b/hw/usb/hcd-ohci.h
-> @@ -101,6 +101,8 @@ struct OHCISysBusState {
->      /*< public >*/
->  
->      OHCIState ohci;
-> +
-> +    /* Properties */
->      char *masterbus;
->      uint32_t num_ports;
->      uint32_t firstport;
-> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-> index f8c64c8b95b..302aab30992 100644
-> --- a/hw/usb/hcd-ohci.c
-> +++ b/hw/usb/hcd-ohci.c
-> @@ -2007,6 +2007,7 @@ static void ohci_sysbus_class_init(ObjectClass *klass, void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->  
->      dc->realize = ohci_realize_pxa;
-> +    dc->vmsd = vmstate_qdev_no_state_to_migrate;
->      set_bit(DEVICE_CATEGORY_USB, dc->categories);
->      dc->desc = "OHCI USB Controller";
->      device_class_set_props(dc, ohci_sysbus_properties);
-> -- 
-> 2.26.2
-> 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index bb91152fe2..38d50ce66c 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -436,6 +436,50 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                  vms->oem_table_id);
+ }
+ 
++static void
++build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++{
++    int pptt_start = table_data->len;
++    int uid = 0, cpus = 0, socket = 0;
++    MachineState *ms = MACHINE(vms);
++    unsigned int smp_cores = ms->smp.cores;
++    unsigned int smp_threads = ms->smp.threads;
++
++    acpi_data_push(table_data, sizeof(AcpiTableHeader));
++
++    for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
++        uint32_t socket_offset = table_data->len - pptt_start;
++        int core;
++
++        build_socket_hierarchy(table_data, 0, socket);
++
++        for (core = 0; core < smp_cores; core++) {
++            uint32_t core_offset = table_data->len - pptt_start;
++            int thread;
++
++            if (smp_threads <= 1) {
++                build_processor_hierarchy(table_data,
++                                          ACPI_PPTT_ACPI_PROCESSOR_ID_VALID |
++                                          ACPI_PPTT_ACPI_LEAF_NODE,
++                                          socket_offset, uid++);
++             } else {
++                build_processor_hierarchy(table_data,
++                                          ACPI_PPTT_ACPI_PROCESSOR_ID_VALID,
++                                          socket_offset, core);
++                for (thread = 0; thread < smp_threads; thread++) {
++                    build_thread_hierarchy(table_data, core_offset, uid++);
++                }
++             }
++        }
++        cpus += smp_cores * smp_threads;
++    }
++
++    build_header(linker, table_data,
++                 (void *)(table_data->data + pptt_start), "PPTT",
++                 table_data->len - pptt_start, 2,
++                 vms->oem_id, vms->oem_table_id);
++}
++
+ /* GTDT */
+ static void
+ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+@@ -688,6 +732,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     unsigned dsdt, xsdt;
+     GArray *tables_blob = tables->table_data;
+     MachineState *ms = MACHINE(vms);
++    bool cpu_topology_enabled = !vmc->no_cpu_topology;
+ 
+     table_offsets = g_array_new(false, true /* clear */,
+                                         sizeof(uint32_t));
+@@ -707,6 +752,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
+ 
++    if (ms->smp.cpus > 1 && cpu_topology_enabled) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_pptt(tables_blob, tables->linker, vms);
++    }
++
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker, vms);
+ 
 -- 
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+2.23.0
 

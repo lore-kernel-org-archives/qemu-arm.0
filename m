@@ -1,110 +1,83 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1341820lfc;
-        Wed, 10 Feb 2021 06:32:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwW4TOFnxVOv+kUAbeGPXYCqyShVsxpk09LgY2Rc1LyYMitIOn2VGBrLm5yb0tWp+7XqIeF
-X-Received: by 2002:a25:6d8a:: with SMTP id i132mr4710635ybc.337.1612967576100;
-        Wed, 10 Feb 2021 06:32:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612967576; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp343952lfg;
+        Thu, 25 Feb 2021 05:19:15 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxN/kKJvpa5Uaj0EPSWsX6fI3932BpnB+6Kljmzj+pbnoDVk5rsnlqoq5eFWjQwq3iJ3ZX/
+X-Received: by 2002:a02:cb45:: with SMTP id k5mr1263687jap.107.1614259155479;
+        Thu, 25 Feb 2021 05:19:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614259155; cv=none;
         d=google.com; s=arc-20160816;
-        b=PehYfYNSzEcdK9Ljisar0ijBSHMrU0lIh3+gJiC+Sn3tTIN/iqJK+FyXZrv9bJDqLy
-         0oQKcdkKALa9zUXlN5VNODPrHRyf85eF+c7SEIVnnSjWzK41L1wAwp0uHF8R4bmdeN8E
-         uVi9uaf7bmU3gQ35UQsNpwC91NBOIuxx9SntVAJPeW8C5EsEbHbcbRyXtr3IyRkAfEoc
-         BGXdJN3ZpKoJ3hHDGh2MA+uIPqdEWgbW40sQgtprXldnY1fjIDyiMC/0r4PqRwHKSE4j
-         8KXCdJIFg6vFJqCela8bajfiAsfWcaw6GEcTwOgAHyamaMzbQ+TSfpmYUmQYmZiO+tCp
-         a/nQ==
+        b=B1fwVCU3iay9OVUf4EGadluqizfc8kSEMQir0BIfQT1GT60jZmwlBbAu1HfpCSoHzC
+         Dx+G0ajQLzMP+KhAS6pLatQLzs5erfV1MQ7vfcdRh+Z0eheX153MPGbrr4bpo2TSFuRy
+         qZDwmcQbKbD05o+Pw79cexR1xOQGodx0o7D5A3CAPa3O/xl2CVFpMlC/GpHBGWd7X+fL
+         LJT1yHgxwgBfIcpFc+PdgABSYjgvf36ek6s6r9VJ3Njg/5kxAjoFv+ikihaSXCblyjs9
+         Ze955jHPY8tLQQ2Ibd1c70Txj2wa1O6WWN61y23xJevev/IGqWBK5wvdHaKtjuLReoTz
+         hURg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=l6LZ6aM2GsCm8qIVLfFuDOqLW3QUaWdw+Cv85kJu8CQ=;
-        b=FQtAkbuKU2FJRaK1DwwNXhSmYg6nMKXG4nhIP2+jHQxcSn0EbETzd+FoRrok7Hc/9x
-         IqK759AFKKrvaGKyL1pdXuK6+kYLJZk2pAo1/R7FU+gTjxNP3Lia46W7s9wuBJ1WrfSp
-         8rPcdE+S7xrOCaxEiwwF0LUDN3VDjxJR6JFxbonC4vgt6VM9ryiAPfjThwhBzbaBOFXB
-         5DTvjYqQ4TPo2JbwrjJTEGToQjgAOVH+qFnNGc5Q+CLQkIzF1awKBH1/QpQHTEdKIz1D
-         c2EM0T7Rwgt4S69AjW0LoPXNQfD+hhnK2kxBGpVxGjcxwwsp4OJQgDbwpeVbh9ZlEPVq
-         II3Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=eVlLI3IEO8rFzdSWyfvkC+8eTjj8ZiaLmoqJ0EFfquc=;
+        b=z9lIUbRDokarYCyWfTPOJFiUetqdyoNJOfecLvJCSD8j5n6dc2G6zkIQBA7ui942bw
+         HjoRojtH1ksp5C7rTpio4SXv1LyGTvCMXPu50idcxgJoiToYH0FvjLdnvzlszo5waL7a
+         6XeIMGwhy3vskRKCQNoryAphRuEJipWBzB6CPmBoZT/K+DKLWBsyhiCsSEyMYq9peU8+
+         VRHHbn0/3ybspN5odR1cYdUQ/1oBJ7igaOZXyfzNcLaogIYsyZ9wMaiERMsMLiVxpNk2
+         R+W9LZ47t7OzB7esnXRv20Kq7A7v2Gn09mh4PkbK5DODhgF6iRQvv6SkjzAV/3MtuPdo
+         AISg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kYsMsGHK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si2051125ybp.64.2021.02.10.06.32.55
+        by mx.google.com with ESMTPS id r2si4726431jak.94.2021.02.25.05.19.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Feb 2021 06:32:56 -0800 (PST)
+        Thu, 25 Feb 2021 05:19:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kYsMsGHK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49848 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9qY3-00034D-GE
-	for alex.bennee@linaro.org; Wed, 10 Feb 2021 09:32:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40980)
+	id 1lFGXy-00070Y-Oq
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 08:19:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berardi.dav@gmail.com>)
- id 1l9qXc-00031x-NH; Wed, 10 Feb 2021 09:32:28 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:35475)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <berardi.dav@gmail.com>)
- id 1l9qXa-00024O-St; Wed, 10 Feb 2021 09:32:28 -0500
-Received: by mail-wm1-x332.google.com with SMTP id n10so148496wmq.0;
- Wed, 10 Feb 2021 06:32:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=l6LZ6aM2GsCm8qIVLfFuDOqLW3QUaWdw+Cv85kJu8CQ=;
- b=kYsMsGHK8gzNzQ1rBBtV4LhrUsEeb4NFd7QB9BB2LRuUgGyXBb7pu1u0DYqF0EQOjk
- 0kOsfLqU5zlN4RF6xlO/v0P/FP0dptazzLUgRC6+Aqnb+rjOLMC8vigJG26btC4fNsyF
- 1Mw2XN+Hv2GkBtkgQTsdsSPZZAISqOTxTqypteuSc77oePI76s1mHsQJ2wT+rwSo/8Pt
- c615IoVJ7anQN/KtYXCl7aSbKCtz1iIeQlOAcW1krM2pUD4DDUt0dYGgd5wsgckYeeSJ
- 2e/h59WBW8CSV9b9GKDInaohWhZIPEsJrfL8Xm0jFI9Pkel49ndo2HYDqBnzTZVlND+c
- W93Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=l6LZ6aM2GsCm8qIVLfFuDOqLW3QUaWdw+Cv85kJu8CQ=;
- b=izDJZoNXMKXt+A148VutZRHvMAgClTfaY/cjdoFkY3HJRHRbW76euA9VkLHE3v5vMW
- oR1OkQLFnsU0zb5blhqVI/mJzzmoPhDCmamVCUj6iZSH04edJiAUQof/DNtOgxMHCTeh
- SZCz5ly7S0PM0y7zXCcM6rw7LGm+WXxVA8kMA5/uXQyxgUJjEv3+meI0JRJsROpJv2io
- vwozY9cCyGrYS4pyU2ascdTiaxTSc5uyEJrPc/2XlRk2P/ZcPY+IHlBbfXFm3sKOq9eP
- URsUFJTifJxg1MNxarl0LzNiD8h9xG0umWw6MJ14Mg8vWRq7Gu+ebsKj3ZDLHxi8DwgA
- BTRA==
-X-Gm-Message-State: AOAM532F5YOn0EMn2KPn+DH/iersnoeOxxmNznOgJn825MnyJPiKLGy4
- b/Z64YSKYtw9C9aXt768TH0=
-X-Received: by 2002:a05:600c:d9:: with SMTP id
- u25mr3261931wmm.49.1612967544230; 
- Wed, 10 Feb 2021 06:32:24 -0800 (PST)
-Received: from localhost ([37.162.14.172])
- by smtp.gmail.com with ESMTPSA id 64sm4117249wrc.50.2021.02.10.06.32.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 06:32:23 -0800 (PST)
-Date: Wed, 10 Feb 2021 15:32:19 +0100
-From: Davide Berardi <berardi.dav@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH] Raspberry PI GPIO interrupt support
-Message-ID: <20210210143219.GA95384@carpenter.lan>
-References: <20210209110252.GA14409@carpenter.lan>
- <355f1271-09c9-715a-a909-c0f05060dfe5@amsat.org>
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1lFGXc-000703-G6; Thu, 25 Feb 2021 08:18:54 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3313)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1lFGXS-0004zP-9H; Thu, 25 Feb 2021 08:18:51 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DmYG64D4szlPJ8;
+ Thu, 25 Feb 2021 21:16:30 +0800 (CST)
+Received: from [10.174.186.67] (10.174.186.67) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.498.0; Thu, 25 Feb 2021 21:18:23 +0800
+Subject: Re: [RFC PATCH 2/5] hw/arm/virt: Add cpu-map to device tree
+To: Andrew Jones <drjones@redhat.com>
+References: <20210225085627.2263-1-fangying1@huawei.com>
+ <20210225085627.2263-3-fangying1@huawei.com>
+ <20210225111610.mejof5pe2y5fe5xr@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <5fc765dd-52fa-2936-f298-d2635c863eb3@huawei.com>
+Date: Thu, 25 Feb 2021 21:18:22 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <355f1271-09c9-715a-a909-c0f05060dfe5@amsat.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=berardi.dav@gmail.com; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210225111610.mejof5pe2y5fe5xr@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.186.67]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
+ helo=szxga04-in.huawei.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.435,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,94 +90,165 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
+ zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 88FtjPsM3D7W
+X-TUID: rW9Z7FpTl7sY
 
-Dear Philippe, thank you for your kind response.
 
-I will send a new version for the patch with the modifications you've
-highlighted, but first I've some question on the best way to implement
-them.
 
-On Tue, Feb 09, 2021 at 12:30:32PM +0100, Philippe Mathieu-Daud=E9 wrote:
->Hi Davide,
->On 2/9/21 12:02 PM, Davide Berardi wrote:
->> The bcm2835 GPIOs now generate interrupts.
->> This modification enables QTEST clients to trigger interrupt-based
->> interfaces.
->
->Thanks for your patch!
->
->Can you provide QTEST client example? Even better would be a qtest!
->
-The minimal client I've developed can be found at
-https://github.com/berdav/qemu-rpi-gpio
+On 2/25/2021 7:16 PM, Andrew Jones wrote:
+> Hi Ying Fang,
+> 
+> The only difference between this and what I have in my tree[*]
+> is the removal of the socket node (which has been in the Linux
+> docs since June 2019). Any reason why you removed that node? In
+> any case, I think I deserve a bit more credit for this patch.
 
-As I have introduced, I'm building a qtest but I've found a problem: In
-my test, I want to check if the IRQs of the named GPIOs
-/machine/soc/peripherals/ic/gpu-irq are correctly handled by the
-controller.  I was thinking to use irq_intercept_in to get the status of
-the IRQ lines using something similar to the following:
+Sorry, you surely deserve it. I forget to add it here.
+Should I have a SOB of you here ?
 
-qtest_irq_intercept_in(s, "/machine/soc/peripherals/ic");
+The latest linux kernel use a four level cpu topology defined in
 
-And then check it using
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/cpu/cpu-topology.txt?h=v5.11
 
-qtest_get_irq(s, 49 + irqline);
+ie. socket node, cluster node, core node, thread node.
 
-But it isn't triggering.
+The linux kernel 4.19 LTS use a three level cpu topology defined in
+Documentation/devicetree/bindings/arm/topology.txt
 
-Looking in the source of qtest I've found this check in the
-qtest_irq_intercept_in function:
+ie. cluster node, core node, thread node.
 
-          QLIST_FOREACH(ngl, &dev->gpios, node) {
-              /* We don't support intercept of named GPIOs yet */
-              if (ngl->name) {
-                  continue;
-              }
+Currently Qemu x86 has 4 level of cpu topology as: socket, die, core,
+thread. Should arm64 active like it here ?
 
-I've removed the if and the qtests seems to work just fine.
-Is there particular caveats or details to implement this part of the
-framework?
+Further more, latest linux kernel define the cpu topology struct as.
+So maybe it only cares about the socket, core, thread topology levels.
 
-I can send separated patches if you have some details on the desiderata
-of the support, or maybe start a new thread with this question.
+struct cpu_topology { 
 
-Otherwise, I can remove the part of my qtest to not check the
-IRQs, but I don't know if it would be the best choice.
+     int thread_id; 
 
->
->I wonder how you generated your patch, it doesn't apply:
->
->Applying: Raspberry PI GPIO interrupt support
->error: patch failed: hw/arm/bcm2835_peripherals.c:114
->error: hw/arm/bcm2835_peripherals.c: patch does not apply
->error: patch failed: hw/gpio/bcm2835_gpio.c:7
->error: hw/gpio/bcm2835_gpio.c: patch does not apply
->error: patch failed: hw/intc/bcm2835_ic.c:57
->error: hw/intc/bcm2835_ic.c: patch does not apply
->error: patch failed: include/hw/gpio/bcm2835_gpio.h:7
->error: include/hw/gpio/bcm2835_gpio.h: patch does not apply
->Patch failed at 0001 Raspberry PI GPIO interrupt support
->
->You can find the guidelines here:
->https://wiki.qemu.org/Contribute/SubmitAPatch#Submitting_your_Patches
->
-I have just created the patch using git format patch -s , it does not
-give me any error applying it over the master branch on
-https://github.com/qemu/QEMU . I will take more care and apply it on the
-master branch of https://git.qemu.org/git/qemu.git/ , thank you.
+     int core_id; 
 
-> [... cut ...]
->
->Regards,
->
->Phil.
-I'm adapting the patch using the Coding style script now.
-I've also introduced a new costant for the number of GPIOs.
+     int package_id; 
 
-Thank you for your time,
-D.
+     int llc_id; 
+
+     cpumask_t thread_sibling; 
+
+     cpumask_t core_sibling; 
+
+     cpumask_t llc_sibling; 
+
+};
+
+> 
+> [*] https://github.com/rhdrjones/qemu/commit/35feecdd43475608c8f55973a0c159eac4aafefd
+> 
+> Thanks,
+> drew
+> 
+> On Thu, Feb 25, 2021 at 04:56:24PM +0800, Ying Fang wrote:
+>> Support device tree CPU topology descriptions.
+>>
+>> Signed-off-by: Ying Fang <fangying1@huawei.com>
+>> ---
+>>   hw/arm/virt.c         | 38 +++++++++++++++++++++++++++++++++++++-
+>>   include/hw/arm/virt.h |  1 +
+>>   2 files changed, 38 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 371147f3ae..c133b342b8 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -351,10 +351,11 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>>       int cpu;
+>>       int addr_cells = 1;
+>>       const MachineState *ms = MACHINE(vms);
+>> +    const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>>       int smp_cpus = ms->smp.cpus;
+>>   
+>>       /*
+>> -     * From Documentation/devicetree/bindings/arm/cpus.txt
+>> +     * See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+>>        *  On ARM v8 64-bit systems value should be set to 2,
+>>        *  that corresponds to the MPIDR_EL1 register size.
+>>        *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+>> @@ -407,8 +408,42 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>>                   ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+>>           }
+>>   
+>> +        if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
+>> +            qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
+>> +                                  qemu_fdt_alloc_phandle(vms->fdt));
+>> +        }
+>> +
+>>           g_free(nodename);
+>>       }
+>> +
+>> +    if (ms->smp.cpus > 1 && !vmc->no_cpu_topology) {
+>> +        /*
+>> +         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
+>> +         */
+>> +        qemu_fdt_add_subnode(vms->fdt, "/cpus/cpu-map");
+>> +
+>> +        for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
+>> +            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
+>> +            char *map_path;
+>> +
+>> +            if (ms->smp.threads > 1) {
+>> +                map_path = g_strdup_printf(
+>> +                            "/cpus/cpu-map/%s%d/%s%d/%s%d",
+>> +                            "cluster", cpu / (ms->smp.cores * ms->smp.threads),
+
+a cluster node may be replaced by socket to keep accord with the latest 
+kernel.
+
+>> +                            "core", (cpu / ms->smp.threads) % ms->smp.cores,
+>> +                            "thread", cpu % ms->smp.threads);
+>> +            } else {
+>> +                map_path = g_strdup_printf(
+>> +                            "/cpus/cpu-map/%s%d/%s%d",
+>> +                            "cluster", cpu / ms->smp.cores,
+>> +                            "core", cpu % ms->smp.cores);
+>> +            }
+>> +            qemu_fdt_add_path(vms->fdt, map_path);
+>> +            qemu_fdt_setprop_phandle(vms->fdt, map_path, "cpu", cpu_path);
+>> +            g_free(map_path);
+>> +            g_free(cpu_path);
+>> +        }
+>> +    }
+>>   }
+>>   
+>>   static void fdt_add_its_gic_node(VirtMachineState *vms)
+>> @@ -2742,6 +2777,7 @@ static void virt_machine_5_2_options(MachineClass *mc)
+>>       virt_machine_6_0_options(mc);
+>>       compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+>>       vmc->no_secure_gpio = true;
+>> +    vmc->no_cpu_topology = true;
+>>   }
+>>   DEFINE_VIRT_MACHINE(5, 2)
+>>   
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index ee9a93101e..7ef6d08ac3 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -129,6 +129,7 @@ struct VirtMachineClass {
+>>       bool no_kvm_steal_time;
+>>       bool acpi_expose_flash;
+>>       bool no_secure_gpio;
+>> +    bool no_cpu_topology;
+>>   };
+>>   
+>>   struct VirtMachineState {
+>> -- 
+>> 2.23.0
+>>
+>>
+> 
+> .
+> 

@@ -1,89 +1,89 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp246818lfg;
-        Thu, 25 Feb 2021 03:05:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy888ksIKsL0mbZv5t8HdE4wb4oonQbdQVvIqJ26q2vW0p5Ujf8WU9N538dnEf7jg8DyF9k
-X-Received: by 2002:a02:74a:: with SMTP id f71mr2518066jaf.30.1614251157437;
-        Thu, 25 Feb 2021 03:05:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614251157; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp246923lfg;
+        Thu, 25 Feb 2021 03:06:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy3esI+ONHqbcWUFxsalm2ZVgKbxoO9xnonZ3gRgdGyg4aqjotNR+vmKiTk29nxeJz1AMyh
+X-Received: by 2002:a92:d312:: with SMTP id x18mr1930053ila.70.1614251166832;
+        Thu, 25 Feb 2021 03:06:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614251166; cv=none;
         d=google.com; s=arc-20160816;
-        b=kPQFY588bWX9tGlxS6W4H2VEEDwoEy5CGHxTHMcONDgDwAU7mJ30vQN36HKFGXFdTK
-         yN+z2bzUBTNBsM7tSBQfRBP9a2NsukKP1IpYoCRBLmofAanwQ3lGdanOn7VQqloj2ZZx
-         86KJU9vRr9Pyf7V5AZsDi+3AV3PN0U3gn5F3/0hxrNC4pzDKRyLVtM9Axcy/c1Lun/WP
-         xsFb8kE6QGimH7UuHcfcbMhVzYCcvfC9DSKy+AW/gb4+VZuZHwzTEC1t2W4Yl0Z4Pg4F
-         G2D4MvxiDNZ7TJtKdbIqtcq6I+pOSKfMAKpmsZfzqXeJFYO3zp47PhXGzWH45HTGJ20I
-         z69w==
+        b=JH256oQerZjHpD0tAGxVt9nXZ9mHMas22ENwKRZNoqvdHIX+883YjL9396EQimp2wZ
+         1LEU8w+bQpWRAYGBTbGcHZsyfoFdFOwYiVU/fTR+E4wfYacHfoLiCDWZM845+QXkBXKP
+         rVc/mCd8glKm8+he8swkxjG+IsevAWPHWlRRwaADoz50y3ve6LdpYw2jK2Umgls2JsqS
+         vSaMwe8Lk9u7tOF6TBMDH2zpamsBvvkABdmxkx/r+62c0ZIxDFj19KwdljcRTTiiR3rS
+         qV+7LZm2oSMpJfX53NXEUGha26Ne/ZOXm4V5ctxGq1+NylYCb2QjQT2btEFUzE5h8Uxs
+         1Siw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=4GhVkhZKLaTLbAq+0TaQvBVHGyMULsiCQCuN2TmjgO0=;
-        b=CJ2LSjh7mh1RHGu+OxqqoN9Busj47qFmmv7F13+oNha2oZW9zyZEje3OcafS09M3Qr
-         0aHi4pshvdgoy3c+A+NPro6mKOc138M/I8DGHbv3cffh/B6rHH71DZxiWaX5aeyunR1G
-         1NSXPx67QulxksWFVvb/F5mgD5M9MFwhwE1fNbGSliGB81xX6G0Sdd3zzlPz6IetWqNV
-         N/5bZBkX+3FPpXQkQFaJfPxQVOMKNTYiD+PHbBmxv1CT9idP54V+i/xL6P1y1p7kLolJ
-         iWmHoR62NxCnfCusENnqeLogVIbgHjuSKvPYcW/Aa2+UL1CEl5jSd101d4fmoDpI+ydl
-         R9yw==
+        bh=eLCJx2rzYm2M0ZapaiFpKSp4ffDhawjCGI5Xyc7dX8o=;
+        b=SxszvrsgT0KxR6PjcHhx8joMFzRRCAXpUd+HKQFEOuUiNzCShK7K92aTrtHfeuXy6D
+         j6jV0cQTxPWY1fmHkgvgb3cS4J4cuFwgq+X46cSiOFwSMfBLtzGKE6+MODYHWrlm3EsC
+         ZbYeFrk+aMvrrAwHHZXOPF1j11navfs2w1H6fOaL8W+E7iXC5VtdTL2dD1/IaNKl2T4q
+         rcYh9I5gYtKi9PCBczwNBVEiakxS+If12vk1GWUJ/oBz0QsNRDqbNHPjFSgsnclL2nlj
+         VMnbm/b1mrpMoFEgsZJBhgvJefomQTDOXmfQAVM0Ets9++rid84odDOpI2quuN/srFxW
+         aeNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TfxzXj+W;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h0J0QDIE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 19si4250651jac.78.2021.02.25.03.05.57
+        by mx.google.com with ESMTPS id l9si4774478ilv.110.2021.02.25.03.06.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 03:05:57 -0800 (PST)
+        Thu, 25 Feb 2021 03:06:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TfxzXj+W;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=h0J0QDIE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40082 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFESy-0007FT-Kx
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:05:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55126)
+	id 1lFET8-0007e7-3P
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:06:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55388)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEIR-0007po-If
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:55:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52336)
+ id 1lFEJI-0000qZ-Ng
+ for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:55:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41823)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEIO-0005UL-Bh
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:55:03 -0500
+ id 1lFEJF-0005vK-PG
+ for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:55:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614250499;
+ s=mimecast20190719; t=1614250552;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4GhVkhZKLaTLbAq+0TaQvBVHGyMULsiCQCuN2TmjgO0=;
- b=TfxzXj+WhCecB17EnyInOIpC3VYfFU9bgsHXQ63d96fPXMJCL6C5iJiJVPp5ubCh/d3P0O
- lv76gy/tlq0WhQ74p9GOL96mCR7qMMVWNgYDBhIFul77Yq7KTEy6/quyT3QJdlprIFH5v8
- FpdAIDZK6rL70E2mcSB5HZ63uV+Ifac=
+ bh=eLCJx2rzYm2M0ZapaiFpKSp4ffDhawjCGI5Xyc7dX8o=;
+ b=h0J0QDIEwA1txBLKKg+JllGeSHfLhmMO0eLdIZQYs/l+NNFW3o/Jj3hn2gbyaFRQkJh/G6
+ ruVW6fIOVoHvVlun/S9KAYmTYoEr9+TfXVL9alBQQygkEl/Fu3BcheEKM87w2o9/fe1Qss
+ KWi1gNfGRAyQT1re30zHZuOgMy2GxVQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-175-C5csXKOpMtyiAqzHiFxobQ-1; Thu, 25 Feb 2021 05:54:57 -0500
-X-MC-Unique: C5csXKOpMtyiAqzHiFxobQ-1
+ us-mta-471-13jgoUCfO-6NWqFpF_LVlA-1; Thu, 25 Feb 2021 05:55:50 -0500
+X-MC-Unique: 13jgoUCfO-6NWqFpF_LVlA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4B09A107ACC7;
- Thu, 25 Feb 2021 10:54:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E710618B6141;
+ Thu, 25 Feb 2021 10:55:47 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-150.ams2.redhat.com [10.36.112.150])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 30EA15D9D7;
- Thu, 25 Feb 2021 10:54:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EA51A5D9D7;
+ Thu, 25 Feb 2021 10:55:41 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v8 10/28] pci: introduce PCIPASIDOps to PCIDevice
-Date: Thu, 25 Feb 2021 11:52:15 +0100
-Message-Id: <20210225105233.650545-11-eric.auger@redhat.com>
+Subject: [RFC v8 15/28] vfio: Pass stage 1 MSI bindings to the host
+Date: Thu, 25 Feb 2021 11:52:20 +0100
+Message-Id: <20210225105233.650545-16-eric.auger@redhat.com>
 In-Reply-To: <20210225105233.650545-1-eric.auger@redhat.com>
 References: <20210225105233.650545-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -121,128 +121,275 @@ Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  zhangfei.gao@linaro.org, will@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SJJUWUGtCCjV
+X-TUID: tWj++73eVLPD
 
-From: Liu Yi L <yi.l.liu@intel.com>
+We register the stage1 MSI bindings when enabling the vectors
+and we unregister them on msi disable.
 
-This patch introduces PCIPASIDOps for IOMMU related operations.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00078.html
-https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00940.html
-
-So far, to setup virt-SVA for assigned SVA capable device, needs to
-configure host translation structures for specific pasid. (e.g. bind
-guest page table to host and enable nested translation in host).
-Besides, vIOMMU emulator needs to forward guest's cache invalidation
-to host since host nested translation is enabled. e.g. on VT-d, guest
-owns 1st level translation table, thus cache invalidation for 1st
-level should be propagated to host.
-
-This patch adds two functions: alloc_pasid and free_pasid to support
-guest pasid allocation and free. The implementations of the callbacks
-would be device passthru modules. Like vfio.
-
-Cc: Kevin Tian <kevin.tian@intel.com>
-Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>
-Cc: Peter Xu <peterx@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>
-Cc: Yi Sun <yi.y.sun@linux.intel.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Signed-off-by: Liu Yi L <yi.l.liu@intel.com>
-Signed-off-by: Yi Sun <yi.y.sun@linux.intel.com>
 ---
- hw/pci/pci.c         | 34 ++++++++++++++++++++++++++++++++++
- include/hw/pci/pci.h | 11 +++++++++++
- 2 files changed, 45 insertions(+)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index a9ebef8a35..8f79c9bf45 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -2724,6 +2724,40 @@ void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn, void *opaque)
-     bus->iommu_opaque = opaque;
+v7 -> v8:
+- add unregistration on msix_diable
+- remove vfio_container_unbind_msis()
+
+v4 -> v5:
+- use VFIO_IOMMU_SET_MSI_BINDING
+
+v2 -> v3:
+- only register the notifier if the IOMMU translates MSIs
+- record the msi bindings in a container list and unregister on
+  container release
+---
+ hw/vfio/common.c              | 59 +++++++++++++++++++++++++++
+ hw/vfio/pci.c                 | 76 ++++++++++++++++++++++++++++++++++-
+ hw/vfio/trace-events          |  2 +
+ include/hw/vfio/vfio-common.h | 12 ++++++
+ 4 files changed, 147 insertions(+), 2 deletions(-)
+
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 9bd40f5299..8a64ba414b 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -667,6 +667,65 @@ static void vfio_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+     }
  }
  
-+void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops)
++int vfio_iommu_set_msi_binding(VFIOContainer *container, int n,
++                               IOMMUTLBEntry *iotlb)
 +{
-+    assert(ops && !dev->pasid_ops);
-+    dev->pasid_ops = ops;
++    struct vfio_iommu_type1_set_msi_binding ustruct;
++    VFIOMSIBinding *binding;
++    int ret;
++
++    QLIST_FOREACH(binding, &container->msibinding_list, next) {
++        if (binding->index == n) {
++            return 0;
++        }
++    }
++
++    ustruct.argsz = sizeof(struct vfio_iommu_type1_set_msi_binding);
++    ustruct.iova = iotlb->iova;
++    ustruct.flags = VFIO_IOMMU_BIND_MSI;
++    ustruct.gpa = iotlb->translated_addr;
++    ustruct.size = iotlb->addr_mask + 1;
++    ret = ioctl(container->fd, VFIO_IOMMU_SET_MSI_BINDING , &ustruct);
++    if (ret) {
++        error_report("%s: failed to register the stage1 MSI binding (%m)",
++                     __func__);
++        return ret;
++    }
++    binding =  g_new0(VFIOMSIBinding, 1);
++    binding->iova = ustruct.iova;
++    binding->gpa = ustruct.gpa;
++    binding->size = ustruct.size;
++    binding->index = n;
++
++    QLIST_INSERT_HEAD(&container->msibinding_list, binding, next);
++    return 0;
 +}
 +
-+bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn)
++int vfio_iommu_unset_msi_binding(VFIOContainer *container, int n)
 +{
-+    PCIDevice *dev;
++    struct vfio_iommu_type1_set_msi_binding ustruct;
++    VFIOMSIBinding *binding, *tmp;
++    int ret;
 +
-+    if (!bus) {
++    ustruct.argsz = sizeof(struct vfio_iommu_type1_set_msi_binding);
++    QLIST_FOREACH_SAFE(binding, &container->msibinding_list, next, tmp) {
++        if (binding->index != n) {
++            continue;
++        }
++        ustruct.flags = VFIO_IOMMU_UNBIND_MSI;
++        ustruct.iova = binding->iova;
++        ret = ioctl(container->fd, VFIO_IOMMU_SET_MSI_BINDING , &ustruct);
++        if (ret) {
++            error_report("Failed to unregister the stage1 MSI binding for iova=0x%"PRIx64" (%m)",
++                         binding->iova);
++        }
++        QLIST_REMOVE(binding, next);
++        g_free(binding);
++        return ret;
++    }
++    return 0;
++}
++
+ static void vfio_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+ {
+     VFIOGuestIOMMU *giommu = container_of(n, VFIOGuestIOMMU, n);
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index b28e58db34..573c74b466 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -366,6 +366,65 @@ static void vfio_msi_interrupt(void *opaque)
+     notify(&vdev->pdev, nr);
+ }
+ 
++static bool vfio_iommu_require_msi_binding(IOMMUMemoryRegion *iommu_mr)
++{
++    bool msi_translate = false, nested = false;
++
++    memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_MSI_TRANSLATE,
++                                 (void *)&msi_translate);
++    memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
++                                 (void *)&nested);
++    if (!nested || !msi_translate) {
 +        return false;
 +    }
-+
-+    dev = bus->devices[devfn];
-+    return !!(dev && dev->pasid_ops);
++   return true;
 +}
 +
-+int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn,
-+                               IOMMUConfig *config)
++static int vfio_register_msi_binding(VFIOPCIDevice *vdev,
++                                     int vector_n, bool set)
 +{
-+    PCIDevice *dev;
++    VFIOContainer *container = vdev->vbasedev.group->container;
++    PCIDevice *dev = &vdev->pdev;
++    AddressSpace *as = pci_device_iommu_address_space(dev);
++    IOMMUMemoryRegionClass *imrc;
++    IOMMUMemoryRegion *iommu_mr;
++    IOMMUTLBEntry entry;
++    MSIMessage msg;
 +
-+    if (!bus) {
-+        return -EINVAL;
++    if (as == &address_space_memory) {
++        return 0;
 +    }
 +
-+    dev = bus->devices[devfn];
-+    if (dev && dev->pasid_ops && dev->pasid_ops->set_pasid_table) {
-+        return dev->pasid_ops->set_pasid_table(bus, devfn, config);
++    iommu_mr = IOMMU_MEMORY_REGION(as->root);
++    if (!vfio_iommu_require_msi_binding(iommu_mr)) {
++        return 0;
 +    }
-+    return -ENOENT;
++
++    /* MSI doorbell address is translated by an IOMMU */
++
++    if (!set) { /* unregister */
++        trace_vfio_unregister_msi_binding(vdev->vbasedev.name, vector_n);
++
++        return vfio_iommu_unset_msi_binding(container, vector_n);
++    }
++
++    msg = pci_get_msi_message(dev, vector_n);
++    imrc = memory_region_get_iommu_class_nocheck(iommu_mr);
++
++    rcu_read_lock();
++    entry = imrc->translate(iommu_mr, msg.address, IOMMU_WO, 0);
++    rcu_read_unlock();
++
++    if (entry.perm == IOMMU_NONE) {
++        return -ENOENT;
++    }
++
++    trace_vfio_register_msi_binding(vdev->vbasedev.name, vector_n,
++                                    msg.address, entry.translated_addr);
++
++    return vfio_iommu_set_msi_binding(container, vector_n, &entry);
 +}
 +
- static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
+ static int vfio_enable_vectors(VFIOPCIDevice *vdev, bool msix)
  {
-     Range *range = opaque;
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 1bc231480f..820c3485a1 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -9,6 +9,7 @@
+     struct vfio_irq_set *irq_set;
+@@ -383,7 +442,7 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, bool msix)
+     fds = (int32_t *)&irq_set->data;
  
- #include "hw/pci/pcie.h"
- #include "qom/object.h"
-+#include "hw/iommu/iommu.h"
+     for (i = 0; i < vdev->nr_vectors; i++) {
+-        int fd = -1;
++        int ret, fd = -1;
  
- extern bool pci_available;
+         /*
+          * MSI vs MSI-X - The guest has direct access to MSI mask and pending
+@@ -392,6 +451,12 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, bool msix)
+          * KVM signaling path only when configured and unmasked.
+          */
+         if (vdev->msi_vectors[i].use) {
++            ret = vfio_register_msi_binding(vdev, i, true);
++            if (ret) {
++                error_report("%s failed to register S1 MSI binding "
++                             "for vector %d(%d)", vdev->vbasedev.name, i, ret);
++                goto out;
++            }
+             if (vdev->msi_vectors[i].virq < 0 ||
+                 (msix && msix_is_masked(&vdev->pdev, i))) {
+                 fd = event_notifier_get_fd(&vdev->msi_vectors[i].interrupt);
+@@ -405,6 +470,7 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, bool msix)
  
-@@ -265,6 +266,11 @@ struct PCIReqIDCache {
- };
- typedef struct PCIReqIDCache PCIReqIDCache;
+     ret = ioctl(vdev->vbasedev.fd, VFIO_DEVICE_SET_IRQS, irq_set);
  
-+struct PCIPASIDOps {
-+    int (*set_pasid_table)(PCIBus *bus, int32_t devfn, IOMMUConfig *config);
-+};
-+typedef struct PCIPASIDOps PCIPASIDOps;
-+
- struct PCIDevice {
-     DeviceState qdev;
-     bool partially_hotplugged;
-@@ -359,6 +365,7 @@ struct PCIDevice {
++out:
+     g_free(irq_set);
  
-     /* ID of standby device in net_failover pair */
-     char *failover_pair_id;
-+    PCIPASIDOps *pasid_ops;
- };
+     return ret;
+@@ -705,7 +771,8 @@ static void vfio_msi_disable_common(VFIOPCIDevice *vdev)
  
- void pci_register_bar(PCIDevice *pci_dev, int region_num,
-@@ -490,6 +497,10 @@ typedef AddressSpace *(*PCIIOMMUFunc)(PCIBus *, void *, int);
- AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
- void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn, void *opaque);
- 
-+void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops);
-+bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn);
-+int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn, IOMMUConfig *config);
-+
- static inline void
- pci_set_byte(uint8_t *config, uint8_t val)
+ static void vfio_msix_disable(VFIOPCIDevice *vdev)
  {
+-    int i;
++    int ret, i;
++
+ 
+     msix_unset_vector_notifiers(&vdev->pdev);
+ 
+@@ -717,6 +784,11 @@ static void vfio_msix_disable(VFIOPCIDevice *vdev)
+         if (vdev->msi_vectors[i].use) {
+             vfio_msix_vector_release(&vdev->pdev, i);
+             msix_vector_unuse(&vdev->pdev, i);
++            ret = vfio_register_msi_binding(vdev, i, false);
++            if (ret) {
++                error_report("%s: failed to unregister S1 MSI binding "
++                             "for vector %d(%d)", vdev->vbasedev.name, i, ret);
++            }
+         }
+     }
+ 
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index 35fd74833c..8e2a297a4c 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -122,6 +122,8 @@ vfio_get_dev_region(const char *name, int index, uint32_t type, uint32_t subtype
+ vfio_dma_unmap_overflow_workaround(void) ""
+ vfio_iommu_addr_inv_iotlb(int asid, uint64_t addr, uint64_t size, uint64_t nb_granules, bool leaf) "nested IOTLB invalidate asid=%d, addr=0x%"PRIx64" granule_size=0x%"PRIx64" nb_granules=0x%"PRIx64" leaf=%d"
+ vfio_iommu_asid_inv_iotlb(int asid) "nested IOTLB invalidate asid=%d"
++vfio_register_msi_binding(const char *name, int vector, uint64_t giova, uint64_t gdb) "%s: register vector %d gIOVA=0x%"PRIx64 "-> gDB=0x%"PRIx64" stage 1 mapping"
++vfio_unregister_msi_binding(const char *name, int vector) "%s: unregister vector %d stage 1 mapping"
+ 
+ # platform.c
+ vfio_platform_base_device_init(char *name, int groupid) "%s belongs to group #%d"
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+index 6141162d7a..f30133b2a3 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -74,6 +74,14 @@ typedef struct VFIOAddressSpace {
+     QLIST_ENTRY(VFIOAddressSpace) list;
+ } VFIOAddressSpace;
+ 
++typedef struct VFIOMSIBinding {
++    int index;
++    hwaddr iova;
++    hwaddr gpa;
++    hwaddr size;
++    QLIST_ENTRY(VFIOMSIBinding) next;
++} VFIOMSIBinding;
++
+ struct VFIOGroup;
+ 
+ typedef struct VFIOContainer {
+@@ -91,6 +99,7 @@ typedef struct VFIOContainer {
+     QLIST_HEAD(, VFIOGuestIOMMU) giommu_list;
+     QLIST_HEAD(, VFIOHostDMAWindow) hostwin_list;
+     QLIST_HEAD(, VFIOGroup) group_list;
++    QLIST_HEAD(, VFIOMSIBinding) msibinding_list;
+     QLIST_ENTRY(VFIOContainer) next;
+ } VFIOContainer;
+ 
+@@ -200,6 +209,9 @@ VFIOGroup *vfio_get_group(int groupid, AddressSpace *as, Error **errp);
+ void vfio_put_group(VFIOGroup *group);
+ int vfio_get_device(VFIOGroup *group, const char *name,
+                     VFIODevice *vbasedev, Error **errp);
++int vfio_iommu_set_msi_binding(VFIOContainer *container, int n,
++                               IOMMUTLBEntry *entry);
++int vfio_iommu_unset_msi_binding(VFIOContainer *container, int n);
+ 
+ extern const MemoryRegionOps vfio_region_ops;
+ typedef QLIST_HEAD(VFIOGroupList, VFIOGroup) VFIOGroupList;
 -- 
 2.26.2
 

@@ -1,223 +1,226 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp263253lfg;
-        Thu, 25 Feb 2021 03:29:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxr97jTlWGlI4v+0G29iknrsfGanUtq3j2jezY/JCsk3Ylh3+5AaJ2Fhzb17fHICLdbkMxy
-X-Received: by 2002:a92:ce4c:: with SMTP id a12mr2069176ilr.258.1614252544409;
-        Thu, 25 Feb 2021 03:29:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614252544; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp270251lfg;
+        Thu, 25 Feb 2021 03:39:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy6APHCMtYNRoz4Y4GPhwLXbejLxqkzI9UgNJwfzA9zkODvB6dSdPafynF50VWGr2JKUn8s
+X-Received: by 2002:a05:6e02:1c83:: with SMTP id w3mr2215847ill.216.1614253140293;
+        Thu, 25 Feb 2021 03:39:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614253140; cv=none;
         d=google.com; s=arc-20160816;
-        b=V7T6+Pm97cSEDFgnwDrZTEvEJqOVtZpyto/Qj0c+OMMCrOva7CzC5S2J3xhpEWU3Mc
-         fW6sV/AAKSSnKRVfDCBNpDTzWKL/LszxDJqvA8divvWaYSUM8ft1sYUhV9S84mlW3Q3e
-         VjuShCt43fugEXCAsdj4eGniAxSA6sl2ESrYvK/AuOooCQDuGIR+tp4vQb+5+ynVbF5y
-         R8KemtpgMbg/bAPwxwNFiVvNlKn2h3lScUpEzwI8g+X/kWC6HXWF5FIHs8Pz0bDvCIpE
-         yDhyBmOu5NvpNHBYsxleoLNF/Gn+IWyBIDvXOLP//WZihAM+01gplVxTjNoTgE6Cpdii
-         wYCA==
+        b=hWiPl5DwiNYwpDWQfclUl7wtvXNSFiYUlxtKnMxhXwWKbK5x6dES9BmHNoWCBlaTp1
+         AdxppDIvHrRn5pPHw8qfr4aUu76OgbKWAyWtAwffcOKx5DvwwUAdt314u2dkFbrUxCvY
+         Z3ObooQzyHJWC5CgcTTq7X4eE5f4K+u07SjfK6tjt5DzFfcqV7MSPA0YgsXxa3hmz7iT
+         Tsq8kh5OA/KjFDVAQvi4/i9as94jirAuOBbhfjCXN36vdKqxMHj0NekefurnXzUKA07G
+         45pu8Qk0xkCMUcI4EqH8NldCxpseJs4lvG6IG3qjLN3aIeOsIB3+acUhJlRgxh/9mSiW
+         onIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=UvadxrMtPBjg+zJkU9IUMsFImuhNZkDn0Ltc3uCWweE=;
-        b=mXtXjrNsvJuOCy7nXKSnpCgpYDKUU/jmY5Mqp974urILUiR7vuoRoCk+bTsEaAXNYw
-         n/Qk46Az2WR7Nv1qLj/kpjH5kUYEcIBXjrID0XcLjprC/qMOuNo3RFakuavC1b71dz0s
-         85rAD++vsaJBorKdtB6Rfy3uQ8ebY+SxPsotM58g9KyYZktFsORnbfDhTR422CCgEtgo
-         dJUUfmkKGUHsrPyBnvFeG/Kk46bkK0UemCPFGWrW4TchfHPl096EeBE82fg4l17jE966
-         bm24a8CXI1uiF9OqZvUrsyFj6MDyAUiJuRSkprytOKK4UhkGW9eAggWYOf0q6xYV/s7p
-         zrUA==
+        bh=1ajb5YcAmvG9/g+LdUjj8IazMkzWsCmYcih1JrREzrI=;
+        b=ZcpjLsQYk2ok+XJyZwHvAoIhCgioKCsGhaX4Zkmabc+h1WLzUOVxfFNbAWCZYANX3D
+         d3zVmnPR1NjPpzLcgKQ4e+2Wjj2SdQ1JzrqoMrR7DLcAxas1rzTBkGrxqbYhVkxCr2X4
+         poasbLsDJMDy8+MnzfMyv/Jkfwd9qW2klfdQAiJ+e8MnzGqtF+RD4qurhT1isUhJ61mO
+         82x/7QhYw9rjj7BnQE8H6QlfHAT9arblwMFQKuFhPTJRi+6T+q9XkTuDx5pdEw8GY/5L
+         h175AGlsQ4NE9e+NgMMVXhKp2GokBXE29K5/pNJX/Yv8Md5szAV6+lVd3E8ztj53arjA
+         RnIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IUnfrDHI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YPc4zN6V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y14si4956765ilu.75.2021.02.25.03.29.04
+        by mx.google.com with ESMTPS id m3si4898555ilh.81.2021.02.25.03.39.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 03:29:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Feb 2021 03:39:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IUnfrDHI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YPc4zN6V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57512 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFEpL-00046P-OJ
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:29:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36116)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lFEyx-000422-Jo
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:38:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39246)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lFEnH-0002mH-PA
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 06:26:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28240)
+ id 1lFEyd-00040y-NL
+ for qemu-arm@nongnu.org; Thu, 25 Feb 2021 06:38:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:34821)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lFEnF-0003I2-Nx
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 06:26:55 -0500
+ id 1lFEya-0000Jk-2z
+ for qemu-arm@nongnu.org; Thu, 25 Feb 2021 06:38:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614252412;
+ s=mimecast20190719; t=1614253114;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=UvadxrMtPBjg+zJkU9IUMsFImuhNZkDn0Ltc3uCWweE=;
- b=IUnfrDHIrUhETLpxbWGl2xT7JPXb0pXIOL/4zCBUjdZsReaaAUVmZ9aSGuY9o9nP+4rTj+
- +nTeg5sopcvTAyrepGEZGjcqJf8Ia97H9s2LdNy3oJFCbH1VsmlvzHHds5fEt+VHVej5iq
- 9o2OLNNJSXQFT0SWAeX1LdDAVB4nDBA=
+ bh=1ajb5YcAmvG9/g+LdUjj8IazMkzWsCmYcih1JrREzrI=;
+ b=YPc4zN6VDCyzDaFrLxTZ3OAMqUsIP8s/d9FEgMT8KY6oPAr1GbXuYKvXFYjRxOEs2C5o+U
+ 1vDv1eC7XNliNbn4gWVCxQw5UnJ+JbzBrUf9QfBc7CdoK5WkjLlAqaV0bwCtMoTiakZFil
+ P8uPxxOWpfqM689GdyWwfN9AJnRUAwc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-149-ZyxpTTV7PLix8T5toTTIfw-1; Thu, 25 Feb 2021 06:26:47 -0500
-X-MC-Unique: ZyxpTTV7PLix8T5toTTIfw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-106-kssg-68uOY2fEZ6_id56Tg-1; Thu, 25 Feb 2021 06:38:31 -0500
+X-MC-Unique: kssg-68uOY2fEZ6_id56Tg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 710AB8030B7;
- Thu, 25 Feb 2021 11:26:45 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D32EB80198D;
+ Thu, 25 Feb 2021 11:38:29 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.40.194.200])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BF21F5D767;
- Thu, 25 Feb 2021 11:26:39 +0000 (UTC)
-Date: Thu, 25 Feb 2021 12:26:36 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E95F55D9DD;
+ Thu, 25 Feb 2021 11:38:20 +0000 (UTC)
+Date: Thu, 25 Feb 2021 12:38:17 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [RFC PATCH 3/5] hw/arm/virt-acpi-build: distinguish possible and
- present cpus
-Message-ID: <20210225112636.qiahzzhjd6jfrzoz@kamzik.brq.redhat.com>
+Subject: Re: [RFC PATCH 5/5] hw/arm/virt-acpi-build: add PPTT table
+Message-ID: <20210225113817.xdctmgp3icrhjhrf@kamzik.brq.redhat.com>
 References: <20210225085627.2263-1-fangying1@huawei.com>
- <20210225085627.2263-4-fangying1@huawei.com>
+ <20210225085627.2263-6-fangying1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210225085627.2263-4-fangying1@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20210225085627.2263-6-fangying1@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
  zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
  shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
- imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fw2LTCJ6MSpO
+ imammedo@redhat.com, Jiajie Li <lijiajie11@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IJ8n4MhcfDuk
 
-On Thu, Feb 25, 2021 at 04:56:25PM +0800, Ying Fang wrote:
-> When building ACPI tables regarding CPUs we should always build
-> them for the number of possible CPUs, not the number of present
-> CPUs. We then ensure only the present CPUs are enabled in madt.
-> Furthermore, it is also needed if we are going to support CPU
-> hotplug in the future.
+
+This is just [*] with some minor code changes
+
+[*] https://github.com/rhdrjones/qemu/commit/439b38d67ca1f2cbfa5b9892a822b651ebd05c11
+
+so it's disappointing that my name is nowhere to be found on it.
+
+Also, the explanation of the DT and ACPI differences has been
+dropped from the commit message of [*]. I'm not sure why.
+
+Thanks,
+drew
+
+On Thu, Feb 25, 2021 at 04:56:27PM +0800, Ying Fang wrote:
+> Add the Processor Properties Topology Table (PPTT) to present
+> CPU topology information to the guest. A three-level cpu
+> topology is built in accord with the linux kernel currently does.
 > 
-> This patch is a rework based on Andrew Jones's contribution at
-> https://lists.gnu.org/archive/html/qemu-arm/2018-07/msg00076.html
-> 
+> Tested-by: Jiajie Li <lijiajie11@huawei.com>
 > Signed-off-by: Ying Fang <fangying1@huawei.com>
 > ---
->  hw/arm/virt-acpi-build.c | 14 ++++++++++----
->  hw/arm/virt.c            |  2 ++
->  2 files changed, 12 insertions(+), 4 deletions(-)
+>  hw/arm/virt-acpi-build.c | 50 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 50 insertions(+)
 > 
 > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index f9c9df916c..bb91152fe2 100644
+> index bb91152fe2..38d50ce66c 100644
 > --- a/hw/arm/virt-acpi-build.c
 > +++ b/hw/arm/virt-acpi-build.c
-> @@ -61,13 +61,16 @@
->  
->  static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
->  {
-> -    MachineState *ms = MACHINE(vms);
-> +    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
->      uint16_t i;
->  
-> -    for (i = 0; i < ms->smp.cpus; i++) {
-> +    for (i = 0; i < possible_cpus->len; i++) {
-
-Switching from ms->smp.cpus to possible_cpus->len makes some sense
-here, since we're going to be using possible_cpus->cpus[] inside
-the loop. Otherwise, I'd prefer switching to ms->smp.max_cpus.
-
->          Aml *dev = aml_device("C%.03X", i);
->          aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
->          aml_append(dev, aml_name_decl("_UID", aml_int(i)));
-> +        if (possible_cpus->cpus[i].cpu == NULL) {
-> +            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
-> +        }
->          aml_append(scope, dev);
->      }
+> @@ -436,6 +436,50 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>                   vms->oem_table_id);
 >  }
-> @@ -479,6 +482,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      const int *irqmap = vms->irqmap;
->      AcpiMadtGenericDistributor *gicd;
->      AcpiMadtGenericMsiFrame *gic_msi;
-> +    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
->      int i;
 >  
->      acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
-> @@ -489,7 +493,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
->      gicd->version = vms->gic_version;
->  
-> -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
-> +    for (i = 0; i < possible_cpus->len; i++) {
-
-Same comment as above.
-
->          AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
->                                                             sizeof(*gicc));
->          ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-> @@ -504,7 +508,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          gicc->cpu_interface_number = cpu_to_le32(i);
->          gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
->          gicc->uid = cpu_to_le32(i);
-> -        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
-> +        if (possible_cpus->cpus[i].cpu != NULL) {
-> +            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
+> +static void
+> +build_pptt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> +{
+> +    int pptt_start = table_data->len;
+> +    int uid = 0, cpus = 0, socket = 0;
+> +    MachineState *ms = MACHINE(vms);
+> +    unsigned int smp_cores = ms->smp.cores;
+> +    unsigned int smp_threads = ms->smp.threads;
+> +
+> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
+> +        uint32_t socket_offset = table_data->len - pptt_start;
+> +        int core;
+> +
+> +        build_socket_hierarchy(table_data, 0, socket);
+> +
+> +        for (core = 0; core < smp_cores; core++) {
+> +            uint32_t core_offset = table_data->len - pptt_start;
+> +            int thread;
+> +
+> +            if (smp_threads <= 1) {
+> +                build_processor_hierarchy(table_data,
+> +                                          ACPI_PPTT_ACPI_PROCESSOR_ID_VALID |
+> +                                          ACPI_PPTT_ACPI_LEAF_NODE,
+> +                                          socket_offset, uid++);
+> +             } else {
+> +                build_processor_hierarchy(table_data,
+> +                                          ACPI_PPTT_ACPI_PROCESSOR_ID_VALID,
+> +                                          socket_offset, core);
+> +                for (thread = 0; thread < smp_threads; thread++) {
+> +                    build_thread_hierarchy(table_data, core_offset, uid++);
+> +                }
+> +             }
 > +        }
+> +        cpus += smp_cores * smp_threads;
+> +    }
+> +
+> +    build_header(linker, table_data,
+> +                 (void *)(table_data->data + pptt_start), "PPTT",
+> +                 table_data->len - pptt_start, 2,
+> +                 vms->oem_id, vms->oem_table_id);
+> +}
+> +
+>  /* GTDT */
+>  static void
+>  build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> @@ -688,6 +732,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      unsigned dsdt, xsdt;
+>      GArray *tables_blob = tables->table_data;
+>      MachineState *ms = MACHINE(vms);
+> +    bool cpu_topology_enabled = !vmc->no_cpu_topology;
 >  
->          if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
->              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index c133b342b8..75659502e2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2047,6 +2047,8 @@ static void machvirt_init(MachineState *machine)
+>      table_offsets = g_array_new(false, true /* clear */,
+>                                          sizeof(uint32_t));
+> @@ -707,6 +752,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_madt(tables_blob, tables->linker, vms);
 >  
->          qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
->          object_unref(cpuobj);
-> +        /* Initialize cpu member here since cpu hotplug is not supported yet */
-> +        machine->possible_cpus->cpus[n].cpu = cpuobj;
-
-This feels like we're violating a possible_cpus abstraction. Igor?
-Also, it's using cpuobj after unrefing it.
-
->      }
->      fdt_add_timer_nodes(vms);
->      fdt_add_cpu_nodes(vms);
+> +    if (ms->smp.cpus > 1 && cpu_topology_enabled) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_pptt(tables_blob, tables->linker, vms);
+> +    }
+> +
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_gtdt(tables_blob, tables->linker, vms);
+>  
 > -- 
 > 2.23.0
 > 
 > 
-
-Thanks,
-drew
 

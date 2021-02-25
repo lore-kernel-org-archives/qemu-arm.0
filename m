@@ -1,211 +1,198 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp972695lfg;
-        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
-X-Received: by 2002:adf:8104:: with SMTP id 4mr319010wrm.265.1614208223740;
-        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614208223; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp62052lfg;
+        Wed, 24 Feb 2021 21:23:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxOKqoNvHGDYbTzBoJmjyGvQxJlSv/2sPJCcIopaiI2Wp9K1JbRbSGEVHyVuG+IQzXj6XvG
+X-Received: by 2002:a05:6402:2712:: with SMTP id y18mr1229540edd.356.1614230600139;
+        Wed, 24 Feb 2021 21:23:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614230600; cv=none;
         d=google.com; s=arc-20160816;
-        b=wOsiTRjzT6s+ccV2oZJ4/kpxq6KG/XsoNFIclc0ifU76tgwlNS61g5SVCTI25+h+NK
-         HFCZzz7FcSaaWqXoYrGMw0zF6zxxioJzesM9pzvq4dh8GqIQ/20IJzrPrkVGh+IDmXhA
-         ton88n6iqL4wlwRi9CgKj3J0MJBaEFxU+MFohey+xPgSbZ/eMKjZy68wbCi5v385J7P9
-         Jz7nXX4wJWWKN/JOvD2vxIJhrFQtVyDp/ih6HWZB7sAmvGjcZo5RGL7v9XQ3JQxB1RZU
-         KLXS2esCjouRalwHLW/XKQxyU/tmIwY84qJs1f0dw+70TV++M/MFZmJMWx3ttTixMH8m
-         GoRQ==
+        b=xZEuhcd+BAu0q6xyufW8ZByp0vTXrRp0BdDZG6Rrrz1wcRYcaXgXc2udwAfTb2evQx
+         I7vujz3rH9LonZ7aUqOFuv6RRUpHVReLOC51gyigoSyiq2xpD32MdXd8DzRcuMUMoFr6
+         nHi2qV2IHvIYlxwg1ho1uxUQrCfC+C3cRRVQ/i3z3EyAgZDMJDVLFmB6Yo8NT6c2yFQY
+         zWOOpq4th0qYpDyEZNXHPSZcNUCY+8kB06PS8UV3sHxfG4etYmgn6tNT2GklF/sjXmdA
+         //MtGbRV2c6JrAKsKmEhtgm2vEd1XDiUCs1APGjf9RkrMA/TMiJnTh0NbEh5MeoIDVX6
+         sLYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :user-agent:date:message-id:subject:from:references:cc:to
          :dkim-signature;
-        bh=cKYk1BlXdXmONJSW0juNzIv8A0kBbLqwqifbrnnfbjI=;
-        b=HU9UZAy9UgPqcL6PoM2MQ2BlAPyTG9espeYoPpWlvIzNsBZNg4Tctj00ZhMwXtpT4v
-         nJvuSWLKzZGLej1FMOTk8aqGP8fZ8HUR8aPXci0IyaxDUQ6lC6RuYLnWlBtv1HWRhccF
-         cBmSDVCcoWeV6aPXv6aFy6i6nV9K1w6aoV7a3vJ7Myb5G1H/YoxrZ5ZY6Jbe0wPhNEPp
-         qpBTbURlkraK6aSwfqI2vAvg6kh+wpaz+dQ/U85QXGWVaZsgxz7iRE8SzK909FHdhFpP
-         gE0QqTSMbe3TrMUezaUpoPtptTnMRSq939Xf0jaXQQR2Dyth2yQeLw1fI9hVG+q+5MXh
-         EQ0A==
+        bh=pwBcXHb9E686y+CIs2UBzvu2ZE1D11zfSRqUS/HZL3I=;
+        b=giwoNxIaS9E2KXgtm+tzj6UpEWTaL51YJGIjhwLCepznrs740OLVZ78BYp5+zoSosZ
+         t3DnxnF5g5epC7wBjG0gun93yGiHBdV2tLRswA9PjmayLHwuH1IOLtGC3uLx/sjoBa8o
+         2FrpSwCNwCfVD/FK2jbDDaCvvSC1OD5DvS2ySenCmLbCcc5D5LFsvFc1Inhz9k7pT7zI
+         zTeIDThKseRvpF5dlc1fh/VThpZZMENfR446gUEsps/atFP9gCQzyZ8+tYoks//9rVmc
+         cRN95Rgy0ITGHCQusjNG8mgljr7F7JPZVxRqf5g3FlMlXStj1gW2tbSjciL5Y/Obir/4
+         aY2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DL1lP3nV;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o83sor1923545wma.29.2021.02.24.15.10.23
-        (Google Transport Security);
-        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KOCjAL5D;
+       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id p26si2669123eji.740.2021.02.24.21.23.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 24 Feb 2021 21:23:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DL1lP3nV;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=cKYk1BlXdXmONJSW0juNzIv8A0kBbLqwqifbrnnfbjI=;
-        b=DL1lP3nVRGCWTZNm/8OIYpSMH3qwQYZ5+OavUiHMwsGhPufcPrB3bgNMtV35o6UYgW
-         Ir/ARPCnSrV3etM2NCA+xryQDzUrnEDkfr8CZBm+MbTNXW2rMvcfHkmhr1h1RNXQE9cg
-         Ix7foQksCQ1XO9rhYS4ffsLRoNnL4scNTzyAzFpeFPXnPuBChGIlcmA6vTdBX70hYwkd
-         m9DKYDPiJoihDgHpoMoN/qaTWvPDxLpstxJSzQ1UtNSJRf09ft84oJpkeCqKpkQsgRe9
-         SFXIXyD3IMbDyarG/BceRBoMzA9xt1u9WbfNpcjLX0KJ15fnCzYfJ1bS6NiMT5im3OF6
-         qdrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=cKYk1BlXdXmONJSW0juNzIv8A0kBbLqwqifbrnnfbjI=;
-        b=o138dUDLuXaLSdRa58da8g4JEZNodKx3hC90WsjMDRywlXEmAyCtZnR8FCJXoMTkqM
-         WSMcmiNrCl6oj7Fom15w/PPcrfF+Cq9J7cwrrRILz93mL0SBQrj0VbrS8wIWvYm+lMfu
-         jo7sQ9+ukt19B8LSS6FfrW3BZdSV8OZjgrscR4DUUe6AJWC5sl8pkiMlBeXSSUwhAp1S
-         nXavcnClCon7ztpmucwR7hU8gd68bXQ5hj9lA8zrnZjPnPUVzt5LOW2enEtqg1MHGEXZ
-         QLZDYIiz0+ICXkdXf8Wpcii2yrw9Y/Ll6+r5DDy4xELGybXEWT49cHBcifxb84J7ZLF9
-         ADRw==
-X-Gm-Message-State: AOAM532/+0y5Lb55gWxsaRdXc4TfQWC+6qAVYwyJ4rM7PMqS8Q7QrjOo
-	HgE0uhVxSsIKC3TjwunqBMQ=
-X-Google-Smtp-Source: ABdhPJyaMjgCMJ7BemwaBD6vGDaigJ0mKqS5hl0H5it7LgWcu9Neua1ur0uX5iErtzMgZQy5KZ4W5Q==
-X-Received: by 2002:a1c:2846:: with SMTP id o67mr330302wmo.188.1614208223407;
-        Wed, 24 Feb 2021 15:10:23 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id i3sm6257477wra.66.2021.02.24.15.10.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 24 Feb 2021 15:10:22 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v2 1/2] tests/acceptance: replace unstable apt.armbian.com
- URLs for orangepi-pc, cubieboard
-To: Niek Linnenbank <nieklinnenbank@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KOCjAL5D;
+       spf=pass (google.com: domain of thuth@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1614230598;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=pwBcXHb9E686y+CIs2UBzvu2ZE1D11zfSRqUS/HZL3I=;
+	b=KOCjAL5DK3O/J0ae0/bca1OcoHH+k8cj7fiefhlfayphejUZGu90ypu1rWPWG+mnQAgsCm
+	Nhc+JOTGsGpIX8Bk92NYt1yvokes4Pg2wUVWryXyJ5IrlS9pZIh+dqiRxbupnXYNikUMGm
+	ubLjPiELvn4rrau8THpSgFafgmagR7k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-449-z4wusYZJPI6PLOAVPELIxg-1; Thu, 25 Feb 2021 00:23:06 -0500
+X-MC-Unique: z4wusYZJPI6PLOAVPELIxg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 99B12801976;
+	Thu, 25 Feb 2021 05:23:04 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4A5DF60C5F;
+	Thu, 25 Feb 2021 05:22:54 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  "Daniel P . Berrange" <berrange@redhat.com>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Markus Armbruster <armbru@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
  Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Pavel.Dovgaluk@ispras.ru, Willian Rampazzo <willianr@redhat.com>
+ Pavel.Dovgaluk@ispras.ru, Cleber Rosa <crosa@redhat.com>,
+ Willian Rampazzo <willianr@redhat.com>
 References: <20210223225327.26700-1-nieklinnenbank@gmail.com>
  <20210223225327.26700-2-nieklinnenbank@gmail.com>
  <5556626c-0b4f-0de3-9cb8-d174cd210b5c@amsat.org>
  <20210224191341.GC1074102@amachine.somewhere>
  <CAPan3WqXre=Rau4-jOSE2u=GGRO8hSKzuuWFSN4xP3wbpvQ-Dg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6309e75e-2aa4-5bc1-66be-0b29f408f179@amsat.org>
-Date: Thu, 25 Feb 2021 00:10:21 +0100
+ <6309e75e-2aa4-5bc1-66be-0b29f408f179@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH v2 1/2] tests/acceptance: replace unstable apt.armbian.com
+ URLs for orangepi-pc, cubieboard
+Message-ID: <5cd02aba-b76f-d12d-9ea1-ec6b84107f16@redhat.com>
+Date: Thu, 25 Feb 2021 06:22:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAPan3WqXre=Rau4-jOSE2u=GGRO8hSKzuuWFSN4xP3wbpvQ-Dg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <6309e75e-2aa4-5bc1-66be-0b29f408f179@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: n8yYyLw1u3ER
+X-TUID: 8WUETCHYvwWy
 
-+Thomas/Daniel/Alex/Peter/Paolo/Stefan/Markus
+On 25/02/2021 00.10, Philippe Mathieu-Daudé wrote:
+> +Thomas/Daniel/Alex/Peter/Paolo/Stefan/Markus
+> 
+> On 2/24/21 9:02 PM, Niek Linnenbank wrote:
+>> Hi Philippe, Cleber,
+[...]
+>> Indeed. Just this morning I received an e-mail from github with the
+>> following text:
+>>
+>> "[GitHub] Git LFS disabled for nieklinnenbank
+>>
+>> Git LFS has been disabled on your personal account nieklinnenbank
+>> because you’ve exceeded your data plan by at least 150%.
+>> Please purchase additional data packs to cover your bandwidth and
+>> storage usage:
+>>
+>>    https://github.com/account/billing/data/upgrade
+>>
+>> Current usage as of 24 Feb 2021 09:49AM UTC:
+>>
+>>    Bandwidth: 1.55 GB / 1 GB (155%)
+>>    Storage: 0.48 GB / 1 GB (48%)"
+>>   
+>> I wasn't aware of it but it appears that Github has these quota's for
+>> the Large File Storage (LFS). I uploaded the files in the git LFS
+>> because single files are also limited to 100MiB each on the regular Git
+>> repositories.
+>>
+>> With those strict limits, in my opinion Github isn't really a solution
+>> since the bandwidth limit will be reached very quickly. At least for the
+>> LFS part that is. I don't know yet if there is any limit for regular access.
+>>
+>> My current ideas:
+>>    - we can try to splitup the larger files into sizes < 100MiB in order
+>> to use github regular storage. and then download each part to combine
+>> into the final image.
+>>      im not really in favour of this but it can work, if github doesnt
+>> have any other limit/quota. the cost is that we have to add more
+>> complexity to the acceptance test code.
 
-On 2/24/21 9:02 PM, Niek Linnenbank wrote:
-> Hi Philippe, Cleber,
-> 
-> On Wed, Feb 24, 2021 at 8:14 PM Cleber Rosa <crosa@redhat.com
-> <mailto:crosa@redhat.com>> wrote:
-> 
->     On Wed, Feb 24, 2021 at 10:12:10AM +0100, Philippe Mathieu-Daudé wrote:
->     > Hi Niek,
->     >
->     > On 2/23/21 11:53 PM, Niek Linnenbank wrote:
->     > > Currently the automated acceptance tests for the Orange Pi PC
->     and cubieboard
->     > > machines are disabled by default. The tests for both machines
->     require artifacts
->     > > that are stored on the apt.armbian.com <http://apt.armbian.com>
->     domain. Unfortunately, some of these artifacts
->     > > have been removed from apt.armbian.com <http://apt.armbian.com>
->     and it is uncertain whether more will be removed.
->     > >
->     > > This commit moves the artifacts previously stored on
->     apt.armbian.com <http://apt.armbian.com> to github
->     > > and retrieves them using the path: '/<machine>/<artifact>'.
->     > >
->     > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com
->     <mailto:nieklinnenbank@gmail.com>>
->     > > Reviewed-by: Willian Rampazzo <willianr@redhat.com
->     <mailto:willianr@redhat.com>>
->     > > Reviewed-by: Cleber Rosa <crosa@redhat.com
->     <mailto:crosa@redhat.com>>
-...
+Well, if you want to go down that road (which I don't really like), you 
+could also host the binaries on gitlab instead, where our CI is running, so 
+the binaries would be hosted in the same network as the CI.
 
->     Nope, and I'm having issues with those URLs.  For instance:
-> 
->        $ curl -L
->     https://github.com/nieklinnenbank/QemuArtifacts/raw/master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb
->     <https://github.com/nieklinnenbank/QemuArtifacts/raw/master/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb>
->        version https://git-lfs.github.com/spec/v1
->     <https://git-lfs.github.com/spec/v1>
->        oid
->     sha256:a4b765c851de76592f55023b1ff4104f7fd29bf90937e6054e0a64fdda56380b
->        size 20331524
-> 
->     Looks like it has to do with GitHub's behavior wrt quota.
-> 
-> 
-> Indeed. Just this morning I received an e-mail from github with the
-> following text:
-> 
-> "[GitHub] Git LFS disabled for nieklinnenbank
-> 
-> Git LFS has been disabled on your personal account nieklinnenbank
-> because you’ve exceeded your data plan by at least 150%.
-> Please purchase additional data packs to cover your bandwidth and
-> storage usage:
-> 
->   https://github.com/account/billing/data/upgrade
-> <https://github.com/account/billing/data/upgrade>
-> 
-> Current usage as of 24 Feb 2021 09:49AM UTC:
-> 
->   Bandwidth: 1.55 GB / 1 GB (155%)
->   Storage: 0.48 GB / 1 GB (48%)"
->  
-> I wasn't aware of it but it appears that Github has these quota's for
-> the Large File Storage (LFS). I uploaded the files in the git LFS
-> because single files are also limited to 100MiB each on the regular Git
-> repositories.
-> 
-> With those strict limits, in my opinion Github isn't really a solution
-> since the bandwidth limit will be reached very quickly. At least for the
-> LFS part that is. I don't know yet if there is any limit for regular access.
-> 
-> My current ideas:
->   - we can try to splitup the larger files into sizes < 100MiB in order
-> to use github regular storage. and then download each part to combine
-> into the final image.
->     im not really in favour of this but it can work, if github doesnt
-> have any other limit/quota. the cost is that we have to add more
-> complexity to the acceptance test code.
->   - we can try to just update the URLs to armbian that are working now
-> (with the risk of breaking again in the near future). Ive also found
-> this link, which may be more stable:
->      https://archive.armbian.com/orangepipc/archive/
-> <https://archive.armbian.com/orangepipc/archive/>
->   - or use the server that im hosting - and i don't mind to add the
-> license files on it if needed (should be GPLv2 right?)
-> 
-> I'd be interested to hear your opinion and suggestions.
-> 
-> Kind regards,
-> Niek
+>>    - we can try to just update the URLs to armbian that are working now
+>> (with the risk of breaking again in the near future). Ive also found
+>> this link, which may be more stable:
+>>       https://archive.armbian.com/orangepipc/archive/
 
-Some of the unpractical options I can think of...:
+I'd give this a try! If we then later have to discover that the links are 
+still not stable, we can still reconsider something else.
 
-- do not contribute tests using binary blob
-- do not allow test image >100 MiB
-- contribute tests with sha1 of (big) image but say "if you want
-  the test image contact me off-list" then when the contributor
-  stop responding we remove the test
-- have anyone setup its servers with tests source and images,
-  without committing anything to the repository. Interested
-  maintainers/testers are on their own.
-- testing done behind the scene
+>>    - or use the server that im hosting - and i don't mind to add the
+>> license files on it if needed (should be GPLv2 right?)
 
-TBH I'm a bit hopeless.
+You know that you also have to be ready to provide all the source codes to 
+the binaries that you host to adhere the conditions of the GPL? That should 
+be doable if you originally downloaded them along with the binaries, but 
+otherwise finding the sources to such binaries can be hard...
 
-Regards,
+>> I'd be interested to hear your opinion and suggestions.
+>>
+>> Kind regards,
+>> Niek
+> 
+> Some of the unpractical options I can think of...:
+> 
+> - do not contribute tests using binary blob
 
-Phil.
+That would be a huge step backward to the times when we did not have the 
+"acceptance" tests yet.
+
+> - do not allow test image >100 MiB
+
+Test images should not be too huge anyway, but I don't think we should 
+introduce such an artificial limit.
+
+> - contribute tests with sha1 of (big) image but say "if you want
+>    the test image contact me off-list" then when the contributor
+>    stop responding we remove the test
+
+That does not really scale. And how do you add such a test to the CI? That'd 
+mean that everybody has to contribute gitlab runners? I don't think that's 
+feasible either.
+
+> - have anyone setup its servers with tests source and images,
+>    without committing anything to the repository. Interested
+>    maintainers/testers are on their own.
+> - testing done behind the scene
+
+That's maybe an option for these tests where the binaries cannot be found in 
+the internet anymore.
+
+> TBH I'm a bit hopeless.
+
+C'mon, most of the "acceptance" test are just working fine (from the 
+"download" perspective), it's just some few tests that are troubled. I'd say 
+let's give it another try with archive.armbian.com and if that does not 
+work, we can still consider to simply remove those troubled tests.
+
+  Thomas

@@ -1,89 +1,88 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp185692lfg;
-        Thu, 25 Feb 2021 01:17:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz20mI2faZ/7Oft/Y4PFkGi6C5w6n/MtuZDhva/o1fnSPJoD9loxzY0ZBYvaH4lmUokb65m
-X-Received: by 2002:a05:6638:3285:: with SMTP id f5mr2260815jav.37.1614244650492;
-        Thu, 25 Feb 2021 01:17:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614244650; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp185908lfg;
+        Thu, 25 Feb 2021 01:18:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw6WCJmoksZyg3Wt55Zb7u03mA4yxEE1wshE8lecXQl5p+BW/ZbMBYs6NGYGYD75cqxTNvb
+X-Received: by 2002:a05:6638:189:: with SMTP id a9mr1659266jaq.22.1614244679981;
+        Thu, 25 Feb 2021 01:17:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614244679; cv=none;
         d=google.com; s=arc-20160816;
-        b=DTF8qprMKqSLPHC3NeG4pjZ4uvkRpEKmuztre4izP89FXDhSTRq1tIdde6ixxeaJZf
-         hOk62sHYgYImo92JWswp4X8+/fdn5pDSyzE/X5eCMi6pqgFjZsfjtzU4qRa1GvJ0/OpB
-         BzrW5HEde1f0zz8JjNN4GY/mwNFIxJt0RvvyiYnaaNv4jVkQhqOe6taeKRyvCKZIvM3v
-         pPo2Nm7CGN4ou2FK3ClZ8oLWNUUmj2FbWl7+TwQHuZ2icPSnQndiPmhKfeXVARW/7xtu
-         5iAPKGvmAlPWRDap8GFiRjql1B3Qv/Kssec7SGPdylKyV/zuX4hmJHHKgT5DIEPQxWXW
-         EhZw==
+        b=c3QWvi6SL+cD9hUIbKNZ++XkGUnjRq51TRnBM3iyByISMHW7ThfkpsjTeqMRpjyI1/
+         9eIK4h+/GeQh1xgRGJskDSuZgdklLjRoQWNU/0cnxbxhOllqmc4VMLr8SOCeN+nWHJax
+         vNyhMdw6USRmzj82UYqL26mfKji6UMcAADxiHTZsuXY6kLz7GJoixdSjgL+zVriMVUBY
+         qmXKD4F7T7z/QsBQKbIIQQ9kFBlFi2qU/Jvx3f3Vl/16YG/7b3nCY8Cx+kN6oKeAlY2W
+         Xc8AK66ZaWkO151R4oaEGC3QPocVocL8vCAjNCAj5h/w87xd9gUsIzekc+N7XmppijWa
+         Uecw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xZePj1I1XRw41ZbDfqFmf7rcCnjhoBo+XZjBz8WpUOQ=;
-        b=UUgntjWFHKlzu2Ic5YXLkpbzH29RMrrygq+ovWldrjIWhwVKGqQdcF0ODCFy06N/85
-         mCrXA2Z6d209/J0cDRZjuEr+jpOYv4Um9R7zMQ7ZYlQqaBfKZuNvFAuJeBQoPOdl5sar
-         LXPZxeZsPftwn5t7scXJI23BOYEBLTOdbKzbuWZvBnRfEKtChrrK8PWAoZJ8lzya92HQ
-         XlNJElaDO+tGTHCm8cXEnh6cJp7Ez21m3z6i5rU2hT5WrW264vdfwi9nslNHA1NS6ykV
-         GDmUK/Cmkgnv53N3aD/g2j+7ABFrwmujsRWB+gjNYnyj5fFmEanS+syXHc2saLTTbIUf
-         IlMg==
+        bh=X7z56cssujukh5mVL51YBukB9pXuTLOc3hfcaaMOgCE=;
+        b=iije7wYHrtWwYNTrS+4t3wf2FQWdjxAsC+AQEfVW0Kp7A3F1rB0Kf6Yj+wK8lH+8Y2
+         QK4Dg1tXoTjl+lw/tAkBwiCUm2CD93lVnjjXOkM4/74Da/ylWyE7foX22sgSVusSx6eU
+         RN9NBCKy0o9yvGoZPP2hkqIQjb87ejPXb+t4yBS2lccWJfmS3KozBrQY6XvOt9bIVZwy
+         zeov2tbIrJb7Rs0IuxICtq4CO52RFC/CDxixDpQaCDJghF7Vd24dLni74XpBT1VgNCl8
+         mjIXUZBDUA6pOh33nVR47s+1UVBaeVHb2XItWs02hYbo+bhoVLdO15ptauXMyKS7wPAR
+         BdAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJc1NVjV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PJ970ATY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g10si3993580jaq.119.2021.02.25.01.17.30
+        by mx.google.com with ESMTPS id f13si4059270ilu.74.2021.02.25.01.17.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 01:17:30 -0800 (PST)
+        Thu, 25 Feb 2021 01:17:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJc1NVjV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PJ970ATY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54724 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFCm1-00058E-NW
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 04:17:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46976)
+	id 1lFCmV-0005VL-7y
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 04:17:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFCk4-0003hU-G6
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 04:15:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35968)
+ id 1lFCk3-0003e3-BN
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 04:15:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44659)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFCjr-0006CP-Cp
- for qemu-devel@nongnu.org; Thu, 25 Feb 2021 04:15:27 -0500
+ id 1lFCjw-0006EX-MB
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 04:15:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614244514;
+ s=mimecast20190719; t=1614244520;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xZePj1I1XRw41ZbDfqFmf7rcCnjhoBo+XZjBz8WpUOQ=;
- b=AJc1NVjVApA6Gyvhku3mW6LzROAm3GZjY+L6v5hW+oOviWYREhijiST7ROS0aH5rAyf7ln
- U8iJItbhBXpZJkvKcSkUk8JgghfP1KYhLQ7FmXZtuKnfb23RnYuGSHcEhKTtDAk5Isia7B
- 9u/vt87acf/Mo0+VHFObeAxUqGb++dQ=
+ bh=X7z56cssujukh5mVL51YBukB9pXuTLOc3hfcaaMOgCE=;
+ b=PJ970ATYNrNNtnyQy9jmuXoWcZBBHgtJ/eoJY2nVkdz4hSykOVsIf+FaadX/CdrlT1q8G0
+ WcXszfXKZWm0AsQijS/75/lmKyYFiYlzHWUC4UEoo/JlV+9RRr8/pOy370BQ4mFXHU7V9C
+ aKEvvQJYUMdNnUN0FK6wf+Atv/AzHJ8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-129-uNnOs8H9N0-96ZTiz_LgnQ-1; Thu, 25 Feb 2021 04:15:12 -0500
-X-MC-Unique: uNnOs8H9N0-96ZTiz_LgnQ-1
+ us-mta-337-IeEZNgmvPhiuO0wHvfQ5Sw-1; Thu, 25 Feb 2021 04:15:16 -0500
+X-MC-Unique: IeEZNgmvPhiuO0wHvfQ5Sw-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3518A18C35BD;
- Thu, 25 Feb 2021 09:15:11 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0370D18C35CA;
+ Thu, 25 Feb 2021 09:15:15 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-114-34.ams2.redhat.com [10.36.114.34])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C7A6262A25;
- Thu, 25 Feb 2021 09:15:02 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 88F7863623;
+ Thu, 25 Feb 2021 09:15:11 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org,
  peterx@redhat.com, jasowang@redhat.com, pbonzini@redhat.com
-Subject: [PATCH v2 5/7] hw/arm/smmuv3: Enforce invalidation on a power of two
- range
-Date: Thu, 25 Feb 2021 10:14:33 +0100
-Message-Id: <20210225091435.644762-6-eric.auger@redhat.com>
+Subject: [PATCH v2 6/7] hw/arm/smmuv3: Fix SMMU_CMD_CFGI_STE_RANGE handling
+Date: Thu, 25 Feb 2021 10:14:34 +0100
+Message-Id: <20210225091435.644762-7-eric.auger@redhat.com>
 In-Reply-To: <20210225091435.644762-1-eric.auger@redhat.com>
 References: <20210225091435.644762-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -102,7 +101,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,114 +117,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: vivek.gautam@arm.com, shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mNAHfN3HuZwr
+X-TUID: 7XpvCy3k9FZv
 
-As of today, the driver can invalide a number of pages that is
-not a power of 2. However IOTLB unmap notifications and internal
-IOTLB invalidations work with masks leading to erroneous
-invalidations.
+If the whole SID range (32b) is invalidated (SMMU_CMD_CFGI_ALL),
+@end overflows and we fail to handle the command properly.
 
-In case the range is not a power of 2, split invalidations into
-power of 2 invalidations.
+Once this gets fixed, the current code really is awkward in the
+sense it loops over the whole range instead of removing the
+currently cached configs through a hash table lookup.
 
-When looking for a single page entry in the vSMMU internal IOTLB,
-let's make sure that if the entry is not found using a
-g_hash_table_remove() we iterate over all the entries to find a
-potential range that overlaps it.
+Fix both the overflow and the lookup.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/arm/smmu-common.c | 30 ++++++++++++++++++------------
- hw/arm/smmuv3.c      | 24 ++++++++++++++++++++----
- 2 files changed, 38 insertions(+), 16 deletions(-)
+ hw/arm/smmu-internal.h |  5 +++++
+ hw/arm/smmuv3.c        | 34 ++++++++++++++++++++--------------
+ 2 files changed, 25 insertions(+), 14 deletions(-)
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index e9ca3aebb2..84d2c62c26 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -151,22 +151,28 @@ inline void
- smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
-                     uint8_t tg, uint64_t num_pages, uint8_t ttl)
- {
-+    /* if tg is not set we use 4KB range invalidation */
-+    uint8_t granule = tg ? tg * 2 + 10 : 12;
-+
-     if (ttl && (num_pages == 1) && (asid >= 0)) {
-         SMMUIOTLBKey key = smmu_get_iotlb_key(asid, iova, tg, ttl);
+diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+index 55147f29be..2d75b31953 100644
+--- a/hw/arm/smmu-internal.h
++++ b/hw/arm/smmu-internal.h
+@@ -104,4 +104,9 @@ typedef struct SMMUIOTLBPageInvInfo {
+     uint64_t mask;
+ } SMMUIOTLBPageInvInfo;
  
--        g_hash_table_remove(s->iotlb, &key);
--    } else {
--        /* if tg is not set we use 4KB range invalidation */
--        uint8_t granule = tg ? tg * 2 + 10 : 12;
--
--        SMMUIOTLBPageInvInfo info = {
--            .asid = asid, .iova = iova,
--            .mask = (num_pages * 1 << granule) - 1};
--
--        g_hash_table_foreach_remove(s->iotlb,
--                                    smmu_hash_remove_by_asid_iova,
--                                    &info);
-+        if (g_hash_table_remove(s->iotlb, &key)) {
-+            return;
-+        }
-+        /*
-+         * if the entry is not found, let's see if it does not
-+         * belong to a larger IOTLB entry
-+         */
-     }
++typedef struct SMMUSIDRange {
++    uint32_t start;
++    uint32_t end;
++} SMMUSIDRange;
 +
-+    SMMUIOTLBPageInvInfo info = {
-+        .asid = asid, .iova = iova,
-+        .mask = (num_pages * 1 << granule) - 1};
-+
-+    g_hash_table_foreach_remove(s->iotlb,
-+                                smmu_hash_remove_by_asid_iova,
-+                                &info);
- }
- 
- inline void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
+ #endif
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index bd1f97000d..fdd6332ce5 100644
+index fdd6332ce5..3b87324ce2 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -861,7 +861,8 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
-     uint16_t vmid = CMD_VMID(cmd);
-     bool leaf = CMD_LEAF(cmd);
-     uint8_t tg = CMD_TG(cmd);
--    hwaddr num_pages = 1;
-+    uint64_t first_page = 0, last_page;
-+    uint64_t num_pages = 1;
-     int asid = -1;
+@@ -32,6 +32,7 @@
  
-     if (tg) {
-@@ -874,9 +875,24 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
-     if (type == SMMU_CMD_TLBI_NH_VA) {
-         asid = CMD_ASID(cmd);
+ #include "hw/arm/smmuv3.h"
+ #include "smmuv3-internal.h"
++#include "smmu-internal.h"
+ 
+ /**
+  * smmuv3_trigger_irq - pulse @irq if enabled and update
+@@ -895,6 +896,20 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
      }
--    trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
--    smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
--    smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
-+
-+    /* Split invalidations into ^2 range invalidations */
-+    last_page = num_pages - 1;
-+    while (num_pages) {
-+        uint8_t granule = tg * 2 + 10;
-+        uint64_t mask, count;
-+
-+        mask = dma_aligned_pow2_mask(first_page, last_page, 64 - granule);
-+        count = mask + 1;
-+
-+        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, count, ttl, leaf);
-+        smmuv3_inv_notifiers_iova(s, asid, addr, tg, count);
-+        smmu_iotlb_inv_iova(s, asid, addr, tg, count, ttl);
-+
-+        num_pages -= count;
-+        first_page += count;
-+        addr += count * BIT_ULL(granule);
-+    }
  }
  
++static gboolean
++smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
++{
++    SMMUDevice *sdev = (SMMUDevice *)key;
++    uint32_t sid = smmu_get_sid(sdev);
++    SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
++
++    if (sid < sid_range->start || sid > sid_range->end) {
++        return false;
++    }
++    trace_smmuv3_config_cache_inv(sid);
++    return true;
++}
++
  static int smmuv3_cmdq_consume(SMMUv3State *s)
+ {
+     SMMUState *bs = ARM_SMMU(s);
+@@ -965,27 +980,18 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+         }
+         case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
+         {
+-            uint32_t start = CMD_SID(&cmd), end, i;
++            uint32_t start = CMD_SID(&cmd);
+             uint8_t range = CMD_STE_RANGE(&cmd);
++            uint64_t end = start + (1ULL << (range + 1)) - 1;
++            SMMUSIDRange sid_range = {start, end};
+ 
+             if (CMD_SSEC(&cmd)) {
+                 cmd_error = SMMU_CERROR_ILL;
+                 break;
+             }
+-
+-            end = start + (1 << (range + 1)) - 1;
+             trace_smmuv3_cmdq_cfgi_ste_range(start, end);
+-
+-            for (i = start; i <= end; i++) {
+-                IOMMUMemoryRegion *mr = smmu_iommu_mr(bs, i);
+-                SMMUDevice *sdev;
+-
+-                if (!mr) {
+-                    continue;
+-                }
+-                sdev = container_of(mr, SMMUDevice, iommu);
+-                smmuv3_flush_config(sdev);
+-            }
++            g_hash_table_foreach_remove(bs->configs, smmuv3_invalidate_ste,
++                                        &sid_range);
+             break;
+         }
+         case SMMU_CMD_CFGI_CD:
 -- 
 2.26.2
 

@@ -1,90 +1,89 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp252084lfg;
-        Thu, 25 Feb 2021 03:13:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJydEPgYWuXmPfws4D1SCSlwyEOKPM1tA9+balinA3YUEUovjx1jXzEbXZcCXzFQflfAaMP0
-X-Received: by 2002:a05:6638:260f:: with SMTP id m15mr2590015jat.127.1614251602627;
-        Thu, 25 Feb 2021 03:13:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614251602; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp253793lfg;
+        Thu, 25 Feb 2021 03:15:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzI/nIHEqcFQ6dT6ewB9S9ZpxczqR/McgYhAdVGxiI8CLOXoqWh8S7kywj8I1MxVRrOnanC
+X-Received: by 2002:a05:6e02:1d0b:: with SMTP id i11mr1998231ila.206.1614251746826;
+        Thu, 25 Feb 2021 03:15:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614251746; cv=none;
         d=google.com; s=arc-20160816;
-        b=beQrruWjsKS0DQeXv+tniL7VmYKVq73RRBBVcm4auQB4eBcu7LJzgBk3M8YgtwOtSS
-         TjUxrKKU5rZnQnUZLOxXHhj6ARVtdV6U0ry8KJKXXKrSXd0uOaeD9ibNdcIrjRj7VQkg
-         RLZ2kCaVMk3Fk7PIQn3E4O0Pe/sF0e1r31pJBIzGr3hzghJTefJFuqI0x4GpRsw4Viiv
-         7ZHjLg1fhZTix23qkhcas94YTB/g25QAvdE+mq0NWc7hvqv6sHOIpqXWfljjiW7mqvsw
-         VPNpqS5oihoLw+6QMO/QlZ2zlcVujG0WyZwqAu7v3MKdc+yDuzel6Zr+eKWyalCbEnfK
-         B22A==
+        b=XgyRVFhtuBXd98IWDtGZ7ZFt/4Qr62FYx4N9u8AQSkG0apu++qAAv0C4Y0PjPAdAak
+         HadoaJYjtWHugZiySQGLYgWvJu2g0jchgZEh24MCB/mDy+nNDQ/UWVV/fNIoNhzFdgPQ
+         efYKFrdLt5dmq1iyy65NEx9Kixy8qxDfBH82nkWr0wiso5qzUrHwd8pO7R6/nG0Yf4yc
+         GTGzOeQ6nwphGmfvV7DcDCxWodDkzIyUucya01jru2+9o2vqaupl1fxZs/lDqcGVKD0g
+         zdSnB5G/ClKOakkO5EzMiJl6ASKYzFpWy/0ezcqtAO/B9Rs/48wJp+P1M8yMeGVu24z1
+         wGHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=3XW79n4oko0bTx69ai3M57YlS6fR2g+U1yR6dR4hmFk=;
-        b=kTcXazasLQJxxfzZUt4Pcm2rvaTwjZuYgfR7vgiYFv657I5ZVGosT11w/HUWGtAw4W
-         iDslvFlSmWA679lFRq8SInpoYDywUFzBiLyaizeKR7uVnYNO1HzzYtoAUmuo7g7lU24k
-         p7qYhC+/xxRZxwb42oLwTUvQmzzOsD+a1ZrKgYXpdxmWzOPGVA78M7kEzUsDEjDITjKW
-         MDTUaWiqupKsgSNyo1o1fZ6g/zCyiNPG8f1rx8p9qwuJOBlgMHNxgKD9kMY5w4wkCecV
-         +I32a2cIiRUN76Cpn1ppBniMl7z9lNI9T5a78MJUq2LduasFgVzGY0CIuf/hTbjz+emU
-         cNPQ==
+        bh=BhFblp1A9QhIiDPdMzajfxejC9NkSKIX2xMpVO3bGug=;
+        b=b256OjOB+dD/q0fEC/rdo4fA2btBwfxIrIJJyJSwq6Dz5BduA+MU+i5A4JXTE6z55Q
+         5tXurOLO2Nr1fP6CGlcFFf89CU++8PBQfa5HwLMlPHzDUcFvrP+xGc10vMmc6hDjtlSY
+         hWuN4Z7F2qWu6ZuNxp3vOS1xqHRojXDK6QzzkyP0nPVGvRxVOYi3yW06v895JPtEhiCd
+         lzs9TrqWZPfdRRvIRMq1jZsl0gq6We8PstsJ1qV5R9mgbZTmDaQsAc/gcRJE0FBe7ICL
+         88lIu0L/yl1+iGEXptq1hrCEZxNmRvSTG7ZQ1L6k/vUmBIulcAUkKfop3cAtRLujYYEN
+         oqmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SR9BPdBU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aIrIi+On;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j4si2567520jaq.98.2021.02.25.03.13.22
+        by mx.google.com with ESMTPS id e6si5541057ilu.126.2021.02.25.03.15.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 03:13:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Feb 2021 03:15:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SR9BPdBU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aIrIi+On;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42464 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFEa9-0002ie-QZ
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:13:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55942)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lFEcT-0004hG-Vt
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 06:15:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEKh-00038O-Oc
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:57:24 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35020)
+ id 1lFEJe-0001AG-28
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:56:18 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:39339)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFEKe-0006eV-6n
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 05:57:23 -0500
+ id 1lFEJb-00067U-EL
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 05:56:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614250639;
+ s=mimecast20190719; t=1614250574;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3XW79n4oko0bTx69ai3M57YlS6fR2g+U1yR6dR4hmFk=;
- b=SR9BPdBUkhygf3pTUT8flMCodJ8/k8PMbE+8Xnid9sHqI8q3vFwTzIh3G6GDdKpGj1VthV
- 0rGwGxWb3Gdk56TJY9OlIZXnkubXhpvLiYSeJZfh2u7m664+W9cvqvjkhNvlTbfw/HnZmt
- h326PiMSCiTxyLe8n1Nfdl8RaOn3Fg0=
+ bh=BhFblp1A9QhIiDPdMzajfxejC9NkSKIX2xMpVO3bGug=;
+ b=aIrIi+OnFMHFEGBzK3/6oFed/Ct0Su+pgEHokklGuzwY6E5idi4UWtkvNPkKdlX1Dc5DDt
+ g3mC2Zva0L90LVaaIIK0tGea0S6twbowCSV9hJRCG8BIvCk6Uo1cuKEXpsEzUVT8nR2wDw
+ aVZzQaM+b5JA9qGTn4pnrKfG3x+45U8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-176-lPzPtDZ2NA6Q-NHgeZjqWA-1; Thu, 25 Feb 2021 05:57:17 -0500
-X-MC-Unique: lPzPtDZ2NA6Q-NHgeZjqWA-1
+ us-mta-584-UxaYTmbONDG1xZMEhwdqDA-1; Thu, 25 Feb 2021 05:56:13 -0500
+X-MC-Unique: UxaYTmbONDG1xZMEhwdqDA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B750801978;
- Thu, 25 Feb 2021 10:57:15 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F1E771005501;
+ Thu, 25 Feb 2021 10:56:10 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-150.ams2.redhat.com [10.36.112.150])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 443C45D9D7;
- Thu, 25 Feb 2021 10:56:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 037475D9D7;
+ Thu, 25 Feb 2021 10:56:04 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  alex.williamson@redhat.com, jacob.jun.pan@linux.intel.com,
  yi.l.liu@intel.com
-Subject: [RFC v8 22/28] hw/arm/smmuv3: Fill the IOTLBEntry arch_id on NH_VA
- invalidation
-Date: Thu, 25 Feb 2021 11:52:27 +0100
-Message-Id: <20210225105233.650545-23-eric.auger@redhat.com>
+Subject: [RFC v8 17/28] vfio/pci: Register handler for iommu fault
+Date: Thu, 25 Feb 2021 11:52:22 +0100
+Message-Id: <20210225105233.650545-18-eric.auger@redhat.com>
 In-Reply-To: <20210225105233.650545-1-eric.auger@redhat.com>
 References: <20210225105233.650545-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -105,54 +104,194 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
  jiangkunkun@huawei.com, zhangfei.gao@foxmail.com, peterx@redhat.com,
  shameerali.kolothum.thodi@huawei.com, yuzenghui@huawei.com,
  zhangfei.gao@linaro.org, will@kernel.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qmFzr3T+uIwc
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Oybz4sJc0/uV
 
-When the guest invalidates one S1 entry, it passes the asid.
-When propagating this invalidation downto the host, the asid
-information also must be passed. So let's fill the arch_id field
-introduced for that purpose and accordingly set the flags to
-indicate its presence.
+We use the new extended IRQ VFIO_IRQ_TYPE_NESTED type and
+VFIO_IRQ_SUBTYPE_DMA_FAULT subtype to set/unset
+a notifier for physical DMA faults. The associated eventfd is
+triggered, in nested mode, whenever a fault is detected at IOMMU
+physical level.
+
+The actual handler will be implemented in subsequent patches.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-v7 -> v8:
-- set flags
----
- hw/arm/smmuv3.c | 2 ++
- 1 file changed, 2 insertions(+)
+v4 -> v5:
+- index_to_str now returns the index name, ie. DMA_FAULT
+- use the extended IRQ
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ab0e1c5818..d5a935004b 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -832,6 +832,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
-     event.entry.iova = iova;
-     event.entry.addr_mask = num_pages * (1 << granule) - 1;
-     event.entry.perm = IOMMU_NONE;
-+    event.entry.flags = IOMMU_INV_FLAGS_ARCHID;
-+    event.entry.arch_id = asid;
+v3 -> v4:
+- check VFIO_PCI_DMA_FAULT_IRQ_INDEX is supported at kernel level
+  before attempting to set signaling for it.
+---
+ hw/vfio/pci.c | 81 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ hw/vfio/pci.h |  7 +++++
+ 2 files changed, 87 insertions(+), 1 deletion(-)
+
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 573c74b466..dfce777556 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -2850,6 +2850,76 @@ static PCIPASIDOps vfio_pci_pasid_ops = {
+     .set_pasid_table = vfio_iommu_set_pasid_table,
+ };
  
-     memory_region_notify_iommu_one(n, &event);
- }
++static void vfio_dma_fault_notifier_handler(void *opaque)
++{
++    VFIOPCIExtIRQ *ext_irq = opaque;
++
++    if (!event_notifier_test_and_clear(&ext_irq->notifier)) {
++        return;
++    }
++}
++
++static int vfio_register_ext_irq_handler(VFIOPCIDevice *vdev,
++                                         uint32_t type, uint32_t subtype,
++                                         IOHandler *handler)
++{
++    int32_t fd, ext_irq_index, index;
++    struct vfio_irq_info *irq_info;
++    Error *err = NULL;
++    EventNotifier *n;
++    int ret;
++
++    ret = vfio_get_dev_irq_info(&vdev->vbasedev, type, subtype, &irq_info);
++    if (ret) {
++        return ret;
++    }
++    index = irq_info->index;
++    ext_irq_index = irq_info->index - VFIO_PCI_NUM_IRQS;
++    g_free(irq_info);
++
++    vdev->ext_irqs[ext_irq_index].vdev = vdev;
++    vdev->ext_irqs[ext_irq_index].index = index;
++    n = &vdev->ext_irqs[ext_irq_index].notifier;
++
++    ret = event_notifier_init(n, 0);
++    if (ret) {
++        error_report("vfio: Unable to init event notifier for ext irq %d(%d)",
++                     ext_irq_index, ret);
++        return ret;
++    }
++
++    fd = event_notifier_get_fd(n);
++    qemu_set_fd_handler(fd, vfio_dma_fault_notifier_handler, NULL,
++                        &vdev->ext_irqs[ext_irq_index]);
++
++    ret = vfio_set_irq_signaling(&vdev->vbasedev, index, 0,
++                                 VFIO_IRQ_SET_ACTION_TRIGGER, fd, &err);
++    if (ret) {
++        error_reportf_err(err, VFIO_MSG_PREFIX, vdev->vbasedev.name);
++        qemu_set_fd_handler(fd, NULL, NULL, vdev);
++        event_notifier_cleanup(n);
++    }
++    return ret;
++}
++
++static void vfio_unregister_ext_irq_notifiers(VFIOPCIDevice *vdev)
++{
++    VFIODevice *vbasedev = &vdev->vbasedev;
++    Error *err = NULL;
++    int i;
++
++    for (i = 0; i < vbasedev->num_irqs - VFIO_PCI_NUM_IRQS; i++) {
++        if (vfio_set_irq_signaling(vbasedev, i + VFIO_PCI_NUM_IRQS , 0,
++                                   VFIO_IRQ_SET_ACTION_TRIGGER, -1, &err)) {
++            error_reportf_err(err, VFIO_MSG_PREFIX, vdev->vbasedev.name);
++        }
++        qemu_set_fd_handler(event_notifier_get_fd(&vdev->ext_irqs[i].notifier),
++                            NULL, NULL, vdev);
++        event_notifier_cleanup(&vdev->ext_irqs[i].notifier);
++    }
++    g_free(vdev->ext_irqs);
++}
++
+ static void vfio_realize(PCIDevice *pdev, Error **errp)
+ {
+     VFIOPCIDevice *vdev = VFIO_PCI(pdev);
+@@ -2860,7 +2930,7 @@ static void vfio_realize(PCIDevice *pdev, Error **errp)
+     ssize_t len;
+     struct stat st;
+     int groupid;
+-    int i, ret;
++    int i, ret, nb_ext_irqs;
+     bool is_mdev;
+ 
+     if (!vdev->vbasedev.sysfsdev) {
+@@ -2948,6 +3018,11 @@ static void vfio_realize(PCIDevice *pdev, Error **errp)
+         goto error;
+     }
+ 
++    nb_ext_irqs = vdev->vbasedev.num_irqs - VFIO_PCI_NUM_IRQS;
++    if (nb_ext_irqs > 0) {
++        vdev->ext_irqs = g_new0(VFIOPCIExtIRQ, nb_ext_irqs);
++    }
++
+     vfio_populate_device(vdev, &err);
+     if (err) {
+         error_propagate(errp, err);
+@@ -3159,6 +3234,9 @@ static void vfio_realize(PCIDevice *pdev, Error **errp)
+ 
+     vfio_register_err_notifier(vdev);
+     vfio_register_req_notifier(vdev);
++    vfio_register_ext_irq_handler(vdev, VFIO_IRQ_TYPE_NESTED,
++                                  VFIO_IRQ_SUBTYPE_DMA_FAULT,
++                                  vfio_dma_fault_notifier_handler);
+     vfio_setup_resetfn_quirk(vdev);
+ 
+     pci_setup_pasid_ops(pdev, &vfio_pci_pasid_ops);
+@@ -3201,6 +3279,7 @@ static void vfio_exitfn(PCIDevice *pdev)
+ 
+     vfio_unregister_req_notifier(vdev);
+     vfio_unregister_err_notifier(vdev);
++    vfio_unregister_ext_irq_notifiers(vdev);
+     pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
+     if (vdev->irqchip_change_notifier.notify) {
+         kvm_irqchip_remove_change_notifier(&vdev->irqchip_change_notifier);
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 1574ef983f..c5f06f4ae4 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -114,6 +114,12 @@ typedef struct VFIOMSIXInfo {
+     unsigned long *pending;
+ } VFIOMSIXInfo;
+ 
++typedef struct VFIOPCIExtIRQ {
++    struct VFIOPCIDevice *vdev;
++    EventNotifier notifier;
++    uint32_t index;
++} VFIOPCIExtIRQ;
++
+ #define TYPE_VFIO_PCI "vfio-pci"
+ OBJECT_DECLARE_SIMPLE_TYPE(VFIOPCIDevice, VFIO_PCI)
+ 
+@@ -138,6 +144,7 @@ struct VFIOPCIDevice {
+     PCIHostDeviceAddress host;
+     EventNotifier err_notifier;
+     EventNotifier req_notifier;
++    VFIOPCIExtIRQ *ext_irqs;
+     int (*resetfn)(struct VFIOPCIDevice *);
+     uint32_t vendor_id;
+     uint32_t device_id;
 -- 
 2.26.2
 

@@ -1,89 +1,89 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp184677lfg;
-        Thu, 25 Feb 2021 01:15:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxOnEngGz85+kwmewSHJwiQo91BDXvcHAc0gLzTJIGlV4DYxIEKOCX0WIvaHVLTrMaQTa7q
-X-Received: by 2002:a5d:9e42:: with SMTP id i2mr1969024ioi.193.1614244533378;
-        Thu, 25 Feb 2021 01:15:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614244533; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp185692lfg;
+        Thu, 25 Feb 2021 01:17:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz20mI2faZ/7Oft/Y4PFkGi6C5w6n/MtuZDhva/o1fnSPJoD9loxzY0ZBYvaH4lmUokb65m
+X-Received: by 2002:a05:6638:3285:: with SMTP id f5mr2260815jav.37.1614244650492;
+        Thu, 25 Feb 2021 01:17:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614244650; cv=none;
         d=google.com; s=arc-20160816;
-        b=FY8e5QgXJMguEdGk/pRoGhOqN+fA9f4MEb1GkIueE3sScx5wMnAetIWkGV78f+lVOn
-         loW4wfyFZ7/866HcNrkvYJPZ8Wr2m+9jeDy+J9vwTj7CSKO9hq+XxNvPFxAB4wyG+Pon
-         WRK21nnKvglehWUSskymQ/aBhuunXlTPNiA2W5e99HfYkl3HoPTLfRa0LDqi1dB0JOc8
-         asp//5vPdQ9fn8OlF4P4/8FG0kNOElleDfcFxrlsS8YBp4L1WIUeLM3qXCEUIuZPD2Ca
-         QDzmKX6n3OFC24fGz6LBYNbMduq+oIGjFVqxGfJJcpNIAbYbpB3kqT7yBJ+MH7+Svjwg
-         ZOcQ==
+        b=DTF8qprMKqSLPHC3NeG4pjZ4uvkRpEKmuztre4izP89FXDhSTRq1tIdde6ixxeaJZf
+         hOk62sHYgYImo92JWswp4X8+/fdn5pDSyzE/X5eCMi6pqgFjZsfjtzU4qRa1GvJ0/OpB
+         BzrW5HEde1f0zz8JjNN4GY/mwNFIxJt0RvvyiYnaaNv4jVkQhqOe6taeKRyvCKZIvM3v
+         pPo2Nm7CGN4ou2FK3ClZ8oLWNUUmj2FbWl7+TwQHuZ2icPSnQndiPmhKfeXVARW/7xtu
+         5iAPKGvmAlPWRDap8GFiRjql1B3Qv/Kssec7SGPdylKyV/zuX4hmJHHKgT5DIEPQxWXW
+         EhZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jVKKWvVoOg+XYg6v0Z6BnfNXsvRHogwcr1q+jcDS2Rw=;
-        b=wQRU6C8WOGUkah1ewjPz7ViZf74v+vnyJdzoTS9MDWI389uadIzXtuWLTvml0aBhCc
-         DIECHRzRzsB5MJIQJOKt/UGK6zkROw59hQUUZxCvUfjg/Y/q50/UQp0eTBfoxNgRShsU
-         +u0BT/pkFwTnewE0Frr3TPhL9J5A9c5pljbNm1y0iVPvv2SB/OUFhC5PXYW2GYCTEtgB
-         lh7VXrOqbUdeR/V8tPUE6I9ibtmc7DYgcO/qdnH9ilCyVk+FrIak8rtu8z/kw+K7xFDb
-         55155FY2BTbdYlPd3qOzB+diBglIL3E8UrbcE10U4hcEQ40Tf3q2Rn8Lr5HgGitdXKaP
-         5kbA==
+        bh=xZePj1I1XRw41ZbDfqFmf7rcCnjhoBo+XZjBz8WpUOQ=;
+        b=UUgntjWFHKlzu2Ic5YXLkpbzH29RMrrygq+ovWldrjIWhwVKGqQdcF0ODCFy06N/85
+         mCrXA2Z6d209/J0cDRZjuEr+jpOYv4Um9R7zMQ7ZYlQqaBfKZuNvFAuJeBQoPOdl5sar
+         LXPZxeZsPftwn5t7scXJI23BOYEBLTOdbKzbuWZvBnRfEKtChrrK8PWAoZJ8lzya92HQ
+         XlNJElaDO+tGTHCm8cXEnh6cJp7Ez21m3z6i5rU2hT5WrW264vdfwi9nslNHA1NS6ykV
+         GDmUK/Cmkgnv53N3aD/g2j+7ABFrwmujsRWB+gjNYnyj5fFmEanS+syXHc2saLTTbIUf
+         IlMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UGWoH33s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJc1NVjV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t14si4564325ilg.7.2021.02.25.01.15.33
+        by mx.google.com with ESMTPS id g10si3993580jaq.119.2021.02.25.01.17.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 01:15:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Feb 2021 01:17:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UGWoH33s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AJc1NVjV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50596 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54724 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFCk8-0003Ik-JZ
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 04:15:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46784)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lFCm1-00058E-NW
+	for alex.bennee@linaro.org; Thu, 25 Feb 2021 04:17:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFCjd-0003Eh-HK
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 04:15:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29545)
+ id 1lFCk4-0003hU-G6
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 04:15:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:35968)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1lFCjb-00061X-RG
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 04:15:01 -0500
+ id 1lFCjr-0006CP-Cp
+ for qemu-devel@nongnu.org; Thu, 25 Feb 2021 04:15:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614244499;
+ s=mimecast20190719; t=1614244514;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jVKKWvVoOg+XYg6v0Z6BnfNXsvRHogwcr1q+jcDS2Rw=;
- b=UGWoH33sddropG9e3lt8IqlmQ2W3Vn79CERKlTXGGcVADww7gIXPdniohIFQFTMYxcTDu+
- xLzQVJFEml70NP4cynH4iOUhg2cQMyUouaUbLf81AVUrHSUj0DHrKtRBWS+j2F2i+Gghdi
- HxUVCkWuUnu2JKSoUAEFj5sCUNxtCdk=
+ bh=xZePj1I1XRw41ZbDfqFmf7rcCnjhoBo+XZjBz8WpUOQ=;
+ b=AJc1NVjVApA6Gyvhku3mW6LzROAm3GZjY+L6v5hW+oOviWYREhijiST7ROS0aH5rAyf7ln
+ U8iJItbhBXpZJkvKcSkUk8JgghfP1KYhLQ7FmXZtuKnfb23RnYuGSHcEhKTtDAk5Isia7B
+ 9u/vt87acf/Mo0+VHFObeAxUqGb++dQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-61-tV2MiKr6N9erAjz57tsb9Q-1; Thu, 25 Feb 2021 04:14:55 -0500
-X-MC-Unique: tV2MiKr6N9erAjz57tsb9Q-1
+ us-mta-129-uNnOs8H9N0-96ZTiz_LgnQ-1; Thu, 25 Feb 2021 04:15:12 -0500
+X-MC-Unique: uNnOs8H9N0-96ZTiz_LgnQ-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 12A12814301;
- Thu, 25 Feb 2021 09:14:54 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3518A18C35BD;
+ Thu, 25 Feb 2021 09:15:11 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-114-34.ams2.redhat.com [10.36.114.34])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4842963623;
- Thu, 25 Feb 2021 09:14:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C7A6262A25;
+ Thu, 25 Feb 2021 09:15:02 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, jean-philippe@linaro.org,
  peterx@redhat.com, jasowang@redhat.com, pbonzini@redhat.com
-Subject: [PATCH v2 1/7] intel_iommu: Fix mask may be uninitialized in
- vtd_context_device_invalidate
-Date: Thu, 25 Feb 2021 10:14:29 +0100
-Message-Id: <20210225091435.644762-2-eric.auger@redhat.com>
+Subject: [PATCH v2 5/7] hw/arm/smmuv3: Enforce invalidation on a power of two
+ range
+Date: Thu, 25 Feb 2021 10:14:33 +0100
+Message-Id: <20210225091435.644762-6-eric.auger@redhat.com>
 In-Reply-To: <20210225091435.644762-1-eric.auger@redhat.com>
 References: <20210225091435.644762-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -92,8 +92,8 @@ Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
 Received-SPF: pass client-ip=216.205.24.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
@@ -102,51 +102,130 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: vivek.gautam@arm.com, shameerali.kolothum.thodi@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C4/aQh73KnXX
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mNAHfN3HuZwr
 
-With -Werror=maybe-uninitialized configuration we get
-../hw/i386/intel_iommu.c: In function ‘vtd_context_device_invalidate’:
-../hw/i386/intel_iommu.c:1888:10: error: ‘mask’ may be used
-uninitialized in this function [-Werror=maybe-uninitialized]
- 1888 |     mask = ~mask;
-      |     ~~~~~^~~~~~~
+As of today, the driver can invalide a number of pages that is
+not a power of 2. However IOTLB unmap notifications and internal
+IOTLB invalidations work with masks leading to erroneous
+invalidations.
 
-Add a g_assert_not_reached() to avoid the error.
+In case the range is not a power of 2, split invalidations into
+power of 2 invalidations.
+
+When looking for a single page entry in the vSMMU internal IOTLB,
+let's make sure that if the entry is not found using a
+g_hash_table_remove() we iterate over all the entries to find a
+potential range that overlaps it.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/i386/intel_iommu.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/arm/smmu-common.c | 30 ++++++++++++++++++------------
+ hw/arm/smmuv3.c      | 24 ++++++++++++++++++++----
+ 2 files changed, 38 insertions(+), 16 deletions(-)
 
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index b4f5094259..3206f379f8 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -1884,6 +1884,8 @@ static void vtd_context_device_invalidate(IntelIOMMUState *s,
-     case 3:
-         mask = 7;   /* Mask bit 2:0 in the SID field */
-         break;
-+    default:
-+        g_assert_not_reached();
-     }
-     mask = ~mask;
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index e9ca3aebb2..84d2c62c26 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -151,22 +151,28 @@ inline void
+ smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova,
+                     uint8_t tg, uint64_t num_pages, uint8_t ttl)
+ {
++    /* if tg is not set we use 4KB range invalidation */
++    uint8_t granule = tg ? tg * 2 + 10 : 12;
++
+     if (ttl && (num_pages == 1) && (asid >= 0)) {
+         SMMUIOTLBKey key = smmu_get_iotlb_key(asid, iova, tg, ttl);
  
+-        g_hash_table_remove(s->iotlb, &key);
+-    } else {
+-        /* if tg is not set we use 4KB range invalidation */
+-        uint8_t granule = tg ? tg * 2 + 10 : 12;
+-
+-        SMMUIOTLBPageInvInfo info = {
+-            .asid = asid, .iova = iova,
+-            .mask = (num_pages * 1 << granule) - 1};
+-
+-        g_hash_table_foreach_remove(s->iotlb,
+-                                    smmu_hash_remove_by_asid_iova,
+-                                    &info);
++        if (g_hash_table_remove(s->iotlb, &key)) {
++            return;
++        }
++        /*
++         * if the entry is not found, let's see if it does not
++         * belong to a larger IOTLB entry
++         */
+     }
++
++    SMMUIOTLBPageInvInfo info = {
++        .asid = asid, .iova = iova,
++        .mask = (num_pages * 1 << granule) - 1};
++
++    g_hash_table_foreach_remove(s->iotlb,
++                                smmu_hash_remove_by_asid_iova,
++                                &info);
+ }
+ 
+ inline void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index bd1f97000d..fdd6332ce5 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -861,7 +861,8 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+     uint16_t vmid = CMD_VMID(cmd);
+     bool leaf = CMD_LEAF(cmd);
+     uint8_t tg = CMD_TG(cmd);
+-    hwaddr num_pages = 1;
++    uint64_t first_page = 0, last_page;
++    uint64_t num_pages = 1;
+     int asid = -1;
+ 
+     if (tg) {
+@@ -874,9 +875,24 @@ static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
+     if (type == SMMU_CMD_TLBI_NH_VA) {
+         asid = CMD_ASID(cmd);
+     }
+-    trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
+-    smmuv3_inv_notifiers_iova(s, asid, addr, tg, num_pages);
+-    smmu_iotlb_inv_iova(s, asid, addr, tg, num_pages, ttl);
++
++    /* Split invalidations into ^2 range invalidations */
++    last_page = num_pages - 1;
++    while (num_pages) {
++        uint8_t granule = tg * 2 + 10;
++        uint64_t mask, count;
++
++        mask = dma_aligned_pow2_mask(first_page, last_page, 64 - granule);
++        count = mask + 1;
++
++        trace_smmuv3_s1_range_inval(vmid, asid, addr, tg, count, ttl, leaf);
++        smmuv3_inv_notifiers_iova(s, asid, addr, tg, count);
++        smmu_iotlb_inv_iova(s, asid, addr, tg, count, ttl);
++
++        num_pages -= count;
++        first_page += count;
++        addr += count * BIT_ULL(granule);
++    }
+ }
+ 
+ static int smmuv3_cmdq_consume(SMMUv3State *s)
 -- 
 2.26.2
 

@@ -1,102 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1442536lfg;
-        Fri, 26 Feb 2021 08:53:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy2IvnE+nUd9cjRhCrI6x2luNYFRpIz4KnQTAM6YGV1/5EdGwKMpRPQyKrpzjgeA7JrgbT2
-X-Received: by 2002:a05:6602:2e93:: with SMTP id m19mr3604800iow.122.1614358435178;
-        Fri, 26 Feb 2021 08:53:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614358435; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1443168lfg;
+        Fri, 26 Feb 2021 08:54:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxIGrArc879EeWnfRQTGgwBI1qUBwdiISsH0npnzcz8Zua0+pIMnbSADkeCHtXplfBsS20v
+X-Received: by 2002:a92:d686:: with SMTP id p6mr3105356iln.268.1614358492487;
+        Fri, 26 Feb 2021 08:54:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614358492; cv=none;
         d=google.com; s=arc-20160816;
-        b=MY0wMxyjWWqV/IbiGBwJxzEM7AZpNa5GdiinOKPNloKmnXRK2J3AA2wyeRinliUCuS
-         k36rsdVCSwt5XWnfYP+2gOm0lIyWGFI4VTyTmnxaiOrr8SqArjNYiutgCAbjb48EYT7y
-         QJio57yQIG5Qw7JIb2zfk+lNlGcz1FGLWXKew4w3/UAFIn4gdWVTa9VKMEvKnPkKGe5+
-         Z/dafR+2qH3+FDUkFyTWmg0dXGnjk7TXAMadOtjgxL/pEr2+6kiKjXGnvYw2aE5wo3on
-         ZkEN0ofLOVwwLLlh7oEI6VLJ4mgVhZboqFSw/3Td/zGrPj7acS7Sn3AHghJxl/DUPzJP
-         rS8w==
+        b=j8pNNU3dnhSkmZh0DCZFBCrZzf41jHMdMqZU2Cc4YRkHT3+SeoglV98FayDxY+XaoG
+         OQVjkVRy0umHII+G2xdvt7lvlOpY+DRONlG7qKeaWmwH0cni5k7253GvTTagvY65mQ/4
+         1ubUq6990n+Sx3ZDOU7kT8EnKrW82ytcVkyJQCO229QDoSbgW3KtYVqwtzNORieLkFwl
+         G+S8OuuuUaorl7lSJqLjeyxCfF1exl6jDiMkooE0oADheeYQ0NsrW97c2zyaPjDg3Gaj
+         0HyGi+qPGW8jEnZiUUPiglewnvXDhl2Y1UauLGIQOWTbHAKlHUL8KvjHQ0pBMP5SZYIp
+         yM7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=baCqRvN00Z/k/DEXOAL/5KZeUutEyX82NGJVX6NTZLs=;
-        b=NXGHUlutASs4sis6uK2zh/cSjwHJW7lkiryWY+u95+AqEVg5Wiq0ucMGJQI71JdRn6
-         R+gI9XvM6p+337CvoEOXbk8GOnj7/Pr4ffuFI6Gm1+4xSrWxMqyoldvYr48uSuO6r2/w
-         gj40GegEn020KlLl9DuMCKVfubdWUmBvG6yJ8ma1bbxHbmbBomqy3yIeXbWsoonkvwPl
-         rbLZfZFedbjuwv5JDqj9MmkfXqS8D/bGpWmCcmvg7Ny5rOM7n2kT+phrn9fjMEwJmyay
-         09C3lU9HaKZu6PZPhznUYVu5zaImotYxjLoblrJMHOhQ665QmxsET09YghZgwzLRLmtg
-         j/Cg==
+        bh=2B3Q/ylS5ZNA1mrgb7ev39AiksBcxa1Cjiz4dKBsJpg=;
+        b=FZ4SN/xkBY5PM0r/UtB1MJlFHJGcazCJAD6ijSHPqn36/dQzKlSVGQZoM59gOwj6Ww
+         k+LgyRNa1Mru1v9T4aomvGJssdL8An4BsSxDb94gDJv/xwUrPu6/QcdEl5OtKFRVD7V4
+         y9nsvH693J4WJORk3aPbXAFBzA5+VbHTBiVpea4jQrd3QBK+zuvChSgu+TFX2AC7LScJ
+         Y0wzoJgac47hoyRChR2vDXWGcFkLJqGe0hvmbLc2KnKigOJVkcBjpJJWm9NfY62ABRS9
+         FQsmNK1W6ND3+E3lViCS5cHHJs2syaUpneFN5jkCUlKMobj6HT53hx2fopUs7+mfdfIt
+         tYsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u9dJ4pVz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SRMILkPU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8si1975259ioj.36.2021.02.26.08.53.54
+        by mx.google.com with ESMTPS id l13si8284735jaj.16.2021.02.26.08.54.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Feb 2021 08:53:55 -0800 (PST)
+        Fri, 26 Feb 2021 08:54:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u9dJ4pVz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SRMILkPU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49582 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFgNG-0004qa-B4
-	for alex.bennee@linaro.org; Fri, 26 Feb 2021 11:53:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53784)
+	id 1lFgOB-0006Gj-NI
+	for alex.bennee@linaro.org; Fri, 26 Feb 2021 11:54:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lFg3b-0004vO-9j; Fri, 26 Feb 2021 11:33:36 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:33426)
+ id 1lFg3w-00051p-Pk; Fri, 26 Feb 2021 11:33:58 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:39396)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lFg3Z-0007ln-Rt; Fri, 26 Feb 2021 11:33:35 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id 7so9180968wrz.0;
- Fri, 26 Feb 2021 08:33:32 -0800 (PST)
+ id 1lFg3s-0007ph-8g; Fri, 26 Feb 2021 11:33:54 -0500
+Received: by mail-wm1-x335.google.com with SMTP id u125so8315968wmg.4;
+ Fri, 26 Feb 2021 08:33:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=baCqRvN00Z/k/DEXOAL/5KZeUutEyX82NGJVX6NTZLs=;
- b=u9dJ4pVzXSwxq5IiQhegu1sOjFWEW7egjSz/FQoJsphQZou4dOyYMt0eyvd1ZgYI6r
- zqw8JHbducASA5HS/LZ3IDuoCxy/JoYX7PmwaANwfv1Bt2SEWk1ESZ13U652VxxjYQcA
- chHDFzB3YckwqnfDNaOi+A6mErQGQNHVzHcCmjtSipUb3q/7Q52B+ef0+5arwqIKxXGs
- c2m4stWcUo+fvEELRbJmVZjoPiEV8XVgtNdsjt4Mko0ETa5Q4OzMZezwFlgDHwg6t1fl
- 9og7VK24NfaTw4gzWLjpa73mLaO+wnVBT4cca6dgJXNwAfR9uX2xvLRSNbyt3Qqr5nJk
- j07g==
+ bh=2B3Q/ylS5ZNA1mrgb7ev39AiksBcxa1Cjiz4dKBsJpg=;
+ b=SRMILkPUFjVtR86aa3EyK1deYZtGw3fRznVtQ3u0RMONqxpvpx3ctxR1gPPgP35PYt
+ CVClTcxxdrLzUz5a5pEkfThbVAM/dxYOI/fDWI1u1CNV6TtR2PjfpcwIXB6qBE2a/S/m
+ FIBKlQRCKakqDLASCb7sme3oZaphogi0YsmdCS2SIt1TBh/nCd5pAfGhjOn2RcJtflPC
+ wHB1R48ZNlgWWiGks0yCIvJc6O/7aXFdbnjdWdczF/mmAbwOaWozuV4Njab5NW7S1Xq1
+ XVoq4TL0IG04qCxl4mtyNq0ZKlTDhyw41gPXjp1qxEzwGKGbT8ei3U/mCaq/3SSHermc
+ lOXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=baCqRvN00Z/k/DEXOAL/5KZeUutEyX82NGJVX6NTZLs=;
- b=FAU3wRZYClB+mHLdsjhMwJgXCXpkdWzpm3AzdkkZ93qcxwKdeAREwJ5bHlOMpr7vP4
- Q5WK8EoAQYiN+sf/V7pCpZFxC48o3k7+fPcMQP7rP/JnME6bfD8Q58suLmJYIhVQsXUZ
- funXQKoaDyAq4ymIywMjcF6eE7YTnxMWVO+dNS1Wszu0H8v532904ksAl5ItFDaRkrHt
- ryWJEMorBGWRhnDTbvBEQCTtZAw6ziWXX8fZ9rOsOTps8KtNTvY1UCNHQj8IIQBI7wNQ
- 42JtpmP9xCUXk3VfqJ3bB9eNr2swuBBqTSDonSUujnzV1LxEdt79BqfvCJgKkhUxs5kG
- Acwg==
-X-Gm-Message-State: AOAM532aRaBHdtM1fd3jmv2Q+p96beG4omQaFe9Dtlevws+gb2axb4Jd
- FlCdycJNQUTanRGYf3/KE9FqEskDjbQ=
-X-Received: by 2002:a5d:558b:: with SMTP id i11mr4035012wrv.176.1614357210978; 
- Fri, 26 Feb 2021 08:33:30 -0800 (PST)
+ bh=2B3Q/ylS5ZNA1mrgb7ev39AiksBcxa1Cjiz4dKBsJpg=;
+ b=Ac/PWzb+2IkiS63dAFTPyFhohqKxstV7rnvHXU3TMbmRSsBRNr7VEfKNdSKLJvhUu/
+ QmJJ8OomRNKcg5TOZq0FnpYAjvgLsm7bbmZgAyk28KGXDe9aHvQFnLAMFI1GuFInuLEV
+ dybOAtFzU4bnN30tt4Pod/yflVjqlvk6FOtyM8rtfpqME19uzWfd+WuJLpxm83OrJSL+
+ vSb6znIpQIk8qN0f8XOwgWPjQdFQAzToA03Scv+qtCS4gj3Wnco/qKSzQUjeSVgr5OlN
+ zG2rDbnKlhkHJSVnkoG7XbgU9qMhw///Vny9PnPccFSNAHk4Evhp5NvzUyGBNq477mNH
+ XAEA==
+X-Gm-Message-State: AOAM531bSE3UTXJ6yE+Vg5pvBSlnu/xwZ5eRR+i1LaAomQgVGgaNCu/U
+ 6pk+dssDIOnpK4QIXjS5w3An5Okwamo=
+X-Received: by 2002:a05:600c:2298:: with SMTP id
+ 24mr3790497wmf.136.1614357228294; 
+ Fri, 26 Feb 2021 08:33:48 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id k15sm16664975wrn.0.2021.02.26.08.33.29
+ by smtp.gmail.com with ESMTPSA id t14sm14686281wru.64.2021.02.26.08.33.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Feb 2021 08:33:30 -0800 (PST)
+ Fri, 26 Feb 2021 08:33:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 10/16] cpu: Move CPUClass::get_crash_info to
+Subject: [PATCH 12/16] cpu: Move CPUClass::asidx_from_attrs to
  CPUSystemOperations
-Date: Fri, 26 Feb 2021 17:32:21 +0100
-Message-Id: <20210226163227.4097950-11-f4bug@amsat.org>
+Date: Fri, 26 Feb 2021 17:32:23 +0100
+Message-Id: <20210226163227.4097950-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210226163227.4097950-1-f4bug@amsat.org>
 References: <20210226163227.4097950-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -141,21 +142,18 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vlBVBl2rpm2+
-
-cpu_get_crash_info() is called on GUEST_PANICKED events,
-which only occur in system emulation.
+X-TUID: aPmy2jh27vUs
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h | 6 +++++-
+ include/hw/core/cpu.h | 8 +++++---
  hw/core/cpu.c         | 4 ++--
+ target/arm/cpu.c      | 2 +-
  target/i386/cpu.c     | 2 +-
- target/s390x/cpu.c    | 2 +-
- 4 files changed, 9 insertions(+), 5 deletions(-)
+ 4 files changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index fe85a1b81e6..87186e85d44 100644
+index e8c2e9af3bb..fc3c4c217b1 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
 @@ -84,6 +84,11 @@ struct AccelCPUClass;
@@ -163,62 +161,71 @@ index fe85a1b81e6..87186e85d44 100644
   */
  typedef struct CPUSystemOperations {
 +    /**
-+     * @get_crash_info: Callback for reporting guest crash information in
-+     * GUEST_PANICKED events.
++     * @asidx_from_attrs: Callback to return the CPU AddressSpace to use for
++     *       a memory access with the specified memory transaction attributes.
 +     */
-+    GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
++    int (*asidx_from_attrs)(CPUState *cpu, MemTxAttrs attrs);
      /**
-      * @virtio_is_big_endian: Callback to return %true if a CPU which supports
-      *       runtime configurable endianness is currently big-endian.
-@@ -166,7 +171,6 @@ struct CPUClass {
-     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-                            uint8_t *buf, int len, bool is_write);
-     void (*dump_state)(CPUState *cpu, FILE *, int flags);
--    GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
-     void (*dump_statistics)(CPUState *cpu, int flags);
-     int64_t (*get_arch_id)(CPUState *cpu);
-     bool (*get_paging_enabled)(const CPUState *cpu);
+      * @get_crash_info: Callback for reporting guest crash information in
+      * GUEST_PANICKED events.
+@@ -153,8 +158,6 @@ typedef struct CPUSystemOperations {
+  *       associated memory transaction attributes to use for the access.
+  *       CPUs which use memory transaction attributes should implement this
+  *       instead of get_phys_page_debug.
+- * @asidx_from_attrs: Callback to return the CPU AddressSpace to use for
+- *       a memory access with the specified memory transaction attributes.
+  * @gdb_read_register: Callback for letting GDB read a register.
+  * @gdb_write_register: Callback for letting GDB write a register.
+  * @gdb_num_core_regs: Number of core registers accessible to GDB.
+@@ -196,7 +199,6 @@ struct CPUClass {
+     hwaddr (*get_phys_page_debug)(CPUState *cpu, vaddr addr);
+     hwaddr (*get_phys_page_attrs_debug)(CPUState *cpu, vaddr addr,
+                                         MemTxAttrs *attrs);
+-    int (*asidx_from_attrs)(CPUState *cpu, MemTxAttrs attrs);
+     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
+     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
+ 
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 86b65624a9e..ddf5635d87b 100644
+index 3dc8faf6086..d38eda36bc3 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -220,8 +220,8 @@ GuestPanicInformation *cpu_get_crash_info(CPUState *cpu)
+@@ -116,8 +116,8 @@ int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs)
      CPUClass *cc = CPU_GET_CLASS(cpu);
-     GuestPanicInformation *res = NULL;
+     int ret = 0;
  
--    if (cc->get_crash_info) {
--        res = cc->get_crash_info(cpu);
-+    if (cc->system_ops.get_crash_info) {
-+        res = cc->system_ops.get_crash_info(cpu);
+-    if (cc->asidx_from_attrs) {
+-        ret = cc->asidx_from_attrs(cpu, attrs);
++    if (cc->system_ops.asidx_from_attrs) {
++        ret = cc->system_ops.asidx_from_attrs(cpu, attrs);
+         assert(ret < cpu->num_ases && ret >= 0);
      }
-     return res;
- }
+     return ret;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 4941a651e64..86af15b0625 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2298,7 +2298,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->gdb_write_register = arm_cpu_gdb_write_register;
+ #ifndef CONFIG_USER_ONLY
+     cc->get_phys_page_attrs_debug = arm_cpu_get_phys_page_attrs_debug;
+-    cc->asidx_from_attrs = arm_asidx_from_attrs;
++    cc->system_ops.asidx_from_attrs = arm_asidx_from_attrs;
+     cc->system_ops.vmsd = &vmstate_arm_cpu;
+     cc->system_ops.virtio_is_big_endian = arm_cpu_virtio_is_big_endian;
+     cc->system_ops.write_elf64_note = arm_cpu_write_elf64_note;
 diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index ae7f7763dfc..9692843256c 100644
+index c34d41d4c79..36b34eee62f 100644
 --- a/target/i386/cpu.c
 +++ b/target/i386/cpu.c
-@@ -7421,7 +7421,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->asidx_from_attrs = x86_asidx_from_attrs;
+@@ -7418,7 +7418,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+     cc->get_paging_enabled = x86_cpu_get_paging_enabled;
+ 
+ #ifndef CONFIG_USER_ONLY
+-    cc->asidx_from_attrs = x86_asidx_from_attrs;
++    cc->system_ops.asidx_from_attrs = x86_asidx_from_attrs;
      cc->get_memory_mapping = x86_cpu_get_memory_mapping;
      cc->get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug;
--    cc->get_crash_info = x86_cpu_get_crash_info;
-+    cc->system_ops.get_crash_info = x86_cpu_get_crash_info;
-     cc->write_elf64_note = x86_cpu_write_elf64_note;
-     cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
-     cc->write_elf32_note = x86_cpu_write_elf32_note;
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 8ba8a96b4d5..f9107cb7179 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -518,7 +518,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_debug = s390_cpu_get_phys_page_debug;
-     cc->system_ops.vmsd = &vmstate_s390_cpu;
--    cc->get_crash_info = s390_cpu_get_crash_info;
-+    cc->system_ops.get_crash_info = s390_cpu_get_crash_info;
-     cc->write_elf64_note = s390_cpu_write_elf64_note;
- #endif
-     cc->disas_set_info = s390_cpu_disas_set_info;
+     cc->system_ops.get_crash_info = x86_cpu_get_crash_info;
 -- 
 2.26.2
 

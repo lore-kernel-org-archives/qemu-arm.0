@@ -1,102 +1,101 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1433976lfg;
-        Fri, 26 Feb 2021 08:41:59 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzq26wV3sfY9RiLGzAaX2HbvHykScgIVzbNjqE5yPM8p+J+/2XOOhqAXfkaSsrjJt/6+eHi
-X-Received: by 2002:a54:4697:: with SMTP id k23mr2675665oic.17.1614357719688;
-        Fri, 26 Feb 2021 08:41:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614357719; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1435533lfg;
+        Fri, 26 Feb 2021 08:44:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz5g3/gGrKbqPJZ6xsfVKfev2r4ajy34Nx1FlB0QC4HcWuaffKDlBCNI2zmiHi/LgZHbGNZ
+X-Received: by 2002:a05:6602:2348:: with SMTP id r8mr3496959iot.77.1614357851025;
+        Fri, 26 Feb 2021 08:44:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614357851; cv=none;
         d=google.com; s=arc-20160816;
-        b=lyG5eTE4G5/xZGPnCj+5AuV8uRSr7+ouxousknBFCg4xGr089hksG8yom/e6fuECtx
-         5nUSNcg47IcF3zHjmlzqaJuAV32PUK+hXd3Oq44+RD2g6Lzgo1mbu1VTQhr7Nkos7zG5
-         SuaK7Ri9dj15pB9l3GkFe5Va+AZKDyV1hRWL4zZMVVqinIVc5gStIxmnADPuKilrQVeR
-         oVst7J9//oN+asHWHAnx2Cg+LIXlEYt//wpw6a8jA5Hg8pfKOU5TpX5qLH2H+Lo0ye76
-         VGoqu5CQ3kuV4HwqvfY8QG+4JuI4kbSjh4hHzZE87ABZn7c/obD1IAlAJMJyYAKrUe1+
-         H01w==
+        b=Xh1m3gLv0Dwtzj8UUNUuBorFc7212ekoCvX1KvtzhHRZOKbwJ1jCaD53d5t+COIYyO
+         aL2P6eej8Od1ocuFcacEReplWOoCgardKOHClw3OCuhkOoNJ46xZnWnDF4mI0t2pJMGY
+         2v3x3/ytQE6KEigGgnLe+eg2GSSfTRugmAHiPC38Oasr7xoK262YIyX8qEmXEj8shxF7
+         oLSB/m+/JLeXnQ4fh24EOGXSV8mnI05VboLn5IPr4ssJhZQt/LHEbKlKzSh88Tu9Eohe
+         F5MuYFC7LooF1RFXjxx1s/S3FndIMmF7XJvs+zkcCWobHCKiG4cs5e9Hrvp5rr7pGhEO
+         I08Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
-        b=0iEES0RU4QO63Uot39KtWCYbGIAhwyEiYpUiYCc8X+mKrM7ll0WQ4C8EidvuPb7Vd5
-         Lcssx8gYPHeKvmzaHUn4dFmtP/ZUk3bFhwphAuSZQMPfXfxv6Gi5vrFMk2uoHpXq9M3A
-         D0MONiUyYV9IiIpArQw7A1spM4KOq4JXrCflyu8FcmGT9YoyXXiigwIJJm7zsr8Szz6w
-         nSqgUoDS5CWCXc9u21fADyP7cG0yccWDbEyC3KJPlcU3Sj2PMZgo2jZ4i6B6Nq0LivDR
-         yY3X41xOoVsqeyRr+vtKRlwlnYNHFVO59f5aVD5rBHO3vdIybtYBDRySw830TltzZMbk
-         rohw==
+        bh=cqYmlwAyP4EwEP7vrTu/PZK1/0mxFb/0cmm6txRTavI=;
+        b=eh8YxaJ3YyeX2XT9yyYxVMokczv7jYBDdvVT7v2KZxgUaP631sr/5FBgkAg9q50NfC
+         us04kVZxahG6SJblV4+zHF40S875wrmK9X5M9ElBpfrR0yu9BXBai7BAP+Jnz3AdyA1h
+         YbalAYTJCgYHI84j18+ctBB7+i6CANmjijGNa/BCRjavJBx5n7guUzLHYGsy9aklWJPS
+         cNgglEQvMmn4lpRvBohSrLvATpDHojzEIH/oTdXT2g51jT5tVKSP9reUxozsrulHjCh2
+         3117Td5xNHZdwF3JDJz3XWrzN7MYYHcX3ms5ahPph3GkwQnQtbwqmkN4ShAo0Fwg/wj1
+         /S+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BRX2O+8r;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Q/GVwYuN";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o12si6217389oti.325.2021.02.26.08.41.59
+        by mx.google.com with ESMTPS id a19si4307743jat.69.2021.02.26.08.44.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Feb 2021 08:41:59 -0800 (PST)
+        Fri, 26 Feb 2021 08:44:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BRX2O+8r;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Q/GVwYuN";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55752 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58832 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFgBi-0003Xz-TW
-	for alex.bennee@linaro.org; Fri, 26 Feb 2021 11:41:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53524)
+	id 1lFgDq-00051d-9h
+	for alex.bennee@linaro.org; Fri, 26 Feb 2021 11:44:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lFg37-0004XK-PM; Fri, 26 Feb 2021 11:33:05 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:55879)
+ id 1lFg3X-0004pp-9H; Fri, 26 Feb 2021 11:33:31 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435]:42056)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lFg36-0007er-AL; Fri, 26 Feb 2021 11:33:05 -0500
-Received: by mail-wm1-x331.google.com with SMTP id w7so7895423wmb.5;
- Fri, 26 Feb 2021 08:33:02 -0800 (PST)
+ id 1lFg3P-0007i0-Pi; Fri, 26 Feb 2021 11:33:30 -0500
+Received: by mail-wr1-x435.google.com with SMTP id r3so9145468wro.9;
+ Fri, 26 Feb 2021 08:33:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
- b=BRX2O+8rPgMmAhoMuArR6BGQp9RPtIMCCDWft0DsYREYvSmofpcL+CWu+E2K4+ANba
- +i6L5uoXgpMwGS7GPuSGa4hku2StEpsEN8VWJL/8Og6ToJOkY7W3PFk9yJuSnDCSH4E0
- tq2cKQc3VI1yNDxWQCJriUXuc1hXwJrhqfz+L92ql4JTkOvatwZnvpNGIGNlhV2xETp7
- 93eMcnE5X3/X0JmbORZETZCLIv+JRGLK9nVaeqAoFhmZqtMUdXj7t4h9NVIJuSN8+Ohd
- /Xuqu8hAHm2q914h2DjZvk/4ksJt7YvvCDCu9MMzebWMhWlxmC8Wbg5EZ5rLm2RZfJU1
- rbGQ==
+ bh=cqYmlwAyP4EwEP7vrTu/PZK1/0mxFb/0cmm6txRTavI=;
+ b=Q/GVwYuNkGxJ/Q9ke2SuYtBSrUx9A0eBdyi9iyh/L1/r8tBvCHUEzBfvy/KNeNNiSn
+ Cr9TNGEdwYFcSYMMdCyOeY1i/Ba4c8agsZ1NOCvMqIbZU4KXJ2kcFOqOJpuAsO31fGSc
+ h0OJ0ZsXfoXThyE0Sa14wpmw+MsUuHlaWW5dGVBOSDCOaZHZigJnejCy28de26GfIfDu
+ Zhcl+lJwEuDk4cM2C5NLpB+DAjfuBIMhXccHgVE/27sLDUUqxlUkIs8RvpNvdacpnubd
+ rB9gusji7bHn0Ai3bFKvCZlU4J/GUpdCOtvKWGy9nA32xrkBfuQJAnM0Y4+CEOMDDs37
+ 4jIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
- b=TsPjvc0OuKtVYq9J+WLmPHWqtcNTScUjZtgkg/aAZAPKVaUhktIzZorTiJkQCvmnq+
- DzzalSNlCO1/itox7DrZkzWCjgIUiNzFQ1lUyL5MfMeCN8lNG4SUNYT3/R2+LglvuTMM
- kjIg/gEhbBiUvkqGmbB7HQZlMbQKRYV67Hiq/JEq973yqqq7CTvqX2nUQGyqR3PRVpoo
- 1ucqjv8DR3h9oFmwTCe2nVCQSwFMQjP9BjMqM8NvG0c3gXzWbaKoF5KdeZPukhi9YYqV
- BPl7+vlHihnQ9sPn/R1CfF9CyRdlcchcwlJ98c4aSRMLaz5IU0uvDTyTAfFbXxNDpGQm
- 0CQw==
-X-Gm-Message-State: AOAM533yR+esQSfu5gMdHVaijVSIuL2jCnI6uNrWKlaTggDVW398rLo0
- XCAsEojFWjyK3fQLSazIKQT2hA8wJAU=
-X-Received: by 2002:a7b:c4d5:: with SMTP id g21mr3644774wmk.161.1614357181284; 
- Fri, 26 Feb 2021 08:33:01 -0800 (PST)
+ bh=cqYmlwAyP4EwEP7vrTu/PZK1/0mxFb/0cmm6txRTavI=;
+ b=WnExRvIl2DSsdTCYEiwNapSqbE7Df0TN+ZBbh0Uk1YU08//bKGNY4Br+gmiAVv9v1n
+ yAX/VG5b9XEnOLcnRXuIKVowRYGwVYkEUW9tk2KVqLdiyT+qS1gciI5Q3UtLu9WD1eyJ
+ rWu20Y72XN4G9jkwjCsICradMUjtPOdulow6sqyL2H6O0kkb9MB+5YWe7NYQFIiUwhXp
+ Uq9s9fN2NqZwk/6yTyC0YQAZpJz5VG0mQPJyEksmzpGw35Jr/aCcafzK7i/QIf/JElSA
+ Xj0PqKbW6ShdEILdtq+gUMFpVq9xxM5ozM+lkOSEt+KzKlViW0SQlGffd3UbrdpJOg7B
+ pbeg==
+X-Gm-Message-State: AOAM532oRI5dDTO4z54VwkcEMNWSvHLM/PX/+SVdyO2D380ANLKrqww4
+ m1ET3ZBzpZuORH0iwVxVeUxDZPMraPM=
+X-Received: by 2002:adf:f1c4:: with SMTP id z4mr4226490wro.404.1614357192932; 
+ Fri, 26 Feb 2021 08:33:12 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id c128sm12749844wma.37.2021.02.26.08.32.59
+ by smtp.gmail.com with ESMTPSA id 6sm14814560wra.63.2021.02.26.08.33.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Feb 2021 08:33:00 -0800 (PST)
+ Fri, 26 Feb 2021 08:33:12 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 05/16] cpu: Directly use get_paging_enabled() fallback
- handlers in place
-Date: Fri, 26 Feb 2021 17:32:16 +0100
-Message-Id: <20210226163227.4097950-6-f4bug@amsat.org>
+Subject: [PATCH 07/16] cpu: Introduce CPUSystemOperations structure
+Date: Fri, 26 Feb 2021 17:32:18 +0100
+Message-Id: <20210226163227.4097950-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210226163227.4097950-1-f4bug@amsat.org>
 References: <20210226163227.4097950-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -141,49 +140,42 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6BkjoHAhLaXk
+X-TUID: Dn1YbC1e5eAd
 
-No code uses CPUClass::get_paging_enabled() outside of hw/core/cpu.c:
-
-  $ git grep -F -- '->get_paging_enabled'
-  hw/core/cpu.c:74:    return cc->get_paging_enabled(cpu);
-  hw/core/cpu.c:438:    k->get_paging_enabled = cpu_common_get_paging_enabled;
-  target/i386/cpu.c:7418:    cc->get_paging_enabled = x86_cpu_get_paging_enabled;
-
-Check the handler presence in place and remove the common fallback code.
+Introduce a structure to hold handler specific to sysemu.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/core/cpu.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ include/hw/core/cpu.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index a9ee2c74ec5..1de00bbb474 100644
---- a/hw/core/cpu.c
-+++ b/hw/core/cpu.c
-@@ -71,11 +71,10 @@ bool cpu_paging_enabled(const CPUState *cpu)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index b12028c3c03..ab89235cb45 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -80,6 +80,12 @@ struct TCGCPUOps;
+ /* see accel-cpu.h */
+ struct AccelCPUClass;
  
--    return cc->get_paging_enabled(cpu);
--}
-+    if (cc->get_paging_enabled) {
-+        return cc->get_paging_enabled(cpu);
-+    }
++/*
++ * struct CPUSystemOperations: System operations specific to a CPU class
++ */
++typedef struct CPUSystemOperations {
++} CPUSystemOperations;
++
+ /**
+  * CPUClass:
+  * @class_by_name: Callback to map -cpu command line model name to an
+@@ -190,6 +196,9 @@ struct CPUClass {
+     bool gdb_stop_before_watchpoint;
+     struct AccelCPUClass *accel_cpu;
  
--static bool cpu_common_get_paging_enabled(const CPUState *cpu)
--{
-     return false;
- }
- 
-@@ -420,7 +419,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
-     k->parse_features = cpu_common_parse_features;
-     k->get_arch_id = cpu_common_get_arch_id;
-     k->has_work = cpu_common_has_work;
--    k->get_paging_enabled = cpu_common_get_paging_enabled;
-     k->get_memory_mapping = cpu_common_get_memory_mapping;
-     k->gdb_read_register = cpu_common_gdb_read_register;
-     k->gdb_write_register = cpu_common_gdb_write_register;
++    /* when system emulation is not available, this pointer is NULL */
++    struct CPUSystemOperations system_ops;
++
+     /* when TCG is not available, this pointer is NULL */
+     struct TCGCPUOps *tcg_ops;
+ };
 -- 
 2.26.2
 

@@ -1,215 +1,121 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1078462lfg;
-        Fri, 26 Feb 2021 00:42:21 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyZTnPY3bB4xEzoG8xXdS6IDo5BOR57Clu579CEh7M4quLj3ulJ7aP6Lx8s8pyRMoM6vt24
-X-Received: by 2002:a25:190b:: with SMTP id 11mr2844374ybz.236.1614328941607;
-        Fri, 26 Feb 2021 00:42:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614328941; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1082866lfg;
+        Fri, 26 Feb 2021 00:52:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx2osgXgFtHrtS2WoO66Hn9nugIxvGbSZ9PqkDxfa+y2CCBOGwzCP6img4zTB49NN2kH+/f
+X-Received: by 2002:a25:d4d0:: with SMTP id m199mr3120834ybf.26.1614329521839;
+        Fri, 26 Feb 2021 00:52:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614329521; cv=none;
         d=google.com; s=arc-20160816;
-        b=wUhNNga2uK74JBsFEvSKqxEpjE2yWY80S7Ay65JEWY1eJvJJ9nXUfzxfuydUTsPV0J
-         vN4nEZaFqPZEOOvxW46E7QwyARUxLV+4YOERhApCvI4/2joK9jo4CLBBEVq3hQ033kWe
-         vgsDUDlChXW1pac1qJvf8g5q+34Vxw+3UGlhcLnh8q2kOru7I0NqT/YZRTYCTIWhMZWI
-         yqe6q1k0g2+isHvf+LpjKef1BweJJ97ZZMcGbHXl4SYz/pCSI83SKJLxyMiG8Ty6SmIK
-         jcKxa4XgxfiNKw+ML6wZEMw9ZFG70KJSV/+XA6SMamPB0T95Jqi4zdL4fwWlfn9kNrHs
-         x4Hw==
+        b=bJZjw5AAlXssGwB31/u8aUgrcEwrXnBBXMPo9IOoSXB4VwnmWGgqVmiPGBrz/35+Zi
+         NX/SzDsz9fsKXjQ1Oiiu1OhdXlTIzgYiaaNQjRMMQs6kR8aBgjhOaDU3/mGESVy0eQi1
+         TSlEKUJk8yvpqxHBJRGMq1z+jUaW1gQDJGfk63sKKxJkfo/n7zrKtIcGkmh3QFT74Xjd
+         W3Lb9n2gzn8805gX2B8kQtIbd4n+mofMhGYTO9UoRlx7uG9ka54eEQNg0ZBn0wdv670L
+         Db/dIoMhgSscBu3W1wtiSWNUBJUqI9Xl6TidjJr3axRRhJDCEOq/dhSUmBMHpHpNh7Sd
+         62cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=ZwQ8WK2liK70wCH5NR/TQMWSUdzJOZouAhir9hiWves=;
-        b=WFlWT5ucoRw0l21qVsa11mqsSwIy2s/xKP778iCKpGhTZWYUj7bLIBQRygDgkOgcmS
-         6DBiWhaTUezSNgBm1eMWstLZUCpZi2zxLQx2nFa5r8/4r0VbtX8Cb5MP7BNSeg5T/j6E
-         rTuCupg+FrmeuLxAbJj45z5zboMO5kH8fenzHbFlGMC3gEcPNRGdmeBouVaSZY4hU2qs
-         DIz9SGfu7dVrwO+YwwFv7QoFvfJ/gj4P0QEntFZVFquv1uKAjwfFyiUxPhUj65syXD1m
-         EBC9DbKxY9SRvAwBMAZQ1cZ2JN+qm7OPynI+3RheU6uvBH0N7gmrfoyWtc1XFxS6VI0C
-         qQXg==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=fqdXAzrAtSUv9Msjt9U9fHb8WDJyBadE7fSi3SmueJE=;
+        b=NFoO0S+wgQm+SOFiRY0mv9nG3pj/itkmsoSx1yFpSSlUqS4ffeLNClIb6+Q0EORMQg
+         2lQa6NuaaolImD+bhwJMW9GiZerd4RCchlvXj6xLctqviW240//vr+eRo/q3cGUmiqDJ
+         UBsXox671Q6eel1UlzKf6+O+cO5w2WM8z+Qbx4bmkjvo7FxVtq/wCSjt+29ACnPpt52v
+         qpcyWA5uQnTmCIayV6wy84g/de+3McxHWq/aDq26K8gY+2VFZcthtlgcekwcI0eN98gT
+         RiR97HsRGVc1UKaZX6Dk3MWkXPkNyNLWN7inhhTYSA4hUyuMFztDDRDkPIPeGdXgaUv/
+         rxUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16si8423804ybn.137.2021.02.26.00.42.21
+        by mx.google.com with ESMTPS id e67si7517835yba.11.2021.02.26.00.52.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Feb 2021 00:42:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Feb 2021 00:52:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42052 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFYhY-0006h2-T6
-	for alex.bennee@linaro.org; Fri, 26 Feb 2021 03:42:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48768)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lFYqv-00069w-0k
+	for alex.bennee@linaro.org; Fri, 26 Feb 2021 03:52:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1lFYhJ-0006er-K4; Fri, 26 Feb 2021 03:42:05 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:2655)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lFYok-0004qY-H1; Fri, 26 Feb 2021 03:49:46 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2656)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1lFYhF-0007mO-MP; Fri, 26 Feb 2021 03:42:05 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Dn34x6Z80z7qbN;
- Fri, 26 Feb 2021 16:40:17 +0800 (CST)
-Received: from [10.174.186.67] (10.174.186.67) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 26 Feb 2021 16:41:45 +0800
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Introduce cpu topology support
-To: Andrew Jones <drjones@redhat.com>
-References: <20210225085627.2263-1-fangying1@huawei.com>
- <20210225120255.4gfbtsflbdsyxizn@kamzik.brq.redhat.com>
-From: Ying Fang <fangying1@huawei.com>
-Message-ID: <261f7e04-ea59-6883-981f-3891c240416e@huawei.com>
-Date: Fri, 26 Feb 2021 16:41:45 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lFYof-0003Yp-Ri; Fri, 26 Feb 2021 03:49:46 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Dn3Fl2Bh0z7qSt;
+ Fri, 26 Feb 2021 16:47:55 +0800 (CST)
+Received: from huawei.com (10.174.185.226) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.498.0; Fri, 26 Feb 2021
+ 16:49:25 +0800
+From: Wang Xingang <wangxingang5@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [RFC PATCH 0/4] hw/arm/virt-acpi-build: Introduce iommu option for
+ pci root bus
+Date: Fri, 26 Feb 2021 08:49:09 +0000
+Message-ID: <1614329353-2124-1-git-send-email-wangxingang5@huawei.com>
+X-Mailer: git-send-email 2.6.4.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20210225120255.4gfbtsflbdsyxizn@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.67]
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.226]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=fangying1@huawei.com;
- helo=szxga07-in.huawei.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
+Received-SPF: pass client-ip=45.249.212.35;
+ envelope-from=wangxingang5@huawei.com; helo=szxga07-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.435,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
- zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
- shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
- imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q4ilZZmMe7Mf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
+ wangxingang5@huawei.com, mst@redhat.com, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, imammedo@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WQG4EPc9jEPF
 
+From: Xingang Wang <wangxingang5@huawei.com>
 
+These patches add support for configure iommu on/off for pci root bus,
+including primary bus and pxb root bus. At present, All root bus will go
+through iommu when iommu is configured, which is not flexible.
 
-On 2/25/2021 8:02 PM, Andrew Jones wrote:
-> On Thu, Feb 25, 2021 at 04:56:22PM +0800, Ying Fang wrote:
->> An accurate cpu topology may help improve the cpu scheduler's decision
->> making when dealing with multi-core system. So cpu topology description
->> is helpful to provide guest with the right view. Dario Faggioli's talk
->> in [0] also shows the virtual topology may has impact on sched performace.
->> Thus this patch series is posted to introduce cpu topology support for
->> arm platform.
->>
->> Both fdt and ACPI are introduced to present the cpu topology. To describe
->> the cpu topology via ACPI, a PPTT table is introduced according to the
->> processor hierarchy node structure. This series is derived from [1], in
->> [1] we are trying to bring both cpu and cache topology support for arm
->> platform, but there is still some issues to solve to support the cache
->> hierarchy. So we split the cpu topology part out and send it seperately.
->> The patch series to support cache hierarchy will be send later since
->> Salil Mehta's cpu hotplug feature need the cpu topology enabled first and
->> he is waiting for it to be upstreamed.
->>
->> This patch series was initially based on the patches posted by Andrew Jones [2].
->> I jumped in on it since some OS vendor cooperative partner are eager for it.
->> Thanks for Andrew's contribution.
->>
->> After applying this patch series, launch a guest with virt-6.0 and cpu
->> topology configured with sockets:cores:threads = 2:4:2, you will get the
->> bellow messages with the lscpu command.
->>
->> -----------------------------------------
->> Architecture:                    aarch64
->> CPU op-mode(s):                  64-bit
->> Byte Order:                      Little Endian
->> CPU(s):                          16
->> On-line CPU(s) list:             0-15
->> Thread(s) per core:              2
-> 
-> What CPU model was used? Did it actually support threads? If these were
+So this add option to enable/disable iommu for primary bus and pxb root bus.
+When iommu is enabled for the root bus, devices attached to it will go
+through iommu. When iommu is disabled for the root bus, devices will not
+go through iommu accordingly.
 
-It's tested on Huawei Kunpeng 920 CPU model and vcpu host-passthrough.
-It does not support threads for now, but the next version 930 may
-support it. Here we emulate a virtual cpu topology, a virtual 2 threads
-is used to do the test.
+Xingang Wang (4):
+  pci: Add PCI_BUS_IOMMU property
+  hw/pci: Add iommu option for pci root bus
+  hw/pci: Add pci_root_bus_max_bus
+  hw/arm/virt-acpi-build: Add explicit idmap info in IORT table
 
+ hw/arm/virt-acpi-build.c            | 88 +++++++++++++++++++++--------
+ hw/arm/virt.c                       | 29 ++++++++++
+ hw/pci-bridge/pci_expander_bridge.c |  6 ++
+ hw/pci/pci.c                        | 35 +++++++++++-
+ include/hw/arm/virt.h               |  1 +
+ include/hw/pci/pci.h                |  1 +
+ include/hw/pci/pci_bus.h            | 13 +++++
+ 7 files changed, 149 insertions(+), 24 deletions(-)
 
-> KVM VCPUs, then I guess MPIDR.MT was not set on the CPUs. Apparently
-> that didn't confuse Linux? See [1] for how I once tried to deal with
-> threads.
-> 
-> [1] https://github.com/rhdrjones/qemu/commit/60218e0dd7b331031b644872d56f2aca42d0ff1e
-> 
+-- 
+2.19.1
 
-If ACPI PPTT table is specified, the linux kernel won't check the MPIDR
-register to populate cpu topology. Moreover MPIDR does not ensure a
-right cpu topology. So it won't be a problem if MPIDR.MT is not set.
-
->> Core(s) per socket:              4
->> Socket(s):                       2
-> 
-> Good, but what happens if you specify '-smp 16'? Do you get 16 sockets
-> each with 1 core? Or, do you get 1 socket with 16 cores? And, which do
-> we want and why? If you look at [2], then you'll see I was assuming we
-> want to prefer cores over sockets, since without topology descriptions
-> that's what the Linux guest kernel would do.
-> 
-> [2] https://github.com/rhdrjones/qemu/commit/c0670b1bccb4d08c7cf7c6957cc8878a2af131dd
-> 
->> NUMA node(s):                    2
-> 
-> Why do we have two NUMA nodes in the guest? The two sockets in the
-> guest should not imply this.
-
-The two NUMA nodes are emulated by Qemu since we already have guest numa
-topology feature. So the two sockets in the guest has nothing to do with
-it. Actually even one socket may have two numa nodes in it in real cpu
-model.
-
-> 
-> Thanks,
-> drew
-> 
->> Vendor ID:                       HiSilicon
->> Model:                           0
->> Model name:                      Kunpeng-920
->> Stepping:                        0x1
->> BogoMIPS:                        200.00
->> NUMA node0 CPU(s):               0-7
->> NUMA node1 CPU(s):               8-15
->>
->> [0] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines-friend-or-foe-dario-faggioli-suse
->> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg02166.html
->> [2] https://patchwork.ozlabs.org/project/qemu-devel/cover/20180704124923.32483-1-drjones@redhat.com
->>
->> Ying Fang (5):
->>    device_tree: Add qemu_fdt_add_path
->>    hw/arm/virt: Add cpu-map to device tree
->>    hw/arm/virt-acpi-build: distinguish possible and present cpus
->>    hw/acpi/aml-build: add processor hierarchy node structure
->>    hw/arm/virt-acpi-build: add PPTT table
->>
->>   hw/acpi/aml-build.c          | 40 ++++++++++++++++++++++
->>   hw/arm/virt-acpi-build.c     | 64 +++++++++++++++++++++++++++++++++---
->>   hw/arm/virt.c                | 40 +++++++++++++++++++++-
->>   include/hw/acpi/acpi-defs.h  | 13 ++++++++
->>   include/hw/acpi/aml-build.h  |  7 ++++
->>   include/hw/arm/virt.h        |  1 +
->>   include/sysemu/device_tree.h |  1 +
->>   softmmu/device_tree.c        | 45 +++++++++++++++++++++++--
->>   8 files changed, 204 insertions(+), 7 deletions(-)
->>
->> -- 
->> 2.23.0
->>
-> 
-> .
-> 

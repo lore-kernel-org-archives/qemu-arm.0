@@ -1,373 +1,215 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp1482296lfc;
-        Sun, 21 Feb 2021 22:02:01 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzsQOMiQh6ekm7SNwN1AD03yEaEKzhW+mGSYCUhXpoXeXgzlMQjhIfwyccRTbgemdMQqJRV
-X-Received: by 2002:a05:6402:499:: with SMTP id k25mr20861303edv.294.1613973721219;
-        Sun, 21 Feb 2021 22:02:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613973721; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1078462lfg;
+        Fri, 26 Feb 2021 00:42:21 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyZTnPY3bB4xEzoG8xXdS6IDo5BOR57Clu579CEh7M4quLj3ulJ7aP6Lx8s8pyRMoM6vt24
+X-Received: by 2002:a25:190b:: with SMTP id 11mr2844374ybz.236.1614328941607;
+        Fri, 26 Feb 2021 00:42:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614328941; cv=none;
         d=google.com; s=arc-20160816;
-        b=wXd3dPY84b7cQuguYWib+1XXNbFo+HV4HbdVNAoESbX7RVMaLUEDy8n4IwbMs6wgbd
-         JgDsCdkpERq4QwddmfM2FV903PBIdOOWgf2emhyPgEhd7yq4c0jqZv3Xr2B+gh/FHCF/
-         9ZVEm1cYD5mGxGoo3YbtKKITydJXZtPNO7d94ZTm5Q/stqthnPwkjZ9ybkQhHB9D+Pxi
-         olcmHW5RVsgbUcHPwwWU03P4alKfmxgedjlNPtUEFFJSk/6RXbxKsb7J+Y2yMUNo0yPa
-         MFf7pkuah3z1kUJ0nstRTniwr4UpwU67+/AdpZMCJ7EZQINE2D8Qyxw9DEp7uc4YgVRO
-         Otqg==
+        b=wUhNNga2uK74JBsFEvSKqxEpjE2yWY80S7Ay65JEWY1eJvJJ9nXUfzxfuydUTsPV0J
+         vN4nEZaFqPZEOOvxW46E7QwyARUxLV+4YOERhApCvI4/2joK9jo4CLBBEVq3hQ033kWe
+         vgsDUDlChXW1pac1qJvf8g5q+34Vxw+3UGlhcLnh8q2kOru7I0NqT/YZRTYCTIWhMZWI
+         yqe6q1k0g2+isHvf+LpjKef1BweJJ97ZZMcGbHXl4SYz/pCSI83SKJLxyMiG8Ty6SmIK
+         jcKxa4XgxfiNKw+ML6wZEMw9ZFG70KJSV/+XA6SMamPB0T95Jqi4zdL4fwWlfn9kNrHs
+         x4Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:in-reply-to:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=PPAPKErUTMJOT7YmuCkwEW8g7vYEqBU3CnjqZHggCjo=;
-        b=b0rwTzCrIQ5AxFgvP94cb2QxXLZf6QGpPfypfWvUM+y8+Rpckrvjvb6lM5xQ+1goPH
-         yXEsb+/BMQn7tVzKBrLtJ0XpRuHA6gMNSuhlm7NdjaS2JlyX9zvgF2LKuI63WbiP5G17
-         d9vhsrASpGffsPkGhEqDMfgtScGD/Vwzm5RntaNF6AdDv6ZGVAJPiB4kqinFkAby4w3u
-         howNOEat00nPyaJhIhireUFMafSgvuuXvIsG31GBSCE46h/0ZBjVwuCaFtneAqCBz/Xz
-         jrpahF1/kGs3n2HmGfBr+t1Xgq6V+QYW5/ISfo1e3Ssk6OXnPIW/IT98HdzIUfoaZZrt
-         AzSA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=ZwQ8WK2liK70wCH5NR/TQMWSUdzJOZouAhir9hiWves=;
+        b=WFlWT5ucoRw0l21qVsa11mqsSwIy2s/xKP778iCKpGhTZWYUj7bLIBQRygDgkOgcmS
+         6DBiWhaTUezSNgBm1eMWstLZUCpZi2zxLQx2nFa5r8/4r0VbtX8Cb5MP7BNSeg5T/j6E
+         rTuCupg+FrmeuLxAbJj45z5zboMO5kH8fenzHbFlGMC3gEcPNRGdmeBouVaSZY4hU2qs
+         DIz9SGfu7dVrwO+YwwFv7QoFvfJ/gj4P0QEntFZVFquv1uKAjwfFyiUxPhUj65syXD1m
+         EBC9DbKxY9SRvAwBMAZQ1cZ2JN+qm7OPynI+3RheU6uvBH0N7gmrfoyWtc1XFxS6VI0C
+         qQXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=pkel7UI5;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id i16si11704607ejy.308.2021.02.21.22.02.00;
-        Sun, 21 Feb 2021 22:02:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d16si8423804ybn.137.2021.02.26.00.42.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Feb 2021 00:42:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=pkel7UI5;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229908AbhBVGAj (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 22 Feb 2021 01:00:39 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:34712 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229863AbhBVGAg (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 22 Feb 2021 01:00:36 -0500
-Received: from ozlabs.org (bilbo.ozlabs.org [IPv6:2401:3900:2:1::2])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 34E45C061574
-        for <kvm@vger.kernel.org>; Sun, 21 Feb 2021 21:59:56 -0800 (PST)
-Received: by ozlabs.org (Postfix, from userid 1007)
-        id 4DkWjj1HJCz9sVV; Mon, 22 Feb 2021 16:59:53 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-        d=gibson.dropbear.id.au; s=201602; t=1613973593;
-        bh=AY6wvTF45hDdtk/1CpIGS2xL+8YeDQJOtv+n0NJmFCQ=;
-        h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-        b=pkel7UI59661cPEq42sFwtAV/SW8gIGlw3cy8clzRcKqMZD3D76DkRZALGDvH+8T1
-         ucjxSwyzImOVTBraSk+bhxS1gZoSaCLUo6erCzTbY8KW5tyjfr0YLFUow8U6xq9lTD
-         KFkZAMzgAJg9jmzoQESAqP2yYaujBccgSFqP8TkA=
-Date:   Mon, 22 Feb 2021 16:59:30 +1100
-From:   David Gibson <david@gibson.dropbear.id.au>
-To:     Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc:     qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Huacai Chen <chenhuacai@kernel.org>,
-        xen-devel@lists.xenproject.org,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
-        BALATON Zoltan <balaton@eik.bme.hu>,
-        Leif Lindholm <leif@nuviainc.com>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Radoslaw Biernacki <rad@semihalf.com>,
-        Alistair Francis <alistair@alistair23.me>,
-        Paul Durrant <paul@xen.org>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Thomas Huth <thuth@redhat.com>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-        Greg Kurz <groug@kaod.org>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Cornelia Huck <cohuck@redhat.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        David Hildenbrand <david@redhat.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v2 06/11] hw/ppc: Restrict KVM to various PPC machines
-Message-ID: <YDNIQiHG0nfKXNR8@yekko.fritz.box>
-References: <20210219173847.2054123-1-philmd@redhat.com>
- <20210219173847.2054123-7-philmd@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42052 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lFYhY-0006h2-T6
+	for alex.bennee@linaro.org; Fri, 26 Feb 2021 03:42:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48768)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1lFYhJ-0006er-K4; Fri, 26 Feb 2021 03:42:05 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2655)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1lFYhF-0007mO-MP; Fri, 26 Feb 2021 03:42:05 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Dn34x6Z80z7qbN;
+ Fri, 26 Feb 2021 16:40:17 +0800 (CST)
+Received: from [10.174.186.67] (10.174.186.67) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 26 Feb 2021 16:41:45 +0800
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Introduce cpu topology support
+To: Andrew Jones <drjones@redhat.com>
+References: <20210225085627.2263-1-fangying1@huawei.com>
+ <20210225120255.4gfbtsflbdsyxizn@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <261f7e04-ea59-6883-981f-3891c240416e@huawei.com>
+Date: Fri, 26 Feb 2021 16:41:45 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="ItpTtSJa605u8HWx"
-Content-Disposition: inline
-In-Reply-To: <20210219173847.2054123-7-philmd@redhat.com>
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: yrqwxMEUhlZv
+In-Reply-To: <20210225120255.4gfbtsflbdsyxizn@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.186.67]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=fangying1@huawei.com;
+ helo=szxga07-in.huawei.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.435,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
+ zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
+ imammedo@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q4ilZZmMe7Mf
 
 
---ItpTtSJa605u8HWx
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, Feb 19, 2021 at 06:38:42PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Restrit KVM to the following PPC machines:
-> - 40p
-> - bamboo
-> - g3beige
-> - mac99
-> - mpc8544ds
-> - ppce500
-> - pseries
-> - sam460ex
-> - virtex-ml507
+On 2/25/2021 8:02 PM, Andrew Jones wrote:
+> On Thu, Feb 25, 2021 at 04:56:22PM +0800, Ying Fang wrote:
+>> An accurate cpu topology may help improve the cpu scheduler's decision
+>> making when dealing with multi-core system. So cpu topology description
+>> is helpful to provide guest with the right view. Dario Faggioli's talk
+>> in [0] also shows the virtual topology may has impact on sched performace.
+>> Thus this patch series is posted to introduce cpu topology support for
+>> arm platform.
+>>
+>> Both fdt and ACPI are introduced to present the cpu topology. To describe
+>> the cpu topology via ACPI, a PPTT table is introduced according to the
+>> processor hierarchy node structure. This series is derived from [1], in
+>> [1] we are trying to bring both cpu and cache topology support for arm
+>> platform, but there is still some issues to solve to support the cache
+>> hierarchy. So we split the cpu topology part out and send it seperately.
+>> The patch series to support cache hierarchy will be send later since
+>> Salil Mehta's cpu hotplug feature need the cpu topology enabled first and
+>> he is waiting for it to be upstreamed.
+>>
+>> This patch series was initially based on the patches posted by Andrew Jones [2].
+>> I jumped in on it since some OS vendor cooperative partner are eager for it.
+>> Thanks for Andrew's contribution.
+>>
+>> After applying this patch series, launch a guest with virt-6.0 and cpu
+>> topology configured with sockets:cores:threads = 2:4:2, you will get the
+>> bellow messages with the lscpu command.
+>>
+>> -----------------------------------------
+>> Architecture:                    aarch64
+>> CPU op-mode(s):                  64-bit
+>> Byte Order:                      Little Endian
+>> CPU(s):                          16
+>> On-line CPU(s) list:             0-15
+>> Thread(s) per core:              2
+> 
+> What CPU model was used? Did it actually support threads? If these were
 
-Hrm.
-
-The reason this list is kind of surprising is because there are 3
-different "flavours" of KVM on ppc: KVM HV ("pseries" only), KVM PR
-(almost any combination, theoretically, but kind of buggy in
-practice), and the Book E specific KVM (Book-E systems with HV
-extensions only).
-
-But basically, qemu explicitly managing what accelerators are
-available for each machine seems the wrong way around to me.  The
-approach we've generally taken is that qemu requests the specific
-features it needs of KVM, and KVM tells us whether it can supply those
-or not (which may involve selecting between one of the several
-flavours).
-
-That way we can extend KVM to cover more situations without needing
-corresponding changes in qemu every time.
+It's tested on Huawei Kunpeng 920 CPU model and vcpu host-passthrough.
+It does not support threads for now, but the next version 930 may
+support it. Here we emulate a virtual cpu topology, a virtual 2 threads
+is used to do the test.
 
 
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
-> RFC: I'm surprise by this list, but this is the result of
->      auditing calls to kvm_enabled() checks.
->=20
->  hw/ppc/e500plat.c      | 5 +++++
->  hw/ppc/mac_newworld.c  | 6 ++++++
->  hw/ppc/mac_oldworld.c  | 5 +++++
->  hw/ppc/mpc8544ds.c     | 5 +++++
->  hw/ppc/ppc440_bamboo.c | 5 +++++
->  hw/ppc/prep.c          | 5 +++++
->  hw/ppc/sam460ex.c      | 5 +++++
->  hw/ppc/spapr.c         | 5 +++++
->  8 files changed, 41 insertions(+)
->=20
-> diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
-> index bddd5e7c48f..9701dbc2231 100644
-> --- a/hw/ppc/e500plat.c
-> +++ b/hw/ppc/e500plat.c
-> @@ -67,6 +67,10 @@ HotplugHandler *e500plat_machine_get_hotpug_handler(Ma=
-chineState *machine,
-> =20
->  #define TYPE_E500PLAT_MACHINE  MACHINE_TYPE_NAME("ppce500")
-> =20
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static void e500plat_machine_class_init(ObjectClass *oc, void *data)
->  {
->      PPCE500MachineClass *pmc =3D PPCE500_MACHINE_CLASS(oc);
-> @@ -98,6 +102,7 @@ static void e500plat_machine_class_init(ObjectClass *o=
-c, void *data)
->      mc->max_cpus =3D 32;
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("e500v2_v30");
->      mc->default_ram_id =3D "mpc8544ds.ram";
-> +    mc->valid_accelerators =3D valid_accels;
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ETSEC_COMMON);
->   }
-> =20
-> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-> index e991db4addb..634f5ad19a0 100644
-> --- a/hw/ppc/mac_newworld.c
-> +++ b/hw/ppc/mac_newworld.c
-> @@ -578,6 +578,11 @@ static char *core99_fw_dev_path(FWPathProvider *p, B=
-usState *bus,
-> =20
->      return NULL;
->  }
-> +
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static int core99_kvm_type(MachineState *machine, const char *arg)
->  {
->      /* Always force PR KVM */
-> @@ -595,6 +600,7 @@ static void core99_machine_class_init(ObjectClass *oc=
-, void *data)
->      mc->max_cpus =3D MAX_CPUS;
->      mc->default_boot_order =3D "cd";
->      mc->default_display =3D "std";
-> +    mc->valid_accelerators =3D valid_accels;
->      mc->kvm_type =3D core99_kvm_type;
->  #ifdef TARGET_PPC64
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("970fx_v3.1");
-> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> index 44ee99be886..2c58f73b589 100644
-> --- a/hw/ppc/mac_oldworld.c
-> +++ b/hw/ppc/mac_oldworld.c
-> @@ -424,6 +424,10 @@ static char *heathrow_fw_dev_path(FWPathProvider *p,=
- BusState *bus,
->      return NULL;
->  }
-> =20
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static int heathrow_kvm_type(MachineState *machine, const char *arg)
->  {
->      /* Always force PR KVM */
-> @@ -444,6 +448,7 @@ static void heathrow_class_init(ObjectClass *oc, void=
- *data)
->  #endif
->      /* TOFIX "cad" when Mac floppy is implemented */
->      mc->default_boot_order =3D "cd";
-> +    mc->valid_accelerators =3D valid_accels;
->      mc->kvm_type =3D heathrow_kvm_type;
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("750_v3.1");
->      mc->default_display =3D "std";
-> diff --git a/hw/ppc/mpc8544ds.c b/hw/ppc/mpc8544ds.c
-> index 81177505f02..92b0e926c1b 100644
-> --- a/hw/ppc/mpc8544ds.c
-> +++ b/hw/ppc/mpc8544ds.c
-> @@ -36,6 +36,10 @@ static void mpc8544ds_init(MachineState *machine)
->      ppce500_init(machine);
->  }
-> =20
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static void e500plat_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> @@ -56,6 +60,7 @@ static void e500plat_machine_class_init(ObjectClass *oc=
-, void *data)
->      mc->max_cpus =3D 15;
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("e500v2_v30");
->      mc->default_ram_id =3D "mpc8544ds.ram";
-> +    mc->valid_accelerators =3D valid_accels;
->  }
-> =20
->  #define TYPE_MPC8544DS_MACHINE  MACHINE_TYPE_NAME("mpc8544ds")
-> diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-> index b156bcb9990..02501f489e4 100644
-> --- a/hw/ppc/ppc440_bamboo.c
-> +++ b/hw/ppc/ppc440_bamboo.c
-> @@ -298,12 +298,17 @@ static void bamboo_init(MachineState *machine)
->      }
->  }
-> =20
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static void bamboo_machine_init(MachineClass *mc)
->  {
->      mc->desc =3D "bamboo";
->      mc->init =3D bamboo_init;
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("440epb");
->      mc->default_ram_id =3D "ppc4xx.sdram";
-> +    mc->valid_accelerators =3D valid_accels;
->  }
-> =20
->  DEFINE_MACHINE("bamboo", bamboo_machine_init)
-> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index 7e72f6e4a9b..90d884b0883 100644
-> --- a/hw/ppc/prep.c
-> +++ b/hw/ppc/prep.c
-> @@ -431,6 +431,10 @@ static void ibm_40p_init(MachineState *machine)
->      }
->  }
-> =20
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static void ibm_40p_machine_init(MachineClass *mc)
->  {
->      mc->desc =3D "IBM RS/6000 7020 (40p)",
-> @@ -441,6 +445,7 @@ static void ibm_40p_machine_init(MachineClass *mc)
->      mc->default_boot_order =3D "c";
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("604");
->      mc->default_display =3D "std";
-> +    mc->valid_accelerators =3D valid_accels;
->  }
-> =20
->  DEFINE_MACHINE("40p", ibm_40p_machine_init)
-> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-> index e459b43065b..79adb3352f0 100644
-> --- a/hw/ppc/sam460ex.c
-> +++ b/hw/ppc/sam460ex.c
-> @@ -506,6 +506,10 @@ static void sam460ex_init(MachineState *machine)
->      boot_info->entry =3D entry;
->  }
-> =20
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static void sam460ex_machine_init(MachineClass *mc)
->  {
->      mc->desc =3D "aCube Sam460ex";
-> @@ -513,6 +517,7 @@ static void sam460ex_machine_init(MachineClass *mc)
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("460exb");
->      mc->default_ram_size =3D 512 * MiB;
->      mc->default_ram_id =3D "ppc4xx.sdram";
-> +    mc->valid_accelerators =3D valid_accels;
->  }
-> =20
->  DEFINE_MACHINE("sam460ex", sam460ex_machine_init)
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index 85fe65f8947..c5f985f0187 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -4397,6 +4397,10 @@ static void spapr_cpu_exec_exit(PPCVirtualHypervis=
-or *vhyp, PowerPCCPU *cpu)
->      }
->  }
-> =20
-> +static const char *const valid_accels[] =3D {
-> +    "tcg", "kvm", NULL
-> +};
-> +
->  static void spapr_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> @@ -4426,6 +4430,7 @@ static void spapr_machine_class_init(ObjectClass *o=
-c, void *data)
->      mc->default_ram_size =3D 512 * MiB;
->      mc->default_ram_id =3D "ppc_spapr.ram";
->      mc->default_display =3D "std";
-> +    mc->valid_accelerators =3D valid_accels;
->      mc->kvm_type =3D spapr_kvm_type;
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SPAPR_PCI_HOST_BRIDG=
-E);
->      mc->pci_allow_0_address =3D true;
+> KVM VCPUs, then I guess MPIDR.MT was not set on the CPUs. Apparently
+> that didn't confuse Linux? See [1] for how I once tried to deal with
+> threads.
+> 
+> [1] https://github.com/rhdrjones/qemu/commit/60218e0dd7b331031b644872d56f2aca42d0ff1e
+> 
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+If ACPI PPTT table is specified, the linux kernel won't check the MPIDR
+register to populate cpu topology. Moreover MPIDR does not ensure a
+right cpu topology. So it won't be a problem if MPIDR.MT is not set.
 
---ItpTtSJa605u8HWx
-Content-Type: application/pgp-signature; name="signature.asc"
+>> Core(s) per socket:              4
+>> Socket(s):                       2
+> 
+> Good, but what happens if you specify '-smp 16'? Do you get 16 sockets
+> each with 1 core? Or, do you get 1 socket with 16 cores? And, which do
+> we want and why? If you look at [2], then you'll see I was assuming we
+> want to prefer cores over sockets, since without topology descriptions
+> that's what the Linux guest kernel would do.
+> 
+> [2] https://github.com/rhdrjones/qemu/commit/c0670b1bccb4d08c7cf7c6957cc8878a2af131dd
+> 
+>> NUMA node(s):                    2
+> 
+> Why do we have two NUMA nodes in the guest? The two sockets in the
+> guest should not imply this.
 
------BEGIN PGP SIGNATURE-----
+The two NUMA nodes are emulated by Qemu since we already have guest numa
+topology feature. So the two sockets in the guest has nothing to do with
+it. Actually even one socket may have two numa nodes in it in real cpu
+model.
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAmAzSEIACgkQbDjKyiDZ
-s5KQOw//YS94mBUeu/EPKaGiexiH4d4Orn932aJsK8KfT2d6JHky9L3Z55oFSk8A
-r13ZUkzrZFuUfpX1s138QN61Y7aCkK6JgxY7jl8Uj6jOJP6Vk26lnXiVim8r94n2
-ouAsoi9TDVxDD5Ewxwmr+PHD/s9f3lvWpjVCvI0V1mHIfDrEyMIzM+Il4PeBkxgO
-bmakSOE25jouYGjY1uf1Bx2/BZkU2o7J6n0yaD8M/ZpUVxgBFF0av8b0ZTqP66dc
-CDw//dCygGegCNohXuTW5rYh+FSy9FMkxsQqHtn/aiJoUQJvbydRueNszc1N1W6D
-aYSbkhX77ZU1wSGJbBDkGeyMhsRkwi9VJdG8fRAXRkYCutRbKKU+zIs1oAty8l5J
-E8I5GwxVprM5G1tujmCuBw8D4yXmlBrSksNkka01UjErfoQIutrMbmhGu6LtXyi2
-VCz18YUvhrI+6xgJQPMiOHasOQmoEUq/6KHmWlp39nj6MoiOUZXpMBOVyQqkHEKN
-ZuQZe5RJKv2X3fu2laxX4MjShgBmhqKUCzqAcYzQDPHpU/f82tO+f3a08+6m2y32
-b0KtPw8ojvPHflgCgTjWbug7byXAit1ZCjFkX4Sen3TMV6FFoKheh29Dlujn08xR
-9oQ98yWtCnc7xQ0fj1vTSsdjvf8PlVkoQucMqa1ShpAVr3zRV6c=
-=unpI
------END PGP SIGNATURE-----
-
---ItpTtSJa605u8HWx--
+> 
+> Thanks,
+> drew
+> 
+>> Vendor ID:                       HiSilicon
+>> Model:                           0
+>> Model name:                      Kunpeng-920
+>> Stepping:                        0x1
+>> BogoMIPS:                        200.00
+>> NUMA node0 CPU(s):               0-7
+>> NUMA node1 CPU(s):               8-15
+>>
+>> [0] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines-friend-or-foe-dario-faggioli-suse
+>> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg02166.html
+>> [2] https://patchwork.ozlabs.org/project/qemu-devel/cover/20180704124923.32483-1-drjones@redhat.com
+>>
+>> Ying Fang (5):
+>>    device_tree: Add qemu_fdt_add_path
+>>    hw/arm/virt: Add cpu-map to device tree
+>>    hw/arm/virt-acpi-build: distinguish possible and present cpus
+>>    hw/acpi/aml-build: add processor hierarchy node structure
+>>    hw/arm/virt-acpi-build: add PPTT table
+>>
+>>   hw/acpi/aml-build.c          | 40 ++++++++++++++++++++++
+>>   hw/arm/virt-acpi-build.c     | 64 +++++++++++++++++++++++++++++++++---
+>>   hw/arm/virt.c                | 40 +++++++++++++++++++++-
+>>   include/hw/acpi/acpi-defs.h  | 13 ++++++++
+>>   include/hw/acpi/aml-build.h  |  7 ++++
+>>   include/hw/arm/virt.h        |  1 +
+>>   include/sysemu/device_tree.h |  1 +
+>>   softmmu/device_tree.c        | 45 +++++++++++++++++++++++--
+>>   8 files changed, 204 insertions(+), 7 deletions(-)
+>>
+>> -- 
+>> 2.23.0
+>>
+> 
+> .
+> 

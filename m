@@ -1,77 +1,67 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1086350lfg;
-        Fri, 26 Feb 2021 01:00:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzIa3lWrGmeATBa7qQI/9TjPXSWc+7cfUevrjQhKGV8ajk7ttfAK7AykEBoLuDXlsJDrgDK
-X-Received: by 2002:a5b:98a:: with SMTP id c10mr3072204ybq.406.1614330006640;
-        Fri, 26 Feb 2021 01:00:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614330006; cv=none;
-        d=google.com; s=arc-20160816;
-        b=HBeiNaEkQXZArBbS84B4qWj9KOyyMOoc99CazU76qfwB7tLRFcSPlcXn8h6J5rdWMo
-         G6m+7LrTHd/BZ06P7kZTjofwqsrdG9De5jtT4ZsxewczEtYwTO1xTXAiF2rcjkIYpSdq
-         Zi/vCpXqsfdWENPUXPi6eBEJMwEhY4gXsUmbhA4PzmEaWUFdqosj8R5GQ5c4uyBzskc2
-         9IqiHGFRvMTczG30gul3vmMWTveHKMzWWSfhGKrZQ5sAya91I1ZWHCLVUGDeBFvC+giZ
-         c+xeTQD8ITgcEOooNtQTLiPV+iFP+FqPnUsMGVdc8fWW+ahZbZRlvzwsMKMygCktuk6x
-         ZyHA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=MF0uEgNQ10dhatV3rdIpuiQ2V60leOMvU634U9c42WE=;
-        b=hxS57aS6kEmHmCn+KOnN+DDd3r/atgHRlRpzilpGK7EOBViIGkHOpGX+b0dMlPNHSX
-         uGz2MkzXw+JRxudLWkZg+0bPhgkEM6N+Q7kxsI4sFWK2IJY/x8c7bvBewQ0zBW2+JaZo
-         9B8uS57dKkoaHAOBw0pvY4jCRKofr6J07rI5gfeKeu06kvNK7/hrGCROqbbtawWG/GzU
-         Wb/VUe0Ilt9wP7nfDuiRQE5PWA1hDkovFOKzUmO5q6+DVOmfZA3ggl8QeXr5E1+KgAoy
-         amoi0/rILLAzZdPai6XdWS0HyG55CBlRFRHJMx/nt9GH3xrmzXXZq6aqxCAThS8XcJmk
-         HRJw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1090163lfg;
+        Fri, 26 Feb 2021 01:06:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwJ2wPqbi94YR2KZsYWFY9UHZpysj3TxXzrV7WDUzG3KCJk2yM17Eij2vn0Scocv6ClWEkh
+X-Received: by 2002:a05:6e02:1d0e:: with SMTP id i14mr1510833ila.69.1614330361862;
+        Fri, 26 Feb 2021 01:06:01 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i202si7954363ybg.109.2021.02.26.01.00.06
+        by mx.google.com with ESMTPS id p17si4913078jan.71.2021.02.26.01.06.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Feb 2021 01:00:06 -0800 (PST)
+        Fri, 26 Feb 2021 01:06:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFYyj-0006zV-Sl
-	for alex.bennee@linaro.org; Fri, 26 Feb 2021 04:00:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50540)
+	id 1lFZ4T-00034R-07
+	for alex.bennee@linaro.org; Fri, 26 Feb 2021 04:06:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lFYom-0004sj-N0; Fri, 26 Feb 2021 03:49:48 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2943)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lFZ2k-0002DW-Uq; Fri, 26 Feb 2021 04:04:15 -0500
+Resent-Date: Fri, 26 Feb 2021 04:04:14 -0500
+Resent-Message-Id: <E1lFZ2k-0002DW-Uq@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21372)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lFYoj-0003b7-Jk; Fri, 26 Feb 2021 03:49:48 -0500
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Dn3FL19PbzMfG7;
- Fri, 26 Feb 2021 16:47:34 +0800 (CST)
-Received: from huawei.com (10.174.185.226) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.498.0; Fri, 26 Feb 2021
- 16:49:27 +0800
-From: Wang Xingang <wangxingang5@huawei.com>
-To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 4/4] hw/arm/virt-acpi-build: Add explicit idmap info in
- IORT table
-Date: Fri, 26 Feb 2021 08:49:13 +0000
-Message-ID: <1614329353-2124-5-git-send-email-wangxingang5@huawei.com>
-X-Mailer: git-send-email 2.6.4.windows.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lFZ2f-0003iU-Mi; Fri, 26 Feb 2021 04:04:14 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1614330229; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=js3wHQetd50ily9Ulq0P6RB7g9OdIIeulvsu4J2ClurL9oXS1YCz/Mk5vfA774FMCVmCi3jUN+TeyPTDgq+SqCulUcki0SMK+Uf3iMOA9G482ZWM6L8dkkRHhVu98ip4lXlkOquQ8ilIlSKsORg25gFft/xS5uwu19B6lWjSPBI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1614330229;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=eCoRiICaMqO/vATK4Lm5RtZ3bGlqQLfewwZOPX3ZIAo=; 
+ b=Uug+Z3GmdvZjHkbvS1oHcXF2bB68sHB8gLse2mdI+gjmfkOF+rOEJjCraLIHRfORFZIWmuzr6NckFvfypFvh8QHmIgoNYvRHm59mWjfyo0KP9h87e4Y9D8xP/IrIlpivNW3FpcaaG+p5tUYUd9s2uEDFSB15hOZQyHLIzlNdSw4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1614330225907131.2715488450459;
+ Fri, 26 Feb 2021 01:03:45 -0800 (PST)
 In-Reply-To: <1614329353-2124-1-git-send-email-wangxingang5@huawei.com>
-References: <1614329353-2124-1-git-send-email-wangxingang5@huawei.com>
+Subject: Re: [RFC PATCH 0/4] hw/arm/virt-acpi-build: Introduce iommu option
+ for pci root bus
+Message-ID: <161433022414.1906.2184533161794400748@c667a6b167f6>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.185.226]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=wangxingang5@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: wangxingang5@huawei.com
+Date: Fri, 26 Feb 2021 01:03:45 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -85,175 +75,63 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
 Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
- wangxingang5@huawei.com, mst@redhat.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, imammedo@redhat.com
+ wangxingang5@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, imammedo@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t+ndqJ7gvCaJ
+X-TUID: XPAaZm3ajQYO
 
-From: Xingang Wang <wangxingang5@huawei.com>
-
-The idmap of smmuv3 and root complex covers the whole RID space for now,
-this patch add explicit idmap info according to root bus number range.
-This add smmuv3 idmap for certain bus which has enabled the iommu property.
-
-Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
-Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
----
- hw/arm/virt-acpi-build.c | 88 +++++++++++++++++++++++++++++-----------
- 1 file changed, 65 insertions(+), 23 deletions(-)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index f9c9df916c..8bb8b251d0 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -54,6 +54,7 @@
- #include "kvm_arm.h"
- #include "migration/vmstate.h"
- #include "hw/acpi/ghes.h"
-+#include "hw/pci/pci_bus.h"
- 
- #define ARM_SPI_BASE 32
- 
-@@ -247,9 +248,34 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     AcpiIortSmmu3 *smmu;
-     size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
-     AcpiIortRC *rc;
-+    PCIBus *bus = vms->bus;
-+    GArray *root_bus_array;
-+    size_t root_bus_count = 0;
-+    size_t root_bus_smmu_count = 0;
-+    int bus_num, max_bus, index;
-+
-+    root_bus_array = g_array_new(false, true, sizeof(PCIBus *));
- 
-     iort = acpi_data_push(table_data, sizeof(*iort));
- 
-+    g_array_append_val(root_bus_array, bus);
-+    root_bus_count++;
-+    if (vms->iommu == VIRT_IOMMU_SMMUV3 && pci_bus_has_iommu(bus)) {
-+        root_bus_smmu_count++;
-+    }
-+
-+    QLIST_FOREACH(bus, &bus->child, sibling) {
-+
-+        if (!pci_bus_is_root(bus)) continue;
-+
-+        g_array_append_val(root_bus_array, bus);
-+        root_bus_count++;
-+
-+        if (vms->iommu == VIRT_IOMMU_SMMUV3 && pci_bus_has_iommu(bus)) {
-+            root_bus_smmu_count++;
-+        }
-+    }
-+
-     if (vms->iommu == VIRT_IOMMU_SMMUV3) {
-         nb_nodes = 3; /* RC, ITS, SMMUv3 */
-     } else {
-@@ -280,13 +306,13 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
-         /* SMMUv3 node */
-         smmu_offset = iort_node_offset + node_size;
--        node_size = sizeof(*smmu) + sizeof(*idmap);
-+        node_size = sizeof(*smmu) + sizeof(*idmap) * root_bus_smmu_count;
-         iort_length += node_size;
-         smmu = acpi_data_push(table_data, node_size);
- 
-         smmu->type = ACPI_IORT_NODE_SMMU_V3;
-         smmu->length = cpu_to_le16(node_size);
--        smmu->mapping_count = cpu_to_le32(1);
-+        smmu->mapping_count = cpu_to_le32(root_bus_smmu_count);
-         smmu->mapping_offset = cpu_to_le32(sizeof(*smmu));
-         smmu->base_address = cpu_to_le64(vms->memmap[VIRT_SMMU].base);
-         smmu->flags = cpu_to_le32(ACPI_IORT_SMMU_V3_COHACC_OVERRIDE);
-@@ -295,23 +321,32 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         smmu->gerr_gsiv = cpu_to_le32(irq + 2);
-         smmu->sync_gsiv = cpu_to_le32(irq + 3);
- 
--        /* Identity RID mapping covering the whole input RID range */
--        idmap = &smmu->id_mapping_array[0];
--        idmap->input_base = 0;
--        idmap->id_count = cpu_to_le32(0xFFFF);
--        idmap->output_base = 0;
--        /* output IORT node is the ITS group node (the first node) */
--        idmap->output_reference = cpu_to_le32(iort_node_offset);
-+        index = 0;
-+        for (int i = 0; i < root_bus_count; i++) {
-+            bus = g_array_index(root_bus_array, PCIBus *, i);
-+
-+            if (!pci_bus_has_iommu(bus)) continue;
-+
-+            bus_num = pci_bus_num(bus);
-+            max_bus = pci_root_bus_max_bus(bus);
-+
-+            idmap = &smmu->id_mapping_array[index++];
-+            idmap->input_base = cpu_to_le32(bus_num << 8);
-+            idmap->id_count = cpu_to_le32((max_bus - bus_num + 1) << 8);
-+            idmap->output_base = cpu_to_le32(bus_num << 8);
-+            /* output IORT node is the ITS group node (the first node) */
-+            idmap->output_reference = cpu_to_le32(iort_node_offset);
-+        }
-     }
- 
-     /* Root Complex Node */
--    node_size = sizeof(*rc) + sizeof(*idmap);
-+    node_size = sizeof(*rc) + sizeof(*idmap) * root_bus_count;
-     iort_length += node_size;
-     rc = acpi_data_push(table_data, node_size);
- 
-     rc->type = ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
-     rc->length = cpu_to_le16(node_size);
--    rc->mapping_count = cpu_to_le32(1);
-+    rc->mapping_count = cpu_to_le32(root_bus_count);
-     rc->mapping_offset = cpu_to_le32(sizeof(*rc));
- 
-     /* fully coherent device */
-@@ -319,18 +354,23 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     rc->memory_properties.memory_flags = 0x3; /* CCA = CPM = DCAS = 1 */
-     rc->pci_segment_number = 0; /* MCFG pci_segment */
- 
--    /* Identity RID mapping covering the whole input RID range */
--    idmap = &rc->id_mapping_array[0];
--    idmap->input_base = 0;
--    idmap->id_count = cpu_to_le32(0xFFFF);
--    idmap->output_base = 0;
--
--    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
--        /* output IORT node is the smmuv3 node */
--        idmap->output_reference = cpu_to_le32(smmu_offset);
--    } else {
--        /* output IORT node is the ITS group node (the first node) */
--        idmap->output_reference = cpu_to_le32(iort_node_offset);
-+    for (int i = 0; i < root_bus_count; i++) {
-+        bus = g_array_index(root_bus_array, PCIBus *, i);
-+        bus_num = pci_bus_num(bus);
-+        max_bus = pci_root_bus_max_bus(bus);
-+
-+        idmap = &rc->id_mapping_array[i];
-+        idmap->input_base = cpu_to_le32(bus_num << 8);
-+        idmap->id_count = cpu_to_le32((max_bus - bus_num + 1) << 8);
-+        idmap->output_base = cpu_to_le32(bus_num << 8);
-+
-+        if (vms->iommu == VIRT_IOMMU_SMMUV3 && pci_bus_has_iommu(bus)) {
-+            /* output IORT node is the smmuv3 node */
-+            idmap->output_reference = cpu_to_le32(smmu_offset);
-+        } else {
-+            /* output IORT node is the ITS group node (the first node) */
-+            idmap->output_reference = cpu_to_le32(iort_node_offset);
-+        }
-     }
- 
-     /*
-@@ -343,6 +383,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     build_header(linker, table_data, (void *)(table_data->data + iort_start),
-                  "IORT", table_data->len - iort_start, 0, vms->oem_id,
-                  vms->oem_table_id);
-+
-+    g_array_free(root_bus_array, true);
- }
- 
- static void
--- 
-2.19.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNjE0MzI5MzUzLTIxMjQtMS1n
+aXQtc2VuZC1lbWFpbC13YW5neGluZ2FuZzVAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmll
+cyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJl
+bG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDE2MTQz
+MjkzNTMtMjEyNC0xLWdpdC1zZW5kLWVtYWlsLXdhbmd4aW5nYW5nNUBodWF3ZWkuY29tClN1Ympl
+Y3Q6IFtSRkMgUEFUQ0ggMC80XSBody9hcm0vdmlydC1hY3BpLWJ1aWxkOiBJbnRyb2R1Y2UgaW9t
+bXUgb3B0aW9uIGZvciBwY2kgcm9vdCBidXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEv
+YmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29u
+ZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJl
+bmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4v
+c2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBF
+TkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0
+CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFn
+XSAgICAgICAgIHBhdGNoZXcvMTYxNDMyOTM1My0yMTI0LTEtZ2l0LXNlbmQtZW1haWwtd2FuZ3hp
+bmdhbmc1QGh1YXdlaS5jb20gLT4gcGF0Y2hldy8xNjE0MzI5MzUzLTIxMjQtMS1naXQtc2VuZC1l
+bWFpbC13YW5neGluZ2FuZzVAaHVhd2VpLmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rl
+c3QnCmJhZWQwYjEgaHcvYXJtL3ZpcnQtYWNwaS1idWlsZDogQWRkIGV4cGxpY2l0IGlkbWFwIGlu
+Zm8gaW4gSU9SVCB0YWJsZQpiZjcwODMyIGh3L3BjaTogQWRkIHBjaV9yb290X2J1c19tYXhfYnVz
+CmRkZmIwY2MgaHcvcGNpOiBBZGQgaW9tbXUgb3B0aW9uIGZvciBwY2kgcm9vdCBidXMKYWIzMTdk
+ZiBwY2k6IEFkZCBQQ0lfQlVTX0lPTU1VIHByb3BlcnR5Cgo9PT0gT1VUUFVUIEJFR0lOID09PQox
+LzQgQ2hlY2tpbmcgY29tbWl0IGFiMzE3ZGZmM2I3NiAocGNpOiBBZGQgUENJX0JVU19JT01NVSBw
+cm9wZXJ0eSkKMi80IENoZWNraW5nIGNvbW1pdCBkZGZiMGNjYmVkOGIgKGh3L3BjaTogQWRkIGlv
+bW11IG9wdGlvbiBmb3IgcGNpIHJvb3QgYnVzKQpFUlJPUjogc3VzcGVjdCBjb2RlIGluZGVudCBm
+b3IgY29uZGl0aW9uYWwgc3RhdGVtZW50cyAoNCwgNykKIzEwNTogRklMRTogaHcvcGNpLWJyaWRn
+ZS9wY2lfZXhwYW5kZXJfYnJpZGdlLmM6MjU4OgorICAgIGlmIChweGItPmlvbW11KSB7CisgICAg
+ICAgYnVzLT5mbGFncyB8PSBQQ0lfQlVTX0lPTU1VOwoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5p
+bmdzLCA5OCBsaW5lcyBjaGVja2VkCgpQYXRjaCAyLzQgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVh
+c2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJl
+cG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVS
+Uy4KCjMvNCBDaGVja2luZyBjb21taXQgYmY3MDgzMmY0NzQyIChody9wY2k6IEFkZCBwY2lfcm9v
+dF9idXNfbWF4X2J1cykKNC80IENoZWNraW5nIGNvbW1pdCBiYWVkMGIxNzljY2MgKGh3L2FybS92
+aXJ0LWFjcGktYnVpbGQ6IEFkZCBleHBsaWNpdCBpZG1hcCBpbmZvIGluIElPUlQgdGFibGUpCkVS
+Uk9SOiB0cmFpbGluZyBzdGF0ZW1lbnRzIHNob3VsZCBiZSBvbiBuZXh0IGxpbmUKIzUyOiBGSUxF
+OiBody9hcm0vdmlydC1hY3BpLWJ1aWxkLmM6MjY5OgorICAgICAgICBpZiAoIXBjaV9idXNfaXNf
+cm9vdChidXMpKSBjb250aW51ZTsKCkVSUk9SOiBicmFjZXMge30gYXJlIG5lY2Vzc2FyeSBmb3Ig
+YWxsIGFybXMgb2YgdGhpcyBzdGF0ZW1lbnQKIzUyOiBGSUxFOiBody9hcm0vdmlydC1hY3BpLWJ1
+aWxkLmM6MjY5OgorICAgICAgICBpZiAoIXBjaV9idXNfaXNfcm9vdChidXMpKSBjb250aW51ZTsK
+Wy4uLl0KCkVSUk9SOiB0cmFpbGluZyBzdGF0ZW1lbnRzIHNob3VsZCBiZSBvbiBuZXh0IGxpbmUK
+Izk2OiBGSUxFOiBody9hcm0vdmlydC1hY3BpLWJ1aWxkLmM6MzI4OgorICAgICAgICAgICAgaWYg
+KCFwY2lfYnVzX2hhc19pb21tdShidXMpKSBjb250aW51ZTsKCkVSUk9SOiBicmFjZXMge30gYXJl
+IG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBzdGF0ZW1lbnQKIzk2OiBGSUxFOiBody9h
+cm0vdmlydC1hY3BpLWJ1aWxkLmM6MzI4OgorICAgICAgICAgICAgaWYgKCFwY2lfYnVzX2hhc19p
+b21tdShidXMpKSBjb250aW51ZTsKWy4uLl0KCnRvdGFsOiA0IGVycm9ycywgMCB3YXJuaW5ncywg
+MTM5IGxpbmVzIGNoZWNrZWQKClBhdGNoIDQvNCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSBy
+ZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0
+IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoK
+PT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRo
+ZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMTYxNDMy
+OTM1My0yMTI0LTEtZ2l0LXNlbmQtZW1haWwtd2FuZ3hpbmdhbmc1QGh1YXdlaS5jb20vdGVzdGlu
+Zy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
+YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
+ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t

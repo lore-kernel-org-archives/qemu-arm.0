@@ -1,62 +1,63 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1949743lfg;
-        Sat, 27 Feb 2021 00:35:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzQdZBT7oYjWDHio4Za34RBQajMR8rR7fUM6Tfeq4yN74HDlxrnBCZwF9gc7D2rVmH2L5UW
-X-Received: by 2002:a25:86ca:: with SMTP id y10mr10224955ybm.431.1614414935038;
-        Sat, 27 Feb 2021 00:35:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614414935; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1949750lfg;
+        Sat, 27 Feb 2021 00:35:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxHdZj7MRLxm0vYPnCbGz5sqeYMaYJEiZ1fUU4SLWezeZz4Aw8CFJlVJbBIXtauAnhj8Ysl
+X-Received: by 2002:a25:fc1d:: with SMTP id v29mr9767535ybd.472.1614414936009;
+        Sat, 27 Feb 2021 00:35:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614414936; cv=none;
         d=google.com; s=arc-20160816;
-        b=yFZocev2DZ8ki+8qIKMeH93jowogfQwGYy2VWQXG05fGceFBLItFIG1HThGx/rgllU
-         /7vKbO3WddFZM1wG41Hp7zxBM4CrqzOsCfRzZiVKcoqgvKXs1z9T16QZdAIVwr+MyfIc
-         w13cZ1l4xYQSRbh1mN8PIWOwB7sGdtoCfC2M6yG/OIVHnwwUUH3o9sqY3RrPbIF4A9a9
-         QyH+2kpuOaDE+HMs6a2rEj/agi9QyQkfc3byLGVPzlsOz8WBGxu+QcKCH41Yp90fb+PT
-         /xk/WQkTi6kV6BKHeGx3zbLktyVul5zTMYdvEddmUbGnGEcYvAIzf2rr/aWoz1HGZgt2
-         xMWg==
+        b=k5OH3A/SVoXLhTNRs+rS1kH1Eeva3Bb4YrzP08p+LOjQqDarywWTkj6unOHmroX2nb
+         XFlas7hHlZRDTkFUFFN6k9yIGlSNWWo9TkGAvbpi7EVJCo5iA05S0mAPEXzBtWwuhjnJ
+         DCHLJ0n5B6sjvgjx2kJp3mBNBp4QpkPpOaC2patnV7jf42Eoi7FfvJgsxxQszDgahARn
+         RCULxuQJi8d0uDNgioobSkkep0zcSc/fWdTOZNewDI4ubkPfvudQVi8pJxggmVZYtWWk
+         nnK+YVO9jms3RqDAlq1qt8l6WdGX+HkmkscA/1ydIUY/VszUDDVcgrrntaz+Mk5CHwEg
+         MZ6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=NQ/yIixLZVbKC4+Wi9PZ2LRq2vSgMrtFwIAgtPaSzdU=;
-        b=vTtbDKiog7qpravUfnIKJEouIRjszypzxPUH9RlJ4qUUhAWtiSgXDq1PI6HVRk7JV2
-         dfYNoB6oMKKw7ngNaflIL06T4NnLTGXewRO4ROfLq9cqL8vHSrEpzN5m2ZkYniEiGQl2
-         5xBv89HPIwr6H0OFIx/eU9SB1YwEvfDC/E3Kh3xUSAyebWN4paup5CNgHZzeOe5ljr0K
-         pMnh5B/rJUA7R3qdsYj628BEm10RjqDePp3LEGbrddtvDrAO2Cz/PX/CgYbdBFOI9oEn
-         cpzM2NBa0WwhHt0T18CBTifKfwE4hZmD4V791UybnPPRnMIj94hTDxJugXCwwVZ1B+Ef
-         IkDA==
+        bh=hy1ayyz526pFozLJvBDuQPqipUUMt5jr4u0iE+QO6aQ=;
+        b=kn7varTzMJzvK14ZUieOkaZwVJVGnf/Nu1Uv8s6HwUKntneXI3GPm8b9iOUgsybTQe
+         uwDpaVK1rBfpg9Z0s31kYF1TLqFdAfX0RTX9w5JPUTZ8tkpJT0uRQJunpXhFABscnfgh
+         7qwFCgvfdGzQ0Zo8ulEDh9ExNjFj0opZk8Z+eLo/8TJr3Sz80jOedDijB9SKSktx20Pt
+         1YSWQmfq5miRFkrQb8OASnSfkgGgxn4/xJoTe3cafv/cVK8XzbveJjfd+3BVF04plHLK
+         LoFBtz4OhgK5f9ZkOkvIJhHS9lDyWairV9bxl4DlA/cD9qmdwdrg1C1dt0fBT4YS4ZAx
+         QU3w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j187si10578419ybg.401.2021.02.27.00.35.34
+        by mx.google.com with ESMTPS id g27si13671050ybj.89.2021.02.27.00.35.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 27 Feb 2021 00:35:35 -0800 (PST)
+        Sat, 27 Feb 2021 00:35:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47268 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47378 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFv4Y-00050O-Bv
-	for alex.bennee@linaro.org; Sat, 27 Feb 2021 03:35:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35076)
+	id 1lFv4Z-00052t-96
+	for alex.bennee@linaro.org; Sat, 27 Feb 2021 03:35:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lFv3O-0004Vo-SV; Sat, 27 Feb 2021 03:34:22 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3495)
+ id 1lFv3P-0004WR-BI; Sat, 27 Feb 2021 03:34:27 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3496)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
- id 1lFv3J-0007vy-Fm; Sat, 27 Feb 2021 03:34:22 -0500
+ id 1lFv3J-0007vx-Cv; Sat, 27 Feb 2021 03:34:23 -0500
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DnfsT3tdBzjRyZ;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DnfsT3cMxzjQyG;
  Sat, 27 Feb 2021 16:32:29 +0800 (CST)
 Received: from huawei.com (10.174.185.226) by DGGEMS410-HUB.china.huawei.com
  (10.3.19.210) with Microsoft SMTP Server id 14.3.498.0; Sat, 27 Feb 2021
  16:34:00 +0800
 From: Wang Xingang <wangxingang5@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC RESEND PATCH 3/4] hw/pci: Add pci_root_bus_max_bus
-Date: Sat, 27 Feb 2021 08:33:50 +0000
-Message-ID: <1614414831-39712-4-git-send-email-wangxingang5@huawei.com>
+Subject: [RFC RESEND PATCH 4/4] hw/arm/virt-acpi-build: Add explicit idmap
+ info in IORT table
+Date: Sat, 27 Feb 2021 08:33:51 +0000
+Message-ID: <1614414831-39712-5-git-send-email-wangxingang5@huawei.com>
 X-Mailer: git-send-email 2.6.4.windows.1
 In-Reply-To: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
 References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
@@ -89,75 +90,174 @@ Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
  qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Mt3qVbYP3x1v
+X-TUID: Sw73GDdmYf5b
 
 From: Xingang Wang <wangxingang5@huawei.com>
 
-This helps to find max bus number of a root bus.
+The idmap of smmuv3 and root complex covers the whole RID space for now,
+this patch add explicit idmap info according to root bus number range.
+This add smmuv3 idmap for certain bus which has enabled the iommu property.
 
 Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
 Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
 ---
- hw/pci/pci.c         | 33 +++++++++++++++++++++++++++++++++
- include/hw/pci/pci.h |  1 +
- 2 files changed, 34 insertions(+)
+ hw/arm/virt-acpi-build.c | 92 ++++++++++++++++++++++++++++++----------
+ 1 file changed, 69 insertions(+), 23 deletions(-)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index dc969989c9..ed92ce0971 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -516,6 +516,39 @@ int pci_bus_num(PCIBus *s)
-     return PCI_BUS_GET_CLASS(s)->bus_num(s);
- }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f9c9df916c..38ab700ad9 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -54,6 +54,7 @@
+ #include "kvm_arm.h"
+ #include "migration/vmstate.h"
+ #include "hw/acpi/ghes.h"
++#include "hw/pci/pci_bus.h"
  
-+int pci_root_bus_max_bus(PCIBus *bus)
-+{
-+    PCIHostState *host;
-+    int max_bus = 0;
-+    int type;
-+    int devfn;
+ #define ARM_SPI_BASE 32
+ 
+@@ -247,9 +248,36 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiIortSmmu3 *smmu;
+     size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
+     AcpiIortRC *rc;
++    PCIBus *bus = vms->bus;
++    GArray *root_bus_array;
++    size_t root_bus_count = 0;
++    size_t root_bus_smmu_count = 0;
++    int bus_num, max_bus, index;
 +
-+    if (!pci_bus_is_root(bus)) {
-+        return 0;
++    root_bus_array = g_array_new(false, true, sizeof(PCIBus *));
+ 
+     iort = acpi_data_push(table_data, sizeof(*iort));
+ 
++    g_array_append_val(root_bus_array, bus);
++    root_bus_count++;
++    if (vms->iommu == VIRT_IOMMU_SMMUV3 && pci_bus_has_iommu(bus)) {
++        root_bus_smmu_count++;
 +    }
 +
-+    host = PCI_HOST_BRIDGE(BUS(bus)->parent);
-+    max_bus = pci_bus_num(host->bus);
++    QLIST_FOREACH(bus, &bus->child, sibling) {
 +
-+    for (devfn = 0; devfn < ARRAY_SIZE(host->bus->devices); devfn++) {
-+        PCIDevice *dev = host->bus->devices[devfn];
-+
-+        if (!dev) {
++        if (!pci_bus_is_root(bus)) {
 +            continue;
 +        }
 +
-+        type = dev->config[PCI_HEADER_TYPE] & ~PCI_HEADER_TYPE_MULTI_FUNCTION;
-+        if (type == PCI_HEADER_TYPE_BRIDGE) {
-+            uint8_t subordinate = dev->config[PCI_SUBORDINATE_BUS];
-+            if (subordinate > max_bus) {
-+                max_bus = subordinate;
-+            }
++        g_array_append_val(root_bus_array, bus);
++        root_bus_count++;
++
++        if (vms->iommu == VIRT_IOMMU_SMMUV3 && pci_bus_has_iommu(bus)) {
++            root_bus_smmu_count++;
 +        }
 +    }
 +
-+    return max_bus;
-+}
+     if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+         nb_nodes = 3; /* RC, ITS, SMMUv3 */
+     } else {
+@@ -280,13 +308,13 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ 
+         /* SMMUv3 node */
+         smmu_offset = iort_node_offset + node_size;
+-        node_size = sizeof(*smmu) + sizeof(*idmap);
++        node_size = sizeof(*smmu) + sizeof(*idmap) * root_bus_smmu_count;
+         iort_length += node_size;
+         smmu = acpi_data_push(table_data, node_size);
+ 
+         smmu->type = ACPI_IORT_NODE_SMMU_V3;
+         smmu->length = cpu_to_le16(node_size);
+-        smmu->mapping_count = cpu_to_le32(1);
++        smmu->mapping_count = cpu_to_le32(root_bus_smmu_count);
+         smmu->mapping_offset = cpu_to_le32(sizeof(*smmu));
+         smmu->base_address = cpu_to_le64(vms->memmap[VIRT_SMMU].base);
+         smmu->flags = cpu_to_le32(ACPI_IORT_SMMU_V3_COHACC_OVERRIDE);
+@@ -295,23 +323,34 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         smmu->gerr_gsiv = cpu_to_le32(irq + 2);
+         smmu->sync_gsiv = cpu_to_le32(irq + 3);
+ 
+-        /* Identity RID mapping covering the whole input RID range */
+-        idmap = &smmu->id_mapping_array[0];
+-        idmap->input_base = 0;
+-        idmap->id_count = cpu_to_le32(0xFFFF);
+-        idmap->output_base = 0;
+-        /* output IORT node is the ITS group node (the first node) */
+-        idmap->output_reference = cpu_to_le32(iort_node_offset);
++        index = 0;
++        for (int i = 0; i < root_bus_count; i++) {
++            bus = g_array_index(root_bus_array, PCIBus *, i);
 +
- int pci_bus_numa_node(PCIBus *bus)
- {
-     return PCI_BUS_GET_CLASS(bus)->numa_node(bus);
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index 1bc231480f..238b91817a 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -449,6 +449,7 @@ static inline PCIBus *pci_get_bus(const PCIDevice *dev)
-     return PCI_BUS(qdev_get_parent_bus(DEVICE(dev)));
++            if (!pci_bus_has_iommu(bus)) {
++                continue;
++            }
++
++            bus_num = pci_bus_num(bus);
++            max_bus = pci_root_bus_max_bus(bus);
++
++            idmap = &smmu->id_mapping_array[index++];
++            idmap->input_base = cpu_to_le32(bus_num << 8);
++            idmap->id_count = cpu_to_le32((max_bus - bus_num + 1) << 8);
++            idmap->output_base = cpu_to_le32(bus_num << 8);
++            /* output IORT node is the ITS group node (the first node) */
++            idmap->output_reference = cpu_to_le32(iort_node_offset);
++        }
+     }
+ 
+     /* Root Complex Node */
+-    node_size = sizeof(*rc) + sizeof(*idmap);
++    node_size = sizeof(*rc) + sizeof(*idmap) * root_bus_count;
+     iort_length += node_size;
+     rc = acpi_data_push(table_data, node_size);
+ 
+     rc->type = ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
+     rc->length = cpu_to_le16(node_size);
+-    rc->mapping_count = cpu_to_le32(1);
++    rc->mapping_count = cpu_to_le32(root_bus_count);
+     rc->mapping_offset = cpu_to_le32(sizeof(*rc));
+ 
+     /* fully coherent device */
+@@ -319,18 +358,23 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     rc->memory_properties.memory_flags = 0x3; /* CCA = CPM = DCAS = 1 */
+     rc->pci_segment_number = 0; /* MCFG pci_segment */
+ 
+-    /* Identity RID mapping covering the whole input RID range */
+-    idmap = &rc->id_mapping_array[0];
+-    idmap->input_base = 0;
+-    idmap->id_count = cpu_to_le32(0xFFFF);
+-    idmap->output_base = 0;
+-
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+-        /* output IORT node is the smmuv3 node */
+-        idmap->output_reference = cpu_to_le32(smmu_offset);
+-    } else {
+-        /* output IORT node is the ITS group node (the first node) */
+-        idmap->output_reference = cpu_to_le32(iort_node_offset);
++    for (int i = 0; i < root_bus_count; i++) {
++        bus = g_array_index(root_bus_array, PCIBus *, i);
++        bus_num = pci_bus_num(bus);
++        max_bus = pci_root_bus_max_bus(bus);
++
++        idmap = &rc->id_mapping_array[i];
++        idmap->input_base = cpu_to_le32(bus_num << 8);
++        idmap->id_count = cpu_to_le32((max_bus - bus_num + 1) << 8);
++        idmap->output_base = cpu_to_le32(bus_num << 8);
++
++        if (vms->iommu == VIRT_IOMMU_SMMUV3 && pci_bus_has_iommu(bus)) {
++            /* output IORT node is the smmuv3 node */
++            idmap->output_reference = cpu_to_le32(smmu_offset);
++        } else {
++            /* output IORT node is the ITS group node (the first node) */
++            idmap->output_reference = cpu_to_le32(iort_node_offset);
++        }
+     }
+ 
+     /*
+@@ -343,6 +387,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_header(linker, table_data, (void *)(table_data->data + iort_start),
+                  "IORT", table_data->len - iort_start, 0, vms->oem_id,
+                  vms->oem_table_id);
++
++    g_array_free(root_bus_array, true);
  }
- int pci_bus_num(PCIBus *s);
-+int pci_root_bus_max_bus(PCIBus *bus);
- static inline int pci_dev_bus_num(const PCIDevice *dev)
- {
-     return pci_bus_num(pci_get_bus(dev));
+ 
+ static void
 -- 
 2.19.1
 

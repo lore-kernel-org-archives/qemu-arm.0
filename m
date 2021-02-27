@@ -1,88 +1,76 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2129665lfc;
-        Thu, 11 Feb 2021 02:21:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzfKvBVh8I7dL74FbjSPvIWn8zUqBS7JObIkTp0dnjGA8RGUolapyYRUzBxA9EyhW61Vaeh
-X-Received: by 2002:a25:9885:: with SMTP id l5mr9977021ybo.501.1613038891030;
-        Thu, 11 Feb 2021 02:21:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613038891; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp1949366lfg;
+        Sat, 27 Feb 2021 00:34:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwiCItlP1PWuErfJE6KRZAqY3h8aRFMFDLFi+l7ScOPnPG18D2hTbAZCmDxabJB/a7AL5zs
+X-Received: by 2002:a5e:8903:: with SMTP id k3mr6090834ioj.54.1614414879323;
+        Sat, 27 Feb 2021 00:34:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614414879; cv=none;
         d=google.com; s=arc-20160816;
-        b=rbO6UPhhzwsQxc/jo8pauIBQvVVHSJtnqmkklc/9MVijRgkAAvnur1CMPfdiR9MN35
-         F116bQUjmBnyV2PDdV5x874y64UzxBOdI93Xm2IVE7rhafURcLLDCFqqzuv2wL9eXDK5
-         Y+cAPCVYNvO32KeJeFRA7hUuyuu11T2f8en5dLtc7IWe9EyzE7GZikfolixmDehojJU0
-         CW1b/bu3znQM3OG/uJAkEeskhygU1qAZ1m8BJuQp3UXnj1n8nxMyMPR1ZQvAz5JZ2YzL
-         cPFSQxu1Nd03whYGlnZvDoKN9wYyOMRNAXMx4XHQtpEUgyvgEIb1PoHUSJwJJU81VH+O
-         hgSw==
+        b=O+rE8q3cqt6ekHB9bJbktNfmgZmHH/1q/rspT3IgJZjzhfAe+Al8VKqSxZM8bNF+xP
+         eajH4S4OwgiaKkXfK/QLHe/NaU3qAwA5VydU7IUFe3J7APKLtJa37B2H7ROewco5dihA
+         3TAHWa2Qjg95e9Mz61cXpVoI/L20RThdEp1dPaNmNh+PQTE5cH3Jz7cYQqUawjOXkjU0
+         bZsYr3kv+BZHVqgJbjbs9oCuc4Rgh6NwuyoEXreDLBbkZiw6lscr1MLPAba3XFGYwG79
+         GgZx+V1Qm9uSkQf/OD23gGGZwLnykIxE/cxLjOxTwweJW/Wx0WmlwXQgjhasUwawYk/z
+         PLVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=xe5wmBgKTmtpwbulWV9c/SAwyaoiBa5qYia89lLJcvU=;
-        b=UEftlp4xcb6c3HHpmXUOuZPMeZ/eR2JitwLR+tuPdUWqqB7m3xWVIke2WS0wneLYaC
-         FtFi5POXu0w4/+DOHwW+wogpiHFl2BduI9xY+a7UBoDkfgV4fsQDJxSufh+iXi3740nU
-         caPXFIYaU6DbjtupZKHrn530FUe++PBUSFUmqylkRQOkep0pWHGGHlgw7ldLd9Vd5NbI
-         W8tQPsW8ynNGivv2yXDvyDC5CE/7ASys/gD8yvmoDgev3JVstYsVXJvTT6G/hmtekv3U
-         lTlzKzn8ttRtvQirG8js/v4IvlgM27PGJxdNLpqB7AmsONIS3J4Yn18l5eyRBzkD293H
-         soMQ==
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=FMEBHhxl3/rbB7yXKiGhvrst+9mi+NCyCHt6q7T5vCg=;
+        b=oGSI2TSSKKj6jkOXiz93IoaifbvRUILwM3u+FQ1RuuvnWC/Vwb/kqVFA5CP0ak55k7
+         mcUSYn4iunBSG80qmyG3oFv2xULlDC6GeD6EptpTXNYkMP8ZycmBlsgbgSNVOvgqfiHk
+         3tXjBD3BvIKmBCWoiP7s3i10GQ2O3Xo6yVvwxL6WJIi2HTpbwkwvZ80hw6MXwMr91WEv
+         9HHsiqtMnwj8g8d6uRnC9qkyt5eat8xkF+/mHWuRUJGwBCGH5uBTDSv3LRvcRXhPtGPf
+         6rcOW/ozbw3F9ZlE6DCTentiw90rTqu2Lu4kmqBdAgDlM0FbpuYgo3L6pFtuhAG2xSEP
+         mwFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=iIEozE++;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s4si4559131ybo.34.2021.02.11.02.21.30
+        by mx.google.com with ESMTPS id o65si1924192jaa.22.2021.02.27.00.34.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 02:21:31 -0800 (PST)
+        Sat, 27 Feb 2021 00:34:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=iIEozE++;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:52290 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lA96I-0001AF-DP
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 05:21:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55738)
+	id 1lFv3e-0004Wk-LR
+	for alex.bennee@linaro.org; Sat, 27 Feb 2021 03:34:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1lA8xv-0002YK-R9; Thu, 11 Feb 2021 05:12:51 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:34820)
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lFv3N-0004Uy-T6; Sat, 27 Feb 2021 03:34:22 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3497)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1lA8xt-0005rG-Vz; Thu, 11 Feb 2021 05:12:51 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 93700C602E6;
- Thu, 11 Feb 2021 11:12:47 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1613038367;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=xe5wmBgKTmtpwbulWV9c/SAwyaoiBa5qYia89lLJcvU=;
- b=iIEozE++y761MdveOM/vi9eUKhqGieTVlguQ1pHY/IabvaUvMHeBmi7Vupfcvcml+xsenP
- BEM5A98GOCTUpyaAigVJ1bzu4/o6bE4Yq8OlUqkuocBJQUgZs7pkcmDLyg1/yPkCcEXp5W
- nx+jZChSSxHNWYcfn/yFP4yo9ngWFGwxUHLb97b4erzdPAZyEnWg052mjLAE07Opo9rMO2
- ui+N+DOQ6trCjwO5ySZjNga9djnL49KtcvQHYBnfeyEdouEJv+iN0Vh9RyO7cEj8488B4V
- XGC4+fYprNE4E1nhi/kuug7cnahkGvFQbf5OI90vxy8Ya93g45CzKXl26nDi6Q==
-Date: Thu, 11 Feb 2021 11:13:18 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 3/4] clock: Add clock_ns_to_ticks() function
-Message-ID: <20210211101318.bgy4l4hbfaru3f5v@sekoia-pc.home.lmichel.fr>
-References: <20210209132040.5091-1-peter.maydell@linaro.org>
- <20210209132040.5091-4-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <wangxingang5@huawei.com>)
+ id 1lFv3J-0007vz-CC; Sat, 27 Feb 2021 03:34:21 -0500
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4DnfsT4NXMzjSYF;
+ Sat, 27 Feb 2021 16:32:29 +0800 (CST)
+Received: from huawei.com (10.174.185.226) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.498.0; Sat, 27 Feb 2021
+ 16:33:58 +0800
+From: Wang Xingang <wangxingang5@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [RFC RESEND PATCH 1/4] pci: Add PCI_BUS_IOMMU property
+Date: Sat, 27 Feb 2021 08:33:48 +0000
+Message-ID: <1614414831-39712-2-git-send-email-wangxingang5@huawei.com>
+X-Mailer: git-send-email 2.6.4.windows.1
+In-Reply-To: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
+References: <1614414831-39712-1-git-send-email-wangxingang5@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210209132040.5091-4-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.174.185.226]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=wangxingang5@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,109 +84,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Havard Skinnemoen <hskinnemoen@google.com>, qemu-devel@nongnu.org,
- Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: xieyingtai@huawei.com, peter.maydell@linaro.org, cenjiahui@huawei.com,
+ wangxingang5@huawei.com, mst@redhat.com, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MyOBW6TvglHM
+X-TUID: WMnSgVcOzjMk
 
-On 13:20 Tue 09 Feb     , Peter Maydell wrote:
-> Add a clock_ns_to_ticks() function which does the opposite of
-> clock_ticks_to_ns(): given a duration in nanoseconds, it returns the
-> number of clock ticks that would happen in that time.  This is useful
-> for devices that have a free running counter register whose value can
-> be calculated when it is read.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+From: Xingang Wang <wangxingang5@huawei.com>
 
-Reviewed-by: Luc Michel <luc@lmichel.fr>
+This Property can be useful to check whether this bus is attached to iommu.
 
-> ---
-> I have made the overflow behaviour here be "wrap", with justification
-> as per the comment; but I'm not 100% set on this.
-> ---
->  docs/devel/clocks.rst | 12 ++++++++++++
->  include/hw/clock.h    | 41 +++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 53 insertions(+)
-> 
-> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> index f0391e76b4f..956bd147ea0 100644
-> --- a/docs/devel/clocks.rst
-> +++ b/docs/devel/clocks.rst
-> @@ -360,6 +360,18 @@ rather than simply passing it to a QEMUTimer function like
->  ``timer_mod_ns()`` then you should be careful to avoid overflow
->  in those calculations, of course.)
->  
-> +Obtaining tick counts
-> +---------------------
-> +
-> +For calculations where you need to know the number of ticks in
-> +a given duration, use ``clock_ns_to_ticks()``. This function handles
-> +possible non-whole-number-of-nanoseconds periods and avoids
-> +potential rounding errors. It will return '0' if the clock is stopped
-> +(i.e. it has period zero). If the inputs imply a tick count that
-> +overflows a 64-bit value (a very long duration for a clock with a
-> +very short period) the output value is truncated, so effectively
-> +the 64-bit output wraps around.
-> +
->  Changing a clock period
->  -----------------------
->  
-> diff --git a/include/hw/clock.h b/include/hw/clock.h
-> index d7a6673c29e..79c3b7ebe40 100644
-> --- a/include/hw/clock.h
-> +++ b/include/hw/clock.h
-> @@ -286,6 +286,47 @@ static inline uint64_t clock_ticks_to_ns(const Clock *clk, uint64_t ticks)
->      return ns_low >> 32 | ns_high << 32;
->  }
->  
-> +/**
-> + * clock_ns_to_ticks:
-> + * @clk: the clock to query
-> + * @ns: duration in nanoseconds
-> + *
-> + * Returns the number of ticks this clock would make in the given
-> + * number of nanoseconds. Because a clock can have a period which
-> + * is not a whole number of nanoseconds, it is important to use this
-> + * function rather than attempting to obtain a "period in nanoseconds"
-> + * value and then dividing the duration by that value.
-> + *
-> + * If the clock is stopped (ie it has period zero), returns 0.
-> + *
-> + * For some inputs the result could overflow a 64-bit value (because
-> + * the clock's period is short and the duration is long). In these
-> + * cases we truncate the result to a 64-bit value. This is on the
-> + * assumption that generally the result is going to be used to report
-> + * a 32-bit or 64-bit guest register value, so wrapping either cannot
-> + * happen or is the desired behaviour.
-> + */
-> +static inline uint64_t clock_ns_to_ticks(const Clock *clk, uint64_t ns)
-> +{
-> +    /*
-> +     * ticks = duration_in_ns / period_in_ns
-> +     *       = ns / (period / 2^32)
-> +     *       = (ns * 2^32) / period
-> +     * The hi, lo inputs to divu128() are (ns << 32) as a 128 bit value.
-> +     */
-> +    uint64_t lo = ns << 32;
-> +    uint64_t hi = ns >> 32;
-> +    if (clk->period == 0) {
-> +        return 0;
-> +    }
-> +    /*
-> +     * Ignore divu128() return value as we've caught div-by-zero and don't
-> +     * need different behaviour for overflow.
-> +     */
-> +    divu128(&lo, &hi, clk->period);
-> +    return lo;
-> +}
-> +
->  /**
->   * clock_is_enabled:
->   * @clk: a clock
-> -- 
-> 2.20.1
-> 
+Signed-off-by: Xingang Wang <wangxingang5@huawei.com>
+Signed-off-by: Jiahui Cen <cenjiahui@huawei.com>
+---
+ include/hw/pci/pci_bus.h | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
+diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
+index 347440d42c..42109e8a06 100644
+--- a/include/hw/pci/pci_bus.h
++++ b/include/hw/pci/pci_bus.h
+@@ -24,6 +24,8 @@ enum PCIBusFlags {
+     PCI_BUS_IS_ROOT                                         = 0x0001,
+     /* PCIe extended configuration space is accessible on this bus */
+     PCI_BUS_EXTENDED_CONFIG_SPACE                           = 0x0002,
++    /* Iommu is enabled on this bus */
++    PCI_BUS_IOMMU                                           = 0x0004,
+ };
+ 
+ struct PCIBus {
+@@ -63,4 +65,15 @@ static inline bool pci_bus_allows_extended_config_space(PCIBus *bus)
+     return !!(bus->flags & PCI_BUS_EXTENDED_CONFIG_SPACE);
+ }
+ 
++static inline bool pci_bus_has_iommu(PCIBus *bus)
++{
++    PCIBus *root_bus = bus;
++
++    while (root_bus && !pci_bus_is_root(root_bus)) {
++        root_bus = pci_get_bus(root_bus->parent_dev);
++    }
++
++    return !!(root_bus->flags & PCI_BUS_IOMMU);
++}
++
+ #endif /* QEMU_PCI_BUS_H */
 -- 
+2.19.1
+

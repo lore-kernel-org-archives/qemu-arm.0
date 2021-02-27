@@ -1,271 +1,184 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2705864lfc;
-        Thu, 11 Feb 2021 15:31:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyzhhKRxfXp6429YNwCMCu1z5otQUwBOHMKOdDZGUZrX2SWszOAVHISSck8k8oFFg5nNa4c
-X-Received: by 2002:a25:782:: with SMTP id 124mr383964ybh.53.1613086280191;
-        Thu, 11 Feb 2021 15:31:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613086280; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2288659lfg;
+        Sat, 27 Feb 2021 10:50:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzK9aNMgnJnm+qVykXNy/klJfqBMf92H94P9yZECBZMvzDJmhCu0R8hcWW4jujKuCp0YfFp
+X-Received: by 2002:a5d:818b:: with SMTP id u11mr7459183ion.59.1614451831440;
+        Sat, 27 Feb 2021 10:50:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614451831; cv=none;
         d=google.com; s=arc-20160816;
-        b=qMqJcC1yxUHb9lJDI2uNupvdpB5PY0Vz34tYqJNm6f6qtcMLqYrsjDiDE0k3LeQLd3
-         kkfWDeVnyknEr1ZpIejwhz+W0ARRNDGDxE7oI2NGC8vzv2w/fKzENtP+1B8hZ+ds/2Es
-         /FURY8Dn63HDllXfdVcVyvVhJ9xXJUEx0NrwC5Yig1sBjTKW9MJu8C+maKou4tyLYQdF
-         2KzNsBBc9uYmjoGqB17gRU/dfPIig5g6CTNzc/9f8yRnq5ndQO6qQzWKObkIUxcxLwAN
-         f179DD1b3tmW3BHjVw3WDA5bi1xraNzWB0FO6kG6c2Upv1LQmEfsVFj9YSFXWCZHG+84
-         sYjA==
+        b=P33ePeCxGTb2esBPKBNrniIkdXoaFtJi0cjK822YsGbtajAwvKaqXWZ3l/6fn2p8Hw
+         85FIlGyg1aodniMPMNLMA9lNe0ZYSvEK6v2k7IQq/hrzZAfMImUw9+e6QexZeZl/l1u9
+         IBWTS3tw4C825fJ6Wo7F1lAduvnX2WvJKYJKOutR6+u+YaHZEVyOifHk1Ppk+3MJ+ABF
+         1Faq2dk1i8lTWXoPhAzXRIFaGd4DZiIcg2Frpx6LgBIaMbwvg9C0TMalESGs5gpv+N5J
+         PGYtq3QWsu7AVmuxIJvCFd3jcTv6DgPXDMbJRGVnany7i569TUfky7FN6PeqMVSoBKbx
+         6wSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=shsCb7Pl+v73lHkqp1a23fBmY+0MMylaHPDhDrfGoTA=;
-        b=WqQxGZ1pRXRsFTmPrTe9RiClDgQip2lnlLlPjIg/zMJmQYTxClloppf2aptR9XMkZB
-         GqFLqDkhRYFo3MHZGWSUkeb7zNFLiVRdjgVHhYMyoLBLFLjtyBtiIy/3OJpBmvy6CD2C
-         szLM1aLCCxmWORljb7ZvY1fiNlu6pXNXBoDn7L/GIqMa4SJ8bFjlG7V8WMk7cY67VC5w
-         CK3N/RjpygqYAT8Peh4aL1cvPazd4Y0I04TXDnNP8qha2FA5t+b1MjqZJa75IvSGfBlb
-         EEeA0eDLQSIOYDc691ucm7bzlSmo9Ht+gWWxBzET7+Z85Qv8HA8MGFZRbfskjqtFfDAQ
-         jRAQ==
+         :message-id:from:references:to:subject;
+        bh=XT5fjhj3afjJRsE+0SnO9tm8uuNPNQ63+YRJTfwD3ec=;
+        b=iJeeS2Jelt6FXPbfYjkx19KhQ5s+G7hgd+n3/eXbPtEsBIMg1MSPMr/lq/ChadTUQi
+         Sbwc7VYHHiYC7Nx9ANTS3n2gV8u3Pg8zN0wYPXLiRRGNZVXl/5kVT3aVfNO6vq6APe02
+         ciCibmUn3NbM1uasfnTgctJminayyIB/xVOd+lSLORWMf+KsqfgdSAHOcFVGLiCcYTp4
+         KrdV79/ViB32n8vOL7Uh4qs2pysxIBo/D9DprmO8qR+VicsS+AAF3nrDvDP7LSuefZ7Y
+         0jNOSXUXpkNkbhLvM5OKdUxj+0Q5gg23RIegGvtoy1qFj0fQklV+u/YR0EbphXQuPmkp
+         zOwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Wl4RGeNG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si6654324ybk.95.2021.02.11.15.31.20
+        by mx.google.com with ESMTPS id k24si11378244ior.51.2021.02.27.10.50.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 15:31:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 27 Feb 2021 10:50:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Wl4RGeNG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55486 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48270 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lALQd-00019n-IH
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 18:31:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47890)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lG4fe-0001Wd-QC
+	for alex.bennee@linaro.org; Sat, 27 Feb 2021 13:50:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43780)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lALPM-000167-6c; Thu, 11 Feb 2021 18:30:00 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:40963)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lALPK-0001oF-9B; Thu, 11 Feb 2021 18:29:59 -0500
-Received: by mail-wr1-x434.google.com with SMTP id n6so5868939wrv.8;
- Thu, 11 Feb 2021 15:29:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=shsCb7Pl+v73lHkqp1a23fBmY+0MMylaHPDhDrfGoTA=;
- b=Wl4RGeNGDZnn+06H01Adq3MH8tiJVo21sx8jOuxf7v2MNG8eSYOP3wnC32rZsRr5DU
- dwYI/Op22f4wRwX6gcCpN/9jIuF22AWnQXPHxlm3KOkhAc8OLDP4cNpCN/J7q5U07sQD
- UAXFmhvaTjU4Qs2WK6xRALx8IfkUeQYoRBl5J9CRyJKX+WunbLnDu912cO/VgUUgG7ef
- rkG/FNHq14+umincN8pPv2tJIincV4AlhUJFOlzd5xMxAsXw35Fu0c1ZyZoqQDSiZoqM
- Mwg9i/NXAq+OfzjcOX1+7PNatBtakQ7rXzr7fBuoLSIIfN3wIi/Vg2cbt2qB5hvMaaKM
- 9EIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=shsCb7Pl+v73lHkqp1a23fBmY+0MMylaHPDhDrfGoTA=;
- b=rSEMowCWMc1cUAiDZHRNBrQXd7xg+BoIaTRKglC5Sk15ACNKhHjQbnV63kdgEQgp4L
- 99LYXTHhILhNzaeDN9aGz04u291Yiu2GfWTW7CRl2g+wekoeCUwdS0EuoLCUmcEj34fV
- iMQuIQiv9UpTsnuApcC+0C26qITCzGHfrXk67/FbKkYXmqj0RY511mLqV1Lqa74VbEDa
- YbXnaXpLJjJ21urQFTaKX5WyMz8toYTGvlgjGFamdmpikvIy18qZ4LVJcbdzlokW8vwa
- 7Uc3TqX9G5rRCmb6ABfaJFC5nMEHWCKdgrIWvQvNLl7jmyZbRat7pTS497TN/EPpOtlJ
- w8UQ==
-X-Gm-Message-State: AOAM530+1WTvQ3Zksgouf6V5TH3uQuA4pK6rXgOAQeN/OfcXGqXuPd4e
- LtEnqOxMMjcXFXQ6rMxk3Mg=
-X-Received: by 2002:adf:f089:: with SMTP id n9mr217266wro.98.1613086196107;
- Thu, 11 Feb 2021 15:29:56 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id y2sm10665870wmg.13.2021.02.11.15.29.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Feb 2021 15:29:55 -0800 (PST)
-Subject: Re: [PATCH 2/2] hw/net/allwinner-sun8i-emac: traverse transmit queue
- using TX_CUR_DESC register value
-To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
-References: <20210211220055.19047-1-nieklinnenbank@gmail.com>
- <20210211220055.19047-3-nieklinnenbank@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <eaf1d893-2cae-0871-dae5-dd42ce0e50b4@amsat.org>
-Date: Fri, 12 Feb 2021 00:29:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lG4fK-0001Uw-0v; Sat, 27 Feb 2021 13:50:11 -0500
+Received: from mx2.suse.de ([195.135.220.15]:46994)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lG4fE-0007Cs-MT; Sat, 27 Feb 2021 13:50:09 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 539EEAC6F;
+ Sat, 27 Feb 2021 18:50:00 +0000 (UTC)
+Subject: Re: [PATCH 07/16] cpu: Introduce CPUSystemOperations structure
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20210226163227.4097950-1-f4bug@amsat.org>
+ <20210226163227.4097950-8-f4bug@amsat.org>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <52e23664-534b-70b3-fad0-54a6b964963f@suse.de>
+Date: Sat, 27 Feb 2021 19:49:53 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20210211220055.19047-3-nieklinnenbank@gmail.com>
+In-Reply-To: <20210226163227.4097950-8-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.119,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.35,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Stefan Weil <sw@weilnetz.de>,
- Jason Wang <jasowang@redhat.com>, f4bug@amsat.org, b.galvani@gmail.com,
- qemu-arm@nongnu.org, Pavel.Dovgaluk@ispras.ru, crosa@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pMHftCE6FFgt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gkWp23zkWe0h
 
-On 2/11/21 11:00 PM, Niek Linnenbank wrote:
-> Currently the emulated EMAC for sun8i always traverses the transmit queue
-> from the head when transferring packets. It searches for a list of consecutive
-> descriptors whichs are flagged as ready for processing and transmits their payloads
-> accordingly. The controller stops processing once it finds a descriptor that is not
-> marked ready.
+On 2/26/21 5:32 PM, Philippe Mathieu-Daudé wrote:
+> Introduce a structure to hold handler specific to sysemu.
 > 
-> While the above behaviour works in most situations, it is not the same as the actual
-> EMAC in hardware. Actual hardware uses the TX_CUR_DESC register value to keep track
-> of the last position in the transmit queue and continues processing from that position
-> when software triggers the start of DMA processing. The currently emulated behaviour can
-> lead to packet loss on transmit when software fills the transmit queue with ready
-> descriptors that overlap the tail of the circular list.
-> 
-> This commit modifies the emulated EMAC for sun8i such that it processes
-> the transmit queue using the TX_CUR_DESC register in the same way as hardware.
-> 
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/net/allwinner-sun8i-emac.c | 58 +++++++++++++++++++----------------
->  1 file changed, 32 insertions(+), 26 deletions(-)
+>  include/hw/core/cpu.h | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index b12028c3c03..ab89235cb45 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -80,6 +80,12 @@ struct TCGCPUOps;
+>  /* see accel-cpu.h */
+>  struct AccelCPUClass;
+>  
+> +/*
+> + * struct CPUSystemOperations: System operations specific to a CPU class
+> + */
+> +typedef struct CPUSystemOperations {
 
-LGTM but I'd feel safer with another review on top.
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+I'd suggest for consistency and brevity:
 
-> diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
-> index 042768922c..e586c147e5 100644
-> --- a/hw/net/allwinner-sun8i-emac.c
-> +++ b/hw/net/allwinner-sun8i-emac.c
-> @@ -339,35 +339,40 @@ static void allwinner_sun8i_emac_update_irq(AwSun8iEmacState *s)
->      qemu_set_irq(s->irq, (s->int_sta & s->int_en) != 0);
->  }
+SysemuCPUOps .
+
+Let me tell you my full train of thought, just so you understand exactly where I am coming from:
+
+in my view all this camelcase is nonsense, as is typedef. They just cause problems and solve none.
+
+However, considering the existing QEMU conventions, the existence of QOM,
+for consistency with the rest of the QEMU code base, especially when looking at stuff around CPUClass,
+the convention is to use this camel case stuff for objects, so in lieu of
+
+tcg_cpu_ops
+
+I went with TCGCPUOps
+
+(TCG is the standard way to call tcg when case is an option, same for CPU, then Ops).
+
+Here for consistency I would say:
+
+Sysemu (as we are standardizing on calling system emulation/virtualization "sysemu")
++CPUOps as before.
+
+=
+
+SysemuCPUOps.
+
+What do you think?
+
+Ciao,
+
+Claudio
+
+> +} CPUSystemOperations;
+> +
+>  /**
+>   * CPUClass:
+>   * @class_by_name: Callback to map -cpu command line model name to an
+> @@ -190,6 +196,9 @@ struct CPUClass {
+>      bool gdb_stop_before_watchpoint;
+>      struct AccelCPUClass *accel_cpu;
 >  
-> -static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
-> -                                               FrameDescriptor *desc,
-> -                                               size_t min_size)
-> +static bool allwinner_sun8i_emac_desc_owned(FrameDescriptor *desc,
-> +                                            size_t min_buf_size)
->  {
-> -    uint32_t paddr = desc->next;
-> +    return (desc->status & DESC_STATUS_CTL) && (min_buf_size == 0 ||
-> +           (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_buf_size);
-> +}
->  
-> -    dma_memory_read(&s->dma_as, paddr, desc, sizeof(*desc));
-> +static void allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
-> +                                          FrameDescriptor *desc,
-> +                                          uint32_t phys_addr)
-> +{
-> +    dma_memory_read(&s->dma_as, phys_addr, desc, sizeof(*desc));
-> +}
->  
-> -    if ((desc->status & DESC_STATUS_CTL) &&
-> -        (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-> -        return paddr;
-> -    } else {
-> -        return 0;
-> -    }
-> +static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
-> +                                               FrameDescriptor *desc)
-> +{
-> +    const uint32_t nxt = desc->next;
-> +    allwinner_sun8i_emac_get_desc(s, desc, nxt);
-> +    return nxt;
->  }
->  
-> -static uint32_t allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
-> -                                              FrameDescriptor *desc,
-> -                                              uint32_t start_addr,
-> -                                              size_t min_size)
-> +static uint32_t allwinner_sun8i_emac_find_desc(AwSun8iEmacState *s,
-> +                                               FrameDescriptor *desc,
-> +                                               uint32_t start_addr,
-> +                                               size_t min_size)
->  {
->      uint32_t desc_addr = start_addr;
->  
->      /* Note that the list is a cycle. Last entry points back to the head. */
->      while (desc_addr != 0) {
-> -        dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
-> +        allwinner_sun8i_emac_get_desc(s, desc, desc_addr);
->  
-> -        if ((desc->status & DESC_STATUS_CTL) &&
-> -            (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-> +        if (allwinner_sun8i_emac_desc_owned(desc, min_size)) {
->              return desc_addr;
->          } else if (desc->next == start_addr) {
->              break;
-> @@ -383,14 +388,14 @@ static uint32_t allwinner_sun8i_emac_rx_desc(AwSun8iEmacState *s,
->                                               FrameDescriptor *desc,
->                                               size_t min_size)
->  {
-> -    return allwinner_sun8i_emac_get_desc(s, desc, s->rx_desc_curr, min_size);
-> +    return allwinner_sun8i_emac_find_desc(s, desc, s->rx_desc_curr, min_size);
->  }
->  
->  static uint32_t allwinner_sun8i_emac_tx_desc(AwSun8iEmacState *s,
-> -                                             FrameDescriptor *desc,
-> -                                             size_t min_size)
-> +                                             FrameDescriptor *desc)
->  {
-> -    return allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_head, min_size);
-> +    allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_curr);
-> +    return s->tx_desc_curr;
->  }
->  
->  static void allwinner_sun8i_emac_flush_desc(AwSun8iEmacState *s,
-> @@ -470,7 +475,8 @@ static ssize_t allwinner_sun8i_emac_receive(NetClientState *nc,
->          bytes_left -= desc_bytes;
->  
->          /* Move to the next descriptor */
-> -        s->rx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 64);
-> +        s->rx_desc_curr = allwinner_sun8i_emac_find_desc(s, &desc, desc.next,
-> +                                                         AW_SUN8I_EMAC_MIN_PKT_SZ);
->          if (!s->rx_desc_curr) {
->              /* Not enough buffer space available */
->              s->int_sta |= INT_STA_RX_BUF_UA;
-> @@ -495,10 +501,10 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
->      size_t transmitted = 0;
->      static uint8_t packet_buf[2048];
->  
-> -    s->tx_desc_curr = allwinner_sun8i_emac_tx_desc(s, &desc, 0);
-> +    s->tx_desc_curr = allwinner_sun8i_emac_tx_desc(s, &desc);
->  
->      /* Read all transmit descriptors */
-> -    while (s->tx_desc_curr != 0) {
-> +    while (allwinner_sun8i_emac_desc_owned(&desc, 0)) {
->  
->          /* Read from physical memory into packet buffer */
->          bytes = desc.status2 & DESC_STATUS2_BUF_SIZE_MASK;
-> @@ -524,7 +530,7 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
->              packet_bytes = 0;
->              transmitted++;
->          }
-> -        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 0);
-> +        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc);
->      }
->  
->      /* Raise transmit completed interrupt */
+> +    /* when system emulation is not available, this pointer is NULL */
+> +    struct CPUSystemOperations system_ops;
+> +
+>      /* when TCG is not available, this pointer is NULL */
+>      struct TCGCPUOps *tcg_ops;
+>  };
 > 
 

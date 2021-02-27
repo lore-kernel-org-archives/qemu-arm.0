@@ -1,64 +1,64 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2288659lfg;
-        Sat, 27 Feb 2021 10:50:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzK9aNMgnJnm+qVykXNy/klJfqBMf92H94P9yZECBZMvzDJmhCu0R8hcWW4jujKuCp0YfFp
-X-Received: by 2002:a5d:818b:: with SMTP id u11mr7459183ion.59.1614451831440;
-        Sat, 27 Feb 2021 10:50:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614451831; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp2289662lfg;
+        Sat, 27 Feb 2021 10:53:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwGkNyoilt3pJQK5lL5vOwb6F/c8YwThWZEM65wzZsubYgmKdrgLfd11J6N0YEGM3Z4YM84
+X-Received: by 2002:a05:6e02:152c:: with SMTP id i12mr6924761ilu.46.1614451997420;
+        Sat, 27 Feb 2021 10:53:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614451997; cv=none;
         d=google.com; s=arc-20160816;
-        b=P33ePeCxGTb2esBPKBNrniIkdXoaFtJi0cjK822YsGbtajAwvKaqXWZ3l/6fn2p8Hw
-         85FIlGyg1aodniMPMNLMA9lNe0ZYSvEK6v2k7IQq/hrzZAfMImUw9+e6QexZeZl/l1u9
-         IBWTS3tw4C825fJ6Wo7F1lAduvnX2WvJKYJKOutR6+u+YaHZEVyOifHk1Ppk+3MJ+ABF
-         1Faq2dk1i8lTWXoPhAzXRIFaGd4DZiIcg2Frpx6LgBIaMbwvg9C0TMalESGs5gpv+N5J
-         PGYtq3QWsu7AVmuxIJvCFd3jcTv6DgPXDMbJRGVnany7i569TUfky7FN6PeqMVSoBKbx
-         6wSg==
+        b=xpCPXTQikRr9zuQA1BgTbTll7kSUqQbrtHQ8izYbfhuhbrgIMOtdFLgJtffgEomaxN
+         9wB7NILBFF2YDEE56hmfzJHfkNx2uVPpKHjWPmIHg9/dOQE0E8ZPZ0snvIoUWSfI5N38
+         nDJ+7YBkhZmYVXeVy3uNb95pgiWrWHuYONpdHsFug78cPiz0sMuVP1GUkaY3xl0M056L
+         ggO3xXmD/5HBE8SfdqrcHyTusZ+6tl4qKKxVCUCqnUFk31x+BFWdUK+w6E2l1l4I7tIM
+         VS730P/WYfyItLyuHbatJw34/jSuLXI7/JWY8ZXBgPAy+8IzogKxUWYP1K4mrnY3+EJr
+         h3+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=XT5fjhj3afjJRsE+0SnO9tm8uuNPNQ63+YRJTfwD3ec=;
-        b=iJeeS2Jelt6FXPbfYjkx19KhQ5s+G7hgd+n3/eXbPtEsBIMg1MSPMr/lq/ChadTUQi
-         Sbwc7VYHHiYC7Nx9ANTS3n2gV8u3Pg8zN0wYPXLiRRGNZVXl/5kVT3aVfNO6vq6APe02
-         ciCibmUn3NbM1uasfnTgctJminayyIB/xVOd+lSLORWMf+KsqfgdSAHOcFVGLiCcYTp4
-         KrdV79/ViB32n8vOL7Uh4qs2pysxIBo/D9DprmO8qR+VicsS+AAF3nrDvDP7LSuefZ7Y
-         0jNOSXUXpkNkbhLvM5OKdUxj+0Q5gg23RIegGvtoy1qFj0fQklV+u/YR0EbphXQuPmkp
-         zOwQ==
+        bh=hMLq1XyE2/u/DN6ZA6N0AzzL1Wmxt+zMBD+QtCVt+mI=;
+        b=NzHcUExs4wclS03IMM77MX20uZsO/vXntan3yBU24+QZURNPHhMLTTqU7ZcnEGXpzt
+         RnRWQFv4yEThOuAVDvW+pSEzcKi5ng0WiU8xnlecrSNLpZoxIV/hpu3jOmgcVOO5XPdX
+         c+Ajk/AJbSFeW+4sJLz/v1+ke/2GwV045jH0ubdiFjfa0S0LsxpVnzPHplC5eDcBHyqU
+         zInLlTCLsH8zCDHx/4V/mtKjWrNcUEXL+ICo0X049zAgQH8JeNluVxmBKwFmYq/ynEnZ
+         +4EUy/yiQelYMQl3jfKSGgyXLD/QkPEaYGxD/O6I8U3fEP+TRXGQo9FXfpek9ma08+bk
+         gC+A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k24si11378244ior.51.2021.02.27.10.50.31
+        by mx.google.com with ESMTPS id n4si11371800ili.37.2021.02.27.10.53.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 27 Feb 2021 10:50:31 -0800 (PST)
+        Sat, 27 Feb 2021 10:53:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48270 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52342 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lG4fe-0001Wd-QC
-	for alex.bennee@linaro.org; Sat, 27 Feb 2021 13:50:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43780)
+	id 1lG4iK-0003Q2-Oh
+	for alex.bennee@linaro.org; Sat, 27 Feb 2021 13:53:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lG4fK-0001Uw-0v; Sat, 27 Feb 2021 13:50:11 -0500
-Received: from mx2.suse.de ([195.135.220.15]:46994)
+ id 1lG4hs-0003PF-5J; Sat, 27 Feb 2021 13:52:48 -0500
+Received: from mx2.suse.de ([195.135.220.15]:47374)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lG4fE-0007Cs-MT; Sat, 27 Feb 2021 13:50:09 -0500
+ id 1lG4hm-0008T1-3g; Sat, 27 Feb 2021 13:52:47 -0500
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 539EEAC6F;
- Sat, 27 Feb 2021 18:50:00 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 54D85AC24;
+ Sat, 27 Feb 2021 18:52:39 +0000 (UTC)
 Subject: Re: [PATCH 07/16] cpu: Introduce CPUSystemOperations structure
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20210226163227.4097950-1-f4bug@amsat.org>
  <20210226163227.4097950-8-f4bug@amsat.org>
 From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <52e23664-534b-70b3-fad0-54a6b964963f@suse.de>
-Date: Sat, 27 Feb 2021 19:49:53 +0100
+Message-ID: <ea91a25d-25f9-e81e-d199-f754ec26679e@suse.de>
+Date: Sat, 27 Feb 2021 19:52:37 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
@@ -109,7 +109,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gkWp23zkWe0h
+X-TUID: RXhErvh4deDd
 
 On 2/26/21 5:32 PM, Philippe Mathieu-Daudé wrote:
 > Introduce a structure to hold handler specific to sysemu.
@@ -131,40 +131,6 @@ On 2/26/21 5:32 PM, Philippe Mathieu-Daudé wrote:
 > + * struct CPUSystemOperations: System operations specific to a CPU class
 > + */
 > +typedef struct CPUSystemOperations {
-
-I'd suggest for consistency and brevity:
-
-SysemuCPUOps .
-
-Let me tell you my full train of thought, just so you understand exactly where I am coming from:
-
-in my view all this camelcase is nonsense, as is typedef. They just cause problems and solve none.
-
-However, considering the existing QEMU conventions, the existence of QOM,
-for consistency with the rest of the QEMU code base, especially when looking at stuff around CPUClass,
-the convention is to use this camel case stuff for objects, so in lieu of
-
-tcg_cpu_ops
-
-I went with TCGCPUOps
-
-(TCG is the standard way to call tcg when case is an option, same for CPU, then Ops).
-
-Here for consistency I would say:
-
-Sysemu (as we are standardizing on calling system emulation/virtualization "sysemu")
-+CPUOps as before.
-
-=
-
-SysemuCPUOps.
-
-What do you think?
-
-Ciao,
-
-Claudio
-
 > +} CPUSystemOperations;
 > +
 >  /**
@@ -176,6 +142,15 @@ Claudio
 >  
 > +    /* when system emulation is not available, this pointer is NULL */
 > +    struct CPUSystemOperations system_ops;
+
+and here again for future code base consistency I would say "sysemu_ops".
+
+So we will focus in the future on the "sysemu" keyword for system emulation (in directories, comments, macros etc).
+
+Ciao,
+
+Claudio
+
 > +
 >      /* when TCG is not available, this pointer is NULL */
 >      struct TCGCPUOps *tcg_ops;

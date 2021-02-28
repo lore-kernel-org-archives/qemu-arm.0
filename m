@@ -1,214 +1,147 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp286560lfg;
-        Thu, 25 Feb 2021 04:03:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw9i8XT4y7YmKPLzIFJBYT9R7yKxZicLeAI8GIxQ+ArBNr+jJVmwFdWhuu9tYNUJq9AO/5L
-X-Received: by 2002:a05:6638:2a3:: with SMTP id d3mr2883723jaq.42.1614254638355;
-        Thu, 25 Feb 2021 04:03:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614254638; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3072960lfg;
+        Sun, 28 Feb 2021 14:48:46 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw1AX0q8h72N+1THzPLD1xnJFpq8YbqNmhcN2vh6KkFtaG8p1/s9frV4leCRiPDjjm7Fxsc
+X-Received: by 2002:a05:6638:2381:: with SMTP id q1mr12903260jat.132.1614552526646;
+        Sun, 28 Feb 2021 14:48:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614552526; cv=none;
         d=google.com; s=arc-20160816;
-        b=uWsog3fR+Orx1tyj+sHDnAUMmd7g3yr38T8JHfjAXIjwSY93Ntk9Wh2yn2yKVGd84C
-         wlsaBWk6Vit6rLxQpT4EabrlJ7xdSNFfTt9l9qH4SrThwTvhgiPOfZUrMnU2fo/YqTgY
-         8BaOSWLN9xUf0RvOkNmlZ17kzeaw69J3Vve6qFQbXhRlZYMz9t6zdT2zdKJD7kKRmZ6B
-         tZu4gkbcwQEtrFZIliu2qSvFJXvnJ4+m1SfhaDWXAfbBJ4+RLElu72zUrFC/XBYOD4/h
-         zPiC7XmUSYCHZu43qyzwVrYIxtLCOoG3gyPlCt4uut7H3UcI4jkwU6RebzsjpVu8ocwC
-         r9BQ==
+        b=d+4a20FKsKoqdl45rwM2g5EcA2m9erdA0vuuWeKDDN/EybSfczQZYO9q91n/VgdMSu
+         e9V+ifItYlT6D8F4pW1AHNLfDqB2+HZ9+ad7+plXkZZ24AVNQqckFxMECkoxkpCIZtDt
+         YmhlJHzR5MmeyHlpb5YQWbEKHbbqplO86D3UFonpFYugcNUpZHdRjx9g/yX/ns886Gos
+         f85oOOIzwLVOPsqaKDggBxMnYivBI9xniT/SvTvyG8xoqE1Zqv0UULfsqVAd8VrXFdC4
+         h5e2shJm0YeVtX26GM/u7+FjUV2mb+Em1jPrT9baP2iJsQE53DI4DqzlNgfi7ksa7kjv
+         DONw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=KzGJXAv/oUh/NMzKU5PGRkE63/gbAFDLFRABYrIFf1c=;
-        b=ugGll3yegu0vACc40PCoI8vCVjY/sculuwi3wQJ6IbqSVYQuQiPtyT5WkQOXrJwmvj
-         7BbGgawerCxntQhNHOq22EY/z/QRJDBmbYOYzN9jXd5xR5Zq+pRMLlPCcrVf3mbhtBBn
-         TsY03yqHUh+nvoCFNySAzFrwgGDql9KGT/fNDPJhenNR4o1JPZtykspK0fJioUNsakJs
-         PL4QV4rP181BRNJrxTo5K0vmNZv54X/Comz+GvHjYcA7T2OOZ3HXN+9q2utMmscyoJK4
-         f7IMwLicqNA2BS3CTHXo5nTb/s0ughojBdlxNQot76ErzZbGmpKyn6ojIwTeVnSiV210
-         +yrQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=EZzTlh2Ky6xsQIDRJNUZ/Otb2YLvRbwpc+dpWwoy74k=;
+        b=DR/NGzDLH9AiEDlBKIe1nHEe+NMLK44STvT4IBoTg2QYjCwUyljbLjDKaEkc2dVtMu
+         FeogoOVHeD1quF+ZkmlOVdS65duhRwcvoSB2DFRmnq5EpRDAW3R7RCrB6yTHUAZFJShB
+         XHZxMsuy3i3+7FFywxFFY4pIzshgGXjo2YIBSrdrB8HkxlgQqLzBtxnC0A9+GAD1jLAe
+         0Kp1O4MeO24jDH+6rssu0/5LDL49awdOqny0q9XqMJIzM+MuvZYmB/t7T65WT572NWbR
+         dfPKVyK5ZOSEA2I/HUo19bXlS6AZQFo0cUF+pq7R4REuqrU7+9gnep1+scziitn/0QWE
+         PsuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jPqZknlp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rFj3X0mI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si4463927ilv.137.2021.02.25.04.03.58
+        by mx.google.com with ESMTPS id g12si14051496ilc.71.2021.02.28.14.48.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 04:03:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 28 Feb 2021 14:48:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jPqZknlp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45954 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rFj3X0mI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:35642 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFFN7-0007bT-LD
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 07:03:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45076)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lGUrm-0004XW-0v
+	for alex.bennee@linaro.org; Sun, 28 Feb 2021 17:48:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lFFMS-0006k2-M1
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 07:03:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54936)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1lFFMQ-00038F-B3
- for qemu-arm@nongnu.org; Thu, 25 Feb 2021 07:03:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614254592;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=KzGJXAv/oUh/NMzKU5PGRkE63/gbAFDLFRABYrIFf1c=;
- b=jPqZknlpNcs8pY59rQHwM9eFQX/9BmecERFs4niY0yYfEDLM3LjbnwozXxwoyhbZt8BzqR
- D2kcrGzlKN4stovshDeaUjbr7Vbo4IN12f99xQODzaJH8qhG45up6Yq2jwB3X8W+qtW1x5
- ND5dCr4e+1ozmQC8FH6QrjHlnJn77AE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-496-7tJQIMPNOIuQYQBFJVl8wg-1; Thu, 25 Feb 2021 07:03:06 -0500
-X-MC-Unique: 7tJQIMPNOIuQYQBFJVl8wg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 10A5980403D;
- Thu, 25 Feb 2021 12:03:05 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.194.200])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C79D660939;
- Thu, 25 Feb 2021 12:02:58 +0000 (UTC)
-Date: Thu, 25 Feb 2021 13:02:55 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Introduce cpu topology support
-Message-ID: <20210225120255.4gfbtsflbdsyxizn@kamzik.brq.redhat.com>
-References: <20210225085627.2263-1-fangying1@huawei.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGUrM-0004XM-8f; Sun, 28 Feb 2021 17:48:20 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:34720)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGUrK-0000LH-OF; Sun, 28 Feb 2021 17:48:19 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ o7-20020a05600c4fc7b029010a0247d5f0so2135426wmq.1; 
+ Sun, 28 Feb 2021 14:48:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=EZzTlh2Ky6xsQIDRJNUZ/Otb2YLvRbwpc+dpWwoy74k=;
+ b=rFj3X0mIjHeAan0+axva0B/vlVnNUktwu9V1fV62KH+gw1FkQU5u1kDZo0sWUMi/sJ
+ 8dnGm2q+X/lpA3URpfk/iMjcYk2vF55s4uHMMBbxHmSHePUl+GcNx0Hfp9+HgIkmXGON
+ NXmFr0UN9NRx2RDDgFZOIqosh/fSi3qNKtkwQe2j2pb5ljAglV4u9lSQF5JR/1P8E7FJ
+ 4rHToNyYp4JCOglR/hKQgy8XnDc55E7zcEFRLSFdSZVKHdBVH1tswDz4LKp/D6OIhrD9
+ L/qyQ+Q2/DNrCyXtgTJVvaBcI2O/bH6+C1MMDQDwoGgS85DzAgXxxehDvxUQpo/uHBki
+ vgCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=EZzTlh2Ky6xsQIDRJNUZ/Otb2YLvRbwpc+dpWwoy74k=;
+ b=LGC/3iBqStuUvMH5aY/0MjddH9G50ajjCNQ1CqSPW4cU22Yz5SWReQw7kTWKZoUg61
+ ZlQDyt0eX3fknDL4NM3V1gk5I1kZpQltSbQraiavt5OaO8E5O15Io2fKup4KOM7ZAlFQ
+ 9i+5n8yUOj/PObElfoVUGivvQ1KjwCrz/rg2vTE7epCWJP/2WQS/6fvdTpzd8nLCU8py
+ KrxkPyjJS3BKQvQjlMJML0eNIKq+DDS4nk4E7HVHBmPHDRPiQE5SSMX3PAslZGbTVvFx
+ YS8JZ/V79lMCdtA9lN8Er0SNcUor7qgwnKydqjrGCBy0iKrrCKgJtZWt9Axa7dFV01OW
+ XMoA==
+X-Gm-Message-State: AOAM533RPH/+JoLKdU59O4/FrpEipS5tz4MvAcwGDrDlY4JwE+WYdmnK
+ IAFXF3mfkaOusFlyZ6oorcQmzAdBHtc=
+X-Received: by 2002:a7b:c2aa:: with SMTP id c10mr12775367wmk.101.1614552495695; 
+ Sun, 28 Feb 2021 14:48:15 -0800 (PST)
+Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id x8sm1042826wru.46.2021.02.28.14.48.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 28 Feb 2021 14:48:15 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/i2c/npcm7xx_smbus: Simplify npcm7xx_smbus_init()
+Date: Sun, 28 Feb 2021 23:48:13 +0100
+Message-Id: <20210228224813.312532-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20210225085627.2263-1-fangying1@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
- zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
- shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
- imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4jjRJevCvmDX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7bJUJRdY9dtX
 
-On Thu, Feb 25, 2021 at 04:56:22PM +0800, Ying Fang wrote:
-> An accurate cpu topology may help improve the cpu scheduler's decision
-> making when dealing with multi-core system. So cpu topology description
-> is helpful to provide guest with the right view. Dario Faggioli's talk
-> in [0] also shows the virtual topology may has impact on sched performace.
-> Thus this patch series is posted to introduce cpu topology support for
-> arm platform.
-> 
-> Both fdt and ACPI are introduced to present the cpu topology. To describe
-> the cpu topology via ACPI, a PPTT table is introduced according to the
-> processor hierarchy node structure. This series is derived from [1], in
-> [1] we are trying to bring both cpu and cache topology support for arm
-> platform, but there is still some issues to solve to support the cache
-> hierarchy. So we split the cpu topology part out and send it seperately.
-> The patch series to support cache hierarchy will be send later since
-> Salil Mehta's cpu hotplug feature need the cpu topology enabled first and
-> he is waiting for it to be upstreamed.
-> 
-> This patch series was initially based on the patches posted by Andrew Jones [2].
-> I jumped in on it since some OS vendor cooperative partner are eager for it.
-> Thanks for Andrew's contribution.
-> 
-> After applying this patch series, launch a guest with virt-6.0 and cpu
-> topology configured with sockets:cores:threads = 2:4:2, you will get the
-> bellow messages with the lscpu command.
-> 
-> -----------------------------------------
-> Architecture:                    aarch64
-> CPU op-mode(s):                  64-bit
-> Byte Order:                      Little Endian
-> CPU(s):                          16
-> On-line CPU(s) list:             0-15
-> Thread(s) per core:              2
+The STATUS register will be reset to IDLE in
+cnpcm7xx_smbus_enter_reset(), no need to preset
+it in instance_init().
 
-What CPU model was used? Did it actually support threads? If these were
-KVM VCPUs, then I guess MPIDR.MT was not set on the CPUs. Apparently
-that didn't confuse Linux? See [1] for how I once tried to deal with
-threads.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/i2c/npcm7xx_smbus.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-[1] https://github.com/rhdrjones/qemu/commit/60218e0dd7b331031b644872d56f2aca42d0ff1e
-
-> Core(s) per socket:              4
-> Socket(s):                       2
-
-Good, but what happens if you specify '-smp 16'? Do you get 16 sockets
-each with 1 core? Or, do you get 1 socket with 16 cores? And, which do
-we want and why? If you look at [2], then you'll see I was assuming we
-want to prefer cores over sockets, since without topology descriptions
-that's what the Linux guest kernel would do.
-
-[2] https://github.com/rhdrjones/qemu/commit/c0670b1bccb4d08c7cf7c6957cc8878a2af131dd
-
-> NUMA node(s):                    2
-
-Why do we have two NUMA nodes in the guest? The two sockets in the
-guest should not imply this.
-
-Thanks,
-drew
-
-> Vendor ID:                       HiSilicon
-> Model:                           0
-> Model name:                      Kunpeng-920
-> Stepping:                        0x1
-> BogoMIPS:                        200.00
-> NUMA node0 CPU(s):               0-7
-> NUMA node1 CPU(s):               8-15
-> 
-> [0] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines-friend-or-foe-dario-faggioli-suse
-> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg02166.html
-> [2] https://patchwork.ozlabs.org/project/qemu-devel/cover/20180704124923.32483-1-drjones@redhat.com
-> 
-> Ying Fang (5):
->   device_tree: Add qemu_fdt_add_path
->   hw/arm/virt: Add cpu-map to device tree
->   hw/arm/virt-acpi-build: distinguish possible and present cpus
->   hw/acpi/aml-build: add processor hierarchy node structure
->   hw/arm/virt-acpi-build: add PPTT table
-> 
->  hw/acpi/aml-build.c          | 40 ++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c     | 64 +++++++++++++++++++++++++++++++++---
->  hw/arm/virt.c                | 40 +++++++++++++++++++++-
->  include/hw/acpi/acpi-defs.h  | 13 ++++++++
->  include/hw/acpi/aml-build.h  |  7 ++++
->  include/hw/arm/virt.h        |  1 +
->  include/sysemu/device_tree.h |  1 +
->  softmmu/device_tree.c        | 45 +++++++++++++++++++++++--
->  8 files changed, 204 insertions(+), 7 deletions(-)
-> 
-> -- 
-> 2.23.0
-> 
+diff --git a/hw/i2c/npcm7xx_smbus.c b/hw/i2c/npcm7xx_smbus.c
+index 6b2f9e1aaad..e7e0ba66fe7 100644
+--- a/hw/i2c/npcm7xx_smbus.c
++++ b/hw/i2c/npcm7xx_smbus.c
+@@ -1040,7 +1040,6 @@ static void npcm7xx_smbus_init(Object *obj)
+     sysbus_init_mmio(sbd, &s->iomem);
+ 
+     s->bus = i2c_init_bus(DEVICE(s), "i2c-bus");
+-    s->status = NPCM7XX_SMBUS_STATUS_IDLE;
+ }
+ 
+ static const VMStateDescription vmstate_npcm7xx_smbus = {
+-- 
+2.26.2
 

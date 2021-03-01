@@ -1,103 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3944194lfg;
-        Mon, 1 Mar 2021 13:55:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyT2KzfBtgu19cjIOHxecuoLhk7PxNU/KnXXi9zmRdspIdws1PHEq7lFwKxrRBiDNKQYOPQ
-X-Received: by 2002:a05:6638:2614:: with SMTP id m20mr17866242jat.133.1614635719136;
-        Mon, 01 Mar 2021 13:55:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614635719; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3944897lfg;
+        Mon, 1 Mar 2021 13:56:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy7TWQUjjOCBWk75aRLOkoyj9PWls9VmNY4ezJKAERF95NYsqyIKbDUPwv4sKDlrgNp/1hX
+X-Received: by 2002:a05:6602:17cd:: with SMTP id z13mr15650118iox.109.1614635791804;
+        Mon, 01 Mar 2021 13:56:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614635791; cv=none;
         d=google.com; s=arc-20160816;
-        b=q07u76uV/uVfH1It9+NRblUlZlk3iuW4Qn2UIeX6wWlXtHwFBT3/ttYoEgMk1fWegB
-         f3Nrb+Zou2/fRWWFc8FD6tCiYoKP5Qe2GVV65jJtmJcGyHQS0Jp2mbs40r4n1l+WfqjP
-         fbS6t3f3KYifWSGIDNcFYNcIBpoesMiPa7y+vUKGtNRECuFphvTJbnIVu+47clVGM2Do
-         RKOoMzcF1DqVCOpIq6l0GfpTG0xLrvaZVVFFsHFpeq2NKaStKEeAUKGCo78h5pztl6rB
-         cJjfoq9D8NHMnRlGHIyJvZ1GRIYefRzXntFF+DSXs5B7chnBYEkRImBZobLSDvKGodF8
-         BolQ==
+        b=EBMBlJZOyAa3SwAZzPUaONGq4aS9wOd3e9me1XirWj/2SdNsSPyhTRhVa1eTO4Mh1L
+         aqnTQtIbzrcqIdUC9oNWG2FLdFa5ZoQiGjjptZIrimPvcVYRRlUckzFTYNWh3TpLH7J3
+         XfOMAXdgBog+UfKwqSPqK6Jd8XgAnBwaECv/j5oYBg8pwj4JdkygWw5XaVNuKYh+k9WS
+         QkfhSQSowP0yWjKnnQ3nSW7LTM8Pe6dJFC82DliPBGcfR6B1PAPM+13fd4cLDA9RCOg5
+         dBypffskATjcMltSFabwwhORfJmVsVTKhxm7ycdSDRKOOQgHJpqtQ28gcCHKOOdY0r+C
+         oeaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=MXkQdWgohB9uSSp9OtT22O1oCJ949jTBzJW7O9qsdTc=;
-        b=prz/alrqbCkc5OCl3+bsZCPdCFl3ujQ7lws21ym/zKjncc3iiEHUnR/RcLIJMf9gWH
-         M2loUxNQ3sjMVIrOwlwbGhm05EhcYWCuuqQ2kPmkmytDh7QsrGvOFHua4Ta3vFtfqquC
-         7DKiBLEvTxouWITUj4NpbgXzcN9oxojXHSCtPMJofkAwuq/wK/LSFVREXQcftqWlo+9x
-         H5B46g3a26QwsLYHZlInPnrM5oGFlSfuRwhbWPRlxv2O/SWTpaCTYXqWRCnd4EVzYtZz
-         fZwxvWBegSWEwRVbh/m2iHymhNIrQaB8ewXe6w55V2AV1q3zAqxyoMvj1X9A8mR0h3kb
-         O2mA==
+        bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
+        b=RkRBXTajjSkmUswFyEnyEE/RvtLpWlSGPIbpNnSiHvIJltwzYWnKzPaWwMWk2wJK5z
+         xQFLlfrjtqONTHjJ0PIkeZkC5z06uZ+EQc4jVPIqe7K0Br7K2Hnd4zghHOBrCFjNMe5O
+         gd7V23rNRztuA3EKKdc9Wjy6opUVJR2H+Dtn2fzdNzKAcx/qqmZSdX3f2zojnAWJo3EL
+         0UIuUCzv0cCtcz2mHKVgaKWDRTdncl997Low8ymFpccm44KjGSjPReP1/ylrWccjOcgq
+         YY5YHjnyRMdaM/2Naite3zo0jL5EXqbUS6TW3FvACVV+gh2IBXbOTsiNnWX82bQ60dOZ
+         Kq1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hNZjpVdr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="vfqyCfg/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11si16264773ild.98.2021.03.01.13.55.18
+        by mx.google.com with ESMTPS id l14si15528020iln.1.2021.03.01.13.56.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 13:55:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Mar 2021 13:56:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hNZjpVdr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="vfqyCfg/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46352 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50112 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGqVa-00062U-DH
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 16:55:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48782)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lGqWl-0007gN-1S
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 16:56:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGqTS-0003KL-HV; Mon, 01 Mar 2021 16:53:06 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:44026)
+ id 1lGqSB-00012k-FX; Mon, 01 Mar 2021 16:51:47 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d]:45276)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGqTQ-0005VI-Tq; Mon, 01 Mar 2021 16:53:06 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id bd6so9517894edb.10;
- Mon, 01 Mar 2021 13:53:03 -0800 (PST)
+ id 1lGqS9-0004w8-Rg; Mon, 01 Mar 2021 16:51:47 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id f6so6987591edd.12;
+ Mon, 01 Mar 2021 13:51:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MXkQdWgohB9uSSp9OtT22O1oCJ949jTBzJW7O9qsdTc=;
- b=hNZjpVdrVI63phJbFYUzDIPLoonxJsaqtraOR5sYfaAoSgzWe7io18UVu0L6m7RhH4
- bebZKBGTfRRLxU6MTxQX4UltQ7Smz38CS4M/cEI5pYD1dNlLhequCNf+vWDETmDo+Onn
- t/WipwsglUfsAUmVlJ+abKHbUhazMEvHJTmOxqYKUIYZvs3BqBuJYyeF5CC5n4vdYDS3
- ZqAZV9zwDoHgK+LaBvifxtvxJmBxCg5CP0surZ2LI8zceyYSu5iiqK9HlY4Dw09AUUWB
- 7gevru6kx7Z4Ju8EX7X6p7zbhTT6MIpuQz0qEQ96pP/IcaSjzp4yqsdLKQ+iScPEJa1x
- wE4Q==
+ bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
+ b=vfqyCfg/M0KAHUUysrP0H26KOKDyubdiVj6/XijCoK22bEANmWo0ijiO44yMB/I78u
+ e/5LGiBJpDorWkZfxurVm5Wz6+PD6SQWdJtZe1vnMbI5SRKll0f5BhvEPIaxaY/xqVy5
+ hLI2WMpeKBysUHUTy9bb+TIsC6/3UEdU53Zszqv4lkKRG1gT1WHO7mQJlG0PZ5jCcx2k
+ g16Xr8DB+lfTGeF9UF1NXnxMf8RgOJG8eW6vmpfgexq6HHKbk/vQmAzginKook7ScpES
+ NDJekS+fFlluU3frY+jtJI1Xb2SteWazn5ckDhXS5xedd2n1CcDtIGtaDlrUu7/kYbLK
+ ISMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=MXkQdWgohB9uSSp9OtT22O1oCJ949jTBzJW7O9qsdTc=;
- b=VU0AJ4OdROoGpu+IjfSJ2MIQhA7XwO0lwtAXWRv8MTlPq64LUfsl/uUHvEmx+eItWb
- GvHm9Y7hxMJvqj/jYnUOyH3epAKmBfpcMBGAl+F1KscCjV9R8EABYe/OJgQUOdRj247F
- A3CR1heBQBj3QRKqUAeNxOrsWnTpsTKRNYObscTc+V/loPJmsuD6SMIiKNwb9snGsQ1h
- 0a16H5Nd+Hb3tuD0zPvryNQALRpmd7/YaEYyvPVMWWd2fMrO39sgcpcMTR1e9SxoFpJH
- 7lHbFNxz1otR0m/M5VDK0cy+1s8salqrFtPkxsrvw1I2G3rfFcQjtSD+3Y+YOHivT1p2
- wnvw==
-X-Gm-Message-State: AOAM530mLTOZoLCyh4tKQcRrQ2yUMkS33z994AhKlWaniSaGbVhw+IPA
- HNgu1JDcX0jCu03riyCPzl3CH2ga4KE=
-X-Received: by 2002:a05:6402:31b7:: with SMTP id
- dj23mr18452684edb.245.1614635581892; 
- Mon, 01 Mar 2021 13:53:01 -0800 (PST)
+ bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
+ b=lLaMCNfk9dqAlO1SBY4MTfcAIS+WmzWhbGMW2aRTHIHCo9DbRsqe1ZCMyQKtk00Lvb
+ qv3GoCxihm9gqRceRjpuc9pz4hCAPIa/P5J0cSs5Gudpae6dRLq3sYFGCibjV5CE0nCw
+ ESiuVPR080E3zzEAUtDzmcx1k1LRxH7KUi9JHfARsrVbk81oWl7oJSk2rR5VeAMmV/AH
+ +XAlzr9mWWba27bfiQVapMdX39XmQwkzk9LwS0rspT0XqFRIW08++/odgflxRUzhJL5Y
+ 6e4YMcorM997JJ64V+yT8t3v52Kp6R7Eb9x3QKzf3HHcWwxXZAGklrbpWMsK64X11PE3
+ HEWg==
+X-Gm-Message-State: AOAM530zXdzTDfpaelgCDG+U4VgEMckwcYUoGLP1D4XsSc/hxr2yXy6n
+ nH3yoXoYtWxIirg6gHmm7KtMmr4YwYY=
+X-Received: by 2002:a05:6402:6cb:: with SMTP id
+ n11mr4541013edy.198.1614635502892; 
+ Mon, 01 Mar 2021 13:51:42 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id y8sm10716968eju.31.2021.03.01.13.52.59
+ by smtp.gmail.com with ESMTPSA id l6sm17005597edn.82.2021.03.01.13.51.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Mar 2021 13:53:01 -0800 (PST)
+ Mon, 01 Mar 2021 13:51:42 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 15/17] cpu: Move CPUClass::get_paging_enabled to
- SysemuCPUOps
-Date: Mon,  1 Mar 2021 22:51:08 +0100
-Message-Id: <20210301215110.772346-16-f4bug@amsat.org>
+Subject: [PATCH v2 04/17] cpu: Directly use cpu_write_elf*() fallback handlers
+ in place
+Date: Mon,  1 Mar 2021 22:50:57 +0100
+Message-Id: <20210301215110.772346-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210301215110.772346-1-f4bug@amsat.org>
 References: <20210301215110.772346-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -107,30 +107,30 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  "Michael S. Tsirkin" <mst@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+ qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
@@ -140,103 +140,127 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
  Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hbpF9KgREFHE
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: K6xhzolhCp4i
+
+No code directly accesses CPUClass::write_elf*() handlers out
+of hw/core/cpu.c (the rest are assignation in target/ code):
+
+  $ git grep -F -- '->write_elf'
+  hw/core/cpu.c:157:    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
+  hw/core/cpu.c:171:    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
+  hw/core/cpu.c:186:    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
+  hw/core/cpu.c:200:    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
+  hw/core/cpu.c:440:    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
+  hw/core/cpu.c:441:    k->write_elf32_note = cpu_common_write_elf32_note;
+  hw/core/cpu.c:442:    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
+  hw/core/cpu.c:443:    k->write_elf64_note = cpu_common_write_elf64_note;
+  target/arm/cpu.c:2304:    cc->write_elf64_note = arm_cpu_write_elf64_note;
+  target/arm/cpu.c:2305:    cc->write_elf32_note = arm_cpu_write_elf32_note;
+  target/i386/cpu.c:7425:    cc->write_elf64_note = x86_cpu_write_elf64_note;
+  target/i386/cpu.c:7426:    cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
+  target/i386/cpu.c:7427:    cc->write_elf32_note = x86_cpu_write_elf32_note;
+  target/i386/cpu.c:7428:    cc->write_elf32_qemunote = x86_cpu_write_elf32_qemunote;
+  target/ppc/translate_init.c.inc:10891:    cc->write_elf64_note = ppc64_cpu_write_elf64_note;
+  target/ppc/translate_init.c.inc:10892:    cc->write_elf32_note = ppc32_cpu_write_elf32_note;
+  target/s390x/cpu.c:522:    cc->write_elf64_note = s390_cpu_write_elf64_note;
+
+Check the handler presence in place and remove the common fallback code.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h            | 2 --
- include/hw/core/sysemu-cpu-ops.h | 4 ++++
- hw/core/cpu.c                    | 4 ++--
- target/i386/cpu.c                | 4 +++-
- 4 files changed, 9 insertions(+), 5 deletions(-)
+ hw/core/cpu.c | 43 ++++++++++++-------------------------------
+ 1 file changed, 12 insertions(+), 31 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 8af78cdde23..960846d2b64 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -93,7 +93,6 @@ struct AccelCPUClass;
-  * @dump_state: Callback for dumping state.
-  * @dump_statistics: Callback for dumping statistics.
-  * @get_arch_id: Callback for getting architecture-dependent CPU ID.
-- * @get_paging_enabled: Callback for inquiring whether paging is enabled.
-  * @set_pc: Callback for setting the Program Counter register. This
-  *       should have the semantics used by the target architecture when
-  *       setting the PC from a source such as an ELF file entry point;
-@@ -136,7 +135,6 @@ struct CPUClass {
-     void (*dump_state)(CPUState *cpu, FILE *, int flags);
-     void (*dump_statistics)(CPUState *cpu, int flags);
-     int64_t (*get_arch_id)(CPUState *cpu);
--    bool (*get_paging_enabled)(const CPUState *cpu);
-     void (*set_pc)(CPUState *cpu, vaddr value);
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
-diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index 460e7d63b0c..3f9a5199dd1 100644
---- a/include/hw/core/sysemu-cpu-ops.h
-+++ b/include/hw/core/sysemu-cpu-ops.h
-@@ -21,6 +21,10 @@ typedef struct SysemuCPUOps {
-      */
-     void (*get_memory_mapping)(CPUState *cpu, MemoryMappingList *list,
-                                Error **errp);
-+    /**
-+     * @get_paging_enabled: Callback for inquiring whether paging is enabled.
-+     */
-+    bool (*get_paging_enabled)(const CPUState *cpu);
-     /**
-      * @get_phys_page_debug: Callback for obtaining a physical address.
-      */
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 339bdfadd7a..7a8487d468f 100644
+index daaff56a79e..a9ee2c74ec5 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -71,8 +71,8 @@ bool cpu_paging_enabled(const CPUState *cpu)
+@@ -154,60 +154,45 @@ int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
  {
      CPUClass *cc = CPU_GET_CLASS(cpu);
  
--    if (cc->get_paging_enabled) {
--        return cc->get_paging_enabled(cpu);
-+    if (cc->sysemu_ops->get_paging_enabled) {
-+        return cc->sysemu_ops->get_paging_enabled(cpu);
-     }
- 
-     return false;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index d33ee9f831e..3519cef8fba 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -7157,12 +7157,14 @@ static int64_t x86_cpu_get_arch_id(CPUState *cs)
-     return cpu->apic_id;
++    if (!cc->write_elf32_qemunote) {
++        return 0;
++    }
+     return (*cc->write_elf32_qemunote)(f, cpu, opaque);
  }
  
-+#if !defined(CONFIG_USER_ONLY)
- static bool x86_cpu_get_paging_enabled(const CPUState *cs)
+-static int cpu_common_write_elf32_qemunote(WriteCoreDumpFunction f,
+-                                           CPUState *cpu, void *opaque)
+-{
+-    return 0;
+-}
+-
+ int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
+                          int cpuid, void *opaque)
  {
-     X86CPU *cpu = X86_CPU(cs);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
  
-     return cpu->env.cr[0] & CR0_PG_MASK;
++    if (!cc->write_elf32_note) {
++        return -1;
++    }
+     return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
  }
-+#endif /* !CONFIG_USER_ONLY */
  
- static void x86_cpu_set_pc(CPUState *cs, vaddr value)
+-static int cpu_common_write_elf32_note(WriteCoreDumpFunction f,
+-                                       CPUState *cpu, int cpuid,
+-                                       void *opaque)
+-{
+-    return -1;
+-}
+-
+ int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
+                              void *opaque)
  {
-@@ -7389,6 +7391,7 @@ static Property x86_cpu_properties[] = {
- #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps i386_sysemu_ops = {
-     .get_memory_mapping = x86_cpu_get_memory_mapping,
-+    .get_paging_enabled = x86_cpu_get_paging_enabled,
-     .get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug,
-     .asidx_from_attrs = x86_asidx_from_attrs,
-     .get_crash_info = x86_cpu_get_crash_info,
-@@ -7429,7 +7432,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->gdb_read_register = x86_cpu_gdb_read_register;
-     cc->gdb_write_register = x86_cpu_gdb_write_register;
-     cc->get_arch_id = x86_cpu_get_arch_id;
--    cc->get_paging_enabled = x86_cpu_get_paging_enabled;
+     CPUClass *cc = CPU_GET_CLASS(cpu);
  
- #ifndef CONFIG_USER_ONLY
-     cc->sysemu_ops = &i386_sysemu_ops;
++    if (!cc->write_elf64_qemunote) {
++        return 0;
++    }
+     return (*cc->write_elf64_qemunote)(f, cpu, opaque);
+ }
+ 
+-static int cpu_common_write_elf64_qemunote(WriteCoreDumpFunction f,
+-                                           CPUState *cpu, void *opaque)
+-{
+-    return 0;
+-}
+-
+ int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
+                          int cpuid, void *opaque)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
++    if (!cc->write_elf64_note) {
++        return -1;
++    }
+     return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
+ }
+ 
+-static int cpu_common_write_elf64_note(WriteCoreDumpFunction f,
+-                                       CPUState *cpu, int cpuid,
+-                                       void *opaque)
+-{
+-    return -1;
+-}
+-
+-
+ static int cpu_common_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+ {
+     return 0;
+@@ -437,10 +422,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->has_work = cpu_common_has_work;
+     k->get_paging_enabled = cpu_common_get_paging_enabled;
+     k->get_memory_mapping = cpu_common_get_memory_mapping;
+-    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
+-    k->write_elf32_note = cpu_common_write_elf32_note;
+-    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
+-    k->write_elf64_note = cpu_common_write_elf64_note;
+     k->gdb_read_register = cpu_common_gdb_read_register;
+     k->gdb_write_register = cpu_common_gdb_write_register;
+     set_bit(DEVICE_CATEGORY_CPU, dc->categories);
 -- 
 2.26.2
 

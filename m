@@ -1,159 +1,107 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3856867lfg;
-        Mon, 1 Mar 2021 11:34:43 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJysXTCf2uATn7gYLcdCfvyKS8J2Pl4hvv9CaWNEz8ft0mVDPLN12Xw3esr2PgI7vnihSLK+
-X-Received: by 2002:a05:6e02:1be6:: with SMTP id y6mr13923444ilv.145.1614627283706;
-        Mon, 01 Mar 2021 11:34:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1614627283; cv=pass;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3890213lfg;
+        Mon, 1 Mar 2021 12:24:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz85e/EG2MNWWgE8iAawwO58GsbUePyvX1dK3DGza/xH9vYSyL3SMyj0rochTtk58d5lKzw
+X-Received: by 2002:a9d:6559:: with SMTP id q25mr10465910otl.79.1614630292762;
+        Mon, 01 Mar 2021 12:24:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614630292; cv=none;
         d=google.com; s=arc-20160816;
-        b=v7DUldJxhO3O9/jZvfznUcqp360OFaJfJOC1TLUY643/ZfzFQsOakZh8DKMExOBdxp
-         i3bGy4c6BP6DZmB3VvZX88igSvZJdmWC+kygB/xATe+m1bnXIC8ByAkuAANDqvfwgj+D
-         AsM0PHQmIuzIYiZzMFSSAprrPPgUuyWEp3LJESTVC3FcatT/UarNDtM7KhyBPNScpIr8
-         Zt2ckdfDQMwAswogPA6ezGSnodwSZWYGsX72hVxVzYmZRGqFUwpLZgffdsA+ifDulL7U
-         TAx73WX567BAQVyFpzMr+2x0Avvz+T26sIcVlYDgXOdQ9rkdmGQ1VCyajYB3K4z0A/bt
-         xyVA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=cRdfp45lT5P/SeCDRaXrQJ5XY7TsWAxvLZGyPyJjA3l7AX23ARuPkYgfFMtgQmbv5v
+         gfl++Dh8r/FcVJiT3E4rEjno3xXJEb09mkRAsBw2DEcYdQaNxPQhRGoe0ySJI/MfuGC1
+         8QMNL+jKh72GLKiaZQVQ3lxRIF5+IRoZPu8mWOuwv0WrbDKyDb6elKxXxtKKnwn89FU+
+         jiwTvCl8ITysDVYc259JGbd/oSOJYtY62pciDrsg1y4No4tGT9BhfDrTt60I9MzQlrwG
+         W2k+26ZLo56M5TnWsuN7mIf3HiffPjz2l31GPW8VRty3fWM2LnJnl63bWMxpjKAE2zu7
+         JWHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:to:from:dkim-signature;
-        bh=yc4t+Hn+uo8JyDU3+FlcRQk9ZrLDs4rK/Tb7VP5sV48=;
-        b=mNqG5KDeOQi8r1MmICFKIdyxxelhzyrpfZRD7XEd2zNcVzc4U1tRG3HG19egHew2Sl
-         XMbq7QeHMU5rYJNceEUF70Mn4f5lGsBav6kUy1ShtMrGoXb03QAib+FEbGjc35TDHVtl
-         XN/V2cg4Sa2XkXRaZv1Ne2YgO3QhDXoSHlQZySadycJ2beaygGaORksIvJ/hQ4IGE6uB
-         pBpI2lgduP0SZoY1auTVPYyi3gOkpAklEG2nxd9T7Rt7cdDxpVjSgvMFqVLkfQ5yaunP
-         KSdi7lIZcHYdLXhdMObO0GSLr156khojr0u9aqJQ4nD+aIMlfjEvWUCj78a2wyrYNXrf
-         acpw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@bushare.onmicrosoft.com header.s=selector2-bushare-onmicrosoft-com header.b=DPNA6CrA;
-       arc=pass (i=1 spf=pass spfdomain=bu.edu dkim=pass dkdomain=bu.edu dmarc=pass fromdomain=bu.edu);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=4XfcowYAH6XBisPYlyA7TAvvQFLSmqVy1t+5x/WHGxw=;
+        b=av3ReraxBqpdpG0jgKaW90s3kJoajAlT1pIVmtaIR3OByZxdH3Cc3JA2nQFgrMpPbE
+         ykrNuRFhv3K+0ZtLeyt4pojzxN8Ko2/PX7xeHghEdmwNNaE8vsSpYRxpoAOLcZ4jdBys
+         ZWfO3lVasPatkkZD43eNa57k7WmkAyeeEZqNWsLR7II/71D3HospkCyIkfpa84neJYa5
+         cKaDnCSKaEtCrgzfoKctfmo6wzTAW95WMXBuUYdSF/2fYdWJwT/JSSb9+p2/5Z62lPya
+         dMdakAQiRUgtrs0BFnzkHq/KsyQAi4gWuQtm1v0gNhWYbgKwJBtLEv76mtzOpuze3HfD
+         l77Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KKVJcD9L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w12si6501810ilo.156.2021.03.01.11.34.43
+        by mx.google.com with ESMTPS id w19si13840127ott.226.2021.03.01.12.24.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 11:34:43 -0800 (PST)
+        Mon, 01 Mar 2021 12:24:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bushare.onmicrosoft.com header.s=selector2-bushare-onmicrosoft-com header.b=DPNA6CrA;
-       arc=pass (i=1 spf=pass spfdomain=bu.edu dkim=pass dkdomain=bu.edu dmarc=pass fromdomain=bu.edu);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42716 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KKVJcD9L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43286 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGoJS-0002Fu-QU
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 14:34:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45998)
+	id 1lGp63-0004Y3-VN
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 15:24:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1lGoJ0-0002CJ-PM; Mon, 01 Mar 2021 14:34:11 -0500
-Received: from mail-bn8nam12on2116.outbound.protection.outlook.com
- ([40.107.237.116]:34430 helo=NAM12-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1lGoIu-0001ft-Fa; Mon, 01 Mar 2021 14:34:10 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Yth/VAGk1phGatty9SD5chHshxNJOP3PvBTUhEmdRBhPPEHdjBlSGXK27BLhxP/PUYY02AazPghVvxVRhHRWrFX9+R60uIBgaEWQ/48GihOJ4nv0iBbrFfipcWKreAne4wHfQrVp2UuLmovmmsy1ecM4eMGxrXP8o1+WAyD7vC0Vr2yU9TVklGcT/w2tR+vuUAXnFSflvg+FlAqEkUlrVjdiizdMOCfwwBh+0VBzT2S8QhCu6U4QED48lo0+zcPbCtcOb4K9KJVkq0+F8fcpSx3iC7pgfDbo1gE1zzKk9kiYya8sL9X/I4VYaqkmT/wRhLi/KQBbjPav9PzourB2FQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yc4t+Hn+uo8JyDU3+FlcRQk9ZrLDs4rK/Tb7VP5sV48=;
- b=Xz010J1KvVbpBNI4RUjPZxSRLlej1WnS2Q+dG1dzgeiBNyybik9opKoycXOAdZptFjpSsulcnK1xUAB/3s1TBvFmzEGqF2UQSGbxily+hl81OZm3gWbHZXOYm6RE8pJTf9TcZKE+0OX5siaW+A57LW7j5oyc2Pj+Z07Cn2YHuFTvEcxLPwIv1M1rbYkj+0p0yNxKY1eHgmck87fzGKi3OG4ZVvCWEqP2YClnEbRETcwo0/re/xsLnz8/sJ7L/IAJCEJbSLU6L+ZJi3ifMzX+iaVnUxasC2JA2djPPHuVd86/1h5QzsBObb8fPSGwLYo629Ujet1RdNitYW/BGT4ilQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=bu.edu; dmarc=pass action=none header.from=bu.edu; dkim=pass
- header.d=bu.edu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bushare.onmicrosoft.com; s=selector2-bushare-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yc4t+Hn+uo8JyDU3+FlcRQk9ZrLDs4rK/Tb7VP5sV48=;
- b=DPNA6CrANtz7CFtyUl3VzjW7zZPxpkZtLWKbNg+2gfW6xmGKtv+BtCT5EA7lbIGEzlBHKwh4KkmZ8YP/kiE+L2Evn0ImT5Chl1r+TPTCX/7Znzyl8eATyjRkkzgmZpU2EtJKJT4MfQ08bcjcxRCMB3yAgMo7j5LwYEUQRgSFV/I=
-Authentication-Results: nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=none action=none header.from=bu.edu;
-Received: from DM6PR03MB3865.namprd03.prod.outlook.com (2603:10b6:5:47::31) by
- DM6PR03MB5193.namprd03.prod.outlook.com (2603:10b6:5:241::20) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3890.23; Mon, 1 Mar 2021 19:34:01 +0000
-Received: from DM6PR03MB3865.namprd03.prod.outlook.com
- ([fe80::3d08:f80f:7252:a948]) by DM6PR03MB3865.namprd03.prod.outlook.com
- ([fe80::3d08:f80f:7252:a948%4]) with mapi id 15.20.3868.036; Mon, 1 Mar 2021
- 19:34:01 +0000
-From: Alexander Bulekov <alxndr@bu.edu>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] cadence_gem: switch to use qemu_receive_packet() for loopback
-Date: Mon,  1 Mar 2021 14:33:43 -0500
-Message-Id: <20210301193343.324840-1-alxndr@bu.edu>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20210301073947.39451-1-jasowang@redhat.com>
-References: <20210301073947.39451-1-jasowang@redhat.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [72.74.210.193]
-X-ClientProxiedBy: BL0PR02CA0085.namprd02.prod.outlook.com
- (2603:10b6:208:51::26) To DM6PR03MB3865.namprd03.prod.outlook.com
- (2603:10b6:5:47::31)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lGp5r-0004Vy-Kf
+ for qemu-arm@nongnu.org; Mon, 01 Mar 2021 15:24:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38173)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lGp5m-0007oe-CN
+ for qemu-arm@nongnu.org; Mon, 01 Mar 2021 15:24:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614630272;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4XfcowYAH6XBisPYlyA7TAvvQFLSmqVy1t+5x/WHGxw=;
+ b=KKVJcD9LzVPjQPM1jwwQRkBL2x+/7nnRNsdX222672OPIx0oXbMdxLqexgxHrwGjP9ZfAD
+ MMcSN8f6dbN7/Wtdd1eH2wjpS9FyeliHJ14Pqq5LIoEc+qf6/Q0KE8CFDMmQcbv6DGPYAa
+ /f5jAA11ZamzVOfv3aCS960IK2OOos4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-405-QAuFR--EMgWXi45V7SM1aQ-1; Mon, 01 Mar 2021 15:24:31 -0500
+X-MC-Unique: QAuFR--EMgWXi45V7SM1aQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DFE6450740;
+ Mon,  1 Mar 2021 20:24:28 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 236AC5D71F;
+ Mon,  1 Mar 2021 20:24:18 +0000 (UTC)
+Date: Mon, 1 Mar 2021 21:24:17 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Marian Postevca <posteuca@mutex.one>
+Subject: Re: [PATCH 1/2] acpi: Move setters/getters of oem fields to
+ X86MachineState
+Message-ID: <20210301212417.04c47eaa@redhat.com>
+In-Reply-To: <20210221001737.24499-2-posteuca@mutex.one>
+References: <20210221001737.24499-1-posteuca@mutex.one>
+ <20210221001737.24499-2-posteuca@mutex.one>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from stormtrooper.vrmnet (72.74.210.193) by
- BL0PR02CA0085.namprd02.prod.outlook.com (2603:10b6:208:51::26) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3890.20 via Frontend Transport; Mon, 1 Mar 2021 19:34:00 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 2c3019c4-2bb5-4eac-f386-08d8dce8f711
-X-MS-TrafficTypeDiagnostic: DM6PR03MB5193:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DM6PR03MB519380112D7755C06E600A56BA9A9@DM6PR03MB5193.namprd03.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:172;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: lpe3tFU7oZOegdbe0gxYuaFZPeueGAZCaezHFCSutm/yt3eK+jMPEuxRf+Unqgsa7tXjaHfJ0cCUyJ376Iylcx47fQtT0zgW5p3rnNLfu4W1UXUhcUCl2ctUByHa+AzsqdfWhIQv8UPb4r+ilbQkTRSgI5auu45vpJjYK9tF+hH/+i4J7jn9R0sspIOsHvi2TY1Vy+wCAmxY+tgeNYCV0VavY06slKEmgtV8NL78jQd8jEISqhlH6I/tfEFp6C3zceictu5SIvDO8t9UN+jiijzmSffawmbQPz54D0yi3kKl1drZl4lSFIaWGrszXdb+LhUAC+574TefohZ15mdGFm6z4mU1GLVNzE/20SrXedk4EEX4azhrO5eB641qqbGk+jO3PQ9QaUkLx16DH2D/ajVz0qCO01EDUt3XYgx5ffNsuzt58jueSKyFnwI/bGs3Gcd9iKnQ6d4kiIP/wQutz+RdKgBKHq+Vq6FZVRAkx51d2nd4U8ix0tIjPG5cuXlJtzBfj832u//lssmLCMoQ0g==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR03MB3865.namprd03.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(376002)(39860400002)(136003)(346002)(366004)(786003)(6506007)(8676002)(26005)(2616005)(16526019)(316002)(4744005)(956004)(54906003)(186003)(478600001)(6666004)(2906002)(83380400001)(66946007)(1076003)(5660300002)(6916009)(66556008)(86362001)(66476007)(36756003)(6486002)(52116002)(6512007)(75432002)(4326008)(8936002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: =?us-ascii?Q?wY5bRjMmYOmPYhrTLgRyfmT+Cq5zqENjjiHRcrK4tLAdjQffSQ6dsZPgOBBJ?=
- =?us-ascii?Q?+Ldk7JM2Zm0AQbki/kL3kNl7PMDKWFdYn89VPEwcSAc+n5lxsjY1HFpvPJ0x?=
- =?us-ascii?Q?KRflm5mMI3voKWmw/0tFq0H3ShQR+EVUB1ZGqMLbxvgIc7p0o8u2TNyFOu42?=
- =?us-ascii?Q?b7MbZOkYtk4F4GtjZQnYgFltKZY8CkQTw2PS+DmahnKF5A7A+JXGThh/VAuU?=
- =?us-ascii?Q?HszTHF6aWKMlqVkmAwL4uJ+cgLNFr/zV694a07IMACLOUi7jNH7WjPC/8o0j?=
- =?us-ascii?Q?EgU/J5enVivGX0V9T3q1p8jjdooH9ZzxOr6fIRv3mCIjRiPexLa/Buu6hz4K?=
- =?us-ascii?Q?+qKxDYJAlfsdn54eBNE3Uc5QSBNfnLWIAwSpetwMfAeq8BaXdPdO+muwmThl?=
- =?us-ascii?Q?coAlKO32+UCbiTEPp6t8I/xNlweXisF5aGy8xh2D9HB4HUVt+WoEu7mTShKd?=
- =?us-ascii?Q?GMyo3YfUGv+Sq64QaBoxIYVK6FZTZW6vAE23gA4AjcLsMujy3BEChCFL1yWN?=
- =?us-ascii?Q?ZaPqHa9vu4S1E1/l+VJQtfARcdi9FL9w/YvcOSaEaEQQabD08A9jJGCji/J7?=
- =?us-ascii?Q?PF531TfEDwGlbYR/Rzd6OTNBzfPeG7gk4iQv2xC/OvmIofXm69FrNNuX2A1m?=
- =?us-ascii?Q?4CBQfRem/S+MPAyV9uqtgwqtQ4LuBya4W6eTQFIVtnIZSlHoCDzVUJ1Qm6U2?=
- =?us-ascii?Q?4+8XtsarrYwY180XfhOpnKB75hAvQQxpUZebLKRILUzN5Sjbg9hmFdbAGDGo?=
- =?us-ascii?Q?U2X6xzbJ1Dd7mJ5jesZD6t2ypLEkcty2jnvgFKuRvF6INADiI8YaSDjAOxn4?=
- =?us-ascii?Q?m2jcCAGvQwnSD8IR1nxgSmFOG2WC+t9iWveKLkzTUL6BpPvl2UMBTJ52sepb?=
- =?us-ascii?Q?W3vMvdwOU1w8VSh+zJOkxerz2CT2WWHZHzIjW0x2vJEZ1s1YwQAok3dEaMS1?=
- =?us-ascii?Q?P027BrgK/2G8BWFbOI9HIXEJLsxK1AE7oZIqOimnrJowm0KV8Ieu1T8rexq0?=
- =?us-ascii?Q?6IJbII/S85PeLa3t4JnPXvy277xEKqYmEnQxX2AkaKWyTUwjVJW+YWeYO0Ei?=
- =?us-ascii?Q?xP4OM6+vIzisHOz2QosEaUoVPtMkGGjiM6mQOzGf8Y5wFRqbiSCtbf+MxQph?=
- =?us-ascii?Q?UWMdCkqqwOUKUOJcL8kIQnYJQCo6yq9GYMhDyUTJc9aUKgxhXVxuACWOxJzm?=
- =?us-ascii?Q?Iq6tBoBpdOvv3Tt416xIXN+dRfsKRHRmj4KiCJUoCwEFE46ZD53IJ/5KzR/Y?=
- =?us-ascii?Q?m96krQrOIInRJDuM4A+F9zeSMmpPc15IbRGkSIi1jAPXMR4XXj9dfKj8+u9r?=
- =?us-ascii?Q?vtOXFXjlvDsNULk824OtzGKD?=
-X-OriginatorOrg: bu.edu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2c3019c4-2bb5-4eac-f386-08d8dce8f711
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR03MB3865.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Mar 2021 19:34:01.6412 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: d57d32cc-c121-488f-b07b-dfe705680c71
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xqi8xuQbgVg+tYQybtk3WgqV0pEszNBwtHzSYkFN2WARF0Uuxdyn8bdeUQkZmzoI
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR03MB5193
-Received-SPF: pass client-ip=40.107.237.116; envelope-from=alxndr@bu.edu;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.999,
- MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -166,35 +114,558 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-security@nongnu.org,
- ppandit@redhat.com, alxndr@bu.edu,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>, philmd@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Xiang Zheng <zhengxiang9@huawei.com>,
+ "open list : ACPI/HEST/GHES" <qemu-arm@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G+1V/EK+Q1A2
+X-TUID: WvUXEUdwsagr
 
-This patch switches to use qemu_receive_packet() which can detect
-reentrancy and return early.
+On Sun, 21 Feb 2021 02:17:36 +0200
+Marian Postevca <posteuca@mutex.one> wrote:
 
-Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
----
- hw/net/cadence_gem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> The code that sets/gets oem fields is duplicated in both PC and MICROVM
+> variants. This commit moves it to X86MachineState so that all x86
+> variants can use it and duplication is removed.
+> 
+> Signed-off-by: Marian Postevca <posteuca@mutex.one>
+nice cleanup, thanks!
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 9a4474a084..1c576a130c 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -1275,7 +1275,7 @@ static void gem_transmit(CadenceGEMState *s)
-                 /* Send the packet somewhere */
-                 if (s->phy_loop || (s->regs[GEM_NWCTRL] &
-                                     GEM_NWCTRL_LOCALLOOP)) {
--                    gem_receive(qemu_get_queue(s->nic), s->tx_packet,
-+                    qemu_receive_packet(qemu_get_queue(s->nic), s->tx_packet,
-                                 total_bytes);
-                 } else {
-                     qemu_send_packet(qemu_get_queue(s->nic), s->tx_packet,
--- 
-2.28.0
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  include/hw/i386/microvm.h |  4 ---
+>  include/hw/i386/pc.h      |  4 ---
+>  include/hw/i386/x86.h     |  4 +++
+>  hw/i386/acpi-build.c      | 48 ++++++++++++++--------------
+>  hw/i386/acpi-microvm.c    | 16 +++++-----
+>  hw/i386/microvm.c         | 66 ---------------------------------------
+>  hw/i386/pc.c              | 63 -------------------------------------
+>  hw/i386/x86.c             | 64 +++++++++++++++++++++++++++++++++++++
+>  8 files changed, 100 insertions(+), 169 deletions(-)
+> 
+> diff --git a/include/hw/i386/microvm.h b/include/hw/i386/microvm.h
+> index 372b05774e..f25f837441 100644
+> --- a/include/hw/i386/microvm.h
+> +++ b/include/hw/i386/microvm.h
+> @@ -76,8 +76,6 @@
+>  #define MICROVM_MACHINE_ISA_SERIAL          "isa-serial"
+>  #define MICROVM_MACHINE_OPTION_ROMS         "x-option-roms"
+>  #define MICROVM_MACHINE_AUTO_KERNEL_CMDLINE "auto-kernel-cmdline"
+> -#define MICROVM_MACHINE_OEM_ID              "oem-id"
+> -#define MICROVM_MACHINE_OEM_TABLE_ID        "oem-table-id"
+>  
+>  struct MicrovmMachineClass {
+>      X86MachineClass parent;
+> @@ -106,8 +104,6 @@ struct MicrovmMachineState {
+>      Notifier machine_done;
+>      Notifier powerdown_req;
+>      struct GPEXConfig gpex;
+> -    char *oem_id;
+> -    char *oem_table_id;
+>  };
+>  
+>  #define TYPE_MICROVM_MACHINE   MACHINE_TYPE_NAME("microvm")
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 5f93540a43..9c0ef403e4 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -45,8 +45,6 @@ typedef struct PCMachineState {
+>      bool pit_enabled;
+>      bool hpet_enabled;
+>      uint64_t max_fw_size;
+> -    char *oem_id;
+> -    char *oem_table_id;
+>  
+>      /* NUMA information: */
+>      uint64_t numa_nodes;
+> @@ -64,8 +62,6 @@ typedef struct PCMachineState {
+>  #define PC_MACHINE_SATA             "sata"
+>  #define PC_MACHINE_PIT              "pit"
+>  #define PC_MACHINE_MAX_FW_SIZE      "max-fw-size"
+> -#define PC_MACHINE_OEM_ID           "oem-id"
+> -#define PC_MACHINE_OEM_TABLE_ID     "oem-table-id"
+>  /**
+>   * PCMachineClass:
+>   *
+> diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
+> index 56080bd1fb..26c9cc45a4 100644
+> --- a/include/hw/i386/x86.h
+> +++ b/include/hw/i386/x86.h
+> @@ -67,6 +67,8 @@ struct X86MachineState {
+>      OnOffAuto smm;
+>      OnOffAuto acpi;
+>  
+> +    char *oem_id;
+> +    char *oem_table_id;
+>      /*
+>       * Address space used by IOAPIC device. All IOAPIC interrupts
+>       * will be translated to MSI messages in the address space.
+> @@ -76,6 +78,8 @@ struct X86MachineState {
+>  
+>  #define X86_MACHINE_SMM              "smm"
+>  #define X86_MACHINE_ACPI             "acpi"
+> +#define X86_MACHINE_OEM_ID           "oem-id"
+> +#define X86_MACHINE_OEM_TABLE_ID     "oem-table-id"
+>  
+>  #define TYPE_X86_MACHINE   MACHINE_TYPE_NAME("x86")
+>  OBJECT_DECLARE_TYPE(X86MachineState, X86MachineClass, X86_MACHINE)
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index b9190b924a..fa6a6f20f1 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1637,7 +1637,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+>      build_header(linker, table_data,
+>          (void *)(table_data->data + table_data->len - dsdt->buf->len),
+> -                 "DSDT", dsdt->buf->len, 1, pcms->oem_id, pcms->oem_table_id);
+> +                 "DSDT", dsdt->buf->len, 1, x86ms->oem_id, x86ms->oem_table_id);
+>      free_aml_allocator();
+>  }
+>  
+> @@ -1814,8 +1814,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+>      build_header(linker, table_data,
+>                   (void *)(table_data->data + srat_start),
+>                   "SRAT",
+> -                 table_data->len - srat_start, 1, pcms->oem_id,
+> -                 pcms->oem_table_id);
+> +                 table_data->len - srat_start, 1, x86ms->oem_id,
+> +                 x86ms->oem_table_id);
+>  }
+>  
+>  /*
+> @@ -2168,13 +2168,13 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>      if (slic_oem.id) {
+>          oem_id = slic_oem.id;
+>      } else {
+> -        oem_id = pcms->oem_id;
+> +        oem_id = x86ms->oem_id;
+>      }
+>  
+>      if (slic_oem.table_id) {
+>          oem_table_id = slic_oem.table_id;
+>      } else {
+> -        oem_table_id = pcms->oem_table_id;
+> +        oem_table_id = x86ms->oem_table_id;
+>      }
+>  
+>      table_offsets = g_array_new(false, true /* clear */,
+> @@ -2215,30 +2215,30 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+>      acpi_build_madt(tables_blob, tables->linker, x86ms,
+> -                    ACPI_DEVICE_IF(x86ms->acpi_dev), pcms->oem_id,
+> -                    pcms->oem_table_id);
+> +                    ACPI_DEVICE_IF(x86ms->acpi_dev), x86ms->oem_id,
+> +                    x86ms->oem_table_id);
+>  
+>      vmgenid_dev = find_vmgenid_dev();
+>      if (vmgenid_dev) {
+>          acpi_add_table(table_offsets, tables_blob);
+>          vmgenid_build_acpi(VMGENID(vmgenid_dev), tables_blob,
+> -                           tables->vmgenid, tables->linker, pcms->oem_id);
+> +                           tables->vmgenid, tables->linker, x86ms->oem_id);
+>      }
+>  
+>      if (misc.has_hpet) {
+>          acpi_add_table(table_offsets, tables_blob);
+> -        build_hpet(tables_blob, tables->linker, pcms->oem_id,
+> -                   pcms->oem_table_id);
+> +        build_hpet(tables_blob, tables->linker, x86ms->oem_id,
+> +                   x86ms->oem_table_id);
+>      }
+>      if (misc.tpm_version != TPM_VERSION_UNSPEC) {
+>          if (misc.tpm_version == TPM_VERSION_1_2) {
+>              acpi_add_table(table_offsets, tables_blob);
+>              build_tpm_tcpa(tables_blob, tables->linker, tables->tcpalog,
+> -                           pcms->oem_id, pcms->oem_table_id);
+> +                           x86ms->oem_id, x86ms->oem_table_id);
+>          } else { /* TPM_VERSION_2_0 */
+>              acpi_add_table(table_offsets, tables_blob);
+>              build_tpm2(tables_blob, tables->linker, tables->tcpalog,
+> -                       pcms->oem_id, pcms->oem_table_id);
+> +                       x86ms->oem_id, x86ms->oem_table_id);
+>          }
+>      }
+>      if (pcms->numa_nodes) {
+> @@ -2246,40 +2246,40 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>          build_srat(tables_blob, tables->linker, machine);
+>          if (machine->numa_state->have_numa_distance) {
+>              acpi_add_table(table_offsets, tables_blob);
+> -            build_slit(tables_blob, tables->linker, machine, pcms->oem_id,
+> -                       pcms->oem_table_id);
+> +            build_slit(tables_blob, tables->linker, machine, x86ms->oem_id,
+> +                       x86ms->oem_table_id);
+>          }
+>          if (machine->numa_state->hmat_enabled) {
+>              acpi_add_table(table_offsets, tables_blob);
+>              build_hmat(tables_blob, tables->linker, machine->numa_state,
+> -                       pcms->oem_id, pcms->oem_table_id);
+> +                       x86ms->oem_id, x86ms->oem_table_id);
+>          }
+>      }
+>      if (acpi_get_mcfg(&mcfg)) {
+>          acpi_add_table(table_offsets, tables_blob);
+> -        build_mcfg(tables_blob, tables->linker, &mcfg, pcms->oem_id,
+> -                   pcms->oem_table_id);
+> +        build_mcfg(tables_blob, tables->linker, &mcfg, x86ms->oem_id,
+> +                   x86ms->oem_table_id);
+>      }
+>      if (x86_iommu_get_default()) {
+>          IommuType IOMMUType = x86_iommu_get_type();
+>          if (IOMMUType == TYPE_AMD) {
+>              acpi_add_table(table_offsets, tables_blob);
+> -            build_amd_iommu(tables_blob, tables->linker, pcms->oem_id,
+> -                            pcms->oem_table_id);
+> +            build_amd_iommu(tables_blob, tables->linker, x86ms->oem_id,
+> +                            x86ms->oem_table_id);
+>          } else if (IOMMUType == TYPE_INTEL) {
+>              acpi_add_table(table_offsets, tables_blob);
+> -            build_dmar_q35(tables_blob, tables->linker, pcms->oem_id,
+> -                           pcms->oem_table_id);
+> +            build_dmar_q35(tables_blob, tables->linker, x86ms->oem_id,
+> +                           x86ms->oem_table_id);
+>          }
+>      }
+>      if (machine->nvdimms_state->is_enabled) {
+>          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
+>                            machine->nvdimms_state, machine->ram_slots,
+> -                          pcms->oem_id, pcms->oem_table_id);
+> +                          x86ms->oem_id, x86ms->oem_table_id);
+>      }
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+> -    build_waet(tables_blob, tables->linker, pcms->oem_id, pcms->oem_table_id);
+> +    build_waet(tables_blob, tables->linker, x86ms->oem_id, x86ms->oem_table_id);
+>  
+>      /* Add tables supplied by user (if any) */
+>      for (u = acpi_table_first(); u; u = acpi_table_next(u)) {
+> @@ -2298,7 +2298,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>      {
+>          AcpiRsdpData rsdp_data = {
+>              .revision = 0,
+> -            .oem_id = pcms->oem_id,
+> +            .oem_id = x86ms->oem_id,
+>              .xsdt_tbl_offset = NULL,
+>              .rsdt_tbl_offset = &rsdt,
+>          };
+> diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
+> index 54b3af478a..d4c3511e00 100644
+> --- a/hw/i386/acpi-microvm.c
+> +++ b/hw/i386/acpi-microvm.c
+> @@ -149,7 +149,7 @@ build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
+>      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+>      build_header(linker, table_data,
+>          (void *)(table_data->data + table_data->len - dsdt->buf->len),
+> -                 "DSDT", dsdt->buf->len, 2, mms->oem_id, mms->oem_table_id);
+> +                 "DSDT", dsdt->buf->len, 2, x86ms->oem_id, x86ms->oem_table_id);
+>      free_aml_allocator();
+>  }
+>  
+> @@ -201,24 +201,24 @@ static void acpi_build_microvm(AcpiBuildTables *tables,
+>      pmfadt.dsdt_tbl_offset = &dsdt;
+>      pmfadt.xdsdt_tbl_offset = &dsdt;
+>      acpi_add_table(table_offsets, tables_blob);
+> -    build_fadt(tables_blob, tables->linker, &pmfadt, mms->oem_id,
+> -               mms->oem_table_id);
+> +    build_fadt(tables_blob, tables->linker, &pmfadt, x86ms->oem_id,
+> +               x86ms->oem_table_id);
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+>      acpi_build_madt(tables_blob, tables->linker, X86_MACHINE(machine),
+> -                    ACPI_DEVICE_IF(x86ms->acpi_dev), mms->oem_id,
+> -                    mms->oem_table_id);
+> +                    ACPI_DEVICE_IF(x86ms->acpi_dev), x86ms->oem_id,
+> +                    x86ms->oem_table_id);
+>  
+>      xsdt = tables_blob->len;
+> -    build_xsdt(tables_blob, tables->linker, table_offsets, mms->oem_id,
+> -               mms->oem_table_id);
+> +    build_xsdt(tables_blob, tables->linker, table_offsets, x86ms->oem_id,
+> +               x86ms->oem_table_id);
+>  
+>      /* RSDP is in FSEG memory, so allocate it separately */
+>      {
+>          AcpiRsdpData rsdp_data = {
+>              /* ACPI 2.0: 5.2.4.3 RSDP Structure */
+>              .revision = 2, /* xsdt needs v2 */
+> -            .oem_id = mms->oem_id,
+> +            .oem_id = x86ms->oem_id,
+>              .xsdt_tbl_offset = &xsdt,
+>              .rsdt_tbl_offset = NULL,
+>          };
+> diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+> index 4e0cf4c522..edf2b0f061 100644
+> --- a/hw/i386/microvm.c
+> +++ b/hw/i386/microvm.c
+> @@ -648,51 +648,6 @@ static void microvm_powerdown_req(Notifier *notifier, void *data)
+>      }
+>  }
+>  
+> -static char *microvm_machine_get_oem_id(Object *obj, Error **errp)
+> -{
+> -    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
+> -
+> -    return g_strdup(mms->oem_id);
+> -}
+> -
+> -static void microvm_machine_set_oem_id(Object *obj, const char *value,
+> -                                       Error **errp)
+> -{
+> -    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
+> -    size_t len = strlen(value);
+> -
+> -    if (len > 6) {
+> -        error_setg(errp,
+> -          "User specified "MICROVM_MACHINE_OEM_ID" value is bigger than "
+> -          "6 bytes in size");
+> -        return;
+> -    }
+> -
+> -    strncpy(mms->oem_id, value, 6);
+> -}
+> -
+> -static char *microvm_machine_get_oem_table_id(Object *obj, Error **errp)
+> -{
+> -    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
+> -
+> -    return g_strdup(mms->oem_table_id);
+> -}
+> -
+> -static void microvm_machine_set_oem_table_id(Object *obj, const char *value,
+> -                                             Error **errp)
+> -{
+> -    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
+> -    size_t len = strlen(value);
+> -
+> -    if (len > 8) {
+> -        error_setg(errp,
+> -          "User specified "MICROVM_MACHINE_OEM_TABLE_ID" value is bigger than "
+> -          "8 bytes in size");
+> -        return;
+> -    }
+> -    strncpy(mms->oem_table_id, value, 8);
+> -}
+> -
+>  static void microvm_machine_initfn(Object *obj)
+>  {
+>      MicrovmMachineState *mms = MICROVM_MACHINE(obj);
+> @@ -714,9 +669,6 @@ static void microvm_machine_initfn(Object *obj)
+>      qemu_add_machine_init_done_notifier(&mms->machine_done);
+>      mms->powerdown_req.notify = microvm_powerdown_req;
+>      qemu_register_powerdown_notifier(&mms->powerdown_req);
+> -
+> -    mms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
+> -    mms->oem_table_id = g_strndup(ACPI_BUILD_APPNAME8, 8);
+>  }
+>  
+>  static void microvm_class_init(ObjectClass *oc, void *data)
+> @@ -805,24 +757,6 @@ static void microvm_class_init(ObjectClass *oc, void *data)
+>          MICROVM_MACHINE_AUTO_KERNEL_CMDLINE,
+>          "Set off to disable adding virtio-mmio devices to the kernel cmdline");
+>  
+> -    object_class_property_add_str(oc, MICROVM_MACHINE_OEM_ID,
+> -                                  microvm_machine_get_oem_id,
+> -                                  microvm_machine_set_oem_id);
+> -    object_class_property_set_description(oc, MICROVM_MACHINE_OEM_ID,
+> -                                          "Override the default value of field OEMID "
+> -                                          "in ACPI table header."
+> -                                          "The string may be up to 6 bytes in size");
+> -
+> -
+> -    object_class_property_add_str(oc, MICROVM_MACHINE_OEM_TABLE_ID,
+> -                                  microvm_machine_get_oem_table_id,
+> -                                  microvm_machine_set_oem_table_id);
+> -    object_class_property_set_description(oc, MICROVM_MACHINE_OEM_TABLE_ID,
+> -                                          "Override the default value of field OEM Table ID "
+> -                                          "in ACPI table header."
+> -                                          "The string may be up to 8 bytes in size");
+> -
+> -
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>  }
+>  
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 8aa85dec54..332caab026 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1611,49 +1611,6 @@ static void pc_machine_set_max_fw_size(Object *obj, Visitor *v,
+>      pcms->max_fw_size = value;
+>  }
+>  
+> -static char *pc_machine_get_oem_id(Object *obj, Error **errp)
+> -{
+> -    PCMachineState *pcms = PC_MACHINE(obj);
+> -
+> -    return g_strdup(pcms->oem_id);
+> -}
+> -
+> -static void pc_machine_set_oem_id(Object *obj, const char *value, Error **errp)
+> -{
+> -    PCMachineState *pcms = PC_MACHINE(obj);
+> -    size_t len = strlen(value);
+> -
+> -    if (len > 6) {
+> -        error_setg(errp,
+> -          "User specified "PC_MACHINE_OEM_ID" value is bigger than "
+> -          "6 bytes in size");
+> -        return;
+> -    }
+> -
+> -    strncpy(pcms->oem_id, value, 6);
+> -}
+> -
+> -static char *pc_machine_get_oem_table_id(Object *obj, Error **errp)
+> -{
+> -    PCMachineState *pcms = PC_MACHINE(obj);
+> -
+> -    return g_strdup(pcms->oem_table_id);
+> -}
+> -
+> -static void pc_machine_set_oem_table_id(Object *obj, const char *value,
+> -                                        Error **errp)
+> -{
+> -    PCMachineState *pcms = PC_MACHINE(obj);
+> -    size_t len = strlen(value);
+> -
+> -    if (len > 8) {
+> -        error_setg(errp,
+> -          "User specified "PC_MACHINE_OEM_TABLE_ID" value is bigger than "
+> -          "8 bytes in size");
+> -        return;
+> -    }
+> -    strncpy(pcms->oem_table_id, value, 8);
+> -}
+>  
+>  static void pc_machine_initfn(Object *obj)
+>  {
+> @@ -1667,8 +1624,6 @@ static void pc_machine_initfn(Object *obj)
+>      pcms->max_ram_below_4g = 0; /* use default */
+>      /* acpi build is enabled by default if machine supports it */
+>      pcms->acpi_build_enabled = PC_MACHINE_GET_CLASS(pcms)->has_acpi_build;
+> -    pcms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
+> -    pcms->oem_table_id = g_strndup(ACPI_BUILD_APPNAME8, 8);
+>      pcms->smbus_enabled = true;
+>      pcms->sata_enabled = true;
+>      pcms->pit_enabled = true;
+> @@ -1805,24 +1760,6 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
+>          NULL, NULL);
+>      object_class_property_set_description(oc, PC_MACHINE_MAX_FW_SIZE,
+>          "Maximum combined firmware size");
+> -
+> -    object_class_property_add_str(oc, PC_MACHINE_OEM_ID,
+> -                                  pc_machine_get_oem_id,
+> -                                  pc_machine_set_oem_id);
+> -    object_class_property_set_description(oc, PC_MACHINE_OEM_ID,
+> -                                          "Override the default value of field OEMID "
+> -                                          "in ACPI table header."
+> -                                          "The string may be up to 6 bytes in size");
+> -
+> -
+> -    object_class_property_add_str(oc, PC_MACHINE_OEM_TABLE_ID,
+> -                                  pc_machine_get_oem_table_id,
+> -                                  pc_machine_set_oem_table_id);
+> -    object_class_property_set_description(oc, PC_MACHINE_OEM_TABLE_ID,
+> -                                          "Override the default value of field OEM Table ID "
+> -                                          "in ACPI table header."
+> -                                          "The string may be up to 8 bytes in size");
+> -
+>  }
+>  
+>  static const TypeInfo pc_machine_info = {
+> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+> index 6329f90ef9..8665876216 100644
+> --- a/hw/i386/x86.c
+> +++ b/hw/i386/x86.c
+> @@ -1199,6 +1199,51 @@ static void x86_machine_set_acpi(Object *obj, Visitor *v, const char *name,
+>      visit_type_OnOffAuto(v, name, &x86ms->acpi, errp);
+>  }
+>  
+> +static char *x86_machine_get_oem_id(Object *obj, Error **errp)
+> +{
+> +    X86MachineState *x86ms = X86_MACHINE(obj);
+> +
+> +    return g_strdup(x86ms->oem_id);
+> +}
+> +
+> +static void x86_machine_set_oem_id(Object *obj, const char *value, Error **errp)
+> +{
+> +    X86MachineState *x86ms = X86_MACHINE(obj);
+> +    size_t len = strlen(value);
+> +
+> +    if (len > 6) {
+> +        error_setg(errp,
+> +                   "User specified "X86_MACHINE_OEM_ID" value is bigger than "
+> +                   "6 bytes in size");
+> +        return;
+> +    }
+> +
+> +    strncpy(x86ms->oem_id, value, 6);
+> +}
+> +
+> +static char *x86_machine_get_oem_table_id(Object *obj, Error **errp)
+> +{
+> +    X86MachineState *x86ms = X86_MACHINE(obj);
+> +
+> +    return g_strdup(x86ms->oem_table_id);
+> +}
+> +
+> +static void x86_machine_set_oem_table_id(Object *obj, const char *value,
+> +                                         Error **errp)
+> +{
+> +    X86MachineState *x86ms = X86_MACHINE(obj);
+> +    size_t len = strlen(value);
+> +
+> +    if (len > 8) {
+> +        error_setg(errp,
+> +                   "User specified "X86_MACHINE_OEM_TABLE_ID
+> +                   " value is bigger than "
+> +                   "8 bytes in size");
+> +        return;
+> +    }
+> +    strncpy(x86ms->oem_table_id, value, 8);
+> +}
+> +
+>  static void x86_machine_initfn(Object *obj)
+>  {
+>      X86MachineState *x86ms = X86_MACHINE(obj);
+> @@ -1207,6 +1252,8 @@ static void x86_machine_initfn(Object *obj)
+>      x86ms->acpi = ON_OFF_AUTO_AUTO;
+>      x86ms->smp_dies = 1;
+>      x86ms->pci_irq_mask = ACPI_BUILD_PCI_IRQS;
+> +    x86ms->oem_id = g_strndup(ACPI_BUILD_APPNAME6, 6);
+> +    x86ms->oem_table_id = g_strndup(ACPI_BUILD_APPNAME8, 8);
+>  }
+>  
+>  static void x86_machine_class_init(ObjectClass *oc, void *data)
+> @@ -1233,6 +1280,23 @@ static void x86_machine_class_init(ObjectClass *oc, void *data)
+>          NULL, NULL);
+>      object_class_property_set_description(oc, X86_MACHINE_ACPI,
+>          "Enable ACPI");
+> +
+> +    object_class_property_add_str(oc, X86_MACHINE_OEM_ID,
+> +                                  x86_machine_get_oem_id,
+> +                                  x86_machine_set_oem_id);
+> +    object_class_property_set_description(oc, X86_MACHINE_OEM_ID,
+> +                                          "Override the default value of field OEMID "
+> +                                          "in ACPI table header."
+> +                                          "The string may be up to 6 bytes in size");
+> +
+> +
+> +    object_class_property_add_str(oc, X86_MACHINE_OEM_TABLE_ID,
+> +                                  x86_machine_get_oem_table_id,
+> +                                  x86_machine_set_oem_table_id);
+> +    object_class_property_set_description(oc, X86_MACHINE_OEM_TABLE_ID,
+> +                                          "Override the default value of field OEM Table ID "
+> +                                          "in ACPI table header."
+> +                                          "The string may be up to 8 bytes in size");
+>  }
+>  
+>  static const TypeInfo x86_machine_info = {
 

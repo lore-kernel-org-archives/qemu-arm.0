@@ -1,113 +1,91 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3353840lfg;
-        Mon, 1 Mar 2021 00:01:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyr9v4hNmraNiaTbvUMpZGKtg2vz02zUfOySjozv/58jiMYVwgksYD9RRZKAi+GT5LVxMvt
-X-Received: by 2002:a05:6e02:1ca4:: with SMTP id x4mr11949886ill.58.1614585678079;
-        Mon, 01 Mar 2021 00:01:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614585678; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3370887lfg;
+        Mon, 1 Mar 2021 00:28:28 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxn5QBGm5c4yFfV8HTOP0jIkV3sTZWaJZ+Bh2F/glcOnBoEjgStoG4T83VWO0aApb7Vi+rN
+X-Received: by 2002:a5b:147:: with SMTP id c7mr22140330ybp.332.1614587308594;
+        Mon, 01 Mar 2021 00:28:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614587308; cv=none;
         d=google.com; s=arc-20160816;
-        b=cyvEUqgZyu4Wain9iW362e5FJUjZyfWYLKrC9DTmnBa6mQafzR+iL8rUVA2ctmHtuy
-         94WY5FpgXpot09UOBz0GxrQDiwbh153tIaJsWpfhIonCGhGxZHrPZ9Fyv6r3315FHPlF
-         LiqfEWisvt9YNs4XA9zSmpWCQgUcqG+Z4BXrWFvRT0TCQht94djkwuVfY/kE7LfRpqtk
-         YimEkFuZdcAfzRuSlxTseRB90iNFIcF8vRgUZVObxc9r85JZhTmKOx71L2Fz6/rmfstQ
-         H+38wsNtmEiXxadY/txzgZy5X6H4C0PeOIwyOcQVacfk2d2ooxXeA7T8MuK3rgG1jjfP
-         iFMg==
+        b=dLE7fXgmroDGgsW7XP1diWKJEGhJXNuOO8tSmAJbrKGH6YAWVlFWb2HA/szU2sFQUM
+         oTsTWeSmrihJkVYtt3DkFYwml1DJz2r553G6pegbwFE2XCD+8XTotvJqoTMFZQBHaZ2Q
+         rqrORY14JUrtOwRqxcqtRPYKU/Uot4e3cSq21pdsh3ao2SJnCSHOEgnzQsS953mKb0+O
+         6zWUY6MPBakAa32G/CN1yLtFDVL2ledXLXgWi39OaBbVJy8eEZWkNbDOjpT9a7VKKGqu
+         8Z4A9kylFs4DXkrWwmx0UIroBMuBUpdaxjs8/D5pBnZ7c0ol14LiMN2Mg9QxpIXod4TG
+         jGeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=6IAUTYmBUhNDoXikDH5pivcoExP41na67y4A6puUaoI=;
-        b=oER31pG3BOgv8c0CtRw1shpjL7Qg+TCcEwNHmWwK2R2WpaNAX30+bvqWT7wiYBoPFX
-         gX5PCKZqmiTuyB5NKi7hLmsk5VWr9cTu8GfXAWkP2P4BZ+fseifkU9rvEnTXdoMAA+Pi
-         DVWB/RUtd7udNta9330bUY7bdPBMLYKfD2DusRhV2F/MS8m8cNiMCSCUS8OrYdjwnAB0
-         GQAGKgNzQbfo4ORRkmzf0QC/6OvrNvZqh6hsz7e2E0BxzVKe6tSwKk4hHlHgI6tEJqoI
-         MV5N94NzZ+49iHfN/izS9Lq3jVdVBc+iWWgUgNkScHD9LH4FvihWns67d5w8088aL61e
-         QFXA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject;
+        bh=QXkmOhgm4qLrPCdLyQfaPLCSZ1dvblovXwV7Vjcu53g=;
+        b=fdlr2CKkjTBPgACQ16JKl6/+iHbgzW8bBUVOsRBJ52z67g+KX6pwZfCwACRMmpH0r5
+         uKsveu2yF99jT/AF9XAKglspcrV4dRe4JA3TMWneWRMJ2rqww6I7BRqsBcHhTwxtJHf6
+         v4DMwabh+ly7epGkN4JfXTh9Gfu+rX0Prmb41hNj3vPGTlRclFELXyUjLfjoLucmACYO
+         kVIg6P+y6aIGCebV+lUoGhElBM6iz6upGhA0Wy2QkRgyI2TKbarK0YZUYPYTiGLhl1SH
+         yAp2HX/3/A9T2ebILOghxcqE/GKoIJGG+kgX38KULNtmY29ZMLHnTNGhqpTpNVnX7nPJ
+         +k9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XgZegYFM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si15414573ila.40.2021.03.01.00.01.17
+        by mx.google.com with ESMTPS id b6si17247464ybk.464.2021.03.01.00.28.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 00:01:18 -0800 (PST)
+        Mon, 01 Mar 2021 00:28:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XgZegYFM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57532 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35002 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGdUT-0007pf-8v
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 03:01:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38186)
+	id 1lGdul-0006E5-Tc
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 03:28:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGdTO-0007hn-01; Mon, 01 Mar 2021 03:00:10 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:44583)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGdTM-0000C0-Dr; Mon, 01 Mar 2021 03:00:09 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id h98so15013397wrh.11;
- Mon, 01 Mar 2021 00:00:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=6IAUTYmBUhNDoXikDH5pivcoExP41na67y4A6puUaoI=;
- b=XgZegYFMEjQipazHThSSvTQo7+sPGRvJereqH1wqfrOUJ4bRIDbn59SPPmPO+ldmN2
- HavsnuRPSMhZ5ByqqiOuffk/kxgjfDL1bjicYJko0WdXut0paG5ipnSzHbz9Pickc/T5
- GjGXjvt05extpfHQ6bxve0qQWew4zgr7KvsV77APNC4qHuG9uVRBr63/pGFzGpPgIgPb
- 6fMCeefJi+rOlj4bkObbpNVOz5jmR5aDaDqBqiNcFADW8tWV9ByTNQtaBZZtJ/SQHowm
- sdbQLSXFa33aiHbEzFR8z+UVumX1FjhhhdbQI/MZIjPXnFvj/GWkHUB1dfn6Lu4bhG6m
- QSPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6IAUTYmBUhNDoXikDH5pivcoExP41na67y4A6puUaoI=;
- b=Pu1Sv61SHtWo/m2nBRx6SvLTNjENlDgOku2T6LcD136wWPQXc85xAWPdLE5vRUJkjU
- uSeG1JGohKdfCsb/bUydAgd1XJK3Bm0J58rPWxo4/C8apGnP1p0/JRPG6SJiGb7hcNGF
- qZoeA5w6AVTKx3UL77lKrpnilayOguuyE6fKRUiZydViDjzai2Z21GHb7jH1dPe3yjHJ
- lb1hbdxwiWwK+1zKrbcbKIBzLiOul+g8UHxpSWanD9725ql5YEP0LeOQm7MBtdP1V5uh
- tSvNnKT8rxURP8HUbPXXtPdEF7YtbRRi1JTle4e9ikHZcb9Xx8axUCTnjkCtSHoPjfhQ
- aUdQ==
-X-Gm-Message-State: AOAM5326XyrUpEhaJATxPCJSKcvUnJdjzeaHZ757hUbQjD7KEEHfF9Sh
- ZMQjdsWfy55b7gqm9b6Irlw=
-X-Received: by 2002:adf:a59a:: with SMTP id g26mr15492389wrc.271.1614585606652; 
- Mon, 01 Mar 2021 00:00:06 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id d13sm16399343wro.23.2021.03.01.00.00.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Mar 2021 00:00:06 -0800 (PST)
-Subject: Re: [PATCH v2 3/5] hw/arm: ast2600: Correct the iBT interrupt ID
-To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
-References: <20210301010610.355702-1-andrew@aj.id.au>
- <20210301010610.355702-4-andrew@aj.id.au>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <08798e9a-405c-1316-9b4e-2ab7547508a2@amsat.org>
-Date: Mon, 1 Mar 2021 09:00:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lGdud-0006Dk-IW; Mon, 01 Mar 2021 03:28:19 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2969)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lGdua-0000cz-Qk; Mon, 01 Mar 2021 03:28:19 -0500
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.56])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Dptdq0YhSzYDqY;
+ Mon,  1 Mar 2021 16:26:39 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.498.0; Mon, 1 Mar 2021 16:28:09 +0800
+Received: from [10.174.185.210] (10.174.185.210) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2106.2; Mon, 1 Mar 2021 16:28:09 +0800
+Subject: Re: [RFC PATCH 0/3] Add migration support for VFIO PCI devices in
+ SMMUv3 nested stage mode
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
+ "open list:ARM SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+References: <20210219094230.231-1-jiangkunkun@huawei.com>
+Message-ID: <ad3ca9c6-dbf9-9c25-8fdb-b19d5d84d00f@huawei.com>
+Date: Mon, 1 Mar 2021 16:27:56 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210301010610.355702-4-andrew@aj.id.au>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210219094230.231-1-jiangkunkun@huawei.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Originating-IP: [10.174.185.210]
+X-ClientProxiedBy: dggeme713-chm.china.huawei.com (10.1.199.109) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga01-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,21 +98,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com, minyard@acm.org,
- qemu-devel@nongnu.org, joel@jms.id.au, clg@kaod.org
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com, Keqian
+ Zhu <zhukeqian1@huawei.com>, shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gUy+wvcsgMUD
+X-TUID: 4eBLyLNbeWQu
 
-On 3/1/21 2:06 AM, Andrew Jeffery wrote:
-> The AST2600 allocates distinct GIC IRQs for the LPC subdevices such as
-> the iBT device. Previously on the AST2400 and AST2500 the LPC subdevices
-> shared a single LPC IRQ.
-> 
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
->  hw/arm/aspeed_ast2600.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+kindly ping,
+Any comments and reviews are welcome.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Thanks.
+Kunkun Jiang.
+
+On 2021/2/19 17:42, Kunkun Jiang wrote:
+> Hi all,
+>
+> Since the SMMUv3's nested translation stages[1] has been introduced by Eric, we
+> need to pay attention to the migration of VFIO PCI devices in SMMUv3 nested stage
+> mode. At present, it is not yet supported in QEMU. There are two problems in the
+> existing framework.
+>
+> First, the current way to get dirty pages is not applicable to nested stage mode.
+> Because of the "Caching Mode", VTD can map the RAM through the host single stage
+> (giova->hpa). "vfio_listener_log_sync" gets dirty pages by transferring "giova"
+> to the kernel for the RAM block section of mapped MMIO region. In nested stage
+> mode, we setup the stage 2 (gpa->hpa) and the stage 1(giova->gpa) separately. So
+> it is inapplicable to get dirty pages by the current way in nested stage mode.
+>
+> Second, it also need to pass stage 1 configurations to the destination host after
+> the migration. In Eric's patch, it passes the stage 1 configuration to the host on
+> each STE update for the devices set the PASID PciOps. The configuration will be
+> applied at physical level. But the data of physical level will not be sent to the
+> destination host. So we have to pass stage 1 configurations to the destination
+> host after the migration.
+>
+> This Patch set includes patches as below:
+> Patch 1-2:
+> - Refactor the vfio_listener_log_sync and added a new function to get dirty pages
+> in nested stage mode.
+>
+> Patch 3:
+> - Added the post_load function to vmstate_smmuv3 for passing stage 1 configuration
+> to the destination host after the migration.
+>
+> @Eric, Could you please add this Patch set to your future version of
+> "vSMMUv3/pSMMUv3 2 stage VFIO integration", if you think this Patch set makes sense? :)
+>
+> Best Regards
+> Kunkun Jiang
+>
+> [1] [RFC,v7,00/26] vSMMUv3/pSMMUv3 2 stage VFIO integration
+> http://patchwork.ozlabs.org/project/qemu-devel/cover/20201116181349.11908-1-eric.auger@redhat.com/
+>
+> Kunkun Jiang (3):
+>    vfio: Introduce helpers to mark dirty pages of a RAM section
+>    vfio: Add vfio_prereg_listener_log_sync in nested stage
+>    hw/arm/smmuv3: Post-load stage 1 configurations to the host
+>
+>   hw/arm/smmuv3.c     | 60 +++++++++++++++++++++++++++++++++++++++++++++
+>   hw/arm/trace-events |  1 +
+>   hw/vfio/common.c    | 47 +++++++++++++++++++++++++++++------
+>   3 files changed, 100 insertions(+), 8 deletions(-)
+>
 

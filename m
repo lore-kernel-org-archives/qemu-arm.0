@@ -1,119 +1,84 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3145944lfg;
-        Sun, 28 Feb 2021 17:10:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwu1kLVWnp0J4q1vxjzL9YHBYniP5xZVUQ0pqsEeijf/26x07BBUj0eIbUy1rQnALgG40VK
-X-Received: by 2002:a05:6830:1d9c:: with SMTP id y28mr11216871oti.55.1614561000251;
-        Sun, 28 Feb 2021 17:10:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614561000; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3175474lfg;
+        Sun, 28 Feb 2021 18:04:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzEUbUT8Icze0HbEd3uXfaQEc0xxUooL2eIRnFd+WX2u7OVaLeQRPaoKPMRKBM/T8mA3uxK
+X-Received: by 2002:ac8:53c2:: with SMTP id c2mr6101029qtq.332.1614564294975;
+        Sun, 28 Feb 2021 18:04:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614564294; cv=none;
         d=google.com; s=arc-20160816;
-        b=P1F67CYehCtEG5c1gpVs2VSpWR8hmsLVONxJ+MECS6nb8ro0g7iTaa6rzLCwjYeth0
-         4QlHQ3d6VDoPDBSce2qIXq+K6Js/7z8uYjUvHd2VbG1MluLxjoKI2/K0X730U0fQ2sGO
-         vvCbLas/NVMdJJ9EyOOx9jCjjF8LPu5t067ZJ2dNQvfRRsTwj73s4mlGOT1IBEdSfwjn
-         UPtj3G03qfkh/8wx2irZEcfhxMay7MLFbtUE/UMxxyQ7cVOpOM8AjG6SDQSwYuDuqQ+3
-         blvaAsLpeX5wrA37iWtPqzEe7h8a63LU5g6VvX331ixWNuA3AG+VoQS3s/LSOzlVmlLC
-         4BZw==
+        b=VRsCVsUfI9/QtwAXB9KAaurmIfn4pS3+mEuhHloo0MEFQ3v+sTXlivBvZ6XEJIEg+u
+         pLmr2hRWWIjAU3Ds911WwQ8D5sfojHBq1ko29G/K1i6DOx4jFB9pwEltzIKUFcW2PXx6
+         dH7OyOP23Jv9wp7p90aPXbt0l/YbMV1KfJiYunID/la4vBv5/JbjnbeVbpy6+Wo0oTnH
+         TL4RjTJDjdYOGjS430aOxAC//BuKX8oTu6431Z8ixtS1Skv4Tdiy5KoFYvXlXLmjrfTM
+         hTbwv47POIdzy6rNdYDNkocZfMkwxRyJZD2mcExFQj1J1iehLkTQbcvYKx2cANzJfr8m
+         2N2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature:dkim-signature;
-        bh=+AQgCBx+/TawhkymIUs8tzl/oV2iqWBAXa5kQLDqdzI=;
-        b=OJL5HszrEVmu7CsnM/12OJUYAI3yfjCoutClRWleH5I0KfO9EGzhifCA6RRsq+fjg/
-         L47nsDg/AB40l0iAZLmwVAnRqjrVq2g2JudiCFjiRJ60DaKimOUq+heZkG/qUpxRHdwg
-         l0HAauZkvqGLuO0fkw1IDgU0byhFQVJOF6Y+JKUqk9d4iyvTocaFNWaaYILcn3sG+kRA
-         7PSaYGsiQl1VpZ0sm6XRj0jEqF0tPy5zyP8eJE7jJ7o2ph6C+hCcghXlsnx/qiYJyKgB
-         H/v8SAgOISxYu8kx6BOTl2VPfWolQ0WiE4Ns5j1izNhEonUZ8bEJpy5Ncs991YZLfeau
-         sNWw==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=JF5dj7A2UzR1tM6FcR/Xq9YSPLCWr2hEuo0VZQUMp/A=;
+        b=Fz4f3vi4HDgNBqAPIt4RW1Li6sUJvdYBC9lfxeZe1M/LjTjMXuPXrfI2zpwYjUzNZP
+         dfxoQ1ekhyIOi2uqFMUS9sVGz6SS8+Lkylm+g7mO4dEZACQGLBXNBh8FDADLJhZq+oEq
+         2mYzqDPCsKi0u0V2IxJiO3tQN+qIQx7ldShhMiCfnPUxLF1Ttok6+hMejhsZRpyOppCV
+         gX4wSjfQwfDPHjMrSpkVMDkU6bbN0PDnUJisSamzh9Uy2KtU7NPNJ+Cdpb/HIARauSWr
+         vqNRxuWazk0lH0DTJzx9CySJINmPZLiAHQMzcCBCkYb1wil4+0xPhfnD4F52JBLCKSWU
+         6+Yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=Fg7n0vDb;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=S+xZSGKk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r84si4624766oib.101.2021.02.28.17.10.00
+        by mx.google.com with ESMTPS id k8si8451073qvi.61.2021.02.28.18.04.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Feb 2021 17:10:00 -0800 (PST)
+        Sun, 28 Feb 2021 18:04:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=Fg7n0vDb;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=S+xZSGKk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33162 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGX4R-00049O-DQ
-	for alex.bennee@linaro.org; Sun, 28 Feb 2021 20:09:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33010)
+	id 1lGXva-00074M-7d
+	for alex.bennee@linaro.org; Sun, 28 Feb 2021 21:04:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lGX1N-0000gd-MA; Sun, 28 Feb 2021 20:06:49 -0500
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:58021)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1lGXvN-00073V-UA; Sun, 28 Feb 2021 21:04:41 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2658)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lGX1L-0001nA-5s; Sun, 28 Feb 2021 20:06:49 -0500
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.42])
- by mailout.nyi.internal (Postfix) with ESMTP id 551255C008E;
- Sun, 28 Feb 2021 20:06:43 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Sun, 28 Feb 2021 20:06:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
- :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=+AQgCBx+/Tawh
- kymIUs8tzl/oV2iqWBAXa5kQLDqdzI=; b=Fg7n0vDblcVsf/eNIUmfh9FNehSIx
- ZcPW8Ghlgw1cs8EwW3rmQF5HHYNdd+gu68jrdDrer4JYY2L48hI/feTPeBdlmHOr
- uvCs6ON1FkxhVwjchUaFwBo66pRlPXOt66yG0Nptd7gLcGjj7caByqFsskupAd79
- kh4/x9uaT+yVFr99x+pfI7UUhw8dEji/wJhngppmsrQMiTPVCmfLlqNBaD98GB4d
- rkE/qb/UCn+IBjlmyvTUSgLDApTa5z2ZytLLrLK6CuoXBdNJtqXtbZFS4XiJl1j5
- +kS0188rjoI1xSHcYLo9FiULBiBfSxBHPa/rYtSM/U+dwn6VPCM9neiHA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :in-reply-to:message-id:mime-version:references:subject:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; bh=+AQgCBx+/TawhkymIUs8tzl/oV2iqWBAXa5kQLDqdzI=; b=S+xZSGKk
- rqtpN4+E4AyWq8fyq6MDFMVBt3jBY//AS7We/QAyMjmKlaJHxTVLgs1S5cLx+VsW
- BY6o6TKYQ3ird035vIj02rgpig7uT/fvZxWKYXfH8Zw5QSHLm8QBtOog8RUvelPa
- HDYjuiN22AZP47c/VqgkPQv/BeY/U22pNlRxfvEfbVS+mV9lU9Iz7L1fZdYuWCKW
- 16/Ut8BF9lDpgnXddoGYt720CYJo6lbkcOT+U2CHpgI9YgBVuzhyFgvZ2FArJ6I4
- a4GLhQG4k6tafl/vaowoKyQXweXpIc+x7bo2ULWbt4XNmOUT/Aty9m7xt84QNilq
- acqTXuS3BPfNQw==
-X-ME-Sender: <xms:Ij48YEKbpipFLPR0N8j0VWiQ61mqgGKNKCCynDN1tsbQMj31Cihwmw>
- <xme:Ij48YIdS3dJKz3o2XS03_9WNCr9ANI7TUg4IPcSLuoBeZjwWDiK6H_-UoB5rXJ7uh
- XZRBy4trMwUc7R7EA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrleejgdefvdcutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfggfgsedtkeertd
- ertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghj
- rdhiugdrrghuqeenucggtffrrghtthgvrhhnpeejgfdvveehteekveeggeellefgleette
- ejffelffdvudduveeiffegteelvefhteenucfkphepudegrddvrdeluddrfeejnecuvehl
- uhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgifse
- grjhdrihgurdgruh
-X-ME-Proxy: <xmx:Ij48YD0gaqLH7GrTgZ-WXuIIsFi-90-IAzEzl_2_pkZojlHtrhI17w>
- <xmx:Ij48YJh_NNCq3U6FpWiJTMTdinFrO4SiCjlQSA9-eK7VDmh2kBmMpw>
- <xmx:Ij48YBTsmnWeq6bFE_-Ti2RpQk6odfRW2uRln9JClKfOKSfV6FDmVQ>
- <xmx:Iz48YFa_oTye-gJ7IT5kjZZk5WRAWGjOlaDHaZAeT7jfURdw1Bm83g>
-Received: from localhost.localdomain
- (ppp14-2-91-37.adl-apt-pir-bras31.tpg.internode.on.net [14.2.91.37])
- by mail.messagingengine.com (Postfix) with ESMTPA id 78B54240064;
- Sun, 28 Feb 2021 20:06:39 -0500 (EST)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v2 5/5] hw/misc: Model KCS devices in the Aspeed LPC controller
-Date: Mon,  1 Mar 2021 11:36:10 +1030
-Message-Id: <20210301010610.355702-6-andrew@aj.id.au>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210301010610.355702-1-andrew@aj.id.au>
-References: <20210301010610.355702-1-andrew@aj.id.au>
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1lGXvG-0001ZG-1W; Sun, 28 Feb 2021 21:04:41 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Dpk6p6lf0z7rTn;
+ Mon,  1 Mar 2021 10:02:42 +0800 (CST)
+Received: from [10.174.184.42] (10.174.184.42) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.498.0; Mon, 1 Mar 2021 10:04:10 +0800
+Subject: Re: [PATCH] vfio/migrate: Move switch of dirty tracking into
+ vfio_memory_listener
+To: Kirti Wankhede <kwankhede@nvidia.com>, Alex Williamson
+ <alex.williamson@redhat.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20210111073439.20236-1-zhukeqian1@huawei.com>
+ <590a2752-9bba-6971-51b0-a8accee6e814@nvidia.com>
+ <5c4b616c-9e73-17c6-b9a4-1ab0a6079780@huawei.com>
+From: Keqian Zhu <zhukeqian1@huawei.com>
+Message-ID: <d7378e1e-505f-aaff-4d01-b7ba97897af0@huawei.com>
+Date: Mon, 1 Mar 2021 10:04:09 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=66.111.4.26; envelope-from=andrew@aj.id.au;
- helo=out2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <5c4b616c-9e73-17c6-b9a4-1ab0a6079780@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.184.42]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=zhukeqian1@huawei.com;
+ helo=szxga07-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,605 +91,292 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com, minyard@acm.org,
- qemu-devel@nongnu.org, f4bug@amsat.org, clg@kaod.org, joel@jms.id.au
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, wanghaibin.wang@huawei.com,
+ jiangkunkun@huawei.com, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, Igor
+ Mammedov <imammedo@redhat.com>, Zenghui Yu <yuzenghui@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uwtdm7Fh3B8C
+X-TUID: yuZbSES5ygTh
 
-Keyboard-Controller-Style devices for IPMI purposes are exposed via LPC
-IO cycles from the BMC to the host.
+Hi Kirti,
 
-Expose support on the BMC side by implementing the usual MMIO
-behaviours, and expose the ability to inspect the KCS registers in
-"host" style by accessing QOM properties associated with each register.
+What's your opinion about this? Thanks.
 
-The model caters to the IRQ style of both the AST2600 and the earlier
-SoCs (AST2400 and AST2500). The AST2600 allocates an IRQ for each LPC
-sub-device, while there is a single IRQ shared across all subdevices on
-the AST2400 and AST2500.
+Keqian
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
- hw/arm/aspeed_ast2600.c      |  28 ++-
- hw/arm/aspeed_soc.c          |  24 ++-
- hw/misc/aspeed_lpc.c         | 359 ++++++++++++++++++++++++++++++++++-
- include/hw/arm/aspeed_soc.h  |   1 +
- include/hw/misc/aspeed_lpc.h |  17 +-
- 5 files changed, 424 insertions(+), 5 deletions(-)
-
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 60152de001e6..fd463775d281 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -104,7 +104,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
-     [ASPEED_DEV_ETH2]      = 3,
-     [ASPEED_DEV_ETH3]      = 32,
-     [ASPEED_DEV_ETH4]      = 33,
--
-+    [ASPEED_DEV_KCS]       = 138,   /* 138 -> 142 */
- };
- 
- static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
-@@ -477,8 +477,34 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
-+
-+    /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
-+
-+    /*
-+     * On the AST2600 LPC subdevice IRQs are connected straight to the GIC.
-+     *
-+     * LPC subdevice IRQ sources are offset from 1 because the LPC model caters
-+     * to the AST2400 and AST2500. SoCs before the AST2600 have one LPC IRQ
-+     * shared across the subdevices, and the shared IRQ output to the VIC is at
-+     * offset 0.
-+     */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
-+                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_1));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
-+                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_2));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
-+                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_3));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-+                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
- }
- 
- static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 4f098da437ac..057d053c8478 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -112,7 +112,6 @@ static const int aspeed_soc_ast2400_irqmap[] = {
-     [ASPEED_DEV_WDT]    = 27,
-     [ASPEED_DEV_PWM]    = 28,
-     [ASPEED_DEV_LPC]    = 8,
--    [ASPEED_DEV_IBT]    = 8, /* LPC */
-     [ASPEED_DEV_I2C]    = 12,
-     [ASPEED_DEV_ETH1]   = 2,
-     [ASPEED_DEV_ETH2]   = 3,
-@@ -401,8 +400,31 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
-+
-+    /* Connect the LPC IRQ to the VIC */
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
-+
-+    /*
-+     * On the AST2400 and AST2500 the one LPC IRQ is shared between all of the
-+     * subdevices. Connect the LPC subdevice IRQs to the LPC controller IRQ (by
-+     * contrast, on the AST2600, the subdevice IRQs are connected straight to
-+     * the GIC).
-+     *
-+     * LPC subdevice IRQ sources are offset from 1 because the shared IRQ output
-+     * to the VIC is at offset 0.
-+     */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
-+                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_1));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
-+                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_2));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
-+                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_3));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-+                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_4));
- }
- static Property aspeed_soc_properties[] = {
-     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
-diff --git a/hw/misc/aspeed_lpc.c b/hw/misc/aspeed_lpc.c
-index e668e985ff04..2dddb27c35d0 100644
---- a/hw/misc/aspeed_lpc.c
-+++ b/hw/misc/aspeed_lpc.c
-@@ -12,20 +12,301 @@
- #include "qemu/error-report.h"
- #include "hw/misc/aspeed_lpc.h"
- #include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- 
- #define TO_REG(offset) ((offset) >> 2)
- 
- #define HICR0                TO_REG(0x00)
-+#define   HICR0_LPC3E        BIT(7)
-+#define   HICR0_LPC2E        BIT(6)
-+#define   HICR0_LPC1E        BIT(5)
- #define HICR1                TO_REG(0x04)
- #define HICR2                TO_REG(0x08)
-+#define   HICR2_IBFIE3       BIT(3)
-+#define   HICR2_IBFIE2       BIT(2)
-+#define   HICR2_IBFIE1       BIT(1)
- #define HICR3                TO_REG(0x0C)
- #define HICR4                TO_REG(0x10)
-+#define   HICR4_KCSENBL      BIT(2)
-+#define IDR1                 TO_REG(0x24)
-+#define IDR2                 TO_REG(0x28)
-+#define IDR3                 TO_REG(0x2C)
-+#define ODR1                 TO_REG(0x30)
-+#define ODR2                 TO_REG(0x34)
-+#define ODR3                 TO_REG(0x38)
-+#define STR1                 TO_REG(0x3C)
-+#define   STR_OBF            BIT(0)
-+#define   STR_IBF            BIT(1)
-+#define   STR_CMD_DATA       BIT(3)
-+#define STR2                 TO_REG(0x40)
-+#define STR3                 TO_REG(0x44)
- #define HICR5                TO_REG(0x80)
- #define HICR6                TO_REG(0x84)
- #define HICR7                TO_REG(0x88)
- #define HICR8                TO_REG(0x8C)
-+#define HICRB                TO_REG(0x100)
-+#define   HICRB_IBFIE4       BIT(1)
-+#define   HICRB_LPC4E        BIT(0)
-+#define IDR4                 TO_REG(0x114)
-+#define ODR4                 TO_REG(0x118)
-+#define STR4                 TO_REG(0x11C)
-+
-+enum aspeed_kcs_channel_id {
-+    kcs_channel_1 = 0,
-+    kcs_channel_2,
-+    kcs_channel_3,
-+    kcs_channel_4,
-+};
-+
-+static const enum aspeed_lpc_subdevice aspeed_kcs_subdevice_map[] = {
-+    [kcs_channel_1] = aspeed_lpc_kcs_1,
-+    [kcs_channel_2] = aspeed_lpc_kcs_2,
-+    [kcs_channel_3] = aspeed_lpc_kcs_3,
-+    [kcs_channel_4] = aspeed_lpc_kcs_4,
-+};
-+
-+struct aspeed_kcs_channel {
-+    enum aspeed_kcs_channel_id id;
-+
-+    int idr;
-+    int odr;
-+    int str;
-+};
-+
-+static const struct aspeed_kcs_channel aspeed_kcs_channel_map[] = {
-+    [kcs_channel_1] = {
-+        .id = kcs_channel_1,
-+        .idr = IDR1,
-+        .odr = ODR1,
-+        .str = STR1
-+    },
-+
-+    [kcs_channel_2] = {
-+        .id = kcs_channel_2,
-+        .idr = IDR2,
-+        .odr = ODR2,
-+        .str = STR2
-+    },
-+
-+    [kcs_channel_3] = {
-+        .id = kcs_channel_3,
-+        .idr = IDR3,
-+        .odr = ODR3,
-+        .str = STR3
-+    },
-+
-+    [kcs_channel_4] = {
-+        .id = kcs_channel_4,
-+        .idr = IDR4,
-+        .odr = ODR4,
-+        .str = STR4
-+    },
-+};
-+
-+struct aspeed_kcs_register_data {
-+    const char *name;
-+    int reg;
-+    const struct aspeed_kcs_channel *chan;
-+};
-+
-+static const struct aspeed_kcs_register_data aspeed_kcs_registers[] = {
-+    {
-+        .name = "idr1",
-+        .reg = IDR1,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_1],
-+    },
-+    {
-+        .name = "odr1",
-+        .reg = ODR1,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_1],
-+    },
-+    {
-+        .name = "str1",
-+        .reg = STR1,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_1],
-+    },
-+    {
-+        .name = "idr2",
-+        .reg = IDR2,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_2],
-+    },
-+    {
-+        .name = "odr2",
-+        .reg = ODR2,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_2],
-+    },
-+    {
-+        .name = "str2",
-+        .reg = STR2,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_2],
-+    },
-+    {
-+        .name = "idr3",
-+        .reg = IDR3,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_3],
-+    },
-+    {
-+        .name = "odr3",
-+        .reg = ODR3,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_3],
-+    },
-+    {
-+        .name = "str3",
-+        .reg = STR3,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_3],
-+    },
-+    {
-+        .name = "idr4",
-+        .reg = IDR4,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_4],
-+    },
-+    {
-+        .name = "odr4",
-+        .reg = ODR4,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_4],
-+    },
-+    {
-+        .name = "str4",
-+        .reg = STR4,
-+        .chan = &aspeed_kcs_channel_map[kcs_channel_4],
-+    },
-+    { },
-+};
-+
-+static const struct aspeed_kcs_register_data *
-+aspeed_kcs_get_register_data_by_name(const char *name)
-+{
-+    const struct aspeed_kcs_register_data *pos = aspeed_kcs_registers;
-+
-+    while (pos->name) {
-+        if (!strcmp(pos->name, name)) {
-+            return pos;
-+        }
-+        pos++;
-+    }
-+
-+    return NULL;
-+}
-+
-+static const struct aspeed_kcs_channel *
-+aspeed_kcs_get_channel_by_register(int reg)
-+{
-+    const struct aspeed_kcs_register_data *pos = aspeed_kcs_registers;
-+
-+    while (pos->name) {
-+        if (pos->reg == reg) {
-+            return pos->chan;
-+        }
-+        pos++;
-+    }
-+
-+    return NULL;
-+}
-+
-+static void aspeed_kcs_get_register_property(Object *obj,
-+                                             Visitor *v,
-+                                             const char *name,
-+                                             void *opaque,
-+                                             Error **errp)
-+{
-+    const struct aspeed_kcs_register_data *data;
-+    AspeedLPCState *s = ASPEED_LPC(obj);
-+    uint32_t val;
-+
-+    data = aspeed_kcs_get_register_data_by_name(name);
-+    if (!data) {
-+        return;
-+    }
-+
-+    if (!strncmp("odr", name, 3)) {
-+        s->regs[data->chan->str] &= ~STR_OBF;
-+    }
-+
-+    val = s->regs[data->reg];
-+
-+    visit_type_uint32(v, name, &val, errp);
-+}
-+
-+static bool aspeed_kcs_channel_enabled(AspeedLPCState *s,
-+                                       const struct aspeed_kcs_channel *channel)
-+{
-+    switch (channel->id) {
-+    case kcs_channel_1: return s->regs[HICR0] & HICR0_LPC1E;
-+    case kcs_channel_2: return s->regs[HICR0] & HICR0_LPC2E;
-+    case kcs_channel_3:
-+        return (s->regs[HICR0] & HICR0_LPC3E) &&
-+                    (s->regs[HICR4] & HICR4_KCSENBL);
-+    case kcs_channel_4: return s->regs[HICRB] & HICRB_LPC4E;
-+    default: return false;
-+    }
-+}
-+
-+static bool
-+aspeed_kcs_channel_ibf_irq_enabled(AspeedLPCState *s,
-+                                   const struct aspeed_kcs_channel *channel)
-+{
-+    if (!aspeed_kcs_channel_enabled(s, channel)) {
-+            return false;
-+    }
-+
-+    switch (channel->id) {
-+    case kcs_channel_1: return s->regs[HICR2] & HICR2_IBFIE1;
-+    case kcs_channel_2: return s->regs[HICR2] & HICR2_IBFIE2;
-+    case kcs_channel_3: return s->regs[HICR2] & HICR2_IBFIE3;
-+    case kcs_channel_4: return s->regs[HICRB] & HICRB_IBFIE4;
-+    default: return false;
-+    }
-+}
-+
-+static void aspeed_kcs_set_register_property(Object *obj,
-+                                             Visitor *v,
-+                                             const char *name,
-+                                             void *opaque,
-+                                             Error **errp)
-+{
-+    const struct aspeed_kcs_register_data *data;
-+    AspeedLPCState *s = ASPEED_LPC(obj);
-+    uint32_t val;
-+
-+    data = aspeed_kcs_get_register_data_by_name(name);
-+    if (!data) {
-+        return;
-+    }
-+
-+    if (!visit_type_uint32(v, name, &val, errp)) {
-+        return;
-+    }
-+
-+    if (strncmp("str", name, 3)) {
-+        s->regs[data->reg] = val;
-+    }
-+
-+    if (!strncmp("idr", name, 3)) {
-+        s->regs[data->chan->str] |= STR_IBF;
-+        if (aspeed_kcs_channel_ibf_irq_enabled(s, data->chan)) {
-+            enum aspeed_lpc_subdevice subdev;
-+
-+            subdev = aspeed_kcs_subdevice_map[data->chan->id];
-+            qemu_irq_raise(s->subdevice_irqs[subdev]);
-+        }
-+    }
-+}
-+
-+static void aspeed_lpc_set_irq(void *opaque, int irq, int level)
-+{
-+    AspeedLPCState *s = (AspeedLPCState *)opaque;
-+
-+    if (level) {
-+        s->subdevice_irqs_pending |= BIT(irq);
-+    } else {
-+        s->subdevice_irqs_pending &= ~BIT(irq);
-+    }
-+
-+    qemu_set_irq(s->irq, !!s->subdevice_irqs_pending);
-+}
- 
- static uint64_t aspeed_lpc_read(void *opaque, hwaddr offset, unsigned size)
- {
-@@ -39,6 +320,29 @@ static uint64_t aspeed_lpc_read(void *opaque, hwaddr offset, unsigned size)
-         return 0;
-     }
- 
-+    switch (reg) {
-+    case IDR1:
-+    case IDR2:
-+    case IDR3:
-+    case IDR4:
-+    {
-+        const struct aspeed_kcs_channel *channel;
-+
-+        channel = aspeed_kcs_get_channel_by_register(reg);
-+        if (s->regs[channel->str] & STR_IBF) {
-+            enum aspeed_lpc_subdevice subdev;
-+
-+            subdev = aspeed_kcs_subdevice_map[channel->id];
-+            qemu_irq_lower(s->subdevice_irqs[subdev]);
-+        }
-+
-+        s->regs[channel->str] &= ~STR_IBF;
-+        break;
-+    }
-+    default:
-+        break;
-+    }
-+
-     return s->regs[reg];
- }
- 
-@@ -55,6 +359,18 @@ static void aspeed_lpc_write(void *opaque, hwaddr offset, uint64_t data,
-         return;
-     }
- 
-+
-+    switch (reg) {
-+    case ODR1:
-+    case ODR2:
-+    case ODR3:
-+    case ODR4:
-+        s->regs[aspeed_kcs_get_channel_by_register(reg)->str] |= STR_OBF;
-+        break;
-+    default:
-+        break;
-+    }
-+
-     s->regs[reg] = data;
- }
- 
-@@ -72,6 +388,8 @@ static void aspeed_lpc_reset(DeviceState *dev)
- {
-     struct AspeedLPCState *s = ASPEED_LPC(dev);
- 
-+    s->subdevice_irqs_pending = 0;
-+
-     memset(s->regs, 0, sizeof(s->regs));
- 
-     s->regs[HICR7] = s->hicr7;
-@@ -83,19 +401,55 @@ static void aspeed_lpc_realize(DeviceState *dev, Error **errp)
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
- 
-     sysbus_init_irq(sbd, &s->irq);
-+    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_1]);
-+    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_2]);
-+    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_3]);
-+    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_4]);
-+    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_ibt]);
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_lpc_ops, s,
-             TYPE_ASPEED_LPC, 0x1000);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
-+
-+    qdev_init_gpio_in(dev, aspeed_lpc_set_irq, ASPEED_LPC_NR_SUBDEVS);
-+}
-+
-+static void aspeed_lpc_init(Object *obj)
-+{
-+    object_property_add(obj, "idr1", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "odr1", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "str1", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "idr2", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "odr2", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "str2", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "idr3", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "odr3", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "str3", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "idr4", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "odr4", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
-+    object_property_add(obj, "str4", "uint32", aspeed_kcs_get_register_property,
-+                        aspeed_kcs_set_register_property, NULL, NULL);
- }
- 
- static const VMStateDescription vmstate_aspeed_lpc = {
-     .name = TYPE_ASPEED_LPC,
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(regs, AspeedLPCState, ASPEED_LPC_NR_REGS),
-+        VMSTATE_UINT32(subdevice_irqs_pending, AspeedLPCState),
-         VMSTATE_END_OF_LIST(),
-     }
- };
-@@ -121,6 +475,7 @@ static const TypeInfo aspeed_lpc_info = {
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(AspeedLPCState),
-     .class_init = aspeed_lpc_class_init,
-+    .instance_init = aspeed_lpc_init,
- };
- 
- static void aspeed_lpc_register_types(void)
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 42c64bd28ba2..9359d6da336d 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -132,6 +132,7 @@ enum {
-     ASPEED_DEV_SDRAM,
-     ASPEED_DEV_XDMA,
-     ASPEED_DEV_EMMC,
-+    ASPEED_DEV_KCS,
- };
- 
- #endif /* ASPEED_SOC_H */
-diff --git a/include/hw/misc/aspeed_lpc.h b/include/hw/misc/aspeed_lpc.h
-index 0fbb7f68bed2..df418cfcd36c 100644
---- a/include/hw/misc/aspeed_lpc.h
-+++ b/include/hw/misc/aspeed_lpc.h
-@@ -12,10 +12,22 @@
- 
- #include "hw/sysbus.h"
- 
-+#include <stdint.h>
-+
- #define TYPE_ASPEED_LPC "aspeed.lpc"
- #define ASPEED_LPC(obj) OBJECT_CHECK(AspeedLPCState, (obj), TYPE_ASPEED_LPC)
- 
--#define ASPEED_LPC_NR_REGS (0x260 >> 2)
-+#define ASPEED_LPC_NR_REGS      (0x260 >> 2)
-+
-+enum aspeed_lpc_subdevice {
-+    aspeed_lpc_kcs_1 = 0,
-+    aspeed_lpc_kcs_2,
-+    aspeed_lpc_kcs_3,
-+    aspeed_lpc_kcs_4,
-+    aspeed_lpc_ibt,
-+};
-+
-+#define ASPEED_LPC_NR_SUBDEVS   5
- 
- typedef struct AspeedLPCState {
-     /* <private> */
-@@ -25,6 +37,9 @@ typedef struct AspeedLPCState {
-     MemoryRegion iomem;
-     qemu_irq irq;
- 
-+    qemu_irq subdevice_irqs[ASPEED_LPC_NR_SUBDEVS];
-+    uint32_t subdevice_irqs_pending;
-+
-     uint32_t regs[ASPEED_LPC_NR_REGS];
-     uint32_t hicr7;
- } AspeedLPCState;
--- 
-2.27.0
-
+On 2021/1/30 14:30, Keqian Zhu wrote:
+> Hi Kirti,
+> 
+> On 2021/1/28 5:03, Kirti Wankhede wrote:
+>>
+>>
+>> On 1/11/2021 1:04 PM, Keqian Zhu wrote:
+>>> For now the switch of vfio dirty page tracking is integrated into
+>>> the vfio_save_handler, it causes some problems [1].
+>>>
+>>
+>> Sorry, I missed [1] mail, somehow it didn't landed in my inbox.
+>>
+>>> The object of dirty tracking is guest memory, but the object of
+>>> the vfio_save_handler is device state. This mixed logic produces
+>>> unnecessary coupling and conflicts:
+>>>
+>>> 1. Coupling: Their saving granule is different (perVM vs perDevice).
+>>>     vfio will enable dirty_page_tracking for each devices, actually
+>>>     once is enough.
+>>
+>> That's correct, enabling dirty page tracking once is enough. But log_start and log_stop gets called on address space update transaction, region_add() or region_del(), at this point migration may not be active. We don't want to allocate bitmap memory in kernel for lifetime of VM, without knowing migration will be happen or not. vfio_iommu_type1 module should allocate bitmap memory only while migration is active.
+>>
+> Yeah, we can use global start/stop callbacks as suggested by Paolo, which solves this problem.
+> 
+>> Paolo's suggestion here to use log_global_start and log_global_stop callbacks seems correct here. But at this point vfio device state is not yet changed to |_SAVING as you had identified it in [1]. May be we can start tracking bitmap in iommu_type1 module while device is not yet _SAVING, but getting dirty bitmap while device is yet not in _SAVING|_RUNNING state doesn't seem optimal solution.
+>>
+>> Pasting here your question from [1]
+>>
+>>> Before start dirty tracking, we will check and ensure that the device
+>>>  is at _SAVING state and return error otherwise.  But the question is
+>>>  that what is the rationale?  Why does the VFIO_IOMMU_DIRTY_PAGES
+>>> ioctl have something to do with the device state?
+>>
+>> Lets walk through the types of devices we are supporting:
+>> 1. mdev devices without IOMMU backed device
+>>     Vendor driver pins pages as and when required during runtime. We can say that vendor driver is smart which identifies the pages to pin. We are good here.
+>>
+>> 2. mdev device with IOMMU backed device
+>>     This is similar to vfio-pci, direct assigned device, where all pages are pinned at VM bootup. Vendor driver is not smart, so bitmap query will report all pages dirty always. If --auto-converge is not set, VM stucks infinitely in pre-copy phase. This is known to us.
+>>
+> little question here ;-) . Why auto-converge (slow down vCPU) helps to ease the case of full dirty?
+> 
+>> 3. mdev device with IOMMU backed device with smart vendor driver
+>>     In this case as well all pages are pinned at VM bootup, but vendor driver is smart to identify the pages and pin them explicitly.
+>> Pages can be pinned anytime, i.e. during normal VM runtime or on setting _SAVING flag (entering pre-copy phase) or while in iterative pre-copy phase. There is no restriction based on these phases for calling vfio_pin_pages(). Vendor driver can start pinning pages based on its device state when _SAVING flag is set. In that case, if dirty bitmap is queried before that then it will report all sysmem as dirty with an unnecessary copy of sysmem.
+>> As an optimal solution, I think its better to query bitmap only after all vfio devices are in pre-copy phase, i.e. after _SAVING flag is set.
+> OK, I get your idea. But Qemu assumes all pages are dirty initially, this seems not a problem.
+> Let's assume we have a device of type 3, and this device starts to pin pages on setting _SAVING flag.
+> 
+> Before this patch, the work flow is:
+> {
+> ram_save_setup()
+>     memory_global_dirty_log_start():  start dirty tracking excludes vfio part.
+>     migration_bitmap_sync_precopy():  try to sync dirty log from kvm, vhost etc, including vfio (as all device saving is not satisfied, fail to get log from vfio). The result is that bitmap of ramblock is all dirty.
+> 
+> vfio_save_setup() of this device
+>     vfio_migration_set_state(): Add SAVING state to this device, and vfio starts to log dirty page of this device.
+> 
+> first round (i.e. bulk stage) of ram saving: only handle dirty log which is collected from the first call of migration_bitmap_sync_precopy().
+> 
+> iterative stage of ram saving: when the remaining dirty log is less than threshold, call migration_bitmap_sync_precopy() again. At this stage, all device is saving, so success to get log from vfio.
+> }
+> 
+> With this patch, the work flow is:
+> {
+> ram_save_setup()
+>     memory_global_dirty_log_start():  start dirty tracking includes vfio part.
+>     migration_bitmap_sync_precopy():  try to sync dirty log from kvm, vhost etc, including vfio (as all device saving is not checked, success to get full dirty log from vfio). The result is that bitmap of ramblock is all dirty.
+> vfio_save_setup() of this device
+> 	vfio_migration_set_state(): Add SAVING state to this device, and vfio starts to log dirty page of this device.
+> 
+> first round of ram saving: only handles dirty log which is collected from the first call of migration_bitmap_sync_precopy().
+> 
+> iterative stage of ram saving: when the remaining dirty log is less than a threshold, calls migration_bitmap_sync_precopy() again. At this stage, all device is saving, so success to get log from vfio.
+> }
+> 
+> We can see that there is no unnecessary copy of guest memory with this patch.
+> 
+>>
+>>> 2. Conflicts: The ram_save_setup() traverses all memory_listeners
+>>>     to execute their log_start() and log_sync() hooks to get the
+>>>     first round dirty bitmap, which is used by the bulk stage of
+>>>     ram saving. However, it can't get dirty bitmap from vfio, as
+>>>     @savevm_ram_handlers is registered before @vfio_save_handler.
+>>>
+>> Right, but it can get dirty bitmap from vfio device in it's iterative callback
+>> ram_save_pending ->
+>>     migration_bitmap_sync_precopy() .. ->
+>>          vfio_listerner_log_sync
+>>
+> Yeah, this work flow is OK. But we are not able to handle vfio dirty log at the first round of ram saving.
+> 
+> We plan to add a new interface named manual_log_clear in vfio[1]. If this interface is enabled, kernel vfio
+> doesn't automatically clear and repopulate dirty bitmap when report dirty log to Qemu. These actions will
+> be triggered by Qemu when it invokes manual_log_clear (memory_region_clear_dirty_bitmap()) before handles
+> the dirty log.
+> 
+> Under the following conditions:
+> (1)Qemu can handles vfio dirty log at the first round of ram saving.
+> (2)device is of type1.
+> (3)manual_log_clear is enabled.
+> (3)device driver unpins some scopes during the first round of ram saving (before Qemu actually handles these scopes).
+> 
+> Then these unpinned scope is not reported to Qemu at iterative stage (manual_log_clear clears them and re-population
+> does not contains them), which avoid unnecessary copy of guest memory.
+> 
+> Thanks,
+> Keqian
+> 
+> [1]https://lore.kernel.org/kvmarm/20210128151742.18840-1-zhukeqian1@huawei.com/
+> 
+> 
+>> Thanks,
+>> Kirti
+>>
+>>> Move the switch of vfio dirty_page_tracking into vfio_memory_listener
+>>> can solve above problems. Besides, Do not require devices in SAVING
+>>> state for vfio_sync_dirty_bitmap().
+>>>
+>>> [1] https://www.spinics.net/lists/kvm/msg229967.html
+>>>
+>>> Reported-by: Zenghui Yu <yuzenghui@huawei.com>
+>>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>>> ---
+>>>   hw/vfio/common.c    | 53 +++++++++++++++++++++++++++++++++++++--------
+>>>   hw/vfio/migration.c | 35 ------------------------------
+>>>   2 files changed, 44 insertions(+), 44 deletions(-)
+>>>
+>>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+>>> index 6ff1daa763..9128cd7ee1 100644
+>>> --- a/hw/vfio/common.c
+>>> +++ b/hw/vfio/common.c
+>>> @@ -311,7 +311,7 @@ bool vfio_mig_active(void)
+>>>       return true;
+>>>   }
+>>>   -static bool vfio_devices_all_saving(VFIOContainer *container)
+>>> +static bool vfio_devices_all_dirty_tracking(VFIOContainer *container)
+>>>   {
+>>>       VFIOGroup *group;
+>>>       VFIODevice *vbasedev;
+>>> @@ -329,13 +329,8 @@ static bool vfio_devices_all_saving(VFIOContainer *container)
+>>>                   return false;
+>>>               }
+>>>   -            if (migration->device_state & VFIO_DEVICE_STATE_SAVING) {
+>>> -                if ((vbasedev->pre_copy_dirty_page_tracking == ON_OFF_AUTO_OFF)
+>>> -                    && (migration->device_state & VFIO_DEVICE_STATE_RUNNING)) {
+>>> -                        return false;
+>>> -                }
+>>> -                continue;
+>>> -            } else {
+>>> +            if ((vbasedev->pre_copy_dirty_page_tracking == ON_OFF_AUTO_OFF)
+>>> +                && (migration->device_state & VFIO_DEVICE_STATE_RUNNING)) {
+>>>                   return false;
+>>>               }
+>>>           }
+>>> @@ -987,6 +982,44 @@ static void vfio_listener_region_del(MemoryListener *listener,
+>>>       }
+>>>   }
+>>>   +static void vfio_set_dirty_page_tracking(VFIOContainer *container, bool start)
+>>> +{
+>>> +    int ret;
+>>> +    struct vfio_iommu_type1_dirty_bitmap dirty = {
+>>> +        .argsz = sizeof(dirty),
+>>> +    };
+>>> +
+>>> +    if (start) {
+>>> +        dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_START;
+>>> +    } else {
+>>> +        dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_STOP;
+>>> +    }
+>>> +
+>>> +    ret = ioctl(container->fd, VFIO_IOMMU_DIRTY_PAGES, &dirty);
+>>> +    if (ret) {
+>>> +        error_report("Failed to set dirty tracking flag 0x%x errno: %d",
+>>> +                     dirty.flags, errno);
+>>> +    }
+>>> +}
+>>> +
+>>> +static void vfio_listener_log_start(MemoryListener *listener,
+>>> +                                    MemoryRegionSection *section,
+>>> +                                    int old, int new)
+>>> +{
+>>> +    VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+>>> +
+>>> +    vfio_set_dirty_page_tracking(container, true);
+>>> +}
+>>> +
+>>> +static void vfio_listener_log_stop(MemoryListener *listener,
+>>> +                                   MemoryRegionSection *section,
+>>> +                                   int old, int new)
+>>> +{
+>>> +    VFIOContainer *container = container_of(listener, VFIOContainer, listener);
+>>> +
+>>> +    vfio_set_dirty_page_tracking(container, false);
+>>> +}
+>>> +
+>>>   static int vfio_get_dirty_bitmap(VFIOContainer *container, uint64_t iova,
+>>>                                    uint64_t size, ram_addr_t ram_addr)
+>>>   {
+>>> @@ -1128,7 +1161,7 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
+>>>           return;
+>>>       }
+>>>   -    if (vfio_devices_all_saving(container)) {
+>>> +    if (vfio_devices_all_dirty_tracking(container)) {
+>>>           vfio_sync_dirty_bitmap(container, section);
+>>>       }
+>>>   }
+>>> @@ -1136,6 +1169,8 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
+>>>   static const MemoryListener vfio_memory_listener = {
+>>>       .region_add = vfio_listener_region_add,
+>>>       .region_del = vfio_listener_region_del,
+>>> +    .log_start = vfio_listener_log_start,
+>>> +    .log_stop = vfio_listener_log_stop,
+>>>       .log_sync = vfio_listerner_log_sync,
+>>>   };
+>>>   diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
+>>> index 00daa50ed8..c0f646823a 100644
+>>> --- a/hw/vfio/migration.c
+>>> +++ b/hw/vfio/migration.c
+>>> @@ -395,40 +395,10 @@ static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
+>>>       return qemu_file_get_error(f);
+>>>   }
+>>>   -static int vfio_set_dirty_page_tracking(VFIODevice *vbasedev, bool start)
+>>> -{
+>>> -    int ret;
+>>> -    VFIOMigration *migration = vbasedev->migration;
+>>> -    VFIOContainer *container = vbasedev->group->container;
+>>> -    struct vfio_iommu_type1_dirty_bitmap dirty = {
+>>> -        .argsz = sizeof(dirty),
+>>> -    };
+>>> -
+>>> -    if (start) {
+>>> -        if (migration->device_state & VFIO_DEVICE_STATE_SAVING) {
+>>> -            dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_START;
+>>> -        } else {
+>>> -            return -EINVAL;
+>>> -        }
+>>> -    } else {
+>>> -            dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_STOP;
+>>> -    }
+>>> -
+>>> -    ret = ioctl(container->fd, VFIO_IOMMU_DIRTY_PAGES, &dirty);
+>>> -    if (ret) {
+>>> -        error_report("Failed to set dirty tracking flag 0x%x errno: %d",
+>>> -                     dirty.flags, errno);
+>>> -        return -errno;
+>>> -    }
+>>> -    return ret;
+>>> -}
+>>> -
+>>>   static void vfio_migration_cleanup(VFIODevice *vbasedev)
+>>>   {
+>>>       VFIOMigration *migration = vbasedev->migration;
+>>>   -    vfio_set_dirty_page_tracking(vbasedev, false);
+>>> -
+>>>       if (migration->region.mmaps) {
+>>>           vfio_region_unmap(&migration->region);
+>>>       }
+>>> @@ -469,11 +439,6 @@ static int vfio_save_setup(QEMUFile *f, void *opaque)
+>>>           return ret;
+>>>       }
+>>>   -    ret = vfio_set_dirty_page_tracking(vbasedev, true);
+>>> -    if (ret) {
+>>> -        return ret;
+>>> -    }
+>>> -
+>>>       qemu_put_be64(f, VFIO_MIG_FLAG_END_OF_STATE);
+>>>         ret = qemu_file_get_error(f);
+>>>
+>> .
+>>

@@ -1,103 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3948752lfg;
-        Mon, 1 Mar 2021 14:02:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzVA6gAKMnQ3tn8n62OiHFwg/9Jg7F3E2uu6jmrwjU43dmA03zi7cnTBnbZ4b8BuXrw58b6
-X-Received: by 2002:a54:468f:: with SMTP id k15mr947373oic.58.1614636142011;
-        Mon, 01 Mar 2021 14:02:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614636142; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3950383lfg;
+        Mon, 1 Mar 2021 14:04:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxKB2FQUClClWvdBxabA0YGn2Pj/XVV8+rg1F7XgdUADWxI8WfzgabQZCzqBSxRF/fR3P9e
+X-Received: by 2002:a05:6830:1c75:: with SMTP id s21mr15163991otg.207.1614636274456;
+        Mon, 01 Mar 2021 14:04:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614636274; cv=none;
         d=google.com; s=arc-20160816;
-        b=zjBEE/5ZFgNPF8A372QXupaGL/hIiuDXpAxNmtPHrXD5ATHC7G3PfkHqdsQciW64b5
-         U6xSORkKLJcIe2IEj/GIUyktx79y5p1aTjushDuEEmAkWkFqMveSzatbI2ePowAjj8m3
-         5rowHF9Cfugg3riBurSFqeEJ6oHgFD/vISYJDzkdbPYfQTc7AI7csVDJx5EebOh3E+Xb
-         yth5GnAeq40KrxsHdo3j9J8i/7Wpzl0qDLU+q87VIvYqCX8ocHXi3XPzYH5PJ+R1pwjm
-         HoJpf7lcqCVx/YSdsb6cXNjUuHLG592pWEHU+ASvwiZvIeLbvtCNgPf44Gi4n6/U/IUD
-         GE0w==
+        b=ApwsHMUKpcuEXRDCHpxis+8ABiq6vVb01y5s67G7VzLXpniBqzF3H2byGF2QexpPVT
+         DC3O4lz577SCpHwbxzMiOX7y8oRR0xJwxMLZJn87IDlCGY1CZicZMGbHSrkYfAbF1txZ
+         FirDgsX58BbUU731dcfskRgXg98l96SOaoz1R/Ws5Y/9KUVRLpjm9rpwBePCYJzcuigb
+         Z53Q/Lza6sistcd5zFqEhY4IvvVW4q/U8FtXUgR64FD2U/RsQILp++7P9uzOHvG3BNIW
+         /LGHZ6NF54wovsbnuGMuvJm7+UcMvTdKdeywYFBZ+BQjhOZPrpZFej6+FtYSKVM7ZPSP
+         WvLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WaQE95EZW9w0jtG86ZuVDK+2I8kDeUh8Unqfgkk9oi8=;
-        b=JWQu+XoevTPwbu92MlGvgDitxPmhiveXe2qpVikFvxNh+kbTSj1nlugLOYW75bFFuZ
-         dkV6+tneRWaFDFL6KqO0DvQO0YTDjCD0cFv+8xO6mJGEGccbPQY13/zZvCNnhAPCTKC3
-         s1Z8B45Qw5jzny+zQdVDvX93g7nkgo8ZZVqFxBwARsi3nFBSghOkuIl73WRnNqhLOtpc
-         3YXJGi5YApy77KoZWHuL4cmkB8cayjgqIjKCUBe4rHxZNkgnY1RVU3pSdSrGB9oQ1JYw
-         REMlJ+SxKciVT0MJfeiza415CVtw3WkxkhcqxW9as0ukpMbAZJByazGwtIrMI1m35h8k
-         D1XQ==
+        bh=80i+luS2gU1nZWsoBAiYbRUL/K5YnYdp7E5uXZjJBL4=;
+        b=DlwoBb/RSSXWDpvzZYaQzLanArQjq5Kn9ts1iKQPk5xK5bgbgoxNSnbQaqCuVcqNkO
+         PRuFQMSqbesSrtUbFvZCZh2KKO6Q83/3recfrFmmMvXXrXB3S+o6SkLnkEvSfUgsVYLQ
+         GnBuUtBBLGLU8LCKsaTsFbBhZm0ENYuqhlpOxwH+ZdC5vje9Huqy6bNH5hJq+Zl+NLKx
+         k5T2W/h8fPSNtoautEOQR5hvvr97vZOgbZ0uG8wQgAd1hrTIb1YU3EoRHUTlTvZou9TG
+         MVM7K74ZeyYMXaTCEwKtDQVct9ixdol9htUJbuK5vV77+4TbTGUl3KIYXqCKO6Ea6wJC
+         674g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dJQ4UANz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gPfj5PeG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x23si1175950oie.76.2021.03.01.14.02.21
+        by mx.google.com with ESMTPS id i6si14499609otk.270.2021.03.01.14.04.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 14:02:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Mar 2021 14:04:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dJQ4UANz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gPfj5PeG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36546 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGqcP-0005ez-6G
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 17:02:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48436)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lGqeX-00084R-MC
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 17:04:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGqSl-0002OU-Mi; Mon, 01 Mar 2021 16:52:25 -0500
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:34954)
+ id 1lGqTL-000325-Ot; Mon, 01 Mar 2021 16:52:59 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:38714)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGqSj-0005EM-WB; Mon, 01 Mar 2021 16:52:23 -0500
-Received: by mail-ej1-x631.google.com with SMTP id dx17so3608179ejb.2;
- Mon, 01 Mar 2021 13:52:20 -0800 (PST)
+ id 1lGqTK-0005SM-6m; Mon, 01 Mar 2021 16:52:59 -0500
+Received: by mail-ej1-x636.google.com with SMTP id mj10so11079382ejb.5;
+ Mon, 01 Mar 2021 13:52:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WaQE95EZW9w0jtG86ZuVDK+2I8kDeUh8Unqfgkk9oi8=;
- b=dJQ4UANzR76b3eYWMyKZ+He1nEuDTPwS4OZNkrIHDXleHTj1Hux1ASLPymQAFMJSRb
- 2+DKOrVNXenpXyVJDNHdzsJdJKDuUWAj3kLOhmB25ecCaR9ZN6SABD2G43yRtV89cyaF
- +5ltmjdUxUmzkEQhL3frqVYbA/uyqO5SklhXQV8PR9j2+SbsO8M1wG5RowwIVXYb22RG
- B2N+65359kzj2XsyxC2AnTYTdKDrQ3JGunj5UvB2MJu2FBVAySmQVjkRHflpe3687HKV
- lf7Hx60vVu7XwMa3mhO/Qur9cIa0GF069048V1Nvmc6VT+QcyEl6YP4OrPA/YGyhAzpN
- E1Gw==
+ bh=80i+luS2gU1nZWsoBAiYbRUL/K5YnYdp7E5uXZjJBL4=;
+ b=gPfj5PeGZg2x+XNFTJcwXjcE1X/xtVf//5uzWDW4Au2WoljQRlWs+7BQTvGRTb3TqA
+ SSK760ZD+iNVI/cCpoMvsR7UzU/FAR16G49PY7z1LzzOra6wnIXqvv/8+Y0mG7OC27jv
+ M5WUf0nc08szLLWSb/ralvgpdr7CbgvNAKa1PjC7SNbY4bqNTppg3rVeshlV2XpjqfC+
+ rHVNUrwQBuRcKRpxQ9Fu3KG0vPt7zOGRUxfmQ7E+MavAYUUWzIu58eFIB+ObuO6XqOen
+ WAwE3qcKO3H4jy9D99yOVbFRpOW674cQyAKyAhuiHStyXjN4C3gRzlpJwUl4v6Wb+dhE
+ 7Otg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=WaQE95EZW9w0jtG86ZuVDK+2I8kDeUh8Unqfgkk9oi8=;
- b=jFBd/4u23ZIi8M3kACeCObH0Dd+FcZEPZNGiVVrgYQjE2v7VxTBFjGf4WLg9r9F+nL
- olryiJCraBYaS1Riav7tPPRs6bsAW2R67tbhP2wFgPgoipu1szqylYrYV9VbjpcpR+zN
- IFxxqwaDk7YJVMplx97RZ2PbZqvcJwdrQT17ksAE0jijBnMRVsEMGS1h39uEer+/+PtB
- 6dSSfS9v43fgpvtoDZA/1LpNRA2sMtzOC0YJWkiExgmVyirxFYl2WQMhCHJ1pGB11oeK
- pYRYdtdZnxLZhEp0BEenF5MxdOaq70Fyo2tRfLjxgQ4pN8yZpnXuFmyCF7mN+BOFT4GO
- Du3A==
-X-Gm-Message-State: AOAM5316RH9SbyUyvxPaMoVhgBN6AxxawiXWi8X6MHhR0S8P5ZVC5mJ1
- ETn2yC0J/jrNILt/hFfOR08UdBOJKo8=
-X-Received: by 2002:a17:906:f10c:: with SMTP id
- gv12mr3059434ejb.53.1614635539084; 
- Mon, 01 Mar 2021 13:52:19 -0800 (PST)
+ bh=80i+luS2gU1nZWsoBAiYbRUL/K5YnYdp7E5uXZjJBL4=;
+ b=d2pLKxsiWw44vGA+QTWMe4s27tIY0k6wn7uhn108pt1jsbPdpWSlhurPbYfAI0T8p6
+ tkL2uTIdK5LjvfI/0mUYURG1pwNVXzaopzdRVn48rylxMpFzE7wctlz+mlq4z9mkd5sc
+ ePuFnoAou484bDObq/Jo1T+mcT8oQVeqFOhGXxYNIkyQAN22GS2qWmh9sA0Naq6lVnBf
+ Ufm7iHV3Dl18vYMLuYOgUh6svB919riwOEEHp5M1mbAp/s8nWGZMGH8iaDs+UcCSFa+q
+ kiAufy3azDVElGPXjBzTUICZdaVZutjLlX94Ox5sCSjI2mS8Cq9PBeuP6N9Fm3j0wEPY
+ FE8g==
+X-Gm-Message-State: AOAM531fw5Cdl92WbhQoOW4ShiUGWEiLQOMeLQtgSHwUnR9AJU6cUzhR
+ I2lNSF/kabRl2J8O76jxhT8+oNCokNg=
+X-Received: by 2002:a17:906:f88a:: with SMTP id
+ lg10mr18075135ejb.39.1614635574975; 
+ Mon, 01 Mar 2021 13:52:54 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id z13sm16422668edc.73.2021.03.01.13.52.16
+ by smtp.gmail.com with ESMTPSA id n2sm15596030ejl.1.2021.03.01.13.52.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Mar 2021 13:52:18 -0800 (PST)
+ Mon, 01 Mar 2021 13:52:54 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 09/17] cpu: Move CPUClass::virtio_is_big_endian to
+Subject: [PATCH v2 14/17] cpu: Move CPUClass::get_memory_mapping to
  SysemuCPUOps
-Date: Mon,  1 Mar 2021 22:51:02 +0100
-Message-Id: <20210301215110.772346-10-f4bug@amsat.org>
+Date: Mon,  1 Mar 2021 22:51:07 +0100
+Message-Id: <20210301215110.772346-15-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210301215110.772346-1-f4bug@amsat.org>
 References: <20210301215110.772346-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -107,30 +107,30 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Thomas Huth <thuth@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
  "Michael S. Tsirkin" <mst@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
@@ -140,119 +140,89 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
  Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RhIXBGcoDPSI
-
-VirtIO devices are only meaningful with system emulation.
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Lv4Y/Y+HMmkT
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h            | 5 -----
- include/hw/core/sysemu-cpu-ops.h | 8 ++++++++
+ include/hw/core/cpu.h            | 3 ---
+ include/hw/core/sysemu-cpu-ops.h | 5 +++++
  hw/core/cpu.c                    | 4 ++--
- target/arm/cpu.c                 | 2 +-
- target/ppc/translate_init.c.inc  | 4 +---
- 5 files changed, 12 insertions(+), 11 deletions(-)
+ target/i386/cpu.c                | 2 +-
+ 4 files changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 471c99d9f04..dfb50b60128 100644
+index 9a86c707cf7..8af78cdde23 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -89,10 +89,6 @@ struct AccelCPUClass;
-  * @parse_features: Callback to parse command line arguments.
-  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
-  * @has_work: Callback for checking if there is work to do.
-- * @virtio_is_big_endian: Callback to return %true if a CPU which supports
-- * runtime configurable endianness is currently big-endian. Non-configurable
-- * CPUs can use the default implementation of this method. This method should
-- * not be used by any callers other than the pre-1.0 virtio devices.
-  * @memory_rw_debug: Callback for GDB memory access.
-  * @dump_state: Callback for dumping state.
+@@ -94,7 +94,6 @@ struct AccelCPUClass;
   * @dump_statistics: Callback for dumping statistics.
-@@ -151,7 +147,6 @@ struct CPUClass {
- 
-     int reset_dump_flags;
-     bool (*has_work)(CPUState *cpu);
--    bool (*virtio_is_big_endian)(CPUState *cpu);
-     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-                            uint8_t *buf, int len, bool is_write);
-     void (*dump_state)(CPUState *cpu, FILE *, int flags);
+  * @get_arch_id: Callback for getting architecture-dependent CPU ID.
+  * @get_paging_enabled: Callback for inquiring whether paging is enabled.
+- * @get_memory_mapping: Callback for obtaining the memory mappings.
+  * @set_pc: Callback for setting the Program Counter register. This
+  *       should have the semantics used by the target architecture when
+  *       setting the PC from a source such as an ELF file entry point;
+@@ -138,8 +137,6 @@ struct CPUClass {
+     void (*dump_statistics)(CPUState *cpu, int flags);
+     int64_t (*get_arch_id)(CPUState *cpu);
+     bool (*get_paging_enabled)(const CPUState *cpu);
+-    void (*get_memory_mapping)(CPUState *cpu, MemoryMappingList *list,
+-                               Error **errp);
+     void (*set_pc)(CPUState *cpu, vaddr value);
+     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
+     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
 diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index 05f19b22070..9c3ac4f2280 100644
+index 0c8f616a565..460e7d63b0c 100644
 --- a/include/hw/core/sysemu-cpu-ops.h
 +++ b/include/hw/core/sysemu-cpu-ops.h
-@@ -16,6 +16,14 @@
+@@ -16,6 +16,11 @@
   * struct SysemuCPUOps: System operations specific to a CPU class
   */
  typedef struct SysemuCPUOps {
 +    /**
-+     * @virtio_is_big_endian: Callback to return %true if a CPU which supports
-+     *       runtime configurable endianness is currently big-endian.
-+     * Non-configurable CPUs can use the default implementation of this method.
-+     * This method should not be used by any callers other than the pre-1.0
-+     * virtio devices.
++     * @get_memory_mapping: Callback for obtaining the memory mappings.
 +     */
-+    bool (*virtio_is_big_endian)(CPUState *cpu);
++    void (*get_memory_mapping)(CPUState *cpu, MemoryMappingList *list,
++                               Error **errp);
      /**
-      * @vmsd: State description for migration.
+      * @get_phys_page_debug: Callback for obtaining a physical address.
       */
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 5abf8bed2e4..09eaa3fa49f 100644
+index 6932781425a..339bdfadd7a 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -204,8 +204,8 @@ bool cpu_virtio_is_big_endian(CPUState *cpu)
+@@ -83,8 +83,8 @@ void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
  {
      CPUClass *cc = CPU_GET_CLASS(cpu);
  
--    if (cc->virtio_is_big_endian) {
--        return cc->virtio_is_big_endian(cpu);
-+    if (cc->sysemu_ops->virtio_is_big_endian) {
-+        return cc->sysemu_ops->virtio_is_big_endian(cpu);
+-    if (cc->get_memory_mapping) {
+-        cc->get_memory_mapping(cpu, list, errp);
++    if (cc->sysemu_ops->get_memory_mapping) {
++        cc->sysemu_ops->get_memory_mapping(cpu, list, errp);
+         return;
      }
-     return target_words_bigendian();
- }
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e03977e4c3c..2bad6307cce 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2262,6 +2262,7 @@ static gchar *arm_gdb_arch_name(CPUState *cs)
+ 
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index c7a18cd8e4f..d33ee9f831e 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -7388,6 +7388,7 @@ static Property x86_cpu_properties[] = {
  
  #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps arm_sysemu_ops = {
-+    .virtio_is_big_endian = arm_cpu_virtio_is_big_endian,
-     .vmsd = &vmstate_arm_cpu,
- };
- #endif
-@@ -2305,7 +2306,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_attrs_debug = arm_cpu_get_phys_page_attrs_debug;
-     cc->asidx_from_attrs = arm_asidx_from_attrs;
--    cc->virtio_is_big_endian = arm_cpu_virtio_is_big_endian;
-     cc->write_elf64_note = arm_cpu_write_elf64_note;
-     cc->write_elf32_note = arm_cpu_write_elf32_note;
-     cc->sysemu_ops = &arm_sysemu_ops;
-diff --git a/target/ppc/translate_init.c.inc b/target/ppc/translate_init.c.inc
-index b5ed1dbfd26..2dd4f47adbb 100644
---- a/target/ppc/translate_init.c.inc
-+++ b/target/ppc/translate_init.c.inc
-@@ -10845,6 +10845,7 @@ static Property ppc_cpu_properties[] = {
+ static struct SysemuCPUOps i386_sysemu_ops = {
++    .get_memory_mapping = x86_cpu_get_memory_mapping,
+     .get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug,
+     .asidx_from_attrs = x86_asidx_from_attrs,
+     .get_crash_info = x86_cpu_get_crash_info,
+@@ -7431,7 +7432,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+     cc->get_paging_enabled = x86_cpu_get_paging_enabled;
  
  #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps ppc_sysemu_ops = {
-+    .virtio_is_big_endian = ppc_cpu_is_big_endian,
-     .vmsd = &vmstate_ppc_cpu,
- };
- #endif
-@@ -10913,9 +10914,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_core_xml_file = "power64-core.xml";
- #else
-     cc->gdb_core_xml_file = "power-core.xml";
--#endif
--#ifndef CONFIG_USER_ONLY
--    cc->virtio_is_big_endian = ppc_cpu_is_big_endian;
- #endif
-     cc->disas_set_info = ppc_disas_set_info;
+-    cc->get_memory_mapping = x86_cpu_get_memory_mapping;
+     cc->sysemu_ops = &i386_sysemu_ops;
+ #endif /* !CONFIG_USER_ONLY */
  
 -- 
 2.26.2

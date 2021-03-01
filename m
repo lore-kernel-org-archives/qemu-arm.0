@@ -1,90 +1,107 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3370887lfg;
-        Mon, 1 Mar 2021 00:28:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxn5QBGm5c4yFfV8HTOP0jIkV3sTZWaJZ+Bh2F/glcOnBoEjgStoG4T83VWO0aApb7Vi+rN
-X-Received: by 2002:a5b:147:: with SMTP id c7mr22140330ybp.332.1614587308594;
-        Mon, 01 Mar 2021 00:28:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614587308; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3411476lfg;
+        Mon, 1 Mar 2021 01:39:55 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxqmlvM8Mpt/VL2dyZSwxwrFTYsMKCcu4bAG5f9wXHwdo4LWY0HeOhYKrnlFQlHp3jf74jQ
+X-Received: by 2002:a25:d016:: with SMTP id h22mr22203875ybg.278.1614591595203;
+        Mon, 01 Mar 2021 01:39:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614591595; cv=none;
         d=google.com; s=arc-20160816;
-        b=dLE7fXgmroDGgsW7XP1diWKJEGhJXNuOO8tSmAJbrKGH6YAWVlFWb2HA/szU2sFQUM
-         oTsTWeSmrihJkVYtt3DkFYwml1DJz2r553G6pegbwFE2XCD+8XTotvJqoTMFZQBHaZ2Q
-         rqrORY14JUrtOwRqxcqtRPYKU/Uot4e3cSq21pdsh3ao2SJnCSHOEgnzQsS953mKb0+O
-         6zWUY6MPBakAa32G/CN1yLtFDVL2ledXLXgWi39OaBbVJy8eEZWkNbDOjpT9a7VKKGqu
-         8Z4A9kylFs4DXkrWwmx0UIroBMuBUpdaxjs8/D5pBnZ7c0ol14LiMN2Mg9QxpIXod4TG
-         jGeQ==
+        b=JcakFfefAfdqe8okjWvHXEfMQfd5dg86Brs74XINNCmObBB/ww6kc6y8s+gUoWF2wC
+         X9NBtU7NyeoliFK1W3PjkNMsHLK+NyuOCozh5p4GGWl/oa8oM21uRyRlB03vt7nxsuYd
+         imOMJ9JEUiQNYUsjrbu24AoP58Qlu7RHfwJOD8UXdRglVcce5YEZm14pR1n+aDmAM7Qc
+         smVU0ZTxy53jKI4z7W8LmG1I25kQtwxTT32Y6cw5Zm1vpq2cYrSgYPS5sU8fxhd2rTVZ
+         AHjnKci5k2ALe9yNgW8fuqLMT2UQ8+7L0vVrPGM05NANp/mcx4YrZvem57bLjz4BVTNV
+         7lMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject;
-        bh=QXkmOhgm4qLrPCdLyQfaPLCSZ1dvblovXwV7Vjcu53g=;
-        b=fdlr2CKkjTBPgACQ16JKl6/+iHbgzW8bBUVOsRBJ52z67g+KX6pwZfCwACRMmpH0r5
-         uKsveu2yF99jT/AF9XAKglspcrV4dRe4JA3TMWneWRMJ2rqww6I7BRqsBcHhTwxtJHf6
-         v4DMwabh+ly7epGkN4JfXTh9Gfu+rX0Prmb41hNj3vPGTlRclFELXyUjLfjoLucmACYO
-         kVIg6P+y6aIGCebV+lUoGhElBM6iz6upGhA0Wy2QkRgyI2TKbarK0YZUYPYTiGLhl1SH
-         yAp2HX/3/A9T2ebILOghxcqE/GKoIJGG+kgX38KULNtmY29ZMLHnTNGhqpTpNVnX7nPJ
-         +k9g==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=qY3oJvW8QwYMDLkONjlnZJ5gOHQb+ZkcY2t/a2UNb/Q=;
+        b=aYpbqJ5oT04kGeoZa4NQwkvoRhmuq0Md/yLc7uarKyJ7r2PjPWmxNBIjk1mOxH7djD
+         U1n9nTb7+KK63BSyFycJgVJw5MJK/p1fjYB1oPHF54UXO43+0L/PypsboeiHIoTaeday
+         3j61PqMXUmfTPwhxVK6S66qMyRepqf1QAYzWQLSwyjqC1pYcRhCp2avSWvRgG6xE1YIw
+         DKCNByTmhmeAqJXC7iUVsGRaZ+ZDNrVXNHuJq6RbUGRCMZFfpOQ6AJBWTvidHsgPABhX
+         dMCiQAL77emwA24izY8VFGnaHXLZJaz7Kc2kTBbgmAXGlBfYg1tBRDY8o7K1QaQqCxen
+         yk5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WwnF5jV2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6si17247464ybk.464.2021.03.01.00.28.28
+        by mx.google.com with ESMTPS id x66si17653009ybe.179.2021.03.01.01.39.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 00:28:28 -0800 (PST)
+        Mon, 01 Mar 2021 01:39:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35002 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WwnF5jV2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51992 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGdul-0006E5-Tc
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 03:28:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43814)
+	id 1lGf1u-0006yC-HF
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 04:39:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lGdud-0006Dk-IW; Mon, 01 Mar 2021 03:28:19 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2969)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
- id 1lGdua-0000cz-Qk; Mon, 01 Mar 2021 03:28:19 -0500
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.56])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Dptdq0YhSzYDqY;
- Mon,  1 Mar 2021 16:26:39 +0800 (CST)
-Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
- DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
- id 14.3.498.0; Mon, 1 Mar 2021 16:28:09 +0800
-Received: from [10.174.185.210] (10.174.185.210) by
- dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2106.2; Mon, 1 Mar 2021 16:28:09 +0800
-Subject: Re: [RFC PATCH 0/3] Add migration support for VFIO PCI devices in
- SMMUv3 nested stage mode
-From: Kunkun Jiang <jiangkunkun@huawei.com>
-To: Eric Auger <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Alex Williamson <alex.williamson@redhat.com>,
- "open list:ARM SMMU" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-References: <20210219094230.231-1-jiangkunkun@huawei.com>
-Message-ID: <ad3ca9c6-dbf9-9c25-8fdb-b19d5d84d00f@huawei.com>
-Date: Mon, 1 Mar 2021 16:27:56 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lGf1j-0006xh-R4
+ for qemu-arm@nongnu.org; Mon, 01 Mar 2021 04:39:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:43534)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1lGf1h-0001QS-2D
+ for qemu-arm@nongnu.org; Mon, 01 Mar 2021 04:39:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614591578;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=qY3oJvW8QwYMDLkONjlnZJ5gOHQb+ZkcY2t/a2UNb/Q=;
+ b=WwnF5jV2xSYKAVF/ahMNkgiKkvCOzE2WnqW3fjNijckKhVqhzOFBzEPzWBjR1upCmaqWbx
+ wGsnyRnihkoaPHBBmj952++ScMx3pgjZZo3vU55eYQKGIe0U5x6Gkq70NoH0Yjn7ilzkIL
+ Tcd/yfz6ofmh8JadPgOc/1EMMqQ8vQw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-602-dOhavX5MP4WNzL2W6lXSEg-1; Mon, 01 Mar 2021 04:39:34 -0500
+X-MC-Unique: dOhavX5MP4WNzL2W6lXSEg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 03383801975;
+ Mon,  1 Mar 2021 09:39:33 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.194.228])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1958E60636;
+ Mon,  1 Mar 2021 09:39:25 +0000 (UTC)
+Date: Mon, 1 Mar 2021 10:39:19 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Ying Fang <fangying1@huawei.com>
+Subject: Re: [RFC PATCH 4/5] hw/acpi/aml-build: add processor hierarchy node
+ structure
+Message-ID: <20210301093919.yt65iz26p6niairw@kamzik.brq.redhat.com>
+References: <20210225085627.2263-1-fangying1@huawei.com>
+ <20210225085627.2263-5-fangying1@huawei.com>
+ <20210225114732.5f7gqgl7lym7d4hs@kamzik.brq.redhat.com>
+ <5afc6d2b-6e16-d44c-13cf-bd75c63f89db@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210219094230.231-1-jiangkunkun@huawei.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Originating-IP: [10.174.185.210]
-X-ClientProxiedBy: dggeme713-chm.china.huawei.com (10.1.199.109) To
- dggema765-chm.china.huawei.com (10.1.198.207)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=jiangkunkun@huawei.com; helo=szxga01-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+In-Reply-To: <5afc6d2b-6e16-d44c-13cf-bd75c63f89db@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.248,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,66 +115,171 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com, Keqian
- Zhu <zhukeqian1@huawei.com>, shameerali.kolothum.thodi@huawei.com
+Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
+ zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
+ shannon.zhaosl@gmail.com, Henglong Fan <fanhenglong@huawei.com>,
+ alistair.francis@wdc.com, qemu-arm@nongnu.org, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4eBLyLNbeWQu
+X-TUID: lCOgN7+XirpW
 
-kindly ping,
-Any comments and reviews are welcome.
+On Fri, Feb 26, 2021 at 10:23:03AM +0800, Ying Fang wrote:
+> 
+> 
+> On 2/25/2021 7:47 PM, Andrew Jones wrote:
+> > On Thu, Feb 25, 2021 at 04:56:26PM +0800, Ying Fang wrote:
+> > > Add the processor hierarchy node structures to build ACPI information
+> > > for CPU topology. Since the private resources may be used to describe
+> > > cache hierarchy and it is variable among different topology level,
+> > > three helpers are introduced to describe the hierarchy.
+> > > 
+> > > (1) build_socket_hierarchy for socket description
+> > > (2) build_processor_hierarchy for processor description
+> > > (3) build_smt_hierarchy for thread (logic processor) description
+> > > 
+> > > Signed-off-by: Ying Fang <fangying1@huawei.com>
+> > > Signed-off-by: Henglong Fan <fanhenglong@huawei.com>
+> > > ---
+> > >   hw/acpi/aml-build.c         | 40 +++++++++++++++++++++++++++++++++++++
+> > >   include/hw/acpi/acpi-defs.h | 13 ++++++++++++
+> > >   include/hw/acpi/aml-build.h |  7 +++++++
+> > >   3 files changed, 60 insertions(+)
+> > > 
+> > > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> > > index a2cd7a5830..a0af3e9d73 100644
+> > > --- a/hw/acpi/aml-build.c
+> > > +++ b/hw/acpi/aml-build.c
+> > > @@ -1888,6 +1888,46 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+> > >                    table_data->len - slit_start, 1, oem_id, oem_table_id);
+> > >   }
+> > > +/*
+> > > + * ACPI 6.3: 5.2.29.1 Processor hierarchy node structure (Type 0)
+> > > + */
+> > > +void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
+> > > +{
+> > > +    build_append_byte(tbl, ACPI_PPTT_TYPE_PROCESSOR); /* Type 0 - processor */
+> > > +    build_append_byte(tbl, 20);         /* Length, no private resources */
+> > > +    build_append_int_noprefix(tbl, 0, 2);  /* Reserved */
+> > > +    build_append_int_noprefix(tbl, ACPI_PPTT_PHYSICAL_PACKAGE, 4);
+> > 
+> > Missing '/* Flags */'
+> 
+> Will fix.
+> 
+> > 
+> > > +    build_append_int_noprefix(tbl, parent, 4); /* Parent */
+> > > +    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+> > > +    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
+> > > +}
+> > > +
+> > > +void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+> > > +                               uint32_t parent, uint32_t id)
+> > > +{
+> > > +    build_append_byte(tbl, ACPI_PPTT_TYPE_PROCESSOR);  /* Type 0 - processor */
+> > > +    build_append_byte(tbl, 20);         /* Length, no private resources */
+> > > +    build_append_int_noprefix(tbl, 0, 2);      /* Reserved */
+> > > +    build_append_int_noprefix(tbl, flags, 4);  /* Flags */
+> > > +    build_append_int_noprefix(tbl, parent, 4); /* Parent */
+> > > +    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+> > > +    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
+> > > +}
+> > > +
+> > > +void build_thread_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
+> > > +{
+> > > +    build_append_byte(tbl, ACPI_PPTT_TYPE_PROCESSOR); /* Type 0 - processor */
+> > > +    build_append_byte(tbl, 20);           /* Length, no private resources */
+> > > +    build_append_int_noprefix(tbl, 0, 2); /* Reserved */
+> > > +    build_append_int_noprefix(tbl,
+> > > +                              ACPI_PPTT_ACPI_PROCESSOR_ID_VALID |
+> > > +                              ACPI_PPTT_ACPI_PROCESSOR_IS_THREAD |
+> > > +                              ACPI_PPTT_ACPI_LEAF_NODE, 4);  /* Flags */
+> > > +    build_append_int_noprefix(tbl, parent , 4); /* parent */
+> > 
+> > 'parent' not capitalized. We want these comments to exactly match the text
+> > in the spec.
+> 
+> Will fix.
+> 
+> > 
+> > > +    build_append_int_noprefix(tbl, id, 4);      /* ACPI processor ID */
+> > > +    build_append_int_noprefix(tbl, 0, 4);       /* Num of private resources */
+> > > +}
+> > > +
+> > >   /* build rev1/rev3/rev5.1 FADT */
+> > >   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> > >                   const char *oem_id, const char *oem_table_id)
+> > > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> > > index cf9f44299c..45e10d886f 100644
+> > > --- a/include/hw/acpi/acpi-defs.h
+> > > +++ b/include/hw/acpi/acpi-defs.h
+> > > @@ -618,4 +618,17 @@ struct AcpiIortRC {
+> > >   } QEMU_PACKED;
+> > >   typedef struct AcpiIortRC AcpiIortRC;
+> > > +enum {
+> > > +    ACPI_PPTT_TYPE_PROCESSOR = 0,
+> > > +    ACPI_PPTT_TYPE_CACHE,
+> > > +    ACPI_PPTT_TYPE_ID,
+> > > +    ACPI_PPTT_TYPE_RESERVED
+> > > +};
+> > > +
+> > > +#define ACPI_PPTT_PHYSICAL_PACKAGE          (1)
+> > > +#define ACPI_PPTT_ACPI_PROCESSOR_ID_VALID   (1 << 1)
+> > > +#define ACPI_PPTT_ACPI_PROCESSOR_IS_THREAD  (1 << 2)      /* ACPI 6.3 */
+> > > +#define ACPI_PPTT_ACPI_LEAF_NODE            (1 << 3)      /* ACPI 6.3 */
+> > > +#define ACPI_PPTT_ACPI_IDENTICAL            (1 << 4)      /* ACPI 6.3 */
+> > > +
+> > >   #endif
+> > > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> > > index 380d3e3924..7f0ca1a198 100644
+> > > --- a/include/hw/acpi/aml-build.h
+> > > +++ b/include/hw/acpi/aml-build.h
+> > > @@ -462,6 +462,13 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+> > >   void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+> > >                   const char *oem_id, const char *oem_table_id);
+> > > +void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
+> > > +
+> > > +void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+> > > +                               uint32_t parent, uint32_t id);
+> > > +
+> > > +void build_thread_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
+> > 
+> > Why does build_processor_hierarchy() take a flags argument, but the
+> > others don't? Why not just have a single 'flags' taking function,
+> > like [*] that works for all of them? I think that answer to that is
+> 
+> Yes, you are right.
+> 
+> > that when cache topology support is added it's better to break these
+> > into separate functions, but should we do that now? It seems odd to
+> > be introducing unused defines and this API before it's necessary.
+> So it is better for us to keep just one common build_processor_hierarchy
+> API here in your opinion.
 
-Thanks.
-Kunkun Jiang.
+Well, a consistent API without unused defines. Whether or not that's
+a single common function or not isn't that important.
 
-On 2021/2/19 17:42, Kunkun Jiang wrote:
-> Hi all,
->
-> Since the SMMUv3's nested translation stages[1] has been introduced by Eric, we
-> need to pay attention to the migration of VFIO PCI devices in SMMUv3 nested stage
-> mode. At present, it is not yet supported in QEMU. There are two problems in the
-> existing framework.
->
-> First, the current way to get dirty pages is not applicable to nested stage mode.
-> Because of the "Caching Mode", VTD can map the RAM through the host single stage
-> (giova->hpa). "vfio_listener_log_sync" gets dirty pages by transferring "giova"
-> to the kernel for the RAM block section of mapped MMIO region. In nested stage
-> mode, we setup the stage 2 (gpa->hpa) and the stage 1(giova->gpa) separately. So
-> it is inapplicable to get dirty pages by the current way in nested stage mode.
->
-> Second, it also need to pass stage 1 configurations to the destination host after
-> the migration. In Eric's patch, it passes the stage 1 configuration to the host on
-> each STE update for the devices set the PASID PciOps. The configuration will be
-> applied at physical level. But the data of physical level will not be sent to the
-> destination host. So we have to pass stage 1 configurations to the destination
-> host after the migration.
->
-> This Patch set includes patches as below:
-> Patch 1-2:
-> - Refactor the vfio_listener_log_sync and added a new function to get dirty pages
-> in nested stage mode.
->
-> Patch 3:
-> - Added the post_load function to vmstate_smmuv3 for passing stage 1 configuration
-> to the destination host after the migration.
->
-> @Eric, Could you please add this Patch set to your future version of
-> "vSMMUv3/pSMMUv3 2 stage VFIO integration", if you think this Patch set makes sense? :)
->
-> Best Regards
-> Kunkun Jiang
->
-> [1] [RFC,v7,00/26] vSMMUv3/pSMMUv3 2 stage VFIO integration
-> http://patchwork.ozlabs.org/project/qemu-devel/cover/20201116181349.11908-1-eric.auger@redhat.com/
->
-> Kunkun Jiang (3):
->    vfio: Introduce helpers to mark dirty pages of a RAM section
->    vfio: Add vfio_prereg_listener_log_sync in nested stage
->    hw/arm/smmuv3: Post-load stage 1 configurations to the host
->
->   hw/arm/smmuv3.c     | 60 +++++++++++++++++++++++++++++++++++++++++++++
->   hw/arm/trace-events |  1 +
->   hw/vfio/common.c    | 47 +++++++++++++++++++++++++++++------
->   3 files changed, 100 insertions(+), 8 deletions(-)
->
+Thanks,
+drew
+
+> 
+> > 
+> > [*] https://github.com/rhdrjones/qemu/commit/439b38d67ca1f2cbfa5b9892a822b651ebd05c11
+> > 
+> > Thanks,
+> > drew
+> > 
+> > > +
+> > >   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+> > >                   const char *oem_id, const char *oem_table_id);
+> > > -- 
+> > > 2.23.0
+> > > 
+> > > 
+> > 
+> > .
+> > 
+> 
+> Thanks,
+> Ying.
+> 
 

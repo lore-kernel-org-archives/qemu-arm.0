@@ -1,105 +1,107 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp2182403lfc;
-        Thu, 11 Feb 2021 03:40:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwbpYOc7G06XY+HwAfwriJXMVqw0ryDMibcueyY0PEfPPlvyZYxEmusYMXEibi54w9qL9k/
-X-Received: by 2002:a25:ce51:: with SMTP id x78mr11026638ybe.198.1613043610898;
-        Thu, 11 Feb 2021 03:40:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1613043610; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3942192lfg;
+        Mon, 1 Mar 2021 13:51:34 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx9NMJ0xvNbhB+h1+Bc4vp9DvjCP6mvq/Uc2HVRyM/ClDmNkd8f+N5S3fLJQOzugLlGCyUQ
+X-Received: by 2002:a9d:7216:: with SMTP id u22mr14316703otj.291.1614635494088;
+        Mon, 01 Mar 2021 13:51:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614635494; cv=none;
         d=google.com; s=arc-20160816;
-        b=qd6xmrMhLx94w4nFefE1WYi6++OG0TM2jphTa8JFuBA9qPIY4rxSRmoyZt50fg2VqA
-         Wi0ZdjHFa3SkEBOjq7gJA2Xj8LlZs/RRW18anGbtVcmxVrPaQyekoXbY658wNc+c93ho
-         d7gpGk+sJ52XDwPZHyhr+fXjn7H82JgUuBfvbcCDDmlZfJC4vD31RgYWOx37mDRZkNVo
-         JwK2jrob3LG7sUo3yjUMX2C5cDMVJoAOqtGfr7QGEcHMjwUshZtGUhSDQUBl4XwdUoVN
-         3SGKujEdDk4m59jIp8mSmc5Nsb2NPRF7/8gIyYNHtVEqEpdc4DoxAzroNuzK5AmVtj9h
-         4dQg==
+        b=EYfTFQJ/xSRZS4iMBaIwVK8zO0rmMjKa1EMJMTGGwlciDVsl7RXaJlw2jzEYqAO7hn
+         1AeMshGk9neB0dNRnAZ/Htscnr2qCTECXMt5F28WpooZVm5ITJhHnJTEPYl9ms8qzM4W
+         XEzNsb6BAM3+QTlX0PnZ2blTeD5347RSF/WCHdPxRUQ9r0TE4mrfTUAiA0asb6QJz7XW
+         8jdUQirJAXyUmJ1b+pPQ9DeKcNn06eFxdJiFBY9EF/Jip9d8mOxDC4l3ZIUC60FOLWFh
+         MMWWT2igOrWT0o55UNY5DfesnvFUll1GL7axn9O5U6fW24xY6UCAkz+/0DitxFkq8KME
+         T9NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=57ghFSysUM66+eyX4VVr39NE87Z0OFzTbYVug/sHOE4=;
-        b=iSEyfmIHinAIz9OGUmvyKZoC0JuUVth5IvVHXPgpI2eqMvuuJADrnVG0/I8rcf76Va
-         pwLhFxOFc+wSk+lJvlgWSMmMuHDTdz72L8YithFIbosnsmunSA2RNfJHy4wE8OtzGhBj
-         p0ykaEXuVl5rmCMlO8tVSfrsWxjDvvhPbdi2YOFZU91OH69xsDu+a7iIQbV8R5N6y+El
-         968thagV40V0yQt6x1lwpznc9Qbm60wS6+xRjnIgCXvLYe2F9SHM2Dh4r1FuR/Z3Rs8L
-         fnR6OrNsWHsxpMPfa8pcp/kjf3g9HeTY76jpvIYxdH1t0sYgMWRK/PycvOa8Ff1fbPdw
-         Y5Iw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=TgU9g7sxuuToYY0NcbUASWLJoXAYrOMW28gUzw0UYX4=;
+        b=UPWBWhd48qL6jhvL/sEB8oeshfODrGtqmknBa8B2jKuk6xEnJb43q2QVGoOLxb2uyX
+         Z2J+Iw6TMEw9exg9ZoPYuypuFjrimwFlrWdsUwphCUUKDCz6MfBmtR4WbPDU5AfXlba7
+         FU9UZNQisMSF63vYoWezWmjhdSbWKRGx2ew6JmubCeLF/ShtnsvTppQ1kB9vC29T9Cax
+         QStpMmcjlgZ5/HfCCLHYUFwftFcuPfsNjOt5+kB6jWYK817N7oUdwkN28Y5ihpsTxEQD
+         EvEiFReC5nSKz5mQIwWPEH30+6So8bRueinquq42U0Zc3KK4Aa6eh2zNKgxWFGlXcpPs
+         yYcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eo/vtvZO";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MjUxIOyJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16si5409672ybb.358.2021.02.11.03.40.10
+        by mx.google.com with ESMTPS id f6si11021511oom.40.2021.03.01.13.51.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Feb 2021 03:40:10 -0800 (PST)
+        Mon, 01 Mar 2021 13:51:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eo/vtvZO";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MjUxIOyJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39104 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:32838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lAAKQ-0007gp-Ae
-	for alex.bennee@linaro.org; Thu, 11 Feb 2021 06:40:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45158)
+	id 1lGqRx-00009P-7W
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 16:51:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47932)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAAKI-0007gR-1J
- for qemu-arm@nongnu.org; Thu, 11 Feb 2021 06:40:02 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e]:39787)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGqRl-00006P-H1; Mon, 01 Mar 2021 16:51:21 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c]:42024)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lAAKG-0008Uq-H5
- for qemu-arm@nongnu.org; Thu, 11 Feb 2021 06:40:01 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id p20so9578786ejb.6
- for <qemu-arm@nongnu.org>; Thu, 11 Feb 2021 03:40:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=57ghFSysUM66+eyX4VVr39NE87Z0OFzTbYVug/sHOE4=;
- b=eo/vtvZOMELpo5l3T+YQPMu5MI/VInYOUiyliueN2igFlDSV6XiwYlmC8fLK7wkmfv
- SYK4/4RGD9gJcr1q+NlH35RjAjW+PywT9yyR18R4agvALzUp9jIiZxuu75wZVWMGvnn2
- Px9NQpn7LHbXURB9X65oV7iG+lbxZ6Fal/TS2mv3jZ3ETjmpH6999W4GCBa6aU1WFryJ
- uCaYI7thbM7S/0KNwCG5eigWnqnSmcQvICjclwYSqc68tsB4SBG7CcY3x+ujixLSbt5p
- vO6SQ8ncod+TRNCJrdClWwC+SCjmk1Z/Uw+Xef9VlE+DI1MQ1Y1TYF5TuMlUdY17jgE4
- GKmQ==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGqRj-0004gv-Gc; Mon, 01 Mar 2021 16:51:20 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id c10so4654206ejx.9;
+ Mon, 01 Mar 2021 13:51:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TgU9g7sxuuToYY0NcbUASWLJoXAYrOMW28gUzw0UYX4=;
+ b=MjUxIOyJmZt42YG/WnmTH7i+XkiKjXJtVBoVDF2uqpZcPx2bE7UBkt7K7Xedpifgzv
+ uVVHZqkiYkq150I/IyLhHiXcxwzqKtlclERrTdetQmrEYTFL1BSksR3cbcneP6ahc2QV
+ SX8sivvauRZ8ONUZ+XUgWH2tZgkg+myHwS+hDLUPq/+D/1ac2xGspba+rzN/nb0ewWNk
+ j5bj1RWR3jN7JTF7d2edAziBcMKc8ifpqx2OYepTR8hChcOmRVTi+QY7tsbfpkiqBc/P
+ 6H9fuOiffS4CqoX46+gkBwwKbfx0drAAKzKSXgHmrdPS4lVPtOgFBmz6+OBod0RTqrMP
+ +6lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=57ghFSysUM66+eyX4VVr39NE87Z0OFzTbYVug/sHOE4=;
- b=ZkTkWqHFSNa+9G1BC3YT/5i7nU0lrXBt0qX35gIAj3JOJFlpU/HnhkkRggXFHitiEc
- b2hzzKDitL+Uocc8j+L/b8j7VSApOenu4qcJO0BVLRh1GOtNvrrLUTtEyS57503QP51L
- yN96X95tz7Gc4X7NEy7YsnPK5Z10tsZOVv/NYOvIPZNQzgCCJGns31itj/9DJC7n2GqM
- Ec/Nut41btljBDyh3ObnG7FlREzX1Ycyxc3ULAbxlO0D9FgAcIW/70vrkeeyLowZtXmQ
- zOIV4qCfpbyP9KD1NtTd2+HdPufALSPwYEL3dOTqyJxGOSBtvR9QqeBZySK4+AYuGtdp
- UMLg==
-X-Gm-Message-State: AOAM533ZmRFE1IJyI/zdKK2xaBXuY1mNE4/SJw5516kltCAxTKwHsXyO
- eEzxB27/pWi3QGQOTN0hDQVdIMAMtQtW0JO40Iry3qvcnIs=
-X-Received: by 2002:a17:906:2747:: with SMTP id
- a7mr8346430ejd.250.1613043598941; 
- Thu, 11 Feb 2021 03:39:58 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=TgU9g7sxuuToYY0NcbUASWLJoXAYrOMW28gUzw0UYX4=;
+ b=HYlz/U3BtaoaCOgnjqteDC1Co3RLS9eNM+5Km/rYK1EwPJiGIsVugyHIwV6jyHbAw8
+ LgItuktg5Y42Y1nsM7vdV1VjDzcBFCN7CoW4Lf0JDnx2z2K/WVt57ka9F2PeqJdI61+G
+ zOc/hxAAh5mHAK+LxdQLa6xEksFahQTxNVhSD/ylNm5Ka23LJsHDrkZgVW706mAywCTh
+ EKZOoo387PoQlh5inMFiOifTMtPyeMJynKNGpKeRrG1ihw7L8n5RzJns0yGKx3wpQ+aO
+ MdJD9WOFlVqKmbJLDggsT8nKe6O4RIQbiOfXLXfXsOq/rBmIW25HSWtynBEtb9smkKcP
+ VjSw==
+X-Gm-Message-State: AOAM533Wc3xA4fwbWSDM9oiVHWmpx2S+mIHMVj9DZivytnZwfU7Q69wx
+ /Eh/U3LNj0A7af8EiqPDyex6O3FsERA=
+X-Received: by 2002:a17:906:cecc:: with SMTP id
+ si12mr17899227ejb.461.1614635474708; 
+ Mon, 01 Mar 2021 13:51:14 -0800 (PST)
+Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id m7sm15710201ejk.52.2021.03.01.13.51.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Mar 2021 13:51:14 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 00/17] cpu: Introduce SysemuCPUOps structure
+Date: Mon,  1 Mar 2021 22:50:53 +0100
+Message-Id: <20210301215110.772346-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20210210174122.410690-1-muellerd@fb.com>
-In-Reply-To: <20210210174122.410690-1-muellerd@fb.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Feb 2021 11:39:47 +0000
-Message-ID: <CAFEAcA9Qa_+oxEK59FF0z1QdXsBchUpx6jYZRUTAnZEBVb49Zg@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Correctly initialize MDCR_EL2.HPMN
-To: =?UTF-8?Q?Daniel_M=C3=BCller?= <muellerd@fb.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,35 +114,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wPdL/EapkP5e
+X-TUID: 345q56FknFCX
 
-On Wed, 10 Feb 2021 at 18:05, Daniel M=C3=BCller via <qemu-devel@nongnu.org=
-> wrote:
->
-> When working with performance monitoring counters, we look at
-> MDCR_EL2.HPMN as part of the check whether a counter is enabled. This
-> check fails, because MDCR_EL2.HPMN is reset to 0, meaning that no
-> counters are "enabled" for < EL2.
-> That's in violation of the Arm specification, which states that
->
-> > On a Warm reset, this field [MDCR_EL2.HPMN] resets to the value in
-> > PMCR_EL0.N
->
-> That's also what a comment in the code acknowledges, but the necessary
-> adjustment seems to have been forgotten when support for more counters
-> was added.
-> This change fixes the issue by setting the reset value to PMCR.N, which
-> is four.
-> ---
->  target/arm/helper.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
->
-
-
-
-Applied to target-arm.next, thanks.
-
--- PMM
+Hi,=0D
+=0D
+This series is inspired on Claudio TCG work.=0D
+=0D
+Instead of separate TCG from other accelerators, here we=0D
+separate sysemu operations (system VS user).=0D
+=0D
+Patches 1-6 are generic cleanups.=0D
+Patches 7-15 move from CPUClass to SysemuCPUOps=0D
+Patches 16-17 restrict SysemuCPUOps to sysemu=0D
+=0D
+Since v1:=0D
+- Name 'sysemu' (Claudio)=0D
+- change each field progressively (Richard)=0D
+=0D
+Regards,=0D
+=0D
+Phil.=0D
+=0D
+Supersedes: <20210226163227.4097950-1-f4bug@amsat.org>=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (17):=0D
+  target: Set CPUClass::vmsd instead of DeviceClass::vmsd=0D
+  cpu: Un-inline cpu_get_phys_page_debug and cpu_asidx_from_attrs=0D
+  cpu: Introduce cpu_virtio_is_big_endian()=0D
+  cpu: Directly use cpu_write_elf*() fallback handlers in place=0D
+  cpu: Directly use get_paging_enabled() fallback handlers in place=0D
+  cpu: Directly use get_memory_mapping() fallback handlers in place=0D
+  cpu: Introduce SysemuCPUOps structure=0D
+  cpu: Move CPUClass::vmsd to SysemuCPUOps=0D
+  cpu: Move CPUClass::virtio_is_big_endian to SysemuCPUOps=0D
+  cpu: Move CPUClass::get_crash_info to SysemuCPUOps=0D
+  cpu: Move CPUClass::write_elf* to SysemuCPUOps=0D
+  cpu: Move CPUClass::asidx_from_attrs to SysemuCPUOps=0D
+  cpu: Move CPUClass::get_phys_page_debug to SysemuCPUOps=0D
+  cpu: Move CPUClass::get_memory_mapping to SysemuCPUOps=0D
+  cpu: Move CPUClass::get_paging_enabled to SysemuCPUOps=0D
+  cpu: Restrict cpu_paging_enabled / cpu_get_memory_mapping to sysemu=0D
+  cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.c=0D
+=0D
+ include/hw/core/cpu.h            |  91 ++++++-------------------=0D
+ include/hw/core/sysemu-cpu-ops.h |  89 ++++++++++++++++++++++++=0D
+ cpu.c                            |  19 +++---=0D
+ hw/core/cpu.c                    | 113 +++++++++++++++++--------------=0D
+ hw/virtio/virtio.c               |   4 +-=0D
+ target/alpha/cpu.c               |  11 ++-=0D
+ target/arm/cpu.c                 |  19 ++++--=0D
+ target/avr/cpu.c                 |   9 ++-=0D
+ target/cris/cpu.c                |  11 ++-=0D
+ target/hppa/cpu.c                |  11 ++-=0D
+ target/i386/cpu.c                |  29 +++++---=0D
+ target/lm32/cpu.c                |  10 ++-=0D
+ target/m68k/cpu.c                |  11 ++-=0D
+ target/microblaze/cpu.c          |  11 ++-=0D
+ target/mips/cpu.c                |  11 ++-=0D
+ target/moxie/cpu.c               |  11 +--=0D
+ target/nios2/cpu.c               |  16 ++++-=0D
+ target/openrisc/cpu.c            |  11 ++-=0D
+ target/riscv/cpu.c               |  13 +++-=0D
+ target/rx/cpu.c                  |  17 ++++-=0D
+ target/s390x/cpu.c               |  15 ++--=0D
+ target/sh4/cpu.c                 |  11 ++-=0D
+ target/sparc/cpu.c               |  11 ++-=0D
+ target/tricore/cpu.c             |  14 +++-=0D
+ target/unicore32/cpu.c           |   8 ++-=0D
+ target/xtensa/cpu.c              |  11 ++-=0D
+ target/ppc/translate_init.c.inc  |  21 +++---=0D
+ 27 files changed, 409 insertions(+), 199 deletions(-)=0D
+ create mode 100644 include/hw/core/sysemu-cpu-ops.h=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D

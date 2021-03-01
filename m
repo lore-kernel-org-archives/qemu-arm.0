@@ -1,121 +1,111 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3939932lfg;
-        Mon, 1 Mar 2021 13:47:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzMoK56X7WjFqMoLC9HQCUBCRfcZxX/IBkp3xP/G2ThFEfLe/k9aSCMNbbmxfqEYyTqH1Fu
-X-Received: by 2002:a05:6820:58:: with SMTP id v24mr14240584oob.55.1614635246290;
-        Mon, 01 Mar 2021 13:47:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614635246; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3942492lfg;
+        Mon, 1 Mar 2021 13:52:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJySO6qRYEg2wgQO1oPYY1uBJteQdp+zwatZY+N/05HRcSFSo5bb63SdSB0uEez5jNTV/NRN
+X-Received: by 2002:a05:6602:cc:: with SMTP id z12mr14917982ioe.190.1614635530122;
+        Mon, 01 Mar 2021 13:52:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614635530; cv=none;
         d=google.com; s=arc-20160816;
-        b=j3aDNKjNKRX0TVQLfEBoVHQh1m1DK4xBsymPLZ2QevtgM+z2WS+Q+DB6XKl8m8nHvv
-         2XFfh5M8UFI949+FS1gAXF1mVW+kFolAP11zdhQ8zD6aCdz8EOcA0hSoTs0PxcEOSTVA
-         1DB6+WEHC9ypZk7zpDMgzWo1WIGL8NDpptQDNLUdRuyIbgUiMQ29r+GCrmoqjlIpHtxr
-         Fo75dS8zDukaVgeE/e2EmA6nsywkNNoloLaqh7fe5zpoMoR20FNRls82whqk1fwyjlzf
-         OuTgN+qN2Qaso30bf8n7KTHuHIQkJWtpE2wLARgMBugI8qLk6UaYswP8Jb9q6L/f6rIT
-         +v7Q==
+        b=m3geSTecUXjY82lypNWWG08BQzoOOYU7uFslWQxgnGJppzPpC7xBNbt3qZSoNvsKLV
+         mjOBBt7kbxIzjjRTt88O01jvGzWBca0Vti7gr5DCpBjrMnQDJjeMJuk8Qf3PP+aqXjbP
+         lpCbueY9CAp1z3OpB1WrbGj2/EPvr3B9gk5DqTTrHj1SdzQAQ/vPO7PumRbH7O4Y3Okg
+         y/GthhLnbxZ0/UQ88UtoHjAx+AvFo3yq/a1/RaJ6GuKgtsmr5ysIMxekzOCJYI9fbZQ4
+         sj/XoS9DTC/ed8ge0a/mJ6hC5z+fW4DDHPqCaaLCmvtmMXeXm4mJ99cr7WyEfxpiCpTs
+         R1tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=GknQ2UYUFzxEKEJMsF7yxlDNRK339wb7h8EKsuFS8lM=;
-        b=OEbVFXJMwFmE4Or89vXEmMos+tLZm/Kz9I3KFxY295ehWABC02Wf0CNXVg/jN7SvMg
-         0rqsw5nYNIc0iF+g5te8KaMCuFexETooqvCCFwys3CJoymh7yAqTMWvuw2RQWYxfl/k/
-         xC4xRz1Z9shGmcbORsNknSlimT08HQR3g5WiOKVldrjPX4qmxcBsFQk9SnKBSYwS/V7C
-         7851piiuEZfhkzYU4ByAjw4rZaypYRM+fDvCzCPnMt9ZeICtDsQA7np98A9E5qvteHy8
-         7Y0kLQXbMOowqyekusks3sAVuGOoHkzq0XKqglAWh9AVAhOeBbmMay8OOIBFMrE2D1Ad
-         UNTw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
+        b=fmIs5k1c4xAf4BuJ7jxU0o8+DOx3ftxJnv9FCWu1F3SSnYRqvp5vb7k4KfR4yMR6Eo
+         /OL1GWA2x1ajmxqresLQueSFEjVzRDjpna7VcH4Op6QWRZk2c6A4JT4lwOY5Is5eXfxT
+         BtU9TFeAodrLK7e3gzWdCuXUS93sNoFJ5a14WHEu/qnBc812uFSEd8Urhdw4PI4rw3Um
+         3LSa7ImxABiT7yutIucsZ2MZHd5/DsS00K69SevKZpCYNmDLKULTmumcotaJybUrg3vf
+         n5H+pQ7udwnH06ocPiHEA/wAi1xPcbsnBBKRqCQnwXq4CS6V1Wi6NHon6EyVtJ6RqNGJ
+         Vx7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=olA5Cl8d;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=Np7PxXmN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mJ/K/lwX";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v18si2590282ott.316.2021.03.01.13.47.26
+        by mx.google.com with ESMTPS id w11si5530646jar.79.2021.03.01.13.52.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 13:47:26 -0800 (PST)
+        Mon, 01 Mar 2021 13:52:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=olA5Cl8d;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=Np7PxXmN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56846 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mJ/K/lwX";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:36128 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGqNx-0006UQ-Eb
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 16:47:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46870)
+	id 1lGqSX-0001ao-DM
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 16:52:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lGqNg-0006TU-LN; Mon, 01 Mar 2021 16:47:10 -0500
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:34705)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lGqNe-0002nI-FS; Mon, 01 Mar 2021 16:47:08 -0500
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id CBD8E5C0143;
- Mon,  1 Mar 2021 16:47:04 -0500 (EST)
-Received: from imap2 ([10.202.2.52])
- by compute3.internal (MEProxy); Mon, 01 Mar 2021 16:47:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm2; bh=GknQ2
- UYUFzxEKEJMsF7yxlDNRK339wb7h8EKsuFS8lM=; b=olA5Cl8dYz6AlDk959Bvv
- LvWGGjtPAiJ3Pplbf4BQ8zN+zTmMYm3VCSheha6E/jrZCMz5WL86fz6NpDD2nSYw
- 82H4Ed9ysuU37F8G8l3zA3/XDfgnP1hzNe3uJbRWYRNJX8qbiT2dfPYklDkwt5uV
- kxcfaDnW6Jyekho/K50s/XE+Z21Bxbo38t8g1zxzCr7UWnrS4ebTluWGuUJSwChT
- UvmfZOHhLVatBN9MsynB4baQ5peQ3+wXWUt4hdhntGf7oafm3h6cMqYuGDcMxQuS
- PL0BOQKqfoPgEoXab4aF3oWJd94BJO3ctc9Nw+X77P0IEtLnbMfp01MIC2+aiRcg
- A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; bh=GknQ2UYUFzxEKEJMsF7yxlDNRK339wb7h8EKsuFS8
- lM=; b=Np7PxXmNPqB+9H+dr7LMtJHZWgBgL5R6fXaatThb20CCiUdsjo1E6DU6O
- Xqz8/cAlAi6Mrnw/E4rYpBUc1NXZnegXYdDacVf0EsYOMckdM0D1Xtc3yKDzDtas
- VUhk2UrYFQi/4feiSst7a/7iJFMCldNdfCxaeKHr+gtN7vv08q2yRVM2J6FVVIi0
- FtZnNaRIIzIHyyoIfkMUA/Eegf2E+ew/dgFmKub1WSflhsDohVepqT/SvGqyEYIl
- VyhyC4icvrQRZtGTZqrRGJC0tBK/cxhLPdb2aue7WAiiiT2ue5W6vZrytVEHAPLj
- kPvKC3gNcHkpfGhyRtXKm0da3XrSA==
-X-ME-Sender: <xms:12A9YJb_E51kaaLPSWK0XbRpyYTjE_V6PbDIQctk2dJQvKFR1cT18g>
- <xme:12A9YAazYtNgf1a9Ft1efEpiPBCRjrmFjFWTM_YahYN6BW-FLpIWcWCPQ-8v02Aws
- G_no9P--BCcByuMlg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrleekgdduheefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
- ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
- frrghtthgvrhhnpedvgeekheegfedvhfethefhudetteegueeggfeiieegueehkedugedt
- kefglefgheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
- hmpegrnhgurhgvfiesrghjrdhiugdrrghu
-X-ME-Proxy: <xmx:12A9YL_1xeKK2TjIyWLJ-rx8IripjyEb97vQYVEmSZ8auRUlGUhLLA>
- <xmx:12A9YHqoCtzeG_E_TOH1JZltOPsHwfUmw66AI1_IxA8Q2syXNJJudg>
- <xmx:12A9YEoco5wy4IXuIZy9NeYdenEi9d9_UEZLDBEAkueGTwfu9gThfw>
- <xmx:2GA9YJDQNEuJCBWfn119JyHMb11cMLJ28q2ARXF7r__QwqZDvfEQaQ>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 65589A00064; Mon,  1 Mar 2021 16:47:03 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.5.0-alpha0-206-g078a48fda5-fm-20210226.001-g078a48fd
-Mime-Version: 1.0
-Message-Id: <19d389df-c9e8-499e-b691-7b6c9e2da1d7@www.fastmail.com>
-In-Reply-To: <20210301010610.355702-5-andrew@aj.id.au>
-References: <20210301010610.355702-1-andrew@aj.id.au>
- <20210301010610.355702-5-andrew@aj.id.au>
-Date: Tue, 02 Mar 2021 08:16:42 +1030
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 4/5] hw/misc: Add a basic Aspeed LPC controller model
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=66.111.4.28; envelope-from=andrew@aj.id.au;
- helo=out4-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGqSI-0001LE-6D; Mon, 01 Mar 2021 16:51:54 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:42034)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGqSG-00050a-Ke; Mon, 01 Mar 2021 16:51:53 -0500
+Received: by mail-ej1-x630.google.com with SMTP id c10so4656609ejx.9;
+ Mon, 01 Mar 2021 13:51:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
+ b=mJ/K/lwXOVWoit73y1TYSSHLaOMllfDz24/alFPlQU1Fv3CZQn+qrprvLdxaNmhbCm
+ dSB0Tz3d5h78JZ2znwY7NsHURe3BQ9mYMwnrlI4RSBOX7lYa9WchKNRQoBnrWCmzRtYX
+ P3fe6I732CdelMEsxp+coxJBugkqOkGmknj0h7iJGrfjdKJtqpLBCa6zEb86yLqDcBN6
+ aB88VKvPKgVxswFWPqTRwB0ho1O/b7rDZAb4FUwdttxG8DXe7RS5PcM4UxYixyINmWgN
+ cgshLC40AvaqFM9PtuQgSY0PKAaW+glWBlzoNdLDJ8b+8EBzxijGfQWajaUtJqHm1TKn
+ uk6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
+ b=n1t4EseyGaJGOO4L/8hyLY5PkKqHebAbPSeK5XMabFOHMqRbk3kaY3aiC1Rx9bCws2
+ R89bTbO5zddjLYXQO+IlCV9TbDbHiUxkX/aw/aMbTgoLmbT30Zl/GQkkJYk0BJre+oZV
+ hAwTEzf3lhAdxS/yuEMfjtPlIhLHZtLXGd2NO5QfDtb386OVH20XVB7LiuIWf4OZrFJF
+ KOcB90EsRvzmDIcHP+GSG3KIbvtyGjFioijyb3+wTuKDAV7jTEo6ihrYMMhnPx7Ui5YT
+ yileQnZGNq2lWuweP5R44bsemIdNmyNhImSTioxlzcha+QJUh3lZYJxtL0zAKraHQjbi
+ TvSw==
+X-Gm-Message-State: AOAM5322OAmZIu34pMcokJ6kYE14gAHF1NdV9KiWj+Ao1fIeOcSjdv11
+ SDPbww07qSvgQThb0BMs/zyqKmMZMKY=
+X-Received: by 2002:a17:906:b001:: with SMTP id
+ v1mr17826274ejy.217.1614635509703; 
+ Mon, 01 Mar 2021 13:51:49 -0800 (PST)
+Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id g3sm15119250ejz.91.2021.03.01.13.51.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Mar 2021 13:51:49 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 05/17] cpu: Directly use get_paging_enabled() fallback
+ handlers in place
+Date: Mon,  1 Mar 2021 22:50:58 +0100
+Message-Id: <20210301215110.772346-6-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210301215110.772346-1-f4bug@amsat.org>
+References: <20210301215110.772346-1-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x630.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -129,95 +119,72 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Ryan Chen <ryan_chen@aspeedtech.com>, Corey Minyard <minyard@acm.org>,
- Cameron Esfahani via <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+ Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z0t+BQT7d1jn
+X-TUID: 9oaMf/wmobi0
 
+No code uses CPUClass::get_paging_enabled() outside of hw/core/cpu.c:
 
+  $ git grep -F -- '->get_paging_enabled'
+  hw/core/cpu.c:74:    return cc->get_paging_enabled(cpu);
+  hw/core/cpu.c:438:    k->get_paging_enabled = cpu_common_get_paging_enabled;
+  target/i386/cpu.c:7418:    cc->get_paging_enabled = x86_cpu_get_paging_enabled;
 
-On Mon, 1 Mar 2021, at 11:36, Andrew Jeffery wrote:
-> From: C=C3=A9dric Le Goater <clg@kaod.org>
->=20
-> This is a very minimal framework to access registers which are used to=
+Check the handler presence in place and remove the common fallback code.
 
-> configure the AHB memory mapping of the flash chips on the LPC HC
-> Firmware address space.
->=20
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
->  docs/system/arm/aspeed.rst   |   2 +-
->  hw/arm/aspeed_ast2600.c      |  10 +++
->  hw/arm/aspeed_soc.c          |  10 +++
->  hw/misc/aspeed_lpc.c         | 131 ++++++++++++++++++++++++++++++++++=
-+
->  hw/misc/meson.build          |   7 +-
->  include/hw/arm/aspeed_soc.h  |   2 +
->  include/hw/misc/aspeed_lpc.h |  32 +++++++++
->  7 files changed, 192 insertions(+), 2 deletions(-)
->  create mode 100644 hw/misc/aspeed_lpc.c
->  create mode 100644 include/hw/misc/aspeed_lpc.h
->=20
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index 690bada7842b..2f6fa8938d02 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -48,6 +48,7 @@ Supported devices
->   * UART
->   * Ethernet controllers
->   * Front LEDs (PCA9552 on I2C bus)
-> + * LPC Peripheral Controller (a subset of subdevices are supported)
-> =20
-> =20
->  Missing devices
-> @@ -56,7 +57,6 @@ Missing devices
->   * Coprocessor support
->   * ADC (out of tree implementation)
->   * PWM and Fan Controller
-> - * LPC Bus Controller
->   * Slave GPIO Controller
->   * Super I/O Controller
->   * Hash/Crypto Engine
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 2125a96ef317..60152de001e6 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -211,6 +211,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-> =20
->      object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.sl=
-ots[0],
->                              TYPE_SYSBUS_SDHCI);
-> +
-> +    object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
->  }
-> =20
->  /*
-> @@ -469,6 +471,14 @@ static void aspeed_soc_ast2600_realize(DeviceStat=
-e=20
-> *dev, Error **errp)
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->emmc), 0,=20
-> sc->memmap[ASPEED_DEV_EMMC]);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
->                         aspeed_soc_get_irq(s, ASPEED_DEV_EMMC));
-> +
-> +    /* LPC */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
-> +        return;
-> +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0,=20
-> sc->memmap[ASPEED_DEV_LPC]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
-> +                       aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/core/cpu.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-Hah, this isn't right! We don't notice it wrt LPC devices because the=20=
+diff --git a/hw/core/cpu.c b/hw/core/cpu.c
+index a9ee2c74ec5..1de00bbb474 100644
+--- a/hw/core/cpu.c
++++ b/hw/core/cpu.c
+@@ -71,11 +71,10 @@ bool cpu_paging_enabled(const CPUState *cpu)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+-    return cc->get_paging_enabled(cpu);
+-}
++    if (cc->get_paging_enabled) {
++        return cc->get_paging_enabled(cpu);
++    }
+ 
+-static bool cpu_common_get_paging_enabled(const CPUState *cpu)
+-{
+     return false;
+ }
+ 
+@@ -420,7 +419,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->parse_features = cpu_common_parse_features;
+     k->get_arch_id = cpu_common_get_arch_id;
+     k->has_work = cpu_common_has_work;
+-    k->get_paging_enabled = cpu_common_get_paging_enabled;
+     k->get_memory_mapping = cpu_common_get_memory_mapping;
+     k->gdb_read_register = cpu_common_gdb_read_register;
+     k->gdb_write_register = cpu_common_gdb_write_register;
+-- 
+2.26.2
 
-LPC IRQ is unused right now, but it will impact the eMMC.
-
-Let me do a v3.
-
-Andrew

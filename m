@@ -1,106 +1,105 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3143786lfg;
-        Sun, 28 Feb 2021 17:06:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzKbJbxjI+ye2WOqKpfz5+l8wuFjBSlGmqo9x6brjKSLDSAX2iyAZ66EuNG9gbOwAhFj+Gk
-X-Received: by 2002:a0c:ea81:: with SMTP id d1mr5058736qvp.57.1614560814824;
-        Sun, 28 Feb 2021 17:06:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614560814; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3144225lfg;
+        Sun, 28 Feb 2021 17:07:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy5qoe1ph27lRvWPeaEplouTKHYX//SOi+3f3E3UGrEnU2p10Q1BBrKn8jSffZbjK00G5rA
+X-Received: by 2002:a05:6122:7c7:: with SMTP id l7mr6755938vkr.6.1614560849128;
+        Sun, 28 Feb 2021 17:07:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614560849; cv=none;
         d=google.com; s=arc-20160816;
-        b=F4xrkUJhBVSoEjocxil5tvXwaau+gXCaSl31RQYCnrw4CJPkqoPVdXBTsrRafTPjUM
-         JAIH5auQBDCNygGHDgY39KItzzP+Wgkj8TM1kqaM0jkrdblijxWOr7aPMM8lGFFXlNOE
-         sjU3kY5U4R4VbGwQZSO7H4R/dYtmjcUjTD7NtkQ5rQm3FYb5At2jtFUtW7w0XkgHs7ud
-         fIRrwgYTt3z0j5YGATis4dxQ4zq60Lb3j2Wxbd9ByT53WaJfMhQT0r3XF/d9Q2sIH65/
-         LaA7TBBl4At/tFnyKc7TC9IVDYEEMLM1hAOxVxMSJql3gfWZ9/TBqMSzyxtI2V3f9UI9
-         LewQ==
+        b=QIUxqcdzTULwviHb/RPmC4ncZb/T4CVLnJ9OMNlTRxcAtH39x4O9hwsOVGMrMgPwjR
+         MHR9wq25vCsSQomJT/BWBE79WWdPFut8zU80IJC93wIOgSxVzhLvSodUaMVZXSdW9Y2e
+         f9po3POKdRiHRpZd4kjz4Mxnx0KNxoFS3EvAhE+WtQs5CrNFSvE+zt0vWb8rAx4psWzc
+         hfwR7iioEciwYgmxEg/IvLtk46NsBBDg3SJs9hI5ta6IvCr0CpqSJk2RSn6n9sP60Mdq
+         UNzjSAy991ZEKoY5EXHZyj/sUHxilfa8r5zR1XJWpta0hIjfImqvaA5cm20/xhguF9JZ
+         igsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature:dkim-signature;
-        bh=s/Zs3H8nldIySrORoqBVGAgKfQMLJ9+BZWTfSlhljkQ=;
-        b=KqTJ5l+FGvz9onM1obLKcfqQtlS+ZWDd/1DxXzbkdqkRqf9ZUlkgRKguqBx0Cvznp+
-         I7DEqJNQWCZcUWGHGU9iskhn2VdQa9+EQhwMgLJ9tw9BE9R9sO0PdB520bbR6KQL+MMj
-         pouk4qcgH/O5kJFZYS5cd12uJRpp+IJT9i4n67C64/pQbAqpqjyHJipC9qPwIVy49me8
-         hJw4TsPTaFn0ND4OTie1r8Rj1Vu7pXDwfwgvcL/D8Rgxz+LvRn9CYuQPIENIyEquehYK
-         Yo5ybmd0MiWkja4vIO6ULuu1l544q/DVSulReC3KWtiIJ+oV+QlbOatfN0I75Xu94F/v
-         97cw==
+        bh=K1eeLrpe1ZAcH2f++WQC2It5GCo/sHwGONfed+MYii4=;
+        b=rvg9vq1FJCwcNb2HC79PNgGLufMy16aGgrTqOaDqd/YyJimRaAsfGIF3dIFejbu3+P
+         f3UbbUcS8jbSwgitZHDI/trA9X0jwTMD4stRbvRol/mXCfgGbKvPoM/Ek/oSExG6Jo01
+         +YEa0oVavMiPo3w6fhTR4cdetuiFQ+Qttfmy+d3msm0sohIsPyL8HHAgMkto4S6qNzhn
+         i98Bk2XDwqbgX9kVqHVEak1f/YWnX4GFSed0BDGrOLHI3Lyhkm7i2f+rsDx5Lx8hAvqx
+         3AVoqd5RrV6+nfqL2U0g478hz0pjCNb3JdKIipbXA0WdSJVpEgue+a8KxZoBHB6fFJss
+         fD6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=G6iGRQ3N;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=v1CSPO2Y;
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=L7LZn7ZO;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=TAAniufx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l21si8096725qkk.138.2021.02.28.17.06.54
+        by mx.google.com with ESMTPS id r25si350940vsk.6.2021.02.28.17.07.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Feb 2021 17:06:54 -0800 (PST)
+        Sun, 28 Feb 2021 17:07:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=G6iGRQ3N;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=v1CSPO2Y;
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=L7LZn7ZO;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=TAAniufx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52658 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53726 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGX1S-0000U3-3K
-	for alex.bennee@linaro.org; Sun, 28 Feb 2021 20:06:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32946)
+	id 1lGX20-0000xf-DZ
+	for alex.bennee@linaro.org; Sun, 28 Feb 2021 20:07:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lGX18-0000QP-M3; Sun, 28 Feb 2021 20:06:34 -0500
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:45593)
+ id 1lGX1C-0000Vl-TD; Sun, 28 Feb 2021 20:06:39 -0500
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:45835)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1lGX12-0001hX-VS; Sun, 28 Feb 2021 20:06:34 -0500
+ id 1lGX1A-0001jV-5o; Sun, 28 Feb 2021 20:06:38 -0500
 Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 20C8B5C00B6;
- Sun, 28 Feb 2021 20:06:28 -0500 (EST)
+ by mailout.nyi.internal (Postfix) with ESMTP id 6897E5C00E8;
+ Sun, 28 Feb 2021 20:06:35 -0500 (EST)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Sun, 28 Feb 2021 20:06:28 -0500
+ by compute3.internal (MEProxy); Sun, 28 Feb 2021 20:06:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
  :to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding; s=fm2; bh=s/Zs3H8nldIyS
- rORoqBVGAgKfQMLJ9+BZWTfSlhljkQ=; b=G6iGRQ3NEFCtk9iF8zjzRYA0ymTJe
- Bn0eO+VLzC3svlObRqnXDk9jS12fZhec44djR0JcK+505yO76bhf+x5uxd/ymvzB
- SibLA8ZlGOMXVPLSXvnYVZwob5GcCIXOKYKHn0Es7LVG+WWud87ZxtrXyXnsbgUT
- XKz8ZxXSCI7ebEixZStfrKyPmbO8Ywwr6EbAlxyEnhccEpdK3EKNyepj3T9N9Uv6
- tW8ud1TwWM7LrdjcVh7RtiC9hvc//o1B1g3l7YSPd08N/rONDquCMM7IylcpYF3l
- dGpxSQC4ryWi/rVehMiAodE6wL7HcCZZgYvf+ZdS1slKWys015SHIRSWA==
+ :mime-version:content-transfer-encoding; s=fm2; bh=K1eeLrpe1ZAcH
+ 2f++WQC2It5GCo/sHwGONfed+MYii4=; b=L7LZn7ZOvMnk4vRP1yMLu5LYF9W+D
+ B8jwf0zbkeSKzNdakPU9KecqOpzdRxTFyBreDhLjCAxL2hOU97WpklKIgO6ZCi4r
+ r2ZNLN9lK2swown1LBD8t9vmGNah7IfPqgbO05Sew4wVHMt0WKNeH7EizYlqvfYf
+ dyaR0xnHg+QPob+ChkkQVQ6oNMWiS/7IgYFLAbhMK7zl3W4ZQK8duKZWH5GIM6WN
+ ArAI1BOZZ1oqk/2sOiScoMrmfku+n6dySVAGTRZ5Wm/HUSsAiy2jwQCSVxaf1Pbu
+ JD8XRYFtkjbhgBKKbKEH9LS+n+fIFi97v+p6xpMFRVQ20kSNMYu5fDSeQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:date:from
  :in-reply-to:message-id:mime-version:references:subject:to
  :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; bh=s/Zs3H8nldIySrORoqBVGAgKfQMLJ9+BZWTfSlhljkQ=; b=v1CSPO2Y
- ZZ8C4zbINjP2ZJpM6EIVdC7LTTmP2X9aePDnXyiuTx/LTxLhD9ONfcIhp9AQgTbI
- br//gIezhWgmIXrxgl+wyPh2MStxdDDws5ewgV1poTBTolkPn+6FMrUP924JBFP3
- CueAOYBiiYgMC0Fmb3+B42iLO+KJDESVVH6lBHHSEQ9cGN0I6aatYayfUYflevoB
- boyGZLR/dkY1HGiwzxjUjYQi3XB07vejGZOfmFDCqxDRsfXKGIJpQtoBiFhF/bJE
- IHLO9htg1Iu/yZm8wyDQr7VQBzjTUxc/DTc740OsDzxAiUC23u389Pi799tMR1YR
- K4VhEtQlk52o8Q==
-X-ME-Sender: <xms:FD48YNOK7KQ74zhY5gBhkHMstW9o2qca_yNZg5Zh93IX6d99PQgTBQ>
- <xme:FD48YP_J6vlN1cWhQot5nNfPIAq78L7vPhD2ULvtavqEJLbX2Ft8CiwYZCdTyiLZc
- ZaU-ImB1mpCXNtRLw>
+ fm2; bh=K1eeLrpe1ZAcH2f++WQC2It5GCo/sHwGONfed+MYii4=; b=TAAniufx
+ ksvHLfBJBulAITHohLeX3qXK7cWfrr8jUK7flAidN8IvI0dRJg5lzWjJONwnwt8c
+ MtXPkfvVEStUE7albM0/Tzzdgr2N1OzAyCY6AWF7XgcIRhIhJ6N7iyVNlxi1lGDI
+ 5CCnJVKPIeZhSCyMq1JH29WpcS2OBEKlClBEQXKyQjOSg7OTmkNQM1Sb8xvVh/xT
+ lHMIG+/4sK0RjvcVolKSRMySEUYhlDcRXkcTcvSDarmA/HEtJ2+Ti4ze9KGf+ra7
+ bUB7b5jKI9HnNgLHmqlslX6PHQGM3C6vKJzpEogkYpSsaBs9JaEeCvx5xAFF+ULE
+ UhJx/mlm6DRk8Q==
+X-ME-Sender: <xms:Gz48YGPabX5cWbl4NfHM2jR_b64IX4NaPZocJNhXodvgPalIChPJCA>
+ <xme:Gz48YE8KNfx2_dJgthZSeYqrJbHfZJtvQPhKqxxSR3W0LxqmMN_3n0SeKvjDjI9AG
+ ZDh37o6hJJHA4KQuQ>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrleejgdefvdcutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfggfgsedtkeertd
  ertddtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghj
  rdhiugdrrghuqeenucggtffrrghtthgvrhhnpeejgfdvveehteekveeggeellefgleette
  ejffelffdvudduveeiffegteelvefhteenucfkphepudegrddvrdeluddrfeejnecuvehl
- uhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgifse
+ uhhsthgvrhfuihiivgepvdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgifse
  grjhdrihgurdgruh
-X-ME-Proxy: <xmx:FD48YMRz56qkqCfy94P8Bx8BgMvSLHTKHS-vtT7z3Do5097CY7Mtpw>
- <xmx:FD48YJvOIazKD5JueIMnJPmqt78kKblzAJclM8GYjmJXWkIF9AEIYw>
- <xmx:FD48YFf-K8fdaWxhhK626-mTX4z98v_IV6VGyhk3nOOO9P2ZequzGg>
- <xmx:FD48YOHs1X2KobNUtSrp3_7pbtuPRJZqYup0uMPWPdC64kvcQU_aag>
+X-ME-Proxy: <xmx:Gz48YNS1DARInja5JzTsEFH7BkJyE_3Hna4DMae-LMou8D67MrLs4w>
+ <xmx:Gz48YGtPGeGDzBYm8wQWN39f23sOIz9covRMC0OepjyDrrJVsTr3qw>
+ <xmx:Gz48YOe2CNIyoi63IqEZxvW10JOqmLj2V2vCg8T9gnG9FT6Z5-QUQg>
+ <xmx:Gz48YLGUXmfyDHMgh9rKcObPA1QSPzsBxSBUs9a0bdVt4i_CACVCSg>
 Received: from localhost.localdomain
  (ppp14-2-91-37.adl-apt-pir-bras31.tpg.internode.on.net [14.2.91.37])
- by mail.messagingengine.com (Postfix) with ESMTPA id 0DAE1240057;
- Sun, 28 Feb 2021 20:06:24 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id 4C23F240054;
+ Sun, 28 Feb 2021 20:06:32 -0500 (EST)
 From: Andrew Jeffery <andrew@aj.id.au>
 To: qemu-arm@nongnu.org
-Subject: [PATCH v2 1/5] arm: ast2600: Force a multiple of 32 of IRQs for the
- GIC
-Date: Mon,  1 Mar 2021 11:36:06 +1030
-Message-Id: <20210301010610.355702-2-andrew@aj.id.au>
+Subject: [PATCH v2 3/5] hw/arm: ast2600: Correct the iBT interrupt ID
+Date: Mon,  1 Mar 2021 11:36:08 +1030
+Message-Id: <20210301010610.355702-4-andrew@aj.id.au>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210301010610.355702-1-andrew@aj.id.au>
 References: <20210301010610.355702-1-andrew@aj.id.au>
@@ -131,38 +130,30 @@ Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com, minyard@acm.org,
  qemu-devel@nongnu.org, f4bug@amsat.org, clg@kaod.org, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mYTg0H4Carz2
+X-TUID: 1ski3miSoggf
 
-This appears to be a requirement of the GIC model. The AST2600 allocates
-197 GIC IRQs, which we will adjust shortly.
+The AST2600 allocates distinct GIC IRQs for the LPC subdevices such as
+the iBT device. Previously on the AST2400 and AST2500 the LPC subdevices
+shared a single LPC IRQ.
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 ---
- hw/arm/aspeed_ast2600.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/aspeed_ast2600.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index bf31ca351feb..bc0eeb058b24 100644
+index 22fcb5b0edbe..2125a96ef317 100644
 --- a/hw/arm/aspeed_ast2600.c
 +++ b/hw/arm/aspeed_ast2600.c
-@@ -65,7 +65,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
- 
- #define ASPEED_A7MPCORE_ADDR 0x40460000
- 
--#define ASPEED_SOC_AST2600_MAX_IRQ 128
-+#define AST2600_MAX_IRQ 128
- 
- /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
- static const int aspeed_soc_ast2600_irqmap[] = {
-@@ -267,7 +267,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     object_property_set_int(OBJECT(&s->a7mpcore), "num-cpu", sc->num_cpus,
-                             &error_abort);
-     object_property_set_int(OBJECT(&s->a7mpcore), "num-irq",
--                            ASPEED_SOC_AST2600_MAX_IRQ + GIC_INTERNAL,
-+                            ROUND_UP(AST2600_MAX_IRQ + GIC_INTERNAL, 32),
-                             &error_abort);
- 
-     sysbus_realize(SYS_BUS_DEVICE(&s->a7mpcore), &error_abort);
+@@ -98,7 +98,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+     [ASPEED_DEV_WDT]       = 24,
+     [ASPEED_DEV_PWM]       = 44,
+     [ASPEED_DEV_LPC]       = 35,
+-    [ASPEED_DEV_IBT]       = 35,    /* LPC */
++    [ASPEED_DEV_IBT]       = 143,
+     [ASPEED_DEV_I2C]       = 110,   /* 110 -> 125 */
+     [ASPEED_DEV_ETH1]      = 2,
+     [ASPEED_DEV_ETH2]      = 3,
 -- 
 2.27.0
 

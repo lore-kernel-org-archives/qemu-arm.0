@@ -1,109 +1,114 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp641289lfg;
-        Thu, 25 Feb 2021 11:40:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxqmoK3pmfOfHf3Qvukd6H75Cbeovzuvxeej8O3KMU+dDTLI+pn6R+234zUujw3WPckfqCq
-X-Received: by 2002:a05:6e02:bc4:: with SMTP id c4mr3832097ilu.169.1614282007923;
-        Thu, 25 Feb 2021 11:40:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614282007; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3353020lfg;
+        Mon, 1 Mar 2021 00:00:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzMI02Ig88jjs+XcyjwJ1gN6y6lW3iHWJ9x8ezhfEcceROFtRnaBzhsHf4zN8qc2irT45lq
+X-Received: by 2002:a25:fc02:: with SMTP id v2mr20481634ybd.369.1614585613086;
+        Mon, 01 Mar 2021 00:00:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614585613; cv=none;
         d=google.com; s=arc-20160816;
-        b=swV4LPR0m4yNOonsJeDu/E34707/YYcPfRlW3Q4B9RRmDlOmnRlkXDg2vIk/qE7LX4
-         flwtPN9IVuDMW4eBhKSQQ+SaVRNmhvEALNVaDYwsFPU/lAFvaUASXEutVowoxUaW3p4T
-         8l01IgV5k30lBMVfjfhJa7WDEO84oxph6OgMFEh8qaXHdry/RzCRM81rYH8d5Zdw1Zjz
-         kRg832m4kLkW0/MyCSLBH7otPuFizMoWZWN8UNLj6VM8rggzpDW0Al5hVuvJ9taQrPUW
-         Y14VfTNeoFATNOksHBUOznKItlUskjaxaYhNiiZ33E6E9seYKPFf7o/SnKDyetQj7auH
-         SQug==
+        b=Ze9CdHy/4cN8/sSeeeKLCqsIadW1ZNChBkWYiS3cm5ZZRtglACNlwtnsHvXBXPkfZm
+         +9W75qMqXYs6aU8jnFqls3b/kUb1mia5zjCoqYYZNXUGnt+U60GoItwtcCW3Rl7HFmN6
+         hGV5dlLa4jsFsf+0BaUBtRfvN1Mf8DuqaJVwFeNiLgQUtN4h5czVUZS6XZVd/rP84Zlv
+         MJ8Ro7eOHRbaj6azHxpaPWxe0o2IgyHDzxcS5t8VJk53rkzOGKXnyPIoeQ1oCdjDcAuP
+         70YG1on7g0xBdnBLqSDck2EmUYkotaTDPDv7KlQ35V0pufk0Womu/TJm+vlQE5gPBtts
+         2sMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=x8DQ1n/1E8K07VrAGtc1E9VO+ZJ+gwVbBIbaWMI5kTk=;
-        b=iGrNXBz6JziZaVEfjOwXD1HuDPsWpygqqMxAzXQNiirU9v783r/Ff+vtFCLGErtCR2
-         2M7Co5TU61qZXs+WPXGdXsV9/AMXaBsjEjFl8QdbeP45jlMIQDlJqyLbTf7kNUMOBd8Z
-         y6/6p4Fd7nAwMLtySJ2XivvimlP1TGS9/Tjk9Q2QuTV67mu/b/J8WBeegAA1yS8vYcpR
-         r3ddTku6ZOG+WXdaZi52m0kQjSMNQvJ/agpO9A0f2OL3b9uld4SGVAaBAiY4ZtKvqqzS
-         pwI0Xkc/OjWnRkv9TPvWhj5+qCxX3XlT7nZlq158s8oaS/6mO/2Z/bF2TLiskEYxAQwj
-         DFbg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=cZAnSAXUjcg5CvUYd7dLiDNh85dzm7vaLx8l6sjitgw=;
+        b=sTISTXLUw9DcUCNJ+SW6w9feGRNs64Ayhwwk10sP3OTxK9FtIUZi2zXMpw40I9iF/x
+         +Zl7IA4EQUiVwnsF5Gcf41mQAs+pCN+1rvnVIIMy6Uq8+SbEAfyFmoLa73pfVYAegQcp
+         H/LyRDU3qM7dhK9V9bp8UzGyKoYCTHIN8PbGkrpKyiWdumby1ijcK3aIL2JzEU6wl+c2
+         l+xDJFJGBxn1F77+PAT0pMeoJw8Ig+aIQ4jgotkqsXiXtO+D8sWZR0UENx1Fx1swA9Bw
+         DrIQ7vdabnvaVn/a9Tpud7eEl+hfBO91vfL2rzdpno58rFPUbJ0Ndo1PMd2PVLfjJoXL
+         C65Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sScSFaso;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kYavZzFy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13si5072812ioj.3.2021.02.25.11.40.07
+        by mx.google.com with ESMTPS id k187si15772517yba.204.2021.03.01.00.00.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Feb 2021 11:40:07 -0800 (PST)
+        Mon, 01 Mar 2021 00:00:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sScSFaso;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kYavZzFy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48078 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:56682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lFMUZ-0002R0-5k
-	for alex.bennee@linaro.org; Thu, 25 Feb 2021 14:40:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33090)
+	id 1lGdTQ-0007Pj-Bg
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 03:00:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38076)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lFMUQ-0002Qo-B5; Thu, 25 Feb 2021 14:39:58 -0500
-Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134]:38566)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGdSv-0007Nz-Tz; Mon, 01 Mar 2021 02:59:41 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:42939)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lFMUO-0001im-3A; Thu, 25 Feb 2021 14:39:58 -0500
-Received: by mail-il1-x134.google.com with SMTP id f10so5428353ilq.5;
- Thu, 25 Feb 2021 11:39:54 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lGdSu-0008Mz-J0; Mon, 01 Mar 2021 02:59:41 -0500
+Received: by mail-wr1-x430.google.com with SMTP id j2so2184056wrx.9;
+ Sun, 28 Feb 2021 23:59:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=x8DQ1n/1E8K07VrAGtc1E9VO+ZJ+gwVbBIbaWMI5kTk=;
- b=sScSFaso/PVyP5ULeWxITxx45tckXvIAlg87UIKctK+OOogIE5/XLvdhrWmLKCLd8r
- +oyQeUOldBPC1ENwddeP+2QI7Ro6GYfAZUMBVvg5zGFek3OhKCBQlArxiV+m18e7iQFw
- imIYepWEVcvwPGOlgQy0w283yIQhJlnCRaDJtOGbk0rKHMCojKv/jbJgMnAK/gcVMnd9
- lsSTNE0YhdM37fNPC/wXVXnFpcWv2pPsCzg7Ev+H6HeCZw26qL9UtsTASffzz64JTsed
- s/PCTr0X6QNK+FxMxZBfRUVImSoSBIejopQjhGUVMyNHtfPDDjuGDjg+J/VlDvxeCUuC
- pOYw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=cZAnSAXUjcg5CvUYd7dLiDNh85dzm7vaLx8l6sjitgw=;
+ b=kYavZzFy3mdcuZme54WL/vIVxnNwaxay7qetShiM6dqiu2PqJJTVTllnCCSZor3VvP
+ XjHaDONDgNPjhGHGh4prgcV38Nhf6bR8Di5O3M23yr3ukz8M0NHJThRHTYbzlOrIxBDM
+ kc+IUhGlR7ss8YjDwGwBVlw6YHf0uSxbgdr28h19up4JftsqWlgXvwi8d4Sctf/VbACu
+ r0kOolIt4+3ueFazPcHA31fvlkVg2q+zwWFh/ld2KRfYxRQUMNomEnGXMQ0mMpCKnVo5
+ 2GlWqxur+cjS5BP485h59nqRe8msYV2xJ/1haj31eVenRZqmvhhChVoDs5S8Sx/7QFDH
+ KCrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=x8DQ1n/1E8K07VrAGtc1E9VO+ZJ+gwVbBIbaWMI5kTk=;
- b=J1Nq5V8N5Jv92+k1HRd9LzyWRv2Zom4InH1ZKkJY2/XdMutd2+Ho+eJHmUFdB64yiP
- TtW6NS6C28U7oWQKBBoeJRA4oRYvOPgDniAqfRh0tanCMVSXa06UjymLsJ+L/VUl2qhP
- F24TfTQxNdKri7S1fq3WEta7HA3aK2Gd5x+ZmdPuX2s1CHi34orLrSfw6LOQktBAKiHq
- jKVDahhbzRYYMz5uctH6EyIXNbRgY76ntnrFLraENY0lg2TAtSv7xd88CI6GG+nJg5vT
- vtTRXzIcfmCYegkn+kV0le/yh4XNg9zws88lLSogNkBBINpHlqEne3xQdP/5yiz15Viw
- Su2Q==
-X-Gm-Message-State: AOAM531yJzL6QETTYqvyxPSgsNOK0BCtp+mOZdtWIjXRJWwZUT2Dmvq0
- AjvTI0hr07N2hhKw+d1oLuDu3WqBH3SB9LQrIW8=
-X-Received: by 2002:a05:6e02:1544:: with SMTP id
- j4mr3707731ilu.67.1614281994068; 
- Thu, 25 Feb 2021 11:39:54 -0800 (PST)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cZAnSAXUjcg5CvUYd7dLiDNh85dzm7vaLx8l6sjitgw=;
+ b=qs98wO9a0HKH8/RGeGJDtv9pEdLK2UD4O6MI/HwFQHbijfdwWzxRSA4Svtp8pNoSD0
+ j0Y8j0ux4N0/SaOCDC6FlYNliW902Q0JCWCp1Lo/AqtFKlKPJkKoQ59lcrUuf+JknXik
+ 0AFGvbn3KKIEwkLyhFF05zKu4yYmgh5WxifdW5FxXTZ3mAhKV+ILwCzBc8GK84zqf5Gk
+ Va2Jhj/yLHKNYyLG1Qua2pSZ8IsDvI5OEEfFm+yixQlqeD5F2Z69YtYBY/MBD/DZAXLS
+ AA50r6enfRGpcat5zQcu0l4XH7Nf9Xqd7HgveOarotMZ1nNJPpDpo4s/BLNKk1qn9x0A
+ Q/PA==
+X-Gm-Message-State: AOAM533ZwI80WSE9BXgtOvcxr2/0oU/CdrW3hmlhjaXQEBBzQDGFsZeH
+ loBOmak/JA7sObZ5duKKYAc=
+X-Received: by 2002:a5d:6381:: with SMTP id p1mr15812292wru.266.1614585578814; 
+ Sun, 28 Feb 2021 23:59:38 -0800 (PST)
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id t5sm22204688wma.4.2021.02.28.23.59.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 28 Feb 2021 23:59:38 -0800 (PST)
+Subject: Re: [PATCH v2 2/5] hw/arm: ast2600: Set AST2600_MAX_IRQ to value from
+ datasheet
+To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
+References: <20210301010610.355702-1-andrew@aj.id.au>
+ <20210301010610.355702-3-andrew@aj.id.au>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <80ac1b39-8c6d-e769-6e0c-fe5ad099b451@amsat.org>
+Date: Mon, 1 Mar 2021 08:59:37 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-References: <20210223225327.26700-1-nieklinnenbank@gmail.com>
- <20210223225327.26700-2-nieklinnenbank@gmail.com>
- <5556626c-0b4f-0de3-9cb8-d174cd210b5c@amsat.org>
- <20210224191341.GC1074102@amachine.somewhere>
- <CAPan3WqXre=Rau4-jOSE2u=GGRO8hSKzuuWFSN4xP3wbpvQ-Dg@mail.gmail.com>
- <YDdx9N0Wtv8F47Ka@redhat.com>
-In-Reply-To: <YDdx9N0Wtv8F47Ka@redhat.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 25 Feb 2021 20:39:42 +0100
-Message-ID: <CAPan3Wp-4Ey+vmMfw2F_yynC_un+byCcYh1U4HuMQYypOJp3GA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] tests/acceptance: replace unstable apt.armbian.com
- URLs for orangepi-pc, cubieboard
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000d2ea2f05bc2e50fb"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::134;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-il1-x134.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210301010610.355702-3-andrew@aj.id.au>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,325 +121,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Pavel.Dovgaluk@ispras.ru, Cleber Rosa <crosa@redhat.com>,
- Willian Rampazzo <willianr@redhat.com>
+Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com, minyard@acm.org,
+ qemu-devel@nongnu.org, joel@jms.id.au, clg@kaod.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ftmpyPXv6xNr
+X-TUID: J26ef0zJNfm+
 
---000000000000d2ea2f05bc2e50fb
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 3/1/21 2:06 AM, Andrew Jeffery wrote:
+> The datasheet says we have 197 IRQs allocated, and we need more than 128
+> to describe IRQs from LPC devices. Raise the value now to allow
+> modelling of the LPC devices.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> ---
+>  hw/arm/aspeed_ast2600.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi Philippe, Thomas, Daniel,
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Thank you all. Then I'll just prepare a new version of the patch that uses
-currently working archive.armbian.com links.
-
-Kind regards,
-Niek
-
-On Thu, Feb 25, 2021 at 10:46 AM Daniel P. Berrang=C3=A9 <berrange@redhat.c=
-om>
-wrote:
-
-> On Wed, Feb 24, 2021 at 09:02:51PM +0100, Niek Linnenbank wrote:
-> > Hi Philippe, Cleber,
-> >
-> > On Wed, Feb 24, 2021 at 8:14 PM Cleber Rosa <crosa@redhat.com> wrote:
-> >
-> > > On Wed, Feb 24, 2021 at 10:12:10AM +0100, Philippe Mathieu-Daud=C3=A9=
- wrote:
-> > > > Hi Niek,
-> > > >
-> > > > On 2/23/21 11:53 PM, Niek Linnenbank wrote:
-> > > > > Currently the automated acceptance tests for the Orange Pi PC and
-> > > cubieboard
-> > > > > machines are disabled by default. The tests for both machines
-> require
-> > > artifacts
-> > > > > that are stored on the apt.armbian.com domain. Unfortunately,
-> some of
-> > > these artifacts
-> > > > > have been removed from apt.armbian.com and it is uncertain whethe=
-r
-> > > more will be removed.
-> > > > >
-> > > > > This commit moves the artifacts previously stored on
-> apt.armbian.com
-> > > to github
-> > > > > and retrieves them using the path: '/<machine>/<artifact>'.
-> > > > >
-> > > > > Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> > > > > Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-> > > > > Reviewed-by: Cleber Rosa <crosa@redhat.com>
-> > > >
-> > > > > Tested-by: Cleber Rosa <crosa@redhat.com>
-> > > >
-> > > > Did Cleber test this new version?
-> > > >
-> > >
-> >
-> > You're right, it was the previous version (v1) that Cleber tested using
-> my
-> > own machine URL's.
-> >
-> > I was actually not sure whether I should or should not have added the
-> > Tested-by/Reviewed-by tags in such scenario.
-> > The content had to be changed due to the outcome of our discussion but
-> also
-> > I thought I don't want to silently drop
-> > the tags since Cleber invested his time into it too.
-> >
-> > What should I do here, next time?
-> >
-> >
-> >
-> > >
-> > > Nope, and I'm having issues with those URLs.  For instance:
-> > >
-> > >    $ curl -L
-> > >
-> https://github.com/nieklinnenbank/QemuArtifacts/raw/master/cubieboard/lin=
-ux-image-dev-sunxi_5.75_armhf.deb
-> > >    version https://git-lfs.github.com/spec/v1
-> > >    oid
-> > > sha256:a4b765c851de76592f55023b1ff4104f7fd29bf90937e6054e0a64fdda5638=
-0b
-> > >    size 20331524
-> > >
-> > > Looks like it has to do with GitHub's behavior wrt quota.
-> > >
-> >
-> > Indeed. Just this morning I received an e-mail from github with the
-> > following text:
-> >
-> > "[GitHub] Git LFS disabled for nieklinnenbank
-> >
-> > Git LFS has been disabled on your personal account nieklinnenbank becau=
-se
-> > you=E2=80=99ve exceeded your data plan by at least 150%.
-> > Please purchase additional data packs to cover your bandwidth and stora=
-ge
-> > usage:
-> >
-> >   https://github.com/account/billing/data/upgrade
-> >
-> > Current usage as of 24 Feb 2021 09:49AM UTC:
-> >
-> >   Bandwidth: 1.55 GB / 1 GB (155%)
-> >   Storage: 0.48 GB / 1 GB (48%)"
-> >
-> > I wasn't aware of it but it appears that Github has these quota's for t=
-he
-> > Large File Storage (LFS). I uploaded the files in the git LFS
-> > because single files are also limited to 100MiB each on the regular Git
-> > repositories.
-> >
-> > With those strict limits, in my opinion Github isn't really a solution
-> > since the bandwidth limit will be reached very quickly. At least for th=
-e
-> > LFS part that is. I don't know yet if there is any limit for regular
-> access.
-> >
-> > My current ideas:
->
-> >   - we can try to just update the URLs to armbian that are working now
-> > (with the risk of breaking again in the near future). Ive also found th=
-is
-> > link, which may be more stable:
-> >      https://archive.armbian.com/orangepipc/archive/
->
-> Just do this, as it is the simplest option that gets things working. We
-> have already spent far too long talking about the problem instead of
-> just fixing the URLs.
->
->
-> Regards,
-> Daniel
-> --
-> |: https://berrange.com      -o-
-> https://www.flickr.com/photos/dberrange :|
-> |: https://libvirt.org         -o-
-> https://fstop138.berrange.com :|
-> |: https://entangle-photo.org    -o-
-> https://www.instagram.com/dberrange :|
->
->
-
---=20
-Niek Linnenbank
-
---000000000000d2ea2f05bc2e50fb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Philippe, Thomas, Daniel,</div><div><br></div><div=
->Thank you all. Then I&#39;ll just prepare a new version of the patch that =
-uses currently working <a href=3D"http://archive.armbian.com">archive.armbi=
-an.com</a> links.</div><div><br></div><div>Kind regards,</div><div>Niek<br>=
-</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
-attr">On Thu, Feb 25, 2021 at 10:46 AM Daniel P. Berrang=C3=A9 &lt;<a href=
-=3D"mailto:berrange@redhat.com">berrange@redhat.com</a>&gt; wrote:<br></div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">On Wed, Feb 24, 2021 at =
-09:02:51PM +0100, Niek Linnenbank wrote:<br>
-&gt; Hi Philippe, Cleber,<br>
-&gt; <br>
-&gt; On Wed, Feb 24, 2021 at 8:14 PM Cleber Rosa &lt;<a href=3D"mailto:cros=
-a@redhat.com" target=3D"_blank">crosa@redhat.com</a>&gt; wrote:<br>
-&gt; <br>
-&gt; &gt; On Wed, Feb 24, 2021 at 10:12:10AM +0100, Philippe Mathieu-Daud=
-=C3=A9 wrote:<br>
-&gt; &gt; &gt; Hi Niek,<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; On 2/23/21 11:53 PM, Niek Linnenbank wrote:<br>
-&gt; &gt; &gt; &gt; Currently the automated acceptance tests for the Orange=
- Pi PC and<br>
-&gt; &gt; cubieboard<br>
-&gt; &gt; &gt; &gt; machines are disabled by default. The tests for both ma=
-chines require<br>
-&gt; &gt; artifacts<br>
-&gt; &gt; &gt; &gt; that are stored on the <a href=3D"http://apt.armbian.co=
-m" rel=3D"noreferrer" target=3D"_blank">apt.armbian.com</a> domain. Unfortu=
-nately, some of<br>
-&gt; &gt; these artifacts<br>
-&gt; &gt; &gt; &gt; have been removed from <a href=3D"http://apt.armbian.co=
-m" rel=3D"noreferrer" target=3D"_blank">apt.armbian.com</a> and it is uncer=
-tain whether<br>
-&gt; &gt; more will be removed.<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; This commit moves the artifacts previously stored on <a=
- href=3D"http://apt.armbian.com" rel=3D"noreferrer" target=3D"_blank">apt.a=
-rmbian.com</a><br>
-&gt; &gt; to github<br>
-&gt; &gt; &gt; &gt; and retrieves them using the path: &#39;/&lt;machine&gt=
-;/&lt;artifact&gt;&#39;.<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; Signed-off-by: Niek Linnenbank &lt;<a href=3D"mailto:ni=
-eklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<=
-br>
-&gt; &gt; &gt; &gt; Reviewed-by: Willian Rampazzo &lt;<a href=3D"mailto:wil=
-lianr@redhat.com" target=3D"_blank">willianr@redhat.com</a>&gt;<br>
-&gt; &gt; &gt; &gt; Reviewed-by: Cleber Rosa &lt;<a href=3D"mailto:crosa@re=
-dhat.com" target=3D"_blank">crosa@redhat.com</a>&gt;<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; Tested-by: Cleber Rosa &lt;<a href=3D"mailto:crosa@redh=
-at.com" target=3D"_blank">crosa@redhat.com</a>&gt;<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Did Cleber test this new version?<br>
-&gt; &gt; &gt;<br>
-&gt; &gt;<br>
-&gt; <br>
-&gt; You&#39;re right, it was the previous version (v1) that Cleber tested =
-using my<br>
-&gt; own machine URL&#39;s.<br>
-&gt; <br>
-&gt; I was actually not sure whether I should or should not have added the<=
-br>
-&gt; Tested-by/Reviewed-by tags in such scenario.<br>
-&gt; The content had to be changed due to the outcome of our discussion but=
- also<br>
-&gt; I thought I don&#39;t want to silently drop<br>
-&gt; the tags since Cleber invested his time into it too.<br>
-&gt; <br>
-&gt; What should I do here, next time?<br>
-&gt; <br>
-&gt; <br>
-&gt; <br>
-&gt; &gt;<br>
-&gt; &gt; Nope, and I&#39;m having issues with those URLs.=C2=A0 For instan=
-ce:<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 $ curl -L<br>
-&gt; &gt; <a href=3D"https://github.com/nieklinnenbank/QemuArtifacts/raw/ma=
-ster/cubieboard/linux-image-dev-sunxi_5.75_armhf.deb" rel=3D"noreferrer" ta=
-rget=3D"_blank">https://github.com/nieklinnenbank/QemuArtifacts/raw/master/=
-cubieboard/linux-image-dev-sunxi_5.75_armhf.deb</a><br>
-&gt; &gt;=C2=A0 =C2=A0 version <a href=3D"https://git-lfs.github.com/spec/v=
-1" rel=3D"noreferrer" target=3D"_blank">https://git-lfs.github.com/spec/v1<=
-/a><br>
-&gt; &gt;=C2=A0 =C2=A0 oid<br>
-&gt; &gt; sha256:a4b765c851de76592f55023b1ff4104f7fd29bf90937e6054e0a64fdda=
-56380b<br>
-&gt; &gt;=C2=A0 =C2=A0 size 20331524<br>
-&gt; &gt;<br>
-&gt; &gt; Looks like it has to do with GitHub&#39;s behavior wrt quota.<br>
-&gt; &gt;<br>
-&gt; <br>
-&gt; Indeed. Just this morning I received an e-mail from github with the<br=
->
-&gt; following text:<br>
-&gt; <br>
-&gt; &quot;[GitHub] Git LFS disabled for nieklinnenbank<br>
-&gt; <br>
-&gt; Git LFS has been disabled on your personal account nieklinnenbank beca=
-use<br>
-&gt; you=E2=80=99ve exceeded your data plan by at least 150%.<br>
-&gt; Please purchase additional data packs to cover your bandwidth and stor=
-age<br>
-&gt; usage:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0<a href=3D"https://github.com/account/billing/data/upgrade=
-" rel=3D"noreferrer" target=3D"_blank">https://github.com/account/billing/d=
-ata/upgrade</a><br>
-&gt; <br>
-&gt; Current usage as of 24 Feb 2021 09:49AM UTC:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0Bandwidth: 1.55 GB / 1 GB (155%)<br>
-&gt;=C2=A0 =C2=A0Storage: 0.48 GB / 1 GB (48%)&quot;<br>
-&gt; <br>
-&gt; I wasn&#39;t aware of it but it appears that Github has these quota&#3=
-9;s for the<br>
-&gt; Large File Storage (LFS). I uploaded the files in the git LFS<br>
-&gt; because single files are also limited to 100MiB each on the regular Gi=
-t<br>
-&gt; repositories.<br>
-&gt; <br>
-&gt; With those strict limits, in my opinion Github isn&#39;t really a solu=
-tion<br>
-&gt; since the bandwidth limit will be reached very quickly. At least for t=
-he<br>
-&gt; LFS part that is. I don&#39;t know yet if there is any limit for regul=
-ar access.<br>
-&gt; <br>
-&gt; My current ideas:<br>
-<br>
-&gt;=C2=A0 =C2=A0- we can try to just update the URLs to armbian that are w=
-orking now<br>
-&gt; (with the risk of breaking again in the near future). Ive also found t=
-his<br>
-&gt; link, which may be more stable:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 <a href=3D"https://archive.armbian.com/orangepipc/=
-archive/" rel=3D"noreferrer" target=3D"_blank">https://archive.armbian.com/=
-orangepipc/archive/</a><br>
-<br>
-Just do this, as it is the simplest option that gets things working. We<br>
-have already spent far too long talking about the problem instead of<br>
-just fixing the URLs.<br>
-<br>
-<br>
-Regards,<br>
-Daniel<br>
--- <br>
-|: <a href=3D"https://berrange.com" rel=3D"noreferrer" target=3D"_blank">ht=
-tps://berrange.com</a>=C2=A0 =C2=A0 =C2=A0 -o-=C2=A0 =C2=A0 <a href=3D"http=
-s://www.flickr.com/photos/dberrange" rel=3D"noreferrer" target=3D"_blank">h=
-ttps://www.flickr.com/photos/dberrange</a> :|<br>
-|: <a href=3D"https://libvirt.org" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://libvirt.org</a>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0-o-=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://fstop138.berrange.com" rel=3D"n=
-oreferrer" target=3D"_blank">https://fstop138.berrange.com</a> :|<br>
-|: <a href=3D"https://entangle-photo.org" rel=3D"noreferrer" target=3D"_bla=
-nk">https://entangle-photo.org</a>=C2=A0 =C2=A0 -o-=C2=A0 =C2=A0 <a href=3D=
-"https://www.instagram.com/dberrange" rel=3D"noreferrer" target=3D"_blank">=
-https://www.instagram.com/dberrange</a> :|<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div>
-
---000000000000d2ea2f05bc2e50fb--

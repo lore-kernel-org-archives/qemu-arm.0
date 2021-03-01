@@ -1,109 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3202609lfg;
-        Sun, 28 Feb 2021 18:58:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwN9MTWmBzlE6xS1e/1DvTMAZjQtR0ll8NzEpYJsAf41ubemVrbPnhyciFQWBNl8varFT88
-X-Received: by 2002:a05:6e02:1351:: with SMTP id k17mr11891836ilr.204.1614567522035;
-        Sun, 28 Feb 2021 18:58:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614567522; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3206254lfg;
+        Sun, 28 Feb 2021 19:04:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJylRXHFFn/vvGsZh4In39Tol6eC6zi+SiryEzDhngE4KAvpcsoBii54WhIIGzSkHwrRALqX
+X-Received: by 2002:a05:6e02:1a29:: with SMTP id g9mr11074059ile.54.1614567878026;
+        Sun, 28 Feb 2021 19:04:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614567878; cv=none;
         d=google.com; s=arc-20160816;
-        b=qFne6VOdFIttDkhgzSbl0fJIRvcy6UD+u2MUg7Gq13d/TAHh25UTeEQynmnwxDVChj
-         OThSPRiDJW1Q3FxHW29TuTW0Rs3lTxFM+wr2YqYhubYGGQbc9+5MQ+utQwg/FXa5M2xc
-         cnCxxNDNt00OnnGwDyyeA1byU6QzeVhpi6G5OU0BsQvkTsVzdVB/OeV0GfS/2g88MOki
-         aTROs5OzUKqbuU2wxwq0j7/2oqv4T+ku2XgZKA0buSXvvzI1p0nC2lkLTWfyE6M+vDgT
-         oNO+002Cd1N/PllittXBVKfbGRLY8g8h9642cwiMAQWVO9K6CAJ1/8/HSiEI34zf5qcz
-         jsEA==
+        b=HgwIJd3bKF79BjW8LEazYSCl2G5K2zQ2vYZbG0ptNX9BsQqcYUrXmoqR35UQUNhZdH
+         uRVnEzxDgsxsD3LdgYZUD1Lib06ZOkrx4tAtiE6Hr94XB7efRXg3i6U4YfjZiqhZxZCO
+         9Hci9FQtVZ3G/akloLLODKFfxHC8WLzpFgOZoaT2TjPnd9+WOTMdOb6L0l0lGoPI3Iw4
+         MgDz8InDvGjkj3X+dsD2x6sqUfxQuWSYhu+3fLCIl6GPrzmzAl2gdviu5sTiDiAKdK5g
+         r4d7QXIF/q74gyHmugyKQ3rPWSXjkCEFCRg+I8ce3daBcpz4+Rh8oVXJ6wHsPKmQvm1Y
+         Snxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=kigezuw/F7NkpHDCq9bpNuoxlo9Bbv+Ehe6b92SAjjw=;
-        b=X4yTjvn9ZE/Vi7jh1d3HY27WHbyVcCfDG7+xqoII2k4cLR2jKUA0dDx6NYy0d6gIpa
-         b2dcwiQfRMcSmyBoMQpnhLnLcMYMa5hxy6KnJKOCkBng4Tj2TZf5N52Ge8JxBL4dbHQ9
-         EAZGmU99O5COeumhpH8nMa5OWarDQyCMe4U8zJChZAAlRGRSk1s8EHuWJGcWzbLjbe1X
-         kuM1zLVYuxQo7+MvVhJjj0uqYAR4KYbsXWeI25t8c6XpQQTALAfeEac1LzFsCiIXfGw8
-         DBbHlI7zTUFPbynijVwrMP6qf2ToC2lEa5tly4tws7aO6qlmW7QZOWnRzbsqAcJ/MLAQ
-         LiSw==
+        bh=VW6+hyeABJJrREIt3wuokqgBVyt5mMwfc4EqOuS7hUg=;
+        b=wb3o+Kt3KU7Xk97n4pYbmiAHgtVg9R4ZanCm4WIXq1r1yiYrI0zWGgEOb8RwuKxTbq
+         1S0CXKLj1x7lWbrr/1FbX5sPPfeI/e0DsL37noLzHlpOKji38MmJemskvFyRkKoRlTvy
+         Y1cwuL9GPPBizQnFHiRn6vTRUxHErCzQVPi/PmgPusmEjlChDYfXL295B8X2r7L+v8RU
+         tp9e6GCjCEbWnGBbdA3qN7mu0KsxkFS0kAdvPt5YPjPyt431vtPXA07ZSyD0vPKFqoom
+         ZOHqW7K/W4VQtv6vXWwqHDJv0skp/cU35jbTovBNVqHbYbTfrMDtroO2n/L94rxFe9EO
+         mudQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pZ3xZry1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zYKyZ7t0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q206si13211453jaq.36.2021.02.28.18.58.41
+        by mx.google.com with ESMTPS id e11si14570226ilu.32.2021.02.28.19.04.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Feb 2021 18:58:42 -0800 (PST)
+        Sun, 28 Feb 2021 19:04:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pZ3xZry1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zYKyZ7t0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38196 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40388 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGYld-0000JI-Ch
-	for alex.bennee@linaro.org; Sun, 28 Feb 2021 21:58:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45586)
+	id 1lGYrN-0001e7-Cr
+	for alex.bennee@linaro.org; Sun, 28 Feb 2021 22:04:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46282)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lGYl3-0008Uu-Uo
- for qemu-arm@nongnu.org; Sun, 28 Feb 2021 21:58:05 -0500
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c]:46165)
+ id 1lGYrG-0001do-56
+ for qemu-arm@nongnu.org; Sun, 28 Feb 2021 22:04:30 -0500
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b]:35947)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lGYl2-0008WM-9r
- for qemu-arm@nongnu.org; Sun, 28 Feb 2021 21:58:05 -0500
-Received: by mail-pl1-x62c.google.com with SMTP id u11so8963291plg.13
- for <qemu-arm@nongnu.org>; Sun, 28 Feb 2021 18:58:03 -0800 (PST)
+ id 1lGYrE-00032N-G9
+ for qemu-arm@nongnu.org; Sun, 28 Feb 2021 22:04:29 -0500
+Received: by mail-pj1-x102b.google.com with SMTP id s23so10759318pji.1
+ for <qemu-arm@nongnu.org>; Sun, 28 Feb 2021 19:04:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kigezuw/F7NkpHDCq9bpNuoxlo9Bbv+Ehe6b92SAjjw=;
- b=pZ3xZry1O4F2UIhKp1R1a4F4yI/z5G5/jOLzIFbrm3hJ0L/h+4eexp2qZK+3vvtnfK
- gPtGksOdXmaZS3SZPLaE8W18K3eq8XNQk+kEwDBLW1tgap2UXGvaAbZY49qt2pgECnmD
- +9e0qoCMkBPZVSmWgqwQ5TtovJUUXA0a7yZGIZxl7K/ijpAVAH+dzEBTSB0S3Q0dpCB9
- LJgThXrqlgX4DDl//a9Z4VKtvE1O/G2iTmp0InC1+wvOa1F1zZtTlgzuK/40v4ngTXKd
- eK83OYwWv4wCh55Sizs5ZIXKBtzBdCiPxTM3PM9hM4jStvc4YL2dZO0K1+nrNKSEP0IG
- TeSA==
+ bh=VW6+hyeABJJrREIt3wuokqgBVyt5mMwfc4EqOuS7hUg=;
+ b=zYKyZ7t0LlVv8wmyNYqeyJdPllQRV76zu2QdWjr8TVeJWr+G0jMwagbJZIJcMSUK2Y
+ uSzasLHAEmxV/PlzVn6mO1ejb5p20q++uRDqksLq8z8+/TgdF89NwmmQJD11XyZ5eVjX
+ 4TnVNzbDSXs2bznw8F3HjK/G2WAYNSG91cy3+52Kz7tnv5MkRvXFeWbfyX73yjFij1zT
+ eifflW1UcAyTomEOQrsrjg889X8G2UjRnuSfa3Ou2Uj7mwSAk1aTfIeuHGx5NfvXB2GF
+ hx0CXDeN5bDOWSsgjTbw95JuqFAl5mvdXVI1PmQl31utJyc7CJ0w57LMgMeayhdZGbFi
+ iRgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=kigezuw/F7NkpHDCq9bpNuoxlo9Bbv+Ehe6b92SAjjw=;
- b=izTy49Q++neNlokDEBc/QowHF1Xyci3GhmXtSu0qi3/wvfpJt0yJ2N2hiPpeI7Ibx0
- gFpmvkPxDeqhIXYwdTHSglAGy2gz5y5rkWgam9zG/D4WfrozCYIoqemke3i5DcHY9bpg
- T7E/l1HFnDqBsIhRhXrcoAfREYF6S94DtJW3DnZZiLyVquJhrapDeoL27DX+eSZZRgUY
- ZH3jdv1m7/UMTy4hpi74BAmKlLiH0W9KqCaNc2NVeMPqKTlyEOC1uP5Kdft5j/P/IHbJ
- 6aFOtJ148KTwzViJUrplKVOk96qFwkB7D1KNFrSbwdhyThTjji1mqRYTX5+lr1CT59qW
- kVOA==
-X-Gm-Message-State: AOAM533jqz5Llxm0SK1d/VkGTwUOlnAcFfFHaSrnBHSnzTbx63CRy+cq
- 2T2PZuC6xFMIG4fnxOlLcBUP6Q==
-X-Received: by 2002:a17:902:bd97:b029:e4:b5f2:ef02 with SMTP id
- q23-20020a170902bd97b02900e4b5f2ef02mr1902753pls.68.1614567482983; 
- Sun, 28 Feb 2021 18:58:02 -0800 (PST)
+ bh=VW6+hyeABJJrREIt3wuokqgBVyt5mMwfc4EqOuS7hUg=;
+ b=GFiOLp7AH2KdYy2hXI4Tda7+EKyg0rE/IBm5fqnLfeAghXP226vrLTjlps/qu8fMvy
+ +AAZTuGBTDPDwLXtOD+9QBCSpJ0nn6ie1ysas0vNLNb5hZ973I8+kwuiQwgFyKpibe6c
+ BNViZR5wtlt/cuiWKXRhc1uGJo+G1QXQCwqbfq6CDKPRpIVXWShVn7b+ALjxQdMcfths
+ KKgtItIAipQSX4Q8pkomTDHNRrtbJ15zVUsZpxojrSwT8C5h/nOWCqkpRgg2h+GlO8QE
+ w95z5eBnUgTXKX4rOA+k95XO4LLgM1NTVaw0AwF+DmS4GYFF5Urt6cAsRrIj3hYQYasM
+ HopA==
+X-Gm-Message-State: AOAM5326M/3Pfy/dCMPbZon7kul5PKXIaURtuA7Y1iNtmKMYzPzbKZmv
+ 7tpn4VUnuU3M06SjaOQSw15x5Q==
+X-Received: by 2002:a17:90a:6b49:: with SMTP id
+ x9mr15827849pjl.19.1614567867094; 
+ Sun, 28 Feb 2021 19:04:27 -0800 (PST)
 Received: from [192.168.1.11] (174-21-84-25.tukw.qwest.net. [174.21.84.25])
- by smtp.gmail.com with ESMTPSA id y12sm1329640pgs.71.2021.02.28.18.58.02
+ by smtp.gmail.com with ESMTPSA id r13sm16250937pfg.37.2021.02.28.19.04.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 28 Feb 2021 18:58:02 -0800 (PST)
-Subject: Re: [PATCH v2 04/24] hw/arm/mps2-tz: Make the OSCCLK settings be
- configurable per-board
+ Sun, 28 Feb 2021 19:04:26 -0800 (PST)
+Subject: Re: [PATCH v2 05/24] hw/misc/mps2-fpgaio: Make number of LEDs
+ configurable by board
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210215115138.20465-1-peter.maydell@linaro.org>
- <20210215115138.20465-5-peter.maydell@linaro.org>
+ <20210215115138.20465-6-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <6d88dfb4-5d94-eedd-cf13-16c3a2469046@linaro.org>
-Date: Sun, 28 Feb 2021 18:58:00 -0800
+Message-ID: <48011eb0-4418-3121-5d00-7ca3b324f24f@linaro.org>
+Date: Sun, 28 Feb 2021 19:04:24 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210215115138.20465-5-peter.maydell@linaro.org>
+In-Reply-To: <20210215115138.20465-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,18 +126,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PjbEl9DkI1uf
+X-TUID: ARvbbxd2fp9X
 
 On 2/15/21 3:51 AM, Peter Maydell wrote:
-> +    uint32_t len_oscclk;
-...
-> +    int i;
-...
-> +    for (i = 0; i < mmc->len_oscclk; i++) {
+> The MPS2 board has 2 LEDs, but the MPS3 board has 10 LEDs.  The
+> FPGAIO device is similar on both sets of boards, but the LED0
+> register has correspondingly more bits that have an effect.  Add a
+> device property for number of LEDs.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé<f4bug@amsat.org>
+> ---
+>   include/hw/misc/mps2-fpgaio.h |  5 ++++-
+>   hw/misc/mps2-fpgaio.c         | 31 +++++++++++++++++++++++--------
+>   2 files changed, 27 insertions(+), 9 deletions(-)
 
-Shouldn't mix types.  I'm surprised you didn't see a warning.
+Similar comment with 'int i' / 'uint32_t num_leds'.  Otherwise,
 
-Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
+

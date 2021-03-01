@@ -1,101 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3950435lfg;
-        Mon, 1 Mar 2021 14:04:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzrBvC1m/W3918jWIV0pUEs0AG6c9vR82NqLI+9cjUBMjcKsf9VQKEFPbF2kcU9l6CPnF/6
-X-Received: by 2002:a05:6808:4c7:: with SMTP id a7mr928099oie.87.1614636277903;
-        Mon, 01 Mar 2021 14:04:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614636277; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp3951827lfg;
+        Mon, 1 Mar 2021 14:06:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyVBvWc1IhdDLe9tQ9YWBBMJ9dea5T2tlGBxhR4ZKLBo26iKT2+SJyO8ehk3c+RqRq2QFbc
+X-Received: by 2002:a05:6638:388e:: with SMTP id b14mr5067318jav.62.1614636385639;
+        Mon, 01 Mar 2021 14:06:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614636385; cv=none;
         d=google.com; s=arc-20160816;
-        b=mB7YgYvceSmCVwn7hQowwVpvAFsJkmW7blUsDndQCW/uePl4OiOaHQPxEkbxjVgijr
-         +rqOFzqpL200WAzY+KLCJuiGI8gY0/zkl0P2afaNPhAu/WgfTOfF5hpk/5537oB+t9So
-         Pp5fkwA9TU/IDEBKRMr6N49XtRLD3H1mZD9zi17fiT6mmvZ9aU8MW/eDRPa86Y8M0P1L
-         gEeCiabZv0FT70o5ABBuVm363lv1Bw9y6UHJyVHDdrhPRKhhMoBxLHPipCZtg6qzfhmm
-         wupgfiSuwo7f/8qnU3rhWWd3ePHYMBVygX0IojeuoUkUncAsK7+kBDoKToNqm35JW0eD
-         bLJg==
+        b=q+y2VHvMZFhJ/rtq82G/aqFHcEA1FIHv9RPhYEDknqJt8Gyzj2YKpkTxDUe25XRE0G
+         ClANvQtVyPOuoGuDCE+wgv1Dw6HrRfbyHiCAzZ0xOXFdH2Cti3BsiygSDgrF7CnNuAkp
+         eqX+NfLzobpasOcREU2LRbk1yF/1sf++gZC+EHCH6uJVNHyV+AuDTJQ3r35Sp1pmfUPY
+         9L3eAElXNnCkNkctv4WKPEOb5LP565v0nx5PwlmOCIs3yrrUce+m1y1tJoIVgZIZlNWg
+         1zzWZSHDZsJXiLU2MQcAwY4o0vD1lawDxSZnFEFCJsGyDIWh3yWLINXSFHvyps8SYvDu
+         O8cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6w8yuNP2zUEwKLIo3lOsMB+G9xmXkg7KWNf3q3iE2oc=;
-        b=cS8BkbaAykVz1SKydTBz64fnO6xpRhvLvW2uSNUjmBnOoCJHOVqs+CE+Hh1fuWA9pP
-         +f0+WuW7TMWSM8Y0NeazIG7VAu+4nYGz9BpaQsEJDjWGfHYxph5dNZul8HF13wCRfhVF
-         3kOLOnlfdLwQ7JeYz4a17C3VOCvpr2VeG9Wz27Q0e4Rjl+zNgJyTB1brSPqCaeuGdiXr
-         97huh633NRmyy92OlBGckM21K26RJ4JQKj6MhK1qCrOGV0gtsV6yu1rOLJK10960HSK8
-         RvvoWA2zB6ikecUbHkHrG83k8QO0GjWaocjmelKw8TnQBBZWygI6W9h0fPC8k/G+EE/S
-         cbRA==
+        bh=Pw9WC6vACp5fmsq1o7bIBFCUdYDUl5sYsIdhjFrN0KY=;
+        b=Iin4xJ+YAneK2j1SXWKua0oNNScTcdMxAFnw9n8TQ+RO/xLmBCL3aKS94azpMcndhs
+         cAi1oNzmwxP+zO8NwMpczlIIEIgqGEb6iSZDkQ3F1JxUF1FBcTvuM+Gueti0FuC54kbO
+         sVr0kCbI0jlSSUIi+BqLmEO8jDVmxCTEg+nw6fRH8QNKBGA8s1I9wGgVo45gJBWNb8qp
+         dGVWiWwpLePfOGaFd1Ex+N7GFIcsghEOJMiyzmlOntZnpbThpp2T3eU5lFIF1OCao/dh
+         bGmM2NgRZbwpmO8Sl+qFyEC7wlgtracjaY/cRw9fRIO64uXWkLiqBWFuRXAmEhev/teS
+         IhbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t2iJIBFC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MGxFe2L3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2si6974057otk.276.2021.03.01.14.04.37
+        by mx.google.com with ESMTPS id m2si18163159ilg.69.2021.03.01.14.06.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 14:04:37 -0800 (PST)
+        Mon, 01 Mar 2021 14:06:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t2iJIBFC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MGxFe2L3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41040 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGqeb-0007bT-3j
-	for alex.bennee@linaro.org; Mon, 01 Mar 2021 17:04:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48618)
+	id 1lGqgK-0001We-UP
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 17:06:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGqT5-0002Xf-EQ; Mon, 01 Mar 2021 16:52:45 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:45290)
+ id 1lGqTi-0003eW-0E; Mon, 01 Mar 2021 16:53:23 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:38710)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGqSy-0005K0-NG; Mon, 01 Mar 2021 16:52:39 -0500
-Received: by mail-ed1-x536.google.com with SMTP id f6so6989729edd.12;
- Mon, 01 Mar 2021 13:52:34 -0800 (PST)
+ id 1lGqTf-0005bR-AU; Mon, 01 Mar 2021 16:53:21 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id mj10so11080832ejb.5;
+ Mon, 01 Mar 2021 13:53:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6w8yuNP2zUEwKLIo3lOsMB+G9xmXkg7KWNf3q3iE2oc=;
- b=t2iJIBFCVAKQEcBIcZipQNpz8ubr5Q9nRLeMJ6GslySjKtLZsvHRh8EV8Zp7G+IlJO
- SjZ2fjbTL7UbSpBoJqgDp0+DIhZA010VZFaR7jw6a0a+AfiJyAcIRpKouT9AyVnxXu1u
- 8qQpCypKtM+tp9DAMgQ5E9mi9TJoKcBdno8hJ1qa9VVJtdmBLz1ujXs3fFnUKcdLaR3d
- vaxmppc3ySbOs07SXHeuloKw69jA60MomOZXGmg1CLT6EGBwkoFh+Jasi3fYyvHzVMQA
- vv8Za7OFyL2Pj84KJ9SeDTZYAuIuZNPeWTd7q3VylIEdVMtGEY7T6K2BCyXgZguve7dR
- Y9Tw==
+ bh=Pw9WC6vACp5fmsq1o7bIBFCUdYDUl5sYsIdhjFrN0KY=;
+ b=MGxFe2L36N+hppLecyhnAZ0T+o7raU+kemtTVvU5lLqmMNBspsPxpTQK9orkEX4eWE
+ O5Q3Mo2mJydcaKT4Nm084bDstKf3+GaHyRH50eMbF2n9VptnxqFLQq3vtIX0BUneKOQQ
+ qwwfwCmOpqZqIFTKI1ExBXIXvpbp87c4J8a5rH9Ahjew+ilLKR+mpRoDRRbiKB64ECA/
+ E5Nm8tsMEzB+b24jh7qs1yS9CwR6enC5BTUszF9MHuZXt1RWBIBjgBqCmu8jJP1oLKMC
+ fm7FwW72VBb6tqLzFdbZglXvuO8Wp3m7rwRFjed7WQ4irGi78Vp4lrhD8BHDFbmb4opo
+ mZ7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=6w8yuNP2zUEwKLIo3lOsMB+G9xmXkg7KWNf3q3iE2oc=;
- b=t5HVTLMWpyD7cja2cFyJtSqhdDZNILxg/u2ua/sATjNfnPeQ/eHv2ios6PIAMKfUfw
- LRkuFSGi6RPVSqSifmE5kAn7tvzLnSrRezDYHJLvkaKWKFytjjmGs83ykfjot7sRkEwk
- jwcaIAPq3XiXs3mpDdhH8gHWlMZclYhi20XVjaNEr4AOvXDsnYjuwrKoBRoCREtlk8DD
- XHkWIGus3boeu+NRLRjPye0Volc23HhAdKvsSxy3H/EdcB7L/F036LRlcoUufd6K07Pq
- ztUNLz/LtlV8CXIgHnl6emwxN0pQaaIOGUB3Pguc6zs2GqblHp4+PpsYk6enaBTW9QGl
- ap5A==
-X-Gm-Message-State: AOAM531wddVIMMVLKue5dnNqqatHVqt70gDkDYVCktlS828vD8XFIL61
- YQk/GA/aVd7TbHrtpJ9akJqpzMakY98=
-X-Received: by 2002:aa7:d44a:: with SMTP id q10mr10097384edr.278.1614635553279; 
- Mon, 01 Mar 2021 13:52:33 -0800 (PST)
+ bh=Pw9WC6vACp5fmsq1o7bIBFCUdYDUl5sYsIdhjFrN0KY=;
+ b=F11UkDFrlEhD2JB8WZAiqgjp2dWqLmQp9M+iNvIoEhWoa0MG5zreb3lM3GElFIP9NP
+ BJOQM4F8fLliYHK2JzWlZDp+4G0sjG48LObmRwmKvaJRb8OaXxTKNDymR1LDy3hzo92N
+ s3Lq85hVYxF5TwAw1jgl/LZjitILxVIGITbHtb+mR9bjOKJSN1srOt3JQsA/r9oy+v4N
+ XjiUDsQqsBVpS0kr8Wj1vw0cGz6g4eU5AFWbEHZC80jb4upBJHv0xS8lQMd4Sz53H624
+ eSQn0ZOJl+0c1INLNPjwWCh7jTrWLFfwLWgyPMhrvLMoiPc77oW/1yZgZO3SumLd1uWm
+ PXGA==
+X-Gm-Message-State: AOAM531iscjmrzmSUzUiNmgCFSaCBCi8nj6AvG0r9hjUI7o0Rm69K3D8
+ sVG+CI782gx9038N9qRqwuNkG5EOs6Q=
+X-Received: by 2002:a17:907:3e06:: with SMTP id
+ hp6mr17900073ejc.254.1614635596186; 
+ Mon, 01 Mar 2021 13:53:16 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id cf6sm13288712edb.92.2021.03.01.13.52.30
+ by smtp.gmail.com with ESMTPSA id d6sm15594748eje.20.2021.03.01.13.53.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Mar 2021 13:52:32 -0800 (PST)
+ Mon, 01 Mar 2021 13:53:15 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 11/17] cpu: Move CPUClass::write_elf* to SysemuCPUOps
-Date: Mon,  1 Mar 2021 22:51:04 +0100
-Message-Id: <20210301215110.772346-12-f4bug@amsat.org>
+Subject: [RFC PATCH v2 17/17] cpu: Restrict "hw/core/sysemu-cpu-ops.h" to
+ target/cpu.c
+Date: Mon,  1 Mar 2021 22:51:10 +0100
+Message-Id: <20210301215110.772346-18-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210301215110.772346-1-f4bug@amsat.org>
 References: <20210301215110.772346-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -140,240 +142,329 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qnjZiMgm4yZQ
+X-TUID: 7d3TxvX0zW8L
 
-The write_elf*() handlers are used to dump vmcore images.
-This feature is only meaningful for system emulation.
+Somehow similar to commit 78271684719 ("cpu: tcg_ops: move to
+tcg-cpu-ops.h, keep a pointer in CPUClass"):
 
+We cannot in principle make the SysEmu Operations field definitions
+conditional on CONFIG_SOFTMMU in code that is included by both
+common_ss and specific_ss modules.
+
+Therefore, what we can do safely to restrict the SysEmu fields to
+system emulation builds, is to move all sysemu operations into a
+separate header file, which is only included by system-specific code.
+
+This leaves just a NULL pointer in the cpu.h for the user-mode builds.
+
+Inspired-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h            | 17 -----------------
- include/hw/core/sysemu-cpu-ops.h | 24 ++++++++++++++++++++++++
- hw/core/cpu.c                    | 16 ++++++++--------
- target/arm/cpu.c                 |  4 ++--
- target/i386/cpu.c                |  8 ++++----
- target/s390x/cpu.c               |  2 +-
- target/ppc/translate_init.c.inc  |  6 ++----
- 7 files changed, 41 insertions(+), 36 deletions(-)
+RFC: improve commit description?
+
+ include/hw/core/cpu.h           | 3 ++-
+ cpu.c                           | 1 +
+ hw/core/cpu.c                   | 1 +
+ target/alpha/cpu.c              | 1 +
+ target/arm/cpu.c                | 1 +
+ target/avr/cpu.c                | 1 +
+ target/cris/cpu.c               | 1 +
+ target/hppa/cpu.c               | 1 +
+ target/i386/cpu.c               | 1 +
+ target/m68k/cpu.c               | 1 +
+ target/microblaze/cpu.c         | 1 +
+ target/mips/cpu.c               | 1 +
+ target/moxie/cpu.c              | 1 +
+ target/nios2/cpu.c              | 1 +
+ target/openrisc/cpu.c           | 1 +
+ target/riscv/cpu.c              | 1 +
+ target/rx/cpu.c                 | 1 +
+ target/s390x/cpu.c              | 1 +
+ target/sh4/cpu.c                | 1 +
+ target/sparc/cpu.c              | 1 +
+ target/tricore/cpu.c            | 1 +
+ target/xtensa/cpu.c             | 1 +
+ target/ppc/translate_init.c.inc | 1 +
+ 23 files changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 781cd8fc42b..0a2c29c3735 100644
+index d99d3c830dc..398696f0f2d 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -112,14 +112,6 @@ struct AccelCPUClass;
-  *       a memory access with the specified memory transaction attributes.
-  * @gdb_read_register: Callback for letting GDB read a register.
-  * @gdb_write_register: Callback for letting GDB write a register.
-- * @write_elf64_note: Callback for writing a CPU-specific ELF note to a
-- * 64-bit VM coredump.
-- * @write_elf32_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-- * note to a 32-bit VM coredump.
-- * @write_elf32_note: Callback for writing a CPU-specific ELF note to a
-- * 32-bit VM coredump.
-- * @write_elf32_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-- * note to a 32-bit VM coredump.
-  * @gdb_num_core_regs: Number of core registers accessible to GDB.
-  * @gdb_core_xml_file: File name for core registers GDB XML description.
-  * @gdb_stop_before_watchpoint: Indicates whether GDB expects the CPU to stop
-@@ -163,15 +155,6 @@ struct CPUClass {
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
+@@ -80,7 +80,8 @@ struct TCGCPUOps;
+ /* see accel-cpu.h */
+ struct AccelCPUClass;
  
--    int (*write_elf64_note)(WriteCoreDumpFunction f, CPUState *cpu,
--                            int cpuid, void *opaque);
--    int (*write_elf64_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
--                                void *opaque);
--    int (*write_elf32_note)(WriteCoreDumpFunction f, CPUState *cpu,
--                            int cpuid, void *opaque);
--    int (*write_elf32_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
--                                void *opaque);
--
-     const char *gdb_core_xml_file;
-     gchar * (*gdb_arch_name)(CPUState *cpu);
-     const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
-diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index b9ffca07665..60c667801ef 100644
---- a/include/hw/core/sysemu-cpu-ops.h
-+++ b/include/hw/core/sysemu-cpu-ops.h
-@@ -21,6 +21,30 @@ typedef struct SysemuCPUOps {
-      * GUEST_PANICKED events.
-      */
-     GuestPanicInformation* (*get_crash_info)(CPUState *cpu);
-+    /**
-+     * @write_elf32_note: Callback for writing a CPU-specific ELF note to a
-+     * 32-bit VM coredump.
-+     */
-+    int (*write_elf32_note)(WriteCoreDumpFunction f, CPUState *cpu,
-+                            int cpuid, void *opaque);
-+    /**
-+     * @write_elf64_note: Callback for writing a CPU-specific ELF note to a
-+     * 64-bit VM coredump.
-+     */
-+    int (*write_elf64_note)(WriteCoreDumpFunction f, CPUState *cpu,
-+                            int cpuid, void *opaque);
-+    /**
-+     * @write_elf32_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-+     * note to a 32-bit VM coredump.
-+     */
-+    int (*write_elf32_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
-+                                void *opaque);
-+    /**
-+     * @write_elf64_qemunote: Callback for writing a CPU- and QEMU-specific ELF
-+     * note to a 64-bit VM coredump.
-+     */
-+    int (*write_elf64_qemunote)(WriteCoreDumpFunction f, CPUState *cpu,
-+                                void *opaque);
-     /**
-      * @virtio_is_big_endian: Callback to return %true if a CPU which supports
-      *       runtime configurable endianness is currently big-endian.
+-#include "hw/core/sysemu-cpu-ops.h"
++/* see sysemu-cpu-ops.h */
++struct SysemuCPUOps;
+ 
+ /**
+  * CPUClass:
+diff --git a/cpu.c b/cpu.c
+index 64e17537e21..29dafee581f 100644
+--- a/cpu.c
++++ b/cpu.c
+@@ -29,6 +29,7 @@
+ #ifdef CONFIG_USER_ONLY
+ #include "qemu.h"
+ #else
++#include "hw/core/sysemu-cpu-ops.h"
+ #include "exec/address-spaces.h"
+ #endif
+ #include "sysemu/tcg.h"
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 0aebc18c41f..c74390aafbf 100644
+index 7a8487d468f..da7543be514 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -151,10 +151,10 @@ int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
+@@ -35,6 +35,7 @@
+ #include "trace/trace-root.h"
+ #include "qemu/plugin.h"
+ #include "sysemu/hw_accel.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ CPUState *cpu_by_arch_id(int64_t id)
  {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
+diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+index d9a51d9f647..f6b4bb14cc5 100644
+--- a/target/alpha/cpu.c
++++ b/target/alpha/cpu.c
+@@ -24,6 +24,7 @@
+ #include "qemu/qemu-print.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
++#include "hw/core/sysemu-cpu-ops.h"
  
--    if (!cc->write_elf32_qemunote) {
-+    if (!cc->sysemu_ops->write_elf32_qemunote) {
-         return 0;
-     }
--    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
-+    return (*cc->sysemu_ops->write_elf32_qemunote)(f, cpu, opaque);
- }
  
- int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
-@@ -162,10 +162,10 @@ int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (!cc->write_elf32_note) {
-+    if (!cc->sysemu_ops->write_elf32_note) {
-         return -1;
-     }
--    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
-+    return (*cc->sysemu_ops->write_elf32_note)(f, cpu, cpuid, opaque);
- }
- 
- int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-@@ -173,10 +173,10 @@ int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (!cc->write_elf64_qemunote) {
-+    if (!cc->sysemu_ops->write_elf64_qemunote) {
-         return 0;
-     }
--    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
-+    return (*cc->sysemu_ops->write_elf64_qemunote)(f, cpu, opaque);
- }
- 
- int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
-@@ -184,10 +184,10 @@ int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (!cc->write_elf64_note) {
-+    if (!cc->sysemu_ops->write_elf64_note) {
-         return -1;
-     }
--    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
-+    return (*cc->sysemu_ops->write_elf64_note)(f, cpu, cpuid, opaque);
- }
- 
- static int cpu_common_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+ static void alpha_cpu_set_pc(CPUState *cs, vaddr value)
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2bad6307cce..7dc6956f2cc 100644
+index 6cd546213de..7fa22a6beba 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -2262,6 +2262,8 @@ static gchar *arm_gdb_arch_name(CPUState *cs)
- 
- #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps arm_sysemu_ops = {
-+    .write_elf32_note = arm_cpu_write_elf32_note,
-+    .write_elf64_note = arm_cpu_write_elf64_note,
-     .virtio_is_big_endian = arm_cpu_virtio_is_big_endian,
-     .vmsd = &vmstate_arm_cpu,
- };
-@@ -2306,8 +2308,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_attrs_debug = arm_cpu_get_phys_page_attrs_debug;
-     cc->asidx_from_attrs = arm_asidx_from_attrs;
--    cc->write_elf64_note = arm_cpu_write_elf64_note;
--    cc->write_elf32_note = arm_cpu_write_elf32_note;
-     cc->sysemu_ops = &arm_sysemu_ops;
+@@ -35,6 +35,7 @@
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/loader.h"
+ #include "hw/boards.h"
++#include "hw/core/sysemu-cpu-ops.h"
  #endif
-     cc->gdb_num_core_regs = 26;
+ #include "sysemu/sysemu.h"
+ #include "sysemu/tcg.h"
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index 040d3526995..89de301fc2b 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -24,6 +24,7 @@
+ #include "exec/exec-all.h"
+ #include "cpu.h"
+ #include "disas/dis-asm.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static void avr_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index 77f821f4d9a..ed944094cf3 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -26,6 +26,7 @@
+ #include "qemu/qemu-print.h"
+ #include "cpu.h"
+ #include "mmu.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ 
+ static void cris_cpu_set_pc(CPUState *cs, vaddr value)
+diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+index 7de37aadd4d..304a975eddf 100644
+--- a/target/hppa/cpu.c
++++ b/target/hppa/cpu.c
+@@ -25,6 +25,7 @@
+ #include "qemu/module.h"
+ #include "exec/exec-all.h"
+ #include "fpu/softfloat.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ 
+ static void hppa_cpu_set_pc(CPUState *cs, vaddr value)
 diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index b7672a7accc..b26905b22a3 100644
+index 3519cef8fba..1e8ee015bfc 100644
 --- a/target/i386/cpu.c
 +++ b/target/i386/cpu.c
-@@ -7389,6 +7389,10 @@ static Property x86_cpu_properties[] = {
- #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps i386_sysemu_ops = {
-     .get_crash_info = x86_cpu_get_crash_info,
-+    .write_elf32_note = x86_cpu_write_elf32_note,
-+    .write_elf64_note = x86_cpu_write_elf64_note,
-+    .write_elf32_qemunote = x86_cpu_write_elf32_qemunote,
-+    .write_elf64_qemunote = x86_cpu_write_elf64_qemunote,
-     .vmsd = &vmstate_x86_cpu,
- };
+@@ -60,6 +60,7 @@
+ #include "exec/address-spaces.h"
+ #include "hw/i386/apic_internal.h"
+ #include "hw/boards.h"
++#include "hw/core/sysemu-cpu-ops.h"
  #endif
-@@ -7428,10 +7432,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->asidx_from_attrs = x86_asidx_from_attrs;
-     cc->get_memory_mapping = x86_cpu_get_memory_mapping;
-     cc->get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug;
--    cc->write_elf64_note = x86_cpu_write_elf64_note;
--    cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
--    cc->write_elf32_note = x86_cpu_write_elf32_note;
--    cc->write_elf32_qemunote = x86_cpu_write_elf32_qemunote;
-     cc->sysemu_ops = &i386_sysemu_ops;
- #endif /* !CONFIG_USER_ONLY */
  
+ #include "disas/capstone.h"
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index eaf5f34d22c..96fe37e84f1 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -23,6 +23,7 @@
+ #include "cpu.h"
+ #include "migration/vmstate.h"
+ #include "fpu/softfloat.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index a21f15192ae..ad3996cd90e 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -28,6 +28,7 @@
+ #include "hw/qdev-properties.h"
+ #include "exec/exec-all.h"
+ #include "fpu/softfloat-helpers.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static const struct {
+     const char *name;
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 285564b4d5b..ab3b6a76b1a 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -34,6 +34,7 @@
+ #include "hw/semihosting/semihost.h"
+ #include "qapi/qapi-commands-machine-target.h"
+ #include "fpu_helper.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ #if !defined(CONFIG_USER_ONLY)
+ 
+diff --git a/target/moxie/cpu.c b/target/moxie/cpu.c
+index 47b8735bb75..9c450fc9a61 100644
+--- a/target/moxie/cpu.c
++++ b/target/moxie/cpu.c
+@@ -22,6 +22,7 @@
+ #include "cpu.h"
+ #include "migration/vmstate.h"
+ #include "machine.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static void moxie_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index e5cbf43d6ee..6e89d3a7abd 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -26,6 +26,7 @@
+ #include "exec/gdbstub.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static void nios2_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index c666e86e919..fceacf97203 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -21,6 +21,7 @@
+ #include "qapi/error.h"
+ #include "qemu/qemu-print.h"
+ #include "cpu.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static void openrisc_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index eaf7c13e5a6..f24b033426d 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -29,6 +29,7 @@
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ #include "fpu/softfloat-helpers.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ /* RISC-V CPU definitions */
+ 
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index d1a7a5f6877..458553b8fba 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -25,6 +25,7 @@
+ #include "exec/exec-all.h"
+ #include "hw/loader.h"
+ #include "fpu/softfloat.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static void rx_cpu_set_pc(CPUState *cs, vaddr value)
+ {
 diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 04c14fcd9da..92b7a66d3c3 100644
+index 30117fc8cd7..511e9b2aa6f 100644
 --- a/target/s390x/cpu.c
 +++ b/target/s390x/cpu.c
-@@ -480,6 +480,7 @@ static void s390_cpu_reset_full(DeviceState *dev)
- #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps s390_sysemu_ops = {
-     .get_crash_info = s390_cpu_get_crash_info,
-+    .write_elf64_note = s390_cpu_write_elf64_note,
-     .vmsd = &vmstate_s390_cpu,
- };
+@@ -42,6 +42,7 @@
+ #include "sysemu/arch_init.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/tcg.h"
++#include "hw/core/sysemu-cpu-ops.h"
  #endif
-@@ -524,7 +525,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_write_register = s390_cpu_gdb_write_register;
- #ifndef CONFIG_USER_ONLY
-     cc->get_phys_page_debug = s390_cpu_get_phys_page_debug;
--    cc->write_elf64_note = s390_cpu_write_elf64_note;
-     cc->sysemu_ops = &s390_sysemu_ops;
- #endif
-     cc->disas_set_info = s390_cpu_disas_set_info;
+ #include "fpu/softfloat-helpers.h"
+ #include "disas/capstone.h"
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index 843f39de41c..273bf3fbe8e 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -26,6 +26,7 @@
+ #include "migration/vmstate.h"
+ #include "exec/exec-all.h"
+ #include "fpu/softfloat-helpers.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static void superh_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index c8a115c886a..ce9cc6469a9 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -25,6 +25,7 @@
+ #include "exec/exec-all.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/visitor.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ //#define DEBUG_FEATURES
+ 
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 0c4b5021e79..4709854a0aa 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -23,6 +23,7 @@
+ #include "exec/exec-all.h"
+ #include "qemu/error-report.h"
+ #include "migration/vmstate.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ static inline void set_feature(CPUTriCoreState *env, int feature)
+ {
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 44a4524bc0a..7e24cb3269f 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -34,6 +34,7 @@
+ #include "fpu/softfloat.h"
+ #include "qemu/module.h"
+ #include "migration/vmstate.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ 
+ static void xtensa_cpu_set_pc(CPUState *cs, vaddr value)
 diff --git a/target/ppc/translate_init.c.inc b/target/ppc/translate_init.c.inc
-index 2dd4f47adbb..068f4a4012e 100644
+index d38d194fe87..591fae52410 100644
 --- a/target/ppc/translate_init.c.inc
 +++ b/target/ppc/translate_init.c.inc
-@@ -10845,6 +10845,8 @@ static Property ppc_cpu_properties[] = {
+@@ -42,6 +42,7 @@
+ #include "disas/capstone.h"
+ #include "fpu/softfloat.h"
+ #include "qapi/qapi-commands-machine-target.h"
++#include "hw/core/sysemu-cpu-ops.h"
  
- #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps ppc_sysemu_ops = {
-+    .write_elf32_note = ppc32_cpu_write_elf32_note,
-+    .write_elf64_note = ppc64_cpu_write_elf64_note,
-     .virtio_is_big_endian = ppc_cpu_is_big_endian,
-     .vmsd = &vmstate_ppc_cpu,
- };
-@@ -10894,10 +10896,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
-     cc->get_phys_page_debug = ppc_cpu_get_phys_page_debug;
-     cc->sysemu_ops = &ppc_sysemu_ops;
- #endif
--#if defined(CONFIG_SOFTMMU)
--    cc->write_elf64_note = ppc64_cpu_write_elf64_note;
--    cc->write_elf32_note = ppc32_cpu_write_elf32_note;
--#endif
- 
-     cc->gdb_num_core_regs = 71;
- #ifndef CONFIG_USER_ONLY
+ /* #define PPC_DUMP_CPU */
+ /* #define PPC_DEBUG_SPR */
 -- 
 2.26.2
 

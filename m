@@ -1,104 +1,97 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4559405lfg;
-        Tue, 2 Mar 2021 07:20:26 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyQA587LOqUI1Kz3smG/+Pw6jDJBq0Bgo9CpMwfFlk41+EoMt+oSsHNoz1Ch//3A10rorzC
-X-Received: by 2002:a92:c145:: with SMTP id b5mr17468150ilh.186.1614698426504;
-        Tue, 02 Mar 2021 07:20:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614698426; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4562883lfg;
+        Tue, 2 Mar 2021 07:24:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyfaph76H4zz2fYVQmAyb1fOIyuWeVtHoBGtY3f/APTbFXQa+fyLGa7RByeNPxxQmQDkmzP
+X-Received: by 2002:a5d:9717:: with SMTP id h23mr18392055iol.4.1614698692154;
+        Tue, 02 Mar 2021 07:24:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614698692; cv=none;
         d=google.com; s=arc-20160816;
-        b=mZPgHd7u3eEC96buCdn+rUI0mLDTDikQOXC41NcZJ5lZJHJppLRciltlmoKzFDcuFT
-         hzkiQQWSDBT8+Y1POUE+Mw7ssvELJH4D92rIUL53ezjKA9ocbf5wy3IKD1cpVdmjQqyR
-         z6zU2TSWCDBj0FSmbSuT+2rohJJvvdN+9opsR8LsAsaEBcROpmotbck5pYR1E223PiNE
-         axa9O694F3xm0RuLSc2ITpmDZdiuUNnMIsC3vBJ6NoU69PwMfoKXPmOaaCBYBetOqaJb
-         cknLEqJLz7KWUXgJYIuaH7rX/T/LNjQshOfKKPnipM4kGQyX/6Tjfy+fXGs4jFuNwFcl
-         DG2Q==
+        b=fcq9T4LogwFblAMqh3LLgQZBMFytJIaNhF640vbHIQJpzBBCuzRTViZ7G1+WLEq3Nl
+         /YXuNnNyWXMvqKlMHis2EQfNIc/mcXLQQ8Bn5Cr7OfDMWYE+qmDsFDz3xsGXpwuMBMP/
+         THRIdCvLZ6MUYwRR4HiQ5YOVMY0V9Cbo+B0xfU9uCcQ7qnMRjHx2PKylWZ+EQZxes57l
+         uLCf0plVEfCYvRr08QMeKDzGoFINwNV/qb02UbTAccbgUN8f0ZYAoJTiwh/9CwPNeLvc
+         mWh89QyPWwOCiqXFq0oeOvEjRGM4WMw5JYZhrZI/zJs32IdFM99XLFZsY8JYD9OXdYKn
+         l4mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=5qBR6nAlg2de3V4VtZKmdXZn/o6EWE+GCWP3kLKcir8=;
-        b=tbv18PWIuKSN3ybF62xBwQzy80F0wSA3SSST39DcBLM4EjIJQEdsYcnCutT+IprvAF
-         ivslklbNNrluwzfeaybFHpjZDf5oO6KT8jV+lI7s2eH0TEWydMaHBaxLvOjIrXhKOH/K
-         xYCDsi15NwUwyQjjW+bQNgbFtogVcJDOpl7c+79+EZpWwk+3aQ9Kr/9w4HJS5p2wbx/H
-         zdY6mFc+uBG6Ma0NdhNNoJj0g1H5mjobSs3SZXZBDTHBU1fMNCmIu9AX04ipxctM8gdm
-         DmEVkrtK2PamA8SUJIfnMB2kAh7sA9yBCHDatWfa2N2+H6f80ur5OxEpGeu3HvDvTIia
-         Cidg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=iyvcHqy4TZ9zgvUdxxp5oLfO86c3VXIenFu+vWz3md4=;
+        b=XC9NH0hEdGMlC/JwznGcvd0Gvs3OQV0Fan1CxsKphXB9U41HwDlFgNaZd/p5A50GPW
+         fIjmgF9GELTyKu4JNglv0RCcoI44Z9m1bb4KZ5GfE7u4e/UIBA3ct4NDusjk4/vlp78s
+         S8NDwQ33SHOtyKFJZVacGkJ6zVpIhHCvd6mqejN3/bLsho+qiPJ/y6XYB3paZGTtmflt
+         xIsthlq8CptiAP2kYkEEFDyAbFpvkk82XmkTjJfERzEFRKPMkDVe143r09WmqbYf268H
+         nWj5ftpSW9QPAp+Y/9N/lrpgbxDCYsSMo7b+qlK7XDdzE9yutRfS4eal1z1gcr52z1uZ
+         B3qQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t79/b9ff";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WU1a3yDq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l14si9445696jam.70.2021.03.02.07.20.26
+        by mx.google.com with ESMTPS id d12si18911964jak.6.2021.03.02.07.24.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 07:20:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Mar 2021 07:24:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="t79/b9ff";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WU1a3yDq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38662 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH6oz-0006ep-Qg
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 10:20:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48624)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lH6tH-0003oJ-ES
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 10:24:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48890)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lH6oY-0006bv-AW; Tue, 02 Mar 2021 10:19:58 -0500
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b]:38938)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lH6pr-00086P-5v; Tue, 02 Mar 2021 10:21:19 -0500
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f]:40424)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lH6oW-0007zV-Qq; Tue, 02 Mar 2021 10:19:58 -0500
-Received: by mail-lj1-x22b.google.com with SMTP id u4so24391912ljh.6;
- Tue, 02 Mar 2021 07:19:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1lH6po-0008FN-Kf; Tue, 02 Mar 2021 10:21:18 -0500
+Received: by mail-yb1-xb2f.google.com with SMTP id c131so21027664ybf.7;
+ Tue, 02 Mar 2021 07:21:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=5qBR6nAlg2de3V4VtZKmdXZn/o6EWE+GCWP3kLKcir8=;
- b=t79/b9ffHOD6JceI39MNNYC61SAPzhhnMn87BWeC3n9cDgEGssXa831gB/ioqE2tgl
- FMW2KtEP4vV5bQQdbOjCHD7E+6xjTjgNZ7zhC4cUlXeayC1a2oULpbSEGvXZLobeZyOE
- iJ6CUFNSxl0EBUEi+ZG95vxY24JVlI694yattcpnLQ9Lrda9I3+66VuzDjf9D+mcIAEN
- g9ERKSC9ZBfBmrIKUbYt9dofySy4+DKB5qV5PitoG5ou4w2VIcbEuwhA4oZ1TJcMcVWr
- ylIbHst6nYIED7kRnmCIeokpxYyhKII75m7amReyCZ6Mbtai0+FRpJp844SoKAd0l/EP
- 2/Hw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iyvcHqy4TZ9zgvUdxxp5oLfO86c3VXIenFu+vWz3md4=;
+ b=WU1a3yDq9i0k5l+zA6mlMi2mXUJoYNE2gC3yxD0n0Jkf2Re5/TwWn9msMUfi1PZl/d
+ RcyvRv4KydMZX1I+jMgrAJnq01i4FfFI7eD9hwm9QENQozsRu7Me52O1p3YcgXn86XRj
+ 16VToHZPQdVC3jBkgJu/ZOWWJcdiXTd5dovjan/fE/0QTrVOjcPfGavM5+GPHEb57Koh
+ Nd22gDfmlVrcvtxaoMO4TK5E2mx5GpuyyIQx3drJvlvWK4U0YpPQsGxtHZmyUGQc2S98
+ X4KIKXg7YqqMIuhrnG5DArg5S+HJbLHNUWf/TyIXEU0oihLdw1x1NrYYUmd016IGArIF
+ Sujw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=5qBR6nAlg2de3V4VtZKmdXZn/o6EWE+GCWP3kLKcir8=;
- b=JWfCECMatk0ffY26Yodz0L7A/7yg4scWbeTcYbzGxZPgKw7cAmJ+sgmKq7c5ywHEkQ
- V7KF7iB4t6Yz/zvL2URRWFtRHux1x9zqwv24pRAO/n4GhSk4tolkEIAWkDWGTUxeoTJA
- SXuMs9Yb2cFuN5rtPM8uew3gHqZzVgrcy79q4C/+aCJgkrifXxpBv26jHoOMc9jIMUsE
- zrH//dTkiUiN61Y1XHp0uJF58YJT3BNOLUW8+nw9E3DPQCMkrOM6ws+GVSmqrmNK+icN
- BVucMDJfp3KNE2p93NHmV7LqLxNn/2t6I2T71iFU8BgxW81oCDDTAcuSriEfdv8WrVFE
- 9BSg==
-X-Gm-Message-State: AOAM530Dvh/ben4FmTh4aypiRs0FBsjH4ounGAVPVLY0NPBc51i6l2zP
- l+nBjc1EDX2QMTa7Rgp3n7o=
-X-Received: by 2002:a05:651c:2108:: with SMTP id
- a8mr12177466ljq.329.1614698394799; 
- Tue, 02 Mar 2021 07:19:54 -0800 (PST)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id v22sm742287lfr.277.2021.03.02.07.19.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 07:19:54 -0800 (PST)
-Date: Tue, 2 Mar 2021 16:19:53 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH v6 1/5] hw/dma: xlnx_csu_dma: Implement a Xilinx CSU DMA
- model
-Message-ID: <20210302151953.GA477672@toto>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iyvcHqy4TZ9zgvUdxxp5oLfO86c3VXIenFu+vWz3md4=;
+ b=XDd5y2xsouAaYVk8EYG1sLGGP8yfTrn5x5Dn8Xc9gZLWlbzYKvSIjrzmFeWIGfqJb3
+ nrH3bCiH4aP+Xw1CtvIaS1t9htrvgBBW1gQ7F8gG0G0u2IAKzkeTeQ/7R3Wq1TDaDOIt
+ AaTI3fFwiHxGxPE2u9LFo88qHrhLCw0yDnImclBDyXpOWMjOBfesaZm61I0PwCW9stFy
+ GhveVhXfdYdGVsMv5uB4YJ1uVMkv+FTi6uZe9qu9rQJMXH/Th4lOxj+5Nna7MGD9t7Al
+ +Gvf3BzFiDj1bJph0EE/NAr3LKrp2tRiN+jhSSbm3AzKfVA0/ykUa2+1ALzuHYkm0aIa
+ voIg==
+X-Gm-Message-State: AOAM531SA3VZkXiw2YBrh7/Gm7umGYN5glBGthvAxRSzsKsPnrd1k1Wl
+ yaimHxMr9M+qpslVDsR6c++ZQRQH+Ssf/3mvW7s=
+X-Received: by 2002:a25:2d1f:: with SMTP id t31mr33212759ybt.239.1614698474501; 
+ Tue, 02 Mar 2021 07:21:14 -0800 (PST)
+MIME-Version: 1.0
 References: <20210301132011.8494-1-bmeng.cn@gmail.com>
  <20210301132011.8494-2-bmeng.cn@gmail.com>
  <20210302150348.GZ477672@toto>
  <CAEUhbmVeha7EOjz-q-y+cihL_TG1Afz-M4Go9eBTD0g4JcDgOw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAEUhbmVeha7EOjz-q-y+cihL_TG1Afz-M4Go9eBTD0g4JcDgOw@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22b.google.com
+ <20210302151953.GA477672@toto>
+In-Reply-To: <20210302151953.GA477672@toto>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Tue, 2 Mar 2021 23:21:02 +0800
+Message-ID: <CAEUhbmWDqq8tW2_WWZsP39OJt3F8uxgioWCneREjqKDf_K1qkw@mail.gmail.com>
+Subject: Re: [PATCH v6 1/5] hw/dma: xlnx_csu_dma: Implement a Xilinx CSU DMA
+ model
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,60 +100,67 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Xuzhou Cheng <xuzhou.cheng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Francisco Iglesias <francisco.iglesias@xilinx.com>,
  qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vzqb/QzNloNU
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C1VH9tv77cxz
 
-On Tue, Mar 02, 2021 at 11:16:10PM +0800, Bin Meng wrote:
-> Hi Edgar,
+Hi Edgar,
 
-Hi Bin,
-
-
-> 
-> On Tue, Mar 2, 2021 at 11:03 PM Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
+On Tue, Mar 2, 2021 at 11:19 PM Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> On Tue, Mar 02, 2021 at 11:16:10PM +0800, Bin Meng wrote:
+> > Hi Edgar,
+>
+> Hi Bin,
+>
+>
 > >
-> > On Mon, Mar 01, 2021 at 09:20:07PM +0800, Bin Meng wrote:
-> > > From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+> > On Tue, Mar 2, 2021 at 11:03 PM Edgar E. Iglesias
+> > <edgar.iglesias@gmail.com> wrote:
 > > >
-> > > ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
-
-....
-
-> > The 3 DONE_CNT bits in R_STATUS need to be w1c so that SW can clear the counter.
+> > > On Mon, Mar 01, 2021 at 09:20:07PM +0800, Bin Meng wrote:
+> > > > From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
+> > > >
+> > > > ZynqMP QSPI supports SPI transfer using DMA mode, but currently this
+>
+> ....
+>
+> > > The 3 DONE_CNT bits in R_STATUS need to be w1c so that SW can clear the counter.
+> > >
+> > >             .w1c = R_STATUS_DONE_CNT_MASK,                                    \
+> > >
+> > >
+> > > For reference, I'm attaching the complete diff I used to pass the testsuite:
+> > >
 > >
-> >             .w1c = R_STATUS_DONE_CNT_MASK,                                    \
+> > Thanks for the review and testing. We will incorporate your diff, test
+> > and send v7.
 > >
-> >
-> > For reference, I'm attaching the complete diff I used to pass the testsuite:
-> >
-> 
-> Thanks for the review and testing. We will incorporate your diff, test
-> and send v7.
-> 
-> Should we include your SoB tag for the diff?
+> > Should we include your SoB tag for the diff?
+>
+> If you take the changes as from my example, you can include:
+>
+> Tested-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-If you take the changes as from my example, you can include:
+Great, thank you!
 
-Tested-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-Thanks & Best regards,
-Edgar
+Regards,
+Bin

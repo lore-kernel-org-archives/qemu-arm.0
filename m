@@ -1,324 +1,147 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4353585lfg;
-        Tue, 2 Mar 2021 02:38:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx/3gIORtxUCcJPa68vtsdyHXur2EqiUD5tUKpvqAeh6WyNi3o8ZmqP93wICDBpTrMZ2A4V
-X-Received: by 2002:a25:9c02:: with SMTP id c2mr28210053ybo.402.1614681487122;
-        Tue, 02 Mar 2021 02:38:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614681487; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4372118lfg;
+        Tue, 2 Mar 2021 03:10:12 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzcYtCzqFDchH102KfkR3N6qZd1AYzhxc2GqMqY/MG57QbYfG29mWj9+lxqW5BO9Z2SvkbV
+X-Received: by 2002:a05:6638:12cf:: with SMTP id v15mr20014511jas.77.1614683412186;
+        Tue, 02 Mar 2021 03:10:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614683412; cv=none;
         d=google.com; s=arc-20160816;
-        b=xWFFbYXpIghSKqg4mRU7sftZ2O1sB5rv+Vdjejvvbwo3BmAyGuJbrNV+vAbary2Bq1
-         C2ONLLC+pJRa+G648e5IVYniGf0JHafMvcgB/nLFeivXPtznWnBqGFnW6CjKLEgejzUW
-         3eEATJNNyeg24AMm8AlcHWePX18yw8dt4SkdpDZIFyruw8D8ADCgqZ2lzu6ZQXaf14cq
-         kvd9Wz+5C8uDk2g560ffikdoYurLrhZtFhBu1YUtZOS9XBBjmJYrE1txKBua/4aqZFwo
-         eKotFTSxfwm5bDFLrekTEZBv9VEKS7vL820aiRB7eCcw+IYIw53Yct4jR7VWH9DAF0W3
-         XhQQ==
+        b=EnBTcuq0Zer72UnfGDHIt9aAFJJN93Cj0hKWVucih1WUIyt4CtDhKtycLMrTjR0PWs
+         VWdsUUEBOZ73FMNZGJYwzZxkd7uQz2Rs9rFwe1Nk1YdNPu66UaawUsZrdYA6YIsoWJWi
+         BxTazZDLQwF2nMvAHr4T7fRJ+TTYeZxPpl+BEwzgZS6YA/TxIfcKCeqrMb+SI+auLgpc
+         W6sJA+lIMRHHxdVEa6mVDEqp8CHh9odUH9GrL8wwgGXzDb+wx35oXfVZxY+gAUagDJPD
+         0hGF6kdjCeR44UvsOR8MGzzKSPEv4JnJQIuLPTsKWTmr+YfcooFX0XZ8ahTaRpF0UxNU
+         C+aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:organization:from:references:to:dkim-signature;
-        bh=CTHHQWRcJV4w16AxX8TZ+6xlFcNj5gOYseRVR28vbBk=;
-        b=uYUxUkTO1lCGABtVRKELo0fD0rUaxYAi8HLBwF8w6d1lajUxn+slTLypCnn1ysUv0R
-         QVTGpGxtnkH1JLwvqVc75dSMP3AgKgYKp/cTMtU/8mrNe6TAhmNZSDeUATiOsYMdocJs
-         Ax59JhnQH8hzfQPDt0tYnjLy0GlAdHBXbvbR9nZZ+B0mommmA0tfxWl2b+iznhvsUQ9f
-         qlzTkEQ23RGzwrkkt3e6NH3kuZUXcz5cASfqElWQYAthY/0zFWNBdVDoNlyYJRZFN3ng
-         Gd4LJsaqpuIDcwS0SZm5mJVcGvlQ/swurE9vrQpayKiDhP1EB7RCaRitGkKOT8qzIcQn
-         NmVg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=htFR9uzoLLfGusEJYM4mB0hYq4gMTy1rfpWgY7BIFjw=;
+        b=S20CRP47i5y7yAeMgjFkEd+Am2aGQsrYPbVrbQInQNMqXxULCkiuAkEbl/q+9co8em
+         Qi/L6o/Qm009otbL2tQmAjuUM6UDlC646qKlfkBjJW2/n4aVtpU7QC3A0unmxAYN4fpa
+         3mLr7NDHVczF6Md+mKjmhI9o03FHZ+2jd35MAnIVYTcV/Gv6Axbr6HbtS/npO913D7uD
+         agDjYKngu0/Fz1N8rRXTJbrS0lAIq3a/RSRFZIQO3PnL5Tse31iWeyQPDY/sxkGCgCHt
+         //9rrI7Nn3aMzQmPd6QFfE0pv35Udpq95WjnMnl1xv0oNNZqfbIYpfBRIyWYtye+52dj
+         9mnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Uol3Ztot;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a8mvA+v6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b12si18376425ybq.143.2021.03.02.02.38.06
+        by mx.google.com with ESMTPS id m16si1279203ilq.58.2021.03.02.03.10.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 02:38:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Mar 2021 03:10:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Uol3Ztot;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50762 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a8mvA+v6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH2Pm-0007Jy-F0
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 05:38:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56238)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lH2up-0005I0-GD
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 06:10:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36552)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH2KI-0000J2-NC
- for qemu-devel@nongnu.org; Tue, 02 Mar 2021 05:32:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53820)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH2KF-0002az-5M
- for qemu-devel@nongnu.org; Tue, 02 Mar 2021 05:32:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614681142;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CTHHQWRcJV4w16AxX8TZ+6xlFcNj5gOYseRVR28vbBk=;
- b=Uol3ZtotrS3DHqzBjIOkEmo+6mBRpfmox8Vh/z9WNvJTcOd2dQ/B2yanMR6jjld/rQd/Y+
- 39C4uHJJpTPAZjeboIUGxJTxzbwAZ0rMzzxFIJzJ+dpjGYfxkBdWTKOreNHqkE/m0AotTa
- ye7ogTTxyOMX+SkABSAzAGd0ux+bTPM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-249-KFL9JgxpPu2wq6aathPSAQ-1; Tue, 02 Mar 2021 05:32:20 -0500
-X-MC-Unique: KFL9JgxpPu2wq6aathPSAQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 41DF218B9EDF;
- Tue,  2 Mar 2021 10:32:19 +0000 (UTC)
-Received: from [10.36.114.189] (ovpn-114-189.ams2.redhat.com [10.36.114.189])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4331AE144;
- Tue,  2 Mar 2021 10:32:10 +0000 (UTC)
-To: "Michael S. Tsirkin" <mst@redhat.com>
-References: <20210301104833.45580-1-david@redhat.com>
- <20210302100614.42acfe68@MiWiFi-RA69-srv>
- <cedb0323-ac0a-2eb5-497d-eb66a0dfefb6@redhat.com>
- <20210302045453-mutt-send-email-mst@kernel.org>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
-Message-ID: <86c59853-b605-2037-5f27-5ad85fdff08c@redhat.com>
-Date: Tue, 2 Mar 2021 11:32:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1lH2uf-0005Gp-5M; Tue, 02 Mar 2021 06:10:01 -0500
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:38116)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1lH2ud-000776-GP; Tue, 02 Mar 2021 06:10:00 -0500
+Received: by mail-lj1-x22c.google.com with SMTP id 2so18870359ljr.5;
+ Tue, 02 Mar 2021 03:09:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=htFR9uzoLLfGusEJYM4mB0hYq4gMTy1rfpWgY7BIFjw=;
+ b=a8mvA+v6Yg3pI+chsmAO9PtAu99DW8MZXjdDKpV6pqP0XFHfU9h3VwRyBbgjeaVV7r
+ 4jCEsjyCqPVJlDLpGlD03uBgcml9KEAGtfNjWLpWzTjArN3rwShJ3hFUOfQB6bC8UIMX
+ AqJ3+dJvFFwhQB4inp0O62xXElzDbWhJLf1LmlJ5YOP/wZNa5ntRBBe+MzT75ZBAEGJ6
+ 791Q+G4n8ZuwHywtk9z63C8dhjidpMK5NMRSSbm4KPZkoBEAd20DdKwKHhtNLY+wzLB9
+ QnY4OO9R+XlmvbS/erwMWt7l/TeyIj6aSQEH3pK4vcrEGppLhZalwbdvxS224SaxAOlZ
+ XfPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=htFR9uzoLLfGusEJYM4mB0hYq4gMTy1rfpWgY7BIFjw=;
+ b=XIgnSUTmeVTHNR7uvCqQsdEk1rZ5B0chjOtivIuVw+GmzRPBnhOLKBKOL++CHHFr/l
+ o0HwytipcEEjcCKXuP0AJEbeN5Ut47YKsZKE7TTLdXLVNv/iYgZ1E3ymN1N4CG7K2HaN
+ P+cy74aUgjjlF2RJGaXNeBFkGzm7bKkco6qFs017E6a6ZTgKqMGPnpuCxLxObUb5D1dq
+ jBAkHL67Hyje6pGTO+il8ZFXBuqPd0mzxNVWw+47262hDYTkiO+vyoCKvy/WexpxBVmh
+ 6VIBeEtZL0VoRNmZiRd3B4cIUMC7e4LA1LVCev/hN/HqRw7XBGz9cmZY+ryBOJp8VATw
+ mk2A==
+X-Gm-Message-State: AOAM530n8f4sIkpXIW1edotgaGzyB3XfhSrS7Q09uRS7V3hJuBGp/FoL
+ Jt8j5x2o03+hTNVvmGKKFr8UC6vKyWO56Ez5
+X-Received: by 2002:a2e:330d:: with SMTP id d13mr11650405ljc.361.1614683396763; 
+ Tue, 02 Mar 2021 03:09:56 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id v9sm180601lfd.195.2021.03.02.03.09.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Mar 2021 03:09:56 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 0/2] hw/arm: versal: Add support for the XRAMs
+Date: Tue,  2 Mar 2021 12:09:53 +0100
+Message-Id: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210302045453-mutt-send-email-mst@kernel.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Alistair Francis <alistair.francis@xilinx.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YSVnD0zr3heu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ joe.komlodi@xilinx.com, sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
+ alistair@alistair23.me, richard.henderson@linaro.org,
+ francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
+ qemu-arm@nongnu.org, philmd@redhat.com, luc.michel@greensocs.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8jFNcFtmlfxe
 
-On 02.03.21 11:07, Michael S. Tsirkin wrote:
-> On Tue, Mar 02, 2021 at 10:43:55AM +0100, David Hildenbrand wrote:
->> On 02.03.21 10:06, Igor Mammedov wrote:
->>> On Mon,  1 Mar 2021 11:48:33 +0100
->>> David Hildenbrand <david@redhat.com> wrote:
->>>
->>>> The resizeable memory region that is created for the cmd blob has a maximum
->>>> size of ACPI_BUILD_ALIGN_SIZE - 4k. This used to be sufficient, however,
->>>> as we try fitting in additional data (e.g., vmgenid, nvdimm, intel-iommu),
->>>> we require more than 4k and can crash QEMU when trying to resize the
->>>> resizeable memory region beyond its maximum size:
->>>>     $ build/qemu-system-x86_64 --enable-kvm \
->>>>         -machine q35,nvdimm=on \
->>>>         -smp 1 \
->>>>         -cpu host \
->>>>         -m size=2G,slots=8,maxmem=4G \
->>>>         -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
->>>>         -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
->>>>         -nodefaults \
->>>>         -device vmgenid \
->>>>         -device intel-iommu
->>>
->>> I don't see what's here that would make cmd_blob go above 4k.
->>> can you try identify what actually fills it up (perhaps we have a hidden bug elsewhere)?
->>
->> VM initialization:
->>
->> bios_linker_loader_alloc: allocating memory for 'etc/acpi/tables'
->>   -> new table size: 128
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 64 - 9659
->>   -> new table size: 256
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 384
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 512
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 640
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9659 - 9903
->>   -> new table size: 768
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9903 - 10023
->>   -> new table size: 896
->> bios_linker_loader_alloc: allocating memory for 'etc/vmgenid_guid'
->>   -> new table size: 1024
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/vmgenid_guid'
->>   -> new table size: 1280
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10023 - 10225
->>   -> new table size: 1408
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10225 - 10281
->>   -> new table size: 1536
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10281 - 10505
->>   -> new table size: 1664
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10505 - 10577
->>   -> new table size: 1792
->> bios_linker_loader_alloc: allocating memory for 'etc/acpi/nvdimm-mem'
->>   -> new table size: 1920
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/nvdimm-mem'
->>   -> new table size: 2048
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10577 - 11471
->>   -> new table size: 2176
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11471 - 11695
->>   -> new table size: 2304
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11695 - 11735
->>   -> new table size: 2432
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 2560
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 2688
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 2816
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 2944
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3072
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3200
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3328
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3456
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3584
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11735 - 11807
->>   -> new table size: 3712
->> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'
->>   -> new table size: 3840
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'
->>   -> new table size: 3968
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20
->>   -> new table size: 4096
->>
->>
->> When the bios/guest boots up:
->>
->> bios_linker_loader_alloc: allocating memory for 'etc/acpi/tables'
->>   -> new table size: 128
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 64 - 9769
->>   -> new table size: 256
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 384
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 512
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 640
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9769 - 10013
->>   -> new table size: 768
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10013 - 10133
->>   -> new table size: 896
->> bios_linker_loader_alloc: allocating memory for 'etc/vmgenid_guid'
->>   -> new table size: 1024
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/vmgenid_guid'
->>   -> new table size: 1280
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10133 - 10335
->>   -> new table size: 1408
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10335 - 10391
->>   -> new table size: 1536
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10391 - 10615
->>   -> new table size: 1664
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10615 - 10675
->>   -> new table size: 1792
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10675 - 10747
->>   -> new table size: 1920
->> bios_linker_loader_alloc: allocating memory for 'etc/acpi/nvdimm-mem'
->>   -> new table size: 2048
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/nvdimm-mem'
->>   -> new table size: 2176
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10747 - 11641
->>   -> new table size: 2304
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11641 - 11865
->>   -> new table size: 2432
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11865 - 11905
->>   -> new table size: 2560
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 2688
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 2816
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 2944
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3072
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3200
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3328
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3456
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3584
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3712
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->>   -> new table size: 3840
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11905 - 11981
->>   -> new table size: 3968
->> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'
->>   -> new table size: 4096
->> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'
->>   -> new table size: 4224
->> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20
->>   -> new table size: 4352
-> 
-> yea it's because each command has space for 2 file names, so it's size
-> is 128 bytes. So just 32 commands is 4k.
-> 
-> Question is what is the extra table and why isn't it there before boot?
-> 
-> -> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'
-> +> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
->   >  -> new table size: 3840
-> -> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'
-> +> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11905 - 11981
->   >  -> new table size: 3968
-> -> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20
-> +> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'
->   >  -> new table size: 4096
-> +> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'
-> +>  -> new table size: 4224
-> +> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20
-> +>  -> new table size: 4352
-> 
-> simply put I would expect the command blob size to be the same before
-> and after migration.
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Seems to be the "MCFG" table. I only see that pop up when the guest boots.
+This series adds support for the 4x1MB Versal Accelerator RAMs (XRAMs).
+Most of the controller is dummy, but it's got enough to make firmware
+and some of our test SW happy.
 
-It depends on acpi_get_mcfg(). When the VM is created, it is not mapped 
-(mcfg->base == PCIE_BASE_ADDR_UNMAPPED), thus we don't create the table. 
-Once the bios configured/mapped it (wild guess), we create the table.
+Cheers,
+Edgar
 
-Anyhow, we seem to end up > 4k in the end.
+Edgar E. Iglesias (2):
+  hw/misc: versal: Add a model of the XRAM controller
+  hw/arm: versal: Add support for the XRAMs
+
+ docs/system/arm/xlnx-versal-virt.rst |   1 +
+ include/hw/arm/xlnx-versal.h         |  13 ++
+ include/hw/misc/xlnx-versal-xramc.h  | 102 +++++++++++
+ hw/arm/xlnx-versal.c                 |  36 ++++
+ hw/misc/xlnx-versal-xramc.c          | 253 +++++++++++++++++++++++++++
+ hw/misc/meson.build                  |   1 +
+ 6 files changed, 406 insertions(+)
+ create mode 100644 include/hw/misc/xlnx-versal-xramc.h
+ create mode 100644 hw/misc/xlnx-versal-xramc.c
 
 -- 
-Thanks,
-
-David / dhildenb
+2.25.1
 

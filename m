@@ -1,152 +1,220 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4617675lfg;
-        Tue, 2 Mar 2021 08:34:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwV/KRoZt1IONkAO2orXOPp39uRlQvt7C0hD+TooFyOrBruKsvOW6q2tLy/b9RWeMF4G+oa
-X-Received: by 2002:a6b:fe09:: with SMTP id x9mr11825785ioh.210.1614702875453;
-        Tue, 02 Mar 2021 08:34:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614702875; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4824004lfg;
+        Tue, 2 Mar 2021 13:34:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzV9AIcBJt2t5fB7WWLWzSN/c1rRRspexWOHgJi66mVB6+MAu93aIRR5uPzYZaJtO1owBtd
+X-Received: by 2002:a05:6830:18d0:: with SMTP id v16mr19900707ote.81.1614720881206;
+        Tue, 02 Mar 2021 13:34:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614720881; cv=none;
         d=google.com; s=arc-20160816;
-        b=hbcYL6vSK0ZnvVgxjnS9b6JX5QezD0OhOqd/rFYkhuumWX27wnlaHJOxctYgDzZrGb
-         geSXTOwhlMbNeADc8AL7Sf2QTPC9sD92+uBjJTtLTnmY/9BIjsi3689UhUU4nmvpWVqV
-         OuKK+HPhxrLh/8sEHbFcbTbz1s0Ck3Wput6/8Uix2UaFgvHejlz23bkIAVYpiZOI4/aQ
-         Re3shsLHn8bBs62PyMiymPyXeKhKAUWYs3n7M+MPdOUD8W4GPn+VsP//wkM6bTseIGqT
-         R1hJV0h2xifaJpA1sXIDq9emD1I0jgV5A2HBwkJLXgUyJMOfnDPQig+3C+PxaUuFQmz1
-         E0gQ==
+        b=hQGyMc2NmwkrxqlWeed0Zi+dUw75Rc8cgpP3hI8KJy0d9OOJuSbW6Frq7LPfbRMxwE
+         +aS3XNrTM1Cq1m04eFmxwqlTM/2XAxBEhw1SJmqUPUhsf9y3psf5Od1V/mJtFtWNKYKV
+         JmfvNnWREdQfGBKSn4Z1cQFllEnzFI1ZhFSQXQGJHYeZH0+hSG3k4alzKVgeMI1sxGjA
+         zyXCFpTzAD+6U5zU2vTWyGmqhsi64juTvZ3BtoqN40hsxiqv2NwtmcUn4NnizfICchaV
+         2Aj7YimaAbDoM67DX3V6AC/iFHEuwA2/4XfC6SGvYOzb1zytFsZaN1yu7ghJzxR8d/40
+         XuRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:organization:from:references:to:dkim-signature;
-        bh=4HrVM4N4mmKWhJxwIjpWi+2K8VEa1HU8gpuaZjrS0i0=;
-        b=BL9jo30hP4Vs//j1xz+metQNgeIyI646KUEqXR+B9DOsMXjUvgv3RNJQ4Fu/bu190W
-         kMsisiewVdA2pHeD5fdJl+YzmtHoA9pvPZO7qWZtHN9FBHINs96Vez199eNN1f7WeBsL
-         zdP7l0INBrn1ytuMphVd7IDl2mUXRwC+7Or8zS1j77u7L0eavY+j7YpYgxtiz1KNxQgg
-         LYqWaaKr013o9wcHLjhPfAB9FmRhozztUrmo+9NBgMsGJS1EXz0ZY6Ba4rSdztZq9ZmH
-         WDk1A194lezfST22tw6mox8zcCmf4Vbk7Z3rt/5cFJuLHTQ2zF0tNVg9LttkxWOufwBU
-         2PkQ==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=SN+pYTFwW0AI998xEFeXLntBCHMnJo3GWrA7byw4bEg=;
+        b=OKPa86dL9k7dM6lAH2hF/oKfU9YmSXjZj8RC6Kn37zpKV3bS1ttvC/Z9LdYjyZ6qAv
+         O9Onugqn/84lxlmuiS2aTk44e4+gZBgj1dJNiTcQ1BgONM5NJ84purQxI8p58fBSrx9P
+         Vk4uWGEO/X57BbWb21WXbWhuQmCQ84k0Nw1aD3LMgJzobuml1Itxhvx76ANfyWyv5GXg
+         3f6MYDZM/2uXGqDTnKZQsgyg3z+GPEmKGarPsiqoQvvA9IWlfU7daI1NCtMU4G8x2uDw
+         N5Dz6UGLdjMSwBHRfaH200AICGIwmmnbKx0cmdw3Ptaoc5k5NKtmzsBoq6hbQji9H51i
+         nEmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DuNmiFkF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b0sFBspr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b16si19280190ilq.33.2021.03.02.08.34.35
+        by mx.google.com with ESMTPS id k84si16848680oif.167.2021.03.02.13.34.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 08:34:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Mar 2021 13:34:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DuNmiFkF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b0sFBspr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52092 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH7yk-0008Ox-NY
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 11:34:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38078)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHCfA-0004hF-Et
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 16:34:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55090)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH7yb-0008OC-RU
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 11:34:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36855)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1lHCXa-00038N-OA
+ for qemu-devel@nongnu.org; Tue, 02 Mar 2021 16:26:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41246)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH7yZ-0002JS-AW
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 11:34:25 -0500
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1lHCXY-00053V-2o
+ for qemu-devel@nongnu.org; Tue, 02 Mar 2021 16:26:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614702862;
+ s=mimecast20190719; t=1614720406;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4HrVM4N4mmKWhJxwIjpWi+2K8VEa1HU8gpuaZjrS0i0=;
- b=DuNmiFkFz6sDGgwdW0+SvCVtAp/lmAvb0LBvGKzxx4czEIBUnbb20Mg6Qporxh9LPeFBd0
- jjKuSqDHGwMIC2cUNVwE/YnGUdP/EU50O9yfacyHoF7mSf5inl5nDh1Qe6/H4mc4jlcwsy
- RDU4WtQY+xwF65oh/3uI+arvUwWHOXs=
+ bh=SN+pYTFwW0AI998xEFeXLntBCHMnJo3GWrA7byw4bEg=;
+ b=b0sFBspro6n6gz2XBknfcv+3JhbvjyGX1vpoD/jBrAesaz/Etb8r9W2mPkltgVGvPO5bQ8
+ Qm+osyiH7S1M+8tXkmA0Z4zlrcQOiydiZARh7yhMhOAcF6ycP6nebwCqpxAxm6dqUtpTDi
+ roM1x1ckAmXl3VsBQqfHvHKNlQI+8U8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-49-Z1NOmVepMWWNhCar2iSuHg-1; Tue, 02 Mar 2021 11:34:19 -0500
-X-MC-Unique: Z1NOmVepMWWNhCar2iSuHg-1
+ us-mta-415-2AWfUDhjNgm-LMY-ffS8Bg-1; Tue, 02 Mar 2021 16:26:42 -0500
+X-MC-Unique: 2AWfUDhjNgm-LMY-ffS8Bg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 13A7A107AD50;
- Tue,  2 Mar 2021 16:34:01 +0000 (UTC)
-Received: from [10.36.114.189] (ovpn-114-189.ams2.redhat.com [10.36.114.189])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 426A2710DB;
- Tue,  2 Mar 2021 16:33:26 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20210301104833.45580-1-david@redhat.com>
- <20210302172323.6cac394a@MiWiFi-RA69-srv>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
-Message-ID: <db8abe61-a035-fefa-85e7-fe5de1697a18@redhat.com>
-Date: Tue, 2 Mar 2021 17:33:25 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5E40585EE60;
+ Tue,  2 Mar 2021 21:26:40 +0000 (UTC)
+Received: from omen.home.shazbot.org (ovpn-112-255.phx2.redhat.com
+ [10.3.112.255])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 192246F7E6;
+ Tue,  2 Mar 2021 21:26:28 +0000 (UTC)
+Date: Tue, 2 Mar 2021 14:26:28 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Shenming Lu <lushenming@huawei.com>, <mst@redhat.com>,
+ marcel.apfelbaum@gmail.com
+Subject: Re: [PATCH v3 3/3] vfio: Avoid disabling and enabling vectors
+ repeatedly in VFIO migration
+Message-ID: <20210302142628.60e0ab6f@omen.home.shazbot.org>
+In-Reply-To: <20210223022225.50-4-lushenming@huawei.com>
+References: <20210223022225.50-1-lushenming@huawei.com>
+ <20210223022225.50-4-lushenming@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210302172323.6cac394a@MiWiFi-RA69-srv>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=david@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=alex.williamson@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Alistair Francis <alistair.francis@xilinx.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Laszlo <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ciLQLX0LtHjF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
+ Marc Zyngier <maz@kernel.org>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-devel@nongnu.org, "Dr .
+ David Alan Gilbert" <dgilbert@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>, qemu-arm@nongnu.org,
+ yuzenghui@huawei.com, wanghaibin.wang@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5gZuR0DEDDIj
 
-On 02.03.21 17:23, Igor Mammedov wrote:
-> On Mon,  1 Mar 2021 11:48:33 +0100
-> David Hildenbrand <david@redhat.com> wrote:
-> 
-> CCing Laszlo,
-> 
-> to make sure there is no complications from firmware side
-> (especially when migration is progress, we've ironed it out for main tables blob
-> but my memory is a bit fussy about issues we had to deal with if there were any)
 
-Resizing RAMBlocks on the source *while* migrating is indeed problematic 
-(and on the destination during actual postcopy phase) - I shared patches 
-last year that abort migration in case we ever run into that issue, 
-still have to follow up on that.
+MST/Marcel,
 
-But to run into that here, I guess we would have to start migration 
-before the BIOS comes up such that we actually resize on the source 
-while migration is active.
-
--- 
+Do you have an Ack or objection to exporting msix_masked() as below?
 Thanks,
 
-David / dhildenb
+Alex
+
+On Tue, 23 Feb 2021 10:22:25 +0800
+Shenming Lu <lushenming@huawei.com> wrote:
+
+> In VFIO migration resume phase and some guest startups, there are
+> already unmasked vectors in the vector table when calling
+> vfio_msix_enable(). So in order to avoid inefficiently disabling
+> and enabling vectors repeatedly, let's allocate all needed vectors
+> first and then enable these unmasked vectors one by one without
+> disabling.
+> 
+> Signed-off-by: Shenming Lu <lushenming@huawei.com>
+> ---
+>  hw/pci/msix.c         |  2 +-
+>  hw/vfio/pci.c         | 20 +++++++++++++++++---
+>  include/hw/pci/msix.h |  1 +
+>  3 files changed, 19 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/pci/msix.c b/hw/pci/msix.c
+> index ae9331cd0b..e057958fcd 100644
+> --- a/hw/pci/msix.c
+> +++ b/hw/pci/msix.c
+> @@ -131,7 +131,7 @@ static void msix_handle_mask_update(PCIDevice *dev, int vector, bool was_masked)
+>      }
+>  }
+>  
+> -static bool msix_masked(PCIDevice *dev)
+> +bool msix_masked(PCIDevice *dev)
+>  {
+>      return dev->config[dev->msix_cap + MSIX_CONTROL_OFFSET] & MSIX_MASKALL_MASK;
+>  }
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index f74be78209..088fd41926 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -569,6 +569,9 @@ static void vfio_msix_vector_release(PCIDevice *pdev, unsigned int nr)
+>  
+>  static void vfio_msix_enable(VFIOPCIDevice *vdev)
+>  {
+> +    PCIDevice *pdev = &vdev->pdev;
+> +    unsigned int nr, max_vec = 0;
+> +
+>      vfio_disable_interrupts(vdev);
+>  
+>      vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
+> @@ -587,11 +590,22 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
+>       * triggering to userspace, then immediately release the vector, leaving
+>       * the physical device with no vectors enabled, but MSI-X enabled, just
+>       * like the guest view.
+> +     * If there are already unmasked vectors (in migration resume phase and
+> +     * some guest startups) which will be enabled soon, we can allocate all
+> +     * of them here to avoid inefficiently disabling and enabling vectors
+> +     * repeatedly later.
+>       */
+> -    vfio_msix_vector_do_use(&vdev->pdev, 0, NULL, NULL);
+> -    vfio_msix_vector_release(&vdev->pdev, 0);
+> +    if (!msix_masked(pdev)) {
+> +        for (nr = 0; nr < msix_nr_vectors_allocated(pdev); nr++) {
+> +            if (!msix_is_masked(pdev, nr)) {
+> +                max_vec = nr;
+> +            }
+> +        }
+> +    }
+> +    vfio_msix_vector_do_use(pdev, max_vec, NULL, NULL);
+> +    vfio_msix_vector_release(pdev, max_vec);
+>  
+> -    if (msix_set_vector_notifiers(&vdev->pdev, vfio_msix_vector_use,
+> +    if (msix_set_vector_notifiers(pdev, vfio_msix_vector_use,
+>                                    vfio_msix_vector_release, NULL)) {
+>          error_report("vfio: msix_set_vector_notifiers failed");
+>      }
+> diff --git a/include/hw/pci/msix.h b/include/hw/pci/msix.h
+> index 4c4a60c739..b3cd88e262 100644
+> --- a/include/hw/pci/msix.h
+> +++ b/include/hw/pci/msix.h
+> @@ -28,6 +28,7 @@ void msix_load(PCIDevice *dev, QEMUFile *f);
+>  
+>  int msix_enabled(PCIDevice *dev);
+>  int msix_present(PCIDevice *dev);
+> +bool msix_masked(PCIDevice *dev);
+>  
+>  bool msix_is_masked(PCIDevice *dev, unsigned vector);
+>  void msix_set_pending(PCIDevice *dev, unsigned vector);
 

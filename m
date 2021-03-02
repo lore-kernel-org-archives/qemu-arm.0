@@ -1,82 +1,80 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4394489lfg;
-        Tue, 2 Mar 2021 03:44:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJygeyZnE968xFnhWUxD+K/X4tyRV8hETWXf4Mk1ShFaKSD06oqs5j3dzPzGMI1t2D5dqU//
-X-Received: by 2002:a25:d943:: with SMTP id q64mr28550907ybg.508.1614685451038;
-        Tue, 02 Mar 2021 03:44:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614685451; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4429405lfg;
+        Tue, 2 Mar 2021 04:34:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJztQflo4jihtctKmJ9vzF/Af8uVFZC1nV1lmDfFqdqitOeqGl/0ownZ5s48jfzm/zFHFQkD
+X-Received: by 2002:a92:1a0d:: with SMTP id a13mr16893393ila.166.1614688470403;
+        Tue, 02 Mar 2021 04:34:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614688470; cv=none;
         d=google.com; s=arc-20160816;
-        b=EINTAHV7sUlinM3snU1amOjvWAskQlZb8j0J5wLtne6OCv2qjH12VvNh7KhRhcenIl
-         O7n/eXu2Q9P2G8XTtA7nA8uINQ0ETUfneAgptdtJ1l7zQBNPJMJ9aCAVGSm4HS7AXSaq
-         50Tu/U/3nsLPuqpF+dfJpsnEqOcIxug3Vu+4Y8x9bS5cW0L5oPocX5AxmFMl7rGLTdQU
-         We8fBgz1LWuKEzH+dB2wL8bmI2kT1x1Jrb3bAK6L/kNPn9uVwepdRNbB4JfO5C9lpPYc
-         V7p9VIastNPfMLCj/+glV0ndrd9nyLjGt2It2IkhoYG5PAmlzfJF950JTCjlcxfZMHEO
-         vb+Q==
+        b=qvbhrdORWlT1Hz/m6J4Ieu7Q2ridmmqRRZ6kN6Z8n7HgomZ2x8OOs5yTmzoy9VxKuq
+         8QlnkSU0Xdt3mCe2ag6P0rc7MUqcCCKNINLRWZvLSFriLtZjmW76Z9EuepC/ez3tJQ3t
+         sp+WXLzUOPuu2pgtYkgkG2fq18mBOerK3OdzV/h/ElJV8ppOiTwCTj4IwEEONbEHvpVZ
+         udyP/7Kkd9hvmH+HfsfE/aMQjvxQlTuS3FzWHUSBAnC3r6CcKXkOQP5heOVSi8YqxcmV
+         /HHttimpYP8t5jPM8JeYgjDREaxEFtwmY1Ah8NrAc0BtR8bop6ma5iG3JYh/wpAevxFd
+         8SlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=/aP3k9QdaA7DAlppKQyck3M1aDq0Imer2F6w4mMz0EE=;
-        b=mAl0icxXRe4we8gfoExmZ3ASBoYelLf5OWEGzmaPpKjGedq6aAS237By7SijyDA7UM
-         OcwJDvaB5U7Ee5/iNz5vSWtOPbvFEqkZNJYGTiv1ERhzacgcDINVfspx7RfFEm/KiK1U
-         xR256fHzm/51efYRYEBux4pS4IcyNcS2FCD5UMmexDgmJQLKZ1hFGaGkyWsN8a3zAwFN
-         xWNrshEinntnv8JHOE5EQtCVA9pSGXVxnNPR3qAilgdXpp0GO+vTm4LMxqCNgiaEEHAe
-         5cKKG2ME0tK8uWiumfgT4Se8bh4WuYnpN2AuTrGsKUzkIQp/obG5f1PbwSoKBN47SIb4
-         faXQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=Ozp8SeoIbqiepi5BleDA/TpAKzCb+QdJZH/PRdb8YzY=;
+        b=UnDu/2Aqx/B4JARXmC0kmQURa2o/grc4HKKqPHuBxkS8dOQNyZJaUrpV6344Knzbhm
+         80cqyQMjoxjP6VIt63NDzypMx6Cy+g5XDf8LbFLPsgJXTTgyZxbgdEPd99OIuYczNIqp
+         7mbhWRVYFpd6hMaAD24HaWZ0ChglUODrNrbMC7DEkHMeynCNxtV1/eP8yxdXVPV2Pg05
+         mWfN8E3kceKYD48OzCpr2JOvmp3mTWkjL0p2V7kfchyh/MUSSxTARU31GGIdgU9Btx+J
+         TOpo67djEcJpcOVEtpi6cmyXoCXQWbpNoJqbZDkqWApgSlN7/hEpHRnAvg9FgzvKuft8
+         JtGg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e201si18228740ybh.307.2021.03.02.03.44.10
+        by mx.google.com with ESMTPS id s22si17601186jaj.26.2021.03.02.04.34.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 03:44:11 -0800 (PST)
+        Tue, 02 Mar 2021 04:34:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57152 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH3Ri-000217-Cl
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 06:44:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46386)
+	id 1lH4EP-00044j-Ou
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 07:34:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59222)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1lH3RZ-00020Q-Ro; Tue, 02 Mar 2021 06:44:01 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3318)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lH4E7-00043r-T0; Tue, 02 Mar 2021 07:34:11 -0500
+Received: from mx2.suse.de ([195.135.220.15]:51180)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1lH3RX-0003OO-AS; Tue, 02 Mar 2021 06:44:01 -0500
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DqZwM2jRyzlRYk;
- Tue,  2 Mar 2021 19:41:39 +0800 (CST)
-Received: from [10.174.184.42] (10.174.184.42) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 2 Mar 2021 19:43:39 +0800
-Subject: [PING] accel: kvm: Some bugfixes for kvm dirty log
-To: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Andrew Jones <drjones@redhat.com>, Peter Xu <peterx@redhat.com>
-References: <20201217014941.22872-1-zhukeqian1@huawei.com>
-From: Keqian Zhu <zhukeqian1@huawei.com>
-Message-ID: <a67939bc-7fd2-092b-c36a-c130b1321c37@huawei.com>
-Date: Tue, 2 Mar 2021 19:43:38 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1lH4E4-0001tx-AN; Tue, 02 Mar 2021 07:34:11 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 45A6FACBC;
+ Tue,  2 Mar 2021 12:34:05 +0000 (UTC)
+Subject: Re: [PATCH v2 16/17] cpu: Restrict cpu_paging_enabled /
+ cpu_get_memory_mapping to sysemu
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20210301215110.772346-1-f4bug@amsat.org>
+ <20210301215110.772346-17-f4bug@amsat.org>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <ca78ec13-44fb-723d-3cbc-c15105909dc9@suse.de>
+Date: Tue, 2 Mar 2021 13:34:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20201217014941.22872-1-zhukeqian1@huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.184.42]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhukeqian1@huawei.com; helo=szxga04-in.huawei.com
+In-Reply-To: <20210301215110.772346-17-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.135.220.15; envelope-from=cfontana@suse.de;
+ helo=mx2.suse.de
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,30 +87,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
- qemu-arm@nongnu.org, jiangkunkun@huawei.com, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h/m2e8ZnhJkJ
+X-TUID: 3uJYZhFGW2aL
 
-Hi,
+On 3/1/21 10:51 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/hw/core/cpu.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 960846d2b64..d99d3c830dc 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -427,6 +427,8 @@ static inline void cpu_tb_jmp_cache_clear(CPUState *cpu)
+>  extern bool mttcg_enabled;
+>  #define qemu_tcg_mttcg_enabled() (mttcg_enabled)
+>  
+> +#if !defined(CONFIG_USER_ONLY)
+> +
+>  /**
+>   * cpu_paging_enabled:
+>   * @cpu: The CPU whose state is to be inspected.
+> @@ -444,8 +446,6 @@ bool cpu_paging_enabled(const CPUState *cpu);
+>  void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
+>                              Error **errp);
+>  
+> -#if !defined(CONFIG_USER_ONLY)
+> -
+>  /**
+>   * cpu_write_elf64_note:
+>   * @f: pointer to a function that writes memory to a file
+> 
 
-This patch is still not queued. Who can help to do this? Thanks :)
+Hi Philippe,
 
-Keqian
+this is the only patch where I was able to find an issue.
 
-On 2020/12/17 9:49, Keqian Zhu wrote:
-> Hi all,
-> 
-> This series fixes memory waste and adds alignment check for unmatched
-> qemu_real_host_page_size and TARGET_PAGE_SIZE.
-> 
-> Thanks.
-> 
-> Keqian Zhu (2):
->   accel: kvm: Fix memory waste under mismatch page size
->   accel: kvm: Add aligment assert for kvm_log_clear_one_slot
-> 
->  accel/kvm/kvm-all.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
-> 
+Adding any #ifdef CONFIG_USER_ONLY in include/hw/core/cpu.h as far as I experienced, is basically wrong.
+
+Your use is not causing direct damage, but could be used as a precedent to introduce serious bugs.
+It was the case for me.
+
+Is there some other header, only included by target-specific code, that you could place these?
+
+Ciao,
+
+Claudio

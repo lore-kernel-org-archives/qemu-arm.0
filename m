@@ -1,71 +1,71 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4539482lfg;
-        Tue, 2 Mar 2021 07:00:12 -0800 (PST)
-X-Received: by 2002:a17:906:e0d6:: with SMTP id gl22mr5072128ejb.444.1614697211956;
-        Tue, 02 Mar 2021 07:00:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614697211; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4539626lfg;
+        Tue, 2 Mar 2021 07:00:19 -0800 (PST)
+X-Received: by 2002:aa7:cd87:: with SMTP id x7mr21716875edv.210.1614697219643;
+        Tue, 02 Mar 2021 07:00:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614697219; cv=none;
         d=google.com; s=arc-20160816;
-        b=jZ37XKXBqaLSt5UIhR35r+KyiQjhii04GQh1JlY2pxeLyB9IkTE/IK0RAXCXjILkMN
-         9u4aK9cWdVHB0JFsb/yLhSL4d/pwZdCA0HN018zPMhPlEiU0gSHyGfMQpUQ3r0CM2vTN
-         iU5ht8cLF7LPQkLGHnq9DLnKX92FZUhpxWfw8Xhkm5LwpJY0i7CUSI8ssH+hnxR9J07G
-         yUjktHE4yLhtFsZsjKOdPC9WCEC376xrQPkJyy4jymS+Hg24SVfEVCX7RgZEdVDw7opm
-         CypZJDIdkLfseTIxRKYhgj9XdfReNX4eV8U4yEwOxtT6gmCGagWaxmkRIhzz3IuQWUej
-         B2cA==
+        b=J2I0cjVqRYQ33A9OzGYRZfGXmiDwKAl9nEvtitxos6eU/2/r/AKukYn/X40PYbwTiO
+         uRZOlShBaxFU8RCDgUSpaljmQIFiyIiKaHtupLbr8QMPQN1OgA07M/W7p6VPE/lj6zG8
+         vCGtm5RQUg9ioARil5FeUrIEQ8ZIED+odDJOy62j0XGX5Ha6lYknYZgh4Y+Gp9kpM4+n
+         5iWTdE6FNYKhsfxCrscEI6nHMP0HoMrqvb4sGu0+/FwTFkT8WlhXuAYGFETJxPh8kAP2
+         Z14zjsZgxW9IPUop59I+IDns31031s4Fua/rVeCgZ0wOJ8QRc0HXEk0fCM+5mvhWLHtB
+         TPKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=MXkQdWgohB9uSSp9OtT22O1oCJ949jTBzJW7O9qsdTc=;
-        b=TAfySpCwabgsYyx+e6+wKrE66a/SU2Qd2qS0iDBkMppswEbVovwnjmswQUADo65dVN
-         oJRujUJOoGTt0ra+0vJAXHIzmbIh72VYk9BCwotaiPpWZnU2QqbO5FDLSXAb4+erxuXT
-         m14uDCIPxaGAXZCkKy0bZm3Ww+OPqG7qVQ23utYWLYjbUO5KT4kUXfMiLXwF6LPat8dW
-         /0DZaS0V0bAyY/tc0P+M4ytE6LTDteodu9NBtNIIV/DwaNI6a9bT6i0GOGNPBjROvTGk
-         9GG1wHlOuDq6t6H7HYB9TEJrpvmjdfoOH8hrk4iLMF8mXiIketClZsIXJbGkJqhJYtnD
-         r52A==
+        bh=/yWXC4kh1mSRXQvUG9AD6RpFJnkuDQi+owpeBCNUKfs=;
+        b=WncsNYNLD9inPrmqTwxiSYCD+5/JKelEubIFfEB6l+R8JWvdwer4Bmk4sU6LszFFHU
+         0GBSC6KVZCD2glZgl256bFD9pgvobRXwBeYcjgOBZyjmCd3yDLsiEAQir70C2p4MxIr/
+         DCPhsw3p+r7Kc0J/7qBTlThCJY8+wZTinhcIifjHi3XiJKi0DUsCg+rIoXHLMNj+5LuA
+         MxZMQt/03HgpSIzeEKONFLZFzHZAppVk/TfR9Ge8DJdq4C+U4rJ0CnnOn53xFXcYFcaY
+         Qwt/jrM3QrQQlZz7Ka7l4x8nZ+moNKDXG23sf1W+W7tPZGjLFPlL9t55ubpzBkjVrIkx
+         YG3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GmayORTW;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c+Q7pVt6;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id hr4sor12637056ejc.51.2021.03.02.07.00.11
+        by mx.google.com with SMTPS id r12sor3134224eji.20.2021.03.02.07.00.19
         (Google Transport Security);
-        Tue, 02 Mar 2021 07:00:11 -0800 (PST)
+        Tue, 02 Mar 2021 07:00:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GmayORTW;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c+Q7pVt6;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=MXkQdWgohB9uSSp9OtT22O1oCJ949jTBzJW7O9qsdTc=;
-        b=GmayORTWFPj6iDGKUHa7t73OH3hTE1OJrvoWfY0PwzDb/vnzx/mKjkua+X+Z0gjGbs
-         GEcOyF1fXcj0Gt+0LjmXtjH4VfoHFtI2oJte+jNXVAR5fq4Sv7XmtE0JzHtrPCfCmQUW
-         3DXgkuj8yPjDQe65YoQxQx8iXry1nxCQCOawjGOEoU6HDBOI9o6UswNTP9oUiJ9HU2Sc
-         /8z4GcL+ehWHak6J9d5CjsvvxnwlphAX6sZRIBVERthGUxDG4sjJb15S+GkGR40p6DUV
-         CxawhI9etqquBI2/9gW3vFt5BQJy3/GD+/yOCgma9cNRWxUz8AGcC0vE2XLm4UzEbf/W
-         2pGw==
+        bh=/yWXC4kh1mSRXQvUG9AD6RpFJnkuDQi+owpeBCNUKfs=;
+        b=c+Q7pVt6i3wZngcC5otWS5P0K/VhOtBZoZ2LiOBy5NHo8cwrtDn5T+lxU5T6eZoc50
+         anK1cRC1OQT2Ag1FyAj0ikkeVWyuGmeIm2xM7e55+9TwGlQC7BXxU+DYgYgFjPJlPXZN
+         cDxAO+/IxeznFa2Ku9a29nD+2XGSfBM7n15few1bDhbPEtiZEF4hu5qhovLFSvqwU2Zk
+         RdMxCau4KMmUGsZFnAr6qdmBMN6Y6dFc8i9rGlu3d8NMlLmakI24pxQbbhkci+J6wdSU
+         0KhVrxoW9ZTPzmgDrN2uZ7UYFpuhVNG3SiNEVtCYXh2Ojkh8HQ6u2cBp9NI6OfPr5s7+
+         5w5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=MXkQdWgohB9uSSp9OtT22O1oCJ949jTBzJW7O9qsdTc=;
-        b=P0NEt6yKOS03ukudc7IJTGmjP8glcBaQ9q02C9BxMPwfMUnIaoq43DvJOx2dmoOiBH
-         u4ewkCbElXNu6ookcJijXO9hLpD/LhmPKnuS14fi/yZUXPIjXlP9ugKXbLvjrydt854H
-         zH4RqYh5w79Qv2o/xHLduf4mvQtUzn8uM7Hr+dDefgkLz1LBxUGjZWpvn59i1hgQxNW2
-         W2k9BU6oZo1eWqzAUexeumV6CJwWYaUEwsPcBAr0H6W+X2sOed7NGmKEospXPNvGRnUF
-         laPWuLHWQGCeA6USPbw3J89uC7cHh2QPAUe3v5NwXlfku/dqSZ3DgI+HOXHv4UraWdCo
-         uZtQ==
-X-Gm-Message-State: AOAM530Ejf7Ow0BMyfeZBPaxzfQgEvgNzXZOtXVIpqRPxPesagAH2XrK
-	D4oOO0VCsnpmrwPMJ2A23Rk=
-X-Google-Smtp-Source: ABdhPJzCJ5ZRVmsLs7BPbo8luyvvIsXPCSP371JAB0/fcmYSDVoccxfjf9SnpwtLQZYtRZOD8eWVaA==
-X-Received: by 2002:a17:906:f296:: with SMTP id gu22mr20058872ejb.20.1614697210673;
-        Tue, 02 Mar 2021 07:00:10 -0800 (PST)
+        bh=/yWXC4kh1mSRXQvUG9AD6RpFJnkuDQi+owpeBCNUKfs=;
+        b=RRV+WFkvLkoZRdZ+iD8P1HX8hQISiOnXSkOw0csMkgIUGTBQiBRAAnbSsGX8g/clAX
+         xtST0AXeDdNUd9aq5Hj1H8hpeQCzYAgVEsjmq2S8ewAeoZcyiV33p+/U3o3uR4R1Ud8u
+         t+bo0Q6UBDtkbpkWSp0izCh94QND6jFAnnqsGPegGZWZCNaI4CV+KLb6oXYmmNIsIOAf
+         gG09O6mc51OTZJ88/58ua+EmMvofonmObJGlFfX6RCUXzgQW2cXpFPLoWPTL69BA8usc
+         woeFJ8huP9YASjS6CQSMAXWrLsDa7ToTnm72+lvSqKMlrOC/AJQhOAiN3hwMM0Vmwblv
+         O1iQ==
+X-Gm-Message-State: AOAM531G3N4Rep6sYOA1LIKu/w/RTgCzUy/eJ+2rWoxHHr4Ej0U2o94I
+	RPWm1bhYE9lZMoKTGXehr6FIrkL2G6U=
+X-Google-Smtp-Source: ABdhPJya0UWqI192+k20W9BqeaFgfo53AnJpscGs8voLDnPTymTF6u4BgYdZ0nVW55QvGUQ+U9atzA==
+X-Received: by 2002:a17:907:7784:: with SMTP id ky4mr20944763ejc.89.1614697218345;
+        Tue, 02 Mar 2021 07:00:18 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id h2sm16480337ejk.32.2021.03.02.07.00.07
+        by smtp.gmail.com with ESMTPSA id gq25sm3748253ejb.85.2021.03.02.07.00.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Mar 2021 07:00:10 -0800 (PST)
+        Tue, 02 Mar 2021 07:00:17 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -110,109 +110,427 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Taylor Simpson <tsimpson@quicinc.com>
-Subject: [PATCH v3 15/27] cpu: Move CPUClass::get_paging_enabled to SysemuCPUOps
-Date: Tue,  2 Mar 2021 15:58:06 +0100
-Message-Id: <20210302145818.1161461-16-f4bug@amsat.org>
+Subject: [PATCH v3 16/27] cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.c
+Date: Tue,  2 Mar 2021 15:58:07 +0100
+Message-Id: <20210302145818.1161461-17-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210302145818.1161461-1-f4bug@amsat.org>
 References: <20210302145818.1161461-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Sivz1p620TWX
+X-TUID: QoficTwusfWE
 
+Somehow similar to commit 78271684719 ("cpu: tcg_ops: move to
+tcg-cpu-ops.h, keep a pointer in CPUClass"):
+
+We cannot in principle make the SysEmu Operations field definitions
+conditional on CONFIG_SOFTMMU in code that is included by both
+common_ss and specific_ss modules.
+
+Therefore, what we can do safely to restrict the SysEmu fields to
+system emulation builds, is to move all sysemu operations into a
+separate header file, which is only included by system-specific code.
+
+This leaves just a NULL pointer in the cpu.h for the user-mode builds.
+
+Inspired-by: Claudio Fontana <cfontana@suse.de>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h            | 2 --
- include/hw/core/sysemu-cpu-ops.h | 4 ++++
- hw/core/cpu.c                    | 4 ++--
- target/i386/cpu.c                | 4 +++-
- 4 files changed, 9 insertions(+), 5 deletions(-)
+ include/hw/core/cpu.h   | 3 ++-
+ target/alpha/cpu.h      | 3 +++
+ target/arm/cpu.h        | 3 +++
+ target/avr/cpu.h        | 1 +
+ target/cris/cpu.h       | 3 +++
+ target/hexagon/cpu.h    | 3 +++
+ target/hppa/cpu.h       | 3 +++
+ target/i386/cpu.h       | 3 +++
+ target/lm32/cpu.h       | 3 +++
+ target/m68k/cpu.h       | 3 +++
+ target/microblaze/cpu.h | 1 +
+ target/mips/cpu.h       | 3 +++
+ target/moxie/cpu.h      | 3 +++
+ target/nios2/cpu.h      | 1 +
+ target/openrisc/cpu.h   | 3 +++
+ target/ppc/cpu.h        | 3 +++
+ target/riscv/cpu.h      | 3 +++
+ target/rx/cpu.h         | 1 +
+ target/s390x/cpu.h      | 3 +++
+ target/sh4/cpu.h        | 3 +++
+ target/sparc/cpu.h      | 3 +++
+ target/tilegx/cpu.h     | 3 +++
+ target/tricore/cpu.h    | 3 +++
+ target/unicore32/cpu.h  | 3 +++
+ target/xtensa/cpu.h     | 3 +++
+ cpu.c                   | 1 +
+ hw/core/cpu.c           | 1 +
+ 27 files changed, 68 insertions(+), 1 deletion(-)
 
 diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 8af78cdde23..960846d2b64 100644
+index 960846d2b64..fe4206b540f 100644
 --- a/include/hw/core/cpu.h
 +++ b/include/hw/core/cpu.h
-@@ -93,7 +93,6 @@ struct AccelCPUClass;
-  * @dump_state: Callback for dumping state.
-  * @dump_statistics: Callback for dumping statistics.
-  * @get_arch_id: Callback for getting architecture-dependent CPU ID.
-- * @get_paging_enabled: Callback for inquiring whether paging is enabled.
-  * @set_pc: Callback for setting the Program Counter register. This
-  *       should have the semantics used by the target architecture when
-  *       setting the PC from a source such as an ELF file entry point;
-@@ -136,7 +135,6 @@ struct CPUClass {
-     void (*dump_state)(CPUState *cpu, FILE *, int flags);
-     void (*dump_statistics)(CPUState *cpu, int flags);
-     int64_t (*get_arch_id)(CPUState *cpu);
--    bool (*get_paging_enabled)(const CPUState *cpu);
-     void (*set_pc)(CPUState *cpu, vaddr value);
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
-diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index 460e7d63b0c..3f9a5199dd1 100644
---- a/include/hw/core/sysemu-cpu-ops.h
-+++ b/include/hw/core/sysemu-cpu-ops.h
-@@ -21,6 +21,10 @@ typedef struct SysemuCPUOps {
-      */
-     void (*get_memory_mapping)(CPUState *cpu, MemoryMappingList *list,
-                                Error **errp);
-+    /**
-+     * @get_paging_enabled: Callback for inquiring whether paging is enabled.
-+     */
-+    bool (*get_paging_enabled)(const CPUState *cpu);
-     /**
-      * @get_phys_page_debug: Callback for obtaining a physical address.
-      */
+@@ -80,7 +80,8 @@ struct TCGCPUOps;
+ /* see accel-cpu.h */
+ struct AccelCPUClass;
+ 
+-#include "hw/core/sysemu-cpu-ops.h"
++/* see sysemu-cpu-ops.h */
++struct SysemuCPUOps;
+ 
+ /**
+  * CPUClass:
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index 82df108967b..f1218a27706 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -22,6 +22,9 @@
+ 
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* Alpha processors have a weak memory model */
+ #define TCG_GUEST_DEFAULT_MO      (0)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index efa1618c4d5..265d00d55dd 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -25,6 +25,9 @@
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+ #include "qapi/qapi-types-common.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* ARM processors have a weak memory model */
+ #define TCG_GUEST_DEFAULT_MO      (0)
+diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+index d148e8c75a4..e0419649fa7 100644
+--- a/target/avr/cpu.h
++++ b/target/avr/cpu.h
+@@ -23,6 +23,7 @@
+ 
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ #ifdef CONFIG_USER_ONLY
+ #error "AVR 8-bit does not support user mode"
+diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+index d3b64929096..4450f2268ea 100644
+--- a/target/cris/cpu.h
++++ b/target/cris/cpu.h
+@@ -23,6 +23,9 @@
+ 
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define EXCP_NMI        1
+ #define EXCP_GURU       2
+diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
+index e04eac591c8..2a878e77f08 100644
+--- a/target/hexagon/cpu.h
++++ b/target/hexagon/cpu.h
+@@ -26,6 +26,9 @@ typedef struct CPUHexagonState CPUHexagonState;
+ #include "qemu-common.h"
+ #include "exec/cpu-defs.h"
+ #include "hex_regs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define NUM_PREGS 4
+ #define TOTAL_PER_THREAD_REGS 64
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index 61178fa6a2a..94d2d4701c4 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -23,6 +23,9 @@
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+ #include "exec/memory.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* PA-RISC 1.x processors have a strong memory model.  */
+ /* ??? While we do not yet implement PA-RISC 2.0, those processors have
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 8be39cfb62e..11941f5f37e 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -25,6 +25,9 @@
+ #include "kvm/hyperv-proto.h"
+ #include "exec/cpu-defs.h"
+ #include "qapi/qapi-types-common.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* The x86 has a strong memory model with some store-after-load re-ordering */
+ #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
+diff --git a/target/lm32/cpu.h b/target/lm32/cpu.h
+index ea7c01ca8b0..034183dad30 100644
+--- a/target/lm32/cpu.h
++++ b/target/lm32/cpu.h
+@@ -22,6 +22,9 @@
+ 
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ typedef struct CPULM32State CPULM32State;
+ 
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 7c3feeaf8a6..4b0a19bdf44 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -23,6 +23,9 @@
+ 
+ #include "exec/cpu-defs.h"
+ #include "cpu-qom.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define OS_BYTE     0
+ #define OS_WORD     1
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+index e4bba8a7551..3f5c2e048e5 100644
+--- a/target/microblaze/cpu.h
++++ b/target/microblaze/cpu.h
+@@ -26,6 +26,7 @@
+ 
+ typedef struct CPUMBState CPUMBState;
+ #if !defined(CONFIG_USER_ONLY)
++#include "hw/core/sysemu-cpu-ops.h"
+ #include "mmu.h"
+ #endif
+ 
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index 075c24abdad..923ab71f8d7 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -6,6 +6,9 @@
+ #include "fpu/softfloat-types.h"
+ #include "hw/clock.h"
+ #include "mips-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define TCG_GUEST_DEFAULT_MO (0)
+ 
+diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
+index bd6ab66084d..7a0a5e95d01 100644
+--- a/target/moxie/cpu.h
++++ b/target/moxie/cpu.h
+@@ -22,6 +22,9 @@
+ 
+ #include "exec/cpu-defs.h"
+ #include "qom/object.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define MOXIE_EX_DIV0        0
+ #define MOXIE_EX_BAD         1
+diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
+index 2ab82fdc713..1b88b027063 100644
+--- a/target/nios2/cpu.h
++++ b/target/nios2/cpu.h
+@@ -27,6 +27,7 @@
+ 
+ typedef struct CPUNios2State CPUNios2State;
+ #if !defined(CONFIG_USER_ONLY)
++#include "hw/core/sysemu-cpu-ops.h"
+ #include "mmu.h"
+ #endif
+ 
+diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
+index 82cbaeb4f84..2a6f9f48547 100644
+--- a/target/openrisc/cpu.h
++++ b/target/openrisc/cpu.h
+@@ -23,6 +23,9 @@
+ #include "exec/cpu-defs.h"
+ #include "hw/core/cpu.h"
+ #include "qom/object.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* cpu_openrisc_map_address_* in CPUOpenRISCTLBContext need this decl.  */
+ struct OpenRISCCPU;
+diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
+index e73416da68d..f889c28e548 100644
+--- a/target/ppc/cpu.h
++++ b/target/ppc/cpu.h
+@@ -24,6 +24,9 @@
+ #include "exec/cpu-defs.h"
+ #include "cpu-qom.h"
+ #include "qom/object.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define TCG_GUEST_DEFAULT_MO 0
+ 
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 02758ae0eb4..254eefaf824 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -25,6 +25,9 @@
+ #include "exec/cpu-defs.h"
+ #include "fpu/softfloat-types.h"
+ #include "qom/object.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define TCG_GUEST_DEFAULT_MO 0
+ 
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 0b4b998c7be..d9b7b63716a 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -25,6 +25,7 @@
+ #include "cpu-qom.h"
+ 
+ #include "exec/cpu-defs.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ /* PSW define */
+ REG32(PSW, 0)
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index 60d434d5edd..2ca6a4f559f 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -28,6 +28,9 @@
+ #include "cpu-qom.h"
+ #include "cpu_models.h"
+ #include "exec/cpu-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #define ELF_MACHINE_UNAME "S390X"
+ 
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index 714e3b56413..07ed2f3e206 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -22,6 +22,9 @@
+ 
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* CPU Subtypes */
+ #define SH_CPU_SH7750  (1 << 0)
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index 4b2290650be..237ffc4fe66 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -4,6 +4,9 @@
+ #include "qemu/bswap.h"
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ #if !defined(TARGET_SPARC64)
+ #define TARGET_DPREGS 16
+diff --git a/target/tilegx/cpu.h b/target/tilegx/cpu.h
+index 7d8e44d12e4..54bdbf0ca1e 100644
+--- a/target/tilegx/cpu.h
++++ b/target/tilegx/cpu.h
+@@ -22,6 +22,9 @@
+ 
+ #include "exec/cpu-defs.h"
+ #include "qom/object.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* TILE-Gx common register alias */
+ #define TILEGX_R_RE    0   /*  0 register, for function/syscall return value */
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index b82349d1b10..cb0b989953e 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -23,6 +23,9 @@
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+ #include "tricore-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ struct tricore_boot_info;
+ 
+diff --git a/target/unicore32/cpu.h b/target/unicore32/cpu.h
+index 7a32e086ed3..de475d0fc2e 100644
+--- a/target/unicore32/cpu.h
++++ b/target/unicore32/cpu.h
+@@ -14,6 +14,9 @@
+ 
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ typedef struct CPUUniCore32State {
+     /* Regs for current mode.  */
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 3bd4f691c1a..ea4ee5338f3 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -31,6 +31,9 @@
+ #include "cpu-qom.h"
+ #include "exec/cpu-defs.h"
+ #include "xtensa-isa.h"
++#ifndef CONFIG_USER_ONLY
++#include "hw/core/sysemu-cpu-ops.h"
++#endif
+ 
+ /* Xtensa processors have a weak memory model */
+ #define TCG_GUEST_DEFAULT_MO      (0)
+diff --git a/cpu.c b/cpu.c
+index 64e17537e21..29dafee581f 100644
+--- a/cpu.c
++++ b/cpu.c
+@@ -29,6 +29,7 @@
+ #ifdef CONFIG_USER_ONLY
+ #include "qemu.h"
+ #else
++#include "hw/core/sysemu-cpu-ops.h"
+ #include "exec/address-spaces.h"
+ #endif
+ #include "sysemu/tcg.h"
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 339bdfadd7a..7a8487d468f 100644
+index 7a8487d468f..da7543be514 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -71,8 +71,8 @@ bool cpu_paging_enabled(const CPUState *cpu)
+@@ -35,6 +35,7 @@
+ #include "trace/trace-root.h"
+ #include "qemu/plugin.h"
+ #include "sysemu/hw_accel.h"
++#include "hw/core/sysemu-cpu-ops.h"
+ 
+ CPUState *cpu_by_arch_id(int64_t id)
  {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    if (cc->get_paging_enabled) {
--        return cc->get_paging_enabled(cpu);
-+    if (cc->sysemu_ops->get_paging_enabled) {
-+        return cc->sysemu_ops->get_paging_enabled(cpu);
-     }
- 
-     return false;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index d33ee9f831e..3519cef8fba 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -7157,12 +7157,14 @@ static int64_t x86_cpu_get_arch_id(CPUState *cs)
-     return cpu->apic_id;
- }
- 
-+#if !defined(CONFIG_USER_ONLY)
- static bool x86_cpu_get_paging_enabled(const CPUState *cs)
- {
-     X86CPU *cpu = X86_CPU(cs);
- 
-     return cpu->env.cr[0] & CR0_PG_MASK;
- }
-+#endif /* !CONFIG_USER_ONLY */
- 
- static void x86_cpu_set_pc(CPUState *cs, vaddr value)
- {
-@@ -7389,6 +7391,7 @@ static Property x86_cpu_properties[] = {
- #ifndef CONFIG_USER_ONLY
- static struct SysemuCPUOps i386_sysemu_ops = {
-     .get_memory_mapping = x86_cpu_get_memory_mapping,
-+    .get_paging_enabled = x86_cpu_get_paging_enabled,
-     .get_phys_page_attrs_debug = x86_cpu_get_phys_page_attrs_debug,
-     .asidx_from_attrs = x86_asidx_from_attrs,
-     .get_crash_info = x86_cpu_get_crash_info,
-@@ -7429,7 +7432,6 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
-     cc->gdb_read_register = x86_cpu_gdb_read_register;
-     cc->gdb_write_register = x86_cpu_gdb_write_register;
-     cc->get_arch_id = x86_cpu_get_arch_id;
--    cc->get_paging_enabled = x86_cpu_get_paging_enabled;
- 
- #ifndef CONFIG_USER_ONLY
-     cc->sysemu_ops = &i386_sysemu_ops;
 -- 
 2.26.2

@@ -1,69 +1,67 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4429405lfg;
-        Tue, 2 Mar 2021 04:34:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJztQflo4jihtctKmJ9vzF/Af8uVFZC1nV1lmDfFqdqitOeqGl/0ownZ5s48jfzm/zFHFQkD
-X-Received: by 2002:a92:1a0d:: with SMTP id a13mr16893393ila.166.1614688470403;
-        Tue, 02 Mar 2021 04:34:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614688470; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4430155lfg;
+        Tue, 2 Mar 2021 04:35:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxcQDfBQiNn5S+1bBIHJC4Tl03obNXhibARyGH+wzbRs8eacbadhnjcUoI9czyzI/C14+Fr
+X-Received: by 2002:aca:75cd:: with SMTP id q196mr2905510oic.91.1614688541058;
+        Tue, 02 Mar 2021 04:35:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614688541; cv=none;
         d=google.com; s=arc-20160816;
-        b=qvbhrdORWlT1Hz/m6J4Ieu7Q2ridmmqRRZ6kN6Z8n7HgomZ2x8OOs5yTmzoy9VxKuq
-         8QlnkSU0Xdt3mCe2ag6P0rc7MUqcCCKNINLRWZvLSFriLtZjmW76Z9EuepC/ez3tJQ3t
-         sp+WXLzUOPuu2pgtYkgkG2fq18mBOerK3OdzV/h/ElJV8ppOiTwCTj4IwEEONbEHvpVZ
-         udyP/7Kkd9hvmH+HfsfE/aMQjvxQlTuS3FzWHUSBAnC3r6CcKXkOQP5heOVSi8YqxcmV
-         /HHttimpYP8t5jPM8JeYgjDREaxEFtwmY1Ah8NrAc0BtR8bop6ma5iG3JYh/wpAevxFd
-         8SlA==
+        b=YYCKCzKzwzAeGYiNmVcQ5drZhPDrQTesSZZIdA2KbkgDQgNZMple+fYNlCOtLCH7YC
+         njBu/eG2GUB6wp+EhbtORpgVJJ39/+B1JT+MQxzduEYw1yBoBgW4HSyc0dqFjL+6eTSg
+         W+phXxAjQGcS7Ms3iaHNkKcyK0OruUlAQrSncBBSwc0IhA7nraP4hWCvU715mwGYo/ei
+         EY4MImywtgEVJd0WuwYFjD9kDiRjoyYgznryuDO8KZzfWpHKPN0LgqJLYALBQpeoXBL0
+         jM1mT0tWUlCvZ+jLOGPmpAzImWZN13LMBo1pzzFFg5MkoctzULdLynWogw6YUcacngMe
+         SdhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=Ozp8SeoIbqiepi5BleDA/TpAKzCb+QdJZH/PRdb8YzY=;
-        b=UnDu/2Aqx/B4JARXmC0kmQURa2o/grc4HKKqPHuBxkS8dOQNyZJaUrpV6344Knzbhm
-         80cqyQMjoxjP6VIt63NDzypMx6Cy+g5XDf8LbFLPsgJXTTgyZxbgdEPd99OIuYczNIqp
-         7mbhWRVYFpd6hMaAD24HaWZ0ChglUODrNrbMC7DEkHMeynCNxtV1/eP8yxdXVPV2Pg05
-         mWfN8E3kceKYD48OzCpr2JOvmp3mTWkjL0p2V7kfchyh/MUSSxTARU31GGIdgU9Btx+J
-         TOpo67djEcJpcOVEtpi6cmyXoCXQWbpNoJqbZDkqWApgSlN7/hEpHRnAvg9FgzvKuft8
-         JtGg==
+        bh=HTY1ezafxeo2mUOP07KEAeLFYetM/Ct1eE9slzvZj6M=;
+        b=PTOTlbxz4yw+pOxylLYF7vggyfwATr2JsBtCtkxoHsIYDhZWsAy0+5mmBb5zI8AGs3
+         pFrr4nu20GqkBtNueRjw4d4AW50B81WVehX/GQPvSK8VuDqG7x2xjB/ZknSmOMcFcicT
+         frZQqyKxFt6eNSOxjaPwCESEHbqw88LulQB5xrrrFjGRLthY2FYm545JJWRemptOnnrL
+         fCjR1aB+0EHgJkPq/aMpgaB7JfBb7siuAtDkLk1Uz46+oTFka25dhCrFx5mKiYKtpeI/
+         3k3u3ZgzO7tDecuQWStnSz+sZXyKwv9Ly2isuyerTMQKBsRf7jhmjD00RQxHLQIXILMN
+         VlXg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s22si17601186jaj.26.2021.03.02.04.34.30
+        by mx.google.com with ESMTPS id c67si1372747oif.152.2021.03.02.04.35.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 04:34:30 -0800 (PST)
+        Tue, 02 Mar 2021 04:35:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57152 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH4EP-00044j-Ou
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 07:34:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59222)
+	id 1lH4FY-00059j-BO
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 07:35:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59490)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lH4E7-00043r-T0; Tue, 02 Mar 2021 07:34:11 -0500
-Received: from mx2.suse.de ([195.135.220.15]:51180)
+ id 1lH4FO-00057i-E0; Tue, 02 Mar 2021 07:35:30 -0500
+Received: from mx2.suse.de ([195.135.220.15]:52054)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
- id 1lH4E4-0001tx-AN; Tue, 02 Mar 2021 07:34:11 -0500
+ id 1lH4FM-00020h-Mz; Tue, 02 Mar 2021 07:35:30 -0500
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 45A6FACBC;
- Tue,  2 Mar 2021 12:34:05 +0000 (UTC)
-Subject: Re: [PATCH v2 16/17] cpu: Restrict cpu_paging_enabled /
- cpu_get_memory_mapping to sysemu
+ by mx2.suse.de (Postfix) with ESMTP id 27636AE74;
+ Tue,  2 Mar 2021 12:35:26 +0000 (UTC)
+Subject: Re: [PATCH v2 00/17] cpu: Introduce SysemuCPUOps structure
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20210301215110.772346-1-f4bug@amsat.org>
- <20210301215110.772346-17-f4bug@amsat.org>
 From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <ca78ec13-44fb-723d-3cbc-c15105909dc9@suse.de>
-Date: Tue, 2 Mar 2021 13:34:01 +0100
+Message-ID: <29e766d5-b17e-41be-e732-67f829917870@suse.de>
+Date: Tue, 2 Mar 2021 13:35:24 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20210301215110.772346-17-f4bug@amsat.org>
+In-Reply-To: <20210301215110.772346-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -110,49 +108,87 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3uJYZhFGW2aL
+X-TUID: oOaFAj40hWSk
 
-On 3/1/21 10:51 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/core/cpu.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+
+On 3/1/21 10:50 PM, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 960846d2b64..d99d3c830dc 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -427,6 +427,8 @@ static inline void cpu_tb_jmp_cache_clear(CPUState *cpu)
->  extern bool mttcg_enabled;
->  #define qemu_tcg_mttcg_enabled() (mttcg_enabled)
->  
-> +#if !defined(CONFIG_USER_ONLY)
-> +
->  /**
->   * cpu_paging_enabled:
->   * @cpu: The CPU whose state is to be inspected.
-> @@ -444,8 +446,6 @@ bool cpu_paging_enabled(const CPUState *cpu);
->  void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
->                              Error **errp);
->  
-> -#if !defined(CONFIG_USER_ONLY)
-> -
->  /**
->   * cpu_write_elf64_note:
->   * @f: pointer to a function that writes memory to a file
+> This series is inspired on Claudio TCG work.
 > 
+> Instead of separate TCG from other accelerators, here we
+> separate sysemu operations (system VS user).
+> 
+> Patches 1-6 are generic cleanups.
+> Patches 7-15 move from CPUClass to SysemuCPUOps
+> Patches 16-17 restrict SysemuCPUOps to sysemu
+> 
+> Since v1:
+> - Name 'sysemu' (Claudio)
+> - change each field progressively (Richard)
+> 
+> Regards,
+> 
+> Phil.
 
-Hi Philippe,
+Very cool overall, and it all LGTM,
 
-this is the only patch where I was able to find an issue.
-
-Adding any #ifdef CONFIG_USER_ONLY in include/hw/core/cpu.h as far as I experienced, is basically wrong.
-
-Your use is not causing direct damage, but could be used as a precedent to introduce serious bugs.
-It was the case for me.
-
-Is there some other header, only included by target-specific code, that you could place these?
+with the exception of patch 16.
 
 Ciao,
 
 Claudio
+
+> 
+> Supersedes: <20210226163227.4097950-1-f4bug@amsat.org>
+> 
+> Philippe Mathieu-Daudé (17):
+>   target: Set CPUClass::vmsd instead of DeviceClass::vmsd
+>   cpu: Un-inline cpu_get_phys_page_debug and cpu_asidx_from_attrs
+>   cpu: Introduce cpu_virtio_is_big_endian()
+>   cpu: Directly use cpu_write_elf*() fallback handlers in place
+>   cpu: Directly use get_paging_enabled() fallback handlers in place
+>   cpu: Directly use get_memory_mapping() fallback handlers in place
+>   cpu: Introduce SysemuCPUOps structure
+>   cpu: Move CPUClass::vmsd to SysemuCPUOps
+>   cpu: Move CPUClass::virtio_is_big_endian to SysemuCPUOps
+>   cpu: Move CPUClass::get_crash_info to SysemuCPUOps
+>   cpu: Move CPUClass::write_elf* to SysemuCPUOps
+>   cpu: Move CPUClass::asidx_from_attrs to SysemuCPUOps
+>   cpu: Move CPUClass::get_phys_page_debug to SysemuCPUOps
+>   cpu: Move CPUClass::get_memory_mapping to SysemuCPUOps
+>   cpu: Move CPUClass::get_paging_enabled to SysemuCPUOps
+>   cpu: Restrict cpu_paging_enabled / cpu_get_memory_mapping to sysemu
+>   cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.c
+> 
+>  include/hw/core/cpu.h            |  91 ++++++-------------------
+>  include/hw/core/sysemu-cpu-ops.h |  89 ++++++++++++++++++++++++
+>  cpu.c                            |  19 +++---
+>  hw/core/cpu.c                    | 113 +++++++++++++++++--------------
+>  hw/virtio/virtio.c               |   4 +-
+>  target/alpha/cpu.c               |  11 ++-
+>  target/arm/cpu.c                 |  19 ++++--
+>  target/avr/cpu.c                 |   9 ++-
+>  target/cris/cpu.c                |  11 ++-
+>  target/hppa/cpu.c                |  11 ++-
+>  target/i386/cpu.c                |  29 +++++---
+>  target/lm32/cpu.c                |  10 ++-
+>  target/m68k/cpu.c                |  11 ++-
+>  target/microblaze/cpu.c          |  11 ++-
+>  target/mips/cpu.c                |  11 ++-
+>  target/moxie/cpu.c               |  11 +--
+>  target/nios2/cpu.c               |  16 ++++-
+>  target/openrisc/cpu.c            |  11 ++-
+>  target/riscv/cpu.c               |  13 +++-
+>  target/rx/cpu.c                  |  17 ++++-
+>  target/s390x/cpu.c               |  15 ++--
+>  target/sh4/cpu.c                 |  11 ++-
+>  target/sparc/cpu.c               |  11 ++-
+>  target/tricore/cpu.c             |  14 +++-
+>  target/unicore32/cpu.c           |   8 ++-
+>  target/xtensa/cpu.c              |  11 ++-
+>  target/ppc/translate_init.c.inc  |  21 +++---
+>  27 files changed, 409 insertions(+), 199 deletions(-)
+>  create mode 100644 include/hw/core/sysemu-cpu-ops.h
+> 
+

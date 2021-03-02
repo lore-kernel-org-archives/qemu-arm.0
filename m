@@ -1,114 +1,105 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4249993lfg;
-        Mon, 1 Mar 2021 23:35:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx/vM9JU/xs33Av6krbxX1m5sMgjJ4JTWBGvyu57PjqJMty5oCBihsrVfZ6PgZxPPev+By4
-X-Received: by 2002:a25:d80a:: with SMTP id p10mr28790720ybg.473.1614670504837;
-        Mon, 01 Mar 2021 23:35:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614670504; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4300671lfg;
+        Tue, 2 Mar 2021 01:06:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyjNxnXc41pBkhs8raI1iRBpWudK2C2uJdPaZLAqHhS66iqd0UoZueoIAfLGSYouh3veRkL
+X-Received: by 2002:a05:6e02:12b4:: with SMTP id f20mr16882186ilr.220.1614676008533;
+        Tue, 02 Mar 2021 01:06:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614676008; cv=none;
         d=google.com; s=arc-20160816;
-        b=oganAjk9WUKGEq18RHeQ77Nb8fUBQ7/I8XikGWXWVW6udXXcsPWt4IM1byT7Cy1aR0
-         V8Rju3ipccI3p/QA588HNTpeNJFlv6Ix6mAm7cHDHGhrKBd5+nVDDdRRWjJv5jLi+h1Q
-         CRMV9KNWjtUfQEdkzTFW5xzB+gXyQS+vkFCki9HrxDvwh1WTXoiRCZ50FX7bu7Vel5DE
-         NtzFR+lXkEmYnf9pEO9+FQTeBPV/Zq3xbyM08SGeYEAuRIQSMwCy3eUgqFqktDMerMMj
-         fVGDcVpQE4+YcDmwGQWj728IaX0brqPzJOxrc79r6M2dVp91fQP90727TKtR8z1f9Vr/
-         P48A==
+        b=X35xPV97K0PJNmAX2+5gnIlmFI4yOy0pE2sRbyb1Pl3uxvaTkmMJvg0i5h7WPFhsnz
+         Eb793XD04KGQ/9vZm6oj9gBfsJioxrAPqcxEoAJJ8cLhJlYXILr4SsgkLTYmtpQVrK6r
+         0CjOR2YeYsMUUe4HH/5DDSS1FyoZtot4iD7CfrBc0sWhdufG48acLaqsgc2xzMslpWBy
+         x3NP73yM5qPZmsRStZFa179N9IlgE/7yIOk4oTELNU0nAghgHXh4Dv2PW47zdq/Ssb2O
+         /WeZt+CDAkui0/7NdyHkOS8gQ7Ly2ead5gAEVkuo64HqrWfoaZ2eCs/TNPKhutSM+d9z
+         ZlBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Wl2JGoMMJODUvmMIhM5DOdWmasryZQUK2/CawkeGpFo=;
-        b=FnFGv1iH4zWMX9wfUD7vp7kYcM6vqD++STht3w7oiguJWkELHR6bsSCGqHl8HcOMtH
-         JlJltTcw9oS8U8HuoKZ2T/i0ATXdOAdh04RqceRjKmeN/ul4Amz9bhZHdNwsFQ9VJKt+
-         aXhEXI/QbNrRSPUjCeVKyW790t0UO5TpSGcup6Zxz/ZqFvLIpHU6VycObWNOhNgBaO4R
-         VBghc+454Dy3Mt8Z4P30dT73Uk9ndJW/meSezE6CddTVbbLjKpdIF2+nPJ9govM6BzIL
-         E+ODsoJ45inIGigbHXUS+6Beyme7NW0vmLjQNPT5bACwJANY+lkbmNggSh78fGHuDI5U
-         pTwQ==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=iPMnf+h3TccWRmMbOcpksvsZliWLK5zzzQnAwsapXAw=;
+        b=RbSNbHbLWPLwOZ5TIU7hdAXfV6XOKlPT1yC3ighu2oJYoea/wsD7qTBd1aNoZ3O+AM
+         6rGmBbgFP3nnDHZbsGTMeVcfM8baBkQW3NPOc+QlapmExdwYSNRfeXIsJZA7dl6s43tz
+         jOeAj0XXL6FcK3UuP/YBqpUmqvioZxOBVK4ES570Ogm0XV1asVP6CsMtossH84OYsVtl
+         nDMouxESobYnhHXcG07Vv0ip9XFWkb2LGuycD+cK2Gf5hFCjk2ozu7K15cKklBYv9Rar
+         4OMOi0itY38wuBTrfKWZtEz8AWlXP9RuOjEJA5QXn8zvEfzwJiJ/tvXV7DZI8o/Yuf1k
+         4Ebg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AEoo8iXd;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gcnrtYse;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p64si20024212yba.44.2021.03.01.23.35.04
+        by mx.google.com with ESMTPS id j8si3552264ilq.114.2021.03.02.01.06.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Mar 2021 23:35:04 -0800 (PST)
+        Tue, 02 Mar 2021 01:06:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AEoo8iXd;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gcnrtYse;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41134 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lGzYe-00041y-39
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 02:35:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35266)
+	id 1lH0zP-0001Dz-R0
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 04:06:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33460)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGzYT-00041H-HN; Tue, 02 Mar 2021 02:34:53 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:46355)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lGzYS-0002Tm-17; Tue, 02 Mar 2021 02:34:53 -0500
-Received: by mail-ed1-x531.google.com with SMTP id w9so7810140edt.13;
- Mon, 01 Mar 2021 23:34:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Wl2JGoMMJODUvmMIhM5DOdWmasryZQUK2/CawkeGpFo=;
- b=AEoo8iXdyVr3PJJJu+hLrDA5Sb+YxFGhrhBHbcWAXENT2lb6CD5v31uWvpjqK2vNJl
- tvaiEC08rEE1g5sNbce+oztO+kB+PJiqRzZLXGH2Iob8nSkEkVD7ajb4LoyumyIt3b7s
- Ik333nrkxhtKINPra+lI8dY8Yb9EA8Fe2lw5nVN2+pJtuije/V/yp+eFo+m5dCUjtadr
- TBC4eZ+c9l1GU4NOZjrghQwk0ovvagVcyMmCShfLNTtksuGu6WJ7mnmZ2NVkTiTELIuQ
- e+ujWcDsMgzcZrmV8hUKnSDIaxLYfNEEvMIkEMoKhjQ4TiJLk19qihz8PCSB7lGUAk10
- wImA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Wl2JGoMMJODUvmMIhM5DOdWmasryZQUK2/CawkeGpFo=;
- b=Qpbo5cH2GLfvzcPhINXIEOFg0s5xRcnO0Gzzhn/ED2TZLW7YAsN/rnmM/DQ7mZltPo
- pgFdgDdWM8/Yw72LwFsNFjX9tV0wzOOD9PKwNFK53XNe/3LzTIV4VkUHwuvjvNkeB/Mq
- QDXfQ+C4QqUEsaC87fntiu2WJ46aGgh7Fldshpue25kBSV5yWqkTX+doD/Ho9gT7PYfH
- zoUZDdJw3+OcBWlTHkjxENqCGC110ZVQs0jHxD2iQigL12dASpTxNyq8C/QAKEvjTNir
- 6u0UWZzFIYoTqaSRwQbzvGeSzn/AndND5WRCm1BEf1eObY2BdRtDt41EsBdBkSYweJip
- w/0A==
-X-Gm-Message-State: AOAM532ITrCxoKIKhTXKqrQ2QUd7Dyvzq2wwocP7eyr08x+pXn6/1ROY
- rOjwo8BA8DLYIttej6gf65c=
-X-Received: by 2002:a50:bc15:: with SMTP id j21mr19375414edh.187.1614670487762; 
- Mon, 01 Mar 2021 23:34:47 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id ga5sm16785171ejb.114.2021.03.01.23.34.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Mar 2021 23:34:47 -0800 (PST)
-Subject: Re: [RFC PATCH v2 17/17] cpu: Restrict "hw/core/sysemu-cpu-ops.h" to
- target/cpu.c
-To: qemu-devel@nongnu.org
-References: <20210301215110.772346-1-f4bug@amsat.org>
- <20210301215110.772346-18-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <346469ee-3b89-1b0c-6304-4e765c64fa50@amsat.org>
-Date: Tue, 2 Mar 2021 08:34:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lH0zE-00018a-Lg
+ for qemu-arm@nongnu.org; Tue, 02 Mar 2021 04:06:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:34849)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lH0zB-0000WA-QV
+ for qemu-arm@nongnu.org; Tue, 02 Mar 2021 04:06:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614675991;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iPMnf+h3TccWRmMbOcpksvsZliWLK5zzzQnAwsapXAw=;
+ b=gcnrtYsetwziycZyBokN1UEQhUENqVuW5jl4636mbHpqD7AOvQXTagpYZHon8XnwaVuwtt
+ 8in0rAvlJ+c9TpQexiFZYLFWdEDlLXxEMQgW5slFZQwMJPOyXiBQ9kboCroDC0y/5KS9da
+ yFzAr73Fk454NLJhcQ6Fb9KAGSMf/hg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-518-Aj88RI2eOembo8wDe90RzA-1; Tue, 02 Mar 2021 04:06:28 -0500
+X-MC-Unique: Aj88RI2eOembo8wDe90RzA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7DC14195D562;
+ Tue,  2 Mar 2021 09:06:26 +0000 (UTC)
+Received: from MiWiFi-RA69-srv (unknown [10.40.208.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D62195B4B0;
+ Tue,  2 Mar 2021 09:06:16 +0000 (UTC)
+Date: Tue, 2 Mar 2021 10:06:14 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
+Message-ID: <20210302100614.42acfe68@MiWiFi-RA69-srv>
+In-Reply-To: <20210301104833.45580-1-david@redhat.com>
+References: <20210301104833.45580-1-david@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20210301215110.772346-18-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,109 +113,137 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Cornelia Huck <cohuck@redhat.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- "Michael S. Tsirkin" <mst@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Palmer Dabbelt <palmer@dabbelt.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Alistair Francis <alistair.francis@xilinx.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iLkL/H5bqsFs
+X-TUID: iFsWQqsxg+wW
 
-On 3/1/21 10:51 PM, Philippe Mathieu-Daudé wrote:
-> Somehow similar to commit 78271684719 ("cpu: tcg_ops: move to
-> tcg-cpu-ops.h, keep a pointer in CPUClass"):
+On Mon,  1 Mar 2021 11:48:33 +0100
+David Hildenbrand <david@redhat.com> wrote:
+
+> The resizeable memory region that is created for the cmd blob has a maximum
+> size of ACPI_BUILD_ALIGN_SIZE - 4k. This used to be sufficient, however,
+> as we try fitting in additional data (e.g., vmgenid, nvdimm, intel-iommu),
+> we require more than 4k and can crash QEMU when trying to resize the
+> resizeable memory region beyond its maximum size:
+>   $ build/qemu-system-x86_64 --enable-kvm \
+>       -machine q35,nvdimm=on \
+>       -smp 1 \
+>       -cpu host \
+>       -m size=2G,slots=8,maxmem=4G \
+>       -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
+>       -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
+>       -nodefaults \
+>       -device vmgenid \
+>       -device intel-iommu
+
+I don't see what's here that would make cmd_blob go above 4k.
+can you try identify what actually fills it up (perhaps we have a hidden bug elsewhere)?
+
+
 > 
-> We cannot in principle make the SysEmu Operations field definitions
-> conditional on CONFIG_SOFTMMU in code that is included by both
-> common_ss and specific_ss modules.
+> Results in:
+>   Unexpected error in qemu_ram_resize() at ../softmmu/physmem.c:1850:
+>   qemu-system-x86_64: Size too large: /rom@etc/table-loader:
+>     0x2000 > 0x1000: Invalid argument
 > 
-> Therefore, what we can do safely to restrict the SysEmu fields to
-> system emulation builds, is to move all sysemu operations into a
-> separate header file, which is only included by system-specific code.
+> We try growing the resizeable memory region (resizeable RAMBlock) beyond
+> its maximum size. Let's increase the maximum size from 4k to 64k, which
+> should be good enough for the near future.
 > 
-> This leaves just a NULL pointer in the cpu.h for the user-mode builds.
+> Migration is not concerned with the maximum size of a RAMBlock, only
+> with the used size - so existing setups are not affected. Of course, we
+> cannot migrate a VM that would have crash when started on older QEMU from
+> new QEMU to older QEMU without failing early on the destination when
+> synchronizing the RAM state:
+>     qemu-system-x86_64: Size too large: /rom@etc/table-loader: 0x2000 > 0x1000: Invalid argument
+>     qemu-system-x86_64: error while loading state for instance 0x0 of device 'ram'
+>     qemu-system-x86_64: load of migration failed: Invalid argument
 > 
-> Inspired-by: Claudio Fontana <cfontana@suse.de>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> While at it, replace "etc/table-loader" by ACPI_BUILD_LOADER_FILE in
+> the microvm.
+> 
+> Note: we could warn for problematic setups that migration might not
+> always be possible - similar to how we handle the table blob; or we
+> could disallow setups that would have crashed until now for compat
+> machines. But I am not sure if the effort (messing compat machine
+> properties) is worth it as we fail migration in a safe way early.
+> 
+> Cc: Alistair Francis <alistair.francis@xilinx.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: David Hildenbrand <david@redhat.com>
 > ---
-> RFC: improve commit description?
+>  hw/arm/virt-acpi-build.c    | 3 ++-
+>  hw/i386/acpi-build.c        | 3 ++-
+>  hw/i386/acpi-microvm.c      | 3 ++-
+>  include/hw/acpi/aml-build.h | 1 +
+>  4 files changed, 7 insertions(+), 3 deletions(-)
 > 
->  include/hw/core/cpu.h           | 3 ++-
->  cpu.c                           | 1 +
->  hw/core/cpu.c                   | 1 +
->  target/alpha/cpu.c              | 1 +
->  target/arm/cpu.c                | 1 +
->  target/avr/cpu.c                | 1 +
->  target/cris/cpu.c               | 1 +
->  target/hppa/cpu.c               | 1 +
->  target/i386/cpu.c               | 1 +
->  target/m68k/cpu.c               | 1 +
->  target/microblaze/cpu.c         | 1 +
->  target/mips/cpu.c               | 1 +
->  target/moxie/cpu.c              | 1 +
->  target/nios2/cpu.c              | 1 +
->  target/openrisc/cpu.c           | 1 +
->  target/riscv/cpu.c              | 1 +
->  target/rx/cpu.c                 | 1 +
->  target/s390x/cpu.c              | 1 +
->  target/sh4/cpu.c                | 1 +
->  target/sparc/cpu.c              | 1 +
->  target/tricore/cpu.c            | 1 +
->  target/xtensa/cpu.c             | 1 +
->  target/ppc/translate_init.c.inc | 1 +
->  23 files changed, 24 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index d99d3c830dc..398696f0f2d 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -80,7 +80,8 @@ struct TCGCPUOps;
->  /* see accel-cpu.h */
->  struct AccelCPUClass;
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index f9c9df916c..a91550de6f 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -865,7 +865,8 @@ void virt_acpi_setup(VirtMachineState *vms)
 >  
-> -#include "hw/core/sysemu-cpu-ops.h"
-> +/* see sysemu-cpu-ops.h */
-> +struct SysemuCPUOps;
+>      build_state->linker_mr =
+>          acpi_add_rom_blob(virt_acpi_build_update, build_state,
+> -                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
+> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
+> +                          ACPI_BUILD_LOADER_MAX_SIZE);
+>  
+>      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+>                      acpi_data_len(tables.tcpalog));
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 31a5f6f4a5..a75138ea5a 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2524,7 +2524,8 @@ void acpi_setup(void)
+>  
+>      build_state->linker_mr =
+>          acpi_add_rom_blob(acpi_build_update, build_state,
+> -                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
+> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
+> +                          ACPI_BUILD_LOADER_MAX_SIZE);
+>  
+>      fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
+>                      tables.tcpalog->data, acpi_data_len(tables.tcpalog));
+> diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
+> index 54b3af478a..fe8a965fe6 100644
+> --- a/hw/i386/acpi-microvm.c
+> +++ b/hw/i386/acpi-microvm.c
+> @@ -255,7 +255,8 @@ void acpi_setup_microvm(MicrovmMachineState *mms)
+>                        ACPI_BUILD_TABLE_MAX_SIZE);
+>      acpi_add_rom_blob(acpi_build_no_update, NULL,
+>                        tables.linker->cmd_blob,
+> -                      "etc/table-loader", 0);
+> +                      ACPI_BUILD_LOADER_FILE,
+> +                      ACPI_BUILD_LOADER_MAX_SIZE);
+>      acpi_add_rom_blob(acpi_build_no_update, NULL,
+>                        tables.rsdp,
+>                        ACPI_BUILD_RSDP_FILE, 0);
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 380d3e3924..93cdfd4006 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -6,6 +6,7 @@
+>  
+>  /* Reserve RAM space for tables: add another order of magnitude. */
+>  #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
+> +#define ACPI_BUILD_LOADER_MAX_SIZE        0x40000
+>  
+>  #define ACPI_BUILD_APPNAME6 "BOCHS "
+>  #define ACPI_BUILD_APPNAME8 "BXPC    "
 
-As the deprecated targets aren't built by default, I missed:
-
--- >8 --
-diff --git a/target/lm32/cpu.c b/target/lm32/cpu.c
-index c80cae9ff3b..eed7f3f440c 100644
---- a/target/lm32/cpu.c
-+++ b/target/lm32/cpu.c
-@@ -22,6 +22,7 @@
- #include "qapi/error.h"
- #include "qemu/qemu-print.h"
- #include "cpu.h"
-+#include "hw/core/sysemu-cpu-ops.h"
-
-
- static void lm32_cpu_set_pc(CPUState *cs, vaddr value)
-diff --git a/target/unicore32/cpu.c b/target/unicore32/cpu.c
-index 610fb5393ae..afe106da2d4 100644
---- a/target/unicore32/cpu.c
-+++ b/target/unicore32/cpu.c
-@@ -17,6 +17,7 @@
- #include "cpu.h"
- #include "migration/vmstate.h"
- #include "exec/exec-all.h"
-+#include "hw/core/sysemu-cpu-ops.h"
-
- static void uc32_cpu_set_pc(CPUState *cs, vaddr value)
- {
----

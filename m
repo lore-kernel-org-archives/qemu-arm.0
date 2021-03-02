@@ -1,110 +1,119 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4714782lfg;
-        Tue, 2 Mar 2021 10:44:41 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyebgX2mTGxShoGlYnt4Z5EbgdlFO9kLumqd95NCNZqbhVL919DKpjTCtfxZACDNne4LId1
-X-Received: by 2002:a02:6014:: with SMTP id i20mr22356222jac.101.1614710680794;
-        Tue, 02 Mar 2021 10:44:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614710680; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4076525lfg;
+        Mon, 1 Mar 2021 17:44:03 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwYdX/As3lLyqz2zcYmyvdQQNL7rGX0KblUSeVOJsXhs3sFL4+AQ3q/fzU30WYDTXGEKcvM
+X-Received: by 2002:a05:6830:19ca:: with SMTP id p10mr16090219otp.39.1614649443624;
+        Mon, 01 Mar 2021 17:44:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614649443; cv=none;
         d=google.com; s=arc-20160816;
-        b=t7Ri1nsRAhNb53/RWZ9Q6V1WjWmxDlunZsOw3qZ/ycQ1pRz4vvUauhM85OBWb8ELH4
-         GkG1j5FY7Z8PxSV8Bi6RgHxLwELkAMZhFOTMxRGkzXlKxnKthtGV1/iceOQRoIU90njL
-         li+rl3KHgmNlOmefFdxgG/ke33sRR9lRxWhKP8h+fdQLzcjHR6zuiaWVIMtb4v2yIZUP
-         d41gDfbtmhYAZ8eT0BS4E8jz87k5Hm6Hntbjlh6bOtInriMkxgALDn/3r0nYpCZzrjsr
-         CmNa7bdjmo4Utzjp+yeE5UgKF4mRyxK5Grt8g0uYpNM+XesZ3XVHilPXyWigGpf10flz
-         74Fg==
+        b=eHxoI3BNxAdBfDp2zudZYDTsfoPARoKhdcIW+E5ZQXrI3s92opPww/VHPWLSWfuGJ9
+         W/O0zsp55YjkLuPXV2VH4Qmj7GaTSVs4S5tUkNPbeJk/JhbSYIOBLtY5fl9E/kGmpBQU
+         n52YX4ZgEiAXjamtSHUnbQpYF3+yT6gLBg3VwASINrc/BPqIjdGE83zXDpVy2kP5LdMb
+         wkGI5zSbH+U3bCuN/lqpoG8RoX8+G4/75R3nW1JZYzkRmVqWaMV/OMLcO278spRD7sO7
+         +NcHjOdi2f8363jNERvDa4Wd4eiC70vSgmRazevxwnhmvH0cd5+SuK27+uW89ksXNaLp
+         3ihQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:organization:from:references:to:dkim-signature;
-        bh=NVQGmL/16f94pS0RJPhCoYBQeygPqfazEIpwXZiq+WM=;
-        b=GaqE08qTlcGSHP21GHgcVacMh7aMThL7+DZ6fPuXyOdyVzUyWZQ4di6xM6XMU3VTRC
-         eYrNxTpqQbU7SBKlcy4QDrz1CBNDJuTTivL27dvL0RBBCgEUZMrraSTDIILWLoD2uUbi
-         AVRe5nr3rk4VOnAKqL8aM1iAwgT1AypWGCHQs5KEyRRN3IJROlswydVuA3puiaRj+zb6
-         bX8k5Kp+5r3XM8GBJnsTMTwxvqVZZ8g+MDD52ifkbjlb44+WAnVs8H+P2sJvBYiFTfs1
-         mYB7L0cnVjLZdMVnhU4bSQR54u7/OxeeN0XCOPpiPA9jpI6R1HoJX9KyVdNoWZG/wK7a
-         OZ5w==
+         :mime-version:message-id:date:subject:to:from:dkim-signature
+         :dkim-signature;
+        bh=tfMBkXspTIvSJwMPWlgaiiBpslvmVpFcM7IrRUmbcUQ=;
+        b=jbXGtp5M+3NRHg+95qWrJjqY6PcsjdOumEye1peUDY0RMyHa3irUaddDobs0GuLkkv
+         4kU1OASvzt+JLoNRqu9nu+BW1KL28/M/wPI9/j7McRP7D/pY4IyE86YNswx6/5H07cjO
+         5QaHf4+uXMm/tQ2Pi9yMe0EJ1V4yIhAWAw9ISmFW82VRK6tZ+gGqrXT5pUIsq6E283sb
+         ycFjNA1HVbSo5QpXLdU+olruim8FHrZ1dXFWUGFrxTaimfIbfGYJ6fSQ6AXCHTGKnM18
+         raSa0TLWYrzOzfNyz/hGdEodYz9xT1lAHZgR/loIrovAv0wU3WJV8wVHu6yiHc1b5N1P
+         YaSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AQrIXWUg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=GJL1biDW;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=ajOXsTyM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6si19016115ilm.83.2021.03.02.10.44.40
+        by mx.google.com with ESMTPS id u21si16103054oiu.25.2021.03.01.17.44.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 10:44:40 -0800 (PST)
+        Mon, 01 Mar 2021 17:44:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AQrIXWUg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38432 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=GJL1biDW;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=ajOXsTyM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57508 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHA0e-0000sJ-0a
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 13:44:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44050)
+	id 1lGu4w-0002C2-ST
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 20:44:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39250)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH9zx-0000FF-L7
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 13:43:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:58947)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH9zr-0005rH-Hj
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 13:43:57 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614710629;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NVQGmL/16f94pS0RJPhCoYBQeygPqfazEIpwXZiq+WM=;
- b=AQrIXWUgSfC+dAnO+VxQ0rGFvz9cKprh7wPNYws4HaIo5ZgnOsKU7ZjzCgDw0obdrZRjdc
- 9KE5rv9WBj1ZPVmTfYAm45dY8iZLSurghclPHDqaE3x7lLcJlOUFkdrPmH09yPWn/jjb0v
- C7vmJF4SjKPeIxGNR/X0xHjeEYJqp/Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-416-xsfWOJQXMG-Vb4HWclq7Tg-1; Tue, 02 Mar 2021 13:43:47 -0500
-X-MC-Unique: xsfWOJQXMG-Vb4HWclq7Tg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7820BC289;
- Tue,  2 Mar 2021 18:43:46 +0000 (UTC)
-Received: from [10.36.114.189] (ovpn-114-189.ams2.redhat.com [10.36.114.189])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4481F60BFA;
- Tue,  2 Mar 2021 18:43:41 +0000 (UTC)
-To: Laszlo Ersek <lersek@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-References: <20210301104833.45580-1-david@redhat.com>
- <20210302172323.6cac394a@MiWiFi-RA69-srv>
- <09fbdaa9-2882-2056-a5a2-2ca0da8c12cf@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat GmbH
-Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
-Message-ID: <7d8281a8-0479-ac81-c602-ed87c71ce3e2@redhat.com>
-Date: Tue, 2 Mar 2021 19:43:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1lGu4g-0002Bb-P2; Mon, 01 Mar 2021 20:43:46 -0500
+Received: from out5-smtp.messagingengine.com ([66.111.4.29]:47197)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1lGu4X-00021S-1t; Mon, 01 Mar 2021 20:43:46 -0500
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.nyi.internal (Postfix) with ESMTP id 8C00B5C00CB;
+ Mon,  1 Mar 2021 20:43:30 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Mon, 01 Mar 2021 20:43:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
+ :to:cc:subject:date:message-id:mime-version:content-type
+ :content-transfer-encoding; s=fm2; bh=tfMBkXspTIvSJwMPWlgaiiBpsl
+ vmVpFcM7IrRUmbcUQ=; b=GJL1biDWhOcYfDG62KmpipNeNjEgbTZiVgU3JgmoI7
+ Qg/je6xrWU/NhLnQt+t0wklk7ZAiaR3JBsspWLB/LslplMEX5InMEYZWBVNhJ9bn
+ hipJBhbeZEf6w6WMq94YQkPrtbVXyNcBAN4EVsfybWEIDynN1tbgc38e78ri7k90
+ b0PMX//L2XpL2tJb5Zk124RSkhnwIFGwbFQRFWNMSXU/rEpP6b7nSyyhv1R0FgsL
+ O6fh+ZtaIqHNn68sPWgZOSfLBMtHIhbBXFO9x9v6ho/6MI7mfZEDiziZwyAlFw9O
+ jliEAKQtrTxfkOG5Zvm/nWwRxoqRpOqvKcjEwprfVH/Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:message-id:mime-version:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=tfMBkX
+ spTIvSJwMPWlgaiiBpslvmVpFcM7IrRUmbcUQ=; b=ajOXsTyMlR2oVnHdIDRUj9
+ 2sEWrhEu6Xmi2kJKca6X4uP0CJaXT16HDGd07YxgB0d8NbCNnL9ByZkE7EVfubx1
+ WQIyrGtIOSGD3gPRYyl3wq6RBrlJKWOfLhbYjO4of9UaGvKznYGpQfaJJpK3lEyI
+ Q9asUTg7F8GgFLxgpvrep2z4E+yD2MzQw9buTmoAZQkKr3z6BGe6Jk5Q9zKg6jef
+ /H+JmNf/H00HPdq4Mq7ogw2RXrBSUZPvYCE4FJFhYbaz6D9+I9CIl4I38GzxmKKJ
+ dgL2gtx12hZTRBQk83f0iq/tEUv2/Lgbbra2c4o+O3CMbn3H0sDUYY+TJFdvy1AQ
+ ==
+X-ME-Sender: <xms:QZg9YHzuMtd_gtvLz3HQiM-O4eNAmj3-e5V96Vh9ZzMtlNCOi-cN_g>
+ <xme:QZg9YPQOOQ0oMi6vi2ovMlBKLQX4g1nEwGgA_tZRMJuMiq6IfHpFYyZtXUHw3ezWs
+ 47cT3sCV7ewyH5fmw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrleelgdefjecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffogggtgfesthekredtre
+ dtjeenucfhrhhomheptehnughrvgifucflvghffhgvrhihuceorghnughrvgifsegrjhdr
+ ihgurdgruheqnecuggftrfgrthhtvghrnhepvedvleeiieevledtvefgtdevheejvddtje
+ fhjedtgeduffdtudevuefgveduudetnecuffhomhgrihhnpehinhhtvghlrdgtohhmpdhk
+ vghrnhgvlhdrohhrghenucfkphepudegrddvrdeluddrfeejnecuvehluhhsthgvrhfuih
+ iivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgifsegrjhdrihgurdgr
+ uh
+X-ME-Proxy: <xmx:QZg9YBXuCj37dq0BnSaMNlHsJdaL1U7gPP9W6MlatPARjQY7EPdXXg>
+ <xmx:QZg9YBipzcW4sY_FS3cBVBnxr37R2yzYlnjQ0LovBzkfNORpLgOVBg>
+ <xmx:QZg9YJBT4Oy4QbD4GUKxfvQtZm4DMOLYpZv-_gGUpHlcWbMLJtYyPw>
+ <xmx:Qpg9YM5OmCz691kRKY7UZZgUItt9cO1fvz0lrCt5GPtWfQ_I8mDpug>
+Received: from localhost.localdomain
+ (ppp14-2-91-37.adl-apt-pir-bras31.tpg.internode.on.net [14.2.91.37])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 581D624005C;
+ Mon,  1 Mar 2021 20:43:26 -0500 (EST)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-arm@nongnu.org
+Subject: [PATCH v3 0/5] aspeed: LPC peripheral controller devices
+Date: Tue,  2 Mar 2021 12:13:12 +1030
+Message-Id: <20210302014317.915120-1-andrew@aj.id.au>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-In-Reply-To: <09fbdaa9-2882-2056-a5a2-2ca0da8c12cf@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=66.111.4.29; envelope-from=andrew@aj.id.au;
+ helo=out5-smtp.messagingengine.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,196 +126,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Alistair Francis <alistair.francis@xilinx.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com, minyard@acm.org,
+ qemu-devel@nongnu.org, f4bug@amsat.org, clg@kaod.org, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: //u0+0z8GQmc
+X-TUID: C5OxJ3P/pvwU
 
->>> The resizeable memory region that is created for the cmd blob has a maximum
->>> size of ACPI_BUILD_ALIGN_SIZE - 4k. This used to be sufficient, however,
-> 
-> The expression "ACPI_BUILD_ALIGN_SIZE - 4k" makes no sense to me.
-> ACPI_BUILD_ALIGN_SIZE is #defined in "hw/i386/acpi-build.c" as 0x1000,
-> so the difference (ACPI_BUILD_ALIGN_SIZE - 4k) is zero.
-> 
-> (1) Did you mean "ACPI_BUILD_ALIGN_SIZE -- 4k"? IOW, did you mean to
-> quote the value of the macro?
-> 
-> If you mean an em dash, then please use an em dash, not a hyphen (or
-> please use parens).
+Hello,
 
-Yes, or rather use ACPI_BUILD_ALIGN_SIZE (4k).
+This series adds support for some of the LPC[1] peripherals found in Aspeed BMC
+SoCs.
 
-> 
-> 
->>> as we try fitting in additional data (e.g., vmgenid, nvdimm, intel-iommu),
->>> we require more than 4k and can crash QEMU when trying to resize the
->>> resizeable memory region beyond its maximum size:
->>>    $ build/qemu-system-x86_64 --enable-kvm \
->>>        -machine q35,nvdimm=on \
->>>        -smp 1 \
->>>        -cpu host \
->>>        -m size=2G,slots=8,maxmem=4G \
->>>        -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
->>>        -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
->>>        -nodefaults \
->>>        -device vmgenid \
->>>        -device intel-iommu
->>>
->>> Results in:
->>>    Unexpected error in qemu_ram_resize() at ../softmmu/physmem.c:1850:
->>>    qemu-system-x86_64: Size too large: /rom@etc/table-loader:
->>>      0x2000 > 0x1000: Invalid argument
->>>
->>> We try growing the resizeable memory region (resizeable RAMBlock) beyond
->>> its maximum size. Let's increase the maximum size from 4k to 64k, which
->>> should be good enough for the near future.
-> 
-> The existent code calls acpi_align_size(), for resizing the ACPI blobs
-> (the GArray objects).
-> 
-> (Unfortunately, the acpi_align_size() function is duplicated between
-> "hw/i386/acpi-build.c" and "hw/arm/virt-acpi-build.c", which seems
-> unjustified -- but anyway, I digress.)
-> 
-> This seems to come from commit 868270f23d8d ("acpi-build: tweak acpi
-> migration limits", 2014-07-29) and commit 451b157041d2 ("acpi: Align the
-> size to 128k", 2020-12-08).
-> 
-> (2) Why is the logic added in those commits insufficient?
+[1] https://www.intel.com/content/dam/www/program/design/us/en/documents/low-pin-count-interface-specification.pdf
 
-We are dealing with different blobs here (tables_blob vs. cmd_blob).
+v3 fixes a copy/paste error hooking up the LPC IRQ for the AST2600, identified
+off-list. I've tested exercised the eMMC path to confirm the fix. v2 of the
+series can be found here:
 
-> 
-> What is the exact call tree that triggers the above error?
+https://lore.kernel.org/qemu-devel/20210301010610.355702-1-andrew@aj.id.au/T/#mccf00fea21d955d74de39dbc49af8451b447ff54
 
-[...]
+BMCs typically provide a number of features to their host via LPC that include
+but are not limited to:
 
-acpi_build_update()->acpi_build_update()->memory_region_ram_resize()->qemu_ram_resize()
+1. Mapping LPC firmware cycles to BMC-controlled flash devices
+2. UART(s) for system console routing
+3. POST code routing
+4. Keyboard-Controller-Style (KCS) IPMI devices
+5. Block Transfer (BT) IPMI devices
+6. A SuperIO controller for management of LPC devices and miscellaneous
+   functionality
 
-A longer calltrace can be found in https://bugzilla.redhat.com/show_bug.cgi?id=1927159.
+Specifically, this series adds basic support for functions 1 and 4 above,
+handling the BMC firmware configuring the bridge mapping LPC firmware cycles
+onto its AHB as well as support for four KCS devices.
 
->>> +++ b/hw/i386/acpi-microvm.c
->>> @@ -255,7 +255,8 @@ void acpi_setup_microvm(MicrovmMachineState *mms)
->>>                         ACPI_BUILD_TABLE_MAX_SIZE);
->>>       acpi_add_rom_blob(acpi_build_no_update, NULL,
->>>                         tables.linker->cmd_blob,
->>> -                      "etc/table-loader", 0);
->>> +                      ACPI_BUILD_LOADER_FILE,
->>> +                      ACPI_BUILD_LOADER_MAX_SIZE);
->>>       acpi_add_rom_blob(acpi_build_no_update, NULL,
->>>                         tables.rsdp,
->>>                         ACPI_BUILD_RSDP_FILE, 0);
-> 
-> (3) Why are we using a different "tool" here, from the previous
-> approach? We're no longer setting the GArray sizes; instead, we make the
-> "rom->romsize" fields diverge from -- put differently, grow beyond --
-> "rom->datasize". Why is that useful? What are the consequences?
+Aspeed's LPC controller is not a straight-forward device by any stretch. It
+contains at least the capabilities outlined above, in the sense that it's not
+possible to cleanly separate the different functions into distinct MMIO
+sub-regions: Registers for the various bits of functionality have the feel of
+arbitrary placement with a nod to feature-creep and backwards compatibility.
+Further, the conceptually coherent pieces of functionality often come with the
+ability to issue interrupts, though for the AST2400 and AST2500 there is one
+shared VIC IRQ for all LPC "subdevices". By contrast the AST2600 gives each
+subdevice a distinct IRQ via the GIC.
 
-See ACPI_BUILD_TABLE_MAX_SIZE handling just in the acpi_add_rom_blob() above.
+All this combined leads to some complexity regarding the interrupts and handling
+the MMIO accesses (in terms of mapping the access back to the function it's
+affecting).
 
-> 
-> Where is it ensured that data between "rom->datasize" and "rom->romsize"
-> reads as zeroes?
-We only expose the current memory_region_size() to our guest, which is
-always multiples of 4k pages.
+Finally, as a point of clarity, Aspeed BMCs also contain an LPC Host Controller
+to drive the LPC bus. This series does not concern itself with the LPC Host
+Controller function, only with a subset of the peripheral devices the BMC
+presents to the host.
 
-rom->datasize and rom->romsize will be multiple of 4k AFAIKs.
+I've tested the series using a combination of the ast2600-evb, witherspoon-bmc
+and romulus-bmc machines along with a set of recently-posted patches for
+Linux[2].
 
-acpi_align_size()-> g_array_set_size() will take care of zeroing out
-any unused parts within a single 4k page.
+Please review!
 
-So all unused, guest-visible part should always be 0 I think.
+Andrew
 
-> 
-> 
->>> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
->>> index 380d3e3924..93cdfd4006 100644
->>> --- a/include/hw/acpi/aml-build.h
->>> +++ b/include/hw/acpi/aml-build.h
->>> @@ -6,6 +6,7 @@
->>>
->>>   /* Reserve RAM space for tables: add another order of magnitude. */
->>>   #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
->>> +#define ACPI_BUILD_LOADER_MAX_SIZE        0x40000
->>>
->>>   #define ACPI_BUILD_APPNAME6 "BOCHS "
->>>   #define ACPI_BUILD_APPNAME8 "BXPC    "
->>
-> 
-> The commit message says "Let's increase the maximum size from 4k to
-> 64k", and I have two problems with that:
-> 
-> (4a) I have no idea where the current "4k" size comes from. (In case the
-> 4k refers to ACPI_BUILD_ALIGN_SIZE, then why are we not changing that
-> macro?)
+[2] https://lore.kernel.org/openbmc/20210219142523.3464540-1-andrew@aj.id.au/T/#m1e2029e7aa2be3056320e8d46b3b5b1539a776b4
 
-Changing ACPI_BUILD_ALIGN_SIZE would affect the legacy_table_size in
-acpi_build() - so that can't be right.
+Andrew Jeffery (4):
+  hw/arm: ast2600: Force a multiple of 32 of IRQs for the GIC
+  hw/arm: ast2600: Set AST2600_MAX_IRQ to value from datasheet
+  hw/arm: ast2600: Correct the iBT interrupt ID
+  hw/misc: Model KCS devices in the Aspeed LPC controller
 
-What would also work is something like (to be improved)
+Cédric Le Goater (1):
+  hw/misc: Add a basic Aspeed LPC controller model
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 45ad2f9533..49cfedddc8 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -81,6 +81,8 @@
-  #define ACPI_BUILD_LEGACY_CPU_AML_SIZE    97
-  #define ACPI_BUILD_ALIGN_SIZE             0x1000
-  
-+#define ACPI_BUILD_LOADER_ALIGN_SIZE      0x2000
-+
-  #define ACPI_BUILD_TABLE_SIZE             0x20000
-  
-  /* #define DEBUG_ACPI_BUILD */
-@@ -2613,10 +2615,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-              error_printf("Try removing CPUs, NUMA nodes, memory slots"
-                           " or PCI bridges.");
-          }
--        acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
-+        acpi_align_size(tables_blob, ACPI_BUILD_ALIGN_SIZE);
-      }
-  
--    acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_ALIGN_SIZE);
-+    acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_LOADER_ALIGN_SIZE);
+ docs/system/arm/aspeed.rst   |   2 +-
+ hw/arm/aspeed_ast2600.c      |  44 +++-
+ hw/arm/aspeed_soc.c          |  34 ++-
+ hw/misc/aspeed_lpc.c         | 486 +++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build          |   7 +-
+ include/hw/arm/aspeed_soc.h  |   3 +
+ include/hw/misc/aspeed_lpc.h |  47 ++++
+ 7 files changed, 616 insertions(+), 7 deletions(-)
+ create mode 100644 hw/misc/aspeed_lpc.c
+ create mode 100644 include/hw/misc/aspeed_lpc.h
 
 
-At least for hw/i386/acpi-build.c.
-
-We will end up creating the resizeable memory region/RAMBlock always with
-a size=maximum_size=8k. (could also go for 64k here)
-
-The only downside is that we might expose a bigger area to the
-guest than necessary (e.g., 8k instead of 4k) and will e.g., migrate
-8k instead of 4k (not that we care).
-
-
-On incoming migration from older QEMU versions, we should be able to just
-shrink back from 8k to 4k - so migration from older QEMY versions should
-continue working just fine.
-
-> 
-> (4b) The new macro ACPI_BUILD_LOADER_MAX_SIZE does not express 64KB,
-> contrary to the commit message: it expresses 256KB.
-
-Indeed, thanks for noticing that - not that it wouldn't really
-affect your testing in case the maximum size is bigger than necessary ;)
-
-> 
-> ... The code is really difficult to understand; consider the following
-> macros:
-
-Yes, it is.
-
-Thanks!
-
+base-commit: 51db2d7cf26d05a961ec0ee0eb773594b32cc4a1
 -- 
-Thanks,
-
-David / dhildenb
+2.27.0
 

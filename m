@@ -1,71 +1,71 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4538269lfg;
-        Tue, 2 Mar 2021 06:58:44 -0800 (PST)
-X-Received: by 2002:a17:907:2513:: with SMTP id y19mr20939431ejl.241.1614697124762;
-        Tue, 02 Mar 2021 06:58:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614697124; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4538342lfg;
+        Tue, 2 Mar 2021 06:58:51 -0800 (PST)
+X-Received: by 2002:a17:906:d554:: with SMTP id cr20mr4766617ejc.61.1614697131616;
+        Tue, 02 Mar 2021 06:58:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614697131; cv=none;
         d=google.com; s=arc-20160816;
-        b=LYvFyIWQRJ+y516I5h3CVflFCCdZr1luzLYdmXkl/xb3ZBV/J3wtrtuOHXKDbYLzXN
-         V1G8PYh8EdWuLIV8Wxjmur9MIlEegHaLkEGZR/Cw1GbvALjSCsd7LFrG3jBvkD3m2z9S
-         OyZklEYFwiV9jfrToF1LA+wJaT8Q1TY8A9hKeC9dpbqcgC9+5WZ6B1+sIKcWQBP8AnxF
-         uO4DECxWxO4ICbj5QlLa/HnBk0gzs+d1K2lfnW3eVlTj+5PMPU+KhV6Vw/fyQYAiHoQN
-         Wn4GT/lUpbFxTZzZIn6b9TDkmzF2tOYmYlfF0L/vOG5bF3+lh4nW2MchWGo2mNuy2PDQ
-         fkdg==
+        b=s2wxr2HB6jYE9pzFRXMbyMaE9QSXZk1PrFFr1PiX0UxGi9dav8sr381Htnro5vcFlo
+         7WbtUQV8XNibQrBJe4Jd6Bm/Ek954nw0inQlIf15Uy15RWG7butgf94H/zCyxaMRViL0
+         gSTqTpYsMfMR3sFUPO+wfs4PWqjPCl0PFdQeB0ZFb0c4/u8iiAE93/4emy4QK9bKEtqu
+         xK8FAWS9c3semBqHDcsvA0tjwfy4pJqcOYkQ2PH3rxcCJS4qRFurn3mVWRroZ5iSBhmi
+         aT/0+RnEsKx7iF11v+0F9k7tKiVg9O5DTWiIMoJxXKr7rINheKQiyGD7pY4sJAllbbso
+         TFsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=alNnX6GeE8sTwFbIWBvN2VrnGh2+v4nR5yjKLFDEoAw=;
-        b=wqGWWgT/nadFHWKTvc0R+SwOPm27XftRAs1SuqWutAYu5lHJvvfPciPxTP60S6Tmdd
-         u90KSjQNH9Gb6Fin4hhio/ptq0LEKKNDie/mY9IM8+9mzft/8ZcKE+mLITOXPAGO2nIP
-         B55On/0qhaWZ1mdy9e+cCHegYnNSoQHJBvJzPC5v0N9GQL5n/gNLS6SyL+bOd/+T4/5x
-         qd0Adwe0W6qOjuaN/Bi1mgRHrfZUDxrtJg9uRTLPhe8MWDg4IDpFXcbCzuXAQWF4rpIG
-         Rfwy8QhfpLqEHB9t6Du3lDlgXPnTLx8e70Wb4n6cVFCXd/PWmlkJnuHQhcBEk5o2TcAV
-         mt6A==
+        bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
+        b=r9UvIyugq9i2yUZvDXUOqG1NpGggeqJBJaLciE2DHNuJVa2E3Eya9EtHQb6BOADrJt
+         YB8f8eKIRld8xcYHKTaCGFlsCVQqWFp7idx0S9/VGZtCGyfxvuN6tqZP94J34RFmxvuO
+         4nvlp3u8TAbJkwgjeKscuXycmYuR/OrZxg3dcy4tm3NZLnXCvLaDzCE+NAvGCxPF0Aee
+         B56OPsCs07NOJrtDM/oroSgi/VKV2jSgzrV6ex0JFhuukl4wIlLNteDv3LengFnS1JIt
+         Tj5ju8MPhKJyJgatTI6Ql/UcwINU7KHaQRx/yv1XluVD954TE1RsULPcO+H9G/Zpg0WQ
+         zf0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VFrU7iDo;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzxnRz+T;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l13sor4754546ejr.55.2021.03.02.06.58.44
+        by mx.google.com with SMTPS id v13sor4738303ejw.91.2021.03.02.06.58.51
         (Google Transport Security);
-        Tue, 02 Mar 2021 06:58:44 -0800 (PST)
+        Tue, 02 Mar 2021 06:58:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VFrU7iDo;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzxnRz+T;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=alNnX6GeE8sTwFbIWBvN2VrnGh2+v4nR5yjKLFDEoAw=;
-        b=VFrU7iDoGPyASEO4bPiFkn37syLQG/xJ0EH4Bx7NVU45AIFkFZDhGU5X6eWBKSIRzQ
-         XLJSn3DxVNnlmxftXui1AsHgOC0Toa3xnD3ROiQAEY1dgmuo0dHgfuB3Sa1578pBEjg6
-         A9rEut80NiYje0r3bzYFeEeuf03/2fpa72EiA5P6B8IljNdkbECg6ga6rCEjTWxVdT83
-         1roZ17MEBdXQU4bzH0Pv7vQnJqa34yioPdUck+W6LvebHLBb4QM8pywWDlNX3SSmr4Ls
-         ovrqmV/zjmAPU43SANAUa80SWohrRjmU3xigm1gUeNM6RS3Y8LI4oZz3g7evhdwusCfv
-         w24Q==
+        bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
+        b=PzxnRz+TT21E51h00VO4w6EwBK4uBXlC1idOB18LgNi+3yV1fU5phsOnJrU5RYNakr
+         45TD1MtBXFcmbFMan7ALS+EzqYisulDtIvV2Z8tjR51nqKVFiXoaguBA8refjEweF98i
+         WKaQLMj/+2mirtCXfH+rpe6GOPmUbHM9R4/VxGr+Y51sMjwRsaKsUbgwZ6XFhw0eIk5p
+         mUb8iSvgDsvh69RpipuDaGhyRNcxBgEtmA/PuC4BpU8tR1hjx9UQgzIbw9JDPRIgeF4W
+         Lx1HUYOABTY1r4WldGrla5fKkrrz3Ycbg5W1MgBHxn3l7ufNxC/K+j0rAu8z3aUj5+uQ
+         wCzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=alNnX6GeE8sTwFbIWBvN2VrnGh2+v4nR5yjKLFDEoAw=;
-        b=P+wt2Ysrlfw7Kt8yv+2C5wRf/BId7V3Z0I2UYNC956qeKcbAGuNZXU/Kn7eX8LR5KM
-         s8to35EHE+7dZl3q0Rp2JXtAIK3MrV6449KUJVd/DQJDV+fCTMm/JYbVHe0VxGgehIeY
-         9eTXT0cJpM34X3Y0Trib7EEd7NHDz4JoG0JDDpfCdcbGWfO5hZwp4EhnpfgyP/PDLwiq
-         +SlF90czSiu7f1YleTZJNtAcgd/C17mi/luIWUBKQkaegaMSujbS53Q6EfBjsVzcqyb1
-         KqvR5tf85c8zN0TXWpoNLZ9eBHNilaqnP3XC7iN/8dSXAQsgusuDWqcTzN5Jc0WNJlNG
-         J6xg==
-X-Gm-Message-State: AOAM5313CCzFPHd9WAB9+KvJIv32hdGSqHMcasOJ8BTRJD0mJnf8LuPM
-	EqC1Apf9O/QfWAWu+M9xHsTmgmBFTrM=
-X-Google-Smtp-Source: ABdhPJyJWIEjafDhUHW6Vsn3DoTO/XTaOYHIzTNQsr1QEEMKUxlB3g9x4nEQrgjJd79Z3DVUEhusPA==
-X-Received: by 2002:a17:907:9709:: with SMTP id jg9mr14192945ejc.276.1614697124556;
-        Tue, 02 Mar 2021 06:58:44 -0800 (PST)
+        bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
+        b=uEVQBXYZ1JsQZXrnir2bIHBCKsAgjeUPRwxQcfIXvnyvNRSvY3Xl7VlzzNg7bOjHa+
+         oMMT6CkTifsGDG0ibLhUEHuTg4ZIbZlb/k7TrQueepPuMtGolr35iW5jEYRy72S2yIes
+         SLWkzfvjr8qmV83IkDcf0S0iMuNyUvm4CRJ4BLlHjJfmKc59o/5HC7H94MFaWIGuRLOY
+         BmFFwI0gCgMncKQst6tLiK/DPEcgWIrt4q6cCpohifEVLgLAAFLoMi8B6kmN2DuX2rmL
+         D2wV99oX6P0coU/vdJ2ecUOUTrq2iZMDbw/6IiLboOYEYQ9DDIm+LCEwiARDTZYl7nPb
+         d2pA==
+X-Gm-Message-State: AOAM5335MyyzrmscQIQMR+SnLwl10sAcH+dp0MmU6n4nqUWtArNiCLLp
+	SfpywVmKkGOImOUkFUHKTRU=
+X-Google-Smtp-Source: ABdhPJwVwRfRNiu2er/OHpx+xArXr0gZ7SPEHZUCgD/YEmWg0lWrzGwKDNXy+KYAT/7EtK3rnC5gww==
+X-Received: by 2002:a05:6402:348c:: with SMTP id v12mr20696747edc.314.1614697131429;
+        Tue, 02 Mar 2021 06:58:51 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id kj3sm11837143ejc.117.2021.03.02.06.58.41
+        by smtp.gmail.com with ESMTPSA id v8sm9399397edq.76.2021.03.02.06.58.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Mar 2021 06:58:43 -0800 (PST)
+        Tue, 02 Mar 2021 06:58:50 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -110,88 +110,133 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Taylor Simpson <tsimpson@quicinc.com>
-Subject: [PATCH v3 03/27] cpu: Introduce cpu_virtio_is_big_endian()
-Date: Tue,  2 Mar 2021 15:57:54 +0100
-Message-Id: <20210302145818.1161461-4-f4bug@amsat.org>
+Subject: [PATCH v3 04/27] cpu: Directly use cpu_write_elf*() fallback handlers in place
+Date: Tue,  2 Mar 2021 15:57:55 +0100
+Message-Id: <20210302145818.1161461-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210302145818.1161461-1-f4bug@amsat.org>
 References: <20210302145818.1161461-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 17eVx2p9lTk+
+X-TUID: u1FtmSmv3TDx
 
-Introduce the cpu_virtio_is_big_endian() generic helper to avoid
-calling CPUClass internal virtio_is_big_endian() one.
+No code directly accesses CPUClass::write_elf*() handlers out
+of hw/core/cpu.c (the rest are assignation in target/ code):
+
+  $ git grep -F -- '->write_elf'
+  hw/core/cpu.c:157:    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
+  hw/core/cpu.c:171:    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
+  hw/core/cpu.c:186:    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
+  hw/core/cpu.c:200:    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
+  hw/core/cpu.c:440:    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
+  hw/core/cpu.c:441:    k->write_elf32_note = cpu_common_write_elf32_note;
+  hw/core/cpu.c:442:    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
+  hw/core/cpu.c:443:    k->write_elf64_note = cpu_common_write_elf64_note;
+  target/arm/cpu.c:2304:    cc->write_elf64_note = arm_cpu_write_elf64_note;
+  target/arm/cpu.c:2305:    cc->write_elf32_note = arm_cpu_write_elf32_note;
+  target/i386/cpu.c:7425:    cc->write_elf64_note = x86_cpu_write_elf64_note;
+  target/i386/cpu.c:7426:    cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
+  target/i386/cpu.c:7427:    cc->write_elf32_note = x86_cpu_write_elf32_note;
+  target/i386/cpu.c:7428:    cc->write_elf32_qemunote = x86_cpu_write_elf32_qemunote;
+  target/ppc/translate_init.c.inc:10891:    cc->write_elf64_note = ppc64_cpu_write_elf64_note;
+  target/ppc/translate_init.c.inc:10892:    cc->write_elf32_note = ppc32_cpu_write_elf32_note;
+  target/s390x/cpu.c:522:    cc->write_elf64_note = s390_cpu_write_elf64_note;
+
+Check the handler presence in place and remove the common fallback code.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/core/cpu.h | 9 +++++++++
- hw/core/cpu.c         | 8 ++++++--
- hw/virtio/virtio.c    | 4 +---
- 3 files changed, 16 insertions(+), 5 deletions(-)
+ hw/core/cpu.c | 43 ++++++++++++-------------------------------
+ 1 file changed, 12 insertions(+), 31 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 2d43f78819f..b12028c3c03 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -602,6 +602,15 @@ hwaddr cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-  */
- int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs);
- 
-+/**
-+ * cpu_virtio_is_big_endian:
-+ * @cpu: CPU
-+
-+ * Returns %true if a CPU which supports runtime configurable endianness
-+ * is currently big-endian.
-+ */
-+bool cpu_virtio_is_big_endian(CPUState *cpu);
-+
- #endif /* CONFIG_USER_ONLY */
- 
- /**
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 4dce35f832f..daaff56a79e 100644
+index daaff56a79e..a9ee2c74ec5 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -218,8 +218,13 @@ static int cpu_common_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg)
-     return 0;
- }
- 
--static bool cpu_common_virtio_is_big_endian(CPUState *cpu)
-+bool cpu_virtio_is_big_endian(CPUState *cpu)
+@@ -154,60 +154,45 @@ int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
  {
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (cc->virtio_is_big_endian) {
-+        return cc->virtio_is_big_endian(cpu);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
++    if (!cc->write_elf32_qemunote) {
++        return 0;
 +    }
-     return target_words_bigendian();
+     return (*cc->write_elf32_qemunote)(f, cpu, opaque);
  }
  
-@@ -438,7 +443,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
-     k->write_elf64_note = cpu_common_write_elf64_note;
+-static int cpu_common_write_elf32_qemunote(WriteCoreDumpFunction f,
+-                                           CPUState *cpu, void *opaque)
+-{
+-    return 0;
+-}
+-
+ int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
+                          int cpuid, void *opaque)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
++    if (!cc->write_elf32_note) {
++        return -1;
++    }
+     return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
+ }
+ 
+-static int cpu_common_write_elf32_note(WriteCoreDumpFunction f,
+-                                       CPUState *cpu, int cpuid,
+-                                       void *opaque)
+-{
+-    return -1;
+-}
+-
+ int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
+                              void *opaque)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
++    if (!cc->write_elf64_qemunote) {
++        return 0;
++    }
+     return (*cc->write_elf64_qemunote)(f, cpu, opaque);
+ }
+ 
+-static int cpu_common_write_elf64_qemunote(WriteCoreDumpFunction f,
+-                                           CPUState *cpu, void *opaque)
+-{
+-    return 0;
+-}
+-
+ int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
+                          int cpuid, void *opaque)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
++    if (!cc->write_elf64_note) {
++        return -1;
++    }
+     return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
+ }
+ 
+-static int cpu_common_write_elf64_note(WriteCoreDumpFunction f,
+-                                       CPUState *cpu, int cpuid,
+-                                       void *opaque)
+-{
+-    return -1;
+-}
+-
+-
+ static int cpu_common_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+ {
+     return 0;
+@@ -437,10 +422,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->has_work = cpu_common_has_work;
+     k->get_paging_enabled = cpu_common_get_paging_enabled;
+     k->get_memory_mapping = cpu_common_get_memory_mapping;
+-    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
+-    k->write_elf32_note = cpu_common_write_elf32_note;
+-    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
+-    k->write_elf64_note = cpu_common_write_elf64_note;
      k->gdb_read_register = cpu_common_gdb_read_register;
      k->gdb_write_register = cpu_common_gdb_write_register;
--    k->virtio_is_big_endian = cpu_common_virtio_is_big_endian;
      set_bit(DEVICE_CATEGORY_CPU, dc->categories);
-     dc->realize = cpu_common_realizefn;
-     dc->unrealize = cpu_common_unrealizefn;
-diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-index 1fd1917ca0f..fe6a4be99e4 100644
---- a/hw/virtio/virtio.c
-+++ b/hw/virtio/virtio.c
-@@ -1973,9 +1973,7 @@ static enum virtio_device_endian virtio_default_endian(void)
- 
- static enum virtio_device_endian virtio_current_cpu_endian(void)
- {
--    CPUClass *cc = CPU_GET_CLASS(current_cpu);
--
--    if (cc->virtio_is_big_endian(current_cpu)) {
-+    if (cpu_virtio_is_big_endian(current_cpu)) {
-         return VIRTIO_DEVICE_ENDIAN_BIG;
-     } else {
-         return VIRTIO_DEVICE_ENDIAN_LITTLE;
 -- 
 2.26.2

@@ -1,99 +1,99 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4372135lfg;
-        Tue, 2 Mar 2021 03:10:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJws4mLa/plQF45MJ1BIqCQgTgEX2haA2sDT+7FDITygAzQy7Dookp6xzkwdqdFpiv7BSsVC
-X-Received: by 2002:a05:6e02:12e9:: with SMTP id l9mr16961400iln.201.1614683413538;
-        Tue, 02 Mar 2021 03:10:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614683413; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4373461lfg;
+        Tue, 2 Mar 2021 03:12:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx+QQgg7nS2n6qLsfhD0b6rrzGk+3+i0w/7pPEnah0j2C+SLs5NRhPgf6HTRIb3YZzYLk5D
+X-Received: by 2002:a25:dc94:: with SMTP id y142mr29998933ybe.346.1614683530745;
+        Tue, 02 Mar 2021 03:12:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614683530; cv=none;
         d=google.com; s=arc-20160816;
-        b=PRZXIN8rY3W9AjW5SRcTPBjM496RrVq+oDxSA1A5Ld24PeB1UJKiJAWZTcM7hSB085
-         8P+3mWeUh7y2DIyO6CUli3Ej+XIjYg84JwBG7g9+l2fQtRsMdn7OtjN085dqgyVA3GTa
-         iw7Cx+2Hjj2I4fzP7Mbie865VM5zs4yWtQyyqDz7MHcoy3TTknNArYKteRQy95DdEGcz
-         z03Kw/+sGZM2traCjx57Otxpq+ddPBiLqhVqZBXI9Plv59ZvBWayGwLp1057F/a+3TH4
-         C5L7BzjvaRkwwIV0VnaCyukwCvqtecRjH2mVUDU7TQfV3oZ62fWxe+s/T0O/2HHfRGM4
-         DcSg==
+        b=Dgu6jsNKDu6ypv8ozip1uzc6F+4j7GtLIVuTpjQ2oa6xsrmfg5Hf1qtGnIs75OfsFj
+         WtbaD68ODa1KnbgQ5F13DE2a6rCO093ITg1fghjCcbD8BVH9ziCaAtqj4vD7Tdtqjgzc
+         06fzJfOBSYfvd0HoqPEhU1FxEgNtrO+7ZcK5vnUxYGTnNBDR1Qr4mOyuYs2KC19JHbhQ
+         7G+hrYj4WhLXeO3yUL3f0GZN1ZxjP2eDeUtX1czQYxywI/S5rrP0ehZqGx50yIT1NDOz
+         wY6amrJPNlhILfGOyEONISvpkyespAXyso5UBWHZY6pJgOLEmBDJQBwPDFRZYtXBO9w5
+         se3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=lFV4c3TgWfAyHq01XF6j83TeOLv2ZtjkdtoWrSXhna4=;
-        b=0cR4Hdk1Q7eVxQ6+kR20kamzHWqQIxUwUn78/EMvRpAUNivjiFwfP4fw9uwMSorBXg
-         v07OTB/RD0e6YaamUAVk+xRTUdH8NK46ZZGgdA+duC/9kCy0vADLDHmy+Dyf1+Vz/84R
-         gA2hvmFIldsLQob7sDxFOeUPBeqvtZa0apjE70l6+8m2nO5xPMASkKfRFasfg5j1SkUC
-         bqoqo8DEZhmmLgWdZAZfzSDeg0mfo7ZDw2a1y/sveHyRG/WNuqFYa3OF7yyYcfdpyA1R
-         fKIzT4AAaXjv9/mMF0Jz21GxakvAN08/X7E91H1SIdqSuv/z1b+q4OrlyoUfgKP8OCrP
-         IKAg==
+        bh=HSj6VCKXU/5NCL0lS6cfTis53NpvjP8FsmfGVEn+WOI=;
+        b=FRNcyKsSXpX5G7gFX8gvGlARmw5XzclpdIoG6VIR5XJVDgSq5z5D2u7KEbvh7e3AON
+         c9keWXZNvDVaraD0fPOqYk8C1GHuOFoEiD2OSQ9ZD3u49CYKnFrLi1M9JtPr6gW3LwZ9
+         vVth/9JCfxXSKgAiwKewxB8TGNNVr/PIZQVoQe9obPYlql7V1L0EozUzE1s+P3R8zT9L
+         4WC1k4ip3Sar3S1nnaSJujB/OKaOlZZHzfh4SYdR/cklv7CFwNFXDIJ5tQMJ5CRRXw8P
+         o1vNnv5UhOwrJDdrYMZ95p+WS37hPNKJKFOn7ntAeqbKGir6XYMBk0awg+/Z8XfHjHk2
+         wQiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iblNGJEv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YNBxR65H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7si19130534ilq.53.2021.03.02.03.10.13
+        by mx.google.com with ESMTPS id c11si20005131ybr.384.2021.03.02.03.12.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 03:10:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Mar 2021 03:12:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iblNGJEv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YNBxR65H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54646 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59588 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH2uq-0005KA-RK
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 06:10:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36572)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lH2wi-0007P3-FK
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 06:12:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lH2ug-0005HJ-MY; Tue, 02 Mar 2021 06:10:02 -0500
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b]:36742)
+ id 1lH2ug-0005HA-6Z; Tue, 02 Mar 2021 06:10:02 -0500
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135]:40619)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lH2ue-00077M-Sc; Tue, 02 Mar 2021 06:10:02 -0500
-Received: by mail-lf1-x12b.google.com with SMTP id f1so30666450lfu.3;
- Tue, 02 Mar 2021 03:10:00 -0800 (PST)
+ id 1lH2ud-00077F-V1; Tue, 02 Mar 2021 06:10:01 -0500
+Received: by mail-lf1-x135.google.com with SMTP id b1so19867658lfb.7;
+ Tue, 02 Mar 2021 03:09:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=lFV4c3TgWfAyHq01XF6j83TeOLv2ZtjkdtoWrSXhna4=;
- b=iblNGJEvNHt9Gg2YJJFKONtjC1f/bf5zVCdCZ3WfW75JDoej0AAxHYq3cSzBCD2BPR
- pJbQt/QvBtqvtHNpTo0vX9gU1F1LTtZ+UT4vsipihzlm5jUY5ybBx4urm+KtfbkoV+Jq
- a9prCiYSa9Bv22e2BtKjTHtyuMp8FNrPvyh2zxvuRIWwO0c+f3JukWf9Z0ylDirccmNN
- OgxrP3vpGpXESsOmTJFJOqA0x9fyvXAQNzHZ1Xp6wd3lJLwVVYw5+8zdqoFjz4eX6FCj
- juewDC/nmNe9/yZvAUsQxs1igfr5bhYPZTqhdmiWT94hEwcgKeysnggElQVqyNt6WJ3u
- Y3SQ==
+ bh=HSj6VCKXU/5NCL0lS6cfTis53NpvjP8FsmfGVEn+WOI=;
+ b=YNBxR65H8W4pFgn1MsQQ7r93FV6lA1sN5FjsCMk1gSOTuhaWJO02RskGrZs1ifjoi4
+ wTwwV/cm6z5ATFuwe6TWR6kAkyUwrYbnpZV/Nu0SvUAX1q+e3iT8iFw9GnqHGTwYRbIK
+ P1p7jp7dkKrZ8oOhasuBiOQXXeDbh9iMpVGp0fmgeXCM9LF8QG1GnS5321Rrmf7/x7PU
+ Xoahhgm6DUHHqG5D3teth8OkDTCqjPmY9yG/0YXxs8ibits3BpVR2nuch30wWHqiQdge
+ /e/dftUDkEvYtq6ebDdlcZGlEWoV2xB2XDAVovIFHFcqzx0tD50ZujP5vgY7PCb3ydvB
+ mylA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lFV4c3TgWfAyHq01XF6j83TeOLv2ZtjkdtoWrSXhna4=;
- b=EMGUlz5mXmi7Gdxse6DFMPO2utHjnHNpZW/ehhNtwVp0vFZqZEPO4Kjc1vE2PH2hpy
- Lun+5TDXuyQjUzpqs/qjyvvC/2kH2TB3sm4Rqx1yN0h4gy/IFTI0ekL6U6tZiWbyaEwd
- ur+EifEAsgq7FVA0hs8mj5Zo94Rb6lyKvnA86hfbInE0/aseGYY7uldwUMn17lRyo+I/
- KlKd7TNm8Th4dW1/vJrkn7uERZ71sq4IuIE9NJBnJXet/pPxu+mwNIF9CF3W+50Bv2lW
- Vw0k/IIvDPh/o17ne5MLw2bgXAqDl+F/NQPNJBKfRV0E526YJyc7dKG0cprJeR2KOks2
- qYLQ==
-X-Gm-Message-State: AOAM531tikGe6iMRW7T7QA+6sld/svPJOQ1FVTLg8QENPlBc/TEAXqLc
- cZPik5fQxCN5agkRwguG+z8x2mv7gullCLlD
-X-Received: by 2002:ac2:42d1:: with SMTP id n17mr11709867lfl.76.1614683398636; 
- Tue, 02 Mar 2021 03:09:58 -0800 (PST)
+ bh=HSj6VCKXU/5NCL0lS6cfTis53NpvjP8FsmfGVEn+WOI=;
+ b=QtmEM5o7nsyHtxf2lwakqtMmXAMJpu3vJNSRY1vOwuuP78XPmpMc0CzSXSZKP/UAb/
+ 6+t66sU6YZ6+siSay294SaPGPeDhpzjNWKAczuAaq3c4+o3b9wTHpd/UArQLyyEKd5/y
+ ycVjPpEUTwVr6/5MDptlhoA23tJCvHbwbOQ9fZBTjg7QFie7llWrPMinYX4bxpS04CFM
+ DLOIqs8Dm7EzeJLqwdlf/mW6Tvy2mgnWKNu9mqHnqmJAnO6qmP5A4JREtSOFd8jYHs+j
+ j68+dWbq7Q8JhtUcJ9e2xJHGE6hcG9NqGFl7PAo6t9cFEXIq3oCBcMedktwDqPsT25uz
+ EwMw==
+X-Gm-Message-State: AOAM531joIjC3kOlevIwVUZb4GysOPp84j+oECENmPp+E9PM0IUXCC7n
+ lMjHUBehjfRr5KhXOfVbA9z8P9R64P9PYJEB
+X-Received: by 2002:a19:ee19:: with SMTP id g25mr11700908lfb.83.1614683397639; 
+ Tue, 02 Mar 2021 03:09:57 -0800 (PST)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id n17sm2616601lfl.49.2021.03.02.03.09.58
+ by smtp.gmail.com with ESMTPSA id m16sm2609568lfh.109.2021.03.02.03.09.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 03:09:58 -0800 (PST)
+ Tue, 02 Mar 2021 03:09:57 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 2/2] hw/arm: versal: Add support for the XRAMs
-Date: Tue,  2 Mar 2021 12:09:55 +0100
-Message-Id: <20210302110955.1810487-3-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 1/2] hw/misc: versal: Add a model of the XRAM controller
+Date: Tue,  2 Mar 2021 12:09:54 +0100
+Message-Id: <20210302110955.1810487-2-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
 References: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,169 +102,422 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  joe.komlodi@xilinx.com, sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
  alistair@alistair23.me, richard.henderson@linaro.org,
  francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
  qemu-arm@nongnu.org, philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4V8xRyaaDlar
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LugS2ofVwvGB
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Connect the support for the Versal Accelerator RAMs (XRAMs).
+Add a model of the Xilinx Versal Accelerator RAM (XRAM).
+This is mainly a stub to make firmware happy. The size of
+the RAMs can be probed. The interrupt mask logic is
+modelled but none of the interrups will ever be raised
+unless injected.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- docs/system/arm/xlnx-versal-virt.rst |  1 +
- include/hw/arm/xlnx-versal.h         | 13 ++++++++++
- hw/arm/xlnx-versal.c                 | 36 ++++++++++++++++++++++++++++
- 3 files changed, 50 insertions(+)
+ include/hw/misc/xlnx-versal-xramc.h | 102 +++++++++++
+ hw/misc/xlnx-versal-xramc.c         | 253 ++++++++++++++++++++++++++++
+ hw/misc/meson.build                 |   1 +
+ 3 files changed, 356 insertions(+)
+ create mode 100644 include/hw/misc/xlnx-versal-xramc.h
+ create mode 100644 hw/misc/xlnx-versal-xramc.c
 
-diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-index 2602d0f995..27f73500d9 100644
---- a/docs/system/arm/xlnx-versal-virt.rst
-+++ b/docs/system/arm/xlnx-versal-virt.rst
-@@ -30,6 +30,7 @@ Implemented devices:
- - 8 ADMA (Xilinx zDMA) channels
- - 2 SD Controllers
- - OCM (256KB of On Chip Memory)
-+- XRAM (4MB of on chip Accelerator RAM)
- - DDR memory
- 
- QEMU does not yet model any other devices, including the PL and the AI Engine.
-diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-index 2b76885afd..22a8fa5d11 100644
---- a/include/hw/arm/xlnx-versal.h
-+++ b/include/hw/arm/xlnx-versal.h
-@@ -14,6 +14,7 @@
- 
- #include "hw/sysbus.h"
- #include "hw/arm/boot.h"
-+#include "hw/or-irq.h"
- #include "hw/sd/sdhci.h"
- #include "hw/intc/arm_gicv3.h"
- #include "hw/char/pl011.h"
-@@ -22,6 +23,7 @@
- #include "hw/rtc/xlnx-zynqmp-rtc.h"
- #include "qom/object.h"
- #include "hw/usb/xlnx-usb-subsystem.h"
-+#include "hw/misc/xlnx-versal-xramc.h"
- 
- #define TYPE_XLNX_VERSAL "xlnx-versal"
- OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
-@@ -31,6 +33,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
- #define XLNX_VERSAL_NR_GEMS    2
- #define XLNX_VERSAL_NR_ADMAS   8
- #define XLNX_VERSAL_NR_SDS     2
-+#define XLNX_VERSAL_NR_XRAM    4
- #define XLNX_VERSAL_NR_IRQS    192
- 
- struct Versal {
-@@ -62,6 +65,11 @@ struct Versal {
-             XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
-             VersalUsb2 usb;
-         } iou;
+diff --git a/include/hw/misc/xlnx-versal-xramc.h b/include/hw/misc/xlnx-versal-xramc.h
+new file mode 100644
+index 0000000000..68163cf330
+--- /dev/null
++++ b/include/hw/misc/xlnx-versal-xramc.h
+@@ -0,0 +1,102 @@
++/*
++ * QEMU model of the Xilinx XRAM Controller.
++ *
++ * Copyright (c) 2021 Xilinx Inc.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ */
 +
-+        struct {
-+            qemu_or_irq irq_orgate;
-+            XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
-+        } xram;
-     } lpd;
- 
-     /* The Platform Management Controller subsystem.  */
-@@ -96,6 +104,7 @@ struct Versal {
- #define VERSAL_GEM1_IRQ_0          58
- #define VERSAL_GEM1_WAKE_IRQ_0     59
- #define VERSAL_ADMA_IRQ_0          60
-+#define VERSAL_XRAM_IRQ_0          79
- #define VERSAL_RTC_APB_ERR_IRQ     121
- #define VERSAL_SD0_IRQ_0           126
- #define VERSAL_RTC_ALARM_IRQ       142
-@@ -128,6 +137,10 @@ struct Versal {
- #define MM_OCM                      0xfffc0000U
- #define MM_OCM_SIZE                 0x40000
- 
-+#define MM_XRAM                     0xfe800000
-+#define MM_XRAMC                    0xff8e0000
-+#define MM_XRAMC_SIZE               0x10000
++#ifndef XLNX_VERSAL_XRAMC_H
++#define XLNX_VERSAL_XRAMC_H
 +
- #define MM_USB2_CTRL_REGS           0xFF9D0000
- #define MM_USB2_CTRL_REGS_SIZE      0x10000
- 
-diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index 628e77ef66..79609692e4 100644
---- a/hw/arm/xlnx-versal.c
-+++ b/hw/arm/xlnx-versal.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "hw/register.h"
++#include "qemu/bitops.h"
++#include "qemu/log.h"
++#include "migration/vmstate.h"
++#include "hw/irq.h"
++
++#define TYPE_XLNX_XRAM_CTRL "xlnx.versal-xramc"
++
++#define XLNX_XRAM_CTRL(obj) \
++     OBJECT_CHECK(XlnxXramCtrl, (obj), TYPE_XLNX_XRAM_CTRL)
++
++REG32(XRAM_ERR_CTRL, 0x0)
++    FIELD(XRAM_ERR_CTRL, UE_RES, 3, 1)
++    FIELD(XRAM_ERR_CTRL, PWR_ERR_RES, 2, 1)
++    FIELD(XRAM_ERR_CTRL, PZ_ERR_RES, 1, 1)
++    FIELD(XRAM_ERR_CTRL, APB_ERR_RES, 0, 1)
++REG32(XRAM_ISR, 0x4)
++    FIELD(XRAM_ISR, INV_APB, 0, 1)
++REG32(XRAM_IMR, 0x8)
++    FIELD(XRAM_IMR, INV_APB, 0, 1)
++REG32(XRAM_IEN, 0xc)
++    FIELD(XRAM_IEN, INV_APB, 0, 1)
++REG32(XRAM_IDS, 0x10)
++    FIELD(XRAM_IDS, INV_APB, 0, 1)
++REG32(XRAM_ECC_CNTL, 0x14)
++    FIELD(XRAM_ECC_CNTL, FI_MODE, 2, 1)
++    FIELD(XRAM_ECC_CNTL, DET_ONLY, 1, 1)
++    FIELD(XRAM_ECC_CNTL, ECC_ON_OFF, 0, 1)
++REG32(XRAM_CLR_EXE, 0x18)
++    FIELD(XRAM_CLR_EXE, MON_7, 7, 1)
++    FIELD(XRAM_CLR_EXE, MON_6, 6, 1)
++    FIELD(XRAM_CLR_EXE, MON_5, 5, 1)
++    FIELD(XRAM_CLR_EXE, MON_4, 4, 1)
++    FIELD(XRAM_CLR_EXE, MON_3, 3, 1)
++    FIELD(XRAM_CLR_EXE, MON_2, 2, 1)
++    FIELD(XRAM_CLR_EXE, MON_1, 1, 1)
++    FIELD(XRAM_CLR_EXE, MON_0, 0, 1)
++REG32(XRAM_CE_FFA, 0x1c)
++    FIELD(XRAM_CE_FFA, ADDR, 0, 20)
++REG32(XRAM_CE_FFD0, 0x20)
++REG32(XRAM_CE_FFD1, 0x24)
++REG32(XRAM_CE_FFD2, 0x28)
++REG32(XRAM_CE_FFD3, 0x2c)
++REG32(XRAM_CE_FFE, 0x30)
++    FIELD(XRAM_CE_FFE, SYNDROME, 0, 16)
++REG32(XRAM_UE_FFA, 0x34)
++    FIELD(XRAM_UE_FFA, ADDR, 0, 20)
++REG32(XRAM_UE_FFD0, 0x38)
++REG32(XRAM_UE_FFD1, 0x3c)
++REG32(XRAM_UE_FFD2, 0x40)
++REG32(XRAM_UE_FFD3, 0x44)
++REG32(XRAM_UE_FFE, 0x48)
++    FIELD(XRAM_UE_FFE, SYNDROME, 0, 16)
++REG32(XRAM_FI_D0, 0x4c)
++REG32(XRAM_FI_D1, 0x50)
++REG32(XRAM_FI_D2, 0x54)
++REG32(XRAM_FI_D3, 0x58)
++REG32(XRAM_FI_SY, 0x5c)
++    FIELD(XRAM_FI_SY, DATA, 0, 16)
++REG32(XRAM_RMW_UE_FFA, 0x70)
++    FIELD(XRAM_RMW_UE_FFA, ADDR, 0, 20)
++REG32(XRAM_FI_CNTR, 0x74)
++    FIELD(XRAM_FI_CNTR, COUNT, 0, 24)
++REG32(XRAM_IMP, 0x80)
++    FIELD(XRAM_IMP, SIZE, 0, 4)
++REG32(XRAM_PRDY_DBG, 0x84)
++    FIELD(XRAM_PRDY_DBG, ISLAND3, 12, 4)
++    FIELD(XRAM_PRDY_DBG, ISLAND2, 8, 4)
++    FIELD(XRAM_PRDY_DBG, ISLAND1, 4, 4)
++    FIELD(XRAM_PRDY_DBG, ISLAND0, 0, 4)
++REG32(XRAM_SAFETY_CHK, 0xff8)
++
++#define XRAM_CTRL_R_MAX (R_XRAM_SAFETY_CHK + 1)
++
++typedef struct XlnxXramCtrl {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++    MemoryRegion ram;
++    qemu_irq irq;
++
++    struct {
++        uint64_t size;
++        unsigned int encoded_size;
++    } cfg;
++
++    uint32_t regs[XRAM_CTRL_R_MAX];
++    RegisterInfo regs_info[XRAM_CTRL_R_MAX];
++} XlnxXramCtrl;
++#endif
+diff --git a/hw/misc/xlnx-versal-xramc.c b/hw/misc/xlnx-versal-xramc.c
+new file mode 100644
+index 0000000000..c7f449fefa
+--- /dev/null
++++ b/hw/misc/xlnx-versal-xramc.c
+@@ -0,0 +1,253 @@
++/*
++ * QEMU model of the Xilinx XRAM Controller.
++ *
++ * Copyright (c) 2021 Xilinx Inc.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ */
++
++#include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-@@ -278,6 +279,40 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
-     sysbus_connect_irq(sbd, 1, pic[VERSAL_RTC_APB_ERR_IRQ]);
- }
- 
-+static void versal_create_xrams(Versal *s, qemu_irq *pic)
++#include "qemu/bitops.h"
++#include "qapi/error.h"
++#include "migration/vmstate.h"
++#include "hw/sysbus.h"
++#include "hw/register.h"
++#include "hw/qdev-properties.h"
++#include "hw/irq.h"
++#include "hw/misc/xlnx-versal-xramc.h"
++
++#ifndef XLNX_XRAM_CTRL_ERR_DEBUG
++#define XLNX_XRAM_CTRL_ERR_DEBUG 0
++#endif
++
++static void xram_update_irq(XlnxXramCtrl *s)
 +{
-+    int nr_xrams = ARRAY_SIZE(s->lpd.xram.ctrl);
-+    DeviceState *orgate;
-+    int i;
-+
-+    /* XRAM IRQs get ORed into a single line.  */
-+    object_initialize_child(OBJECT(s), "xram-irq-orgate",
-+                            &s->lpd.xram.irq_orgate, TYPE_OR_IRQ);
-+    orgate = DEVICE(&s->lpd.xram.irq_orgate);
-+    object_property_set_int(OBJECT(orgate),
-+                            "num-lines", nr_xrams, &error_fatal);
-+    qdev_realize(orgate, NULL, &error_fatal);
-+    qdev_connect_gpio_out(orgate, 0, pic[VERSAL_XRAM_IRQ_0]);
-+
-+    for (i = 0; i < ARRAY_SIZE(s->lpd.xram.ctrl); i++) {
-+        SysBusDevice *sbd;
-+        MemoryRegion *mr;
-+
-+        object_initialize_child(OBJECT(s), "xram[*]", &s->lpd.xram.ctrl[i],
-+                                TYPE_XLNX_XRAM_CTRL);
-+        sbd = SYS_BUS_DEVICE(&s->lpd.xram.ctrl[i]);
-+        sysbus_realize(sbd, &error_fatal);
-+
-+        mr = sysbus_mmio_get_region(sbd, 0);
-+        memory_region_add_subregion(&s->mr_ps,
-+                                    MM_XRAMC + i * MM_XRAMC_SIZE, mr);
-+        mr = sysbus_mmio_get_region(sbd, 1);
-+        memory_region_add_subregion(&s->mr_ps, MM_XRAM + i * MiB, mr);
-+
-+        sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(orgate, i));
-+    }
++    bool pending = s->regs[R_XRAM_ISR] & ~s->regs[R_XRAM_IMR];
++    qemu_set_irq(s->irq, pending);
 +}
 +
- /* This takes the board allocated linear DDR memory and creates aliases
-  * for each split DDR range/aperture on the Versal address map.
-  */
-@@ -363,6 +398,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
-     versal_create_admas(s, pic);
-     versal_create_sds(s, pic);
-     versal_create_rtc(s, pic);
-+    versal_create_xrams(s, pic);
-     versal_map_ddr(s);
-     versal_unimp(s);
- 
++static void xram_isr_postw(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxXramCtrl *s = XLNX_XRAM_CTRL(reg->opaque);
++    xram_update_irq(s);
++}
++
++static uint64_t xram_ien_prew(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxXramCtrl *s = XLNX_XRAM_CTRL(reg->opaque);
++    uint32_t val = val64;
++
++    s->regs[R_XRAM_IMR] &= ~val;
++    xram_update_irq(s);
++    return 0;
++}
++
++static uint64_t xram_ids_prew(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxXramCtrl *s = XLNX_XRAM_CTRL(reg->opaque);
++    uint32_t val = val64;
++
++    s->regs[R_XRAM_IMR] |= val;
++    xram_update_irq(s);
++    return 0;
++}
++
++static const RegisterAccessInfo xram_ctrl_regs_info[] = {
++    {   .name = "XRAM_ERR_CTRL",  .addr = A_XRAM_ERR_CTRL,
++        .reset = 0xf,
++        .rsvd = 0xfffffff0,
++    },{ .name = "XRAM_ISR",  .addr = A_XRAM_ISR,
++        .rsvd = 0xfffff800,
++        .w1c = 0x7ff,
++        .post_write = xram_isr_postw,
++    },{ .name = "XRAM_IMR",  .addr = A_XRAM_IMR,
++        .reset = 0x7ff,
++        .rsvd = 0xfffff800,
++        .ro = 0x7ff,
++    },{ .name = "XRAM_IEN",  .addr = A_XRAM_IEN,
++        .rsvd = 0xfffff800,
++        .pre_write = xram_ien_prew,
++    },{ .name = "XRAM_IDS",  .addr = A_XRAM_IDS,
++        .rsvd = 0xfffff800,
++        .pre_write = xram_ids_prew,
++    },{ .name = "XRAM_ECC_CNTL",  .addr = A_XRAM_ECC_CNTL,
++        .rsvd = 0xfffffff8,
++    },{ .name = "XRAM_CLR_EXE",  .addr = A_XRAM_CLR_EXE,
++        .rsvd = 0xffffff00,
++    },{ .name = "XRAM_CE_FFA",  .addr = A_XRAM_CE_FFA,
++        .rsvd = 0xfff00000,
++        .ro = 0xfffff,
++    },{ .name = "XRAM_CE_FFD0",  .addr = A_XRAM_CE_FFD0,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_CE_FFD1",  .addr = A_XRAM_CE_FFD1,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_CE_FFD2",  .addr = A_XRAM_CE_FFD2,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_CE_FFD3",  .addr = A_XRAM_CE_FFD3,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_CE_FFE",  .addr = A_XRAM_CE_FFE,
++        .rsvd = 0xffff0000,
++        .ro = 0xffff,
++    },{ .name = "XRAM_UE_FFA",  .addr = A_XRAM_UE_FFA,
++        .rsvd = 0xfff00000,
++        .ro = 0xfffff,
++    },{ .name = "XRAM_UE_FFD0",  .addr = A_XRAM_UE_FFD0,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_UE_FFD1",  .addr = A_XRAM_UE_FFD1,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_UE_FFD2",  .addr = A_XRAM_UE_FFD2,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_UE_FFD3",  .addr = A_XRAM_UE_FFD3,
++        .ro = 0xffffffff,
++    },{ .name = "XRAM_UE_FFE",  .addr = A_XRAM_UE_FFE,
++        .rsvd = 0xffff0000,
++        .ro = 0xffff,
++    },{ .name = "XRAM_FI_D0",  .addr = A_XRAM_FI_D0,
++    },{ .name = "XRAM_FI_D1",  .addr = A_XRAM_FI_D1,
++    },{ .name = "XRAM_FI_D2",  .addr = A_XRAM_FI_D2,
++    },{ .name = "XRAM_FI_D3",  .addr = A_XRAM_FI_D3,
++    },{ .name = "XRAM_FI_SY",  .addr = A_XRAM_FI_SY,
++        .rsvd = 0xffff0000,
++    },{ .name = "XRAM_RMW_UE_FFA",  .addr = A_XRAM_RMW_UE_FFA,
++        .rsvd = 0xfff00000,
++        .ro = 0xfffff,
++    },{ .name = "XRAM_FI_CNTR",  .addr = A_XRAM_FI_CNTR,
++        .rsvd = 0xff000000,
++    },{ .name = "XRAM_IMP",  .addr = A_XRAM_IMP,
++        .reset = 0x4,
++        .rsvd = 0xfffffff0,
++        .ro = 0xf,
++    },{ .name = "XRAM_PRDY_DBG",  .addr = A_XRAM_PRDY_DBG,
++        .reset = 0xffff,
++        .rsvd = 0xffff0000,
++        .ro = 0xffff,
++    },{ .name = "XRAM_SAFETY_CHK",  .addr = A_XRAM_SAFETY_CHK,
++    }
++};
++
++static void xram_ctrl_reset_enter(Object *obj, ResetType type)
++{
++    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
++    unsigned int i;
++
++    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
++        register_reset(&s->regs_info[i]);
++    }
++
++    ARRAY_FIELD_DP32(s->regs, XRAM_IMP, SIZE, s->cfg.encoded_size);
++}
++
++static void xram_ctrl_reset_hold(Object *obj)
++{
++    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
++
++    xram_update_irq(s);
++}
++
++static const MemoryRegionOps xram_ctrl_ops = {
++    .read = register_read_memory,
++    .write = register_write_memory,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void xram_ctrl_realize(DeviceState *dev, Error **errp)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    XlnxXramCtrl *s = XLNX_XRAM_CTRL(dev);
++
++    switch (s->cfg.size) {
++    case 64 * KiB:
++        s->cfg.encoded_size = 0;
++        break;
++    case 128 * KiB:
++        s->cfg.encoded_size = 1;
++        break;
++    case 256 * KiB:
++        s->cfg.encoded_size = 2;
++        break;
++    case 512 * KiB:
++        s->cfg.encoded_size = 3;
++        break;
++    case 1 * MiB:
++        s->cfg.encoded_size = 4;
++        break;
++    default:
++        error_setg(errp, "Unsupported XRAM size %" PRId64, s->cfg.size);
++        return;
++    }
++
++    memory_region_init_ram(&s->ram, OBJECT(s),
++                           object_get_canonical_path_component(OBJECT(s)),
++                           s->cfg.size, &error_fatal);
++    sysbus_init_mmio(sbd, &s->ram);
++}
++
++static void xram_ctrl_init(Object *obj)
++{
++    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    RegisterInfoArray *reg_array;
++
++    memory_region_init(&s->iomem, obj, TYPE_XLNX_XRAM_CTRL,
++                       XRAM_CTRL_R_MAX * 4);
++    reg_array =
++        register_init_block32(DEVICE(obj), xram_ctrl_regs_info,
++                              ARRAY_SIZE(xram_ctrl_regs_info),
++                              s->regs_info, s->regs,
++                              &xram_ctrl_ops,
++                              XLNX_XRAM_CTRL_ERR_DEBUG,
++                              XRAM_CTRL_R_MAX * 4);
++    memory_region_add_subregion(&s->iomem,
++                                0x0,
++                                &reg_array->mem);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(sbd, &s->irq);
++}
++
++static const VMStateDescription vmstate_xram_ctrl = {
++    .name = TYPE_XLNX_XRAM_CTRL,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, XlnxXramCtrl, XRAM_CTRL_R_MAX),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static Property xram_ctrl_properties[] = {
++    DEFINE_PROP_UINT64("size", XlnxXramCtrl, cfg.size, 1 * MiB),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void xram_ctrl_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = xram_ctrl_realize;
++    dc->vmsd = &vmstate_xram_ctrl;
++    device_class_set_props(dc, xram_ctrl_properties);
++
++    rc->phases.enter = xram_ctrl_reset_enter;
++    rc->phases.hold = xram_ctrl_reset_hold;
++}
++
++static const TypeInfo xram_ctrl_info = {
++    .name          = TYPE_XLNX_XRAM_CTRL,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(XlnxXramCtrl),
++    .class_init    = xram_ctrl_class_init,
++    .instance_init = xram_ctrl_init,
++};
++
++static void xram_ctrl_register_types(void)
++{
++    type_register_static(&xram_ctrl_info);
++}
++
++type_init(xram_ctrl_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 629283957f..fbc4789249 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -85,6 +85,7 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
+ ))
+ softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c', 'zynq-xadc.c'))
++softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-xramc.c'))
+ softmmu_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
+ softmmu_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
+ softmmu_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_exti.c'))
 -- 
 2.25.1
 

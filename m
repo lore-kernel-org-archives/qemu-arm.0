@@ -1,105 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4300671lfg;
-        Tue, 2 Mar 2021 01:06:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyjNxnXc41pBkhs8raI1iRBpWudK2C2uJdPaZLAqHhS66iqd0UoZueoIAfLGSYouh3veRkL
-X-Received: by 2002:a05:6e02:12b4:: with SMTP id f20mr16882186ilr.220.1614676008533;
-        Tue, 02 Mar 2021 01:06:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614676008; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4321509lfg;
+        Tue, 2 Mar 2021 01:44:20 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwGh4r1jhfttBtCoiyYrKxzY5iCP5dBrbBtFt1a4Th5xGxAKx2tOA1o0TJMcQYnttaWsHUa
+X-Received: by 2002:a25:e010:: with SMTP id x16mr30325984ybg.17.1614678260340;
+        Tue, 02 Mar 2021 01:44:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614678260; cv=none;
         d=google.com; s=arc-20160816;
-        b=X35xPV97K0PJNmAX2+5gnIlmFI4yOy0pE2sRbyb1Pl3uxvaTkmMJvg0i5h7WPFhsnz
-         Eb793XD04KGQ/9vZm6oj9gBfsJioxrAPqcxEoAJJ8cLhJlYXILr4SsgkLTYmtpQVrK6r
-         0CjOR2YeYsMUUe4HH/5DDSS1FyoZtot4iD7CfrBc0sWhdufG48acLaqsgc2xzMslpWBy
-         x3NP73yM5qPZmsRStZFa179N9IlgE/7yIOk4oTELNU0nAghgHXh4Dv2PW47zdq/Ssb2O
-         /WeZt+CDAkui0/7NdyHkOS8gQ7Ly2ead5gAEVkuo64HqrWfoaZ2eCs/TNPKhutSM+d9z
-         ZlBQ==
+        b=MmhSIuuwO4mOte69nBN4wSUGX4uYd8gyJQT3uRyhbvRATaCY4J2zC/kDvOC8SgXav9
+         sMrmFEgodB9t1mq+th2pKkC8vlQGBbQAQ1sOXzj7q/JNmvrj7IgnPjmPWhfMoxuxFNkf
+         9n4NzM3q9cxIEXBqp2RMhvHzAqzhPRvE63M+/DqnI/EG3VMp7IYLul3D+/66fu8AXq00
+         3I1ftKVQS1qde4JP8KzEalDSihJlE+zFbm+k1+eHPR8buafnt/LDrCbBWTdJl00H1OTJ
+         clbWkKMV8FhraR6iqOJXpH8ZcR28+goNd1E/ve97x0WNpPE/jyZD7pHw2n2Zph3QHPFu
+         PN0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=iPMnf+h3TccWRmMbOcpksvsZliWLK5zzzQnAwsapXAw=;
-        b=RbSNbHbLWPLwOZ5TIU7hdAXfV6XOKlPT1yC3ighu2oJYoea/wsD7qTBd1aNoZ3O+AM
-         6rGmBbgFP3nnDHZbsGTMeVcfM8baBkQW3NPOc+QlapmExdwYSNRfeXIsJZA7dl6s43tz
-         jOeAj0XXL6FcK3UuP/YBqpUmqvioZxOBVK4ES570Ogm0XV1asVP6CsMtossH84OYsVtl
-         nDMouxESobYnhHXcG07Vv0ip9XFWkb2LGuycD+cK2Gf5hFCjk2ozu7K15cKklBYv9Rar
-         4OMOi0itY38wuBTrfKWZtEz8AWlXP9RuOjEJA5QXn8zvEfzwJiJ/tvXV7DZI8o/Yuf1k
-         4Ebg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:subject:organization:from:references:to:dkim-signature;
+        bh=5J4TUPfuppElJI3IQaByRHJaXBhkc7sXODOqUnDwDOM=;
+        b=rJWE/ZXVW++nXWZLXB8/ga4K/+we7DPWoeq3oDWEtYQzjPQojJrnQSgHbYBebWjePy
+         H4Vm+D3VhLjPoPrEWnIDrhiswJvGXMCW/sDSykeQguGrkdB/wYIrZlzfmPEgm8dthkEK
+         9uEADJWROHYSMUrHOxPJRx2/lazQJSkTLuUActheeaaN1hGUdn9zmhcmpXmwhyM+ZfKy
+         AxwY3/Aw7wgYSllubUUq+Jz2q02djj2Xc+IG8mgD5St8Bs0s1HzZUiaL5dWYyMsufDdf
+         YKzXrimEA+OzQDTHT9/CVt9JPMTaViUK8Wjq6WUgxttidoRLgH+ttT73Sr23oRX1OLQ1
+         uX5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gcnrtYse;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TFzFJJCW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8si3552264ilq.114.2021.03.02.01.06.48
+        by mx.google.com with ESMTPS id t9si19702708ybc.336.2021.03.02.01.44.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 01:06:48 -0800 (PST)
+        Tue, 02 Mar 2021 01:44:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gcnrtYse;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TFzFJJCW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36452 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH0zP-0001Dz-R0
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 04:06:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33460)
+	id 1lH1Zj-0001fv-LP
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 04:44:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43082)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1lH0zE-00018a-Lg
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 04:06:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:34849)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH1Zb-0001f9-2q
+ for qemu-arm@nongnu.org; Tue, 02 Mar 2021 04:44:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:39108)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1lH0zB-0000WA-QV
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 04:06:35 -0500
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lH1ZY-0006zT-8Q
+ for qemu-arm@nongnu.org; Tue, 02 Mar 2021 04:44:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614675991;
+ s=mimecast20190719; t=1614678247;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iPMnf+h3TccWRmMbOcpksvsZliWLK5zzzQnAwsapXAw=;
- b=gcnrtYsetwziycZyBokN1UEQhUENqVuW5jl4636mbHpqD7AOvQXTagpYZHon8XnwaVuwtt
- 8in0rAvlJ+c9TpQexiFZYLFWdEDlLXxEMQgW5slFZQwMJPOyXiBQ9kboCroDC0y/5KS9da
- yFzAr73Fk454NLJhcQ6Fb9KAGSMf/hg=
+ bh=5J4TUPfuppElJI3IQaByRHJaXBhkc7sXODOqUnDwDOM=;
+ b=TFzFJJCWb98kBU8qWOvibAGXqOC09JpetFxlcr87RkIeDIOr1fRC2ypWd4E1OOH6XTFU+7
+ tTU41J0KEaxXYUmtO3K/n+Cqi2tWpD/KyYJl/v2HylLuv46FPtyKe8DbvpveLJ+ZE4w/TN
+ r+j2uuVtLIUxxebOq1FCUJ7QVrUaH3s=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-518-Aj88RI2eOembo8wDe90RzA-1; Tue, 02 Mar 2021 04:06:28 -0500
-X-MC-Unique: Aj88RI2eOembo8wDe90RzA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-530-P7NpXCIaMIqapczGD6W_8A-1; Tue, 02 Mar 2021 04:44:03 -0500
+X-MC-Unique: P7NpXCIaMIqapczGD6W_8A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7DC14195D562;
- Tue,  2 Mar 2021 09:06:26 +0000 (UTC)
-Received: from MiWiFi-RA69-srv (unknown [10.40.208.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D62195B4B0;
- Tue,  2 Mar 2021 09:06:16 +0000 (UTC)
-Date: Tue, 2 Mar 2021 10:06:14 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: David Hildenbrand <david@redhat.com>
-Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
-Message-ID: <20210302100614.42acfe68@MiWiFi-RA69-srv>
-In-Reply-To: <20210301104833.45580-1-david@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 27391835E20;
+ Tue,  2 Mar 2021 09:44:02 +0000 (UTC)
+Received: from [10.36.114.189] (ovpn-114-189.ams2.redhat.com [10.36.114.189])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 80DDA1724C;
+ Tue,  2 Mar 2021 09:43:56 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>
 References: <20210301104833.45580-1-david@redhat.com>
+ <20210302100614.42acfe68@MiWiFi-RA69-srv>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat GmbH
+Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
+Message-ID: <cedb0323-ac0a-2eb5-497d-eb66a0dfefb6@redhat.com>
+Date: Tue, 2 Mar 2021 10:43:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20210302100614.42acfe68@MiWiFi-RA69-srv>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,129 +125,170 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iFsWQqsxg+wW
+X-TUID: LeAdNXp3uzC4
 
-On Mon,  1 Mar 2021 11:48:33 +0100
-David Hildenbrand <david@redhat.com> wrote:
+On 02.03.21 10:06, Igor Mammedov wrote:
+> On Mon,  1 Mar 2021 11:48:33 +0100
+> David Hildenbrand <david@redhat.com> wrote:
+> 
+>> The resizeable memory region that is created for the cmd blob has a maximum
+>> size of ACPI_BUILD_ALIGN_SIZE - 4k. This used to be sufficient, however,
+>> as we try fitting in additional data (e.g., vmgenid, nvdimm, intel-iommu),
+>> we require more than 4k and can crash QEMU when trying to resize the
+>> resizeable memory region beyond its maximum size:
+>>    $ build/qemu-system-x86_64 --enable-kvm \
+>>        -machine q35,nvdimm=on \
+>>        -smp 1 \
+>>        -cpu host \
+>>        -m size=2G,slots=8,maxmem=4G \
+>>        -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
+>>        -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
+>>        -nodefaults \
+>>        -device vmgenid \
+>>        -device intel-iommu
+> 
+> I don't see what's here that would make cmd_blob go above 4k.
+> can you try identify what actually fills it up (perhaps we have a hidden bug elsewhere)?
 
-> The resizeable memory region that is created for the cmd blob has a maximum
-> size of ACPI_BUILD_ALIGN_SIZE - 4k. This used to be sufficient, however,
-> as we try fitting in additional data (e.g., vmgenid, nvdimm, intel-iommu),
-> we require more than 4k and can crash QEMU when trying to resize the
-> resizeable memory region beyond its maximum size:
->   $ build/qemu-system-x86_64 --enable-kvm \
->       -machine q35,nvdimm=on \
->       -smp 1 \
->       -cpu host \
->       -m size=2G,slots=8,maxmem=4G \
->       -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
->       -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
->       -nodefaults \
->       -device vmgenid \
->       -device intel-iommu
+VM initialization:
 
-I don't see what's here that would make cmd_blob go above 4k.
-can you try identify what actually fills it up (perhaps we have a hidden bug elsewhere)?
+bios_linker_loader_alloc: allocating memory for 'etc/acpi/tables'
+  -> new table size: 128
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 64 - 9659
+  -> new table size: 256
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 384
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 512
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 640
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9659 - 9903
+  -> new table size: 768
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9903 - 10023
+  -> new table size: 896
+bios_linker_loader_alloc: allocating memory for 'etc/vmgenid_guid'
+  -> new table size: 1024
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/vmgenid_guid'
+  -> new table size: 1280
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10023 - 10225
+  -> new table size: 1408
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10225 - 10281
+  -> new table size: 1536
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10281 - 10505
+  -> new table size: 1664
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10505 - 10577
+  -> new table size: 1792
+bios_linker_loader_alloc: allocating memory for 'etc/acpi/nvdimm-mem'
+  -> new table size: 1920
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/nvdimm-mem'
+  -> new table size: 2048
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10577 - 11471
+  -> new table size: 2176
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11471 - 11695
+  -> new table size: 2304
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11695 - 11735
+  -> new table size: 2432
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 2560
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 2688
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 2816
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 2944
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3072
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3200
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3328
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3456
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3584
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11735 - 11807
+  -> new table size: 3712
+bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'
+  -> new table size: 3840
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'
+  -> new table size: 3968
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20
+  -> new table size: 4096
 
 
-> 
-> Results in:
->   Unexpected error in qemu_ram_resize() at ../softmmu/physmem.c:1850:
->   qemu-system-x86_64: Size too large: /rom@etc/table-loader:
->     0x2000 > 0x1000: Invalid argument
-> 
-> We try growing the resizeable memory region (resizeable RAMBlock) beyond
-> its maximum size. Let's increase the maximum size from 4k to 64k, which
-> should be good enough for the near future.
-> 
-> Migration is not concerned with the maximum size of a RAMBlock, only
-> with the used size - so existing setups are not affected. Of course, we
-> cannot migrate a VM that would have crash when started on older QEMU from
-> new QEMU to older QEMU without failing early on the destination when
-> synchronizing the RAM state:
->     qemu-system-x86_64: Size too large: /rom@etc/table-loader: 0x2000 > 0x1000: Invalid argument
->     qemu-system-x86_64: error while loading state for instance 0x0 of device 'ram'
->     qemu-system-x86_64: load of migration failed: Invalid argument
-> 
-> While at it, replace "etc/table-loader" by ACPI_BUILD_LOADER_FILE in
-> the microvm.
-> 
-> Note: we could warn for problematic setups that migration might not
-> always be possible - similar to how we handle the table blob; or we
-> could disallow setups that would have crashed until now for compat
-> machines. But I am not sure if the effort (messing compat machine
-> properties) is worth it as we fail migration in a safe way early.
-> 
-> Cc: Alistair Francis <alistair.francis@xilinx.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->  hw/arm/virt-acpi-build.c    | 3 ++-
->  hw/i386/acpi-build.c        | 3 ++-
->  hw/i386/acpi-microvm.c      | 3 ++-
->  include/hw/acpi/aml-build.h | 1 +
->  4 files changed, 7 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index f9c9df916c..a91550de6f 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -865,7 +865,8 @@ void virt_acpi_setup(VirtMachineState *vms)
->  
->      build_state->linker_mr =
->          acpi_add_rom_blob(virt_acpi_build_update, build_state,
-> -                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
-> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
-> +                          ACPI_BUILD_LOADER_MAX_SIZE);
->  
->      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
->                      acpi_data_len(tables.tcpalog));
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 31a5f6f4a5..a75138ea5a 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -2524,7 +2524,8 @@ void acpi_setup(void)
->  
->      build_state->linker_mr =
->          acpi_add_rom_blob(acpi_build_update, build_state,
-> -                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
-> +                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
-> +                          ACPI_BUILD_LOADER_MAX_SIZE);
->  
->      fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
->                      tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-> diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-> index 54b3af478a..fe8a965fe6 100644
-> --- a/hw/i386/acpi-microvm.c
-> +++ b/hw/i386/acpi-microvm.c
-> @@ -255,7 +255,8 @@ void acpi_setup_microvm(MicrovmMachineState *mms)
->                        ACPI_BUILD_TABLE_MAX_SIZE);
->      acpi_add_rom_blob(acpi_build_no_update, NULL,
->                        tables.linker->cmd_blob,
-> -                      "etc/table-loader", 0);
-> +                      ACPI_BUILD_LOADER_FILE,
-> +                      ACPI_BUILD_LOADER_MAX_SIZE);
->      acpi_add_rom_blob(acpi_build_no_update, NULL,
->                        tables.rsdp,
->                        ACPI_BUILD_RSDP_FILE, 0);
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index 380d3e3924..93cdfd4006 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -6,6 +6,7 @@
->  
->  /* Reserve RAM space for tables: add another order of magnitude. */
->  #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
-> +#define ACPI_BUILD_LOADER_MAX_SIZE        0x40000
->  
->  #define ACPI_BUILD_APPNAME6 "BOCHS "
->  #define ACPI_BUILD_APPNAME8 "BXPC    "
+When the bios/guest boots up:
+
+bios_linker_loader_alloc: allocating memory for 'etc/acpi/tables'
+  -> new table size: 128
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 64 - 9769
+  -> new table size: 256
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 384
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 512
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 640
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9769 - 10013
+  -> new table size: 768
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10013 - 10133
+  -> new table size: 896
+bios_linker_loader_alloc: allocating memory for 'etc/vmgenid_guid'
+  -> new table size: 1024
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/vmgenid_guid'
+  -> new table size: 1280
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10133 - 10335
+  -> new table size: 1408
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10335 - 10391
+  -> new table size: 1536
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10391 - 10615
+  -> new table size: 1664
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10615 - 10675
+  -> new table size: 1792
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10675 - 10747
+  -> new table size: 1920
+bios_linker_loader_alloc: allocating memory for 'etc/acpi/nvdimm-mem'
+  -> new table size: 2048
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/nvdimm-mem'
+  -> new table size: 2176
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10747 - 11641
+  -> new table size: 2304
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11641 - 11865
+  -> new table size: 2432
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11865 - 11905
+  -> new table size: 2560
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 2688
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 2816
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 2944
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3072
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3200
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3328
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3456
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3584
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3712
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'
+  -> new table size: 3840
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11905 - 11981
+  -> new table size: 3968
+bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'
+  -> new table size: 4096
+bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'
+  -> new table size: 4224
+bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20
+  -> new table size: 4352
+
+
+
+-- 
+Thanks,
+
+David / dhildenb
 

@@ -1,96 +1,99 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4372118lfg;
-        Tue, 2 Mar 2021 03:10:12 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzcYtCzqFDchH102KfkR3N6qZd1AYzhxc2GqMqY/MG57QbYfG29mWj9+lxqW5BO9Z2SvkbV
-X-Received: by 2002:a05:6638:12cf:: with SMTP id v15mr20014511jas.77.1614683412186;
-        Tue, 02 Mar 2021 03:10:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614683412; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4372135lfg;
+        Tue, 2 Mar 2021 03:10:13 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJws4mLa/plQF45MJ1BIqCQgTgEX2haA2sDT+7FDITygAzQy7Dookp6xzkwdqdFpiv7BSsVC
+X-Received: by 2002:a05:6e02:12e9:: with SMTP id l9mr16961400iln.201.1614683413538;
+        Tue, 02 Mar 2021 03:10:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614683413; cv=none;
         d=google.com; s=arc-20160816;
-        b=EnBTcuq0Zer72UnfGDHIt9aAFJJN93Cj0hKWVucih1WUIyt4CtDhKtycLMrTjR0PWs
-         VWdsUUEBOZ73FMNZGJYwzZxkd7uQz2Rs9rFwe1Nk1YdNPu66UaawUsZrdYA6YIsoWJWi
-         BxTazZDLQwF2nMvAHr4T7fRJ+TTYeZxPpl+BEwzgZS6YA/TxIfcKCeqrMb+SI+auLgpc
-         W6sJA+lIMRHHxdVEa6mVDEqp8CHh9odUH9GrL8wwgGXzDb+wx35oXfVZxY+gAUagDJPD
-         0hGF6kdjCeR44UvsOR8MGzzKSPEv4JnJQIuLPTsKWTmr+YfcooFX0XZ8ahTaRpF0UxNU
-         C+aA==
+        b=PRZXIN8rY3W9AjW5SRcTPBjM496RrVq+oDxSA1A5Ld24PeB1UJKiJAWZTcM7hSB085
+         8P+3mWeUh7y2DIyO6CUli3Ej+XIjYg84JwBG7g9+l2fQtRsMdn7OtjN085dqgyVA3GTa
+         iw7Cx+2Hjj2I4fzP7Mbie865VM5zs4yWtQyyqDz7MHcoy3TTknNArYKteRQy95DdEGcz
+         z03Kw/+sGZM2traCjx57Otxpq+ddPBiLqhVqZBXI9Plv59ZvBWayGwLp1057F/a+3TH4
+         C5L7BzjvaRkwwIV0VnaCyukwCvqtecRjH2mVUDU7TQfV3oZ62fWxe+s/T0O/2HHfRGM4
+         DcSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=htFR9uzoLLfGusEJYM4mB0hYq4gMTy1rfpWgY7BIFjw=;
-        b=S20CRP47i5y7yAeMgjFkEd+Am2aGQsrYPbVrbQInQNMqXxULCkiuAkEbl/q+9co8em
-         Qi/L6o/Qm009otbL2tQmAjuUM6UDlC646qKlfkBjJW2/n4aVtpU7QC3A0unmxAYN4fpa
-         3mLr7NDHVczF6Md+mKjmhI9o03FHZ+2jd35MAnIVYTcV/Gv6Axbr6HbtS/npO913D7uD
-         agDjYKngu0/Fz1N8rRXTJbrS0lAIq3a/RSRFZIQO3PnL5Tse31iWeyQPDY/sxkGCgCHt
-         //9rrI7Nn3aMzQmPd6QFfE0pv35Udpq95WjnMnl1xv0oNNZqfbIYpfBRIyWYtye+52dj
-         9mnw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=lFV4c3TgWfAyHq01XF6j83TeOLv2ZtjkdtoWrSXhna4=;
+        b=0cR4Hdk1Q7eVxQ6+kR20kamzHWqQIxUwUn78/EMvRpAUNivjiFwfP4fw9uwMSorBXg
+         v07OTB/RD0e6YaamUAVk+xRTUdH8NK46ZZGgdA+duC/9kCy0vADLDHmy+Dyf1+Vz/84R
+         gA2hvmFIldsLQob7sDxFOeUPBeqvtZa0apjE70l6+8m2nO5xPMASkKfRFasfg5j1SkUC
+         bqoqo8DEZhmmLgWdZAZfzSDeg0mfo7ZDw2a1y/sveHyRG/WNuqFYa3OF7yyYcfdpyA1R
+         fKIzT4AAaXjv9/mMF0Jz21GxakvAN08/X7E91H1SIdqSuv/z1b+q4OrlyoUfgKP8OCrP
+         IKAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a8mvA+v6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iblNGJEv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m16si1279203ilq.58.2021.03.02.03.10.12
+        by mx.google.com with ESMTPS id r7si19130534ilq.53.2021.03.02.03.10.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 03:10:12 -0800 (PST)
+        Tue, 02 Mar 2021 03:10:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a8mvA+v6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iblNGJEv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54570 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH2up-0005I0-GD
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 06:10:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36552)
+	id 1lH2uq-0005KA-RK
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 06:10:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36572)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lH2uf-0005Gp-5M; Tue, 02 Mar 2021 06:10:01 -0500
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c]:38116)
+ id 1lH2ug-0005HJ-MY; Tue, 02 Mar 2021 06:10:02 -0500
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b]:36742)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1lH2ud-000776-GP; Tue, 02 Mar 2021 06:10:00 -0500
-Received: by mail-lj1-x22c.google.com with SMTP id 2so18870359ljr.5;
- Tue, 02 Mar 2021 03:09:58 -0800 (PST)
+ id 1lH2ue-00077M-Sc; Tue, 02 Mar 2021 06:10:02 -0500
+Received: by mail-lf1-x12b.google.com with SMTP id f1so30666450lfu.3;
+ Tue, 02 Mar 2021 03:10:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=htFR9uzoLLfGusEJYM4mB0hYq4gMTy1rfpWgY7BIFjw=;
- b=a8mvA+v6Yg3pI+chsmAO9PtAu99DW8MZXjdDKpV6pqP0XFHfU9h3VwRyBbgjeaVV7r
- 4jCEsjyCqPVJlDLpGlD03uBgcml9KEAGtfNjWLpWzTjArN3rwShJ3hFUOfQB6bC8UIMX
- AqJ3+dJvFFwhQB4inp0O62xXElzDbWhJLf1LmlJ5YOP/wZNa5ntRBBe+MzT75ZBAEGJ6
- 791Q+G4n8ZuwHywtk9z63C8dhjidpMK5NMRSSbm4KPZkoBEAd20DdKwKHhtNLY+wzLB9
- QnY4OO9R+XlmvbS/erwMWt7l/TeyIj6aSQEH3pK4vcrEGppLhZalwbdvxS224SaxAOlZ
- XfPA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=lFV4c3TgWfAyHq01XF6j83TeOLv2ZtjkdtoWrSXhna4=;
+ b=iblNGJEvNHt9Gg2YJJFKONtjC1f/bf5zVCdCZ3WfW75JDoej0AAxHYq3cSzBCD2BPR
+ pJbQt/QvBtqvtHNpTo0vX9gU1F1LTtZ+UT4vsipihzlm5jUY5ybBx4urm+KtfbkoV+Jq
+ a9prCiYSa9Bv22e2BtKjTHtyuMp8FNrPvyh2zxvuRIWwO0c+f3JukWf9Z0ylDirccmNN
+ OgxrP3vpGpXESsOmTJFJOqA0x9fyvXAQNzHZ1Xp6wd3lJLwVVYw5+8zdqoFjz4eX6FCj
+ juewDC/nmNe9/yZvAUsQxs1igfr5bhYPZTqhdmiWT94hEwcgKeysnggElQVqyNt6WJ3u
+ Y3SQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=htFR9uzoLLfGusEJYM4mB0hYq4gMTy1rfpWgY7BIFjw=;
- b=XIgnSUTmeVTHNR7uvCqQsdEk1rZ5B0chjOtivIuVw+GmzRPBnhOLKBKOL++CHHFr/l
- o0HwytipcEEjcCKXuP0AJEbeN5Ut47YKsZKE7TTLdXLVNv/iYgZ1E3ymN1N4CG7K2HaN
- P+cy74aUgjjlF2RJGaXNeBFkGzm7bKkco6qFs017E6a6ZTgKqMGPnpuCxLxObUb5D1dq
- jBAkHL67Hyje6pGTO+il8ZFXBuqPd0mzxNVWw+47262hDYTkiO+vyoCKvy/WexpxBVmh
- 6VIBeEtZL0VoRNmZiRd3B4cIUMC7e4LA1LVCev/hN/HqRw7XBGz9cmZY+ryBOJp8VATw
- mk2A==
-X-Gm-Message-State: AOAM530n8f4sIkpXIW1edotgaGzyB3XfhSrS7Q09uRS7V3hJuBGp/FoL
- Jt8j5x2o03+hTNVvmGKKFr8UC6vKyWO56Ez5
-X-Received: by 2002:a2e:330d:: with SMTP id d13mr11650405ljc.361.1614683396763; 
- Tue, 02 Mar 2021 03:09:56 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=lFV4c3TgWfAyHq01XF6j83TeOLv2ZtjkdtoWrSXhna4=;
+ b=EMGUlz5mXmi7Gdxse6DFMPO2utHjnHNpZW/ehhNtwVp0vFZqZEPO4Kjc1vE2PH2hpy
+ Lun+5TDXuyQjUzpqs/qjyvvC/2kH2TB3sm4Rqx1yN0h4gy/IFTI0ekL6U6tZiWbyaEwd
+ ur+EifEAsgq7FVA0hs8mj5Zo94Rb6lyKvnA86hfbInE0/aseGYY7uldwUMn17lRyo+I/
+ KlKd7TNm8Th4dW1/vJrkn7uERZ71sq4IuIE9NJBnJXet/pPxu+mwNIF9CF3W+50Bv2lW
+ Vw0k/IIvDPh/o17ne5MLw2bgXAqDl+F/NQPNJBKfRV0E526YJyc7dKG0cprJeR2KOks2
+ qYLQ==
+X-Gm-Message-State: AOAM531tikGe6iMRW7T7QA+6sld/svPJOQ1FVTLg8QENPlBc/TEAXqLc
+ cZPik5fQxCN5agkRwguG+z8x2mv7gullCLlD
+X-Received: by 2002:ac2:42d1:: with SMTP id n17mr11709867lfl.76.1614683398636; 
+ Tue, 02 Mar 2021 03:09:58 -0800 (PST)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id v9sm180601lfd.195.2021.03.02.03.09.56
+ by smtp.gmail.com with ESMTPSA id n17sm2616601lfl.49.2021.03.02.03.09.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 03:09:56 -0800 (PST)
+ Tue, 02 Mar 2021 03:09:58 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 0/2] hw/arm: versal: Add support for the XRAMs
-Date: Tue,  2 Mar 2021 12:09:53 +0100
-Message-Id: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 2/2] hw/arm: versal: Add support for the XRAMs
+Date: Tue,  2 Mar 2021 12:09:55 +0100
+Message-Id: <20210302110955.1810487-3-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
+References: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,31 +120,151 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  qemu-arm@nongnu.org, philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8jFNcFtmlfxe
+X-TUID: 4V8xRyaaDlar
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-This series adds support for the 4x1MB Versal Accelerator RAMs (XRAMs).
-Most of the controller is dummy, but it's got enough to make firmware
-and some of our test SW happy.
+Connect the support for the Versal Accelerator RAMs (XRAMs).
 
-Cheers,
-Edgar
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ docs/system/arm/xlnx-versal-virt.rst |  1 +
+ include/hw/arm/xlnx-versal.h         | 13 ++++++++++
+ hw/arm/xlnx-versal.c                 | 36 ++++++++++++++++++++++++++++
+ 3 files changed, 50 insertions(+)
 
-Edgar E. Iglesias (2):
-  hw/misc: versal: Add a model of the XRAM controller
-  hw/arm: versal: Add support for the XRAMs
-
- docs/system/arm/xlnx-versal-virt.rst |   1 +
- include/hw/arm/xlnx-versal.h         |  13 ++
- include/hw/misc/xlnx-versal-xramc.h  | 102 +++++++++++
- hw/arm/xlnx-versal.c                 |  36 ++++
- hw/misc/xlnx-versal-xramc.c          | 253 +++++++++++++++++++++++++++
- hw/misc/meson.build                  |   1 +
- 6 files changed, 406 insertions(+)
- create mode 100644 include/hw/misc/xlnx-versal-xramc.h
- create mode 100644 hw/misc/xlnx-versal-xramc.c
-
+diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
+index 2602d0f995..27f73500d9 100644
+--- a/docs/system/arm/xlnx-versal-virt.rst
++++ b/docs/system/arm/xlnx-versal-virt.rst
+@@ -30,6 +30,7 @@ Implemented devices:
+ - 8 ADMA (Xilinx zDMA) channels
+ - 2 SD Controllers
+ - OCM (256KB of On Chip Memory)
++- XRAM (4MB of on chip Accelerator RAM)
+ - DDR memory
+ 
+ QEMU does not yet model any other devices, including the PL and the AI Engine.
+diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+index 2b76885afd..22a8fa5d11 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -14,6 +14,7 @@
+ 
+ #include "hw/sysbus.h"
+ #include "hw/arm/boot.h"
++#include "hw/or-irq.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/intc/arm_gicv3.h"
+ #include "hw/char/pl011.h"
+@@ -22,6 +23,7 @@
+ #include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "qom/object.h"
+ #include "hw/usb/xlnx-usb-subsystem.h"
++#include "hw/misc/xlnx-versal-xramc.h"
+ 
+ #define TYPE_XLNX_VERSAL "xlnx-versal"
+ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
+@@ -31,6 +33,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
+ #define XLNX_VERSAL_NR_GEMS    2
+ #define XLNX_VERSAL_NR_ADMAS   8
+ #define XLNX_VERSAL_NR_SDS     2
++#define XLNX_VERSAL_NR_XRAM    4
+ #define XLNX_VERSAL_NR_IRQS    192
+ 
+ struct Versal {
+@@ -62,6 +65,11 @@ struct Versal {
+             XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
+             VersalUsb2 usb;
+         } iou;
++
++        struct {
++            qemu_or_irq irq_orgate;
++            XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
++        } xram;
+     } lpd;
+ 
+     /* The Platform Management Controller subsystem.  */
+@@ -96,6 +104,7 @@ struct Versal {
+ #define VERSAL_GEM1_IRQ_0          58
+ #define VERSAL_GEM1_WAKE_IRQ_0     59
+ #define VERSAL_ADMA_IRQ_0          60
++#define VERSAL_XRAM_IRQ_0          79
+ #define VERSAL_RTC_APB_ERR_IRQ     121
+ #define VERSAL_SD0_IRQ_0           126
+ #define VERSAL_RTC_ALARM_IRQ       142
+@@ -128,6 +137,10 @@ struct Versal {
+ #define MM_OCM                      0xfffc0000U
+ #define MM_OCM_SIZE                 0x40000
+ 
++#define MM_XRAM                     0xfe800000
++#define MM_XRAMC                    0xff8e0000
++#define MM_XRAMC_SIZE               0x10000
++
+ #define MM_USB2_CTRL_REGS           0xFF9D0000
+ #define MM_USB2_CTRL_REGS_SIZE      0x10000
+ 
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index 628e77ef66..79609692e4 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -10,6 +10,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+@@ -278,6 +279,40 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
+     sysbus_connect_irq(sbd, 1, pic[VERSAL_RTC_APB_ERR_IRQ]);
+ }
+ 
++static void versal_create_xrams(Versal *s, qemu_irq *pic)
++{
++    int nr_xrams = ARRAY_SIZE(s->lpd.xram.ctrl);
++    DeviceState *orgate;
++    int i;
++
++    /* XRAM IRQs get ORed into a single line.  */
++    object_initialize_child(OBJECT(s), "xram-irq-orgate",
++                            &s->lpd.xram.irq_orgate, TYPE_OR_IRQ);
++    orgate = DEVICE(&s->lpd.xram.irq_orgate);
++    object_property_set_int(OBJECT(orgate),
++                            "num-lines", nr_xrams, &error_fatal);
++    qdev_realize(orgate, NULL, &error_fatal);
++    qdev_connect_gpio_out(orgate, 0, pic[VERSAL_XRAM_IRQ_0]);
++
++    for (i = 0; i < ARRAY_SIZE(s->lpd.xram.ctrl); i++) {
++        SysBusDevice *sbd;
++        MemoryRegion *mr;
++
++        object_initialize_child(OBJECT(s), "xram[*]", &s->lpd.xram.ctrl[i],
++                                TYPE_XLNX_XRAM_CTRL);
++        sbd = SYS_BUS_DEVICE(&s->lpd.xram.ctrl[i]);
++        sysbus_realize(sbd, &error_fatal);
++
++        mr = sysbus_mmio_get_region(sbd, 0);
++        memory_region_add_subregion(&s->mr_ps,
++                                    MM_XRAMC + i * MM_XRAMC_SIZE, mr);
++        mr = sysbus_mmio_get_region(sbd, 1);
++        memory_region_add_subregion(&s->mr_ps, MM_XRAM + i * MiB, mr);
++
++        sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(orgate, i));
++    }
++}
++
+ /* This takes the board allocated linear DDR memory and creates aliases
+  * for each split DDR range/aperture on the Versal address map.
+  */
+@@ -363,6 +398,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
+     versal_create_admas(s, pic);
+     versal_create_sds(s, pic);
+     versal_create_rtc(s, pic);
++    versal_create_xrams(s, pic);
+     versal_map_ddr(s);
+     versal_unimp(s);
+ 
 -- 
 2.25.1
 

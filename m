@@ -1,129 +1,121 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4457096lfg;
-        Tue, 2 Mar 2021 05:14:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxneZgfZm8R6pgZZcMx76k+CDmlXM1HV0nuompJ8x3IUXoH8onBwO+pslakZC7FH86VDgtI
-X-Received: by 2002:a67:ed12:: with SMTP id l18mr2036010vsp.0.1614690884059;
-        Tue, 02 Mar 2021 05:14:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614690884; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4076575lfg;
+        Mon, 1 Mar 2021 17:44:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz31wsABZsYqpO6eZh6x+U6VFqR89iAdCa++uAMJL3QrChI2JyEUbyDACSLCrDdToxMVdkj
+X-Received: by 2002:a05:6830:22fa:: with SMTP id t26mr15963956otc.143.1614649450817;
+        Mon, 01 Mar 2021 17:44:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614649450; cv=none;
         d=google.com; s=arc-20160816;
-        b=OGnp8ngAjmTCsFP+y1Oe5Ksuzgonk1AHs4aQBCTiaypD6ad9yXSdU2D2aU8skeFCyD
-         Ci/RP6rsqtounkmCDwopsfznnRFSdzmmam7SmlUbRXT0eH0KkZvUB1jSJgc41fwxPGyF
-         ObJLeGmTPdNgPdsgTrZ5pPWifyFVE1ZEPSPvOJpA72aCA1aMFMl2CRmo2TMrvx/zudBS
-         gRhzJYJgkixL3iRZDyAJTvcnLY+Z5ghZrst7r5djtugohbbwVNr+4hsv1RY9S7MaQd6j
-         lmJUljAP82WxvsDyMWYIT9/3Cdq6WOq3bblP/atPdjEOXK1m5gD+AEiw8CtaOryPpfrB
-         r2Qg==
+        b=DzegzO+BjVTwf+amyc4S9Uo+pKlYRTY4ljkIPFMbxQ7irqCS+BcQZ01koclOxGJUzr
+         lF0AgXtjtjpsyYEi9gJkNR5v+XXYDWb4HfbGKu7K1HjrrlVIhvkXW1ShhPClPUCIr0js
+         hvJJx/eABBxRMZ8Y2abKqYadjZawvsEgf1qPdlxOL46Z6V3AowackYlyo3De8kbDcSJe
+         +0tFWRkYJDEj0IpUOPCKCzMV6NvN6+7SR7O0KYQS7B+zSodRIhfbOI/GWCsRj7XdG3bD
+         cX7H+lbkFlJ9wYTc/ynFjac6ltfuy4JLJenv7RuqiK/+Yk28O9LtsS8wT6W0BurDdM6D
+         Wfcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=6uft5RuB5hvJEn3VDjDKLac7psIfy8piU8dMk5AtdqU=;
-        b=yZ14TOz1xlksR8l3PAA0f80wwx8Vro7IkHZotGvY8DZ6pKO0yiZg9XaYV3wIRfI6a0
-         gzBVqe/o059Mo0kQdc56b/YehLAhC6VmHTLQkXt1MFnpBc9rjdhO8bjBPTPhDAERE+j0
-         l51cNdJIC3xeW2HOMTesBTvgmhFzZxv9Ep7ZdldEAQVEY1tyrj376C9kfh/Ej60cs4Xf
-         EaqslXSn0QDiJr3GplVPqpuQxdK+v6V7AXHwGp1HZpvL93lfu54KC3tBZWzynC/kCZJx
-         cAlRDM1meMYKEMAZYrj+1/XpcEM2rvGS4el1mA52dh2KpW3TWQq96cxctXxt5aQcbXlx
-         uD8w==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature:dkim-signature;
+        bh=FVcvz7TWnB3xIDYYAgP5J/nTND+a76bP79lTBcshBIo=;
+        b=ub3liljo5qSz/tRCvhKjSTG5xrivK+0niV/bt6cRAJKcjApMo8kceXoN18Fc5Y4PnP
+         4A0UNjCIcCqMq4T/EYaYdYouUf7rbLEjImVy1KAOVj5zELevOnMoSp5A/WWMJ4cAk8cT
+         7OY15kxJ/8R3ogZzyDc+2j1ickMAO1/yhxV7l370XEckDp6WHFCUXi9OesNYvNiDgMVd
+         02LpjoQx/De+Te95hm0ez41Ju7F1moAvRYzjwOBkaYgQLdj9oLZ05vf1A/XzDTLBDkJW
+         cf/izm4BddLbwXvRIUc/u/pDwT9tEYnfybJLKm9UpPqFGBgXX3iYuXUpyC4Ca9Slpu1E
+         JU3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D1vRv+0x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b="O8kLm/PM";
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=wNQkoy5s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y73si3366224vky.21.2021.03.02.05.14.43
+        by mx.google.com with ESMTPS id e47si14324885ote.201.2021.03.01.17.44.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 05:14:44 -0800 (PST)
+        Mon, 01 Mar 2021 17:44:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D1vRv+0x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46646 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b="O8kLm/PM";
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=wNQkoy5s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57956 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lH4rL-0004AT-Cs
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 08:14:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43790)
+	id 1lGu53-0002PI-Us
+	for alex.bennee@linaro.org; Mon, 01 Mar 2021 20:44:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lH4rA-00048f-Bh
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 08:14:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44830)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1lH4r0-00086o-2T
- for qemu-arm@nongnu.org; Tue, 02 Mar 2021 08:14:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614690860;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6uft5RuB5hvJEn3VDjDKLac7psIfy8piU8dMk5AtdqU=;
- b=D1vRv+0xgBl4ukIWoGGaP45Zl7xTFwl1Vpp5pgTfwL3SoP0DFYXNdotSa4Ci4Ixi20xEwD
- T/SYN39julZ0l1WGxXqbUCUgx3Ie1JTE3y57e2hdvZ0q03X94Wrq+Cbl47S4Izcwjys6/f
- irbiyKu6SG/DNOn4JxVwrmjlp8DHC2Y=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-347-MYUlyEbBOw-fGzYsYA9Q_Q-1; Tue, 02 Mar 2021 08:14:18 -0500
-X-MC-Unique: MYUlyEbBOw-fGzYsYA9Q_Q-1
-Received: by mail-wm1-f71.google.com with SMTP id n17so434868wmi.2
- for <qemu-arm@nongnu.org>; Tue, 02 Mar 2021 05:14:18 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6uft5RuB5hvJEn3VDjDKLac7psIfy8piU8dMk5AtdqU=;
- b=ehSTofPlp1f/NMcK9NY2tYaQtZF5puV85yC090euELAMtjt7a5neuZGb99I1tIE6WN
- QdLRejba9rq5YxuikPajl0yw1CqMgE9hVSMeKRVr9V3ux0bAeyjKzot+TbbEXvBiaEp5
- lMOnpLf/WuWRvc0Ugb04PN47wFVIpAEh3rPyLpXD8TdG7M1p2pwLakeaf4JXgLSJXnhE
- 3UhO6TKxU+G9Uedrk24fwU4mjHA6gtSpXKuP2SU6ErjWqLCIaRSdoe+ZXWKLbWWl901b
- y6b/oeMwxIYMdgNZMsS+kkk+Hy2WgfUJebKNnffzdMOJMd0dXWZ6vGXoF3dKbGpwNMi/
- MyHg==
-X-Gm-Message-State: AOAM532iRTdT3zp3gO05OfXuPu3cCkJwQGuH1J6p7tqNPNCCUApvkQdW
- pVOeAhNdeaaCsIyHgHgnUSScXQ4Jjv/9vvLKREcado1aAkDCtNKVT/2hdr1glHanwSsztnriE3e
- jNtRjzoTTHTPz
-X-Received: by 2002:a5d:6a81:: with SMTP id s1mr22267198wru.401.1614690857340; 
- Tue, 02 Mar 2021 05:14:17 -0800 (PST)
-X-Received: by 2002:a5d:6a81:: with SMTP id s1mr22267177wru.401.1614690857080; 
- Tue, 02 Mar 2021 05:14:17 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id u63sm2569835wmg.24.2021.03.02.05.14.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Mar 2021 05:14:16 -0800 (PST)
-Subject: Re: [PING] accel: kvm: Some bugfixes for kvm dirty log
-To: Keqian Zhu <zhukeqian1@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Andrew Jones <drjones@redhat.com>, Peter Xu <peterx@redhat.com>
-References: <20201217014941.22872-1-zhukeqian1@huawei.com>
- <a67939bc-7fd2-092b-c36a-c130b1321c37@huawei.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <d9a1e3b4-6dd6-df85-f882-460d35f888e1@redhat.com>
-Date: Tue, 2 Mar 2021 14:14:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1lGu4s-0002Na-T4; Mon, 01 Mar 2021 20:43:58 -0500
+Received: from out5-smtp.messagingengine.com ([66.111.4.29]:60779)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1lGu4i-00024a-T8; Mon, 01 Mar 2021 20:43:58 -0500
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.nyi.internal (Postfix) with ESMTP id 2D6285C00D5;
+ Mon,  1 Mar 2021 20:43:48 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute3.internal (MEProxy); Mon, 01 Mar 2021 20:43:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
+ :to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-type:content-transfer-encoding; s=fm2; bh=
+ FVcvz7TWnB3xIDYYAgP5J/nTND+a76bP79lTBcshBIo=; b=O8kLm/PMSLsOcH0M
+ KC6rOGj/jIJZCARqmhKE/Qdcu8ppfGDbI0OpSk65+aF8LrzHnLzDKMYNqk+b8QaE
+ 0Liap+5ZK5zN8cyz8TTi2Hx44EndnojKq4eFAMVsY+3s85ulIQMMqmEpa2TigRoJ
+ gsxebJOVyYelFhkFLGogLdWnrjB0MwELbWqaaPX97yVjOJ1boA+f7/uvIVeQEIBD
+ tKKBa4Zq+IlYLGaVYdo2mXRpOdWzTTRjK2EIFY+GOIqN9yKeILse90T7YWmsyuxH
+ u8xGN18jjB5p+QB7bCvLkp5A3TXDe7EPnPb0+yzPpPVI0qAIDDTlbvzmK4TqGKIv
+ wwjihw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm2; bh=FVcvz7TWnB3xIDYYAgP5J/nTND+a76bP79lTBcshB
+ Io=; b=wNQkoy5s8GPu7ySE2pJMs+gsuBOf3cHf0IbCB+uw8Bwl13cWjEPiFCSe2
+ kX562OjiAsdxTZ8HvsKBPkWTzavMODYa5Izmgp1J2Z7xdRgKb8nk/HiYs3ZnwWGw
+ 9348xkO166uhBNhpzUK7+H5ltJtonjBInGiEynwjIVnSfhCELSEbxa6W20+XG3cr
+ e+RfwnYRFDVwugsBJ7FYZfOBT3GbZjd38DgOT4omzwbvQ88OHggo0ZjyUCNnzQU7
+ AW/YgqtirlHwskAus4dyuR+k4046MlNsnq1K11y6lzYJLe0J5RnVEAwgNg4S8SFh
+ jxZlI+7l7u5AOwxeoTHkj5o6Y43Xw==
+X-ME-Sender: <xms:VJg9YGFd3xmGSGW0ZuKxjWsnePQ6H3Qa256G-TkLJe98tgvtJyZ5Pw>
+ <xme:VJg9YHUEYi28WKAGXo5buFO81TaKqAG76qiEKLOMqQ-GufqGioqbePRCBWBoRNrIq
+ Z2buQBaKIP0HGQ6iQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrleelgdefjecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffojghfgggtgfesthekre
+ dtredtjeenucfhrhhomheptehnughrvgifucflvghffhgvrhihuceorghnughrvgifsegr
+ jhdrihgurdgruheqnecuggftrfgrthhtvghrnheptefhvdethedtgffgvefftedvkeelvd
+ fhvddtjeeukeevvdekjefgtdeifeelgfegnecukfhppedugedrvddrledurdefjeenucev
+ lhhushhtvghrufhiiigvpedvnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfi
+ esrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:VJg9YAJc-evSPXtCcDrsQYJXwhI0jY8fMAR4ppu8APKfVCdIvfK7OA>
+ <xmx:VJg9YAFlkVQaoQPqBeioPO-MPECl4ZKGE8Fui89tgphaWstNDmU4nQ>
+ <xmx:VJg9YMWr1tld3B8F7cC_ss-0YDrATDxNhnG0J8tXi02UgpqRMIRrkg>
+ <xmx:VJg9YGeWtJsRE1kRbPvEnZxRRClJWtJCQtOnnzxI2nrvuF6XjtKXpA>
+Received: from localhost.localdomain
+ (ppp14-2-91-37.adl-apt-pir-bras31.tpg.internode.on.net [14.2.91.37])
+ by mail.messagingengine.com (Postfix) with ESMTPA id A3EFC24005A;
+ Mon,  1 Mar 2021 20:43:44 -0500 (EST)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-arm@nongnu.org
+Subject: [PATCH v3 5/5] hw/misc: Model KCS devices in the Aspeed LPC controller
+Date: Tue,  2 Mar 2021 12:13:17 +1030
+Message-Id: <20210302014317.915120-6-andrew@aj.id.au>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210302014317.915120-1-andrew@aj.id.au>
+References: <20210302014317.915120-1-andrew@aj.id.au>
 MIME-Version: 1.0
-In-Reply-To: <a67939bc-7fd2-092b-c36a-c130b1321c37@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=66.111.4.29; envelope-from=andrew@aj.id.au;
+ helo=out5-smtp.messagingengine.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -136,37 +128,606 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
- qemu-arm@nongnu.org, jiangkunkun@huawei.com, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, ryan_chen@aspeedtech.com, minyard@acm.org,
+ qemu-devel@nongnu.org, f4bug@amsat.org, clg@kaod.org, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JVr4DCbkFAEo
+X-TUID: 92K4Yl8gaUX1
 
-On 02/03/21 12:43, Keqian Zhu wrote:
-> Hi,
-> 
-> This patch is still not queued. Who can help to do this? Thanks :)
-> 
-> Keqian
-> 
-> On 2020/12/17 9:49, Keqian Zhu wrote:
->> Hi all,
->>
->> This series fixes memory waste and adds alignment check for unmatched
->> qemu_real_host_page_size and TARGET_PAGE_SIZE.
->>
->> Thanks.
->>
->> Keqian Zhu (2):
->>    accel: kvm: Fix memory waste under mismatch page size
->>    accel: kvm: Add aligment assert for kvm_log_clear_one_slot
->>
->>   accel/kvm/kvm-all.c | 13 ++++++++++++-
->>   1 file changed, 12 insertions(+), 1 deletion(-)
->>
-> 
+Keyboard-Controller-Style devices for IPMI purposes are exposed via LPC
+IO cycles from the BMC to the host.
 
-Queued, thanks.
+Expose support on the BMC side by implementing the usual MMIO
+behaviours, and expose the ability to inspect the KCS registers in
+"host" style by accessing QOM properties associated with each register.
 
-Paolo
+The model caters to the IRQ style of both the AST2600 and the earlier
+SoCs (AST2400 and AST2500). The AST2600 allocates an IRQ for each LPC
+sub-device, while there is a single IRQ shared across all subdevices on
+the AST2400 and AST2500.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed_ast2600.c      |  28 ++-
+ hw/arm/aspeed_soc.c          |  24 ++-
+ hw/misc/aspeed_lpc.c         | 359 ++++++++++++++++++++++++++++++++++-
+ include/hw/arm/aspeed_soc.h  |   1 +
+ include/hw/misc/aspeed_lpc.h |  17 +-
+ 5 files changed, 424 insertions(+), 5 deletions(-)
+
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 5a7b8ba81c92..4f83097e4a26 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -104,7 +104,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+     [ASPEED_DEV_ETH2]      = 3,
+     [ASPEED_DEV_ETH3]      = 32,
+     [ASPEED_DEV_ETH4]      = 33,
+-
++    [ASPEED_DEV_KCS]       = 138,   /* 138 -> 142 */
+ };
+ 
+ static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
+@@ -477,8 +477,34 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
++
++    /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
++
++    /*
++     * On the AST2600 LPC subdevice IRQs are connected straight to the GIC.
++     *
++     * LPC subdevice IRQ sources are offset from 1 because the LPC model caters
++     * to the AST2400 and AST2500. SoCs before the AST2600 have one LPC IRQ
++     * shared across the subdevices, and the shared IRQ output to the VIC is at
++     * offset 0.
++     */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
++                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_1));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
++                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_2));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
++                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_3));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
++                       qdev_get_gpio_in(DEVICE(&s->a7mpcore),
++                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
+ }
+ 
+ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 4f098da437ac..057d053c8478 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -112,7 +112,6 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+     [ASPEED_DEV_WDT]    = 27,
+     [ASPEED_DEV_PWM]    = 28,
+     [ASPEED_DEV_LPC]    = 8,
+-    [ASPEED_DEV_IBT]    = 8, /* LPC */
+     [ASPEED_DEV_I2C]    = 12,
+     [ASPEED_DEV_ETH1]   = 2,
+     [ASPEED_DEV_ETH2]   = 3,
+@@ -401,8 +400,31 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->lpc), 0, sc->memmap[ASPEED_DEV_LPC]);
++
++    /* Connect the LPC IRQ to the VIC */
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_LPC));
++
++    /*
++     * On the AST2400 and AST2500 the one LPC IRQ is shared between all of the
++     * subdevices. Connect the LPC subdevice IRQs to the LPC controller IRQ (by
++     * contrast, on the AST2600, the subdevice IRQs are connected straight to
++     * the GIC).
++     *
++     * LPC subdevice IRQ sources are offset from 1 because the shared IRQ output
++     * to the VIC is at offset 0.
++     */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
++                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_1));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
++                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_2));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
++                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_3));
++
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
++                       qdev_get_gpio_in(DEVICE(&s->lpc), aspeed_lpc_kcs_4));
+ }
+ static Property aspeed_soc_properties[] = {
+     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+diff --git a/hw/misc/aspeed_lpc.c b/hw/misc/aspeed_lpc.c
+index e668e985ff04..2dddb27c35d0 100644
+--- a/hw/misc/aspeed_lpc.c
++++ b/hw/misc/aspeed_lpc.c
+@@ -12,20 +12,301 @@
+ #include "qemu/error-report.h"
+ #include "hw/misc/aspeed_lpc.h"
+ #include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ 
+ #define TO_REG(offset) ((offset) >> 2)
+ 
+ #define HICR0                TO_REG(0x00)
++#define   HICR0_LPC3E        BIT(7)
++#define   HICR0_LPC2E        BIT(6)
++#define   HICR0_LPC1E        BIT(5)
+ #define HICR1                TO_REG(0x04)
+ #define HICR2                TO_REG(0x08)
++#define   HICR2_IBFIE3       BIT(3)
++#define   HICR2_IBFIE2       BIT(2)
++#define   HICR2_IBFIE1       BIT(1)
+ #define HICR3                TO_REG(0x0C)
+ #define HICR4                TO_REG(0x10)
++#define   HICR4_KCSENBL      BIT(2)
++#define IDR1                 TO_REG(0x24)
++#define IDR2                 TO_REG(0x28)
++#define IDR3                 TO_REG(0x2C)
++#define ODR1                 TO_REG(0x30)
++#define ODR2                 TO_REG(0x34)
++#define ODR3                 TO_REG(0x38)
++#define STR1                 TO_REG(0x3C)
++#define   STR_OBF            BIT(0)
++#define   STR_IBF            BIT(1)
++#define   STR_CMD_DATA       BIT(3)
++#define STR2                 TO_REG(0x40)
++#define STR3                 TO_REG(0x44)
+ #define HICR5                TO_REG(0x80)
+ #define HICR6                TO_REG(0x84)
+ #define HICR7                TO_REG(0x88)
+ #define HICR8                TO_REG(0x8C)
++#define HICRB                TO_REG(0x100)
++#define   HICRB_IBFIE4       BIT(1)
++#define   HICRB_LPC4E        BIT(0)
++#define IDR4                 TO_REG(0x114)
++#define ODR4                 TO_REG(0x118)
++#define STR4                 TO_REG(0x11C)
++
++enum aspeed_kcs_channel_id {
++    kcs_channel_1 = 0,
++    kcs_channel_2,
++    kcs_channel_3,
++    kcs_channel_4,
++};
++
++static const enum aspeed_lpc_subdevice aspeed_kcs_subdevice_map[] = {
++    [kcs_channel_1] = aspeed_lpc_kcs_1,
++    [kcs_channel_2] = aspeed_lpc_kcs_2,
++    [kcs_channel_3] = aspeed_lpc_kcs_3,
++    [kcs_channel_4] = aspeed_lpc_kcs_4,
++};
++
++struct aspeed_kcs_channel {
++    enum aspeed_kcs_channel_id id;
++
++    int idr;
++    int odr;
++    int str;
++};
++
++static const struct aspeed_kcs_channel aspeed_kcs_channel_map[] = {
++    [kcs_channel_1] = {
++        .id = kcs_channel_1,
++        .idr = IDR1,
++        .odr = ODR1,
++        .str = STR1
++    },
++
++    [kcs_channel_2] = {
++        .id = kcs_channel_2,
++        .idr = IDR2,
++        .odr = ODR2,
++        .str = STR2
++    },
++
++    [kcs_channel_3] = {
++        .id = kcs_channel_3,
++        .idr = IDR3,
++        .odr = ODR3,
++        .str = STR3
++    },
++
++    [kcs_channel_4] = {
++        .id = kcs_channel_4,
++        .idr = IDR4,
++        .odr = ODR4,
++        .str = STR4
++    },
++};
++
++struct aspeed_kcs_register_data {
++    const char *name;
++    int reg;
++    const struct aspeed_kcs_channel *chan;
++};
++
++static const struct aspeed_kcs_register_data aspeed_kcs_registers[] = {
++    {
++        .name = "idr1",
++        .reg = IDR1,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_1],
++    },
++    {
++        .name = "odr1",
++        .reg = ODR1,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_1],
++    },
++    {
++        .name = "str1",
++        .reg = STR1,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_1],
++    },
++    {
++        .name = "idr2",
++        .reg = IDR2,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_2],
++    },
++    {
++        .name = "odr2",
++        .reg = ODR2,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_2],
++    },
++    {
++        .name = "str2",
++        .reg = STR2,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_2],
++    },
++    {
++        .name = "idr3",
++        .reg = IDR3,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_3],
++    },
++    {
++        .name = "odr3",
++        .reg = ODR3,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_3],
++    },
++    {
++        .name = "str3",
++        .reg = STR3,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_3],
++    },
++    {
++        .name = "idr4",
++        .reg = IDR4,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_4],
++    },
++    {
++        .name = "odr4",
++        .reg = ODR4,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_4],
++    },
++    {
++        .name = "str4",
++        .reg = STR4,
++        .chan = &aspeed_kcs_channel_map[kcs_channel_4],
++    },
++    { },
++};
++
++static const struct aspeed_kcs_register_data *
++aspeed_kcs_get_register_data_by_name(const char *name)
++{
++    const struct aspeed_kcs_register_data *pos = aspeed_kcs_registers;
++
++    while (pos->name) {
++        if (!strcmp(pos->name, name)) {
++            return pos;
++        }
++        pos++;
++    }
++
++    return NULL;
++}
++
++static const struct aspeed_kcs_channel *
++aspeed_kcs_get_channel_by_register(int reg)
++{
++    const struct aspeed_kcs_register_data *pos = aspeed_kcs_registers;
++
++    while (pos->name) {
++        if (pos->reg == reg) {
++            return pos->chan;
++        }
++        pos++;
++    }
++
++    return NULL;
++}
++
++static void aspeed_kcs_get_register_property(Object *obj,
++                                             Visitor *v,
++                                             const char *name,
++                                             void *opaque,
++                                             Error **errp)
++{
++    const struct aspeed_kcs_register_data *data;
++    AspeedLPCState *s = ASPEED_LPC(obj);
++    uint32_t val;
++
++    data = aspeed_kcs_get_register_data_by_name(name);
++    if (!data) {
++        return;
++    }
++
++    if (!strncmp("odr", name, 3)) {
++        s->regs[data->chan->str] &= ~STR_OBF;
++    }
++
++    val = s->regs[data->reg];
++
++    visit_type_uint32(v, name, &val, errp);
++}
++
++static bool aspeed_kcs_channel_enabled(AspeedLPCState *s,
++                                       const struct aspeed_kcs_channel *channel)
++{
++    switch (channel->id) {
++    case kcs_channel_1: return s->regs[HICR0] & HICR0_LPC1E;
++    case kcs_channel_2: return s->regs[HICR0] & HICR0_LPC2E;
++    case kcs_channel_3:
++        return (s->regs[HICR0] & HICR0_LPC3E) &&
++                    (s->regs[HICR4] & HICR4_KCSENBL);
++    case kcs_channel_4: return s->regs[HICRB] & HICRB_LPC4E;
++    default: return false;
++    }
++}
++
++static bool
++aspeed_kcs_channel_ibf_irq_enabled(AspeedLPCState *s,
++                                   const struct aspeed_kcs_channel *channel)
++{
++    if (!aspeed_kcs_channel_enabled(s, channel)) {
++            return false;
++    }
++
++    switch (channel->id) {
++    case kcs_channel_1: return s->regs[HICR2] & HICR2_IBFIE1;
++    case kcs_channel_2: return s->regs[HICR2] & HICR2_IBFIE2;
++    case kcs_channel_3: return s->regs[HICR2] & HICR2_IBFIE3;
++    case kcs_channel_4: return s->regs[HICRB] & HICRB_IBFIE4;
++    default: return false;
++    }
++}
++
++static void aspeed_kcs_set_register_property(Object *obj,
++                                             Visitor *v,
++                                             const char *name,
++                                             void *opaque,
++                                             Error **errp)
++{
++    const struct aspeed_kcs_register_data *data;
++    AspeedLPCState *s = ASPEED_LPC(obj);
++    uint32_t val;
++
++    data = aspeed_kcs_get_register_data_by_name(name);
++    if (!data) {
++        return;
++    }
++
++    if (!visit_type_uint32(v, name, &val, errp)) {
++        return;
++    }
++
++    if (strncmp("str", name, 3)) {
++        s->regs[data->reg] = val;
++    }
++
++    if (!strncmp("idr", name, 3)) {
++        s->regs[data->chan->str] |= STR_IBF;
++        if (aspeed_kcs_channel_ibf_irq_enabled(s, data->chan)) {
++            enum aspeed_lpc_subdevice subdev;
++
++            subdev = aspeed_kcs_subdevice_map[data->chan->id];
++            qemu_irq_raise(s->subdevice_irqs[subdev]);
++        }
++    }
++}
++
++static void aspeed_lpc_set_irq(void *opaque, int irq, int level)
++{
++    AspeedLPCState *s = (AspeedLPCState *)opaque;
++
++    if (level) {
++        s->subdevice_irqs_pending |= BIT(irq);
++    } else {
++        s->subdevice_irqs_pending &= ~BIT(irq);
++    }
++
++    qemu_set_irq(s->irq, !!s->subdevice_irqs_pending);
++}
+ 
+ static uint64_t aspeed_lpc_read(void *opaque, hwaddr offset, unsigned size)
+ {
+@@ -39,6 +320,29 @@ static uint64_t aspeed_lpc_read(void *opaque, hwaddr offset, unsigned size)
+         return 0;
+     }
+ 
++    switch (reg) {
++    case IDR1:
++    case IDR2:
++    case IDR3:
++    case IDR4:
++    {
++        const struct aspeed_kcs_channel *channel;
++
++        channel = aspeed_kcs_get_channel_by_register(reg);
++        if (s->regs[channel->str] & STR_IBF) {
++            enum aspeed_lpc_subdevice subdev;
++
++            subdev = aspeed_kcs_subdevice_map[channel->id];
++            qemu_irq_lower(s->subdevice_irqs[subdev]);
++        }
++
++        s->regs[channel->str] &= ~STR_IBF;
++        break;
++    }
++    default:
++        break;
++    }
++
+     return s->regs[reg];
+ }
+ 
+@@ -55,6 +359,18 @@ static void aspeed_lpc_write(void *opaque, hwaddr offset, uint64_t data,
+         return;
+     }
+ 
++
++    switch (reg) {
++    case ODR1:
++    case ODR2:
++    case ODR3:
++    case ODR4:
++        s->regs[aspeed_kcs_get_channel_by_register(reg)->str] |= STR_OBF;
++        break;
++    default:
++        break;
++    }
++
+     s->regs[reg] = data;
+ }
+ 
+@@ -72,6 +388,8 @@ static void aspeed_lpc_reset(DeviceState *dev)
+ {
+     struct AspeedLPCState *s = ASPEED_LPC(dev);
+ 
++    s->subdevice_irqs_pending = 0;
++
+     memset(s->regs, 0, sizeof(s->regs));
+ 
+     s->regs[HICR7] = s->hicr7;
+@@ -83,19 +401,55 @@ static void aspeed_lpc_realize(DeviceState *dev, Error **errp)
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
+     sysbus_init_irq(sbd, &s->irq);
++    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_1]);
++    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_2]);
++    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_3]);
++    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_kcs_4]);
++    sysbus_init_irq(sbd, &s->subdevice_irqs[aspeed_lpc_ibt]);
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_lpc_ops, s,
+             TYPE_ASPEED_LPC, 0x1000);
+ 
+     sysbus_init_mmio(sbd, &s->iomem);
++
++    qdev_init_gpio_in(dev, aspeed_lpc_set_irq, ASPEED_LPC_NR_SUBDEVS);
++}
++
++static void aspeed_lpc_init(Object *obj)
++{
++    object_property_add(obj, "idr1", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "odr1", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "str1", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "idr2", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "odr2", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "str2", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "idr3", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "odr3", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "str3", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "idr4", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "odr4", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
++    object_property_add(obj, "str4", "uint32", aspeed_kcs_get_register_property,
++                        aspeed_kcs_set_register_property, NULL, NULL);
+ }
+ 
+ static const VMStateDescription vmstate_aspeed_lpc = {
+     .name = TYPE_ASPEED_LPC,
+-    .version_id = 1,
+-    .minimum_version_id = 1,
++    .version_id = 2,
++    .minimum_version_id = 2,
+     .fields = (VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, AspeedLPCState, ASPEED_LPC_NR_REGS),
++        VMSTATE_UINT32(subdevice_irqs_pending, AspeedLPCState),
+         VMSTATE_END_OF_LIST(),
+     }
+ };
+@@ -121,6 +475,7 @@ static const TypeInfo aspeed_lpc_info = {
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(AspeedLPCState),
+     .class_init = aspeed_lpc_class_init,
++    .instance_init = aspeed_lpc_init,
+ };
+ 
+ static void aspeed_lpc_register_types(void)
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 42c64bd28ba2..9359d6da336d 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -132,6 +132,7 @@ enum {
+     ASPEED_DEV_SDRAM,
+     ASPEED_DEV_XDMA,
+     ASPEED_DEV_EMMC,
++    ASPEED_DEV_KCS,
+ };
+ 
+ #endif /* ASPEED_SOC_H */
+diff --git a/include/hw/misc/aspeed_lpc.h b/include/hw/misc/aspeed_lpc.h
+index 0fbb7f68bed2..df418cfcd36c 100644
+--- a/include/hw/misc/aspeed_lpc.h
++++ b/include/hw/misc/aspeed_lpc.h
+@@ -12,10 +12,22 @@
+ 
+ #include "hw/sysbus.h"
+ 
++#include <stdint.h>
++
+ #define TYPE_ASPEED_LPC "aspeed.lpc"
+ #define ASPEED_LPC(obj) OBJECT_CHECK(AspeedLPCState, (obj), TYPE_ASPEED_LPC)
+ 
+-#define ASPEED_LPC_NR_REGS (0x260 >> 2)
++#define ASPEED_LPC_NR_REGS      (0x260 >> 2)
++
++enum aspeed_lpc_subdevice {
++    aspeed_lpc_kcs_1 = 0,
++    aspeed_lpc_kcs_2,
++    aspeed_lpc_kcs_3,
++    aspeed_lpc_kcs_4,
++    aspeed_lpc_ibt,
++};
++
++#define ASPEED_LPC_NR_SUBDEVS   5
+ 
+ typedef struct AspeedLPCState {
+     /* <private> */
+@@ -25,6 +37,9 @@ typedef struct AspeedLPCState {
+     MemoryRegion iomem;
+     qemu_irq irq;
+ 
++    qemu_irq subdevice_irqs[ASPEED_LPC_NR_SUBDEVS];
++    uint32_t subdevice_irqs_pending;
++
+     uint32_t regs[ASPEED_LPC_NR_REGS];
+     uint32_t hicr7;
+ } AspeedLPCState;
+-- 
+2.27.0
 

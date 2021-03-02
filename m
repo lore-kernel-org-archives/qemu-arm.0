@@ -1,71 +1,71 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4538342lfg;
-        Tue, 2 Mar 2021 06:58:51 -0800 (PST)
-X-Received: by 2002:a17:906:d554:: with SMTP id cr20mr4766617ejc.61.1614697131616;
-        Tue, 02 Mar 2021 06:58:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614697131; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4538442lfg;
+        Tue, 2 Mar 2021 06:58:58 -0800 (PST)
+X-Received: by 2002:a05:6402:1a3c:: with SMTP id be28mr20366377edb.125.1614697138687;
+        Tue, 02 Mar 2021 06:58:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614697138; cv=none;
         d=google.com; s=arc-20160816;
-        b=s2wxr2HB6jYE9pzFRXMbyMaE9QSXZk1PrFFr1PiX0UxGi9dav8sr381Htnro5vcFlo
-         7WbtUQV8XNibQrBJe4Jd6Bm/Ek954nw0inQlIf15Uy15RWG7butgf94H/zCyxaMRViL0
-         gSTqTpYsMfMR3sFUPO+wfs4PWqjPCl0PFdQeB0ZFb0c4/u8iiAE93/4emy4QK9bKEtqu
-         xK8FAWS9c3semBqHDcsvA0tjwfy4pJqcOYkQ2PH3rxcCJS4qRFurn3mVWRroZ5iSBhmi
-         aT/0+RnEsKx7iF11v+0F9k7tKiVg9O5DTWiIMoJxXKr7rINheKQiyGD7pY4sJAllbbso
-         TFsA==
+        b=B3QcTfQso4F9Q+aYuRXfPPqgqWCvBX2pUEU3+ewNP5nyV7yOZ8YtoXGQv1kv7f1rSr
+         6RCUOwEQzixxI4cjj8ZEaxrAHe/cHtQdFrh+f7b4H7Il3iHvlXg5yMRJr87GYOkTGt+o
+         6/KO39YcG1dqK4iTFiPXI+udAxIu9g9GahKI7ZOe/Qu9XAaERN5E0Nzn7+JF0GpXnEap
+         R+1j17HDJXGSXVAtiWqE7KQSLbnnPfumYefyCev6z7ueCPTytyZes0WuOTBk/k8jZE/k
+         16LeevjWF/8ir9s/bdYWd663z2SMBCNCKDaZzPSU0faCV0ChhnFltu/1vkh2Ctu9AhxU
+         wB4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
-        b=r9UvIyugq9i2yUZvDXUOqG1NpGggeqJBJaLciE2DHNuJVa2E3Eya9EtHQb6BOADrJt
-         YB8f8eKIRld8xcYHKTaCGFlsCVQqWFp7idx0S9/VGZtCGyfxvuN6tqZP94J34RFmxvuO
-         4nvlp3u8TAbJkwgjeKscuXycmYuR/OrZxg3dcy4tm3NZLnXCvLaDzCE+NAvGCxPF0Aee
-         B56OPsCs07NOJrtDM/oroSgi/VKV2jSgzrV6ex0JFhuukl4wIlLNteDv3LengFnS1JIt
-         Tj5ju8MPhKJyJgatTI6Ql/UcwINU7KHaQRx/yv1XluVD954TE1RsULPcO+H9G/Zpg0WQ
-         zf0A==
+        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
+        b=vUydHojC6mARDS7h/qgbpWcI4sudpXOBAZx846LqUn7H/KesWR3sM58OIgKrl6F9gq
+         trjiUUxnmsfFqLT8dZUP5kr3KlXDo7D/lptzDgSG5IgvJ7vpVef27r6Lk5kNuBI0xl4y
+         IFzF0O/TLmP/MAx5HdX1uPRL+7zsXlR5BQHD4+Ql/HYePxH1WRGQaFNhCWMq19mpS1uj
+         COG6g29Qh9G5GMlNgZ5bQ4UCEuLBBrLQo/0tX5wolKwTjkMMc47/yx7mar2mJKZZWeg1
+         0MV7LgKZSJd58IFc8b2jGAKIs/hxHwl/Lv7TVJWO2mVolRRe7T8ZaT/XXilNIy6UWOLs
+         aOcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzxnRz+T;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFXJEhvp;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v13sor4738303ejw.91.2021.03.02.06.58.51
+        by mx.google.com with SMTPS id du20sor11943875ejc.15.2021.03.02.06.58.58
         (Google Transport Security);
-        Tue, 02 Mar 2021 06:58:51 -0800 (PST)
+        Tue, 02 Mar 2021 06:58:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PzxnRz+T;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UFXJEhvp;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
-        b=PzxnRz+TT21E51h00VO4w6EwBK4uBXlC1idOB18LgNi+3yV1fU5phsOnJrU5RYNakr
-         45TD1MtBXFcmbFMan7ALS+EzqYisulDtIvV2Z8tjR51nqKVFiXoaguBA8refjEweF98i
-         WKaQLMj/+2mirtCXfH+rpe6GOPmUbHM9R4/VxGr+Y51sMjwRsaKsUbgwZ6XFhw0eIk5p
-         mUb8iSvgDsvh69RpipuDaGhyRNcxBgEtmA/PuC4BpU8tR1hjx9UQgzIbw9JDPRIgeF4W
-         Lx1HUYOABTY1r4WldGrla5fKkrrz3Ycbg5W1MgBHxn3l7ufNxC/K+j0rAu8z3aUj5+uQ
-         wCzg==
+        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
+        b=UFXJEhvpwGNnwZ3cATGGDjHqwcfQaVRLe18I2nu0tPyGoewRcB0DhJwjdZtHpsGG2f
+         qukKK/Fidd8BgXzTTV/1zoQMvy3qn3M5SIC92NcJ94CYw0jVfUDq3YiXsZcbnyy3uuQ8
+         qWMb3o6la6aSMmSr8agE7UcYvDSzJZ6iGiTTY79TElyryVCo07hTj2Iar0/6C5Yr1+uV
+         Cgg0Iry4NAnb6c5XKpWY6TQ6M9Cm43ZngXNOJaIp3m9mfHJV8kL/8LItLTSkrCSqmMwG
+         Ua8ZH2NJrSWrlSCkOkY+Un7HJUn6KpgVa6cAFT0A/vHoLuEW61XDjimiP3oFsmKhB+sU
+         DMmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=VJm0iGgu/pocJ2Vudv8ibS2Ot9Xd+ih0+p5aBEZz7PY=;
-        b=uEVQBXYZ1JsQZXrnir2bIHBCKsAgjeUPRwxQcfIXvnyvNRSvY3Xl7VlzzNg7bOjHa+
-         oMMT6CkTifsGDG0ibLhUEHuTg4ZIbZlb/k7TrQueepPuMtGolr35iW5jEYRy72S2yIes
-         SLWkzfvjr8qmV83IkDcf0S0iMuNyUvm4CRJ4BLlHjJfmKc59o/5HC7H94MFaWIGuRLOY
-         BmFFwI0gCgMncKQst6tLiK/DPEcgWIrt4q6cCpohifEVLgLAAFLoMi8B6kmN2DuX2rmL
-         D2wV99oX6P0coU/vdJ2ecUOUTrq2iZMDbw/6IiLboOYEYQ9DDIm+LCEwiARDTZYl7nPb
-         d2pA==
-X-Gm-Message-State: AOAM5335MyyzrmscQIQMR+SnLwl10sAcH+dp0MmU6n4nqUWtArNiCLLp
-	SfpywVmKkGOImOUkFUHKTRU=
-X-Google-Smtp-Source: ABdhPJwVwRfRNiu2er/OHpx+xArXr0gZ7SPEHZUCgD/YEmWg0lWrzGwKDNXy+KYAT/7EtK3rnC5gww==
-X-Received: by 2002:a05:6402:348c:: with SMTP id v12mr20696747edc.314.1614697131429;
-        Tue, 02 Mar 2021 06:58:51 -0800 (PST)
+        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
+        b=rWHqGAEM59k4uw8clk6ssk9MMRfzYa1en/FdOJmXdx1vsxHm6vtAAH0RE2g0XbiXVh
+         ehNuTcb0MDSlJ4dHQgLWdA0PkHyHLqMNtIsuetWRvU2W6EFOKkI9GUT7mi2oQuyJEX/8
+         pf8SNTPuEOuxX0E9LaOqBk5cs2ITQmI/nng2ObHiBPIKMkphCFVeaG4hi8ocUdCmfKB4
+         vMCQqC3bb5K6iKLLbpC8tWTE0uIn1CgSqNujDJquTWsM7XT3gTYJvzowZyD21gQWSy0X
+         GK25XMTPqmrZqTVzzyK+bkKVKz+/sl9QdsjpMufu7LDhGNW0R70kL+RMPvPHD7+v9e2T
+         lrmw==
+X-Gm-Message-State: AOAM532tLD0djyV13kQ2xqXbXWQTxcMl9HktSoAR0V4VH8eshnhTUFh7
+	TvfA841AtM1HHsEZbq89GZY=
+X-Google-Smtp-Source: ABdhPJyhz1UbNmCwPE3jcQWxXtrCELHMJNGYWoqWK9l9CslW53mIykbeihbjS9zo7dFgQXmQ4pKj/Q==
+X-Received: by 2002:a17:906:2bd6:: with SMTP id n22mr20993643ejg.91.1614697138491;
+        Tue, 02 Mar 2021 06:58:58 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id v8sm9399397edq.76.2021.03.02.06.58.48
+        by smtp.gmail.com with ESMTPSA id t8sm18610414edv.16.2021.03.02.06.58.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Mar 2021 06:58:50 -0800 (PST)
+        Tue, 02 Mar 2021 06:58:57 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -110,133 +110,57 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Taylor Simpson <tsimpson@quicinc.com>
-Subject: [PATCH v3 04/27] cpu: Directly use cpu_write_elf*() fallback handlers in place
-Date: Tue,  2 Mar 2021 15:57:55 +0100
-Message-Id: <20210302145818.1161461-5-f4bug@amsat.org>
+Subject: [PATCH v3 05/27] cpu: Directly use get_paging_enabled() fallback handlers in place
+Date: Tue,  2 Mar 2021 15:57:56 +0100
+Message-Id: <20210302145818.1161461-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210302145818.1161461-1-f4bug@amsat.org>
 References: <20210302145818.1161461-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: u1FtmSmv3TDx
+X-TUID: 7At1yPRWPQ6c
 
-No code directly accesses CPUClass::write_elf*() handlers out
-of hw/core/cpu.c (the rest are assignation in target/ code):
+No code uses CPUClass::get_paging_enabled() outside of hw/core/cpu.c:
 
-  $ git grep -F -- '->write_elf'
-  hw/core/cpu.c:157:    return (*cc->write_elf32_qemunote)(f, cpu, opaque);
-  hw/core/cpu.c:171:    return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
-  hw/core/cpu.c:186:    return (*cc->write_elf64_qemunote)(f, cpu, opaque);
-  hw/core/cpu.c:200:    return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
-  hw/core/cpu.c:440:    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
-  hw/core/cpu.c:441:    k->write_elf32_note = cpu_common_write_elf32_note;
-  hw/core/cpu.c:442:    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
-  hw/core/cpu.c:443:    k->write_elf64_note = cpu_common_write_elf64_note;
-  target/arm/cpu.c:2304:    cc->write_elf64_note = arm_cpu_write_elf64_note;
-  target/arm/cpu.c:2305:    cc->write_elf32_note = arm_cpu_write_elf32_note;
-  target/i386/cpu.c:7425:    cc->write_elf64_note = x86_cpu_write_elf64_note;
-  target/i386/cpu.c:7426:    cc->write_elf64_qemunote = x86_cpu_write_elf64_qemunote;
-  target/i386/cpu.c:7427:    cc->write_elf32_note = x86_cpu_write_elf32_note;
-  target/i386/cpu.c:7428:    cc->write_elf32_qemunote = x86_cpu_write_elf32_qemunote;
-  target/ppc/translate_init.c.inc:10891:    cc->write_elf64_note = ppc64_cpu_write_elf64_note;
-  target/ppc/translate_init.c.inc:10892:    cc->write_elf32_note = ppc32_cpu_write_elf32_note;
-  target/s390x/cpu.c:522:    cc->write_elf64_note = s390_cpu_write_elf64_note;
+  $ git grep -F -- '->get_paging_enabled'
+  hw/core/cpu.c:74:    return cc->get_paging_enabled(cpu);
+  hw/core/cpu.c:438:    k->get_paging_enabled = cpu_common_get_paging_enabled;
+  target/i386/cpu.c:7418:    cc->get_paging_enabled = x86_cpu_get_paging_enabled;
 
 Check the handler presence in place and remove the common fallback code.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/core/cpu.c | 43 ++++++++++++-------------------------------
- 1 file changed, 12 insertions(+), 31 deletions(-)
+ hw/core/cpu.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index daaff56a79e..a9ee2c74ec5 100644
+index a9ee2c74ec5..1de00bbb474 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -154,60 +154,45 @@ int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
+@@ -71,11 +71,10 @@ bool cpu_paging_enabled(const CPUState *cpu)
  {
      CPUClass *cc = CPU_GET_CLASS(cpu);
  
-+    if (!cc->write_elf32_qemunote) {
-+        return 0;
+-    return cc->get_paging_enabled(cpu);
+-}
++    if (cc->get_paging_enabled) {
++        return cc->get_paging_enabled(cpu);
 +    }
-     return (*cc->write_elf32_qemunote)(f, cpu, opaque);
+ 
+-static bool cpu_common_get_paging_enabled(const CPUState *cpu)
+-{
+     return false;
  }
  
--static int cpu_common_write_elf32_qemunote(WriteCoreDumpFunction f,
--                                           CPUState *cpu, void *opaque)
--{
--    return 0;
--}
--
- int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
-                          int cpuid, void *opaque)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
-+    if (!cc->write_elf32_note) {
-+        return -1;
-+    }
-     return (*cc->write_elf32_note)(f, cpu, cpuid, opaque);
- }
- 
--static int cpu_common_write_elf32_note(WriteCoreDumpFunction f,
--                                       CPUState *cpu, int cpuid,
--                                       void *opaque)
--{
--    return -1;
--}
--
- int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-                              void *opaque)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
-+    if (!cc->write_elf64_qemunote) {
-+        return 0;
-+    }
-     return (*cc->write_elf64_qemunote)(f, cpu, opaque);
- }
- 
--static int cpu_common_write_elf64_qemunote(WriteCoreDumpFunction f,
--                                           CPUState *cpu, void *opaque)
--{
--    return 0;
--}
--
- int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
-                          int cpuid, void *opaque)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
-+    if (!cc->write_elf64_note) {
-+        return -1;
-+    }
-     return (*cc->write_elf64_note)(f, cpu, cpuid, opaque);
- }
- 
--static int cpu_common_write_elf64_note(WriteCoreDumpFunction f,
--                                       CPUState *cpu, int cpuid,
--                                       void *opaque)
--{
--    return -1;
--}
--
--
- static int cpu_common_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
- {
-     return 0;
-@@ -437,10 +422,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+@@ -420,7 +419,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->parse_features = cpu_common_parse_features;
+     k->get_arch_id = cpu_common_get_arch_id;
      k->has_work = cpu_common_has_work;
-     k->get_paging_enabled = cpu_common_get_paging_enabled;
+-    k->get_paging_enabled = cpu_common_get_paging_enabled;
      k->get_memory_mapping = cpu_common_get_memory_mapping;
--    k->write_elf32_qemunote = cpu_common_write_elf32_qemunote;
--    k->write_elf32_note = cpu_common_write_elf32_note;
--    k->write_elf64_qemunote = cpu_common_write_elf64_qemunote;
--    k->write_elf64_note = cpu_common_write_elf64_note;
      k->gdb_read_register = cpu_common_gdb_read_register;
      k->gdb_write_register = cpu_common_gdb_write_register;
-     set_bit(DEVICE_CATEGORY_CPU, dc->categories);
 -- 
 2.26.2

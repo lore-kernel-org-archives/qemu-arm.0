@@ -1,220 +1,153 @@
-Received: by 2002:ad4:4a74:0:0:0:0:0 with SMTP id cn20csp28381qvb;
-        Wed, 13 Jan 2021 05:48:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJytWjYCJDQo4DRCnT1kNFHzYNX52FY+CMi4jx5bWlaILUAZ6UQF+HMv+geErq433GXDJ3sj
-X-Received: by 2002:a25:d802:: with SMTP id p2mr3480753ybg.305.1610545718224;
-        Wed, 13 Jan 2021 05:48:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610545718; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4500603lfg;
+        Tue, 2 Mar 2021 06:10:39 -0800 (PST)
+X-Received: by 2002:a17:906:f296:: with SMTP id gu22mr19856941ejb.20.1614694239105;
+        Tue, 02 Mar 2021 06:10:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614694239; cv=none;
         d=google.com; s=arc-20160816;
-        b=qBK15qsrD12Ckl8KEgAwzT0w838ZTiUMx7e8SsSoQTO790fv3kJT08J+xGzgGWUHq6
-         rEuN5z4gW0vMZLGKxAmTd3NyoYFLSJ5fmcjzSJAsT68H0k9nRK7d0Da4EkVWsNeaqAjq
-         nsraTULwz5bkZHl2SVwdCPUOyarex3PXXOOSUKplZo5MtnRVyYDsr7xatQPFsQHc2n6H
-         H+KlMTJ493hqAiVTF1Y+0I37kIrBbwXxngmwDuE6NJ3vVioMqBaELE/PJ507XkFDBwOV
-         BTAtJMhFrvAbCB1Z9sWjLic++bmjHJ/brxBx1P6e91+fnLD6Z+awP8p/mkoyTVs7ngAX
-         LYGA==
+        b=xY/nvEz9G3K4S3Gl3wuZ4vaW/avlQdZ8ZJRRJVRnm4AQqcYqispJoyVVPdIYEUuvM3
+         MBccNhk5PLcbmfBsZscztW+Jh99hUyllXDGFO80SEb2z7lBLYwQNEevEoLRAfTJ17fMQ
+         7F1G7OSVn8qRoC+sSvl0fUcb84M8bSLtLRRWy+8GuPO2vhl84rHvpsTmxzD0UKKAn4BU
+         luw8YjeVmQTJv+54t/skhBebLSM9wPNKBfu54kH4aD5YTMBcSnczwu8fm6AAEUFVrpv5
+         At3hGwjq0K0I6YA0t5zDc2wqG/Iz4aWlZM9FvAf4moLzvOMCZut5c9gUMDtyDUc6T26p
+         RTOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:in-reply-to:subject:to:from:dkim-signature;
-        bh=ymhsrLTpVqf+YV4UDp3pX1LEnr75n0cl4NCRaFGDRVs=;
-        b=Zvt5uP9gsEVMLsF9mfZCKWEZSn4Go/nJeJwOYIJ3yWFr9vdIZReUkJXF3RpKMPP7Pt
-         +MvuhWqzQ7y+FW/z9foofQ4fW3B93OjLZg98sv6B5wsURJC0FZRHesPuy3Lpjt6xKN3V
-         Ep+PELV6LOU+4iNnGAe7S5898uhTgatdQhxnOx/okE7pmSxT8vlstdiAHlvHt91+NHwW
-         m0ruY/MdgT2nJztRxa+QxKAZ9engMcYfoLeslVbKTdhzpbOTbDSV9vgVNWEHEvLkEQwS
-         kkEhnXsWJUVToIqBdmz05fOmt4ZiD6G4navy47VOB+XYK8zQPKagj06Vccsi/2VShqdK
-         wBbA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=WfvwxWrxxEeBzngpLg0mUnnwLyaVyzyP6BTbo+AU/c0=;
+        b=fdNe4Z7FjG+aSasSxtgdxErmcy/XSn+gstFLclp/7rv6k2IbcY6Nx3sm1rKhphHYX1
+         HxJVMYyaRKOhHE36rcBz7HK57IGLhH0yLNsk9mq+aYa+V0/UVyuqFdukbN/fxYkq8jaW
+         4XIVR5kV+DjSLRUMTPUjQwJ5G8YZxWEkyxuoSneh93BdqEjRSlUm3xHDjrmOFx2rFzrz
+         7/SIkNz4xSDe1lFfs+XIBiVQnEgxhzVDYk9wcp5G6N/tWId/iAzmeS1475anwdOessXJ
+         NVHzRR3LxQHzbXoP8riqMvlAhxU1C1Q9N57D0CnySz3Oa8l+NW+gOl83lFUVML2av+IY
+         vHLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YKQAV7DW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k133si2029522ybc.238.2021.01.13.05.48.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jan 2021 05:48:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cf6XaUwU;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id dt22sor12782365ejc.10.2021.03.02.06.10.38
+        (Google Transport Security);
+        Tue, 02 Mar 2021 06:10:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YKQAV7DW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48936 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kzgVp-00044x-OX
-	for alex.bennee@linaro.org; Wed, 13 Jan 2021 08:48:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44102)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1kzgV8-000440-T2
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:47:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:40822)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1kzgV7-0003om-4w
- for qemu-arm@nongnu.org; Wed, 13 Jan 2021 08:47:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1610545672;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ymhsrLTpVqf+YV4UDp3pX1LEnr75n0cl4NCRaFGDRVs=;
- b=YKQAV7DWkhd2rwSn22HqISb+mRC+S30UUhOwf4y2VpEBdzBSDUYjCQktdTOasDqU9Aqit8
- tbC2nh8rJOrER3HXGHN9+JLLf6lzVY2WyhUfof51GQ1bGdUURVri83wkJ628pAjfhlgCe9
- 7+/j2i/JKgr0Z4r8WBGsA/PMwA+sENE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-399-K9tbAvfiOi-6CWMyV5C60Q-1; Wed, 13 Jan 2021 08:47:50 -0500
-X-MC-Unique: K9tbAvfiOi-6CWMyV5C60Q-1
-Received: by mail-wr1-f69.google.com with SMTP id v5so1002989wrr.0
- for <qemu-arm@nongnu.org>; Wed, 13 Jan 2021 05:47:50 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cf6XaUwU;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=WfvwxWrxxEeBzngpLg0mUnnwLyaVyzyP6BTbo+AU/c0=;
+        b=cf6XaUwUHWVs/4nqZvc3KjIHVxIqxdNsgQP2lUVTLx8d25WChOOiHbHTo8TM3u6gZL
+         g5JG2KohJ/rlwbe/+ZqzR4OkUWEul3F3v4XKhKldvqjdKbvoxMJzBMt6GuxjN7GsA+Fe
+         V+w3R7pS5aG2xqq5EQqEx/OF3Tb59TX2iDGzkz1TjEFzO3AIoV5G4HEtERoflkUU0Z0Q
+         XkeiaUgfxkPElow67pmZh2VppoAoQF2xHEgH4L0ph8qdzwnshB/ZkvKx7kZXwRy4MjXG
+         4n246G5xVNMOC30TsVI3sZA50T0yfXDOBEqpg1tpZWf9D0oDs6TIq2VSJAbXKcnIFHtm
+         DCLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
- :user-agent:reply-to:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KcI38j+Zh3rURT7LR1cI4qN+NHTumYNN/a/93hEfFGI=;
- b=FHXktgoS3bId3e+rcsbB81AnIhT6WGJT+G5h/SjXDS30OKtRgfGa7OwHnrZeKWfu8F
- Rhdre6u8SoUa6y4uiMhrcmy+oX+KaJiJ1EA+OD8n1ggm6k9NbGofmVypBhVq3HhAE+PM
- cwROCFB0qim359oO5OjBbYJCUV7ieOJIYhsVpcuSfr9L415CbUASqPtdBebYUImRuE5r
- PCODJOkfImQqEDkF8YoORZKQBNvEAxFZtsxDZCSI6aAf1/Y8g574WeUXhrXfCUYeVnXN
- Z0/hIfVEmCWVPNS/zBvBG/vz167eFvjOVqLBMebyNvfTlm9VIzwl0zXYmcZSPjkrTtA8
- XIFw==
-X-Gm-Message-State: AOAM533+g03BWoue4ZmHIo89/VCvOuvVggBMc+4iYCX/WdMCBX/opekZ
- ZAbJsTzDEb9uh9CPZsU0qsi44y5aiT+T079qZpGgykhm/O35JoXOPf4QdhwXU7QXcBXNLD134Bl
- I5yGYfIX0cKoJ
-X-Received: by 2002:a1c:3206:: with SMTP id y6mr2240409wmy.127.1610545669443; 
- Wed, 13 Jan 2021 05:47:49 -0800 (PST)
-X-Received: by 2002:a1c:3206:: with SMTP id y6mr2240394wmy.127.1610545669204; 
- Wed, 13 Jan 2021 05:47:49 -0800 (PST)
-Received: from localhost (trasno.trasno.org. [83.165.45.250])
- by smtp.gmail.com with ESMTPSA id l20sm3736801wrh.82.2021.01.13.05.47.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Jan 2021 05:47:48 -0800 (PST)
-From: Juan Quintela <quintela@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v6 04/11] hw/ssi: imx_spi: Reduce 'change_mask'
- variable scope
-In-Reply-To: <87im81gdig.fsf@secure.mitica> (Juan Quintela's message of "Wed, 
- 13 Jan 2021 14:41:43 +0100")
-References: <20210112183529.2011863-1-f4bug@amsat.org>
- <20210112183529.2011863-5-f4bug@amsat.org>
- <87im81gdig.fsf@secure.mitica>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
-Date: Wed, 13 Jan 2021 14:47:47 +0100
-Message-ID: <875z41gd8c.fsf@secure.mitica>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=WfvwxWrxxEeBzngpLg0mUnnwLyaVyzyP6BTbo+AU/c0=;
+        b=HrFLMVhK0EiWwItVkL+P8WKZuAQIDmI8EL5PuNooXwIT24OSiE0TXvZsELrquMS7DR
+         f7pe4c7fCMDmxa2y5Cew+/YGqnmaUBY/E/1fdxMz2TUNzDl3gFjPrv1F+VlcrBVoDm3G
+         +h5VlKQQAUA3+C+qSuPpAFf13pIqchlYvJ2SoX/T5VD7Y1oZ7P33CJzl7zMDVf9GFgko
+         0oGRPszlhzuxYAOKA0OzfKkLmDH2qPxo6x69+Q5wdSWXvRkU/lgLYEYlAFVUT/5zap/P
+         wrh1T67NLvW/zkZgCKnMvcZJcnJH8g5JXZ/suDeWRQ9hNcmnQOmy58gnxUI2xGVKQZPc
+         JQmQ==
+X-Gm-Message-State: AOAM530UTzD+x/SUr9chfSVDTeQFCEPzFtA8M3ofh9bdNjzqZC8EUtqw
+	fpcT+gQvkOCOtKyx2hjTKgA=
+X-Google-Smtp-Source: ABdhPJxHLhUbmSriG1oz2z2e4fYSekgBZG4hpYlUEVLdMe3TMSLYK65lvL7pMrYqQIPQxZy3o9OsSQ==
+X-Received: by 2002:a17:906:3a13:: with SMTP id z19mr21565057eje.317.1614694238729;
+        Tue, 02 Mar 2021 06:10:38 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id y12sm11958296ejb.104.2021.03.02.06.10.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Mar 2021 06:10:37 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH 0/2] semihosting: Move it out of hw/
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Claudio Fontana <cfontana@suse.de>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Paolo Bonzini <pbonzini@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Chris Wulff <crwulff@gmail.com>, qemu-arm@nongnu.org,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-riscv@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>, Marek Vasut <marex@denx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Michael Walle <michael@walle.cc>
+References: <20210226131356.3964782-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <463befd2-c384-553b-9a78-bb033d92638e@amsat.org>
+Date: Tue, 2 Mar 2021 15:10:35 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=quintela@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20210226131356.3964782-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.25,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>,
- qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- Bin Meng <bmeng.cn@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iiB8zLPzV0tm
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: fLcQ54jlKqOa
 
-Juan Quintela <quintela@redhat.com> wrote:
-> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-> I think this one is wrong.
+Cc'ing Claudio.
 
-Wrong is a strong word.  I mean that it changes behaviour and the commit
-message don't talk about changing behaviour.
-
-Later, Juan.
-
->
->
->> ---
->>  hw/ssi/imx_spi.c | 3 +--
->>  1 file changed, 1 insertion(+), 2 deletions(-)
->>
->> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
->> index 35ab33c0511..bcc535f2893 100644
->> --- a/hw/ssi/imx_spi.c
->> +++ b/hw/ssi/imx_spi.c
->> @@ -303,7 +303,6 @@ static void imx_spi_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->>  {
->>      IMXSPIState *s =3D opaque;
->>      uint32_t index =3D offset >> 2;
->> -    uint32_t change_mask;
->> =20
->>      if (index >=3D  ECSPI_MAX) {
->>          qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset =
-0x%"
->> @@ -313,7 +312,6 @@ static void imx_spi_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->> =20
->>      trace_imx_spi_write(index, imx_spi_reg_name(index), value);
->> =20
->> -    change_mask =3D s->regs[index] ^ value;
->> =20
->>      switch (index) {
->>      case ECSPI_RXDATA:
->> @@ -357,6 +355,7 @@ static void imx_spi_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->>          }
->> =20
->>          if (imx_spi_channel_is_master(s)) {
->> +            uint32_t change_mask =3D s->regs[index] ^ value;
->>              int i;
->> =20
->>              /* We are in master mode */
->
-> The code does:
->
->     change_mask =3D s->regs[index] ^ value;
->
->     switch (index) {
->
->     ...
->
->     case ECSPI_CONREG:
->         s->regs[ECSPI_CONREG] =3D value;  <<---- here
->
->         if (!imx_spi_is_enabled(s)) {
->             /* device is disabled, so this is a reset */
->             imx_spi_reset(DEVICE(s));
->             return;
->         }
->
->         if (imx_spi_channel_is_master(s)) {
->             int i;
->        >>>>>  You are setting change_mask here.
->
-> At this point, s->regs[index] has a new value in "here".
->
-> Later, Juan.
-
+On 2/26/21 2:13 PM, Philippe Mathieu-Daudé wrote:
+> In order to reduce CONFIG_USER_ONLY uses in hw/, move
+> semihosting out of it, being a generic feature.
+> 
+> Philippe Mathieu-Daudé (2):
+>   semihosting: Move include/hw/semihosting/ -> include/semihosting/
+>   semihosting: Move hw/semihosting/ -> semihosting/
+> 
+>  meson.build                                       | 1 +
+>  include/{hw => }/semihosting/console.h            | 0
+>  include/{hw => }/semihosting/semihost.h           | 0
+>  {hw/semihosting => semihosting}/common-semi.h     | 0
+>  gdbstub.c                                         | 2 +-
+>  hw/mips/malta.c                                   | 2 +-
+>  linux-user/aarch64/cpu_loop.c                     | 2 +-
+>  linux-user/arm/cpu_loop.c                         | 2 +-
+>  linux-user/riscv/cpu_loop.c                       | 2 +-
+>  linux-user/semihost.c                             | 2 +-
+>  {hw/semihosting => semihosting}/arm-compat-semi.c | 6 +++---
+>  {hw/semihosting => semihosting}/config.c          | 2 +-
+>  {hw/semihosting => semihosting}/console.c         | 4 ++--
+>  softmmu/vl.c                                      | 2 +-
+>  stubs/semihost.c                                  | 2 +-
+>  target/arm/helper.c                               | 4 ++--
+>  target/arm/m_helper.c                             | 4 ++--
+>  target/arm/translate-a64.c                        | 2 +-
+>  target/arm/translate.c                            | 2 +-
+>  target/lm32/helper.c                              | 2 +-
+>  target/m68k/op_helper.c                           | 2 +-
+>  target/mips/cpu.c                                 | 2 +-
+>  target/mips/mips-semi.c                           | 4 ++--
+>  target/mips/translate.c                           | 2 +-
+>  target/nios2/helper.c                             | 2 +-
+>  target/riscv/cpu_helper.c                         | 2 +-
+>  target/unicore32/helper.c                         | 2 +-
+>  target/xtensa/translate.c                         | 2 +-
+>  target/xtensa/xtensa-semi.c                       | 2 +-
+>  Kconfig                                           | 1 +
+>  MAINTAINERS                                       | 4 ++--
+>  hw/Kconfig                                        | 1 -
+>  hw/meson.build                                    | 1 -
+>  {hw/semihosting => semihosting}/Kconfig           | 0
+>  {hw/semihosting => semihosting}/meson.build       | 0
+>  35 files changed, 35 insertions(+), 35 deletions(-)
+>  rename include/{hw => }/semihosting/console.h (100%)
+>  rename include/{hw => }/semihosting/semihost.h (100%)
+>  rename {hw/semihosting => semihosting}/common-semi.h (100%)
+>  rename {hw/semihosting => semihosting}/arm-compat-semi.c (99%)
+>  rename {hw/semihosting => semihosting}/config.c (99%)
+>  rename {hw/semihosting => semihosting}/console.c (98%)
+>  rename {hw/semihosting => semihosting}/Kconfig (100%)
+>  rename {hw/semihosting => semihosting}/meson.build (100%)
+> 

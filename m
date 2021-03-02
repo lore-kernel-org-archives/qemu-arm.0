@@ -1,536 +1,329 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4539626lfg;
-        Tue, 2 Mar 2021 07:00:19 -0800 (PST)
-X-Received: by 2002:aa7:cd87:: with SMTP id x7mr21716875edv.210.1614697219643;
-        Tue, 02 Mar 2021 07:00:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614697219; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4552194lfg;
+        Tue, 2 Mar 2021 07:12:17 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwqURaa066w1M0Pa/knuoV0o3hlTrSJk6HoiYq2LQkwZ2GKFT73AauE4+KE5OPdJXn6mnlD
+X-Received: by 2002:aa7:db01:: with SMTP id t1mr8095196eds.77.1614697937299;
+        Tue, 02 Mar 2021 07:12:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614697937; cv=none;
         d=google.com; s=arc-20160816;
-        b=J2I0cjVqRYQ33A9OzGYRZfGXmiDwKAl9nEvtitxos6eU/2/r/AKukYn/X40PYbwTiO
-         uRZOlShBaxFU8RCDgUSpaljmQIFiyIiKaHtupLbr8QMPQN1OgA07M/W7p6VPE/lj6zG8
-         vCGtm5RQUg9ioARil5FeUrIEQ8ZIED+odDJOy62j0XGX5Ha6lYknYZgh4Y+Gp9kpM4+n
-         5iWTdE6FNYKhsfxCrscEI6nHMP0HoMrqvb4sGu0+/FwTFkT8WlhXuAYGFETJxPh8kAP2
-         Z14zjsZgxW9IPUop59I+IDns31031s4Fua/rVeCgZ0wOJ8QRc0HXEk0fCM+5mvhWLHtB
-         TPKw==
+        b=atPXDWCIR4br28EV/2LGZCv0lgGF4Io+2gWYofYqJoiH1Rh5+DoOXVs4ZWKbEYvOS8
+         JC+MS9YzebXjy7lWPJsKlV7+hsDVoSy4o3TAt3muAJr4jLdzNKT6+lpyP7vfILZJJcD8
+         BMuDqHQGvn2YFb8GPravGgHiilBSRkawE0MCZZm38McyjbBrljohXA64VQtyMZVSCDVK
+         JjeKV+KA5n3JE45rzPRlWOqaMozyFC1eXqSTfWgKnvmLxFeu12riS8pgzsaQd3qF1doo
+         j/GSG3wATOnmf1djZAr/eMmvTl+xLfCJop/kObJ9dW1Wp1SyYEcUGMI7VTBMFQkWqG1s
+         J2lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=/yWXC4kh1mSRXQvUG9AD6RpFJnkuDQi+owpeBCNUKfs=;
-        b=WncsNYNLD9inPrmqTwxiSYCD+5/JKelEubIFfEB6l+R8JWvdwer4Bmk4sU6LszFFHU
-         0GBSC6KVZCD2glZgl256bFD9pgvobRXwBeYcjgOBZyjmCd3yDLsiEAQir70C2p4MxIr/
-         DCPhsw3p+r7Kc0J/7qBTlThCJY8+wZTinhcIifjHi3XiJKi0DUsCg+rIoXHLMNj+5LuA
-         MxZMQt/03HgpSIzeEKONFLZFzHZAppVk/TfR9Ge8DJdq4C+U4rJ0CnnOn53xFXcYFcaY
-         Qwt/jrM3QrQQlZz7Ka7l4x8nZ+moNKDXG23sf1W+W7tPZGjLFPlL9t55ubpzBkjVrIkx
-         YG3w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=YQmqapcwvPwvCdx1b6xjP9C4MprOStPf4ObAGH8qn7k=;
+        b=hSNV5B7RRJXFZ1CK28ZX/Z2iIDcSMJMqkbOkeG6PbpzmwG233SV+w5QYichAqq828h
+         DRj4rtCnQygiaDVsqYROaNBb1QDfL88rexua6E40Z7TVGLncswgSJZoc3c5VJ5ReatcA
+         /IcqUHJILATh+gBt1CZayh0F4TJlANaFM4ItrfH29/auD0GDVFOn+KKDO9ePZ9HpSmi8
+         EnEDdI7RK/eEYV3piE2yM+vqXASihmLlNNL1KMgAvp0fdKwi6THycUe0kohUZIE+nmcO
+         emmg/+nraqDeDgMlcqxydN0PY31TYPo/mqE9Dpm/IMzN8REFO9FM8FouZHTWDofJrw7n
+         R2hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c+Q7pVt6;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r12sor3134224eji.20.2021.03.02.07.00.19
-        (Google Transport Security);
-        Tue, 02 Mar 2021 07:00:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WlR5tPdv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w14si13541281ede.222.2021.03.02.07.12.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Mar 2021 07:12:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c+Q7pVt6;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=/yWXC4kh1mSRXQvUG9AD6RpFJnkuDQi+owpeBCNUKfs=;
-        b=c+Q7pVt6i3wZngcC5otWS5P0K/VhOtBZoZ2LiOBy5NHo8cwrtDn5T+lxU5T6eZoc50
-         anK1cRC1OQT2Ag1FyAj0ikkeVWyuGmeIm2xM7e55+9TwGlQC7BXxU+DYgYgFjPJlPXZN
-         cDxAO+/IxeznFa2Ku9a29nD+2XGSfBM7n15few1bDhbPEtiZEF4hu5qhovLFSvqwU2Zk
-         RdMxCau4KMmUGsZFnAr6qdmBMN6Y6dFc8i9rGlu3d8NMlLmakI24pxQbbhkci+J6wdSU
-         0KhVrxoW9ZTPzmgDrN2uZ7UYFpuhVNG3SiNEVtCYXh2Ojkh8HQ6u2cBp9NI6OfPr5s7+
-         5w5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=/yWXC4kh1mSRXQvUG9AD6RpFJnkuDQi+owpeBCNUKfs=;
-        b=RRV+WFkvLkoZRdZ+iD8P1HX8hQISiOnXSkOw0csMkgIUGTBQiBRAAnbSsGX8g/clAX
-         xtST0AXeDdNUd9aq5Hj1H8hpeQCzYAgVEsjmq2S8ewAeoZcyiV33p+/U3o3uR4R1Ud8u
-         t+bo0Q6UBDtkbpkWSp0izCh94QND6jFAnnqsGPegGZWZCNaI4CV+KLb6oXYmmNIsIOAf
-         gG09O6mc51OTZJ88/58ua+EmMvofonmObJGlFfX6RCUXzgQW2cXpFPLoWPTL69BA8usc
-         woeFJ8huP9YASjS6CQSMAXWrLsDa7ToTnm72+lvSqKMlrOC/AJQhOAiN3hwMM0Vmwblv
-         O1iQ==
-X-Gm-Message-State: AOAM531G3N4Rep6sYOA1LIKu/w/RTgCzUy/eJ+2rWoxHHr4Ej0U2o94I
-	RPWm1bhYE9lZMoKTGXehr6FIrkL2G6U=
-X-Google-Smtp-Source: ABdhPJya0UWqI192+k20W9BqeaFgfo53AnJpscGs8voLDnPTymTF6u4BgYdZ0nVW55QvGUQ+U9atzA==
-X-Received: by 2002:a17:907:7784:: with SMTP id ky4mr20944763ejc.89.1614697218345;
-        Tue, 02 Mar 2021 07:00:18 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id gq25sm3748253ejb.85.2021.03.02.07.00.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Mar 2021 07:00:17 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Greg Kurz <groug@kaod.org>,
-	Stafford Horne <shorne@gmail.com>,
-	qemu-ppc@nongnu.org,
-	Anthony Green <green@moxielogic.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Michael Walle <michael@walle.cc>,
-	Marek Vasut <marex@denx.de>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-s390x@nongnu.org,
-	Sarah Harris <S.E.Harris@kent.ac.uk>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	qemu-riscv@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Taylor Simpson <tsimpson@quicinc.com>
-Subject: [PATCH v3 16/27] cpu: Restrict "hw/core/sysemu-cpu-ops.h" to target/cpu.c
-Date: Tue,  2 Mar 2021 15:58:07 +0100
-Message-Id: <20210302145818.1161461-17-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210302145818.1161461-1-f4bug@amsat.org>
-References: <20210302145818.1161461-1-f4bug@amsat.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WlR5tPdv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42252 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lH6h6-0004hL-0Z
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 10:12:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44480)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lH6ZB-0004eM-Uu
+ for qemu-arm@nongnu.org; Tue, 02 Mar 2021 10:04:05 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:36362)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1lH6Z8-0005zY-EZ
+ for qemu-arm@nongnu.org; Tue, 02 Mar 2021 10:04:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614697441;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YQmqapcwvPwvCdx1b6xjP9C4MprOStPf4ObAGH8qn7k=;
+ b=WlR5tPdvr2g3U1o7ITamuOt8dhtYtv0drDdrcTrzcrEF/CWzaQcsDFTy1Mi/hOic14zUQy
+ F7CcSxQLafWZf+eDCA6Isw5KVgbkUvNKhcMoiaho48hB/toyxVSKaXf0ZQ7twvbnfc2dUO
+ +1G99+hmPtTH5utM4b70kzxqqBuowhE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-175-5iEzUnwZPsalU1RTghLFnA-1; Tue, 02 Mar 2021 10:03:56 -0500
+X-MC-Unique: 5iEzUnwZPsalU1RTghLFnA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3DFE5CC620;
+ Tue,  2 Mar 2021 15:03:55 +0000 (UTC)
+Received: from MiWiFi-RA69-srv (unknown [10.40.208.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E61AA5D722;
+ Tue,  2 Mar 2021 15:03:46 +0000 (UTC)
+Date: Tue, 2 Mar 2021 16:03:44 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
+Message-ID: <20210302160344.10d5afe2@MiWiFi-RA69-srv>
+In-Reply-To: <86c59853-b605-2037-5f27-5ad85fdff08c@redhat.com>
+References: <20210301104833.45580-1-david@redhat.com>
+ <20210302100614.42acfe68@MiWiFi-RA69-srv>
+ <cedb0323-ac0a-2eb5-497d-eb66a0dfefb6@redhat.com>
+ <20210302045453-mutt-send-email-mst@kernel.org>
+ <86c59853-b605-2037-5f27-5ad85fdff08c@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: QoficTwusfWE
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Alistair Francis <alistair.francis@xilinx.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dWEogWbnXsfm
 
-Somehow similar to commit 78271684719 ("cpu: tcg_ops: move to
-tcg-cpu-ops.h, keep a pointer in CPUClass"):
+On Tue, 2 Mar 2021 11:32:09 +0100
+David Hildenbrand <david@redhat.com> wrote:
 
-We cannot in principle make the SysEmu Operations field definitions
-conditional on CONFIG_SOFTMMU in code that is included by both
-common_ss and specific_ss modules.
+> On 02.03.21 11:07, Michael S. Tsirkin wrote:
+> > On Tue, Mar 02, 2021 at 10:43:55AM +0100, David Hildenbrand wrote:  
+> >> On 02.03.21 10:06, Igor Mammedov wrote:  
+> >>> On Mon,  1 Mar 2021 11:48:33 +0100
+> >>> David Hildenbrand <david@redhat.com> wrote:
+> >>>  
+> >>>> The resizeable memory region that is created for the cmd blob has a maximum
+> >>>> size of ACPI_BUILD_ALIGN_SIZE - 4k. This used to be sufficient, however,
+> >>>> as we try fitting in additional data (e.g., vmgenid, nvdimm, intel-iommu),
+> >>>> we require more than 4k and can crash QEMU when trying to resize the
+> >>>> resizeable memory region beyond its maximum size:
+> >>>>     $ build/qemu-system-x86_64 --enable-kvm \
+> >>>>         -machine q35,nvdimm=on \
+> >>>>         -smp 1 \
+> >>>>         -cpu host \
+> >>>>         -m size=2G,slots=8,maxmem=4G \
+> >>>>         -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
+> >>>>         -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
+> >>>>         -nodefaults \
+> >>>>         -device vmgenid \
+> >>>>         -device intel-iommu  
+> >>>
+> >>> I don't see what's here that would make cmd_blob go above 4k.
+> >>> can you try identify what actually fills it up (perhaps we have a hidden bug elsewhere)?  
+> >>
+> >> VM initialization:
+> >>
+> >> bios_linker_loader_alloc: allocating memory for 'etc/acpi/tables'  
+> >>   -> new table size: 128  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 64 - 9659  
+> >>   -> new table size: 256  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 384  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 512  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 640  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9659 - 9903  
+> >>   -> new table size: 768  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9903 - 10023  
+> >>   -> new table size: 896  
+> >> bios_linker_loader_alloc: allocating memory for 'etc/vmgenid_guid'  
+> >>   -> new table size: 1024  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/vmgenid_guid'  
+> >>   -> new table size: 1280  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10023 - 10225  
+> >>   -> new table size: 1408  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10225 - 10281  
+> >>   -> new table size: 1536  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10281 - 10505  
+> >>   -> new table size: 1664  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10505 - 10577  
+> >>   -> new table size: 1792  
+> >> bios_linker_loader_alloc: allocating memory for 'etc/acpi/nvdimm-mem'  
+> >>   -> new table size: 1920  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/nvdimm-mem'  
+> >>   -> new table size: 2048  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10577 - 11471  
+> >>   -> new table size: 2176  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11471 - 11695  
+> >>   -> new table size: 2304  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11695 - 11735  
+> >>   -> new table size: 2432  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 2560  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 2688  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 2816  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 2944  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3072  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3200  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3328  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3456  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3584  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11735 - 11807  
+> >>   -> new table size: 3712  
+> >> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'  
+> >>   -> new table size: 3840  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'  
+> >>   -> new table size: 3968  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20  
+> >>   -> new table size: 4096  
+> >>
+> >>
+> >> When the bios/guest boots up:
+> >>
+> >> bios_linker_loader_alloc: allocating memory for 'etc/acpi/tables'  
+> >>   -> new table size: 128  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 64 - 9769  
+> >>   -> new table size: 256  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 384  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 512  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 640  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 9769 - 10013  
+> >>   -> new table size: 768  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10013 - 10133  
+> >>   -> new table size: 896  
+> >> bios_linker_loader_alloc: allocating memory for 'etc/vmgenid_guid'  
+> >>   -> new table size: 1024  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/vmgenid_guid'  
+> >>   -> new table size: 1280  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10133 - 10335  
+> >>   -> new table size: 1408  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10335 - 10391  
+> >>   -> new table size: 1536  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10391 - 10615  
+> >>   -> new table size: 1664  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10615 - 10675  
+> >>   -> new table size: 1792  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10675 - 10747  
+> >>   -> new table size: 1920  
+> >> bios_linker_loader_alloc: allocating memory for 'etc/acpi/nvdimm-mem'  
+> >>   -> new table size: 2048  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/nvdimm-mem'  
+> >>   -> new table size: 2176  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 10747 - 11641  
+> >>   -> new table size: 2304  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11641 - 11865  
+> >>   -> new table size: 2432  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11865 - 11905  
+> >>   -> new table size: 2560  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 2688  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 2816  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 2944  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3072  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3200  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3328  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3456  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3584  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3712  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >>   -> new table size: 3840  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11905 - 11981  
+> >>   -> new table size: 3968  
+> >> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'  
+> >>   -> new table size: 4096  
+> >> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'  
+> >>   -> new table size: 4224  
+> >> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20  
+> >>   -> new table size: 4352  
+> > 
+> > yea it's because each command has space for 2 file names, so it's size
+> > is 128 bytes. So just 32 commands is 4k.
+> > 
+> > Question is what is the extra table and why isn't it there before boot?
+> >   
+> > -> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'
+> > +> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/tables' to 'etc/acpi/tables'  
+> >   >  -> new table size: 3840  
+> > -> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'
+> > +> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/tables' for range 11905 - 11981  
+> >   >  -> new table size: 3968  
+> > -> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20
+> > +> bios_linker_loader_alloc: allocating memory for 'etc/acpi/rsdp'  
+> >   >  -> new table size: 4096  
+> > +> bios_linker_loader_add_pointer: adding pointer in 'etc/acpi/rsdp' to 'etc/acpi/tables'  
+> > +>  -> new table size: 4224  
+> > +> bios_linker_loader_add_checksum: Adding checksum for 'etc/acpi/rsdp' for range 0 - 20  
+> > +>  -> new table size: 4352  
+> > 
+> > simply put I would expect the command blob size to be the same before
+> > and after migration.  
+> 
+> Seems to be the "MCFG" table. I only see that pop up when the guest boots.
+> 
+> It depends on acpi_get_mcfg(). When the VM is created, it is not mapped 
+> (mcfg->base == PCIE_BASE_ADDR_UNMAPPED), thus we don't create the table. 
+> Once the bios configured/mapped it (wild guess), we create the table.
+> 
+> Anyhow, we seem to end up > 4k in the end.
 
-Therefore, what we can do safely to restrict the SysEmu fields to
-system emulation builds, is to move all sysemu operations into a
-separate header file, which is only included by system-specific code.
+Patch looks good to me,
+maybe add to commit message current number of entries limit and how we reach over it
+in reproducer above, plus nasty effect of tables that appears at runtime (like MCFG).
 
-This leaves just a NULL pointer in the cpu.h for the user-mode builds.
+With that
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-Inspired-by: Claudio Fontana <cfontana@suse.de>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/core/cpu.h   | 3 ++-
- target/alpha/cpu.h      | 3 +++
- target/arm/cpu.h        | 3 +++
- target/avr/cpu.h        | 1 +
- target/cris/cpu.h       | 3 +++
- target/hexagon/cpu.h    | 3 +++
- target/hppa/cpu.h       | 3 +++
- target/i386/cpu.h       | 3 +++
- target/lm32/cpu.h       | 3 +++
- target/m68k/cpu.h       | 3 +++
- target/microblaze/cpu.h | 1 +
- target/mips/cpu.h       | 3 +++
- target/moxie/cpu.h      | 3 +++
- target/nios2/cpu.h      | 1 +
- target/openrisc/cpu.h   | 3 +++
- target/ppc/cpu.h        | 3 +++
- target/riscv/cpu.h      | 3 +++
- target/rx/cpu.h         | 1 +
- target/s390x/cpu.h      | 3 +++
- target/sh4/cpu.h        | 3 +++
- target/sparc/cpu.h      | 3 +++
- target/tilegx/cpu.h     | 3 +++
- target/tricore/cpu.h    | 3 +++
- target/unicore32/cpu.h  | 3 +++
- target/xtensa/cpu.h     | 3 +++
- cpu.c                   | 1 +
- hw/core/cpu.c           | 1 +
- 27 files changed, 68 insertions(+), 1 deletion(-)
-
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 960846d2b64..fe4206b540f 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -80,7 +80,8 @@ struct TCGCPUOps;
- /* see accel-cpu.h */
- struct AccelCPUClass;
- 
--#include "hw/core/sysemu-cpu-ops.h"
-+/* see sysemu-cpu-ops.h */
-+struct SysemuCPUOps;
- 
- /**
-  * CPUClass:
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index 82df108967b..f1218a27706 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -22,6 +22,9 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* Alpha processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index efa1618c4d5..265d00d55dd 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -25,6 +25,9 @@
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- #include "qapi/qapi-types-common.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
-diff --git a/target/avr/cpu.h b/target/avr/cpu.h
-index d148e8c75a4..e0419649fa7 100644
---- a/target/avr/cpu.h
-+++ b/target/avr/cpu.h
-@@ -23,6 +23,7 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "hw/core/sysemu-cpu-ops.h"
- 
- #ifdef CONFIG_USER_ONLY
- #error "AVR 8-bit does not support user mode"
-diff --git a/target/cris/cpu.h b/target/cris/cpu.h
-index d3b64929096..4450f2268ea 100644
---- a/target/cris/cpu.h
-+++ b/target/cris/cpu.h
-@@ -23,6 +23,9 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define EXCP_NMI        1
- #define EXCP_GURU       2
-diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
-index e04eac591c8..2a878e77f08 100644
---- a/target/hexagon/cpu.h
-+++ b/target/hexagon/cpu.h
-@@ -26,6 +26,9 @@ typedef struct CPUHexagonState CPUHexagonState;
- #include "qemu-common.h"
- #include "exec/cpu-defs.h"
- #include "hex_regs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define NUM_PREGS 4
- #define TOTAL_PER_THREAD_REGS 64
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index 61178fa6a2a..94d2d4701c4 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -23,6 +23,9 @@
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- #include "exec/memory.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* PA-RISC 1.x processors have a strong memory model.  */
- /* ??? While we do not yet implement PA-RISC 2.0, those processors have
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 8be39cfb62e..11941f5f37e 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -25,6 +25,9 @@
- #include "kvm/hyperv-proto.h"
- #include "exec/cpu-defs.h"
- #include "qapi/qapi-types-common.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* The x86 has a strong memory model with some store-after-load re-ordering */
- #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
-diff --git a/target/lm32/cpu.h b/target/lm32/cpu.h
-index ea7c01ca8b0..034183dad30 100644
---- a/target/lm32/cpu.h
-+++ b/target/lm32/cpu.h
-@@ -22,6 +22,9 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- typedef struct CPULM32State CPULM32State;
- 
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 7c3feeaf8a6..4b0a19bdf44 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -23,6 +23,9 @@
- 
- #include "exec/cpu-defs.h"
- #include "cpu-qom.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define OS_BYTE     0
- #define OS_WORD     1
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index e4bba8a7551..3f5c2e048e5 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -26,6 +26,7 @@
- 
- typedef struct CPUMBState CPUMBState;
- #if !defined(CONFIG_USER_ONLY)
-+#include "hw/core/sysemu-cpu-ops.h"
- #include "mmu.h"
- #endif
- 
-diff --git a/target/mips/cpu.h b/target/mips/cpu.h
-index 075c24abdad..923ab71f8d7 100644
---- a/target/mips/cpu.h
-+++ b/target/mips/cpu.h
-@@ -6,6 +6,9 @@
- #include "fpu/softfloat-types.h"
- #include "hw/clock.h"
- #include "mips-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define TCG_GUEST_DEFAULT_MO (0)
- 
-diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
-index bd6ab66084d..7a0a5e95d01 100644
---- a/target/moxie/cpu.h
-+++ b/target/moxie/cpu.h
-@@ -22,6 +22,9 @@
- 
- #include "exec/cpu-defs.h"
- #include "qom/object.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define MOXIE_EX_DIV0        0
- #define MOXIE_EX_BAD         1
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index 2ab82fdc713..1b88b027063 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -27,6 +27,7 @@
- 
- typedef struct CPUNios2State CPUNios2State;
- #if !defined(CONFIG_USER_ONLY)
-+#include "hw/core/sysemu-cpu-ops.h"
- #include "mmu.h"
- #endif
- 
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index 82cbaeb4f84..2a6f9f48547 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -23,6 +23,9 @@
- #include "exec/cpu-defs.h"
- #include "hw/core/cpu.h"
- #include "qom/object.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* cpu_openrisc_map_address_* in CPUOpenRISCTLBContext need this decl.  */
- struct OpenRISCCPU;
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index e73416da68d..f889c28e548 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -24,6 +24,9 @@
- #include "exec/cpu-defs.h"
- #include "cpu-qom.h"
- #include "qom/object.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define TCG_GUEST_DEFAULT_MO 0
- 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index 02758ae0eb4..254eefaf824 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -25,6 +25,9 @@
- #include "exec/cpu-defs.h"
- #include "fpu/softfloat-types.h"
- #include "qom/object.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define TCG_GUEST_DEFAULT_MO 0
- 
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index 0b4b998c7be..d9b7b63716a 100644
---- a/target/rx/cpu.h
-+++ b/target/rx/cpu.h
-@@ -25,6 +25,7 @@
- #include "cpu-qom.h"
- 
- #include "exec/cpu-defs.h"
-+#include "hw/core/sysemu-cpu-ops.h"
- 
- /* PSW define */
- REG32(PSW, 0)
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index 60d434d5edd..2ca6a4f559f 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -28,6 +28,9 @@
- #include "cpu-qom.h"
- #include "cpu_models.h"
- #include "exec/cpu-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #define ELF_MACHINE_UNAME "S390X"
- 
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index 714e3b56413..07ed2f3e206 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -22,6 +22,9 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* CPU Subtypes */
- #define SH_CPU_SH7750  (1 << 0)
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 4b2290650be..237ffc4fe66 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -4,6 +4,9 @@
- #include "qemu/bswap.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- #if !defined(TARGET_SPARC64)
- #define TARGET_DPREGS 16
-diff --git a/target/tilegx/cpu.h b/target/tilegx/cpu.h
-index 7d8e44d12e4..54bdbf0ca1e 100644
---- a/target/tilegx/cpu.h
-+++ b/target/tilegx/cpu.h
-@@ -22,6 +22,9 @@
- 
- #include "exec/cpu-defs.h"
- #include "qom/object.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* TILE-Gx common register alias */
- #define TILEGX_R_RE    0   /*  0 register, for function/syscall return value */
-diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index b82349d1b10..cb0b989953e 100644
---- a/target/tricore/cpu.h
-+++ b/target/tricore/cpu.h
-@@ -23,6 +23,9 @@
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- #include "tricore-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- struct tricore_boot_info;
- 
-diff --git a/target/unicore32/cpu.h b/target/unicore32/cpu.h
-index 7a32e086ed3..de475d0fc2e 100644
---- a/target/unicore32/cpu.h
-+++ b/target/unicore32/cpu.h
-@@ -14,6 +14,9 @@
- 
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- typedef struct CPUUniCore32State {
-     /* Regs for current mode.  */
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 3bd4f691c1a..ea4ee5338f3 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -31,6 +31,9 @@
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- #include "xtensa-isa.h"
-+#ifndef CONFIG_USER_ONLY
-+#include "hw/core/sysemu-cpu-ops.h"
-+#endif
- 
- /* Xtensa processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
-diff --git a/cpu.c b/cpu.c
-index 64e17537e21..29dafee581f 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -29,6 +29,7 @@
- #ifdef CONFIG_USER_ONLY
- #include "qemu.h"
- #else
-+#include "hw/core/sysemu-cpu-ops.h"
- #include "exec/address-spaces.h"
- #endif
- #include "sysemu/tcg.h"
-diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index 7a8487d468f..da7543be514 100644
---- a/hw/core/cpu.c
-+++ b/hw/core/cpu.c
-@@ -35,6 +35,7 @@
- #include "trace/trace-root.h"
- #include "qemu/plugin.h"
- #include "sysemu/hw_accel.h"
-+#include "hw/core/sysemu-cpu-ops.h"
- 
- CPUState *cpu_by_arch_id(int64_t id)
- {
--- 
-2.26.2

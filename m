@@ -1,147 +1,171 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4539949lfg;
-        Tue, 2 Mar 2021 07:00:36 -0800 (PST)
-X-Received: by 2002:a50:e183:: with SMTP id k3mr21221964edl.45.1614697236130;
-        Tue, 02 Mar 2021 07:00:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614697236; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5705851lfg;
+        Wed, 3 Mar 2021 13:47:26 -0800 (PST)
+X-Received: by 2002:a05:600c:19cf:: with SMTP id u15mr808802wmq.139.1614808046581;
+        Wed, 03 Mar 2021 13:47:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614808046; cv=none;
         d=google.com; s=arc-20160816;
-        b=nncqMdx4XT8uoMJtJjACzCG2QMrpYWlBzlgDpwbf6kvWbHA6prP6Lt/t/qLExzkjBm
-         usT4JybTrs1MXpz2nNQj9/IEw7RndJ6XFQozLsTywtHFc2ZQI18hrktn3D/6Ztw0KQT5
-         2cdhdvXfqbYtBebCUxy0oI+ZYXxI+wzZ+nRZgmaNBKatl5J7CPk7GAMm5LMVVr/3vaJD
-         hLSpyg+H3ENNC6uiZxEfOVm7tnChh6iRi7oLyxsQSS7zhaeJeL7b4umh4+nyvZIXJrq8
-         y6UaJLjaiZM4fAnWW8eQSyZhv1Z39ijhErKVFEzlnhsrOUQExFK0z/BfojrmmSTyJRf3
-         UsKA==
+        b=l3JmC0WuzLvprMW9oZroYKAs8sp+5E8of1YidDFpipP2pdoL1fhQaYHGr+n/n/DPsL
+         DCT7ve0SKl+GBM8O5bty+Whtg6I+VyLmzjVdEuQipx2tL7x3H9ZCmsLHbOubVK0dIgdY
+         Wxo4CkPpiYM3C5CBmd+IIbkvZMIzjVFaoRbC9P4SvZSzzbtRNcYYlXK2EBQQ771+6O+c
+         FA3rqlKQFnAO88GGZwg+gWqWIqBXP3TNkteIYas6b/xYJftz+M51WOy7rKdP/FPE7mOS
+         Kn2ra+/sx/s0GW5cWIrerbdDHXqJ1seQFQfdk9S5T1Qtw6qY7XInnnJh0KirHNr71n1J
+         zPEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=BKerV/D4yrodfK5Y4jXpbSJ4FniyHeyLnN3PSysyF8Y=;
-        b=Iu9Xe6a37w8EOvsBFHJDcikImsuitnLDJRibzzOg7uwxJPGIO6E6CJx1r8GIkXFHuI
-         dBE3hQvtqhQpiQWPIraC8aICMK5GypGqxY6cfOVH56vYlOdAMvQyiCLPtcSAdJ1yVt+J
-         2qYlbwdQpwe0JlSxK1j01TD3+s6PoHYQw1qXlCRieA1wlvx1lDgdGah7eEMQP8jEZuid
-         iHO5m4MeJie4jMFiY+1TzP4OnGWCeBgOQtASD/WNpFvimNRn9hKrKQSU2CBcNrEJJ4vK
-         XiMbGP1GbVn0C1mKggZKPzRF6L+09/RK1Bd6ldjFoJ7OTMp5HlUnG0LADwZ7mmmufmxB
-         sHPA==
+        bh=alNnX6GeE8sTwFbIWBvN2VrnGh2+v4nR5yjKLFDEoAw=;
+        b=Wpj3G3iulAEttNUlLdq8eVdYdNVZ6DUsXjapKRRJxybsAMnMoybgtNwWtJ5hcpbYF5
+         xo819UbT+yqqSKdwUgcWj1xg/FPQuH45SSfOapPh7iGzqcfzbNJzxryTvEvJit0lr9FC
+         CYsLPpfkPXUiTiF5s+HMiUAyKXitwLEM1wGvL2dezGjTGxDxApH6hpHkXcrmPhNR+yO9
+         8hu09zoNHtG9dRLjwCYVJ9ECSodMVpkYx/IcQfxog58OvB6TdsrD777IW3W7ScRdOLhS
+         vZuWJxRx+uNW50CQq5FcgRfaGzRo5dfCMWD20YjP8qw+5/lTOlgWRuatxA76mIJ4BQh8
+         HnmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kMJ4BRTh;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sw8DnTnE;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id yk4sor5877698ejb.43.2021.03.02.07.00.35
+        by mx.google.com with SMTPS id l15sor13279557wry.44.2021.03.03.13.47.26
         (Google Transport Security);
-        Tue, 02 Mar 2021 07:00:36 -0800 (PST)
+        Wed, 03 Mar 2021 13:47:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kMJ4BRTh;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Sw8DnTnE;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=BKerV/D4yrodfK5Y4jXpbSJ4FniyHeyLnN3PSysyF8Y=;
-        b=kMJ4BRTh216WsJvtpwLF9Q/JYYJMAxN/RnMYJEB28v42yYEMfCi1+F73iF0EulNk10
-         7/byMCvtfp4uKTVybvY+WVO3cJ8+l5e9oij5b2MTY1Cmatr0y6Mg9c4usGvYlQibo/w5
-         rncAxPnVMgL2/Fpfh1YbjDD2CSQxsfsPR5ZICmMI0227Q8Ssh91RmolTEMZOEvANYbnV
-         ER1tqcNI2xm9Fgz/l+E0YxZbq5idig9AFmzulLjyFJJHq7DbwrCy1iHDKJXF6WAFe1tI
-         9wCjPXmWtO9lkKCGYITJuZfHvEaP/MaykF1l7qjgrIuBbF7AbgsMDhPWixuKqXVuxkQj
-         SgTg==
+        bh=alNnX6GeE8sTwFbIWBvN2VrnGh2+v4nR5yjKLFDEoAw=;
+        b=Sw8DnTnEunZLoUFkAq5ehEtw5KzHSFE8RcKZI0xIwI3y4kkr8vtPH5KdYIM2dMB0tM
+         dDKvIkpk2pdhYAVsGqo2WPtvup+Oahey4/henkaku+823S6hlg5lEU0yAdNwt304jwm8
+         qD6y3lPn8HeKUbJVYmzT84mJ/ZqsStb1cuhSxlMzJql8kDgTX0mLXDnIWEatwlmW+oRU
+         3zW6wNtP1nIIDl0HQ+cLV0Da0nZ1xwTVRMOGYf1Usa1vsDdeK0mZ0vfoheHGFDfD2izu
+         nMJQOO2Fydg0nrqrQkuHNYqO4abCf+/o2JQvSOVK4GlTFgCSmcQPDDmsf0BHjlTkr87B
+         Suew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=BKerV/D4yrodfK5Y4jXpbSJ4FniyHeyLnN3PSysyF8Y=;
-        b=fgw6CvSn6402dZ48zrH+Q3hpJ1/076TWo1YINuw/IItMn2BADvepnVK61WmDkGIAt1
-         imoXKlpXBwjBoeUL6Zteo6nZU9IpS6larksws0w+5EEm2kQRk7jO3h266CRlQruyR5dn
-         UWa5kg6CUicRLGbu1DcfaMJccfA6e1552YJEgQ8nYoI8dYHCcyLy+tJoQp1YPasuKANm
-         w8VwUKZeCP9d3ebxggFl9twE0keJ91yYtAYxu+PCMje/N4tPtrApw8z2d7HZdsh+zE3c
-         RlJZZ1aTIaXW8HMpxuncDDord/1vHPvl01/0J9W4/yvONkMto+gLcKzgqCs477yRo0W9
-         WNLQ==
-X-Gm-Message-State: AOAM533+IynXLtb/RVuOUxhiThieIK8Yl4I6LFwlNB2QoMaqQXE8Rz+e
-	GqjKugCf/ad2uKVmhH+mW8Q=
-X-Google-Smtp-Source: ABdhPJxxzAVZkhW4qSE2UIDQzizpVfmV8D6N4Y9vZCqMDEoygSHGBL6xNtZfG8RqIeFMECe388OMLg==
-X-Received: by 2002:a17:906:503:: with SMTP id j3mr20942376eja.172.1614697233003;
-        Tue, 02 Mar 2021 07:00:33 -0800 (PST)
+        bh=alNnX6GeE8sTwFbIWBvN2VrnGh2+v4nR5yjKLFDEoAw=;
+        b=E9rz3K16A+BfYT0FPrLPZNB4EZAEo7UofLcvP1OsvRJVQW0khRmCL7P+EOIm6iMLks
+         rt2SBfjSHYOnOweuD2d0ifVW6I6DdN2riKQD2i2jaui3Lo+0CKBtvlmpSNNxzb8eNz9r
+         vXxv9uMOF3K9dtept2dIgpntF3eyTxRkK2Z2i+j39lLvCyp+8vjCRu1iDWjEwup7s7OR
+         cIesmeo3KF/bKX0dVeA8SH839s0AXe2GxVmJSZiRwZvL48QTgEPUDMa54ZHotR4ZlztK
+         6Pt4L/fJ/1nhIYvZESXxFGdZ5+1TMu736T1BDjjAXqA7Ntz7EyN/Mb1S4IEqzFVsInvp
+         fOAg==
+X-Gm-Message-State: AOAM5319+Oxcyc5ZgF4WDAAGV8zN5D4qetkzOhmRseVfkUT4EzqUZCTb
+	1IrK2AxFyGb0ZErD9o1O5OxuGiPHse4=
+X-Google-Smtp-Source: ABdhPJyu4L3Uv9xjofCNQfzlxl0Bmhv5Ay1kX/ZVhDrO7OpMVdGJBxmvbyNGuTAv2BHequ5z9sR6nA==
+X-Received: by 2002:a5d:4e0e:: with SMTP id p14mr795983wrt.64.1614808046419;
+        Wed, 03 Mar 2021 13:47:26 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id i2sm19546374edy.72.2021.03.02.07.00.29
+        by smtp.gmail.com with ESMTPSA id g16sm15070689wrs.76.2021.03.03.13.47.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Mar 2021 07:00:32 -0800 (PST)
+        Wed, 03 Mar 2021 13:47:25 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
+Cc: Claudio Fontana <cfontana@suse.de>,
 	qemu-arm@nongnu.org,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Greg Kurz <groug@kaod.org>,
-	Stafford Horne <shorne@gmail.com>,
-	qemu-ppc@nongnu.org,
-	Anthony Green <green@moxielogic.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Michael Walle <michael@walle.cc>,
-	Marek Vasut <marex@denx.de>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	qemu-s390x@nongnu.org,
-	Sarah Harris <S.E.Harris@kent.ac.uk>,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-ppc@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	Cornelia Huck <cohuck@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	qemu-riscv@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Taylor Simpson <tsimpson@quicinc.com>
-Subject: [PATCH v3 18/27] gdbstub: Remove watchpoint dead code in gdbserver_fork()
-Date: Tue,  2 Mar 2021 15:58:09 +0100
-Message-Id: <20210302145818.1161461-19-f4bug@amsat.org>
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v4 03/28] cpu: Introduce cpu_virtio_is_big_endian()
+Date: Wed,  3 Mar 2021 22:46:43 +0100
+Message-Id: <20210303214708.1727801-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210302145818.1161461-1-f4bug@amsat.org>
-References: <20210302145818.1161461-1-f4bug@amsat.org>
+In-Reply-To: <20210303214708.1727801-1-f4bug@amsat.org>
+References: <20210303214708.1727801-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dbcYcsuOfUNK
+X-TUID: Rzt+8P7OC5+y
 
-gdbserver_fork() is only used in user emulation where we can not
-use watchpoints because we need the softmmu slow path to detect
-accesses to watchpointed memory. This code doesn't do anything as
-declared as stubs in "hw/core/cpu.h". Drop it.
+Introduce the cpu_virtio_is_big_endian() generic helper to avoid
+calling CPUClass internal virtio_is_big_endian() one.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- gdbstub.c | 1 -
- 1 file changed, 1 deletion(-)
+ include/hw/core/cpu.h | 9 +++++++++
+ hw/core/cpu.c         | 8 ++++++--
+ hw/virtio/virtio.c    | 4 +---
+ 3 files changed, 16 insertions(+), 5 deletions(-)
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 759bb00bcf0..eee4301b5e6 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -3349,7 +3349,6 @@ void gdbserver_fork(CPUState *cpu)
-     close(gdbserver_state.fd);
-     gdbserver_state.fd = -1;
-     cpu_breakpoint_remove_all(cpu, BP_GDB);
--    cpu_watchpoint_remove_all(cpu, BP_GDB);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 2d43f78819f..b12028c3c03 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -602,6 +602,15 @@ hwaddr cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+  */
+ int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs);
+ 
++/**
++ * cpu_virtio_is_big_endian:
++ * @cpu: CPU
++
++ * Returns %true if a CPU which supports runtime configurable endianness
++ * is currently big-endian.
++ */
++bool cpu_virtio_is_big_endian(CPUState *cpu);
++
+ #endif /* CONFIG_USER_ONLY */
+ 
+ /**
+diff --git a/hw/core/cpu.c b/hw/core/cpu.c
+index 4dce35f832f..daaff56a79e 100644
+--- a/hw/core/cpu.c
++++ b/hw/core/cpu.c
+@@ -218,8 +218,13 @@ static int cpu_common_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg)
+     return 0;
  }
- #else
- static int gdb_chr_can_receive(void *opaque)
+ 
+-static bool cpu_common_virtio_is_big_endian(CPUState *cpu)
++bool cpu_virtio_is_big_endian(CPUState *cpu)
+ {
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    if (cc->virtio_is_big_endian) {
++        return cc->virtio_is_big_endian(cpu);
++    }
+     return target_words_bigendian();
+ }
+ 
+@@ -438,7 +443,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->write_elf64_note = cpu_common_write_elf64_note;
+     k->gdb_read_register = cpu_common_gdb_read_register;
+     k->gdb_write_register = cpu_common_gdb_write_register;
+-    k->virtio_is_big_endian = cpu_common_virtio_is_big_endian;
+     set_bit(DEVICE_CATEGORY_CPU, dc->categories);
+     dc->realize = cpu_common_realizefn;
+     dc->unrealize = cpu_common_unrealizefn;
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 1fd1917ca0f..fe6a4be99e4 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -1973,9 +1973,7 @@ static enum virtio_device_endian virtio_default_endian(void)
+ 
+ static enum virtio_device_endian virtio_current_cpu_endian(void)
+ {
+-    CPUClass *cc = CPU_GET_CLASS(current_cpu);
+-
+-    if (cc->virtio_is_big_endian(current_cpu)) {
++    if (cpu_virtio_is_big_endian(current_cpu)) {
+         return VIRTIO_DEVICE_ENDIAN_BIG;
+     } else {
+         return VIRTIO_DEVICE_ENDIAN_LITTLE;
 -- 
 2.26.2

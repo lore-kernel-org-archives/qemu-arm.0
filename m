@@ -1,103 +1,103 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5370713lfg;
-        Wed, 3 Mar 2021 05:54:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzqxnmA+xxR9dQYLPDmrPShUzsVUkPJ60mQ/lamNPStdnEaHu5Big6PQKQBX7iNdbch1kw2
-X-Received: by 2002:a9d:ef3:: with SMTP id 106mr3328015otj.24.1614779662576;
-        Wed, 03 Mar 2021 05:54:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614779662; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5372001lfg;
+        Wed, 3 Mar 2021 05:56:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxKgxUlKwV4qFAqcAC/Y+HED4qxQ6LA4hFryC32fYYBYsGJORDpbTEDl5yKPim8xZLhmhBm
+X-Received: by 2002:a9d:6958:: with SMTP id p24mr21910987oto.297.1614779788978;
+        Wed, 03 Mar 2021 05:56:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614779788; cv=none;
         d=google.com; s=arc-20160816;
-        b=Md8fzy+GDm3tDq5Yus5PsNWiTYZbTa8HsBhrAv/t1q158l/ubBQYXPKYhh3/kuM6To
-         SrQVyfr1yQDPdLQrAlxD+OxNz5PnFi4fMRGQ2GuG9sznGsXmLMgFCd0yNFtbFWdiLeX6
-         PnPNUjheJnOCwnhD2XhISwjC14Fco9m6yorDKaCzISl2yTx8JpNCse17exvvjS62TgXr
-         7w76rDOZVgOUnfp7M85Y4VLwssBeZkUeXeGm0bKpueXI3EI+6J02wfamRChCzlOc+Jm+
-         eDCSG3SZfgY+ofcDwL7aQzZFSr8e5rhUJB+gcdImVwtBB3vePyHGqCmoR6KbtqdEWK87
-         SE/A==
+        b=o39B8Ekb95gt3SLK9mLVvRdZZEyXothRgMcSf3+DHt+JW4nuwlZZxcBGaqcUj9/TQf
+         +JTdd9EwkNW0KhI02hme9JBqm1a5PNBQ8n833oHV3A0GBPtlclNBJykmkdrVVlIdB5HM
+         xgS00EPjaqDCaELVC04mQLGnaaNSQLWbhPQaS2YM3HckjylrWCAZvCx9vfPlrx71u2ei
+         8ikmozwtqiqJcbpU92R20crdVjbKdj+kv6p6dyTVa4ilFS5JB52E5Lf6hC4WN6U2Jacg
+         Mri2HINP9X+qbHosepRgG4sFv7NFYYj5CfkvQBf2JNMdNjM0iFwmf0X+hom+0oMGIO9B
+         rKFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QdPd6+T9TYulDYan4MqsgMWZ2nXNjoGfebenRUzAWpA=;
-        b=xqAEHzpairUwDj5FS1f2IyB88GuDMjgEBxGxnBmQvq7TK24rB1mNLFyg65o1jDtrMr
-         GEdE4ZL1L/BujoxBG6k1CWgy5oEVerLNca7LesmJ/fy/+7gEBHCGWhYKk9IXXjRCOiCQ
-         f6lNQJyH8E/L6zK9vs3TO4n9ex7irEUOFQ7lHMmKsHK4ya26e95GpuVdk1gfygKLxBkq
-         dPQo0gtpY7GqjFYuXr5fOKSd2PIA7Q5ffu/PV38b54BRl4rxLrTH44ffelCDwZ0HHOuA
-         TboyNYbbIU1cGNBbzveUrjieqx5fCKWNdIZ2iMzyGjjP9WV1M3vfQohrGlAkC5gp98bX
-         i9/Q==
+        bh=+UzSdyjSd904zCeIE0aTyBCjawmbJBRlBQ1EDG6ABek=;
+        b=DmlysU2/VGGHG4EEUJYawM56Yl/T/3AN639NI3CponCboKuX7UcKyXjxXFaA3SuUZM
+         sU4bPNlpYQ+9RMMmvSZupZNYraZxDAlQRcJ0x4NcaEQQstBfQXORnbixG8apW6TzUZdo
+         OMps+ngINSsqPZcYsyXkw4YGLZ8aD+G/BL4n4MXkRcyZxlGoNmVp+EZi2c9OTDZvRQHH
+         gmrtBUDxITYFupn7nsi15ovd+StUNyduAHdYyL45UgsX4+7OKk1Uyj95LZuAujE898wJ
+         5v+nOcUrWGE9iZfkH7HILAe6K1aIX7ZzLADyZzI8JCp6vHvLpkml7PZ3PWN8187rzNA0
+         Sriw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cmMk2DzV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V+EQ6Fyf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d28si20872350otk.45.2021.03.03.05.54.22
+        by mx.google.com with ESMTPS id w5si16988302otg.13.2021.03.03.05.56.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Mar 2021 05:54:22 -0800 (PST)
+        Wed, 03 Mar 2021 05:56:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cmMk2DzV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V+EQ6Fyf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37850 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45752 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHRxF-0005NC-R3
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 08:54:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56176)
+	id 1lHRzI-0000Ae-7s
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 08:56:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lHRwO-0005Kx-KQ; Wed, 03 Mar 2021 08:53:28 -0500
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b]:37320)
+ id 1lHRwd-0005P3-Vw; Wed, 03 Mar 2021 08:53:45 -0500
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c]:46653)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1lHRwN-0002B8-3n; Wed, 03 Mar 2021 08:53:28 -0500
-Received: by mail-qv1-xf2b.google.com with SMTP id n4so9373699qvl.4;
- Wed, 03 Mar 2021 05:53:26 -0800 (PST)
+ id 1lHRwU-0002DZ-MM; Wed, 03 Mar 2021 08:53:40 -0500
+Received: by mail-qk1-x72c.google.com with SMTP id a9so9392467qkn.13;
+ Wed, 03 Mar 2021 05:53:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=QdPd6+T9TYulDYan4MqsgMWZ2nXNjoGfebenRUzAWpA=;
- b=cmMk2DzVL05NQGTnFI27wpv8wj2V8yOnPQMsZ15mwEtaNlLi+KW20LgNLjiGMZscuO
- RBcZjyEk6eMwo99Y+94uUoIaES/Fq0WruRlApc7vbFG0dfsdiQfjaTIRYfnnvSjEJlZJ
- qZZ5OCbBWuRnD9hzVHllj/Vq1xKUF6zGXnN/Zl1KF13mNdVFLMYda7KfTNIWACwNbXLV
- v8QEjPgd17RRZHJhdvSKwjGAwOWjVURiOwWSQ4Qij9VxHVm34bLQGOOuvj1+f5sPundy
- 4vs14xMqpfcsxXFb/nmP6aKRxj3K50iFcknFe4DfB0Ndun/SsmBKTZOwrenT4Miq1JJL
- 6EFw==
+ bh=+UzSdyjSd904zCeIE0aTyBCjawmbJBRlBQ1EDG6ABek=;
+ b=V+EQ6Fyf5AnNl61yGsasz69JBqU209a/EG7DjwAxCVqsoOoLNw+iwpVCEraJzfDlzp
+ aXinS4kWO5fqOY3pQO8VNjDTfdXEw1K4cI6jKWjJhGeefiD79E4FufJi/vKEy0sPTHsq
+ 9ZVeQWP3pIwMPgrocTH12GFntcR7yjHvNKJ3GwfmqPqz32xN4ZXIryHoCnEO5dycOH3f
+ qAbjMar7FEzbYJG7lUFGn4gCT3dadsdOaYNfjAdjVmuvWFaPQ/u34fW1p+Mzlret+NlL
+ SnDoAxizDOeg5WJGKGyTVVTfHpNu3jOLN9CS9xLH9ENW2GSxwyTonbcZGh0YIp00eDuo
+ Gq6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=QdPd6+T9TYulDYan4MqsgMWZ2nXNjoGfebenRUzAWpA=;
- b=GkFWS664wvGo7z8CyKteoxoEyKi2RFmZiHbQakId/avt14OzMr3QZ6rnjobuR7nUAG
- 3zzT78mCFMKfiKcxJdFsA3lz7hOu7CMHr5NbB4rQrCtK9Qj/jep0DDIyvZBEQxIo/ESl
- +gWT47iZs3B9hbs7q9zm4Dw5PJs6WCgR4kT5Ja54A5jxXKfZv2O69KzufYKEPhPvCEBx
- oNA0ruWuT2uLauBTZu2xNL9xP3uC+bfqUN9kFOyg9P2OSih61Z3rmUjU+KhsPfMbXRzR
- VyQae9TFzvF10pnZohN9gElfVB9Gn1pNWjmMuI7U52+Q7LX/SjUhFC+rbkyrceurbVWW
- SRLA==
-X-Gm-Message-State: AOAM533nR0j48CQod8Vq3d2ku4Dhx9cHuwWWM5T5ybRz3epjzulmaw3K
- poUJEv++dXjgCLu5LhAfj9c=
-X-Received: by 2002:a05:6214:5af:: with SMTP id
- by15mr2695342qvb.37.1614779605846; 
- Wed, 03 Mar 2021 05:53:25 -0800 (PST)
+ bh=+UzSdyjSd904zCeIE0aTyBCjawmbJBRlBQ1EDG6ABek=;
+ b=BLCPVNZEj4EvZBqJ0MRM2iLYuW6MFLQhMpxguKY1iDIZHZ9XKBWwQqHV3taKJm8teh
+ Iaxo67K2FmoENwSZdTulwO6q/XWXtwZXrUJ/uyB3FBeTqtGdejbFC6PQSIzSQ0XFsIAN
+ YzIpJy8aAVxk8bKcMBPtpf/WWE3UFvXPsrCr5YkggykiQl8YPZVeabU79ztqczTHyNaZ
+ E3Fxi805KrZ27Y+vDDq3/uisFLQeicCTdkP1FttTKk8BOceGWj3/FXj6w1zEolSFFmM3
+ UYl0WGx0CnKix5mL6BrSM8zWx13VYSE/zzrZ/3FBkK/SNO1U7pz1+G7jw7bWgU3Gcyui
+ w58A==
+X-Gm-Message-State: AOAM530atnsLrUp12oi6NSxRGTfAYgEhRNyc4oNu26HhILAGUxi/N4Q2
+ 0dPiVZ33uINmAcKGzfk9673fxKpvuuY=
+X-Received: by 2002:a37:c16:: with SMTP id 22mr24802191qkm.84.1614779613628;
+ Wed, 03 Mar 2021 05:53:33 -0800 (PST)
 Received: from i9-aorus-gtx1080.localdomain (144.168.56.201.16clouds.com.
  [144.168.56.201])
- by smtp.gmail.com with ESMTPSA id x187sm17425500qkd.83.2021.03.03.05.53.22
+ by smtp.gmail.com with ESMTPSA id x187sm17425500qkd.83.2021.03.03.05.53.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Mar 2021 05:53:25 -0800 (PST)
+ Wed, 03 Mar 2021 05:53:33 -0800 (PST)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Alistair Francis <alistair.francis@wdc.com>,
  "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v7 2/5] hw/arm: xlnx-zynqmp: Clean up coding convention issues
-Date: Wed,  3 Mar 2021 21:52:51 +0800
-Message-Id: <20210303135254.3970-3-bmeng.cn@gmail.com>
+Subject: [PATCH v7 4/5] hw/ssi: xilinx_spips: Clean up coding convention issues
+Date: Wed,  3 Mar 2021 21:52:53 +0800
+Message-Id: <20210303135254.3970-5-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210303135254.3970-1-bmeng.cn@gmail.com>
 References: <20210303135254.3970-1-bmeng.cn@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2b;
- envelope-from=bmeng.cn@gmail.com; helo=mail-qv1-xf2b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-qk1-x72c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,82 +117,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>,
- Francisco Iglesias <francisco.iglesias@xilinx.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Xuzhou Cheng <xuzhou.cheng@windriver.com>
+Cc: Xuzhou Cheng <xuzhou.cheng@windriver.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, Francisco Iglesias <francisco.iglesias@xilinx.com>,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WPjtpMG44l+7
+X-TUID: EbBBy2zm3LRa
 
 From: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 
-There are some coding convention warnings in xlnx-zynqmp.c and
-xlnx-zynqmp.h, as reported by:
+There are some coding convention warnings in xilinx_spips.c,
+as reported by:
 
-  $ ./scripts/checkpatch.pl include/hw/arm/xlnx-zynqmp.h
-  $ ./scripts/checkpatch.pl hw/arm/xlnx-zynqmp.c
+  $ ./scripts/checkpatch.pl hw/ssi/xilinx_spips.c
 
 Let's clean them up.
 
 Signed-off-by: Xuzhou Cheng <xuzhou.cheng@windriver.com>
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
 ---
 
-(no changes since v4)
+(no changes since v1)
 
-Changes in v4:
-- remove one change that is not a checkpatch warning
+ hw/ssi/xilinx_spips.c | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
 
- include/hw/arm/xlnx-zynqmp.h | 3 ++-
- hw/arm/xlnx-zynqmp.c         | 9 ++++++---
- 2 files changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index 6f45387a17..be15cc8814 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -60,7 +60,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
- 
- #define XLNX_ZYNQMP_GIC_REGIONS 6
- 
--/* ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
+diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+index a897034601..8a0cc22d42 100644
+--- a/hw/ssi/xilinx_spips.c
++++ b/hw/ssi/xilinx_spips.c
+@@ -176,7 +176,8 @@
+     FIELD(GQSPI_FIFO_CTRL, GENERIC_FIFO_RESET, 0, 1)
+ #define R_GQSPI_GFIFO_THRESH    (0x150 / 4)
+ #define R_GQSPI_DATA_STS (0x15c / 4)
+-/* We use the snapshot register to hold the core state for the currently
 +/*
-+ * ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
-  * and under-decodes the 64k region. This mirrors the 4k regions to every 4k
-  * aligned address in the 64k region. To implement each GIC region needs a
-  * number of memory region aliases.
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 881847255b..49465a2794 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -301,11 +301,13 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
++ * We use the snapshot register to hold the core state for the currently
+  * or most recently executed command. So the generic fifo format is defined
+  * for the snapshot register
+  */
+@@ -424,7 +425,8 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)
+     xlnx_zynqmp_qspips_update_ixr(s);
+ }
  
-     ram_size = memory_region_size(s->ddr_ram);
+-/* N way (num) in place bit striper. Lay out row wise bits (MSB to LSB)
++/*
++ * N way (num) in place bit striper. Lay out row wise bits (MSB to LSB)
+  * column wise (from element 0 to N-1). num is the length of x, and dir
+  * reverses the direction of the transform. Best illustrated by example:
+  * Each digit in the below array is a single bit (num == 3):
+@@ -637,8 +639,10 @@ static void xilinx_spips_flush_txfifo(XilinxSPIPS *s)
+                 tx_rx[i] = tx;
+             }
+         } else {
+-            /* Extract a dummy byte and generate dummy cycles according to the
+-             * link state */
++            /*
++             * Extract a dummy byte and generate dummy cycles according to the
++             * link state
++             */
+             tx = fifo8_pop(&s->tx_fifo);
+             dummy_cycles = 8 / s->link_state;
+         }
+@@ -721,8 +725,9 @@ static void xilinx_spips_flush_txfifo(XilinxSPIPS *s)
+             }
+             break;
+         case (SNOOP_ADDR):
+-            /* Address has been transmitted, transmit dummy cycles now if
+-             * needed */
++            /*
++             * Address has been transmitted, transmit dummy cycles now if needed
++             */
+             if (s->cmd_dummies < 0) {
+                 s->snoop_state = SNOOP_NONE;
+             } else {
+@@ -876,7 +881,7 @@ static void xlnx_zynqmp_qspips_notify(void *opaque)
+ }
  
--    /* Create the DDR Memory Regions. User friendly checks should happen at
-+    /*
-+     * Create the DDR Memory Regions. User friendly checks should happen at
-      * the board level
-      */
-     if (ram_size > XLNX_ZYNQMP_MAX_LOW_RAM_SIZE) {
--        /* The RAM size is above the maximum available for the low DDR.
-+        /*
-+         * The RAM size is above the maximum available for the low DDR.
-          * Create the high DDR memory region as well.
-          */
-         assert(ram_size <= XLNX_ZYNQMP_MAX_RAM_SIZE);
-@@ -526,7 +528,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-         SysBusDevice *sbd = SYS_BUS_DEVICE(&s->sdhci[i]);
-         Object *sdhci = OBJECT(&s->sdhci[i]);
+ static uint64_t xilinx_spips_read(void *opaque, hwaddr addr,
+-                                                        unsigned size)
++                                  unsigned size)
+ {
+     XilinxSPIPS *s = opaque;
+     uint32_t mask = ~0;
+@@ -970,7 +975,7 @@ static uint64_t xlnx_zynqmp_qspips_read(void *opaque,
+ }
  
--        /* Compatible with:
-+        /*
-+         * Compatible with:
-          * - SD Host Controller Specification Version 3.00
-          * - SDIO Specification Version 3.0
-          * - eMMC Specification Version 4.51
+ static void xilinx_spips_write(void *opaque, hwaddr addr,
+-                                        uint64_t value, unsigned size)
++                               uint64_t value, unsigned size)
+ {
+     int mask = ~0;
+     XilinxSPIPS *s = opaque;
+@@ -1072,7 +1077,7 @@ static void xilinx_qspips_write(void *opaque, hwaddr addr,
+ }
+ 
+ static void xlnx_zynqmp_qspips_write(void *opaque, hwaddr addr,
+-                                        uint64_t value, unsigned size)
++                                     uint64_t value, unsigned size)
+ {
+     XlnxZynqMPQSPIPS *s = XLNX_ZYNQMP_QSPIPS(opaque);
+     uint32_t reg = addr / 4;
 -- 
 2.25.1
 

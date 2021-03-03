@@ -1,94 +1,102 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4941366lfg;
-        Tue, 2 Mar 2021 17:05:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxBJO4igAk5d67hMW3nsqRFvymABvxxIHmMJjk+x8yZBuEki/vQiM62USlh4LRQxaKafUXz
-X-Received: by 2002:a67:8a83:: with SMTP id m125mr12924761vsd.50.1614733553194;
-        Tue, 02 Mar 2021 17:05:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614733553; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4953028lfg;
+        Tue, 2 Mar 2021 17:23:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzVMP4vbPRQCDN34UPibHhyGIUUrVG3grQ3zDI9vKE+0I2TsZblmgl+VWHJYYvLj4OZ/Niy
+X-Received: by 2002:a37:815:: with SMTP id 21mr4357365qki.188.1614734618276;
+        Tue, 02 Mar 2021 17:23:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614734618; cv=none;
         d=google.com; s=arc-20160816;
-        b=t6+4oTfo7dA2XROMHTbc8ZGBvTBU95azcjw9uGWL4i+Xta2h4wy62/x+XX161bPdtU
-         pJqBfreBFuKbQgMFQ3eNQDwzeOIHvuzKEyj2qubvlqQW4eaWeFEQz9IphtPJZ3n8jpIa
-         RFgT8G/nROTtys84GTJIOocl8/QzOEHInUz+vRFSQav7t2k4GifMBMS1QzROe6ubt9Fm
-         mHZetff9Eghk3w89Mx7zlQatfsWhB0MGe83uiKHm/gy8MAtlIe+8HF1RlzUbTct05Ci5
-         qlwNFJzNGzY/s2emco/5n7BrGtlVRYOphNnP/W+Uj/4AgRXXyp0YQzDsmfyk0yJwaNxg
-         3A7w==
+        b=Wv36uLpQy0ZT+JN+HaGCZUAcwR/nUBs3BqkW11L8ya33k1G8msV9ScF3YpCGklUOVN
+         uGA3L2W0LtUbzHiiEqWomIgz0Jo+1K4Td3+rd7mbVN+PVV8CW02AJASvAnp/OMa4s9oE
+         c8Wr9IDC7uJxkmNkj/bDjDQDaJ97RrtbyfP0+uZ8pvLVVnJ4sJ1Dg/PBQw+JB4+7ZH+7
+         WR2YoceG3KkegDS6EyhPSrqZQ5Ox8KE4djjraz8m3Dva0SXDZU1h+ibwFlmwYis/khyz
+         4ACOLAdkznw5hgzo3AkEwMYpTsM6/fwWEOzkTy6hpbj5Q9UIpzwxPUFWv+3vBfkMpvao
+         xcEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=jd5GvI+CUtHO9kj/+hMuYljebVOyggSX2d6N90WNDsE=;
-        b=isVB6u7XrZFHszi706NDeyfSP37QAvZMm3aP+JCUA5B1ZujrvfekCtBMIXCyNwYCCs
-         HsWGJaCpJ+55Y/3eXUbrz77FCYhGK6D5jANUEVYh9bXfW1Q6SC+PnQGHY0R3nFQHCjYr
-         9AyjgA7RdXtbRvV0hS2XuUoM0NLbOBelGSXV9gBdc3flMuLIZZ4o/iZzP0TAZb6rr0SU
-         /TiklhOm3F6dZKng/gcbxFTn829uhzLGfpwdlLB3MEL4Ji38k3SYS62domADqcYoLPdV
-         VYGJAk0mgb6YwCrYx5EiuTBq5w3f2BON0D/6FkaLiiEWKJplWrPS44AILHXML/SessnD
-         226w==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=uM/kLAy3pF3zoZCkKG6MBBFV1LbwtvhEjhGFlqs5Mcg=;
+        b=oXhbBFhKek89q5ObMInjZVcsJC+U3YJBdD728ADIyfHXJnYW+cZUSSZFRGOkhavvKx
+         nu5W6qwc3/s/BjqqRDjbKNePaWlO/EPjVBRTAOqtuM2P30w/elvxQ+yr2AX0YTlWJqcn
+         1+rBH/FoxMJ9LLEq/gu8TyJiKLHrWS6ai/4YKnkmuxO9JzNRWgOppYpm0Vrqa0vUILTb
+         gyAa8tmaBLAJAU/T9XLDYPy7I7GeUX0WkGIIgNDlI7bgeSes/9aXXxE+CDgp4bw1NJ9T
+         YAOnGJFRsqjB/aSxpTFtggGTMB09TPdDmJXt7+jZ23gHODaPLT6RNsBlg/AfiLBzWgMc
+         zr7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y2ZFOXX8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UeHpv40F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z20si4022550uan.139.2021.03.02.17.05.53
+        by mx.google.com with ESMTPS id y4si8102947qvn.131.2021.03.02.17.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 17:05:53 -0800 (PST)
+        Tue, 02 Mar 2021 17:23:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y2ZFOXX8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UeHpv40F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46564 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHFxY-000351-C4
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 20:05:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44372)
+	id 1lHGEj-00089v-2k
+	for alex.bennee@linaro.org; Tue, 02 Mar 2021 20:23:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHFx2-00034F-Dg; Tue, 02 Mar 2021 20:05:20 -0500
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:39067)
+ id 1lHGDk-00088q-Gu; Tue, 02 Mar 2021 20:22:36 -0500
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:39143)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHFx0-0001Cx-7W; Tue, 02 Mar 2021 20:05:20 -0500
-Received: by mail-pg1-x52b.google.com with SMTP id x29so6845834pgk.6;
- Tue, 02 Mar 2021 17:05:17 -0800 (PST)
+ id 1lHGDi-0003bN-Vh; Tue, 02 Mar 2021 20:22:36 -0500
+Received: by mail-pg1-x532.google.com with SMTP id x29so6870800pgk.6;
+ Tue, 02 Mar 2021 17:22:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jd5GvI+CUtHO9kj/+hMuYljebVOyggSX2d6N90WNDsE=;
- b=Y2ZFOXX8igsaPBTNz1Qoeo5XiB9i2pCPLLGQEvqNyhr4CUytoXe5e2Whd+ya9F5CGT
- 7QdKpBJklHkVmygs0cGrmhA1W1Lgto/prZHZBBX/Z64yJo/OMkK8Pdy9G9XIUn+YUq7p
- XJJhW/U9uwNYP9l39lRY9INFhc8DCj2DA+NZfXZzyNnw3wwqBVy9kxGycJg9uiHo3ZLX
- 3b09ZtuurtT0J2wOhkvus7ouHk9SLejzmbpVDnuAjtD0hPs0dBd6ULuUohA1rr5h8CLl
- ltS+bxbsTvzrFzXpTwjXpJVC01A6w/7aCRTSa+Izsn48VBPZ6IbdZwaKSkXsAJu928kh
- 7zMA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=uM/kLAy3pF3zoZCkKG6MBBFV1LbwtvhEjhGFlqs5Mcg=;
+ b=UeHpv40FFU5Gyr9jspIA2JDTRqHI1TeBOtM6NsM/fYsbE+JrV8bZ8YG/4G3zDqCU3R
+ mQYqRAtaWB3tEfLgIiU5OHwpa0FtJz+r+CbtrIdaqwXgL6h5XCkeNOkCaxcDK0bq8Wm2
+ dLngNfHQ1S6ZYVf1IeKzae3oZWl0HDKkxN+n1JpGwIu5G2nTlEcTzV8pZsiXNJGt/8sp
+ VvW3jMnrwwubCmOXkuza0Rc0C96xMJmBOHLpZFMZ9cgyaUATo0dvO2QEEY70IlYomsou
+ eKJbZJRpiWb55INNjA06Bkbu9gliqNW4+VAEvYLxqZ8+q1/RWeH9ZZdQr5JaDAQUzMvs
+ L+PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=jd5GvI+CUtHO9kj/+hMuYljebVOyggSX2d6N90WNDsE=;
- b=aNkXbn1IAl7+Tg+juoQIWWmJ5M27LIU2sfp15RM2P7tn2wtUtifa0tVgPv3uWgnbNa
- ZiEkVa0ZHhO2xnT6j79UZnqFHHqpgr7FC7vg4xI57pIDU12r5i3vdCpmefB+dBwSfbLy
- HSx0uE0uXIsHwyx/PBI21V5r1DqLnKL0DnmnTa6TIEAq+zHA5TOzY9dGXnM0XNyoL718
- yemzvXHGEM6FqQKmvlJFcS9qJNJbzgCSzJnqpIjebFXeSSC+pnUPz+q4CTtl1/RiRN3t
- LDaUYhGGxxGmLPYIbg4pE0SVCRKe8Cl6KL2jX8b3xwKoUbtBRom8gIBYN7tJlYK/nFva
- Jwdw==
-X-Gm-Message-State: AOAM530FqJ9uRB0v9APHCB0f3p9gGD0d3jCeVGS7plHgFXZThaAl6GD3
- hjeEZjLkfJPk3V5b+asHeTc=
-X-Received: by 2002:a63:e608:: with SMTP id g8mr9968522pgh.433.1614733515892; 
- Tue, 02 Mar 2021 17:05:15 -0800 (PST)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=uM/kLAy3pF3zoZCkKG6MBBFV1LbwtvhEjhGFlqs5Mcg=;
+ b=TRc2Nh+OotGAtqhnVe+g9yXt3RqkrxP+KB4oiIwE2g7RxgqNwk2l5TYx91owI2DLY+
+ BElICAgy+kCWZ+O4/tK/bkOHG2hm8dRUwZt6QQ/LDN1hpQ0KRpzbSTUTxC9KceLxIUQm
+ cGAlxa2RmmAVtnsoZ2fEaKtXQKaysNIyK/W9Gus1FaInHqCAb0VR44D9t2Qs06xoeoqX
+ r3ASVKFOvYRcQD5H2rfo0IsZP4rEherZtifTReX9CaadnFVi843WSK2B1WQ/zTe0sCvV
+ Uvp2MjY/iuknCYy1V8hNgEcWF0sS4ZgBiEocd0aO+j7VrUbDKtY+jUnKxRwmhjtXxREA
+ V4cw==
+X-Gm-Message-State: AOAM530zVpj2ANWtYZtyEAJxq3B9+0ewPGUTMs+iXt1H4BiBlrSvzHqD
+ KNryp5mhCJVoKzTPtwbhrZI=
+X-Received: by 2002:a62:7d17:0:b029:1ee:3bbe:fa5f with SMTP id
+ y23-20020a627d170000b02901ee3bbefa5fmr830685pfc.67.1614734553153; 
+ Tue, 02 Mar 2021 17:22:33 -0800 (PST)
 Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id q21sm54197pfh.189.2021.03.02.17.05.12
+ by smtp.gmail.com with ESMTPSA id t19sm14135427pgj.8.2021.03.02.17.22.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 17:05:14 -0800 (PST)
+ Tue, 02 Mar 2021 17:22:32 -0800 (PST)
 From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH] arm/ast2600: Fix SMP booting with -kernel
-Date: Wed,  3 Mar 2021 11:35:05 +1030
-Message-Id: <20210303010505.635621-1-joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: [PATCH 1/2] tests/acceptance: Test ast2400 and ast2500 machines
+Date: Wed,  3 Mar 2021 11:52:16 +1030
+Message-Id: <20210303012217.637737-2-joel@jms.id.au>
 X-Mailer: git-send-email 2.30.1
+In-Reply-To: <20210303012217.637737-1-joel@jms.id.au>
+References: <20210303012217.637737-1-joel@jms.id.au>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=joel.stan@gmail.com; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=joel.stan@gmail.com; helo=mail-pg1-x532.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -113,47 +121,76 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J298Vf9qUus/
+X-TUID: dZMERF1Mqb6d
 
-The ast2600 machines do not have PSCI firmware, so this property should
-have never been set. Removing this node fixes SMP booting Linux kernels
-that have PSCI enabled, as Linux fails to find PSCI in the device tree
-and falls back to the soc-specific method for enabling secondary CPUs.
+Test MTD images from the OpenBMC project on AST2400 and AST2500 SoCs
+from ASPEED, by booting Palmetto and Romulus BMC machines.
 
-The comment is out of date as Qemu has supported -kernel booting since
-9bb6d14081ce ("aspeed: Add boot stub for smp booting"), in v5.1.
+The images are fetched from OpenBMC's release directory on github.
 
-Fixes: f25c0ae1079d ("aspeed/soc: Add AST2600 support")
+Co-developed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- hw/arm/aspeed_ast2600.c | 7 -------
- 1 file changed, 7 deletions(-)
+ tests/acceptance/boot_linux_console.py | 46 ++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index bf31ca351feb..49b00763864c 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -241,8 +241,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index eb012867997f..2f46a08fdc10 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -1048,6 +1048,52 @@ def test_arm_vexpressa9(self):
+         self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.dtb')
+         self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
  
-     /* CPU */
-     for (i = 0; i < sc->num_cpus; i++) {
--        object_property_set_int(OBJECT(&s->cpu[i]), "psci-conduit",
--                                QEMU_PSCI_CONDUIT_SMC, &error_abort);
-         if (sc->num_cpus > 1) {
-             object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
-                                     ASPEED_A7MPCORE_ADDR, &error_abort);
-@@ -253,11 +251,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-         object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 1125000000,
-                                 &error_abort);
- 
--        /*
--         * TODO: the secondary CPUs are started and a boot helper
--         * is needed when using -kernel
--         */
--
-         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
-             return;
-         }
++    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:palmetto-bmc
++        """
++
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-palmetto.static.mtd')
++        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
++
++    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:romulus-bmc
++        """
++
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-romulus.static.mtd')
++        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
++
++    def do_test_arm_aspeed(self, image):
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic')
++        self.vm.launch()
++
++        self.wait_for_console_pattern("U-Boot 2016.07")
++        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
++        self.wait_for_console_pattern("Starting kernel ...")
++        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
++        self.wait_for_console_pattern(
++                "aspeed-smc 1e620000.spi: read control register: 203b0641")
++        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
++        self.wait_for_console_pattern("systemd[1]: Set hostname to")
++        # This often takes longer than the 90s timeout
++        # self.wait_for_console_pattern("login:")
++        self.vm.shutdown()
++
+     def test_m68k_mcf5208evb(self):
+         """
+         :avocado: tags=arch:m68k
 -- 
 2.30.1
 

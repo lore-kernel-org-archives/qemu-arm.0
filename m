@@ -1,103 +1,100 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5580584lfg;
-        Wed, 3 Mar 2021 10:27:42 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyAlLTgOz/z0+0AtGXCoAovnVIVMcCR3bt898hqXkirlh9f9gnlgmZ0czoAwL1pyMJFAC7B
-X-Received: by 2002:a6b:e20a:: with SMTP id z10mr371116ioc.99.1614796061987;
-        Wed, 03 Mar 2021 10:27:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614796061; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5581715lfg;
+        Wed, 3 Mar 2021 10:29:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyh2DKdkRb0/6wLT1tx2VBvCFe1UkqgDSylTYz8ljqXBTRGZTvJpmLAbDc6Wa1b1dzSU60P
+X-Received: by 2002:a92:bd0c:: with SMTP id c12mr537788ile.55.1614796175694;
+        Wed, 03 Mar 2021 10:29:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614796175; cv=none;
         d=google.com; s=arc-20160816;
-        b=IxW//09ut1Kvk8tN+VxEp5RXEs1fpSB9l4Y3Pg9sDm5n7vJ17cHOHfsPEgoLG/jNrs
-         FKnHxhph52Kf3nqfVgCD0I/l14NQQAvg+HBsMFH6RbPJcbe+Fo12F5l8fTuUrHYHf7iC
-         VWt5m3AeSvf+eg+g0OP6xGQwsV83el3U+EaMXpvANeXgfeflp1KuHuHRoSFs5Ze1EmLT
-         q0JsxPzmTpD5P9+00XR05pc2sskUM/CnayLRdvBaD/I/ee+ke+sLvBmDtiESdD4F9XUZ
-         Yj2vCJ7f0ho4sFeQBY2MjK/vVRTgCJ4tlYQIXsOB0YiScfVcxdbnEPvE2Gc2ksQIpW0D
-         /vWg==
+        b=LNH5teZaqQzMzEaf7NdN4PyVQiEjm0GUaKT8pOLrLjhgiwhVzQQnKi++u93+cq9L0x
+         A7xxvMez0Qbq0tN1nF7kYk3GiOw/kH2WA/A98IeRlAN+3v7mM1/IFyTSv4niYpKRTsEQ
+         QalgKhXFP2XJxoEGRmQrwlMp+jzRCZ7KuJPzbvtFIQGtOE3GsaVwDValecx1XUN4zFWD
+         bbHxTQ7fqP20yjpA9vQKBcjHrUeifCAjQt18JUBWJ3T2HqyzxmpuMost8lnmky+h68aA
+         AGSvxRSCAm8TFaDNipy9ljTeocsDCvSietHulJ1ZOiC9uHxL66S3drBNnPU1cIjAoDRA
+         /t8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dPrv/DkAiyl42NA4omCqrPAwJ/Yioej+8U34dhimaag=;
-        b=lvqhMDkG+m3YZe8p9NeFY/sclzJjJmSn+bevo/xKUofZuffQNofCf4nm1H7jpsO9gL
-         0+ScnFKrzoPvKIDPl21HfTKB6g0FFhW0KYooO3jfhW0VcMg6WWwekezRKB87oKVsTKIC
-         CafHeKa2Ed5qYpt6xsK50QDrfCGqrz5fLCmVxKyYlvO/Wm4yl4/8RhGb5dbsGoDPMRGS
-         xnMZ9tP5nmZBSKxfcUEeNIuH8iiBuM0nFb9BJCCO/alYH4aINncukY5wOxtM8Wn50ulB
-         eMI3281c9/Uq3PTtQk3CuJ/pWX0bUROVVnU+RvEHo853wRcAs5JKzIm0in/c6C0mh/kO
-         R93w==
+        bh=jSFJR2T0y61cEAykVjSlmIgXEHeIk/fhpqbk5zPRC7k=;
+        b=V9GcWozQl3WLogbxoYintoGJ65viCROn/fH3pIkOnsspTCq10ZLJgdP9CU50/fpwOq
+         iK5J4Xznrc343StywH/BE0wKZjc6c/LpOsBVOKVy1XTmcIF2kMwTSvbfKfW47cgH5sZK
+         UGcMt+7XOON8CD3Uwzx35vUBdaRanzEDv/iGc0p35iqIK3jk+m8l9szfVxtzcXbNogqr
+         VbLIQFTupeh3hfQbWUxgtuQz4kDfRPo8zSYzHHTevkOGmio/z421VmzmaXe4XcABhGF6
+         I/4r2oDzaZZgrJtnlQkbZ8P1wkaBgEw+VGffhXT1m/CpZfK43LGvuNz7RYTWR5qnT8O7
+         cx2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WdfU1F+s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JrPfoBck;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b13si22668627ils.23.2021.03.03.10.27.41
+        by mx.google.com with ESMTPS id 188si20673888jag.122.2021.03.03.10.29.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Mar 2021 10:27:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Mar 2021 10:29:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WdfU1F+s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JrPfoBck;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHWDl-0004g8-8P
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 13:27:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55770)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHWFa-0006wL-VO
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 13:29:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHW92-00054i-Ae
- for qemu-arm@nongnu.org; Wed, 03 Mar 2021 13:22:48 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34771)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWAD-0007Xf-HS
+ for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:24:01 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23144)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHW8z-0000Ta-OX
- for qemu-arm@nongnu.org; Wed, 03 Mar 2021 13:22:48 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWAA-0000ua-Rl
+ for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:24:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614795765;
+ s=mimecast20190719; t=1614795838;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dPrv/DkAiyl42NA4omCqrPAwJ/Yioej+8U34dhimaag=;
- b=WdfU1F+sc+AJUvkIVOrFE2VtpXuJp9YS2MyKDOnDZFIZH2cIqBspe01N3WNtBr57KpxIrs
- 2Es02vu6Ci37qzPaq0EeLXBaVfxyspYUhoBgC/FmcHDYUqdXl3lRU26NeRoD0QkF5hqtlN
- RW9Xnk+FtlNJDyKYvP7VQjEzxEGlRsI=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-423-ZtxeN_QQPpi9reMWeJaCkw-1; Wed, 03 Mar 2021 13:22:41 -0500
-X-MC-Unique: ZtxeN_QQPpi9reMWeJaCkw-1
-Received: by mail-wr1-f71.google.com with SMTP id 75so815548wrl.3
- for <qemu-arm@nongnu.org>; Wed, 03 Mar 2021 10:22:41 -0800 (PST)
+ bh=jSFJR2T0y61cEAykVjSlmIgXEHeIk/fhpqbk5zPRC7k=;
+ b=JrPfoBckIL0HqYn5z/7XDur1p/O0oMhgAt4iaZcsweIxIARbIVKT9ex7nMupkbCwlnNiOc
+ kwUSl0BNIXA4FrRCfB+32v+NX6xiTV9POI8QN4/uUxXrBEmGwTZRqMDaRx6zj31ad+r+on
+ 1uRNiGJq1avAlBCwKNu/0O2Rkmqv5Ck=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-102-Mvh7QXiEOnuMQj6M9X8WHg-1; Wed, 03 Mar 2021 13:23:56 -0500
+X-MC-Unique: Mvh7QXiEOnuMQj6M9X8WHg-1
+Received: by mail-wm1-f69.google.com with SMTP id c7so1675948wml.8
+ for <qemu-devel@nongnu.org>; Wed, 03 Mar 2021 10:23:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dPrv/DkAiyl42NA4omCqrPAwJ/Yioej+8U34dhimaag=;
- b=PmaTrgpTYptVgyXWlNPRwfXjfDd59wpedUwn5o7RYvhe4xUxA35H6OW8sJm/yPHPXk
- l3Sr1jVBgT6rMlLbQLgOvAR+6KfzPvTvVNQW4LWmzKPujpMI9IgAJjh+YX5ClSiZzmrH
- UwAR74O3i0W9XB9ppC44qT+VEWEKGXMsJrupGdWU2XM1wm9QpXSVEvd5rjbHxHv5NDV8
- kOAdVtVXdK9Ca+aLg7ragdgPDrLlTEy8eOEBsBPzLwllA9/wMkm3k6GR82JHlJNxOruk
- 7NOpXVKLxucbVPIeMxu+Pw7H8XOY7TQUUWe55m3Ya8h2Eo85Pgl2MiLJFZ9GZxqaccfS
- kC6A==
-X-Gm-Message-State: AOAM5314lX6KZMCOKm4QVhAdfkEx5bWNrEQr4RmK1+MPc2q9M2lx2gJK
- 6TNWYxAqB2ocJFcal8JAe737lacxJQfVkrvpTII6gMj55Ox9fj/+P+iVW5r4Zb/kozh2ECNsE72
- jtgd+6GVp8LkC
-X-Received: by 2002:a05:600c:35c1:: with SMTP id
- r1mr240937wmq.143.1614795759921; 
- Wed, 03 Mar 2021 10:22:39 -0800 (PST)
-X-Received: by 2002:a05:600c:35c1:: with SMTP id
- r1mr240887wmq.143.1614795759484; 
- Wed, 03 Mar 2021 10:22:39 -0800 (PST)
+ bh=jSFJR2T0y61cEAykVjSlmIgXEHeIk/fhpqbk5zPRC7k=;
+ b=X2LJ4JXLuTTY3lEs995RfnTsQ4Ushqy8loCc+jwdvXF0AVhT26OaMrR7iWd2bdDX5p
+ wZPPzPjPwzp4af7CYZdFJEgCZYSy9KaH8URF0FPLullmjwspoywfGp3U+GgM46TWgl+l
+ PU7hUXD0TrBG33Gp6eKWcCWKt+j5i3YEiGDXEVk3TNf/8jNzPNTTYkYTpvtIO/pIiytJ
+ lbFX8KMVGkBdtI5eo70q0IODKOCIwcO5NJLAGf1Slefv3g65ekMGyBpPFKQpyv752izv
+ rN8sXMYTUm+HaqJ17BFGMrnp3No2wr3o3SMrTEcd282aAzy0/w123bsqfaayCKg+sEql
+ AWVw==
+X-Gm-Message-State: AOAM531vzAVHS1doQZUPf84BkG+6fikBhWUHwPky3UVP9Gz3XRwiq+vQ
+ lhgu69y1Iit/kyLD3Dkd5LJbxvhfMD1GhH87B4JyeArWUTv591NDN/TQZFd5may82Jd+7ZYx26T
+ ToZzBLBvzmQE83k9c939jpJH5DNchtd6TwwZRPjNPcpaARJvUBIIyxpqDj7pPGgj2
+X-Received: by 2002:adf:f941:: with SMTP id q1mr29310638wrr.189.1614795835312; 
+ Wed, 03 Mar 2021 10:23:55 -0800 (PST)
+X-Received: by 2002:adf:f941:: with SMTP id q1mr29310594wrr.189.1614795835090; 
+ Wed, 03 Mar 2021 10:23:55 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id s3sm13959189wrt.93.2021.03.03.10.22.37
+ by smtp.gmail.com with ESMTPSA id l15sm6604958wme.43.2021.03.03.10.23.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Mar 2021 10:22:39 -0800 (PST)
+ Wed, 03 Mar 2021 10:23:54 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 03/19] target/s390x/kvm: Reduce deref by declaring 'struct
- kvm_run' on stack
-Date: Wed,  3 Mar 2021 19:22:03 +0100
-Message-Id: <20210303182219.1631042-4-philmd@redhat.com>
+Subject: [RFC PATCH 14/19] accel/kvm: Move the 'kvm_fd' field to AccelvCPUState
+Date: Wed,  3 Mar 2021 19:22:14 +0100
+Message-Id: <20210303182219.1631042-15-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210303182219.1631042-1-philmd@redhat.com>
 References: <20210303182219.1631042-1-philmd@redhat.com>
@@ -108,33 +105,32 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  kvm@vger.kernel.org, David Hildenbrand <david@redhat.com>, haxm-team@intel.com,
  Colin Xu <colin.xu@intel.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  Claudio Fontana <cfontana@suse.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
@@ -144,297 +140,92 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  Marcelo Tosatti <mtosatti@redhat.com>, qemu-s390x@nongnu.org,
  qemu-ppc@nongnu.org, Wenchao Wang <wenchao.wang@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mtbNi+Gbw8UI
-
-In order to make one of the next commits easier to review,
-declare 'struct kvm_run' on the stack when it is used in
-various places in a function.
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +T6BVEnKKMy0
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- target/s390x/kvm.c | 128 +++++++++++++++++++++++----------------------
- 1 file changed, 65 insertions(+), 63 deletions(-)
+ include/hw/core/cpu.h    | 2 --
+ include/sysemu/kvm_int.h | 4 ++++
+ accel/kvm/kvm-all.c      | 8 ++++----
+ 3 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
-index 73f816a7222..d8ac12dfc11 100644
---- a/target/s390x/kvm.c
-+++ b/target/s390x/kvm.c
-@@ -467,6 +467,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
- {
-     S390CPU *cpu = S390_CPU(cs);
-     CPUS390XState *env = &cpu->env;
-+    struct kvm_run *run = cs->kvm_run;
-     struct kvm_sregs sregs;
-     struct kvm_regs regs;
-     struct kvm_fpu fpu = {};
-@@ -474,13 +475,13 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     int i;
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 65ff8d86dbc..ca2526e6a23 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -314,7 +314,6 @@ struct AccelvCPUState;
+  * @opaque: User data.
+  * @mem_io_pc: Host Program Counter at which the memory was accessed.
+  * @accel_vcpu: Pointer to accelerator-specific AccelvCPUState field.
+- * @kvm_fd: vCPU file descriptor for KVM.
+  * @work_mutex: Lock to prevent multiple access to @work_list.
+  * @work_list: List of pending asynchronous work.
+  * @trace_dstate_delayed: Delayed changes to trace_dstate (includes all changes
+@@ -416,7 +415,6 @@ struct CPUState {
  
-     /* always save the PSW  and the GPRS*/
--    cs->kvm_run->psw_addr = env->psw.addr;
--    cs->kvm_run->psw_mask = env->psw.mask;
-+    run->psw_addr = env->psw.addr;
-+    run->psw_mask = env->psw.mask;
+     /* Accelerator-specific fields. */
+     struct AccelvCPUState *accel_vcpu;
+-    int kvm_fd;
+     struct KVMState *kvm_state;
+     struct kvm_run *kvm_run;
+     int hvf_fd;
+diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+index f57be10adde..3bf75e62293 100644
+--- a/include/sysemu/kvm_int.h
++++ b/include/sysemu/kvm_int.h
+@@ -14,6 +14,10 @@
+ #include "sysemu/kvm.h"
  
-     if (can_sync_regs(cs, KVM_SYNC_GPRS)) {
-         for (i = 0; i < 16; i++) {
--            cs->kvm_run->s.regs.gprs[i] = env->regs[i];
--            cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_GPRS;
-+            run->s.regs.gprs[i] = env->regs[i];
-+            run->kvm_dirty_regs |= KVM_SYNC_GPRS;
-         }
-     } else {
-         for (i = 0; i < 16; i++) {
-@@ -494,17 +495,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+ struct AccelvCPUState {
++    /**
++     * @kvm_fd: vCPU file descriptor for KVM
++     */
++    int kvm_fd;
+ };
  
-     if (can_sync_regs(cs, KVM_SYNC_VRS)) {
-         for (i = 0; i < 32; i++) {
--            cs->kvm_run->s.regs.vrs[i][0] = env->vregs[i][0];
--            cs->kvm_run->s.regs.vrs[i][1] = env->vregs[i][1];
-+            run->s.regs.vrs[i][0] = env->vregs[i][0];
-+            run->s.regs.vrs[i][1] = env->vregs[i][1];
-         }
--        cs->kvm_run->s.regs.fpc = env->fpc;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_VRS;
-+        run->s.regs.fpc = env->fpc;
-+        run->kvm_dirty_regs |= KVM_SYNC_VRS;
-     } else if (can_sync_regs(cs, KVM_SYNC_FPRS)) {
-         for (i = 0; i < 16; i++) {
--            cs->kvm_run->s.regs.fprs[i] = *get_freg(env, i);
-+            run->s.regs.fprs[i] = *get_freg(env, i);
-         }
--        cs->kvm_run->s.regs.fpc = env->fpc;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_FPRS;
-+        run->s.regs.fpc = env->fpc;
-+        run->kvm_dirty_regs |= KVM_SYNC_FPRS;
-     } else {
-         /* Floating point */
-         for (i = 0; i < 16; i++) {
-@@ -524,12 +525,12 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+ typedef struct KVMSlot
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 4ccd12ea56a..1c08ff3fbe0 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -387,7 +387,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+ 
+     vcpu = g_malloc0(sizeof(*vcpu));
+     vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+-    vcpu->kvm_fd = cpu->kvm_fd;
++    vcpu->kvm_fd = cpu->accel_vcpu->kvm_fd;
+     QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+ err:
+     return ret;
+@@ -436,7 +436,7 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
      }
  
-     if (can_sync_regs(cs, KVM_SYNC_ARCH0)) {
--        cs->kvm_run->s.regs.cputm = env->cputm;
--        cs->kvm_run->s.regs.ckc = env->ckc;
--        cs->kvm_run->s.regs.todpr = env->todpr;
--        cs->kvm_run->s.regs.gbea = env->gbea;
--        cs->kvm_run->s.regs.pp = env->pp;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_ARCH0;
-+        run->s.regs.cputm = env->cputm;
-+        run->s.regs.ckc = env->ckc;
-+        run->s.regs.todpr = env->todpr;
-+        run->s.regs.gbea = env->gbea;
-+        run->s.regs.pp = env->pp;
-+        run->kvm_dirty_regs |= KVM_SYNC_ARCH0;
-     } else {
-         /*
-          * These ONE_REGS are not protected by a capability. As they are only
-@@ -544,16 +545,16 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+     cpu->accel_vcpu = g_new(struct AccelvCPUState, 1);
+-    cpu->kvm_fd = ret;
++    cpu->accel_vcpu->kvm_fd = ret;
+     cpu->kvm_state = s;
+     cpu->vcpu_dirty = true;
+ 
+@@ -449,7 +449,7 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
      }
  
-     if (can_sync_regs(cs, KVM_SYNC_RICCB)) {
--        memcpy(cs->kvm_run->s.regs.riccb, env->riccb, 64);
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_RICCB;
-+        memcpy(run->s.regs.riccb, env->riccb, 64);
-+        run->kvm_dirty_regs |= KVM_SYNC_RICCB;
+     cpu->kvm_run = mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED,
+-                        cpu->kvm_fd, 0);
++                        cpu->accel_vcpu->kvm_fd, 0);
+     if (cpu->kvm_run == MAP_FAILED) {
+         ret = -errno;
+         error_setg_errno(errp, ret,
+@@ -2631,7 +2631,7 @@ int kvm_vcpu_ioctl(CPUState *cpu, int type, ...)
+     va_end(ap);
+ 
+     trace_kvm_vcpu_ioctl(cpu->cpu_index, type, arg);
+-    ret = ioctl(cpu->kvm_fd, type, arg);
++    ret = ioctl(cpu->accel_vcpu->kvm_fd, type, arg);
+     if (ret == -1) {
+         ret = -errno;
      }
- 
-     /* pfault parameters */
-     if (can_sync_regs(cs, KVM_SYNC_PFAULT)) {
--        cs->kvm_run->s.regs.pft = env->pfault_token;
--        cs->kvm_run->s.regs.pfs = env->pfault_select;
--        cs->kvm_run->s.regs.pfc = env->pfault_compare;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_PFAULT;
-+        run->s.regs.pft = env->pfault_token;
-+        run->s.regs.pfs = env->pfault_select;
-+        run->s.regs.pfc = env->pfault_compare;
-+        run->kvm_dirty_regs |= KVM_SYNC_PFAULT;
-     } else if (cap_async_pf) {
-         r = kvm_set_one_reg(cs, KVM_REG_S390_PFTOKEN, &env->pfault_token);
-         if (r < 0) {
-@@ -572,11 +573,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     /* access registers and control registers*/
-     if (can_sync_regs(cs, KVM_SYNC_ACRS | KVM_SYNC_CRS)) {
-         for (i = 0; i < 16; i++) {
--            cs->kvm_run->s.regs.acrs[i] = env->aregs[i];
--            cs->kvm_run->s.regs.crs[i] = env->cregs[i];
-+            run->s.regs.acrs[i] = env->aregs[i];
-+            run->s.regs.crs[i] = env->cregs[i];
-         }
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_ACRS;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_CRS;
-+        run->kvm_dirty_regs |= KVM_SYNC_ACRS;
-+        run->kvm_dirty_regs |= KVM_SYNC_CRS;
-     } else {
-         for (i = 0; i < 16; i++) {
-             sregs.acrs[i] = env->aregs[i];
-@@ -589,30 +590,30 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_GSCB)) {
--        memcpy(cs->kvm_run->s.regs.gscb, env->gscb, 32);
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_GSCB;
-+        memcpy(run->s.regs.gscb, env->gscb, 32);
-+        run->kvm_dirty_regs |= KVM_SYNC_GSCB;
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_BPBC)) {
--        cs->kvm_run->s.regs.bpbc = env->bpbc;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_BPBC;
-+        run->s.regs.bpbc = env->bpbc;
-+        run->kvm_dirty_regs |= KVM_SYNC_BPBC;
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_ETOKEN)) {
--        cs->kvm_run->s.regs.etoken = env->etoken;
--        cs->kvm_run->s.regs.etoken_extension  = env->etoken_extension;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_ETOKEN;
-+        run->s.regs.etoken = env->etoken;
-+        run->s.regs.etoken_extension  = env->etoken_extension;
-+        run->kvm_dirty_regs |= KVM_SYNC_ETOKEN;
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_DIAG318)) {
--        cs->kvm_run->s.regs.diag318 = env->diag318_info;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_DIAG318;
-+        run->s.regs.diag318 = env->diag318_info;
-+        run->kvm_dirty_regs |= KVM_SYNC_DIAG318;
-     }
- 
-     /* Finally the prefix */
-     if (can_sync_regs(cs, KVM_SYNC_PREFIX)) {
--        cs->kvm_run->s.regs.prefix = env->psa;
--        cs->kvm_run->kvm_dirty_regs |= KVM_SYNC_PREFIX;
-+        run->s.regs.prefix = env->psa;
-+        run->kvm_dirty_regs |= KVM_SYNC_PREFIX;
-     } else {
-         /* prefix is only supported via sync regs */
-     }
-@@ -623,19 +624,20 @@ int kvm_arch_get_registers(CPUState *cs)
- {
-     S390CPU *cpu = S390_CPU(cs);
-     CPUS390XState *env = &cpu->env;
-+    struct kvm_run *run = cs->kvm_run;
-     struct kvm_sregs sregs;
-     struct kvm_regs regs;
-     struct kvm_fpu fpu;
-     int i, r;
- 
-     /* get the PSW */
--    env->psw.addr = cs->kvm_run->psw_addr;
--    env->psw.mask = cs->kvm_run->psw_mask;
-+    env->psw.addr = run->psw_addr;
-+    env->psw.mask = run->psw_mask;
- 
-     /* the GPRS */
-     if (can_sync_regs(cs, KVM_SYNC_GPRS)) {
-         for (i = 0; i < 16; i++) {
--            env->regs[i] = cs->kvm_run->s.regs.gprs[i];
-+            env->regs[i] = run->s.regs.gprs[i];
-         }
-     } else {
-         r = kvm_vcpu_ioctl(cs, KVM_GET_REGS, &regs);
-@@ -650,8 +652,8 @@ int kvm_arch_get_registers(CPUState *cs)
-     /* The ACRS and CRS */
-     if (can_sync_regs(cs, KVM_SYNC_ACRS | KVM_SYNC_CRS)) {
-         for (i = 0; i < 16; i++) {
--            env->aregs[i] = cs->kvm_run->s.regs.acrs[i];
--            env->cregs[i] = cs->kvm_run->s.regs.crs[i];
-+            env->aregs[i] = run->s.regs.acrs[i];
-+            env->cregs[i] = run->s.regs.crs[i];
-         }
-     } else {
-         r = kvm_vcpu_ioctl(cs, KVM_GET_SREGS, &sregs);
-@@ -667,15 +669,15 @@ int kvm_arch_get_registers(CPUState *cs)
-     /* Floating point and vector registers */
-     if (can_sync_regs(cs, KVM_SYNC_VRS)) {
-         for (i = 0; i < 32; i++) {
--            env->vregs[i][0] = cs->kvm_run->s.regs.vrs[i][0];
--            env->vregs[i][1] = cs->kvm_run->s.regs.vrs[i][1];
-+            env->vregs[i][0] = run->s.regs.vrs[i][0];
-+            env->vregs[i][1] = run->s.regs.vrs[i][1];
-         }
--        env->fpc = cs->kvm_run->s.regs.fpc;
-+        env->fpc = run->s.regs.fpc;
-     } else if (can_sync_regs(cs, KVM_SYNC_FPRS)) {
-         for (i = 0; i < 16; i++) {
--            *get_freg(env, i) = cs->kvm_run->s.regs.fprs[i];
-+            *get_freg(env, i) = run->s.regs.fprs[i];
-         }
--        env->fpc = cs->kvm_run->s.regs.fpc;
-+        env->fpc = run->s.regs.fpc;
-     } else {
-         r = kvm_vcpu_ioctl(cs, KVM_GET_FPU, &fpu);
-         if (r < 0) {
-@@ -689,15 +691,15 @@ int kvm_arch_get_registers(CPUState *cs)
- 
-     /* The prefix */
-     if (can_sync_regs(cs, KVM_SYNC_PREFIX)) {
--        env->psa = cs->kvm_run->s.regs.prefix;
-+        env->psa = run->s.regs.prefix;
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_ARCH0)) {
--        env->cputm = cs->kvm_run->s.regs.cputm;
--        env->ckc = cs->kvm_run->s.regs.ckc;
--        env->todpr = cs->kvm_run->s.regs.todpr;
--        env->gbea = cs->kvm_run->s.regs.gbea;
--        env->pp = cs->kvm_run->s.regs.pp;
-+        env->cputm = run->s.regs.cputm;
-+        env->ckc = run->s.regs.ckc;
-+        env->todpr = run->s.regs.todpr;
-+        env->gbea = run->s.regs.gbea;
-+        env->pp = run->s.regs.pp;
-     } else {
-         /*
-          * These ONE_REGS are not protected by a capability. As they are only
-@@ -712,27 +714,27 @@ int kvm_arch_get_registers(CPUState *cs)
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_RICCB)) {
--        memcpy(env->riccb, cs->kvm_run->s.regs.riccb, 64);
-+        memcpy(env->riccb, run->s.regs.riccb, 64);
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_GSCB)) {
--        memcpy(env->gscb, cs->kvm_run->s.regs.gscb, 32);
-+        memcpy(env->gscb, run->s.regs.gscb, 32);
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_BPBC)) {
--        env->bpbc = cs->kvm_run->s.regs.bpbc;
-+        env->bpbc = run->s.regs.bpbc;
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_ETOKEN)) {
--        env->etoken = cs->kvm_run->s.regs.etoken;
--        env->etoken_extension = cs->kvm_run->s.regs.etoken_extension;
-+        env->etoken = run->s.regs.etoken;
-+        env->etoken_extension = run->s.regs.etoken_extension;
-     }
- 
-     /* pfault parameters */
-     if (can_sync_regs(cs, KVM_SYNC_PFAULT)) {
--        env->pfault_token = cs->kvm_run->s.regs.pft;
--        env->pfault_select = cs->kvm_run->s.regs.pfs;
--        env->pfault_compare = cs->kvm_run->s.regs.pfc;
-+        env->pfault_token = run->s.regs.pft;
-+        env->pfault_select = run->s.regs.pfs;
-+        env->pfault_compare = run->s.regs.pfc;
-     } else if (cap_async_pf) {
-         r = kvm_get_one_reg(cs, KVM_REG_S390_PFTOKEN, &env->pfault_token);
-         if (r < 0) {
-@@ -749,7 +751,7 @@ int kvm_arch_get_registers(CPUState *cs)
-     }
- 
-     if (can_sync_regs(cs, KVM_SYNC_DIAG318)) {
--        env->diag318_info = cs->kvm_run->s.regs.diag318;
-+        env->diag318_info = run->s.regs.diag318;
-     }
- 
-     return 0;
 -- 
 2.26.2
 

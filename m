@@ -1,534 +1,241 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5740961lfg;
-        Wed, 3 Mar 2021 14:50:07 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyc5p5FUPB4FR7PeZmgNEVnhsaYUI0pBWAb7VqLjWIMVmD5uMPzVvFbH65Dv0A8hPPLfX5S
-X-Received: by 2002:a05:6e02:12b4:: with SMTP id f20mr1520259ilr.220.1614811807792;
-        Wed, 03 Mar 2021 14:50:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614811807; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Z5mPMz7sE4BfJXjwkOlmO0VJSv42w9KpTnAellQ6sXrDHd+mhTx6egoxPyqqaqKhRE
-         a2jkOjFhMaiTe7Q36WsS6hGGwfkDJZKDIrmFvKg/En1cBE0NMqw+IJV816Bt5y+UYpc1
-         MZWfHGFg54AoE0iYnLiv44bwZqqw/4WNn2ZJsvCFyZ7MDDVEjDefKgnfuF81GySDZha8
-         qWlEmoaSLARM1prslX2jvhEv/gNA7D31+RSvy2wk0fm83Sk7uwcZhcxVdS+nlW5ABHVk
-         mBgKmlI45WvTHEL085xbIsz2k08rOIEGFe1GWZyEBIAQSBfWz04eei4IoNZGvQMo72A2
-         abcg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=zZuWWhk2yUEowfOpfQgbiLKZ9GBl01FZYbqsLQW0ImM=;
-        b=mMklZ/6Q/1q1BhQHw38tlG60ik7yReN9BHHab83wFgfbLQoxz1DC/5yGI0CwwAgvec
-         jHFZic5Ln1LYqtkfZMnIDHcb8ZJYC13YoChuL6d42qsFDwvn+wnukbO9xDYeX2i91Pxa
-         XNYz5fGTftja5ZqOVUCm9KxvAyS9RxZlKH/vhNSxOJ+q0PXh4QMr9/BHrPdCZLJPyXr+
-         p7JwkTleOgkB8quUkb1xqXVOkJPPF/zz9WXYGbqFKzYVu7l+HfgIh3tbwzChgmdx0z57
-         lNHaxsS8I4fRR7cy94SjfqXoZSRH71pQPL6x44REPJyNWk/DCCi0KPLbZ3yi2qmkJljH
-         Oktg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FLGhvrJ2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5749340lfg;
+        Wed, 3 Mar 2021 15:03:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzfUC/0m5P+Ev7lFHM3jMM9ZH6M4ROQ4DJ35uu0CSZe3FmAoZZIHbWN8igu/S3wK+jbleu1
+X-Received: by 2002:a05:6122:7c7:: with SMTP id l7mr1559899vkr.6.1614812636753;
+        Wed, 03 Mar 2021 15:03:56 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si3313470iou.15.2021.03.03.14.50.07
+        by mx.google.com with ESMTPS id c6si4903076uaq.200.2021.03.03.15.03.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Mar 2021 14:50:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Mar 2021 15:03:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FLGhvrJ2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41044 helo=lists1p.gnu.org)
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=ZO0sxnTu;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:49202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHaJj-00028v-2K
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 17:50:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56160)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHaX5-0006dm-SD
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 18:03:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59212)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lHaIz-00028W-Rt; Wed, 03 Mar 2021 17:49:21 -0500
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b]:33120)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1lHaIx-00033Q-L1; Wed, 03 Mar 2021 17:49:21 -0500
-Received: by mail-io1-xd2b.google.com with SMTP id n132so15780862iod.0;
- Wed, 03 Mar 2021 14:49:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zZuWWhk2yUEowfOpfQgbiLKZ9GBl01FZYbqsLQW0ImM=;
- b=FLGhvrJ2St2T3ad96RVzEdqIpLlGdh86F0XvHRoHwOkcDWdQbnBdQmfH9xc8SFrSQ2
- 5EyYBBIfmEWIcpp32BUnV7dgZuKut9x5LYuMCJbGvovdVN7vNIKPFtotGBcRqybOzR2k
- SymWjR81QXY69UYqqs99vkCKi5zRXkfeb9uNPmVe+whTlF37mvayOKNpCu84330Np6hT
- OfKNUI4wsDN26XtQeInLB2bfXGGfM1HZkx5wRR7OuXgb2N61VLqGw5k5E+Z7BOA8H/PI
- J4pDnp29XpBJ1ZfiXZ6dD3hK3pvujV5LlDQ0sRZLBr9M2Lig0Dfk12JOK4EwMboo38xr
- 0Apg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zZuWWhk2yUEowfOpfQgbiLKZ9GBl01FZYbqsLQW0ImM=;
- b=CU6xIOcKNUczp6UWQPhkSIRheNd3v0kOBFmo7r/xKYYMjH24UPbS3pjSnt0LFGihxT
- OxS7qxlGxxtR4BRJgHPGHtGUr0wA4NW9D2R5K3kvbp8+a4anokRADiaxido99xHQmNrX
- Q9fr6tJqWtKdl4SvDWVSCr+jdCTBb80iSJIkttbUYNXJpz3t5dZZ4F7Scnda7muf0UNt
- EQ5OAU8K5W4N4BFVhhLiJt2Pprp6GtwlAAY06tpoYvvCmtPMAZ3I53Hyk7fluSQjJLJi
- AiaMyDqzO4TNX8/P9PT/uBepFaxnp3YkqHDDyhb0CsPEUVT4ct01iN+vU/IVyOHEL8a8
- 7kMA==
-X-Gm-Message-State: AOAM531HTlBB0Aw3ENgVRpZD1rsF5x1XdfeLtbUZjn3gouNeuL5qFOLJ
- elEmMHpBL28lye3JuH4ab+KTCnOuF6a0ZiG/+sQ=
-X-Received: by 2002:a02:cad9:: with SMTP id f25mr1237575jap.26.1614811758091; 
- Wed, 03 Mar 2021 14:49:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
+ id 1lHaWv-0006bO-V8; Wed, 03 Mar 2021 18:03:45 -0500
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:36642)
+ by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
+ id 1lHaWs-0007Wa-T1; Wed, 03 Mar 2021 18:03:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+ t=1614812622; x=1646348622;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=qV1VxXAimIy5licNcpbh8RuOMF1OdYlCtnxqviowFF4=;
+ b=ZO0sxnTu44u0tKC3rFRIra5lcpe88HrsFQxq2VdDMtQpSqyE4scB8SgI
+ sLZA8NlJ29MUROIcD7uLHq0HpKMvfzFeXu+C9Fl8k+FpjHDxjvrQOiE2C
+ Uz9nopvup2MTKS+2ZqRLcyUAfZC1RtKf9XHN3/3fXeSiZQ+ObwOaVhkZa g=;
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+ by alexa-out-sd-01.qualcomm.com with ESMTP; 03 Mar 2021 15:03:38 -0800
+X-QCInternal: smtphost
+Received: from nasanexm03b.na.qualcomm.com ([10.85.0.98])
+ by ironmsg04-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
+ 03 Mar 2021 15:03:31 -0800
+Received: from nasanexm03b.na.qualcomm.com (10.85.0.98) by
+ nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Mar 2021 15:03:30 -0800
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (199.106.107.6)
+ by nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2 via Frontend Transport; Wed, 3 Mar 2021 15:03:30 -0800
+Received: from BYAPR02MB4886.namprd02.prod.outlook.com (2603:10b6:a03:46::32)
+ by BY5PR02MB6472.namprd02.prod.outlook.com (2603:10b6:a03:1d7::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3890.28; Wed, 3 Mar
+ 2021 23:03:29 +0000
+Received: from BYAPR02MB4886.namprd02.prod.outlook.com
+ ([fe80::7980:b3e8:c439:fad6]) by BYAPR02MB4886.namprd02.prod.outlook.com
+ ([fe80::7980:b3e8:c439:fad6%4]) with mapi id 15.20.3912.019; Wed, 3 Mar 2021
+ 23:03:29 +0000
+From: Taylor Simpson <tsimpson@quicinc.com>
+To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: RE: [RFC PATCH 6/7] cpu: Move CPUClass::has_work() to TCGCPUOps
+Thread-Topic: [RFC PATCH 6/7] cpu: Move CPUClass::has_work() to TCGCPUOps
+Thread-Index: AQHXD07T7beo7/uQWk2tT+ZCOhVNu6py4bVg
+Date: Wed, 3 Mar 2021 23:03:29 +0000
+Message-ID: <BYAPR02MB48864335799EF6BB5C440206DE989@BYAPR02MB4886.namprd02.prod.outlook.com>
+References: <20210302102737.1031287-1-f4bug@amsat.org>
+ <20210302102737.1031287-7-f4bug@amsat.org>
+In-Reply-To: <20210302102737.1031287-7-f4bug@amsat.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: amsat.org; dkim=none (message not signed)
+ header.d=none;amsat.org; dmarc=none action=none header.from=quicinc.com;
+x-originating-ip: [70.115.140.19]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 1b152704-b964-454b-688f-08d8de988f58
+x-ms-traffictypediagnostic: BY5PR02MB6472:
+x-microsoft-antispam-prvs: <BY5PR02MB6472D428706192589D6FBB47DE989@BY5PR02MB6472.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:549;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: iLmoiKgcbM+NmOtT2NyybgXOU4ssWYizkhf62qAlF9fBp36ynI/sRKm9yQ/Hb636zdNXhgNAM6SFr5lZDl1v8XrmIpXx+EXW9nhOsGVxUgPXvymn2Y889ZhAKnvTQQNQilXWmTvi9WRsfh8gPd9YX+LzKxMtyz7xlJlFDs07mAoNU/70JHSJXG4f7MGoXdD3asVkrYKL/LZh18jXYxx+Xuvg/iJZkNuVnJWyhWVsgo/IpirhhHktU9ZZh/UZWXi99REAcXjUywYfvV3vb2N7tH7vtujRQU9KseMMvhEibw7A/sH64VzkRoCL/O++SaFxFXf/N2VYAIVK4xADCUYeLyZYenZXZJb1T54oJCQaH4uBWeCkhULijt3zBbNQKyK98ROp5S8sfaGpMvaBuEdrFAn8uGrXFXMwveSMuPymlx59ZWKpvoueOvnWFl3csHKpMZYG0KkfxZaQm4QkEXTr8/sFSYzZNzsUtNJWgbXz6W4nBIiSfEwV9W66Q7pludS+awmCwqH1F0LUscfYT1j1IQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR02MB4886.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(346002)(136003)(39860400002)(366004)(396003)(9686003)(86362001)(83380400001)(76116006)(7416002)(7406005)(66446008)(5660300002)(66476007)(110136005)(26005)(316002)(53546011)(2906002)(478600001)(6506007)(64756008)(8676002)(52536014)(66556008)(54906003)(186003)(71200400001)(7696005)(8936002)(55016002)(66946007)(33656002)(4326008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: =?utf-8?B?bFhDanBPdXQ3eVdvbG8ySGZaYVdodk1LZmNGN2dyWGh1T1dCY240R09SVXpK?=
+ =?utf-8?B?K2xPNjk0UG1FOTJ2NVVtVHZMTmV1NUJyclM4YStHdndMazZ0c0d4V1BYWFJR?=
+ =?utf-8?B?TlNyMUNWWVBWdHRnOExkYzgrUjZBWGE3dmQrYTdXNGpJekt4bFQ2QnA4MGFv?=
+ =?utf-8?B?aFVMa2RnT1IrWm9qTVN1akFSa2pneXQ0Q2luOUlUaGg1NWUweDR1dzRpR2U2?=
+ =?utf-8?B?V2czd0lkZzVsWlpjSytYNlA5cXFDOWZJcERvUnVHRDY5Y0t1L2oyNHpIU2Zs?=
+ =?utf-8?B?d0RZMGN6MUh5amxqZTRzWlhZMTdmV2hybkdVVjZlbjlYd251cHd2VmEyQmYv?=
+ =?utf-8?B?QWJkQkw3UHFiR0dtTXhpbUtSVGQ4eUZ4MWIxeUhRTWw2T2l5QU9aWWhTNVRM?=
+ =?utf-8?B?d3BjTGdGRWxCM0RXK3JFYVAzYzNkaDd0VkdSZ2ZJR0RIMGI0NCtTUmI1dVpj?=
+ =?utf-8?B?djl4VVVhNVN4OUNRaUR5cnMyUUNGR3RUNzFCUFNsb1RHb0lRK1pqTkpxZXcv?=
+ =?utf-8?B?S050UElTMVJTNDd0ZGZRK1pJZzNMOE9BbkkwKzg5VUFsQXJtOFVYb1A0WlNt?=
+ =?utf-8?B?T2hlaGl1c05RV0Myb0NkTnhPSUY0RWwzQTgwc3VjMXFaS252YW5iVXBUSk9W?=
+ =?utf-8?B?L1BiLzVRWVI1RGNGNFRxdmZZa0hOQStyMDRXcXREMlBHRzJtdkk1aDl5bDNx?=
+ =?utf-8?B?ditJTkhxMzBYK2lYa1FiTE9RZFkrbE83OHNvSW44YzNvK1VvTmRjMHRyaFBa?=
+ =?utf-8?B?VUhPdFZ3c2JGSTIrNURiYVVjM3p5WWhiVFJuWmVVSXQ3TGw3NUJqVmNoTHdU?=
+ =?utf-8?B?dmRwVjhOemlGc0Fmc2RnUzdJYTJ1ZmhWQ3NtbWFBS3VaaHVxSDNuNXRHRmFo?=
+ =?utf-8?B?TGdsbkNDZ3paMk5VVFRwMFQ3c1FvODdJeXVjTVBmTmN2ckt0bTFBOEtTazZ1?=
+ =?utf-8?B?NnpVeTZHckZVQTZWeEZHQlpWQUo5MHhkUXlqWDRxdlNTUWptN1p0aHFIZUd2?=
+ =?utf-8?B?bXhrMStqVjBIL3ZwZFVCMWFVWTlZNDNTUnNDVkZOSGFZRlRFSTFWdTNvTHNJ?=
+ =?utf-8?B?cjdxd0NRbHN2T3p3Nnl3SjVyeUQ0L1hsamIyUlpHell1dXo2K3IwVng4K2ln?=
+ =?utf-8?B?VjU2Ky9CdlJQRGtjYmNGVitLMVllekdNcVdPM2lCQWVHUU5STDNMQzZYc2VY?=
+ =?utf-8?B?dFZiQld1VnZZdlZ3ZDNUcFdNNlI4THRtOW1yS2lic1BuY093OEJRaStNVWx6?=
+ =?utf-8?B?dGhOYzlOYTNqL2tBTzFiQTR1VnhlYXBsWXZ4cEtjdENicjA2TjBJcCt1TmNN?=
+ =?utf-8?B?ZU9hKy9VWFBINGtMN3hWQ1IvWE05Y09tdEJnUlpoeVBHenQ5c2FTcXc3ZVJp?=
+ =?utf-8?B?NFJyb3IyQVdjVnl0TmZ4L21CTE9lMW9NVlZvMHFyMEcvUlJmMHhQVWVDb21u?=
+ =?utf-8?B?Vnh2WllKNTRTbzE1Qy96Y2dyQUxzd2liMFUxblpHSXRZdUxyVTViaU4zdEI2?=
+ =?utf-8?B?aGdTU05RQUNGdzBjcktNUTN0ei9GbUV3cE4yYTBSQmRCYnNTTFpURy9rY1Az?=
+ =?utf-8?B?V0NrR2V2SXl6ZnYvaDk3RzFIZ09jNW81bzJLbmk0QnNRSUZ0TVNmNXExalQv?=
+ =?utf-8?B?b3FYemUzRyswQjg5RllYQ2dIbndhb2luUXovRkZJdXRQbUMyeFVIdC9JdkZQ?=
+ =?utf-8?B?WlYwR1BjZWR1MkxHc3dtVHU5ZHFvMDhGNXlIKzVrcVowTmwzUU9vano2Mmxt?=
+ =?utf-8?Q?kzCBQDJVKy6E814Uvii2meadhbA2geMPE2j5Nhd?=
+x-ms-exchange-transport-forked: True
+arc-seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=BaVM4KJQZEi/IwPsPDSFYBJfhH0NV6H9he10lzN2aE1DMukClaten3zUzxj7zLn/FdMGv2aM2IJKm88jgXAOPRDfeuypEGvwJ4iI8g+MfRqIh8G3tkHe5gQcQWIzo6a62liHSG38RAwMsCdYaAiwIhVqBcVNusePA5nWRApOl8Vj/22/DdUMD5h/t9aBGDaQRAz6lFoL1GLblwHh2ygrC5V/Gx0+1JPAL1wtwtez5Vwshh+XJ8yBWImEhtfT663tb7t5G76Y0bsYoSGPa0YOIuj11tmlUL0UwSiaAgJ7Xqx7rRqU8SYM8uhv903uMwk6E4pYGMBsCcBj/v7m5Xm0tA==
+arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=QoT9FlUjwP1kSxkwl5RFKl0VsW2EVQwMIu4HtbuEEc8=;
+ b=jS8z9eG72HCtohjHNUPwHf7Qk/9aMqMUyBuG+AKAPmOfOfJhm20weMMVxEpP5f3L2cvQgmH+O1o963w39MvgNbnpaPZhsF0wbceTQ9qzbgyYEoKJViggarDWGQlkE++6BQERGDMXNLbho2M5daVFg4kaxYQ1Qa+dClP+kFLaiOTg8OY1/9zYB5rPDOj9KRF5QHcro7QFTs9MuWpXIoq+WCT+KNfgqNwnuLuRBQksNIJsamT0cLsFTgH/gACTdX0KSquRlumd2YtaAeaX4Doz1Vc89EJR8odp5JVrXy2LbEnz3B0BmuB7qu4AAF1rRPx1LpewfZVVz8gcxCXhBC+t9A==
+arc-authentication-results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
+ dkim=pass header.d=quicinc.com; arc=none
+x-ms-exchange-crosstenant-authas: Internal
+x-ms-exchange-crosstenant-authsource: BYAPR02MB4886.namprd02.prod.outlook.com
+x-ms-exchange-crosstenant-network-message-id: 1b152704-b964-454b-688f-08d8de988f58
+x-ms-exchange-crosstenant-originalarrivaltime: 03 Mar 2021 23:03:29.1627 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+x-ms-exchange-crosstenant-mailboxtype: HOSTED
+x-ms-exchange-crosstenant-userprincipalname: MtHaaU/8PiFu73pT3rYiPmGwyjhhBkTujv+kSxIp6fbQadPFMcD1/jtNZWUpm+OZzSAOTQHEU/viowwVdURWhA==
+x-ms-exchange-transport-crosstenantheadersstamped: BY5PR02MB6472
+x-originatororg: quicinc.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
- <20210302110955.1810487-2-edgar.iglesias@gmail.com>
-In-Reply-To: <20210302110955.1810487-2-edgar.iglesias@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 3 Mar 2021 17:47:59 -0500
-Message-ID: <CAKmqyKP01fXg6wPSnvomYOX8=AEh_w9oVLpmiu8uj6KkKxpUaA@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] hw/misc: versal: Add a model of the XRAM controller
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd2b.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=199.106.114.38; envelope-from=tsimpson@quicinc.com;
+ helo=alexa-out-sd-01.qualcomm.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>, joe.komlodi@xilinx.com,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- francisco.iglesias@xilinx.com, KONRAD Frederic <frederic.konrad@adacore.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1M+WLnVJmmPl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Sarah
+ Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, David
+ Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Jiaxun
+ Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Claudio Fontana <cfontana@suse.de>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: s+qf1iIW82Tt
 
-On Tue, Mar 2, 2021 at 6:12 AM Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
->
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Add a model of the Xilinx Versal Accelerator RAM (XRAM).
-> This is mainly a stub to make firmware happy. The size of
-> the RAMs can be probed. The interrupt mask logic is
-> modelled but none of the interrups will ever be raised
-> unless injected.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> ---
->  include/hw/misc/xlnx-versal-xramc.h | 102 +++++++++++
->  hw/misc/xlnx-versal-xramc.c         | 253 ++++++++++++++++++++++++++++
->  hw/misc/meson.build                 |   1 +
->  3 files changed, 356 insertions(+)
->  create mode 100644 include/hw/misc/xlnx-versal-xramc.h
->  create mode 100644 hw/misc/xlnx-versal-xramc.c
->
-> diff --git a/include/hw/misc/xlnx-versal-xramc.h b/include/hw/misc/xlnx-versal-xramc.h
-> new file mode 100644
-> index 0000000000..68163cf330
-> --- /dev/null
-> +++ b/include/hw/misc/xlnx-versal-xramc.h
-> @@ -0,0 +1,102 @@
-> +/*
-> + * QEMU model of the Xilinx XRAM Controller.
-> + *
-> + * Copyright (c) 2021 Xilinx Inc.
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> + */
-> +
-> +#ifndef XLNX_VERSAL_XRAMC_H
-> +#define XLNX_VERSAL_XRAMC_H
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/register.h"
-> +#include "qemu/bitops.h"
-> +#include "qemu/log.h"
-> +#include "migration/vmstate.h"
-> +#include "hw/irq.h"
-> +
-> +#define TYPE_XLNX_XRAM_CTRL "xlnx.versal-xramc"
-> +
-> +#define XLNX_XRAM_CTRL(obj) \
-> +     OBJECT_CHECK(XlnxXramCtrl, (obj), TYPE_XLNX_XRAM_CTRL)
-> +
-> +REG32(XRAM_ERR_CTRL, 0x0)
-> +    FIELD(XRAM_ERR_CTRL, UE_RES, 3, 1)
-> +    FIELD(XRAM_ERR_CTRL, PWR_ERR_RES, 2, 1)
-> +    FIELD(XRAM_ERR_CTRL, PZ_ERR_RES, 1, 1)
-> +    FIELD(XRAM_ERR_CTRL, APB_ERR_RES, 0, 1)
-> +REG32(XRAM_ISR, 0x4)
-> +    FIELD(XRAM_ISR, INV_APB, 0, 1)
-> +REG32(XRAM_IMR, 0x8)
-> +    FIELD(XRAM_IMR, INV_APB, 0, 1)
-> +REG32(XRAM_IEN, 0xc)
-> +    FIELD(XRAM_IEN, INV_APB, 0, 1)
-> +REG32(XRAM_IDS, 0x10)
-> +    FIELD(XRAM_IDS, INV_APB, 0, 1)
-> +REG32(XRAM_ECC_CNTL, 0x14)
-> +    FIELD(XRAM_ECC_CNTL, FI_MODE, 2, 1)
-> +    FIELD(XRAM_ECC_CNTL, DET_ONLY, 1, 1)
-> +    FIELD(XRAM_ECC_CNTL, ECC_ON_OFF, 0, 1)
-> +REG32(XRAM_CLR_EXE, 0x18)
-> +    FIELD(XRAM_CLR_EXE, MON_7, 7, 1)
-> +    FIELD(XRAM_CLR_EXE, MON_6, 6, 1)
-> +    FIELD(XRAM_CLR_EXE, MON_5, 5, 1)
-> +    FIELD(XRAM_CLR_EXE, MON_4, 4, 1)
-> +    FIELD(XRAM_CLR_EXE, MON_3, 3, 1)
-> +    FIELD(XRAM_CLR_EXE, MON_2, 2, 1)
-> +    FIELD(XRAM_CLR_EXE, MON_1, 1, 1)
-> +    FIELD(XRAM_CLR_EXE, MON_0, 0, 1)
-> +REG32(XRAM_CE_FFA, 0x1c)
-> +    FIELD(XRAM_CE_FFA, ADDR, 0, 20)
-> +REG32(XRAM_CE_FFD0, 0x20)
-> +REG32(XRAM_CE_FFD1, 0x24)
-> +REG32(XRAM_CE_FFD2, 0x28)
-> +REG32(XRAM_CE_FFD3, 0x2c)
-> +REG32(XRAM_CE_FFE, 0x30)
-> +    FIELD(XRAM_CE_FFE, SYNDROME, 0, 16)
-> +REG32(XRAM_UE_FFA, 0x34)
-> +    FIELD(XRAM_UE_FFA, ADDR, 0, 20)
-> +REG32(XRAM_UE_FFD0, 0x38)
-> +REG32(XRAM_UE_FFD1, 0x3c)
-> +REG32(XRAM_UE_FFD2, 0x40)
-> +REG32(XRAM_UE_FFD3, 0x44)
-> +REG32(XRAM_UE_FFE, 0x48)
-> +    FIELD(XRAM_UE_FFE, SYNDROME, 0, 16)
-> +REG32(XRAM_FI_D0, 0x4c)
-> +REG32(XRAM_FI_D1, 0x50)
-> +REG32(XRAM_FI_D2, 0x54)
-> +REG32(XRAM_FI_D3, 0x58)
-> +REG32(XRAM_FI_SY, 0x5c)
-> +    FIELD(XRAM_FI_SY, DATA, 0, 16)
-> +REG32(XRAM_RMW_UE_FFA, 0x70)
-> +    FIELD(XRAM_RMW_UE_FFA, ADDR, 0, 20)
-> +REG32(XRAM_FI_CNTR, 0x74)
-> +    FIELD(XRAM_FI_CNTR, COUNT, 0, 24)
-> +REG32(XRAM_IMP, 0x80)
-> +    FIELD(XRAM_IMP, SIZE, 0, 4)
-> +REG32(XRAM_PRDY_DBG, 0x84)
-> +    FIELD(XRAM_PRDY_DBG, ISLAND3, 12, 4)
-> +    FIELD(XRAM_PRDY_DBG, ISLAND2, 8, 4)
-> +    FIELD(XRAM_PRDY_DBG, ISLAND1, 4, 4)
-> +    FIELD(XRAM_PRDY_DBG, ISLAND0, 0, 4)
-> +REG32(XRAM_SAFETY_CHK, 0xff8)
-> +
-> +#define XRAM_CTRL_R_MAX (R_XRAM_SAFETY_CHK + 1)
-> +
-> +typedef struct XlnxXramCtrl {
-> +    SysBusDevice parent_obj;
-> +    MemoryRegion iomem;
-> +    MemoryRegion ram;
-> +    qemu_irq irq;
-> +
-> +    struct {
-> +        uint64_t size;
-> +        unsigned int encoded_size;
-> +    } cfg;
-> +
-> +    uint32_t regs[XRAM_CTRL_R_MAX];
-> +    RegisterInfo regs_info[XRAM_CTRL_R_MAX];
-> +} XlnxXramCtrl;
-> +#endif
-> diff --git a/hw/misc/xlnx-versal-xramc.c b/hw/misc/xlnx-versal-xramc.c
-> new file mode 100644
-> index 0000000000..c7f449fefa
-> --- /dev/null
-> +++ b/hw/misc/xlnx-versal-xramc.c
-> @@ -0,0 +1,253 @@
-> +/*
-> + * QEMU model of the Xilinx XRAM Controller.
-> + *
-> + * Copyright (c) 2021 Xilinx Inc.
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/units.h"
-> +#include "qemu/bitops.h"
-> +#include "qapi/error.h"
-> +#include "migration/vmstate.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/register.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/irq.h"
-> +#include "hw/misc/xlnx-versal-xramc.h"
-> +
-> +#ifndef XLNX_XRAM_CTRL_ERR_DEBUG
-> +#define XLNX_XRAM_CTRL_ERR_DEBUG 0
-> +#endif
-> +
-> +static void xram_update_irq(XlnxXramCtrl *s)
-> +{
-> +    bool pending = s->regs[R_XRAM_ISR] & ~s->regs[R_XRAM_IMR];
-> +    qemu_set_irq(s->irq, pending);
-> +}
-> +
-> +static void xram_isr_postw(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(reg->opaque);
-> +    xram_update_irq(s);
-> +}
-> +
-> +static uint64_t xram_ien_prew(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(reg->opaque);
-> +    uint32_t val = val64;
-> +
-> +    s->regs[R_XRAM_IMR] &= ~val;
-> +    xram_update_irq(s);
-> +    return 0;
-> +}
-> +
-> +static uint64_t xram_ids_prew(RegisterInfo *reg, uint64_t val64)
-> +{
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(reg->opaque);
-> +    uint32_t val = val64;
-> +
-> +    s->regs[R_XRAM_IMR] |= val;
-> +    xram_update_irq(s);
-> +    return 0;
-> +}
-> +
-> +static const RegisterAccessInfo xram_ctrl_regs_info[] = {
-> +    {   .name = "XRAM_ERR_CTRL",  .addr = A_XRAM_ERR_CTRL,
-> +        .reset = 0xf,
-> +        .rsvd = 0xfffffff0,
-> +    },{ .name = "XRAM_ISR",  .addr = A_XRAM_ISR,
-> +        .rsvd = 0xfffff800,
-> +        .w1c = 0x7ff,
-> +        .post_write = xram_isr_postw,
-> +    },{ .name = "XRAM_IMR",  .addr = A_XRAM_IMR,
-> +        .reset = 0x7ff,
-> +        .rsvd = 0xfffff800,
-> +        .ro = 0x7ff,
-> +    },{ .name = "XRAM_IEN",  .addr = A_XRAM_IEN,
-> +        .rsvd = 0xfffff800,
-> +        .pre_write = xram_ien_prew,
-> +    },{ .name = "XRAM_IDS",  .addr = A_XRAM_IDS,
-> +        .rsvd = 0xfffff800,
-> +        .pre_write = xram_ids_prew,
-> +    },{ .name = "XRAM_ECC_CNTL",  .addr = A_XRAM_ECC_CNTL,
-> +        .rsvd = 0xfffffff8,
-> +    },{ .name = "XRAM_CLR_EXE",  .addr = A_XRAM_CLR_EXE,
-> +        .rsvd = 0xffffff00,
-> +    },{ .name = "XRAM_CE_FFA",  .addr = A_XRAM_CE_FFA,
-> +        .rsvd = 0xfff00000,
-> +        .ro = 0xfffff,
-> +    },{ .name = "XRAM_CE_FFD0",  .addr = A_XRAM_CE_FFD0,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_CE_FFD1",  .addr = A_XRAM_CE_FFD1,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_CE_FFD2",  .addr = A_XRAM_CE_FFD2,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_CE_FFD3",  .addr = A_XRAM_CE_FFD3,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_CE_FFE",  .addr = A_XRAM_CE_FFE,
-> +        .rsvd = 0xffff0000,
-> +        .ro = 0xffff,
-> +    },{ .name = "XRAM_UE_FFA",  .addr = A_XRAM_UE_FFA,
-> +        .rsvd = 0xfff00000,
-> +        .ro = 0xfffff,
-> +    },{ .name = "XRAM_UE_FFD0",  .addr = A_XRAM_UE_FFD0,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_UE_FFD1",  .addr = A_XRAM_UE_FFD1,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_UE_FFD2",  .addr = A_XRAM_UE_FFD2,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_UE_FFD3",  .addr = A_XRAM_UE_FFD3,
-> +        .ro = 0xffffffff,
-> +    },{ .name = "XRAM_UE_FFE",  .addr = A_XRAM_UE_FFE,
-> +        .rsvd = 0xffff0000,
-> +        .ro = 0xffff,
-> +    },{ .name = "XRAM_FI_D0",  .addr = A_XRAM_FI_D0,
-> +    },{ .name = "XRAM_FI_D1",  .addr = A_XRAM_FI_D1,
-> +    },{ .name = "XRAM_FI_D2",  .addr = A_XRAM_FI_D2,
-> +    },{ .name = "XRAM_FI_D3",  .addr = A_XRAM_FI_D3,
-> +    },{ .name = "XRAM_FI_SY",  .addr = A_XRAM_FI_SY,
-> +        .rsvd = 0xffff0000,
-> +    },{ .name = "XRAM_RMW_UE_FFA",  .addr = A_XRAM_RMW_UE_FFA,
-> +        .rsvd = 0xfff00000,
-> +        .ro = 0xfffff,
-> +    },{ .name = "XRAM_FI_CNTR",  .addr = A_XRAM_FI_CNTR,
-> +        .rsvd = 0xff000000,
-> +    },{ .name = "XRAM_IMP",  .addr = A_XRAM_IMP,
-> +        .reset = 0x4,
-> +        .rsvd = 0xfffffff0,
-> +        .ro = 0xf,
-> +    },{ .name = "XRAM_PRDY_DBG",  .addr = A_XRAM_PRDY_DBG,
-> +        .reset = 0xffff,
-> +        .rsvd = 0xffff0000,
-> +        .ro = 0xffff,
-> +    },{ .name = "XRAM_SAFETY_CHK",  .addr = A_XRAM_SAFETY_CHK,
-> +    }
-> +};
-> +
-> +static void xram_ctrl_reset_enter(Object *obj, ResetType type)
-> +{
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
-> +    unsigned int i;
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-> +        register_reset(&s->regs_info[i]);
-> +    }
-> +
-> +    ARRAY_FIELD_DP32(s->regs, XRAM_IMP, SIZE, s->cfg.encoded_size);
-> +}
-> +
-> +static void xram_ctrl_reset_hold(Object *obj)
-> +{
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
-> +
-> +    xram_update_irq(s);
-> +}
-> +
-> +static const MemoryRegionOps xram_ctrl_ops = {
-> +    .read = register_read_memory,
-> +    .write = register_write_memory,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
-> +    },
-> +};
-> +
-> +static void xram_ctrl_realize(DeviceState *dev, Error **errp)
-> +{
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(dev);
-> +
-> +    switch (s->cfg.size) {
-> +    case 64 * KiB:
-> +        s->cfg.encoded_size = 0;
-> +        break;
-> +    case 128 * KiB:
-> +        s->cfg.encoded_size = 1;
-> +        break;
-> +    case 256 * KiB:
-> +        s->cfg.encoded_size = 2;
-> +        break;
-> +    case 512 * KiB:
-> +        s->cfg.encoded_size = 3;
-> +        break;
-> +    case 1 * MiB:
-> +        s->cfg.encoded_size = 4;
-> +        break;
-> +    default:
-> +        error_setg(errp, "Unsupported XRAM size %" PRId64, s->cfg.size);
-> +        return;
-> +    }
-> +
-> +    memory_region_init_ram(&s->ram, OBJECT(s),
-> +                           object_get_canonical_path_component(OBJECT(s)),
-> +                           s->cfg.size, &error_fatal);
-> +    sysbus_init_mmio(sbd, &s->ram);
-> +}
-> +
-> +static void xram_ctrl_init(Object *obj)
-> +{
-> +    XlnxXramCtrl *s = XLNX_XRAM_CTRL(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    RegisterInfoArray *reg_array;
-> +
-> +    memory_region_init(&s->iomem, obj, TYPE_XLNX_XRAM_CTRL,
-> +                       XRAM_CTRL_R_MAX * 4);
-> +    reg_array =
-> +        register_init_block32(DEVICE(obj), xram_ctrl_regs_info,
-> +                              ARRAY_SIZE(xram_ctrl_regs_info),
-> +                              s->regs_info, s->regs,
-> +                              &xram_ctrl_ops,
-> +                              XLNX_XRAM_CTRL_ERR_DEBUG,
-> +                              XRAM_CTRL_R_MAX * 4);
-> +    memory_region_add_subregion(&s->iomem,
-> +                                0x0,
-> +                                &reg_array->mem);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    sysbus_init_irq(sbd, &s->irq);
-> +}
-> +
-> +static const VMStateDescription vmstate_xram_ctrl = {
-> +    .name = TYPE_XLNX_XRAM_CTRL,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(regs, XlnxXramCtrl, XRAM_CTRL_R_MAX),
-> +        VMSTATE_END_OF_LIST(),
-> +    }
-> +};
-> +
-> +static Property xram_ctrl_properties[] = {
-> +    DEFINE_PROP_UINT64("size", XlnxXramCtrl, cfg.size, 1 * MiB),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void xram_ctrl_class_init(ObjectClass *klass, void *data)
-> +{
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->realize = xram_ctrl_realize;
-> +    dc->vmsd = &vmstate_xram_ctrl;
-> +    device_class_set_props(dc, xram_ctrl_properties);
-> +
-> +    rc->phases.enter = xram_ctrl_reset_enter;
-> +    rc->phases.hold = xram_ctrl_reset_hold;
-> +}
-> +
-> +static const TypeInfo xram_ctrl_info = {
-> +    .name          = TYPE_XLNX_XRAM_CTRL,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(XlnxXramCtrl),
-> +    .class_init    = xram_ctrl_class_init,
-> +    .instance_init = xram_ctrl_init,
-> +};
-> +
-> +static void xram_ctrl_register_types(void)
-> +{
-> +    type_register_static(&xram_ctrl_info);
-> +}
-> +
-> +type_init(xram_ctrl_register_types)
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 629283957f..fbc4789249 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -85,6 +85,7 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
->  ))
->  softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
->  softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c', 'zynq-xadc.c'))
-> +softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-xramc.c'))
->  softmmu_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
->  softmmu_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
->  softmmu_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_exti.c'))
-> --
-> 2.25.1
->
->
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGhpbGlwcGUgTWF0aGll
+dS1EYXVkw6kgPHBoaWxpcHBlLm1hdGhpZXUuZGF1ZGVAZ21haWwuY29tPiBPbg0KPiBCZWhhbGYg
+T2YgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kNCj4gU2VudDogVHVlc2RheSwgTWFyY2ggMiwgMjAy
+MSA0OjI4IEFNDQo+IFRvOiBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IFlvc2hpbm9yaSBT
+YXRvIDx5c2F0b0B1c2Vycy5zb3VyY2Vmb3JnZS5qcD47IENocmlzIFd1bGZmDQo+IDxjcnd1bGZm
+QGdtYWlsLmNvbT47IHFlbXUtcHBjQG5vbmdudS5vcmc7IE1hcmNlbCBBcGZlbGJhdW0NCj4gPG1h
+cmNlbC5hcGZlbGJhdW1AZ21haWwuY29tPjsgR3JlZyBLdXJ6IDxncm91Z0BrYW9kLm9yZz47IHFl
+bXUtDQo+IHJpc2N2QG5vbmdudS5vcmc7IFJpY2hhcmQgSGVuZGVyc29uIDxyaWNoYXJkLmhlbmRl
+cnNvbkBsaW5hcm8ub3JnPjsNCj4gUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8u
+b3JnPjsgTWljaGFlbCBXYWxsZQ0KPiA8bWljaGFlbEB3YWxsZS5jYz47IFBhbG1lciBEYWJiZWx0
+IDxwYWxtZXJAZGFiYmVsdC5jb20+OyBTYXJhaCBIYXJyaXMNCj4gPFMuRS5IYXJyaXNAa2VudC5h
+Yy51az47IEFudGhvbnkgR3JlZW4gPGdyZWVuQG1veGllbG9naWMuY29tPjsNCj4gRWR1YXJkbyBI
+YWJrb3N0IDxlaGFia29zdEByZWRoYXQuY29tPjsgQmFzdGlhbiBLb3BwZWxtYW5uDQo+IDxrYmFz
+dGlhbkBtYWlsLnVuaS1wYWRlcmJvcm4uZGU+OyBMYXVyZW50IFZpdmllciA8bGF1cmVudEB2aXZp
+ZXIuZXU+Ow0KPiBFZGdhciBFLiBJZ2xlc2lhcyA8ZWRnYXIuaWdsZXNpYXNAZ21haWwuY29tPjsg
+Q2xhdWRpbyBGb250YW5hDQo+IDxjZm9udGFuYUBzdXNlLmRlPjsgQXJ0eW9tIFRhcmFzZW5rbyA8
+YXRhcjRxZW11QGdtYWlsLmNvbT47IHFlbXUtDQo+IHMzOTB4QG5vbmdudS5vcmc7IFRob21hcyBI
+dXRoIDx0aHV0aEByZWRoYXQuY29tPjsgUGFvbG8gQm9uemluaQ0KPiA8cGJvbnppbmlAcmVkaGF0
+LmNvbT47IENvcm5lbGlhIEh1Y2sgPGNvaHVja0ByZWRoYXQuY29tPjsgVGF5bG9yDQo+IFNpbXBz
+b24gPHRzaW1wc29uQHF1aWNpbmMuY29tPjsgQWxpc3RhaXIgRnJhbmNpcw0KPiA8QWxpc3RhaXIu
+RnJhbmNpc0B3ZGMuY29tPjsgTWljaGFlbCBSb2xuaWsgPG1yb2xuaWtAZ21haWwuY29tPjsgRGF2
+aWQNCj4gSGlsZGVuYnJhbmQgPGRhdmlkQHJlZGhhdC5jb20+OyBBbGVrc2FuZGFyIFJpa2Fsbw0K
+PiA8YWxla3NhbmRhci5yaWthbG9Ac3lybWlhLmNvbT47IFN0YWZmb3JkIEhvcm5lIDxzaG9ybmVA
+Z21haWwuY29tPjsNCj4gSmlheHVuIFlhbmcgPGppYXh1bi55YW5nQGZseWdvYXQuY29tPjsgTWFy
+ZWsgVmFzdXQgPG1hcmV4QGRlbnguZGU+Ow0KPiBNYXJrIENhdmUtQXlsYW5kIDxtYXJrLmNhdmUt
+YXlsYW5kQGlsYW5kZS5jby51az47IFBoaWxpcHBlIE1hdGhpZXUtDQo+IERhdWTDqSA8ZjRidWdA
+YW1zYXQub3JnPjsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgRGF2aWQgR2lic29uDQo+IDxkYXZpZEBn
+aWJzb24uZHJvcGJlYXIuaWQuYXU+OyBTYWdhciBLYXJhbmRpa2FyDQo+IDxzYWdhcmtAZWVjcy5i
+ZXJrZWxleS5lZHU+OyBHdWFuIFh1ZXRhbyA8Z3h0QG1wcmMucGt1LmVkdS5jbj47IE1heA0KPiBG
+aWxpcHBvdiA8amNtdmJrYmNAZ21haWwuY29tPjsgQXVyZWxpZW4gSmFybm8gPGF1cmVsaWVuQGF1
+cmVsMzIubmV0Pg0KPiBTdWJqZWN0OiBbUkZDIFBBVENIIDYvN10gY3B1OiBNb3ZlIENQVUNsYXNz
+OjpoYXNfd29yaygpIHRvIFRDR0NQVU9wcw0KPg0KPiBkaWZmIC0tZ2l0IGEvdGFyZ2V0L2hleGFn
+b24vY3B1LmMgYi90YXJnZXQvaGV4YWdvbi9jcHUuYw0KPiBpbmRleCBiMGIzMDQwZGQxMy4uZDU5
+N2ZlMTJjZGYgMTAwNjQ0DQo+IC0tLSBhL3RhcmdldC9oZXhhZ29uL2NwdS5jDQo+ICsrKyBiL3Rh
+cmdldC9oZXhhZ29uL2NwdS5jDQo+IEBAIC0yNjgsNiArMjY4LDcgQEAgc3RhdGljIGJvb2wgaGV4
+YWdvbl90bGJfZmlsbChDUFVTdGF0ZSAqY3MsIHZhZGRyDQo+IGFkZHJlc3MsIGludCBzaXplLA0K
+Pg0KPiAgc3RhdGljIHN0cnVjdCBUQ0dDUFVPcHMgaGV4YWdvbl90Y2dfb3BzID0gew0KPiAgICAg
+IC5pbml0aWFsaXplID0gaGV4YWdvbl90cmFuc2xhdGVfaW5pdCwNCj4gKyAgICAuaGFzX3dvcmsg
+PSBoZXhhZ29uX2NwdV9oYXNfd29yaywNCj4gICAgICAuc3luY2hyb25pemVfZnJvbV90YiA9IGhl
+eGFnb25fY3B1X3N5bmNocm9uaXplX2Zyb21fdGIsDQo+ICAgICAgLnRsYl9maWxsID0gaGV4YWdv
+bl90bGJfZmlsbCwNCj4gIH07DQo+IEBAIC0yODQsNyArMjg1LDYgQEAgc3RhdGljIHZvaWQgaGV4
+YWdvbl9jcHVfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqYywNCj4gdm9pZCAqZGF0YSkNCj4gICAg
+ICBkZXZpY2VfY2xhc3Nfc2V0X3BhcmVudF9yZXNldChkYywgaGV4YWdvbl9jcHVfcmVzZXQsICZt
+Y2MtDQo+ID5wYXJlbnRfcmVzZXQpOw0KPg0KPiAgICAgIGNjLT5jbGFzc19ieV9uYW1lID0gaGV4
+YWdvbl9jcHVfY2xhc3NfYnlfbmFtZTsNCj4gLSAgICBjYy0+aGFzX3dvcmsgPSBoZXhhZ29uX2Nw
+dV9oYXNfd29yazsNCj4gICAgICBjYy0+ZHVtcF9zdGF0ZSA9IGhleGFnb25fZHVtcF9zdGF0ZTsN
+Cj4gICAgICBjYy0+c2V0X3BjID0gaGV4YWdvbl9jcHVfc2V0X3BjOw0KPiAgICAgIGNjLT5nZGJf
+cmVhZF9yZWdpc3RlciA9IGhleGFnb25fZ2RiX3JlYWRfcmVnaXN0ZXI7DQoNClJldmlld2VkLWJ5
+OiBUYXlsb3IgU2ltcHNvbiA8dHNpbXBzb25AcXVpY2luYy5jb20+DQo=

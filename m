@@ -1,71 +1,71 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5705954lfg;
-        Wed, 3 Mar 2021 13:47:37 -0800 (PST)
-X-Received: by 2002:adf:9bca:: with SMTP id e10mr777179wrc.364.1614808056933;
-        Wed, 03 Mar 2021 13:47:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614808056; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5705987lfg;
+        Wed, 3 Mar 2021 13:47:42 -0800 (PST)
+X-Received: by 2002:adf:ee8f:: with SMTP id b15mr754389wro.314.1614808062168;
+        Wed, 03 Mar 2021 13:47:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614808062; cv=none;
         d=google.com; s=arc-20160816;
-        b=hvqE9vYO0IctcokuSWK5xraHge0TvS8szwaLZFt2t/YulokpFFm4E8AFatQucdyuhk
-         1bgyM9OcDLHx5DPJy0JE47PpTiQzY0on01qat/X+2VN7ungASy0CK4LQ/Rmw6O7UatG+
-         mnFSUh+xYuZZmDjjNC3wgj0iar8qJ6Y4Uu3LClVT4Vtwkzm0hckUGwoo0lzrJdLRS+Fr
-         m2CgjWGmWF4yBr13wH7O6Ts3nE4Wf5NuctVqTv5RCOB2Mg+VUDE2ohM4L1umxkSLiO/k
-         VWFDbdJmchtE6ESHYrYC6arHAlcfbIeBjE3EkMkKkbmhnKn6Ngj31NtLwzH5FsVCnI6W
-         iP5w==
+        b=GI935TAum16KWr6ej8lbrF1HfzMLQKJ//GbRnpSXH8Sdj5u/EzAacuM1StFW20fPwi
+         m7cX8+SzALAmjigGCfv45teZqjb2sClyZYolDeBxD9KCjiPHE1Rl4iIkCD+Y9De6xDQR
+         2m9IXhyeQDT0NSp+DlKgUD4mIFTJX/u8Qwa/vib8HG+O10wJqwD6lo9A3u0w2RFsydUX
+         bOG78KdF/tLoOkdfYiLINY0GT65CLDsHGLwEuwbP8WtXoPeH4J/HV6WPxwog4CcL8OZa
+         ilx3TybYZ9/un49ZDxgh6EvAneH3V+qeekoHU3TX9Gz7yuuOIxlH1xImerb6ZTlE0eAT
+         wCjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
-        b=meM2secL1WrwKTPSv3izmhm8OUGItsJSh1lk3c6vHwhtTGtXjR04TMLYnmD6+8OHPz
-         6ldfdX3TN1ZNuANMMBEt72Y4q+ZvDH8BNio9o1Wfm7phQn9ckmkoWsVmVSWnXIe60j/P
-         93zaQoki3fRgcbqF7sYal/BeyrDEIL+uhDXYVdHcrfRITIHNBcPc4y2favsIaqH5N8nJ
-         b+kJY6DQSavm/Mil9hh7b2cd4uAP3Plz2yIhhWRG1mAtSTUAvIa03wLDe2va7c2Eb7nM
-         EdygMqeJFYvf0OX1H3Hoy+MY0k/YrSgdqaimCjAZ25ALA/Jo6PTWB5B3gUl4EHvhHlEe
-         Cs7Q==
+        bh=iDkHmNWDJUjsisDNEA+tDXF79jqbgWv+Yeaa+F2Cdm4=;
+        b=M9nnNsab73UkwEiH/rL5Im8SpCD38j1YBl1Pf1AvZAeAReHSyKWMDRvKfYvkfCdXJw
+         0Imy8qL5zm1YhBAK+Hlr04d2hmJ42PWzOHcXCMxPOUBO2da7EpEQbhViw9q7L1bFyBlN
+         AH/KzQvI+ydLUaVenLilW90pA2m++LEDr7hFiAhBCiahQ10BPaw0ioY8eRsgJqC242AN
+         EEemtB7E72oMOpJfdvzzFYddzXbqv3mbVsS9EL7Jri+6jMqXrMcBGOkFvstbiu5ZbMYb
+         S3/YXNPVNjQqN45tHkJWtPm0KlWAc9sRIIlH6r//MarhBQIRIj8KJQSL/ggaEpipOCpD
+         L/Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sXWy4MUA;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZgbC2jy6;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a13sor7427914wrt.21.2021.03.03.13.47.36
+        by mx.google.com with SMTPS id z18sor4212990wmf.14.2021.03.03.13.47.42
         (Google Transport Security);
-        Wed, 03 Mar 2021 13:47:36 -0800 (PST)
+        Wed, 03 Mar 2021 13:47:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sXWy4MUA;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZgbC2jy6;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
-        b=sXWy4MUACGSPd5NPgWXirQrkFX+fN6+K9/FZbmETAlGkcqp9FiygCi31bkTrCoJbj7
-         Jfo6zVqQJzWbYtuhbNcLpyAf7HX5TBRNw/yQAlGkoS8emkCU3otkO0UtRrXnjl9d7vkM
-         wjLRDOf6yaWNxB45UKkCY1Npx6GrM25/H1aqWZekSWNYASr7QqG2rk+ED+nciimTfwd1
-         TdZVcTicRlHbda5DJ0VU8Df95AkI90VVEr0aJgElN0CnQaY45+x75+bko/r0XicA9f9m
-         bxvuPgVeOFzMQ3MNuhTYQFWTNEQlW8H69wzskpLmGnioyime3W5KpO2n9IU6lRvzllCl
-         zLCg==
+        bh=iDkHmNWDJUjsisDNEA+tDXF79jqbgWv+Yeaa+F2Cdm4=;
+        b=ZgbC2jy6AG+RLur1BjIecSk+qs2lJQd1qYBzQYFFcQVKLdTR2adqVQhR+BNuxjrOn0
+         RovMZS38gTe2c5ML2yGa47NrUOeUfVBG0t3wHT4Yl1LTYeflXoiOlJIyeoElw/1E8rsx
+         WiED4I0tprqnt2AzsUZIz0lIEVwncf+7i0er2v24jxYE9M8PxZ25o+p3M5GVrcSFFd9U
+         H9qJHKUhtx+dY6DO7M6iKmiBb4bgCqJRnqkjIKsn1mAibxOlp+NPbOPeFHQzUQn9bi+Z
+         Vx3OaOKBcnYKDLDoKDEvdLHr15dwbiuJra+ps/y+7KCVXeatb0ZSrV2FWBbw+ulzwR6a
+         erGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=yI5v3ChjpgUoMVznW3/vQVCaXLpm+f+cFTMRG3SQklk=;
-        b=e6HUib5P9TrRZiAktCrei4XUUW/dWnNiY0UrG+XVT2R82E+c37y0AfHTP0GYgNMfLU
-         cRj9GwwO0hioDvzKdZaHZIGuUEp6gb6A8VKy1BNcxEJNr9/hx7RXEG+1Vm/D86kZt4Gp
-         linhBs6W4hQ8wAm5ku0y4IM50GAXYGA37T6zjlNklFSDvih04vrawidNa8kZkJxEHb9y
-         Id6v0Y8RtdUUjRgXofimZbsWDx5UzTCcdOszj7ct2/cqsYj3+hxXfgNUp0k93y+5nvU0
-         xULVr1xgAbfAzWAqkbIYH6C7f844ipuax6nxPa7UNfGI8aEb5ba+cSiaLzrkq9toSSj9
-         KZIw==
-X-Gm-Message-State: AOAM533FLa2lATiIYPU5b6DZ5Tmmt2jHZlzS3Z5JCVJG7sg8LExcNApw
-	WmZThfpULKSIHDGXk0izNnU=
-X-Google-Smtp-Source: ABdhPJxqIH0Ww3giDB0byK+vFGzlNSpnTwVJ2DfY3n21Z3+TTxvouratr/T8dvTbD0znc0f84r1NpQ==
-X-Received: by 2002:a5d:53c8:: with SMTP id a8mr652242wrw.323.1614808056742;
-        Wed, 03 Mar 2021 13:47:36 -0800 (PST)
+        bh=iDkHmNWDJUjsisDNEA+tDXF79jqbgWv+Yeaa+F2Cdm4=;
+        b=nJPn4EoHV3YT5uKX2opVq9sZxhhP9mzNglx1EmxN2iqwEUG+2VCBzHgQK+aaBxYSWm
+         alSg+lwpbOWhouqUO+bSmOBx+A8VEK7oZJVaFK27NLEttmrmNDyqZQFpZgiDc94MXbPs
+         VKX9gsddFNzSOnOp1Yk2iC2xqfdqn3uyPmaZGrPgACvPlzYt0ikQLFzsO0/LeVL16N/C
+         ZeFMIXPGxDYCPejqjODqNbDVvdcTKlooZ9GFKFGYan3OeIM1c66G/KHtVBJIe70pvzZY
+         Jkrwt4brcJHC3AgM0ONhBUGBbqGySkiUraiYG6VxDBr5r34gm0hR9V7nNFopd/0mUqNl
+         UfCA==
+X-Gm-Message-State: AOAM5307BrThqkKYpy6ok+6iu0T27yGVqL+nhZpP7wsvBOUlBvR9n91X
+	zf9aPZqgvGbOQ5DueMZqdLo=
+X-Google-Smtp-Source: ABdhPJyFd5xk9OkNc9a2uHS1GRZjG6YVKtiIkDjU8POlwni8ZQ8Ge8hXSIMDlcTDzIJM24ntPHcndA==
+X-Received: by 2002:a7b:cd04:: with SMTP id f4mr812149wmj.81.1614808061943;
+        Wed, 03 Mar 2021 13:47:41 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id w18sm7480294wrr.7.2021.03.03.13.47.35
+        by smtp.gmail.com with ESMTPSA id g9sm6935176wmq.25.2021.03.03.13.47.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Mar 2021 13:47:36 -0800 (PST)
+        Wed, 03 Mar 2021 13:47:41 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -83,57 +83,60 @@ Cc: Claudio Fontana <cfontana@suse.de>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v4 05/28] cpu: Directly use get_paging_enabled() fallback handlers in place
-Date: Wed,  3 Mar 2021 22:46:45 +0100
-Message-Id: <20210303214708.1727801-6-f4bug@amsat.org>
+Subject: [PATCH v4 06/28] cpu: Directly use get_memory_mapping() fallback handlers in place
+Date: Wed,  3 Mar 2021 22:46:46 +0100
+Message-Id: <20210303214708.1727801-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210303214708.1727801-1-f4bug@amsat.org>
 References: <20210303214708.1727801-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ToQ/+2TN8E83
+X-TUID: vWXsoLKafGjF
 
-No code uses CPUClass::get_paging_enabled() outside of hw/core/cpu.c:
+No code uses CPUClass::get_memory_mapping() outside of hw/core/cpu.c:
 
-  $ git grep -F -- '->get_paging_enabled'
-  hw/core/cpu.c:74:    return cc->get_paging_enabled(cpu);
-  hw/core/cpu.c:438:    k->get_paging_enabled = cpu_common_get_paging_enabled;
-  target/i386/cpu.c:7418:    cc->get_paging_enabled = x86_cpu_get_paging_enabled;
+  $ git grep -F -- '->get_memory_mapping'
+  hw/core/cpu.c:87:    cc->get_memory_mapping(cpu, list, errp);
+  hw/core/cpu.c:439:    k->get_memory_mapping = cpu_common_get_memory_mapping;
+  target/i386/cpu.c:7422:    cc->get_memory_mapping = x86_cpu_get_memory_mapping;
 
 Check the handler presence in place and remove the common fallback code.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/core/cpu.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ hw/core/cpu.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
 diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-index a9ee2c74ec5..1de00bbb474 100644
+index 1de00bbb474..5abf8bed2e4 100644
 --- a/hw/core/cpu.c
 +++ b/hw/core/cpu.c
-@@ -71,11 +71,10 @@ bool cpu_paging_enabled(const CPUState *cpu)
+@@ -83,13 +83,11 @@ void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
  {
      CPUClass *cc = CPU_GET_CLASS(cpu);
  
--    return cc->get_paging_enabled(cpu);
+-    cc->get_memory_mapping(cpu, list, errp);
 -}
-+    if (cc->get_paging_enabled) {
-+        return cc->get_paging_enabled(cpu);
++    if (cc->get_memory_mapping) {
++        cc->get_memory_mapping(cpu, list, errp);
++        return;
 +    }
  
--static bool cpu_common_get_paging_enabled(const CPUState *cpu)
+-static void cpu_common_get_memory_mapping(CPUState *cpu,
+-                                          MemoryMappingList *list,
+-                                          Error **errp)
 -{
-     return false;
+     error_setg(errp, "Obtaining memory mappings is unsupported on this CPU.");
  }
  
-@@ -420,7 +419,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+@@ -419,7 +417,6 @@ static void cpu_class_init(ObjectClass *klass, void *data)
      k->parse_features = cpu_common_parse_features;
      k->get_arch_id = cpu_common_get_arch_id;
      k->has_work = cpu_common_has_work;
--    k->get_paging_enabled = cpu_common_get_paging_enabled;
-     k->get_memory_mapping = cpu_common_get_memory_mapping;
+-    k->get_memory_mapping = cpu_common_get_memory_mapping;
      k->gdb_read_register = cpu_common_gdb_read_register;
      k->gdb_write_register = cpu_common_gdb_write_register;
+     set_bit(DEVICE_CATEGORY_CPU, dc->categories);
 -- 
 2.26.2

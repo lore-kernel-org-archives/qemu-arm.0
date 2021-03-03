@@ -1,102 +1,96 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4953028lfg;
-        Tue, 2 Mar 2021 17:23:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzVMP4vbPRQCDN34UPibHhyGIUUrVG3grQ3zDI9vKE+0I2TsZblmgl+VWHJYYvLj4OZ/Niy
-X-Received: by 2002:a37:815:: with SMTP id 21mr4357365qki.188.1614734618276;
-        Tue, 02 Mar 2021 17:23:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614734618; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5122553lfg;
+        Tue, 2 Mar 2021 23:04:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJznQKzYZeMGr2xtFFgitTJ+sfUpFoUk2VOZ925xAC29IMIyiQAsS8m6BLXesa6u54C4VrgM
+X-Received: by 2002:a4a:e643:: with SMTP id q3mr12306483oot.46.1614755073492;
+        Tue, 02 Mar 2021 23:04:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614755073; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wv36uLpQy0ZT+JN+HaGCZUAcwR/nUBs3BqkW11L8ya33k1G8msV9ScF3YpCGklUOVN
-         uGA3L2W0LtUbzHiiEqWomIgz0Jo+1K4Td3+rd7mbVN+PVV8CW02AJASvAnp/OMa4s9oE
-         c8Wr9IDC7uJxkmNkj/bDjDQDaJ97RrtbyfP0+uZ8pvLVVnJ4sJ1Dg/PBQw+JB4+7ZH+7
-         WR2YoceG3KkegDS6EyhPSrqZQ5Ox8KE4djjraz8m3Dva0SXDZU1h+ibwFlmwYis/khyz
-         4ACOLAdkznw5hgzo3AkEwMYpTsM6/fwWEOzkTy6hpbj5Q9UIpzwxPUFWv+3vBfkMpvao
-         xcEg==
+        b=MYHa/0DafqcvjOhstquN0TSZBvpBnGfbjwYeBuXEG/2SLowEKRg7oc/DWdCgeLmSyY
+         ZoFGJQ6enOuZut2KJYv43AzqahO1c/Dt44QV6Db6CRSSXClzKg/qSRCG+OnqogQt3/N9
+         b5r4Kj6I4a3po5BR5i9HAW3vY0fUo5oSQ6W48zhwQU6fEQPrXTyEK/37dB8weGwjuFZ2
+         ifkDpgYDm83yG3TYvZ6l6uHw6Nv6GLgB9hphVOM7AFcvYczgKNSstntYOmIF+rbTFZC3
+         KMyxK4lee1jTGp7oJx4koWHcKOW9ikzLH6TQ1BTEbEb72R7sJovgG0Yo2YBwsIeGSvtU
+         SezQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=uM/kLAy3pF3zoZCkKG6MBBFV1LbwtvhEjhGFlqs5Mcg=;
-        b=oXhbBFhKek89q5ObMInjZVcsJC+U3YJBdD728ADIyfHXJnYW+cZUSSZFRGOkhavvKx
-         nu5W6qwc3/s/BjqqRDjbKNePaWlO/EPjVBRTAOqtuM2P30w/elvxQ+yr2AX0YTlWJqcn
-         1+rBH/FoxMJ9LLEq/gu8TyJiKLHrWS6ai/4YKnkmuxO9JzNRWgOppYpm0Vrqa0vUILTb
-         gyAa8tmaBLAJAU/T9XLDYPy7I7GeUX0WkGIIgNDlI7bgeSes/9aXXxE+CDgp4bw1NJ9T
-         YAOnGJFRsqjB/aSxpTFtggGTMB09TPdDmJXt7+jZ23gHODaPLT6RNsBlg/AfiLBzWgMc
-         zr7A==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=h8K8eTWje5tNK4YJ0OoQ9oKrWVNXVUYvkKK/tjQS2Ag=;
+        b=saNzdJtk51MmtzkIin7K5vxTer1VlkT/jFCgtQ+2F3OmwK0w0DxcBQKBI8Iut14iaF
+         KgfS8RScdHi15cLa0qivz2UPuGY0ZnjnRP2cooS3G+x62trP+o38aphYPTdTX5lSkepw
+         4DKHm3nwezzLJEo+WXWAvTXUdLrhJuaN4onID7pZIaY57KUBeo/ekh4Al/tpvALIwO1w
+         zdQNsC99hDkIIsGhxsjYxc4rLsw1/O/dwFXZ3eO9N2S6ViyrBU1V2aFbmiCvHdtwPNBC
+         GM6mDDXbIBEGkYdcWkuVhLAxhmT2FI1OOUNisB2+LJjFoAHibLnaaTTuAYqdPhCtC19e
+         2Iig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UeHpv40F;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r663nW48;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4si8102947qvn.131.2021.03.02.17.23.38
+        by mx.google.com with ESMTPS id x22si21002494ote.167.2021.03.02.23.04.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 17:23:38 -0800 (PST)
+        Tue, 02 Mar 2021 23:04:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UeHpv40F;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r663nW48;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50764 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43682 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHGEj-00089v-2k
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 20:23:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47030)
+	id 1lHLYe-0004y5-Mt
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 02:04:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49494)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHGDk-00088q-Gu; Tue, 02 Mar 2021 20:22:36 -0500
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:39143)
+ id 1lHLY1-0004xQ-35; Wed, 03 Mar 2021 02:03:53 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631]:37447)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHGDi-0003bN-Vh; Tue, 02 Mar 2021 20:22:36 -0500
-Received: by mail-pg1-x532.google.com with SMTP id x29so6870800pgk.6;
- Tue, 02 Mar 2021 17:22:34 -0800 (PST)
+ id 1lHLXz-0007gN-I1; Wed, 03 Mar 2021 02:03:52 -0500
+Received: by mail-pl1-x631.google.com with SMTP id p5so13523000plo.4;
+ Tue, 02 Mar 2021 23:03:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=uM/kLAy3pF3zoZCkKG6MBBFV1LbwtvhEjhGFlqs5Mcg=;
- b=UeHpv40FFU5Gyr9jspIA2JDTRqHI1TeBOtM6NsM/fYsbE+JrV8bZ8YG/4G3zDqCU3R
- mQYqRAtaWB3tEfLgIiU5OHwpa0FtJz+r+CbtrIdaqwXgL6h5XCkeNOkCaxcDK0bq8Wm2
- dLngNfHQ1S6ZYVf1IeKzae3oZWl0HDKkxN+n1JpGwIu5G2nTlEcTzV8pZsiXNJGt/8sp
- VvW3jMnrwwubCmOXkuza0Rc0C96xMJmBOHLpZFMZ9cgyaUATo0dvO2QEEY70IlYomsou
- eKJbZJRpiWb55INNjA06Bkbu9gliqNW4+VAEvYLxqZ8+q1/RWeH9ZZdQr5JaDAQUzMvs
- L+PQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=h8K8eTWje5tNK4YJ0OoQ9oKrWVNXVUYvkKK/tjQS2Ag=;
+ b=r663nW4810/l3feTZOyhArOFtZw31pyxe1o1manjMleYQ7oElPWJ5U0ENsvL3kO+uv
+ Boz7fCEHHpzbV5evwf2UpoaGHDHN2RdXgQ4WaUgxhB2fTi2dN+vk1LBhDDPDoK9P0Xc9
+ qryR7k8r7KpJXwxC1ooXSUG1qke6RNL111whHo7VtNgk8XY+xuUMc+y6Ou51CrjfkTyN
+ PvsDhwlDMSf4sBbzHcuNzgkfw0YtYQFCUepVsDAHWAfSrH9dEH7+naJLlDzwYPToxfc+
+ pAVH1uL8+NERT/MtOtwKnQ3yAiHgGw4I2jwJ+c/L/Wr8MkcfGnmDI7ambCE1d3Lqy/5e
+ oSNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=uM/kLAy3pF3zoZCkKG6MBBFV1LbwtvhEjhGFlqs5Mcg=;
- b=TRc2Nh+OotGAtqhnVe+g9yXt3RqkrxP+KB4oiIwE2g7RxgqNwk2l5TYx91owI2DLY+
- BElICAgy+kCWZ+O4/tK/bkOHG2hm8dRUwZt6QQ/LDN1hpQ0KRpzbSTUTxC9KceLxIUQm
- cGAlxa2RmmAVtnsoZ2fEaKtXQKaysNIyK/W9Gus1FaInHqCAb0VR44D9t2Qs06xoeoqX
- r3ASVKFOvYRcQD5H2rfo0IsZP4rEherZtifTReX9CaadnFVi843WSK2B1WQ/zTe0sCvV
- Uvp2MjY/iuknCYy1V8hNgEcWF0sS4ZgBiEocd0aO+j7VrUbDKtY+jUnKxRwmhjtXxREA
- V4cw==
-X-Gm-Message-State: AOAM530zVpj2ANWtYZtyEAJxq3B9+0ewPGUTMs+iXt1H4BiBlrSvzHqD
- KNryp5mhCJVoKzTPtwbhrZI=
-X-Received: by 2002:a62:7d17:0:b029:1ee:3bbe:fa5f with SMTP id
- y23-20020a627d170000b02901ee3bbefa5fmr830685pfc.67.1614734553153; 
- Tue, 02 Mar 2021 17:22:33 -0800 (PST)
+ :mime-version:content-transfer-encoding;
+ bh=h8K8eTWje5tNK4YJ0OoQ9oKrWVNXVUYvkKK/tjQS2Ag=;
+ b=uHoB7R6POZJJUvCmThInLlu8c/ZMFlDybym62+pmxY4CZjnVb8Kek1i4HRHgoTiYtQ
+ 3heaOeTorLw/QIC07wImW+s3tturwzffdVZ2JGkPOKi6WNp0EbjHgztXvZivFHZKIPU+
+ T4C2dLWWYv6LeSalGbtPRbUedrKnqP0fXvxMpsjZjU6GEVJJGy9Blr1SgNdGaNE0OcyT
+ V9YH6UQnYj2Vt7zyvpLXwVlSZ/HOULtltUuNDz5zA6i7yHLYtgrBkT0Z9yiaVhIYiN+j
+ XlewnVTRQ5AmJFh9isb80trnESHMj97/Zk1PSL5fjIsffv+DiEoT6dx0ocbFVahOaTT1
+ ITLg==
+X-Gm-Message-State: AOAM533Oms/4WmQisiHSkIOLJaqo2H597UxVMOWk3MbQKgyqg0Dhhgu/
+ E5uxxF7R/18J+19QLKCiTeI=
+X-Received: by 2002:a17:90a:e616:: with SMTP id
+ j22mr8323602pjy.190.1614755029585; 
+ Tue, 02 Mar 2021 23:03:49 -0800 (PST)
 Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id t19sm14135427pgj.8.2021.03.02.17.22.28
+ by smtp.gmail.com with ESMTPSA id bb24sm5855703pjb.5.2021.03.02.23.03.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 17:22:32 -0800 (PST)
+ Tue, 02 Mar 2021 23:03:48 -0800 (PST)
 From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 1/2] tests/acceptance: Test ast2400 and ast2500 machines
-Date: Wed,  3 Mar 2021 11:52:16 +1030
-Message-Id: <20210303012217.637737-2-joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH 0/2] hw/misc: Model ASPEED hash and crpyto engine
+Date: Wed,  3 Mar 2021 17:33:29 +1030
+Message-Id: <20210303070331.70744-1-joel@jms.id.au>
 X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210303012217.637737-1-joel@jms.id.au>
-References: <20210303012217.637737-1-joel@jms.id.au>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=joel.stan@gmail.com; helo=mail-pg1-x532.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=joel.stan@gmail.com; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -121,76 +115,32 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dZMERF1Mqb6d
+X-TUID: 8GEaQCD0R9cW
 
-Test MTD images from the OpenBMC project on AST2400 and AST2500 SoCs
-from ASPEED, by booting Palmetto and Romulus BMC machines.
+This adds a model for the ASPEED hash and crypto engine (HACE) found on
+all supported ASPEED SoCs.
 
-The images are fetched from OpenBMC's release directory on github.
+The model uses Qemu's gcrypto API to perform the SHA and MD5 hashing
+directly in the machine's emulated memory space, which I found a neat
+use of Qemu's features.
 
-Co-developed-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- tests/acceptance/boot_linux_console.py | 46 ++++++++++++++++++++++++++
- 1 file changed, 46 insertions(+)
+It has been tested using u-boot and from Linux userspace.
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index eb012867997f..2f46a08fdc10 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -1048,6 +1048,52 @@ def test_arm_vexpressa9(self):
-         self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.dtb')
-         self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
- 
-+    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:palmetto-bmc
-+        """
-+
-+        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
-+                     'obmc-phosphor-image-palmetto.static.mtd')
-+        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
-+        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                      algorithm='sha256')
-+
-+        self.do_test_arm_aspeed(image_path)
-+
-+    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:romulus-bmc
-+        """
-+
-+        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
-+                     'obmc-phosphor-image-romulus.static.mtd')
-+        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
-+        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                      algorithm='sha256')
-+
-+        self.do_test_arm_aspeed(image_path)
-+
-+    def do_test_arm_aspeed(self, image):
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
-+                         '-net', 'nic')
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern("U-Boot 2016.07")
-+        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
-+        self.wait_for_console_pattern("Starting kernel ...")
-+        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
-+        self.wait_for_console_pattern(
-+                "aspeed-smc 1e620000.spi: read control register: 203b0641")
-+        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
-+        self.wait_for_console_pattern("systemd[1]: Set hostname to")
-+        # This often takes longer than the 90s timeout
-+        # self.wait_for_console_pattern("login:")
-+        self.vm.shutdown()
-+
-     def test_m68k_mcf5208evb(self):
-         """
-         :avocado: tags=arch:m68k
+Joel Stanley (2):
+  hw: Model ASPEED's Hash and Crypto Engine
+  aspeed: Integrate HACE
+
+ docs/system/arm/aspeed.rst    |   2 +-
+ include/hw/arm/aspeed_soc.h   |   3 +
+ include/hw/misc/aspeed_hace.h |  33 ++++
+ hw/arm/aspeed_ast2600.c       |  14 ++
+ hw/arm/aspeed_soc.c           |  15 ++
+ hw/misc/aspeed_hace.c         | 302 ++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build           |   2 +-
+ 7 files changed, 369 insertions(+), 2 deletions(-)
+ create mode 100644 include/hw/misc/aspeed_hace.h
+ create mode 100644 hw/misc/aspeed_hace.c
+
 -- 
 2.30.1
 

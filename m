@@ -1,502 +1,281 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5707044lfg;
-        Wed, 3 Mar 2021 13:49:42 -0800 (PST)
-X-Received: by 2002:a7b:cbc2:: with SMTP id n2mr888099wmi.34.1614808182050;
-        Wed, 03 Mar 2021 13:49:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614808182; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5738980lfg;
+        Wed, 3 Mar 2021 14:45:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy122Uqecs3avBprziLxDK447RRkbAIzbKBUjG/0Zp0b978JE+6luaf71drWLd49E03gq8K
+X-Received: by 2002:a05:6e02:160b:: with SMTP id t11mr1555370ilu.190.1614811549555;
+        Wed, 03 Mar 2021 14:45:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614811549; cv=none;
         d=google.com; s=arc-20160816;
-        b=j0tFF149TVqrTQl84a7EaJ6TnQv7wUbKRrtOwO0JgttKeZ9GF/j1X48kisksDFvsxk
-         nZpxjI1g2GV9NfvT+fDr3DND1JWN688dUu1soHN7RUVsftbaTE959lS3ih8Cy7WrDnBH
-         se7vo7v/yP+HT2eXA67ikZPlk+sp3c2/nrmZGIgwizxYRbFffO2qAprh1XszM1KvVOmr
-         B4uPZxnDle4CMW4r5rTXxyFfvbqtexg+WI1MCYmZDt+ThiSpijrzSyz5zkqqHtzUUzwh
-         voSz4OuZWwR9eIAwEPPukVsvXADjLAMuu5+28l5UV6c3ppHlD1pCgMDQvX+3ASFm5HeX
-         0cDQ==
+        b=OK1GB5Mzxgk4SOlkb+RWtnjePR5jgJ4f0FqXsWlpcB5mLQyd3i7sq3dGMkUbq//CaH
+         Ig48VYNrQGa3n6YW7O2oxeTbEdv1sEQzpgxnYqPqjhA4ZhF/TrQAMBRWHPvkkHEFOK7O
+         NOXJgEX9yM++MNdbzgu7MkbschG/2l9qOC9z1ipUhuCtdpUjWjqQHyD6gx0+85+xJEXO
+         /TIKRkamMVP9d6eRS9D09Unq5ZuKvX/5VCWHzSW/6mMPKg/8n9Eka7bPvuTJiaNFtnoR
+         jkmNAp/lQ6e4KRDdgXVGdiUQtHvwKGr0SumKu6iTDNSy/HiYfM/50KNYOI7dZRZMu0+z
+         +KwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=ottfGjPoqRC/3E22juptG3JE4v6fY+pwU7Kpo+LVFR4=;
-        b=o3/wdiZyFwK5snP6MFeHbiPxhj7OMljjqbJvvhsO7+XFKerhIqVE7TFfFXp97OpjLc
-         iFT88qUUXRjDzIDgBBDFUQiBuKRV3lEl6C5Bt3q4ftDRUS0+tlDMSY6okWq8ECKPNEs5
-         i0+MbTh4XEx9IO0IUGab5MnNnDBY/iqgrxu8LMNPPdhxVkVuWb5vhY9yL0UHIv4EsKkX
-         qh1jKNbKKXRbkfwrn4g+mws9Lg5GMj5DJMXxUYxPsQVChPMYb5vu1PBv78qBI4hG+/Ji
-         9mItG5vuwe2zjqoyNZ0JRb/ZM1MpB89ZhOQPIUzF34IB00S27N1jLb5s6/l47HfFEV8C
-         1yLw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=C39x6Pqj5G5Fds2WIyg4uvQ5YG4W8zxx1oVLhkrBu7A=;
+        b=CYmIihlXCuwxx9TyB84ijAoaAzFkSwcO2Nyy2z0zIZBqd17BhbTcMr9XsCrX6yyG9c
+         y9DhO2qM1JrShYq4KnAjkulT6Pqee0gmnu/TccEIOmyyiQag40EkevNMDQMx+d7NpKKo
+         gA3Bmy2xvi0jcaLn6UctJrRMWMaZxOcbzoHYTPaMDHsa+YfUJ1GXFeP1ODuvhkylFc2O
+         Lmj3M1jorMppmELV+ShIw5bP6u1mRoCGI2sr3pvR7TfG668S/cfXUuuB6Ajpfp1pfx94
+         hQCDf0ub6ZgYEKh9x6RrQ1w7Gi4A3c2nyzrluTfeXHlJZAUvhhk59DbnlRjEujsDeyqu
+         gikQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nRIMcl+L;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v7sor12540948wrm.64.2021.03.03.13.49.41
-        (Google Transport Security);
-        Wed, 03 Mar 2021 13:49:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZSLvvliP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n1si13745185ioc.54.2021.03.03.14.45.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 03 Mar 2021 14:45:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nRIMcl+L;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=ottfGjPoqRC/3E22juptG3JE4v6fY+pwU7Kpo+LVFR4=;
-        b=nRIMcl+LiFaWh3K55iqaiz2Z18tEC4lkXVlScAIVZ+e87BdBMRRLTLgrXVTQWilmor
-         5j8rq6JDw8aCp5pfzEiqJ7dtDzoj2ctdnHRQoDUl4cW1VFFw3TMZZIK1/MUFxlPfYn9g
-         97NuDuxgleN6bcDoF7zC9wAqFOwduj+w2Ky5fLD4maWLx20lGDONl6zrjmmPy2oPSc7h
-         Hdgqpr4QwnrJ96qghVkBhFpddsoyEU0botvjgsVK5rmJC5feXVkbfOArL2Ba0tikBtC7
-         2r2bPQuPncweFR+1JlbjXYStle9CTmdEL+oJAf7eGhMCq7F1+ef+qzsCn1ybl1mbxb8+
-         a32A==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZSLvvliP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38682 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHaFY-0000tE-RC
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 17:45:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55300)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lHaEd-0000Pz-Tw; Wed, 03 Mar 2021 17:44:51 -0500
+Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35]:46405)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lHaEa-0001jh-U2; Wed, 03 Mar 2021 17:44:51 -0500
+Received: by mail-io1-xd35.google.com with SMTP id u8so27546257ior.13;
+ Wed, 03 Mar 2021 14:44:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=C39x6Pqj5G5Fds2WIyg4uvQ5YG4W8zxx1oVLhkrBu7A=;
+ b=ZSLvvliPyf106Zbu1qU800wxj8UunnWCz7zmPOwbzdPm1MZ1qcXzX/MIzJAvLob25G
+ RVsZp2yiU4VKDu8a4aLrjunKaggFu96q0PCd8oJ9m1+CdG/pFj7q1BVwGDRUZtDp/ulM
+ Ul5KuZYAfMxlfPzdhG2eveKyNOwwB9TbZ21A4Ly/nT6Kja8wAsLoHy4AHFIt7t1jC7l7
+ ErPAJZFk0hOUNYxrInnsJBu50i6b2n2cc2b9JLbJ8OkHsVfNFB+HT59vWeFfZH7TgUoG
+ 4jput2yumi9ypCWhiA3Q5F0RJgluaXFdjFRo+9PfmlMPa1Urt1ZLmN3dAAoKXLMxiDfc
+ soww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=ottfGjPoqRC/3E22juptG3JE4v6fY+pwU7Kpo+LVFR4=;
-        b=b0PKVpHsQnsZh0mroWJ+1mHKHps26A0XFTPAs6EkR45gPyNuDys2ECCbqQ+O6U9Ab/
-         vHooqrd289E44Q4AfL5KqVaXV5Pq+KiyXLFeuDxmhOjvK7NhHG9hsBToLKowU+UvDV0y
-         hMeQXkrt8Xq6aDxA14mMhosV73uSsSawGWDxhpaUvuqhSkRoMsPtvwK6EZwkL11hrI96
-         5Lo2sJWReXohC7OeP9XAXg0cnXvnay9zee/iEPXgN11sxIj5vyzwRXZvgnpPS4aTRkla
-         pYCMRB4eV6nRfNlrHB47jbZbPkGW1A9ms2p5k7ETWvqHCvz1WPReLkjvIDWXPBLURR/K
-         19/w==
-X-Gm-Message-State: AOAM533YDFlAF9GTf5H9yLLtNHeCTkI/PbNOhH/I6XQXNGtgZ2jmmKkj
-	JgM12MPBf6RAZzad13ilFTY=
-X-Google-Smtp-Source: ABdhPJzx/NeL6Z/9tjyLRnsi6ODtSzDA70XnjVI2L7w54pMfsZWrBgPlFNiSdqAzd3SRJeKXj2zIEA==
-X-Received: by 2002:a5d:5047:: with SMTP id h7mr705050wrt.111.1614808181761;
-        Wed, 03 Mar 2021 13:49:41 -0800 (PST)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id 12sm6911543wmw.43.2021.03.03.13.49.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Mar 2021 13:49:41 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Claudio Fontana <cfontana@suse.de>,
-	qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-s390x@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	qemu-ppc@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>,
-	Cornelia Huck <cohuck@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v4 28/28] cpu: Move sysemu specific declarations to 'sysemu-cpu-ops.h'
-Date: Wed,  3 Mar 2021 22:47:08 +0100
-Message-Id: <20210303214708.1727801-29-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210303214708.1727801-1-f4bug@amsat.org>
-References: <20210303214708.1727801-1-f4bug@amsat.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=C39x6Pqj5G5Fds2WIyg4uvQ5YG4W8zxx1oVLhkrBu7A=;
+ b=FsE7YnlLDScQj8zUuoTf23PMyihYzYFXHO0O243QnyOftAnONgdIBLDewPKsDvyA1X
+ mZ0+rGk2gYrhQvBiRpCBPkR7Lns/6F2CxB80MXjEewWPt7qn9vfriDO2lf1ZpSyzYIHx
+ u5psMuusAlEnU+ZiMwtHeDqh3Qb21BcSWD23/H7obWK0ezUePRqMpfDQM8jYgaQW39VH
+ eRycrnPiF7eXeRTzuooXJglAwXiVR6a0plFYT44YK1L+udqq+yiUlUzBbH1DMOUs48sJ
+ dG/6B/cx6D2UTXyC7h7fJsmzM8i10+HL1+l+GH1DYcKDtSrFuxEt3S4lwW3kSQ6+a9T2
+ O7Wg==
+X-Gm-Message-State: AOAM533gwFfIKpnrs6XfniMm28oNzwbryUF+hTzOYyJU3lxMkFVo8UYe
+ uYLtb86HX3hGLIjtL3nYxiAse1MearF6aMK/RGM=
+X-Received: by 2002:a02:2944:: with SMTP id p65mr1156872jap.91.1614811487255; 
+ Wed, 03 Mar 2021 14:44:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: hKOYdaSZG3zX
+References: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
+ <20210302110955.1810487-3-edgar.iglesias@gmail.com>
+In-Reply-To: <20210302110955.1810487-3-edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 3 Mar 2021 17:43:30 -0500
+Message-ID: <CAKmqyKO2zZG_dR1WAc7O_92rfLSzjV9mx1zEPSfdYvmMQ4JjoQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] hw/arm: versal: Add support for the XRAMs
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d35;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd35.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, joe.komlodi@xilinx.com,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ francisco.iglesias@xilinx.com, KONRAD Frederic <frederic.konrad@adacore.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W2HeOQ06bSTi
 
-All these prototypes and declarations don't need to be exposed
-on user-mode emulation. Move them to "sysemu-cpu-ops.h".
+On Tue, Mar 2, 2021 at 6:10 AM Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Connect the support for the Versal Accelerator RAMs (XRAMs).
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Suggested-by: Claudio Fontana <cfontana@suse.de>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/core/cpu.h            | 164 -------------------------------
- include/hw/core/sysemu-cpu-ops.h | 155 +++++++++++++++++++++++++++++
- gdbstub.c                        |   1 +
- softmmu/physmem.c                |   1 +
- 4 files changed, 157 insertions(+), 164 deletions(-)
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 79dcc9a4e42..53598c02187 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -185,15 +185,6 @@ typedef struct CPUBreakpoint {
-     QTAILQ_ENTRY(CPUBreakpoint) entry;
- } CPUBreakpoint;
- 
--struct CPUWatchpoint {
--    vaddr vaddr;
--    vaddr len;
--    vaddr hitaddr;
--    MemTxAttrs hitattrs;
--    int flags; /* BP_* */
--    QTAILQ_ENTRY(CPUWatchpoint) entry;
--};
--
- #ifdef CONFIG_PLUGIN
- /*
-  * For plugins we sometime need to save the resolved iotlb data before
-@@ -428,76 +419,6 @@ static inline void cpu_tb_jmp_cache_clear(CPUState *cpu)
- extern bool mttcg_enabled;
- #define qemu_tcg_mttcg_enabled() (mttcg_enabled)
- 
--/**
-- * cpu_paging_enabled:
-- * @cpu: The CPU whose state is to be inspected.
-- *
-- * Returns: %true if paging is enabled, %false otherwise.
-- */
--bool cpu_paging_enabled(const CPUState *cpu);
--
--/**
-- * cpu_get_memory_mapping:
-- * @cpu: The CPU whose memory mappings are to be obtained.
-- * @list: Where to write the memory mappings to.
-- * @errp: Pointer for reporting an #Error.
-- */
--void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
--                            Error **errp);
--
--#if !defined(CONFIG_USER_ONLY)
--
--/**
-- * cpu_write_elf64_note:
-- * @f: pointer to a function that writes memory to a file
-- * @cpu: The CPU whose memory is to be dumped
-- * @cpuid: ID number of the CPU
-- * @opaque: pointer to the CPUState struct
-- */
--int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
--                         int cpuid, void *opaque);
--
--/**
-- * cpu_write_elf64_qemunote:
-- * @f: pointer to a function that writes memory to a file
-- * @cpu: The CPU whose memory is to be dumped
-- * @cpuid: ID number of the CPU
-- * @opaque: pointer to the CPUState struct
-- */
--int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
--                             void *opaque);
--
--/**
-- * cpu_write_elf32_note:
-- * @f: pointer to a function that writes memory to a file
-- * @cpu: The CPU whose memory is to be dumped
-- * @cpuid: ID number of the CPU
-- * @opaque: pointer to the CPUState struct
-- */
--int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
--                         int cpuid, void *opaque);
--
--/**
-- * cpu_write_elf32_qemunote:
-- * @f: pointer to a function that writes memory to a file
-- * @cpu: The CPU whose memory is to be dumped
-- * @cpuid: ID number of the CPU
-- * @opaque: pointer to the CPUState struct
-- */
--int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
--                             void *opaque);
--
--/**
-- * cpu_get_crash_info:
-- * @cpu: The CPU to get crash information for
-- *
-- * Gets the previously saved crash information.
-- * Caller is responsible for freeing the data.
-- */
--GuestPanicInformation *cpu_get_crash_info(CPUState *cpu);
--
--#endif /* !CONFIG_USER_ONLY */
--
- /**
-  * CPUDumpFlags:
-  * @CPU_DUMP_CODE:
-@@ -529,56 +450,6 @@ void cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-  */
- void cpu_dump_statistics(CPUState *cpu, int flags);
- 
--#ifndef CONFIG_USER_ONLY
--/**
-- * cpu_get_phys_page_attrs_debug:
-- * @cpu: The CPU to obtain the physical page address for.
-- * @addr: The virtual address.
-- * @attrs: Updated on return with the memory transaction attributes to use
-- *         for this access.
-- *
-- * Obtains the physical page corresponding to a virtual one, together
-- * with the corresponding memory transaction attributes to use for the access.
-- * Use it only for debugging because no protection checks are done.
-- *
-- * Returns: Corresponding physical page address or -1 if no page found.
-- */
--hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
--                                     MemTxAttrs *attrs);
--
--/**
-- * cpu_get_phys_page_debug:
-- * @cpu: The CPU to obtain the physical page address for.
-- * @addr: The virtual address.
-- *
-- * Obtains the physical page corresponding to a virtual one.
-- * Use it only for debugging because no protection checks are done.
-- *
-- * Returns: Corresponding physical page address or -1 if no page found.
-- */
--hwaddr cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
--
--/**
-- * cpu_asidx_from_attrs:
-- * @cpu: CPU
-- * @attrs: memory transaction attributes
-- *
-- * Returns the address space index specifying the CPU AddressSpace
-- * to use for a memory access with the given transaction attributes.
-- */
--int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs);
--
--/**
-- * cpu_virtio_is_big_endian:
-- * @cpu: CPU
--
-- * Returns %true if a CPU which supports runtime configurable endianness
-- * is currently big-endian.
-- */
--bool cpu_virtio_is_big_endian(CPUState *cpu);
--
--#endif /* CONFIG_USER_ONLY */
--
- /**
-  * cpu_list_add:
-  * @cpu: The CPU to be added to the list of CPUs.
-@@ -917,41 +788,6 @@ static inline bool cpu_breakpoint_test(CPUState *cpu, vaddr pc, int mask)
-     return false;
- }
- 
--#ifndef CONFIG_USER_ONLY
--int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
--                          int flags, CPUWatchpoint **watchpoint);
--int cpu_watchpoint_remove(CPUState *cpu, vaddr addr,
--                          vaddr len, int flags);
--void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint);
--void cpu_watchpoint_remove_all(CPUState *cpu, int mask);
--
--/**
-- * cpu_check_watchpoint:
-- * @cpu: cpu context
-- * @addr: guest virtual address
-- * @len: access length
-- * @attrs: memory access attributes
-- * @flags: watchpoint access type
-- * @ra: unwind return address
-- *
-- * Check for a watchpoint hit in [addr, addr+len) of the type
-- * specified by @flags.  Exit via exception with a hit.
-- */
--void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
--                          MemTxAttrs attrs, int flags, uintptr_t ra);
--
--/**
-- * cpu_watchpoint_address_matches:
-- * @cpu: cpu context
-- * @addr: guest virtual address
-- * @len: access length
-- *
-- * Return the watchpoint flags that apply to [addr, addr+len).
-- * If no watchpoint is registered for the range, the result is 0.
-- */
--int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len);
--#endif
--
- /**
-  * cpu_get_address_space:
-  * @cpu: CPU to get address space from
-diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
-index 3f9a5199dd1..da66acdc87f 100644
---- a/include/hw/core/sysemu-cpu-ops.h
-+++ b/include/hw/core/sysemu-cpu-ops.h
-@@ -12,6 +12,15 @@
- 
- #include "hw/core/cpu.h"
- 
-+struct CPUWatchpoint {
-+    vaddr vaddr;
-+    vaddr len;
-+    vaddr hitaddr;
-+    MemTxAttrs hitattrs;
-+    int flags; /* BP_* */
-+    QTAILQ_ENTRY(CPUWatchpoint) entry;
-+};
-+
- /*
-  * struct SysemuCPUOps: System operations specific to a CPU class
-  */
-@@ -86,4 +95,150 @@ typedef struct SysemuCPUOps {
-     const VMStateDescription *vmsd;
- } SysemuCPUOps;
- 
-+/**
-+ * cpu_paging_enabled:
-+ * @cpu: The CPU whose state is to be inspected.
-+ *
-+ * Returns: %true if paging is enabled, %false otherwise.
-+ */
-+bool cpu_paging_enabled(const CPUState *cpu);
-+
-+/**
-+ * cpu_get_memory_mapping:
-+ * @cpu: The CPU whose memory mappings are to be obtained.
-+ * @list: Where to write the memory mappings to.
-+ * @errp: Pointer for reporting an #Error.
-+ */
-+void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
-+                            Error **errp);
-+
-+/**
-+ * cpu_write_elf64_note:
-+ * @f: pointer to a function that writes memory to a file
-+ * @cpu: The CPU whose memory is to be dumped
-+ * @cpuid: ID number of the CPU
-+ * @opaque: pointer to the CPUState struct
-+ */
-+int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
-+                         int cpuid, void *opaque);
-+
-+/**
-+ * cpu_write_elf64_qemunote:
-+ * @f: pointer to a function that writes memory to a file
-+ * @cpu: The CPU whose memory is to be dumped
-+ * @cpuid: ID number of the CPU
-+ * @opaque: pointer to the CPUState struct
-+ */
-+int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-+                             void *opaque);
-+
-+/**
-+ * cpu_write_elf32_note:
-+ * @f: pointer to a function that writes memory to a file
-+ * @cpu: The CPU whose memory is to be dumped
-+ * @cpuid: ID number of the CPU
-+ * @opaque: pointer to the CPUState struct
-+ */
-+int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
-+                         int cpuid, void *opaque);
-+
-+/**
-+ * cpu_write_elf32_qemunote:
-+ * @f: pointer to a function that writes memory to a file
-+ * @cpu: The CPU whose memory is to be dumped
-+ * @cpuid: ID number of the CPU
-+ * @opaque: pointer to the CPUState struct
-+ */
-+int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-+                             void *opaque);
-+
-+/**
-+ * cpu_get_crash_info:
-+ * @cpu: The CPU to get crash information for
-+ *
-+ * Gets the previously saved crash information.
-+ * Caller is responsible for freeing the data.
-+ */
-+GuestPanicInformation *cpu_get_crash_info(CPUState *cpu);
-+
-+/**
-+ * cpu_get_phys_page_attrs_debug:
-+ * @cpu: The CPU to obtain the physical page address for.
-+ * @addr: The virtual address.
-+ * @attrs: Updated on return with the memory transaction attributes to use
-+ *         for this access.
-+ *
-+ * Obtains the physical page corresponding to a virtual one, together
-+ * with the corresponding memory transaction attributes to use for the access.
-+ * Use it only for debugging because no protection checks are done.
-+ *
-+ * Returns: Corresponding physical page address or -1 if no page found.
-+ */
-+hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-+                                     MemTxAttrs *attrs);
-+
-+/**
-+ * cpu_get_phys_page_debug:
-+ * @cpu: The CPU to obtain the physical page address for.
-+ * @addr: The virtual address.
-+ *
-+ * Obtains the physical page corresponding to a virtual one.
-+ * Use it only for debugging because no protection checks are done.
-+ *
-+ * Returns: Corresponding physical page address or -1 if no page found.
-+ */
-+hwaddr cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-+
-+/**
-+ * cpu_asidx_from_attrs:
-+ * @cpu: CPU
-+ * @attrs: memory transaction attributes
-+ *
-+ * Returns the address space index specifying the CPU AddressSpace
-+ * to use for a memory access with the given transaction attributes.
-+ */
-+int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs);
-+
-+/**
-+ * cpu_virtio_is_big_endian:
-+ * @cpu: CPU
-+
-+ * Returns %true if a CPU which supports runtime configurable endianness
-+ * is currently big-endian.
-+ */
-+bool cpu_virtio_is_big_endian(CPUState *cpu);
-+
-+int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
-+                          int flags, CPUWatchpoint **watchpoint);
-+int cpu_watchpoint_remove(CPUState *cpu, vaddr addr,
-+                          vaddr len, int flags);
-+void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint);
-+void cpu_watchpoint_remove_all(CPUState *cpu, int mask);
-+
-+/**
-+ * cpu_check_watchpoint:
-+ * @cpu: cpu context
-+ * @addr: guest virtual address
-+ * @len: access length
-+ * @attrs: memory access attributes
-+ * @flags: watchpoint access type
-+ * @ra: unwind return address
-+ *
-+ * Check for a watchpoint hit in [addr, addr+len) of the type
-+ * specified by @flags.  Exit via exception with a hit.
-+ */
-+void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
-+                          MemTxAttrs attrs, int flags, uintptr_t ra);
-+
-+/**
-+ * cpu_watchpoint_address_matches:
-+ * @cpu: cpu context
-+ * @addr: guest virtual address
-+ * @len: access length
-+ *
-+ * Return the watchpoint flags that apply to [addr, addr+len).
-+ * If no watchpoint is registered for the range, the result is 0.
-+ */
-+int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len);
-+
- #endif /* SYSEMU_CPU_OPS_H */
-diff --git a/gdbstub.c b/gdbstub.c
-index f3614ebcc7a..0bc609fbf24 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -41,6 +41,7 @@
- #include "exec/gdbstub.h"
- #include "hw/cpu/cluster.h"
- #include "hw/boards.h"
-+#include "hw/core/sysemu-cpu-ops.h"
- #endif
- 
- #define MAX_PACKET_LENGTH 4096
-diff --git a/softmmu/physmem.c b/softmmu/physmem.c
-index 19e0aa9836a..00e9729fa8a 100644
---- a/softmmu/physmem.c
-+++ b/softmmu/physmem.c
-@@ -28,6 +28,7 @@
- #ifdef CONFIG_TCG
- #include "hw/core/tcg-cpu-ops.h"
- #endif /* CONFIG_TCG */
-+#include "hw/core/sysemu-cpu-ops.h"
- 
- #include "exec/exec-all.h"
- #include "exec/target_page.h"
--- 
-2.26.2
+Alistair
+
+> ---
+>  docs/system/arm/xlnx-versal-virt.rst |  1 +
+>  include/hw/arm/xlnx-versal.h         | 13 ++++++++++
+>  hw/arm/xlnx-versal.c                 | 36 ++++++++++++++++++++++++++++
+>  3 files changed, 50 insertions(+)
+>
+> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
+> index 2602d0f995..27f73500d9 100644
+> --- a/docs/system/arm/xlnx-versal-virt.rst
+> +++ b/docs/system/arm/xlnx-versal-virt.rst
+> @@ -30,6 +30,7 @@ Implemented devices:
+>  - 8 ADMA (Xilinx zDMA) channels
+>  - 2 SD Controllers
+>  - OCM (256KB of On Chip Memory)
+> +- XRAM (4MB of on chip Accelerator RAM)
+>  - DDR memory
+>
+>  QEMU does not yet model any other devices, including the PL and the AI Engine.
+> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+> index 2b76885afd..22a8fa5d11 100644
+> --- a/include/hw/arm/xlnx-versal.h
+> +++ b/include/hw/arm/xlnx-versal.h
+> @@ -14,6 +14,7 @@
+>
+>  #include "hw/sysbus.h"
+>  #include "hw/arm/boot.h"
+> +#include "hw/or-irq.h"
+>  #include "hw/sd/sdhci.h"
+>  #include "hw/intc/arm_gicv3.h"
+>  #include "hw/char/pl011.h"
+> @@ -22,6 +23,7 @@
+>  #include "hw/rtc/xlnx-zynqmp-rtc.h"
+>  #include "qom/object.h"
+>  #include "hw/usb/xlnx-usb-subsystem.h"
+> +#include "hw/misc/xlnx-versal-xramc.h"
+>
+>  #define TYPE_XLNX_VERSAL "xlnx-versal"
+>  OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
+> @@ -31,6 +33,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
+>  #define XLNX_VERSAL_NR_GEMS    2
+>  #define XLNX_VERSAL_NR_ADMAS   8
+>  #define XLNX_VERSAL_NR_SDS     2
+> +#define XLNX_VERSAL_NR_XRAM    4
+>  #define XLNX_VERSAL_NR_IRQS    192
+>
+>  struct Versal {
+> @@ -62,6 +65,11 @@ struct Versal {
+>              XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
+>              VersalUsb2 usb;
+>          } iou;
+> +
+> +        struct {
+> +            qemu_or_irq irq_orgate;
+> +            XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
+> +        } xram;
+>      } lpd;
+>
+>      /* The Platform Management Controller subsystem.  */
+> @@ -96,6 +104,7 @@ struct Versal {
+>  #define VERSAL_GEM1_IRQ_0          58
+>  #define VERSAL_GEM1_WAKE_IRQ_0     59
+>  #define VERSAL_ADMA_IRQ_0          60
+> +#define VERSAL_XRAM_IRQ_0          79
+>  #define VERSAL_RTC_APB_ERR_IRQ     121
+>  #define VERSAL_SD0_IRQ_0           126
+>  #define VERSAL_RTC_ALARM_IRQ       142
+> @@ -128,6 +137,10 @@ struct Versal {
+>  #define MM_OCM                      0xfffc0000U
+>  #define MM_OCM_SIZE                 0x40000
+>
+> +#define MM_XRAM                     0xfe800000
+> +#define MM_XRAMC                    0xff8e0000
+> +#define MM_XRAMC_SIZE               0x10000
+> +
+>  #define MM_USB2_CTRL_REGS           0xFF9D0000
+>  #define MM_USB2_CTRL_REGS_SIZE      0x10000
+>
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index 628e77ef66..79609692e4 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -10,6 +10,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+> @@ -278,6 +279,40 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
+>      sysbus_connect_irq(sbd, 1, pic[VERSAL_RTC_APB_ERR_IRQ]);
+>  }
+>
+> +static void versal_create_xrams(Versal *s, qemu_irq *pic)
+> +{
+> +    int nr_xrams = ARRAY_SIZE(s->lpd.xram.ctrl);
+> +    DeviceState *orgate;
+> +    int i;
+> +
+> +    /* XRAM IRQs get ORed into a single line.  */
+> +    object_initialize_child(OBJECT(s), "xram-irq-orgate",
+> +                            &s->lpd.xram.irq_orgate, TYPE_OR_IRQ);
+> +    orgate = DEVICE(&s->lpd.xram.irq_orgate);
+> +    object_property_set_int(OBJECT(orgate),
+> +                            "num-lines", nr_xrams, &error_fatal);
+> +    qdev_realize(orgate, NULL, &error_fatal);
+> +    qdev_connect_gpio_out(orgate, 0, pic[VERSAL_XRAM_IRQ_0]);
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->lpd.xram.ctrl); i++) {
+> +        SysBusDevice *sbd;
+> +        MemoryRegion *mr;
+> +
+> +        object_initialize_child(OBJECT(s), "xram[*]", &s->lpd.xram.ctrl[i],
+> +                                TYPE_XLNX_XRAM_CTRL);
+> +        sbd = SYS_BUS_DEVICE(&s->lpd.xram.ctrl[i]);
+> +        sysbus_realize(sbd, &error_fatal);
+> +
+> +        mr = sysbus_mmio_get_region(sbd, 0);
+> +        memory_region_add_subregion(&s->mr_ps,
+> +                                    MM_XRAMC + i * MM_XRAMC_SIZE, mr);
+> +        mr = sysbus_mmio_get_region(sbd, 1);
+> +        memory_region_add_subregion(&s->mr_ps, MM_XRAM + i * MiB, mr);
+> +
+> +        sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(orgate, i));
+> +    }
+> +}
+> +
+>  /* This takes the board allocated linear DDR memory and creates aliases
+>   * for each split DDR range/aperture on the Versal address map.
+>   */
+> @@ -363,6 +398,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
+>      versal_create_admas(s, pic);
+>      versal_create_sds(s, pic);
+>      versal_create_rtc(s, pic);
+> +    versal_create_xrams(s, pic);
+>      versal_map_ddr(s);
+>      versal_unimp(s);
+>
+> --
+> 2.25.1
+>
+>

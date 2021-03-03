@@ -1,101 +1,100 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5583815lfg;
-        Wed, 3 Mar 2021 10:32:30 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwahp5P9mM9+64Qf0rG1DVwfdkw3KaDW7JmMhHzo46LQnDSM4nhKJtZafxNLqRY6e7AdE2q
-X-Received: by 2002:a92:c567:: with SMTP id b7mr563277ilj.25.1614796349894;
-        Wed, 03 Mar 2021 10:32:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614796349; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5584588lfg;
+        Wed, 3 Mar 2021 10:33:37 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyHSgiB7Q+citkJUFD2qe8fjdiDrzvhMiKjZfwriZYG0VqUvpsOhngmoSz9nY9u24myCDte
+X-Received: by 2002:a05:6830:78a:: with SMTP id w10mr340409ots.5.1614796417014;
+        Wed, 03 Mar 2021 10:33:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614796417; cv=none;
         d=google.com; s=arc-20160816;
-        b=kEPQV4IbNsXAXjuZ6fWXu7DKBuuR/OJDSYMGnFJ74ZVQJRpF9is0T5Tdkquizceqac
-         VM/1AX/JvzMWAXpogZLf+/bHpREAyFngtZzJxsibXGqYKPj4YCj6LkFhNvVf7EpumBvG
-         qvc2cUo3PHzfsChFp1QDVpVFsxkQSwlXCARmm0s9qZImAEexqHl4iC71AQbaJ93rLujW
-         ObjvDeTn/26ZLBlm6HviDUSbHCzGp8fFiedSa72/95fGZeQhPJkW5h4RDlpBZJFaFvFm
-         UHEDHYwVQcftINl8NgZYZeFyFBH/m+avNi+vv3Efl/G7sK2vQCIgWDcZDuseuwhXNG+0
-         saQA==
+        b=W6mjfcV6OYsaTZa8bt20mG6VTP/X/Wlapg8LMyeqcbF+767+og5wX9KsUD2YFJPNnV
+         VeD0UyDTiMJ5HaTaWJLpcbj47ztNpyZwQKvfocRWWKYBDzG/1oyon2aZQEQIB79bEMPs
+         xBR6WLNykRlfzR8RMDjrw418vsueSmn2fzoltZ2tc4AokC5oM80aoUOxZkQdcsfH4jAH
+         RcxpiOSZsR+S3Kyak17yFBSI6phs1n3zm18Wb/EzEx4ZcAIX09jLx9ihYp+NTy0L3kgY
+         grivZHlkb1dJawVthEdKTy7Iyfdbi2pT3nIYUotY82+gh1TiYokTMpHVxrtKiMvLwjxj
+         8B5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Ozgu7uGJ7L5oIFikBv6nOOwVLHj62DaXoZ2b5Z4gqKA=;
-        b=AGrns5efyfvk0t7n/grS3kUP0pqapKOVLSBH+T4pVT4cScqEA4WZucSi81j4n5V3On
-         OYNV/ocovacMZRpnL+C2fBM+YzrenyoW4hfpWLwDc45hCcrgrmLwCKu5TD3+7aAd7cL7
-         JsiEybKQpSBQyrOSMgsArwjdlJniPVz0T8VZxWv8a9ki7oqJlRasrsdS+LUIne9YbfcH
-         O95uziC8Krkz4Ya+vdQVphuWVaYdzJdqCex6I+iF2ovVesiqsJ1mxPYawmXZhktqu/au
-         okILKWeR9MnTajGcCpelOXgTUqalZU3cLvZ5lr0b8EOp+xkYxx0/W2Ar2m3aHP+u+NuC
-         UC1g==
+        bh=79DgZpr2EmNkKjevsnbnnQniykZdHifg2JouUZY5E8w=;
+        b=A5GM5XlYo3k+4+5Wuyh6PdeffDqObgAu+EccdgHC9PUIvUMFHCC4+FF5FzCoI8Fbdq
+         5VXgbG0REGZIxGD1ASGcgt65p12fN6sbkw2LfDVT6TQlXDSu0qvY2s7r8vTM6gzHHoTm
+         rTG5Q8oaFiQoLk8hG2LogQ/SNe+optjK9C30iGyHJ5NdhmAYu9K3Gr49uZu+4J8nmjYa
+         fkJ6e76VGGNEj45Qd1Fdh+dvRhGFKVUWA8RyjrdsNlenq89GnMamrJk7dMdWG0+BkcyC
+         UenOny/d0eE+195ofMFyPjZS+8TOsDowISRpV41Tn4xSz2uRp0z2wLnFsZhYHcVfS+s0
+         HJiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sx4UNyG5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RMIThd85;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si22828065ilh.81.2021.03.03.10.32.29
+        by mx.google.com with ESMTPS id o5si3768840oti.227.2021.03.03.10.33.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Mar 2021 10:32:29 -0800 (PST)
+        Wed, 03 Mar 2021 10:33:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sx4UNyG5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RMIThd85;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56898 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHWIP-0003VF-4u
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 13:32:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56852)
+	id 1lHWJU-0004hO-6F
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 13:33:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56334)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWAc-0007tI-4G
- for qemu-arm@nongnu.org; Wed, 03 Mar 2021 13:24:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:27262)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHW9w-0006lt-28
+ for qemu-arm@nongnu.org; Wed, 03 Mar 2021 13:23:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52218)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWAa-000129-Nh
- for qemu-arm@nongnu.org; Wed, 03 Mar 2021 13:24:25 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHW9u-0000n6-Ab
+ for qemu-arm@nongnu.org; Wed, 03 Mar 2021 13:23:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614795864;
+ s=mimecast20190719; t=1614795821;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ozgu7uGJ7L5oIFikBv6nOOwVLHj62DaXoZ2b5Z4gqKA=;
- b=Sx4UNyG5H3PLsXw/TiwykEEwG2tL0087EuORdJNZnAQT1tBJtTH/68kTxP1vrsPvIXAQT3
- K4abWOxu5CezB9rbtvj8wAmgmwMSKrArMy/W2y+U6Q9qo8wM0Zo5g7wyAg1vQNASLqQmp+
- e3DqSdvzx8txVcJ924zGzOETYHdH99Q=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-422-AiaBvEytPc2PwvufpUob7A-1; Wed, 03 Mar 2021 13:24:20 -0500
-X-MC-Unique: AiaBvEytPc2PwvufpUob7A-1
-Received: by mail-wr1-f69.google.com with SMTP id e13so13135146wrg.4
- for <qemu-arm@nongnu.org>; Wed, 03 Mar 2021 10:24:20 -0800 (PST)
+ bh=79DgZpr2EmNkKjevsnbnnQniykZdHifg2JouUZY5E8w=;
+ b=RMIThd85MBEpUEDRMa6C3BXWNXPRonEBX3aItDd99DjeoO2y6JHgN3FCWIvFZRt4eK+cL7
+ CAzhH2xzu6ckTpfdQRgAyeh0b/hxkjzHgTV0xhFXHdck+RPONUGnXkFIoZKVzjnd0vkith
+ bXHIuIhGeROX7QgRfoK+SUhwdDWMo4k=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-516-xGh7zVZtMDegDV0I8y-n9w-1; Wed, 03 Mar 2021 13:23:40 -0500
+X-MC-Unique: xGh7zVZtMDegDV0I8y-n9w-1
+Received: by mail-wr1-f72.google.com with SMTP id v13so12195874wrs.21
+ for <qemu-arm@nongnu.org>; Wed, 03 Mar 2021 10:23:40 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Ozgu7uGJ7L5oIFikBv6nOOwVLHj62DaXoZ2b5Z4gqKA=;
- b=ZmOwqojO39MAKDcGN2MNeRQSd7ISsc0dnJ121fnH18pGgiezAm1epnM5TwL2OqmFKs
- ivLcznp5woG82+syEaJpqEgJJt+qjhx32GhRiuIGrPLGJy03bnAAoO8rZONjEnqFWexv
- GOCVavoDKSUOHXilmpw+tDsSWBqqWUsU/1yJNgAMrnZHrJf4Adhaz1OTwXKBMOBTZrKI
- xk9T/r1I/3a381F4fzLP0402naM8jmErcnilJPFezkOwSP969/XM8yI+SbK1vOOTk68N
- Oi2tzIYfNshUsG7I8EHwEUd5cFo/ghUvEBCU93Il3xiyh36LJW0YCloPsAjouqRNAXO9
- GECg==
-X-Gm-Message-State: AOAM530vasGqd1ijaQVPEC/lOx6MrJVNlxV4XhvObZc6392nJsM8VSdd
- jV/mS6hnOzdMVXxC9QNt8A8J0Q2f/oLYN5Ro2FewzIzSXJddCt/yWZZvTnO6nHuvYRh5m9VFXYp
- bcf5CQBP6TPjU
-X-Received: by 2002:a1c:2403:: with SMTP id k3mr290737wmk.130.1614795858909;
- Wed, 03 Mar 2021 10:24:18 -0800 (PST)
-X-Received: by 2002:a1c:2403:: with SMTP id k3mr290721wmk.130.1614795858585;
- Wed, 03 Mar 2021 10:24:18 -0800 (PST)
+ bh=79DgZpr2EmNkKjevsnbnnQniykZdHifg2JouUZY5E8w=;
+ b=VmwMXwAEIEH984oWqGT/0SD446rNi5DJbvoiDyXd5XpFibdg/aKRh0OSx+qWIXBRva
+ wFuwJobYZ6K1iYMOOjWUBgMm5SifhThcPGiQzfzpotBuUcRT/TEUGx6cwkt4i2gLr0BT
+ n8v7D1GLPbvJsazRjbKiBY+fAZi0smyt9vT9rYtcpyBZW4FYI4ZTtOdDYOUQiR/28RZ7
+ nUUlx2+Po6UKmqK90KJEBmOt9qODpJuELF/xR1yCQYF4L25qyi70HZ1My982YCA3PYee
+ d5GeSCV7wxOw/35Es8PKKKCAodNJVSWLm0cYAt2VbTwJl05MO+2LBqBAF6nqxyuWpr7N
+ hXyw==
+X-Gm-Message-State: AOAM533v5l5FIqCGT+O0MtCaGtHv4BdD0uVQCrgTwfdM9WZM/NatTgIp
+ Q/7a6ia3NDOCncvl+k7j6Eitg5C7aaW0UJjHnDb3b0l8bt4kJ31FTH32RMjLU8KIG82XFdAc7dg
+ 6Kxb1yRl5KdOw
+X-Received: by 2002:a7b:c407:: with SMTP id k7mr292569wmi.136.1614795818977;
+ Wed, 03 Mar 2021 10:23:38 -0800 (PST)
+X-Received: by 2002:a7b:c407:: with SMTP id k7mr292558wmi.136.1614795818843;
+ Wed, 03 Mar 2021 10:23:38 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id j12sm23071093wrt.27.2021.03.03.10.24.16
+ by smtp.gmail.com with ESMTPSA id t14sm34525097wru.64.2021.03.03.10.23.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Mar 2021 10:24:18 -0800 (PST)
+ Wed, 03 Mar 2021 10:23:38 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 18/19] accel/hvf: Declare and allocate AccelvCPUState
- struct
-Date: Wed,  3 Mar 2021 19:22:18 +0100
-Message-Id: <20210303182219.1631042-19-philmd@redhat.com>
+Subject: [RFC PATCH 11/19] accel/kvm: Introduce kvm_vcpu_state() helper
+Date: Wed,  3 Mar 2021 19:22:11 +0100
+Message-Id: <20210303182219.1631042-12-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210303182219.1631042-1-philmd@redhat.com>
 References: <20210303182219.1631042-1-philmd@redhat.com>
@@ -114,7 +113,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -144,57 +143,66 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PgfTXzCPjhdF
-
-In preparation of moving HVF-specific fields from CPUState
-to the accelerator-specific AccelvCPUState structure, first
-declare it empty and allocate it. This will make the following
-commits easier to review.
+X-TUID: dQ2snuYz22WR
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- target/i386/hvf/hvf-i386.h | 3 +++
- target/i386/hvf/hvf.c      | 4 +++-
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ include/sysemu/kvm.h | 2 ++
+ accel/kvm/kvm-all.c  | 5 +++++
+ target/i386/cpu.c    | 4 ++--
+ 3 files changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/target/i386/hvf/hvf-i386.h b/target/i386/hvf/hvf-i386.h
-index 59cfca8875e..1f12eb647a0 100644
---- a/target/i386/hvf/hvf-i386.h
-+++ b/target/i386/hvf/hvf-i386.h
-@@ -51,6 +51,9 @@ struct HVFState {
- };
- extern HVFState *hvf_state;
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 687c598be9b..f339be31d1b 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -361,6 +361,8 @@ int kvm_arch_init_vcpu(CPUState *cpu);
+ int kvm_arch_destroy_vcpu(CPUState *cpu);
  
-+struct AccelvCPUState {
-+};
-+
- void hvf_set_phys_mem(MemoryRegionSection *, bool);
- void hvf_handle_io(CPUArchState *, uint16_t, void *, int, int, int);
- hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index effee39ee9b..342659f1e15 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -451,6 +451,7 @@ void hvf_vcpu_destroy(CPUState *cpu)
-     hv_return_t ret = hv_vcpu_destroy((hv_vcpuid_t)cpu->hvf_fd);
-     g_free(env->hvf_mmio_buf);
-     assert_hvf_ok(ret);
-+    g_free(cpu->accel_vcpu);
+ bool kvm_vcpu_id_is_valid(int vcpu_id);
++/* Returns a pointer to the KVMState associated with this vCPU */
++KVMState *kvm_vcpu_state(CPUState *cpu);
+ 
+ /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
+ unsigned long kvm_arch_vcpu_id(CPUState *cpu);
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 84c943fcdb2..b787d590a9a 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -1978,6 +1978,11 @@ bool kvm_vcpu_id_is_valid(int vcpu_id)
+     return vcpu_id >= 0 && vcpu_id < kvm_max_vcpu_id(s);
  }
  
- static void dummy_signal(int sig)
-@@ -534,9 +535,10 @@ int hvf_init_vcpu(CPUState *cpu)
-     }
++KVMState *kvm_vcpu_state(CPUState *cpu)
++{
++    return cpu->kvm_state;
++}
++
+ static int kvm_init(MachineState *ms)
+ {
+     MachineClass *mc = MACHINE_GET_CLASS(ms);
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 6a53446e6a5..0d6376322bb 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -5755,7 +5755,7 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
+     case 0xA:
+         /* Architectural Performance Monitoring Leaf */
+         if (kvm_enabled() && cpu->enable_pmu) {
+-            KVMState *s = cs->kvm_state;
++            KVMState *s = kvm_vcpu_state(cs);
  
-     r = hv_vcpu_create(&hvf_fd, HV_VCPU_DEFAULT);
--    cpu->vcpu_dirty = true;
-     assert_hvf_ok(r);
-+    cpu->accel_vcpu = g_new(struct AccelvCPUState, 1);
-     cpu->hvf_fd = (int)hvf_fd
-+    cpu->vcpu_dirty = true;
+             *eax = kvm_arch_get_supported_cpuid(s, 0xA, count, R_EAX);
+             *ebx = kvm_arch_get_supported_cpuid(s, 0xA, count, R_EBX);
+@@ -6620,7 +6620,7 @@ static void x86_cpu_filter_features(X86CPU *cpu, bool verbose)
  
-     if (hv_vmx_read_capability(HV_VMX_CAP_PINBASED,
-         &hvf_state->hvf_caps->vmx_cap_pinbased)) {
+     if ((env->features[FEAT_7_0_EBX] & CPUID_7_0_EBX_INTEL_PT) &&
+         kvm_enabled()) {
+-        KVMState *s = CPU(cpu)->kvm_state;
++        KVMState *s = kvm_vcpu_state(CPU(cpu));
+         uint32_t eax_0 = kvm_arch_get_supported_cpuid(s, 0x14, 0, R_EAX);
+         uint32_t ebx_0 = kvm_arch_get_supported_cpuid(s, 0x14, 0, R_EBX);
+         uint32_t ecx_0 = kvm_arch_get_supported_cpuid(s, 0x14, 0, R_ECX);
 -- 
 2.26.2
 

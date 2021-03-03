@@ -1,71 +1,71 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5706706lfg;
-        Wed, 3 Mar 2021 13:49:05 -0800 (PST)
-X-Received: by 2002:a1c:195:: with SMTP id 143mr814894wmb.147.1614808145877;
-        Wed, 03 Mar 2021 13:49:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614808145; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5706765lfg;
+        Wed, 3 Mar 2021 13:49:11 -0800 (PST)
+X-Received: by 2002:a1c:7415:: with SMTP id p21mr823125wmc.187.1614808151329;
+        Wed, 03 Mar 2021 13:49:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614808151; cv=none;
         d=google.com; s=arc-20160816;
-        b=M4+zb3513XrJZBaoR2+MWCGi2Mp5HfZrfK4V2lssf+IaApp/D212moXHa6dgs8gHSG
-         mMHCr2k+AwWPCSBjK19WhDoZ+MlM+FE9bNdWHDsC7axNTvOQH5cs1Ma6VdKBGPvQtRl4
-         +CUeW7KlDNlgw/iwop5XSS0lwgMWkYhTlUHV0qhEPrHI3iIf8m1VgtFeZQZtjhCojQ+P
-         kd58utDAYAw9ADvSEfxhZhpRsVVCS2RxBvx4zWWrqdogehKNddJsPiakqrljMS2Cm82d
-         nsEe4oOfCKNAvJaWBu6FnnK3H96/nAIUUglPE5DuV4IzwAOGwb1CJGVlZwlXpzIjaG1G
-         hsvA==
+        b=MqRH5b0k45hKa42SNoYyEQpuVjlOo6M3UDVnXDaTzNfEgMU3/8XdogjR4PvU0OBqSj
+         Am4YRbmuz1p06R8FZnvM+YkAhvn2owqMKX7FZC49UXFq6DNcOht4oAqywhSFg8d/jk+W
+         jUTMgM9XCwxk7ra/h1sQqrshMJDUJfS/d37/aDVrnYX1rkna4Z4NWBs5A/SARhDECefN
+         7BmXgWrUO1ekv8QU/lAMLeZ1LXdmArLL/9Fb2Y3UIAJ42pawB+lM8jQKnwM/vHcy5ejb
+         mqPIPf3q8cldE+hqlkOUAZdPJ3/UzzKntZyCQVJ/0iUbzGJP7PDl1PqJDkPgiZ7ITbP3
+         OfQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=YomvsDs5ZuIQvjHtj4a66pfmvsA4AEqB6lKkhbtyTa0=;
-        b=gw45UELcHoqJ+YXYktgqbJmrIBBIxOEypm61j8GW0ldvkDIH/PWJtN5W1SwXQ1N59b
-         uchvl+zCO3P4pmdiCsqocxsMV37LUy31j6jTw97rfOsxuolsovHRAIkUZEDmsNq5U4Kr
-         B26ez9JCb/f1QGBOEgRHvQMvnbdeo61X/3PNy6NfoNVWVvyDmIHKWqxPOnr6AXtNYh8R
-         MY8xuiGlX3C2RVu2flbbRb/mUZ2fZyGYaomMGbJ4qz7ll7BcLSkQ7/ZtjhCWQMbKglh5
-         jF9RgBjWbHhf/a4xv2zxtb0gE3U8FckUK5+mvnFxEsCSEMMWJTc4Aur+KRor3Gm/Kyia
-         +M+Q==
+        bh=S715M+675Z0PbXHD9I+O0NRlMeoHb9x2yw8235n4aD4=;
+        b=RHf9DOD2d/srAArbfZUEZZPvojt5lJFVp8ZwziDfqOWlimkCBnpBDUfFeP1rnws7R7
+         PuiZ3hdy1eUqd6Ut4ikl4dLkwsgL++He7aHYOKbAGYRg1cU99bsJp4HFa85C0MXDlZAl
+         Roe5ekJGL0s7ujEMbzJRvhqCJyMNq18tYjV/Ft6/5meBzdWvwBzBgGhhBTE5aE2pU1Bg
+         a+nKU2uekd7RF7BsIn7bDwPudnh3n/Jt25x2FZcXe0pjT3DiI9uPPUNJTO8Bw/qnVKut
+         jAYZUz5WtizjZKtak56TJyP2AQMA6qmCFoEtCb+kFdo9RvzXsDsX0dy4kW1tLoOrPTPI
+         msXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q9kzaXXL;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DNtWkruq;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v9sor9290104wrv.48.2021.03.03.13.49.05
+        by mx.google.com with SMTPS id r10sor869710wma.24.2021.03.03.13.49.11
         (Google Transport Security);
-        Wed, 03 Mar 2021 13:49:05 -0800 (PST)
+        Wed, 03 Mar 2021 13:49:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q9kzaXXL;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DNtWkruq;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=YomvsDs5ZuIQvjHtj4a66pfmvsA4AEqB6lKkhbtyTa0=;
-        b=Q9kzaXXLsrtgfnSy3Tmba9fCoXSao4m4lBzQq5YHleVSSrhl5zcnSqGhWkEO4OAobR
-         WvW/ywB6OTsHYI6wQ8cPu6VaeIvn/CYQiUjUcCYUDVEQG7R8Ms7BiFJx0ZyN88JYnF0u
-         G/52mSy5QIerKxgusOdPeJgyGXbt6ahhnW5NmJrE85vpSEc617OVjW9CJcp0t++14T5b
-         BjkEBuNXGKWR7Z4Teu6KbLpTp9kiXtNX24tHACRzjnjBqG+1lbJ+uDPGBBYeCivsdwSI
-         OO0FsP49qsvuTTNGyX8rMMWTUxEB17cYGPC6IBxoLdEdsv2hn3uVOx39iIMg6psvp6hA
-         q6HA==
+        bh=S715M+675Z0PbXHD9I+O0NRlMeoHb9x2yw8235n4aD4=;
+        b=DNtWkruqQxMBHcQBamIrB4xsS7MiGaAHrAuEuSs5YOzzpdCnZZm7sKSNOXBWI5liGW
+         H2lDY0QTTk+AyiIejw1ZHVZJlLHGPtQ9o/o3k8LwkPNwIO4cVZZSDE519gmSckUlxsDf
+         tr53Ze5OuSq4JewiMuHpFs6rIGKIXGCNLIgcsQLwQkXIxRRkjsxmnXR7wKfByBpXIlfw
+         z5Y01cxTBhYxiYtpta2UG4LMabBcIGwunB56wdmrFy3qOypaepMshPs4m8+mE/Gws6XD
+         1lVReeu3obRyPgms1cnCdr7zV+MSK37qVJ2U1H/Dp66kQYwD6/8D3VTXjZnqD2vCALbS
+         nSYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=YomvsDs5ZuIQvjHtj4a66pfmvsA4AEqB6lKkhbtyTa0=;
-        b=DZxiT/aW+epDgepZxXHoz3o4tV6CPW13k+u431cUqJP5K6pOtlJtGNKpLyb5xbzRrr
-         5brBCRlleZlOCAlm4yLtLcakU3Ha3KvEJ6UEy+vOSdVtajACbuOkWXSs+QpbISm3vhsq
-         5NnV8dckOF4z+SAgfX9OFDVt3Edm4XPVzQJvIpILznmjRWBgNOtN+dP65pZg1wAWtIf6
-         7UIJDwxSBpQpswJpuHL7JlMX2DZttU1UUWvh4LgeBGjbevIkgPTcHy85R2vbjRwCsBaC
-         yg95J7vOjvY0iw2uUOddeIUhGZH7pQQC7z2CjPc2XokKJL7l+si9W2BjSxJKw33Wk1j1
-         +mVA==
-X-Gm-Message-State: AOAM532nItr7Ka3I0dThe0/lg2omeUctHqi75BN78JePPB+i6i5zA6b8
-	Vmz791rX/31g3TtaoAFPqKg=
-X-Google-Smtp-Source: ABdhPJzaxOXYuwf2B9PFQezRCx5O1WE2DWF5RcZ8r+jGknmMEb+TBFXF69v358dK6ZjgUEnlnFQ20w==
-X-Received: by 2002:adf:9261:: with SMTP id 88mr754722wrj.270.1614808145655;
-        Wed, 03 Mar 2021 13:49:05 -0800 (PST)
+        bh=S715M+675Z0PbXHD9I+O0NRlMeoHb9x2yw8235n4aD4=;
+        b=cWcY8fndMo/1k7xlnAlyJcBifLUAK2KytSYVh1+4celmqL9GeVweGjC2LKMZNyfxdo
+         v9jvohBYAgLHF2OLMafvJdWCifi4W1Zezu0cTAxF02K0uOyxg34aZ7vwcNf/cP7zxjv5
+         1RQoLrQGW0n1mPfvsGqmqjGwIUNvB3xllrJjn3NghpTWU6z31Yk0BJMXtKS0pbZnPKFT
+         eWxi97js208gQrxTAjjpV3uiTIxx0fQOXfBk5dvKBOlI2FPGb/6Uv81d4uF1nHIMrpqz
+         ieGX5IUgbCbXt19CtuBAZ3u6RCFcEMk+VI1HpUpG1M6r+9bF4tpsw+DSUWB+Jhb+qrdn
+         mRFg==
+X-Gm-Message-State: AOAM533NryaZIMruUReWI9wKxFnBSPsGP5SAVJS1Arkhf16nPxJRpBiW
+	l0kR4BURd+T2EtU+P0deOgg=
+X-Google-Smtp-Source: ABdhPJyzq/395EXQ7e4rc/g9RXP3aHnx4RSP9K994E5vIztFHzllmbAJ3xzDwYr2hRTxnQ8Y/iALCg==
+X-Received: by 2002:a05:600c:2254:: with SMTP id a20mr852186wmm.115.1614808150922;
+        Wed, 03 Mar 2021 13:49:10 -0800 (PST)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
-        by smtp.gmail.com with ESMTPSA id h22sm9089008wmb.36.2021.03.03.13.49.04
+        by smtp.gmail.com with ESMTPSA id i8sm39345178wry.90.2021.03.03.13.49.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Mar 2021 13:49:05 -0800 (PST)
+        Wed, 03 Mar 2021 13:49:10 -0800 (PST)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
@@ -81,162 +81,243 @@ Cc: Claudio Fontana <cfontana@suse.de>,
 	Cornelia Huck <cohuck@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v4 21/28] target/arm: Refactor some function bodies
-Date: Wed,  3 Mar 2021 22:47:01 +0100
-Message-Id: <20210303214708.1727801-22-f4bug@amsat.org>
+Subject: [PATCH v4 22/28] target/arm: Restrict watchpoint code to system emulation
+Date: Wed,  3 Mar 2021 22:47:02 +0100
+Message-Id: <20210303214708.1727801-23-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210303214708.1727801-1-f4bug@amsat.org>
 References: <20210303214708.1727801-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wklAa3Tnza0b
+X-TUID: qSiUZSv/IpJV
 
-Refactor few fonctions body to ease #ifdef'ry review
-in the next commit. No logical change intented.
+We can not use watchpoints in user-mode emulation because we
+need the softmmu slow path to detect accesses to watchpointed
+memory. Add #ifdef'ry around it.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Patch easier to review using:
-'git-diff --color-moved-ws=allow-indentation-change'
----
- target/arm/debug_helper.c | 72 +++++++++++++++++++--------------------
- target/arm/helper.c       |  5 ++-
- 2 files changed, 38 insertions(+), 39 deletions(-)
+ target/arm/internals.h    |  2 ++
+ target/arm/cpu.c          |  4 ++--
+ target/arm/debug_helper.c |  8 ++++++++
+ target/arm/helper.c       |  4 ++++
+ target/arm/sve_helper.c   | 12 ++++++++++++
+ 5 files changed, 28 insertions(+), 2 deletions(-)
 
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 3fb295431ae..8fa0a244d59 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -263,6 +263,7 @@ static inline bool extended_addresses_enabled(CPUARMState *env)
+            (arm_feature(env, ARM_FEATURE_LPAE) && (tcr->raw_tcr & TTBCR_EAE));
+ }
+ 
++#ifndef CONFIG_USER_ONLY
+ /*
+  * Update a QEMU watchpoint based on the information the guest has set in the
+  * DBGWCR<n>_EL1 and DBGWVR<n>_EL1 registers.
+@@ -286,6 +287,7 @@ bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp);
+  * addresses.
+  */
+ vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len);
++#endif /* !CONFIG_USER_ONLY */
+ 
+ void hw_breakpoint_update(ARMCPU *cpu, int n);
+ /*
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 09566a535e5..efc338b24eb 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -432,10 +432,10 @@ static void arm_cpu_reset(DeviceState *dev)
+     if (kvm_enabled()) {
+         kvm_arm_reset_vcpu(cpu);
+     }
+-#endif
+ 
+-    hw_breakpoint_update_all(cpu);
+     hw_watchpoint_update_all(cpu);
++#endif
++    hw_breakpoint_update_all(cpu);
+     arm_rebuild_hflags(env);
+ }
+ 
 diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index c01d8524443..980110e1328 100644
+index 980110e1328..b8b7d81762d 100644
 --- a/target/arm/debug_helper.c
 +++ b/target/arm/debug_helper.c
-@@ -230,7 +230,6 @@ bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp)
+@@ -11,6 +11,8 @@
+ #include "exec/exec-all.h"
+ #include "exec/helper-proto.h"
+ 
++#ifndef CONFIG_USER_ONLY
++
+ /* Return true if the linked breakpoint entry lbn passes its checks */
+ static bool linked_bp_matches(ARMCPU *cpu, int lbn)
+ {
+@@ -227,6 +229,8 @@ bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp)
+     return check_watchpoints(cpu);
+ }
+ 
++#endif /* !CONFIG_USER_ONLY */
++
  static bool check_breakpoints(ARMCPU *cpu)
  {
      CPUARMState *env = &cpu->env;
--    int n;
- 
-     /*
-      * If breakpoints are disabled globally or we can't take debug
-@@ -241,7 +240,7 @@ static bool check_breakpoints(ARMCPU *cpu)
+@@ -240,11 +244,13 @@ static bool check_breakpoints(ARMCPU *cpu)
          return false;
      }
  
--    for (n = 0; n < ARRAY_SIZE(env->cpu_breakpoint); n++) {
-+    for (int n = 0; n < ARRAY_SIZE(env->cpu_breakpoint); n++) {
++#ifndef CONFIG_USER_ONLY
+     for (int n = 0; n < ARRAY_SIZE(env->cpu_breakpoint); n++) {
          if (bp_wp_matches(cpu, n, false)) {
              return true;
          }
-@@ -266,47 +265,48 @@ void arm_debug_excp_handler(CPUState *cs)
-      */
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-+    uint64_t pc;
-+    bool same_el;
-     CPUWatchpoint *wp_hit = cs->watchpoint_hit;
- 
--    if (wp_hit) {
--        if (wp_hit->flags & BP_CPU) {
--            bool wnr = (wp_hit->flags & BP_WATCHPOINT_HIT_WRITE) != 0;
--            bool same_el = arm_debug_target_el(env) == arm_current_el(env);
-+    if (wp_hit && (wp_hit->flags & BP_CPU)) {
-+        bool wnr = (wp_hit->flags & BP_WATCHPOINT_HIT_WRITE) != 0;
-+        bool same_el = arm_debug_target_el(env) == arm_current_el(env);
- 
--            cs->watchpoint_hit = NULL;
--
--            env->exception.fsr = arm_debug_exception_fsr(env);
--            env->exception.vaddress = wp_hit->hitaddr;
--            raise_exception(env, EXCP_DATA_ABORT,
--                    syn_watchpoint(same_el, 0, wnr),
--                    arm_debug_target_el(env));
--        }
--    } else {
--        uint64_t pc = is_a64(env) ? env->pc : env->regs[15];
--        bool same_el = (arm_debug_target_el(env) == arm_current_el(env));
--
--        /*
--         * (1) GDB breakpoints should be handled first.
--         * (2) Do not raise a CPU exception if no CPU breakpoint has fired,
--         * since singlestep is also done by generating a debug internal
--         * exception.
--         */
--        if (cpu_breakpoint_test(cs, pc, BP_GDB)
--            || !cpu_breakpoint_test(cs, pc, BP_CPU)) {
--            return;
--        }
-+        cs->watchpoint_hit = NULL;
- 
-         env->exception.fsr = arm_debug_exception_fsr(env);
--        /*
--         * FAR is UNKNOWN: clear vaddress to avoid potentially exposing
--         * values to the guest that it shouldn't be able to see at its
--         * exception/security level.
--         */
--        env->exception.vaddress = 0;
--        raise_exception(env, EXCP_PREFETCH_ABORT,
--                        syn_breakpoint(same_el),
-+        env->exception.vaddress = wp_hit->hitaddr;
-+        raise_exception(env, EXCP_DATA_ABORT,
-+                        syn_watchpoint(same_el, 0, wnr),
-                         arm_debug_target_el(env));
-+        return;
      }
-+
-+    pc = is_a64(env) ? env->pc : env->regs[15];
-+    same_el = (arm_debug_target_el(env) == arm_current_el(env));
-+
-+    /*
-+     * (1) GDB breakpoints should be handled first.
-+     * (2) Do not raise a CPU exception if no CPU breakpoint has fired,
-+     * since singlestep is also done by generating a debug internal
-+     * exception.
-+     */
-+    if (cpu_breakpoint_test(cs, pc, BP_GDB)
-+        || !cpu_breakpoint_test(cs, pc, BP_CPU)) {
-+        return;
-+    }
-+
-+    env->exception.fsr = arm_debug_exception_fsr(env);
-+    /*
-+     * FAR is UNKNOWN: clear vaddress to avoid potentially exposing
-+     * values to the guest that it shouldn't be able to see at its
-+     * exception/security level.
-+     */
-+    env->exception.vaddress = 0;
-+    raise_exception(env, EXCP_PREFETCH_ABORT,
-+                    syn_breakpoint(same_el),
-+                    arm_debug_target_el(env));
++#endif /* !CONFIG_USER_ONLY */
+     return false;
  }
  
- #if !defined(CONFIG_USER_ONLY)
+@@ -267,6 +273,7 @@ void arm_debug_excp_handler(CPUState *cs)
+     CPUARMState *env = &cpu->env;
+     uint64_t pc;
+     bool same_el;
++#ifndef CONFIG_USER_ONLY
+     CPUWatchpoint *wp_hit = cs->watchpoint_hit;
+ 
+     if (wp_hit && (wp_hit->flags & BP_CPU)) {
+@@ -282,6 +289,7 @@ void arm_debug_excp_handler(CPUState *cs)
+                         arm_debug_target_el(env));
+         return;
+     }
++#endif /* !CONFIG_USER_ONLY */
+ 
+     pc = is_a64(env) ? env->pc : env->regs[15];
+     same_el = (arm_debug_target_el(env) == arm_current_el(env));
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0e1a3b94211..54648c7fbb6 100644
+index 54648c7fbb6..2e7a6356ae3 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6595,7 +6595,7 @@ static void define_debug_regs(ARMCPU *cpu)
-      * These are just dummy implementations for now.
-      */
-     int i;
--    int wrps, brps, ctx_cmps;
-+    int brps, ctx_cmps;
+@@ -6345,6 +6345,7 @@ static const ARMCPRegInfo zcr_el3_reginfo = {
+     .writefn = zcr_write, .raw_writefn = raw_write
+ };
  
-     /*
-      * The Arm ARM says DBGDIDR is optional and deprecated if EL1 cannot
-@@ -6614,7 +6614,6 @@ static void define_debug_regs(ARMCPU *cpu)
++#ifndef CONFIG_USER_ONLY
+ void hw_watchpoint_update(ARMCPU *cpu, int n)
+ {
+     CPUARMState *env = &cpu->env;
+@@ -6470,6 +6471,7 @@ static void dbgwcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     raw_write(env, ri, value);
+     hw_watchpoint_update(cpu, i);
+ }
++#endif /* !CONFIG_USER_ONLY */
  
-     /* Note that all these register fields hold "number of Xs minus 1". */
-     brps = arm_num_brps(cpu);
--    wrps = arm_num_wrps(cpu);
-     ctx_cmps = arm_num_ctx_cmps(cpu);
- 
-     assert(ctx_cmps <= brps);
-@@ -6644,7 +6643,7 @@ static void define_debug_regs(ARMCPU *cpu)
+ void hw_breakpoint_update(ARMCPU *cpu, int n)
+ {
+@@ -6643,6 +6645,7 @@ static void define_debug_regs(ARMCPU *cpu)
          define_arm_cp_regs(cpu, dbgregs);
      }
  
--    for (i = 0; i < wrps; i++) {
-+    for (i = 0; i < arm_num_wrps(cpu); i++) {
++#ifndef CONFIG_USER_ONLY
+     for (i = 0; i < arm_num_wrps(cpu); i++) {
          ARMCPRegInfo dbgregs[] = {
              { .name = "DBGWVR", .state = ARM_CP_STATE_BOTH,
-               .cp = 14, .opc0 = 2, .opc1 = 0, .crn = 0, .crm = i, .opc2 = 6,
+@@ -6661,6 +6664,7 @@ static void define_debug_regs(ARMCPU *cpu)
+         };
+         define_arm_cp_regs(cpu, dbgregs);
+     }
++#endif /* !CONFIG_USER_ONLY */
+ }
+ 
+ static void define_pmu_regs(ARMCPU *cpu)
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 844db08bd57..ed3f22d78a5 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -4849,6 +4849,7 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
+                 /* Some page is MMIO, see below. */
+                 goto do_fault;
+             }
++#ifndef CONFIG_USER_ONLY
+             if (unlikely(flags & TLB_WATCHPOINT) &&
+                 (cpu_watchpoint_address_matches
+                  (env_cpu(env), addr + mem_off, 1 << msz)
+@@ -4856,6 +4857,7 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
+                 /* Watchpoint hit, see below. */
+                 goto do_fault;
+             }
++#endif
+             if (mtedesc && !mte_probe1(env, mtedesc, addr + mem_off)) {
+                 goto do_fault;
+             }
+@@ -4900,12 +4902,14 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
+         uint64_t pg = *(uint64_t *)(vg + (reg_off >> 3));
+         do {
+             if ((pg >> (reg_off & 63)) & 1) {
++#ifndef CONFIG_USER_ONLY
+                 if (unlikely(flags & TLB_WATCHPOINT) &&
+                     (cpu_watchpoint_address_matches
+                      (env_cpu(env), addr + mem_off, 1 << msz)
+                      & BP_MEM_READ)) {
+                     goto do_fault;
+                 }
++#endif
+                 if (mtedesc && !mte_probe1(env, mtedesc, addr + mem_off)) {
+                     goto do_fault;
+                 }
+@@ -5355,10 +5359,12 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                                mmu_idx, retaddr);
+ 
+                 if (likely(in_page >= msize)) {
++#ifndef CONFIG_USER_ONLY
+                     if (unlikely(info.flags & TLB_WATCHPOINT)) {
+                         cpu_check_watchpoint(env_cpu(env), addr, msize,
+                                              info.attrs, BP_MEM_READ, retaddr);
+                     }
++#endif
+                     if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
+                         mte_check1(env, mtedesc, addr, retaddr);
+                     }
+@@ -5367,11 +5373,13 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                     /* Element crosses the page boundary. */
+                     sve_probe_page(&info2, false, env, addr + in_page, 0,
+                                    MMU_DATA_LOAD, mmu_idx, retaddr);
++#ifndef CONFIG_USER_ONLY
+                     if (unlikely((info.flags | info2.flags) & TLB_WATCHPOINT)) {
+                         cpu_check_watchpoint(env_cpu(env), addr,
+                                              msize, info.attrs,
+                                              BP_MEM_READ, retaddr);
+                     }
++#endif
+                     if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
+                         mte_check1(env, mtedesc, addr, retaddr);
+                     }
+@@ -5568,11 +5576,13 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                 if (unlikely(info.flags & (TLB_INVALID_MASK | TLB_MMIO))) {
+                     goto fault;
+                 }
++#ifndef CONFIG_USER_ONLY
+                 if (unlikely(info.flags & TLB_WATCHPOINT) &&
+                     (cpu_watchpoint_address_matches
+                      (env_cpu(env), addr, msize) & BP_MEM_READ)) {
+                     goto fault;
+                 }
++#endif
+                 if (mtedesc &&
+                     arm_tlb_mte_tagged(&info.attrs) &&
+                     !mte_probe1(env, mtedesc, addr)) {
+@@ -5754,10 +5764,12 @@ void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
+                     info.flags |= info2.flags;
+                 }
+ 
++#ifndef CONFIG_USER_ONLY
+                 if (unlikely(info.flags & TLB_WATCHPOINT)) {
+                     cpu_check_watchpoint(env_cpu(env), addr, msize,
+                                          info.attrs, BP_MEM_WRITE, retaddr);
+                 }
++#endif
+ 
+                 if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
+                     mte_check1(env, mtedesc, addr, retaddr);
 -- 
 2.26.2

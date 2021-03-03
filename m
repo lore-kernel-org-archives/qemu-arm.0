@@ -1,100 +1,98 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp4953355lfg;
-        Tue, 2 Mar 2021 17:24:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzaGOSqeBOvNd3Ds86kcAFJ/OmDE2liOGS1gkKMdK5GanJsJlskMvbY2bE+ClwwOavDM13L
-X-Received: by 2002:a92:4a10:: with SMTP id m16mr12139130ilf.240.1614734650354;
-        Tue, 02 Mar 2021 17:24:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614734650; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5122799lfg;
+        Tue, 2 Mar 2021 23:05:02 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxhlosgNJiO1LPusF5WGY+zs7E+bOrpFzD7KaFmiNPsZvOPj/YyMm0EzQ4NvtU9+5maUCyC
+X-Received: by 2002:a25:be8d:: with SMTP id i13mr36180136ybk.320.1614755102600;
+        Tue, 02 Mar 2021 23:05:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614755102; cv=none;
         d=google.com; s=arc-20160816;
-        b=gGH+ZPNGTT5/6P0MU/DOUjLUV8w/uimShfxbHptvrxJkAJnNBB/r7EEYOPtavwoWCC
-         D3J8cVXb8ZM3HLiLslxnoemTnUBG4Baq8ciMu4iekVcWQAjmeLYQnv8ivCJ/iueJZgwN
-         wTz6ALO/GXfiegvt8zZW9ao6CIBGE5qlcOD4QktDllhQGd23q/WTtkFN1UY2Zw1Oi6US
-         QMXbuVym/c7EQfxigyv16rtYs7i9R4t6JuRu+wH2VeJzk74LEjgOx3g8aD2nl0CBlkn6
-         SGSd0/qATVvwtTdjpCFijQYqlgkzwFqTTlOysIkglpwDlH+YwCeMI+/nEOMcwBoy4nto
-         g2tA==
+        b=n9TEbA7RJClzwo8Rcytxwq3rsHn2KcFNB5iva6Fg1FpLGRs+qQwp7buS3rXeQD5S8/
+         9G62vtNEtL/aemwJ5bZHjO4rOR/cPIrVCAkuWdfpmiFN6tSqpEoeztJFXLAElGd3ZD7N
+         HKK2amwH0ESzcNjmlDhEyyTMJndFuvS1R4eGmIl/JZxLe0cqow2zFqm3SrybpfLZV8pi
+         8kfOycRSHvemJWwvIT/jPL+vqdVbZ1jC7/7wb+y229zmDgBPFsdTrkp2NpNSYZQvC50c
+         fQJZB5siybFHJzq+I+mJhFBd/i1XQdTewLwNAOKnf3ZvmdMAYxq//x5lz493ifARNPlz
+         sO1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VWS+hvZZd+PyjeXy42iVXkbp4JG+ZMxRgGlpplATrRU=;
-        b=cRfJP/iE//q9Mek9/MNKNCAi/foXpZDowiHi8Uxx/EG6ssTOqNtq+e5FoaRCrUNkmp
-         KUO6fwydLAbt1d/b5bzFafqcO6/2xddey7SXdKoVZIE6v7whecLJ3xJznJbPlVpCNfDO
-         Yl0nZSj2x5XWf/J8z0wEk3+mP1t+AaNM5sY/SmmsACzcPIxn2O7RO7GkgfUe1+PszdYW
-         RTMwzi4a5R8/FzYGdNus+oocx5G2qbJjXp4XbF9RdEwxez1gipHos6ECRh8xlPfEM4JC
-         gywke1MED9/U+Pb5/1J1n9Iat5oHIW9YcneJ5jvRikNylay0vSEMdesPfvFS4W0pZ1O7
-         hyyg==
+        bh=MPvB8l9zZNaGwNbucMrgacMMV5We0Qj1yiiSvwQOauY=;
+        b=X6zAmzj16blGZ8rNL+sYYuFOh5zHdl2cDGlQnGQKmwRWHD9my8Rlx8SAB9xPdLfA7R
+         s9yhQpgpVMX2araKrEF/TpBiDc4vcLmCMMuYdP2/mt5y0MDqfBaE2Nj2WXnFufhkmmh+
+         yX6FLOgXOSRsHYYkGczqOi3ek7rYMSGp9XKMfWwhTWrSly/t8XdvJIpbAd/MsfELNpQP
+         EYvHTRbQiMDfHfB5ratwJRatAgmDvYTxzG2xhRdrzHqz/fTyZhP2o8DGZ8vvA+Siw8Ze
+         UhgbIlbZI33fFEgNxpT8ookryds/RpHXbJpx3gC5weTp2MQS7hHo7XYdlRI+NYuxT9kW
+         vO/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iJJH0QPa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fapApfn5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t15si3520377ioh.77.2021.03.02.17.24.09
+        by mx.google.com with ESMTPS id n6si19207082ybc.443.2021.03.02.23.05.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 17:24:10 -0800 (PST)
+        Tue, 02 Mar 2021 23:05:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iJJH0QPa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fapApfn5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51726 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHGFF-0000B0-BX
-	for alex.bennee@linaro.org; Tue, 02 Mar 2021 20:24:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47042)
+	id 1lHLZ7-0005M5-Ng
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 02:05:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49598)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHGDp-0008Cw-Jk; Tue, 02 Mar 2021 20:22:41 -0500
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d]:41547)
+ id 1lHLY8-00051r-65; Wed, 03 Mar 2021 02:04:00 -0500
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:45293)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHGDo-0003bn-2G; Tue, 02 Mar 2021 20:22:41 -0500
-Received: by mail-pf1-x42d.google.com with SMTP id q20so15077620pfu.8;
- Tue, 02 Mar 2021 17:22:39 -0800 (PST)
+ id 1lHLY6-0007k0-F6; Wed, 03 Mar 2021 02:03:59 -0500
+Received: by mail-pf1-x42b.google.com with SMTP id j12so15571265pfj.12;
+ Tue, 02 Mar 2021 23:03:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=VWS+hvZZd+PyjeXy42iVXkbp4JG+ZMxRgGlpplATrRU=;
- b=iJJH0QPafqgD0/2C6xh04yLm8ByALcroBMPT1wJOuLyXqI9oZTRfANlG4ubn0hASCQ
- g4WwwO+ff7YPrtI2F3gW8oMHazLs3pdMGD3nw15Kz8H2hkVsyPOALvyltkZG0HDjnYzj
- 2yXGXgJ0LVPK9EQHd7umlJtwW77Zlk+ToyTkvypdRS1eupLr9OSCXEnAZ+gZtm+clm5Q
- DyLIUotZ7x1Fe8NAZLXQxXAYYNXJlF7DcefruS9qzJ+xMJ7FvDshK5geLtyenO0HJZAl
- XfZkIkA0YM0LUbUnAdLilz3JLxxHV3oxmWHs4Qf2GLvcQF9AodXfvwWRL87fZ6henNKg
- GUEA==
+ bh=MPvB8l9zZNaGwNbucMrgacMMV5We0Qj1yiiSvwQOauY=;
+ b=fapApfn5IjcjeTUZCsL9dCt6CdOYTHFgyEGUgUqj2VJvfoRHtdbhAcLgkUbxLGaXFP
+ Av1OpB5SBlyccXXgtF01hD30WYYFeUciZnHwugpAYYLLoZhQmzKg75GiGSeQXdnLDUSg
+ i7yWd9+ZCI1mDVantjBwYhGKl/wNx8p37wBXN4TZafH9OKZHGmVfRP2MX9ji/I0oigcV
+ BBm5dpL586rZFsK695B+HLburhO/w98przS7bcyoxAxZ5ILv7X9kCVy58I4as1TswzvJ
+ i/b2bubsaplK8QAEX1eXVylrpjnDRj4kzAYbyujqweoSyF4FJtCHRw3TIu2lDIZqvYQr
+ 8YCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=VWS+hvZZd+PyjeXy42iVXkbp4JG+ZMxRgGlpplATrRU=;
- b=JAWcs/wQcWqTI8Rf365HWEc+ItjXfWahwVB41CM8pPXqtXuEmrbbwtnGNU40ck//nY
- A9PPzc6l48+RtAqkImNCilHEi1afJHFvppXYZcX4lLP04h1G/21pcw9cuprLlwf10ZMr
- pwSSO+u9Akn7CU0OuVTtThe7Bv/adTsgUwCSsnYqTTLU2URlg1aGpNN6cPyx3a1bGirM
- UCIPcuF4FnyHi99lC72veBehQyZcKx+368XiNRqXI3IiaqEVU1HvhOGM9O5l3wuCBhuK
- 3XDoZ9mf68y8DowxWLnWj5jeWSVCMYvvw9Wi77Rq7+wlkRfBEl4qwBTdeJgo0Om85GsL
- mthA==
-X-Gm-Message-State: AOAM531Yz4Dg20g2M63cx2Kghio85jShBSl/aHJ6Hzhzthnzb/G9DLOn
- q4dDaDq0HCDsgL3mDNlQOug=
-X-Received: by 2002:a63:e109:: with SMTP id z9mr20493678pgh.5.1614734558250;
- Tue, 02 Mar 2021 17:22:38 -0800 (PST)
+ bh=MPvB8l9zZNaGwNbucMrgacMMV5We0Qj1yiiSvwQOauY=;
+ b=sLC9e1QHcRxj414u2231MJpVVGQrOHoPIoLmrjOsJQKa6BwZGJPRbmYvwlBMvSNROV
+ XPjgLsmEI/Uz/tVAwEtRHa0pu7+31XadZjgf12pjZE43pP4dV4KOTh3MHDFofgUsq9tt
+ UdXreBcVqUi000M50JGHv6chLFZL3CA3yZFo1TkbuMvilZkgT4tR1HB61nyNN4mOrKQ+
+ DmtBq8FNvaH57gZKgtktGdsWziP0zTcHAOQP3A5w8NqvAVI62YG9syhpH4n6S9joYHeA
+ oFXcvBLO3QLHssDAStIHNg/T4zKZSoJ+qUQrR32uifQ5CPQmuOyap+OLaF8O1czLzldT
+ h8+g==
+X-Gm-Message-State: AOAM532N31DrVV1JP2bdd/OD3jOWaxgdVv4SP3gYML/tVbP/je6/Pbf+
+ oqY376y2ABDn1iyPmOu26AE=
+X-Received: by 2002:a63:1452:: with SMTP id 18mr2596529pgu.269.1614755036934; 
+ Tue, 02 Mar 2021 23:03:56 -0800 (PST)
 Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id t19sm14135427pgj.8.2021.03.02.17.22.33
+ by smtp.gmail.com with ESMTPSA id bb24sm5855703pjb.5.2021.03.02.23.03.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 17:22:37 -0800 (PST)
+ Tue, 02 Mar 2021 23:03:55 -0800 (PST)
 From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 2/2] tests/acceptance: Test ast2600 machine
-Date: Wed,  3 Mar 2021 11:52:17 +1030
-Message-Id: <20210303012217.637737-3-joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH 2/2] aspeed: Integrate HACE
+Date: Wed,  3 Mar 2021 17:33:31 +1030
+Message-Id: <20210303070331.70744-3-joel@jms.id.au>
 X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210303012217.637737-1-joel@jms.id.au>
-References: <20210303012217.637737-1-joel@jms.id.au>
+In-Reply-To: <20210303070331.70744-1-joel@jms.id.au>
+References: <20210303070331.70744-1-joel@jms.id.au>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=joel.stan@gmail.com; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=joel.stan@gmail.com; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -119,56 +117,168 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oolh7rvRQsSj
+X-TUID: iQd7tqRh6qZ9
 
-This tests a Debian multi-soc arm32 Linux kernel on the AST2600 based
-Tacoma BMC machine.
-
-There is no root file system so the test terminates when boot reaches
-the stage where it attempts and fails to mount something.
+Add the hash and crypto engine model to the aspeed socs.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
+[ clg: documentation update ]
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ docs/system/arm/aspeed.rst  |  2 +-
+ include/hw/arm/aspeed_soc.h |  3 +++
+ hw/arm/aspeed_ast2600.c     | 14 ++++++++++++++
+ hw/arm/aspeed_soc.c         | 15 +++++++++++++++
+ 4 files changed, 33 insertions(+), 1 deletion(-)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 2f46a08fdc10..6b7d7f5df984 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -1094,6 +1094,32 @@ def do_test_arm_aspeed(self, image):
-         # self.wait_for_console_pattern("login:")
-         self.vm.shutdown()
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 690bada7842b..ec30cad88a58 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -48,6 +48,7 @@ Supported devices
+  * UART
+  * Ethernet controllers
+  * Front LEDs (PCA9552 on I2C bus)
++ * Hash/Crypto Engine (HACE) - SHA support only, no scatter-gather
  
-+    def test_arm_ast2600_debian(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:tacoma-bmc
-+        """
-+        deb_url = ('http://snapshot.debian.org/archive/debian/'
-+                   '20210302T203551Z/'
-+                   'pool/main/l/linux/'
-+                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
-+        deb_hash = 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618cb8976f1e09e'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    algorithm='sha256')
-+        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.10.0-3-armmp')
-+        dtb_path = self.extract_from_deb(deb_path,
-+                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma.dtb')
+ 
+ Missing devices
+@@ -59,7 +60,6 @@ Missing devices
+  * LPC Bus Controller
+  * Slave GPIO Controller
+  * Super I/O Controller
+- * Hash/Crypto Engine
+  * PCI-Express 1 Controller
+  * Graphic Display Controller
+  * PECI Controller
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 11cfe6e3585b..a8c9a22e5882 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -21,6 +21,7 @@
+ #include "hw/rtc/aspeed_rtc.h"
+ #include "hw/i2c/aspeed_i2c.h"
+ #include "hw/ssi/aspeed_smc.h"
++#include "hw/misc/aspeed_hace.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+ #include "hw/net/ftgmac100.h"
+ #include "target/arm/cpu.h"
+@@ -49,6 +50,7 @@ struct AspeedSoCState {
+     AspeedTimerCtrlState timerctrl;
+     AspeedI2CState i2c;
+     AspeedSCUState scu;
++    AspeedHACEState hace;
+     AspeedXDMAState xdma;
+     AspeedSMCState fmc;
+     AspeedSMCState spi[ASPEED_SPIS_NUM];
+@@ -130,6 +132,7 @@ enum {
+     ASPEED_DEV_SDRAM,
+     ASPEED_DEV_XDMA,
+     ASPEED_DEV_EMMC,
++    ASPEED_DEV_HACE,
+ };
+ 
+ #endif /* ASPEED_SOC_H */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index bf31ca351feb..7aba3effd7bc 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -42,6 +42,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+     [ASPEED_DEV_ETH2]      = 0x1E680000,
+     [ASPEED_DEV_ETH4]      = 0x1E690000,
+     [ASPEED_DEV_VIC]       = 0x1E6C0000,
++    [ASPEED_DEV_HACE]      = 0x1E6D0000,
+     [ASPEED_DEV_SDMC]      = 0x1E6E0000,
+     [ASPEED_DEV_SCU]       = 0x1E6E2000,
+     [ASPEED_DEV_XDMA]      = 0x1E6E7000,
+@@ -102,6 +103,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+     [ASPEED_DEV_I2C]       = 110,   /* 110 -> 125 */
+     [ASPEED_DEV_ETH1]      = 2,
+     [ASPEED_DEV_ETH2]      = 3,
++    [ASPEED_DEV_HACE]      = 4,
+     [ASPEED_DEV_ETH3]      = 32,
+     [ASPEED_DEV_ETH4]      = 33,
+ 
+@@ -211,6 +213,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+ 
+     object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots[0],
+                             TYPE_SYSBUS_SDHCI);
 +
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path)
-+        self.vm.launch()
-+        self.wait_for_console_pattern("Booting Linux on physical CPU 0xf00")
-+        self.wait_for_console_pattern("SMP: Total of 2 processors activated")
-+        self.wait_for_console_pattern("ftgmac100 1e670000.ftgmac eth0: irq")
-+        self.wait_for_console_pattern("VFS: Cannot open root device")
-+        self.vm.shutdown()
++    object_initialize_child(obj, "hace", &s->hace, TYPE_ASPEED_HACE);
+ }
+ 
+ /*
+@@ -469,6 +473,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->emmc), 0, sc->memmap[ASPEED_DEV_EMMC]);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_EMMC));
 +
-     def test_m68k_mcf5208evb(self):
-         """
-         :avocado: tags=arch:m68k
++    /* HACE */
++    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr),
++                             &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+ }
+ 
+ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 7eefd54ac07a..ce9b8f8c5d6f 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -34,6 +34,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+     [ASPEED_DEV_VIC]    = 0x1E6C0000,
+     [ASPEED_DEV_SDMC]   = 0x1E6E0000,
+     [ASPEED_DEV_SCU]    = 0x1E6E2000,
++    [ASPEED_DEV_HACE]   = 0x1E6E3000,
+     [ASPEED_DEV_XDMA]   = 0x1E6E7000,
+     [ASPEED_DEV_VIDEO]  = 0x1E700000,
+     [ASPEED_DEV_ADC]    = 0x1E6E9000,
+@@ -65,6 +66,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+     [ASPEED_DEV_VIC]    = 0x1E6C0000,
+     [ASPEED_DEV_SDMC]   = 0x1E6E0000,
+     [ASPEED_DEV_SCU]    = 0x1E6E2000,
++    [ASPEED_DEV_HACE]   = 0x1E6E3000,
+     [ASPEED_DEV_XDMA]   = 0x1E6E7000,
+     [ASPEED_DEV_ADC]    = 0x1E6E9000,
+     [ASPEED_DEV_VIDEO]  = 0x1E700000,
+@@ -118,6 +120,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+     [ASPEED_DEV_ETH2]   = 3,
+     [ASPEED_DEV_XDMA]   = 6,
+     [ASPEED_DEV_SDHCI]  = 26,
++    [ASPEED_DEV_HACE]   = 4,
+ };
+ 
+ #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
+@@ -211,6 +214,8 @@ static void aspeed_soc_init(Object *obj)
+         object_initialize_child(obj, "sdhci[*]", &s->sdhci.slots[i],
+                                 TYPE_SYSBUS_SDHCI);
+     }
++
++    object_initialize_child(obj, "hace", &s->hace, TYPE_ASPEED_HACE);
+ }
+ 
+ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+@@ -393,6 +398,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                     sc->memmap[ASPEED_DEV_SDHCI]);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_SDHCI));
++
++    /* HACE */
++    object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(s->dram_mr),
++                             &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hace), 0, sc->memmap[ASPEED_DEV_HACE]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_HACE));
+ }
+ static Property aspeed_soc_properties[] = {
+     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
 -- 
 2.30.1
 

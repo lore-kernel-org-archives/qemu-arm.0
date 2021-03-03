@@ -1,502 +1,323 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5123478lfg;
-        Tue, 2 Mar 2021 23:06:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzp9xnk3le6cDl3TyZ4l/wYpkZB18n+TqYSzoyUda2JVlFjRJ+A6usi7bHCwS4N5f5Z0bcx
-X-Received: by 2002:a5d:9250:: with SMTP id e16mr21638470iol.27.1614755173709;
-        Tue, 02 Mar 2021 23:06:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614755173; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5209802lfg;
+        Wed, 3 Mar 2021 01:44:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxJtEAXVyT62u292SXzNyUR1obSOdu6l/58hcbghIC2fzQwwgZr/l+hds6FJ7b42FUPS4fJ
+X-Received: by 2002:a25:df15:: with SMTP id w21mr34977273ybg.241.1614764658509;
+        Wed, 03 Mar 2021 01:44:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614764658; cv=none;
         d=google.com; s=arc-20160816;
-        b=yvrDnbhF2egsuUCCLBOt5I6Y++DtSJB0YfIVlrSJ+LieuYrbFGTLPQ5mcnNYNvL9fn
-         lbu+VJyYZ19FoL2XXsQLOJ3bfPlbR1u6pBLc3STMhNWuPoo6qPsKIU41pISL31rOk3vQ
-         w2q/k7AnIzthm8ZEpMm7yskFyTNjmVIoor9a8AMJd9cRqc852bDZkcREGhQRhHWRSnUX
-         vvU6RdRtciORqwWou35euHCrlUICCeXWnuoxS8BSN1qkrbfk615rjsO692SHgUf8ekOr
-         ODKhv5OseiKUQPVXI09fWPkKi0BVVNxWOE7HWTNQfRvsEYGLEZpOGWSQMf8trQk07o6G
-         7oQg==
+        b=X3OV5EzpT776meUiJ5QDdvWgy/GohbOC50m6Ds8UjUCSbcS5u8buwS1c4+EZT59aqU
+         /OAbn7S4gfMT1dQ2dy18oQdSlQipx+L2sJ4H3+pTd+ZZ8Bb3GD4X/+97XP0ofYFmGj7H
+         H+BwVhXtLShrU+AlHTdEyCiXoj5NCDH0mKN5x6sivwxeykzGDxjQcVz+OZVHFAd2k2Bl
+         9n+O7N+P0jV2dQ86QJ8bQb6AVxx/I0NkPAbsBwiFNatL2d6DEVR/atU5kNS+XbV468wR
+         6Ox6dldEGfjXW0f9Oicb4/4nP8df1eBjd8ciMybS0RF+87vx6R2o+yZME7XtcNmtjqPy
+         B+bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=VS7vhfcDmmNCw43EU4nIQ+z4Ru7TSfi1kfLvo/anquQ=;
-        b=0nLcrBlEBAI+idJ6+YO0CElSxb9c22e5TlyaB5i2dFujYJd85mef3U5z7AeGVC8GXs
-         nRpys28rilqaGTNVXmbglan9Ibvwf7r77OCSsCYAfLt///n9DkCmRwVY9U0SsZ2PMZmU
-         tA8BWKQZVetavVCZyA1Hr9pQL7kks+spobiUxAz5zZg1IC0Bzqq6db9+URb7BQFwaZVa
-         HwENdU427FCUQSMUyea0dmxe/KddkivFSJs6CBzee7Ol0PPr5CoMzeQSMvpMZBF4y55w
-         Y9O8V+7+qK4BJ7yask8SHRKpH1YZT/iV//5y+kDNHqVMbQ+CzlG+hdqlQhbVz2R9A9wi
-         Gbsg==
+        bh=Eq4g+R5KwGDn8jG4TdZ7x6oFSn4oCjVCZTeRi8cnSF0=;
+        b=rIQ5m+GOZR0joFfknmSWn7JRp2DRDI0FLjB77roR4mSmUzpSkQF516GUsfIgEzNdnF
+         z28pWdPjdH5bU9v63gxYQt/m4F0uqlkpOZ9gkWEwFx7FPj/nRlrScPIs4zyHWJWxMcPL
+         6cAiaoTbvveeRQdevSTNSMAGzp0Ml81+aT/JMkTKR9q2+4LT37rt/ZmzHEPUefn2R6KZ
+         Rs1yzE/kF58hQ4VsJGrlJu6UjNFf2M5fEbIe8Kr4qx7JUhBKGYpF1vaDnstB1wYI03TE
+         BKT9pEs+bm04insa7uzeY7hXFtLjlkQWf2bY03XarOLyEtWo2Ejb41zOdhwd6Y9CgXvA
+         3Pwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R9W1UyP0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=guNSrgs1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p13si22615972ilh.128.2021.03.02.23.06.13
+        by mx.google.com with ESMTPS id y7si12423764yby.26.2021.03.03.01.44.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Mar 2021 23:06:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Mar 2021 01:44:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R9W1UyP0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44838 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=guNSrgs1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51894 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHLaG-0005Vv-Su
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 02:06:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49558)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHO3F-0000xn-Pt
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 04:44:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHLY5-0004zU-9h; Wed, 03 Mar 2021 02:03:57 -0500
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f]:34363)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHLY3-0007iW-1z; Wed, 03 Mar 2021 02:03:57 -0500
-Received: by mail-pj1-x102f.google.com with SMTP id
- d13-20020a17090abf8db02900c0590648b1so2429824pjs.1; 
- Tue, 02 Mar 2021 23:03:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=VS7vhfcDmmNCw43EU4nIQ+z4Ru7TSfi1kfLvo/anquQ=;
- b=R9W1UyP0aeV2YTIJhgXmjtDQPUTohoVh8q/hCDOqH9IVDfycXyZGAMopu6+2IBLtI2
- hLSeM78lpmQuZ6GRtGDcXDTvFC7xoajS9xcfQFpm1SwlagOo8J5JPqDSvCJhZwQfqGZr
- 1dtOLh+QdJ6gazDwR/bKL+5GZhGC8GhjJDAzUqut5u4FS4CRoXLn6FF/rO2lyoVuJcEq
- vK6w538+RCIpcIajfjqpM+zzBKVJ+bwJoLxpcMXmi90+3rww/zuTufz3sw6KjTlCqKbf
- At3tDefhSPZoqaNDpAlYHkUOdx1jOrXKunMU6Oa8hro/BQ2z59z8W2BzvLJQjHP66nnV
- mAFg==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lHO34-0000xC-Uv
+ for qemu-arm@nongnu.org; Wed, 03 Mar 2021 04:44:06 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:54656)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1lHO31-0008EA-D6
+ for qemu-arm@nongnu.org; Wed, 03 Mar 2021 04:44:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614764642;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Eq4g+R5KwGDn8jG4TdZ7x6oFSn4oCjVCZTeRi8cnSF0=;
+ b=guNSrgs1Mt/0+TMXPNzGG+XTdExVnpsHyRe9jatFqp992WjDy5C7OVfYp2QS/TrTUUypZP
+ OK7oeXFL2h9/6jUhpj3in6RyLrb2QKW56kUyohSeI7Tyaugyzc5sGTyAVvKkK2MkbKpT1f
+ O5g0jrDB1CZqZwmzOGCyNq40FewAv9k=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-122-BlBk7CvRM0iTbA_QlpiaSw-1; Wed, 03 Mar 2021 04:44:00 -0500
+X-MC-Unique: BlBk7CvRM0iTbA_QlpiaSw-1
+Received: by mail-ed1-f71.google.com with SMTP id l23so11916565edt.23
+ for <qemu-arm@nongnu.org>; Wed, 03 Mar 2021 01:44:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=VS7vhfcDmmNCw43EU4nIQ+z4Ru7TSfi1kfLvo/anquQ=;
- b=gcZBkt4dNBf7YmnHTyRZHdPDWGgYfyojvCJnUOju+pVbomga9nMte+xhNwwS0ZOKlU
- /GlihQ2+CZK26hrd14PLS3c5zPG7ZOCP3RUUqqIjkvG5aGOwoVHol2zxlP5Oa9JOEoE8
- ld+hN20DyyNzZ387c9hSYJbO+gsAHaNbsuqd7o3IiEkFbMUTFdFvIkz2NMmmXf6g9vGt
- CkAQETo4FEJJ8C1riItqOQhVmfUkarc3wODaPSlIgZlOE4uTRjOITwVp9+TlU32Y+HN4
- wW364BHUNtZnfQ6uyns6/wQTcaR/Jjd8nxXdJLxUvQVcqep7dmQtS5igVKUAUASkFbMv
- bJYg==
-X-Gm-Message-State: AOAM533z0vUWqkF0GyPFIt77A71p42t7ejiLTvdzaw26zKJU0efUJ+Gg
- uNiZR4Ron42o/LjpUmK1oE2mKeM/DHg=
-X-Received: by 2002:a17:902:8c8f:b029:e0:1663:fd34 with SMTP id
- t15-20020a1709028c8fb02900e01663fd34mr6934279plo.84.1614755033110; 
- Tue, 02 Mar 2021 23:03:53 -0800 (PST)
-Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id bb24sm5855703pjb.5.2021.03.02.23.03.49
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Eq4g+R5KwGDn8jG4TdZ7x6oFSn4oCjVCZTeRi8cnSF0=;
+ b=crknKIUITePDaNSBtXWhvMOAexpc7m9qztUO84Uc4inGHrnUBRdVOl8DEjT81Dznm1
+ WCNKNTq9FGSN/Bz+ViRI0cUYU1Vbf+eDzgG1aaGD8/HweDWVA3cIfQW34dxgkb0ZJT9Z
+ Kv/DH6Q68u5c3P/AozaDvjBJimPGADKRqjQjlcpS2DWNypZViDTQWPxqxrpECdiLCnp2
+ UAbRB6d51O8h+3kcpxYVisW+sS8GfdmYx+UD2ug7xlQtKvGi7VNDZfCihAktQvDfubQ+
+ XTRNd24Ko9DH2c/veQXI6t7TBkiX3CldIWZv2kSuVvOZO+jx99QVk8BU9LqLhWaTMKlT
+ QR2g==
+X-Gm-Message-State: AOAM533GQD8w9VSxeX/8jev4fK6jeB2l1fOmqob+yJI59QwgJInZVZy5
+ w/IAuhSdbOmIUckJ91gVNXCsx+JPhPzaCGfniIqOZkQTpCdeIh6jNfpyYRLYI4UYsUXO1SzFus+
+ P93wPGmDVCKsB
+X-Received: by 2002:a17:906:4442:: with SMTP id
+ i2mr25366759ejp.41.1614764637819; 
+ Wed, 03 Mar 2021 01:43:57 -0800 (PST)
+X-Received: by 2002:a17:906:4442:: with SMTP id
+ i2mr25366732ejp.41.1614764637570; 
+ Wed, 03 Mar 2021 01:43:57 -0800 (PST)
+Received: from redhat.com (bzq-79-180-2-31.red.bezeqint.net. [79.180.2.31])
+ by smtp.gmail.com with ESMTPSA id k26sm5711957ejk.29.2021.03.03.01.43.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Mar 2021 23:03:52 -0800 (PST)
-From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 1/2] hw: Model ASPEED's Hash and Crypto Engine
-Date: Wed,  3 Mar 2021 17:33:30 +1030
-Message-Id: <20210303070331.70744-2-joel@jms.id.au>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20210303070331.70744-1-joel@jms.id.au>
-References: <20210303070331.70744-1-joel@jms.id.au>
+ Wed, 03 Mar 2021 01:43:56 -0800 (PST)
+Date: Wed, 3 Mar 2021 04:43:53 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: David Hildenbrand <david@redhat.com>
+Subject: Re: [PATCH v1] acpi: increase maximum size for "etc/table-loader" blob
+Message-ID: <20210303044336-mutt-send-email-mst@kernel.org>
+References: <20210301104833.45580-1-david@redhat.com>
+ <20210302172323.6cac394a@MiWiFi-RA69-srv>
+ <09fbdaa9-2882-2056-a5a2-2ca0da8c12cf@redhat.com>
+ <7d8281a8-0479-ac81-c602-ed87c71ce3e2@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=joel.stan@gmail.com; helo=mail-pj1-x102f.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <7d8281a8-0479-ac81-c602-ed87c71ce3e2@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BPN73AH+t728
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Alistair Francis <alistair.francis@xilinx.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6ATlEiGbMdAL
 
-The HACE (Hash and Crpyto Engine) is a device that offloads MD5, SHA1,
-SHA2, RSA and other cryptographic algorithms.
+On Tue, Mar 02, 2021 at 07:43:40PM +0100, David Hildenbrand wrote:
+> > > > The resizeable memory region that is created for the cmd blob has a maximum
+> > > > size of ACPI_BUILD_ALIGN_SIZE - 4k. This used to be sufficient, however,
+> > 
+> > The expression "ACPI_BUILD_ALIGN_SIZE - 4k" makes no sense to me.
+> > ACPI_BUILD_ALIGN_SIZE is #defined in "hw/i386/acpi-build.c" as 0x1000,
+> > so the difference (ACPI_BUILD_ALIGN_SIZE - 4k) is zero.
+> > 
+> > (1) Did you mean "ACPI_BUILD_ALIGN_SIZE -- 4k"? IOW, did you mean to
+> > quote the value of the macro?
+> > 
+> > If you mean an em dash, then please use an em dash, not a hyphen (or
+> > please use parens).
+> 
+> Yes, or rather use ACPI_BUILD_ALIGN_SIZE (4k).
+> 
+> > 
+> > 
+> > > > as we try fitting in additional data (e.g., vmgenid, nvdimm, intel-iommu),
+> > > > we require more than 4k and can crash QEMU when trying to resize the
+> > > > resizeable memory region beyond its maximum size:
+> > > >    $ build/qemu-system-x86_64 --enable-kvm \
+> > > >        -machine q35,nvdimm=on \
+> > > >        -smp 1 \
+> > > >        -cpu host \
+> > > >        -m size=2G,slots=8,maxmem=4G \
+> > > >        -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
+> > > >        -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
+> > > >        -nodefaults \
+> > > >        -device vmgenid \
+> > > >        -device intel-iommu
+> > > > 
+> > > > Results in:
+> > > >    Unexpected error in qemu_ram_resize() at ../softmmu/physmem.c:1850:
+> > > >    qemu-system-x86_64: Size too large: /rom@etc/table-loader:
+> > > >      0x2000 > 0x1000: Invalid argument
+> > > > 
+> > > > We try growing the resizeable memory region (resizeable RAMBlock) beyond
+> > > > its maximum size. Let's increase the maximum size from 4k to 64k, which
+> > > > should be good enough for the near future.
+> > 
+> > The existent code calls acpi_align_size(), for resizing the ACPI blobs
+> > (the GArray objects).
+> > 
+> > (Unfortunately, the acpi_align_size() function is duplicated between
+> > "hw/i386/acpi-build.c" and "hw/arm/virt-acpi-build.c", which seems
+> > unjustified -- but anyway, I digress.)
+> > 
+> > This seems to come from commit 868270f23d8d ("acpi-build: tweak acpi
+> > migration limits", 2014-07-29) and commit 451b157041d2 ("acpi: Align the
+> > size to 128k", 2020-12-08).
+> > 
+> > (2) Why is the logic added in those commits insufficient?
+> 
+> We are dealing with different blobs here (tables_blob vs. cmd_blob).
+> 
+> > 
+> > What is the exact call tree that triggers the above error?
+> 
+> [...]
+> 
+> acpi_build_update()->acpi_build_update()->memory_region_ram_resize()->qemu_ram_resize()
+> 
+> A longer calltrace can be found in https://bugzilla.redhat.com/show_bug.cgi?id=1927159.
+> 
+> > > > +++ b/hw/i386/acpi-microvm.c
+> > > > @@ -255,7 +255,8 @@ void acpi_setup_microvm(MicrovmMachineState *mms)
+> > > >                         ACPI_BUILD_TABLE_MAX_SIZE);
+> > > >       acpi_add_rom_blob(acpi_build_no_update, NULL,
+> > > >                         tables.linker->cmd_blob,
+> > > > -                      "etc/table-loader", 0);
+> > > > +                      ACPI_BUILD_LOADER_FILE,
+> > > > +                      ACPI_BUILD_LOADER_MAX_SIZE);
+> > > >       acpi_add_rom_blob(acpi_build_no_update, NULL,
+> > > >                         tables.rsdp,
+> > > >                         ACPI_BUILD_RSDP_FILE, 0);
+> > 
+> > (3) Why are we using a different "tool" here, from the previous
+> > approach? We're no longer setting the GArray sizes; instead, we make the
+> > "rom->romsize" fields diverge from -- put differently, grow beyond --
+> > "rom->datasize". Why is that useful? What are the consequences?
+> 
+> See ACPI_BUILD_TABLE_MAX_SIZE handling just in the acpi_add_rom_blob() above.
+> 
+> > 
+> > Where is it ensured that data between "rom->datasize" and "rom->romsize"
+> > reads as zeroes?
+> We only expose the current memory_region_size() to our guest, which is
+> always multiples of 4k pages.
+> 
+> rom->datasize and rom->romsize will be multiple of 4k AFAIKs.
+> 
+> acpi_align_size()-> g_array_set_size() will take care of zeroing out
+> any unused parts within a single 4k page.
+> 
+> So all unused, guest-visible part should always be 0 I think.
+> 
+> > 
+> > 
+> > > > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> > > > index 380d3e3924..93cdfd4006 100644
+> > > > --- a/include/hw/acpi/aml-build.h
+> > > > +++ b/include/hw/acpi/aml-build.h
+> > > > @@ -6,6 +6,7 @@
+> > > > 
+> > > >   /* Reserve RAM space for tables: add another order of magnitude. */
+> > > >   #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
+> > > > +#define ACPI_BUILD_LOADER_MAX_SIZE        0x40000
+> > > > 
+> > > >   #define ACPI_BUILD_APPNAME6 "BOCHS "
+> > > >   #define ACPI_BUILD_APPNAME8 "BXPC    "
+> > > 
+> > 
+> > The commit message says "Let's increase the maximum size from 4k to
+> > 64k", and I have two problems with that:
+> > 
+> > (4a) I have no idea where the current "4k" size comes from. (In case the
+> > 4k refers to ACPI_BUILD_ALIGN_SIZE, then why are we not changing that
+> > macro?)
+> 
+> Changing ACPI_BUILD_ALIGN_SIZE would affect the legacy_table_size in
+> acpi_build() - so that can't be right.
+> 
+> What would also work is something like (to be improved)
+> 
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 45ad2f9533..49cfedddc8 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -81,6 +81,8 @@
+>  #define ACPI_BUILD_LEGACY_CPU_AML_SIZE    97
+>  #define ACPI_BUILD_ALIGN_SIZE             0x1000
+> +#define ACPI_BUILD_LOADER_ALIGN_SIZE      0x2000
+> +
+>  #define ACPI_BUILD_TABLE_SIZE             0x20000
+>  /* #define DEBUG_ACPI_BUILD */
+> @@ -2613,10 +2615,10 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>              error_printf("Try removing CPUs, NUMA nodes, memory slots"
+>                           " or PCI bridges.");
+>          }
+> -        acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
+> +        acpi_align_size(tables_blob, ACPI_BUILD_ALIGN_SIZE);
+>      }
+> -    acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_ALIGN_SIZE);
+> +    acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_LOADER_ALIGN_SIZE);
+> 
+> 
+> At least for hw/i386/acpi-build.c.
+> 
+> We will end up creating the resizeable memory region/RAMBlock always with
+> a size=maximum_size=8k. (could also go for 64k here)
+> 
+> The only downside is that we might expose a bigger area to the
+> guest than necessary (e.g., 8k instead of 4k) and will e.g., migrate
+> 8k instead of 4k (not that we care).
+> 
+> 
+> On incoming migration from older QEMU versions, we should be able to just
+> shrink back from 8k to 4k - so migration from older QEMY versions should
+> continue working just fine.
 
-This initial model implements a subset of the device's functionality;
-currently only direct access (non-scatter gather) hashing.
+what about migration to old qemu?
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- include/hw/misc/aspeed_hace.h |  33 ++++
- hw/misc/aspeed_hace.c         | 302 ++++++++++++++++++++++++++++++++++
- hw/misc/meson.build           |   2 +-
- 3 files changed, 336 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/misc/aspeed_hace.h
- create mode 100644 hw/misc/aspeed_hace.c
-
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
-new file mode 100644
-index 000000000000..e1fce670ef9e
---- /dev/null
-+++ b/include/hw/misc/aspeed_hace.h
-@@ -0,0 +1,33 @@
-+/*
-+ * ASPEED Hash and Crypto Engine
-+ *
-+ * Copyright (C) 2021 IBM Corp.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_HACE_H
-+#define ASPEED_HACE_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ASPEED_HACE "aspeed.hace"
-+#define ASPEED_HACE(obj) OBJECT_CHECK(AspeedHACEState, (obj), TYPE_ASPEED_HACE)
-+
-+#define ASPEED_HACE_NR_REGS (0x64 >> 2)
-+
-+typedef struct AspeedHACEState {
-+    /* <private> */
-+    SysBusDevice parent;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t regs[ASPEED_HACE_NR_REGS];
-+
-+    MemoryRegion *dram_mr;
-+    AddressSpace dram_as;
-+} AspeedHACEState;
-+
-+#endif /* _ASPEED_HACE_H_ */
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-new file mode 100644
-index 000000000000..0e402a0adea9
---- /dev/null
-+++ b/hw/misc/aspeed_hace.c
-@@ -0,0 +1,302 @@
-+/*
-+ * ASPEED Hash and Crypto Engine
-+ *
-+ * Copyright (C) 2021 IBM Corp.
-+ *
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "hw/misc/aspeed_hace.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "crypto/hash.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/irq.h"
-+
-+#define R_STATUS        (0x1c / 4)
-+#define HASH_IRQ        BIT(9)
-+#define CRYPT_IRQ       BIT(12)
-+#define TAG_IRQ         BIT(15)
-+
-+#define R_HASH_CMD      (0x30 / 4)
-+/* Hash algorithim selection */
-+#define  HASH_ALGO_MASK                 (BIT(4) | BIT(5) | BIT(6))
-+#define  HASH_ALGO_MD5                  0
-+#define  HASH_ALGO_SHA1                 BIT(5)
-+#define  HASH_ALGO_SHA224               BIT(6)
-+#define  HASH_ALGO_SHA256               (BIT(4) | BIT(6))
-+#define  HASH_ALGO_SHA512_SERIES        (BIT(5) | BIT(6))
-+/* SHA512 algorithim selection */
-+#define  SHA512_HASH_ALGO_MASK          (BIT(10) | BIT(11) | BIT(12))
-+#define  HASH_ALGO_SHA512_SHA512        0
-+#define  HASH_ALGO_SHA512_SHA384        BIT(10)
-+#define  HASH_ALGO_SHA512_SHA256        BIT(11)
-+#define  HASH_ALGO_SHA512_SHA224        (BIT(10) | BIT(11))
-+/* HMAC modes */
-+#define  HASH_HMAC_MASK                 (BIT(7) | BIT(8))
-+#define  HASH_DIGEST                    0
-+#define  HASH_DIGEST_HMAC               BIT(7)
-+#define  HASH_DIGEST_ACCUM              BIT(8)
-+#define  HASH_HMAC_KEY                  (BIT(7) | BIT(8))
-+/* Cascscaed operation modes */
-+#define  HASH_ONLY                      0
-+#define  HASH_ONLY2                     BIT(0)
-+#define  HASH_CRYPT_THEN_HASH           BIT(1)
-+#define  HASH_HASH_THEN_CRYPT           (BIT(0) | BIT(1))
-+/* Other cmd bits */
-+#define  HASH_IRQ_EN                    BIT(9)
-+#define  HASH_SG_EN                     BIT(18)
-+
-+#define R_CRYPT_CMD             (0x10 / 4)
-+
-+#define R_HASH_SRC              (0x20 / 4)
-+#define R_HASH_DEST             (0x24 / 4)
-+#define R_HASH_SRC_LEN          (0x2c / 4)
-+
-+static int do_hash_operation(AspeedHACEState *s, int algo)
-+{
-+    hwaddr src, len, dest;
-+    uint8_t *digest_buf = NULL;
-+    size_t digest_len = 0;
-+    char *src_buf;
-+    int rc;
-+
-+    src = s->regs[R_HASH_SRC];
-+    len = s->regs[R_HASH_SRC_LEN];
-+    dest = s->regs[R_HASH_DEST];
-+
-+    src_buf = address_space_map(&s->dram_as, src, &len, false,
-+                                MEMTXATTRS_UNSPECIFIED);
-+    if (!src_buf) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed to map dram\n", __func__);
-+        return -EACCES;
-+    }
-+
-+    rc = qcrypto_hash_bytes(algo, src_buf, len, &digest_buf, &digest_len,
-+                            &error_fatal);
-+    if (rc < 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
-+        return rc;
-+    }
-+
-+    rc = address_space_write(&s->dram_as, dest, MEMTXATTRS_UNSPECIFIED,
-+                             digest_buf, digest_len);
-+    if (rc) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: address space write failed\n", __func__);
-+    }
-+    g_free(digest_buf);
-+
-+    address_space_unmap(&s->dram_as, src_buf, len, false, len);
-+
-+    /*
-+     * Set status bits to indicate completion. Testing shows hardware sets
-+     * these irrespective of HASH_IRQ_EN.
-+     */
-+    s->regs[R_STATUS] |= HASH_IRQ;
-+
-+    return 0;
-+}
-+
-+
-+static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    AspeedHACEState *s = ASPEED_HACE(opaque);
-+
-+    addr >>= 2;
-+
-+    if (addr >= ASPEED_HACE_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr << 2);
-+        return 0;
-+    }
-+
-+    return s->regs[addr];
-+}
-+
-+static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
-+                              unsigned int size)
-+{
-+    AspeedHACEState *s = ASPEED_HACE(opaque);
-+
-+    addr >>= 2;
-+
-+    if (addr >= ASPEED_HACE_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr << 2);
-+        return;
-+    }
-+
-+    switch (addr) {
-+    case R_STATUS:
-+        if (data & HASH_IRQ) {
-+            data &= ~HASH_IRQ;
-+
-+            if (s->regs[addr] & HASH_IRQ) {
-+                qemu_irq_lower(s->irq);
-+            }
-+        }
-+        break;
-+    case R_HASH_CMD: {
-+        int algo = -1;
-+        if ((data & HASH_HMAC_MASK)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: HMAC engine command mode %ld not implemented",
-+                          __func__, (data & HASH_HMAC_MASK) >> 8);
-+        }
-+        if (data & HASH_SG_EN) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: Hash scatter gather mode not implemented",
-+                          __func__);
-+        }
-+        if (data & BIT(1)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: Cascaded mode not implemented",
-+                          __func__);
-+        }
-+        switch (data & HASH_ALGO_MASK) {
-+        case HASH_ALGO_MD5:
-+            algo = QCRYPTO_HASH_ALG_MD5;
-+            break;
-+        case HASH_ALGO_SHA1:
-+            algo = QCRYPTO_HASH_ALG_SHA1;
-+            break;
-+        case HASH_ALGO_SHA224:
-+            algo = QCRYPTO_HASH_ALG_SHA224;
-+            break;
-+        case HASH_ALGO_SHA256:
-+            algo = QCRYPTO_HASH_ALG_SHA256;
-+            break;
-+        case HASH_ALGO_SHA512_SERIES:
-+            switch (data & SHA512_HASH_ALGO_MASK) {
-+            case HASH_ALGO_SHA512_SHA512:
-+                algo = QCRYPTO_HASH_ALG_SHA512;
-+                break;
-+            case HASH_ALGO_SHA512_SHA384:
-+                algo = QCRYPTO_HASH_ALG_SHA384;
-+                break;
-+            case HASH_ALGO_SHA512_SHA256:
-+                algo = QCRYPTO_HASH_ALG_SHA256;
-+                break;
-+            case HASH_ALGO_SHA512_SHA224:
-+                algo = QCRYPTO_HASH_ALG_SHA224;
-+                break;
-+            default:
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                        "%s: Invalid sha512 hash algorithm selection 0x%03lx\n",
-+                        __func__, data & SHA512_HASH_ALGO_MASK);
-+                break;
-+            }
-+            break;
-+        default:
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Invalid hash algorithm selection 0x%03lx\n",
-+                      __func__, data & HASH_ALGO_MASK);
-+            break;
-+        }
-+        if (algo >= 0) {
-+            do_hash_operation(s, algo);
-+
-+            if (data & HASH_IRQ_EN) {
-+                qemu_irq_raise(s->irq);
-+            }
-+        }
-+
-+        break;
-+    }
-+    case R_CRYPT_CMD:
-+        qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not implemented\n",
-+                       __func__);
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    s->regs[addr] = data;
-+}
-+
-+static const MemoryRegionOps aspeed_hace_ops = {
-+    .read = aspeed_hace_read,
-+    .write = aspeed_hace_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void aspeed_hace_reset(DeviceState *dev)
-+{
-+    struct AspeedHACEState *s = ASPEED_HACE(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
-+
-+static void aspeed_hace_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedHACEState *s = ASPEED_HACE(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_hace_ops, s,
-+            TYPE_ASPEED_HACE, 0x1000);
-+
-+    if (!s->dram_mr) {
-+        error_setg(errp, TYPE_ASPEED_HACE ": 'dram' link not set");
-+        return;
-+    }
-+
-+    address_space_init(&s->dram_as, s->dram_mr, "dram");
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static Property aspeed_hace_properties[] = {
-+    DEFINE_PROP_LINK("dram", AspeedHACEState, dram_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+
-+static const VMStateDescription vmstate_aspeed_hace = {
-+    .name = TYPE_ASPEED_HACE,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AspeedHACEState, ASPEED_HACE_NR_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    }
-+};
-+
-+static void aspeed_hace_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = aspeed_hace_realize;
-+    dc->reset = aspeed_hace_reset;
-+    device_class_set_props(dc, aspeed_hace_properties);
-+    dc->desc = "Aspeed Hash and Crypto Engine",
-+    dc->vmsd = &vmstate_aspeed_hace;
-+}
-+
-+static const TypeInfo aspeed_hace_info = {
-+    .name = TYPE_ASPEED_HACE,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedHACEState),
-+    .class_init = aspeed_hace_class_init,
-+};
-+
-+static void aspeed_hace_register_types(void)
-+{
-+    type_register_static(&aspeed_hace_info);
-+}
-+
-+type_init(aspeed_hace_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 629283957fcc..e0f55b37f882 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -102,7 +102,7 @@ softmmu_ss.add(when: 'CONFIG_ARMSSE_MHU', if_true: files('armsse-mhu.c'))
- softmmu_ss.add(when: 'CONFIG_PVPANIC_ISA', if_true: files('pvpanic-isa.c'))
- softmmu_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
- softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
--softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_scu.c', 'aspeed_sdmc.c', 'aspeed_xdma.c'))
-+softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_hace.c', 'aspeed_scu.c', 'aspeed_sdmc.c', 'aspeed_xdma.c'))
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
- softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_rng.c'))
- 
--- 
-2.30.1
+> > 
+> > (4b) The new macro ACPI_BUILD_LOADER_MAX_SIZE does not express 64KB,
+> > contrary to the commit message: it expresses 256KB.
+> 
+> Indeed, thanks for noticing that - not that it wouldn't really
+> affect your testing in case the maximum size is bigger than necessary ;)
+> 
+> > 
+> > ... The code is really difficult to understand; consider the following
+> > macros:
+> 
+> Yes, it is.
+> 
+> Thanks!
+> 
+> -- 
+> Thanks,
+> 
+> David / dhildenb
 

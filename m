@@ -1,100 +1,102 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5581715lfg;
-        Wed, 3 Mar 2021 10:29:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyh2DKdkRb0/6wLT1tx2VBvCFe1UkqgDSylTYz8ljqXBTRGZTvJpmLAbDc6Wa1b1dzSU60P
-X-Received: by 2002:a92:bd0c:: with SMTP id c12mr537788ile.55.1614796175694;
-        Wed, 03 Mar 2021 10:29:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614796175; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5582147lfg;
+        Wed, 3 Mar 2021 10:30:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzzOin8mmqhA5eV6WNhW99qWSwdP+NYyeuWQ8ecBYBogkvkCbCU47gi8B2XyViQpgBJt9lc
+X-Received: by 2002:a05:6e02:20e5:: with SMTP id q5mr519779ilv.131.1614796209808;
+        Wed, 03 Mar 2021 10:30:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614796209; cv=none;
         d=google.com; s=arc-20160816;
-        b=LNH5teZaqQzMzEaf7NdN4PyVQiEjm0GUaKT8pOLrLjhgiwhVzQQnKi++u93+cq9L0x
-         A7xxvMez0Qbq0tN1nF7kYk3GiOw/kH2WA/A98IeRlAN+3v7mM1/IFyTSv4niYpKRTsEQ
-         QalgKhXFP2XJxoEGRmQrwlMp+jzRCZ7KuJPzbvtFIQGtOE3GsaVwDValecx1XUN4zFWD
-         bbHxTQ7fqP20yjpA9vQKBcjHrUeifCAjQt18JUBWJ3T2HqyzxmpuMost8lnmky+h68aA
-         AGSvxRSCAm8TFaDNipy9ljTeocsDCvSietHulJ1ZOiC9uHxL66S3drBNnPU1cIjAoDRA
-         /t8w==
+        b=gOe2so4Afrn1Wbbk23pKVw+W7AdivNb7XkrRQOiJwQD0/FpoKkxVvH4q2+aKW5wcxB
+         SCTdn1gwLdyekOLTcNBy2MPeefuITXz727nvzDljKwPfxJZFFAIInX10TBAvEF9+BYfD
+         6PgU5kVHbndenAnGuyEzzYlXPecMeH0VbKighh/co86aFufBtd/eoEiZdon0dsLUPwHm
+         9QufE6ycUUFo7nLGCQX08hzhKy2j5EaRDohMoLd2AXqdnWZO35KCaOW2zINHpt++UHs3
+         XiEmG9a8IoP4Ob47JhRbjGX+V/1Ks+OcsB/wQZSCyiF9GALcDV3qhYmaJxktJZxj9xts
+         6QkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=jSFJR2T0y61cEAykVjSlmIgXEHeIk/fhpqbk5zPRC7k=;
-        b=V9GcWozQl3WLogbxoYintoGJ65viCROn/fH3pIkOnsspTCq10ZLJgdP9CU50/fpwOq
-         iK5J4Xznrc343StywH/BE0wKZjc6c/LpOsBVOKVy1XTmcIF2kMwTSvbfKfW47cgH5sZK
-         UGcMt+7XOON8CD3Uwzx35vUBdaRanzEDv/iGc0p35iqIK3jk+m8l9szfVxtzcXbNogqr
-         VbLIQFTupeh3hfQbWUxgtuQz4kDfRPo8zSYzHHTevkOGmio/z421VmzmaXe4XcABhGF6
-         I/4r2oDzaZZgrJtnlQkbZ8P1wkaBgEw+VGffhXT1m/CpZfK43LGvuNz7RYTWR5qnT8O7
-         cx2Q==
+        bh=bsBSf6h5clRIGLmrmL5o7OQtiQ2QaVSKYYOrh/pYYJA=;
+        b=Hy3Cax4w/JCjgZeu7SlJrSqSN5yhM5efWMszY/XNYQc0v/48owtZjpDaKkjTaUEAkm
+         9xnGTf1v6nBdsUly6FQrw07Wh0DAkaaJqooGPpzeJClP+v5eo+BjfSp0Hxz0lqZ6hzFA
+         ztKH8AdRpcpdqw2/UxR70Z88hQAKZ/2cW/msr9UK+diB5O+ZuqY7wjHt2DAQ9l8QFM1z
+         ebfLvWlNPd67jPtsx0E8esZfvvqhZJmSqRjeDbZigO+F86XG7HX91pezFxFtWJTI7/PN
+         25ZHrHPxP53SL1io15PIbG+1A56NjeZAbXFpq1gGz4VCRaJDoVRIFFoCp5FWaRHDgL3K
+         TEdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JrPfoBck;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ae3559uE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 188si20673888jag.122.2021.03.03.10.29.35
+        by mx.google.com with ESMTPS id a14si21540875ilv.133.2021.03.03.10.30.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Mar 2021 10:29:35 -0800 (PST)
+        Wed, 03 Mar 2021 10:30:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JrPfoBck;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ae3559uE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45644 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHWFa-0006wL-VO
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 13:29:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56564)
+	id 1lHWG9-0007jn-2J
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 13:30:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWAD-0007Xf-HS
- for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:24:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:23144)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHW9h-0006AR-Ip
+ for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:23:29 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44340)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHWAA-0000ua-Rl
- for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:24:01 -0500
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHW9e-0000hz-AU
+ for qemu-devel@nongnu.org; Wed, 03 Mar 2021 13:23:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614795838;
+ s=mimecast20190719; t=1614795805;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jSFJR2T0y61cEAykVjSlmIgXEHeIk/fhpqbk5zPRC7k=;
- b=JrPfoBckIL0HqYn5z/7XDur1p/O0oMhgAt4iaZcsweIxIARbIVKT9ex7nMupkbCwlnNiOc
- kwUSl0BNIXA4FrRCfB+32v+NX6xiTV9POI8QN4/uUxXrBEmGwTZRqMDaRx6zj31ad+r+on
- 1uRNiGJq1avAlBCwKNu/0O2Rkmqv5Ck=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-102-Mvh7QXiEOnuMQj6M9X8WHg-1; Wed, 03 Mar 2021 13:23:56 -0500
-X-MC-Unique: Mvh7QXiEOnuMQj6M9X8WHg-1
-Received: by mail-wm1-f69.google.com with SMTP id c7so1675948wml.8
- for <qemu-devel@nongnu.org>; Wed, 03 Mar 2021 10:23:56 -0800 (PST)
+ bh=bsBSf6h5clRIGLmrmL5o7OQtiQ2QaVSKYYOrh/pYYJA=;
+ b=Ae3559uEKpZ3ow58aO1yboqhg57EomLxx+xn3P5I7qOcFv5ROOqOe9xvVxl05z1iquWinY
+ UUSeGu1tW++8pKMrIRQLNiLpC3ICVl6aNuj3/k9Nm0WVInUY7Fv8XES1rEBn/80pu1h4w8
+ gNtEzvxYhjuWt1qwV2F+T3oM+x2wtAg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-75-KRTk6BzvPwWpEPk3ngiJgw-1; Wed, 03 Mar 2021 13:23:24 -0500
+X-MC-Unique: KRTk6BzvPwWpEPk3ngiJgw-1
+Received: by mail-wr1-f69.google.com with SMTP id 75so816651wrl.3
+ for <qemu-devel@nongnu.org>; Wed, 03 Mar 2021 10:23:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=jSFJR2T0y61cEAykVjSlmIgXEHeIk/fhpqbk5zPRC7k=;
- b=X2LJ4JXLuTTY3lEs995RfnTsQ4Ushqy8loCc+jwdvXF0AVhT26OaMrR7iWd2bdDX5p
- wZPPzPjPwzp4af7CYZdFJEgCZYSy9KaH8URF0FPLullmjwspoywfGp3U+GgM46TWgl+l
- PU7hUXD0TrBG33Gp6eKWcCWKt+j5i3YEiGDXEVk3TNf/8jNzPNTTYkYTpvtIO/pIiytJ
- lbFX8KMVGkBdtI5eo70q0IODKOCIwcO5NJLAGf1Slefv3g65ekMGyBpPFKQpyv752izv
- rN8sXMYTUm+HaqJ17BFGMrnp3No2wr3o3SMrTEcd282aAzy0/w123bsqfaayCKg+sEql
- AWVw==
-X-Gm-Message-State: AOAM531vzAVHS1doQZUPf84BkG+6fikBhWUHwPky3UVP9Gz3XRwiq+vQ
- lhgu69y1Iit/kyLD3Dkd5LJbxvhfMD1GhH87B4JyeArWUTv591NDN/TQZFd5may82Jd+7ZYx26T
- ToZzBLBvzmQE83k9c939jpJH5DNchtd6TwwZRPjNPcpaARJvUBIIyxpqDj7pPGgj2
-X-Received: by 2002:adf:f941:: with SMTP id q1mr29310638wrr.189.1614795835312; 
- Wed, 03 Mar 2021 10:23:55 -0800 (PST)
-X-Received: by 2002:adf:f941:: with SMTP id q1mr29310594wrr.189.1614795835090; 
- Wed, 03 Mar 2021 10:23:55 -0800 (PST)
+ bh=bsBSf6h5clRIGLmrmL5o7OQtiQ2QaVSKYYOrh/pYYJA=;
+ b=EZH7eSTmOf0XjvDY63YprS1at6sP1yCK8o6LmrIpy1EN92Zdoa2vUAUtFjM29zP9Rn
+ 1EGvsYNeT1x0ztUs7c7kPuYl6N9rjl18Ard/lMYOG6vXJN53uinDx/PSekFnxvbhi2sG
+ MMi5KeJlaGCJPiyaGoBDo+YZ5yCqPfyfdvAA3ddyA/GRBkQ2+gXBH18LOHWLjwBBC/BD
+ aV5PsHWkgnG8uy6ahRenp5tnxprYgl09wtiKBpqgZaFeIm70yZhkOhhjzBCGavmpwGe1
+ d8zEDcP70qsbtA4DoHB7tr7q3IQBEp6dfb/RMSPnwhLkN0UATeUBLdE+BttM6OUguTVS
+ Nvqg==
+X-Gm-Message-State: AOAM533QvEnYx8lPi25/deGimNvke6hcYh3gzfJI7IGibnTFDAdu21qA
+ VpPA9gy7fHP1BK0ZP4J4dIuODlbVLdF6JRxdLK3waUoaLUOf8a9sh3qXG45Ifuj/hgyRP1+o4tg
+ FgRA5QTX2xK/65QXGkIZbvSF0oAIJtY2HxuAMpkE+8ued/XTf/yuJzVmn2FbXQcij
+X-Received: by 2002:a05:6000:24b:: with SMTP id
+ m11mr20773907wrz.393.1614795802987; 
+ Wed, 03 Mar 2021 10:23:22 -0800 (PST)
+X-Received: by 2002:a05:6000:24b:: with SMTP id
+ m11mr20773870wrz.393.1614795802788; 
+ Wed, 03 Mar 2021 10:23:22 -0800 (PST)
 Received: from x1w.redhat.com (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id l15sm6604958wme.43.2021.03.03.10.23.53
+ by smtp.gmail.com with ESMTPSA id n6sm13487477wrt.1.2021.03.03.10.23.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Mar 2021 10:23:54 -0800 (PST)
+ Wed, 03 Mar 2021 10:23:22 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 14/19] accel/kvm: Move the 'kvm_fd' field to AccelvCPUState
-Date: Wed,  3 Mar 2021 19:22:14 +0100
-Message-Id: <20210303182219.1631042-15-philmd@redhat.com>
+Subject: [RFC PATCH 09/19] accel/hax: Add typedef for 'struct hax_vcpu_state'
+Date: Wed,  3 Mar 2021 19:22:09 +0100
+Message-Id: <20210303182219.1631042-10-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210303182219.1631042-1-philmd@redhat.com>
 References: <20210303182219.1631042-1-philmd@redhat.com>
@@ -105,14 +107,14 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -142,90 +144,193 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +T6BVEnKKMy0
+X-TUID: RfNgv51MneoU
+
+Use the 'hax_vcpu_state' typedef instead of 'struct hax_vcpu_state'.
+This will make the next commits easier to review.
+
+Beside the typedef addition, patch created mechanically using:
+
+  $ sed -i s/struct\ hax_vcpu_state/hax_vcpu_state/ \
+      $(git grep -l 'struct hax_vcpu_state')
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/hw/core/cpu.h    | 2 --
- include/sysemu/kvm_int.h | 4 ++++
- accel/kvm/kvm-all.c      | 8 ++++----
- 3 files changed, 8 insertions(+), 6 deletions(-)
+ target/i386/hax/hax-i386.h    |  8 +++++---
+ target/i386/hax/hax-all.c     | 18 +++++++++---------
+ target/i386/hax/hax-posix.c   |  4 ++--
+ target/i386/hax/hax-windows.c |  4 ++--
+ 4 files changed, 18 insertions(+), 16 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 65ff8d86dbc..ca2526e6a23 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -314,7 +314,6 @@ struct AccelvCPUState;
-  * @opaque: User data.
-  * @mem_io_pc: Host Program Counter at which the memory was accessed.
-  * @accel_vcpu: Pointer to accelerator-specific AccelvCPUState field.
-- * @kvm_fd: vCPU file descriptor for KVM.
-  * @work_mutex: Lock to prevent multiple access to @work_list.
-  * @work_list: List of pending asynchronous work.
-  * @trace_dstate_delayed: Delayed changes to trace_dstate (includes all changes
-@@ -416,7 +415,6 @@ struct CPUState {
+diff --git a/target/i386/hax/hax-i386.h b/target/i386/hax/hax-i386.h
+index efbb3462389..ee77406a6a6 100644
+--- a/target/i386/hax/hax-i386.h
++++ b/target/i386/hax/hax-i386.h
+@@ -25,6 +25,8 @@ typedef HANDLE hax_fd;
+ #endif
  
-     /* Accelerator-specific fields. */
-     struct AccelvCPUState *accel_vcpu;
--    int kvm_fd;
-     struct KVMState *kvm_state;
-     struct kvm_run *kvm_run;
-     int hvf_fd;
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index f57be10adde..3bf75e62293 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -14,6 +14,10 @@
- #include "sysemu/kvm.h"
- 
- struct AccelvCPUState {
-+    /**
-+     * @kvm_fd: vCPU file descriptor for KVM
-+     */
-+    int kvm_fd;
+ extern struct hax_state hax_global;
++
++typedef struct hax_vcpu_state hax_vcpu_state;
+ struct hax_vcpu_state {
+     hax_fd fd;
+     int vcpu_id;
+@@ -46,7 +48,7 @@ struct hax_vm {
+     hax_fd fd;
+     int id;
+     int numvcpus;
+-    struct hax_vcpu_state **vcpus;
++    hax_vcpu_state **vcpus;
  };
  
- typedef struct KVMSlot
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 4ccd12ea56a..1c08ff3fbe0 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -387,7 +387,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+ #ifdef NEED_CPU_H
+@@ -58,7 +60,7 @@ int valid_hax_tunnel_size(uint16_t size);
+ int hax_mod_version(struct hax_state *hax, struct hax_module_version *version);
+ int hax_inject_interrupt(CPUArchState *env, int vector);
+ struct hax_vm *hax_vm_create(struct hax_state *hax, int max_cpus);
+-int hax_vcpu_run(struct hax_vcpu_state *vcpu);
++int hax_vcpu_run(hax_vcpu_state *vcpu);
+ int hax_vcpu_create(int id);
+ void hax_kick_vcpu_thread(CPUState *cpu);
  
-     vcpu = g_malloc0(sizeof(*vcpu));
-     vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
--    vcpu->kvm_fd = cpu->kvm_fd;
-+    vcpu->kvm_fd = cpu->accel_vcpu->kvm_fd;
-     QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
- err:
-     return ret;
-@@ -436,7 +436,7 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+@@ -78,7 +80,7 @@ int hax_host_create_vm(struct hax_state *hax, int *vm_id);
+ hax_fd hax_host_open_vm(struct hax_state *hax, int vm_id);
+ int hax_host_create_vcpu(hax_fd vm_fd, int vcpuid);
+ hax_fd hax_host_open_vcpu(int vmid, int vcpuid);
+-int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu);
++int hax_host_setup_vcpu_channel(hax_vcpu_state *vcpu);
+ hax_fd hax_mod_open(void);
+ void hax_memory_init(void);
+ 
+diff --git a/target/i386/hax/hax-all.c b/target/i386/hax/hax-all.c
+index bf65ed6fa92..08c2b60b437 100644
+--- a/target/i386/hax/hax-all.c
++++ b/target/i386/hax/hax-all.c
+@@ -68,7 +68,7 @@ int valid_hax_tunnel_size(uint16_t size)
+ 
+ hax_fd hax_vcpu_get_fd(CPUArchState *env)
+ {
+-    struct hax_vcpu_state *vcpu = env_cpu(env)->hax_vcpu;
++    hax_vcpu_state *vcpu = env_cpu(env)->hax_vcpu;
+     if (!vcpu) {
+         return HAX_INVALID_FD;
+     }
+@@ -142,7 +142,7 @@ static int hax_version_support(struct hax_state *hax)
+ 
+ int hax_vcpu_create(int id)
+ {
+-    struct hax_vcpu_state *vcpu = NULL;
++    hax_vcpu_state *vcpu = NULL;
+     int ret;
+ 
+     if (!hax_global.vm) {
+@@ -155,7 +155,7 @@ int hax_vcpu_create(int id)
+         return 0;
      }
  
-     cpu->accel_vcpu = g_new(struct AccelvCPUState, 1);
--    cpu->kvm_fd = ret;
-+    cpu->accel_vcpu->kvm_fd = ret;
-     cpu->kvm_state = s;
+-    vcpu = g_new0(struct hax_vcpu_state, 1);
++    vcpu = g_new0(hax_vcpu_state, 1);
+ 
+     ret = hax_host_create_vcpu(hax_global.vm->fd, id);
+     if (ret) {
+@@ -194,7 +194,7 @@ int hax_vcpu_create(int id)
+ 
+ int hax_vcpu_destroy(CPUState *cpu)
+ {
+-    struct hax_vcpu_state *vcpu = cpu->hax_vcpu;
++    hax_vcpu_state *vcpu = cpu->hax_vcpu;
+ 
+     if (!hax_global.vm) {
+         fprintf(stderr, "vcpu %x destroy failed, vm is null\n", vcpu->vcpu_id);
+@@ -225,7 +225,7 @@ int hax_init_vcpu(CPUState *cpu)
+         exit(-1);
+     }
+ 
+-    cpu->hax_vcpu = hax_global.vm->vcpus[cpu->cpu_index];
++    cpu->accel_vcpu = hax_global.vm->vcpus[cpu->cpu_index];
      cpu->vcpu_dirty = true;
+     qemu_register_reset(hax_reset_vcpu_state, (CPUArchState *) (cpu->env_ptr));
  
-@@ -449,7 +449,7 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+@@ -265,7 +265,7 @@ struct hax_vm *hax_vm_create(struct hax_state *hax, int max_cpus)
      }
  
-     cpu->kvm_run = mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED,
--                        cpu->kvm_fd, 0);
-+                        cpu->accel_vcpu->kvm_fd, 0);
-     if (cpu->kvm_run == MAP_FAILED) {
-         ret = -errno;
-         error_setg_errno(errp, ret,
-@@ -2631,7 +2631,7 @@ int kvm_vcpu_ioctl(CPUState *cpu, int type, ...)
-     va_end(ap);
- 
-     trace_kvm_vcpu_ioctl(cpu->cpu_index, type, arg);
--    ret = ioctl(cpu->kvm_fd, type, arg);
-+    ret = ioctl(cpu->accel_vcpu->kvm_fd, type, arg);
-     if (ret == -1) {
-         ret = -errno;
+     vm->numvcpus = max_cpus;
+-    vm->vcpus = g_new0(struct hax_vcpu_state *, vm->numvcpus);
++    vm->vcpus = g_new0(hax_vcpu_state *, vm->numvcpus);
+     for (i = 0; i < vm->numvcpus; i++) {
+         vm->vcpus[i] = NULL;
      }
+@@ -414,7 +414,7 @@ static int hax_handle_io(CPUArchState *env, uint32_t df, uint16_t port,
+ static int hax_vcpu_interrupt(CPUArchState *env)
+ {
+     CPUState *cpu = env_cpu(env);
+-    struct hax_vcpu_state *vcpu = cpu->hax_vcpu;
++    hax_vcpu_state *vcpu = cpu->hax_vcpu;
+     struct hax_tunnel *ht = vcpu->tunnel;
+ 
+     /*
+@@ -446,7 +446,7 @@ static int hax_vcpu_interrupt(CPUArchState *env)
+ 
+ void hax_raise_event(CPUState *cpu)
+ {
+-    struct hax_vcpu_state *vcpu = cpu->hax_vcpu;
++    hax_vcpu_state *vcpu = cpu->hax_vcpu;
+ 
+     if (!vcpu) {
+         return;
+@@ -467,7 +467,7 @@ static int hax_vcpu_hax_exec(CPUArchState *env)
+     int ret = 0;
+     CPUState *cpu = env_cpu(env);
+     X86CPU *x86_cpu = X86_CPU(cpu);
+-    struct hax_vcpu_state *vcpu = cpu->hax_vcpu;
++    hax_vcpu_state *vcpu = cpu->hax_vcpu;
+     struct hax_tunnel *ht = vcpu->tunnel;
+ 
+     if (!hax_enabled()) {
+diff --git a/target/i386/hax/hax-posix.c b/target/i386/hax/hax-posix.c
+index ac1a51096eb..8ee247845b7 100644
+--- a/target/i386/hax/hax-posix.c
++++ b/target/i386/hax/hax-posix.c
+@@ -205,7 +205,7 @@ hax_fd hax_host_open_vcpu(int vmid, int vcpuid)
+     return fd;
+ }
+ 
+-int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
++int hax_host_setup_vcpu_channel(hax_vcpu_state *vcpu)
+ {
+     int ret;
+     struct hax_tunnel_info info;
+@@ -227,7 +227,7 @@ int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
+     return 0;
+ }
+ 
+-int hax_vcpu_run(struct hax_vcpu_state *vcpu)
++int hax_vcpu_run(hax_vcpu_state *vcpu)
+ {
+     return ioctl(vcpu->fd, HAX_VCPU_IOCTL_RUN, NULL);
+ }
+diff --git a/target/i386/hax/hax-windows.c b/target/i386/hax/hax-windows.c
+index 59afa213a6d..08ec93a256c 100644
+--- a/target/i386/hax/hax-windows.c
++++ b/target/i386/hax/hax-windows.c
+@@ -301,7 +301,7 @@ hax_fd hax_host_open_vcpu(int vmid, int vcpuid)
+     return hDeviceVCPU;
+ }
+ 
+-int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
++int hax_host_setup_vcpu_channel(hax_vcpu_state *vcpu)
+ {
+     hax_fd hDeviceVCPU = vcpu->fd;
+     int ret;
+@@ -327,7 +327,7 @@ int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
+     return 0;
+ }
+ 
+-int hax_vcpu_run(struct hax_vcpu_state *vcpu)
++int hax_vcpu_run(hax_vcpu_state *vcpu)
+ {
+     int ret;
+     HANDLE hDeviceVCPU = vcpu->fd;
 -- 
 2.26.2
 

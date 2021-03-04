@@ -1,130 +1,192 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5438820lfg;
-        Wed, 3 Mar 2021 07:17:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx7r46DGjBAs4TCM/zzhXQ4rAFUtoBBB4BA2qs9n1YlTeob/g/V6tzIZ7ae+JcT2Z6GuybN
-X-Received: by 2002:a5d:5043:: with SMTP id h3mr27319426wrt.120.1614784665456;
-        Wed, 03 Mar 2021 07:17:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614784665; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6640787lfg;
+        Thu, 4 Mar 2021 14:39:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzRHOib9rFl9NEhlKiewQ5PXUtD3+c4YxMu16x8V/X0u8PmvlMcE3Au1f3K/YtKd63QmZpu
+X-Received: by 2002:a92:6907:: with SMTP id e7mr6041017ilc.134.1614897597591;
+        Thu, 04 Mar 2021 14:39:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614897597; cv=none;
         d=google.com; s=arc-20160816;
-        b=J9Q71J/WxhAciDZddz9vHuui5etfX06WB1IrTihZ/QAN0mqM1pHwSVAvdrjwbX/xQt
-         cdRdyDnjNWzFRVqvIQShfJdgLFlOD84mLEqTcU9ABQcNGQRMmyEcRbsOco4fNXwUQIzZ
-         674OnOafeTBbPSfn+/VQziV9OWVAFDrQgUpQ59kiZU7MakFBnoK6glqIvga0a7ROqDG0
-         rFloDtW3PzKpJ8t+nr8N6YW2J95oV7llJxdFPmBq1jdJABv8YsWK1dAhorVvxMZ2qiyC
-         EsG6bj9piRD9c9QxYhY06Wp3EEI/QctrU7kExa+piZ2BFSiwUoCEjZOjLc1IDO5QS/T6
-         5b5Q==
+        b=0wlhTBh6AqenO/ReJ5wod8pfce0dCOrZE8RWl6FkNAtuaEXlGSUSECw1j4RBvVlDQL
+         /hbsCV+7kRjhZcrKg9IYzX9vxBEsXxko9hhb1Us6KS/4fT3SNzaNq/I2hLeyTjfLq+l6
+         AsJySYNC23fJeXv3F7bfupEJj6a2xpQpoOujRz9vLf2OsLwOtao6O1zKkc2hsRqqSgFk
+         xk2ufcvdp0hVpe/f2rc+fQ4eGPrVWeT3avV4a4AgdCuxkSZsaE6oh6je4JZ2oJ7e8kV2
+         pqH+UgPvYpj7VC0z9Cxu20XZIG23PGm0zTt0IXMQheeuwNXEYwC8pQhn18g+tGXsjJ3g
+         pjoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=funrySmDKvEvm36Y0lgsdEZ89XQMOTTdJq+LA8sAZyk=;
-        b=inLq4EDmlpHWJJuxOHVlsGEn54oO3TOZ2oVvwb14quYw9Qe5ly7cHCGQyjPbREUEY9
-         VH1gsrZP17N6D7WooAmcE9BuOATWpepV+yTptjMcUFommJ+hExP9pxYDaxZwbKXA3sMo
-         SUw8/F22I5JiYmL7K/jFJCjU9DXQnbAVUhg8Nwj0TgvF669CCW841EAXkiFaszuowND3
-         QBg8614Qq/9q0hBclXrqIh/cxj48ksBfwptM6awRXDUcVjkNPJj7fn0Uq0h/bhbsv2mB
-         SFRW6BABtAd6bT8/nBAg+ejGK2J8gBfEdtonJ8AbEDonHIQ5OYnyQeRjIqREtgIbxP8Q
-         P8tg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=aHeoAp8GFYRuOJSiApa7NgdOQdOqdNenAR63HpCEUyc=;
+        b=0XW5Eqqwshn8RGSnlugWdnIUdT0XArhwRo1AX+gS7ct340xAS4Q6SINZoKPdyXqQ9H
+         pPEmUTpCnb+n+Mi3B4yidIP7CSyXYpbF8+8ZpWIi0GZA6eIoQKVhErCPTEgX8BM3wNxq
+         ThwDSHFvBJX2zoxZrNOqavBUJhy3XxY4mc8CxiMS7YlpPLKVPyzkKYEWr7evQK4rRyJ0
+         NYyPLRvg62mq01/r5/WCcUqfSbmDd3iwhqcR67HnFtuvdGOaN/PCQHcyh7rS0EdSWUZ/
+         JE2iXeJjQmle56dWRoOxYLWC2Wy5ASSlfJKG2xXU+12BmqoEZNK93f2wx/CfQoDU2b0z
+         3ZcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by mx.google.com with ESMTPS id s18si18826701wrt.175.2021.03.03.07.17.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Mar 2021 07:17:45 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.131;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nZQHZcgC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 15si435352ilx.39.2021.03.04.14.39.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 04 Mar 2021 14:39:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Received: from [192.168.100.1] ([82.252.139.98]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N7QM9-1lrP7u2sg9-017mYC; Wed, 03 Mar 2021 16:17:31 +0100
-Subject: Re: [PATCH v3 17/27] linux-user: Remove dead code
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Taylor Simpson <tsimpson@quicinc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- "Michael S. Tsirkin" <mst@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz
- <groug@kaod.org>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-References: <20210302145818.1161461-1-f4bug@amsat.org>
- <20210302145818.1161461-18-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <0872e9eb-3fe1-8f93-d863-c5f39129b03e@vivier.eu>
-Date: Wed, 3 Mar 2021 16:17:25 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nZQHZcgC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:34316 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHwdQ-0002ez-U3
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 17:39:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55504)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lHwNY-0006TU-DW; Thu, 04 Mar 2021 17:23:34 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:41025)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1lHwNW-0002Lx-Pb; Thu, 04 Mar 2021 17:23:32 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id f12so25576630wrx.8;
+ Thu, 04 Mar 2021 14:23:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=aHeoAp8GFYRuOJSiApa7NgdOQdOqdNenAR63HpCEUyc=;
+ b=nZQHZcgCU8xqNDX8qng9oiPgf0qW3QLlZlx53X5r4pDHVGALs5/0j/6aB7i8H9OKHz
+ GQq6bGtqYxDYpvIDoStxk38HsHvTg8YcaWow3JW3LJQlHhn9hQoqyiiN0B7VFjkvtx5V
+ 5UbsPTi+QtI9n22nSknykmXe54nP0lNlT76+RMg7yfaD5Wqz2I3a9KjIHXXXX7IBy85z
+ rZeFmrqm9EQxzH06AU2mG9wdr+dqGQMigBPeiUhtUAVgM1TeQeGctfJ+shyGVF/jjkSM
+ 8qWtyNZqwIaRgX6g6qYtMxIeGUCvE+l5UnVhRy9wJJTEOE2ZL99IbGepoObSDZhyYVDl
+ BBWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=aHeoAp8GFYRuOJSiApa7NgdOQdOqdNenAR63HpCEUyc=;
+ b=lWLCRlw+WtL+WBh2/Argm4dOdZzSGOgqE4gzSBPrPAKptHu15vTHI03AC2KxIh9aFL
+ V0VZT1O4TmLopfaQdSg+dh7p2snmBVdNZqVLV+fmOytlF6Z7DqPhexUhnTw1tpcQaWb9
+ YdVRZI0ypev/+8GftNevqjAGLqwUqLtJQJphpBvYecOjcO41/2Qw5T1b58H+w3qqaJ89
+ IWoxjNlAcnHKFx6P6BbsmUcEVf8sdHHSAZdIZCQMbvInf+6+pgWnczK0HAXdN7LSyBlU
+ kBygXa7b54PMP2VIQPT99HlSbcYTmaBfdqs4a4JZCOlQi3PRcuOPoLR4jYhfRaI2PIbe
+ Nr6w==
+X-Gm-Message-State: AOAM531//+2mghMwdhn3XcXb+bkuPEKvIbEqloLK+8BXzQdMu/aRcTPA
+ GaC9sjhazoRG+7CFovBSQULBWLY3ods=
+X-Received: by 2002:adf:ee4f:: with SMTP id w15mr6135463wro.199.1614896606291; 
+ Thu, 04 Mar 2021 14:23:26 -0800 (PST)
+Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
+ [83.57.175.68])
+ by smtp.gmail.com with ESMTPSA id i11sm1009229wro.53.2021.03.04.14.23.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Mar 2021 14:23:25 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH v2 0/8] cpu: Move CPUClass::has_work() to TCGCPUOps
+Date: Thu,  4 Mar 2021 23:23:15 +0100
+Message-Id: <20210304222323.1954755-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20210302145818.1161461-18-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:2JXp+7ZoES5GqgV5w23yqcdKYFTwl4HOJCG7+RWaa2UvqiZtXob
- 5rrmjdhCzcLXd2SVSxizLUI0RS3eKTaJ2P05JEl54+oLCgdMfspNGaD9m3PFQSbMyU8MzKv
- JmxCz6d5KvA1Jym5MA6TsQkwIMhMgntEJgFHklsLszBExX6yWYjOjVU01PWUe+XVgjUqoIY
- LWjTYX9wlaqhklCgsChqA==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iLRh7jT9iQM=:Emy5oafqFNjrK4s5qDN/qw
- sTTSzMwBeTDgE2DACpIdVYpiyDNTwBDPBeJI6Xufjunb10nrMrTbMz1peEfd3hMqpaV9oCsXV
- R3GP/pejjpjobaXsKR7EAPOuTh/6YC1/UkppcCZMQUB38fyhtWZEVPq22BdVe1pCUPszGIP4A
- 4sxp2MpO/YgCBALDo2+rhZIarlp7/r/bBEPM2ZdC37XVGqm6l6F50omL5WqzJUtqirSymvPbl
- DJfY22ECIuALwXCbRl4zd8uXCxoUe8hGUt0eLRQqaF5tv1d/a0mNtDy/ijjUp7z3Z4C/80WST
- p2NyQO43NQEU8c60gnGjUETHmSkzE3AP9ab4n700APSKyORsfHPGg8HD4V0taEfh2QTyuk/ez
- QpiWqNvVDrTlPhv6RbqdewunI0OaEc8ivOPJ7DVuMrFcn52LalKC+BrrulCJqKH1G/Bs4li+R
- PUFEDgt0nA==
-X-TUID: yQe7NLDJ4ZON
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-riscv@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Greg Kurz <groug@kaod.org>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cWRhciq4l/kM
 
-Le 02/03/2021 à 15:58, Philippe Mathieu-Daudé a écrit :
-> We can not use watchpoints in user-mode emulation because we
-> need the softmmu slow path to detect accesses to watchpointed
-> memory. This code is expanded as empty stub in "hw/core/cpu.h"
-> anyway, so we can drop it.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  linux-user/main.c | 5 -----
->  1 file changed, 5 deletions(-)
-> 
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index 81f48ff54ed..d7af3ffbc22 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -200,7 +200,6 @@ CPUArchState *cpu_copy(CPUArchState *env)
->      CPUState *new_cpu = cpu_create(cpu_type);
->      CPUArchState *new_env = new_cpu->env_ptr;
->      CPUBreakpoint *bp;
-> -    CPUWatchpoint *wp;
->  
->      /* Reset non arch specific state */
->      cpu_reset(new_cpu);
-> @@ -211,13 +210,9 @@ CPUArchState *cpu_copy(CPUArchState *env)
->         Note: Once we support ptrace with hw-debug register access, make sure
->         BP_CPU break/watchpoints are handled correctly on clone. */
->      QTAILQ_INIT(&new_cpu->breakpoints);
-> -    QTAILQ_INIT(&new_cpu->watchpoints);
->      QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
->          cpu_breakpoint_insert(new_cpu, bp->pc, bp->flags, NULL);
->      }
-> -    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
-> -        cpu_watchpoint_insert(new_cpu, wp->vaddr, wp->len, wp->flags, NULL);
-> -    }
->  
->      return new_env;
->  }
-> 
-
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Hi,=0D
+=0D
+cpu_has_work() isn't used out of TCG, so restrict it to it.=0D
+RFC because maybe it could?=0D
+=0D
+Since v1:=0D
+- finished PPC=0D
+- check cc->tcg_ops->has_work non-null (thuth)=0D
+=0D
+Based-on: <20210227232519.222663-1-richard.henderson@linaro.org>=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (8):=0D
+  sysemu/tcg: Restrict tcg_exec_init() to CONFIG_TCG=0D
+  sysemu/tcg: Restrict qemu_tcg_mttcg_enabled() to TCG=0D
+  target/arm: Directly use arm_cpu_has_work instead of=0D
+    CPUClass::has_work=0D
+  target/s390x: Move s390_cpu_has_work to excp_helper.c=0D
+  target/ppc: Duplicate the TCGCPUOps structure for POWER CPUs=0D
+  cpu: Declare cpu_has_work() in 'sysemu/tcg.h'=0D
+  cpu: Move CPUClass::has_work() to TCGCPUOps=0D
+  target/arm: Restrict arm_cpu_has_work() to TCG=0D
+=0D
+ include/hw/core/cpu.h           | 27 -----------=0D
+ include/hw/core/tcg-cpu-ops.h   |  4 ++=0D
+ include/sysemu/tcg.h            | 30 +++++++++++--=0D
+ target/arm/internals.h          |  1 +=0D
+ target/s390x/internal.h         |  1 +=0D
+ accel/tcg/cpu-exec.c            | 12 +++++=0D
+ hw/core/cpu.c                   |  6 ---=0D
+ softmmu/cpus.c                  |  1 +=0D
+ target/alpha/cpu.c              |  2 +-=0D
+ target/arm/cpu.c                |  6 +--=0D
+ target/arm/op_helper.c          |  2 +-=0D
+ target/avr/cpu.c                |  2 +-=0D
+ target/cris/cpu.c               |  3 +-=0D
+ target/hexagon/cpu.c            |  2 +-=0D
+ target/hppa/cpu.c               |  2 +-=0D
+ target/i386/cpu.c               |  7 +--=0D
+ target/i386/tcg/tcg-cpu.c       |  6 +++=0D
+ target/lm32/cpu.c               |  2 +-=0D
+ target/m68k/cpu.c               |  2 +-=0D
+ target/microblaze/cpu.c         |  2 +-=0D
+ target/mips/cpu.c               |  2 +-=0D
+ target/moxie/cpu.c              |  2 +-=0D
+ target/nios2/cpu.c              |  2 +-=0D
+ target/openrisc/cpu.c           |  2 +-=0D
+ target/riscv/cpu.c              |  2 +-=0D
+ target/rx/cpu.c                 |  2 +-=0D
+ target/s390x/cpu.c              | 19 +-------=0D
+ target/s390x/excp_helper.c      | 18 ++++++++=0D
+ target/sh4/cpu.c                |  2 +-=0D
+ target/sparc/cpu.c              |  2 +-=0D
+ target/tilegx/cpu.c             |  2 +-=0D
+ target/tricore/cpu.c            |  2 +-=0D
+ target/unicore32/cpu.c          |  2 +-=0D
+ target/xtensa/cpu.c             |  2 +-=0D
+ tcg/tcg.c                       |  1 +=0D
+ target/ppc/translate_init.c.inc | 79 ++++++++++++++++++++++++++++++---=0D
+ 36 files changed, 171 insertions(+), 90 deletions(-)=0D
+=0D
+-- =0D
+2.26.2=0D
+=0D

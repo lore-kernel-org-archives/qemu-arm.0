@@ -1,101 +1,102 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6204045lfg;
-        Thu, 4 Mar 2021 04:45:31 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwJFMHQ+6nYHWBROaWv7MVHh3/349RRkm//zVAsxMMctbwmexaLmRqrg9T6/2nm9/NBxIQa
-X-Received: by 2002:a92:444e:: with SMTP id a14mr3717205ilm.215.1614861931361;
-        Thu, 04 Mar 2021 04:45:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614861931; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6205556lfg;
+        Thu, 4 Mar 2021 04:47:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyMUOW3Myk7FSLO+jWDNXBunLb2jEPigJ2qaUOWEQpZo7KOumrCqPHISWujkuQA6G6N4Anl
+X-Received: by 2002:a05:6e02:20ee:: with SMTP id q14mr3510377ilv.259.1614862079209;
+        Thu, 04 Mar 2021 04:47:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614862079; cv=none;
         d=google.com; s=arc-20160816;
-        b=qwakWGpeOye7eetya7zqM+RD2gFE+PXL5qdspPgyzbOy/1aQ/NRJLyVsKXU/sq9y73
-         D//aFa/nbh83iDdTCwWK1glOVcvEctgAPETK+POLGEPpEJbJ4Bs58836FjYj2S+PQ3I7
-         TsDqSUxftvY8iX9byufbulKLFPadRScgaJCsW7uRib5WftLSmLiJz5JcKUfdOr74Sutz
-         vlJ477EyA876kMwOxMlb0t4nX0/KQzN9fz9taSUaiCIOEMD0dubqhgrWMsofk0N8fC+B
-         y0LCcBlz9QQDMrMv4Ji13qaESWm95KQat0YYE/q0/Tm/WwsBj7hf3Q2fspvSNDwa1vJU
-         alCQ==
+        b=u/txjob5fh3lPzm1DfyZqkFzneCNtjt0YS79ELmwJjoGFza4EZdl9bZ25suYrGURd7
+         ghrW7oHr+QkBE9EXpwX6Wgckm+Fb8Rax5xcdeWR4Xxr9WatIuL/26hpdWi3dRjTfo93I
+         o0Q9ZhvoBsxQs/v+cICmzO3SwUhAz1Psgwe70t9QwCFE4lpS+SGGGfMPZUbHKcNcJOvh
+         Tw2LUKgecFKRTUOblUMrSWTwNQVv9QFs6dcvVnmNBQHzcA9HZI3kYyk4CP9NSQjHIhgQ
+         kJY8c19w04/9iOSH6MplFBAgOdpTGcvnAJNwNiuHKGmCkCduzRdi/78+iiIQDc2oRK48
+         SnIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=M3igz7jopzXfWJ6+eBF3vNO5uEjoqswrCPxUBIjqFVM=;
-        b=SaqCOe1OGYYwv9wZpcqUCz2NBKnckA4Az6b4G6ZyduMnNPAoff/ckXXsoxjHpHXvEZ
-         cgimYUBmKXyH3ClPgs8DyYnPn7p4onpneIXztUzLNNifelX2PfYhrIPZMJdP4968KS7g
-         f3go2ec77eLB1dW9O6LW1v1aBDyi58WfC3E03vZmJ0e5lDYM17YvcEXbs6DvXzV+IsiO
-         rtTAhb7klxmB1D/B56NnzZJffHJ8qCPHUfMn4zB0TJdxoNrOrrmRW1+BuVmlWqjo71t0
-         2F8vbHuJHHQflRs6ReLHxAoxhQnsjKwVRG4bNS2D7QvW+wab6hFHOiYvLY81MSpNvoPT
-         K4ag==
+        bh=HjzpYT7hnoEJ4x3Tu4tXNH8mLvkB1uVrp6Y4N/W4R+E=;
+        b=YsScU/A7UznVAVihqaWswnuncqf/pCfSAIzw4bOWnJ/CWDz7hxGNltaFArhaSVBO8T
+         EjGRt1nm6dD0+mdX9FTbUqJKCilVKme38GzRKYB5m/1ns/02p6yubaFRkLTRahTTjwkZ
+         fbjiORrC/oWjqvlxUWbQDR1GOKmqypA+XW7rVGW+y+6cak4Nv+T7zCUFoveTsLgOCk6w
+         cC3kM9cEP/rH652pnhFq7zGgNgPqw1EyPlZqohK1lgu4IN0FOU3Rz072IcDe3COLpwle
+         nR3d40EoEkTp9OuR/DsSdKDGJZ49mS2kCZPXBc5Tl9cUsXNion7bfxjRPxd6VeTNKFkk
+         j2jQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VwJ3dc/H";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="PdO9ccP/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h2si21097874iov.19.2021.03.04.04.45.31
+        by mx.google.com with ESMTPS id 13si22988888ilq.131.2021.03.04.04.47.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 04:45:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Mar 2021 04:47:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VwJ3dc/H";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41452 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="PdO9ccP/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44564 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHnMA-00047M-IZ
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 07:45:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53544)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHnOY-0005jD-F5
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 07:47:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHnH8-000274-2C; Thu, 04 Mar 2021 07:40:19 -0500
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632]:40790)
+ id 1lHnH2-00024c-TE; Thu, 04 Mar 2021 07:40:12 -0500
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c]:35830)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1lHnH4-00088J-V0; Thu, 04 Mar 2021 07:40:16 -0500
-Received: by mail-pl1-x632.google.com with SMTP id z7so16063273plk.7;
- Thu, 04 Mar 2021 04:40:14 -0800 (PST)
+ id 1lHnH1-00086L-3c; Thu, 04 Mar 2021 07:40:12 -0500
+Received: by mail-pj1-x102c.google.com with SMTP id h13so324171pjt.0;
+ Thu, 04 Mar 2021 04:40:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=M3igz7jopzXfWJ6+eBF3vNO5uEjoqswrCPxUBIjqFVM=;
- b=VwJ3dc/Ho3D1HzPwK77isIgBzhp49GCGc8yn5fJ2XlV24spK62Nk/4BFGT8XoMjq2y
- 3BBy82trL6ThW4Y1YvaJsSwru18Y9xSkBv3noRcMuzjN6LC99qXxpkPMdiXjhp1XQN6k
- 4kcroNPhiC2CyeztEaue8BEbCGDQWN/L4fofd9FCSZZ//xwZ47ACXmqI8Q0RecRynJp1
- REefcEjFeEIDiwV/6rJ/uJ9lW6Dt4DB/cmdOqojt7Sufy9JQ6nXrVfAJCFnDtag2yt0Z
- Kzbg+PM41A9Qg2vh6sAAQrBt+7zdm0ijgBSEZRfi3mNXImYSrWgUiTdAEI7C3sNKMeQg
- 5dKw==
+ bh=HjzpYT7hnoEJ4x3Tu4tXNH8mLvkB1uVrp6Y4N/W4R+E=;
+ b=PdO9ccP/CWqPnsraafHp4hRBmAvsbwGzvEQORLtVaNqTXJy8BNcW0/Te7yWx9tg9RM
+ AVgjGzgP2gmW8j0y3AdLltyFkVAhKKMWC1whLvCsk9tnXmptVjopTJD5niz6B7Iki9gR
+ +Om2ZTD0LAVoxdbKGoT7iXX+QVI6AfJeHsBh5Ekg5XTfh6b6U0v8TOUUhdwDRACyzzQc
+ PRSuL/CJrp6umTCgWydk+TcA0V+fDOlNv5hSCHwZkV6MIT0FYUECc0y71Za4yglLPWyK
+ xhU+fxSVA5lheuWqqJariofg3U8g5F+ShtOVZB1Ih74vjAj0U3wWdNFcpqnePxDLIv7y
+ Iu6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=M3igz7jopzXfWJ6+eBF3vNO5uEjoqswrCPxUBIjqFVM=;
- b=ZyRBaBfkX3NS1ilOuyDz7FKVTgA/stw0LfRndBovwRnPxzf8Dystci8Ws/90oOSo/K
- 6LrTfVRv49uFf6luutscY1kGwz7UZrI7H5IAFjHT6Y84ycFhwgIIHFgJLKg2lEES4d9h
- H1hq2TUE5KTMIpZ13/NGjF4s4GqkhuzS+dJIS4H1TsvOfmCWpi/wSp7Zm8nFYkdNPYH4
- ufqGIcDaZFT0EKMwLjYIlX2vQBNBUu9HTS0yyePJZU0OS3v7V4v0tm7oT6TfJ7Oj+lKY
- U5lh5jPAG7oeIYq3k8LNdieWtNLDeO3pDFSVE24sfz/YNuPr5MjwjFERHmUwTmCaf96W
- ACng==
-X-Gm-Message-State: AOAM533kL0A57rtgMeRcgwzk6+XlVaNTWBhcC38gjeaO+TswEv6y8qcc
- DgMoELUQ3FFfHfOYGcKrUog=
-X-Received: by 2002:a17:90a:9f83:: with SMTP id
- o3mr4321325pjp.133.1614861613433; 
- Thu, 04 Mar 2021 04:40:13 -0800 (PST)
+ bh=HjzpYT7hnoEJ4x3Tu4tXNH8mLvkB1uVrp6Y4N/W4R+E=;
+ b=R8QxLE9R9HlkKD0pl0JlnCfzcDjNC2one5VxtpIJQZkf9g7FTSvhf2DUkl9f/nRIEG
+ neQASvvyDMjVc3SH6eRUCKQI5VPSOgQ3YplVKocNqPpqADSYIG2qQNzjNJhkxfE4gsCq
+ RoyDJxtOL1wzHhX+VaFDfv0AOgh6ruNQLdHHoGQc/oulruXO0LgeawquBJ7SE3WFAQvZ
+ X/V6i5VjiJkfAwxx5xJzFKfXFrnP2r1sog9dO7TqfbBXvOdKzRCnSZe1KE2h89Ts+Y97
+ 5Eng9NQO+KmHQ2/mrm81nLz9kCrGX92jm81sgoVRIozDT6Z1vQp0EhuQ1jgFMSzIP9oW
+ BzvQ==
+X-Gm-Message-State: AOAM533IYLtHJDb0Si6CfHagOBqgpnH/rTF40MRZM14SKyUqLY7pTMln
+ 1DGNTp8WJHD3LwMJUexr27Q=
+X-Received: by 2002:a17:90a:71ca:: with SMTP id
+ m10mr4328610pjs.2.1614861608846; 
+ Thu, 04 Mar 2021 04:40:08 -0800 (PST)
 Received: from localhost.localdomain ([45.124.203.14])
- by smtp.gmail.com with ESMTPSA id r13sm29228237pfg.37.2021.03.04.04.40.09
+ by smtp.gmail.com with ESMTPSA id r13sm29228237pfg.37.2021.03.04.04.40.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Mar 2021 04:40:12 -0800 (PST)
+ Thu, 04 Mar 2021 04:40:07 -0800 (PST)
 From: Joel Stanley <joel@jms.id.au>
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Cleber Rosa <crosa@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v2 2/2] tests/acceptance: Test ast2600 machine
-Date: Thu,  4 Mar 2021 23:09:51 +1030
-Message-Id: <20210304123951.163411-3-joel@jms.id.au>
+Subject: [PATCH v2 1/2] tests/acceptance: Test ast2400 and ast2500 machines
+Date: Thu,  4 Mar 2021 23:09:50 +1030
+Message-Id: <20210304123951.163411-2-joel@jms.id.au>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210304123951.163411-1-joel@jms.id.au>
 References: <20210304123951.163411-1-joel@jms.id.au>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=joel.stan@gmail.com; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=joel.stan@gmail.com; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -105,68 +106,88 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p/hhyzf+lGk1
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V41Ez3SuasiW
 
-This tests a Debian multi-soc arm32 Linux kernel on the AST2600 based
-Tacoma BMC machine.
+Test MTD images from the OpenBMC project on AST2400 and AST2500 SoCs
+from ASPEED, by booting Palmetto and Romulus BMC machines.
 
-There is no root file system so the test terminates when boot reaches
-the stage where it attempts and fails to mount something.
+The images are fetched from OpenBMC's release directory on github.
 
+Co-developed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Tested-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
-v2: Update expected strings so test passes
----
- tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ tests/acceptance/boot_linux_console.py | 46 ++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
 diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 2f46a08fdc10..4f1df69bc75c 100644
+index eb012867997f..2f46a08fdc10 100644
 --- a/tests/acceptance/boot_linux_console.py
 +++ b/tests/acceptance/boot_linux_console.py
-@@ -1094,6 +1094,32 @@ def do_test_arm_aspeed(self, image):
-         # self.wait_for_console_pattern("login:")
-         self.vm.shutdown()
+@@ -1048,6 +1048,52 @@ def test_arm_vexpressa9(self):
+         self.vm.add_args('-dtb', self.workdir + '/day16/vexpress-v2p-ca9.dtb')
+         self.do_test_advcal_2018('16', tar_hash, 'winter.zImage')
  
-+    def test_arm_ast2600_debian(self):
++    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
 +        """
 +        :avocado: tags=arch:arm
-+        :avocado: tags=machine:tacoma-bmc
++        :avocado: tags=machine:palmetto-bmc
 +        """
-+        deb_url = ('http://snapshot.debian.org/archive/debian/'
-+                   '20210302T203551Z/'
-+                   'pool/main/l/linux/'
-+                   'linux-image-5.10.0-3-armmp_5.10.13-1_armhf.deb')
-+        deb_hash = 'db40d32fe39255d05482bea48d72467b67d6225bb2a2a4d6f618cb8976f1e09e'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    algorithm='sha256')
-+        kernel_path = self.extract_from_deb(deb_path, '/boot/vmlinuz-5.10.0-3-armmp')
-+        dtb_path = self.extract_from_deb(deb_path,
-+                '/usr/lib/linux-image-5.10.0-3-armmp/aspeed-bmc-opp-tacoma.dtb')
 +
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-palmetto.static.mtd')
++        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
++
++    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:romulus-bmc
++        """
++
++        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++                     'obmc-phosphor-image-romulus.static.mtd')
++        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
++        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
++                                      algorithm='sha256')
++
++        self.do_test_arm_aspeed(image_path)
++
++    def do_test_arm_aspeed(self, image):
 +        self.vm.set_console()
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
 +                         '-net', 'nic')
 +        self.vm.launch()
-+        self.wait_for_console_pattern("Booting Linux on physical CPU 0xf00")
-+        self.wait_for_console_pattern("SMP: Total of 2 processors activated")
-+        self.wait_for_console_pattern("No filesystem could mount root")
++
++        self.wait_for_console_pattern("U-Boot 2016.07")
++        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
++        self.wait_for_console_pattern("Starting kernel ...")
++        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
++        self.wait_for_console_pattern(
++                "aspeed-smc 1e620000.spi: read control register: 203b0641")
++        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
++        self.wait_for_console_pattern("systemd[1]: Set hostname to")
++        # This often takes longer than the 90s timeout
++        # self.wait_for_console_pattern("login:")
 +        self.vm.shutdown()
 +
      def test_m68k_mcf5208evb(self):

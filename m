@@ -1,108 +1,109 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6430728lfg;
-        Thu, 4 Mar 2021 09:35:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz4swmtGJkXc84P5Sp503veYhQk/FxZ4G5Y0APjDRwrSXxhQDuULghCy8SdKLWb1u63zoya
-X-Received: by 2002:a02:b890:: with SMTP id p16mr5072308jam.138.1614879348969;
-        Thu, 04 Mar 2021 09:35:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614879348; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6434387lfg;
+        Thu, 4 Mar 2021 09:40:26 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJymh8N5CaCFUwtT42xlGxZ6BYKcC7V9omwo7jKPUbLTbpdUdaW9LUWSJzZwLqLqZCAdErn/
+X-Received: by 2002:a02:817:: with SMTP id 23mr5117078jac.23.1614879626610;
+        Thu, 04 Mar 2021 09:40:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614879626; cv=none;
         d=google.com; s=arc-20160816;
-        b=1C1LJtHYerXKc5QUfVP3pEJi57j+7KVReHChkQXYZAvLoXYDCK9Ehn7jDMEziX07AF
-         ltCbTbu7bwPv/wo61Skuz3XiohpNah0sKpgXVq6tga3l2bJJdXPTFd7e3vaGRKivWyo0
-         zBtGPXcv2xaJfDZHQrJyLbkd914vq9opgKDCNqV4ZUE0ewrKVtM6q8RHRG5lgM/QZkIz
-         G9A+oR/wxnVHsEDNGUlCP5gpW9bTnyKfO7TXz7BX1+GSybfKntK1PjEOmJwdZCgUp85d
-         n3Kies9wSZghwccFssThlHo5x17tnsyO66v+6V5n1NwqYiAwedfnm6nf8mn3QoVjIl12
-         mZCg==
+        b=ZQEZY4WnnXayv9QwvGkyFBm8yBdKMuhsBnjYakgtIw3duxnf6fhN/w6sY2QZ/cWv17
+         itOYCAOG5oPP6YKoIs0MVaLUeLWTJ+DmaaSbXLXSV0Y46hwkV7RT/L7RlQh3BU8fbmN1
+         /44W5BB/5OBfOVYbjBaXjim2RT9pMM9CvVxSktKR9CusprXw7eCLVkx59DK3oPXuliqp
+         ZF8ueTKj1X+jdD+qE2A+p1yDzCqTc7+OlhJYsucTjA4ql6W1s63Zw5PLOaAxi1VShKRg
+         1RexF49xBNiXnnEuObUu+SFUB51HtZsM5aBNFM46QpUH4PTY3XGgp3jbLhbv4k6D9YRu
+         LBWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Odd3Twk1/OSSMurMclfYk/doOXPVWkIaQf2I3pNKJFs=;
-        b=RNYqjxUKtUz70IH59fb6SEyopax7BikXSu2ynGEoqGGGkOEhw4s6kGBZHl2YiT7Zev
-         OUJ03G5iqc55aCzAzy4eooPRWdheY6hyvySQ5HxHmpnt2Bdtg1rAq8/ALSeB+0vRkkSY
-         nUoiEIdfUKFNZz5eqK29vIkb8pq+lHPi/fVlhd0viy6XCmxd2MauhxKTrcwpiCCN9Pnu
-         x5TIroV5/baOZHNl+D0upb/9yeXz7rpDuSivHOIp/Gge5+HHabM3qmLU3cFKSPc6zOkz
-         Zm2h2HM2LVgwnXZLWJN3bysNntV7iNsSptfEufzrLCwWmhcWrfZU/kMmf37Agtbam+pg
-         D7tA==
+        bh=SBPvWNHDsEbhoJxNIFzVqRxtTF9/e8OCy9RiInJBJt0=;
+        b=yeVj6dH2fPiQh5jbdIzedmOtJIaREA8elOVZvSHW77SzKhLyi9Rw4chCCKfZyOfyys
+         zkEgSvs7Yb7PQFsEnnvCPk68Kgemhe5Jpr6gmql8MxX3bD8aJaqLWCUM+dhUdEClIxU0
+         Mr88hjYyM4TDD4yDzc5sQsuGL8UMpDb7C6ZH3Re9EB9huc6sVPpnrqfC6mLmVCAR3jHQ
+         Ar8CeuYstWNuHJ6uV7qZ1YmyjRObLCa5zSImNcE6lyjNMqmZfPhKDZliFhG6X2NsS7uc
+         nBocs8EQ5xCQVZhdaraXXyXfdYB09+lBUq0z8B6CIT6dtXQzG0loyLoKTpl0vDEoq3GW
+         ygnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rSJ1cfKd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OC1in8zk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m13si23897497ioo.103.2021.03.04.09.35.48
+        by mx.google.com with ESMTPS id f13si1354jat.92.2021.03.04.09.40.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 09:35:48 -0800 (PST)
+        Thu, 04 Mar 2021 09:40:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rSJ1cfKd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OC1in8zk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51716 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHrt6-00078U-8C
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 12:35:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51516)
+	id 1lHrxZ-0001Xe-T7
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 12:40:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lHrsx-00077N-Fd
- for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:35:39 -0500
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a]:43745)
+ id 1lHrwz-0001Kv-8C
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:39:50 -0500
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431]:38765)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lHrsv-0001Yx-S9
- for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:35:39 -0500
-Received: by mail-pf1-x42a.google.com with SMTP id q204so18388778pfq.10
- for <qemu-arm@nongnu.org>; Thu, 04 Mar 2021 09:35:37 -0800 (PST)
+ id 1lHrwr-0003Ms-5Z
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:39:48 -0500
+Received: by mail-pf1-x431.google.com with SMTP id x24so2217940pfn.5
+ for <qemu-arm@nongnu.org>; Thu, 04 Mar 2021 09:39:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=Odd3Twk1/OSSMurMclfYk/doOXPVWkIaQf2I3pNKJFs=;
- b=rSJ1cfKdqdU9cdJ4wNv2lVv+gUqim6uT3gA2upmADH+fyIe+aYuWyvFrkWEiWkRnJI
- BfuyZOdPeuPTXjcaEpqeENLjJa++ZyCmYUqHH5ZTGWuwlW1tdml2Z9nEnMMykrvf7+Rw
- uQeOvinhl8Y9GywYhotpvD53w+xtbrm+7SoBy7g4063aLkueY87x+5PvMSybnOBBWBP9
- dj4y+3ygXgNenjHJ2ZzK3CO9N/hppEnFHSDSM+WN1CaSwT5eOz5Z1Z5Kytr1FA1kQkGh
- rIgBe6vm+uYbYw37b1caR3N5mcaXEAW+YJMcEgRskD5y+9P6RfIeCJi3hviJEpGY0MSU
- 55WA==
+ bh=SBPvWNHDsEbhoJxNIFzVqRxtTF9/e8OCy9RiInJBJt0=;
+ b=OC1in8zkwMq+QdG1Ew1O29gH9SeX7He3VjifENAQnsgzmFeoOmQ6gBaOCDSWnFbqkz
+ GkaQEmvDeOuP+Gy3Xf+PTeSFwWkmf8rllNG2/wAesUD90EqKHzriKeEOX54oMcXiT//C
+ 4D//h/NRlTshIEk3sNPoV9ukdB13LBLlNFtan5rF+r6tMVrxhSh8Uxtv8uuGqzOk3t7u
+ TXdP9M0YE3dXwTFVEoACebMjzOoyfKKQSMJ9EuZ+euEnHr39xhWg01ZscLK5snKcrp4z
+ ZEIpShTz7tVeRktkD5s/LczWTonQ/5nrrENjvKWMvW/wwtpYms50ElGRk1nUvCQ9quwh
+ YW4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Odd3Twk1/OSSMurMclfYk/doOXPVWkIaQf2I3pNKJFs=;
- b=iyH5Si04bYM5WhWd8JmLOWrv7Im98qt5U9/Xm1ht3uhUw5LJdXueDqBlfHo1CdaN3o
- 8vj33W6EIC+Ms/xKsPQRGsJOrrS4MbooEzoQl8NU7ZYUg3cGX+Zn51hjO8dZW4LNLX38
- LmKY12PNEwCatsi1JUom+ILk36PVNj8EmH+0hQHoIqj0+AxKptflhS306wiMxWoxpPy5
- 4w0zLZPnULGXt6Nq7LQSfHHTkcIkuK2Rqy90RqC0OQPumW6kCQUcXVK+9RiA9IWQKOe3
- LBbMPPKWYTn9TI4xZuB+NW8zUf1vE0dCZIrLEEkuSUyYDfn9EL14kNlKDUPCI60FiHWB
- yeQg==
-X-Gm-Message-State: AOAM531wRpMXvJvtTmOQLNGPnwpKGIu4krh9n0cN94pJaz+hNymiF6wO
- kzR7UGZSWo/FBlkG/rCpWAwvhA==
-X-Received: by 2002:a63:792:: with SMTP id 140mr2861660pgh.200.1614879336416; 
- Thu, 04 Mar 2021 09:35:36 -0800 (PST)
+ bh=SBPvWNHDsEbhoJxNIFzVqRxtTF9/e8OCy9RiInJBJt0=;
+ b=kx/ACh1HgNVgZ9jApe43vp2/T0rV52XohRclkCS9ahlMbfZD8CJCyOq1+nUlNuXnzY
+ bAixWmbRI4U03ReoSYW8ezGriE9nUJ3hpwzteF88Aa49sS5H9vtCEl2HJ414v0HXIR04
+ pwSdE5c5gH/Cmwi/pArmKX8Qpe4bk3htLIu7+BxR7CBEIwQliiiiWwxOBWY6WrqVCJxk
+ Lz/bmQxMRVn7iMrPHN2l+LloeRprrfzifj6gDF3fq6fUaJVsoTxPzXckYzo5Y2bOARIZ
+ JLBAe/1De3q3S51Ww6d9Lvw6XCHylg51e/lUkhnnUaxPNc8bseqRxi8o5u9UMczAf1FS
+ A/Zw==
+X-Gm-Message-State: AOAM533lMK1KEfqSydwG2bxiAF/ISnEzciVFDkm25ezzWiL0G26dSbVT
+ 5rJN/qpl2FSuxmgFU8h1hFxU/w==
+X-Received: by 2002:aa7:83cf:0:b029:1ee:f550:7d48 with SMTP id
+ j15-20020aa783cf0000b02901eef5507d48mr4784134pfn.12.1614879579834; 
+ Thu, 04 Mar 2021 09:39:39 -0800 (PST)
 Received: from [192.168.1.11] ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id b26sm49937pfo.1.2021.03.04.09.35.35
+ by smtp.gmail.com with ESMTPSA id u66sm49355pfc.72.2021.03.04.09.39.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Mar 2021 09:35:35 -0800 (PST)
-Subject: Re: [PATCH 08/44] hw/misc/iotkit-sysinfo.c: Implement SSE-300 PID
- register values
+ Thu, 04 Mar 2021 09:39:39 -0800 (PST)
+Subject: Re: [PATCH 09/44] hw/arm/armsse.c: Use correct SYS_CONFIG0 register
+ value for SSE-300
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
- <20210219144617.4782-9-peter.maydell@linaro.org>
+ <20210219144617.4782-10-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8a5250d6-a982-486f-074d-0ed39c863042@linaro.org>
-Date: Thu, 4 Mar 2021 09:35:34 -0800
+Message-ID: <bc86b56e-434a-785e-5cc0-5b7c41714f2e@linaro.org>
+Date: Thu, 4 Mar 2021 09:39:37 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210219144617.4782-9-peter.maydell@linaro.org>
+In-Reply-To: <20210219144617.4782-10-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,20 +125,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tMIhHD7SgAtJ
+X-TUID: g6fk8PkihBkj
 
 On 2/19/21 6:45 AM, Peter Maydell wrote:
-> The version of the SYSINFO Register Block in the SSE-300 has
-> different CIDR/PIDR register values to the SSE-200; pass in
-> the sse-version property and use it to select the correct
-> ID register values.
+> In the SSE-300, the format of the SYS_CONFIG0 register has changed again;
+> pass through the correct value to the SYSINFO register block device.
+> 
+> We drop the old SysConfigFormat enum, which was implemented in the
+> hope that different flavours of SSE would share the same format;
+> since they all seem to be different and we now have an sse_version
+> enum to key off, just use that.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   include/hw/misc/iotkit-sysinfo.h |  1 +
->   hw/arm/armsse.c                  |  2 ++
->   hw/misc/iotkit-sysinfo.c         | 29 +++++++++++++++++++++++++++--
->   3 files changed, 30 insertions(+), 2 deletions(-)
+>   hw/arm/armsse.c | 21 +++++++++------------
+>   1 file changed, 9 insertions(+), 12 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

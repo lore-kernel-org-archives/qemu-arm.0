@@ -1,109 +1,110 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6445218lfg;
-        Thu, 4 Mar 2021 09:54:34 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJydCCwtxTBQ8AHN3z22M0aVNK6R/4ZKi85ysUb6G6Gd4lv1reemdx9PcE1DUDVXq9WdYvyk
-X-Received: by 2002:a05:6602:2590:: with SMTP id p16mr4591797ioo.21.1614880474559;
-        Thu, 04 Mar 2021 09:54:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614880474; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6443915lfg;
+        Thu, 4 Mar 2021 09:52:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy05/NNCShLcwQYfcoFzsq2FJugamnB+V2B0ce4NcIxaXj2aYHFpUrg7u7DfhfUEOn5EirL
+X-Received: by 2002:a02:7822:: with SMTP id p34mr5212928jac.65.1614880362296;
+        Thu, 04 Mar 2021 09:52:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614880362; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bly4lKwWEl6dMSClXi1CapDaTmzD2NzXEg/yh92lRQnFGfHylx64zwqZWTeionTHuD
-         9Y+gDys3u7rj6vvlgZvD+J8o1dRDoE01qpaPQQgI65PKCymndVgUM1BLz2IC/AkF4Lgs
-         z30fpHuJPA/Fk/mtQDxY42N8/KGAouID/JsOvcSNbES+udxdfAQSzDLXEt7J1jghxp1F
-         uqAEIlHY6+MK3ZFhlOc+2LSH0WMTNx1pNsOttVLJQcjUdVGNVcyhz3DbRZvGYIxFLFx6
-         AXtrNmdy86VfhiH0vg6LeW44R4Eg0BMQQQkY26AA22TTnqlna8weGfl69p9lOTpqSSdh
-         kV6w==
+        b=N4y8GWXQZcyEhaSD+8LjG8HS6T92HJSqmEXIbtbi6drU+0mrbck63SMNSMMQnIesup
+         rQuufiAIg6a0qVMhOhcnvdlQhq1MVymmeG576bytTa7EyXtFFaDEg/W+dxK7eKbdDzl3
+         89UzH4No1PMLbPqbyDI3mlD27YO7VS6ac2+FcA6NzYie5srvdw2QPnx2Bu2xwkGdNGI2
+         EGtg1Tj3YxSbm/wLI0nmIzxaH0NfU+90CnC0ziNZT1R+bR4rfYlYBdZntEMGVLgKR3jw
+         BDQFgFEGjUPgecWfuFL4pCXZWvCuOWRTGiY5fe6PgOr4urCfmCWTFtg3aqHwq3ASxf90
+         jwtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=uo/PFc/+t5LfIOm1CBanoBkXHmi9lYlCT8NTA/FCKWA=;
-        b=iBzc6u21/QsHsma8ytfgdqk6hfG/+DLpi5C4CsbjaBoM0cNFAA6idd4IME4txu1LYO
-         pl6ZuQN2A4aWvDhLacEs3JT9dHSLRMZFM/+kn/gqWqh5u27e8sXV8BlxHU45t7hog7p1
-         cNzJ6nYdESL3vAOpZ61KMxMD902t5hBq63qPw05EhiuDw1OYTk3LQ+8nD+I+f5FBnUXW
-         hWkXaOR7ilAOWcvb7ZsAn/zD0fi4IFflnKS2nBdVzBTbzT8VuCKYyiNQ7HAKx+3EYfmR
-         Lem8ntvyA9JOs/ElbHgqKBy1B5JIue/naf79Zm/L7a40u47MFaEKhN9DhPXavAhfg5ri
-         0xVA==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=vP/YVgzNN7yI3OKek0IlM1rfspFbvtx8CGK6bZLk76U=;
+        b=wxYJxCR89vSJY5SCNvP18+T8tcC9VRpcZ418wXkCb3Y+I5edIJM4L2CBsHxiZhL5wk
+         Dfc/V4GN2K14KFf2vFa33edFLV6xcj8hcKkU293WdF7GDtHMhiWZ8xmiS+j/LgXJhWG0
+         J445uualuYP0vEMh7y48D44A0b2Hf4jEuJ94OLOM2zWT6PbUUJ/8P0ZSx4cpNETfy/Ki
+         3cYpNx2JTCwUfsr9yZ4Zk6CDdr8LBGumfQ3YL6hIJvFXkqLXejbUrMoW0dMAy4mJ+CKf
+         LqKGUXUq9pjqBGj0ef5D/qiEHNUsk3CoLsqnbHTg50epqXJ1Fdu/gOkjtkw0QGpuo2DG
+         792A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UeEUSolu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="SUE/tzsn";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z14si28836jao.83.2021.03.04.09.54.34
+        by mx.google.com with ESMTPS id n26si16786jam.115.2021.03.04.09.52.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 09:54:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Mar 2021 09:52:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UeEUSolu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="SUE/tzsn";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42076 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHsBF-0000bW-ST
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 12:54:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55378)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHs9R-0007nD-Kl
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 12:52:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lHsB3-0000aE-2a
- for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:54:21 -0500
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633]:43633)
+ id 1lHs8e-0007i7-II
+ for qemu-devel@nongnu.org; Thu, 04 Mar 2021 12:51:54 -0500
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:50916)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1lHsAz-0001jv-1a
- for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:54:20 -0500
-Received: by mail-pl1-x633.google.com with SMTP id d8so6150335plg.10
- for <qemu-arm@nongnu.org>; Thu, 04 Mar 2021 09:54:16 -0800 (PST)
+ id 1lHs8c-0000mn-MR
+ for qemu-devel@nongnu.org; Thu, 04 Mar 2021 12:51:52 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id b15so7063824pjb.0
+ for <qemu-devel@nongnu.org>; Thu, 04 Mar 2021 09:51:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
+ h=subject:from:to:references:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=uo/PFc/+t5LfIOm1CBanoBkXHmi9lYlCT8NTA/FCKWA=;
- b=UeEUSoluu/6KkqM1DLnlF6g5Flp42KhHtssVn68/f4bFS+SDK0XJQPoQU85zH73d8O
- 7EWtq3mhJRhyxeIsjq5ILEI8oWneZ0F+pRSVmsnM5DPFIVrXYGcHsRpGKkpBXcZXZFZ8
- FM05GdawfGe+VcSWT5oLkOBXgVpY3XvOvMKNOO3a4egYLmCpnCopnqXrAbbbjfN60IAb
- Oumky7e5r7X3rPV/mqlaxV69FxYrZ2N7Ld8c+bq5IcVN5FbxN329gVSYsVdROYVwLXDO
- CcoBvzTk9nGNk/FNVeR1edEPgG+u8zJtPdcmMKpHbatNiVvSaXNYArWKMq3Tln2tba1b
- 9MVg==
+ bh=vP/YVgzNN7yI3OKek0IlM1rfspFbvtx8CGK6bZLk76U=;
+ b=SUE/tzsnqEzFFIduUxrouJqAeKokCjnYHsAl037VK1x9sIyMpWL630c/30wBCq7jwV
+ kfP4y38ipV80ydrjv9KbHGu9gYO+Pbh6hvqP9VBu0pBX1mUDpZSIFx0c6kvULInYsBFz
+ ODWsQsobrjvx5l3AxFQ+5VCTKqwmCUqohOqcsleKReTzZnKstub1yw10VxpJJFfjvpxg
+ i2u3LVidEhikDkHJ1FdTOMkxN+2d4QurDjW/9LD5aQAyqmEKx15j/KUqNUvO66iIgoqc
+ PB2dScVhCa054dOueoRY1K1fKHQY3rNmca5Z9PAPeecpZxSRh97kePaCAnsbU25IWRgw
+ bieQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
+ h=x-gm-message-state:subject:from:to:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=uo/PFc/+t5LfIOm1CBanoBkXHmi9lYlCT8NTA/FCKWA=;
- b=jVmtw3OxuRdHjCaMHh+xld9NHnFq4cm7ef7arUJa6eDfjQMRGMiiE8Jr1Ya9LPo1K0
- 6r1kR+UNmYZBoHB6aFUSTn4YqJFlnc9x8rGMZTXwLmQ/mAcNVRQxesRTgOqb72AW1Srl
- 83VH6JMa7kMyytY4K+WAse28sU6JBaO6+dq8A+1bONkYLgxzaDALqTCeBQJEJ+F223tR
- ztCDoDRzbMhScVu6rXEVdeHsZUeJ6RxZJMibE7dxjOLR+CXhBrHDbu592e4sfwLI/Sae
- q+CBncm6txeDb+IyK4ibQE0HQ3Qs1MR2JIbOLho0arElgLIlfIppcFeVgVzVb6mFue59
- aXtw==
-X-Gm-Message-State: AOAM531x2Lb6Eo8lghJhCSTnU/GjfZwx9dtd4/0SbECwv16xYHLyJ+L0
- poUXPKB+rVQr5FrragD5Ndk8qA==
-X-Received: by 2002:a17:902:7407:b029:e4:9645:fdf6 with SMTP id
- g7-20020a1709027407b02900e49645fdf6mr4845013pll.19.1614880455373; 
- Thu, 04 Mar 2021 09:54:15 -0800 (PST)
+ bh=vP/YVgzNN7yI3OKek0IlM1rfspFbvtx8CGK6bZLk76U=;
+ b=N2wV451fnUrhjX/f7wKW6Avj1e6uwBZp0c1rFl3GGyOvDSbzh2LTmMGrdqQnF4WPbk
+ UD+HGq1dOXeCvuqx3PcWZeQ4zda4o7HAy6QoZ1020rqwzZMYwg3yfuqwWI/p+xWw8TZx
+ pIybVP+XbLTIy7fGJsrUVwr8WecslbEDSKssJ5c0G8IXyeb8MXMJeDl2dVwiydMXhVtf
+ Ni4dJVbwtH3ZYnssN1WQTdzNMjhCJcb0zEZQtvz36BaGnOuJY1uVZ9BY4KN5VEoRFnIe
+ VBu5ux5Wy9l6rVFDEBS4e9JyqZAyKgp2MBYHvRbiAS5exzrnhMaVdhT5clByW5g6WVd7
+ 3JHQ==
+X-Gm-Message-State: AOAM531Y/MiXGUc/1/xGULOMcJvzo2/n7qoHug/kO9jiCaVxdfwQagBk
+ kZP6Z3NH0qHQEVSVSPjxqU2TflZtbEkMpA==
+X-Received: by 2002:a17:90a:7c0c:: with SMTP id
+ v12mr5584200pjf.63.1614880309091; 
+ Thu, 04 Mar 2021 09:51:49 -0800 (PST)
 Received: from [192.168.1.11] ([71.212.131.83])
- by smtp.gmail.com with ESMTPSA id mm12sm10389402pjb.49.2021.03.04.09.54.14
+ by smtp.gmail.com with ESMTPSA id g3sm59339pfo.120.2021.03.04.09.51.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Mar 2021 09:54:14 -0800 (PST)
-Subject: Re: [PATCH 10/44] hw/misc/iotkit-sysinfo.c: Implement SYS_CONFIG1 and
- IIDR
+ Thu, 04 Mar 2021 09:51:48 -0800 (PST)
+Subject: Re: [PATCH 07/44] hw/misc/iotkit-secctl.c: Implement SSE-300 PID
+ register values
+From: Richard Henderson <richard.henderson@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20210219144617.4782-1-peter.maydell@linaro.org>
- <20210219144617.4782-11-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <5b88bf72-7317-73c4-dedd-30e7e3c1f208@linaro.org>
-Date: Thu, 4 Mar 2021 09:54:13 -0800
+ <20210219144617.4782-8-peter.maydell@linaro.org>
+ <0f167565-0af3-ee18-4f16-ec0a8aab12f9@linaro.org>
+Message-ID: <68619933-adfd-2240-8910-2d8e6e0ef6f9@linaro.org>
+Date: Thu, 4 Mar 2021 09:51:46 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210219144617.4782-11-peter.maydell@linaro.org>
+In-Reply-To: <0f167565-0af3-ee18-4f16-ec0a8aab12f9@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,39 +113,41 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0kQkuJO9xecK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: obttKm0CM73x
 
-On 2/19/21 6:45 AM, Peter Maydell wrote:
-> For SSE-300, the SYSINFO register block has two new registers:
+On 3/4/21 9:29 AM, Richard Henderson wrote:
+> On 2/19/21 6:45 AM, Peter Maydell wrote:
+>> The versions of the Secure Access Configuration Register Block
+>> and Non-secure Access Configuration Register Block in the SSE-300
+>> are the same as those in the SSE-200, but the CIDR/PIDR ID
+>> register values are different.
+>>
+>> Plumb through the sse-version property and use it to select
+>> the correct ID register values.
+>>
+>> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+>> ---
+>>   include/hw/misc/iotkit-secctl.h |  2 ++
+>>   hw/arm/armsse.c                 |  2 ++
+>>   hw/misc/iotkit-secctl.c         | 50 +++++++++++++++++++++++++++++++--
+>>   3 files changed, 52 insertions(+), 2 deletions(-)
 > 
->   * SYS_CONFIG1 indicates the config for a potential CPU2 and CPU3;
->     since the SSE-300 can only be configured with a single CPU it
->     is always zero
-> 
->   * IIDR is the subsystem implementation identity register;
->     its value is set by the SoC integrator, so we plumb this in from
->     the armsse.c code as we do with SYS_VERSION and SYS_CONFIG
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   include/hw/misc/iotkit-sysinfo.h |  1 +
->   hw/arm/armsse.c                  |  5 +++++
->   hw/misc/iotkit-sysinfo.c         | 22 ++++++++++++++++++++++
->   3 files changed, 28 insertions(+)
+> Which document am I looking for here?  I found DAI 0547B "Application Note 
+> AN547", but I don't see these register definitions.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I finally found the sse-300 subsystem trm: 101773_0000_02_en.
 
 r~

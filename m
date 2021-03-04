@@ -1,102 +1,102 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6565530lfg;
-        Thu, 4 Mar 2021 12:42:14 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzZV02/ahPK2BpFbFUQmNfICDEDmy7IcxlRR6s298y3ve5pif1lX6W1s2Xahgu3z95c4HGp
-X-Received: by 2002:a05:6e02:2199:: with SMTP id j25mr5599019ila.18.1614890534694;
-        Thu, 04 Mar 2021 12:42:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614890534; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6567386lfg;
+        Thu, 4 Mar 2021 12:45:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyz6kHuSwwjbWRZDQxirXnM2Ri/i1lYNKuC9SA3sTAgoJe/KY5HDS1t30tP8DCeBao9LLqA
+X-Received: by 2002:a02:a90f:: with SMTP id n15mr6071744jam.110.1614890727378;
+        Thu, 04 Mar 2021 12:45:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614890727; cv=none;
         d=google.com; s=arc-20160816;
-        b=mzEFlJiYobVEh9N6J64F7iZIdIRtHDLta3Ieiag7yQYQN1eSQ60Q1/PfifunsIDD/c
-         gTs/EjSqdgpRB7qaql1XreykFOU4079E1VE8wFW+oroAQs6j5taJZpU1s2gDzTGnsdhI
-         2VthuHUeYwuiP+H9q9YzegiAC6zCmhE6piRsQKxYY4cL2zfW8yOV/P8Ql2IHVJzl9b8m
-         8mt40gesB/WgowRSnGu9x50TS15f5o6iiWuYCRK5XLx0/5EgurNOgeY3lM0HLB1Y/gEi
-         JtpSOhR/e0gISgj3+asb/qfiOKM9SmCQgvtZiArmupR7A0y4CPZLrmHTd68rohCgW8Of
-         1Qnw==
+        b=MkdnE0D4hQL/n93tUidQ7sFkT63FUFNiiDcw+TRSdXlDwo39HOVdFNMFz7LYxdj9Kb
+         /6ZKEYI8ODhoDP2PJ5w5TA/nJgD3dSGYCxGZG7unsAbR+juCQ9oSbYPcZjoCJ6lEMYd5
+         LFBnHREBr1/9Ch1o6z91Bk0mJPICna6SUvXx06n7UTqKhZcnEFBzMkOyhjwEgRGZud/b
+         UFc0UNbfEG0IU4Gci+ZA/dZpeqJcwEBG1vMYuc+NsEeE5wfPFz7GqCqgVU+7X/jvpcc6
+         fLtl8u3lkVJR9XpzHaKHXCy6iqawQ+MIgpPo5SqAKIspxb4jyTIjZBO36DQx3WpVT7p/
+         5RaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=0Iw51pp9UDsbKR+bTJDoskOEwn0mQCRO4DvU3s7VEns=;
-        b=0j8A+e4My2zT0agrTeCIN2TmPs/jxvpE6QjzNErioCyDhOKlCfjxl11ylek9/nLJAS
-         ykcL/aPwhLzIsjHrm7wr2D4JgSDHuT6m8dmwGI8ITCcyfQ0ITwNwIDehHHvre1W3ZhSv
-         LSAbUY6OuZmyWls6Ab6EGQZIKHM8Sfn6qhcIAxzt+bEPEhNjZ8mg2krVisK2UnXkkzHq
-         zPo5R79PuA5hBQVmgjQyDsEnfNJyKrCyo5L3Lp0FBw3E0sRjUKmWP/MZEzX0JFbLtWf7
-         mzw2U+Ed5IM6LcZaPcqtnvSuHOEFOPh6f++6uWE7UKxIQ7APU/PMQoiBg+FjfRdpB2uU
-         vQLg==
+        bh=DfX0PX9k5vslF+u0G7Geev69QRDpZEy4IHT6ko0vTfg=;
+        b=u+ytGIfsfu5O53YhWvo4LHeKzOiykmIsbAPEJjxWbTSQLZ/qI4tNK1uupT93JbcTyD
+         acwjt2RJrO/Y+utverdjzsPaHDgZmljCBJGCz1ZWIQi6Z+l/sJh4Q5puQhopxSUt2/X1
+         PdEW/W7KtlpyajnF1IMlDJcCRat6N7/E8BUi0ISCxtSMqDzudgK/yfTpwtYikMlSnCAU
+         iicCECMTCueV6lX6YTElczs0hLlHT+Xe5k61nWwzu3Rq+W2LI4NSpC8pZxlm87aLc0Jq
+         nKdqLY2ScVbiaEp+CkMCOR0F/8pNr79uP/GmpBsmRNVzmT0BzUapWITtDpjmreXYAf+q
+         0wcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pSmYC8NL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jjN/oXlP";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t15si169318ilu.87.2021.03.04.12.42.14
+        by mx.google.com with ESMTPS id v6si197005ilu.92.2021.03.04.12.45.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 12:42:14 -0800 (PST)
+        Thu, 04 Mar 2021 12:45:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pSmYC8NL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jjN/oXlP";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38988 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHunV-0007aB-TP
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 15:42:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32912)
+	id 1lHuqc-0002lo-K8
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 15:45:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lHuhb-0001ix-AS; Thu, 04 Mar 2021 15:36:10 -0500
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:35565)
+ id 1lHuhg-0001jo-5V; Thu, 04 Mar 2021 15:36:12 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631]:32903)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lHuhT-0005LG-QO; Thu, 04 Mar 2021 15:36:06 -0500
-Received: by mail-ej1-x62d.google.com with SMTP id dx17so24443128ejb.2;
- Thu, 04 Mar 2021 12:35:57 -0800 (PST)
+ id 1lHuhT-0005LT-Sy; Thu, 04 Mar 2021 15:36:11 -0500
+Received: by mail-ej1-x631.google.com with SMTP id jt13so52119122ejb.0;
+ Thu, 04 Mar 2021 12:35:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0Iw51pp9UDsbKR+bTJDoskOEwn0mQCRO4DvU3s7VEns=;
- b=pSmYC8NLS28oZcZElhZk6QUmSAFWhlIIyRXVF8TunaVmz72LcSMXGi3S1lufWR29p9
- ohdvKX8HQwYgBnnSQvpICHOrF0t6kq5CkiFcVeKo6rUkpx97FPu+DQEbjnKkoedkRVzD
- 09Xexcomp11EX+g5PQ35HG5SoSbn+/Oo3A77nmxGGy/eeemOCa5m0gktBCiDTbMVDAwZ
- Oi/pX4jDZPU6HyARJaTw1Q9Bri0XqCQU3ylZ70xhKmxpVUPFTB2DpR9vYLRIHamf2JLC
- hbpFEyBq6HtwWMGnB4hFemIdDCKG+C85deyFsvcYjqDG2w8CnbEzyYWZhuIdtnBZ/ncq
- YOmQ==
+ bh=DfX0PX9k5vslF+u0G7Geev69QRDpZEy4IHT6ko0vTfg=;
+ b=jjN/oXlPnXf71M43yhNt3SRLOMSNXDRKj/kttg1Zn7NvQTh6pynZRP712ILNugGdaM
+ NhrutsxXA8MDSJ/E1N9DXS2TCCgnA1RBx6J2al6im5YG1pf2Ow90O69cKHZyo2KDsnBI
+ 9FNffMkn0LVvisO03tcs7UpK4bASeRvlVQb4POIgmI1/I09jC38wFfxjcO8qzVEVKpml
+ xHPmnBo2EuqQ7qgoAoL7UzT0tGh/H2koLdPaqFkq6fzFqISOlw/fsyYA8oM4sQ/U/S5k
+ nrHLsT9Ux3MrYeMRo2MQjEfZL5XgaQKv+QTe+dqWPaPNRtcbfJ2ZSmYsTP9ZjjbGm7ut
+ fYWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0Iw51pp9UDsbKR+bTJDoskOEwn0mQCRO4DvU3s7VEns=;
- b=EirVtozCHNmpAO6BoPX+ivN0UAbyYwiCAUdNGr2cWQEPfHfmwWDwnoEJO5UkHZFtaq
- bbg3zDpxh7iNMP3LHNFyTtVzf0OPhyFBGmO1y9VHrWu/H9CsEJZYidzlaqcDKr5qW4nY
- sQ4wRyQvUlCtTfoxIGo8phCY5fTiV2ES9Uj5TtsUUwIJzwBJN8pS2v3OHXcaA311tDfY
- 0uSowF4QHUR2I0hmiSK0nSa6/g2gvrKCPuTDYP4RizCLWeooErs6mNTmJXgV3y6p39Y4
- mMuI0xyUyI5rkxMvsg028w7UwpXmnjM5HWlVrMLgMOCOLZUcKZYCIyIE42YCd78WsLiq
- LmWg==
-X-Gm-Message-State: AOAM530jETO2nz69U+6PUvnWZyC+amd6812rlvt6BJ1wiZUPRL4aTQXG
- sk/jWNInVPHj0qtcbC1qyAbE5oEsRyCEag==
-X-Received: by 2002:a17:906:2404:: with SMTP id
- z4mr6221233eja.14.1614890156648; 
- Thu, 04 Mar 2021 12:35:56 -0800 (PST)
+ bh=DfX0PX9k5vslF+u0G7Geev69QRDpZEy4IHT6ko0vTfg=;
+ b=Zlf8UsG4qUpL2Q5FQCyoNvL5cL+WXA3wgbmyLXhgiPhRjA+F5Bc62owuGtkwwBLxQy
+ QBvmklKCcKrD0bZYVcNghL5cFgEXwLbC4rFsae7ZOOLxYDd+3RwzHdX/9oIDYVbIGden
+ WmsT6PjJitgWJTM6haKUIXKrkOGCRGt0ShHAQnLzWDi+qBzUAhPhs7nOwvJWR6++YTm0
+ dH7odrnmxoK5WHJVE/nUyjaReVPJQ6jDjjYwrw5KioTiQ1zepWpplb+05nWmLtoPjf4j
+ xTDDJbxdBGhultGqooweHvuApbj6bJmuVqNQBaTbcGMkQeYSAT/YP/1FQeueF6UKSC9o
+ VGCw==
+X-Gm-Message-State: AOAM531YJBMTSHJx0DFBiDPfJG8r5jEAPaWeFp/zgNY25fpiW/qFlDPo
+ bo0hp/k8nriQTGdQahwY6am4NsCl2Od9EQ==
+X-Received: by 2002:a17:906:6047:: with SMTP id
+ p7mr6322074ejj.400.1614890157344; 
+ Thu, 04 Mar 2021 12:35:57 -0800 (PST)
 Received: from tuf.home (2a02-a456-6be8-1-ebf2-7b2-6f3d-5954.fixed6.kpn.net.
  [2a02:a456:6be8:1:ebf2:7b2:6f3d:5954])
- by smtp.gmail.com with ESMTPSA id t8sm289956edv.16.2021.03.04.12.35.55
+ by smtp.gmail.com with ESMTPSA id t8sm289956edv.16.2021.03.04.12.35.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Mar 2021 12:35:56 -0800 (PST)
+ Thu, 04 Mar 2021 12:35:57 -0800 (PST)
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 3/5] tests/acceptance/boot_linux_console: change URL for
- test_arm_orangepi_bionic_20_08
-Date: Thu,  4 Mar 2021 21:35:38 +0100
-Message-Id: <20210304203540.41614-4-nieklinnenbank@gmail.com>
+Subject: [PATCH v3 4/5] tests/acceptance: update sunxi kernel from armbian to
+ 5.10.16
+Date: Thu,  4 Mar 2021 21:35:39 +0100
+Message-Id: <20210304203540.41614-5-nieklinnenbank@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210304203540.41614-1-nieklinnenbank@gmail.com>
 References: <20210304203540.41614-1-nieklinnenbank@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,32 +122,135 @@ Cc: peter.maydell@linaro.org, thuth@redhat.com, berrange@redhat.com,
  Pavel.Dovgaluk@ispras.ru, crosa@redhat.com, philmd@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /T6BLibjTxig
+X-TUID: Qkz2h6YjfRI0
 
-Update the download URL of the Armbian 20.08 Bionic image for
-test_arm_orangepi_bionic_20_08 of the orangepi-pc machine.
+The linux kernel 4.20.7 binary for sunxi has been removed from apt.armbian.com:
 
-The archive.armbian.com URL contains more images and should keep stable
-for a longer period of time than dl.armbian.com.
+  $ ARMBIAN_ARTIFACTS_CACHED=yes AVOCADO_ALLOW_LARGE_STORAGE=yes avocado --show=app,console run -t machine:orangepi-pc tests/acceptance/boot_linux_console.py
+  Fetching asset from tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
+  ...
+  (1/6) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi:
+    CANCEL: Missing asset https://apt.armbian.com/pool/main/l/linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb (0.55 s)
+
+This commit updates the sunxi kernel to 5.10.16 for the acceptance
+tests of the orangepi-pc and cubieboard machines.
 
 Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 ---
- tests/acceptance/boot_linux_console.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/acceptance/boot_linux_console.py | 40 +++++++++++++-------------
+ tests/acceptance/replay_kernel.py      |  8 +++---
+ 2 files changed, 24 insertions(+), 24 deletions(-)
 
 diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 9fadea9958..4a7a6830ca 100644
+index 4a7a6830ca..04a8b23352 100644
 --- a/tests/acceptance/boot_linux_console.py
 +++ b/tests/acceptance/boot_linux_console.py
-@@ -816,7 +816,7 @@ def test_arm_orangepi_bionic_20_08(self):
-         # to 1036 MiB, but the underlying filesystem is 1552 MiB...
-         # As we expand it to 2 GiB we are safe.
+@@ -515,12 +515,12 @@ def test_arm_cubieboard_initrd(self):
+         :avocado: tags=machine:cubieboard
+         """
+         deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+-        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++                   'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+-                                            '/boot/vmlinuz-4.20.7-sunxi')
+-        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = '/usr/lib/linux-image-current-sunxi/sun4i-a10-cubieboard.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
+         initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
+                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+@@ -557,12 +557,12 @@ def test_arm_cubieboard_sata(self):
+         :avocado: tags=machine:cubieboard
+         """
+         deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+-        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++                   'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+-                                            '/boot/vmlinuz-4.20.7-sunxi')
+-        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = '/usr/lib/linux-image-current-sunxi/sun4i-a10-cubieboard.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
+         rootfs_url = ('https://github.com/groeck/linux-build-test/raw/'
+                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+@@ -686,12 +686,12 @@ def test_arm_orangepi(self):
+         :avocado: tags=machine:orangepi-pc
+         """
+         deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+-        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++                   'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+-                                            '/boot/vmlinuz-4.20.7-sunxi')
+-        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = '/usr/lib/linux-image-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
  
--        image_url = ('https://dl.armbian.com/orangepipc/archive/'
-+        image_url = ('https://archive.armbian.com/orangepipc/archive/'
-                      'Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz')
-         image_hash = ('b4d6775f5673486329e45a0586bf06b6'
-                       'dbe792199fd182ac6b9c7bb6c7d3e6dd')
+         self.vm.set_console()
+@@ -713,12 +713,12 @@ def test_arm_orangepi_initrd(self):
+         :avocado: tags=machine:orangepi-pc
+         """
+         deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+-        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++                   'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+-                                            '/boot/vmlinuz-4.20.7-sunxi')
+-        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = '/usr/lib/linux-image-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
+         initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
+                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+@@ -758,12 +758,12 @@ def test_arm_orangepi_sd(self):
+         :avocado: tags=device:sd
+         """
+         deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+-        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++                   'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+-                                            '/boot/vmlinuz-4.20.7-sunxi')
+-        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = '/usr/lib/linux-image-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
+         rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
+                       'kci-2019.02/armel/base/rootfs.ext2.xz')
+diff --git a/tests/acceptance/replay_kernel.py b/tests/acceptance/replay_kernel.py
+index c1cb862468..8c68caae31 100644
+--- a/tests/acceptance/replay_kernel.py
++++ b/tests/acceptance/replay_kernel.py
+@@ -185,12 +185,12 @@ def test_arm_cubieboard_initrd(self):
+         :avocado: tags=machine:cubieboard
+         """
+         deb_url = ('https://apt.armbian.com/pool/main/l/'
+-                   'linux-4.20.7-sunxi/linux-image-dev-sunxi_5.75_armhf.deb')
+-        deb_hash = '1334c29c44d984ffa05ed10de8c3361f33d78315'
++                   'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
+         kernel_path = self.extract_from_deb(deb_path,
+-                                            '/boot/vmlinuz-4.20.7-sunxi')
+-        dtb_path = '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = '/usr/lib/linux-image-current-sunxi/sun4i-a10-cubieboard.dtb'
+         dtb_path = self.extract_from_deb(deb_path, dtb_path)
+         initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
+                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
 -- 
 2.25.1
 

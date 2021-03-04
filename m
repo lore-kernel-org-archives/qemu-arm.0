@@ -1,104 +1,116 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6129902lfg;
-        Thu, 4 Mar 2021 02:56:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxetjm23cgevNEf4sIDvD7i4TsfFP6YUFq7rAa4xobgUWn3LJEhR54AIJPZDKlqC1mF3ksL
-X-Received: by 2002:a25:bfc1:: with SMTP id q1mr5003991ybm.89.1614855384374;
-        Thu, 04 Mar 2021 02:56:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614855384; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6544748lfg;
+        Thu, 4 Mar 2021 12:10:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyq5H6D8c6KO+v8Qyd8tC+aGz2M4ciKTeDNp4GzAZUZf5ABUNqzsxTNUPGgbT50Syxgwq2e
+X-Received: by 2002:a05:6602:2486:: with SMTP id g6mr4892253ioe.134.1614888648860;
+        Thu, 04 Mar 2021 12:10:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614888648; cv=none;
         d=google.com; s=arc-20160816;
-        b=TABJ/VJC0kH75NXRxtBXY5HnqcPXw6GbV1KZpN1cyPM2y0yHY0GaSgqJOtk1up6GyP
-         FXrPu1xIA964qUsiuz2x8qtp5a7TiaK7WJw2MshNvskMUj9N8Xn1RGSjbCKPCECMm10c
-         uAqcVadx0/8LfOyHRbsYRE9F6Yj5tPQ8Rzsz2SZFtUZmtFpJv7+MsDOQf3nT3MJDavma
-         a9KoBFQahxGU8VSqMtIGlG/ai6brO/sfVv6Wq+K20AliBSV3cYuJsKdHlFsCjuMkvj9y
-         6m18vWf+PnvjzAe6vwUw7ntMUNdz7XZ+6IjMOmPWHqO7D3mDM3GgTwdOKiVN6I/UAbZy
-         1elQ==
+        b=eQlwO8bfzeHk2pqbL6mtnKE6+CnquTl4dXZ57Bvv3ngZxc8ZxpzIh4cVvW6cpo49JY
+         4+htalSpA7EzykhdxuGC0QsGidSfRccaKm9II4YKR+zeqXDpsfmZR2K0ct330fdTkxe0
+         4L7ThZ3JVyGTKPAilMyx/O/lSWAA9GEGe4FtGhKqiXJVhF69A22/RbM7F+rTGllPHpVa
+         VzxIEsI4XXYDQSqEyiFghwWhUNQzbRGP6CWL0SIKh8880ETejLG5V31bcmGhNdpvNs5F
+         GOQkLCNaSkCKDy3A1EHjdeKTX8pmTBjvUYbyVXf618DiJCx+Tt6QJODNvMCCA+DfvPiu
+         cH+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=h1oqOv9ujfdg7iaVJ+d6rkkdDrpGXlQd9pg+qtORuCk=;
-        b=eR74I6ZItqZFhIHHgep1EmLuT1ZUgyOE1TxYdOVMSUVu+iO40+bT/aUv4k2lNqMZRi
-         XY8e9DCA0Ww3gogQZBkijUGFh1g84b47BWcd1+5gcmKLRMCMnkHmSStUoprFRl5wbWqW
-         zFzpVmDA5Y377OLLAvwaJdMfDlFTh0LGfwL7Je2+UhK3LQ+vQ5BuLTjWroWX6JqraBio
-         HIbi0PKZQUDxclIr5zJ1XnPYdCc0GGl54LDBQujtTAPfOvYFzboHX8tQm7F8evqkT1Cc
-         L6Yqbiiu5HOHgASYSRXa8SW1nG2SAB9/1Mu0vOdRrMCY+IQ6SXnTcjaVEeGLfs/bZvyS
-         m/+Q==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=1nXxooLlUkWW/fkXDaSCSNeMJez5btAAMg7QWFUhyyA=;
+        b=vQl+ZBnA5ypdoCa3wuV1lTMmK0fAOgZg/BVNzSRKv26Qb9DsV06aRm53Bm7Jr77OTH
+         DyJWPX5eGemd7xFRnybHESzLzJMsaa79ONNcpEHq7/9s1o0bMMblYUUnscBjBjB4t7zb
+         zLVTYr14USMqAodKw3xF+4EzlYxHUb1ZiTnZpZxbGCUAx8dS1sdJ6dzxd4HsL+yW0t0i
+         qy7GmlOMWfSOtTdE482A3Q143FbcUDrwU0JYiMXg0DbMm9hLBv2xKn0tKEaELh21SnuC
+         lNH+aMACGBTZaid47psO28qL9aL2//D82PccCazkg8a5IPYU3Qe6Ygjvet1Kh5hjr1Iw
+         /ugw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=evPenxBO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kmBswWYZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g27si32580829ybj.89.2021.03.04.02.56.24
+        by mx.google.com with ESMTPS id n26si311671jam.115.2021.03.04.12.10.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 02:56:24 -0800 (PST)
+        Thu, 04 Mar 2021 12:10:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=evPenxBO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kmBswWYZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38518 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHleZ-0000sJ-KR
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 05:56:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58196)
+	id 1lHuJ5-0002oE-C6
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 15:10:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lHleO-0000oB-2s
- for qemu-arm@nongnu.org; Thu, 04 Mar 2021 05:56:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46239)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lHleL-0002zB-N9
- for qemu-arm@nongnu.org; Thu, 04 Mar 2021 05:56:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614855369;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=h1oqOv9ujfdg7iaVJ+d6rkkdDrpGXlQd9pg+qtORuCk=;
- b=evPenxBO3ER/yzkbsG3bxdMCLX8/Y0zJwv9tR08R/rWoOBbhyU79lDvzx+1rzrsKCIC0CC
- 1vzi5UWmtOrbWB4k5FzFg+RMPpmzyCzB4HAv4NuyYLDb8SdtuMF0G4CtwAgMCQ6qrtFpWx
- 6TY0vH9WQYgqL7fzothY+qQ9u70+P1Y=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-411-PZ_tFZ29Msu1VHez9m2Kjw-1; Thu, 04 Mar 2021 05:56:07 -0500
-X-MC-Unique: PZ_tFZ29Msu1VHez9m2Kjw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF62A80432A;
- Thu,  4 Mar 2021 10:56:05 +0000 (UTC)
-Received: from t480s.redhat.com (ovpn-113-171.ams2.redhat.com [10.36.113.171])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 96EA55D720;
- Thu,  4 Mar 2021 10:56:03 +0000 (UTC)
-From: David Hildenbrand <david@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 1/4] acpi: Set proper maximum size for "etc/table-loader"
- blob
-Date: Thu,  4 Mar 2021 11:55:51 +0100
-Message-Id: <20210304105554.121674-2-david@redhat.com>
-In-Reply-To: <20210304105554.121674-1-david@redhat.com>
-References: <20210304105554.121674-1-david@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lHuIo-0002gG-Ql
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 15:10:31 -0500
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033]:37337)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lHuIm-0002mi-W6
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 15:10:30 -0500
+Received: by mail-pj1-x1033.google.com with SMTP id bj7so534365pjb.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Mar 2021 12:10:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=1nXxooLlUkWW/fkXDaSCSNeMJez5btAAMg7QWFUhyyA=;
+ b=kmBswWYZn+UHUPbupFPUKznwnn7kl1z2UmwQlSkXy0zNV79ztOhakNAj8HvjhAXDLE
+ eCisSdUGx6sCMwDKidNyXl+bZJMDav433eIHtBttdfDU/C6I7NS1GJbfjvhB3QRUiTC3
+ xrS3Mq9cIV4SQyrD//9HDY34jySKrbHfoaGCIz8V24Q6VvIA/2uypJfw4JR436Fcx9uz
+ ZDEoMQivLVpiflQ+jovlbBED3M4ppJfu2XrNCtzBWCONM8mWB+F9jsfGGXzNuV552khp
+ 164F9bF0tN4/bm6DZODZKE7nQNilfgN3cxQCx1KFeR1SzcdIuPrAbx7y6IfYEdfRRvKW
+ pdIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1nXxooLlUkWW/fkXDaSCSNeMJez5btAAMg7QWFUhyyA=;
+ b=fB9TqhraocpdAXf68ReXfsWyzDVAKw2ATQTzaCHIcapes+Ry5RPDGIxD8t4f+o3CGs
+ IYil10Jh/iOrqDF4vNkuBLYidQvrLsrRD+IzrQdohfdulam7kl+BmSky30vQURag3uSo
+ YQ/RNP3YElFDsfizt2M7rasnZjyLp89tEcO/rhEdTG1iK3eq6lyBka3uOmUrHGoE0+F4
+ f+R/EGlUT2Ac3OqHsHU9tNM8JkA30R3vX8ZGjLgghNQ8fRP/V9wzuMSjSBAHKZTCBcsO
+ z0xfmKDTDEHQe1+WmaRqPxRBQIqSoateDtaq3DGRO62ngMlmbyFbzPzR+//ixZJsvetR
+ a7Vg==
+X-Gm-Message-State: AOAM531xXvBZNe5loNDezSVMd5/ahu27eOW/3mic36qq1v1y6jZY+zpy
+ 6ThRTVluKDU461oNYpot8x6csQ==
+X-Received: by 2002:a17:902:8690:b029:e3:91f9:eaeb with SMTP id
+ g16-20020a1709028690b02900e391f9eaebmr5506867plo.34.1614888627394; 
+ Thu, 04 Mar 2021 12:10:27 -0800 (PST)
+Received: from [192.168.1.11] ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id z5sm237663pfk.21.2021.03.04.12.10.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 04 Mar 2021 12:10:26 -0800 (PST)
+Subject: Re: [PATCH 23/44] hw/arm/armsse: Add framework for data-driven device
+ placement
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210219144617.4782-1-peter.maydell@linaro.org>
+ <20210219144617.4782-24-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <60943f76-29ea-677c-e8b3-ce275cff3c9e@linaro.org>
+Date: Thu, 4 Mar 2021 12:10:24 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+In-Reply-To: <20210219144617.4782-24-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,161 +123,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Alistair Francis <alistair.francis@xilinx.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z7gohxUC0gDZ
+X-TUID: duc1s1NDYRWL
 
-The resizeable memory region / RAMBlock that is created for the cmd blob
-has a maximum size of whole host pages (e.g., 4k), because RAMBlocks
-work on full host pages. In addition, in i386 ACPI code:
-  acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_ALIGN_SIZE);
-makes sure to align to multiples of 4k, padding with 0.
+On 2/19/21 6:45 AM, Peter Maydell wrote:
+> The SSE-300 is mostly the same as the SSE-200, but it has moved some
+> of the devices in the memory map and uses different device types in
+> some cases.  To accommodate this, add a framework where the placement
+> and wiring of some devices can be specified in a data table.
+> 
+> This commit adds the framework for this data-driven device placement,
+> and makes the CMSDK APB timer devices use it.  Subsequent commits
+> will convert the other devices which differ between SSE-200 and
+> SSE-300.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
 
-For example, if our cmd_blob is created with a size of 2k, the maximum
-size is 4k - we cannot grow beyond that. Growing might be required
-due to guest action when rebuilding the tables, but also on incoming
-migration.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-This automatic generation of the maximum size used to be sufficient,
-however, there are cases where we cross host pages now when growing at
-runtime: we exceed the maximum size of the RAMBlock and can crash QEMU when
-trying to resize the resizeable memory region / RAMBlock:
-  $ build/qemu-system-x86_64 --enable-kvm \
-      -machine q35,nvdimm=on \
-      -smp 1 \
-      -cpu host \
-      -m size=2G,slots=8,maxmem=4G \
-      -object memory-backend-file,id=mem0,mem-path=/tmp/nvdimm,size=256M \
-      -device nvdimm,label-size=131072,memdev=mem0,id=nvdimm0,slot=1 \
-      -nodefaults \
-      -device vmgenid \
-      -device intel-iommu
-
-Results in:
-  Unexpected error in qemu_ram_resize() at ../softmmu/physmem.c:1850:
-  qemu-system-x86_64: Size too large: /rom@etc/table-loader:
-    0x2000 > 0x1000: Invalid argument
-
-In this configuration, we consume exactly 4k (32 entries, 128 bytes each)
-when creating the VM. However, once the guest boots up and maps the MCFG,
-we also create the MCFG table and end up consuming 2 additional entries
-(pointer + checksum) -- which is where we try resizing the memory region
-/ RAMBlock, however, the maximum size does not allow for it.
-
-Currently, we get the following maximum sizes for our different
-mutable tables based on behavior of resizeable RAMBlock:
-
-  hw       table                max_size
-  -------  ---------------------------------------------------------
-
-  virt     "etc/acpi/tables"    ACPI_BUILD_TABLE_MAX_SIZE (0x200000)
-  virt     "etc/table-loader"   HOST_PAGE_ALIGN(initial_size)
-  virt     "etc/acpi/rsdp"      HOST_PAGE_ALIGN(initial_size)
-
-  i386     "etc/acpi/tables"    ACPI_BUILD_TABLE_MAX_SIZE (0x200000)
-  i386     "etc/table-loader"   HOST_PAGE_ALIGN(initial_size)
-  i386     "etc/acpi/rsdp"      HOST_PAGE_ALIGN(initial_size)
-
-  microvm  "etc/acpi/tables"    ACPI_BUILD_TABLE_MAX_SIZE (0x200000)
-  microvm  "etc/table-loader"   HOST_PAGE_ALIGN(initial_size)
-  microvm  "etc/acpi/rsdp"      HOST_PAGE_ALIGN(initial_size)
-
-Let's set the maximum table size for "etc/table-loader" to 64k, so we
-can properly grow at runtime, which should be good enough for the future.
-
-Migration is not concerned with the maximum size of a RAMBlock, only
-with the used size - so existing setups are not affected. Of course, we
-cannot migrate a VM that would have crash when started on older QEMU from
-new QEMU to older QEMU without failing early on the destination when
-synchronizing the RAM state:
-    qemu-system-x86_64: Size too large: /rom@etc/table-loader: 0x2000 > 0x1000: Invalid argument
-    qemu-system-x86_64: error while loading state for instance 0x0 of device 'ram'
-    qemu-system-x86_64: load of migration failed: Invalid argument
-
-We'll refactor the code next, to make sure we get rid of this implicit
-behavior for "etc/acpi/rsdp" as well and to make the code easier to
-grasp.
-
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Cc: Alistair Francis <alistair.francis@xilinx.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Laszlo Ersek <lersek@redhat.com>
-Signed-off-by: David Hildenbrand <david@redhat.com>
----
- hw/arm/virt-acpi-build.c    | 3 ++-
- hw/i386/acpi-build.c        | 3 ++-
- hw/i386/acpi-microvm.c      | 2 +-
- include/hw/acpi/aml-build.h | 1 +
- 4 files changed, 6 insertions(+), 3 deletions(-)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index f9c9df916c..a91550de6f 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -865,7 +865,8 @@ void virt_acpi_setup(VirtMachineState *vms)
- 
-     build_state->linker_mr =
-         acpi_add_rom_blob(virt_acpi_build_update, build_state,
--                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
-+                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
-+                          ACPI_BUILD_LOADER_MAX_SIZE);
- 
-     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-                     acpi_data_len(tables.tcpalog));
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 31a5f6f4a5..a75138ea5a 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2524,7 +2524,8 @@ void acpi_setup(void)
- 
-     build_state->linker_mr =
-         acpi_add_rom_blob(acpi_build_update, build_state,
--                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE, 0);
-+                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
-+                          ACPI_BUILD_LOADER_MAX_SIZE);
- 
-     fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
-                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-index 54b3af478a..01f1945ac1 100644
---- a/hw/i386/acpi-microvm.c
-+++ b/hw/i386/acpi-microvm.c
-@@ -255,7 +255,7 @@ void acpi_setup_microvm(MicrovmMachineState *mms)
-                       ACPI_BUILD_TABLE_MAX_SIZE);
-     acpi_add_rom_blob(acpi_build_no_update, NULL,
-                       tables.linker->cmd_blob,
--                      "etc/table-loader", 0);
-+                      "etc/table-loader", ACPI_BUILD_LOADER_MAX_SIZE);
-     acpi_add_rom_blob(acpi_build_no_update, NULL,
-                       tables.rsdp,
-                       ACPI_BUILD_RSDP_FILE, 0);
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index 380d3e3924..a22c6a4c86 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -6,6 +6,7 @@
- 
- /* Reserve RAM space for tables: add another order of magnitude. */
- #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
-+#define ACPI_BUILD_LOADER_MAX_SIZE        0x10000
- 
- #define ACPI_BUILD_APPNAME6 "BOCHS "
- #define ACPI_BUILD_APPNAME8 "BXPC    "
--- 
-2.29.2
-
+r~

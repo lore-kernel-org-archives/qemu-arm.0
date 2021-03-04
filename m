@@ -1,90 +1,92 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6056946lfg;
-        Thu, 4 Mar 2021 00:49:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwMrzkCr2irzXKE7iClvpm+xfck6vzOPSqJUylmsz4YNCoWP4N+YCA2z25ocZQUCZut05HT
-X-Received: by 2002:a25:730b:: with SMTP id o11mr4523046ybc.415.1614847786069;
-        Thu, 04 Mar 2021 00:49:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614847786; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6074001lfg;
+        Thu, 4 Mar 2021 01:18:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyAxNn81CbUeS6H32CdbqYewzBJmy/3knqHdZaHLDxOEXH7xwFFBOXV5p/PlQ1bIPNZqC7t
+X-Received: by 2002:a25:dfcc:: with SMTP id w195mr5185404ybg.210.1614849530988;
+        Thu, 04 Mar 2021 01:18:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614849530; cv=none;
         d=google.com; s=arc-20160816;
-        b=tY5uf/6JShDKVemVbP0br1po6VOAKf+3Rx8LR+GxDbheN1pNCEg/wicocbxV+mxClH
-         K0ODLPt7SMVOzXX3Q2BdBbP8JIZAV7UEwVcHxujWifriJSPQ9+698V6tQDbsj597Eyyh
-         uk4iakI9takMHp13YEBbG/Pe5WwXviwSqhpYwUtuRQmtu7WckpM825PvrdPim552DDsA
-         AFrqkwc2KxO/IxLghEZcKz7PYNmj1hY8AxT/u8PTlUhd/JfX35IiEpbyv7IPcffg8aMd
-         TVSqcbc6Zyv6DA52yVAtTobPxkYGpG5+tNP4GIuafSTGHXJ7+NyMIxj4urGx0B8iUEI9
-         VQXQ==
+        b=it/JlWjlCE95M3/dLeSKCwQzrYvwbWZ08g49tAwEVmRjVLgeHjRfeSLNr+M+a4LJ3c
+         g5/3w+vfJm0anwioiP/vRtzrtl6UOSFs5laCiYOfsiT0nxzAzVKttbH1w4DpZUp+vfuf
+         CPy/EOQ9bYjaPKJL5mJlK/WqO+SQBc9Lddk4g4MgWgFBk60jPxufZK2aBPNMTai1TX8v
+         yPNYCJCX9bpjTh/y1ZcPiVagNW+uYC4Sjheky/gtJQTeqSQa7Sg0LptButtEgIlbUA6L
+         Uo5zo9kyPXi+tMg6GuhgrNRijEvH4NuhkCaDqQ66jxJ/EwOELa0UTgOF4c67Xnl8EBVQ
+         2AMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=tttKh2R+i7KDrlcZxljypNR3xy9+rFZz5/tOUFtOORM=;
-        b=yNnK625rLac/FbxYV4I5ErKuQYAJ8cSvYcDX65OpYt2vlbHVuGOlTWanUiqOpDwYfr
-         p/0rkluda2kaA+UzwTyK7eUAqONhO53lqyMBXS/ZvfmmhXW+OWOWISHi/Vl3aOwhUFlm
-         hxayj44ZTG+Z0lsOt5cKkvp2ca2bh+YOD5fg0w+F7hc3j5UIiR31mkOGyATgRqUGRZqu
-         tAeIZBrOebWgNNG7cM26atH7GDhcDIcnI7YMe/lZzGUIrNWYDmJDM2kvHWDATkUInvY+
-         5EKmpxm38HHnJvxxppOtcAZmLgl4Q1EmazmSNHPnqBZnxQ51ecuET66BLHObhScNQy8a
-         uEdg==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=KXjxb8mt0fVxADiNkWu9FtZM9wFjuAIce3/WICNVQ1Y=;
+        b=fEymBSWakJTJoCm1XZe0oaqOZmObXZQwsWWoGLmwTOGUwCZxc76JUDaSbzaMc8/kQd
+         ClqdABEezCJ7jO+x4MxMPXE0/eSmY7SEnKVTGnq7r8dQBPYjmcGmJca+6EKdI8l/KegA
+         e/zutizECgPvSK90jLBLo8DpbCEgcse4A7FXK5sTf+xWcbVpVRtf4E8YVjf7kmONjSOw
+         1gn+f5hsW6qRwS9Ge3n+6vjKSTZAnBPKM+PBsv/2iiCgAouCRqpLF8n6zcaliAsAXrYH
+         EZOmGjdLXbuu30X/0fvLd3UAD/2rhgSIDmG/nplmyNayhLY4KI+VIEo+ETGyzyBgN3+t
+         u9IQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=fLUTuXIT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4si30583187ybk.138.2021.03.04.00.49.45
+        by mx.google.com with ESMTPS id x17si26903149ybl.290.2021.03.04.01.18.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 00:49:46 -0800 (PST)
+        Thu, 04 Mar 2021 01:18:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=fLUTuXIT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54704 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHjg1-0006mU-AS
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 03:49:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58946)
+	id 1lHk8A-0007PE-Bk
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 04:18:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1lHjfY-0006lZ-Cy; Thu, 04 Mar 2021 03:49:16 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:47356)
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lHk81-0007P4-DT; Thu, 04 Mar 2021 04:18:41 -0500
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2194)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1lHjfT-0003Cj-Vi; Thu, 04 Mar 2021 03:49:16 -0500
-Received: from [192.168.61.100] (lfbn-lyo-1-447-149.w2-7.abo.wanadoo.fr
- [2.7.4.149])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 7CD7A20771;
- Thu,  4 Mar 2021 08:49:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1614847750;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tttKh2R+i7KDrlcZxljypNR3xy9+rFZz5/tOUFtOORM=;
- b=fLUTuXIT2IqJ8sXynJE3D++P/mLe8um3CH9uR/TmDiNkfDnSI8tqGXi5vI6PvTamg6Udjz
- MkLjxWET29z1Zlj/dooEBCr+0nQVCncx7L/dJrBvs+mXBReknKYi/fujFKpj513qyoSmK7
- Af1aM87/hFvdOiZDl+HvwaffioKZ1OY=
-Subject: Re: [PATCH v1 2/2] hw/arm: versal: Add support for the XRAMs
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-References: <20210302110955.1810487-1-edgar.iglesias@gmail.com>
- <20210302110955.1810487-3-edgar.iglesias@gmail.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <4f9c2710-b572-5792-e270-38e03c6ae904@greensocs.com>
-Date: Thu, 4 Mar 2021 09:49:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ (Exim 4.90_1) (envelope-from <jiangkunkun@huawei.com>)
+ id 1lHk7y-0000R5-7z; Thu, 04 Mar 2021 04:18:40 -0500
+Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.53])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4Drlbp4SLgz5Rhx;
+ Thu,  4 Mar 2021 17:16:22 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ DGGEMM402-HUB.china.huawei.com (10.3.20.210) with Microsoft SMTP Server (TLS)
+ id 14.3.498.0; Thu, 4 Mar 2021 17:18:31 +0800
+Received: from [10.174.185.210] (10.174.185.210) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2106.2; Thu, 4 Mar 2021 17:18:31 +0800
+Subject: Re: [RFC v8 03/28] header update against 5.11-rc2 and IOMMU/VFIO
+ nested stage APIs
+To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+ <mst@redhat.com>, <alex.williamson@redhat.com>,
+ <jacob.jun.pan@linux.intel.com>, <yi.l.liu@intel.com>
+References: <20210225105233.650545-1-eric.auger@redhat.com>
+ <20210225105233.650545-4-eric.auger@redhat.com>
+From: Kunkun Jiang <jiangkunkun@huawei.com>
+Message-ID: <86012513-a748-1d1f-a6f7-a2faafc3119e@huawei.com>
+Date: Thu, 4 Mar 2021 17:18:17 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210302110955.1810487-3-edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+In-Reply-To: <20210225105233.650545-4-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=5.135.226.135;
- envelope-from=luc.michel@greensocs.com; helo=beetle.greensocs.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+X-Originating-IP: [10.174.185.210]
+X-ClientProxiedBy: dggeme706-chm.china.huawei.com (10.1.199.102) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.189;
+ envelope-from=jiangkunkun@huawei.com; helo=szxga03-in.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,160 +99,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- joe.komlodi@xilinx.com, sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
- alistair@alistair23.me, richard.henderson@linaro.org,
- francisco.iglesias@xilinx.com, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org, philmd@redhat.com
+Cc: jean-philippe@linaro.org, tnowicki@marvell.com, maz@kernel.org,
+ Keqian Zhu <zhukeqian1@huawei.com>, zhangfei.gao@foxmail.com,
+ peterx@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ wanghaibin.wang@huawei.com, yuzenghui@huawei.com, zhangfei.gao@linaro.org,
+ will@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m2Dja5katwkV
+X-TUID: wXFfxr0c48Cx
 
-On 3/2/21 12:09 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> 
-> Connect the support for the Versal Accelerator RAMs (XRAMs).
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-
+On 2021/2/25 18:52, Eric Auger wrote:
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->   docs/system/arm/xlnx-versal-virt.rst |  1 +
->   include/hw/arm/xlnx-versal.h         | 13 ++++++++++
->   hw/arm/xlnx-versal.c                 | 36 ++++++++++++++++++++++++++++
->   3 files changed, 50 insertions(+)
-> 
-> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-> index 2602d0f995..27f73500d9 100644
-> --- a/docs/system/arm/xlnx-versal-virt.rst
-> +++ b/docs/system/arm/xlnx-versal-virt.rst
-> @@ -30,6 +30,7 @@ Implemented devices:
->   - 8 ADMA (Xilinx zDMA) channels
->   - 2 SD Controllers
->   - OCM (256KB of On Chip Memory)
-> +- XRAM (4MB of on chip Accelerator RAM)
->   - DDR memory
+>   .../infiniband/hw/vmw_pvrdma/pvrdma_ring.h    |  14 +-
+>   linux-headers/linux/iommu.h                   | 395 ++++++++++++++++++
+>   linux-headers/linux/vfio.h                    | 141 ++++++-
+>   3 files changed, 542 insertions(+), 8 deletions(-)
+>   create mode 100644 linux-headers/linux/iommu.h
+>
+> diff --git a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+> index 7b4062a1a1..acd4c8346d 100644
+> --- a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+> +++ b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+> @@ -68,7 +68,7 @@ static inline int pvrdma_idx_valid(uint32_t idx, uint32_t max_elems)
 >   
->   QEMU does not yet model any other devices, including the PL and the AI Engine.
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index 2b76885afd..22a8fa5d11 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -14,6 +14,7 @@
+>   static inline int32_t pvrdma_idx(int *var, uint32_t max_elems)
+>   {
+> -	const unsigned int idx = qatomic_read(var);
+> +	const unsigned int idx = atomic_read(var);
 >   
->   #include "hw/sysbus.h"
->   #include "hw/arm/boot.h"
-> +#include "hw/or-irq.h"
->   #include "hw/sd/sdhci.h"
->   #include "hw/intc/arm_gicv3.h"
->   #include "hw/char/pl011.h"
-> @@ -22,6 +23,7 @@
->   #include "hw/rtc/xlnx-zynqmp-rtc.h"
->   #include "qom/object.h"
->   #include "hw/usb/xlnx-usb-subsystem.h"
-> +#include "hw/misc/xlnx-versal-xramc.h"
+>   	if (pvrdma_idx_valid(idx, max_elems))
+>   		return idx & (max_elems - 1);
+> @@ -77,17 +77,17 @@ static inline int32_t pvrdma_idx(int *var, uint32_t max_elems)
 >   
->   #define TYPE_XLNX_VERSAL "xlnx-versal"
->   OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
-> @@ -31,6 +33,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
->   #define XLNX_VERSAL_NR_GEMS    2
->   #define XLNX_VERSAL_NR_ADMAS   8
->   #define XLNX_VERSAL_NR_SDS     2
-> +#define XLNX_VERSAL_NR_XRAM    4
->   #define XLNX_VERSAL_NR_IRQS    192
+>   static inline void pvrdma_idx_ring_inc(int *var, uint32_t max_elems)
+>   {
+> -	uint32_t idx = qatomic_read(var) + 1;	/* Increment. */
+> +	uint32_t idx = atomic_read(var) + 1;	/* Increment. */
 >   
->   struct Versal {
-> @@ -62,6 +65,11 @@ struct Versal {
->               XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
->               VersalUsb2 usb;
->           } iou;
-> +
-> +        struct {
-> +            qemu_or_irq irq_orgate;
-> +            XlnxXramCtrl ctrl[XLNX_VERSAL_NR_XRAM];
-> +        } xram;
->       } lpd;
->   
->       /* The Platform Management Controller subsystem.  */
-> @@ -96,6 +104,7 @@ struct Versal {
->   #define VERSAL_GEM1_IRQ_0          58
->   #define VERSAL_GEM1_WAKE_IRQ_0     59
->   #define VERSAL_ADMA_IRQ_0          60
-> +#define VERSAL_XRAM_IRQ_0          79
->   #define VERSAL_RTC_APB_ERR_IRQ     121
->   #define VERSAL_SD0_IRQ_0           126
->   #define VERSAL_RTC_ALARM_IRQ       142
-> @@ -128,6 +137,10 @@ struct Versal {
->   #define MM_OCM                      0xfffc0000U
->   #define MM_OCM_SIZE                 0x40000
->   
-> +#define MM_XRAM                     0xfe800000
-> +#define MM_XRAMC                    0xff8e0000
-> +#define MM_XRAMC_SIZE               0x10000
-> +
->   #define MM_USB2_CTRL_REGS           0xFF9D0000
->   #define MM_USB2_CTRL_REGS_SIZE      0x10000
->   
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index 628e77ef66..79609692e4 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -10,6 +10,7 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->   #include "qapi/error.h"
->   #include "qemu/log.h"
->   #include "qemu/module.h"
-> @@ -278,6 +279,40 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
->       sysbus_connect_irq(sbd, 1, pic[VERSAL_RTC_APB_ERR_IRQ]);
+>   	idx &= (max_elems << 1) - 1;		/* Modulo size, flip gen. */
+> -	qatomic_set(var, idx);
+> +	atomic_set(var, idx);
 >   }
 >   
-> +static void versal_create_xrams(Versal *s, qemu_irq *pic)
-> +{
-> +    int nr_xrams = ARRAY_SIZE(s->lpd.xram.ctrl);
-> +    DeviceState *orgate;
-> +    int i;
-> +
-> +    /* XRAM IRQs get ORed into a single line.  */
-> +    object_initialize_child(OBJECT(s), "xram-irq-orgate",
-> +                            &s->lpd.xram.irq_orgate, TYPE_OR_IRQ);
-> +    orgate = DEVICE(&s->lpd.xram.irq_orgate);
-> +    object_property_set_int(OBJECT(orgate),
-> +                            "num-lines", nr_xrams, &error_fatal);
-> +    qdev_realize(orgate, NULL, &error_fatal);
-> +    qdev_connect_gpio_out(orgate, 0, pic[VERSAL_XRAM_IRQ_0]);
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.xram.ctrl); i++) {
-> +        SysBusDevice *sbd;
-> +        MemoryRegion *mr;
-> +
-> +        object_initialize_child(OBJECT(s), "xram[*]", &s->lpd.xram.ctrl[i],
-> +                                TYPE_XLNX_XRAM_CTRL);
-> +        sbd = SYS_BUS_DEVICE(&s->lpd.xram.ctrl[i]);
-> +        sysbus_realize(sbd, &error_fatal);
-> +
-> +        mr = sysbus_mmio_get_region(sbd, 0);
-> +        memory_region_add_subregion(&s->mr_ps,
-> +                                    MM_XRAMC + i * MM_XRAMC_SIZE, mr);
-> +        mr = sysbus_mmio_get_region(sbd, 1);
-> +        memory_region_add_subregion(&s->mr_ps, MM_XRAM + i * MiB, mr);
-> +
-> +        sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(orgate, i));
-> +    }
-> +}
-> +
->   /* This takes the board allocated linear DDR memory and creates aliases
->    * for each split DDR range/aperture on the Versal address map.
->    */
-> @@ -363,6 +398,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
->       versal_create_admas(s, pic);
->       versal_create_sds(s, pic);
->       versal_create_rtc(s, pic);
-> +    versal_create_xrams(s, pic);
->       versal_map_ddr(s);
->       versal_unimp(s);
+>   static inline int32_t pvrdma_idx_ring_has_space(const struct pvrdma_ring *r,
+>   					      uint32_t max_elems, uint32_t *out_tail)
+>   {
+> -	const uint32_t tail = qatomic_read(&r->prod_tail);
+> -	const uint32_t head = qatomic_read(&r->cons_head);
+> +	const uint32_t tail = atomic_read(&r->prod_tail);
+> +	const uint32_t head = atomic_read(&r->cons_head);
 >   
-> 
+>   	if (pvrdma_idx_valid(tail, max_elems) &&
+>   	    pvrdma_idx_valid(head, max_elems)) {
+> @@ -100,8 +100,8 @@ static inline int32_t pvrdma_idx_ring_has_space(const struct pvrdma_ring *r,
+>   static inline int32_t pvrdma_idx_ring_has_data(const struct pvrdma_ring *r,
+>   					     uint32_t max_elems, uint32_t *out_head)
+>   {
+> -	const uint32_t tail = qatomic_read(&r->prod_tail);
+> -	const uint32_t head = qatomic_read(&r->cons_head);
+> +	const uint32_t tail = atomic_read(&r->prod_tail);
+> +	const uint32_t head = atomic_read(&r->cons_head);
+>   
+>   	if (pvrdma_idx_valid(tail, max_elems) &&
+>   	    pvrdma_idx_valid(head, max_elems)) {
+The atomic_ has been renamed to qatomic_ in the patch d73415a3154.
+It seems that the pvrdma_ring.h doesn't need to be updated.
+
+Best Regards.
+
+Kunkun Jiang
+
+> diff --git a/linux-headers/linux/iommu.h b/linux-headers/linux/iommu.h
+> new file mode 100644
+> index 0000000000..0a6326bd36
+> --- /dev/null
+> +++ b/linux-headers/linux/iommu.h
+[...]
+>   /* -------- Additional API for SPAPR TCE (Server POWERPC) IOMMU -------- */
+>   
+>   /*
+
+

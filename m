@@ -1,215 +1,164 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6392501lfg;
-        Thu, 4 Mar 2021 08:46:39 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz3T87B7i8jyIMm4XlEm3ls/z4Nspn3SCcX0LQ1zQxCbIeFvdqSGkTSbMepSvFKdoU9BKVp
-X-Received: by 2002:a4a:94a7:: with SMTP id k36mr3912564ooi.45.1614876398578;
-        Thu, 04 Mar 2021 08:46:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614876398; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6411914lfg;
+        Thu, 4 Mar 2021 09:12:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy5ALxaJHO9/oX8a7ZEmXT3aMem8ae5CvYAG6/vq0r6H4ojLWgOqDWo2rS5SIewCiW2dLPc
+X-Received: by 2002:a02:ccb2:: with SMTP id t18mr5058057jap.123.1614877931466;
+        Thu, 04 Mar 2021 09:12:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614877931; cv=none;
         d=google.com; s=arc-20160816;
-        b=wAz8mcxFI32QLXW0SN/r+1u9+GhxcGgT7sjk29b8vM4GdE/RTr4YuLwIrihXPuF4/i
-         tet0H8d6QsUbHO1uHl/wmMZNYmerAaim9L3ByLghsb5ePdko+GeYYgaMlKwTSKCaslqI
-         JeKQgcHFyei5vKJT7bnGqIX19hmugEuZaqoTD5tq3pfs8yqvam5vET20hFqClT6L6SlY
-         1bPUODgIFIfdAVKDE/RteDSU6SE6wlggkhsMtfXZFhbRJ1CXs9bpC7ed/78QByM02YEp
-         kmP90GbPufSZ0lT8+5gaJQixFKkuP7OE1Wxus5opGDbtbG4z4yBVzRW177PAziQSXcEd
-         t7Xg==
+        b=FD/tLnupZBGTzxwT7x3lZMMVPUXqmy3afCCBKADsLpRdFnzltS/dtWkbZjkBLqDLRG
+         0zajyCSHkndUoRAGdk1UqY28KRJv3vIxxwj1ISaI/KBsftzMhpGMzvIdkN46ZJueKWPC
+         WKnhRB0BP01EY3lgXM97yvGPhRfXzVO/fWCiEVadZHrHsfvL4tDZWPpT3G0o5F9EIhST
+         va0Lv3wE9a5lh38I1CR3SVywhdRh/h0SJQp08HBG7/M0JPNwJO99Km59pchmlI4qd0Py
+         jmh8jj9VyWkiyofd5qCMFNfWzY3Z53W8OVCk2uyUQdGxyrcHqR59nVlhprIp1Zss66AJ
+         ZWwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=rn1StLXZdW6IQ/ZFu/LT6OMRfbl/UTGxj84sgLnKJ1o=;
-        b=qO35gwSwi3hYBb/YeLNAG2c6m5StgrF8wYSQ7UQomPLaH3GuPHcTrqZnptsvPtP/aj
-         zOkE3MmEZs5jHHE/kt1QY4maEN0Y7xHWcImHtRQ0OWgJwyzrp4UBIKUcAWeQjN6uv7gb
-         T/pT/9LDbKtDa5z149hPXlslNXsT3JDzMdYeklDPeDVt1/zD7TNAxGy030hA5lmp5DzQ
-         JKCNXvs7DGOeMPc5b3S3IW8+PQk7Rzhky6yHTO6jvjrKDw8kXA5wqCFpi0BzzlyBfJE3
-         7A20odc/JNwije9triCB6LY17iR/RiBW3ZBw8QpXJkqpp9v+j8AT5OCRYgZMJdyVOZK5
-         Zvfg==
+        bh=MGt+ihZVtHOBWwg9Z8lGP1hpPwL6eMH1fZ9Un1ypzpg=;
+        b=wscBbZpzMAvFMZJetcMXSeh6wMW5hDb0LVX6tj2v7c+xcj4ChPIuyKrQ2SduiEecON
+         bGGlBt5ov20vL+yWZIXoITVQF7hV46EHpffDnC6azpRelVJF2Mg+6KN1XMi58j76peP5
+         2fHH/o87AOPbVbZw7FBnIgOFu1xofY98esSwhpI/PYaRYuajZNdUs6NQ8DRiapTud62y
+         po4kB9so4I4u9kc7LQ2ykJ4SrsdswIKhlD/GsCKgBhxEwIIzRWRoigOQm0ffTYdaw5e3
+         JRADpTAJ5AlRCkPhSquLDT1cdjzMZAN66U+P5JTTGYjheSr4LBDybt5f9e4BhHGKmf9/
+         sjdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZihSgz4B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="CzdV/bcZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y14si12770oix.103.2021.03.04.08.46.38
+        by mx.google.com with ESMTPS id z14si16393386jao.83.2021.03.04.09.12.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 08:46:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Mar 2021 09:12:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZihSgz4B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44222 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="CzdV/bcZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57556 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHr7V-0000o3-Rp
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 11:46:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36924)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHrWE-0003Yp-O0
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 12:12:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46360)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHr3o-00081P-NB
- for qemu-devel@nongnu.org; Thu, 04 Mar 2021 11:42:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37125)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1lHr3l-0002Nw-V4
- for qemu-devel@nongnu.org; Thu, 04 Mar 2021 11:42:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614876165;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rn1StLXZdW6IQ/ZFu/LT6OMRfbl/UTGxj84sgLnKJ1o=;
- b=ZihSgz4BhAVxy/GOZlimg6KTUTHd3ukFH/nNyLR2VzkI1GSFRyV8ateDpiBU3AMFxiUS3M
- 3mzwYKO2zVSmHJB8yTHAOn+2/2GXkVqRniLcqPd+bLL66km+MnXuwbCbllfGa23i1aDAXd
- 2301sSuQq0RXKDfEOf1OaxKKoOkhH5c=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-402-0A7XUtccPtuSk6oCjjRxkw-1; Thu, 04 Mar 2021 11:42:43 -0500
-X-MC-Unique: 0A7XUtccPtuSk6oCjjRxkw-1
-Received: by mail-wr1-f72.google.com with SMTP id z6so5892079wrh.11
- for <qemu-devel@nongnu.org>; Thu, 04 Mar 2021 08:42:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lHrUS-0001SO-Dm
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:10:20 -0500
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:44085)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lHrUQ-0006Kr-Cs
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 12:10:20 -0500
+Received: by mail-pl1-x62b.google.com with SMTP id a24so16479757plm.11
+ for <qemu-arm@nongnu.org>; Thu, 04 Mar 2021 09:10:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=MGt+ihZVtHOBWwg9Z8lGP1hpPwL6eMH1fZ9Un1ypzpg=;
+ b=CzdV/bcZ3PEA0kcX9dtgj+xBuwOqJhEj+P8+0IJVedE47ISZ+HnfEwVTNeFz/wnRx9
+ gC3yF0AQ9YM1UG4QL1iRPR5od7iTNGYtr6W0JwFC543hmXfG/mhDIBnXyXqH5jPh+rnk
+ sEeMEq+8NKFOVBoTh1b06emKv+P3mTCsT9hvh7F4VVXU3EcWDSwwlWKUYt0poDKeKNKG
+ HAfFulfEasuUFo4/3SfRfP/Yzu8a6MqWncA237JvCfBNP1aXjnTKYU0C8IjwUM/8YwsI
+ UZDKeXbwZIaJQBocug0cHXNl5ayJdEmxxepcU3nVP4i8bIT9Q7X/+v/aETI71gqC7x0h
+ Z7Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=rn1StLXZdW6IQ/ZFu/LT6OMRfbl/UTGxj84sgLnKJ1o=;
- b=ZZaKmHfSVZ6m1/YAiq+yRJScmghXmQxcOMI8sY3y2ABKQ/gLbXLGYHgp/3QjVHAsyc
- Dhf/OmSQt4DR1C79y1RmvPBjKookUV4Edqv7iptCioBe8RnL7X/mr+5rl8qvlxWJ/4h4
- 9tX0A3uhSl4glyRT6tsxN1wbsEiCOcdbreMxU1QvmCKP4DHQC6/FdmlDlQgAGFUg6Ztw
- u4wy6QUPiw5YaKgxDtigaf1kzE/r8Zm6GyqmXPpwkvazTqPjxh1Y63QlgHgQWkJTfrNU
- 4WOVbEQYUpoMdfKSTM7KNJb37hmogFj0l6v6brx9h4LFV/OpzztUL0xDIGDIgJArbjs4
- kXSA==
-X-Gm-Message-State: AOAM532ubOop5VEexIRXPcNTPPms4hiMuTSVBb4eKClYp/63bvwYtsGC
- PfnwWDXWlKb+Vx1TdZDQOgBgokW4Mk6jFhygzAU5R5Tip31V7J9Hb4c/yTU3H+X7L8EygS3c0tj
- YOVTKl/EzSNz7HI0=
-X-Received: by 2002:a05:600c:2109:: with SMTP id
- u9mr4806955wml.44.1614876161568; 
- Thu, 04 Mar 2021 08:42:41 -0800 (PST)
-X-Received: by 2002:a05:600c:2109:: with SMTP id
- u9mr4806917wml.44.1614876161342; 
- Thu, 04 Mar 2021 08:42:41 -0800 (PST)
-Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id g16sm19407990wrs.76.2021.03.04.08.42.39
+ bh=MGt+ihZVtHOBWwg9Z8lGP1hpPwL6eMH1fZ9Un1ypzpg=;
+ b=RAZXlo39x4/FDb4rq9p1jTC3L0uc96EEhTvPVIbdcJy8gU0EWLMgp67igEAxhZHLwU
+ fYd4uN5dJstunFzc78pECkIgnEUpP5zOBGoECELlSKONYlpMYso5dFGsCELyjPFfn9p5
+ q/jLWkaZCygEGfncwN+ur6CFj/HFSnHknBh92au6OUObzZnbW3vokqmrMC6+USWVAY6H
+ VY2VwtJcwf/9TYgXn51NByPb48Q9lHQU71zpqiaoevppwqGKeg//7euRv6VixCaxndxj
+ T/eOJinfKZoOKwuQ0NpZvQfImiTzflVGc02jZuo0VVPU40tdc3Mwc+KutXnzanOSCMz/
+ 5ZQQ==
+X-Gm-Message-State: AOAM530u4Tf4FeC5kCmUqHh/X+8TKiviQErCSIjrkMF7QlW1XSp6+FJe
+ PrOqsRCsBRJ4Gyxzic5LRyQFfQ==
+X-Received: by 2002:a17:902:d487:b029:e4:a950:6df2 with SMTP id
+ c7-20020a170902d487b02900e4a9506df2mr4665989plg.79.1614877814669; 
+ Thu, 04 Mar 2021 09:10:14 -0800 (PST)
+Received: from [192.168.1.11] ([71.212.131.83])
+ by smtp.gmail.com with ESMTPSA id y63sm3189pfy.68.2021.03.04.09.10.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Mar 2021 08:42:40 -0800 (PST)
-Subject: Re: [RFC PATCH 00/19] accel: Introduce AccelvCPUState opaque structure
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <20210303182219.1631042-1-philmd@redhat.com>
- <a84ce2e5-2c4c-9fce-d140-33e4c55c5055@redhat.com>
- <1eda0f3a-1b11-a90e-8502-cf86ef91f77e@redhat.com>
- <438743f3-6e97-1735-6c11-26d261fa91b4@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a37683ea-a05f-e3a3-43b0-084f830ccd72@redhat.com>
-Date: Thu, 4 Mar 2021 17:42:38 +0100
+ Thu, 04 Mar 2021 09:10:13 -0800 (PST)
+Subject: Re: [PATCH 05/44] hw/arm/armsse: Introduce SSE subsystem version
+ property
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210219144617.4782-1-peter.maydell@linaro.org>
+ <20210219144617.4782-6-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <bbddf31a-42c8-4acd-d31e-83868e74534b@linaro.org>
+Date: Thu, 4 Mar 2021 09:10:11 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.0
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <438743f3-6e97-1735-6c11-26d261fa91b4@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20210219144617.4782-6-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
- kvm@vger.kernel.org, David Hildenbrand <david@redhat.com>, haxm-team@intel.com,
- Colin Xu <colin.xu@intel.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Claudio Fontana <cfontana@suse.de>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- Cameron Esfahani <dirty@apple.com>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Marcelo Tosatti <mtosatti@redhat.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-ppc@nongnu.org, Wenchao Wang <wenchao.wang@intel.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2F7FvhkoV9m0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ll5Ar4dNJdO/
 
-On 3/4/21 4:40 PM, Paolo Bonzini wrote:
-> On 04/03/21 15:54, Philippe Mathieu-Daudé wrote:
->> On 3/4/21 2:56 PM, Paolo Bonzini wrote:
->>> On 03/03/21 19:22, Philippe Mathieu-Daudé wrote:
->>>> Series is organized as:
->>>> - preliminary trivial cleanups
->>>> - introduce AccelvCPUState
->>>> - move WHPX fields (build-tested)
->>>> - move HAX fields (not tested)
->>>> - move KVM fields (build-tested)
->>>> - move HVF fields (not tested)
->>>
->>> This approach prevents adding a TCG state.  Have you thought of using a
->>> union instead, or even a void pointer?
->>
->> Why does it prevent it? We can only have one accelerator per vCPU.
+On 2/19/21 6:45 AM, Peter Maydell wrote:
+> We model Arm "Subsystems for Embedded" SoC subsystems using generic
+> code which is split into various sub-devices which are configurable
+> by QOM properties to handle the behaviour differences between the SSE
+> subsystems we implement.  Currently the only sub-device which needs
+> to change is the IOTKIT_SYSCTL device, and we do this with a mix of
+> properties that directly specify divergent behaviours (eg
+> CPUWAIT_RST) and passing it the SYS_VERSION register value as a way
+> for it to distinguish IoTKit from SSE-200.
 > 
-> You're right, my misguided assumption was that there can only be one of
-> WHPX/HAX/KVM/HVF.  This is true for WHPX/KVM/HVF but HAX can live with
-> any of the others.
-
-I suppose you aren't talking about build-time but runtime. There should
-be no distinction related to accelerator at runtime. We should be able
-to have multiple accelerators at runtime, and eventually be able to
-migrate vCPU from one accelerator to another, if it is proven useful.
-
-How accelerators are orchestrated is obviously out of the scope of this
-series.
-
-> However this means that AccelvCPUState would have multiple definitions.
-
-Yes.
-
->  Did you check that gdb copes well with it?
-
-No, I haven't, because we already use opaque pointers elsewhere.
-
-> It's also forbidden by
-> C++[1], so another thing to check would be LTO when using the C++
-> compiler for linking.
-
-OK, I have no clue about C++ (and tries to keep QEMU way from it)
-or about LTO. So I'd need to investigate that.
-
+> The "pass SYS_VERSION" approach is already a bit hacky, since the
+> IOTKIT_SYSCTL device has to know that the different part of the
+> register value happens to be bits [31:28].  For SSE-300 this register
+> is renamed SOC_IDENTITY and has a different format entirely, all of
+> whose fields can be configured by the SoC integrator when they
+> integrate the SSE into their SoC, and so "pass SYS_VERSION" breaks
+> down completely.
 > 
-> Paolo
+> Switch to using a simple integer property representing an
+> internal-to-QEMU enumeration of the SSE flavour.  For the moment we
+> only need this in IOTKIT_SYSCTL, but as we add SSE-300 support a few
+> of the other devices will also need to know.
 > 
-> [1] https://en.wikipedia.org/wiki/One_Definition_Rule
+> We define and permit a value for the SSE-300 so we can start using
+> it in subsequent commits which add SSE-300 support.
 > 
->> TCG state has to be declared as another AccelvCPUState implementation.
->>
->> Am I missing something?
->>
->> Preventing building different accelerator-specific code in the same
->> unit file is on purpose.
->>
->> Regards,
->>
->> Phil.
->>
+> The now-redundant is_sse200 flag in IoTKitSysCtl will be removed
+> in the following commit.
 > 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 

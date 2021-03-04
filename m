@@ -1,261 +1,172 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6643168lfg;
-        Thu, 4 Mar 2021 14:43:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyF2807x+giQ0+GhHGM6Tw+GCLRUIiD6B375hy07Kd87/1UWXXaxNP5cSbykUplMqXgUAvw
-X-Received: by 2002:a92:1a51:: with SMTP id z17mr6171452ill.295.1614897837467;
-        Thu, 04 Mar 2021 14:43:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614897837; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6645102lfg;
+        Thu, 4 Mar 2021 14:47:36 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwFs3ztzP7evWRDQxWxKfvptxbg+U2EeiH2MwHQrxtjEzVLnmPrJGG1VP7mcKCa1jJPMG6D
+X-Received: by 2002:a05:6e02:802:: with SMTP id u2mr5677139ilm.298.1614898056374;
+        Thu, 04 Mar 2021 14:47:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614898056; cv=none;
         d=google.com; s=arc-20160816;
-        b=AhCwj7/olmT3SXL0Tnn3QfrlQIpZhKEzErq4VCr0kt0h9VVPFH4sNBVgoJ6cMnjDzR
-         fKGSlhjL5KujFMz2FewKPhXoLz1xLvhz426/eAsgyS7rkMOUsm5dbn+naWlqH28DU21Q
-         X1GflYjrpOA22TpFE1YhXjZ5gOEcSc1MKYBY2BQmmcZ56w1dMlEmomsBkfhlvCQyildh
-         0BEx6cgSNaGjNxH6bTZvT2YJSiH3ax3+HM+tVhEtSxzG/kDE3TzGjyl5KtzlM8W/g6Kn
-         X+/TMs/UmtfHpONseBM86HPwQdOWVJmr0RodEY5EfBJmovTif0/e+GL1ijF6bM8fjA9e
-         knnw==
+        b=s7owSYXXHdg8BKOYhkBFx+4a+Xzxn6ZMrATeInq7NgueYHLbfdcZMf/6PXERJNcqbN
+         GzAJhA40BMyQ0rFSn28Oq4FORa13Z/zltMTP5586NIdgK8C1CLd6OL+sqQ6RDE6lci26
+         c/ewHSrYyvE9nxtbJyPUvHdAcRpqr3fAR2zEcX20kxt7crGz7AjCIuCyevJ19/3BrRsx
+         s+1w423PijjtCYDtTEb9H+rMqjxOnDwvC0fuCLtf55Aslsm6WEq4xVTl5x6+H1Ap7czG
+         bSVTo34ROoEXQko6g+BFNuElE6YIYzyjd1Ahvn+F1pV6zpHmQX6tmZbHprpdnRAeDS1h
+         SOAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=D6LLQzNZyfmEhNL83oc33kVYOp47IlGJ59yVOiNpnRg=;
-        b=CsD+WFSO6G1UNHO/bFYWSisVgPJ+NlTvEUJiKbROCG/QgXIqPzyiFk4mb4UxDhW7Gg
-         WiTKiPYaBxwIxxxnjxgjCfQP/sKAcN4VAy2L1Ya+Y3wFqZPsldB1zsLl/l/kpbTVzzgG
-         5sP1v9jRXPWRHagyQaqDzpLBlX1wGRbSTEU76D+wL3Pc4aHsYUjOfzDKTKkO0uG8CbmK
-         1eblR7Le3tyT36sMJvMoniZTXvzCCKnwy63Kf+QAK6AS7AP1rTvizYRTLkYUUB9yQmG8
-         Psyssgq6RVBmUiZ6DqGA/vdSDWymJ/kXTZ/vb2HQe9amtXn35+JKgoIB0+04f2Hmzubm
-         MH0A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Hf00AHbHIMiNm64Y8lGK3pPtMES+J1oh7Yn7Ca/ioxA=;
+        b=JLr0yGVLNUbojm7F9PlI2FrSxxmKvXmkyiFMxIS/zY+Mdh4Y/ZG1Km2ct8pNQfxUdn
+         lRi8KBXEctWMozAi8vMqCW3uD6Dyk+9Hwcx/8ssw4XdiHhWWLIpQvcsJUAZTQCKigaQP
+         NkoiXouzQgkX+5MgtdWYye6zDFVhL+pqEbl7aZic7Z1kQTuMJ5q4boRntIGxcRnUF0bU
+         WJcJCUPKkeOBmIPGT4JfUbfM0rm1MzqBv1NFoKLmUI7hTci7uhk9W85eRbXz/8WhCMNT
+         aXZzuAkgwrBNR5em3fIJNTh1FH4wBKCjpkrEtKmXF0m08jDXubUkwUUz5wAZ7iHziSBv
+         lShQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZEreaPaF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YrmWf0MS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si621369iob.21.2021.03.04.14.43.57
+        by mx.google.com with ESMTPS id f10si536479iop.79.2021.03.04.14.47.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 14:43:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Mar 2021 14:47:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZEreaPaF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47428 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YrmWf0MS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59236 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHwhI-00089f-Lr
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 17:43:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55608)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHwkp-0004w4-Mj
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 17:47:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lHwNv-0007Ot-VN; Thu, 04 Mar 2021 17:23:56 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:54715)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lHwTi-0007fC-Eu; Thu, 04 Mar 2021 17:29:54 -0500
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d]:39026)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lHwNu-0002XD-Ax; Thu, 04 Mar 2021 17:23:55 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id u187so9370741wmg.4;
- Thu, 04 Mar 2021 14:23:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1lHwTg-00057W-TF; Thu, 04 Mar 2021 17:29:54 -0500
+Received: by mail-il1-x12d.google.com with SMTP id d5so173011iln.6;
+ Thu, 04 Mar 2021 14:29:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=D6LLQzNZyfmEhNL83oc33kVYOp47IlGJ59yVOiNpnRg=;
- b=ZEreaPaFQBeiuBRNQ2OdnjMAh9JP6F2sp+ucDXyAI7serdBvnEP0GeJdpO1aAGOIeI
- mIVkrONeWtvTb1SMlHLcC3sGhPN3obe0dPFCNXlQDxIXdWO3p3i0+75JNV1bSQ3SXq+Z
- YHhbanE6DrpECs+Gf7JQFnk1TcIRvJF8JXp6USUYHyeIUAUv1YMCAxZOBy6LY6sh2+vb
- v4Nd21MM9wbNeiCvo7RmagK5R3DNdDj4WFkWsU+1u17WCATCjnuqddqsP8euBUJlYwbE
- 4lHfmE2bwxDXaii4j1U2dCT4sO84hu9SR1qdIVEDLB0K9amKQ6g8RbArTEXXP6kLsuc7
- n2GQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Hf00AHbHIMiNm64Y8lGK3pPtMES+J1oh7Yn7Ca/ioxA=;
+ b=YrmWf0MS22tSe+BM7zdzsAa+mftFKYsTFEhv3to2Uinqh93TiBQZYHXKv1on3REajc
+ xwEY4A5UghxgUfoYrXxvZCGIAycXNRbHJxDDgS2+QrDTjBfyEAt/1jr2YxyvzUbAc5xa
+ FdSM9Mfo7WhXL6RT/bVWD2G4V5FocNZ65BWiKjYt9nmpwybZki0hhIX5OgUUVabKt+4j
+ vh6CvAFgaPq5eTUpDjHqkZXhHJaiBzz+hECMb0jRU6lpFUHVUhoPJJsBbB+/4ZoNaptZ
+ HAE9VqIFMWim+1hOokDtfBfEtpHrVPw+JOVpKyMP7A3DVB0FVrrB5t9mqvyzXzNvGYKO
+ Fp+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=D6LLQzNZyfmEhNL83oc33kVYOp47IlGJ59yVOiNpnRg=;
- b=F2ZmQdebd5vNEMytEvMB1FAyZA36eEpW3JXsKtyIhN3NwW/h5oAwQiBun4ZSAjS+5E
- D6xEmxar9W8ZjFej5OZ7XSopbWePHVOfB5Gy31wKaLPji3ogNbr9Z3z9l3QKJcaAgvjg
- eZRa7amZb+uEkC1kv5R2s8dmW35fZRY/yaO6qzlZuNvCCL9AGwAwqFEWwLgrvHeT/u6D
- YcQbsT/O0d3aYu3ZEl2VvFEv4PcqlG9+HHW7w2JArpzUGQK+oYz4ClUhmz+RamION8A4
- ewu4zmWT+TNUCmUe66tSJ6L7GN57wKD/pBIjdu9NG6OYUhhaapir6cnVcetvXrzurEAS
- ONYA==
-X-Gm-Message-State: AOAM530gdtcI8/4CRLgNdNiKgspZISNVEglmeDF/jEWkSNLe6MZ+yWIg
- slaYyUpjvGdfKPtgAHdwGYkWJAEVoQw=
-X-Received: by 2002:a1c:6309:: with SMTP id x9mr5873815wmb.62.1614896631437;
- Thu, 04 Mar 2021 14:23:51 -0800 (PST)
-Received: from localhost.localdomain (68.red-83-57-175.dynamicip.rima-tde.net.
- [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id m9sm1035239wro.52.2021.03.04.14.23.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Mar 2021 14:23:51 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 5/8] target/ppc: Duplicate the TCGCPUOps structure for
- POWER CPUs
-Date: Thu,  4 Mar 2021 23:23:20 +0100
-Message-Id: <20210304222323.1954755-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20210304222323.1954755-1-f4bug@amsat.org>
-References: <20210304222323.1954755-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Hf00AHbHIMiNm64Y8lGK3pPtMES+J1oh7Yn7Ca/ioxA=;
+ b=SGZR5dMMff+OTXds9+bp+8Or74Q6oLwHfCSQ8KE4C3vzOqoyQLDXa3vBC2jWYD0uiu
+ ZdXQTEeiZQsPqZvsnWVKh6YYHEEfu0tqcfBmZI/U0Ztym5hVCFp6S0NmLSKgjn67lOTb
+ YnUdEvtywndC+NysrkWT3BQ4MoNecP/sclsyevDKBXScg03mnHzNC/n4pRMQ4lthqjHX
+ FG1xo8bLIz8TnXqN9PjfE4y+0pt0aApI0uzcFUFLS6A+3KoTVar1NPi9QssMkfOuZWj+
+ RLu1CnQUs/UwsEEeh+MuuwtfxZUxwVrHT6IN3T125Hw8V7j/178z2PrWo3z5buWpEmSY
+ Y2uQ==
+X-Gm-Message-State: AOAM530rsQXECMf5sQzTzfvRDyWFwxZYsqViNug7Us+FcbAB+yYSGOWU
+ ANMXmdutJyTtoj41ck4t06GdT+qHQ9ZFV6Wnv3s=
+X-Received: by 2002:a05:6e02:218f:: with SMTP id
+ j15mr5854594ila.40.1614896990539; 
+ Thu, 04 Mar 2021 14:29:50 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+References: <20210304140229.575481-1-armbru@redhat.com>
+ <20210304140229.575481-3-armbru@redhat.com>
+In-Reply-To: <20210304140229.575481-3-armbru@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 4 Mar 2021 17:28:33 -0500
+Message-ID: <CAKmqyKOTzdSB48KpOS9ovz3K+yvGa0jC5WEhZs9_MsrxGhgYPQ@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] memory: Drop "qemu:" prefix from QOM memory region
+ type names
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12d;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x12d.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-riscv@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Greg Kurz <groug@kaod.org>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fqqa5UnGinA9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Qemu-block <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>, John Snow <jsnow@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EMb+HopuFVM5
 
-POWER CPUs have specific CPUClass::has_work() handlers.
-In preparation of moving this field to TCGCPUOps, we need
-to duplicate the current ppc_tcg_ops structure for the
-POWER cpus.
+On Thu, Mar 4, 2021 at 9:03 AM Markus Armbruster <armbru@redhat.com> wrote:
+>
+> Almost all QOM type names consist only of letters, digits, '-', '_',
+> and '.'.  Just two contain ':': "qemu:memory-region" and
+> "qemu:iommu-memory-region".  Neither can be plugged with -object.
+> Rename them to "memory-region" and "iommu-memory-region".
+>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/ppc/translate_init.c.inc | 69 +++++++++++++++++++++++++++++++++
- 1 file changed, 69 insertions(+)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/target/ppc/translate_init.c.inc b/target/ppc/translate_init.c.inc
-index 80239077e0b..fe76d0b3773 100644
---- a/target/ppc/translate_init.c.inc
-+++ b/target/ppc/translate_init.c.inc
-@@ -48,6 +48,11 @@
- /* #define PPC_DUMP_SPR_ACCESSES */
- /* #define USE_APPLE_GDB */
- 
-+static const struct TCGCPUOps power7_tcg_ops;
-+static const struct TCGCPUOps power8_tcg_ops;
-+static const struct TCGCPUOps power9_tcg_ops;
-+static const struct TCGCPUOps power10_tcg_ops;
-+
- /*
-  * Generic callbacks:
-  * do nothing but store/retrieve spr value
-@@ -8685,6 +8690,9 @@ POWERPC_FAMILY(POWER7)(ObjectClass *oc, void *data)
-     pcc->l1_dcache_size = 0x8000;
-     pcc->l1_icache_size = 0x8000;
-     pcc->interrupts_big_endian = ppc_cpu_interrupts_big_endian_lpcr;
-+#ifdef CONFIG_TCG
-+    cc->tcg_ops = &power7_tcg_ops;
-+#endif /* CONFIG_TCG */
- }
- 
- static void init_proc_POWER8(CPUPPCState *env)
-@@ -8863,6 +8871,9 @@ POWERPC_FAMILY(POWER8)(ObjectClass *oc, void *data)
-     pcc->l1_dcache_size = 0x8000;
-     pcc->l1_icache_size = 0x8000;
-     pcc->interrupts_big_endian = ppc_cpu_interrupts_big_endian_lpcr;
-+#ifdef CONFIG_TCG
-+    cc->tcg_ops = &power8_tcg_ops;
-+#endif /* CONFIG_TCG */
- }
- 
- #ifdef CONFIG_SOFTMMU
-@@ -9081,6 +9092,9 @@ POWERPC_FAMILY(POWER9)(ObjectClass *oc, void *data)
-     pcc->l1_dcache_size = 0x8000;
-     pcc->l1_icache_size = 0x8000;
-     pcc->interrupts_big_endian = ppc_cpu_interrupts_big_endian_lpcr;
-+#ifdef CONFIG_TCG
-+    cc->tcg_ops = &power9_tcg_ops;
-+#endif /* CONFIG_TCG */
- }
- 
- #ifdef CONFIG_SOFTMMU
-@@ -9292,6 +9306,9 @@ POWERPC_FAMILY(POWER10)(ObjectClass *oc, void *data)
-     pcc->l1_dcache_size = 0x8000;
-     pcc->l1_icache_size = 0x8000;
-     pcc->interrupts_big_endian = ppc_cpu_interrupts_big_endian_lpcr;
-+#ifdef CONFIG_TCG
-+    cc->tcg_ops = &power10_tcg_ops;
-+#endif /* CONFIG_TCG */
- }
- 
- #if !defined(CONFIG_USER_ONLY)
-@@ -10851,6 +10868,58 @@ static const struct TCGCPUOps ppc_tcg_ops = {
-   .cpu_exec_interrupt = ppc_cpu_exec_interrupt,
-   .tlb_fill = ppc_cpu_tlb_fill,
- 
-+#ifndef CONFIG_USER_ONLY
-+  .do_interrupt = ppc_cpu_do_interrupt,
-+  .cpu_exec_enter = ppc_cpu_exec_enter,
-+  .cpu_exec_exit = ppc_cpu_exec_exit,
-+  .do_unaligned_access = ppc_cpu_do_unaligned_access,
-+#endif /* !CONFIG_USER_ONLY */
-+};
-+
-+static const struct TCGCPUOps power7_tcg_ops = {
-+  .initialize = ppc_translate_init,
-+  .cpu_exec_interrupt = ppc_cpu_exec_interrupt,
-+  .tlb_fill = ppc_cpu_tlb_fill,
-+
-+#ifndef CONFIG_USER_ONLY
-+  .do_interrupt = ppc_cpu_do_interrupt,
-+  .cpu_exec_enter = ppc_cpu_exec_enter,
-+  .cpu_exec_exit = ppc_cpu_exec_exit,
-+  .do_unaligned_access = ppc_cpu_do_unaligned_access,
-+#endif /* !CONFIG_USER_ONLY */
-+};
-+
-+static const struct TCGCPUOps power8_tcg_ops = {
-+  .initialize = ppc_translate_init,
-+  .cpu_exec_interrupt = ppc_cpu_exec_interrupt,
-+  .tlb_fill = ppc_cpu_tlb_fill,
-+
-+#ifndef CONFIG_USER_ONLY
-+  .do_interrupt = ppc_cpu_do_interrupt,
-+  .cpu_exec_enter = ppc_cpu_exec_enter,
-+  .cpu_exec_exit = ppc_cpu_exec_exit,
-+  .do_unaligned_access = ppc_cpu_do_unaligned_access,
-+#endif /* !CONFIG_USER_ONLY */
-+};
-+
-+static const struct TCGCPUOps power9_tcg_ops = {
-+  .initialize = ppc_translate_init,
-+  .cpu_exec_interrupt = ppc_cpu_exec_interrupt,
-+  .tlb_fill = ppc_cpu_tlb_fill,
-+
-+#ifndef CONFIG_USER_ONLY
-+  .do_interrupt = ppc_cpu_do_interrupt,
-+  .cpu_exec_enter = ppc_cpu_exec_enter,
-+  .cpu_exec_exit = ppc_cpu_exec_exit,
-+  .do_unaligned_access = ppc_cpu_do_unaligned_access,
-+#endif /* !CONFIG_USER_ONLY */
-+};
-+
-+static const struct TCGCPUOps power10_tcg_ops = {
-+  .initialize = ppc_translate_init,
-+  .cpu_exec_interrupt = ppc_cpu_exec_interrupt,
-+  .tlb_fill = ppc_cpu_tlb_fill,
-+
- #ifndef CONFIG_USER_ONLY
-   .do_interrupt = ppc_cpu_do_interrupt,
-   .cpu_exec_enter = ppc_cpu_exec_enter,
--- 
-2.26.2
+Alistair
 
+> ---
+>  include/exec/memory.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index c6fb714e49..3c95d7831a 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -33,11 +33,11 @@
+>  #define MAX_PHYS_ADDR_SPACE_BITS 62
+>  #define MAX_PHYS_ADDR            (((hwaddr)1 << MAX_PHYS_ADDR_SPACE_BITS) - 1)
+>
+> -#define TYPE_MEMORY_REGION "qemu:memory-region"
+> +#define TYPE_MEMORY_REGION "memory-region"
+>  DECLARE_INSTANCE_CHECKER(MemoryRegion, MEMORY_REGION,
+>                           TYPE_MEMORY_REGION)
+>
+> -#define TYPE_IOMMU_MEMORY_REGION "qemu:iommu-memory-region"
+> +#define TYPE_IOMMU_MEMORY_REGION "iommu-memory-region"
+>  typedef struct IOMMUMemoryRegionClass IOMMUMemoryRegionClass;
+>  DECLARE_OBJ_CHECKERS(IOMMUMemoryRegion, IOMMUMemoryRegionClass,
+>                       IOMMU_MEMORY_REGION, TYPE_IOMMU_MEMORY_REGION)
+> --
+> 2.26.2
+>
+>

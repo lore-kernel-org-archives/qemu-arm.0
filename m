@@ -1,43 +1,76 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6169543lfg;
-        Thu, 4 Mar 2021 03:55:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyEWLt5dpfCYNVyxQKx9QFM4uK3GHLH/fwkfV/2U0rjlWDMMnO37ZEusgTrt9XVNvcibUkk
-X-Received: by 2002:a1c:c906:: with SMTP id f6mr3503445wmb.128.1614858918100;
-        Thu, 04 Mar 2021 03:55:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614858918; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6513643lfg;
+        Thu, 4 Mar 2021 11:26:00 -0800 (PST)
+X-Received: by 2002:a1c:2288:: with SMTP id i130mr5375301wmi.62.1614885960212;
+        Thu, 04 Mar 2021 11:26:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614885960; cv=none;
         d=google.com; s=arc-20160816;
-        b=SctB9G/OwBCBpxVCsutPYqyTgPA9lxURPudXoCOjfa0CDuUNRbK38rjX8VzpKjUfyU
-         +oqEV52plvUterK8XXCMNcnc2x+PnzeSsywEumS/eLjpcF5MAcdNaQ9ZzEmTHuW4DZBs
-         2Q4chH2Kd4+Gi2Q31ZH/JTBbtFBk/cT861dv2Wi4vndy4pwAnV/foyMBWj/gtPic4zBN
-         26ZiUzu8zQF7U6+l5amAvTKrOe2j7e053i9dy6cX4VeK3xPvUQ7AMfr/2L9U1IR9zHVO
-         9O6I+Icx/vhnO7lrJ6uOwPNGb52P64UOJ89rOyMXEAaGu6q5OLsQNh1+dq0RtWH4wq0z
-         V/XA==
+        b=TMSiX1s2/GiST6vEOWuys7NbiqK0leKPizNV45sVgD44wgCuVymPa1O7+NfaQqy8BA
+         Hc+ZNYziVdY3kfCymijgeneRP70QHDU/hNG+UqJrlTDGj4fZRlxQ7R6AtKRy/rGANhEQ
+         CmZ/8wdlXdZ4tXrysLMuj82f74mjdZM4t4biTK+DB5IqthPXK+HLrsj25/kHTRPuKG2Q
+         Xm6PEr3g4PmS3rNXITWoIDH/yXDTNnWXX+Ix/HpZ6OtLzsOJbSmUBgIzXfgnQuGbcs85
+         TZuRYk5u4GSmugPwh0Kmv3bjnXaMBgo80icD3x6KKphiGNU7Mtazu8I6fBxeZ6jIKn9b
+         lIjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=QeydolrIwplExhVlZ2qdGjD6x1p1uHnVLLaihHi3OVM=;
-        b=YOuSV3EJYydcELsC/I4OM5t4euoDG1f2oxNBLL2H6gHjaIh7Ycpd7XQa6Y40wDTizq
-         GQKkQ8g4+bjQhsfczFg4cWB0lnwsyABJleyiGnV/PdcR3HX2nOK0nRYpWutuwjnPhlDG
-         25iHNtLS7Jjo3tuYyHrs3qKirpV/kVlVXW+32etd4yRrH65hRC9z+Klrsak1aHmdphH7
-         4spNf4Kl0dpa+MBE9J8zleAbjjPrjfmFUoFV/Ljj2RSgN/0HHsuz7ypTtlgSCXxSQBA7
-         oSKvwJdwFcp7gCDywuiBIbniydN1JPuGN1g5hjMbASlIZlWR5urUUmSCIn0Eeq/7zuuH
-         iVYw==
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=K1rMeJSzwzcq98KjXfKjITR3jsmxskM8W7FX7UnUdWM=;
+        b=blp30tF3c686FeMtzerIaW3R0kThKeHjMYscW8V5bA+q80Kyp4yC7AgHSE0W8GVEnE
+         +EyIuVB3AC1e/5hUdSykHz6RIk+t5yG95bpmH3yZyvho7LzBQRGDWPUBCQmIrLiAbClv
+         an9+jA2ssJH+9m1UfkgrtZglFSaYMhbmQt/MurNMKWJfKLP2aHI3zcV54ZVVDUrouvDA
+         sXhUdV9xKxUftsC9lVXu2KFc/FNCLUJqs543YFNuuI9Ml59TaT3V17kMdBUXnpklRket
+         D0FM1Z5Y4FBFZgH7xhcqrvsRUnYP0wxr3Vdk5/OKgPppSnkNwnkuDrP2E/MrHrQo+QiQ
+         LTvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
-Return-Path: <cfontana@suse.de>
-Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
-        by mx.google.com with ESMTPS id o12si2850018wrc.168.2021.03.04.03.55.17
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Mar 2021 03:55:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="rs/4W8tP";
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o25sor78545wmh.17.2021.03.04.11.26.00
+        (Google Transport Security);
+        Thu, 04 Mar 2021 11:26:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
-	by mx2.suse.de (Postfix) with ESMTP id 37A87AF87;
-	Thu,  4 Mar 2021 11:55:17 +0000 (UTC)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="rs/4W8tP";
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=K1rMeJSzwzcq98KjXfKjITR3jsmxskM8W7FX7UnUdWM=;
+        b=rs/4W8tPuM/MAzTPkgfenRbbFQ6m5CgD1CMLfCmkzwDx6edd20DBZfdu2FVs+csbW2
+         zaW+sJs14dqT8/OldzMk4ZszUthHC5efW4jrHjLxIDbrbheBa9Zrrnl76WR6O0SWlg2g
+         pnMG33E2WFIW20rwbZ8mYo6lpB8/Ol4fOCtTVL2TdIABnY6bUMeg21x0gmfS+dbBiViJ
+         QFST5anZaibLJrEoTrdat03q2w50wJINbxElELmvcfRR8GtdCntct781h+3GVbUKB5l8
+         co/VHfEmv0d1U6KrS43SFn3gzRcDBeVeu/C7Fd+T5w4FEUj4QMnq3bjcXBhdYQsJ746V
+         M3Cg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=K1rMeJSzwzcq98KjXfKjITR3jsmxskM8W7FX7UnUdWM=;
+        b=LRmWoRjdyCLA7m8yS/K+N2vidkhqkm/3M6K0b7JyGK4XHhqJFZhH4j61EJ6z+iBeJj
+         Xg1Q0pOKO4UkpVnL27fAga7gQyjW8JYdHXsTzD8pdVIOtpLh4v01jBaLw9ayfiCbYGbl
+         bDMJOnvGrnH9+DflVow34xSA7Dgb6yUDtWIQInEdTuGGpG/W/0/6c+9QdidZCzlHcrI4
+         ZiisW2r8wDecxCQ1ExmRBjQ6zQmbniwpf0oRwr77VoyiZUUOfSokRE/Z5Gvha/Qsz1v9
+         Z4xv403ohk6EqGdOXfItoER5627k1SnfOPsvoxWvAJNojk7giVgEPhWAmGa5LUiynq0q
+         fRnA==
+X-Gm-Message-State: AOAM5311vsguacvCjX+GZe1i/Gwk1CKvc1x1S100CN6wLa1oWnJC1ewR
+	ok9UVd1ZDL+H88T5erxXQh0=
+X-Google-Smtp-Source: ABdhPJzXyamAlrjSNY+hfTRG5LpIrWByypnuH95AHlow2cjiddxnz8x8p06b5lPMQcGulA1U84Mr4Q==
+X-Received: by 2002:a05:600c:22d9:: with SMTP id 25mr4561826wmg.108.1614885959999;
+        Thu, 04 Mar 2021 11:25:59 -0800 (PST)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net. [83.57.175.68])
+        by smtp.gmail.com with ESMTPSA id i8sm332582wry.90.2021.03.04.11.25.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 04 Mar 2021 11:25:59 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH v6 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
+To: Claudio Fontana <cfontana@suse.de>, qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Laurent Vivier <lvivier@redhat.com>,
  Thomas Huth <thuth@redhat.com>, kvm@vger.kernel.org, qemu-block@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -49,106 +82,34 @@ Cc: Fam Zheng <fam@euphon.net>, Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 References: <20210131115022.242570-1-f4bug@amsat.org>
  <20210131115022.242570-4-f4bug@amsat.org>
-From: Claudio Fontana <cfontana@suse.de>
-Message-ID: <1f571396-c225-0372-12f2-1a366ad181c7@suse.de>
-Date: Thu, 4 Mar 2021 12:55:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ <1f571396-c225-0372-12f2-1a366ad181c7@suse.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <3c84ad2a-7fb9-241d-c0ba-81ff16269240@amsat.org>
+Date: Thu, 4 Mar 2021 20:25:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210131115022.242570-4-f4bug@amsat.org>
+In-Reply-To: <1f571396-c225-0372-12f2-1a366ad181c7@suse.de>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: UuEU0ZWg1Omc
+Content-Transfer-Encoding: 7bit
+X-TUID: eSKtS5zlCrTt
 
-Hi,
-
-I am trying to take these patches,
-in the hope that they help with some of the test issues I am having with the kvm-only build,
-
-but they fail with:
-
-target/arm/Kconfig: does not exist in index
-
-so I guess I need the "target/arm/Kconfig" series right, how can I find that one?
-
-Thanks,
-
-Claudio
-
-
-
-On 1/31/21 12:50 PM, Philippe Mathieu-Daudé wrote:
-> KVM requires the target cpu to be at least ARMv8 architecture
-> (support on ARMv7 has been dropped in commit 82bf7ae84ce:
-> "target/arm: Remove KVM support for 32-bit Arm hosts").
+On 3/4/21 12:55 PM, Claudio Fontana wrote:
+> Hi,
 > 
-> Only enable the following ARMv4 CPUs when TCG is available:
+> I am trying to take these patches,
+> in the hope that they help with some of the test issues I am having with the kvm-only build,
 > 
->   - StrongARM (SA1100/1110)
->   - OMAP1510 (TI925T)
+> but they fail with:
 > 
-> The following machines are no more built when TCG is disabled:
+> target/arm/Kconfig: does not exist in index
 > 
->   - cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
->   - sx1                  Siemens SX1 (OMAP310) V2
->   - sx1-v1               Siemens SX1 (OMAP310) V1
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  default-configs/devices/arm-softmmu.mak | 2 --
->  hw/arm/Kconfig                          | 4 ++++
->  target/arm/Kconfig                      | 4 ++++
->  3 files changed, 8 insertions(+), 2 deletions(-)
-> 
-> diff --git a/default-configs/devices/arm-softmmu.mak b/default-configs/devices/arm-softmmu.mak
-> index 0824e9be795..6ae964c14fd 100644
-> --- a/default-configs/devices/arm-softmmu.mak
-> +++ b/default-configs/devices/arm-softmmu.mak
-> @@ -14,8 +14,6 @@ CONFIG_INTEGRATOR=y
->  CONFIG_FSL_IMX31=y
->  CONFIG_MUSICPAL=y
->  CONFIG_MUSCA=y
-> -CONFIG_CHEETAH=y
-> -CONFIG_SX1=y
->  CONFIG_NSERIES=y
->  CONFIG_STELLARIS=y
->  CONFIG_REALVIEW=y
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index f3ecb73a3d8..f2957b33bee 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -31,6 +31,8 @@ config ARM_VIRT
->  
->  config CHEETAH
->      bool
-> +    default y if TCG && ARM
-> +    select ARM_V4
->      select OMAP
->      select TSC210X
->  
-> @@ -249,6 +251,8 @@ config COLLIE
->  
->  config SX1
->      bool
-> +    default y if TCG && ARM
-> +    select ARM_V4
->      select OMAP
->  
->  config VERSATILE
-> diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-> index ae89d05c7e5..811e1e81652 100644
-> --- a/target/arm/Kconfig
-> +++ b/target/arm/Kconfig
-> @@ -6,6 +6,10 @@ config AARCH64
->      bool
->      select ARM
->  
-> +config ARM_V4
-> +    bool
-> +    depends on TCG && ARM
-> +
->  config ARM_V7M
->      bool
->      select PTIMER
-> 
+> so I guess I need the "target/arm/Kconfig" series right, how can I find that one?
+
+See the Based-on in the cover ;)
+https://www.mail-archive.com/qemu-block@nongnu.org/msg79924.html
+
+Regards,
+
+Phil.

@@ -1,156 +1,116 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5749340lfg;
-        Wed, 3 Mar 2021 15:03:57 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzfUC/0m5P+Ev7lFHM3jMM9ZH6M4ROQ4DJ35uu0CSZe3FmAoZZIHbWN8igu/S3wK+jbleu1
-X-Received: by 2002:a05:6122:7c7:: with SMTP id l7mr1559899vkr.6.1614812636753;
-        Wed, 03 Mar 2021 15:03:56 -0800 (PST)
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp5854464lfg;
+        Wed, 3 Mar 2021 18:01:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy47AtON+JJ1RqYMP9GN15NRWPykj6c4mZmjzPKOet7teMKAt2nIqFLX66rHGDWujny/GRr
+X-Received: by 2002:aca:f5d4:: with SMTP id t203mr1415939oih.132.1614823313478;
+        Wed, 03 Mar 2021 18:01:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614823313; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eBfXRrRV1U02OZZh/Dvd5mK41b7Dyns4kiYC7TBHnkF40RjY5HCMC2CVD1hxbgJZbQ
+         jRYhG4wbf9oCqKmy74Rrt9zan+kmoT2WOurnOVvJCnLaAQPL055A2LL9tj8HcMyXuxl1
+         iu3lMn3+dPXm1RTOUBFK0lXLAz5ZEsxpkEaEUfbRVe4Nc+PcKwvuAyMDrkCOT6Jo5xgA
+         I6vjkHEb1f4FDcQJrCpKP/0aUThY5jJBcsH4nsdbl4VkehxGI74D/bB3upRHjo6fP5IM
+         rKUPAWZ6/6Qru/lS/3PhA8eAyAOqDr0LajHcHXp/+Z3sNvYbkXraeOdDgUo6SnPD2sw6
+         HbMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=YO0QtM/0DfLNQFg+ef16B4+fbBIxtq201AO9nj2bxd4=;
+        b=SobyfXFtq029F8pd2XOIKBOL1rHZreS47JcHMzXgoD0pOT/Geg/w4Z29tEnrmiPpNN
+         r7oJ9DpWoghTfSALaeiqAUqFUKb0KhyLJSQ2sMmBglq0/x/0Wdv88ksDzRQPcVdKacGv
+         y3MHshZYP0v/LyYpDt2ImqHQLB2xMbi1fgzkbL3p5QS5niSIYMegAsf6j0sow8FUHkQp
+         FPg7xuOq14qeBh9dPeMj9XPo2/Os6Zr9WDIrvXkS/W6TAZUMwJfveleorB/FbynYWal6
+         MEqlXgkSkRU5KtpRTegr+GqA1NGI7+03OJZe2RIl4tKhj4hn1909WOBpvrGNpZyjL6Lm
+         iTQA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=at1SDy5o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6si4903076uaq.200.2021.03.03.15.03.56
+        by mx.google.com with ESMTPS id r17si18958068otq.261.2021.03.03.18.01.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Mar 2021 15:03:56 -0800 (PST)
+        Wed, 03 Mar 2021 18:01:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=ZO0sxnTu;
-       arc=fail (body hash mismatch);
+       dkim=pass header.i=@linaro.org header.s=google header.b=at1SDy5o;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:49202 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHaX5-0006dm-SD
-	for alex.bennee@linaro.org; Wed, 03 Mar 2021 18:03:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59212)
+	id 1lHdJI-0001TK-O7
+	for alex.bennee@linaro.org; Wed, 03 Mar 2021 21:01:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
- id 1lHaWv-0006bO-V8; Wed, 03 Mar 2021 18:03:45 -0500
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:36642)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <tsimpson@quicinc.com>)
- id 1lHaWs-0007Wa-T1; Wed, 03 Mar 2021 18:03:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1614812622; x=1646348622;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=qV1VxXAimIy5licNcpbh8RuOMF1OdYlCtnxqviowFF4=;
- b=ZO0sxnTu44u0tKC3rFRIra5lcpe88HrsFQxq2VdDMtQpSqyE4scB8SgI
- sLZA8NlJ29MUROIcD7uLHq0HpKMvfzFeXu+C9Fl8k+FpjHDxjvrQOiE2C
- Uz9nopvup2MTKS+2ZqRLcyUAfZC1RtKf9XHN3/3fXeSiZQ+ObwOaVhkZa g=;
-Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 03 Mar 2021 15:03:38 -0800
-X-QCInternal: smtphost
-Received: from nasanexm03b.na.qualcomm.com ([10.85.0.98])
- by ironmsg04-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
- 03 Mar 2021 15:03:31 -0800
-Received: from nasanexm03b.na.qualcomm.com (10.85.0.98) by
- nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Mar 2021 15:03:30 -0800
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (199.106.107.6)
- by nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2 via Frontend Transport; Wed, 3 Mar 2021 15:03:30 -0800
-Received: from BYAPR02MB4886.namprd02.prod.outlook.com (2603:10b6:a03:46::32)
- by BY5PR02MB6472.namprd02.prod.outlook.com (2603:10b6:a03:1d7::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3890.28; Wed, 3 Mar
- 2021 23:03:29 +0000
-Received: from BYAPR02MB4886.namprd02.prod.outlook.com
- ([fe80::7980:b3e8:c439:fad6]) by BYAPR02MB4886.namprd02.prod.outlook.com
- ([fe80::7980:b3e8:c439:fad6%4]) with mapi id 15.20.3912.019; Wed, 3 Mar 2021
- 23:03:29 +0000
-From: Taylor Simpson <tsimpson@quicinc.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: RE: [RFC PATCH 6/7] cpu: Move CPUClass::has_work() to TCGCPUOps
-Thread-Topic: [RFC PATCH 6/7] cpu: Move CPUClass::has_work() to TCGCPUOps
-Thread-Index: AQHXD07T7beo7/uQWk2tT+ZCOhVNu6py4bVg
-Date: Wed, 3 Mar 2021 23:03:29 +0000
-Message-ID: <BYAPR02MB48864335799EF6BB5C440206DE989@BYAPR02MB4886.namprd02.prod.outlook.com>
-References: <20210302102737.1031287-1-f4bug@amsat.org>
- <20210302102737.1031287-7-f4bug@amsat.org>
-In-Reply-To: <20210302102737.1031287-7-f4bug@amsat.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: amsat.org; dkim=none (message not signed)
- header.d=none;amsat.org; dmarc=none action=none header.from=quicinc.com;
-x-originating-ip: [70.115.140.19]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1b152704-b964-454b-688f-08d8de988f58
-x-ms-traffictypediagnostic: BY5PR02MB6472:
-x-microsoft-antispam-prvs: <BY5PR02MB6472D428706192589D6FBB47DE989@BY5PR02MB6472.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:549;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iLmoiKgcbM+NmOtT2NyybgXOU4ssWYizkhf62qAlF9fBp36ynI/sRKm9yQ/Hb636zdNXhgNAM6SFr5lZDl1v8XrmIpXx+EXW9nhOsGVxUgPXvymn2Y889ZhAKnvTQQNQilXWmTvi9WRsfh8gPd9YX+LzKxMtyz7xlJlFDs07mAoNU/70JHSJXG4f7MGoXdD3asVkrYKL/LZh18jXYxx+Xuvg/iJZkNuVnJWyhWVsgo/IpirhhHktU9ZZh/UZWXi99REAcXjUywYfvV3vb2N7tH7vtujRQU9KseMMvhEibw7A/sH64VzkRoCL/O++SaFxFXf/N2VYAIVK4xADCUYeLyZYenZXZJb1T54oJCQaH4uBWeCkhULijt3zBbNQKyK98ROp5S8sfaGpMvaBuEdrFAn8uGrXFXMwveSMuPymlx59ZWKpvoueOvnWFl3csHKpMZYG0KkfxZaQm4QkEXTr8/sFSYzZNzsUtNJWgbXz6W4nBIiSfEwV9W66Q7pludS+awmCwqH1F0LUscfYT1j1IQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR02MB4886.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(346002)(136003)(39860400002)(366004)(396003)(9686003)(86362001)(83380400001)(76116006)(7416002)(7406005)(66446008)(5660300002)(66476007)(110136005)(26005)(316002)(53546011)(2906002)(478600001)(6506007)(64756008)(8676002)(52536014)(66556008)(54906003)(186003)(71200400001)(7696005)(8936002)(55016002)(66946007)(33656002)(4326008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: =?utf-8?B?bFhDanBPdXQ3eVdvbG8ySGZaYVdodk1LZmNGN2dyWGh1T1dCY240R09SVXpK?=
- =?utf-8?B?K2xPNjk0UG1FOTJ2NVVtVHZMTmV1NUJyclM4YStHdndMazZ0c0d4V1BYWFJR?=
- =?utf-8?B?TlNyMUNWWVBWdHRnOExkYzgrUjZBWGE3dmQrYTdXNGpJekt4bFQ2QnA4MGFv?=
- =?utf-8?B?aFVMa2RnT1IrWm9qTVN1akFSa2pneXQ0Q2luOUlUaGg1NWUweDR1dzRpR2U2?=
- =?utf-8?B?V2czd0lkZzVsWlpjSytYNlA5cXFDOWZJcERvUnVHRDY5Y0t1L2oyNHpIU2Zs?=
- =?utf-8?B?d0RZMGN6MUh5amxqZTRzWlhZMTdmV2hybkdVVjZlbjlYd251cHd2VmEyQmYv?=
- =?utf-8?B?QWJkQkw3UHFiR0dtTXhpbUtSVGQ4eUZ4MWIxeUhRTWw2T2l5QU9aWWhTNVRM?=
- =?utf-8?B?d3BjTGdGRWxCM0RXK3JFYVAzYzNkaDd0VkdSZ2ZJR0RIMGI0NCtTUmI1dVpj?=
- =?utf-8?B?djl4VVVhNVN4OUNRaUR5cnMyUUNGR3RUNzFCUFNsb1RHb0lRK1pqTkpxZXcv?=
- =?utf-8?B?S050UElTMVJTNDd0ZGZRK1pJZzNMOE9BbkkwKzg5VUFsQXJtOFVYb1A0WlNt?=
- =?utf-8?B?T2hlaGl1c05RV0Myb0NkTnhPSUY0RWwzQTgwc3VjMXFaS252YW5iVXBUSk9W?=
- =?utf-8?B?L1BiLzVRWVI1RGNGNFRxdmZZa0hOQStyMDRXcXREMlBHRzJtdkk1aDl5bDNx?=
- =?utf-8?B?ditJTkhxMzBYK2lYa1FiTE9RZFkrbE83OHNvSW44YzNvK1VvTmRjMHRyaFBa?=
- =?utf-8?B?VUhPdFZ3c2JGSTIrNURiYVVjM3p5WWhiVFJuWmVVSXQ3TGw3NUJqVmNoTHdU?=
- =?utf-8?B?dmRwVjhOemlGc0Fmc2RnUzdJYTJ1ZmhWQ3NtbWFBS3VaaHVxSDNuNXRHRmFo?=
- =?utf-8?B?TGdsbkNDZ3paMk5VVFRwMFQ3c1FvODdJeXVjTVBmTmN2ckt0bTFBOEtTazZ1?=
- =?utf-8?B?NnpVeTZHckZVQTZWeEZHQlpWQUo5MHhkUXlqWDRxdlNTUWptN1p0aHFIZUd2?=
- =?utf-8?B?bXhrMStqVjBIL3ZwZFVCMWFVWTlZNDNTUnNDVkZOSGFZRlRFSTFWdTNvTHNJ?=
- =?utf-8?B?cjdxd0NRbHN2T3p3Nnl3SjVyeUQ0L1hsamIyUlpHell1dXo2K3IwVng4K2ln?=
- =?utf-8?B?VjU2Ky9CdlJQRGtjYmNGVitLMVllekdNcVdPM2lCQWVHUU5STDNMQzZYc2VY?=
- =?utf-8?B?dFZiQld1VnZZdlZ3ZDNUcFdNNlI4THRtOW1yS2lic1BuY093OEJRaStNVWx6?=
- =?utf-8?B?dGhOYzlOYTNqL2tBTzFiQTR1VnhlYXBsWXZ4cEtjdENicjA2TjBJcCt1TmNN?=
- =?utf-8?B?ZU9hKy9VWFBINGtMN3hWQ1IvWE05Y09tdEJnUlpoeVBHenQ5c2FTcXc3ZVJp?=
- =?utf-8?B?NFJyb3IyQVdjVnl0TmZ4L21CTE9lMW9NVlZvMHFyMEcvUlJmMHhQVWVDb21u?=
- =?utf-8?B?Vnh2WllKNTRTbzE1Qy96Y2dyQUxzd2liMFUxblpHSXRZdUxyVTViaU4zdEI2?=
- =?utf-8?B?aGdTU05RQUNGdzBjcktNUTN0ei9GbUV3cE4yYTBSQmRCYnNTTFpURy9rY1Az?=
- =?utf-8?B?V0NrR2V2SXl6ZnYvaDk3RzFIZ09jNW81bzJLbmk0QnNRSUZ0TVNmNXExalQv?=
- =?utf-8?B?b3FYemUzRyswQjg5RllYQ2dIbndhb2luUXovRkZJdXRQbUMyeFVIdC9JdkZQ?=
- =?utf-8?B?WlYwR1BjZWR1MkxHc3dtVHU5ZHFvMDhGNXlIKzVrcVowTmwzUU9vano2Mmxt?=
- =?utf-8?Q?kzCBQDJVKy6E814Uvii2meadhbA2geMPE2j5Nhd?=
-x-ms-exchange-transport-forked: True
-arc-seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BaVM4KJQZEi/IwPsPDSFYBJfhH0NV6H9he10lzN2aE1DMukClaten3zUzxj7zLn/FdMGv2aM2IJKm88jgXAOPRDfeuypEGvwJ4iI8g+MfRqIh8G3tkHe5gQcQWIzo6a62liHSG38RAwMsCdYaAiwIhVqBcVNusePA5nWRApOl8Vj/22/DdUMD5h/t9aBGDaQRAz6lFoL1GLblwHh2ygrC5V/Gx0+1JPAL1wtwtez5Vwshh+XJ8yBWImEhtfT663tb7t5G76Y0bsYoSGPa0YOIuj11tmlUL0UwSiaAgJ7Xqx7rRqU8SYM8uhv903uMwk6E4pYGMBsCcBj/v7m5Xm0tA==
-arc-message-signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QoT9FlUjwP1kSxkwl5RFKl0VsW2EVQwMIu4HtbuEEc8=;
- b=jS8z9eG72HCtohjHNUPwHf7Qk/9aMqMUyBuG+AKAPmOfOfJhm20weMMVxEpP5f3L2cvQgmH+O1o963w39MvgNbnpaPZhsF0wbceTQ9qzbgyYEoKJViggarDWGQlkE++6BQERGDMXNLbho2M5daVFg4kaxYQ1Qa+dClP+kFLaiOTg8OY1/9zYB5rPDOj9KRF5QHcro7QFTs9MuWpXIoq+WCT+KNfgqNwnuLuRBQksNIJsamT0cLsFTgH/gACTdX0KSquRlumd2YtaAeaX4Doz1Vc89EJR8odp5JVrXy2LbEnz3B0BmuB7qu4AAF1rRPx1LpewfZVVz8gcxCXhBC+t9A==
-arc-authentication-results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-x-ms-exchange-crosstenant-authas: Internal
-x-ms-exchange-crosstenant-authsource: BYAPR02MB4886.namprd02.prod.outlook.com
-x-ms-exchange-crosstenant-network-message-id: 1b152704-b964-454b-688f-08d8de988f58
-x-ms-exchange-crosstenant-originalarrivaltime: 03 Mar 2021 23:03:29.1627 (UTC)
-x-ms-exchange-crosstenant-fromentityheader: Hosted
-x-ms-exchange-crosstenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-x-ms-exchange-crosstenant-mailboxtype: HOSTED
-x-ms-exchange-crosstenant-userprincipalname: MtHaaU/8PiFu73pT3rYiPmGwyjhhBkTujv+kSxIp6fbQadPFMcD1/jtNZWUpm+OZzSAOTQHEU/viowwVdURWhA==
-x-ms-exchange-transport-crosstenantheadersstamped: BY5PR02MB6472
-x-originatororg: quicinc.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lHdIr-0001Sr-AZ
+ for qemu-arm@nongnu.org; Wed, 03 Mar 2021 21:01:25 -0500
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435]:43365)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1lHdIo-0002TY-NR
+ for qemu-arm@nongnu.org; Wed, 03 Mar 2021 21:01:25 -0500
+Received: by mail-pf1-x435.google.com with SMTP id q204so16673121pfq.10
+ for <qemu-arm@nongnu.org>; Wed, 03 Mar 2021 18:01:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=YO0QtM/0DfLNQFg+ef16B4+fbBIxtq201AO9nj2bxd4=;
+ b=at1SDy5of4SfGtowEbzAnZSx9K5WOI7yC4ZJK2FPQXIpS4cZ9hPoqdn97v8/taP5AL
+ QrkReRIz/pdeLpHa5EsJPXFKD2NAwvh5Myd14cqMd5UAAufi/c334ZKLgJ+QB7wWNiIu
+ Vw5H8dwJp023goGZjZpRoottbtyf5T74FGVOfpRagm0dCtm0JeVvJ1VquojxlGbX2+G0
+ VhNj3Fv4StHci7qR+z/pfbFUtXIkd9W6/iicgXdg/+KISB+RBL0nrG5e/G/JldHKuXr+
+ w6pM1/Wo1djyQB0iRKKOp4FdP7n0drIaHQ7lCIE6YuzSrqx5KF/5cGWrDbNEvlRMsdeo
+ BRPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=YO0QtM/0DfLNQFg+ef16B4+fbBIxtq201AO9nj2bxd4=;
+ b=KB0YNyxmdyk43mJ/qNahXC6XmBT0W+Ydm8sD69a3IrI7xU4enFLr2cUwYr1mPMyInx
+ /ex0+Dzd4ubGSWHUESA8Rqr8DaBodWCrRgDpr7R8lYiBP7c1OhjXthlyEBEpqCb3Nt3W
+ scGLO15NRyttjd7gK1bCoNehy6tEc4l39Neo/9pS55TrMSMVyyr3vk672utQWaA1DdI+
+ SAFMA4XqApyBnXhUuRxUa2tGM3+nHTIcWIq+Xl0hOdwNeL6P9ImHKsRFO4P6H3W1bcGs
+ cso7hfZsyTHFK90VkjNldklvooxLVPRQZ+uDREaZ9yLrqa7KIGfO64eP0uE6hTCIk3vD
+ Z+oA==
+X-Gm-Message-State: AOAM531A7i+2P7ynUe6tCg2+Gkjdy/SupuYmd3DbR5Z3bZ3dFZ2lwCCv
+ 2UkdGfvi4sXEb0C+cVUM/zh1GQ==
+X-Received: by 2002:a62:5344:0:b029:1df:c7d:3c3e with SMTP id
+ h65-20020a6253440000b02901df0c7d3c3emr1637408pfb.11.1614823281175; 
+ Wed, 03 Mar 2021 18:01:21 -0800 (PST)
+Received: from [192.168.1.11] (174-21-84-25.tukw.qwest.net. [174.21.84.25])
+ by smtp.gmail.com with ESMTPSA id y63sm18409404pfy.68.2021.03.03.18.01.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Mar 2021 18:01:20 -0800 (PST)
+Subject: Re: [PATCH v2 08/24] hw/arm/mps2-tz: Condition IRQ splitting on
+ number of CPUs, not board type
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20210215115138.20465-1-peter.maydell@linaro.org>
+ <20210215115138.20465-9-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <343647f5-8b2e-6e98-944c-d6cb47f668ac@linaro.org>
+Date: Wed, 3 Mar 2021 18:01:18 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Received-SPF: pass client-ip=199.106.114.38; envelope-from=tsimpson@quicinc.com;
- helo=alexa-out-sd-01.qualcomm.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20210215115138.20465-9-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -163,79 +123,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Sarah
- Harris <S.E.Harris@kent.ac.uk>, Chris Wulff <crwulff@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, David
- Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Jiaxun
- Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Claudio Fontana <cfontana@suse.de>, Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, Greg Kurz <groug@kaod.org>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Michael Rolnik <mrolnik@gmail.com>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s+qf1iIW82Tt
+X-TUID: ydcGvNo0A+xu
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGhpbGlwcGUgTWF0aGll
-dS1EYXVkw6kgPHBoaWxpcHBlLm1hdGhpZXUuZGF1ZGVAZ21haWwuY29tPiBPbg0KPiBCZWhhbGYg
-T2YgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kNCj4gU2VudDogVHVlc2RheSwgTWFyY2ggMiwgMjAy
-MSA0OjI4IEFNDQo+IFRvOiBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IFlvc2hpbm9yaSBT
-YXRvIDx5c2F0b0B1c2Vycy5zb3VyY2Vmb3JnZS5qcD47IENocmlzIFd1bGZmDQo+IDxjcnd1bGZm
-QGdtYWlsLmNvbT47IHFlbXUtcHBjQG5vbmdudS5vcmc7IE1hcmNlbCBBcGZlbGJhdW0NCj4gPG1h
-cmNlbC5hcGZlbGJhdW1AZ21haWwuY29tPjsgR3JlZyBLdXJ6IDxncm91Z0BrYW9kLm9yZz47IHFl
-bXUtDQo+IHJpc2N2QG5vbmdudS5vcmc7IFJpY2hhcmQgSGVuZGVyc29uIDxyaWNoYXJkLmhlbmRl
-cnNvbkBsaW5hcm8ub3JnPjsNCj4gUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8u
-b3JnPjsgTWljaGFlbCBXYWxsZQ0KPiA8bWljaGFlbEB3YWxsZS5jYz47IFBhbG1lciBEYWJiZWx0
-IDxwYWxtZXJAZGFiYmVsdC5jb20+OyBTYXJhaCBIYXJyaXMNCj4gPFMuRS5IYXJyaXNAa2VudC5h
-Yy51az47IEFudGhvbnkgR3JlZW4gPGdyZWVuQG1veGllbG9naWMuY29tPjsNCj4gRWR1YXJkbyBI
-YWJrb3N0IDxlaGFia29zdEByZWRoYXQuY29tPjsgQmFzdGlhbiBLb3BwZWxtYW5uDQo+IDxrYmFz
-dGlhbkBtYWlsLnVuaS1wYWRlcmJvcm4uZGU+OyBMYXVyZW50IFZpdmllciA8bGF1cmVudEB2aXZp
-ZXIuZXU+Ow0KPiBFZGdhciBFLiBJZ2xlc2lhcyA8ZWRnYXIuaWdsZXNpYXNAZ21haWwuY29tPjsg
-Q2xhdWRpbyBGb250YW5hDQo+IDxjZm9udGFuYUBzdXNlLmRlPjsgQXJ0eW9tIFRhcmFzZW5rbyA8
-YXRhcjRxZW11QGdtYWlsLmNvbT47IHFlbXUtDQo+IHMzOTB4QG5vbmdudS5vcmc7IFRob21hcyBI
-dXRoIDx0aHV0aEByZWRoYXQuY29tPjsgUGFvbG8gQm9uemluaQ0KPiA8cGJvbnppbmlAcmVkaGF0
-LmNvbT47IENvcm5lbGlhIEh1Y2sgPGNvaHVja0ByZWRoYXQuY29tPjsgVGF5bG9yDQo+IFNpbXBz
-b24gPHRzaW1wc29uQHF1aWNpbmMuY29tPjsgQWxpc3RhaXIgRnJhbmNpcw0KPiA8QWxpc3RhaXIu
-RnJhbmNpc0B3ZGMuY29tPjsgTWljaGFlbCBSb2xuaWsgPG1yb2xuaWtAZ21haWwuY29tPjsgRGF2
-aWQNCj4gSGlsZGVuYnJhbmQgPGRhdmlkQHJlZGhhdC5jb20+OyBBbGVrc2FuZGFyIFJpa2Fsbw0K
-PiA8YWxla3NhbmRhci5yaWthbG9Ac3lybWlhLmNvbT47IFN0YWZmb3JkIEhvcm5lIDxzaG9ybmVA
-Z21haWwuY29tPjsNCj4gSmlheHVuIFlhbmcgPGppYXh1bi55YW5nQGZseWdvYXQuY29tPjsgTWFy
-ZWsgVmFzdXQgPG1hcmV4QGRlbnguZGU+Ow0KPiBNYXJrIENhdmUtQXlsYW5kIDxtYXJrLmNhdmUt
-YXlsYW5kQGlsYW5kZS5jby51az47IFBoaWxpcHBlIE1hdGhpZXUtDQo+IERhdWTDqSA8ZjRidWdA
-YW1zYXQub3JnPjsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgRGF2aWQgR2lic29uDQo+IDxkYXZpZEBn
-aWJzb24uZHJvcGJlYXIuaWQuYXU+OyBTYWdhciBLYXJhbmRpa2FyDQo+IDxzYWdhcmtAZWVjcy5i
-ZXJrZWxleS5lZHU+OyBHdWFuIFh1ZXRhbyA8Z3h0QG1wcmMucGt1LmVkdS5jbj47IE1heA0KPiBG
-aWxpcHBvdiA8amNtdmJrYmNAZ21haWwuY29tPjsgQXVyZWxpZW4gSmFybm8gPGF1cmVsaWVuQGF1
-cmVsMzIubmV0Pg0KPiBTdWJqZWN0OiBbUkZDIFBBVENIIDYvN10gY3B1OiBNb3ZlIENQVUNsYXNz
-OjpoYXNfd29yaygpIHRvIFRDR0NQVU9wcw0KPg0KPiBkaWZmIC0tZ2l0IGEvdGFyZ2V0L2hleGFn
-b24vY3B1LmMgYi90YXJnZXQvaGV4YWdvbi9jcHUuYw0KPiBpbmRleCBiMGIzMDQwZGQxMy4uZDU5
-N2ZlMTJjZGYgMTAwNjQ0DQo+IC0tLSBhL3RhcmdldC9oZXhhZ29uL2NwdS5jDQo+ICsrKyBiL3Rh
-cmdldC9oZXhhZ29uL2NwdS5jDQo+IEBAIC0yNjgsNiArMjY4LDcgQEAgc3RhdGljIGJvb2wgaGV4
-YWdvbl90bGJfZmlsbChDUFVTdGF0ZSAqY3MsIHZhZGRyDQo+IGFkZHJlc3MsIGludCBzaXplLA0K
-Pg0KPiAgc3RhdGljIHN0cnVjdCBUQ0dDUFVPcHMgaGV4YWdvbl90Y2dfb3BzID0gew0KPiAgICAg
-IC5pbml0aWFsaXplID0gaGV4YWdvbl90cmFuc2xhdGVfaW5pdCwNCj4gKyAgICAuaGFzX3dvcmsg
-PSBoZXhhZ29uX2NwdV9oYXNfd29yaywNCj4gICAgICAuc3luY2hyb25pemVfZnJvbV90YiA9IGhl
-eGFnb25fY3B1X3N5bmNocm9uaXplX2Zyb21fdGIsDQo+ICAgICAgLnRsYl9maWxsID0gaGV4YWdv
-bl90bGJfZmlsbCwNCj4gIH07DQo+IEBAIC0yODQsNyArMjg1LDYgQEAgc3RhdGljIHZvaWQgaGV4
-YWdvbl9jcHVfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqYywNCj4gdm9pZCAqZGF0YSkNCj4gICAg
-ICBkZXZpY2VfY2xhc3Nfc2V0X3BhcmVudF9yZXNldChkYywgaGV4YWdvbl9jcHVfcmVzZXQsICZt
-Y2MtDQo+ID5wYXJlbnRfcmVzZXQpOw0KPg0KPiAgICAgIGNjLT5jbGFzc19ieV9uYW1lID0gaGV4
-YWdvbl9jcHVfY2xhc3NfYnlfbmFtZTsNCj4gLSAgICBjYy0+aGFzX3dvcmsgPSBoZXhhZ29uX2Nw
-dV9oYXNfd29yazsNCj4gICAgICBjYy0+ZHVtcF9zdGF0ZSA9IGhleGFnb25fZHVtcF9zdGF0ZTsN
-Cj4gICAgICBjYy0+c2V0X3BjID0gaGV4YWdvbl9jcHVfc2V0X3BjOw0KPiAgICAgIGNjLT5nZGJf
-cmVhZF9yZWdpc3RlciA9IGhleGFnb25fZ2RiX3JlYWRfcmVnaXN0ZXI7DQoNClJldmlld2VkLWJ5
-OiBUYXlsb3IgU2ltcHNvbiA8dHNpbXBzb25AcXVpY2luYy5jb20+DQo=
+On 2/15/21 3:51 AM, Peter Maydell wrote:
+> In the mps2-tz board code, we handle devices whose interrupt lines
+> must be wired to all CPUs by creating IRQ splitter devices for the
+> AN521, because it has 2 CPUs, but wiring the device IRQ directly to
+> the SSE/IoTKit input for the AN505, which has only 1 CPU.
+> 
+> We can avoid making an explicit check on the board type constant by
+> instead creating and using the IRQ splitters for any board with more
+> than 1 CPU.  This avoids having to add extra cases to the
+> conditionals every time we add new boards.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
+

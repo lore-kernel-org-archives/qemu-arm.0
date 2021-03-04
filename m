@@ -1,84 +1,84 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6130397lfg;
-        Thu, 4 Mar 2021 02:57:18 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz4fkx0AgodzGp1khzdZpNHeEc0evBGX/vKNJSLtpsyybFlG2H/+8KPz3RaiUEjU3YJOLoK
-X-Received: by 2002:a25:3cd:: with SMTP id 196mr5586405ybd.456.1614855437972;
-        Thu, 04 Mar 2021 02:57:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614855437; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp6131722lfg;
+        Thu, 4 Mar 2021 02:59:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwT5Y9jv5xKLsX6wnRyUwyrIFoBy5kGXfiM3WINM3jjQiFpvO8xAGFbvYquEDJT5DIVxa8B
+X-Received: by 2002:a5d:9245:: with SMTP id e5mr3002961iol.97.1614855594763;
+        Thu, 04 Mar 2021 02:59:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614855594; cv=none;
         d=google.com; s=arc-20160816;
-        b=WadbTXRG464DI+0jvZnqUVYV8gEdv6C6EXJSzr7ZuZ4ovLHwBeMIQ+V+ZxsH+PfcAC
-         nvZRFAhG5VD2bkaX0qlVtzjN5BPqt5V9qVuvFC20dp5Q1CcGUQFAg04DyDBLa5oHzpwT
-         PjNiSLTImKO8M1Zt4bzo1vJjJ3aMFxxot0tNoew0J6U30nOKajMlVV6+rby5EZVnNVMg
-         QLBUg88S+VroQvu36REuIhYI+Df+eY2Hv7m3zuiSjP0vAGIEzVBp2q52kD8zQ7ZWi2es
-         /FbmJHkJolWxWdnBTdcPF8e3ah2HlVaKeKm1hyjFxOJhPVUyQpNM4/YGdHw+HLTlvZvd
-         5JeA==
+        b=RkP23+yUmETb0kFWnEkWzQa40tGxWlwsN0nqNOPqtfrmbHlBoxt3PlPuDba+71WeZA
+         w5AwvYo2949qULU6PloYw+QMVDJbiuL4iMEVe3lE6e23oQrZVNuo9Q88We8z6mzEpJ1A
+         tiOXraZDflNQvMZlVc+JqmOegf900VTsPO6pVxyMzk3wyM3775u7Vv0YgXCh5llDVXPl
+         yt3z/nx9gET8yYfwNLqGrtKGM/FoXWZ2R8CuAJhKOZC3OdQ4YrEW93oh61jPkKUO1l6u
+         CAB0N1LixcFLXPoUad6qjq8rUe2QNg39p51ZjOP2VHzyQkCcwRbHSGbonEtfTcbzRecv
+         d4Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UFzWH8GPof9g+UzUl8SxeZWKO9+fPaRYFQwEpobjxsQ=;
-        b=s+vY54bT7pE5oKmAQ4lE5ebzpAkovdezCLDfdYh8KCqSdJISobUY56xcQEgYzLbCZA
-         cPYNTj8pDstx+xfL0Y51L9ALXZkRuDCA1lhsJAllj2wNVIXmGv7t52l5jLfV2map+gr4
-         e29poDpmWbgUHsZdehKpdzjjCRml+0epzM/iMuydK66ctsUKWcD4gS1BjOVyUVlP8AsK
-         bmg2W5Zga0pfwylqPOaR/jbx6PE6wjamIdYgSkVj4RsxjUoSDvF1rgnkAa0rumyKhSO8
-         ECdxO7Ajeu9g2IuIyfx/AeCvIajOX8EM40Zk26zyYLwLwckrwQCL9uNyHdVAgIoN3LST
-         z2YQ==
+        bh=5SOwtyN3Zbc4Z927SH0l0jz+6PoxQQXJFaiIPfeFKOQ=;
+        b=ctQySXyumd206VRVJFnFaqCw+7YRn6pmBntDpeBA8lDVUhhJRZmGDEQxCbf7WjjrPe
+         LpUllZDhAZt5jncOAoNcUI2rRPOGXfV2o895IFLibF1rdA+F/ldhWuxS4gluyKA4EXIF
+         sNKI+hLf3pDgMiPjqJEzHGKAapqoWw8iSrSpiAzVJVIQSm8blqxx9Thtp96wJ1UqQ+JJ
+         P/4sN4Nu1HjUIbTH8UP6Tg8k9tEmtLDVMbt1txqKS0tVJNTObtyiWq5uz0FZYTpfDqoG
+         kwdsFxwHvt73ldEKmPzG+VKMfaBwaZ2fW8nCKNQnbKB3vixg6WX1SnFVT4a/mc8epZ7E
+         vMnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JTyyf7Yd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i9ekjixO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2si25365964ybt.169.2021.03.04.02.57.17
+        by mx.google.com with ESMTPS id s19si20005249iov.23.2021.03.04.02.59.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 02:57:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Mar 2021 02:59:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JTyyf7Yd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i9ekjixO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39032 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49350 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lHlfR-00016e-7K
-	for alex.bennee@linaro.org; Thu, 04 Mar 2021 05:57:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58260)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lHlhy-0005TS-3O
+	for alex.bennee@linaro.org; Thu, 04 Mar 2021 05:59:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lHleU-00011u-8B
- for qemu-devel@nongnu.org; Thu, 04 Mar 2021 05:56:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124]:56143)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lHleX-0001B4-PO
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 05:56:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47403)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lHleR-000327-7f
- for qemu-devel@nongnu.org; Thu, 04 Mar 2021 05:56:17 -0500
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1lHleW-00034p-0t
+ for qemu-arm@nongnu.org; Thu, 04 Mar 2021 05:56:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1614855374;
+ s=mimecast20190719; t=1614855379;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UFzWH8GPof9g+UzUl8SxeZWKO9+fPaRYFQwEpobjxsQ=;
- b=JTyyf7Yd+3TGsD75T8v726nsGL6nwB4QDlh8a2kGGPvxxSrhU5y7c/a/Q292RJLOxaoI+6
- BXMnxeodrjGo2Xjtme5+pdTW33NGxjjI3vxKQyp/afFyikgem37QuPUoLoG21ZGku7KmaO
- jQ0kAtesa3MrtB/4Ae/SiP89Rx+eWl4=
+ bh=5SOwtyN3Zbc4Z927SH0l0jz+6PoxQQXJFaiIPfeFKOQ=;
+ b=i9ekjixOIkIo5GDKokX6ihGg1r6YlkUq1bdvzpZEHYDIEZAhJMHpP2b4uV4xX58Rnebl5u
+ 4ojckfdEiAMnGS3j8gVafqb9MdXEVA48aLKzfABb0uZnjdrbwGsbwoj3RZj4oOlJkeDNfT
+ apIp+xJYddr/iRg/rfFD00EvhQ7keqc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-30-AqZLPXDvNhe979X73FM2FA-1; Thu, 04 Mar 2021 05:56:12 -0500
-X-MC-Unique: AqZLPXDvNhe979X73FM2FA-1
+ us-mta-235-ei-ldS5NOou_OcrXB0wmLg-1; Thu, 04 Mar 2021 05:56:15 -0500
+X-MC-Unique: ei-ldS5NOou_OcrXB0wmLg-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 573A91932480;
- Thu,  4 Mar 2021 10:56:11 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0241D80432E;
+ Thu,  4 Mar 2021 10:56:14 +0000 (UTC)
 Received: from t480s.redhat.com (ovpn-113-171.ams2.redhat.com [10.36.113.171])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 05C536268E;
- Thu,  4 Mar 2021 10:56:08 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A632F5D720;
+ Thu,  4 Mar 2021 10:56:11 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 3/4] acpi: Move maximum size logic into acpi_add_rom_blob()
-Date: Thu,  4 Mar 2021 11:55:53 +0100
-Message-Id: <20210304105554.121674-4-david@redhat.com>
+Subject: [PATCH v3 4/4] acpi: Set proper maximum size for "etc/acpi/rsdp" blob
+Date: Thu,  4 Mar 2021 11:55:54 +0100
+Message-Id: <20210304105554.121674-5-david@redhat.com>
 In-Reply-To: <20210304105554.121674-1-david@redhat.com>
 References: <20210304105554.121674-1-david@redhat.com>
 MIME-Version: 1.0
@@ -89,42 +89,52 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, David Hildenbrand <david@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Alistair Francis <alistair.francis@xilinx.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iSXwB/D9brVI
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sPUvAgdLA9CS
 
-We want to have safety margins for all tables based on the table type.
-Let's move the maximum size logic into acpi_add_rom_blob() and make it
-dependent on the table name, so we don't have to replicate for each and
-every instance that creates such tables.
+Let's also set a maximum size for "etc/acpi/rsdp", so the maximum
+size doesn't get implicitly set based on the initial table size. In my
+experiments, the table size was in the range of 22 bytes, so a single
+page (== what we used until now) seems to be good enough.
+
+Now that we have defined maximum sizes for all currently used table types,
+let's assert that we catch usage with new tables that need a proper maximum
+size definition.
+
+Also assert that our initial size does not exceed the maximum size; while
+qemu_ram_alloc_internal() properly asserts that the initial RAMBlock size
+is <= its maximum size, the result might differ when the host page size
+is bigger than 4k.
 
 Suggested-by: Laszlo Ersek <lersek@redhat.com>
 Cc: Alistair Francis <alistair.francis@xilinx.com>
@@ -139,155 +149,34 @@ Cc: Richard Henderson <richard.henderson@linaro.org>
 Cc: Laszlo Ersek <lersek@redhat.com>
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- hw/acpi/utils.c             | 12 ++++++++++--
- hw/arm/virt-acpi-build.c    | 13 ++++++-------
- hw/i386/acpi-build.c        |  8 +++-----
- hw/i386/acpi-microvm.c      | 16 ++++++----------
- include/hw/acpi/aml-build.h |  4 ----
- include/hw/acpi/utils.h     |  3 +--
- 6 files changed, 26 insertions(+), 30 deletions(-)
+ hw/acpi/utils.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
-index a134a4d554..f2d69a6d92 100644
+index f2d69a6d92..0c486ea29f 100644
 --- a/hw/acpi/utils.c
 +++ b/hw/acpi/utils.c
-@@ -27,9 +27,17 @@
- #include "hw/loader.h"
- 
+@@ -29,14 +29,19 @@
  MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
--                                GArray *blob, const char *name,
--                                uint64_t max_size)
-+                                GArray *blob, const char *name)
+                                 GArray *blob, const char *name)
  {
-+    uint64_t max_size = 0;
-+
-+    /* Reserve RAM space for tables: add another order of magnitude. */
-+    if (!strcmp(name, ACPI_BUILD_TABLE_FILE)) {
-+        max_size = 0x200000;
-+    } else if (!strcmp(name, ACPI_BUILD_LOADER_FILE)) {
-+        max_size = 0x10000;
-+    }
-+
+-    uint64_t max_size = 0;
++    uint64_t max_size;
+ 
+     /* Reserve RAM space for tables: add another order of magnitude. */
+     if (!strcmp(name, ACPI_BUILD_TABLE_FILE)) {
+         max_size = 0x200000;
+     } else if (!strcmp(name, ACPI_BUILD_LOADER_FILE)) {
+         max_size = 0x10000;
++    } else if (!strcmp(name, ACPI_BUILD_RSDP_FILE)) {
++        max_size = 0x1000;
++    } else {
++        g_assert_not_reached();
+     }
++    g_assert(acpi_data_len(blob) <= max_size);
+ 
      return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
                          name, update, opaque, NULL, true);
- }
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index a91550de6f..f5a2b2d4cb 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -859,14 +859,13 @@ void virt_acpi_setup(VirtMachineState *vms)
-     /* Now expose it all to Guest */
-     build_state->table_mr = acpi_add_rom_blob(virt_acpi_build_update,
-                                               build_state, tables.table_data,
--                                              ACPI_BUILD_TABLE_FILE,
--                                              ACPI_BUILD_TABLE_MAX_SIZE);
-+                                              ACPI_BUILD_TABLE_FILE);
-     assert(build_state->table_mr != NULL);
- 
--    build_state->linker_mr =
--        acpi_add_rom_blob(virt_acpi_build_update, build_state,
--                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
--                          ACPI_BUILD_LOADER_MAX_SIZE);
-+    build_state->linker_mr = acpi_add_rom_blob(virt_acpi_build_update,
-+                                               build_state,
-+                                               tables.linker->cmd_blob,
-+                                               ACPI_BUILD_LOADER_FILE);
- 
-     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-                     acpi_data_len(tables.tcpalog));
-@@ -880,7 +879,7 @@ void virt_acpi_setup(VirtMachineState *vms)
- 
-     build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
-                                              build_state, tables.rsdp,
--                                             ACPI_BUILD_RSDP_FILE, 0);
-+                                             ACPI_BUILD_RSDP_FILE);
- 
-     qemu_register_reset(virt_acpi_build_reset, build_state);
-     virt_acpi_build_reset(build_state);
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index a75138ea5a..8de7722cfd 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2518,14 +2518,12 @@ void acpi_setup(void)
-     /* Now expose it all to Guest */
-     build_state->table_mr = acpi_add_rom_blob(acpi_build_update,
-                                               build_state, tables.table_data,
--                                              ACPI_BUILD_TABLE_FILE,
--                                              ACPI_BUILD_TABLE_MAX_SIZE);
-+                                              ACPI_BUILD_TABLE_FILE);
-     assert(build_state->table_mr != NULL);
- 
-     build_state->linker_mr =
-         acpi_add_rom_blob(acpi_build_update, build_state,
--                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE,
--                          ACPI_BUILD_LOADER_MAX_SIZE);
-+                          tables.linker->cmd_blob, ACPI_BUILD_LOADER_FILE);
- 
-     fw_cfg_add_file(x86ms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
-                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-@@ -2564,7 +2562,7 @@ void acpi_setup(void)
-         build_state->rsdp = NULL;
-         build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
-                                                  build_state, tables.rsdp,
--                                                 ACPI_BUILD_RSDP_FILE, 0);
-+                                                 ACPI_BUILD_RSDP_FILE);
-     }
- 
-     qemu_register_reset(acpi_build_reset, build_state);
-diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-index 502aac0ba2..271710eb92 100644
---- a/hw/i386/acpi-microvm.c
-+++ b/hw/i386/acpi-microvm.c
-@@ -249,16 +249,12 @@ void acpi_setup_microvm(MicrovmMachineState *mms)
-     acpi_build_microvm(&tables, mms);
- 
-     /* Now expose it all to Guest */
--    acpi_add_rom_blob(acpi_build_no_update, NULL,
--                      tables.table_data,
--                      ACPI_BUILD_TABLE_FILE,
--                      ACPI_BUILD_TABLE_MAX_SIZE);
--    acpi_add_rom_blob(acpi_build_no_update, NULL,
--                      tables.linker->cmd_blob,
--                      ACPI_BUILD_LOADER_FILE, ACPI_BUILD_LOADER_MAX_SIZE);
--    acpi_add_rom_blob(acpi_build_no_update, NULL,
--                      tables.rsdp,
--                      ACPI_BUILD_RSDP_FILE, 0);
-+    acpi_add_rom_blob(acpi_build_no_update, NULL, tables.table_data,
-+                      ACPI_BUILD_TABLE_FILE);
-+    acpi_add_rom_blob(acpi_build_no_update, NULL, tables.linker->cmd_blob,
-+                      ACPI_BUILD_LOADER_FILE);
-+    acpi_add_rom_blob(acpi_build_no_update, NULL, tables.rsdp,
-+                      ACPI_BUILD_RSDP_FILE);
- 
-     acpi_build_tables_cleanup(&tables, false);
- }
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index a22c6a4c86..15b069186d 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -4,10 +4,6 @@
- #include "hw/acpi/acpi-defs.h"
- #include "hw/acpi/bios-linker-loader.h"
- 
--/* Reserve RAM space for tables: add another order of magnitude. */
--#define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
--#define ACPI_BUILD_LOADER_MAX_SIZE        0x10000
--
- #define ACPI_BUILD_APPNAME6 "BOCHS "
- #define ACPI_BUILD_APPNAME8 "BXPC    "
- 
-diff --git a/include/hw/acpi/utils.h b/include/hw/acpi/utils.h
-index 140b4de603..0022df027d 100644
---- a/include/hw/acpi/utils.h
-+++ b/include/hw/acpi/utils.h
-@@ -4,6 +4,5 @@
- #include "hw/nvram/fw_cfg.h"
- 
- MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
--                                GArray *blob, const char *name,
--                                uint64_t max_size);
-+                                GArray *blob, const char *name);
- #endif
 -- 
 2.29.2
 

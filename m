@@ -1,171 +1,153 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp452081lfg;
-        Fri, 5 Mar 2021 07:35:44 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJweJdKYDhRqO09CxQNvpNpMZlR7oHXNKArT2CgbXsCDG88+AVPKpzAWgimGuiiwepLuyXL6
-X-Received: by 2002:aca:1813:: with SMTP id h19mr7481190oih.102.1614958543969;
-        Fri, 05 Mar 2021 07:35:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614958543; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp455112lfg;
+        Fri, 5 Mar 2021 07:39:27 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwzLiZloFD2CQqq8+q+THXAnkA02YQl9sM19XjofX3aXpUcrfeeTDQFkn3tdMdP1JVVVACP
+X-Received: by 2002:a92:c6ca:: with SMTP id v10mr9640480ilm.195.1614958767280;
+        Fri, 05 Mar 2021 07:39:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614958767; cv=none;
         d=google.com; s=arc-20160816;
-        b=0YIk/bo56eis5npI1gGe2S5pcmm+x5pDMZd0tS/OCMkAxP2irA2YGJqzFUIJtxGGJp
-         t7puq2amuafVpiCuxsbdrKD/n8w3R5hkFj/JKgwMU/PTg/xRwNTOL8o1g7sCVyKDrtU8
-         qOZv9ODkoYi7Ugj3yfT/X/5N0SSuH9kT/50c3B4EZdpRf1FBSedL+u6E39uj7kU0nHI5
-         k6hep/ky8Sun0aueWkCCU0JJE2QByhEGFfNNTqiF2xZHH3dtDnSAy9JX8WDljszTIJjv
-         zYGtpABM2o1eRGjmddpDcyvM8sCDeExQaKTWg5v8DKGXVaqYCJNYL0ZdVc2VWKJCi1fT
-         aFtg==
+        b=pzsor8Pq3xt1BsurQVmo6HH+HKneGtQ+bvcnGn9CWAYrs0lkNq7240J91PVkHm3y00
+         dtEZQnQx/FbppSzSiJIoo7MAtq3kbr22PLt1HOu/vR+rj//Js64OgvjI4DwSx85kZvwd
+         irjMVBL8qJm30spYrrQr5A7jMseUMArjyfOtYcwXAubAVru2Baq6HJ982Sy/41gLvtc7
+         c0FyzqJKbaMRMgmhyLxn++xqqFh1c+LG0vKUMCfdH3EkDO/S+eupuj7d79Kavl+QUtqf
+         a07r8yeoKcHsfDwxSWM6sMzc68lvpzJYhaBkXk0mA+Rgk9Mm43B53LWbIJhlmJ2kIruH
+         eiXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=OeQhTkWuZRIV99ul0o8pp+Cd7R7HMh1hLMhZEMaVpx8=;
-        b=MTNg4xLa0VN9Konk4UntrKXlC9EpYSPDVklhemQtHZ/a7szxDy+tZldr0UjnfoYEtn
-         gz2g1J7STLBjuzybBLmqE7Nk3VymAS/YW1W5VEmFEXzVdSmLDNOR6fQDH0xyvAbt5rvV
-         IUUNxITX9FpyMvR7dQMlASt1axfgduFx1/FsYGLieCTe1VxRIqQQEE0z++VGmWF+2w/C
-         GtvpJ0fJW4SW2LmQgQRv9IsFqokW3+JjcGOC6Ik4G3ttkNDJ68M09x5TEIOZCet8/lbj
-         hyAYdljYF8i/4GD5RA8oKaRqEeCnVKPb32tycwwrnUfmRI0dNGh1ljV5vUDGB00UlT/a
-         4CTw==
+         :message-id:from:references:to:subject;
+        bh=m+/Dhzur3rJAwAv9+k3djUaORtiQPIuC/bWcCBcyPYs=;
+        b=rhPZ7T//c1hmVLZJX5HuQ0SWoaHBxXGbNWcZufHr8M6T7fdzqwogcDSIXs+6bxjjvS
+         FpAYayrA4++xiLDJ4MMm4szpIjap8BWbOgQByd6B60ApRYnTfCenmX/Dj5aI9iSjythi
+         rFMCHhDUMpgz6T/goO1rcviiHGQQ0OQXQXpsENCQ4KehEBPmqblxqoLK5Z2QNb3Ct3RS
+         VwBwQ67RDtP8n9R/gzqo0wTRX5TxeMUMukFmjQbLxPwHLnWjswzniWZLQCvZrOY2TItx
+         gqjOhIBfBktWKN4HdblaMhHsld3idw8wdn7lUK4v0J8T/1fpb2fio3afIMHHB24OsUN0
+         M3xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="l5/Uqqkp";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t17si2697384oic.214.2021.03.05.07.35.43
+        by mx.google.com with ESMTPS id m17si3207749jaj.76.2021.03.05.07.39.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Mar 2021 07:35:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Mar 2021 07:39:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="l5/Uqqkp";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37416 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lICUR-0008QK-98
-	for alex.bennee@linaro.org; Fri, 05 Mar 2021 10:35:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33356)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lICY2-0004tg-J7
+	for alex.bennee@linaro.org; Fri, 05 Mar 2021 10:39:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lICIU-0008D4-K9
- for qemu-devel@nongnu.org; Fri, 05 Mar 2021 10:23:22 -0500
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629]:41562)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rebecca@nuviainc.com>)
- id 1lICIS-0005VG-P3
- for qemu-devel@nongnu.org; Fri, 05 Mar 2021 10:23:22 -0500
-Received: by mail-pl1-x629.google.com with SMTP id d11so1563023plo.8
- for <qemu-devel@nongnu.org>; Fri, 05 Mar 2021 07:23:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=OeQhTkWuZRIV99ul0o8pp+Cd7R7HMh1hLMhZEMaVpx8=;
- b=l5/UqqkpiJJMnvXDCSr10Y+5sWBOD83YBRd5YOxHiGsIG12JKCkMOMnOIVi31/uBTL
- Ay+kLllz90flNGR+1SfrCAVkv+cNwFlaYLBZC5CE7iYJ26pTvOoCAr7qxCKGZYgCA5Hl
- tly19IwHNWNlQU2y41Hp8HD8XhuGtC6jOwJbJm6wRJIaqAbxweEgGuP3w+MSSd+yhnEW
- hAW7ta3JE1Iyr5oohK8RPIxlwqer4wQMIFEMbZRAXoTV60fdKRdOfCfKqBNMMpyupZWv
- U41LsVe9KiXn+yFnngrkRkdn3Mre7Ija5uq4M3beHl5pouzKRTWp4ixym2nik1u8k6LK
- +cJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=OeQhTkWuZRIV99ul0o8pp+Cd7R7HMh1hLMhZEMaVpx8=;
- b=R4NyTUmT/iWFT+w4a6jrIU49YELLELwvaCiJJcgPwftjcSNbRqyt8zeuVYNIX4rLlH
- GPOiY6E0kFoNTHCEmdEc7L5HcC/d8mCng0zWEP3l0GmKjk9YKIU6nyb9OnU6KDOGgWrL
- lWuTak1xotg5+dPREwurIva8ngwE5mW8Fp9ZC+4MmzHz3WN54EgS5k7q9hAqjVEm/uk9
- rS8TjGW1vv6ls2SiCg40ir4kkikeD7KJ4gN0+i+C2LN+svdBDL2HH7bSHmLxQm5fBydv
- 5aiWLfumqoQR1Zo4HpfKTqtwolxAMFtVwmkrzYu0g/nHmY0z8qPI1Fsi9P8pfFKlieJ8
- yArQ==
-X-Gm-Message-State: AOAM531iCaA3epBz2e9K57btu8c/MMXl7GRm2bD69IkFu7PTQgGAlFH6
- zewinMXYlnX2UAYRQl57INNkbw==
-X-Received: by 2002:a17:90a:5d14:: with SMTP id
- s20mr10791482pji.6.1614957798697; 
- Fri, 05 Mar 2021 07:23:18 -0800 (PST)
-Received: from [10.0.10.142] (c-174-52-16-57.hsd1.ut.comcast.net.
- [174.52.16.57])
- by smtp.gmail.com with ESMTPSA id b15sm2886485pgj.84.2021.03.05.07.23.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Mar 2021 07:23:18 -0800 (PST)
-Subject: Re: [PATCH v2 3/3] target/arm: Set ID_PFR2.SSBS to 1 for "max" 32-bit
- CPU
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20210216224543.16142-1-rebecca@nuviainc.com>
- <20210216224543.16142-4-rebecca@nuviainc.com>
- <CAFEAcA8LYf5V=3SEKBzfaGnzSL4K58SQXBqsdMizpE45vTD9VA@mail.gmail.com>
-From: Rebecca Cran <rebecca@nuviainc.com>
-Message-ID: <03da2b87-10f3-f7c9-82ff-0a4dc2e65aaf@nuviainc.com>
-Date: Fri, 5 Mar 2021 08:23:16 -0700
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lICXo-0004rL-S6; Fri, 05 Mar 2021 10:39:12 -0500
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:52969)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1lICXl-0004Ht-Pq; Fri, 05 Mar 2021 10:39:12 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.124])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 415038D2BCD5;
+ Fri,  5 Mar 2021 16:38:58 +0100 (CET)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Fri, 5 Mar 2021
+ 16:38:57 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-104R00569663646-4b0b-4080-8184-30f1d16334ce,
+ A3005A4F36DF08AD97B2C2D73D5B520F0C45B7E8) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 86.201.91.229
+Subject: Re: [PATCH v2 0/2] tests/acceptance: Test Aspeed ARM machines
+To: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
+References: <20210304123951.163411-1-joel@jms.id.au>
+ <CAFEAcA9jux7H2cAwgrndvUv5=fivgQwbWDUEbU7rv7xUb=rz4A@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <345ad50c-ac43-2337-29e4-b7f060896434@kaod.org>
+Date: Fri, 5 Mar 2021 16:38:56 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8LYf5V=3SEKBzfaGnzSL4K58SQXBqsdMizpE45vTD9VA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAFEAcA9jux7H2cAwgrndvUv5=fivgQwbWDUEbU7rv7xUb=rz4A@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=rebecca@nuviainc.com; helo=mail-pl1-x629.google.com
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 19546cc7-e86c-43a5-8606-5e5c07c4bff1
+X-Ovh-Tracer-Id: 5805421396028066668
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledruddtiedgjeefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A3m7tuIlYnJR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QCP6KGBKBEo2
 
-On 3/5/21 4:31 AM, Peter Maydell wrote:
-> On Tue, 16 Feb 2021 at 22:45, Rebecca Cran <rebecca@nuviainc.com> wrote:
+On 3/5/21 4:12 PM, Peter Maydell wrote:
+> On Thu, 4 Mar 2021 at 12:40, Joel Stanley <joel@jms.id.au> wrote:
 >>
->> Enable FEAT_SSBS for the "max" 32-bit CPU.
+>> v2: Fix ast2600 test, thanks Cédric for the review.
 >>
->> Signed-off-by: Rebecca Cran <rebecca@nuviainc.com>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/cpu.c | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 5cf6c056c50f..88a6b183d325 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -2206,6 +2206,10 @@ static void arm_max_initfn(Object *obj)
->>           t = cpu->isar.id_pfr0;
->>           t = FIELD_DP32(t, ID_PFR0, DIT, 1);
->>           cpu->isar.id_pfr0 = t;
->> +
->> +        t = cpu->isar.id_pfr2;
->> +        t = FIELD_DP32(t, ID_PFR2, SSBS, 1);
->> +        cpu->isar.id_mfr2 = t;
+>> This adds tests for the Aspeed ARM SoCs. The AST2400 and AST2500 tests
+>> use OpenBMC images from that project, fetched from github releases. The
+>> AST2600 test uses a Debian arm32 kernel.
 > 
-> Er, this doesn't compile:
-> 
-> ../../target/arm/cpu.c:2223:19: error: no member named 'id_mfr2' in
-> 'struct ARMISARegisters'
->          cpu->isar.id_mfr2 = t;
->          ~~~~~~~~~ ^
-> 
-> The typo is obvious, so I'm just going to fix it up in the
-> target-arm queue, but this does suggest that your testing process
-> before sending out patches could be improved ;-)
+> Just a note that I'm assuming that Cédric will gather up the
+> various aspeed related patches that have been on the list recently
+> and send a pullreq for them. (Having been on holiday my to-review
+> queue is pretty full so I've just ignored anything aspeed-related;
+> let me know if there is anything you specifically want me to look
+> at, queue, whatever.)
+>
+> PS: softfreeze is 16 March so a pullreq on list sometime next week
+> would probably be the ideal.
 
-Thanks, and sorry for the mistake. I'll work on improving my testing of 
-32-bit ARM targets when I'm making changes to them.
+Yes. I am preparing the PR. 
 
--- 
-Rebecca Cran
+  aspeed: Integrate HACE
+  hw: Model ASPEED's Hash and Crypto Engine
+  hw/misc: Model KCS devices in the Aspeed LPC controller
+  hw/misc: Add a basic Aspeed LPC controller model
+  hw/arm: ast2600: Correct the iBT interrupt ID
+  hw/arm: ast2600: Set AST2600_MAX_IRQ to value from datasheet
+  hw/arm: ast2600: Force a multiple of 32 of IRQs for the GIC
+  hw/arm/aspeed: Fix location of firmware images in documentation
+  aspeed: Emulate the AST2600A3
+  tests/acceptance: Test ast2600 machine
+  tests/acceptance: Test ast2400 and ast2500 machines
+  arm/ast2600: Fix SMP booting with -kernel
+
+The HACE patchset needs a second look from an Aspeed-aware person and 
+I have some questions on AST2600A3.
+
+Merging these acceptance tests would be really nice. Have we addressed
+all you concerns Philippe regarding the image downloads ?
+
+Thanks,
+
+C.

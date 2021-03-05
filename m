@@ -1,325 +1,147 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp600243lfg;
-        Fri, 5 Mar 2021 10:49:11 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwMDBBpGIuYCTCwfIp/mp4kw65TVUP2xeDups2GHgEIrMDL/BwsvD9keeh7pGZpUcKzsB8H
-X-Received: by 2002:a02:7657:: with SMTP id z84mr11532586jab.103.1614970151500;
-        Fri, 05 Mar 2021 10:49:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614970151; cv=none;
-        d=google.com; s=arc-20160816;
-        b=JX18f6Mqc39l8mv+w7DNUD7205VuMrDDs7XLq8QZbriP/qezC7kg0oDAhBQckcia1P
-         wWIboTyZ0/qNs3ebd+6s/M7rPzoxY04SuCyNvQpLRCHAUpH0GfKK5OOCsse7u3eeG+Wc
-         WDNj0TMaWxyb5KTH75e+KjAJd3hXyPHa9tbOLiD2X4E0KLkimXlx0fLdXLc21UJLNaOr
-         5Lg5AASO3YyMWoHE8QQlsKfll7Vn3/e2H7wPUT3hEUm0UNbZAt4wxXXHQXhQ3V2w6ozG
-         /4/LwGoalPpKNE+t4W503fWt/beumAg3CHwXR+vmV1FBRHKnNWw9bIMxRdS6aTyKYXeg
-         +TbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
-         :references:mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=6DnqYV2qhu32scty/F7T/6bVDk8dFU19TMQvSpzPB6I=;
-        b=B7ZKEJRXTpQUzvfcBQ7EhbayATP30el/ebuh/2d0sAnKf0C5Rby+JTLkhDmpH+0Zzm
-         Ks8Su30vLTunQcktJRznBJIHPeIeRxVngtVszpnrus988hU372AjHIPp547AY8oaehf/
-         36mjzXrw+nwHsOYAgT070OmZEbyQoftiepJDJJfWdFe9O50H0iGCZB+W9h9hRw07fxTd
-         CQ6PcN9HQq4/+1fJZfN/lRieBlABEJWtnuYtT3NsxEB22K1R20tq/9InY0sVzc/1EaEi
-         9uW1X9nbPQV+HS3o+UBQAhhnDvkVwTnTHY5vHkgvMSxU+bP1Upr7dJUo9rmBcoFxFbOG
-         BNmg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=hJ0PZXMH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp611350lfg;
+        Fri, 5 Mar 2021 11:04:53 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyg8C8L7iynN7R/ARKU0dxTNPmZLD16L0bcivJwIS0eB7V7HuFBMJ9Dc/xOWE1IMj0C93+J
+X-Received: by 2002:a92:dc87:: with SMTP id c7mr10215640iln.279.1614971093001;
+        Fri, 05 Mar 2021 11:04:53 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b28si2997394jav.105.2021.03.05.10.49.11
+        by mx.google.com with ESMTPS id x17si3067644ila.161.2021.03.05.11.04.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Mar 2021 10:49:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Mar 2021 11:04:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=hJ0PZXMH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:44212 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48370 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lIFVe-00031Q-Q2
-	for alex.bennee@linaro.org; Fri, 05 Mar 2021 13:49:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56230)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lIFkq-0000Qc-7i
+	for alex.bennee@linaro.org; Fri, 05 Mar 2021 14:04:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33414)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3EntCYAgKCBsNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com>)
- id 1lIFN9-0006mv-HM
- for qemu-arm@nongnu.org; Fri, 05 Mar 2021 13:40:23 -0500
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:42562)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3EntCYAgKCBsNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com>)
- id 1lIFN6-00071q-Ds
- for qemu-arm@nongnu.org; Fri, 05 Mar 2021 13:40:23 -0500
-Received: by mail-pg1-x54a.google.com with SMTP id m14so1904952pgr.9
- for <qemu-arm@nongnu.org>; Fri, 05 Mar 2021 10:40:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=6DnqYV2qhu32scty/F7T/6bVDk8dFU19TMQvSpzPB6I=;
- b=hJ0PZXMHataaSS3PiK96IAnNvpnevLZzaHEhwZPqDD1/5w2Nv4SMc2KpLz8fK4BM7x
- JRGo+4hfoiPKmwPCqWONW8n8D2FeuRWf89wJjtwW0SUtU1TKJOp64FdTcbxOnsYuaTgR
- 3gQa/JHqECJhTlZncDwL2Qsbny/XtS9nfjdm18adLmBjOgt+A+QszBturvpSy4lmd6KN
- ueUGVquB8pJuxjnWL02lmAcuRJ11oj3OyNVEOKQMMRCFHjG2jS9wyRjq98NJWPoa/m3L
- 3qYmJHe9poJlMBwIljMQpC8Rg6urX5EPgzIiwgUhGY3TrL0QEvr70Bifv8aUjA2mSg3M
- 7OIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=6DnqYV2qhu32scty/F7T/6bVDk8dFU19TMQvSpzPB6I=;
- b=S/AVFgMnOQQssZv3xI6nqHjdu8PdJdgPZnVOQuPxCIghG3BZBSXKnmzVyMnYCWu87Z
- nhQvH5IOdMlJX3XZWGswDg/yWQsxtDoZ3A/q1sycwn0DxTWkhPzyD+Y5lQfxNcg4vdig
- /9uBIByfJe1N9pLrgzFCyV+96ClJTRgkSOyJ/jLolG2xazLp2eNIxSaOh6N6ae2q8BKf
- cCK6tKtZilDSG7z/l7bqSZ8L2qBT4Usz29R6MIra4NcCY79la6MeFdue66QjR70Zkpw6
- VF+o69yaf66bD+1okcQvGE0nYNKiJM960oDTEOdfL10ZQYn5hOfpMtJZMLb0/n0iwqBE
- ohGw==
-X-Gm-Message-State: AOAM5324aUST2RmpeuKN0R1sGsx8ndotqYtpze8E2fffDSpIR2VWO0hw
- 3E8lxwDyg80dcUREOiVutEBEatJ8zs+Tsg==
-X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:902:aa87:b029:e5:e1fc:be6 with SMTP
- id d7-20020a170902aa87b02900e5e1fc0be6mr7021186plr.4.1614969618672; Fri, 05
- Mar 2021 10:40:18 -0800 (PST)
-Date: Fri,  5 Mar 2021 10:38:56 -0800
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lIFix-00082H-1U; Fri, 05 Mar 2021 14:02:55 -0500
+Resent-Date: Fri, 05 Mar 2021 14:02:55 -0500
+Resent-Message-Id: <E1lIFix-00082H-1U@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21399)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1lIFiu-0005eT-E2; Fri, 05 Mar 2021 14:02:54 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1614970950; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=IGJlhwkNh6Y5AjFpZmuIdaMn1etJmvsZ9KYueYbdyVWCLK5SPJZirGdsFkUxgnY0pRDK74cF/X9SRY4mSwtNyn3JY19Yh9We6uBJj5ldiT+mHdKhRmdB63hWd33mdGFWxMjOLmv/somFX63+cbzz058VyXCX/ofIaq6jBRNqQrY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1614970950;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=42quQYIzb/Egk9lLeL4+7KBGHMPQalO6NfhPAqQzR4g=; 
+ b=Uph92pg2XPgrMwCeCtHiJ/3lA/wPrj380DYee7FyTd18UEuGcuiv314r7ylecU6KDQAVnWiKGMFZC3zKSVuWUSOYpYTBB+amWn2GHgWuoQ/BEFUDzQKgwPPUO9OIFn/7qizaSoCIPR8N4YglE4l/LvaS5sl3n82PO1f65RXpYLU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1614970850719133.2847356561682;
+ Fri, 5 Mar 2021 11:00:50 -0800 (PST)
 In-Reply-To: <20210305183857.3120188-1-wuhaotsh@google.com>
-Message-Id: <20210305183857.3120188-4-wuhaotsh@google.com>
-Mime-Version: 1.0
-References: <20210305183857.3120188-1-wuhaotsh@google.com>
-X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
-Subject: [PATCH 3/4] hw/arm: Connect PWM fans in NPCM7XX boards
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, wuhaotsh@google.com, hskinnemoen@google.com, 
- venture@google.com, dje@google.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3EntCYAgKCBsNL81FKJ87FF7C5.3FDH5DL-1IDEFE7EL.FI7@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x54a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+Subject: Re: [PATCH 0/4] hw/misc: Add NPCM7XX Tachometer Device
+Message-ID: <161497084913.14855.6309011504141188246@c667a6b167f6>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: qemu-devel@nongnu.org
+Date: Fri, 5 Mar 2021 11:00:50 -0800 (PST)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Hao Wu <wuhaotsh@google.com>
-From:  Hao Wu via <qemu-arm@nongnu.org>
-X-TUID: knLYNVcOE1R/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, venture@google.com, qemu-devel@nongnu.org,
+ hskinnemoen@google.com, wuhaotsh@google.com, kfting@nuvoton.com,
+ qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com, dje@google.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dO3Ea+Jv+0iS
 
-This patch adds fan_splitters (split IRQs) in NPCM7XX boards. Each fan
-splitter corresponds to 1 PWM output and can connect to multiple fan
-inputs (MFT devices).
-In NPCM7XX boards(NPCM750 EVB and Quanta GSJ boards), we initializes
-these splitters and connect them to their corresponding modules
-according their specific device trees.
-
-Reviewed-by: Doug Evans <dje@google.com>
-Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
----
- hw/arm/npcm7xx_boards.c  | 99 ++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/npcm7xx.h | 11 ++++-
- 2 files changed, 109 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index fbf6ce8e02..e22fe4bf8f 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -21,6 +21,7 @@
- #include "hw/core/cpu.h"
- #include "hw/i2c/smbus_eeprom.h"
- #include "hw/loader.h"
-+#include "hw/qdev-core.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
-@@ -116,6 +117,64 @@ static void at24c_eeprom_init(NPCM7xxState *soc, int bus, uint8_t addr,
-     i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
- }
- 
-+static void npcm7xx_init_pwm_splitter(NPCM7xxMachine *machine,
-+                                      NPCM7xxState *soc, const int *fan_counts)
-+{
-+    SplitIRQ *splitters = machine->fan_splitter;
-+
-+    /*
-+     * PWM 0~3 belong to module 0 output 0~3.
-+     * PWM 4~7 belong to module 1 output 0~3.
-+     */
-+    for (int i = 0; i < NPCM7XX_NR_PWM_MODULES; ++i) {
-+        for (int j = 0; j < NPCM7XX_PWM_PER_MODULE; ++j) {
-+            int splitter_no = i * NPCM7XX_PWM_PER_MODULE + j;
-+            DeviceState *splitter;
-+
-+            if (fan_counts[splitter_no] < 1) {
-+                continue;
-+            }
-+            object_initialize_child(OBJECT(machine), "fan-splitter[*]",
-+                                    &splitters[splitter_no], TYPE_SPLIT_IRQ);
-+            splitter = DEVICE(&splitters[splitter_no]);
-+            qdev_prop_set_uint16(splitter, "num-lines",
-+                                 fan_counts[splitter_no]);
-+            qdev_realize(splitter, NULL, &error_abort);
-+            qdev_connect_gpio_out_named(DEVICE(&soc->pwm[i]), "duty-gpio-out",
-+                                        j, qdev_get_gpio_in(splitter, 0));
-+        }
-+    }
-+}
-+
-+static void npcm7xx_connect_pwm_fan(NPCM7xxState *soc, SplitIRQ *splitter,
-+                                    int fan_no, int output_no)
-+{
-+    DeviceState *fan;
-+    int fan_input;
-+    qemu_irq fan_duty_gpio;
-+
-+    g_assert(fan_no >= 0 && fan_no <= NPCM7XX_MFT_MAX_FAN_INPUT);
-+    /*
-+     * Fan 0~1 belong to module 0 input 0~1.
-+     * Fan 2~3 belong to module 1 input 0~1.
-+     * ...
-+     * Fan 14~15 belong to module 7 input 0~1.
-+     * Fan 16~17 belong to module 0 input 2~3.
-+     * Fan 18~19 belong to module 1 input 2~3.
-+     */
-+    if (fan_no < 16) {
-+        fan = DEVICE(&soc->mft[fan_no / 2]);
-+        fan_input = fan_no % 2;
-+    } else {
-+        fan = DEVICE(&soc->mft[(fan_no - 16) / 2]);
-+        fan_input = fan_no % 2 + 2;
-+    }
-+
-+    /* Connect the Fan to PWM module */
-+    fan_duty_gpio = qdev_get_gpio_in_named(fan, "duty", fan_input);
-+    qdev_connect_gpio_out(DEVICE(splitter), output_no, fan_duty_gpio);
-+}
-+
- static void npcm750_evb_i2c_init(NPCM7xxState *soc)
- {
-     /* lm75 temperature sensor on SVB, tmp105 is compatible */
-@@ -128,6 +187,30 @@ static void npcm750_evb_i2c_init(NPCM7xxState *soc)
-     i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
- }
- 
-+static void npcm750_evb_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
-+{
-+    SplitIRQ *splitter = machine->fan_splitter;
-+    static const int fan_counts[] = {2, 2, 2, 2, 2, 2, 2, 2};
-+
-+    npcm7xx_init_pwm_splitter(machine, soc, fan_counts);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[0], 0x00, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[0], 0x01, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[1], 0x02, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[1], 0x03, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[2], 0x04, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[2], 0x05, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[3], 0x06, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[3], 0x07, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[4], 0x08, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[4], 0x09, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[5], 0x0a, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[5], 0x0b, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[6], 0x0c, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[6], 0x0d, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[7], 0x0e, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[7], 0x0f, 1);
-+}
-+
- static void quanta_gsj_i2c_init(NPCM7xxState *soc)
- {
-     /* GSJ machine have 4 max31725 temperature sensors, tmp105 is compatible. */
-@@ -142,6 +225,20 @@ static void quanta_gsj_i2c_init(NPCM7xxState *soc)
-     /* TODO: Add additional i2c devices. */
- }
- 
-+static void quanta_gsj_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
-+{
-+    SplitIRQ *splitter = machine->fan_splitter;
-+    static const int fan_counts[] = {2, 2, 2, 0, 0, 0, 0, 0};
-+
-+    npcm7xx_init_pwm_splitter(machine, soc, fan_counts);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[0], 0x00, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[0], 0x01, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[1], 0x02, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[1], 0x03, 1);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[2], 0x04, 0);
-+    npcm7xx_connect_pwm_fan(soc, &splitter[2], 0x05, 1);
-+}
-+
- static void npcm750_evb_init(MachineState *machine)
- {
-     NPCM7xxState *soc;
-@@ -153,6 +250,7 @@ static void npcm750_evb_init(MachineState *machine)
-     npcm7xx_load_bootrom(machine, soc);
-     npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
-     npcm750_evb_i2c_init(soc);
-+    npcm750_evb_fan_init(NPCM7XX_MACHINE(machine), soc);
-     npcm7xx_load_kernel(machine, soc);
- }
- 
-@@ -168,6 +266,7 @@ static void quanta_gsj_init(MachineState *machine)
-     npcm7xx_connect_flash(&soc->fiu[0], 0, "mx25l25635e",
-                           drive_get(IF_MTD, 0, 0));
-     quanta_gsj_i2c_init(soc);
-+    quanta_gsj_fan_init(NPCM7XX_MACHINE(machine), soc);
-     npcm7xx_load_kernel(machine, soc);
- }
- 
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 42d4c1f717..82036898d4 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -18,6 +18,7 @@
- 
- #include "hw/boards.h"
- #include "hw/adc/npcm7xx_adc.h"
-+#include "hw/core/split-irq.h"
- #include "hw/cpu/a9mpcore.h"
- #include "hw/gpio/npcm7xx_gpio.h"
- #include "hw/i2c/npcm7xx_smbus.h"
-@@ -47,8 +48,16 @@
- #define NPCM7XX_GIC_CPU_IF_ADDR         (0xf03fe100)  /* GIC within A9 */
- #define NPCM7XX_BOARD_SETUP_ADDR        (0xffff1000)  /* Boot ROM */
- 
-+#define NPCM7XX_NR_PWM_MODULES 2
-+
- typedef struct NPCM7xxMachine {
-     MachineState        parent;
-+    /*
-+     * PWM fan splitter. each splitter connects to one PWM output and
-+     * multiple MFT inputs.
-+     */
-+    SplitIRQ            fan_splitter[NPCM7XX_NR_PWM_MODULES *
-+                                     NPCM7XX_PWM_PER_MODULE];
- } NPCM7xxMachine;
- 
- #define TYPE_NPCM7XX_MACHINE MACHINE_TYPE_NAME("npcm7xx")
-@@ -81,7 +90,7 @@ typedef struct NPCM7xxState {
-     NPCM7xxCLKState     clk;
-     NPCM7xxTimerCtrlState tim[3];
-     NPCM7xxADCState     adc;
--    NPCM7xxPWMState     pwm[2];
-+    NPCM7xxPWMState     pwm[NPCM7XX_NR_PWM_MODULES];
-     NPCM7xxMFTState     mft[8];
-     NPCM7xxOTPState     key_storage;
-     NPCM7xxOTPState     fuse_array;
--- 
-2.30.1.766.gb4fecdf3b7-goog
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIxMDMwNTE4Mzg1Ny4zMTIw
+MTg4LTEtd3VoYW90c2hAZ29vZ2xlLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBo
+YXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3Jl
+IGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjEwMzA1MTgzODU3LjMx
+MjAxODgtMS13dWhhb3RzaEBnb29nbGUuY29tClN1YmplY3Q6IFtQQVRDSCAwLzRdIGh3L21pc2M6
+IEFkZCBOUENNN1hYIFRhY2hvbWV0ZXIgRGV2aWNlCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09
+CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0
+IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
+Zi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3Jh
+bQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJ
+UFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcx
+MzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogLSBbdGFn
+IHVwZGF0ZV0gICAgICBwYXRjaGV3LzIwMjEwMzAyMTc1NzQxLjEwNzk4NTEtMS1yaWNoYXJkLmhl
+bmRlcnNvbkBsaW5hcm8ub3JnIC0+IHBhdGNoZXcvMjAyMTAzMDIxNzU3NDEuMTA3OTg1MS0xLXJp
+Y2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8y
+MDIxMDMwNTE3MDA0NS44Njk0MzctMS1rYmFzdGlhbkBtYWlsLnVuaS1wYWRlcmJvcm4uZGUgLT4g
+cGF0Y2hldy8yMDIxMDMwNTE3MDA0NS44Njk0MzctMS1rYmFzdGlhbkBtYWlsLnVuaS1wYWRlcmJv
+cm4uZGUKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIxMDMwNTE3MTUxNS4xMDM4LTEt
+cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnIC0+IHBhdGNoZXcvMjAyMTAzMDUxNzE1MTUuMTAzOC0x
+LXBldGVyLm1heWRlbGxAbGluYXJvLm9yZwogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIw
+MjEwMzA1MTgzODU3LjMxMjAxODgtMS13dWhhb3RzaEBnb29nbGUuY29tIC0+IHBhdGNoZXcvMjAy
+MTAzMDUxODM4NTcuMzEyMDE4OC0xLXd1aGFvdHNoQGdvb2dsZS5jb20KU3dpdGNoZWQgdG8gYSBu
+ZXcgYnJhbmNoICd0ZXN0Jwo3YjE4MTAxIHRlc3RzL3F0ZXN0OiBUZXN0IFBXTSBmYW4gUlBNIHVz
+aW5nIE1GVCBpbiBQV00gdGVzdAo1Mzc5OWU2IGh3L2FybTogQ29ubmVjdCBQV00gZmFucyBpbiBO
+UENNN1hYIGJvYXJkcwo5MjI2YjZkIGh3L21pc2M6IEFkZCBOUENNN1hYIE1GVCBNb2R1bGUKNDAz
+NzYyYSBody9taXNjOiBBZGQgR1BJT3MgZm9yIGR1dHkgaW4gTlBDTTd4eCBQV00KCj09PSBPVVRQ
+VVQgQkVHSU4gPT09CjEvNCBDaGVja2luZyBjb21taXQgNDAzNzYyYTQ2YWU5IChody9taXNjOiBB
+ZGQgR1BJT3MgZm9yIGR1dHkgaW4gTlBDTTd4eCBQV00pCkVSUk9SOiBBdXRob3IgZW1haWwgYWRk
+cmVzcyBpcyBtYW5nbGVkIGJ5IHRoZSBtYWlsaW5nIGxpc3QKIzI6IApBdXRob3I6IEhhbyBXdSB2
+aWEgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4KCnRvdGFsOiAxIGVycm9ycywgMCB3YXJuaW5ncywg
+MzggbGluZXMgY2hlY2tlZAoKUGF0Y2ggMS80IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJl
+dmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQg
+dGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgoy
+LzQgQ2hlY2tpbmcgY29tbWl0IDkyMjZiNmQ0MThjYSAoaHcvbWlzYzogQWRkIE5QQ003WFggTUZU
+IE1vZHVsZSkKVXNlIG9mIHVuaW5pdGlhbGl6ZWQgdmFsdWUgJGFjcGlfdGVzdGV4cGVjdGVkIGlu
+IHN0cmluZyBlcSBhdCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCBsaW5lIDE1MjkuCkVSUk9SOiBB
+dXRob3IgZW1haWwgYWRkcmVzcyBpcyBtYW5nbGVkIGJ5IHRoZSBtYWlsaW5nIGxpc3QKIzI6IApB
+dXRob3I6IEhhbyBXdSB2aWEgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4KCldBUk5JTkc6IGFkZGVk
+LCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGlu
+Zz8KIzE1MTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMSBlcnJvcnMsIDEgd2Fybmlu
+Z3MsIDczNSBsaW5lcyBjaGVja2VkCgpQYXRjaCAyLzQgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVh
+c2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJl
+cG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVS
+Uy4KCjMvNCBDaGVja2luZyBjb21taXQgNTM3OTllNjBjMTY2IChody9hcm06IENvbm5lY3QgUFdN
+IGZhbnMgaW4gTlBDTTdYWCBib2FyZHMpCkVSUk9SOiBBdXRob3IgZW1haWwgYWRkcmVzcyBpcyBt
+YW5nbGVkIGJ5IHRoZSBtYWlsaW5nIGxpc3QKIzI6IApBdXRob3I6IEhhbyBXdSB2aWEgPHFlbXUt
+ZGV2ZWxAbm9uZ251Lm9yZz4KCnRvdGFsOiAxIGVycm9ycywgMCB3YXJuaW5ncywgMTY2IGxpbmVz
+IGNoZWNrZWQKClBhdGNoIDMvNCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJ
+ZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8g
+dGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKNC80IENoZWNr
+aW5nIGNvbW1pdCA3YjE4MTAxNzFkZTMgKHRlc3RzL3F0ZXN0OiBUZXN0IFBXTSBmYW4gUlBNIHVz
+aW5nIE1GVCBpbiBQV00gdGVzdCkKRVJST1I6IEF1dGhvciBlbWFpbCBhZGRyZXNzIGlzIG1hbmds
+ZWQgYnkgdGhlIG1haWxpbmcgbGlzdAojMjogCkF1dGhvcjogSGFvIFd1IHZpYSA8cWVtdS1kZXZl
+bEBub25nbnUub3JnPgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAyODcgbGluZXMgY2hl
+Y2tlZAoKUGF0Y2ggNC80IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFu
+eSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUg
+bWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVO
+RCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlz
+IGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIxMDMwNTE4Mzg1Ny4zMTIw
+MTg4LTEtd3VoYW90c2hAZ29vZ2xlLmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2Fn
+ZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8v
+cGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVs
+QHJlZGhhdC5jb20=

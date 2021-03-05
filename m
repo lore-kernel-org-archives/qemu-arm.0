@@ -1,83 +1,83 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp73153lfg;
-        Thu, 4 Mar 2021 22:14:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxiiHo6EbwXCt3gyuQ4uSMDZDHjcucC+2e5auUvxKs8g8iIhQb5koIi125rd1FH3d/+o/VO
-X-Received: by 2002:a25:4086:: with SMTP id n128mr11253835yba.522.1614924880820;
-        Thu, 04 Mar 2021 22:14:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614924880; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp112357lfg;
+        Thu, 4 Mar 2021 23:27:41 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw6+EKCTvLdT1AJozC/T2pcy9XeqUNaXldladw+3KzWQ2lY/583K6n+jn31MV8AAIFegY3Q
+X-Received: by 2002:a92:dc87:: with SMTP id c7mr7613731iln.279.1614929261689;
+        Thu, 04 Mar 2021 23:27:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614929261; cv=none;
         d=google.com; s=arc-20160816;
-        b=iBMFgMd+qzYUIa1epMjAghscdkVjfSJpWcOjyk7qrDtLs77drUKBeIWXN172EUfJlw
-         Bel7pDnYsjcJtQWsbSRsgvXIGLoNN42FZ+EFgh88njg98P5prGaa2huvpXwJYNRyA2Am
-         BkilgnX/tFc27EZmuQiS9J+4Z6zxTzHVKuQwUWMLORCIg81qwktbzwRabJd0x/nbKQ3M
-         7Z8+oGuHV8CPiee7qaJe7UOBUaXF3Tk8QaFICdhbi8e2Z8+FdKFwSstSSLXUmeOrtXxZ
-         wl9JyqdQ3mZhik3LSiDwuowx3l99eHEWiKYgK22eKJTgYGAGJ0BQct4mIFu5ky50c0v7
-         dNWQ==
+        b=m83Rx7ptMOUpwgYConJqStVkBkmDYnfCDd2dNS9bxZHtrQ6OIfPnaQ3gFTCXVXmdlv
+         v5StukCXqsw8eSp3Rrrl+A8xYfKzMGX+jEPgmEKGyLyLyCUP8Zx4yIXAcCy7Smw8EYgF
+         yP1vMVep8If3IeoQoG4A7zrBH54X1fMvFFpdee2WwMroacBJxoQrjxq9D2RG2+nMPQUR
+         f/rT0m0vXvV1TwB9kjDlTSEylu3Z+Aaky1A2wdHTUBWDIwh59QJh0pPLz8nYGvCjs7BL
+         pODRJVfDC25eOb364SWj7QsMIqj9d9uxFBskH1R6j08x3EeE6L5a8hkOw7dp2RJwUiKc
+         JcVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=MEhK3vHh6mrHI14BrH9fzyA4dJPnS73bbWJTf9WzY/U=;
-        b=FGSIbJ7kJnFHr4z0odZ8/TXe2GmHeRm1+A7uiIKtiWz3ba3OA44JI8hPwWyMbUhweV
-         Usb2vgbIflexyvodr1Plkts289xmj2XAynu27Nyd4vIpT0YF90n/F3WZgVEaGnQ4dobv
-         LNYYf9xdU+TUICuRKRESTxQg22HkN97eU8ROFa77kfK5mxUq2QgFcM8Bgh4BRuB229Hu
-         gjUEuFhk6mRJcsDMySmZbLRaEdJdYizbpfDrhiehCYVHc6cjuunJLQ5n5KXZb+Cw5qGR
-         ug7WgeeNk2arFKMZ5wdn1O3A3n2KdgYA5dM0/ft9XfjGbe+xCNaW1nfMrt59itokesoh
-         OOIA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=8WZJpM23PzLpGCPV7VYmfOBzRdZUZED0ZK4dvzZ4x5Y=;
+        b=TfLUUg5ffAoO+34kqOcLqRvVw2QmeVrKHIr0HFCaLlyaAf14q9sVUdLv4S7WNm9DBr
+         jrPvG/dTlJloNsFfNoJxE3h9R1XkELLwffRQn6V5BztGcKZWuqnxg8TSFHfj3i7PKOYj
+         PIHNj2gto8Rx0jAsBjnJY21YYLrOKLRR36H1jU31gA7Y46IqEcI2zkekq3IGh1Om1jXB
+         lRsVbXJScNKQWnz3MepOC7rudVtnKFdSRYuuh2iY9c5CDiAQS3VaAMwTMLcobrVremXj
+         b68ueVsLTNGokKSUqGZa+6aZ36AilXADwrjU+pWPB6gNG7hPIVuy6zNh7PFF03NZLMVj
+         GTaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x126si1612492ybx.192.2021.03.04.22.14.40
+        by mx.google.com with ESMTPS id p12si1430554ilo.118.2021.03.04.23.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Mar 2021 22:14:40 -0800 (PST)
+        Thu, 04 Mar 2021 23:27:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34032 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lI3jU-0000oC-1y
-	for alex.bennee@linaro.org; Fri, 05 Mar 2021 01:14:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53178)
+	id 1lI4s8-00037Q-Tw
+	for alex.bennee@linaro.org; Fri, 05 Mar 2021 02:27:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36984)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1lI3jK-0000nn-G2; Fri, 05 Mar 2021 01:14:30 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3319)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1lI4rg-00035f-T6; Fri, 05 Mar 2021 02:27:12 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167]:40958
+ helo=mail.default.ilande.uk0.bigv.io)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1lI3jH-00061r-6H; Fri, 05 Mar 2021 01:14:30 -0500
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4DsHSj4ng3zlSJ5;
- Fri,  5 Mar 2021 14:12:05 +0800 (CST)
-Received: from [10.174.186.67] (10.174.186.67) by
- DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 5 Mar 2021 14:14:06 +0800
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Introduce cpu topology support
-To: Andrew Jones <drjones@redhat.com>
-References: <20210225085627.2263-1-fangying1@huawei.com>
- <20210225120255.4gfbtsflbdsyxizn@kamzik.brq.redhat.com>
- <261f7e04-ea59-6883-981f-3891c240416e@huawei.com>
- <20210301094804.teo4szecdppo5dp5@kamzik.brq.redhat.com>
-From: Ying Fang <fangying1@huawei.com>
-Message-ID: <50ae84fd-14d6-e74f-1afb-5b87be599ca2@huawei.com>
-Date: Fri, 5 Mar 2021 14:14:06 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1lI4rd-0008Rw-UD; Fri, 05 Mar 2021 02:27:12 -0500
+Received: from host86-148-34-47.range86-148.btcentralplus.com ([86.148.34.47]
+ helo=[192.168.1.65]) by mail.default.ilande.uk0.bigv.io with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1lI4rM-0002B1-C8; Fri, 05 Mar 2021 07:26:57 +0000
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <20210304140229.575481-1-armbru@redhat.com>
+ <20210304140229.575481-2-armbru@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <c57e14cb-ce56-c24b-f49b-523f311805f8@ilande.co.uk>
+Date: Fri, 5 Mar 2021 07:26:40 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
-In-Reply-To: <20210301094804.teo4szecdppo5dp5@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <20210304140229.575481-2-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.67]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
- helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-SA-Exim-Connect-IP: 86.148.34.47
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v2 1/2] hw: Replace anti-social QOM type names
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk;
+ helo=mail.default.ilande.uk0.bigv.io
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -91,169 +91,530 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, salil.mehta@huawei.com,
- zhang.zhanghailiang@huawei.com, mst@redhat.com, qemu-devel@nongnu.org,
- shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
- imammedo@redhat.com
+Cc: peter.maydell@linaro.org, mst@redhat.com, frederic.konrad@adacore.com,
+ kraxel@redhat.com, mreitz@redhat.com, qemu-block@nongnu.org,
+ quintela@redhat.com, andrew.smirnov@gmail.com, marcandre.lureau@redhat.com,
+ atar4qemu@gmail.com, ehabkost@redhat.com, alistair@alistair23.me,
+ dgilbert@redhat.com, chouteau@adacore.com, qemu-arm@nongnu.org,
+ peter.chubb@nicta.com.au, jsnow@redhat.com, kwolf@redhat.com,
+ berrange@redhat.com, jcd@tribudubois.net, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LS5fturRU6Qu
+X-TUID: d8W0AX1EHsJ8
 
+On 04/03/2021 14:02, Markus Armbruster wrote:
 
-
-On 3/1/2021 5:48 PM, Andrew Jones wrote:
-> On Fri, Feb 26, 2021 at 04:41:45PM +0800, Ying Fang wrote:
->>
->>
->> On 2/25/2021 8:02 PM, Andrew Jones wrote:
->>> On Thu, Feb 25, 2021 at 04:56:22PM +0800, Ying Fang wrote:
->>>> An accurate cpu topology may help improve the cpu scheduler's decision
->>>> making when dealing with multi-core system. So cpu topology description
->>>> is helpful to provide guest with the right view. Dario Faggioli's talk
->>>> in [0] also shows the virtual topology may has impact on sched performace.
->>>> Thus this patch series is posted to introduce cpu topology support for
->>>> arm platform.
->>>>
->>>> Both fdt and ACPI are introduced to present the cpu topology. To describe
->>>> the cpu topology via ACPI, a PPTT table is introduced according to the
->>>> processor hierarchy node structure. This series is derived from [1], in
->>>> [1] we are trying to bring both cpu and cache topology support for arm
->>>> platform, but there is still some issues to solve to support the cache
->>>> hierarchy. So we split the cpu topology part out and send it seperately.
->>>> The patch series to support cache hierarchy will be send later since
->>>> Salil Mehta's cpu hotplug feature need the cpu topology enabled first and
->>>> he is waiting for it to be upstreamed.
->>>>
->>>> This patch series was initially based on the patches posted by Andrew Jones [2].
->>>> I jumped in on it since some OS vendor cooperative partner are eager for it.
->>>> Thanks for Andrew's contribution.
->>>>
->>>> After applying this patch series, launch a guest with virt-6.0 and cpu
->>>> topology configured with sockets:cores:threads = 2:4:2, you will get the
->>>> bellow messages with the lscpu command.
->>>>
->>>> -----------------------------------------
->>>> Architecture:                    aarch64
->>>> CPU op-mode(s):                  64-bit
->>>> Byte Order:                      Little Endian
->>>> CPU(s):                          16
->>>> On-line CPU(s) list:             0-15
->>>> Thread(s) per core:              2
->>>
->>> What CPU model was used? Did it actually support threads? If these were
->>
->> It's tested on Huawei Kunpeng 920 CPU model and vcpu host-passthrough.
->> It does not support threads for now, but the next version 930 may
->> support it. Here we emulate a virtual cpu topology, a virtual 2 threads
->> is used to do the test.
->>
->>
->>> KVM VCPUs, then I guess MPIDR.MT was not set on the CPUs. Apparently
->>> that didn't confuse Linux? See [1] for how I once tried to deal with
->>> threads.
->>>
->>> [1] https://github.com/rhdrjones/qemu/commit/60218e0dd7b331031b644872d56f2aca42d0ff1e
->>>
->>
->> If ACPI PPTT table is specified, the linux kernel won't check the MPIDR
->> register to populate cpu topology. Moreover MPIDR does not ensure a
->> right cpu topology. So it won't be a problem if MPIDR.MT is not set.
+> Several QOM type names contain ',':
 > 
-> OK, so Linux doesn't care about MPIDR.MT with ACPI. What happens with
-> DT?
-
-Behind the logical of Linux kernel, it tries to parse cpu topology in
-smp_prepare_cpus (arch/arm64/kernel/topology.c). If cpu topology is
-provided via DT, Linux kernel won't check MPIDR any more. This is the
-same with ACPI enabled.
-
+>      ARM,bitband-memory
+>      etraxfs,pic
+>      etraxfs,serial
+>      etraxfs,timer
+>      fsl,imx25
+>      fsl,imx31
+>      fsl,imx6
+>      fsl,imx6ul
+>      fsl,imx7
+>      grlib,ahbpnp
+>      grlib,apbpnp
+>      grlib,apbuart
+>      grlib,gptimer
+>      grlib,irqmp
+>      qemu,register
+>      SUNW,bpp
+>      SUNW,CS4231
+>      SUNW,DBRI
+>      SUNW,DBRI.prom
+>      SUNW,fdtwo
+>      SUNW,sx
+>      SUNW,tcx
+>      xilinx,zynq_slcr
+>      xlnx,zynqmp
+>      xlnx,zynqmp-pmu-soc
+>      xlnx,zynq-xadc
 > 
->>
->>>> Core(s) per socket:              4
->>>> Socket(s):                       2
->>>
->>> Good, but what happens if you specify '-smp 16'? Do you get 16 sockets
->                ^^ You didn't answer this question.
-
-The latest qemu use smp_parse the parse -smp command line, by default if
--smp 16 is given, arm64 virt machine will get 16 sockets.
-
+> These are all device types.  They can't be plugged with -device /
+> device_add, except for xlnx,zynqmp-pmu-soc, and I doubt that one
+> actually works.
 > 
->>> each with 1 core? Or, do you get 1 socket with 16 cores? And, which do
->>> we want and why? If you look at [2], then you'll see I was assuming we
->>> want to prefer cores over sockets, since without topology descriptions
->>> that's what the Linux guest kernel would do.
->>>
->>> [2] https://github.com/rhdrjones/qemu/commit/c0670b1bccb4d08c7cf7c6957cc8878a2af131dd
->>>
-
-Thanks, I'll check the default way Linux does.
-
->>>> NUMA node(s):                    2
->>>
->>> Why do we have two NUMA nodes in the guest? The two sockets in the
->>> guest should not imply this.
->>
->> The two NUMA nodes are emulated by Qemu since we already have guest numa
->> topology feature.
+> They *can* be used with -device / device_add to request help.
+> Usability is poor, though: you have to double the comma, like this:
 > 
-> That's what I suspected, and I presume only a single node is present when
-> you don't use QEMU's NUMA feature - even when you supply a VCPU topology
-> with multiple sockets?
+>      $ qemu-system-x86_64 -device SUNW,,fdtwo,help
+> 
+> Trap for the unwary.  The fact that this was broken in
+> device-introspect-test for more than six years until commit e27bd49876
+> fixed it demonstrates that "the unwary" includes seasoned developers.
+> 
+> One QOM type name contains ' ': "ICH9 SMB".  Because having to
+> remember just one way to quote would be too easy.
+> 
+> Rename the "SUNW,FOO types to "sun-FOO".  Summarily replace ',' and '
+> ' by '-' in the other type names.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>   include/hw/arm/armv7m.h                      |  2 +-
+>   include/hw/arm/fsl-imx25.h                   |  2 +-
+>   include/hw/arm/fsl-imx31.h                   |  2 +-
+>   include/hw/arm/fsl-imx6.h                    |  2 +-
+>   include/hw/arm/fsl-imx6ul.h                  |  2 +-
+>   include/hw/arm/fsl-imx7.h                    |  2 +-
+>   include/hw/arm/xlnx-zynqmp.h                 |  2 +-
+>   include/hw/cris/etraxfs.h                    |  2 +-
+>   include/hw/i386/ich9.h                       |  2 +-
+>   include/hw/misc/grlib_ahb_apb_pnp.h          |  4 ++--
+>   include/hw/misc/zynq-xadc.h                  |  2 +-
+>   include/hw/register.h                        |  2 +-
+>   include/hw/sparc/grlib.h                     |  6 +++---
+>   hw/arm/xilinx_zynq.c                         |  2 +-
+>   hw/audio/cs4231.c                            |  2 +-
+>   hw/block/fdc.c                               |  4 ++--
+>   hw/char/etraxfs_ser.c                        |  2 +-
+>   hw/cris/axis_dev88.c                         |  6 +++---
+>   hw/display/tcx.c                             |  2 +-
+>   hw/intc/etraxfs_pic.c                        |  2 +-
+>   hw/microblaze/xlnx-zynqmp-pmu.c              |  2 +-
+>   hw/misc/zynq_slcr.c                          |  2 +-
+>   hw/sparc/sun4m.c                             | 12 ++++++------
+>   hw/timer/etraxfs_timer.c                     |  2 +-
+>   softmmu/vl.c                                 |  2 +-
+>   tests/vmstate-static-checker-data/dump1.json |  4 ++--
+>   tests/vmstate-static-checker-data/dump2.json |  4 ++--
+>   27 files changed, 40 insertions(+), 40 deletions(-)
+> 
+> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+> index 0791dcb68a..189b23a8ce 100644
+> --- a/include/hw/arm/armv7m.h
+> +++ b/include/hw/arm/armv7m.h
+> @@ -15,7 +15,7 @@
+>   #include "target/arm/idau.h"
+>   #include "qom/object.h"
+>   
+> -#define TYPE_BITBAND "ARM,bitband-memory"
+> +#define TYPE_BITBAND "ARM-bitband-memory"
+>   OBJECT_DECLARE_SIMPLE_TYPE(BitBandState, BITBAND)
+>   
+>   struct BitBandState {
+> diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+> index c1603b2ac2..1b1086e945 100644
+> --- a/include/hw/arm/fsl-imx25.h
+> +++ b/include/hw/arm/fsl-imx25.h
+> @@ -34,7 +34,7 @@
+>   #include "target/arm/cpu.h"
+>   #include "qom/object.h"
+>   
+> -#define TYPE_FSL_IMX25 "fsl,imx25"
+> +#define TYPE_FSL_IMX25 "fsl-imx25"
+>   OBJECT_DECLARE_SIMPLE_TYPE(FslIMX25State, FSL_IMX25)
+>   
+>   #define FSL_IMX25_NUM_UARTS 5
+> diff --git a/include/hw/arm/fsl-imx31.h b/include/hw/arm/fsl-imx31.h
+> index b9792d58ae..c116a73e0b 100644
+> --- a/include/hw/arm/fsl-imx31.h
+> +++ b/include/hw/arm/fsl-imx31.h
+> @@ -30,7 +30,7 @@
+>   #include "target/arm/cpu.h"
+>   #include "qom/object.h"
+>   
+> -#define TYPE_FSL_IMX31 "fsl,imx31"
+> +#define TYPE_FSL_IMX31 "fsl-imx31"
+>   OBJECT_DECLARE_SIMPLE_TYPE(FslIMX31State, FSL_IMX31)
+>   
+>   #define FSL_IMX31_NUM_UARTS 2
+> diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
+> index 29cc425acc..83291457cf 100644
+> --- a/include/hw/arm/fsl-imx6.h
+> +++ b/include/hw/arm/fsl-imx6.h
+> @@ -36,7 +36,7 @@
+>   #include "cpu.h"
+>   #include "qom/object.h"
+>   
+> -#define TYPE_FSL_IMX6 "fsl,imx6"
+> +#define TYPE_FSL_IMX6 "fsl-imx6"
+>   OBJECT_DECLARE_SIMPLE_TYPE(FslIMX6State, FSL_IMX6)
+>   
+>   #define FSL_IMX6_NUM_CPUS 4
+> diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
+> index f8ebfba4f9..7812e516a5 100644
+> --- a/include/hw/arm/fsl-imx6ul.h
+> +++ b/include/hw/arm/fsl-imx6ul.h
+> @@ -40,7 +40,7 @@
+>   #include "cpu.h"
+>   #include "qom/object.h"
+>   
+> -#define TYPE_FSL_IMX6UL "fsl,imx6ul"
+> +#define TYPE_FSL_IMX6UL "fsl-imx6ul"
+>   OBJECT_DECLARE_SIMPLE_TYPE(FslIMX6ULState, FSL_IMX6UL)
+>   
+>   enum FslIMX6ULConfiguration {
+> diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
+> index 161fdc36da..f5d527a490 100644
+> --- a/include/hw/arm/fsl-imx7.h
+> +++ b/include/hw/arm/fsl-imx7.h
+> @@ -41,7 +41,7 @@
+>   #include "cpu.h"
+>   #include "qom/object.h"
+>   
+> -#define TYPE_FSL_IMX7 "fsl,imx7"
+> +#define TYPE_FSL_IMX7 "fsl-imx7"
+>   OBJECT_DECLARE_SIMPLE_TYPE(FslIMX7State, FSL_IMX7)
+>   
+>   enum FslIMX7Configuration {
+> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+> index 6f45387a17..7941e29c29 100644
+> --- a/include/hw/arm/xlnx-zynqmp.h
+> +++ b/include/hw/arm/xlnx-zynqmp.h
+> @@ -36,7 +36,7 @@
+>   #include "qom/object.h"
+>   #include "net/can_emu.h"
+>   
+> -#define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
+> +#define TYPE_XLNX_ZYNQMP "xlnx-zynqmp"
+>   OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPState, XLNX_ZYNQMP)
+>   
+>   #define XLNX_ZYNQMP_NUM_APU_CPUS 4
+> diff --git a/include/hw/cris/etraxfs.h b/include/hw/cris/etraxfs.h
+> index 9e99380e0c..8b01ed67d3 100644
+> --- a/include/hw/cris/etraxfs.h
+> +++ b/include/hw/cris/etraxfs.h
+> @@ -41,7 +41,7 @@ static inline DeviceState *etraxfs_ser_create(hwaddr addr,
+>       DeviceState *dev;
+>       SysBusDevice *s;
+>   
+> -    dev = qdev_new("etraxfs,serial");
+> +    dev = qdev_new("etraxfs-serial");
+>       s = SYS_BUS_DEVICE(dev);
+>       qdev_prop_set_chr(dev, "chardev", chr);
+>       sysbus_realize_and_unref(s, &error_fatal);
+> diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+> index d1ea000d3d..23ee8e371b 100644
+> --- a/include/hw/i386/ich9.h
+> +++ b/include/hw/i386/ich9.h
+> @@ -216,7 +216,7 @@ struct ICH9LPCState {
+>   
+>   
+>   /* D31:F3 SMBus controller */
+> -#define TYPE_ICH9_SMB_DEVICE "ICH9 SMB"
+> +#define TYPE_ICH9_SMB_DEVICE "ICH9-SMB"
+>   
+>   #define ICH9_A2_SMB_REVISION                    0x02
+>   #define ICH9_SMB_PI                             0x00
+> diff --git a/include/hw/misc/grlib_ahb_apb_pnp.h b/include/hw/misc/grlib_ahb_apb_pnp.h
+> index 341451bff6..bab0b5f47f 100644
+> --- a/include/hw/misc/grlib_ahb_apb_pnp.h
+> +++ b/include/hw/misc/grlib_ahb_apb_pnp.h
+> @@ -25,10 +25,10 @@
+>   #define GRLIB_AHB_APB_PNP_H
+>   #include "qom/object.h"
+>   
+> -#define TYPE_GRLIB_AHB_PNP "grlib,ahbpnp"
+> +#define TYPE_GRLIB_AHB_PNP "grlib-ahbpnp"
+>   OBJECT_DECLARE_SIMPLE_TYPE(AHBPnp, GRLIB_AHB_PNP)
+>   
+> -#define TYPE_GRLIB_APB_PNP "grlib,apbpnp"
+> +#define TYPE_GRLIB_APB_PNP "grlib-apbpnp"
+>   OBJECT_DECLARE_SIMPLE_TYPE(APBPnp, GRLIB_APB_PNP)
+>   
+>   void grlib_ahb_pnp_add_entry(AHBPnp *dev, uint32_t address, uint32_t mask,
+> diff --git a/include/hw/misc/zynq-xadc.h b/include/hw/misc/zynq-xadc.h
+> index 602bfb4ab1..2017b7a803 100644
+> --- a/include/hw/misc/zynq-xadc.h
+> +++ b/include/hw/misc/zynq-xadc.h
+> @@ -23,7 +23,7 @@
+>   #define ZYNQ_XADC_NUM_ADC_REGS  128
+>   #define ZYNQ_XADC_FIFO_DEPTH    15
+>   
+> -#define TYPE_ZYNQ_XADC          "xlnx,zynq-xadc"
+> +#define TYPE_ZYNQ_XADC          "xlnx-zynq-xadc"
+>   OBJECT_DECLARE_SIMPLE_TYPE(ZynqXADCState, ZYNQ_XADC)
+>   
+>   struct ZynqXADCState {
+> diff --git a/include/hw/register.h b/include/hw/register.h
+> index 03c8926d27..b480e3882c 100644
+> --- a/include/hw/register.h
+> +++ b/include/hw/register.h
+> @@ -87,7 +87,7 @@ struct RegisterInfo {
+>       void *opaque;
+>   };
+>   
+> -#define TYPE_REGISTER "qemu,register"
+> +#define TYPE_REGISTER "qemu-register"
+>   DECLARE_INSTANCE_CHECKER(RegisterInfo, REGISTER,
+>                            TYPE_REGISTER)
+>   
+> diff --git a/include/hw/sparc/grlib.h b/include/hw/sparc/grlib.h
+> index 2104f493f3..ef1946c7f8 100644
+> --- a/include/hw/sparc/grlib.h
+> +++ b/include/hw/sparc/grlib.h
+> @@ -32,14 +32,14 @@
+>    */
+>   
+>   /* IRQMP */
+> -#define TYPE_GRLIB_IRQMP "grlib,irqmp"
+> +#define TYPE_GRLIB_IRQMP "grlib-irqmp"
+>   
+>   void grlib_irqmp_ack(DeviceState *dev, int intno);
+>   
+>   /* GPTimer */
+> -#define TYPE_GRLIB_GPTIMER "grlib,gptimer"
+> +#define TYPE_GRLIB_GPTIMER "grlib-gptimer"
+>   
+>   /* APB UART */
+> -#define TYPE_GRLIB_APB_UART "grlib,apbuart"
+> +#define TYPE_GRLIB_APB_UART "grlib-apbuart"
+>   
+>   #endif /* GRLIB_H */
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index b72772bc82..8db6cfd47f 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -231,7 +231,7 @@ static void zynq_init(MachineState *machine)
+>       clock_set_hz(zynq_machine->ps_clk, PS_CLK_FREQUENCY);
+>   
+>       /* Create slcr, keep a pointer to connect clocks */
+> -    slcr = qdev_new("xilinx,zynq_slcr");
+> +    slcr = qdev_new("xilinx-zynq_slcr");
+>       qdev_connect_clock_in(slcr, "ps_clk", zynq_machine->ps_clk);
+>       sysbus_realize_and_unref(SYS_BUS_DEVICE(slcr), &error_fatal);
+>       sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
+> diff --git a/hw/audio/cs4231.c b/hw/audio/cs4231.c
+> index 209c05a0a0..aefc3edea1 100644
+> --- a/hw/audio/cs4231.c
+> +++ b/hw/audio/cs4231.c
+> @@ -37,7 +37,7 @@
+>   #define CS_DREGS 32
+>   #define CS_MAXDREG (CS_DREGS - 1)
+>   
+> -#define TYPE_CS4231 "SUNW,CS4231"
+> +#define TYPE_CS4231 "sun-CS4231"
+>   typedef struct CSState CSState;
+>   DECLARE_INSTANCE_CHECKER(CSState, CS4231,
+>                            TYPE_CS4231)
+> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
+> index 32701c2bc5..82afda7f3a 100644
+> --- a/hw/block/fdc.c
+> +++ b/hw/block/fdc.c
+> @@ -2537,7 +2537,7 @@ void sun4m_fdctrl_init(qemu_irq irq, hwaddr io_base,
+>       DeviceState *dev;
+>       FDCtrlSysBus *sys;
+>   
+> -    dev = qdev_new("SUNW,fdtwo");
+> +    dev = qdev_new("sun-fdtwo");
+>       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>       sys = SYSBUS_FDC(dev);
+>       sysbus_connect_irq(SYS_BUS_DEVICE(sys), 0, irq);
+> @@ -2933,7 +2933,7 @@ static void sun4m_fdc_class_init(ObjectClass *klass, void *data)
+>   }
+>   
+>   static const TypeInfo sun4m_fdc_info = {
+> -    .name          = "SUNW,fdtwo",
+> +    .name          = "sun-fdtwo",
+>       .parent        = TYPE_SYSBUS_FDC,
+>       .instance_init = sun4m_fdc_initfn,
+>       .class_init    = sun4m_fdc_class_init,
+> diff --git a/hw/char/etraxfs_ser.c b/hw/char/etraxfs_ser.c
+> index 6bee3ee18e..e8c3017724 100644
+> --- a/hw/char/etraxfs_ser.c
+> +++ b/hw/char/etraxfs_ser.c
+> @@ -50,7 +50,7 @@
+>   #define STAT_TR_IDLE 22
+>   #define STAT_TR_RDY  24
+>   
+> -#define TYPE_ETRAX_FS_SERIAL "etraxfs,serial"
+> +#define TYPE_ETRAX_FS_SERIAL "etraxfs-serial"
+>   typedef struct ETRAXSerial ETRAXSerial;
+>   DECLARE_INSTANCE_CHECKER(ETRAXSerial, ETRAX_SERIAL,
+>                            TYPE_ETRAX_FS_SERIAL)
+> diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
+> index b0cb6d84af..af5a0e3517 100644
+> --- a/hw/cris/axis_dev88.c
+> +++ b/hw/cris/axis_dev88.c
+> @@ -289,7 +289,7 @@ void axisdev88_init(MachineState *machine)
+>                                   &gpio_state.iomem);
+>   
+>   
+> -    dev = qdev_new("etraxfs,pic");
+> +    dev = qdev_new("etraxfs-pic");
+>       s = SYS_BUS_DEVICE(dev);
+>       sysbus_realize_and_unref(s, &error_fatal);
+>       sysbus_mmio_map(s, 0, 0x3001c000);
+> @@ -323,8 +323,8 @@ void axisdev88_init(MachineState *machine)
+>       }
+>   
+>       /* 2 timers.  */
+> -    sysbus_create_varargs("etraxfs,timer", 0x3001e000, irq[0x1b], nmi[1], NULL);
+> -    sysbus_create_varargs("etraxfs,timer", 0x3005e000, irq[0x1b], nmi[1], NULL);
+> +    sysbus_create_varargs("etraxfs-timer", 0x3001e000, irq[0x1b], nmi[1], NULL);
+> +    sysbus_create_varargs("etraxfs-timer", 0x3005e000, irq[0x1b], nmi[1], NULL);
+>   
+>       for (i = 0; i < 4; i++) {
+>           etraxfs_ser_create(0x30026000 + i * 0x2000, irq[0x14 + i], serial_hd(i));
+> diff --git a/hw/display/tcx.c b/hw/display/tcx.c
+> index 965f92ff6b..60d76af0fe 100644
+> --- a/hw/display/tcx.c
+> +++ b/hw/display/tcx.c
+> @@ -56,7 +56,7 @@
+>   #define TCX_THC_CURSMASK 0x900
+>   #define TCX_THC_CURSBITS 0x980
+>   
+> -#define TYPE_TCX "SUNW,tcx"
+> +#define TYPE_TCX "sun-tcx"
+>   OBJECT_DECLARE_SIMPLE_TYPE(TCXState, TCX)
+>   
+>   struct TCXState {
+> diff --git a/hw/intc/etraxfs_pic.c b/hw/intc/etraxfs_pic.c
+> index 54ed4c77f7..bd37d1cca0 100644
+> --- a/hw/intc/etraxfs_pic.c
+> +++ b/hw/intc/etraxfs_pic.c
+> @@ -38,7 +38,7 @@
+>   #define R_R_GURU    4
+>   #define R_MAX       5
+>   
+> -#define TYPE_ETRAX_FS_PIC "etraxfs,pic"
+> +#define TYPE_ETRAX_FS_PIC "etraxfs-pic"
+>   DECLARE_INSTANCE_CHECKER(struct etrax_pic, ETRAX_FS_PIC,
+>                            TYPE_ETRAX_FS_PIC)
+>   
+> diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
+> index 1d1b4b5c19..5a2016672a 100644
+> --- a/hw/microblaze/xlnx-zynqmp-pmu.c
+> +++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+> @@ -28,7 +28,7 @@
+>   
+>   /* Define the PMU device */
+>   
+> -#define TYPE_XLNX_ZYNQMP_PMU_SOC "xlnx,zynqmp-pmu-soc"
+> +#define TYPE_XLNX_ZYNQMP_PMU_SOC "xlnx-zynqmp-pmu-soc"
+>   OBJECT_DECLARE_SIMPLE_TYPE(XlnxZynqMPPMUSoCState, XLNX_ZYNQMP_PMU_SOC)
+>   
+>   #define XLNX_ZYNQMP_PMU_ROM_SIZE    0x8000
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index 66504a9d3a..12290ab8f6 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -182,7 +182,7 @@ REG32(DDRIOB, 0xb40)
+>   #define ZYNQ_SLCR_MMIO_SIZE     0x1000
+>   #define ZYNQ_SLCR_NUM_REGS      (ZYNQ_SLCR_MMIO_SIZE / 4)
+>   
+> -#define TYPE_ZYNQ_SLCR "xilinx,zynq_slcr"
+> +#define TYPE_ZYNQ_SLCR "xilinx-zynq_slcr"
+>   OBJECT_DECLARE_SIMPLE_TYPE(ZynqSLCRState, ZYNQ_SLCR)
+>   
+>   struct ZynqSLCRState {
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index 38ca1e33c7..faa225b442 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -496,7 +496,7 @@ static void tcx_init(hwaddr addr, qemu_irq irq, int vram_size, int width,
+>       DeviceState *dev;
+>       SysBusDevice *s;
+>   
+> -    dev = qdev_new("SUNW,tcx");
+> +    dev = qdev_new("sun-tcx");
+>       qdev_prop_set_uint32(dev, "vram_size", vram_size);
+>       qdev_prop_set_uint16(dev, "width", width);
+>       qdev_prop_set_uint16(dev, "height", height);
+> @@ -970,7 +970,7 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+>       }
+>   
+>       if (hwdef->sx_base) {
+> -        create_unimplemented_device("SUNW,sx", hwdef->sx_base, 0x2000);
+> +        create_unimplemented_device("sun-sx", hwdef->sx_base, 0x2000);
+>       }
+>   
+>       dev = qdev_new("sysbus-m48t08");
+> @@ -1045,23 +1045,23 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
+>                        slavio_irq[30], fdc_tc);
+>   
+>       if (hwdef->cs_base) {
+> -        sysbus_create_simple("SUNW,CS4231", hwdef->cs_base,
+> +        sysbus_create_simple("sun-CS4231", hwdef->cs_base,
+>                                slavio_irq[5]);
+>       }
+>   
+>       if (hwdef->dbri_base) {
+>           /* ISDN chip with attached CS4215 audio codec */
+>           /* prom space */
+> -        create_unimplemented_device("SUNW,DBRI.prom",
+> +        create_unimplemented_device("sun-DBRI.prom",
+>                                       hwdef->dbri_base + 0x1000, 0x30);
+>           /* reg space */
+> -        create_unimplemented_device("SUNW,DBRI",
+> +        create_unimplemented_device("sun-DBRI",
+>                                       hwdef->dbri_base + 0x10000, 0x100);
+>       }
+>   
+>       if (hwdef->bpp_base) {
+>           /* parallel port */
+> -        create_unimplemented_device("SUNW,bpp", hwdef->bpp_base, 0x20);
+> +        create_unimplemented_device("sun-bpp", hwdef->bpp_base, 0x20);
+>       }
+>   
+>       initrd_size = 0;
+> diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
+> index 48f2e3ade2..5379006086 100644
+> --- a/hw/timer/etraxfs_timer.c
+> +++ b/hw/timer/etraxfs_timer.c
+> @@ -48,7 +48,7 @@
+>   #define R_INTR        0x50
+>   #define R_MASKED_INTR 0x54
+>   
+> -#define TYPE_ETRAX_FS_TIMER "etraxfs,timer"
+> +#define TYPE_ETRAX_FS_TIMER "etraxfs-timer"
+>   typedef struct ETRAXTimerState ETRAXTimerState;
+>   DECLARE_INSTANCE_CHECKER(ETRAXTimerState, ETRAX_TIMER,
+>                            TYPE_ETRAX_FS_TIMER)
+> diff --git a/softmmu/vl.c b/softmmu/vl.c
+> index 8097a7b5fb..295df3927f 100644
+> --- a/softmmu/vl.c
+> +++ b/softmmu/vl.c
+> @@ -918,7 +918,7 @@ static const VGAInterfaceInfo vga_interfaces[VGA_TYPE_MAX] = {
+>       [VGA_TCX] = {
+>           .opt_name = "tcx",
+>           .name = "TCX framebuffer",
+> -        .class_names = { "SUNW,tcx" },
+> +        .class_names = { "sun-tcx" },
+>       },
+>       [VGA_CG3] = {
+>           .opt_name = "cg3",
+> diff --git a/tests/vmstate-static-checker-data/dump1.json b/tests/vmstate-static-checker-data/dump1.json
+> index 786ca0b484..334ec07963 100644
+> --- a/tests/vmstate-static-checker-data/dump1.json
+> +++ b/tests/vmstate-static-checker-data/dump1.json
+> @@ -823,8 +823,8 @@
+>         ]
+>       }
+>     },
+> -  "SUNW,fdtwo": {
+> -    "Name": "SUNW,fdtwo",
+> +  "sun-fdtwo": {
+> +    "Name": "sun-fdtwo",
+>       "version_id": 2,
+>       "minimum_version_id": 2,
+>       "Description": {
+> diff --git a/tests/vmstate-static-checker-data/dump2.json b/tests/vmstate-static-checker-data/dump2.json
+> index 75719f5ec9..7184e9ccbb 100644
+> --- a/tests/vmstate-static-checker-data/dump2.json
+> +++ b/tests/vmstate-static-checker-data/dump2.json
+> @@ -628,8 +628,8 @@
+>         ]
+>       }
+>     },
+> -  "SUNW,fdtwo": {
+> -    "Name": "SUNW,fdtwo",
+> +  "sun-fdtwo": {
+> +    "Name": "sun-fdtwo",
+>       "version_id": 2,
+>       "minimum_version_id": 2,
+>       "Description": {
+> 
 
-Agreed, I would like single numa node too if we do not use guest
-numa feature. Here I provide the guest with two numa nodes and set the 
-cpu affinity only to do a test.
+For changing all the SUNW prefixes:
+
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
 
-> 
-> Thanks,
-> drew
-> 
->> So the two sockets in the guest has nothing to do with
->> it. Actually even one socket may have two numa nodes in it in real cpu
->> model.
->>
->>>
->>> Thanks,
->>> drew
->>>
->>>> Vendor ID:                       HiSilicon
->>>> Model:                           0
->>>> Model name:                      Kunpeng-920
->>>> Stepping:                        0x1
->>>> BogoMIPS:                        200.00
->>>> NUMA node0 CPU(s):               0-7
->>>> NUMA node1 CPU(s):               8-15
->>>>
->>>> [0] https://kvmforum2020.sched.com/event/eE1y/virtual-topology-for-virtual-machines-friend-or-foe-dario-faggioli-suse
->>>> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-11/msg02166.html
->>>> [2] https://patchwork.ozlabs.org/project/qemu-devel/cover/20180704124923.32483-1-drjones@redhat.com
->>>>
->>>> Ying Fang (5):
->>>>     device_tree: Add qemu_fdt_add_path
->>>>     hw/arm/virt: Add cpu-map to device tree
->>>>     hw/arm/virt-acpi-build: distinguish possible and present cpus
->>>>     hw/acpi/aml-build: add processor hierarchy node structure
->>>>     hw/arm/virt-acpi-build: add PPTT table
->>>>
->>>>    hw/acpi/aml-build.c          | 40 ++++++++++++++++++++++
->>>>    hw/arm/virt-acpi-build.c     | 64 +++++++++++++++++++++++++++++++++---
->>>>    hw/arm/virt.c                | 40 +++++++++++++++++++++-
->>>>    include/hw/acpi/acpi-defs.h  | 13 ++++++++
->>>>    include/hw/acpi/aml-build.h  |  7 ++++
->>>>    include/hw/arm/virt.h        |  1 +
->>>>    include/sysemu/device_tree.h |  1 +
->>>>    softmmu/device_tree.c        | 45 +++++++++++++++++++++++--
->>>>    8 files changed, 204 insertions(+), 7 deletions(-)
->>>>
->>>> -- 
->>>> 2.23.0
->>>>
->>>
->>> .
->>>
->>
-> 
-> .
-> 
+ATB,
+
+Mark.

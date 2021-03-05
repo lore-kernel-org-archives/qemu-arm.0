@@ -1,112 +1,111 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp270693lfg;
-        Fri, 5 Mar 2021 03:54:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyUHIVNZ5Rt9aJ9kSdhpmpGkiuB9igoeUbb0WRVahkMOy3kG7awIF8xPSeMCsJZKuGVMwT9
-X-Received: by 2002:a05:6808:18e:: with SMTP id w14mr6801899oic.124.1614945256372;
-        Fri, 05 Mar 2021 03:54:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614945256; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp272014lfg;
+        Fri, 5 Mar 2021 03:56:32 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyC5JgrEtjMN5dT5pPVHXzNhmUfu2eeg3jowPG62hPBNrugXSCoQs18FdfC8UH1nRNBGWG9
+X-Received: by 2002:a5e:8416:: with SMTP id h22mr7962173ioj.119.1614945392322;
+        Fri, 05 Mar 2021 03:56:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614945392; cv=none;
         d=google.com; s=arc-20160816;
-        b=dZpEA4vRYZ94EXQBZBm5jwLnDbo3i9ENSTf30lYuEAq3iNoSIZqlfBmPwRDjrtcP7i
-         8fK0tBhGEVT9tsXvaeZ8W/nyFJjexpc/trAAtLXsotl4fQRSJ5FC5Qr6TrUx4J8HCPbI
-         VpmLoe9VT5DFA/i8XxGOEKqQPBKjb1CS2z9XeUMInUaCWaGe8nBDUB4g4vDHTgHaQp/9
-         H4vSTYtBkK1XpqgrwOWSd67YO4x1s81gvmMsdxgEtbp/FQwbMNbEGJwSLi4KI/FTPkP8
-         MtrHhHupxAOEUIZm4vugf/ZEFIrBxr7rnA6DpFxZg40AESzBmDgedtvk2g9CV01o8uO0
-         qG3g==
+        b=iJW346cqOS6xBZjrHIiK11389VOoNHcfuJesKDNcm2+LDjt80beVrdoY8QEkKe6ZMu
+         BpVgFlWRu7Cxp2ct3vLe+9jmiCJP6w9KxKyogfnUcrg3vmnFnuY4JfE3u8JdC0eMRXTN
+         YqfsujHxMRupBaUlyQXSU+KOy4W8LZsXt8TQPk9JKl9uXyNjmtILKMOaQUnjy1eRKh4R
+         OC/ZxvjEjrT5d10uT5ENfSlixsJvIt+ODqll0vMX3zBJcIjyznKqSBeQHrlJfkx6ytGP
+         2OLOysWDkg7Y0Ivr6HU6tLDgAK6EpqL6JOF9zplIPynSDhFNtaG+6JBIF5Y5wnTPywP6
+         j/Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=fK+Z1wl+vRpf1r/gJh57E0mJ0GFzaGFjZ+0/PhXri4o=;
-        b=HfbUifmLChZRRM3gRXhsTJHNT86r1g11YxJaoR8oXMZbii+FV3rVP7ehAAdXBeuuO9
-         akDfL50LO1U15KxSTUDpBYty9eD+HBJGMG98j30gfWZR+vyVP5WHDcUC9FsJCC0sX0zO
-         UbE9sQKyLe0YWK5L/ssyr3AsYC+nbM07A3J69xArTYD3wB1T3CUyfyoJRwlUZT339K1+
-         iyjt3CC8zwua+/ZUHwv7obxVCJ1jTL1+j9LRNjE1sCRfcj//Rhmlh55zSGQSFwZXKU9N
-         BAALZKFRww1LCiDKjYCEY9SyGNBbTb/O+ynbdxwgIBf/U8mPZM/1gSsWpqR37CAPTaNp
-         vSIw==
+        bh=5hA4E+OcaAmpoQKE55qObf4VEwjtSxjkZeFasEcZF7U=;
+        b=QrtlGLHTp9HfkC3yX8e4grcMRJmBHd5C0uHXYmvFdy9uvutulk0oL9I+9N3Yix+VcQ
+         49YqN7r4NABxlMv3sQufdP7ZfKkBh62XkAxS/p1arGRXLDU7XgLbE1zohl7diixcaQYq
+         AvBi42NTQxz2GKEmgxo0D9kSHcQXjLAhazlIyZN+KJKj+dR9WUrUvxXnKBZ45aiJLJ8i
+         c9ouaMjVGQlCUUgm571XTTi8U4ptE5IActknVlTrxLtZqvBjZxrVBd+iqxcHo3ksg3MH
+         UMfOhpw4qq+6QASTgFliUhXbY2p/pTN6QUmsZOUe3VlA54Ysb0wtSp8mZo+932z2+kNI
+         PD+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CwhHKLlz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O6XOAmlw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si2082671otk.304.2021.03.05.03.54.16
+        by mx.google.com with ESMTPS id s11si2580114jam.7.2021.03.05.03.56.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Mar 2021 03:54:16 -0800 (PST)
+        Fri, 05 Mar 2021 03:56:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CwhHKLlz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O6XOAmlw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60470 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lI927-0003KM-Lp
-	for alex.bennee@linaro.org; Fri, 05 Mar 2021 06:54:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36500)
+	id 1lI94J-0005qM-HP
+	for alex.bennee@linaro.org; Fri, 05 Mar 2021 06:56:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lI91C-00038k-Bb; Fri, 05 Mar 2021 06:53:18 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:42669)
+ id 1lI93u-0005n5-2j; Fri, 05 Mar 2021 06:56:06 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:34666)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1lI91A-00025E-Uq; Fri, 05 Mar 2021 06:53:18 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id j2so1760600wrx.9;
- Fri, 05 Mar 2021 03:53:16 -0800 (PST)
+ id 1lI93s-0003OY-C4; Fri, 05 Mar 2021 06:56:05 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ n11-20020a05600c4f8bb029010e5cf86347so660559wmq.1; 
+ Fri, 05 Mar 2021 03:56:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=fK+Z1wl+vRpf1r/gJh57E0mJ0GFzaGFjZ+0/PhXri4o=;
- b=CwhHKLlzZM7SnNF/xO3iNGjvGJIYvKtYZgL2tnMDB+zsWpGWcKT3R/S7ahy9mMr3AY
- 86KaSnFjbk4/egFjwEyXZilZ88Bhhy0JteHjMKdo9UEMvJRs2iCURKDqyl4M2RNADVHU
- MofMtQxJuaSwoBIui9m6azXriPAO8Dk9mPBbSHjjwpjhuxHzO0hsmJynGUgS/bZdCk+Y
- d8mWWjt8/ELm7MKVcAubOcKQS9oiQhBs97phsQBy/YuWpTaz5LennRL7vIh6V5xbyS0C
- OsOSz7cwnxZW3pIPO8P7uiDkW5NNi3NhL2hQHkv05C7nDaHOqgLUBe4KyLs7FxW8ke4O
- ytPw==
+ bh=5hA4E+OcaAmpoQKE55qObf4VEwjtSxjkZeFasEcZF7U=;
+ b=O6XOAmlwHgtMYjwqV/U3jAF0gd9zmnhu92cqooicTeDqp8Yfjp6eweZdO+Kp69tjyO
+ ix8yptsAMSn3JC/rduRldYHpqKUibAuKhxaT+MOZXZYmBfL0+xPbqtIvrfbN/FbzA7TB
+ B2s3HvWl86AYQtSUQg8ThpIh4+Yk4q1JvY5mWN5tptZq/niKUxG6QRUnaqvnQOblTKOo
+ DMP4s4n4kLBIX3ksTO1yyTCrqV5HAEERpIv9wnEf4A9u2nRfWmnjNFEnI3X4etbfImT3
+ /mu1GKKyEpbeCJQ+0w/ukMn0SqZtP9t5zAflVKMjFTyZAV/+s6KH9Dnw8zv4LnakMxci
+ /qgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=fK+Z1wl+vRpf1r/gJh57E0mJ0GFzaGFjZ+0/PhXri4o=;
- b=LMEMicp1pfdQf37QFylP0D5p4YXNQpEP+Kq/JFmyYKhZb//+QZsK9vaYWKgtqmexGW
- fiJVtEtQ+QkN/FrnA/w6IzoJvES7ltecyu3fjbVlxlBBJ9BhUy1qRc7W4eQUGJfy4SuX
- 1BTOqevqRBoK62NohglMEsBnUTyy/nRcpyG/q0Uu7LMrOJwGJ/wVbL8MdaXWnBpg4ksJ
- aVtEYqkNJ/Ej4v31q0L56EpQlAIKO2nGchrfL7mk3DGggoA2gGqrkBsNLpfqdDIjVpda
- XjvrwuyUaxuDHH/YtMeHfvb3i9a1sWW++gkcUOfMe8CgBEkbtVBMNKl8OzsVKaxWGK8B
- u09w==
-X-Gm-Message-State: AOAM531ssDZrsonONdJgPYWpFwvgOgul8oeWMGwi67LsQ4BCMOFijQL7
- wPa6clKT3Jh3besir4ZsExGwwbfhCa0=
-X-Received: by 2002:adf:e809:: with SMTP id o9mr9201963wrm.110.1614945195100; 
- Fri, 05 Mar 2021 03:53:15 -0800 (PST)
+ bh=5hA4E+OcaAmpoQKE55qObf4VEwjtSxjkZeFasEcZF7U=;
+ b=tyTZYwurdUO5Rw+2bNGgkglTWhX0AUKWuRm+QvRAhfQ+mchzApAmOB4LSYFhSVosFB
+ Ldyuunhu12O8a//dypn9xXjGWOcmz3rmB/ffdtHWUxLFPggWb+BO6G+0claHmUa40biv
+ QwbIJKdaztVD5LnD3PCcW+iy/FR7HF9FE1nStZf2cy+EXqiMlc7/6P0wYhLjRkD4nZUE
+ ewILMGWKLVXfv8TTLaPHLMcyNLYIk+2Q4HvLFgwhKL3QOeS42C9vtGOs8ul5JTP2yHG5
+ ueVymyh23BaPgrllv+/ztdf1kcm92R440lVTQZv2Oh0a8a5+WuBzZADH1y8ojzNLC4sZ
+ rvMA==
+X-Gm-Message-State: AOAM532R8rpny8GVY2n4pR+bI+HPbJHxyplYLggf1+B7THGeau2ZHY+B
+ movKerWdUutNncUkxpl2k2CCiTlkuxk=
+X-Received: by 2002:a7b:c0c3:: with SMTP id s3mr8358851wmh.11.1614945361915;
+ Fri, 05 Mar 2021 03:56:01 -0800 (PST)
 Received: from [192.168.1.36] (68.red-83-57-175.dynamicip.rima-tde.net.
  [83.57.175.68])
- by smtp.gmail.com with ESMTPSA id p18sm4742502wro.18.2021.03.05.03.53.14
+ by smtp.gmail.com with ESMTPSA id p18sm4757062wro.18.2021.03.05.03.56.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Mar 2021 03:53:14 -0800 (PST)
-Subject: Re: [PATCH v2 14/24] hw/arm/mps2-tz: Size the uart-irq-orgate based
- on the number of UARTs
+ Fri, 05 Mar 2021 03:56:01 -0800 (PST)
+Subject: Re: [PATCH 00/44] hw/arm: New board model mps3-an547
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20210215115138.20465-1-peter.maydell@linaro.org>
- <20210215115138.20465-15-peter.maydell@linaro.org>
+References: <20210219144617.4782-1-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <6af2117a-e0de-5761-03a7-9bd3a8fe8cd4@amsat.org>
-Date: Fri, 5 Mar 2021 12:53:13 +0100
+Message-ID: <0942179e-7419-f41b-de41-a1bb2585c166@amsat.org>
+Date: Fri, 5 Mar 2021 12:56:00 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.7.0
 MIME-Version: 1.0
-In-Reply-To: <20210215115138.20465-15-peter.maydell@linaro.org>
+In-Reply-To: <20210219144617.4782-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
  FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
@@ -124,21 +123,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +wqCl2cWHK+6
+X-TUID: In4XSURPvPqS
 
-On 2/15/21 12:51 PM, Peter Maydell wrote:
-> We create an OR gate to wire together the overflow IRQs for all the
-> UARTs on the board; this has to have twice the number of inputs as
-> there are UARTs, since each UART feeds it a TX overflow and an RX
-> overflow interrupt line.  Replace the hardcoded '10' with a
-> calculation based on the size of the uart[] array in the
-> MPS2TZMachineState.  (We rely on OR gate inputs that are never wired
-> up or asserted being treated as always-zero.)
+On 2/19/21 3:45 PM, Peter Maydell wrote:
+> This patchseries implements a model of the AN547 FPGA image for the
+> MPS3 board.  The main benefit of this new board is that it uses the
+> Cortex-M55 CPU and so it allows running guests which use a v8.1M CPU.
+
+> Peter Maydell (44):
+>   clock: Add ClockEvent parameter to callbacks
+>   clock: Add ClockPreUpdate callback event type
+>   clock: Add clock_ns_to_ticks() function
+>   hw/timer/npcm7xx_timer: Use new clock_ns_to_ticks()
+>   hw/arm/armsse: Introduce SSE subsystem version property
+>   hw/misc/iotkit-sysctl: Remove is_sse200 flag
+>   hw/misc/iotkit-secctl.c: Implement SSE-300 PID register values
+>   hw/misc/iotkit-sysinfo.c: Implement SSE-300 PID register values
+>   hw/arm/armsse.c: Use correct SYS_CONFIG0 register value for SSE-300
+>   hw/misc/iotkit-sysinfo.c: Implement SYS_CONFIG1 and IIDR
+>   hw/timer/sse-counter: Model the SSE Subsystem System Counter
+>   hw/timer/sse-timer: Model the SSE Subsystem System Timer
+>   hw/misc/iotkit-sysctl: Add SSE-300 cases which match SSE-200 behaviour
+>   hw/misc/iotkit-sysctl: Handle CPU_WAIT, NMI_ENABLE for SSE-300
+>   hw/misc/iotkit-sysctl: Handle INITSVTOR* for SSE-300
+>   hw/misc/iotkit-sysctl: Implement dummy version of SSE-300 PWRCTRL
+>     register
+>   hw/misc/iotkit-sysctl: Handle SSE-300 changes to PDCM_PD_*_SENSE
+>     registers
+>   hw/misc/iotkit-sysctl: Implement SSE-200 and SSE-300 PID register
+>     values
+>   hw/arm/Kconfig: Move ARMSSE_CPUID and ARMSSE_MHU stanzas to hw/misc
+>   hw/misc/sse-cpu-pwrctrl: Implement SSE-300 CPU<N>_PWRCTRL register
+>     block
+>   hw/arm/armsse: Use an array for apb_ppc fields in the state structure
+>   hw/arm/armsse: Add a define for number of IRQs used by the SSE itself
+>   hw/arm/armsse: Add framework for data-driven device placement
+>   hw/arm/armsse: Move dual-timer device into data-driven framework
+>   hw/arm/armsse: Move watchdogs into data-driven framework
+>   hw/arm/armsse: Move s32ktimer into data-driven framework
+>   hw/arm/armsse: Move sysinfo register block into data-driven framework
+>   hw/arm/armsse: Move sysctl register block into data-driven framework
+>   hw/arm/armsse: Move PPUs into data-driven framework
+>   hw/arm/armsse: Add missing SSE-200 SYS_PPU
+>   hw/arm/armsse: Indirect irq_is_common[] through ARMSSEInfo
+>   hw/arm/armsse: Add support for SSE variants with a system counter
+>   hw/arm/armsse: Add support for TYPE_SSE_TIMER in ARMSSEDeviceInfo
+>   hw/arm/armsse: Support variants with ARMSSE_CPU_PWRCTRL block
+>   hw/arm/armsse: Add SSE-300 support
+>   hw/arm/mps2-tz: Make UART overflow IRQ board-specific
+>   hw/misc/mps2-fpgaio: Fold counters subsection into main vmstate
+>   hw/misc/mps2-fpgaio: Support AN547 DBGCTRL register
+>   hw/misc/mps2-scc: Implement changes for AN547
+>   hw/arm/mps2-tz: Support running APB peripherals on different clock
+>   hw/arm/mps2-tz: Make initsvtor0 setting board-specific
+>   hw/arm/mps2-tz: Add new mps3-an547 board
+>   docs/system/arm/mps2.rst: Document the new mps3-an547 board
+>   tests/qtest/sse-timer-test: Add simple tests of the SSE timer and
+>     counter
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/mps2-tz.c | 11 ++++++++---
->  1 file changed, 8 insertions(+), 3 deletions(-)
+>  docs/devel/clocks.rst                |   71 +-
+>  docs/system/arm/mps2.rst             |    6 +-
+>  include/hw/arm/armsse-version.h      |   42 ++
+>  include/hw/arm/armsse.h              |   40 +-
+>  include/hw/clock.h                   |   63 +-
+>  include/hw/misc/armsse-cpu-pwrctrl.h |   40 +
+>  include/hw/misc/iotkit-secctl.h      |    2 +
+>  include/hw/misc/iotkit-sysctl.h      |   13 +-
+>  include/hw/misc/iotkit-sysinfo.h     |    2 +
+>  include/hw/misc/mps2-fpgaio.h        |    2 +
+>  include/hw/qdev-clock.h              |   17 +-
+>  include/hw/timer/sse-counter.h       |  105 +++
+>  include/hw/timer/sse-timer.h         |   53 ++
+>  hw/adc/npcm7xx_adc.c                 |    2 +-
+>  hw/arm/armsse.c                      | 1008 +++++++++++++++++++-------
+>  hw/arm/mps2-tz.c                     |  168 ++++-
+>  hw/char/cadence_uart.c               |    4 +-
+>  hw/char/ibex_uart.c                  |    4 +-
+>  hw/char/pl011.c                      |    5 +-
+>  hw/core/clock.c                      |   24 +-
+>  hw/core/qdev-clock.c                 |    8 +-
+>  hw/mips/cps.c                        |    2 +-
+>  hw/misc/armsse-cpu-pwrctrl.c         |  149 ++++
+>  hw/misc/bcm2835_cprman.c             |   23 +-
+>  hw/misc/iotkit-secctl.c              |   50 +-
+>  hw/misc/iotkit-sysctl.c              |  521 ++++++++++---
+>  hw/misc/iotkit-sysinfo.c             |   51 +-
+>  hw/misc/mps2-fpgaio.c                |   52 +-
+>  hw/misc/mps2-scc.c                   |   15 +-
+>  hw/misc/npcm7xx_clk.c                |   26 +-
+>  hw/misc/npcm7xx_pwm.c                |    2 +-
+>  hw/misc/zynq_slcr.c                  |    5 +-
+>  hw/timer/cmsdk-apb-dualtimer.c       |    5 +-
+>  hw/timer/cmsdk-apb-timer.c           |    4 +-
+>  hw/timer/npcm7xx_timer.c             |    6 +-
+>  hw/timer/sse-counter.c               |  474 ++++++++++++
+>  hw/timer/sse-timer.c                 |  470 ++++++++++++
+>  hw/watchdog/cmsdk-apb-watchdog.c     |    5 +-
+>  target/mips/cpu.c                    |    2 +-
+>  tests/qtest/sse-timer-test.c         |  240 ++++++
+>  MAINTAINERS                          |    7 +
+>  hw/arm/Kconfig                       |    9 +-
+>  hw/misc/Kconfig                      |    9 +
+>  hw/misc/meson.build                  |    1 +
+>  hw/misc/trace-events                 |    4 +
+>  hw/timer/Kconfig                     |    6 +
+>  hw/timer/meson.build                 |    2 +
+>  hw/timer/trace-events                |   12 +
+>  tests/qtest/meson.build              |    1 +
+>  49 files changed, 3356 insertions(+), 476 deletions(-)
+>  create mode 100644 include/hw/arm/armsse-version.h
+>  create mode 100644 include/hw/misc/armsse-cpu-pwrctrl.h
+>  create mode 100644 include/hw/timer/sse-counter.h
+>  create mode 100644 include/hw/timer/sse-timer.h
+>  create mode 100644 hw/misc/armsse-cpu-pwrctrl.c
+>  create mode 100644 hw/timer/sse-counter.c
+>  create mode 100644 hw/timer/sse-timer.c
+>  create mode 100644 tests/qtest/sse-timer-test.c
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

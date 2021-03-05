@@ -1,257 +1,116 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id m2sm4446648wml.34.2021.03.05.05.54.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Mar 2021 05:54:54 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 496E51FF8F;
-	Fri,  5 Mar 2021 13:54:52 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Bug 1915925 <1915925@bugs.launchpad.net>,
-	Keith Packard <keithp@keithp.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 3/3] semihosting/arg-compat: fix up handling of SYS_HEAPINFO
-Date: Fri,  5 Mar 2021 13:54:51 +0000
-Message-Id: <20210305135451.15427-4-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210305135451.15427-1-alex.bennee@linaro.org>
-References: <20210305135451.15427-1-alex.bennee@linaro.org>
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp379400lfg;
+        Fri, 5 Mar 2021 06:11:14 -0800 (PST)
+X-Received: by 2002:a1c:6707:: with SMTP id b7mr9422929wmc.185.1614953474607;
+        Fri, 05 Mar 2021 06:11:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614953474; cv=none;
+        d=google.com; s=arc-20160816;
+        b=THjFL2f+Mw/pO65nAFxHRu3It37CrCFBIoTxdOUyGDwsp1EyAnDqvDvWpeEa0S6Qz+
+         Q6kgnh+qqLkogEAs/sViGlKbmNtAuIbklJ5doxlGGXGaLLciHXe1+hxpQTTICe9jtOOR
+         sQLWn915PZ4Eg3TUALvAOAmKHwI4UbeHo7tKQ94kNKH1GDM2LnEPzE3W+POw/hSI/Dbw
+         ifaR2txkIPh8r1cUQyHbh6s2/kv6mh7k0lvjsfz+6tdGB59H19qiwpUyjgCGUalyPUj6
+         ALq4C8TsTk826caQVG0z5Sw2oY5eVgHXedU3mHq/NZqbWYq4kzzMC3JTImtN7xCCF75/
+         EZMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=j/DKl3G/LtZDtxWR9akFOXs2U+ksZxUPIRkDwj8Ld7E=;
+        b=g4JVl9qwZ/kwkgPWgefZIaSA9TcU4hfoWXx/WraiGhzJuecMzPJhZe1IM5L32Ju3uX
+         0G43yHXWDepZ+9NUN2hPaTgzJhtuvOLa//VswOUJI4KqKLq75CL8u6RZGdMznvpHZh1U
+         XgFvPfP0Ox4cirxFYu+nqJpK9lnZX67BMQ7kdnFfkkYrxR+Jx2y0PjV/B4cTGjUQk/f0
+         Dq7y9z+xrno1BtmhJKu7V4gFg1qXC53/zbQa/gRD1qzlxnbU/MVT2mdH8gdUlDNIpDKI
+         XQwpSGX3u0ifeY3HMzTtf3dY/H7r9N4YirOxUNdOLBf5A8bSWnzNlpI55SQ+16HjZ7nn
+         VYHw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EV1PPtgN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w18sor1475590wrk.28.2021.03.05.06.11.14
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 05 Mar 2021 06:11:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EV1PPtgN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=j/DKl3G/LtZDtxWR9akFOXs2U+ksZxUPIRkDwj8Ld7E=;
+        b=EV1PPtgNet0UkE/uI52uk5Xy+1jzaH58HWIATmXQMX7igRuBlFhuyNtiLYNmzd7aTa
+         9ZHq48krkYkjtr4ayZRR8j5gv9bLh4N3FKwd9lDTzM/B3sCQ6t9dZzen8sawecT81mqW
+         ln0ZoTSer7GoBL5ql0KK+x3GvexGZVhtbYZtEsPZPBVyHROmvUS2Smb2xBj4+uBBGtt3
+         DGuIJLzbaROfOKH4BFU+HmwyHWe8aM3rQe7dSfpnUBQfuGLnao/B9lElsHtIHQgIwYoE
+         3YuXslMsvjV9uLzRfiXAnz3IWxNLJZm3DGI8HMvK7/QtWMmECdVO+gSpnNG0mR2X9O/0
+         lTlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=j/DKl3G/LtZDtxWR9akFOXs2U+ksZxUPIRkDwj8Ld7E=;
+        b=mrpr/IZHItPQoaGFWgi2h9Xxp651YU5MsEmKojJmj+GCZmpK2wDa8Kd7kZK/NXEoaK
+         trxIcwi1I45FMG8LmM/GqHOFUOz0DYKh3aKli/dAovkDmmaPMnQAhsnEiOI+XJ/2K6/+
+         frzF7v5HF/VShEAmBovOwD8OYQbHzF5kkN2nm6fkL49Wfapi8CCYA6YnTk+cxNcYMIj7
+         NDNNqm8h4WP15Y863gG5DMfNeuIq6LaJb6jzANzL11JHt8e7jDQRBydFJ7tysA4gAt3V
+         blkm55xWGqCA8xZOZo4OvxbIBQtzuri24evdTqvVmbOmEa6nOfmyYyRSOz7mE/mbf7u/
+         stlw==
+X-Gm-Message-State: AOAM532a3S+v/JwA/CN9UbhiSsK0DCYQ2flr+Fb1M0Ch21VRXvfgkYxU
+	E7SYDqzpQ48yIjjIdQF9KUuVCSNyk6RMBZzkaz11lSXtOLhpvQ==
+X-Google-Smtp-Source: ABdhPJwpZCPGgY5OQ4rwrRUgfg1C2Gc7oDB8z2orBfQV367LGUrApF/CwmA8s1amcmJ3GFEJZ/zLv+4lZd0eelHJiW4=
+X-Received: by 2002:a05:6402:c:: with SMTP id d12mr9052839edu.100.1614953474350;
+ Fri, 05 Mar 2021 06:11:14 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: XyDcwVw5C2O1
+References: <20210305135451.15427-1-alex.bennee@linaro.org> <20210305135451.15427-4-alex.bennee@linaro.org>
+In-Reply-To: <20210305135451.15427-4-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 5 Mar 2021 14:10:58 +0000
+Message-ID: <CAFEAcA9LdZ=Ym_UQFwqMcrHv6pygdxZC+fgoc=N3mU484d-a_A@mail.gmail.com>
+Subject: Re: [PATCH v1 3/3] semihosting/arg-compat: fix up handling of SYS_HEAPINFO
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Bug 1915925 <1915925@bugs.launchpad.net>, 
+	Keith Packard <keithp@keithp.com>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: geN/i8yAjJum
 
-I'm not sure this every worked properly and it's certainly not
-exercised by check-tcg or Peter's semihosting tests. Hoist it into
-it's own helper function and attempt to validate the results in the
-linux-user semihosting test at the least.
+On Fri, 5 Mar 2021 at 13:54, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+> I'm not sure this every worked properly and it's certainly not
+> exercised by check-tcg or Peter's semihosting tests. Hoist it into
+> it's own helper function and attempt to validate the results in the
+> linux-user semihosting test at the least.
+>
+> Bug: https://bugs.launchpad.net/bugs/1915925
+> Cc: Bug 1915925 <1915925@bugs.launchpad.net>
+> Cc: Keith Packard <keithp@keithp.com>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+>  tests/tcg/arm/semicall.h      |   1 +
+>  semihosting/arm-compat-semi.c | 129 +++++++++++++++++++---------------
+>  tests/tcg/arm/semihosting.c   |  34 ++++++++-
+>  3 files changed, 107 insertions(+), 57 deletions(-)
+> +#else
+> +    limit =3D current_machine->ram_size;
+> +    /* TODO: Make this use the limit of the loaded application.  */
+> +    info.heap_base =3D rambase + limit / 2;
+> +    info.heap_limit =3D rambase + limit;
+> +    info.stack_base =3D rambase + limit; /* Stack base */
+> +    info.stack_limit =3D rambase; /* Stack limit.  */
+> +
+> +    if (cpu_memory_rw_debug(cs, arg0, &info, sizeof(info), true)) {
 
-Bug: https://bugs.launchpad.net/bugs/1915925
-Cc: Bug 1915925 <1915925@bugs.launchpad.net>
-Cc: Keith Packard <keithp@keithp.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/arm/semicall.h      |   1 +
- semihosting/arm-compat-semi.c | 129 +++++++++++++++++++---------------
- tests/tcg/arm/semihosting.c   |  34 ++++++++-
- 3 files changed, 107 insertions(+), 57 deletions(-)
+Blatting a C struct into guest memory has endianness and padding
+problems. Why not just do things the way the old Arm code did it ?
 
-diff --git a/tests/tcg/arm/semicall.h b/tests/tcg/arm/semicall.h
-index d4f6818192..676a542be5 100644
---- a/tests/tcg/arm/semicall.h
-+++ b/tests/tcg/arm/semicall.h
-@@ -9,6 +9,7 @@
- 
- #define SYS_WRITE0      0x04
- #define SYS_READC       0x07
-+#define SYS_HEAPINFO    0x16
- #define SYS_REPORTEXC   0x18
- 
- uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
-diff --git a/semihosting/arm-compat-semi.c b/semihosting/arm-compat-semi.c
-index 94950b6c56..a8fdbceb5f 100644
---- a/semihosting/arm-compat-semi.c
-+++ b/semihosting/arm-compat-semi.c
-@@ -822,6 +822,78 @@ static const GuestFDFunctions guestfd_fns[] = {
-     put_user_utl(val, args + (n) * sizeof(target_ulong))
- #endif
- 
-+/*
-+ * SYS_HEAPINFO is a little weird: "On entry, the PARAMETER REGISTER
-+ * contains the address of a pointer to a four-field data block" which
-+ * we then fill in. The PARAMETER REGISTER is unchanged.
-+ */
-+
-+struct HeapInfo {
-+    target_ulong heap_base;
-+    target_ulong heap_limit;
-+    target_ulong stack_base;
-+    target_ulong stack_limit;
-+};
-+
-+static bool do_heapinfo(CPUState *cs, target_long arg0)
-+{
-+    target_ulong limit;
-+    struct HeapInfo info = {};
-+#ifdef CONFIG_USER_ONLY
-+    TaskState *ts = cs->opaque;
-+#else
-+    target_ulong rambase = common_semi_rambase(cs);
-+#endif
-+
-+#ifdef CONFIG_USER_ONLY
-+    /*
-+     * Some C libraries assume the heap immediately follows .bss, so
-+     * allocate it using sbrk.
-+     */
-+    if (!ts->heap_limit) {
-+        abi_ulong ret;
-+
-+        ts->heap_base = do_brk(0);
-+        limit = ts->heap_base + COMMON_SEMI_HEAP_SIZE;
-+        /* Try a big heap, and reduce the size if that fails.  */
-+        for (;;) {
-+            ret = do_brk(limit);
-+            if (ret >= limit) {
-+                break;
-+            }
-+            limit = (ts->heap_base >> 1) + (limit >> 1);
-+        }
-+        ts->heap_limit = limit;
-+    }
-+
-+    info.heap_base = ts->heap_base;
-+    info.heap_limit = ts->heap_limit;
-+    info.stack_base = ts->stack_base;
-+    info.stack_limit = 0; /* Stack limit.  */
-+
-+    if (copy_to_user(arg0, &info, sizeof(info))) {
-+        errno = EFAULT;
-+        return  set_swi_errno(cs, -1);
-+    }
-+#else
-+    limit = current_machine->ram_size;
-+    /* TODO: Make this use the limit of the loaded application.  */
-+    info.heap_base = rambase + limit / 2;
-+    info.heap_limit = rambase + limit;
-+    info.stack_base = rambase + limit; /* Stack base */
-+    info.stack_limit = rambase; /* Stack limit.  */
-+
-+    if (cpu_memory_rw_debug(cs, arg0, &info, sizeof(info), true)) {
-+        errno = EFAULT;
-+        return  set_swi_errno(cs, -1);
-+    }
-+
-+#endif
-+
-+    return 0;
-+}
-+
-+
- /*
-  * Do a semihosting call.
-  *
-@@ -1184,63 +1256,8 @@ target_ulong do_common_semihosting(CPUState *cs)
-         }
-     case TARGET_SYS_HEAPINFO:
-         {
--            target_ulong retvals[4];
--            target_ulong limit;
--            int i;
--#ifdef CONFIG_USER_ONLY
--            TaskState *ts = cs->opaque;
--#else
--            target_ulong rambase = common_semi_rambase(cs);
--#endif
--
-             GET_ARG(0);
--
--#ifdef CONFIG_USER_ONLY
--            /*
--             * Some C libraries assume the heap immediately follows .bss, so
--             * allocate it using sbrk.
--             */
--            if (!ts->heap_limit) {
--                abi_ulong ret;
--
--                ts->heap_base = do_brk(0);
--                limit = ts->heap_base + COMMON_SEMI_HEAP_SIZE;
--                /* Try a big heap, and reduce the size if that fails.  */
--                for (;;) {
--                    ret = do_brk(limit);
--                    if (ret >= limit) {
--                        break;
--                    }
--                    limit = (ts->heap_base >> 1) + (limit >> 1);
--                }
--                ts->heap_limit = limit;
--            }
--
--            retvals[0] = ts->heap_base;
--            retvals[1] = ts->heap_limit;
--            retvals[2] = ts->stack_base;
--            retvals[3] = 0; /* Stack limit.  */
--#else
--            limit = current_machine->ram_size;
--            /* TODO: Make this use the limit of the loaded application.  */
--            retvals[0] = rambase + limit / 2;
--            retvals[1] = rambase + limit;
--            retvals[2] = rambase + limit; /* Stack base */
--            retvals[3] = rambase; /* Stack limit.  */
--#endif
--
--            for (i = 0; i < ARRAY_SIZE(retvals); i++) {
--                bool fail;
--
--                fail = SET_ARG(i, retvals[i]);
--
--                if (fail) {
--                    /* Couldn't write back to argument block */
--                    errno = EFAULT;
--                    return set_swi_errno(cs, -1);
--                }
--            }
--            return 0;
-+            return do_heapinfo(cs, arg0);
-         }
-     case TARGET_SYS_EXIT:
-     case TARGET_SYS_EXIT_EXTENDED:
-diff --git a/tests/tcg/arm/semihosting.c b/tests/tcg/arm/semihosting.c
-index 33faac9916..fd5780ec3c 100644
---- a/tests/tcg/arm/semihosting.c
-+++ b/tests/tcg/arm/semihosting.c
-@@ -7,7 +7,13 @@
-  * SPDX-License-Identifier: GPL-3.0-or-later
-  */
- 
-+#define _GNU_SOURCE  /* asprintf is a GNU extension */
-+
- #include <stdint.h>
-+#include <stdlib.h>
-+#include <stdio.h>
-+#include <string.h>
-+#include <unistd.h>
- #include "semicall.h"
- 
- int main(int argc, char *argv[argc])
-@@ -18,8 +24,34 @@ int main(int argc, char *argv[argc])
-     uintptr_t exit_block[2] = {0x20026, 0};
-     uintptr_t exit_code = (uintptr_t) &exit_block;
- #endif
-+    struct {
-+        void *heap_base;
-+        void *heap_limit;
-+        void *stack_base;
-+        void *stack_limit;
-+    } info;
-+    void *ptr_to_info = (void *) &info;
-+    char *heap_info, *stack_info;
-+    void *brk = sbrk(0);
-+
-+    __semi_call(SYS_WRITE0, (uintptr_t) "Hello World\n");
-+
-+    memset(&info, 0, sizeof(info));
-+    __semi_call(SYS_HEAPINFO, (uintptr_t) &ptr_to_info);
-+
-+    asprintf(&heap_info, "heap: %p -> %p\n", info.heap_base, info.heap_limit);
-+    __semi_call(SYS_WRITE0, (uintptr_t) heap_info);
-+    if (info.heap_base != brk) {
-+        sprintf(heap_info, "heap mismatch: %p\n", brk);
-+        __semi_call(SYS_WRITE0, (uintptr_t) heap_info);
-+        return -1;
-+    }
-+
-+    asprintf(&stack_info, "stack: %p -> %p\n", info.stack_base, info.stack_limit);
-+    __semi_call(SYS_WRITE0, (uintptr_t) stack_info);
-+    free(heap_info);
-+    free(stack_info);
- 
--    __semi_call(SYS_WRITE0, (uintptr_t) "Hello World");
-     __semi_call(SYS_REPORTEXC, exit_code);
-     /* if we get here we failed */
-     return -1;
--- 
-2.20.1
+Also, you don't seem to have the correct "is the CPU in
+32-bit or 64-bit mode" test here: you cannot rely on target_ulong
+being the right size, you must make a runtime check.
+
+I suggested in the other email the way I think we should fix this.
+
+thanks
+-- PMM

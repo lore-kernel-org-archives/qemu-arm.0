@@ -1,102 +1,101 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp598809lfg;
-        Fri, 5 Mar 2021 10:46:58 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx7YV/bpr4B7BjpoyRrQg3VyZtTRDwx3s01RbHBEHj8aPyAju/+ORuwuaRSbSrNXuj7gk+W
-X-Received: by 2002:a02:1ac5:: with SMTP id 188mr11342684jai.71.1614970018212;
-        Fri, 05 Mar 2021 10:46:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614970018; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp598977lfg;
+        Fri, 5 Mar 2021 10:47:14 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxSVaNNs3a8LyOFchZwknZlL16lVwgdlaGhOZglnMiLatHSKJ/KeJd3vqkVko4Jh7bBoYgP
+X-Received: by 2002:a05:6602:2d83:: with SMTP id k3mr9422621iow.26.1614970034151;
+        Fri, 05 Mar 2021 10:47:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614970034; cv=none;
         d=google.com; s=arc-20160816;
-        b=uDub0tJrgAK7JPZzWATTrdU6SrM6McQxTuFmlMT+KnZZ597LphsBmOlNikokgiRYGu
-         H1crp6GgN003BT1U2z+BQMNmSwwL3CIur4hD33vImFZHZEDz6FHRZMPhaF+qJiFSWzIH
-         UeX3RMQf0YbO8kG/kHZHWnlPTMv8XZD/KVS0pmyxZ9xic2ptdURvLYdEcJ1MIrsMY1iQ
-         q3rHhycxxG07BRRS4jpRKQj83wyins1L5B/zPeena+SyifzJcb6G75dIwOEGFuTiKpqs
-         GD/xnSZ9ITe4OnRP/DJuA57mGiswDAITBQMKIsunfAQ/8sx3QqJ9nBDbrDcu5OBmkLiI
-         wT+w==
+        b=Xb1tEJSRl0BXjvnTvGJT/WCoS+h0xk6+x8SvnNH/zP95jmAMQYJ4ohMWMOtPe9F2Uc
+         BzRtji+Tno158zHYO91Q1KPD5RaOLdHlVAuQ04eGr2TDTK035M209cg6at50qagaLfIC
+         dDb8xFh66eH+/vDhkyv1fUfew2hkPZu6oAnhXAV30PKikdqCssbbOC9fgdBCclrNFIo/
+         fBAaV/MdSukAo/uUUSZCR3+YDDsXJgqLorsfPAH2C4+vZnq18/mQQK6XI74XiWPZ57t+
+         jd4M8GwZR3aMbp3fkZaWQhCewybmmHzqHzRsJPAAi8LyhXSiCtvVLs2RmJXWIBvItY9O
+         Y8kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
          :references:mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=JzuL+FT/e8ZT13uwYC+3Br913iPgglpWBDYCOC1jghw=;
-        b=HgoXEwwJ4OUUXTnAcGZamGRMnwi9PwcfXe9FGMHJ3d7pJbTpZS1yKsI3RfNbJNxekT
-         yW+eOKatGKh/WA46A9j76yW1DC/QUKZotM61FqEXmX+P9Kn6v83HTViSGz8q/ZBJqbWg
-         JDCKla13VvZG+pHjGIuK4XpLyn2kEoM/0QJL/Id7KHQ1Z/t9pFh/u4QH/rBfM8gw6jMN
-         7QmHcnVkX/aECP/3pFfh6P0LEAL5IpWGqBv2gEn3EGAsLkxhQMzuX1AoLX83licw9S7l
-         hpzjtYyrNk/Kc3s0cn1J5NCDHN/d48cGu3dIQEvqdaQ0EjiH6cDwfCugUzKZu7T9CBqp
-         sUZg==
+        bh=3b9oo4rWpN6uQHVswbSKBMmKpeNQ+WG47IsHuO1gi5k=;
+        b=0vEUbW7wTvLlcSDFsyuI2mdRGhOJpEqQCXrygWSqxKXrUjEUpZ4lzLUiwzQCEP8Lja
+         KSTv1NZi/cYlg7dqFtuH0Orq+AuvKExmDgYSRYilYDkOaBcFSIUy4W0CsbwO0wGm04C+
+         0WAUqSZ471bbpxvK5SS58HU6Bk1sLnZXQqOhoIG86HKl+VIHNZkrM6Bo0rmDipLM2VyE
+         XWBXRQWD1jAwItcyotT+f5c+5UzIXcB8w9/3xxpcHu5pS7gEpjBDVnPZTgYLIqb1VJYJ
+         9lfhO+Bs7HrnQeC/uZyD1K/Ktr1YP1B07yoWMZjMCdWZBKXdff2u75ujrYnVoUbIle31
+         xksg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=MkvBUOF0;
+       dkim=fail header.i=@google.com header.s=20161025 header.b="q7CXpL/F";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b4si3065456ilj.14.2021.03.05.10.46.57
+        by mx.google.com with ESMTPS id u11si3223205jai.48.2021.03.05.10.47.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Mar 2021 10:46:58 -0800 (PST)
+        Fri, 05 Mar 2021 10:47:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=MkvBUOF0;
+       dkim=fail header.i=@google.com header.s=20161025 header.b="q7CXpL/F";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:34942 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lIFTV-0007iJ-EP
-	for alex.bennee@linaro.org; Fri, 05 Mar 2021 13:46:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56248)
+	id 1lIFTl-0008EP-Ab
+	for alex.bennee@linaro.org; Fri, 05 Mar 2021 13:47:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3EHtCYAgKCBkLJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
- id 1lIFNA-0006py-WC
- for qemu-arm@nongnu.org; Fri, 05 Mar 2021 13:40:25 -0500
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:37409)
+ <3FHtCYAgKCB0PNA3HMLA9HH9E7.5HFJ7FN-3KFGHG9GN.HK9@flex--wuhaotsh.bounces.google.com>)
+ id 1lIFNC-0006sy-6E
+ for qemu-arm@nongnu.org; Fri, 05 Mar 2021 13:40:26 -0500
+Received: from mail-qv1-xf49.google.com ([2607:f8b0:4864:20::f49]:49631)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3EHtCYAgKCBkLJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com>)
- id 1lIFN5-00070g-UN
- for qemu-arm@nongnu.org; Fri, 05 Mar 2021 13:40:24 -0500
-Received: by mail-pg1-x54a.google.com with SMTP id h16so1905174pgv.4
- for <qemu-arm@nongnu.org>; Fri, 05 Mar 2021 10:40:17 -0800 (PST)
+ <3FHtCYAgKCB0PNA3HMLA9HH9E7.5HFJ7FN-3KFGHG9GN.HK9@flex--wuhaotsh.bounces.google.com>)
+ id 1lIFN7-00073A-MY
+ for qemu-arm@nongnu.org; Fri, 05 Mar 2021 13:40:25 -0500
+Received: by mail-qv1-xf49.google.com with SMTP id d15so2189199qvn.16
+ for <qemu-arm@nongnu.org>; Fri, 05 Mar 2021 10:40:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=JzuL+FT/e8ZT13uwYC+3Br913iPgglpWBDYCOC1jghw=;
- b=MkvBUOF08BnQOOqyMjB0gKvopl+jl4qd2Ro2uaVEWC82bTJ1+baM7XCnsT20kOvuj8
- HK5v7NV47M3FI+y3ygc5PFfbPPR7y9eU8lzzTTrVsPY0qaq5S8FKTAyBKIHY1wWUHQiR
- P2FByllx/bQNMRPe9p7ikdoboSa5RSBtk9gVqlb+LEbQnsSViVQlcrF4LSAY18ljKI48
- 5rFMPwiBPMZ9watlJKp1/v5zmY1LB+P/0n2Uj+mYOJ7N+QTeO0swUfpSSCCP7OBSAcV6
- MZgtpxT8bRqkkm+4NgwkucG5/IamJQuaTNJwoIzZGnHr5KhDOB0SBCC60rERZ67UH7fh
- oHgw==
+ :from:to:cc; bh=3b9oo4rWpN6uQHVswbSKBMmKpeNQ+WG47IsHuO1gi5k=;
+ b=q7CXpL/FDWuC1+c8oaml2AbVmH+N04c9/vyfdVCajzmw5TvfPLGIQ8AkTbBLIxvJGc
+ PAZM+HaAxsPq7H5PE9EVOge9TTyl2M40ryGD8+yOrdmSzmH8yXuhQayOW2w09fJFCgxE
+ ugOlmAijaLTFpn2JgXu1kaaAoXLAbZd+PGE597u/uisSpbr5JpWZ9BEWlPEkce0AxU5/
+ nlzWH8t6p0IQs1N37/O8u9awyaU7MYpHHxx98EWtv6/m32ap0pBCn1nV4zV6CbZ8nKxj
+ h/PEtSQYbqu6q46acmmlc+1BHMjH0FghGB0lke/2jv6RsazDyN8wtiHD9YpONbQUcqmD
+ pceQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=JzuL+FT/e8ZT13uwYC+3Br913iPgglpWBDYCOC1jghw=;
- b=NedD0nnqkxPsNM3xjLiiY2Is6NNUYvugLFNMjzpVDEJcoVPahPEBRMJ5KhmWCvK7HM
- E+tCjAXIujMq5ZTJOxIGVizpuf5w4B7HLb5F7zDBnKJafM8gzxr+LoNjEY5Koi+dp7fV
- iL1CO36NGmOhR+OKIHbihj9yTnPDr1HSY3kVvS+xK31OltYjmGCwc+bCuOkb3WZFrs23
- n7LqzgGoI53bnE7uVWxzuerdaXrqLMRPmxg7bhTfVCMnpqlmuPljnkB4/Fc+GWIoEPe+
- nCJCqPVDDLeHCZmFsbCVRLKEkru0zIEfYQHm3Q8gPosecWkFis7L7uePNXahMGweuXFs
- BwPQ==
-X-Gm-Message-State: AOAM5321U+onu53zj5S4o9TnqJvYGsebublwNMyt+FXPS2g4HbsTf/6y
- t2JbwGqEVFK/S9qz//rP3SfaLYU/NhiDRQ==
+ bh=3b9oo4rWpN6uQHVswbSKBMmKpeNQ+WG47IsHuO1gi5k=;
+ b=dXDvNJADzq4lrjKmLs3NaU7aoJagaNT30mSOw2hngsn6/LPQXpLtjZKqfKWxTF2h6c
+ Pss6os9vrzISFPRQfOuwrqK/dVl1ggrgYA5VNFsAQTfLE5SPYByWcV2DfbZZAxFeH04y
+ 3j+JnNfjnEJRshOlgsK70wQPAl7IH3qqvHc8eeSrFJg5NpJHIu67O1Patu/CWBo4HOxa
+ ilTO/zw5nOUDzD4ASp8Xuj2n9YDBO0Ckn96QurVbxZSgY+/UeJAPepTLJAzMqstN+pwc
+ tJY1e9ME5YB8HCeh8ucAMItkmjvKd56W11fnfWQbM+uUjGwgY0zPeyj0j2zRRp3gWCHA
+ JKGQ==
+X-Gm-Message-State: AOAM532HlYoV4KO9fP7DjknJzhOLddR+zUNoKfXZnSJ3nc3lBtj1tMov
+ ZtDB+Xt4ZOnvxQPjYYRBFbENmQjYJoIWMA==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:10:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:902:904b:b029:e5:5cc5:877d with SMTP
- id w11-20020a170902904bb02900e55cc5877dmr10052412plz.50.1614969616984; Fri,
- 05 Mar 2021 10:40:16 -0800 (PST)
-Date: Fri,  5 Mar 2021 10:38:55 -0800
+ (user=wuhaotsh job=sendgmr) by 2002:a0c:bd2f:: with SMTP id
+ m47mr6323567qvg.53.1614969620233; Fri, 05 Mar 2021 10:40:20 -0800 (PST)
+Date: Fri,  5 Mar 2021 10:38:57 -0800
 In-Reply-To: <20210305183857.3120188-1-wuhaotsh@google.com>
-Message-Id: <20210305183857.3120188-3-wuhaotsh@google.com>
+Message-Id: <20210305183857.3120188-5-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20210305183857.3120188-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.30.1.766.gb4fecdf3b7-goog
-Subject: [PATCH 2/4] hw/misc: Add NPCM7XX MFT Module
+Subject: [PATCH 4/4] tests/qtest: Test PWM fan RPM using MFT in PWM test
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, wuhaotsh@google.com, hskinnemoen@google.com, 
  venture@google.com, dje@google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
- envelope-from=3EHtCYAgKCBkLJ6zDIH65DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--wuhaotsh.bounces.google.com;
- helo=mail-pg1-x54a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f49;
+ envelope-from=3FHtCYAgKCB0PNA3HMLA9HH9E7.5HFJ7FN-3KFGHG9GN.HK9@flex--wuhaotsh.bounces.google.com;
+ helo=mail-qv1-xf49.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -120,814 +119,320 @@ Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to:  Hao Wu <wuhaotsh@google.com>
 From:  Hao Wu via <qemu-arm@nongnu.org>
-X-TUID: yGSPX+mUdH+a
+X-TUID: +KBqp3Fsdul8
 
-This patch adds Multi Function Timer (MFT) module for NPCM7XX Soc.
-This module is mainly used to configure PWM fans. It has just enough
-functionality to make the PWM fan kernel module work.
-
-The module takes two input, the max_rpm of a fan (modifiable via QMP)
-and duty cycle (a GPIO from the PWM module.) The actual measured RPM
-is equal to max_rpm * duty_cycle / NPCM7XX_PWM_MAX_DUTY. The RPM is
-measured as a counter compared to a prescaled input clock. The kernel
-driver reads this counter and report to user space.
-
-Refs:
-https://github.com/torvalds/linux/blob/master/drivers/hwmon/npcm750-pwm-fan.c
+This patch adds testing of PWM fan RPMs in the existing npcm7xx pwm
+test. It tests whether the MFT module can measure correct fan values
+for a PWM fan in NPCM7XX boards.
 
 Reviewed-by: Doug Evans <dje@google.com>
 Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- docs/system/arm/nuvoton.rst   |   2 +-
- hw/arm/npcm7xx.c              |  45 ++-
- hw/misc/meson.build           |   1 +
- hw/misc/npcm7xx_mft.c         | 541 ++++++++++++++++++++++++++++++++++
- hw/misc/trace-events          |   8 +
- include/hw/arm/npcm7xx.h      |   2 +
- include/hw/misc/npcm7xx_mft.h |  70 +++++
- 7 files changed, 660 insertions(+), 9 deletions(-)
- create mode 100644 hw/misc/npcm7xx_mft.c
- create mode 100644 include/hw/misc/npcm7xx_mft.h
+ tests/qtest/npcm7xx_pwm-test.c | 205 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 199 insertions(+), 6 deletions(-)
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index 34fc799b2d..3fd3e88479 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -44,6 +44,7 @@ Supported devices
-  * Analog to Digital Converter (ADC)
-  * Pulse Width Modulation (PWM)
-  * SMBus controller (SMBF)
-+ * Tachometer
+diff --git a/tests/qtest/npcm7xx_pwm-test.c b/tests/qtest/npcm7xx_pwm-test.c
+index 3d82654b81..72317f4c81 100644
+--- a/tests/qtest/npcm7xx_pwm-test.c
++++ b/tests/qtest/npcm7xx_pwm-test.c
+@@ -45,6 +45,7 @@
+ #define PLL_FBDV(rv)    extract32((rv), 16, 12)
+ #define PLL_OTDV1(rv)   extract32((rv), 8, 3)
+ #define PLL_OTDV2(rv)   extract32((rv), 13, 3)
++#define APB4CKDIV(rv)   extract32((rv), 30, 2)
+ #define APB3CKDIV(rv)   extract32((rv), 28, 2)
+ #define CLK2CKDIV(rv)   extract32((rv), 0, 1)
+ #define CLK4CKDIV(rv)   extract32((rv), 26, 2)
+@@ -52,6 +53,49 @@
  
- Missing devices
- ---------------
-@@ -62,7 +63,6 @@ Missing devices
-  * Peripheral SPI controller (PSPI)
-  * SD/MMC host
-  * PECI interface
-- * Tachometer
-  * PCI and PCIe root complex and bridges
-  * VDM and MCTP support
-  * Serial I/O expansion
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index f8950f9470..da6f21d3c7 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -120,6 +120,14 @@ enum NPCM7xxInterrupt {
-     NPCM7XX_SMBUS15_IRQ,
-     NPCM7XX_PWM0_IRQ            = 93,   /* PWM module 0 */
-     NPCM7XX_PWM1_IRQ,                   /* PWM module 1 */
-+    NPCM7XX_MFT0_IRQ            = 96,   /* MFT module 0 */
-+    NPCM7XX_MFT1_IRQ,                   /* MFT module 1 */
-+    NPCM7XX_MFT2_IRQ,                   /* MFT module 2 */
-+    NPCM7XX_MFT3_IRQ,                   /* MFT module 3 */
-+    NPCM7XX_MFT4_IRQ,                   /* MFT module 4 */
-+    NPCM7XX_MFT5_IRQ,                   /* MFT module 5 */
-+    NPCM7XX_MFT6_IRQ,                   /* MFT module 6 */
-+    NPCM7XX_MFT7_IRQ,                   /* MFT module 7 */
-     NPCM7XX_GPIO0_IRQ           = 116,
-     NPCM7XX_GPIO1_IRQ,
-     NPCM7XX_GPIO2_IRQ,
-@@ -168,6 +176,18 @@ static const hwaddr npcm7xx_pwm_addr[] = {
-     0xf0104000,
- };
+ #define MAX_DUTY        1000000
  
-+/* Register base address for each MFT Module */
-+static const hwaddr npcm7xx_mft_addr[] = {
-+    0xf0180000,
-+    0xf0181000,
-+    0xf0182000,
-+    0xf0183000,
-+    0xf0184000,
-+    0xf0185000,
-+    0xf0186000,
-+    0xf0187000,
-+};
++/* MFT (PWM fan) related */
++#define MFT_BA(n)       (0xf0180000 + ((n) * 0x1000))
++#define MFT_IRQ(n)      (96 + (n))
++#define MFT_CNT1        0x00
++#define MFT_CRA         0x02
++#define MFT_CRB         0x04
++#define MFT_CNT2        0x06
++#define MFT_PRSC        0x08
++#define MFT_CKC         0x0a
++#define MFT_MCTRL       0x0c
++#define MFT_ICTRL       0x0e
++#define MFT_ICLR        0x10
++#define MFT_IEN         0x12
++#define MFT_CPA         0x14
++#define MFT_CPB         0x16
++#define MFT_CPCFG       0x18
++#define MFT_INASEL      0x1a
++#define MFT_INBSEL      0x1c
 +
- /* Direct memory-mapped access to each SMBus Module. */
- static const hwaddr npcm7xx_smbus_addr[] = {
-     0xf0080000,
-@@ -406,6 +426,10 @@ static void npcm7xx_init(Object *obj)
-     for (i = 0; i < ARRAY_SIZE(s->pwm); i++) {
-         object_initialize_child(obj, "pwm[*]", &s->pwm[i], TYPE_NPCM7XX_PWM);
-     }
++#define MFT_MCTRL_ALL   0x64
++#define MFT_ICLR_ALL    0x3f
++#define MFT_IEN_ALL     0x3f
++#define MFT_CPCFG_EQ_MODE 0x44
 +
-+    for (i = 0; i < ARRAY_SIZE(s->mft); i++) {
-+        object_initialize_child(obj, "mft[*]", &s->mft[i], TYPE_NPCM7XX_MFT);
-+    }
++#define MFT_CKC_C2CSEL  BIT(3)
++#define MFT_CKC_C1CSEL  BIT(0)
++
++#define MFT_ICTRL_TFPND BIT(5)
++#define MFT_ICTRL_TEPND BIT(4)
++#define MFT_ICTRL_TDPND BIT(3)
++#define MFT_ICTRL_TCPND BIT(2)
++#define MFT_ICTRL_TBPND BIT(1)
++#define MFT_ICTRL_TAPND BIT(0)
++
++#define MFT_MAX_CNT     0xffff
++#define MFT_TIMEOUT     0x5000
++
++#define DEFAULT_RPM     19800
++#define DEFAULT_PRSC    255
++#define MFT_PULSE_PER_REVOLUTION 2
++
++#define MAX_ERROR       1
++
+ typedef struct PWMModule {
+     int irq;
+     uint64_t base_addr;
+@@ -210,19 +254,36 @@ static uint64_t pwm_get_duty(QTestState *qts, int module_index, int pwm_index)
+     return pwm_qom_get(qts, path, name);
  }
  
- static void npcm7xx_realize(DeviceState *dev, Error **errp)
-@@ -589,6 +613,19 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(sbd, i, npcm7xx_irq(s, NPCM7XX_PWM0_IRQ + i));
++static void mft_qom_set(QTestState *qts, int index, const char *name,
++                        uint32_t value)
++{
++    QDict *response;
++    char *path = g_strdup_printf("/machine/soc/mft[%d]", index);
++
++    g_test_message("Setting properties %s of mft[%d] with value %u",
++                   name, index, value);
++    response = qtest_qmp(qts, "{ 'execute': 'qom-set',"
++            " 'arguments': { 'path': %s, "
++            " 'property': %s, 'value': %u}}",
++            path, name, value);
++    /* The qom set message returns successfully. */
++    g_assert_true(qdict_haskey(response, "return"));
++}
++
+ static uint32_t get_pll(uint32_t con)
+ {
+     return REF_HZ * PLL_FBDV(con) / (PLL_INDV(con) * PLL_OTDV1(con)
+             * PLL_OTDV2(con));
+ }
+ 
+-static uint64_t read_pclk(QTestState *qts)
++static uint64_t read_pclk(QTestState *qts, bool mft)
+ {
+     uint64_t freq = REF_HZ;
+     uint32_t clksel = qtest_readl(qts, CLK_BA + CLKSEL);
+     uint32_t pllcon;
+     uint32_t clkdiv1 = qtest_readl(qts, CLK_BA + CLKDIV1);
+     uint32_t clkdiv2 = qtest_readl(qts, CLK_BA + CLKDIV2);
++    uint32_t apbdiv = mft ? APB4CKDIV(clkdiv2) : APB3CKDIV(clkdiv2);
+ 
+     switch (CPUCKSEL(clksel)) {
+     case 0:
+@@ -241,7 +302,7 @@ static uint64_t read_pclk(QTestState *qts)
+         g_assert_not_reached();
      }
  
-+    /* MFT Modules. Cannot fail. */
-+    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_mft_addr) != ARRAY_SIZE(s->mft));
-+    for (i = 0; i < ARRAY_SIZE(s->mft); i++) {
-+        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->mft[i]);
-+
-+        qdev_connect_clock_in(DEVICE(&s->mft[i]), "clock-in",
-+                              qdev_get_clock_out(DEVICE(&s->clk),
-+                                                 "apb4-clock"));
-+        sysbus_realize(sbd, &error_abort);
-+        sysbus_mmio_map(sbd, 0, npcm7xx_mft_addr[i]);
-+        sysbus_connect_irq(sbd, 0, npcm7xx_irq(s, NPCM7XX_MFT0_IRQ + i));
-+    }
-+
-     /*
-      * Flash Interface Unit (FIU). Can fail if incorrect number of chip selects
-      * specified, but this is a programming error.
-@@ -632,14 +669,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.peci",         0xf0100000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.siox[1]",      0xf0101000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.siox[2]",      0xf0102000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[0]",       0xf0180000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[1]",       0xf0181000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[2]",       0xf0182000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[3]",       0xf0183000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[4]",       0xf0184000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[5]",       0xf0185000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[6]",       0xf0186000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.mft[7]",       0xf0187000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.pspi1",        0xf0200000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.pspi2",        0xf0201000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.ahbpci",       0xf0400000,   1 * MiB);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 629283957f..b313679d37 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -65,6 +65,7 @@ softmmu_ss.add(when: 'CONFIG_MAINSTONE', if_true: files('mst_fpga.c'))
- softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
-   'npcm7xx_clk.c',
-   'npcm7xx_gcr.c',
-+  'npcm7xx_mft.c',
-   'npcm7xx_pwm.c',
-   'npcm7xx_rng.c',
- ))
-diff --git a/hw/misc/npcm7xx_mft.c b/hw/misc/npcm7xx_mft.c
-new file mode 100644
-index 0000000000..0d5bfe8efa
---- /dev/null
-+++ b/hw/misc/npcm7xx_mft.c
-@@ -0,0 +1,541 @@
-+/*
-+ * Nuvoton NPCM7xx MFT Module
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/misc/npcm7xx_mft.h"
-+#include "hw/misc/npcm7xx_pwm.h"
-+#include "hw/registerfields.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/bitops.h"
-+#include "qemu/error-report.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/timer.h"
-+#include "qemu/units.h"
-+#include "trace.h"
-+
-+/*
-+ * Some of the registers can only accessed via 16-bit ops and some can only
-+ * be accessed via 8-bit ops. However we mark all of them using REG16 to
-+ * simplify implementation. npcm7xx_mft_check_mem_op checks the access length
-+ * of memory operations.
-+ */
-+REG16(NPCM7XX_MFT_CNT1, 0x00);
-+REG16(NPCM7XX_MFT_CRA, 0x02);
-+REG16(NPCM7XX_MFT_CRB, 0x04);
-+REG16(NPCM7XX_MFT_CNT2, 0x06);
-+REG16(NPCM7XX_MFT_PRSC, 0x08);
-+REG16(NPCM7XX_MFT_CKC, 0x0a);
-+REG16(NPCM7XX_MFT_MCTRL, 0x0c);
-+REG16(NPCM7XX_MFT_ICTRL, 0x0e);
-+REG16(NPCM7XX_MFT_ICLR, 0x10);
-+REG16(NPCM7XX_MFT_IEN, 0x12);
-+REG16(NPCM7XX_MFT_CPA, 0x14);
-+REG16(NPCM7XX_MFT_CPB, 0x16);
-+REG16(NPCM7XX_MFT_CPCFG, 0x18);
-+REG16(NPCM7XX_MFT_INASEL, 0x1a);
-+REG16(NPCM7XX_MFT_INBSEL, 0x1c);
-+
-+/* Register Fields */
-+#define NPCM7XX_MFT_CKC_C2CSEL          BIT(3)
-+#define NPCM7XX_MFT_CKC_C1CSEL          BIT(0)
-+
-+#define NPCM7XX_MFT_MCTRL_TBEN          BIT(6)
-+#define NPCM7XX_MFT_MCTRL_TAEN          BIT(5)
-+#define NPCM7XX_MFT_MCTRL_TBEDG         BIT(4)
-+#define NPCM7XX_MFT_MCTRL_TAEDG         BIT(3)
-+#define NPCM7XX_MFT_MCTRL_MODE5         BIT(2)
-+
-+#define NPCM7XX_MFT_ICTRL_TFPND         BIT(5)
-+#define NPCM7XX_MFT_ICTRL_TEPND         BIT(4)
-+#define NPCM7XX_MFT_ICTRL_TDPND         BIT(3)
-+#define NPCM7XX_MFT_ICTRL_TCPND         BIT(2)
-+#define NPCM7XX_MFT_ICTRL_TBPND         BIT(1)
-+#define NPCM7XX_MFT_ICTRL_TAPND         BIT(0)
-+
-+#define NPCM7XX_MFT_ICLR_TFCLR          BIT(5)
-+#define NPCM7XX_MFT_ICLR_TECLR          BIT(4)
-+#define NPCM7XX_MFT_ICLR_TDCLR          BIT(3)
-+#define NPCM7XX_MFT_ICLR_TCCLR          BIT(2)
-+#define NPCM7XX_MFT_ICLR_TBCLR          BIT(1)
-+#define NPCM7XX_MFT_ICLR_TACLR          BIT(0)
-+
-+#define NPCM7XX_MFT_IEN_TFIEN           BIT(5)
-+#define NPCM7XX_MFT_IEN_TEIEN           BIT(4)
-+#define NPCM7XX_MFT_IEN_TDIEN           BIT(3)
-+#define NPCM7XX_MFT_IEN_TCIEN           BIT(2)
-+#define NPCM7XX_MFT_IEN_TBIEN           BIT(1)
-+#define NPCM7XX_MFT_IEN_TAIEN           BIT(0)
-+
-+#define NPCM7XX_MFT_CPCFG_GET_B(rv)     extract8((rv), 4, 4)
-+#define NPCM7XX_MFT_CPCFG_GET_A(rv)     extract8((rv), 0, 4)
-+#define NPCM7XX_MFT_CPCFG_HIEN          BIT(3)
-+#define NPCM7XX_MFT_CPCFG_EQEN          BIT(2)
-+#define NPCM7XX_MFT_CPCFG_LOEN          BIT(1)
-+#define NPCM7XX_MFT_CPCFG_CPSEL         BIT(0)
-+
-+#define NPCM7XX_MFT_INASEL_SELA         BIT(0)
-+#define NPCM7XX_MFT_INBSEL_SELB         BIT(0)
-+
-+/* Max CNT values of the module. The CNT value is a countdown from it. */
-+#define NPCM7XX_MFT_MAX_CNT             0xFFFF
-+
-+/* Each fan revolution should generated 2 pulses */
-+#define NPCM7XX_MFT_PULSE_PER_REVOLUTION 2
-+
-+typedef enum NPCM7xxMFTCaptureState {
-+    /* capture succeeded with a valid CNT value. */
-+    NPCM7XX_CAPTURE_SUCCEED,
-+    /* capture stopped prematurely due to reaching CPCFG condition. */
-+    NPCM7XX_CAPTURE_COMPARE_HIT,
-+    /* capture fails since it reaches underflow condition for CNT. */
-+    NPCM7XX_CAPTURE_UNDERFLOW,
-+} NPCM7xxMFTCaptureState;
-+
-+static void npcm7xx_mft_reset(NPCM7xxMFTState *s)
+-    freq >>= (CLK2CKDIV(clkdiv1) + CLK4CKDIV(clkdiv1) + APB3CKDIV(clkdiv2));
++    freq >>= (CLK2CKDIV(clkdiv1) + CLK4CKDIV(clkdiv1) + apbdiv);
+ 
+     return freq;
+ }
+@@ -267,7 +328,7 @@ static uint32_t pwm_selector(uint32_t csr)
+ static uint64_t pwm_compute_freq(QTestState *qts, uint32_t ppr, uint32_t csr,
+         uint32_t cnr)
+ {
+-    return read_pclk(qts) / ((ppr + 1) * pwm_selector(csr) * (cnr + 1));
++    return read_pclk(qts, false) / ((ppr + 1) * pwm_selector(csr) * (cnr + 1));
+ }
+ 
+ static uint64_t pwm_compute_duty(uint32_t cnr, uint32_t cmr, bool inverted)
+@@ -301,6 +362,28 @@ static void pwm_write(QTestState *qts, const TestData *td, unsigned offset,
+     qtest_writel(qts, td->module->base_addr + offset, value);
+ }
+ 
++static uint8_t mft_readb(QTestState *qts, int index, unsigned offset)
 +{
-+    int i;
-+
-+    /* Only registers PRSC ~ INBSEL need to be reset. */
-+    for (i = R_NPCM7XX_MFT_PRSC; i <= R_NPCM7XX_MFT_INBSEL; ++i) {
-+        s->regs[i] = 0;
-+    }
++    return qtest_readb(qts, MFT_BA(index) + offset);
 +}
 +
-+static void npcm7xx_mft_clear_interrupt(NPCM7xxMFTState *s, uint8_t iclr)
++static uint16_t mft_readw(QTestState *qts, int index, unsigned offset)
 +{
-+    /*
-+     * Clear bits in ICTRL where corresponding bits in iclr is 1.
-+     * Both iclr and ictrl are 8-bit regs. (See npcm7xx_mft_check_mem_op)
-+     */
-+    s->regs[R_NPCM7XX_MFT_ICTRL] &= ~iclr;
++    return qtest_readw(qts, MFT_BA(index) + offset);
 +}
 +
-+/*
-+ * If the CPCFG's condition should be triggered during count down from
-+ * NPCM7XX_MFT_MAX_CNT to src if compared to tgt, return the count when
-+ * the condition is triggered.
-+ * Otherwise return -1.
-+ * Since tgt is uint16_t it must always <= NPCM7XX_MFT_MAX_CNT.
-+ */
-+static int npcm7xx_mft_compare(int32_t src, uint16_t tgt, uint8_t cpcfg)
++static void mft_writeb(QTestState *qts, int index, unsigned offset,
++                        uint8_t value)
 +{
-+    if (cpcfg & NPCM7XX_MFT_CPCFG_HIEN) {
-+        return NPCM7XX_MFT_MAX_CNT;
-+    }
-+    if ((cpcfg & NPCM7XX_MFT_CPCFG_EQEN) && (src <= tgt)) {
-+        return tgt;
-+    }
-+    if ((cpcfg & NPCM7XX_MFT_CPCFG_LOEN) && (tgt > 0) && (src < tgt)) {
-+        return tgt - 1;
-+    }
-+
-+    return -1;
++    qtest_writeb(qts, MFT_BA(index) + offset, value);
 +}
 +
-+/* Compute CNT according to corresponding fan's RPM. */
-+static NPCM7xxMFTCaptureState npcm7xx_mft_compute_cnt(
-+    Clock *clock, uint32_t max_rpm, uint32_t duty, uint16_t tgt,
-+    uint8_t cpcfg, uint16_t *cnt)
++static void mft_writew(QTestState *qts, int index, unsigned offset,
++                        uint16_t value)
 +{
-+    uint32_t rpm = (uint64_t)max_rpm * (uint64_t)duty / NPCM7XX_PWM_MAX_DUTY;
-+    int32_t count;
-+    int stopped;
-+    NPCM7xxMFTCaptureState state;
++    return qtest_writew(qts, MFT_BA(index) + offset, value);
++}
++
+ static uint32_t pwm_read_ppr(QTestState *qts, const TestData *td)
+ {
+     return extract32(pwm_read(qts, td, PPR), ppr_base[pwm_index(td->pwm)], 8);
+@@ -351,11 +434,116 @@ static void pwm_write_cmr(QTestState *qts, const TestData *td, uint32_t value)
+     pwm_write(qts, td, td->pwm->cmr_offset, value);
+ }
+ 
++static int mft_compute_index(const TestData *td)
++{
++    int index = pwm_module_index(td->module) * ARRAY_SIZE(pwm_list) +
++                pwm_index(td->pwm);
++
++    g_assert_cmpint(index, <,
++                    ARRAY_SIZE(pwm_module_list) * ARRAY_SIZE(pwm_list));
++
++    return index;
++}
++
++static void mft_reset_counters(QTestState *qts, int index)
++{
++    mft_writew(qts, index, MFT_CNT1, MFT_MAX_CNT);
++    mft_writew(qts, index, MFT_CNT2, MFT_MAX_CNT);
++    mft_writew(qts, index, MFT_CRA, MFT_MAX_CNT);
++    mft_writew(qts, index, MFT_CRB, MFT_MAX_CNT);
++    mft_writew(qts, index, MFT_CPA, MFT_MAX_CNT - MFT_TIMEOUT);
++    mft_writew(qts, index, MFT_CPB, MFT_MAX_CNT - MFT_TIMEOUT);
++}
++
++static void mft_init(QTestState *qts, const TestData *td)
++{
++    int index = mft_compute_index(td);
++
++    /* Enable everything */
++    mft_writeb(qts, index, MFT_CKC, 0);
++    mft_writeb(qts, index, MFT_ICLR, MFT_ICLR_ALL);
++    mft_writeb(qts, index, MFT_MCTRL, MFT_MCTRL_ALL);
++    mft_writeb(qts, index, MFT_IEN, MFT_IEN_ALL);
++    mft_writeb(qts, index, MFT_INASEL, 0);
++    mft_writeb(qts, index, MFT_INBSEL, 0);
++
++    /* Set cpcfg to use EQ mode, same as kernel driver */
++    mft_writeb(qts, index, MFT_CPCFG, MFT_CPCFG_EQ_MODE);
++
++    /* Write default counters, timeout and prescaler */
++    mft_reset_counters(qts, index);
++    mft_writeb(qts, index, MFT_PRSC, DEFAULT_PRSC);
++
++    /* Write default max rpm via QMP */
++    mft_qom_set(qts, index, "max_rpm[0]", DEFAULT_RPM);
++    mft_qom_set(qts, index, "max_rpm[1]", DEFAULT_RPM);
++}
++
++static int32_t mft_compute_cnt(uint32_t rpm, uint64_t clk)
++{
++    uint64_t cnt;
 +
 +    if (rpm == 0) {
++        return -1;
++    }
++
++    cnt = clk * 60 / ((DEFAULT_PRSC + 1) * rpm * MFT_PULSE_PER_REVOLUTION);
++    if (cnt >= MFT_TIMEOUT) {
++        return -1;
++    }
++    return MFT_MAX_CNT - cnt;
++}
++
++static void mft_verify_rpm(QTestState *qts, const TestData *td, uint64_t duty)
++{
++    int index = mft_compute_index(td);
++    uint16_t cnt, cr;
++    uint32_t rpm = DEFAULT_RPM * duty / MAX_DUTY;
++    uint64_t clk = read_pclk(qts, true);
++    int32_t expected_cnt = mft_compute_cnt(rpm, clk);
++
++    qtest_irq_intercept_in(qts, "/machine/soc/a9mpcore/gic");
++    g_test_message(
++        "verifying rpm for mft[%d]: clk: %lu, duty: %lu, rpm: %u, cnt: %d",
++        index, clk, duty, rpm, expected_cnt);
++
++    /* Verify rpm for fan A */
++    /* Stop capture */
++    mft_writeb(qts, index, MFT_CKC, 0);
++    mft_writeb(qts, index, MFT_ICLR, MFT_ICLR_ALL);
++    mft_reset_counters(qts, index);
++    g_assert_cmphex(mft_readw(qts, index, MFT_CNT1), ==, MFT_MAX_CNT);
++    g_assert_cmphex(mft_readw(qts, index, MFT_CRA), ==, MFT_MAX_CNT);
++    g_assert_cmphex(mft_readw(qts, index, MFT_CPA), ==,
++                    MFT_MAX_CNT - MFT_TIMEOUT);
++    /* Start capture */
++    mft_writeb(qts, index, MFT_CKC, MFT_CKC_C1CSEL);
++    g_assert_true(qtest_get_irq(qts, MFT_IRQ(index)));
++    if (expected_cnt == -1) {
++        g_assert_cmphex(mft_readb(qts, index, MFT_ICTRL), ==, MFT_ICTRL_TEPND);
++    } else {
++        g_assert_cmphex(mft_readb(qts, index, MFT_ICTRL), ==, MFT_ICTRL_TAPND);
++        cnt = mft_readw(qts, index, MFT_CNT1);
 +        /*
-+         * If RPM = 0, capture won't happen. CNT will continue count down.
-+         * So it's effective equivalent to have a cnt > NPCM7XX_MFT_MAX_CNT
++         * Due to error in clock measurement and rounding, we might have a small
++         * error in measuring RPM.
 +         */
-+        count = NPCM7XX_MFT_MAX_CNT + 1;
-+    } else {
-+        /*
-+         * RPM = revolution/min. The time for one revlution (in ns) is
-+         * MINUTE_TO_NANOSECOND / RPM.
-+         * TODO: Use the new clock_ns_to_ticks().
-+         */
-+        count = (60 * NANOSECONDS_PER_SECOND) / (rpm *
-+            NPCM7XX_MFT_PULSE_PER_REVOLUTION * clock_ticks_to_ns(clock, 1));
++        g_assert_cmphex(cnt + MAX_ERROR, >=, expected_cnt);
++        g_assert_cmphex(cnt, <=, expected_cnt + MAX_ERROR);
++        cr = mft_readw(qts, index, MFT_CRA);
++        g_assert_cmphex(cnt, ==, cr);
 +    }
 +
-+    if (count > NPCM7XX_MFT_MAX_CNT) {
-+        count = -1;
-+    } else {
-+        /* The CNT is a countdown value from NPCM7XX_MFT_MAX_CNT. */
-+        count = NPCM7XX_MFT_MAX_CNT - count;
-+    }
-+    stopped = npcm7xx_mft_compare(count, tgt, cpcfg);
-+    if (stopped == -1) {
-+        if (count == -1) {
-+            /* Underflow */
-+            state = NPCM7XX_CAPTURE_UNDERFLOW;
-+        } else {
-+            state = NPCM7XX_CAPTURE_SUCCEED;
-+        }
-+    } else {
-+        count = stopped;
-+        state = NPCM7XX_CAPTURE_COMPARE_HIT;
-+    }
++    /* Verify rpm for fan B */
 +
-+    if (count != -1) {
-+        *cnt = count;
-+    }
-+    trace_npcm7xx_mft_rpm(clock->canonical_path, clock_get_hz(clock),
-+                          state, count, rpm, duty);
-+    return state;
++    qtest_irq_intercept_out(qts, "/machine/soc/a9mpcore/gic");
 +}
 +
-+/*
-+ * Capture Fan RPM and update CNT and CR registers accordingly.
-+ * Raise IRQ if certain contidions are met in IEN.
-+ */
-+static void npcm7xx_mft_capture(NPCM7xxMFTState *s)
-+{
-+    int irq_level = 0;
-+    NPCM7xxMFTCaptureState state;
-+    int sel;
-+    uint8_t cpcfg;
-+
-+    /*
-+     * If not mode 5, the behavior is undefined. We just do nothing in this
-+     * case.
-+     */
-+    if (!(s->regs[R_NPCM7XX_MFT_MCTRL] & NPCM7XX_MFT_MCTRL_MODE5)) {
-+        return;
-+    }
-+
-+    /* Capture input A. */
-+    if (s->regs[R_NPCM7XX_MFT_MCTRL] & NPCM7XX_MFT_MCTRL_TAEN &&
-+        s->regs[R_NPCM7XX_MFT_CKC] & NPCM7XX_MFT_CKC_C1CSEL) {
-+        sel = s->regs[R_NPCM7XX_MFT_INASEL] & NPCM7XX_MFT_INASEL_SELA;
-+        cpcfg = NPCM7XX_MFT_CPCFG_GET_A(s->regs[R_NPCM7XX_MFT_CPCFG]);
-+        state = npcm7xx_mft_compute_cnt(s->clock_1,
-+                                        sel ? s->max_rpm[2] : s->max_rpm[0],
-+                                        sel ? s->duty[2] : s->duty[0],
-+                                        s->regs[R_NPCM7XX_MFT_CPA],
-+                                        cpcfg,
-+                                        &s->regs[R_NPCM7XX_MFT_CNT1]);
-+        switch (state) {
-+        case NPCM7XX_CAPTURE_SUCCEED:
-+            /* Interrupt on input capture on TAn transition - TAPND */
-+            s->regs[R_NPCM7XX_MFT_CRA] = s->regs[R_NPCM7XX_MFT_CNT1];
-+            s->regs[R_NPCM7XX_MFT_ICTRL] |= NPCM7XX_MFT_ICTRL_TAPND;
-+            if (s->regs[R_NPCM7XX_MFT_IEN] & NPCM7XX_MFT_IEN_TAIEN) {
-+                irq_level = 1;
-+            }
-+            break;
-+
-+        case NPCM7XX_CAPTURE_COMPARE_HIT:
-+            /* Compare Hit - TEPND */
-+            s->regs[R_NPCM7XX_MFT_ICTRL] |= NPCM7XX_MFT_ICTRL_TEPND;
-+            if (s->regs[R_NPCM7XX_MFT_IEN] & NPCM7XX_MFT_IEN_TEIEN) {
-+                irq_level = 1;
-+            }
-+            break;
-+
-+        case NPCM7XX_CAPTURE_UNDERFLOW:
-+            /* Underflow - TCPND */
-+            s->regs[R_NPCM7XX_MFT_ICTRL] |= NPCM7XX_MFT_ICTRL_TCPND;
-+            if (s->regs[R_NPCM7XX_MFT_IEN] & NPCM7XX_MFT_IEN_TCIEN) {
-+                irq_level = 1;
-+            }
-+            break;
-+
-+        default:
-+            g_assert_not_reached();
-+        }
-+    }
-+
-+    /* Capture input B. */
-+    if (s->regs[R_NPCM7XX_MFT_MCTRL] & NPCM7XX_MFT_MCTRL_TBEN &&
-+        s->regs[R_NPCM7XX_MFT_CKC] & NPCM7XX_MFT_CKC_C2CSEL) {
-+        sel = s->regs[R_NPCM7XX_MFT_INBSEL] & NPCM7XX_MFT_INBSEL_SELB;
-+        cpcfg = NPCM7XX_MFT_CPCFG_GET_B(s->regs[R_NPCM7XX_MFT_CPCFG]);
-+        state = npcm7xx_mft_compute_cnt(s->clock_2,
-+                                        sel ? s->max_rpm[3] : s->max_rpm[1],
-+                                        sel ? s->duty[3] : s->duty[1],
-+                                        s->regs[R_NPCM7XX_MFT_CPB],
-+                                        cpcfg,
-+                                        &s->regs[R_NPCM7XX_MFT_CNT2]);
-+        switch (state) {
-+        case NPCM7XX_CAPTURE_SUCCEED:
-+            /* Interrupt on input capture on TBn transition - TBPND */
-+            s->regs[R_NPCM7XX_MFT_CRB] = s->regs[R_NPCM7XX_MFT_CNT2];
-+            s->regs[R_NPCM7XX_MFT_ICTRL] |= NPCM7XX_MFT_ICTRL_TBPND;
-+            if (s->regs[R_NPCM7XX_MFT_IEN] & NPCM7XX_MFT_IEN_TBIEN) {
-+                irq_level = 1;
-+            }
-+            break;
-+
-+        case NPCM7XX_CAPTURE_COMPARE_HIT:
-+            /* Compare Hit - TFPND */
-+            s->regs[R_NPCM7XX_MFT_ICTRL] |= NPCM7XX_MFT_ICTRL_TFPND;
-+            if (s->regs[R_NPCM7XX_MFT_IEN] & NPCM7XX_MFT_IEN_TFIEN) {
-+                irq_level = 1;
-+            }
-+            break;
-+
-+        case NPCM7XX_CAPTURE_UNDERFLOW:
-+            /* Underflow - TDPND */
-+            s->regs[R_NPCM7XX_MFT_ICTRL] |= NPCM7XX_MFT_ICTRL_TDPND;
-+            if (s->regs[R_NPCM7XX_MFT_IEN] & NPCM7XX_MFT_IEN_TDIEN) {
-+                irq_level = 1;
-+            }
-+            break;
-+
-+        default:
-+            g_assert_not_reached();
-+        }
-+    }
-+
-+    trace_npcm7xx_mft_capture(DEVICE(s)->canonical_path, irq_level);
-+    qemu_set_irq(s->irq, irq_level);
-+}
-+
-+/* Update clock for counters. */
-+static void npcm7xx_mft_update_clock(void *opaque)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(opaque);
-+    uint64_t prescaled_clock_period;
-+
-+    prescaled_clock_period = clock_get(s->clock_in) *
-+        (s->regs[R_NPCM7XX_MFT_PRSC] + 1ULL);
-+    trace_npcm7xx_mft_update_clock(s->clock_in->canonical_path,
-+                                   s->regs[R_NPCM7XX_MFT_CKC],
-+                                   clock_get(s->clock_in),
-+                                   prescaled_clock_period);
-+    /* Update clock 1 */
-+    if (s->regs[R_NPCM7XX_MFT_CKC] & NPCM7XX_MFT_CKC_C1CSEL) {
-+        /* Clock is prescaled. */
-+        clock_update(s->clock_1, prescaled_clock_period);
-+    } else {
-+        /* Clock stopped. */
-+        clock_update(s->clock_1, 0);
-+    }
-+    /* Update clock 2 */
-+    if (s->regs[R_NPCM7XX_MFT_CKC] & NPCM7XX_MFT_CKC_C2CSEL) {
-+        /* Clock is prescaled. */
-+        clock_update(s->clock_2, prescaled_clock_period);
-+    } else {
-+        /* Clock stopped. */
-+        clock_update(s->clock_2, 0);
-+    }
-+
-+    npcm7xx_mft_capture(s);
-+}
-+
-+static uint64_t npcm7xx_mft_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(opaque);
-+    uint16_t value = 0;
-+
-+    switch (offset) {
-+    case A_NPCM7XX_MFT_ICLR:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: register @ 0x%04" HWADDR_PRIx " is write-only\n",
-+                      __func__, offset);
-+        break;
-+
-+    default:
-+        value = s->regs[offset / 2];
-+    }
-+
-+    trace_npcm7xx_mft_read(DEVICE(s)->canonical_path, offset, value);
-+    return value;
-+}
-+
-+static void npcm7xx_mft_write(void *opaque, hwaddr offset,
-+                              uint64_t v, unsigned size)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(opaque);
-+
-+    trace_npcm7xx_mft_write(DEVICE(s)->canonical_path, offset, v);
-+    switch (offset) {
-+    case A_NPCM7XX_MFT_ICLR:
-+        npcm7xx_mft_clear_interrupt(s, v);
-+        break;
-+
-+    case A_NPCM7XX_MFT_CKC:
-+    case A_NPCM7XX_MFT_PRSC:
-+        s->regs[offset / 2] = v;
-+        npcm7xx_mft_update_clock(s);
-+        break;
-+
-+    default:
-+        s->regs[offset / 2] = v;
-+        npcm7xx_mft_capture(s);
-+        break;
-+    }
-+}
-+
-+static bool npcm7xx_mft_check_mem_op(void *opaque, hwaddr offset,
-+                                     unsigned size, bool is_write,
-+                                     MemTxAttrs attrs)
-+{
-+    switch (offset) {
-+    /* 16-bit registers. Must be accessed with 16-bit read/write.*/
-+    case A_NPCM7XX_MFT_CNT1:
-+    case A_NPCM7XX_MFT_CRA:
-+    case A_NPCM7XX_MFT_CRB:
-+    case A_NPCM7XX_MFT_CNT2:
-+    case A_NPCM7XX_MFT_CPA:
-+    case A_NPCM7XX_MFT_CPB:
-+        return size == 2;
-+
-+    /* 8-bit registers. Must be accessed with 8-bit read/write.*/
-+    case A_NPCM7XX_MFT_PRSC:
-+    case A_NPCM7XX_MFT_CKC:
-+    case A_NPCM7XX_MFT_MCTRL:
-+    case A_NPCM7XX_MFT_ICTRL:
-+    case A_NPCM7XX_MFT_ICLR:
-+    case A_NPCM7XX_MFT_IEN:
-+    case A_NPCM7XX_MFT_CPCFG:
-+    case A_NPCM7XX_MFT_INASEL:
-+    case A_NPCM7XX_MFT_INBSEL:
-+        return size == 1;
-+
-+    default:
-+        /* Invalid registers. */
-+        return false;
-+    }
-+}
-+
-+static void npcm7xx_mft_get_max_rpm(Object *obj, Visitor *v, const char *name,
-+                                    void *opaque, Error **errp)
-+{
-+    visit_type_uint32(v, name, (uint32_t *)opaque, errp);
-+}
-+
-+static void npcm7xx_mft_set_max_rpm(Object *obj, Visitor *v, const char *name,
-+                                    void *opaque, Error **errp)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(obj);
-+    uint32_t *max_rpm = opaque;
-+    uint32_t value;
-+
-+    if (!visit_type_uint32(v, name, &value, errp)) {
-+        return;
-+    }
-+
-+    *max_rpm = value;
-+    npcm7xx_mft_capture(s);
-+}
-+
-+static void npcm7xx_mft_duty_handler(void *opaque, int n, int value)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(opaque);
-+
-+    trace_npcm7xx_mft_set_duty(DEVICE(s)->canonical_path, n, value);
-+    s->duty[n] = value;
-+    npcm7xx_mft_capture(s);
-+}
-+
-+static const struct MemoryRegionOps npcm7xx_mft_ops = {
-+    .read       = npcm7xx_mft_read,
-+    .write      = npcm7xx_mft_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid      = {
-+        .min_access_size        = 1,
-+        .max_access_size        = 2,
-+        .unaligned              = false,
-+        .accepts                = npcm7xx_mft_check_mem_op,
-+    },
-+};
-+
-+static void npcm7xx_mft_enter_reset(Object *obj, ResetType type)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(obj);
-+
-+    npcm7xx_mft_reset(s);
-+}
-+
-+static void npcm7xx_mft_hold_reset(Object *obj)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(obj);
-+
-+    qemu_irq_lower(s->irq);
-+}
-+
-+static void npcm7xx_mft_init(Object *obj)
-+{
-+    NPCM7xxMFTState *s = NPCM7XX_MFT(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    DeviceState *dev = DEVICE(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &npcm7xx_mft_ops, s,
-+                          TYPE_NPCM7XX_MFT, 4 * KiB);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+    s->clock_in = qdev_init_clock_in(dev, "clock-in",
-+                                     npcm7xx_mft_update_clock, s);
-+    s->clock_1 = qdev_init_clock_out(dev, "clock1");
-+    s->clock_2 = qdev_init_clock_out(dev, "clock2");
-+
-+    for (int i = 0; i < NPCM7XX_PWM_PER_MODULE; ++i) {
-+        object_property_add(obj, "max_rpm[*]", "uint32",
-+                            npcm7xx_mft_get_max_rpm,
-+                            npcm7xx_mft_set_max_rpm,
-+                            NULL, &s->max_rpm[i]);
-+    }
-+    qdev_init_gpio_in_named(dev, npcm7xx_mft_duty_handler, "duty",
-+                            NPCM7XX_MFT_FANIN_COUNT);
-+}
-+
-+static const VMStateDescription vmstate_npcm7xx_mft = {
-+    .name = "npcm7xx-mft-module",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_CLOCK(clock_in, NPCM7xxMFTState),
-+        VMSTATE_CLOCK(clock_1, NPCM7xxMFTState),
-+        VMSTATE_CLOCK(clock_2, NPCM7xxMFTState),
-+        VMSTATE_UINT16_ARRAY(regs, NPCM7xxMFTState, NPCM7XX_MFT_NR_REGS),
-+        VMSTATE_UINT32_ARRAY(max_rpm, NPCM7xxMFTState, NPCM7XX_MFT_FANIN_COUNT),
-+        VMSTATE_UINT32_ARRAY(duty, NPCM7xxMFTState, NPCM7XX_MFT_FANIN_COUNT),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static void npcm7xx_mft_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "NPCM7xx MFT Controller";
-+    dc->vmsd = &vmstate_npcm7xx_mft;
-+    rc->phases.enter = npcm7xx_mft_enter_reset;
-+    rc->phases.hold = npcm7xx_mft_hold_reset;
-+}
-+
-+static const TypeInfo npcm7xx_mft_info = {
-+    .name               = TYPE_NPCM7XX_MFT,
-+    .parent             = TYPE_SYS_BUS_DEVICE,
-+    .instance_size      = sizeof(NPCM7xxMFTState),
-+    .class_init         = npcm7xx_mft_class_init,
-+    .instance_init      = npcm7xx_mft_init,
-+};
-+
-+static void npcm7xx_mft_register_type(void)
-+{
-+    type_register_static(&npcm7xx_mft_info);
-+}
-+type_init(npcm7xx_mft_register_type);
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index d626b9d7a7..5388be7548 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -116,6 +116,14 @@ npcm7xx_clk_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 " valu
- npcm7xx_gcr_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
- npcm7xx_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+ /* Check pwm registers can be reset to default value */
+ static void test_init(gconstpointer test_data)
+ {
+     const TestData *td = test_data;
+-    QTestState *qts = qtest_init("-machine quanta-gsj");
++    QTestState *qts = qtest_init("-machine npcm750-evb");
+     int module = pwm_module_index(td->module);
+     int pwm = pwm_index(td->pwm);
  
-+# npcm7xx_mft.c
-+npcm7xx_mft_read(const char *name, uint64_t offset, uint16_t value) "%s: offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
-+npcm7xx_mft_write(const char *name, uint64_t offset, uint16_t value) "%s: offset: 0x%04" PRIx64 " value: 0x%04" PRIx16
-+npcm7xx_mft_rpm(const char *clock, uint32_t clock_hz, int state, int32_t cnt, uint32_t rpm, uint32_t duty) " fan clk: %s clock_hz: %" PRIu32 ", state: %d, cnt: %" PRIi32 ", rpm: %" PRIu32 ", duty: %" PRIu32
-+npcm7xx_mft_capture(const char *name, int irq_level) "%s: level: %d"
-+npcm7xx_mft_update_clock(const char *name, uint16_t sel, uint64_t clock_period, uint64_t prescaled_clock_period) "%s: sel: 0x%02" PRIx16 ", period: %" PRIu64 ", prescaled: %" PRIu64
-+npcm7xx_mft_set_duty(const char *name, int n, int value) "%s[%d]: %d"
+@@ -369,7 +557,7 @@ static void test_init(gconstpointer test_data)
+ static void test_oneshot(gconstpointer test_data)
+ {
+     const TestData *td = test_data;
+-    QTestState *qts = qtest_init("-machine quanta-gsj");
++    QTestState *qts = qtest_init("-machine npcm750-evb");
+     int module = pwm_module_index(td->module);
+     int pwm = pwm_index(td->pwm);
+     uint32_t ppr, csr, pcr;
+@@ -400,13 +588,15 @@ static void test_oneshot(gconstpointer test_data)
+ static void test_toggle(gconstpointer test_data)
+ {
+     const TestData *td = test_data;
+-    QTestState *qts = qtest_init("-machine quanta-gsj");
++    QTestState *qts = qtest_init("-machine npcm750-evb");
+     int module = pwm_module_index(td->module);
+     int pwm = pwm_index(td->pwm);
+     uint32_t ppr, csr, pcr, cnr, cmr;
+     int i, j, k, l;
+     uint64_t expected_freq, expected_duty;
+ 
++    mft_init(qts, td);
 +
- # npcm7xx_rng.c
- npcm7xx_rng_read(uint64_t offset, uint64_t value, unsigned size) "offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
- npcm7xx_rng_write(uint64_t offset, uint64_t value, unsigned size) "offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index cea1bd1f62..42d4c1f717 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -24,6 +24,7 @@
- #include "hw/mem/npcm7xx_mc.h"
- #include "hw/misc/npcm7xx_clk.h"
- #include "hw/misc/npcm7xx_gcr.h"
-+#include "hw/misc/npcm7xx_mft.h"
- #include "hw/misc/npcm7xx_pwm.h"
- #include "hw/misc/npcm7xx_rng.h"
- #include "hw/nvram/npcm7xx_otp.h"
-@@ -81,6 +82,7 @@ typedef struct NPCM7xxState {
-     NPCM7xxTimerCtrlState tim[3];
-     NPCM7xxADCState     adc;
-     NPCM7xxPWMState     pwm[2];
-+    NPCM7xxMFTState     mft[8];
-     NPCM7xxOTPState     key_storage;
-     NPCM7xxOTPState     fuse_array;
-     NPCM7xxMCState      mc;
-diff --git a/include/hw/misc/npcm7xx_mft.h b/include/hw/misc/npcm7xx_mft.h
-new file mode 100644
-index 0000000000..36785e3ba8
---- /dev/null
-+++ b/include/hw/misc/npcm7xx_mft.h
-@@ -0,0 +1,70 @@
-+/*
-+ * Nuvoton NPCM7xx MFT Module
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+#ifndef NPCM7XX_MFT_H
-+#define NPCM7XX_MFT_H
+     pcr = CH_EN | CH_MOD;
+     for (i = 0; i < ARRAY_SIZE(ppr_list); ++i) {
+         ppr = ppr_list[i];
+@@ -440,6 +630,9 @@ static void test_toggle(gconstpointer test_data)
+                                 ==, expected_freq);
+                     }
+ 
++                    /* Test MFT's RPM is correct. */
++                    mft_verify_rpm(qts, td, expected_duty);
 +
-+#include "exec/memory.h"
-+#include "hw/clock.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
-+
-+/* Max Fan input number. */
-+#define NPCM7XX_MFT_MAX_FAN_INPUT 19
-+
-+/*
-+ * Number of registers in one MFT module. Don't change this without increasing
-+ * the version_id in vmstate.
-+ */
-+#define NPCM7XX_MFT_NR_REGS (0x20 / sizeof(uint16_t))
-+
-+/*
-+ * The MFT can take up to 4 inputs: A0, B0, A1, B1. It can measure one A and one
-+ * B simultaneously. NPCM7XX_MFT_INASEL and NPCM7XX_MFT_INBSEL are used to
-+ * select which A or B input are used.
-+ */
-+#define NPCM7XX_MFT_FANIN_COUNT 4
-+
-+/**
-+ * struct NPCM7xxMFTState - Multi Functional Tachometer device state.
-+ * @parent: System bus device.
-+ * @iomem: Memory region through which registers are accessed.
-+ * @clock_in: The input clock for MFT from CLK module.
-+ * @clock_{1,2}: The counter clocks for NPCM7XX_MFT_CNT{1,2}
-+ * @irq: The IRQ for this MFT state.
-+ * @regs: The MMIO registers.
-+ * @max_rpm: The maximum rpm for fans. Order: A0, B0, A1, B1.
-+ * @duty: The duty cycles for fans, relative to NPCM7XX_PWM_MAX_DUTY.
-+ */
-+typedef struct NPCM7xxMFTState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion iomem;
-+
-+    Clock       *clock_in;
-+    Clock       *clock_1, *clock_2;
-+    qemu_irq    irq;
-+    uint16_t    regs[NPCM7XX_MFT_NR_REGS];
-+
-+    uint32_t    max_rpm[NPCM7XX_MFT_FANIN_COUNT];
-+    uint32_t    duty[NPCM7XX_MFT_FANIN_COUNT];
-+} NPCM7xxMFTState;
-+
-+#define TYPE_NPCM7XX_MFT "npcm7xx-mft"
-+#define NPCM7XX_MFT(obj) \
-+    OBJECT_CHECK(NPCM7xxMFTState, (obj), TYPE_NPCM7XX_MFT)
-+
-+#endif /* NPCM7XX_MFT_H */
+                     /* Test inverted mode */
+                     expected_duty = pwm_compute_duty(cnr, cmr, true);
+                     pwm_write_pcr(qts, td, pcr | CH_INV);
 -- 
 2.30.1.766.gb4fecdf3b7-goog
 

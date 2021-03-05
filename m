@@ -1,102 +1,114 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp410650lfg;
-        Fri, 5 Mar 2021 06:48:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxI3P8yifYSwshQTnr02IP3/P+FnsG9j7fH62OrywI7MUGjO695AZzx438oReMJnYIoKGgc
-X-Received: by 2002:a05:6e02:1a49:: with SMTP id u9mr9027495ilv.140.1614955719868;
-        Fri, 05 Mar 2021 06:48:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614955719; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp416730lfg;
+        Fri, 5 Mar 2021 06:57:06 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy3Pvv4hUlB+ISxAF13XD9T+0yrqZDPqiy+PLJygJaUouF+GioCOCUZhGHVQajY4kT19dRi
+X-Received: by 2002:a05:6e02:1806:: with SMTP id a6mr9148616ilv.8.1614956225955;
+        Fri, 05 Mar 2021 06:57:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614956225; cv=none;
         d=google.com; s=arc-20160816;
-        b=wo835Eo0hPkzR5Dj2pG/IC6qk50ohfhLw22u7u45nLMOXt/gkeuKZJnZFQpfmLpYmV
-         E6ZTizgvqAZixcsujSaQjG+Mee3E2bi5MzDUQ32e6AdWUR8+Mw865Zk6NfBGnNUJTjK6
-         xMAK2OcUdEXqokC55VKUf8jsiPb0iTW9XisGDvUTfWmxYjYk/qLQl7ShNS/waadW+AGC
-         YC9jPxFkqrVRC0IqdGotika9oQmPMel5o2kngeaGjD9QaHhohE+09MRDCIv63sab9MCD
-         2b2YFzTtO5E7NkiwiZbnzIAhuLR6xA32r443YGhFvGbAl9Dego+SA4IujyVUFjrvbcz5
-         MPPg==
+        b=EWM7ifrF8JAaERxzNPgAKP59h68F1DHTX/glqnM4miqeFBe3wgp2AEMhBsesc24rMy
+         mbTA7dO/hqT2xkwtZFZsF3CxSTS8BZ3IFre1LDyNKollBOJWV+nbepcGo4uMQD4MuCHv
+         C/shKQgPyY8nU8do1WVAHzM5003A5/F1513ZybGT+R49zX8ZphzlkkHe5qgaaZsJTnxG
+         jQTEWz9RJiJ+fX/sGTU0iH6AcbjK1S9ish1L5yPH6oxW79JiyfKtgL/9W0+PlTll7mD7
+         FEWvShaT01KfSNTH82BKzlfmPDkjlD9y608L1SL4AT+/4GWNBP99u1+ZJ1fhTKzKM0zG
+         nafw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Ut45ZNUFx4I9cGZaEL3mdBFu9mwmY1NBE3AgGM/zY1s=;
-        b=BfMNgiaQfkXZJ9qvujs5dQN/rDJ2gU4gbSczfg1/T7lOYBY6Sgsn3FHr1EllzcD/vl
-         NhBN8lLgELPMb8+lmOof0jA1pGwDw/EQAUF1cuCA/ebXZtdU9aOBRH2tMJzpCdv2v5tr
-         Q9HQUllWSOM/mavCvqApeGDyn/LhhF8yc2/aEHBOhvG5lmZ1koZGVmp2C8WasxxPNwRy
-         FsAgYVjhGrtk7+u/NP3FEGNxMKMiUcsLqcKbtKyWNbxZ1jg8V4lfePVHYMIQH/t4T9fN
-         2kRhLhpf0z5O+uKxG4NTzOeBuKG0XkjfgQ+oJRqk24oXbTshUzrDnPezFkl/aMqVSOpa
-         gmNA==
+        bh=UKRX4+7q9McxwT3a8IQp5a5oCsCcryJWs0xxC1NbKCw=;
+        b=NNhkOhQRakLYocuuTycUrheA75T1FVRo2WktbfKueDbVs5Y5kaAoI7iI1o7Ez/XLSx
+         8QBDyUiEt4g7Bm1WMPnDRfOOROtDx6HXOL/OLKDQY5C/6njPZ7mGsTla1V7IFSK/FZvI
+         uZGaqv7jh9TsCkWZ6vbLFbi5mCOXXAmh7JB/uBHm+uHILIolz4E54uT8vTQ9+RPartwR
+         yrt0iNhkXqDnWGdyFAotR/uH5M8sCaZukkj/ZJOsZ/z/wyKjgCf855NAVdqUHv/YGvEO
+         souTYyVzPkQkTv3cdPuPIb+xDezOadsKy/9rw8LIuxpt2GGnJtodF8U2QX8/14YoNSsc
+         FJMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VJ6aht5P;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iXsIocLD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si2511882ilm.67.2021.03.05.06.48.39
+        by mx.google.com with ESMTPS id e21si2699596jaq.58.2021.03.05.06.57.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Mar 2021 06:48:39 -0800 (PST)
+        Fri, 05 Mar 2021 06:57:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VJ6aht5P;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iXsIocLD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42880 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57434 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lIBkt-0001gt-57
-	for alex.bennee@linaro.org; Fri, 05 Mar 2021 09:48:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53572)
+	id 1lIBt3-00081v-9w
+	for alex.bennee@linaro.org; Fri, 05 Mar 2021 09:57:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55144)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lIBkk-0001ed-Ml
- for qemu-arm@nongnu.org; Fri, 05 Mar 2021 09:48:30 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:35637)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1lIBkj-00079b-04
- for qemu-arm@nongnu.org; Fri, 05 Mar 2021 09:48:30 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id dx17so3983675ejb.2
- for <qemu-arm@nongnu.org>; Fri, 05 Mar 2021 06:48:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ut45ZNUFx4I9cGZaEL3mdBFu9mwmY1NBE3AgGM/zY1s=;
- b=VJ6aht5POT1QMUZgS8+gcBJfkvfrPQJA2S6GfMKaglMmDMDcCZxeIh92Bh1GCnyT85
- htGc97DsbJTNMENlXFSnTMD8E6b+SeqDHhjwrQPSSLomDtkR6fJLYyaxWuombeO00SfF
- +c7i+73dkgTYY83y2EHvL04gePjzoJ7z5Kbcr2cIEfjpHfBJm9JkcH0nmGF+RgbRobl8
- xVII+bocu5I2H4b0T9470phS/EaX2hTgEyYKg4udEOF0eCYxgdCKFqwHpSZFHVsj9rFR
- OwNVwf4vcW3LVO3xI0IAOHvw2ObEsHtXmvgNzBt1sQVNK9a+0pWJ/R+DUzkLZDygPIg1
- ZTvA==
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lIBsv-00081f-7g
+ for qemu-arm@nongnu.org; Fri, 05 Mar 2021 09:56:57 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50519)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <wrampazz@redhat.com>)
+ id 1lIBst-0002XV-AQ
+ for qemu-arm@nongnu.org; Fri, 05 Mar 2021 09:56:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1614956213;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UKRX4+7q9McxwT3a8IQp5a5oCsCcryJWs0xxC1NbKCw=;
+ b=iXsIocLDbvhRzzoc2Ri6x5re+vin94HoK/GiwVDCSW89g2vpWBeYtiKBsxXMBszK53Oydj
+ SrKUqc2LRRBibHQa+hsOKlZ5mUXxmeN9XvOCnJZOUvu6CHcMULDwnLHhHpw3mMzPh/jeFc
+ C2rxI7HSifLI9PKhLrd0nimLkua725c=
+Received: from mail-vk1-f200.google.com (mail-vk1-f200.google.com
+ [209.85.221.200]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-503-KQjsPK2ZNQ2LeZGM73_xXw-1; Fri, 05 Mar 2021 09:56:50 -0500
+X-MC-Unique: KQjsPK2ZNQ2LeZGM73_xXw-1
+Received: by mail-vk1-f200.google.com with SMTP id s17so679206vke.11
+ for <qemu-arm@nongnu.org>; Fri, 05 Mar 2021 06:56:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Ut45ZNUFx4I9cGZaEL3mdBFu9mwmY1NBE3AgGM/zY1s=;
- b=i0oBAR4sBXdGtm8dw9/Qz+N9Oe5/1+z/Q2W6jguVlX2owpzuS0a2Lf+zqo+KiWjoa4
- MvFD0RMi2qnWuLm15NwP3nETGLKVie3GnX8Qe1mGDKOoIlqSa+cikObEJNHM8Bip5J0E
- Cd+rQnSunBYEazHklZBsPvSXnc5BJ+9RTBV1xyfMY9CUJThmFn7bwFYKCLd+AjwRiLuD
- jWeyn96Mo+Ltv2Gk4SPnAYlIZnYbZSAAeOUx1UF+aGQABSue+GF3zNEeZ4xjXtI9hVTB
- BINKC1HTjRilAhdfseYwGC38GHP8zs13YDktiEYLhxB5CicBLTPXsTn2Zd4/pguf0JyM
- 2z6A==
-X-Gm-Message-State: AOAM531AxYLIneJMpPARLOYOW456bLvNznSmoZgxv1iM/x6NLbhZrdHn
- yqOfxQvSbyE+epUGNdq53fnMow/O/4rf/sRzBoeqwWoWu6E=
-X-Received: by 2002:a17:906:16ca:: with SMTP id
- t10mr2537956ejd.85.1614955707326; 
- Fri, 05 Mar 2021 06:48:27 -0800 (PST)
+ bh=UKRX4+7q9McxwT3a8IQp5a5oCsCcryJWs0xxC1NbKCw=;
+ b=iIQvjRvQNQD1ifACOvvBENkIA1DOO1n8QH6BA035r+c0PIIyjqvFez0ZLj9PhXGaIo
+ YcfEy7HAnFvE3453j/D/eU7Ws56mHKvdfzC6HJjNtIaP24UgxE/ybeJhYBNC6Hsgirq5
+ 5YoI05CWPfjlsWvtJUlYBcHxkvzQK80w0+7nRuSfAORfZkxaFhcbmPNYvZQ71T0pYBjQ
+ daM8h91pKq1tGFIu7S961z+J6o4t8d/CDjxecuVhJxNtlAU/aJvZAnzV16anmOioinyg
+ Uu0XZJj+270hsI+QgJhxH8Gg/UAuw+TyihBq0q8Q07mAmyuPCBAS+C6ZmgFxHIksaKC8
+ tMEQ==
+X-Gm-Message-State: AOAM533/vSOtT580KkQm4MQ6rArnho/xR6Li8sr7O3++rAFIkuQERewp
+ sXmlnamcnXWJlGemKE8LcYrhuXHY6oARXiVtjEqpJn8fKDzliWglPXPDlLWAUZwNnEPpL5vW2m0
+ JmPDZD/yaJE3BZiq0elIeFPv6mEEW
+X-Received: by 2002:ab0:660d:: with SMTP id r13mr5690970uam.5.1614956210329;
+ Fri, 05 Mar 2021 06:56:50 -0800 (PST)
+X-Received: by 2002:ab0:660d:: with SMTP id r13mr5690946uam.5.1614956210153;
+ Fri, 05 Mar 2021 06:56:50 -0800 (PST)
 MIME-Version: 1.0
-References: <20210211141515.8755-1-peter.maydell@linaro.org>
-In-Reply-To: <20210211141515.8755-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Mar 2021 14:48:11 +0000
-Message-ID: <CAFEAcA-yS0XcCU7CW2hDr=SLMB2WcNQbdtK=Ei8tk-86bW+i8g@mail.gmail.com>
-Subject: Re: [PATCH 0/9] hw/display/pl110, pxa2xx_lcd: Tidy up template headers
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+References: <20210304203540.41614-1-nieklinnenbank@gmail.com>
+ <20210304203540.41614-4-nieklinnenbank@gmail.com>
+In-Reply-To: <20210304203540.41614-4-nieklinnenbank@gmail.com>
+From: Willian Rampazzo <wrampazz@redhat.com>
+Date: Fri, 5 Mar 2021 11:56:24 -0300
+Message-ID: <CAKJDGDYmXH0xpOW534AMWhG_i0bqym=t4YyDpjQ3SoJRN_mAvw@mail.gmail.com>
+Subject: Re: [PATCH v3 3/5] tests/acceptance/boot_linux_console: change URL
+ for test_arm_orangepi_bionic_20_08
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=wrampazz@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=wrampazz@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,47 +121,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Daniel Berrange <berrange@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ b.galvani@gmail.com, qemu-arm@nongnu.org,
+ Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>,
+ Cleber Rosa Junior <crosa@redhat.com>,
+ Philippe Mathieu Daude <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KU03155lni70
+X-TUID: VzPX1A8F2/6T
 
-Ping for review?
+On Thu, Mar 4, 2021 at 5:42 PM Niek Linnenbank <nieklinnenbank@gmail.com> wrote:
+>
+> Update the download URL of the Armbian 20.08 Bionic image for
+> test_arm_orangepi_bionic_20_08 of the orangepi-pc machine.
+>
+> The archive.armbian.com URL contains more images and should keep stable
+> for a longer period of time than dl.armbian.com.
+>
+> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> ---
+>  tests/acceptance/boot_linux_console.py | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
 
-thanks
--- PMM
+Reviewed-by: Willian Rampazzo <willianr@redhat.com>
 
-On Thu, 11 Feb 2021 at 14:15, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> For a long time now the UI layer has guaranteed that the console
-> surface is always 32 bits per pixel, but some older display device
-> models still have the code to handle other depths.  This patchset
-> cleans up that dead code for the pl110 and pxa2xx_lcd devices.  For
-> the pxa2xx_lcd we can remove the template header entirely; the pl110
-> still uses it to handle the wide variety of guest pixel formats that
-> it has to support, but we can at least simplify it from a
-> doubly-nested set of inclusions to a single layer.
->
-> thanks
-> -- PMM
->
-> Peter Maydell (9):
->   hw/display/pl110: Remove dead code for non-32-bpp surfaces
->   hw/display/pl110: Pull included-once parts of template header into
->     pl110.c
->   hw/display/pl110: Remove use of BITS from pl110_template.h
->   hw/display/pxa2xx_lcd: Remove dead code for non-32-bpp surfaces
->   hw/display/pxa2xx_lcd: Remove dest_width state field
->   hw/display/pxa2xx: Remove use of BITS in pxa2xx_template.h
->   hw/display/pxa2xx: Apply brace-related coding style fixes to template
->     header
->   hw/display/pxa2xx: Apply whitespace-only coding style fixes to
->     template header
->   hw/display/pxa2xx: Inline template header
->
->  hw/display/pl110_template.h  | 120 +-------
->  hw/display/pxa2xx_template.h | 447 ------------------------------
->  hw/display/pl110.c           | 123 ++++++---
->  hw/display/pxa2xx_lcd.c      | 520 ++++++++++++++++++++++++++++++-----
->  4 files changed, 542 insertions(+), 668 deletions(-)
->  delete mode 100644 hw/display/pxa2xx_template.h

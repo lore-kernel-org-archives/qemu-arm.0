@@ -1,98 +1,138 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp753640lfg;
-        Fri, 5 Mar 2021 14:54:34 -0800 (PST)
-X-Received: by 2002:a17:906:58c9:: with SMTP id e9mr4335117ejs.26.1614984874573;
-        Fri, 05 Mar 2021 14:54:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614984874; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp787644lfg;
+        Fri, 5 Mar 2021 15:54:31 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx7+psVVy78Wjd/8GdFvPoXv+4mQb9gJvQqzVZ5COTYtKSJ2paT7Jiwo01hNFGNtfifKxLa
+X-Received: by 2002:a17:90b:1c0e:: with SMTP id oc14mr12630044pjb.188.1614988471006;
+        Fri, 05 Mar 2021 15:54:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614988471; cv=none;
         d=google.com; s=arc-20160816;
-        b=aXTvf/lGV0wjbUn91Tay/uOqOJHbrkQVZz88874xKr+UYQUfn3si9z7GAeyqVIsXqT
-         kEXq7v7P7QWa21sZJHnsmDeq6ibQu3oZNB986qwYrIst6+OU4ZUkeYu/SSkcLOseW0zF
-         L7mixnUlV2bGTBZPT0YLczW6/C1ohfV6j1VhYDW4dIaBtpItyBQzOA5fbZ/UHPJfasqJ
-         xP82SxHiFTq1/mry0o/aHWKESFxybpwOs5Zm0q314CPbp0vJs+PhHc93KOBCfvNRW4Et
-         N1hMLrylhL/Ir2OTPNNVU6AOfVA6WDfEXYClKnEKk3XVbsWaOOS/dHoDMKSdDwfxloCB
-         tSkw==
+        b=fcpQVWGF4kfNdoluVuD7KBp6T7PlSqMAJyeoxaPZ2antAymv0hDjL7MxHiypWk2wm6
+         s5DbKWDUMQbb8lelepgjf4DaAfr1OyJmVidle1kl8L6M9iSS52il8UYpICK+EBmenEYF
+         z5CkfSOokhDD2Dg9fqLcTAQa/2EDuM0SkoaVgj+RGTMHpY4NZt/txbLM1JZ1Uf4ZD/Yw
+         CXawpJZ2rvzF28cE1LlyIOgdGQHaMzX2Ug16DPCxCTLtL+PVyPqWX1dZdo+i0t5J1w4P
+         BHTO5ZzGl0Du9JCF7dMrJrXlBczLXwbJiv5DowH4GtV7YjQahLsEANbtDx8xIe3uaYAD
+         lNPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=OhDzm4pHloCI7PgBmv97B3kI3ArMztNJTPc5uSxw1LQ=;
-        b=Vij0T72pYIvptJgLIDjvDPVEVo0A3a2L52VVzWnzrPH0XTzf0udgPVpjsaPUCeDB7x
-         b8+zk0KSmVN/Jh9ZBcrkmLabJZcj5x5e70h7c4I0ZHyjcY2aXxuyoIVZWqDc1weKwZ3p
-         Rqd1N+dbm2HYxwrEPuooe/xwovUGsDJkzy+aWRYsWC+ZyhCThoGbynOliZiwNRE47KQV
-         fCkCarq9fvjjCI0lQ/S0AW5VvwGlYG22RjUvC6WwFq63rPWx/htbG4rDLs4w64mbs7FS
-         eQgwiGgHs+nJoIRCeoJ4hsMKxkZe0U90gvuOWDn0MdxTmH3Mdd6gYN6NvWTxeF3bQp0m
-         lbXQ==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=kQYl8htm6EDnpEk43q6P1gZCrhFnVFNXjZmsmKnliDI=;
+        b=a052llxhHSsy3bby1PNdNmjfjTuePRLhNpd+YEjTCfvEtqsLLIQmOkUjI8qe2IH4z7
+         bMs+JR9F34nUPZvBuS8FHzvC1JiN6jVbL6yJ0ajVVuithwUAuZfJMtwqUBGbxJsvSZ83
+         zHKjmsUZx1wS22aS4pg5q5th2Cmap6Pg3NajDsncOJecIUaoEy0fEM01UXOblvwsBQg8
+         HUGxRtfp27ylZG0gg5jlXPP3glzQtgxG6xNhxSRwZha9uw8xkteDw+HIREJAhlHQEV7E
+         1E7uvB4gk5ymlOZYhp66YD4uhwJJy3Kv8nSY0lgUb/Xv377VBiyp/vrP0jJGxaEurDE1
+         BX/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GeduCRBP;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a17sor4183752edj.6.2021.03.05.14.54.34
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 05 Mar 2021 14:54:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=I5TQWJeR;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=I5TQWJeR;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Return-Path: <keithp@keithp.com>
+Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
+        by mx.google.com with ESMTPS id u14si4185280pjx.156.2021.03.05.15.54.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Mar 2021 15:54:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GeduCRBP;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=OhDzm4pHloCI7PgBmv97B3kI3ArMztNJTPc5uSxw1LQ=;
-        b=GeduCRBP3i5HZbMXwHf6PKS+KhtAotz0vIuaKz8Wf1PMrba+dYddrTwyi7P2Wh76dn
-         BJQatV+iSgXnXcV8dBRa1s/0hv5oMw9dlNsmjr0D8vjNIAf8t0ZpjOcMdSBHOic+IszY
-         hXEjp5K6EsPC7JR1H/M06kJOoeWqsBzIPyBQjhzMmUz+Mj0bMsVPcRlO2Eh20buk7Jj7
-         l45C7whhteG64jGXcOd7vzG8HpyJp4bbgdvv7JIL7SqrJnLe9utNXzMGgezDCLOryoeN
-         s78kBK6vOcSgzxeAx0s35OQHYiD7wOXFYRJRWLUXnJ4UccrBWEV4857N3TEzMdx5V4Lb
-         eVdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=OhDzm4pHloCI7PgBmv97B3kI3ArMztNJTPc5uSxw1LQ=;
-        b=c7+tuyZ1AWSCKcrZdELLBsJoBM/qdQEpbhGTrMzJpUxW4qU1+a1P4+8Mof6t/Muq4f
-         ULCetyKPRVIyru6ph4bTlS2hr6fdtjliPJ3uLjJjsefUh7soBAqNwC71yj9l1F3JOqGX
-         LSipnQv2hbTEs1VcBt5u0ZlHbRWlWtffjaQ1UT0Z4TgCNSxrfphjS9sk44cqdTQA3lxf
-         s00J2z66OA4NOMRR72rr6JyRpikZ//imI/2zDfcOGce9O8H7AU6N8KxaY4Odqz463LoE
-         GURv+3QbJ5+qddYcC25NKZCMnQhqJ4Wjloc3BwnNJbRdm0SOA2meo2XHLglDD5KUu/9O
-         qExg==
-X-Gm-Message-State: AOAM5319xXXOtuF7eowk4TtxJKF90eFwEJcGI02GFrSbENxleWYDWkSc
-	jb8/HcewpZaijHtxXucB3GaFwFRx4pFTO5OGUdnHrG9r
-X-Google-Smtp-Source: ABdhPJz9v0k0UWBnVRYpvF4mDAN3mDsc0GgXDAhN7LVgrk4sgIbMr9rnVWw0NkfjOkDJrMcbWlRjKfBeLamsYHtNaa0=
-X-Received: by 2002:aa7:c3cd:: with SMTP id l13mr11349809edr.52.1614984874405;
- Fri, 05 Mar 2021 14:54:34 -0800 (PST)
-MIME-Version: 1.0
+       dkim=pass header.i=@keithp.com header.s=mail header.b=I5TQWJeR;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=I5TQWJeR;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Received: from localhost (localhost [127.0.0.1])
+	by elaine.keithp.com (Postfix) with ESMTP id C33843F2EE40;
+	Fri,  5 Mar 2021 15:54:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1614988469; bh=kQYl8htm6EDnpEk43q6P1gZCrhFnVFNXjZmsmKnliDI=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=I5TQWJeR+YjGYdBD3tfqIaHyfGvkhyrCLXLfvrCmsZWSeV90cI3Z1GyNOa6pDvVoh
+	 o48mVgYTOqLzMB3QwyOqR4TgHB/AdkmczvC7iteI7WilGvOVdFSM4Lhj1vt041bXLS
+	 76Ir7O62nIT6hZRkwARHTGjgh1kulrW8JF4IQV4N65LwsBSxCh3WAR1B9iImoek6Iy
+	 LwOxJRq61tVaUJV2+/xPoi0H1bibH6SWXhR1kuL/1N/GIZD8odPADFI8FXT8RLCF86
+	 RSIobeiNr/kMlpd7dt1f1wN5ZI0HPba8IqVKdhSiiEWSJvVff3YtNTE7rGI9KVvfqO
+	 8plFVl4asxcpA==
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id vAsnTAh4Cqzo; Fri,  5 Mar 2021 15:54:29 -0800 (PST)
+Received: from keithp.com (koto.keithp.com [10.0.0.2])
+	by elaine.keithp.com (Postfix) with ESMTPSA id 7451E3F2EE3F;
+	Fri,  5 Mar 2021 15:54:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1614988469; bh=kQYl8htm6EDnpEk43q6P1gZCrhFnVFNXjZmsmKnliDI=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=I5TQWJeR+YjGYdBD3tfqIaHyfGvkhyrCLXLfvrCmsZWSeV90cI3Z1GyNOa6pDvVoh
+	 o48mVgYTOqLzMB3QwyOqR4TgHB/AdkmczvC7iteI7WilGvOVdFSM4Lhj1vt041bXLS
+	 76Ir7O62nIT6hZRkwARHTGjgh1kulrW8JF4IQV4N65LwsBSxCh3WAR1B9iImoek6Iy
+	 LwOxJRq61tVaUJV2+/xPoi0H1bibH6SWXhR1kuL/1N/GIZD8odPADFI8FXT8RLCF86
+	 RSIobeiNr/kMlpd7dt1f1wN5ZI0HPba8IqVKdhSiiEWSJvVff3YtNTE7rGI9KVvfqO
+	 8plFVl4asxcpA==
+Received: by keithp.com (Postfix, from userid 1000)
+	id 39A0115821A3; Fri,  5 Mar 2021 15:54:29 -0800 (PST)
+From: Keith Packard <keithp@keithp.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, QEMU Developers
+ <qemu-devel@nongnu.org>, Bug 1915925 <1915925@bugs.launchpad.net>, "open
+ list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v1 3/3] semihosting/arg-compat: fix up handling of
+ SYS_HEAPINFO
+In-Reply-To: <CAFEAcA8DuMANP7-JF=bTDXG7uJF0q4HUQ2P4WOGvXAOWGtPYnA@mail.gmail.com>
 References: <20210305135451.15427-1-alex.bennee@linaro.org>
- <20210305135451.15427-4-alex.bennee@linaro.org> <CAFEAcA9LdZ=Ym_UQFwqMcrHv6pygdxZC+fgoc=N3mU484d-a_A@mail.gmail.com>
+ <20210305135451.15427-4-alex.bennee@linaro.org>
+ <CAFEAcA9LdZ=Ym_UQFwqMcrHv6pygdxZC+fgoc=N3mU484d-a_A@mail.gmail.com>
  <87im65gxla.fsf@keithp.com>
-In-Reply-To: <87im65gxla.fsf@keithp.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Mar 2021 22:54:18 +0000
-Message-ID: <CAFEAcA8DuMANP7-JF=bTDXG7uJF0q4HUQ2P4WOGvXAOWGtPYnA@mail.gmail.com>
-Subject: Re: [PATCH v1 3/3] semihosting/arg-compat: fix up handling of SYS_HEAPINFO
-To: Keith Packard <keithp@keithp.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, Bug 1915925 <1915925@bugs.launchpad.net>, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: oRnDNEzloC2+
+ <CAFEAcA8DuMANP7-JF=bTDXG7uJF0q4HUQ2P4WOGvXAOWGtPYnA@mail.gmail.com>
+Date: Fri, 05 Mar 2021 15:54:28 -0800
+Message-ID: <877dmlgnrf.fsf@keithp.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+X-TUID: 8Ssz+7keLYVo
 
-On Fri, 5 Mar 2021 at 20:22, Keith Packard <keithp@keithp.com> wrote:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > Also, you don't seem to have the correct "is the CPU in
-> > 32-bit or 64-bit mode" test here: you cannot rely on target_ulong
-> > being the right size, you must make a runtime check.
->
-> Do you mean whether a dual aarch64/arm core is in arm or aarch64 mode,
-> or whether an aarch64 is running a 32-bit ABI?
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-For semihosting for Arm what matters is "what state is the core
-in at the point where it makes the semihosting SVC/HLT/etc insn?".
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-How does RISCV specify it?
+> For semihosting for Arm what matters is "what state is the core
+> in at the point where it makes the semihosting SVC/HLT/etc insn?".
 
-thanks
--- PMM
+Ok, that means we *aren't* talking about -mabi=3Dilp32, which is good --
+in my current picolibc implementation, the semihosting code uses a pure
+64-bit interface for aarch64 targets, even when using ilp32 ABI.
+
+> How does RISCV specify it?
+
+Because the ISA is identical between 64- and 32- bit (and 128-bit)
+execution modes, the only difference between the two is the Machine XLEN
+value which encodes the native base integer ISA width. You switch modes
+by modifying this value.
+
+I don't know of any implementation in hardware or software that supports
+modifying this value. I'm not sure we need to support this in the
+semihosting code for qemu as I'm pretty sure getting qemu to support
+dynamic XLEN values would be a large project (a project which I don't
+personally feel would offer much value).
+
+=2D-=20
+=2Dkeith
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAmBCxLQACgkQ2yIaaQAA
+ABFHExAAnbnZUxZUu0+MzkWHrqiM5ddgv6bMmaklL47A1Jd/z2s/NOFqbqbMtfPY
+lQeT9FZE5d23vOEGAY3/5LrK59vN1LXsr1/8IRkGd1/607rs3qEGICeFaqSxbZ8d
+ixcE3ip7fVI6E2km7zVY6NWBHt8ungsv6ASMGjPGM8ekJMwSG3DvD61tW1bLhfPR
+BzdOURsksPix9z7Gr8WnU/JqBsAohhAZ/h8/lc4UFF2qwvCpaiabrm1ww9cvcnxY
+v2JRNv0NxIHtvTywz/UVXD9qpq/av2L/GRsym6exl/zph8svdS4R5UeIAYnsLxPz
+f1spoWwb1sltd9CP++RFpXr0JsKc6X7Zgx/WZmvyA2iVYYncSVZkzhjlS74hfZ2Z
+iCvQ716Z2Vq6Vn8/yNhwWEd1y/Qi+CxHHLYGuPvWCGbM4dXiUlMmSb0GeIEJP5EX
+4rlz5jkaYzjHIGZW3rdIABIWVWiE1LO9sFhcC24y68gNEUt7tRRaUeGtXKDdiP11
+bVosRxdZ5BD2Ra6g8A7D4WrdcwrmxbokGuxlEZpabj5ovstb9MwmQ0M/IgD0cO4e
+ZXVE2ai0yq8hscCm+QeKX9ptTFfxHw849dvcjuPxnGSMozYuE3P1OEn/iCRb7gCb
+vsx23/Wf34VDv+oNvbuwnCLfqNS7LumCr3PGypZiZuSyWkJwxoU=
+=Ck89
+-----END PGP SIGNATURE-----
+--=-=-=--

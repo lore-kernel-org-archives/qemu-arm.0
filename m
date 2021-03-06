@@ -1,117 +1,270 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp838809lfg;
-        Fri, 5 Mar 2021 17:27:41 -0800 (PST)
-X-Received: by 2002:a17:90a:7104:: with SMTP id h4mr12607103pjk.189.1614994061297;
-        Fri, 05 Mar 2021 17:27:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614994061; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp9933lfg;
+        Fri, 5 Mar 2021 18:28:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzJbK9hcYzCOLFN2hI6gAQTxXaDQT/PJTOhXwMgi0CMgqn+mO0mhklnqhqLYVIcxI5cnVMC
+X-Received: by 2002:a92:4a0e:: with SMTP id m14mr11752413ilf.117.1614997718171;
+        Fri, 05 Mar 2021 18:28:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1614997718; cv=none;
         d=google.com; s=arc-20160816;
-        b=MbJuWQ4m0bfcHzRgM+YjMXEACL8rh6Ly1ac5PJ10EgEBKKnNddO1ojoFv4GT2XwtWN
-         DOzp+3OtoWIkfOVOQcGYzJW6syXgvD1YYG7TI/gjiXJ+No3s7CaLSNb/DJe69/2SwU56
-         b+WRtQcY05lLh5D3C+M+yBFWNHf6o8N/6d9gAb4p5lPKq4M4en3rgBruSxGTjnoYyRxM
-         licWs72cs4scy27qyehI+eGmRnT/EKWPD+b40vS2++edV02/iKl3JexMuvT5Ga7pivnY
-         Pf2gsbkHOHEonmg1/wTn1ifTBvGKGQUqKPq849Er4465V6RDNd72pBgPxLOczG4ldlru
-         8GOQ==
+        b=neza435rH242LKtMBP8TROzB8Vq7n0I7tlQyYD1+Jt7A5x+apJ3UI0gIAEOzB86XVs
+         lrY8Kvsuiz2oZstyWOD1hetDgncTPxFzc34sLefnE7T0gUEz+FskkStHpefJarNCLRm0
+         71rd8gSo0vT2kY1CZwVOvqifYoEPvpeLz37wYPp+Q0PYoJ8YTwES+2Z8mYGJdSStfrfA
+         T/B8KC5YJyWQIOqxkrUFfCWFfkzvfziKbAWUu0aOKyltFm6sjDKxJXX7mFLgdpKxMBMv
+         aTxIAB4EQcsjZrLwUZhB/eQVkiT7Dz6kBi4K6hVUkZwEaO/fBResn6gpp5kVHt0ZtdR8
+         PQoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Bext7Uzqjj9nVzO96fA6YlKGegXrH8woj2XV53BabsQ=;
-        b=J0RBWzSDeFoZ8iilQoj9Z0zT4cybKJWm9Kj45UWKTv93mx3AS2LYLwJXUvEVdU8oUd
-         r31qw19LdsjKSAyN+X3V3Y9/7xcwg9C+hXF66zV00J1p4n9csUjAUe9EicdBReJLfnsO
-         RW1ZoT5LjlfsgOtDEApyhEz/2hKWSXx8vTMudkJH+xYVcr5KTKf93lzPtoce4mUrYCXV
-         Vj35Y6YuaMmXAgCu0+JItqfEEVnHgAPJJy7O0nmvCkxnsuXvwX3UPF8rRXdQFYVBN46b
-         9S9exN7cFbUlaWxuq8Rv3n1zWEYMgsGxv4d4lrCStujOQE+9QVynevTY+Hofpcmhz5kC
-         5cZg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=KMdov+KB7wodRmkgxBvzhWhvl8ODSBkWHlqpUczeEY4=;
+        b=H23JiFOel8Q4ksDKLK0rf4eEh0TwDmgUK9fZwjZ1eCNPo4r0JlAjQ6NzcbWaxj+ESH
+         GN262+S2pSSacCb91qaWqocxidhOtW074bLg1QKokUValXUAj9rJn5TO5yn8kUQbRsII
+         P1bbEy20jE2Hi0D8XdiTQ+szFByKpgr4m3ncsZ2XuLe8krcZN+CAS3s5X4zfh8YdxMtG
+         DZpz98crkhEsfzxlF9dkMMqrAOMpS+MUSoEcdU0ycmqlfNX9nVVy68scUggA9yV/644Q
+         MkZ09Fcqe3eojW34MKrUw8uVLINke28eRz438OGldVXFuUj6/yxhLMCVwiT3ODYblLuS
+         8wTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gdB5h4po;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s20sor2297220pgg.62.2021.03.05.17.27.40
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUQh5TGH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o5si3938846iof.46.2021.03.05.18.28.37
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 05 Mar 2021 17:27:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 05 Mar 2021 18:28:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gdB5h4po;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Bext7Uzqjj9nVzO96fA6YlKGegXrH8woj2XV53BabsQ=;
-        b=gdB5h4po7ZluvwV2kF5QJP8Ylqy/7dL3gLiSdrrvziiKOJBxixsydTsbCOzJ52GD6x
-         8lJfOdxLxlR7yQVau3lZqY20XgsFDFQNgrssVMqxYnNMlW9QzQby82aFqseOdhV4QRcY
-         aFj71S2CcNEDJsAQyH8O2PBSxb1hkjYh+dCs+i6NRwin9atyB9K6pxrLTUbbzii+4gLT
-         I6wElfn28Y3+X+kpCh8Dxyuu03JktSYPGdcdfIpF3VXTHbHFsylzhjGtYZgpPlq1o70/
-         OrdqyiNhZnSn8RCmWMO/7EvS7TNzGyJph9PngclklX2qI/zlYApmiduEK6xKAhb8DhfV
-         wGug==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUQh5TGH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45158 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1lIMgH-0003hM-Fc
+	for alex.bennee@linaro.org; Fri, 05 Mar 2021 21:28:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58422)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
+ id 1lIMg9-0003hB-0m; Fri, 05 Mar 2021 21:28:29 -0500
+Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e]:43347)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
+ id 1lIMg6-0002Vs-Ut; Fri, 05 Mar 2021 21:28:28 -0500
+Received: by mail-qt1-x82e.google.com with SMTP id l14so612766qtr.10;
+ Fri, 05 Mar 2021 18:28:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KMdov+KB7wodRmkgxBvzhWhvl8ODSBkWHlqpUczeEY4=;
+ b=qUQh5TGHHGm/zaoOlU9Abv+60igfPpj/JwNMxWShI9Lg6gnM6EXD/x4H4f97SdpltT
+ 1vtzBi6nQCrkYQOxRGcbN5hXKPuh5xhHJlr18V6N5/Op6XPg7zARPMC2v17+WdegucoZ
+ fcY3fD7jkrzDT6V+NnyNBrImLdbhOluROuQtF7H11WU2lpzt7uaUQsBQSjXhf7efLeU3
+ IpwHXPo+iRw5ZC+aDTZRCreAzaLAaAEhvqGcQhTgajX10Zon7e0Cmd+uzd8mTc+JqRDB
+ +2LwZPbeqhYBgVEku5ReJRn2k48ZV+XIHvfpI9h+g7vCff/uDR2yMfIu4VfFbbILrmiC
+ bVWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Bext7Uzqjj9nVzO96fA6YlKGegXrH8woj2XV53BabsQ=;
-        b=D+M1j0fnKAZPvT8VQlz6KklQ/paPOo9M0LzTv2FEXcfP/XUo5Lj5QX3XAbXD+DgIhm
-         r2+RmCwKqWNogaSvz+jpaU3XzTzqQSb9i5szHrfsNU7ooT6P46hEHGIFUvwSVRjLi2EX
-         qgt2X2jXib48CmY7filN6FqVBUKQXKXYXps2y3sq7Siy8sifvogMHp138ujYFkdJSGii
-         V4R2CXdPPdtn3VEgu1FZECIqZk8qeabMZCNYFvkuHXIHdvU6vQDXg+Ksf/Ivfh9aIhBk
-         YnBnmpfFKCuuTxdfKIQReW1AZTTnJXBmkXS+YvvGI2xXwQbfh7YCoRWbem6KBOO3h6Mh
-         VoUw==
-X-Gm-Message-State: AOAM531BZWnnh/imskvTs+bBQ5RsVazjDOxdSv0ChrWjC/ywzdYjJMp8
-	sp566isA6uFw4OyHXasckpKFVobc0Lp5GVBM
-X-Google-Smtp-Source: ABdhPJwtruxrMsd78onEUZY7MNf2zEcXOEKxZbX+KwMhtsWChlJBZ26cBa+vB9MkLztyZc63cYqq7w==
-X-Received: by 2002:a63:ee04:: with SMTP id e4mr11077549pgi.446.1614994060320;
-        Fri, 05 Mar 2021 17:27:40 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] ([71.212.131.83])
-        by smtp.gmail.com with ESMTPSA id w26sm1423803pge.23.2021.03.05.17.27.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 Mar 2021 17:27:39 -0800 (PST)
-Subject: Re: [PATCH v1 3/3] semihosting/arg-compat: fix up handling of
- SYS_HEAPINFO
-To: Keith Packard <keithp@keithp.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Bug 1915925 <1915925@bugs.launchpad.net>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20210305135451.15427-1-alex.bennee@linaro.org>
- <20210305135451.15427-4-alex.bennee@linaro.org>
- <CAFEAcA9LdZ=Ym_UQFwqMcrHv6pygdxZC+fgoc=N3mU484d-a_A@mail.gmail.com>
- <87im65gxla.fsf@keithp.com>
- <CAFEAcA8DuMANP7-JF=bTDXG7uJF0q4HUQ2P4WOGvXAOWGtPYnA@mail.gmail.com>
- <877dmlgnrf.fsf@keithp.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <91d57887-8a5b-a837-6027-3fc2c38c48c7@linaro.org>
-Date: Fri, 5 Mar 2021 17:27:37 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KMdov+KB7wodRmkgxBvzhWhvl8ODSBkWHlqpUczeEY4=;
+ b=h7Zq+H+2elezefKMK3CkVki+og3Ddw4JiNypYoQfgT+Au+uRx5Sf4p2//zEqY4AH7l
+ +aGoGxFnonOB9yeFN+PXj91q1A6Cvn13S7mkw7Xyqlvco/o/nHNVRc+6LZRPUSkQEzqZ
+ XZlcYaJ5iZKRF955v5tTYRoXw80aD7U2H6MC5SNBRC0A5fbxLl3+OgHpMARa5Tus0n0h
+ OXaUeFWp1RvdBlucuwE5D7T2zcnYuXg90UnmHsHOyCdlqYTsIAtm3Cb+pbQp9s/RjkNx
+ CQjylar/Ys3rEQ5egYDx3kD38WkXqdxuqry4VexWu4lU4O0CX1NB5X5LUbHlZFr5Mu4X
+ 2oNA==
+X-Gm-Message-State: AOAM5327BHDWSz7UgDsdLH4kUNss+nZzOod1Ze0flsE1O+tOulTdAMj2
+ gr6jWXyT4OGvcVSYZrk9LR2Lz8xJyMatux28Euw=
+X-Received: by 2002:aed:20cb:: with SMTP id 69mr11885044qtb.267.1614997704570; 
+ Fri, 05 Mar 2021 18:28:24 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <877dmlgnrf.fsf@keithp.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: dQc18zeFs1Nz
+References: <CAFEAcA_W0AhNYs7+9hn1H6B2DL+UnSdhrj2JsBS4vCZ6fEd_pw@mail.gmail.com>
+ <20210225053606.385884-1-schspa@gmail.com>
+ <CAFEAcA_8EDULp2aZoJb=i4EFHEuy29L9QpJMd6nCzKLmuEAhHw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_8EDULp2aZoJb=i4EFHEuy29L9QpJMd6nCzKLmuEAhHw@mail.gmail.com>
+From: Shi Schspa <schspa@gmail.com>
+Date: Sat, 6 Mar 2021 10:28:13 +0800
+Message-ID: <CAMA88TqZ+8XLzHxtvqV6TiqmXR1-9Gnk-1cCsoO6Y3x5R5FFnw@mail.gmail.com>
+Subject: Re: [PATCH v4] virtio-mmio: improve virtio-mmio get_dev_path alog
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="0000000000007e7a2a05bcd4f400"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82e;
+ envelope-from=schspa@gmail.com; helo=mail-qt1-x82e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: br3swYZTZWjC
 
-On 3/5/21 3:54 PM, Keith Packard via wrote:
-> I don't know of any implementation in hardware or software that supports
-> modifying this value. I'm not sure we need to support this in the
-> semihosting code for qemu as I'm pretty sure getting qemu to support
-> dynamic XLEN values would be a large project
+--0000000000007e7a2a05bcd4f400
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I think it would be fairly trivial, now.  We have riscv_cpu_is_32bit (which 
-checks misa, not xlen, fwiw).  It's not examined in cpu_get_tb_cpu_state(), but 
-it is many other places.
+Thank you very much.
 
-> (a project which I don't
-> personally feel would offer much value).
-
-Now that's a different story.  I'll take no position there.
-
-However!  We do have a function, that can be made into a TCG hook, which could 
-then be queried by semihosting/.
+Best regards.
 
 
-r~
+Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2021=E5=B9=B43=E6=9C=885=
+=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=887:57=E5=86=99=E9=81=93=EF=BC=
+=9A
+
+> On Thu, 25 Feb 2021 at 05:36, schspa <schspa@gmail.com> wrote:
+> >
+> > At the moment the following QEMU command line triggers an assertion
+> > failure On xlnx-versal SOC:
+> >   qemu-system-aarch64 \
+> >       -machine xlnx-versal-virt -nographic -smp 2 -m 128 \
+> >       -fsdev local,id=3Dshareid,path=3D${HOME}/work,security_model=3Dno=
+ne \
+> >       -device virtio-9p-device,fsdev=3Dshareid,mount_tag=3Dshare \
+> >       -fsdev local,id=3Dshareid1,path=3D${HOME}/Music,security_model=3D=
+none \
+> >       -device virtio-9p-device,fsdev=3Dshareid1,mount_tag=3Dshare1
+> >
+> >   qemu-system-aarch64: ../migration/savevm.c:860:
+> >   vmstate_register_with_alias_id:
+> >   Assertion `!se->compat || se->instance_id =3D=3D 0' failed.
+> >
+> > This problem was fixed on arm virt platform in commit f58b39d2d5b
+> > ("virtio-mmio: format transport base address in BusClass.get_dev_path")
+> >
+> > It works perfectly on arm virt platform. but there is still there on
+> > xlnx-versal SOC.
+> >
+> > The main difference between arm virt and xlnx-versal is they use
+> > different way to create virtio-mmio qdev. on arm virt, it calls
+> > sysbus_create_simple("virtio-mmio", base, pic[irq]); which will call
+> > sysbus_mmio_map internally and assign base address to subsys device
+> > mmio correctly. but xlnx-versal's implements won't do this.
+> >
+> > However, xlnx-versal can't switch to sysbus_create_simple() to create
+> > virtio-mmio device. It's because xlnx-versal's cpu use
+> > VersalVirt.soc.fpd.apu.mr as it's memory. which is subregion of
+> > system_memory. sysbus_create_simple will add virtio to system_memory,
+> > which can't be accessed by cpu.
+> >
+> > Besides, xlnx-versal can't add sysbus_mmio_map api call too, because
+> > this will add memory region to system_memory, and it can't be added
+> > to VersalVirt.soc.fpd.apu.mr again.
+> >
+> > We can solve this by assign correct base address offset on dev_path.
+> >
+> > This path was test on aarch64 virt & xlnx-versal platform.
+> >
+> > Signed-off-by: schspa <schspa@gmail.com>
+> > ---
+>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Applied to target-arm.next, thanks (unless MST would rather it
+> go in via another route).
+>
+> -- PMM
+>
+
+--0000000000007e7a2a05bcd4f400
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thank you very much.<div><br></div><div>Best=C2=A0regards.=
+</div><div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">Peter Maydell &lt;<a href=3D"mailto:peter.maydell@lina=
+ro.org">peter.maydell@linaro.org</a>&gt; =E4=BA=8E2021=E5=B9=B43=E6=9C=885=
+=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=887:57=E5=86=99=E9=81=93=EF=BC=
+=9A<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 25 F=
+eb 2021 at 05:36, schspa &lt;<a href=3D"mailto:schspa@gmail.com" target=3D"=
+_blank">schspa@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; At the moment the following QEMU command line triggers an assertion<br=
+>
+&gt; failure On xlnx-versal SOC:<br>
+&gt;=C2=A0 =C2=A0qemu-system-aarch64 \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-machine xlnx-versal-virt -nographic -smp 2 =
+-m 128 \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-fsdev local,id=3Dshareid,path=3D${HOME}/wor=
+k,security_model=3Dnone \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-device virtio-9p-device,fsdev=3Dshareid,mou=
+nt_tag=3Dshare \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-fsdev local,id=3Dshareid1,path=3D${HOME}/Mu=
+sic,security_model=3Dnone \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-device virtio-9p-device,fsdev=3Dshareid1,mo=
+unt_tag=3Dshare1<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0qemu-system-aarch64: ../migration/savevm.c:860:<br>
+&gt;=C2=A0 =C2=A0vmstate_register_with_alias_id:<br>
+&gt;=C2=A0 =C2=A0Assertion `!se-&gt;compat || se-&gt;instance_id =3D=3D 0&#=
+39; failed.<br>
+&gt;<br>
+&gt; This problem was fixed on arm virt platform in commit f58b39d2d5b<br>
+&gt; (&quot;virtio-mmio: format transport base address in BusClass.get_dev_=
+path&quot;)<br>
+&gt;<br>
+&gt; It works perfectly on arm virt platform. but there is still there on<b=
+r>
+&gt; xlnx-versal SOC.<br>
+&gt;<br>
+&gt; The main difference between arm virt and xlnx-versal is they use<br>
+&gt; different way to create virtio-mmio qdev. on arm virt, it calls<br>
+&gt; sysbus_create_simple(&quot;virtio-mmio&quot;, base, pic[irq]); which w=
+ill call<br>
+&gt; sysbus_mmio_map internally and assign base address to subsys device<br=
+>
+&gt; mmio correctly. but xlnx-versal&#39;s implements won&#39;t do this.<br=
+>
+&gt;<br>
+&gt; However, xlnx-versal can&#39;t switch to sysbus_create_simple() to cre=
+ate<br>
+&gt; virtio-mmio device. It&#39;s because xlnx-versal&#39;s cpu use<br>
+&gt; <a href=3D"http://VersalVirt.soc.fpd.apu.mr" rel=3D"noreferrer" target=
+=3D"_blank">VersalVirt.soc.fpd.apu.mr</a> as it&#39;s memory. which is subr=
+egion of<br>
+&gt; system_memory. sysbus_create_simple will add virtio to system_memory,<=
+br>
+&gt; which can&#39;t be accessed by cpu.<br>
+&gt;<br>
+&gt; Besides, xlnx-versal can&#39;t add sysbus_mmio_map api call too, becau=
+se<br>
+&gt; this will add memory region to system_memory, and it can&#39;t be adde=
+d<br>
+&gt; to <a href=3D"http://VersalVirt.soc.fpd.apu.mr" rel=3D"noreferrer" tar=
+get=3D"_blank">VersalVirt.soc.fpd.apu.mr</a> again.<br>
+&gt;<br>
+&gt; We can solve this by assign correct base address offset on dev_path.<b=
+r>
+&gt;<br>
+&gt; This path was test on aarch64 virt &amp; xlnx-versal platform.<br>
+&gt;<br>
+&gt; Signed-off-by: schspa &lt;<a href=3D"mailto:schspa@gmail.com" target=
+=3D"_blank">schspa@gmail.com</a>&gt;<br>
+&gt; ---<br>
+<br>
+Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" =
+target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+<br>
+Applied to target-arm.next, thanks (unless MST would rather it<br>
+go in via another route).<br>
+<br>
+-- PMM<br>
+</blockquote></div>
+
+--0000000000007e7a2a05bcd4f400--

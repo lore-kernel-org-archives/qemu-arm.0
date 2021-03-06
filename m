@@ -1,270 +1,130 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp9933lfg;
-        Fri, 5 Mar 2021 18:28:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzJbK9hcYzCOLFN2hI6gAQTxXaDQT/PJTOhXwMgi0CMgqn+mO0mhklnqhqLYVIcxI5cnVMC
-X-Received: by 2002:a92:4a0e:: with SMTP id m14mr11752413ilf.117.1614997718171;
-        Fri, 05 Mar 2021 18:28:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614997718; cv=none;
+Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp353413lfg;
+        Sat, 6 Mar 2021 06:07:25 -0800 (PST)
+X-Received: by 2002:a17:906:3916:: with SMTP id f22mr7096198eje.328.1615039644977;
+        Sat, 06 Mar 2021 06:07:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1615039644; cv=none;
         d=google.com; s=arc-20160816;
-        b=neza435rH242LKtMBP8TROzB8Vq7n0I7tlQyYD1+Jt7A5x+apJ3UI0gIAEOzB86XVs
-         lrY8Kvsuiz2oZstyWOD1hetDgncTPxFzc34sLefnE7T0gUEz+FskkStHpefJarNCLRm0
-         71rd8gSo0vT2kY1CZwVOvqifYoEPvpeLz37wYPp+Q0PYoJ8YTwES+2Z8mYGJdSStfrfA
-         T/B8KC5YJyWQIOqxkrUFfCWFfkzvfziKbAWUu0aOKyltFm6sjDKxJXX7mFLgdpKxMBMv
-         aTxIAB4EQcsjZrLwUZhB/eQVkiT7Dz6kBi4K6hVUkZwEaO/fBResn6gpp5kVHt0ZtdR8
-         PQoQ==
+        b=ptsaFrVcONUenTQenGTwI21bUnNIa79Q9k9OjhCD7XQsvNAwSLf9Q7WRZCWLgG2xmC
+         3EMIBZNaXfuWFoIMZRvh1KFfrvoeq/2wcLqnpvUQQxt1lx8pVDHVReECJmax8wVhEP+z
+         juiRK9kGupUyUcZ4s/BA3krjhKqZL534dEgfPUhKmS+fJ4NAu6q3sFkdoTdKeyTQBed2
+         7Z6BUtNI/iz9tkj3Oyj38eZEp7Gt2qXXnQ6c1glsjsxQ+hOMCd06YI4gxUNeJY+p1JxU
+         FhxnHIiMfAot3s9hnxFi04ZtB4ZlQl1dxtB/8f46SNA0UJK50Nw6WKZEujYhggj8HCqb
+         YYsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=KMdov+KB7wodRmkgxBvzhWhvl8ODSBkWHlqpUczeEY4=;
-        b=H23JiFOel8Q4ksDKLK0rf4eEh0TwDmgUK9fZwjZ1eCNPo4r0JlAjQ6NzcbWaxj+ESH
-         GN262+S2pSSacCb91qaWqocxidhOtW074bLg1QKokUValXUAj9rJn5TO5yn8kUQbRsII
-         P1bbEy20jE2Hi0D8XdiTQ+szFByKpgr4m3ncsZ2XuLe8krcZN+CAS3s5X4zfh8YdxMtG
-         DZpz98crkhEsfzxlF9dkMMqrAOMpS+MUSoEcdU0ycmqlfNX9nVVy68scUggA9yV/644Q
-         MkZ09Fcqe3eojW34MKrUw8uVLINke28eRz438OGldVXFuUj6/yxhLMCVwiT3ODYblLuS
-         8wTw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=J4QN4hD69UaunxWNgbz6h/bF43tggDTuiIXPMwMmLQw=;
+        b=SIlrqvKD8/Ti5C5TiiFPcYOc418VAJ8iwxbRi7F1WPmD3mC7DjoK3pd90Nk9geU9dQ
+         FMqeaUYffmgHVpREq8h8/YxlBzIkLr1QiM8caZFANEqxFgE8XNiXQNzKmnTOOfQCIV3l
+         gUDbZaOSJB5PyIxwYR699DcEA8DGKLCQvqmZv8+zfoVxyDlqH/1JcPuIzXjiBuY6fbn+
+         fo3quao1d2+FzI1bUQMStV4hojYhPG0ouaUbsbpFU+dTsCUHnZ9WnCU8uuCTBhNm6PQx
+         A/FQIFKtztVj6CpzCsnJEHoTBdbqvKLAknPbRdj6PBJU8q7c8DFls+oj/Gj98QMkmF8d
+         RDmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUQh5TGH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si3938846iof.46.2021.03.05.18.28.37
+       dkim=pass header.i=@linaro.org header.s=google header.b=ThrAPl4L;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u9sor5672696edb.13.2021.03.06.06.07.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Mar 2021 18:28:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 06 Mar 2021 06:07:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUQh5TGH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45158 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lIMgH-0003hM-Fc
-	for alex.bennee@linaro.org; Fri, 05 Mar 2021 21:28:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58422)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
- id 1lIMg9-0003hB-0m; Fri, 05 Mar 2021 21:28:29 -0500
-Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e]:43347)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <schspa@gmail.com>)
- id 1lIMg6-0002Vs-Ut; Fri, 05 Mar 2021 21:28:28 -0500
-Received: by mail-qt1-x82e.google.com with SMTP id l14so612766qtr.10;
- Fri, 05 Mar 2021 18:28:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KMdov+KB7wodRmkgxBvzhWhvl8ODSBkWHlqpUczeEY4=;
- b=qUQh5TGHHGm/zaoOlU9Abv+60igfPpj/JwNMxWShI9Lg6gnM6EXD/x4H4f97SdpltT
- 1vtzBi6nQCrkYQOxRGcbN5hXKPuh5xhHJlr18V6N5/Op6XPg7zARPMC2v17+WdegucoZ
- fcY3fD7jkrzDT6V+NnyNBrImLdbhOluROuQtF7H11WU2lpzt7uaUQsBQSjXhf7efLeU3
- IpwHXPo+iRw5ZC+aDTZRCreAzaLAaAEhvqGcQhTgajX10Zon7e0Cmd+uzd8mTc+JqRDB
- +2LwZPbeqhYBgVEku5ReJRn2k48ZV+XIHvfpI9h+g7vCff/uDR2yMfIu4VfFbbILrmiC
- bVWg==
+       dkim=pass header.i=@linaro.org header.s=google header.b=ThrAPl4L;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=J4QN4hD69UaunxWNgbz6h/bF43tggDTuiIXPMwMmLQw=;
+        b=ThrAPl4LVZ4tumEaRQwllFN7ZIF/0cdBnV5jPqStGNCVwi2pspRcinAYZhrx6UcO/V
+         ov7zKXRxaMAZ4CKLoXFEV0jniMVFeX20Q59wXuqAHFnIogWQ/iWh4SSP5gE9vefOWJqC
+         J/usChfgLVTQFM7uHj2+UkG2uz7ZZo7T+9LVodkm/c+W8/fZJSC4EnOuyj7YTzsAlKqE
+         kYjzwLV8ouyFNeWGGzr+gzH79/sZv+2/dVnPNQfji8i1XaIMX3RbiNZjqxWHqSxHyLx5
+         xgdlhPM4E7a/kDyJeSEDdQ4/wDW+x0hDTJKtToRBNvVlH4wROqEHjEj7SsToT0nkcjzg
+         SlxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KMdov+KB7wodRmkgxBvzhWhvl8ODSBkWHlqpUczeEY4=;
- b=h7Zq+H+2elezefKMK3CkVki+og3Ddw4JiNypYoQfgT+Au+uRx5Sf4p2//zEqY4AH7l
- +aGoGxFnonOB9yeFN+PXj91q1A6Cvn13S7mkw7Xyqlvco/o/nHNVRc+6LZRPUSkQEzqZ
- XZlcYaJ5iZKRF955v5tTYRoXw80aD7U2H6MC5SNBRC0A5fbxLl3+OgHpMARa5Tus0n0h
- OXaUeFWp1RvdBlucuwE5D7T2zcnYuXg90UnmHsHOyCdlqYTsIAtm3Cb+pbQp9s/RjkNx
- CQjylar/Ys3rEQ5egYDx3kD38WkXqdxuqry4VexWu4lU4O0CX1NB5X5LUbHlZFr5Mu4X
- 2oNA==
-X-Gm-Message-State: AOAM5327BHDWSz7UgDsdLH4kUNss+nZzOod1Ze0flsE1O+tOulTdAMj2
- gr6jWXyT4OGvcVSYZrk9LR2Lz8xJyMatux28Euw=
-X-Received: by 2002:aed:20cb:: with SMTP id 69mr11885044qtb.267.1614997704570; 
- Fri, 05 Mar 2021 18:28:24 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=J4QN4hD69UaunxWNgbz6h/bF43tggDTuiIXPMwMmLQw=;
+        b=k9V5WLeFbo3WaRTedGdkZXCpll6Bc3Iq8uwcaGaEhQyRb1lSNPvJHIB4qohwyjFjaB
+         AwcGpNAnvICSklvmy15htqLcCR3JRkZ5Y2PT7yFAtwU7zW3RztXdTDwfrOOY+qdgieAF
+         tC88quRN8SBaomdLanJl3QtguR+Y7PN1F9tBFK9xFQy8IVGzAQaCQWa5bzGYFhvVu2l3
+         hdlUOMKhFSYzmEu804SPVOPU7sNEs/ML31RyqeS0tkAPVKBmn+3/srd0zVsyGKgL5cNv
+         7wdDLMOBkGqOIu0388aIz7Vcw064Cde/cHQFAqlVJNBpS++P24ZnmlN8ERv/fK7O2ZZ/
+         KxtQ==
+X-Gm-Message-State: AOAM532k1bk9ZNh4A2dPBMfKSeEHGz7RzwbR7VJg0o2lQTt81Yvkc7IN
+	rjmeSVi80yFRA1+ktFelZ+gK1syyqf7w/QxgsvqKhm1iZhax5A==
+X-Google-Smtp-Source: ABdhPJzeFxbTs+vOkh0k20vQsJsV8sBRPSQtebjt+Sa3ZOQd+7Mnw9dLFLnmxag+HGHyONGH4fxzAsiLYN/w+Bq+IHg=
+X-Received: by 2002:a50:d307:: with SMTP id g7mr13983845edh.204.1615039644655;
+ Sat, 06 Mar 2021 06:07:24 -0800 (PST)
 MIME-Version: 1.0
-References: <CAFEAcA_W0AhNYs7+9hn1H6B2DL+UnSdhrj2JsBS4vCZ6fEd_pw@mail.gmail.com>
- <20210225053606.385884-1-schspa@gmail.com>
- <CAFEAcA_8EDULp2aZoJb=i4EFHEuy29L9QpJMd6nCzKLmuEAhHw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_8EDULp2aZoJb=i4EFHEuy29L9QpJMd6nCzKLmuEAhHw@mail.gmail.com>
-From: Shi Schspa <schspa@gmail.com>
-Date: Sat, 6 Mar 2021 10:28:13 +0800
-Message-ID: <CAMA88TqZ+8XLzHxtvqV6TiqmXR1-9Gnk-1cCsoO6Y3x5R5FFnw@mail.gmail.com>
-Subject: Re: [PATCH v4] virtio-mmio: improve virtio-mmio get_dev_path alog
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000007e7a2a05bcd4f400"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82e;
- envelope-from=schspa@gmail.com; helo=mail-qt1-x82e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: br3swYZTZWjC
-
---0000000000007e7a2a05bcd4f400
+References: <20210305135451.15427-1-alex.bennee@linaro.org>
+ <20210305135451.15427-4-alex.bennee@linaro.org> <CAFEAcA9LdZ=Ym_UQFwqMcrHv6pygdxZC+fgoc=N3mU484d-a_A@mail.gmail.com>
+ <87im65gxla.fsf@keithp.com> <CAFEAcA8DuMANP7-JF=bTDXG7uJF0q4HUQ2P4WOGvXAOWGtPYnA@mail.gmail.com>
+ <877dmlgnrf.fsf@keithp.com>
+In-Reply-To: <877dmlgnrf.fsf@keithp.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 6 Mar 2021 14:07:07 +0000
+Message-ID: <CAFEAcA8t9eQf7nD2Ea7z1qO-Tf5xthTvzODS3XsxX+0ns3ttQg@mail.gmail.com>
+Subject: Re: [PATCH v1 3/3] semihosting/arg-compat: fix up handling of SYS_HEAPINFO
+To: Keith Packard <keithp@keithp.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Bug 1915925 <1915925@bugs.launchpad.net>, 
+	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-TUID: r1+d0aCObreh
 
-Thank you very much.
-
-Best regards.
-
-
-Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2021=E5=B9=B43=E6=9C=885=
-=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=887:57=E5=86=99=E9=81=93=EF=BC=
-=9A
-
-> On Thu, 25 Feb 2021 at 05:36, schspa <schspa@gmail.com> wrote:
-> >
-> > At the moment the following QEMU command line triggers an assertion
-> > failure On xlnx-versal SOC:
-> >   qemu-system-aarch64 \
-> >       -machine xlnx-versal-virt -nographic -smp 2 -m 128 \
-> >       -fsdev local,id=3Dshareid,path=3D${HOME}/work,security_model=3Dno=
-ne \
-> >       -device virtio-9p-device,fsdev=3Dshareid,mount_tag=3Dshare \
-> >       -fsdev local,id=3Dshareid1,path=3D${HOME}/Music,security_model=3D=
-none \
-> >       -device virtio-9p-device,fsdev=3Dshareid1,mount_tag=3Dshare1
-> >
-> >   qemu-system-aarch64: ../migration/savevm.c:860:
-> >   vmstate_register_with_alias_id:
-> >   Assertion `!se->compat || se->instance_id =3D=3D 0' failed.
-> >
-> > This problem was fixed on arm virt platform in commit f58b39d2d5b
-> > ("virtio-mmio: format transport base address in BusClass.get_dev_path")
-> >
-> > It works perfectly on arm virt platform. but there is still there on
-> > xlnx-versal SOC.
-> >
-> > The main difference between arm virt and xlnx-versal is they use
-> > different way to create virtio-mmio qdev. on arm virt, it calls
-> > sysbus_create_simple("virtio-mmio", base, pic[irq]); which will call
-> > sysbus_mmio_map internally and assign base address to subsys device
-> > mmio correctly. but xlnx-versal's implements won't do this.
-> >
-> > However, xlnx-versal can't switch to sysbus_create_simple() to create
-> > virtio-mmio device. It's because xlnx-versal's cpu use
-> > VersalVirt.soc.fpd.apu.mr as it's memory. which is subregion of
-> > system_memory. sysbus_create_simple will add virtio to system_memory,
-> > which can't be accessed by cpu.
-> >
-> > Besides, xlnx-versal can't add sysbus_mmio_map api call too, because
-> > this will add memory region to system_memory, and it can't be added
-> > to VersalVirt.soc.fpd.apu.mr again.
-> >
-> > We can solve this by assign correct base address offset on dev_path.
-> >
-> > This path was test on aarch64 virt & xlnx-versal platform.
-> >
-> > Signed-off-by: schspa <schspa@gmail.com>
-> > ---
+On Fri, 5 Mar 2021 at 23:54, Keith Packard <keithp@keithp.com> wrote:
 >
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Peter Maydell <peter.maydell@linaro.org> writes:
 >
-> Applied to target-arm.next, thanks (unless MST would rather it
-> go in via another route).
+> > For semihosting for Arm what matters is "what state is the core
+> > in at the point where it makes the semihosting SVC/HLT/etc insn?".
 >
-> -- PMM
->
+> Ok, that means we *aren't* talking about -mabi=ilp32, which is good --
+> in my current picolibc implementation, the semihosting code uses a pure
+> 64-bit interface for aarch64 targets, even when using ilp32 ABI.
 
---0000000000007e7a2a05bcd4f400
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ILP32 for AArch64 is a zombie target -- it is kinda-sorta
+supported in some toolchains but has no support in eg
+the Linux syscall ABI. The semihosting ABI does not implement
+any kind of ILP32 variant -- you can have A32/T32 (AArch32)
+semihosting, where register and field sizes are 32 bit, or
+you can have A64 (AArch64) semihosting, where register and
+field sizes are 64 bit.
 
-<div dir=3D"ltr">Thank you very much.<div><br></div><div>Best=C2=A0regards.=
-</div><div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">Peter Maydell &lt;<a href=3D"mailto:peter.maydell@lina=
-ro.org">peter.maydell@linaro.org</a>&gt; =E4=BA=8E2021=E5=B9=B43=E6=9C=885=
-=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=887:57=E5=86=99=E9=81=93=EF=BC=
-=9A<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
-0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 25 F=
-eb 2021 at 05:36, schspa &lt;<a href=3D"mailto:schspa@gmail.com" target=3D"=
-_blank">schspa@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; At the moment the following QEMU command line triggers an assertion<br=
+> > How does RISCV specify it?
 >
-&gt; failure On xlnx-versal SOC:<br>
-&gt;=C2=A0 =C2=A0qemu-system-aarch64 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-machine xlnx-versal-virt -nographic -smp 2 =
--m 128 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-fsdev local,id=3Dshareid,path=3D${HOME}/wor=
-k,security_model=3Dnone \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-device virtio-9p-device,fsdev=3Dshareid,mou=
-nt_tag=3Dshare \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-fsdev local,id=3Dshareid1,path=3D${HOME}/Mu=
-sic,security_model=3Dnone \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-device virtio-9p-device,fsdev=3Dshareid1,mo=
-unt_tag=3Dshare1<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0qemu-system-aarch64: ../migration/savevm.c:860:<br>
-&gt;=C2=A0 =C2=A0vmstate_register_with_alias_id:<br>
-&gt;=C2=A0 =C2=A0Assertion `!se-&gt;compat || se-&gt;instance_id =3D=3D 0&#=
-39; failed.<br>
-&gt;<br>
-&gt; This problem was fixed on arm virt platform in commit f58b39d2d5b<br>
-&gt; (&quot;virtio-mmio: format transport base address in BusClass.get_dev_=
-path&quot;)<br>
-&gt;<br>
-&gt; It works perfectly on arm virt platform. but there is still there on<b=
-r>
-&gt; xlnx-versal SOC.<br>
-&gt;<br>
-&gt; The main difference between arm virt and xlnx-versal is they use<br>
-&gt; different way to create virtio-mmio qdev. on arm virt, it calls<br>
-&gt; sysbus_create_simple(&quot;virtio-mmio&quot;, base, pic[irq]); which w=
-ill call<br>
-&gt; sysbus_mmio_map internally and assign base address to subsys device<br=
->
-&gt; mmio correctly. but xlnx-versal&#39;s implements won&#39;t do this.<br=
->
-&gt;<br>
-&gt; However, xlnx-versal can&#39;t switch to sysbus_create_simple() to cre=
-ate<br>
-&gt; virtio-mmio device. It&#39;s because xlnx-versal&#39;s cpu use<br>
-&gt; <a href=3D"http://VersalVirt.soc.fpd.apu.mr" rel=3D"noreferrer" target=
-=3D"_blank">VersalVirt.soc.fpd.apu.mr</a> as it&#39;s memory. which is subr=
-egion of<br>
-&gt; system_memory. sysbus_create_simple will add virtio to system_memory,<=
-br>
-&gt; which can&#39;t be accessed by cpu.<br>
-&gt;<br>
-&gt; Besides, xlnx-versal can&#39;t add sysbus_mmio_map api call too, becau=
-se<br>
-&gt; this will add memory region to system_memory, and it can&#39;t be adde=
-d<br>
-&gt; to <a href=3D"http://VersalVirt.soc.fpd.apu.mr" rel=3D"noreferrer" tar=
-get=3D"_blank">VersalVirt.soc.fpd.apu.mr</a> again.<br>
-&gt;<br>
-&gt; We can solve this by assign correct base address offset on dev_path.<b=
-r>
-&gt;<br>
-&gt; This path was test on aarch64 virt &amp; xlnx-versal platform.<br>
-&gt;<br>
-&gt; Signed-off-by: schspa &lt;<a href=3D"mailto:schspa@gmail.com" target=
-=3D"_blank">schspa@gmail.com</a>&gt;<br>
-&gt; ---<br>
-<br>
-Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" =
-target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-<br>
-Applied to target-arm.next, thanks (unless MST would rather it<br>
-go in via another route).<br>
-<br>
--- PMM<br>
-</blockquote></div>
+> Because the ISA is identical between 64- and 32- bit (and 128-bit)
+> execution modes, the only difference between the two is the Machine XLEN
+> value which encodes the native base integer ISA width. You switch modes
+> by modifying this value.
 
---0000000000007e7a2a05bcd4f400--
+I meant, how does the RISCV semihosting ABI specify what
+the field size is? To answer my own question, I just looked at
+the spec doc and it says "depends on whether the caller is
+32-bit or 64-bit", which implies that we need to look at the
+current state of the CPU in some way.
+
+> I don't know of any implementation in hardware or software that supports
+> modifying this value. I'm not sure we need to support this in the
+> semihosting code for qemu as I'm pretty sure getting qemu to support
+> dynamic XLEN values would be a large project (a project which I don't
+> personally feel would offer much value).
+
+Part of why I asked is that the current RISCV implementation
+is just looking at sizeof(target_ulong); but the qemu-system-riscv64
+executable AIUI now supports emulating both "this is a 64 bit
+guest CPU" and "this is a 32 bit host CPU", and so looking at
+a QEMU-compile-time value like "sizeof(target_ulong)" will
+produce the wrong answer for 32-bit CPUs emulated in
+the qemu-system-riscv64 binary. My guess is maybe
+it should be looking at the result of riscv_cpu_is_32bit() instead.
+
+thanks
+-- PMM
